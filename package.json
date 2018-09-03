@@ -1,0 +1,35 @@
+{
+  "name": "braid-design-system",
+  "version": "0.0.0-development",
+  "description": "Themeable design system for the SEEK Group",
+  "main": "lib/components/index.js",
+  "sideEffects": false,
+  "scripts": {
+    "test": "npm run lint && npm run build",
+    "clean": "rm -rf lib && rm -rf docs/dist",
+    "build": "npm run clean && cp -r src lib && sku build",
+    "start": "sku start",
+    "lint": "sku lint",
+    "format": "sku format"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seek-oss/braid-design-system.git"
+  },
+  "author": "SEEK",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/seek-oss/braid-design-system/issues"
+  },
+  "homepage": "https://github.com/seek-oss/braid-design-system#readme",
+  "dependencies": {
+    "basekick": "^3.0.0",
+    "classnames": "^2.2.6",
+    "react": "^16.4.2"
+  },
+  "devDependencies": {
+    "dedent": "0.7.0",
+    "react-dom": "16.4.2",
+    "sku": "5.1.4"
+  }
+}
