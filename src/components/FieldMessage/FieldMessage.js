@@ -28,25 +28,23 @@ const renderIcon = (theme, tone) => {
   return null;
 };
 
-const FieldMessage = withTheme(
-  ({ theme, tone, message, ...props }) =>
-    message === false ? null : (
-      <Text paddingBottom="medium" color={tone} tabIndex="-1" {...props}>
-        <div className={styles.content}>
-          {renderIcon(theme, tone)}
-          <div
-            style={{
-              minHeight: `${theme.tokens.type.standard.rows *
-                theme.tokens.rowHeight}px`
-            }}
-          >
-            {message}
-          </div>
+const FieldMessage = ({ theme, tone, message, ...props }) =>
+  message === false ? null : (
+    <Text paddingBottom="medium" color={tone} tabIndex="-1" {...props}>
+      <div className={styles.content}>
+        {renderIcon(theme, tone)}
+        <div
+          style={{
+            minHeight: `${theme.tokens.type.standard.rows *
+              theme.tokens.rowHeight}px`
+          }}
+        >
+          {message}
         </div>
-      </Text>
-    )
-);
+      </div>
+    </Text>
+  );
 
 FieldMessage.displayName = 'FieldMessage';
 
-export default FieldMessage;
+export default withTheme(FieldMessage);
