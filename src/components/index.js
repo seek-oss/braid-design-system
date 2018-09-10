@@ -7,7 +7,7 @@ export { default as BulletList } from './BulletList/BulletList';
 export { default as Card } from './Card/Card';
 export { default as Checkbox } from './Checkbox/Checkbox';
 export { default as Divider } from './Divider/Divider';
-export { default as Element } from './Element/Element';
+export { default as Reset } from './Reset/Reset';
 export { default as FieldLabel } from './FieldLabel/FieldLabel';
 export { default as FieldMessage } from './FieldMessage/FieldMessage';
 export { default as Options } from './Options/Options';

@@ -1,7 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 import withTheme from '../private/withTheme';
-import Element from '../Element/Element';
+import Reset from '../Reset/Reset';
 import styles from './Box.css.js';
 
 const Box = withTheme(
@@ -22,7 +22,7 @@ const Box = withTheme(
     className,
     ...props
   }) => (
-    <Element
+    <Reset
       component={component}
       className={classnames({
         [className]: className,
