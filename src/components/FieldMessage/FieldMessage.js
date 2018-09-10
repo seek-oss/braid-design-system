@@ -10,11 +10,8 @@ const renderIcon = (theme, tone) => {
   if (tone === 'critical') {
     return (
       <ErrorIcon
-        className={classnames(
-          styles.icon,
-          theme.atoms.fill.critical,
-          theme.atoms.marginRight.smallest
-        )}
+        fill="critical"
+        className={classnames(styles.icon, theme.atoms.marginRight.small)}
       />
     );
   }
@@ -22,11 +19,8 @@ const renderIcon = (theme, tone) => {
   if (tone === 'positive') {
     return (
       <TickCircleIcon
-        className={classnames(
-          styles.icon,
-          theme.atoms.fill.positive,
-          theme.atoms.marginRight.smallest
-        )}
+        fill="positive"
+        className={classnames(styles.icon, theme.atoms.marginRight.small)}
       />
     );
   }

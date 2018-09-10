@@ -8,7 +8,7 @@
     "test": "npm run lint && npm run build",
     "clean": "rm -rf lib && rm -rf docs/dist",
     "build": "npm run clean && cp -r src lib && sku build",
-    "start": "sku start",
+    "start": "npm run clean && sku start",
     "lint": "sku lint",
     "format": "sku format"
   },

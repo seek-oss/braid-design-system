@@ -1,5 +1,5 @@
 export default {
-  '.content': {
+  '.root': {
     display: 'flex'
   },
   '.icon': {
