@@ -5,7 +5,8 @@
   "main": "lib/components/index.js",
   "sideEffects": false,
   "scripts": {
-    "test": "npm run lint && npm run build",
+    "test": "npm run lint && CI=true sku test",
+    "unit": "sku test",
     "clean": "rm -rf lib && rm -rf docs/dist",
     "build": "npm run clean && cp -r src lib && sku build",
     "start": "npm run clean && sku start",
@@ -29,7 +30,9 @@
   },
   "devDependencies": {
     "dedent": "0.7.0",
+    "lodash": "^4.17.10",
     "react-dom": "16.4.2",
-    "sku": "5.1.4"
+    "react-testing-library": "^5.0.1",
+    "sku": "5.4.0"
   }
 }
