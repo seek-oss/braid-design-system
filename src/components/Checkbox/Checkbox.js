@@ -207,7 +207,7 @@ class Checkbox extends React.Component {
             >
               <Box
                 paddingLeft={inChecklistCard ? 'medium' : 'small'}
-                paddingBottom="medium"
+                paddingBottom="small"
                 className={styles.children}
                 style={{ marginLeft: `${checkboxSize}px` }}
               >

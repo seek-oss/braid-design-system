@@ -30,7 +30,7 @@ const renderIcon = (theme, tone) => {
 
 const FieldMessage = ({ theme, tone, message, ...props }) =>
   message === false ? null : (
-    <Text paddingBottom="medium" color={tone} tabIndex="-1" {...props}>
+    <Text paddingBottom="small" color={tone} tabIndex="-1" {...props}>
       <div className={styles.content}>
         {renderIcon(theme, tone)}
         <div
