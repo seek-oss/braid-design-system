@@ -1,9 +1,9 @@
 export default {
   '.input': { background: 'white' },
   '.inputDisabled': { background: '#eee' },
-  '.formAccent': { background: '#1c3f94' },
+  '.formAccent': { background: '#142d69' },
   '.formAccentDisabled': { background: '#ccc' },
-  '.highlight': { background: '#E8EBF3' },
-  '.info': { background: '#1C3F94' },
+  '.highlight': { background: '#E8EBF4' },
+  '.info': { background: '#142d69' },
   '.card': { background: '#fff' }
 };

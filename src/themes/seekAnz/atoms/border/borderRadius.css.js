@@ -1,3 +1,3 @@
 export default {
-  '.standard': { borderRadius: '3px' }
+  '.standard': { borderRadius: '4px' }
 };

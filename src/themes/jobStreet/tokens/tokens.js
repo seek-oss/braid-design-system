@@ -25,7 +25,7 @@ export default {
     largest: 12
   },
   columnSpacing: {
-    gutter: 4,
+    gutter: 5,
     smallest: 1,
     small: 2,
     medium: 3,

@@ -1,6 +1,12 @@
-import React, { Component } from 'react';
-import { ThemeProvider, Text, Alert, Checkbox } from '../../../src/components';
 import jobStreetTheme from '../../../src/themes/jobStreet';
+import React, { Component } from 'react';
+import {
+  ThemeProvider,
+  Text,
+  Alert,
+  ChecklistCard,
+  Checkbox
+} from '../../../src/components';
 
 export default () => (
   <ThemeProvider theme={jobStreetTheme}>
@@ -18,6 +24,21 @@ export default () => (
         tone="critical"
         message="You must agree to continue"
       />
+      <ChecklistCard borderWidth="standard" marginTop="large">
+        <Checkbox label="Hello world" message={false} checked>
+          <Text>Hello!</Text>
+        </Checkbox>
+        <Checkbox
+          label="Hello world"
+          message="Oops, something went wrong!"
+          tone="critical"
+        >
+          <Text>Hello!</Text>
+        </Checkbox>
+        <Checkbox label="Hello world" message={false}>
+          <Text>Hello!</Text>
+        </Checkbox>
+      </ChecklistCard>
     </div>
   </ThemeProvider>
 );

@@ -4,6 +4,6 @@ export default {
   '.critical': { color: 'red' },
   '.positive': { color: 'green' },
   '.secondary': { color: 'grey' },
-  '.formAccent': { color: '#1c3f94' },
+  '.formAccent': { color: '#142d69' },
   '.neutral': { composes: 'black' }
 };

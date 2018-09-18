@@ -68,6 +68,7 @@ class Checkbox extends React.Component {
       <div
         className={classnames({
           [className]: className,
+          [theme.atoms.paddingBottom.small]: inChecklistCard,
           [theme.atoms.backgroundColor.highlight]:
             inChecklistCard && (checked || hovered) && !disabled
         })}
@@ -90,8 +91,7 @@ class Checkbox extends React.Component {
               ? {
                   paddingLeft: 'gutter',
                   paddingRight: 'gutter',
-                  paddingTop: 'smallest',
-                  paddingBottom: 'smallest'
+                  paddingTop: 'small'
                 }
               : {})}
             className={classnames({
@@ -107,7 +107,7 @@ class Checkbox extends React.Component {
             onMouseOut={this.handleMouseOut}
           >
             <Box
-              marginRight="medium"
+              marginRight={inChecklistCard ? 'gutter' : 'medium'}
               className={styles.checkboxContainer}
               style={{
                 width: `${checkboxSize}px`,
@@ -205,7 +205,7 @@ class Checkbox extends React.Component {
               paddingRight={inChecklistCard ? 'gutter' : 'none'}
             >
               <Box
-                paddingLeft="medium"
+                paddingLeft={inChecklistCard ? 'gutter' : 'medium'}
                 paddingBottom="medium"
                 className={styles.children}
                 style={{ marginLeft: `${checkboxSize}px` }}
