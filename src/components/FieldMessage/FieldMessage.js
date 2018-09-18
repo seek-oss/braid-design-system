@@ -11,7 +11,7 @@ const renderIcon = (theme, tone) => {
     return (
       <ErrorIcon
         fill="critical"
-        className={classnames(styles.icon, theme.atoms.marginRight.small)}
+        className={classnames(styles.icon, theme.atoms.marginRight.smaller)}
       />
     );
   }
@@ -20,7 +20,7 @@ const renderIcon = (theme, tone) => {
     return (
       <TickCircleIcon
         fill="positive"
-        className={classnames(styles.icon, theme.atoms.marginRight.small)}
+        className={classnames(styles.icon, theme.atoms.marginRight.smaller)}
       />
     );
   }

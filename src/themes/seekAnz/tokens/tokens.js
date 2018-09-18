@@ -18,20 +18,22 @@ export default {
   },
   rowSpacing: {
     smallest: 1,
-    small: 2,
-    medium: 3,
-    large: 4,
-    larger: 5,
-    largest: 8
+    smaller: 2,
+    small: 3,
+    medium: 4,
+    large: 5,
+    larger: 8,
+    largest: 12
   },
   columnSpacing: {
     gutter: 4,
     smallest: 1,
-    small: 2,
-    medium: 3,
-    large: 4,
-    larger: 5,
-    largest: 8
+    smaller: 2,
+    small: 3,
+    medium: 4,
+    large: 5,
+    larger: 8,
+    largest: 12
   },
   borderWidth: {
     standard: 1

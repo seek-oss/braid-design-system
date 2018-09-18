@@ -4,7 +4,7 @@ import Text from '../Text/Text';
 const Bullet = props => (
   <Text
     component="li"
-    paddingBottom="small"
+    paddingBottom="smaller"
     style={{ marginLeft: '1.3em' }}
     {...props}
   />
