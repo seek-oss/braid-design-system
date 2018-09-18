@@ -107,7 +107,7 @@ class Checkbox extends React.Component {
             onMouseOut={this.handleMouseOut}
           >
             <Box
-              marginRight={inChecklistCard ? 'gutter' : 'medium'}
+              marginRight={inChecklistCard ? 'large' : 'medium'}
               className={styles.checkboxContainer}
               style={{
                 width: `${checkboxSize}px`,
@@ -195,6 +195,7 @@ class Checkbox extends React.Component {
               size="interaction"
               baseline={false}
               color={textColorForState({ disabled, hovered })}
+              {...(checked && children ? { weight: 'strong' } : {})}
             >
               {label}
             </Text>
@@ -205,7 +206,7 @@ class Checkbox extends React.Component {
               paddingRight={inChecklistCard ? 'gutter' : 'none'}
             >
               <Box
-                paddingLeft={inChecklistCard ? 'gutter' : 'medium'}
+                paddingLeft={inChecklistCard ? 'large' : 'medium'}
                 paddingBottom="medium"
                 className={styles.children}
                 style={{ marginLeft: `${checkboxSize}px` }}

@@ -20,18 +20,18 @@ export default {
     smallest: 1,
     small: 2,
     medium: 3,
-    large: 5,
-    larger: 8,
-    largest: 12
+    large: 4,
+    larger: 5,
+    largest: 8
   },
   columnSpacing: {
     gutter: 5,
     smallest: 1,
     small: 2,
     medium: 3,
-    large: 5,
-    larger: 8,
-    largest: 12
+    large: 4,
+    larger: 5,
+    largest: 8
   },
   borderWidth: {
     standard: 1

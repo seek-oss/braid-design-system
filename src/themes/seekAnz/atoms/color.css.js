@@ -3,7 +3,7 @@ export default {
   '.white': { color: '#fff' },
   '.critical': { color: '#e60278' },
   '.positive': { color: 'green' },
-  '.secondary': { color: 'grey' },
+  '.secondary': { color: '#1c1c1ca1' },
   '.formAccent': { color: '#2765cf' },
   '.neutral': { composes: 'black' }
 };
