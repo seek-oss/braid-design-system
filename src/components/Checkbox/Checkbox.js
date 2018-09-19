@@ -69,7 +69,7 @@ class Checkbox extends React.Component {
         className={classnames({
           [className]: className,
           [theme.atoms.paddingBottom.smaller]: inChecklistCard,
-          [theme.atoms.backgroundColor.highlight]:
+          [theme.atoms.backgroundColor.selection]:
             inChecklistCard && (checked || hovered) && !disabled
         })}
         style={style}

@@ -68,7 +68,7 @@ class Radio extends React.Component {
       <div
         className={classnames({
           [className]: className,
-          [theme.atoms.backgroundColor.highlight]:
+          [theme.atoms.backgroundColor.selection]:
             inChecklistCard && (checked || hovered) && !disabled
         })}
         style={style}
