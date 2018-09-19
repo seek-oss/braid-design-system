@@ -1,6 +1,6 @@
 export default {
   rowHeight: 6,
-  columnWidth: 6,
+  columnWidth: 5,
   interactionRows: 8,
   type: {
     body: {
@@ -22,7 +22,7 @@ export default {
     largest: 12
   },
   columnSpacing: {
-    gutter: 4,
+    gutter: 5,
     smallest: 1,
     smaller: 2,
     small: 3,
