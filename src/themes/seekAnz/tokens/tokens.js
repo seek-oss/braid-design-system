@@ -3,17 +3,13 @@ export default {
   columnWidth: 6,
   interactionRows: 8,
   type: {
-    standard: {
+    body: {
       size: 16,
       rows: 4
     },
     large: {
       size: 18,
       rows: 4
-    },
-    heading: {
-      size: 21,
-      rows: 7
     }
   },
   rowSpacing: {

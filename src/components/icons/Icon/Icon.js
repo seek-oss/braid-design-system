@@ -7,7 +7,7 @@ const Icon = ({
   className,
   theme,
   svgComponent,
-  size = 'standard',
+  size = 'body',
   inline = false,
   fill,
   ...props

@@ -11,7 +11,7 @@ const componentsBySize = {
 const Text = ({
   theme,
   component,
-  size = 'standard',
+  size = 'body',
   color = 'neutral',
   weight = 'regular',
   baseline = true,

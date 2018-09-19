@@ -10,15 +10,10 @@ const size = (fontSize, rows) =>
     descenderHeightScale: 0.16
   });
 
-// const size = (fontSize, rows) => ({
-//   fontSize,
-//   lineHeight: `${rows * tokens.rowHeight}px`
-// });
-
-const standardType = tokens.type.standard;
+const bodyType = tokens.type.body;
 const css = {
   '.interaction': {
-    ...size(standardType.size, standardType.rows),
+    ...size(bodyType.size, bodyType.rows),
     // eslint-disable-next-line no-warning-comments
     // TODO: Make this a 'touchable' prop on Text?
     paddingTop: '12px',

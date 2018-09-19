@@ -35,7 +35,7 @@ const FieldMessage = ({ theme, tone, message, ...props }) =>
         {renderIcon(theme, tone)}
         <div
           style={{
-            minHeight: `${theme.tokens.type.standard.rows *
+            minHeight: `${theme.tokens.type.body.rows *
               theme.tokens.rowHeight}px`
           }}
         >
