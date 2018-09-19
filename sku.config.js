@@ -1,10 +1,9 @@
 module.exports = {
+  srcPaths: ['src', 'docs/src'],
   entry: {
     client: 'docs/src/client.js',
     render: 'docs/src/render.js'
   },
   publicPath: '/',
-  target: 'docs/dist',
-  // TODO: Add proper support for this hack in sku
-  compilePackages: ['../docs/src']
+  target: 'docs/dist'
 };

@@ -1,5 +1,5 @@
 import jobStreetTheme from '../../../src/themes/jobStreet';
-import React, { Component } from 'react';
+import React from 'react';
 import {
   ThemeProvider,
   Text,
