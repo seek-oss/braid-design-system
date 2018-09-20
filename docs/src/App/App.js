@@ -5,7 +5,8 @@ import {
   Text,
   Alert,
   ChecklistCard,
-  Checkbox
+  Checkbox,
+  Box
 } from '../../../src/components';
 
 const themeNames = Object.keys(themes);
@@ -31,16 +32,25 @@ export default class App extends Component {
     return (
       <ThemeProvider theme={themes[themeNames[themeIndex]]}>
         <div style={{ maxWidth: 600, margin: '0 auto' }}>
-          <button onClick={this.toggleTheme}>Toggle theme</button>
-          <Alert tone="info" marginBottom="larger" marginTop="large">
+          <Box
+            paddingLeft="gutter"
+            paddingRight="gutter"
+            paddingTop="large"
+            paddingBottom="large"
+          >
+            <button onClick={this.toggleTheme}>Toggle theme</button>
+          </Box>
+          <Alert tone="info" marginBottom="larger">
             This is a piece of information that we'd like to bring to your
             attention. If you miss it, it's not the end of the world.
           </Alert>
-          <Checkbox
-            label="I agree to the terms and conditions"
-            tone="critical"
-            message="You must agree to continue"
-          />
+          <Box paddingLeft="gutter" paddingRight="gutter">
+            <Checkbox
+              label="I agree to the terms and conditions"
+              tone="critical"
+              message="You must agree to continue"
+            />
+          </Box>
           <ChecklistCard borderWidth="standard" marginTop="large">
             <Checkbox label="Hello world" message={false} checked>
               <Text>Hello!</Text>
