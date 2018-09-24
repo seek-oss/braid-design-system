@@ -10,11 +10,11 @@ export { default as Divider } from './Divider/Divider';
 export { default as Reset } from './Reset/Reset';
 export { default as FieldLabel } from './FieldLabel/FieldLabel';
 export { default as FieldMessage } from './FieldMessage/FieldMessage';
-export { default as Options } from './Options/Options';
 export { default as Radio } from './Radio/Radio';
 export { default as Strong } from './Strong/Strong';
 export { default as Text } from './Text/Text';
 export { default as ChecklistCard } from './ChecklistCard/ChecklistCard';
+export { default as ChevronIcon } from './icons/ChevronIcon/ChevronIcon';
 export { default as ErrorIcon } from './icons/ErrorIcon/ErrorIcon';
 export { default as InfoIcon } from './icons/InfoIcon/InfoIcon';
 export {

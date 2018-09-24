@@ -4,5 +4,6 @@ export default {
   '.formAccentDisabled': { fill: '#ccc' },
   '.critical': { fill: 'red' },
   '.positive': { fill: 'green' },
+  '.secondary': { fill: '#333333b3' },
   '.white': { fill: 'white' }
 };

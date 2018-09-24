@@ -40,6 +40,9 @@ export default class App extends Component {
           >
             <button onClick={this.toggleTheme}>Toggle theme</button>
           </Box>
+          <Alert tone="critical" marginBottom="small">
+            This is a critical error.
+          </Alert>
           <Alert tone="info" marginBottom="larger">
             This is a piece of information that we'd like to bring to your
             attention. If you miss it, it's not the end of the world.

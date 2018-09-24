@@ -5,5 +5,6 @@ export default {
   '.formAccentDisabled': { background: '#ccc' },
   '.selection': { background: '#E8EBF4' },
   '.info': { background: '#142d69' },
-  '.card': { background: '#fff' }
+  '.card': { background: '#fff' },
+  '.critical': { background: '#FFEAEA' }
 };
