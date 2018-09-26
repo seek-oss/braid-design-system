@@ -6,6 +6,7 @@ exports[`Checkbox Theme: jobStreet Checked 1`] = `
 >
   <input
     aria-describedby="id-message"
+    checked=""
     class="Checkbox__realCheckbox"
     id="id"
     type="checkbox"
@@ -94,6 +95,7 @@ exports[`Checkbox Theme: jobStreet Children when checked 1`] = `
 >
   <input
     aria-describedby="id-message"
+    checked=""
     class="Checkbox__realCheckbox"
     id="id"
     type="checkbox"
@@ -378,6 +380,7 @@ exports[`Checkbox Theme: jobStreet With message 1`] = `
 >
   <input
     aria-describedby="id-message"
+    checked=""
     class="Checkbox__realCheckbox"
     id="id"
     type="checkbox"
@@ -488,6 +491,7 @@ exports[`Checkbox Theme: seekAnz Checked 1`] = `
 >
   <input
     aria-describedby="id-message"
+    checked=""
     class="Checkbox__realCheckbox"
     id="id"
     type="checkbox"
@@ -576,6 +580,7 @@ exports[`Checkbox Theme: seekAnz Children when checked 1`] = `
 >
   <input
     aria-describedby="id-message"
+    checked=""
     class="Checkbox__realCheckbox"
     id="id"
     type="checkbox"
@@ -860,6 +865,7 @@ exports[`Checkbox Theme: seekAnz With message 1`] = `
 >
   <input
     aria-describedby="id-message"
+    checked=""
     class="Checkbox__realCheckbox"
     id="id"
     type="checkbox"
