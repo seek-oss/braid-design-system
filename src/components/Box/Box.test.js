@@ -28,6 +28,7 @@ describe('Box', () => {
             marginLeft="small"
             marginRight="small"
             borderWidth="standard"
+            borderRadius="standard"
             backgroundColor="card"
             className="GLOBAL_CLASS"
           >

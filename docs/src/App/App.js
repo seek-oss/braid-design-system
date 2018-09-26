@@ -1,4 +1,4 @@
-import * as themes from '../../../src/themes';
+import { jobStreet, seekAnz } from '../../../src/themes';
 import React, { Component } from 'react';
 import {
   ThemeProvider,
@@ -9,6 +9,7 @@ import {
   Box
 } from '../../../src/components';
 
+const themes = [jobStreet, seekAnz];
 const themeNames = Object.keys(themes);
 
 export default class App extends Component {

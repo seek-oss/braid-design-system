@@ -6,7 +6,7 @@ import forEachTheme from '../../test/utils/forEachTheme';
 describe('Alert', () => {
   forEachTheme(({ ThemeProvider }) => {
     describe('Tones', () => {
-      const tones = ['info'];
+      const tones = ['critical', 'info'];
 
       tones.forEach(tone => {
         test(tone, () => {
