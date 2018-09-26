@@ -12,6 +12,8 @@ import {
 const themes = [jobStreet, seekAnz];
 const themeNames = Object.keys(themes);
 
+const noop = () => {};
+
 export default class App extends Component {
   constructor() {
     super();
@@ -50,23 +52,40 @@ export default class App extends Component {
           </Alert>
           <Box paddingLeft="gutter" paddingRight="gutter">
             <Checkbox
+              id="1"
               label="I agree to the terms and conditions"
               tone="critical"
               message="You must agree to continue"
+              checked={false}
+              onChange={noop}
             />
           </Box>
           <ChecklistCard borderWidth="standard" marginTop="large">
-            <Checkbox label="Hello world" message={false} checked>
+            <Checkbox
+              id="2"
+              label="Hello world"
+              message={false}
+              checked
+              onChange={noop}
+            >
               <Text>Hello!</Text>
             </Checkbox>
             <Checkbox
               label="Hello world"
               message="Oops, something went wrong!"
               tone="critical"
+              checked={false}
+              onChange={noop}
             >
               <Text>Hello!</Text>
             </Checkbox>
-            <Checkbox label="Hello world" message={false}>
+            <Checkbox
+              id="3"
+              label="Hello world"
+              message={false}
+              checked={false}
+              onChange={noop}
+            >
               <Text>Hello!</Text>
             </Checkbox>
           </ChecklistCard>
