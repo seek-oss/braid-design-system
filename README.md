@@ -51,11 +51,11 @@ export default () => (
 
 ## Themes
 
-[List of available themes.](./src/themes)
+[List of available themes.](./lib/themes)
 
 ## Components
 
-[List of available components.](./src/components)
+[List of available components.](./lib/components)
 
 ## Local Development
 

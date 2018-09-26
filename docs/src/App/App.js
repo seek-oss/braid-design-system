@@ -1,4 +1,4 @@
-import { jobStreet, seekAnz } from '../../../src/themes';
+import { jobStreet, seekAnz } from '../../../lib/themes';
 import React, { Component } from 'react';
 import {
   ThemeProvider,
@@ -7,7 +7,7 @@ import {
   ChecklistCard,
   Checkbox,
   Box
-} from '../../../src/components';
+} from '../../../lib/components';
 
 const themes = [jobStreet, seekAnz];
 const themeNames = Object.keys(themes);
