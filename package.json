@@ -27,14 +27,14 @@
     "basekick": "^3.0.0",
     "classnames": "^2.2.6",
     "prop-types": "^15.6.2",
-    "react": "^16.4.2"
+    "react": "^16.5.2"
   },
   "devDependencies": {
     "dedent": "0.7.0",
     "deep-keys": "^0.5.0",
-    "lodash": "^4.17.10",
-    "react-dom": "16.4.2",
-    "react-testing-library": "^5.0.1",
-    "sku": "5.7.2"
+    "lodash": "^4.17.11",
+    "react-dom": "16.5.2",
+    "react-testing-library": "^5.1.0",
+    "sku": "5.7.3"
   }
 }
