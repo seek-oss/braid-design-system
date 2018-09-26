@@ -12,13 +12,13 @@ const ChevronSvg = props => (
 
 ChevronSvg.displayName = 'ChevronSvg';
 
-const ChevronIcon = props => {
+const ChevronIcon = ({ className, ...props }) => {
   const combinedProps = {
     ...props,
     className: classnames({
       [styles.root]: true,
       [styles[props.direction]]: styles[props.direction],
-      [props.className]: true
+      [className]: className
     })
   };
   return <Icon svgComponent={ChevronSvg} {...combinedProps} />;

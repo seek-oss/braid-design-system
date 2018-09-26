@@ -8,9 +8,17 @@ import Box from '../Box/Box';
 const Divider = ({
   borderColor = 'standard',
   borderWidth = 'standard',
-  theme
+  theme,
+  className,
+  ...props
 }) => (
-  <Box className={styles.root}>
+  <Box
+    className={classnames({
+      [styles.root]: true,
+      [className]: className
+    })}
+    {...props}
+  >
     <div
       className={classnames(
         styles.divider,

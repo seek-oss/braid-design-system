@@ -16,6 +16,14 @@ exports[`Box Theme: jobStreet No props 1`] = `
 </div>
 `;
 
+exports[`Box Theme: jobStreet Unknown values 1`] = `
+<div
+  class="Box__root borderColor__default"
+>
+  Children
+</div>
+`;
+
 exports[`Box Theme: seekAnz All props 1`] = `
 <section
   class="GLOBAL_CLASS Box__root backgroundColor__card borderColor__default borderWidth__standard borderRadius__standard marginTop__small marginRight__small marginBottom__small marginLeft__small paddingTop__small paddingRight__small paddingBottom__small paddingLeft__small reset__section"
@@ -25,6 +33,14 @@ exports[`Box Theme: seekAnz All props 1`] = `
 `;
 
 exports[`Box Theme: seekAnz No props 1`] = `
+<div
+  class="Box__root borderColor__default"
+>
+  Children
+</div>
+`;
+
+exports[`Box Theme: seekAnz Unknown values 1`] = `
 <div
   class="Box__root borderColor__default"
 >

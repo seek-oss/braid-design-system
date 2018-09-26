@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card Theme: jobStreet Default 1`] = `
+<div
+  class="Box__root backgroundColor__card borderColor__default marginBottom__medium"
+>
+  Children
+</div>
+`;
+
+exports[`Card Theme: seekAnz Default 1`] = `
+<div
+  class="Box__root backgroundColor__card borderColor__default marginBottom__medium"
+>
+  Children
+</div>
+`;

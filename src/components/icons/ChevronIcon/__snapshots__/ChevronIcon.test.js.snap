@@ -1,0 +1,197 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ChevronIcon Theme: jobStreet Default 1`] = `
+<svg
+  class="ChevronIcon__root Box__root borderColor__default"
+  direction="down"
+  height="20"
+  viewBox="0 0 1024 1024"
+  width="20"
+>
+  <path
+    d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
+  />
+</svg>
+`;
+
+exports[`ChevronIcon Theme: jobStreet Down 1`] = `
+<svg
+  class="ChevronIcon__root Box__root borderColor__default"
+  direction="down"
+  height="20"
+  viewBox="0 0 1024 1024"
+  width="20"
+>
+  <path
+    d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
+  />
+</svg>
+`;
+
+exports[`ChevronIcon Theme: jobStreet Inline 1`] = `
+<svg
+  class="ChevronIcon__root Box__root borderColor__default"
+  direction="down"
+  height="14"
+  viewBox="0 0 1024 1024"
+  width="14"
+>
+  <path
+    d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
+  />
+</svg>
+`;
+
+exports[`ChevronIcon Theme: jobStreet Left 1`] = `
+<svg
+  class="ChevronIcon__root ChevronIcon__left Box__root borderColor__default"
+  direction="left"
+  height="20"
+  viewBox="0 0 1024 1024"
+  width="20"
+>
+  <path
+    d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
+  />
+</svg>
+`;
+
+exports[`ChevronIcon Theme: jobStreet Right 1`] = `
+<svg
+  class="ChevronIcon__root ChevronIcon__right Box__root borderColor__default"
+  direction="right"
+  height="20"
+  viewBox="0 0 1024 1024"
+  width="20"
+>
+  <path
+    d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
+  />
+</svg>
+`;
+
+exports[`ChevronIcon Theme: jobStreet Sized 1`] = `
+<svg
+  class="ChevronIcon__root Box__root borderColor__default"
+  direction="down"
+  height="24"
+  viewBox="0 0 1024 1024"
+  width="24"
+>
+  <path
+    d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
+  />
+</svg>
+`;
+
+exports[`ChevronIcon Theme: jobStreet Up 1`] = `
+<svg
+  class="ChevronIcon__root ChevronIcon__up Box__root borderColor__default"
+  direction="up"
+  height="20"
+  viewBox="0 0 1024 1024"
+  width="20"
+>
+  <path
+    d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
+  />
+</svg>
+`;
+
+exports[`ChevronIcon Theme: seekAnz Default 1`] = `
+<svg
+  class="ChevronIcon__root Box__root borderColor__default"
+  direction="down"
+  height="24"
+  viewBox="0 0 1024 1024"
+  width="24"
+>
+  <path
+    d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
+  />
+</svg>
+`;
+
+exports[`ChevronIcon Theme: seekAnz Down 1`] = `
+<svg
+  class="ChevronIcon__root Box__root borderColor__default"
+  direction="down"
+  height="24"
+  viewBox="0 0 1024 1024"
+  width="24"
+>
+  <path
+    d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
+  />
+</svg>
+`;
+
+exports[`ChevronIcon Theme: seekAnz Inline 1`] = `
+<svg
+  class="ChevronIcon__root Box__root borderColor__default"
+  direction="down"
+  height="16"
+  viewBox="0 0 1024 1024"
+  width="16"
+>
+  <path
+    d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
+  />
+</svg>
+`;
+
+exports[`ChevronIcon Theme: seekAnz Left 1`] = `
+<svg
+  class="ChevronIcon__root ChevronIcon__left Box__root borderColor__default"
+  direction="left"
+  height="24"
+  viewBox="0 0 1024 1024"
+  width="24"
+>
+  <path
+    d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
+  />
+</svg>
+`;
+
+exports[`ChevronIcon Theme: seekAnz Right 1`] = `
+<svg
+  class="ChevronIcon__root ChevronIcon__right Box__root borderColor__default"
+  direction="right"
+  height="24"
+  viewBox="0 0 1024 1024"
+  width="24"
+>
+  <path
+    d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
+  />
+</svg>
+`;
+
+exports[`ChevronIcon Theme: seekAnz Sized 1`] = `
+<svg
+  class="ChevronIcon__root Box__root borderColor__default"
+  direction="down"
+  height="24"
+  viewBox="0 0 1024 1024"
+  width="24"
+>
+  <path
+    d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
+  />
+</svg>
+`;
+
+exports[`ChevronIcon Theme: seekAnz Up 1`] = `
+<svg
+  class="ChevronIcon__root ChevronIcon__up Box__root borderColor__default"
+  direction="up"
+  height="24"
+  viewBox="0 0 1024 1024"
+  width="24"
+>
+  <path
+    d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
+  />
+</svg>
+`;

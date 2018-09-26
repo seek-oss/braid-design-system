@@ -38,5 +38,28 @@ describe('Box', () => {
       );
       expect(container.firstChild).toMatchSnapshot();
     });
+
+    test('Unknown values', () => {
+      const { container } = render(
+        <ThemeProvider>
+          <Box
+            paddingTop="UNKNOWN"
+            paddingBottom="UNKNOWN"
+            paddingLeft="UNKNOWN"
+            paddingRight="UNKNOWN"
+            marginTop="UNKNOWN"
+            marginBottom="UNKNOWN"
+            marginLeft="UNKNOWN"
+            marginRight="UNKNOWN"
+            borderWidth="UNKNOWN"
+            borderRadius="UNKNOWN"
+            backgroundColor="UNKNOWN"
+          >
+            Children
+          </Box>
+        </ThemeProvider>
+      );
+      expect(container.firstChild).toMatchSnapshot();
+    });
   });
 });

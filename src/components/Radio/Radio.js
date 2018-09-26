@@ -16,7 +16,7 @@ const textColorForState = ({ disabled, hovered }) => {
     return 'formAccent';
   }
 
-  return 'default';
+  return 'neutral';
 };
 
 class Radio extends React.Component {

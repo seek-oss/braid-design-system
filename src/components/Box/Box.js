@@ -27,18 +27,30 @@ const Box = ({
     className={classnames({
       [className]: className,
       [styles.root]: true,
-      [theme.atoms.backgroundColor[backgroundColor]]: backgroundColor,
-      [theme.atoms.borderColor[borderColor]]: borderColor,
-      [theme.atoms.borderWidth[borderWidth]]: borderWidth,
-      [theme.atoms.borderRadius[borderRadius]]: borderRadius,
-      [theme.atoms.marginTop[marginTop]]: marginTop,
-      [theme.atoms.marginRight[marginRight]]: marginRight,
-      [theme.atoms.marginBottom[marginBottom]]: marginBottom,
-      [theme.atoms.marginLeft[marginLeft]]: marginLeft,
-      [theme.atoms.paddingTop[paddingTop]]: paddingTop,
-      [theme.atoms.paddingRight[paddingRight]]: paddingRight,
-      [theme.atoms.paddingBottom[paddingBottom]]: paddingBottom,
-      [theme.atoms.paddingLeft[paddingLeft]]: paddingLeft
+      [theme.atoms.backgroundColor[backgroundColor]]:
+        backgroundColor && theme.atoms.backgroundColor[backgroundColor],
+      [theme.atoms.borderColor[borderColor]]:
+        borderColor && theme.atoms.borderColor[borderColor],
+      [theme.atoms.borderWidth[borderWidth]]:
+        borderWidth && theme.atoms.borderWidth[borderWidth],
+      [theme.atoms.borderRadius[borderRadius]]:
+        borderRadius && theme.atoms.borderRadius[borderRadius],
+      [theme.atoms.marginTop[marginTop]]:
+        marginTop && theme.atoms.marginTop[marginTop],
+      [theme.atoms.marginRight[marginRight]]:
+        marginRight && theme.atoms.marginRight[marginRight],
+      [theme.atoms.marginBottom[marginBottom]]:
+        marginBottom && theme.atoms.marginBottom[marginBottom],
+      [theme.atoms.marginLeft[marginLeft]]:
+        marginLeft && theme.atoms.marginLeft[marginLeft],
+      [theme.atoms.paddingTop[paddingTop]]:
+        paddingTop && theme.atoms.paddingTop[paddingTop],
+      [theme.atoms.paddingRight[paddingRight]]:
+        paddingRight && theme.atoms.paddingRight[paddingRight],
+      [theme.atoms.paddingBottom[paddingBottom]]:
+        paddingBottom && theme.atoms.paddingBottom[paddingBottom],
+      [theme.atoms.paddingLeft[paddingLeft]]:
+        paddingLeft && theme.atoms.paddingLeft[paddingLeft]
     })}
     {...props}
   />

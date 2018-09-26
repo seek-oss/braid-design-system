@@ -17,7 +17,7 @@ const textColorForState = ({ disabled, hovered }) => {
     return 'formAccent';
   }
 
-  return 'default';
+  return 'neutral';
 };
 
 class Checkbox extends React.Component {
