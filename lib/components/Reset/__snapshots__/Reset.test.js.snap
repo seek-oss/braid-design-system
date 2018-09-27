@@ -2,6 +2,7 @@
 
 exports[`Reset Theme: jobStreet Component 1`] = `
 <span
+  class=""
   data-custom="component"
 >
   Children
@@ -26,6 +27,7 @@ exports[`Reset Theme: jobStreet Unknown element 1`] = `
 
 exports[`Reset Theme: seekAnz Component 1`] = `
 <span
+  class=""
   data-custom="component"
 >
   Children

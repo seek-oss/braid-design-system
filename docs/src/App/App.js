@@ -71,6 +71,7 @@ export default class App extends Component {
               <Text>Hello!</Text>
             </Checkbox>
             <Checkbox
+              id="3"
               label="Hello world"
               message="Oops, something went wrong!"
               tone="critical"
@@ -80,7 +81,7 @@ export default class App extends Component {
               <Text>Hello!</Text>
             </Checkbox>
             <Checkbox
-              id="3"
+              id="4"
               label="Hello world"
               message={false}
               checked={false}
