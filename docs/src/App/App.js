@@ -1,4 +1,4 @@
-import { jobStreet, seekAnz } from '../../../lib/themes';
+import { jobStreet, seekAnz, seekAsia } from '../../../lib/themes';
 import React, { Component } from 'react';
 import {
   ThemeProvider,
@@ -9,7 +9,7 @@ import {
   Box
 } from '../../../lib/components';
 
-const themes = [jobStreet, seekAnz];
+const themes = [jobStreet, seekAnz, seekAsia];
 const themeNames = Object.keys(themes);
 
 const noop = () => {};
@@ -69,6 +69,16 @@ export default class App extends Component {
               onChange={noop}
             >
               <Text>Hello!</Text>
+            </Checkbox>
+            <Checkbox
+              id="3"
+              label="Oh no"
+              message={false}
+              onChange={noop}
+              checked={false}
+              disabled
+            >
+              <Text>I'm leg disabled!</Text>
             </Checkbox>
             <Checkbox
               id="3"
