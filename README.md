@@ -13,7 +13,7 @@ _**NOTE:** This project is currently in alpha. The API is *extremely* unstable. 
 In your sku project, first install this library:
 
 ```bash
-$ npm install --save braid-design-system
+$ npm install --save braid-design-system react react-dom
 ```
 
 Then, in [`sku.config.js`](https://github.com/seek-oss/sku/blob/master/README.md#configuration), add `braid-design-system` to your [`compilePackages`](https://github.com/seek-oss/sku/blob/master/README.md#compile-packages) list:
@@ -60,10 +60,13 @@ export default () => (
 [List of available components.](./lib/components)
 
 ## Local Development
+This project uses [yarn package manager](https://yarnpkg.com) for development dependencies.
+
+Installing with `yarn` is required to ensure dependencies match the current [yarn.lock](./yarn.lock).
 
 ```bash
-$ npm install
-$ npm start
+$ yarn
+$ yarn start
 ```
 
 ## License
