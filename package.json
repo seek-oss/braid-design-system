@@ -5,11 +5,10 @@
   "main": "lib/components/index.js",
   "sideEffects": false,
   "scripts": {
-    "test": "npm run lint && CI=true sku test",
+    "test": "npm run lint && CI=true npm run unit && npm run build",
     "unit": "sku test",
-    "clean": "rm -rf docs/dist",
-    "build": "npm run clean && sku build",
-    "start": "npm run clean && sku start",
+    "build": "rimraf docs/dist && sku build",
+    "start": "sku start",
     "lint": "sku lint",
     "format": "sku format",
     "commit": "git-cz",
@@ -53,6 +52,7 @@
     "react-dom": "16.5.2",
     "react-testing-library": "^5.1.0",
     "renovate-config-seek": "0.3.0",
+    "rimraf": "^2.6.2",
     "semantic-release": "^15.9.16",
     "sku": "5.7.3",
     "travis-deploy-once": "^5.0.9"
