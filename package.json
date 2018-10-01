@@ -11,7 +11,19 @@
     "build": "npm run clean && sku build",
     "start": "npm run clean && sku start",
     "lint": "sku lint",
-    "format": "sku format"
+    "format": "sku format",
+    "commit": "git-cz",
+    "commitmsg": "commitlint --edit --extends seek",
+    "travis-deploy-once": "travis-deploy-once",
+    "semantic-release": "semantic-release"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "release": {
+    "success": false
   },
   "repository": {
     "type": "git",
@@ -30,11 +42,19 @@
     "react": "^16.5.2"
   },
   "devDependencies": {
+    "@commitlint/cli": "^7.1.2",
+    "commitizen": "^2.10.1",
+    "commitlint-config-seek": "1.0.0",
+    "cz-conventional-changelog": "^2.1.0",
     "dedent": "0.7.0",
     "deep-keys": "^0.5.0",
+    "husky": "^1.0.1",
     "lodash": "^4.17.11",
     "react-dom": "16.5.2",
     "react-testing-library": "^5.1.0",
-    "sku": "5.7.3"
+    "renovate-config-seek": "0.3.0",
+    "semantic-release": "^15.9.16",
+    "sku": "5.7.3",
+    "travis-deploy-once": "^5.0.9"
   }
 }
