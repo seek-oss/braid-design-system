@@ -1,4 +1,4 @@
-[![Build Status](https://img.shields.io/travis/seek-oss/braid-design-system/master.svg?style=flat-square)](http://travis-ci.org/seek-oss/braid-design-system) [![npm](https://img.shields.io/npm/v/braid-design-system.svg?style=flat-square)](https://www.npmjs.com/package/braid-design-system)
+[![Build Status](https://img.shields.io/travis/seek-oss/braid-design-system/master.svg?style=flat-square)](http://travis-ci.org/seek-oss/braid-design-system) [![npm](https://img.shields.io/npm/v/braid-design-system.svg?style=flat-square)](https://www.npmjs.com/package/braid-design-system) [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=flat-square)](https://github.com/semantic-release/semantic-release) [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=flat-square)](http://commitizen.github.io/cz-cli/)
 
 # braid-design-system
 

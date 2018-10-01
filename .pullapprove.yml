@@ -1,0 +1,16 @@
+version: 2
+
+groups:
+  reviewers:
+    required: 1
+    teams:
+      - front-end-contributors
+    approve_by_comment:
+      enabled: false
+    always_rejected:
+      title_regex: '^(?!(build|ci|chore|docs|feat|fix|perf|refactor|revert|style|test)(\(\w+\))?\:\s(\S+)).*$'
+      explanation: 'Invalid PR title. For more information please see https://github.com/seek-oss/commitlint-config-seek'
+    reset_on_push:
+      enabled: false
+    reset_on_reopened:
+      enabled: true
