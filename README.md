@@ -8,7 +8,7 @@ _**NOTE:** This project is currently in alpha. The API is *extremely* unstable. 
 
 ## Setup
 
-> This guide is currently optimised for usage with [sku](https://github.com/seek-oss/sku). If your project has a custom build setup, you'll need some extra guidance from project contributors to configure your bundler.
+> This guide is currently optimised for usage with [sku](https://github.com/seek-oss/sku), since it's configured to support Braid out of the box. If your project has a custom build setup, you'll need some extra guidance from project contributors to configure your bundler.
 
 In your sku project, first install this library:
 
@@ -16,15 +16,7 @@ In your sku project, first install this library:
 $ npm install --save braid-design-system
 ```
 
-Then, in [`sku.config.js`](https://github.com/seek-oss/sku/blob/master/README.md#configuration), add `braid-design-system` to your [`compilePackages`](https://github.com/seek-oss/sku/blob/master/README.md#compile-packages) list:
-
-```js
-module.exports = {
-  compilePackages: ['braid-design-system']
-};
-```
-
-Next, import the desired theme at the _very top_ of your application (e.g. `src/client.js`), before importing anything else.
+Then, import the desired theme at the _very top_ of your application (e.g. `src/client.js`), before importing anything else.
 
 **WARNING: Since the theme contains styles that may be overridden by invididual components, the theme needs to be imported first to avoid CSS ordering issues.**
 
