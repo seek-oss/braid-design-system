@@ -52,7 +52,8 @@ export default () => (
 [List of available components.](./lib/components)
 
 ## Local Development
-This project uses [yarn package manager](https://yarnpkg.com) for development dependencies.
+
+This project uses [Yarn](https://yarnpkg.com) for development dependencies.
 
 Installing with `yarn` is required to ensure dependencies match the current [yarn.lock](./yarn.lock).
 
