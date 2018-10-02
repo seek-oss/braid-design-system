@@ -54,7 +54,7 @@
     "renovate-config-seek": "0.3.0",
     "rimraf": "^2.6.2",
     "semantic-release": "^15.9.16",
-    "sku": "5.7.3",
+    "sku": "5.8.0",
     "travis-deploy-once": "^5.0.9"
   }
 }
