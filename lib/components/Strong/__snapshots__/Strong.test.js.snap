@@ -8,14 +8,6 @@ exports[`Strong Theme: jobStreet Default 1`] = `
 </strong>
 `;
 
-exports[`Strong Theme: jobStreet Default 2`] = `
-<strong
-  class="fontWeight__strong"
->
-  Children
-</strong>
-`;
-
 exports[`Strong Theme: seekAnz Default 1`] = `
 <strong
   class="fontWeight__strong"

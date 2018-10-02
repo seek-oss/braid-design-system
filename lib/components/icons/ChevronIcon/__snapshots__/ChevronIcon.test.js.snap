@@ -13,33 +13,7 @@ exports[`ChevronIcon Theme: jobStreet Default 1`] = `
 </svg>
 `;
 
-exports[`ChevronIcon Theme: jobStreet Default 2`] = `
-<svg
-  class="ChevronIcon__root Box__root borderColor__default"
-  height="20"
-  viewBox="0 0 1024 1024"
-  width="20"
->
-  <path
-    d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
-  />
-</svg>
-`;
-
 exports[`ChevronIcon Theme: jobStreet Down 1`] = `
-<svg
-  class="ChevronIcon__root Box__root borderColor__default"
-  height="20"
-  viewBox="0 0 1024 1024"
-  width="20"
->
-  <path
-    d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
-  />
-</svg>
-`;
-
-exports[`ChevronIcon Theme: jobStreet Down 2`] = `
 <svg
   class="ChevronIcon__root Box__root borderColor__default"
   height="20"
@@ -65,33 +39,7 @@ exports[`ChevronIcon Theme: jobStreet Inline 1`] = `
 </svg>
 `;
 
-exports[`ChevronIcon Theme: jobStreet Inline 2`] = `
-<svg
-  class="ChevronIcon__root Box__root borderColor__default"
-  height="16"
-  viewBox="0 0 1024 1024"
-  width="16"
->
-  <path
-    d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
-  />
-</svg>
-`;
-
 exports[`ChevronIcon Theme: jobStreet Left 1`] = `
-<svg
-  class="ChevronIcon__root ChevronIcon__left Box__root borderColor__default"
-  height="20"
-  viewBox="0 0 1024 1024"
-  width="20"
->
-  <path
-    d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
-  />
-</svg>
-`;
-
-exports[`ChevronIcon Theme: jobStreet Left 2`] = `
 <svg
   class="ChevronIcon__root ChevronIcon__left Box__root borderColor__default"
   height="20"
@@ -117,19 +65,6 @@ exports[`ChevronIcon Theme: jobStreet Right 1`] = `
 </svg>
 `;
 
-exports[`ChevronIcon Theme: jobStreet Right 2`] = `
-<svg
-  class="ChevronIcon__root ChevronIcon__right Box__root borderColor__default"
-  height="20"
-  viewBox="0 0 1024 1024"
-  width="20"
->
-  <path
-    d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
-  />
-</svg>
-`;
-
 exports[`ChevronIcon Theme: jobStreet Sized 1`] = `
 <svg
   class="ChevronIcon__root Box__root borderColor__default"
@@ -143,33 +78,7 @@ exports[`ChevronIcon Theme: jobStreet Sized 1`] = `
 </svg>
 `;
 
-exports[`ChevronIcon Theme: jobStreet Sized 2`] = `
-<svg
-  class="ChevronIcon__root Box__root borderColor__default"
-  height="24"
-  viewBox="0 0 1024 1024"
-  width="24"
->
-  <path
-    d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
-  />
-</svg>
-`;
-
 exports[`ChevronIcon Theme: jobStreet Up 1`] = `
-<svg
-  class="ChevronIcon__root ChevronIcon__up Box__root borderColor__default"
-  height="20"
-  viewBox="0 0 1024 1024"
-  width="20"
->
-  <path
-    d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
-  />
-</svg>
-`;
-
-exports[`ChevronIcon Theme: jobStreet Up 2`] = `
 <svg
   class="ChevronIcon__root ChevronIcon__up Box__root borderColor__default"
   height="20"

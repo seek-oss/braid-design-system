@@ -13,32 +13,7 @@ exports[`Text Theme: jobStreet Baseline disabled 1`] = `
 </div>
 `;
 
-exports[`Text Theme: jobStreet Baseline disabled 2`] = `
-<div
-  class="Text__block Box__root borderColor__default"
->
-  <span
-    class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__regular"
-    style="transform: none;"
-  >
-    Children
-  </span>
-</div>
-`;
-
 exports[`Text Theme: jobStreet Color 1`] = `
-<div
-  class="Text__block Box__root borderColor__default"
->
-  <span
-    class="Text__block color__positive fontFamily__body fontSize__body fontWeight__regular"
-  >
-    Children
-  </span>
-</div>
-`;
-
-exports[`Text Theme: jobStreet Color 2`] = `
 <div
   class="Text__block Box__root borderColor__default"
 >
@@ -62,31 +37,7 @@ exports[`Text Theme: jobStreet Default 1`] = `
 </div>
 `;
 
-exports[`Text Theme: jobStreet Default 2`] = `
-<div
-  class="Text__block Box__root borderColor__default"
->
-  <span
-    class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__regular"
-  >
-    Children
-  </span>
-</div>
-`;
-
 exports[`Text Theme: jobStreet List item 1`] = `
-<li
-  class="Text__block Text__listItem Box__root borderColor__default"
->
-  <span
-    class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__regular"
-  >
-    Children
-  </span>
-</li>
-`;
-
-exports[`Text Theme: jobStreet List item 2`] = `
 <li
   class="Text__block Text__listItem Box__root borderColor__default"
 >
@@ -110,31 +61,7 @@ exports[`Text Theme: jobStreet Size 1`] = `
 </div>
 `;
 
-exports[`Text Theme: jobStreet Size 2`] = `
-<div
-  class="Text__block Box__root borderColor__default"
->
-  <span
-    class="Text__block color__neutral fontFamily__body fontSize__large fontWeight__regular"
-  >
-    Children
-  </span>
-</div>
-`;
-
 exports[`Text Theme: jobStreet Weight 1`] = `
-<div
-  class="Text__block Box__root borderColor__default"
->
-  <span
-    class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__strong"
-  >
-    Children
-  </span>
-</div>
-`;
-
-exports[`Text Theme: jobStreet Weight 2`] = `
 <div
   class="Text__block Box__root borderColor__default"
 >
