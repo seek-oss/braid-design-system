@@ -47,3 +47,19 @@ exports[`BulletList Theme: seekAnz Default 1`] = `
   </li>
 </ul>
 `;
+
+exports[`BulletList Theme: seekAsia Default 1`] = `
+<ul
+  class="Box__root borderColor__default marginTop__none marginBottom__none paddingLeft__none reset__ul"
+>
+  <li>
+    Bullet
+  </li>
+  <li>
+    Bullet
+  </li>
+  <li>
+    Bullet
+  </li>
+</ul>
+`;

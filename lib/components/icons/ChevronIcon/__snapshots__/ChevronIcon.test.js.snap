@@ -272,3 +272,94 @@ exports[`ChevronIcon Theme: seekAnz Up 1`] = `
   />
 </svg>
 `;
+
+exports[`ChevronIcon Theme: seekAsia Default 1`] = `
+<svg
+  class="ChevronIcon__root Box__root borderColor__default"
+  height="20"
+  viewBox="0 0 1024 1024"
+  width="20"
+>
+  <path
+    d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
+  />
+</svg>
+`;
+
+exports[`ChevronIcon Theme: seekAsia Down 1`] = `
+<svg
+  class="ChevronIcon__root Box__root borderColor__default"
+  height="20"
+  viewBox="0 0 1024 1024"
+  width="20"
+>
+  <path
+    d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
+  />
+</svg>
+`;
+
+exports[`ChevronIcon Theme: seekAsia Inline 1`] = `
+<svg
+  class="ChevronIcon__root Box__root borderColor__default"
+  height="16"
+  viewBox="0 0 1024 1024"
+  width="16"
+>
+  <path
+    d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
+  />
+</svg>
+`;
+
+exports[`ChevronIcon Theme: seekAsia Left 1`] = `
+<svg
+  class="ChevronIcon__root ChevronIcon__left Box__root borderColor__default"
+  height="20"
+  viewBox="0 0 1024 1024"
+  width="20"
+>
+  <path
+    d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
+  />
+</svg>
+`;
+
+exports[`ChevronIcon Theme: seekAsia Right 1`] = `
+<svg
+  class="ChevronIcon__root ChevronIcon__right Box__root borderColor__default"
+  height="20"
+  viewBox="0 0 1024 1024"
+  width="20"
+>
+  <path
+    d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
+  />
+</svg>
+`;
+
+exports[`ChevronIcon Theme: seekAsia Sized 1`] = `
+<svg
+  class="ChevronIcon__root Box__root borderColor__default"
+  height="24"
+  viewBox="0 0 1024 1024"
+  width="24"
+>
+  <path
+    d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
+  />
+</svg>
+`;
+
+exports[`ChevronIcon Theme: seekAsia Up 1`] = `
+<svg
+  class="ChevronIcon__root ChevronIcon__up Box__root borderColor__default"
+  height="20"
+  viewBox="0 0 1024 1024"
+  width="20"
+>
+  <path
+    d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
+  />
+</svg>
+`;
