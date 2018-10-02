@@ -54,7 +54,7 @@
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-testing-library": "^5.1.0",
-    "renovate-config-seek": "0.3.0",
+    "renovate-config-seek": "0.4.0",
     "rimraf": "^2.6.2",
     "semantic-release": "^15.9.16",
     "sku": "5.8.1",

@@ -10484,10 +10484,10 @@ remove-trailing-separator@^1.0.1:
   resolved "https://registry.yarnpkg.com/remove-trailing-separator/-/remove-trailing-separator-1.1.0.tgz#c24bce2a283adad5bc3f58e0d48249b92379d8ef"
   integrity sha1-wkvOKig62tW8P1jg1IJJuSN52O8=
 
-renovate-config-seek@0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/renovate-config-seek/-/renovate-config-seek-0.3.0.tgz#20880d2cbbd2a79464611a186358c4472b0413df"
-  integrity sha512-ImE1p4FdZjzckrOOtcGtLJr6JdKtmQhAKjaWqeYRVGBn3n+HW0abWEInPjLCJPz4Vb685nOubnAoqN/4Xpa7/Q==
+renovate-config-seek@0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/renovate-config-seek/-/renovate-config-seek-0.4.0.tgz#d336a972c31b084b193588e9a48bfab45f2cea6f"
+  integrity sha512-RWTAsuk2ldjZVgXnzoLkN1i55OoLiaxnWJSlVGbhvtt2cVNWwyXsL8dX01GyENcUtDUKpkPatEVkexrE1iH3dw==
 
 repeat-element@^1.1.2:
   version "1.1.3"
