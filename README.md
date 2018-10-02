@@ -53,9 +53,13 @@ export default () => (
 
 ## Local Development
 
+This project uses [Yarn](https://yarnpkg.com) for development dependencies.
+
+Installing with `yarn` is required to ensure dependencies match the current [yarn.lock](./yarn.lock).
+
 ```bash
-$ npm install
-$ npm start
+$ yarn
+$ yarn start
 ```
 
 ## License

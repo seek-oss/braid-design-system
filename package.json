@@ -5,7 +5,7 @@
   "main": "lib/components/index.js",
   "sideEffects": false,
   "scripts": {
-    "test": "npm run lint && CI=true npm run unit && npm run build",
+    "test": "yarn check --integrity && npm run lint && CI=true npm run unit && npm run build",
     "unit": "sku test",
     "build": "rimraf docs/dist && sku build",
     "start": "sku start",
@@ -37,8 +37,10 @@
   "dependencies": {
     "basekick": "^3.0.0",
     "classnames": "^2.2.6",
-    "prop-types": "^15.6.2",
-    "react": "^16.5.2"
+    "prop-types": "^15.6.2"
+  },
+  "peerDependencies": {
+    "react": "^16.0.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^7.1.2",
@@ -49,7 +51,8 @@
     "deep-keys": "^0.5.0",
     "husky": "^1.0.1",
     "lodash": "^4.17.11",
-    "react-dom": "16.5.2",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
     "react-testing-library": "^5.1.0",
     "renovate-config-seek": "0.3.0",
     "rimraf": "^2.6.2",
