@@ -23,3 +23,15 @@ exports[`FieldLabel Theme: seekAnz Default 1`] = `
   </span>
 </label>
 `;
+
+exports[`FieldLabel Theme: seekAsia Default 1`] = `
+<label
+  class="Text__block Box__root borderColor__default"
+>
+  <span
+    class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__strong"
+  >
+    Label
+  </span>
+</label>
+`;
