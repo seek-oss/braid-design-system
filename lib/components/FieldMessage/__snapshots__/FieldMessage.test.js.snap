@@ -31,7 +31,59 @@ exports[`FieldMessage Theme: jobStreet Critical 1`] = `
 </div>
 `;
 
+exports[`FieldMessage Theme: jobStreet Critical 2`] = `
+<div
+  class="Text__block Box__root borderColor__default paddingBottom__small"
+  tabindex="-1"
+>
+  <span
+    class="Text__block color__critical fontFamily__body fontSize__body fontWeight__regular"
+  >
+    <div
+      class="FieldMessage__content"
+    >
+      <svg
+        class="FieldMessage__icon marginRight__smaller fill__critical Box__root borderColor__default"
+        height="20"
+        viewBox="0 0 512 512"
+        width="20"
+      >
+        <path
+          d="M489.308 156.341c-12.902-30.484-31.355-57.856-54.861-81.357-23.512-23.501-50.883-41.959-81.377-54.855-31.575-13.353-65.106-20.122-99.65-20.122s-68.066 6.769-99.635 20.122c-30.484 12.902-57.856 31.35-81.357 54.851-23.511 23.501-41.968 50.877-54.865 81.357-13.342 31.575-20.122 65.111-20.122 99.656 0 34.56 6.774 68.080 20.122 99.656 12.902 30.485 31.36 57.856 54.861 81.367s50.877 41.959 81.357 54.856c31.575 13.348 65.096 20.122 99.635 20.122 34.56 0 68.081-6.759 99.656-20.122 30.485-12.902 57.856-31.35 81.372-54.856 23.5-23.5 41.964-50.883 54.861-81.367 13.368-31.58 20.137-65.106 20.137-99.661 0-34.544-6.774-68.076-20.132-99.645zM232.99 371.167h41.334c3.687 0 6.687 2.995 6.687 6.692v41.063c0 3.702-2.995 6.697-6.692 6.697h-41.339c-3.696 0-6.692-2.995-6.692-6.692v-41.063c0-3.702 2.99-6.697 6.686-6.697zM226.304 312.051v-219.587c0-3.697 2.99-6.692 6.686-6.692h41.063c3.707 0 6.707 3 6.707 6.697v219.587c0 3.697-3 6.692-6.707 6.692h-41.063c-3.696 0-6.692-3-6.692-6.692z"
+        />
+      </svg>
+      <div
+        style="min-height: 20px;"
+      >
+        Message
+      </div>
+    </div>
+  </span>
+</div>
+`;
+
 exports[`FieldMessage Theme: jobStreet Default 1`] = `
+<div
+  class="Text__block Box__root borderColor__default paddingBottom__small"
+  tabindex="-1"
+>
+  <span
+    class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__regular"
+  >
+    <div
+      class="FieldMessage__content"
+    >
+      <div
+        style="min-height: 20px;"
+      >
+        Message
+      </div>
+    </div>
+  </span>
+</div>
+`;
+
+exports[`FieldMessage Theme: jobStreet Default 2`] = `
 <div
   class="Text__block Box__root borderColor__default paddingBottom__small"
   tabindex="-1"
@@ -71,9 +123,61 @@ exports[`FieldMessage Theme: jobStreet Empty 1`] = `
 </div>
 `;
 
+exports[`FieldMessage Theme: jobStreet Empty 2`] = `
+<div
+  class="Text__block Box__root borderColor__default paddingBottom__small"
+  tabindex="-1"
+>
+  <span
+    class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__regular"
+  >
+    <div
+      class="FieldMessage__content"
+    >
+      <div
+        style="min-height: 20px;"
+      />
+    </div>
+  </span>
+</div>
+`;
+
 exports[`FieldMessage Theme: jobStreet False 1`] = `null`;
 
+exports[`FieldMessage Theme: jobStreet False 2`] = `null`;
+
 exports[`FieldMessage Theme: jobStreet Positive 1`] = `
+<div
+  class="Text__block Box__root borderColor__default paddingBottom__small"
+  tabindex="-1"
+>
+  <span
+    class="Text__block color__positive fontFamily__body fontSize__body fontWeight__regular"
+  >
+    <div
+      class="FieldMessage__content"
+    >
+      <svg
+        class="FieldMessage__icon marginRight__smaller fill__positive Box__root borderColor__default"
+        height="20"
+        viewBox="0 0 16 16"
+        width="20"
+      >
+        <path
+          d="M8 .5C3.86.5.5 3.858.5 8c0 4.142 3.358 7.5 7.5 7.5 4.142 0 7.5-3.358 7.5-7.5C15.5 3.858 12.142.5 8 .5zm4.47 5.328l-5.59 5.98c-.14.152-.34.238-.546.238-.208 0-.405-.086-.547-.237L3.537 9.41c-.284-.303-.268-.777.034-1.06.303-.283.777-.27 1.062.033l1.7 1.814 5.042-5.397c.282-.303.758-.318 1.06-.036.302.284.32.758.036 1.06z"
+        />
+      </svg>
+      <div
+        style="min-height: 20px;"
+      >
+        Message
+      </div>
+    </div>
+  </span>
+</div>
+`;
+
+exports[`FieldMessage Theme: jobStreet Positive 2`] = `
 <div
   class="Text__block Box__root borderColor__default paddingBottom__small"
   tabindex="-1"

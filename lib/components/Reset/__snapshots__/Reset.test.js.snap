@@ -9,6 +9,15 @@ exports[`Reset Theme: jobStreet Component 1`] = `
 </span>
 `;
 
+exports[`Reset Theme: jobStreet Component 2`] = `
+<span
+  class=""
+  data-custom="component"
+>
+  Children
+</span>
+`;
+
 exports[`Reset Theme: jobStreet Known element 1`] = `
 <section
   class="reset__section"
@@ -17,7 +26,23 @@ exports[`Reset Theme: jobStreet Known element 1`] = `
 </section>
 `;
 
+exports[`Reset Theme: jobStreet Known element 2`] = `
+<section
+  class="reset__section"
+>
+  Children
+</section>
+`;
+
 exports[`Reset Theme: jobStreet Unknown element 1`] = `
+<custom-element
+  classname=""
+>
+  Children
+</custom-element>
+`;
+
+exports[`Reset Theme: jobStreet Unknown element 2`] = `
 <custom-element
   classname=""
 >

@@ -13,6 +13,19 @@ exports[`Bullet Theme: jobStreet Default 1`] = `
 </li>
 `;
 
+exports[`Bullet Theme: jobStreet Default 2`] = `
+<li
+  class="Text__block Text__listItem Box__root borderColor__default paddingBottom__smaller"
+  style="margin-left: 1.3em;"
+>
+  <span
+    class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__regular"
+  >
+    Bullet
+  </span>
+</li>
+`;
+
 exports[`Bullet Theme: seekAnz Default 1`] = `
 <li
   class="Text__block Text__listItem Box__root borderColor__default paddingBottom__smaller"

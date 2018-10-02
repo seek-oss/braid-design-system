@@ -16,6 +16,22 @@ exports[`BulletList Theme: jobStreet Default 1`] = `
 </ul>
 `;
 
+exports[`BulletList Theme: jobStreet Default 2`] = `
+<ul
+  class="Box__root borderColor__default marginTop__none marginBottom__none paddingLeft__none reset__ul"
+>
+  <li>
+    Bullet
+  </li>
+  <li>
+    Bullet
+  </li>
+  <li>
+    Bullet
+  </li>
+</ul>
+`;
+
 exports[`BulletList Theme: seekAnz Default 1`] = `
 <ul
   class="Box__root borderColor__default marginTop__none marginBottom__none paddingLeft__none reset__ul"
