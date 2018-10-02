@@ -21,9 +21,6 @@
       "path": "./node_modules/cz-conventional-changelog"
     }
   },
-  "release": {
-    "success": false
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/seek-oss/braid-design-system.git"
