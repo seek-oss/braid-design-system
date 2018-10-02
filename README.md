@@ -13,7 +13,7 @@ _**NOTE:** This project is currently in alpha. The API is *extremely* unstable. 
 In your sku project, first install this library:
 
 ```bash
-$ npm install --save braid-design-system react react-dom
+$ npm install --save braid-design-system
 ```
 
 Then, in [`sku.config.js`](https://github.com/seek-oss/sku/blob/master/README.md#configuration), add `braid-design-system` to your [`compilePackages`](https://github.com/seek-oss/sku/blob/master/README.md#compile-packages) list:
