@@ -11066,10 +11066,10 @@ sisteransi@^0.1.1:
   resolved "https://registry.yarnpkg.com/sisteransi/-/sisteransi-0.1.1.tgz#5431447d5f7d1675aac667ccd0b865a4994cb3ce"
   integrity sha512-PmGOd02bM9YO5ifxpw36nrNMBTptEtfRl4qUYl9SndkolplkrZZOW7PGHjrZL53QvMVj9nQ+TKqUnRsw4tJa4g==
 
-sku@5.8.1:
-  version "5.8.1"
-  resolved "https://registry.yarnpkg.com/sku/-/sku-5.8.1.tgz#8ae6d75de223548a1d4ecf0fabc5623a53fca279"
-  integrity sha512-sXLqb9wusm3F2hx4or/kWuEh778tfq7HMe3ltwf7x2p98QPM1cnbC2ab1R5gX/Nc7QS1fxN/NpJVWHLT44BsPg==
+sku@5.9.0:
+  version "5.9.0"
+  resolved "https://registry.yarnpkg.com/sku/-/sku-5.9.0.tgz#42eba571afe5fe5b382131f0fa0093d3587fb51b"
+  integrity sha512-1WPl27YMIj1FfHNtnT7emLVuaDOaTUV3vXSAWIXsHR+vQRcfzec6eeXM9rPUhqXkzzJlFvLX2rGSAaAM4WdGcg==
   dependencies:
     autoprefixer "^7.1.5"
     babel-core "^6.26.3"
