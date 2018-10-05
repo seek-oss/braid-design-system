@@ -7,7 +7,7 @@
   "scripts": {
     "test": "yarn check --integrity && npm run lint && CI=true npm run unit && npm run build",
     "unit": "sku test",
-    "build": "rimraf docs/dist && sku build",
+    "build": "sku build",
     "start": "sku start",
     "lint": "sku lint",
     "format": "sku format",
@@ -52,9 +52,8 @@
     "react-dom": "^16.5.2",
     "react-testing-library": "^5.1.0",
     "renovate-config-seek": "0.4.0",
-    "rimraf": "^2.6.2",
     "semantic-release": "^15.9.16",
-    "sku": "5.9.0",
+    "sku": "5.10.1",
     "travis-deploy-once": "^5.0.9"
   }
 }
