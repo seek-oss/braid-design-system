@@ -4442,6 +4442,11 @@ es6-promisify@^5.0.0:
   dependencies:
     es6-promise "^4.0.3"
 
+es6-promisify@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/es6-promisify/-/es6-promisify-6.0.0.tgz#b526a75eaa5ca600e960bf3d5ad98c40d75c7203"
+  integrity sha512-8Tbqjrb8lC85dd81haajYwuRmiU2rkqNAFnlvQOJeeKqdUloIlI+JcUqeJruV4rCm5Y7oNU7jfs2FbmxhRR/2g==
+
 es6-symbol@^3.1.1, es6-symbol@~3.1.1:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/es6-symbol/-/es6-symbol-3.1.1.tgz#bf00ef4fdab6ba1b46ecb7b629b4c7ed5715cc77"
@@ -11066,10 +11071,10 @@ sisteransi@^0.1.1:
   resolved "https://registry.yarnpkg.com/sisteransi/-/sisteransi-0.1.1.tgz#5431447d5f7d1675aac667ccd0b865a4994cb3ce"
   integrity sha512-PmGOd02bM9YO5ifxpw36nrNMBTptEtfRl4qUYl9SndkolplkrZZOW7PGHjrZL53QvMVj9nQ+TKqUnRsw4tJa4g==
 
-sku@5.9.0:
-  version "5.9.0"
-  resolved "https://registry.yarnpkg.com/sku/-/sku-5.9.0.tgz#42eba571afe5fe5b382131f0fa0093d3587fb51b"
-  integrity sha512-1WPl27YMIj1FfHNtnT7emLVuaDOaTUV3vXSAWIXsHR+vQRcfzec6eeXM9rPUhqXkzzJlFvLX2rGSAaAM4WdGcg==
+sku@5.10.1:
+  version "5.10.1"
+  resolved "https://registry.yarnpkg.com/sku/-/sku-5.10.1.tgz#0f07775ed138d42588c83c963dbeb4b97adf8ebb"
+  integrity sha512-Jv+DpzznhkGN+62dZ+fvfbQXttJMpCvKGOZWJcp2hdkoTO4Pc9w9SOnEcqWc8StZQf8+31bt8tw+IRnHyNK4Yw==
   dependencies:
     autoprefixer "^7.1.5"
     babel-core "^6.26.3"
@@ -11099,6 +11104,7 @@ sku@5.9.0:
     debug "^4.0.1"
     dedent "^0.7.0"
     empty-dir "^1.0.0"
+    es6-promisify "^6.0.0"
     eslint "^4.13.1"
     eslint-config-seek "^3.1.0"
     express "^4.16.3"
@@ -11120,6 +11126,7 @@ sku@5.9.0:
     prettier "1.14.2"
     raw-loader "^0.5.1"
     react-hot-loader "^3.1.3"
+    rimraf "^2.6.2"
     start-server-webpack-plugin "^2.2.5"
     static-site-generator-webpack-plugin "^3.4.1"
     string-replace-loader "^2.1.1"
