@@ -1,4 +1,7 @@
 export default {
+  ':global(html), :global(body)': {
+    margin: 0
+  },
   '.container': {
     display: 'flex',
     flexDirection: 'column',
