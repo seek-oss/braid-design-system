@@ -5,7 +5,7 @@
 
     const { GH_TOKEN, TRAVIS_PULL_REQUEST_SHA } = process.env;
 
-    if (!GH_TOKEN && !TRAVIS_PULL_REQUEST_SHA) {
+    if (!GH_TOKEN || !TRAVIS_PULL_REQUEST_SHA) {
       throw new Error(
         'GH_TOKEN and TRAVIS_PULL_REQUEST_SHA environment variables must be present'
       );
