@@ -1,105 +1,73 @@
-import { jobStreet, seekAnz, seekAsia } from '../../../lib/themes';
+// Needs to be imported before 'prop-types'
+import 'parse-prop-types';
+
+// Import all themes up front so CSS overrides work
+import * as themes from '../../../lib/themes';
+import * as components from '../../../lib/components';
 import React, { Component } from 'react';
-import {
-  ThemeProvider,
-  Text,
-  Alert,
-  ChecklistCard,
-  Checkbox,
-  Box
-} from '../../../lib/components';
+import { Route } from 'react-router';
+import { Link } from 'react-router-dom';
+import Logo from './Logo/Logo';
+import ComponentRoute from './ComponentRoute/ComponentRoute';
+import styles from './App.css.js';
 
-const themes = [jobStreet, seekAnz, seekAsia];
-const themeNames = Object.keys(themes);
-
-const noop = () => {};
+const { ThemeProvider, Text, Box, BulletList, Bullet } = components;
 
 export default class App extends Component {
-  constructor() {
-    super();
-
-    this.state = {
-      themeIndex: 0
-    };
-  }
-
-  toggleTheme = () => {
-    this.setState(state => ({
-      themeIndex: (state.themeIndex + 1) % themeNames.length
-    }));
-  };
-
   render() {
-    const { themeIndex } = this.state;
-
     return (
-      <ThemeProvider theme={themes[themeNames[themeIndex]]}>
-        <div style={{ maxWidth: 600, margin: '0 auto' }}>
-          <Box
-            paddingLeft="gutter"
-            paddingRight="gutter"
-            paddingTop="large"
-            paddingBottom="large"
-          >
-            <button onClick={this.toggleTheme}>Toggle theme</button>
-          </Box>
-          <Alert tone="critical" marginBottom="small">
-            This is a critical error.
-          </Alert>
-          <Alert tone="info" marginBottom="larger">
-            This is a piece of information that we'd like to bring to your
-            attention. If you miss it, it's not the end of the world.
-          </Alert>
-          <Box paddingLeft="gutter" paddingRight="gutter">
-            <Checkbox
-              id="1"
-              label="I agree to the terms and conditions"
-              tone="critical"
-              message="You must agree to continue"
-              checked={false}
-              onChange={noop}
-            />
-          </Box>
-          <ChecklistCard borderWidth="standard" marginTop="large">
-            <Checkbox
-              id="2"
-              label="Hello world"
-              message={false}
-              checked
-              onChange={noop}
+      <ThemeProvider theme={themes.wireframe}>
+        <Box
+          paddingTop="large"
+          paddingBottom="smaller"
+          paddingLeft="gutter"
+          paddingRight="gutter"
+        >
+          <Link to="/" style={{ display: 'inline-block' }}>
+            <Logo />
+          </Link>
+        </Box>
+        <div className={styles.container}>
+          <div className={styles.nav}>
+            <Box
+              paddingTop="small"
+              paddingBottom="small"
+              paddingLeft="gutter"
+              paddingRight="gutter"
             >
-              <Text>Hello!</Text>
-            </Checkbox>
-            <Checkbox
-              id="3"
-              label="Oh no"
-              message={false}
-              onChange={noop}
-              checked={false}
-              disabled
+              <Text size="large" weight="strong" marginBottom="small">
+                Components
+              </Text>
+              <BulletList>
+                {Object.keys(components)
+                  .filter(x => !/icon/i.test(x))
+                  .sort()
+                  .map(componentName => (
+                    <Bullet key={componentName}>
+                      <Link
+                        style={{ color: 'inherit' }}
+                        to={`/components/${componentName}`}
+                      >
+                        {componentName}
+                      </Link>
+                    </Bullet>
+                  ))}
+              </BulletList>
+            </Box>
+          </div>
+          <div className={styles.content}>
+            <Box
+              paddingLeft="gutter"
+              paddingRight="gutter"
+              paddingTop="small"
+              paddingBottom="larger"
             >
-              <Text>I'm leg disabled!</Text>
-            </Checkbox>
-            <Checkbox
-              id="3"
-              label="Hello world"
-              message="Oops, something went wrong!"
-              tone="critical"
-              checked={false}
-              onChange={noop}
-            >
-              <Text>Hello!</Text>
-            </Checkbox>
-            <Checkbox
-              id="4"
-              label="Hello world"
-              message={false}
-              checked={false}
-              onChange={noop}
-            >
-              <Text>Hello!</Text>
-            </Checkbox>
-          </ChecklistCard>
+              <Route
+                path="/components/:componentName"
+                component={ComponentRoute}
+              />
+            </Box>
+          </div>
         </div>
       </ThemeProvider>
     );

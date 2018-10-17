@@ -7,7 +7,8 @@
   "scripts": {
     "test": "yarn check --integrity && npm run lint && CI=true npm run unit && npm run build",
     "unit": "sku test",
-    "build": "sku build",
+    "build": "sku build && rm docs/dist/render.js",
+    "deploy": "node scripts/deploy.js",
     "start": "sku start",
     "lint": "sku lint",
     "format": "sku format",
@@ -46,14 +47,19 @@
     "cz-conventional-changelog": "^2.1.0",
     "dedent": "0.7.0",
     "deep-keys": "^0.5.0",
+    "gh-pages": "^2.0.1",
     "husky": "^1.0.1",
     "lodash": "^4.17.11",
+    "parse-prop-types": "^0.3.0",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
+    "react-element-to-jsx-string": "^14.0.1",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
     "react-testing-library": "^5.1.0",
     "renovate-config-seek": "0.4.0",
     "semantic-release": "^15.9.16",
-    "sku": "5.10.1",
+    "sku": "5.12.0",
     "travis-deploy-once": "^5.0.9"
   }
 }

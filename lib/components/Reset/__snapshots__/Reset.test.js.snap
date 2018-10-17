@@ -74,3 +74,28 @@ exports[`Reset Theme: seekAsia Unknown element 1`] = `
   Children
 </custom-element>
 `;
+
+exports[`Reset Theme: wireframe Component 1`] = `
+<span
+  class=""
+  data-custom="component"
+>
+  Children
+</span>
+`;
+
+exports[`Reset Theme: wireframe Known element 1`] = `
+<section
+  class="reset__section"
+>
+  Children
+</section>
+`;
+
+exports[`Reset Theme: wireframe Unknown element 1`] = `
+<custom-element
+  classname=""
+>
+  Children
+</custom-element>
+`;

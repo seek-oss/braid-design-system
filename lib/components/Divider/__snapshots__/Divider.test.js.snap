@@ -29,3 +29,13 @@ exports[`Divider Theme: seekAsia Default 1`] = `
   />
 </div>
 `;
+
+exports[`Divider Theme: wireframe Default 1`] = `
+<div
+  class="Divider__root Box__root borderColor__default"
+>
+  <div
+    class="Divider__divider borderWidth__standard borderColor__standard"
+  />
+</div>
+`;

@@ -5,7 +5,15 @@ notifications:
 before_script:
   - npm prune
 after_success:
-  - npm run travis-deploy-once "npm run semantic-release"
+  - if [ ${TRAVIS_SECURE_ENV_VARS} = "true" ]; then
+      if [ "$TRAVIS_BRANCH" == "master" ]; then
+        npm run travis-deploy-once "npm run semantic-release";
+
+        git config --global user.name "seek-oss-ci";
+        git config --global user.email "opensource@seek.com.au";
+        npm run travis-deploy-once "npm run deploy";
+      fi
+    fi
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
