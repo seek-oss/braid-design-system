@@ -23,8 +23,9 @@
       repo: 'braid-design-system',
       sha: TRAVIS_PULL_REQUEST_SHA,
       state: 'success',
-      context: 'Preview deployment',
-      target_url: `https://braid-design-system--${TRAVIS_PULL_REQUEST_SHA}.surge.sh`
+      context: 'Preview Site',
+      target_url: `https://braid-design-system--${TRAVIS_PULL_REQUEST_SHA}.surge.sh`,
+      description: 'The preview for this PR has been successfully deployed'
     });
 
     console.log('Successfully posted commit status to GitHub');
