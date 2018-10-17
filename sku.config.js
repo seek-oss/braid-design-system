@@ -1,3 +1,5 @@
+const isPullRequest = !!process.env.TRAVIS_PULL_REQUEST_SHA;
+
 module.exports = {
   srcPaths: ['lib', 'docs/src', 'scripts'],
   entry: {
@@ -6,11 +8,11 @@ module.exports = {
   },
   public: 'docs/src/public',
   target: 'docs/dist',
-  publicPath: '/braid-design-system/',
+  publicPath: isPullRequest ? '/' : '/braid-design-system/',
   env: {
     ROUTER_BASENAME: {
       development: '',
-      production: 'braid-design-system'
+      production: isPullRequest ? '' : 'braid-design-system'
     }
   }
 };
