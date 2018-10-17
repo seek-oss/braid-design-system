@@ -1,4 +1,6 @@
-const isGitHubPages = process.env.TRAVIS_BRANCH === 'master';
+const isGitHubPages =
+  process.env.TRAVIS_BRANCH === 'master' &&
+  !process.env.TRAVIS_PULL_REQUEST_SHA;
 
 module.exports = {
   srcPaths: ['lib', 'docs/src', 'scripts'],
