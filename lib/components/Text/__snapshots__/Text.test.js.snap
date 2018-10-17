@@ -218,3 +218,76 @@ exports[`Text Theme: seekAsia Weight 1`] = `
   </span>
 </div>
 `;
+
+exports[`Text Theme: wireframe Baseline disabled 1`] = `
+<div
+  class="Text__block Box__root borderColor__default"
+>
+  <span
+    class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__regular"
+    style="transform: none;"
+  >
+    Children
+  </span>
+</div>
+`;
+
+exports[`Text Theme: wireframe Color 1`] = `
+<div
+  class="Text__block Box__root borderColor__default"
+>
+  <span
+    class="Text__block color__positive fontFamily__body fontSize__body fontWeight__regular"
+  >
+    Children
+  </span>
+</div>
+`;
+
+exports[`Text Theme: wireframe Default 1`] = `
+<div
+  class="Text__block Box__root borderColor__default"
+>
+  <span
+    class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__regular"
+  >
+    Children
+  </span>
+</div>
+`;
+
+exports[`Text Theme: wireframe List item 1`] = `
+<li
+  class="Text__block Text__listItem Box__root borderColor__default"
+>
+  <span
+    class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__regular"
+  >
+    Children
+  </span>
+</li>
+`;
+
+exports[`Text Theme: wireframe Size 1`] = `
+<div
+  class="Text__block Box__root borderColor__default"
+>
+  <span
+    class="Text__block color__neutral fontFamily__body fontSize__large fontWeight__regular"
+  >
+    Children
+  </span>
+</div>
+`;
+
+exports[`Text Theme: wireframe Weight 1`] = `
+<div
+  class="Text__block Box__root borderColor__default"
+>
+  <span
+    class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__strong"
+  >
+    Children
+  </span>
+</div>
+`;

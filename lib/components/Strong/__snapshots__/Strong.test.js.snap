@@ -23,3 +23,11 @@ exports[`Strong Theme: seekAsia Default 1`] = `
   Children
 </strong>
 `;
+
+exports[`Strong Theme: wireframe Default 1`] = `
+<strong
+  class="fontWeight__strong"
+>
+  Children
+</strong>
+`;

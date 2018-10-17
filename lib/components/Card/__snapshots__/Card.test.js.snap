@@ -23,3 +23,11 @@ exports[`Card Theme: seekAsia Default 1`] = `
   Children
 </div>
 `;
+
+exports[`Card Theme: wireframe Default 1`] = `
+<div
+  class="Box__root backgroundColor__card borderColor__default marginBottom__medium"
+>
+  Children
+</div>
+`;
