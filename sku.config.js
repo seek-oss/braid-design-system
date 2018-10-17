@@ -1,4 +1,4 @@
-const isPullRequest = !!process.env.TRAVIS_PULL_REQUEST_SHA;
+const isGitHubPages = process.env.TRAVIS_BRANCH === 'master';
 
 module.exports = {
   srcPaths: ['lib', 'docs/src', 'scripts'],
@@ -8,11 +8,11 @@ module.exports = {
   },
   public: 'docs/src/public',
   target: 'docs/dist',
-  publicPath: isPullRequest ? '/' : '/braid-design-system/',
+  publicPath: isGitHubPages ? '/braid-design-system/' : '/',
   env: {
     ROUTER_BASENAME: {
       development: '',
-      production: isPullRequest ? '' : 'braid-design-system'
+      production: isGitHubPages ? 'braid-design-system' : ''
     }
   }
 };
