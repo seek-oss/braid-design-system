@@ -1,0 +1,1075 @@
+._179vl4f1 {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+._179vl4f1::before {
+  content: "";
+  flex: 1;
+}
+._179vl4f1::after {
+  content: "";
+  flex: 1;
+}
+._179vl4f5 {
+  flex-grow: 1;
+}
+._179vl4f7:not(:hover) {
+  opacity: 0.8;
+}
+._179vl4f9 {
+  flex: 0 0 30px;
+  height: 30px;
+  margin-bottom: -10px;
+}
+._179vl4f3:not(:hover) ._179vl4f9 {
+  opacity: 0.3;
+}
+.rjbp4k1 {
+  color: var(--_11oz4tay);
+  font-family: var(--_11oz4ta0);
+}
+.rjbp4k2 {
+  font-size: 36px;
+}
+.rjbp4k3 {
+  font-size: 24px;
+}
+.rjbp4k4 {
+  font-size: 16px;
+}
+._1dhlkyg2 {
+  border-top: 1px solid var(--_11oz4ta1c);
+}
+._11r6h841:not(:last-child) {
+  padding-bottom: var(--_11r6h840);
+}
+._11r6h842 {
+  --_11r6h840: var(--_11oz4ta8);
+}
+._11r6h843 {
+  --_11r6h840: calc(var(--_11oz4ta8) * 2);
+}
+._11r6h844 {
+  --_11r6h840: calc(var(--_11oz4ta8) * 3);
+}
+._11r6h845 {
+  --_11r6h840: calc(var(--_11oz4ta8) * 4);
+}
+._11r6h846 {
+  --_11r6h840: calc(var(--_11oz4ta8) * 6);
+}
+._11r6h847 {
+  --_11r6h840: calc(var(--_11oz4ta8) * 12);
+}
+._77pods2 {
+  color: currentColor;
+  background-color: transparent;
+  outline: none;
+  text-decoration: underline;
+  margin: calc(var(--_11oz4tal) * -1);
+}
+._77pods2::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: var(--_11oz4tab);
+  box-shadow: var(--_11oz4ta1e);
+  cursor: pointer;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: var(--_11oz4tag);
+}
+._77pods2:focus::before, ._77pods2:hover::before {
+  opacity: 1;
+  transform: scale(1);
+}
+._77pods4 {
+  height: calc(var(--_11oz4ta8) * 9);
+}
+._77pods6 {
+  height: 20px;
+  width: 20px;
+}
+._77pods8 {
+  flex-grow: 0;
+  flex-shrink: 0;
+  height: calc(20px - (var(--_11oz4taj) * 2));
+  width: calc(20px - (var(--_11oz4taj) * 2));
+}
+._77pods8::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: var(--_11oz4taa);
+  box-shadow: var(--_11oz4ta1e);
+  transition: var(--_11oz4tag);
+  opacity: 0;
+  transform: scale(0.5);
+}
+._77pods8::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: var(--_11oz4taa);
+  box-shadow: inset 0 0 0px 1px currentColor;
+  background: var(--_11oz4ta19);
+}
+._77pods6:hover:not(:focus) ~ ._77pods8::before, ._77pods6:focus ~ ._77pods8::before {
+  opacity: 1;
+  transform: scale(1);
+}
+._77pods8 > svg {
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transform: scale(0.6);
+  transition: var(--_11oz4tah);
+  transition-delay: 0.1s, 0.3s;
+  z-index: 1;
+}
+._77pods6:checked ~ ._77pods8 > svg  {
+  opacity: 1;
+  transform: none;
+  transition: var(--_11oz4tah);
+}
+._1q7vzik0 {
+  transition: var(--_11oz4tag);
+  transform-origin: 50% 50%;
+}
+._1q7vzik1 {
+  transform: rotate(90deg);
+}
+._1q7vzik2 {
+  transform: rotate(180deg);
+}
+._1q7vzik3 {
+  transform: rotate(270deg);
+}
+._1ta0ccy4 {
+  min-width: 0;
+}
+._1ta0ccy5 {
+  flex-shrink: 0;
+}
+._1ta0ccy9 {
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+}
+._1ta0ccy7:focus:not(:hover) ~ ._1ta0ccy9 {
+  opacity: 1;
+}
+._15eamwh1 {
+  background: transparent;
+  outline: none;
+  text-decoration: none;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  height: var(--_11oz4tae);
+  -webkit-tap-highlight-color: transparent;
+}
+._15eamwh4 {
+  --_15eamwh2: currentColor;
+  color: var(--_15eamwh2);
+  border: 1px solid var(--_11oz4tax);
+  height: calc(var(--_11oz4ta8) * 9);
+}
+._15eamwh4:hover {
+  --_15eamwh2: var(--_11oz4ta12);
+  border-color: var(--_15eamwh2);
+}
+._15eamwh4:active {
+  transform: scale(0.98);
+}
+._15eamwh4::after {
+  content: "";
+  position: absolute;
+  transform: translateY(-50%);
+  min-height: var(--_11oz4tae);
+  min-width: var(--_11oz4tae);
+  left: calc((var(--_11oz4ta8) * 2) * -1);
+  right: calc((var(--_11oz4ta8) * 2) * -1);
+  height: 100%;
+  top: 50%;
+}
+._15eamwh4:focus:not(:active):not(:hover):not([disabled]) {
+  box-shadow: var(--_11oz4ta1e);
+}
+._15eamwh5 {
+  --_15eamwh2: var(--_11oz4ta13) !important;
+  border-color: var(--_15eamwh2);
+}
+._15eamwh7 {
+  top: 1px;
+}
+.z54rkl2 {
+  margin-top: calc(var(--z54rkl0) * -1);
+  margin-left: calc(var(--z54rkl0) * -1);
+}
+.z54rkl3 {
+  padding-top: var(--z54rkl0);
+  padding-left: var(--z54rkl0);
+}
+.z54rkl4 {
+  --z54rkl0: var(--_11oz4ta8);
+}
+.z54rkl5 {
+  --z54rkl0: calc(var(--_11oz4ta8) * 2);
+}
+.z54rkl6 {
+  --z54rkl0: calc(var(--_11oz4ta8) * 3);
+}
+.z54rkl7 {
+  --z54rkl0: calc(var(--_11oz4ta8) * 4);
+}
+.z54rkl8 {
+  --z54rkl0: calc(var(--_11oz4ta8) * 5);
+}
+.z54rkl9 {
+  --z54rkl0: calc(var(--_11oz4ta8) * 6);
+}
+._93pla71 {
+  color: var(--_11oz4tay);
+  height: var(--_11oz4tae);
+  background: var(--_11oz4ta19);
+}
+._93pla71:focus {
+  outline: none;
+}
+._93pla71::placeholder {
+  color: var(--_11oz4tax);
+}
+._1xndul85 {
+  outline: none;
+  height: 60px;
+  width: 60px;
+  color: currentColor;
+  background-color: var(--_11oz4ta19);
+  -webkit-tap-highlight-color: transparent;
+}
+._1xndul85::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--_11oz4ta1b);
+  opacity: 0;
+  transition: var(--_11oz4taf);
+  pointer-events: none;
+}
+._1xndul85::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 5px;
+  background-color: currentColor;
+  transition: var(--_11oz4taf);
+}
+._1xndul85._1xndul80 {
+  color: var(--_11oz4ta13);
+}
+._1xndul85:not(._1xndul81) {
+  cursor: pointer;
+}
+._1xndul85._1xndul81 {
+  color: var(--_11oz4tax);
+}
+._1xndul85._1xndul82,._1xndul85._1xndul83:not(._1xndul80):not(._1xndul81),html:not([data-playroom-dark]) ._1xndul85:hover:not(._1xndul80):not(._1xndul81) {
+  color: var(--_11oz4ta12);
+}
+._1xndul85:not(._1xndul80):not(:hover):focus::before {
+  color: var(--_11oz4tay);
+}
+._1xndul85:not(._1xndul80):not(._1xndul81):focus::before,._1xndul85:not(._1xndul80):not(._1xndul81):hover::before {
+  opacity: 1;
+}
+._1xndul85:not(._1xndul83)::after {
+  transform: translateX(100%);
+  opacity: 0;
+}
+._1xndul88 {
+  top: 12px;
+  right: 12px;
+  height: 10px;
+  width: 10px;
+  background-color: var(--_11oz4ta15);
+  border: 2px solid var(--_11oz4ta19);
+}
+._1xndul88:not(._1xndul86) {
+  transform: scale(0);
+  opacity: 0;
+}
+._1xndul8a {
+  top: 12px;
+  right: 12px;
+  height: 14px;
+  width: 14px;
+  background-color: var(--_11oz4ta13);
+  border: 2px solid var(--_11oz4ta19);
+}
+._1xndul8a:not(._1xndul86) {
+  transform: translate3d(-15px, 9px, 0) scale(0);
+  opacity: 0;
+}
+._1xndul8a svg {
+  color: var(--_11oz4taz);
+}
+._1t8vxlh2 {
+  height: 60px;
+  box-shadow: inset 0 -1px 0 0 var(--_11oz4ta1c);
+}
+._1t8vxlh4 {
+  top: 60px;
+}
+._1t8vxlh6 {
+  color: var(--_11oz4tay);
+  background-color: var(--_11oz4ta19);
+}
+._1t8vxlh6::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--_11oz4ta1b);
+  border-radius: var(--_11oz4taa);
+  opacity: 0;
+  transition: var(--_11oz4taf);
+  pointer-events: none;
+}
+._1t8vxlh8 {
+  color: var(--_11oz4ta10);
+}
+._1t8vxlh9 {
+  color: var(--_11oz4ta12);
+}
+._1t8vxlh9::before {
+  opacity: 1;
+}
+._1cimebe2 {
+  color: var(--_11oz4tay);
+  min-width: calc(60px + 1px);
+}
+._1cimebe2._1cimebe0 {
+  width: 100vw;
+}
+._1cimebe8 {
+  bottom: 60px;
+}
+._1cimebe8:not(._1cimebe6) {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px);
+}
+._1cimebea {
+  width: 60px;
+  background-color: var(--_11oz4ta19);
+  border-left: 1px solid var(--_11oz4ta1c);
+}
+._1cimebec {
+  width: 320px;
+  background-color: var(--_11oz4ta19);
+  border-left: 1px solid var(--_11oz4ta1c);
+}
+._1cimebe2:not(._1cimebe0) ._1cimebec {
+  transform: translateX(calc(320px * 0.3));
+  opacity: 0;
+  pointer-events: none;
+}
+._1w488112 {
+  display: flex;
+  align-items: center;
+}
+._1w488112 > *:first-child {
+  flex: 1;
+}
+._1w488112 > *:nth-child(2) {
+  flex: 0 0 43%;
+}
+._1w488114 {
+  display: inline-block;
+  background: var(--_11oz4ta18);
+  padding-left: 8px;
+  padding-right: 8px;
+  font-family: system-ui;
+  min-width: 16px;
+}
+._1w488116 {
+  height: var(--_11oz4tae);
+  width: var(--_11oz4tae);
+}
+._1w488119 {
+  height: var(--_11oz4tae);
+  width: var(--_11oz4tae);
+}
+._1w488119::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--_11oz4ta1b);
+  border-radius: var(--_11oz4tab);
+  transition: var(--_11oz4tag);
+  opacity: 0;
+  transform: scale(0.8);
+}
+._1w488116:checked ~ ._1w488119,html:not([data-playroom-dark]) ._1w488116:hover ~ ._1w488119 {
+  color: var(--_11oz4ta12);
+}
+._1w488116:focus ~ ._1w488119::before, ._1w488116:hover ~ ._1w488119::before {
+  opacity: 1;
+  transform: scale(1);
+}
+._1brvior5 {
+  padding: 0 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  top: calc(var(--_11oz4ta8) * 5);
+  height: calc(var(--_11oz4ta8) * 8);
+  max-width: calc((100vw - 60px) - (var(--_11oz4tad) * 2));
+}
+._1brvior5._1brvior0 {
+  padding-right: calc((15px * 2) + 16px);
+}
+._1brvior5:not(._1brvior1) {
+  opacity: 0;
+  pointer-events: none;
+  transform: translate3d(-50%, -10px, 0);
+}
+._1brvior5._1brvior2 {
+  background-color: var(--_11oz4ta16);
+}
+._1brvior5._1brvior3 {
+  background-color: var(--_11oz4ta17);
+}
+._1brvior7 {
+  padding-left: 15px;
+  right: 15px;
+  height: 16px;
+  width: 16px;
+}
+._1brvior7:not(:hover) {
+  opacity: 0.4;
+}
+/* BASICS */
+
+.CodeMirror {
+  /* Set height, width, borders, and global font properties here */
+  font-family: monospace;
+  height: 300px;
+  color: black;
+  direction: ltr;
+}
+
+/* PADDING */
+
+.CodeMirror-lines {
+  padding: 4px 0; /* Vertical padding around content */
+}
+.CodeMirror pre.CodeMirror-line,
+.CodeMirror pre.CodeMirror-line-like {
+  padding: 0 4px; /* Horizontal padding of content */
+}
+
+.CodeMirror-scrollbar-filler, .CodeMirror-gutter-filler {
+  background-color: white; /* The little square between H and V scrollbars */
+}
+
+/* GUTTER */
+
+.CodeMirror-gutters {
+  border-right: 1px solid #ddd;
+  background-color: #f7f7f7;
+  white-space: nowrap;
+}
+.CodeMirror-linenumbers {}
+.CodeMirror-linenumber {
+  padding: 0 3px 0 5px;
+  min-width: 20px;
+  text-align: right;
+  color: #999;
+  white-space: nowrap;
+}
+
+.CodeMirror-guttermarker { color: black; }
+.CodeMirror-guttermarker-subtle { color: #999; }
+
+/* CURSOR */
+
+.CodeMirror-cursor {
+  border-left: 1px solid black;
+  border-right: none;
+  width: 0;
+}
+/* Shown when moving in bi-directional text */
+.CodeMirror div.CodeMirror-secondarycursor {
+  border-left: 1px solid silver;
+}
+.cm-fat-cursor .CodeMirror-cursor {
+  width: auto;
+  border: 0 !important;
+  background: #7e7;
+}
+.cm-fat-cursor div.CodeMirror-cursors {
+  z-index: 1;
+}
+.cm-fat-cursor .CodeMirror-line::selection,
+.cm-fat-cursor .CodeMirror-line > span::selection, 
+.cm-fat-cursor .CodeMirror-line > span > span::selection { background: transparent; }
+.cm-fat-cursor .CodeMirror-line::-moz-selection,
+.cm-fat-cursor .CodeMirror-line > span::-moz-selection,
+.cm-fat-cursor .CodeMirror-line > span > span::-moz-selection { background: transparent; }
+.cm-fat-cursor { caret-color: transparent; }
+@-moz-keyframes blink {
+  0% {}
+  50% { background-color: transparent; }
+  100% {}
+}
+@-webkit-keyframes blink {
+  0% {}
+  50% { background-color: transparent; }
+  100% {}
+}
+@keyframes blink {
+  0% {}
+  50% { background-color: transparent; }
+  100% {}
+}
+
+/* Can style cursor different in overwrite (non-insert) mode */
+.CodeMirror-overwrite .CodeMirror-cursor {}
+
+.cm-tab { display: inline-block; text-decoration: inherit; }
+
+.CodeMirror-rulers {
+  position: absolute;
+  left: 0; right: 0; top: -50px; bottom: 0;
+  overflow: hidden;
+}
+.CodeMirror-ruler {
+  border-left: 1px solid #ccc;
+  top: 0; bottom: 0;
+  position: absolute;
+}
+
+/* DEFAULT THEME */
+
+.cm-s-default .cm-header {color: blue;}
+.cm-s-default .cm-quote {color: #090;}
+.cm-negative {color: #d44;}
+.cm-positive {color: #292;}
+.cm-header, .cm-strong {font-weight: bold;}
+.cm-em {font-style: italic;}
+.cm-link {text-decoration: underline;}
+.cm-strikethrough {text-decoration: line-through;}
+
+.cm-s-default .cm-keyword {color: #708;}
+.cm-s-default .cm-atom {color: #219;}
+.cm-s-default .cm-number {color: #164;}
+.cm-s-default .cm-def {color: #00f;}
+.cm-s-default .cm-variable,
+.cm-s-default .cm-punctuation,
+.cm-s-default .cm-property,
+.cm-s-default .cm-operator {}
+.cm-s-default .cm-variable-2 {color: #05a;}
+.cm-s-default .cm-variable-3, .cm-s-default .cm-type {color: #085;}
+.cm-s-default .cm-comment {color: #a50;}
+.cm-s-default .cm-string {color: #a11;}
+.cm-s-default .cm-string-2 {color: #f50;}
+.cm-s-default .cm-meta {color: #555;}
+.cm-s-default .cm-qualifier {color: #555;}
+.cm-s-default .cm-builtin {color: #30a;}
+.cm-s-default .cm-bracket {color: #997;}
+.cm-s-default .cm-tag {color: #170;}
+.cm-s-default .cm-attribute {color: #00c;}
+.cm-s-default .cm-hr {color: #999;}
+.cm-s-default .cm-link {color: #00c;}
+
+.cm-s-default .cm-error {color: #f00;}
+.cm-invalidchar {color: #f00;}
+
+.CodeMirror-composing { border-bottom: 2px solid; }
+
+/* Default styles for common addons */
+
+div.CodeMirror span.CodeMirror-matchingbracket {color: #0b0;}
+div.CodeMirror span.CodeMirror-nonmatchingbracket {color: #a22;}
+.CodeMirror-matchingtag { background: rgba(255, 150, 0, .3); }
+.CodeMirror-activeline-background {background: #e8f2ff;}
+
+/* STOP */
+
+/* The rest of this file contains styles related to the mechanics of
+   the editor. You probably shouldn't touch them. */
+
+.CodeMirror {
+  position: relative;
+  overflow: hidden;
+  background: white;
+}
+
+.CodeMirror-scroll {
+  overflow: scroll !important; /* Things will break if this is overridden */
+  /* 50px is the magic margin used to hide the element's real scrollbars */
+  /* See overflow: hidden in .CodeMirror */
+  margin-bottom: -50px; margin-right: -50px;
+  padding-bottom: 50px;
+  height: 100%;
+  outline: none; /* Prevent dragging from highlighting the element */
+  position: relative;
+  z-index: 0;
+}
+.CodeMirror-sizer {
+  position: relative;
+  border-right: 50px solid transparent;
+}
+
+/* The fake, visible scrollbars. Used to force redraw during scrolling
+   before actual scrolling happens, thus preventing shaking and
+   flickering artifacts. */
+.CodeMirror-vscrollbar, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-gutter-filler {
+  position: absolute;
+  z-index: 6;
+  display: none;
+  outline: none;
+}
+.CodeMirror-vscrollbar {
+  right: 0; top: 0;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+.CodeMirror-hscrollbar {
+  bottom: 0; left: 0;
+  overflow-y: hidden;
+  overflow-x: scroll;
+}
+.CodeMirror-scrollbar-filler {
+  right: 0; bottom: 0;
+}
+.CodeMirror-gutter-filler {
+  left: 0; bottom: 0;
+}
+
+.CodeMirror-gutters {
+  position: absolute; left: 0; top: 0;
+  min-height: 100%;
+  z-index: 3;
+}
+.CodeMirror-gutter {
+  white-space: normal;
+  height: 100%;
+  display: inline-block;
+  vertical-align: top;
+  margin-bottom: -50px;
+}
+.CodeMirror-gutter-wrapper {
+  position: absolute;
+  z-index: 4;
+  background: none !important;
+  border: none !important;
+}
+.CodeMirror-gutter-background {
+  position: absolute;
+  top: 0; bottom: 0;
+  z-index: 4;
+}
+.CodeMirror-gutter-elt {
+  position: absolute;
+  cursor: default;
+  z-index: 4;
+}
+.CodeMirror-gutter-wrapper ::selection { background-color: transparent }
+.CodeMirror-gutter-wrapper ::-moz-selection { background-color: transparent }
+
+.CodeMirror-lines {
+  cursor: text;
+  min-height: 1px; /* prevents collapsing before first draw */
+}
+.CodeMirror pre.CodeMirror-line,
+.CodeMirror pre.CodeMirror-line-like {
+  /* Reset some styles that the rest of the page might have set */
+  -moz-border-radius: 0; -webkit-border-radius: 0; border-radius: 0;
+  border-width: 0;
+  background: transparent;
+  font-family: inherit;
+  font-size: inherit;
+  margin: 0;
+  white-space: pre;
+  word-wrap: normal;
+  line-height: inherit;
+  color: inherit;
+  z-index: 2;
+  position: relative;
+  overflow: visible;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-font-variant-ligatures: contextual;
+  font-variant-ligatures: contextual;
+}
+.CodeMirror-wrap pre.CodeMirror-line,
+.CodeMirror-wrap pre.CodeMirror-line-like {
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  word-break: normal;
+}
+
+.CodeMirror-linebackground {
+  position: absolute;
+  left: 0; right: 0; top: 0; bottom: 0;
+  z-index: 0;
+}
+
+.CodeMirror-linewidget {
+  position: relative;
+  z-index: 2;
+  padding: 0.1px; /* Force widget margins to stay inside of the container */
+}
+
+.CodeMirror-widget {}
+
+.CodeMirror-rtl pre { direction: rtl; }
+
+.CodeMirror-code {
+  outline: none;
+}
+
+/* Force content-box sizing for the elements where we expect it */
+.CodeMirror-scroll,
+.CodeMirror-sizer,
+.CodeMirror-gutter,
+.CodeMirror-gutters,
+.CodeMirror-linenumber {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}
+
+.CodeMirror-measure {
+  position: absolute;
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
+}
+
+.CodeMirror-cursor {
+  position: absolute;
+  pointer-events: none;
+}
+.CodeMirror-measure pre { position: static; }
+
+div.CodeMirror-cursors {
+  visibility: hidden;
+  position: relative;
+  z-index: 3;
+}
+div.CodeMirror-dragcursors {
+  visibility: visible;
+}
+
+.CodeMirror-focused div.CodeMirror-cursors {
+  visibility: visible;
+}
+
+.CodeMirror-selected { background: #d9d9d9; }
+.CodeMirror-focused .CodeMirror-selected { background: #d7d4f0; }
+.CodeMirror-crosshair { cursor: crosshair; }
+.CodeMirror-line::selection, .CodeMirror-line > span::selection, .CodeMirror-line > span > span::selection { background: #d7d4f0; }
+.CodeMirror-line::-moz-selection, .CodeMirror-line > span::-moz-selection, .CodeMirror-line > span > span::-moz-selection { background: #d7d4f0; }
+
+.cm-searching {
+  background-color: #ffa;
+  background-color: rgba(255, 255, 0, .4);
+}
+
+/* Used to force a border model for a node */
+.cm-force-border { padding-right: .1px; }
+
+@media print {
+  /* Hide the cursor when printing */
+  .CodeMirror div.CodeMirror-cursors {
+    visibility: hidden;
+  }
+}
+
+/* See issue #2901 */
+.cm-tab-wrap-hack:after { content: ''; }
+
+/* Help users use markselection to safely style text background */
+span.CodeMirror-selectedtext { background: none; }
+
+/* neo theme for codemirror */
+
+/* Color scheme */
+
+.cm-s-neo.CodeMirror {
+  background-color:#ffffff;
+  color:#2e383c;
+  line-height:1.4375;
+}
+.cm-s-neo .cm-comment { color:#75787b; }
+.cm-s-neo .cm-keyword, .cm-s-neo .cm-property { color:#1d75b3; }
+.cm-s-neo .cm-atom,.cm-s-neo .cm-number { color:#75438a; }
+.cm-s-neo .cm-node,.cm-s-neo .cm-tag { color:#9c3328; }
+.cm-s-neo .cm-string { color:#b35e14; }
+.cm-s-neo .cm-variable,.cm-s-neo .cm-qualifier { color:#047d65; }
+
+
+/* Editor styling */
+
+.cm-s-neo pre {
+  padding:0;
+}
+
+.cm-s-neo .CodeMirror-gutters {
+  border:none;
+  border-right:10px solid transparent;
+  background-color:transparent;
+}
+
+.cm-s-neo .CodeMirror-linenumber {
+  padding:0;
+  color:#e0e2e5;
+}
+
+.cm-s-neo .CodeMirror-guttermarker { color: #1d75b3; }
+.cm-s-neo .CodeMirror-guttermarker-subtle { color: #e0e2e5; }
+
+.cm-s-neo .CodeMirror-cursor {
+  width: auto;
+  border: 0;
+  background: rgba(155,157,162,0.37);
+  z-index: 1;
+}
+
+@keyframes _1yqg40c1 {
+  90% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+._1yqg40c0 {
+  background-color: var(--_11oz4ta1b);
+}
+._1yqg40c3 {
+  background-color: var(--_11oz4ta17);
+  color: var(--_11oz4ta11);
+  min-width: 50px;
+  margin-right: 4px;
+  padding-right: 8px;
+  animation-name: _1yqg40c1;
+  animation-duration: 1s;
+  animation-timing-function: ease;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+._1yqg40c4 {
+  width: 1em;
+  padding: 0 8px;
+}
+._1yqg40c6::after {
+  content: "-";
+}
+._1yqg40c8::after {
+  content: "+";
+  color: var(--_11oz4ta12);
+}
+.react-codemirror2 {
+  height: 100%;
+  background-color: var(--_11oz4ta19);
+}
+.CodeMirror {
+  height: 100%;
+  width: 100%;
+  font-family: var(--_11oz4ta1);
+  position: relative;
+  z-index: 0;
+}
+.CodeMirror-gutters {
+  min-width: var(--_11oz4tad);
+  box-sizing: border-box;
+  padding-left: 8px;
+}
+.CodeMirror pre, .CodeMirror-linenumber {
+  font-size: 16px;
+}
+.CodeMirror-lines {
+  padding: 16px 0;
+}
+.CodeMirror-hints {
+  position: absolute;
+  z-index: 10;
+  overflow: hidden;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  box-shadow: var(--_11oz4ta1d);
+  border-radius: var(--_11oz4taa);
+  background-color: var(--_11oz4ta19);
+  font-size: 90%;
+  line-height: 150%;
+  font-family: var(--_11oz4ta1);
+  max-height: 20em;
+  overflow-y: auto;
+}
+[data-playroom-dark] .CodeMirror-hints {
+  background-color: var(--_11oz4ta18);
+}
+.CodeMirror-hint {
+  margin: 0;
+  padding: 4px 8px;
+  border-radius: var(--_11oz4ta9);
+  white-space: pre;
+  color: var(--_11oz4taq);
+  cursor: pointer;
+}
+li.CodeMirror-hint-active {
+  background-color: var(--_11oz4ta15);
+  color: var(--_11oz4taz);
+}
+.CodeMirror-linenumbers {
+  min-width: 50px;
+}
+.CodeMirror-foldmarker {
+  color: var(--_11oz4ta12);
+  font-family: arial;
+  cursor: pointer;
+  padding: 0 var(--_11oz4ta8);
+}
+.cm-s-neo.CodeMirror {
+  background-color: var(--_11oz4ta19);
+  color: var(--_11oz4taq);
+}
+.cm-s-neo .CodeMirror-cursor {
+  background-color: var(--_11oz4tay);
+  width: 2px;
+}
+.cm-s-neo .CodeMirror-gutters {
+  background-color: var(--_11oz4ta19);
+  border: none;
+}
+.cm-s-neo .CodeMirror-gutters::after {
+  content: "";
+  background-color: var(--_11oz4ta19);
+  position: absolute;
+  right: 2px;
+  height: 100%;
+  box-shadow: 0 0 10px 5px var(--_11oz4ta19);
+}
+.cm-s-neo .CodeMirror-selected {
+  background: var(--_11oz4ta1b);
+}
+.cm-s-neo .CodeMirror-activeline-background {
+  background: transparent;
+}
+.cm-s-neo .CodeMirror-guttermarker-subtle {
+  display: flex;
+  justify-content: center;
+  color: var(--_11oz4tay);
+  transition: var(--_11oz4tah);
+}
+.cm-s-neo .CodeMirror-guttermarker-subtle:not(:hover):not(._1yqg40c8) {
+  color: var(--_11oz4tax);
+}
+.cm-s-neo .CodeMirror-linenumber {
+  min-width: 50px;
+  color: var(--_11oz4tay);
+  transition: var(--_11oz4tah);
+}
+.cm-s-neo .CodeMirror-linenumber:not(:hover):not(.cm-s-neo .CodeMirror-activeline .CodeMirror-linenumber) {
+  color: var(--_11oz4tax);
+}
+.cm-s-neo .cm-tag {
+  color: var(--_11oz4tar);
+}
+.cm-s-neo .cm-attribute,.cm-s-neo .cm-keyword,.cm-s-neo .cm-property {
+  color: var(--_11oz4tas);
+}
+.cm-s-neo .cm-string {
+  color: var(--_11oz4tat);
+}
+.cm-s-neo .cm-atom {
+  color: var(--_11oz4tau);
+}
+.cm-s-neo .cm-variable {
+  color: var(--_11oz4tav);
+}
+.cm-s-neo .cm-number {
+  color: var(--_11oz4taw);
+}
+html {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: var(--_11oz4ta1a);
+}
+html[data-playroom-dark] {
+  color-scheme: dark;
+}
+body {
+  margin: 0;
+}
+._14y8e8x3 {
+  position: absolute !important;
+}
+._14y8e8x6 {
+  max-width: 90vw;
+}
+._14y8e8x6._14y8e8x4 {
+  transform: translateX(100%);
+}
+._14y8e8x8 {
+  max-height: 90vh;
+}
+._14y8e8x8._14y8e8x4 {
+  transform: translateY(100%);
+}
+._14y8e8xb._14y8e8x9 {
+  width: 60px;
+}
+._14y8e8xd {
+  background: transparent;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+  min-width: var(--_11oz4tae);
+  height: var(--_11oz4tae);
+}
+._14y8e8xd::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: currentColor;
+  opacity: 0;
+  pointer-events: none;
+  border-radius: var(--_11oz4tab);
+  transition: var(--_11oz4taf);
+}
+._14y8e8xd:not(:hover):not(:focus) {
+  opacity: 0.3;
+}
+._14y8e8xd:hover::before, ._14y8e8xd:focus::before {
+  opacity: 0.05;
+}
+._14y8e8xf {
+  right: 60px;
+}
