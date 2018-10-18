@@ -10,7 +10,7 @@
     "unit": "sku test",
     "lint": "sku lint",
     "format": "sku format",
-    "build": "sku build && rm docs/dist/render.js",
+    "build": "sku build",
     "deploy": "node scripts/deploy.js",
     "deploy-preview": "surge -p ./docs/dist",
     "post-commit-status": "node scripts/postCommitStatus.js",
@@ -62,7 +62,7 @@
     "react-testing-library": "^5.1.0",
     "renovate-config-seek": "0.4.0",
     "semantic-release": "^15.9.16",
-    "sku": "5.12.1",
+    "sku": "5.12.2",
     "surge": "^0.20.1",
     "travis-deploy-once": "^5.0.9"
   }
