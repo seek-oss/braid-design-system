@@ -10,7 +10,7 @@
     "unit": "sku test",
     "lint": "sku lint",
     "format": "sku format",
-    "build": "sku build && rm docs/dist/render.js",
+    "build": "sku build",
     "deploy": "node scripts/deploy.js",
     "deploy-preview": "surge -p ./docs/dist",
     "post-commit-status": "node scripts/postCommitStatus.js",
