@@ -62,7 +62,7 @@
     "react-testing-library": "^5.1.0",
     "renovate-config-seek": "0.4.0",
     "semantic-release": "^15.9.16",
-    "sku": "5.12.2",
+    "sku": "5.12.3",
     "surge": "^0.20.1",
     "travis-deploy-once": "^5.0.9"
   }
