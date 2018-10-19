@@ -5,7 +5,7 @@
   "main": "lib/components/index.js",
   "sideEffects": false,
   "scripts": {
-    "test": "yarn check --integrity && npm run lint && CI=true npm run unit && npm run build",
+    "test": "yarn check --integrity && npm run lint && npm run unit && npm run build",
     "start": "sku start",
     "unit": "sku test",
     "lint": "sku lint",
