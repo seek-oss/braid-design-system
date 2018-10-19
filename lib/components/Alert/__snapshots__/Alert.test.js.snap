@@ -25,7 +25,7 @@ exports[`Alert Theme: jobStreet Tones critical 1`] = `
       class="Text__block Box__root borderColor__default"
     >
       <span
-        class="Text__block color__critical fontFamily__body fontSize__body fontWeight__regular"
+        class="Text__block color__critical fontFamily__text fontSize__standard fontWeight__regular"
         style="transform: none;"
       >
         critical
@@ -68,7 +68,7 @@ exports[`Alert Theme: jobStreet Tones info 1`] = `
       class="Text__block Box__root borderColor__default"
     >
       <span
-        class="Text__block color__white fontFamily__body fontSize__body fontWeight__regular"
+        class="Text__block color__white fontFamily__text fontSize__standard fontWeight__regular"
         style="transform: none;"
       >
         info
@@ -103,7 +103,7 @@ exports[`Alert Theme: seekAnz Tones critical 1`] = `
       class="Text__block Box__root borderColor__default"
     >
       <span
-        class="Text__block color__critical fontFamily__body fontSize__body fontWeight__regular"
+        class="Text__block color__critical fontFamily__text fontSize__standard fontWeight__regular"
         style="transform: none;"
       >
         critical
@@ -146,7 +146,7 @@ exports[`Alert Theme: seekAnz Tones info 1`] = `
       class="Text__block Box__root borderColor__default"
     >
       <span
-        class="Text__block color__white fontFamily__body fontSize__body fontWeight__regular"
+        class="Text__block color__white fontFamily__text fontSize__standard fontWeight__regular"
         style="transform: none;"
       >
         info
@@ -181,7 +181,7 @@ exports[`Alert Theme: seekAsia Tones critical 1`] = `
       class="Text__block Box__root borderColor__default"
     >
       <span
-        class="Text__block color__critical fontFamily__body fontSize__body fontWeight__regular"
+        class="Text__block color__critical fontFamily__text fontSize__standard fontWeight__regular"
         style="transform: none;"
       >
         critical
@@ -224,7 +224,7 @@ exports[`Alert Theme: seekAsia Tones info 1`] = `
       class="Text__block Box__root borderColor__default"
     >
       <span
-        class="Text__block color__white fontFamily__body fontSize__body fontWeight__regular"
+        class="Text__block color__white fontFamily__text fontSize__standard fontWeight__regular"
         style="transform: none;"
       >
         info
@@ -259,7 +259,7 @@ exports[`Alert Theme: wireframe Tones critical 1`] = `
       class="Text__block Box__root borderColor__default"
     >
       <span
-        class="Text__block color__critical fontFamily__body fontSize__body fontWeight__regular"
+        class="Text__block color__critical fontFamily__text fontSize__standard fontWeight__regular"
         style="transform: none;"
       >
         critical
@@ -302,7 +302,7 @@ exports[`Alert Theme: wireframe Tones info 1`] = `
       class="Text__block Box__root borderColor__default"
     >
       <span
-        class="Text__block color__white fontFamily__body fontSize__body fontWeight__regular"
+        class="Text__block color__white fontFamily__text fontSize__standard fontWeight__regular"
         style="transform: none;"
       >
         info

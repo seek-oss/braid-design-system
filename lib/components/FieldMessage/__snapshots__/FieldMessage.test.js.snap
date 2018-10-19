@@ -6,7 +6,7 @@ exports[`FieldMessage Theme: jobStreet Critical 1`] = `
   tabindex="-1"
 >
   <span
-    class="Text__block color__critical fontFamily__body fontSize__body fontWeight__regular"
+    class="Text__block color__critical fontFamily__text fontSize__standard fontWeight__regular"
   >
     <div
       class="FieldMessage__content"
@@ -37,7 +37,7 @@ exports[`FieldMessage Theme: jobStreet Default 1`] = `
   tabindex="-1"
 >
   <span
-    class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__regular"
+    class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
   >
     <div
       class="FieldMessage__content"
@@ -58,7 +58,7 @@ exports[`FieldMessage Theme: jobStreet Empty 1`] = `
   tabindex="-1"
 >
   <span
-    class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__regular"
+    class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
   >
     <div
       class="FieldMessage__content"
@@ -79,7 +79,7 @@ exports[`FieldMessage Theme: jobStreet Positive 1`] = `
   tabindex="-1"
 >
   <span
-    class="Text__block color__positive fontFamily__body fontSize__body fontWeight__regular"
+    class="Text__block color__positive fontFamily__text fontSize__standard fontWeight__regular"
   >
     <div
       class="FieldMessage__content"
@@ -110,7 +110,7 @@ exports[`FieldMessage Theme: seekAnz Critical 1`] = `
   tabindex="-1"
 >
   <span
-    class="Text__block color__critical fontFamily__body fontSize__body fontWeight__regular"
+    class="Text__block color__critical fontFamily__text fontSize__standard fontWeight__regular"
   >
     <div
       class="FieldMessage__content"
@@ -141,7 +141,7 @@ exports[`FieldMessage Theme: seekAnz Default 1`] = `
   tabindex="-1"
 >
   <span
-    class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__regular"
+    class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
   >
     <div
       class="FieldMessage__content"
@@ -162,7 +162,7 @@ exports[`FieldMessage Theme: seekAnz Empty 1`] = `
   tabindex="-1"
 >
   <span
-    class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__regular"
+    class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
   >
     <div
       class="FieldMessage__content"
@@ -183,7 +183,7 @@ exports[`FieldMessage Theme: seekAnz Positive 1`] = `
   tabindex="-1"
 >
   <span
-    class="Text__block color__positive fontFamily__body fontSize__body fontWeight__regular"
+    class="Text__block color__positive fontFamily__text fontSize__standard fontWeight__regular"
   >
     <div
       class="FieldMessage__content"
@@ -214,7 +214,7 @@ exports[`FieldMessage Theme: seekAsia Critical 1`] = `
   tabindex="-1"
 >
   <span
-    class="Text__block color__critical fontFamily__body fontSize__body fontWeight__regular"
+    class="Text__block color__critical fontFamily__text fontSize__standard fontWeight__regular"
   >
     <div
       class="FieldMessage__content"
@@ -245,7 +245,7 @@ exports[`FieldMessage Theme: seekAsia Default 1`] = `
   tabindex="-1"
 >
   <span
-    class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__regular"
+    class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
   >
     <div
       class="FieldMessage__content"
@@ -266,7 +266,7 @@ exports[`FieldMessage Theme: seekAsia Empty 1`] = `
   tabindex="-1"
 >
   <span
-    class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__regular"
+    class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
   >
     <div
       class="FieldMessage__content"
@@ -287,7 +287,7 @@ exports[`FieldMessage Theme: seekAsia Positive 1`] = `
   tabindex="-1"
 >
   <span
-    class="Text__block color__positive fontFamily__body fontSize__body fontWeight__regular"
+    class="Text__block color__positive fontFamily__text fontSize__standard fontWeight__regular"
   >
     <div
       class="FieldMessage__content"
@@ -318,7 +318,7 @@ exports[`FieldMessage Theme: wireframe Critical 1`] = `
   tabindex="-1"
 >
   <span
-    class="Text__block color__critical fontFamily__body fontSize__body fontWeight__regular"
+    class="Text__block color__critical fontFamily__text fontSize__standard fontWeight__regular"
   >
     <div
       class="FieldMessage__content"
@@ -349,7 +349,7 @@ exports[`FieldMessage Theme: wireframe Default 1`] = `
   tabindex="-1"
 >
   <span
-    class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__regular"
+    class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
   >
     <div
       class="FieldMessage__content"
@@ -370,7 +370,7 @@ exports[`FieldMessage Theme: wireframe Empty 1`] = `
   tabindex="-1"
 >
   <span
-    class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__regular"
+    class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
   >
     <div
       class="FieldMessage__content"
@@ -391,7 +391,7 @@ exports[`FieldMessage Theme: wireframe Positive 1`] = `
   tabindex="-1"
 >
   <span
-    class="Text__block color__positive fontFamily__body fontSize__body fontWeight__regular"
+    class="Text__block color__positive fontFamily__text fontSize__standard fontWeight__regular"
   >
     <div
       class="FieldMessage__content"

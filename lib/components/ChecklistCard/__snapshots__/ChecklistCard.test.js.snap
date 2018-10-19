@@ -59,7 +59,7 @@ exports[`ChecklistCard Theme: jobStreet Default 1`] = `
           class="Text__block Box__root borderColor__default"
         >
           <span
-            class="Text__block color__neutral fontFamily__body fontSize__interaction fontWeight__regular"
+            class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
             style="transform: none;"
           >
             Label 1
@@ -76,7 +76,7 @@ exports[`ChecklistCard Theme: jobStreet Default 1`] = `
         tabindex="-1"
       >
         <span
-          class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__regular"
+          class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
         >
           <div
             class="FieldMessage__content"
@@ -151,7 +151,7 @@ exports[`ChecklistCard Theme: jobStreet Default 1`] = `
           class="Text__block Box__root borderColor__default"
         >
           <span
-            class="Text__block color__neutral fontFamily__body fontSize__interaction fontWeight__regular"
+            class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
             style="transform: none;"
           >
             Label 2
@@ -168,7 +168,7 @@ exports[`ChecklistCard Theme: jobStreet Default 1`] = `
         tabindex="-1"
       >
         <span
-          class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__regular"
+          class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
         >
           <div
             class="FieldMessage__content"
@@ -243,7 +243,7 @@ exports[`ChecklistCard Theme: jobStreet Default 1`] = `
           class="Text__block Box__root borderColor__default"
         >
           <span
-            class="Text__block color__neutral fontFamily__body fontSize__interaction fontWeight__regular"
+            class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
             style="transform: none;"
           >
             Label 3
@@ -260,7 +260,7 @@ exports[`ChecklistCard Theme: jobStreet Default 1`] = `
         tabindex="-1"
       >
         <span
-          class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__regular"
+          class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
         >
           <div
             class="FieldMessage__content"
@@ -335,7 +335,7 @@ exports[`ChecklistCard Theme: seekAnz Default 1`] = `
           class="Text__block Box__root borderColor__default"
         >
           <span
-            class="Text__block color__neutral fontFamily__body fontSize__interaction fontWeight__regular"
+            class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
             style="transform: none;"
           >
             Label 1
@@ -352,7 +352,7 @@ exports[`ChecklistCard Theme: seekAnz Default 1`] = `
         tabindex="-1"
       >
         <span
-          class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__regular"
+          class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
         >
           <div
             class="FieldMessage__content"
@@ -427,7 +427,7 @@ exports[`ChecklistCard Theme: seekAnz Default 1`] = `
           class="Text__block Box__root borderColor__default"
         >
           <span
-            class="Text__block color__neutral fontFamily__body fontSize__interaction fontWeight__regular"
+            class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
             style="transform: none;"
           >
             Label 2
@@ -444,7 +444,7 @@ exports[`ChecklistCard Theme: seekAnz Default 1`] = `
         tabindex="-1"
       >
         <span
-          class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__regular"
+          class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
         >
           <div
             class="FieldMessage__content"
@@ -519,7 +519,7 @@ exports[`ChecklistCard Theme: seekAnz Default 1`] = `
           class="Text__block Box__root borderColor__default"
         >
           <span
-            class="Text__block color__neutral fontFamily__body fontSize__interaction fontWeight__regular"
+            class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
             style="transform: none;"
           >
             Label 3
@@ -536,7 +536,7 @@ exports[`ChecklistCard Theme: seekAnz Default 1`] = `
         tabindex="-1"
       >
         <span
-          class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__regular"
+          class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
         >
           <div
             class="FieldMessage__content"
@@ -611,7 +611,7 @@ exports[`ChecklistCard Theme: seekAsia Default 1`] = `
           class="Text__block Box__root borderColor__default"
         >
           <span
-            class="Text__block color__neutral fontFamily__body fontSize__interaction fontWeight__regular"
+            class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
             style="transform: none;"
           >
             Label 1
@@ -628,7 +628,7 @@ exports[`ChecklistCard Theme: seekAsia Default 1`] = `
         tabindex="-1"
       >
         <span
-          class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__regular"
+          class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
         >
           <div
             class="FieldMessage__content"
@@ -703,7 +703,7 @@ exports[`ChecklistCard Theme: seekAsia Default 1`] = `
           class="Text__block Box__root borderColor__default"
         >
           <span
-            class="Text__block color__neutral fontFamily__body fontSize__interaction fontWeight__regular"
+            class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
             style="transform: none;"
           >
             Label 2
@@ -720,7 +720,7 @@ exports[`ChecklistCard Theme: seekAsia Default 1`] = `
         tabindex="-1"
       >
         <span
-          class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__regular"
+          class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
         >
           <div
             class="FieldMessage__content"
@@ -795,7 +795,7 @@ exports[`ChecklistCard Theme: seekAsia Default 1`] = `
           class="Text__block Box__root borderColor__default"
         >
           <span
-            class="Text__block color__neutral fontFamily__body fontSize__interaction fontWeight__regular"
+            class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
             style="transform: none;"
           >
             Label 3
@@ -812,7 +812,7 @@ exports[`ChecklistCard Theme: seekAsia Default 1`] = `
         tabindex="-1"
       >
         <span
-          class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__regular"
+          class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
         >
           <div
             class="FieldMessage__content"
@@ -887,7 +887,7 @@ exports[`ChecklistCard Theme: wireframe Default 1`] = `
           class="Text__block Box__root borderColor__default"
         >
           <span
-            class="Text__block color__neutral fontFamily__body fontSize__interaction fontWeight__regular"
+            class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
             style="transform: none;"
           >
             Label 1
@@ -904,7 +904,7 @@ exports[`ChecklistCard Theme: wireframe Default 1`] = `
         tabindex="-1"
       >
         <span
-          class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__regular"
+          class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
         >
           <div
             class="FieldMessage__content"
@@ -979,7 +979,7 @@ exports[`ChecklistCard Theme: wireframe Default 1`] = `
           class="Text__block Box__root borderColor__default"
         >
           <span
-            class="Text__block color__neutral fontFamily__body fontSize__interaction fontWeight__regular"
+            class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
             style="transform: none;"
           >
             Label 2
@@ -996,7 +996,7 @@ exports[`ChecklistCard Theme: wireframe Default 1`] = `
         tabindex="-1"
       >
         <span
-          class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__regular"
+          class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
         >
           <div
             class="FieldMessage__content"
@@ -1071,7 +1071,7 @@ exports[`ChecklistCard Theme: wireframe Default 1`] = `
           class="Text__block Box__root borderColor__default"
         >
           <span
-            class="Text__block color__neutral fontFamily__body fontSize__interaction fontWeight__regular"
+            class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
             style="transform: none;"
           >
             Label 3
@@ -1088,7 +1088,7 @@ exports[`ChecklistCard Theme: wireframe Default 1`] = `
         tabindex="-1"
       >
         <span
-          class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__regular"
+          class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
         >
           <div
             class="FieldMessage__content"

@@ -5,7 +5,7 @@ exports[`Text Theme: jobStreet Baseline disabled 1`] = `
   class="Text__block Box__root borderColor__default"
 >
   <span
-    class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__regular"
+    class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
     style="transform: none;"
   >
     Children
@@ -18,7 +18,7 @@ exports[`Text Theme: jobStreet Color 1`] = `
   class="Text__block Box__root borderColor__default"
 >
   <span
-    class="Text__block color__positive fontFamily__body fontSize__body fontWeight__regular"
+    class="Text__block color__positive fontFamily__text fontSize__standard fontWeight__regular"
   >
     Children
   </span>
@@ -30,7 +30,7 @@ exports[`Text Theme: jobStreet Default 1`] = `
   class="Text__block Box__root borderColor__default"
 >
   <span
-    class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__regular"
+    class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
   >
     Children
   </span>
@@ -42,7 +42,7 @@ exports[`Text Theme: jobStreet List item 1`] = `
   class="Text__block Text__listItem Box__root borderColor__default"
 >
   <span
-    class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__regular"
+    class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
   >
     Children
   </span>
@@ -54,7 +54,7 @@ exports[`Text Theme: jobStreet Size 1`] = `
   class="Text__block Box__root borderColor__default"
 >
   <span
-    class="Text__block color__neutral fontFamily__body fontSize__large fontWeight__regular"
+    class="Text__block color__neutral fontFamily__text fontSize__large fontWeight__regular"
   >
     Children
   </span>
@@ -66,7 +66,7 @@ exports[`Text Theme: jobStreet Weight 1`] = `
   class="Text__block Box__root borderColor__default"
 >
   <span
-    class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__strong"
+    class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__strong"
   >
     Children
   </span>
@@ -78,7 +78,7 @@ exports[`Text Theme: seekAnz Baseline disabled 1`] = `
   class="Text__block Box__root borderColor__default"
 >
   <span
-    class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__regular"
+    class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
     style="transform: none;"
   >
     Children
@@ -91,7 +91,7 @@ exports[`Text Theme: seekAnz Color 1`] = `
   class="Text__block Box__root borderColor__default"
 >
   <span
-    class="Text__block color__positive fontFamily__body fontSize__body fontWeight__regular"
+    class="Text__block color__positive fontFamily__text fontSize__standard fontWeight__regular"
   >
     Children
   </span>
@@ -103,7 +103,7 @@ exports[`Text Theme: seekAnz Default 1`] = `
   class="Text__block Box__root borderColor__default"
 >
   <span
-    class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__regular"
+    class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
   >
     Children
   </span>
@@ -115,7 +115,7 @@ exports[`Text Theme: seekAnz List item 1`] = `
   class="Text__block Text__listItem Box__root borderColor__default"
 >
   <span
-    class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__regular"
+    class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
   >
     Children
   </span>
@@ -127,7 +127,7 @@ exports[`Text Theme: seekAnz Size 1`] = `
   class="Text__block Box__root borderColor__default"
 >
   <span
-    class="Text__block color__neutral fontFamily__body fontSize__large fontWeight__regular"
+    class="Text__block color__neutral fontFamily__text fontSize__large fontWeight__regular"
   >
     Children
   </span>
@@ -139,7 +139,7 @@ exports[`Text Theme: seekAnz Weight 1`] = `
   class="Text__block Box__root borderColor__default"
 >
   <span
-    class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__strong"
+    class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__strong"
   >
     Children
   </span>
@@ -151,7 +151,7 @@ exports[`Text Theme: seekAsia Baseline disabled 1`] = `
   class="Text__block Box__root borderColor__default"
 >
   <span
-    class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__regular"
+    class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
     style="transform: none;"
   >
     Children
@@ -164,7 +164,7 @@ exports[`Text Theme: seekAsia Color 1`] = `
   class="Text__block Box__root borderColor__default"
 >
   <span
-    class="Text__block color__positive fontFamily__body fontSize__body fontWeight__regular"
+    class="Text__block color__positive fontFamily__text fontSize__standard fontWeight__regular"
   >
     Children
   </span>
@@ -176,7 +176,7 @@ exports[`Text Theme: seekAsia Default 1`] = `
   class="Text__block Box__root borderColor__default"
 >
   <span
-    class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__regular"
+    class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
   >
     Children
   </span>
@@ -188,7 +188,7 @@ exports[`Text Theme: seekAsia List item 1`] = `
   class="Text__block Text__listItem Box__root borderColor__default"
 >
   <span
-    class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__regular"
+    class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
   >
     Children
   </span>
@@ -200,7 +200,7 @@ exports[`Text Theme: seekAsia Size 1`] = `
   class="Text__block Box__root borderColor__default"
 >
   <span
-    class="Text__block color__neutral fontFamily__body fontSize__large fontWeight__regular"
+    class="Text__block color__neutral fontFamily__text fontSize__large fontWeight__regular"
   >
     Children
   </span>
@@ -212,7 +212,7 @@ exports[`Text Theme: seekAsia Weight 1`] = `
   class="Text__block Box__root borderColor__default"
 >
   <span
-    class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__strong"
+    class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__strong"
   >
     Children
   </span>
@@ -224,7 +224,7 @@ exports[`Text Theme: wireframe Baseline disabled 1`] = `
   class="Text__block Box__root borderColor__default"
 >
   <span
-    class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__regular"
+    class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
     style="transform: none;"
   >
     Children
@@ -237,7 +237,7 @@ exports[`Text Theme: wireframe Color 1`] = `
   class="Text__block Box__root borderColor__default"
 >
   <span
-    class="Text__block color__positive fontFamily__body fontSize__body fontWeight__regular"
+    class="Text__block color__positive fontFamily__text fontSize__standard fontWeight__regular"
   >
     Children
   </span>
@@ -249,7 +249,7 @@ exports[`Text Theme: wireframe Default 1`] = `
   class="Text__block Box__root borderColor__default"
 >
   <span
-    class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__regular"
+    class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
   >
     Children
   </span>
@@ -261,7 +261,7 @@ exports[`Text Theme: wireframe List item 1`] = `
   class="Text__block Text__listItem Box__root borderColor__default"
 >
   <span
-    class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__regular"
+    class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
   >
     Children
   </span>
@@ -273,7 +273,7 @@ exports[`Text Theme: wireframe Size 1`] = `
   class="Text__block Box__root borderColor__default"
 >
   <span
-    class="Text__block color__neutral fontFamily__body fontSize__large fontWeight__regular"
+    class="Text__block color__neutral fontFamily__text fontSize__large fontWeight__regular"
   >
     Children
   </span>
@@ -285,7 +285,7 @@ exports[`Text Theme: wireframe Weight 1`] = `
   class="Text__block Box__root borderColor__default"
 >
   <span
-    class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__strong"
+    class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__strong"
   >
     Children
   </span>

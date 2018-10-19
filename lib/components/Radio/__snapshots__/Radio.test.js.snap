@@ -48,7 +48,7 @@ exports[`Radio Theme: jobStreet Checked 1`] = `
         class="Text__block Box__root borderColor__default"
       >
         <span
-          class="Text__block color__neutral fontFamily__body fontSize__interaction fontWeight__regular"
+          class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
           style="transform: none;"
         >
           Label
@@ -65,7 +65,7 @@ exports[`Radio Theme: jobStreet Checked 1`] = `
       tabindex="-1"
     >
       <span
-        class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__regular"
+        class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
       >
         <div
           class="FieldMessage__content"
@@ -128,7 +128,7 @@ exports[`Radio Theme: jobStreet Children when checked 1`] = `
         class="Text__block Box__root borderColor__default"
       >
         <span
-          class="Text__block color__neutral fontFamily__body fontSize__interaction fontWeight__regular"
+          class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
           style="transform: none;"
         >
           Label
@@ -155,7 +155,7 @@ exports[`Radio Theme: jobStreet Children when checked 1`] = `
       tabindex="-1"
     >
       <span
-        class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__regular"
+        class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
       >
         <div
           class="FieldMessage__content"
@@ -217,7 +217,7 @@ exports[`Radio Theme: jobStreet Children when unchecked 1`] = `
         class="Text__block Box__root borderColor__default"
       >
         <span
-          class="Text__block color__neutral fontFamily__body fontSize__interaction fontWeight__regular"
+          class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
           style="transform: none;"
         >
           Label
@@ -244,7 +244,7 @@ exports[`Radio Theme: jobStreet Children when unchecked 1`] = `
       tabindex="-1"
     >
       <span
-        class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__regular"
+        class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
       >
         <div
           class="FieldMessage__content"
@@ -306,7 +306,7 @@ exports[`Radio Theme: jobStreet Unchecked 1`] = `
         class="Text__block Box__root borderColor__default"
       >
         <span
-          class="Text__block color__neutral fontFamily__body fontSize__interaction fontWeight__regular"
+          class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
           style="transform: none;"
         >
           Label
@@ -323,7 +323,7 @@ exports[`Radio Theme: jobStreet Unchecked 1`] = `
       tabindex="-1"
     >
       <span
-        class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__regular"
+        class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
       >
         <div
           class="FieldMessage__content"
@@ -386,7 +386,7 @@ exports[`Radio Theme: jobStreet With message 1`] = `
         class="Text__block Box__root borderColor__default"
       >
         <span
-          class="Text__block color__neutral fontFamily__body fontSize__interaction fontWeight__regular"
+          class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
           style="transform: none;"
         >
           Label
@@ -413,7 +413,7 @@ exports[`Radio Theme: jobStreet With message 1`] = `
       tabindex="-1"
     >
       <span
-        class="Text__block color__critical fontFamily__body fontSize__body fontWeight__regular"
+        class="Text__block color__critical fontFamily__text fontSize__standard fontWeight__regular"
       >
         <div
           class="FieldMessage__content"
@@ -488,7 +488,7 @@ exports[`Radio Theme: seekAnz Checked 1`] = `
         class="Text__block Box__root borderColor__default"
       >
         <span
-          class="Text__block color__neutral fontFamily__body fontSize__interaction fontWeight__regular"
+          class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
           style="transform: none;"
         >
           Label
@@ -505,7 +505,7 @@ exports[`Radio Theme: seekAnz Checked 1`] = `
       tabindex="-1"
     >
       <span
-        class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__regular"
+        class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
       >
         <div
           class="FieldMessage__content"
@@ -568,7 +568,7 @@ exports[`Radio Theme: seekAnz Children when checked 1`] = `
         class="Text__block Box__root borderColor__default"
       >
         <span
-          class="Text__block color__neutral fontFamily__body fontSize__interaction fontWeight__regular"
+          class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
           style="transform: none;"
         >
           Label
@@ -595,7 +595,7 @@ exports[`Radio Theme: seekAnz Children when checked 1`] = `
       tabindex="-1"
     >
       <span
-        class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__regular"
+        class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
       >
         <div
           class="FieldMessage__content"
@@ -657,7 +657,7 @@ exports[`Radio Theme: seekAnz Children when unchecked 1`] = `
         class="Text__block Box__root borderColor__default"
       >
         <span
-          class="Text__block color__neutral fontFamily__body fontSize__interaction fontWeight__regular"
+          class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
           style="transform: none;"
         >
           Label
@@ -684,7 +684,7 @@ exports[`Radio Theme: seekAnz Children when unchecked 1`] = `
       tabindex="-1"
     >
       <span
-        class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__regular"
+        class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
       >
         <div
           class="FieldMessage__content"
@@ -746,7 +746,7 @@ exports[`Radio Theme: seekAnz Unchecked 1`] = `
         class="Text__block Box__root borderColor__default"
       >
         <span
-          class="Text__block color__neutral fontFamily__body fontSize__interaction fontWeight__regular"
+          class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
           style="transform: none;"
         >
           Label
@@ -763,7 +763,7 @@ exports[`Radio Theme: seekAnz Unchecked 1`] = `
       tabindex="-1"
     >
       <span
-        class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__regular"
+        class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
       >
         <div
           class="FieldMessage__content"
@@ -826,7 +826,7 @@ exports[`Radio Theme: seekAnz With message 1`] = `
         class="Text__block Box__root borderColor__default"
       >
         <span
-          class="Text__block color__neutral fontFamily__body fontSize__interaction fontWeight__regular"
+          class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
           style="transform: none;"
         >
           Label
@@ -853,7 +853,7 @@ exports[`Radio Theme: seekAnz With message 1`] = `
       tabindex="-1"
     >
       <span
-        class="Text__block color__critical fontFamily__body fontSize__body fontWeight__regular"
+        class="Text__block color__critical fontFamily__text fontSize__standard fontWeight__regular"
       >
         <div
           class="FieldMessage__content"
@@ -928,7 +928,7 @@ exports[`Radio Theme: seekAsia Checked 1`] = `
         class="Text__block Box__root borderColor__default"
       >
         <span
-          class="Text__block color__neutral fontFamily__body fontSize__interaction fontWeight__regular"
+          class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
           style="transform: none;"
         >
           Label
@@ -945,7 +945,7 @@ exports[`Radio Theme: seekAsia Checked 1`] = `
       tabindex="-1"
     >
       <span
-        class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__regular"
+        class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
       >
         <div
           class="FieldMessage__content"
@@ -1008,7 +1008,7 @@ exports[`Radio Theme: seekAsia Children when checked 1`] = `
         class="Text__block Box__root borderColor__default"
       >
         <span
-          class="Text__block color__neutral fontFamily__body fontSize__interaction fontWeight__regular"
+          class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
           style="transform: none;"
         >
           Label
@@ -1035,7 +1035,7 @@ exports[`Radio Theme: seekAsia Children when checked 1`] = `
       tabindex="-1"
     >
       <span
-        class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__regular"
+        class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
       >
         <div
           class="FieldMessage__content"
@@ -1097,7 +1097,7 @@ exports[`Radio Theme: seekAsia Children when unchecked 1`] = `
         class="Text__block Box__root borderColor__default"
       >
         <span
-          class="Text__block color__neutral fontFamily__body fontSize__interaction fontWeight__regular"
+          class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
           style="transform: none;"
         >
           Label
@@ -1124,7 +1124,7 @@ exports[`Radio Theme: seekAsia Children when unchecked 1`] = `
       tabindex="-1"
     >
       <span
-        class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__regular"
+        class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
       >
         <div
           class="FieldMessage__content"
@@ -1186,7 +1186,7 @@ exports[`Radio Theme: seekAsia Unchecked 1`] = `
         class="Text__block Box__root borderColor__default"
       >
         <span
-          class="Text__block color__neutral fontFamily__body fontSize__interaction fontWeight__regular"
+          class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
           style="transform: none;"
         >
           Label
@@ -1203,7 +1203,7 @@ exports[`Radio Theme: seekAsia Unchecked 1`] = `
       tabindex="-1"
     >
       <span
-        class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__regular"
+        class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
       >
         <div
           class="FieldMessage__content"
@@ -1266,7 +1266,7 @@ exports[`Radio Theme: seekAsia With message 1`] = `
         class="Text__block Box__root borderColor__default"
       >
         <span
-          class="Text__block color__neutral fontFamily__body fontSize__interaction fontWeight__regular"
+          class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
           style="transform: none;"
         >
           Label
@@ -1293,7 +1293,7 @@ exports[`Radio Theme: seekAsia With message 1`] = `
       tabindex="-1"
     >
       <span
-        class="Text__block color__critical fontFamily__body fontSize__body fontWeight__regular"
+        class="Text__block color__critical fontFamily__text fontSize__standard fontWeight__regular"
       >
         <div
           class="FieldMessage__content"
@@ -1368,7 +1368,7 @@ exports[`Radio Theme: wireframe Checked 1`] = `
         class="Text__block Box__root borderColor__default"
       >
         <span
-          class="Text__block color__neutral fontFamily__body fontSize__interaction fontWeight__regular"
+          class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
           style="transform: none;"
         >
           Label
@@ -1385,7 +1385,7 @@ exports[`Radio Theme: wireframe Checked 1`] = `
       tabindex="-1"
     >
       <span
-        class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__regular"
+        class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
       >
         <div
           class="FieldMessage__content"
@@ -1448,7 +1448,7 @@ exports[`Radio Theme: wireframe Children when checked 1`] = `
         class="Text__block Box__root borderColor__default"
       >
         <span
-          class="Text__block color__neutral fontFamily__body fontSize__interaction fontWeight__regular"
+          class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
           style="transform: none;"
         >
           Label
@@ -1475,7 +1475,7 @@ exports[`Radio Theme: wireframe Children when checked 1`] = `
       tabindex="-1"
     >
       <span
-        class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__regular"
+        class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
       >
         <div
           class="FieldMessage__content"
@@ -1537,7 +1537,7 @@ exports[`Radio Theme: wireframe Children when unchecked 1`] = `
         class="Text__block Box__root borderColor__default"
       >
         <span
-          class="Text__block color__neutral fontFamily__body fontSize__interaction fontWeight__regular"
+          class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
           style="transform: none;"
         >
           Label
@@ -1564,7 +1564,7 @@ exports[`Radio Theme: wireframe Children when unchecked 1`] = `
       tabindex="-1"
     >
       <span
-        class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__regular"
+        class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
       >
         <div
           class="FieldMessage__content"
@@ -1626,7 +1626,7 @@ exports[`Radio Theme: wireframe Unchecked 1`] = `
         class="Text__block Box__root borderColor__default"
       >
         <span
-          class="Text__block color__neutral fontFamily__body fontSize__interaction fontWeight__regular"
+          class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
           style="transform: none;"
         >
           Label
@@ -1643,7 +1643,7 @@ exports[`Radio Theme: wireframe Unchecked 1`] = `
       tabindex="-1"
     >
       <span
-        class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__regular"
+        class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
       >
         <div
           class="FieldMessage__content"
@@ -1706,7 +1706,7 @@ exports[`Radio Theme: wireframe With message 1`] = `
         class="Text__block Box__root borderColor__default"
       >
         <span
-          class="Text__block color__neutral fontFamily__body fontSize__interaction fontWeight__regular"
+          class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
           style="transform: none;"
         >
           Label
@@ -1733,7 +1733,7 @@ exports[`Radio Theme: wireframe With message 1`] = `
       tabindex="-1"
     >
       <span
-        class="Text__block color__critical fontFamily__body fontSize__body fontWeight__regular"
+        class="Text__block color__critical fontFamily__text fontSize__standard fontWeight__regular"
       >
         <div
           class="FieldMessage__content"
