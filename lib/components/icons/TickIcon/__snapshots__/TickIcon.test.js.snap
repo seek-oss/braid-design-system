@@ -2,10 +2,10 @@
 
 exports[`TickIcon Theme: jobStreet Default 1`] = `
 <svg
-  class="Box__root borderColor__default"
-  height="20"
+  class="width__standardText height__standardText Box__root borderColor__default"
+  height="16"
   viewBox="90.471 302.809 823 823"
-  width="20"
+  width="16"
 >
   <path
     d="M365.407 1022.185L90.677 747.457l67.883-67.882L365.406 886.42l479.977-479.988 67.883 67.882"
@@ -15,10 +15,10 @@ exports[`TickIcon Theme: jobStreet Default 1`] = `
 
 exports[`TickIcon Theme: jobStreet Inline 1`] = `
 <svg
-  class="Box__root borderColor__default"
-  height="14"
+  class="Icon__inline width__standardTextInline height__standardTextInline Box__root borderColor__default"
+  height="16"
   viewBox="90.471 302.809 823 823"
-  width="14"
+  width="16"
 >
   <path
     d="M365.407 1022.185L90.677 747.457l67.883-67.882L365.406 886.42l479.977-479.988 67.883 67.882"
@@ -28,10 +28,10 @@ exports[`TickIcon Theme: jobStreet Inline 1`] = `
 
 exports[`TickIcon Theme: jobStreet Sized 1`] = `
 <svg
-  class="Box__root borderColor__default"
-  height="24"
+  class="width__largeText height__largeText Box__root borderColor__default"
+  height="16"
   viewBox="90.471 302.809 823 823"
-  width="24"
+  width="16"
 >
   <path
     d="M365.407 1022.185L90.677 747.457l67.883-67.882L365.406 886.42l479.977-479.988 67.883 67.882"
@@ -41,10 +41,10 @@ exports[`TickIcon Theme: jobStreet Sized 1`] = `
 
 exports[`TickIcon Theme: seekAnz Default 1`] = `
 <svg
-  class="Box__root borderColor__default"
-  height="24"
+  class="width__standardText height__standardText Box__root borderColor__default"
+  height="16"
   viewBox="90.471 302.809 823 823"
-  width="24"
+  width="16"
 >
   <path
     d="M365.407 1022.185L90.677 747.457l67.883-67.882L365.406 886.42l479.977-479.988 67.883 67.882"
@@ -54,7 +54,7 @@ exports[`TickIcon Theme: seekAnz Default 1`] = `
 
 exports[`TickIcon Theme: seekAnz Inline 1`] = `
 <svg
-  class="Box__root borderColor__default"
+  class="Icon__inline width__standardTextInline height__standardTextInline Box__root borderColor__default"
   height="16"
   viewBox="90.471 302.809 823 823"
   width="16"
@@ -67,10 +67,10 @@ exports[`TickIcon Theme: seekAnz Inline 1`] = `
 
 exports[`TickIcon Theme: seekAnz Sized 1`] = `
 <svg
-  class="Box__root borderColor__default"
-  height="24"
+  class="width__largeText height__largeText Box__root borderColor__default"
+  height="16"
   viewBox="90.471 302.809 823 823"
-  width="24"
+  width="16"
 >
   <path
     d="M365.407 1022.185L90.677 747.457l67.883-67.882L365.406 886.42l479.977-479.988 67.883 67.882"
@@ -80,10 +80,10 @@ exports[`TickIcon Theme: seekAnz Sized 1`] = `
 
 exports[`TickIcon Theme: seekAsia Default 1`] = `
 <svg
-  class="Box__root borderColor__default"
-  height="20"
+  class="width__standardText height__standardText Box__root borderColor__default"
+  height="16"
   viewBox="90.471 302.809 823 823"
-  width="20"
+  width="16"
 >
   <path
     d="M365.407 1022.185L90.677 747.457l67.883-67.882L365.406 886.42l479.977-479.988 67.883 67.882"
@@ -93,7 +93,7 @@ exports[`TickIcon Theme: seekAsia Default 1`] = `
 
 exports[`TickIcon Theme: seekAsia Inline 1`] = `
 <svg
-  class="Box__root borderColor__default"
+  class="Icon__inline width__standardTextInline height__standardTextInline Box__root borderColor__default"
   height="16"
   viewBox="90.471 302.809 823 823"
   width="16"
@@ -106,10 +106,10 @@ exports[`TickIcon Theme: seekAsia Inline 1`] = `
 
 exports[`TickIcon Theme: seekAsia Sized 1`] = `
 <svg
-  class="Box__root borderColor__default"
-  height="24"
+  class="width__largeText height__largeText Box__root borderColor__default"
+  height="16"
   viewBox="90.471 302.809 823 823"
-  width="24"
+  width="16"
 >
   <path
     d="M365.407 1022.185L90.677 747.457l67.883-67.882L365.406 886.42l479.977-479.988 67.883 67.882"
@@ -119,10 +119,10 @@ exports[`TickIcon Theme: seekAsia Sized 1`] = `
 
 exports[`TickIcon Theme: wireframe Default 1`] = `
 <svg
-  class="Box__root borderColor__default"
-  height="24"
+  class="width__standardText height__standardText Box__root borderColor__default"
+  height="16"
   viewBox="90.471 302.809 823 823"
-  width="24"
+  width="16"
 >
   <path
     d="M365.407 1022.185L90.677 747.457l67.883-67.882L365.406 886.42l479.977-479.988 67.883 67.882"
@@ -132,7 +132,7 @@ exports[`TickIcon Theme: wireframe Default 1`] = `
 
 exports[`TickIcon Theme: wireframe Inline 1`] = `
 <svg
-  class="Box__root borderColor__default"
+  class="Icon__inline width__standardTextInline height__standardTextInline Box__root borderColor__default"
   height="16"
   viewBox="90.471 302.809 823 823"
   width="16"
@@ -145,10 +145,10 @@ exports[`TickIcon Theme: wireframe Inline 1`] = `
 
 exports[`TickIcon Theme: wireframe Sized 1`] = `
 <svg
-  class="Box__root borderColor__default"
-  height="24"
+  class="width__largeText height__largeText Box__root borderColor__default"
+  height="16"
   viewBox="90.471 302.809 823 823"
-  width="24"
+  width="16"
 >
   <path
     d="M365.407 1022.185L90.677 747.457l67.883-67.882L365.406 886.42l479.977-479.988 67.883 67.882"

@@ -41,11 +41,22 @@ export default ({ publicPath }) => {
     .filter(x => !/icon/i.test(x))
     .sort();
 
+  const iconNames = Object.keys(components)
+    .filter(x => /icon/i.test(x) && x !== 'Icon')
+    .sort();
+
   return {
     '/': template({ publicPath, url: '/' }),
     ...Object.assign(
       ...componentNames.map(componentName => {
         const location = `/components/${componentName}/`;
+
+        return {
+          [location]: template({ publicPath, location })
+        };
+      }),
+      ...iconNames.map(iconName => {
+        const location = `/icons/${iconName}/`;
 
         return {
           [location]: template({ publicPath, location })

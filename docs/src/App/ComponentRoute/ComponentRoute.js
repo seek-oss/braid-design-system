@@ -43,14 +43,17 @@ const typeValueToString = option => {
 
 export default class ComponentRoute extends Component {
   static propTypes = {
-    match: PropTypes.object.isRequired
+    componentName: PropTypes.string.isRequired,
+    category: PropTypes.string
   };
 
   render() {
-    const { match } = this.props;
-    const { componentName } = match.params;
-    const docs = require(`../../../../lib/components/${componentName}/${componentName}.docs.js`)
-      .default;
+    const { componentName, category } = this.props;
+    const docs = category
+      ? require(`../../../../lib/components/${category}/${componentName}/${componentName}.docs.js`)
+          .default
+      : require(`../../../../lib/components/${componentName}/${componentName}.docs.js`)
+          .default;
     const propTypes = parsePropTypes(docs.component);
     const options = Object.keys(propTypes).map(propName => ({
       name: propName,
@@ -61,7 +64,7 @@ export default class ComponentRoute extends Component {
     return (
       <Box>
         <Text size="large" weight="strong" paddingBottom="small">
-          {match.params.componentName}
+          {componentName}
         </Text>
 
         {examples.length > 0 ? (

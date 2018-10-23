@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`sizeRulesForTokens Theme: jobStreet Rules 1`] = `
+Object {
+  ".largeText": Object {
+    "width": "24px",
+  },
+  ".largeTextInline": Object {
+    "width": "18px",
+  },
+  ".standardText": Object {
+    "width": "20px",
+  },
+  ".standardTextInline": Object {
+    "width": "14px",
+  },
+  "@media screen and (min-width: 768px)": Object {
+    ".largeText": Object {
+      "width": "28px",
+    },
+    ".largeTextInline": Object {
+      "width": "20px",
+    },
+  },
+}
+`;
+
+exports[`sizeRulesForTokens Theme: seekAnz Rules 1`] = `
+Object {
+  ".largeText": Object {
+    "width": "24px",
+  },
+  ".largeTextInline": Object {
+    "width": "18px",
+  },
+  ".standardText": Object {
+    "width": "24px",
+  },
+  ".standardTextInline": Object {
+    "width": "16px",
+  },
+}
+`;
+
+exports[`sizeRulesForTokens Theme: seekAsia Rules 1`] = `
+Object {
+  ".largeText": Object {
+    "width": "24px",
+  },
+  ".largeTextInline": Object {
+    "width": "18px",
+  },
+  ".standardText": Object {
+    "width": "24px",
+  },
+  ".standardTextInline": Object {
+    "width": "16px",
+  },
+  "@media screen and (min-width: 768px)": Object {
+    ".largeText": Object {
+      "width": "28px",
+    },
+    ".largeTextInline": Object {
+      "width": "20px",
+    },
+  },
+}
+`;
+
+exports[`sizeRulesForTokens Theme: wireframe Rules 1`] = `
+Object {
+  ".largeText": Object {
+    "width": "24px",
+  },
+  ".largeTextInline": Object {
+    "width": "18px",
+  },
+  ".standardText": Object {
+    "width": "24px",
+  },
+  ".standardTextInline": Object {
+    "width": "16px",
+  },
+}
+`;
