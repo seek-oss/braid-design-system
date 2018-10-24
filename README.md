@@ -67,6 +67,12 @@ $ yarn
 $ yarn start
 ```
 
+Start a local Storybook server:
+
+```bash
+$ yarn storybook
+```
+
 ## License
 
 MIT.
