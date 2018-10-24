@@ -11,6 +11,7 @@
     "lint": "sku lint",
     "format": "sku format",
     "build": "sku build",
+    "storybook": "sku storybook",
     "deploy": "node scripts/deploy.js",
     "deploy-preview": "surge -p ./docs/dist",
     "post-commit-status": "node scripts/postCommitStatus.js",
