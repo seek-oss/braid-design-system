@@ -2,10 +2,10 @@
 
 exports[`InfoIcon Theme: jobStreet Default 1`] = `
 <svg
-  class="Box__root borderColor__default"
-  height="20"
+  class="width__standardText height__standardText Box__root borderColor__default"
+  height="16"
   viewBox="0 0 30 30"
-  width="20"
+  width="16"
   x="0"
   y="0"
 >
@@ -23,10 +23,10 @@ exports[`InfoIcon Theme: jobStreet Default 1`] = `
 
 exports[`InfoIcon Theme: jobStreet Inline 1`] = `
 <svg
-  class="Box__root borderColor__default"
-  height="14"
+  class="Icon__inline width__standardTextInline height__standardTextInline Box__root borderColor__default"
+  height="16"
   viewBox="0 0 30 30"
-  width="14"
+  width="16"
   x="0"
   y="0"
 >
@@ -44,10 +44,10 @@ exports[`InfoIcon Theme: jobStreet Inline 1`] = `
 
 exports[`InfoIcon Theme: jobStreet Sized 1`] = `
 <svg
-  class="Box__root borderColor__default"
-  height="24"
+  class="width__largeText height__largeText Box__root borderColor__default"
+  height="16"
   viewBox="0 0 30 30"
-  width="24"
+  width="16"
   x="0"
   y="0"
 >
@@ -65,10 +65,10 @@ exports[`InfoIcon Theme: jobStreet Sized 1`] = `
 
 exports[`InfoIcon Theme: seekAnz Default 1`] = `
 <svg
-  class="Box__root borderColor__default"
-  height="24"
+  class="width__standardText height__standardText Box__root borderColor__default"
+  height="16"
   viewBox="0 0 30 30"
-  width="24"
+  width="16"
   x="0"
   y="0"
 >
@@ -86,7 +86,7 @@ exports[`InfoIcon Theme: seekAnz Default 1`] = `
 
 exports[`InfoIcon Theme: seekAnz Inline 1`] = `
 <svg
-  class="Box__root borderColor__default"
+  class="Icon__inline width__standardTextInline height__standardTextInline Box__root borderColor__default"
   height="16"
   viewBox="0 0 30 30"
   width="16"
@@ -107,10 +107,10 @@ exports[`InfoIcon Theme: seekAnz Inline 1`] = `
 
 exports[`InfoIcon Theme: seekAnz Sized 1`] = `
 <svg
-  class="Box__root borderColor__default"
-  height="24"
+  class="width__largeText height__largeText Box__root borderColor__default"
+  height="16"
   viewBox="0 0 30 30"
-  width="24"
+  width="16"
   x="0"
   y="0"
 >
@@ -128,10 +128,10 @@ exports[`InfoIcon Theme: seekAnz Sized 1`] = `
 
 exports[`InfoIcon Theme: seekAsia Default 1`] = `
 <svg
-  class="Box__root borderColor__default"
-  height="20"
+  class="width__standardText height__standardText Box__root borderColor__default"
+  height="16"
   viewBox="0 0 30 30"
-  width="20"
+  width="16"
   x="0"
   y="0"
 >
@@ -149,7 +149,7 @@ exports[`InfoIcon Theme: seekAsia Default 1`] = `
 
 exports[`InfoIcon Theme: seekAsia Inline 1`] = `
 <svg
-  class="Box__root borderColor__default"
+  class="Icon__inline width__standardTextInline height__standardTextInline Box__root borderColor__default"
   height="16"
   viewBox="0 0 30 30"
   width="16"
@@ -170,10 +170,10 @@ exports[`InfoIcon Theme: seekAsia Inline 1`] = `
 
 exports[`InfoIcon Theme: seekAsia Sized 1`] = `
 <svg
-  class="Box__root borderColor__default"
-  height="24"
+  class="width__largeText height__largeText Box__root borderColor__default"
+  height="16"
   viewBox="0 0 30 30"
-  width="24"
+  width="16"
   x="0"
   y="0"
 >
@@ -191,10 +191,10 @@ exports[`InfoIcon Theme: seekAsia Sized 1`] = `
 
 exports[`InfoIcon Theme: wireframe Default 1`] = `
 <svg
-  class="Box__root borderColor__default"
-  height="24"
+  class="width__standardText height__standardText Box__root borderColor__default"
+  height="16"
   viewBox="0 0 30 30"
-  width="24"
+  width="16"
   x="0"
   y="0"
 >
@@ -212,7 +212,7 @@ exports[`InfoIcon Theme: wireframe Default 1`] = `
 
 exports[`InfoIcon Theme: wireframe Inline 1`] = `
 <svg
-  class="Box__root borderColor__default"
+  class="Icon__inline width__standardTextInline height__standardTextInline Box__root borderColor__default"
   height="16"
   viewBox="0 0 30 30"
   width="16"
@@ -233,10 +233,10 @@ exports[`InfoIcon Theme: wireframe Inline 1`] = `
 
 exports[`InfoIcon Theme: wireframe Sized 1`] = `
 <svg
-  class="Box__root borderColor__default"
-  height="24"
+  class="width__largeText height__largeText Box__root borderColor__default"
+  height="16"
   viewBox="0 0 30 30"
-  width="24"
+  width="16"
   x="0"
   y="0"
 >

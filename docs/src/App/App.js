@@ -14,6 +14,19 @@ import styles from './App.css.js';
 const { ThemeProvider, Text, Box, BulletList, Bullet } = components;
 
 export default class App extends Component {
+  renderComponentRoute({ match }) {
+    return <ComponentRoute componentName={match.params.componentName} />;
+  }
+
+  renderIconRoute({ match }) {
+    return (
+      <ComponentRoute
+        componentName={match.params.componentName}
+        category="icons"
+      />
+    );
+  }
+
   render() {
     return (
       <ThemeProvider theme={themes.wireframe}>
@@ -38,7 +51,7 @@ export default class App extends Component {
               <Text size="large" weight="strong" marginBottom="small">
                 Components
               </Text>
-              <BulletList>
+              <BulletList marginBottom="small">
                 {Object.keys(components)
                   .filter(x => !/icon/i.test(x))
                   .sort()
@@ -49,6 +62,24 @@ export default class App extends Component {
                         to={`/components/${componentName}`}
                       >
                         {componentName}
+                      </Link>
+                    </Bullet>
+                  ))}
+              </BulletList>
+              <Text size="large" weight="strong" marginBottom="small">
+                Icons
+              </Text>
+              <BulletList>
+                {Object.keys(components)
+                  .filter(x => /icon/i.test(x) && x !== 'Icon')
+                  .sort()
+                  .map(iconName => (
+                    <Bullet key={iconName}>
+                      <Link
+                        style={{ color: 'inherit' }}
+                        to={`/icons/${iconName}`}
+                      >
+                        {iconName}
                       </Link>
                     </Bullet>
                   ))}
@@ -64,7 +95,11 @@ export default class App extends Component {
             >
               <Route
                 path="/components/:componentName"
-                component={ComponentRoute}
+                render={this.renderComponentRoute}
+              />
+              <Route
+                path="/icons/:componentName"
+                render={this.renderIconRoute}
               />
             </Box>
           </div>

@@ -45,10 +45,10 @@ exports[`ChecklistCard Theme: jobStreet Default 1`] = `
             style="opacity: 0;"
           />
           <svg
-            class="Checkbox__checkboxIcon fill__white transition__fast Box__root borderColor__default"
-            height="100%"
+            class="Checkbox__checkboxIcon fill__white transition__fast Icon__fillSize Box__root borderColor__default"
+            height="16"
             viewBox="90.471 302.809 823 823"
-            width="100%"
+            width="16"
           >
             <path
               d="M365.407 1022.185L90.677 747.457l67.883-67.882L365.406 886.42l479.977-479.988 67.883 67.882"
@@ -59,7 +59,7 @@ exports[`ChecklistCard Theme: jobStreet Default 1`] = `
           class="Text__block Box__root borderColor__default"
         >
           <span
-            class="Text__block color__neutral fontFamily__body fontSize__interaction fontWeight__regular"
+            class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
             style="transform: none;"
           >
             Label 1
@@ -76,14 +76,15 @@ exports[`ChecklistCard Theme: jobStreet Default 1`] = `
         tabindex="-1"
       >
         <span
-          class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__regular"
+          class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
         >
           <div
             class="FieldMessage__content"
           >
             <div
-              style="min-height: 20px;"
+              class="height__standardText"
             />
+            <div />
           </div>
         </span>
       </div>
@@ -137,10 +138,10 @@ exports[`ChecklistCard Theme: jobStreet Default 1`] = `
             style="opacity: 0;"
           />
           <svg
-            class="Checkbox__checkboxIcon fill__white transition__fast Box__root borderColor__default"
-            height="100%"
+            class="Checkbox__checkboxIcon fill__white transition__fast Icon__fillSize Box__root borderColor__default"
+            height="16"
             viewBox="90.471 302.809 823 823"
-            width="100%"
+            width="16"
           >
             <path
               d="M365.407 1022.185L90.677 747.457l67.883-67.882L365.406 886.42l479.977-479.988 67.883 67.882"
@@ -151,7 +152,7 @@ exports[`ChecklistCard Theme: jobStreet Default 1`] = `
           class="Text__block Box__root borderColor__default"
         >
           <span
-            class="Text__block color__neutral fontFamily__body fontSize__interaction fontWeight__regular"
+            class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
             style="transform: none;"
           >
             Label 2
@@ -168,14 +169,15 @@ exports[`ChecklistCard Theme: jobStreet Default 1`] = `
         tabindex="-1"
       >
         <span
-          class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__regular"
+          class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
         >
           <div
             class="FieldMessage__content"
           >
             <div
-              style="min-height: 20px;"
+              class="height__standardText"
             />
+            <div />
           </div>
         </span>
       </div>
@@ -229,10 +231,10 @@ exports[`ChecklistCard Theme: jobStreet Default 1`] = `
             style="opacity: 0;"
           />
           <svg
-            class="Checkbox__checkboxIcon fill__white transition__fast Box__root borderColor__default"
-            height="100%"
+            class="Checkbox__checkboxIcon fill__white transition__fast Icon__fillSize Box__root borderColor__default"
+            height="16"
             viewBox="90.471 302.809 823 823"
-            width="100%"
+            width="16"
           >
             <path
               d="M365.407 1022.185L90.677 747.457l67.883-67.882L365.406 886.42l479.977-479.988 67.883 67.882"
@@ -243,7 +245,7 @@ exports[`ChecklistCard Theme: jobStreet Default 1`] = `
           class="Text__block Box__root borderColor__default"
         >
           <span
-            class="Text__block color__neutral fontFamily__body fontSize__interaction fontWeight__regular"
+            class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
             style="transform: none;"
           >
             Label 3
@@ -260,14 +262,15 @@ exports[`ChecklistCard Theme: jobStreet Default 1`] = `
         tabindex="-1"
       >
         <span
-          class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__regular"
+          class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
         >
           <div
             class="FieldMessage__content"
           >
             <div
-              style="min-height: 20px;"
+              class="height__standardText"
             />
+            <div />
           </div>
         </span>
       </div>
@@ -321,10 +324,10 @@ exports[`ChecklistCard Theme: seekAnz Default 1`] = `
             style="opacity: 0;"
           />
           <svg
-            class="Checkbox__checkboxIcon fill__white transition__fast Box__root borderColor__default"
-            height="100%"
+            class="Checkbox__checkboxIcon fill__white transition__fast Icon__fillSize Box__root borderColor__default"
+            height="16"
             viewBox="90.471 302.809 823 823"
-            width="100%"
+            width="16"
           >
             <path
               d="M365.407 1022.185L90.677 747.457l67.883-67.882L365.406 886.42l479.977-479.988 67.883 67.882"
@@ -335,7 +338,7 @@ exports[`ChecklistCard Theme: seekAnz Default 1`] = `
           class="Text__block Box__root borderColor__default"
         >
           <span
-            class="Text__block color__neutral fontFamily__body fontSize__interaction fontWeight__regular"
+            class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
             style="transform: none;"
           >
             Label 1
@@ -352,14 +355,15 @@ exports[`ChecklistCard Theme: seekAnz Default 1`] = `
         tabindex="-1"
       >
         <span
-          class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__regular"
+          class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
         >
           <div
             class="FieldMessage__content"
           >
             <div
-              style="min-height: 24px;"
+              class="height__standardText"
             />
+            <div />
           </div>
         </span>
       </div>
@@ -413,10 +417,10 @@ exports[`ChecklistCard Theme: seekAnz Default 1`] = `
             style="opacity: 0;"
           />
           <svg
-            class="Checkbox__checkboxIcon fill__white transition__fast Box__root borderColor__default"
-            height="100%"
+            class="Checkbox__checkboxIcon fill__white transition__fast Icon__fillSize Box__root borderColor__default"
+            height="16"
             viewBox="90.471 302.809 823 823"
-            width="100%"
+            width="16"
           >
             <path
               d="M365.407 1022.185L90.677 747.457l67.883-67.882L365.406 886.42l479.977-479.988 67.883 67.882"
@@ -427,7 +431,7 @@ exports[`ChecklistCard Theme: seekAnz Default 1`] = `
           class="Text__block Box__root borderColor__default"
         >
           <span
-            class="Text__block color__neutral fontFamily__body fontSize__interaction fontWeight__regular"
+            class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
             style="transform: none;"
           >
             Label 2
@@ -444,14 +448,15 @@ exports[`ChecklistCard Theme: seekAnz Default 1`] = `
         tabindex="-1"
       >
         <span
-          class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__regular"
+          class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
         >
           <div
             class="FieldMessage__content"
           >
             <div
-              style="min-height: 24px;"
+              class="height__standardText"
             />
+            <div />
           </div>
         </span>
       </div>
@@ -505,10 +510,10 @@ exports[`ChecklistCard Theme: seekAnz Default 1`] = `
             style="opacity: 0;"
           />
           <svg
-            class="Checkbox__checkboxIcon fill__white transition__fast Box__root borderColor__default"
-            height="100%"
+            class="Checkbox__checkboxIcon fill__white transition__fast Icon__fillSize Box__root borderColor__default"
+            height="16"
             viewBox="90.471 302.809 823 823"
-            width="100%"
+            width="16"
           >
             <path
               d="M365.407 1022.185L90.677 747.457l67.883-67.882L365.406 886.42l479.977-479.988 67.883 67.882"
@@ -519,7 +524,7 @@ exports[`ChecklistCard Theme: seekAnz Default 1`] = `
           class="Text__block Box__root borderColor__default"
         >
           <span
-            class="Text__block color__neutral fontFamily__body fontSize__interaction fontWeight__regular"
+            class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
             style="transform: none;"
           >
             Label 3
@@ -536,14 +541,15 @@ exports[`ChecklistCard Theme: seekAnz Default 1`] = `
         tabindex="-1"
       >
         <span
-          class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__regular"
+          class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
         >
           <div
             class="FieldMessage__content"
           >
             <div
-              style="min-height: 24px;"
+              class="height__standardText"
             />
+            <div />
           </div>
         </span>
       </div>
@@ -597,10 +603,10 @@ exports[`ChecklistCard Theme: seekAsia Default 1`] = `
             style="opacity: 0;"
           />
           <svg
-            class="Checkbox__checkboxIcon fill__white transition__fast Box__root borderColor__default"
-            height="100%"
+            class="Checkbox__checkboxIcon fill__white transition__fast Icon__fillSize Box__root borderColor__default"
+            height="16"
             viewBox="90.471 302.809 823 823"
-            width="100%"
+            width="16"
           >
             <path
               d="M365.407 1022.185L90.677 747.457l67.883-67.882L365.406 886.42l479.977-479.988 67.883 67.882"
@@ -611,7 +617,7 @@ exports[`ChecklistCard Theme: seekAsia Default 1`] = `
           class="Text__block Box__root borderColor__default"
         >
           <span
-            class="Text__block color__neutral fontFamily__body fontSize__interaction fontWeight__regular"
+            class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
             style="transform: none;"
           >
             Label 1
@@ -628,14 +634,15 @@ exports[`ChecklistCard Theme: seekAsia Default 1`] = `
         tabindex="-1"
       >
         <span
-          class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__regular"
+          class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
         >
           <div
             class="FieldMessage__content"
           >
             <div
-              style="min-height: 20px;"
+              class="height__standardText"
             />
+            <div />
           </div>
         </span>
       </div>
@@ -689,10 +696,10 @@ exports[`ChecklistCard Theme: seekAsia Default 1`] = `
             style="opacity: 0;"
           />
           <svg
-            class="Checkbox__checkboxIcon fill__white transition__fast Box__root borderColor__default"
-            height="100%"
+            class="Checkbox__checkboxIcon fill__white transition__fast Icon__fillSize Box__root borderColor__default"
+            height="16"
             viewBox="90.471 302.809 823 823"
-            width="100%"
+            width="16"
           >
             <path
               d="M365.407 1022.185L90.677 747.457l67.883-67.882L365.406 886.42l479.977-479.988 67.883 67.882"
@@ -703,7 +710,7 @@ exports[`ChecklistCard Theme: seekAsia Default 1`] = `
           class="Text__block Box__root borderColor__default"
         >
           <span
-            class="Text__block color__neutral fontFamily__body fontSize__interaction fontWeight__regular"
+            class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
             style="transform: none;"
           >
             Label 2
@@ -720,14 +727,15 @@ exports[`ChecklistCard Theme: seekAsia Default 1`] = `
         tabindex="-1"
       >
         <span
-          class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__regular"
+          class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
         >
           <div
             class="FieldMessage__content"
           >
             <div
-              style="min-height: 20px;"
+              class="height__standardText"
             />
+            <div />
           </div>
         </span>
       </div>
@@ -781,10 +789,10 @@ exports[`ChecklistCard Theme: seekAsia Default 1`] = `
             style="opacity: 0;"
           />
           <svg
-            class="Checkbox__checkboxIcon fill__white transition__fast Box__root borderColor__default"
-            height="100%"
+            class="Checkbox__checkboxIcon fill__white transition__fast Icon__fillSize Box__root borderColor__default"
+            height="16"
             viewBox="90.471 302.809 823 823"
-            width="100%"
+            width="16"
           >
             <path
               d="M365.407 1022.185L90.677 747.457l67.883-67.882L365.406 886.42l479.977-479.988 67.883 67.882"
@@ -795,7 +803,7 @@ exports[`ChecklistCard Theme: seekAsia Default 1`] = `
           class="Text__block Box__root borderColor__default"
         >
           <span
-            class="Text__block color__neutral fontFamily__body fontSize__interaction fontWeight__regular"
+            class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
             style="transform: none;"
           >
             Label 3
@@ -812,14 +820,15 @@ exports[`ChecklistCard Theme: seekAsia Default 1`] = `
         tabindex="-1"
       >
         <span
-          class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__regular"
+          class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
         >
           <div
             class="FieldMessage__content"
           >
             <div
-              style="min-height: 20px;"
+              class="height__standardText"
             />
+            <div />
           </div>
         </span>
       </div>
@@ -873,10 +882,10 @@ exports[`ChecklistCard Theme: wireframe Default 1`] = `
             style="opacity: 0;"
           />
           <svg
-            class="Checkbox__checkboxIcon fill__white transition__fast Box__root borderColor__default"
-            height="100%"
+            class="Checkbox__checkboxIcon fill__white transition__fast Icon__fillSize Box__root borderColor__default"
+            height="16"
             viewBox="90.471 302.809 823 823"
-            width="100%"
+            width="16"
           >
             <path
               d="M365.407 1022.185L90.677 747.457l67.883-67.882L365.406 886.42l479.977-479.988 67.883 67.882"
@@ -887,7 +896,7 @@ exports[`ChecklistCard Theme: wireframe Default 1`] = `
           class="Text__block Box__root borderColor__default"
         >
           <span
-            class="Text__block color__neutral fontFamily__body fontSize__interaction fontWeight__regular"
+            class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
             style="transform: none;"
           >
             Label 1
@@ -904,14 +913,15 @@ exports[`ChecklistCard Theme: wireframe Default 1`] = `
         tabindex="-1"
       >
         <span
-          class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__regular"
+          class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
         >
           <div
             class="FieldMessage__content"
           >
             <div
-              style="min-height: 24px;"
+              class="height__standardText"
             />
+            <div />
           </div>
         </span>
       </div>
@@ -965,10 +975,10 @@ exports[`ChecklistCard Theme: wireframe Default 1`] = `
             style="opacity: 0;"
           />
           <svg
-            class="Checkbox__checkboxIcon fill__white transition__fast Box__root borderColor__default"
-            height="100%"
+            class="Checkbox__checkboxIcon fill__white transition__fast Icon__fillSize Box__root borderColor__default"
+            height="16"
             viewBox="90.471 302.809 823 823"
-            width="100%"
+            width="16"
           >
             <path
               d="M365.407 1022.185L90.677 747.457l67.883-67.882L365.406 886.42l479.977-479.988 67.883 67.882"
@@ -979,7 +989,7 @@ exports[`ChecklistCard Theme: wireframe Default 1`] = `
           class="Text__block Box__root borderColor__default"
         >
           <span
-            class="Text__block color__neutral fontFamily__body fontSize__interaction fontWeight__regular"
+            class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
             style="transform: none;"
           >
             Label 2
@@ -996,14 +1006,15 @@ exports[`ChecklistCard Theme: wireframe Default 1`] = `
         tabindex="-1"
       >
         <span
-          class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__regular"
+          class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
         >
           <div
             class="FieldMessage__content"
           >
             <div
-              style="min-height: 24px;"
+              class="height__standardText"
             />
+            <div />
           </div>
         </span>
       </div>
@@ -1057,10 +1068,10 @@ exports[`ChecklistCard Theme: wireframe Default 1`] = `
             style="opacity: 0;"
           />
           <svg
-            class="Checkbox__checkboxIcon fill__white transition__fast Box__root borderColor__default"
-            height="100%"
+            class="Checkbox__checkboxIcon fill__white transition__fast Icon__fillSize Box__root borderColor__default"
+            height="16"
             viewBox="90.471 302.809 823 823"
-            width="100%"
+            width="16"
           >
             <path
               d="M365.407 1022.185L90.677 747.457l67.883-67.882L365.406 886.42l479.977-479.988 67.883 67.882"
@@ -1071,7 +1082,7 @@ exports[`ChecklistCard Theme: wireframe Default 1`] = `
           class="Text__block Box__root borderColor__default"
         >
           <span
-            class="Text__block color__neutral fontFamily__body fontSize__interaction fontWeight__regular"
+            class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
             style="transform: none;"
           >
             Label 3
@@ -1088,14 +1099,15 @@ exports[`ChecklistCard Theme: wireframe Default 1`] = `
         tabindex="-1"
       >
         <span
-          class="Text__block color__neutral fontFamily__body fontSize__body fontWeight__regular"
+          class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
         >
           <div
             class="FieldMessage__content"
           >
             <div
-              style="min-height: 24px;"
+              class="height__standardText"
             />
+            <div />
           </div>
         </span>
       </div>
