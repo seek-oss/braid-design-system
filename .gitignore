@@ -1,8 +1,12 @@
 node_modules/
-dist/
-report/
 package-lock.json
 *.log
 .DS_Store
 .vscode/
 .idea/
+
+# managed by sku
+.prettierrc
+docs/dist/
+report/
+# end managed by sku
