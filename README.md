@@ -36,10 +36,7 @@ import React from 'react';
 Finally, render the `ThemeProvider` component, providing the imported theme via the `theme` prop:
 
 ```js
-import {
-  ThemeProvider,
-  Text
-} from 'braid-design-system';
+import { ThemeProvider, Text } from 'braid-design-system';
 
 export default () => (
   <ThemeProvider theme={jobStreetTheme}>
