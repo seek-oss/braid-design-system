@@ -1,5 +1,10 @@
 version: 3
 
+pullapprove_conditions:
+  - condition: "contains_regex(title, '^(build|ci|chore|docs|feat|fix|perf|refactor|revert|style|test)(\\(\\w+\\))?\\:\\s[A-Z].*$')"
+    unmet_status: failure
+    explanation: "Invalid PR title. For more information please see https://github.com/seek-oss/commitlint-config-seek"
+
 groups:
   code:
     reviews:
@@ -7,6 +12,3 @@ groups:
     reviewers:
       teams:
         - front-end-contributors
-    conditions:
-      - "contains_regex(title, '^(build|ci|chore|docs|feat|fix|perf|refactor|revert|style|test)(\\(\\w+\\))?\\:\\s[A-Z].*$')"
-      
