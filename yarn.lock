@@ -1045,6 +1045,21 @@
     universal-user-agent "^2.0.0"
     url-template "^2.0.8"
 
+"@octokit/rest@^15.16.1":
+  version "15.16.1"
+  resolved "https://registry.yarnpkg.com/@octokit/rest/-/rest-15.16.1.tgz#399b06660fe16852cf432059c845d4cdcaf77f5a"
+  integrity sha512-86RGoibm8AJ3ZBlM0NdMI932wEZ/bdo2eEppHtliEYwJT9hsy5qt+i9HA+T8CC90r4atoFQDrY7mDLBcAjp9ow==
+  dependencies:
+    before-after-hook "^1.1.0"
+    btoa-lite "^1.0.0"
+    debug "^3.1.0"
+    http-proxy-agent "^2.1.0"
+    https-proxy-agent "^2.2.0"
+    lodash "^4.17.4"
+    node-fetch "^2.1.1"
+    universal-user-agent "^2.0.0"
+    url-template "^2.0.8"
+
 "@samverschueren/stream-to-observable@^0.3.0":
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/@samverschueren/stream-to-observable/-/stream-to-observable-0.3.0.tgz#ecdf48d532c58ea477acfcab80348424f8d0662f"
