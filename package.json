@@ -5,6 +5,7 @@
   "main": "lib/components/index.js",
   "sideEffects": false,
   "scripts": {
+    "check": "yarn check --integrity && echo 'Ignore paths from lint-staged'",
     "test": "yarn check --integrity && npm run lint && npm run unit && npm run build",
     "start": "sku start",
     "unit": "sku test",
@@ -16,14 +17,33 @@
     "deploy-preview": "surge -p ./docs/dist",
     "post-commit-status": "node scripts/postCommitStatus.js",
     "commit": "git-cz",
-    "commitmsg": "commitlint --edit --extends seek",
     "travis-deploy-once": "travis-deploy-once",
     "semantic-release": "semantic-release"
   },
   "config": {
     "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
+      "path": "cz-conventional-changelog"
     }
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint --edit --extends seek",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "+(package.json|yarn.lock)": [
+      "npm run check",
+      "git add package.json yarn.lock"
+    ],
+    "**/*.{js}": [
+      "npm run lint",
+      "git add"
+    ],
+    "**/*.{js,md,less}": [
+      "npm run format",
+      "git add"
+    ]
   },
   "repository": {
     "type": "git",
@@ -44,15 +64,16 @@
     "react": "^16.0.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^7.1.2",
-    "@octokit/rest": "^15.13.1",
-    "commitizen": "^2.10.1",
+    "@commitlint/cli": "^7.2.1",
+    "@octokit/rest": "^15.16.1",
+    "commitizen": "^3.0.4",
     "commitlint-config-seek": "1.0.0",
     "cz-conventional-changelog": "^2.1.0",
     "dedent": "0.7.0",
     "deep-keys": "^0.5.0",
     "gh-pages": "^2.0.1",
-    "husky": "^1.0.1",
+    "husky": "^1.1.3",
+    "lint-staged": "^8.0.4",
     "lodash": "^4.17.11",
     "parse-prop-types": "^0.3.0",
     "react": "^16.5.2",
@@ -62,7 +83,7 @@
     "react-router-dom": "^4.3.1",
     "react-testing-library": "^5.1.0",
     "renovate-config-seek": "0.4.0",
-    "semantic-release": "^15.9.16",
+    "semantic-release": "^15.10.8",
     "sku": "6.0.5",
     "surge": "^0.20.1",
     "travis-deploy-once": "^5.0.9"
