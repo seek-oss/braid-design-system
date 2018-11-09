@@ -2,7 +2,7 @@
 
 exports[`Card Theme: jobStreet Default 1`] = `
 <div
-  class="Box__root backgroundColor__card borderColor__default marginBottom__medium"
+  class="Box__root backgroundColor__card borderColor__standard marginBottom__medium"
 >
   Children
 </div>
@@ -10,7 +10,7 @@ exports[`Card Theme: jobStreet Default 1`] = `
 
 exports[`Card Theme: seekAnz Default 1`] = `
 <div
-  class="Box__root backgroundColor__card borderColor__default marginBottom__medium"
+  class="Box__root backgroundColor__card borderColor__standard marginBottom__medium"
 >
   Children
 </div>
@@ -18,7 +18,7 @@ exports[`Card Theme: seekAnz Default 1`] = `
 
 exports[`Card Theme: seekAsia Default 1`] = `
 <div
-  class="Box__root backgroundColor__card borderColor__default marginBottom__medium"
+  class="Box__root backgroundColor__card borderColor__standard marginBottom__medium"
 >
   Children
 </div>
@@ -26,7 +26,7 @@ exports[`Card Theme: seekAsia Default 1`] = `
 
 exports[`Card Theme: wireframe Default 1`] = `
 <div
-  class="Box__root backgroundColor__card borderColor__default marginBottom__medium"
+  class="Box__root backgroundColor__card borderColor__standard marginBottom__medium"
 >
   Children
 </div>

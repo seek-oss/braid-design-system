@@ -2,7 +2,7 @@
 
 exports[`Alert Theme: jobStreet Tones critical 1`] = `
 <div
-  class="Box__root backgroundColor__critical borderColor__default paddingTop__medium paddingRight__gutter paddingBottom__medium paddingLeft__gutter"
+  class="Box__root backgroundColor__critical borderColor__standard paddingTop__medium paddingRight__gutter paddingBottom__medium paddingLeft__gutter"
 >
   <div
     class="Alert__root"
@@ -11,7 +11,7 @@ exports[`Alert Theme: jobStreet Tones critical 1`] = `
       class="Alert__icon"
     >
       <svg
-        class="width__standardText height__standardText fill__critical Box__root borderColor__default marginRight__small"
+        class="width__standardText height__standardText fill__critical Box__root borderColor__standard marginRight__small"
         height="16"
         viewBox="0 0 512 512"
         width="16"
@@ -22,7 +22,7 @@ exports[`Alert Theme: jobStreet Tones critical 1`] = `
       </svg>
     </div>
     <div
-      class="Text__block Box__root borderColor__default"
+      class="Text__block Box__root borderColor__standard"
     >
       <span
         class="Text__block color__critical fontFamily__text fontSize__standard fontWeight__regular"
@@ -37,7 +37,7 @@ exports[`Alert Theme: jobStreet Tones critical 1`] = `
 
 exports[`Alert Theme: jobStreet Tones info 1`] = `
 <div
-  class="Box__root backgroundColor__info borderColor__default paddingTop__medium paddingRight__gutter paddingBottom__medium paddingLeft__gutter"
+  class="Box__root backgroundColor__info borderColor__standard paddingTop__medium paddingRight__gutter paddingBottom__medium paddingLeft__gutter"
 >
   <div
     class="Alert__root"
@@ -46,7 +46,7 @@ exports[`Alert Theme: jobStreet Tones info 1`] = `
       class="Alert__icon"
     >
       <svg
-        class="width__standardText height__standardText fill__white Box__root borderColor__default marginRight__small"
+        class="width__standardText height__standardText fill__white Box__root borderColor__standard marginRight__small"
         height="16"
         viewBox="0 0 30 30"
         width="16"
@@ -65,7 +65,7 @@ exports[`Alert Theme: jobStreet Tones info 1`] = `
       </svg>
     </div>
     <div
-      class="Text__block Box__root borderColor__default"
+      class="Text__block Box__root borderColor__standard"
     >
       <span
         class="Text__block color__white fontFamily__text fontSize__standard fontWeight__regular"
@@ -80,7 +80,7 @@ exports[`Alert Theme: jobStreet Tones info 1`] = `
 
 exports[`Alert Theme: seekAnz Tones critical 1`] = `
 <div
-  class="Box__root backgroundColor__critical borderColor__default paddingTop__medium paddingRight__gutter paddingBottom__medium paddingLeft__gutter"
+  class="Box__root backgroundColor__critical borderColor__standard paddingTop__medium paddingRight__gutter paddingBottom__medium paddingLeft__gutter"
 >
   <div
     class="Alert__root"
@@ -89,7 +89,7 @@ exports[`Alert Theme: seekAnz Tones critical 1`] = `
       class="Alert__icon"
     >
       <svg
-        class="width__standardText height__standardText fill__critical Box__root borderColor__default marginRight__small"
+        class="width__standardText height__standardText fill__critical Box__root borderColor__standard marginRight__small"
         height="16"
         viewBox="0 0 512 512"
         width="16"
@@ -100,7 +100,7 @@ exports[`Alert Theme: seekAnz Tones critical 1`] = `
       </svg>
     </div>
     <div
-      class="Text__block Box__root borderColor__default"
+      class="Text__block Box__root borderColor__standard"
     >
       <span
         class="Text__block color__critical fontFamily__text fontSize__standard fontWeight__regular"
@@ -115,7 +115,7 @@ exports[`Alert Theme: seekAnz Tones critical 1`] = `
 
 exports[`Alert Theme: seekAnz Tones info 1`] = `
 <div
-  class="Box__root backgroundColor__info borderColor__default paddingTop__medium paddingRight__gutter paddingBottom__medium paddingLeft__gutter"
+  class="Box__root backgroundColor__info borderColor__standard paddingTop__medium paddingRight__gutter paddingBottom__medium paddingLeft__gutter"
 >
   <div
     class="Alert__root"
@@ -124,7 +124,7 @@ exports[`Alert Theme: seekAnz Tones info 1`] = `
       class="Alert__icon"
     >
       <svg
-        class="width__standardText height__standardText fill__white Box__root borderColor__default marginRight__small"
+        class="width__standardText height__standardText fill__white Box__root borderColor__standard marginRight__small"
         height="16"
         viewBox="0 0 30 30"
         width="16"
@@ -143,7 +143,7 @@ exports[`Alert Theme: seekAnz Tones info 1`] = `
       </svg>
     </div>
     <div
-      class="Text__block Box__root borderColor__default"
+      class="Text__block Box__root borderColor__standard"
     >
       <span
         class="Text__block color__white fontFamily__text fontSize__standard fontWeight__regular"
@@ -158,7 +158,7 @@ exports[`Alert Theme: seekAnz Tones info 1`] = `
 
 exports[`Alert Theme: seekAsia Tones critical 1`] = `
 <div
-  class="Box__root backgroundColor__critical borderColor__default paddingTop__medium paddingRight__gutter paddingBottom__medium paddingLeft__gutter"
+  class="Box__root backgroundColor__critical borderColor__standard paddingTop__medium paddingRight__gutter paddingBottom__medium paddingLeft__gutter"
 >
   <div
     class="Alert__root"
@@ -167,7 +167,7 @@ exports[`Alert Theme: seekAsia Tones critical 1`] = `
       class="Alert__icon"
     >
       <svg
-        class="width__standardText height__standardText fill__critical Box__root borderColor__default marginRight__small"
+        class="width__standardText height__standardText fill__critical Box__root borderColor__standard marginRight__small"
         height="16"
         viewBox="0 0 512 512"
         width="16"
@@ -178,7 +178,7 @@ exports[`Alert Theme: seekAsia Tones critical 1`] = `
       </svg>
     </div>
     <div
-      class="Text__block Box__root borderColor__default"
+      class="Text__block Box__root borderColor__standard"
     >
       <span
         class="Text__block color__critical fontFamily__text fontSize__standard fontWeight__regular"
@@ -193,7 +193,7 @@ exports[`Alert Theme: seekAsia Tones critical 1`] = `
 
 exports[`Alert Theme: seekAsia Tones info 1`] = `
 <div
-  class="Box__root backgroundColor__info borderColor__default paddingTop__medium paddingRight__gutter paddingBottom__medium paddingLeft__gutter"
+  class="Box__root backgroundColor__info borderColor__standard paddingTop__medium paddingRight__gutter paddingBottom__medium paddingLeft__gutter"
 >
   <div
     class="Alert__root"
@@ -202,7 +202,7 @@ exports[`Alert Theme: seekAsia Tones info 1`] = `
       class="Alert__icon"
     >
       <svg
-        class="width__standardText height__standardText fill__white Box__root borderColor__default marginRight__small"
+        class="width__standardText height__standardText fill__white Box__root borderColor__standard marginRight__small"
         height="16"
         viewBox="0 0 30 30"
         width="16"
@@ -221,7 +221,7 @@ exports[`Alert Theme: seekAsia Tones info 1`] = `
       </svg>
     </div>
     <div
-      class="Text__block Box__root borderColor__default"
+      class="Text__block Box__root borderColor__standard"
     >
       <span
         class="Text__block color__white fontFamily__text fontSize__standard fontWeight__regular"
@@ -236,7 +236,7 @@ exports[`Alert Theme: seekAsia Tones info 1`] = `
 
 exports[`Alert Theme: wireframe Tones critical 1`] = `
 <div
-  class="Box__root backgroundColor__critical borderColor__default paddingTop__medium paddingRight__gutter paddingBottom__medium paddingLeft__gutter"
+  class="Box__root backgroundColor__critical borderColor__standard paddingTop__medium paddingRight__gutter paddingBottom__medium paddingLeft__gutter"
 >
   <div
     class="Alert__root"
@@ -245,7 +245,7 @@ exports[`Alert Theme: wireframe Tones critical 1`] = `
       class="Alert__icon"
     >
       <svg
-        class="width__standardText height__standardText fill__critical Box__root borderColor__default marginRight__small"
+        class="width__standardText height__standardText fill__critical Box__root borderColor__standard marginRight__small"
         height="16"
         viewBox="0 0 512 512"
         width="16"
@@ -256,7 +256,7 @@ exports[`Alert Theme: wireframe Tones critical 1`] = `
       </svg>
     </div>
     <div
-      class="Text__block Box__root borderColor__default"
+      class="Text__block Box__root borderColor__standard"
     >
       <span
         class="Text__block color__critical fontFamily__text fontSize__standard fontWeight__regular"
@@ -271,7 +271,7 @@ exports[`Alert Theme: wireframe Tones critical 1`] = `
 
 exports[`Alert Theme: wireframe Tones info 1`] = `
 <div
-  class="Box__root backgroundColor__info borderColor__default paddingTop__medium paddingRight__gutter paddingBottom__medium paddingLeft__gutter"
+  class="Box__root backgroundColor__info borderColor__standard paddingTop__medium paddingRight__gutter paddingBottom__medium paddingLeft__gutter"
 >
   <div
     class="Alert__root"
@@ -280,7 +280,7 @@ exports[`Alert Theme: wireframe Tones info 1`] = `
       class="Alert__icon"
     >
       <svg
-        class="width__standardText height__standardText fill__white Box__root borderColor__default marginRight__small"
+        class="width__standardText height__standardText fill__white Box__root borderColor__standard marginRight__small"
         height="16"
         viewBox="0 0 30 30"
         width="16"
@@ -299,7 +299,7 @@ exports[`Alert Theme: wireframe Tones info 1`] = `
       </svg>
     </div>
     <div
-      class="Text__block Box__root borderColor__default"
+      class="Text__block Box__root borderColor__standard"
     >
       <span
         class="Text__block color__white fontFamily__text fontSize__standard fontWeight__regular"

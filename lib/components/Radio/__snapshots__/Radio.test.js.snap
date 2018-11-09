@@ -15,37 +15,37 @@ exports[`Radio Theme: jobStreet Checked 1`] = `
     class="Radio__content"
   >
     <label
-      class="Radio__label Box__root borderColor__default"
+      class="Radio__label Box__root borderColor__standard"
       for="id"
       style="min-height: 44px;"
     >
       <div
-        class="Radio__radioContainer Box__root borderColor__default marginRight__medium"
+        class="Radio__radioContainer Box__root borderColor__standard marginRight__medium"
         style="width: 24px; height: 24px; margin-top: 10px;"
       >
         <div
-          class="Radio__radio Box__root backgroundColor__input borderColor__default borderWidth__standard"
+          class="Radio__radio Box__root backgroundColor__input borderColor__standard borderWidth__standard"
           style="opacity: 1;"
         />
         <div
           class="Radio__radio Radio__radioHover Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
         />
         <div
-          class="Radio__radio Radio__radioFocus boxShadow__focus transition__fast Box__root backgroundColor__input borderColor__default"
+          class="Radio__radio Radio__radioFocus boxShadow__focus transition__fast Box__root backgroundColor__input borderColor__standard"
         />
         <div
-          class="Radio__radio Radio__radioDisabled transition__fast Box__root backgroundColor__inputDisabled borderColor__default borderWidth__standard"
+          class="Radio__radio Radio__radioDisabled transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
         />
         <div
           class="Radio__radio Radio__radioCritical transition__fast Box__root borderColor__critical borderWidth__standard"
           style="opacity: 0;"
         />
         <div
-          class="Radio__radioIcon transition__fast Box__root backgroundColor__formAccent borderColor__default"
+          class="Radio__radioIcon transition__fast Box__root backgroundColor__formAccent borderColor__standard"
         />
       </div>
       <div
-        class="Text__block Box__root borderColor__default"
+        class="Text__block Box__root borderColor__standard"
       >
         <span
           class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
@@ -57,10 +57,10 @@ exports[`Radio Theme: jobStreet Checked 1`] = `
     </label>
   </div>
   <div
-    class="Box__root borderColor__default paddingRight__none paddingLeft__none"
+    class="Box__root borderColor__standard paddingRight__none paddingLeft__none"
   >
     <div
-      class="Text__block Box__root borderColor__default paddingBottom__small"
+      class="Text__block Box__root borderColor__standard paddingBottom__small"
       id="id-message"
       tabindex="-1"
     >
@@ -96,37 +96,37 @@ exports[`Radio Theme: jobStreet Children when checked 1`] = `
     class="Radio__content"
   >
     <label
-      class="Radio__label Box__root borderColor__default"
+      class="Radio__label Box__root borderColor__standard"
       for="id"
       style="min-height: 44px;"
     >
       <div
-        class="Radio__radioContainer Box__root borderColor__default marginRight__medium"
+        class="Radio__radioContainer Box__root borderColor__standard marginRight__medium"
         style="width: 24px; height: 24px; margin-top: 10px;"
       >
         <div
-          class="Radio__radio Box__root backgroundColor__input borderColor__default borderWidth__standard"
+          class="Radio__radio Box__root backgroundColor__input borderColor__standard borderWidth__standard"
           style="opacity: 1;"
         />
         <div
           class="Radio__radio Radio__radioHover Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
         />
         <div
-          class="Radio__radio Radio__radioFocus boxShadow__focus transition__fast Box__root backgroundColor__input borderColor__default"
+          class="Radio__radio Radio__radioFocus boxShadow__focus transition__fast Box__root backgroundColor__input borderColor__standard"
         />
         <div
-          class="Radio__radio Radio__radioDisabled transition__fast Box__root backgroundColor__inputDisabled borderColor__default borderWidth__standard"
+          class="Radio__radio Radio__radioDisabled transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
         />
         <div
           class="Radio__radio Radio__radioCritical transition__fast Box__root borderColor__critical borderWidth__standard"
           style="opacity: 0;"
         />
         <div
-          class="Radio__radioIcon transition__fast Box__root backgroundColor__formAccent borderColor__default"
+          class="Radio__radioIcon transition__fast Box__root backgroundColor__formAccent borderColor__standard"
         />
       </div>
       <div
-        class="Text__block Box__root borderColor__default"
+        class="Text__block Box__root borderColor__standard"
       >
         <span
           class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
@@ -137,10 +137,10 @@ exports[`Radio Theme: jobStreet Children when checked 1`] = `
       </div>
     </label>
     <div
-      class="Box__root borderColor__default paddingRight__none paddingLeft__none"
+      class="Box__root borderColor__standard paddingRight__none paddingLeft__none"
     >
       <div
-        class="Radio__children Box__root borderColor__default paddingBottom__medium paddingLeft__medium"
+        class="Radio__children Box__root borderColor__standard paddingBottom__medium paddingLeft__medium"
         style="margin-left: 24px;"
       >
         Children
@@ -148,10 +148,10 @@ exports[`Radio Theme: jobStreet Children when checked 1`] = `
     </div>
   </div>
   <div
-    class="Box__root borderColor__default paddingRight__none paddingLeft__none"
+    class="Box__root borderColor__standard paddingRight__none paddingLeft__none"
   >
     <div
-      class="Text__block Box__root borderColor__default paddingBottom__small"
+      class="Text__block Box__root borderColor__standard paddingBottom__small"
       id="id-message"
       tabindex="-1"
     >
@@ -186,37 +186,37 @@ exports[`Radio Theme: jobStreet Children when unchecked 1`] = `
     class="Radio__content"
   >
     <label
-      class="Radio__label Box__root borderColor__default"
+      class="Radio__label Box__root borderColor__standard"
       for="id"
       style="min-height: 44px;"
     >
       <div
-        class="Radio__radioContainer Box__root borderColor__default marginRight__medium"
+        class="Radio__radioContainer Box__root borderColor__standard marginRight__medium"
         style="width: 24px; height: 24px; margin-top: 10px;"
       >
         <div
-          class="Radio__radio Box__root backgroundColor__input borderColor__default borderWidth__standard"
+          class="Radio__radio Box__root backgroundColor__input borderColor__standard borderWidth__standard"
           style="opacity: 1;"
         />
         <div
           class="Radio__radio Radio__radioHover Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
         />
         <div
-          class="Radio__radio Radio__radioFocus boxShadow__focus transition__fast Box__root backgroundColor__input borderColor__default"
+          class="Radio__radio Radio__radioFocus boxShadow__focus transition__fast Box__root backgroundColor__input borderColor__standard"
         />
         <div
-          class="Radio__radio Radio__radioDisabled transition__fast Box__root backgroundColor__inputDisabled borderColor__default borderWidth__standard"
+          class="Radio__radio Radio__radioDisabled transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
         />
         <div
           class="Radio__radio Radio__radioCritical transition__fast Box__root borderColor__critical borderWidth__standard"
           style="opacity: 0;"
         />
         <div
-          class="Radio__radioIcon transition__fast Box__root backgroundColor__formAccent borderColor__default"
+          class="Radio__radioIcon transition__fast Box__root backgroundColor__formAccent borderColor__standard"
         />
       </div>
       <div
-        class="Text__block Box__root borderColor__default"
+        class="Text__block Box__root borderColor__standard"
       >
         <span
           class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
@@ -227,10 +227,10 @@ exports[`Radio Theme: jobStreet Children when unchecked 1`] = `
       </div>
     </label>
     <div
-      class="Box__root borderColor__default paddingRight__none paddingLeft__none"
+      class="Box__root borderColor__standard paddingRight__none paddingLeft__none"
     >
       <div
-        class="Radio__children Box__root borderColor__default paddingBottom__medium paddingLeft__medium"
+        class="Radio__children Box__root borderColor__standard paddingBottom__medium paddingLeft__medium"
         style="margin-left: 24px;"
       >
         Children
@@ -238,10 +238,10 @@ exports[`Radio Theme: jobStreet Children when unchecked 1`] = `
     </div>
   </div>
   <div
-    class="Box__root borderColor__default paddingRight__none paddingLeft__none"
+    class="Box__root borderColor__standard paddingRight__none paddingLeft__none"
   >
     <div
-      class="Text__block Box__root borderColor__default paddingBottom__small"
+      class="Text__block Box__root borderColor__standard paddingBottom__small"
       id="id-message"
       tabindex="-1"
     >
@@ -276,37 +276,37 @@ exports[`Radio Theme: jobStreet Unchecked 1`] = `
     class="Radio__content"
   >
     <label
-      class="Radio__label Box__root borderColor__default"
+      class="Radio__label Box__root borderColor__standard"
       for="id"
       style="min-height: 44px;"
     >
       <div
-        class="Radio__radioContainer Box__root borderColor__default marginRight__medium"
+        class="Radio__radioContainer Box__root borderColor__standard marginRight__medium"
         style="width: 24px; height: 24px; margin-top: 10px;"
       >
         <div
-          class="Radio__radio Box__root backgroundColor__input borderColor__default borderWidth__standard"
+          class="Radio__radio Box__root backgroundColor__input borderColor__standard borderWidth__standard"
           style="opacity: 1;"
         />
         <div
           class="Radio__radio Radio__radioHover Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
         />
         <div
-          class="Radio__radio Radio__radioFocus boxShadow__focus transition__fast Box__root backgroundColor__input borderColor__default"
+          class="Radio__radio Radio__radioFocus boxShadow__focus transition__fast Box__root backgroundColor__input borderColor__standard"
         />
         <div
-          class="Radio__radio Radio__radioDisabled transition__fast Box__root backgroundColor__inputDisabled borderColor__default borderWidth__standard"
+          class="Radio__radio Radio__radioDisabled transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
         />
         <div
           class="Radio__radio Radio__radioCritical transition__fast Box__root borderColor__critical borderWidth__standard"
           style="opacity: 0;"
         />
         <div
-          class="Radio__radioIcon transition__fast Box__root backgroundColor__formAccent borderColor__default"
+          class="Radio__radioIcon transition__fast Box__root backgroundColor__formAccent borderColor__standard"
         />
       </div>
       <div
-        class="Text__block Box__root borderColor__default"
+        class="Text__block Box__root borderColor__standard"
       >
         <span
           class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
@@ -318,10 +318,10 @@ exports[`Radio Theme: jobStreet Unchecked 1`] = `
     </label>
   </div>
   <div
-    class="Box__root borderColor__default paddingRight__none paddingLeft__none"
+    class="Box__root borderColor__standard paddingRight__none paddingLeft__none"
   >
     <div
-      class="Text__block Box__root borderColor__default paddingBottom__small"
+      class="Text__block Box__root borderColor__standard paddingBottom__small"
       id="id-message"
       tabindex="-1"
     >
@@ -357,37 +357,37 @@ exports[`Radio Theme: jobStreet With message 1`] = `
     class="Radio__content"
   >
     <label
-      class="Radio__label Box__root borderColor__default"
+      class="Radio__label Box__root borderColor__standard"
       for="id"
       style="min-height: 44px;"
     >
       <div
-        class="Radio__radioContainer Box__root borderColor__default marginRight__medium"
+        class="Radio__radioContainer Box__root borderColor__standard marginRight__medium"
         style="width: 24px; height: 24px; margin-top: 10px;"
       >
         <div
-          class="Radio__radio Box__root backgroundColor__input borderColor__default borderWidth__standard"
+          class="Radio__radio Box__root backgroundColor__input borderColor__standard borderWidth__standard"
           style="opacity: 1;"
         />
         <div
           class="Radio__radio Radio__radioHover Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
         />
         <div
-          class="Radio__radio Radio__radioFocus boxShadow__focus transition__fast Box__root backgroundColor__input borderColor__default"
+          class="Radio__radio Radio__radioFocus boxShadow__focus transition__fast Box__root backgroundColor__input borderColor__standard"
         />
         <div
-          class="Radio__radio Radio__radioDisabled transition__fast Box__root backgroundColor__inputDisabled borderColor__default borderWidth__standard"
+          class="Radio__radio Radio__radioDisabled transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
         />
         <div
           class="Radio__radio Radio__radioCritical transition__fast Box__root borderColor__critical borderWidth__standard"
           style="opacity: 1;"
         />
         <div
-          class="Radio__radioIcon transition__fast Box__root backgroundColor__formAccent borderColor__default"
+          class="Radio__radioIcon transition__fast Box__root backgroundColor__formAccent borderColor__standard"
         />
       </div>
       <div
-        class="Text__block Box__root borderColor__default"
+        class="Text__block Box__root borderColor__standard"
       >
         <span
           class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
@@ -398,10 +398,10 @@ exports[`Radio Theme: jobStreet With message 1`] = `
       </div>
     </label>
     <div
-      class="Box__root borderColor__default paddingRight__none paddingLeft__none"
+      class="Box__root borderColor__standard paddingRight__none paddingLeft__none"
     >
       <div
-        class="Radio__children Box__root borderColor__default paddingBottom__medium paddingLeft__medium"
+        class="Radio__children Box__root borderColor__standard paddingBottom__medium paddingLeft__medium"
         style="margin-left: 24px;"
       >
         Children
@@ -409,10 +409,10 @@ exports[`Radio Theme: jobStreet With message 1`] = `
     </div>
   </div>
   <div
-    class="Box__root borderColor__default paddingRight__none paddingLeft__none"
+    class="Box__root borderColor__standard paddingRight__none paddingLeft__none"
   >
     <div
-      class="Text__block Box__root borderColor__default paddingBottom__small"
+      class="Text__block Box__root borderColor__standard paddingBottom__small"
       id="id-message"
       tabindex="-1"
     >
@@ -426,7 +426,7 @@ exports[`Radio Theme: jobStreet With message 1`] = `
             class="height__standardText"
           />
           <svg
-            class="FieldMessage__icon marginRight__smaller width__standardText height__standardText fill__critical Box__root borderColor__default"
+            class="FieldMessage__icon marginRight__smaller width__standardText height__standardText fill__critical Box__root borderColor__standard"
             height="16"
             viewBox="0 0 512 512"
             width="16"
@@ -460,37 +460,37 @@ exports[`Radio Theme: seekAnz Checked 1`] = `
     class="Radio__content"
   >
     <label
-      class="Radio__label Box__root borderColor__default"
+      class="Radio__label Box__root borderColor__standard"
       for="id"
       style="min-height: 48px;"
     >
       <div
-        class="Radio__radioContainer Box__root borderColor__default marginRight__medium"
+        class="Radio__radioContainer Box__root borderColor__standard marginRight__medium"
         style="width: 30px; height: 30px; margin-top: 9px;"
       >
         <div
-          class="Radio__radio Box__root backgroundColor__input borderColor__default borderWidth__standard"
+          class="Radio__radio Box__root backgroundColor__input borderColor__standard borderWidth__standard"
           style="opacity: 1;"
         />
         <div
           class="Radio__radio Radio__radioHover Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
         />
         <div
-          class="Radio__radio Radio__radioFocus boxShadow__focus transition__fast Box__root backgroundColor__input borderColor__default"
+          class="Radio__radio Radio__radioFocus boxShadow__focus transition__fast Box__root backgroundColor__input borderColor__standard"
         />
         <div
-          class="Radio__radio Radio__radioDisabled transition__fast Box__root backgroundColor__inputDisabled borderColor__default borderWidth__standard"
+          class="Radio__radio Radio__radioDisabled transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
         />
         <div
           class="Radio__radio Radio__radioCritical transition__fast Box__root borderColor__critical borderWidth__standard"
           style="opacity: 0;"
         />
         <div
-          class="Radio__radioIcon transition__fast Box__root backgroundColor__formAccent borderColor__default"
+          class="Radio__radioIcon transition__fast Box__root backgroundColor__formAccent borderColor__standard"
         />
       </div>
       <div
-        class="Text__block Box__root borderColor__default"
+        class="Text__block Box__root borderColor__standard"
       >
         <span
           class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
@@ -502,10 +502,10 @@ exports[`Radio Theme: seekAnz Checked 1`] = `
     </label>
   </div>
   <div
-    class="Box__root borderColor__default paddingRight__none paddingLeft__none"
+    class="Box__root borderColor__standard paddingRight__none paddingLeft__none"
   >
     <div
-      class="Text__block Box__root borderColor__default paddingBottom__small"
+      class="Text__block Box__root borderColor__standard paddingBottom__small"
       id="id-message"
       tabindex="-1"
     >
@@ -541,37 +541,37 @@ exports[`Radio Theme: seekAnz Children when checked 1`] = `
     class="Radio__content"
   >
     <label
-      class="Radio__label Box__root borderColor__default"
+      class="Radio__label Box__root borderColor__standard"
       for="id"
       style="min-height: 48px;"
     >
       <div
-        class="Radio__radioContainer Box__root borderColor__default marginRight__medium"
+        class="Radio__radioContainer Box__root borderColor__standard marginRight__medium"
         style="width: 30px; height: 30px; margin-top: 9px;"
       >
         <div
-          class="Radio__radio Box__root backgroundColor__input borderColor__default borderWidth__standard"
+          class="Radio__radio Box__root backgroundColor__input borderColor__standard borderWidth__standard"
           style="opacity: 1;"
         />
         <div
           class="Radio__radio Radio__radioHover Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
         />
         <div
-          class="Radio__radio Radio__radioFocus boxShadow__focus transition__fast Box__root backgroundColor__input borderColor__default"
+          class="Radio__radio Radio__radioFocus boxShadow__focus transition__fast Box__root backgroundColor__input borderColor__standard"
         />
         <div
-          class="Radio__radio Radio__radioDisabled transition__fast Box__root backgroundColor__inputDisabled borderColor__default borderWidth__standard"
+          class="Radio__radio Radio__radioDisabled transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
         />
         <div
           class="Radio__radio Radio__radioCritical transition__fast Box__root borderColor__critical borderWidth__standard"
           style="opacity: 0;"
         />
         <div
-          class="Radio__radioIcon transition__fast Box__root backgroundColor__formAccent borderColor__default"
+          class="Radio__radioIcon transition__fast Box__root backgroundColor__formAccent borderColor__standard"
         />
       </div>
       <div
-        class="Text__block Box__root borderColor__default"
+        class="Text__block Box__root borderColor__standard"
       >
         <span
           class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
@@ -582,10 +582,10 @@ exports[`Radio Theme: seekAnz Children when checked 1`] = `
       </div>
     </label>
     <div
-      class="Box__root borderColor__default paddingRight__none paddingLeft__none"
+      class="Box__root borderColor__standard paddingRight__none paddingLeft__none"
     >
       <div
-        class="Radio__children Box__root borderColor__default paddingBottom__medium paddingLeft__medium"
+        class="Radio__children Box__root borderColor__standard paddingBottom__medium paddingLeft__medium"
         style="margin-left: 30px;"
       >
         Children
@@ -593,10 +593,10 @@ exports[`Radio Theme: seekAnz Children when checked 1`] = `
     </div>
   </div>
   <div
-    class="Box__root borderColor__default paddingRight__none paddingLeft__none"
+    class="Box__root borderColor__standard paddingRight__none paddingLeft__none"
   >
     <div
-      class="Text__block Box__root borderColor__default paddingBottom__small"
+      class="Text__block Box__root borderColor__standard paddingBottom__small"
       id="id-message"
       tabindex="-1"
     >
@@ -631,37 +631,37 @@ exports[`Radio Theme: seekAnz Children when unchecked 1`] = `
     class="Radio__content"
   >
     <label
-      class="Radio__label Box__root borderColor__default"
+      class="Radio__label Box__root borderColor__standard"
       for="id"
       style="min-height: 48px;"
     >
       <div
-        class="Radio__radioContainer Box__root borderColor__default marginRight__medium"
+        class="Radio__radioContainer Box__root borderColor__standard marginRight__medium"
         style="width: 30px; height: 30px; margin-top: 9px;"
       >
         <div
-          class="Radio__radio Box__root backgroundColor__input borderColor__default borderWidth__standard"
+          class="Radio__radio Box__root backgroundColor__input borderColor__standard borderWidth__standard"
           style="opacity: 1;"
         />
         <div
           class="Radio__radio Radio__radioHover Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
         />
         <div
-          class="Radio__radio Radio__radioFocus boxShadow__focus transition__fast Box__root backgroundColor__input borderColor__default"
+          class="Radio__radio Radio__radioFocus boxShadow__focus transition__fast Box__root backgroundColor__input borderColor__standard"
         />
         <div
-          class="Radio__radio Radio__radioDisabled transition__fast Box__root backgroundColor__inputDisabled borderColor__default borderWidth__standard"
+          class="Radio__radio Radio__radioDisabled transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
         />
         <div
           class="Radio__radio Radio__radioCritical transition__fast Box__root borderColor__critical borderWidth__standard"
           style="opacity: 0;"
         />
         <div
-          class="Radio__radioIcon transition__fast Box__root backgroundColor__formAccent borderColor__default"
+          class="Radio__radioIcon transition__fast Box__root backgroundColor__formAccent borderColor__standard"
         />
       </div>
       <div
-        class="Text__block Box__root borderColor__default"
+        class="Text__block Box__root borderColor__standard"
       >
         <span
           class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
@@ -672,10 +672,10 @@ exports[`Radio Theme: seekAnz Children when unchecked 1`] = `
       </div>
     </label>
     <div
-      class="Box__root borderColor__default paddingRight__none paddingLeft__none"
+      class="Box__root borderColor__standard paddingRight__none paddingLeft__none"
     >
       <div
-        class="Radio__children Box__root borderColor__default paddingBottom__medium paddingLeft__medium"
+        class="Radio__children Box__root borderColor__standard paddingBottom__medium paddingLeft__medium"
         style="margin-left: 30px;"
       >
         Children
@@ -683,10 +683,10 @@ exports[`Radio Theme: seekAnz Children when unchecked 1`] = `
     </div>
   </div>
   <div
-    class="Box__root borderColor__default paddingRight__none paddingLeft__none"
+    class="Box__root borderColor__standard paddingRight__none paddingLeft__none"
   >
     <div
-      class="Text__block Box__root borderColor__default paddingBottom__small"
+      class="Text__block Box__root borderColor__standard paddingBottom__small"
       id="id-message"
       tabindex="-1"
     >
@@ -721,37 +721,37 @@ exports[`Radio Theme: seekAnz Unchecked 1`] = `
     class="Radio__content"
   >
     <label
-      class="Radio__label Box__root borderColor__default"
+      class="Radio__label Box__root borderColor__standard"
       for="id"
       style="min-height: 48px;"
     >
       <div
-        class="Radio__radioContainer Box__root borderColor__default marginRight__medium"
+        class="Radio__radioContainer Box__root borderColor__standard marginRight__medium"
         style="width: 30px; height: 30px; margin-top: 9px;"
       >
         <div
-          class="Radio__radio Box__root backgroundColor__input borderColor__default borderWidth__standard"
+          class="Radio__radio Box__root backgroundColor__input borderColor__standard borderWidth__standard"
           style="opacity: 1;"
         />
         <div
           class="Radio__radio Radio__radioHover Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
         />
         <div
-          class="Radio__radio Radio__radioFocus boxShadow__focus transition__fast Box__root backgroundColor__input borderColor__default"
+          class="Radio__radio Radio__radioFocus boxShadow__focus transition__fast Box__root backgroundColor__input borderColor__standard"
         />
         <div
-          class="Radio__radio Radio__radioDisabled transition__fast Box__root backgroundColor__inputDisabled borderColor__default borderWidth__standard"
+          class="Radio__radio Radio__radioDisabled transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
         />
         <div
           class="Radio__radio Radio__radioCritical transition__fast Box__root borderColor__critical borderWidth__standard"
           style="opacity: 0;"
         />
         <div
-          class="Radio__radioIcon transition__fast Box__root backgroundColor__formAccent borderColor__default"
+          class="Radio__radioIcon transition__fast Box__root backgroundColor__formAccent borderColor__standard"
         />
       </div>
       <div
-        class="Text__block Box__root borderColor__default"
+        class="Text__block Box__root borderColor__standard"
       >
         <span
           class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
@@ -763,10 +763,10 @@ exports[`Radio Theme: seekAnz Unchecked 1`] = `
     </label>
   </div>
   <div
-    class="Box__root borderColor__default paddingRight__none paddingLeft__none"
+    class="Box__root borderColor__standard paddingRight__none paddingLeft__none"
   >
     <div
-      class="Text__block Box__root borderColor__default paddingBottom__small"
+      class="Text__block Box__root borderColor__standard paddingBottom__small"
       id="id-message"
       tabindex="-1"
     >
@@ -802,37 +802,37 @@ exports[`Radio Theme: seekAnz With message 1`] = `
     class="Radio__content"
   >
     <label
-      class="Radio__label Box__root borderColor__default"
+      class="Radio__label Box__root borderColor__standard"
       for="id"
       style="min-height: 48px;"
     >
       <div
-        class="Radio__radioContainer Box__root borderColor__default marginRight__medium"
+        class="Radio__radioContainer Box__root borderColor__standard marginRight__medium"
         style="width: 30px; height: 30px; margin-top: 9px;"
       >
         <div
-          class="Radio__radio Box__root backgroundColor__input borderColor__default borderWidth__standard"
+          class="Radio__radio Box__root backgroundColor__input borderColor__standard borderWidth__standard"
           style="opacity: 1;"
         />
         <div
           class="Radio__radio Radio__radioHover Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
         />
         <div
-          class="Radio__radio Radio__radioFocus boxShadow__focus transition__fast Box__root backgroundColor__input borderColor__default"
+          class="Radio__radio Radio__radioFocus boxShadow__focus transition__fast Box__root backgroundColor__input borderColor__standard"
         />
         <div
-          class="Radio__radio Radio__radioDisabled transition__fast Box__root backgroundColor__inputDisabled borderColor__default borderWidth__standard"
+          class="Radio__radio Radio__radioDisabled transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
         />
         <div
           class="Radio__radio Radio__radioCritical transition__fast Box__root borderColor__critical borderWidth__standard"
           style="opacity: 1;"
         />
         <div
-          class="Radio__radioIcon transition__fast Box__root backgroundColor__formAccent borderColor__default"
+          class="Radio__radioIcon transition__fast Box__root backgroundColor__formAccent borderColor__standard"
         />
       </div>
       <div
-        class="Text__block Box__root borderColor__default"
+        class="Text__block Box__root borderColor__standard"
       >
         <span
           class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
@@ -843,10 +843,10 @@ exports[`Radio Theme: seekAnz With message 1`] = `
       </div>
     </label>
     <div
-      class="Box__root borderColor__default paddingRight__none paddingLeft__none"
+      class="Box__root borderColor__standard paddingRight__none paddingLeft__none"
     >
       <div
-        class="Radio__children Box__root borderColor__default paddingBottom__medium paddingLeft__medium"
+        class="Radio__children Box__root borderColor__standard paddingBottom__medium paddingLeft__medium"
         style="margin-left: 30px;"
       >
         Children
@@ -854,10 +854,10 @@ exports[`Radio Theme: seekAnz With message 1`] = `
     </div>
   </div>
   <div
-    class="Box__root borderColor__default paddingRight__none paddingLeft__none"
+    class="Box__root borderColor__standard paddingRight__none paddingLeft__none"
   >
     <div
-      class="Text__block Box__root borderColor__default paddingBottom__small"
+      class="Text__block Box__root borderColor__standard paddingBottom__small"
       id="id-message"
       tabindex="-1"
     >
@@ -871,7 +871,7 @@ exports[`Radio Theme: seekAnz With message 1`] = `
             class="height__standardText"
           />
           <svg
-            class="FieldMessage__icon marginRight__smaller width__standardText height__standardText fill__critical Box__root borderColor__default"
+            class="FieldMessage__icon marginRight__smaller width__standardText height__standardText fill__critical Box__root borderColor__standard"
             height="16"
             viewBox="0 0 512 512"
             width="16"
@@ -905,37 +905,37 @@ exports[`Radio Theme: seekAsia Checked 1`] = `
     class="Radio__content"
   >
     <label
-      class="Radio__label Box__root borderColor__default"
+      class="Radio__label Box__root borderColor__standard"
       for="id"
       style="min-height: 44px;"
     >
       <div
-        class="Radio__radioContainer Box__root borderColor__default marginRight__medium"
+        class="Radio__radioContainer Box__root borderColor__standard marginRight__medium"
         style="width: 24px; height: 24px; margin-top: 10px;"
       >
         <div
-          class="Radio__radio Box__root backgroundColor__input borderColor__default borderWidth__standard"
+          class="Radio__radio Box__root backgroundColor__input borderColor__standard borderWidth__standard"
           style="opacity: 1;"
         />
         <div
           class="Radio__radio Radio__radioHover Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
         />
         <div
-          class="Radio__radio Radio__radioFocus boxShadow__focus transition__fast Box__root backgroundColor__input borderColor__default"
+          class="Radio__radio Radio__radioFocus boxShadow__focus transition__fast Box__root backgroundColor__input borderColor__standard"
         />
         <div
-          class="Radio__radio Radio__radioDisabled transition__fast Box__root backgroundColor__inputDisabled borderColor__default borderWidth__standard"
+          class="Radio__radio Radio__radioDisabled transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
         />
         <div
           class="Radio__radio Radio__radioCritical transition__fast Box__root borderColor__critical borderWidth__standard"
           style="opacity: 0;"
         />
         <div
-          class="Radio__radioIcon transition__fast Box__root backgroundColor__formAccent borderColor__default"
+          class="Radio__radioIcon transition__fast Box__root backgroundColor__formAccent borderColor__standard"
         />
       </div>
       <div
-        class="Text__block Box__root borderColor__default"
+        class="Text__block Box__root borderColor__standard"
       >
         <span
           class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
@@ -947,10 +947,10 @@ exports[`Radio Theme: seekAsia Checked 1`] = `
     </label>
   </div>
   <div
-    class="Box__root borderColor__default paddingRight__none paddingLeft__none"
+    class="Box__root borderColor__standard paddingRight__none paddingLeft__none"
   >
     <div
-      class="Text__block Box__root borderColor__default paddingBottom__small"
+      class="Text__block Box__root borderColor__standard paddingBottom__small"
       id="id-message"
       tabindex="-1"
     >
@@ -986,37 +986,37 @@ exports[`Radio Theme: seekAsia Children when checked 1`] = `
     class="Radio__content"
   >
     <label
-      class="Radio__label Box__root borderColor__default"
+      class="Radio__label Box__root borderColor__standard"
       for="id"
       style="min-height: 44px;"
     >
       <div
-        class="Radio__radioContainer Box__root borderColor__default marginRight__medium"
+        class="Radio__radioContainer Box__root borderColor__standard marginRight__medium"
         style="width: 24px; height: 24px; margin-top: 10px;"
       >
         <div
-          class="Radio__radio Box__root backgroundColor__input borderColor__default borderWidth__standard"
+          class="Radio__radio Box__root backgroundColor__input borderColor__standard borderWidth__standard"
           style="opacity: 1;"
         />
         <div
           class="Radio__radio Radio__radioHover Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
         />
         <div
-          class="Radio__radio Radio__radioFocus boxShadow__focus transition__fast Box__root backgroundColor__input borderColor__default"
+          class="Radio__radio Radio__radioFocus boxShadow__focus transition__fast Box__root backgroundColor__input borderColor__standard"
         />
         <div
-          class="Radio__radio Radio__radioDisabled transition__fast Box__root backgroundColor__inputDisabled borderColor__default borderWidth__standard"
+          class="Radio__radio Radio__radioDisabled transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
         />
         <div
           class="Radio__radio Radio__radioCritical transition__fast Box__root borderColor__critical borderWidth__standard"
           style="opacity: 0;"
         />
         <div
-          class="Radio__radioIcon transition__fast Box__root backgroundColor__formAccent borderColor__default"
+          class="Radio__radioIcon transition__fast Box__root backgroundColor__formAccent borderColor__standard"
         />
       </div>
       <div
-        class="Text__block Box__root borderColor__default"
+        class="Text__block Box__root borderColor__standard"
       >
         <span
           class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
@@ -1027,10 +1027,10 @@ exports[`Radio Theme: seekAsia Children when checked 1`] = `
       </div>
     </label>
     <div
-      class="Box__root borderColor__default paddingRight__none paddingLeft__none"
+      class="Box__root borderColor__standard paddingRight__none paddingLeft__none"
     >
       <div
-        class="Radio__children Box__root borderColor__default paddingBottom__medium paddingLeft__medium"
+        class="Radio__children Box__root borderColor__standard paddingBottom__medium paddingLeft__medium"
         style="margin-left: 24px;"
       >
         Children
@@ -1038,10 +1038,10 @@ exports[`Radio Theme: seekAsia Children when checked 1`] = `
     </div>
   </div>
   <div
-    class="Box__root borderColor__default paddingRight__none paddingLeft__none"
+    class="Box__root borderColor__standard paddingRight__none paddingLeft__none"
   >
     <div
-      class="Text__block Box__root borderColor__default paddingBottom__small"
+      class="Text__block Box__root borderColor__standard paddingBottom__small"
       id="id-message"
       tabindex="-1"
     >
@@ -1076,37 +1076,37 @@ exports[`Radio Theme: seekAsia Children when unchecked 1`] = `
     class="Radio__content"
   >
     <label
-      class="Radio__label Box__root borderColor__default"
+      class="Radio__label Box__root borderColor__standard"
       for="id"
       style="min-height: 44px;"
     >
       <div
-        class="Radio__radioContainer Box__root borderColor__default marginRight__medium"
+        class="Radio__radioContainer Box__root borderColor__standard marginRight__medium"
         style="width: 24px; height: 24px; margin-top: 10px;"
       >
         <div
-          class="Radio__radio Box__root backgroundColor__input borderColor__default borderWidth__standard"
+          class="Radio__radio Box__root backgroundColor__input borderColor__standard borderWidth__standard"
           style="opacity: 1;"
         />
         <div
           class="Radio__radio Radio__radioHover Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
         />
         <div
-          class="Radio__radio Radio__radioFocus boxShadow__focus transition__fast Box__root backgroundColor__input borderColor__default"
+          class="Radio__radio Radio__radioFocus boxShadow__focus transition__fast Box__root backgroundColor__input borderColor__standard"
         />
         <div
-          class="Radio__radio Radio__radioDisabled transition__fast Box__root backgroundColor__inputDisabled borderColor__default borderWidth__standard"
+          class="Radio__radio Radio__radioDisabled transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
         />
         <div
           class="Radio__radio Radio__radioCritical transition__fast Box__root borderColor__critical borderWidth__standard"
           style="opacity: 0;"
         />
         <div
-          class="Radio__radioIcon transition__fast Box__root backgroundColor__formAccent borderColor__default"
+          class="Radio__radioIcon transition__fast Box__root backgroundColor__formAccent borderColor__standard"
         />
       </div>
       <div
-        class="Text__block Box__root borderColor__default"
+        class="Text__block Box__root borderColor__standard"
       >
         <span
           class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
@@ -1117,10 +1117,10 @@ exports[`Radio Theme: seekAsia Children when unchecked 1`] = `
       </div>
     </label>
     <div
-      class="Box__root borderColor__default paddingRight__none paddingLeft__none"
+      class="Box__root borderColor__standard paddingRight__none paddingLeft__none"
     >
       <div
-        class="Radio__children Box__root borderColor__default paddingBottom__medium paddingLeft__medium"
+        class="Radio__children Box__root borderColor__standard paddingBottom__medium paddingLeft__medium"
         style="margin-left: 24px;"
       >
         Children
@@ -1128,10 +1128,10 @@ exports[`Radio Theme: seekAsia Children when unchecked 1`] = `
     </div>
   </div>
   <div
-    class="Box__root borderColor__default paddingRight__none paddingLeft__none"
+    class="Box__root borderColor__standard paddingRight__none paddingLeft__none"
   >
     <div
-      class="Text__block Box__root borderColor__default paddingBottom__small"
+      class="Text__block Box__root borderColor__standard paddingBottom__small"
       id="id-message"
       tabindex="-1"
     >
@@ -1166,37 +1166,37 @@ exports[`Radio Theme: seekAsia Unchecked 1`] = `
     class="Radio__content"
   >
     <label
-      class="Radio__label Box__root borderColor__default"
+      class="Radio__label Box__root borderColor__standard"
       for="id"
       style="min-height: 44px;"
     >
       <div
-        class="Radio__radioContainer Box__root borderColor__default marginRight__medium"
+        class="Radio__radioContainer Box__root borderColor__standard marginRight__medium"
         style="width: 24px; height: 24px; margin-top: 10px;"
       >
         <div
-          class="Radio__radio Box__root backgroundColor__input borderColor__default borderWidth__standard"
+          class="Radio__radio Box__root backgroundColor__input borderColor__standard borderWidth__standard"
           style="opacity: 1;"
         />
         <div
           class="Radio__radio Radio__radioHover Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
         />
         <div
-          class="Radio__radio Radio__radioFocus boxShadow__focus transition__fast Box__root backgroundColor__input borderColor__default"
+          class="Radio__radio Radio__radioFocus boxShadow__focus transition__fast Box__root backgroundColor__input borderColor__standard"
         />
         <div
-          class="Radio__radio Radio__radioDisabled transition__fast Box__root backgroundColor__inputDisabled borderColor__default borderWidth__standard"
+          class="Radio__radio Radio__radioDisabled transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
         />
         <div
           class="Radio__radio Radio__radioCritical transition__fast Box__root borderColor__critical borderWidth__standard"
           style="opacity: 0;"
         />
         <div
-          class="Radio__radioIcon transition__fast Box__root backgroundColor__formAccent borderColor__default"
+          class="Radio__radioIcon transition__fast Box__root backgroundColor__formAccent borderColor__standard"
         />
       </div>
       <div
-        class="Text__block Box__root borderColor__default"
+        class="Text__block Box__root borderColor__standard"
       >
         <span
           class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
@@ -1208,10 +1208,10 @@ exports[`Radio Theme: seekAsia Unchecked 1`] = `
     </label>
   </div>
   <div
-    class="Box__root borderColor__default paddingRight__none paddingLeft__none"
+    class="Box__root borderColor__standard paddingRight__none paddingLeft__none"
   >
     <div
-      class="Text__block Box__root borderColor__default paddingBottom__small"
+      class="Text__block Box__root borderColor__standard paddingBottom__small"
       id="id-message"
       tabindex="-1"
     >
@@ -1247,37 +1247,37 @@ exports[`Radio Theme: seekAsia With message 1`] = `
     class="Radio__content"
   >
     <label
-      class="Radio__label Box__root borderColor__default"
+      class="Radio__label Box__root borderColor__standard"
       for="id"
       style="min-height: 44px;"
     >
       <div
-        class="Radio__radioContainer Box__root borderColor__default marginRight__medium"
+        class="Radio__radioContainer Box__root borderColor__standard marginRight__medium"
         style="width: 24px; height: 24px; margin-top: 10px;"
       >
         <div
-          class="Radio__radio Box__root backgroundColor__input borderColor__default borderWidth__standard"
+          class="Radio__radio Box__root backgroundColor__input borderColor__standard borderWidth__standard"
           style="opacity: 1;"
         />
         <div
           class="Radio__radio Radio__radioHover Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
         />
         <div
-          class="Radio__radio Radio__radioFocus boxShadow__focus transition__fast Box__root backgroundColor__input borderColor__default"
+          class="Radio__radio Radio__radioFocus boxShadow__focus transition__fast Box__root backgroundColor__input borderColor__standard"
         />
         <div
-          class="Radio__radio Radio__radioDisabled transition__fast Box__root backgroundColor__inputDisabled borderColor__default borderWidth__standard"
+          class="Radio__radio Radio__radioDisabled transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
         />
         <div
           class="Radio__radio Radio__radioCritical transition__fast Box__root borderColor__critical borderWidth__standard"
           style="opacity: 1;"
         />
         <div
-          class="Radio__radioIcon transition__fast Box__root backgroundColor__formAccent borderColor__default"
+          class="Radio__radioIcon transition__fast Box__root backgroundColor__formAccent borderColor__standard"
         />
       </div>
       <div
-        class="Text__block Box__root borderColor__default"
+        class="Text__block Box__root borderColor__standard"
       >
         <span
           class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
@@ -1288,10 +1288,10 @@ exports[`Radio Theme: seekAsia With message 1`] = `
       </div>
     </label>
     <div
-      class="Box__root borderColor__default paddingRight__none paddingLeft__none"
+      class="Box__root borderColor__standard paddingRight__none paddingLeft__none"
     >
       <div
-        class="Radio__children Box__root borderColor__default paddingBottom__medium paddingLeft__medium"
+        class="Radio__children Box__root borderColor__standard paddingBottom__medium paddingLeft__medium"
         style="margin-left: 24px;"
       >
         Children
@@ -1299,10 +1299,10 @@ exports[`Radio Theme: seekAsia With message 1`] = `
     </div>
   </div>
   <div
-    class="Box__root borderColor__default paddingRight__none paddingLeft__none"
+    class="Box__root borderColor__standard paddingRight__none paddingLeft__none"
   >
     <div
-      class="Text__block Box__root borderColor__default paddingBottom__small"
+      class="Text__block Box__root borderColor__standard paddingBottom__small"
       id="id-message"
       tabindex="-1"
     >
@@ -1316,7 +1316,7 @@ exports[`Radio Theme: seekAsia With message 1`] = `
             class="height__standardText"
           />
           <svg
-            class="FieldMessage__icon marginRight__smaller width__standardText height__standardText fill__critical Box__root borderColor__default"
+            class="FieldMessage__icon marginRight__smaller width__standardText height__standardText fill__critical Box__root borderColor__standard"
             height="16"
             viewBox="0 0 512 512"
             width="16"
@@ -1350,37 +1350,37 @@ exports[`Radio Theme: wireframe Checked 1`] = `
     class="Radio__content"
   >
     <label
-      class="Radio__label Box__root borderColor__default"
+      class="Radio__label Box__root borderColor__standard"
       for="id"
       style="min-height: 48px;"
     >
       <div
-        class="Radio__radioContainer Box__root borderColor__default marginRight__medium"
+        class="Radio__radioContainer Box__root borderColor__standard marginRight__medium"
         style="width: 30px; height: 30px; margin-top: 9px;"
       >
         <div
-          class="Radio__radio Box__root backgroundColor__input borderColor__default borderWidth__standard"
+          class="Radio__radio Box__root backgroundColor__input borderColor__standard borderWidth__standard"
           style="opacity: 1;"
         />
         <div
           class="Radio__radio Radio__radioHover Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
         />
         <div
-          class="Radio__radio Radio__radioFocus boxShadow__focus transition__fast Box__root backgroundColor__input borderColor__default"
+          class="Radio__radio Radio__radioFocus boxShadow__focus transition__fast Box__root backgroundColor__input borderColor__standard"
         />
         <div
-          class="Radio__radio Radio__radioDisabled transition__fast Box__root backgroundColor__inputDisabled borderColor__default borderWidth__standard"
+          class="Radio__radio Radio__radioDisabled transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
         />
         <div
           class="Radio__radio Radio__radioCritical transition__fast Box__root borderColor__critical borderWidth__standard"
           style="opacity: 0;"
         />
         <div
-          class="Radio__radioIcon transition__fast Box__root backgroundColor__formAccent borderColor__default"
+          class="Radio__radioIcon transition__fast Box__root backgroundColor__formAccent borderColor__standard"
         />
       </div>
       <div
-        class="Text__block Box__root borderColor__default"
+        class="Text__block Box__root borderColor__standard"
       >
         <span
           class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
@@ -1392,10 +1392,10 @@ exports[`Radio Theme: wireframe Checked 1`] = `
     </label>
   </div>
   <div
-    class="Box__root borderColor__default paddingRight__none paddingLeft__none"
+    class="Box__root borderColor__standard paddingRight__none paddingLeft__none"
   >
     <div
-      class="Text__block Box__root borderColor__default paddingBottom__small"
+      class="Text__block Box__root borderColor__standard paddingBottom__small"
       id="id-message"
       tabindex="-1"
     >
@@ -1431,37 +1431,37 @@ exports[`Radio Theme: wireframe Children when checked 1`] = `
     class="Radio__content"
   >
     <label
-      class="Radio__label Box__root borderColor__default"
+      class="Radio__label Box__root borderColor__standard"
       for="id"
       style="min-height: 48px;"
     >
       <div
-        class="Radio__radioContainer Box__root borderColor__default marginRight__medium"
+        class="Radio__radioContainer Box__root borderColor__standard marginRight__medium"
         style="width: 30px; height: 30px; margin-top: 9px;"
       >
         <div
-          class="Radio__radio Box__root backgroundColor__input borderColor__default borderWidth__standard"
+          class="Radio__radio Box__root backgroundColor__input borderColor__standard borderWidth__standard"
           style="opacity: 1;"
         />
         <div
           class="Radio__radio Radio__radioHover Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
         />
         <div
-          class="Radio__radio Radio__radioFocus boxShadow__focus transition__fast Box__root backgroundColor__input borderColor__default"
+          class="Radio__radio Radio__radioFocus boxShadow__focus transition__fast Box__root backgroundColor__input borderColor__standard"
         />
         <div
-          class="Radio__radio Radio__radioDisabled transition__fast Box__root backgroundColor__inputDisabled borderColor__default borderWidth__standard"
+          class="Radio__radio Radio__radioDisabled transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
         />
         <div
           class="Radio__radio Radio__radioCritical transition__fast Box__root borderColor__critical borderWidth__standard"
           style="opacity: 0;"
         />
         <div
-          class="Radio__radioIcon transition__fast Box__root backgroundColor__formAccent borderColor__default"
+          class="Radio__radioIcon transition__fast Box__root backgroundColor__formAccent borderColor__standard"
         />
       </div>
       <div
-        class="Text__block Box__root borderColor__default"
+        class="Text__block Box__root borderColor__standard"
       >
         <span
           class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
@@ -1472,10 +1472,10 @@ exports[`Radio Theme: wireframe Children when checked 1`] = `
       </div>
     </label>
     <div
-      class="Box__root borderColor__default paddingRight__none paddingLeft__none"
+      class="Box__root borderColor__standard paddingRight__none paddingLeft__none"
     >
       <div
-        class="Radio__children Box__root borderColor__default paddingBottom__medium paddingLeft__medium"
+        class="Radio__children Box__root borderColor__standard paddingBottom__medium paddingLeft__medium"
         style="margin-left: 30px;"
       >
         Children
@@ -1483,10 +1483,10 @@ exports[`Radio Theme: wireframe Children when checked 1`] = `
     </div>
   </div>
   <div
-    class="Box__root borderColor__default paddingRight__none paddingLeft__none"
+    class="Box__root borderColor__standard paddingRight__none paddingLeft__none"
   >
     <div
-      class="Text__block Box__root borderColor__default paddingBottom__small"
+      class="Text__block Box__root borderColor__standard paddingBottom__small"
       id="id-message"
       tabindex="-1"
     >
@@ -1521,37 +1521,37 @@ exports[`Radio Theme: wireframe Children when unchecked 1`] = `
     class="Radio__content"
   >
     <label
-      class="Radio__label Box__root borderColor__default"
+      class="Radio__label Box__root borderColor__standard"
       for="id"
       style="min-height: 48px;"
     >
       <div
-        class="Radio__radioContainer Box__root borderColor__default marginRight__medium"
+        class="Radio__radioContainer Box__root borderColor__standard marginRight__medium"
         style="width: 30px; height: 30px; margin-top: 9px;"
       >
         <div
-          class="Radio__radio Box__root backgroundColor__input borderColor__default borderWidth__standard"
+          class="Radio__radio Box__root backgroundColor__input borderColor__standard borderWidth__standard"
           style="opacity: 1;"
         />
         <div
           class="Radio__radio Radio__radioHover Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
         />
         <div
-          class="Radio__radio Radio__radioFocus boxShadow__focus transition__fast Box__root backgroundColor__input borderColor__default"
+          class="Radio__radio Radio__radioFocus boxShadow__focus transition__fast Box__root backgroundColor__input borderColor__standard"
         />
         <div
-          class="Radio__radio Radio__radioDisabled transition__fast Box__root backgroundColor__inputDisabled borderColor__default borderWidth__standard"
+          class="Radio__radio Radio__radioDisabled transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
         />
         <div
           class="Radio__radio Radio__radioCritical transition__fast Box__root borderColor__critical borderWidth__standard"
           style="opacity: 0;"
         />
         <div
-          class="Radio__radioIcon transition__fast Box__root backgroundColor__formAccent borderColor__default"
+          class="Radio__radioIcon transition__fast Box__root backgroundColor__formAccent borderColor__standard"
         />
       </div>
       <div
-        class="Text__block Box__root borderColor__default"
+        class="Text__block Box__root borderColor__standard"
       >
         <span
           class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
@@ -1562,10 +1562,10 @@ exports[`Radio Theme: wireframe Children when unchecked 1`] = `
       </div>
     </label>
     <div
-      class="Box__root borderColor__default paddingRight__none paddingLeft__none"
+      class="Box__root borderColor__standard paddingRight__none paddingLeft__none"
     >
       <div
-        class="Radio__children Box__root borderColor__default paddingBottom__medium paddingLeft__medium"
+        class="Radio__children Box__root borderColor__standard paddingBottom__medium paddingLeft__medium"
         style="margin-left: 30px;"
       >
         Children
@@ -1573,10 +1573,10 @@ exports[`Radio Theme: wireframe Children when unchecked 1`] = `
     </div>
   </div>
   <div
-    class="Box__root borderColor__default paddingRight__none paddingLeft__none"
+    class="Box__root borderColor__standard paddingRight__none paddingLeft__none"
   >
     <div
-      class="Text__block Box__root borderColor__default paddingBottom__small"
+      class="Text__block Box__root borderColor__standard paddingBottom__small"
       id="id-message"
       tabindex="-1"
     >
@@ -1611,37 +1611,37 @@ exports[`Radio Theme: wireframe Unchecked 1`] = `
     class="Radio__content"
   >
     <label
-      class="Radio__label Box__root borderColor__default"
+      class="Radio__label Box__root borderColor__standard"
       for="id"
       style="min-height: 48px;"
     >
       <div
-        class="Radio__radioContainer Box__root borderColor__default marginRight__medium"
+        class="Radio__radioContainer Box__root borderColor__standard marginRight__medium"
         style="width: 30px; height: 30px; margin-top: 9px;"
       >
         <div
-          class="Radio__radio Box__root backgroundColor__input borderColor__default borderWidth__standard"
+          class="Radio__radio Box__root backgroundColor__input borderColor__standard borderWidth__standard"
           style="opacity: 1;"
         />
         <div
           class="Radio__radio Radio__radioHover Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
         />
         <div
-          class="Radio__radio Radio__radioFocus boxShadow__focus transition__fast Box__root backgroundColor__input borderColor__default"
+          class="Radio__radio Radio__radioFocus boxShadow__focus transition__fast Box__root backgroundColor__input borderColor__standard"
         />
         <div
-          class="Radio__radio Radio__radioDisabled transition__fast Box__root backgroundColor__inputDisabled borderColor__default borderWidth__standard"
+          class="Radio__radio Radio__radioDisabled transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
         />
         <div
           class="Radio__radio Radio__radioCritical transition__fast Box__root borderColor__critical borderWidth__standard"
           style="opacity: 0;"
         />
         <div
-          class="Radio__radioIcon transition__fast Box__root backgroundColor__formAccent borderColor__default"
+          class="Radio__radioIcon transition__fast Box__root backgroundColor__formAccent borderColor__standard"
         />
       </div>
       <div
-        class="Text__block Box__root borderColor__default"
+        class="Text__block Box__root borderColor__standard"
       >
         <span
           class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
@@ -1653,10 +1653,10 @@ exports[`Radio Theme: wireframe Unchecked 1`] = `
     </label>
   </div>
   <div
-    class="Box__root borderColor__default paddingRight__none paddingLeft__none"
+    class="Box__root borderColor__standard paddingRight__none paddingLeft__none"
   >
     <div
-      class="Text__block Box__root borderColor__default paddingBottom__small"
+      class="Text__block Box__root borderColor__standard paddingBottom__small"
       id="id-message"
       tabindex="-1"
     >
@@ -1692,37 +1692,37 @@ exports[`Radio Theme: wireframe With message 1`] = `
     class="Radio__content"
   >
     <label
-      class="Radio__label Box__root borderColor__default"
+      class="Radio__label Box__root borderColor__standard"
       for="id"
       style="min-height: 48px;"
     >
       <div
-        class="Radio__radioContainer Box__root borderColor__default marginRight__medium"
+        class="Radio__radioContainer Box__root borderColor__standard marginRight__medium"
         style="width: 30px; height: 30px; margin-top: 9px;"
       >
         <div
-          class="Radio__radio Box__root backgroundColor__input borderColor__default borderWidth__standard"
+          class="Radio__radio Box__root backgroundColor__input borderColor__standard borderWidth__standard"
           style="opacity: 1;"
         />
         <div
           class="Radio__radio Radio__radioHover Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
         />
         <div
-          class="Radio__radio Radio__radioFocus boxShadow__focus transition__fast Box__root backgroundColor__input borderColor__default"
+          class="Radio__radio Radio__radioFocus boxShadow__focus transition__fast Box__root backgroundColor__input borderColor__standard"
         />
         <div
-          class="Radio__radio Radio__radioDisabled transition__fast Box__root backgroundColor__inputDisabled borderColor__default borderWidth__standard"
+          class="Radio__radio Radio__radioDisabled transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
         />
         <div
           class="Radio__radio Radio__radioCritical transition__fast Box__root borderColor__critical borderWidth__standard"
           style="opacity: 1;"
         />
         <div
-          class="Radio__radioIcon transition__fast Box__root backgroundColor__formAccent borderColor__default"
+          class="Radio__radioIcon transition__fast Box__root backgroundColor__formAccent borderColor__standard"
         />
       </div>
       <div
-        class="Text__block Box__root borderColor__default"
+        class="Text__block Box__root borderColor__standard"
       >
         <span
           class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
@@ -1733,10 +1733,10 @@ exports[`Radio Theme: wireframe With message 1`] = `
       </div>
     </label>
     <div
-      class="Box__root borderColor__default paddingRight__none paddingLeft__none"
+      class="Box__root borderColor__standard paddingRight__none paddingLeft__none"
     >
       <div
-        class="Radio__children Box__root borderColor__default paddingBottom__medium paddingLeft__medium"
+        class="Radio__children Box__root borderColor__standard paddingBottom__medium paddingLeft__medium"
         style="margin-left: 30px;"
       >
         Children
@@ -1744,10 +1744,10 @@ exports[`Radio Theme: wireframe With message 1`] = `
     </div>
   </div>
   <div
-    class="Box__root borderColor__default paddingRight__none paddingLeft__none"
+    class="Box__root borderColor__standard paddingRight__none paddingLeft__none"
   >
     <div
-      class="Text__block Box__root borderColor__default paddingBottom__small"
+      class="Text__block Box__root borderColor__standard paddingBottom__small"
       id="id-message"
       tabindex="-1"
     >
@@ -1761,7 +1761,7 @@ exports[`Radio Theme: wireframe With message 1`] = `
             class="height__standardText"
           />
           <svg
-            class="FieldMessage__icon marginRight__smaller width__standardText height__standardText fill__critical Box__root borderColor__default"
+            class="FieldMessage__icon marginRight__smaller width__standardText height__standardText fill__critical Box__root borderColor__standard"
             height="16"
             viewBox="0 0 512 512"
             width="16"

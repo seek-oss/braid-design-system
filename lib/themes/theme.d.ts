@@ -161,6 +161,7 @@ type SpacingVariants =
   | 'large'
   | 'larger'
   | 'largest';
+type HorizontalSpacingVariants = SpacingVariants | 'gutter';
 type TransitionVariants = 'fast';
 
 export interface Atoms {
@@ -177,13 +178,13 @@ export interface Atoms {
   fontWeight: Record<FontWeightVariants, string>;
   height: Record<SizeVariants, string>;
   marginTop: Record<SpacingVariants, string>;
-  marginRight: Record<SpacingVariants, string>;
+  marginRight: Record<HorizontalSpacingVariants, string>;
   marginBottom: Record<SpacingVariants, string>;
-  marginLeft: Record<SpacingVariants, string>;
+  marginLeft: Record<HorizontalSpacingVariants, string>;
   paddingTop: Record<SpacingVariants, string>;
-  paddingRight: Record<SpacingVariants, string>;
+  paddingRight: Record<HorizontalSpacingVariants, string>;
   paddingBottom: Record<SpacingVariants, string>;
-  paddingLeft: Record<SpacingVariants, string>;
+  paddingLeft: Record<HorizontalSpacingVariants, string>;
   transition: Record<TransitionVariants, string>;
   width: Record<SizeVariants, string>;
 }
