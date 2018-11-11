@@ -9,4 +9,6 @@ package-lock.json
 .prettierrc
 docs/dist/
 report/
+tsconfig.json
+tslint.json
 # end managed by sku

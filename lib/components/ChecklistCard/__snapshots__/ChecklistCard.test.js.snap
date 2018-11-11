@@ -2,7 +2,7 @@
 
 exports[`ChecklistCard Theme: jobStreet Default 1`] = `
 <div
-  class="Box__root backgroundColor__card borderColor__default marginBottom__medium"
+  class="Box__root backgroundColor__card borderColor__standard marginBottom__medium"
 >
   <div
     class="paddingBottom__smaller"
@@ -17,35 +17,35 @@ exports[`ChecklistCard Theme: jobStreet Default 1`] = `
       class="Checkbox__content"
     >
       <label
-        class="Checkbox__label Box__root borderColor__default paddingTop__smaller paddingRight__gutter paddingLeft__gutter"
+        class="Checkbox__label Box__root borderColor__standard paddingTop__smaller paddingRight__gutter paddingLeft__gutter"
         for="1"
         style="min-height: 44px;"
       >
         <div
-          class="Checkbox__checkboxContainer Box__root borderColor__default marginRight__medium"
+          class="Checkbox__checkboxContainer Box__root borderColor__standard marginRight__medium"
           style="width: 24px; height: 24px; margin-top: 10px;"
         >
           <div
-            class="Checkbox__checkbox borderRadius__standard Box__root backgroundColor__input borderColor__default borderWidth__standard"
+            class="Checkbox__checkbox borderRadius__standard Box__root backgroundColor__input borderColor__standard borderWidth__standard"
           />
           <div
             class="Checkbox__checkbox Checkbox__checkboxHover borderRadius__standard Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
           />
           <div
-            class="Checkbox__checkbox Checkbox__checkboxFocus boxShadow__focus borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__default"
+            class="Checkbox__checkbox Checkbox__checkboxFocus boxShadow__focus borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__standard"
           />
           <div
             class="Checkbox__checkbox Checkbox__checkboxChecked backgroundColor__formAccent borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
           />
           <div
-            class="Checkbox__checkbox Checkbox__checkboxDisabled borderRadius__standard transition__fast Box__root backgroundColor__inputDisabled borderColor__default borderWidth__standard"
+            class="Checkbox__checkbox Checkbox__checkboxDisabled borderRadius__standard transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
           />
           <div
             class="Checkbox__checkbox Checkbox__checkboxCritical borderRadius__standard transition__fast Box__root borderColor__critical borderWidth__standard"
             style="opacity: 0;"
           />
           <svg
-            class="Checkbox__checkboxIcon fill__white transition__fast Icon__fillSize Box__root borderColor__default"
+            class="Checkbox__checkboxIcon fill__white transition__fast Icon__fillSize Box__root borderColor__standard"
             height="16"
             viewBox="90.471 302.809 823 823"
             width="16"
@@ -56,7 +56,7 @@ exports[`ChecklistCard Theme: jobStreet Default 1`] = `
           </svg>
         </div>
         <div
-          class="Text__block Box__root borderColor__default"
+          class="Text__block Box__root borderColor__standard"
         >
           <span
             class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
@@ -68,10 +68,10 @@ exports[`ChecklistCard Theme: jobStreet Default 1`] = `
       </label>
     </div>
     <div
-      class="Box__root borderColor__default paddingRight__gutter paddingLeft__gutter"
+      class="Box__root borderColor__standard paddingRight__gutter paddingLeft__gutter"
     >
       <div
-        class="Text__block Box__root borderColor__default paddingBottom__small"
+        class="Text__block Box__root borderColor__standard paddingBottom__small"
         id="1-message"
         tabindex="-1"
       >
@@ -91,7 +91,7 @@ exports[`ChecklistCard Theme: jobStreet Default 1`] = `
     </div>
   </div>
   <div
-    class="Divider__root Box__root borderColor__default"
+    class="Divider__root Box__root borderColor__standard"
   >
     <div
       class="Divider__divider borderWidth__standard borderColor__standard"
@@ -110,35 +110,35 @@ exports[`ChecklistCard Theme: jobStreet Default 1`] = `
       class="Checkbox__content"
     >
       <label
-        class="Checkbox__label Box__root borderColor__default paddingTop__smaller paddingRight__gutter paddingLeft__gutter"
+        class="Checkbox__label Box__root borderColor__standard paddingTop__smaller paddingRight__gutter paddingLeft__gutter"
         for="2"
         style="min-height: 44px;"
       >
         <div
-          class="Checkbox__checkboxContainer Box__root borderColor__default marginRight__medium"
+          class="Checkbox__checkboxContainer Box__root borderColor__standard marginRight__medium"
           style="width: 24px; height: 24px; margin-top: 10px;"
         >
           <div
-            class="Checkbox__checkbox borderRadius__standard Box__root backgroundColor__input borderColor__default borderWidth__standard"
+            class="Checkbox__checkbox borderRadius__standard Box__root backgroundColor__input borderColor__standard borderWidth__standard"
           />
           <div
             class="Checkbox__checkbox Checkbox__checkboxHover borderRadius__standard Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
           />
           <div
-            class="Checkbox__checkbox Checkbox__checkboxFocus boxShadow__focus borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__default"
+            class="Checkbox__checkbox Checkbox__checkboxFocus boxShadow__focus borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__standard"
           />
           <div
             class="Checkbox__checkbox Checkbox__checkboxChecked backgroundColor__formAccent borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
           />
           <div
-            class="Checkbox__checkbox Checkbox__checkboxDisabled borderRadius__standard transition__fast Box__root backgroundColor__inputDisabled borderColor__default borderWidth__standard"
+            class="Checkbox__checkbox Checkbox__checkboxDisabled borderRadius__standard transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
           />
           <div
             class="Checkbox__checkbox Checkbox__checkboxCritical borderRadius__standard transition__fast Box__root borderColor__critical borderWidth__standard"
             style="opacity: 0;"
           />
           <svg
-            class="Checkbox__checkboxIcon fill__white transition__fast Icon__fillSize Box__root borderColor__default"
+            class="Checkbox__checkboxIcon fill__white transition__fast Icon__fillSize Box__root borderColor__standard"
             height="16"
             viewBox="90.471 302.809 823 823"
             width="16"
@@ -149,7 +149,7 @@ exports[`ChecklistCard Theme: jobStreet Default 1`] = `
           </svg>
         </div>
         <div
-          class="Text__block Box__root borderColor__default"
+          class="Text__block Box__root borderColor__standard"
         >
           <span
             class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
@@ -161,10 +161,10 @@ exports[`ChecklistCard Theme: jobStreet Default 1`] = `
       </label>
     </div>
     <div
-      class="Box__root borderColor__default paddingRight__gutter paddingLeft__gutter"
+      class="Box__root borderColor__standard paddingRight__gutter paddingLeft__gutter"
     >
       <div
-        class="Text__block Box__root borderColor__default paddingBottom__small"
+        class="Text__block Box__root borderColor__standard paddingBottom__small"
         id="2-message"
         tabindex="-1"
       >
@@ -184,7 +184,7 @@ exports[`ChecklistCard Theme: jobStreet Default 1`] = `
     </div>
   </div>
   <div
-    class="Divider__root Box__root borderColor__default"
+    class="Divider__root Box__root borderColor__standard"
   >
     <div
       class="Divider__divider borderWidth__standard borderColor__standard"
@@ -203,35 +203,35 @@ exports[`ChecklistCard Theme: jobStreet Default 1`] = `
       class="Checkbox__content"
     >
       <label
-        class="Checkbox__label Box__root borderColor__default paddingTop__smaller paddingRight__gutter paddingLeft__gutter"
+        class="Checkbox__label Box__root borderColor__standard paddingTop__smaller paddingRight__gutter paddingLeft__gutter"
         for="3"
         style="min-height: 44px;"
       >
         <div
-          class="Checkbox__checkboxContainer Box__root borderColor__default marginRight__medium"
+          class="Checkbox__checkboxContainer Box__root borderColor__standard marginRight__medium"
           style="width: 24px; height: 24px; margin-top: 10px;"
         >
           <div
-            class="Checkbox__checkbox borderRadius__standard Box__root backgroundColor__input borderColor__default borderWidth__standard"
+            class="Checkbox__checkbox borderRadius__standard Box__root backgroundColor__input borderColor__standard borderWidth__standard"
           />
           <div
             class="Checkbox__checkbox Checkbox__checkboxHover borderRadius__standard Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
           />
           <div
-            class="Checkbox__checkbox Checkbox__checkboxFocus boxShadow__focus borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__default"
+            class="Checkbox__checkbox Checkbox__checkboxFocus boxShadow__focus borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__standard"
           />
           <div
             class="Checkbox__checkbox Checkbox__checkboxChecked backgroundColor__formAccent borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
           />
           <div
-            class="Checkbox__checkbox Checkbox__checkboxDisabled borderRadius__standard transition__fast Box__root backgroundColor__inputDisabled borderColor__default borderWidth__standard"
+            class="Checkbox__checkbox Checkbox__checkboxDisabled borderRadius__standard transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
           />
           <div
             class="Checkbox__checkbox Checkbox__checkboxCritical borderRadius__standard transition__fast Box__root borderColor__critical borderWidth__standard"
             style="opacity: 0;"
           />
           <svg
-            class="Checkbox__checkboxIcon fill__white transition__fast Icon__fillSize Box__root borderColor__default"
+            class="Checkbox__checkboxIcon fill__white transition__fast Icon__fillSize Box__root borderColor__standard"
             height="16"
             viewBox="90.471 302.809 823 823"
             width="16"
@@ -242,7 +242,7 @@ exports[`ChecklistCard Theme: jobStreet Default 1`] = `
           </svg>
         </div>
         <div
-          class="Text__block Box__root borderColor__default"
+          class="Text__block Box__root borderColor__standard"
         >
           <span
             class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
@@ -254,10 +254,10 @@ exports[`ChecklistCard Theme: jobStreet Default 1`] = `
       </label>
     </div>
     <div
-      class="Box__root borderColor__default paddingRight__gutter paddingLeft__gutter"
+      class="Box__root borderColor__standard paddingRight__gutter paddingLeft__gutter"
     >
       <div
-        class="Text__block Box__root borderColor__default paddingBottom__small"
+        class="Text__block Box__root borderColor__standard paddingBottom__small"
         id="3-message"
         tabindex="-1"
       >
@@ -281,7 +281,7 @@ exports[`ChecklistCard Theme: jobStreet Default 1`] = `
 
 exports[`ChecklistCard Theme: seekAnz Default 1`] = `
 <div
-  class="Box__root backgroundColor__card borderColor__default marginBottom__medium"
+  class="Box__root backgroundColor__card borderColor__standard marginBottom__medium"
 >
   <div
     class="paddingBottom__smaller"
@@ -296,35 +296,35 @@ exports[`ChecklistCard Theme: seekAnz Default 1`] = `
       class="Checkbox__content"
     >
       <label
-        class="Checkbox__label Box__root borderColor__default paddingTop__smaller paddingRight__gutter paddingLeft__gutter"
+        class="Checkbox__label Box__root borderColor__standard paddingTop__smaller paddingRight__gutter paddingLeft__gutter"
         for="1"
         style="min-height: 48px;"
       >
         <div
-          class="Checkbox__checkboxContainer Box__root borderColor__default marginRight__medium"
+          class="Checkbox__checkboxContainer Box__root borderColor__standard marginRight__medium"
           style="width: 30px; height: 30px; margin-top: 9px;"
         >
           <div
-            class="Checkbox__checkbox borderRadius__standard Box__root backgroundColor__input borderColor__default borderWidth__standard"
+            class="Checkbox__checkbox borderRadius__standard Box__root backgroundColor__input borderColor__standard borderWidth__standard"
           />
           <div
             class="Checkbox__checkbox Checkbox__checkboxHover borderRadius__standard Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
           />
           <div
-            class="Checkbox__checkbox Checkbox__checkboxFocus boxShadow__focus borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__default"
+            class="Checkbox__checkbox Checkbox__checkboxFocus boxShadow__focus borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__standard"
           />
           <div
             class="Checkbox__checkbox Checkbox__checkboxChecked backgroundColor__formAccent borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
           />
           <div
-            class="Checkbox__checkbox Checkbox__checkboxDisabled borderRadius__standard transition__fast Box__root backgroundColor__inputDisabled borderColor__default borderWidth__standard"
+            class="Checkbox__checkbox Checkbox__checkboxDisabled borderRadius__standard transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
           />
           <div
             class="Checkbox__checkbox Checkbox__checkboxCritical borderRadius__standard transition__fast Box__root borderColor__critical borderWidth__standard"
             style="opacity: 0;"
           />
           <svg
-            class="Checkbox__checkboxIcon fill__white transition__fast Icon__fillSize Box__root borderColor__default"
+            class="Checkbox__checkboxIcon fill__white transition__fast Icon__fillSize Box__root borderColor__standard"
             height="16"
             viewBox="90.471 302.809 823 823"
             width="16"
@@ -335,7 +335,7 @@ exports[`ChecklistCard Theme: seekAnz Default 1`] = `
           </svg>
         </div>
         <div
-          class="Text__block Box__root borderColor__default"
+          class="Text__block Box__root borderColor__standard"
         >
           <span
             class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
@@ -347,10 +347,10 @@ exports[`ChecklistCard Theme: seekAnz Default 1`] = `
       </label>
     </div>
     <div
-      class="Box__root borderColor__default paddingRight__gutter paddingLeft__gutter"
+      class="Box__root borderColor__standard paddingRight__gutter paddingLeft__gutter"
     >
       <div
-        class="Text__block Box__root borderColor__default paddingBottom__small"
+        class="Text__block Box__root borderColor__standard paddingBottom__small"
         id="1-message"
         tabindex="-1"
       >
@@ -370,7 +370,7 @@ exports[`ChecklistCard Theme: seekAnz Default 1`] = `
     </div>
   </div>
   <div
-    class="Divider__root Box__root borderColor__default"
+    class="Divider__root Box__root borderColor__standard"
   >
     <div
       class="Divider__divider borderWidth__standard borderColor__standard"
@@ -389,35 +389,35 @@ exports[`ChecklistCard Theme: seekAnz Default 1`] = `
       class="Checkbox__content"
     >
       <label
-        class="Checkbox__label Box__root borderColor__default paddingTop__smaller paddingRight__gutter paddingLeft__gutter"
+        class="Checkbox__label Box__root borderColor__standard paddingTop__smaller paddingRight__gutter paddingLeft__gutter"
         for="2"
         style="min-height: 48px;"
       >
         <div
-          class="Checkbox__checkboxContainer Box__root borderColor__default marginRight__medium"
+          class="Checkbox__checkboxContainer Box__root borderColor__standard marginRight__medium"
           style="width: 30px; height: 30px; margin-top: 9px;"
         >
           <div
-            class="Checkbox__checkbox borderRadius__standard Box__root backgroundColor__input borderColor__default borderWidth__standard"
+            class="Checkbox__checkbox borderRadius__standard Box__root backgroundColor__input borderColor__standard borderWidth__standard"
           />
           <div
             class="Checkbox__checkbox Checkbox__checkboxHover borderRadius__standard Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
           />
           <div
-            class="Checkbox__checkbox Checkbox__checkboxFocus boxShadow__focus borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__default"
+            class="Checkbox__checkbox Checkbox__checkboxFocus boxShadow__focus borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__standard"
           />
           <div
             class="Checkbox__checkbox Checkbox__checkboxChecked backgroundColor__formAccent borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
           />
           <div
-            class="Checkbox__checkbox Checkbox__checkboxDisabled borderRadius__standard transition__fast Box__root backgroundColor__inputDisabled borderColor__default borderWidth__standard"
+            class="Checkbox__checkbox Checkbox__checkboxDisabled borderRadius__standard transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
           />
           <div
             class="Checkbox__checkbox Checkbox__checkboxCritical borderRadius__standard transition__fast Box__root borderColor__critical borderWidth__standard"
             style="opacity: 0;"
           />
           <svg
-            class="Checkbox__checkboxIcon fill__white transition__fast Icon__fillSize Box__root borderColor__default"
+            class="Checkbox__checkboxIcon fill__white transition__fast Icon__fillSize Box__root borderColor__standard"
             height="16"
             viewBox="90.471 302.809 823 823"
             width="16"
@@ -428,7 +428,7 @@ exports[`ChecklistCard Theme: seekAnz Default 1`] = `
           </svg>
         </div>
         <div
-          class="Text__block Box__root borderColor__default"
+          class="Text__block Box__root borderColor__standard"
         >
           <span
             class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
@@ -440,10 +440,10 @@ exports[`ChecklistCard Theme: seekAnz Default 1`] = `
       </label>
     </div>
     <div
-      class="Box__root borderColor__default paddingRight__gutter paddingLeft__gutter"
+      class="Box__root borderColor__standard paddingRight__gutter paddingLeft__gutter"
     >
       <div
-        class="Text__block Box__root borderColor__default paddingBottom__small"
+        class="Text__block Box__root borderColor__standard paddingBottom__small"
         id="2-message"
         tabindex="-1"
       >
@@ -463,7 +463,7 @@ exports[`ChecklistCard Theme: seekAnz Default 1`] = `
     </div>
   </div>
   <div
-    class="Divider__root Box__root borderColor__default"
+    class="Divider__root Box__root borderColor__standard"
   >
     <div
       class="Divider__divider borderWidth__standard borderColor__standard"
@@ -482,35 +482,35 @@ exports[`ChecklistCard Theme: seekAnz Default 1`] = `
       class="Checkbox__content"
     >
       <label
-        class="Checkbox__label Box__root borderColor__default paddingTop__smaller paddingRight__gutter paddingLeft__gutter"
+        class="Checkbox__label Box__root borderColor__standard paddingTop__smaller paddingRight__gutter paddingLeft__gutter"
         for="3"
         style="min-height: 48px;"
       >
         <div
-          class="Checkbox__checkboxContainer Box__root borderColor__default marginRight__medium"
+          class="Checkbox__checkboxContainer Box__root borderColor__standard marginRight__medium"
           style="width: 30px; height: 30px; margin-top: 9px;"
         >
           <div
-            class="Checkbox__checkbox borderRadius__standard Box__root backgroundColor__input borderColor__default borderWidth__standard"
+            class="Checkbox__checkbox borderRadius__standard Box__root backgroundColor__input borderColor__standard borderWidth__standard"
           />
           <div
             class="Checkbox__checkbox Checkbox__checkboxHover borderRadius__standard Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
           />
           <div
-            class="Checkbox__checkbox Checkbox__checkboxFocus boxShadow__focus borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__default"
+            class="Checkbox__checkbox Checkbox__checkboxFocus boxShadow__focus borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__standard"
           />
           <div
             class="Checkbox__checkbox Checkbox__checkboxChecked backgroundColor__formAccent borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
           />
           <div
-            class="Checkbox__checkbox Checkbox__checkboxDisabled borderRadius__standard transition__fast Box__root backgroundColor__inputDisabled borderColor__default borderWidth__standard"
+            class="Checkbox__checkbox Checkbox__checkboxDisabled borderRadius__standard transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
           />
           <div
             class="Checkbox__checkbox Checkbox__checkboxCritical borderRadius__standard transition__fast Box__root borderColor__critical borderWidth__standard"
             style="opacity: 0;"
           />
           <svg
-            class="Checkbox__checkboxIcon fill__white transition__fast Icon__fillSize Box__root borderColor__default"
+            class="Checkbox__checkboxIcon fill__white transition__fast Icon__fillSize Box__root borderColor__standard"
             height="16"
             viewBox="90.471 302.809 823 823"
             width="16"
@@ -521,7 +521,7 @@ exports[`ChecklistCard Theme: seekAnz Default 1`] = `
           </svg>
         </div>
         <div
-          class="Text__block Box__root borderColor__default"
+          class="Text__block Box__root borderColor__standard"
         >
           <span
             class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
@@ -533,10 +533,10 @@ exports[`ChecklistCard Theme: seekAnz Default 1`] = `
       </label>
     </div>
     <div
-      class="Box__root borderColor__default paddingRight__gutter paddingLeft__gutter"
+      class="Box__root borderColor__standard paddingRight__gutter paddingLeft__gutter"
     >
       <div
-        class="Text__block Box__root borderColor__default paddingBottom__small"
+        class="Text__block Box__root borderColor__standard paddingBottom__small"
         id="3-message"
         tabindex="-1"
       >
@@ -560,7 +560,7 @@ exports[`ChecklistCard Theme: seekAnz Default 1`] = `
 
 exports[`ChecklistCard Theme: seekAsia Default 1`] = `
 <div
-  class="Box__root backgroundColor__card borderColor__default marginBottom__medium"
+  class="Box__root backgroundColor__card borderColor__standard marginBottom__medium"
 >
   <div
     class="paddingBottom__smaller"
@@ -575,35 +575,35 @@ exports[`ChecklistCard Theme: seekAsia Default 1`] = `
       class="Checkbox__content"
     >
       <label
-        class="Checkbox__label Box__root borderColor__default paddingTop__smaller paddingRight__gutter paddingLeft__gutter"
+        class="Checkbox__label Box__root borderColor__standard paddingTop__smaller paddingRight__gutter paddingLeft__gutter"
         for="1"
         style="min-height: 44px;"
       >
         <div
-          class="Checkbox__checkboxContainer Box__root borderColor__default marginRight__medium"
+          class="Checkbox__checkboxContainer Box__root borderColor__standard marginRight__medium"
           style="width: 24px; height: 24px; margin-top: 10px;"
         >
           <div
-            class="Checkbox__checkbox borderRadius__standard Box__root backgroundColor__input borderColor__default borderWidth__standard"
+            class="Checkbox__checkbox borderRadius__standard Box__root backgroundColor__input borderColor__standard borderWidth__standard"
           />
           <div
             class="Checkbox__checkbox Checkbox__checkboxHover borderRadius__standard Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
           />
           <div
-            class="Checkbox__checkbox Checkbox__checkboxFocus boxShadow__focus borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__default"
+            class="Checkbox__checkbox Checkbox__checkboxFocus boxShadow__focus borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__standard"
           />
           <div
             class="Checkbox__checkbox Checkbox__checkboxChecked backgroundColor__formAccent borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
           />
           <div
-            class="Checkbox__checkbox Checkbox__checkboxDisabled borderRadius__standard transition__fast Box__root backgroundColor__inputDisabled borderColor__default borderWidth__standard"
+            class="Checkbox__checkbox Checkbox__checkboxDisabled borderRadius__standard transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
           />
           <div
             class="Checkbox__checkbox Checkbox__checkboxCritical borderRadius__standard transition__fast Box__root borderColor__critical borderWidth__standard"
             style="opacity: 0;"
           />
           <svg
-            class="Checkbox__checkboxIcon fill__white transition__fast Icon__fillSize Box__root borderColor__default"
+            class="Checkbox__checkboxIcon fill__white transition__fast Icon__fillSize Box__root borderColor__standard"
             height="16"
             viewBox="90.471 302.809 823 823"
             width="16"
@@ -614,7 +614,7 @@ exports[`ChecklistCard Theme: seekAsia Default 1`] = `
           </svg>
         </div>
         <div
-          class="Text__block Box__root borderColor__default"
+          class="Text__block Box__root borderColor__standard"
         >
           <span
             class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
@@ -626,10 +626,10 @@ exports[`ChecklistCard Theme: seekAsia Default 1`] = `
       </label>
     </div>
     <div
-      class="Box__root borderColor__default paddingRight__gutter paddingLeft__gutter"
+      class="Box__root borderColor__standard paddingRight__gutter paddingLeft__gutter"
     >
       <div
-        class="Text__block Box__root borderColor__default paddingBottom__small"
+        class="Text__block Box__root borderColor__standard paddingBottom__small"
         id="1-message"
         tabindex="-1"
       >
@@ -649,7 +649,7 @@ exports[`ChecklistCard Theme: seekAsia Default 1`] = `
     </div>
   </div>
   <div
-    class="Divider__root Box__root borderColor__default"
+    class="Divider__root Box__root borderColor__standard"
   >
     <div
       class="Divider__divider borderWidth__standard borderColor__standard"
@@ -668,35 +668,35 @@ exports[`ChecklistCard Theme: seekAsia Default 1`] = `
       class="Checkbox__content"
     >
       <label
-        class="Checkbox__label Box__root borderColor__default paddingTop__smaller paddingRight__gutter paddingLeft__gutter"
+        class="Checkbox__label Box__root borderColor__standard paddingTop__smaller paddingRight__gutter paddingLeft__gutter"
         for="2"
         style="min-height: 44px;"
       >
         <div
-          class="Checkbox__checkboxContainer Box__root borderColor__default marginRight__medium"
+          class="Checkbox__checkboxContainer Box__root borderColor__standard marginRight__medium"
           style="width: 24px; height: 24px; margin-top: 10px;"
         >
           <div
-            class="Checkbox__checkbox borderRadius__standard Box__root backgroundColor__input borderColor__default borderWidth__standard"
+            class="Checkbox__checkbox borderRadius__standard Box__root backgroundColor__input borderColor__standard borderWidth__standard"
           />
           <div
             class="Checkbox__checkbox Checkbox__checkboxHover borderRadius__standard Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
           />
           <div
-            class="Checkbox__checkbox Checkbox__checkboxFocus boxShadow__focus borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__default"
+            class="Checkbox__checkbox Checkbox__checkboxFocus boxShadow__focus borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__standard"
           />
           <div
             class="Checkbox__checkbox Checkbox__checkboxChecked backgroundColor__formAccent borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
           />
           <div
-            class="Checkbox__checkbox Checkbox__checkboxDisabled borderRadius__standard transition__fast Box__root backgroundColor__inputDisabled borderColor__default borderWidth__standard"
+            class="Checkbox__checkbox Checkbox__checkboxDisabled borderRadius__standard transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
           />
           <div
             class="Checkbox__checkbox Checkbox__checkboxCritical borderRadius__standard transition__fast Box__root borderColor__critical borderWidth__standard"
             style="opacity: 0;"
           />
           <svg
-            class="Checkbox__checkboxIcon fill__white transition__fast Icon__fillSize Box__root borderColor__default"
+            class="Checkbox__checkboxIcon fill__white transition__fast Icon__fillSize Box__root borderColor__standard"
             height="16"
             viewBox="90.471 302.809 823 823"
             width="16"
@@ -707,7 +707,7 @@ exports[`ChecklistCard Theme: seekAsia Default 1`] = `
           </svg>
         </div>
         <div
-          class="Text__block Box__root borderColor__default"
+          class="Text__block Box__root borderColor__standard"
         >
           <span
             class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
@@ -719,10 +719,10 @@ exports[`ChecklistCard Theme: seekAsia Default 1`] = `
       </label>
     </div>
     <div
-      class="Box__root borderColor__default paddingRight__gutter paddingLeft__gutter"
+      class="Box__root borderColor__standard paddingRight__gutter paddingLeft__gutter"
     >
       <div
-        class="Text__block Box__root borderColor__default paddingBottom__small"
+        class="Text__block Box__root borderColor__standard paddingBottom__small"
         id="2-message"
         tabindex="-1"
       >
@@ -742,7 +742,7 @@ exports[`ChecklistCard Theme: seekAsia Default 1`] = `
     </div>
   </div>
   <div
-    class="Divider__root Box__root borderColor__default"
+    class="Divider__root Box__root borderColor__standard"
   >
     <div
       class="Divider__divider borderWidth__standard borderColor__standard"
@@ -761,35 +761,35 @@ exports[`ChecklistCard Theme: seekAsia Default 1`] = `
       class="Checkbox__content"
     >
       <label
-        class="Checkbox__label Box__root borderColor__default paddingTop__smaller paddingRight__gutter paddingLeft__gutter"
+        class="Checkbox__label Box__root borderColor__standard paddingTop__smaller paddingRight__gutter paddingLeft__gutter"
         for="3"
         style="min-height: 44px;"
       >
         <div
-          class="Checkbox__checkboxContainer Box__root borderColor__default marginRight__medium"
+          class="Checkbox__checkboxContainer Box__root borderColor__standard marginRight__medium"
           style="width: 24px; height: 24px; margin-top: 10px;"
         >
           <div
-            class="Checkbox__checkbox borderRadius__standard Box__root backgroundColor__input borderColor__default borderWidth__standard"
+            class="Checkbox__checkbox borderRadius__standard Box__root backgroundColor__input borderColor__standard borderWidth__standard"
           />
           <div
             class="Checkbox__checkbox Checkbox__checkboxHover borderRadius__standard Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
           />
           <div
-            class="Checkbox__checkbox Checkbox__checkboxFocus boxShadow__focus borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__default"
+            class="Checkbox__checkbox Checkbox__checkboxFocus boxShadow__focus borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__standard"
           />
           <div
             class="Checkbox__checkbox Checkbox__checkboxChecked backgroundColor__formAccent borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
           />
           <div
-            class="Checkbox__checkbox Checkbox__checkboxDisabled borderRadius__standard transition__fast Box__root backgroundColor__inputDisabled borderColor__default borderWidth__standard"
+            class="Checkbox__checkbox Checkbox__checkboxDisabled borderRadius__standard transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
           />
           <div
             class="Checkbox__checkbox Checkbox__checkboxCritical borderRadius__standard transition__fast Box__root borderColor__critical borderWidth__standard"
             style="opacity: 0;"
           />
           <svg
-            class="Checkbox__checkboxIcon fill__white transition__fast Icon__fillSize Box__root borderColor__default"
+            class="Checkbox__checkboxIcon fill__white transition__fast Icon__fillSize Box__root borderColor__standard"
             height="16"
             viewBox="90.471 302.809 823 823"
             width="16"
@@ -800,7 +800,7 @@ exports[`ChecklistCard Theme: seekAsia Default 1`] = `
           </svg>
         </div>
         <div
-          class="Text__block Box__root borderColor__default"
+          class="Text__block Box__root borderColor__standard"
         >
           <span
             class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
@@ -812,10 +812,10 @@ exports[`ChecklistCard Theme: seekAsia Default 1`] = `
       </label>
     </div>
     <div
-      class="Box__root borderColor__default paddingRight__gutter paddingLeft__gutter"
+      class="Box__root borderColor__standard paddingRight__gutter paddingLeft__gutter"
     >
       <div
-        class="Text__block Box__root borderColor__default paddingBottom__small"
+        class="Text__block Box__root borderColor__standard paddingBottom__small"
         id="3-message"
         tabindex="-1"
       >
@@ -839,7 +839,7 @@ exports[`ChecklistCard Theme: seekAsia Default 1`] = `
 
 exports[`ChecklistCard Theme: wireframe Default 1`] = `
 <div
-  class="Box__root backgroundColor__card borderColor__default marginBottom__medium"
+  class="Box__root backgroundColor__card borderColor__standard marginBottom__medium"
 >
   <div
     class="paddingBottom__smaller"
@@ -854,35 +854,35 @@ exports[`ChecklistCard Theme: wireframe Default 1`] = `
       class="Checkbox__content"
     >
       <label
-        class="Checkbox__label Box__root borderColor__default paddingTop__smaller paddingRight__gutter paddingLeft__gutter"
+        class="Checkbox__label Box__root borderColor__standard paddingTop__smaller paddingRight__gutter paddingLeft__gutter"
         for="1"
         style="min-height: 48px;"
       >
         <div
-          class="Checkbox__checkboxContainer Box__root borderColor__default marginRight__medium"
+          class="Checkbox__checkboxContainer Box__root borderColor__standard marginRight__medium"
           style="width: 30px; height: 30px; margin-top: 9px;"
         >
           <div
-            class="Checkbox__checkbox borderRadius__standard Box__root backgroundColor__input borderColor__default borderWidth__standard"
+            class="Checkbox__checkbox borderRadius__standard Box__root backgroundColor__input borderColor__standard borderWidth__standard"
           />
           <div
             class="Checkbox__checkbox Checkbox__checkboxHover borderRadius__standard Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
           />
           <div
-            class="Checkbox__checkbox Checkbox__checkboxFocus boxShadow__focus borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__default"
+            class="Checkbox__checkbox Checkbox__checkboxFocus boxShadow__focus borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__standard"
           />
           <div
             class="Checkbox__checkbox Checkbox__checkboxChecked backgroundColor__formAccent borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
           />
           <div
-            class="Checkbox__checkbox Checkbox__checkboxDisabled borderRadius__standard transition__fast Box__root backgroundColor__inputDisabled borderColor__default borderWidth__standard"
+            class="Checkbox__checkbox Checkbox__checkboxDisabled borderRadius__standard transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
           />
           <div
             class="Checkbox__checkbox Checkbox__checkboxCritical borderRadius__standard transition__fast Box__root borderColor__critical borderWidth__standard"
             style="opacity: 0;"
           />
           <svg
-            class="Checkbox__checkboxIcon fill__white transition__fast Icon__fillSize Box__root borderColor__default"
+            class="Checkbox__checkboxIcon fill__white transition__fast Icon__fillSize Box__root borderColor__standard"
             height="16"
             viewBox="90.471 302.809 823 823"
             width="16"
@@ -893,7 +893,7 @@ exports[`ChecklistCard Theme: wireframe Default 1`] = `
           </svg>
         </div>
         <div
-          class="Text__block Box__root borderColor__default"
+          class="Text__block Box__root borderColor__standard"
         >
           <span
             class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
@@ -905,10 +905,10 @@ exports[`ChecklistCard Theme: wireframe Default 1`] = `
       </label>
     </div>
     <div
-      class="Box__root borderColor__default paddingRight__gutter paddingLeft__gutter"
+      class="Box__root borderColor__standard paddingRight__gutter paddingLeft__gutter"
     >
       <div
-        class="Text__block Box__root borderColor__default paddingBottom__small"
+        class="Text__block Box__root borderColor__standard paddingBottom__small"
         id="1-message"
         tabindex="-1"
       >
@@ -928,7 +928,7 @@ exports[`ChecklistCard Theme: wireframe Default 1`] = `
     </div>
   </div>
   <div
-    class="Divider__root Box__root borderColor__default"
+    class="Divider__root Box__root borderColor__standard"
   >
     <div
       class="Divider__divider borderWidth__standard borderColor__standard"
@@ -947,35 +947,35 @@ exports[`ChecklistCard Theme: wireframe Default 1`] = `
       class="Checkbox__content"
     >
       <label
-        class="Checkbox__label Box__root borderColor__default paddingTop__smaller paddingRight__gutter paddingLeft__gutter"
+        class="Checkbox__label Box__root borderColor__standard paddingTop__smaller paddingRight__gutter paddingLeft__gutter"
         for="2"
         style="min-height: 48px;"
       >
         <div
-          class="Checkbox__checkboxContainer Box__root borderColor__default marginRight__medium"
+          class="Checkbox__checkboxContainer Box__root borderColor__standard marginRight__medium"
           style="width: 30px; height: 30px; margin-top: 9px;"
         >
           <div
-            class="Checkbox__checkbox borderRadius__standard Box__root backgroundColor__input borderColor__default borderWidth__standard"
+            class="Checkbox__checkbox borderRadius__standard Box__root backgroundColor__input borderColor__standard borderWidth__standard"
           />
           <div
             class="Checkbox__checkbox Checkbox__checkboxHover borderRadius__standard Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
           />
           <div
-            class="Checkbox__checkbox Checkbox__checkboxFocus boxShadow__focus borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__default"
+            class="Checkbox__checkbox Checkbox__checkboxFocus boxShadow__focus borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__standard"
           />
           <div
             class="Checkbox__checkbox Checkbox__checkboxChecked backgroundColor__formAccent borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
           />
           <div
-            class="Checkbox__checkbox Checkbox__checkboxDisabled borderRadius__standard transition__fast Box__root backgroundColor__inputDisabled borderColor__default borderWidth__standard"
+            class="Checkbox__checkbox Checkbox__checkboxDisabled borderRadius__standard transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
           />
           <div
             class="Checkbox__checkbox Checkbox__checkboxCritical borderRadius__standard transition__fast Box__root borderColor__critical borderWidth__standard"
             style="opacity: 0;"
           />
           <svg
-            class="Checkbox__checkboxIcon fill__white transition__fast Icon__fillSize Box__root borderColor__default"
+            class="Checkbox__checkboxIcon fill__white transition__fast Icon__fillSize Box__root borderColor__standard"
             height="16"
             viewBox="90.471 302.809 823 823"
             width="16"
@@ -986,7 +986,7 @@ exports[`ChecklistCard Theme: wireframe Default 1`] = `
           </svg>
         </div>
         <div
-          class="Text__block Box__root borderColor__default"
+          class="Text__block Box__root borderColor__standard"
         >
           <span
             class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
@@ -998,10 +998,10 @@ exports[`ChecklistCard Theme: wireframe Default 1`] = `
       </label>
     </div>
     <div
-      class="Box__root borderColor__default paddingRight__gutter paddingLeft__gutter"
+      class="Box__root borderColor__standard paddingRight__gutter paddingLeft__gutter"
     >
       <div
-        class="Text__block Box__root borderColor__default paddingBottom__small"
+        class="Text__block Box__root borderColor__standard paddingBottom__small"
         id="2-message"
         tabindex="-1"
       >
@@ -1021,7 +1021,7 @@ exports[`ChecklistCard Theme: wireframe Default 1`] = `
     </div>
   </div>
   <div
-    class="Divider__root Box__root borderColor__default"
+    class="Divider__root Box__root borderColor__standard"
   >
     <div
       class="Divider__divider borderWidth__standard borderColor__standard"
@@ -1040,35 +1040,35 @@ exports[`ChecklistCard Theme: wireframe Default 1`] = `
       class="Checkbox__content"
     >
       <label
-        class="Checkbox__label Box__root borderColor__default paddingTop__smaller paddingRight__gutter paddingLeft__gutter"
+        class="Checkbox__label Box__root borderColor__standard paddingTop__smaller paddingRight__gutter paddingLeft__gutter"
         for="3"
         style="min-height: 48px;"
       >
         <div
-          class="Checkbox__checkboxContainer Box__root borderColor__default marginRight__medium"
+          class="Checkbox__checkboxContainer Box__root borderColor__standard marginRight__medium"
           style="width: 30px; height: 30px; margin-top: 9px;"
         >
           <div
-            class="Checkbox__checkbox borderRadius__standard Box__root backgroundColor__input borderColor__default borderWidth__standard"
+            class="Checkbox__checkbox borderRadius__standard Box__root backgroundColor__input borderColor__standard borderWidth__standard"
           />
           <div
             class="Checkbox__checkbox Checkbox__checkboxHover borderRadius__standard Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
           />
           <div
-            class="Checkbox__checkbox Checkbox__checkboxFocus boxShadow__focus borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__default"
+            class="Checkbox__checkbox Checkbox__checkboxFocus boxShadow__focus borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__standard"
           />
           <div
             class="Checkbox__checkbox Checkbox__checkboxChecked backgroundColor__formAccent borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
           />
           <div
-            class="Checkbox__checkbox Checkbox__checkboxDisabled borderRadius__standard transition__fast Box__root backgroundColor__inputDisabled borderColor__default borderWidth__standard"
+            class="Checkbox__checkbox Checkbox__checkboxDisabled borderRadius__standard transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
           />
           <div
             class="Checkbox__checkbox Checkbox__checkboxCritical borderRadius__standard transition__fast Box__root borderColor__critical borderWidth__standard"
             style="opacity: 0;"
           />
           <svg
-            class="Checkbox__checkboxIcon fill__white transition__fast Icon__fillSize Box__root borderColor__default"
+            class="Checkbox__checkboxIcon fill__white transition__fast Icon__fillSize Box__root borderColor__standard"
             height="16"
             viewBox="90.471 302.809 823 823"
             width="16"
@@ -1079,7 +1079,7 @@ exports[`ChecklistCard Theme: wireframe Default 1`] = `
           </svg>
         </div>
         <div
-          class="Text__block Box__root borderColor__default"
+          class="Text__block Box__root borderColor__standard"
         >
           <span
             class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
@@ -1091,10 +1091,10 @@ exports[`ChecklistCard Theme: wireframe Default 1`] = `
       </label>
     </div>
     <div
-      class="Box__root borderColor__default paddingRight__gutter paddingLeft__gutter"
+      class="Box__root borderColor__standard paddingRight__gutter paddingLeft__gutter"
     >
       <div
-        class="Text__block Box__root borderColor__default paddingBottom__small"
+        class="Text__block Box__root borderColor__standard paddingBottom__small"
         id="3-message"
         tabindex="-1"
       >

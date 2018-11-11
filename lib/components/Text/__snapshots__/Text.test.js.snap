@@ -2,7 +2,7 @@
 
 exports[`Text Theme: jobStreet Baseline disabled 1`] = `
 <div
-  class="Text__block Box__root borderColor__default"
+  class="Text__block Box__root borderColor__standard"
 >
   <span
     class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
@@ -15,7 +15,7 @@ exports[`Text Theme: jobStreet Baseline disabled 1`] = `
 
 exports[`Text Theme: jobStreet Color 1`] = `
 <div
-  class="Text__block Box__root borderColor__default"
+  class="Text__block Box__root borderColor__standard"
 >
   <span
     class="Text__block color__positive fontFamily__text fontSize__standard fontWeight__regular"
@@ -27,7 +27,7 @@ exports[`Text Theme: jobStreet Color 1`] = `
 
 exports[`Text Theme: jobStreet Default 1`] = `
 <div
-  class="Text__block Box__root borderColor__default"
+  class="Text__block Box__root borderColor__standard"
 >
   <span
     class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
@@ -39,7 +39,7 @@ exports[`Text Theme: jobStreet Default 1`] = `
 
 exports[`Text Theme: jobStreet List item 1`] = `
 <li
-  class="Text__block Text__listItem Box__root borderColor__default"
+  class="Text__block Text__listItem Box__root borderColor__standard"
 >
   <span
     class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
@@ -51,7 +51,7 @@ exports[`Text Theme: jobStreet List item 1`] = `
 
 exports[`Text Theme: jobStreet Size 1`] = `
 <div
-  class="Text__block Box__root borderColor__default"
+  class="Text__block Box__root borderColor__standard"
 >
   <span
     class="Text__block color__neutral fontFamily__text fontSize__large fontWeight__regular"
@@ -63,7 +63,7 @@ exports[`Text Theme: jobStreet Size 1`] = `
 
 exports[`Text Theme: jobStreet Weight 1`] = `
 <div
-  class="Text__block Box__root borderColor__default"
+  class="Text__block Box__root borderColor__standard"
 >
   <span
     class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__strong"
@@ -75,7 +75,7 @@ exports[`Text Theme: jobStreet Weight 1`] = `
 
 exports[`Text Theme: seekAnz Baseline disabled 1`] = `
 <div
-  class="Text__block Box__root borderColor__default"
+  class="Text__block Box__root borderColor__standard"
 >
   <span
     class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
@@ -88,7 +88,7 @@ exports[`Text Theme: seekAnz Baseline disabled 1`] = `
 
 exports[`Text Theme: seekAnz Color 1`] = `
 <div
-  class="Text__block Box__root borderColor__default"
+  class="Text__block Box__root borderColor__standard"
 >
   <span
     class="Text__block color__positive fontFamily__text fontSize__standard fontWeight__regular"
@@ -100,7 +100,7 @@ exports[`Text Theme: seekAnz Color 1`] = `
 
 exports[`Text Theme: seekAnz Default 1`] = `
 <div
-  class="Text__block Box__root borderColor__default"
+  class="Text__block Box__root borderColor__standard"
 >
   <span
     class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
@@ -112,7 +112,7 @@ exports[`Text Theme: seekAnz Default 1`] = `
 
 exports[`Text Theme: seekAnz List item 1`] = `
 <li
-  class="Text__block Text__listItem Box__root borderColor__default"
+  class="Text__block Text__listItem Box__root borderColor__standard"
 >
   <span
     class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
@@ -124,7 +124,7 @@ exports[`Text Theme: seekAnz List item 1`] = `
 
 exports[`Text Theme: seekAnz Size 1`] = `
 <div
-  class="Text__block Box__root borderColor__default"
+  class="Text__block Box__root borderColor__standard"
 >
   <span
     class="Text__block color__neutral fontFamily__text fontSize__large fontWeight__regular"
@@ -136,7 +136,7 @@ exports[`Text Theme: seekAnz Size 1`] = `
 
 exports[`Text Theme: seekAnz Weight 1`] = `
 <div
-  class="Text__block Box__root borderColor__default"
+  class="Text__block Box__root borderColor__standard"
 >
   <span
     class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__strong"
@@ -148,7 +148,7 @@ exports[`Text Theme: seekAnz Weight 1`] = `
 
 exports[`Text Theme: seekAsia Baseline disabled 1`] = `
 <div
-  class="Text__block Box__root borderColor__default"
+  class="Text__block Box__root borderColor__standard"
 >
   <span
     class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
@@ -161,7 +161,7 @@ exports[`Text Theme: seekAsia Baseline disabled 1`] = `
 
 exports[`Text Theme: seekAsia Color 1`] = `
 <div
-  class="Text__block Box__root borderColor__default"
+  class="Text__block Box__root borderColor__standard"
 >
   <span
     class="Text__block color__positive fontFamily__text fontSize__standard fontWeight__regular"
@@ -173,7 +173,7 @@ exports[`Text Theme: seekAsia Color 1`] = `
 
 exports[`Text Theme: seekAsia Default 1`] = `
 <div
-  class="Text__block Box__root borderColor__default"
+  class="Text__block Box__root borderColor__standard"
 >
   <span
     class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
@@ -185,7 +185,7 @@ exports[`Text Theme: seekAsia Default 1`] = `
 
 exports[`Text Theme: seekAsia List item 1`] = `
 <li
-  class="Text__block Text__listItem Box__root borderColor__default"
+  class="Text__block Text__listItem Box__root borderColor__standard"
 >
   <span
     class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
@@ -197,7 +197,7 @@ exports[`Text Theme: seekAsia List item 1`] = `
 
 exports[`Text Theme: seekAsia Size 1`] = `
 <div
-  class="Text__block Box__root borderColor__default"
+  class="Text__block Box__root borderColor__standard"
 >
   <span
     class="Text__block color__neutral fontFamily__text fontSize__large fontWeight__regular"
@@ -209,7 +209,7 @@ exports[`Text Theme: seekAsia Size 1`] = `
 
 exports[`Text Theme: seekAsia Weight 1`] = `
 <div
-  class="Text__block Box__root borderColor__default"
+  class="Text__block Box__root borderColor__standard"
 >
   <span
     class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__strong"
@@ -221,7 +221,7 @@ exports[`Text Theme: seekAsia Weight 1`] = `
 
 exports[`Text Theme: wireframe Baseline disabled 1`] = `
 <div
-  class="Text__block Box__root borderColor__default"
+  class="Text__block Box__root borderColor__standard"
 >
   <span
     class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
@@ -234,7 +234,7 @@ exports[`Text Theme: wireframe Baseline disabled 1`] = `
 
 exports[`Text Theme: wireframe Color 1`] = `
 <div
-  class="Text__block Box__root borderColor__default"
+  class="Text__block Box__root borderColor__standard"
 >
   <span
     class="Text__block color__positive fontFamily__text fontSize__standard fontWeight__regular"
@@ -246,7 +246,7 @@ exports[`Text Theme: wireframe Color 1`] = `
 
 exports[`Text Theme: wireframe Default 1`] = `
 <div
-  class="Text__block Box__root borderColor__default"
+  class="Text__block Box__root borderColor__standard"
 >
   <span
     class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
@@ -258,7 +258,7 @@ exports[`Text Theme: wireframe Default 1`] = `
 
 exports[`Text Theme: wireframe List item 1`] = `
 <li
-  class="Text__block Text__listItem Box__root borderColor__default"
+  class="Text__block Text__listItem Box__root borderColor__standard"
 >
   <span
     class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
@@ -270,7 +270,7 @@ exports[`Text Theme: wireframe List item 1`] = `
 
 exports[`Text Theme: wireframe Size 1`] = `
 <div
-  class="Text__block Box__root borderColor__default"
+  class="Text__block Box__root borderColor__standard"
 >
   <span
     class="Text__block color__neutral fontFamily__text fontSize__large fontWeight__regular"
@@ -282,7 +282,7 @@ exports[`Text Theme: wireframe Size 1`] = `
 
 exports[`Text Theme: wireframe Weight 1`] = `
 <div
-  class="Text__block Box__root borderColor__default"
+  class="Text__block Box__root borderColor__standard"
 >
   <span
     class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__strong"

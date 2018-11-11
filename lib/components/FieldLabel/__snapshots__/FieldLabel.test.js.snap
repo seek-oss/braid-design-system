@@ -2,7 +2,7 @@
 
 exports[`FieldLabel Theme: jobStreet Default 1`] = `
 <label
-  class="Text__block Box__root borderColor__default"
+  class="Text__block Box__root borderColor__standard"
 >
   <span
     class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__strong"
@@ -14,7 +14,7 @@ exports[`FieldLabel Theme: jobStreet Default 1`] = `
 
 exports[`FieldLabel Theme: seekAnz Default 1`] = `
 <label
-  class="Text__block Box__root borderColor__default"
+  class="Text__block Box__root borderColor__standard"
 >
   <span
     class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__strong"
@@ -26,7 +26,7 @@ exports[`FieldLabel Theme: seekAnz Default 1`] = `
 
 exports[`FieldLabel Theme: seekAsia Default 1`] = `
 <label
-  class="Text__block Box__root borderColor__default"
+  class="Text__block Box__root borderColor__standard"
 >
   <span
     class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__strong"
@@ -38,7 +38,7 @@ exports[`FieldLabel Theme: seekAsia Default 1`] = `
 
 exports[`FieldLabel Theme: wireframe Default 1`] = `
 <label
-  class="Text__block Box__root borderColor__default"
+  class="Text__block Box__root borderColor__standard"
 >
   <span
     class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__strong"
