@@ -11,7 +11,8 @@
     "unit": "sku test",
     "lint": "sku lint",
     "format": "sku format",
-    "build": "sku build",
+    "build": "sku build && playroom build",
+    "playroom": "playroom",
     "storybook": "sku storybook",
     "deploy": "node scripts/deploy.js",
     "deploy-preview": "surge -p ./docs/dist",
@@ -56,9 +57,22 @@
   },
   "homepage": "https://github.com/seek-oss/braid-design-system#readme",
   "dependencies": {
+    "@babel/core": "^7.1.5",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+    "@babel/preset-env": "^7.1.5",
+    "@babel/preset-react": "^7.0.0",
+    "autoprefixer": "^9.3.1",
+    "babel-loader": "^8.0.4",
     "basekick": "^3.0.0",
+    "browserslist-config-seek": "^1.0.0",
     "classnames": "^2.2.6",
-    "prop-types": "^15.6.2"
+    "css-in-js-loader": "^0.1.2",
+    "css-loader": "^1.0.1",
+    "postcss-js": "^2.0.0",
+    "postcss-loader": "^3.0.0",
+    "prop-types": "^15.6.2",
+    "style-loader": "^0.23.1"
   },
   "peerDependencies": {
     "react": "^16.0.0"
@@ -76,6 +90,7 @@
     "lint-staged": "^8.0.4",
     "lodash": "^4.17.11",
     "parse-prop-types": "^0.3.0",
+    "playroom": "^0.1.3",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-element-to-jsx-string": "^14.0.1",

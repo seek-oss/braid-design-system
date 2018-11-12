@@ -13,12 +13,20 @@ _**NOTE:** This project is currently in alpha. The API is *extremely* unstable. 
 
 ## Setup
 
-> This guide is currently optimised for usage with [sku](https://github.com/seek-oss/sku), since it's configured to support Braid out of the box. If your project has a custom build setup, you'll need some extra guidance from project contributors to configure your bundler.
-
-In your sku project, first install this library:
+In your project, first install this library:
 
 ```bash
 $ npm install --save braid-design-system
+```
+
+For projects that aren't using [sku](https://github.com/seek-oss/sku), you'll need to integrate Braid's webpack config with your own, using the provided webpack config decorator:
+
+```
+const { decorateClientConfig } = require('./lib/webpack');
+
+module.exports = decorateClientConfig({
+  // Your webpack config here...
+});
 ```
 
 Then, import the desired theme at the _very top_ of your application (e.g. `src/client.js`), before importing anything else.
