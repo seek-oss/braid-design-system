@@ -53,13 +53,13 @@ export default class App extends Component {
               </Text>
               <BulletList marginBottom="small">
                 <Bullet>
-                  <a
+                  <Link
                     style={{ color: 'inherit' }}
-                    href="/playroom"
+                    to="/playroom"
                     target="_blank"
                   >
                     Playroom
-                  </a>
+                  </Link>
                 </Bullet>
               </BulletList>
               <Text size="large" weight="strong" marginBottom="small">
