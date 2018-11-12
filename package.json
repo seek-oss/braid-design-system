@@ -12,7 +12,7 @@
     "unit": "sku test",
     "lint": "sku lint",
     "format": "sku format",
-    "build": "sku build && playroom build",
+    "build": "sku build && NODE_ENV=production playroom build",
     "playroom": "playroom",
     "storybook": "sku storybook",
     "deploy": "node scripts/deploy.js",
