@@ -49,6 +49,20 @@ export default class App extends Component {
               paddingRight="gutter"
             >
               <Text size="large" weight="strong" marginBottom="small">
+                Tools
+              </Text>
+              <BulletList marginBottom="small">
+                <Bullet>
+                  <a
+                    style={{ color: 'inherit' }}
+                    href="/playroom"
+                    target="_blank"
+                  >
+                    Playroom
+                  </a>
+                </Bullet>
+              </BulletList>
+              <Text size="large" weight="strong" marginBottom="small">
                 Components
               </Text>
               <BulletList marginBottom="small">
