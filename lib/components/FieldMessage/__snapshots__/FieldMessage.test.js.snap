@@ -2,7 +2,7 @@
 
 exports[`FieldMessage Theme: jobStreet Critical 1`] = `
 <div
-  class="Text__block Box__root borderColor__default paddingBottom__small"
+  class="Text__block Box__root borderColor__standard paddingBottom__small"
   tabindex="-1"
 >
   <span
@@ -15,7 +15,7 @@ exports[`FieldMessage Theme: jobStreet Critical 1`] = `
         class="height__standardText"
       />
       <svg
-        class="FieldMessage__icon marginRight__smaller width__standardText height__standardText fill__critical Box__root borderColor__default"
+        class="FieldMessage__icon marginRight__smaller width__standardText height__standardText fill__critical Box__root borderColor__standard"
         height="16"
         viewBox="0 0 512 512"
         width="16"
@@ -34,7 +34,7 @@ exports[`FieldMessage Theme: jobStreet Critical 1`] = `
 
 exports[`FieldMessage Theme: jobStreet Default 1`] = `
 <div
-  class="Text__block Box__root borderColor__default paddingBottom__small"
+  class="Text__block Box__root borderColor__standard paddingBottom__small"
   tabindex="-1"
 >
   <span
@@ -56,7 +56,7 @@ exports[`FieldMessage Theme: jobStreet Default 1`] = `
 
 exports[`FieldMessage Theme: jobStreet Empty 1`] = `
 <div
-  class="Text__block Box__root borderColor__default paddingBottom__small"
+  class="Text__block Box__root borderColor__standard paddingBottom__small"
   tabindex="-1"
 >
   <span
@@ -78,7 +78,7 @@ exports[`FieldMessage Theme: jobStreet False 1`] = `null`;
 
 exports[`FieldMessage Theme: jobStreet Positive 1`] = `
 <div
-  class="Text__block Box__root borderColor__default paddingBottom__small"
+  class="Text__block Box__root borderColor__standard paddingBottom__small"
   tabindex="-1"
 >
   <span
@@ -91,7 +91,7 @@ exports[`FieldMessage Theme: jobStreet Positive 1`] = `
         class="height__standardText"
       />
       <svg
-        class="FieldMessage__icon marginRight__smaller width__standardText height__standardText fill__positive Box__root borderColor__default"
+        class="FieldMessage__icon marginRight__smaller width__standardText height__standardText fill__positive Box__root borderColor__standard"
         height="16"
         viewBox="0 0 16 16"
         width="16"
@@ -110,7 +110,7 @@ exports[`FieldMessage Theme: jobStreet Positive 1`] = `
 
 exports[`FieldMessage Theme: seekAnz Critical 1`] = `
 <div
-  class="Text__block Box__root borderColor__default paddingBottom__small"
+  class="Text__block Box__root borderColor__standard paddingBottom__small"
   tabindex="-1"
 >
   <span
@@ -123,7 +123,7 @@ exports[`FieldMessage Theme: seekAnz Critical 1`] = `
         class="height__standardText"
       />
       <svg
-        class="FieldMessage__icon marginRight__smaller width__standardText height__standardText fill__critical Box__root borderColor__default"
+        class="FieldMessage__icon marginRight__smaller width__standardText height__standardText fill__critical Box__root borderColor__standard"
         height="16"
         viewBox="0 0 512 512"
         width="16"
@@ -142,7 +142,7 @@ exports[`FieldMessage Theme: seekAnz Critical 1`] = `
 
 exports[`FieldMessage Theme: seekAnz Default 1`] = `
 <div
-  class="Text__block Box__root borderColor__default paddingBottom__small"
+  class="Text__block Box__root borderColor__standard paddingBottom__small"
   tabindex="-1"
 >
   <span
@@ -164,7 +164,7 @@ exports[`FieldMessage Theme: seekAnz Default 1`] = `
 
 exports[`FieldMessage Theme: seekAnz Empty 1`] = `
 <div
-  class="Text__block Box__root borderColor__default paddingBottom__small"
+  class="Text__block Box__root borderColor__standard paddingBottom__small"
   tabindex="-1"
 >
   <span
@@ -186,7 +186,7 @@ exports[`FieldMessage Theme: seekAnz False 1`] = `null`;
 
 exports[`FieldMessage Theme: seekAnz Positive 1`] = `
 <div
-  class="Text__block Box__root borderColor__default paddingBottom__small"
+  class="Text__block Box__root borderColor__standard paddingBottom__small"
   tabindex="-1"
 >
   <span
@@ -199,7 +199,7 @@ exports[`FieldMessage Theme: seekAnz Positive 1`] = `
         class="height__standardText"
       />
       <svg
-        class="FieldMessage__icon marginRight__smaller width__standardText height__standardText fill__positive Box__root borderColor__default"
+        class="FieldMessage__icon marginRight__smaller width__standardText height__standardText fill__positive Box__root borderColor__standard"
         height="16"
         viewBox="0 0 16 16"
         width="16"
@@ -218,7 +218,7 @@ exports[`FieldMessage Theme: seekAnz Positive 1`] = `
 
 exports[`FieldMessage Theme: seekAsia Critical 1`] = `
 <div
-  class="Text__block Box__root borderColor__default paddingBottom__small"
+  class="Text__block Box__root borderColor__standard paddingBottom__small"
   tabindex="-1"
 >
   <span
@@ -231,7 +231,7 @@ exports[`FieldMessage Theme: seekAsia Critical 1`] = `
         class="height__standardText"
       />
       <svg
-        class="FieldMessage__icon marginRight__smaller width__standardText height__standardText fill__critical Box__root borderColor__default"
+        class="FieldMessage__icon marginRight__smaller width__standardText height__standardText fill__critical Box__root borderColor__standard"
         height="16"
         viewBox="0 0 512 512"
         width="16"
@@ -250,7 +250,7 @@ exports[`FieldMessage Theme: seekAsia Critical 1`] = `
 
 exports[`FieldMessage Theme: seekAsia Default 1`] = `
 <div
-  class="Text__block Box__root borderColor__default paddingBottom__small"
+  class="Text__block Box__root borderColor__standard paddingBottom__small"
   tabindex="-1"
 >
   <span
@@ -272,7 +272,7 @@ exports[`FieldMessage Theme: seekAsia Default 1`] = `
 
 exports[`FieldMessage Theme: seekAsia Empty 1`] = `
 <div
-  class="Text__block Box__root borderColor__default paddingBottom__small"
+  class="Text__block Box__root borderColor__standard paddingBottom__small"
   tabindex="-1"
 >
   <span
@@ -294,7 +294,7 @@ exports[`FieldMessage Theme: seekAsia False 1`] = `null`;
 
 exports[`FieldMessage Theme: seekAsia Positive 1`] = `
 <div
-  class="Text__block Box__root borderColor__default paddingBottom__small"
+  class="Text__block Box__root borderColor__standard paddingBottom__small"
   tabindex="-1"
 >
   <span
@@ -307,7 +307,7 @@ exports[`FieldMessage Theme: seekAsia Positive 1`] = `
         class="height__standardText"
       />
       <svg
-        class="FieldMessage__icon marginRight__smaller width__standardText height__standardText fill__positive Box__root borderColor__default"
+        class="FieldMessage__icon marginRight__smaller width__standardText height__standardText fill__positive Box__root borderColor__standard"
         height="16"
         viewBox="0 0 16 16"
         width="16"
@@ -326,7 +326,7 @@ exports[`FieldMessage Theme: seekAsia Positive 1`] = `
 
 exports[`FieldMessage Theme: wireframe Critical 1`] = `
 <div
-  class="Text__block Box__root borderColor__default paddingBottom__small"
+  class="Text__block Box__root borderColor__standard paddingBottom__small"
   tabindex="-1"
 >
   <span
@@ -339,7 +339,7 @@ exports[`FieldMessage Theme: wireframe Critical 1`] = `
         class="height__standardText"
       />
       <svg
-        class="FieldMessage__icon marginRight__smaller width__standardText height__standardText fill__critical Box__root borderColor__default"
+        class="FieldMessage__icon marginRight__smaller width__standardText height__standardText fill__critical Box__root borderColor__standard"
         height="16"
         viewBox="0 0 512 512"
         width="16"
@@ -358,7 +358,7 @@ exports[`FieldMessage Theme: wireframe Critical 1`] = `
 
 exports[`FieldMessage Theme: wireframe Default 1`] = `
 <div
-  class="Text__block Box__root borderColor__default paddingBottom__small"
+  class="Text__block Box__root borderColor__standard paddingBottom__small"
   tabindex="-1"
 >
   <span
@@ -380,7 +380,7 @@ exports[`FieldMessage Theme: wireframe Default 1`] = `
 
 exports[`FieldMessage Theme: wireframe Empty 1`] = `
 <div
-  class="Text__block Box__root borderColor__default paddingBottom__small"
+  class="Text__block Box__root borderColor__standard paddingBottom__small"
   tabindex="-1"
 >
   <span
@@ -402,7 +402,7 @@ exports[`FieldMessage Theme: wireframe False 1`] = `null`;
 
 exports[`FieldMessage Theme: wireframe Positive 1`] = `
 <div
-  class="Text__block Box__root borderColor__default paddingBottom__small"
+  class="Text__block Box__root borderColor__standard paddingBottom__small"
   tabindex="-1"
 >
   <span
@@ -415,7 +415,7 @@ exports[`FieldMessage Theme: wireframe Positive 1`] = `
         class="height__standardText"
       />
       <svg
-        class="FieldMessage__icon marginRight__smaller width__standardText height__standardText fill__positive Box__root borderColor__default"
+        class="FieldMessage__icon marginRight__smaller width__standardText height__standardText fill__positive Box__root borderColor__standard"
         height="16"
         viewBox="0 0 16 16"
         width="16"

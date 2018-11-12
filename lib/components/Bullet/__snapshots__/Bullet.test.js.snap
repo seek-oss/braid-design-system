@@ -2,7 +2,7 @@
 
 exports[`Bullet Theme: jobStreet Default 1`] = `
 <li
-  class="Text__block Text__listItem Box__root borderColor__default paddingBottom__smaller"
+  class="Text__block Text__listItem Box__root borderColor__standard paddingBottom__smaller"
   style="margin-left: 1.3em;"
 >
   <span
@@ -15,7 +15,7 @@ exports[`Bullet Theme: jobStreet Default 1`] = `
 
 exports[`Bullet Theme: seekAnz Default 1`] = `
 <li
-  class="Text__block Text__listItem Box__root borderColor__default paddingBottom__smaller"
+  class="Text__block Text__listItem Box__root borderColor__standard paddingBottom__smaller"
   style="margin-left: 1.3em;"
 >
   <span
@@ -28,7 +28,7 @@ exports[`Bullet Theme: seekAnz Default 1`] = `
 
 exports[`Bullet Theme: seekAsia Default 1`] = `
 <li
-  class="Text__block Text__listItem Box__root borderColor__default paddingBottom__smaller"
+  class="Text__block Text__listItem Box__root borderColor__standard paddingBottom__smaller"
   style="margin-left: 1.3em;"
 >
   <span
@@ -41,7 +41,7 @@ exports[`Bullet Theme: seekAsia Default 1`] = `
 
 exports[`Bullet Theme: wireframe Default 1`] = `
 <li
-  class="Text__block Text__listItem Box__root borderColor__default paddingBottom__smaller"
+  class="Text__block Text__listItem Box__root borderColor__standard paddingBottom__smaller"
   style="margin-left: 1.3em;"
 >
   <span
