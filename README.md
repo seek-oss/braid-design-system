@@ -70,6 +70,10 @@ Start a local Storybook server:
 $ yarn storybook
 ```
 
+## Thanks
+
+[Chromatic](https://www.chromaticqa.com) for providing component screenshot testing, powered by [Storybook](https://storybook.js.org/).
+
 ## License
 
 MIT.
