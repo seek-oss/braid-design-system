@@ -10640,10 +10640,10 @@ pkginfo@0.x.x:
   resolved "https://registry.yarnpkg.com/pkginfo/-/pkginfo-0.4.1.tgz#b5418ef0439de5425fc4995042dced14fb2a84ff"
   integrity sha1-tUGO8EOd5UJfxJlQQtztFPsqhP8=
 
-playroom@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/playroom/-/playroom-0.2.0.tgz#bc7f16fa28b5d1b0cba20aee705b987f0e1f71ae"
-  integrity sha512-rxfA1RhctGcjuCvO38MCgLOIyhuLNSMjzj9BWxB5VLJXTnfxyiYZJgUPsA6gF1Lw5mtFsDFjX5kAFahol8yNZw==
+playroom@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/playroom/-/playroom-0.3.0.tgz#2736ca550f54bd5c6360482ce6ffc3c609fceb04"
+  integrity sha512-mHoiXa+gNxpm+l5LhyDRBxicYC8pyRsx3IHtuoAPGzHBIuAkBcOYYJU3LKzxB2Ag6fTp7Hg1ULHLgKBcQdr4bQ==
   dependencies:
     "@babel/core" "^7.1.0"
     "@babel/preset-env" "^7.1.0"
@@ -10669,6 +10669,7 @@ playroom@^0.2.0:
     parse-prop-types "^0.3.0"
     prop-types "^15.6.2"
     query-string "^6.1.0"
+    re-resizable "^4.9.3"
     react "^16.5.2"
     react-codemirror "^1.0.0"
     react-dom "^16.5.2"
@@ -11395,6 +11396,11 @@ rc@^1.0.1, rc@^1.1.6, rc@^1.2.7, rc@^1.2.8:
     ini "~1.3.0"
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
+
+re-resizable@^4.9.3:
+  version "4.9.3"
+  resolved "https://registry.yarnpkg.com/re-resizable/-/re-resizable-4.9.3.tgz#833df4a4a9b62cfc1de11bc1456285374826e1f0"
+  integrity sha512-JKzmZdUAYWs85YErkmZNB7hjGR9qUOHFUZUtEplZlEZBFHRguiWck5J+HFTy/NjlMJtqQsYPQq57nQAO2BuRRg==
 
 react-codemirror@^1.0.0:
   version "1.0.0"

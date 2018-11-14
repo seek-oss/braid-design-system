@@ -90,7 +90,7 @@
     "lint-staged": "^8.0.4",
     "lodash": "^4.17.11",
     "parse-prop-types": "^0.3.0",
-    "playroom": "^0.2.0",
+    "playroom": "^0.3.0",
     "postcss-js": "^2.0.0",
     "postcss-loader": "^3.0.0",
     "react": "^16.5.2",
