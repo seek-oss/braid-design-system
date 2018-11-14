@@ -15,6 +15,7 @@
     "build": "sku build && NODE_ENV=production playroom build",
     "playroom": "playroom",
     "storybook": "sku storybook",
+    "chromatic": "sku chromatic",
     "deploy": "node scripts/deploy.js",
     "deploy-preview": "surge -p ./docs/dist",
     "post-commit-status": "node scripts/postCommitStatus.js",
@@ -100,7 +101,7 @@
     "react-testing-library": "^5.1.0",
     "renovate-config-seek": "0.4.0",
     "semantic-release": "^15.10.8",
-    "sku": "6.0.6",
+    "sku": "6.1.0",
     "style-loader": "^0.23.1",
     "surge": "^0.20.1",
     "travis-deploy-once": "^5.0.9"
