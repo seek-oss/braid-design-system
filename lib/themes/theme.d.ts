@@ -11,13 +11,13 @@ type ResponsiveText = Record<Breakpoint, TextDefinition>;
 
 // Spacing definitions
 interface Spacing {
-  smallest: number;
-  smaller: number;
+  xxsmall: number;
+  xsmall: number;
   small: number;
   medium: number;
   large: number;
-  larger: number;
-  largest: number;
+  xlarge: number;
+  xxlarge: number;
 }
 
 // Border definitions
@@ -154,13 +154,13 @@ type SizeVariants =
   | 'largeTextInline';
 type SpacingVariants =
   | 'none'
-  | 'smallest'
-  | 'smaller'
+  | 'xxsmall'
+  | 'xsmall'
   | 'small'
   | 'medium'
   | 'large'
-  | 'larger'
-  | 'largest';
+  | 'xlarge'
+  | 'xxlarge';
 type HorizontalSpacingVariants = SpacingVariants | 'gutter';
 type TransitionVariants = 'fast';
 

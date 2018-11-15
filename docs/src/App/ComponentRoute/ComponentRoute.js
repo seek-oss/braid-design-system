@@ -74,7 +74,7 @@ export default class ComponentRoute extends Component {
           </Text>
         ) : null}
         {examples.map(({ label, render, code }, index) => (
-          <Box key={label} marginBottom="largest">
+          <Box key={label} marginBottom="xxlarge">
             {label ? <Text paddingBottom="small">{label}</Text> : null}
             {render
               ? themes.map(theme => (
@@ -96,7 +96,7 @@ export default class ComponentRoute extends Component {
               color="white"
               paddingLeft="small"
               paddingRight="small"
-              paddingTop="smallest"
+              paddingTop="xxsmall"
               paddingBottom="small"
               borderRadius="standard"
               style={{

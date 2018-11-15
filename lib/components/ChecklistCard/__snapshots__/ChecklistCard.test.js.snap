@@ -5,7 +5,7 @@ exports[`ChecklistCard Theme: jobStreet Default 1`] = `
   class="Box__root backgroundColor__card borderColor__standard marginBottom__medium"
 >
   <div
-    class="paddingBottom__smaller"
+    class="paddingBottom__xsmall"
   >
     <input
       aria-describedby="1-message"
@@ -17,7 +17,7 @@ exports[`ChecklistCard Theme: jobStreet Default 1`] = `
       class="Checkbox__content"
     >
       <label
-        class="Checkbox__label Box__root borderColor__standard paddingTop__smaller paddingRight__gutter paddingLeft__gutter"
+        class="Checkbox__label Box__root borderColor__standard paddingTop__xsmall paddingRight__gutter paddingLeft__gutter"
         for="1"
         style="min-height: 44px;"
       >
@@ -98,7 +98,7 @@ exports[`ChecklistCard Theme: jobStreet Default 1`] = `
     />
   </div>
   <div
-    class="paddingBottom__smaller"
+    class="paddingBottom__xsmall"
   >
     <input
       aria-describedby="2-message"
@@ -110,7 +110,7 @@ exports[`ChecklistCard Theme: jobStreet Default 1`] = `
       class="Checkbox__content"
     >
       <label
-        class="Checkbox__label Box__root borderColor__standard paddingTop__smaller paddingRight__gutter paddingLeft__gutter"
+        class="Checkbox__label Box__root borderColor__standard paddingTop__xsmall paddingRight__gutter paddingLeft__gutter"
         for="2"
         style="min-height: 44px;"
       >
@@ -191,7 +191,7 @@ exports[`ChecklistCard Theme: jobStreet Default 1`] = `
     />
   </div>
   <div
-    class="paddingBottom__smaller"
+    class="paddingBottom__xsmall"
   >
     <input
       aria-describedby="3-message"
@@ -203,7 +203,7 @@ exports[`ChecklistCard Theme: jobStreet Default 1`] = `
       class="Checkbox__content"
     >
       <label
-        class="Checkbox__label Box__root borderColor__standard paddingTop__smaller paddingRight__gutter paddingLeft__gutter"
+        class="Checkbox__label Box__root borderColor__standard paddingTop__xsmall paddingRight__gutter paddingLeft__gutter"
         for="3"
         style="min-height: 44px;"
       >
@@ -284,7 +284,7 @@ exports[`ChecklistCard Theme: seekAnz Default 1`] = `
   class="Box__root backgroundColor__card borderColor__standard marginBottom__medium"
 >
   <div
-    class="paddingBottom__smaller"
+    class="paddingBottom__xsmall"
   >
     <input
       aria-describedby="1-message"
@@ -296,7 +296,7 @@ exports[`ChecklistCard Theme: seekAnz Default 1`] = `
       class="Checkbox__content"
     >
       <label
-        class="Checkbox__label Box__root borderColor__standard paddingTop__smaller paddingRight__gutter paddingLeft__gutter"
+        class="Checkbox__label Box__root borderColor__standard paddingTop__xsmall paddingRight__gutter paddingLeft__gutter"
         for="1"
         style="min-height: 48px;"
       >
@@ -377,7 +377,7 @@ exports[`ChecklistCard Theme: seekAnz Default 1`] = `
     />
   </div>
   <div
-    class="paddingBottom__smaller"
+    class="paddingBottom__xsmall"
   >
     <input
       aria-describedby="2-message"
@@ -389,7 +389,7 @@ exports[`ChecklistCard Theme: seekAnz Default 1`] = `
       class="Checkbox__content"
     >
       <label
-        class="Checkbox__label Box__root borderColor__standard paddingTop__smaller paddingRight__gutter paddingLeft__gutter"
+        class="Checkbox__label Box__root borderColor__standard paddingTop__xsmall paddingRight__gutter paddingLeft__gutter"
         for="2"
         style="min-height: 48px;"
       >
@@ -470,7 +470,7 @@ exports[`ChecklistCard Theme: seekAnz Default 1`] = `
     />
   </div>
   <div
-    class="paddingBottom__smaller"
+    class="paddingBottom__xsmall"
   >
     <input
       aria-describedby="3-message"
@@ -482,7 +482,7 @@ exports[`ChecklistCard Theme: seekAnz Default 1`] = `
       class="Checkbox__content"
     >
       <label
-        class="Checkbox__label Box__root borderColor__standard paddingTop__smaller paddingRight__gutter paddingLeft__gutter"
+        class="Checkbox__label Box__root borderColor__standard paddingTop__xsmall paddingRight__gutter paddingLeft__gutter"
         for="3"
         style="min-height: 48px;"
       >
@@ -563,7 +563,7 @@ exports[`ChecklistCard Theme: seekAsia Default 1`] = `
   class="Box__root backgroundColor__card borderColor__standard marginBottom__medium"
 >
   <div
-    class="paddingBottom__smaller"
+    class="paddingBottom__xsmall"
   >
     <input
       aria-describedby="1-message"
@@ -575,7 +575,7 @@ exports[`ChecklistCard Theme: seekAsia Default 1`] = `
       class="Checkbox__content"
     >
       <label
-        class="Checkbox__label Box__root borderColor__standard paddingTop__smaller paddingRight__gutter paddingLeft__gutter"
+        class="Checkbox__label Box__root borderColor__standard paddingTop__xsmall paddingRight__gutter paddingLeft__gutter"
         for="1"
         style="min-height: 44px;"
       >
@@ -656,7 +656,7 @@ exports[`ChecklistCard Theme: seekAsia Default 1`] = `
     />
   </div>
   <div
-    class="paddingBottom__smaller"
+    class="paddingBottom__xsmall"
   >
     <input
       aria-describedby="2-message"
@@ -668,7 +668,7 @@ exports[`ChecklistCard Theme: seekAsia Default 1`] = `
       class="Checkbox__content"
     >
       <label
-        class="Checkbox__label Box__root borderColor__standard paddingTop__smaller paddingRight__gutter paddingLeft__gutter"
+        class="Checkbox__label Box__root borderColor__standard paddingTop__xsmall paddingRight__gutter paddingLeft__gutter"
         for="2"
         style="min-height: 44px;"
       >
@@ -749,7 +749,7 @@ exports[`ChecklistCard Theme: seekAsia Default 1`] = `
     />
   </div>
   <div
-    class="paddingBottom__smaller"
+    class="paddingBottom__xsmall"
   >
     <input
       aria-describedby="3-message"
@@ -761,7 +761,7 @@ exports[`ChecklistCard Theme: seekAsia Default 1`] = `
       class="Checkbox__content"
     >
       <label
-        class="Checkbox__label Box__root borderColor__standard paddingTop__smaller paddingRight__gutter paddingLeft__gutter"
+        class="Checkbox__label Box__root borderColor__standard paddingTop__xsmall paddingRight__gutter paddingLeft__gutter"
         for="3"
         style="min-height: 44px;"
       >
@@ -842,7 +842,7 @@ exports[`ChecklistCard Theme: wireframe Default 1`] = `
   class="Box__root backgroundColor__card borderColor__standard marginBottom__medium"
 >
   <div
-    class="paddingBottom__smaller"
+    class="paddingBottom__xsmall"
   >
     <input
       aria-describedby="1-message"
@@ -854,7 +854,7 @@ exports[`ChecklistCard Theme: wireframe Default 1`] = `
       class="Checkbox__content"
     >
       <label
-        class="Checkbox__label Box__root borderColor__standard paddingTop__smaller paddingRight__gutter paddingLeft__gutter"
+        class="Checkbox__label Box__root borderColor__standard paddingTop__xsmall paddingRight__gutter paddingLeft__gutter"
         for="1"
         style="min-height: 48px;"
       >
@@ -935,7 +935,7 @@ exports[`ChecklistCard Theme: wireframe Default 1`] = `
     />
   </div>
   <div
-    class="paddingBottom__smaller"
+    class="paddingBottom__xsmall"
   >
     <input
       aria-describedby="2-message"
@@ -947,7 +947,7 @@ exports[`ChecklistCard Theme: wireframe Default 1`] = `
       class="Checkbox__content"
     >
       <label
-        class="Checkbox__label Box__root borderColor__standard paddingTop__smaller paddingRight__gutter paddingLeft__gutter"
+        class="Checkbox__label Box__root borderColor__standard paddingTop__xsmall paddingRight__gutter paddingLeft__gutter"
         for="2"
         style="min-height: 48px;"
       >
@@ -1028,7 +1028,7 @@ exports[`ChecklistCard Theme: wireframe Default 1`] = `
     />
   </div>
   <div
-    class="paddingBottom__smaller"
+    class="paddingBottom__xsmall"
   >
     <input
       aria-describedby="3-message"
@@ -1040,7 +1040,7 @@ exports[`ChecklistCard Theme: wireframe Default 1`] = `
       class="Checkbox__content"
     >
       <label
-        class="Checkbox__label Box__root borderColor__standard paddingTop__smaller paddingRight__gutter paddingLeft__gutter"
+        class="Checkbox__label Box__root borderColor__standard paddingTop__xsmall paddingRight__gutter paddingLeft__gutter"
         for="3"
         style="min-height: 48px;"
       >
