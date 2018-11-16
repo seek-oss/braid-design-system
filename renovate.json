@@ -1,5 +1,11 @@
 {
   "extends": [
     "seek"
+  ],
+  "packageRules": [
+    {
+      "packageNames": ["playroom"],
+      "enabled": true
+    }
   ]
 }
