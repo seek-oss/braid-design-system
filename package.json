@@ -13,6 +13,7 @@
     "lint": "sku lint",
     "format": "sku format",
     "generate-component-docs": "node lib/componentDocs/generateComponentDocs.js",
+    "prelint": "npm run generate-component-docs",
     "prestart": "npm run generate-component-docs",
     "prebuild": "npm run generate-component-docs",
     "build": "sku build && NODE_ENV=production playroom build",
