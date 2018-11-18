@@ -1,8 +1,8 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import reactElementToJSXString from 'react-element-to-jsx-string';
-import parsePropTypes from 'parse-prop-types';
 import dedent from 'dedent';
+import ComponentProps from '../ComponentProps/ComponentProps';
 import { ThemeProvider, Box, Text } from '../../../../lib/components';
 import {
   wireframe,
@@ -12,34 +12,6 @@ import {
 } from '../../../../lib/themes';
 
 const themes = [wireframe, jobStreet, seekAsia, seekAnz];
-
-const typeValueToString = option => {
-  if (option.type.name === 'oneOfType') {
-    return option.type.value
-      .map(x => {
-        if (x.name === 'oneOf') {
-          return x.value
-            .map(y => {
-              return JSON.stringify(y);
-            })
-            .join(' | ');
-        }
-
-        return x.name;
-      })
-      .join(' | ');
-  }
-
-  if (option.type.name === 'oneOf') {
-    return option.type.value
-      .map(x => {
-        return JSON.stringify(x);
-      })
-      .join(' | ');
-  }
-
-  return option.type.name;
-};
 
 export default class ComponentRoute extends Component {
   static propTypes = {
@@ -54,11 +26,6 @@ export default class ComponentRoute extends Component {
           .default
       : require(`../../../../lib/components/${componentName}/${componentName}.docs.js`)
           .default;
-    const propTypes = parsePropTypes(docs.component);
-    const options = Object.keys(propTypes).map(propName => ({
-      name: propName,
-      ...propTypes[propName]
-    }));
     const examples = docs.examples || [];
 
     return (
@@ -126,27 +93,7 @@ export default class ComponentRoute extends Component {
           </Box>
         ))}
 
-        {options.length === 0 ? null : (
-          <Fragment>
-            <Text weight="strong" paddingBottom="small">
-              Options
-            </Text>
-            {options.map((option, i) => (
-              <Box key={i} paddingBottom="small">
-                <Text>{option.name}</Text>
-                <Text color="secondary">
-                  Type: {typeValueToString(option)}
-                  {option.required && !option.defaultValue ? ' (Required)' : ''}
-                </Text>
-                {option.defaultValue ? (
-                  <Text color="secondary">
-                    Default: {JSON.stringify(option.defaultValue.value)}
-                  </Text>
-                ) : null}
-              </Box>
-            ))}
-          </Fragment>
-        )}
+        <ComponentProps component={docs.component} />
       </Box>
     );
   }
