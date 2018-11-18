@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Box, Text } from '../../../../lib/components';
-import componentDocByName from './componentDocByName.json';
+import componentDocs from '../../../../lib/componentDocs/componentDocs.json';
 
 export default class ComponentProps extends Component {
   static propTypes = {
@@ -10,7 +10,7 @@ export default class ComponentProps extends Component {
 
   render() {
     const { componentName } = this.props;
-    const { props = {} } = componentDocByName[componentName] || {};
+    const { props = {} } = componentDocs[componentName] || {};
 
     const options = Object.keys(props).map(propName => ({
       name: propName,
