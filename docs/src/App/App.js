@@ -29,7 +29,7 @@ export default class App extends Component {
       <ThemeProvider theme={themes.wireframe}>
         <Box
           paddingTop="large"
-          paddingBottom="smaller"
+          paddingBottom="xsmall"
           paddingLeft="gutter"
           paddingRight="gutter"
         >
@@ -102,7 +102,7 @@ export default class App extends Component {
               paddingLeft="gutter"
               paddingRight="gutter"
               paddingTop="small"
-              paddingBottom="larger"
+              paddingBottom="xlarge"
             >
               <Route
                 path="/components/:componentName"

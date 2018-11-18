@@ -426,7 +426,7 @@ exports[`Radio Theme: jobStreet With message 1`] = `
             class="height__standardText"
           />
           <svg
-            class="FieldMessage__icon marginRight__smaller width__standardText height__standardText fill__critical Box__root borderColor__standard"
+            class="FieldMessage__icon marginRight__xsmall width__standardText height__standardText fill__critical Box__root borderColor__standard"
             height="16"
             viewBox="0 0 512 512"
             width="16"
@@ -871,7 +871,7 @@ exports[`Radio Theme: seekAnz With message 1`] = `
             class="height__standardText"
           />
           <svg
-            class="FieldMessage__icon marginRight__smaller width__standardText height__standardText fill__critical Box__root borderColor__standard"
+            class="FieldMessage__icon marginRight__xsmall width__standardText height__standardText fill__critical Box__root borderColor__standard"
             height="16"
             viewBox="0 0 512 512"
             width="16"
@@ -1316,7 +1316,7 @@ exports[`Radio Theme: seekAsia With message 1`] = `
             class="height__standardText"
           />
           <svg
-            class="FieldMessage__icon marginRight__smaller width__standardText height__standardText fill__critical Box__root borderColor__standard"
+            class="FieldMessage__icon marginRight__xsmall width__standardText height__standardText fill__critical Box__root borderColor__standard"
             height="16"
             viewBox="0 0 512 512"
             width="16"
@@ -1761,7 +1761,7 @@ exports[`Radio Theme: wireframe With message 1`] = `
             class="height__standardText"
           />
           <svg
-            class="FieldMessage__icon marginRight__smaller width__standardText height__standardText fill__critical Box__root borderColor__standard"
+            class="FieldMessage__icon marginRight__xsmall width__standardText height__standardText fill__critical Box__root borderColor__standard"
             height="16"
             viewBox="0 0 512 512"
             width="16"
