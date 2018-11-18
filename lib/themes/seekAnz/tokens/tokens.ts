@@ -29,23 +29,23 @@ const tokens: Tokens = {
     }
   },
   rowSpacing: {
-    smallest: 1,
-    smaller: 2,
+    xxsmall: 1,
+    xsmall: 2,
     small: 3,
     medium: 4,
-    large: 5,
-    larger: 8,
-    largest: 12
+    large: 6,
+    xlarge: 8,
+    xxlarge: 16
   },
   columnSpacing: {
     gutter: 5,
-    smallest: 1,
-    smaller: 2,
+    xxsmall: 1,
+    xsmall: 2,
     small: 3,
     medium: 4,
-    large: 5,
-    larger: 8,
-    largest: 12
+    large: 6,
+    xlarge: 8,
+    xxlarge: 16
   },
   borderWidth: {
     standard: 1
