@@ -93,7 +93,7 @@ export default class ComponentRoute extends Component {
           </Box>
         ))}
 
-        <ComponentProps component={docs.component} />
+        <ComponentProps componentName={componentName} />
       </Box>
     );
   }

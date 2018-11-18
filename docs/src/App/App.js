@@ -1,6 +1,3 @@
-// Needs to be imported before 'prop-types'
-import 'parse-prop-types';
-
 // Import all themes up front so CSS overrides work
 import * as themes from '../../../lib/themes';
 import * as components from '../../../lib/components';
