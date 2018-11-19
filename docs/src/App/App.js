@@ -118,6 +118,17 @@ export default withRouter(
                 </Text>
                 <BulletList marginBottom="small">
                   <Bullet>
+                    <a
+                      style={{ color: 'inherit' }}
+                      href="https://github.com/seek-oss/braid-design-system"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={this.closeMenu}
+                    >
+                      Source
+                    </a>
+                  </Bullet>
+                  <Bullet>
                     <Link
                       style={{ color: 'inherit' }}
                       to="/playroom"

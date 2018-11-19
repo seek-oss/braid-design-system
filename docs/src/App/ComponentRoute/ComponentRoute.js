@@ -28,10 +28,21 @@ export default class ComponentRoute extends Component {
           .default;
     const examples = docs.examples || [];
 
+    const componentPath = category ? `${category}/` : '';
+    const sourceUrl = `${
+      process.env.SOURCE_PREFIX
+    }/lib/components/${componentPath}${componentName}`;
+
     return (
       <Box>
         <Text size="large" weight="strong" paddingBottom="small">
           {componentName}
+        </Text>
+
+        <Text paddingBottom="large">
+          <a href={sourceUrl} target="_blank" rel="noopener noreferrer">
+            View source
+          </a>
         </Text>
 
         {examples.length > 0 ? (
