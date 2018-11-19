@@ -1,5 +1,3 @@
-import * as atoms from './wireframe/atoms/atoms';
-
 // Text definitions
 interface TextDefinition {
   size: number;
