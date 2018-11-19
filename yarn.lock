@@ -10773,10 +10773,10 @@ pkginfo@0.x.x:
   resolved "https://registry.yarnpkg.com/pkginfo/-/pkginfo-0.4.1.tgz#b5418ef0439de5425fc4995042dced14fb2a84ff"
   integrity sha1-tUGO8EOd5UJfxJlQQtztFPsqhP8=
 
-playroom@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/playroom/-/playroom-0.3.0.tgz#2736ca550f54bd5c6360482ce6ffc3c609fceb04"
-  integrity sha512-mHoiXa+gNxpm+l5LhyDRBxicYC8pyRsx3IHtuoAPGzHBIuAkBcOYYJU3LKzxB2Ag6fTp7Hg1ULHLgKBcQdr4bQ==
+playroom@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/playroom/-/playroom-0.4.0.tgz#93596506fd29bb7cba37c1e48688ba54e546cbae"
+  integrity sha512-LaM0k4Gd7WknDJMrLoovrdIw6qheeEVJhG1cZdlgoCrcYeqLs8bQ8cmZe8UWHaKhMf0geTDZh5s6Pkvfb976Aw==
   dependencies:
     "@babel/core" "^7.1.0"
     "@babel/preset-env" "^7.1.0"

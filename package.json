@@ -98,7 +98,7 @@
     "husky": "^1.1.3",
     "lint-staged": "^8.0.4",
     "lodash": "^4.17.11",
-    "playroom": "^0.3.0",
+    "playroom": "^0.4.0",
     "postcss-js": "^2.0.0",
     "postcss-loader": "^3.0.0",
     "react": "^16.5.2",
