@@ -2,6 +2,7 @@
 // Please do not change this file!
 export const header: string;
 export const menuButton: string;
+export const menuButton__isHidden: string;
 export const menuButton__bar: string;
 export const menuButton__bar1: string;
 export const menuButton__isOpen: string;

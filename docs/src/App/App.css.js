@@ -1,5 +1,6 @@
 const desktopMenuWidth = '270px';
 const headerHeight = '80px';
+const transition = 'all .1s ease';
 
 export default {
   ':global(html), :global(body)': {
@@ -31,6 +32,11 @@ export default {
     height: '27px',
     border: 0,
     background: 'none',
+    transition,
+    '&.menuButton__isHidden': {
+      opacity: 0,
+      pointerEvents: 'none'
+    },
     '@media screen and (min-width: 740px)': {
       display: 'none'
     }
@@ -42,7 +48,7 @@ export default {
     height: '5px',
     borderRadius: '5px',
     background: 'black',
-    transition: 'all .1s ease',
+    transition,
     transformOrigin: '50% 50%'
   },
   '.menuButton__bar1': {
@@ -84,7 +90,7 @@ export default {
     bottom: 0,
     overflow: 'auto',
     '@media screen and (max-width: 739px)': {
-      transition: 'all .1s ease',
+      transition,
       opacity: 0,
       transform: 'translateY(-5px)',
       pointerEvents: 'none',
