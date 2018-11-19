@@ -28,6 +28,7 @@ export default {
     right: 0,
     bottom: 0,
     width: '31px',
+    height: '27px',
     border: 0,
     background: 'none',
     '@media screen and (min-width: 740px)': {
