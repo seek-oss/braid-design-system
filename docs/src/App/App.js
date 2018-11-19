@@ -62,12 +62,13 @@ export default class App extends Component {
                 <Logo />
               </Link>
 
-              <div
+              <button
                 className={classnames({
                   [styles.menuButton]: true,
                   [styles.menuButton__isOpen]: menuOpen
                 })}
                 onClick={this.toggleMenu}
+                aria-label={menuOpen ? 'Close menu' : 'Open menu'}
               >
                 <div
                   className={classnames(
@@ -87,7 +88,7 @@ export default class App extends Component {
                     styles.menuButton__bar3
                   )}
                 />
-              </div>
+              </button>
             </div>
           </Box>
         </div>

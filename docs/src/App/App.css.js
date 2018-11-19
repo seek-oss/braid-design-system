@@ -5,6 +5,10 @@ export default {
   ':global(html), :global(body)': {
     margin: 0
   },
+  // :focus-visible polyfill: https://github.com/WICG/focus-visible
+  ':global(.js-focus-visible) :focus:not(:global(.focus-visible))': {
+    outline: 'none'
+  },
   '.header': {
     background: 'white',
     position: 'fixed',
@@ -24,6 +28,8 @@ export default {
     right: 0,
     bottom: 0,
     width: '31px',
+    border: 0,
+    background: 'none',
     '@media screen and (min-width: 740px)': {
       display: 'none'
     }
