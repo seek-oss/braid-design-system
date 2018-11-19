@@ -53,7 +53,7 @@ export default withRouter(
 
     render() {
       const isHome = this.props.location.pathname === '/';
-      const isMenuOpen = isHome ? true : this.state.isMenuOpen;
+      const isMenuOpen = isHome || this.state.isMenuOpen;
 
       return (
         <ThemeProvider theme={themes.wireframe}>
