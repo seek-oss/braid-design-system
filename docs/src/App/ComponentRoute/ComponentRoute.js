@@ -38,13 +38,6 @@ export default class ComponentRoute extends Component {
         <Text size="large" weight="strong" paddingBottom="small">
           {componentName}
         </Text>
-
-        <Text paddingBottom="large">
-          <a href={sourceUrl} target="_blank" rel="noopener noreferrer">
-            View source
-          </a>
-        </Text>
-
         {examples.length > 0 ? (
           <Text weight="strong" paddingBottom="small">
             Example
@@ -104,7 +97,18 @@ export default class ComponentRoute extends Component {
           </Box>
         ))}
 
-        <ComponentProps componentName={componentName} />
+        <Box paddingBottom="small">
+          <ComponentProps componentName={componentName} />
+        </Box>
+
+        <Text weight="strong" paddingBottom="small">
+          Source
+        </Text>
+        <Text paddingBottom="large">
+          <a href={sourceUrl} target="_blank" rel="noopener noreferrer">
+            View on GitHub
+          </a>
+        </Text>
       </Box>
     );
   }
