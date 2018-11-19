@@ -6066,6 +6066,11 @@ flush-write-stream@^1.0.0:
     inherits "^2.0.1"
     readable-stream "^2.0.4"
 
+focus-visible@^4.1.5:
+  version "4.1.5"
+  resolved "https://registry.yarnpkg.com/focus-visible/-/focus-visible-4.1.5.tgz#50b44e2e84c24b831ceca3cce84d57c2b311c855"
+  integrity sha512-yo/njtk/BB4Z2euzaZe3CZrg4u5s5uEi7ZwbHBJS2quHx51N0mmcx9nTIiImUGlgy+vf26d0CcQluahBBBL/Fw==
+
 follow-redirects@^1.0.0, follow-redirects@^1.2.5:
   version "1.5.9"
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.5.9.tgz#c9ed9d748b814a39535716e531b9196a845d89c6"
@@ -10768,10 +10773,10 @@ pkginfo@0.x.x:
   resolved "https://registry.yarnpkg.com/pkginfo/-/pkginfo-0.4.1.tgz#b5418ef0439de5425fc4995042dced14fb2a84ff"
   integrity sha1-tUGO8EOd5UJfxJlQQtztFPsqhP8=
 
-playroom@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/playroom/-/playroom-0.3.0.tgz#2736ca550f54bd5c6360482ce6ffc3c609fceb04"
-  integrity sha512-mHoiXa+gNxpm+l5LhyDRBxicYC8pyRsx3IHtuoAPGzHBIuAkBcOYYJU3LKzxB2Ag6fTp7Hg1ULHLgKBcQdr4bQ==
+playroom@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/playroom/-/playroom-0.4.0.tgz#93596506fd29bb7cba37c1e48688ba54e546cbae"
+  integrity sha512-LaM0k4Gd7WknDJMrLoovrdIw6qheeEVJhG1cZdlgoCrcYeqLs8bQ8cmZe8UWHaKhMf0geTDZh5s6Pkvfb976Aw==
   dependencies:
     "@babel/core" "^7.1.0"
     "@babel/preset-env" "^7.1.0"
