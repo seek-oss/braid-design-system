@@ -4,6 +4,7 @@ import * as components from '../../../lib/components';
 import React, { Component } from 'react';
 import { Route } from 'react-router';
 import { Link } from 'react-router-dom';
+import classnames from 'classnames';
 import Logo from './Logo/Logo';
 import ComponentRoute from './ComponentRoute/ComponentRoute';
 import styles from './App.css.js';
@@ -11,6 +12,26 @@ import styles from './App.css.js';
 const { ThemeProvider, Text, Box, BulletList, Bullet } = components;
 
 export default class App extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      menuOpen: false
+    };
+  }
+
+  toggleMenu = () => {
+    this.setState(state => ({
+      menuOpen: !state.menuOpen
+    }));
+  };
+
+  closeMenu = () => {
+    this.setState({
+      menuOpen: false
+    });
+  };
+
   renderComponentRoute({ match }) {
     return <ComponentRoute componentName={match.params.componentName} />;
   }
@@ -25,23 +46,61 @@ export default class App extends Component {
   }
 
   render() {
+    const { menuOpen } = this.state;
+
     return (
       <ThemeProvider theme={themes.wireframe}>
-        <Box
-          paddingTop="large"
-          paddingBottom="xsmall"
-          paddingLeft="gutter"
-          paddingRight="gutter"
-        >
-          <Link to="/" style={{ display: 'inline-block' }}>
-            <Logo />
-          </Link>
-        </Box>
+        <div className={styles.header}>
+          <Box
+            paddingTop="large"
+            paddingBottom="xsmall"
+            paddingLeft="gutter"
+            paddingRight="gutter"
+          >
+            <div style={{ position: 'relative' }}>
+              <Link to="/" style={{ display: 'inline-block' }}>
+                <Logo />
+              </Link>
+
+              <div
+                className={classnames({
+                  [styles.menuButton]: true,
+                  [styles.menuButton__isOpen]: menuOpen
+                })}
+                onClick={this.toggleMenu}
+              >
+                <div
+                  className={classnames(
+                    styles.menuButton__bar,
+                    styles.menuButton__bar1
+                  )}
+                />
+                <div
+                  className={classnames(
+                    styles.menuButton__bar,
+                    styles.menuButton__bar2
+                  )}
+                />
+                <div
+                  className={classnames(
+                    styles.menuButton__bar,
+                    styles.menuButton__bar3
+                  )}
+                />
+              </div>
+            </div>
+          </Box>
+        </div>
         <div className={styles.container}>
-          <div className={styles.nav}>
+          <div
+            className={classnames({
+              [styles.menu]: true,
+              [styles.menu__isOpen]: menuOpen
+            })}
+          >
             <Box
               paddingTop="small"
-              paddingBottom="small"
+              paddingBottom="large"
               paddingLeft="gutter"
               paddingRight="gutter"
             >
@@ -54,6 +113,7 @@ export default class App extends Component {
                     style={{ color: 'inherit' }}
                     to="/playroom"
                     target="_blank"
+                    onClick={this.closeMenu}
                   >
                     Playroom
                   </Link>
@@ -71,6 +131,7 @@ export default class App extends Component {
                       <Link
                         style={{ color: 'inherit' }}
                         to={`/components/${componentName}`}
+                        onClick={this.closeMenu}
                       >
                         {componentName}
                       </Link>
@@ -89,6 +150,7 @@ export default class App extends Component {
                       <Link
                         style={{ color: 'inherit' }}
                         to={`/icons/${iconName}`}
+                        onClick={this.closeMenu}
                       >
                         {iconName}
                       </Link>
