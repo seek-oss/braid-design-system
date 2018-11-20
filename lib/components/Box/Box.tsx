@@ -1,7 +1,7 @@
-import React, { Component, ReactType } from 'react';
+import React, { Component } from 'react';
 import classnames from 'classnames';
-import withTheme, { WithThemeProps } from '../private/withTheme';
-import Reset from '../Reset/Reset';
+import withTheme from '../private/withTheme';
+import Reset, { Props as ResetProps } from '../Reset/Reset';
 import styles from './Box.css.js';
 import {
   HorizontalSpacingVariants,
@@ -12,8 +12,7 @@ import {
   BorderColorVariants
 } from '../../themes/theme';
 
-interface Props extends WithThemeProps {
-  component: ReactType;
+interface Props extends ResetProps {
   paddingTop?: SpacingVariants;
   paddingBottom?: SpacingVariants;
   paddingLeft?: HorizontalSpacingVariants;
@@ -36,7 +35,6 @@ export default withTheme(
     render() {
       const {
         theme,
-        component,
         paddingTop,
         paddingBottom,
         paddingLeft,
@@ -55,7 +53,6 @@ export default withTheme(
 
       return (
         <Reset
-          component={component}
           className={classnames(
             className,
             styles.root,

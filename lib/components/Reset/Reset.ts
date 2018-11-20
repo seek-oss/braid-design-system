@@ -3,8 +3,8 @@ import classnames from 'classnames';
 import withTheme, { WithThemeProps } from '../private/withTheme';
 import { ResetTags, Theme } from '../../themes/theme';
 
-interface Props extends WithThemeProps {
-  component: ReactType;
+export interface Props extends WithThemeProps {
+  component?: ReactType;
   className?: string;
 }
 
@@ -24,17 +24,19 @@ export default withTheme(
     };
 
     render() {
-      const { theme, component, className = '', ...restProps } = this.props;
+      const {
+        theme,
+        component = 'div',
+        className = '',
+        ...restProps
+      } = this.props;
 
       const resetClass = isResettable(theme, component)
-        ? { [theme.atoms.reset[component]]: theme.atoms.reset[component] }
-        : {};
+        ? theme.atoms.reset[component]
+        : '';
 
       return React.createElement(component, {
-        className: classnames({
-          [className]: className,
-          ...resetClass
-        }),
+        className: classnames(className, resetClass),
         ...restProps
       });
     }
