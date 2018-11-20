@@ -45,7 +45,7 @@ type BackgroundColorVariants =
 type BorderColorVariants = 'standard' | 'formAccent' | 'critical';
 type BorderRadiusVariants = 'standard';
 type BorderShadowVariants = 'focus';
-type ColorVariants =
+export type ColorVariants =
   | 'black'
   | 'white'
   | 'critical'
@@ -62,8 +62,8 @@ type FillVariants =
   | 'secondary'
   | 'white';
 type FontFamilyVariants = 'text';
-type FontSizeVariants = 'standard' | 'interaction' | 'large';
-type FontWeightVariants = 'regular' | 'strong';
+export type FontSizeVariants = 'standard' | 'interaction' | 'large';
+export type FontWeightVariants = 'regular' | 'strong';
 type ResetTags =
   | 'html'
   | 'body'
@@ -172,7 +172,7 @@ export interface Atoms {
   color: Record<ColorVariants, string>;
   fill: Record<FillVariants, string>;
   fontFamily: Record<FontFamilyVariants, string>;
-  fontSize: Record<FontSizeVariants, string>;
+  fontSize: Record<FontSizeVariants | 'centered', string>;
   fontWeight: Record<FontWeightVariants, string>;
   height: Record<SizeVariants, string>;
   marginTop: Record<SpacingVariants, string>;
