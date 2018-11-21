@@ -12901,10 +12901,10 @@ sisteransi@^0.1.1:
   resolved "https://registry.yarnpkg.com/sisteransi/-/sisteransi-0.1.1.tgz#5431447d5f7d1675aac667ccd0b865a4994cb3ce"
   integrity sha512-PmGOd02bM9YO5ifxpw36nrNMBTptEtfRl4qUYl9SndkolplkrZZOW7PGHjrZL53QvMVj9nQ+TKqUnRsw4tJa4g==
 
-sku@6.1.1:
-  version "6.1.1"
-  resolved "https://registry.yarnpkg.com/sku/-/sku-6.1.1.tgz#76e52b43065fb1cc8c95bd9a5136f0937d238ffb"
-  integrity sha512-MgteldYrPFFkK/UpcGJsxB+4KbzeRiyM37w9RVOh4YhLZ1Ojp8izWbBQM0uu4eiiXNalZ8kTRbY/YFMlDQ5OQw==
+sku@6.2.1:
+  version "6.2.1"
+  resolved "https://registry.yarnpkg.com/sku/-/sku-6.2.1.tgz#429b0fc80ec43939a01afb30f12eb585606bbc09"
+  integrity sha512-NFWyexTLZXyyopE8/0mINLZ70AM1LQQ2wZl40m6qpDk5cPD+onH9duxZZ3/LSZ93gXeeakSgEDnznqVMkPyNKA==
   dependencies:
     "@babel/core" "^7.1.2"
     "@babel/plugin-proposal-class-properties" "^7.1.0"
@@ -12922,6 +12922,7 @@ sku@6.1.1:
     babel-loader "^8.0.4"
     babel-plugin-dynamic-import-node "^1.2.0"
     babel-plugin-flow-react-proptypes "^24.1.2"
+    babel-plugin-macros "^2.4.2"
     babel-plugin-module-resolver "^3.1.1"
     babel-plugin-seek-style-guide "^1.0.0"
     babel-plugin-syntax-dynamic-import "^6.18.0"
