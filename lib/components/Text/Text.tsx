@@ -47,7 +47,8 @@ export default withTheme(
             theme.atoms.fontWeight[weight || 'regular'],
             {
               [theme.atoms.fontSize.centered]: !baseline,
-              [styles.listItem]: component === 'li'
+              [styles.listItem]:
+                typeof component === 'string' && /^li$/i.test(component)
             }
           )}
           {...restProps}
