@@ -62,7 +62,7 @@ type FillVariants =
   | 'secondary'
   | 'white';
 type FontFamilyVariants = 'text';
-export type FontSizeVariants = 'standard' | 'interaction' | 'large';
+export type FontSizeVariants = TextSize | 'interaction';
 export type FontWeightVariants = 'regular' | 'strong';
 type ResetTags =
   | 'html'
@@ -160,6 +160,7 @@ type SpacingVariants =
   | 'xlarge'
   | 'xxlarge';
 type HorizontalSpacingVariants = SpacingVariants | 'gutter';
+export type TransformVariants = 'standardText' | 'largeText';
 type TransitionVariants = 'fast';
 
 export interface Atoms {
@@ -172,7 +173,7 @@ export interface Atoms {
   color: Record<ColorVariants, string>;
   fill: Record<FillVariants, string>;
   fontFamily: Record<FontFamilyVariants, string>;
-  fontSize: Record<FontSizeVariants | 'centered', string>;
+  fontSize: Record<FontSizeVariants, string>;
   fontWeight: Record<FontWeightVariants, string>;
   height: Record<SizeVariants, string>;
   marginTop: Record<SpacingVariants, string>;
@@ -183,6 +184,7 @@ export interface Atoms {
   paddingRight: Record<HorizontalSpacingVariants, string>;
   paddingBottom: Record<SpacingVariants, string>;
   paddingLeft: Record<HorizontalSpacingVariants, string>;
+  transform: Record<TransformVariants, string>;
   transition: Record<TransitionVariants, string>;
   width: Record<SizeVariants, string>;
 }

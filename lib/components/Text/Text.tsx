@@ -4,9 +4,11 @@ import withTheme, { WithThemeProps } from '../private/withTheme';
 import styles from './Text.css.js';
 import Box from '../Box/Box';
 import {
-  FontWeightVariants,
   ColorVariants,
-  FontSizeVariants
+  FontSizeVariants,
+  FontWeightVariants,
+  TransformVariants,
+  Theme
 } from '../../themes/theme';
 
 interface Props extends WithThemeProps {
@@ -18,6 +20,12 @@ interface Props extends WithThemeProps {
   className?: string;
   children: ReactNode;
 }
+
+const isTransformVariant = (
+  theme: Theme,
+  transformSize: string
+): transformSize is TransformVariants =>
+  Object.keys(theme.atoms.transform).indexOf(transformSize) > -1;
 
 export default withTheme(
   class Text extends Component<Props> {
@@ -34,6 +42,13 @@ export default withTheme(
         className = '',
         ...restProps
       } = this.props;
+      const fontSize = size || 'standard';
+
+      const transformSize = `${fontSize}Text`;
+      const baselineTransform =
+        isTransformVariant(theme, transformSize) && baseline
+          ? theme.atoms.transform[transformSize]
+          : '';
 
       return (
         <Box
@@ -43,10 +58,10 @@ export default withTheme(
             styles.block,
             theme.atoms.fontFamily.text,
             theme.atoms.color[color || 'neutral'],
-            theme.atoms.fontSize[size || 'standard'],
+            theme.atoms.fontSize[fontSize],
             theme.atoms.fontWeight[weight || 'regular'],
+            baselineTransform,
             {
-              [theme.atoms.fontSize.centered]: !baseline,
               [styles.listItem]:
                 typeof component === 'string' && /^li$/i.test(component)
             }
