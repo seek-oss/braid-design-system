@@ -2,52 +2,36 @@
 
 exports[`Bullet Theme: jobStreet Default 1`] = `
 <li
-  class="Text__block Text__listItem Box__root borderColor__standard paddingBottom__xsmall"
+  class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Text__listItem Box__root borderColor__standard paddingBottom__xsmall"
   style="margin-left: 1.3em;"
 >
-  <span
-    class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
-  >
-    Bullet
-  </span>
+  Bullet
 </li>
 `;
 
 exports[`Bullet Theme: seekAnz Default 1`] = `
 <li
-  class="Text__block Text__listItem Box__root borderColor__standard paddingBottom__xsmall"
+  class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Text__listItem Box__root borderColor__standard paddingBottom__xsmall"
   style="margin-left: 1.3em;"
 >
-  <span
-    class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
-  >
-    Bullet
-  </span>
+  Bullet
 </li>
 `;
 
 exports[`Bullet Theme: seekAsia Default 1`] = `
 <li
-  class="Text__block Text__listItem Box__root borderColor__standard paddingBottom__xsmall"
+  class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Text__listItem Box__root borderColor__standard paddingBottom__xsmall"
   style="margin-left: 1.3em;"
 >
-  <span
-    class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
-  >
-    Bullet
-  </span>
+  Bullet
 </li>
 `;
 
 exports[`Bullet Theme: wireframe Default 1`] = `
 <li
-  class="Text__block Text__listItem Box__root borderColor__standard paddingBottom__xsmall"
+  class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Text__listItem Box__root borderColor__standard paddingBottom__xsmall"
   style="margin-left: 1.3em;"
 >
-  <span
-    class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
-  >
-    Bullet
-  </span>
+  Bullet
 </li>
 `;

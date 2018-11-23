@@ -56,14 +56,9 @@ exports[`ChecklistCard Theme: jobStreet Default 1`] = `
           </svg>
         </div>
         <div
-          class="Text__block Box__root borderColor__standard"
+          class="Text__block fontFamily__text color__neutral fontSize__interaction fontWeight__regular Box__root borderColor__standard"
         >
-          <span
-            class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
-            style="transform: none;"
-          >
-            Label 1
-          </span>
+          Label 1
         </div>
       </label>
     </div>
@@ -71,22 +66,18 @@ exports[`ChecklistCard Theme: jobStreet Default 1`] = `
       class="Box__root borderColor__standard paddingRight__gutter paddingLeft__gutter"
     >
       <div
-        class="Text__block Box__root borderColor__standard paddingBottom__small"
+        class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard paddingBottom__small"
         id="1-message"
         tabindex="-1"
       >
-        <span
-          class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
+        <div
+          class="FieldMessage__content"
         >
           <div
-            class="FieldMessage__content"
-          >
-            <div
-              class="height__standardText"
-            />
-            <div />
-          </div>
-        </span>
+            class="height__standardText"
+          />
+          <div />
+        </div>
       </div>
     </div>
   </div>
@@ -149,14 +140,9 @@ exports[`ChecklistCard Theme: jobStreet Default 1`] = `
           </svg>
         </div>
         <div
-          class="Text__block Box__root borderColor__standard"
+          class="Text__block fontFamily__text color__neutral fontSize__interaction fontWeight__regular Box__root borderColor__standard"
         >
-          <span
-            class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
-            style="transform: none;"
-          >
-            Label 2
-          </span>
+          Label 2
         </div>
       </label>
     </div>
@@ -164,22 +150,18 @@ exports[`ChecklistCard Theme: jobStreet Default 1`] = `
       class="Box__root borderColor__standard paddingRight__gutter paddingLeft__gutter"
     >
       <div
-        class="Text__block Box__root borderColor__standard paddingBottom__small"
+        class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard paddingBottom__small"
         id="2-message"
         tabindex="-1"
       >
-        <span
-          class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
+        <div
+          class="FieldMessage__content"
         >
           <div
-            class="FieldMessage__content"
-          >
-            <div
-              class="height__standardText"
-            />
-            <div />
-          </div>
-        </span>
+            class="height__standardText"
+          />
+          <div />
+        </div>
       </div>
     </div>
   </div>
@@ -242,14 +224,9 @@ exports[`ChecklistCard Theme: jobStreet Default 1`] = `
           </svg>
         </div>
         <div
-          class="Text__block Box__root borderColor__standard"
+          class="Text__block fontFamily__text color__neutral fontSize__interaction fontWeight__regular Box__root borderColor__standard"
         >
-          <span
-            class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
-            style="transform: none;"
-          >
-            Label 3
-          </span>
+          Label 3
         </div>
       </label>
     </div>
@@ -257,22 +234,18 @@ exports[`ChecklistCard Theme: jobStreet Default 1`] = `
       class="Box__root borderColor__standard paddingRight__gutter paddingLeft__gutter"
     >
       <div
-        class="Text__block Box__root borderColor__standard paddingBottom__small"
+        class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard paddingBottom__small"
         id="3-message"
         tabindex="-1"
       >
-        <span
-          class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
+        <div
+          class="FieldMessage__content"
         >
           <div
-            class="FieldMessage__content"
-          >
-            <div
-              class="height__standardText"
-            />
-            <div />
-          </div>
-        </span>
+            class="height__standardText"
+          />
+          <div />
+        </div>
       </div>
     </div>
   </div>
@@ -335,14 +308,9 @@ exports[`ChecklistCard Theme: seekAnz Default 1`] = `
           </svg>
         </div>
         <div
-          class="Text__block Box__root borderColor__standard"
+          class="Text__block fontFamily__text color__neutral fontSize__interaction fontWeight__regular Box__root borderColor__standard"
         >
-          <span
-            class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
-            style="transform: none;"
-          >
-            Label 1
-          </span>
+          Label 1
         </div>
       </label>
     </div>
@@ -350,22 +318,18 @@ exports[`ChecklistCard Theme: seekAnz Default 1`] = `
       class="Box__root borderColor__standard paddingRight__gutter paddingLeft__gutter"
     >
       <div
-        class="Text__block Box__root borderColor__standard paddingBottom__small"
+        class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard paddingBottom__small"
         id="1-message"
         tabindex="-1"
       >
-        <span
-          class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
+        <div
+          class="FieldMessage__content"
         >
           <div
-            class="FieldMessage__content"
-          >
-            <div
-              class="height__standardText"
-            />
-            <div />
-          </div>
-        </span>
+            class="height__standardText"
+          />
+          <div />
+        </div>
       </div>
     </div>
   </div>
@@ -428,14 +392,9 @@ exports[`ChecklistCard Theme: seekAnz Default 1`] = `
           </svg>
         </div>
         <div
-          class="Text__block Box__root borderColor__standard"
+          class="Text__block fontFamily__text color__neutral fontSize__interaction fontWeight__regular Box__root borderColor__standard"
         >
-          <span
-            class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
-            style="transform: none;"
-          >
-            Label 2
-          </span>
+          Label 2
         </div>
       </label>
     </div>
@@ -443,22 +402,18 @@ exports[`ChecklistCard Theme: seekAnz Default 1`] = `
       class="Box__root borderColor__standard paddingRight__gutter paddingLeft__gutter"
     >
       <div
-        class="Text__block Box__root borderColor__standard paddingBottom__small"
+        class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard paddingBottom__small"
         id="2-message"
         tabindex="-1"
       >
-        <span
-          class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
+        <div
+          class="FieldMessage__content"
         >
           <div
-            class="FieldMessage__content"
-          >
-            <div
-              class="height__standardText"
-            />
-            <div />
-          </div>
-        </span>
+            class="height__standardText"
+          />
+          <div />
+        </div>
       </div>
     </div>
   </div>
@@ -521,14 +476,9 @@ exports[`ChecklistCard Theme: seekAnz Default 1`] = `
           </svg>
         </div>
         <div
-          class="Text__block Box__root borderColor__standard"
+          class="Text__block fontFamily__text color__neutral fontSize__interaction fontWeight__regular Box__root borderColor__standard"
         >
-          <span
-            class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
-            style="transform: none;"
-          >
-            Label 3
-          </span>
+          Label 3
         </div>
       </label>
     </div>
@@ -536,22 +486,18 @@ exports[`ChecklistCard Theme: seekAnz Default 1`] = `
       class="Box__root borderColor__standard paddingRight__gutter paddingLeft__gutter"
     >
       <div
-        class="Text__block Box__root borderColor__standard paddingBottom__small"
+        class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard paddingBottom__small"
         id="3-message"
         tabindex="-1"
       >
-        <span
-          class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
+        <div
+          class="FieldMessage__content"
         >
           <div
-            class="FieldMessage__content"
-          >
-            <div
-              class="height__standardText"
-            />
-            <div />
-          </div>
-        </span>
+            class="height__standardText"
+          />
+          <div />
+        </div>
       </div>
     </div>
   </div>
@@ -614,14 +560,9 @@ exports[`ChecklistCard Theme: seekAsia Default 1`] = `
           </svg>
         </div>
         <div
-          class="Text__block Box__root borderColor__standard"
+          class="Text__block fontFamily__text color__neutral fontSize__interaction fontWeight__regular Box__root borderColor__standard"
         >
-          <span
-            class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
-            style="transform: none;"
-          >
-            Label 1
-          </span>
+          Label 1
         </div>
       </label>
     </div>
@@ -629,22 +570,18 @@ exports[`ChecklistCard Theme: seekAsia Default 1`] = `
       class="Box__root borderColor__standard paddingRight__gutter paddingLeft__gutter"
     >
       <div
-        class="Text__block Box__root borderColor__standard paddingBottom__small"
+        class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard paddingBottom__small"
         id="1-message"
         tabindex="-1"
       >
-        <span
-          class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
+        <div
+          class="FieldMessage__content"
         >
           <div
-            class="FieldMessage__content"
-          >
-            <div
-              class="height__standardText"
-            />
-            <div />
-          </div>
-        </span>
+            class="height__standardText"
+          />
+          <div />
+        </div>
       </div>
     </div>
   </div>
@@ -707,14 +644,9 @@ exports[`ChecklistCard Theme: seekAsia Default 1`] = `
           </svg>
         </div>
         <div
-          class="Text__block Box__root borderColor__standard"
+          class="Text__block fontFamily__text color__neutral fontSize__interaction fontWeight__regular Box__root borderColor__standard"
         >
-          <span
-            class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
-            style="transform: none;"
-          >
-            Label 2
-          </span>
+          Label 2
         </div>
       </label>
     </div>
@@ -722,22 +654,18 @@ exports[`ChecklistCard Theme: seekAsia Default 1`] = `
       class="Box__root borderColor__standard paddingRight__gutter paddingLeft__gutter"
     >
       <div
-        class="Text__block Box__root borderColor__standard paddingBottom__small"
+        class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard paddingBottom__small"
         id="2-message"
         tabindex="-1"
       >
-        <span
-          class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
+        <div
+          class="FieldMessage__content"
         >
           <div
-            class="FieldMessage__content"
-          >
-            <div
-              class="height__standardText"
-            />
-            <div />
-          </div>
-        </span>
+            class="height__standardText"
+          />
+          <div />
+        </div>
       </div>
     </div>
   </div>
@@ -800,14 +728,9 @@ exports[`ChecklistCard Theme: seekAsia Default 1`] = `
           </svg>
         </div>
         <div
-          class="Text__block Box__root borderColor__standard"
+          class="Text__block fontFamily__text color__neutral fontSize__interaction fontWeight__regular Box__root borderColor__standard"
         >
-          <span
-            class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
-            style="transform: none;"
-          >
-            Label 3
-          </span>
+          Label 3
         </div>
       </label>
     </div>
@@ -815,22 +738,18 @@ exports[`ChecklistCard Theme: seekAsia Default 1`] = `
       class="Box__root borderColor__standard paddingRight__gutter paddingLeft__gutter"
     >
       <div
-        class="Text__block Box__root borderColor__standard paddingBottom__small"
+        class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard paddingBottom__small"
         id="3-message"
         tabindex="-1"
       >
-        <span
-          class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
+        <div
+          class="FieldMessage__content"
         >
           <div
-            class="FieldMessage__content"
-          >
-            <div
-              class="height__standardText"
-            />
-            <div />
-          </div>
-        </span>
+            class="height__standardText"
+          />
+          <div />
+        </div>
       </div>
     </div>
   </div>
@@ -893,14 +812,9 @@ exports[`ChecklistCard Theme: wireframe Default 1`] = `
           </svg>
         </div>
         <div
-          class="Text__block Box__root borderColor__standard"
+          class="Text__block fontFamily__text color__neutral fontSize__interaction fontWeight__regular Box__root borderColor__standard"
         >
-          <span
-            class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
-            style="transform: none;"
-          >
-            Label 1
-          </span>
+          Label 1
         </div>
       </label>
     </div>
@@ -908,22 +822,18 @@ exports[`ChecklistCard Theme: wireframe Default 1`] = `
       class="Box__root borderColor__standard paddingRight__gutter paddingLeft__gutter"
     >
       <div
-        class="Text__block Box__root borderColor__standard paddingBottom__small"
+        class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard paddingBottom__small"
         id="1-message"
         tabindex="-1"
       >
-        <span
-          class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
+        <div
+          class="FieldMessage__content"
         >
           <div
-            class="FieldMessage__content"
-          >
-            <div
-              class="height__standardText"
-            />
-            <div />
-          </div>
-        </span>
+            class="height__standardText"
+          />
+          <div />
+        </div>
       </div>
     </div>
   </div>
@@ -986,14 +896,9 @@ exports[`ChecklistCard Theme: wireframe Default 1`] = `
           </svg>
         </div>
         <div
-          class="Text__block Box__root borderColor__standard"
+          class="Text__block fontFamily__text color__neutral fontSize__interaction fontWeight__regular Box__root borderColor__standard"
         >
-          <span
-            class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
-            style="transform: none;"
-          >
-            Label 2
-          </span>
+          Label 2
         </div>
       </label>
     </div>
@@ -1001,22 +906,18 @@ exports[`ChecklistCard Theme: wireframe Default 1`] = `
       class="Box__root borderColor__standard paddingRight__gutter paddingLeft__gutter"
     >
       <div
-        class="Text__block Box__root borderColor__standard paddingBottom__small"
+        class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard paddingBottom__small"
         id="2-message"
         tabindex="-1"
       >
-        <span
-          class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
+        <div
+          class="FieldMessage__content"
         >
           <div
-            class="FieldMessage__content"
-          >
-            <div
-              class="height__standardText"
-            />
-            <div />
-          </div>
-        </span>
+            class="height__standardText"
+          />
+          <div />
+        </div>
       </div>
     </div>
   </div>
@@ -1079,14 +980,9 @@ exports[`ChecklistCard Theme: wireframe Default 1`] = `
           </svg>
         </div>
         <div
-          class="Text__block Box__root borderColor__standard"
+          class="Text__block fontFamily__text color__neutral fontSize__interaction fontWeight__regular Box__root borderColor__standard"
         >
-          <span
-            class="Text__block color__neutral fontFamily__text fontSize__interaction fontWeight__regular"
-            style="transform: none;"
-          >
-            Label 3
-          </span>
+          Label 3
         </div>
       </label>
     </div>
@@ -1094,22 +990,18 @@ exports[`ChecklistCard Theme: wireframe Default 1`] = `
       class="Box__root borderColor__standard paddingRight__gutter paddingLeft__gutter"
     >
       <div
-        class="Text__block Box__root borderColor__standard paddingBottom__small"
+        class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard paddingBottom__small"
         id="3-message"
         tabindex="-1"
       >
-        <span
-          class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__regular"
+        <div
+          class="FieldMessage__content"
         >
           <div
-            class="FieldMessage__content"
-          >
-            <div
-              class="height__standardText"
-            />
-            <div />
-          </div>
-        </span>
+            class="height__standardText"
+          />
+          <div />
+        </div>
       </div>
     </div>
   </div>
