@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Box from '../Box/Box';
 
-export default class Card extends React.Component {
+export default class Card extends Component {
   static displayName = 'Card';
 
   render() {
