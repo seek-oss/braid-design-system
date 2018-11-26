@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`transformForTokens Theme: jobStreet Rules 1`] = `
+Object {
+  ".largeText": Object {
+    "transform": "translateY(0.29666666666666663em)",
+  },
+  ".standardText": Object {
+    "transform": "translateY(0.3442857142857143em)",
+  },
+  "@media screen and (min-width: 768px)": Object {
+    ".largeText": Object {
+      "transform": "translateY(0.32999999999999996em)",
+    },
+  },
+}
+`;
+
+exports[`transformForTokens Theme: seekAnz Rules 1`] = `
+Object {
+  ".largeText": Object {
+    "transform": "translateY(0.32666666666666666em)",
+  },
+  ".standardText": Object {
+    "transform": "translateY(0.41000000000000003em)",
+  },
+}
+`;
+
+exports[`transformForTokens Theme: seekAsia Rules 1`] = `
+Object {
+  ".largeText": Object {
+    "transform": "translateY(0.29666666666666663em)",
+  },
+  ".standardText": Object {
+    "transform": "translateY(0.38em)",
+  },
+  "@media screen and (min-width: 768px)": Object {
+    ".largeText": Object {
+      "transform": "translateY(0.32999999999999996em)",
+    },
+  },
+}
+`;
+
+exports[`transformForTokens Theme: wireframe Rules 1`] = `
+Object {
+  ".largeText": Object {
+    "transform": "translateY(0.32666666666666666em)",
+  },
+  ".standardText": Object {
+    "transform": "translateY(0.41000000000000003em)",
+  },
+}
+`;
