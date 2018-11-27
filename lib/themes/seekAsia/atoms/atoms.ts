@@ -23,5 +23,6 @@ export { default as paddingTop } from './padding/paddingTop.css.js';
 export { default as paddingRight } from './padding/paddingRight.css.js';
 export { default as paddingBottom } from './padding/paddingBottom.css.js';
 export { default as paddingLeft } from './padding/paddingLeft.css.js';
+export { default as transform } from './transform.css.js';
 export { default as transition } from './transition.css.js';
 export { default as width } from './width.css.js';

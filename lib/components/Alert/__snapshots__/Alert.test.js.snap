@@ -22,14 +22,9 @@ exports[`Alert Theme: jobStreet Tones critical 1`] = `
       </svg>
     </div>
     <div
-      class="Text__block Box__root borderColor__standard"
+      class="Text__block fontFamily__text color__critical fontSize__standard fontWeight__regular Box__root borderColor__standard"
     >
-      <span
-        class="Text__block color__critical fontFamily__text fontSize__standard fontWeight__regular"
-        style="transform: none;"
-      >
-        critical
-      </span>
+      critical
     </div>
   </div>
 </div>
@@ -65,14 +60,9 @@ exports[`Alert Theme: jobStreet Tones info 1`] = `
       </svg>
     </div>
     <div
-      class="Text__block Box__root borderColor__standard"
+      class="Text__block fontFamily__text color__white fontSize__standard fontWeight__regular Box__root borderColor__standard"
     >
-      <span
-        class="Text__block color__white fontFamily__text fontSize__standard fontWeight__regular"
-        style="transform: none;"
-      >
-        info
-      </span>
+      info
     </div>
   </div>
 </div>
@@ -100,14 +90,9 @@ exports[`Alert Theme: seekAnz Tones critical 1`] = `
       </svg>
     </div>
     <div
-      class="Text__block Box__root borderColor__standard"
+      class="Text__block fontFamily__text color__critical fontSize__standard fontWeight__regular Box__root borderColor__standard"
     >
-      <span
-        class="Text__block color__critical fontFamily__text fontSize__standard fontWeight__regular"
-        style="transform: none;"
-      >
-        critical
-      </span>
+      critical
     </div>
   </div>
 </div>
@@ -143,14 +128,9 @@ exports[`Alert Theme: seekAnz Tones info 1`] = `
       </svg>
     </div>
     <div
-      class="Text__block Box__root borderColor__standard"
+      class="Text__block fontFamily__text color__white fontSize__standard fontWeight__regular Box__root borderColor__standard"
     >
-      <span
-        class="Text__block color__white fontFamily__text fontSize__standard fontWeight__regular"
-        style="transform: none;"
-      >
-        info
-      </span>
+      info
     </div>
   </div>
 </div>
@@ -178,14 +158,9 @@ exports[`Alert Theme: seekAsia Tones critical 1`] = `
       </svg>
     </div>
     <div
-      class="Text__block Box__root borderColor__standard"
+      class="Text__block fontFamily__text color__critical fontSize__standard fontWeight__regular Box__root borderColor__standard"
     >
-      <span
-        class="Text__block color__critical fontFamily__text fontSize__standard fontWeight__regular"
-        style="transform: none;"
-      >
-        critical
-      </span>
+      critical
     </div>
   </div>
 </div>
@@ -221,14 +196,9 @@ exports[`Alert Theme: seekAsia Tones info 1`] = `
       </svg>
     </div>
     <div
-      class="Text__block Box__root borderColor__standard"
+      class="Text__block fontFamily__text color__white fontSize__standard fontWeight__regular Box__root borderColor__standard"
     >
-      <span
-        class="Text__block color__white fontFamily__text fontSize__standard fontWeight__regular"
-        style="transform: none;"
-      >
-        info
-      </span>
+      info
     </div>
   </div>
 </div>
@@ -256,14 +226,9 @@ exports[`Alert Theme: wireframe Tones critical 1`] = `
       </svg>
     </div>
     <div
-      class="Text__block Box__root borderColor__standard"
+      class="Text__block fontFamily__text color__critical fontSize__standard fontWeight__regular Box__root borderColor__standard"
     >
-      <span
-        class="Text__block color__critical fontFamily__text fontSize__standard fontWeight__regular"
-        style="transform: none;"
-      >
-        critical
-      </span>
+      critical
     </div>
   </div>
 </div>
@@ -299,14 +264,9 @@ exports[`Alert Theme: wireframe Tones info 1`] = `
       </svg>
     </div>
     <div
-      class="Text__block Box__root borderColor__standard"
+      class="Text__block fontFamily__text color__white fontSize__standard fontWeight__regular Box__root borderColor__standard"
     >
-      <span
-        class="Text__block color__white fontFamily__text fontSize__standard fontWeight__regular"
-        style="transform: none;"
-      >
-        info
-      </span>
+      info
     </div>
   </div>
 </div>

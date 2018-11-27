@@ -7,23 +7,19 @@ Object {
     "lineHeight": "20px",
     "paddingBottom": "12px",
     "paddingTop": "12px",
-    "transform": "translateY(0.3442857142857143em)",
   },
   ".large": Object {
     "fontSize": "18px",
     "lineHeight": "24px",
-    "transform": "translateY(0.29666666666666663em)",
   },
   ".standard": Object {
     "fontSize": "14px",
     "lineHeight": "20px",
-    "transform": "translateY(0.3442857142857143em)",
   },
   "@media screen and (min-width: 768px)": Object {
     ".large": Object {
       "fontSize": "20px",
       "lineHeight": "28px",
-      "transform": "translateY(0.32999999999999996em)",
     },
   },
 }
@@ -36,17 +32,14 @@ Object {
     "lineHeight": "24px",
     "paddingBottom": "12px",
     "paddingTop": "12px",
-    "transform": "translateY(0.41000000000000003em)",
   },
   ".large": Object {
     "fontSize": "18px",
     "lineHeight": "24px",
-    "transform": "translateY(0.32666666666666666em)",
   },
   ".standard": Object {
     "fontSize": "16px",
     "lineHeight": "24px",
-    "transform": "translateY(0.41000000000000003em)",
   },
 }
 `;
@@ -58,23 +51,19 @@ Object {
     "lineHeight": "24px",
     "paddingBottom": "10px",
     "paddingTop": "10px",
-    "transform": "translateY(0.38em)",
   },
   ".large": Object {
     "fontSize": "18px",
     "lineHeight": "24px",
-    "transform": "translateY(0.29666666666666663em)",
   },
   ".standard": Object {
     "fontSize": "16px",
     "lineHeight": "24px",
-    "transform": "translateY(0.38em)",
   },
   "@media screen and (min-width: 768px)": Object {
     ".large": Object {
       "fontSize": "20px",
       "lineHeight": "28px",
-      "transform": "translateY(0.32999999999999996em)",
     },
   },
 }
@@ -87,17 +76,14 @@ Object {
     "lineHeight": "24px",
     "paddingBottom": "12px",
     "paddingTop": "12px",
-    "transform": "translateY(0.41000000000000003em)",
   },
   ".large": Object {
     "fontSize": "18px",
     "lineHeight": "24px",
-    "transform": "translateY(0.32666666666666666em)",
   },
   ".standard": Object {
     "fontSize": "16px",
     "lineHeight": "24px",
-    "transform": "translateY(0.41000000000000003em)",
   },
 }
 `;

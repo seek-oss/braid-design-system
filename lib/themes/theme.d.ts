@@ -45,7 +45,7 @@ type BackgroundColorVariants =
 type BorderColorVariants = 'standard' | 'formAccent' | 'critical';
 type BorderRadiusVariants = 'standard';
 type BorderShadowVariants = 'focus';
-type ColorVariants =
+export type ColorVariants =
   | 'black'
   | 'white'
   | 'critical'
@@ -62,8 +62,8 @@ type FillVariants =
   | 'secondary'
   | 'white';
 type FontFamilyVariants = 'text';
-type FontSizeVariants = 'standard' | 'interaction' | 'large';
-type FontWeightVariants = 'regular' | 'strong';
+export type FontSizeVariants = TextSize | 'interaction';
+export type FontWeightVariants = 'regular' | 'strong';
 type ResetTags =
   | 'html'
   | 'body'
@@ -160,6 +160,7 @@ type SpacingVariants =
   | 'xlarge'
   | 'xxlarge';
 type HorizontalSpacingVariants = SpacingVariants | 'gutter';
+export type TransformVariants = 'standardText' | 'largeText';
 type TransitionVariants = 'fast';
 
 export interface Atoms {
@@ -183,6 +184,7 @@ export interface Atoms {
   paddingRight: Record<HorizontalSpacingVariants, string>;
   paddingBottom: Record<SpacingVariants, string>;
   paddingLeft: Record<HorizontalSpacingVariants, string>;
+  transform: Record<TransformVariants, string>;
   transition: Record<TransitionVariants, string>;
   width: Record<SizeVariants, string>;
 }
