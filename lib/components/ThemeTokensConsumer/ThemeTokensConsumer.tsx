@@ -6,7 +6,7 @@ interface Props {
   children(tokens: Tokens): ReactChild;
 }
 
-export default class ThemeTokenConsumer extends Component<Props> {
+export default class ThemeTokensConsumer extends Component<Props> {
   render() {
     return (
       <ThemeContext.Consumer>
