@@ -6,8 +6,8 @@ import Box from '../Box/Box';
 import { BorderColorVariants, BorderWidthVariants } from '../../themes/theme';
 
 interface Props extends WithThemeProps {
-  borderColor: BorderColorVariants;
-  borderWidth: BorderWidthVariants;
+  borderColor?: BorderColorVariants;
+  borderWidth?: BorderWidthVariants;
   className?: string;
 }
 
