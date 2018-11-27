@@ -2,48 +2,32 @@
 
 exports[`FieldLabel Theme: jobStreet Default 1`] = `
 <label
-  class="Text__block Box__root borderColor__standard"
+  class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__strong transform__standardText Box__root borderColor__standard"
 >
-  <span
-    class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__strong"
-  >
-    Label
-  </span>
+  Label
 </label>
 `;
 
 exports[`FieldLabel Theme: seekAnz Default 1`] = `
 <label
-  class="Text__block Box__root borderColor__standard"
+  class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__strong transform__standardText Box__root borderColor__standard"
 >
-  <span
-    class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__strong"
-  >
-    Label
-  </span>
+  Label
 </label>
 `;
 
 exports[`FieldLabel Theme: seekAsia Default 1`] = `
 <label
-  class="Text__block Box__root borderColor__standard"
+  class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__strong transform__standardText Box__root borderColor__standard"
 >
-  <span
-    class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__strong"
-  >
-    Label
-  </span>
+  Label
 </label>
 `;
 
 exports[`FieldLabel Theme: wireframe Default 1`] = `
 <label
-  class="Text__block Box__root borderColor__standard"
+  class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__strong transform__standardText Box__root borderColor__standard"
 >
-  <span
-    class="Text__block color__neutral fontFamily__text fontSize__standard fontWeight__strong"
-  >
-    Label
-  </span>
+  Label
 </label>
 `;
