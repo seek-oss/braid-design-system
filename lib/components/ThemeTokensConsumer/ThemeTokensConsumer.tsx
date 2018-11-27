@@ -7,6 +7,8 @@ interface Props {
 }
 
 export default class ThemeTokensConsumer extends Component<Props> {
+  static displayName = 'ThemeTokensConsumer';
+
   render() {
     return (
       <ThemeContext.Consumer>
