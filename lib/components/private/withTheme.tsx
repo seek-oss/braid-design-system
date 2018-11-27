@@ -1,5 +1,6 @@
 import React, { ComponentType } from 'react';
-import ThemeConsumer from '../ThemeConsumer/ThemeConsumer';
+import ThemeContext from '../private/ThemeContext';
+
 import { Theme } from '../../themes/theme';
 
 export interface WithThemeProps {
@@ -26,7 +27,7 @@ const withTheme = <P extends WithThemeProps>(Component: ComponentType<P>) => {
 
     render() {
       return (
-        <ThemeConsumer>
+        <ThemeContext.Consumer>
           {theme => {
             if (theme === null) {
               throw new Error('No theme passed');
@@ -36,7 +37,7 @@ const withTheme = <P extends WithThemeProps>(Component: ComponentType<P>) => {
               <Component {...this.props} theme={this.props.theme || theme} />
             );
           }}
-        </ThemeConsumer>
+        </ThemeContext.Consumer>
       );
     }
   };
