@@ -2,8 +2,7 @@
 
 exports[`Bullet Theme: jobStreet Default 1`] = `
 <li
-  class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Text__listItem Box__root borderColor__standard paddingBottom__xsmall"
-  style="margin-left: 1.3em;"
+  class="Bullet__root Box__root borderColor__standard paddingBottom__xsmall Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Text__listItem Box__root borderColor__standard"
 >
   Bullet
 </li>
@@ -11,8 +10,7 @@ exports[`Bullet Theme: jobStreet Default 1`] = `
 
 exports[`Bullet Theme: seekAnz Default 1`] = `
 <li
-  class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Text__listItem Box__root borderColor__standard paddingBottom__xsmall"
-  style="margin-left: 1.3em;"
+  class="Bullet__root Box__root borderColor__standard paddingBottom__xsmall Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Text__listItem Box__root borderColor__standard"
 >
   Bullet
 </li>
@@ -20,8 +18,7 @@ exports[`Bullet Theme: seekAnz Default 1`] = `
 
 exports[`Bullet Theme: seekAsia Default 1`] = `
 <li
-  class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Text__listItem Box__root borderColor__standard paddingBottom__xsmall"
-  style="margin-left: 1.3em;"
+  class="Bullet__root Box__root borderColor__standard paddingBottom__xsmall Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Text__listItem Box__root borderColor__standard"
 >
   Bullet
 </li>
@@ -29,8 +26,7 @@ exports[`Bullet Theme: seekAsia Default 1`] = `
 
 exports[`Bullet Theme: wireframe Default 1`] = `
 <li
-  class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Text__listItem Box__root borderColor__standard paddingBottom__xsmall"
-  style="margin-left: 1.3em;"
+  class="Bullet__root Box__root borderColor__standard paddingBottom__xsmall Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Text__listItem Box__root borderColor__standard"
 >
   Bullet
 </li>

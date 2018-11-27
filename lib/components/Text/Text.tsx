@@ -11,7 +11,7 @@ import {
   Theme
 } from '../../themes/theme';
 
-interface Props extends WithThemeProps {
+export interface Props extends WithThemeProps {
   component?: ReactType;
   size?: FontSizeVariants;
   color?: ColorVariants;
