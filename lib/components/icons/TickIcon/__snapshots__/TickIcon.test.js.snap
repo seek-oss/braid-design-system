@@ -15,7 +15,7 @@ exports[`TickIcon Theme: jobStreet Default 1`] = `
 
 exports[`TickIcon Theme: jobStreet Inline 1`] = `
 <svg
-  class="Icon__inline width__standardTextInline height__standardTextInline Box__root borderColor__standard"
+  class="width__standardTextInline height__standardTextInline Icon__inline Box__root borderColor__standard"
   height="16"
   viewBox="90.471 302.809 823 823"
   width="16"
@@ -54,7 +54,7 @@ exports[`TickIcon Theme: seekAnz Default 1`] = `
 
 exports[`TickIcon Theme: seekAnz Inline 1`] = `
 <svg
-  class="Icon__inline width__standardTextInline height__standardTextInline Box__root borderColor__standard"
+  class="width__standardTextInline height__standardTextInline Icon__inline Box__root borderColor__standard"
   height="16"
   viewBox="90.471 302.809 823 823"
   width="16"
@@ -93,7 +93,7 @@ exports[`TickIcon Theme: seekAsia Default 1`] = `
 
 exports[`TickIcon Theme: seekAsia Inline 1`] = `
 <svg
-  class="Icon__inline width__standardTextInline height__standardTextInline Box__root borderColor__standard"
+  class="width__standardTextInline height__standardTextInline Icon__inline Box__root borderColor__standard"
   height="16"
   viewBox="90.471 302.809 823 823"
   width="16"
@@ -132,7 +132,7 @@ exports[`TickIcon Theme: wireframe Default 1`] = `
 
 exports[`TickIcon Theme: wireframe Inline 1`] = `
 <svg
-  class="Icon__inline width__standardTextInline height__standardTextInline Box__root borderColor__standard"
+  class="width__standardTextInline height__standardTextInline Icon__inline Box__root borderColor__standard"
   height="16"
   viewBox="90.471 302.809 823 823"
   width="16"

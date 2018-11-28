@@ -23,7 +23,7 @@ exports[`InfoIcon Theme: jobStreet Default 1`] = `
 
 exports[`InfoIcon Theme: jobStreet Inline 1`] = `
 <svg
-  class="Icon__inline width__standardTextInline height__standardTextInline Box__root borderColor__standard"
+  class="width__standardTextInline height__standardTextInline Icon__inline Box__root borderColor__standard"
   height="16"
   viewBox="0 0 30 30"
   width="16"
@@ -86,7 +86,7 @@ exports[`InfoIcon Theme: seekAnz Default 1`] = `
 
 exports[`InfoIcon Theme: seekAnz Inline 1`] = `
 <svg
-  class="Icon__inline width__standardTextInline height__standardTextInline Box__root borderColor__standard"
+  class="width__standardTextInline height__standardTextInline Icon__inline Box__root borderColor__standard"
   height="16"
   viewBox="0 0 30 30"
   width="16"
@@ -149,7 +149,7 @@ exports[`InfoIcon Theme: seekAsia Default 1`] = `
 
 exports[`InfoIcon Theme: seekAsia Inline 1`] = `
 <svg
-  class="Icon__inline width__standardTextInline height__standardTextInline Box__root borderColor__standard"
+  class="width__standardTextInline height__standardTextInline Icon__inline Box__root borderColor__standard"
   height="16"
   viewBox="0 0 30 30"
   width="16"
@@ -212,7 +212,7 @@ exports[`InfoIcon Theme: wireframe Default 1`] = `
 
 exports[`InfoIcon Theme: wireframe Inline 1`] = `
 <svg
-  class="Icon__inline width__standardTextInline height__standardTextInline Box__root borderColor__standard"
+  class="width__standardTextInline height__standardTextInline Icon__inline Box__root borderColor__standard"
   height="16"
   viewBox="0 0 30 30"
   width="16"

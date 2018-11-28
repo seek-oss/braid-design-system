@@ -45,9 +45,9 @@ export default withTheme(
           component={svgComponent}
           className={classnames(
             className,
-            theme.atoms.fill[fill!],
             widthAtom,
             heightAtom,
+            theme.atoms.fill[fill!],
             {
               [styles.fillSize]: size === 'fill',
               [styles.inline]: inline
