@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Icon from '../Icon/Icon';
+import Icon, { IconProps } from '../Icon/Icon';
 import ErrorSvg from './ErrorSvg';
 
-export default class ErrorIcon extends Component {
+export default class ErrorIcon extends Component<IconProps> {
   static displayName = 'ErrorIcon';
 
   render() {

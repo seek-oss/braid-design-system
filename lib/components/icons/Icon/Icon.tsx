@@ -5,12 +5,15 @@ import withTheme, { WithThemeProps } from '../../private/withTheme';
 import styles from './Icon.css.js';
 import { TextSize, FillVariants, SizeVariants } from '../../../themes/theme';
 
-interface Props extends WithThemeProps {
-  svgComponent: ComponentType;
+export interface IconProps {
   size?: TextSize | 'fill';
   inline?: boolean;
   fill?: FillVariants;
   className?: string;
+}
+
+interface Props extends WithThemeProps, IconProps {
+  svgComponent: ComponentType;
 }
 
 const isSizeVariant = (

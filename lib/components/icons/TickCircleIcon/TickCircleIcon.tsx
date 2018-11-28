@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Icon from '../Icon/Icon';
+import Icon, { IconProps } from '../Icon/Icon';
 import TickCircleSvg from './TickCircleSvg';
 
-export default class TickCircleIcon extends Component {
+export default class TickCircleIcon extends Component<IconProps> {
   static displayName = 'TickCircleIcon';
 
   render() {

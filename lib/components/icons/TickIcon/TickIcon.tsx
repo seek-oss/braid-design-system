@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Icon from '../Icon/Icon';
+import Icon, { IconProps } from '../Icon/Icon';
 import TickSvg from './TickSvg';
 
-export default class TickIcon extends Component {
+export default class TickIcon extends Component<IconProps> {
   static displayName = 'TickIcon';
 
   render() {
