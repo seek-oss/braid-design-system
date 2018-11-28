@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-export default class InfoSvg extends React.Component {
+export default class InfoSvg extends Component {
   static displayName = 'InfoSvg';
 
   render() {

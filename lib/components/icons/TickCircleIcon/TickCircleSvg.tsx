@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-export default class TickCircleSvg extends React.Component {
+export default class TickCircleSvg extends Component {
   static displayName = 'TickCircleSvg';
 
   render() {

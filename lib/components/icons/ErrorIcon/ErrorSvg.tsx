@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-export default class ErrorSvg extends React.Component {
+export default class ErrorSvg extends Component {
   static displayName = 'ErrorSvg';
 
   render() {

@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Icon from '../Icon/Icon';
 import InfoSvg from './InfoSvg';
 
-export default class InfoIcon extends React.Component {
+export default class InfoIcon extends Component {
   static displayName = 'InfoIcon';
 
   render() {
