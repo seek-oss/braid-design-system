@@ -1,19 +1,18 @@
 import React, { Component, ReactType } from 'react';
 import classnames from 'classnames';
 import withTheme, { WithThemeProps } from '../private/withTheme';
-import { ResetTags, Theme } from '../../themes/theme';
+import { ResetTags } from '../../themes/theme';
 
 export interface Props extends WithThemeProps {
   component?: ReactType;
   className?: string;
 }
 
-const isResettable = (
-  theme: Theme,
+const isResetTag = (
+  atom: Record<ResetTags, string>,
   component: ReactType
 ): component is ResetTags =>
-  typeof component === 'string' &&
-  Object.keys(theme.atoms.reset).indexOf(component) > -1;
+  typeof component === 'string' && Object.keys(atom).indexOf(component) > -1;
 
 export default withTheme(
   class Reset extends Component<Props> {
@@ -31,7 +30,7 @@ export default withTheme(
         ...restProps
       } = this.props;
 
-      const resetClass = isResettable(theme, component)
+      const resetClass = isResetTag(theme.atoms.reset, component)
         ? theme.atoms.reset[component]
         : '';
 

@@ -7,8 +7,7 @@ import {
   ColorVariants,
   FontSizeVariants,
   FontWeightVariants,
-  TransformVariants,
-  Theme
+  TransformVariants
 } from '../../themes/theme';
 
 export interface Props extends WithThemeProps {
@@ -22,10 +21,10 @@ export interface Props extends WithThemeProps {
 }
 
 const isTransformVariant = (
-  theme: Theme,
+  atom: Record<TransformVariants, string>,
   transformSize: string
 ): transformSize is TransformVariants =>
-  Object.keys(theme.atoms.transform).indexOf(transformSize) > -1;
+  Object.keys(atom).indexOf(transformSize) > -1;
 
 export default withTheme(
   class Text extends Component<Props> {
@@ -46,7 +45,7 @@ export default withTheme(
 
       const transformSize = `${fontSize}Text`;
       const baselineTransform =
-        isTransformVariant(theme, transformSize) && baseline
+        isTransformVariant(theme.atoms.transform, transformSize) && baseline
           ? theme.atoms.transform[transformSize]
           : '';
 

@@ -15,7 +15,7 @@ exports[`ErrorIcon Theme: jobStreet Default 1`] = `
 
 exports[`ErrorIcon Theme: jobStreet Inline 1`] = `
 <svg
-  class="Icon__inline width__standardTextInline height__standardTextInline Box__root borderColor__standard"
+  class="width__standardTextInline height__standardTextInline Icon__inline Box__root borderColor__standard"
   height="16"
   viewBox="0 0 512 512"
   width="16"
@@ -54,7 +54,7 @@ exports[`ErrorIcon Theme: seekAnz Default 1`] = `
 
 exports[`ErrorIcon Theme: seekAnz Inline 1`] = `
 <svg
-  class="Icon__inline width__standardTextInline height__standardTextInline Box__root borderColor__standard"
+  class="width__standardTextInline height__standardTextInline Icon__inline Box__root borderColor__standard"
   height="16"
   viewBox="0 0 512 512"
   width="16"
@@ -93,7 +93,7 @@ exports[`ErrorIcon Theme: seekAsia Default 1`] = `
 
 exports[`ErrorIcon Theme: seekAsia Inline 1`] = `
 <svg
-  class="Icon__inline width__standardTextInline height__standardTextInline Box__root borderColor__standard"
+  class="width__standardTextInline height__standardTextInline Icon__inline Box__root borderColor__standard"
   height="16"
   viewBox="0 0 512 512"
   width="16"
@@ -132,7 +132,7 @@ exports[`ErrorIcon Theme: wireframe Default 1`] = `
 
 exports[`ErrorIcon Theme: wireframe Inline 1`] = `
 <svg
-  class="Icon__inline width__standardTextInline height__standardTextInline Box__root borderColor__standard"
+  class="width__standardTextInline height__standardTextInline Icon__inline Box__root borderColor__standard"
   height="16"
   viewBox="0 0 512 512"
   width="16"

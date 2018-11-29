@@ -145,7 +145,7 @@ type ResetTags =
   | 'mark'
   | 'audio'
   | 'video';
-type SizeVariants =
+export type SizeVariants =
   | 'standardText'
   | 'standardTextInline'
   | 'largeText'

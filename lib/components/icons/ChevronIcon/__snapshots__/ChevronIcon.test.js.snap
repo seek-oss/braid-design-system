@@ -28,7 +28,7 @@ exports[`ChevronIcon Theme: jobStreet Down 1`] = `
 
 exports[`ChevronIcon Theme: jobStreet Inline 1`] = `
 <svg
-  class="ChevronIcon__root Icon__inline width__standardTextInline height__standardTextInline Box__root borderColor__standard"
+  class="ChevronIcon__root width__standardTextInline height__standardTextInline Icon__inline Box__root borderColor__standard"
   height="16"
   viewBox="0 0 1024 1024"
   width="16"
@@ -119,7 +119,7 @@ exports[`ChevronIcon Theme: seekAnz Down 1`] = `
 
 exports[`ChevronIcon Theme: seekAnz Inline 1`] = `
 <svg
-  class="ChevronIcon__root Icon__inline width__standardTextInline height__standardTextInline Box__root borderColor__standard"
+  class="ChevronIcon__root width__standardTextInline height__standardTextInline Icon__inline Box__root borderColor__standard"
   height="16"
   viewBox="0 0 1024 1024"
   width="16"
@@ -210,7 +210,7 @@ exports[`ChevronIcon Theme: seekAsia Down 1`] = `
 
 exports[`ChevronIcon Theme: seekAsia Inline 1`] = `
 <svg
-  class="ChevronIcon__root Icon__inline width__standardTextInline height__standardTextInline Box__root borderColor__standard"
+  class="ChevronIcon__root width__standardTextInline height__standardTextInline Icon__inline Box__root borderColor__standard"
   height="16"
   viewBox="0 0 1024 1024"
   width="16"
@@ -301,7 +301,7 @@ exports[`ChevronIcon Theme: wireframe Down 1`] = `
 
 exports[`ChevronIcon Theme: wireframe Inline 1`] = `
 <svg
-  class="ChevronIcon__root Icon__inline width__standardTextInline height__standardTextInline Box__root borderColor__standard"
+  class="ChevronIcon__root width__standardTextInline height__standardTextInline Icon__inline Box__root borderColor__standard"
   height="16"
   viewBox="0 0 1024 1024"
   width="16"
