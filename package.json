@@ -84,7 +84,7 @@
     "@types/react-dom": "^16.0.9",
     "autoprefixer": "^9.3.1",
     "babel-loader": "^8.0.4",
-    "browserslist-config-seek": "^1.0.0",
+    "browserslist-config-seek": "^2.0.0",
     "commitizen": "^3.0.4",
     "commitlint-config-seek": "1.0.0",
     "css-in-js-loader": "^0.1.2",

@@ -3015,10 +3015,10 @@ browserify-zlib@^0.2.0:
   dependencies:
     pako "~1.0.5"
 
-browserslist-config-seek@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/browserslist-config-seek/-/browserslist-config-seek-1.0.0.tgz#8674977afb79492555123d64f4bdaaafa5555bf1"
-  integrity sha512-vm9MwTIDlVSlxSLeqnwUbs8ngT3cR39BqrVSJUUMqkuoc0NDQIZL7Mta/AZUjgH76Ck8+2gn7Yjefb9H4/8pLg==
+browserslist-config-seek@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/browserslist-config-seek/-/browserslist-config-seek-2.0.0.tgz#03628cc2469d85ee5b2bebf9009db43e06632a98"
+  integrity sha512-EEf8zWclO4cu3H50bWwo3SOG2KbyH+7NIgGpXvHGNbLWom7rqfFB3SspGj1nGYdLVxrdgKjnsdb5N/GMODFbaQ==
 
 browserslist@4.1.1:
   version "4.1.1"
