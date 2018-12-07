@@ -39,24 +39,20 @@ export default withRouter(
       });
     };
 
-    renderComponentRoute = ({ match }) => {
-      return (
-        <ComponentRoute
-          sourceUrlPrefix={this.props.sourceUrlPrefix}
-          componentName={match.params.componentName}
-        />
-      );
-    };
+    renderComponentRoute = ({ match }) => (
+      <ComponentRoute
+        sourceUrlPrefix={this.props.sourceUrlPrefix}
+        componentName={match.params.componentName}
+      />
+    );
 
-    renderIconRoute = ({ match }) => {
-      return (
-        <ComponentRoute
-          sourceUrlPrefix={this.props.sourceUrlPrefix}
-          componentName={match.params.componentName}
-          category="icons"
-        />
-      );
-    };
+    renderIconRoute = ({ match }) => (
+      <ComponentRoute
+        sourceUrlPrefix={this.props.sourceUrlPrefix}
+        componentName={match.params.componentName}
+        category="icons"
+      />
+    );
 
     render() {
       const isHome = this.props.location.pathname === '/';
