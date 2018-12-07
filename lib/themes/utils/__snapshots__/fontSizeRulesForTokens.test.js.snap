@@ -9,18 +9,12 @@ Object {
     "paddingTop": "12px",
   },
   ".large": Object {
-    "fontSize": "18px",
+    "fontSize": "16px",
     "lineHeight": "24px",
   },
   ".standard": Object {
     "fontSize": "14px",
     "lineHeight": "20px",
-  },
-  "@media screen and (min-width: 768px)": Object {
-    ".large": Object {
-      "fontSize": "20px",
-      "lineHeight": "28px",
-    },
   },
 }
 `;

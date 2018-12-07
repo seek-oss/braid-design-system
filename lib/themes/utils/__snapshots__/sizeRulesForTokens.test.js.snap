@@ -6,21 +6,13 @@ Object {
     "width": "24px",
   },
   ".largeTextInline": Object {
-    "width": "18px",
+    "width": "16px",
   },
   ".standardText": Object {
     "width": "20px",
   },
   ".standardTextInline": Object {
     "width": "14px",
-  },
-  "@media screen and (min-width: 768px)": Object {
-    ".largeText": Object {
-      "width": "28px",
-    },
-    ".largeTextInline": Object {
-      "width": "20px",
-    },
   },
 }
 `;
