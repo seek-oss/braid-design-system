@@ -19,12 +19,12 @@ const tokens: Tokens = {
     },
     large: {
       mobile: {
-        size: 18,
+        size: 16,
         rows: 6
       },
       desktop: {
-        size: 20,
-        rows: 7
+        size: 16,
+        rows: 6
       }
     }
   },

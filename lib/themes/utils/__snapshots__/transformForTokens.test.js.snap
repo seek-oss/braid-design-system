@@ -3,15 +3,10 @@
 exports[`transformForTokens Theme: jobStreet Rules 1`] = `
 Object {
   ".largeText": Object {
-    "transform": "translateY(0.29666666666666663em)",
+    "transform": "translateY(0.38em)",
   },
   ".standardText": Object {
     "transform": "translateY(0.3442857142857143em)",
-  },
-  "@media screen and (min-width: 768px)": Object {
-    ".largeText": Object {
-      "transform": "translateY(0.32999999999999996em)",
-    },
   },
 }
 `;
