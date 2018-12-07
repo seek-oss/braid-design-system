@@ -13,16 +13,7 @@ const [iconNames, componentNames] = partition(components, x =>
 );
 
 module.exports = [
-  {
-    route: '/',
-    name: 'home'
-  },
-  ...componentNames.map(componentName => ({
-    route: `/components/${componentName}/`,
-    name: componentName
-  })),
-  ...iconNames.map(iconName => ({
-    route: `/icons/${iconName}/`,
-    name: iconName
-  }))
+  { route: '/', name: 'home' },
+  ...componentNames.map(name => ({ route: `/components/${name}/`, name })),
+  ...iconNames.map(name => ({ route: `/icons/${name}/`, name }))
 ];
