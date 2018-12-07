@@ -8,6 +8,7 @@ package-lock.json
 componentDocs.json
 
 # managed by sku
+.eslintrc
 .prettierrc
 docs/dist/
 report/

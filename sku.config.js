@@ -1,26 +1,15 @@
-const { TRAVIS_BRANCH, TRAVIS_PULL_REQUEST_SHA } = process.env;
-const isGitHubPages = TRAVIS_BRANCH === 'master' && !TRAVIS_PULL_REQUEST_SHA;
+const routes = require('./sku.routes.js');
 
-const ref = TRAVIS_PULL_REQUEST_SHA || 'master';
-const sourcePrefix = `https://github.com/seek-oss/braid-design-system/tree/${ref}`;
+const isGitHubPages =
+  process.env.TRAVIS_BRANCH === 'master' &&
+  !process.env.TRAVIS_PULL_REQUEST_SHA;
 
 module.exports = {
   srcPaths: ['lib', 'docs/src', 'scripts'],
-  entry: {
-    client: 'docs/src/client.js',
-    render: 'docs/src/render.js'
-  },
+  clientEntry: 'docs/src/client.js',
+  renderEntry: 'docs/src/render.js',
+  routes,
   public: 'docs/src/public',
   target: 'docs/dist',
-  publicPath: isGitHubPages ? '/braid-design-system/' : '/',
-  env: {
-    ROUTER_BASENAME: {
-      development: '',
-      production: isGitHubPages ? 'braid-design-system' : ''
-    },
-    SOURCE_PREFIX: {
-      development: sourcePrefix,
-      production: sourcePrefix
-    }
-  }
+  publicPath: isGitHubPages ? '/braid-design-system/' : '/'
 };
