@@ -15,6 +15,7 @@ const { ThemeProvider, Text, Box, BulletList, Bullet } = components;
 export default withRouter(
   class App extends Component {
     static propTypes = {
+      sourceUrlPrefix: PropTypes.string.isRequired,
       location: PropTypes.object.isRequired
     };
 
@@ -38,18 +39,20 @@ export default withRouter(
       });
     };
 
-    renderComponentRoute({ match }) {
-      return <ComponentRoute componentName={match.params.componentName} />;
-    }
+    renderComponentRoute = ({ match }) => (
+      <ComponentRoute
+        sourceUrlPrefix={this.props.sourceUrlPrefix}
+        componentName={match.params.componentName}
+      />
+    );
 
-    renderIconRoute({ match }) {
-      return (
-        <ComponentRoute
-          componentName={match.params.componentName}
-          category="icons"
-        />
-      );
-    }
+    renderIconRoute = ({ match }) => (
+      <ComponentRoute
+        sourceUrlPrefix={this.props.sourceUrlPrefix}
+        componentName={match.params.componentName}
+        category="icons"
+      />
+    );
 
     render() {
       const isHome = this.props.location.pathname === '/';

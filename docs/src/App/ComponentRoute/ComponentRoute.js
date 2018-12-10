@@ -16,11 +16,12 @@ const themes = [wireframe, jobStreet, seekAsia, seekAnz];
 export default class ComponentRoute extends Component {
   static propTypes = {
     componentName: PropTypes.string.isRequired,
-    category: PropTypes.string
+    category: PropTypes.string,
+    sourceUrlPrefix: PropTypes.string.isRequired
   };
 
   render() {
-    const { componentName, category } = this.props;
+    const { componentName, category, sourceUrlPrefix } = this.props;
     const docs = category
       ? require(`../../../../lib/components/${category}/${componentName}/${componentName}.docs.js`)
           .default
@@ -29,9 +30,7 @@ export default class ComponentRoute extends Component {
     const examples = docs.examples || [];
 
     const componentPath = category ? `${category}/` : '';
-    const sourceUrl = `${
-      process.env.SOURCE_PREFIX
-    }/lib/components/${componentPath}${componentName}`;
+    const sourceUrl = `${sourceUrlPrefix}/lib/components/${componentPath}${componentName}`;
 
     return (
       <Box>

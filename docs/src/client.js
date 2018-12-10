@@ -4,9 +4,11 @@ import { hydrate } from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App/App';
 
+const { routerBasename, sourceUrlPrefix } = window.CONFIG;
+
 hydrate(
-  <BrowserRouter basename={process.env.ROUTER_BASENAME}>
-    <App />
+  <BrowserRouter basename={routerBasename}>
+    <App sourceUrlPrefix={sourceUrlPrefix} />
   </BrowserRouter>,
   document.getElementById('app')
 );
