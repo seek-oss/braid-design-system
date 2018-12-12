@@ -10,7 +10,7 @@ export const largeText: string;
 export const largeTextInline: string;
 export const level1Text: string;
 export const level1TextInline: string;
+export const level2Text: string;
 export const level2TextInline: string;
 export const level3Text: string;
 export const level3TextInline: string;
-export const level2Text: string;
