@@ -4,7 +4,8 @@ interface TextDefinition {
   rows: number;
 }
 type Breakpoint = 'mobile' | 'desktop';
-type TextSize = 'standard' | 'large';
+type TextSize = 'xsmall' | 'small' | 'standard' | 'large';
+type HeadingSize = 'level1' | 'level2' | 'level3';
 type ResponsiveText = Record<Breakpoint, TextDefinition>;
 
 // Spacing definitions
@@ -28,6 +29,7 @@ export interface Tokens {
   responsiveBreakpoint: number;
   descenderHeightScale: number;
   text: Record<TextSize, ResponsiveText>;
+  heading: Record<HeadingSize, ResponsiveText>;
   rowSpacing: Spacing;
   columnSpacing: Spacing | Record<'gutter', number>;
   borderWidth: Record<BorderWidthVariants, number>;
