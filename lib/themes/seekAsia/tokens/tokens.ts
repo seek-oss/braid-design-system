@@ -45,7 +45,7 @@ const tokens: Tokens = {
         rows: 5
       },
       desktop: {
-        size: 12,
+        size: 16,
         rows: 5
       }
     },
@@ -55,7 +55,7 @@ const tokens: Tokens = {
         rows: 6
       },
       desktop: {
-        size: 14,
+        size: 16,
         rows: 6
       }
     },
@@ -65,13 +65,13 @@ const tokens: Tokens = {
         rows: 6
       },
       desktop: {
-        size: 16,
+        size: 20,
         rows: 6
       }
     },
     large: {
       mobile: {
-        size: 18,
+        size: 24,
         rows: 6
       },
       desktop: {

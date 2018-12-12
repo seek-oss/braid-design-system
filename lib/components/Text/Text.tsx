@@ -10,6 +10,7 @@ import {
   TransformVariants
 } from '../../themes/theme';
 
+// this shouldn't use FontSizeVarients
 export interface Props extends WithThemeProps {
   component?: ReactType;
   size?: FontSizeVariants;
