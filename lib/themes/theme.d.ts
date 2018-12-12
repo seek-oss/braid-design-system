@@ -64,7 +64,7 @@ type FillVariants =
   | 'secondary'
   | 'white';
 type FontFamilyVariants = 'text';
-export type FontSizeVariants = TextSize | 'interaction';
+export type FontSizeVariants = TextSize | HeadingSize |'interaction';
 export type FontWeightVariants = 'regular' | 'strong';
 type ResetTags =
   | 'html'
