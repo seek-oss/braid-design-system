@@ -7,7 +7,10 @@ interface Props {
   verticalPadding: SpacingVariants;
 }
 
-const Inset: React.StatelessComponent<Props> = ({ verticalPadding, ...restProps }) => {
+const Inset: React.StatelessComponent<Props> = ({
+  verticalPadding,
+  ...restProps
+}) => {
   return (
     <Box
       paddingTop={verticalPadding}
@@ -17,6 +20,10 @@ const Inset: React.StatelessComponent<Props> = ({ verticalPadding, ...restProps 
       {...restProps}
     />
   );
+};
+
+Inset.defaultProps = {
+  verticalPadding: 'medium'
 };
 
 Inset.displayName = 'Inset';
