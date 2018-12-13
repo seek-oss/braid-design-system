@@ -1,15 +1,13 @@
 import React from 'react';
 import Box from '../Box/Box';
 import withTheme from '../private/withTheme';
-import {
-  SpacingVariants
-} from '../../themes/theme';
+import { SpacingVariants } from '../../themes/theme';
 
 interface Props {
-  padding: SpacingVariants
-};
+  padding: SpacingVariants;
+}
 
-const Inset:React.StatelessComponent<Props> = ({ padding, ...restProps }) => {
+const Inset: React.StatelessComponent<Props> = ({ padding, ...restProps }) => {
   return (
     <Box
       paddingTop={padding}
