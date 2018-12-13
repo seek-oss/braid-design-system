@@ -6,7 +6,59 @@ const tokens: Tokens = {
   interactionRows: 8,
   responsiveBreakpoint: 740,
   descenderHeightScale: 0.16,
+  heading: {
+    level1: {
+      mobile: {
+        size: 28,
+        rows: 6
+      },
+      desktop: {
+        size: 42,
+        rows: 8
+      }
+    },
+    level2: {
+      mobile: {
+        size: 24,
+        rows: 8
+      },
+      desktop: {
+        size: 28,
+        rows: 8
+      }
+    },
+    level3: {
+      mobile: {
+        size: 20,
+        rows: 7
+      },
+      desktop: {
+        size: 24,
+        rows: 8
+      }
+    }
+  },
   text: {
+    xsmall: {
+      mobile: {
+        size: 12,
+        rows: 5
+      },
+      desktop: {
+        size: 12,
+        rows: 5
+      }
+    },
+    small: {
+      mobile: {
+        size: 14,
+        rows: 6
+      },
+      desktop: {
+        size: 14,
+        rows: 6
+      }
+    },
     standard: {
       mobile: {
         size: 16,

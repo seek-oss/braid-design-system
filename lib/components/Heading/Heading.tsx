@@ -1,19 +1,18 @@
 import React, { Component, ReactNode, ReactType } from 'react';
 import classnames from 'classnames';
 import withTheme, { WithThemeProps } from '../private/withTheme';
-import styles from './Text.css.js';
+import styles from './Heading.css.js';
 import Box from '../Box/Box';
 import {
   ColorVariants,
-  FontSizeVariants,
+  HeadingSize,
   FontWeightVariants,
   TransformVariants
 } from '../../themes/theme';
 
-// this shouldn't use FontSizeVarients
 export interface Props extends WithThemeProps {
   component?: ReactType;
-  size?: FontSizeVariants;
+  size?: HeadingSize;
   color?: ColorVariants;
   weight?: FontWeightVariants;
   baseline?: boolean;
@@ -27,9 +26,11 @@ const isTransformVariant = (
 ): transformSize is TransformVariants =>
   Object.keys(atom).indexOf(transformSize) > -1;
 
+const DEFAULT_HEADING_SIZE = 'level1';
+
 export default withTheme(
-  class Text extends Component<Props> {
-    static displayName = 'Text';
+  class Heading extends Component<Props> {
+    static displayName = 'Heading';
 
     render() {
       const {
@@ -42,7 +43,7 @@ export default withTheme(
         className = '',
         ...restProps
       } = this.props;
-      const fontSize = size || 'standard';
+      const fontSize = size || DEFAULT_HEADING_SIZE;
 
       const transformSize = `${fontSize}Text`;
       const baselineTransform =
