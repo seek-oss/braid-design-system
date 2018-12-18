@@ -11090,10 +11090,10 @@ pkginfo@0.x.x:
   resolved "https://registry.yarnpkg.com/pkginfo/-/pkginfo-0.4.1.tgz#b5418ef0439de5425fc4995042dced14fb2a84ff"
   integrity sha1-tUGO8EOd5UJfxJlQQtztFPsqhP8=
 
-playroom@0.6.0:
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/playroom/-/playroom-0.6.0.tgz#ea9d2cf43d8771270f8ea468b12e881ca5d14033"
-  integrity sha512-ppKHMH/dvb2jgr+T7aoVLShi/+/DvyYn+PZ43yK0UvXjhgS3L9DipcTVAZJNTmzdJ7dgCQzfGISDLOrMElvYIg==
+playroom@0.7.1:
+  version "0.7.1"
+  resolved "https://registry.yarnpkg.com/playroom/-/playroom-0.7.1.tgz#c3eb8cca5717daf532361b4a261a098b4475f978"
+  integrity sha512-LlRJYLf0laMc7bJxTqzVLTzjzK+DqrtVJhhWsn4LnKAYejBV6a1sbhguAfJh3uGzVgLmRZyAOQ6ztRD01uytoA==
   dependencies:
     "@babel/core" "^7.1.0"
     "@babel/preset-env" "^7.2.0"
@@ -11108,6 +11108,7 @@ playroom@0.6.0:
     command-line-usage "^5.0.5"
     css-loader "^1.0.0"
     dedent "^0.7.0"
+    fast-glob "^2.2.4"
     find-up "^3.0.0"
     friendly-errors-webpack-plugin "^1.7.0"
     html-webpack-plugin "^3.2.0"
@@ -11124,6 +11125,7 @@ playroom@0.6.0:
     re-resizable "^4.9.3"
     react "^16.5.2"
     react-codemirror "^1.0.0"
+    react-docgen-typescript "^1.12.2"
     react-dom "^16.5.2"
     react-frame-component "^4.0.1"
     scope-eval "^1.0.0"
@@ -11924,6 +11926,11 @@ react-docgen-typescript@^1.12.1:
   version "1.12.1"
   resolved "https://registry.yarnpkg.com/react-docgen-typescript/-/react-docgen-typescript-1.12.1.tgz#b0f83c140c838bc6090178b102ef75f73bb45dac"
   integrity sha512-wrV2YlYgLAw84pvuFl8YYkHetPf35vT5gLMtJH86YiQvuR35dJst+06O25oNLFCpUNw/bB6B3uszRyAKO+SU8Q==
+
+react-docgen-typescript@^1.12.2:
+  version "1.12.2"
+  resolved "https://registry.yarnpkg.com/react-docgen-typescript/-/react-docgen-typescript-1.12.2.tgz#d5fb578d12f6876efdde69176f4ea658e75a9a29"
+  integrity sha512-pcot0jGiMIyhmwNeSU83GvClNwk9NbcnYHcGf4pKMmw5J43d5OzYRcTzrZTGlIOWjYfYazYhvTxjujE625P3Mw==
 
 react-docgen@^2.21.0:
   version "2.21.0"
