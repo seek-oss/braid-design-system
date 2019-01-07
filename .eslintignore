@@ -1,4 +1,5 @@
 # managed by sku
+coverage/
 docs/dist/
 report/
 # end managed by sku

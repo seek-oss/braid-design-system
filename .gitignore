@@ -10,6 +10,7 @@ componentDocs.json
 # managed by sku
 .eslintrc
 .prettierrc
+coverage/
 docs/dist/
 report/
 tsconfig.json
