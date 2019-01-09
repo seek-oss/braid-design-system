@@ -1,29 +1,32 @@
 import React, { ComponentType } from 'react';
 import ThemeContext from '../private/ThemeContext';
-
 import { Theme } from '../../themes/theme';
 
 export interface WithThemeProps {
   theme: Theme;
 }
 
-interface WithOverrideThemeProps {
+interface ThemeOverrideProps {
   theme?: Theme;
 }
 
-const withTheme = <P extends WithThemeProps>(Component: ComponentType<P>) => {
+const withTheme = <OriginalProps extends WithThemeProps>(
+  OriginalComponent: ComponentType<OriginalProps>
+) => {
   // List of prop keys, passed in excluding `theme`
-  type WrappedComponentPropsWithoutTheme = Exclude<
-    keyof P,
+  type OriginalPropsWithoutTheme = Exclude<
+    keyof OriginalProps,
     keyof WithThemeProps
   >;
+
   // New prop type definition without `theme`
-  type ComponentProps = Pick<P, WrappedComponentPropsWithoutTheme>;
+  type ComponentProps = Pick<OriginalProps, OriginalPropsWithoutTheme>;
 
   return class WithTheme extends React.Component<
-    ComponentProps & WithOverrideThemeProps
+    ComponentProps & ThemeOverrideProps
   > {
-    static displayName = `withTheme(${Component.displayName || 'Component'})`;
+    static displayName = `withTheme(${OriginalComponent.displayName ||
+      'Component'})`;
 
     render() {
       return (
@@ -34,7 +37,10 @@ const withTheme = <P extends WithThemeProps>(Component: ComponentType<P>) => {
             }
 
             return (
-              <Component {...this.props} theme={this.props.theme || theme} />
+              <OriginalComponent
+                theme={theme}
+                {...this.props as any} // Workaround for https://github.com/Microsoft/TypeScript/issues/28748
+              />
             );
           }}
         </ThemeContext.Consumer>
@@ -42,4 +48,5 @@ const withTheme = <P extends WithThemeProps>(Component: ComponentType<P>) => {
     }
   };
 };
+
 export default withTheme;
