@@ -1,24 +1,26 @@
-import React, { Component } from 'react';
+import React, { Component, AllHTMLAttributes } from 'react';
 import classnames from 'classnames';
-import withTheme, { WithThemeProps } from '../private/withTheme';
+import ThemeConsumer from '../ThemeConsumer/ThemeConsumer';
 
-interface Props extends WithThemeProps {
-  className?: string;
-}
+export type StrongProps = AllHTMLAttributes<HTMLElement>;
 
-export default withTheme(
-  class Strong extends Component<Props> {
-    static displayName = 'Strong';
+export default class Strong extends Component<StrongProps> {
+  static displayName = 'Strong';
 
-    render() {
-      const { theme, className = '', ...restProps } = this.props;
+  render() {
+    return (
+      <ThemeConsumer>
+        {theme => {
+          const { className, ...restProps } = this.props;
 
-      return (
-        <strong
-          {...restProps}
-          className={classnames(className, theme.atoms.fontWeight.strong)}
-        />
-      );
-    }
+          return (
+            <strong
+              {...restProps}
+              className={classnames(className, theme.atoms.fontWeight.strong)}
+            />
+          );
+        }}
+      </ThemeConsumer>
+    );
   }
-);
+}

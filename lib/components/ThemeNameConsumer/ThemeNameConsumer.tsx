@@ -1,24 +1,18 @@
 import React, { Component, ReactNode } from 'react';
-import ThemeContext from '../private/ThemeContext';
+import ThemeConsumer from '../ThemeConsumer/ThemeConsumer';
 
-interface Props {
+export interface ThemeNameConsumerProps {
   children(name: string): ReactNode;
 }
 
-export default class ThemeNameConsumer extends Component<Props> {
+export default class ThemeNameConsumer extends Component<
+  ThemeNameConsumerProps
+> {
   static displayName = 'ThemeNameConsumer';
 
   render() {
     return (
-      <ThemeContext.Consumer>
-        {theme => {
-          if (theme === null) {
-            throw new Error('No theme passed');
-          }
-
-          return this.props.children(theme.name);
-        }}
-      </ThemeContext.Consumer>
+      <ThemeConsumer>{theme => this.props.children(theme.name)}</ThemeConsumer>
     );
   }
 }

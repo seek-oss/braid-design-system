@@ -1,6 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, AllHTMLAttributes } from 'react';
 
-export default class ErrorSvg extends Component {
+export type ChevronSvgProps = AllHTMLAttributes<SVGElement>;
+
+export default class ErrorSvg extends Component<ChevronSvgProps> {
   static displayName = 'ErrorSvg';
 
   render() {

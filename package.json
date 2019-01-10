@@ -67,7 +67,7 @@
   "dependencies": {
     "basekick": "^3.0.0",
     "classnames": "^2.2.6",
-    "prop-types": "^15.6.2"
+    "utility-types": "^3.2.1"
   },
   "peerDependencies": {
     "react": "^16.0.0"
@@ -103,8 +103,8 @@
     "playroom": "0.7.1",
     "postcss-js": "^2.0.0",
     "postcss-loader": "^3.0.0",
+    "prop-types": "^15.6.2",
     "react": "^16.5.2",
-    "react-docgen": "^2.21.0",
     "react-docgen-typescript": "^1.12.1",
     "react-dom": "^16.5.2",
     "react-element-to-jsx-string": "^14.0.1",

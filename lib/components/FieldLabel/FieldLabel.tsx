@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import Text, { Props as TextProps } from '../Text/Text';
+import Text, { TextProps } from '../Text/Text';
 
-export default class FieldLabel extends Component<TextProps> {
+export type FieldLabelProps = TextProps;
+
+export default class FieldLabel extends Component<FieldLabelProps> {
   static displayName = 'FieldLabel';
 
   render() {

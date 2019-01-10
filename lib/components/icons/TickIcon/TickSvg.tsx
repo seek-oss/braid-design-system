@@ -1,6 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, AllHTMLAttributes } from 'react';
 
-export default class TickSvg extends Component {
+export type ChevronSvgProps = AllHTMLAttributes<SVGElement>;
+
+export default class TickSvg extends Component<ChevronSvgProps> {
   static displayName = 'TickSvg';
 
   render() {

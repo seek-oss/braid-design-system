@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import Box from '../Box/Box';
+import Box, { BoxProps } from '../Box/Box';
 
-export default class BulletList extends Component {
+export type BulletListProps = BoxProps;
+
+export default class BulletList extends Component<BulletListProps> {
   static displayName = 'BulletList';
 
   render() {

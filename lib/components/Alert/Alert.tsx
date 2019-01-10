@@ -1,12 +1,18 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Box from '../Box/Box';
+import React, { Component, ReactNode } from 'react';
+import Box, { BoxProps } from '../Box/Box';
 import Text from '../Text/Text';
 import InfoIcon from '../icons/InfoIcon/InfoIcon';
 import ErrorIcon from '../icons/ErrorIcon/ErrorIcon';
 import styles from './Alert.css.js';
 
-const iconForTone = tone => {
+type Tone = 'info' | 'critical';
+
+export interface AlertProps extends BoxProps {
+  tone?: Tone;
+  children: ReactNode;
+}
+
+const iconForTone = (tone: Tone) => {
   if (tone === 'info') {
     return <InfoIcon fill="white" marginRight="small" />;
   }
@@ -18,7 +24,7 @@ const iconForTone = tone => {
   return null;
 };
 
-const textColorForTone = tone => {
+const textColorForTone = (tone: Tone) => {
   if (tone === 'info') {
     return 'white';
   }
@@ -27,23 +33,14 @@ const textColorForTone = tone => {
     return 'critical';
   }
 
-  return null;
+  return 'neutral';
 };
 
-export default class Alert extends React.Component {
+export default class Alert extends Component<AlertProps> {
   static displayName = 'Alert';
 
-  static propTypes = {
-    tone: PropTypes.oneOf(['info', 'critical']).isRequired,
-    children: PropTypes.node.isRequired
-  };
-
-  static defaultProps = {
-    tone: 'info'
-  };
-
   render() {
-    const { tone, children, ...restProps } = this.props;
+    const { tone = 'info', children, ...restProps } = this.props;
 
     const icon = iconForTone(tone);
     const color = textColorForTone(tone);

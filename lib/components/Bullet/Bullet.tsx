@@ -1,19 +1,21 @@
 import React, { Component } from 'react';
-import Text, { Props as TextProps } from '../Text/Text';
-import Box from '../Box/Box';
+import classnames from 'classnames';
+import Text, { TextProps } from '../Text/Text';
 import styles from './Bullet.css.js';
 
-const BulletItem = (props: TextProps) => <Text component="li" {...props} />;
+export type BulletProps = TextProps;
 
-export default class Bullet extends Component {
+export default class Bullet extends Component<BulletProps> {
   static displayName = 'Bullet';
 
   render() {
+    const { className } = this.props;
+
     return (
-      <Box
-        component={BulletItem}
+      <Text
+        component="li"
         paddingBottom="xsmall"
-        className={styles.root}
+        className={classnames(styles.root, className)}
         {...this.props}
       />
     );

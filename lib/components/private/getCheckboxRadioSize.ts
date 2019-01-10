@@ -1,4 +1,6 @@
-export default theme => {
+import { Theme } from '../../themes/theme';
+
+export default (theme: Theme) => {
   // We currently don't support responsive checkboxes and
   // radio buttons, but nobody actually needs it (so far)
   const scale = theme.tokens.text.standard.mobile.size / 28;
