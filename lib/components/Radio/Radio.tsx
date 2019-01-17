@@ -9,13 +9,7 @@ import FieldMessage from '../FieldMessage/FieldMessage';
 import styles from './Radio.css.js';
 import { px } from '../../themes/utils/toUnit';
 
-const textColorForState = ({
-  disabled,
-  hovered
-}: {
-  disabled: boolean | undefined;
-  hovered: boolean | undefined;
-}) => {
+const textColorForState = (disabled: boolean, hovered: boolean) => {
   if (disabled) {
     return 'secondary';
   }
@@ -77,7 +71,7 @@ export default class Radio extends Component<RadioProps, State> {
             id,
             label,
             checked,
-            disabled,
+            disabled = false,
             className,
             style,
             inputProps,
@@ -203,7 +197,7 @@ export default class Radio extends Component<RadioProps, State> {
                   </Box>
                   <Text
                     size="interaction"
-                    color={textColorForState({ disabled, hovered })}
+                    color={textColorForState(disabled, hovered)}
                   >
                     {label}
                   </Text>

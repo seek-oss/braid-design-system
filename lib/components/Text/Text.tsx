@@ -33,16 +33,15 @@ export default class Text extends Component<TextProps> {
         {theme => {
           const {
             component,
-            size,
+            size = 'standard',
             color,
             weight,
             baseline = true,
             className,
             ...restProps
           } = this.props;
-          const fontSize = size || 'standard';
 
-          const transformSize = `${fontSize}Text`;
+          const transformSize = `${size}Text`;
           const baselineTransform =
             isTransformVariant(theme.atoms.transform, transformSize) && baseline
               ? theme.atoms.transform[transformSize]
@@ -56,7 +55,7 @@ export default class Text extends Component<TextProps> {
                 styles.block,
                 theme.atoms.fontFamily.text,
                 theme.atoms.color[color || 'neutral'],
-                theme.atoms.fontSize[fontSize],
+                theme.atoms.fontSize[size],
                 theme.atoms.fontWeight[weight || 'regular'],
                 baselineTransform,
                 {

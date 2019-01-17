@@ -10,13 +10,7 @@ import TickIcon from '../icons/TickIcon/TickIcon';
 import styles from './Checkbox.css.js';
 import { px } from '../../themes/utils/toUnit';
 
-const textColorForState = ({
-  disabled,
-  hovered
-}: {
-  disabled: boolean | undefined;
-  hovered: boolean | undefined;
-}) => {
+const textColorForState = (disabled: boolean, hovered: boolean) => {
   if (disabled) {
     return 'secondary';
   }
@@ -78,7 +72,7 @@ export default class Checkbox extends Component<CheckboxProps, State> {
             id,
             checked,
             label,
-            disabled,
+            disabled = false,
             className,
             style,
             inputProps,
@@ -224,7 +218,7 @@ export default class Checkbox extends Component<CheckboxProps, State> {
                   </Box>
                   <Text
                     size="interaction"
-                    color={textColorForState({ disabled, hovered })}
+                    color={textColorForState(disabled, hovered)}
                     {...(checked && children ? { weight: 'strong' } : {})}
                   >
                     {label}

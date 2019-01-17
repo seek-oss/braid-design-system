@@ -27,13 +27,13 @@ export default class Icon extends Component<IconProps> {
         {theme => {
           const {
             className,
-            size,
+            size = 'standard',
             svgComponent,
             inline = false,
             fill,
             ...restProps
           } = this.props;
-          const sizeAtom = `${size || 'standard'}Text${inline ? 'Inline' : ''}`;
+          const sizeAtom = `${size}Text${inline ? 'Inline' : ''}`;
           const widthAtom = isSizeVariant(theme.atoms.width, sizeAtom)
             ? theme.atoms.width[sizeAtom]
             : '';
