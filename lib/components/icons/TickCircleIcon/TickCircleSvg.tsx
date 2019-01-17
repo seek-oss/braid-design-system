@@ -1,6 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, AllHTMLAttributes } from 'react';
 
-export default class TickCircleSvg extends Component {
+export type ChevronSvgProps = AllHTMLAttributes<SVGElement>;
+
+export default class TickCircleSvg extends Component<ChevronSvgProps> {
   static displayName = 'TickCircleSvg';
 
   render() {

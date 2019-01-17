@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
+import { Omit } from 'utility-types';
 import Icon, { IconProps } from '../Icon/Icon';
 import TickSvg from './TickSvg';
 
-export default class TickIcon extends Component<IconProps> {
+export type TickIconProps = Omit<IconProps, 'svgComponent'>;
+
+export default class TickIcon extends Component<TickIconProps> {
   static displayName = 'TickIcon';
 
   render() {

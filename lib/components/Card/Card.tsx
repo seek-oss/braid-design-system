@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import Box from '../Box/Box';
+import Box, { BoxProps } from '../Box/Box';
 
-export default class Card extends Component {
+export type CardProps = BoxProps;
+
+export default class Card extends Component<CardProps> {
   static displayName = 'Card';
 
   render() {

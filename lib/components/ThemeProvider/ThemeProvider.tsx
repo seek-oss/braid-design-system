@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import ThemeContext from '../private/ThemeContext';
-import { WithThemeProps } from '../private/withTheme';
+import { Theme } from '../../themes/theme';
 
-export default class ThemeProvider extends Component<WithThemeProps> {
+export interface ThemeProviderProps {
+  theme: Theme;
+}
+
+export default class ThemeProvider extends Component<ThemeProviderProps> {
   render() {
     const { theme, ...restProps } = this.props;
 
