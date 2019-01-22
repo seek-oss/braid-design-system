@@ -40,9 +40,11 @@ describe('Box', () => {
     });
 
     test('Unknown values', () => {
+      const UnsafeBox: any = Box;
+
       const { container } = render(
         <ThemeProvider>
-          <Box
+          <UnsafeBox
             paddingTop="UNKNOWN"
             paddingBottom="UNKNOWN"
             paddingLeft="UNKNOWN"
@@ -56,7 +58,7 @@ describe('Box', () => {
             backgroundColor="UNKNOWN"
           >
             Children
-          </Box>
+          </UnsafeBox>
         </ThemeProvider>
       );
       expect(container.firstChild).toMatchSnapshot();

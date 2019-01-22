@@ -1,16 +1,16 @@
 import React from 'react';
-import { Checkbox } from '..';
+import { Radio } from '..';
 import { render } from 'react-testing-library';
 import forEachTheme from '../../test/utils/forEachTheme';
 
-const noop = () => {};
+const noop = () => undefined;
 
-describe('Checkbox', () => {
+describe('Radio', () => {
   forEachTheme(({ ThemeProvider }) => {
     test('Unchecked', () => {
       const { container } = render(
         <ThemeProvider>
-          <Checkbox id="id" label="Label" checked={false} onChange={noop} />
+          <Radio id="id" label="Label" checked={false} onChange={noop} />
         </ThemeProvider>
       );
       expect(container.firstChild).toMatchSnapshot();
@@ -19,7 +19,7 @@ describe('Checkbox', () => {
     test('Checked', () => {
       const { container } = render(
         <ThemeProvider>
-          <Checkbox id="id" label="Label" checked={true} onChange={noop} />
+          <Radio id="id" label="Label" checked={true} onChange={noop} />
         </ThemeProvider>
       );
       expect(container.firstChild).toMatchSnapshot();
@@ -28,9 +28,9 @@ describe('Checkbox', () => {
     test('Children when unchecked', () => {
       const { container } = render(
         <ThemeProvider>
-          <Checkbox id="id" label="Label" checked={false} onChange={noop}>
+          <Radio id="id" label="Label" checked={false} onChange={noop}>
             Children
-          </Checkbox>
+          </Radio>
         </ThemeProvider>
       );
       expect(container.firstChild).toMatchSnapshot();
@@ -39,9 +39,9 @@ describe('Checkbox', () => {
     test('Children when checked', () => {
       const { container } = render(
         <ThemeProvider>
-          <Checkbox id="id" label="Label" checked={true} onChange={noop}>
+          <Radio id="id" label="Label" checked={true} onChange={noop}>
             Children
-          </Checkbox>
+          </Radio>
         </ThemeProvider>
       );
       expect(container.firstChild).toMatchSnapshot();
@@ -50,7 +50,7 @@ describe('Checkbox', () => {
     test('With message', () => {
       const { container } = render(
         <ThemeProvider>
-          <Checkbox
+          <Radio
             id="id"
             label="Label"
             checked={true}
@@ -59,7 +59,7 @@ describe('Checkbox', () => {
             message="Message"
           >
             Children
-          </Checkbox>
+          </Radio>
         </ThemeProvider>
       );
       expect(container.firstChild).toMatchSnapshot();
