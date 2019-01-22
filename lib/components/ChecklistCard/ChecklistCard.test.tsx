@@ -3,7 +3,7 @@ import { ChecklistCard, Checkbox } from '..';
 import { render } from 'react-testing-library';
 import forEachTheme from '../../test/utils/forEachTheme';
 
-const noop = () => {};
+const noop = () => undefined;
 
 describe('ChecklistCard', () => {
   forEachTheme(({ ThemeProvider }) => {
