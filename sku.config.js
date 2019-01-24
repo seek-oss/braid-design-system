@@ -6,8 +6,8 @@ const isGitHubPages =
 
 module.exports = {
   srcPaths: ['lib', 'docs/src', 'scripts'],
-  clientEntry: 'docs/src/client.js',
-  renderEntry: 'docs/src/render.js',
+  clientEntry: 'docs/src/client.tsx',
+  renderEntry: 'docs/src/render.tsx',
   routes,
   public: 'docs/src/public',
   target: 'docs/dist',
