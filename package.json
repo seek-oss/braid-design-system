@@ -114,7 +114,7 @@
     "react-testing-library": "^5.1.0",
     "renovate-config-seek": "0.4.0",
     "semantic-release": "^15.10.8",
-    "sku": "7.8.2",
+    "sku": "7.8.3",
     "style-loader": "^0.23.1",
     "surge": "^0.20.1",
     "travis-deploy-once": "^5.0.9"
