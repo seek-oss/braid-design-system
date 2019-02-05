@@ -7,11 +7,12 @@ import {
   wireframe,
   jobStreet,
   seekAsia,
-  seekAnz
+  seekAnz,
+  occ
 } from '../../../../lib/themes';
 import { ComponentDocs } from '../../types';
 
-const themes = [wireframe, jobStreet, seekAsia, seekAnz];
+const themes = [wireframe, jobStreet, seekAsia, seekAnz, occ];
 
 interface ComponentRouteProps {
   componentName: string;
