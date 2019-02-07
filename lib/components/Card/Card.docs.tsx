@@ -16,22 +16,25 @@ const docs: ComponentDocs = {
           paddingBottom="small"
           style={{ backgroundColor: '#ccc' }}
         >
-          <Card
-            paddingLeft="gutter"
-            paddingRight="gutter"
-            paddingTop="small"
-            paddingBottom="large"
-          >
-            <Text>This text is inside a card.</Text>
+          <Card>
+            <Box
+              paddingLeft="gutter"
+              paddingRight="gutter"
+              paddingTop="small"
+              paddingBottom="large"
+            >
+              <Text>This text is inside a card.</Text>
+            </Box>
           </Card>
-          <Card
-            paddingLeft="gutter"
-            paddingRight="gutter"
-            paddingTop="small"
-            paddingBottom="large"
-            marginBottom="none"
-          >
-            <Text>This text is inside a card.</Text>
+          <Card>
+            <Box
+              paddingLeft="gutter"
+              paddingRight="gutter"
+              paddingTop="small"
+              paddingBottom="large"
+            >
+              <Text>This text is inside a card.</Text>
+            </Box>
           </Card>
         </Box>
       )

@@ -1,5 +1,5 @@
 import React, { Component, ReactNode } from 'react';
-import Box, { BoxProps } from '../Box/Box';
+import Box from '../Box/Box';
 import Text from '../Text/Text';
 import InfoIcon from '../icons/InfoIcon/InfoIcon';
 import ErrorIcon from '../icons/ErrorIcon/ErrorIcon';
@@ -7,18 +7,26 @@ import styles from './Alert.css.js';
 
 type Tone = 'info' | 'critical';
 
-export interface AlertProps extends BoxProps {
+export interface AlertProps {
   tone?: Tone;
   children: ReactNode;
 }
 
 const iconForTone = (tone: Tone) => {
   if (tone === 'info') {
-    return <InfoIcon fill="white" marginRight="small" />;
+    return (
+      <Box paddingRight="small">
+        <InfoIcon fill="white" />
+      </Box>
+    );
   }
 
   if (tone === 'critical') {
-    return <ErrorIcon fill="critical" marginRight="small" />;
+    return (
+      <Box paddingRight="small">
+        <ErrorIcon fill="critical" />
+      </Box>
+    );
   }
 
   return null;
@@ -40,7 +48,7 @@ export default class Alert extends Component<AlertProps> {
   static displayName = 'Alert';
 
   render() {
-    const { tone = 'info', children, ...restProps } = this.props;
+    const { tone = 'info', children } = this.props;
 
     const icon = iconForTone(tone);
     const color = textColorForTone(tone);
@@ -52,7 +60,6 @@ export default class Alert extends Component<AlertProps> {
         paddingRight="gutter"
         paddingTop="medium"
         paddingBottom="medium"
-        {...restProps}
       >
         <div className={styles.root}>
           <div className={styles.icon}>{icon}</div>

@@ -1,12 +1,20 @@
-import React, { Component } from 'react';
-import Text, { TextProps } from '../Text/Text';
+import React, { Component, ReactNode } from 'react';
+import Text from '../Text/Text';
 
-export type FieldLabelProps = TextProps;
+export interface FieldLabelProps {
+  children?: ReactNode;
+}
 
 export default class FieldLabel extends Component<FieldLabelProps> {
   static displayName = 'FieldLabel';
 
   render() {
-    return <Text component="label" weight="strong" {...this.props} />;
+    const { children } = this.props;
+
+    return (
+      <Text component="label" weight="strong">
+        {children}
+      </Text>
+    );
   }
 }
