@@ -2,7 +2,7 @@
 
 exports[`Radio Theme: jobStreet Checked 1`] = `
 <div
-  class=""
+  class="Box__root borderColor__standard"
 >
   <input
     aria-describedby="id-message"
@@ -74,7 +74,7 @@ exports[`Radio Theme: jobStreet Checked 1`] = `
 
 exports[`Radio Theme: jobStreet Children when checked 1`] = `
 <div
-  class=""
+  class="Box__root borderColor__standard"
 >
   <input
     aria-describedby="id-message"
@@ -156,7 +156,7 @@ exports[`Radio Theme: jobStreet Children when checked 1`] = `
 
 exports[`Radio Theme: jobStreet Children when unchecked 1`] = `
 <div
-  class=""
+  class="Box__root borderColor__standard"
 >
   <input
     aria-describedby="id-message"
@@ -237,7 +237,7 @@ exports[`Radio Theme: jobStreet Children when unchecked 1`] = `
 
 exports[`Radio Theme: jobStreet Unchecked 1`] = `
 <div
-  class=""
+  class="Box__root borderColor__standard"
 >
   <input
     aria-describedby="id-message"
@@ -308,7 +308,7 @@ exports[`Radio Theme: jobStreet Unchecked 1`] = `
 
 exports[`Radio Theme: jobStreet With message 1`] = `
 <div
-  class=""
+  class="Box__root borderColor__standard"
 >
   <input
     aria-describedby="id-message"
@@ -402,7 +402,7 @@ exports[`Radio Theme: jobStreet With message 1`] = `
 
 exports[`Radio Theme: seekAnz Checked 1`] = `
 <div
-  class=""
+  class="Box__root borderColor__standard"
 >
   <input
     aria-describedby="id-message"
@@ -474,7 +474,7 @@ exports[`Radio Theme: seekAnz Checked 1`] = `
 
 exports[`Radio Theme: seekAnz Children when checked 1`] = `
 <div
-  class=""
+  class="Box__root borderColor__standard"
 >
   <input
     aria-describedby="id-message"
@@ -556,7 +556,7 @@ exports[`Radio Theme: seekAnz Children when checked 1`] = `
 
 exports[`Radio Theme: seekAnz Children when unchecked 1`] = `
 <div
-  class=""
+  class="Box__root borderColor__standard"
 >
   <input
     aria-describedby="id-message"
@@ -637,7 +637,7 @@ exports[`Radio Theme: seekAnz Children when unchecked 1`] = `
 
 exports[`Radio Theme: seekAnz Unchecked 1`] = `
 <div
-  class=""
+  class="Box__root borderColor__standard"
 >
   <input
     aria-describedby="id-message"
@@ -708,7 +708,7 @@ exports[`Radio Theme: seekAnz Unchecked 1`] = `
 
 exports[`Radio Theme: seekAnz With message 1`] = `
 <div
-  class=""
+  class="Box__root borderColor__standard"
 >
   <input
     aria-describedby="id-message"
@@ -802,7 +802,7 @@ exports[`Radio Theme: seekAnz With message 1`] = `
 
 exports[`Radio Theme: seekAsia Checked 1`] = `
 <div
-  class=""
+  class="Box__root borderColor__standard"
 >
   <input
     aria-describedby="id-message"
@@ -874,7 +874,7 @@ exports[`Radio Theme: seekAsia Checked 1`] = `
 
 exports[`Radio Theme: seekAsia Children when checked 1`] = `
 <div
-  class=""
+  class="Box__root borderColor__standard"
 >
   <input
     aria-describedby="id-message"
@@ -956,7 +956,7 @@ exports[`Radio Theme: seekAsia Children when checked 1`] = `
 
 exports[`Radio Theme: seekAsia Children when unchecked 1`] = `
 <div
-  class=""
+  class="Box__root borderColor__standard"
 >
   <input
     aria-describedby="id-message"
@@ -1037,7 +1037,7 @@ exports[`Radio Theme: seekAsia Children when unchecked 1`] = `
 
 exports[`Radio Theme: seekAsia Unchecked 1`] = `
 <div
-  class=""
+  class="Box__root borderColor__standard"
 >
   <input
     aria-describedby="id-message"
@@ -1108,7 +1108,7 @@ exports[`Radio Theme: seekAsia Unchecked 1`] = `
 
 exports[`Radio Theme: seekAsia With message 1`] = `
 <div
-  class=""
+  class="Box__root borderColor__standard"
 >
   <input
     aria-describedby="id-message"
@@ -1202,7 +1202,7 @@ exports[`Radio Theme: seekAsia With message 1`] = `
 
 exports[`Radio Theme: wireframe Checked 1`] = `
 <div
-  class=""
+  class="Box__root borderColor__standard"
 >
   <input
     aria-describedby="id-message"
@@ -1274,7 +1274,7 @@ exports[`Radio Theme: wireframe Checked 1`] = `
 
 exports[`Radio Theme: wireframe Children when checked 1`] = `
 <div
-  class=""
+  class="Box__root borderColor__standard"
 >
   <input
     aria-describedby="id-message"
@@ -1356,7 +1356,7 @@ exports[`Radio Theme: wireframe Children when checked 1`] = `
 
 exports[`Radio Theme: wireframe Children when unchecked 1`] = `
 <div
-  class=""
+  class="Box__root borderColor__standard"
 >
   <input
     aria-describedby="id-message"
@@ -1437,7 +1437,7 @@ exports[`Radio Theme: wireframe Children when unchecked 1`] = `
 
 exports[`Radio Theme: wireframe Unchecked 1`] = `
 <div
-  class=""
+  class="Box__root borderColor__standard"
 >
   <input
     aria-describedby="id-message"
@@ -1508,7 +1508,7 @@ exports[`Radio Theme: wireframe Unchecked 1`] = `
 
 exports[`Radio Theme: wireframe With message 1`] = `
 <div
-  class=""
+  class="Box__root borderColor__standard"
 >
   <input
     aria-describedby="id-message"
