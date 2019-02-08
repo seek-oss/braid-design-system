@@ -2,7 +2,7 @@
 
 exports[`Checkbox Theme: jobStreet Checked 1`] = `
 <div
-  class=""
+  class="Box__root borderColor__standard"
 >
   <input
     aria-describedby="id-message"
@@ -83,7 +83,7 @@ exports[`Checkbox Theme: jobStreet Checked 1`] = `
 
 exports[`Checkbox Theme: jobStreet Children when checked 1`] = `
 <div
-  class=""
+  class="Box__root borderColor__standard"
 >
   <input
     aria-describedby="id-message"
@@ -174,7 +174,7 @@ exports[`Checkbox Theme: jobStreet Children when checked 1`] = `
 
 exports[`Checkbox Theme: jobStreet Children when unchecked 1`] = `
 <div
-  class=""
+  class="Box__root borderColor__standard"
 >
   <input
     aria-describedby="id-message"
@@ -264,7 +264,7 @@ exports[`Checkbox Theme: jobStreet Children when unchecked 1`] = `
 
 exports[`Checkbox Theme: jobStreet Unchecked 1`] = `
 <div
-  class=""
+  class="Box__root borderColor__standard"
 >
   <input
     aria-describedby="id-message"
@@ -344,7 +344,7 @@ exports[`Checkbox Theme: jobStreet Unchecked 1`] = `
 
 exports[`Checkbox Theme: jobStreet With message 1`] = `
 <div
-  class=""
+  class="Box__root borderColor__standard"
 >
   <input
     aria-describedby="id-message"
@@ -447,7 +447,7 @@ exports[`Checkbox Theme: jobStreet With message 1`] = `
 
 exports[`Checkbox Theme: seekAnz Checked 1`] = `
 <div
-  class=""
+  class="Box__root borderColor__standard"
 >
   <input
     aria-describedby="id-message"
@@ -528,7 +528,7 @@ exports[`Checkbox Theme: seekAnz Checked 1`] = `
 
 exports[`Checkbox Theme: seekAnz Children when checked 1`] = `
 <div
-  class=""
+  class="Box__root borderColor__standard"
 >
   <input
     aria-describedby="id-message"
@@ -619,7 +619,7 @@ exports[`Checkbox Theme: seekAnz Children when checked 1`] = `
 
 exports[`Checkbox Theme: seekAnz Children when unchecked 1`] = `
 <div
-  class=""
+  class="Box__root borderColor__standard"
 >
   <input
     aria-describedby="id-message"
@@ -709,7 +709,7 @@ exports[`Checkbox Theme: seekAnz Children when unchecked 1`] = `
 
 exports[`Checkbox Theme: seekAnz Unchecked 1`] = `
 <div
-  class=""
+  class="Box__root borderColor__standard"
 >
   <input
     aria-describedby="id-message"
@@ -789,7 +789,7 @@ exports[`Checkbox Theme: seekAnz Unchecked 1`] = `
 
 exports[`Checkbox Theme: seekAnz With message 1`] = `
 <div
-  class=""
+  class="Box__root borderColor__standard"
 >
   <input
     aria-describedby="id-message"
@@ -892,7 +892,7 @@ exports[`Checkbox Theme: seekAnz With message 1`] = `
 
 exports[`Checkbox Theme: seekAsia Checked 1`] = `
 <div
-  class=""
+  class="Box__root borderColor__standard"
 >
   <input
     aria-describedby="id-message"
@@ -973,7 +973,7 @@ exports[`Checkbox Theme: seekAsia Checked 1`] = `
 
 exports[`Checkbox Theme: seekAsia Children when checked 1`] = `
 <div
-  class=""
+  class="Box__root borderColor__standard"
 >
   <input
     aria-describedby="id-message"
@@ -1064,7 +1064,7 @@ exports[`Checkbox Theme: seekAsia Children when checked 1`] = `
 
 exports[`Checkbox Theme: seekAsia Children when unchecked 1`] = `
 <div
-  class=""
+  class="Box__root borderColor__standard"
 >
   <input
     aria-describedby="id-message"
@@ -1154,7 +1154,7 @@ exports[`Checkbox Theme: seekAsia Children when unchecked 1`] = `
 
 exports[`Checkbox Theme: seekAsia Unchecked 1`] = `
 <div
-  class=""
+  class="Box__root borderColor__standard"
 >
   <input
     aria-describedby="id-message"
@@ -1234,7 +1234,7 @@ exports[`Checkbox Theme: seekAsia Unchecked 1`] = `
 
 exports[`Checkbox Theme: seekAsia With message 1`] = `
 <div
-  class=""
+  class="Box__root borderColor__standard"
 >
   <input
     aria-describedby="id-message"
@@ -1337,7 +1337,7 @@ exports[`Checkbox Theme: seekAsia With message 1`] = `
 
 exports[`Checkbox Theme: wireframe Checked 1`] = `
 <div
-  class=""
+  class="Box__root borderColor__standard"
 >
   <input
     aria-describedby="id-message"
@@ -1418,7 +1418,7 @@ exports[`Checkbox Theme: wireframe Checked 1`] = `
 
 exports[`Checkbox Theme: wireframe Children when checked 1`] = `
 <div
-  class=""
+  class="Box__root borderColor__standard"
 >
   <input
     aria-describedby="id-message"
@@ -1509,7 +1509,7 @@ exports[`Checkbox Theme: wireframe Children when checked 1`] = `
 
 exports[`Checkbox Theme: wireframe Children when unchecked 1`] = `
 <div
-  class=""
+  class="Box__root borderColor__standard"
 >
   <input
     aria-describedby="id-message"
@@ -1599,7 +1599,7 @@ exports[`Checkbox Theme: wireframe Children when unchecked 1`] = `
 
 exports[`Checkbox Theme: wireframe Unchecked 1`] = `
 <div
-  class=""
+  class="Box__root borderColor__standard"
 >
   <input
     aria-describedby="id-message"
@@ -1679,7 +1679,7 @@ exports[`Checkbox Theme: wireframe Unchecked 1`] = `
 
 exports[`Checkbox Theme: wireframe With message 1`] = `
 <div
-  class=""
+  class="Box__root borderColor__standard"
 >
   <input
     aria-describedby="id-message"
