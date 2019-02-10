@@ -4291,11 +4291,6 @@ component-emitter@^1.2.1:
   resolved "https://registry.yarnpkg.com/component-emitter/-/component-emitter-1.2.1.tgz#137918d6d78283f7df7a6b7c5a63e140e69425e6"
   integrity sha1-E3kY1teCg/ffemt8WmPhQOaUJeY=
 
-component-type@1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/component-type/-/component-type-1.2.1.tgz#8a47901700238e4fc32269771230226f24b415a9"
-  integrity sha1-ikeQFwAjjk/DIml3EjAibyS0Fak=
-
 compressible@~2.0.14:
   version "2.0.15"
   resolved "https://registry.yarnpkg.com/compressible/-/compressible-2.0.15.tgz#857a9ab0a7e5a07d8d837ed43fe2defff64fe212"
@@ -5454,11 +5449,6 @@ ee-first@1.1.1:
   resolved "https://registry.yarnpkg.com/ee-first/-/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
 
-eivindfjeldstad-dot@0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/eivindfjeldstad-dot/-/eivindfjeldstad-dot-0.0.1.tgz#22fc976bfaf306e0839a31db8e8213480fafb893"
-  integrity sha1-IvyXa/rzBuCDmjHbjoITSA+vuJM=
-
 ejs@^2.2.4, ejs@^2.6.1:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/ejs/-/ejs-2.6.1.tgz#498ec0d495655abc6f23cd61868d926464071aa0"
@@ -6303,6 +6293,11 @@ fast-levenshtein@~2.0.4:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/fast-levenshtein/-/fast-levenshtein-2.0.6.tgz#3d8a5c66883a16a30ca8643e851f19baa7797917"
   integrity sha1-PYpcZog6FqMMqGQ+hR8Zuqd5eRc=
+
+fastest-validator@^0.6.13:
+  version "0.6.14"
+  resolved "https://registry.yarnpkg.com/fastest-validator/-/fastest-validator-0.6.14.tgz#8d5e888dc7caac9b2cb1fccb972a1c41f7cafcca"
+  integrity sha512-eba325rApx3C2pyYVRCP0W1CBY+G/ZHcUu5VL9Lr5hVcGUOTZ3c/bUMl/f5LoVVfq8QE1RMcO2rhAbIN+j9HBQ==
 
 fastparse@^1.1.1:
   version "1.1.2"
@@ -13643,10 +13638,10 @@ sisteransi@^0.1.1:
   resolved "https://registry.yarnpkg.com/sisteransi/-/sisteransi-0.1.1.tgz#5431447d5f7d1675aac667ccd0b865a4994cb3ce"
   integrity sha512-PmGOd02bM9YO5ifxpw36nrNMBTptEtfRl4qUYl9SndkolplkrZZOW7PGHjrZL53QvMVj9nQ+TKqUnRsw4tJa4g==
 
-sku@7.9.0:
-  version "7.9.0"
-  resolved "https://registry.yarnpkg.com/sku/-/sku-7.9.0.tgz#847a7a516e7241846fe31d2fccecbaf94889893c"
-  integrity sha512-EDo2ETQNORNPgPVnpcYjN7PpSQYVdvKoLB4zsdmxoPXzwQC6I+9E1Gc79WcPx1zYS9cUTzgFQSq1aeaDbRgbDQ==
+sku@7.10.1:
+  version "7.10.1"
+  resolved "https://registry.yarnpkg.com/sku/-/sku-7.10.1.tgz#901d48f6c18ba013f4e4c093de22cac324c2b067"
+  integrity sha512-qEjUewkx70sdG0pELVQpc0yM+5/ILgaD9CpLvjhGsL94QAOctmW6WrsXV2vk5tLlIO0/8ps4JitWrO61hCvHxg==
   dependencies:
     "@babel/core" "^7.1.2"
     "@babel/plugin-proposal-class-properties" "^7.1.0"
@@ -13695,6 +13690,7 @@ sku@7.9.0:
     eslint-config-seek "^4.0.0"
     express "^4.16.3"
     fast-glob "^2.2.3"
+    fastest-validator "^0.6.13"
     file-loader "^1.1.11"
     find-up "^3.0.0"
     fs-extra "^5.0.0"
@@ -13728,7 +13724,6 @@ sku@7.9.0:
     tslint-config-seek "^1.0.0"
     typescript "^3.1.5"
     url-loader "^1.0.1"
-    validate "^4.5.1"
     validate-npm-package-name "^3.0.0"
     webpack "^4.28.2"
     webpack-bundle-analyzer "^3.0.2"
@@ -15005,11 +15000,6 @@ type-is@~1.6.16:
     media-typer "0.3.0"
     mime-types "~2.1.18"
 
-typecast@0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/typecast/-/typecast-0.0.1.tgz#fffb75dcb6bdf1def8e293b6b6e893d6c1ed19de"
-  integrity sha1-//t13La98d744pO2tuiT1sHtGd4=
-
 typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
@@ -15380,15 +15370,6 @@ validate-npm-package-name@^3.0.0, validate-npm-package-name@~3.0.0:
   integrity sha1-X6kS2B630MdK/BQN5zF/DKffQ34=
   dependencies:
     builtins "^1.0.3"
-
-validate@^4.5.1:
-  version "4.5.1"
-  resolved "https://registry.yarnpkg.com/validate/-/validate-4.5.1.tgz#ba36b8450b4bad4ccf52d666ba80abb2c01cace2"
-  integrity sha512-ZdfYYgJDVrx4oxamyW0ynIoW8jIAoAeb8/pSu9XF+WCZueGogUMU7cGYHVUiWAJDc7RO3QR/EBhhkP46Wn9Hng==
-  dependencies:
-    component-type "1.2.1"
-    eivindfjeldstad-dot "0.0.1"
-    typecast "0.0.1"
 
 value-equal@^0.4.0:
   version "0.4.0"
