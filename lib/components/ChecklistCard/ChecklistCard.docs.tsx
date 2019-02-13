@@ -78,24 +78,13 @@ const docs: ComponentDocs = {
             id={`${id}_1`}
             label="This is a checkbox"
             checked={false}
-            tone="critical"
-            message="This is a critical message"
+            message={false}
             onChange={handleChange}
           >
             <Text>This text is visible when the checkbox is checked.</Text>
           </Checkbox>
           <Checkbox
             id={`${id}_2`}
-            label="This is a checkbox"
-            checked={true}
-            tone="critical"
-            message="This is a critical message"
-            onChange={handleChange}
-          >
-            <Text>This text is visible when the checkbox is checked.</Text>
-          </Checkbox>
-          <Checkbox
-            id={`${id}_3`}
             label="This is a checkbox"
             checked={false}
             tone="critical"
@@ -105,16 +94,17 @@ const docs: ComponentDocs = {
             <Text>This text is visible when the checkbox is checked.</Text>
           </Checkbox>
           <Checkbox
-            id={`${id}_4`}
+            id={`${id}_3`}
             label="This is a checkbox"
             checked={true}
-            message={false}
+            tone="critical"
+            message="This is a critical message"
             onChange={handleChange}
           >
             <Text>This text is visible when the checkbox is checked.</Text>
           </Checkbox>
           <Checkbox
-            id={`${id}_5`}
+            id={`${id}_4`}
             label="This is a checkbox"
             checked={false}
             message={false}

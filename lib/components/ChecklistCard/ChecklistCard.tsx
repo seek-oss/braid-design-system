@@ -19,14 +19,24 @@ export default class ChecklistCard extends Component<ChecklistCardProps> {
     const { children, ...restProps } = this.props;
     return (
       <Card {...restProps}>
-        {React.Children.map(children, (child, i) => (
-          <Fragment>
-            {i > 0 && <Divider />}
-            {React.cloneElement(child as ReactElement<CheckboxProps>, {
-              variant: 'inChecklistCard'
-            })}
-          </Fragment>
-        ))}
+        {React.Children.map(children, (child, i) => {
+          if (typeof child !== 'object') {
+            return null;
+          }
+
+          const checkboxChild = child as ReactElement<CheckboxProps>;
+
+          return (
+            <Fragment>
+              {i > 0 && checkboxChild.props.tone !== 'critical' ? (
+                <Divider />
+              ) : null}
+              {React.cloneElement(child, {
+                variant: 'inChecklistCard'
+              })}
+            </Fragment>
+          );
+        })}
       </Card>
     );
   }
