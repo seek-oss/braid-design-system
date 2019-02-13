@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import styles from './Divider.css.js';
 import Box from '../Box/Box';
 
-export type DividerProps = {};
-
-export default class Divider extends Component<DividerProps> {
+export default class Divider extends Component<{}> {
   static displayName = 'Divider';
 
   render() {

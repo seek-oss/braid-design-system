@@ -1,6 +1,7 @@
 import React, { ComponentType } from 'react';
 import { Omit } from 'utility-types';
 import Text from '../Text/Text';
+import Box from '../Box/Box';
 import { IconProps } from '../icons/Icon/Icon';
 
 export default (Icon: ComponentType<Omit<IconProps, 'svgComponent'>>) => {
@@ -9,7 +10,9 @@ export default (Icon: ComponentType<Omit<IconProps, 'svgComponent'>>) => {
       label: 'Standard',
       render: () => (
         <div style={{ display: 'flex', alignItems: 'center' }}>
-          <Icon marginRight="xsmall" />
+          <Box marginRight="xsmall">
+            <Icon />
+          </Box>
           <Text baseline={false}>Standard text</Text>
         </div>
       )
@@ -19,7 +22,9 @@ export default (Icon: ComponentType<Omit<IconProps, 'svgComponent'>>) => {
       render: () => (
         <Text>
           Standard
-          <Icon inline marginLeft="xsmall" marginRight="xsmall" />
+          <Box marginLeft="xsmall" marginRight="xsmall">
+            <Icon inline />
+          </Box>
           text
         </Text>
       )
@@ -28,7 +33,9 @@ export default (Icon: ComponentType<Omit<IconProps, 'svgComponent'>>) => {
       label: 'Large',
       render: () => (
         <div style={{ display: 'flex', alignItems: 'center' }}>
-          <Icon size="large" marginRight="xsmall" />
+          <Box marginRight="xsmall">
+            <Icon size="large" />
+          </Box>
           <Text size="large" baseline={false}>
             Large text
           </Text>
@@ -40,7 +47,9 @@ export default (Icon: ComponentType<Omit<IconProps, 'svgComponent'>>) => {
       render: () => (
         <Text size="large">
           Large
-          <Icon size="large" inline marginLeft="xsmall" marginRight="xsmall" />
+          <Box marginLeft="xsmall" marginRight="xsmall">
+            <Icon size="large" inline />
+          </Box>
           text
         </Text>
       )

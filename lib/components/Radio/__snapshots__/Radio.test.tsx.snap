@@ -55,17 +55,21 @@ exports[`Radio Theme: jobStreet Checked 1`] = `
     class="Box__root borderColor__standard paddingRight__none paddingLeft__none"
   >
     <div
-      class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard paddingBottom__small"
+      class="Box__root borderColor__standard paddingBottom__small"
       id="id-message"
       tabindex="-1"
     >
       <div
-        class="FieldMessage__content"
+        class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard"
       >
         <div
-          class="height__standardText"
-        />
-        <div />
+          class="FieldMessage__content"
+        >
+          <div
+            class="height__standardText"
+          />
+          <div />
+        </div>
       </div>
     </div>
   </div>
@@ -137,17 +141,21 @@ exports[`Radio Theme: jobStreet Children when checked 1`] = `
     class="Box__root borderColor__standard paddingRight__none paddingLeft__none"
   >
     <div
-      class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard paddingBottom__small"
+      class="Box__root borderColor__standard paddingBottom__small"
       id="id-message"
       tabindex="-1"
     >
       <div
-        class="FieldMessage__content"
+        class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard"
       >
         <div
-          class="height__standardText"
-        />
-        <div />
+          class="FieldMessage__content"
+        >
+          <div
+            class="height__standardText"
+          />
+          <div />
+        </div>
       </div>
     </div>
   </div>
@@ -218,17 +226,21 @@ exports[`Radio Theme: jobStreet Children when unchecked 1`] = `
     class="Box__root borderColor__standard paddingRight__none paddingLeft__none"
   >
     <div
-      class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard paddingBottom__small"
+      class="Box__root borderColor__standard paddingBottom__small"
       id="id-message"
       tabindex="-1"
     >
       <div
-        class="FieldMessage__content"
+        class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard"
       >
         <div
-          class="height__standardText"
-        />
-        <div />
+          class="FieldMessage__content"
+        >
+          <div
+            class="height__standardText"
+          />
+          <div />
+        </div>
       </div>
     </div>
   </div>
@@ -289,17 +301,21 @@ exports[`Radio Theme: jobStreet Unchecked 1`] = `
     class="Box__root borderColor__standard paddingRight__none paddingLeft__none"
   >
     <div
-      class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard paddingBottom__small"
+      class="Box__root borderColor__standard paddingBottom__small"
       id="id-message"
       tabindex="-1"
     >
       <div
-        class="FieldMessage__content"
+        class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard"
       >
         <div
-          class="height__standardText"
-        />
-        <div />
+          class="FieldMessage__content"
+        >
+          <div
+            class="height__standardText"
+          />
+          <div />
+        </div>
       </div>
     </div>
   </div>
@@ -371,28 +387,36 @@ exports[`Radio Theme: jobStreet With message 1`] = `
     class="Box__root borderColor__standard paddingRight__none paddingLeft__none"
   >
     <div
-      class="Text__block fontFamily__text color__critical fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard paddingBottom__small"
+      class="Box__root borderColor__standard paddingBottom__small"
       id="id-message"
       tabindex="-1"
     >
       <div
-        class="FieldMessage__content"
+        class="Text__block fontFamily__text color__critical fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard"
       >
         <div
-          class="height__standardText"
-        />
-        <svg
-          class="FieldMessage__icon marginRight__xsmall width__standardText height__standardText fill__critical Box__root borderColor__standard"
-          height="16"
-          viewBox="0 0 512 512"
-          width="16"
+          class="FieldMessage__content"
         >
-          <path
-            d="M489.308 156.341c-12.902-30.484-31.355-57.856-54.861-81.357-23.512-23.501-50.883-41.959-81.377-54.855-31.575-13.353-65.106-20.122-99.65-20.122s-68.066 6.769-99.635 20.122c-30.484 12.902-57.856 31.35-81.357 54.851-23.511 23.501-41.968 50.877-54.865 81.357-13.342 31.575-20.122 65.111-20.122 99.656 0 34.56 6.774 68.080 20.122 99.656 12.902 30.485 31.36 57.856 54.861 81.367s50.877 41.959 81.357 54.856c31.575 13.348 65.096 20.122 99.635 20.122 34.56 0 68.081-6.759 99.656-20.122 30.485-12.902 57.856-31.35 81.372-54.856 23.5-23.5 41.964-50.883 54.861-81.367 13.368-31.58 20.137-65.106 20.137-99.661 0-34.544-6.774-68.076-20.132-99.645zM232.99 371.167h41.334c3.687 0 6.687 2.995 6.687 6.692v41.063c0 3.702-2.995 6.697-6.692 6.697h-41.339c-3.696 0-6.692-2.995-6.692-6.692v-41.063c0-3.702 2.99-6.697 6.686-6.697zM226.304 312.051v-219.587c0-3.697 2.99-6.692 6.686-6.692h41.063c3.707 0 6.707 3 6.707 6.697v219.587c0 3.697-3 6.692-6.707 6.692h-41.063c-3.696 0-6.692-3-6.692-6.692z"
+          <div
+            class="height__standardText"
           />
-        </svg>
-        <div>
-          Message
+          <div
+            class="FieldMessage__icon Box__root borderColor__standard paddingRight__xsmall"
+          >
+            <svg
+              class="width__standardText height__standardText fill__critical Box__root borderColor__standard"
+              height="16"
+              viewBox="0 0 512 512"
+              width="16"
+            >
+              <path
+                d="M489.308 156.341c-12.902-30.484-31.355-57.856-54.861-81.357-23.512-23.501-50.883-41.959-81.377-54.855-31.575-13.353-65.106-20.122-99.65-20.122s-68.066 6.769-99.635 20.122c-30.484 12.902-57.856 31.35-81.357 54.851-23.511 23.501-41.968 50.877-54.865 81.357-13.342 31.575-20.122 65.111-20.122 99.656 0 34.56 6.774 68.080 20.122 99.656 12.902 30.485 31.36 57.856 54.861 81.367s50.877 41.959 81.357 54.856c31.575 13.348 65.096 20.122 99.635 20.122 34.56 0 68.081-6.759 99.656-20.122 30.485-12.902 57.856-31.35 81.372-54.856 23.5-23.5 41.964-50.883 54.861-81.367 13.368-31.58 20.137-65.106 20.137-99.661 0-34.544-6.774-68.076-20.132-99.645zM232.99 371.167h41.334c3.687 0 6.687 2.995 6.687 6.692v41.063c0 3.702-2.995 6.697-6.692 6.697h-41.339c-3.696 0-6.692-2.995-6.692-6.692v-41.063c0-3.702 2.99-6.697 6.686-6.697zM226.304 312.051v-219.587c0-3.697 2.99-6.692 6.686-6.692h41.063c3.707 0 6.707 3 6.707 6.697v219.587c0 3.697-3 6.692-6.707 6.692h-41.063c-3.696 0-6.692-3-6.692-6.692z"
+              />
+            </svg>
+          </div>
+          <div>
+            Message
+          </div>
         </div>
       </div>
     </div>
@@ -455,17 +479,21 @@ exports[`Radio Theme: seekAnz Checked 1`] = `
     class="Box__root borderColor__standard paddingRight__none paddingLeft__none"
   >
     <div
-      class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard paddingBottom__small"
+      class="Box__root borderColor__standard paddingBottom__small"
       id="id-message"
       tabindex="-1"
     >
       <div
-        class="FieldMessage__content"
+        class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard"
       >
         <div
-          class="height__standardText"
-        />
-        <div />
+          class="FieldMessage__content"
+        >
+          <div
+            class="height__standardText"
+          />
+          <div />
+        </div>
       </div>
     </div>
   </div>
@@ -537,17 +565,21 @@ exports[`Radio Theme: seekAnz Children when checked 1`] = `
     class="Box__root borderColor__standard paddingRight__none paddingLeft__none"
   >
     <div
-      class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard paddingBottom__small"
+      class="Box__root borderColor__standard paddingBottom__small"
       id="id-message"
       tabindex="-1"
     >
       <div
-        class="FieldMessage__content"
+        class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard"
       >
         <div
-          class="height__standardText"
-        />
-        <div />
+          class="FieldMessage__content"
+        >
+          <div
+            class="height__standardText"
+          />
+          <div />
+        </div>
       </div>
     </div>
   </div>
@@ -618,17 +650,21 @@ exports[`Radio Theme: seekAnz Children when unchecked 1`] = `
     class="Box__root borderColor__standard paddingRight__none paddingLeft__none"
   >
     <div
-      class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard paddingBottom__small"
+      class="Box__root borderColor__standard paddingBottom__small"
       id="id-message"
       tabindex="-1"
     >
       <div
-        class="FieldMessage__content"
+        class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard"
       >
         <div
-          class="height__standardText"
-        />
-        <div />
+          class="FieldMessage__content"
+        >
+          <div
+            class="height__standardText"
+          />
+          <div />
+        </div>
       </div>
     </div>
   </div>
@@ -689,17 +725,21 @@ exports[`Radio Theme: seekAnz Unchecked 1`] = `
     class="Box__root borderColor__standard paddingRight__none paddingLeft__none"
   >
     <div
-      class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard paddingBottom__small"
+      class="Box__root borderColor__standard paddingBottom__small"
       id="id-message"
       tabindex="-1"
     >
       <div
-        class="FieldMessage__content"
+        class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard"
       >
         <div
-          class="height__standardText"
-        />
-        <div />
+          class="FieldMessage__content"
+        >
+          <div
+            class="height__standardText"
+          />
+          <div />
+        </div>
       </div>
     </div>
   </div>
@@ -771,28 +811,36 @@ exports[`Radio Theme: seekAnz With message 1`] = `
     class="Box__root borderColor__standard paddingRight__none paddingLeft__none"
   >
     <div
-      class="Text__block fontFamily__text color__critical fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard paddingBottom__small"
+      class="Box__root borderColor__standard paddingBottom__small"
       id="id-message"
       tabindex="-1"
     >
       <div
-        class="FieldMessage__content"
+        class="Text__block fontFamily__text color__critical fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard"
       >
         <div
-          class="height__standardText"
-        />
-        <svg
-          class="FieldMessage__icon marginRight__xsmall width__standardText height__standardText fill__critical Box__root borderColor__standard"
-          height="16"
-          viewBox="0 0 512 512"
-          width="16"
+          class="FieldMessage__content"
         >
-          <path
-            d="M489.308 156.341c-12.902-30.484-31.355-57.856-54.861-81.357-23.512-23.501-50.883-41.959-81.377-54.855-31.575-13.353-65.106-20.122-99.65-20.122s-68.066 6.769-99.635 20.122c-30.484 12.902-57.856 31.35-81.357 54.851-23.511 23.501-41.968 50.877-54.865 81.357-13.342 31.575-20.122 65.111-20.122 99.656 0 34.56 6.774 68.080 20.122 99.656 12.902 30.485 31.36 57.856 54.861 81.367s50.877 41.959 81.357 54.856c31.575 13.348 65.096 20.122 99.635 20.122 34.56 0 68.081-6.759 99.656-20.122 30.485-12.902 57.856-31.35 81.372-54.856 23.5-23.5 41.964-50.883 54.861-81.367 13.368-31.58 20.137-65.106 20.137-99.661 0-34.544-6.774-68.076-20.132-99.645zM232.99 371.167h41.334c3.687 0 6.687 2.995 6.687 6.692v41.063c0 3.702-2.995 6.697-6.692 6.697h-41.339c-3.696 0-6.692-2.995-6.692-6.692v-41.063c0-3.702 2.99-6.697 6.686-6.697zM226.304 312.051v-219.587c0-3.697 2.99-6.692 6.686-6.692h41.063c3.707 0 6.707 3 6.707 6.697v219.587c0 3.697-3 6.692-6.707 6.692h-41.063c-3.696 0-6.692-3-6.692-6.692z"
+          <div
+            class="height__standardText"
           />
-        </svg>
-        <div>
-          Message
+          <div
+            class="FieldMessage__icon Box__root borderColor__standard paddingRight__xsmall"
+          >
+            <svg
+              class="width__standardText height__standardText fill__critical Box__root borderColor__standard"
+              height="16"
+              viewBox="0 0 512 512"
+              width="16"
+            >
+              <path
+                d="M489.308 156.341c-12.902-30.484-31.355-57.856-54.861-81.357-23.512-23.501-50.883-41.959-81.377-54.855-31.575-13.353-65.106-20.122-99.65-20.122s-68.066 6.769-99.635 20.122c-30.484 12.902-57.856 31.35-81.357 54.851-23.511 23.501-41.968 50.877-54.865 81.357-13.342 31.575-20.122 65.111-20.122 99.656 0 34.56 6.774 68.080 20.122 99.656 12.902 30.485 31.36 57.856 54.861 81.367s50.877 41.959 81.357 54.856c31.575 13.348 65.096 20.122 99.635 20.122 34.56 0 68.081-6.759 99.656-20.122 30.485-12.902 57.856-31.35 81.372-54.856 23.5-23.5 41.964-50.883 54.861-81.367 13.368-31.58 20.137-65.106 20.137-99.661 0-34.544-6.774-68.076-20.132-99.645zM232.99 371.167h41.334c3.687 0 6.687 2.995 6.687 6.692v41.063c0 3.702-2.995 6.697-6.692 6.697h-41.339c-3.696 0-6.692-2.995-6.692-6.692v-41.063c0-3.702 2.99-6.697 6.686-6.697zM226.304 312.051v-219.587c0-3.697 2.99-6.692 6.686-6.692h41.063c3.707 0 6.707 3 6.707 6.697v219.587c0 3.697-3 6.692-6.707 6.692h-41.063c-3.696 0-6.692-3-6.692-6.692z"
+              />
+            </svg>
+          </div>
+          <div>
+            Message
+          </div>
         </div>
       </div>
     </div>
@@ -855,17 +903,21 @@ exports[`Radio Theme: seekAsia Checked 1`] = `
     class="Box__root borderColor__standard paddingRight__none paddingLeft__none"
   >
     <div
-      class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard paddingBottom__small"
+      class="Box__root borderColor__standard paddingBottom__small"
       id="id-message"
       tabindex="-1"
     >
       <div
-        class="FieldMessage__content"
+        class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard"
       >
         <div
-          class="height__standardText"
-        />
-        <div />
+          class="FieldMessage__content"
+        >
+          <div
+            class="height__standardText"
+          />
+          <div />
+        </div>
       </div>
     </div>
   </div>
@@ -937,17 +989,21 @@ exports[`Radio Theme: seekAsia Children when checked 1`] = `
     class="Box__root borderColor__standard paddingRight__none paddingLeft__none"
   >
     <div
-      class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard paddingBottom__small"
+      class="Box__root borderColor__standard paddingBottom__small"
       id="id-message"
       tabindex="-1"
     >
       <div
-        class="FieldMessage__content"
+        class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard"
       >
         <div
-          class="height__standardText"
-        />
-        <div />
+          class="FieldMessage__content"
+        >
+          <div
+            class="height__standardText"
+          />
+          <div />
+        </div>
       </div>
     </div>
   </div>
@@ -1018,17 +1074,21 @@ exports[`Radio Theme: seekAsia Children when unchecked 1`] = `
     class="Box__root borderColor__standard paddingRight__none paddingLeft__none"
   >
     <div
-      class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard paddingBottom__small"
+      class="Box__root borderColor__standard paddingBottom__small"
       id="id-message"
       tabindex="-1"
     >
       <div
-        class="FieldMessage__content"
+        class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard"
       >
         <div
-          class="height__standardText"
-        />
-        <div />
+          class="FieldMessage__content"
+        >
+          <div
+            class="height__standardText"
+          />
+          <div />
+        </div>
       </div>
     </div>
   </div>
@@ -1089,17 +1149,21 @@ exports[`Radio Theme: seekAsia Unchecked 1`] = `
     class="Box__root borderColor__standard paddingRight__none paddingLeft__none"
   >
     <div
-      class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard paddingBottom__small"
+      class="Box__root borderColor__standard paddingBottom__small"
       id="id-message"
       tabindex="-1"
     >
       <div
-        class="FieldMessage__content"
+        class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard"
       >
         <div
-          class="height__standardText"
-        />
-        <div />
+          class="FieldMessage__content"
+        >
+          <div
+            class="height__standardText"
+          />
+          <div />
+        </div>
       </div>
     </div>
   </div>
@@ -1171,28 +1235,36 @@ exports[`Radio Theme: seekAsia With message 1`] = `
     class="Box__root borderColor__standard paddingRight__none paddingLeft__none"
   >
     <div
-      class="Text__block fontFamily__text color__critical fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard paddingBottom__small"
+      class="Box__root borderColor__standard paddingBottom__small"
       id="id-message"
       tabindex="-1"
     >
       <div
-        class="FieldMessage__content"
+        class="Text__block fontFamily__text color__critical fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard"
       >
         <div
-          class="height__standardText"
-        />
-        <svg
-          class="FieldMessage__icon marginRight__xsmall width__standardText height__standardText fill__critical Box__root borderColor__standard"
-          height="16"
-          viewBox="0 0 512 512"
-          width="16"
+          class="FieldMessage__content"
         >
-          <path
-            d="M489.308 156.341c-12.902-30.484-31.355-57.856-54.861-81.357-23.512-23.501-50.883-41.959-81.377-54.855-31.575-13.353-65.106-20.122-99.65-20.122s-68.066 6.769-99.635 20.122c-30.484 12.902-57.856 31.35-81.357 54.851-23.511 23.501-41.968 50.877-54.865 81.357-13.342 31.575-20.122 65.111-20.122 99.656 0 34.56 6.774 68.080 20.122 99.656 12.902 30.485 31.36 57.856 54.861 81.367s50.877 41.959 81.357 54.856c31.575 13.348 65.096 20.122 99.635 20.122 34.56 0 68.081-6.759 99.656-20.122 30.485-12.902 57.856-31.35 81.372-54.856 23.5-23.5 41.964-50.883 54.861-81.367 13.368-31.58 20.137-65.106 20.137-99.661 0-34.544-6.774-68.076-20.132-99.645zM232.99 371.167h41.334c3.687 0 6.687 2.995 6.687 6.692v41.063c0 3.702-2.995 6.697-6.692 6.697h-41.339c-3.696 0-6.692-2.995-6.692-6.692v-41.063c0-3.702 2.99-6.697 6.686-6.697zM226.304 312.051v-219.587c0-3.697 2.99-6.692 6.686-6.692h41.063c3.707 0 6.707 3 6.707 6.697v219.587c0 3.697-3 6.692-6.707 6.692h-41.063c-3.696 0-6.692-3-6.692-6.692z"
+          <div
+            class="height__standardText"
           />
-        </svg>
-        <div>
-          Message
+          <div
+            class="FieldMessage__icon Box__root borderColor__standard paddingRight__xsmall"
+          >
+            <svg
+              class="width__standardText height__standardText fill__critical Box__root borderColor__standard"
+              height="16"
+              viewBox="0 0 512 512"
+              width="16"
+            >
+              <path
+                d="M489.308 156.341c-12.902-30.484-31.355-57.856-54.861-81.357-23.512-23.501-50.883-41.959-81.377-54.855-31.575-13.353-65.106-20.122-99.65-20.122s-68.066 6.769-99.635 20.122c-30.484 12.902-57.856 31.35-81.357 54.851-23.511 23.501-41.968 50.877-54.865 81.357-13.342 31.575-20.122 65.111-20.122 99.656 0 34.56 6.774 68.080 20.122 99.656 12.902 30.485 31.36 57.856 54.861 81.367s50.877 41.959 81.357 54.856c31.575 13.348 65.096 20.122 99.635 20.122 34.56 0 68.081-6.759 99.656-20.122 30.485-12.902 57.856-31.35 81.372-54.856 23.5-23.5 41.964-50.883 54.861-81.367 13.368-31.58 20.137-65.106 20.137-99.661 0-34.544-6.774-68.076-20.132-99.645zM232.99 371.167h41.334c3.687 0 6.687 2.995 6.687 6.692v41.063c0 3.702-2.995 6.697-6.692 6.697h-41.339c-3.696 0-6.692-2.995-6.692-6.692v-41.063c0-3.702 2.99-6.697 6.686-6.697zM226.304 312.051v-219.587c0-3.697 2.99-6.692 6.686-6.692h41.063c3.707 0 6.707 3 6.707 6.697v219.587c0 3.697-3 6.692-6.707 6.692h-41.063c-3.696 0-6.692-3-6.692-6.692z"
+              />
+            </svg>
+          </div>
+          <div>
+            Message
+          </div>
         </div>
       </div>
     </div>
@@ -1255,17 +1327,21 @@ exports[`Radio Theme: wireframe Checked 1`] = `
     class="Box__root borderColor__standard paddingRight__none paddingLeft__none"
   >
     <div
-      class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard paddingBottom__small"
+      class="Box__root borderColor__standard paddingBottom__small"
       id="id-message"
       tabindex="-1"
     >
       <div
-        class="FieldMessage__content"
+        class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard"
       >
         <div
-          class="height__standardText"
-        />
-        <div />
+          class="FieldMessage__content"
+        >
+          <div
+            class="height__standardText"
+          />
+          <div />
+        </div>
       </div>
     </div>
   </div>
@@ -1337,17 +1413,21 @@ exports[`Radio Theme: wireframe Children when checked 1`] = `
     class="Box__root borderColor__standard paddingRight__none paddingLeft__none"
   >
     <div
-      class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard paddingBottom__small"
+      class="Box__root borderColor__standard paddingBottom__small"
       id="id-message"
       tabindex="-1"
     >
       <div
-        class="FieldMessage__content"
+        class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard"
       >
         <div
-          class="height__standardText"
-        />
-        <div />
+          class="FieldMessage__content"
+        >
+          <div
+            class="height__standardText"
+          />
+          <div />
+        </div>
       </div>
     </div>
   </div>
@@ -1418,17 +1498,21 @@ exports[`Radio Theme: wireframe Children when unchecked 1`] = `
     class="Box__root borderColor__standard paddingRight__none paddingLeft__none"
   >
     <div
-      class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard paddingBottom__small"
+      class="Box__root borderColor__standard paddingBottom__small"
       id="id-message"
       tabindex="-1"
     >
       <div
-        class="FieldMessage__content"
+        class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard"
       >
         <div
-          class="height__standardText"
-        />
-        <div />
+          class="FieldMessage__content"
+        >
+          <div
+            class="height__standardText"
+          />
+          <div />
+        </div>
       </div>
     </div>
   </div>
@@ -1489,17 +1573,21 @@ exports[`Radio Theme: wireframe Unchecked 1`] = `
     class="Box__root borderColor__standard paddingRight__none paddingLeft__none"
   >
     <div
-      class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard paddingBottom__small"
+      class="Box__root borderColor__standard paddingBottom__small"
       id="id-message"
       tabindex="-1"
     >
       <div
-        class="FieldMessage__content"
+        class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard"
       >
         <div
-          class="height__standardText"
-        />
-        <div />
+          class="FieldMessage__content"
+        >
+          <div
+            class="height__standardText"
+          />
+          <div />
+        </div>
       </div>
     </div>
   </div>
@@ -1571,28 +1659,36 @@ exports[`Radio Theme: wireframe With message 1`] = `
     class="Box__root borderColor__standard paddingRight__none paddingLeft__none"
   >
     <div
-      class="Text__block fontFamily__text color__critical fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard paddingBottom__small"
+      class="Box__root borderColor__standard paddingBottom__small"
       id="id-message"
       tabindex="-1"
     >
       <div
-        class="FieldMessage__content"
+        class="Text__block fontFamily__text color__critical fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard"
       >
         <div
-          class="height__standardText"
-        />
-        <svg
-          class="FieldMessage__icon marginRight__xsmall width__standardText height__standardText fill__critical Box__root borderColor__standard"
-          height="16"
-          viewBox="0 0 512 512"
-          width="16"
+          class="FieldMessage__content"
         >
-          <path
-            d="M489.308 156.341c-12.902-30.484-31.355-57.856-54.861-81.357-23.512-23.501-50.883-41.959-81.377-54.855-31.575-13.353-65.106-20.122-99.65-20.122s-68.066 6.769-99.635 20.122c-30.484 12.902-57.856 31.35-81.357 54.851-23.511 23.501-41.968 50.877-54.865 81.357-13.342 31.575-20.122 65.111-20.122 99.656 0 34.56 6.774 68.080 20.122 99.656 12.902 30.485 31.36 57.856 54.861 81.367s50.877 41.959 81.357 54.856c31.575 13.348 65.096 20.122 99.635 20.122 34.56 0 68.081-6.759 99.656-20.122 30.485-12.902 57.856-31.35 81.372-54.856 23.5-23.5 41.964-50.883 54.861-81.367 13.368-31.58 20.137-65.106 20.137-99.661 0-34.544-6.774-68.076-20.132-99.645zM232.99 371.167h41.334c3.687 0 6.687 2.995 6.687 6.692v41.063c0 3.702-2.995 6.697-6.692 6.697h-41.339c-3.696 0-6.692-2.995-6.692-6.692v-41.063c0-3.702 2.99-6.697 6.686-6.697zM226.304 312.051v-219.587c0-3.697 2.99-6.692 6.686-6.692h41.063c3.707 0 6.707 3 6.707 6.697v219.587c0 3.697-3 6.692-6.707 6.692h-41.063c-3.696 0-6.692-3-6.692-6.692z"
+          <div
+            class="height__standardText"
           />
-        </svg>
-        <div>
-          Message
+          <div
+            class="FieldMessage__icon Box__root borderColor__standard paddingRight__xsmall"
+          >
+            <svg
+              class="width__standardText height__standardText fill__critical Box__root borderColor__standard"
+              height="16"
+              viewBox="0 0 512 512"
+              width="16"
+            >
+              <path
+                d="M489.308 156.341c-12.902-30.484-31.355-57.856-54.861-81.357-23.512-23.501-50.883-41.959-81.377-54.855-31.575-13.353-65.106-20.122-99.65-20.122s-68.066 6.769-99.635 20.122c-30.484 12.902-57.856 31.35-81.357 54.851-23.511 23.501-41.968 50.877-54.865 81.357-13.342 31.575-20.122 65.111-20.122 99.656 0 34.56 6.774 68.080 20.122 99.656 12.902 30.485 31.36 57.856 54.861 81.367s50.877 41.959 81.357 54.856c31.575 13.348 65.096 20.122 99.635 20.122 34.56 0 68.081-6.759 99.656-20.122 30.485-12.902 57.856-31.35 81.372-54.856 23.5-23.5 41.964-50.883 54.861-81.367 13.368-31.58 20.137-65.106 20.137-99.661 0-34.544-6.774-68.076-20.132-99.645zM232.99 371.167h41.334c3.687 0 6.687 2.995 6.687 6.692v41.063c0 3.702-2.995 6.697-6.692 6.697h-41.339c-3.696 0-6.692-2.995-6.692-6.692v-41.063c0-3.702 2.99-6.697 6.686-6.697zM226.304 312.051v-219.587c0-3.697 2.99-6.692 6.686-6.692h41.063c3.707 0 6.707 3 6.707 6.697v219.587c0 3.697-3 6.692-6.707 6.692h-41.063c-3.696 0-6.692-3-6.692-6.692z"
+              />
+            </svg>
+          </div>
+          <div>
+            Message
+          </div>
         </div>
       </div>
     </div>

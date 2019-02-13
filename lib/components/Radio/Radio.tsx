@@ -1,6 +1,5 @@
 import React, { Component, ReactNode, AllHTMLAttributes } from 'react';
 import classnames from 'classnames';
-import { Omit } from 'utility-types';
 import ThemeConsumer from '../ThemeConsumer/ThemeConsumer';
 import getCheckboxRadioSize from '../private/getCheckboxRadioSize';
 import Box from '../Box/Box';
@@ -21,19 +20,16 @@ const textColorForState = (disabled: boolean, hovered: boolean) => {
   return 'neutral';
 };
 
+type InputProps = AllHTMLAttributes<HTMLInputElement>;
+type RequiredInputProps = 'id' | 'checked' | 'onChange';
+type OptionalInputProps = 'disabled' | 'children';
 export interface RadioProps
-  extends Omit<AllHTMLAttributes<HTMLElement>, 'label'> {
+  extends Required<Pick<InputProps, RequiredInputProps>>,
+    Pick<InputProps, OptionalInputProps> {
   variant?: 'default' | 'inChecklistCard';
-  id: string;
-  checked: boolean;
   label: ReactNode;
-  disabled?: boolean;
-  inputProps?: object;
-  labelProps?: object;
   tone?: 'neutral' | 'critical' | 'positive';
   message?: ReactNode | false;
-  messageProps?: object;
-  children?: ReactNode;
 }
 
 interface State {
@@ -72,15 +68,9 @@ export default class Radio extends Component<RadioProps, State> {
             label,
             checked,
             disabled = false,
-            className,
-            style,
-            inputProps,
-            labelProps,
             tone = 'neutral',
             message,
-            messageProps,
-            children,
-            ...restProps
+            children
           } = this.props;
 
           const { hovered } = this.state;
@@ -91,12 +81,11 @@ export default class Radio extends Component<RadioProps, State> {
 
           return (
             <div
-              className={classnames(className, {
+              className={classnames({
                 [theme.atoms.paddingBottom.xsmall]: inChecklistCard,
                 [theme.atoms.backgroundColor.selection]:
                   inChecklistCard && (checked || hovered) && !disabled
               })}
-              style={style}
             >
               <input
                 className={styles.realRadio}
@@ -105,8 +94,6 @@ export default class Radio extends Component<RadioProps, State> {
                 checked={checked}
                 disabled={disabled}
                 aria-describedby={fieldMessageId}
-                {...restProps}
-                {...inputProps}
               />
               <div className={styles.content}>
                 <Box
@@ -128,7 +115,6 @@ export default class Radio extends Component<RadioProps, State> {
                     )
                   }}
                   htmlFor={id}
-                  {...labelProps}
                   onMouseOver={this.handleMouseOver}
                   onMouseOut={this.handleMouseOut}
                 >
@@ -227,7 +213,6 @@ export default class Radio extends Component<RadioProps, State> {
                     id={fieldMessageId}
                     tone={tone}
                     message={message}
-                    {...messageProps}
                   />
                 </Box>
               ) : null}
