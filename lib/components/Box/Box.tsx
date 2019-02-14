@@ -9,7 +9,8 @@ import {
   BorderWidthVariants,
   BorderRadiusVariants,
   BackgroundColorVariants,
-  BorderColorVariants
+  BorderColorVariants,
+  DisplayVariants
 } from '../../themes/theme';
 
 export interface BoxProps extends ResetProps {
@@ -25,6 +26,7 @@ export interface BoxProps extends ResetProps {
   borderRadius?: BorderRadiusVariants;
   backgroundColor?: BackgroundColorVariants;
   borderColor?: BorderColorVariants;
+  display?: DisplayVariants;
 }
 
 export default class Box extends Component<BoxProps> {
@@ -44,6 +46,7 @@ export default class Box extends Component<BoxProps> {
       borderRadius,
       backgroundColor,
       borderColor = 'standard',
+      display,
       className,
       ...restProps
     } = this.props;
@@ -55,6 +58,7 @@ export default class Box extends Component<BoxProps> {
             className={classnames(
               className,
               styles.root,
+              theme.atoms.display[display!],
               theme.atoms.backgroundColor[backgroundColor!],
               theme.atoms.borderColor[borderColor!],
               theme.atoms.borderWidth[borderWidth!],

@@ -22,6 +22,7 @@ export { default as ChecklistCard } from './ChecklistCard/ChecklistCard';
 export { default as ChevronIcon } from './icons/ChevronIcon/ChevronIcon';
 export { default as ErrorIcon } from './icons/ErrorIcon/ErrorIcon';
 export { default as InfoIcon } from './icons/InfoIcon/InfoIcon';
+export { default as Columns } from './Columns/Columns';
 export {
   default as TickCircleIcon
 } from './icons/TickCircleIcon/TickCircleIcon';

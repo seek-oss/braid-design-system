@@ -11,6 +11,7 @@ export { default as borderRadius } from './border/borderRadius.css.js';
 export { default as borderWidth } from './border/borderWidth.css.js';
 export { default as boxShadow } from './boxShadow.css.js';
 export { default as color } from './color.css.js';
+export { default as display } from './display.css.js';
 export { default as fill } from './fill.css.js';
 export { default as fontFamily } from './font/fontFamily.css.js';
 export { default as fontWeight } from './font/fontWeight.css.js';
