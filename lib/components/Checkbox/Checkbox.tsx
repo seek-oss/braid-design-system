@@ -1,5 +1,6 @@
 import React, { Component, ReactNode, AllHTMLAttributes } from 'react';
 import classnames from 'classnames';
+import { Omit } from 'utility-types';
 import ThemeConsumer from '../ThemeConsumer/ThemeConsumer';
 import getCheckboxRadioSize from '../private/getCheckboxRadioSize';
 import Box from '../Box/Box';
@@ -31,6 +32,7 @@ export interface CheckboxProps
   label: ReactNode;
   tone?: 'neutral' | 'critical' | 'positive';
   message?: ReactNode | false;
+  children?: ReactNode;
 }
 
 interface State {
@@ -80,12 +82,16 @@ export default class Checkbox extends Component<CheckboxProps, State> {
           const checkboxSize = getCheckboxRadioSize(theme);
 
           return (
-            <div
-              className={classnames({
-                [theme.atoms.paddingBottom.xsmall]: inChecklistCard,
-                [theme.atoms.backgroundColor.selection]:
-                  inChecklistCard && (checked || hovered) && !disabled
-              })}
+            <Box
+              {...(inChecklistCard && tone === 'critical'
+                ? { borderWidth: 'standard', borderColor: 'critical' }
+                : {})}
+              backgroundColor={
+                inChecklistCard && (checked || hovered) && !disabled
+                  ? 'selection'
+                  : undefined
+              }
+              paddingBottom={inChecklistCard ? 'xsmall' : undefined}
             >
               <input
                 className={styles.realCheckbox}
@@ -180,19 +186,21 @@ export default class Checkbox extends Component<CheckboxProps, State> {
                         theme.atoms.transition.fast
                       )}
                     />
-                    <Box
-                      borderColor="critical"
-                      borderWidth="standard"
-                      style={{
-                        opacity: tone === 'critical' ? 1 : 0
-                      }}
-                      className={classnames(
-                        styles.checkbox,
-                        styles.checkboxCritical,
-                        theme.atoms.borderRadius.standard,
-                        theme.atoms.transition.fast
-                      )}
-                    />
+                    {!inChecklistCard ? (
+                      <Box
+                        borderColor="critical"
+                        borderWidth="standard"
+                        style={{
+                          opacity: tone === 'critical' ? 1 : 0
+                        }}
+                        className={classnames(
+                          styles.checkbox,
+                          styles.checkboxCritical,
+                          theme.atoms.borderRadius.standard,
+                          theme.atoms.transition.fast
+                        )}
+                      />
+                    ) : null}
                     <Box
                       className={classnames(
                         styles.checkboxIcon,
@@ -238,7 +246,7 @@ export default class Checkbox extends Component<CheckboxProps, State> {
                   />
                 </Box>
               ) : null}
-            </div>
+            </Box>
           );
         }}
       </ThemeConsumer>

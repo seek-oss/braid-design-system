@@ -80,12 +80,16 @@ export default class Radio extends Component<RadioProps, State> {
           const radioSize = getCheckboxRadioSize(theme);
 
           return (
-            <div
-              className={classnames({
-                [theme.atoms.paddingBottom.xsmall]: inChecklistCard,
-                [theme.atoms.backgroundColor.selection]:
-                  inChecklistCard && (checked || hovered) && !disabled
-              })}
+            <Box
+              {...(inChecklistCard && tone === 'critical'
+                ? { borderWidth: 'standard', borderColor: 'critical' }
+                : {})}
+              backgroundColor={
+                inChecklistCard && (checked || hovered) && !disabled
+                  ? 'selection'
+                  : undefined
+              }
+              paddingBottom={inChecklistCard ? 'xsmall' : undefined}
             >
               <input
                 className={styles.realRadio}
@@ -161,16 +165,18 @@ export default class Radio extends Component<RadioProps, State> {
                         theme.atoms.transition.fast
                       )}
                     />
-                    <Box
-                      borderColor="critical"
-                      borderWidth="standard"
-                      style={{ opacity: tone === 'critical' ? 1 : 0 }}
-                      className={classnames(
-                        styles.radio,
-                        styles.radioCritical,
-                        theme.atoms.transition.fast
-                      )}
-                    />
+                    {!inChecklistCard ? (
+                      <Box
+                        borderColor="critical"
+                        borderWidth="standard"
+                        style={{ opacity: tone === 'critical' ? 1 : 0 }}
+                        className={classnames(
+                          styles.radio,
+                          styles.radioCritical,
+                          theme.atoms.transition.fast
+                        )}
+                      />
+                    ) : null}
                     <Box
                       backgroundColor={
                         disabled ? 'formAccentDisabled' : 'formAccent'
@@ -216,7 +222,7 @@ export default class Radio extends Component<RadioProps, State> {
                   />
                 </Box>
               ) : null}
-            </div>
+            </Box>
           );
         }}
       </ThemeConsumer>

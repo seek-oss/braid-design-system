@@ -5,7 +5,7 @@ exports[`ChecklistCard Theme: jobStreet Default 1`] = `
   class="Box__root backgroundColor__card borderColor__standard marginBottom__medium"
 >
   <div
-    class="paddingBottom__xsmall"
+    class="Box__root borderColor__standard paddingBottom__xsmall"
   >
     <input
       aria-describedby="1-message"
@@ -39,10 +39,6 @@ exports[`ChecklistCard Theme: jobStreet Default 1`] = `
           />
           <div
             class="Checkbox__checkbox Checkbox__checkboxDisabled borderRadius__standard transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
-          />
-          <div
-            class="Checkbox__checkbox Checkbox__checkboxCritical borderRadius__standard transition__fast Box__root borderColor__critical borderWidth__standard"
-            style="opacity: 0;"
           />
           <div
             class="Checkbox__checkboxIcon transition__fast Box__root borderColor__standard"
@@ -97,7 +93,7 @@ exports[`ChecklistCard Theme: jobStreet Default 1`] = `
     />
   </div>
   <div
-    class="paddingBottom__xsmall"
+    class="Box__root borderColor__standard paddingBottom__xsmall"
   >
     <input
       aria-describedby="2-message"
@@ -131,10 +127,6 @@ exports[`ChecklistCard Theme: jobStreet Default 1`] = `
           />
           <div
             class="Checkbox__checkbox Checkbox__checkboxDisabled borderRadius__standard transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
-          />
-          <div
-            class="Checkbox__checkbox Checkbox__checkboxCritical borderRadius__standard transition__fast Box__root borderColor__critical borderWidth__standard"
-            style="opacity: 0;"
           />
           <div
             class="Checkbox__checkboxIcon transition__fast Box__root borderColor__standard"
@@ -189,7 +181,7 @@ exports[`ChecklistCard Theme: jobStreet Default 1`] = `
     />
   </div>
   <div
-    class="paddingBottom__xsmall"
+    class="Box__root borderColor__standard paddingBottom__xsmall"
   >
     <input
       aria-describedby="3-message"
@@ -223,10 +215,6 @@ exports[`ChecklistCard Theme: jobStreet Default 1`] = `
           />
           <div
             class="Checkbox__checkbox Checkbox__checkboxDisabled borderRadius__standard transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
-          />
-          <div
-            class="Checkbox__checkbox Checkbox__checkboxCritical borderRadius__standard transition__fast Box__root borderColor__critical borderWidth__standard"
-            style="opacity: 0;"
           />
           <div
             class="Checkbox__checkboxIcon transition__fast Box__root borderColor__standard"
@@ -281,7 +269,7 @@ exports[`ChecklistCard Theme: seekAnz Default 1`] = `
   class="Box__root backgroundColor__card borderColor__standard marginBottom__medium"
 >
   <div
-    class="paddingBottom__xsmall"
+    class="Box__root borderColor__standard paddingBottom__xsmall"
   >
     <input
       aria-describedby="1-message"
@@ -315,10 +303,6 @@ exports[`ChecklistCard Theme: seekAnz Default 1`] = `
           />
           <div
             class="Checkbox__checkbox Checkbox__checkboxDisabled borderRadius__standard transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
-          />
-          <div
-            class="Checkbox__checkbox Checkbox__checkboxCritical borderRadius__standard transition__fast Box__root borderColor__critical borderWidth__standard"
-            style="opacity: 0;"
           />
           <div
             class="Checkbox__checkboxIcon transition__fast Box__root borderColor__standard"
@@ -373,7 +357,7 @@ exports[`ChecklistCard Theme: seekAnz Default 1`] = `
     />
   </div>
   <div
-    class="paddingBottom__xsmall"
+    class="Box__root borderColor__standard paddingBottom__xsmall"
   >
     <input
       aria-describedby="2-message"
@@ -407,10 +391,6 @@ exports[`ChecklistCard Theme: seekAnz Default 1`] = `
           />
           <div
             class="Checkbox__checkbox Checkbox__checkboxDisabled borderRadius__standard transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
-          />
-          <div
-            class="Checkbox__checkbox Checkbox__checkboxCritical borderRadius__standard transition__fast Box__root borderColor__critical borderWidth__standard"
-            style="opacity: 0;"
           />
           <div
             class="Checkbox__checkboxIcon transition__fast Box__root borderColor__standard"
@@ -465,7 +445,7 @@ exports[`ChecklistCard Theme: seekAnz Default 1`] = `
     />
   </div>
   <div
-    class="paddingBottom__xsmall"
+    class="Box__root borderColor__standard paddingBottom__xsmall"
   >
     <input
       aria-describedby="3-message"
@@ -499,10 +479,6 @@ exports[`ChecklistCard Theme: seekAnz Default 1`] = `
           />
           <div
             class="Checkbox__checkbox Checkbox__checkboxDisabled borderRadius__standard transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
-          />
-          <div
-            class="Checkbox__checkbox Checkbox__checkboxCritical borderRadius__standard transition__fast Box__root borderColor__critical borderWidth__standard"
-            style="opacity: 0;"
           />
           <div
             class="Checkbox__checkboxIcon transition__fast Box__root borderColor__standard"
@@ -557,7 +533,7 @@ exports[`ChecklistCard Theme: seekAsia Default 1`] = `
   class="Box__root backgroundColor__card borderColor__standard marginBottom__medium"
 >
   <div
-    class="paddingBottom__xsmall"
+    class="Box__root borderColor__standard paddingBottom__xsmall"
   >
     <input
       aria-describedby="1-message"
@@ -591,10 +567,6 @@ exports[`ChecklistCard Theme: seekAsia Default 1`] = `
           />
           <div
             class="Checkbox__checkbox Checkbox__checkboxDisabled borderRadius__standard transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
-          />
-          <div
-            class="Checkbox__checkbox Checkbox__checkboxCritical borderRadius__standard transition__fast Box__root borderColor__critical borderWidth__standard"
-            style="opacity: 0;"
           />
           <div
             class="Checkbox__checkboxIcon transition__fast Box__root borderColor__standard"
@@ -649,7 +621,7 @@ exports[`ChecklistCard Theme: seekAsia Default 1`] = `
     />
   </div>
   <div
-    class="paddingBottom__xsmall"
+    class="Box__root borderColor__standard paddingBottom__xsmall"
   >
     <input
       aria-describedby="2-message"
@@ -683,10 +655,6 @@ exports[`ChecklistCard Theme: seekAsia Default 1`] = `
           />
           <div
             class="Checkbox__checkbox Checkbox__checkboxDisabled borderRadius__standard transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
-          />
-          <div
-            class="Checkbox__checkbox Checkbox__checkboxCritical borderRadius__standard transition__fast Box__root borderColor__critical borderWidth__standard"
-            style="opacity: 0;"
           />
           <div
             class="Checkbox__checkboxIcon transition__fast Box__root borderColor__standard"
@@ -741,7 +709,7 @@ exports[`ChecklistCard Theme: seekAsia Default 1`] = `
     />
   </div>
   <div
-    class="paddingBottom__xsmall"
+    class="Box__root borderColor__standard paddingBottom__xsmall"
   >
     <input
       aria-describedby="3-message"
@@ -775,10 +743,6 @@ exports[`ChecklistCard Theme: seekAsia Default 1`] = `
           />
           <div
             class="Checkbox__checkbox Checkbox__checkboxDisabled borderRadius__standard transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
-          />
-          <div
-            class="Checkbox__checkbox Checkbox__checkboxCritical borderRadius__standard transition__fast Box__root borderColor__critical borderWidth__standard"
-            style="opacity: 0;"
           />
           <div
             class="Checkbox__checkboxIcon transition__fast Box__root borderColor__standard"
@@ -833,7 +797,7 @@ exports[`ChecklistCard Theme: wireframe Default 1`] = `
   class="Box__root backgroundColor__card borderColor__standard marginBottom__medium"
 >
   <div
-    class="paddingBottom__xsmall"
+    class="Box__root borderColor__standard paddingBottom__xsmall"
   >
     <input
       aria-describedby="1-message"
@@ -867,10 +831,6 @@ exports[`ChecklistCard Theme: wireframe Default 1`] = `
           />
           <div
             class="Checkbox__checkbox Checkbox__checkboxDisabled borderRadius__standard transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
-          />
-          <div
-            class="Checkbox__checkbox Checkbox__checkboxCritical borderRadius__standard transition__fast Box__root borderColor__critical borderWidth__standard"
-            style="opacity: 0;"
           />
           <div
             class="Checkbox__checkboxIcon transition__fast Box__root borderColor__standard"
@@ -925,7 +885,7 @@ exports[`ChecklistCard Theme: wireframe Default 1`] = `
     />
   </div>
   <div
-    class="paddingBottom__xsmall"
+    class="Box__root borderColor__standard paddingBottom__xsmall"
   >
     <input
       aria-describedby="2-message"
@@ -959,10 +919,6 @@ exports[`ChecklistCard Theme: wireframe Default 1`] = `
           />
           <div
             class="Checkbox__checkbox Checkbox__checkboxDisabled borderRadius__standard transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
-          />
-          <div
-            class="Checkbox__checkbox Checkbox__checkboxCritical borderRadius__standard transition__fast Box__root borderColor__critical borderWidth__standard"
-            style="opacity: 0;"
           />
           <div
             class="Checkbox__checkboxIcon transition__fast Box__root borderColor__standard"
@@ -1017,7 +973,7 @@ exports[`ChecklistCard Theme: wireframe Default 1`] = `
     />
   </div>
   <div
-    class="paddingBottom__xsmall"
+    class="Box__root borderColor__standard paddingBottom__xsmall"
   >
     <input
       aria-describedby="3-message"
@@ -1051,10 +1007,6 @@ exports[`ChecklistCard Theme: wireframe Default 1`] = `
           />
           <div
             class="Checkbox__checkbox Checkbox__checkboxDisabled borderRadius__standard transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
-          />
-          <div
-            class="Checkbox__checkbox Checkbox__checkboxCritical borderRadius__standard transition__fast Box__root borderColor__critical borderWidth__standard"
-            style="opacity: 0;"
           />
           <div
             class="Checkbox__checkboxIcon transition__fast Box__root borderColor__standard"
