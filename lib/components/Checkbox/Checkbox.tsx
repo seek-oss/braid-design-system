@@ -1,6 +1,5 @@
 import React, { Component, ReactNode, AllHTMLAttributes } from 'react';
 import classnames from 'classnames';
-import { Omit } from 'utility-types';
 import ThemeConsumer from '../ThemeConsumer/ThemeConsumer';
 import getCheckboxRadioSize from '../private/getCheckboxRadioSize';
 import Box from '../Box/Box';
