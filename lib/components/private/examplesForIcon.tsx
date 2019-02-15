@@ -21,11 +21,7 @@ export default (Icon: ComponentType<Omit<IconProps, 'svgComponent'>>) => {
       label: 'Standard Inline',
       render: () => (
         <Text>
-          Standard
-          <Box marginLeft="xsmall" marginRight="xsmall">
-            <Icon inline />
-          </Box>
-          text
+          Standard <Icon inline /> text
         </Text>
       )
     },
@@ -46,11 +42,7 @@ export default (Icon: ComponentType<Omit<IconProps, 'svgComponent'>>) => {
       label: 'Large Inline',
       render: () => (
         <Text size="large">
-          Large
-          <Box marginLeft="xsmall" marginRight="xsmall">
-            <Icon size="large" inline />
-          </Box>
-          text
+          Large <Icon size="large" inline /> text
         </Text>
       )
     }

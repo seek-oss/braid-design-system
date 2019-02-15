@@ -2,7 +2,7 @@
 
 exports[`InfoIcon Theme: jobStreet Default 1`] = `
 <svg
-  class="Icon__root width__standardText height__standardText Box__root borderColor__standard"
+  class="width__standardText height__standardText Icon__block Box__root borderColor__standard"
   height="16"
   viewBox="0 0 30 30"
   width="16"
@@ -23,7 +23,7 @@ exports[`InfoIcon Theme: jobStreet Default 1`] = `
 
 exports[`InfoIcon Theme: jobStreet Inline 1`] = `
 <svg
-  class="Icon__root width__standardTextInline height__standardTextInline Icon__inline Box__root borderColor__standard"
+  class="width__standardTextInline height__standardTextInline Icon__inline Box__root borderColor__standard"
   height="16"
   viewBox="0 0 30 30"
   width="16"
@@ -44,7 +44,7 @@ exports[`InfoIcon Theme: jobStreet Inline 1`] = `
 
 exports[`InfoIcon Theme: jobStreet Sized 1`] = `
 <svg
-  class="Icon__root width__largeText height__largeText Box__root borderColor__standard"
+  class="width__largeText height__largeText Icon__block Box__root borderColor__standard"
   height="16"
   viewBox="0 0 30 30"
   width="16"
@@ -65,7 +65,7 @@ exports[`InfoIcon Theme: jobStreet Sized 1`] = `
 
 exports[`InfoIcon Theme: seekAnz Default 1`] = `
 <svg
-  class="Icon__root width__standardText height__standardText Box__root borderColor__standard"
+  class="width__standardText height__standardText Icon__block Box__root borderColor__standard"
   height="16"
   viewBox="0 0 30 30"
   width="16"
@@ -86,7 +86,7 @@ exports[`InfoIcon Theme: seekAnz Default 1`] = `
 
 exports[`InfoIcon Theme: seekAnz Inline 1`] = `
 <svg
-  class="Icon__root width__standardTextInline height__standardTextInline Icon__inline Box__root borderColor__standard"
+  class="width__standardTextInline height__standardTextInline Icon__inline Box__root borderColor__standard"
   height="16"
   viewBox="0 0 30 30"
   width="16"
@@ -107,7 +107,7 @@ exports[`InfoIcon Theme: seekAnz Inline 1`] = `
 
 exports[`InfoIcon Theme: seekAnz Sized 1`] = `
 <svg
-  class="Icon__root width__largeText height__largeText Box__root borderColor__standard"
+  class="width__largeText height__largeText Icon__block Box__root borderColor__standard"
   height="16"
   viewBox="0 0 30 30"
   width="16"
@@ -128,7 +128,7 @@ exports[`InfoIcon Theme: seekAnz Sized 1`] = `
 
 exports[`InfoIcon Theme: seekAsia Default 1`] = `
 <svg
-  class="Icon__root width__standardText height__standardText Box__root borderColor__standard"
+  class="width__standardText height__standardText Icon__block Box__root borderColor__standard"
   height="16"
   viewBox="0 0 30 30"
   width="16"
@@ -149,7 +149,7 @@ exports[`InfoIcon Theme: seekAsia Default 1`] = `
 
 exports[`InfoIcon Theme: seekAsia Inline 1`] = `
 <svg
-  class="Icon__root width__standardTextInline height__standardTextInline Icon__inline Box__root borderColor__standard"
+  class="width__standardTextInline height__standardTextInline Icon__inline Box__root borderColor__standard"
   height="16"
   viewBox="0 0 30 30"
   width="16"
@@ -170,7 +170,7 @@ exports[`InfoIcon Theme: seekAsia Inline 1`] = `
 
 exports[`InfoIcon Theme: seekAsia Sized 1`] = `
 <svg
-  class="Icon__root width__largeText height__largeText Box__root borderColor__standard"
+  class="width__largeText height__largeText Icon__block Box__root borderColor__standard"
   height="16"
   viewBox="0 0 30 30"
   width="16"
@@ -191,7 +191,7 @@ exports[`InfoIcon Theme: seekAsia Sized 1`] = `
 
 exports[`InfoIcon Theme: wireframe Default 1`] = `
 <svg
-  class="Icon__root width__standardText height__standardText Box__root borderColor__standard"
+  class="width__standardText height__standardText Icon__block Box__root borderColor__standard"
   height="16"
   viewBox="0 0 30 30"
   width="16"
@@ -212,7 +212,7 @@ exports[`InfoIcon Theme: wireframe Default 1`] = `
 
 exports[`InfoIcon Theme: wireframe Inline 1`] = `
 <svg
-  class="Icon__root width__standardTextInline height__standardTextInline Icon__inline Box__root borderColor__standard"
+  class="width__standardTextInline height__standardTextInline Icon__inline Box__root borderColor__standard"
   height="16"
   viewBox="0 0 30 30"
   width="16"
@@ -233,7 +233,7 @@ exports[`InfoIcon Theme: wireframe Inline 1`] = `
 
 exports[`InfoIcon Theme: wireframe Sized 1`] = `
 <svg
-  class="Icon__root width__largeText height__largeText Box__root borderColor__standard"
+  class="width__largeText height__largeText Icon__block Box__root borderColor__standard"
   height="16"
   viewBox="0 0 30 30"
   width="16"

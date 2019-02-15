@@ -46,7 +46,7 @@ exports[`Checkbox Theme: jobStreet Checked 1`] = `
           class="Checkbox__checkboxIcon transition__fast Box__root borderColor__standard"
         >
           <svg
-            class="Icon__root fill__white Icon__fillSize Box__root borderColor__standard"
+            class="fill__white Icon__fillSize Icon__block Box__root borderColor__standard"
             height="16"
             viewBox="90.471 302.809 823 823"
             width="16"
@@ -135,7 +135,7 @@ exports[`Checkbox Theme: jobStreet Children when checked 1`] = `
           class="Checkbox__checkboxIcon transition__fast Box__root borderColor__standard"
         >
           <svg
-            class="Icon__root fill__white Icon__fillSize Box__root borderColor__standard"
+            class="fill__white Icon__fillSize Icon__block Box__root borderColor__standard"
             height="16"
             viewBox="90.471 302.809 823 823"
             width="16"
@@ -233,7 +233,7 @@ exports[`Checkbox Theme: jobStreet Children when unchecked 1`] = `
           class="Checkbox__checkboxIcon transition__fast Box__root borderColor__standard"
         >
           <svg
-            class="Icon__root fill__white Icon__fillSize Box__root borderColor__standard"
+            class="fill__white Icon__fillSize Icon__block Box__root borderColor__standard"
             height="16"
             viewBox="90.471 302.809 823 823"
             width="16"
@@ -331,7 +331,7 @@ exports[`Checkbox Theme: jobStreet Unchecked 1`] = `
           class="Checkbox__checkboxIcon transition__fast Box__root borderColor__standard"
         >
           <svg
-            class="Icon__root fill__white Icon__fillSize Box__root borderColor__standard"
+            class="fill__white Icon__fillSize Icon__block Box__root borderColor__standard"
             height="16"
             viewBox="90.471 302.809 823 823"
             width="16"
@@ -420,7 +420,7 @@ exports[`Checkbox Theme: jobStreet With message 1`] = `
           class="Checkbox__checkboxIcon transition__fast Box__root borderColor__standard"
         >
           <svg
-            class="Icon__root fill__white Icon__fillSize Box__root borderColor__standard"
+            class="fill__white Icon__fillSize Icon__block Box__root borderColor__standard"
             height="16"
             viewBox="90.471 302.809 823 823"
             width="16"
@@ -469,7 +469,7 @@ exports[`Checkbox Theme: jobStreet With message 1`] = `
             class="FieldMessage__icon Box__root borderColor__standard paddingRight__xsmall"
           >
             <svg
-              class="Icon__root width__standardText height__standardText fill__critical Box__root borderColor__standard"
+              class="width__standardText height__standardText fill__critical Icon__block Box__root borderColor__standard"
               height="16"
               viewBox="0 0 512 512"
               width="16"
@@ -535,7 +535,7 @@ exports[`Checkbox Theme: seekAnz Checked 1`] = `
           class="Checkbox__checkboxIcon transition__fast Box__root borderColor__standard"
         >
           <svg
-            class="Icon__root fill__white Icon__fillSize Box__root borderColor__standard"
+            class="fill__white Icon__fillSize Icon__block Box__root borderColor__standard"
             height="16"
             viewBox="90.471 302.809 823 823"
             width="16"
@@ -624,7 +624,7 @@ exports[`Checkbox Theme: seekAnz Children when checked 1`] = `
           class="Checkbox__checkboxIcon transition__fast Box__root borderColor__standard"
         >
           <svg
-            class="Icon__root fill__white Icon__fillSize Box__root borderColor__standard"
+            class="fill__white Icon__fillSize Icon__block Box__root borderColor__standard"
             height="16"
             viewBox="90.471 302.809 823 823"
             width="16"
@@ -722,7 +722,7 @@ exports[`Checkbox Theme: seekAnz Children when unchecked 1`] = `
           class="Checkbox__checkboxIcon transition__fast Box__root borderColor__standard"
         >
           <svg
-            class="Icon__root fill__white Icon__fillSize Box__root borderColor__standard"
+            class="fill__white Icon__fillSize Icon__block Box__root borderColor__standard"
             height="16"
             viewBox="90.471 302.809 823 823"
             width="16"
@@ -820,7 +820,7 @@ exports[`Checkbox Theme: seekAnz Unchecked 1`] = `
           class="Checkbox__checkboxIcon transition__fast Box__root borderColor__standard"
         >
           <svg
-            class="Icon__root fill__white Icon__fillSize Box__root borderColor__standard"
+            class="fill__white Icon__fillSize Icon__block Box__root borderColor__standard"
             height="16"
             viewBox="90.471 302.809 823 823"
             width="16"
@@ -909,7 +909,7 @@ exports[`Checkbox Theme: seekAnz With message 1`] = `
           class="Checkbox__checkboxIcon transition__fast Box__root borderColor__standard"
         >
           <svg
-            class="Icon__root fill__white Icon__fillSize Box__root borderColor__standard"
+            class="fill__white Icon__fillSize Icon__block Box__root borderColor__standard"
             height="16"
             viewBox="90.471 302.809 823 823"
             width="16"
@@ -958,7 +958,7 @@ exports[`Checkbox Theme: seekAnz With message 1`] = `
             class="FieldMessage__icon Box__root borderColor__standard paddingRight__xsmall"
           >
             <svg
-              class="Icon__root width__standardText height__standardText fill__critical Box__root borderColor__standard"
+              class="width__standardText height__standardText fill__critical Icon__block Box__root borderColor__standard"
               height="16"
               viewBox="0 0 512 512"
               width="16"
@@ -1024,7 +1024,7 @@ exports[`Checkbox Theme: seekAsia Checked 1`] = `
           class="Checkbox__checkboxIcon transition__fast Box__root borderColor__standard"
         >
           <svg
-            class="Icon__root fill__white Icon__fillSize Box__root borderColor__standard"
+            class="fill__white Icon__fillSize Icon__block Box__root borderColor__standard"
             height="16"
             viewBox="90.471 302.809 823 823"
             width="16"
@@ -1113,7 +1113,7 @@ exports[`Checkbox Theme: seekAsia Children when checked 1`] = `
           class="Checkbox__checkboxIcon transition__fast Box__root borderColor__standard"
         >
           <svg
-            class="Icon__root fill__white Icon__fillSize Box__root borderColor__standard"
+            class="fill__white Icon__fillSize Icon__block Box__root borderColor__standard"
             height="16"
             viewBox="90.471 302.809 823 823"
             width="16"
@@ -1211,7 +1211,7 @@ exports[`Checkbox Theme: seekAsia Children when unchecked 1`] = `
           class="Checkbox__checkboxIcon transition__fast Box__root borderColor__standard"
         >
           <svg
-            class="Icon__root fill__white Icon__fillSize Box__root borderColor__standard"
+            class="fill__white Icon__fillSize Icon__block Box__root borderColor__standard"
             height="16"
             viewBox="90.471 302.809 823 823"
             width="16"
@@ -1309,7 +1309,7 @@ exports[`Checkbox Theme: seekAsia Unchecked 1`] = `
           class="Checkbox__checkboxIcon transition__fast Box__root borderColor__standard"
         >
           <svg
-            class="Icon__root fill__white Icon__fillSize Box__root borderColor__standard"
+            class="fill__white Icon__fillSize Icon__block Box__root borderColor__standard"
             height="16"
             viewBox="90.471 302.809 823 823"
             width="16"
@@ -1398,7 +1398,7 @@ exports[`Checkbox Theme: seekAsia With message 1`] = `
           class="Checkbox__checkboxIcon transition__fast Box__root borderColor__standard"
         >
           <svg
-            class="Icon__root fill__white Icon__fillSize Box__root borderColor__standard"
+            class="fill__white Icon__fillSize Icon__block Box__root borderColor__standard"
             height="16"
             viewBox="90.471 302.809 823 823"
             width="16"
@@ -1447,7 +1447,7 @@ exports[`Checkbox Theme: seekAsia With message 1`] = `
             class="FieldMessage__icon Box__root borderColor__standard paddingRight__xsmall"
           >
             <svg
-              class="Icon__root width__standardText height__standardText fill__critical Box__root borderColor__standard"
+              class="width__standardText height__standardText fill__critical Icon__block Box__root borderColor__standard"
               height="16"
               viewBox="0 0 512 512"
               width="16"
@@ -1513,7 +1513,7 @@ exports[`Checkbox Theme: wireframe Checked 1`] = `
           class="Checkbox__checkboxIcon transition__fast Box__root borderColor__standard"
         >
           <svg
-            class="Icon__root fill__white Icon__fillSize Box__root borderColor__standard"
+            class="fill__white Icon__fillSize Icon__block Box__root borderColor__standard"
             height="16"
             viewBox="90.471 302.809 823 823"
             width="16"
@@ -1602,7 +1602,7 @@ exports[`Checkbox Theme: wireframe Children when checked 1`] = `
           class="Checkbox__checkboxIcon transition__fast Box__root borderColor__standard"
         >
           <svg
-            class="Icon__root fill__white Icon__fillSize Box__root borderColor__standard"
+            class="fill__white Icon__fillSize Icon__block Box__root borderColor__standard"
             height="16"
             viewBox="90.471 302.809 823 823"
             width="16"
@@ -1700,7 +1700,7 @@ exports[`Checkbox Theme: wireframe Children when unchecked 1`] = `
           class="Checkbox__checkboxIcon transition__fast Box__root borderColor__standard"
         >
           <svg
-            class="Icon__root fill__white Icon__fillSize Box__root borderColor__standard"
+            class="fill__white Icon__fillSize Icon__block Box__root borderColor__standard"
             height="16"
             viewBox="90.471 302.809 823 823"
             width="16"
@@ -1798,7 +1798,7 @@ exports[`Checkbox Theme: wireframe Unchecked 1`] = `
           class="Checkbox__checkboxIcon transition__fast Box__root borderColor__standard"
         >
           <svg
-            class="Icon__root fill__white Icon__fillSize Box__root borderColor__standard"
+            class="fill__white Icon__fillSize Icon__block Box__root borderColor__standard"
             height="16"
             viewBox="90.471 302.809 823 823"
             width="16"
@@ -1887,7 +1887,7 @@ exports[`Checkbox Theme: wireframe With message 1`] = `
           class="Checkbox__checkboxIcon transition__fast Box__root borderColor__standard"
         >
           <svg
-            class="Icon__root fill__white Icon__fillSize Box__root borderColor__standard"
+            class="fill__white Icon__fillSize Icon__block Box__root borderColor__standard"
             height="16"
             viewBox="90.471 302.809 823 823"
             width="16"
@@ -1936,7 +1936,7 @@ exports[`Checkbox Theme: wireframe With message 1`] = `
             class="FieldMessage__icon Box__root borderColor__standard paddingRight__xsmall"
           >
             <svg
-              class="Icon__root width__standardText height__standardText fill__critical Box__root borderColor__standard"
+              class="width__standardText height__standardText fill__critical Icon__block Box__root borderColor__standard"
               height="16"
               viewBox="0 0 512 512"
               width="16"
