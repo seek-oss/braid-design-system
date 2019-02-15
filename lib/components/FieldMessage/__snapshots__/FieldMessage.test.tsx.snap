@@ -18,7 +18,7 @@ exports[`FieldMessage Theme: jobStreet Critical 1`] = `
         class="FieldMessage__icon Box__root borderColor__standard paddingRight__xsmall"
       >
         <svg
-          class="width__standardText height__standardText fill__critical Box__root borderColor__standard"
+          class="Icon__root width__standardText height__standardText fill__critical Box__root borderColor__standard"
           height="16"
           viewBox="0 0 512 512"
           width="16"
@@ -98,7 +98,7 @@ exports[`FieldMessage Theme: jobStreet Positive 1`] = `
         class="FieldMessage__icon Box__root borderColor__standard paddingRight__xsmall"
       >
         <svg
-          class="width__standardText height__standardText fill__positive Box__root borderColor__standard"
+          class="Icon__root width__standardText height__standardText fill__positive Box__root borderColor__standard"
           height="16"
           viewBox="0 0 16 16"
           width="16"
@@ -134,7 +134,7 @@ exports[`FieldMessage Theme: seekAnz Critical 1`] = `
         class="FieldMessage__icon Box__root borderColor__standard paddingRight__xsmall"
       >
         <svg
-          class="width__standardText height__standardText fill__critical Box__root borderColor__standard"
+          class="Icon__root width__standardText height__standardText fill__critical Box__root borderColor__standard"
           height="16"
           viewBox="0 0 512 512"
           width="16"
@@ -214,7 +214,7 @@ exports[`FieldMessage Theme: seekAnz Positive 1`] = `
         class="FieldMessage__icon Box__root borderColor__standard paddingRight__xsmall"
       >
         <svg
-          class="width__standardText height__standardText fill__positive Box__root borderColor__standard"
+          class="Icon__root width__standardText height__standardText fill__positive Box__root borderColor__standard"
           height="16"
           viewBox="0 0 16 16"
           width="16"
@@ -250,7 +250,7 @@ exports[`FieldMessage Theme: seekAsia Critical 1`] = `
         class="FieldMessage__icon Box__root borderColor__standard paddingRight__xsmall"
       >
         <svg
-          class="width__standardText height__standardText fill__critical Box__root borderColor__standard"
+          class="Icon__root width__standardText height__standardText fill__critical Box__root borderColor__standard"
           height="16"
           viewBox="0 0 512 512"
           width="16"
@@ -330,7 +330,7 @@ exports[`FieldMessage Theme: seekAsia Positive 1`] = `
         class="FieldMessage__icon Box__root borderColor__standard paddingRight__xsmall"
       >
         <svg
-          class="width__standardText height__standardText fill__positive Box__root borderColor__standard"
+          class="Icon__root width__standardText height__standardText fill__positive Box__root borderColor__standard"
           height="16"
           viewBox="0 0 16 16"
           width="16"
@@ -366,7 +366,7 @@ exports[`FieldMessage Theme: wireframe Critical 1`] = `
         class="FieldMessage__icon Box__root borderColor__standard paddingRight__xsmall"
       >
         <svg
-          class="width__standardText height__standardText fill__critical Box__root borderColor__standard"
+          class="Icon__root width__standardText height__standardText fill__critical Box__root borderColor__standard"
           height="16"
           viewBox="0 0 512 512"
           width="16"
@@ -446,7 +446,7 @@ exports[`FieldMessage Theme: wireframe Positive 1`] = `
         class="FieldMessage__icon Box__root borderColor__standard paddingRight__xsmall"
       >
         <svg
-          class="width__standardText height__standardText fill__positive Box__root borderColor__standard"
+          class="Icon__root width__standardText height__standardText fill__positive Box__root borderColor__standard"
           height="16"
           viewBox="0 0 16 16"
           width="16"

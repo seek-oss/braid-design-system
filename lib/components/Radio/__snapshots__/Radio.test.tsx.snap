@@ -404,7 +404,7 @@ exports[`Radio Theme: jobStreet With message 1`] = `
             class="FieldMessage__icon Box__root borderColor__standard paddingRight__xsmall"
           >
             <svg
-              class="width__standardText height__standardText fill__critical Box__root borderColor__standard"
+              class="Icon__root width__standardText height__standardText fill__critical Box__root borderColor__standard"
               height="16"
               viewBox="0 0 512 512"
               width="16"
@@ -828,7 +828,7 @@ exports[`Radio Theme: seekAnz With message 1`] = `
             class="FieldMessage__icon Box__root borderColor__standard paddingRight__xsmall"
           >
             <svg
-              class="width__standardText height__standardText fill__critical Box__root borderColor__standard"
+              class="Icon__root width__standardText height__standardText fill__critical Box__root borderColor__standard"
               height="16"
               viewBox="0 0 512 512"
               width="16"
@@ -1252,7 +1252,7 @@ exports[`Radio Theme: seekAsia With message 1`] = `
             class="FieldMessage__icon Box__root borderColor__standard paddingRight__xsmall"
           >
             <svg
-              class="width__standardText height__standardText fill__critical Box__root borderColor__standard"
+              class="Icon__root width__standardText height__standardText fill__critical Box__root borderColor__standard"
               height="16"
               viewBox="0 0 512 512"
               width="16"
@@ -1676,7 +1676,7 @@ exports[`Radio Theme: wireframe With message 1`] = `
             class="FieldMessage__icon Box__root borderColor__standard paddingRight__xsmall"
           >
             <svg
-              class="width__standardText height__standardText fill__critical Box__root borderColor__standard"
+              class="Icon__root width__standardText height__standardText fill__critical Box__root borderColor__standard"
               height="16"
               viewBox="0 0 512 512"
               width="16"

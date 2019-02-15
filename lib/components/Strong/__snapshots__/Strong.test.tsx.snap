@@ -4,7 +4,7 @@ exports[`Strong Theme: jobStreet Default 1`] = `
 <strong
   class="fontWeight__strong"
 >
-  Radio__children
+  Children
 </strong>
 `;
 
@@ -12,7 +12,7 @@ exports[`Strong Theme: seekAnz Default 1`] = `
 <strong
   class="fontWeight__strong"
 >
-  Radio__children
+  Children
 </strong>
 `;
 
@@ -20,7 +20,7 @@ exports[`Strong Theme: seekAsia Default 1`] = `
 <strong
   class="fontWeight__strong"
 >
-  Radio__children
+  Children
 </strong>
 `;
 
@@ -28,6 +28,6 @@ exports[`Strong Theme: wireframe Default 1`] = `
 <strong
   class="fontWeight__strong"
 >
-  Radio__children
+  Children
 </strong>
 `;

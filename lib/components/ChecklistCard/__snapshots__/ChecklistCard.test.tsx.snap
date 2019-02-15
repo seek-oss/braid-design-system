@@ -44,7 +44,7 @@ exports[`ChecklistCard Theme: jobStreet Default 1`] = `
             class="Checkbox__checkboxIcon transition__fast Box__root borderColor__standard"
           >
             <svg
-              class="fill__white Icon__fillSize Box__root borderColor__standard"
+              class="Icon__root fill__white Icon__fillSize Box__root borderColor__standard"
               height="16"
               viewBox="90.471 302.809 823 823"
               width="16"
@@ -132,7 +132,7 @@ exports[`ChecklistCard Theme: jobStreet Default 1`] = `
             class="Checkbox__checkboxIcon transition__fast Box__root borderColor__standard"
           >
             <svg
-              class="fill__white Icon__fillSize Box__root borderColor__standard"
+              class="Icon__root fill__white Icon__fillSize Box__root borderColor__standard"
               height="16"
               viewBox="90.471 302.809 823 823"
               width="16"
@@ -220,7 +220,7 @@ exports[`ChecklistCard Theme: jobStreet Default 1`] = `
             class="Checkbox__checkboxIcon transition__fast Box__root borderColor__standard"
           >
             <svg
-              class="fill__white Icon__fillSize Box__root borderColor__standard"
+              class="Icon__root fill__white Icon__fillSize Box__root borderColor__standard"
               height="16"
               viewBox="90.471 302.809 823 823"
               width="16"
@@ -308,7 +308,7 @@ exports[`ChecklistCard Theme: seekAnz Default 1`] = `
             class="Checkbox__checkboxIcon transition__fast Box__root borderColor__standard"
           >
             <svg
-              class="fill__white Icon__fillSize Box__root borderColor__standard"
+              class="Icon__root fill__white Icon__fillSize Box__root borderColor__standard"
               height="16"
               viewBox="90.471 302.809 823 823"
               width="16"
@@ -396,7 +396,7 @@ exports[`ChecklistCard Theme: seekAnz Default 1`] = `
             class="Checkbox__checkboxIcon transition__fast Box__root borderColor__standard"
           >
             <svg
-              class="fill__white Icon__fillSize Box__root borderColor__standard"
+              class="Icon__root fill__white Icon__fillSize Box__root borderColor__standard"
               height="16"
               viewBox="90.471 302.809 823 823"
               width="16"
@@ -484,7 +484,7 @@ exports[`ChecklistCard Theme: seekAnz Default 1`] = `
             class="Checkbox__checkboxIcon transition__fast Box__root borderColor__standard"
           >
             <svg
-              class="fill__white Icon__fillSize Box__root borderColor__standard"
+              class="Icon__root fill__white Icon__fillSize Box__root borderColor__standard"
               height="16"
               viewBox="90.471 302.809 823 823"
               width="16"
@@ -572,7 +572,7 @@ exports[`ChecklistCard Theme: seekAsia Default 1`] = `
             class="Checkbox__checkboxIcon transition__fast Box__root borderColor__standard"
           >
             <svg
-              class="fill__white Icon__fillSize Box__root borderColor__standard"
+              class="Icon__root fill__white Icon__fillSize Box__root borderColor__standard"
               height="16"
               viewBox="90.471 302.809 823 823"
               width="16"
@@ -660,7 +660,7 @@ exports[`ChecklistCard Theme: seekAsia Default 1`] = `
             class="Checkbox__checkboxIcon transition__fast Box__root borderColor__standard"
           >
             <svg
-              class="fill__white Icon__fillSize Box__root borderColor__standard"
+              class="Icon__root fill__white Icon__fillSize Box__root borderColor__standard"
               height="16"
               viewBox="90.471 302.809 823 823"
               width="16"
@@ -748,7 +748,7 @@ exports[`ChecklistCard Theme: seekAsia Default 1`] = `
             class="Checkbox__checkboxIcon transition__fast Box__root borderColor__standard"
           >
             <svg
-              class="fill__white Icon__fillSize Box__root borderColor__standard"
+              class="Icon__root fill__white Icon__fillSize Box__root borderColor__standard"
               height="16"
               viewBox="90.471 302.809 823 823"
               width="16"
@@ -836,7 +836,7 @@ exports[`ChecklistCard Theme: wireframe Default 1`] = `
             class="Checkbox__checkboxIcon transition__fast Box__root borderColor__standard"
           >
             <svg
-              class="fill__white Icon__fillSize Box__root borderColor__standard"
+              class="Icon__root fill__white Icon__fillSize Box__root borderColor__standard"
               height="16"
               viewBox="90.471 302.809 823 823"
               width="16"
@@ -924,7 +924,7 @@ exports[`ChecklistCard Theme: wireframe Default 1`] = `
             class="Checkbox__checkboxIcon transition__fast Box__root borderColor__standard"
           >
             <svg
-              class="fill__white Icon__fillSize Box__root borderColor__standard"
+              class="Icon__root fill__white Icon__fillSize Box__root borderColor__standard"
               height="16"
               viewBox="90.471 302.809 823 823"
               width="16"
@@ -1012,7 +1012,7 @@ exports[`ChecklistCard Theme: wireframe Default 1`] = `
             class="Checkbox__checkboxIcon transition__fast Box__root borderColor__standard"
           >
             <svg
-              class="fill__white Icon__fillSize Box__root borderColor__standard"
+              class="Icon__root fill__white Icon__fillSize Box__root borderColor__standard"
               height="16"
               viewBox="90.471 302.809 823 823"
               width="16"
