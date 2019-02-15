@@ -90,7 +90,7 @@ exports[`ChevronIcon Theme: jobStreet Sized 1`] = `
   class="ChevronIcon__root Box__root borderColor__standard"
 >
   <svg
-    class="width__standardText height__standardText Icon__block Box__root borderColor__standard"
+    class="width__largeText height__largeText Icon__block Box__root borderColor__standard"
     height="16"
     viewBox="0 0 1024 1024"
     width="16"
@@ -209,7 +209,7 @@ exports[`ChevronIcon Theme: seekAnz Sized 1`] = `
   class="ChevronIcon__root Box__root borderColor__standard"
 >
   <svg
-    class="width__standardText height__standardText Icon__block Box__root borderColor__standard"
+    class="width__largeText height__largeText Icon__block Box__root borderColor__standard"
     height="16"
     viewBox="0 0 1024 1024"
     width="16"
@@ -328,7 +328,7 @@ exports[`ChevronIcon Theme: seekAsia Sized 1`] = `
   class="ChevronIcon__root Box__root borderColor__standard"
 >
   <svg
-    class="width__standardText height__standardText Icon__block Box__root borderColor__standard"
+    class="width__largeText height__largeText Icon__block Box__root borderColor__standard"
     height="16"
     viewBox="0 0 1024 1024"
     width="16"
@@ -447,7 +447,7 @@ exports[`ChevronIcon Theme: wireframe Sized 1`] = `
   class="ChevronIcon__root Box__root borderColor__standard"
 >
   <svg
-    class="width__standardText height__standardText Icon__block Box__root borderColor__standard"
+    class="width__largeText height__largeText Icon__block Box__root borderColor__standard"
     height="16"
     viewBox="0 0 1024 1024"
     width="16"
