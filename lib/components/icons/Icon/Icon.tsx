@@ -42,6 +42,7 @@ export default class Icon extends Component<IconProps> {
             <Box
               component={svgComponent}
               className={classnames(
+                styles.root,
                 widthAtom,
                 heightAtom,
                 theme.atoms.fill[fill!],

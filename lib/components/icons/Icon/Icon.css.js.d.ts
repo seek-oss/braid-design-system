@@ -2,3 +2,4 @@
 // Please do not change this file!
 export const fillSize: string;
 export const inline: string;
+export const root: string;

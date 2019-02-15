@@ -1,6 +1,5 @@
 import React, { Component, ReactNode } from 'react';
 import ThemeConsumer from '../ThemeConsumer/ThemeConsumer';
-import { children } from '../Radio/Radio.css.js';
 
 export interface StrongProps {
   children: ReactNode;
@@ -10,6 +9,8 @@ export default class Strong extends Component<StrongProps> {
   static displayName = 'Strong';
 
   render() {
+    const { children } = this.props;
+
     return (
       <ThemeConsumer>
         {theme => {
