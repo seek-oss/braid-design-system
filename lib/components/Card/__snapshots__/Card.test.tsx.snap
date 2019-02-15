@@ -2,32 +2,48 @@
 
 exports[`Card Theme: jobStreet Default 1`] = `
 <div
-  class="Box__root backgroundColor__card borderColor__standard marginBottom__medium"
+  class="Box__root borderColor__standard paddingBottom__medium"
 >
-  Children
+  <div
+    class="Box__root backgroundColor__card borderColor__standard"
+  >
+    Children
+  </div>
 </div>
 `;
 
 exports[`Card Theme: seekAnz Default 1`] = `
 <div
-  class="Box__root backgroundColor__card borderColor__standard marginBottom__medium"
+  class="Box__root borderColor__standard paddingBottom__medium"
 >
-  Children
+  <div
+    class="Box__root backgroundColor__card borderColor__standard"
+  >
+    Children
+  </div>
 </div>
 `;
 
 exports[`Card Theme: seekAsia Default 1`] = `
 <div
-  class="Box__root backgroundColor__card borderColor__standard marginBottom__medium"
+  class="Box__root borderColor__standard paddingBottom__medium"
 >
-  Children
+  <div
+    class="Box__root backgroundColor__card borderColor__standard"
+  >
+    Children
+  </div>
 </div>
 `;
 
 exports[`Card Theme: wireframe Default 1`] = `
 <div
-  class="Box__root backgroundColor__card borderColor__standard marginBottom__medium"
+  class="Box__root borderColor__standard paddingBottom__medium"
 >
-  Children
+  <div
+    class="Box__root backgroundColor__card borderColor__standard"
+  >
+    Children
+  </div>
 </div>
 `;

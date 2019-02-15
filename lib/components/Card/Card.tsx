@@ -12,8 +12,8 @@ export default class Card extends Component<CardProps> {
     const { children } = this.props;
 
     return (
-      <Box backgroundColor="card" marginBottom="medium">
-        {children}
+      <Box paddingBottom="medium">
+        <Box backgroundColor="card">{children}</Box>
       </Box>
     );
   }

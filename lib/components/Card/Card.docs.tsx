@@ -13,7 +13,6 @@ const docs: ComponentDocs = {
           paddingLeft="small"
           paddingRight="small"
           paddingTop="small"
-          paddingBottom="small"
           style={{ backgroundColor: '#ccc' }}
         >
           <Card>
