@@ -10,9 +10,9 @@ const docs: ComponentDocs = {
       label: 'Standard Card',
       render: () => (
         <Box
-          paddingLeft="small"
-          paddingRight="small"
-          paddingTop="small"
+          paddingLeft="gutter"
+          paddingRight="gutter"
+          paddingTop="medium"
           style={{ backgroundColor: '#ccc' }}
         >
           <Card>
