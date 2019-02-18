@@ -67,6 +67,7 @@ export default class Radio extends Component<RadioProps, State> {
             id,
             label,
             checked,
+            onChange,
             disabled = false,
             tone = 'neutral',
             message,
@@ -96,6 +97,7 @@ export default class Radio extends Component<RadioProps, State> {
                 type="radio"
                 id={id}
                 checked={checked}
+                onChange={onChange}
                 disabled={disabled}
                 aria-describedby={fieldMessageId}
               />

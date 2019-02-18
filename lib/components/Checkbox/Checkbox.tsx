@@ -68,6 +68,7 @@ export default class Checkbox extends Component<CheckboxProps, State> {
             variant,
             id,
             checked,
+            onChange,
             label,
             disabled = false,
             tone,
@@ -97,6 +98,7 @@ export default class Checkbox extends Component<CheckboxProps, State> {
                 type="checkbox"
                 id={id}
                 checked={checked}
+                onChange={onChange}
                 disabled={disabled}
                 aria-describedby={fieldMessageId}
               />
