@@ -27,7 +27,11 @@ req.keys().forEach(filename => {
 
     values(themes).forEach(theme => {
       stories.add(`${label} (${theme.name})`, () => (
-        <ThemeProvider theme={theme}>{render({ id: 'id' })}</ThemeProvider>
+        <div
+          style={{ paddingBottom: '0.05px' }} // Prevents margins from collapsing
+        >
+          <ThemeProvider theme={theme}>{render({ id: 'id' })}</ThemeProvider>
+        </div>
       ));
     });
   });
