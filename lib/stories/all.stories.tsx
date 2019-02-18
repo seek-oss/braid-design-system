@@ -1,4 +1,4 @@
-import { storiesOf } from 'sku/storybook';
+import { storiesOf } from 'sku/@storybook/react';
 import React from 'react';
 import values from 'lodash/values';
 import * as themes from '../themes';
