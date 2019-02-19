@@ -26,7 +26,6 @@ type OptionalInputProps = 'disabled' | 'children';
 export interface RadioProps
   extends Required<Pick<InputProps, RequiredInputProps>>,
     Pick<InputProps, OptionalInputProps> {
-  variant?: 'default' | 'inChecklistCard';
   label: ReactNode;
   tone?: 'neutral' | 'critical' | 'positive';
   message?: ReactNode | false;
@@ -63,7 +62,6 @@ export default class Radio extends Component<RadioProps, State> {
       <ThemeConsumer>
         {theme => {
           const {
-            variant = 'default',
             id,
             label,
             checked,
@@ -76,22 +74,11 @@ export default class Radio extends Component<RadioProps, State> {
 
           const { hovered } = this.state;
 
-          const inChecklistCard = variant === 'inChecklistCard';
           const fieldMessageId = `${id}-message`;
           const radioSize = getCheckboxRadioSize(theme);
 
           return (
-            <Box
-              {...(inChecklistCard && tone === 'critical'
-                ? { borderWidth: 'standard', borderColor: 'critical' }
-                : {})}
-              backgroundColor={
-                inChecklistCard && (checked || hovered) && !disabled
-                  ? 'selection'
-                  : undefined
-              }
-              paddingBottom={inChecklistCard ? 'xsmall' : undefined}
-            >
+            <div>
               <input
                 className={styles.realRadio}
                 type="radio"
@@ -104,14 +91,6 @@ export default class Radio extends Component<RadioProps, State> {
               <div className={styles.content}>
                 <Box
                   component="label"
-                  {...(inChecklistCard
-                    ? {
-                        paddingLeft: 'gutter',
-                        paddingRight: 'gutter',
-                        paddingTop: 'xxsmall',
-                        paddingBottom: 'xxsmall'
-                      }
-                    : {})}
                   className={classnames({
                     [styles.label]: true
                   })}
@@ -167,18 +146,6 @@ export default class Radio extends Component<RadioProps, State> {
                         theme.atoms.transition.fast
                       )}
                     />
-                    {!inChecklistCard ? (
-                      <Box
-                        borderColor="critical"
-                        borderWidth="standard"
-                        style={{ opacity: tone === 'critical' ? 1 : 0 }}
-                        className={classnames(
-                          styles.radio,
-                          styles.radioCritical,
-                          theme.atoms.transition.fast
-                        )}
-                      />
-                    ) : null}
                     <Box
                       backgroundColor={
                         disabled ? 'formAccentDisabled' : 'formAccent'
@@ -198,33 +165,23 @@ export default class Radio extends Component<RadioProps, State> {
                 </Box>
                 {children ? (
                   <Box
-                    paddingLeft={inChecklistCard ? 'gutter' : 'none'}
-                    paddingRight={inChecklistCard ? 'gutter' : 'none'}
+                    paddingLeft="medium"
+                    paddingBottom="medium"
+                    className={styles.children}
+                    style={{ marginLeft: px(radioSize) }}
                   >
-                    <Box
-                      paddingLeft="medium"
-                      paddingBottom="medium"
-                      className={styles.children}
-                      style={{ marginLeft: px(radioSize) }}
-                    >
-                      {children}
-                    </Box>
+                    {children}
                   </Box>
                 ) : null}
               </div>
               {message !== false ? (
-                <Box
-                  paddingLeft={inChecklistCard ? 'gutter' : 'none'}
-                  paddingRight={inChecklistCard ? 'gutter' : 'none'}
-                >
-                  <FieldMessage
-                    id={fieldMessageId}
-                    tone={tone}
-                    message={message}
-                  />
-                </Box>
+                <FieldMessage
+                  id={fieldMessageId}
+                  tone={tone}
+                  message={message}
+                />
               ) : null}
-            </Box>
+            </div>
           );
         }}
       </ThemeConsumer>
