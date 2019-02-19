@@ -168,6 +168,19 @@ export default class Checkbox extends Component<CheckboxProps, State> {
                       )}
                     />
                     <Box
+                      borderColor="critical"
+                      borderWidth="standard"
+                      style={{
+                        opacity: tone === 'critical' ? 1 : 0
+                      }}
+                      className={classnames(
+                        styles.checkbox,
+                        styles.checkboxCritical,
+                        theme.atoms.borderRadius.standard,
+                        theme.atoms.transition.fast
+                      )}
+                    />
+                    <Box
                       className={classnames(
                         styles.checkboxIcon,
                         theme.atoms.transition.fast

@@ -147,6 +147,16 @@ export default class Radio extends Component<RadioProps, State> {
                       )}
                     />
                     <Box
+                      borderColor="critical"
+                      borderWidth="standard"
+                      style={{ opacity: tone === 'critical' ? 1 : 0 }}
+                      className={classnames(
+                        styles.radio,
+                        styles.radioCritical,
+                        theme.atoms.transition.fast
+                      )}
+                    />
+                    <Box
                       backgroundColor={
                         disabled ? 'formAccentDisabled' : 'formAccent'
                       }

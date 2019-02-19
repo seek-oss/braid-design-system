@@ -35,6 +35,10 @@ exports[`Radio Theme: jobStreet Checked 1`] = `
           class="Radio__radio Radio__radioDisabled transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
         />
         <div
+          class="Radio__radio Radio__radioCritical transition__fast Box__root borderColor__critical borderWidth__standard"
+          style="opacity: 0;"
+        />
+        <div
           class="Radio__radioIcon transition__fast Box__root backgroundColor__formAccent borderColor__standard"
         />
       </div>
@@ -99,6 +103,10 @@ exports[`Radio Theme: jobStreet Children when checked 1`] = `
         />
         <div
           class="Radio__radio Radio__radioDisabled transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
+        />
+        <div
+          class="Radio__radio Radio__radioCritical transition__fast Box__root borderColor__critical borderWidth__standard"
+          style="opacity: 0;"
         />
         <div
           class="Radio__radioIcon transition__fast Box__root backgroundColor__formAccent borderColor__standard"
@@ -172,6 +180,10 @@ exports[`Radio Theme: jobStreet Children when unchecked 1`] = `
           class="Radio__radio Radio__radioDisabled transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
         />
         <div
+          class="Radio__radio Radio__radioCritical transition__fast Box__root borderColor__critical borderWidth__standard"
+          style="opacity: 0;"
+        />
+        <div
           class="Radio__radioIcon transition__fast Box__root backgroundColor__formAccent borderColor__standard"
         />
       </div>
@@ -243,6 +255,10 @@ exports[`Radio Theme: jobStreet Unchecked 1`] = `
           class="Radio__radio Radio__radioDisabled transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
         />
         <div
+          class="Radio__radio Radio__radioCritical transition__fast Box__root borderColor__critical borderWidth__standard"
+          style="opacity: 0;"
+        />
+        <div
           class="Radio__radioIcon transition__fast Box__root backgroundColor__formAccent borderColor__standard"
         />
       </div>
@@ -307,6 +323,10 @@ exports[`Radio Theme: jobStreet With message 1`] = `
         />
         <div
           class="Radio__radio Radio__radioDisabled transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
+        />
+        <div
+          class="Radio__radio Radio__radioCritical transition__fast Box__root borderColor__critical borderWidth__standard"
+          style="opacity: 1;"
         />
         <div
           class="Radio__radioIcon transition__fast Box__root backgroundColor__formAccent borderColor__standard"
@@ -397,6 +417,10 @@ exports[`Radio Theme: seekAnz Checked 1`] = `
           class="Radio__radio Radio__radioDisabled transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
         />
         <div
+          class="Radio__radio Radio__radioCritical transition__fast Box__root borderColor__critical borderWidth__standard"
+          style="opacity: 0;"
+        />
+        <div
           class="Radio__radioIcon transition__fast Box__root backgroundColor__formAccent borderColor__standard"
         />
       </div>
@@ -461,6 +485,10 @@ exports[`Radio Theme: seekAnz Children when checked 1`] = `
         />
         <div
           class="Radio__radio Radio__radioDisabled transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
+        />
+        <div
+          class="Radio__radio Radio__radioCritical transition__fast Box__root borderColor__critical borderWidth__standard"
+          style="opacity: 0;"
         />
         <div
           class="Radio__radioIcon transition__fast Box__root backgroundColor__formAccent borderColor__standard"
@@ -534,6 +562,10 @@ exports[`Radio Theme: seekAnz Children when unchecked 1`] = `
           class="Radio__radio Radio__radioDisabled transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
         />
         <div
+          class="Radio__radio Radio__radioCritical transition__fast Box__root borderColor__critical borderWidth__standard"
+          style="opacity: 0;"
+        />
+        <div
           class="Radio__radioIcon transition__fast Box__root backgroundColor__formAccent borderColor__standard"
         />
       </div>
@@ -605,6 +637,10 @@ exports[`Radio Theme: seekAnz Unchecked 1`] = `
           class="Radio__radio Radio__radioDisabled transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
         />
         <div
+          class="Radio__radio Radio__radioCritical transition__fast Box__root borderColor__critical borderWidth__standard"
+          style="opacity: 0;"
+        />
+        <div
           class="Radio__radioIcon transition__fast Box__root backgroundColor__formAccent borderColor__standard"
         />
       </div>
@@ -669,6 +705,10 @@ exports[`Radio Theme: seekAnz With message 1`] = `
         />
         <div
           class="Radio__radio Radio__radioDisabled transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
+        />
+        <div
+          class="Radio__radio Radio__radioCritical transition__fast Box__root borderColor__critical borderWidth__standard"
+          style="opacity: 1;"
         />
         <div
           class="Radio__radioIcon transition__fast Box__root backgroundColor__formAccent borderColor__standard"
@@ -759,6 +799,10 @@ exports[`Radio Theme: seekAsia Checked 1`] = `
           class="Radio__radio Radio__radioDisabled transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
         />
         <div
+          class="Radio__radio Radio__radioCritical transition__fast Box__root borderColor__critical borderWidth__standard"
+          style="opacity: 0;"
+        />
+        <div
           class="Radio__radioIcon transition__fast Box__root backgroundColor__formAccent borderColor__standard"
         />
       </div>
@@ -823,6 +867,10 @@ exports[`Radio Theme: seekAsia Children when checked 1`] = `
         />
         <div
           class="Radio__radio Radio__radioDisabled transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
+        />
+        <div
+          class="Radio__radio Radio__radioCritical transition__fast Box__root borderColor__critical borderWidth__standard"
+          style="opacity: 0;"
         />
         <div
           class="Radio__radioIcon transition__fast Box__root backgroundColor__formAccent borderColor__standard"
@@ -896,6 +944,10 @@ exports[`Radio Theme: seekAsia Children when unchecked 1`] = `
           class="Radio__radio Radio__radioDisabled transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
         />
         <div
+          class="Radio__radio Radio__radioCritical transition__fast Box__root borderColor__critical borderWidth__standard"
+          style="opacity: 0;"
+        />
+        <div
           class="Radio__radioIcon transition__fast Box__root backgroundColor__formAccent borderColor__standard"
         />
       </div>
@@ -967,6 +1019,10 @@ exports[`Radio Theme: seekAsia Unchecked 1`] = `
           class="Radio__radio Radio__radioDisabled transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
         />
         <div
+          class="Radio__radio Radio__radioCritical transition__fast Box__root borderColor__critical borderWidth__standard"
+          style="opacity: 0;"
+        />
+        <div
           class="Radio__radioIcon transition__fast Box__root backgroundColor__formAccent borderColor__standard"
         />
       </div>
@@ -1031,6 +1087,10 @@ exports[`Radio Theme: seekAsia With message 1`] = `
         />
         <div
           class="Radio__radio Radio__radioDisabled transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
+        />
+        <div
+          class="Radio__radio Radio__radioCritical transition__fast Box__root borderColor__critical borderWidth__standard"
+          style="opacity: 1;"
         />
         <div
           class="Radio__radioIcon transition__fast Box__root backgroundColor__formAccent borderColor__standard"
@@ -1121,6 +1181,10 @@ exports[`Radio Theme: wireframe Checked 1`] = `
           class="Radio__radio Radio__radioDisabled transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
         />
         <div
+          class="Radio__radio Radio__radioCritical transition__fast Box__root borderColor__critical borderWidth__standard"
+          style="opacity: 0;"
+        />
+        <div
           class="Radio__radioIcon transition__fast Box__root backgroundColor__formAccent borderColor__standard"
         />
       </div>
@@ -1185,6 +1249,10 @@ exports[`Radio Theme: wireframe Children when checked 1`] = `
         />
         <div
           class="Radio__radio Radio__radioDisabled transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
+        />
+        <div
+          class="Radio__radio Radio__radioCritical transition__fast Box__root borderColor__critical borderWidth__standard"
+          style="opacity: 0;"
         />
         <div
           class="Radio__radioIcon transition__fast Box__root backgroundColor__formAccent borderColor__standard"
@@ -1258,6 +1326,10 @@ exports[`Radio Theme: wireframe Children when unchecked 1`] = `
           class="Radio__radio Radio__radioDisabled transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
         />
         <div
+          class="Radio__radio Radio__radioCritical transition__fast Box__root borderColor__critical borderWidth__standard"
+          style="opacity: 0;"
+        />
+        <div
           class="Radio__radioIcon transition__fast Box__root backgroundColor__formAccent borderColor__standard"
         />
       </div>
@@ -1329,6 +1401,10 @@ exports[`Radio Theme: wireframe Unchecked 1`] = `
           class="Radio__radio Radio__radioDisabled transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
         />
         <div
+          class="Radio__radio Radio__radioCritical transition__fast Box__root borderColor__critical borderWidth__standard"
+          style="opacity: 0;"
+        />
+        <div
           class="Radio__radioIcon transition__fast Box__root backgroundColor__formAccent borderColor__standard"
         />
       </div>
@@ -1393,6 +1469,10 @@ exports[`Radio Theme: wireframe With message 1`] = `
         />
         <div
           class="Radio__radio Radio__radioDisabled transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
+        />
+        <div
+          class="Radio__radio Radio__radioCritical transition__fast Box__root borderColor__critical borderWidth__standard"
+          style="opacity: 1;"
         />
         <div
           class="Radio__radioIcon transition__fast Box__root backgroundColor__formAccent borderColor__standard"
