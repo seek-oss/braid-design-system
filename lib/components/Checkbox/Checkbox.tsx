@@ -1,6 +1,5 @@
 import React, { Component, ReactNode, AllHTMLAttributes } from 'react';
 import classnames from 'classnames';
-import { Omit } from 'utility-types';
 import ThemeConsumer from '../ThemeConsumer/ThemeConsumer';
 import getCheckboxRadioSize from '../private/getCheckboxRadioSize';
 import Box from '../Box/Box';
@@ -22,18 +21,15 @@ const textColorForState = (disabled: boolean, hovered: boolean) => {
   return 'neutral';
 };
 
+type InputProps = AllHTMLAttributes<HTMLInputElement>;
+type RequiredInputProps = 'id' | 'checked' | 'onChange';
+type OptionalInputProps = 'disabled' | 'children';
 export interface CheckboxProps
-  extends Omit<AllHTMLAttributes<HTMLElement>, 'label'> {
-  variant?: 'default' | 'inChecklistCard';
-  id: string;
-  checked: boolean;
+  extends Required<Pick<InputProps, RequiredInputProps>>,
+    Pick<InputProps, OptionalInputProps> {
   label: ReactNode;
-  disabled?: boolean;
-  inputProps?: object;
-  labelProps?: object;
   tone?: 'neutral' | 'critical' | 'positive';
   message?: ReactNode | false;
-  messageProps?: object;
   children?: ReactNode;
 }
 
@@ -68,60 +64,34 @@ export default class Checkbox extends Component<CheckboxProps, State> {
       <ThemeConsumer>
         {theme => {
           const {
-            variant,
             id,
             checked,
+            onChange,
             label,
             disabled = false,
-            className,
-            style,
-            inputProps,
-            labelProps,
             tone,
             message,
-            messageProps,
-            children,
-            ...restProps
+            children
           } = this.props;
           const { hovered } = this.state;
 
-          const inChecklistCard = variant === 'inChecklistCard';
           const fieldMessageId = `${id}-message`;
           const checkboxSize = getCheckboxRadioSize(theme);
 
           return (
-            <Box
-              {...(inChecklistCard && tone === 'critical'
-                ? { borderWidth: 'standard', borderColor: 'critical' }
-                : {})}
-              backgroundColor={
-                inChecklistCard && (checked || hovered) && !disabled
-                  ? 'selection'
-                  : undefined
-              }
-              paddingBottom={inChecklistCard ? 'xsmall' : undefined}
-              style={style}
-            >
+            <div>
               <input
                 className={styles.realCheckbox}
                 type="checkbox"
                 id={id}
                 checked={checked}
+                onChange={onChange}
                 disabled={disabled}
                 aria-describedby={fieldMessageId}
-                {...restProps}
-                {...inputProps}
               />
               <div className={styles.content}>
                 <Box
                   component="label"
-                  {...(inChecklistCard
-                    ? {
-                        paddingLeft: 'gutter',
-                        paddingRight: 'gutter',
-                        paddingTop: 'xsmall'
-                      }
-                    : {})}
                   className={classnames({
                     [styles.label]: true
                   })}
@@ -131,12 +101,11 @@ export default class Checkbox extends Component<CheckboxProps, State> {
                     )
                   }}
                   htmlFor={id}
-                  {...labelProps}
                   onMouseOver={this.handleMouseOver}
                   onMouseOut={this.handleMouseOut}
                 >
                   <Box
-                    marginRight={inChecklistCard ? 'medium' : 'small'}
+                    marginRight="small"
                     className={styles.checkboxContainer}
                     style={{
                       width: px(checkboxSize),
@@ -198,29 +167,27 @@ export default class Checkbox extends Component<CheckboxProps, State> {
                         theme.atoms.transition.fast
                       )}
                     />
-                    {!inChecklistCard ? (
-                      <Box
-                        borderColor="critical"
-                        borderWidth="standard"
-                        style={{
-                          opacity: tone === 'critical' ? 1 : 0
-                        }}
-                        className={classnames(
-                          styles.checkbox,
-                          styles.checkboxCritical,
-                          theme.atoms.borderRadius.standard,
-                          theme.atoms.transition.fast
-                        )}
-                      />
-                    ) : null}
-                    <TickIcon
-                      size="fill"
+                    <Box
+                      borderColor="critical"
+                      borderWidth="standard"
+                      style={{
+                        opacity: tone === 'critical' ? 1 : 0
+                      }}
                       className={classnames(
-                        styles.checkboxIcon,
-                        theme.atoms.fill.white,
+                        styles.checkbox,
+                        styles.checkboxCritical,
+                        theme.atoms.borderRadius.standard,
                         theme.atoms.transition.fast
                       )}
                     />
+                    <Box
+                      className={classnames(
+                        styles.checkboxIcon,
+                        theme.atoms.transition.fast
+                      )}
+                    >
+                      <TickIcon size="fill" fill="white" />
+                    </Box>
                   </Box>
                   <Text
                     size="interaction"
@@ -232,34 +199,23 @@ export default class Checkbox extends Component<CheckboxProps, State> {
                 </Box>
                 {children ? (
                   <Box
-                    paddingLeft={inChecklistCard ? 'gutter' : 'none'}
-                    paddingRight={inChecklistCard ? 'gutter' : 'none'}
+                    paddingLeft="small"
+                    paddingBottom="small"
+                    className={styles.children}
+                    style={{ marginLeft: px(checkboxSize) }}
                   >
-                    <Box
-                      paddingLeft={inChecklistCard ? 'medium' : 'small'}
-                      paddingBottom="small"
-                      className={styles.children}
-                      style={{ marginLeft: px(checkboxSize) }}
-                    >
-                      {children}
-                    </Box>
+                    {children}
                   </Box>
                 ) : null}
               </div>
               {message !== false ? (
-                <Box
-                  paddingLeft={inChecklistCard ? 'gutter' : 'none'}
-                  paddingRight={inChecklistCard ? 'gutter' : 'none'}
-                >
-                  <FieldMessage
-                    id={fieldMessageId}
-                    tone={tone}
-                    message={message}
-                    {...messageProps}
-                  />
-                </Box>
+                <FieldMessage
+                  id={fieldMessageId}
+                  tone={tone}
+                  message={message}
+                />
               ) : null}
-            </Box>
+            </div>
           );
         }}
       </ThemeConsumer>

@@ -1,12 +1,20 @@
-import React, { Component } from 'react';
-import Box, { BoxProps } from '../Box/Box';
+import React, { Component, ReactNode } from 'react';
+import Box from '../Box/Box';
 
-export type CardProps = BoxProps;
+export interface CardProps {
+  children?: ReactNode;
+}
 
 export default class Card extends Component<CardProps> {
   static displayName = 'Card';
 
   render() {
-    return <Box backgroundColor="card" marginBottom="medium" {...this.props} />;
+    const { children } = this.props;
+
+    return (
+      <Box paddingBottom="medium">
+        <Box backgroundColor="card">{children}</Box>
+      </Box>
+    );
   }
 }

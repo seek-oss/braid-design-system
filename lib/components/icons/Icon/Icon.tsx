@@ -1,12 +1,11 @@
 import React, { Component, ComponentType } from 'react';
-import { Omit } from 'utility-types';
 import classnames from 'classnames';
-import Box, { BoxProps } from '../../Box/Box';
+import Box from '../../Box/Box';
 import ThemeConsumer from '../../ThemeConsumer/ThemeConsumer';
 import styles from './Icon.css.js';
 import { TextSize, FillVariants, SizeVariants } from '../../../themes/theme';
 
-export interface IconProps extends Omit<BoxProps, 'size'> {
+export interface IconProps {
   size?: TextSize | 'fill';
   inline?: boolean;
   fill?: FillVariants;
@@ -26,12 +25,10 @@ export default class Icon extends Component<IconProps> {
       <ThemeConsumer>
         {theme => {
           const {
-            className,
             size = 'standard',
             svgComponent,
             inline = false,
-            fill,
-            ...restProps
+            fill
           } = this.props;
           const sizeAtom = `${size}Text${inline ? 'Inline' : ''}`;
           const widthAtom = isSizeVariant(theme.atoms.width, sizeAtom)
@@ -45,16 +42,15 @@ export default class Icon extends Component<IconProps> {
             <Box
               component={svgComponent}
               className={classnames(
-                className,
                 widthAtom,
                 heightAtom,
                 theme.atoms.fill[fill!],
                 {
                   [styles.fillSize]: size === 'fill',
-                  [styles.inline]: inline
+                  [styles.inline]: inline,
+                  [styles.block]: !inline
                 }
               )}
-              {...restProps}
             />
           );
         }}

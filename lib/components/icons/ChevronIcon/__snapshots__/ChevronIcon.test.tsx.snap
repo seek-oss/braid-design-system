@@ -1,365 +1,477 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ChevronIcon Theme: jobStreet Default 1`] = `
-<svg
-  class="ChevronIcon__root width__standardText height__standardText Box__root borderColor__standard"
-  height="16"
-  viewBox="0 0 1024 1024"
-  width="16"
+<div
+  class="ChevronIcon__root Box__root borderColor__standard"
 >
-  <path
-    d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
-  />
-</svg>
+  <svg
+    class="width__standardText height__standardText Icon__block Box__root borderColor__standard"
+    height="16"
+    viewBox="0 0 1024 1024"
+    width="16"
+  >
+    <path
+      d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
+    />
+  </svg>
+</div>
 `;
 
 exports[`ChevronIcon Theme: jobStreet Down 1`] = `
-<svg
-  class="ChevronIcon__root width__standardText height__standardText Box__root borderColor__standard"
-  height="16"
-  viewBox="0 0 1024 1024"
-  width="16"
+<div
+  class="ChevronIcon__root Box__root borderColor__standard"
 >
-  <path
-    d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
-  />
-</svg>
+  <svg
+    class="width__standardText height__standardText Icon__block Box__root borderColor__standard"
+    height="16"
+    viewBox="0 0 1024 1024"
+    width="16"
+  >
+    <path
+      d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
+    />
+  </svg>
+</div>
 `;
 
 exports[`ChevronIcon Theme: jobStreet Inline 1`] = `
-<svg
-  class="ChevronIcon__root width__standardTextInline height__standardTextInline Icon__inline Box__root borderColor__standard"
-  height="16"
-  viewBox="0 0 1024 1024"
-  width="16"
+<div
+  class="ChevronIcon__root ChevronIcon__inline Box__root borderColor__standard"
 >
-  <path
-    d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
-  />
-</svg>
+  <svg
+    class="width__standardTextInline height__standardTextInline Icon__inline Box__root borderColor__standard"
+    height="16"
+    viewBox="0 0 1024 1024"
+    width="16"
+  >
+    <path
+      d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
+    />
+  </svg>
+</div>
 `;
 
 exports[`ChevronIcon Theme: jobStreet Left 1`] = `
-<svg
-  class="ChevronIcon__root ChevronIcon__left width__standardText height__standardText Box__root borderColor__standard"
-  height="16"
-  viewBox="0 0 1024 1024"
-  width="16"
+<div
+  class="ChevronIcon__root ChevronIcon__left Box__root borderColor__standard"
 >
-  <path
-    d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
-  />
-</svg>
+  <svg
+    class="width__standardText height__standardText Icon__block Box__root borderColor__standard"
+    height="16"
+    viewBox="0 0 1024 1024"
+    width="16"
+  >
+    <path
+      d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
+    />
+  </svg>
+</div>
 `;
 
 exports[`ChevronIcon Theme: jobStreet Right 1`] = `
-<svg
-  class="ChevronIcon__root ChevronIcon__right width__standardText height__standardText Box__root borderColor__standard"
-  height="16"
-  viewBox="0 0 1024 1024"
-  width="16"
+<div
+  class="ChevronIcon__root ChevronIcon__right Box__root borderColor__standard"
 >
-  <path
-    d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
-  />
-</svg>
+  <svg
+    class="width__standardText height__standardText Icon__block Box__root borderColor__standard"
+    height="16"
+    viewBox="0 0 1024 1024"
+    width="16"
+  >
+    <path
+      d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
+    />
+  </svg>
+</div>
 `;
 
 exports[`ChevronIcon Theme: jobStreet Sized 1`] = `
-<svg
-  class="ChevronIcon__root width__largeText height__largeText Box__root borderColor__standard"
-  height="16"
-  viewBox="0 0 1024 1024"
-  width="16"
+<div
+  class="ChevronIcon__root Box__root borderColor__standard"
 >
-  <path
-    d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
-  />
-</svg>
+  <svg
+    class="width__largeText height__largeText Icon__block Box__root borderColor__standard"
+    height="16"
+    viewBox="0 0 1024 1024"
+    width="16"
+  >
+    <path
+      d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
+    />
+  </svg>
+</div>
 `;
 
 exports[`ChevronIcon Theme: jobStreet Up 1`] = `
-<svg
-  class="ChevronIcon__root ChevronIcon__up width__standardText height__standardText Box__root borderColor__standard"
-  height="16"
-  viewBox="0 0 1024 1024"
-  width="16"
+<div
+  class="ChevronIcon__root ChevronIcon__up Box__root borderColor__standard"
 >
-  <path
-    d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
-  />
-</svg>
+  <svg
+    class="width__standardText height__standardText Icon__block Box__root borderColor__standard"
+    height="16"
+    viewBox="0 0 1024 1024"
+    width="16"
+  >
+    <path
+      d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
+    />
+  </svg>
+</div>
 `;
 
 exports[`ChevronIcon Theme: seekAnz Default 1`] = `
-<svg
-  class="ChevronIcon__root width__standardText height__standardText Box__root borderColor__standard"
-  height="16"
-  viewBox="0 0 1024 1024"
-  width="16"
+<div
+  class="ChevronIcon__root Box__root borderColor__standard"
 >
-  <path
-    d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
-  />
-</svg>
+  <svg
+    class="width__standardText height__standardText Icon__block Box__root borderColor__standard"
+    height="16"
+    viewBox="0 0 1024 1024"
+    width="16"
+  >
+    <path
+      d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
+    />
+  </svg>
+</div>
 `;
 
 exports[`ChevronIcon Theme: seekAnz Down 1`] = `
-<svg
-  class="ChevronIcon__root width__standardText height__standardText Box__root borderColor__standard"
-  height="16"
-  viewBox="0 0 1024 1024"
-  width="16"
+<div
+  class="ChevronIcon__root Box__root borderColor__standard"
 >
-  <path
-    d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
-  />
-</svg>
+  <svg
+    class="width__standardText height__standardText Icon__block Box__root borderColor__standard"
+    height="16"
+    viewBox="0 0 1024 1024"
+    width="16"
+  >
+    <path
+      d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
+    />
+  </svg>
+</div>
 `;
 
 exports[`ChevronIcon Theme: seekAnz Inline 1`] = `
-<svg
-  class="ChevronIcon__root width__standardTextInline height__standardTextInline Icon__inline Box__root borderColor__standard"
-  height="16"
-  viewBox="0 0 1024 1024"
-  width="16"
+<div
+  class="ChevronIcon__root ChevronIcon__inline Box__root borderColor__standard"
 >
-  <path
-    d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
-  />
-</svg>
+  <svg
+    class="width__standardTextInline height__standardTextInline Icon__inline Box__root borderColor__standard"
+    height="16"
+    viewBox="0 0 1024 1024"
+    width="16"
+  >
+    <path
+      d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
+    />
+  </svg>
+</div>
 `;
 
 exports[`ChevronIcon Theme: seekAnz Left 1`] = `
-<svg
-  class="ChevronIcon__root ChevronIcon__left width__standardText height__standardText Box__root borderColor__standard"
-  height="16"
-  viewBox="0 0 1024 1024"
-  width="16"
+<div
+  class="ChevronIcon__root ChevronIcon__left Box__root borderColor__standard"
 >
-  <path
-    d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
-  />
-</svg>
+  <svg
+    class="width__standardText height__standardText Icon__block Box__root borderColor__standard"
+    height="16"
+    viewBox="0 0 1024 1024"
+    width="16"
+  >
+    <path
+      d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
+    />
+  </svg>
+</div>
 `;
 
 exports[`ChevronIcon Theme: seekAnz Right 1`] = `
-<svg
-  class="ChevronIcon__root ChevronIcon__right width__standardText height__standardText Box__root borderColor__standard"
-  height="16"
-  viewBox="0 0 1024 1024"
-  width="16"
+<div
+  class="ChevronIcon__root ChevronIcon__right Box__root borderColor__standard"
 >
-  <path
-    d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
-  />
-</svg>
+  <svg
+    class="width__standardText height__standardText Icon__block Box__root borderColor__standard"
+    height="16"
+    viewBox="0 0 1024 1024"
+    width="16"
+  >
+    <path
+      d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
+    />
+  </svg>
+</div>
 `;
 
 exports[`ChevronIcon Theme: seekAnz Sized 1`] = `
-<svg
-  class="ChevronIcon__root width__largeText height__largeText Box__root borderColor__standard"
-  height="16"
-  viewBox="0 0 1024 1024"
-  width="16"
+<div
+  class="ChevronIcon__root Box__root borderColor__standard"
 >
-  <path
-    d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
-  />
-</svg>
+  <svg
+    class="width__largeText height__largeText Icon__block Box__root borderColor__standard"
+    height="16"
+    viewBox="0 0 1024 1024"
+    width="16"
+  >
+    <path
+      d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
+    />
+  </svg>
+</div>
 `;
 
 exports[`ChevronIcon Theme: seekAnz Up 1`] = `
-<svg
-  class="ChevronIcon__root ChevronIcon__up width__standardText height__standardText Box__root borderColor__standard"
-  height="16"
-  viewBox="0 0 1024 1024"
-  width="16"
+<div
+  class="ChevronIcon__root ChevronIcon__up Box__root borderColor__standard"
 >
-  <path
-    d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
-  />
-</svg>
+  <svg
+    class="width__standardText height__standardText Icon__block Box__root borderColor__standard"
+    height="16"
+    viewBox="0 0 1024 1024"
+    width="16"
+  >
+    <path
+      d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
+    />
+  </svg>
+</div>
 `;
 
 exports[`ChevronIcon Theme: seekAsia Default 1`] = `
-<svg
-  class="ChevronIcon__root width__standardText height__standardText Box__root borderColor__standard"
-  height="16"
-  viewBox="0 0 1024 1024"
-  width="16"
+<div
+  class="ChevronIcon__root Box__root borderColor__standard"
 >
-  <path
-    d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
-  />
-</svg>
+  <svg
+    class="width__standardText height__standardText Icon__block Box__root borderColor__standard"
+    height="16"
+    viewBox="0 0 1024 1024"
+    width="16"
+  >
+    <path
+      d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
+    />
+  </svg>
+</div>
 `;
 
 exports[`ChevronIcon Theme: seekAsia Down 1`] = `
-<svg
-  class="ChevronIcon__root width__standardText height__standardText Box__root borderColor__standard"
-  height="16"
-  viewBox="0 0 1024 1024"
-  width="16"
+<div
+  class="ChevronIcon__root Box__root borderColor__standard"
 >
-  <path
-    d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
-  />
-</svg>
+  <svg
+    class="width__standardText height__standardText Icon__block Box__root borderColor__standard"
+    height="16"
+    viewBox="0 0 1024 1024"
+    width="16"
+  >
+    <path
+      d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
+    />
+  </svg>
+</div>
 `;
 
 exports[`ChevronIcon Theme: seekAsia Inline 1`] = `
-<svg
-  class="ChevronIcon__root width__standardTextInline height__standardTextInline Icon__inline Box__root borderColor__standard"
-  height="16"
-  viewBox="0 0 1024 1024"
-  width="16"
+<div
+  class="ChevronIcon__root ChevronIcon__inline Box__root borderColor__standard"
 >
-  <path
-    d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
-  />
-</svg>
+  <svg
+    class="width__standardTextInline height__standardTextInline Icon__inline Box__root borderColor__standard"
+    height="16"
+    viewBox="0 0 1024 1024"
+    width="16"
+  >
+    <path
+      d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
+    />
+  </svg>
+</div>
 `;
 
 exports[`ChevronIcon Theme: seekAsia Left 1`] = `
-<svg
-  class="ChevronIcon__root ChevronIcon__left width__standardText height__standardText Box__root borderColor__standard"
-  height="16"
-  viewBox="0 0 1024 1024"
-  width="16"
+<div
+  class="ChevronIcon__root ChevronIcon__left Box__root borderColor__standard"
 >
-  <path
-    d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
-  />
-</svg>
+  <svg
+    class="width__standardText height__standardText Icon__block Box__root borderColor__standard"
+    height="16"
+    viewBox="0 0 1024 1024"
+    width="16"
+  >
+    <path
+      d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
+    />
+  </svg>
+</div>
 `;
 
 exports[`ChevronIcon Theme: seekAsia Right 1`] = `
-<svg
-  class="ChevronIcon__root ChevronIcon__right width__standardText height__standardText Box__root borderColor__standard"
-  height="16"
-  viewBox="0 0 1024 1024"
-  width="16"
+<div
+  class="ChevronIcon__root ChevronIcon__right Box__root borderColor__standard"
 >
-  <path
-    d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
-  />
-</svg>
+  <svg
+    class="width__standardText height__standardText Icon__block Box__root borderColor__standard"
+    height="16"
+    viewBox="0 0 1024 1024"
+    width="16"
+  >
+    <path
+      d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
+    />
+  </svg>
+</div>
 `;
 
 exports[`ChevronIcon Theme: seekAsia Sized 1`] = `
-<svg
-  class="ChevronIcon__root width__largeText height__largeText Box__root borderColor__standard"
-  height="16"
-  viewBox="0 0 1024 1024"
-  width="16"
+<div
+  class="ChevronIcon__root Box__root borderColor__standard"
 >
-  <path
-    d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
-  />
-</svg>
+  <svg
+    class="width__largeText height__largeText Icon__block Box__root borderColor__standard"
+    height="16"
+    viewBox="0 0 1024 1024"
+    width="16"
+  >
+    <path
+      d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
+    />
+  </svg>
+</div>
 `;
 
 exports[`ChevronIcon Theme: seekAsia Up 1`] = `
-<svg
-  class="ChevronIcon__root ChevronIcon__up width__standardText height__standardText Box__root borderColor__standard"
-  height="16"
-  viewBox="0 0 1024 1024"
-  width="16"
+<div
+  class="ChevronIcon__root ChevronIcon__up Box__root borderColor__standard"
 >
-  <path
-    d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
-  />
-</svg>
+  <svg
+    class="width__standardText height__standardText Icon__block Box__root borderColor__standard"
+    height="16"
+    viewBox="0 0 1024 1024"
+    width="16"
+  >
+    <path
+      d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
+    />
+  </svg>
+</div>
 `;
 
 exports[`ChevronIcon Theme: wireframe Default 1`] = `
-<svg
-  class="ChevronIcon__root width__standardText height__standardText Box__root borderColor__standard"
-  height="16"
-  viewBox="0 0 1024 1024"
-  width="16"
+<div
+  class="ChevronIcon__root Box__root borderColor__standard"
 >
-  <path
-    d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
-  />
-</svg>
+  <svg
+    class="width__standardText height__standardText Icon__block Box__root borderColor__standard"
+    height="16"
+    viewBox="0 0 1024 1024"
+    width="16"
+  >
+    <path
+      d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
+    />
+  </svg>
+</div>
 `;
 
 exports[`ChevronIcon Theme: wireframe Down 1`] = `
-<svg
-  class="ChevronIcon__root width__standardText height__standardText Box__root borderColor__standard"
-  height="16"
-  viewBox="0 0 1024 1024"
-  width="16"
+<div
+  class="ChevronIcon__root Box__root borderColor__standard"
 >
-  <path
-    d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
-  />
-</svg>
+  <svg
+    class="width__standardText height__standardText Icon__block Box__root borderColor__standard"
+    height="16"
+    viewBox="0 0 1024 1024"
+    width="16"
+  >
+    <path
+      d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
+    />
+  </svg>
+</div>
 `;
 
 exports[`ChevronIcon Theme: wireframe Inline 1`] = `
-<svg
-  class="ChevronIcon__root width__standardTextInline height__standardTextInline Icon__inline Box__root borderColor__standard"
-  height="16"
-  viewBox="0 0 1024 1024"
-  width="16"
+<div
+  class="ChevronIcon__root ChevronIcon__inline Box__root borderColor__standard"
 >
-  <path
-    d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
-  />
-</svg>
+  <svg
+    class="width__standardTextInline height__standardTextInline Icon__inline Box__root borderColor__standard"
+    height="16"
+    viewBox="0 0 1024 1024"
+    width="16"
+  >
+    <path
+      d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
+    />
+  </svg>
+</div>
 `;
 
 exports[`ChevronIcon Theme: wireframe Left 1`] = `
-<svg
-  class="ChevronIcon__root ChevronIcon__left width__standardText height__standardText Box__root borderColor__standard"
-  height="16"
-  viewBox="0 0 1024 1024"
-  width="16"
+<div
+  class="ChevronIcon__root ChevronIcon__left Box__root borderColor__standard"
 >
-  <path
-    d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
-  />
-</svg>
+  <svg
+    class="width__standardText height__standardText Icon__block Box__root borderColor__standard"
+    height="16"
+    viewBox="0 0 1024 1024"
+    width="16"
+  >
+    <path
+      d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
+    />
+  </svg>
+</div>
 `;
 
 exports[`ChevronIcon Theme: wireframe Right 1`] = `
-<svg
-  class="ChevronIcon__root ChevronIcon__right width__standardText height__standardText Box__root borderColor__standard"
-  height="16"
-  viewBox="0 0 1024 1024"
-  width="16"
+<div
+  class="ChevronIcon__root ChevronIcon__right Box__root borderColor__standard"
 >
-  <path
-    d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
-  />
-</svg>
+  <svg
+    class="width__standardText height__standardText Icon__block Box__root borderColor__standard"
+    height="16"
+    viewBox="0 0 1024 1024"
+    width="16"
+  >
+    <path
+      d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
+    />
+  </svg>
+</div>
 `;
 
 exports[`ChevronIcon Theme: wireframe Sized 1`] = `
-<svg
-  class="ChevronIcon__root width__largeText height__largeText Box__root borderColor__standard"
-  height="16"
-  viewBox="0 0 1024 1024"
-  width="16"
+<div
+  class="ChevronIcon__root Box__root borderColor__standard"
 >
-  <path
-    d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
-  />
-</svg>
+  <svg
+    class="width__largeText height__largeText Icon__block Box__root borderColor__standard"
+    height="16"
+    viewBox="0 0 1024 1024"
+    width="16"
+  >
+    <path
+      d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
+    />
+  </svg>
+</div>
 `;
 
 exports[`ChevronIcon Theme: wireframe Up 1`] = `
-<svg
-  class="ChevronIcon__root ChevronIcon__up width__standardText height__standardText Box__root borderColor__standard"
-  height="16"
-  viewBox="0 0 1024 1024"
-  width="16"
+<div
+  class="ChevronIcon__root ChevronIcon__up Box__root borderColor__standard"
 >
-  <path
-    d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
-  />
-</svg>
+  <svg
+    class="width__standardText height__standardText Icon__block Box__root borderColor__standard"
+    height="16"
+    viewBox="0 0 1024 1024"
+    width="16"
+  >
+    <path
+      d="M945 305l78 67-510 524-510-524 75-69 435 451 432-449z"
+    />
+  </svg>
+</div>
 `;
