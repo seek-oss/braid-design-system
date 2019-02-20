@@ -67,13 +67,13 @@ type FillVariants =
   | 'white';
 type FontFamilyVariants = 'text';
 type FontSizeVariant = TextSize | HeadingSize | 'interaction';
+export type FontWeightVariants = 'regular' | 'medium' | 'strong';
 export type DisplayVariants =
   | 'block'
   | 'inline'
   | 'none'
   | 'inlineBlock'
   | 'flex';
-
 type ResetTags =
   | 'html'
   | 'body'
