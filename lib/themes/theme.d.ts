@@ -64,7 +64,12 @@ type FillVariants =
 type FontFamilyVariants = 'text';
 export type FontSizeVariants = TextSize | 'interaction';
 export type FontWeightVariants = 'regular' | 'strong';
-export type DisplayVariants = 'block' | 'inline' | 'none' | 'inlineBlock' | 'flex';
+export type DisplayVariants =
+  | 'block'
+  | 'inline'
+  | 'none'
+  | 'inlineBlock'
+  | 'flex';
 
 type ResetTags =
   | 'html'

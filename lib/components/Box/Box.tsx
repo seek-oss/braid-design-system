@@ -127,7 +127,7 @@ export default class Box extends Component<BoxProps> {
                     atoms.paddingLeftDesktop,
                     paddingLeft
                   ),
-                display && 
+                display &&
                   getResponsiveClasses(
                     atoms.display,
                     atoms.displayDesktop,
