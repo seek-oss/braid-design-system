@@ -15,11 +15,9 @@ import {
 function getResponsiveClasses<AtomName extends string>(
   spaceAtoms: Record<AtomName, string>,
   desktopSpaceAtoms: Record<AtomName, string>,
-  propValue: ResponsiveProp<AtomName> | undefined
+  propValue: ResponsiveProp<AtomName>
 ) {
-  if (!propValue) {
-    return null;
-  } else if (typeof propValue === 'string') {
+  if (typeof propValue === 'string') {
     return spaceAtoms[propValue!];
   } else if (propValue instanceof Array) {
     return propValue[0] !== propValue[1]
