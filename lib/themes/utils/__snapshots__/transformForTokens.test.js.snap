@@ -5,8 +5,28 @@ Object {
   ".largeText": Object {
     "transform": "translateY(0.38em)",
   },
+  ".level1Heading": Object {
+    "transform": "translateY(0.2728571428571429em)",
+  },
+  ".level2Heading": Object {
+    "transform": "translateY(0.29666666666666663em)",
+  },
+  ".level3Heading": Object {
+    "transform": "translateY(0.32999999999999996em)",
+  },
   ".standardText": Object {
     "transform": "translateY(0.3442857142857143em)",
+  },
+  "@media screen and (min-width: 768px)": Object {
+    ".level1Heading": Object {
+      "transform": "translateY(0.24111111111111116em)",
+    },
+    ".level2Heading": Object {
+      "transform": "translateY(0.22999999999999998em)",
+    },
+    ".level3Heading": Object {
+      "transform": "translateY(0.29666666666666663em)",
+    },
   },
 }
 `;
@@ -16,8 +36,25 @@ Object {
   ".largeText": Object {
     "transform": "translateY(0.32666666666666666em)",
   },
+  ".level1Heading": Object {
+    "transform": "translateY(0.30285714285714294em)",
+  },
+  ".level2Heading": Object {
+    "transform": "translateY(0.37428571428571433em)",
+  },
+  ".level3Heading": Object {
+    "transform": "translateY(0.37428571428571433em)",
+  },
   ".standardText": Object {
     "transform": "translateY(0.41000000000000003em)",
+  },
+  "@media screen and (min-width: 740px)": Object {
+    ".level1Heading": Object {
+      "transform": "translateY(0.2314285714285714em)",
+    },
+    ".level2Heading": Object {
+      "transform": "translateY(0.30285714285714294em)",
+    },
   },
 }
 `;
@@ -27,12 +64,30 @@ Object {
   ".largeText": Object {
     "transform": "translateY(0.29666666666666663em)",
   },
+  ".level1Heading": Object {
+    "transform": "translateY(0.2728571428571429em)",
+  },
+  ".level2Heading": Object {
+    "transform": "translateY(0.29666666666666663em)",
+  },
+  ".level3Heading": Object {
+    "transform": "translateY(0.32999999999999996em)",
+  },
   ".standardText": Object {
     "transform": "translateY(0.38em)",
   },
   "@media screen and (min-width: 768px)": Object {
     ".largeText": Object {
       "transform": "translateY(0.32999999999999996em)",
+    },
+    ".level1Heading": Object {
+      "transform": "translateY(0.2770588235294118em)",
+    },
+    ".level2Heading": Object {
+      "transform": "translateY(0.2728571428571429em)",
+    },
+    ".level3Heading": Object {
+      "transform": "translateY(0.29666666666666663em)",
     },
   },
 }
@@ -43,8 +98,25 @@ Object {
   ".largeText": Object {
     "transform": "translateY(0.32666666666666666em)",
   },
+  ".level1Heading": Object {
+    "transform": "translateY(0.30285714285714294em)",
+  },
+  ".level2Heading": Object {
+    "transform": "translateY(0.37428571428571433em)",
+  },
+  ".level3Heading": Object {
+    "transform": "translateY(0.37428571428571433em)",
+  },
   ".standardText": Object {
     "transform": "translateY(0.41000000000000003em)",
+  },
+  "@media screen and (min-width: 768px)": Object {
+    ".level1Heading": Object {
+      "transform": "translateY(0.2314285714285714em)",
+    },
+    ".level2Heading": Object {
+      "transform": "translateY(0.30285714285714294em)",
+    },
   },
 }
 `;
