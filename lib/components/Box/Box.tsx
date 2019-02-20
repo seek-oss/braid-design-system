@@ -78,46 +78,54 @@ export default class Box extends Component<BoxProps> {
                 atoms.borderColor[borderColor!],
                 atoms.borderWidth[borderWidth!],
                 atoms.borderRadius[borderRadius!],
-                getResponsiveClasses(
-                  atoms.marginTop,
-                  atoms.marginTopDesktop,
-                  marginTop
-                ),
-                getResponsiveClasses(
-                  atoms.marginRight,
-                  atoms.marginRightDesktop,
-                  marginRight
-                ),
-                getResponsiveClasses(
-                  atoms.marginBottom,
-                  atoms.marginBottomDesktop,
-                  marginBottom
-                ),
-                getResponsiveClasses(
-                  atoms.marginLeft,
-                  atoms.marginLeftDesktop,
-                  marginLeft
-                ),
-                getResponsiveClasses(
-                  atoms.paddingTop,
-                  atoms.paddingTopDesktop,
-                  paddingTop
-                ),
-                getResponsiveClasses(
-                  atoms.paddingRight,
-                  atoms.paddingRightDesktop,
-                  paddingRight
-                ),
-                getResponsiveClasses(
-                  atoms.paddingBottom,
-                  atoms.paddingBottomDesktop,
-                  paddingBottom
-                ),
-                getResponsiveClasses(
-                  atoms.paddingLeft,
-                  atoms.paddingLeftDesktop,
-                  paddingLeft
-                )
+                marginTop &&
+                  getResponsiveClasses(
+                    atoms.marginTop,
+                    atoms.marginTopDesktop,
+                    marginTop
+                  ),
+                marginRight &&
+                  getResponsiveClasses(
+                    atoms.marginRight,
+                    atoms.marginRightDesktop,
+                    marginRight
+                  ),
+                marginBottom &&
+                  getResponsiveClasses(
+                    atoms.marginBottom,
+                    atoms.marginBottomDesktop,
+                    marginBottom
+                  ),
+                marginLeft &&
+                  getResponsiveClasses(
+                    atoms.marginLeft,
+                    atoms.marginLeftDesktop,
+                    marginLeft
+                  ),
+                paddingTop &&
+                  getResponsiveClasses(
+                    atoms.paddingTop,
+                    atoms.paddingTopDesktop,
+                    paddingTop
+                  ),
+                paddingRight &&
+                  getResponsiveClasses(
+                    atoms.paddingRight,
+                    atoms.paddingRightDesktop,
+                    paddingRight
+                  ),
+                paddingBottom &&
+                  getResponsiveClasses(
+                    atoms.paddingBottom,
+                    atoms.paddingBottomDesktop,
+                    paddingBottom
+                  ),
+                paddingLeft &&
+                  getResponsiveClasses(
+                    atoms.paddingLeft,
+                    atoms.paddingLeftDesktop,
+                    paddingLeft
+                  )
               )}
               {...restProps}
             />
