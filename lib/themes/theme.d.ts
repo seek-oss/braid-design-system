@@ -53,7 +53,6 @@ export type ColorVariants =
   | 'secondary'
   | 'formAccent'
   | 'neutral';
-type DisplayVariants = 'flexOnDesktop';
 type FillVariants =
   | 'currentColor'
   | 'formAccent'
@@ -179,7 +178,6 @@ export interface Atoms {
   borderWidth: Record<BorderWidthVariants, string>;
   boxShadow: Record<BorderShadowVariants, string>;
   color: Record<ColorVariants, string>;
-  display: Record<DisplayVariants, string>;
   fill: Record<FillVariants, string>;
   fontFamily: Record<FontFamilyVariants, string>;
   fontSize: Record<FontSizeVariants, string>;

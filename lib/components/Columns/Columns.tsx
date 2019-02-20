@@ -7,7 +7,7 @@ export interface ColumnsProps {
 
 const Columns: React.StatelessComponent<ColumnsProps> = ({ children }) => {
   return (
-    <Box display="flexOnDesktop">
+    <Box display={['block', 'flex']}>
       {React.Children.map(children, (child, index) => (
         <Fragment key={index}>
           <Box style={{ flex: 1 }}>hello</Box>
