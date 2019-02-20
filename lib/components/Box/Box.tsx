@@ -13,16 +13,16 @@ import {
 } from '../../themes/theme';
 
 function getResponsiveClasses<AtomName extends string>(
-  spaceAtoms: Record<AtomName, string>,
-  desktopSpaceAtoms: Record<AtomName, string>,
+  atoms: Record<AtomName, string>,
+  desktopAtoms: Record<AtomName, string>,
   propValue: ResponsiveProp<AtomName>
 ) {
   if (typeof propValue === 'string') {
-    return spaceAtoms[propValue!];
+    return atoms[propValue!];
   } else if (propValue instanceof Array) {
     return propValue[0] !== propValue[1]
-      ? `${spaceAtoms[propValue[0]]} ${desktopSpaceAtoms[propValue[1]!]}`
-      : propValue[0];
+      ? `${atoms[propValue[0]!] || ''} ${desktopAtoms[propValue[1]!] || ''}`
+      : atoms[propValue[0]!];
   }
 }
 
