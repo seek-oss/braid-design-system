@@ -12,18 +12,18 @@ import {
   BorderColorVariants
 } from '../../themes/theme';
 
-function getResponsiveClasses<Prop extends string>(
-  atomsSpace: Record<Prop, string>,
-  atomsDesktopSpace: Record<Prop, string>,
-  propValue: ResponsiveProp<Prop> | undefined
+function getResponsiveClasses<AtomName extends string>(
+  spaceAtoms: Record<AtomName, string>,
+  desktopSpaceAtoms: Record<AtomName, string>,
+  propValue: ResponsiveProp<AtomName> | undefined
 ) {
   if (!propValue) {
     return null;
   } else if (typeof propValue === 'string') {
-    return atomsSpace[propValue!];
+    return spaceAtoms[propValue!];
   } else if (propValue instanceof Array) {
     return propValue[0] !== propValue[1]
-      ? `${atomsSpace[propValue[0]]} ${atomsDesktopSpace[propValue[1]!]}`
+      ? `${spaceAtoms[propValue[0]]} ${desktopSpaceAtoms[propValue[1]!]}`
       : propValue[0];
   }
 }
