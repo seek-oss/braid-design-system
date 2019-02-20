@@ -67,7 +67,13 @@ type FillVariants =
   | 'white';
 type FontFamilyVariants = 'text';
 type FontSizeVariant = TextSize | HeadingSize | 'interaction';
-export type FontWeightVariants = 'regular' | 'medium' | 'strong';
+export type DisplayVariants =
+  | 'block'
+  | 'inline'
+  | 'none'
+  | 'inlineBlock'
+  | 'flex';
+
 type ResetTags =
   | 'html'
   | 'body'
@@ -189,10 +195,20 @@ export interface Atoms {
   marginRight: Record<HorizontalSpacingVariants, string>;
   marginBottom: Record<SpacingVariants, string>;
   marginLeft: Record<HorizontalSpacingVariants, string>;
+  marginTopDesktop: Record<SpacingVariants, string>;
+  marginRightDesktop: Record<HorizontalSpacingVariants, string>;
+  marginBottomDesktop: Record<SpacingVariants, string>;
+  marginLeftDesktop: Record<HorizontalSpacingVariants, string>;
   paddingTop: Record<SpacingVariants, string>;
   paddingRight: Record<HorizontalSpacingVariants, string>;
   paddingBottom: Record<SpacingVariants, string>;
   paddingLeft: Record<HorizontalSpacingVariants, string>;
+  paddingTopDesktop: Record<SpacingVariants, string>;
+  paddingRightDesktop: Record<HorizontalSpacingVariants, string>;
+  paddingBottomDesktop: Record<SpacingVariants, string>;
+  paddingLeftDesktop: Record<HorizontalSpacingVariants, string>;
+  display: Record<DisplayVariants, string>;
+  displayDesktop: Record<DisplayVariants, string>;
   transform: Record<TransformVariant, string>;
   transition: Record<TransitionVariants, string>;
   width: Record<SizeVariants, string>;
