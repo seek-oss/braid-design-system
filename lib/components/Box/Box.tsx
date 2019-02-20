@@ -33,16 +33,22 @@ export default class Box extends Component<BoxProps> {
   getClass(
     atomsSpace: any,
     atomsDesktopSpace: any,
-    propsSpace: SpacingVariants | SpacingVariants[] | HorizontalSpacingVariants | HorizontalSpacingVariants[] | undefined
+    propsSpace:
+      | SpacingVariants
+      | SpacingVariants[]
+      | HorizontalSpacingVariants
+      | HorizontalSpacingVariants[]
+      | undefined
   ) {
     const classes = [];
-    if(typeof propsSpace === 'string') classes.push(atomsSpace[propsSpace!])
-    else if(propsSpace instanceof Array) classes.push(
-      atomsSpace[propsSpace[0]!],
-      atomsDesktopSpace[propsSpace[1]!],
-    )
+    if (typeof propsSpace === 'string') classes.push(atomsSpace[propsSpace!]);
+    else if (propsSpace instanceof Array)
+      classes.push(
+        atomsSpace[propsSpace[0]!],
+        atomsDesktopSpace[propsSpace[1]!]
+      );
     return classes;
-  } 
+  }
 
   render() {
     const {
@@ -64,28 +70,61 @@ export default class Box extends Component<BoxProps> {
 
     return (
       <ThemeConsumer>
-        {({atoms}) => {
+        {({ atoms }) => {
           return (
-          <Reset
-            className={classnames(
-              className,
-              styles.root,
-              atoms.backgroundColor[backgroundColor!],
-              atoms.borderColor[borderColor!],
-              atoms.borderWidth[borderWidth!],
-              atoms.borderRadius[borderRadius!],
-              ...this.getClass(atoms.marginTop, atoms.marginTopDesktop, marginTop),
-              ...this.getClass(atoms.marginRight, atoms.marginRightDesktop, marginRight),
-              ...this.getClass(atoms.marginBottom, atoms.marginBottomDesktop, marginBottom),
-              ...this.getClass(atoms.marginLeft, atoms.marginLeftDesktop, marginLeft),
-              ...this.getClass(atoms.paddingTop, atoms.paddingTopDesktop, paddingTop),
-              ...this.getClass(atoms.paddingRight, atoms.paddingRightDesktop, paddingRight),
-              ...this.getClass(atoms.paddingBottom, atoms.paddingBottomDesktop, paddingBottom),
-              ...this.getClass(atoms.paddingLeft, atoms.paddingLeftDesktop, paddingLeft)
-            )}
-            {...restProps}
-          />
-        )}}
+            <Reset
+              className={classnames(
+                className,
+                styles.root,
+                atoms.backgroundColor[backgroundColor!],
+                atoms.borderColor[borderColor!],
+                atoms.borderWidth[borderWidth!],
+                atoms.borderRadius[borderRadius!],
+                ...this.getClass(
+                  atoms.marginTop,
+                  atoms.marginTopDesktop,
+                  marginTop
+                ),
+                ...this.getClass(
+                  atoms.marginRight,
+                  atoms.marginRightDesktop,
+                  marginRight
+                ),
+                ...this.getClass(
+                  atoms.marginBottom,
+                  atoms.marginBottomDesktop,
+                  marginBottom
+                ),
+                ...this.getClass(
+                  atoms.marginLeft,
+                  atoms.marginLeftDesktop,
+                  marginLeft
+                ),
+                ...this.getClass(
+                  atoms.paddingTop,
+                  atoms.paddingTopDesktop,
+                  paddingTop
+                ),
+                ...this.getClass(
+                  atoms.paddingRight,
+                  atoms.paddingRightDesktop,
+                  paddingRight
+                ),
+                ...this.getClass(
+                  atoms.paddingBottom,
+                  atoms.paddingBottomDesktop,
+                  paddingBottom
+                ),
+                ...this.getClass(
+                  atoms.paddingLeft,
+                  atoms.paddingLeftDesktop,
+                  paddingLeft
+                )
+              )}
+              {...restProps}
+            />
+          );
+        }}
       </ThemeConsumer>
     );
   }
