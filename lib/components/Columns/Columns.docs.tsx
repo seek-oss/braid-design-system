@@ -8,8 +8,8 @@ export default {
       label: 'Columns',
       render: () => (
         <Columns>
-          <div>AA</div>
-          <div>BB</div>
+          <div style={{ backgroundColor: 'pink' }}>AA</div>
+          <div style={{ backgroundColor: 'tan' }}>BB</div>
         </Columns>
       )
     }

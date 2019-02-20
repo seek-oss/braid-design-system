@@ -9,12 +9,15 @@ const Columns: React.StatelessComponent<ColumnsProps> = ({ children }) => {
   return (
     <Box display={['block', 'flex']}>
       {React.Children.map(children, (child, index) => (
-        <Fragment key={index}>
-          <Box style={{ flex: 1 }}>hello</Box>
-          {/* <Hidden mobile>
-                    <Space size="small" />
-                </Hidden> */}
-        </Fragment>
+        <Box
+          key={index}
+          display={['block', 'flex']}
+          marginLeft={["medium", index ? "none" : "medium"]}
+          marginRight={["medium", "medium"]}
+          style={{ flex: 1 }}
+          >
+          {child}
+        </Box>
       ))}
     </Box>
   );
