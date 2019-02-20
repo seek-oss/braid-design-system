@@ -13,14 +13,14 @@ import {
 } from '../../themes/theme';
 
 export interface BoxProps extends ResetProps {
-  paddingTop?: SpacingVariants;
-  paddingBottom?: SpacingVariants;
-  paddingLeft?: HorizontalSpacingVariants;
-  paddingRight?: HorizontalSpacingVariants;
-  marginTop?: SpacingVariants;
-  marginBottom?: SpacingVariants;
-  marginLeft?: HorizontalSpacingVariants;
-  marginRight?: HorizontalSpacingVariants;
+  paddingTop?: SpacingVariants | SpacingVariants[];
+  paddingBottom?: SpacingVariants | SpacingVariants[];
+  paddingLeft?: HorizontalSpacingVariants | HorizontalSpacingVariants[];
+  paddingRight?: HorizontalSpacingVariants | HorizontalSpacingVariants[];
+  marginTop?: SpacingVariants | SpacingVariants[];
+  marginBottom?: SpacingVariants | SpacingVariants[];
+  marginLeft?: HorizontalSpacingVariants | HorizontalSpacingVariants[];
+  marginRight?: HorizontalSpacingVariants | HorizontalSpacingVariants[];
   borderWidth?: BorderWidthVariants;
   borderRadius?: BorderRadiusVariants;
   backgroundColor?: BackgroundColorVariants;
@@ -29,6 +29,20 @@ export interface BoxProps extends ResetProps {
 
 export default class Box extends Component<BoxProps> {
   static displayName = 'Box';
+
+  getClass(
+    atomsSpace: any,
+    atomsDesktopSpace: any,
+    propsSpace: SpacingVariants | SpacingVariants[] | HorizontalSpacingVariants | HorizontalSpacingVariants[] | undefined
+  ) {
+    const classes = [];
+    if(typeof propsSpace === 'string') classes.push(atomsSpace[propsSpace!])
+    else if(propsSpace instanceof Array) classes.push(
+      atomsSpace[propsSpace[0]!],
+      atomsDesktopSpace[propsSpace[1]!],
+    )
+    return classes;
+  } 
 
   render() {
     const {
@@ -50,27 +64,28 @@ export default class Box extends Component<BoxProps> {
 
     return (
       <ThemeConsumer>
-        {theme => (
+        {({atoms}) => {
+          return (
           <Reset
             className={classnames(
               className,
               styles.root,
-              theme.atoms.backgroundColor[backgroundColor!],
-              theme.atoms.borderColor[borderColor!],
-              theme.atoms.borderWidth[borderWidth!],
-              theme.atoms.borderRadius[borderRadius!],
-              theme.atoms.marginTop[marginTop!],
-              theme.atoms.marginRight[marginRight!],
-              theme.atoms.marginBottom[marginBottom!],
-              theme.atoms.marginLeft[marginLeft!],
-              theme.atoms.paddingTop[paddingTop!],
-              theme.atoms.paddingRight[paddingRight!],
-              theme.atoms.paddingBottom[paddingBottom!],
-              theme.atoms.paddingLeft[paddingLeft!]
+              atoms.backgroundColor[backgroundColor!],
+              atoms.borderColor[borderColor!],
+              atoms.borderWidth[borderWidth!],
+              atoms.borderRadius[borderRadius!],
+              ...this.getClass(atoms.marginTop, atoms.marginTopDesktop, marginTop),
+              ...this.getClass(atoms.marginRight, atoms.marginRightDesktop, marginRight),
+              ...this.getClass(atoms.marginBottom, atoms.marginBottomDesktop, marginBottom),
+              ...this.getClass(atoms.marginLeft, atoms.marginLeftDesktop, marginLeft),
+              ...this.getClass(atoms.paddingTop, atoms.paddingTopDesktop, paddingTop),
+              ...this.getClass(atoms.paddingRight, atoms.paddingRightDesktop, paddingRight),
+              ...this.getClass(atoms.paddingBottom, atoms.paddingBottomDesktop, paddingBottom),
+              ...this.getClass(atoms.paddingLeft, atoms.paddingLeftDesktop, paddingLeft)
             )}
             {...restProps}
           />
-        )}
+        )}}
       </ThemeConsumer>
     );
   }
