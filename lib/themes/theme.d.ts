@@ -64,6 +64,8 @@ type FillVariants =
 type FontFamilyVariants = 'text';
 export type FontSizeVariants = TextSize | 'interaction';
 export type FontWeightVariants = 'regular' | 'strong';
+export type DisplayVariants = 'block' | 'inline' | 'none' | 'inlineBlock' | 'flex';
+
 type ResetTags =
   | 'html'
   | 'body'
@@ -192,6 +194,8 @@ export interface Atoms {
   paddingRightDesktop: Record<HorizontalSpacingVariants, string>;
   paddingBottomDesktop: Record<SpacingVariants, string>;
   paddingLeftDesktop: Record<HorizontalSpacingVariants, string>;
+  display: Record<DisplayVariants, string>;
+  displayDesktop: Record<DisplayVariants, string>;
   transform: Record<TransformVariants, string>;
   transition: Record<TransitionVariants, string>;
   width: Record<SizeVariants, string>;

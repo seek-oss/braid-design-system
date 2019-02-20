@@ -9,7 +9,8 @@ import {
   BorderWidthVariants,
   BorderRadiusVariants,
   BackgroundColorVariants,
-  BorderColorVariants
+  BorderColorVariants,
+  DisplayVariants
 } from '../../themes/theme';
 
 function getResponsiveClasses<AtomName extends string>(
@@ -37,6 +38,7 @@ export interface BoxProps extends ResetProps {
   marginBottom?: ResponsiveProp<SpacingVariants>;
   marginLeft?: ResponsiveProp<HorizontalSpacingVariants>;
   marginRight?: ResponsiveProp<HorizontalSpacingVariants>;
+  display?: ResponsiveProp<DisplayVariants>;
   borderWidth?: BorderWidthVariants;
   borderRadius?: BorderRadiusVariants;
   backgroundColor?: BackgroundColorVariants;
@@ -56,6 +58,7 @@ export default class Box extends Component<BoxProps> {
       marginBottom,
       marginLeft,
       marginRight,
+      display,
       borderWidth,
       borderRadius,
       backgroundColor,
@@ -123,6 +126,12 @@ export default class Box extends Component<BoxProps> {
                     atoms.paddingLeft,
                     atoms.paddingLeftDesktop,
                     paddingLeft
+                  ),
+                display && 
+                  getResponsiveClasses(
+                    atoms.display,
+                    atoms.displayDesktop,
+                    display
                   )
               )}
               {...restProps}

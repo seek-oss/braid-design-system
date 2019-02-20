@@ -45,6 +45,8 @@ export {
 export {
   default as paddingLeftDesktop
 } from './padding/paddingLeftDesktop.css.js';
+export { default as display } from './display.css.js';
+export { default as displayDesktop } from './displayDesktop.css.js';
 export { default as transform } from './transform.css.js';
 export { default as transition } from './transition.css.js';
 export { default as width } from './width.css.js';
