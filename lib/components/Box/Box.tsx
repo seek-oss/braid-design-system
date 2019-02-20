@@ -12,15 +12,33 @@ import {
   BorderColorVariants
 } from '../../themes/theme';
 
+function getResponsiveClasses<Prop extends string>(
+  atomsSpace: Record<Prop, string>,
+  atomsDesktopSpace: Record<Prop, string>,
+  propValue: ResponsiveProp<Prop> | undefined
+) {
+  if (!propValue) {
+    return null;
+  } else if (typeof propValue === 'string') {
+    return atomsSpace[propValue!];
+  } else if (propValue instanceof Array) {
+    return propValue[0] !== propValue[1]
+      ? `${atomsSpace[propValue[0]]} ${atomsDesktopSpace[propValue[1]!]}`
+      : propValue[0];
+  }
+}
+
+type ResponsiveProp<AtomName> = AtomName | [AtomName, AtomName];
+
 export interface BoxProps extends ResetProps {
-  paddingTop?: SpacingVariants | SpacingVariants[];
-  paddingBottom?: SpacingVariants | SpacingVariants[];
-  paddingLeft?: HorizontalSpacingVariants | HorizontalSpacingVariants[];
-  paddingRight?: HorizontalSpacingVariants | HorizontalSpacingVariants[];
-  marginTop?: SpacingVariants | SpacingVariants[];
-  marginBottom?: SpacingVariants | SpacingVariants[];
-  marginLeft?: HorizontalSpacingVariants | HorizontalSpacingVariants[];
-  marginRight?: HorizontalSpacingVariants | HorizontalSpacingVariants[];
+  paddingTop?: ResponsiveProp<SpacingVariants>;
+  paddingBottom?: ResponsiveProp<SpacingVariants>;
+  paddingLeft?: ResponsiveProp<HorizontalSpacingVariants>;
+  paddingRight?: ResponsiveProp<HorizontalSpacingVariants>;
+  marginTop?: ResponsiveProp<SpacingVariants>;
+  marginBottom?: ResponsiveProp<SpacingVariants>;
+  marginLeft?: ResponsiveProp<HorizontalSpacingVariants>;
+  marginRight?: ResponsiveProp<HorizontalSpacingVariants>;
   borderWidth?: BorderWidthVariants;
   borderRadius?: BorderRadiusVariants;
   backgroundColor?: BackgroundColorVariants;
@@ -29,26 +47,6 @@ export interface BoxProps extends ResetProps {
 
 export default class Box extends Component<BoxProps> {
   static displayName = 'Box';
-
-  getClass(
-    atomsSpace: any,
-    atomsDesktopSpace: any,
-    propsSpace:
-      | SpacingVariants
-      | SpacingVariants[]
-      | HorizontalSpacingVariants
-      | HorizontalSpacingVariants[]
-      | undefined
-  ) {
-    const classes = [];
-    if (typeof propsSpace === 'string') classes.push(atomsSpace[propsSpace!]);
-    else if (propsSpace instanceof Array)
-      classes.push(
-        atomsSpace[propsSpace[0]!],
-        atomsDesktopSpace[propsSpace[1]!]
-      );
-    return classes;
-  }
 
   render() {
     const {
@@ -80,42 +78,42 @@ export default class Box extends Component<BoxProps> {
                 atoms.borderColor[borderColor!],
                 atoms.borderWidth[borderWidth!],
                 atoms.borderRadius[borderRadius!],
-                ...this.getClass(
+                getResponsiveClasses(
                   atoms.marginTop,
                   atoms.marginTopDesktop,
                   marginTop
                 ),
-                ...this.getClass(
+                getResponsiveClasses(
                   atoms.marginRight,
                   atoms.marginRightDesktop,
                   marginRight
                 ),
-                ...this.getClass(
+                getResponsiveClasses(
                   atoms.marginBottom,
                   atoms.marginBottomDesktop,
                   marginBottom
                 ),
-                ...this.getClass(
+                getResponsiveClasses(
                   atoms.marginLeft,
                   atoms.marginLeftDesktop,
                   marginLeft
                 ),
-                ...this.getClass(
+                getResponsiveClasses(
                   atoms.paddingTop,
                   atoms.paddingTopDesktop,
                   paddingTop
                 ),
-                ...this.getClass(
+                getResponsiveClasses(
                   atoms.paddingRight,
                   atoms.paddingRightDesktop,
                   paddingRight
                 ),
-                ...this.getClass(
+                getResponsiveClasses(
                   atoms.paddingBottom,
                   atoms.paddingBottomDesktop,
                   paddingBottom
                 ),
-                ...this.getClass(
+                getResponsiveClasses(
                   atoms.paddingLeft,
                   atoms.paddingLeftDesktop,
                   paddingLeft
