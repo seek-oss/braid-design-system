@@ -27,9 +27,9 @@ export default class ComponentProps extends Component<Props> {
 
     return Object.keys(props).length === 0 ? null : (
       <Fragment>
-        <Text weight="strong" paddingBottom="small">
-          Options
-        </Text>
+        <Box paddingBottom="small">
+          <Text weight="strong">Options</Text>
+        </Box>
         {map(props, (option, propName) => {
           if (!option) {
             return null;

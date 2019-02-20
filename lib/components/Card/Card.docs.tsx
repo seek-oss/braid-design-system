@@ -10,28 +10,30 @@ const docs: ComponentDocs = {
       label: 'Standard Card',
       render: () => (
         <Box
-          paddingLeft="small"
-          paddingRight="small"
-          paddingTop="small"
-          paddingBottom="small"
+          paddingLeft="gutter"
+          paddingRight="gutter"
+          paddingTop="medium"
           style={{ backgroundColor: '#ccc' }}
         >
-          <Card
-            paddingLeft="gutter"
-            paddingRight="gutter"
-            paddingTop="small"
-            paddingBottom="large"
-          >
-            <Text>This text is inside a card.</Text>
+          <Card>
+            <Box
+              paddingLeft="gutter"
+              paddingRight="gutter"
+              paddingTop="small"
+              paddingBottom="large"
+            >
+              <Text>This text is inside a card.</Text>
+            </Box>
           </Card>
-          <Card
-            paddingLeft="gutter"
-            paddingRight="gutter"
-            paddingTop="small"
-            paddingBottom="large"
-            marginBottom="none"
-          >
-            <Text>This text is inside a card.</Text>
+          <Card>
+            <Box
+              paddingLeft="gutter"
+              paddingRight="gutter"
+              paddingTop="small"
+              paddingBottom="large"
+            >
+              <Text>This text is inside a card.</Text>
+            </Box>
           </Card>
         </Box>
       )

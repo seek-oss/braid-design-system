@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import { Omit } from 'utility-types';
+import React, { Component, ReactNode } from 'react';
 import classnames from 'classnames';
 import ThemeConsumer from '../ThemeConsumer/ThemeConsumer';
 import styles from './Text.css.js';
@@ -11,7 +10,8 @@ import {
   TransformVariants
 } from '../../themes/theme';
 
-export interface TextProps extends Omit<BoxProps, 'size'> {
+export interface TextProps extends Pick<BoxProps, 'component'> {
+  children?: ReactNode;
   size?: FontSizeVariants;
   color?: ColorVariants;
   weight?: FontWeightVariants;
@@ -37,8 +37,7 @@ export default class Text extends Component<TextProps> {
             color,
             weight,
             baseline = true,
-            className,
-            ...restProps
+            children
           } = this.props;
 
           const transformSize = `${size}Text`;
@@ -51,7 +50,6 @@ export default class Text extends Component<TextProps> {
             <Box
               component={component}
               className={classnames(
-                className,
                 styles.block,
                 theme.atoms.fontFamily.text,
                 theme.atoms.color[color || 'neutral'],
@@ -63,8 +61,9 @@ export default class Text extends Component<TextProps> {
                     typeof component === 'string' && /^li$/i.test(component)
                 }
               )}
-              {...restProps}
-            />
+            >
+              {children}
+            </Box>
           );
         }}
       </ThemeConsumer>

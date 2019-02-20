@@ -2,32 +2,48 @@
 
 exports[`Bullet Theme: jobStreet Default 1`] = `
 <li
-  class="Bullet__root Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Text__listItem Box__root borderColor__standard paddingBottom__xsmall"
+  class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Text__listItem Box__root borderColor__standard"
 >
-  Bullet
+  <span
+    class="Bullet__block Box__root borderColor__standard paddingBottom__xsmall"
+  >
+    Bullet
+  </span>
 </li>
 `;
 
 exports[`Bullet Theme: seekAnz Default 1`] = `
 <li
-  class="Bullet__root Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Text__listItem Box__root borderColor__standard paddingBottom__xsmall"
+  class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Text__listItem Box__root borderColor__standard"
 >
-  Bullet
+  <span
+    class="Bullet__block Box__root borderColor__standard paddingBottom__xsmall"
+  >
+    Bullet
+  </span>
 </li>
 `;
 
 exports[`Bullet Theme: seekAsia Default 1`] = `
 <li
-  class="Bullet__root Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Text__listItem Box__root borderColor__standard paddingBottom__xsmall"
+  class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Text__listItem Box__root borderColor__standard"
 >
-  Bullet
+  <span
+    class="Bullet__block Box__root borderColor__standard paddingBottom__xsmall"
+  >
+    Bullet
+  </span>
 </li>
 `;
 
 exports[`Bullet Theme: wireframe Default 1`] = `
 <li
-  class="Bullet__root Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Text__listItem Box__root borderColor__standard paddingBottom__xsmall"
+  class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Text__listItem Box__root borderColor__standard"
 >
-  Bullet
+  <span
+    class="Bullet__block Box__root borderColor__standard paddingBottom__xsmall"
+  >
+    Bullet
+  </span>
 </li>
 `;

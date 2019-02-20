@@ -34,36 +34,42 @@ export default class ComponentRoute extends Component<ComponentRouteProps> {
 
     return (
       <Box>
-        <Text size="large" weight="strong" paddingBottom="small">
-          {componentName}
-        </Text>
-        {examples.length > 0 ? (
-          <Text weight="strong" paddingBottom="small">
-            Example
-            {examples.length > 1 ? 's' : ''}
+        <Box paddingBottom="small">
+          <Text size="large" weight="strong">
+            {componentName}
           </Text>
+        </Box>
+        {examples.length > 0 ? (
+          <Box paddingBottom="small">
+            <Text weight="strong">
+              Example
+              {examples.length > 1 ? 's' : ''}
+            </Text>
+          </Box>
         ) : null}
         {examples.map(({ label, render, code }, index) => (
           <Box key={index} marginBottom="xxlarge">
-            {label ? <Text paddingBottom="small">{label}</Text> : null}
+            {label ? (
+              <Box paddingBottom="small">
+                <Text>{label}</Text>
+              </Box>
+            ) : null}
             {render
               ? themes.map(theme => (
                   <Box key={theme.name} marginBottom="large">
-                    <Text color="secondary" paddingBottom="small">
-                      Theme: {theme.name}
-                    </Text>
+                    <Box paddingBottom="small">
+                      <Text color="secondary">Theme: {theme.name}</Text>
+                    </Box>
                     <ThemeProvider theme={theme}>
                       {render({ id: `${index}_${theme.name}` })}
                     </ThemeProvider>
                   </Box>
                 ))
               : null}
-            <Text color="secondary" paddingBottom="small">
-              Code:
-            </Text>
-            <Text
-              component="pre"
-              color="white"
+            <Box paddingBottom="small">
+              <Text color="secondary">Code:</Text>
+            </Box>
+            <Box
               paddingLeft="small"
               paddingRight="small"
               paddingTop="xxsmall"
@@ -74,15 +80,17 @@ export default class ComponentRoute extends Component<ComponentRouteProps> {
                 overflowX: 'auto'
               }}
             >
-              {render
-                ? reactElementToJSXString(render({ id: 'id' }), {
-                    useBooleanShorthandSyntax: false,
-                    showDefaultProps: false,
-                    showFunctions: true
-                  })
-                : null}
-              {code ? dedent(code) : null}
-            </Text>
+              <Text component="pre" color="white">
+                {render
+                  ? reactElementToJSXString(render({ id: 'id' }), {
+                      useBooleanShorthandSyntax: false,
+                      showDefaultProps: false,
+                      showFunctions: true
+                    })
+                  : null}
+                {code ? dedent(code) : null}
+              </Text>
+            </Box>
           </Box>
         ))}
 
@@ -90,14 +98,16 @@ export default class ComponentRoute extends Component<ComponentRouteProps> {
           <ComponentProps componentName={componentName} />
         </Box>
 
-        <Text weight="strong" paddingBottom="small">
-          Source
-        </Text>
-        <Text paddingBottom="large">
-          <a href={sourceUrl} target="_blank" rel="noopener noreferrer">
-            View on GitHub
-          </a>
-        </Text>
+        <Box paddingBottom="small">
+          <Text weight="strong">Source</Text>
+        </Box>
+        <Box paddingBottom="large">
+          <Text>
+            <a href={sourceUrl} target="_blank" rel="noopener noreferrer">
+              View on GitHub
+            </a>
+          </Text>
+        </Box>
       </Box>
     );
   }

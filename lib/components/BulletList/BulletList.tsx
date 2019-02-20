@@ -1,12 +1,16 @@
-import React, { Component } from 'react';
-import Box, { BoxProps } from '../Box/Box';
+import React, { Component, ReactNode } from 'react';
+import Box from '../Box/Box';
 
-export type BulletListProps = BoxProps;
+export interface BulletListProps {
+  children?: ReactNode;
+}
 
 export default class BulletList extends Component<BulletListProps> {
   static displayName = 'BulletList';
 
   render() {
-    return <Box component="ul" {...this.props} />;
+    const { children } = this.props;
+
+    return <Box component="ul">{children}</Box>;
   }
 }

@@ -1,6 +1,5 @@
 import React, { Component, ReactNode, AllHTMLAttributes } from 'react';
 import classnames from 'classnames';
-import { Omit } from 'utility-types';
 import ThemeConsumer from '../ThemeConsumer/ThemeConsumer';
 import getCheckboxRadioSize from '../private/getCheckboxRadioSize';
 import Box from '../Box/Box';
@@ -21,19 +20,15 @@ const textColorForState = (disabled: boolean, hovered: boolean) => {
   return 'neutral';
 };
 
+type InputProps = AllHTMLAttributes<HTMLInputElement>;
+type RequiredInputProps = 'id' | 'checked' | 'onChange';
+type OptionalInputProps = 'disabled' | 'children';
 export interface RadioProps
-  extends Omit<AllHTMLAttributes<HTMLElement>, 'label'> {
-  variant?: 'default' | 'inChecklistCard';
-  id: string;
-  checked: boolean;
+  extends Required<Pick<InputProps, RequiredInputProps>>,
+    Pick<InputProps, OptionalInputProps> {
   label: ReactNode;
-  disabled?: boolean;
-  inputProps?: object;
-  labelProps?: object;
   tone?: 'neutral' | 'critical' | 'positive';
   message?: ReactNode | false;
-  messageProps?: object;
-  children?: ReactNode;
 }
 
 interface State {
@@ -67,62 +62,35 @@ export default class Radio extends Component<RadioProps, State> {
       <ThemeConsumer>
         {theme => {
           const {
-            variant = 'default',
             id,
             label,
             checked,
+            onChange,
             disabled = false,
-            className,
-            style,
-            inputProps,
-            labelProps,
             tone = 'neutral',
             message,
-            messageProps,
-            children,
-            ...restProps
+            children
           } = this.props;
 
           const { hovered } = this.state;
 
-          const inChecklistCard = variant === 'inChecklistCard';
           const fieldMessageId = `${id}-message`;
           const radioSize = getCheckboxRadioSize(theme);
 
           return (
-            <Box
-              {...(inChecklistCard && tone === 'critical'
-                ? { borderWidth: 'standard', borderColor: 'critical' }
-                : {})}
-              backgroundColor={
-                inChecklistCard && (checked || hovered) && !disabled
-                  ? 'selection'
-                  : undefined
-              }
-              paddingBottom={inChecklistCard ? 'xsmall' : undefined}
-              style={style}
-            >
+            <div>
               <input
                 className={styles.realRadio}
                 type="radio"
                 id={id}
                 checked={checked}
+                onChange={onChange}
                 disabled={disabled}
                 aria-describedby={fieldMessageId}
-                {...restProps}
-                {...inputProps}
               />
               <div className={styles.content}>
                 <Box
                   component="label"
-                  {...(inChecklistCard
-                    ? {
-                        paddingLeft: 'gutter',
-                        paddingRight: 'gutter',
-                        paddingTop: 'xxsmall',
-                        paddingBottom: 'xxsmall'
-                      }
-                    : {})}
                   className={classnames({
                     [styles.label]: true
                   })}
@@ -132,7 +100,6 @@ export default class Radio extends Component<RadioProps, State> {
                     )
                   }}
                   htmlFor={id}
-                  {...labelProps}
                   onMouseOver={this.handleMouseOver}
                   onMouseOut={this.handleMouseOut}
                 >
@@ -179,18 +146,16 @@ export default class Radio extends Component<RadioProps, State> {
                         theme.atoms.transition.fast
                       )}
                     />
-                    {!inChecklistCard ? (
-                      <Box
-                        borderColor="critical"
-                        borderWidth="standard"
-                        style={{ opacity: tone === 'critical' ? 1 : 0 }}
-                        className={classnames(
-                          styles.radio,
-                          styles.radioCritical,
-                          theme.atoms.transition.fast
-                        )}
-                      />
-                    ) : null}
+                    <Box
+                      borderColor="critical"
+                      borderWidth="standard"
+                      style={{ opacity: tone === 'critical' ? 1 : 0 }}
+                      className={classnames(
+                        styles.radio,
+                        styles.radioCritical,
+                        theme.atoms.transition.fast
+                      )}
+                    />
                     <Box
                       backgroundColor={
                         disabled ? 'formAccentDisabled' : 'formAccent'
@@ -210,34 +175,23 @@ export default class Radio extends Component<RadioProps, State> {
                 </Box>
                 {children ? (
                   <Box
-                    paddingLeft={inChecklistCard ? 'gutter' : 'none'}
-                    paddingRight={inChecklistCard ? 'gutter' : 'none'}
+                    paddingLeft="medium"
+                    paddingBottom="medium"
+                    className={styles.children}
+                    style={{ marginLeft: px(radioSize) }}
                   >
-                    <Box
-                      paddingLeft="medium"
-                      paddingBottom="medium"
-                      className={styles.children}
-                      style={{ marginLeft: px(radioSize) }}
-                    >
-                      {children}
-                    </Box>
+                    {children}
                   </Box>
                 ) : null}
               </div>
               {message !== false ? (
-                <Box
-                  paddingLeft={inChecklistCard ? 'gutter' : 'none'}
-                  paddingRight={inChecklistCard ? 'gutter' : 'none'}
-                >
-                  <FieldMessage
-                    id={fieldMessageId}
-                    tone={tone}
-                    message={message}
-                    {...messageProps}
-                  />
-                </Box>
+                <FieldMessage
+                  id={fieldMessageId}
+                  tone={tone}
+                  message={message}
+                />
               ) : null}
-            </Box>
+            </div>
           );
         }}
       </ThemeConsumer>

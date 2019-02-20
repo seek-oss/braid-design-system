@@ -103,54 +103,64 @@ export default withRouter(
                 paddingLeft="gutter"
                 paddingRight="gutter"
               >
-                <Text size="large" weight="strong" marginBottom="small">
-                  Tools
-                </Text>
-                <BulletList marginBottom="small">
-                  <Bullet>
-                    <a
-                      style={{ color: 'inherit' }}
-                      href="https://github.com/seek-oss/braid-design-system"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={this.closeMenu}
-                    >
-                      Source
-                    </a>
-                  </Bullet>
-                  <Bullet>
-                    <Link
-                      style={{ color: 'inherit' }}
-                      to="/playroom"
-                      target="_blank"
-                      onClick={this.closeMenu}
-                    >
-                      Playroom
-                    </Link>
-                  </Bullet>
-                </BulletList>
-                <Text size="large" weight="strong" marginBottom="small">
-                  Components
-                </Text>
-                <BulletList marginBottom="small">
-                  {Object.keys(components)
-                    .filter(x => !/icon/i.test(x))
-                    .sort()
-                    .map(componentName => (
-                      <Bullet key={componentName}>
-                        <Link
-                          style={{ color: 'inherit' }}
-                          to={`/components/${componentName}`}
-                          onClick={this.closeMenu}
-                        >
-                          {componentName}
-                        </Link>
-                      </Bullet>
-                    ))}
-                </BulletList>
-                <Text size="large" weight="strong" marginBottom="small">
-                  Icons
-                </Text>
+                <Box paddingBottom="small">
+                  <Text size="large" weight="strong">
+                    Tools
+                  </Text>
+                </Box>
+                <Box paddingBottom="small">
+                  <BulletList>
+                    <Bullet>
+                      <a
+                        style={{ color: 'inherit' }}
+                        href="https://github.com/seek-oss/braid-design-system"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={this.closeMenu}
+                      >
+                        Source
+                      </a>
+                    </Bullet>
+                    <Bullet>
+                      <Link
+                        style={{ color: 'inherit' }}
+                        to="/playroom"
+                        target="_blank"
+                        onClick={this.closeMenu}
+                      >
+                        Playroom
+                      </Link>
+                    </Bullet>
+                  </BulletList>
+                </Box>
+                <Box paddingBottom="small">
+                  <Text size="large" weight="strong">
+                    Components
+                  </Text>
+                </Box>
+                <Box paddingBottom="small">
+                  <BulletList>
+                    {Object.keys(components)
+                      .filter(x => !/icon/i.test(x))
+                      .sort()
+                      .map(componentName => (
+                        <Bullet key={componentName}>
+                          <Link
+                            style={{ color: 'inherit' }}
+                            to={`/components/${componentName}`}
+                            onClick={this.closeMenu}
+                          >
+                            {componentName}
+                          </Link>
+                        </Bullet>
+                      ))}
+                  </BulletList>
+                </Box>
+                <Box paddingBottom="small">
+                  <Text size="large" weight="strong">
+                    Icons
+                  </Text>
+                </Box>
                 <BulletList>
                   {Object.keys(components)
                     .filter(x => /icon/i.test(x) && x !== 'Icon')

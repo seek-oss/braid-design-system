@@ -5,7 +5,7 @@ exports[`Divider Theme: jobStreet Default 1`] = `
   class="Divider__root Box__root borderColor__standard"
 >
   <div
-    class="Divider__divider borderWidth__standard borderColor__standard"
+    class="Divider__divider Box__root borderColor__standard borderWidth__standard"
   />
 </div>
 `;
@@ -15,7 +15,7 @@ exports[`Divider Theme: seekAnz Default 1`] = `
   class="Divider__root Box__root borderColor__standard"
 >
   <div
-    class="Divider__divider borderWidth__standard borderColor__standard"
+    class="Divider__divider Box__root borderColor__standard borderWidth__standard"
   />
 </div>
 `;
@@ -25,7 +25,7 @@ exports[`Divider Theme: seekAsia Default 1`] = `
   class="Divider__root Box__root borderColor__standard"
 >
   <div
-    class="Divider__divider borderWidth__standard borderColor__standard"
+    class="Divider__divider Box__root borderColor__standard borderWidth__standard"
   />
 </div>
 `;
@@ -35,7 +35,7 @@ exports[`Divider Theme: wireframe Default 1`] = `
   class="Divider__root Box__root borderColor__standard"
 >
   <div
-    class="Divider__divider borderWidth__standard borderColor__standard"
+    class="Divider__divider Box__root borderColor__standard borderWidth__standard"
   />
 </div>
 `;

@@ -1,5 +1,6 @@
 import React from 'react';
 import Radio from './Radio';
+import Text from '../Text/Text';
 import { ComponentDocs } from '../../../docs/src/types';
 
 const handleChange = () => undefined;
@@ -73,6 +74,20 @@ const docs: ComponentDocs = {
           message="This is a positive message"
           tone="positive"
         />
+      )
+    },
+    {
+      label: 'Nested Radio Button',
+      render: ({ id }) => (
+        <Radio
+          id={id}
+          checked={true}
+          onChange={handleChange}
+          label="Label"
+          message={false}
+        >
+          <Text>This text is visible when the radio button is checked.</Text>
+        </Radio>
       )
     }
   ]
