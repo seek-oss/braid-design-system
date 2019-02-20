@@ -13,20 +13,36 @@ import {
   DisplayVariants
 } from '../../themes/theme';
 
+function getResponsiveClasses<AtomName extends string>(
+  atoms: Record<AtomName, string>,
+  desktopAtoms: Record<AtomName, string>,
+  propValue: ResponsiveProp<AtomName>
+) {
+  if (typeof propValue === 'string') {
+    return atoms[propValue!];
+  } else if (propValue instanceof Array) {
+    return propValue[0] !== propValue[1]
+      ? `${atoms[propValue[0]!] || ''} ${desktopAtoms[propValue[1]!] || ''}`
+      : atoms[propValue[0]!];
+  }
+}
+
+type ResponsiveProp<AtomName> = AtomName | [AtomName, AtomName];
+
 export interface BoxProps extends ResetProps {
-  paddingTop?: SpacingVariants;
-  paddingBottom?: SpacingVariants;
-  paddingLeft?: HorizontalSpacingVariants;
-  paddingRight?: HorizontalSpacingVariants;
-  marginTop?: SpacingVariants;
-  marginBottom?: SpacingVariants;
-  marginLeft?: HorizontalSpacingVariants;
-  marginRight?: HorizontalSpacingVariants;
+  paddingTop?: ResponsiveProp<SpacingVariants>;
+  paddingBottom?: ResponsiveProp<SpacingVariants>;
+  paddingLeft?: ResponsiveProp<HorizontalSpacingVariants>;
+  paddingRight?: ResponsiveProp<HorizontalSpacingVariants>;
+  marginTop?: ResponsiveProp<SpacingVariants>;
+  marginBottom?: ResponsiveProp<SpacingVariants>;
+  marginLeft?: ResponsiveProp<HorizontalSpacingVariants>;
+  marginRight?: ResponsiveProp<HorizontalSpacingVariants>;
+  display?: ResponsiveProp<DisplayVariants>;
   borderWidth?: BorderWidthVariants;
   borderRadius?: BorderRadiusVariants;
   backgroundColor?: BackgroundColorVariants;
   borderColor?: BorderColorVariants;
-  display?: DisplayVariants;
 }
 
 export default class Box extends Component<BoxProps> {
@@ -42,39 +58,86 @@ export default class Box extends Component<BoxProps> {
       marginBottom,
       marginLeft,
       marginRight,
+      display,
       borderWidth,
       borderRadius,
       backgroundColor,
       borderColor = 'standard',
-      display,
       className,
       ...restProps
     } = this.props;
 
     return (
       <ThemeConsumer>
-        {theme => (
-          <Reset
-            className={classnames(
-              className,
-              styles.root,
-              theme.atoms.display[display!],
-              theme.atoms.backgroundColor[backgroundColor!],
-              theme.atoms.borderColor[borderColor!],
-              theme.atoms.borderWidth[borderWidth!],
-              theme.atoms.borderRadius[borderRadius!],
-              theme.atoms.marginTop[marginTop!],
-              theme.atoms.marginRight[marginRight!],
-              theme.atoms.marginBottom[marginBottom!],
-              theme.atoms.marginLeft[marginLeft!],
-              theme.atoms.paddingTop[paddingTop!],
-              theme.atoms.paddingRight[paddingRight!],
-              theme.atoms.paddingBottom[paddingBottom!],
-              theme.atoms.paddingLeft[paddingLeft!]
-            )}
-            {...restProps}
-          />
-        )}
+        {({ atoms }) => {
+          return (
+            <Reset
+              className={classnames(
+                className,
+                styles.root,
+                atoms.backgroundColor[backgroundColor!],
+                atoms.borderColor[borderColor!],
+                atoms.borderWidth[borderWidth!],
+                atoms.borderRadius[borderRadius!],
+                marginTop &&
+                  getResponsiveClasses(
+                    atoms.marginTop,
+                    atoms.marginTopDesktop,
+                    marginTop
+                  ),
+                marginRight &&
+                  getResponsiveClasses(
+                    atoms.marginRight,
+                    atoms.marginRightDesktop,
+                    marginRight
+                  ),
+                marginBottom &&
+                  getResponsiveClasses(
+                    atoms.marginBottom,
+                    atoms.marginBottomDesktop,
+                    marginBottom
+                  ),
+                marginLeft &&
+                  getResponsiveClasses(
+                    atoms.marginLeft,
+                    atoms.marginLeftDesktop,
+                    marginLeft
+                  ),
+                paddingTop &&
+                  getResponsiveClasses(
+                    atoms.paddingTop,
+                    atoms.paddingTopDesktop,
+                    paddingTop
+                  ),
+                paddingRight &&
+                  getResponsiveClasses(
+                    atoms.paddingRight,
+                    atoms.paddingRightDesktop,
+                    paddingRight
+                  ),
+                paddingBottom &&
+                  getResponsiveClasses(
+                    atoms.paddingBottom,
+                    atoms.paddingBottomDesktop,
+                    paddingBottom
+                  ),
+                paddingLeft &&
+                  getResponsiveClasses(
+                    atoms.paddingLeft,
+                    atoms.paddingLeftDesktop,
+                    paddingLeft
+                  ),
+                display &&
+                  getResponsiveClasses(
+                    atoms.display,
+                    atoms.displayDesktop,
+                    display
+                  )
+              )}
+              {...restProps}
+            />
+          );
+        }}
       </ThemeConsumer>
     );
   }
