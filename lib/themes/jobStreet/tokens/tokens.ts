@@ -6,6 +6,44 @@ const tokens: Tokens = {
   interactionRows: 11,
   responsiveBreakpoint: 768,
   descenderHeightScale: 0.13,
+  heading: {
+    level1: {
+      regular: 'strong',
+      weak: 'regular',
+      mobile: {
+        size: 28,
+        rows: 9
+      },
+      desktop: {
+        size: 36,
+        rows: 11
+      }
+    },
+    level2: {
+      regular: 'strong',
+      weak: 'regular',
+      mobile: {
+        size: 24,
+        rows: 8
+      },
+      desktop: {
+        size: 30,
+        rows: 9
+      }
+    },
+    level3: {
+      regular: 'strong',
+      weak: 'regular',
+      mobile: {
+        size: 20,
+        rows: 7
+      },
+      desktop: {
+        size: 24,
+        rows: 8
+      }
+    }
+  },
   text: {
     standard: {
       mobile: {

@@ -4,7 +4,10 @@ interface TextDefinition {
   rows: number;
 }
 type Breakpoint = 'mobile' | 'desktop';
+type HeadingSize = 'level1' | 'level2' | 'level3';
 type TextSize = 'standard' | 'large';
+type ResponsiveHeading = Record<Breakpoint, TextDefinition> &
+  Record<'regular' | 'weak', FontWeightVariants>;
 type ResponsiveText = Record<Breakpoint, TextDefinition>;
 
 // Spacing definitions
@@ -27,6 +30,7 @@ export interface Tokens {
   interactionRows: number;
   responsiveBreakpoint: number;
   descenderHeightScale: number;
+  heading: Record<HeadingSize, ResponsiveHeading>;
   text: Record<TextSize, ResponsiveText>;
   rowSpacing: Spacing;
   columnSpacing: Spacing | Record<'gutter', number>;
@@ -62,15 +66,14 @@ type FillVariants =
   | 'secondary'
   | 'white';
 type FontFamilyVariants = 'text';
-export type FontSizeVariants = TextSize | 'interaction';
-export type FontWeightVariants = 'regular' | 'strong';
+type FontSizeVariant = TextSize | HeadingSize | 'interaction';
+export type FontWeightVariants = 'regular' | 'medium' | 'strong';
 export type DisplayVariants =
   | 'block'
   | 'inline'
   | 'none'
   | 'inlineBlock'
   | 'flex';
-
 type ResetTags =
   | 'html'
   | 'body'
@@ -167,7 +170,12 @@ type SpacingVariants =
   | 'xlarge'
   | 'xxlarge';
 type HorizontalSpacingVariants = SpacingVariants | 'gutter';
-export type TransformVariants = 'standardText' | 'largeText';
+export type TransformVariant =
+  | 'standardText'
+  | 'largeText'
+  | 'level1Heading'
+  | 'level2Heading'
+  | 'level3Heading';
 type TransitionVariants = 'fast';
 
 export interface Atoms {
@@ -180,7 +188,7 @@ export interface Atoms {
   color: Record<ColorVariants, string>;
   fill: Record<FillVariants, string>;
   fontFamily: Record<FontFamilyVariants, string>;
-  fontSize: Record<FontSizeVariants, string>;
+  fontSize: Record<FontSizeVariant, string>;
   fontWeight: Record<FontWeightVariants, string>;
   height: Record<SizeVariants, string>;
   marginTop: Record<SpacingVariants, string>;
@@ -201,7 +209,7 @@ export interface Atoms {
   paddingLeftDesktop: Record<HorizontalSpacingVariants, string>;
   display: Record<DisplayVariants, string>;
   displayDesktop: Record<DisplayVariants, string>;
-  transform: Record<TransformVariants, string>;
+  transform: Record<TransformVariant, string>;
   transition: Record<TransitionVariants, string>;
   width: Record<SizeVariants, string>;
 }
