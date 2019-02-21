@@ -11,6 +11,7 @@ export { default as Bullet } from './Bullet/Bullet';
 export { default as BulletList } from './BulletList/BulletList';
 export { default as Card } from './Card/Card';
 export { default as Checkbox } from './Checkbox/Checkbox';
+export { default as Columns } from './Columns/Columns';
 export { default as Divider } from './Divider/Divider';
 export { default as FieldLabel } from './FieldLabel/FieldLabel';
 export { default as FieldMessage } from './FieldMessage/FieldMessage';
@@ -22,7 +23,6 @@ export { default as Text } from './Text/Text';
 export { default as ChevronIcon } from './icons/ChevronIcon/ChevronIcon';
 export { default as ErrorIcon } from './icons/ErrorIcon/ErrorIcon';
 export { default as InfoIcon } from './icons/InfoIcon/InfoIcon';
-export { default as Columns } from './Columns/Columns';
 export {
   default as TickCircleIcon
 } from './icons/TickCircleIcon/TickCircleIcon';
