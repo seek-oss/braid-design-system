@@ -1,4 +1,4 @@
-import React, { ReactNode, Fragment } from 'react';
+import React, { ReactNode } from 'react';
 import Box from '../Box/Box';
 
 export interface ColumnsProps {
@@ -11,11 +11,9 @@ const Columns: React.StatelessComponent<ColumnsProps> = ({ children }) => {
       {React.Children.map(children, (child, index) => (
         <Box
           key={index}
-          display={['block', 'flex']}
-          marginLeft={["medium", index ? "none" : "medium"]}
-          marginRight={["medium", "medium"]}
-          style={{ flex: 1 }}
-          >
+          marginLeft={['none', index ? 'medium' : 'none']}
+          style={{ flexGrow: 1 }}
+        >
           {child}
         </Box>
       ))}
