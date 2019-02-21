@@ -1,24 +1,29 @@
-import React, { ReactNode } from 'react';
+import React, { Children, Component, ReactNode } from 'react';
 import Box from '../Box/Box';
+import styles from './Columns.css.js';
 
 export interface ColumnsProps {
   children: ReactNode;
 }
 
-const Columns: React.StatelessComponent<ColumnsProps> = ({ children }) => {
-  return (
-    <Box display={['block', 'flex']}>
-      {React.Children.map(children, (child, index) => (
-        <Box
-          key={index}
-          marginLeft={['none', index ? 'medium' : 'none']}
-          style={{ flexGrow: 1 }}
-        >
-          {child}
-        </Box>
-      ))}
-    </Box>
-  );
-};
+export default class Columns extends Component<ColumnsProps> {
+  static displayName = 'Columns';
 
-export default Columns;
+  render() {
+    const { children } = this.props;
+
+    return (
+      <Box display={['block', 'flex']}>
+        {Children.map(children, (child, index) => (
+          <Box
+            key={index}
+            marginLeft={['none', index ? 'medium' : 'none']}
+            className={styles.column}
+          >
+            {child}
+          </Box>
+        ))}
+      </Box>
+    );
+  }
+}
