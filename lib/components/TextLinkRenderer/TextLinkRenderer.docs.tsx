@@ -22,6 +22,7 @@ const docs: ComponentDocs = {
       code: `
         import React from 'react';
         import { Link } from 'react-router-dom';
+        import { TextLinkRenderer } from 'braid-design-system';
 
         export default () => (
           <Text>
