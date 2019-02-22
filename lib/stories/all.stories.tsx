@@ -1,5 +1,6 @@
 import { storiesOf } from 'sku/@storybook/react';
 import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import values from 'lodash/values';
 import * as themes from '../themes';
 import { ThemeProvider } from '../components';
@@ -27,7 +28,9 @@ req.keys().forEach(filename => {
 
     values(themes).forEach(theme => {
       stories.add(`${label} (${theme.name})`, () => (
-        <ThemeProvider theme={theme}>{render({ id: 'id' })}</ThemeProvider>
+        <BrowserRouter>
+          <ThemeProvider theme={theme}>{render({ id: 'id' })}</ThemeProvider>
+        </BrowserRouter>
       ));
     });
   });
