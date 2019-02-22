@@ -11,6 +11,7 @@ export { default as Bullet } from './Bullet/Bullet';
 export { default as BulletList } from './BulletList/BulletList';
 export { default as Card } from './Card/Card';
 export { default as Checkbox } from './Checkbox/Checkbox';
+export { default as Column } from './Column/Column';
 export { default as Columns } from './Columns/Columns';
 export { default as Divider } from './Divider/Divider';
 export { default as FieldLabel } from './FieldLabel/FieldLabel';

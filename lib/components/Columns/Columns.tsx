@@ -1,9 +1,11 @@
-import React, { Children, Component, ReactNode } from 'react';
+import React, { Component, Children, ReactElement, createContext } from 'react';
 import Box from '../Box/Box';
-import styles from './Columns.css.js';
+import { ColumnProps } from '../Column/Column';
+
+export const ColumnsContext = createContext({ index: -1 });
 
 export interface ColumnsProps {
-  children: ReactNode;
+  children: Array<ReactElement<ColumnProps>> | ReactElement<ColumnProps>;
 }
 
 export default class Columns extends Component<ColumnsProps> {
@@ -15,13 +17,9 @@ export default class Columns extends Component<ColumnsProps> {
     return (
       <Box display={['block', 'flex']}>
         {Children.map(children, (child, index) => (
-          <Box
-            key={index}
-            marginLeft={['none', index ? 'medium' : 'none']}
-            className={styles.column}
-          >
+          <ColumnsContext.Provider value={{ index }}>
             {child}
-          </Box>
+          </ColumnsContext.Provider>
         ))}
       </Box>
     );
