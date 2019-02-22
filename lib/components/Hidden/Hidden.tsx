@@ -17,7 +17,7 @@ export default class Hidden extends Component<HiddenProps> {
       <Box
         display={[
           hideFor === 'mobile' ? 'none' : 'inline',
-          hideFor === 'desktop' ? 'none' : 'block'
+          hideFor === 'desktop' ? 'none' : 'inline'
         ]}
         component={component}
       >
