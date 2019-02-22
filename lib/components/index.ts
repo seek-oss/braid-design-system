@@ -15,6 +15,7 @@ export { default as Divider } from './Divider/Divider';
 export { default as FieldLabel } from './FieldLabel/FieldLabel';
 export { default as FieldMessage } from './FieldMessage/FieldMessage';
 export { default as Heading } from './Heading/Heading';
+export { default as Hidden } from './Hidden/Hidden';
 export { default as Radio } from './Radio/Radio';
 export { default as Reset } from './Reset/Reset';
 export { default as Strong } from './Strong/Strong';
