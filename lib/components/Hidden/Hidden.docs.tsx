@@ -8,7 +8,7 @@ export default {
     {
       label: 'Hidden on mobile',
       render: () => (
-        <Hidden component="span" hideFor="mobile">
+        <Hidden component="span" on="mobile">
           <Text>Hidden on mobile</Text>
         </Hidden>
       )
@@ -16,7 +16,7 @@ export default {
     {
       label: 'Hidden on desktop',
       render: () => (
-        <Hidden hideFor="desktop">
+        <Hidden on="desktop">
           <Text>Hidden on desktop</Text>
         </Hidden>
       )

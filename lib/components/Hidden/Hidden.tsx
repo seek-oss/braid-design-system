@@ -3,7 +3,7 @@ import Box from '../Box/Box';
 
 export interface HiddenProps {
   children: ReactNode;
-  hideFor: 'mobile' | 'desktop';
+  on: 'mobile' | 'desktop';
   component?: ReactType;
 }
 
@@ -11,13 +11,13 @@ export default class Hidden extends Component<HiddenProps> {
   static displayName = 'Hidden';
 
   render() {
-    const { children, component, hideFor } = this.props;
+    const { children, component, on } = this.props;
 
     return (
       <Box
         display={[
-          hideFor === 'mobile' ? 'none' : 'inline',
-          hideFor === 'desktop' ? 'none' : 'inline'
+          on === 'mobile' ? 'none' : 'inline',
+          on === 'desktop' ? 'none' : 'inline'
         ]}
         component={component}
       >
