@@ -3,10 +3,10 @@ import * as themes from '../../../lib/themes';
 import * as components from '../../../lib/components';
 import React, { Component } from 'react';
 import { withRouter, Route, RouteComponentProps } from 'react-router';
-import { Link } from 'react-router-dom';
 import classnames from 'classnames';
 import Logo from './Logo/Logo';
 import ComponentRoute from './ComponentRoute/ComponentRoute';
+import { Link, ExternalLink } from './Link';
 import styles from './App.css.js';
 
 const { ThemeProvider, Text, Box, BulletList, Bullet } = components;
@@ -55,7 +55,7 @@ export default withRouter(
               paddingRight="gutter"
             >
               <div style={{ position: 'relative' }}>
-                <Link to="/" style={{ display: 'inline-block' }}>
+                <Link to="/">
                   <Logo />
                 </Link>
 
@@ -111,19 +111,17 @@ export default withRouter(
                 <Box paddingBottom="small">
                   <BulletList>
                     <Bullet>
-                      <a
-                        style={{ color: 'inherit' }}
+                      <ExternalLink
                         href="https://github.com/seek-oss/braid-design-system"
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={this.closeMenu}
                       >
                         Source
-                      </a>
+                      </ExternalLink>
                     </Bullet>
                     <Bullet>
                       <Link
-                        style={{ color: 'inherit' }}
                         to="/playroom"
                         target="_blank"
                         onClick={this.closeMenu}
@@ -146,7 +144,6 @@ export default withRouter(
                       .map(componentName => (
                         <Bullet key={componentName}>
                           <Link
-                            style={{ color: 'inherit' }}
                             to={`/components/${componentName}`}
                             onClick={this.closeMenu}
                           >
@@ -168,7 +165,6 @@ export default withRouter(
                     .map(iconName => (
                       <Bullet key={iconName}>
                         <Link
-                          style={{ color: 'inherit' }}
                           to={`/icons/${iconName}`}
                           onClick={this.closeMenu}
                         >

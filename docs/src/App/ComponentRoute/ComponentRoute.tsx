@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import reactElementToJSXString from 'react-element-to-jsx-string';
 import dedent from 'dedent';
 import ComponentProps from '../ComponentProps/ComponentProps';
+import { ExternalLink } from '../Link';
 import { ThemeProvider, Box, Text } from '../../../../lib/components';
 import {
   wireframe,
@@ -81,7 +82,7 @@ export default class ComponentRoute extends Component<ComponentRouteProps> {
               }}
             >
               <Text component="pre" color="white">
-                {render
+                {render && !code
                   ? reactElementToJSXString(render({ id: 'id' }), {
                       useBooleanShorthandSyntax: false,
                       showDefaultProps: false,
@@ -103,9 +104,13 @@ export default class ComponentRoute extends Component<ComponentRouteProps> {
         </Box>
         <Box paddingBottom="large">
           <Text>
-            <a href={sourceUrl} target="_blank" rel="noopener noreferrer">
+            <ExternalLink
+              href={sourceUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               View on GitHub
-            </a>
+            </ExternalLink>
           </Text>
         </Box>
       </Box>

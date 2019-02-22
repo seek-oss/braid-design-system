@@ -19,6 +19,10 @@ export { default as Radio } from './Radio/Radio';
 export { default as Reset } from './Reset/Reset';
 export { default as Strong } from './Strong/Strong';
 export { default as Text } from './Text/Text';
+export { default as TextLink } from './TextLink/TextLink';
+export {
+  default as TextLinkRenderer
+} from './TextLinkRenderer/TextLinkRenderer';
 export { default as ChevronIcon } from './icons/ChevronIcon/ChevronIcon';
 export { default as ErrorIcon } from './icons/ErrorIcon/ErrorIcon';
 export { default as InfoIcon } from './icons/InfoIcon/InfoIcon';
