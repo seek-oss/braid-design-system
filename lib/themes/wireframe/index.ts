@@ -1,11 +1,12 @@
-import tokens from './tokens/tokens';
+import normalizeAtoms from '../../atoms/normalizeAtoms';
+import tokens from './tokens';
 import { Theme } from '../theme';
-import * as atoms from './atoms/atoms';
+import atoms from './atoms.css.js';
 
 const theme: Theme = {
   name: 'wireframe',
   tokens,
-  atoms
+  atoms: normalizeAtoms(atoms)
 };
 
 export default theme;
