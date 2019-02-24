@@ -9,7 +9,7 @@ import ComponentRoute from './ComponentRoute/ComponentRoute';
 import { Link, ExternalLink } from './Link';
 import styles from './App.css.js';
 
-const { ThemeProvider, Text, Box, BulletList, Bullet } = components;
+const { ThemeProvider, Text, Box, BulletList, Bullet, Hidden } = components;
 
 interface AppProps extends RouteComponentProps {
   sourceUrlPrefix: string;
@@ -59,122 +59,126 @@ export default withRouter(
                   <Logo />
                 </Link>
 
-                <button
-                  className={classnames({
-                    [styles.menuButton]: true,
-                    [styles.menuButton__isHidden]: isHome,
-                    [styles.menuButton__isOpen]: isMenuOpen && !isHome
-                  })}
-                  onClick={this.toggleMenu}
-                  aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
-                >
-                  <div
-                    className={classnames(
-                      styles.menuButton__bar,
-                      styles.menuButton__bar1
-                    )}
-                  />
-                  <div
-                    className={classnames(
-                      styles.menuButton__bar,
-                      styles.menuButton__bar2
-                    )}
-                  />
-                  <div
-                    className={classnames(
-                      styles.menuButton__bar,
-                      styles.menuButton__bar3
-                    )}
-                  />
-                </button>
+                <Hidden print>
+                  <button
+                    className={classnames({
+                      [styles.menuButton]: true,
+                      [styles.menuButton__isHidden]: isHome,
+                      [styles.menuButton__isOpen]: isMenuOpen && !isHome
+                    })}
+                    onClick={this.toggleMenu}
+                    aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+                  >
+                    <div
+                      className={classnames(
+                        styles.menuButton__bar,
+                        styles.menuButton__bar1
+                      )}
+                    />
+                    <div
+                      className={classnames(
+                        styles.menuButton__bar,
+                        styles.menuButton__bar2
+                      )}
+                    />
+                    <div
+                      className={classnames(
+                        styles.menuButton__bar,
+                        styles.menuButton__bar3
+                      )}
+                    />
+                  </button>
+                </Hidden>
               </div>
             </Box>
           </div>
           <div className={styles.container}>
-            <div
-              className={classnames({
-                [styles.menu]: true,
-                [styles.menu__isOpen]: isMenuOpen
-              })}
-            >
-              <Box
-                paddingTop="small"
-                paddingBottom="large"
-                paddingLeft="gutter"
-                paddingRight="gutter"
+            <Hidden print>
+              <div
+                className={classnames({
+                  [styles.menu]: true,
+                  [styles.menu__isOpen]: isMenuOpen
+                })}
               >
-                <Box paddingBottom="small">
-                  <Text size="large" weight="strong">
-                    Tools
-                  </Text>
-                </Box>
-                <Box paddingBottom="small">
-                  <BulletList>
-                    <Bullet>
-                      <ExternalLink
-                        href="https://github.com/seek-oss/braid-design-system"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={this.closeMenu}
-                      >
-                        Source
-                      </ExternalLink>
-                    </Bullet>
-                    <Bullet>
-                      <Link
-                        to="/playroom"
-                        target="_blank"
-                        onClick={this.closeMenu}
-                      >
-                        Playroom
-                      </Link>
-                    </Bullet>
-                  </BulletList>
-                </Box>
-                <Box paddingBottom="small">
-                  <Text size="large" weight="strong">
-                    Components
-                  </Text>
-                </Box>
-                <Box paddingBottom="small">
+                <Box
+                  paddingTop="small"
+                  paddingBottom="large"
+                  paddingLeft="gutter"
+                  paddingRight="gutter"
+                >
+                  <Box paddingBottom="small">
+                    <Text size="large" weight="strong">
+                      Tools
+                    </Text>
+                  </Box>
+                  <Box paddingBottom="small">
+                    <BulletList>
+                      <Bullet>
+                        <ExternalLink
+                          href="https://github.com/seek-oss/braid-design-system"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={this.closeMenu}
+                        >
+                          Source
+                        </ExternalLink>
+                      </Bullet>
+                      <Bullet>
+                        <Link
+                          to="/playroom"
+                          target="_blank"
+                          onClick={this.closeMenu}
+                        >
+                          Playroom
+                        </Link>
+                      </Bullet>
+                    </BulletList>
+                  </Box>
+                  <Box paddingBottom="small">
+                    <Text size="large" weight="strong">
+                      Components
+                    </Text>
+                  </Box>
+                  <Box paddingBottom="small">
+                    <BulletList>
+                      {Object.keys(components)
+                        .filter(x => !/icon/i.test(x))
+                        .sort()
+                        .map(componentName => (
+                          <Bullet key={componentName}>
+                            <Link
+                              to={`/components/${componentName}`}
+                              onClick={this.closeMenu}
+                            >
+                              {componentName}
+                            </Link>
+                          </Bullet>
+                        ))}
+                    </BulletList>
+                  </Box>
+                  <Box paddingBottom="small">
+                    <Text size="large" weight="strong">
+                      Icons
+                    </Text>
+                  </Box>
                   <BulletList>
                     {Object.keys(components)
-                      .filter(x => !/icon/i.test(x))
+                      .filter(x => /icon/i.test(x) && x !== 'Icon')
                       .sort()
-                      .map(componentName => (
-                        <Bullet key={componentName}>
+                      .map(iconName => (
+                        <Bullet key={iconName}>
                           <Link
-                            to={`/components/${componentName}`}
+                            to={`/icons/${iconName}`}
                             onClick={this.closeMenu}
                           >
-                            {componentName}
+                            {iconName}
                           </Link>
                         </Bullet>
                       ))}
                   </BulletList>
                 </Box>
-                <Box paddingBottom="small">
-                  <Text size="large" weight="strong">
-                    Icons
-                  </Text>
-                </Box>
-                <BulletList>
-                  {Object.keys(components)
-                    .filter(x => /icon/i.test(x) && x !== 'Icon')
-                    .sort()
-                    .map(iconName => (
-                      <Bullet key={iconName}>
-                        <Link
-                          to={`/icons/${iconName}`}
-                          onClick={this.closeMenu}
-                        >
-                          {iconName}
-                        </Link>
-                      </Bullet>
-                    ))}
-                </BulletList>
-              </Box>
-            </div>
+              </div>
+            </Hidden>
             <div className={styles.content}>
               <Box
                 paddingLeft="gutter"

@@ -6,39 +6,77 @@ export default {
   component: Hidden,
   examples: [
     {
-      label: 'Hidden on mobile',
+      label: 'Hidden on Mobile',
       render: () => (
-        <Hidden on="mobile">
-          <Text>Hidden on mobile</Text>
+        <Hidden mobile>
+          <Text>Desktop only</Text>
         </Hidden>
       )
     },
     {
-      label: 'Hidden on desktop',
+      label: 'Hidden on Desktop',
       render: () => (
-        <Hidden on="desktop">
-          <Text>Hidden on desktop</Text>
+        <Hidden desktop>
+          <Text>Mobile Only</Text>
         </Hidden>
       )
     },
     {
-      label: 'Hidden on mobile (inline)',
+      label: 'Hidden on Print',
+      render: () => (
+        <Hidden print>
+          <Text>Screen only</Text>
+        </Hidden>
+      )
+    },
+    {
+      label: 'Hidden on Screen',
+      render: () => (
+        <Hidden screen>
+          <Text>Print only</Text>
+        </Hidden>
+      )
+    },
+    {
+      label: 'Hidden on Mobile (Inline)',
       render: () => (
         <Text>
-          This word is hidden on mobile:{' '}
-          <Hidden inline on="mobile">
-            Inline
+          Desktop only:{' '}
+          <Hidden inline mobile>
+            Text
           </Hidden>
         </Text>
       )
     },
     {
-      label: 'Hidden on desktop (inline)',
+      label: 'Hidden on Desktop (Inline)',
       render: () => (
         <Text>
-          This word is hidden on mobile:{' '}
-          <Hidden inline on="desktop">
-            Inline
+          Mobile only:{' '}
+          <Hidden inline desktop>
+            Text
+          </Hidden>
+        </Text>
+      )
+    },
+    {
+      label: 'Hidden on Print (Inline)',
+      render: () => (
+        <Text>
+          Screen only:{' '}
+          <Hidden inline print>
+            Text
+          </Hidden>
+        </Text>
+      )
+    },
+    {
+      label: 'Hidden on Screen (Inline)',
+      render: () => (
+        <Text>
+          Print only:{' '}
+          <Hidden inline screen>
+            Text
           </Hidden>
         </Text>
       )
