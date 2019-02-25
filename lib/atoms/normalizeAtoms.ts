@@ -1,9 +1,8 @@
 import { Atoms } from '../themes/theme';
 import { CssModuleAtoms } from './types';
-import Reset from '../reset/reset.css.js';
 
-export default (atoms: CssModuleAtoms): Atoms => ({
-  reset: Reset,
+export default (reset: Atoms['reset'], atoms: CssModuleAtoms): Atoms => ({
+  reset,
   backgroundColor: {
     card: atoms.backgroundColor_card,
     critical: atoms.backgroundColor_critical,
