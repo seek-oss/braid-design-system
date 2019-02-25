@@ -5,7 +5,7 @@ import { Css } from './types';
 import makeColors, { ColorParams } from './color/makeColors';
 import makeDisplayRules from './makeDisplayRules';
 import makeTransitions from './makeTransitions';
-import makeFontWeight from './font/makeFontWeights';
+import makeFontWeight, { FontWeightParams } from './font/makeFontWeights';
 import makeFontFamily, { FontFamilyParams } from './font/makeFontFamily';
 import makeBorderColor, { BorderColorParams } from './border/makeBorderColor';
 import makeBorderRadius, {
@@ -31,6 +31,7 @@ const makeAtoms = (
   borderColor: BorderColorParams,
   borderRadius: BorderRadiusParams,
   boxShadows: BoxShadowParams,
+  fontWeights: FontWeightParams,
   backgroundColor: BackgroundColorParms
 ): Css => {
   const rules = merge(
@@ -43,7 +44,7 @@ const makeAtoms = (
     makeColors(colors),
     makeFills(fills),
     makeFontFamily(fontFamily),
-    makeFontWeight(),
+    makeFontWeight(fontWeights),
     makeSizes(tokens),
     makeMargins(tokens),
     makePadding(tokens),
