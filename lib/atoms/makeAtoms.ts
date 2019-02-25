@@ -8,11 +8,13 @@ import makeTransitions from './makeTransitions';
 import makeFontWeight from './font/makeFontWeights';
 import makeFontFamily, { FontFamilyParams } from './font/makeFontFamily';
 import makeBorderColor, { BorderColorParams } from './border/makeBorderColor';
-import makeBorderRadius from './border/makeBorderRadius';
+import makeBorderRadius, {
+  BorderRadiusParams
+} from './border/makeBorderRadius';
 import makeBackgroundColors, {
   BackgroundColorParms
 } from './color/makeBackgroundColors';
-import makeBoxShadows from './makeBoxShadows';
+import makeBoxShadows, { BoxShadowParams } from './makeBoxShadows';
 import makePadding from './makePadding';
 import makeMargins from './makeMargins';
 import makeTransforms from './makeTransforms';
@@ -27,25 +29,27 @@ const makeAtoms = (
   fills: FillParams,
   fontFamily: FontFamilyParams,
   borderColor: BorderColorParams,
+  borderRadius: BorderRadiusParams,
+  boxShadows: BoxShadowParams,
   backgroundColor: BackgroundColorParms
 ): Css => {
   const rules = merge(
+    makeFontSizes(tokens),
+    makeBackgroundColors(backgroundColor),
+    makeBorderColor(borderColor),
+    makeBorderRadius(borderRadius),
+    makeBorderWidths(tokens),
+    makeBoxShadows(boxShadows),
     makeColors(colors),
     makeFills(fills),
-    makeDisplayRules(tokens),
-    makeTransitions(),
-    makeFontWeight(),
     makeFontFamily(fontFamily),
-    makeFontSizes(tokens),
-    makeBorderColor(borderColor),
-    makeBorderRadius(),
-    makeBorderWidths(tokens),
-    makeBackgroundColors(backgroundColor),
-    makeBoxShadows(),
-    makePadding(tokens),
+    makeFontWeight(),
+    makeSizes(tokens),
     makeMargins(tokens),
+    makePadding(tokens),
+    makeDisplayRules(tokens),
     makeTransforms(tokens),
-    makeSizes(tokens)
+    makeTransitions()
   );
 
   return rules;

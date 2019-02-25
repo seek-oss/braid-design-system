@@ -5,9 +5,9 @@ import makeDesktopRules from './utils/makeDesktopRules';
 
 const makeMarginRules = (tokens: Tokens, suffix = '') => ({
   ...rowSpacingForCssRule(`marginTop${suffix}`, tokens),
+  ...columnSpacingForCssRule(`marginRight${suffix}`, tokens),
   ...rowSpacingForCssRule(`marginBottom${suffix}`, tokens),
-  ...columnSpacingForCssRule(`marginLeft${suffix}`, tokens),
-  ...columnSpacingForCssRule(`marginRight${suffix}`, tokens)
+  ...columnSpacingForCssRule(`marginLeft${suffix}`, tokens)
 });
 
 export default (tokens: Tokens) => ({

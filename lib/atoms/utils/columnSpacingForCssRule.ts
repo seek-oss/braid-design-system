@@ -8,7 +8,7 @@ export default (ruleName: string, { columnWidth, columnSpacing }: Tokens) => {
     toPairs(columnSpacing).map(([key, value]) => [
       `.${ruleName}_${key}`,
       {
-        [ruleName]: px(columnWidth * columnWidth)
+        [ruleName]: px(value * columnWidth)
       }
     ])
   );

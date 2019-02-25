@@ -5,9 +5,9 @@ import makeDesktopRules from './utils/makeDesktopRules';
 
 const makePaddingRules = (tokens: Tokens, suffix = '') => ({
   ...rowSpacingForCssRule(`paddingTop${suffix}`, tokens),
+  ...columnSpacingForCssRule(`paddingRight${suffix}`, tokens),
   ...rowSpacingForCssRule(`paddingBottom${suffix}`, tokens),
-  ...columnSpacingForCssRule(`paddingLeft${suffix}`, tokens),
-  ...columnSpacingForCssRule(`paddingRight${suffix}`, tokens)
+  ...columnSpacingForCssRule(`paddingLeft${suffix}`, tokens)
 });
 
 export default (tokens: Tokens) => ({
