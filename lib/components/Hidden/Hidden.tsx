@@ -26,7 +26,7 @@ export default class Hidden extends Component<HiddenProps> {
       print: hiddenOnPrint = false
     } = this.props;
 
-    const display = inline ? 'inlineBlock' : 'block';
+    const display = inline ? 'inline' : 'block';
     const defaultComponent = inline ? 'span' : 'div';
 
     return (
