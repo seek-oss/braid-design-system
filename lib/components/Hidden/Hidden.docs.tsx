@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import Hidden from './Hidden';
 import Text from '../Text/Text';
 
@@ -8,42 +8,54 @@ export default {
     {
       label: 'Hidden on Mobile',
       render: () => (
-        <Hidden mobile>
-          <Text>Desktop only</Text>
-        </Hidden>
+        <Fragment>
+          <Text>The following line is hidden on mobile:</Text>
+          <Hidden mobile>
+            <Text>Hidden on mobile.</Text>
+          </Hidden>
+        </Fragment>
       )
     },
     {
       label: 'Hidden on Desktop',
       render: () => (
-        <Hidden desktop>
-          <Text>Mobile Only</Text>
-        </Hidden>
+        <Fragment>
+          <Text>The following line is hidden on desktop:</Text>
+          <Hidden desktop>
+            <Text>Hidden on desktop.</Text>
+          </Hidden>
+        </Fragment>
       )
     },
     {
       label: 'Hidden on Print',
       render: () => (
-        <Hidden print>
-          <Text>Screen only</Text>
-        </Hidden>
+        <Fragment>
+          <Text>The following line is hidden on print:</Text>
+          <Hidden print>
+            <Text>Hidden on print.</Text>
+          </Hidden>
+        </Fragment>
       )
     },
     {
       label: 'Hidden on Screen',
       render: () => (
-        <Hidden screen>
-          <Text>Print only</Text>
-        </Hidden>
+        <Fragment>
+          <Text>The following line is hidden on screen:</Text>
+          <Hidden screen>
+            <Text>Hidden on screen.</Text>
+          </Hidden>
+        </Fragment>
       )
     },
     {
       label: 'Hidden on Mobile (Inline)',
       render: () => (
         <Text>
-          Desktop only:{' '}
+          The following text node is hidden on mobile:{' '}
           <Hidden inline mobile>
-            Text
+            Hidden on mobile.
           </Hidden>
         </Text>
       )
@@ -52,9 +64,9 @@ export default {
       label: 'Hidden on Desktop (Inline)',
       render: () => (
         <Text>
-          Mobile only:{' '}
+          The following text node is hidden on desktop:{' '}
           <Hidden inline desktop>
-            Text
+            Hidden on desktop.
           </Hidden>
         </Text>
       )
@@ -63,9 +75,9 @@ export default {
       label: 'Hidden on Print (Inline)',
       render: () => (
         <Text>
-          Screen only:{' '}
+          The following text node is hidden on print:{' '}
           <Hidden inline print>
-            Text
+            Hidden on print.
           </Hidden>
         </Text>
       )
@@ -74,9 +86,9 @@ export default {
       label: 'Hidden on Screen (Inline)',
       render: () => (
         <Text>
-          Print only:{' '}
+          The following text node is hidden on screen:{' '}
           <Hidden inline screen>
-            Text
+            Hidden on screen.
           </Hidden>
         </Text>
       )
