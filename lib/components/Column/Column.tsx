@@ -17,7 +17,7 @@ export default class Column extends Component<ColumnProps> {
       <ColumnsContext.Consumer>
         {({ index }) => (
           <Box
-            marginLeft={['none', index === 0 ? 'none' : 'medium']}
+            marginLeft={['none', index === 0 ? 'none' : 'small']}
             className={styles.column}
           >
             {children}
