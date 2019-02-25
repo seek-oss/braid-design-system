@@ -17,10 +17,10 @@ export interface CssModuleAtoms {
   borderRadius_standard: string;
   borderWidth_standard: string;
   boxShadow_focus: string;
-  color_link: string;
   color_black: string;
   color_critical: string;
   color_formAccent: string;
+  color_link: string;
   color_neutral: string;
   color_positive: string;
   color_secondary: string;
@@ -58,6 +58,7 @@ export interface CssModuleAtoms {
   height_standardTextInline: string;
   marginBottomDesktop_large: string;
   marginBottomDesktop_medium: string;
+  marginBottomDesktop_none: string;
   marginBottomDesktop_small: string;
   marginBottomDesktop_xlarge: string;
   marginBottomDesktop_xsmall: string;
@@ -65,6 +66,7 @@ export interface CssModuleAtoms {
   marginBottomDesktop_xxsmall: string;
   marginBottom_large: string;
   marginBottom_medium: string;
+  marginBottom_none: string;
   marginBottom_small: string;
   marginBottom_xlarge: string;
   marginBottom_xsmall: string;
@@ -73,6 +75,7 @@ export interface CssModuleAtoms {
   marginLeftDesktop_gutter: string;
   marginLeftDesktop_large: string;
   marginLeftDesktop_medium: string;
+  marginLeftDesktop_none: string;
   marginLeftDesktop_small: string;
   marginLeftDesktop_xlarge: string;
   marginLeftDesktop_xsmall: string;
@@ -81,6 +84,7 @@ export interface CssModuleAtoms {
   marginLeft_gutter: string;
   marginLeft_large: string;
   marginLeft_medium: string;
+  marginLeft_none: string;
   marginLeft_small: string;
   marginLeft_xlarge: string;
   marginLeft_xsmall: string;
@@ -89,6 +93,7 @@ export interface CssModuleAtoms {
   marginRightDesktop_gutter: string;
   marginRightDesktop_large: string;
   marginRightDesktop_medium: string;
+  marginRightDesktop_none: string;
   marginRightDesktop_small: string;
   marginRightDesktop_xlarge: string;
   marginRightDesktop_xsmall: string;
@@ -97,6 +102,7 @@ export interface CssModuleAtoms {
   marginRight_gutter: string;
   marginRight_large: string;
   marginRight_medium: string;
+  marginRight_none: string;
   marginRight_small: string;
   marginRight_xlarge: string;
   marginRight_xsmall: string;
@@ -104,6 +110,7 @@ export interface CssModuleAtoms {
   marginRight_xxsmall: string;
   marginTopDesktop_large: string;
   marginTopDesktop_medium: string;
+  marginTopDesktop_none: string;
   marginTopDesktop_small: string;
   marginTopDesktop_xlarge: string;
   marginTopDesktop_xsmall: string;
@@ -111,6 +118,7 @@ export interface CssModuleAtoms {
   marginTopDesktop_xxsmall: string;
   marginTop_large: string;
   marginTop_medium: string;
+  marginTop_none: string;
   marginTop_small: string;
   marginTop_xlarge: string;
   marginTop_xsmall: string;
@@ -118,6 +126,7 @@ export interface CssModuleAtoms {
   marginTop_xxsmall: string;
   paddingBottomDesktop_large: string;
   paddingBottomDesktop_medium: string;
+  paddingBottomDesktop_none: string;
   paddingBottomDesktop_small: string;
   paddingBottomDesktop_xlarge: string;
   paddingBottomDesktop_xsmall: string;
@@ -125,6 +134,7 @@ export interface CssModuleAtoms {
   paddingBottomDesktop_xxsmall: string;
   paddingBottom_large: string;
   paddingBottom_medium: string;
+  paddingBottom_none: string;
   paddingBottom_small: string;
   paddingBottom_xlarge: string;
   paddingBottom_xsmall: string;
@@ -133,6 +143,7 @@ export interface CssModuleAtoms {
   paddingLeftDesktop_gutter: string;
   paddingLeftDesktop_large: string;
   paddingLeftDesktop_medium: string;
+  paddingLeftDesktop_none: string;
   paddingLeftDesktop_small: string;
   paddingLeftDesktop_xlarge: string;
   paddingLeftDesktop_xsmall: string;
@@ -141,6 +152,7 @@ export interface CssModuleAtoms {
   paddingLeft_gutter: string;
   paddingLeft_large: string;
   paddingLeft_medium: string;
+  paddingLeft_none: string;
   paddingLeft_small: string;
   paddingLeft_xlarge: string;
   paddingLeft_xsmall: string;
@@ -149,6 +161,7 @@ export interface CssModuleAtoms {
   paddingRightDesktop_gutter: string;
   paddingRightDesktop_large: string;
   paddingRightDesktop_medium: string;
+  paddingRightDesktop_none: string;
   paddingRightDesktop_small: string;
   paddingRightDesktop_xlarge: string;
   paddingRightDesktop_xsmall: string;
@@ -157,6 +170,7 @@ export interface CssModuleAtoms {
   paddingRight_gutter: string;
   paddingRight_large: string;
   paddingRight_medium: string;
+  paddingRight_none: string;
   paddingRight_small: string;
   paddingRight_xlarge: string;
   paddingRight_xsmall: string;
@@ -164,6 +178,7 @@ export interface CssModuleAtoms {
   paddingRight_xxsmall: string;
   paddingTopDesktop_large: string;
   paddingTopDesktop_medium: string;
+  paddingTopDesktop_none: string;
   paddingTopDesktop_small: string;
   paddingTopDesktop_xlarge: string;
   paddingTopDesktop_xsmall: string;
@@ -171,6 +186,7 @@ export interface CssModuleAtoms {
   paddingTopDesktop_xxsmall: string;
   paddingTop_large: string;
   paddingTop_medium: string;
+  paddingTop_none: string;
   paddingTop_small: string;
   paddingTop_xlarge: string;
   paddingTop_xsmall: string;

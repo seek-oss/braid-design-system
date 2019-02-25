@@ -8,7 +8,7 @@ export default (
   propertyName: string,
   { columnWidth, columnSpacing }: Tokens
 ) => {
-  return fromPairs(
+  const columnRules = fromPairs(
     toPairs(columnSpacing).map(([key, value]) => [
       `.${ruleName}_${key}`,
       {
@@ -16,4 +16,11 @@ export default (
       }
     ])
   );
+
+  return {
+    [`.${ruleName}_none`]: {
+      [propertyName]: 'none'
+    },
+    ...columnRules
+  };
 };

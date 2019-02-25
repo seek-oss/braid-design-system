@@ -2,6 +2,7 @@ import React from 'react';
 import Box from './Box';
 import tokens from '../../themes/wireframe/tokens';
 import { ComponentDocs, ComponentExample } from '../../../docs/src/types';
+import { HideCode } from '../private/HideCode';
 
 type Space = keyof typeof tokens.columnSpacing;
 const spacing = Object.keys(tokens.columnSpacing) as Space[];
@@ -34,10 +35,12 @@ const docs: ComponentDocs = {
             backgroundColor="card"
             borderRadius="standard"
           >
-            <Box
-              borderRadius="standard"
-              style={{ backgroundColor: 'pink', height: '20px' }}
-            />
+            <HideCode>
+              <Box
+                borderRadius="standard"
+                style={{ backgroundColor: 'pink', height: '20px' }}
+              />
+            </HideCode>
           </Box>
         </Box>
       )

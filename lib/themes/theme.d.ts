@@ -168,7 +168,8 @@ type SpacingVariants =
   | 'medium'
   | 'large'
   | 'xlarge'
-  | 'xxlarge';
+  | 'xxlarge'
+  | 'none';
 type HorizontalSpacingVariants = SpacingVariants | 'gutter';
 export type TransformVariant =
   | 'standardText'

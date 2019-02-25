@@ -84,6 +84,7 @@ export default (atoms: CssModuleAtoms): Atoms => ({
     standardTextInline: atoms.height_standardTextInline
   },
   marginBottom: {
+    none: atoms.marginBottom_none,
     large: atoms.marginBottom_large,
     medium: atoms.marginBottom_medium,
     small: atoms.marginBottom_small,
@@ -93,6 +94,7 @@ export default (atoms: CssModuleAtoms): Atoms => ({
     xxsmall: atoms.marginBottom_xxsmall
   },
   marginTop: {
+    none: atoms.marginTop_none,
     large: atoms.marginTop_large,
     medium: atoms.marginTop_medium,
     small: atoms.marginTop_small,
@@ -102,6 +104,7 @@ export default (atoms: CssModuleAtoms): Atoms => ({
     xxsmall: atoms.marginTop_xxsmall
   },
   marginLeft: {
+    none: atoms.marginLeft_none,
     gutter: atoms.marginLeft_gutter,
     large: atoms.marginLeft_large,
     medium: atoms.marginLeft_medium,
@@ -112,6 +115,7 @@ export default (atoms: CssModuleAtoms): Atoms => ({
     xxsmall: atoms.marginLeft_xxsmall
   },
   marginRight: {
+    none: atoms.marginRight_none,
     gutter: atoms.marginRight_gutter,
     large: atoms.marginRight_large,
     medium: atoms.marginRight_medium,
@@ -122,6 +126,7 @@ export default (atoms: CssModuleAtoms): Atoms => ({
     xxsmall: atoms.marginRight_xxsmall
   },
   marginBottomDesktop: {
+    none: atoms.marginBottomDesktop_none,
     large: atoms.marginBottomDesktop_large,
     medium: atoms.marginBottomDesktop_medium,
     small: atoms.marginBottomDesktop_small,
@@ -131,6 +136,7 @@ export default (atoms: CssModuleAtoms): Atoms => ({
     xxsmall: atoms.marginBottomDesktop_xxsmall
   },
   marginTopDesktop: {
+    none: atoms.marginTopDesktop_none,
     large: atoms.marginTopDesktop_large,
     medium: atoms.marginTopDesktop_medium,
     small: atoms.marginTopDesktop_small,
@@ -140,6 +146,7 @@ export default (atoms: CssModuleAtoms): Atoms => ({
     xxsmall: atoms.marginTopDesktop_xxsmall
   },
   marginLeftDesktop: {
+    none: atoms.marginLeftDesktop_none,
     gutter: atoms.marginLeftDesktop_gutter,
     large: atoms.marginLeftDesktop_large,
     medium: atoms.marginLeftDesktop_medium,
@@ -150,6 +157,7 @@ export default (atoms: CssModuleAtoms): Atoms => ({
     xxsmall: atoms.marginLeftDesktop_xxsmall
   },
   marginRightDesktop: {
+    none: atoms.marginRightDesktop_none,
     gutter: atoms.marginRightDesktop_gutter,
     large: atoms.marginRightDesktop_large,
     medium: atoms.marginRightDesktop_medium,
@@ -160,6 +168,7 @@ export default (atoms: CssModuleAtoms): Atoms => ({
     xxsmall: atoms.marginRightDesktop_xxsmall
   },
   paddingBottom: {
+    none: atoms.paddingBottom_none,
     large: atoms.paddingBottom_large,
     medium: atoms.paddingBottom_medium,
     small: atoms.paddingBottom_small,
@@ -169,6 +178,7 @@ export default (atoms: CssModuleAtoms): Atoms => ({
     xxsmall: atoms.paddingBottom_xxsmall
   },
   paddingTop: {
+    none: atoms.paddingTop_none,
     large: atoms.paddingTop_large,
     medium: atoms.paddingTop_medium,
     small: atoms.paddingTop_small,
@@ -178,6 +188,7 @@ export default (atoms: CssModuleAtoms): Atoms => ({
     xxsmall: atoms.paddingTop_xxsmall
   },
   paddingLeft: {
+    none: atoms.paddingLeft_none,
     gutter: atoms.paddingLeft_gutter,
     large: atoms.paddingLeft_large,
     medium: atoms.paddingLeft_medium,
@@ -188,6 +199,7 @@ export default (atoms: CssModuleAtoms): Atoms => ({
     xxsmall: atoms.paddingLeft_xxsmall
   },
   paddingRight: {
+    none: atoms.paddingRight_none,
     gutter: atoms.paddingRight_gutter,
     large: atoms.paddingRight_large,
     medium: atoms.paddingRight_medium,
@@ -198,6 +210,7 @@ export default (atoms: CssModuleAtoms): Atoms => ({
     xxsmall: atoms.paddingRight_xxsmall
   },
   paddingBottomDesktop: {
+    none: atoms.paddingBottomDesktop_none,
     large: atoms.paddingBottomDesktop_large,
     medium: atoms.paddingBottomDesktop_medium,
     small: atoms.paddingBottomDesktop_small,
@@ -207,6 +220,7 @@ export default (atoms: CssModuleAtoms): Atoms => ({
     xxsmall: atoms.paddingBottomDesktop_xxsmall
   },
   paddingTopDesktop: {
+    none: atoms.paddingTopDesktop_none,
     large: atoms.paddingTopDesktop_large,
     medium: atoms.paddingTopDesktop_medium,
     small: atoms.paddingTopDesktop_small,
@@ -216,6 +230,7 @@ export default (atoms: CssModuleAtoms): Atoms => ({
     xxsmall: atoms.paddingTopDesktop_xxsmall
   },
   paddingLeftDesktop: {
+    none: atoms.paddingLeftDesktop_none,
     gutter: atoms.paddingLeftDesktop_gutter,
     large: atoms.paddingLeftDesktop_large,
     medium: atoms.paddingLeftDesktop_medium,
@@ -226,6 +241,7 @@ export default (atoms: CssModuleAtoms): Atoms => ({
     xxsmall: atoms.paddingLeftDesktop_xxsmall
   },
   paddingRightDesktop: {
+    none: atoms.paddingRightDesktop_none,
     gutter: atoms.paddingRightDesktop_gutter,
     large: atoms.paddingRightDesktop_large,
     medium: atoms.paddingRightDesktop_medium,

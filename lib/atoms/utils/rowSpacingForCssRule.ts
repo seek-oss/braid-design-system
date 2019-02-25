@@ -9,7 +9,7 @@ export default (
   propertyName: string,
   { rowHeight, rowSpacing }: Tokens
 ) => {
-  return fromPairs(
+  const rowRules = fromPairs(
     toPairs(rowSpacing).map(([key, value]) => [
       `.${ruleName}_${key}`,
       {
@@ -17,4 +17,11 @@ export default (
       }
     ])
   );
+
+  return {
+    [`.${ruleName}_none`]: {
+      [propertyName]: 'none'
+    },
+    ...rowRules
+  };
 };
