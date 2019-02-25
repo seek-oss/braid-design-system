@@ -2,23 +2,23 @@
 
 exports[`FieldMessage Theme: jobStreet Critical 1`] = `
 <div
-  class="Box__root borderColor__standard paddingBottom__small"
+  class="Box__root atoms__borderColor_standard atoms__paddingBottom_small"
   tabindex="-1"
 >
   <div
-    class="Text__block fontFamily__text color__critical fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard"
+    class="Text__block atoms__fontFamily_text atoms__color_critical atoms__fontSize_standard atoms__fontWeight_regular atoms__transform_standardText Box__root atoms__borderColor_standard"
   >
     <div
       class="FieldMessage__content"
     >
       <div
-        class="height__standardText"
+        class="atoms__height_standardText"
       />
       <div
-        class="FieldMessage__icon Box__root borderColor__standard paddingRight__xsmall"
+        class="FieldMessage__icon Box__root atoms__borderColor_standard atoms__paddingRight_xsmall"
       >
         <svg
-          class="width__standardText height__standardText fill__critical Icon__block Box__root borderColor__standard"
+          class="atoms__width_standardText atoms__height_standardText atoms__fill_critical Icon__block Box__root atoms__borderColor_standard"
           height="16"
           viewBox="0 0 512 512"
           width="16"
@@ -38,17 +38,17 @@ exports[`FieldMessage Theme: jobStreet Critical 1`] = `
 
 exports[`FieldMessage Theme: jobStreet Default 1`] = `
 <div
-  class="Box__root borderColor__standard paddingBottom__small"
+  class="Box__root atoms__borderColor_standard atoms__paddingBottom_small"
   tabindex="-1"
 >
   <div
-    class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard"
+    class="Text__block atoms__fontFamily_text atoms__color_neutral atoms__fontSize_standard atoms__fontWeight_regular atoms__transform_standardText Box__root atoms__borderColor_standard"
   >
     <div
       class="FieldMessage__content"
     >
       <div
-        class="height__standardText"
+        class="atoms__height_standardText"
       />
       <div>
         Message
@@ -60,17 +60,17 @@ exports[`FieldMessage Theme: jobStreet Default 1`] = `
 
 exports[`FieldMessage Theme: jobStreet Empty 1`] = `
 <div
-  class="Box__root borderColor__standard paddingBottom__small"
+  class="Box__root atoms__borderColor_standard atoms__paddingBottom_small"
   tabindex="-1"
 >
   <div
-    class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard"
+    class="Text__block atoms__fontFamily_text atoms__color_neutral atoms__fontSize_standard atoms__fontWeight_regular atoms__transform_standardText Box__root atoms__borderColor_standard"
   >
     <div
       class="FieldMessage__content"
     >
       <div
-        class="height__standardText"
+        class="atoms__height_standardText"
       />
       <div />
     </div>
@@ -82,23 +82,23 @@ exports[`FieldMessage Theme: jobStreet False 1`] = `null`;
 
 exports[`FieldMessage Theme: jobStreet Positive 1`] = `
 <div
-  class="Box__root borderColor__standard paddingBottom__small"
+  class="Box__root atoms__borderColor_standard atoms__paddingBottom_small"
   tabindex="-1"
 >
   <div
-    class="Text__block fontFamily__text color__positive fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard"
+    class="Text__block atoms__fontFamily_text atoms__color_positive atoms__fontSize_standard atoms__fontWeight_regular atoms__transform_standardText Box__root atoms__borderColor_standard"
   >
     <div
       class="FieldMessage__content"
     >
       <div
-        class="height__standardText"
+        class="atoms__height_standardText"
       />
       <div
-        class="FieldMessage__icon Box__root borderColor__standard paddingRight__xsmall"
+        class="FieldMessage__icon Box__root atoms__borderColor_standard atoms__paddingRight_xsmall"
       >
         <svg
-          class="width__standardText height__standardText fill__positive Icon__block Box__root borderColor__standard"
+          class="atoms__width_standardText atoms__height_standardText atoms__fill_positive Icon__block Box__root atoms__borderColor_standard"
           height="16"
           viewBox="0 0 16 16"
           width="16"
@@ -118,23 +118,23 @@ exports[`FieldMessage Theme: jobStreet Positive 1`] = `
 
 exports[`FieldMessage Theme: seekAnz Critical 1`] = `
 <div
-  class="Box__root borderColor__standard paddingBottom__small"
+  class="Box__root atoms__borderColor_standard atoms__paddingBottom_small"
   tabindex="-1"
 >
   <div
-    class="Text__block fontFamily__text color__critical fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard"
+    class="Text__block atoms__fontFamily_text atoms__color_critical atoms__fontSize_standard atoms__fontWeight_regular atoms__transform_standardText Box__root atoms__borderColor_standard"
   >
     <div
       class="FieldMessage__content"
     >
       <div
-        class="height__standardText"
+        class="atoms__height_standardText"
       />
       <div
-        class="FieldMessage__icon Box__root borderColor__standard paddingRight__xsmall"
+        class="FieldMessage__icon Box__root atoms__borderColor_standard atoms__paddingRight_xsmall"
       >
         <svg
-          class="width__standardText height__standardText fill__critical Icon__block Box__root borderColor__standard"
+          class="atoms__width_standardText atoms__height_standardText atoms__fill_critical Icon__block Box__root atoms__borderColor_standard"
           height="16"
           viewBox="0 0 512 512"
           width="16"
@@ -154,17 +154,17 @@ exports[`FieldMessage Theme: seekAnz Critical 1`] = `
 
 exports[`FieldMessage Theme: seekAnz Default 1`] = `
 <div
-  class="Box__root borderColor__standard paddingBottom__small"
+  class="Box__root atoms__borderColor_standard atoms__paddingBottom_small"
   tabindex="-1"
 >
   <div
-    class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard"
+    class="Text__block atoms__fontFamily_text atoms__color_neutral atoms__fontSize_standard atoms__fontWeight_regular atoms__transform_standardText Box__root atoms__borderColor_standard"
   >
     <div
       class="FieldMessage__content"
     >
       <div
-        class="height__standardText"
+        class="atoms__height_standardText"
       />
       <div>
         Message
@@ -176,17 +176,17 @@ exports[`FieldMessage Theme: seekAnz Default 1`] = `
 
 exports[`FieldMessage Theme: seekAnz Empty 1`] = `
 <div
-  class="Box__root borderColor__standard paddingBottom__small"
+  class="Box__root atoms__borderColor_standard atoms__paddingBottom_small"
   tabindex="-1"
 >
   <div
-    class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard"
+    class="Text__block atoms__fontFamily_text atoms__color_neutral atoms__fontSize_standard atoms__fontWeight_regular atoms__transform_standardText Box__root atoms__borderColor_standard"
   >
     <div
       class="FieldMessage__content"
     >
       <div
-        class="height__standardText"
+        class="atoms__height_standardText"
       />
       <div />
     </div>
@@ -198,23 +198,23 @@ exports[`FieldMessage Theme: seekAnz False 1`] = `null`;
 
 exports[`FieldMessage Theme: seekAnz Positive 1`] = `
 <div
-  class="Box__root borderColor__standard paddingBottom__small"
+  class="Box__root atoms__borderColor_standard atoms__paddingBottom_small"
   tabindex="-1"
 >
   <div
-    class="Text__block fontFamily__text color__positive fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard"
+    class="Text__block atoms__fontFamily_text atoms__color_positive atoms__fontSize_standard atoms__fontWeight_regular atoms__transform_standardText Box__root atoms__borderColor_standard"
   >
     <div
       class="FieldMessage__content"
     >
       <div
-        class="height__standardText"
+        class="atoms__height_standardText"
       />
       <div
-        class="FieldMessage__icon Box__root borderColor__standard paddingRight__xsmall"
+        class="FieldMessage__icon Box__root atoms__borderColor_standard atoms__paddingRight_xsmall"
       >
         <svg
-          class="width__standardText height__standardText fill__positive Icon__block Box__root borderColor__standard"
+          class="atoms__width_standardText atoms__height_standardText atoms__fill_positive Icon__block Box__root atoms__borderColor_standard"
           height="16"
           viewBox="0 0 16 16"
           width="16"
@@ -234,23 +234,23 @@ exports[`FieldMessage Theme: seekAnz Positive 1`] = `
 
 exports[`FieldMessage Theme: seekAsia Critical 1`] = `
 <div
-  class="Box__root borderColor__standard paddingBottom__small"
+  class="Box__root atoms__borderColor_standard atoms__paddingBottom_small"
   tabindex="-1"
 >
   <div
-    class="Text__block fontFamily__text color__critical fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard"
+    class="Text__block atoms__fontFamily_text atoms__color_critical atoms__fontSize_standard atoms__fontWeight_regular atoms__transform_standardText Box__root atoms__borderColor_standard"
   >
     <div
       class="FieldMessage__content"
     >
       <div
-        class="height__standardText"
+        class="atoms__height_standardText"
       />
       <div
-        class="FieldMessage__icon Box__root borderColor__standard paddingRight__xsmall"
+        class="FieldMessage__icon Box__root atoms__borderColor_standard atoms__paddingRight_xsmall"
       >
         <svg
-          class="width__standardText height__standardText fill__critical Icon__block Box__root borderColor__standard"
+          class="atoms__width_standardText atoms__height_standardText atoms__fill_critical Icon__block Box__root atoms__borderColor_standard"
           height="16"
           viewBox="0 0 512 512"
           width="16"
@@ -270,17 +270,17 @@ exports[`FieldMessage Theme: seekAsia Critical 1`] = `
 
 exports[`FieldMessage Theme: seekAsia Default 1`] = `
 <div
-  class="Box__root borderColor__standard paddingBottom__small"
+  class="Box__root atoms__borderColor_standard atoms__paddingBottom_small"
   tabindex="-1"
 >
   <div
-    class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard"
+    class="Text__block atoms__fontFamily_text atoms__color_neutral atoms__fontSize_standard atoms__fontWeight_regular atoms__transform_standardText Box__root atoms__borderColor_standard"
   >
     <div
       class="FieldMessage__content"
     >
       <div
-        class="height__standardText"
+        class="atoms__height_standardText"
       />
       <div>
         Message
@@ -292,17 +292,17 @@ exports[`FieldMessage Theme: seekAsia Default 1`] = `
 
 exports[`FieldMessage Theme: seekAsia Empty 1`] = `
 <div
-  class="Box__root borderColor__standard paddingBottom__small"
+  class="Box__root atoms__borderColor_standard atoms__paddingBottom_small"
   tabindex="-1"
 >
   <div
-    class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard"
+    class="Text__block atoms__fontFamily_text atoms__color_neutral atoms__fontSize_standard atoms__fontWeight_regular atoms__transform_standardText Box__root atoms__borderColor_standard"
   >
     <div
       class="FieldMessage__content"
     >
       <div
-        class="height__standardText"
+        class="atoms__height_standardText"
       />
       <div />
     </div>
@@ -314,23 +314,23 @@ exports[`FieldMessage Theme: seekAsia False 1`] = `null`;
 
 exports[`FieldMessage Theme: seekAsia Positive 1`] = `
 <div
-  class="Box__root borderColor__standard paddingBottom__small"
+  class="Box__root atoms__borderColor_standard atoms__paddingBottom_small"
   tabindex="-1"
 >
   <div
-    class="Text__block fontFamily__text color__positive fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard"
+    class="Text__block atoms__fontFamily_text atoms__color_positive atoms__fontSize_standard atoms__fontWeight_regular atoms__transform_standardText Box__root atoms__borderColor_standard"
   >
     <div
       class="FieldMessage__content"
     >
       <div
-        class="height__standardText"
+        class="atoms__height_standardText"
       />
       <div
-        class="FieldMessage__icon Box__root borderColor__standard paddingRight__xsmall"
+        class="FieldMessage__icon Box__root atoms__borderColor_standard atoms__paddingRight_xsmall"
       >
         <svg
-          class="width__standardText height__standardText fill__positive Icon__block Box__root borderColor__standard"
+          class="atoms__width_standardText atoms__height_standardText atoms__fill_positive Icon__block Box__root atoms__borderColor_standard"
           height="16"
           viewBox="0 0 16 16"
           width="16"
@@ -350,23 +350,23 @@ exports[`FieldMessage Theme: seekAsia Positive 1`] = `
 
 exports[`FieldMessage Theme: wireframe Critical 1`] = `
 <div
-  class="Box__root borderColor__standard paddingBottom__small"
+  class="Box__root atoms__borderColor_standard atoms__paddingBottom_small"
   tabindex="-1"
 >
   <div
-    class="Text__block fontFamily__text color__critical fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard"
+    class="Text__block atoms__fontFamily_text atoms__color_critical atoms__fontSize_standard atoms__fontWeight_regular atoms__transform_standardText Box__root atoms__borderColor_standard"
   >
     <div
       class="FieldMessage__content"
     >
       <div
-        class="height__standardText"
+        class="atoms__height_standardText"
       />
       <div
-        class="FieldMessage__icon Box__root borderColor__standard paddingRight__xsmall"
+        class="FieldMessage__icon Box__root atoms__borderColor_standard atoms__paddingRight_xsmall"
       >
         <svg
-          class="width__standardText height__standardText fill__critical Icon__block Box__root borderColor__standard"
+          class="atoms__width_standardText atoms__height_standardText atoms__fill_critical Icon__block Box__root atoms__borderColor_standard"
           height="16"
           viewBox="0 0 512 512"
           width="16"
@@ -386,17 +386,17 @@ exports[`FieldMessage Theme: wireframe Critical 1`] = `
 
 exports[`FieldMessage Theme: wireframe Default 1`] = `
 <div
-  class="Box__root borderColor__standard paddingBottom__small"
+  class="Box__root atoms__borderColor_standard atoms__paddingBottom_small"
   tabindex="-1"
 >
   <div
-    class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard"
+    class="Text__block atoms__fontFamily_text atoms__color_neutral atoms__fontSize_standard atoms__fontWeight_regular atoms__transform_standardText Box__root atoms__borderColor_standard"
   >
     <div
       class="FieldMessage__content"
     >
       <div
-        class="height__standardText"
+        class="atoms__height_standardText"
       />
       <div>
         Message
@@ -408,17 +408,17 @@ exports[`FieldMessage Theme: wireframe Default 1`] = `
 
 exports[`FieldMessage Theme: wireframe Empty 1`] = `
 <div
-  class="Box__root borderColor__standard paddingBottom__small"
+  class="Box__root atoms__borderColor_standard atoms__paddingBottom_small"
   tabindex="-1"
 >
   <div
-    class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard"
+    class="Text__block atoms__fontFamily_text atoms__color_neutral atoms__fontSize_standard atoms__fontWeight_regular atoms__transform_standardText Box__root atoms__borderColor_standard"
   >
     <div
       class="FieldMessage__content"
     >
       <div
-        class="height__standardText"
+        class="atoms__height_standardText"
       />
       <div />
     </div>
@@ -430,23 +430,23 @@ exports[`FieldMessage Theme: wireframe False 1`] = `null`;
 
 exports[`FieldMessage Theme: wireframe Positive 1`] = `
 <div
-  class="Box__root borderColor__standard paddingBottom__small"
+  class="Box__root atoms__borderColor_standard atoms__paddingBottom_small"
   tabindex="-1"
 >
   <div
-    class="Text__block fontFamily__text color__positive fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard"
+    class="Text__block atoms__fontFamily_text atoms__color_positive atoms__fontSize_standard atoms__fontWeight_regular atoms__transform_standardText Box__root atoms__borderColor_standard"
   >
     <div
       class="FieldMessage__content"
     >
       <div
-        class="height__standardText"
+        class="atoms__height_standardText"
       />
       <div
-        class="FieldMessage__icon Box__root borderColor__standard paddingRight__xsmall"
+        class="FieldMessage__icon Box__root atoms__borderColor_standard atoms__paddingRight_xsmall"
       >
         <svg
-          class="width__standardText height__standardText fill__positive Icon__block Box__root borderColor__standard"
+          class="atoms__width_standardText atoms__height_standardText atoms__fill_positive Icon__block Box__root atoms__borderColor_standard"
           height="16"
           viewBox="0 0 16 16"
           width="16"

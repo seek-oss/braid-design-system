@@ -2,7 +2,7 @@
 
 exports[`Text Theme: jobStreet Baseline disabled 1`] = `
 <div
-  class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular Box__root borderColor__standard"
+  class="Text__block atoms__fontFamily_text atoms__color_neutral atoms__fontSize_standard atoms__fontWeight_regular Box__root atoms__borderColor_standard"
 >
   Children
 </div>
@@ -10,7 +10,7 @@ exports[`Text Theme: jobStreet Baseline disabled 1`] = `
 
 exports[`Text Theme: jobStreet Color 1`] = `
 <div
-  class="Text__block fontFamily__text color__positive fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard"
+  class="Text__block atoms__fontFamily_text atoms__color_positive atoms__fontSize_standard atoms__fontWeight_regular atoms__transform_standardText Box__root atoms__borderColor_standard"
 >
   Children
 </div>
@@ -18,7 +18,7 @@ exports[`Text Theme: jobStreet Color 1`] = `
 
 exports[`Text Theme: jobStreet Default 1`] = `
 <div
-  class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard"
+  class="Text__block atoms__fontFamily_text atoms__color_neutral atoms__fontSize_standard atoms__fontWeight_regular atoms__transform_standardText Box__root atoms__borderColor_standard"
 >
   Children
 </div>
@@ -26,7 +26,7 @@ exports[`Text Theme: jobStreet Default 1`] = `
 
 exports[`Text Theme: jobStreet List item 1`] = `
 <li
-  class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Text__listItem Box__root borderColor__standard"
+  class="Text__block atoms__fontFamily_text atoms__color_neutral atoms__fontSize_standard atoms__fontWeight_regular atoms__transform_standardText Text__listItem Box__root atoms__borderColor_standard"
 >
   Children
 </li>
@@ -34,7 +34,7 @@ exports[`Text Theme: jobStreet List item 1`] = `
 
 exports[`Text Theme: jobStreet Size 1`] = `
 <div
-  class="Text__block fontFamily__text color__neutral fontSize__large fontWeight__regular transform__largeText Box__root borderColor__standard"
+  class="Text__block atoms__fontFamily_text atoms__color_neutral atoms__fontSize_large atoms__fontWeight_regular atoms__transform_largeText Box__root atoms__borderColor_standard"
 >
   Children
 </div>
@@ -42,7 +42,7 @@ exports[`Text Theme: jobStreet Size 1`] = `
 
 exports[`Text Theme: jobStreet Weight 1`] = `
 <div
-  class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__strong transform__standardText Box__root borderColor__standard"
+  class="Text__block atoms__fontFamily_text atoms__color_neutral atoms__fontSize_standard atoms__fontWeight_strong atoms__transform_standardText Box__root atoms__borderColor_standard"
 >
   Children
 </div>
@@ -50,7 +50,7 @@ exports[`Text Theme: jobStreet Weight 1`] = `
 
 exports[`Text Theme: seekAnz Baseline disabled 1`] = `
 <div
-  class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular Box__root borderColor__standard"
+  class="Text__block atoms__fontFamily_text atoms__color_neutral atoms__fontSize_standard atoms__fontWeight_regular Box__root atoms__borderColor_standard"
 >
   Children
 </div>
@@ -58,7 +58,7 @@ exports[`Text Theme: seekAnz Baseline disabled 1`] = `
 
 exports[`Text Theme: seekAnz Color 1`] = `
 <div
-  class="Text__block fontFamily__text color__positive fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard"
+  class="Text__block atoms__fontFamily_text atoms__color_positive atoms__fontSize_standard atoms__fontWeight_regular atoms__transform_standardText Box__root atoms__borderColor_standard"
 >
   Children
 </div>
@@ -66,7 +66,7 @@ exports[`Text Theme: seekAnz Color 1`] = `
 
 exports[`Text Theme: seekAnz Default 1`] = `
 <div
-  class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard"
+  class="Text__block atoms__fontFamily_text atoms__color_neutral atoms__fontSize_standard atoms__fontWeight_regular atoms__transform_standardText Box__root atoms__borderColor_standard"
 >
   Children
 </div>
@@ -74,7 +74,7 @@ exports[`Text Theme: seekAnz Default 1`] = `
 
 exports[`Text Theme: seekAnz List item 1`] = `
 <li
-  class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Text__listItem Box__root borderColor__standard"
+  class="Text__block atoms__fontFamily_text atoms__color_neutral atoms__fontSize_standard atoms__fontWeight_regular atoms__transform_standardText Text__listItem Box__root atoms__borderColor_standard"
 >
   Children
 </li>
@@ -82,7 +82,7 @@ exports[`Text Theme: seekAnz List item 1`] = `
 
 exports[`Text Theme: seekAnz Size 1`] = `
 <div
-  class="Text__block fontFamily__text color__neutral fontSize__large fontWeight__regular transform__largeText Box__root borderColor__standard"
+  class="Text__block atoms__fontFamily_text atoms__color_neutral atoms__fontSize_large atoms__fontWeight_regular atoms__transform_largeText Box__root atoms__borderColor_standard"
 >
   Children
 </div>
@@ -90,7 +90,7 @@ exports[`Text Theme: seekAnz Size 1`] = `
 
 exports[`Text Theme: seekAnz Weight 1`] = `
 <div
-  class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__strong transform__standardText Box__root borderColor__standard"
+  class="Text__block atoms__fontFamily_text atoms__color_neutral atoms__fontSize_standard atoms__fontWeight_strong atoms__transform_standardText Box__root atoms__borderColor_standard"
 >
   Children
 </div>
@@ -98,7 +98,7 @@ exports[`Text Theme: seekAnz Weight 1`] = `
 
 exports[`Text Theme: seekAsia Baseline disabled 1`] = `
 <div
-  class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular Box__root borderColor__standard"
+  class="Text__block atoms__fontFamily_text atoms__color_neutral atoms__fontSize_standard atoms__fontWeight_regular Box__root atoms__borderColor_standard"
 >
   Children
 </div>
@@ -106,7 +106,7 @@ exports[`Text Theme: seekAsia Baseline disabled 1`] = `
 
 exports[`Text Theme: seekAsia Color 1`] = `
 <div
-  class="Text__block fontFamily__text color__positive fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard"
+  class="Text__block atoms__fontFamily_text atoms__color_positive atoms__fontSize_standard atoms__fontWeight_regular atoms__transform_standardText Box__root atoms__borderColor_standard"
 >
   Children
 </div>
@@ -114,7 +114,7 @@ exports[`Text Theme: seekAsia Color 1`] = `
 
 exports[`Text Theme: seekAsia Default 1`] = `
 <div
-  class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard"
+  class="Text__block atoms__fontFamily_text atoms__color_neutral atoms__fontSize_standard atoms__fontWeight_regular atoms__transform_standardText Box__root atoms__borderColor_standard"
 >
   Children
 </div>
@@ -122,7 +122,7 @@ exports[`Text Theme: seekAsia Default 1`] = `
 
 exports[`Text Theme: seekAsia List item 1`] = `
 <li
-  class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Text__listItem Box__root borderColor__standard"
+  class="Text__block atoms__fontFamily_text atoms__color_neutral atoms__fontSize_standard atoms__fontWeight_regular atoms__transform_standardText Text__listItem Box__root atoms__borderColor_standard"
 >
   Children
 </li>
@@ -130,7 +130,7 @@ exports[`Text Theme: seekAsia List item 1`] = `
 
 exports[`Text Theme: seekAsia Size 1`] = `
 <div
-  class="Text__block fontFamily__text color__neutral fontSize__large fontWeight__regular transform__largeText Box__root borderColor__standard"
+  class="Text__block atoms__fontFamily_text atoms__color_neutral atoms__fontSize_large atoms__fontWeight_regular atoms__transform_largeText Box__root atoms__borderColor_standard"
 >
   Children
 </div>
@@ -138,7 +138,7 @@ exports[`Text Theme: seekAsia Size 1`] = `
 
 exports[`Text Theme: seekAsia Weight 1`] = `
 <div
-  class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__strong transform__standardText Box__root borderColor__standard"
+  class="Text__block atoms__fontFamily_text atoms__color_neutral atoms__fontSize_standard atoms__fontWeight_strong atoms__transform_standardText Box__root atoms__borderColor_standard"
 >
   Children
 </div>
@@ -146,7 +146,7 @@ exports[`Text Theme: seekAsia Weight 1`] = `
 
 exports[`Text Theme: wireframe Baseline disabled 1`] = `
 <div
-  class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular Box__root borderColor__standard"
+  class="Text__block atoms__fontFamily_text atoms__color_neutral atoms__fontSize_standard atoms__fontWeight_regular Box__root atoms__borderColor_standard"
 >
   Children
 </div>
@@ -154,7 +154,7 @@ exports[`Text Theme: wireframe Baseline disabled 1`] = `
 
 exports[`Text Theme: wireframe Color 1`] = `
 <div
-  class="Text__block fontFamily__text color__positive fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard"
+  class="Text__block atoms__fontFamily_text atoms__color_positive atoms__fontSize_standard atoms__fontWeight_regular atoms__transform_standardText Box__root atoms__borderColor_standard"
 >
   Children
 </div>
@@ -162,7 +162,7 @@ exports[`Text Theme: wireframe Color 1`] = `
 
 exports[`Text Theme: wireframe Default 1`] = `
 <div
-  class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard"
+  class="Text__block atoms__fontFamily_text atoms__color_neutral atoms__fontSize_standard atoms__fontWeight_regular atoms__transform_standardText Box__root atoms__borderColor_standard"
 >
   Children
 </div>
@@ -170,7 +170,7 @@ exports[`Text Theme: wireframe Default 1`] = `
 
 exports[`Text Theme: wireframe List item 1`] = `
 <li
-  class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Text__listItem Box__root borderColor__standard"
+  class="Text__block atoms__fontFamily_text atoms__color_neutral atoms__fontSize_standard atoms__fontWeight_regular atoms__transform_standardText Text__listItem Box__root atoms__borderColor_standard"
 >
   Children
 </li>
@@ -178,7 +178,7 @@ exports[`Text Theme: wireframe List item 1`] = `
 
 exports[`Text Theme: wireframe Size 1`] = `
 <div
-  class="Text__block fontFamily__text color__neutral fontSize__large fontWeight__regular transform__largeText Box__root borderColor__standard"
+  class="Text__block atoms__fontFamily_text atoms__color_neutral atoms__fontSize_large atoms__fontWeight_regular atoms__transform_largeText Box__root atoms__borderColor_standard"
 >
   Children
 </div>
@@ -186,7 +186,7 @@ exports[`Text Theme: wireframe Size 1`] = `
 
 exports[`Text Theme: wireframe Weight 1`] = `
 <div
-  class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__strong transform__standardText Box__root borderColor__standard"
+  class="Text__block atoms__fontFamily_text atoms__color_neutral atoms__fontSize_standard atoms__fontWeight_strong atoms__transform_standardText Box__root atoms__borderColor_standard"
 >
   Children
 </div>

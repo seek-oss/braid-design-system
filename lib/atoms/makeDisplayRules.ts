@@ -16,11 +16,11 @@ const displayRules = {
 
 const defaultDisplayRules = mapKeys(
   displayRules,
-  (_value, key) => `${defaultDisplayPrefix}${key}`
+  (value, key) => `${defaultDisplayPrefix}${key}`
 );
 const desktopDisplayRules = mapKeys(
   displayRules,
-  (_value, key) => `${desktopDisplayPrefix}${key}`
+  (value, key) => `${desktopDisplayPrefix}${key}`
 );
 
 export default (tokens: Tokens) => {

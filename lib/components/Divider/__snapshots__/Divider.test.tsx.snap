@@ -2,40 +2,40 @@
 
 exports[`Divider Theme: jobStreet Default 1`] = `
 <div
-  class="Divider__root Box__root borderColor__standard"
+  class="Divider__root Box__root atoms__borderColor_standard"
 >
   <div
-    class="Divider__divider Box__root borderColor__standard borderWidth__standard"
+    class="Divider__divider Box__root atoms__borderColor_standard atoms__borderWidth_standard"
   />
 </div>
 `;
 
 exports[`Divider Theme: seekAnz Default 1`] = `
 <div
-  class="Divider__root Box__root borderColor__standard"
+  class="Divider__root Box__root atoms__borderColor_standard"
 >
   <div
-    class="Divider__divider Box__root borderColor__standard borderWidth__standard"
+    class="Divider__divider Box__root atoms__borderColor_standard atoms__borderWidth_standard"
   />
 </div>
 `;
 
 exports[`Divider Theme: seekAsia Default 1`] = `
 <div
-  class="Divider__root Box__root borderColor__standard"
+  class="Divider__root Box__root atoms__borderColor_standard"
 >
   <div
-    class="Divider__divider Box__root borderColor__standard borderWidth__standard"
+    class="Divider__divider Box__root atoms__borderColor_standard atoms__borderWidth_standard"
   />
 </div>
 `;
 
 exports[`Divider Theme: wireframe Default 1`] = `
 <div
-  class="Divider__root Box__root borderColor__standard"
+  class="Divider__root Box__root atoms__borderColor_standard"
 >
   <div
-    class="Divider__divider Box__root borderColor__standard borderWidth__standard"
+    class="Divider__divider Box__root atoms__borderColor_standard atoms__borderWidth_standard"
   />
 </div>
 `;

@@ -2,7 +2,7 @@
 
 exports[`BulletList Theme: jobStreet Default 1`] = `
 <ul
-  class="Box__root borderColor__standard reset__ul"
+  class="Box__root atoms__borderColor_standard reset__ul"
 >
   <li>
     Bullet
@@ -18,7 +18,7 @@ exports[`BulletList Theme: jobStreet Default 1`] = `
 
 exports[`BulletList Theme: seekAnz Default 1`] = `
 <ul
-  class="Box__root borderColor__standard reset__ul"
+  class="Box__root atoms__borderColor_standard reset__ul"
 >
   <li>
     Bullet
@@ -34,7 +34,7 @@ exports[`BulletList Theme: seekAnz Default 1`] = `
 
 exports[`BulletList Theme: seekAsia Default 1`] = `
 <ul
-  class="Box__root borderColor__standard reset__ul"
+  class="Box__root atoms__borderColor_standard reset__ul"
 >
   <li>
     Bullet
@@ -50,7 +50,7 @@ exports[`BulletList Theme: seekAsia Default 1`] = `
 
 exports[`BulletList Theme: wireframe Default 1`] = `
 <ul
-  class="Box__root borderColor__standard reset__ul"
+  class="Box__root atoms__borderColor_standard reset__ul"
 >
   <li>
     Bullet

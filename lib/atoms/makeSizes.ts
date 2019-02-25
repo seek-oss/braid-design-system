@@ -6,7 +6,7 @@ import { px } from './utils/toUnit';
 import { Tokens } from 'lib/themes/theme';
 
 const makeSizeRules = (tokens: Tokens, property: string) => {
-  const rules: { [index: string]: object }[] = [];
+  const rules: Array<{ [index: string]: object }> = [];
 
   each(tokens.text, (type, typeName) => {
     rules.push(

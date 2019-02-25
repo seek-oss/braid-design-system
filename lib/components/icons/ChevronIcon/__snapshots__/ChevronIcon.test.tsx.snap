@@ -2,10 +2,10 @@
 
 exports[`ChevronIcon Theme: jobStreet Default 1`] = `
 <div
-  class="ChevronIcon__root Box__root borderColor__standard"
+  class="ChevronIcon__root Box__root atoms__borderColor_standard"
 >
   <svg
-    class="width__standardText height__standardText Icon__block Box__root borderColor__standard"
+    class="atoms__width_standardText atoms__height_standardText Icon__block Box__root atoms__borderColor_standard"
     height="16"
     viewBox="0 0 1024 1024"
     width="16"
@@ -19,10 +19,10 @@ exports[`ChevronIcon Theme: jobStreet Default 1`] = `
 
 exports[`ChevronIcon Theme: jobStreet Down 1`] = `
 <div
-  class="ChevronIcon__root Box__root borderColor__standard"
+  class="ChevronIcon__root Box__root atoms__borderColor_standard"
 >
   <svg
-    class="width__standardText height__standardText Icon__block Box__root borderColor__standard"
+    class="atoms__width_standardText atoms__height_standardText Icon__block Box__root atoms__borderColor_standard"
     height="16"
     viewBox="0 0 1024 1024"
     width="16"
@@ -36,10 +36,10 @@ exports[`ChevronIcon Theme: jobStreet Down 1`] = `
 
 exports[`ChevronIcon Theme: jobStreet Inline 1`] = `
 <div
-  class="ChevronIcon__root ChevronIcon__inline Box__root borderColor__standard"
+  class="ChevronIcon__root ChevronIcon__inline Box__root atoms__borderColor_standard"
 >
   <svg
-    class="width__standardTextInline height__standardTextInline Icon__inline Box__root borderColor__standard"
+    class="atoms__width_standardTextInline atoms__height_standardTextInline Icon__inline Box__root atoms__borderColor_standard"
     height="16"
     viewBox="0 0 1024 1024"
     width="16"
@@ -53,10 +53,10 @@ exports[`ChevronIcon Theme: jobStreet Inline 1`] = `
 
 exports[`ChevronIcon Theme: jobStreet Left 1`] = `
 <div
-  class="ChevronIcon__root ChevronIcon__left Box__root borderColor__standard"
+  class="ChevronIcon__root ChevronIcon__left Box__root atoms__borderColor_standard"
 >
   <svg
-    class="width__standardText height__standardText Icon__block Box__root borderColor__standard"
+    class="atoms__width_standardText atoms__height_standardText Icon__block Box__root atoms__borderColor_standard"
     height="16"
     viewBox="0 0 1024 1024"
     width="16"
@@ -70,10 +70,10 @@ exports[`ChevronIcon Theme: jobStreet Left 1`] = `
 
 exports[`ChevronIcon Theme: jobStreet Right 1`] = `
 <div
-  class="ChevronIcon__root ChevronIcon__right Box__root borderColor__standard"
+  class="ChevronIcon__root ChevronIcon__right Box__root atoms__borderColor_standard"
 >
   <svg
-    class="width__standardText height__standardText Icon__block Box__root borderColor__standard"
+    class="atoms__width_standardText atoms__height_standardText Icon__block Box__root atoms__borderColor_standard"
     height="16"
     viewBox="0 0 1024 1024"
     width="16"
@@ -87,10 +87,10 @@ exports[`ChevronIcon Theme: jobStreet Right 1`] = `
 
 exports[`ChevronIcon Theme: jobStreet Sized 1`] = `
 <div
-  class="ChevronIcon__root Box__root borderColor__standard"
+  class="ChevronIcon__root Box__root atoms__borderColor_standard"
 >
   <svg
-    class="width__largeText height__largeText Icon__block Box__root borderColor__standard"
+    class="atoms__width_largeText atoms__height_largeText Icon__block Box__root atoms__borderColor_standard"
     height="16"
     viewBox="0 0 1024 1024"
     width="16"
@@ -104,10 +104,10 @@ exports[`ChevronIcon Theme: jobStreet Sized 1`] = `
 
 exports[`ChevronIcon Theme: jobStreet Up 1`] = `
 <div
-  class="ChevronIcon__root ChevronIcon__up Box__root borderColor__standard"
+  class="ChevronIcon__root ChevronIcon__up Box__root atoms__borderColor_standard"
 >
   <svg
-    class="width__standardText height__standardText Icon__block Box__root borderColor__standard"
+    class="atoms__width_standardText atoms__height_standardText Icon__block Box__root atoms__borderColor_standard"
     height="16"
     viewBox="0 0 1024 1024"
     width="16"
@@ -121,10 +121,10 @@ exports[`ChevronIcon Theme: jobStreet Up 1`] = `
 
 exports[`ChevronIcon Theme: seekAnz Default 1`] = `
 <div
-  class="ChevronIcon__root Box__root borderColor__standard"
+  class="ChevronIcon__root Box__root atoms__borderColor_standard"
 >
   <svg
-    class="width__standardText height__standardText Icon__block Box__root borderColor__standard"
+    class="atoms__width_standardText atoms__height_standardText Icon__block Box__root atoms__borderColor_standard"
     height="16"
     viewBox="0 0 1024 1024"
     width="16"
@@ -138,10 +138,10 @@ exports[`ChevronIcon Theme: seekAnz Default 1`] = `
 
 exports[`ChevronIcon Theme: seekAnz Down 1`] = `
 <div
-  class="ChevronIcon__root Box__root borderColor__standard"
+  class="ChevronIcon__root Box__root atoms__borderColor_standard"
 >
   <svg
-    class="width__standardText height__standardText Icon__block Box__root borderColor__standard"
+    class="atoms__width_standardText atoms__height_standardText Icon__block Box__root atoms__borderColor_standard"
     height="16"
     viewBox="0 0 1024 1024"
     width="16"
@@ -155,10 +155,10 @@ exports[`ChevronIcon Theme: seekAnz Down 1`] = `
 
 exports[`ChevronIcon Theme: seekAnz Inline 1`] = `
 <div
-  class="ChevronIcon__root ChevronIcon__inline Box__root borderColor__standard"
+  class="ChevronIcon__root ChevronIcon__inline Box__root atoms__borderColor_standard"
 >
   <svg
-    class="width__standardTextInline height__standardTextInline Icon__inline Box__root borderColor__standard"
+    class="atoms__width_standardTextInline atoms__height_standardTextInline Icon__inline Box__root atoms__borderColor_standard"
     height="16"
     viewBox="0 0 1024 1024"
     width="16"
@@ -172,10 +172,10 @@ exports[`ChevronIcon Theme: seekAnz Inline 1`] = `
 
 exports[`ChevronIcon Theme: seekAnz Left 1`] = `
 <div
-  class="ChevronIcon__root ChevronIcon__left Box__root borderColor__standard"
+  class="ChevronIcon__root ChevronIcon__left Box__root atoms__borderColor_standard"
 >
   <svg
-    class="width__standardText height__standardText Icon__block Box__root borderColor__standard"
+    class="atoms__width_standardText atoms__height_standardText Icon__block Box__root atoms__borderColor_standard"
     height="16"
     viewBox="0 0 1024 1024"
     width="16"
@@ -189,10 +189,10 @@ exports[`ChevronIcon Theme: seekAnz Left 1`] = `
 
 exports[`ChevronIcon Theme: seekAnz Right 1`] = `
 <div
-  class="ChevronIcon__root ChevronIcon__right Box__root borderColor__standard"
+  class="ChevronIcon__root ChevronIcon__right Box__root atoms__borderColor_standard"
 >
   <svg
-    class="width__standardText height__standardText Icon__block Box__root borderColor__standard"
+    class="atoms__width_standardText atoms__height_standardText Icon__block Box__root atoms__borderColor_standard"
     height="16"
     viewBox="0 0 1024 1024"
     width="16"
@@ -206,10 +206,10 @@ exports[`ChevronIcon Theme: seekAnz Right 1`] = `
 
 exports[`ChevronIcon Theme: seekAnz Sized 1`] = `
 <div
-  class="ChevronIcon__root Box__root borderColor__standard"
+  class="ChevronIcon__root Box__root atoms__borderColor_standard"
 >
   <svg
-    class="width__largeText height__largeText Icon__block Box__root borderColor__standard"
+    class="atoms__width_largeText atoms__height_largeText Icon__block Box__root atoms__borderColor_standard"
     height="16"
     viewBox="0 0 1024 1024"
     width="16"
@@ -223,10 +223,10 @@ exports[`ChevronIcon Theme: seekAnz Sized 1`] = `
 
 exports[`ChevronIcon Theme: seekAnz Up 1`] = `
 <div
-  class="ChevronIcon__root ChevronIcon__up Box__root borderColor__standard"
+  class="ChevronIcon__root ChevronIcon__up Box__root atoms__borderColor_standard"
 >
   <svg
-    class="width__standardText height__standardText Icon__block Box__root borderColor__standard"
+    class="atoms__width_standardText atoms__height_standardText Icon__block Box__root atoms__borderColor_standard"
     height="16"
     viewBox="0 0 1024 1024"
     width="16"
@@ -240,10 +240,10 @@ exports[`ChevronIcon Theme: seekAnz Up 1`] = `
 
 exports[`ChevronIcon Theme: seekAsia Default 1`] = `
 <div
-  class="ChevronIcon__root Box__root borderColor__standard"
+  class="ChevronIcon__root Box__root atoms__borderColor_standard"
 >
   <svg
-    class="width__standardText height__standardText Icon__block Box__root borderColor__standard"
+    class="atoms__width_standardText atoms__height_standardText Icon__block Box__root atoms__borderColor_standard"
     height="16"
     viewBox="0 0 1024 1024"
     width="16"
@@ -257,10 +257,10 @@ exports[`ChevronIcon Theme: seekAsia Default 1`] = `
 
 exports[`ChevronIcon Theme: seekAsia Down 1`] = `
 <div
-  class="ChevronIcon__root Box__root borderColor__standard"
+  class="ChevronIcon__root Box__root atoms__borderColor_standard"
 >
   <svg
-    class="width__standardText height__standardText Icon__block Box__root borderColor__standard"
+    class="atoms__width_standardText atoms__height_standardText Icon__block Box__root atoms__borderColor_standard"
     height="16"
     viewBox="0 0 1024 1024"
     width="16"
@@ -274,10 +274,10 @@ exports[`ChevronIcon Theme: seekAsia Down 1`] = `
 
 exports[`ChevronIcon Theme: seekAsia Inline 1`] = `
 <div
-  class="ChevronIcon__root ChevronIcon__inline Box__root borderColor__standard"
+  class="ChevronIcon__root ChevronIcon__inline Box__root atoms__borderColor_standard"
 >
   <svg
-    class="width__standardTextInline height__standardTextInline Icon__inline Box__root borderColor__standard"
+    class="atoms__width_standardTextInline atoms__height_standardTextInline Icon__inline Box__root atoms__borderColor_standard"
     height="16"
     viewBox="0 0 1024 1024"
     width="16"
@@ -291,10 +291,10 @@ exports[`ChevronIcon Theme: seekAsia Inline 1`] = `
 
 exports[`ChevronIcon Theme: seekAsia Left 1`] = `
 <div
-  class="ChevronIcon__root ChevronIcon__left Box__root borderColor__standard"
+  class="ChevronIcon__root ChevronIcon__left Box__root atoms__borderColor_standard"
 >
   <svg
-    class="width__standardText height__standardText Icon__block Box__root borderColor__standard"
+    class="atoms__width_standardText atoms__height_standardText Icon__block Box__root atoms__borderColor_standard"
     height="16"
     viewBox="0 0 1024 1024"
     width="16"
@@ -308,10 +308,10 @@ exports[`ChevronIcon Theme: seekAsia Left 1`] = `
 
 exports[`ChevronIcon Theme: seekAsia Right 1`] = `
 <div
-  class="ChevronIcon__root ChevronIcon__right Box__root borderColor__standard"
+  class="ChevronIcon__root ChevronIcon__right Box__root atoms__borderColor_standard"
 >
   <svg
-    class="width__standardText height__standardText Icon__block Box__root borderColor__standard"
+    class="atoms__width_standardText atoms__height_standardText Icon__block Box__root atoms__borderColor_standard"
     height="16"
     viewBox="0 0 1024 1024"
     width="16"
@@ -325,10 +325,10 @@ exports[`ChevronIcon Theme: seekAsia Right 1`] = `
 
 exports[`ChevronIcon Theme: seekAsia Sized 1`] = `
 <div
-  class="ChevronIcon__root Box__root borderColor__standard"
+  class="ChevronIcon__root Box__root atoms__borderColor_standard"
 >
   <svg
-    class="width__largeText height__largeText Icon__block Box__root borderColor__standard"
+    class="atoms__width_largeText atoms__height_largeText Icon__block Box__root atoms__borderColor_standard"
     height="16"
     viewBox="0 0 1024 1024"
     width="16"
@@ -342,10 +342,10 @@ exports[`ChevronIcon Theme: seekAsia Sized 1`] = `
 
 exports[`ChevronIcon Theme: seekAsia Up 1`] = `
 <div
-  class="ChevronIcon__root ChevronIcon__up Box__root borderColor__standard"
+  class="ChevronIcon__root ChevronIcon__up Box__root atoms__borderColor_standard"
 >
   <svg
-    class="width__standardText height__standardText Icon__block Box__root borderColor__standard"
+    class="atoms__width_standardText atoms__height_standardText Icon__block Box__root atoms__borderColor_standard"
     height="16"
     viewBox="0 0 1024 1024"
     width="16"
@@ -359,10 +359,10 @@ exports[`ChevronIcon Theme: seekAsia Up 1`] = `
 
 exports[`ChevronIcon Theme: wireframe Default 1`] = `
 <div
-  class="ChevronIcon__root Box__root borderColor__standard"
+  class="ChevronIcon__root Box__root atoms__borderColor_standard"
 >
   <svg
-    class="width__standardText height__standardText Icon__block Box__root borderColor__standard"
+    class="atoms__width_standardText atoms__height_standardText Icon__block Box__root atoms__borderColor_standard"
     height="16"
     viewBox="0 0 1024 1024"
     width="16"
@@ -376,10 +376,10 @@ exports[`ChevronIcon Theme: wireframe Default 1`] = `
 
 exports[`ChevronIcon Theme: wireframe Down 1`] = `
 <div
-  class="ChevronIcon__root Box__root borderColor__standard"
+  class="ChevronIcon__root Box__root atoms__borderColor_standard"
 >
   <svg
-    class="width__standardText height__standardText Icon__block Box__root borderColor__standard"
+    class="atoms__width_standardText atoms__height_standardText Icon__block Box__root atoms__borderColor_standard"
     height="16"
     viewBox="0 0 1024 1024"
     width="16"
@@ -393,10 +393,10 @@ exports[`ChevronIcon Theme: wireframe Down 1`] = `
 
 exports[`ChevronIcon Theme: wireframe Inline 1`] = `
 <div
-  class="ChevronIcon__root ChevronIcon__inline Box__root borderColor__standard"
+  class="ChevronIcon__root ChevronIcon__inline Box__root atoms__borderColor_standard"
 >
   <svg
-    class="width__standardTextInline height__standardTextInline Icon__inline Box__root borderColor__standard"
+    class="atoms__width_standardTextInline atoms__height_standardTextInline Icon__inline Box__root atoms__borderColor_standard"
     height="16"
     viewBox="0 0 1024 1024"
     width="16"
@@ -410,10 +410,10 @@ exports[`ChevronIcon Theme: wireframe Inline 1`] = `
 
 exports[`ChevronIcon Theme: wireframe Left 1`] = `
 <div
-  class="ChevronIcon__root ChevronIcon__left Box__root borderColor__standard"
+  class="ChevronIcon__root ChevronIcon__left Box__root atoms__borderColor_standard"
 >
   <svg
-    class="width__standardText height__standardText Icon__block Box__root borderColor__standard"
+    class="atoms__width_standardText atoms__height_standardText Icon__block Box__root atoms__borderColor_standard"
     height="16"
     viewBox="0 0 1024 1024"
     width="16"
@@ -427,10 +427,10 @@ exports[`ChevronIcon Theme: wireframe Left 1`] = `
 
 exports[`ChevronIcon Theme: wireframe Right 1`] = `
 <div
-  class="ChevronIcon__root ChevronIcon__right Box__root borderColor__standard"
+  class="ChevronIcon__root ChevronIcon__right Box__root atoms__borderColor_standard"
 >
   <svg
-    class="width__standardText height__standardText Icon__block Box__root borderColor__standard"
+    class="atoms__width_standardText atoms__height_standardText Icon__block Box__root atoms__borderColor_standard"
     height="16"
     viewBox="0 0 1024 1024"
     width="16"
@@ -444,10 +444,10 @@ exports[`ChevronIcon Theme: wireframe Right 1`] = `
 
 exports[`ChevronIcon Theme: wireframe Sized 1`] = `
 <div
-  class="ChevronIcon__root Box__root borderColor__standard"
+  class="ChevronIcon__root Box__root atoms__borderColor_standard"
 >
   <svg
-    class="width__largeText height__largeText Icon__block Box__root borderColor__standard"
+    class="atoms__width_largeText atoms__height_largeText Icon__block Box__root atoms__borderColor_standard"
     height="16"
     viewBox="0 0 1024 1024"
     width="16"
@@ -461,10 +461,10 @@ exports[`ChevronIcon Theme: wireframe Sized 1`] = `
 
 exports[`ChevronIcon Theme: wireframe Up 1`] = `
 <div
-  class="ChevronIcon__root ChevronIcon__up Box__root borderColor__standard"
+  class="ChevronIcon__root ChevronIcon__up Box__root atoms__borderColor_standard"
 >
   <svg
-    class="width__standardText height__standardText Icon__block Box__root borderColor__standard"
+    class="atoms__width_standardText atoms__height_standardText Icon__block Box__root atoms__borderColor_standard"
     height="16"
     viewBox="0 0 1024 1024"
     width="16"

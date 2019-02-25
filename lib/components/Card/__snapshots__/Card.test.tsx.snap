@@ -2,10 +2,10 @@
 
 exports[`Card Theme: jobStreet Default 1`] = `
 <div
-  class="Box__root borderColor__standard paddingBottom__medium"
+  class="Box__root atoms__borderColor_standard atoms__paddingBottom_medium"
 >
   <div
-    class="Box__root backgroundColor__card borderColor__standard"
+    class="Box__root atoms__backgroundColor_card atoms__borderColor_standard"
   >
     Children
   </div>
@@ -14,10 +14,10 @@ exports[`Card Theme: jobStreet Default 1`] = `
 
 exports[`Card Theme: seekAnz Default 1`] = `
 <div
-  class="Box__root borderColor__standard paddingBottom__medium"
+  class="Box__root atoms__borderColor_standard atoms__paddingBottom_medium"
 >
   <div
-    class="Box__root backgroundColor__card borderColor__standard"
+    class="Box__root atoms__backgroundColor_card atoms__borderColor_standard"
   >
     Children
   </div>
@@ -26,10 +26,10 @@ exports[`Card Theme: seekAnz Default 1`] = `
 
 exports[`Card Theme: seekAsia Default 1`] = `
 <div
-  class="Box__root borderColor__standard paddingBottom__medium"
+  class="Box__root atoms__borderColor_standard atoms__paddingBottom_medium"
 >
   <div
-    class="Box__root backgroundColor__card borderColor__standard"
+    class="Box__root atoms__backgroundColor_card atoms__borderColor_standard"
   >
     Children
   </div>
@@ -38,10 +38,10 @@ exports[`Card Theme: seekAsia Default 1`] = `
 
 exports[`Card Theme: wireframe Default 1`] = `
 <div
-  class="Box__root borderColor__standard paddingBottom__medium"
+  class="Box__root atoms__borderColor_standard atoms__paddingBottom_medium"
 >
   <div
-    class="Box__root backgroundColor__card borderColor__standard"
+    class="Box__root atoms__backgroundColor_card atoms__borderColor_standard"
   >
     Children
   </div>

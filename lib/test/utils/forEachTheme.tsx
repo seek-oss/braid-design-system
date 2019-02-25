@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react';
 import each from 'lodash/each';
 import { Omit } from 'utility-types';
 import * as themes from '../../themes';
-import { Theme } from '../themes/theme';
+import { Theme } from '../../themes/theme';
 import ThemeProvider, {
   ThemeProviderProps
 } from '../../components/ThemeProvider/ThemeProvider';

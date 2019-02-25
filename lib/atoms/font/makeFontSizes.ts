@@ -6,7 +6,7 @@ import each from 'lodash/each';
 import { Tokens } from 'lib/themes/theme';
 
 export default (tokens: Tokens) => {
-  const rules: { [index: string]: object }[] = [];
+  const rules: Array<{ [index: string]: object }> = [];
 
   each(
     {

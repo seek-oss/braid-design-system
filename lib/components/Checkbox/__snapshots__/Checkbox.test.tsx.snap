@@ -13,38 +13,38 @@ exports[`Checkbox Theme: jobStreet Checked 1`] = `
     class="Checkbox__content"
   >
     <label
-      class="Checkbox__label Box__root borderColor__standard"
+      class="Checkbox__label Box__root atoms__borderColor_standard"
       for="id"
       style="min-height: 44px;"
     >
       <div
-        class="Checkbox__checkboxContainer Box__root borderColor__standard marginRight__small"
+        class="Checkbox__checkboxContainer Box__root atoms__borderColor_standard atoms__marginRight_small"
         style="width: 24px; height: 24px; margin-top: 10px;"
       >
         <div
-          class="Checkbox__checkbox borderRadius__standard Box__root backgroundColor__input borderColor__standard borderWidth__standard"
+          class="Checkbox__checkbox atoms__borderRadius_standard Box__root atoms__backgroundColor_input atoms__borderColor_standard atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxHover borderRadius__standard Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxHover atoms__borderRadius_standard Box__root atoms__backgroundColor_input atoms__borderColor_formAccent atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxFocus boxShadow__focus borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__standard"
+          class="Checkbox__checkbox Checkbox__checkboxFocus atoms__boxShadow_focus atoms__borderRadius_standard atoms__transition_fast Box__root atoms__backgroundColor_input atoms__borderColor_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxChecked backgroundColor__formAccent borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxChecked atoms__backgroundColor_formAccent atoms__borderRadius_standard atoms__transition_fast Box__root atoms__backgroundColor_input atoms__borderColor_formAccent atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxDisabled borderRadius__standard transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxDisabled atoms__borderRadius_standard atoms__transition_fast Box__root atoms__backgroundColor_inputDisabled atoms__borderColor_standard atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxCritical borderRadius__standard transition__fast Box__root borderColor__critical borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxCritical atoms__borderRadius_standard atoms__transition_fast Box__root atoms__borderColor_critical atoms__borderWidth_standard"
           style="opacity: 0;"
         />
         <div
-          class="Checkbox__checkboxIcon transition__fast Box__root borderColor__standard"
+          class="Checkbox__checkboxIcon atoms__transition_fast Box__root atoms__borderColor_standard"
         >
           <svg
-            class="fill__white Icon__fillSize Icon__block Box__root borderColor__standard"
+            class="atoms__fill_white Icon__fillSize Icon__block Box__root atoms__borderColor_standard"
             height="16"
             viewBox="90.471 302.809 823 823"
             width="16"
@@ -56,25 +56,25 @@ exports[`Checkbox Theme: jobStreet Checked 1`] = `
         </div>
       </div>
       <div
-        class="Text__block fontFamily__text color__neutral fontSize__interaction fontWeight__regular Box__root borderColor__standard"
+        class="Text__block atoms__fontFamily_text atoms__color_neutral atoms__fontSize_interaction atoms__fontWeight_regular Box__root atoms__borderColor_standard"
       >
         Label
       </div>
     </label>
   </div>
   <div
-    class="Box__root borderColor__standard paddingBottom__small"
+    class="Box__root atoms__borderColor_standard atoms__paddingBottom_small"
     id="id-message"
     tabindex="-1"
   >
     <div
-      class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard"
+      class="Text__block atoms__fontFamily_text atoms__color_neutral atoms__fontSize_standard atoms__fontWeight_regular atoms__transform_standardText Box__root atoms__borderColor_standard"
     >
       <div
         class="FieldMessage__content"
       >
         <div
-          class="height__standardText"
+          class="atoms__height_standardText"
         />
         <div />
       </div>
@@ -96,38 +96,38 @@ exports[`Checkbox Theme: jobStreet Children when checked 1`] = `
     class="Checkbox__content"
   >
     <label
-      class="Checkbox__label Box__root borderColor__standard"
+      class="Checkbox__label Box__root atoms__borderColor_standard"
       for="id"
       style="min-height: 44px;"
     >
       <div
-        class="Checkbox__checkboxContainer Box__root borderColor__standard marginRight__small"
+        class="Checkbox__checkboxContainer Box__root atoms__borderColor_standard atoms__marginRight_small"
         style="width: 24px; height: 24px; margin-top: 10px;"
       >
         <div
-          class="Checkbox__checkbox borderRadius__standard Box__root backgroundColor__input borderColor__standard borderWidth__standard"
+          class="Checkbox__checkbox atoms__borderRadius_standard Box__root atoms__backgroundColor_input atoms__borderColor_standard atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxHover borderRadius__standard Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxHover atoms__borderRadius_standard Box__root atoms__backgroundColor_input atoms__borderColor_formAccent atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxFocus boxShadow__focus borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__standard"
+          class="Checkbox__checkbox Checkbox__checkboxFocus atoms__boxShadow_focus atoms__borderRadius_standard atoms__transition_fast Box__root atoms__backgroundColor_input atoms__borderColor_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxChecked backgroundColor__formAccent borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxChecked atoms__backgroundColor_formAccent atoms__borderRadius_standard atoms__transition_fast Box__root atoms__backgroundColor_input atoms__borderColor_formAccent atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxDisabled borderRadius__standard transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxDisabled atoms__borderRadius_standard atoms__transition_fast Box__root atoms__backgroundColor_inputDisabled atoms__borderColor_standard atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxCritical borderRadius__standard transition__fast Box__root borderColor__critical borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxCritical atoms__borderRadius_standard atoms__transition_fast Box__root atoms__borderColor_critical atoms__borderWidth_standard"
           style="opacity: 0;"
         />
         <div
-          class="Checkbox__checkboxIcon transition__fast Box__root borderColor__standard"
+          class="Checkbox__checkboxIcon atoms__transition_fast Box__root atoms__borderColor_standard"
         >
           <svg
-            class="fill__white Icon__fillSize Icon__block Box__root borderColor__standard"
+            class="atoms__fill_white Icon__fillSize Icon__block Box__root atoms__borderColor_standard"
             height="16"
             viewBox="90.471 302.809 823 823"
             width="16"
@@ -139,31 +139,31 @@ exports[`Checkbox Theme: jobStreet Children when checked 1`] = `
         </div>
       </div>
       <div
-        class="Text__block fontFamily__text color__neutral fontSize__interaction fontWeight__strong Box__root borderColor__standard"
+        class="Text__block atoms__fontFamily_text atoms__color_neutral atoms__fontSize_interaction atoms__fontWeight_strong Box__root atoms__borderColor_standard"
       >
         Label
       </div>
     </label>
     <div
-      class="Checkbox__children Box__root borderColor__standard paddingBottom__small paddingLeft__small"
+      class="Checkbox__children Box__root atoms__borderColor_standard atoms__paddingBottom_small atoms__paddingLeft_small"
       style="margin-left: 24px;"
     >
       Children
     </div>
   </div>
   <div
-    class="Box__root borderColor__standard paddingBottom__small"
+    class="Box__root atoms__borderColor_standard atoms__paddingBottom_small"
     id="id-message"
     tabindex="-1"
   >
     <div
-      class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard"
+      class="Text__block atoms__fontFamily_text atoms__color_neutral atoms__fontSize_standard atoms__fontWeight_regular atoms__transform_standardText Box__root atoms__borderColor_standard"
     >
       <div
         class="FieldMessage__content"
       >
         <div
-          class="height__standardText"
+          class="atoms__height_standardText"
         />
         <div />
       </div>
@@ -184,38 +184,38 @@ exports[`Checkbox Theme: jobStreet Children when unchecked 1`] = `
     class="Checkbox__content"
   >
     <label
-      class="Checkbox__label Box__root borderColor__standard"
+      class="Checkbox__label Box__root atoms__borderColor_standard"
       for="id"
       style="min-height: 44px;"
     >
       <div
-        class="Checkbox__checkboxContainer Box__root borderColor__standard marginRight__small"
+        class="Checkbox__checkboxContainer Box__root atoms__borderColor_standard atoms__marginRight_small"
         style="width: 24px; height: 24px; margin-top: 10px;"
       >
         <div
-          class="Checkbox__checkbox borderRadius__standard Box__root backgroundColor__input borderColor__standard borderWidth__standard"
+          class="Checkbox__checkbox atoms__borderRadius_standard Box__root atoms__backgroundColor_input atoms__borderColor_standard atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxHover borderRadius__standard Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxHover atoms__borderRadius_standard Box__root atoms__backgroundColor_input atoms__borderColor_formAccent atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxFocus boxShadow__focus borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__standard"
+          class="Checkbox__checkbox Checkbox__checkboxFocus atoms__boxShadow_focus atoms__borderRadius_standard atoms__transition_fast Box__root atoms__backgroundColor_input atoms__borderColor_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxChecked backgroundColor__formAccent borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxChecked atoms__backgroundColor_formAccent atoms__borderRadius_standard atoms__transition_fast Box__root atoms__backgroundColor_input atoms__borderColor_formAccent atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxDisabled borderRadius__standard transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxDisabled atoms__borderRadius_standard atoms__transition_fast Box__root atoms__backgroundColor_inputDisabled atoms__borderColor_standard atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxCritical borderRadius__standard transition__fast Box__root borderColor__critical borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxCritical atoms__borderRadius_standard atoms__transition_fast Box__root atoms__borderColor_critical atoms__borderWidth_standard"
           style="opacity: 0;"
         />
         <div
-          class="Checkbox__checkboxIcon transition__fast Box__root borderColor__standard"
+          class="Checkbox__checkboxIcon atoms__transition_fast Box__root atoms__borderColor_standard"
         >
           <svg
-            class="fill__white Icon__fillSize Icon__block Box__root borderColor__standard"
+            class="atoms__fill_white Icon__fillSize Icon__block Box__root atoms__borderColor_standard"
             height="16"
             viewBox="90.471 302.809 823 823"
             width="16"
@@ -227,31 +227,31 @@ exports[`Checkbox Theme: jobStreet Children when unchecked 1`] = `
         </div>
       </div>
       <div
-        class="Text__block fontFamily__text color__neutral fontSize__interaction fontWeight__regular Box__root borderColor__standard"
+        class="Text__block atoms__fontFamily_text atoms__color_neutral atoms__fontSize_interaction atoms__fontWeight_regular Box__root atoms__borderColor_standard"
       >
         Label
       </div>
     </label>
     <div
-      class="Checkbox__children Box__root borderColor__standard paddingBottom__small paddingLeft__small"
+      class="Checkbox__children Box__root atoms__borderColor_standard atoms__paddingBottom_small atoms__paddingLeft_small"
       style="margin-left: 24px;"
     >
       Children
     </div>
   </div>
   <div
-    class="Box__root borderColor__standard paddingBottom__small"
+    class="Box__root atoms__borderColor_standard atoms__paddingBottom_small"
     id="id-message"
     tabindex="-1"
   >
     <div
-      class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard"
+      class="Text__block atoms__fontFamily_text atoms__color_neutral atoms__fontSize_standard atoms__fontWeight_regular atoms__transform_standardText Box__root atoms__borderColor_standard"
     >
       <div
         class="FieldMessage__content"
       >
         <div
-          class="height__standardText"
+          class="atoms__height_standardText"
         />
         <div />
       </div>
@@ -272,38 +272,38 @@ exports[`Checkbox Theme: jobStreet Unchecked 1`] = `
     class="Checkbox__content"
   >
     <label
-      class="Checkbox__label Box__root borderColor__standard"
+      class="Checkbox__label Box__root atoms__borderColor_standard"
       for="id"
       style="min-height: 44px;"
     >
       <div
-        class="Checkbox__checkboxContainer Box__root borderColor__standard marginRight__small"
+        class="Checkbox__checkboxContainer Box__root atoms__borderColor_standard atoms__marginRight_small"
         style="width: 24px; height: 24px; margin-top: 10px;"
       >
         <div
-          class="Checkbox__checkbox borderRadius__standard Box__root backgroundColor__input borderColor__standard borderWidth__standard"
+          class="Checkbox__checkbox atoms__borderRadius_standard Box__root atoms__backgroundColor_input atoms__borderColor_standard atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxHover borderRadius__standard Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxHover atoms__borderRadius_standard Box__root atoms__backgroundColor_input atoms__borderColor_formAccent atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxFocus boxShadow__focus borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__standard"
+          class="Checkbox__checkbox Checkbox__checkboxFocus atoms__boxShadow_focus atoms__borderRadius_standard atoms__transition_fast Box__root atoms__backgroundColor_input atoms__borderColor_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxChecked backgroundColor__formAccent borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxChecked atoms__backgroundColor_formAccent atoms__borderRadius_standard atoms__transition_fast Box__root atoms__backgroundColor_input atoms__borderColor_formAccent atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxDisabled borderRadius__standard transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxDisabled atoms__borderRadius_standard atoms__transition_fast Box__root atoms__backgroundColor_inputDisabled atoms__borderColor_standard atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxCritical borderRadius__standard transition__fast Box__root borderColor__critical borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxCritical atoms__borderRadius_standard atoms__transition_fast Box__root atoms__borderColor_critical atoms__borderWidth_standard"
           style="opacity: 0;"
         />
         <div
-          class="Checkbox__checkboxIcon transition__fast Box__root borderColor__standard"
+          class="Checkbox__checkboxIcon atoms__transition_fast Box__root atoms__borderColor_standard"
         >
           <svg
-            class="fill__white Icon__fillSize Icon__block Box__root borderColor__standard"
+            class="atoms__fill_white Icon__fillSize Icon__block Box__root atoms__borderColor_standard"
             height="16"
             viewBox="90.471 302.809 823 823"
             width="16"
@@ -315,25 +315,25 @@ exports[`Checkbox Theme: jobStreet Unchecked 1`] = `
         </div>
       </div>
       <div
-        class="Text__block fontFamily__text color__neutral fontSize__interaction fontWeight__regular Box__root borderColor__standard"
+        class="Text__block atoms__fontFamily_text atoms__color_neutral atoms__fontSize_interaction atoms__fontWeight_regular Box__root atoms__borderColor_standard"
       >
         Label
       </div>
     </label>
   </div>
   <div
-    class="Box__root borderColor__standard paddingBottom__small"
+    class="Box__root atoms__borderColor_standard atoms__paddingBottom_small"
     id="id-message"
     tabindex="-1"
   >
     <div
-      class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard"
+      class="Text__block atoms__fontFamily_text atoms__color_neutral atoms__fontSize_standard atoms__fontWeight_regular atoms__transform_standardText Box__root atoms__borderColor_standard"
     >
       <div
         class="FieldMessage__content"
       >
         <div
-          class="height__standardText"
+          class="atoms__height_standardText"
         />
         <div />
       </div>
@@ -355,38 +355,38 @@ exports[`Checkbox Theme: jobStreet With message 1`] = `
     class="Checkbox__content"
   >
     <label
-      class="Checkbox__label Box__root borderColor__standard"
+      class="Checkbox__label Box__root atoms__borderColor_standard"
       for="id"
       style="min-height: 44px;"
     >
       <div
-        class="Checkbox__checkboxContainer Box__root borderColor__standard marginRight__small"
+        class="Checkbox__checkboxContainer Box__root atoms__borderColor_standard atoms__marginRight_small"
         style="width: 24px; height: 24px; margin-top: 10px;"
       >
         <div
-          class="Checkbox__checkbox borderRadius__standard Box__root backgroundColor__input borderColor__standard borderWidth__standard"
+          class="Checkbox__checkbox atoms__borderRadius_standard Box__root atoms__backgroundColor_input atoms__borderColor_standard atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxHover borderRadius__standard Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxHover atoms__borderRadius_standard Box__root atoms__backgroundColor_input atoms__borderColor_formAccent atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxFocus boxShadow__focus borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__standard"
+          class="Checkbox__checkbox Checkbox__checkboxFocus atoms__boxShadow_focus atoms__borderRadius_standard atoms__transition_fast Box__root atoms__backgroundColor_input atoms__borderColor_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxChecked backgroundColor__formAccent borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxChecked atoms__backgroundColor_formAccent atoms__borderRadius_standard atoms__transition_fast Box__root atoms__backgroundColor_input atoms__borderColor_formAccent atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxDisabled borderRadius__standard transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxDisabled atoms__borderRadius_standard atoms__transition_fast Box__root atoms__backgroundColor_inputDisabled atoms__borderColor_standard atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxCritical borderRadius__standard transition__fast Box__root borderColor__critical borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxCritical atoms__borderRadius_standard atoms__transition_fast Box__root atoms__borderColor_critical atoms__borderWidth_standard"
           style="opacity: 1;"
         />
         <div
-          class="Checkbox__checkboxIcon transition__fast Box__root borderColor__standard"
+          class="Checkbox__checkboxIcon atoms__transition_fast Box__root atoms__borderColor_standard"
         >
           <svg
-            class="fill__white Icon__fillSize Icon__block Box__root borderColor__standard"
+            class="atoms__fill_white Icon__fillSize Icon__block Box__root atoms__borderColor_standard"
             height="16"
             viewBox="90.471 302.809 823 823"
             width="16"
@@ -398,37 +398,37 @@ exports[`Checkbox Theme: jobStreet With message 1`] = `
         </div>
       </div>
       <div
-        class="Text__block fontFamily__text color__neutral fontSize__interaction fontWeight__strong Box__root borderColor__standard"
+        class="Text__block atoms__fontFamily_text atoms__color_neutral atoms__fontSize_interaction atoms__fontWeight_strong Box__root atoms__borderColor_standard"
       >
         Label
       </div>
     </label>
     <div
-      class="Checkbox__children Box__root borderColor__standard paddingBottom__small paddingLeft__small"
+      class="Checkbox__children Box__root atoms__borderColor_standard atoms__paddingBottom_small atoms__paddingLeft_small"
       style="margin-left: 24px;"
     >
       Children
     </div>
   </div>
   <div
-    class="Box__root borderColor__standard paddingBottom__small"
+    class="Box__root atoms__borderColor_standard atoms__paddingBottom_small"
     id="id-message"
     tabindex="-1"
   >
     <div
-      class="Text__block fontFamily__text color__critical fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard"
+      class="Text__block atoms__fontFamily_text atoms__color_critical atoms__fontSize_standard atoms__fontWeight_regular atoms__transform_standardText Box__root atoms__borderColor_standard"
     >
       <div
         class="FieldMessage__content"
       >
         <div
-          class="height__standardText"
+          class="atoms__height_standardText"
         />
         <div
-          class="FieldMessage__icon Box__root borderColor__standard paddingRight__xsmall"
+          class="FieldMessage__icon Box__root atoms__borderColor_standard atoms__paddingRight_xsmall"
         >
           <svg
-            class="width__standardText height__standardText fill__critical Icon__block Box__root borderColor__standard"
+            class="atoms__width_standardText atoms__height_standardText atoms__fill_critical Icon__block Box__root atoms__borderColor_standard"
             height="16"
             viewBox="0 0 512 512"
             width="16"
@@ -460,38 +460,38 @@ exports[`Checkbox Theme: seekAnz Checked 1`] = `
     class="Checkbox__content"
   >
     <label
-      class="Checkbox__label Box__root borderColor__standard"
+      class="Checkbox__label Box__root atoms__borderColor_standard"
       for="id"
       style="min-height: 48px;"
     >
       <div
-        class="Checkbox__checkboxContainer Box__root borderColor__standard marginRight__small"
+        class="Checkbox__checkboxContainer Box__root atoms__borderColor_standard atoms__marginRight_small"
         style="width: 30px; height: 30px; margin-top: 9px;"
       >
         <div
-          class="Checkbox__checkbox borderRadius__standard Box__root backgroundColor__input borderColor__standard borderWidth__standard"
+          class="Checkbox__checkbox atoms__borderRadius_standard Box__root atoms__backgroundColor_input atoms__borderColor_standard atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxHover borderRadius__standard Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxHover atoms__borderRadius_standard Box__root atoms__backgroundColor_input atoms__borderColor_formAccent atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxFocus boxShadow__focus borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__standard"
+          class="Checkbox__checkbox Checkbox__checkboxFocus atoms__boxShadow_focus atoms__borderRadius_standard atoms__transition_fast Box__root atoms__backgroundColor_input atoms__borderColor_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxChecked backgroundColor__formAccent borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxChecked atoms__backgroundColor_formAccent atoms__borderRadius_standard atoms__transition_fast Box__root atoms__backgroundColor_input atoms__borderColor_formAccent atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxDisabled borderRadius__standard transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxDisabled atoms__borderRadius_standard atoms__transition_fast Box__root atoms__backgroundColor_inputDisabled atoms__borderColor_standard atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxCritical borderRadius__standard transition__fast Box__root borderColor__critical borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxCritical atoms__borderRadius_standard atoms__transition_fast Box__root atoms__borderColor_critical atoms__borderWidth_standard"
           style="opacity: 0;"
         />
         <div
-          class="Checkbox__checkboxIcon transition__fast Box__root borderColor__standard"
+          class="Checkbox__checkboxIcon atoms__transition_fast Box__root atoms__borderColor_standard"
         >
           <svg
-            class="fill__white Icon__fillSize Icon__block Box__root borderColor__standard"
+            class="atoms__fill_white Icon__fillSize Icon__block Box__root atoms__borderColor_standard"
             height="16"
             viewBox="90.471 302.809 823 823"
             width="16"
@@ -503,25 +503,25 @@ exports[`Checkbox Theme: seekAnz Checked 1`] = `
         </div>
       </div>
       <div
-        class="Text__block fontFamily__text color__neutral fontSize__interaction fontWeight__regular Box__root borderColor__standard"
+        class="Text__block atoms__fontFamily_text atoms__color_neutral atoms__fontSize_interaction atoms__fontWeight_regular Box__root atoms__borderColor_standard"
       >
         Label
       </div>
     </label>
   </div>
   <div
-    class="Box__root borderColor__standard paddingBottom__small"
+    class="Box__root atoms__borderColor_standard atoms__paddingBottom_small"
     id="id-message"
     tabindex="-1"
   >
     <div
-      class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard"
+      class="Text__block atoms__fontFamily_text atoms__color_neutral atoms__fontSize_standard atoms__fontWeight_regular atoms__transform_standardText Box__root atoms__borderColor_standard"
     >
       <div
         class="FieldMessage__content"
       >
         <div
-          class="height__standardText"
+          class="atoms__height_standardText"
         />
         <div />
       </div>
@@ -543,38 +543,38 @@ exports[`Checkbox Theme: seekAnz Children when checked 1`] = `
     class="Checkbox__content"
   >
     <label
-      class="Checkbox__label Box__root borderColor__standard"
+      class="Checkbox__label Box__root atoms__borderColor_standard"
       for="id"
       style="min-height: 48px;"
     >
       <div
-        class="Checkbox__checkboxContainer Box__root borderColor__standard marginRight__small"
+        class="Checkbox__checkboxContainer Box__root atoms__borderColor_standard atoms__marginRight_small"
         style="width: 30px; height: 30px; margin-top: 9px;"
       >
         <div
-          class="Checkbox__checkbox borderRadius__standard Box__root backgroundColor__input borderColor__standard borderWidth__standard"
+          class="Checkbox__checkbox atoms__borderRadius_standard Box__root atoms__backgroundColor_input atoms__borderColor_standard atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxHover borderRadius__standard Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxHover atoms__borderRadius_standard Box__root atoms__backgroundColor_input atoms__borderColor_formAccent atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxFocus boxShadow__focus borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__standard"
+          class="Checkbox__checkbox Checkbox__checkboxFocus atoms__boxShadow_focus atoms__borderRadius_standard atoms__transition_fast Box__root atoms__backgroundColor_input atoms__borderColor_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxChecked backgroundColor__formAccent borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxChecked atoms__backgroundColor_formAccent atoms__borderRadius_standard atoms__transition_fast Box__root atoms__backgroundColor_input atoms__borderColor_formAccent atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxDisabled borderRadius__standard transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxDisabled atoms__borderRadius_standard atoms__transition_fast Box__root atoms__backgroundColor_inputDisabled atoms__borderColor_standard atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxCritical borderRadius__standard transition__fast Box__root borderColor__critical borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxCritical atoms__borderRadius_standard atoms__transition_fast Box__root atoms__borderColor_critical atoms__borderWidth_standard"
           style="opacity: 0;"
         />
         <div
-          class="Checkbox__checkboxIcon transition__fast Box__root borderColor__standard"
+          class="Checkbox__checkboxIcon atoms__transition_fast Box__root atoms__borderColor_standard"
         >
           <svg
-            class="fill__white Icon__fillSize Icon__block Box__root borderColor__standard"
+            class="atoms__fill_white Icon__fillSize Icon__block Box__root atoms__borderColor_standard"
             height="16"
             viewBox="90.471 302.809 823 823"
             width="16"
@@ -586,31 +586,31 @@ exports[`Checkbox Theme: seekAnz Children when checked 1`] = `
         </div>
       </div>
       <div
-        class="Text__block fontFamily__text color__neutral fontSize__interaction fontWeight__strong Box__root borderColor__standard"
+        class="Text__block atoms__fontFamily_text atoms__color_neutral atoms__fontSize_interaction atoms__fontWeight_strong Box__root atoms__borderColor_standard"
       >
         Label
       </div>
     </label>
     <div
-      class="Checkbox__children Box__root borderColor__standard paddingBottom__small paddingLeft__small"
+      class="Checkbox__children Box__root atoms__borderColor_standard atoms__paddingBottom_small atoms__paddingLeft_small"
       style="margin-left: 30px;"
     >
       Children
     </div>
   </div>
   <div
-    class="Box__root borderColor__standard paddingBottom__small"
+    class="Box__root atoms__borderColor_standard atoms__paddingBottom_small"
     id="id-message"
     tabindex="-1"
   >
     <div
-      class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard"
+      class="Text__block atoms__fontFamily_text atoms__color_neutral atoms__fontSize_standard atoms__fontWeight_regular atoms__transform_standardText Box__root atoms__borderColor_standard"
     >
       <div
         class="FieldMessage__content"
       >
         <div
-          class="height__standardText"
+          class="atoms__height_standardText"
         />
         <div />
       </div>
@@ -631,38 +631,38 @@ exports[`Checkbox Theme: seekAnz Children when unchecked 1`] = `
     class="Checkbox__content"
   >
     <label
-      class="Checkbox__label Box__root borderColor__standard"
+      class="Checkbox__label Box__root atoms__borderColor_standard"
       for="id"
       style="min-height: 48px;"
     >
       <div
-        class="Checkbox__checkboxContainer Box__root borderColor__standard marginRight__small"
+        class="Checkbox__checkboxContainer Box__root atoms__borderColor_standard atoms__marginRight_small"
         style="width: 30px; height: 30px; margin-top: 9px;"
       >
         <div
-          class="Checkbox__checkbox borderRadius__standard Box__root backgroundColor__input borderColor__standard borderWidth__standard"
+          class="Checkbox__checkbox atoms__borderRadius_standard Box__root atoms__backgroundColor_input atoms__borderColor_standard atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxHover borderRadius__standard Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxHover atoms__borderRadius_standard Box__root atoms__backgroundColor_input atoms__borderColor_formAccent atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxFocus boxShadow__focus borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__standard"
+          class="Checkbox__checkbox Checkbox__checkboxFocus atoms__boxShadow_focus atoms__borderRadius_standard atoms__transition_fast Box__root atoms__backgroundColor_input atoms__borderColor_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxChecked backgroundColor__formAccent borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxChecked atoms__backgroundColor_formAccent atoms__borderRadius_standard atoms__transition_fast Box__root atoms__backgroundColor_input atoms__borderColor_formAccent atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxDisabled borderRadius__standard transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxDisabled atoms__borderRadius_standard atoms__transition_fast Box__root atoms__backgroundColor_inputDisabled atoms__borderColor_standard atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxCritical borderRadius__standard transition__fast Box__root borderColor__critical borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxCritical atoms__borderRadius_standard atoms__transition_fast Box__root atoms__borderColor_critical atoms__borderWidth_standard"
           style="opacity: 0;"
         />
         <div
-          class="Checkbox__checkboxIcon transition__fast Box__root borderColor__standard"
+          class="Checkbox__checkboxIcon atoms__transition_fast Box__root atoms__borderColor_standard"
         >
           <svg
-            class="fill__white Icon__fillSize Icon__block Box__root borderColor__standard"
+            class="atoms__fill_white Icon__fillSize Icon__block Box__root atoms__borderColor_standard"
             height="16"
             viewBox="90.471 302.809 823 823"
             width="16"
@@ -674,31 +674,31 @@ exports[`Checkbox Theme: seekAnz Children when unchecked 1`] = `
         </div>
       </div>
       <div
-        class="Text__block fontFamily__text color__neutral fontSize__interaction fontWeight__regular Box__root borderColor__standard"
+        class="Text__block atoms__fontFamily_text atoms__color_neutral atoms__fontSize_interaction atoms__fontWeight_regular Box__root atoms__borderColor_standard"
       >
         Label
       </div>
     </label>
     <div
-      class="Checkbox__children Box__root borderColor__standard paddingBottom__small paddingLeft__small"
+      class="Checkbox__children Box__root atoms__borderColor_standard atoms__paddingBottom_small atoms__paddingLeft_small"
       style="margin-left: 30px;"
     >
       Children
     </div>
   </div>
   <div
-    class="Box__root borderColor__standard paddingBottom__small"
+    class="Box__root atoms__borderColor_standard atoms__paddingBottom_small"
     id="id-message"
     tabindex="-1"
   >
     <div
-      class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard"
+      class="Text__block atoms__fontFamily_text atoms__color_neutral atoms__fontSize_standard atoms__fontWeight_regular atoms__transform_standardText Box__root atoms__borderColor_standard"
     >
       <div
         class="FieldMessage__content"
       >
         <div
-          class="height__standardText"
+          class="atoms__height_standardText"
         />
         <div />
       </div>
@@ -719,38 +719,38 @@ exports[`Checkbox Theme: seekAnz Unchecked 1`] = `
     class="Checkbox__content"
   >
     <label
-      class="Checkbox__label Box__root borderColor__standard"
+      class="Checkbox__label Box__root atoms__borderColor_standard"
       for="id"
       style="min-height: 48px;"
     >
       <div
-        class="Checkbox__checkboxContainer Box__root borderColor__standard marginRight__small"
+        class="Checkbox__checkboxContainer Box__root atoms__borderColor_standard atoms__marginRight_small"
         style="width: 30px; height: 30px; margin-top: 9px;"
       >
         <div
-          class="Checkbox__checkbox borderRadius__standard Box__root backgroundColor__input borderColor__standard borderWidth__standard"
+          class="Checkbox__checkbox atoms__borderRadius_standard Box__root atoms__backgroundColor_input atoms__borderColor_standard atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxHover borderRadius__standard Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxHover atoms__borderRadius_standard Box__root atoms__backgroundColor_input atoms__borderColor_formAccent atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxFocus boxShadow__focus borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__standard"
+          class="Checkbox__checkbox Checkbox__checkboxFocus atoms__boxShadow_focus atoms__borderRadius_standard atoms__transition_fast Box__root atoms__backgroundColor_input atoms__borderColor_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxChecked backgroundColor__formAccent borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxChecked atoms__backgroundColor_formAccent atoms__borderRadius_standard atoms__transition_fast Box__root atoms__backgroundColor_input atoms__borderColor_formAccent atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxDisabled borderRadius__standard transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxDisabled atoms__borderRadius_standard atoms__transition_fast Box__root atoms__backgroundColor_inputDisabled atoms__borderColor_standard atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxCritical borderRadius__standard transition__fast Box__root borderColor__critical borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxCritical atoms__borderRadius_standard atoms__transition_fast Box__root atoms__borderColor_critical atoms__borderWidth_standard"
           style="opacity: 0;"
         />
         <div
-          class="Checkbox__checkboxIcon transition__fast Box__root borderColor__standard"
+          class="Checkbox__checkboxIcon atoms__transition_fast Box__root atoms__borderColor_standard"
         >
           <svg
-            class="fill__white Icon__fillSize Icon__block Box__root borderColor__standard"
+            class="atoms__fill_white Icon__fillSize Icon__block Box__root atoms__borderColor_standard"
             height="16"
             viewBox="90.471 302.809 823 823"
             width="16"
@@ -762,25 +762,25 @@ exports[`Checkbox Theme: seekAnz Unchecked 1`] = `
         </div>
       </div>
       <div
-        class="Text__block fontFamily__text color__neutral fontSize__interaction fontWeight__regular Box__root borderColor__standard"
+        class="Text__block atoms__fontFamily_text atoms__color_neutral atoms__fontSize_interaction atoms__fontWeight_regular Box__root atoms__borderColor_standard"
       >
         Label
       </div>
     </label>
   </div>
   <div
-    class="Box__root borderColor__standard paddingBottom__small"
+    class="Box__root atoms__borderColor_standard atoms__paddingBottom_small"
     id="id-message"
     tabindex="-1"
   >
     <div
-      class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard"
+      class="Text__block atoms__fontFamily_text atoms__color_neutral atoms__fontSize_standard atoms__fontWeight_regular atoms__transform_standardText Box__root atoms__borderColor_standard"
     >
       <div
         class="FieldMessage__content"
       >
         <div
-          class="height__standardText"
+          class="atoms__height_standardText"
         />
         <div />
       </div>
@@ -802,38 +802,38 @@ exports[`Checkbox Theme: seekAnz With message 1`] = `
     class="Checkbox__content"
   >
     <label
-      class="Checkbox__label Box__root borderColor__standard"
+      class="Checkbox__label Box__root atoms__borderColor_standard"
       for="id"
       style="min-height: 48px;"
     >
       <div
-        class="Checkbox__checkboxContainer Box__root borderColor__standard marginRight__small"
+        class="Checkbox__checkboxContainer Box__root atoms__borderColor_standard atoms__marginRight_small"
         style="width: 30px; height: 30px; margin-top: 9px;"
       >
         <div
-          class="Checkbox__checkbox borderRadius__standard Box__root backgroundColor__input borderColor__standard borderWidth__standard"
+          class="Checkbox__checkbox atoms__borderRadius_standard Box__root atoms__backgroundColor_input atoms__borderColor_standard atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxHover borderRadius__standard Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxHover atoms__borderRadius_standard Box__root atoms__backgroundColor_input atoms__borderColor_formAccent atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxFocus boxShadow__focus borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__standard"
+          class="Checkbox__checkbox Checkbox__checkboxFocus atoms__boxShadow_focus atoms__borderRadius_standard atoms__transition_fast Box__root atoms__backgroundColor_input atoms__borderColor_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxChecked backgroundColor__formAccent borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxChecked atoms__backgroundColor_formAccent atoms__borderRadius_standard atoms__transition_fast Box__root atoms__backgroundColor_input atoms__borderColor_formAccent atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxDisabled borderRadius__standard transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxDisabled atoms__borderRadius_standard atoms__transition_fast Box__root atoms__backgroundColor_inputDisabled atoms__borderColor_standard atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxCritical borderRadius__standard transition__fast Box__root borderColor__critical borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxCritical atoms__borderRadius_standard atoms__transition_fast Box__root atoms__borderColor_critical atoms__borderWidth_standard"
           style="opacity: 1;"
         />
         <div
-          class="Checkbox__checkboxIcon transition__fast Box__root borderColor__standard"
+          class="Checkbox__checkboxIcon atoms__transition_fast Box__root atoms__borderColor_standard"
         >
           <svg
-            class="fill__white Icon__fillSize Icon__block Box__root borderColor__standard"
+            class="atoms__fill_white Icon__fillSize Icon__block Box__root atoms__borderColor_standard"
             height="16"
             viewBox="90.471 302.809 823 823"
             width="16"
@@ -845,37 +845,37 @@ exports[`Checkbox Theme: seekAnz With message 1`] = `
         </div>
       </div>
       <div
-        class="Text__block fontFamily__text color__neutral fontSize__interaction fontWeight__strong Box__root borderColor__standard"
+        class="Text__block atoms__fontFamily_text atoms__color_neutral atoms__fontSize_interaction atoms__fontWeight_strong Box__root atoms__borderColor_standard"
       >
         Label
       </div>
     </label>
     <div
-      class="Checkbox__children Box__root borderColor__standard paddingBottom__small paddingLeft__small"
+      class="Checkbox__children Box__root atoms__borderColor_standard atoms__paddingBottom_small atoms__paddingLeft_small"
       style="margin-left: 30px;"
     >
       Children
     </div>
   </div>
   <div
-    class="Box__root borderColor__standard paddingBottom__small"
+    class="Box__root atoms__borderColor_standard atoms__paddingBottom_small"
     id="id-message"
     tabindex="-1"
   >
     <div
-      class="Text__block fontFamily__text color__critical fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard"
+      class="Text__block atoms__fontFamily_text atoms__color_critical atoms__fontSize_standard atoms__fontWeight_regular atoms__transform_standardText Box__root atoms__borderColor_standard"
     >
       <div
         class="FieldMessage__content"
       >
         <div
-          class="height__standardText"
+          class="atoms__height_standardText"
         />
         <div
-          class="FieldMessage__icon Box__root borderColor__standard paddingRight__xsmall"
+          class="FieldMessage__icon Box__root atoms__borderColor_standard atoms__paddingRight_xsmall"
         >
           <svg
-            class="width__standardText height__standardText fill__critical Icon__block Box__root borderColor__standard"
+            class="atoms__width_standardText atoms__height_standardText atoms__fill_critical Icon__block Box__root atoms__borderColor_standard"
             height="16"
             viewBox="0 0 512 512"
             width="16"
@@ -907,38 +907,38 @@ exports[`Checkbox Theme: seekAsia Checked 1`] = `
     class="Checkbox__content"
   >
     <label
-      class="Checkbox__label Box__root borderColor__standard"
+      class="Checkbox__label Box__root atoms__borderColor_standard"
       for="id"
       style="min-height: 44px;"
     >
       <div
-        class="Checkbox__checkboxContainer Box__root borderColor__standard marginRight__small"
+        class="Checkbox__checkboxContainer Box__root atoms__borderColor_standard atoms__marginRight_small"
         style="width: 24px; height: 24px; margin-top: 10px;"
       >
         <div
-          class="Checkbox__checkbox borderRadius__standard Box__root backgroundColor__input borderColor__standard borderWidth__standard"
+          class="Checkbox__checkbox atoms__borderRadius_standard Box__root atoms__backgroundColor_input atoms__borderColor_standard atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxHover borderRadius__standard Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxHover atoms__borderRadius_standard Box__root atoms__backgroundColor_input atoms__borderColor_formAccent atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxFocus boxShadow__focus borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__standard"
+          class="Checkbox__checkbox Checkbox__checkboxFocus atoms__boxShadow_focus atoms__borderRadius_standard atoms__transition_fast Box__root atoms__backgroundColor_input atoms__borderColor_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxChecked backgroundColor__formAccent borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxChecked atoms__backgroundColor_formAccent atoms__borderRadius_standard atoms__transition_fast Box__root atoms__backgroundColor_input atoms__borderColor_formAccent atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxDisabled borderRadius__standard transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxDisabled atoms__borderRadius_standard atoms__transition_fast Box__root atoms__backgroundColor_inputDisabled atoms__borderColor_standard atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxCritical borderRadius__standard transition__fast Box__root borderColor__critical borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxCritical atoms__borderRadius_standard atoms__transition_fast Box__root atoms__borderColor_critical atoms__borderWidth_standard"
           style="opacity: 0;"
         />
         <div
-          class="Checkbox__checkboxIcon transition__fast Box__root borderColor__standard"
+          class="Checkbox__checkboxIcon atoms__transition_fast Box__root atoms__borderColor_standard"
         >
           <svg
-            class="fill__white Icon__fillSize Icon__block Box__root borderColor__standard"
+            class="atoms__fill_white Icon__fillSize Icon__block Box__root atoms__borderColor_standard"
             height="16"
             viewBox="90.471 302.809 823 823"
             width="16"
@@ -950,25 +950,25 @@ exports[`Checkbox Theme: seekAsia Checked 1`] = `
         </div>
       </div>
       <div
-        class="Text__block fontFamily__text color__neutral fontSize__interaction fontWeight__regular Box__root borderColor__standard"
+        class="Text__block atoms__fontFamily_text atoms__color_neutral atoms__fontSize_interaction atoms__fontWeight_regular Box__root atoms__borderColor_standard"
       >
         Label
       </div>
     </label>
   </div>
   <div
-    class="Box__root borderColor__standard paddingBottom__small"
+    class="Box__root atoms__borderColor_standard atoms__paddingBottom_small"
     id="id-message"
     tabindex="-1"
   >
     <div
-      class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard"
+      class="Text__block atoms__fontFamily_text atoms__color_neutral atoms__fontSize_standard atoms__fontWeight_regular atoms__transform_standardText Box__root atoms__borderColor_standard"
     >
       <div
         class="FieldMessage__content"
       >
         <div
-          class="height__standardText"
+          class="atoms__height_standardText"
         />
         <div />
       </div>
@@ -990,38 +990,38 @@ exports[`Checkbox Theme: seekAsia Children when checked 1`] = `
     class="Checkbox__content"
   >
     <label
-      class="Checkbox__label Box__root borderColor__standard"
+      class="Checkbox__label Box__root atoms__borderColor_standard"
       for="id"
       style="min-height: 44px;"
     >
       <div
-        class="Checkbox__checkboxContainer Box__root borderColor__standard marginRight__small"
+        class="Checkbox__checkboxContainer Box__root atoms__borderColor_standard atoms__marginRight_small"
         style="width: 24px; height: 24px; margin-top: 10px;"
       >
         <div
-          class="Checkbox__checkbox borderRadius__standard Box__root backgroundColor__input borderColor__standard borderWidth__standard"
+          class="Checkbox__checkbox atoms__borderRadius_standard Box__root atoms__backgroundColor_input atoms__borderColor_standard atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxHover borderRadius__standard Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxHover atoms__borderRadius_standard Box__root atoms__backgroundColor_input atoms__borderColor_formAccent atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxFocus boxShadow__focus borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__standard"
+          class="Checkbox__checkbox Checkbox__checkboxFocus atoms__boxShadow_focus atoms__borderRadius_standard atoms__transition_fast Box__root atoms__backgroundColor_input atoms__borderColor_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxChecked backgroundColor__formAccent borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxChecked atoms__backgroundColor_formAccent atoms__borderRadius_standard atoms__transition_fast Box__root atoms__backgroundColor_input atoms__borderColor_formAccent atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxDisabled borderRadius__standard transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxDisabled atoms__borderRadius_standard atoms__transition_fast Box__root atoms__backgroundColor_inputDisabled atoms__borderColor_standard atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxCritical borderRadius__standard transition__fast Box__root borderColor__critical borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxCritical atoms__borderRadius_standard atoms__transition_fast Box__root atoms__borderColor_critical atoms__borderWidth_standard"
           style="opacity: 0;"
         />
         <div
-          class="Checkbox__checkboxIcon transition__fast Box__root borderColor__standard"
+          class="Checkbox__checkboxIcon atoms__transition_fast Box__root atoms__borderColor_standard"
         >
           <svg
-            class="fill__white Icon__fillSize Icon__block Box__root borderColor__standard"
+            class="atoms__fill_white Icon__fillSize Icon__block Box__root atoms__borderColor_standard"
             height="16"
             viewBox="90.471 302.809 823 823"
             width="16"
@@ -1033,31 +1033,31 @@ exports[`Checkbox Theme: seekAsia Children when checked 1`] = `
         </div>
       </div>
       <div
-        class="Text__block fontFamily__text color__neutral fontSize__interaction fontWeight__strong Box__root borderColor__standard"
+        class="Text__block atoms__fontFamily_text atoms__color_neutral atoms__fontSize_interaction atoms__fontWeight_strong Box__root atoms__borderColor_standard"
       >
         Label
       </div>
     </label>
     <div
-      class="Checkbox__children Box__root borderColor__standard paddingBottom__small paddingLeft__small"
+      class="Checkbox__children Box__root atoms__borderColor_standard atoms__paddingBottom_small atoms__paddingLeft_small"
       style="margin-left: 24px;"
     >
       Children
     </div>
   </div>
   <div
-    class="Box__root borderColor__standard paddingBottom__small"
+    class="Box__root atoms__borderColor_standard atoms__paddingBottom_small"
     id="id-message"
     tabindex="-1"
   >
     <div
-      class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard"
+      class="Text__block atoms__fontFamily_text atoms__color_neutral atoms__fontSize_standard atoms__fontWeight_regular atoms__transform_standardText Box__root atoms__borderColor_standard"
     >
       <div
         class="FieldMessage__content"
       >
         <div
-          class="height__standardText"
+          class="atoms__height_standardText"
         />
         <div />
       </div>
@@ -1078,38 +1078,38 @@ exports[`Checkbox Theme: seekAsia Children when unchecked 1`] = `
     class="Checkbox__content"
   >
     <label
-      class="Checkbox__label Box__root borderColor__standard"
+      class="Checkbox__label Box__root atoms__borderColor_standard"
       for="id"
       style="min-height: 44px;"
     >
       <div
-        class="Checkbox__checkboxContainer Box__root borderColor__standard marginRight__small"
+        class="Checkbox__checkboxContainer Box__root atoms__borderColor_standard atoms__marginRight_small"
         style="width: 24px; height: 24px; margin-top: 10px;"
       >
         <div
-          class="Checkbox__checkbox borderRadius__standard Box__root backgroundColor__input borderColor__standard borderWidth__standard"
+          class="Checkbox__checkbox atoms__borderRadius_standard Box__root atoms__backgroundColor_input atoms__borderColor_standard atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxHover borderRadius__standard Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxHover atoms__borderRadius_standard Box__root atoms__backgroundColor_input atoms__borderColor_formAccent atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxFocus boxShadow__focus borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__standard"
+          class="Checkbox__checkbox Checkbox__checkboxFocus atoms__boxShadow_focus atoms__borderRadius_standard atoms__transition_fast Box__root atoms__backgroundColor_input atoms__borderColor_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxChecked backgroundColor__formAccent borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxChecked atoms__backgroundColor_formAccent atoms__borderRadius_standard atoms__transition_fast Box__root atoms__backgroundColor_input atoms__borderColor_formAccent atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxDisabled borderRadius__standard transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxDisabled atoms__borderRadius_standard atoms__transition_fast Box__root atoms__backgroundColor_inputDisabled atoms__borderColor_standard atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxCritical borderRadius__standard transition__fast Box__root borderColor__critical borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxCritical atoms__borderRadius_standard atoms__transition_fast Box__root atoms__borderColor_critical atoms__borderWidth_standard"
           style="opacity: 0;"
         />
         <div
-          class="Checkbox__checkboxIcon transition__fast Box__root borderColor__standard"
+          class="Checkbox__checkboxIcon atoms__transition_fast Box__root atoms__borderColor_standard"
         >
           <svg
-            class="fill__white Icon__fillSize Icon__block Box__root borderColor__standard"
+            class="atoms__fill_white Icon__fillSize Icon__block Box__root atoms__borderColor_standard"
             height="16"
             viewBox="90.471 302.809 823 823"
             width="16"
@@ -1121,31 +1121,31 @@ exports[`Checkbox Theme: seekAsia Children when unchecked 1`] = `
         </div>
       </div>
       <div
-        class="Text__block fontFamily__text color__neutral fontSize__interaction fontWeight__regular Box__root borderColor__standard"
+        class="Text__block atoms__fontFamily_text atoms__color_neutral atoms__fontSize_interaction atoms__fontWeight_regular Box__root atoms__borderColor_standard"
       >
         Label
       </div>
     </label>
     <div
-      class="Checkbox__children Box__root borderColor__standard paddingBottom__small paddingLeft__small"
+      class="Checkbox__children Box__root atoms__borderColor_standard atoms__paddingBottom_small atoms__paddingLeft_small"
       style="margin-left: 24px;"
     >
       Children
     </div>
   </div>
   <div
-    class="Box__root borderColor__standard paddingBottom__small"
+    class="Box__root atoms__borderColor_standard atoms__paddingBottom_small"
     id="id-message"
     tabindex="-1"
   >
     <div
-      class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard"
+      class="Text__block atoms__fontFamily_text atoms__color_neutral atoms__fontSize_standard atoms__fontWeight_regular atoms__transform_standardText Box__root atoms__borderColor_standard"
     >
       <div
         class="FieldMessage__content"
       >
         <div
-          class="height__standardText"
+          class="atoms__height_standardText"
         />
         <div />
       </div>
@@ -1166,38 +1166,38 @@ exports[`Checkbox Theme: seekAsia Unchecked 1`] = `
     class="Checkbox__content"
   >
     <label
-      class="Checkbox__label Box__root borderColor__standard"
+      class="Checkbox__label Box__root atoms__borderColor_standard"
       for="id"
       style="min-height: 44px;"
     >
       <div
-        class="Checkbox__checkboxContainer Box__root borderColor__standard marginRight__small"
+        class="Checkbox__checkboxContainer Box__root atoms__borderColor_standard atoms__marginRight_small"
         style="width: 24px; height: 24px; margin-top: 10px;"
       >
         <div
-          class="Checkbox__checkbox borderRadius__standard Box__root backgroundColor__input borderColor__standard borderWidth__standard"
+          class="Checkbox__checkbox atoms__borderRadius_standard Box__root atoms__backgroundColor_input atoms__borderColor_standard atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxHover borderRadius__standard Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxHover atoms__borderRadius_standard Box__root atoms__backgroundColor_input atoms__borderColor_formAccent atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxFocus boxShadow__focus borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__standard"
+          class="Checkbox__checkbox Checkbox__checkboxFocus atoms__boxShadow_focus atoms__borderRadius_standard atoms__transition_fast Box__root atoms__backgroundColor_input atoms__borderColor_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxChecked backgroundColor__formAccent borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxChecked atoms__backgroundColor_formAccent atoms__borderRadius_standard atoms__transition_fast Box__root atoms__backgroundColor_input atoms__borderColor_formAccent atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxDisabled borderRadius__standard transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxDisabled atoms__borderRadius_standard atoms__transition_fast Box__root atoms__backgroundColor_inputDisabled atoms__borderColor_standard atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxCritical borderRadius__standard transition__fast Box__root borderColor__critical borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxCritical atoms__borderRadius_standard atoms__transition_fast Box__root atoms__borderColor_critical atoms__borderWidth_standard"
           style="opacity: 0;"
         />
         <div
-          class="Checkbox__checkboxIcon transition__fast Box__root borderColor__standard"
+          class="Checkbox__checkboxIcon atoms__transition_fast Box__root atoms__borderColor_standard"
         >
           <svg
-            class="fill__white Icon__fillSize Icon__block Box__root borderColor__standard"
+            class="atoms__fill_white Icon__fillSize Icon__block Box__root atoms__borderColor_standard"
             height="16"
             viewBox="90.471 302.809 823 823"
             width="16"
@@ -1209,25 +1209,25 @@ exports[`Checkbox Theme: seekAsia Unchecked 1`] = `
         </div>
       </div>
       <div
-        class="Text__block fontFamily__text color__neutral fontSize__interaction fontWeight__regular Box__root borderColor__standard"
+        class="Text__block atoms__fontFamily_text atoms__color_neutral atoms__fontSize_interaction atoms__fontWeight_regular Box__root atoms__borderColor_standard"
       >
         Label
       </div>
     </label>
   </div>
   <div
-    class="Box__root borderColor__standard paddingBottom__small"
+    class="Box__root atoms__borderColor_standard atoms__paddingBottom_small"
     id="id-message"
     tabindex="-1"
   >
     <div
-      class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard"
+      class="Text__block atoms__fontFamily_text atoms__color_neutral atoms__fontSize_standard atoms__fontWeight_regular atoms__transform_standardText Box__root atoms__borderColor_standard"
     >
       <div
         class="FieldMessage__content"
       >
         <div
-          class="height__standardText"
+          class="atoms__height_standardText"
         />
         <div />
       </div>
@@ -1249,38 +1249,38 @@ exports[`Checkbox Theme: seekAsia With message 1`] = `
     class="Checkbox__content"
   >
     <label
-      class="Checkbox__label Box__root borderColor__standard"
+      class="Checkbox__label Box__root atoms__borderColor_standard"
       for="id"
       style="min-height: 44px;"
     >
       <div
-        class="Checkbox__checkboxContainer Box__root borderColor__standard marginRight__small"
+        class="Checkbox__checkboxContainer Box__root atoms__borderColor_standard atoms__marginRight_small"
         style="width: 24px; height: 24px; margin-top: 10px;"
       >
         <div
-          class="Checkbox__checkbox borderRadius__standard Box__root backgroundColor__input borderColor__standard borderWidth__standard"
+          class="Checkbox__checkbox atoms__borderRadius_standard Box__root atoms__backgroundColor_input atoms__borderColor_standard atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxHover borderRadius__standard Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxHover atoms__borderRadius_standard Box__root atoms__backgroundColor_input atoms__borderColor_formAccent atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxFocus boxShadow__focus borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__standard"
+          class="Checkbox__checkbox Checkbox__checkboxFocus atoms__boxShadow_focus atoms__borderRadius_standard atoms__transition_fast Box__root atoms__backgroundColor_input atoms__borderColor_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxChecked backgroundColor__formAccent borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxChecked atoms__backgroundColor_formAccent atoms__borderRadius_standard atoms__transition_fast Box__root atoms__backgroundColor_input atoms__borderColor_formAccent atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxDisabled borderRadius__standard transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxDisabled atoms__borderRadius_standard atoms__transition_fast Box__root atoms__backgroundColor_inputDisabled atoms__borderColor_standard atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxCritical borderRadius__standard transition__fast Box__root borderColor__critical borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxCritical atoms__borderRadius_standard atoms__transition_fast Box__root atoms__borderColor_critical atoms__borderWidth_standard"
           style="opacity: 1;"
         />
         <div
-          class="Checkbox__checkboxIcon transition__fast Box__root borderColor__standard"
+          class="Checkbox__checkboxIcon atoms__transition_fast Box__root atoms__borderColor_standard"
         >
           <svg
-            class="fill__white Icon__fillSize Icon__block Box__root borderColor__standard"
+            class="atoms__fill_white Icon__fillSize Icon__block Box__root atoms__borderColor_standard"
             height="16"
             viewBox="90.471 302.809 823 823"
             width="16"
@@ -1292,37 +1292,37 @@ exports[`Checkbox Theme: seekAsia With message 1`] = `
         </div>
       </div>
       <div
-        class="Text__block fontFamily__text color__neutral fontSize__interaction fontWeight__strong Box__root borderColor__standard"
+        class="Text__block atoms__fontFamily_text atoms__color_neutral atoms__fontSize_interaction atoms__fontWeight_strong Box__root atoms__borderColor_standard"
       >
         Label
       </div>
     </label>
     <div
-      class="Checkbox__children Box__root borderColor__standard paddingBottom__small paddingLeft__small"
+      class="Checkbox__children Box__root atoms__borderColor_standard atoms__paddingBottom_small atoms__paddingLeft_small"
       style="margin-left: 24px;"
     >
       Children
     </div>
   </div>
   <div
-    class="Box__root borderColor__standard paddingBottom__small"
+    class="Box__root atoms__borderColor_standard atoms__paddingBottom_small"
     id="id-message"
     tabindex="-1"
   >
     <div
-      class="Text__block fontFamily__text color__critical fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard"
+      class="Text__block atoms__fontFamily_text atoms__color_critical atoms__fontSize_standard atoms__fontWeight_regular atoms__transform_standardText Box__root atoms__borderColor_standard"
     >
       <div
         class="FieldMessage__content"
       >
         <div
-          class="height__standardText"
+          class="atoms__height_standardText"
         />
         <div
-          class="FieldMessage__icon Box__root borderColor__standard paddingRight__xsmall"
+          class="FieldMessage__icon Box__root atoms__borderColor_standard atoms__paddingRight_xsmall"
         >
           <svg
-            class="width__standardText height__standardText fill__critical Icon__block Box__root borderColor__standard"
+            class="atoms__width_standardText atoms__height_standardText atoms__fill_critical Icon__block Box__root atoms__borderColor_standard"
             height="16"
             viewBox="0 0 512 512"
             width="16"
@@ -1354,38 +1354,38 @@ exports[`Checkbox Theme: wireframe Checked 1`] = `
     class="Checkbox__content"
   >
     <label
-      class="Checkbox__label Box__root borderColor__standard"
+      class="Checkbox__label Box__root atoms__borderColor_standard"
       for="id"
       style="min-height: 48px;"
     >
       <div
-        class="Checkbox__checkboxContainer Box__root borderColor__standard marginRight__small"
+        class="Checkbox__checkboxContainer Box__root atoms__borderColor_standard atoms__marginRight_small"
         style="width: 30px; height: 30px; margin-top: 9px;"
       >
         <div
-          class="Checkbox__checkbox borderRadius__standard Box__root backgroundColor__input borderColor__standard borderWidth__standard"
+          class="Checkbox__checkbox atoms__borderRadius_standard Box__root atoms__backgroundColor_input atoms__borderColor_standard atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxHover borderRadius__standard Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxHover atoms__borderRadius_standard Box__root atoms__backgroundColor_input atoms__borderColor_formAccent atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxFocus boxShadow__focus borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__standard"
+          class="Checkbox__checkbox Checkbox__checkboxFocus atoms__boxShadow_focus atoms__borderRadius_standard atoms__transition_fast Box__root atoms__backgroundColor_input atoms__borderColor_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxChecked backgroundColor__formAccent borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxChecked atoms__backgroundColor_formAccent atoms__borderRadius_standard atoms__transition_fast Box__root atoms__backgroundColor_input atoms__borderColor_formAccent atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxDisabled borderRadius__standard transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxDisabled atoms__borderRadius_standard atoms__transition_fast Box__root atoms__backgroundColor_inputDisabled atoms__borderColor_standard atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxCritical borderRadius__standard transition__fast Box__root borderColor__critical borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxCritical atoms__borderRadius_standard atoms__transition_fast Box__root atoms__borderColor_critical atoms__borderWidth_standard"
           style="opacity: 0;"
         />
         <div
-          class="Checkbox__checkboxIcon transition__fast Box__root borderColor__standard"
+          class="Checkbox__checkboxIcon atoms__transition_fast Box__root atoms__borderColor_standard"
         >
           <svg
-            class="fill__white Icon__fillSize Icon__block Box__root borderColor__standard"
+            class="atoms__fill_white Icon__fillSize Icon__block Box__root atoms__borderColor_standard"
             height="16"
             viewBox="90.471 302.809 823 823"
             width="16"
@@ -1397,25 +1397,25 @@ exports[`Checkbox Theme: wireframe Checked 1`] = `
         </div>
       </div>
       <div
-        class="Text__block fontFamily__text color__neutral fontSize__interaction fontWeight__regular Box__root borderColor__standard"
+        class="Text__block atoms__fontFamily_text atoms__color_neutral atoms__fontSize_interaction atoms__fontWeight_regular Box__root atoms__borderColor_standard"
       >
         Label
       </div>
     </label>
   </div>
   <div
-    class="Box__root borderColor__standard paddingBottom__small"
+    class="Box__root atoms__borderColor_standard atoms__paddingBottom_small"
     id="id-message"
     tabindex="-1"
   >
     <div
-      class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard"
+      class="Text__block atoms__fontFamily_text atoms__color_neutral atoms__fontSize_standard atoms__fontWeight_regular atoms__transform_standardText Box__root atoms__borderColor_standard"
     >
       <div
         class="FieldMessage__content"
       >
         <div
-          class="height__standardText"
+          class="atoms__height_standardText"
         />
         <div />
       </div>
@@ -1437,38 +1437,38 @@ exports[`Checkbox Theme: wireframe Children when checked 1`] = `
     class="Checkbox__content"
   >
     <label
-      class="Checkbox__label Box__root borderColor__standard"
+      class="Checkbox__label Box__root atoms__borderColor_standard"
       for="id"
       style="min-height: 48px;"
     >
       <div
-        class="Checkbox__checkboxContainer Box__root borderColor__standard marginRight__small"
+        class="Checkbox__checkboxContainer Box__root atoms__borderColor_standard atoms__marginRight_small"
         style="width: 30px; height: 30px; margin-top: 9px;"
       >
         <div
-          class="Checkbox__checkbox borderRadius__standard Box__root backgroundColor__input borderColor__standard borderWidth__standard"
+          class="Checkbox__checkbox atoms__borderRadius_standard Box__root atoms__backgroundColor_input atoms__borderColor_standard atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxHover borderRadius__standard Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxHover atoms__borderRadius_standard Box__root atoms__backgroundColor_input atoms__borderColor_formAccent atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxFocus boxShadow__focus borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__standard"
+          class="Checkbox__checkbox Checkbox__checkboxFocus atoms__boxShadow_focus atoms__borderRadius_standard atoms__transition_fast Box__root atoms__backgroundColor_input atoms__borderColor_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxChecked backgroundColor__formAccent borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxChecked atoms__backgroundColor_formAccent atoms__borderRadius_standard atoms__transition_fast Box__root atoms__backgroundColor_input atoms__borderColor_formAccent atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxDisabled borderRadius__standard transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxDisabled atoms__borderRadius_standard atoms__transition_fast Box__root atoms__backgroundColor_inputDisabled atoms__borderColor_standard atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxCritical borderRadius__standard transition__fast Box__root borderColor__critical borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxCritical atoms__borderRadius_standard atoms__transition_fast Box__root atoms__borderColor_critical atoms__borderWidth_standard"
           style="opacity: 0;"
         />
         <div
-          class="Checkbox__checkboxIcon transition__fast Box__root borderColor__standard"
+          class="Checkbox__checkboxIcon atoms__transition_fast Box__root atoms__borderColor_standard"
         >
           <svg
-            class="fill__white Icon__fillSize Icon__block Box__root borderColor__standard"
+            class="atoms__fill_white Icon__fillSize Icon__block Box__root atoms__borderColor_standard"
             height="16"
             viewBox="90.471 302.809 823 823"
             width="16"
@@ -1480,31 +1480,31 @@ exports[`Checkbox Theme: wireframe Children when checked 1`] = `
         </div>
       </div>
       <div
-        class="Text__block fontFamily__text color__neutral fontSize__interaction fontWeight__strong Box__root borderColor__standard"
+        class="Text__block atoms__fontFamily_text atoms__color_neutral atoms__fontSize_interaction atoms__fontWeight_strong Box__root atoms__borderColor_standard"
       >
         Label
       </div>
     </label>
     <div
-      class="Checkbox__children Box__root borderColor__standard paddingBottom__small paddingLeft__small"
+      class="Checkbox__children Box__root atoms__borderColor_standard atoms__paddingBottom_small atoms__paddingLeft_small"
       style="margin-left: 30px;"
     >
       Children
     </div>
   </div>
   <div
-    class="Box__root borderColor__standard paddingBottom__small"
+    class="Box__root atoms__borderColor_standard atoms__paddingBottom_small"
     id="id-message"
     tabindex="-1"
   >
     <div
-      class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard"
+      class="Text__block atoms__fontFamily_text atoms__color_neutral atoms__fontSize_standard atoms__fontWeight_regular atoms__transform_standardText Box__root atoms__borderColor_standard"
     >
       <div
         class="FieldMessage__content"
       >
         <div
-          class="height__standardText"
+          class="atoms__height_standardText"
         />
         <div />
       </div>
@@ -1525,38 +1525,38 @@ exports[`Checkbox Theme: wireframe Children when unchecked 1`] = `
     class="Checkbox__content"
   >
     <label
-      class="Checkbox__label Box__root borderColor__standard"
+      class="Checkbox__label Box__root atoms__borderColor_standard"
       for="id"
       style="min-height: 48px;"
     >
       <div
-        class="Checkbox__checkboxContainer Box__root borderColor__standard marginRight__small"
+        class="Checkbox__checkboxContainer Box__root atoms__borderColor_standard atoms__marginRight_small"
         style="width: 30px; height: 30px; margin-top: 9px;"
       >
         <div
-          class="Checkbox__checkbox borderRadius__standard Box__root backgroundColor__input borderColor__standard borderWidth__standard"
+          class="Checkbox__checkbox atoms__borderRadius_standard Box__root atoms__backgroundColor_input atoms__borderColor_standard atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxHover borderRadius__standard Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxHover atoms__borderRadius_standard Box__root atoms__backgroundColor_input atoms__borderColor_formAccent atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxFocus boxShadow__focus borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__standard"
+          class="Checkbox__checkbox Checkbox__checkboxFocus atoms__boxShadow_focus atoms__borderRadius_standard atoms__transition_fast Box__root atoms__backgroundColor_input atoms__borderColor_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxChecked backgroundColor__formAccent borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxChecked atoms__backgroundColor_formAccent atoms__borderRadius_standard atoms__transition_fast Box__root atoms__backgroundColor_input atoms__borderColor_formAccent atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxDisabled borderRadius__standard transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxDisabled atoms__borderRadius_standard atoms__transition_fast Box__root atoms__backgroundColor_inputDisabled atoms__borderColor_standard atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxCritical borderRadius__standard transition__fast Box__root borderColor__critical borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxCritical atoms__borderRadius_standard atoms__transition_fast Box__root atoms__borderColor_critical atoms__borderWidth_standard"
           style="opacity: 0;"
         />
         <div
-          class="Checkbox__checkboxIcon transition__fast Box__root borderColor__standard"
+          class="Checkbox__checkboxIcon atoms__transition_fast Box__root atoms__borderColor_standard"
         >
           <svg
-            class="fill__white Icon__fillSize Icon__block Box__root borderColor__standard"
+            class="atoms__fill_white Icon__fillSize Icon__block Box__root atoms__borderColor_standard"
             height="16"
             viewBox="90.471 302.809 823 823"
             width="16"
@@ -1568,31 +1568,31 @@ exports[`Checkbox Theme: wireframe Children when unchecked 1`] = `
         </div>
       </div>
       <div
-        class="Text__block fontFamily__text color__neutral fontSize__interaction fontWeight__regular Box__root borderColor__standard"
+        class="Text__block atoms__fontFamily_text atoms__color_neutral atoms__fontSize_interaction atoms__fontWeight_regular Box__root atoms__borderColor_standard"
       >
         Label
       </div>
     </label>
     <div
-      class="Checkbox__children Box__root borderColor__standard paddingBottom__small paddingLeft__small"
+      class="Checkbox__children Box__root atoms__borderColor_standard atoms__paddingBottom_small atoms__paddingLeft_small"
       style="margin-left: 30px;"
     >
       Children
     </div>
   </div>
   <div
-    class="Box__root borderColor__standard paddingBottom__small"
+    class="Box__root atoms__borderColor_standard atoms__paddingBottom_small"
     id="id-message"
     tabindex="-1"
   >
     <div
-      class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard"
+      class="Text__block atoms__fontFamily_text atoms__color_neutral atoms__fontSize_standard atoms__fontWeight_regular atoms__transform_standardText Box__root atoms__borderColor_standard"
     >
       <div
         class="FieldMessage__content"
       >
         <div
-          class="height__standardText"
+          class="atoms__height_standardText"
         />
         <div />
       </div>
@@ -1613,38 +1613,38 @@ exports[`Checkbox Theme: wireframe Unchecked 1`] = `
     class="Checkbox__content"
   >
     <label
-      class="Checkbox__label Box__root borderColor__standard"
+      class="Checkbox__label Box__root atoms__borderColor_standard"
       for="id"
       style="min-height: 48px;"
     >
       <div
-        class="Checkbox__checkboxContainer Box__root borderColor__standard marginRight__small"
+        class="Checkbox__checkboxContainer Box__root atoms__borderColor_standard atoms__marginRight_small"
         style="width: 30px; height: 30px; margin-top: 9px;"
       >
         <div
-          class="Checkbox__checkbox borderRadius__standard Box__root backgroundColor__input borderColor__standard borderWidth__standard"
+          class="Checkbox__checkbox atoms__borderRadius_standard Box__root atoms__backgroundColor_input atoms__borderColor_standard atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxHover borderRadius__standard Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxHover atoms__borderRadius_standard Box__root atoms__backgroundColor_input atoms__borderColor_formAccent atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxFocus boxShadow__focus borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__standard"
+          class="Checkbox__checkbox Checkbox__checkboxFocus atoms__boxShadow_focus atoms__borderRadius_standard atoms__transition_fast Box__root atoms__backgroundColor_input atoms__borderColor_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxChecked backgroundColor__formAccent borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxChecked atoms__backgroundColor_formAccent atoms__borderRadius_standard atoms__transition_fast Box__root atoms__backgroundColor_input atoms__borderColor_formAccent atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxDisabled borderRadius__standard transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxDisabled atoms__borderRadius_standard atoms__transition_fast Box__root atoms__backgroundColor_inputDisabled atoms__borderColor_standard atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxCritical borderRadius__standard transition__fast Box__root borderColor__critical borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxCritical atoms__borderRadius_standard atoms__transition_fast Box__root atoms__borderColor_critical atoms__borderWidth_standard"
           style="opacity: 0;"
         />
         <div
-          class="Checkbox__checkboxIcon transition__fast Box__root borderColor__standard"
+          class="Checkbox__checkboxIcon atoms__transition_fast Box__root atoms__borderColor_standard"
         >
           <svg
-            class="fill__white Icon__fillSize Icon__block Box__root borderColor__standard"
+            class="atoms__fill_white Icon__fillSize Icon__block Box__root atoms__borderColor_standard"
             height="16"
             viewBox="90.471 302.809 823 823"
             width="16"
@@ -1656,25 +1656,25 @@ exports[`Checkbox Theme: wireframe Unchecked 1`] = `
         </div>
       </div>
       <div
-        class="Text__block fontFamily__text color__neutral fontSize__interaction fontWeight__regular Box__root borderColor__standard"
+        class="Text__block atoms__fontFamily_text atoms__color_neutral atoms__fontSize_interaction atoms__fontWeight_regular Box__root atoms__borderColor_standard"
       >
         Label
       </div>
     </label>
   </div>
   <div
-    class="Box__root borderColor__standard paddingBottom__small"
+    class="Box__root atoms__borderColor_standard atoms__paddingBottom_small"
     id="id-message"
     tabindex="-1"
   >
     <div
-      class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard"
+      class="Text__block atoms__fontFamily_text atoms__color_neutral atoms__fontSize_standard atoms__fontWeight_regular atoms__transform_standardText Box__root atoms__borderColor_standard"
     >
       <div
         class="FieldMessage__content"
       >
         <div
-          class="height__standardText"
+          class="atoms__height_standardText"
         />
         <div />
       </div>
@@ -1696,38 +1696,38 @@ exports[`Checkbox Theme: wireframe With message 1`] = `
     class="Checkbox__content"
   >
     <label
-      class="Checkbox__label Box__root borderColor__standard"
+      class="Checkbox__label Box__root atoms__borderColor_standard"
       for="id"
       style="min-height: 48px;"
     >
       <div
-        class="Checkbox__checkboxContainer Box__root borderColor__standard marginRight__small"
+        class="Checkbox__checkboxContainer Box__root atoms__borderColor_standard atoms__marginRight_small"
         style="width: 30px; height: 30px; margin-top: 9px;"
       >
         <div
-          class="Checkbox__checkbox borderRadius__standard Box__root backgroundColor__input borderColor__standard borderWidth__standard"
+          class="Checkbox__checkbox atoms__borderRadius_standard Box__root atoms__backgroundColor_input atoms__borderColor_standard atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxHover borderRadius__standard Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxHover atoms__borderRadius_standard Box__root atoms__backgroundColor_input atoms__borderColor_formAccent atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxFocus boxShadow__focus borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__standard"
+          class="Checkbox__checkbox Checkbox__checkboxFocus atoms__boxShadow_focus atoms__borderRadius_standard atoms__transition_fast Box__root atoms__backgroundColor_input atoms__borderColor_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxChecked backgroundColor__formAccent borderRadius__standard transition__fast Box__root backgroundColor__input borderColor__formAccent borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxChecked atoms__backgroundColor_formAccent atoms__borderRadius_standard atoms__transition_fast Box__root atoms__backgroundColor_input atoms__borderColor_formAccent atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxDisabled borderRadius__standard transition__fast Box__root backgroundColor__inputDisabled borderColor__standard borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxDisabled atoms__borderRadius_standard atoms__transition_fast Box__root atoms__backgroundColor_inputDisabled atoms__borderColor_standard atoms__borderWidth_standard"
         />
         <div
-          class="Checkbox__checkbox Checkbox__checkboxCritical borderRadius__standard transition__fast Box__root borderColor__critical borderWidth__standard"
+          class="Checkbox__checkbox Checkbox__checkboxCritical atoms__borderRadius_standard atoms__transition_fast Box__root atoms__borderColor_critical atoms__borderWidth_standard"
           style="opacity: 1;"
         />
         <div
-          class="Checkbox__checkboxIcon transition__fast Box__root borderColor__standard"
+          class="Checkbox__checkboxIcon atoms__transition_fast Box__root atoms__borderColor_standard"
         >
           <svg
-            class="fill__white Icon__fillSize Icon__block Box__root borderColor__standard"
+            class="atoms__fill_white Icon__fillSize Icon__block Box__root atoms__borderColor_standard"
             height="16"
             viewBox="90.471 302.809 823 823"
             width="16"
@@ -1739,37 +1739,37 @@ exports[`Checkbox Theme: wireframe With message 1`] = `
         </div>
       </div>
       <div
-        class="Text__block fontFamily__text color__neutral fontSize__interaction fontWeight__strong Box__root borderColor__standard"
+        class="Text__block atoms__fontFamily_text atoms__color_neutral atoms__fontSize_interaction atoms__fontWeight_strong Box__root atoms__borderColor_standard"
       >
         Label
       </div>
     </label>
     <div
-      class="Checkbox__children Box__root borderColor__standard paddingBottom__small paddingLeft__small"
+      class="Checkbox__children Box__root atoms__borderColor_standard atoms__paddingBottom_small atoms__paddingLeft_small"
       style="margin-left: 30px;"
     >
       Children
     </div>
   </div>
   <div
-    class="Box__root borderColor__standard paddingBottom__small"
+    class="Box__root atoms__borderColor_standard atoms__paddingBottom_small"
     id="id-message"
     tabindex="-1"
   >
     <div
-      class="Text__block fontFamily__text color__critical fontSize__standard fontWeight__regular transform__standardText Box__root borderColor__standard"
+      class="Text__block atoms__fontFamily_text atoms__color_critical atoms__fontSize_standard atoms__fontWeight_regular atoms__transform_standardText Box__root atoms__borderColor_standard"
     >
       <div
         class="FieldMessage__content"
       >
         <div
-          class="height__standardText"
+          class="atoms__height_standardText"
         />
         <div
-          class="FieldMessage__icon Box__root borderColor__standard paddingRight__xsmall"
+          class="FieldMessage__icon Box__root atoms__borderColor_standard atoms__paddingRight_xsmall"
         >
           <svg
-            class="width__standardText height__standardText fill__critical Icon__block Box__root borderColor__standard"
+            class="atoms__width_standardText atoms__height_standardText atoms__fill_critical Icon__block Box__root atoms__borderColor_standard"
             height="16"
             viewBox="0 0 512 512"
             width="16"

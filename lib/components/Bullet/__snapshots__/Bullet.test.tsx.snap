@@ -2,10 +2,10 @@
 
 exports[`Bullet Theme: jobStreet Default 1`] = `
 <li
-  class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Text__listItem Box__root borderColor__standard"
+  class="Text__block atoms__fontFamily_text atoms__color_neutral atoms__fontSize_standard atoms__fontWeight_regular atoms__transform_standardText Text__listItem Box__root atoms__borderColor_standard"
 >
   <span
-    class="Bullet__block Box__root borderColor__standard paddingBottom__xsmall"
+    class="Bullet__block Box__root atoms__borderColor_standard atoms__paddingBottom_xsmall"
   >
     Bullet
   </span>
@@ -14,10 +14,10 @@ exports[`Bullet Theme: jobStreet Default 1`] = `
 
 exports[`Bullet Theme: seekAnz Default 1`] = `
 <li
-  class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Text__listItem Box__root borderColor__standard"
+  class="Text__block atoms__fontFamily_text atoms__color_neutral atoms__fontSize_standard atoms__fontWeight_regular atoms__transform_standardText Text__listItem Box__root atoms__borderColor_standard"
 >
   <span
-    class="Bullet__block Box__root borderColor__standard paddingBottom__xsmall"
+    class="Bullet__block Box__root atoms__borderColor_standard atoms__paddingBottom_xsmall"
   >
     Bullet
   </span>
@@ -26,10 +26,10 @@ exports[`Bullet Theme: seekAnz Default 1`] = `
 
 exports[`Bullet Theme: seekAsia Default 1`] = `
 <li
-  class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Text__listItem Box__root borderColor__standard"
+  class="Text__block atoms__fontFamily_text atoms__color_neutral atoms__fontSize_standard atoms__fontWeight_regular atoms__transform_standardText Text__listItem Box__root atoms__borderColor_standard"
 >
   <span
-    class="Bullet__block Box__root borderColor__standard paddingBottom__xsmall"
+    class="Bullet__block Box__root atoms__borderColor_standard atoms__paddingBottom_xsmall"
   >
     Bullet
   </span>
@@ -38,10 +38,10 @@ exports[`Bullet Theme: seekAsia Default 1`] = `
 
 exports[`Bullet Theme: wireframe Default 1`] = `
 <li
-  class="Text__block fontFamily__text color__neutral fontSize__standard fontWeight__regular transform__standardText Text__listItem Box__root borderColor__standard"
+  class="Text__block atoms__fontFamily_text atoms__color_neutral atoms__fontSize_standard atoms__fontWeight_regular atoms__transform_standardText Text__listItem Box__root atoms__borderColor_standard"
 >
   <span
-    class="Bullet__block Box__root borderColor__standard paddingBottom__xsmall"
+    class="Bullet__block Box__root atoms__borderColor_standard atoms__paddingBottom_xsmall"
   >
     Bullet
   </span>
