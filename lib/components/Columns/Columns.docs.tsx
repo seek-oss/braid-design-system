@@ -3,6 +3,7 @@ import Columns from './Columns';
 import Column from '../Column/Column';
 import Box from '../Box/Box';
 import Text from '../Text/Text';
+import { HideCode } from '../private/HideCode';
 
 export default {
   component: Columns,
@@ -12,34 +13,40 @@ export default {
       render: () => (
         <Columns>
           <Column>
-            <Box
-              backgroundColor="selection"
-              paddingTop="small"
-              paddingBottom="small"
-              paddingLeft="small"
-            >
-              <Text baseline={false}>Column</Text>
-            </Box>
+            <HideCode>
+              <Box
+                backgroundColor="selection"
+                paddingTop="small"
+                paddingBottom="small"
+                paddingLeft="small"
+              >
+                <Text baseline={false}>Column</Text>
+              </Box>
+            </HideCode>
           </Column>
           <Column>
-            <Box
-              backgroundColor="selection"
-              paddingTop="small"
-              paddingBottom="small"
-              paddingLeft="small"
-            >
-              <Text baseline={false}>Column</Text>
-            </Box>
+            <HideCode>
+              <Box
+                backgroundColor="selection"
+                paddingTop="small"
+                paddingBottom="small"
+                paddingLeft="small"
+              >
+                <Text baseline={false}>Column</Text>
+              </Box>
+            </HideCode>
           </Column>
           <Column>
-            <Box
-              backgroundColor="selection"
-              paddingTop="small"
-              paddingBottom="small"
-              paddingLeft="small"
-            >
-              <Text baseline={false}>Column</Text>
-            </Box>
+            <HideCode>
+              <Box
+                backgroundColor="selection"
+                paddingTop="small"
+                paddingBottom="small"
+                paddingLeft="small"
+              >
+                <Text baseline={false}>Column</Text>
+              </Box>
+            </HideCode>
           </Column>
         </Columns>
       )
