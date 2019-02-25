@@ -17,6 +17,7 @@ export interface CssModuleAtoms {
   borderRadius_standard: string;
   borderWidth_standard: string;
   boxShadow_focus: string;
+  color_link: string;
   color_black: string;
   color_critical: string;
   color_formAccent: string;

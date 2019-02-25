@@ -56,7 +56,8 @@ export type ColorVariants =
   | 'positive'
   | 'secondary'
   | 'formAccent'
-  | 'neutral';
+  | 'neutral'
+  | 'link';
 type FillVariants =
   | 'currentColor'
   | 'formAccent'

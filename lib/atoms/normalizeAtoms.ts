@@ -29,6 +29,7 @@ export default (atoms: CssModuleAtoms): Atoms => ({
     focus: atoms.boxShadow_focus
   },
   color: {
+    link: atoms.color_link,
     black: atoms.color_black,
     critical: atoms.color_critical,
     formAccent: atoms.color_formAccent,

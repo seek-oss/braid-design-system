@@ -17,6 +17,7 @@ export const boxShadow_focus: string;
 export const color_black: string;
 export const color_critical: string;
 export const color_formAccent: string;
+export const color_link: string;
 export const color_neutral: string;
 export const color_positive: string;
 export const color_secondary: string;
