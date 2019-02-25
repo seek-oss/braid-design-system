@@ -1,4 +1,4 @@
-import React, { Component, ReactNode, ReactType } from 'react';
+import React, { Component, ReactNode } from 'react';
 import Box from '../Box/Box';
 import styles from './Hidden.css.js';
 
@@ -9,7 +9,6 @@ export interface HiddenProps {
   screen?: boolean;
   print?: boolean;
   inline?: boolean;
-  component?: ReactType;
 }
 
 export default class Hidden extends Component<HiddenProps> {
@@ -18,7 +17,6 @@ export default class Hidden extends Component<HiddenProps> {
   render() {
     const {
       children,
-      component,
       inline = false,
       mobile: hiddenOnMobile = false,
       desktop: hiddenOnDesktop = false,
@@ -27,7 +25,6 @@ export default class Hidden extends Component<HiddenProps> {
     } = this.props;
 
     const display = inline ? 'inline' : 'block';
-    const defaultComponent = inline ? 'span' : 'div';
 
     return (
       <Box
@@ -36,7 +33,7 @@ export default class Hidden extends Component<HiddenProps> {
           hiddenOnDesktop || hiddenOnScreen ? 'none' : display
         ]}
         className={hiddenOnPrint ? styles.hiddenOnPrint : undefined}
-        component={component || defaultComponent}
+        component={inline ? 'span' : 'div'}
       >
         {children}
       </Box>
