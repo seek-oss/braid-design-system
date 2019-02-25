@@ -14,6 +14,9 @@ import { ComponentDocs } from '../../types';
 
 const themes = [wireframe, jobStreet, seekAsia, seekAnz];
 
+const cleanCodeSnippet = (code: string) =>
+  code.replace(/<HideCode>.*?<\/HideCode>/gs, '...');
+
 interface ComponentRouteProps {
   componentName: string;
   category?: string;
@@ -83,13 +86,15 @@ export default class ComponentRoute extends Component<ComponentRouteProps> {
             >
               <Text component="pre" color="white">
                 {render && !code
-                  ? reactElementToJSXString(render({ id: 'id' }), {
-                      useBooleanShorthandSyntax: false,
-                      showDefaultProps: false,
-                      showFunctions: true
-                    })
+                  ? cleanCodeSnippet(
+                      reactElementToJSXString(render({ id: 'id' }), {
+                        useBooleanShorthandSyntax: false,
+                        showDefaultProps: false,
+                        showFunctions: true
+                      })
+                    )
                   : null}
-                {code ? dedent(code) : null}
+                {code ? cleanCodeSnippet(dedent(code)) : null}
               </Text>
             </Box>
           </Box>
