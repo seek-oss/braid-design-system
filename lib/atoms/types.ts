@@ -1,9 +1,5 @@
-interface CSSProperties {
-  [selector: string]: Css | string;
-}
-
 export interface Css {
-  [selector: string]: CSSProperties;
+  [selector: string]: object;
 }
 
 export interface CssModuleAtoms {

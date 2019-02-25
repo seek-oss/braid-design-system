@@ -7,10 +7,12 @@ import ThemeProvider, {
   ThemeProviderProps
 } from '../../components/ThemeProvider/ThemeProvider';
 
-type ForEachThemeCallback = (args: {
-  theme: Theme;
-  ThemeProvider: FunctionComponent<Omit<ThemeProviderProps, 'theme'>>;
-}) => void;
+type ForEachThemeCallback = (
+  args: {
+    theme: Theme;
+    ThemeProvider: FunctionComponent<Omit<ThemeProviderProps, 'theme'>>;
+  }
+) => void;
 
 export default (callback: ForEachThemeCallback) => {
   each(themes, theme => {
