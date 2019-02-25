@@ -1,6 +1,6 @@
 import React from 'react';
 import Box from './Box';
-import tokens from '../../themes/wireframe/tokens/tokens';
+import tokens from '../../themes/wireframe/tokens';
 import { ComponentDocs, ComponentExample } from '../../../docs/src/types';
 
 type Space = keyof typeof tokens.columnSpacing;

@@ -162,7 +162,6 @@ export type SizeVariants =
   | 'largeText'
   | 'largeTextInline';
 type SpacingVariants =
-  | 'none'
   | 'xxsmall'
   | 'xsmall'
   | 'small'
