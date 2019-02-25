@@ -4,10 +4,10 @@ import columnSpacingForCssRule from './utils/columnSpacingForCssRule';
 import makeDesktopRules from './utils/makeDesktopRules';
 
 const makeMarginRules = (tokens: Tokens, suffix = '') => ({
-  ...rowSpacingForCssRule(`marginTop${suffix}`, tokens),
-  ...columnSpacingForCssRule(`marginRight${suffix}`, tokens),
-  ...rowSpacingForCssRule(`marginBottom${suffix}`, tokens),
-  ...columnSpacingForCssRule(`marginLeft${suffix}`, tokens)
+  ...rowSpacingForCssRule(`marginTop${suffix}`, 'marginTop', tokens),
+  ...columnSpacingForCssRule(`marginRight${suffix}`, 'marginRight', tokens),
+  ...rowSpacingForCssRule(`marginBottom${suffix}`, 'marginBottom', tokens),
+  ...columnSpacingForCssRule(`marginLeft${suffix}`, 'marginLeft', tokens)
 });
 
 export default (tokens: Tokens) => ({

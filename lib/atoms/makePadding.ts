@@ -4,10 +4,10 @@ import columnSpacingForCssRule from './utils/columnSpacingForCssRule';
 import makeDesktopRules from './utils/makeDesktopRules';
 
 const makePaddingRules = (tokens: Tokens, suffix = '') => ({
-  ...rowSpacingForCssRule(`paddingTop${suffix}`, tokens),
-  ...columnSpacingForCssRule(`paddingRight${suffix}`, tokens),
-  ...rowSpacingForCssRule(`paddingBottom${suffix}`, tokens),
-  ...columnSpacingForCssRule(`paddingLeft${suffix}`, tokens)
+  ...rowSpacingForCssRule(`paddingTop${suffix}`, 'paddingTop', tokens),
+  ...columnSpacingForCssRule(`paddingRight${suffix}`, 'paddingRight', tokens),
+  ...rowSpacingForCssRule(`paddingBottom${suffix}`, 'paddingBottom', tokens),
+  ...columnSpacingForCssRule(`paddingLeft${suffix}`, 'paddingLeft', tokens)
 });
 
 export default (tokens: Tokens) => ({
