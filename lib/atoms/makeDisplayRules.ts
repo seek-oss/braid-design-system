@@ -23,11 +23,7 @@ const desktopDisplayRules = mapKeys(
   (value, key) => `${desktopDisplayPrefix}${key}`
 );
 
-export default (tokens: Tokens) => {
-  const a = {
-    ...defaultDisplayRules,
-    ...createDesktopRules({ tokens, css: desktopDisplayRules })
-  };
-
-  return a;
-};
+export default (tokens: Tokens) => ({
+  ...defaultDisplayRules,
+  ...createDesktopRules({ tokens, css: desktopDisplayRules })
+});

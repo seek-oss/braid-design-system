@@ -162,14 +162,14 @@ export type SizeVariants =
   | 'largeText'
   | 'largeTextInline';
 type SpacingVariants =
+  | 'none'
   | 'xxsmall'
   | 'xsmall'
   | 'small'
   | 'medium'
   | 'large'
   | 'xlarge'
-  | 'xxlarge'
-  | 'none';
+  | 'xxlarge';
 type HorizontalSpacingVariants = SpacingVariants | 'gutter';
 export type TransformVariant =
   | 'standardText'
