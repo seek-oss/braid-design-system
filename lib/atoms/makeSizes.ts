@@ -39,7 +39,5 @@ const makeSizeRules = (tokens: Tokens, property: string) => {
   return merge({}, ...rules);
 };
 
-export default (tokens: Tokens) => ({
-  ...makeSizeRules(tokens, 'height'),
-  ...makeSizeRules(tokens, 'width')
-});
+export default (tokens: Tokens) =>
+  merge({}, makeSizeRules(tokens, 'height'), makeSizeRules(tokens, 'width'));
