@@ -6,7 +6,7 @@ import Box from '../Box/Box';
 import Text from '../Text/Text';
 import FieldMessage from '../FieldMessage/FieldMessage';
 import styles from './Radio.css.js';
-import { px } from '../../themes/utils/toUnit';
+import { px } from '../../atoms/utils/toUnit';
 
 const textColorForState = (disabled: boolean, hovered: boolean) => {
   if (disabled) {
