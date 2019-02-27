@@ -2,7 +2,7 @@ import { TextDefinition } from './../utils/alignTextToGrid';
 import alignTextToGrid from '../utils/alignTextToGrid';
 import { px } from '../utils/toUnit';
 import makeDesktopRules from '../utils/makeDesktopRules';
-import { Tokens } from '../../themes/theme';
+import { Tokens, Breakpoint } from '../../themes/theme';
 
 const getFontSizeRules = (textDefinition: TextDefinition, tokens: Tokens) => {
   const { fontSize, lineHeight } = alignTextToGrid(textDefinition, tokens);
@@ -13,7 +13,7 @@ const getFontSizeRules = (textDefinition: TextDefinition, tokens: Tokens) => {
   };
 };
 
-const makeRules = (responsiveType: 'mobile' | 'desktop', tokens: Tokens) => {
+const makeRules = (responsiveType: Breakpoint, tokens: Tokens) => {
   const interactionHeight = tokens.interactionRows * tokens.rowHeight;
 
   const standardRules = getFontSizeRules(
