@@ -1,74 +1,60 @@
-import merge from 'lodash/merge';
+import { TextDefinition } from './../utils/alignTextToGrid';
 import alignTextToGrid from '../utils/alignTextToGrid';
-import createResponsiveRules from '../utils/createResponsiveRules';
 import { px } from '../utils/toUnit';
-import each from 'lodash/each';
-import { Tokens } from 'lib/themes/theme';
+import makeDesktopRules from '../utils/makeDesktopRules';
+import { Tokens } from '../../themes/theme';
 
-export default (tokens: Tokens) => {
-  const rules: Array<{ [index: string]: object }> = [];
+const getFontSizeRules = (textDefinition: TextDefinition, tokens: Tokens) => {
+  const { fontSize, lineHeight } = alignTextToGrid(textDefinition, tokens);
 
-  each(
-    {
-      ...tokens.text,
-      ...tokens.heading
-    },
-    (type, typeName) => {
-      const {
-        fontSize: mobileFontSize,
-        lineHeight: mobileLineHeight
-      } = alignTextToGrid(type.mobile, tokens);
-      const {
-        fontSize: desktopFontSize,
-        lineHeight: desktopLineHeight
-      } = alignTextToGrid(type.desktop, tokens);
+  return {
+    fontSize,
+    lineHeight
+  };
+};
 
-      const mobileRules = {
-        fontSize: mobileFontSize,
-        lineHeight: mobileLineHeight
-      };
-      const desktopRules = {
-        fontSize: desktopFontSize,
-        lineHeight: desktopLineHeight
-      };
+const makeRules = (responsiveType: 'mobile' | 'desktop', tokens: Tokens) => {
+  const interactionHeight = tokens.interactionRows * tokens.rowHeight;
 
-      rules.push(
-        createResponsiveRules({
-          tokens,
-          selector: `.fontSize_${typeName}`,
-          mobileRules,
-          desktopRules
-        })
-      );
-
-      if (typeName === 'standard') {
-        const interactionHeight = tokens.interactionRows * tokens.rowHeight;
-        const mobileInteractionPadding = px(
-          (interactionHeight - type.mobile.rows * tokens.rowHeight) / 2
-        );
-        const desktopInteractionPadding = px(
-          (interactionHeight - type.desktop.rows * tokens.rowHeight) / 2
-        );
-
-        rules.push(
-          createResponsiveRules({
-            tokens,
-            selector: '.fontSize_interaction',
-            mobileRules: {
-              ...mobileRules,
-              paddingTop: mobileInteractionPadding,
-              paddingBottom: mobileInteractionPadding
-            },
-            desktopRules: {
-              ...desktopRules,
-              paddingTop: desktopInteractionPadding,
-              paddingBottom: desktopInteractionPadding
-            }
-          })
-        );
-      }
-    }
+  const standardRules = getFontSizeRules(
+    tokens.text.standard[responsiveType],
+    tokens
+  );
+  const interactionPadding = px(
+    (interactionHeight -
+      tokens.text.standard[responsiveType].rows * tokens.rowHeight) /
+      2
   );
 
-  return merge({}, ...rules);
+  return {
+    '.fontSize_standard': standardRules,
+    '.fontSize_large': getFontSizeRules(
+      tokens.text.large[responsiveType],
+      tokens
+    ),
+    '.fontSize_interaction': {
+      ...standardRules,
+      paddingTop: interactionPadding,
+      paddingBottom: interactionPadding
+    },
+    '.fontSize_level1': getFontSizeRules(
+      tokens.heading.level1[responsiveType],
+      tokens
+    ),
+    '.fontSize_level2': getFontSizeRules(
+      tokens.heading.level2[responsiveType],
+      tokens
+    ),
+    '.fontSize_level3': getFontSizeRules(
+      tokens.heading.level3[responsiveType],
+      tokens
+    )
+  };
+};
+
+export default (tokens: Tokens) => {
+  return {
+    ...makeRules('mobile', tokens),
+    ...makeDesktopRules({ tokens, css: makeRules('desktop', tokens) })
+  };
 };
