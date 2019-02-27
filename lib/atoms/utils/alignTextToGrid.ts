@@ -1,8 +1,11 @@
-// @ts-ignore
 import basekick from 'basekick';
 import { Tokens } from '../../themes/theme';
 
-export default (textDefinition: any, tokens: Tokens) =>
+export interface TextDefinition {
+  rows: number;
+  size: number;
+}
+export default (textDefinition: TextDefinition, tokens: Tokens) =>
   basekick({
     baseFontSize: 1,
     typeSizeModifier: textDefinition.size,

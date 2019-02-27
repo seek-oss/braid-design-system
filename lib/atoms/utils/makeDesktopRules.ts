@@ -1,10 +1,10 @@
 import { Tokens } from '../../themes/theme';
 
-interface Params {
+interface Params<CssRules> {
   tokens: Tokens;
-  css: object;
+  css: CssRules;
 }
 
-export default ({ tokens, css }: Params) => ({
+export default <CssRules>({ tokens, css }: Params<CssRules>) => ({
   [`@media screen and (min-width: ${tokens.responsiveBreakpoint}px)`]: css
 });
