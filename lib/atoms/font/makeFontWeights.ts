@@ -1,7 +1,7 @@
 export interface FontWeightParams {
-  regular: string;
-  medium: string;
-  strong: string;
+  regular: number;
+  medium: number;
+  strong: number;
 }
 
 export default ({ regular, medium, strong }: FontWeightParams) => ({
