@@ -25,7 +25,7 @@ export default class TextLinkRenderer extends Component<TextLinkRendererProps> {
             className: classnames([
               theme.atoms.reset.a,
               theme.atoms.color.link,
-              styles.textDecoration
+              styles.root
             ])
           })
         }
