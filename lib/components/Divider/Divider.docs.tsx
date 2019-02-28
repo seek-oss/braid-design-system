@@ -6,9 +6,9 @@ const docs: ComponentDocs = {
   examples: [
     {
       label: 'Standard Divider',
-      render: () => <Divider />
-    }
-  ]
+      render: () => <Divider />,
+    },
+  ],
 };
 
 export default docs;

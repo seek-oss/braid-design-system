@@ -14,7 +14,7 @@ export default {
             <Text>Hidden on mobile.</Text>
           </Hidden>
         </Fragment>
-      )
+      ),
     },
     {
       label: 'Hidden on Desktop',
@@ -25,7 +25,7 @@ export default {
             <Text>Hidden on desktop.</Text>
           </Hidden>
         </Fragment>
-      )
+      ),
     },
     {
       label: 'Hidden on Print',
@@ -36,7 +36,7 @@ export default {
             <Text>Hidden on print.</Text>
           </Hidden>
         </Fragment>
-      )
+      ),
     },
     {
       label: 'Hidden on Screen',
@@ -47,7 +47,7 @@ export default {
             <Text>Hidden on screen.</Text>
           </Hidden>
         </Fragment>
-      )
+      ),
     },
     {
       label: 'Hidden on Mobile (Inline)',
@@ -58,7 +58,7 @@ export default {
             Hidden on mobile.
           </Hidden>
         </Text>
-      )
+      ),
     },
     {
       label: 'Hidden on Desktop (Inline)',
@@ -69,7 +69,7 @@ export default {
             Hidden on desktop.
           </Hidden>
         </Text>
-      )
+      ),
     },
     {
       label: 'Hidden on Print (Inline)',
@@ -80,7 +80,7 @@ export default {
             Hidden on print.
           </Hidden>
         </Text>
-      )
+      ),
     },
     {
       label: 'Hidden on Screen (Inline)',
@@ -91,7 +91,7 @@ export default {
             Hidden on screen.
           </Hidden>
         </Text>
-      )
-    }
-  ]
+      ),
+    },
+  ],
 };

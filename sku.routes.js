@@ -9,11 +9,11 @@ const components = componentsSource
   .map(x => x.replace('default as ', ''))
   .sort();
 const [iconNames, componentNames] = partition(components, x =>
-  /.+Icon$/i.test(x)
+  /.+Icon$/i.test(x),
 );
 
 module.exports = [
   { route: '/', name: 'home' },
   ...componentNames.map(name => ({ route: `/components/${name}/`, name })),
-  ...iconNames.map(name => ({ route: `/icons/${name}/`, name }))
+  ...iconNames.map(name => ({ route: `/icons/${name}/`, name })),
 ];

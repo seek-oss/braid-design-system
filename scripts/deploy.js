@@ -16,7 +16,7 @@ const makeConfig = function() {
     repo: GH_TOKEN
       ? repoUrl.replace('https://', `https://${GH_TOKEN}@`)
       : repoUrl,
-    logger: log
+    logger: log,
   };
 };
 

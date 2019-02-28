@@ -9,12 +9,12 @@ interface Params {
 }
 export default ({ tokens, selector, mobileRules, desktopRules }: Params) => {
   const css = {
-    [selector]: mobileRules
+    [selector]: mobileRules,
   };
 
   if (!isEqual(mobileRules, desktopRules)) {
     css[`@media screen and (min-width: ${tokens.responsiveBreakpoint}px)`] = {
-      [selector]: desktopRules
+      [selector]: desktopRules,
     };
   }
 

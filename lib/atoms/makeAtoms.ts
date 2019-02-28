@@ -12,10 +12,10 @@ import makeFontWeight, { FontWeightParams } from './font/makeFontWeights';
 import makeFontFamily, { FontFamilyParams } from './font/makeFontFamily';
 import makeBorderColor, { BorderColorParams } from './border/makeBorderColor';
 import makeBorderRadius, {
-  BorderRadiusParams
+  BorderRadiusParams,
 } from './border/makeBorderRadius';
 import makeBackgroundColors, {
-  BackgroundColorParms
+  BackgroundColorParms,
 } from './color/makeBackgroundColors';
 import makeBoxShadows, { BoxShadowParams } from './makeBoxShadows';
 import makePadding from './makePadding';
@@ -35,7 +35,7 @@ const makeAtoms = (
   borderRadius: BorderRadiusParams,
   boxShadows: BoxShadowParams,
   fontWeights: FontWeightParams,
-  backgroundColor: BackgroundColorParms
+  backgroundColor: BackgroundColorParms,
 ): Css => {
   const rules = merge(
     makeFontSizes(tokens),
@@ -53,17 +53,17 @@ const makeAtoms = (
     makePadding(tokens),
     makeDisplayRules(tokens),
     makeTransforms(tokens),
-    makeTransitions()
+    makeTransitions(),
   );
 
   const [queryRules, regularRules] = partition(Object.keys(rules), ruleName =>
-    ruleName.startsWith('@')
+    ruleName.startsWith('@'),
   );
 
   // Include media queries last to ensure higher specificity
   return {
     ...pick(rules, regularRules),
-    ...pick(rules, queryRules)
+    ...pick(rules, queryRules),
   };
 };
 

@@ -8,7 +8,7 @@ import {
   wireframe,
   jobStreet,
   seekAsia,
-  seekAnz
+  seekAnz,
 } from '../../../../lib/themes';
 import { ComponentDocs } from '../../types';
 
@@ -81,7 +81,7 @@ export default class ComponentRoute extends Component<ComponentRouteProps> {
               borderRadius="standard"
               style={{
                 backgroundColor: '#2b2b2b',
-                overflowX: 'auto'
+                overflowX: 'auto',
               }}
             >
               <Text component="pre" color="white">
@@ -90,8 +90,8 @@ export default class ComponentRoute extends Component<ComponentRouteProps> {
                       reactElementToJSXString(render({ id: 'id' }), {
                         useBooleanShorthandSyntax: false,
                         showDefaultProps: false,
-                        showFunctions: true
-                      })
+                        showFunctions: true,
+                      }),
                     )
                   : null}
                 {code ? cleanCodeSnippet(dedent(code)) : null}

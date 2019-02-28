@@ -3,6 +3,6 @@ export interface FontFamilyParams {
 }
 export default ({ fontFamily }: FontFamilyParams) => ({
   '.fontFamily_text': {
-    fontFamily
-  }
+    fontFamily,
+  },
 });

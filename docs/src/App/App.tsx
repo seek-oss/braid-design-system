@@ -25,19 +25,19 @@ export default withRouter(
       super(props);
 
       this.state = {
-        isMenuOpen: false
+        isMenuOpen: false,
       };
     }
 
     toggleMenu = () => {
       this.setState(state => ({
-        isMenuOpen: !state.isMenuOpen
+        isMenuOpen: !state.isMenuOpen,
       }));
     };
 
     closeMenu = () => {
       this.setState({
-        isMenuOpen: false
+        isMenuOpen: false,
       });
     };
 
@@ -64,7 +64,7 @@ export default withRouter(
                     className={classnames({
                       [styles.menuButton]: true,
                       [styles.menuButton__isHidden]: isHome,
-                      [styles.menuButton__isOpen]: isMenuOpen && !isHome
+                      [styles.menuButton__isOpen]: isMenuOpen && !isHome,
                     })}
                     onClick={this.toggleMenu}
                     aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
@@ -72,19 +72,19 @@ export default withRouter(
                     <div
                       className={classnames(
                         styles.menuButton__bar,
-                        styles.menuButton__bar1
+                        styles.menuButton__bar1,
                       )}
                     />
                     <div
                       className={classnames(
                         styles.menuButton__bar,
-                        styles.menuButton__bar2
+                        styles.menuButton__bar2,
                       )}
                     />
                     <div
                       className={classnames(
                         styles.menuButton__bar,
-                        styles.menuButton__bar3
+                        styles.menuButton__bar3,
                       )}
                     />
                   </button>
@@ -97,7 +97,7 @@ export default withRouter(
               <div
                 className={classnames({
                   [styles.menu]: true,
-                  [styles.menu__isOpen]: isMenuOpen
+                  [styles.menu__isOpen]: isMenuOpen,
                 })}
               >
                 <Box
@@ -211,5 +211,5 @@ export default withRouter(
         </ThemeProvider>
       );
     }
-  }
+  },
 );

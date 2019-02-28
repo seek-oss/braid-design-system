@@ -10,9 +10,9 @@ const docs: ComponentDocs = {
         <Text>
           The last word of this sentence is <Strong>strong.</Strong>
         </Text>
-      )
-    }
-  ]
+      ),
+    },
+  ],
 };
 
 export default docs;

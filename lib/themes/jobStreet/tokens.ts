@@ -12,59 +12,59 @@ const tokens: Tokens = {
       weak: 'regular',
       mobile: {
         size: 28,
-        rows: 9
+        rows: 9,
       },
       desktop: {
         size: 36,
-        rows: 11
-      }
+        rows: 11,
+      },
     },
     level2: {
       regular: 'strong',
       weak: 'regular',
       mobile: {
         size: 24,
-        rows: 8
+        rows: 8,
       },
       desktop: {
         size: 30,
-        rows: 9
-      }
+        rows: 9,
+      },
     },
     level3: {
       regular: 'strong',
       weak: 'regular',
       mobile: {
         size: 20,
-        rows: 7
+        rows: 7,
       },
       desktop: {
         size: 24,
-        rows: 8
-      }
-    }
+        rows: 8,
+      },
+    },
   },
   text: {
     standard: {
       mobile: {
         size: 14,
-        rows: 5
+        rows: 5,
       },
       desktop: {
         size: 14,
-        rows: 5
-      }
+        rows: 5,
+      },
     },
     large: {
       mobile: {
         size: 16,
-        rows: 6
+        rows: 6,
       },
       desktop: {
         size: 16,
-        rows: 6
-      }
-    }
+        rows: 6,
+      },
+    },
   },
   rowSpacing: {
     xxsmall: 1,
@@ -73,7 +73,7 @@ const tokens: Tokens = {
     medium: 4,
     large: 6,
     xlarge: 8,
-    xxlarge: 16
+    xxlarge: 16,
   },
   columnSpacing: {
     gutter: 5,
@@ -83,11 +83,11 @@ const tokens: Tokens = {
     medium: 4,
     large: 6,
     xlarge: 8,
-    xxlarge: 16
+    xxlarge: 16,
   },
   borderWidth: {
-    standard: 1
-  }
+    standard: 1,
+  },
 };
 
 export default tokens;

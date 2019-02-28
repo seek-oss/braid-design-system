@@ -9,9 +9,9 @@ const docs: ComponentDocs = {
             This is an example of an unordered list with a CSS reset.
           </Reset>
         </Reset>
-      `
-    }
-  ]
+      `,
+    },
+  ],
 };
 
 export default docs;

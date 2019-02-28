@@ -8,15 +8,15 @@ const docs: ComponentDocs = {
       label: 'Info Alert',
       render: () => (
         <Alert tone="info">This is an important piece of information.</Alert>
-      )
+      ),
     },
     {
       label: 'Critical Alert',
       render: () => (
         <Alert tone="critical">This is a critical piece of information.</Alert>
-      )
-    }
-  ]
+      ),
+    },
+  ],
 };
 
 export default docs;

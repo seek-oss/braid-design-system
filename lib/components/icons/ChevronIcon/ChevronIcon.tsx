@@ -22,7 +22,7 @@ export default class ChevronIcon extends Component<ChevronIconProps> {
           [styles.inline]: inline,
           [styles.up]: direction === 'up',
           [styles.left]: direction === 'left',
-          [styles.right]: direction === 'right'
+          [styles.right]: direction === 'right',
         })}
       >
         <Icon svgComponent={ChevronSvg} inline={inline} {...restProps} />
