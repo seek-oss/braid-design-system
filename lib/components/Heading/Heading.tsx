@@ -76,6 +76,7 @@ export default class Heading extends Component<HeadingProps> {
           return (
             <Box
               component={resolveComponent(component, level)}
+              paddingBottom={level === '1' ? 'small' : 'xsmall'}
               className={classnames(
                 theme.atoms.fontFamily.text,
                 theme.atoms.color.neutral,
