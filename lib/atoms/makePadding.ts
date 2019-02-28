@@ -7,13 +7,13 @@ const makePaddingRules = (tokens: Tokens, suffix = '') => ({
   ...rowSpacingForCssRule(`paddingTop${suffix}`, 'paddingTop', tokens),
   ...columnSpacingForCssRule(`paddingRight${suffix}`, 'paddingRight', tokens),
   ...rowSpacingForCssRule(`paddingBottom${suffix}`, 'paddingBottom', tokens),
-  ...columnSpacingForCssRule(`paddingLeft${suffix}`, 'paddingLeft', tokens)
+  ...columnSpacingForCssRule(`paddingLeft${suffix}`, 'paddingLeft', tokens),
 });
 
 export default (tokens: Tokens) => ({
   ...makePaddingRules(tokens),
   ...makeDesktopRules({
     tokens,
-    css: makePaddingRules(tokens, 'Desktop')
-  })
+    css: makePaddingRules(tokens, 'Desktop'),
+  }),
 });

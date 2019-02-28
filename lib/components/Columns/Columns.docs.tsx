@@ -49,7 +49,7 @@ export default {
             </HideCode>
           </Column>
         </Columns>
-      )
-    }
-  ]
+      ),
+    },
+  ],
 };

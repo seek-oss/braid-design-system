@@ -13,9 +13,9 @@ const docs: ComponentDocs = {
           <Bullet>This is a bullet.</Bullet>
           <Bullet>This is a bullet.</Bullet>
         </BulletList>
-      )
-    }
-  ]
+      ),
+    },
+  ],
 };
 
 export default docs;

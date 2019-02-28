@@ -42,7 +42,7 @@ export default class Radio extends Component<RadioProps, State> {
     super(props);
 
     this.state = {
-      hovered: false
+      hovered: false,
     };
 
     this.handleMouseOver = this.handleMouseOver.bind(this);
@@ -69,7 +69,7 @@ export default class Radio extends Component<RadioProps, State> {
             disabled = false,
             tone = 'neutral',
             message,
-            children
+            children,
           } = this.props;
 
           const { hovered } = this.state;
@@ -92,12 +92,12 @@ export default class Radio extends Component<RadioProps, State> {
                 <Box
                   component="label"
                   className={classnames({
-                    [styles.label]: true
+                    [styles.label]: true,
                   })}
                   style={{
                     minHeight: px(
-                      theme.tokens.rowHeight * theme.tokens.interactionRows
-                    )
+                      theme.tokens.rowHeight * theme.tokens.interactionRows,
+                    ),
                   }}
                   htmlFor={id}
                   onMouseOver={this.handleMouseOver}
@@ -110,8 +110,8 @@ export default class Radio extends Component<RadioProps, State> {
                       marginTop: px(
                         (theme.tokens.interactionRows * theme.tokens.rowHeight -
                           radioSize) /
-                          2
-                      )
+                          2,
+                      ),
                     }}
                     className={styles.radioContainer}
                     marginRight="medium"
@@ -134,7 +134,7 @@ export default class Radio extends Component<RadioProps, State> {
                         styles.radio,
                         styles.radioFocus,
                         theme.atoms.boxShadow.focus,
-                        theme.atoms.transition.fast
+                        theme.atoms.transition.fast,
                       )}
                     />
                     <Box
@@ -143,7 +143,7 @@ export default class Radio extends Component<RadioProps, State> {
                       className={classnames(
                         styles.radio,
                         styles.radioDisabled,
-                        theme.atoms.transition.fast
+                        theme.atoms.transition.fast,
                       )}
                     />
                     <Box
@@ -153,7 +153,7 @@ export default class Radio extends Component<RadioProps, State> {
                       className={classnames(
                         styles.radio,
                         styles.radioCritical,
-                        theme.atoms.transition.fast
+                        theme.atoms.transition.fast,
                       )}
                     />
                     <Box
@@ -162,7 +162,7 @@ export default class Radio extends Component<RadioProps, State> {
                       }
                       className={classnames(
                         styles.radioIcon,
-                        theme.atoms.transition.fast
+                        theme.atoms.transition.fast,
                       )}
                     />
                   </Box>

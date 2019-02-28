@@ -14,7 +14,7 @@ export interface IconProps {
 
 const isSizeVariant = (
   atom: Record<SizeVariants, string>,
-  sizeAtom: string
+  sizeAtom: string,
 ): sizeAtom is SizeVariants => Object.keys(atom).indexOf(sizeAtom) > -1;
 
 export default class Icon extends Component<IconProps> {
@@ -28,7 +28,7 @@ export default class Icon extends Component<IconProps> {
             size = 'standard',
             svgComponent,
             inline = false,
-            fill
+            fill,
           } = this.props;
           const sizeAtom = `${size}Text${inline ? 'Inline' : ''}`;
           const widthAtom = isSizeVariant(theme.atoms.width, sizeAtom)
@@ -48,8 +48,8 @@ export default class Icon extends Component<IconProps> {
                 {
                   [styles.fillSize]: size === 'fill',
                   [styles.inline]: inline,
-                  [styles.block]: !inline
-                }
+                  [styles.block]: !inline,
+                },
               )}
             />
           );

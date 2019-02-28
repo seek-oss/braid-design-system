@@ -10,7 +10,7 @@ interface Props {
 }
 
 const isValidComponentName = (
-  componentName: string
+  componentName: string,
 ): componentName is ComponentName => {
   return componentDocs.hasOwnProperty(componentName);
 };

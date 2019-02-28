@@ -11,9 +11,9 @@ const docs: ComponentDocs = {
             ...
           </ThemeProvider>
         );
-      `
-    }
-  ]
+      `,
+    },
+  ],
 };
 
 export default docs;

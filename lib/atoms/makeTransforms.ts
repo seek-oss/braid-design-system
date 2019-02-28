@@ -12,20 +12,20 @@ const createRules = (tokens: Tokens, type: any, className: string) => {
     tokens,
     selector: `.transform_${className}`,
     mobileRules: {
-      transform: mobileTransform
+      transform: mobileTransform,
     },
     desktopRules: {
-      transform: desktopTransform
-    }
+      transform: desktopTransform,
+    },
   });
 };
 
 export default (tokens: Tokens) => {
   const textRules = toPairs(tokens.text).map(([typeName, type]) =>
-    createRules(tokens, type, `${typeName}Text`)
+    createRules(tokens, type, `${typeName}Text`),
   );
   const headingRules = toPairs(tokens.heading).map(([typeName, type]) =>
-    createRules(tokens, type, `${typeName}Heading`)
+    createRules(tokens, type, `${typeName}Heading`),
   );
 
   return merge({}, ...textRules, ...headingRules);

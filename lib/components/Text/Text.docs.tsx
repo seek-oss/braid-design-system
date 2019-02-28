@@ -7,9 +7,9 @@ const docs: ComponentDocs = {
     { label: 'Standard Text', render: () => <Text>Standard text.</Text> },
     {
       label: 'Large Text',
-      render: () => <Text size="large">Large text.</Text>
-    }
-  ]
+      render: () => <Text size="large">Large text.</Text>,
+    },
+  ],
 };
 
 export default docs;

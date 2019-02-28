@@ -11,21 +11,21 @@ export default (reset: Atoms['reset'], atoms: CssModuleAtoms): Atoms => ({
     info: atoms.backgroundColor_info,
     input: atoms.backgroundColor_input,
     inputDisabled: atoms.backgroundColor_inputDisabled,
-    selection: atoms.backgroundColor_selection
+    selection: atoms.backgroundColor_selection,
   },
   borderColor: {
     critical: atoms.borderColor_critical,
     formAccent: atoms.borderColor_formAccent,
-    standard: atoms.borderColor_standard
+    standard: atoms.borderColor_standard,
   },
   borderRadius: {
-    standard: atoms.borderRadius_standard
+    standard: atoms.borderRadius_standard,
   },
   borderWidth: {
-    standard: atoms.borderWidth_standard
+    standard: atoms.borderWidth_standard,
   },
   boxShadow: {
-    focus: atoms.boxShadow_focus
+    focus: atoms.boxShadow_focus,
   },
   color: {
     link: atoms.color_link,
@@ -35,21 +35,21 @@ export default (reset: Atoms['reset'], atoms: CssModuleAtoms): Atoms => ({
     neutral: atoms.color_neutral,
     positive: atoms.color_positive,
     secondary: atoms.color_secondary,
-    white: atoms.color_white
+    white: atoms.color_white,
   },
   displayDesktop: {
     block: atoms.displayDesktop_block,
     flex: atoms.displayDesktop_flex,
     inline: atoms.displayDesktop_inline,
     inlineBlock: atoms.displayDesktop_inlineBlock,
-    none: atoms.displayDesktop_none
+    none: atoms.displayDesktop_none,
   },
   display: {
     block: atoms.display_block,
     flex: atoms.display_flex,
     inline: atoms.display_inline,
     inlineBlock: atoms.display_inlineBlock,
-    none: atoms.display_none
+    none: atoms.display_none,
   },
   fill: {
     critical: atoms.fill_critical,
@@ -58,10 +58,10 @@ export default (reset: Atoms['reset'], atoms: CssModuleAtoms): Atoms => ({
     formAccentDisabled: atoms.fill_formAccentDisabled,
     positive: atoms.fill_positive,
     secondary: atoms.fill_secondary,
-    white: atoms.fill_white
+    white: atoms.fill_white,
   },
   fontFamily: {
-    text: atoms.fontFamily_text
+    text: atoms.fontFamily_text,
   },
   fontSize: {
     interaction: atoms.fontSize_interaction,
@@ -69,18 +69,18 @@ export default (reset: Atoms['reset'], atoms: CssModuleAtoms): Atoms => ({
     level1: atoms.fontSize_level1,
     level2: atoms.fontSize_level2,
     level3: atoms.fontSize_level3,
-    standard: atoms.fontSize_standard
+    standard: atoms.fontSize_standard,
   },
   fontWeight: {
     medium: atoms.fontWeight_medium,
     regular: atoms.fontWeight_regular,
-    strong: atoms.fontWeight_strong
+    strong: atoms.fontWeight_strong,
   },
   height: {
     largeText: atoms.height_largeText,
     largeTextInline: atoms.height_largeTextInline,
     standardText: atoms.height_standardText,
-    standardTextInline: atoms.height_standardTextInline
+    standardTextInline: atoms.height_standardTextInline,
   },
   marginBottom: {
     none: atoms.marginBottom_none,
@@ -90,7 +90,7 @@ export default (reset: Atoms['reset'], atoms: CssModuleAtoms): Atoms => ({
     xlarge: atoms.marginBottom_xlarge,
     xsmall: atoms.marginBottom_xsmall,
     xxlarge: atoms.marginBottom_xxlarge,
-    xxsmall: atoms.marginBottom_xxsmall
+    xxsmall: atoms.marginBottom_xxsmall,
   },
   marginTop: {
     none: atoms.marginTop_none,
@@ -100,7 +100,7 @@ export default (reset: Atoms['reset'], atoms: CssModuleAtoms): Atoms => ({
     xlarge: atoms.marginTop_xlarge,
     xsmall: atoms.marginTop_xsmall,
     xxlarge: atoms.marginTop_xxlarge,
-    xxsmall: atoms.marginTop_xxsmall
+    xxsmall: atoms.marginTop_xxsmall,
   },
   marginLeft: {
     none: atoms.marginLeft_none,
@@ -111,7 +111,7 @@ export default (reset: Atoms['reset'], atoms: CssModuleAtoms): Atoms => ({
     xlarge: atoms.marginLeft_xlarge,
     xsmall: atoms.marginLeft_xsmall,
     xxlarge: atoms.marginLeft_xxlarge,
-    xxsmall: atoms.marginLeft_xxsmall
+    xxsmall: atoms.marginLeft_xxsmall,
   },
   marginRight: {
     none: atoms.marginRight_none,
@@ -122,7 +122,7 @@ export default (reset: Atoms['reset'], atoms: CssModuleAtoms): Atoms => ({
     xlarge: atoms.marginRight_xlarge,
     xsmall: atoms.marginRight_xsmall,
     xxlarge: atoms.marginRight_xxlarge,
-    xxsmall: atoms.marginRight_xxsmall
+    xxsmall: atoms.marginRight_xxsmall,
   },
   marginBottomDesktop: {
     none: atoms.marginBottomDesktop_none,
@@ -132,7 +132,7 @@ export default (reset: Atoms['reset'], atoms: CssModuleAtoms): Atoms => ({
     xlarge: atoms.marginBottomDesktop_xlarge,
     xsmall: atoms.marginBottomDesktop_xsmall,
     xxlarge: atoms.marginBottomDesktop_xxlarge,
-    xxsmall: atoms.marginBottomDesktop_xxsmall
+    xxsmall: atoms.marginBottomDesktop_xxsmall,
   },
   marginTopDesktop: {
     none: atoms.marginTopDesktop_none,
@@ -142,7 +142,7 @@ export default (reset: Atoms['reset'], atoms: CssModuleAtoms): Atoms => ({
     xlarge: atoms.marginTopDesktop_xlarge,
     xsmall: atoms.marginTopDesktop_xsmall,
     xxlarge: atoms.marginTopDesktop_xxlarge,
-    xxsmall: atoms.marginTopDesktop_xxsmall
+    xxsmall: atoms.marginTopDesktop_xxsmall,
   },
   marginLeftDesktop: {
     none: atoms.marginLeftDesktop_none,
@@ -153,7 +153,7 @@ export default (reset: Atoms['reset'], atoms: CssModuleAtoms): Atoms => ({
     xlarge: atoms.marginLeftDesktop_xlarge,
     xsmall: atoms.marginLeftDesktop_xsmall,
     xxlarge: atoms.marginLeftDesktop_xxlarge,
-    xxsmall: atoms.marginLeftDesktop_xxsmall
+    xxsmall: atoms.marginLeftDesktop_xxsmall,
   },
   marginRightDesktop: {
     none: atoms.marginRightDesktop_none,
@@ -164,7 +164,7 @@ export default (reset: Atoms['reset'], atoms: CssModuleAtoms): Atoms => ({
     xlarge: atoms.marginRightDesktop_xlarge,
     xsmall: atoms.marginRightDesktop_xsmall,
     xxlarge: atoms.marginRightDesktop_xxlarge,
-    xxsmall: atoms.marginRightDesktop_xxsmall
+    xxsmall: atoms.marginRightDesktop_xxsmall,
   },
   paddingBottom: {
     none: atoms.paddingBottom_none,
@@ -174,7 +174,7 @@ export default (reset: Atoms['reset'], atoms: CssModuleAtoms): Atoms => ({
     xlarge: atoms.paddingBottom_xlarge,
     xsmall: atoms.paddingBottom_xsmall,
     xxlarge: atoms.paddingBottom_xxlarge,
-    xxsmall: atoms.paddingBottom_xxsmall
+    xxsmall: atoms.paddingBottom_xxsmall,
   },
   paddingTop: {
     none: atoms.paddingTop_none,
@@ -184,7 +184,7 @@ export default (reset: Atoms['reset'], atoms: CssModuleAtoms): Atoms => ({
     xlarge: atoms.paddingTop_xlarge,
     xsmall: atoms.paddingTop_xsmall,
     xxlarge: atoms.paddingTop_xxlarge,
-    xxsmall: atoms.paddingTop_xxsmall
+    xxsmall: atoms.paddingTop_xxsmall,
   },
   paddingLeft: {
     none: atoms.paddingLeft_none,
@@ -195,7 +195,7 @@ export default (reset: Atoms['reset'], atoms: CssModuleAtoms): Atoms => ({
     xlarge: atoms.paddingLeft_xlarge,
     xsmall: atoms.paddingLeft_xsmall,
     xxlarge: atoms.paddingLeft_xxlarge,
-    xxsmall: atoms.paddingLeft_xxsmall
+    xxsmall: atoms.paddingLeft_xxsmall,
   },
   paddingRight: {
     none: atoms.paddingRight_none,
@@ -206,7 +206,7 @@ export default (reset: Atoms['reset'], atoms: CssModuleAtoms): Atoms => ({
     xlarge: atoms.paddingRight_xlarge,
     xsmall: atoms.paddingRight_xsmall,
     xxlarge: atoms.paddingRight_xxlarge,
-    xxsmall: atoms.paddingRight_xxsmall
+    xxsmall: atoms.paddingRight_xxsmall,
   },
   paddingBottomDesktop: {
     none: atoms.paddingBottomDesktop_none,
@@ -216,7 +216,7 @@ export default (reset: Atoms['reset'], atoms: CssModuleAtoms): Atoms => ({
     xlarge: atoms.paddingBottomDesktop_xlarge,
     xsmall: atoms.paddingBottomDesktop_xsmall,
     xxlarge: atoms.paddingBottomDesktop_xxlarge,
-    xxsmall: atoms.paddingBottomDesktop_xxsmall
+    xxsmall: atoms.paddingBottomDesktop_xxsmall,
   },
   paddingTopDesktop: {
     none: atoms.paddingTopDesktop_none,
@@ -226,7 +226,7 @@ export default (reset: Atoms['reset'], atoms: CssModuleAtoms): Atoms => ({
     xlarge: atoms.paddingTopDesktop_xlarge,
     xsmall: atoms.paddingTopDesktop_xsmall,
     xxlarge: atoms.paddingTopDesktop_xxlarge,
-    xxsmall: atoms.paddingTopDesktop_xxsmall
+    xxsmall: atoms.paddingTopDesktop_xxsmall,
   },
   paddingLeftDesktop: {
     none: atoms.paddingLeftDesktop_none,
@@ -237,7 +237,7 @@ export default (reset: Atoms['reset'], atoms: CssModuleAtoms): Atoms => ({
     xlarge: atoms.paddingLeftDesktop_xlarge,
     xsmall: atoms.paddingLeftDesktop_xsmall,
     xxlarge: atoms.paddingLeftDesktop_xxlarge,
-    xxsmall: atoms.paddingLeftDesktop_xxsmall
+    xxsmall: atoms.paddingLeftDesktop_xxsmall,
   },
   paddingRightDesktop: {
     none: atoms.paddingRightDesktop_none,
@@ -248,22 +248,22 @@ export default (reset: Atoms['reset'], atoms: CssModuleAtoms): Atoms => ({
     xlarge: atoms.paddingRightDesktop_xlarge,
     xsmall: atoms.paddingRightDesktop_xsmall,
     xxlarge: atoms.paddingRightDesktop_xxlarge,
-    xxsmall: atoms.paddingRightDesktop_xxsmall
+    xxsmall: atoms.paddingRightDesktop_xxsmall,
   },
   transform: {
     largeText: atoms.transform_largeText,
     level1Heading: atoms.transform_level1Heading,
     level2Heading: atoms.transform_level2Heading,
     level3Heading: atoms.transform_level3Heading,
-    standardText: atoms.transform_standardText
+    standardText: atoms.transform_standardText,
   },
   transition: {
-    fast: atoms.transition_fast
+    fast: atoms.transition_fast,
   },
   width: {
     largeText: atoms.width_largeText,
     largeTextInline: atoms.width_largeTextInline,
     standardText: atoms.width_standardText,
-    standardTextInline: atoms.width_standardTextInline
-  }
+    standardTextInline: atoms.width_standardTextInline,
+  },
 });

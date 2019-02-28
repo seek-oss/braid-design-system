@@ -9,7 +9,7 @@ export interface ResetProps extends AllHTMLAttributes<HTMLElement> {
 
 const isResetTag = (
   atom: Record<ResetTags, string>,
-  component: ResetTags | ReactType
+  component: ResetTags | ReactType,
 ): component is ResetTags =>
   typeof component === 'string' && Object.keys(atom).indexOf(component) > -1;
 
@@ -32,7 +32,7 @@ export default class Reset extends Component<ResetProps> {
 
           return React.createElement(component, {
             className: classnames(className, resetClass),
-            ...restProps
+            ...restProps,
           });
         }}
       </ThemeConsumer>

@@ -15,9 +15,9 @@ const docs: ComponentDocs = {
         <ThemeNameConsumer>
           {themeName => <span>The active theme is {themeName}.</span>}
         </ThemeNameConsumer>
-      `
-    }
-  ]
+      `,
+    },
+  ],
 };
 
 export default docs;

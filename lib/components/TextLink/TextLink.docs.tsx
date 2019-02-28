@@ -11,9 +11,9 @@ const docs: ComponentDocs = {
         <Text>
           <TextLink href="">Link</TextLink>
         </Text>
-      )
-    }
-  ]
+      ),
+    },
+  ],
 };
 
 export default docs;

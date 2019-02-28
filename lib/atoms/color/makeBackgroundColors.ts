@@ -17,7 +17,7 @@ export default ({
   selection,
   info,
   card,
-  critical
+  critical,
 }: BackgroundColorParms) => ({
   '.backgroundColor_input': { background: input },
   '.backgroundColor_inputDisabled': { background: inputDisabled },
@@ -26,5 +26,5 @@ export default ({
   '.backgroundColor_selection': { background: selection },
   '.backgroundColor_info': { background: info },
   '.backgroundColor_card': { background: card },
-  '.backgroundColor_critical': { background: critical }
+  '.backgroundColor_critical': { background: critical },
 });

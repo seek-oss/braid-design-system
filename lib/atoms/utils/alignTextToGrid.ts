@@ -11,5 +11,5 @@ export default (textDefinition: TextDefinition, tokens: Tokens) =>
     typeSizeModifier: textDefinition.size,
     typeRowSpan: textDefinition.rows,
     gridRowHeight: tokens.rowHeight,
-    descenderHeightScale: tokens.descenderHeightScale
+    descenderHeightScale: tokens.descenderHeightScale,
   });

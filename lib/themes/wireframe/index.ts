@@ -7,7 +7,7 @@ import atoms from './atoms.css.js';
 const theme: Theme = {
   name: 'wireframe',
   tokens,
-  atoms: normalizeAtoms(reset, atoms)
+  atoms: normalizeAtoms(reset, atoms),
 };
 
 export default theme;

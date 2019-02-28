@@ -35,9 +35,9 @@ const docs: ComponentDocs = {
             </TextLinkRenderer>
           </Text>
         );
-      `
-    }
-  ]
+      `,
+    },
+  ],
 };
 
 export default docs;

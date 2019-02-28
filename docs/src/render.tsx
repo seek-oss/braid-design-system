@@ -16,14 +16,14 @@ const skuRender: Render<RenderContext> = {
   renderApp: ({ route }) => {
     const {
       TRAVIS_BRANCH: branch,
-      TRAVIS_PULL_REQUEST_SHA: prSha
+      TRAVIS_PULL_REQUEST_SHA: prSha,
     } = process.env;
     const isGithubPages = branch === 'master' && !prSha;
     const githubUrl = 'https://github.com/seek-oss/braid-design-system/tree/';
 
     const config = {
       routerBasename: isGithubPages ? 'braid-design-system' : '',
-      sourceUrlPrefix: `${githubUrl}${prSha || 'master'}`
+      sourceUrlPrefix: `${githubUrl}${prSha || 'master'}`,
     };
 
     const html = renderToString(
@@ -33,7 +33,7 @@ const skuRender: Render<RenderContext> = {
         basename={config.routerBasename}
       >
         <App sourceUrlPrefix={config.sourceUrlPrefix} />
-      </StaticRouter>
+      </StaticRouter>,
     );
 
     const publicPath = isGithubPages ? '/braid-design-system/' : '/';
@@ -60,7 +60,7 @@ const skuRender: Render<RenderContext> = {
         <script>window.CONFIG = ${JSON.stringify(config)};</script>
         ${bodyTags}
       </html>
-    `.replace('{{ html }}', html) // Maintain indenting in 'pre' tags
+    `.replace('{{ html }}', html), // Maintain indenting in 'pre' tags
 };
 
 export default skuRender;

@@ -7,13 +7,13 @@ const makeMarginRules = (tokens: Tokens, suffix = '') => ({
   ...rowSpacingForCssRule(`marginTop${suffix}`, 'marginTop', tokens),
   ...columnSpacingForCssRule(`marginRight${suffix}`, 'marginRight', tokens),
   ...rowSpacingForCssRule(`marginBottom${suffix}`, 'marginBottom', tokens),
-  ...columnSpacingForCssRule(`marginLeft${suffix}`, 'marginLeft', tokens)
+  ...columnSpacingForCssRule(`marginLeft${suffix}`, 'marginLeft', tokens),
 });
 
 export default (tokens: Tokens) => ({
   ...makeMarginRules(tokens),
   ...makeDesktopRules({
     tokens,
-    css: makeMarginRules(tokens, 'Desktop')
-  })
+    css: makeMarginRules(tokens, 'Desktop'),
+  }),
 });

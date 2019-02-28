@@ -11,5 +11,5 @@ module.exports = {
   routes,
   public: 'docs/src/public',
   target: 'docs/dist',
-  publicPath: isGitHubPages ? '/braid-design-system/' : '/'
+  publicPath: isGitHubPages ? '/braid-design-system/' : '/',
 };

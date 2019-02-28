@@ -3,5 +3,5 @@ export interface BorderRadiusParams {
 }
 
 export default ({ standard }: BorderRadiusParams) => ({
-  '.borderRadius_standard': { borderRadius: standard }
+  '.borderRadius_standard': { borderRadius: standard },
 });

@@ -16,7 +16,7 @@ const docs: ComponentDocs = {
           onChange={handleChange}
           label="Label"
         />
-      )
+      ),
     },
     {
       label: 'Checkbox without Message Placeholder',
@@ -28,7 +28,7 @@ const docs: ComponentDocs = {
           label="Label"
           message={false}
         />
-      )
+      ),
     },
     {
       label: 'Checked Checkbox',
@@ -40,7 +40,7 @@ const docs: ComponentDocs = {
           label="Label"
           message={false}
         />
-      )
+      ),
     },
     {
       label: 'Disabled Checkbox',
@@ -53,7 +53,7 @@ const docs: ComponentDocs = {
           label="Label"
           message={false}
         />
-      )
+      ),
     },
     {
       label: 'Critical Checkbox',
@@ -66,7 +66,7 @@ const docs: ComponentDocs = {
           message="This is a critical message"
           tone="critical"
         />
-      )
+      ),
     },
     {
       label: 'Positive Checkbox',
@@ -79,7 +79,7 @@ const docs: ComponentDocs = {
           message="This is a positive message"
           tone="positive"
         />
-      )
+      ),
     },
     {
       label: 'Nested Checkbox',
@@ -93,9 +93,9 @@ const docs: ComponentDocs = {
         >
           <Text>This text is visible when the checkbox is checked.</Text>
         </Checkbox>
-      )
-    }
-  ]
+      ),
+    },
+  ],
 };
 
 export default docs;
