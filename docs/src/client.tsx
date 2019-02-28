@@ -17,5 +17,5 @@ hydrate(
   <BrowserRouter basename={routerBasename}>
     <App sourceUrlPrefix={sourceUrlPrefix} />
   </BrowserRouter>,
-  document.getElementById('app')
+  document.getElementById('app'),
 );

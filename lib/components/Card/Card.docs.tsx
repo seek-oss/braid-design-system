@@ -36,9 +36,9 @@ const docs: ComponentDocs = {
             </Box>
           </Card>
         </Box>
-      )
-    }
-  ]
+      ),
+    },
+  ],
 };
 
 export default docs;

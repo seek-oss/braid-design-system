@@ -8,19 +8,19 @@ const docs: ComponentDocs = {
       label: 'Critical Field Message',
       render: () => (
         <FieldMessage tone="critical" message="This is a critical message." />
-      )
+      ),
     },
     {
       label: 'Positive Field Message',
       render: () => (
         <FieldMessage tone="positive" message="This is a positive message." />
-      )
+      ),
     },
     {
       label: "No message, i.e. don't reserve white space",
-      code: `<FieldMessage message={false} />`
-    }
-  ]
+      code: `<FieldMessage message={false} />`,
+    },
+  ],
 };
 
 export default docs;

@@ -21,9 +21,9 @@ const docs: ComponentDocs = {
             </span>
           )}
         </ThemeTokensConsumer>
-      `
-    }
-  ]
+      `,
+    },
+  ],
 };
 
 export default docs;

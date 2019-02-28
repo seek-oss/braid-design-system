@@ -21,7 +21,7 @@ export default class Hidden extends Component<HiddenProps> {
       mobile: hiddenOnMobile = false,
       desktop: hiddenOnDesktop = false,
       screen: hiddenOnScreen = false,
-      print: hiddenOnPrint = false
+      print: hiddenOnPrint = false,
     } = this.props;
 
     const display = inline ? 'inline' : 'block';
@@ -30,7 +30,7 @@ export default class Hidden extends Component<HiddenProps> {
       <Box
         display={[
           hiddenOnMobile || hiddenOnScreen ? 'none' : display,
-          hiddenOnDesktop || hiddenOnScreen ? 'none' : display
+          hiddenOnDesktop || hiddenOnScreen ? 'none' : display,
         ]}
         className={hiddenOnPrint ? styles.hiddenOnPrint : undefined}
         component={inline ? 'span' : 'div'}

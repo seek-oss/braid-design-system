@@ -4,11 +4,11 @@ const transition = 'all .1s ease';
 
 export default {
   ':global(html), :global(body)': {
-    margin: 0
+    margin: 0,
   },
   // :focus-visible polyfill: https://github.com/WICG/focus-visible
   ':global(.js-focus-visible) :focus:not(:global(.focus-visible))': {
-    outline: 'none'
+    outline: 'none',
   },
   '.header': {
     background: 'white',
@@ -19,8 +19,8 @@ export default {
     right: 0,
     height: headerHeight,
     '@media screen and (min-width: 740px)': {
-      width: desktopMenuWidth
-    }
+      width: desktopMenuWidth,
+    },
   },
   '.menuButton': {
     position: 'absolute',
@@ -35,11 +35,11 @@ export default {
     transition,
     '&.menuButton__isHidden': {
       opacity: 0,
-      pointerEvents: 'none'
+      pointerEvents: 'none',
     },
     '@media screen and (min-width: 740px)': {
-      display: 'none'
-    }
+      display: 'none',
+    },
   },
   '.menuButton__bar': {
     position: 'absolute',
@@ -49,25 +49,25 @@ export default {
     borderRadius: '5px',
     background: 'black',
     transition,
-    transformOrigin: '50% 50%'
+    transformOrigin: '50% 50%',
   },
   '.menuButton__bar1': {
     top: 0,
     '.menuButton__isOpen &': {
-      transform: 'translateY(11px) rotate(45deg)'
-    }
+      transform: 'translateY(11px) rotate(45deg)',
+    },
   },
   '.menuButton__bar2': {
     top: '11px',
     '.menuButton__isOpen &': {
-      opacity: 0
-    }
+      opacity: 0,
+    },
   },
   '.menuButton__bar3': {
     top: '22px',
     '.menuButton__isOpen &': {
-      transform: 'translateY(-11px) rotate(-45deg)'
-    }
+      transform: 'translateY(-11px) rotate(-45deg)',
+    },
   },
   '.container': {
     display: 'flex',
@@ -76,8 +76,8 @@ export default {
     zIndex: 1,
     '@media screen and (min-width: 740px)': {
       flexDirection: 'row',
-      paddingLeft: desktopMenuWidth
-    }
+      paddingLeft: desktopMenuWidth,
+    },
   },
   '.menu': {
     background: 'white',
@@ -97,15 +97,15 @@ export default {
       '&.menu__isOpen': {
         opacity: 1,
         transform: 'none',
-        pointerEvents: 'auto'
-      }
+        pointerEvents: 'auto',
+      },
     },
     '@media screen and (min-width: 740px)': {
-      width: desktopMenuWidth
-    }
+      width: desktopMenuWidth,
+    },
   },
   '.content': {
     flexGrow: 1,
-    paddingTop: headerHeight
-  }
+    paddingTop: headerHeight,
+  },
 };

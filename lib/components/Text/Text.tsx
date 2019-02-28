@@ -10,7 +10,7 @@ type TextSize = 'standard' | 'large' | 'interaction';
 const resolveTransformAtom = (
   size: TextSize,
   baseline: boolean,
-  theme: Theme
+  theme: Theme,
 ): string | null => {
   if (!baseline || size === 'interaction') {
     return null;
@@ -45,7 +45,7 @@ export default class Text extends Component<TextProps> {
             color,
             weight,
             baseline = true,
-            children
+            children,
           } = this.props;
 
           return (
@@ -60,8 +60,8 @@ export default class Text extends Component<TextProps> {
                 resolveTransformAtom(size, baseline, theme),
                 {
                   [styles.listItem]:
-                    typeof component === 'string' && /^li$/i.test(component)
-                }
+                    typeof component === 'string' && /^li$/i.test(component),
+                },
               )}
             >
               {children}
