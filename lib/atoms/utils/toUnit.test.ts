@@ -3,16 +3,16 @@ import { px } from './toUnit';
 const cases = [
   {
     input: 1,
-    output: '1px'
+    output: '1px',
   },
   {
     input: 0,
-    output: '0'
+    output: '0',
   },
   {
     input: 123.23,
-    output: '123.23px'
-  }
+    output: '123.23px',
+  },
 ];
 
 describe('toUnit', () => {

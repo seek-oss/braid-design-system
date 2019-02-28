@@ -9,7 +9,7 @@ const getFontSizeRules = (textDefinition: TextDefinition, tokens: Tokens) => {
 
   return {
     fontSize,
-    lineHeight
+    lineHeight,
   };
 };
 
@@ -18,43 +18,43 @@ const makeRules = (responsiveType: Breakpoint, tokens: Tokens) => {
 
   const standardRules = getFontSizeRules(
     tokens.text.standard[responsiveType],
-    tokens
+    tokens,
   );
   const interactionPadding = px(
     (interactionHeight -
       tokens.text.standard[responsiveType].rows * tokens.rowHeight) /
-      2
+      2,
   );
 
   return {
     '.fontSize_standard': standardRules,
     '.fontSize_large': getFontSizeRules(
       tokens.text.large[responsiveType],
-      tokens
+      tokens,
     ),
     '.fontSize_interaction': {
       ...standardRules,
       paddingTop: interactionPadding,
-      paddingBottom: interactionPadding
+      paddingBottom: interactionPadding,
     },
     '.fontSize_level1': getFontSizeRules(
       tokens.heading.level1[responsiveType],
-      tokens
+      tokens,
     ),
     '.fontSize_level2': getFontSizeRules(
       tokens.heading.level2[responsiveType],
-      tokens
+      tokens,
     ),
     '.fontSize_level3': getFontSizeRules(
       tokens.heading.level3[responsiveType],
-      tokens
-    )
+      tokens,
+    ),
   };
 };
 
 export default (tokens: Tokens) => {
   return {
     ...makeRules('mobile', tokens),
-    ...makeDesktopRules({ tokens, css: makeRules('desktop', tokens) })
+    ...makeDesktopRules({ tokens, css: makeRules('desktop', tokens) }),
   };
 };

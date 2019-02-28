@@ -8,6 +8,6 @@ export default (tokens: Tokens) =>
     `.borderWidth_${key}`,
     {
       borderStyle: 'solid',
-      borderWidth: px(value)
-    }
+      borderWidth: px(value),
+    },
   ]);

@@ -24,13 +24,13 @@ const docs: ComponentDocs = {
                   paddingTop: 'small',
                   paddingBottom: 'small',
                   marginTop: 'small',
-                  marginBottom: 'small'
+                  marginBottom: 'small',
                 }
               : {
                   paddingTop: space,
                   paddingBottom: space,
                   marginTop: space,
-                  marginBottom: space
+                  marginBottom: space,
                 })}
             backgroundColor="card"
             borderRadius="standard"
@@ -43,9 +43,9 @@ const docs: ComponentDocs = {
             </HideCode>
           </Box>
         </Box>
-      )
-    })
-  )
+      ),
+    }),
+  ),
 };
 
 export default docs;

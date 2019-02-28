@@ -7,5 +7,5 @@ module.exports = {
   themes: './lib/themes/index.ts',
   frameComponent: './lib/playroom/FrameComponent.tsx',
   widths: [320, 1024],
-  webpackConfig: () => makeWebpackConfig()
+  webpackConfig: () => makeWebpackConfig(),
 };

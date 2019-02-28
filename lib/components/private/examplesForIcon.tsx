@@ -15,7 +15,7 @@ export default (Icon: ComponentType<Omit<IconProps, 'svgComponent'>>) => {
           </Box>
           <Text baseline={false}>Standard text</Text>
         </div>
-      )
+      ),
     },
     {
       label: 'Standard Inline',
@@ -23,7 +23,7 @@ export default (Icon: ComponentType<Omit<IconProps, 'svgComponent'>>) => {
         <Text>
           Standard <Icon inline /> text
         </Text>
-      )
+      ),
     },
     {
       label: 'Large',
@@ -36,7 +36,7 @@ export default (Icon: ComponentType<Omit<IconProps, 'svgComponent'>>) => {
             Large text
           </Text>
         </div>
-      )
+      ),
     },
     {
       label: 'Large Inline',
@@ -44,7 +44,7 @@ export default (Icon: ComponentType<Omit<IconProps, 'svgComponent'>>) => {
         <Text size="large">
           Large <Icon size="large" inline /> text
         </Text>
-      )
-    }
+      ),
+    },
   ];
 };

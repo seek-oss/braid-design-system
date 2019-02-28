@@ -7,7 +7,7 @@ import atoms from './atoms.css.js';
 const theme: Theme = {
   name: 'seekAnz',
   tokens,
-  atoms: normalizeAtoms(reset, atoms)
+  atoms: normalizeAtoms(reset, atoms),
 };
 
 export default theme;

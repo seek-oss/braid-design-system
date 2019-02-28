@@ -10,13 +10,13 @@ import {
   BorderRadiusVariants,
   BackgroundColorVariants,
   BorderColorVariants,
-  DisplayVariants
+  DisplayVariants,
 } from '../../themes/theme';
 
 function getResponsiveClasses<AtomName extends string>(
   atoms: Record<AtomName, string>,
   desktopAtoms: Record<AtomName, string>,
-  propValue: ResponsiveProp<AtomName>
+  propValue: ResponsiveProp<AtomName>,
 ) {
   if (typeof propValue === 'string') {
     return atoms[propValue!];
@@ -83,56 +83,56 @@ export default class Box extends Component<BoxProps> {
                   getResponsiveClasses(
                     atoms.marginTop,
                     atoms.marginTopDesktop,
-                    marginTop
+                    marginTop,
                   ),
                 marginRight &&
                   getResponsiveClasses(
                     atoms.marginRight,
                     atoms.marginRightDesktop,
-                    marginRight
+                    marginRight,
                   ),
                 marginBottom &&
                   getResponsiveClasses(
                     atoms.marginBottom,
                     atoms.marginBottomDesktop,
-                    marginBottom
+                    marginBottom,
                   ),
                 marginLeft &&
                   getResponsiveClasses(
                     atoms.marginLeft,
                     atoms.marginLeftDesktop,
-                    marginLeft
+                    marginLeft,
                   ),
                 paddingTop &&
                   getResponsiveClasses(
                     atoms.paddingTop,
                     atoms.paddingTopDesktop,
-                    paddingTop
+                    paddingTop,
                   ),
                 paddingRight &&
                   getResponsiveClasses(
                     atoms.paddingRight,
                     atoms.paddingRightDesktop,
-                    paddingRight
+                    paddingRight,
                   ),
                 paddingBottom &&
                   getResponsiveClasses(
                     atoms.paddingBottom,
                     atoms.paddingBottomDesktop,
-                    paddingBottom
+                    paddingBottom,
                   ),
                 paddingLeft &&
                   getResponsiveClasses(
                     atoms.paddingLeft,
                     atoms.paddingLeftDesktop,
-                    paddingLeft
+                    paddingLeft,
                   ),
                 display &&
                   getResponsiveClasses(
                     atoms.display,
                     atoms.displayDesktop,
-                    display
-                  )
+                    display,
+                  ),
               )}
               {...restProps}
             />

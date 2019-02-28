@@ -11,19 +11,19 @@ const displayRules = {
   inline: { display: 'inline' },
   none: { display: 'none' },
   inlineBlock: { display: 'inline-block' },
-  flex: { display: 'flex' }
+  flex: { display: 'flex' },
 };
 
 const defaultDisplayRules = mapKeys(
   displayRules,
-  (value, key) => `${defaultDisplayPrefix}${key}`
+  (value, key) => `${defaultDisplayPrefix}${key}`,
 );
 const desktopDisplayRules = mapKeys(
   displayRules,
-  (value, key) => `${desktopDisplayPrefix}${key}`
+  (value, key) => `${desktopDisplayPrefix}${key}`,
 );
 
 export default (tokens: Tokens) => ({
   ...defaultDisplayRules,
-  ...createDesktopRules({ tokens, css: desktopDisplayRules })
+  ...createDesktopRules({ tokens, css: desktopDisplayRules }),
 });

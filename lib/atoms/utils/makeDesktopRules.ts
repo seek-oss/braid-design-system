@@ -6,5 +6,5 @@ interface Params<CssRules> {
 }
 
 export default <CssRules>({ tokens, css }: Params<CssRules>) => ({
-  [`@media screen and (min-width: ${tokens.responsiveBreakpoint}px)`]: css
+  [`@media screen and (min-width: ${tokens.responsiveBreakpoint}px)`]: css,
 });

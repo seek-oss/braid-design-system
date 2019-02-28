@@ -44,7 +44,7 @@ export default class Checkbox extends Component<CheckboxProps, State> {
     super(props);
 
     this.state = {
-      hovered: false
+      hovered: false,
     };
 
     this.handleMouseOver = this.handleMouseOver.bind(this);
@@ -71,7 +71,7 @@ export default class Checkbox extends Component<CheckboxProps, State> {
             disabled = false,
             tone,
             message,
-            children
+            children,
           } = this.props;
           const { hovered } = this.state;
 
@@ -93,12 +93,12 @@ export default class Checkbox extends Component<CheckboxProps, State> {
                 <Box
                   component="label"
                   className={classnames({
-                    [styles.label]: true
+                    [styles.label]: true,
                   })}
                   style={{
                     minHeight: px(
-                      theme.tokens.rowHeight * theme.tokens.interactionRows
-                    )
+                      theme.tokens.rowHeight * theme.tokens.interactionRows,
+                    ),
                   }}
                   htmlFor={id}
                   onMouseOver={this.handleMouseOver}
@@ -113,8 +113,8 @@ export default class Checkbox extends Component<CheckboxProps, State> {
                       marginTop: px(
                         (theme.tokens.interactionRows * theme.tokens.rowHeight -
                           checkboxSize) /
-                          2
-                      )
+                          2,
+                      ),
                     }}
                   >
                     <Box
@@ -122,7 +122,7 @@ export default class Checkbox extends Component<CheckboxProps, State> {
                       borderWidth="standard"
                       className={classnames(
                         styles.checkbox,
-                        theme.atoms.borderRadius.standard
+                        theme.atoms.borderRadius.standard,
                       )}
                     />
                     <Box
@@ -132,7 +132,7 @@ export default class Checkbox extends Component<CheckboxProps, State> {
                       className={classnames(
                         styles.checkbox,
                         styles.checkboxHover,
-                        theme.atoms.borderRadius.standard
+                        theme.atoms.borderRadius.standard,
                       )}
                     />
                     <Box
@@ -142,7 +142,7 @@ export default class Checkbox extends Component<CheckboxProps, State> {
                         styles.checkboxFocus,
                         theme.atoms.boxShadow.focus,
                         theme.atoms.borderRadius.standard,
-                        theme.atoms.transition.fast
+                        theme.atoms.transition.fast,
                       )}
                     />
                     <Box
@@ -154,7 +154,7 @@ export default class Checkbox extends Component<CheckboxProps, State> {
                         styles.checkboxChecked,
                         theme.atoms.backgroundColor.formAccent,
                         theme.atoms.borderRadius.standard,
-                        theme.atoms.transition.fast
+                        theme.atoms.transition.fast,
                       )}
                     />
                     <Box
@@ -164,26 +164,26 @@ export default class Checkbox extends Component<CheckboxProps, State> {
                         styles.checkbox,
                         styles.checkboxDisabled,
                         theme.atoms.borderRadius.standard,
-                        theme.atoms.transition.fast
+                        theme.atoms.transition.fast,
                       )}
                     />
                     <Box
                       borderColor="critical"
                       borderWidth="standard"
                       style={{
-                        opacity: tone === 'critical' ? 1 : 0
+                        opacity: tone === 'critical' ? 1 : 0,
                       }}
                       className={classnames(
                         styles.checkbox,
                         styles.checkboxCritical,
                         theme.atoms.borderRadius.standard,
-                        theme.atoms.transition.fast
+                        theme.atoms.transition.fast,
                       )}
                     />
                     <Box
                       className={classnames(
                         styles.checkboxIcon,
-                        theme.atoms.transition.fast
+                        theme.atoms.transition.fast,
                       )}
                     >
                       <TickIcon size="fill" fill="white" />

@@ -6,7 +6,7 @@ import {
   HeadingSize,
   TransformVariant,
   FontWeightVariants,
-  Tokens
+  Tokens,
 } from 'lib/themes/theme';
 
 type HeadingLevel = '1' | '2' | '3';
@@ -14,7 +14,7 @@ type HeadingWeight = 'regular' | 'weak';
 
 const resolveComponent = (
   component: BoxProps['component'],
-  level: HeadingLevel
+  level: HeadingLevel,
 ): BoxProps['component'] => (component ? component : `h${level}`);
 
 interface HeadingAtoms {
@@ -25,27 +25,27 @@ interface HeadingAtoms {
 const resolveHeadingAtoms = (
   level: HeadingLevel,
   weight: HeadingWeight,
-  tokens: Tokens
+  tokens: Tokens,
 ): HeadingAtoms => {
   if (level === '1') {
     return {
       fontSize: 'level1',
       transform: 'level1Heading',
-      fontWeight: tokens.heading.level1[weight]
+      fontWeight: tokens.heading.level1[weight],
     };
   }
   if (level === '2') {
     return {
       fontSize: 'level2',
       transform: 'level2Heading',
-      fontWeight: tokens.heading.level2[weight]
+      fontWeight: tokens.heading.level2[weight],
     };
   }
   if (level === '3') {
     return {
       fontSize: 'level3',
       transform: 'level3Heading',
-      fontWeight: tokens.heading.level3[weight]
+      fontWeight: tokens.heading.level3[weight],
     };
   }
   throw new Error('No valid heading level provided');
@@ -70,7 +70,7 @@ export default class Heading extends Component<HeadingProps> {
           const { transform, fontSize, fontWeight } = resolveHeadingAtoms(
             level,
             weight,
-            theme.tokens
+            theme.tokens,
           );
 
           return (
@@ -81,7 +81,7 @@ export default class Heading extends Component<HeadingProps> {
                 theme.atoms.color.neutral,
                 theme.atoms.fontSize[fontSize],
                 theme.atoms.fontWeight[fontWeight],
-                theme.atoms.transform[transform]
+                theme.atoms.transform[transform],
               )}
             >
               {children}

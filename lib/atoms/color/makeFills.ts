@@ -14,7 +14,7 @@ export default ({
   critical,
   positive,
   secondary,
-  white
+  white,
 }: FillParams): Css => ({
   '.fill_currentColor': { fill: 'currentColor' },
   '.fill_formAccent': { fill: formAccent },
@@ -22,5 +22,5 @@ export default ({
   '.fill_critical': { fill: critical },
   '.fill_positive': { fill: positive },
   '.fill_secondary': { fill: secondary },
-  '.fill_white': { fill: white }
+  '.fill_white': { fill: white },
 });

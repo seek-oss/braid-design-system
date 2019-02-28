@@ -6,9 +6,9 @@ const docs: ComponentDocs = {
   examples: [
     {
       label: 'Standard Field Label',
-      render: () => <FieldLabel>This is a field label</FieldLabel>
-    }
-  ]
+      render: () => <FieldLabel>This is a field label</FieldLabel>,
+    },
+  ],
 };
 
 export default docs;

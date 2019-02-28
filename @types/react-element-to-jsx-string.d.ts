@@ -13,7 +13,7 @@ declare module 'react-element-to-jsx-string' {
       maxInlineAttributesLineLength?: number;
       sortProps?: boolean;
       useFragmentShortSyntax?: boolean;
-    }
+    },
   ) => string;
   export default reactElementToJsxString;
 }

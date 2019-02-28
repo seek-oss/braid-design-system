@@ -11,7 +11,7 @@ const docs: ComponentDocs = {
       label: 'Standard Radio Button',
       render: ({ id }) => (
         <Radio id={id} checked={false} onChange={handleChange} label="Label" />
-      )
+      ),
     },
     {
       label: 'Radio Button without Message Placeholder',
@@ -23,7 +23,7 @@ const docs: ComponentDocs = {
           label="Label"
           message={false}
         />
-      )
+      ),
     },
     {
       label: 'Checked Radio Button',
@@ -35,7 +35,7 @@ const docs: ComponentDocs = {
           label="Label"
           message={false}
         />
-      )
+      ),
     },
     {
       label: 'Disabled Radio Button',
@@ -48,7 +48,7 @@ const docs: ComponentDocs = {
           label="Label"
           message={false}
         />
-      )
+      ),
     },
     {
       label: 'Critical Radio Button',
@@ -61,7 +61,7 @@ const docs: ComponentDocs = {
           message="This is a critical message"
           tone="critical"
         />
-      )
+      ),
     },
     {
       label: 'Positive Radio Button',
@@ -74,7 +74,7 @@ const docs: ComponentDocs = {
           message="This is a positive message"
           tone="positive"
         />
-      )
+      ),
     },
     {
       label: 'Nested Radio Button',
@@ -88,9 +88,9 @@ const docs: ComponentDocs = {
         >
           <Text>This text is visible when the radio button is checked.</Text>
         </Radio>
-      )
-    }
-  ]
+      ),
+    },
+  ],
 };
 
 export default docs;

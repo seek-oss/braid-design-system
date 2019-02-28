@@ -6,7 +6,7 @@ const docs: ComponentDocs = {
   examples: [
     {
       label: 'Level 1',
-      render: () => <Heading level="1">Heading Level 1</Heading>
+      render: () => <Heading level="1">Heading Level 1</Heading>,
     },
     {
       label: 'Level 1 Weak',
@@ -14,11 +14,11 @@ const docs: ComponentDocs = {
         <Heading level="1" weight="weak">
           Heading Level 1 Weak
         </Heading>
-      )
+      ),
     },
     {
       label: 'Level 2',
-      render: () => <Heading level="2">Heading Level 2</Heading>
+      render: () => <Heading level="2">Heading Level 2</Heading>,
     },
     {
       label: 'Level 2 Weak',
@@ -26,11 +26,11 @@ const docs: ComponentDocs = {
         <Heading level="2" weight="weak">
           Heading Level 2 Weak
         </Heading>
-      )
+      ),
     },
     {
       label: 'Level 3',
-      render: () => <Heading level="3">Heading Level 3</Heading>
+      render: () => <Heading level="3">Heading Level 3</Heading>,
     },
     {
       label: 'Level 3 Weak',
@@ -38,9 +38,9 @@ const docs: ComponentDocs = {
         <Heading level="3" weight="weak">
           Heading Level 3 Weak
         </Heading>
-      )
-    }
-  ]
+      ),
+    },
+  ],
 };
 
 export default docs;

@@ -1,3 +1,3 @@
 export default () => ({
-  '.transition_fast': { transition: 'all .125s ease' }
+  '.transition_fast': { transition: 'all .125s ease' },
 });

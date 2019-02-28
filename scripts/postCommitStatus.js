@@ -7,7 +7,7 @@
 
     if (!GH_TOKEN || !TRAVIS_PULL_REQUEST_SHA) {
       throw new Error(
-        'GH_TOKEN and TRAVIS_PULL_REQUEST_SHA environment variables must be present'
+        'GH_TOKEN and TRAVIS_PULL_REQUEST_SHA environment variables must be present',
       );
     }
 
@@ -15,7 +15,7 @@
 
     octokit.authenticate({
       type: 'token',
-      token: GH_TOKEN
+      token: GH_TOKEN,
     });
 
     await octokit.repos.createStatus({
@@ -25,7 +25,7 @@
       state: 'success',
       context: 'Preview Site',
       target_url: `https://braid-design-system--${TRAVIS_PULL_REQUEST_SHA}.surge.sh`,
-      description: 'The preview for this PR has been successfully deployed'
+      description: 'The preview for this PR has been successfully deployed',
     });
 
     console.log('Successfully posted commit status to GitHub');

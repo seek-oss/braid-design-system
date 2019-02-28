@@ -14,12 +14,12 @@ const makeSizeRules = (tokens: Tokens, property: string) => {
         tokens,
         selector: `.${property}_${typeName}Text`,
         mobileRules: {
-          [property]: px(type.mobile.rows * tokens.rowHeight)
+          [property]: px(type.mobile.rows * tokens.rowHeight),
         },
         desktopRules: {
-          [property]: px(type.desktop.rows * tokens.rowHeight)
-        }
-      })
+          [property]: px(type.desktop.rows * tokens.rowHeight),
+        },
+      }),
     );
 
     rules.push(
@@ -27,12 +27,12 @@ const makeSizeRules = (tokens: Tokens, property: string) => {
         tokens,
         selector: `.${property}_${typeName}TextInline`,
         mobileRules: {
-          [property]: px(type.mobile.size)
+          [property]: px(type.mobile.size),
         },
         desktopRules: {
-          [property]: px(type.desktop.size)
-        }
-      })
+          [property]: px(type.desktop.size),
+        },
+      }),
     );
   });
 

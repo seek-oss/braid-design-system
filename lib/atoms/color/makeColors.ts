@@ -20,15 +20,15 @@ export default ({
   positive,
   secondary,
   formAccent,
-  neutral
+  neutral,
 }: ColorParams): Css => ({
   '.color_link': {
     color: link,
     '&:hover,&:focus': linkHover
       ? {
-          color: linkHover
+          color: linkHover,
         }
-      : {}
+      : {},
   },
   '.color_black': { color: black },
   '.color_white': { color: white },
@@ -36,5 +36,5 @@ export default ({
   '.color_positive': { color: positive },
   '.color_secondary': { color: secondary },
   '.color_formAccent': { color: formAccent },
-  '.color_neutral': { color: neutral }
+  '.color_neutral': { color: neutral },
 });
