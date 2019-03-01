@@ -13,7 +13,15 @@ export default class Card extends Component<CardProps> {
 
     return (
       <Box paddingBottom="medium">
-        <Box backgroundColor="card">{children}</Box>
+        <Box
+          backgroundColor="card"
+          paddingTop="small"
+          paddingBottom="large"
+          paddingLeft="gutter"
+          paddingRight="gutter"
+        >
+          {children}
+        </Box>
       </Box>
     );
   }
