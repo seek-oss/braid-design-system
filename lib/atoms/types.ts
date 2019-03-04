@@ -43,7 +43,6 @@ export interface CssModuleAtoms {
   fill_secondary: string;
   fill_white: string;
   fontFamily_text: string;
-  fontSize_interaction: string;
   fontSize_large: string;
   fontSize_level1: string;
   fontSize_level2: string;
@@ -132,10 +131,12 @@ export interface CssModuleAtoms {
   paddingBottomDesktop_xsmall: string;
   paddingBottomDesktop_xxlarge: string;
   paddingBottomDesktop_xxsmall: string;
+  paddingBottomDesktop_standardTouchableText: string;
   paddingBottom_large: string;
   paddingBottom_medium: string;
   paddingBottom_none: string;
   paddingBottom_small: string;
+  paddingBottom_standardTouchableText: string;
   paddingBottom_xlarge: string;
   paddingBottom_xsmall: string;
   paddingBottom_xxlarge: string;
@@ -184,10 +185,12 @@ export interface CssModuleAtoms {
   paddingTopDesktop_xsmall: string;
   paddingTopDesktop_xxlarge: string;
   paddingTopDesktop_xxsmall: string;
+  paddingTopDesktop_standardTouchableText: string;
   paddingTop_large: string;
   paddingTop_medium: string;
   paddingTop_none: string;
   paddingTop_small: string;
+  paddingTop_standardTouchableText: string;
   paddingTop_xlarge: string;
   paddingTop_xsmall: string;
   paddingTop_xxlarge: string;

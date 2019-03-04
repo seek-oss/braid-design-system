@@ -64,7 +64,6 @@ export default (reset: Atoms['reset'], atoms: CssModuleAtoms): Atoms => ({
     text: atoms.fontFamily_text,
   },
   fontSize: {
-    interaction: atoms.fontSize_interaction,
     large: atoms.fontSize_large,
     level1: atoms.fontSize_level1,
     level2: atoms.fontSize_level2,
@@ -175,6 +174,7 @@ export default (reset: Atoms['reset'], atoms: CssModuleAtoms): Atoms => ({
     xsmall: atoms.paddingBottom_xsmall,
     xxlarge: atoms.paddingBottom_xxlarge,
     xxsmall: atoms.paddingBottom_xxsmall,
+    standardTouchableText: atoms.paddingBottom_standardTouchableText,
   },
   paddingTop: {
     none: atoms.paddingTop_none,
@@ -185,6 +185,7 @@ export default (reset: Atoms['reset'], atoms: CssModuleAtoms): Atoms => ({
     xsmall: atoms.paddingTop_xsmall,
     xxlarge: atoms.paddingTop_xxlarge,
     xxsmall: atoms.paddingTop_xxsmall,
+    standardTouchableText: atoms.paddingTop_standardTouchableText,
   },
   paddingLeft: {
     none: atoms.paddingLeft_none,
@@ -217,6 +218,7 @@ export default (reset: Atoms['reset'], atoms: CssModuleAtoms): Atoms => ({
     xsmall: atoms.paddingBottomDesktop_xsmall,
     xxlarge: atoms.paddingBottomDesktop_xxlarge,
     xxsmall: atoms.paddingBottomDesktop_xxsmall,
+    standardTouchableText: atoms.paddingBottom_standardTouchableText,
   },
   paddingTopDesktop: {
     none: atoms.paddingTopDesktop_none,
@@ -227,6 +229,7 @@ export default (reset: Atoms['reset'], atoms: CssModuleAtoms): Atoms => ({
     xsmall: atoms.paddingTopDesktop_xsmall,
     xxlarge: atoms.paddingTopDesktop_xxlarge,
     xxsmall: atoms.paddingTopDesktop_xxsmall,
+    standardTouchableText: atoms.paddingTopDesktop_standardTouchableText,
   },
   paddingLeftDesktop: {
     none: atoms.paddingLeftDesktop_none,

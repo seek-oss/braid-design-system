@@ -27,7 +27,7 @@ type BorderWidthVariants = 'standard';
 export interface Tokens {
   rowHeight: number;
   columnWidth: number;
-  interactionRows: number;
+  touchableRows: number;
   responsiveBreakpoint: number;
   descenderHeightScale: number;
   heading: Record<HeadingSize, ResponsiveHeading>;
@@ -67,7 +67,7 @@ type FillVariants =
   | 'secondary'
   | 'white';
 type FontFamilyVariants = 'text';
-type FontSizeVariant = TextSize | HeadingSize | 'interaction';
+type FontSizeVariant = TextSize | HeadingSize;
 export type FontWeightVariants = 'regular' | 'medium' | 'strong';
 export type DisplayVariants =
   | 'block'
@@ -161,7 +161,7 @@ export type SizeVariants =
   | 'standardTextInline'
   | 'largeText'
   | 'largeTextInline';
-type SpacingVariants =
+type SpacingVariant =
   | 'none'
   | 'xxsmall'
   | 'xsmall'
@@ -170,7 +170,8 @@ type SpacingVariants =
   | 'large'
   | 'xlarge'
   | 'xxlarge';
-type HorizontalSpacingVariants = SpacingVariants | 'gutter';
+type HorizontalSpacingVariant = SpacingVariant | 'gutter';
+type VerticalPaddingVariant = SpacingVariant | 'standardTouchableText';
 export type TransformVariant =
   | 'standardText'
   | 'largeText'
@@ -192,22 +193,22 @@ export interface Atoms {
   fontSize: Record<FontSizeVariant, string>;
   fontWeight: Record<FontWeightVariants, string>;
   height: Record<SizeVariants, string>;
-  marginTop: Record<SpacingVariants, string>;
-  marginRight: Record<HorizontalSpacingVariants, string>;
-  marginBottom: Record<SpacingVariants, string>;
-  marginLeft: Record<HorizontalSpacingVariants, string>;
-  marginTopDesktop: Record<SpacingVariants, string>;
-  marginRightDesktop: Record<HorizontalSpacingVariants, string>;
-  marginBottomDesktop: Record<SpacingVariants, string>;
-  marginLeftDesktop: Record<HorizontalSpacingVariants, string>;
-  paddingTop: Record<SpacingVariants, string>;
-  paddingRight: Record<HorizontalSpacingVariants, string>;
-  paddingBottom: Record<SpacingVariants, string>;
-  paddingLeft: Record<HorizontalSpacingVariants, string>;
-  paddingTopDesktop: Record<SpacingVariants, string>;
-  paddingRightDesktop: Record<HorizontalSpacingVariants, string>;
-  paddingBottomDesktop: Record<SpacingVariants, string>;
-  paddingLeftDesktop: Record<HorizontalSpacingVariants, string>;
+  marginTop: Record<SpacingVariant, string>;
+  marginRight: Record<HorizontalSpacingVariant, string>;
+  marginBottom: Record<SpacingVariant, string>;
+  marginLeft: Record<HorizontalSpacingVariant, string>;
+  marginTopDesktop: Record<SpacingVariant, string>;
+  marginRightDesktop: Record<HorizontalSpacingVariant, string>;
+  marginBottomDesktop: Record<SpacingVariant, string>;
+  marginLeftDesktop: Record<HorizontalSpacingVariant, string>;
+  paddingTop: Record<VerticalPaddingVariant, string>;
+  paddingRight: Record<HorizontalSpacingVariant, string>;
+  paddingBottom: Record<VerticalPaddingVariant, string>;
+  paddingLeft: Record<HorizontalSpacingVariant, string>;
+  paddingTopDesktop: Record<VerticalPaddingVariant, string>;
+  paddingRightDesktop: Record<HorizontalSpacingVariant, string>;
+  paddingBottomDesktop: Record<VerticalPaddingVariant, string>;
+  paddingLeftDesktop: Record<HorizontalSpacingVariant, string>;
   display: Record<DisplayVariants, string>;
   displayDesktop: Record<DisplayVariants, string>;
   transform: Record<TransformVariant, string>;

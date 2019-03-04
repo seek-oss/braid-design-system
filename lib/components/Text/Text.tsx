@@ -5,14 +5,14 @@ import styles from './Text.css.js';
 import Box, { BoxProps } from '../Box/Box';
 import { ColorVariants, FontWeightVariants, Theme } from '../../themes/theme';
 
-type TextSize = 'standard' | 'large' | 'interaction';
+type TextSize = 'standard' | 'large';
 
 const resolveTransformAtom = (
   size: TextSize,
   baseline: boolean,
   theme: Theme,
 ): string | null => {
-  if (!baseline || size === 'interaction') {
+  if (!baseline) {
     return null;
   }
   if (size === 'standard') {

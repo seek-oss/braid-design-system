@@ -1,6 +1,5 @@
 import { TextDefinition } from './../utils/alignTextToGrid';
 import alignTextToGrid from '../utils/alignTextToGrid';
-import { px } from '../utils/toUnit';
 import makeDesktopRules from '../utils/makeDesktopRules';
 import { Tokens, Breakpoint } from '../../themes/theme';
 
@@ -14,16 +13,9 @@ const getFontSizeRules = (textDefinition: TextDefinition, tokens: Tokens) => {
 };
 
 const makeRules = (responsiveType: Breakpoint, tokens: Tokens) => {
-  const interactionHeight = tokens.interactionRows * tokens.rowHeight;
-
   const standardRules = getFontSizeRules(
     tokens.text.standard[responsiveType],
     tokens,
-  );
-  const interactionPadding = px(
-    (interactionHeight -
-      tokens.text.standard[responsiveType].rows * tokens.rowHeight) /
-      2,
   );
 
   return {
@@ -32,11 +24,6 @@ const makeRules = (responsiveType: Breakpoint, tokens: Tokens) => {
       tokens.text.large[responsiveType],
       tokens,
     ),
-    '.fontSize_interaction': {
-      ...standardRules,
-      paddingTop: interactionPadding,
-      paddingBottom: interactionPadding,
-    },
     '.fontSize_level1': getFontSizeRules(
       tokens.heading.level1[responsiveType],
       tokens,

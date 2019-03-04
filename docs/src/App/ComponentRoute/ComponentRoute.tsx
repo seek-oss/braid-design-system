@@ -110,6 +110,7 @@ export default class ComponentRoute extends Component<ComponentRouteProps> {
         <Box paddingBottom="large">
           <Text>
             <ExternalLink
+              inline
               href={sourceUrl}
               target="_blank"
               rel="noopener noreferrer"

@@ -3,7 +3,7 @@ import { Tokens } from '../../themes/theme';
 const tokens: Tokens = {
   rowHeight: 4,
   columnWidth: 4,
-  interactionRows: 11,
+  touchableRows: 11,
   responsiveBreakpoint: 768,
   descenderHeightScale: 0.13,
   heading: {
