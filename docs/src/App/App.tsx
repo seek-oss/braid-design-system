@@ -55,7 +55,7 @@ export default withRouter(
               paddingRight="gutter"
             >
               <div style={{ position: 'relative' }}>
-                <Link to="/">
+                <Link to="/" inline>
                   <Logo />
                 </Link>
 
@@ -115,6 +115,7 @@ export default withRouter(
                     <BulletList>
                       <Bullet>
                         <ExternalLink
+                          inline
                           href="https://github.com/seek-oss/braid-design-system"
                           target="_blank"
                           rel="noopener noreferrer"
@@ -125,6 +126,7 @@ export default withRouter(
                       </Bullet>
                       <Bullet>
                         <Link
+                          inline
                           to="/playroom"
                           target="_blank"
                           onClick={this.closeMenu}
@@ -147,6 +149,7 @@ export default withRouter(
                         .map(componentName => (
                           <Bullet key={componentName}>
                             <Link
+                              inline
                               to={`/components/${componentName}`}
                               onClick={this.closeMenu}
                             >
@@ -168,6 +171,7 @@ export default withRouter(
                       .map(iconName => (
                         <Bullet key={iconName}>
                           <Link
+                            inline
                             to={`/icons/${iconName}`}
                             onClick={this.closeMenu}
                           >

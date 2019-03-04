@@ -1,18 +1,23 @@
 import React, { Component, AllHTMLAttributes } from 'react';
 import { Omit } from 'utility-types';
-import TextLinkRenderer from '../TextLinkRenderer/TextLinkRenderer';
+import TextLinkRenderer, {
+  TextLinkRendererProps,
+} from '../TextLinkRenderer/TextLinkRenderer';
 
 type AnchorProps = AllHTMLAttributes<HTMLAnchorElement>;
 export interface TextLinkProps
-  extends Omit<AnchorProps, 'className' | 'style'> {}
+  extends Omit<TextLinkRendererProps, 'children'>,
+    Omit<AnchorProps, 'className' | 'style'> {}
 
 export default class TextLink extends Component<TextLinkProps> {
   static displayName = 'TextLink';
 
   render() {
+    const { inline, ...restProps } = this.props;
+
     return (
-      <TextLinkRenderer>
-        {props => <a {...this.props} {...props} />}
+      <TextLinkRenderer inline={inline}>
+        {props => <a {...restProps} {...props} />}
       </TextLinkRenderer>
     );
   }

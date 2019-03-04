@@ -7,9 +7,16 @@ const docs: ComponentDocs = {
   examples: [
     {
       label: 'Standard Text Link',
+      render: () => <TextLink href="">Text Link</TextLink>,
+    },
+    {
+      label: 'Inline Text Link',
       render: () => (
         <Text>
-          <TextLink href="">Link</TextLink>
+          The last word of a sentence is a{' '}
+          <TextLink href="" inline>
+            text link.
+          </TextLink>
         </Text>
       ),
     },

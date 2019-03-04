@@ -27,7 +27,7 @@ type BorderWidthVariants = 'standard';
 export interface Tokens {
   rowHeight: number;
   columnWidth: number;
-  interactionRows: number;
+  touchableRows: number;
   responsiveBreakpoint: number;
   descenderHeightScale: number;
   heading: Record<HeadingSize, ResponsiveHeading>;
@@ -67,7 +67,7 @@ type FillVariants =
   | 'secondary'
   | 'white';
 type FontFamilyVariants = 'text';
-type FontSizeVariant = TextSize | HeadingSize | 'interaction';
+type FontSizeVariant = TextSize | HeadingSize;
 export type FontWeightVariants = 'regular' | 'medium' | 'strong';
 export type DisplayVariants =
   | 'block'
@@ -171,6 +171,7 @@ type SpacingVariants =
   | 'xlarge'
   | 'xxlarge';
 type HorizontalSpacingVariants = SpacingVariants | 'gutter';
+type VerticalPaddingVariants = SpacingVariants | 'standardTouchableText';
 export type TransformVariant =
   | 'standardText'
   | 'largeText'
@@ -200,13 +201,13 @@ export interface Atoms {
   marginRightDesktop: Record<HorizontalSpacingVariants, string>;
   marginBottomDesktop: Record<SpacingVariants, string>;
   marginLeftDesktop: Record<HorizontalSpacingVariants, string>;
-  paddingTop: Record<SpacingVariants, string>;
+  paddingTop: Record<VerticalPaddingVariants, string>;
   paddingRight: Record<HorizontalSpacingVariants, string>;
-  paddingBottom: Record<SpacingVariants, string>;
+  paddingBottom: Record<VerticalPaddingVariants, string>;
   paddingLeft: Record<HorizontalSpacingVariants, string>;
-  paddingTopDesktop: Record<SpacingVariants, string>;
+  paddingTopDesktop: Record<VerticalPaddingVariants, string>;
   paddingRightDesktop: Record<HorizontalSpacingVariants, string>;
-  paddingBottomDesktop: Record<SpacingVariants, string>;
+  paddingBottomDesktop: Record<VerticalPaddingVariants, string>;
   paddingLeftDesktop: Record<HorizontalSpacingVariants, string>;
   display: Record<DisplayVariants, string>;
   displayDesktop: Record<DisplayVariants, string>;

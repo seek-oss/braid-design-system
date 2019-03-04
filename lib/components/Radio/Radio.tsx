@@ -94,11 +94,6 @@ export default class Radio extends Component<RadioProps, State> {
                   className={classnames({
                     [styles.label]: true,
                   })}
-                  style={{
-                    minHeight: px(
-                      theme.tokens.rowHeight * theme.tokens.interactionRows,
-                    ),
-                  }}
                   htmlFor={id}
                   onMouseOver={this.handleMouseOver}
                   onMouseOut={this.handleMouseOut}
@@ -108,7 +103,7 @@ export default class Radio extends Component<RadioProps, State> {
                       width: px(radioSize),
                       height: px(radioSize),
                       marginTop: px(
-                        (theme.tokens.interactionRows * theme.tokens.rowHeight -
+                        (theme.tokens.touchableRows * theme.tokens.rowHeight -
                           radioSize) /
                           2,
                       ),
@@ -166,12 +161,17 @@ export default class Radio extends Component<RadioProps, State> {
                       )}
                     />
                   </Box>
-                  <Text
-                    size="interaction"
-                    color={textColorForState(disabled, hovered)}
+                  <Box
+                    paddingTop="standardTouchableText"
+                    paddingBottom="standardTouchableText"
                   >
-                    {label}
-                  </Text>
+                    <Text
+                      baseline={false}
+                      color={textColorForState(disabled, hovered)}
+                    >
+                      {label}
+                    </Text>
+                  </Box>
                 </Box>
                 {children ? (
                   <Box

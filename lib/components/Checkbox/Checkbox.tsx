@@ -95,11 +95,6 @@ export default class Checkbox extends Component<CheckboxProps, State> {
                   className={classnames({
                     [styles.label]: true,
                   })}
-                  style={{
-                    minHeight: px(
-                      theme.tokens.rowHeight * theme.tokens.interactionRows,
-                    ),
-                  }}
                   htmlFor={id}
                   onMouseOver={this.handleMouseOver}
                   onMouseOut={this.handleMouseOut}
@@ -111,7 +106,7 @@ export default class Checkbox extends Component<CheckboxProps, State> {
                       width: px(checkboxSize),
                       height: px(checkboxSize),
                       marginTop: px(
-                        (theme.tokens.interactionRows * theme.tokens.rowHeight -
+                        (theme.tokens.touchableRows * theme.tokens.rowHeight -
                           checkboxSize) /
                           2,
                       ),
@@ -189,13 +184,18 @@ export default class Checkbox extends Component<CheckboxProps, State> {
                       <TickIcon size="fill" fill="white" />
                     </Box>
                   </Box>
-                  <Text
-                    size="interaction"
-                    color={textColorForState(disabled, hovered)}
-                    {...(checked && children ? { weight: 'strong' } : {})}
+                  <Box
+                    paddingTop="standardTouchableText"
+                    paddingBottom="standardTouchableText"
                   >
-                    {label}
-                  </Text>
+                    <Text
+                      baseline={false}
+                      color={textColorForState(disabled, hovered)}
+                      {...(checked && children ? { weight: 'strong' } : {})}
+                    >
+                      {label}
+                    </Text>
+                  </Box>
                 </Box>
                 {children ? (
                   <Box

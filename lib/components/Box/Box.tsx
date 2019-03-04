@@ -11,6 +11,7 @@ import {
   BackgroundColorVariants,
   BorderColorVariants,
   DisplayVariants,
+  VerticalPaddingVariants,
 } from '../../themes/theme';
 
 function getResponsiveClasses<AtomName extends string>(
@@ -30,8 +31,8 @@ function getResponsiveClasses<AtomName extends string>(
 type ResponsiveProp<AtomName> = AtomName | [AtomName, AtomName];
 
 export interface BoxProps extends ResetProps {
-  paddingTop?: ResponsiveProp<SpacingVariants>;
-  paddingBottom?: ResponsiveProp<SpacingVariants>;
+  paddingTop?: ResponsiveProp<VerticalPaddingVariants>;
+  paddingBottom?: ResponsiveProp<VerticalPaddingVariants>;
   paddingLeft?: ResponsiveProp<HorizontalSpacingVariants>;
   paddingRight?: ResponsiveProp<HorizontalSpacingVariants>;
   marginTop?: ResponsiveProp<SpacingVariants>;
