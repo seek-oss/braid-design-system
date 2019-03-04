@@ -4,14 +4,14 @@ import ThemeConsumer from '../ThemeConsumer/ThemeConsumer';
 import Reset, { ResetProps } from '../Reset/Reset';
 import styles from './Box.css.js';
 import {
-  HorizontalSpacingVariants,
-  SpacingVariants,
+  HorizontalSpacingVariant,
+  VerticalPaddingVariant,
+  SpacingVariant,
   BorderWidthVariants,
   BorderRadiusVariants,
   BackgroundColorVariants,
   BorderColorVariants,
   DisplayVariants,
-  VerticalPaddingVariants,
 } from '../../themes/theme';
 
 function getResponsiveClasses<AtomName extends string>(
@@ -31,14 +31,14 @@ function getResponsiveClasses<AtomName extends string>(
 type ResponsiveProp<AtomName> = AtomName | [AtomName, AtomName];
 
 export interface BoxProps extends ResetProps {
-  paddingTop?: ResponsiveProp<VerticalPaddingVariants>;
-  paddingBottom?: ResponsiveProp<VerticalPaddingVariants>;
-  paddingLeft?: ResponsiveProp<HorizontalSpacingVariants>;
-  paddingRight?: ResponsiveProp<HorizontalSpacingVariants>;
-  marginTop?: ResponsiveProp<SpacingVariants>;
-  marginBottom?: ResponsiveProp<SpacingVariants>;
-  marginLeft?: ResponsiveProp<HorizontalSpacingVariants>;
-  marginRight?: ResponsiveProp<HorizontalSpacingVariants>;
+  paddingTop?: ResponsiveProp<VerticalPaddingVariant>;
+  paddingBottom?: ResponsiveProp<VerticalPaddingVariant>;
+  paddingLeft?: ResponsiveProp<HorizontalSpacingVariant>;
+  paddingRight?: ResponsiveProp<HorizontalSpacingVariant>;
+  marginTop?: ResponsiveProp<SpacingVariant>;
+  marginBottom?: ResponsiveProp<SpacingVariant>;
+  marginLeft?: ResponsiveProp<HorizontalSpacingVariant>;
+  marginRight?: ResponsiveProp<HorizontalSpacingVariant>;
   display?: ResponsiveProp<DisplayVariants>;
   borderWidth?: BorderWidthVariants;
   borderRadius?: BorderRadiusVariants;
