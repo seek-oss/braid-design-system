@@ -7,7 +7,7 @@ import {
   TransformVariant,
   FontWeightVariants,
   Tokens,
-} from 'lib/themes/theme';
+} from '../../themes/theme';
 
 type HeadingLevel = '1' | '2' | '3';
 type HeadingWeight = 'regular' | 'weak';
