@@ -12,26 +12,24 @@ import {
 type HeadingLevel = '1' | '2' | '3';
 type HeadingWeight = 'regular' | 'weak';
 
-const resolveComponent = (
-  component: BoxProps['component'],
-  level: HeadingLevel,
-): BoxProps['component'] => (component ? component : `h${level}`);
-
-interface HeadingAtoms {
+interface HeadingOptions {
   fontSize: HeadingSize;
   transform: TransformVariant;
   fontWeight: FontWeightVariants;
+  component: Exclude<BoxProps['component'], undefined>;
 }
-const resolveHeadingAtoms = (
+const resolveHeadingOptions = (
   level: HeadingLevel,
   weight: HeadingWeight,
   tokens: Tokens,
-): HeadingAtoms => {
+  component: BoxProps['component'],
+): HeadingOptions => {
   if (level === '1') {
     return {
       fontSize: 'level1',
       transform: 'level1Heading',
       fontWeight: tokens.heading.level1[weight],
+      component: component || 'h1',
     };
   }
   if (level === '2') {
@@ -39,6 +37,7 @@ const resolveHeadingAtoms = (
       fontSize: 'level2',
       transform: 'level2Heading',
       fontWeight: tokens.heading.level2[weight],
+      component: component || 'h2',
     };
   }
   if (level === '3') {
@@ -46,6 +45,7 @@ const resolveHeadingAtoms = (
       fontSize: 'level3',
       transform: 'level3Heading',
       fontWeight: tokens.heading.level3[weight],
+      component: component || 'h3',
     };
   }
   throw new Error('No valid heading level provided');
@@ -67,15 +67,16 @@ export default class Heading extends Component<HeadingProps> {
     return (
       <ThemeConsumer>
         {theme => {
-          const { transform, fontSize, fontWeight } = resolveHeadingAtoms(
-            level,
-            weight,
-            theme.tokens,
-          );
+          const {
+            transform,
+            fontSize,
+            fontWeight,
+            component: resolvedComponent,
+          } = resolveHeadingOptions(level, weight, theme.tokens, component);
 
           return (
             <Box
-              component={resolveComponent(component, level)}
+              component={resolvedComponent}
               paddingBottom={level === '1' ? 'small' : 'xsmall'}
               className={classnames(
                 theme.atoms.fontFamily.text,
