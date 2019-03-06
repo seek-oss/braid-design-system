@@ -2,7 +2,7 @@ import merge from 'lodash/merge';
 import alignTextToGrid from './utils/alignTextToGrid';
 import createResponsiveRules from './utils/createResponsiveRules';
 import toPairs from 'lodash/toPairs';
-import { Tokens } from 'lib/themes/theme';
+import { Tokens } from '../themes/theme';
 
 const createRules = (tokens: Tokens, type: any, className: string) => {
   const { transform: mobileTransform } = alignTextToGrid(type.mobile, tokens);

@@ -1,5 +1,5 @@
 import isEqual from 'lodash/isEqual';
-import { Tokens } from 'lib/themes/theme';
+import { Tokens } from '../../themes/theme';
 
 interface Params {
   tokens: Tokens;

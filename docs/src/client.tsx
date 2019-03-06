@@ -13,9 +13,11 @@ declare global {
 
 const { routerBasename, sourceUrlPrefix } = window.CONFIG;
 
-hydrate(
-  <BrowserRouter basename={routerBasename}>
-    <App sourceUrlPrefix={sourceUrlPrefix} />
-  </BrowserRouter>,
-  document.getElementById('app'),
-);
+export default () => {
+  hydrate(
+    <BrowserRouter basename={routerBasename}>
+      <App sourceUrlPrefix={sourceUrlPrefix} />
+    </BrowserRouter>,
+    document.getElementById('app'),
+  );
+};

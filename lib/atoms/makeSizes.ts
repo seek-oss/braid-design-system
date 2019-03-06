@@ -3,7 +3,7 @@ import each from 'lodash/each';
 
 import createResponsiveRules from './utils/createResponsiveRules';
 import { px } from './utils/toUnit';
-import { Tokens } from 'lib/themes/theme';
+import { Tokens } from '../themes/theme';
 
 const makeSizeRules = (tokens: Tokens, property: string) => {
   const rules: Array<{ [index: string]: object }> = [];
