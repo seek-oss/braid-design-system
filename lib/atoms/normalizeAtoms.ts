@@ -16,19 +16,14 @@ export default (
     inputDisabled: atoms.backgroundColor_inputDisabled,
     selection: atoms.backgroundColor_selection,
   },
-  borderColor: {
-    critical: atoms.borderColor_critical,
-    formAccent: atoms.borderColor_formAccent,
-    standard: atoms.borderColor_standard,
-  },
   borderRadius: {
     standard: atoms.borderRadius_standard,
   },
-  borderWidth: {
-    standard: atoms.borderWidth_standard,
-  },
   boxShadow: {
-    focus: atoms.boxShadow_focus,
+    outlineFocus: atoms.boxShadow_outlineFocus,
+    borderStandard: atoms.boxShadow_borderStandard,
+    borderCritical: atoms.boxShadow_borderCritical,
+    borderFormAccent: atoms.boxShadow_borderFormAccent,
   },
   color: {
     link: atoms.color_link,

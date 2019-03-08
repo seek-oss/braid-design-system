@@ -7,10 +7,8 @@ import {
   HorizontalSpacing,
   VerticalPadding,
   Spacing,
-  BorderWidth,
   BorderRadius,
   BackgroundColor,
-  BorderColor,
   Display,
   BoxShadow,
   Transition,
@@ -44,10 +42,8 @@ export interface BoxProps extends ResetProps {
   marginLeft?: ResponsiveProp<HorizontalSpacing>;
   marginRight?: ResponsiveProp<HorizontalSpacing>;
   display?: ResponsiveProp<Display>;
-  borderWidth?: BorderWidth;
   borderRadius?: BorderRadius;
   backgroundColor?: BackgroundColor;
-  borderColor?: BorderColor;
   boxShadow?: BoxShadow;
   transform?: Transform;
   transition?: Transition;
@@ -68,10 +64,8 @@ export default class Box extends Component<BoxProps> {
       marginLeft,
       marginRight,
       display,
-      borderWidth,
       borderRadius,
       backgroundColor,
-      borderColor,
       boxShadow,
       transition,
       transform,
@@ -89,8 +83,7 @@ export default class Box extends Component<BoxProps> {
                 className,
                 styles.root,
                 atoms.backgroundColor[backgroundColor!],
-                atoms.borderColor[borderColor!],
-                atoms.borderWidth[borderWidth!],
+                atoms.boxShadow[boxShadow!],
                 atoms.borderRadius[borderRadius!],
                 atoms.boxShadow[boxShadow!],
                 atoms.transition[transition!],

@@ -10,10 +10,7 @@ import makeDisplayRules from './makeDisplayRules';
 import makeTransitions from './makeTransitions';
 import makeFontWeight, { FontWeightParams } from './font/makeFontWeights';
 import makeFontFamily, { FontFamilyParams } from './font/makeFontFamily';
-import makeBorderColor, { BorderColorParams } from './border/makeBorderColor';
-import makeBorderRadius, {
-  BorderRadiusParams,
-} from './border/makeBorderRadius';
+import makeBorderRadius, { BorderRadiusParams } from './makeBorderRadius';
 import makeBackgroundColors, {
   BackgroundColorParams,
 } from './color/makeBackgroundColors';
@@ -24,14 +21,12 @@ import makeTransforms from './makeTransforms';
 import makeSizes from './makeSizes';
 import makeFontSizes from './font/makeFontSizes';
 import makeFills, { FillParams } from './color/makeFills';
-import makeBorderWidths from './border/makeBorderWidths';
 
 const makeAtoms = (
   tokens: Tokens,
   colors: ColorParams,
   fills: FillParams,
   fontFamily: FontFamilyParams,
-  borderColor: BorderColorParams,
   borderRadius: BorderRadiusParams,
   boxShadows: BoxShadowParams,
   fontWeights: FontWeightParams,
@@ -40,10 +35,8 @@ const makeAtoms = (
   const rules = merge(
     makeFontSizes(tokens),
     makeBackgroundColors(backgroundColor),
-    makeBorderColor(borderColor),
     makeBorderRadius(borderRadius),
-    makeBorderWidths(tokens),
-    makeBoxShadows(boxShadows),
+    makeBoxShadows(tokens, boxShadows),
     makeColors(colors),
     makeFills(fills),
     makeFontFamily(fontFamily),

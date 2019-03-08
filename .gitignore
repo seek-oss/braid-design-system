@@ -11,6 +11,7 @@ componentDocs.json
 .eslintrc
 .prettierrc
 coverage/
+dist-storybook/
 docs/dist/
 report/
 tsconfig.json

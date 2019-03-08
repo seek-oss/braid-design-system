@@ -9,8 +9,7 @@ export default class Divider extends Component<{}> {
     return (
       <Box className={styles.root}>
         <Box
-          borderWidth="standard"
-          borderColor="standard"
+          boxShadow="borderStandard"
           width="full"
           className={styles.divider}
         />

@@ -97,6 +97,7 @@ export default class Radio extends Component<RadioProps, State> {
                   onMouseOut={this.handleMouseOut}
                 >
                   <Box
+                    backgroundColor="input"
                     style={{
                       width: px(radioSize),
                       height: px(radioSize),
@@ -110,34 +111,27 @@ export default class Radio extends Component<RadioProps, State> {
                     marginRight="medium"
                   >
                     <Box
-                      backgroundColor="input"
-                      borderColor="standard"
-                      borderWidth="standard"
+                      boxShadow="borderStandard"
                       style={{ opacity: hovered ? 0 : 1 }}
                       className={styles.radio}
                     />
                     <Box
-                      backgroundColor="input"
-                      borderColor="formAccent"
-                      borderWidth="standard"
+                      boxShadow="borderFormAccent"
                       className={classnames(styles.radio, styles.radioHover)}
                     />
                     <Box
-                      backgroundColor="input"
-                      boxShadow="focus"
+                      boxShadow="outlineFocus"
                       transition="fast"
                       className={classnames(styles.radio, styles.radioFocus)}
                     />
                     <Box
                       backgroundColor="inputDisabled"
-                      borderWidth="standard"
-                      borderColor="standard"
+                      boxShadow="borderStandard"
                       transition="fast"
                       className={classnames(styles.radio, styles.radioDisabled)}
                     />
                     <Box
-                      borderColor="critical"
-                      borderWidth="standard"
+                      boxShadow="borderCritical"
                       transition="fast"
                       style={{ opacity: tone === 'critical' ? 1 : 0 }}
                       className={classnames(styles.radio, styles.radioCritical)}
