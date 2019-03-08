@@ -68,6 +68,7 @@
   "dependencies": {
     "basekick": "^3.0.0",
     "classnames": "^2.2.6",
+    "polished": "^3.0.3",
     "utility-types": "^3.2.1"
   },
   "peerDependencies": {
@@ -106,7 +107,6 @@
     "lint-staged": "^8.0.4",
     "lodash": "^4.17.11",
     "playroom": "0.7.2",
-    "polished": "^3.0.3",
     "postcss-js": "^2.0.0",
     "postcss-loader": "^3.0.0",
     "react": "^16.5.2",
