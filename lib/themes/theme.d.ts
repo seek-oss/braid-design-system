@@ -40,7 +40,12 @@ export interface Tokens {
 type BackgroundColor =
   | 'input'
   | 'inputDisabled'
+  | 'brandAccent'
+  | 'brandAccentActive'
+  | 'brandAccentHover'
   | 'formAccent'
+  | 'formAccentActive'
+  | 'formAccentHover'
   | 'formAccentDisabled'
   | 'selection'
   | 'info'
@@ -51,13 +56,15 @@ export type BoxShadow =
   | 'outlineFocus'
   | 'borderStandard'
   | 'borderCritical'
-  | 'borderFormAccent';
+  | 'borderFormAccent'
+  | 'borderFormAccentLarge';
 export type Color =
   | 'black'
   | 'white'
   | 'critical'
   | 'positive'
   | 'secondary'
+  | 'brandAccentForeground'
   | 'formAccent'
   | 'neutral'
   | 'link';
@@ -176,8 +183,9 @@ export type Transform =
   | 'largeText'
   | 'level1Heading'
   | 'level2Heading'
-  | 'level3Heading';
-type Transition = 'fast';
+  | 'level3Heading'
+  | 'touchable';
+type Transition = 'fast' | 'touchable';
 
 export interface Atoms {
   reset: Record<ResetTags, string>;
