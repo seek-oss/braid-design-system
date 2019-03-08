@@ -12,7 +12,9 @@ const docs: ComponentDocs = {
           <TextField
             label="First name"
             id={id}
-            onChange={() => {}}
+            onChange={() => {
+              /*...*/
+            }}
             value="Burt"
           />
         </div>
@@ -27,7 +29,9 @@ const docs: ComponentDocs = {
             id={id}
             value="No"
             message="e.g. Gandalf"
-            onChange={() => {}}
+            onChange={() => {
+              /*...*/
+            }}
           />
         </div>
       ),
@@ -41,7 +45,9 @@ const docs: ComponentDocs = {
             secondaryLabel="eg. Mr"
             id={id}
             value=""
-            onChange={() => {}}
+            onChange={() => {
+              /*...*/
+            }}
           />
         </div>
       ),
@@ -56,7 +62,9 @@ const docs: ComponentDocs = {
             tertiaryLabel={<TextLink inline>Help?</TextLink>}
             id={id}
             value=""
-            onChange={() => {}}
+            onChange={() => {
+              /*...*/
+            }}
           />
         </div>
       ),
@@ -71,7 +79,9 @@ const docs: ComponentDocs = {
             id={id}
             value="No"
             message="Answer is incorrect"
-            onChange={() => {}}
+            onChange={() => {
+              /*...*/
+            }}
           />
         </div>
       ),
@@ -86,7 +96,9 @@ const docs: ComponentDocs = {
             value="Yeah"
             message="Nice one!"
             tone="positive"
-            onChange={() => {}}
+            onChange={() => {
+              /*...*/
+            }}
           />
         </div>
       ),
