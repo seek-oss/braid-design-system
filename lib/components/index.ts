@@ -22,6 +22,7 @@ export { default as Radio } from './Radio/Radio';
 export { default as Reset } from './Reset/Reset';
 export { default as Strong } from './Strong/Strong';
 export { default as Text } from './Text/Text';
+export { default as TextField } from './TextField/TextField';
 export { default as TextLink } from './TextLink/TextLink';
 export {
   default as TextLinkRenderer,
