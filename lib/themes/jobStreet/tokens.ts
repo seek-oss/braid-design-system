@@ -87,6 +87,7 @@ const tokens: Tokens = {
   },
   borderWidth: {
     standard: 1,
+    large: 2,
   },
 };
 

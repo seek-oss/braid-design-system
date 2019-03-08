@@ -98,6 +98,8 @@ export default class Checkbox extends Component<CheckboxProps, State> {
                   onMouseOut={this.handleMouseOut}
                 >
                   <Box
+                    backgroundColor="input"
+                    borderRadius="standard"
                     marginRight="small"
                     className={styles.checkboxContainer}
                     style={{
@@ -111,16 +113,12 @@ export default class Checkbox extends Component<CheckboxProps, State> {
                     }}
                   >
                     <Box
-                      backgroundColor="input"
-                      borderWidth="standard"
-                      borderColor="standard"
+                      boxShadow="borderStandard"
                       borderRadius="standard"
                       className={styles.checkbox}
                     />
                     <Box
-                      backgroundColor="input"
-                      borderColor="formAccent"
-                      borderWidth="standard"
+                      boxShadow="borderFormAccent"
                       borderRadius="standard"
                       className={classnames(
                         styles.checkbox,
@@ -128,8 +126,7 @@ export default class Checkbox extends Component<CheckboxProps, State> {
                       )}
                     />
                     <Box
-                      backgroundColor="input"
-                      boxShadow="focus"
+                      boxShadow="outlineFocus"
                       borderRadius="standard"
                       transition="fast"
                       className={classnames(
@@ -148,8 +145,7 @@ export default class Checkbox extends Component<CheckboxProps, State> {
                     />
                     <Box
                       backgroundColor="inputDisabled"
-                      borderWidth="standard"
-                      borderColor="standard"
+                      boxShadow="borderStandard"
                       borderRadius="standard"
                       transition="fast"
                       className={classnames(
@@ -158,8 +154,7 @@ export default class Checkbox extends Component<CheckboxProps, State> {
                       )}
                     />
                     <Box
-                      borderColor="critical"
-                      borderWidth="standard"
+                      boxShadow="borderCritical"
                       borderRadius="standard"
                       transition="fast"
                       style={{

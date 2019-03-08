@@ -22,7 +22,7 @@ interface SpacingToken {
 }
 
 // Border definitions
-type BorderWidth = 'standard';
+type BorderWidth = 'standard' | 'large';
 
 export interface Tokens {
   rowHeight: number;
@@ -46,9 +46,12 @@ type BackgroundColor =
   | 'info'
   | 'card'
   | 'critical';
-type BorderColor = 'standard' | 'formAccent' | 'critical';
 type BorderRadius = 'standard';
-type BoxShadow = 'focus';
+export type BoxShadow =
+  | 'outlineFocus'
+  | 'borderStandard'
+  | 'borderCritical'
+  | 'borderFormAccent';
 export type Color =
   | 'black'
   | 'white'
@@ -179,9 +182,7 @@ type Transition = 'fast';
 export interface Atoms {
   reset: Record<ResetTags, string>;
   backgroundColor: Record<BackgroundColor, string>;
-  borderColor: Record<BorderColor, string>;
   borderRadius: Record<BorderRadius, string>;
-  borderWidth: Record<BorderWidth, string>;
   boxShadow: Record<BoxShadow, string>;
   color: Record<Color, string>;
   fill: Record<Fill, string>;
