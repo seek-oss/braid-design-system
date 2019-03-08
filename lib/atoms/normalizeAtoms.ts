@@ -1,7 +1,10 @@
 import { Atoms } from '../themes/theme';
-import { CssModuleAtoms } from './types';
+import CssModuleAtoms from '../themes/wireframe/atoms.css.js.d';
 
-export default (reset: Atoms['reset'], atoms: CssModuleAtoms): Atoms => ({
+export default (
+  reset: Atoms['reset'],
+  atoms: typeof CssModuleAtoms,
+): Atoms => ({
   reset,
   backgroundColor: {
     card: atoms.backgroundColor_card,
@@ -268,5 +271,6 @@ export default (reset: Atoms['reset'], atoms: CssModuleAtoms): Atoms => ({
     largeTextInline: atoms.width_largeTextInline,
     standardText: atoms.width_standardText,
     standardTextInline: atoms.width_standardTextInline,
+    full: atoms.width_full,
   },
 });

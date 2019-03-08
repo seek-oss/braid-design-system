@@ -15,7 +15,7 @@ import makeBorderRadius, {
   BorderRadiusParams,
 } from './border/makeBorderRadius';
 import makeBackgroundColors, {
-  BackgroundColorParms,
+  BackgroundColorParams,
 } from './color/makeBackgroundColors';
 import makeBoxShadows, { BoxShadowParams } from './makeBoxShadows';
 import makePadding from './makePadding';
@@ -35,7 +35,7 @@ const makeAtoms = (
   borderRadius: BorderRadiusParams,
   boxShadows: BoxShadowParams,
   fontWeights: FontWeightParams,
-  backgroundColor: BackgroundColorParms,
+  backgroundColor: BackgroundColorParams,
 ): Css => {
   const rules = merge(
     makeFontSizes(tokens),
