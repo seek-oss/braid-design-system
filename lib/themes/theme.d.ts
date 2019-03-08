@@ -7,11 +7,11 @@ type Breakpoint = 'mobile' | 'desktop';
 type HeadingSize = 'level1' | 'level2' | 'level3';
 type TextSize = 'standard' | 'large';
 type ResponsiveHeading = Record<Breakpoint, TextDefinition> &
-  Record<'regular' | 'weak', FontWeightVariants>;
+  Record<'regular' | 'weak', FontWeight>;
 type ResponsiveText = Record<Breakpoint, TextDefinition>;
 
 // Spacing definitions
-interface Spacing {
+interface SpacingToken {
   xxsmall: number;
   xsmall: number;
   small: number;
@@ -22,7 +22,7 @@ interface Spacing {
 }
 
 // Border definitions
-type BorderWidthVariants = 'standard';
+type BorderWidth = 'standard';
 
 export interface Tokens {
   rowHeight: number;
@@ -32,12 +32,12 @@ export interface Tokens {
   descenderHeightScale: number;
   heading: Record<HeadingSize, ResponsiveHeading>;
   text: Record<TextSize, ResponsiveText>;
-  rowSpacing: Spacing;
-  columnSpacing: Spacing | Record<'gutter', number>;
-  borderWidth: Record<BorderWidthVariants, number>;
+  rowSpacing: SpacingToken;
+  columnSpacing: SpacingToken | Record<'gutter', number>;
+  borderWidth: Record<BorderWidth, number>;
 }
 
-type BackgroundColorVariants =
+type BackgroundColor =
   | 'input'
   | 'inputDisabled'
   | 'formAccent'
@@ -46,10 +46,10 @@ type BackgroundColorVariants =
   | 'info'
   | 'card'
   | 'critical';
-type BorderColorVariants = 'standard' | 'formAccent' | 'critical';
-type BorderRadiusVariants = 'standard';
-type BorderShadowVariants = 'focus';
-export type ColorVariants =
+type BorderColor = 'standard' | 'formAccent' | 'critical';
+type BorderRadius = 'standard';
+type BorderShadow = 'focus';
+export type Color =
   | 'black'
   | 'white'
   | 'critical'
@@ -58,7 +58,7 @@ export type ColorVariants =
   | 'formAccent'
   | 'neutral'
   | 'link';
-type FillVariants =
+type Fill =
   | 'currentColor'
   | 'formAccent'
   | 'formAccentDisabled'
@@ -66,15 +66,10 @@ type FillVariants =
   | 'positive'
   | 'secondary'
   | 'white';
-type FontFamilyVariants = 'text';
-type FontSizeVariant = TextSize | HeadingSize;
-export type FontWeightVariants = 'regular' | 'medium' | 'strong';
-export type DisplayVariants =
-  | 'block'
-  | 'inline'
-  | 'none'
-  | 'inlineBlock'
-  | 'flex';
+type FontFamily = 'text';
+type FontSize = TextSize | HeadingSize;
+export type FontWeight = 'regular' | 'medium' | 'strong';
+export type Display = 'block' | 'inline' | 'none' | 'inlineBlock' | 'flex';
 type ResetTags =
   | 'html'
   | 'body'
@@ -156,12 +151,12 @@ type ResetTags =
   | 'mark'
   | 'audio'
   | 'video';
-export type SizeVariants =
+export type IconSize =
   | 'standardText'
   | 'standardTextInline'
   | 'largeText'
   | 'largeTextInline';
-type SpacingVariant =
+type Spacing =
   | 'none'
   | 'xxsmall'
   | 'xsmall'
@@ -170,50 +165,50 @@ type SpacingVariant =
   | 'large'
   | 'xlarge'
   | 'xxlarge';
-type HorizontalSpacingVariant = SpacingVariant | 'gutter';
-type VerticalPaddingVariant = SpacingVariant | 'standardTouchableText';
-export type TransformVariant =
+type HorizontalSpacing = Spacing | 'gutter';
+type VerticalPadding = Spacing | 'standardTouchableText';
+export type Transform =
   | 'standardText'
   | 'largeText'
   | 'level1Heading'
   | 'level2Heading'
   | 'level3Heading';
-type TransitionVariants = 'fast';
+type Transition = 'fast';
 
 export interface Atoms {
   reset: Record<ResetTags, string>;
-  backgroundColor: Record<BackgroundColorVariants, string>;
-  borderColor: Record<BorderColorVariants, string>;
-  borderRadius: Record<BorderRadiusVariants, string>;
-  borderWidth: Record<BorderWidthVariants, string>;
-  boxShadow: Record<BorderShadowVariants, string>;
-  color: Record<ColorVariants, string>;
-  fill: Record<FillVariants, string>;
-  fontFamily: Record<FontFamilyVariants, string>;
-  fontSize: Record<FontSizeVariant, string>;
-  fontWeight: Record<FontWeightVariants, string>;
-  height: Record<SizeVariants, string>;
-  marginTop: Record<SpacingVariant, string>;
-  marginRight: Record<HorizontalSpacingVariant, string>;
-  marginBottom: Record<SpacingVariant, string>;
-  marginLeft: Record<HorizontalSpacingVariant, string>;
-  marginTopDesktop: Record<SpacingVariant, string>;
-  marginRightDesktop: Record<HorizontalSpacingVariant, string>;
-  marginBottomDesktop: Record<SpacingVariant, string>;
-  marginLeftDesktop: Record<HorizontalSpacingVariant, string>;
-  paddingTop: Record<VerticalPaddingVariant, string>;
-  paddingRight: Record<HorizontalSpacingVariant, string>;
-  paddingBottom: Record<VerticalPaddingVariant, string>;
-  paddingLeft: Record<HorizontalSpacingVariant, string>;
-  paddingTopDesktop: Record<VerticalPaddingVariant, string>;
-  paddingRightDesktop: Record<HorizontalSpacingVariant, string>;
-  paddingBottomDesktop: Record<VerticalPaddingVariant, string>;
-  paddingLeftDesktop: Record<HorizontalSpacingVariant, string>;
-  display: Record<DisplayVariants, string>;
-  displayDesktop: Record<DisplayVariants, string>;
-  transform: Record<TransformVariant, string>;
-  transition: Record<TransitionVariants, string>;
-  width: Record<SizeVariants, string>;
+  backgroundColor: Record<BackgroundColor, string>;
+  borderColor: Record<BorderColor, string>;
+  borderRadius: Record<BorderRadius, string>;
+  borderWidth: Record<BorderWidth, string>;
+  boxShadow: Record<BorderShadow, string>;
+  color: Record<Color, string>;
+  fill: Record<Fill, string>;
+  fontFamily: Record<FontFamily, string>;
+  fontSize: Record<FontSize, string>;
+  fontWeight: Record<FontWeight, string>;
+  height: Record<IconSize, string>;
+  marginTop: Record<Spacing, string>;
+  marginRight: Record<HorizontalSpacing, string>;
+  marginBottom: Record<Spacing, string>;
+  marginLeft: Record<HorizontalSpacing, string>;
+  marginTopDesktop: Record<Spacing, string>;
+  marginRightDesktop: Record<HorizontalSpacing, string>;
+  marginBottomDesktop: Record<Spacing, string>;
+  marginLeftDesktop: Record<HorizontalSpacing, string>;
+  paddingTop: Record<VerticalPadding, string>;
+  paddingRight: Record<HorizontalSpacing, string>;
+  paddingBottom: Record<VerticalPadding, string>;
+  paddingLeft: Record<HorizontalSpacing, string>;
+  paddingTopDesktop: Record<VerticalPadding, string>;
+  paddingRightDesktop: Record<HorizontalSpacing, string>;
+  paddingBottomDesktop: Record<VerticalPadding, string>;
+  paddingLeftDesktop: Record<HorizontalSpacing, string>;
+  display: Record<Display, string>;
+  displayDesktop: Record<Display, string>;
+  transform: Record<Transform, string>;
+  transition: Record<Transition, string>;
+  width: Record<IconSize, string>;
 }
 
 export interface Theme {
