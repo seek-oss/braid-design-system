@@ -11,6 +11,7 @@ export default class Divider extends Component<{}> {
         <Box
           borderWidth="standard"
           borderColor="standard"
+          width="full"
           className={styles.divider}
         />
       </Box>

@@ -147,6 +147,7 @@ export default class Radio extends Component<RadioProps, State> {
                         disabled ? 'formAccentDisabled' : 'formAccent'
                       }
                       transition="fast"
+                      width="full"
                       className={styles.radioIcon}
                     />
                   </Box>

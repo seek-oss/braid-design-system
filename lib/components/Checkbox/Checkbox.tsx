@@ -170,7 +170,11 @@ export default class Checkbox extends Component<CheckboxProps, State> {
                         styles.checkboxCritical,
                       )}
                     />
-                    <Box transition="fast" className={styles.checkboxIcon}>
+                    <Box
+                      transition="fast"
+                      width="full"
+                      className={styles.checkboxIcon}
+                    >
                       <TickIcon size="fill" fill="white" />
                     </Box>
                   </Box>
