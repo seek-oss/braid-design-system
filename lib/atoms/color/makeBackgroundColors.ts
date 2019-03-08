@@ -1,4 +1,4 @@
-export interface BackgroundColorParms {
+export interface BackgroundColorParams {
   input: string;
   inputDisabled: string;
   formAccent: string;
@@ -18,13 +18,15 @@ export default ({
   info,
   card,
   critical,
-}: BackgroundColorParms) => ({
-  '.backgroundColor_input': { background: input },
-  '.backgroundColor_inputDisabled': { background: inputDisabled },
-  '.backgroundColor_formAccent': { background: formAccent },
-  '.backgroundColor_formAccentDisabled': { background: formAccentDisabled },
-  '.backgroundColor_selection': { background: selection },
-  '.backgroundColor_info': { background: info },
-  '.backgroundColor_card': { background: card },
-  '.backgroundColor_critical': { background: critical },
+}: BackgroundColorParams) => ({
+  '.backgroundColor_input': { backgroundColor: input },
+  '.backgroundColor_inputDisabled': { backgroundColor: inputDisabled },
+  '.backgroundColor_formAccent': { backgroundColor: formAccent },
+  '.backgroundColor_formAccentDisabled': {
+    backgroundColor: formAccentDisabled,
+  },
+  '.backgroundColor_selection': { backgroundColor: selection },
+  '.backgroundColor_info': { backgroundColor: info },
+  '.backgroundColor_card': { backgroundColor: card },
+  '.backgroundColor_critical': { backgroundColor: critical },
 });

@@ -12,6 +12,10 @@ import {
   BackgroundColor,
   BorderColor,
   Display,
+  BoxShadow,
+  Transition,
+  Transform,
+  Width,
 } from '../../themes/theme';
 
 function getResponsiveClasses<AtomName extends string>(
@@ -44,6 +48,10 @@ export interface BoxProps extends ResetProps {
   borderRadius?: BorderRadius;
   backgroundColor?: BackgroundColor;
   borderColor?: BorderColor;
+  boxShadow?: BoxShadow;
+  transform?: Transform;
+  transition?: Transition;
+  width?: Width;
 }
 
 export default class Box extends Component<BoxProps> {
@@ -63,7 +71,11 @@ export default class Box extends Component<BoxProps> {
       borderWidth,
       borderRadius,
       backgroundColor,
-      borderColor = 'standard',
+      borderColor,
+      boxShadow,
+      transition,
+      transform,
+      width,
       className,
       ...restProps
     } = this.props;
@@ -80,6 +92,10 @@ export default class Box extends Component<BoxProps> {
                 atoms.borderColor[borderColor!],
                 atoms.borderWidth[borderWidth!],
                 atoms.borderRadius[borderRadius!],
+                atoms.boxShadow[boxShadow!],
+                atoms.transition[transition!],
+                atoms.transform[transform!],
+                atoms.width[width!],
                 marginTop &&
                   getResponsiveClasses(
                     atoms.marginTop,

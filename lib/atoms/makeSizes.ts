@@ -39,5 +39,14 @@ const makeSizeRules = (tokens: Tokens, property: string) => {
   return merge({}, ...rules);
 };
 
+const width = {
+  '.width_full': { width: '100%' },
+};
+
 export default (tokens: Tokens) =>
-  merge({}, makeSizeRules(tokens, 'height'), makeSizeRules(tokens, 'width'));
+  merge(
+    {},
+    makeSizeRules(tokens, 'height'),
+    makeSizeRules(tokens, 'width'),
+    width,
+  );

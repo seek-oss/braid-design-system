@@ -91,9 +91,7 @@ export default class Radio extends Component<RadioProps, State> {
               <div className={styles.content}>
                 <Box
                   component="label"
-                  className={classnames({
-                    [styles.label]: true,
-                  })}
+                  className={styles.label}
                   htmlFor={id}
                   onMouseOver={this.handleMouseOver}
                   onMouseOut={this.handleMouseOut}
@@ -113,6 +111,7 @@ export default class Radio extends Component<RadioProps, State> {
                   >
                     <Box
                       backgroundColor="input"
+                      borderColor="standard"
                       borderWidth="standard"
                       style={{ opacity: hovered ? 0 : 1 }}
                       className={styles.radio}
@@ -125,40 +124,31 @@ export default class Radio extends Component<RadioProps, State> {
                     />
                     <Box
                       backgroundColor="input"
-                      className={classnames(
-                        styles.radio,
-                        styles.radioFocus,
-                        theme.atoms.boxShadow.focus,
-                        theme.atoms.transition.fast,
-                      )}
+                      boxShadow="focus"
+                      transition="fast"
+                      className={classnames(styles.radio, styles.radioFocus)}
                     />
                     <Box
                       backgroundColor="inputDisabled"
                       borderWidth="standard"
-                      className={classnames(
-                        styles.radio,
-                        styles.radioDisabled,
-                        theme.atoms.transition.fast,
-                      )}
+                      borderColor="standard"
+                      transition="fast"
+                      className={classnames(styles.radio, styles.radioDisabled)}
                     />
                     <Box
                       borderColor="critical"
                       borderWidth="standard"
+                      transition="fast"
                       style={{ opacity: tone === 'critical' ? 1 : 0 }}
-                      className={classnames(
-                        styles.radio,
-                        styles.radioCritical,
-                        theme.atoms.transition.fast,
-                      )}
+                      className={classnames(styles.radio, styles.radioCritical)}
                     />
                     <Box
                       backgroundColor={
                         disabled ? 'formAccentDisabled' : 'formAccent'
                       }
-                      className={classnames(
-                        styles.radioIcon,
-                        theme.atoms.transition.fast,
-                      )}
+                      transition="fast"
+                      width="full"
+                      className={styles.radioIcon}
                     />
                   </Box>
                   <Box

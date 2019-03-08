@@ -48,7 +48,7 @@ type BackgroundColor =
   | 'critical';
 type BorderColor = 'standard' | 'formAccent' | 'critical';
 type BorderRadius = 'standard';
-type BorderShadow = 'focus';
+type BoxShadow = 'focus';
 export type Color =
   | 'black'
   | 'white'
@@ -156,6 +156,7 @@ export type IconSize =
   | 'standardTextInline'
   | 'largeText'
   | 'largeTextInline';
+export type Width = 'full';
 type Spacing =
   | 'none'
   | 'xxsmall'
@@ -181,7 +182,7 @@ export interface Atoms {
   borderColor: Record<BorderColor, string>;
   borderRadius: Record<BorderRadius, string>;
   borderWidth: Record<BorderWidth, string>;
-  boxShadow: Record<BorderShadow, string>;
+  boxShadow: Record<BoxShadow, string>;
   color: Record<Color, string>;
   fill: Record<Fill, string>;
   fontFamily: Record<FontFamily, string>;
@@ -208,7 +209,7 @@ export interface Atoms {
   displayDesktop: Record<Display, string>;
   transform: Record<Transform, string>;
   transition: Record<Transition, string>;
-  width: Record<IconSize, string>;
+  width: Record<IconSize | Width, string>;
 }
 
 export interface Theme {

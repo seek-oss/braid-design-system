@@ -92,9 +92,7 @@ export default class Checkbox extends Component<CheckboxProps, State> {
               <div className={styles.content}>
                 <Box
                   component="label"
-                  className={classnames({
-                    [styles.label]: true,
-                  })}
+                  className={styles.label}
                   htmlFor={id}
                   onMouseOver={this.handleMouseOver}
                   onMouseOut={this.handleMouseOut}
@@ -115,71 +113,67 @@ export default class Checkbox extends Component<CheckboxProps, State> {
                     <Box
                       backgroundColor="input"
                       borderWidth="standard"
-                      className={classnames(
-                        styles.checkbox,
-                        theme.atoms.borderRadius.standard,
-                      )}
+                      borderColor="standard"
+                      borderRadius="standard"
+                      className={styles.checkbox}
                     />
                     <Box
                       backgroundColor="input"
                       borderColor="formAccent"
                       borderWidth="standard"
+                      borderRadius="standard"
                       className={classnames(
                         styles.checkbox,
                         styles.checkboxHover,
-                        theme.atoms.borderRadius.standard,
                       )}
                     />
                     <Box
                       backgroundColor="input"
+                      boxShadow="focus"
+                      borderRadius="standard"
+                      transition="fast"
                       className={classnames(
                         styles.checkbox,
                         styles.checkboxFocus,
-                        theme.atoms.boxShadow.focus,
-                        theme.atoms.borderRadius.standard,
-                        theme.atoms.transition.fast,
                       )}
                     />
                     <Box
-                      backgroundColor="input"
-                      borderColor="formAccent"
-                      borderWidth="standard"
+                      backgroundColor="formAccent"
+                      borderRadius="standard"
+                      transition="fast"
                       className={classnames(
                         styles.checkbox,
                         styles.checkboxChecked,
-                        theme.atoms.backgroundColor.formAccent,
-                        theme.atoms.borderRadius.standard,
-                        theme.atoms.transition.fast,
                       )}
                     />
                     <Box
                       backgroundColor="inputDisabled"
                       borderWidth="standard"
+                      borderColor="standard"
+                      borderRadius="standard"
+                      transition="fast"
                       className={classnames(
                         styles.checkbox,
                         styles.checkboxDisabled,
-                        theme.atoms.borderRadius.standard,
-                        theme.atoms.transition.fast,
                       )}
                     />
                     <Box
                       borderColor="critical"
                       borderWidth="standard"
+                      borderRadius="standard"
+                      transition="fast"
                       style={{
                         opacity: tone === 'critical' ? 1 : 0,
                       }}
                       className={classnames(
                         styles.checkbox,
                         styles.checkboxCritical,
-                        theme.atoms.borderRadius.standard,
-                        theme.atoms.transition.fast,
                       )}
                     />
                     <Box
-                      className={classnames(
-                        styles.checkboxIcon,
-                        theme.atoms.transition.fast,
-                      )}
+                      transition="fast"
+                      width="full"
+                      className={styles.checkboxIcon}
                     >
                       <TickIcon size="fill" fill="white" />
                     </Box>

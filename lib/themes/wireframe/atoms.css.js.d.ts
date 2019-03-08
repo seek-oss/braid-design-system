@@ -198,6 +198,7 @@ export const transform_level2Heading: string;
 export const transform_level3Heading: string;
 export const transform_standardText: string;
 export const transition_fast: string;
+export const width_full: string;
 export const width_largeText: string;
 export const width_largeTextInline: string;
 export const width_standardText: string;
