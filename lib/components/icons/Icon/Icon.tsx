@@ -3,19 +3,19 @@ import classnames from 'classnames';
 import Box from '../../Box/Box';
 import ThemeConsumer from '../../ThemeConsumer/ThemeConsumer';
 import styles from './Icon.css.js';
-import { TextSize, FillVariants, SizeVariants } from '../../../themes/theme';
+import { TextSize, Fill, IconSize } from '../../../themes/theme';
 
 export interface IconProps {
   size?: TextSize | 'fill';
   inline?: boolean;
-  fill?: FillVariants;
+  fill?: Fill;
   svgComponent: ComponentType;
 }
 
-const isSizeVariant = (
-  atom: Record<SizeVariants, string>,
+const isIconSize = (
+  atom: Record<IconSize, string>,
   sizeAtom: string,
-): sizeAtom is SizeVariants => Object.keys(atom).indexOf(sizeAtom) > -1;
+): sizeAtom is IconSize => Object.keys(atom).indexOf(sizeAtom) > -1;
 
 export default class Icon extends Component<IconProps> {
   static displayName = 'Icon';
@@ -31,10 +31,10 @@ export default class Icon extends Component<IconProps> {
             fill,
           } = this.props;
           const sizeAtom = `${size}Text${inline ? 'Inline' : ''}`;
-          const widthAtom = isSizeVariant(theme.atoms.width, sizeAtom)
+          const widthAtom = isIconSize(theme.atoms.width, sizeAtom)
             ? theme.atoms.width[sizeAtom]
             : '';
-          const heightAtom = isSizeVariant(theme.atoms.height, sizeAtom)
+          const heightAtom = isIconSize(theme.atoms.height, sizeAtom)
             ? theme.atoms.height[sizeAtom]
             : '';
 

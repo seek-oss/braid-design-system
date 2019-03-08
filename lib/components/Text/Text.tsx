@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import ThemeConsumer from '../ThemeConsumer/ThemeConsumer';
 import styles from './Text.css.js';
 import Box, { BoxProps } from '../Box/Box';
-import { ColorVariants, FontWeightVariants, Theme } from '../../themes/theme';
+import { Color, FontWeight, Theme } from '../../themes/theme';
 
 type TextSize = 'standard' | 'large';
 
@@ -27,8 +27,8 @@ const resolveTransformAtom = (
 export interface TextProps extends Pick<BoxProps, 'component'> {
   children?: ReactNode;
   size?: TextSize;
-  color?: ColorVariants;
-  weight?: FontWeightVariants;
+  color?: Color;
+  weight?: FontWeight;
   baseline?: boolean;
 }
 

@@ -2,20 +2,15 @@ import React, { Component, ReactNode } from 'react';
 import classnames from 'classnames';
 import ThemeConsumer from '../ThemeConsumer/ThemeConsumer';
 import Box, { BoxProps } from '../Box/Box';
-import {
-  HeadingSize,
-  TransformVariant,
-  FontWeightVariants,
-  Tokens,
-} from '../../themes/theme';
+import { HeadingSize, Transform, FontWeight, Tokens } from '../../themes/theme';
 
 type HeadingLevel = '1' | '2' | '3';
 type HeadingWeight = 'regular' | 'weak';
 
 interface HeadingOptions {
   fontSize: HeadingSize;
-  transform: TransformVariant;
-  fontWeight: FontWeightVariants;
+  transform: Transform;
+  fontWeight: FontWeight;
   component: Exclude<BoxProps['component'], undefined>;
 }
 const resolveHeadingOptions = (

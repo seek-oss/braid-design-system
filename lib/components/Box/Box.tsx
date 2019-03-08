@@ -4,14 +4,14 @@ import ThemeConsumer from '../ThemeConsumer/ThemeConsumer';
 import Reset, { ResetProps } from '../Reset/Reset';
 import styles from './Box.css.js';
 import {
-  HorizontalSpacingVariant,
-  VerticalPaddingVariant,
-  SpacingVariant,
-  BorderWidthVariants,
-  BorderRadiusVariants,
-  BackgroundColorVariants,
-  BorderColorVariants,
-  DisplayVariants,
+  HorizontalSpacing,
+  VerticalPadding,
+  Spacing,
+  BorderWidth,
+  BorderRadius,
+  BackgroundColor,
+  BorderColor,
+  Display,
 } from '../../themes/theme';
 
 function getResponsiveClasses<AtomName extends string>(
@@ -31,19 +31,19 @@ function getResponsiveClasses<AtomName extends string>(
 type ResponsiveProp<AtomName> = AtomName | [AtomName, AtomName];
 
 export interface BoxProps extends ResetProps {
-  paddingTop?: ResponsiveProp<VerticalPaddingVariant>;
-  paddingBottom?: ResponsiveProp<VerticalPaddingVariant>;
-  paddingLeft?: ResponsiveProp<HorizontalSpacingVariant>;
-  paddingRight?: ResponsiveProp<HorizontalSpacingVariant>;
-  marginTop?: ResponsiveProp<SpacingVariant>;
-  marginBottom?: ResponsiveProp<SpacingVariant>;
-  marginLeft?: ResponsiveProp<HorizontalSpacingVariant>;
-  marginRight?: ResponsiveProp<HorizontalSpacingVariant>;
-  display?: ResponsiveProp<DisplayVariants>;
-  borderWidth?: BorderWidthVariants;
-  borderRadius?: BorderRadiusVariants;
-  backgroundColor?: BackgroundColorVariants;
-  borderColor?: BorderColorVariants;
+  paddingTop?: ResponsiveProp<VerticalPadding>;
+  paddingBottom?: ResponsiveProp<VerticalPadding>;
+  paddingLeft?: ResponsiveProp<HorizontalSpacing>;
+  paddingRight?: ResponsiveProp<HorizontalSpacing>;
+  marginTop?: ResponsiveProp<Spacing>;
+  marginBottom?: ResponsiveProp<Spacing>;
+  marginLeft?: ResponsiveProp<HorizontalSpacing>;
+  marginRight?: ResponsiveProp<HorizontalSpacing>;
+  display?: ResponsiveProp<Display>;
+  borderWidth?: BorderWidth;
+  borderRadius?: BorderRadius;
+  backgroundColor?: BackgroundColor;
+  borderColor?: BorderColor;
 }
 
 export default class Box extends Component<BoxProps> {
