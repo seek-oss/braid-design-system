@@ -25,7 +25,7 @@ const backgroundColor: Record<
     strong: 'brandAccent',
   },
   hover: {
-    weak: undefined,
+    weak: 'formAccentHover',
     regular: 'formAccentHover',
     strong: 'brandAccentHover',
   },
