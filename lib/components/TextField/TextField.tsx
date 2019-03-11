@@ -21,18 +21,7 @@ interface TextFieldProps
   placeholder?: string;
   message?: ReactNode | false;
   tone?: 'neutral' | 'critical' | 'positive';
-  type?:
-    | 'text'
-    | 'password'
-    | 'email'
-    | 'search'
-    | 'number'
-    | 'tel'
-    | 'url'
-    | 'range'
-    | 'date'
-    | 'week'
-    | 'month';
+  type?: 'text' | 'password' | 'email' | 'search' | 'number' | 'tel' | 'url';
 }
 
 export default class TextField extends Component<TextFieldProps> {
