@@ -11,7 +11,6 @@ after_success:
       if [ -n "$TRAVIS_PULL_REQUEST_SHA" ]; then
         npm run travis-deploy-once "npm run deploy-preview -- -d braid-design-system--${TRAVIS_PULL_REQUEST_SHA}.surge.sh";
         npm run travis-deploy-once "npm run post-commit-status";
-        npm run semantic-release -- --dry-run --no-ci;
       elif [ "$TRAVIS_BRANCH" == "master" ]; then
         npm run travis-deploy-once "npm run semantic-release";
 
