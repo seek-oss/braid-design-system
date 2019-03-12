@@ -42,7 +42,7 @@ const docs: ComponentDocs = {
         <div style={{ maxWidth: '300px' }}>
           <FieldLabel
             id="all"
-            secondaryLabel="eg. Mr"
+            secondaryLabel="Optional"
             tertiaryLabel={<TextLink inline>Help?</TextLink>}
           >
             Title
