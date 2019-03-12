@@ -25,4 +25,7 @@ export default (
   '.boxShadow_borderFormAccent': {
     boxShadow: `inset 0 0 0 ${px(borderWidth.standard)} ${borderFormAccent}`,
   },
+  '.boxShadow_borderFormAccentLarge': {
+    boxShadow: `inset 0 0 0 ${px(borderWidth.large)} ${borderFormAccent}`,
+  },
 });

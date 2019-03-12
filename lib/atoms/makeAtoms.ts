@@ -17,7 +17,7 @@ import makeBackgroundColors, {
 import makeBoxShadows, { BoxShadowParams } from './makeBoxShadows';
 import makePadding from './makePadding';
 import makeMargins from './makeMargins';
-import makeTransforms from './makeTransforms';
+import makeTransforms, { TransformParams } from './makeTransforms';
 import makeSizes from './makeSizes';
 import makeFontSizes from './font/makeFontSizes';
 import makeFills, { FillParams } from './color/makeFills';
@@ -31,6 +31,7 @@ const makeAtoms = (
   boxShadows: BoxShadowParams,
   fontWeights: FontWeightParams,
   backgroundColor: BackgroundColorParams,
+  transforms: TransformParams,
 ): Css => {
   const rules = merge(
     makeFontSizes(tokens),
@@ -45,7 +46,7 @@ const makeAtoms = (
     makeMargins(tokens),
     makePadding(tokens),
     makeDisplayRules(tokens),
-    makeTransforms(tokens),
+    makeTransforms(tokens, transforms),
     makeTransitions(),
   );
 
