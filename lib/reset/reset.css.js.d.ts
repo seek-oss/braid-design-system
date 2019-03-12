@@ -12,6 +12,7 @@ export const b: string;
 export const big: string;
 export const blockquote: string;
 export const body: string;
+export const button: string;
 export const canvas: string;
 export const caption: string;
 export const center: string;

@@ -20,7 +20,11 @@ const createRules = (tokens: Tokens, type: any, className: string) => {
   });
 };
 
-export default (tokens: Tokens) => {
+export interface TransformParams {
+  touchable: string;
+}
+
+export default (tokens: Tokens, transforms: TransformParams) => {
   const textRules = toPairs(tokens.text).map(([typeName, type]) =>
     createRules(tokens, type, `${typeName}Text`),
   );
@@ -28,5 +32,9 @@ export default (tokens: Tokens) => {
     createRules(tokens, type, `${typeName}Heading`),
   );
 
-  return merge({}, ...textRules, ...headingRules);
+  const transformRules = {
+    '.transform_touchable': { '&:active': { transform: transforms.touchable } },
+  };
+
+  return merge({}, ...textRules, ...headingRules, transformRules);
 };

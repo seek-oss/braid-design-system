@@ -9,7 +9,12 @@ export default (
   backgroundColor: {
     card: atoms.backgroundColor_card,
     critical: atoms.backgroundColor_critical,
+    brandAccent: atoms.backgroundColor_brandAccent,
+    brandAccentActive: atoms.backgroundColor_brandAccentActive,
+    brandAccentHover: atoms.backgroundColor_brandAccentHover,
     formAccent: atoms.backgroundColor_formAccent,
+    formAccentActive: atoms.backgroundColor_formAccentActive,
+    formAccentHover: atoms.backgroundColor_formAccentHover,
     formAccentDisabled: atoms.backgroundColor_formAccentDisabled,
     info: atoms.backgroundColor_info,
     input: atoms.backgroundColor_input,
@@ -24,11 +29,13 @@ export default (
     borderStandard: atoms.boxShadow_borderStandard,
     borderCritical: atoms.boxShadow_borderCritical,
     borderFormAccent: atoms.boxShadow_borderFormAccent,
+    borderFormAccentLarge: atoms.boxShadow_borderFormAccentLarge,
   },
   color: {
     link: atoms.color_link,
     black: atoms.color_black,
     critical: atoms.color_critical,
+    brandAccentForeground: atoms.color_brandAccentForeground,
     formAccent: atoms.color_formAccent,
     neutral: atoms.color_neutral,
     positive: atoms.color_positive,
@@ -257,9 +264,11 @@ export default (
     level2Heading: atoms.transform_level2Heading,
     level3Heading: atoms.transform_level3Heading,
     standardText: atoms.transform_standardText,
+    touchable: atoms.transform_touchable,
   },
   transition: {
     fast: atoms.transition_fast,
+    touchable: atoms.transition_touchable,
   },
   width: {
     largeText: atoms.width_largeText,

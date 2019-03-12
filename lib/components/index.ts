@@ -9,6 +9,7 @@ export { default as Alert } from './Alert/Alert';
 export { default as Box } from './Box/Box';
 export { default as Bullet } from './Bullet/Bullet';
 export { default as BulletList } from './BulletList/BulletList';
+export { default as Button } from './Button/Button';
 export { default as Card } from './Card/Card';
 export { default as Checkbox } from './Checkbox/Checkbox';
 export { default as Column } from './Column/Column';
