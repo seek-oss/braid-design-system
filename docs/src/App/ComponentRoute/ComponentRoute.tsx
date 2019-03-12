@@ -13,6 +13,9 @@ import {
 import { ComponentDocs } from '../../types';
 
 const themes = [wireframe, jobStreet, seekAsia, seekAnz];
+const handler = () => {
+  /* No-op for docs examples  */
+};
 
 const cleanCodeSnippet = (code: string) =>
   code.replace(/<HideCode>.*?<\/HideCode>/gs, '...');
@@ -65,7 +68,10 @@ export default class ComponentRoute extends Component<ComponentRouteProps> {
                       <Text color="secondary">Theme: {theme.name}</Text>
                     </Box>
                     <ThemeProvider theme={theme}>
-                      {render({ id: `${index}_${theme.name}` })}
+                      {render({
+                        id: `${index}_${theme.name}`,
+                        handler,
+                      })}
                     </ThemeProvider>
                   </Box>
                 ))

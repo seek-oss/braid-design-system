@@ -12,6 +12,6 @@ export interface ComponentDocs {
 
 export interface ComponentExample {
   label?: string;
-  render?: (args: { id: string }) => ReactNode;
+  render?: (args: { id: string; handler?: function }) => ReactNode;
   code?: string;
 }

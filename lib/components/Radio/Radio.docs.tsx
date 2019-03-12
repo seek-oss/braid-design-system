@@ -3,23 +3,21 @@ import Radio from './Radio';
 import Text from '../Text/Text';
 import { ComponentDocs } from '../../../docs/src/types';
 
-const handleChange = () => undefined;
-
 const docs: ComponentDocs = {
   examples: [
     {
       label: 'Standard Radio Button',
-      render: ({ id }) => (
-        <Radio id={id} checked={false} onChange={handleChange} label="Label" />
+      render: ({ id, handler }) => (
+        <Radio id={id} checked={false} onChange={handler} label="Label" />
       ),
     },
     {
       label: 'Radio Button without Message Placeholder',
-      render: ({ id }) => (
+      render: ({ id, handler }) => (
         <Radio
           id={id}
           checked={false}
-          onChange={handleChange}
+          onChange={handler}
           label="Label"
           message={false}
         />
@@ -27,11 +25,11 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Checked Radio Button',
-      render: ({ id }) => (
+      render: ({ id, handler }) => (
         <Radio
           id={id}
           checked={true}
-          onChange={handleChange}
+          onChange={handler}
           label="Label"
           message={false}
         />
@@ -39,12 +37,12 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Disabled Radio Button',
-      render: ({ id }) => (
+      render: ({ id, handler }) => (
         <Radio
           id={id}
           disabled={true}
           checked={false}
-          onChange={handleChange}
+          onChange={handler}
           label="Label"
           message={false}
         />
@@ -52,11 +50,11 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Critical Radio Button',
-      render: ({ id }) => (
+      render: ({ id, handler }) => (
         <Radio
           id={id}
           checked={false}
-          onChange={handleChange}
+          onChange={handler}
           label="Label"
           message="This is a critical message"
           tone="critical"
@@ -65,11 +63,11 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Positive Radio Button',
-      render: ({ id }) => (
+      render: ({ id, handler }) => (
         <Radio
           id={id}
           checked={false}
-          onChange={handleChange}
+          onChange={handler}
           label="Label"
           message="This is a positive message"
           tone="positive"
@@ -78,11 +76,11 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Nested Radio Button',
-      render: ({ id }) => (
+      render: ({ id, handler }) => (
         <Radio
           id={id}
           checked={true}
-          onChange={handleChange}
+          onChange={handler}
           label="Label"
           message={false}
         >

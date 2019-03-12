@@ -7,14 +7,12 @@ const docs: ComponentDocs = {
   examples: [
     {
       label: 'TextField',
-      render: ({ id }) => (
+      render: ({ id, handler }) => (
         <div style={{ maxWidth: '300px' }}>
           <TextField
             label="Job Title"
             id={id}
-            onChange={() => {
-              /*...*/
-            }}
+            onChange={handler}
             value="Senior Developer"
           />
         </div>
@@ -22,39 +20,35 @@ const docs: ComponentDocs = {
     },
     {
       label: 'TextField with message',
-      render: ({ id }) => (
+      render: ({ id, handler }) => (
         <div style={{ maxWidth: '300px' }}>
           <TextField
             label="Job Title"
             id={id}
             value=""
             message="e.g. Senior Developer"
-            onChange={() => {
-              /*...*/
-            }}
+            onChange={handler}
           />
         </div>
       ),
     },
     {
       label: 'TextField with secondary label',
-      render: ({ id }) => (
+      render: ({ id, handler }) => (
         <div style={{ maxWidth: '300px' }}>
           <TextField
             label="Title"
             secondaryLabel="Optional"
             id={id}
             value=""
-            onChange={() => {
-              /*...*/
-            }}
+            onChange={handler}
           />
         </div>
       ),
     },
     {
       label: 'TextField with tertiary label',
-      render: ({ id }) => (
+      render: ({ id, handler }) => (
         <div style={{ maxWidth: '300px' }}>
           <TextField
             label="Title"
@@ -62,16 +56,14 @@ const docs: ComponentDocs = {
             tertiaryLabel={<TextLink inline>Help?</TextLink>}
             id={id}
             value=""
-            onChange={() => {
-              /*...*/
-            }}
+            onChange={handler}
           />
         </div>
       ),
     },
     {
       label: 'TextField with error',
-      render: ({ id }) => (
+      render: ({ id, handler }) => (
         <div style={{ maxWidth: '300px' }}>
           <TextField
             label="Do you like Braid?"
@@ -79,16 +71,14 @@ const docs: ComponentDocs = {
             id={id}
             value="No"
             message="Answer is incorrect"
-            onChange={() => {
-              /*...*/
-            }}
+            onChange={handler}
           />
         </div>
       ),
     },
     {
       label: 'TextField with postive message',
-      render: ({ id }) => (
+      render: ({ id, handler }) => (
         <div style={{ maxWidth: '300px' }}>
           <TextField
             label="Do you like Braid?"
@@ -96,9 +86,7 @@ const docs: ComponentDocs = {
             value="Yes"
             message="Nice one!"
             tone="positive"
-            onChange={() => {
-              /*...*/
-            }}
+            onChange={handler}
           />
         </div>
       ),

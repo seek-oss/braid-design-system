@@ -3,28 +3,21 @@ import Checkbox from './Checkbox';
 import Text from '../Text/Text';
 import { ComponentDocs } from '../../../docs/src/types';
 
-const handleChange = () => undefined;
-
 const docs: ComponentDocs = {
   examples: [
     {
       label: 'Standard Checkbox',
-      render: ({ id }) => (
-        <Checkbox
-          id={id}
-          checked={false}
-          onChange={handleChange}
-          label="Label"
-        />
+      render: ({ id, handler }) => (
+        <Checkbox id={id} checked={false} onChange={handler} label="Label" />
       ),
     },
     {
       label: 'Checkbox without Message Placeholder',
-      render: ({ id }) => (
+      render: ({ id, handler }) => (
         <Checkbox
           id={id}
           checked={false}
-          onChange={handleChange}
+          onChange={handler}
           label="Label"
           message={false}
         />
@@ -32,11 +25,11 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Checked Checkbox',
-      render: ({ id }) => (
+      render: ({ id, handler }) => (
         <Checkbox
           id={id}
           checked={true}
-          onChange={handleChange}
+          onChange={handler}
           label="Label"
           message={false}
         />
@@ -44,12 +37,12 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Disabled Checkbox',
-      render: ({ id }) => (
+      render: ({ id, handler }) => (
         <Checkbox
           id={id}
           disabled={true}
           checked={false}
-          onChange={handleChange}
+          onChange={handler}
           label="Label"
           message={false}
         />
@@ -57,11 +50,11 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Critical Checkbox',
-      render: ({ id }) => (
+      render: ({ id, handler }) => (
         <Checkbox
           id={id}
           checked={false}
-          onChange={handleChange}
+          onChange={handler}
           label="Label"
           message="This is a critical message"
           tone="critical"
@@ -70,11 +63,11 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Positive Checkbox',
-      render: ({ id }) => (
+      render: ({ id, handler }) => (
         <Checkbox
           id={id}
           checked={false}
-          onChange={handleChange}
+          onChange={handler}
           label="Label"
           message="This is a positive message"
           tone="positive"
@@ -83,11 +76,11 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Nested Checkbox',
-      render: ({ id }) => (
+      render: ({ id, handler }) => (
         <Checkbox
           id={id}
           checked={true}
-          onChange={handleChange}
+          onChange={handler}
           label="Label"
           message={false}
         >
