@@ -44,6 +44,7 @@ export const html: string;
 export const i: string;
 export const iframe: string;
 export const img: string;
+export const input: string;
 export const ins: string;
 export const kbd: string;
 export const label: string;
