@@ -21,6 +21,7 @@ export { default as Heading } from './Heading/Heading';
 export { default as Hidden } from './Hidden/Hidden';
 export { default as Radio } from './Radio/Radio';
 export { default as Reset } from './Reset/Reset';
+export { default as Secondary } from './Secondary/Secondary';
 export { default as Strong } from './Strong/Strong';
 export { default as Text } from './Text/Text';
 export { default as TextLink } from './TextLink/TextLink';
