@@ -11,6 +11,20 @@ import FieldMessage from '../FieldMessage/FieldMessage';
 import classnames from 'classnames';
 import styles from './TextField.css.js';
 
+// We need a type assertion for each entry in the array
+// so that TypeScript can generate a union type.
+// We can clean this up once this is released (scheduled for TypeScript 3.4):
+// https://github.com/Microsoft/TypeScript/pull/29510
+const allowedTypes = [
+  'text' as 'text',
+  'password' as 'password',
+  'email' as 'email',
+  'search' as 'search',
+  'number' as 'number',
+  'tel' as 'tel',
+  'url' as 'url',
+];
+
 type InputProps = AllHTMLAttributes<HTMLInputElement>;
 type RequiredInputProps = 'id' | 'value' | 'onChange';
 interface TextFieldProps
@@ -21,7 +35,7 @@ interface TextFieldProps
   placeholder?: string;
   message?: ReactNode | false;
   tone?: 'neutral' | 'critical' | 'positive';
-  type?: 'text' | 'password' | 'email' | 'search' | 'number' | 'tel' | 'url';
+  type?: typeof allowedTypes[number];
 }
 
 export default class TextField extends Component<TextFieldProps> {
@@ -57,7 +71,7 @@ export default class TextField extends Component<TextFieldProps> {
             <Box className={styles.root}>
               <Box
                 component="input"
-                type={type}
+                type={allowedTypes.indexOf(type) >= 0 ? type : undefined}
                 id={id}
                 backgroundColor="input"
                 boxShadow={
