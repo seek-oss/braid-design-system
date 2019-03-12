@@ -7,7 +7,7 @@ import styles from './FieldLabel.css.js';
 
 export interface FieldLabelProps {
   id: string;
-  children?: ReactNode;
+  label?: ReactNode;
   secondaryLabel?: ReactNode;
   tertiaryLabel?: ReactNode;
 }
@@ -16,13 +16,13 @@ export default class FieldLabel extends Component<FieldLabelProps> {
   static displayName = 'FieldLabel';
 
   render() {
-    const { children, id, secondaryLabel, tertiaryLabel } = this.props;
+    const { label, id, secondaryLabel, tertiaryLabel } = this.props;
 
-    return (
+    return label ? (
       <Box paddingBottom="xsmall" display="flex" className={styles.root}>
         <label htmlFor={id}>
           <Text component="span">
-            <Strong>{children}</Strong>
+            <Strong>{label}</Strong>
             {secondaryLabel ? (
               <Secondary>&nbsp;({secondaryLabel})</Secondary>
             ) : null}
@@ -32,6 +32,6 @@ export default class FieldLabel extends Component<FieldLabelProps> {
           <Text component="span">&nbsp;{tertiaryLabel}</Text>
         ) : null}
       </Box>
-    );
+    ) : null;
   }
 }

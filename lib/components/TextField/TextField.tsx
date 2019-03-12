@@ -55,15 +55,12 @@ export default class TextField extends Component<TextFieldProps> {
       <ThemeConsumer>
         {theme => (
           <Fragment>
-            {label ? (
-              <FieldLabel
-                id={id}
-                secondaryLabel={secondaryLabel}
-                tertiaryLabel={tertiaryLabel}
-              >
-                {label}
-              </FieldLabel>
-            ) : null}
+            <FieldLabel
+              id={id}
+              label={label}
+              secondaryLabel={secondaryLabel}
+              tertiaryLabel={tertiaryLabel}
+            />
             <Box className={styles.root}>
               <Box
                 component="input"
@@ -97,9 +94,7 @@ export default class TextField extends Component<TextFieldProps> {
                 paddingBottom="standardTouchableText"
               />
             </Box>
-            {message === false ? null : (
-              <FieldMessage tone={tone} message={message} />
-            )}
+            <FieldMessage tone={tone} message={message} />
           </Fragment>
         )}
       </ThemeConsumer>
