@@ -10,12 +10,12 @@ const docs: ComponentDocs = {
       render: ({ id }) => (
         <div style={{ maxWidth: '300px' }}>
           <TextField
-            label="First name"
+            label="Job Title"
             id={id}
             onChange={() => {
               /*...*/
             }}
-            value="Burt"
+            value="Senior Developer"
           />
         </div>
       ),
@@ -25,10 +25,10 @@ const docs: ComponentDocs = {
       render: ({ id }) => (
         <div style={{ maxWidth: '300px' }}>
           <TextField
-            label="Nickname"
+            label="Job Title"
             id={id}
-            value="No"
-            message="e.g. Gandalf"
+            value=""
+            message="e.g. Senior Developer"
             onChange={() => {
               /*...*/
             }}
@@ -42,7 +42,7 @@ const docs: ComponentDocs = {
         <div style={{ maxWidth: '300px' }}>
           <TextField
             label="Title"
-            secondaryLabel="eg. Mr"
+            secondaryLabel="Optional"
             id={id}
             value=""
             onChange={() => {
@@ -58,7 +58,7 @@ const docs: ComponentDocs = {
         <div style={{ maxWidth: '300px' }}>
           <TextField
             label="Title"
-            secondaryLabel="eg. Mr"
+            secondaryLabel="Optional"
             tertiaryLabel={<TextLink inline>Help?</TextLink>}
             id={id}
             value=""
@@ -74,7 +74,7 @@ const docs: ComponentDocs = {
       render: ({ id }) => (
         <div style={{ maxWidth: '300px' }}>
           <TextField
-            label="Do you like pineapple pizza?"
+            label="Do you like Braid?"
             tone="critical"
             id={id}
             value="No"
@@ -93,7 +93,7 @@ const docs: ComponentDocs = {
           <TextField
             label="Do you like Braid?"
             id={id}
-            value="Yeah"
+            value="Yes"
             message="Nice one!"
             tone="positive"
             onChange={() => {
