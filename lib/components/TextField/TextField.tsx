@@ -11,7 +11,7 @@ import FieldMessage from '../FieldMessage/FieldMessage';
 import classnames from 'classnames';
 import styles from './TextField.css.js';
 
-const allowedTypes = {
+const validTypes = {
   text: 'text',
   password: 'password',
   email: 'email',
@@ -31,7 +31,7 @@ interface TextFieldProps
   placeholder?: string;
   message?: ReactNode | false;
   tone?: 'neutral' | 'critical' | 'positive';
-  type?: keyof typeof allowedTypes;
+  type?: keyof typeof validTypes;
 }
 
 export default class TextField extends Component<TextFieldProps> {
@@ -67,7 +67,7 @@ export default class TextField extends Component<TextFieldProps> {
             <Box className={styles.root}>
               <Box
                 component="input"
-                type={allowedTypes[type]}
+                type={validTypes[type]}
                 id={id}
                 backgroundColor="input"
                 boxShadow={
