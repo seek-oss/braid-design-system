@@ -1,7 +1,8 @@
 import React, { Component, ReactNode } from 'react';
 import Box from '../Box/Box';
+import Secondary from '../Secondary/Secondary';
+import Strong from '../Strong/Strong';
 import Text from '../Text/Text';
-import ThemeConsumer from '../ThemeConsumer/ThemeConsumer';
 import styles from './FieldLabel.css.js';
 
 export interface FieldLabelProps {
@@ -18,25 +19,19 @@ export default class FieldLabel extends Component<FieldLabelProps> {
     const { children, id, secondaryLabel, tertiaryLabel } = this.props;
 
     return (
-      <ThemeConsumer>
-        {theme => (
-          <Box paddingBottom="xsmall" display="flex" className={styles.root}>
-            <Text component="span">
-              <label htmlFor={id} className={theme.atoms.fontWeight.strong}>
-                {children}
-              </label>
-              {secondaryLabel ? (
-                <span className={theme.atoms.color.secondary}>
-                  {` (${secondaryLabel})`}
-                </span>
-              ) : null}
-            </Text>
-            {tertiaryLabel ? (
-              <Text component="span">&nbsp;{tertiaryLabel}</Text>
+      <Box paddingBottom="xsmall" display="flex" className={styles.root}>
+        <label htmlFor={id}>
+          <Text component="span">
+            <Strong>{children}</Strong>
+            {secondaryLabel ? (
+              <Secondary>&nbsp;({secondaryLabel})</Secondary>
             ) : null}
-          </Box>
-        )}
-      </ThemeConsumer>
+          </Text>
+        </label>
+        {tertiaryLabel ? (
+          <Text component="span">&nbsp;{tertiaryLabel}</Text>
+        ) : null}
+      </Box>
     );
   }
 }
