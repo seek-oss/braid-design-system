@@ -82,7 +82,7 @@
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.1.0",
     "@commitlint/cli": "^7.2.1",
-    "@octokit/rest": "^15.16.1",
+    "@octokit/rest": "^16.17.0",
     "@semantic-release/commit-analyzer": "^6.1.0",
     "@semantic-release/release-notes-generator": "^7.1.4",
     "@semantic-release/npm": "^5.1.4",
