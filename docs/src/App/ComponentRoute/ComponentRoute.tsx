@@ -14,7 +14,7 @@ import { ComponentDocs } from '../../types';
 
 const themes = [wireframe, jobStreet, seekAsia, seekAnz];
 const handler = () => {
-  /* No-op for docs examples  */
+  /* No-op for docs examples */
 };
 
 const cleanCodeSnippet = (code: string) =>
@@ -93,7 +93,7 @@ export default class ComponentRoute extends Component<ComponentRouteProps> {
               <Text component="pre" color="white">
                 {render && !code
                   ? cleanCodeSnippet(
-                      reactElementToJSXString(render({ id: 'id' }), {
+                      reactElementToJSXString(render({ id: 'id', handler }), {
                         useBooleanShorthandSyntax: false,
                         showDefaultProps: false,
                         showFunctions: true,
