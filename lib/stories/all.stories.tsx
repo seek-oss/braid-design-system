@@ -6,6 +6,10 @@ import * as themes from '../themes';
 import { ThemeProvider } from '../components';
 import { ComponentDocs } from '../../docs/src/types';
 
+const handler = () => {
+  /* No-op for docs examples */
+};
+
 const req = require.context('../components', true, /\.docs\.tsx?$/);
 req.keys().forEach(filename => {
   const matches = filename.match(/([a-zA-Z]+)\.docs\.tsx?$/);
@@ -29,7 +33,9 @@ req.keys().forEach(filename => {
     values(themes).forEach(theme => {
       stories.add(`${label} (${theme.name})`, () => (
         <BrowserRouter>
-          <ThemeProvider theme={theme}>{render({ id: 'id' })}</ThemeProvider>
+          <ThemeProvider theme={theme}>
+            {render({ id: 'id', handler })}
+          </ThemeProvider>
         </BrowserRouter>
       ));
     });
