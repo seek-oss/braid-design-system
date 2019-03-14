@@ -168,13 +168,7 @@ export default class Radio extends Component<RadioProps, State> {
                   </Box>
                 ) : null}
               </div>
-              {message !== false ? (
-                <FieldMessage
-                  id={fieldMessageId}
-                  tone={tone}
-                  message={message}
-                />
-              ) : null}
+              <FieldMessage id={fieldMessageId} tone={tone} message={message} />
             </div>
           );
         }}

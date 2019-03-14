@@ -1,58 +1,59 @@
 import React, { Component, ReactNode } from 'react';
-import ThemeConsumer from '../ThemeConsumer/ThemeConsumer';
 import Box from '../Box/Box';
 import Text, { TextProps } from '../Text/Text';
 import ErrorIcon from '../icons/ErrorIcon/ErrorIcon';
 import TickCircleIcon from '../icons/TickCircleIcon/TickCircleIcon';
 import styles from './FieldMessage.css.js';
 
+type FieldTone = 'neutral' | 'critical' | 'positive';
+
 export interface FieldMessageProps extends TextProps {
-  id?: string;
-  tone?: 'neutral' | 'critical' | 'positive';
+  id: string;
   message: ReactNode | false;
+  tone?: FieldTone;
+  secondaryMessage?: ReactNode;
 }
 
-const renderIcon = (tone: FieldMessageProps['tone']) => {
-  if (tone === 'critical') {
-    return (
-      <Box paddingRight="xsmall" className={styles.icon}>
-        <ErrorIcon fill="critical" />
-      </Box>
-    );
+const renderIcon = (tone: FieldTone = 'neutral') => {
+  if (tone === 'neutral') {
+    return null;
   }
 
-  if (tone === 'positive') {
-    return (
-      <Box paddingRight="xsmall" className={styles.icon}>
-        <TickCircleIcon fill="positive" />
-      </Box>
-    );
-  }
+  const Icon: Record<FieldTone, ReactNode> = {
+    neutral: null,
+    critical: <ErrorIcon fill="critical" />,
+    positive: <TickCircleIcon fill="positive" />,
+  };
 
-  return null;
+  return (
+    <Box paddingRight="xsmall" className={styles.fixedSize}>
+      {Icon[tone]}
+    </Box>
+  );
 };
 
 export default class FieldMessage extends Component<FieldMessageProps> {
   static displayName = 'FieldMessage';
 
   render() {
-    const { id, tone = 'neutral', message } = this.props;
+    const { id, tone = 'neutral', message, secondaryMessage } = this.props;
 
     return message === false ? null : (
-      <ThemeConsumer>
-        {theme => (
-          <Box id={id} paddingBottom="small" tabIndex={-1}>
-            <Text color={tone}>
-              <div className={styles.content}>
-                {/* This element acts as a min-height, preserving vertical space for the message: */}
-                <div className={theme.atoms.height.standardText} />
-                {renderIcon(tone)}
-                <div>{message}</div>
-              </div>
-            </Text>
+      <Box id={id} paddingBottom="small" display="flex" className={styles.root}>
+        <Box className={styles.grow}>
+          <Text color={tone}>
+            <Box display="flex">
+              {renderIcon(tone)}
+              {message}
+            </Box>
+          </Text>
+        </Box>
+        {secondaryMessage ? (
+          <Box paddingLeft="xsmall" className={styles.fixedSize}>
+            {secondaryMessage}
           </Box>
-        )}
-      </ThemeConsumer>
+        ) : null}
+      </Box>
     );
   }
 }

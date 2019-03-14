@@ -197,13 +197,7 @@ export default class Checkbox extends Component<CheckboxProps, State> {
                   </Box>
                 ) : null}
               </div>
-              {message !== false ? (
-                <FieldMessage
-                  id={fieldMessageId}
-                  tone={tone}
-                  message={message}
-                />
-              ) : null}
+              <FieldMessage id={fieldMessageId} tone={tone} message={message} />
             </div>
           );
         }}

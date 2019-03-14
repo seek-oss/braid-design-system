@@ -6,14 +6,22 @@ const docs: ComponentDocs = {
   examples: [
     {
       label: 'Critical Field Message',
-      render: () => (
-        <FieldMessage tone="critical" message="This is a critical message." />
+      render: ({ id }) => (
+        <FieldMessage
+          id={id}
+          tone="critical"
+          message="This is a critical message."
+        />
       ),
     },
     {
       label: 'Positive Field Message',
-      render: () => (
-        <FieldMessage tone="positive" message="This is a positive message." />
+      render: ({ id }) => (
+        <FieldMessage
+          id={id}
+          tone="positive"
+          message="This is a positive message."
+        />
       ),
     },
     {
