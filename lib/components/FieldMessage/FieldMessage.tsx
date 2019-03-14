@@ -1,4 +1,6 @@
 import React, { Component, ReactNode } from 'react';
+import classnames from 'classnames';
+import ThemeConsumer from '../ThemeConsumer/ThemeConsumer';
 import Box from '../Box/Box';
 import Text, { TextProps } from '../Text/Text';
 import ErrorIcon from '../icons/ErrorIcon/ErrorIcon';
@@ -39,21 +41,32 @@ export default class FieldMessage extends Component<FieldMessageProps> {
     const { id, tone = 'neutral', message, secondaryMessage } = this.props;
 
     return message === false ? null : (
-      <Box id={id} paddingBottom="small" display="flex" className={styles.root}>
-        <Box className={styles.grow}>
-          <Text color={tone}>
-            <Box display="flex">
-              {renderIcon(tone)}
-              {message}
+      <ThemeConsumer>
+        {({ atoms }) => (
+          <Box
+            id={id}
+            paddingBottom="small"
+            display="flex"
+            className={styles.root}
+          >
+            <Box
+              className={classnames(styles.grow, atoms.minHeight.standardText)}
+            >
+              <Text color={tone}>
+                <Box display="flex">
+                  {renderIcon(tone)}
+                  {message}
+                </Box>
+              </Text>
             </Box>
-          </Text>
-        </Box>
-        {secondaryMessage ? (
-          <Box paddingLeft="xsmall" className={styles.fixedSize}>
-            {secondaryMessage}
+            {secondaryMessage ? (
+              <Box paddingLeft="xsmall" className={styles.fixedSize}>
+                {secondaryMessage}
+              </Box>
+            ) : null}
           </Box>
-        ) : null}
-      </Box>
+        )}
+      </ThemeConsumer>
     );
   }
 }

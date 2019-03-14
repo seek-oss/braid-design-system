@@ -47,6 +47,7 @@ export default (tokens: Tokens) =>
   merge(
     {},
     makeSizeRules(tokens, 'height'),
+    makeSizeRules(tokens, 'minHeight'),
     makeSizeRules(tokens, 'width'),
     width,
   );
