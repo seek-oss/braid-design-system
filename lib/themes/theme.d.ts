@@ -80,6 +80,7 @@ type FontFamily = 'text';
 type FontSize = TextSize | HeadingSize;
 export type FontWeight = 'regular' | 'medium' | 'strong';
 export type Display = 'block' | 'inline' | 'none' | 'inlineBlock' | 'flex';
+export type FlexDirection = 'row' | 'column';
 type ResetTags =
   | 'html'
   | 'body'
@@ -216,6 +217,8 @@ export interface Atoms {
   paddingLeftDesktop: Record<HorizontalSpacing, string>;
   display: Record<Display, string>;
   displayDesktop: Record<Display, string>;
+  flexDirection: Record<FlexDirection, string>;
+  flexDirectionDesktop: Record<FlexDirection, string>;
   transform: Record<Transform, string>;
   transition: Record<Transition, string>;
   width: Record<IconSize | Width, string>;

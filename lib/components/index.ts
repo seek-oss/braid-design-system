@@ -5,6 +5,7 @@ export {
 export {
   default as ThemeTokensConsumer,
 } from './ThemeTokensConsumer/ThemeTokensConsumer';
+export { default as Actions } from './Actions/Actions';
 export { default as Alert } from './Alert/Alert';
 export { default as Box } from './Box/Box';
 export { default as Bullet } from './Bullet/Bullet';
