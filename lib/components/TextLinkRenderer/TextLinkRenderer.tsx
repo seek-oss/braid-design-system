@@ -24,66 +24,70 @@ export default class TextLinkRenderer extends Component<TextLinkRendererProps> {
 
     return (
       <ThemeConsumer>
-        {({ atoms }) => (
-          <ActionsConsumer>
-            {inActions => {
-              const defaultStyles = [
-                styles.root,
-                atoms.reset.a,
-                atoms.color.link,
-              ];
+        {({ atoms }) => {
+          const defaultStyles = [styles.root, atoms.reset.a, atoms.color.link];
 
-              if (inline) {
-                return children({
-                  style: {},
-                  className: classnames(defaultStyles),
-                });
-              }
+          if (inline) {
+            return children({
+              style: {},
+              className: classnames(defaultStyles),
+            });
+          }
 
-              const touchableStyles = [
-                atoms.paddingTop.standardTouchableText,
-                atoms.paddingBottom.standardTouchableText,
-              ];
+          return (
+            <ActionsConsumer>
+              {inActions => {
+                const touchableStyles = [
+                  atoms.paddingTop.standardTouchableText,
+                  atoms.paddingBottom.standardTouchableText,
+                ];
 
-              if (inActions) {
+                if (inActions) {
+                  const actionStyles = [
+                    styles.root_isButton,
+                    atoms.display.block,
+                    atoms.width.full,
+                    atoms.paddingLeft.small,
+                    atoms.paddingRight.small,
+                    atoms.borderRadius.standard,
+                  ];
+
+                  return (
+                    <Text baseline={false}>
+                      <span className={styles.overlayContainer}>
+                        {children({
+                          style: {},
+                          className: classnames(
+                            defaultStyles,
+                            touchableStyles,
+                            actionStyles,
+                          ),
+                        })}
+                        <FieldOverlay
+                          variant="focus"
+                          className={styles.focusOverlay}
+                        />
+                      </span>
+                    </Text>
+                  );
+                }
+
                 return (
                   <Text baseline={false}>
-                    <span className={styles.overlayContainer}>
-                      {children({
-                        style: {},
-                        className: classnames(defaultStyles, touchableStyles, [
-                          styles.root_isButton,
-                          atoms.display.block,
-                          atoms.width.full,
-                          atoms.paddingLeft.small,
-                          atoms.paddingRight.small,
-                          atoms.borderRadius.standard,
-                        ]),
-                      })}
-                      <FieldOverlay
-                        variant="focus"
-                        className={styles.focusOverlay}
-                      />
-                    </span>
+                    {children({
+                      style: {},
+                      className: classnames(
+                        defaultStyles,
+                        touchableStyles,
+                        atoms.display.inlineBlock,
+                      ),
+                    })}
                   </Text>
                 );
-              }
-
-              return (
-                <Text baseline={false}>
-                  {children({
-                    style: {},
-                    className: classnames(
-                      defaultStyles,
-                      touchableStyles,
-                      atoms.display.inlineBlock,
-                    ),
-                  })}
-                </Text>
-              );
-            }}
-          </ActionsConsumer>
-        )}
+              }}
+            </ActionsConsumer>
+          );
+        }}
       </ThemeConsumer>
     );
   }
