@@ -20,3 +20,5 @@ const Card = ({ children }: CardProps) => (
 );
 
 Card.displayName = 'Card';
+
+export default Card;

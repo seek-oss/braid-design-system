@@ -1,4 +1,4 @@
-import React, { Component, ComponentType } from 'react';
+import React, { ComponentType } from 'react';
 import classnames from 'classnames';
 import Box from '../../Box/Box';
 import ThemeConsumer from '../../ThemeConsumer/ThemeConsumer';
