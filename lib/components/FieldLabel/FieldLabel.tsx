@@ -27,20 +27,24 @@ export default class FieldLabel extends Component<FieldLabelProps> {
 
     return label ? (
       <Box paddingBottom="xsmall">
-        <Text component="span">
+        <Box component="span" display="flex" className={styles.spaceBetween}>
           <label htmlFor={id}>
-            <Strong>{label}</Strong>
-            {secondaryLabel ? (
-              <Secondary>&nbsp;({secondaryLabel})</Secondary>
-            ) : null}
+            <Text component="span">
+              <Strong>{label}</Strong>
+              {secondaryLabel ? (
+                <Secondary>&nbsp;({secondaryLabel})</Secondary>
+              ) : null}
+            </Text>
           </label>
           {tertiaryLabel ? (
-            <Box component="span" className={styles.tertiary}>
-              &nbsp;{tertiaryLabel}
-            </Box>
+            <Text component="span">&nbsp;{tertiaryLabel}</Text>
           ) : null}
-        </Text>
-        {description ? <Text color="secondary">{description}</Text> : null}
+        </Box>
+        {description ? (
+          <Box paddingTop="xxsmall" paddingBottom="xxsmall">
+            <Text color="secondary">{description}</Text>
+          </Box>
+        ) : null}
       </Box>
     ) : null;
   }
