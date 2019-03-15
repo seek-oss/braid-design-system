@@ -14,6 +14,7 @@ import {
   Transition,
   Transform,
   Width,
+  IconSize,
 } from '../../themes/theme';
 
 function getResponsiveClasses<AtomName extends string>(
@@ -47,6 +48,7 @@ export interface BoxProps extends ResetProps {
   boxShadow?: BoxShadow;
   transform?: Transform;
   transition?: Transition;
+  minHeight?: IconSize;
   width?: Width;
 }
 
@@ -69,6 +71,7 @@ export default class Box extends Component<BoxProps> {
       boxShadow,
       transition,
       transform,
+      minHeight,
       width,
       className,
       ...restProps
@@ -88,6 +91,7 @@ export default class Box extends Component<BoxProps> {
                 atoms.boxShadow[boxShadow!],
                 atoms.transition[transition!],
                 atoms.transform[transform!],
+                atoms.minHeight[minHeight!],
                 atoms.width[width!],
                 marginTop &&
                   getResponsiveClasses(

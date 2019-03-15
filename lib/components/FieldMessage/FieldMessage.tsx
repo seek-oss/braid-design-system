@@ -49,9 +49,7 @@ export default class FieldMessage extends Component<FieldMessageProps> {
             display="flex"
             className={styles.root}
           >
-            <Box
-              className={classnames(styles.grow, atoms.minHeight.standardText)}
-            >
+            <Box minHeight="standardText" className={styles.grow}>
               <Text color={tone}>
                 <Box display="flex">
                   {renderIcon(tone)}
