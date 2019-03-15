@@ -1,5 +1,4 @@
 import React, { Component, ReactNode } from 'react';
-import classnames from 'classnames';
 import ThemeConsumer from '../ThemeConsumer/ThemeConsumer';
 import Box from '../Box/Box';
 import Text, { TextProps } from '../Text/Text';
