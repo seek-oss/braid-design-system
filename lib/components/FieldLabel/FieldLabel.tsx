@@ -10,26 +10,40 @@ export interface FieldLabelProps {
   label?: ReactNode;
   secondaryLabel?: ReactNode;
   tertiaryLabel?: ReactNode;
+  description?: ReactNode;
 }
 
 export default class FieldLabel extends Component<FieldLabelProps> {
   static displayName = 'FieldLabel';
 
   render() {
-    const { label, id, secondaryLabel, tertiaryLabel } = this.props;
+    const {
+      id,
+      label,
+      secondaryLabel,
+      tertiaryLabel,
+      description,
+    } = this.props;
 
     return label ? (
-      <Box paddingBottom="xsmall" display="flex" className={styles.root}>
-        <label htmlFor={id}>
-          <Text component="span">
-            <Strong>{label}</Strong>
-            {secondaryLabel ? (
-              <Secondary>&nbsp;({secondaryLabel})</Secondary>
-            ) : null}
-          </Text>
-        </label>
-        {tertiaryLabel ? (
-          <Text component="span">&nbsp;{tertiaryLabel}</Text>
+      <Box paddingBottom="xsmall">
+        <Box component="span" display="flex" className={styles.spaceBetween}>
+          <label htmlFor={id}>
+            <Text component="span">
+              <Strong>{label}</Strong>
+              {secondaryLabel ? (
+                <Secondary>&nbsp;({secondaryLabel})</Secondary>
+              ) : null}
+            </Text>
+          </label>
+          {tertiaryLabel ? (
+            <Text component="span">&nbsp;{tertiaryLabel}</Text>
+          ) : null}
+        </Box>
+        {description ? (
+          <Box paddingTop="xxsmall" paddingBottom="xxsmall">
+            <Text color="secondary">{description}</Text>
+          </Box>
         ) : null}
       </Box>
     ) : null;

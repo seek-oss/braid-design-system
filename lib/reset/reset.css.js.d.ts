@@ -73,6 +73,7 @@ export const sup: string;
 export const table: string;
 export const tbody: string;
 export const td: string;
+export const textarea: string;
 export const tfoot: string;
 export const th: string;
 export const thead: string;

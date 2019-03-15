@@ -9,36 +9,46 @@ import Box from '../Box/Box';
 import FieldLabel from '../FieldLabel/FieldLabel';
 import FieldMessage from '../FieldMessage/FieldMessage';
 import classnames from 'classnames';
-import styles from './TextField.css.js';
+import styles from './TextArea.css.js';
+import Text from '../Text/Text';
 
-const validTypes = {
-  text: 'text',
-  password: 'password',
-  email: 'email',
-  search: 'search',
-  number: 'number',
-  tel: 'tel',
-  url: 'url',
-};
-
-type NativeInputProps = AllHTMLAttributes<HTMLInputElement>;
-interface TextFieldProps {
-  id: NonNullable<NativeInputProps['id']>;
-  value: NonNullable<NativeInputProps['value']>;
-  onChange: NonNullable<NativeInputProps['onChange']>;
-  onBlur?: NativeInputProps['onBlur'];
-  onFocus?: NativeInputProps['onFocus'];
+type NativeTextAreaProps = AllHTMLAttributes<HTMLTextAreaElement>;
+interface TextAreaProps {
+  id: NonNullable<NativeTextAreaProps['id']>;
+  value: string;
+  onChange: NonNullable<NativeTextAreaProps['onChange']>;
+  onBlur?: NativeTextAreaProps['onBlur'];
+  onFocus?: NativeTextAreaProps['onFocus'];
   label?: string;
   secondaryLabel?: ReactNode;
   tertiaryLabel?: ReactNode;
   placeholder?: string;
   message?: ReactNode | false;
   tone?: 'neutral' | 'critical' | 'positive';
-  type?: keyof typeof validTypes;
+  description?: 'string';
+  limit?: number;
 }
 
-export default class TextField extends Component<TextFieldProps> {
-  static displayName = 'TextField';
+export default class TextArea extends Component<TextAreaProps> {
+  static displayName = 'TextArea';
+
+  renderCount({
+    limit,
+    value = '',
+  }: Pick<TextAreaProps, 'limit' | 'value'>): ReactNode {
+    if (typeof limit === 'undefined') {
+      return null;
+    }
+
+    const diff = limit - value.length;
+    const valid = diff >= 0;
+
+    return (
+      <Text component="span" color={valid ? 'secondary' : 'critical'}>
+        {diff}
+      </Text>
+    );
+  }
 
   render() {
     const {
@@ -50,33 +60,35 @@ export default class TextField extends Component<TextFieldProps> {
       message,
       tone = 'neutral',
       value,
-      type = 'text',
       onChange,
       onBlur,
       onFocus,
+      description,
+      limit,
     } = this.props;
 
     const messageId = `${id}-message`;
 
     return (
       <ThemeConsumer>
-        {theme => (
+        {({ atoms, tokens }) => (
           <Fragment>
             <FieldLabel
               id={id}
               label={label}
               secondaryLabel={secondaryLabel}
               tertiaryLabel={tertiaryLabel}
+              description={description}
             />
             <Box className={styles.root}>
               <Box
-                component="input"
-                type={validTypes[type]}
+                component="textarea"
                 id={id}
                 backgroundColor="input"
                 boxShadow={
                   tone === 'critical' ? 'borderCritical' : 'borderStandard'
                 }
+                display="block"
                 width="full"
                 paddingLeft="small"
                 paddingRight="small"
@@ -89,12 +101,16 @@ export default class TextField extends Component<TextFieldProps> {
                 onBlur={onBlur}
                 onFocus={onFocus}
                 aria-describedby={messageId}
+                rows={3}
                 className={classnames(
-                  styles.input,
-                  theme.atoms.fontFamily.text,
-                  theme.atoms.fontSize.standard,
-                  theme.atoms.color.neutral,
+                  styles.textarea,
+                  atoms.fontFamily.text,
+                  atoms.fontSize.standard,
+                  atoms.color.neutral,
                 )}
+                style={{
+                  minHeight: tokens.rowHeight * 15,
+                }}
               />
               <Box
                 className={styles.focusOverlay}
@@ -104,7 +120,15 @@ export default class TextField extends Component<TextFieldProps> {
                 paddingBottom="standardTouchableText"
               />
             </Box>
-            <FieldMessage id={messageId} tone={tone} message={message} />
+            <FieldMessage
+              id={messageId}
+              tone={tone}
+              message={message}
+              secondaryMessage={this.renderCount({
+                limit,
+                value,
+              })}
+            />
           </Fragment>
         )}
       </ThemeConsumer>
