@@ -13,14 +13,9 @@ import styles from './TextArea.css.js';
 import Text from '../Text/Text';
 
 type NativeTextAreaProps = AllHTMLAttributes<HTMLTextAreaElement>;
-
-interface CountResponse {
-  show: boolean;
-  count: number;
-}
 interface TextAreaProps {
   id: NonNullable<NativeTextAreaProps['id']>;
-  value: NonNullable<NativeTextAreaProps['value']>;
+  value: string;
   onChange: NonNullable<NativeTextAreaProps['onChange']>;
   onBlur?: NativeTextAreaProps['onBlur'];
   onFocus?: NativeTextAreaProps['onFocus'];
@@ -31,30 +26,26 @@ interface TextAreaProps {
   message?: ReactNode | false;
   tone?: 'neutral' | 'critical' | 'positive';
   description?: 'string';
-  countFeedback?: (value: string) => CountResponse;
+  limit?: number;
 }
 
 export default class TextArea extends Component<TextAreaProps> {
   static displayName = 'TextArea';
 
   renderCount({
-    countFeedback,
+    limit,
     value = '',
-  }: Pick<TextAreaProps, 'countFeedback' | 'value'>): ReactNode {
-    if (typeof countFeedback !== 'function') {
-      return;
+  }: Pick<TextAreaProps, 'limit' | 'value'>): ReactNode {
+    if (typeof limit === 'undefined' || typeof value === 'undefined') {
+      return null;
     }
 
-    const { show = true, count } = countFeedback(String(value));
-
-    if (!show) {
-      return;
-    }
-    const valid = count >= 0;
+    const diff = limit - value.length;
+    const valid = diff >= 0;
 
     return (
       <Text component="span" color={valid ? 'secondary' : 'critical'}>
-        {count}
+        {diff}
       </Text>
     );
   }
@@ -73,7 +64,7 @@ export default class TextArea extends Component<TextAreaProps> {
       onBlur,
       onFocus,
       description,
-      countFeedback,
+      limit,
     } = this.props;
 
     const messageId = `${id}-message`;
@@ -134,7 +125,7 @@ export default class TextArea extends Component<TextAreaProps> {
               tone={tone}
               message={message}
               secondaryMessage={this.renderCount({
-                countFeedback,
+                limit,
                 value,
               })}
             />

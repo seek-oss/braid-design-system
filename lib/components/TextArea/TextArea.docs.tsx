@@ -91,6 +91,34 @@ const docs: ComponentDocs = {
         </div>
       ),
     },
+    {
+      label: 'TextArea with a limit',
+      render: ({ id, handler }) => (
+        <div style={{ maxWidth: '300px' }}>
+          <TextArea
+            id={id}
+            value=""
+            onChange={handler}
+            label="Do you like Braid?"
+            limit={100}
+          />
+        </div>
+      ),
+    },
+    {
+      label: 'TextArea with value exceeding limit',
+      render: ({ id, handler }) => (
+        <div style={{ maxWidth: '300px' }}>
+          <TextArea
+            id={id}
+            value="Yes I do"
+            onChange={handler}
+            label="Do you like Braid?"
+            limit={5}
+          />
+        </div>
+      ),
+    },
   ],
 };
 
