@@ -1,5 +1,4 @@
-import React, { Component, ReactNode } from 'react';
-import ThemeConsumer from '../ThemeConsumer/ThemeConsumer';
+import React, { ReactNode } from 'react';
 import Box from '../Box/Box';
 import Text, { TextProps } from '../Text/Text';
 import ErrorIcon from '../icons/ErrorIcon/ErrorIcon';
@@ -33,37 +32,30 @@ const renderIcon = (tone: FieldTone = 'neutral') => {
   );
 };
 
-export default class FieldMessage extends Component<FieldMessageProps> {
-  static displayName = 'FieldMessage';
-
-  render() {
-    const { id, tone = 'neutral', message, secondaryMessage } = this.props;
-
-    return message === false ? null : (
-      <ThemeConsumer>
-        {({ atoms }) => (
-          <Box
-            id={id}
-            paddingBottom="small"
-            display="flex"
-            className={styles.root}
-          >
-            <Box minHeight="standardText" className={styles.grow}>
-              <Text color={tone}>
-                <Box display="flex">
-                  {renderIcon(tone)}
-                  {message}
-                </Box>
-              </Text>
-            </Box>
-            {secondaryMessage ? (
-              <Box paddingLeft="xsmall" className={styles.fixedSize}>
-                {secondaryMessage}
-              </Box>
-            ) : null}
+const FieldMessage = ({
+  id,
+  tone = 'neutral',
+  message,
+  secondaryMessage,
+}: FieldMessageProps) =>
+  message === false ? null : (
+    <Box id={id} paddingBottom="small" display="flex" className={styles.root}>
+      <Box minHeight="standardText" className={styles.grow}>
+        <Text color={tone}>
+          <Box display="flex">
+            {renderIcon(tone)}
+            {message}
           </Box>
-        )}
-      </ThemeConsumer>
-    );
-  }
-}
+        </Text>
+      </Box>
+      {secondaryMessage ? (
+        <Box paddingLeft="xsmall" className={styles.fixedSize}>
+          {secondaryMessage}
+        </Box>
+      ) : null}
+    </Box>
+  );
+
+FieldMessage.displayName = 'FieldMessage';
+
+export default FieldMessage;
