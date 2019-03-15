@@ -1,22 +1,16 @@
-import React, { Component, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import ThemeConsumer from '../ThemeConsumer/ThemeConsumer';
 
 export interface SecondaryProps {
   children: ReactNode;
 }
 
-export default class Secondary extends Component<SecondaryProps> {
-  static displayName = 'Secondary';
+const Secondary = ({ children }: Secondary) => (
+  <ThemeConsumer>
+    {({ atoms }) => <span className={atoms.color.secondary}>{children}</span>}
+  </ThemeConsumer>
+);
 
-  render() {
-    const { children } = this.props;
+Secondary.displayName = 'Secondary';
 
-    return (
-      <ThemeConsumer>
-        {({ atoms }) => (
-          <span className={atoms.color.secondary}>{children}</span>
-        )}
-      </ThemeConsumer>
-    );
-  }
-}
+export default Secondary;

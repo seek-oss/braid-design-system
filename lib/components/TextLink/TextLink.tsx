@@ -1,4 +1,4 @@
-import React, { Component, AllHTMLAttributes } from 'react';
+import React, { AllHTMLAttributes } from 'react';
 import { Omit } from 'utility-types';
 import TextLinkRenderer, {
   TextLinkRendererProps,
@@ -9,16 +9,12 @@ export interface TextLinkProps
   extends Omit<TextLinkRendererProps, 'children'>,
     Omit<AnchorProps, 'className' | 'style'> {}
 
-export default class TextLink extends Component<TextLinkProps> {
-  static displayName = 'TextLink';
+const TextLink = ({ inline, ...restProps }: TextLinkProps) => (
+  <TextLinkRenderer inline={inline}>
+    {props => <a {...restProps} {...props} />}
+  </TextLinkRenderer>
+);
 
-  render() {
-    const { inline, ...restProps } = this.props;
+TextLink.displayName = 'TextLink';
 
-    return (
-      <TextLinkRenderer inline={inline}>
-        {props => <a {...restProps} {...props} />}
-      </TextLinkRenderer>
-    );
-  }
-}
+export default TextLink;

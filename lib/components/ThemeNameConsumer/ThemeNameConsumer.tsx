@@ -1,18 +1,14 @@
-import React, { Component, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import ThemeConsumer from '../ThemeConsumer/ThemeConsumer';
 
-export interface ThemeNameConsumerProps {
+interface ThemeNameConsumerProps {
   children(name: string): ReactNode;
 }
 
-export default class ThemeNameConsumer extends Component<
-  ThemeNameConsumerProps
-> {
-  static displayName = 'ThemeNameConsumer';
+const ThemeNameConsumer = ({ children }: ThemeNameConsumerProps) => (
+  <ThemeConsumer>{theme => children(theme.name)}</ThemeConsumer>
+);
 
-  render() {
-    return (
-      <ThemeConsumer>{theme => this.props.children(theme.name)}</ThemeConsumer>
-    );
-  }
-}
+ThemeNameConsumer.displayName = 'ThemeNameConsumer';
+
+export default ThemeNameConsumer;

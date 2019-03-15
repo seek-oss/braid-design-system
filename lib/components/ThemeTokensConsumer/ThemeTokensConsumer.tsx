@@ -1,21 +1,15 @@
-import React, { Component, ReactChild } from 'react';
+import React, { ReactChild } from 'react';
 import ThemeConsumer from '../ThemeConsumer/ThemeConsumer';
 import { Tokens } from '../../themes/theme';
 
-export interface ThemeTokensConsumerProps {
+interface ThemeTokensConsumerProps {
   children(tokens: Tokens): ReactChild;
 }
 
-export default class ThemeTokensConsumer extends Component<
-  ThemeTokensConsumerProps
-> {
-  static displayName = 'ThemeTokensConsumer';
+const ThemeTokensConsumer = ({ children }: ThemeTokensConsumerProps) => (
+  <ThemeConsumer>{theme => children(theme.tokens)}</ThemeConsumer>
+);
 
-  render() {
-    return (
-      <ThemeConsumer>
-        {theme => this.props.children(theme.tokens)}
-      </ThemeConsumer>
-    );
-  }
-}
+ThemeTokensConsumer.displayName = 'ThemeTokensConsumer';
+
+export default ThemeTokensConsumer;
