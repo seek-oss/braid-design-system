@@ -19,7 +19,7 @@ export default (
 
   return {
     [`.${ruleName}_none`]: {
-      [propertyName]: 'none',
+      [propertyName]: 0,
     },
     ...columnRules,
   };
