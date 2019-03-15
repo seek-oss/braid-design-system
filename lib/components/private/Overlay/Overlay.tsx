@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import classnames from 'classnames';
 import Box, { BoxProps } from '../../Box/Box';
 import styles from './Overlay.css.js';
@@ -14,26 +14,22 @@ export type OverlayProps = Partial<
   >
 >;
 
-export default class Overlay extends Component<OverlayProps> {
-  static displayName = 'Overlay';
+const Overlay = ({
+  backgroundColor,
+  borderRadius,
+  boxShadow,
+  transition,
+  className,
+}: OverlayProps) => (
+  <Box
+    backgroundColor={backgroundColor}
+    borderRadius={borderRadius}
+    boxShadow={boxShadow}
+    transition={transition}
+    className={classnames(styles.root, className)}
+  />
+);
 
-  render() {
-    const {
-      backgroundColor,
-      borderRadius,
-      boxShadow,
-      transition,
-      className,
-    } = this.props;
+Overlay.displayName = 'Overlay';
 
-    return (
-      <Box
-        backgroundColor={backgroundColor}
-        borderRadius={borderRadius}
-        boxShadow={boxShadow}
-        transition={transition}
-        className={classnames(styles.root, className)}
-      />
-    );
-  }
-}
+export default Overlay;

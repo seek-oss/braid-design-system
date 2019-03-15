@@ -1,4 +1,4 @@
-import React, { Component, ReactNode } from 'react';
+import React, { ReactNode, useContext } from 'react';
 import { ColumnsContext } from '../Columns/Columns';
 import Box from '../Box/Box';
 import styles from './Column.css.js';
@@ -7,23 +7,19 @@ export interface ColumnProps {
   children: ReactNode;
 }
 
-export default class Column extends Component<ColumnProps> {
-  static displayName = 'Column';
+const Column = ({ children }: ColumnProps) => {
+  const { index } = useContext(ColumnsContext);
 
-  render() {
-    const { children } = this.props;
+  return (
+    <Box
+      marginLeft={['none', index === 0 ? 'none' : 'large']}
+      className={styles.column}
+    >
+      {children}
+    </Box>
+  );
+};
 
-    return (
-      <ColumnsContext.Consumer>
-        {({ index }) => (
-          <Box
-            marginLeft={['none', index === 0 ? 'none' : 'large']}
-            className={styles.column}
-          >
-            {children}
-          </Box>
-        )}
-      </ColumnsContext.Consumer>
-    );
-  }
-}
+Column.displayName = 'Column';
+
+export default Column;

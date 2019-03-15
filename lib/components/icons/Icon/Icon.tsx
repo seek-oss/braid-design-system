@@ -17,45 +17,42 @@ const isIconSize = (
   sizeAtom: string,
 ): sizeAtom is IconSize => Object.keys(atom).indexOf(sizeAtom) > -1;
 
-export default class Icon extends Component<IconProps> {
-  static displayName = 'Icon';
+const Icon = ({
+  size = 'standard',
+  svgComponent,
+  inline = false,
+  fill,
+}: IconProps) => (
+  <ThemeConsumer>
+    {theme => {
+      const sizeAtom = `${size}Text${inline ? 'Inline' : ''}`;
+      const widthAtom = isIconSize(theme.atoms.width, sizeAtom)
+        ? theme.atoms.width[sizeAtom]
+        : '';
+      const heightAtom = isIconSize(theme.atoms.height, sizeAtom)
+        ? theme.atoms.height[sizeAtom]
+        : '';
 
-  render() {
-    return (
-      <ThemeConsumer>
-        {theme => {
-          const {
-            size = 'standard',
-            svgComponent,
-            inline = false,
-            fill,
-          } = this.props;
-          const sizeAtom = `${size}Text${inline ? 'Inline' : ''}`;
-          const widthAtom = isIconSize(theme.atoms.width, sizeAtom)
-            ? theme.atoms.width[sizeAtom]
-            : '';
-          const heightAtom = isIconSize(theme.atoms.height, sizeAtom)
-            ? theme.atoms.height[sizeAtom]
-            : '';
+      return (
+        <Box
+          component={svgComponent}
+          width={size === 'fill' ? 'full' : undefined}
+          className={classnames(
+            widthAtom,
+            heightAtom,
+            theme.atoms.fill[fill!],
+            {
+              [styles.fillSize]: size === 'fill',
+              [styles.inline]: inline,
+              [styles.block]: !inline,
+            },
+          )}
+        />
+      );
+    }}
+  </ThemeConsumer>
+);
 
-          return (
-            <Box
-              component={svgComponent}
-              width={size === 'fill' ? 'full' : undefined}
-              className={classnames(
-                widthAtom,
-                heightAtom,
-                theme.atoms.fill[fill!],
-                {
-                  [styles.fillSize]: size === 'fill',
-                  [styles.inline]: inline,
-                  [styles.block]: !inline,
-                },
-              )}
-            />
-          );
-        }}
-      </ThemeConsumer>
-    );
-  }
-}
+Icon.displayName = 'Icon';
+
+export default Icon;

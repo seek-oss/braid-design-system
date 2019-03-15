@@ -53,39 +53,42 @@ export interface HeadingProps {
   component?: BoxProps['component'];
 }
 
-export default class Heading extends Component<HeadingProps> {
-  static displayName = 'Heading';
+const Heading = ({
+  level,
+  weight = 'regular',
+  component,
+  children,
+}: HeadingProps) => {
+  return (
+    <ThemeConsumer>
+      {theme => {
+        const {
+          transform,
+          fontSize,
+          fontWeight,
+          component: resolvedComponent,
+        } = resolveHeadingOptions(level, weight, theme.tokens, component);
 
-  render() {
-    const { level, weight = 'regular', component, children } = this.props;
+        return (
+          <Box
+            component={resolvedComponent}
+            paddingBottom={level === '1' ? 'small' : 'xsmall'}
+            className={classnames(
+              theme.atoms.fontFamily.text,
+              theme.atoms.color.neutral,
+              theme.atoms.fontSize[fontSize],
+              theme.atoms.fontWeight[fontWeight],
+              theme.atoms.transform[transform],
+            )}
+          >
+            {children}
+          </Box>
+        );
+      }}
+    </ThemeConsumer>
+  );
+};
 
-    return (
-      <ThemeConsumer>
-        {theme => {
-          const {
-            transform,
-            fontSize,
-            fontWeight,
-            component: resolvedComponent,
-          } = resolveHeadingOptions(level, weight, theme.tokens, component);
+Heading.displayName = 'Heading';
 
-          return (
-            <Box
-              component={resolvedComponent}
-              paddingBottom={level === '1' ? 'small' : 'xsmall'}
-              className={classnames(
-                theme.atoms.fontFamily.text,
-                theme.atoms.color.neutral,
-                theme.atoms.fontSize[fontSize],
-                theme.atoms.fontWeight[fontWeight],
-                theme.atoms.transform[transform],
-              )}
-            >
-              {children}
-            </Box>
-          );
-        }}
-      </ThemeConsumer>
-    );
-  }
-}
+export default Heading;

@@ -1,4 +1,4 @@
-import React, { Component, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import Box from '../Box/Box';
 import Text from '../Text/Text';
 import InfoIcon from '../icons/InfoIcon/InfoIcon';
@@ -44,30 +44,28 @@ const textColorForTone = (tone: Tone) => {
   return 'neutral';
 };
 
-export default class Alert extends Component<AlertProps> {
-  static displayName = 'Alert';
+const Alert = ({ tone = 'info', children }: AlertProps) => {
+  const icon = iconForTone(tone);
+  const color = textColorForTone(tone);
 
-  render() {
-    const { tone = 'info', children } = this.props;
+  return (
+    <Box
+      backgroundColor={tone}
+      paddingLeft="gutter"
+      paddingRight="gutter"
+      paddingTop="medium"
+      paddingBottom="medium"
+    >
+      <div className={styles.root}>
+        <div className={styles.icon}>{icon}</div>
+        <Text color={color} baseline={false}>
+          {children}
+        </Text>
+      </div>
+    </Box>
+  );
+};
 
-    const icon = iconForTone(tone);
-    const color = textColorForTone(tone);
+Alert.displayName = 'Alert';
 
-    return (
-      <Box
-        backgroundColor={tone}
-        paddingLeft="gutter"
-        paddingRight="gutter"
-        paddingTop="medium"
-        paddingBottom="medium"
-      >
-        <div className={styles.root}>
-          <div className={styles.icon}>{icon}</div>
-          <Text color={color} baseline={false}>
-            {children}
-          </Text>
-        </div>
-      </Box>
-    );
-  }
-}
+export default Alert;

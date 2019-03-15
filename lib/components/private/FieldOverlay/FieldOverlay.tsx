@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Overlay, { OverlayProps } from '../Overlay/Overlay';
 
 export interface FieldOverlayProps
@@ -6,19 +6,15 @@ export interface FieldOverlayProps
   variant?: 'focus';
 }
 
-export default class FieldOverlay extends Component<FieldOverlayProps> {
-  static displayName = 'FieldOverlay';
+const FieldOverlay = ({ variant, ...restProps }: FieldOverlayProps) => (
+  <Overlay
+    borderRadius="standard"
+    boxShadow={variant === 'focus' ? 'outlineFocus' : undefined}
+    transition="fast"
+    {...restProps}
+  />
+);
 
-  render() {
-    const { variant, ...restProps } = this.props;
+FieldOverlay.displayName = 'FieldOverlay';
 
-    return (
-      <Overlay
-        borderRadius="standard"
-        boxShadow={variant === 'focus' ? 'outlineFocus' : undefined}
-        transition="fast"
-        {...restProps}
-      />
-    );
-  }
-}
+export default FieldOverlay;

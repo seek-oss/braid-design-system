@@ -1,4 +1,4 @@
-import React, { Component, Children, ReactElement, createContext } from 'react';
+import React, { Children, ReactElement, createContext } from 'react';
 import Box from '../Box/Box';
 import { ColumnProps } from '../Column/Column';
 
@@ -8,20 +8,16 @@ export interface ColumnsProps {
   children: Array<ReactElement<ColumnProps>> | ReactElement<ColumnProps>;
 }
 
-export default class Columns extends Component<ColumnsProps> {
-  static displayName = 'Columns';
+const Columns = ({ children }: ColumnsProps) => (
+  <Box display={['block', 'flex']}>
+    {Children.map(children, (child, index) => (
+      <ColumnsContext.Provider value={{ index }}>
+        {child}
+      </ColumnsContext.Provider>
+    ))}
+  </Box>
+);
 
-  render() {
-    const { children } = this.props;
+Columns.displayName = 'Columns';
 
-    return (
-      <Box display={['block', 'flex']}>
-        {Children.map(children, (child, index) => (
-          <ColumnsContext.Provider value={{ index }}>
-            {child}
-          </ColumnsContext.Provider>
-        ))}
-      </Box>
-    );
-  }
-}
+export default Columns;
