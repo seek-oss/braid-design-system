@@ -2,8 +2,9 @@ import React, { Component, ReactNode, AllHTMLAttributes } from 'react';
 import classnames from 'classnames';
 import { BackgroundColor, Color } from 'lib/themes/theme';
 import styles from './Button.css.js';
-import Box, { BoxProps } from '../Box/Box';
+import Box from '../Box/Box';
 import Text from '../Text/Text';
+import FieldOverlay from '../private/FieldOverlay/FieldOverlay';
 
 type ButtonWeight = 'weak' | 'regular' | 'strong';
 type ButtonState = 'base' | 'hover' | 'active';
@@ -42,18 +43,6 @@ const foregroundColor: Record<ButtonWeight, Color> = {
   strong: 'brandAccentForeground',
 };
 
-const Overlay = ({ className, ...props }: BoxProps) => (
-  <Box
-    paddingLeft="gutter"
-    paddingRight="gutter"
-    paddingBottom="standardTouchableText"
-    paddingTop="standardTouchableText"
-    borderRadius="standard"
-    className={classnames(styles.overlay, className)}
-    {...props}
-  />
-);
-
 export default class Button extends Component<ButtonProps> {
   static displayName = 'Button';
 
@@ -66,6 +55,7 @@ export default class Button extends Component<ButtonProps> {
       <Box
         component="button"
         type={type}
+        width="full"
         display="block"
         borderRadius="standard"
         boxShadow={isWeak ? 'borderFormAccentLarge' : undefined}
@@ -76,16 +66,22 @@ export default class Button extends Component<ButtonProps> {
           [styles.weak]: isWeak,
         })}
       >
-        <Overlay boxShadow="outlineFocus" className={styles.focusOverlay} />
-        <Overlay
+        <FieldOverlay variant="focus" className={styles.focusOverlay} />
+        <FieldOverlay
           backgroundColor={backgroundColor.hover[weight]}
           className={styles.hoverOverlay}
         />
-        <Overlay
+        <FieldOverlay
           backgroundColor={backgroundColor.active[weight]}
           className={styles.activeOverlay}
         />
-        <Overlay className={styles.content}>
+        <Box
+          paddingLeft="gutter"
+          paddingRight="gutter"
+          paddingBottom="standardTouchableText"
+          paddingTop="standardTouchableText"
+          className={styles.content}
+        >
           <Text
             baseline={false}
             weight="medium"
@@ -93,7 +89,7 @@ export default class Button extends Component<ButtonProps> {
           >
             {children}
           </Text>
-        </Overlay>
+        </Box>
       </Box>
     );
   }

@@ -277,4 +277,12 @@ export default (
     standardTextInline: atoms.width_standardTextInline,
     full: atoms.width_full,
   },
+  flexDirection: {
+    row: atoms.flexDirection_row,
+    column: atoms.flexDirection_column,
+  },
+  flexDirectionDesktop: {
+    row: atoms.flexDirectionDesktop_row,
+    column: atoms.flexDirectionDesktop_column,
+  },
 });

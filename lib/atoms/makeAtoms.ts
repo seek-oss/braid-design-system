@@ -19,6 +19,7 @@ import makePadding from './makePadding';
 import makeMargins from './makeMargins';
 import makeTransforms, { TransformParams } from './makeTransforms';
 import makeSizes from './makeSizes';
+import makeFlexDirections from './makeFlexDirections';
 import makeFontSizes from './font/makeFontSizes';
 import makeFills, { FillParams } from './color/makeFills';
 
@@ -48,6 +49,7 @@ const makeAtoms = (
     makeDisplayRules(tokens),
     makeTransforms(tokens, transforms),
     makeTransitions(),
+    makeFlexDirections(tokens),
   );
 
   const [queryRules, regularRules] = partition(Object.keys(rules), ruleName =>

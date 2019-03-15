@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import classnames from 'classnames';
 import ThemeConsumer from '../ThemeConsumer/ThemeConsumer';
 import Reset, { ResetProps } from '../Reset/Reset';
-import styles from './Box.css.js';
 import {
   HorizontalSpacing,
   VerticalPadding,
@@ -10,6 +9,7 @@ import {
   BorderRadius,
   BackgroundColor,
   Display,
+  FlexDirection,
   BoxShadow,
   Transition,
   Transform,
@@ -42,6 +42,7 @@ export interface BoxProps extends ResetProps {
   marginLeft?: ResponsiveProp<HorizontalSpacing>;
   marginRight?: ResponsiveProp<HorizontalSpacing>;
   display?: ResponsiveProp<Display>;
+  flexDirection?: ResponsiveProp<FlexDirection>;
   borderRadius?: BorderRadius;
   backgroundColor?: BackgroundColor;
   boxShadow?: BoxShadow;
@@ -64,6 +65,7 @@ export default class Box extends Component<BoxProps> {
       marginLeft,
       marginRight,
       display,
+      flexDirection,
       borderRadius,
       backgroundColor,
       boxShadow,
@@ -81,7 +83,6 @@ export default class Box extends Component<BoxProps> {
             <Reset
               className={classnames(
                 className,
-                styles.root,
                 atoms.backgroundColor[backgroundColor!],
                 atoms.boxShadow[boxShadow!],
                 atoms.borderRadius[borderRadius!],
@@ -142,6 +143,12 @@ export default class Box extends Component<BoxProps> {
                     atoms.display,
                     atoms.displayDesktop,
                     display,
+                  ),
+                flexDirection &&
+                  getResponsiveClasses(
+                    atoms.flexDirection,
+                    atoms.flexDirectionDesktop,
+                    flexDirection,
                   ),
               )}
               {...restProps}
