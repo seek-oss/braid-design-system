@@ -36,7 +36,7 @@ export default class TextArea extends Component<TextAreaProps> {
     limit,
     value = '',
   }: Pick<TextAreaProps, 'limit' | 'value'>): ReactNode {
-    if (typeof limit === 'undefined' || typeof value === 'undefined') {
+    if (typeof limit === 'undefined') {
       return null;
     }
 

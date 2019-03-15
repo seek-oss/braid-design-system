@@ -46,11 +46,11 @@
       "npm run check",
       "git add package.json yarn.lock"
     ],
-    "**/*.{ts,tsx,js}": [
+    "**/*.{js}": [
       "npm run lint",
       "git add"
     ],
-    "**/*.{ts,tsx,js,md,less}": [
+    "**/*.{js,md,less}": [
       "npm run format",
       "git add"
     ]
