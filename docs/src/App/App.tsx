@@ -4,7 +4,7 @@ import * as components from '../../../lib/components';
 import React, { useState } from 'react';
 import { withRouter, Route, RouteComponentProps } from 'react-router';
 import classnames from 'classnames';
-import Logo from './Logo/Logo';
+import { Logo } from './Logo/Logo';
 import { ComponentRoute } from './ComponentRoute/ComponentRoute';
 import { Link, ExternalLink } from './Link';
 import styles from './App.css.js';
