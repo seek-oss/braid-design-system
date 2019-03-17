@@ -1,7 +1,7 @@
 import React from 'react';
-import Bullet from './Bullet';
-import BulletList from '../BulletList/BulletList';
 import { ComponentDocs } from '../../../docs/src/types';
+import { Bullet } from './Bullet';
+import { BulletList } from '../BulletList/BulletList';
 
 const docs: ComponentDocs = {
   examples: [

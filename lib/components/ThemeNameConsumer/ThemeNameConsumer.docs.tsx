@@ -1,6 +1,6 @@
 import React from 'react';
-import ThemeNameConsumer from './ThemeNameConsumer';
 import { ComponentDocs } from '../../../docs/src/types';
+import { ThemeNameConsumer } from './ThemeNameConsumer';
 
 const docs: ComponentDocs = {
   storybook: false,

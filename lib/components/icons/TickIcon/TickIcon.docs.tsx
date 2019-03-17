@@ -1,6 +1,6 @@
-import TickIcon from './TickIcon';
-import examplesForIcon from '../../private/examplesForIcon';
 import { ComponentDocs } from '../../../../docs/src/types';
+import examplesForIcon from '../../private/examplesForIcon';
+import { TickIcon } from './TickIcon';
 
 const docs: ComponentDocs = {
   examples: examplesForIcon(TickIcon),

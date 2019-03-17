@@ -1,10 +1,10 @@
-import React, { Component, ReactNode, AllHTMLAttributes } from 'react';
+import React, { ReactNode, AllHTMLAttributes } from 'react';
 import classnames from 'classnames';
 import { BackgroundColor, Color } from 'lib/themes/theme';
+import { Box } from '../Box/Box';
+import { Text } from '../Text/Text';
+import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
 import styles from './Button.css.js';
-import Box from '../Box/Box';
-import Text from '../Text/Text';
-import FieldOverlay from '../private/FieldOverlay/FieldOverlay';
 
 type ButtonWeight = 'weak' | 'regular' | 'strong';
 type ButtonState = 'base' | 'hover' | 'active';
@@ -43,54 +43,48 @@ const foregroundColor: Record<ButtonWeight, Color> = {
   strong: 'brandAccentForeground',
 };
 
-export default class Button extends Component<ButtonProps> {
-  static displayName = 'Button';
+export const Button = ({
+  children,
+  weight = 'regular',
+  type = 'button',
+}: ButtonProps) => {
+  const isWeak = weight === 'weak';
 
-  render() {
-    const { children, weight = 'regular', type = 'button' } = this.props;
-
-    const isWeak = weight === 'weak';
-
-    return (
+  return (
+    <Box
+      component="button"
+      type={type}
+      width="full"
+      display="block"
+      borderRadius="standard"
+      boxShadow={isWeak ? 'borderFormAccentLarge' : undefined}
+      backgroundColor={backgroundColor.base[weight]}
+      transform="touchable"
+      transition="touchable"
+      className={classnames(styles.root, {
+        [styles.weak]: isWeak,
+      })}
+    >
+      <FieldOverlay variant="focus" className={styles.focusOverlay} />
+      <FieldOverlay
+        backgroundColor={backgroundColor.hover[weight]}
+        className={styles.hoverOverlay}
+      />
+      <FieldOverlay
+        backgroundColor={backgroundColor.active[weight]}
+        className={styles.activeOverlay}
+      />
       <Box
-        component="button"
-        type={type}
-        width="full"
-        display="block"
-        borderRadius="standard"
-        boxShadow={isWeak ? 'borderFormAccentLarge' : undefined}
-        backgroundColor={backgroundColor.base[weight]}
-        transform="touchable"
-        transition="touchable"
-        className={classnames(styles.root, {
-          [styles.weak]: isWeak,
-        })}
+        paddingLeft="gutter"
+        paddingRight="gutter"
+        paddingBottom="standardTouchableText"
+        paddingTop="standardTouchableText"
+        className={styles.content}
       >
-        <FieldOverlay variant="focus" className={styles.focusOverlay} />
-        <FieldOverlay
-          backgroundColor={backgroundColor.hover[weight]}
-          className={styles.hoverOverlay}
-        />
-        <FieldOverlay
-          backgroundColor={backgroundColor.active[weight]}
-          className={styles.activeOverlay}
-        />
-        <Box
-          paddingLeft="gutter"
-          paddingRight="gutter"
-          paddingBottom="standardTouchableText"
-          paddingTop="standardTouchableText"
-          className={styles.content}
-        >
-          <Text
-            baseline={false}
-            weight="medium"
-            color={foregroundColor[weight]}
-          >
-            {children}
-          </Text>
-        </Box>
+        <Text baseline={false} weight="medium" color={foregroundColor[weight]}>
+          {children}
+        </Text>
       </Box>
-    );
-  }
-}
+    </Box>
+  );
+};

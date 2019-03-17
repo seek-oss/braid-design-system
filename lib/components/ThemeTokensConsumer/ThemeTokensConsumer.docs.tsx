@@ -1,6 +1,6 @@
 import React from 'react';
-import ThemeTokensConsumer from './ThemeTokensConsumer';
 import { ComponentDocs } from '../../../docs/src/types';
+import { ThemeTokensConsumer } from './ThemeTokensConsumer';
 
 const docs: ComponentDocs = {
   storybook: false,

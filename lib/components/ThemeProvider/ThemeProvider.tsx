@@ -1,15 +1,12 @@
-import React, { Component } from 'react';
+import React, { ReactNode } from 'react';
 import ThemeContext from '../private/ThemeContext';
 import { Theme } from '../../themes/theme';
 
-export interface ThemeProviderProps {
+interface ThemeProviderProps {
   theme: Theme;
+  children: ReactNode;
 }
 
-export default class ThemeProvider extends Component<ThemeProviderProps> {
-  render() {
-    const { theme, ...restProps } = this.props;
-
-    return <ThemeContext.Provider value={theme} {...restProps} />;
-  }
-}
+export const ThemeProvider = ({ theme, ...restProps }: ThemeProviderProps) => (
+  <ThemeContext.Provider value={theme} {...restProps} />
+);

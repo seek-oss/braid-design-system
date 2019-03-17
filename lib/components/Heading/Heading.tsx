@@ -1,7 +1,7 @@
-import React, { Component, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import classnames from 'classnames';
-import ThemeConsumer from '../ThemeConsumer/ThemeConsumer';
-import Box, { BoxProps } from '../Box/Box';
+import { ThemeConsumer } from '../ThemeConsumer/ThemeConsumer';
+import { Box, BoxProps } from '../Box/Box';
 import { HeadingSize, Transform, FontWeight, Tokens } from '../../themes/theme';
 
 type HeadingLevel = '1' | '2' | '3';
@@ -53,39 +53,38 @@ export interface HeadingProps {
   component?: BoxProps['component'];
 }
 
-export default class Heading extends Component<HeadingProps> {
-  static displayName = 'Heading';
+export const Heading = ({
+  level,
+  weight = 'regular',
+  component,
+  children,
+}: HeadingProps) => {
+  return (
+    <ThemeConsumer>
+      {theme => {
+        const {
+          transform,
+          fontSize,
+          fontWeight,
+          component: resolvedComponent,
+        } = resolveHeadingOptions(level, weight, theme.tokens, component);
 
-  render() {
-    const { level, weight = 'regular', component, children } = this.props;
-
-    return (
-      <ThemeConsumer>
-        {theme => {
-          const {
-            transform,
-            fontSize,
-            fontWeight,
-            component: resolvedComponent,
-          } = resolveHeadingOptions(level, weight, theme.tokens, component);
-
-          return (
-            <Box
-              component={resolvedComponent}
-              paddingBottom={level === '1' ? 'small' : 'xsmall'}
-              className={classnames(
-                theme.atoms.fontFamily.text,
-                theme.atoms.color.neutral,
-                theme.atoms.fontSize[fontSize],
-                theme.atoms.fontWeight[fontWeight],
-                theme.atoms.transform[transform],
-              )}
-            >
-              {children}
-            </Box>
-          );
-        }}
-      </ThemeConsumer>
-    );
-  }
-}
+        return (
+          <Box
+            component={resolvedComponent}
+            paddingBottom={level === '1' ? 'small' : 'xsmall'}
+            className={classnames(
+              theme.atoms.fontFamily.text,
+              theme.atoms.color.neutral,
+              theme.atoms.fontSize[fontSize],
+              theme.atoms.fontWeight[fontWeight],
+              theme.atoms.transform[transform],
+            )}
+          >
+            {children}
+          </Box>
+        );
+      }}
+    </ThemeConsumer>
+  );
+};

@@ -1,6 +1,6 @@
 import React from 'react';
-import Button from './Button';
 import { ComponentDocs } from '../../../docs/src/types';
+import { Button } from './Button';
 
 const docs: ComponentDocs = {
   examples: [

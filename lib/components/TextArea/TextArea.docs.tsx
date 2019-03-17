@@ -1,7 +1,7 @@
 import React from 'react';
-import TextArea from './TextArea';
-import TextLink from '../TextLink/TextLink';
 import { ComponentDocs } from '../../../docs/src/types';
+import { TextArea } from './TextArea';
+import { TextLink } from '../TextLink/TextLink';
 
 const docs: ComponentDocs = {
   examples: [

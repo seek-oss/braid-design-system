@@ -1,24 +1,16 @@
-import React, { Component, ReactNode } from 'react';
-import Box from '../Box/Box';
-import Text from '../Text/Text';
+import React, { ReactNode } from 'react';
+import { Box } from '../Box/Box';
+import { Text } from '../Text/Text';
 import styles from './Bullet.css.js';
 
 export interface BulletProps {
   children?: ReactNode;
 }
 
-export default class Bullet extends Component<BulletProps> {
-  static displayName = 'Bullet';
-
-  render() {
-    const { children } = this.props;
-
-    return (
-      <Text component="li">
-        <Box className={styles.block} component="span" paddingBottom="xsmall">
-          {children}
-        </Box>
-      </Text>
-    );
-  }
-}
+export const Bullet = ({ children }: BulletProps) => (
+  <Text component="li">
+    <Box className={styles.block} component="span" paddingBottom="xsmall">
+      {children}
+    </Box>
+  </Text>
+);

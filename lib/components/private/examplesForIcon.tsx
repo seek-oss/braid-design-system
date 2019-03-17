@@ -1,7 +1,7 @@
 import React, { ComponentType } from 'react';
 import { Omit } from 'utility-types';
-import Text from '../Text/Text';
-import Box from '../Box/Box';
+import { Text } from '../Text/Text';
+import { Box } from '../Box/Box';
 import { IconProps } from '../icons/Icon/Icon';
 
 export default (Icon: ComponentType<Omit<IconProps, 'svgComponent'>>) => {

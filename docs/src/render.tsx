@@ -3,7 +3,7 @@ import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router';
 import dedent from 'dedent';
-import App from './App/App';
+import { App } from './App/App';
 import { RenderConfig } from './types';
 
 interface RenderContext {
