@@ -1,8 +1,8 @@
 import React, { ReactNode } from 'react';
-import Box from '../Box/Box';
-import Secondary from '../Secondary/Secondary';
-import Strong from '../Strong/Strong';
-import Text from '../Text/Text';
+import { Box } from '../Box/Box';
+import { Secondary } from '../Secondary/Secondary';
+import { Strong } from '../Strong/Strong';
+import { Text } from '../Text/Text';
 import styles from './FieldLabel.css.js';
 
 export interface FieldLabelProps {
@@ -13,7 +13,7 @@ export interface FieldLabelProps {
   description?: ReactNode;
 }
 
-const FieldLabel = ({
+export const FieldLabel = ({
   id,
   label,
   secondaryLabel,
@@ -42,7 +42,3 @@ const FieldLabel = ({
       ) : null}
     </Box>
   ) : null;
-
-FieldLabel.displayName = 'FieldLabel';
-
-export default FieldLabel;

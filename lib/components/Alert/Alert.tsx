@@ -1,8 +1,8 @@
 import React, { ReactNode } from 'react';
-import Box from '../Box/Box';
-import Text from '../Text/Text';
-import InfoIcon from '../icons/InfoIcon/InfoIcon';
-import ErrorIcon from '../icons/ErrorIcon/ErrorIcon';
+import { Box } from '../Box/Box';
+import { Text } from '../Text/Text';
+import { InfoIcon } from '../icons/InfoIcon/InfoIcon';
+import { ErrorIcon } from '../icons/ErrorIcon/ErrorIcon';
 import styles from './Alert.css.js';
 
 type Tone = 'info' | 'critical';
@@ -44,7 +44,7 @@ const textColorForTone = (tone: Tone) => {
   return 'neutral';
 };
 
-const Alert = ({ tone = 'info', children }: AlertProps) => {
+export const Alert = ({ tone = 'info', children }: AlertProps) => {
   const icon = iconForTone(tone);
   const color = textColorForTone(tone);
 
@@ -65,7 +65,3 @@ const Alert = ({ tone = 'info', children }: AlertProps) => {
     </Box>
   );
 };
-
-Alert.displayName = 'Alert';
-
-export default Alert;

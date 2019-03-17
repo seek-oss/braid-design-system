@@ -1,8 +1,8 @@
 import React from 'react';
-import Actions from './Actions';
-import Button from '../Button/Button';
-import TextLink from '../TextLink/TextLink';
 import { ComponentDocs } from '../../../docs/src/types';
+import { Actions } from './Actions';
+import { Button } from '../Button/Button';
+import { TextLink } from '../TextLink/TextLink';
 
 const docs: ComponentDocs = {
   examples: [

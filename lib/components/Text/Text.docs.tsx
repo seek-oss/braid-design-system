@@ -1,6 +1,6 @@
 import React from 'react';
-import Text from './Text';
 import { ComponentDocs } from '../../../docs/src/types';
+import { Text } from './Text';
 
 const docs: ComponentDocs = {
   examples: [

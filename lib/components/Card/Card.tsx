@@ -1,11 +1,11 @@
 import React, { ReactNode } from 'react';
-import Box from '../Box/Box';
+import { Box } from '../Box/Box';
 
 export interface CardProps {
   children?: ReactNode;
 }
 
-const Card = ({ children }: CardProps) => (
+export const Card = ({ children }: CardProps) => (
   <Box paddingBottom="medium">
     <Box
       backgroundColor="card"
@@ -18,7 +18,3 @@ const Card = ({ children }: CardProps) => (
     </Box>
   </Box>
 );
-
-Card.displayName = 'Card';
-
-export default Card;

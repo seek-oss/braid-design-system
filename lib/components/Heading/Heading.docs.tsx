@@ -1,6 +1,6 @@
 import React from 'react';
-import Heading from './Heading';
 import { ComponentDocs } from '../../../docs/src/types';
+import { Heading } from './Heading';
 
 const docs: ComponentDocs = {
   examples: [

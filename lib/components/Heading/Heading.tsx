@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import classnames from 'classnames';
-import ThemeConsumer from '../ThemeConsumer/ThemeConsumer';
-import Box, { BoxProps } from '../Box/Box';
+import { ThemeConsumer } from '../ThemeConsumer/ThemeConsumer';
+import { Box, BoxProps } from '../Box/Box';
 import { HeadingSize, Transform, FontWeight, Tokens } from '../../themes/theme';
 
 type HeadingLevel = '1' | '2' | '3';
@@ -53,7 +53,7 @@ export interface HeadingProps {
   component?: BoxProps['component'];
 }
 
-const Heading = ({
+export const Heading = ({
   level,
   weight = 'regular',
   component,
@@ -88,7 +88,3 @@ const Heading = ({
     </ThemeConsumer>
   );
 };
-
-Heading.displayName = 'Heading';
-
-export default Heading;

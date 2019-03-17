@@ -15,7 +15,7 @@ const isValidComponentName = (
   return componentDocs.hasOwnProperty(componentName);
 };
 
-const ComponentProps = ({ componentName }: Props) => {
+export const ComponentProps = ({ componentName }: Props) => {
   if (!isValidComponentName(componentName)) {
     return null;
   }
@@ -45,7 +45,3 @@ const ComponentProps = ({ componentName }: Props) => {
     </Fragment>
   );
 };
-
-ComponentProps.displayName = 'ComponentProps';
-
-export default ComponentProps;

@@ -1,8 +1,8 @@
 import React, { ReactNode } from 'react';
-import Box from '../Box/Box';
-import Text, { TextProps } from '../Text/Text';
-import ErrorIcon from '../icons/ErrorIcon/ErrorIcon';
-import TickCircleIcon from '../icons/TickCircleIcon/TickCircleIcon';
+import { Box } from '../Box/Box';
+import { Text, TextProps } from '../Text/Text';
+import { ErrorIcon } from '../icons/ErrorIcon/ErrorIcon';
+import { TickCircleIcon } from '../icons/TickCircleIcon/TickCircleIcon';
 import styles from './FieldMessage.css.js';
 
 type FieldTone = 'neutral' | 'critical' | 'positive';
@@ -32,7 +32,7 @@ const renderIcon = (tone: FieldTone = 'neutral') => {
   );
 };
 
-const FieldMessage = ({
+export const FieldMessage = ({
   id,
   tone = 'neutral',
   message,
@@ -55,7 +55,3 @@ const FieldMessage = ({
       ) : null}
     </Box>
   );
-
-FieldMessage.displayName = 'FieldMessage';
-
-export default FieldMessage;

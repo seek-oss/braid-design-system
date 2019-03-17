@@ -1,6 +1,6 @@
 import React from 'react';
-import Divider from './Divider';
 import { ComponentDocs } from '../../../docs/src/types';
+import { Divider } from './Divider';
 
 const docs: ComponentDocs = {
   examples: [

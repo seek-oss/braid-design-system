@@ -1,12 +1,12 @@
 import React, { ReactNode, AllHTMLAttributes, useState } from 'react';
 import classnames from 'classnames';
-import ThemeConsumer from '../ThemeConsumer/ThemeConsumer';
 import getCheckboxRadioSize from '../private/getCheckboxRadioSize';
-import Box from '../Box/Box';
-import Text from '../Text/Text';
-import FieldMessage from '../FieldMessage/FieldMessage';
-import styles from './Radio.css.js';
 import { px } from '../../atoms/utils/toUnit';
+import { ThemeConsumer } from '../ThemeConsumer/ThemeConsumer';
+import { Box } from '../Box/Box';
+import { Text } from '../Text/Text';
+import { FieldMessage } from '../FieldMessage/FieldMessage';
+import styles from './Radio.css.js';
 
 const textColorForState = (disabled: boolean, hovered: boolean) => {
   if (disabled) {
@@ -31,7 +31,7 @@ export interface RadioProps
   message?: ReactNode | false;
 }
 
-const Radio = ({
+export const Radio = ({
   id,
   label,
   checked,
@@ -146,7 +146,3 @@ const Radio = ({
     </ThemeConsumer>
   );
 };
-
-Radio.displayName = 'Radio';
-
-export default Radio;

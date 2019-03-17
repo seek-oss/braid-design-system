@@ -6,7 +6,7 @@ interface ThemeConsumerProps {
   children(theme: Theme): ReactNode;
 }
 
-const ThemeConsumer = ({ children }: ThemeConsumerProps) => (
+export const ThemeConsumer = ({ children }: ThemeConsumerProps) => (
   <ThemeContext.Consumer>
     {theme => {
       if (theme === null) {
@@ -17,7 +17,3 @@ const ThemeConsumer = ({ children }: ThemeConsumerProps) => (
     }}
   </ThemeContext.Consumer>
 );
-
-ThemeConsumer.displayName = 'ThemeConsumer';
-
-export default ThemeConsumer;

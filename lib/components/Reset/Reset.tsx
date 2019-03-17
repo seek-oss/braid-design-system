@@ -1,6 +1,6 @@
 import React, { ReactType, AllHTMLAttributes } from 'react';
 import classnames from 'classnames';
-import ThemeConsumer from '../ThemeConsumer/ThemeConsumer';
+import { ThemeConsumer } from '../ThemeConsumer/ThemeConsumer';
 import { ResetTags } from '../../themes/theme';
 
 export interface ResetProps extends AllHTMLAttributes<HTMLElement> {
@@ -13,7 +13,7 @@ const isResetTag = (
 ): component is ResetTags =>
   typeof component === 'string' && Object.keys(atom).indexOf(component) > -1;
 
-const Reset = ({
+export const Reset = ({
   component = 'div',
   className = '',
   ...restProps
@@ -31,7 +31,3 @@ const Reset = ({
     }}
   </ThemeConsumer>
 );
-
-Reset.displayName = 'Reset';
-
-export default Reset;

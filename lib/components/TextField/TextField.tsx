@@ -1,9 +1,9 @@
 import React, { ReactNode, AllHTMLAttributes, Fragment } from 'react';
-import ThemeConsumer from '../ThemeConsumer/ThemeConsumer';
-import Box from '../Box/Box';
-import FieldLabel from '../FieldLabel/FieldLabel';
-import FieldMessage from '../FieldMessage/FieldMessage';
 import classnames from 'classnames';
+import { ThemeConsumer } from '../ThemeConsumer/ThemeConsumer';
+import { Box } from '../Box/Box';
+import { FieldLabel } from '../FieldLabel/FieldLabel';
+import { FieldMessage } from '../FieldMessage/FieldMessage';
 import styles from './TextField.css.js';
 
 const validTypes = {
@@ -32,7 +32,7 @@ interface TextFieldProps {
   type?: keyof typeof validTypes;
 }
 
-const TextField = ({
+export const TextField = ({
   id,
   label,
   secondaryLabel,
@@ -100,7 +100,3 @@ const TextField = ({
     </ThemeConsumer>
   );
 };
-
-TextField.displayName = 'TextField';
-
-export default TextField;

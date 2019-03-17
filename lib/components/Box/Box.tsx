@@ -1,7 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
-import ThemeConsumer from '../ThemeConsumer/ThemeConsumer';
-import Reset, { ResetProps } from '../Reset/Reset';
+import { ThemeConsumer } from '../ThemeConsumer/ThemeConsumer';
+import { Reset, ResetProps } from '../Reset/Reset';
 import {
   HorizontalSpacing,
   VerticalPadding,
@@ -53,7 +53,7 @@ export interface BoxProps extends ResetProps {
   width?: Width;
 }
 
-const Box = ({
+export const Box = ({
   paddingTop,
   paddingBottom,
   paddingLeft,
@@ -149,7 +149,3 @@ const Box = ({
     )}
   </ThemeConsumer>
 );
-
-Box.displayName = 'Box';
-
-export default Box;

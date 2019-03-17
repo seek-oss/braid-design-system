@@ -1,11 +1,11 @@
 import React, { ReactNode } from 'react';
-import ThemeConsumer from '../ThemeConsumer/ThemeConsumer';
+import { ThemeConsumer } from '../ThemeConsumer/ThemeConsumer';
 
 export interface StrongProps {
   children: ReactNode;
 }
 
-const Strong = ({ children }: StrongProps) => (
+export const Strong = ({ children }: StrongProps) => (
   <ThemeConsumer>
     {theme => {
       return (
@@ -14,7 +14,3 @@ const Strong = ({ children }: StrongProps) => (
     }}
   </ThemeConsumer>
 );
-
-Strong.displayName = 'Strong';
-
-export default Strong;

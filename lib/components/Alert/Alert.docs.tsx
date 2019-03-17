@@ -1,6 +1,6 @@
 import React from 'react';
-import Alert from './Alert';
 import { ComponentDocs } from '../../../docs/src/types';
+import { Alert } from './Alert';
 
 const docs: ComponentDocs = {
   examples: [

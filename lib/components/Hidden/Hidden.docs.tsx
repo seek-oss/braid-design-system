@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react';
-import Hidden from './Hidden';
-import Text from '../Text/Text';
+import { ComponentDocs } from '../../../docs/src/types';
+import { Hidden } from './Hidden';
+import { Text } from '../Text/Text';
 
-export default {
-  component: Hidden,
+const docs: ComponentDocs = {
   examples: [
     {
       label: 'Hidden on Mobile',
@@ -95,3 +95,5 @@ export default {
     },
   ],
 };
+
+export default docs;

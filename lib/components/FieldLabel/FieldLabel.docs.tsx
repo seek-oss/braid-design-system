@@ -1,7 +1,7 @@
 import React from 'react';
-import FieldLabel from './FieldLabel';
-import TextLink from '../TextLink/TextLink';
 import { ComponentDocs } from '../../../docs/src/types';
+import { FieldLabel } from './FieldLabel';
+import { TextLink } from '../TextLink/TextLink';
 
 const docs: ComponentDocs = {
   examples: [

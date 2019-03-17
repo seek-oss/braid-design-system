@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import Box from '../Box/Box';
+import { Box } from '../Box/Box';
 import styles from './Hidden.css.js';
 
 export interface HiddenProps {
@@ -11,7 +11,7 @@ export interface HiddenProps {
   inline?: boolean;
 }
 
-const Hidden = ({
+export const Hidden = ({
   children,
   inline = false,
   mobile: hiddenOnMobile = false,
@@ -34,7 +34,3 @@ const Hidden = ({
     </Box>
   );
 };
-
-Hidden.displayName = 'Hidden';
-
-export default Hidden;

@@ -1,7 +1,7 @@
 import React from 'react';
 import reactElementToJSXString from 'react-element-to-jsx-string';
 import dedent from 'dedent';
-import ComponentProps from '../ComponentProps/ComponentProps';
+import { ComponentProps } from '../ComponentProps/ComponentProps';
 import { ExternalLink } from '../Link';
 import { ThemeProvider, Box, Text } from '../../../../lib/components';
 import {
@@ -26,7 +26,7 @@ interface ComponentRouteProps {
   sourceUrlPrefix: string;
 }
 
-const ComponentRoute = ({
+export const ComponentRoute = ({
   componentName,
   category,
   sourceUrlPrefix,
@@ -130,7 +130,3 @@ const ComponentRoute = ({
     </Box>
   );
 };
-
-ComponentRoute.displayName = 'ComponentRoute';
-
-export default ComponentRoute;

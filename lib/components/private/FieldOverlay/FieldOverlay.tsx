@@ -1,12 +1,12 @@
 import React from 'react';
-import Overlay, { OverlayProps } from '../Overlay/Overlay';
+import { Overlay, OverlayProps } from '../Overlay/Overlay';
 
 export interface FieldOverlayProps
   extends Pick<OverlayProps, 'backgroundColor' | 'className'> {
   variant?: 'focus';
 }
 
-const FieldOverlay = ({ variant, ...restProps }: FieldOverlayProps) => (
+export const FieldOverlay = ({ variant, ...restProps }: FieldOverlayProps) => (
   <Overlay
     borderRadius="standard"
     boxShadow={variant === 'focus' ? 'outlineFocus' : undefined}
@@ -14,7 +14,3 @@ const FieldOverlay = ({ variant, ...restProps }: FieldOverlayProps) => (
     {...restProps}
   />
 );
-
-FieldOverlay.displayName = 'FieldOverlay';
-
-export default FieldOverlay;

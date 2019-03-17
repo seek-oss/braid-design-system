@@ -1,10 +1,10 @@
 import React, { ReactNode, AllHTMLAttributes } from 'react';
 import classnames from 'classnames';
 import { BackgroundColor, Color } from 'lib/themes/theme';
+import { Box } from '../Box/Box';
+import { Text } from '../Text/Text';
+import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
 import styles from './Button.css.js';
-import Box from '../Box/Box';
-import Text from '../Text/Text';
-import FieldOverlay from '../private/FieldOverlay/FieldOverlay';
 
 type ButtonWeight = 'weak' | 'regular' | 'strong';
 type ButtonState = 'base' | 'hover' | 'active';
@@ -43,7 +43,7 @@ const foregroundColor: Record<ButtonWeight, Color> = {
   strong: 'brandAccentForeground',
 };
 
-const Button = ({
+export const Button = ({
   children,
   weight = 'regular',
   type = 'button',
@@ -88,7 +88,3 @@ const Button = ({
     </Box>
   );
 };
-
-Button.displayName = 'Button';
-
-export default Button;

@@ -1,12 +1,12 @@
 import React from 'react';
-import Columns from '../Columns/Columns';
-import Column from './Column';
-import Box from '../Box/Box';
-import Text from '../Text/Text';
+import { ComponentDocs } from '../../../docs/src/types';
+import { Columns } from '../Columns/Columns';
+import { Column } from './Column';
+import { Box } from '../Box/Box';
+import { Text } from '../Text/Text';
 import { HideCode } from '../private/HideCode';
 
-export default {
-  component: Columns,
+const docs: ComponentDocs = {
   examples: [
     {
       label: 'Standard Columns',
@@ -53,3 +53,5 @@ export default {
     },
   ],
 };
+
+export default docs;

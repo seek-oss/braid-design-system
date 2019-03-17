@@ -1,8 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import TextLinkRenderer from './TextLinkRenderer';
-import Text from '../Text/Text';
 import { ComponentDocs } from '../../../docs/src/types';
+import { Link } from 'react-router-dom';
+import { TextLinkRenderer } from './TextLinkRenderer';
+import { Text } from '../Text/Text';
 
 const docs: ComponentDocs = {
   examples: [

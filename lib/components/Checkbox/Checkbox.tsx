@@ -1,13 +1,13 @@
 import React, { ReactNode, AllHTMLAttributes, useState } from 'react';
 import classnames from 'classnames';
-import ThemeConsumer from '../ThemeConsumer/ThemeConsumer';
 import getCheckboxRadioSize from '../private/getCheckboxRadioSize';
-import Box from '../Box/Box';
-import Text from '../Text/Text';
-import FieldMessage from '../FieldMessage/FieldMessage';
-import TickIcon from '../icons/TickIcon/TickIcon';
-import styles from './Checkbox.css.js';
 import { px } from '../../atoms/utils/toUnit';
+import { ThemeConsumer } from '../ThemeConsumer/ThemeConsumer';
+import { Box } from '../Box/Box';
+import { Text } from '../Text/Text';
+import { FieldMessage } from '../FieldMessage/FieldMessage';
+import { TickIcon } from '../icons/TickIcon/TickIcon';
+import styles from './Checkbox.css.js';
 
 const textColorForState = (disabled: boolean, hovered: boolean) => {
   if (disabled) {
@@ -33,7 +33,7 @@ export interface CheckboxProps
   children?: ReactNode;
 }
 
-const Checkbox = ({
+export const Checkbox = ({
   id,
   checked,
   onChange,
@@ -177,7 +177,3 @@ const Checkbox = ({
     </ThemeConsumer>
   );
 };
-
-Checkbox.displayName = 'Checkbox';
-
-export default Checkbox;

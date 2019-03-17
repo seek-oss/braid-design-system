@@ -1,13 +1,13 @@
 import React, { ReactNode, useContext } from 'react';
 import { ColumnsContext } from '../Columns/Columns';
-import Box from '../Box/Box';
+import { Box } from '../Box/Box';
 import styles from './Column.css.js';
 
 export interface ColumnProps {
   children: ReactNode;
 }
 
-const Column = ({ children }: ColumnProps) => {
+export const Column = ({ children }: ColumnProps) => {
   const { index } = useContext(ColumnsContext);
 
   return (
@@ -19,7 +19,3 @@ const Column = ({ children }: ColumnProps) => {
     </Box>
   );
 };
-
-Column.displayName = 'Column';
-
-export default Column;

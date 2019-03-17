@@ -1,16 +1,16 @@
 import React from 'react';
 import classnames from 'classnames';
 import { Omit } from 'utility-types';
-import Box from '../../Box/Box';
-import Icon, { IconProps } from '../Icon/Icon';
-import ChevronSvg from './ChevronSvg';
+import { Box } from '../../Box/Box';
+import { Icon, IconProps } from '../Icon/Icon';
+import { ChevronSvg } from './ChevronSvg';
 import styles from './ChevronIcon.css.js';
 
 export interface ChevronIconProps extends Omit<IconProps, 'svgComponent'> {
   direction?: 'up' | 'down' | 'left' | 'right';
 }
 
-const ChevronIcon = ({
+export const ChevronIcon = ({
   direction = 'down',
   inline,
   ...restProps
@@ -26,7 +26,3 @@ const ChevronIcon = ({
     <Icon svgComponent={ChevronSvg} inline={inline} {...restProps} />
   </Box>
 );
-
-ChevronIcon.displayName = 'ChevronIcon';
-
-export default ChevronIcon;

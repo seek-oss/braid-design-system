@@ -1,8 +1,8 @@
 import React, { AllHTMLAttributes } from 'react';
 
-export type ChevronSvgProps = AllHTMLAttributes<SVGElement>;
+export type InfoSvgProps = AllHTMLAttributes<SVGElement>;
 
-const InfoSvg = (props: ChevronSvgProps) => (
+export const InfoSvg = (props: InfoSvgProps) => (
   <svg x="0" y="0" width="16" height="16" viewBox="0 0 30 30" {...props}>
     <path
       d="M14.905,21.843c-0.552,0-1-0.447-1-1v-8.236c0-0.552,0.448-1,1-1s1,0.448,1,1v8.236
@@ -19,7 +19,3 @@ const InfoSvg = (props: ChevronSvgProps) => (
     />
   </svg>
 );
-
-InfoSvg.displayName = 'InfoSvg';
-
-export default InfoSvg;

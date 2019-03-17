@@ -1,6 +1,6 @@
 import React from 'react';
-import FieldMessage from './FieldMessage';
 import { ComponentDocs } from '../../../docs/src/types';
+import { FieldMessage } from './FieldMessage';
 
 const docs: ComponentDocs = {
   examples: [

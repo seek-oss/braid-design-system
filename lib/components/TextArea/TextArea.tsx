@@ -1,11 +1,11 @@
 import React, { ReactNode, AllHTMLAttributes, Fragment } from 'react';
-import ThemeConsumer from '../ThemeConsumer/ThemeConsumer';
-import Box from '../Box/Box';
-import FieldLabel from '../FieldLabel/FieldLabel';
-import FieldMessage from '../FieldMessage/FieldMessage';
 import classnames from 'classnames';
+import { ThemeConsumer } from '../ThemeConsumer/ThemeConsumer';
+import { Box } from '../Box/Box';
+import { FieldLabel } from '../FieldLabel/FieldLabel';
+import { FieldMessage } from '../FieldMessage/FieldMessage';
+import { Text } from '../Text/Text';
 import styles from './TextArea.css.js';
-import Text from '../Text/Text';
 
 type NativeTextAreaProps = AllHTMLAttributes<HTMLTextAreaElement>;
 interface TextAreaProps {
@@ -42,7 +42,7 @@ const renderCount = ({
   );
 };
 
-const TextArea = ({
+export const TextArea = ({
   id,
   label,
   secondaryLabel,
@@ -124,7 +124,3 @@ const TextArea = ({
     </ThemeConsumer>
   );
 };
-
-TextArea.displayName = 'TextArea';
-
-export default TextArea;

@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import { withRouter, Route, RouteComponentProps } from 'react-router';
 import classnames from 'classnames';
 import Logo from './Logo/Logo';
-import ComponentRoute from './ComponentRoute/ComponentRoute';
+import { ComponentRoute } from './ComponentRoute/ComponentRoute';
 import { Link, ExternalLink } from './Link';
 import styles from './App.css.js';
 
@@ -15,7 +15,7 @@ interface AppProps extends RouteComponentProps {
   sourceUrlPrefix: string;
 }
 
-const App = ({ location, sourceUrlPrefix }: AppProps) => {
+export const App = withRouter(({ location, sourceUrlPrefix }: AppProps) => {
   const [menuOpenState, setMenuOpen] = useState(false);
 
   const isHome = location.pathname === '/';
@@ -190,8 +190,4 @@ const App = ({ location, sourceUrlPrefix }: AppProps) => {
       </div>
     </ThemeProvider>
   );
-};
-
-App.displayName = 'App';
-
-export default withRouter(App);
+});

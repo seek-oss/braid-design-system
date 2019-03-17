@@ -1,6 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
-import Box, { BoxProps } from '../../Box/Box';
+import { Box, BoxProps } from '../../Box/Box';
 import styles from './Overlay.css.js';
 
 export type OverlayProps = Partial<
@@ -14,7 +14,7 @@ export type OverlayProps = Partial<
   >
 >;
 
-const Overlay = ({
+export const Overlay = ({
   backgroundColor,
   borderRadius,
   boxShadow,
@@ -29,7 +29,3 @@ const Overlay = ({
     className={classnames(styles.root, className)}
   />
 );
-
-Overlay.displayName = 'Overlay';
-
-export default Overlay;

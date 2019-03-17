@@ -1,9 +1,9 @@
 import React, { ComponentType } from 'react';
 import classnames from 'classnames';
-import Box from '../../Box/Box';
-import ThemeConsumer from '../../ThemeConsumer/ThemeConsumer';
-import styles from './Icon.css.js';
 import { TextSize, Fill, IconSize } from '../../../themes/theme';
+import { Box } from '../../Box/Box';
+import { ThemeConsumer } from '../../ThemeConsumer/ThemeConsumer';
+import styles from './Icon.css.js';
 
 export interface IconProps {
   size?: TextSize | 'fill';
@@ -17,7 +17,7 @@ const isIconSize = (
   sizeAtom: string,
 ): sizeAtom is IconSize => Object.keys(atom).indexOf(sizeAtom) > -1;
 
-const Icon = ({
+export const Icon = ({
   size = 'standard',
   svgComponent,
   inline = false,
@@ -52,7 +52,3 @@ const Icon = ({
     }}
   </ThemeConsumer>
 );
-
-Icon.displayName = 'Icon';
-
-export default Icon;

@@ -1,7 +1,7 @@
 import React from 'react';
-import Radio from './Radio';
-import Text from '../Text/Text';
 import { ComponentDocs } from '../../../docs/src/types';
+import { Radio } from './Radio';
+import { Text } from '../Text/Text';
 
 const docs: ComponentDocs = {
   examples: [

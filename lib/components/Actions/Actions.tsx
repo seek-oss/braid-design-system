@@ -1,12 +1,12 @@
 import React, { Children, ReactNode } from 'react';
 import { ActionsProvider } from './ActionsContext';
-import Box from '../Box/Box';
+import { Box } from '../Box/Box';
 
 export interface ActionsProps {
   children: ReactNode;
 }
 
-const Actions = ({ children }: ActionsProps) => (
+export const Actions = ({ children }: ActionsProps) => (
   <ActionsProvider value={true}>
     <Box display="flex" flexDirection={['column', 'row']}>
       {Children.map(children, (child, index) =>
@@ -21,7 +21,3 @@ const Actions = ({ children }: ActionsProps) => (
     </Box>
   </ActionsProvider>
 );
-
-Actions.displayName = 'Actions';
-
-export default Actions;

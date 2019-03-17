@@ -1,9 +1,9 @@
 import React, { ReactNode } from 'react';
 import classnames from 'classnames';
-import ThemeConsumer from '../ThemeConsumer/ThemeConsumer';
-import styles from './Text.css.js';
-import Box, { BoxProps } from '../Box/Box';
 import { Color, FontWeight, Theme } from '../../themes/theme';
+import { ThemeConsumer } from '../ThemeConsumer/ThemeConsumer';
+import { Box, BoxProps } from '../Box/Box';
+import styles from './Text.css.js';
 
 type TextSize = 'standard' | 'large';
 
@@ -32,7 +32,7 @@ export interface TextProps extends Pick<BoxProps, 'component'> {
   baseline?: boolean;
 }
 
-const Text = ({
+export const Text = ({
   component,
   size = 'standard',
   color,
@@ -62,7 +62,3 @@ const Text = ({
     )}
   </ThemeConsumer>
 );
-
-Text.displayName = 'Text';
-
-export default Text;

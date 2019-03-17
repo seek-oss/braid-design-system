@@ -7,10 +7,6 @@ interface ThemeProviderProps {
   children: ReactNode;
 }
 
-const ThemeProvider = ({ theme, ...restProps }: ThemeProviderProps) => (
+export const ThemeProvider = ({ theme, ...restProps }: ThemeProviderProps) => (
   <ThemeContext.Provider value={theme} {...restProps} />
 );
-
-ThemeProvider.displayName = 'ThemeProvider';
-
-export default ThemeProvider;

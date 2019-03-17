@@ -1,7 +1,7 @@
 import React from 'react';
-import TextField from './TextField';
-import TextLink from '../TextLink/TextLink';
 import { ComponentDocs } from '../../../docs/src/types';
+import { TextField } from './TextField';
+import { TextLink } from '../TextLink/TextLink';
 
 const docs: ComponentDocs = {
   examples: [

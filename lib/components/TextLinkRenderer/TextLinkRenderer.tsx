@@ -1,9 +1,9 @@
 import React, { ReactNode, CSSProperties } from 'react';
 import classnames from 'classnames';
-import ThemeConsumer from '../ThemeConsumer/ThemeConsumer';
 import { ActionsConsumer } from '../Actions/ActionsContext';
-import Text from '../Text/Text';
-import FieldOverlay from '../private/FieldOverlay/FieldOverlay';
+import { ThemeConsumer } from '../ThemeConsumer/ThemeConsumer';
+import { Text } from '../Text/Text';
+import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
 import styles from './TextLinkRenderer.css.js';
 
 interface StyleProps {
@@ -16,7 +16,7 @@ export interface TextLinkRendererProps {
   children: (styleProps: StyleProps) => ReactNode;
 }
 
-const TextLinkRenderer = ({
+export const TextLinkRenderer = ({
   inline = false,
   children,
 }: TextLinkRendererProps) => (
@@ -87,7 +87,3 @@ const TextLinkRenderer = ({
     }}
   </ThemeConsumer>
 );
-
-TextLinkRenderer.displayName = 'TextLinkRenderer';
-
-export default TextLinkRenderer;
