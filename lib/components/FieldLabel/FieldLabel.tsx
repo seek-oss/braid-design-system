@@ -19,8 +19,12 @@ export const FieldLabel = ({
   secondaryLabel,
   tertiaryLabel,
   description,
-}: FieldLabelProps) =>
-  label ? (
+}: FieldLabelProps) => {
+  if (!label) {
+    return null;
+  }
+
+  return (
     <Box paddingBottom="xsmall">
       <Box component="span" display="flex" className={styles.spaceBetween}>
         <label htmlFor={id}>
@@ -41,4 +45,5 @@ export const FieldLabel = ({
         </Box>
       ) : null}
     </Box>
-  ) : null;
+  );
+};
