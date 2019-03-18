@@ -12,4 +12,5 @@ module.exports = {
   public: 'docs/src/public',
   target: 'docs/dist',
   publicPath: isGitHubPages ? '/braid-design-system/' : '/',
+  displayNamesProd: true,
 };

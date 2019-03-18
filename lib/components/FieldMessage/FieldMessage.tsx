@@ -37,8 +37,12 @@ export const FieldMessage = ({
   tone = 'neutral',
   message,
   secondaryMessage,
-}: FieldMessageProps) =>
-  message === false ? null : (
+}: FieldMessageProps) => {
+  if (message === false) {
+    return null;
+  }
+
+  return (
     <Box id={id} paddingBottom="small" display="flex" className={styles.root}>
       <Box minHeight="standardText" className={styles.grow}>
         <Text color={tone}>
@@ -55,3 +59,4 @@ export const FieldMessage = ({
       ) : null}
     </Box>
   );
+};
