@@ -1,8 +1,8 @@
 import React, { ReactNode } from 'react';
 import classnames from 'classnames';
-import { ThemeConsumer } from '../ThemeConsumer/ThemeConsumer';
 import { Box, BoxProps } from '../Box/Box';
 import { HeadingSize, Transform, FontWeight, Tokens } from '../../themes/theme';
+import { useTheme } from '../private/ThemeContext';
 
 type HeadingLevel = '1' | '2' | '3';
 type HeadingWeight = 'regular' | 'weak';
@@ -59,32 +59,27 @@ export const Heading = ({
   component,
   children,
 }: HeadingProps) => {
-  return (
-    <ThemeConsumer>
-      {theme => {
-        const {
-          transform,
-          fontSize,
-          fontWeight,
-          component: resolvedComponent,
-        } = resolveHeadingOptions(level, weight, theme.tokens, component);
+  const theme = useTheme();
+  const {
+    transform,
+    fontSize,
+    fontWeight,
+    component: resolvedComponent,
+  } = resolveHeadingOptions(level, weight, theme.tokens, component);
 
-        return (
-          <Box
-            component={resolvedComponent}
-            paddingBottom={level === '1' ? 'small' : 'xsmall'}
-            className={classnames(
-              theme.atoms.fontFamily.text,
-              theme.atoms.color.neutral,
-              theme.atoms.fontSize[fontSize],
-              theme.atoms.fontWeight[fontWeight],
-              theme.atoms.transform[transform],
-            )}
-          >
-            {children}
-          </Box>
-        );
-      }}
-    </ThemeConsumer>
+  return (
+    <Box
+      component={resolvedComponent}
+      paddingBottom={level === '1' ? 'small' : 'xsmall'}
+      className={classnames(
+        theme.atoms.fontFamily.text,
+        theme.atoms.color.neutral,
+        theme.atoms.fontSize[fontSize],
+        theme.atoms.fontWeight[fontWeight],
+        theme.atoms.transform[transform],
+      )}
+    >
+      {children}
+    </Box>
   );
 };

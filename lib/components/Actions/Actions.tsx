@@ -1,5 +1,5 @@
 import React, { Children, ReactNode } from 'react';
-import { ActionsProvider } from './ActionsContext';
+import ActionsContext from './ActionsContext';
 import { Box } from '../Box/Box';
 
 export interface ActionsProps {
@@ -7,7 +7,7 @@ export interface ActionsProps {
 }
 
 export const Actions = ({ children }: ActionsProps) => (
-  <ActionsProvider value={true}>
+  <ActionsContext.Provider value={true}>
     <Box display="flex" flexDirection={['column', 'row']}>
       {Children.map(children, (child, index) =>
         index === 0 ? (
@@ -19,5 +19,5 @@ export const Actions = ({ children }: ActionsProps) => (
         ),
       )}
     </Box>
-  </ActionsProvider>
+  </ActionsContext.Provider>
 );

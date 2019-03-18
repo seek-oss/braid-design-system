@@ -1,6 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
-import { ThemeConsumer } from '../ThemeConsumer/ThemeConsumer';
+import { useTheme } from '../private/ThemeContext';
 import { Reset, ResetProps } from '../Reset/Reset';
 import {
   HorizontalSpacing,
@@ -73,79 +73,79 @@ export const Box = ({
   width,
   className,
   ...restProps
-}: BoxProps) => (
-  <ThemeConsumer>
-    {({ atoms }) => (
-      <Reset
-        className={classnames(
-          className,
-          atoms.backgroundColor[backgroundColor!],
-          atoms.boxShadow[boxShadow!],
-          atoms.borderRadius[borderRadius!],
-          atoms.boxShadow[boxShadow!],
-          atoms.transition[transition!],
-          atoms.transform[transform!],
-          atoms.minHeight[minHeight!],
-          atoms.width[width!],
-          marginTop &&
-            getResponsiveClasses(
-              atoms.marginTop,
-              atoms.marginTopDesktop,
-              marginTop,
-            ),
-          marginRight &&
-            getResponsiveClasses(
-              atoms.marginRight,
-              atoms.marginRightDesktop,
-              marginRight,
-            ),
-          marginBottom &&
-            getResponsiveClasses(
-              atoms.marginBottom,
-              atoms.marginBottomDesktop,
-              marginBottom,
-            ),
-          marginLeft &&
-            getResponsiveClasses(
-              atoms.marginLeft,
-              atoms.marginLeftDesktop,
-              marginLeft,
-            ),
-          paddingTop &&
-            getResponsiveClasses(
-              atoms.paddingTop,
-              atoms.paddingTopDesktop,
-              paddingTop,
-            ),
-          paddingRight &&
-            getResponsiveClasses(
-              atoms.paddingRight,
-              atoms.paddingRightDesktop,
-              paddingRight,
-            ),
-          paddingBottom &&
-            getResponsiveClasses(
-              atoms.paddingBottom,
-              atoms.paddingBottomDesktop,
-              paddingBottom,
-            ),
-          paddingLeft &&
-            getResponsiveClasses(
-              atoms.paddingLeft,
-              atoms.paddingLeftDesktop,
-              paddingLeft,
-            ),
-          display &&
-            getResponsiveClasses(atoms.display, atoms.displayDesktop, display),
-          flexDirection &&
-            getResponsiveClasses(
-              atoms.flexDirection,
-              atoms.flexDirectionDesktop,
-              flexDirection,
-            ),
-        )}
-        {...restProps}
-      />
-    )}
-  </ThemeConsumer>
-);
+}: BoxProps) => {
+  const { atoms } = useTheme();
+
+  return (
+    <Reset
+      className={classnames(
+        className,
+        atoms.backgroundColor[backgroundColor!],
+        atoms.boxShadow[boxShadow!],
+        atoms.borderRadius[borderRadius!],
+        atoms.boxShadow[boxShadow!],
+        atoms.transition[transition!],
+        atoms.transform[transform!],
+        atoms.minHeight[minHeight!],
+        atoms.width[width!],
+        marginTop &&
+          getResponsiveClasses(
+            atoms.marginTop,
+            atoms.marginTopDesktop,
+            marginTop,
+          ),
+        marginRight &&
+          getResponsiveClasses(
+            atoms.marginRight,
+            atoms.marginRightDesktop,
+            marginRight,
+          ),
+        marginBottom &&
+          getResponsiveClasses(
+            atoms.marginBottom,
+            atoms.marginBottomDesktop,
+            marginBottom,
+          ),
+        marginLeft &&
+          getResponsiveClasses(
+            atoms.marginLeft,
+            atoms.marginLeftDesktop,
+            marginLeft,
+          ),
+        paddingTop &&
+          getResponsiveClasses(
+            atoms.paddingTop,
+            atoms.paddingTopDesktop,
+            paddingTop,
+          ),
+        paddingRight &&
+          getResponsiveClasses(
+            atoms.paddingRight,
+            atoms.paddingRightDesktop,
+            paddingRight,
+          ),
+        paddingBottom &&
+          getResponsiveClasses(
+            atoms.paddingBottom,
+            atoms.paddingBottomDesktop,
+            paddingBottom,
+          ),
+        paddingLeft &&
+          getResponsiveClasses(
+            atoms.paddingLeft,
+            atoms.paddingLeftDesktop,
+            paddingLeft,
+          ),
+        display &&
+          getResponsiveClasses(atoms.display, atoms.displayDesktop, display),
+        flexDirection &&
+          getResponsiveClasses(
+            atoms.flexDirection,
+            atoms.flexDirectionDesktop,
+            flexDirection,
+          ),
+      )}
+      {...restProps}
+    />
+  );
+};

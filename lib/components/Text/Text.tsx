@@ -1,9 +1,9 @@
 import React, { ReactNode } from 'react';
 import classnames from 'classnames';
 import { Color, FontWeight, Theme } from '../../themes/theme';
-import { ThemeConsumer } from '../ThemeConsumer/ThemeConsumer';
 import { Box, BoxProps } from '../Box/Box';
 import styles from './Text.css.js';
+import { useTheme } from '../private/ThemeContext';
 
 type TextSize = 'standard' | 'large';
 
@@ -39,26 +39,26 @@ export const Text = ({
   weight,
   baseline = true,
   children,
-}: TextProps) => (
-  <ThemeConsumer>
-    {theme => (
-      <Box
-        component={component}
-        className={classnames(
-          styles.block,
-          theme.atoms.fontFamily.text,
-          theme.atoms.color[color || 'neutral'],
-          theme.atoms.fontSize[size],
-          theme.atoms.fontWeight[weight || 'regular'],
-          resolveTransformAtom(size, baseline, theme),
-          {
-            [styles.listItem]:
-              typeof component === 'string' && /^li$/i.test(component),
-          },
-        )}
-      >
-        {children}
-      </Box>
-    )}
-  </ThemeConsumer>
-);
+}: TextProps) => {
+  const theme = useTheme();
+
+  return (
+    <Box
+      component={component}
+      className={classnames(
+        styles.block,
+        theme.atoms.fontFamily.text,
+        theme.atoms.color[color || 'neutral'],
+        theme.atoms.fontSize[size],
+        theme.atoms.fontWeight[weight || 'regular'],
+        resolveTransformAtom(size, baseline, theme),
+        {
+          [styles.listItem]:
+            typeof component === 'string' && /^li$/i.test(component),
+        },
+      )}
+    >
+      {children}
+    </Box>
+  );
+};
