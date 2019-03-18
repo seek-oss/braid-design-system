@@ -1,16 +1,12 @@
 import React, { ReactNode } from 'react';
-import { ThemeConsumer } from '../ThemeConsumer/ThemeConsumer';
+import { useTheme } from '../private/ThemeContext';
 
 export interface StrongProps {
   children: ReactNode;
 }
 
-export const Strong = ({ children }: StrongProps) => (
-  <ThemeConsumer>
-    {theme => {
-      return (
-        <strong className={theme.atoms.fontWeight.strong}>{children}</strong>
-      );
-    }}
-  </ThemeConsumer>
-);
+export const Strong = ({ children }: StrongProps) => {
+  const theme = useTheme();
+
+  return <strong className={theme.atoms.fontWeight.strong}>{children}</strong>;
+};

@@ -1,12 +1,12 @@
 import React, { ReactNode } from 'react';
-import { ThemeConsumer } from '../ThemeConsumer/ThemeConsumer';
+import { useTheme } from '../private/ThemeContext';
 
 export interface SecondaryProps {
   children: ReactNode;
 }
 
-export const Secondary = ({ children }: SecondaryProps) => (
-  <ThemeConsumer>
-    {({ atoms }) => <span className={atoms.color.secondary}>{children}</span>}
-  </ThemeConsumer>
-);
+export const Secondary = ({ children }: SecondaryProps) => {
+  const { atoms } = useTheme();
+
+  return <span className={atoms.color.secondary}>{children}</span>;
+};
