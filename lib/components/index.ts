@@ -1,6 +1,12 @@
 export { ThemeProvider } from './ThemeProvider/ThemeProvider';
-export { ThemeNameConsumer } from './ThemeNameConsumer/ThemeNameConsumer';
-export { ThemeTokensConsumer } from './ThemeTokensConsumer/ThemeTokensConsumer';
+export {
+  ThemeNameConsumer,
+  useThemeName,
+} from './ThemeNameConsumer/ThemeNameConsumer';
+export {
+  ThemeTokensConsumer,
+  useThemeTokens,
+} from './ThemeTokensConsumer/ThemeTokensConsumer';
 export { Actions } from './Actions/Actions';
 export { Alert } from './Alert/Alert';
 export { Box } from './Box/Box';

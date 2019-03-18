@@ -1,19 +1,13 @@
-import React, { ReactNode } from 'react';
-import ThemeContext from '../private/ThemeContext';
+import { ReactNode } from 'react';
 import { Theme } from '../../themes/theme';
+import { useTheme } from '../private/ThemeContext';
 
 interface ThemeConsumerProps {
   children(theme: Theme): ReactNode;
 }
 
-export const ThemeConsumer = ({ children }: ThemeConsumerProps) => (
-  <ThemeContext.Consumer>
-    {theme => {
-      if (theme === null) {
-        throw new Error('No theme passed');
-      }
+export const ThemeConsumer = ({ children }: ThemeConsumerProps) => {
+  const theme = useTheme();
 
-      return children(theme);
-    }}
-  </ThemeContext.Consumer>
-);
+  return children(theme);
+};
