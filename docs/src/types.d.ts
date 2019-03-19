@@ -1,8 +1,15 @@
 import { ComponentType, ReactNode, SyntheticEvent } from 'react';
 
-export interface RenderConfig {
-  routerBasename: string;
+export interface AppConfig {
+  playroomUrl: string;
   sourceUrlPrefix: string;
+}
+
+export interface RenderContext {
+  html: string;
+  publicPath: string;
+  routerBasename: string;
+  appConfig: AppConfig;
 }
 
 export interface ComponentDocs {

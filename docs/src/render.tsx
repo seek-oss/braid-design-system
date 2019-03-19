@@ -4,44 +4,55 @@ import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router';
 import dedent from 'dedent';
 import { App } from './App/App';
-import { RenderConfig } from './types';
-
-interface RenderContext {
-  html: string;
-  config: RenderConfig;
-  publicPath: string;
-}
+import { RenderContext } from './types';
+import { ConfigProvider } from './App/ConfigContext';
 
 const skuRender: Render<RenderContext> = {
   renderApp: ({ route }) => {
     const {
       TRAVIS_BRANCH: branch,
       TRAVIS_PULL_REQUEST_SHA: prSha,
+      CI,
     } = process.env;
     const isGithubPages = branch === 'master' && !prSha;
     const githubUrl = 'https://github.com/seek-oss/braid-design-system/tree/';
 
+    const sourceUrlPrefix = `${githubUrl}${prSha || 'master'}`;
+    const playroomUrl = !CI ? 'http://localhost:9000' : '/';
+    const routerBasename = isGithubPages ? 'braid-design-system' : '';
+    const appConfig = {
+      playroomUrl,
+      sourceUrlPrefix,
+    };
+
     const config = {
-      routerBasename: isGithubPages ? 'braid-design-system' : '',
-      sourceUrlPrefix: `${githubUrl}${prSha || 'master'}`,
+      routerBasename,
+      appConfig,
     };
 
     const html = renderToString(
-      <StaticRouter
-        context={{}}
-        location={route}
-        basename={config.routerBasename}
-      >
-        <App sourceUrlPrefix={config.sourceUrlPrefix} />
+      <StaticRouter context={{}} location={route} basename={routerBasename}>
+        <ConfigProvider value={appConfig}>
+          <App />
+        </ConfigProvider>
       </StaticRouter>,
     );
 
     const publicPath = isGithubPages ? '/braid-design-system/' : '/';
 
-    return { html, config, publicPath };
+    return {
+      html,
+      publicPath,
+      ...config,
+    };
   },
 
-  renderDocument: ({ headTags, bodyTags, app: { html, config, publicPath } }) =>
+  provideClientContext: ({ app: { routerBasename, appConfig } }) => ({
+    routerBasename,
+    appConfig,
+  }),
+
+  renderDocument: ({ headTags, bodyTags, app: { html, publicPath } }) =>
     dedent`
       <!doctype html>
       <html lang="en">
@@ -57,7 +68,6 @@ const skuRender: Render<RenderContext> = {
           <link rel="icon" type="image/png" sizes="96x96" href="${publicPath}favicon-96x96.png" />
         </head>
         <body><div id="app">{{ html }}</div></body>
-        <script>window.CONFIG = ${JSON.stringify(config)};</script>
         ${bodyTags}
       </html>
     `.replace('{{ html }}', html), // Maintain indenting in 'pre' tags
