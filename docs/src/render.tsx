@@ -18,7 +18,7 @@ const skuRender: Render<RenderContext> = {
     const githubUrl = 'https://github.com/seek-oss/braid-design-system/tree/';
 
     const sourceUrlPrefix = `${githubUrl}${prSha || 'master'}`;
-    const playroomUrl = !CI ? 'http://localhost:9000' : '/';
+    const playroomUrl = !CI ? 'http://localhost:9000' : '/playroom';
     const routerBasename = isGithubPages ? 'braid-design-system' : '';
     const appConfig = {
       playroomUrl,
