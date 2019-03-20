@@ -12,7 +12,7 @@ import styles from './App.css.js';
 const routes = [
   { path: '/', name: 'Home', exact: true, Component: Home },
   {
-    path: '/components',
+    path: '/(components|icons)',
     name: 'Components',
     exact: false,
     Component: Components,
