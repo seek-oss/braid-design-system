@@ -48,9 +48,17 @@ export const Home = () => {
               width="full"
               className={styles.actionsContainer}
               paddingBottom={['xlarge', 'large']}
-              style={{ textAlign: 'center' }}
             >
-              <Text>Themeable design system for the SEEK Group</Text>
+              <Text>
+                <Box
+                  component="span"
+                  display="flex"
+                  className={styles.subtitle}
+                >
+                  <span>Themeable design system</span>&nbsp;
+                  <span>for the SEEK Group</span>
+                </Box>
+              </Text>
             </Box>
 
             <Box
