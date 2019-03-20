@@ -4,7 +4,7 @@ import {
   LinkProps as ReactRouterLinkProps,
 } from 'react-router-dom';
 import { Omit } from 'utility-types';
-import { TextLinkRenderer, TextLink } from '../../../lib/components';
+import { TextLinkRenderer, TextLink } from '../../../../lib/components';
 
 interface LinkProps extends ReactRouterLinkProps {
   inline?: boolean;

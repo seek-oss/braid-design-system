@@ -1,16 +1,19 @@
 import React from 'react';
 
-export const Logo = () => (
+interface LogoProps {
+  width?: string;
+}
+
+export const Logo = ({ width = '164px' }: LogoProps) => (
   <svg
     version="1.1"
     xmlns="http://www.w3.org/2000/svg"
     x="0px"
     y="0px"
-    width="164px"
-    height="30px"
+    width={width}
     // Changed the first value to 20 to crop the whitespace
-    viewBox="20 0 600 110"
-    enableBackground="new 0 0 600 110"
+    viewBox="20 0 560 110"
+    enableBackground="new 20 0 560 110"
   >
     <g>
       <path

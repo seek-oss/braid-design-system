@@ -1,8 +1,8 @@
 import React from 'react';
 import reactElementToJSXString from 'react-element-to-jsx-string';
 import dedent from 'dedent';
-import { ComponentProps } from '../ComponentProps/ComponentProps';
-import { ExternalLink } from '../Link';
+import { ComponentProps } from './ComponentProps';
+import { ExternalLink } from './Link';
 import { ThemeProvider, Box, Text } from '../../../../lib/components';
 import {
   wireframe,
@@ -117,12 +117,7 @@ export const ComponentRoute = ({
       </Box>
       <Box paddingBottom="large">
         <Text>
-          <ExternalLink
-            inline
-            href={sourceUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <ExternalLink inline href={sourceUrl} rel="noopener noreferrer">
             View on GitHub
           </ExternalLink>
         </Text>
