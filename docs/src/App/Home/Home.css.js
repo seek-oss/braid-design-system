@@ -27,4 +27,11 @@ export default {
       cursor: 'pointer',
     },
   },
+  '.subtitle': {
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    '> *': {
+      whiteSpace: 'nowrap',
+    },
+  },
 };
