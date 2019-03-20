@@ -1,5 +1,4 @@
-import { BoxShadow } from './../themes/theme';
-import { Tokens } from 'lib/themes/theme';
+import { BoxShadow, Tokens } from './../themes/theme';
 import { px } from './utils/toUnit';
 
 export type BoxShadowParams = Record<BoxShadow, string>;
