@@ -1,6 +1,6 @@
 import React, { ReactNode, AllHTMLAttributes } from 'react';
 import classnames from 'classnames';
-import { BackgroundColor, Color } from 'lib/themes/theme';
+import { BackgroundColor, Color } from '../../themes/theme';
 import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';
 import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
