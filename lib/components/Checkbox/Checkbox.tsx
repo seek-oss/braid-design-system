@@ -8,6 +8,7 @@ import { FieldMessage } from '../FieldMessage/FieldMessage';
 import { TickIcon } from '../icons/TickIcon/TickIcon';
 import styles from './Checkbox.css.js';
 import { useTheme } from '../private/ThemeContext';
+import { FieldTone } from '../../themes/theme';
 
 const textColorForState = (disabled: boolean, hovered: boolean) => {
   if (disabled) {
@@ -28,7 +29,7 @@ export interface CheckboxProps
   extends Required<Pick<InputProps, RequiredInputProps>>,
     Pick<InputProps, OptionalInputProps> {
   label: ReactNode;
-  tone?: 'neutral' | 'critical' | 'positive';
+  tone?: FieldTone;
   message?: ReactNode | false;
   children?: ReactNode;
 }

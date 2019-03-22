@@ -4,6 +4,5 @@ export const activeOverlay: string;
 export const content: string;
 export const focusOverlay: string;
 export const hoverOverlay: string;
-export const overlay: string;
 export const root: string;
 export const weak: string;

@@ -9,6 +9,7 @@ type TextSize = 'standard' | 'large';
 type ResponsiveHeading = Record<Breakpoint, TextDefinition> &
   Record<'regular' | 'weak', FontWeight>;
 type ResponsiveText = Record<Breakpoint, TextDefinition>;
+export type FieldTone = 'neutral' | 'critical' | 'positive';
 
 // Spacing definitions
 interface SpacingToken {
@@ -19,6 +20,9 @@ interface SpacingToken {
   large: number;
   xlarge: number;
   xxlarge: number;
+}
+interface ColumnSpacingToken extends SpacingToken {
+  gutter: number;
 }
 
 // Border definitions
@@ -33,7 +37,7 @@ export interface Tokens {
   heading: Record<HeadingSize, ResponsiveHeading>;
   text: Record<TextSize, ResponsiveText>;
   rowSpacing: SpacingToken;
-  columnSpacing: SpacingToken | Record<'gutter', number>;
+  columnSpacing: ColumnSpacingToken;
   borderWidth: Record<BorderWidth, number>;
 }
 
