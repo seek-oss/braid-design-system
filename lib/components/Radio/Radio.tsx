@@ -7,6 +7,7 @@ import { Text } from '../Text/Text';
 import { FieldMessage } from '../FieldMessage/FieldMessage';
 import styles from './Radio.css.js';
 import { useTheme } from '../private/ThemeContext';
+import { FieldTone } from '../../themes/theme';
 
 const textColorForState = (disabled: boolean, hovered: boolean) => {
   if (disabled) {
@@ -27,7 +28,7 @@ export interface RadioProps
   extends Required<Pick<InputProps, RequiredInputProps>>,
     Pick<InputProps, OptionalInputProps> {
   label: ReactNode;
-  tone?: 'neutral' | 'critical' | 'positive';
+  tone?: FieldTone;
   message?: ReactNode | false;
 }
 
