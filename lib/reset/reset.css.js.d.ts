@@ -63,6 +63,7 @@ export const ruby: string;
 export const s: string;
 export const samp: string;
 export const section: string;
+export const select: string;
 export const small: string;
 export const span: string;
 export const strike: string;
