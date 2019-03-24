@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, AllHTMLAttributes } from 'react';
 import { FieldTone, Color } from '../../../themes/theme';
 import classnames from 'classnames';
 import { useTheme } from '../ThemeContext';
@@ -8,14 +8,15 @@ import { FieldMessage } from '../../FieldMessage/FieldMessage';
 import { FieldOverlay } from '../FieldOverlay/FieldOverlay';
 import styles from './Field.css.js';
 
+type FormElementProps = AllHTMLAttributes<HTMLFormElement>;
 export interface FieldProps {
-  id: NonNullable<HTMLFormElement['id']>;
-  value: NonNullable<HTMLFormElement['value']>;
-  onChange: NonNullable<HTMLFormElement['onChange']>;
-  onBlur?: HTMLFormElement['onBlur'];
-  onFocus?: HTMLFormElement['onFocus'];
-  name?: HTMLFormElement['name'];
-  placeholder?: HTMLFormElement['placeholder'];
+  id: NonNullable<FormElementProps['id']>;
+  value: NonNullable<FormElementProps['value']>;
+  onChange: NonNullable<FormElementProps['onChange']>;
+  onBlur?: FormElementProps['onBlur'];
+  onFocus?: FormElementProps['onFocus'];
+  name?: FormElementProps['name'];
+  placeholder?: FormElementProps['placeholder'];
   label?: string;
   secondaryLabel?: ReactNode;
   tertiaryLabel?: ReactNode;
