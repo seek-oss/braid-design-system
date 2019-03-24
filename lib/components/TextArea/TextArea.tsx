@@ -18,7 +18,7 @@ const renderCount = ({
     return null;
   }
 
-  const diff = limit - value.length;
+  const diff = limit - String(value).length;
   const valid = diff >= 0;
 
   return (
