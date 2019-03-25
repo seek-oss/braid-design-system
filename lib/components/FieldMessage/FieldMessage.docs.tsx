@@ -25,6 +25,18 @@ const docs: ComponentDocs = {
       ),
     },
     {
+      label: 'Critical with long (wrapping) message',
+      render: ({ id }) => (
+        <div style={{ maxWidth: '300px' }}>
+          <FieldMessage
+            id={id}
+            tone="critical"
+            message="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sodales hendrerit nulla."
+          />
+        </div>
+      ),
+    },
+    {
       label: "No message, i.e. don't reserve white space",
       code: `<FieldMessage message={false} />`,
     },

@@ -171,10 +171,10 @@ export default (
     xxsmall: atoms.marginRightDesktop_xxsmall,
   },
   minHeight: {
-    largeText: atoms.height_largeText,
-    largeTextInline: atoms.height_largeTextInline,
-    standardText: atoms.height_standardText,
-    standardTextInline: atoms.height_standardTextInline,
+    largeText: atoms.minHeight_largeText,
+    largeTextInline: atoms.minHeight_largeTextInline,
+    standardText: atoms.minHeight_standardText,
+    standardTextInline: atoms.minHeight_standardTextInline,
   },
   paddingBottom: {
     none: atoms.paddingBottom_none,

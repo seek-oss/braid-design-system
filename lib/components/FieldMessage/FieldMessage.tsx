@@ -4,8 +4,7 @@ import { Text, TextProps } from '../Text/Text';
 import { ErrorIcon } from '../icons/ErrorIcon/ErrorIcon';
 import { TickCircleIcon } from '../icons/TickCircleIcon/TickCircleIcon';
 import styles from './FieldMessage.css.js';
-
-type FieldTone = 'neutral' | 'critical' | 'positive';
+import { FieldTone } from '../../themes/theme';
 
 export interface FieldMessageProps extends TextProps {
   id: string;
