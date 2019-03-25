@@ -25,6 +25,7 @@ export default ({
   formAccent,
   neutral,
 }: ColorParams): Css => ({
+  '.color_neutral': { color: neutral }, // Should be first to be overrid-able
   '.color_link': {
     color: link,
     '&:hover,&:focus': linkHover
@@ -42,5 +43,4 @@ export default ({
   '.color_brandAccentForeground': {
     color: isLight(brandAccent) ? black : white,
   },
-  '.color_neutral': { color: neutral },
 });

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { AllHTMLAttributes } from 'react';
 import { Box } from '../Box/Box';
 import { Field, FieldProps } from '../private/Field/Field';
 
@@ -12,8 +12,14 @@ const validTypes = {
   url: 'url',
 };
 
+type InputProps = AllHTMLAttributes<HTMLInputElement>;
 interface TextFieldProps extends FieldProps {
+  value: NonNullable<InputProps['value']>;
   type?: keyof typeof validTypes;
+  onChange: NonNullable<InputProps['onChange']>;
+  onBlur?: InputProps['onBlur'];
+  onFocus?: InputProps['onFocus'];
+  placeholder?: InputProps['placeholder'];
 }
 
 export const TextField = ({
@@ -22,14 +28,14 @@ export const TextField = ({
   label,
   secondaryLabel,
   tertiaryLabel,
-  placeholder,
   message,
   tone = 'neutral',
-  value,
   type = 'text',
+  value,
   onChange,
   onBlur,
   onFocus,
+  placeholder,
 }: TextFieldProps) => (
   <Field
     id={id}
@@ -39,11 +45,6 @@ export const TextField = ({
     tertiaryLabel={tertiaryLabel}
     tone={tone}
     message={message}
-    placeholder={placeholder}
-    value={value}
-    onChange={onChange}
-    onBlur={onBlur}
-    onFocus={onFocus}
   >
     {fieldProps => (
       <Box
@@ -56,6 +57,11 @@ export const TextField = ({
         paddingTop="standardTouchableText"
         paddingBottom="standardTouchableText"
         borderRadius="standard"
+        value={value}
+        onChange={onChange}
+        onFocus={onFocus}
+        onBlur={onBlur}
+        placeholder={placeholder}
         {...fieldProps}
       />
     )}

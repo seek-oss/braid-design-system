@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, AllHTMLAttributes } from 'react';
 import classnames from 'classnames';
 import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';
@@ -6,7 +6,13 @@ import styles from './TextArea.css.js';
 import { useTheme } from '../private/ThemeContext';
 import { Field, FieldProps } from '../private/Field/Field';
 
+type NativeTextAreaProps = AllHTMLAttributes<HTMLTextAreaElement>;
 interface TextAreaProps extends FieldProps {
+  value: NonNullable<NativeTextAreaProps['value']>;
+  onChange: NonNullable<NativeTextAreaProps['onChange']>;
+  onBlur?: NativeTextAreaProps['onBlur'];
+  onFocus?: NativeTextAreaProps['onFocus'];
+  placeholder?: NativeTextAreaProps['placeholder'];
   limit?: number;
 }
 
@@ -30,18 +36,18 @@ const renderCount = ({
 
 export const TextArea = ({
   id,
-  label,
   name,
+  label,
   secondaryLabel,
   tertiaryLabel,
-  placeholder,
+  description,
   message,
   tone = 'neutral',
   value,
   onChange,
   onBlur,
   onFocus,
-  description,
+  placeholder,
   limit,
 }: TextAreaProps) => {
   const { tokens } = useTheme();
@@ -51,20 +57,15 @@ export const TextArea = ({
       id={id}
       name={name}
       label={label}
-      description={description}
       secondaryLabel={secondaryLabel}
       tertiaryLabel={tertiaryLabel}
+      description={description}
       tone={tone}
       message={message}
       secondaryMessage={renderCount({
         limit,
         value,
       })}
-      placeholder={placeholder}
-      value={value}
-      onChange={onChange}
-      onBlur={onBlur}
-      onFocus={onFocus}
     >
       {({ className, ...fieldProps }) => (
         <Box
@@ -79,6 +80,11 @@ export const TextArea = ({
           paddingBottom="standardTouchableText"
           borderRadius="standard"
           rows={3}
+          value={value}
+          onChange={onChange}
+          onBlur={onBlur}
+          onFocus={onFocus}
+          placeholder={placeholder}
           style={{
             minHeight: tokens.rowHeight * 15,
           }}

@@ -1,5 +1,5 @@
 import React, { ReactNode, AllHTMLAttributes } from 'react';
-import { FieldTone, Color } from '../../../themes/theme';
+import { FieldTone } from '../../../themes/theme';
 import classnames from 'classnames';
 import { useTheme } from '../ThemeContext';
 import { Box, BoxProps } from '../../Box/Box';
@@ -11,12 +11,7 @@ import styles from './Field.css.js';
 type FormElementProps = AllHTMLAttributes<HTMLFormElement>;
 export interface FieldProps {
   id: NonNullable<FormElementProps['id']>;
-  value: NonNullable<FormElementProps['value']>;
-  onChange: NonNullable<FormElementProps['onChange']>;
-  onBlur?: FormElementProps['onBlur'];
-  onFocus?: FormElementProps['onFocus'];
   name?: FormElementProps['name'];
-  placeholder?: FormElementProps['placeholder'];
   label?: string;
   secondaryLabel?: ReactNode;
   tertiaryLabel?: ReactNode;
@@ -26,14 +21,7 @@ export interface FieldProps {
   tone?: FieldTone;
 }
 
-type PassthroughProps =
-  | 'id'
-  | 'name'
-  | 'value'
-  | 'onChange'
-  | 'onFocus'
-  | 'onBlur'
-  | 'placeholder';
+type PassthroughProps = 'id' | 'name';
 interface FieldRenderProps extends Pick<FieldProps, PassthroughProps> {
   backgroundColor: BoxProps['backgroundColor'];
   'aria-describedby': string;
@@ -44,25 +32,9 @@ interface InternalFieldProps extends FieldProps {
   children(props: FieldRenderProps): ReactNode;
 }
 
-const getColor = (
-  placeholder: FieldProps['placeholder'],
-  value: FieldProps['value'],
-): Color => {
-  if (!value && placeholder) {
-    return 'secondary';
-  }
-
-  return 'neutral';
-};
-
 export const Field = ({
   id,
   name,
-  value,
-  onChange,
-  onFocus,
-  onBlur,
-  placeholder,
   label,
   secondaryLabel,
   tertiaryLabel,
@@ -88,18 +60,13 @@ export const Field = ({
         {children({
           id,
           name,
-          value,
-          onChange,
-          onFocus,
-          onBlur,
-          placeholder,
           backgroundColor: 'input',
           'aria-describedby': messageId,
           className: classnames(
             styles.field,
             atoms.fontFamily.text,
             atoms.fontSize.standard,
-            atoms.color[getColor(placeholder, value)],
+            atoms.color.neutral,
           ),
         })}
         <FieldOverlay variant="focus" className={styles.focusOverlay} />
