@@ -15,6 +15,9 @@ export default {
     alignItems: 'center',
     justifyContent: 'space-between',
     zIndex: 3,
+    '@media screen and (min-width: 740px)': {
+      width: desktopMenuWidth,
+    },
   },
   '.container': {
     paddingTop: headerHeight,
