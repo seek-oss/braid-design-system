@@ -10,8 +10,9 @@ type ButtonWeight = 'weak' | 'regular' | 'strong';
 type ButtonState = 'base' | 'hover' | 'active';
 
 type NativeButtonProps = AllHTMLAttributes<HTMLButtonElement>;
-export interface ButtonProps
-  extends Pick<NativeButtonProps, 'type' | 'onClick'> {
+export interface ButtonProps {
+  onClick: NonNullable<NativeButtonProps['onClick']>;
+  type?: NativeButtonProps['type'];
   children?: ReactNode;
   weight?: ButtonWeight;
 }
@@ -44,6 +45,7 @@ const foregroundColor: Record<ButtonWeight, Color> = {
 };
 
 export const Button = ({
+  onClick,
   children,
   weight = 'regular',
   type = 'button',
@@ -64,6 +66,7 @@ export const Button = ({
       className={classnames(styles.root, {
         [styles.weak]: isWeak,
       })}
+      onClick={onClick}
     >
       <FieldOverlay variant="focus" className={styles.focusOverlay} />
       <FieldOverlay
