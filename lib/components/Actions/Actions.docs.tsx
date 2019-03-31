@@ -8,29 +8,41 @@ const docs: ComponentDocs = {
   examples: [
     {
       label: 'Actions with Strong Button and TextLink',
-      render: () => (
+      render: ({ handler }) => (
         <Actions>
-          <Button weight="strong">Strong</Button>
+          <Button onClick={handler} weight="strong">
+            Strong
+          </Button>
           <TextLink href="#">TextLink</TextLink>
         </Actions>
       ),
     },
     {
       label: 'Actions with Regular Button and Weak Button',
-      render: () => (
+      render: ({ handler }) => (
         <Actions>
-          <Button weight="regular">Regular</Button>
-          <Button weight="weak">Weak</Button>
+          <Button onClick={handler} weight="regular">
+            Regular
+          </Button>
+          <Button onClick={handler} weight="weak">
+            Weak
+          </Button>
         </Actions>
       ),
     },
     {
       label: 'Actions with Weak Buttons and Regular Button',
-      render: () => (
+      render: ({ handler }) => (
         <Actions>
-          <Button weight="weak">Weak</Button>
-          <Button weight="weak">Weak</Button>
-          <Button weight="regular">Regular</Button>
+          <Button onClick={handler} weight="weak">
+            Weak
+          </Button>
+          <Button onClick={handler} weight="weak">
+            Weak
+          </Button>
+          <Button onClick={handler} weight="regular">
+            Regular
+          </Button>
         </Actions>
       ),
     },
