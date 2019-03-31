@@ -39,7 +39,7 @@ const docs: ComponentDocs = {
       ),
     },
     {
-      label: 'Positive Alert',
+      label: 'Weak Positive Alert',
       render: () => (
         <Alert weight="weak" tone="positive">
           This is a positive piece of information.
