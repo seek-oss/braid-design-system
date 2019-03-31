@@ -54,7 +54,8 @@ type BackgroundColor =
   | 'selection'
   | 'info'
   | 'card'
-  | 'critical';
+  | 'critical'
+  | 'positive';
 type BorderRadius = 'standard';
 export type BoxShadow =
   | 'outlineFocus'
@@ -77,6 +78,7 @@ type Fill =
   | 'formAccent'
   | 'formAccentDisabled'
   | 'critical'
+  | 'info'
   | 'positive'
   | 'secondary'
   | 'white';

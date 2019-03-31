@@ -20,6 +20,7 @@ export default (
     input: atoms.backgroundColor_input,
     inputDisabled: atoms.backgroundColor_inputDisabled,
     selection: atoms.backgroundColor_selection,
+    positive: atoms.backgroundColor_positive,
   },
   borderRadius: {
     standard: atoms.borderRadius_standard,
@@ -61,6 +62,7 @@ export default (
     currentColor: atoms.fill_currentColor,
     formAccent: atoms.fill_formAccent,
     formAccentDisabled: atoms.fill_formAccentDisabled,
+    info: atoms.fill_info,
     positive: atoms.fill_positive,
     secondary: atoms.fill_secondary,
     white: atoms.fill_white,

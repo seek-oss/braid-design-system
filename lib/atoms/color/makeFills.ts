@@ -4,6 +4,7 @@ export interface FillParams {
   formAccent: string;
   formAccentDisabled: string;
   critical: string;
+  info: string;
   positive: string;
   secondary: string;
   white: string;
@@ -12,6 +13,7 @@ export default ({
   formAccent,
   formAccentDisabled,
   critical,
+  info,
   positive,
   secondary,
   white,
@@ -20,6 +22,7 @@ export default ({
   '.fill_formAccent': { fill: formAccent },
   '.fill_formAccentDisabled': { fill: formAccentDisabled },
   '.fill_critical': { fill: critical },
+  '.fill_info': { fill: info },
   '.fill_positive': { fill: positive },
   '.fill_secondary': { fill: secondary },
   '.fill_white': { fill: white },

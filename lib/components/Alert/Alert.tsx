@@ -3,20 +3,23 @@ import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';
 import { InfoIcon } from '../icons/InfoIcon/InfoIcon';
 import { ErrorIcon } from '../icons/ErrorIcon/ErrorIcon';
+import { TickCircleIcon } from '../icons/TickCircleIcon/TickCircleIcon';
 import styles from './Alert.css.js';
 
-type Tone = 'info' | 'critical';
+type Tone = 'info' | 'critical' | 'positive';
+type AlertWeight = 'weak' | 'regular';
 
 export interface AlertProps {
   tone?: Tone;
+  weight?: AlertWeight;
   children: ReactNode;
 }
 
-const iconForTone = (tone: Tone) => {
+const iconForTone = (tone: Tone, weight: AlertWeight) => {
   if (tone === 'info') {
     return (
       <Box paddingRight="small">
-        <InfoIcon fill="white" />
+        <InfoIcon fill={weight === 'weak' ? 'info' : 'white'} />
       </Box>
     );
   }
@@ -29,11 +32,19 @@ const iconForTone = (tone: Tone) => {
     );
   }
 
+  if (tone === 'positive') {
+    return (
+      <Box paddingRight="small">
+        <TickCircleIcon fill={weight === 'weak' ? 'positive' : 'white'} />
+      </Box>
+    );
+  }
+
   return null;
 };
 
 const textColorForTone = (tone: Tone) => {
-  if (tone === 'info') {
+  if (tone === 'info' || tone === 'positive') {
     return 'white';
   }
 
@@ -44,13 +55,17 @@ const textColorForTone = (tone: Tone) => {
   return 'neutral';
 };
 
-export const Alert = ({ tone = 'info', children }: AlertProps) => {
-  const icon = iconForTone(tone);
-  const color = textColorForTone(tone);
+export const Alert = ({
+  tone = 'info',
+  weight = 'regular',
+  children,
+}: AlertProps) => {
+  const icon = iconForTone(tone, weight);
+  const color = weight === 'weak' ? 'neutral' : textColorForTone(tone);
 
   return (
     <Box
-      backgroundColor={tone}
+      backgroundColor={weight === 'weak' ? undefined : tone}
       paddingLeft="gutter"
       paddingRight="gutter"
       paddingTop="medium"

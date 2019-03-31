@@ -17,6 +17,7 @@ export interface BackgroundColorParams {
   info: string;
   card: string;
   critical: string;
+  positive: string;
 }
 
 export default ({
@@ -29,6 +30,7 @@ export default ({
   info,
   card,
   critical,
+  positive,
 }: BackgroundColorParams) => ({
   '.backgroundColor_input': { backgroundColor: input },
   '.backgroundColor_inputDisabled': { backgroundColor: inputDisabled },
@@ -53,4 +55,5 @@ export default ({
   '.backgroundColor_info': { backgroundColor: info },
   '.backgroundColor_card': { backgroundColor: card },
   '.backgroundColor_critical': { backgroundColor: critical },
+  '.backgroundColor_positive': { backgroundColor: positive },
 });
