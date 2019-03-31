@@ -68,12 +68,26 @@ export const Home = () => {
             >
               <Box {...actionProps}>
                 <Link to="/components" className={styles.linkButton}>
-                  <Button weight="weak">Components</Button>
+                  <Button
+                    weight="weak"
+                    onClick={() => {
+                      /* placeholder until ButtonRenderer exists */
+                    }}
+                  >
+                    Components
+                  </Button>
                 </Link>
               </Box>
               <Box {...actionProps}>
                 <a href={playroomUrl} className={styles.linkButton}>
-                  <Button weight="weak">Playroom</Button>
+                  <Button
+                    weight="weak"
+                    onClick={() => {
+                      /* placeholder until ButtonRenderer exists */
+                    }}
+                  >
+                    Playroom
+                  </Button>
                 </a>
               </Box>
             </Box>
