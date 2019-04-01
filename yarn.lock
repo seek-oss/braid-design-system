@@ -2793,7 +2793,7 @@ babel-plugin-add-react-displayname@^0.0.5:
   resolved "https://registry.yarnpkg.com/babel-plugin-add-react-displayname/-/babel-plugin-add-react-displayname-0.0.5.tgz#339d4cddb7b65fd62d1df9db9fe04de134122bd5"
   integrity sha1-M51M3be2X9YtHfnbn+BN4TQSK9U=
 
-babel-plugin-dynamic-import-node@2.2.0:
+babel-plugin-dynamic-import-node@2.2.0, babel-plugin-dynamic-import-node@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/babel-plugin-dynamic-import-node/-/babel-plugin-dynamic-import-node-2.2.0.tgz#c0adfb07d95f4a4495e9aaac6ec386c4d7c2524e"
   integrity sha512-fP899ELUnTaBcIzmrW7nniyqqdYWrWuJUyPWHxFa/c7r7hS6KC8FscNfLlBNIoPSc55kYMGEEKjPjJGCLbE1qA==
@@ -13400,10 +13400,10 @@ sisteransi@^1.0.0:
   resolved "https://registry.yarnpkg.com/sisteransi/-/sisteransi-1.0.0.tgz#77d9622ff909080f1c19e5f4a1df0c1b0a27b88c"
   integrity sha512-N+z4pHB4AmUv0SjveWRd6q1Nj5w62m5jodv+GD8lvmbY/83T/rpbJGZOnK5T149OldDj4Db07BSv9xY4K6NTPQ==
 
-sku@8.4.0:
-  version "8.4.0"
-  resolved "https://registry.yarnpkg.com/sku/-/sku-8.4.0.tgz#c62c307779c10a1563f9e57e13273dc2372426aa"
-  integrity sha512-bC14Ml4Aha5YLXPkaCneYOCPyvbaKix8QT0AuGZvp0zQJvWrSStxc//e45Bh8oLU4bIgt3jCcH0nznK71Pq0sg==
+sku@8.4.1:
+  version "8.4.1"
+  resolved "https://registry.yarnpkg.com/sku/-/sku-8.4.1.tgz#bffbe503b957888f35777f149533498d1576fa27"
+  integrity sha512-J+yj5RsqmWjsk/69H48nHONrwUGcaFWJK8rFo+oTZOaIFeWPqdF5LNl15SO/DtuRgC8kGE8CLJy9LsggivVSxQ==
   dependencies:
     "@babel/core" "^7.1.2"
     "@babel/plugin-proposal-class-properties" "^7.1.0"
@@ -13431,6 +13431,7 @@ sku@8.4.0:
     babel-jest "^24.0.0"
     babel-loader "^8.0.4"
     babel-plugin-add-react-displayname "^0.0.5"
+    babel-plugin-dynamic-import-node "^2.2.0"
     babel-plugin-flow-react-proptypes "^25.0.0"
     babel-plugin-macros "^2.4.2"
     babel-plugin-module-resolver "^3.1.1"
