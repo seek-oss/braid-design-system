@@ -9,6 +9,7 @@ export default (
   backgroundColor: {
     card: atoms.backgroundColor_card,
     critical: atoms.backgroundColor_critical,
+    criticalLight: atoms.backgroundColor_criticalLight,
     brandAccent: atoms.backgroundColor_brandAccent,
     brandAccentActive: atoms.backgroundColor_brandAccentActive,
     brandAccentHover: atoms.backgroundColor_brandAccentHover,
@@ -17,10 +18,12 @@ export default (
     formAccentHover: atoms.backgroundColor_formAccentHover,
     formAccentDisabled: atoms.backgroundColor_formAccentDisabled,
     info: atoms.backgroundColor_info,
+    infoLight: atoms.backgroundColor_infoLight,
     input: atoms.backgroundColor_input,
     inputDisabled: atoms.backgroundColor_inputDisabled,
     selection: atoms.backgroundColor_selection,
     positive: atoms.backgroundColor_positive,
+    positiveLight: atoms.backgroundColor_positiveLight,
   },
   borderRadius: {
     standard: atoms.borderRadius_standard,
@@ -41,6 +44,7 @@ export default (
     neutral: atoms.color_neutral,
     positive: atoms.color_positive,
     secondary: atoms.color_secondary,
+    info: atoms.color_info,
     white: atoms.color_white,
   },
   displayDesktop: {

@@ -9,6 +9,7 @@ export interface ColorParams {
   critical: string;
   positive: string;
   secondary: string;
+  info: string;
   brandAccent: string;
   formAccent: string;
   neutral: string;
@@ -21,6 +22,7 @@ export default ({
   critical,
   positive,
   secondary,
+  info,
   brandAccent,
   formAccent,
   neutral,
@@ -39,6 +41,7 @@ export default ({
   '.color_critical': { color: critical },
   '.color_positive': { color: positive },
   '.color_secondary': { color: secondary },
+  '.color_info': { color: info },
   '.color_formAccent': { color: formAccent },
   '.color_brandAccentForeground': {
     color: isLight(brandAccent) ? black : white,

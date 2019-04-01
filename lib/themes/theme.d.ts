@@ -53,9 +53,12 @@ type BackgroundColor =
   | 'formAccentDisabled'
   | 'selection'
   | 'info'
+  | 'infoLight'
   | 'card'
   | 'critical'
-  | 'positive';
+  | 'criticalLight'
+  | 'positive'
+  | 'positiveLight';
 type BorderRadius = 'standard';
 export type BoxShadow =
   | 'outlineFocus'
@@ -69,6 +72,7 @@ export type Color =
   | 'critical'
   | 'positive'
   | 'secondary'
+  | 'info'
   | 'brandAccentForeground'
   | 'formAccent'
   | 'neutral'

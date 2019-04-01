@@ -15,9 +15,12 @@ export interface BackgroundColorParams {
   formAccentDisabled: string;
   selection: string;
   info: string;
+  infoLight: string;
   card: string;
   critical: string;
+  criticalLight: string;
   positive: string;
+  positiveLight: string;
 }
 
 export default ({
@@ -28,9 +31,12 @@ export default ({
   formAccentDisabled,
   selection,
   info,
+  infoLight,
   card,
   critical,
+  criticalLight,
   positive,
+  positiveLight,
 }: BackgroundColorParams) => ({
   '.backgroundColor_input': { backgroundColor: input },
   '.backgroundColor_inputDisabled': { backgroundColor: inputDisabled },
@@ -53,7 +59,10 @@ export default ({
   },
   '.backgroundColor_selection': { backgroundColor: selection },
   '.backgroundColor_info': { backgroundColor: info },
+  '.backgroundColor_infoLight': { backgroundColor: infoLight },
   '.backgroundColor_card': { backgroundColor: card },
   '.backgroundColor_critical': { backgroundColor: critical },
+  '.backgroundColor_criticalLight': { backgroundColor: criticalLight },
   '.backgroundColor_positive': { backgroundColor: positive },
+  '.backgroundColor_positiveLight': { backgroundColor: positiveLight },
 });
