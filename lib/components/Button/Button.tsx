@@ -15,6 +15,7 @@ export interface ButtonProps {
   type?: NativeButtonProps['type'];
   children?: ReactNode;
   weight?: ButtonWeight;
+  role?: NativeButtonProps['role'];
 }
 
 const backgroundColor: Record<
@@ -49,6 +50,7 @@ export const Button = ({
   children,
   weight = 'regular',
   type = 'button',
+  role,
 }: ButtonProps) => {
   const isWeak = weight === 'weak';
 
@@ -67,6 +69,7 @@ export const Button = ({
         [styles.weak]: isWeak,
       })}
       onClick={onClick}
+      role={role}
     >
       <FieldOverlay variant="focus" className={styles.focusOverlay} />
       <FieldOverlay
