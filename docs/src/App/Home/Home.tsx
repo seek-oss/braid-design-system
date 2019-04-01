@@ -68,7 +68,6 @@ export const Home = () => {
                     onClick={() => {
                       /* placeholder until ButtonRenderer exists */
                     }}
-                    role="link"
                   >
                     Components
                   </Button>
@@ -85,7 +84,6 @@ export const Home = () => {
                     onClick={() => {
                       /* placeholder until ButtonRenderer exists */
                     }}
-                    role="link"
                   >
                     Playroom
                   </Button>
