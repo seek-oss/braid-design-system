@@ -8,6 +8,14 @@ export default {
     minHeight: '80px',
     minWidth: '80px',
   },
+  '.sourceLink': {
+    color: 'white',
+    outline: 'none',
+    '&:focus': {
+      transition: '0.2s ease',
+      color: 'DeepSkyBlue',
+    },
+  },
   '.content': {
     height: '100vh',
     alignItems: 'center',

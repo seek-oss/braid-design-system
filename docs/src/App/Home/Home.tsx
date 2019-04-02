@@ -20,15 +20,6 @@ export const Home = () => {
     <ConfigConsumer>
       {({ playroomUrl }) => (
         <Fragment>
-          <Box className={styles.source}>
-            <a
-              href="https://github.com/seek-oss/braid-design-system"
-              title="View on Github"
-            >
-              <Github backgroundColor="black" />
-            </a>
-          </Box>
-
           <Box
             display="flex"
             flexDirection="column"
@@ -67,16 +58,38 @@ export const Home = () => {
               display={['block', 'flex']}
             >
               <Box {...actionProps}>
-                <Link to="/components" className={styles.linkButton}>
-                  <Button weight="weak">Components</Button>
+                <Link
+                  to="/components"
+                  className={styles.linkButton}
+                  tabIndex={-1}
+                >
+                  <Button weight="weak">
+                    Components
+                  </Button>
                 </Link>
               </Box>
               <Box {...actionProps}>
-                <a href={playroomUrl} className={styles.linkButton}>
-                  <Button weight="weak">Playroom</Button>
+                <a
+                  href={playroomUrl}
+                  className={styles.linkButton}
+                  tabIndex={-1}
+                >
+                  <Button weight="weak">
+                    Playroom
+                  </Button>
                 </a>
               </Box>
             </Box>
+          </Box>
+
+          <Box className={styles.source}>
+            <a
+              href="https://github.com/seek-oss/braid-design-system"
+              title="View on GitHub"
+              className={styles.sourceLink}
+            >
+              <Github color="currentColor" backgroundColor="black" />
+            </a>
           </Box>
         </Fragment>
       )}
