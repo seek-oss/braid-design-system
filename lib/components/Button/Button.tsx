@@ -11,7 +11,7 @@ type ButtonState = 'base' | 'hover' | 'active';
 
 type NativeButtonProps = AllHTMLAttributes<HTMLButtonElement>;
 export interface ButtonProps {
-  onClick: NonNullable<NativeButtonProps['onClick']>;
+  onClick?: NativeButtonProps['onClick'];
   type?: NativeButtonProps['type'];
   children?: ReactNode;
   weight?: ButtonWeight;

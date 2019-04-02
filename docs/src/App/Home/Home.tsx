@@ -63,14 +63,7 @@ export const Home = () => {
                   className={styles.linkButton}
                   tabIndex={-1}
                 >
-                  <Button
-                    weight="weak"
-                    onClick={() => {
-                      /* placeholder until ButtonRenderer exists */
-                    }}
-                  >
-                    Components
-                  </Button>
+                  <Button weight="weak">Components</Button>
                 </Link>
               </Box>
               <Box {...actionProps}>
@@ -79,14 +72,7 @@ export const Home = () => {
                   className={styles.linkButton}
                   tabIndex={-1}
                 >
-                  <Button
-                    weight="weak"
-                    onClick={() => {
-                      /* placeholder until ButtonRenderer exists */
-                    }}
-                  >
-                    Playroom
-                  </Button>
+                  <Button weight="weak">Playroom</Button>
                 </a>
               </Box>
             </Box>

@@ -6,29 +6,25 @@ const docs: ComponentDocs = {
   examples: [
     {
       label: 'Default Button',
-      render: ({ handler }) => (
+      render: () => (
         <div style={{ maxWidth: '300px' }}>
-          <Button onClick={handler}>Submit</Button>
+          <Button>Submit</Button>
         </div>
       ),
     },
     {
       label: 'Strong Button',
-      render: ({ handler }) => (
+      render: () => (
         <div style={{ maxWidth: '300px' }}>
-          <Button onClick={handler} weight="strong">
-            Submit
-          </Button>
+          <Button weight="strong">Submit</Button>
         </div>
       ),
     },
     {
       label: 'Weak Button',
-      render: ({ handler }) => (
+      render: () => (
         <div style={{ maxWidth: '300px' }}>
-          <Button onClick={handler} weight="weak">
-            Submit
-          </Button>
+          <Button weight="weak">Submit</Button>
         </div>
       ),
     },
