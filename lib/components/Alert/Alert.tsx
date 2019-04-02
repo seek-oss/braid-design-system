@@ -40,7 +40,9 @@ const backgroundColorForTone = (tone: Tone, weight: AlertWeight) => {
   }
 };
 
-const iconForTone = (tone: Tone, fill: Fill) => {
+const iconForTone = (tone: Tone, weight: AlertWeight) => {
+  let fill: Fill = weight === 'strong' ? 'white' : tone;
+
   if (tone === 'info') {
     return (
       <Box paddingRight="small">
@@ -69,7 +71,25 @@ const iconForTone = (tone: Tone, fill: Fill) => {
 };
 
 const textColorForTone = (tone: Tone, weight: AlertWeight) => {
-  return weight === 'strong' ? 'white' : tone;
+  if (weight === 'regular') {
+    if (tone === 'positive') {
+      return 'positiveDark';
+    }
+
+    if (tone === 'critical') {
+      return 'criticalDark';
+    }
+
+    if (tone === 'info') {
+      return 'infoDark';
+    }
+  }
+
+  if (weight === 'strong') {
+    return 'white';
+  }
+
+  return tone;
 };
 
 export const Alert = ({
@@ -79,7 +99,7 @@ export const Alert = ({
 }: AlertProps) => {
   const backgroundColor = backgroundColorForTone(tone, weight);
   const color = textColorForTone(tone, weight);
-  const icon = iconForTone(tone, color);
+  const icon = iconForTone(tone, weight);
 
   return (
     <Box
