@@ -63,9 +63,7 @@ export const Home = () => {
                   className={styles.linkButton}
                   tabIndex={-1}
                 >
-                  <Button weight="weak">
-                    Components
-                  </Button>
+                  <Button weight="weak">Components</Button>
                 </Link>
               </Box>
               <Box {...actionProps}>
@@ -74,9 +72,7 @@ export const Home = () => {
                   className={styles.linkButton}
                   tabIndex={-1}
                 >
-                  <Button weight="weak">
-                    Playroom
-                  </Button>
+                  <Button weight="weak">Playroom</Button>
                 </a>
               </Box>
             </Box>
