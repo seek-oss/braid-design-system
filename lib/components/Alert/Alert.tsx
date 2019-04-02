@@ -41,7 +41,7 @@ const backgroundColorForTone = (tone: Tone, weight: AlertWeight) => {
 };
 
 const iconForTone = (tone: Tone, weight: AlertWeight) => {
-  let fill: Fill = weight === 'strong' ? 'white' : tone;
+  const fill: Fill = weight === 'strong' ? 'white' : tone;
 
   if (tone === 'info') {
     return (
