@@ -85,8 +85,11 @@ type Fill =
   | 'formAccent'
   | 'formAccentDisabled'
   | 'critical'
+  | 'criticalDark'
   | 'info'
+  | 'infoDark'
   | 'positive'
+  | 'positiveDark'
   | 'secondary'
   | 'white';
 type FontFamily = 'text';

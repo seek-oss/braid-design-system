@@ -4,11 +4,11 @@ import { Text } from '../Text/Text';
 import { InfoIcon } from '../icons/InfoIcon/InfoIcon';
 import { ErrorIcon } from '../icons/ErrorIcon/ErrorIcon';
 import { TickCircleIcon } from '../icons/TickCircleIcon/TickCircleIcon';
+import { Fill } from '../../themes/theme';
 import styles from './Alert.css.js';
 
 type Tone = 'info' | 'critical' | 'positive';
-type AlertWeight = 'strong' | 'regular' | 'weak';
-type Fill = Tone | 'white';
+type AlertWeight = 'strong' | 'regular';
 
 export interface AlertProps {
   tone?: Tone;
@@ -21,32 +21,24 @@ const backgroundColorForTone = (tone: Tone, weight: AlertWeight) => {
     return tone;
   }
 
-  if (weight === 'weak') {
-    return undefined;
+  if (tone === 'positive') {
+    return 'positiveLight';
   }
 
-  if (weight === 'regular') {
-    if (tone === 'positive') {
-      return 'positiveLight';
-    }
+  if (tone === 'critical') {
+    return 'criticalLight';
+  }
 
-    if (tone === 'critical') {
-      return 'criticalLight';
-    }
-
-    if (tone === 'info') {
-      return 'infoLight';
-    }
+  if (tone === 'info') {
+    return 'infoLight';
   }
 };
 
-const iconForTone = (tone: Tone, weight: AlertWeight) => {
-  const fill: Fill = weight === 'strong' ? 'white' : tone;
-
+const iconForTone = (tone: Tone, color: Fill) => {
   if (tone === 'info') {
     return (
       <Box paddingRight="small">
-        <InfoIcon fill={fill} />
+        <InfoIcon fill={color} />
       </Box>
     );
   }
@@ -54,7 +46,7 @@ const iconForTone = (tone: Tone, weight: AlertWeight) => {
   if (tone === 'critical') {
     return (
       <Box paddingRight="small">
-        <ErrorIcon fill={fill} />
+        <ErrorIcon fill={color} />
       </Box>
     );
   }
@@ -62,7 +54,7 @@ const iconForTone = (tone: Tone, weight: AlertWeight) => {
   if (tone === 'positive') {
     return (
       <Box paddingRight="small">
-        <TickCircleIcon fill={fill} />
+        <TickCircleIcon fill={color} />
       </Box>
     );
   }
@@ -99,14 +91,14 @@ export const Alert = ({
 }: AlertProps) => {
   const backgroundColor = backgroundColorForTone(tone, weight);
   const color = textColorForTone(tone, weight);
-  const icon = iconForTone(tone, weight);
+  const icon = iconForTone(tone, color);
 
   return (
     <Box
       backgroundColor={backgroundColor}
-      paddingLeft={weight === 'weak' ? 'none' : 'gutter'}
-      paddingRight={weight === 'weak' ? 'none' : 'gutter'}
-      paddingTop={weight === 'weak' ? 'none' : 'medium'}
+      paddingLeft="gutter"
+      paddingRight="gutter"
+      paddingTop="medium"
       paddingBottom="medium"
     >
       <div className={styles.root}>
