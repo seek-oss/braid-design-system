@@ -2,8 +2,6 @@ language: node_js
 cache: yarn
 notifications:
   email: false
-before_script:
-  - npm prune
 after_success:
   - if [ ${TRAVIS_SECURE_ENV_VARS} = "true" ]; then
       npm run travis-deploy-once "npm run chromatic";
