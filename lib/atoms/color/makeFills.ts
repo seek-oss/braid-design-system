@@ -1,14 +1,12 @@
 import { Css } from '../types';
+import { getAccessibleVariant } from '../utils/a11y';
 
 export interface FillParams {
   formAccent: string;
   formAccentDisabled: string;
   critical: string;
-  criticalDark: string;
   info: string;
-  infoDark: string;
   positive: string;
-  positiveDark: string;
   secondary: string;
   white: string;
 }
@@ -16,11 +14,8 @@ export default ({
   formAccent,
   formAccentDisabled,
   critical,
-  criticalDark,
   info,
-  infoDark,
   positive,
-  positiveDark,
   secondary,
   white,
 }: FillParams): Css => ({
@@ -28,11 +23,11 @@ export default ({
   '.fill_formAccent': { fill: formAccent },
   '.fill_formAccentDisabled': { fill: formAccentDisabled },
   '.fill_critical': { fill: critical },
-  '.fill_criticalDark': { fill: criticalDark },
+  '.fill_criticalA11y': { fill: getAccessibleVariant(critical) },
   '.fill_info': { fill: info },
-  '.fill_infoDark': { fill: infoDark },
+  '.fill_infoA11y': { fill: getAccessibleVariant(info) },
   '.fill_positive': { fill: positive },
-  '.fill_positiveDark': { fill: positiveDark },
+  '.fill_positiveA11y': { fill: getAccessibleVariant(positive) },
   '.fill_secondary': { fill: secondary },
   '.fill_white': { fill: white },
 });

@@ -4,7 +4,6 @@ import { Text } from '../Text/Text';
 import { InfoIcon } from '../icons/InfoIcon/InfoIcon';
 import { ErrorIcon } from '../icons/ErrorIcon/ErrorIcon';
 import { TickCircleIcon } from '../icons/TickCircleIcon/TickCircleIcon';
-import { Fill } from '../../themes/theme';
 import styles from './Alert.css.js';
 
 type Tone = 'info' | 'critical' | 'positive';
@@ -34,54 +33,10 @@ const backgroundColorForTone = (tone: Tone, weight: AlertWeight) => {
   }
 };
 
-const iconForTone = (tone: Tone, color: Fill) => {
-  if (tone === 'info') {
-    return (
-      <Box paddingRight="small">
-        <InfoIcon fill={color} />
-      </Box>
-    );
-  }
-
-  if (tone === 'critical') {
-    return (
-      <Box paddingRight="small">
-        <ErrorIcon fill={color} />
-      </Box>
-    );
-  }
-
-  if (tone === 'positive') {
-    return (
-      <Box paddingRight="small">
-        <TickCircleIcon fill={color} />
-      </Box>
-    );
-  }
-
-  return null;
-};
-
-const textColorForTone = (tone: Tone, weight: AlertWeight) => {
-  if (weight === 'regular') {
-    if (tone === 'positive') {
-      return 'positiveDark';
-    }
-
-    if (tone === 'critical') {
-      return 'criticalDark';
-    }
-
-    if (tone === 'info') {
-      return 'infoDark';
-    }
-  }
-
-  if (weight === 'strong') {
-    return 'white';
-  }
-
-  return tone;
+const icons = {
+  info: InfoIcon,
+  critical: ErrorIcon,
+  positive: TickCircleIcon,
 };
 
 export const Alert = ({
@@ -90,8 +45,8 @@ export const Alert = ({
   children,
 }: AlertProps) => {
   const backgroundColor = backgroundColorForTone(tone, weight);
-  const color = textColorForTone(tone, weight);
-  const icon = iconForTone(tone, color);
+  const color = weight === 'strong' ? 'white' : tone;
+  const Icon = icons[tone];
 
   return (
     <Box
@@ -100,13 +55,16 @@ export const Alert = ({
       paddingRight="gutter"
       paddingTop="medium"
       paddingBottom="medium"
+      display="flex"
     >
-      <div className={styles.root}>
-        <div className={styles.icon}>{icon}</div>
-        <Text color={color} baseline={false}>
-          {children}
-        </Text>
-      </div>
+      {Icon ? (
+        <Box paddingRight="small" display="flex" className={styles.icon}>
+          <Icon fill={color} />
+        </Box>
+      ) : null}
+      <Text color={color} baseline={false}>
+        {children}
+      </Text>
     </Box>
   );
 };
