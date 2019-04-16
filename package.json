@@ -112,7 +112,7 @@
     "less-loader": "^4.1.0",
     "lint-staged": "^8.0.4",
     "lodash": "^4.17.11",
-    "playroom": "0.8.1",
+    "playroom": "0.9.0",
     "postcss-js": "^2.0.0",
     "postcss-loader": "^3.0.0",
     "react": "^16.8.4",
@@ -125,7 +125,7 @@
     "react-transition-group": "^2.6.1",
     "renovate-config-seek": "0.4.0",
     "semantic-release": "^15.13.3",
-    "sku": "8.4.2",
+    "sku": "8.4.3",
     "style-loader": "^0.23.1",
     "surge": "^0.20.1",
     "travis-deploy-once": "^5.0.9"
