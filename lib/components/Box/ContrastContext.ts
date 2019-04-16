@@ -15,15 +15,15 @@ export const useForeground = <Foreground extends Color | Fill>(
   }
 
   if (background === 'positiveLight' && foreground === 'positive') {
-    return 'positiveA11y';
+    return 'positiveForeground';
   }
 
   if (background === 'criticalLight' && foreground === 'critical') {
-    return 'criticalA11y';
+    return 'criticalForeground';
   }
 
   if (background === 'infoLight' && foreground === 'info') {
-    return 'infoA11y';
+    return 'infoForeground';
   }
 
   return foreground;
