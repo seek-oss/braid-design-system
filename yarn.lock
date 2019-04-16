@@ -13363,10 +13363,10 @@ sisteransi@^1.0.0:
   resolved "https://registry.yarnpkg.com/sisteransi/-/sisteransi-1.0.0.tgz#77d9622ff909080f1c19e5f4a1df0c1b0a27b88c"
   integrity sha512-N+z4pHB4AmUv0SjveWRd6q1Nj5w62m5jodv+GD8lvmbY/83T/rpbJGZOnK5T149OldDj4Db07BSv9xY4K6NTPQ==
 
-sku@8.4.3:
-  version "8.4.3"
-  resolved "https://registry.yarnpkg.com/sku/-/sku-8.4.3.tgz#88af045338fdb6344598d1030843ab3346baaf67"
-  integrity sha512-/pnu750v1R20qPESpE9SasF1buq9O1xQRIavBibSklplu89utx7xKc01ANCpX1cdgiiGr9VK+tK8s9NVROZllg==
+sku@8.4.4:
+  version "8.4.4"
+  resolved "https://registry.yarnpkg.com/sku/-/sku-8.4.4.tgz#1e628400ca2c00d11a30827a4bc9e592863c9748"
+  integrity sha512-h9jKBHO+JSXCWT+io4Rrf5gUFqVmcxnoMsZKAXcxzF0V8KrA9Xfp8EAnVLlQCezhv2QNH9qAEBAbGDLPdihF1g==
   dependencies:
     "@babel/core" "^7.1.2"
     "@babel/plugin-proposal-class-properties" "^7.1.0"
@@ -13461,7 +13461,7 @@ sku@8.4.3:
     validate-npm-package-name "^3.0.0"
     webpack "^4.28.2"
     webpack-bundle-analyzer "^3.0.2"
-    webpack-dev-server "^3.1.14"
+    webpack-dev-server "3.2.1"
     webpack-merge "^4.1.5"
     webpack-node-externals "^1.7.2"
 
@@ -15234,7 +15234,7 @@ webpack-dev-middleware@^3.4.0, webpack-dev-middleware@^3.5.1:
     range-parser "^1.0.3"
     webpack-log "^2.0.0"
 
-webpack-dev-server@^3.1.14, webpack-dev-server@^3.1.8:
+webpack-dev-server@3.2.1, webpack-dev-server@^3.1.8:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/webpack-dev-server/-/webpack-dev-server-3.2.1.tgz#1b45ce3ecfc55b6ebe5e36dab2777c02bc508c4e"
   integrity sha512-sjuE4mnmx6JOh9kvSbPYw3u/6uxCLHNWfhWaIPwcXWsvWOPN+nc5baq4i9jui3oOBRXGonK9+OI0jVkaz6/rCw==
