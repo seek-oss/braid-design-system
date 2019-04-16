@@ -23,7 +23,7 @@ export function findClosestAccessibleLighterColor(
   inputColor: string,
   fixedColor: string,
   contrastRatio: number = AA_CONTRAST,
-): string | null {
+): string {
   const normalisedInput = toColorString(parseToRgb(inputColor));
   const normalisedFixed = toColorString(parseToRgb(fixedColor));
   const { hue, saturation, lightness } = parseToHsl(normalisedInput);
@@ -73,7 +73,7 @@ export function findClosestAccessibleDarkerColor(
   inputColor: string,
   fixedColor: string,
   contrastRatio: number = AA_CONTRAST,
-): string | null {
+): string {
   const normalisedInput = toColorString(parseToRgb(inputColor));
   const normalisedFixed = toColorString(parseToRgb(fixedColor));
   const { hue, saturation, lightness } = parseToHsl(normalisedInput);
