@@ -5,7 +5,7 @@ import { Alert } from './Alert';
 const docs: ComponentDocs = {
   examples: [
     {
-      label: 'Default Info Alert',
+      label: 'Info Alert',
       render: () => (
         <Alert tone="info">This is an important piece of information.</Alert>
       ),
@@ -19,7 +19,7 @@ const docs: ComponentDocs = {
       ),
     },
     {
-      label: 'Default Critical Alert',
+      label: 'Critical Alert',
       render: () => (
         <Alert tone="critical">This is a critical piece of information.</Alert>
       ),
@@ -33,7 +33,7 @@ const docs: ComponentDocs = {
       ),
     },
     {
-      label: 'Default Positive Alert',
+      label: 'Positive Alert',
       render: () => (
         <Alert tone="positive">This is a positive piece of information.</Alert>
       ),
