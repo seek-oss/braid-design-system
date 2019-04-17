@@ -4,6 +4,7 @@ import { Color, FontWeight, Theme } from '../../themes/theme';
 import { Box, BoxProps } from '../Box/Box';
 import styles from './Text.css.js';
 import { useTheme } from '../private/ThemeContext';
+import { useForeground } from '../Box/ContrastContext';
 
 type TextSize = 'standard' | 'large';
 
@@ -35,7 +36,7 @@ export interface TextProps extends Pick<BoxProps, 'component'> {
 export const Text = ({
   component,
   size = 'standard',
-  color,
+  color = 'neutral',
   weight,
   baseline = true,
   children,
@@ -48,7 +49,7 @@ export const Text = ({
       className={classnames(
         styles.block,
         theme.atoms.fontFamily.text,
-        theme.atoms.color[color || 'neutral'],
+        theme.atoms.color[useForeground(color)],
         theme.atoms.fontSize[size],
         theme.atoms.fontWeight[weight || 'regular'],
         resolveTransformAtom(size, baseline, theme),

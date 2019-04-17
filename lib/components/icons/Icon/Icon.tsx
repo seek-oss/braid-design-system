@@ -4,6 +4,7 @@ import { TextSize, Fill, IconSize } from '../../../themes/theme';
 import { Box } from '../../Box/Box';
 import styles from './Icon.css.js';
 import { useTheme } from '../../private/ThemeContext';
+import { useForeground } from '../../Box/ContrastContext';
 
 export interface IconProps {
   size?: TextSize | 'fill';
@@ -21,7 +22,7 @@ export const Icon = ({
   size = 'standard',
   svgComponent,
   inline = false,
-  fill,
+  fill = 'currentColor',
 }: IconProps) => {
   const theme = useTheme();
   const sizeAtom = `${size}Text${inline ? 'Inline' : ''}`;
@@ -36,11 +37,16 @@ export const Icon = ({
     <Box
       component={svgComponent}
       width={size === 'fill' ? 'full' : undefined}
-      className={classnames(widthAtom, heightAtom, theme.atoms.fill[fill!], {
-        [styles.fillSize]: size === 'fill',
-        [styles.inline]: inline,
-        [styles.block]: !inline,
-      })}
+      className={classnames(
+        widthAtom,
+        heightAtom,
+        theme.atoms.fill[useForeground(fill)],
+        {
+          [styles.fillSize]: size === 'fill',
+          [styles.inline]: inline,
+          [styles.block]: !inline,
+        },
+      )}
     />
   );
 };

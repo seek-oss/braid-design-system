@@ -1,5 +1,6 @@
 import { Css } from '../types';
 import isLight from '../utils/isLight';
+import { getAccessibleVariant } from '../utils/a11y';
 
 export interface ColorParams {
   link: string;
@@ -9,6 +10,7 @@ export interface ColorParams {
   critical: string;
   positive: string;
   secondary: string;
+  info: string;
   brandAccent: string;
   formAccent: string;
   neutral: string;
@@ -21,6 +23,7 @@ export default ({
   critical,
   positive,
   secondary,
+  info,
   brandAccent,
   formAccent,
   neutral,
@@ -37,8 +40,12 @@ export default ({
   '.color_black': { color: black },
   '.color_white': { color: white },
   '.color_critical': { color: critical },
+  '.color_criticalForeground': { color: getAccessibleVariant(critical) },
   '.color_positive': { color: positive },
+  '.color_positiveForeground': { color: getAccessibleVariant(positive) },
   '.color_secondary': { color: secondary },
+  '.color_info': { color: info },
+  '.color_infoForeground': { color: getAccessibleVariant(info) },
   '.color_formAccent': { color: formAccent },
   '.color_brandAccentForeground': {
     color: isLight(brandAccent) ? black : white,

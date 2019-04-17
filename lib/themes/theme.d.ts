@@ -53,8 +53,12 @@ type BackgroundColor =
   | 'formAccentDisabled'
   | 'selection'
   | 'info'
+  | 'infoLight'
   | 'card'
-  | 'critical';
+  | 'critical'
+  | 'criticalLight'
+  | 'positive'
+  | 'positiveLight';
 type BorderRadius = 'standard';
 export type BoxShadow =
   | 'outlineFocus'
@@ -66,8 +70,12 @@ export type Color =
   | 'black'
   | 'white'
   | 'critical'
+  | 'criticalForeground'
   | 'positive'
+  | 'positiveForeground'
   | 'secondary'
+  | 'info'
+  | 'infoForeground'
   | 'brandAccentForeground'
   | 'formAccent'
   | 'neutral'
@@ -77,7 +85,11 @@ type Fill =
   | 'formAccent'
   | 'formAccentDisabled'
   | 'critical'
+  | 'criticalForeground'
+  | 'info'
+  | 'infoForeground'
   | 'positive'
+  | 'positiveForeground'
   | 'secondary'
   | 'white';
 type FontFamily = 'text';

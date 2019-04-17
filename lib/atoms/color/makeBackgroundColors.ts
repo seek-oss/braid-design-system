@@ -1,5 +1,6 @@
 import isLight from '../utils/isLight';
 import { darken, lighten } from 'polished';
+import { getLightVariant } from '../utils/a11y';
 
 const getActiveColor = (color: string): string =>
   isLight(color) ? darken(0.1, color) : darken(0.05, color);
@@ -17,6 +18,7 @@ export interface BackgroundColorParams {
   info: string;
   card: string;
   critical: string;
+  positive: string;
 }
 
 export default ({
@@ -29,6 +31,7 @@ export default ({
   info,
   card,
   critical,
+  positive,
 }: BackgroundColorParams) => ({
   '.backgroundColor_input': { backgroundColor: input },
   '.backgroundColor_inputDisabled': { backgroundColor: inputDisabled },
@@ -51,6 +54,16 @@ export default ({
   },
   '.backgroundColor_selection': { backgroundColor: selection },
   '.backgroundColor_info': { backgroundColor: info },
+  '.backgroundColor_infoLight': {
+    backgroundColor: getLightVariant(info),
+  },
   '.backgroundColor_card': { backgroundColor: card },
   '.backgroundColor_critical': { backgroundColor: critical },
+  '.backgroundColor_criticalLight': {
+    backgroundColor: getLightVariant(critical),
+  },
+  '.backgroundColor_positive': { backgroundColor: positive },
+  '.backgroundColor_positiveLight': {
+    backgroundColor: getLightVariant(positive),
+  },
 });

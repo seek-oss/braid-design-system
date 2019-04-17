@@ -16,6 +16,7 @@ import {
   Width,
   IconSize,
 } from '../../themes/theme';
+import { ContrastProvider } from './ContrastContext';
 
 function getResponsiveClasses<AtomName extends string>(
   atoms: Record<AtomName, string>,
@@ -76,7 +77,7 @@ export const Box = ({
 }: BoxProps) => {
   const { atoms } = useTheme();
 
-  return (
+  const ResetBox = (
     <Reset
       className={classnames(
         className,
@@ -147,5 +148,11 @@ export const Box = ({
       )}
       {...restProps}
     />
+  );
+
+  return backgroundColor ? (
+    <ContrastProvider value={backgroundColor}>{ResetBox}</ContrastProvider>
+  ) : (
+    ResetBox
   );
 };
