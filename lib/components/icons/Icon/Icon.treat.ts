@@ -29,18 +29,21 @@ const makeSizeRules = (
       }),
 });
 
-export const inlineSizes = css(({ tokens }) => ({
-  standard: makeSizeRules(
-    tokens.responsiveBreakpoint,
-    tokens.text.standard.mobile.size,
-    tokens.text.standard.desktop.size,
-  ),
-  large: makeSizeRules(
-    tokens.responsiveBreakpoint,
-    tokens.text.large.mobile.size,
-    tokens.text.large.desktop.size,
-  ),
-}));
+export const inlineSizes = css(
+  ({ tokens }) => ({
+    standard: makeSizeRules(
+      tokens.responsiveBreakpoint,
+      tokens.text.standard.mobile.size,
+      tokens.text.standard.desktop.size,
+    ),
+    large: makeSizeRules(
+      tokens.responsiveBreakpoint,
+      tokens.text.large.mobile.size,
+      tokens.text.large.desktop.size,
+    ),
+  }),
+  'inlineSizes',
+);
 
 export const blockSizes = css(({ tokens }) => {
   const rows = (count: number) => tokens.rowHeight * count;
@@ -57,4 +60,4 @@ export const blockSizes = css(({ tokens }) => {
       rows(tokens.text.large.desktop.rows),
     ),
   };
-});
+}, 'blockSizes');
