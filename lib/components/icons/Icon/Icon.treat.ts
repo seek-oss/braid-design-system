@@ -29,44 +29,32 @@ const makeSizeRules = (
       }),
 });
 
-export const inlineSizes = css(({ tokens }) => {
-  const standardMobile = tokens.text.standard.mobile.size;
-  const standardDesktop = tokens.text.standard.desktop.size;
-
-  const largeMobile = tokens.text.large.mobile.size;
-  const largeDesktop = tokens.text.large.desktop.size;
-
-  return {
-    standard: makeSizeRules(
-      tokens.responsiveBreakpoint,
-      standardMobile,
-      standardDesktop,
-    ),
-    large: makeSizeRules(
-      tokens.responsiveBreakpoint,
-      largeMobile,
-      largeDesktop,
-    ),
-  };
-});
+export const inlineSizes = css(({ tokens }) => ({
+  standard: makeSizeRules(
+    tokens.responsiveBreakpoint,
+    tokens.text.standard.mobile.size,
+    tokens.text.standard.desktop.size,
+  ),
+  large: makeSizeRules(
+    tokens.responsiveBreakpoint,
+    tokens.text.large.mobile.size,
+    tokens.text.large.desktop.size,
+  ),
+}));
 
 export const blockSizes = css(({ tokens }) => {
   const rows = (count: number) => tokens.rowHeight * count;
-  const standardMobile = rows(tokens.text.standard.mobile.rows);
-  const standardDesktop = rows(tokens.text.standard.desktop.rows);
-  const largeMobile = rows(tokens.text.large.mobile.rows);
-  const largeDesktop = rows(tokens.text.large.desktop.rows);
 
   return {
     standard: makeSizeRules(
       tokens.responsiveBreakpoint,
-      standardMobile,
-      standardDesktop,
+      rows(tokens.text.standard.mobile.rows),
+      rows(tokens.text.standard.desktop.rows),
     ),
     large: makeSizeRules(
       tokens.responsiveBreakpoint,
-      largeMobile,
-      largeDesktop,
+      rows(tokens.text.large.mobile.rows),
+      rows(tokens.text.large.desktop.rows),
     ),
   };
 });
