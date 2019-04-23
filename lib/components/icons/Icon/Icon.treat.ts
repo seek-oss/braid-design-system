@@ -1,14 +1,20 @@
 import { style, css, Styles } from 'sku/treat';
 
-export const inline = style({
-  verticalAlign: 'middle',
-  position: 'relative',
-  top: '-0.105em', // Arbitrary magic number, to vertically align to text
-});
+export const inline = style(
+  {
+    verticalAlign: 'middle',
+    position: 'relative',
+    top: '-0.105em', // Arbitrary magic number, to vertically align to text
+  },
+  'inline',
+);
 
-export const fill = style({
-  height: '100%',
-});
+export const fill = style(
+  {
+    height: '100%',
+  },
+  'fill',
+);
 
 const makeSizeRules = (
   breakpoint: number,
