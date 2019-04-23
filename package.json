@@ -75,7 +75,8 @@
     "utility-types": "^3.2.1"
   },
   "peerDependencies": {
-    "react": "^16.8.0"
+    "react": "^16.8.0",
+    "sku": ">=8.4.5"
   },
   "devDependencies": {
     "@babel/core": "^7.1.5",
@@ -125,10 +126,11 @@
     "react-transition-group": "^2.6.1",
     "renovate-config-seek": "0.4.0",
     "semantic-release": "^15.13.3",
-    "sku": "8.4.4",
+    "sku": "8.4.5",
     "style-loader": "^0.23.1",
     "surge": "^0.20.1",
-    "travis-deploy-once": "^5.0.9"
+    "travis-deploy-once": "^5.0.9",
+    "treat": "1.0.0-alpha.13"
   },
   "toolchain": {
     "node": "10.15.1",

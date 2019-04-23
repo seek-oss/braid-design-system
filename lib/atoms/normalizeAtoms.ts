@@ -92,12 +92,6 @@ export default (
     regular: atoms.fontWeight_regular,
     strong: atoms.fontWeight_strong,
   },
-  height: {
-    largeText: atoms.height_largeText,
-    largeTextInline: atoms.height_largeTextInline,
-    standardText: atoms.height_standardText,
-    standardTextInline: atoms.height_standardTextInline,
-  },
   marginBottom: {
     none: atoms.marginBottom_none,
     large: atoms.marginBottom_large,
@@ -289,10 +283,6 @@ export default (
     touchable: atoms.transition_touchable,
   },
   width: {
-    largeText: atoms.width_largeText,
-    largeTextInline: atoms.width_largeTextInline,
-    standardText: atoms.width_standardText,
-    standardTextInline: atoms.width_standardTextInline,
     full: atoms.width_full,
   },
   flexDirection: {

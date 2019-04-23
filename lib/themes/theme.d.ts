@@ -1,3 +1,5 @@
+import { ThemeRef } from 'sku/treat';
+
 // Text definitions
 interface TextDefinition {
   size: number;
@@ -214,7 +216,6 @@ export interface Atoms {
   fontFamily: Record<FontFamily, string>;
   fontSize: Record<FontSize, string>;
   fontWeight: Record<FontWeight, string>;
-  height: Record<IconSize, string>;
   marginTop: Record<Spacing, string>;
   marginRight: Record<HorizontalSpacing, string>;
   marginBottom: Record<Spacing, string>;
@@ -238,11 +239,12 @@ export interface Atoms {
   flexDirectionDesktop: Record<FlexDirection, string>;
   transform: Record<Transform, string>;
   transition: Record<Transition, string>;
-  width: Record<IconSize | Width, string>;
+  width: Record<Width, string>;
 }
 
 export interface Theme {
   readonly name: string;
   readonly tokens: Tokens;
   readonly atoms: Atoms;
+  readonly treatTheme: ThemeRef;
 }

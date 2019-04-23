@@ -1,22 +1,29 @@
 import React, { ComponentType } from 'react';
-import classnames from 'classnames';
-import { TextSize, Fill, IconSize } from '../../../themes/theme';
+import { useClassNames } from 'sku/treat';
+import { TextSize, Fill } from '../../../themes/theme';
 import { Box } from '../../Box/Box';
-import styles from './Icon.css.js';
+import * as styles from './Icon.treat';
 import { useTheme } from '../../private/ThemeContext';
 import { useForeground } from '../../Box/ContrastContext';
 
+type IconSize = TextSize | 'fill';
+
 export interface IconProps {
-  size?: TextSize | 'fill';
+  size?: IconSize;
   inline?: boolean;
   fill?: Fill;
   svgComponent: ComponentType;
 }
 
-const isIconSize = (
-  atom: Record<IconSize, string>,
-  sizeAtom: string,
-): sizeAtom is IconSize => Object.keys(atom).indexOf(sizeAtom) > -1;
+const resolveSizeClasses = (size: IconSize, inline: boolean) => {
+  if (size === 'fill') {
+    return styles.fill;
+  }
+
+  return inline
+    ? [styles.inline, styles.inlineSizes[size]]
+    : styles.blockSizes[size];
+};
 
 export const Icon = ({
   size = 'standard',
@@ -25,27 +32,15 @@ export const Icon = ({
   fill = 'currentColor',
 }: IconProps) => {
   const theme = useTheme();
-  const sizeAtom = `${size}Text${inline ? 'Inline' : ''}`;
-  const widthAtom = isIconSize(theme.atoms.width, sizeAtom)
-    ? theme.atoms.width[sizeAtom]
-    : '';
-  const heightAtom = isIconSize(theme.atoms.height, sizeAtom)
-    ? theme.atoms.height[sizeAtom]
-    : '';
 
   return (
     <Box
       component={svgComponent}
       width={size === 'fill' ? 'full' : undefined}
-      className={classnames(
-        widthAtom,
-        heightAtom,
+      display={inline ? 'inlineBlock' : 'block'}
+      className={useClassNames(
+        resolveSizeClasses(size, inline),
         theme.atoms.fill[useForeground(fill)],
-        {
-          [styles.fillSize]: size === 'fill',
-          [styles.inline]: inline,
-          [styles.block]: !inline,
-        },
       )}
     />
   );
