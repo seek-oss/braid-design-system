@@ -13575,7 +13575,7 @@ sisteransi@^1.0.0:
   resolved "https://registry.yarnpkg.com/sisteransi/-/sisteransi-1.0.0.tgz#77d9622ff909080f1c19e5f4a1df0c1b0a27b88c"
   integrity sha512-N+z4pHB4AmUv0SjveWRd6q1Nj5w62m5jodv+GD8lvmbY/83T/rpbJGZOnK5T149OldDj4Db07BSv9xY4K6NTPQ==
 
-sku@^8.4.5:
+sku@8.4.5:
   version "8.4.5"
   resolved "https://registry.yarnpkg.com/sku/-/sku-8.4.5.tgz#79fe79e7f4405a9b33f4e95cc62781424f864c46"
   integrity sha512-GdukBU2bdGcUi9Br0UINAhJj02i+plrGnsCFfxtPUoYcXWqfW/Sk2Q780Ez3KsBJ3H86tCGQ/sgdV2CzDy/V1Q==
