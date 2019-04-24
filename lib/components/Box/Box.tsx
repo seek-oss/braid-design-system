@@ -14,7 +14,6 @@ import {
   Transition,
   Transform,
   Width,
-  IconSize,
 } from '../../themes/theme';
 import { ContrastProvider } from './ContrastContext';
 
@@ -50,7 +49,6 @@ export interface BoxProps extends ResetProps {
   boxShadow?: BoxShadow;
   transform?: Transform;
   transition?: Transition;
-  minHeight?: IconSize;
   width?: Width;
 }
 
@@ -70,7 +68,6 @@ export const Box = ({
   boxShadow,
   transition,
   transform,
-  minHeight,
   width,
   className,
   ...restProps
@@ -87,7 +84,6 @@ export const Box = ({
         atoms.boxShadow[boxShadow!],
         atoms.transition[transition!],
         atoms.transform[transform!],
-        atoms.minHeight[minHeight!],
         atoms.width[width!],
         marginTop &&
           getResponsiveClasses(

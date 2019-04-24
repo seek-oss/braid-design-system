@@ -1,6 +1,4 @@
-import { createTheme } from 'sku/treat';
+import makeTreatTheme from '../makeTreatTheme';
 import tokens from './tokens';
 
-export default createTheme({
-  tokens,
-});
+export default makeTreatTheme(tokens);

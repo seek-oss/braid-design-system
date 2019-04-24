@@ -1,4 +1,4 @@
-import { style, css, Styles } from 'sku/treat';
+import { style, css } from 'sku/treat';
 
 export const inline = style(
   {
@@ -16,54 +16,36 @@ export const fill = style(
   'fill',
 );
 
-const makeSizeRules = (
-  breakpoint: number,
-  mobileSize: number,
-  desktopSize: number,
-): Styles => ({
-  width: mobileSize,
-  height: mobileSize,
-  ...(mobileSize === desktopSize
-    ? null
-    : {
-        '@media': {
-          [`screen and (min-width: ${breakpoint}px)`]: {
-            width: desktopSize,
-            height: desktopSize,
-          },
-        },
-      }),
-});
+const makeSizeRules = (size: number) => ({ width: size, height: size });
 
-export const inlineSizes = css(
-  ({ tokens }) => ({
-    standard: makeSizeRules(
-      tokens.responsiveBreakpoint,
-      tokens.text.standard.mobile.size,
-      tokens.text.standard.desktop.size,
-    ),
-    large: makeSizeRules(
-      tokens.responsiveBreakpoint,
-      tokens.text.large.mobile.size,
-      tokens.text.large.desktop.size,
-    ),
-  }),
-  'inlineSizes',
-);
-
-export const blockSizes = css(({ tokens }) => {
-  const rows = (count: number) => tokens.rowHeight * count;
+export const inlineSizes = css(theme => {
+  const { responsiveStyles } = theme.utils;
+  const { standard, large } = theme.tokens.text;
 
   return {
-    standard: makeSizeRules(
-      tokens.responsiveBreakpoint,
-      rows(tokens.text.standard.mobile.rows),
-      rows(tokens.text.standard.desktop.rows),
+    standard: responsiveStyles(
+      makeSizeRules(standard.mobile.size),
+      makeSizeRules(standard.desktop.size),
     ),
-    large: makeSizeRules(
-      tokens.responsiveBreakpoint,
-      rows(tokens.text.large.mobile.rows),
-      rows(tokens.text.large.desktop.rows),
+    large: responsiveStyles(
+      makeSizeRules(large.mobile.size),
+      makeSizeRules(large.desktop.size),
+    ),
+  };
+}, 'inlineSizes');
+
+export const blockSizes = css(theme => {
+  const { responsiveStyles, rows } = theme.utils;
+  const { standard, large } = theme.tokens.text;
+
+  return {
+    standard: responsiveStyles(
+      makeSizeRules(rows(standard.mobile.rows)),
+      makeSizeRules(rows(standard.desktop.rows)),
+    ),
+    large: responsiveStyles(
+      makeSizeRules(rows(large.mobile.rows)),
+      makeSizeRules(rows(large.desktop.rows)),
     ),
   };
 }, 'blockSizes');
