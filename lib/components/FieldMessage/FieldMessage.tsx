@@ -1,9 +1,10 @@
 import React, { ReactNode } from 'react';
+import { useClassNames } from 'sku/treat';
 import { Box } from '../Box/Box';
 import { Text, TextProps } from '../Text/Text';
 import { ErrorIcon } from '../icons/ErrorIcon/ErrorIcon';
 import { TickCircleIcon } from '../icons/TickCircleIcon/TickCircleIcon';
-import styles from './FieldMessage.css.js';
+import * as styles from './FieldMessage.treat';
 import { FieldTone } from '../../themes/theme';
 
 export interface FieldMessageProps extends TextProps {
@@ -25,7 +26,7 @@ const renderIcon = (tone: FieldTone = 'neutral') => {
   };
 
   return (
-    <Box paddingRight="xsmall" className={styles.fixedSize}>
+    <Box paddingRight="xsmall" className={useClassNames(styles.fixedSize)}>
       {Icon[tone]}
     </Box>
   );
@@ -42,8 +43,13 @@ export const FieldMessage = ({
   }
 
   return (
-    <Box id={id} paddingBottom="small" display="flex" className={styles.root}>
-      <Box minHeight="standardText" className={styles.grow}>
+    <Box
+      id={id}
+      paddingBottom="small"
+      display="flex"
+      className={useClassNames(styles.root)}
+    >
+      <Box className={useClassNames(styles.minHeight, styles.grow)}>
         <Text color={tone}>
           <Box display="flex">
             {renderIcon(tone)}
@@ -52,7 +58,7 @@ export const FieldMessage = ({
         </Text>
       </Box>
       {secondaryMessage ? (
-        <Box paddingLeft="xsmall" className={styles.fixedSize}>
+        <Box paddingLeft="xsmall" className={useClassNames(styles.fixedSize)}>
           {secondaryMessage}
         </Box>
       ) : null}

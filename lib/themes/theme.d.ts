@@ -180,11 +180,6 @@ type ResetTags =
   | 'mark'
   | 'audio'
   | 'video';
-export type IconSize =
-  | 'standardText'
-  | 'standardTextInline'
-  | 'largeText'
-  | 'largeTextInline';
 export type Width = 'full';
 type Spacing =
   | 'none'
@@ -224,7 +219,6 @@ export interface Atoms {
   marginRightDesktop: Record<HorizontalSpacing, string>;
   marginBottomDesktop: Record<Spacing, string>;
   marginLeftDesktop: Record<HorizontalSpacing, string>;
-  minHeight: Record<IconSize, string>;
   paddingTop: Record<VerticalPadding, string>;
   paddingRight: Record<HorizontalSpacing, string>;
   paddingBottom: Record<VerticalPadding, string>;

@@ -43,7 +43,7 @@ const makeAtoms = (
     makeFills(fills),
     makeFontFamily(fontFamily),
     makeFontWeight(fontWeights),
-    makeSizes(tokens),
+    makeSizes(),
     makeMargins(tokens),
     makePadding(tokens),
     makeDisplayRules(tokens),
