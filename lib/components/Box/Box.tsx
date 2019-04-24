@@ -14,7 +14,6 @@ import {
   Transition,
   Transform,
   Width,
-  IconSize,
 } from '../../themes/theme';
 import { ContrastProvider } from './ContrastContext';
 
