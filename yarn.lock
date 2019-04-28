@@ -13575,10 +13575,10 @@ sisteransi@^1.0.0:
   resolved "https://registry.yarnpkg.com/sisteransi/-/sisteransi-1.0.0.tgz#77d9622ff909080f1c19e5f4a1df0c1b0a27b88c"
   integrity sha512-N+z4pHB4AmUv0SjveWRd6q1Nj5w62m5jodv+GD8lvmbY/83T/rpbJGZOnK5T149OldDj4Db07BSv9xY4K6NTPQ==
 
-sku@8.4.5:
-  version "8.4.5"
-  resolved "https://registry.yarnpkg.com/sku/-/sku-8.4.5.tgz#79fe79e7f4405a9b33f4e95cc62781424f864c46"
-  integrity sha512-GdukBU2bdGcUi9Br0UINAhJj02i+plrGnsCFfxtPUoYcXWqfW/Sk2Q780Ez3KsBJ3H86tCGQ/sgdV2CzDy/V1Q==
+sku@8.4.6:
+  version "8.4.6"
+  resolved "https://registry.yarnpkg.com/sku/-/sku-8.4.6.tgz#78f6b6868dfa4c11c66869111f14cd07919a63a0"
+  integrity sha512-Vdk2/nK+0yh9v3JheHqoUXbRTgW26qb8e9xWPpSiDeH1BwG6n/uo6q/7Ve8+o8LjCTHoB56VNzDjZ3LWig01Bg==
   dependencies:
     "@babel/core" "^7.1.2"
     "@babel/plugin-proposal-class-properties" "^7.1.0"
@@ -13665,7 +13665,7 @@ sku@8.4.5:
     svgo "^1.0.5"
     svgo-loader "^2.1.0"
     traverse "^0.6.6"
-    treat "1.0.0-alpha.13"
+    treat "1.0.0-alpha.15"
     tree-kill "^1.2.1"
     tslint "^5.11.0"
     tslint-config-seek "^1.0.0"
@@ -14799,6 +14799,25 @@ treat@1.0.0-alpha.13:
   version "1.0.0-alpha.13"
   resolved "https://registry.yarnpkg.com/treat/-/treat-1.0.0-alpha.13.tgz#f68d74e3197900f9eb255762bf9343370787f83e"
   integrity sha512-JHZoxQCPUvzeYCdmAKesrnT2vSc4fGxGc6vOVE+sEx9S3VukhR49VjZoGGQxXNxZThTTMgUjsCNuD8osuiKesg==
+  dependencies:
+    "@types/lodash" "^4.14.123"
+    autoprefixer "^9.5.0"
+    bluebird "^3.5.4"
+    css-loader "^2.1.0"
+    cssnano "^4.1.10"
+    csstype "^2.6.3"
+    eval "^0.1.2"
+    loader-utils "^1.2.3"
+    normalize-path "^3.0.0"
+    postcss "^7.0.14"
+    postcss-js "^2.0.0"
+    style-loader "^0.23.1"
+    webpack-virtual-modules "^0.1.10"
+
+treat@1.0.0-alpha.15:
+  version "1.0.0-alpha.15"
+  resolved "https://registry.yarnpkg.com/treat/-/treat-1.0.0-alpha.15.tgz#11f4b8116c0dd1f47ab5f7321186c9d6d212d45c"
+  integrity sha512-Pmvh3rD2iURj85Ht44f9uYE5sd3iIQEuU9jRbZIiJ9FGEHp7aN+RkjGVkTpHHuSgRyPT3pCq7aKq7cvRQL+3Fw==
   dependencies:
     "@types/lodash" "^4.14.123"
     autoprefixer "^9.5.0"
