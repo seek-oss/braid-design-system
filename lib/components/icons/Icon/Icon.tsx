@@ -1,9 +1,8 @@
 import React, { ComponentType } from 'react';
 import { useClassNames } from 'sku/treat';
-import { TextSize, Fill } from '../../../themes/theme';
+import { TextSize } from '../../../themes/theme';
 import { Box } from '../../Box/Box';
 import * as styles from './Icon.treat';
-import { useTheme } from '../../private/ThemeContext';
 import { useForeground } from '../../Box/ContrastContext';
 
 type IconSize = TextSize | 'fill';
@@ -11,13 +10,13 @@ type IconSize = TextSize | 'fill';
 export interface IconProps {
   size?: IconSize;
   inline?: boolean;
-  fill?: Fill;
+  fill?: keyof typeof styles.fill;
   svgComponent: ComponentType;
 }
 
 const resolveSizeClasses = (size: IconSize, inline: boolean) => {
   if (size === 'fill') {
-    return styles.fill;
+    return styles.fullHeight;
   }
 
   return inline
@@ -30,18 +29,14 @@ export const Icon = ({
   svgComponent,
   inline = false,
   fill = 'currentColor',
-}: IconProps) => {
-  const theme = useTheme();
-
-  return (
-    <Box
-      component={svgComponent}
-      width={size === 'fill' ? 'full' : undefined}
-      display={inline ? 'inlineBlock' : 'block'}
-      className={useClassNames(
-        resolveSizeClasses(size, inline),
-        theme.atoms.fill[useForeground(fill)],
-      )}
-    />
-  );
-};
+}: IconProps) => (
+  <Box
+    component={svgComponent}
+    width={size === 'fill' ? 'full' : undefined}
+    display={inline ? 'inlineBlock' : 'block'}
+    className={useClassNames(
+      resolveSizeClasses(size, inline),
+      styles.fill[useForeground(fill)],
+    )}
+  />
+);

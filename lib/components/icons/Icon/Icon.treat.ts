@@ -1,4 +1,5 @@
 import { style, css } from 'sku/treat';
+import mapTokensToStyleProperty from '../../../utils/mapTokensToStyleProperty';
 
 export const inline = style(
   {
@@ -9,18 +10,18 @@ export const inline = style(
   'inline',
 );
 
-export const fill = style(
+export const fullHeight = style(
   {
     height: '100%',
   },
-  'fill',
+  'fullHeight',
 );
 
 const makeSizeRules = (size: number) => ({ width: size, height: size });
 
 export const inlineSizes = css(theme => {
   const { responsiveStyles } = theme.utils;
-  const { standard, large } = theme.tokens.text;
+  const { standard, large } = theme.text;
 
   return {
     standard: responsiveStyles(
@@ -36,7 +37,7 @@ export const inlineSizes = css(theme => {
 
 export const blockSizes = css(theme => {
   const { responsiveStyles, rows } = theme.utils;
-  const { standard, large } = theme.tokens.text;
+  const { standard, large } = theme.text;
 
   return {
     standard: responsiveStyles(
@@ -49,3 +50,11 @@ export const blockSizes = css(theme => {
     ),
   };
 }, 'blockSizes');
+
+export const fill = css(
+  ({ color }) => ({
+    ...mapTokensToStyleProperty(color.foreground, 'fill'),
+    currentColor: { fill: 'currentColor' },
+  }),
+  'fill',
+);

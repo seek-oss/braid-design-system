@@ -21,12 +21,10 @@ import makeTransforms, { TransformParams } from './makeTransforms';
 import makeSizes from './makeSizes';
 import makeFlexDirections from './makeFlexDirections';
 import makeFontSizes from './font/makeFontSizes';
-import makeFills, { FillParams } from './color/makeFills';
 
 const makeAtoms = (
   tokens: Tokens,
   colors: ColorParams,
-  fills: FillParams,
   fontFamily: FontFamilyParams,
   borderRadius: BorderRadiusParams,
   boxShadows: BoxShadowParams,
@@ -40,7 +38,6 @@ const makeAtoms = (
     makeBorderRadius(borderRadius),
     makeBoxShadows(tokens, boxShadows),
     makeColors(colors),
-    makeFills(fills),
     makeFontFamily(fontFamily),
     makeFontWeight(fontWeights),
     makeSizes(),

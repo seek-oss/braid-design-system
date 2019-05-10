@@ -72,28 +72,16 @@ export type Color =
   | 'black'
   | 'white'
   | 'critical'
-  | 'criticalForeground'
+  | 'criticalContrast'
   | 'positive'
-  | 'positiveForeground'
+  | 'positiveContrast'
   | 'secondary'
   | 'info'
-  | 'infoForeground'
+  | 'infoContrast'
   | 'brandAccentForeground'
   | 'formAccent'
   | 'neutral'
   | 'link';
-type Fill =
-  | 'currentColor'
-  | 'formAccent'
-  | 'formAccentDisabled'
-  | 'critical'
-  | 'criticalForeground'
-  | 'info'
-  | 'infoForeground'
-  | 'positive'
-  | 'positiveForeground'
-  | 'secondary'
-  | 'white';
 type FontFamily = 'text';
 type FontSize = TextSize | HeadingSize;
 export type FontWeight = 'regular' | 'medium' | 'strong';
@@ -207,7 +195,6 @@ export interface Atoms {
   borderRadius: Record<BorderRadius, string>;
   boxShadow: Record<BoxShadow, string>;
   color: Record<Color, string>;
-  fill: Record<Fill, string>;
   fontFamily: Record<FontFamily, string>;
   fontSize: Record<FontSize, string>;
   fontWeight: Record<FontWeight, string>;
