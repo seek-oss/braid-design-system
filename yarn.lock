@@ -29,7 +29,7 @@
     semver "^5.4.1"
     source-map "^0.5.0"
 
-"@babel/core@^7.0.0", "@babel/core@^7.1.0", "@babel/core@^7.1.2", "@babel/core@^7.1.5", "@babel/core@^7.4.3", "@babel/core@^7.4.4":
+"@babel/core@^7.0.0", "@babel/core@^7.1.0", "@babel/core@^7.1.2", "@babel/core@^7.1.5", "@babel/core@^7.4.3":
   version "7.4.4"
   resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.4.4.tgz#84055750b05fcd50f9915a826b44fa347a825250"
   integrity sha512-lQgGX3FPRgbz2SKmhMtYgJvVzGZrmjaF4apZ2bLwofAKiSjxU0drPh4S/VasyYXwaTs+A1gvQ45BN8SQJzHsQQ==
@@ -3030,7 +3030,7 @@ babel-loader@8.0.4:
     mkdirp "^0.5.1"
     util.promisify "^1.0.0"
 
-babel-loader@^8.0.2, babel-loader@^8.0.4, babel-loader@^8.0.5:
+babel-loader@^8.0.2, babel-loader@^8.0.4:
   version "8.0.5"
   resolved "https://registry.yarnpkg.com/babel-loader/-/babel-loader-8.0.5.tgz#225322d7509c2157655840bba52e46b6c2f2fe33"
   integrity sha512-NTnHnVRd2JnRqPC0vW+iOQWU5pchDbYXsG2E6DMXEpMfUcQKclF9gmf3G3ZMhzG7IG9ji4coL0cm+FxeWxDpnw==
@@ -14912,27 +14912,6 @@ treat@1.0.0-alpha.15:
   dependencies:
     "@types/lodash" "^4.14.123"
     autoprefixer "^9.5.0"
-    bluebird "^3.5.4"
-    css-loader "^2.1.0"
-    cssnano "^4.1.10"
-    csstype "^2.6.3"
-    eval "^0.1.2"
-    loader-utils "^1.2.3"
-    normalize-path "^3.0.0"
-    postcss "^7.0.14"
-    postcss-js "^2.0.0"
-    style-loader "^0.23.1"
-    webpack-virtual-modules "^0.1.10"
-
-treat@1.0.0-alpha.18:
-  version "1.0.0-alpha.18"
-  resolved "https://registry.yarnpkg.com/treat/-/treat-1.0.0-alpha.18.tgz#88242cb1e0883fa5de65453ac7a2cccc1061b454"
-  integrity sha512-jIQSxJIM1AhTs+jzVId8f65U5MjhnpzoFPImUs2fRIZvRwmog2NrE+5tYlJjsu+BgQ/PP8fPuC5BQCmAsSXz0w==
-  dependencies:
-    "@babel/core" "^7.4.4"
-    "@types/lodash" "^4.14.123"
-    autoprefixer "^9.5.0"
-    babel-loader "^8.0.5"
     bluebird "^3.5.4"
     css-loader "^2.1.0"
     cssnano "^4.1.10"
