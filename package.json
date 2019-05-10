@@ -67,10 +67,11 @@
   "homepage": "https://github.com/seek-oss/braid-design-system#readme",
   "dependencies": {
     "@types/classnames": "^2.2.6",
-    "@types/lodash": "^4.14.120",
+    "@types/lodash": "^4.14.123",
     "@types/react": "^16.8.8",
     "basekick": "^3.0.0",
     "classnames": "^2.2.6",
+    "lodash": "^4.17.11",
     "polished": "^3.0.3",
     "utility-types": "^3.2.1"
   },
@@ -112,7 +113,6 @@
     "less": "^3.8.1",
     "less-loader": "^4.1.0",
     "lint-staged": "^8.0.4",
-    "lodash": "^4.17.11",
     "playroom": "0.9.1",
     "postcss-js": "^2.0.0",
     "postcss-loader": "^3.0.0",
@@ -130,7 +130,7 @@
     "style-loader": "^0.23.1",
     "surge": "^0.20.1",
     "travis-deploy-once": "^5.0.9",
-    "treat": "1.0.0-alpha.13"
+    "treat": "1.0.0-alpha.18"
   },
   "toolchain": {
     "node": "10.15.1",

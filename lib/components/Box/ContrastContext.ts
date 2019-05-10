@@ -1,11 +1,11 @@
-import { BackgroundColor, Color, Fill } from '../../themes/theme';
+import { BackgroundColor } from '../../themes/theme';
 import { createContext, useContext } from 'react';
 
 const contrastContext = createContext<BackgroundColor | null>(null);
 
 export const ContrastProvider = contrastContext.Provider;
 
-export const useForeground = <Foreground extends Color | Fill>(
+export const useForeground = <Foreground extends string>(
   foreground: Foreground,
 ) => {
   const background = useContext(contrastContext);
@@ -15,15 +15,15 @@ export const useForeground = <Foreground extends Color | Fill>(
   }
 
   if (background === 'positiveLight' && foreground === 'positive') {
-    return 'positiveForeground';
+    return 'positiveContrast';
   }
 
   if (background === 'criticalLight' && foreground === 'critical') {
-    return 'criticalForeground';
+    return 'criticalContrast';
   }
 
   if (background === 'infoLight' && foreground === 'info') {
-    return 'infoForeground';
+    return 'infoContrast';
   }
 
   return foreground;

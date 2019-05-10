@@ -1,4 +1,23 @@
 import makeTreatTheme from '../makeTreatTheme';
 import tokens from './tokens';
 
-export default makeTreatTheme(tokens);
+const formAccent = 'black';
+const critical = 'red';
+const positive = 'green';
+const info = 'navy';
+
+export default makeTreatTheme({
+  ...tokens,
+  name: 'wireframe',
+  color: {
+    foreground: {
+      formAccent,
+      formAccentDisabled: '#ccc',
+      critical,
+      info,
+      positive,
+      secondary: '#777',
+      white: 'white',
+    },
+  },
+});
