@@ -29,7 +29,7 @@
     semver "^5.4.1"
     source-map "^0.5.0"
 
-"@babel/core@^7.0.0", "@babel/core@^7.1.0", "@babel/core@^7.1.2", "@babel/core@^7.1.5", "@babel/core@^7.4.3":
+"@babel/core@^7.0.0", "@babel/core@^7.1.0", "@babel/core@^7.1.2", "@babel/core@^7.1.5", "@babel/core@^7.4.3", "@babel/core@^7.4.4":
   version "7.4.4"
   resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.4.4.tgz#84055750b05fcd50f9915a826b44fa347a825250"
   integrity sha512-lQgGX3FPRgbz2SKmhMtYgJvVzGZrmjaF4apZ2bLwofAKiSjxU0drPh4S/VasyYXwaTs+A1gvQ45BN8SQJzHsQQ==
@@ -3030,7 +3030,7 @@ babel-loader@8.0.4:
     mkdirp "^0.5.1"
     util.promisify "^1.0.0"
 
-babel-loader@^8.0.2, babel-loader@^8.0.4:
+babel-loader@^8.0.2, babel-loader@^8.0.4, babel-loader@^8.0.5:
   version "8.0.5"
   resolved "https://registry.yarnpkg.com/babel-loader/-/babel-loader-8.0.5.tgz#225322d7509c2157655840bba52e46b6c2f2fe33"
   integrity sha512-NTnHnVRd2JnRqPC0vW+iOQWU5pchDbYXsG2E6DMXEpMfUcQKclF9gmf3G3ZMhzG7IG9ji4coL0cm+FxeWxDpnw==
@@ -13685,10 +13685,10 @@ sisteransi@^1.0.0:
   resolved "https://registry.yarnpkg.com/sisteransi/-/sisteransi-1.0.0.tgz#77d9622ff909080f1c19e5f4a1df0c1b0a27b88c"
   integrity sha512-N+z4pHB4AmUv0SjveWRd6q1Nj5w62m5jodv+GD8lvmbY/83T/rpbJGZOnK5T149OldDj4Db07BSv9xY4K6NTPQ==
 
-sku@8.4.7:
-  version "8.4.7"
-  resolved "https://registry.yarnpkg.com/sku/-/sku-8.4.7.tgz#d27d2325cc7152ead7b339dd15773d0c421882a2"
-  integrity sha512-JhCenmWzo7Psexzex5l+9fYtXaQXKP5lO8IeLZD3v2aNuZOS0OypdwndBnzPughaE3OuWgiH8lTsbl1kuJnUrA==
+sku@8.4.8:
+  version "8.4.8"
+  resolved "https://registry.yarnpkg.com/sku/-/sku-8.4.8.tgz#67fd43f946dbe2f48592eb2584778b0d75dacdd1"
+  integrity sha512-Q/WNEJLMDDgOktQOuc41TQxjgTrRs1Exvcr4FhaEQTFzQeX2/KkRv5IeMZ7aYQ/Di3mK3jetoLqWWkyNIXuVfg==
   dependencies:
     "@babel/core" "^7.1.2"
     "@babel/plugin-proposal-class-properties" "^7.1.0"
@@ -13775,7 +13775,7 @@ sku@8.4.7:
     svgo "^1.0.5"
     svgo-loader "^2.1.0"
     traverse "^0.6.6"
-    treat "1.0.0-alpha.15"
+    treat "1.0.0-alpha.18"
     tree-kill "^1.2.1"
     tslint "^5.11.0"
     tslint-config-seek "^1.0.0"
@@ -14905,13 +14905,15 @@ travis-deploy-once@^5.0.9:
     url-join "^4.0.0"
     yargs "^12.0.1"
 
-treat@1.0.0-alpha.15:
-  version "1.0.0-alpha.15"
-  resolved "https://registry.yarnpkg.com/treat/-/treat-1.0.0-alpha.15.tgz#11f4b8116c0dd1f47ab5f7321186c9d6d212d45c"
-  integrity sha512-Pmvh3rD2iURj85Ht44f9uYE5sd3iIQEuU9jRbZIiJ9FGEHp7aN+RkjGVkTpHHuSgRyPT3pCq7aKq7cvRQL+3Fw==
+treat@1.0.0-alpha.18:
+  version "1.0.0-alpha.18"
+  resolved "https://registry.yarnpkg.com/treat/-/treat-1.0.0-alpha.18.tgz#88242cb1e0883fa5de65453ac7a2cccc1061b454"
+  integrity sha512-jIQSxJIM1AhTs+jzVId8f65U5MjhnpzoFPImUs2fRIZvRwmog2NrE+5tYlJjsu+BgQ/PP8fPuC5BQCmAsSXz0w==
   dependencies:
+    "@babel/core" "^7.4.4"
     "@types/lodash" "^4.14.123"
     autoprefixer "^9.5.0"
+    babel-loader "^8.0.5"
     bluebird "^3.5.4"
     css-loader "^2.1.0"
     cssnano "^4.1.10"
