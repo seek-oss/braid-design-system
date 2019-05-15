@@ -16,7 +16,6 @@ export const circle = style({
 
 export const selected = style({
   transform: 'scale(0.8)',
-  transition: 'transform .125s ease',
   selectors: {
     [`&${circle}`]: {
       transform: 'scale(0.5)',
