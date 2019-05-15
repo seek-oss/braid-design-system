@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
+import { useClassNames } from 'sku/treat';
 import { Box } from '../Box/Box';
-import styles from './Hidden.css.js';
+import * as styles from './Hidden.treat';
 
 export interface HiddenProps {
   children: ReactNode;
@@ -27,7 +28,9 @@ export const Hidden = ({
         hiddenOnMobile || hiddenOnScreen ? 'none' : display,
         hiddenOnDesktop || hiddenOnScreen ? 'none' : display,
       ]}
-      className={hiddenOnPrint ? styles.hiddenOnPrint : undefined}
+      className={
+        hiddenOnPrint ? useClassNames(styles.hiddenOnPrint) : undefined
+      }
       component={inline ? 'span' : 'div'}
     >
       {children}

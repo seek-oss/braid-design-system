@@ -1,7 +1,8 @@
 import React, { ReactNode, useContext } from 'react';
+import { useClassNames } from 'sku/treat';
 import { ColumnsContext } from '../Columns/Columns';
 import { Box } from '../Box/Box';
-import styles from './Column.css.js';
+import * as styles from './Column.treat';
 
 export interface ColumnProps {
   children: ReactNode;
@@ -13,7 +14,7 @@ export const Column = ({ children }: ColumnProps) => {
   return (
     <Box
       marginLeft={['none', index === 0 ? 'none' : 'large']}
-      className={styles.column}
+      className={useClassNames(styles.column)}
     >
       {children}
     </Box>

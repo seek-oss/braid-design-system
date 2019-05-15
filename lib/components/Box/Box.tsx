@@ -1,5 +1,5 @@
 import React from 'react';
-import classnames from 'classnames';
+import { useClassNames } from 'sku/treat';
 import { useTheme } from '../private/ThemeContext';
 import { Reset, ResetProps } from '../Reset/Reset';
 import {
@@ -76,7 +76,7 @@ export const Box = ({
 
   const ResetBox = (
     <Reset
-      className={classnames(
+      className={useClassNames(
         className,
         atoms.backgroundColor[backgroundColor!],
         atoms.boxShadow[boxShadow!],

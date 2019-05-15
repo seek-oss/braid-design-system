@@ -1,5 +1,5 @@
 import React, { ReactNode, AllHTMLAttributes, useState } from 'react';
-import classnames from 'classnames';
+import { useClassNames } from 'sku/treat';
 import getCheckboxRadioSize from '../private/getCheckboxRadioSize';
 import { px } from '../../atoms/utils/toUnit';
 import { Box } from '../Box/Box';
@@ -87,24 +87,24 @@ export const Radio = ({
             />
             <Box
               boxShadow="borderFormAccent"
-              className={classnames(styles.radio, styles.radioHover)}
+              className={useClassNames(styles.radio, styles.radioHover)}
             />
             <Box
               boxShadow="outlineFocus"
               transition="fast"
-              className={classnames(styles.radio, styles.radioFocus)}
+              className={useClassNames(styles.radio, styles.radioFocus)}
             />
             <Box
               backgroundColor="inputDisabled"
               boxShadow="borderStandard"
               transition="fast"
-              className={classnames(styles.radio, styles.radioDisabled)}
+              className={useClassNames(styles.radio, styles.radioDisabled)}
             />
             <Box
               boxShadow="borderCritical"
               transition="fast"
               style={{ opacity: tone === 'critical' ? 1 : 0 }}
-              className={classnames(styles.radio, styles.radioCritical)}
+              className={useClassNames(styles.radio, styles.radioCritical)}
             />
             <Box
               backgroundColor={disabled ? 'formAccentDisabled' : 'formAccent'}
