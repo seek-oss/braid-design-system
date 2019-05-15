@@ -110,7 +110,10 @@ export const Checkbox = ({
               boxShadow="borderStandard"
               borderRadius="standard"
               transition="fast"
-              className={useClassNames(styles.checkbox, styles.checkboxDisabled)}
+              className={useClassNames(
+                styles.checkbox,
+                styles.checkboxDisabled,
+              )}
             />
             <Box
               boxShadow="borderCritical"
@@ -119,7 +122,10 @@ export const Checkbox = ({
               style={{
                 opacity: tone === 'critical' ? 1 : 0,
               }}
-              className={useClassNames(styles.checkbox, styles.checkboxCritical)}
+              className={useClassNames(
+                styles.checkbox,
+                styles.checkboxCritical,
+              )}
             />
             <Box transition="fast" width="full" className={styles.checkboxIcon}>
               <TickIcon size="fill" fill="white" />
