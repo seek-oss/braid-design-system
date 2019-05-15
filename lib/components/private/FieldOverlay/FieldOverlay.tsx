@@ -2,7 +2,7 @@ import React from 'react';
 import { Overlay, OverlayProps } from '../Overlay/Overlay';
 import { BoxShadow } from '../../../themes/theme';
 
-type FieldOverlayVariant = 'focus' | 'hover';
+type FieldOverlayVariant = 'focus' | 'hover' | 'critical';
 export interface FieldOverlayProps
   extends Pick<OverlayProps, 'backgroundColor' | 'className'> {
   variant?: FieldOverlayVariant;
@@ -11,6 +11,7 @@ export interface FieldOverlayProps
 const boxShadowForVariant: Record<FieldOverlayVariant, BoxShadow> = {
   focus: 'outlineFocus',
   hover: 'borderFormAccent',
+  critical: 'borderCritical',
 };
 
 export const FieldOverlay = ({ variant, ...restProps }: FieldOverlayProps) => (
