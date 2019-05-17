@@ -71,11 +71,6 @@ export default (
     level3: atoms.fontSize_level3,
     standard: atoms.fontSize_standard,
   },
-  fontWeight: {
-    medium: atoms.fontWeight_medium,
-    regular: atoms.fontWeight_regular,
-    strong: atoms.fontWeight_strong,
-  },
   marginBottom: {
     none: atoms.marginBottom_none,
     large: atoms.marginBottom_large,

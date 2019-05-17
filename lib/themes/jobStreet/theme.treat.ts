@@ -11,6 +11,11 @@ export default makeTreatTheme({
   name: 'jobStreet',
   typography: {
     fontFamily: '"Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif',
+    fontWeight: {
+      regular: 400,
+      medium: 500,
+      strong: 600,
+    },
   },
   color: {
     foreground: {

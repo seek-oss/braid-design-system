@@ -1,9 +1,9 @@
 import React, { ReactNode } from 'react';
 import { useClassNames } from 'sku/treat';
 import { Box, BoxProps } from '../Box/Box';
-import { HeadingSize, Transform, FontWeight, Tokens } from '../../themes/theme';
+import { HeadingSize, Transform, Tokens } from '../../themes/theme';
 import { useTheme } from '../private/ThemeContext';
-import useTypography from '../../hooks/useTypography';
+import useTypography, { FontWeight } from '../../hooks/useTypography';
 
 type HeadingLevel = '1' | '2' | '3';
 type HeadingWeight = 'regular' | 'weak';
@@ -73,10 +73,9 @@ export const Heading = ({
       component={resolvedComponent}
       paddingBottom={level === '1' ? 'small' : 'xsmall'}
       className={useClassNames(
-        useTypography(),
+        useTypography({ weight: fontWeight }),
         theme.atoms.color.neutral,
         theme.atoms.fontSize[fontSize],
-        theme.atoms.fontWeight[fontWeight],
         theme.atoms.transform[transform],
       )}
     >

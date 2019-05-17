@@ -13,6 +13,11 @@ export default makeTreatTheme({
   typography: {
     fontFamily:
       'Roboto, "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif',
+    fontWeight: {
+      regular: 400,
+      medium: 500,
+      strong: 600,
+    },
   },
   color: {
     foreground: {

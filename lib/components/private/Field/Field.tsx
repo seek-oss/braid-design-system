@@ -65,7 +65,7 @@ export const Field = ({
           'aria-describedby': messageId,
           className: useClassNames(
             styles.field,
-            useTypography(),
+            useTypography({}),
             atoms.fontSize.standard,
             atoms.color.neutral,
           ),

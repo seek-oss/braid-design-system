@@ -19,6 +19,11 @@ export default makeTreatTheme({
   typography: {
     fontFamily:
       'Muli, -apple-system, system-ui, "Segoe UI", Roboto, "Noto Sans", Ubuntu, "Droid Sans", "Helvetica Neue", Arial, sans-serif',
+    fontWeight: {
+      regular: 400,
+      medium: 500,
+      strong: 700,
+    },
   },
   color: {
     foreground: {

@@ -83,7 +83,6 @@ export type Color =
   | 'neutral'
   | 'link';
 type FontSize = TextSize | HeadingSize;
-export type FontWeight = 'regular' | 'medium' | 'strong';
 export type Display = 'block' | 'inline' | 'none' | 'inlineBlock' | 'flex';
 export type FlexDirection = 'row' | 'column';
 type ResetTags =
@@ -195,7 +194,6 @@ export interface Atoms {
   boxShadow: Record<BoxShadow, string>;
   color: Record<Color, string>;
   fontSize: Record<FontSize, string>;
-  fontWeight: Record<FontWeight, string>;
   marginTop: Record<Spacing, string>;
   marginRight: Record<HorizontalSpacing, string>;
   marginBottom: Record<Spacing, string>;

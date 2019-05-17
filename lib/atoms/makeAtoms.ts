@@ -8,7 +8,6 @@ import { Css } from './types';
 import makeColors, { ColorParams } from './color/makeColors';
 import makeDisplayRules from './makeDisplayRules';
 import makeTransitions from './makeTransitions';
-import makeFontWeight, { FontWeightParams } from './font/makeFontWeights';
 import makeBorderRadius, { BorderRadiusParams } from './makeBorderRadius';
 import makeBackgroundColors, {
   BackgroundColorParams,
@@ -26,7 +25,6 @@ const makeAtoms = (
   colors: ColorParams,
   borderRadius: BorderRadiusParams,
   boxShadows: BoxShadowParams,
-  fontWeights: FontWeightParams,
   backgroundColor: BackgroundColorParams,
   transforms: TransformParams,
 ): Css => {
@@ -36,7 +34,6 @@ const makeAtoms = (
     makeBorderRadius(borderRadius),
     makeBoxShadows(tokens, boxShadows),
     makeColors(colors),
-    makeFontWeight(fontWeights),
     makeSizes(),
     makeMargins(tokens),
     makePadding(tokens),

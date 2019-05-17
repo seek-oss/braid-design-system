@@ -1,11 +1,11 @@
 import React, { ReactNode } from 'react';
 import { useClassNames } from 'sku/treat';
-import { Color, FontWeight, Theme } from '../../themes/theme';
+import { Color, Theme } from '../../themes/theme';
 import { Box, BoxProps } from '../Box/Box';
 import styles from './Text.css.js';
 import { useTheme } from '../private/ThemeContext';
 import { useForeground } from '../Box/ContrastContext';
-import useTypography from '../../hooks/useTypography';
+import useTypography, { FontWeight } from '../../hooks/useTypography';
 
 type TextSize = 'standard' | 'large';
 
@@ -49,10 +49,9 @@ export const Text = ({
       display="block"
       component={component}
       className={useClassNames(
-        useTypography(),
+        useTypography({ weight }),
         theme.atoms.color[useForeground(color)],
         theme.atoms.fontSize[size],
-        theme.atoms.fontWeight[weight || 'regular'],
         resolveTransformAtom(size, baseline, theme),
         {
           [styles.listItem]:
