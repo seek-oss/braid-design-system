@@ -82,7 +82,6 @@ export type Color =
   | 'formAccent'
   | 'neutral'
   | 'link';
-type FontFamily = 'text';
 type FontSize = TextSize | HeadingSize;
 export type FontWeight = 'regular' | 'medium' | 'strong';
 export type Display = 'block' | 'inline' | 'none' | 'inlineBlock' | 'flex';
@@ -195,7 +194,6 @@ export interface Atoms {
   borderRadius: Record<BorderRadius, string>;
   boxShadow: Record<BoxShadow, string>;
   color: Record<Color, string>;
-  fontFamily: Record<FontFamily, string>;
   fontSize: Record<FontSize, string>;
   fontWeight: Record<FontWeight, string>;
   marginTop: Record<Spacing, string>;

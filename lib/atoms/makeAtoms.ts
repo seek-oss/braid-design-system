@@ -9,7 +9,6 @@ import makeColors, { ColorParams } from './color/makeColors';
 import makeDisplayRules from './makeDisplayRules';
 import makeTransitions from './makeTransitions';
 import makeFontWeight, { FontWeightParams } from './font/makeFontWeights';
-import makeFontFamily, { FontFamilyParams } from './font/makeFontFamily';
 import makeBorderRadius, { BorderRadiusParams } from './makeBorderRadius';
 import makeBackgroundColors, {
   BackgroundColorParams,
@@ -25,7 +24,6 @@ import makeFontSizes from './font/makeFontSizes';
 const makeAtoms = (
   tokens: Tokens,
   colors: ColorParams,
-  fontFamily: FontFamilyParams,
   borderRadius: BorderRadiusParams,
   boxShadows: BoxShadowParams,
   fontWeights: FontWeightParams,
@@ -38,7 +36,6 @@ const makeAtoms = (
     makeBorderRadius(borderRadius),
     makeBoxShadows(tokens, boxShadows),
     makeColors(colors),
-    makeFontFamily(fontFamily),
     makeFontWeight(fontWeights),
     makeSizes(),
     makeMargins(tokens),

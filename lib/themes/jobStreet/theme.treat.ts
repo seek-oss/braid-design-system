@@ -9,6 +9,9 @@ const positive = 'green';
 export default makeTreatTheme({
   ...tokens,
   name: 'jobStreet',
+  typography: {
+    fontFamily: '"Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif',
+  },
   color: {
     foreground: {
       formAccent,

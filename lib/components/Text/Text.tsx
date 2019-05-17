@@ -5,6 +5,7 @@ import { Box, BoxProps } from '../Box/Box';
 import styles from './Text.css.js';
 import { useTheme } from '../private/ThemeContext';
 import { useForeground } from '../Box/ContrastContext';
+import useTypography from '../../hooks/useTypography';
 
 type TextSize = 'standard' | 'large';
 
@@ -45,10 +46,10 @@ export const Text = ({
 
   return (
     <Box
+      display="block"
       component={component}
       className={useClassNames(
-        styles.block,
-        theme.atoms.fontFamily.text,
+        useTypography(),
         theme.atoms.color[useForeground(color)],
         theme.atoms.fontSize[size],
         theme.atoms.fontWeight[weight || 'regular'],

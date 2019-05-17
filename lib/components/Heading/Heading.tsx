@@ -3,6 +3,7 @@ import { useClassNames } from 'sku/treat';
 import { Box, BoxProps } from '../Box/Box';
 import { HeadingSize, Transform, FontWeight, Tokens } from '../../themes/theme';
 import { useTheme } from '../private/ThemeContext';
+import useTypography from '../../hooks/useTypography';
 
 type HeadingLevel = '1' | '2' | '3';
 type HeadingWeight = 'regular' | 'weak';
@@ -72,7 +73,7 @@ export const Heading = ({
       component={resolvedComponent}
       paddingBottom={level === '1' ? 'small' : 'xsmall'}
       className={useClassNames(
-        theme.atoms.fontFamily.text,
+        useTypography(),
         theme.atoms.color.neutral,
         theme.atoms.fontSize[fontSize],
         theme.atoms.fontWeight[fontWeight],

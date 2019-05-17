@@ -50,7 +50,6 @@ export const flexDirectionDesktop_column: string;
 export const flexDirectionDesktop_row: string;
 export const flexDirection_column: string;
 export const flexDirection_row: string;
-export const fontFamily_text: string;
 export const fontSize_large: string;
 export const fontSize_level1: string;
 export const fontSize_level2: string;

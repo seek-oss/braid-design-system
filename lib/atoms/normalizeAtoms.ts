@@ -64,9 +64,6 @@ export default (
     inlineBlock: atoms.display_inlineBlock,
     none: atoms.display_none,
   },
-  fontFamily: {
-    text: atoms.fontFamily_text,
-  },
   fontSize: {
     large: atoms.fontSize_large,
     level1: atoms.fontSize_level1,

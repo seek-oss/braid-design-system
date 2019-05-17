@@ -6,6 +6,9 @@ import { getAccessibleVariant } from '../atoms/utils/a11y';
 
 interface ThemeVars extends Tokens {
   name: string;
+  typography: {
+    fontFamily: string;
+  };
   color: {
     foreground: {
       formAccent: string;

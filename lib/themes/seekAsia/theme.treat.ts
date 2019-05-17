@@ -16,6 +16,10 @@ const formAccent = blue2;
 export default makeTreatTheme({
   ...tokens,
   name: 'seekAsia',
+  typography: {
+    fontFamily:
+      'Muli, -apple-system, system-ui, "Segoe UI", Roboto, "Noto Sans", Ubuntu, "Droid Sans", "Helvetica Neue", Arial, sans-serif',
+  },
   color: {
     foreground: {
       formAccent,
