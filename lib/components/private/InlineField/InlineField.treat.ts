@@ -18,7 +18,7 @@ export const selected = style({
   transform: 'scale(0.8)',
   selectors: {
     [`&${circle}`]: {
-      transform: 'scale(0.5)',
+      transform: 'scale(0.4)',
     },
   },
 });
@@ -72,7 +72,7 @@ export const realField = style({
       transform: 'none',
     },
     [`&:checked + * > ${fakeField} > ${selected}${circle}`]: {
-      transform: 'scale(0.7)',
+      transform: 'scale(0.6)',
     },
     [`&:checked + * ${icon}`]: {
       opacity: 1,
