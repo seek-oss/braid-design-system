@@ -19,7 +19,6 @@ export const fontWeight = css(({ typography }) => ({
   },
 }));
 
-// import makeDesktopRules from '../utils/makeDesktopRules';
 interface TextDefinition {
   rows: number;
   size: number;
