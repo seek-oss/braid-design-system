@@ -11,7 +11,9 @@ import { ConfigConsumer } from '../ConfigContext';
 const { Text, Box, BulletList, Bullet, Hidden } = components;
 
 export const Components = withRouter(({ location }: RouteComponentProps) => {
-  const [isMenuOpen, setMenuOpen] = useState(true);
+  const [isMenuOpen, setMenuOpen] = useState(
+    !/^\/components\/(.*)/.test(location.pathname),
+  );
 
   const isComponentsHome = location.pathname === '/components';
   const showMenuButton = /(?<=\/components\/).*/.test(location.pathname);
@@ -49,7 +51,7 @@ export const Components = withRouter(({ location }: RouteComponentProps) => {
             <Hidden print>
               <div
                 className={`${styles.menu} ${
-                  styles.menu__isOpen ? isMenuOpen : ''
+                  isMenuOpen ? styles.menu__isOpen : ''
                 }`}
               >
                 <Box
