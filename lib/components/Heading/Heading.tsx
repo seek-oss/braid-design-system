@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import { useClassNames } from 'sku/treat';
 import { Box, BoxProps } from '../Box/Box';
-import { HeadingSize, Transform, Tokens } from '../../themes/theme';
+import { Tokens } from '../../themes/theme';
 import { useTheme } from '../private/ThemeContext';
 import useTypography, { FontWeight } from '../../hooks/useTypography';
 
@@ -9,8 +9,7 @@ type HeadingLevel = '1' | '2' | '3';
 type HeadingWeight = 'regular' | 'weak';
 
 interface HeadingOptions {
-  fontSize: HeadingSize;
-  transform: Transform;
+  fontSize: 'level1' | 'level2' | 'level3';
   fontWeight: FontWeight;
   component: Exclude<BoxProps['component'], undefined>;
 }
@@ -23,7 +22,6 @@ const resolveHeadingOptions = (
   if (level === '1') {
     return {
       fontSize: 'level1',
-      transform: 'level1Heading',
       fontWeight: tokens.heading.level1[weight],
       component: component || 'h1',
     };
@@ -31,7 +29,6 @@ const resolveHeadingOptions = (
   if (level === '2') {
     return {
       fontSize: 'level2',
-      transform: 'level2Heading',
       fontWeight: tokens.heading.level2[weight],
       component: component || 'h2',
     };
@@ -39,7 +36,6 @@ const resolveHeadingOptions = (
   if (level === '3') {
     return {
       fontSize: 'level3',
-      transform: 'level3Heading',
       fontWeight: tokens.heading.level3[weight],
       component: component || 'h3',
     };
@@ -62,7 +58,6 @@ export const Heading = ({
 }: HeadingProps) => {
   const theme = useTheme();
   const {
-    transform,
     fontSize,
     fontWeight,
     component: resolvedComponent,
@@ -73,10 +68,8 @@ export const Heading = ({
       component={resolvedComponent}
       paddingBottom={level === '1' ? 'small' : 'xsmall'}
       className={useClassNames(
-        useTypography({ weight: fontWeight }),
+        useTypography({ weight: fontWeight, size: fontSize, baseline: true }),
         theme.atoms.color.neutral,
-        theme.atoms.fontSize[fontSize],
-        theme.atoms.transform[transform],
       )}
     >
       {children}

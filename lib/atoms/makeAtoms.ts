@@ -18,7 +18,6 @@ import makeMargins from './makeMargins';
 import makeTransforms, { TransformParams } from './makeTransforms';
 import makeSizes from './makeSizes';
 import makeFlexDirections from './makeFlexDirections';
-import makeFontSizes from './font/makeFontSizes';
 
 const makeAtoms = (
   tokens: Tokens,
@@ -29,7 +28,6 @@ const makeAtoms = (
   transforms: TransformParams,
 ): Css => {
   const rules = merge(
-    makeFontSizes(tokens),
     makeBackgroundColors(backgroundColor),
     makeBorderRadius(borderRadius),
     makeBoxShadows(tokens, boxShadows),
@@ -38,7 +36,7 @@ const makeAtoms = (
     makeMargins(tokens),
     makePadding(tokens),
     makeDisplayRules(tokens),
-    makeTransforms(tokens, transforms),
+    makeTransforms(transforms),
     makeTransitions(),
     makeFlexDirections(tokens),
   );

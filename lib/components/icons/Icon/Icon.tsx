@@ -1,11 +1,10 @@
 import React, { ComponentType } from 'react';
 import { useClassNames } from 'sku/treat';
-import { TextSize } from '../../../themes/theme';
 import { Box } from '../../Box/Box';
 import * as styles from './Icon.treat';
 import { useForeground } from '../../Box/ContrastContext';
 
-type IconSize = TextSize | 'fill';
+type IconSize = 'standard' | 'large' | 'fill';
 
 export interface IconProps {
   size?: IconSize;
