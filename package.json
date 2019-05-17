@@ -66,11 +66,9 @@
   },
   "homepage": "https://github.com/seek-oss/braid-design-system#readme",
   "dependencies": {
-    "@types/classnames": "^2.2.6",
     "@types/lodash": "^4.14.123",
     "@types/react": "^16.8.8",
     "basekick": "^3.0.0",
-    "classnames": "^2.2.6",
     "lodash": "^4.17.11",
     "polished": "^3.0.3",
     "utility-types": "^3.2.1"
@@ -98,6 +96,7 @@
     "@types/react-transition-group": "^2.0.16",
     "autoprefixer": "^9.3.1",
     "babel-loader": "^8.0.4",
+    "babel-plugin-treat": "1.0.0-beta.2",
     "browserslist-config-seek": "^2.0.0",
     "commitizen": "^3.0.4",
     "commitlint-config-seek": "1.0.0",
@@ -126,14 +125,15 @@
     "react-transition-group": "^2.6.1",
     "renovate-config-seek": "0.4.0",
     "semantic-release": "^15.13.3",
-    "sku": "8.4.9",
+    "sku": "8.4.10",
     "style-loader": "^0.23.1",
     "surge": "^0.20.1",
     "travis-deploy-once": "^5.0.9",
-    "treat": "1.0.0-alpha.18"
+    "treat": "1.0.0-beta.6"
   },
   "resolutions": {
-    "treat": "1.0.0-alpha.18"
+    "babel-plugin-treat": "1.0.0-beta.2",
+    "treat": "1.0.0-beta.6"
   },
   "toolchain": {
     "node": "10.15.1",

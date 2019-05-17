@@ -1,10 +1,10 @@
 import React, { ReactNode, AllHTMLAttributes } from 'react';
-import classnames from 'classnames';
+import { useClassNames } from 'sku/treat';
 import { BackgroundColor, Color } from '../../themes/theme';
 import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';
 import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
-import styles from './Button.css.js';
+import * as styles from './Button.treat';
 
 type ButtonWeight = 'weak' | 'regular' | 'strong';
 type ButtonState = 'base' | 'hover' | 'active';
@@ -63,26 +63,29 @@ export const Button = ({
       backgroundColor={backgroundColor.base[weight]}
       transform="touchable"
       transition="touchable"
-      className={classnames(styles.root, {
+      className={useClassNames(styles.root, {
         [styles.weak]: isWeak,
       })}
       onClick={onClick}
     >
-      <FieldOverlay variant="focus" className={styles.focusOverlay} />
+      <FieldOverlay
+        variant="focus"
+        className={useClassNames(styles.focusOverlay)}
+      />
       <FieldOverlay
         backgroundColor={backgroundColor.hover[weight]}
-        className={styles.hoverOverlay}
+        className={useClassNames(styles.hoverOverlay)}
       />
       <FieldOverlay
         backgroundColor={backgroundColor.active[weight]}
-        className={styles.activeOverlay}
+        className={useClassNames(styles.activeOverlay)}
       />
       <Box
         paddingLeft="gutter"
         paddingRight="gutter"
         paddingBottom="standardTouchableText"
         paddingTop="standardTouchableText"
-        className={styles.content}
+        className={useClassNames(styles.content)}
       >
         <Text baseline={false} weight="medium" color={foregroundColor[weight]}>
           {children}

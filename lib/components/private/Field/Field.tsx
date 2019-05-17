@@ -1,6 +1,6 @@
 import React, { ReactNode, AllHTMLAttributes } from 'react';
 import { FieldTone } from '../../../themes/theme';
-import classnames from 'classnames';
+import { useClassNames } from 'sku/treat';
 import { useTheme } from '../ThemeContext';
 import { Box, BoxProps } from '../../Box/Box';
 import { FieldLabel } from '../../FieldLabel/FieldLabel';
@@ -62,7 +62,7 @@ export const Field = ({
           name,
           backgroundColor: 'input',
           'aria-describedby': messageId,
-          className: classnames(
+          className: useClassNames(
             styles.field,
             atoms.fontFamily.text,
             atoms.fontSize.standard,

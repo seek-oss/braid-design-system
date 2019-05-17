@@ -1,5 +1,5 @@
 import React from 'react';
-import classnames from 'classnames';
+import { useClassNames } from 'sku/treat';
 import { Hidden } from '../../../../lib/components';
 import styles from './MenuButton.css.js';
 
@@ -11,16 +11,16 @@ interface MenuButtonProps {
 export const MenuButton = ({ open = false, onClick }: MenuButtonProps) => (
   <Hidden print>
     <button
-      className={classnames({
+      className={useClassNames({
         [styles.root]: true,
         [styles.root_isOpen]: open,
       })}
       onClick={onClick}
       aria-label={open ? 'Close menu' : 'Open menu'}
     >
-      <div className={classnames(styles.bar, styles.bar1)} />
-      <div className={classnames(styles.bar, styles.bar2)} />
-      <div className={classnames(styles.bar, styles.bar3)} />
+      <div className={useClassNames(styles.bar, styles.bar1)} />
+      <div className={useClassNames(styles.bar, styles.bar2)} />
+      <div className={useClassNames(styles.bar, styles.bar3)} />
     </button>
   </Hidden>
 );

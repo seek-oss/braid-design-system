@@ -1,5 +1,5 @@
 import React, { ReactType, AllHTMLAttributes } from 'react';
-import classnames from 'classnames';
+import { useClassNames } from 'sku/treat';
 import { ResetTags } from '../../themes/theme';
 import { useTheme } from '../private/ThemeContext';
 
@@ -24,7 +24,7 @@ export const Reset = ({
     : '';
 
   return React.createElement(component, {
-    className: classnames(className, resetClass),
+    className: useClassNames(className, resetClass),
     ...restProps,
   });
 };

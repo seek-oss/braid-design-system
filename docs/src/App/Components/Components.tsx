@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { withRouter, Route, RouteComponentProps } from 'react-router';
-import classnames from 'classnames';
 import * as components from '../../../../lib/components';
 import { Logo } from '../Logo/Logo';
 import { ComponentRoute } from './ComponentRoute';
@@ -49,10 +48,9 @@ export const Components = withRouter(({ location }: RouteComponentProps) => {
           >
             <Hidden print>
               <div
-                className={classnames({
-                  [styles.menu]: true,
-                  [styles.menu__isOpen]: isMenuOpen,
-                })}
+                className={`${styles.menu} ${
+                  styles.menu__isOpen ? isMenuOpen : ''
+                }`}
               >
                 <Box
                   paddingBottom="xlarge"

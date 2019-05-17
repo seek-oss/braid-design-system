@@ -1,8 +1,8 @@
 import React, { ReactNode, AllHTMLAttributes } from 'react';
-import classnames from 'classnames';
+import { useClassNames } from 'sku/treat';
 import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';
-import styles from './TextArea.css.js';
+import * as styles from './TextArea.treat';
 import { useTheme } from '../private/ThemeContext';
 import { Field, FieldProps } from '../private/Field/Field';
 
@@ -88,7 +88,7 @@ export const TextArea = ({
           style={{
             minHeight: tokens.rowHeight * 15,
           }}
-          className={classnames(styles.verticalResizeOnly, className)}
+          className={useClassNames(styles.verticalResizeOnly, className)}
           {...fieldProps}
         />
       )}
