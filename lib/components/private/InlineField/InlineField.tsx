@@ -93,7 +93,7 @@ export const InlineField = ({
             className={useClassNames(styles.focusOverlay, radioStyles)}
           />
           <FieldOverlay
-            variant={'hover'}
+            variant="hover"
             borderRadius={fieldBorderRadius}
             className={useClassNames(styles.hoverOverlay, radioStyles)}
           />
@@ -119,6 +119,7 @@ export const InlineField = ({
         <Box
           display="none"
           paddingLeft="small"
+          paddingBottom="small"
           className={useClassNames(styles.children)}
         >
           {children}
