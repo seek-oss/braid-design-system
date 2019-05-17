@@ -4,7 +4,7 @@ import { BoxShadow } from '../../../themes/theme';
 
 type FieldOverlayVariant = 'focus' | 'hover' | 'critical';
 export interface FieldOverlayProps
-  extends Pick<OverlayProps, 'backgroundColor' | 'className'> {
+  extends Pick<OverlayProps, 'backgroundColor' | 'borderRadius' | 'className'> {
   variant?: FieldOverlayVariant;
 }
 

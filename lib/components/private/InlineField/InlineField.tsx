@@ -45,6 +45,7 @@ export const InlineField = ({
   const radioStyles = {
     [styles.circle]: type === 'radio',
   };
+  const fieldBorderRadius = isCheckbox ? 'standard' : undefined;
 
   return (
     <Box>
@@ -68,7 +69,7 @@ export const InlineField = ({
           )}
           marginRight="small"
           backgroundColor={disabled ? 'inputDisabled' : 'input'}
-          borderRadius={isCheckbox ? 'standard' : undefined}
+          borderRadius={fieldBorderRadius}
           boxShadow={
             tone === 'critical' && !disabled
               ? 'borderCritical'
@@ -76,8 +77,9 @@ export const InlineField = ({
           }
         >
           <FieldOverlay
-            backgroundColor={disabled ? 'formAccentDisabled' : 'formAccent'}
             variant={tone === 'critical' && isCheckbox ? tone : undefined}
+            backgroundColor={disabled ? 'formAccentDisabled' : 'formAccent'}
+            borderRadius={fieldBorderRadius}
             className={useClassNames(styles.selected, radioStyles)}
           />
           {isCheckbox ? (
@@ -87,10 +89,12 @@ export const InlineField = ({
           ) : null}
           <FieldOverlay
             variant="focus"
+            borderRadius={fieldBorderRadius}
             className={useClassNames(styles.focusOverlay, radioStyles)}
           />
           <FieldOverlay
-            variant={tone === 'critical' ? tone : 'hover'}
+            variant={'hover'}
+            borderRadius={fieldBorderRadius}
             className={useClassNames(styles.hoverOverlay, radioStyles)}
           />
         </Box>
