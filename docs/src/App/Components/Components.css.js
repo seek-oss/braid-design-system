@@ -23,7 +23,6 @@ export default {
     paddingTop: headerHeight,
   },
   '.menu': {
-    background: 'white',
     position: 'fixed',
     zIndex: 2,
     top: headerHeight,
@@ -33,6 +32,7 @@ export default {
     overflow: 'auto',
     transition: 'opacity .2s ease, transform .2s ease',
     '@media screen and (max-width: 739px)': {
+      background: 'white',
       opacity: 0,
       transform: 'translateY(-5px)',
       pointerEvents: 'none',
