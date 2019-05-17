@@ -1,7 +1,7 @@
 import React from 'react';
-import classnames from 'classnames';
+import { useClassNames } from 'sku/treat';
 import { Box, BoxProps } from '../../Box/Box';
-import styles from './Overlay.css.js';
+import * as styles from './Overlay.treat';
 
 export type OverlayProps = Partial<
   Pick<
@@ -26,6 +26,6 @@ export const Overlay = ({
     borderRadius={borderRadius}
     boxShadow={boxShadow}
     transition={transition}
-    className={classnames(styles.root, className)}
+    className={useClassNames(styles.root, className)}
   />
 );

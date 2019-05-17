@@ -1,21 +1,15 @@
 import { style, css } from 'sku/treat';
 import mapTokensToStyleProperty from '../../../utils/mapTokensToStyleProperty';
 
-export const inline = style(
-  {
-    verticalAlign: 'middle',
-    position: 'relative',
-    top: '-0.105em', // Arbitrary magic number, to vertically align to text
-  },
-  'inline',
-);
+export const inline = style({
+  verticalAlign: 'middle',
+  position: 'relative',
+  top: '-0.105em', // Arbitrary magic number, to vertically align to text
+});
 
-export const fullHeight = style(
-  {
-    height: '100%',
-  },
-  'fullHeight',
-);
+export const fullHeight = style({
+  height: '100%',
+});
 
 const makeSizeRules = (size: number) => ({ width: size, height: size });
 
@@ -33,7 +27,7 @@ export const inlineSizes = css(theme => {
       makeSizeRules(large.desktop.size),
     ),
   };
-}, 'inlineSizes');
+});
 
 export const blockSizes = css(theme => {
   const { responsiveStyles, rows } = theme.utils;
@@ -49,12 +43,9 @@ export const blockSizes = css(theme => {
       makeSizeRules(rows(large.desktop.rows)),
     ),
   };
-}, 'blockSizes');
+});
 
-export const fill = css(
-  ({ color }) => ({
-    ...mapTokensToStyleProperty(color.foreground, 'fill'),
-    currentColor: { fill: 'currentColor' },
-  }),
-  'fill',
-);
+export const fill = css(({ color }) => ({
+  ...mapTokensToStyleProperty(color.foreground, 'fill'),
+  currentColor: { fill: 'currentColor' },
+}));

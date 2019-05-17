@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import classnames from 'classnames';
+import { useClassNames } from 'sku/treat';
 import { Color, FontWeight, Theme } from '../../themes/theme';
 import { Box, BoxProps } from '../Box/Box';
 import styles from './Text.css.js';
@@ -46,7 +46,7 @@ export const Text = ({
   return (
     <Box
       component={component}
-      className={classnames(
+      className={useClassNames(
         styles.block,
         theme.atoms.fontFamily.text,
         theme.atoms.color[useForeground(color)],

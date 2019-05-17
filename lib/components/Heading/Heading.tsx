@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import classnames from 'classnames';
+import { useClassNames } from 'sku/treat';
 import { Box, BoxProps } from '../Box/Box';
 import { HeadingSize, Transform, FontWeight, Tokens } from '../../themes/theme';
 import { useTheme } from '../private/ThemeContext';
@@ -71,7 +71,7 @@ export const Heading = ({
     <Box
       component={resolvedComponent}
       paddingBottom={level === '1' ? 'small' : 'xsmall'}
-      className={classnames(
+      className={useClassNames(
         theme.atoms.fontFamily.text,
         theme.atoms.color.neutral,
         theme.atoms.fontSize[fontSize],

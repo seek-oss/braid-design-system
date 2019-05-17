@@ -4,10 +4,10 @@ import React, {
   Children,
   isValidElement,
 } from 'react';
-import classnames from 'classnames';
+import { useClassNames } from 'sku/treat';
 import { Box } from '../Box/Box';
 import { Field, FieldProps } from '../private/Field/Field';
-import styles from './Dropdown.css.js';
+import * as styles from './Dropdown.treat';
 import { ChevronIcon } from '../icons/ChevronIcon/ChevronIcon';
 import { useTheme } from '../private/ThemeContext';
 import { px } from '../../atoms/utils/toUnit';
@@ -94,7 +94,7 @@ export const Dropdown = ({
             style={{
               paddingRight: px(chevronPaddings + chevronWidth),
             }}
-            className={classnames(
+            className={useClassNames(
               className,
               atoms.color[getColor(placeholder, value)],
             )}
@@ -109,7 +109,7 @@ export const Dropdown = ({
             paddingLeft="small"
             paddingRight="small"
             display="flex"
-            className={styles.chevron}
+            className={useClassNames(styles.chevron)}
             style={{
               height: px(tokens.touchableRows * tokens.rowHeight),
             }}

@@ -1,5 +1,5 @@
 import React, { ReactNode, AllHTMLAttributes, useState } from 'react';
-import classnames from 'classnames';
+import { useClassNames } from 'sku/treat';
 import getCheckboxRadioSize from '../private/getCheckboxRadioSize';
 import { px } from '../../atoms/utils/toUnit';
 import { Box } from '../Box/Box';
@@ -91,26 +91,29 @@ export const Checkbox = ({
             <Box
               boxShadow="borderFormAccent"
               borderRadius="standard"
-              className={classnames(styles.checkbox, styles.checkboxHover)}
+              className={useClassNames(styles.checkbox, styles.checkboxHover)}
             />
             <Box
               boxShadow="outlineFocus"
               borderRadius="standard"
               transition="fast"
-              className={classnames(styles.checkbox, styles.checkboxFocus)}
+              className={useClassNames(styles.checkbox, styles.checkboxFocus)}
             />
             <Box
               backgroundColor="formAccent"
               borderRadius="standard"
               transition="fast"
-              className={classnames(styles.checkbox, styles.checkboxChecked)}
+              className={useClassNames(styles.checkbox, styles.checkboxChecked)}
             />
             <Box
               backgroundColor="inputDisabled"
               boxShadow="borderStandard"
               borderRadius="standard"
               transition="fast"
-              className={classnames(styles.checkbox, styles.checkboxDisabled)}
+              className={useClassNames(
+                styles.checkbox,
+                styles.checkboxDisabled,
+              )}
             />
             <Box
               boxShadow="borderCritical"
@@ -119,7 +122,10 @@ export const Checkbox = ({
               style={{
                 opacity: tone === 'critical' ? 1 : 0,
               }}
-              className={classnames(styles.checkbox, styles.checkboxCritical)}
+              className={useClassNames(
+                styles.checkbox,
+                styles.checkboxCritical,
+              )}
             />
             <Box transition="fast" width="full" className={styles.checkboxIcon}>
               <TickIcon size="fill" fill="white" />

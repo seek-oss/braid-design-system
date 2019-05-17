@@ -1,9 +1,10 @@
 import React, { ReactNode } from 'react';
+import { useClassNames } from 'sku/treat';
 import { Box } from '../Box/Box';
 import { Secondary } from '../Secondary/Secondary';
 import { Strong } from '../Strong/Strong';
 import { Text } from '../Text/Text';
-import styles from './FieldLabel.css.js';
+import * as styles from './FieldLabel.treat';
 
 export interface FieldLabelProps {
   id: string;
@@ -26,7 +27,11 @@ export const FieldLabel = ({
 
   return (
     <Box paddingBottom="xsmall">
-      <Box component="span" display="flex" className={styles.spaceBetween}>
+      <Box
+        component="span"
+        display="flex"
+        className={useClassNames(styles.spaceBetween)}
+      >
         <label htmlFor={id}>
           <Text component="span">
             <Strong>{label}</Strong>

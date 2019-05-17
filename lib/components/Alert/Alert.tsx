@@ -1,10 +1,11 @@
 import React, { ReactNode } from 'react';
+import { useClassNames } from 'sku/treat';
 import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';
 import { InfoIcon } from '../icons/InfoIcon/InfoIcon';
 import { ErrorIcon } from '../icons/ErrorIcon/ErrorIcon';
 import { TickCircleIcon } from '../icons/TickCircleIcon/TickCircleIcon';
-import styles from './Alert.css.js';
+import * as styles from './Alert.treat';
 
 type Tone = 'info' | 'critical' | 'positive';
 type AlertWeight = 'strong' | 'regular';
@@ -58,7 +59,11 @@ export const Alert = ({
       display="flex"
     >
       {Icon ? (
-        <Box paddingRight="small" display="flex" className={styles.icon}>
+        <Box
+          paddingRight="small"
+          display="flex"
+          className={useClassNames(styles.icon)}
+        >
           <Icon fill={color} />
         </Box>
       ) : null}
