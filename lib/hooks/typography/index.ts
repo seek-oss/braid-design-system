@@ -1,5 +1,5 @@
 import { useClassNames } from 'sku/treat';
-import { fontFamily, fontWeight, heading, text } from './index.treat';
+import { fontFamily, fontWeight, heading, text } from './typography.treat';
 import { useTheme } from '../../components/private/ThemeContext';
 
 export type TextWeight = 'regular' | 'medium' | 'strong';

@@ -5,7 +5,7 @@ import { Box, BoxProps } from '../Box/Box';
 import * as styles from './Text.treat';
 import { useTheme } from '../private/ThemeContext';
 import { useForeground } from '../Box/ContrastContext';
-import { useText, TextWeight } from '../../hooks/useTypography';
+import { useText, TextWeight } from '../../hooks/typography';
 
 type TextSize = 'standard' | 'large';
 

@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { useWeight } from '../../hooks/useTypography';
+import { useWeight } from '../../hooks/typography';
 
 export interface StrongProps {
   children: ReactNode;

@@ -6,7 +6,7 @@ import {
   useHeading,
   HeadingLevel,
   HeadingWeight,
-} from '../../hooks/useTypography';
+} from '../../hooks/typography';
 
 /* tslint:disable-next-line no-object-literal-type-assertion */
 const resolveDefaultComponent = {

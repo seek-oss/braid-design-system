@@ -3,7 +3,7 @@ import { createTheme } from 'sku/treat';
 import { Tokens } from './theme';
 import makeUtils from './makeUtils';
 import { getAccessibleVariant } from '../atoms/utils/a11y';
-import { TextWeight } from '../hooks/useTypography';
+import { TextWeight } from '../hooks/typography';
 
 interface ThemeVars extends Tokens {
   name: string;
