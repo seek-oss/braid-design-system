@@ -10,7 +10,6 @@ import { Field, FieldProps } from '../private/Field/Field';
 import * as styles from './Dropdown.treat';
 import { ChevronIcon } from '../icons/ChevronIcon/ChevronIcon';
 import { useTheme } from '../private/ThemeContext';
-import { px } from '../../atoms/utils/toUnit';
 import { Color } from '../../themes/theme';
 
 type ValidDropdownChildren = AllHTMLAttributes<
