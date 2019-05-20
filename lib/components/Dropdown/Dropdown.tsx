@@ -52,9 +52,7 @@ export const Dropdown = ({
   onFocus,
   placeholder,
 }: DropdownProps) => {
-  const { tokens, atoms } = useTheme();
-  const chevronPaddings = tokens.columnSpacing.small * tokens.columnWidth * 2;
-  const chevronWidth = tokens.text.standard.mobile.size;
+  const { atoms } = useTheme();
 
   Children.forEach(children, child => {
     if (!(isValidElement(child) && /^(option|optgroup)$/.test(child.type))) {
@@ -91,10 +89,8 @@ export const Dropdown = ({
             onBlur={onBlur}
             onFocus={onFocus}
             placeholder={placeholder}
-            style={{
-              paddingRight: px(chevronPaddings + chevronWidth),
-            }}
             className={useClassNames(
+              styles.field,
               className,
               atoms.color[getColor(placeholder, value)],
             )}
@@ -110,9 +106,6 @@ export const Dropdown = ({
             paddingRight="small"
             display="flex"
             className={useClassNames(styles.chevron)}
-            style={{
-              height: px(tokens.touchableRows * tokens.rowHeight),
-            }}
           >
             <ChevronIcon inline />
           </Box>
