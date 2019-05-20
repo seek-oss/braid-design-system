@@ -37,6 +37,7 @@ const renderCount = ({
 export const TextArea = ({
   id,
   name,
+  disabled,
   label,
   secondaryLabel,
   tertiaryLabel,
@@ -56,6 +57,7 @@ export const TextArea = ({
     <Field
       id={id}
       name={name}
+      disabled={disabled}
       label={label}
       secondaryLabel={secondaryLabel}
       tertiaryLabel={tertiaryLabel}
@@ -70,15 +72,8 @@ export const TextArea = ({
       {({ className, ...fieldProps }) => (
         <Box
           component="textarea"
-          backgroundColor="input"
-          boxShadow={tone === 'critical' ? 'borderCritical' : 'borderStandard'}
-          display="block"
-          width="full"
-          paddingLeft="small"
-          paddingRight="small"
           paddingTop="standardTouchableText"
           paddingBottom="standardTouchableText"
-          borderRadius="standard"
           rows={3}
           value={value}
           onChange={onChange}

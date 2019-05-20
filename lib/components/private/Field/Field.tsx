@@ -6,12 +6,13 @@ import { Box, BoxProps } from '../../Box/Box';
 import { FieldLabel } from '../../FieldLabel/FieldLabel';
 import { FieldMessage } from '../../FieldMessage/FieldMessage';
 import { FieldOverlay } from '../FieldOverlay/FieldOverlay';
-import styles from './Field.css.js';
+import * as styles from './Field.treat';
 
 type FormElementProps = AllHTMLAttributes<HTMLFormElement>;
 export interface FieldProps {
   id: NonNullable<FormElementProps['id']>;
   name?: FormElementProps['name'];
+  disabled?: FormElementProps['disabled'];
   label?: string;
   secondaryLabel?: ReactNode;
   tertiaryLabel?: ReactNode;
@@ -21,9 +22,14 @@ export interface FieldProps {
   tone?: FieldTone;
 }
 
-type PassthroughProps = 'id' | 'name';
+type PassthroughProps = 'id' | 'name' | 'disabled';
 interface FieldRenderProps extends Pick<FieldProps, PassthroughProps> {
   backgroundColor: BoxProps['backgroundColor'];
+  boxShadow: BoxProps['boxShadow'];
+  borderRadius: BoxProps['borderRadius'];
+  width: BoxProps['width'];
+  paddingLeft: BoxProps['paddingLeft'];
+  paddingRight: BoxProps['paddingRight'];
   'aria-describedby': string;
   className: string;
 }
@@ -35,6 +41,7 @@ interface InternalFieldProps extends FieldProps {
 export const Field = ({
   id,
   name,
+  disabled = false,
   label,
   secondaryLabel,
   tertiaryLabel,
@@ -60,8 +67,17 @@ export const Field = ({
         {children({
           id,
           name,
-          backgroundColor: 'input',
+          backgroundColor: disabled ? 'inputDisabled' : 'input',
+          boxShadow:
+            tone === 'critical' && !disabled
+              ? 'borderCritical'
+              : 'borderStandard',
+          width: 'full',
+          paddingLeft: 'small',
+          paddingRight: 'small',
+          borderRadius: 'standard',
           'aria-describedby': messageId,
+          disabled,
           className: useClassNames(
             styles.field,
             atoms.fontFamily.text,
@@ -74,8 +90,8 @@ export const Field = ({
       </Box>
       <FieldMessage
         id={messageId}
-        tone={tone}
-        message={message}
+        tone={disabled ? 'neutral' : tone}
+        message={disabled ? '' : message}
         secondaryMessage={secondaryMessage}
       />
     </Box>
