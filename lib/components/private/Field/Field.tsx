@@ -7,7 +7,7 @@ import { FieldLabel } from '../../FieldLabel/FieldLabel';
 import { FieldMessage } from '../../FieldMessage/FieldMessage';
 import { FieldOverlay } from '../FieldOverlay/FieldOverlay';
 import styles from './Field.css.js';
-import useTypography from '../../../hooks/useTypography';
+import { useText } from '../../../hooks/useTypography';
 
 type FormElementProps = AllHTMLAttributes<HTMLFormElement>;
 export interface FieldProps {
@@ -65,7 +65,7 @@ export const Field = ({
           'aria-describedby': messageId,
           className: useClassNames(
             styles.field,
-            useTypography({ size: 'standard', baseline: false }),
+            useText({ size: 'standard', baseline: false }),
             atoms.color.neutral,
           ),
         })}

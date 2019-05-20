@@ -5,7 +5,7 @@ import { Box, BoxProps } from '../Box/Box';
 import * as styles from './Text.treat';
 import { useTheme } from '../private/ThemeContext';
 import { useForeground } from '../Box/ContrastContext';
-import useTypography, { FontWeight } from '../../hooks/useTypography';
+import { useText, TextWeight } from '../../hooks/useTypography';
 
 type TextSize = 'standard' | 'large';
 
@@ -13,13 +13,13 @@ export interface TextProps extends Pick<BoxProps, 'component'> {
   children?: ReactNode;
   size?: TextSize;
   color?: Color;
-  weight?: FontWeight;
+  weight?: TextWeight;
   baseline?: boolean;
 }
 
 export const Text = ({
   component,
-  size = 'standard',
+  size,
   color = 'neutral',
   weight,
   baseline = true,
@@ -32,7 +32,7 @@ export const Text = ({
       display="block"
       component={component}
       className={useClassNames(
-        useTypography({ weight, size, baseline }),
+        useText({ weight, size, baseline }),
         theme.atoms.color[useForeground(color)],
         {
           [styles.listItem]:

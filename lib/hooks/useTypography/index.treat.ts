@@ -37,7 +37,7 @@ const alignTextToGrid = (
     descenderHeightScale,
   });
 
-const makeFontSizeRules = (
+const makeTypographyRules = (
   textDefinition: Record<Breakpoint, TextDefinition>,
   { rowHeight, descenderHeightScale, utils }: Theme,
 ) => {
@@ -53,56 +53,35 @@ const makeFontSizeRules = (
     descenderHeightScale,
   );
 
-  return utils.responsiveStyles(
-    {
-      fontSize: mobile.fontSize,
-      lineHeight: mobile.lineHeight,
-    },
-    {
-      fontSize: desktop.fontSize,
-      lineHeight: desktop.lineHeight,
-    },
-  );
+  return {
+    fontSize: utils.responsiveStyles(
+      {
+        fontSize: mobile.fontSize,
+        lineHeight: mobile.lineHeight,
+      },
+      {
+        fontSize: desktop.fontSize,
+        lineHeight: desktop.lineHeight,
+      },
+    ),
+    transform: utils.responsiveStyles(
+      {
+        transform: mobile.transform,
+      },
+      {
+        transform: desktop.transform,
+      },
+    ),
+  };
 };
 
-const makeTransformRules = (
-  textDefinition: Record<Breakpoint, TextDefinition>,
-  { rowHeight, descenderHeightScale, utils }: Theme,
-) => {
-  const mobile = alignTextToGrid(
-    textDefinition.mobile,
-    rowHeight,
-    descenderHeightScale,
-  );
-
-  const desktop = alignTextToGrid(
-    textDefinition.desktop,
-    rowHeight,
-    descenderHeightScale,
-  );
-
-  return utils.responsiveStyles(
-    {
-      transform: mobile.transform,
-    },
-    {
-      transform: desktop.transform,
-    },
-  );
+export const text = {
+  standard: css(theme => makeTypographyRules(theme.text.standard, theme)),
+  large: css(theme => makeTypographyRules(theme.text.large, theme)),
 };
 
-export const fontSize = css(theme => ({
-  standard: makeFontSizeRules(theme.text.standard, theme),
-  large: makeFontSizeRules(theme.text.large, theme),
-  level1: makeFontSizeRules(theme.heading.level1, theme),
-  level2: makeFontSizeRules(theme.heading.level2, theme),
-  level3: makeFontSizeRules(theme.heading.level3, theme),
-}));
-
-export const transform = css(theme => ({
-  standard: makeTransformRules(theme.text.standard, theme),
-  large: makeTransformRules(theme.text.large, theme),
-  level1: makeTransformRules(theme.heading.level1, theme),
-  level2: makeTransformRules(theme.heading.level2, theme),
-  level3: makeTransformRules(theme.heading.level3, theme),
-}));
+export const heading = {
+  '1': css(theme => makeTypographyRules(theme.heading.level1, theme)),
+  '2': css(theme => makeTypographyRules(theme.heading.level2, theme)),
+  '3': css(theme => makeTypographyRules(theme.heading.level3, theme)),
+};

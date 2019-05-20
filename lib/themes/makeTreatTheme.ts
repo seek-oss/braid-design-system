@@ -3,13 +3,13 @@ import { createTheme } from 'sku/treat';
 import { Tokens } from './theme';
 import makeUtils from './makeUtils';
 import { getAccessibleVariant } from '../atoms/utils/a11y';
-import { FontWeight } from '../hooks/useTypography';
+import { TextWeight } from '../hooks/useTypography';
 
 interface ThemeVars extends Tokens {
   name: string;
   typography: {
     fontFamily: string;
-    fontWeight: Record<FontWeight, number>;
+    fontWeight: Record<TextWeight, number>;
   };
   color: {
     foreground: {

@@ -5,6 +5,7 @@ interface TextDefinition {
   size: number;
   rows: number;
 }
+type FontWeight = 'regular' | 'medium' | 'strong';
 type Breakpoint = 'mobile' | 'desktop';
 type ResponsiveHeading = Record<Breakpoint, TextDefinition> &
   Record<'regular' | 'weak', FontWeight>;
