@@ -26,17 +26,17 @@ export const Text = ({
   children,
 }: TextProps) => {
   const theme = useTheme();
+  const isListItem = typeof component === 'string' && /^li$/i.test(component);
 
   return (
     <Box
-      display="block"
+      display={!isListItem ? 'block' : undefined}
       component={component}
       className={useClassNames(
         useText({ weight, size, baseline }),
         theme.atoms.color[useForeground(color)],
         {
-          [styles.listItem]:
-            typeof component === 'string' && /^li$/i.test(component),
+          [styles.listItem]: isListItem,
         },
       )}
     >
