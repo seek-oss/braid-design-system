@@ -3,9 +3,14 @@ import { createTheme } from 'sku/treat';
 import { Tokens } from './theme';
 import makeUtils from './makeUtils';
 import { getAccessibleVariant } from '../atoms/utils/a11y';
+import { TextWeight } from '../hooks/typography';
 
 interface ThemeVars extends Tokens {
   name: string;
+  typography: {
+    fontFamily: string;
+    fontWeight: Record<TextWeight, number>;
+  };
   color: {
     foreground: {
       formAccent: string;
