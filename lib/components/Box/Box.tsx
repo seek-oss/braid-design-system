@@ -16,18 +16,20 @@ import {
   Width,
 } from '../../themes/theme';
 import { ContrastProvider } from './ContrastContext';
+import * as styles from './Box.treat';
 
-function getResponsiveClasses<AtomName extends string>(
-  atoms: Record<AtomName, string>,
-  desktopAtoms: Record<AtomName, string>,
-  propValue: ResponsiveProp<AtomName>,
+function getResponsiveClasses<PropName extends string>(
+  mobileClasses: Record<PropName, string>,
+  desktopClasses: Record<PropName, string>,
+  propName: ResponsiveProp<PropName>,
 ) {
-  if (typeof propValue === 'string') {
-    return atoms[propValue!];
-  } else if (propValue instanceof Array) {
-    return propValue[0] !== propValue[1]
-      ? `${atoms[propValue[0]!] || ''} ${desktopAtoms[propValue[1]!] || ''}`
-      : atoms[propValue[0]!];
+  if (typeof propName === 'string') {
+    return mobileClasses[propName!];
+  } else if (propName instanceof Array) {
+    const [mobileProp, desktopProp] = propName;
+    return mobileProp !== desktopProp
+      ? [mobileClasses[mobileProp!], desktopClasses[desktopProp!]]
+      : mobileClasses[mobileProp!];
   }
 }
 
@@ -87,26 +89,26 @@ export const Box = ({
         atoms.width[width!],
         marginTop &&
           getResponsiveClasses(
-            atoms.marginTop,
-            atoms.marginTopDesktop,
+            styles.marginTop,
+            styles.marginTopDesktop,
             marginTop,
           ),
         marginRight &&
           getResponsiveClasses(
-            atoms.marginRight,
-            atoms.marginRightDesktop,
+            styles.marginRight,
+            styles.marginRightDesktop,
             marginRight,
           ),
         marginBottom &&
           getResponsiveClasses(
-            atoms.marginBottom,
-            atoms.marginBottomDesktop,
+            styles.marginBottom,
+            styles.marginBottomDesktop,
             marginBottom,
           ),
         marginLeft &&
           getResponsiveClasses(
-            atoms.marginLeft,
-            atoms.marginLeftDesktop,
+            styles.marginLeft,
+            styles.marginLeftDesktop,
             marginLeft,
           ),
         paddingTop &&
