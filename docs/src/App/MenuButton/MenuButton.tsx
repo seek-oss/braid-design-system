@@ -1,7 +1,7 @@
 import React from 'react';
 import { useClassNames } from 'sku/treat';
 import { Hidden } from '../../../../lib/components';
-import styles from './MenuButton.css.js';
+import * as styles from './MenuButton.treat';
 
 interface MenuButtonProps {
   open?: boolean;
@@ -13,7 +13,7 @@ export const MenuButton = ({ open = false, onClick }: MenuButtonProps) => (
     <button
       className={useClassNames({
         [styles.root]: true,
-        [styles.root_isOpen]: open,
+        [styles.isOpen]: open,
       })}
       onClick={onClick}
       aria-label={open ? 'Close menu' : 'Open menu'}

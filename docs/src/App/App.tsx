@@ -7,7 +7,7 @@ import { CSSTransition } from 'react-transition-group';
 import { ThemeProvider } from '../../../lib/components';
 import { Home } from './Home/Home';
 import { Components } from './Components/Components';
-import styles from './App.css.js';
+import * as styles from './App.treat';
 
 const routes = [
   { path: '/', name: 'Home', exact: true, Component: Home },
