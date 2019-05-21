@@ -10,7 +10,6 @@ import { Field, FieldProps } from '../private/Field/Field';
 import * as styles from './Dropdown.treat';
 import { ChevronIcon } from '../icons/ChevronIcon/ChevronIcon';
 import { useTheme } from '../private/ThemeContext';
-import { px } from '../../atoms/utils/toUnit';
 import { Color } from '../../themes/theme';
 
 type ValidDropdownChildren = AllHTMLAttributes<
@@ -52,9 +51,7 @@ export const Dropdown = ({
   onFocus,
   placeholder,
 }: DropdownProps) => {
-  const { tokens, atoms } = useTheme();
-  const chevronPaddings = tokens.columnSpacing.small * tokens.columnWidth * 2;
-  const chevronWidth = tokens.text.standard.mobile.size;
+  const { atoms } = useTheme();
 
   Children.forEach(children, child => {
     if (!(isValidElement(child) && /^(option|optgroup)$/.test(child.type))) {
@@ -91,10 +88,8 @@ export const Dropdown = ({
             onBlur={onBlur}
             onFocus={onFocus}
             placeholder={placeholder}
-            style={{
-              paddingRight: px(chevronPaddings + chevronWidth),
-            }}
             className={useClassNames(
+              styles.field,
               className,
               atoms.color[getColor(placeholder, value)],
             )}
@@ -110,9 +105,6 @@ export const Dropdown = ({
             paddingRight="small"
             display="flex"
             className={useClassNames(styles.chevron)}
-            style={{
-              height: px(tokens.touchableRows * tokens.rowHeight),
-            }}
           >
             <ChevronIcon inline />
           </Box>
