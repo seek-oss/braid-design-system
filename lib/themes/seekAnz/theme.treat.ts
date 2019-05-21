@@ -16,7 +16,7 @@ export default makeTreatTheme({
     fontWeight: {
       regular: 400,
       medium: 500,
-      strong: 600,
+      strong: 700,
     },
   },
   color: {
