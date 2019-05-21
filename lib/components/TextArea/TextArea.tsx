@@ -3,7 +3,6 @@ import { useClassNames } from 'sku/treat';
 import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';
 import * as styles from './TextArea.treat';
-import { useTheme } from '../private/ThemeContext';
 import { Field, FieldProps } from '../private/Field/Field';
 
 type NativeTextAreaProps = AllHTMLAttributes<HTMLTextAreaElement>;
@@ -50,43 +49,36 @@ export const TextArea = ({
   onFocus,
   placeholder,
   limit,
-}: TextAreaProps) => {
-  const { tokens } = useTheme();
-
-  return (
-    <Field
-      id={id}
-      name={name}
-      disabled={disabled}
-      label={label}
-      secondaryLabel={secondaryLabel}
-      tertiaryLabel={tertiaryLabel}
-      description={description}
-      tone={tone}
-      message={message}
-      secondaryMessage={renderCount({
-        limit,
-        value,
-      })}
-    >
-      {({ className, ...fieldProps }) => (
-        <Box
-          component="textarea"
-          paddingTop="standardTouchableText"
-          paddingBottom="standardTouchableText"
-          rows={3}
-          value={value}
-          onChange={onChange}
-          onBlur={onBlur}
-          onFocus={onFocus}
-          placeholder={placeholder}
-          style={{
-            minHeight: tokens.rowHeight * 15,
-          }}
-          className={useClassNames(styles.verticalResizeOnly, className)}
-          {...fieldProps}
-        />
-      )}
-    </Field>
-  );
-};
+}: TextAreaProps) => (
+  <Field
+    id={id}
+    name={name}
+    disabled={disabled}
+    label={label}
+    secondaryLabel={secondaryLabel}
+    tertiaryLabel={tertiaryLabel}
+    description={description}
+    tone={tone}
+    message={message}
+    secondaryMessage={renderCount({
+      limit,
+      value,
+    })}
+  >
+    {({ className, ...fieldProps }) => (
+      <Box
+        component="textarea"
+        paddingTop="standardTouchableText"
+        paddingBottom="standardTouchableText"
+        rows={3}
+        value={value}
+        onChange={onChange}
+        onBlur={onBlur}
+        onFocus={onFocus}
+        placeholder={placeholder}
+        className={useClassNames(styles.field, className)}
+        {...fieldProps}
+      />
+    )}
+  </Field>
+);

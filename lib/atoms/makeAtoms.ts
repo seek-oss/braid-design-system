@@ -8,8 +8,6 @@ import { Css } from './types';
 import makeColors, { ColorParams } from './color/makeColors';
 import makeDisplayRules from './makeDisplayRules';
 import makeTransitions from './makeTransitions';
-import makeFontWeight, { FontWeightParams } from './font/makeFontWeights';
-import makeFontFamily, { FontFamilyParams } from './font/makeFontFamily';
 import makeBorderRadius, { BorderRadiusParams } from './makeBorderRadius';
 import makeBackgroundColors, {
   BackgroundColorParams,
@@ -20,31 +18,25 @@ import makeMargins from './makeMargins';
 import makeTransforms, { TransformParams } from './makeTransforms';
 import makeSizes from './makeSizes';
 import makeFlexDirections from './makeFlexDirections';
-import makeFontSizes from './font/makeFontSizes';
 
 const makeAtoms = (
   tokens: Tokens,
   colors: ColorParams,
-  fontFamily: FontFamilyParams,
   borderRadius: BorderRadiusParams,
   boxShadows: BoxShadowParams,
-  fontWeights: FontWeightParams,
   backgroundColor: BackgroundColorParams,
   transforms: TransformParams,
 ): Css => {
   const rules = merge(
-    makeFontSizes(tokens),
     makeBackgroundColors(backgroundColor),
     makeBorderRadius(borderRadius),
     makeBoxShadows(tokens, boxShadows),
     makeColors(colors),
-    makeFontFamily(fontFamily),
-    makeFontWeight(fontWeights),
     makeSizes(),
     makeMargins(tokens),
     makePadding(tokens),
     makeDisplayRules(tokens),
-    makeTransforms(tokens, transforms),
+    makeTransforms(transforms),
     makeTransitions(),
     makeFlexDirections(tokens),
   );

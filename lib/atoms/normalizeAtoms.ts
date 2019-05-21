@@ -64,21 +64,6 @@ export default (
     inlineBlock: atoms.display_inlineBlock,
     none: atoms.display_none,
   },
-  fontFamily: {
-    text: atoms.fontFamily_text,
-  },
-  fontSize: {
-    large: atoms.fontSize_large,
-    level1: atoms.fontSize_level1,
-    level2: atoms.fontSize_level2,
-    level3: atoms.fontSize_level3,
-    standard: atoms.fontSize_standard,
-  },
-  fontWeight: {
-    medium: atoms.fontWeight_medium,
-    regular: atoms.fontWeight_regular,
-    strong: atoms.fontWeight_strong,
-  },
   marginBottom: {
     none: atoms.marginBottom_none,
     large: atoms.marginBottom_large,
@@ -252,11 +237,6 @@ export default (
     xxsmall: atoms.paddingRightDesktop_xxsmall,
   },
   transform: {
-    largeText: atoms.transform_largeText,
-    level1Heading: atoms.transform_level1Heading,
-    level2Heading: atoms.transform_level2Heading,
-    level3Heading: atoms.transform_level3Heading,
-    standardText: atoms.transform_standardText,
     touchable: atoms.transform_touchable,
   },
   transition: {

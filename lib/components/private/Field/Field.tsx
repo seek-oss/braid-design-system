@@ -7,6 +7,7 @@ import { FieldLabel } from '../../FieldLabel/FieldLabel';
 import { FieldMessage } from '../../FieldMessage/FieldMessage';
 import { FieldOverlay } from '../FieldOverlay/FieldOverlay';
 import * as styles from './Field.treat';
+import { useText } from '../../../hooks/typography';
 
 type FormElementProps = AllHTMLAttributes<HTMLFormElement>;
 export interface FieldProps {
@@ -80,8 +81,7 @@ export const Field = ({
           disabled,
           className: useClassNames(
             styles.field,
-            atoms.fontFamily.text,
-            atoms.fontSize.standard,
+            useText({ size: 'standard', baseline: false }),
             atoms.color.neutral,
           ),
         })}
