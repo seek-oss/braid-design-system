@@ -5,9 +5,8 @@ interface TextDefinition {
   size: number;
   rows: number;
 }
+type FontWeight = 'regular' | 'medium' | 'strong';
 type Breakpoint = 'mobile' | 'desktop';
-type HeadingSize = 'level1' | 'level2' | 'level3';
-type TextSize = 'standard' | 'large';
 type ResponsiveHeading = Record<Breakpoint, TextDefinition> &
   Record<'regular' | 'weak', FontWeight>;
 type ResponsiveText = Record<Breakpoint, TextDefinition>;
@@ -82,9 +81,7 @@ export type Color =
   | 'formAccent'
   | 'neutral'
   | 'link';
-type FontFamily = 'text';
 type FontSize = TextSize | HeadingSize;
-export type FontWeight = 'regular' | 'medium' | 'strong';
 export type Display = 'block' | 'inline' | 'none' | 'inlineBlock' | 'flex';
 export type FlexDirection = 'row' | 'column';
 type ResetTags =
@@ -180,13 +177,7 @@ type Spacing =
   | 'xxlarge';
 type HorizontalSpacing = Spacing | 'gutter';
 type VerticalPadding = Spacing | 'standardTouchableText';
-export type Transform =
-  | 'standardText'
-  | 'largeText'
-  | 'level1Heading'
-  | 'level2Heading'
-  | 'level3Heading'
-  | 'touchable';
+type Transform = 'touchable';
 type Transition = 'fast' | 'touchable';
 
 export interface Atoms {
@@ -195,9 +186,6 @@ export interface Atoms {
   borderRadius: Record<BorderRadius, string>;
   boxShadow: Record<BoxShadow, string>;
   color: Record<Color, string>;
-  fontFamily: Record<FontFamily, string>;
-  fontSize: Record<FontSize, string>;
-  fontWeight: Record<FontWeight, string>;
   marginTop: Record<Spacing, string>;
   marginRight: Record<HorizontalSpacing, string>;
   marginBottom: Record<Spacing, string>;

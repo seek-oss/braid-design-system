@@ -9,6 +9,14 @@ const info = 'navy';
 export default makeTreatTheme({
   ...tokens,
   name: 'wireframe',
+  typography: {
+    fontFamily: 'Courier, monospace',
+    fontWeight: {
+      regular: 400,
+      medium: 500,
+      strong: 600,
+    },
+  },
   color: {
     foreground: {
       formAccent,

@@ -10,6 +10,15 @@ const info = '#9556b7';
 export default makeTreatTheme({
   ...tokens,
   name: 'seekAnz',
+  typography: {
+    fontFamily:
+      'Roboto, "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif',
+    fontWeight: {
+      regular: 400,
+      medium: 500,
+      strong: 700,
+    },
+  },
   color: {
     foreground: {
       formAccent,
