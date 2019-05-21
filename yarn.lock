@@ -3454,10 +3454,10 @@ base@^0.11.1:
     mixin-deep "^1.2.0"
     pascalcase "^0.1.1"
 
-basekick@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/basekick/-/basekick-3.0.0.tgz#a79e013b366004eb7f2f61c51ef48eb2f03dd8da"
-  integrity sha1-p54BOzZgBOt/L2HFHvSOsvA92No=
+basekick@^3.1.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/basekick/-/basekick-3.1.1.tgz#bd46180b539b84c3e030d0ae93f31977272e09af"
+  integrity sha512-F6IBL9SDlf8rJLKnNcvi1/LqnzkDALVmjTT99/+ZKBsrZyLIZ+tEbuHsrMfjkqY7R6h55vjIF1yjHJvHhZAq3w==
 
 batch@0.6.1:
   version "0.6.1"
