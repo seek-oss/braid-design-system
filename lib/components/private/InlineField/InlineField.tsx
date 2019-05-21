@@ -128,7 +128,7 @@ export const InlineField = ({
       <FieldMessage
         id={messageId}
         tone={disabled ? 'neutral' : tone}
-        message={disabled ? '' : message}
+        message={disabled && typeof message === undefined ? '' : message}
       />
     </Box>
   );
