@@ -73,10 +73,11 @@ export const Dropdown = ({
       tone={tone}
       message={message}
     >
-      {({ className, ...fieldProps }) => (
+      {({ className, paddingLeft, paddingRight, ...fieldProps }) => (
         <Fragment>
           <Box
             component="select"
+            paddingLeft={paddingLeft}
             paddingTop="standardTouchableText"
             paddingBottom="standardTouchableText"
             value={value}
@@ -97,8 +98,8 @@ export const Dropdown = ({
             <Fragment>{children}</Fragment>
           </Box>
           <Box
-            paddingLeft={fieldProps.paddingLeft}
-            paddingRight={fieldProps.paddingRight}
+            paddingLeft={paddingLeft}
+            paddingRight={paddingRight}
             display="flex"
             className={useClassNames(styles.chevron)}
           >
