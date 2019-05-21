@@ -12,6 +12,7 @@ export interface FieldMessageProps extends TextProps {
   message: ReactNode | false;
   tone?: FieldTone;
   secondaryMessage?: ReactNode;
+  disabled?: boolean;
 }
 
 const renderIcon = (tone: FieldTone = 'neutral') => {
@@ -37,6 +38,7 @@ export const FieldMessage = ({
   tone = 'neutral',
   message,
   secondaryMessage,
+  disabled = false,
 }: FieldMessageProps) => {
   if (message === false) {
     return null;
@@ -50,14 +52,16 @@ export const FieldMessage = ({
       className={useClassNames(styles.root)}
     >
       <Box className={useClassNames(styles.minHeight, styles.grow)}>
-        <Text color={tone}>
-          <Box display="flex">
-            {renderIcon(tone)}
-            {message}
-          </Box>
-        </Text>
+        {disabled ? null : (
+          <Text color={tone}>
+            <Box display="flex">
+              {renderIcon(tone)}
+              {message}
+            </Box>
+          </Text>
+        )}
       </Box>
-      {secondaryMessage ? (
+      {secondaryMessage && !disabled ? (
         <Box paddingLeft="xsmall" className={useClassNames(styles.fixedSize)}>
           {secondaryMessage}
         </Box>

@@ -90,8 +90,9 @@ export const Field = ({
       </Box>
       <FieldMessage
         id={messageId}
-        tone={disabled ? 'neutral' : tone}
-        message={disabled && typeof message === undefined ? '' : message}
+        tone={tone}
+        disabled={disabled}
+        message={message}
         secondaryMessage={secondaryMessage}
       />
     </Box>
