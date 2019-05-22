@@ -186,14 +186,6 @@ export interface Atoms {
   borderRadius: Record<BorderRadius, string>;
   boxShadow: Record<BoxShadow, string>;
   color: Record<Color, string>;
-  marginTop: Record<Spacing, string>;
-  marginRight: Record<HorizontalSpacing, string>;
-  marginBottom: Record<Spacing, string>;
-  marginLeft: Record<HorizontalSpacing, string>;
-  marginTopDesktop: Record<Spacing, string>;
-  marginRightDesktop: Record<HorizontalSpacing, string>;
-  marginBottomDesktop: Record<Spacing, string>;
-  marginLeftDesktop: Record<HorizontalSpacing, string>;
   paddingTop: Record<VerticalPadding, string>;
   paddingRight: Record<HorizontalSpacing, string>;
   paddingBottom: Record<VerticalPadding, string>;

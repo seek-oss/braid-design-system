@@ -14,7 +14,6 @@ import makeBackgroundColors, {
 } from './color/makeBackgroundColors';
 import makeBoxShadows, { BoxShadowParams } from './makeBoxShadows';
 import makePadding from './makePadding';
-import makeMargins from './makeMargins';
 import makeTransforms, { TransformParams } from './makeTransforms';
 import makeSizes from './makeSizes';
 import makeFlexDirections from './makeFlexDirections';
@@ -33,7 +32,6 @@ const makeAtoms = (
     makeBoxShadows(tokens, boxShadows),
     makeColors(colors),
     makeSizes(),
-    makeMargins(tokens),
     makePadding(tokens),
     makeDisplayRules(tokens),
     makeTransforms(transforms),
