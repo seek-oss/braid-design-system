@@ -1,68 +1,71 @@
 import mapValues from 'lodash/mapValues';
 import { css, Styles } from 'sku/treat';
 import { px } from '../../atoms/utils/toUnit';
+import { Properties } from 'csstype';
 
-const spacingForCssRule = <SpaceVariant extends string, Value extends number>(
-  spaceMap: Record<SpaceVariant, Value>,
-  mapper: (value: Value) => Styles,
+const mapToCssRule = <Map extends string, Value extends string | number>(
+  map: Record<Map, Value>,
+  propertyName: keyof Properties,
+  mapper?: (value: Value, propertyName: keyof Properties) => Styles,
+) => {
+  type MappedStyles = Record<Map, Styles>;
+
+  return mapValues(map, (value: Value) =>
+    mapper ? mapper(value, propertyName) : value,
+  ) as MappedStyles;
+};
+
+const spaceMapToCss = <Map extends string>(
+  spaceMap: Record<Map, number>,
+  scale: number,
+  cssPropertyName: keyof Properties,
+  desktopStyles?: (value: Styles) => Styles,
 ) => {
   const spaceMapWithNone = {
     ...spaceMap,
     none: 0,
   };
-  type MappedStyles = Record<keyof typeof spaceMapWithNone, Styles>;
 
-  return mapValues(spaceMapWithNone, mapper) as MappedStyles;
+  return mapToCssRule(
+    spaceMapWithNone,
+    cssPropertyName,
+    (value: number, propertyName) =>
+      desktopStyles
+        ? desktopStyles({
+            [propertyName]: px(value * scale),
+          })
+        : {
+            [propertyName]: px(value * scale),
+          },
+  );
 };
 
-export const marginTop = css(({ rowSpacing, rowHeight }) =>
-  spacingForCssRule(rowSpacing, value => ({
-    marginTop: px(value * rowHeight),
-  })),
-);
-export const marginTopDesktop = css(({ rowSpacing, rowHeight, utils }) =>
-  spacingForCssRule(rowSpacing, value =>
-    utils.desktopStyles({
-      marginTop: px(value * rowHeight),
-    }),
+export const margin = {
+  top: css(({ rowSpacing, rowHeight }) =>
+    spaceMapToCss(rowSpacing, rowHeight, 'marginTop'),
   ),
-);
+  bottom: css(({ rowSpacing, rowHeight }) =>
+    spaceMapToCss(rowSpacing, rowHeight, 'marginBottom'),
+  ),
+  left: css(({ columnSpacing, columnWidth }) =>
+    spaceMapToCss(columnSpacing, columnWidth, 'marginLeft'),
+  ),
+  right: css(({ columnSpacing, columnWidth }) =>
+    spaceMapToCss(columnSpacing, columnWidth, 'marginRight'),
+  ),
+};
 
-export const marginBottom = css(({ rowSpacing, rowHeight }) =>
-  spacingForCssRule(rowSpacing, value => ({
-    marginBottom: px(value * rowHeight),
-  })),
-);
-export const marginBottomDesktop = css(({ rowSpacing, rowHeight, utils }) =>
-  spacingForCssRule(rowSpacing, value =>
-    utils.desktopStyles({
-      marginBottom: px(value * rowHeight),
-    }),
+export const marginDesktop = {
+  top: css(({ rowSpacing, rowHeight, utils: { desktopStyles } }) =>
+    spaceMapToCss(rowSpacing, rowHeight, 'marginTop', desktopStyles),
   ),
-);
-
-export const marginLeft = css(({ columnSpacing, columnWidth }) =>
-  spacingForCssRule(columnSpacing, value => ({
-    marginLeft: px(value * columnWidth),
-  })),
-);
-export const marginLeftDesktop = css(({ columnSpacing, columnWidth, utils }) =>
-  spacingForCssRule(columnSpacing, value =>
-    utils.desktopStyles({
-      marginLeft: px(value * columnWidth),
-    }),
+  bottom: css(({ rowSpacing, rowHeight, utils: { desktopStyles } }) =>
+    spaceMapToCss(rowSpacing, rowHeight, 'marginBottom', desktopStyles),
   ),
-);
-
-export const marginRight = css(({ columnSpacing, columnWidth }) =>
-  spacingForCssRule(columnSpacing, value => ({
-    marginRight: px(value * columnWidth),
-  })),
-);
-export const marginRightDesktop = css(({ columnSpacing, columnWidth, utils }) =>
-  spacingForCssRule(columnSpacing, value =>
-    utils.desktopStyles({
-      marginRight: px(value * columnWidth),
-    }),
+  left: css(({ columnSpacing, columnWidth, utils: { desktopStyles } }) =>
+    spaceMapToCss(columnSpacing, columnWidth, 'marginLeft', desktopStyles),
   ),
-);
+  right: css(({ columnSpacing, columnWidth, utils: { desktopStyles } }) =>
+    spaceMapToCss(columnSpacing, columnWidth, 'marginRight', desktopStyles),
+  ),
+};

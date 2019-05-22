@@ -89,26 +89,26 @@ export const Box = ({
         atoms.width[width!],
         marginTop &&
           getResponsiveClasses(
-            styles.marginTop,
-            styles.marginTopDesktop,
+            styles.margin.top,
+            styles.marginDesktop.top,
             marginTop,
           ),
         marginRight &&
           getResponsiveClasses(
-            styles.marginRight,
-            styles.marginRightDesktop,
+            styles.margin.right,
+            styles.marginDesktop.right,
             marginRight,
           ),
         marginBottom &&
           getResponsiveClasses(
-            styles.marginBottom,
-            styles.marginBottomDesktop,
+            styles.margin.bottom,
+            styles.marginDesktop.bottom,
             marginBottom,
           ),
         marginLeft &&
           getResponsiveClasses(
-            styles.marginLeft,
-            styles.marginLeftDesktop,
+            styles.margin.left,
+            styles.marginDesktop.left,
             marginLeft,
           ),
         paddingTop &&
