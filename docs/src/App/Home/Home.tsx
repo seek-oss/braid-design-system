@@ -5,7 +5,7 @@ import { BoxProps } from '../../../../lib/components/Box/Box';
 import { ConfigConsumer } from '../ConfigContext';
 import { Logo } from '../Logo/Logo';
 import { Github } from './Github/Github';
-import styles from './Home.css.js';
+import * as styles from './Home.treat';
 
 const actionProps: BoxProps = {
   display: 'flex',

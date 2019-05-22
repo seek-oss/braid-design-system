@@ -3296,10 +3296,10 @@ babel-plugin-transform-undefined-to-void@^6.9.4:
   resolved "https://registry.yarnpkg.com/babel-plugin-transform-undefined-to-void/-/babel-plugin-transform-undefined-to-void-6.9.4.tgz#be241ca81404030678b748717322b89d0c8fe280"
   integrity sha1-viQcqBQEAwZ4t0hxcyK4nQyP4oA=
 
-babel-plugin-treat@1.0.0-beta.2:
-  version "1.0.0-beta.2"
-  resolved "https://registry.yarnpkg.com/babel-plugin-treat/-/babel-plugin-treat-1.0.0-beta.2.tgz#3f1204ac207506a31b1c82a53a067b93135a7722"
-  integrity sha512-0zK9SldwoeuL5G4xGDpoJgZSkzgnpfl36a4SfwkL2neYgdXvzi+Z9axccJ1kp9I6RQ5ZVNUJ6JQs3NkBxVdQjw==
+babel-plugin-treat@1.0.0-beta.8:
+  version "1.0.0-beta.8"
+  resolved "https://registry.yarnpkg.com/babel-plugin-treat/-/babel-plugin-treat-1.0.0-beta.8.tgz#9921d5e36a2cb52b5e57f72e22920b215594504b"
+  integrity sha512-CG4Ji9FVPNPZ8cM8ns7YWd6/mAM+6mqAMVOCtpXWizh2hChI572Q58iepsM+gMVKbSNqKaAikvBwDW+HKmfuMA==
 
 babel-polyfill@6.26.0:
   version "6.26.0"
@@ -12585,10 +12585,10 @@ react-transition-group@^2.0.0, react-transition-group@^2.6.1:
     prop-types "^15.6.2"
     react-lifecycles-compat "^3.0.4"
 
-react-treat@1.0.0-beta.6:
-  version "1.0.0-beta.6"
-  resolved "https://registry.yarnpkg.com/react-treat/-/react-treat-1.0.0-beta.6.tgz#a9b9ef98959f1733d20b4e9f7ac90d6a1feb5895"
-  integrity sha512-9/Y6WMpshTJIZxDjfjkRmsve6I0mEo6ssF4WDiFTZkFvdRJc3gkctrB6awDYDDgcUCiT66dQELWQ/1/jVN+1cg==
+react-treat@1.0.0-beta.9:
+  version "1.0.0-beta.9"
+  resolved "https://registry.yarnpkg.com/react-treat/-/react-treat-1.0.0-beta.9.tgz#c2c94af5c1002e1f1ea3f41720e8b8ff1b9f3c8c"
+  integrity sha512-UrlKfcQsLGDQszSSYvuftjDnWMI9s68CmdTkTR6EJhj3MtrAIR4pznxMWQgSHGurIXzarveDCvNZ6CaOwnOvTg==
 
 react-treebeard@3.1.0:
   version "3.1.0"
@@ -13690,10 +13690,10 @@ sisteransi@^1.0.0:
   resolved "https://registry.yarnpkg.com/sisteransi/-/sisteransi-1.0.0.tgz#77d9622ff909080f1c19e5f4a1df0c1b0a27b88c"
   integrity sha512-N+z4pHB4AmUv0SjveWRd6q1Nj5w62m5jodv+GD8lvmbY/83T/rpbJGZOnK5T149OldDj4Db07BSv9xY4K6NTPQ==
 
-sku@8.5.0:
-  version "8.5.0"
-  resolved "https://registry.yarnpkg.com/sku/-/sku-8.5.0.tgz#31f50927c7f8b3935724a327e3a08554e0fd0f96"
-  integrity sha512-w+rH7akhzrFgTDtGhGgOl4Pt+RubjlOodLFk2UDDh3XpMrOQe7zciJD68p+5ppWAtF4xM5ac5QXcDess7PGhsg==
+sku@8.5.1:
+  version "8.5.1"
+  resolved "https://registry.yarnpkg.com/sku/-/sku-8.5.1.tgz#45a940e1e4179cfd9fc2a8cd68854aa3b63c81e1"
+  integrity sha512-kgQGFqBI3lBTx64paLNaSLMws71fqIFTfnlkTDhoRmQBH0LIYFStiAAgqj2bnPbs/ZTaKMxIhGDl1ljY2QT51g==
   dependencies:
     "@babel/core" "^7.1.2"
     "@babel/plugin-proposal-class-properties" "^7.1.0"
@@ -13728,7 +13728,7 @@ sku@8.5.0:
     babel-plugin-seek-style-guide "^1.0.0"
     babel-plugin-syntax-dynamic-import "^6.18.0"
     babel-plugin-transform-react-remove-prop-types "^0.4.18"
-    babel-plugin-treat "1.0.0-beta.2"
+    babel-plugin-treat "1.0.0-beta.8"
     browserslist "^4.4.0"
     browserslist-config-seek "^2.0.0"
     chalk "^2.4.1"
@@ -13774,7 +13774,7 @@ sku@8.5.0:
     prettier "1.15.3"
     raw-loader "^1.0.0"
     react-hot-loader "^3.1.3"
-    react-treat "1.0.0-beta.6"
+    react-treat "1.0.0-beta.9"
     rimraf "^2.6.2"
     serialize-javascript "^1.6.1"
     start-server-webpack-plugin "^2.2.5"
@@ -13782,7 +13782,7 @@ sku@8.5.0:
     svgo "^1.0.5"
     svgo-loader "^2.1.0"
     traverse "^0.6.6"
-    treat "1.0.0-beta.6"
+    treat "1.0.0-beta.9"
     tree-kill "^1.2.1"
     tslint "^5.11.0"
     tslint-config-seek "^1.0.0"
@@ -14912,10 +14912,10 @@ travis-deploy-once@^5.0.9:
     url-join "^4.0.0"
     yargs "^12.0.1"
 
-treat@1.0.0-beta.6:
-  version "1.0.0-beta.6"
-  resolved "https://registry.yarnpkg.com/treat/-/treat-1.0.0-beta.6.tgz#5d23f01a045689a97d0d272e65322ab931994ea8"
-  integrity sha512-crVwk44EhW4IKOZm8EZRMKsNpgc0anaL2riacsy7naFYTPZCshwarH0+OjvziPgTo33TSr3yp9UE4QBjCsZb0w==
+treat@1.0.0-beta.11, treat@1.0.0-beta.9:
+  version "1.0.0-beta.11"
+  resolved "https://registry.yarnpkg.com/treat/-/treat-1.0.0-beta.11.tgz#bcc1c89aa623069582268e715b536512f5d278bf"
+  integrity sha512-v80yfxd/Qsug+r7P8/wUDHkIjjhwEZu9Z7z7zVlHRtIxQqWCrSM1nCyJPRXI2QPYNLcBnQC+QRz0HgPnls+Z9w==
   dependencies:
     "@types/lodash" "^4.14.123"
     autoprefixer "^9.5.0"
