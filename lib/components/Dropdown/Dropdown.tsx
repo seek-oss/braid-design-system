@@ -39,6 +39,7 @@ const getColor = (
 export const Dropdown = ({
   id,
   name,
+  disabled,
   label,
   secondaryLabel,
   tertiaryLabel,
@@ -65,24 +66,20 @@ export const Dropdown = ({
     <Field
       id={id}
       name={name}
+      disabled={disabled}
       label={label}
       secondaryLabel={secondaryLabel}
       tertiaryLabel={tertiaryLabel}
       tone={tone}
       message={message}
     >
-      {({ className, ...fieldProps }) => (
+      {({ className, paddingLeft, paddingRight, ...fieldProps }) => (
         <Fragment>
           <Box
             component="select"
-            boxShadow={
-              tone === 'critical' ? 'borderCritical' : 'borderStandard'
-            }
-            width="full"
-            paddingLeft="small"
+            paddingLeft={paddingLeft}
             paddingTop="standardTouchableText"
             paddingBottom="standardTouchableText"
-            borderRadius="standard"
             value={value}
             onChange={onChange}
             onBlur={onBlur}
@@ -101,8 +98,8 @@ export const Dropdown = ({
             <Fragment>{children}</Fragment>
           </Box>
           <Box
-            paddingLeft="small"
-            paddingRight="small"
+            paddingLeft={paddingLeft}
+            paddingRight={paddingRight}
             display="flex"
             className={useClassNames(styles.chevron)}
           >

@@ -4,7 +4,7 @@ import * as components from '../../../../lib/components';
 import { Logo } from '../Logo/Logo';
 import { ComponentRoute } from './ComponentRoute';
 import { Link, ExternalLink } from './Link';
-import styles from './Components.css.js';
+import * as styles from './Components.treat';
 import { MenuButton } from '../MenuButton/MenuButton';
 import { ConfigConsumer } from '../ConfigContext';
 
@@ -51,7 +51,7 @@ export const Components = withRouter(({ location }: RouteComponentProps) => {
             <Hidden print>
               <div
                 className={`${styles.menu} ${
-                  isMenuOpen ? styles.menu__isOpen : ''
+                  isMenuOpen ? styles.menuOpen : ''
                 }`}
               >
                 <Box

@@ -24,7 +24,6 @@ export const selected = style({
 });
 
 export const label = style({
-  cursor: 'pointer',
   userSelect: 'none',
 });
 
@@ -65,7 +64,6 @@ export const realField = style({
   position: 'absolute',
   opacity: 0,
   zIndex: 1,
-  cursor: 'pointer',
   selectors: {
     [`&:checked + * > ${fakeField} > ${selected}`]: {
       opacity: 1,
@@ -80,6 +78,12 @@ export const realField = style({
     },
     [`&:checked ~ ${children}`]: {
       display: 'block',
+    },
+    [`&:not(:disabled)`]: {
+      cursor: 'pointer',
+    },
+    [`&:not(:disabled) + * > ${fakeField} + ${label}`]: {
+      cursor: 'pointer',
     },
   },
 });

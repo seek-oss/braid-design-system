@@ -25,6 +25,7 @@ interface TextFieldProps extends FieldProps {
 export const TextField = ({
   id,
   name,
+  disabled,
   label,
   secondaryLabel,
   tertiaryLabel,
@@ -40,6 +41,7 @@ export const TextField = ({
   <Field
     id={id}
     name={name}
+    disabled={disabled}
     label={label}
     secondaryLabel={secondaryLabel}
     tertiaryLabel={tertiaryLabel}
@@ -50,13 +52,8 @@ export const TextField = ({
       <Box
         component="input"
         type={validTypes[type]}
-        boxShadow={tone === 'critical' ? 'borderCritical' : 'borderStandard'}
-        width="full"
-        paddingLeft="small"
-        paddingRight="small"
         paddingTop="standardTouchableText"
         paddingBottom="standardTouchableText"
-        borderRadius="standard"
         value={value}
         onChange={onChange}
         onFocus={onFocus}

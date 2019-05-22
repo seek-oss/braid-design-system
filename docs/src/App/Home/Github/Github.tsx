@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Github.css.js';
+import * as styles from './Github.treat';
 
 export const Github = ({
   color = 'white',

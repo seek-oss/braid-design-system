@@ -3,7 +3,10 @@
   "version": "0.0.1",
   "description": "Themeable design system for the SEEK Group",
   "main": "lib/components/index.ts",
-  "sideEffects": ["lib/themes/**/*", "lib/reset/*"],
+  "sideEffects": [
+    "lib/themes/**/*",
+    "lib/reset/*"
+  ],
   "scripts": {
     "check-integrity": "yarn check --integrity && echo 'Ignore paths from lint-staged'",
     "pretest": "sku configure",
@@ -43,8 +46,14 @@
       "yarn check-integrity",
       "git add package.json yarn.lock"
     ],
-    "**/*.{js}": ["yarn lint", "git add"],
-    "**/*.{js,md,less}": ["yarn format", "git add"]
+    "**/*.{js}": [
+      "yarn lint",
+      "git add"
+    ],
+    "**/*.{js,md,less}": [
+      "yarn format",
+      "git add"
+    ]
   },
   "repository": {
     "type": "git",
@@ -88,7 +97,7 @@
     "@types/react-transition-group": "^2.0.16",
     "autoprefixer": "^9.3.1",
     "babel-loader": "^8.0.4",
-    "babel-plugin-treat": "1.0.0-beta.2",
+    "babel-plugin-treat": "1.0.0-beta.8",
     "browserslist-config-seek": "^2.0.0",
     "commitizen": "^3.0.4",
     "commitlint-config-seek": "1.0.0",
@@ -117,15 +126,15 @@
     "react-transition-group": "^2.6.1",
     "renovate-config-seek": "0.4.0",
     "semantic-release": "^15.13.3",
-    "sku": "8.5.0",
+    "sku": "8.5.1",
     "style-loader": "^0.23.1",
     "surge": "^0.20.1",
     "travis-deploy-once": "^5.0.9",
-    "treat": "1.0.0-beta.6"
+    "treat": "1.0.0-beta.11"
   },
   "resolutions": {
-    "babel-plugin-treat": "1.0.0-beta.2",
-    "treat": "1.0.0-beta.6"
+    "babel-plugin-treat": "1.0.0-beta.8",
+    "treat": "1.0.0-beta.11"
   },
   "toolchain": {
     "node": "10.15.1",
