@@ -125,9 +125,12 @@ export const InlineField = ({
           {children}
         </Box>
       ) : null}
-      {!disabled ? (
-        <FieldMessage id={messageId} tone={tone} message={message} />
-      ) : null}
+      <FieldMessage
+        id={messageId}
+        tone={tone}
+        disabled={disabled}
+        message={message}
+      />
     </Box>
   );
 };
