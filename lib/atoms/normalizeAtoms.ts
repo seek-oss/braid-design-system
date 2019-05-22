@@ -1,11 +1,7 @@
 import { Atoms } from '../themes/theme';
 import CssModuleAtoms from '../themes/wireframe/atoms.css.js.d';
 
-export default (
-  reset: Atoms['reset'],
-  atoms: typeof CssModuleAtoms,
-): Atoms => ({
-  reset,
+export default (atoms: typeof CssModuleAtoms): Atoms => ({
   backgroundColor: {
     card: atoms.backgroundColor_card,
     critical: atoms.backgroundColor_critical,

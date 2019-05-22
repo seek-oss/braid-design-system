@@ -4,8 +4,7 @@
   "description": "Themeable design system for the SEEK Group",
   "main": "lib/components/index.ts",
   "sideEffects": [
-    "lib/themes/**/*",
-    "lib/reset/*"
+    "lib/themes/**/*"
   ],
   "scripts": {
     "check-integrity": "yarn check --integrity && echo 'Ignore paths from lint-staged'",
@@ -66,9 +65,11 @@
   },
   "homepage": "https://github.com/seek-oss/braid-design-system#readme",
   "dependencies": {
+    "@types/classnames": "^2.2.7",
     "@types/lodash": "^4.14.123",
     "@types/react": "^16.8.8",
     "basekick": "^3.1.1",
+    "classnames": "^2.2.6",
     "csstype": "^2.6.4",
     "lodash": "^4.17.11",
     "polished": "^3.0.3",

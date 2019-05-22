@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { createElement, AllHTMLAttributes, ReactType } from 'react';
 import { useClassNames } from 'sku/treat';
 import { useTheme } from '../private/ThemeContext';
-import { Reset, ResetProps } from '../Reset/Reset';
 import {
   HorizontalSpacing,
   VerticalPadding,
@@ -14,6 +13,7 @@ import {
   Width,
 } from '../../themes/theme';
 import { ContrastProvider } from './ContrastContext';
+import useReset from '../../hooks/useReset';
 import * as styles from './Box.treat';
 
 function getResponsiveClasses<PropName extends string>(
@@ -33,7 +33,8 @@ function getResponsiveClasses<PropName extends string>(
 
 type ResponsiveProp<AtomName> = AtomName | [AtomName, AtomName];
 
-export interface BoxProps extends ResetProps {
+export interface BoxProps extends AllHTMLAttributes<HTMLElement> {
+  component?: ReactType;
   paddingTop?: ResponsiveProp<VerticalPadding>;
   paddingBottom?: ResponsiveProp<VerticalPadding>;
   paddingLeft?: ResponsiveProp<HorizontalSpacing>;
@@ -53,6 +54,7 @@ export interface BoxProps extends ResetProps {
 }
 
 export const Box = ({
+  component = 'div',
   paddingTop,
   paddingBottom,
   paddingLeft,
@@ -74,77 +76,76 @@ export const Box = ({
 }: BoxProps) => {
   const { atoms } = useTheme();
 
-  const ResetBox = (
-    <Reset
-      className={useClassNames(
-        className,
-        atoms.backgroundColor[backgroundColor!],
-        atoms.boxShadow[boxShadow!],
-        atoms.borderRadius[borderRadius!],
-        atoms.boxShadow[boxShadow!],
-        styles.transition[transition!],
-        styles.transform[transform!],
-        atoms.width[width!],
-        marginTop &&
-          getResponsiveClasses(
-            styles.margin.top,
-            styles.marginDesktop.top,
-            marginTop,
-          ),
-        marginRight &&
-          getResponsiveClasses(
-            styles.margin.right,
-            styles.marginDesktop.right,
-            marginRight,
-          ),
-        marginBottom &&
-          getResponsiveClasses(
-            styles.margin.bottom,
-            styles.marginDesktop.bottom,
-            marginBottom,
-          ),
-        marginLeft &&
-          getResponsiveClasses(
-            styles.margin.left,
-            styles.marginDesktop.left,
-            marginLeft,
-          ),
-        paddingTop &&
-          getResponsiveClasses(
-            atoms.paddingTop,
-            atoms.paddingTopDesktop,
-            paddingTop,
-          ),
-        paddingRight &&
-          getResponsiveClasses(
-            atoms.paddingRight,
-            atoms.paddingRightDesktop,
-            paddingRight,
-          ),
-        paddingBottom &&
-          getResponsiveClasses(
-            atoms.paddingBottom,
-            atoms.paddingBottomDesktop,
-            paddingBottom,
-          ),
-        paddingLeft &&
-          getResponsiveClasses(
-            atoms.paddingLeft,
-            atoms.paddingLeftDesktop,
-            paddingLeft,
-          ),
-        display &&
-          getResponsiveClasses(atoms.display, atoms.displayDesktop, display),
-        flexDirection &&
-          getResponsiveClasses(
-            atoms.flexDirection,
-            atoms.flexDirectionDesktop,
-            flexDirection,
-          ),
-      )}
-      {...restProps}
-    />
-  );
+  const ResetBox = createElement(component, {
+    className: useClassNames(
+      useReset(component),
+      className,
+      atoms.backgroundColor[backgroundColor!],
+      atoms.boxShadow[boxShadow!],
+      atoms.borderRadius[borderRadius!],
+      atoms.boxShadow[boxShadow!],
+      styles.transition[transition!],
+      styles.transform[transform!],
+      atoms.width[width!],
+      marginTop &&
+        getResponsiveClasses(
+          styles.margin.top,
+          styles.marginDesktop.top,
+          marginTop,
+        ),
+      marginRight &&
+        getResponsiveClasses(
+          styles.margin.right,
+          styles.marginDesktop.right,
+          marginRight,
+        ),
+      marginBottom &&
+        getResponsiveClasses(
+          styles.margin.bottom,
+          styles.marginDesktop.bottom,
+          marginBottom,
+        ),
+      marginLeft &&
+        getResponsiveClasses(
+          styles.margin.left,
+          styles.marginDesktop.left,
+          marginLeft,
+        ),
+      paddingTop &&
+        getResponsiveClasses(
+          atoms.paddingTop,
+          atoms.paddingTopDesktop,
+          paddingTop,
+        ),
+      paddingRight &&
+        getResponsiveClasses(
+          atoms.paddingRight,
+          atoms.paddingRightDesktop,
+          paddingRight,
+        ),
+      paddingBottom &&
+        getResponsiveClasses(
+          atoms.paddingBottom,
+          atoms.paddingBottomDesktop,
+          paddingBottom,
+        ),
+      paddingLeft &&
+        getResponsiveClasses(
+          atoms.paddingLeft,
+          atoms.paddingLeftDesktop,
+          paddingLeft,
+        ),
+      display &&
+        getResponsiveClasses(atoms.display, atoms.displayDesktop, display),
+      flexDirection &&
+        getResponsiveClasses(
+          atoms.flexDirection,
+          atoms.flexDirectionDesktop,
+          flexDirection,
+        ),
+    ),
+    ...restProps,
+  });
 
   return backgroundColor ? (
     <ContrastProvider value={backgroundColor}>{ResetBox}</ContrastProvider>

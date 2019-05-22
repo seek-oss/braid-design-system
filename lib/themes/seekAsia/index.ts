@@ -1,4 +1,5 @@
-import reset from '../../reset/reset.css.js';
+// Import reset file for high document order
+import '../../hooks/useReset/reset.treat';
 import treatTheme from './theme.treat';
 import atoms from './atoms.css.js';
 import normalizeAtoms from '../../atoms/normalizeAtoms';
@@ -8,7 +9,7 @@ import { Theme } from '../theme';
 const theme: Theme = {
   name: 'seekAsia',
   tokens,
-  atoms: normalizeAtoms(reset, atoms),
+  atoms: normalizeAtoms(atoms),
   treatTheme,
 };
 
