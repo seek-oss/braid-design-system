@@ -72,7 +72,6 @@ export default ({
 
   return useClassNames(
     atoms.backgroundColor[backgroundColor!],
-    atoms.boxShadow[boxShadow!],
     atoms.borderRadius[borderRadius!],
     atoms.boxShadow[boxShadow!],
     styles.transition[transition!],
