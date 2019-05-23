@@ -25,9 +25,6 @@ export default (
     positive: atoms.backgroundColor_positive,
     positiveLight: atoms.backgroundColor_positiveLight,
   },
-  borderRadius: {
-    standard: atoms.borderRadius_standard,
-  },
   boxShadow: {
     outlineFocus: atoms.boxShadow_outlineFocus,
     borderStandard: atoms.boxShadow_borderStandard,
@@ -49,20 +46,6 @@ export default (
     info: atoms.color_info,
     infoContrast: atoms.color_infoContrast,
     white: atoms.color_white,
-  },
-  displayDesktop: {
-    block: atoms.displayDesktop_block,
-    flex: atoms.displayDesktop_flex,
-    inline: atoms.displayDesktop_inline,
-    inlineBlock: atoms.displayDesktop_inlineBlock,
-    none: atoms.displayDesktop_none,
-  },
-  display: {
-    block: atoms.display_block,
-    flex: atoms.display_flex,
-    inline: atoms.display_inline,
-    inlineBlock: atoms.display_inlineBlock,
-    none: atoms.display_none,
   },
   paddingBottom: {
     none: atoms.paddingBottom_none,
@@ -151,16 +134,5 @@ export default (
     xsmall: atoms.paddingRightDesktop_xsmall,
     xxlarge: atoms.paddingRightDesktop_xxlarge,
     xxsmall: atoms.paddingRightDesktop_xxsmall,
-  },
-  width: {
-    full: atoms.width_full,
-  },
-  flexDirection: {
-    row: atoms.flexDirection_row,
-    column: atoms.flexDirection_column,
-  },
-  flexDirectionDesktop: {
-    row: atoms.flexDirectionDesktop_row,
-    column: atoms.flexDirectionDesktop_column,
   },
 });

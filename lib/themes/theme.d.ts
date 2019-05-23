@@ -60,7 +60,6 @@ type BackgroundColor =
   | 'criticalLight'
   | 'positive'
   | 'positiveLight';
-type BorderRadius = 'standard';
 export type BoxShadow =
   | 'outlineFocus'
   | 'borderStandard'
@@ -82,8 +81,6 @@ export type Color =
   | 'neutral'
   | 'link';
 type FontSize = TextSize | HeadingSize;
-export type Display = 'block' | 'inline' | 'none' | 'inlineBlock' | 'flex';
-export type FlexDirection = 'row' | 'column';
 type ResetTags =
   | 'html'
   | 'body'
@@ -165,7 +162,6 @@ type ResetTags =
   | 'mark'
   | 'audio'
   | 'video';
-export type Width = 'full';
 type Spacing =
   | 'none'
   | 'xxsmall'
@@ -181,7 +177,6 @@ type VerticalPadding = Spacing | 'standardTouchableText';
 export interface Atoms {
   reset: Record<ResetTags, string>;
   backgroundColor: Record<BackgroundColor, string>;
-  borderRadius: Record<BorderRadius, string>;
   boxShadow: Record<BoxShadow, string>;
   color: Record<Color, string>;
   paddingTop: Record<VerticalPadding, string>;
@@ -192,11 +187,6 @@ export interface Atoms {
   paddingRightDesktop: Record<HorizontalSpacing, string>;
   paddingBottomDesktop: Record<VerticalPadding, string>;
   paddingLeftDesktop: Record<HorizontalSpacing, string>;
-  display: Record<Display, string>;
-  displayDesktop: Record<Display, string>;
-  flexDirection: Record<FlexDirection, string>;
-  flexDirectionDesktop: Record<FlexDirection, string>;
-  width: Record<Width, string>;
 }
 
 export interface Theme {
