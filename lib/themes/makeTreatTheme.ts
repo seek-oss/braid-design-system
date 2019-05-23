@@ -18,6 +18,11 @@ interface ThemeVars extends Tokens {
     fast: string;
     touchable: string;
   };
+  border: {
+    radius: {
+      standard: string;
+    };
+  };
   color: {
     foreground: {
       formAccent: string;

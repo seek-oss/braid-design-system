@@ -3,16 +3,14 @@ import {
   HorizontalSpacing,
   VerticalPadding,
   Spacing,
-  BorderRadius,
   BackgroundColor,
-  Display,
-  FlexDirection,
   BoxShadow,
-  Width,
 } from '../../themes/theme';
 import { useClassNames } from 'sku/treat';
 import { useTheme } from '../../components/private/ThemeContext';
 import { ResetProps } from '../../components/Reset/Reset';
+
+type ResponsiveProp<AtomName> = AtomName | [AtomName, AtomName];
 
 export interface BoxProps extends ResetProps {
   paddingTop?: ResponsiveProp<VerticalPadding>;
@@ -23,17 +21,15 @@ export interface BoxProps extends ResetProps {
   marginBottom?: ResponsiveProp<Spacing>;
   marginLeft?: ResponsiveProp<HorizontalSpacing>;
   marginRight?: ResponsiveProp<HorizontalSpacing>;
-  display?: ResponsiveProp<Display>;
-  flexDirection?: ResponsiveProp<FlexDirection>;
-  borderRadius?: BorderRadius;
+  display?: ResponsiveProp<keyof typeof styles.display>;
+  flexDirection?: ResponsiveProp<keyof typeof styles.flexDirection>;
+  borderRadius?: keyof typeof styles.borderRadius;
   backgroundColor?: BackgroundColor;
   boxShadow?: BoxShadow;
-  transform?: 'touchable';
-  transition?: 'fast' | 'touchable';
-  width?: Width;
+  transform?: keyof typeof styles.transform;
+  transition?: keyof typeof styles.transition;
+  width?: keyof typeof styles.width;
 }
-
-type ResponsiveProp<AtomName> = AtomName | [AtomName, AtomName];
 
 function getResponsiveClasses<PropName extends string>(
   mobileClasses: Record<PropName, string>,
@@ -72,11 +68,11 @@ export default ({
 
   return useClassNames(
     atoms.backgroundColor[backgroundColor!],
-    atoms.borderRadius[borderRadius!],
+    styles.borderRadius[borderRadius!],
     atoms.boxShadow[boxShadow!],
     styles.transition[transition!],
     styles.transform[transform!],
-    atoms.width[width!],
+    styles.width[width!],
     marginTop &&
       getResponsiveClasses(
         styles.margin.top,
@@ -126,11 +122,11 @@ export default ({
         paddingLeft,
       ),
     display &&
-      getResponsiveClasses(atoms.display, atoms.displayDesktop, display),
+      getResponsiveClasses(styles.display, styles.displayDesktop, display),
     flexDirection &&
       getResponsiveClasses(
-        atoms.flexDirection,
-        atoms.flexDirectionDesktop,
+        styles.flexDirection,
+        styles.flexDirectionDesktop,
         flexDirection,
       ),
   );

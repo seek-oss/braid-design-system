@@ -3,7 +3,7 @@ import { Styles } from 'sku/treat';
 import { Tokens } from './theme';
 
 export default (tokens: Tokens) => {
-  const desktopStyles = (styles: Styles) => ({
+  const desktopStyles = <StyleBlock>(styles: StyleBlock) => ({
     '@media': {
       [`screen and (min-width: ${tokens.responsiveBreakpoint}px)`]: styles,
     },

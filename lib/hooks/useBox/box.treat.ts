@@ -79,3 +79,43 @@ export const transform = {
 export const transition = css(({ transitions }) =>
   mapToCssRule(transitions, 'transition'),
 );
+
+export const borderRadius = css(({ border }) =>
+  mapToCssRule(border.radius, 'borderRadius'),
+);
+
+const widthRules = {
+  full: '100%',
+};
+export const width = css(mapToCssRule(widthRules, 'width'));
+
+const displayRules = {
+  block: 'block',
+  inline: 'inline',
+  none: 'none',
+  inlineBlock: 'inline-block',
+  flex: 'flex',
+};
+export const display = css(mapToCssRule(displayRules, 'display'));
+export const displayDesktop = css(({ utils: { desktopStyles } }) =>
+  mapToCssRule(displayRules, 'display', (value, propertyName) =>
+    desktopStyles({
+      [propertyName]: value,
+    }),
+  ),
+);
+
+const flexDirectionRules = {
+  row: 'row',
+  column: 'column',
+};
+export const flexDirection = css(
+  mapToCssRule(flexDirectionRules, 'flexDirection'),
+);
+export const flexDirectionDesktop = css(({ utils: { desktopStyles } }) =>
+  mapToCssRule(flexDirectionRules, 'flexDirection', (value, propertyName) =>
+    desktopStyles({
+      [propertyName]: value,
+    }),
+  ),
+);
