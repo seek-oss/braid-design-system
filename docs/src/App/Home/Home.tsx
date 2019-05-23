@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { Box, Button, Text } from '../../../../lib/components';
-import { BoxProps } from '../../../../lib/components/Box/Box';
+import { BoxProps } from '../../../../lib/hooks/useBox';
 import { ConfigConsumer } from '../ConfigContext';
 import { Logo } from '../Logo/Logo';
 import { Github } from './Github/Github';

@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
 import { useClassNames } from 'sku/treat';
-import { Box, BoxProps } from '../Box/Box';
+import { Box } from '../Box/Box';
+import { BoxProps } from '../../hooks/useBox';
 import { useTheme } from '../private/ThemeContext';
 import {
   useHeading,
