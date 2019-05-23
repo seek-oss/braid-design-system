@@ -10,46 +10,6 @@ const getSize = ({ touchableRows, text, rowHeight }: Tokens) => {
   return rows * rowHeight;
 };
 
-export const circle = style({
-  borderRadius: '100%',
-});
-
-export const selected = style({
-  transform: 'scale(0.8)',
-  selectors: {
-    [`&${circle}`]: {
-      transform: 'scale(0.4)',
-    },
-  },
-});
-
-export const label = style({
-  userSelect: 'none',
-});
-
-export const icon = style({
-  position: 'absolute',
-  top: 0,
-  opacity: 0,
-  transform: 'scale(0.5)',
-  pointerEvents: 'none',
-  // IE11:
-  height: '100%',
-});
-
-export const fakeField = style({
-  position: 'relative',
-  flexShrink: 0,
-});
-
-export const children = style(tokens => {
-  const size = getSize(tokens);
-
-  return {
-    marginLeft: size,
-  };
-});
-
 export const fieldSize = style(tokens => {
   const size = getSize(tokens);
 
@@ -65,25 +25,71 @@ export const realField = style({
   opacity: 0,
   zIndex: 1,
   selectors: {
-    [`&:checked + * > ${fakeField} > ${selected}`]: {
-      opacity: 1,
-      transform: 'none',
-    },
-    [`&:checked + * > ${fakeField} > ${selected}${circle}`]: {
-      transform: 'scale(0.6)',
-    },
-    [`&:checked + * ${icon}`]: {
-      opacity: 1,
-      transform: 'scale(0.7)',
-    },
-    [`&:checked ~ ${children}`]: {
-      display: 'block',
-    },
     [`&:not(:disabled)`]: {
       cursor: 'pointer',
     },
-    [`&:not(:disabled) + * > ${fakeField} + ${label}`]: {
+  },
+});
+
+export const fakeField = style({
+  position: 'relative',
+  flexShrink: 0,
+});
+
+export const label = style({
+  userSelect: 'none',
+  selectors: {
+    [`${realField}:not(:disabled) + * > ${fakeField} + &`]: {
       cursor: 'pointer',
+    },
+  },
+});
+
+export const children = style(tokens => {
+  const size = getSize(tokens);
+
+  return {
+    marginLeft: size,
+    selectors: {
+      [`${realField}:checked ~ &`]: {
+        display: 'block',
+      },
+    },
+  };
+});
+
+export const icon = style({
+  position: 'absolute',
+  top: 0,
+  opacity: 0,
+  transform: 'scale(0.5)',
+  pointerEvents: 'none',
+  // IE11:
+  height: '100%',
+  selectors: {
+    [`${realField}:checked + * &`]: {
+      opacity: 1,
+      transform: 'scale(0.7)',
+    },
+  },
+});
+
+export const circle = style({
+  borderRadius: '100%',
+});
+
+export const selected = style({
+  transform: 'scale(0.8)',
+  selectors: {
+    [`&${circle}`]: {
+      transform: 'scale(0.4)',
+    },
+    [`${realField}:checked + * > ${fakeField} > &`]: {
+      opacity: 1,
+      transform: 'none',
+    },
+    [`${realField}:checked + * > ${fakeField} > &${circle}`]: {
+      transform: 'scale(0.6)',
     },
   },
 });

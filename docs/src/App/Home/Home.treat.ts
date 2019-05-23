@@ -1,4 +1,4 @@
-import { style } from 'sku/treat';
+import { style, globalStyle } from 'sku/treat';
 
 export const source = style({
   position: 'absolute',
@@ -19,18 +19,22 @@ export const sourceLink = style({
   },
 });
 
-export const container = style({});
-export const actionsContainer = style({});
-
 export const content = style({
   height: '100vh',
   alignItems: 'center',
   justifyContent: 'center',
+});
+
+export const container = style({
   selectors: {
-    [`& ${container}`]: {
+    [`${content} &`]: {
       maxWidth: '380px',
     },
-    [`& ${actionsContainer}`]: {
+  },
+});
+export const actionsContainer = style({
+  selectors: {
+    [`${content} &`]: {
       maxWidth: '450px',
     },
   },
@@ -48,9 +52,8 @@ export const linkButton = style({
 export const subtitle = style({
   flexWrap: 'wrap',
   justifyContent: 'center',
-  selectors: {
-    '& > *': {
-      whiteSpace: 'nowrap',
-    },
-  },
+});
+
+globalStyle(`${subtitle} > *`, {
+  whiteSpace: 'nowrap',
 });
