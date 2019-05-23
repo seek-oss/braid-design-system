@@ -10,6 +10,8 @@ import { useClassNames } from 'sku/treat';
 import { useTheme } from '../../components/private/ThemeContext';
 import { ResetProps } from '../../components/Reset/Reset';
 
+type ResponsiveProp<AtomName> = AtomName | [AtomName, AtomName];
+
 export interface BoxProps extends ResetProps {
   paddingTop?: ResponsiveProp<VerticalPadding>;
   paddingBottom?: ResponsiveProp<VerticalPadding>;
@@ -19,19 +21,15 @@ export interface BoxProps extends ResetProps {
   marginBottom?: ResponsiveProp<Spacing>;
   marginLeft?: ResponsiveProp<HorizontalSpacing>;
   marginRight?: ResponsiveProp<HorizontalSpacing>;
-  display?: ResponsiveProp<
-    'block' | 'inline' | 'none' | 'inlineBlock' | 'flex'
-  >;
-  flexDirection?: ResponsiveProp<'row' | 'column'>;
-  borderRadius?: 'standard';
+  display?: ResponsiveProp<keyof typeof styles.display>;
+  flexDirection?: ResponsiveProp<keyof typeof styles.flexDirection>;
+  borderRadius?: keyof typeof styles.borderRadius;
   backgroundColor?: BackgroundColor;
   boxShadow?: BoxShadow;
-  transform?: 'touchable';
-  transition?: 'fast' | 'touchable';
-  width?: 'full';
+  transform?: keyof typeof styles.transform;
+  transition?: keyof typeof styles.transition;
+  width?: keyof typeof styles.width;
 }
-
-type ResponsiveProp<AtomName> = AtomName | [AtomName, AtomName];
 
 function getResponsiveClasses<PropName extends string>(
   mobileClasses: Record<PropName, string>,
