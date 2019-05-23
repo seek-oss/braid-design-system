@@ -7,14 +7,12 @@ import { Css } from './types';
 
 import makeColors, { ColorParams } from './color/makeColors';
 import makeDisplayRules from './makeDisplayRules';
-import makeTransitions from './makeTransitions';
 import makeBorderRadius, { BorderRadiusParams } from './makeBorderRadius';
 import makeBackgroundColors, {
   BackgroundColorParams,
 } from './color/makeBackgroundColors';
 import makeBoxShadows, { BoxShadowParams } from './makeBoxShadows';
 import makePadding from './makePadding';
-import makeTransforms, { TransformParams } from './makeTransforms';
 import makeSizes from './makeSizes';
 import makeFlexDirections from './makeFlexDirections';
 
@@ -24,7 +22,6 @@ const makeAtoms = (
   borderRadius: BorderRadiusParams,
   boxShadows: BoxShadowParams,
   backgroundColor: BackgroundColorParams,
-  transforms: TransformParams,
 ): Css => {
   const rules = merge(
     makeBackgroundColors(backgroundColor),
@@ -34,8 +31,6 @@ const makeAtoms = (
     makeSizes(),
     makePadding(tokens),
     makeDisplayRules(tokens),
-    makeTransforms(transforms),
-    makeTransitions(),
     makeFlexDirections(tokens),
   );
 

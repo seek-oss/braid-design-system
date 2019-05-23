@@ -122,7 +122,4 @@ export const paddingTop_xlarge: string;
 export const paddingTop_xsmall: string;
 export const paddingTop_xxlarge: string;
 export const paddingTop_xxsmall: string;
-export const transform_touchable: string;
-export const transition_fast: string;
-export const transition_touchable: string;
 export const width_full: string;

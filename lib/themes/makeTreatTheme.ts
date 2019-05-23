@@ -11,6 +11,13 @@ interface ThemeVars extends Tokens {
     fontFamily: string;
     fontWeight: Record<TextWeight, number>;
   };
+  transforms: {
+    touchable: string;
+  };
+  transitions: {
+    fast: string;
+    touchable: string;
+  };
   color: {
     foreground: {
       formAccent: string;

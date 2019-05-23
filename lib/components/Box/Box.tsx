@@ -11,8 +11,6 @@ import {
   Display,
   FlexDirection,
   BoxShadow,
-  Transition,
-  Transform,
   Width,
 } from '../../themes/theme';
 import { ContrastProvider } from './ContrastContext';
@@ -49,8 +47,8 @@ export interface BoxProps extends ResetProps {
   borderRadius?: BorderRadius;
   backgroundColor?: BackgroundColor;
   boxShadow?: BoxShadow;
-  transform?: Transform;
-  transition?: Transition;
+  transform?: 'touchable';
+  transition?: 'fast' | 'touchable';
   width?: Width;
 }
 
@@ -84,8 +82,8 @@ export const Box = ({
         atoms.boxShadow[boxShadow!],
         atoms.borderRadius[borderRadius!],
         atoms.boxShadow[boxShadow!],
-        atoms.transition[transition!],
-        atoms.transform[transform!],
+        styles.transition[transition!],
+        styles.transform[transform!],
         atoms.width[width!],
         marginTop &&
           getResponsiveClasses(

@@ -152,13 +152,6 @@ export default (
     xxlarge: atoms.paddingRightDesktop_xxlarge,
     xxsmall: atoms.paddingRightDesktop_xxsmall,
   },
-  transform: {
-    touchable: atoms.transform_touchable,
-  },
-  transition: {
-    fast: atoms.transition_fast,
-    touchable: atoms.transition_touchable,
-  },
   width: {
     full: atoms.width_full,
   },

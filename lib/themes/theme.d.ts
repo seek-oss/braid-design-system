@@ -177,8 +177,6 @@ type Spacing =
   | 'xxlarge';
 type HorizontalSpacing = Spacing | 'gutter';
 type VerticalPadding = Spacing | 'standardTouchableText';
-type Transform = 'touchable';
-type Transition = 'fast' | 'touchable';
 
 export interface Atoms {
   reset: Record<ResetTags, string>;
@@ -198,8 +196,6 @@ export interface Atoms {
   displayDesktop: Record<Display, string>;
   flexDirection: Record<FlexDirection, string>;
   flexDirectionDesktop: Record<FlexDirection, string>;
-  transform: Record<Transform, string>;
-  transition: Record<Transition, string>;
   width: Record<Width, string>;
 }
 
