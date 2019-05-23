@@ -5,6 +5,7 @@ import { Text } from '../Text/Text';
 import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
 import * as styles from './TextLinkRenderer.treat';
 import { useTheme } from '../private/ThemeContext';
+import useBox from '../../hooks/useBox';
 
 interface StyleProps {
   style: CSSProperties;
@@ -31,20 +32,19 @@ export const TextLinkRenderer = ({
     });
   }
 
-  const touchableStyles = [
-    atoms.paddingTop.standardTouchableText,
-    atoms.paddingBottom.standardTouchableText,
-  ];
+  const touchableStyles = useBox({
+    paddingTop: 'standardTouchableText',
+    paddingBottom: 'standardTouchableText',
+  });
 
   if (inActions) {
-    const actionStyles = [
-      styles.button,
-      atoms.display.block,
-      atoms.width.full,
-      atoms.paddingLeft.small,
-      atoms.paddingRight.small,
-      atoms.borderRadius.standard,
-    ];
+    const actionStyles = useBox({
+      display: 'block',
+      width: 'full',
+      paddingLeft: 'small',
+      paddingRight: 'small',
+      borderRadius: 'standard',
+    });
 
     return (
       <Text baseline={false}>
@@ -54,6 +54,7 @@ export const TextLinkRenderer = ({
             className: useClassNames(
               defaultStyles,
               touchableStyles,
+              styles.button,
               actionStyles,
             ),
           })}
@@ -73,7 +74,7 @@ export const TextLinkRenderer = ({
         className: useClassNames(
           defaultStyles,
           touchableStyles,
-          atoms.display.inlineBlock,
+          useBox({ display: 'inlineBlock' }),
         ),
       })}
     </Text>
