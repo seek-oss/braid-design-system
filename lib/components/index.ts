@@ -1,4 +1,3 @@
-// Import reset file for high document order
 export { ThemeProvider } from './ThemeProvider/ThemeProvider';
 export {
   ThemeNameConsumer,
