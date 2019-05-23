@@ -1,5 +1,5 @@
 import mapValues from 'lodash/mapValues';
-import { css, Styles } from 'sku/treat';
+import { css, Styles, style } from 'sku/treat';
 import { px } from '../../atoms/utils/toUnit';
 import { Properties } from 'csstype';
 
@@ -11,7 +11,7 @@ const mapToCssRule = <Map extends string, Value extends string | number>(
   type MappedStyles = Record<Map, Styles>;
 
   return mapValues(map, (value: Value) =>
-    mapper ? mapper(value, propertyName) : value,
+    mapper ? mapper(value, propertyName) : { [propertyName]: value },
   ) as MappedStyles;
 };
 
@@ -69,3 +69,13 @@ export const marginDesktop = {
     spaceMapToCss(columnSpacing, columnWidth, 'marginRight', desktopStyles),
   ),
 };
+
+export const transform = {
+  touchable: style(({ transforms }) => ({
+    ':active': { transform: transforms.touchable },
+  })),
+};
+
+export const transition = css(({ transitions }) =>
+  mapToCssRule(transitions, 'transition'),
+);
