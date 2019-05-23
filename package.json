@@ -3,10 +3,7 @@
   "version": "0.0.1",
   "description": "Themeable design system for the SEEK Group",
   "main": "lib/components/index.ts",
-  "sideEffects": [
-    "lib/themes/**/*",
-    "lib/reset/*"
-  ],
+  "sideEffects": ["lib/themes/**/*", "lib/reset/*"],
   "scripts": {
     "check-integrity": "yarn check --integrity && echo 'Ignore paths from lint-staged'",
     "pretest": "sku configure",
@@ -46,14 +43,8 @@
       "yarn check-integrity",
       "git add package.json yarn.lock"
     ],
-    "**/*.{js}": [
-      "yarn lint",
-      "git add"
-    ],
-    "**/*.{js,md,less}": [
-      "yarn format",
-      "git add"
-    ]
+    "**/*.{js}": ["yarn lint", "git add"],
+    "**/*.{js,md,less}": ["yarn format", "git add"]
   },
   "repository": {
     "type": "git",
@@ -126,15 +117,15 @@
     "react-transition-group": "^2.6.1",
     "renovate-config-seek": "0.4.0",
     "semantic-release": "^15.13.3",
-    "sku": "8.5.2",
+    "sku": "8.5.3",
     "style-loader": "^0.23.1",
     "surge": "^0.20.1",
     "travis-deploy-once": "^5.0.9",
-    "treat": "1.0.0-beta.16"
+    "treat": "1.0.0-beta.17"
   },
   "resolutions": {
     "babel-plugin-treat": "1.0.0-beta.8",
-    "treat": "1.0.0-beta.16"
+    "treat": "1.0.0-beta.17"
   },
   "toolchain": {
     "node": "10.15.1",
