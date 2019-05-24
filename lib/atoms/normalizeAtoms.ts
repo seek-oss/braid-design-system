@@ -6,13 +6,6 @@ export default (
   atoms: typeof CssModuleAtoms,
 ): Atoms => ({
   reset,
-  boxShadow: {
-    outlineFocus: atoms.boxShadow_outlineFocus,
-    borderStandard: atoms.boxShadow_borderStandard,
-    borderCritical: atoms.boxShadow_borderCritical,
-    borderFormAccent: atoms.boxShadow_borderFormAccent,
-    borderFormAccentLarge: atoms.boxShadow_borderFormAccentLarge,
-  },
   color: {
     link: atoms.color_link,
     black: atoms.color_black,

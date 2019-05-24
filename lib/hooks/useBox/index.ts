@@ -3,7 +3,6 @@ import {
   HorizontalSpacing,
   VerticalPadding,
   Spacing,
-  BoxShadow,
 } from '../../themes/theme';
 import { useClassNames } from 'sku/treat';
 import { useTheme } from '../../components/private/ThemeContext';
@@ -23,7 +22,7 @@ export interface UseBoxProps {
   flexDirection?: ResponsiveProp<keyof typeof styles.flexDirection>;
   borderRadius?: keyof typeof styles.borderRadius;
   backgroundColor?: keyof typeof styles.backgroundColor;
-  boxShadow?: BoxShadow;
+  boxShadow?: keyof typeof styles.boxShadow;
   transform?: keyof typeof styles.transform;
   transition?: keyof typeof styles.transition;
   width?: keyof typeof styles.width;
@@ -67,7 +66,7 @@ export default ({
   return useClassNames(
     styles.backgroundColor[backgroundColor!],
     styles.borderRadius[borderRadius!],
-    atoms.boxShadow[boxShadow!],
+    styles.boxShadow[boxShadow!],
     styles.transition[transition!],
     styles.transform[transform!],
     styles.width[width!],

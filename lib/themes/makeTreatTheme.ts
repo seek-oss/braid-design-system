@@ -22,6 +22,16 @@ interface ThemeVars extends Tokens {
     radius: {
       standard: string;
     };
+    width: {
+      standard: number;
+      large: number;
+    };
+    color: {
+      standard: string;
+      focus: string;
+      critical: string;
+      formAccent: string;
+    };
   };
   color: {
     foreground: {

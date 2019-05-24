@@ -3,6 +3,7 @@ import tokens from './tokens';
 
 const white = '#fff';
 const blue2 = '#298EB9';
+const blue3 = '#94C9E0';
 const blue5 = '#EEF8FC';
 const alert = '#eb0000';
 const grey1 = '#333';
@@ -14,6 +15,7 @@ const critical = alert;
 
 const formAccent = blue2;
 const brandAccent = '#0d3880';
+const focus = blue3;
 
 export default makeTreatTheme({
   ...tokens,
@@ -37,6 +39,16 @@ export default makeTreatTheme({
   border: {
     radius: {
       standard: '4px',
+    },
+    width: {
+      standard: 1,
+      large: 2,
+    },
+    color: {
+      standard: grey4,
+      focus,
+      critical,
+      formAccent,
     },
   },
   color: {

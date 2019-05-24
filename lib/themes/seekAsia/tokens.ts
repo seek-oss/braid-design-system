@@ -85,10 +85,6 @@ const tokens: Tokens = {
     xlarge: 8,
     xxlarge: 16,
   },
-  borderWidth: {
-    standard: 1,
-    large: 2,
-  },
 };
 
 export default tokens;

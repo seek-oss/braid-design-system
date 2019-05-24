@@ -6,6 +6,7 @@ const critical = 'red';
 const positive = 'green';
 const info = 'navy';
 const brandAccent = 'DarkOrange';
+const focus = 'DeepSkyBlue';
 
 export default makeTreatTheme({
   ...tokens,
@@ -28,6 +29,16 @@ export default makeTreatTheme({
   border: {
     radius: {
       standard: '4px',
+    },
+    width: {
+      standard: 1,
+      large: 2,
+    },
+    color: {
+      standard: '#777',
+      focus,
+      critical,
+      formAccent,
     },
   },
   color: {
