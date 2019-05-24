@@ -33,12 +33,25 @@ interface ThemeVars extends Tokens {
       secondary: string;
       white: string;
     };
+    background: {
+      input: string;
+      inputDisabled: string;
+      brandAccent: string;
+      formAccent: string;
+      formAccentDisabled: string;
+      selection: string;
+      info: string;
+      card: string;
+      critical: string;
+      positive: string;
+    };
   };
 }
 
 const decorateTheme = (vars: ThemeVars) => ({
   ...vars,
   color: {
+    ...vars.color,
     foreground: {
       ...vars.color.foreground,
       criticalContrast: getAccessibleVariant(vars.color.foreground.critical),

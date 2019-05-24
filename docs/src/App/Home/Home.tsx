@@ -1,19 +1,22 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { Box, Button, Text } from '../../../../lib/components';
-import { BoxProps } from '../../../../lib/hooks/useBox';
 import { ConfigConsumer } from '../ConfigContext';
 import { Logo } from '../Logo/Logo';
 import { Github } from './Github/Github';
 import * as styles from './Home.treat';
 
-const actionProps: BoxProps = {
-  display: 'flex',
-  width: 'full',
-  marginLeft: ['none', 'xxsmall'],
-  marginRight: ['none', 'xxsmall'],
-  paddingBottom: ['xsmall', 'none'],
-};
+const Action = ({ children }: { children: ReactNode }) => (
+  <Box
+    display="flex"
+    width="full"
+    marginLeft={['none', 'xxsmall']}
+    marginRight={['none', 'xxsmall']}
+    paddingBottom={['xsmall', 'none']}
+  >
+    {children}
+  </Box>
+);
 
 export const Home = () => {
   return (
@@ -57,7 +60,7 @@ export const Home = () => {
               className={styles.actionsContainer}
               display={['block', 'flex']}
             >
-              <Box {...actionProps}>
+              <Action>
                 <Link
                   to="/components"
                   className={styles.linkButton}
@@ -65,8 +68,8 @@ export const Home = () => {
                 >
                   <Button weight="weak">Components</Button>
                 </Link>
-              </Box>
-              <Box {...actionProps}>
+              </Action>
+              <Action>
                 <a
                   href={playroomUrl}
                   className={styles.linkButton}
@@ -74,7 +77,7 @@ export const Home = () => {
                 >
                   <Button weight="weak">Playroom</Button>
                 </a>
-              </Box>
+              </Action>
             </Box>
           </Box>
 

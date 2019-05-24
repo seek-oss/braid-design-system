@@ -1,7 +1,7 @@
 import React, { ReactNode, AllHTMLAttributes } from 'react';
 import { useClassNames } from 'sku/treat';
-import { BackgroundColor, Color } from '../../themes/theme';
-import { Box } from '../Box/Box';
+import { Color } from '../../themes/theme';
+import { Box, BoxProps } from '../Box/Box';
 import { Text } from '../Text/Text';
 import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
 import * as styles from './Button.treat';
@@ -19,7 +19,7 @@ export interface ButtonProps {
 
 const backgroundColor: Record<
   ButtonState,
-  Record<ButtonWeight, BackgroundColor | undefined>
+  Record<ButtonWeight, BoxProps['backgroundColor'] | undefined>
 > = {
   base: {
     weak: undefined,

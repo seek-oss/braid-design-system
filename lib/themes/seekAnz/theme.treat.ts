@@ -41,5 +41,17 @@ export default makeTreatTheme({
       secondary: '#1c1c1ca1',
       white: 'white',
     },
+    background: {
+      input: '#fff',
+      inputDisabled: '#eee',
+      brandAccent,
+      formAccent,
+      formAccentDisabled: '#ccc',
+      selection: '#f5f8ff',
+      card: '#fff',
+      critical,
+      info,
+      positive,
+    },
   },
 });

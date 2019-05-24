@@ -1,7 +1,10 @@
 import React from 'react';
-import useBox, { BoxProps } from '../../hooks/useBox';
-import { Reset } from '../Reset/Reset';
+import useBox, { UseBoxProps } from '../../hooks/useBox';
+import { Reset, ResetProps } from '../Reset/Reset';
 import { ContrastProvider } from './ContrastContext';
+import { Omit } from 'utility-types';
+
+export interface BoxProps extends UseBoxProps, Omit<ResetProps, 'width'> {}
 
 export const Box = ({
   paddingTop,
