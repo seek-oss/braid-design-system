@@ -26,9 +26,6 @@ interface ColumnSpacingToken extends SpacingToken {
   gutter: number;
 }
 
-// Border definitions
-type BorderWidth = 'standard' | 'large';
-
 export interface Tokens {
   rowHeight: number;
   columnWidth: number;
@@ -39,15 +36,8 @@ export interface Tokens {
   text: Record<TextSize, ResponsiveText>;
   rowSpacing: SpacingToken;
   columnSpacing: ColumnSpacingToken;
-  borderWidth: Record<BorderWidth, number>;
 }
 
-export type BoxShadow =
-  | 'outlineFocus'
-  | 'borderStandard'
-  | 'borderCritical'
-  | 'borderFormAccent'
-  | 'borderFormAccentLarge';
 export type Color =
   | 'black'
   | 'white'
@@ -158,7 +148,6 @@ type VerticalPadding = Spacing | 'standardTouchableText';
 
 export interface Atoms {
   reset: Record<ResetTags, string>;
-  boxShadow: Record<BoxShadow, string>;
   color: Record<Color, string>;
   paddingTop: Record<VerticalPadding, string>;
   paddingRight: Record<HorizontalSpacing, string>;

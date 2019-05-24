@@ -6,19 +6,10 @@ import { Tokens } from '../themes/theme';
 import { Css } from './types';
 
 import makeColors, { ColorParams } from './color/makeColors';
-import makeBoxShadows, { BoxShadowParams } from './makeBoxShadows';
 import makePadding from './makePadding';
 
-const makeAtoms = (
-  tokens: Tokens,
-  colors: ColorParams,
-  boxShadows: BoxShadowParams,
-): Css => {
-  const rules = merge(
-    makeBoxShadows(tokens, boxShadows),
-    makeColors(colors),
-    makePadding(tokens),
-  );
+const makeAtoms = (tokens: Tokens, colors: ColorParams): Css => {
+  const rules = merge(makeColors(colors), makePadding(tokens));
 
   const [queryRules, regularRules] = partition(Object.keys(rules), ruleName =>
     ruleName.startsWith('@'),

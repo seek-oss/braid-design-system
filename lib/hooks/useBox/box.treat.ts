@@ -141,3 +141,21 @@ export const backgroundColor = css(({ color: { background } }) => ({
   criticalLight: { backgroundColor: getLightVariant(background.critical) },
   positiveLight: { backgroundColor: getLightVariant(background.positive) },
 }));
+
+export const boxShadow = css(({ border: { width: borderWidth, color } }) => ({
+  outlineFocus: {
+    boxShadow: `0 0 0 ${px(borderWidth.large)} ${color.focus}`,
+  },
+  borderStandard: {
+    boxShadow: `inset 0 0 0 ${px(borderWidth.standard)} ${color.standard}`,
+  },
+  borderCritical: {
+    boxShadow: `inset 0 0 0 ${px(borderWidth.standard)} ${color.critical}`,
+  },
+  borderFormAccent: {
+    boxShadow: `inset 0 0 0 ${px(borderWidth.standard)} ${color.formAccent}`,
+  },
+  borderFormAccentLarge: {
+    boxShadow: `inset 0 0 0 ${px(borderWidth.large)} ${color.formAccent}`,
+  },
+}));

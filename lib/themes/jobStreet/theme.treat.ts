@@ -1,6 +1,8 @@
 import makeTreatTheme from '../makeTreatTheme';
 import tokens from './tokens';
+import { rgba } from 'polished';
 
+const focus = rgba('#428bca', 0.7);
 const formAccent = '#142d69';
 const critical = '#eb0000';
 const info = '#142d69';
@@ -28,6 +30,16 @@ export default makeTreatTheme({
   border: {
     radius: {
       standard: '3px',
+    },
+    width: {
+      standard: 1,
+      large: 2,
+    },
+    color: {
+      standard: '#ccc',
+      focus,
+      critical,
+      formAccent,
     },
   },
   color: {
