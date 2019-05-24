@@ -8,6 +8,7 @@ const blue3 = '#94C9E0';
 const blue5 = '#EEF8FC';
 const alert = '#eb0000';
 const grey1 = '#333';
+const grey2 = '#666';
 const grey4 = '#ccc';
 const candidate = '#0c4b85'; // SEEK Asia name for this color
 const info = candidate;
@@ -65,7 +66,7 @@ export default makeTreatTheme({
       critical,
       info,
       positive,
-      secondary: grey1,
+      secondary: grey2,
       white,
     },
     background: {
