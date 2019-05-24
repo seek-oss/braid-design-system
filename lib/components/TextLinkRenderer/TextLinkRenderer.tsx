@@ -6,6 +6,7 @@ import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
 import * as styles from './TextLinkRenderer.treat';
 import { useTheme } from '../private/ThemeContext';
 import useBox from '../../hooks/useBox';
+import { useTextColor } from '../../hooks/typography';
 
 interface StyleProps {
   style: CSSProperties;
@@ -23,7 +24,7 @@ export const TextLinkRenderer = ({
 }: TextLinkRendererProps) => {
   const { atoms } = useTheme();
   const inActions = useContext(ActionsContext);
-  const defaultStyles = [styles.root, atoms.reset.a, atoms.color.link];
+  const defaultStyles = [styles.root, atoms.reset.a, useTextColor('link')];
 
   if (inline) {
     return children({

@@ -8,6 +8,7 @@ const critical = '#eb0000';
 const info = '#142d69';
 const positive = 'green';
 const brandAccent = '#fff200';
+const black = '#333';
 
 export default makeTreatTheme({
   ...tokens,
@@ -44,6 +45,11 @@ export default makeTreatTheme({
   },
   color: {
     foreground: {
+      link: '#1c3f94',
+      linkHover: '#142d69',
+      black,
+      neutral: black,
+      brandAccent,
       formAccent,
       formAccentDisabled: '#ccc',
       critical,

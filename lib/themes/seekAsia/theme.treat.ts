@@ -2,6 +2,7 @@ import makeTreatTheme from '../makeTreatTheme';
 import tokens from './tokens';
 
 const white = '#fff';
+const black = '#000';
 const blue2 = '#298EB9';
 const blue3 = '#94C9E0';
 const blue5 = '#EEF8FC';
@@ -16,6 +17,7 @@ const critical = alert;
 const formAccent = blue2;
 const brandAccent = '#0d3880';
 const focus = blue3;
+const link = blue2;
 
 export default makeTreatTheme({
   ...tokens,
@@ -53,6 +55,11 @@ export default makeTreatTheme({
   },
   color: {
     foreground: {
+      link,
+      linkHover: link,
+      black,
+      neutral: grey1,
+      brandAccent,
       formAccent,
       formAccentDisabled: grey4,
       critical,

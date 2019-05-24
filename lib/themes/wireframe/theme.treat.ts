@@ -7,6 +7,9 @@ const positive = 'green';
 const info = 'navy';
 const brandAccent = 'DarkOrange';
 const focus = 'DeepSkyBlue';
+const black = '#2b2b2b';
+const white = '#fff';
+const link = '#4c77bb';
 
 export default makeTreatTheme({
   ...tokens,
@@ -43,22 +46,27 @@ export default makeTreatTheme({
   },
   color: {
     foreground: {
+      link,
+      linkHover: link,
+      black,
+      neutral: black,
+      brandAccent,
       formAccent,
       formAccentDisabled: '#ccc',
       critical,
       info,
       positive,
       secondary: '#777',
-      white: 'white',
+      white,
     },
     background: {
-      input: 'white',
+      input: white,
       inputDisabled: '#eee',
       brandAccent,
       formAccent,
       formAccentDisabled: '#ccc',
       selection: '#eee',
-      card: '#fff',
+      card: white,
       critical,
       info,
       positive,

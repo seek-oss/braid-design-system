@@ -2,14 +2,14 @@ import React, { ComponentType } from 'react';
 import { useClassNames } from 'sku/treat';
 import { Box } from '../../Box/Box';
 import * as styles from './Icon.treat';
-import { useForeground } from '../../Box/ContrastContext';
+import { useTextColor, UseTextProps } from '../../../hooks/typography';
 
 type IconSize = 'standard' | 'large' | 'fill';
 
 export interface IconProps {
   size?: IconSize;
   inline?: boolean;
-  fill?: keyof typeof styles.fill;
+  fill?: UseTextProps['color'] | 'currentColor';
   svgComponent: ComponentType;
 }
 
@@ -35,7 +35,8 @@ export const Icon = ({
     display={inline ? 'inlineBlock' : 'block'}
     className={useClassNames(
       resolveSizeClasses(size, inline),
-      styles.fill[useForeground(fill)],
+      styles.currentColor,
+      fill !== 'currentColor' ? useTextColor(fill) : null,
     )}
   />
 );
