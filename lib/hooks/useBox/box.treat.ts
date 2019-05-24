@@ -119,3 +119,7 @@ export const flexDirectionDesktop = css(({ utils: { desktopStyles } }) =>
     }),
   ),
 );
+
+export const backgroundColor = css(({ color: { background } }) =>
+  mapToCssRule(background, 'backgroundColor'),
+);

@@ -3,7 +3,6 @@ import {
   HorizontalSpacing,
   VerticalPadding,
   Spacing,
-  BackgroundColor,
   BoxShadow,
 } from '../../themes/theme';
 import { useClassNames } from 'sku/treat';
@@ -24,7 +23,7 @@ export interface BoxProps extends ResetProps {
   display?: ResponsiveProp<keyof typeof styles.display>;
   flexDirection?: ResponsiveProp<keyof typeof styles.flexDirection>;
   borderRadius?: keyof typeof styles.borderRadius;
-  backgroundColor?: BackgroundColor;
+  backgroundColor?: keyof typeof styles.backgroundColor;
   boxShadow?: BoxShadow;
   transform?: keyof typeof styles.transform;
   transition?: keyof typeof styles.transition;
@@ -67,7 +66,7 @@ export default ({
   const { atoms } = useTheme();
 
   return useClassNames(
-    atoms.backgroundColor[backgroundColor!],
+    styles.backgroundColor[backgroundColor!],
     styles.borderRadius[borderRadius!],
     atoms.boxShadow[boxShadow!],
     styles.transition[transition!],

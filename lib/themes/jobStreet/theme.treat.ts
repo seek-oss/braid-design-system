@@ -5,6 +5,7 @@ const formAccent = '#142d69';
 const critical = '#eb0000';
 const info = '#142d69';
 const positive = 'green';
+const brandAccent = '#fff200';
 
 export default makeTreatTheme({
   ...tokens,
@@ -38,6 +39,18 @@ export default makeTreatTheme({
       positive,
       secondary: '#333333b3',
       white: 'white',
+    },
+    background: {
+      input: 'white',
+      inputDisabled: '#eee',
+      brandAccent,
+      formAccent,
+      formAccentDisabled: '#ccc',
+      selection: '#E8EBF4',
+      card: '#fff',
+      critical,
+      info,
+      positive,
     },
   },
 });

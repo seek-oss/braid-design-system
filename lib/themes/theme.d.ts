@@ -42,24 +42,6 @@ export interface Tokens {
   borderWidth: Record<BorderWidth, number>;
 }
 
-type BackgroundColor =
-  | 'input'
-  | 'inputDisabled'
-  | 'brandAccent'
-  | 'brandAccentActive'
-  | 'brandAccentHover'
-  | 'formAccent'
-  | 'formAccentActive'
-  | 'formAccentHover'
-  | 'formAccentDisabled'
-  | 'selection'
-  | 'info'
-  | 'infoLight'
-  | 'card'
-  | 'critical'
-  | 'criticalLight'
-  | 'positive'
-  | 'positiveLight';
 export type BoxShadow =
   | 'outlineFocus'
   | 'borderStandard'
@@ -176,7 +158,6 @@ type VerticalPadding = Spacing | 'standardTouchableText';
 
 export interface Atoms {
   reset: Record<ResetTags, string>;
-  backgroundColor: Record<BackgroundColor, string>;
   boxShadow: Record<BoxShadow, string>;
   color: Record<Color, string>;
   paddingTop: Record<VerticalPadding, string>;

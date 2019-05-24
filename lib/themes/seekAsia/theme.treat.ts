@@ -3,6 +3,7 @@ import tokens from './tokens';
 
 const white = '#fff';
 const blue2 = '#298EB9';
+const blue5 = '#EEF8FC';
 const alert = '#eb0000';
 const grey1 = '#333';
 const grey4 = '#ccc';
@@ -12,6 +13,7 @@ const positive = '#498307';
 const critical = alert;
 
 const formAccent = blue2;
+const brandAccent = '#0d3880';
 
 export default makeTreatTheme({
   ...tokens,
@@ -46,6 +48,18 @@ export default makeTreatTheme({
       positive,
       secondary: grey1,
       white,
+    },
+    background: {
+      input: white,
+      inputDisabled: grey4,
+      brandAccent,
+      formAccent,
+      formAccentDisabled: grey4,
+      selection: blue5,
+      card: white,
+      critical,
+      info,
+      positive,
     },
   },
 });
