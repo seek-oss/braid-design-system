@@ -1,7 +1,6 @@
 import React from 'react';
 import { useClassNames } from 'sku/treat';
-import { Box } from '../../Box/Box';
-import { BoxProps } from '../../../hooks/useBox';
+import { Box, BoxProps } from '../../Box/Box';
 import * as styles from './Overlay.treat';
 
 export type OverlayProps = Partial<

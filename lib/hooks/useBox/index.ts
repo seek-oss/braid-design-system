@@ -7,11 +7,10 @@ import {
 } from '../../themes/theme';
 import { useClassNames } from 'sku/treat';
 import { useTheme } from '../../components/private/ThemeContext';
-import { ResetProps } from '../../components/Reset/Reset';
 
 type ResponsiveProp<AtomName> = AtomName | [AtomName, AtomName];
 
-export interface BoxProps extends ResetProps {
+export interface UseBoxProps {
   paddingTop?: ResponsiveProp<VerticalPadding>;
   paddingBottom?: ResponsiveProp<VerticalPadding>;
   paddingLeft?: ResponsiveProp<HorizontalSpacing>;
@@ -62,7 +61,7 @@ export default ({
   transition,
   transform,
   width,
-}: BoxProps) => {
+}: UseBoxProps) => {
   const { atoms } = useTheme();
 
   return useClassNames(

@@ -1,7 +1,9 @@
-import { BoxProps } from '../../hooks/useBox';
 import { createContext, useContext } from 'react';
+import { Theme } from 'treat/theme';
 
-const contrastContext = createContext<BoxProps['backgroundColor'] | null>(null);
+type BackgroundColor = keyof Theme['color']['background'];
+
+const contrastContext = createContext<BackgroundColor | null>(null);
 
 export const ContrastProvider = contrastContext.Provider;
 

@@ -1,8 +1,7 @@
 import React, { ReactNode } from 'react';
 import { useClassNames } from 'sku/treat';
 import { Color } from '../../themes/theme';
-import { Box } from '../Box/Box';
-import { BoxProps } from '../../hooks/useBox';
+import { Box, BoxProps } from '../Box/Box';
 import * as styles from './Text.treat';
 import { useTheme } from '../private/ThemeContext';
 import { useForeground } from '../Box/ContrastContext';
