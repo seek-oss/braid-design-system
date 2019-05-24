@@ -9,7 +9,7 @@ type IconSize = 'standard' | 'large' | 'fill';
 export interface IconProps {
   size?: IconSize;
   inline?: boolean;
-  fill?: UseTextProps['color'] | 'currentColor';
+  fill?: UseTextProps['color'];
   svgComponent: ComponentType;
 }
 
@@ -27,7 +27,7 @@ export const Icon = ({
   size = 'standard',
   svgComponent,
   inline = false,
-  fill = 'currentColor',
+  fill,
 }: IconProps) => (
   <Box
     component={svgComponent}
@@ -36,7 +36,7 @@ export const Icon = ({
     className={useClassNames(
       resolveSizeClasses(size, inline),
       styles.currentColor,
-      fill !== 'currentColor' ? useTextColor(fill) : null,
+      fill ? useTextColor(fill) : null,
     )}
   />
 );
