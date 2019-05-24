@@ -1,7 +1,10 @@
 import mapValues from 'lodash/mapValues';
 import { css, Styles, style } from 'sku/treat';
-import { px } from '../../atoms/utils/toUnit';
 import { Properties } from 'csstype';
+import { darken, lighten } from 'polished';
+import { getLightVariant } from '../../atoms/utils/a11y';
+import isLight from '../../atoms/utils/isLight';
+import { px } from '../../atoms/utils/toUnit';
 
 const mapToCssRule = <Map extends string, Value extends string | number>(
   map: Record<Map, Value>,
@@ -120,6 +123,21 @@ export const flexDirectionDesktop = css(({ utils: { desktopStyles } }) =>
   ),
 );
 
-export const backgroundColor = css(({ color: { background } }) =>
-  mapToCssRule(background, 'backgroundColor'),
-);
+const getActiveColor = (color: string) =>
+  isLight(color) ? darken(0.1, color) : darken(0.05, color);
+
+const getHoverColor = (color: string) =>
+  isLight(color) ? darken(0.05, color) : lighten(0.05, color);
+
+export const backgroundColor = css(({ color: { background } }) => ({
+  ...mapToCssRule(background, 'backgroundColor'),
+  formAccentActive: { backgroundColor: getActiveColor(background.formAccent) },
+  formAccentHover: { backgroundColor: getHoverColor(background.formAccent) },
+  brandAccentActive: {
+    backgroundColor: getActiveColor(background.brandAccent),
+  },
+  brandAccentHover: { backgroundColor: getHoverColor(background.brandAccent) },
+  infoLight: { backgroundColor: getLightVariant(background.info) },
+  criticalLight: { backgroundColor: getLightVariant(background.critical) },
+  positiveLight: { backgroundColor: getLightVariant(background.positive) },
+}));
