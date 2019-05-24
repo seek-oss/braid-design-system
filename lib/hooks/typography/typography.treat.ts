@@ -98,10 +98,8 @@ export const color = css(theme => {
       color: link,
       ...(link !== linkHover
         ? {
-            selectors: {
-              '&:hover': { color: linkHover },
-              '&:focus': { color: linkHover },
-            },
+            ':hover': { color: linkHover },
+            ':focus': { color: linkHover },
           }
         : {}),
     },
