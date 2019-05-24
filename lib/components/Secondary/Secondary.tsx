@@ -1,12 +1,10 @@
 import React, { ReactNode } from 'react';
-import { useTheme } from '../private/ThemeContext';
+import { useTextColor } from '../../hooks/typography';
 
 export interface SecondaryProps {
   children: ReactNode;
 }
 
-export const Secondary = ({ children }: SecondaryProps) => {
-  const { atoms } = useTheme();
-
-  return <span className={atoms.color.secondary}>{children}</span>;
-};
+export const Secondary = ({ children }: SecondaryProps) => (
+  <span className={useTextColor('secondary')}>{children}</span>
+);

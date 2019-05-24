@@ -1,7 +1,6 @@
 import React, { ReactNode, AllHTMLAttributes } from 'react';
 import { FieldTone } from '../../../themes/theme';
 import { useClassNames } from 'sku/treat';
-import { useTheme } from '../ThemeContext';
 import { Box, BoxProps } from '../../Box/Box';
 import { FieldLabel } from '../../FieldLabel/FieldLabel';
 import { FieldMessage } from '../../FieldMessage/FieldMessage';
@@ -52,7 +51,6 @@ export const Field = ({
   secondaryMessage,
   tone = 'neutral',
 }: InternalFieldProps) => {
-  const { atoms } = useTheme();
   const messageId = `${id}-message`;
 
   return (
@@ -82,7 +80,6 @@ export const Field = ({
           className: useClassNames(
             styles.field,
             useText({ size: 'standard', baseline: false }),
-            atoms.color.neutral,
           ),
         })}
         <FieldOverlay variant="focus" className={styles.focusOverlay} />

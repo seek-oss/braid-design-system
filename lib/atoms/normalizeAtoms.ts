@@ -6,21 +6,6 @@ export default (
   atoms: typeof CssModuleAtoms,
 ): Atoms => ({
   reset,
-  color: {
-    link: atoms.color_link,
-    black: atoms.color_black,
-    critical: atoms.color_critical,
-    criticalContrast: atoms.color_criticalContrast,
-    brandAccentForeground: atoms.color_brandAccentForeground,
-    formAccent: atoms.color_formAccent,
-    neutral: atoms.color_neutral,
-    positive: atoms.color_positive,
-    positiveContrast: atoms.color_positiveContrast,
-    secondary: atoms.color_secondary,
-    info: atoms.color_info,
-    infoContrast: atoms.color_infoContrast,
-    white: atoms.color_white,
-  },
   paddingBottom: {
     none: atoms.paddingBottom_none,
     large: atoms.paddingBottom_large,

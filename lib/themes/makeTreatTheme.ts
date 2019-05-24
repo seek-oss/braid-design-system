@@ -2,14 +2,16 @@ import './treatTheme.d';
 import { createTheme } from 'sku/treat';
 import { Tokens } from './theme';
 import makeUtils from './makeUtils';
-import { getAccessibleVariant } from '../atoms/utils/a11y';
-import { TextWeight } from '../hooks/typography';
 
 interface ThemeVars extends Tokens {
   name: string;
   typography: {
     fontFamily: string;
-    fontWeight: Record<TextWeight, number>;
+    fontWeight: {
+      regular: number;
+      medium: number;
+      strong: number;
+    };
   };
   transforms: {
     touchable: string;
@@ -35,6 +37,11 @@ interface ThemeVars extends Tokens {
   };
   color: {
     foreground: {
+      link: string;
+      linkHover: string;
+      black: string;
+      neutral: string;
+      brandAccent: string;
       formAccent: string;
       formAccentDisabled: string;
       critical: string;
@@ -58,20 +65,12 @@ interface ThemeVars extends Tokens {
   };
 }
 
-const decorateTheme = (vars: ThemeVars) => ({
+const addUtilsToTheme = (vars: ThemeVars) => ({
   ...vars,
-  color: {
-    ...vars.color,
-    foreground: {
-      ...vars.color.foreground,
-      criticalContrast: getAccessibleVariant(vars.color.foreground.critical),
-      infoContrast: getAccessibleVariant(vars.color.foreground.info),
-      positiveContrast: getAccessibleVariant(vars.color.foreground.positive),
-    },
-  },
   utils: makeUtils(vars),
 });
 
-export default (themeVars: ThemeVars) => createTheme(decorateTheme(themeVars));
+export default (themeVars: ThemeVars) =>
+  createTheme(addUtilsToTheme(themeVars));
 
-export type TreatTheme = ReturnType<typeof decorateTheme>;
+export type TreatTheme = ReturnType<typeof addUtilsToTheme>;

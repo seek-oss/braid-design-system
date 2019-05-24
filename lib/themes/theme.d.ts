@@ -38,20 +38,6 @@ export interface Tokens {
   columnSpacing: ColumnSpacingToken;
 }
 
-export type Color =
-  | 'black'
-  | 'white'
-  | 'critical'
-  | 'criticalContrast'
-  | 'positive'
-  | 'positiveContrast'
-  | 'secondary'
-  | 'info'
-  | 'infoContrast'
-  | 'brandAccentForeground'
-  | 'formAccent'
-  | 'neutral'
-  | 'link';
 type FontSize = TextSize | HeadingSize;
 type ResetTags =
   | 'html'
@@ -148,7 +134,6 @@ type VerticalPadding = Spacing | 'standardTouchableText';
 
 export interface Atoms {
   reset: Record<ResetTags, string>;
-  color: Record<Color, string>;
   paddingTop: Record<VerticalPadding, string>;
   paddingRight: Record<HorizontalSpacing, string>;
   paddingBottom: Record<VerticalPadding, string>;

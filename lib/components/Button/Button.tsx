@@ -1,8 +1,7 @@
 import React, { ReactNode, AllHTMLAttributes } from 'react';
 import { useClassNames } from 'sku/treat';
-import { Color } from '../../themes/theme';
 import { Box, BoxProps } from '../Box/Box';
-import { Text } from '../Text/Text';
+import { Text, TextProps } from '../Text/Text';
 import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
 import * as styles from './Button.treat';
 
@@ -38,7 +37,7 @@ const backgroundColor: Record<
   },
 };
 
-const foregroundColor: Record<ButtonWeight, Color> = {
+const foregroundColor: Record<ButtonWeight, TextProps['color']> = {
   weak: 'formAccent',
   regular: 'white',
   strong: 'brandAccentForeground',

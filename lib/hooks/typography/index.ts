@@ -1,25 +1,32 @@
 import { useClassNames } from 'sku/treat';
-import { fontFamily, fontWeight, heading, text } from './typography.treat';
+import * as styles from './typography.treat';
 import { useTheme } from '../../components/private/ThemeContext';
+import { useForeground } from '../../components/Box/ContrastContext';
 
-export type TextWeight = 'regular' | 'medium' | 'strong';
-
-interface TextParams {
-  weight?: TextWeight;
-  size?: keyof typeof text;
+export interface UseTextProps {
+  weight?: keyof typeof styles.fontWeight;
+  size?: keyof typeof styles.text;
+  color?: keyof typeof styles.color;
   baseline: boolean;
 }
 
 export const useText = ({
   weight = 'regular',
   size = 'standard',
+  color = 'neutral',
   baseline,
-}: TextParams) =>
-  useClassNames(fontFamily, fontWeight[weight], text[size].fontSize, {
-    [text[size].transform]: baseline,
-  });
+}: UseTextProps) =>
+  useClassNames(
+    styles.fontFamily,
+    styles.fontWeight[weight],
+    styles.text[size].fontSize,
+    useTextColor(color),
+    {
+      [styles.text[size].transform]: baseline,
+    },
+  );
 
-export type HeadingLevel = keyof typeof heading;
+export type HeadingLevel = keyof typeof styles.heading;
 export type HeadingWeight = 'regular' | 'weak';
 
 interface HeadingParams {
@@ -44,13 +51,17 @@ export const useHeading = ({
   baseline,
 }: HeadingParams) =>
   useClassNames(
-    fontFamily,
-    fontWeight[resolveLevelToken(level)[weight]],
-    heading[level].fontSize,
+    styles.fontFamily,
+    styles.fontWeight[resolveLevelToken(level)[weight]],
+    styles.heading[level].fontSize,
+    useTextColor('neutral'),
     {
-      [heading[level].transform]: baseline,
+      [styles.heading[level].transform]: baseline,
     },
   );
 
-export const useWeight = (weight: TextWeight) =>
-  useClassNames(fontWeight[weight]);
+export const useWeight = (weight: keyof typeof styles.fontWeight) =>
+  useClassNames(styles.fontWeight[weight]);
+
+export const useTextColor = (color: keyof typeof styles.color) =>
+  useClassNames(styles.color[useForeground(color)]);

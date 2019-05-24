@@ -1,7 +1,5 @@
 import React, { ReactNode } from 'react';
-import { useClassNames } from 'sku/treat';
 import { Box, BoxProps } from '../Box/Box';
-import { useTheme } from '../private/ThemeContext';
 import {
   useHeading,
   HeadingLevel,
@@ -27,19 +25,12 @@ export const Heading = ({
   weight,
   component,
   children,
-}: HeadingProps) => {
-  const theme = useTheme();
-
-  return (
-    <Box
-      component={component || resolveDefaultComponent[level]}
-      paddingBottom={level === '1' ? 'small' : 'xsmall'}
-      className={useClassNames(
-        useHeading({ weight, level, baseline: true }),
-        theme.atoms.color.neutral,
-      )}
-    >
-      {children}
-    </Box>
-  );
-};
+}: HeadingProps) => (
+  <Box
+    component={component || resolveDefaultComponent[level]}
+    paddingBottom={level === '1' ? 'small' : 'xsmall'}
+    className={useHeading({ weight, level, baseline: true })}
+  >
+    {children}
+  </Box>
+);

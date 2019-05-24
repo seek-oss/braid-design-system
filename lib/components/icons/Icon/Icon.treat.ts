@@ -1,5 +1,4 @@
 import { style, css } from 'sku/treat';
-import mapTokensToStyleProperty from '../../../utils/mapTokensToStyleProperty';
 
 export const inline = style({
   verticalAlign: 'middle',
@@ -45,7 +44,4 @@ export const blockSizes = css(theme => {
   };
 });
 
-export const fill = css(({ color }) => ({
-  ...mapTokensToStyleProperty(color.foreground, 'fill'),
-  currentColor: { fill: 'currentColor' },
-}));
+export const currentColor = style({ fill: 'currentColor' });

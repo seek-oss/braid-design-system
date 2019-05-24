@@ -9,8 +9,7 @@ import { Box } from '../Box/Box';
 import { Field, FieldProps } from '../private/Field/Field';
 import * as styles from './Dropdown.treat';
 import { ChevronIcon } from '../icons/ChevronIcon/ChevronIcon';
-import { useTheme } from '../private/ThemeContext';
-import { Color } from '../../themes/theme';
+import { useTextColor } from '../../hooks/typography';
 
 type ValidDropdownChildren = AllHTMLAttributes<
   HTMLOptionElement | HTMLOptGroupElement
@@ -28,7 +27,7 @@ interface DropdownProps extends FieldProps {
 const getColor = (
   placeholder: DropdownProps['placeholder'],
   value: DropdownProps['value'],
-): Color => {
+) => {
   if (!value && placeholder) {
     return 'secondary';
   }
@@ -52,8 +51,6 @@ export const Dropdown = ({
   onFocus,
   placeholder,
 }: DropdownProps) => {
-  const { atoms } = useTheme();
-
   Children.forEach(children, child => {
     if (!(isValidElement(child) && /^(option|optgroup)$/.test(child.type))) {
       throw new Error(
@@ -88,7 +85,7 @@ export const Dropdown = ({
             className={useClassNames(
               styles.field,
               className,
-              atoms.color[getColor(placeholder, value)],
+              useTextColor(getColor(placeholder, value)),
             )}
             {...fieldProps}
           >
