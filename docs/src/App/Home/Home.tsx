@@ -8,8 +8,8 @@ import * as styles from './Home.treat';
 
 const Action = ({ children }: { children: ReactNode }) => (
   <Box
-    display={'flex'}
-    width={'full'}
+    display="flex"
+    width="full"
     marginLeft={['none', 'xxsmall']}
     marginRight={['none', 'xxsmall']}
     paddingBottom={['xsmall', 'none']}

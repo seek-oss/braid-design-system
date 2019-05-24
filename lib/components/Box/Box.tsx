@@ -1,8 +1,7 @@
 import React from 'react';
 import useBox, { UseBoxProps } from '../../hooks/useBox';
-import { Reset } from '../Reset/Reset';
+import { Reset, ResetProps } from '../Reset/Reset';
 import { ContrastProvider } from './ContrastContext';
-import { ResetProps } from '../../components/Reset/Reset';
 import { Omit } from 'utility-types';
 
 export interface BoxProps extends UseBoxProps, Omit<ResetProps, 'width'> {}
