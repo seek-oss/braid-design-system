@@ -75,8 +75,6 @@ export const Dropdown = ({
           <Box
             component="select"
             paddingLeft={paddingLeft}
-            paddingTop="standardTouchableText"
-            paddingBottom="standardTouchableText"
             value={value}
             onChange={onChange}
             onBlur={onBlur}

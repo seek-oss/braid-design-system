@@ -32,13 +32,12 @@ export interface Tokens {
   touchableRows: number;
   responsiveBreakpoint: number;
   descenderHeightScale: number;
-  heading: Record<HeadingSize, ResponsiveHeading>;
-  text: Record<TextSize, ResponsiveText>;
+  heading: Record<'level1' | 'level2' | 'level3', ResponsiveHeading>;
+  text: Record<'standard' | 'large', ResponsiveText>;
   rowSpacing: SpacingToken;
   columnSpacing: ColumnSpacingToken;
 }
 
-type FontSize = TextSize | HeadingSize;
 type ResetTags =
   | 'html'
   | 'body'
@@ -130,7 +129,7 @@ type Spacing =
   | 'xlarge'
   | 'xxlarge';
 type HorizontalSpacing = Spacing | 'gutter';
-type VerticalPadding = Spacing | 'standardTouchableText';
+type VerticalPadding = Spacing;
 
 export interface Atoms {
   reset: Record<ResetTags, string>;

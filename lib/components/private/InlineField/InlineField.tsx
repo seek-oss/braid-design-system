@@ -10,6 +10,7 @@ import {
 import { FieldOverlay } from '../FieldOverlay/FieldOverlay';
 import { Text } from '../../Text/Text';
 import { TickIcon } from '../../icons/TickIcon/TickIcon';
+import { useTouchableSpace } from '../../../hooks/typography';
 
 type FormElementProps = AllHTMLAttributes<HTMLFormElement>;
 export interface InlineFieldProps {
@@ -101,9 +102,7 @@ export const InlineField = ({
         <Box
           component="label"
           htmlFor={id}
-          paddingTop="standardTouchableText"
-          paddingBottom="standardTouchableText"
-          className={styles.label}
+          className={useClassNames(styles.label, useTouchableSpace('standard'))}
         >
           <Text
             component="span"

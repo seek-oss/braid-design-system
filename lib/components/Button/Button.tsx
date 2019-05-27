@@ -4,6 +4,7 @@ import { Box, BoxProps } from '../Box/Box';
 import { Text, TextProps } from '../Text/Text';
 import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
 import * as styles from './Button.treat';
+import { useTouchableSpace } from '../../hooks/typography';
 
 type ButtonWeight = 'weak' | 'regular' | 'strong';
 type ButtonState = 'base' | 'hover' | 'active';
@@ -82,9 +83,7 @@ export const Button = ({
       <Box
         paddingLeft="gutter"
         paddingRight="gutter"
-        paddingBottom="standardTouchableText"
-        paddingTop="standardTouchableText"
-        className={useClassNames(styles.content)}
+        className={useClassNames(styles.content, useTouchableSpace('standard'))}
       >
         <Text baseline={false} weight="medium" color={foregroundColor[weight]}>
           {children}

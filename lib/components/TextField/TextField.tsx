@@ -52,8 +52,6 @@ export const TextField = ({
       <Box
         component="input"
         type={validTypes[type]}
-        paddingTop="standardTouchableText"
-        paddingBottom="standardTouchableText"
         value={value}
         onChange={onChange}
         onFocus={onFocus}
