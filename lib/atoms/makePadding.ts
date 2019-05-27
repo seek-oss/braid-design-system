@@ -2,7 +2,7 @@ import { Tokens, Breakpoint } from '../themes/theme';
 import rowSpacingForCssRule from './utils/rowSpacingForCssRule';
 import columnSpacingForCssRule from './utils/columnSpacingForCssRule';
 import makeDesktopRules from './utils/makeDesktopRules';
-import { px } from './utils/toUnit';
+import { px } from '../utils/toUnit';
 
 const touchablePaddingRules = (
   tokens: Tokens,

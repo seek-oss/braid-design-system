@@ -2,9 +2,9 @@ import { style, css } from 'sku/treat';
 import { Theme } from 'treat/theme';
 import basekick from 'basekick';
 import { Breakpoint } from '../../themes/theme';
-import mapTokensToStyleProperty from '../../utils/mapTokensToStyleProperty';
-import { getAccessibleVariant } from '../../atoms/utils/a11y';
-import isLight from '../../atoms/utils/isLight';
+import mapToStyleProperty from '../../utils/mapToStyleProperty';
+import { getAccessibleVariant } from '../../utils/a11y';
+import isLight from '../../utils/isLight';
 
 export const fontFamily = style(({ typography }) => ({
   fontFamily: typography.fontFamily,
@@ -93,7 +93,7 @@ export const color = css(theme => {
   const { linkHover, link, ...foreground } = theme.color.foreground;
 
   return {
-    ...mapTokensToStyleProperty(foreground, 'color'),
+    ...mapToStyleProperty(foreground, 'color'),
     link: {
       color: link,
       ...(link !== linkHover

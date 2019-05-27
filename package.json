@@ -3,7 +3,10 @@
   "version": "0.0.1",
   "description": "Themeable design system for the SEEK Group",
   "main": "lib/components/index.ts",
-  "sideEffects": ["lib/themes/**/*", "lib/reset/*"],
+  "sideEffects": [
+    "lib/themes/**/*",
+    "lib/reset/*"
+  ],
   "scripts": {
     "check-integrity": "yarn check --integrity && echo 'Ignore paths from lint-staged'",
     "pretest": "sku configure",
@@ -43,8 +46,14 @@
       "yarn check-integrity",
       "git add package.json yarn.lock"
     ],
-    "**/*.{js}": ["yarn lint", "git add"],
-    "**/*.{js,md,less}": ["yarn format", "git add"]
+    "**/*.{js}": [
+      "yarn lint",
+      "git add"
+    ],
+    "**/*.{js,md,less}": [
+      "yarn format",
+      "git add"
+    ]
   },
   "repository": {
     "type": "git",
@@ -57,7 +66,7 @@
   },
   "homepage": "https://github.com/seek-oss/braid-design-system#readme",
   "dependencies": {
-    "@types/lodash": "^4.14.123",
+    "@types/lodash": "^4.14.132",
     "@types/react": "^16.8.8",
     "basekick": "^3.1.1",
     "csstype": "^2.6.4",
