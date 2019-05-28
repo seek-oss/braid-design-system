@@ -1,7 +1,6 @@
 import toPairs from 'lodash/toPairs';
 import fromPairs from 'lodash/fromPairs';
 
-import { px } from '../../utils/toUnit';
 import { Tokens } from '../../themes/theme';
 
 export default (
@@ -13,7 +12,7 @@ export default (
     toPairs(rowSpacing).map(([key, value]) => [
       `.${ruleName}_${key}`,
       {
-        [propertyName]: px(value * rowHeight),
+        [propertyName]: value * rowHeight,
       },
     ]),
   );

@@ -1,4 +1,3 @@
-import { px } from '../../utils/toUnit';
 import { Tokens } from '../../themes/theme';
 import toPairs from 'lodash/toPairs';
 import fromPairs from 'lodash/fromPairs';
@@ -12,7 +11,7 @@ export default (
     toPairs(columnSpacing).map(([key, value]) => [
       `.${ruleName}_${key}`,
       {
-        [propertyName]: px(value * columnWidth),
+        [propertyName]: value * columnWidth,
       },
     ]),
   );
