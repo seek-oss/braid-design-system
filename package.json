@@ -19,7 +19,7 @@
     "prelint": "yarn generate-component-docs",
     "prestart": "yarn generate-component-docs",
     "prebuild": "yarn generate-component-docs",
-    "build": "sku build && NODE_ENV=production sku build-playroom",
+    "build": "concurrently \"sku build\" \"sku build-playroom\"",
     "playroom": "sku playroom",
     "storybook": "sku storybook",
     "chromatic": "sku chromatic",
