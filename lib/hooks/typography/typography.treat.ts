@@ -120,11 +120,7 @@ export const color = css(theme => {
   };
 });
 
-const touchableSpace = (
-  theme: Theme,
-  breakpoint: Breakpoint,
-  isDesktop?: boolean,
-) => {
+const touchableSpace = (theme: Theme, breakpoint: Breakpoint) => {
   const { touchableRows, rowHeight } = theme;
 
   return mapValues(theme.text, textDefinition => {
@@ -136,10 +132,10 @@ const touchableSpace = (
       paddingBottom: space,
     };
 
-    return isDesktop ? theme.utils.desktopStyles(spaceStyles) : spaceStyles;
+    return breakpoint === 'desktop'
+      ? theme.utils.desktopStyles(spaceStyles)
+      : spaceStyles;
   });
 };
-export const touchable = css(theme => touchableSpace(theme, 'mobile', false));
-export const touchableDesktop = css(theme =>
-  touchableSpace(theme, 'desktop', true),
-);
+export const touchable = css(theme => touchableSpace(theme, 'mobile'));
+export const touchableDesktop = css(theme => touchableSpace(theme, 'desktop'));
