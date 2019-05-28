@@ -33,7 +33,7 @@ export interface Tokens {
   responsiveBreakpoint: number;
   descenderHeightScale: number;
   heading: Record<'level1' | 'level2' | 'level3', ResponsiveHeading>;
-  text: Record<'standard' | 'large', ResponsiveText>;
+  text: Record<'small' | 'standard' | 'large', ResponsiveText>;
   rowSpacing: SpacingToken;
   columnSpacing: ColumnSpacingToken;
 }

@@ -6,6 +6,10 @@ const docs: ComponentDocs = {
   examples: [
     { label: 'Standard Text', render: () => <Text>Standard text.</Text> },
     {
+      label: 'Small Text',
+      render: () => <Text size="small">Small text.</Text>,
+    },
+    {
       label: 'Large Text',
       render: () => <Text size="large">Large text.</Text>,
     },
