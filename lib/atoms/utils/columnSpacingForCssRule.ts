@@ -1,4 +1,4 @@
-import { px } from './toUnit';
+import { px } from '../../utils/toUnit';
 import { Tokens } from '../../themes/theme';
 import toPairs from 'lodash/toPairs';
 import fromPairs from 'lodash/fromPairs';

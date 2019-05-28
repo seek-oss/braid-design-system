@@ -6,7 +6,7 @@ import { FieldLabel } from '../../FieldLabel/FieldLabel';
 import { FieldMessage } from '../../FieldMessage/FieldMessage';
 import { FieldOverlay } from '../FieldOverlay/FieldOverlay';
 import * as styles from './Field.treat';
-import { useText } from '../../../hooks/typography';
+import { useText, useTouchableSpace } from '../../../hooks/typography';
 
 type FormElementProps = AllHTMLAttributes<HTMLFormElement>;
 export interface FieldProps {
@@ -80,6 +80,7 @@ export const Field = ({
           className: useClassNames(
             styles.field,
             useText({ size: 'standard', baseline: false }),
+            useTouchableSpace('standard'),
           ),
         })}
         <FieldOverlay variant="focus" className={styles.focusOverlay} />

@@ -1,10 +1,12 @@
+import mapValues from 'lodash/mapValues';
 import { style, css } from 'sku/treat';
 import { Theme } from 'treat/theme';
 import basekick from 'basekick';
 import { Breakpoint } from '../../themes/theme';
-import mapTokensToStyleProperty from '../../utils/mapTokensToStyleProperty';
-import { getAccessibleVariant } from '../../atoms/utils/a11y';
-import isLight from '../../atoms/utils/isLight';
+import mapToStyleProperty from '../../utils/mapToStyleProperty';
+import { getAccessibleVariant } from '../../utils/a11y';
+import isLight from '../../utils/isLight';
+import { px } from '../../utils/toUnit';
 
 export const fontFamily = style(({ typography }) => ({
   fontFamily: typography.fontFamily,
@@ -94,7 +96,7 @@ export const color = css(theme => {
   const { linkHover, link, ...foreground } = theme.color.foreground;
 
   return {
-    ...mapTokensToStyleProperty(foreground, 'color'),
+    ...mapToStyleProperty(foreground, 'color'),
     link: {
       color: link,
       ...(link !== linkHover
@@ -118,3 +120,23 @@ export const color = css(theme => {
     },
   };
 });
+
+const touchableSpace = (theme: Theme, breakpoint: Breakpoint) => {
+  const { touchableRows, rowHeight } = theme;
+
+  return mapValues(theme.text, textDefinition => {
+    const touchableHeight = touchableRows * rowHeight;
+    const textHeight = textDefinition[breakpoint].rows * rowHeight;
+    const space = px((touchableHeight - textHeight) / 2);
+    const spaceStyles = {
+      paddingTop: space,
+      paddingBottom: space,
+    };
+
+    return breakpoint === 'desktop'
+      ? theme.utils.desktopStyles(spaceStyles)
+      : spaceStyles;
+  });
+};
+export const touchable = css(theme => touchableSpace(theme, 'mobile'));
+export const touchableDesktop = css(theme => touchableSpace(theme, 'desktop'));
