@@ -3,10 +3,7 @@ import { style, css } from 'sku/treat';
 import { Theme } from 'treat/theme';
 import basekick from 'basekick';
 import { Breakpoint } from '../../themes/theme';
-import mapToStyleProperty from '../../utils/mapToStyleProperty';
-import { getAccessibleVariant } from '../../utils/a11y';
-import isLight from '../../utils/isLight';
-import { px } from '../../utils/toUnit';
+import { getAccessibleVariant, isLight, mapToStyleProperty } from '../../utils';
 
 export const fontFamily = style(({ typography }) => ({
   fontFamily: typography.fontFamily,
@@ -126,7 +123,7 @@ const touchableSpace = (theme: Theme, breakpoint: Breakpoint) => {
   return mapValues(theme.text, textDefinition => {
     const touchableHeight = touchableRows * rowHeight;
     const textHeight = textDefinition[breakpoint].rows * rowHeight;
-    const space = px((touchableHeight - textHeight) / 2);
+    const space = (touchableHeight - textHeight) / 2;
     const spaceStyles = {
       paddingTop: space,
       paddingBottom: space,
