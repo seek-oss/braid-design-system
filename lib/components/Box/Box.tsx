@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { AllHTMLAttributes, ReactType, createElement } from 'react';
 import useBox, { UseBoxProps } from '../../hooks/useBox';
-import { Reset, ResetProps } from '../Reset/Reset';
+import useReset from '../../hooks/useReset';
 import { ContrastProvider } from './ContrastContext';
 import { Omit } from 'utility-types';
 
-export interface BoxProps extends UseBoxProps, Omit<ResetProps, 'width'> {}
+export interface BoxProps
+  extends UseBoxProps,
+    Omit<AllHTMLAttributes<HTMLElement>, 'width'> {
+  component?: ReactType;
+}
 
 export const Box = ({
+  component = 'div',
   paddingTop,
   paddingBottom,
   paddingLeft,
@@ -45,12 +50,12 @@ export const Box = ({
     width,
   });
 
-  const ResetBox = (
-    <Reset
-      className={`${className ? `${className} ` : ''}${boxStyles}`}
-      {...restProps}
-    />
-  );
+  const ResetBox = createElement(component, {
+    className: `${useReset(component)} ${boxStyles}${
+      className ? ` ${className}` : ''
+    }`,
+    ...restProps,
+  });
 
   return backgroundColor ? (
     <ContrastProvider value={backgroundColor}>{ResetBox}</ContrastProvider>
