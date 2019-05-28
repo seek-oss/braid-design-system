@@ -79,6 +79,7 @@ const makeTypographyRules = (
 };
 
 export const text = {
+  small: css(theme => makeTypographyRules(theme.text.small, theme)),
   standard: css(theme => makeTypographyRules(theme.text.standard, theme)),
   large: css(theme => makeTypographyRules(theme.text.large, theme)),
 };

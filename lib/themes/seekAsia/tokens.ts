@@ -45,6 +45,16 @@ const tokens: Tokens = {
     },
   },
   text: {
+    small: {
+      mobile: {
+        size: 14,
+        rows: 5,
+      },
+      desktop: {
+        size: 14,
+        rows: 5,
+      },
+    },
     standard: {
       mobile: {
         size: 16,
