@@ -68,8 +68,6 @@ export const TextArea = ({
     {({ className, ...fieldProps }) => (
       <Box
         component="textarea"
-        paddingTop="standardTouchableText"
-        paddingBottom="standardTouchableText"
         rows={3}
         value={value}
         onChange={onChange}

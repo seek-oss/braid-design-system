@@ -15,7 +15,6 @@ export default (
     xsmall: atoms.paddingBottom_xsmall,
     xxlarge: atoms.paddingBottom_xxlarge,
     xxsmall: atoms.paddingBottom_xxsmall,
-    standardTouchableText: atoms.paddingBottom_standardTouchableText,
   },
   paddingTop: {
     none: atoms.paddingTop_none,
@@ -26,7 +25,6 @@ export default (
     xsmall: atoms.paddingTop_xsmall,
     xxlarge: atoms.paddingTop_xxlarge,
     xxsmall: atoms.paddingTop_xxsmall,
-    standardTouchableText: atoms.paddingTop_standardTouchableText,
   },
   paddingLeft: {
     none: atoms.paddingLeft_none,
@@ -59,7 +57,6 @@ export default (
     xsmall: atoms.paddingBottomDesktop_xsmall,
     xxlarge: atoms.paddingBottomDesktop_xxlarge,
     xxsmall: atoms.paddingBottomDesktop_xxsmall,
-    standardTouchableText: atoms.paddingBottom_standardTouchableText,
   },
   paddingTopDesktop: {
     none: atoms.paddingTopDesktop_none,
@@ -70,7 +67,6 @@ export default (
     xsmall: atoms.paddingTopDesktop_xsmall,
     xxlarge: atoms.paddingTopDesktop_xxlarge,
     xxsmall: atoms.paddingTopDesktop_xxsmall,
-    standardTouchableText: atoms.paddingTopDesktop_standardTouchableText,
   },
   paddingLeftDesktop: {
     none: atoms.paddingLeftDesktop_none,
