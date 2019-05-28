@@ -61,6 +61,36 @@ export const marginDesktop = {
   ),
 };
 
+export const padding = {
+  top: css(({ rowSpacing, rowHeight, utils: { desktopStyles } }) =>
+    spaceMapToCss(rowSpacing, rowHeight, 'paddingTop', desktopStyles),
+  ),
+  bottom: css(({ rowSpacing, rowHeight, utils: { desktopStyles } }) =>
+    spaceMapToCss(rowSpacing, rowHeight, 'paddingBottom', desktopStyles),
+  ),
+  left: css(({ columnSpacing, columnWidth, utils: { desktopStyles } }) =>
+    spaceMapToCss(columnSpacing, columnWidth, 'paddingLeft', desktopStyles),
+  ),
+  right: css(({ columnSpacing, columnWidth, utils: { desktopStyles } }) =>
+    spaceMapToCss(columnSpacing, columnWidth, 'paddingRight', desktopStyles),
+  ),
+};
+
+export const paddingDesktop = {
+  top: css(({ rowSpacing, rowHeight, utils: { desktopStyles } }) =>
+    spaceMapToCss(rowSpacing, rowHeight, 'paddingTop', desktopStyles),
+  ),
+  bottom: css(({ rowSpacing, rowHeight, utils: { desktopStyles } }) =>
+    spaceMapToCss(rowSpacing, rowHeight, 'paddingBottom', desktopStyles),
+  ),
+  left: css(({ columnSpacing, columnWidth, utils: { desktopStyles } }) =>
+    spaceMapToCss(columnSpacing, columnWidth, 'paddingLeft', desktopStyles),
+  ),
+  right: css(({ columnSpacing, columnWidth, utils: { desktopStyles } }) =>
+    spaceMapToCss(columnSpacing, columnWidth, 'paddingRight', desktopStyles),
+  ),
+};
+
 export const transform = {
   touchable: style(({ transforms }) => ({
     ':active': { transform: transforms.touchable },

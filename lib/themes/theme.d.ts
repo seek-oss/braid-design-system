@@ -119,28 +119,9 @@ type ResetTags =
   | 'mark'
   | 'audio'
   | 'video';
-type Spacing =
-  | 'none'
-  | 'xxsmall'
-  | 'xsmall'
-  | 'small'
-  | 'medium'
-  | 'large'
-  | 'xlarge'
-  | 'xxlarge';
-type HorizontalSpacing = Spacing | 'gutter';
-type VerticalPadding = Spacing;
 
 export interface Atoms {
   reset: Record<ResetTags, string>;
-  paddingTop: Record<VerticalPadding, string>;
-  paddingRight: Record<HorizontalSpacing, string>;
-  paddingBottom: Record<VerticalPadding, string>;
-  paddingLeft: Record<HorizontalSpacing, string>;
-  paddingTopDesktop: Record<VerticalPadding, string>;
-  paddingRightDesktop: Record<HorizontalSpacing, string>;
-  paddingBottomDesktop: Record<VerticalPadding, string>;
-  paddingLeftDesktop: Record<HorizontalSpacing, string>;
 }
 
 export interface Theme {
