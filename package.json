@@ -9,9 +9,8 @@
   "scripts": {
     "check-integrity": "yarn check --integrity && echo 'Ignore paths from lint-staged'",
     "pretest": "sku configure",
-    "test": "yarn check --integrity && yarn lint && yarn unit && yarn build",
+    "test": "yarn check --integrity && yarn lint && yarn build",
     "start": "concurrently \"sku start\" \"playroom\"",
-    "unit": "sku test",
     "lint": "sku lint",
     "format": "sku format",
     "generate-component-docs": "node lib/componentDocs/generateComponentDocs.js",
