@@ -132,18 +132,18 @@ export const backgroundColor = css(({ color: { background } }) => ({
 
 export const boxShadow = css(({ border: { width: borderWidth, color } }) => ({
   outlineFocus: {
-    boxShadow: `0 0 0 ${borderWidth.large} ${color.focus}`,
+    boxShadow: `0 0 0 ${borderWidth.large}px ${color.focus}`,
   },
   borderStandard: {
-    boxShadow: `inset 0 0 0 ${borderWidth.standard} ${color.standard}`,
+    boxShadow: `inset 0 0 0 ${borderWidth.standard}px ${color.standard}`,
   },
   borderCritical: {
-    boxShadow: `inset 0 0 0 ${borderWidth.standard} ${color.critical}`,
+    boxShadow: `inset 0 0 0 ${borderWidth.standard}px ${color.critical}`,
   },
   borderFormAccent: {
-    boxShadow: `inset 0 0 0 ${borderWidth.standard} ${color.formAccent}`,
+    boxShadow: `inset 0 0 0 ${borderWidth.standard}px ${color.formAccent}`,
   },
   borderFormAccentLarge: {
-    boxShadow: `inset 0 0 0 ${borderWidth.large} ${color.formAccent}`,
+    boxShadow: `inset 0 0 0 ${borderWidth.large}px ${color.formAccent}`,
   },
 }));
