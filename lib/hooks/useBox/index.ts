@@ -1,23 +1,17 @@
 import * as styles from './box.treat';
-import {
-  HorizontalSpacing,
-  VerticalPadding,
-  Spacing,
-} from '../../themes/theme';
 import { useClassNames } from 'sku/treat';
-import { useTheme } from '../../components/private/ThemeContext';
 
 type ResponsiveProp<AtomName> = AtomName | [AtomName, AtomName];
 
 export interface UseBoxProps {
-  paddingTop?: ResponsiveProp<VerticalPadding>;
-  paddingBottom?: ResponsiveProp<VerticalPadding>;
-  paddingLeft?: ResponsiveProp<HorizontalSpacing>;
-  paddingRight?: ResponsiveProp<HorizontalSpacing>;
-  marginTop?: ResponsiveProp<Spacing>;
-  marginBottom?: ResponsiveProp<Spacing>;
-  marginLeft?: ResponsiveProp<HorizontalSpacing>;
-  marginRight?: ResponsiveProp<HorizontalSpacing>;
+  paddingTop?: ResponsiveProp<keyof typeof styles.padding.top>;
+  paddingBottom?: ResponsiveProp<keyof typeof styles.padding.bottom>;
+  paddingLeft?: ResponsiveProp<keyof typeof styles.padding.left>;
+  paddingRight?: ResponsiveProp<keyof typeof styles.padding.right>;
+  marginTop?: ResponsiveProp<keyof typeof styles.margin.top>;
+  marginBottom?: ResponsiveProp<keyof typeof styles.margin.bottom>;
+  marginLeft?: ResponsiveProp<keyof typeof styles.margin.left>;
+  marginRight?: ResponsiveProp<keyof typeof styles.margin.left>;
   display?: ResponsiveProp<keyof typeof styles.display>;
   flexDirection?: ResponsiveProp<keyof typeof styles.flexDirection>;
   borderRadius?: keyof typeof styles.borderRadius;
@@ -60,10 +54,8 @@ export default ({
   transition,
   transform,
   width,
-}: UseBoxProps) => {
-  const { atoms } = useTheme();
-
-  return useClassNames(
+}: UseBoxProps) =>
+  useClassNames(
     styles.backgroundColor[backgroundColor!],
     styles.borderRadius[borderRadius!],
     styles.boxShadow[boxShadow!],
@@ -96,26 +88,26 @@ export default ({
       ),
     paddingTop &&
       getResponsiveClasses(
-        atoms.paddingTop,
-        atoms.paddingTopDesktop,
+        styles.padding.top,
+        styles.paddingDesktop.top,
         paddingTop,
       ),
     paddingRight &&
       getResponsiveClasses(
-        atoms.paddingRight,
-        atoms.paddingRightDesktop,
+        styles.padding.right,
+        styles.paddingDesktop.right,
         paddingRight,
       ),
     paddingBottom &&
       getResponsiveClasses(
-        atoms.paddingBottom,
-        atoms.paddingBottomDesktop,
+        styles.padding.bottom,
+        styles.paddingDesktop.bottom,
         paddingBottom,
       ),
     paddingLeft &&
       getResponsiveClasses(
-        atoms.paddingLeft,
-        atoms.paddingLeftDesktop,
+        styles.padding.left,
+        styles.paddingDesktop.left,
         paddingLeft,
       ),
     display &&
@@ -127,4 +119,3 @@ export default ({
         flexDirection,
       ),
   );
-};
