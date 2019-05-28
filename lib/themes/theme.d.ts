@@ -33,7 +33,7 @@ export interface Tokens {
   responsiveBreakpoint: number;
   descenderHeightScale: number;
   heading: Record<'level1' | 'level2' | 'level3', ResponsiveHeading>;
-  text: Record<'standard' | 'large', ResponsiveText>;
+  text: Record<'small' | 'standard' | 'large', ResponsiveText>;
   rowSpacing: SpacingToken;
   columnSpacing: ColumnSpacingToken;
 }
@@ -119,28 +119,9 @@ type ResetTags =
   | 'mark'
   | 'audio'
   | 'video';
-type Spacing =
-  | 'none'
-  | 'xxsmall'
-  | 'xsmall'
-  | 'small'
-  | 'medium'
-  | 'large'
-  | 'xlarge'
-  | 'xxlarge';
-type HorizontalSpacing = Spacing | 'gutter';
-type VerticalPadding = Spacing;
 
 export interface Atoms {
   reset: Record<ResetTags, string>;
-  paddingTop: Record<VerticalPadding, string>;
-  paddingRight: Record<HorizontalSpacing, string>;
-  paddingBottom: Record<VerticalPadding, string>;
-  paddingLeft: Record<HorizontalSpacing, string>;
-  paddingTopDesktop: Record<VerticalPadding, string>;
-  paddingRightDesktop: Record<HorizontalSpacing, string>;
-  paddingBottomDesktop: Record<VerticalPadding, string>;
-  paddingLeftDesktop: Record<HorizontalSpacing, string>;
 }
 
 export interface Theme {

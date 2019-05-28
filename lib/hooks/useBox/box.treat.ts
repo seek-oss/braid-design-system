@@ -1,10 +1,7 @@
 import { css, Styles, style } from 'sku/treat';
 import { Properties } from 'csstype';
 import { darken, lighten } from 'polished';
-import { getLightVariant } from '../../utils/a11y';
-import isLight from '../../utils/isLight';
-import { px } from '../../utils/toUnit';
-import mapToStyleProperty from '../../utils/mapToStyleProperty';
+import { getLightVariant, isLight, mapToStyleProperty } from '../../utils';
 
 const spaceMapToCss = <Map extends string>(
   spaceMap: Record<Map, number>,
@@ -23,10 +20,10 @@ const spaceMapToCss = <Map extends string>(
     (value: number, propertyName) =>
       desktopStyles
         ? desktopStyles({
-            [propertyName]: px(value * scale),
+            [propertyName]: value * scale,
           })
         : {
-            [propertyName]: px(value * scale),
+            [propertyName]: value * scale,
           },
   );
 };
@@ -58,6 +55,36 @@ export const marginDesktop = {
   ),
   right: css(({ columnSpacing, columnWidth, utils: { desktopStyles } }) =>
     spaceMapToCss(columnSpacing, columnWidth, 'marginRight', desktopStyles),
+  ),
+};
+
+export const padding = {
+  top: css(({ rowSpacing, rowHeight }) =>
+    spaceMapToCss(rowSpacing, rowHeight, 'paddingTop'),
+  ),
+  bottom: css(({ rowSpacing, rowHeight }) =>
+    spaceMapToCss(rowSpacing, rowHeight, 'paddingBottom'),
+  ),
+  left: css(({ columnSpacing, columnWidth }) =>
+    spaceMapToCss(columnSpacing, columnWidth, 'paddingLeft'),
+  ),
+  right: css(({ columnSpacing, columnWidth }) =>
+    spaceMapToCss(columnSpacing, columnWidth, 'paddingRight'),
+  ),
+};
+
+export const paddingDesktop = {
+  top: css(({ rowSpacing, rowHeight, utils: { desktopStyles } }) =>
+    spaceMapToCss(rowSpacing, rowHeight, 'paddingTop', desktopStyles),
+  ),
+  bottom: css(({ rowSpacing, rowHeight, utils: { desktopStyles } }) =>
+    spaceMapToCss(rowSpacing, rowHeight, 'paddingBottom', desktopStyles),
+  ),
+  left: css(({ columnSpacing, columnWidth, utils: { desktopStyles } }) =>
+    spaceMapToCss(columnSpacing, columnWidth, 'paddingLeft', desktopStyles),
+  ),
+  right: css(({ columnSpacing, columnWidth, utils: { desktopStyles } }) =>
+    spaceMapToCss(columnSpacing, columnWidth, 'paddingRight', desktopStyles),
   ),
 };
 
@@ -135,18 +162,18 @@ export const backgroundColor = css(({ color: { background } }) => ({
 
 export const boxShadow = css(({ border: { width: borderWidth, color } }) => ({
   outlineFocus: {
-    boxShadow: `0 0 0 ${px(borderWidth.large)} ${color.focus}`,
+    boxShadow: `0 0 0 ${borderWidth.large}px ${color.focus}`,
   },
   borderStandard: {
-    boxShadow: `inset 0 0 0 ${px(borderWidth.standard)} ${color.standard}`,
+    boxShadow: `inset 0 0 0 ${borderWidth.standard}px ${color.standard}`,
   },
   borderCritical: {
-    boxShadow: `inset 0 0 0 ${px(borderWidth.standard)} ${color.critical}`,
+    boxShadow: `inset 0 0 0 ${borderWidth.standard}px ${color.critical}`,
   },
   borderFormAccent: {
-    boxShadow: `inset 0 0 0 ${px(borderWidth.standard)} ${color.formAccent}`,
+    boxShadow: `inset 0 0 0 ${borderWidth.standard}px ${color.formAccent}`,
   },
   borderFormAccentLarge: {
-    boxShadow: `inset 0 0 0 ${px(borderWidth.large)} ${color.formAccent}`,
+    boxShadow: `inset 0 0 0 ${borderWidth.large}px ${color.formAccent}`,
   },
 }));
