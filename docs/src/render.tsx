@@ -20,7 +20,7 @@ const skuRender: Render<RenderContext> = {
     const sourceUrlPrefix = `${githubUrl}${prSha || 'master'}`;
     const routerBasename = isGithubPages ? 'braid-design-system' : '';
     const playroomUrl = !CI
-      ? 'http://localhost:9000'
+      ? 'http://localhost:8082'
       : `${routerBasename ? `/${routerBasename}` : ''}/playroom`;
     const appConfig = {
       playroomUrl,
