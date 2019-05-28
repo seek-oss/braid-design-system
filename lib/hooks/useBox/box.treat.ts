@@ -62,17 +62,17 @@ export const marginDesktop = {
 };
 
 export const padding = {
-  top: css(({ rowSpacing, rowHeight, utils: { desktopStyles } }) =>
-    spaceMapToCss(rowSpacing, rowHeight, 'paddingTop', desktopStyles),
+  top: css(({ rowSpacing, rowHeight }) =>
+    spaceMapToCss(rowSpacing, rowHeight, 'paddingTop'),
   ),
-  bottom: css(({ rowSpacing, rowHeight, utils: { desktopStyles } }) =>
-    spaceMapToCss(rowSpacing, rowHeight, 'paddingBottom', desktopStyles),
+  bottom: css(({ rowSpacing, rowHeight }) =>
+    spaceMapToCss(rowSpacing, rowHeight, 'paddingBottom'),
   ),
-  left: css(({ columnSpacing, columnWidth, utils: { desktopStyles } }) =>
-    spaceMapToCss(columnSpacing, columnWidth, 'paddingLeft', desktopStyles),
+  left: css(({ columnSpacing, columnWidth }) =>
+    spaceMapToCss(columnSpacing, columnWidth, 'paddingLeft'),
   ),
-  right: css(({ columnSpacing, columnWidth, utils: { desktopStyles } }) =>
-    spaceMapToCss(columnSpacing, columnWidth, 'paddingRight', desktopStyles),
+  right: css(({ columnSpacing, columnWidth }) =>
+    spaceMapToCss(columnSpacing, columnWidth, 'paddingRight'),
   ),
 };
 
