@@ -108,7 +108,7 @@
     "react-transition-group": "^2.6.1",
     "renovate-config-seek": "0.4.0",
     "semantic-release": "^15.13.3",
-    "sku": "seek-oss/sku#playroom",
+    "sku": "8.6.0",
     "surge": "^0.20.1",
     "travis-deploy-once": "^5.0.9"
   },

@@ -12569,10 +12569,10 @@ react-transition-group@^2.0.0, react-transition-group@^2.6.1:
     prop-types "^15.6.2"
     react-lifecycles-compat "^3.0.4"
 
-react-treat@1.0.0-beta.20:
-  version "1.0.0-beta.20"
-  resolved "https://registry.yarnpkg.com/react-treat/-/react-treat-1.0.0-beta.20.tgz#5cf05a41c7aa756a0d4b7e18fb8521be9725a608"
-  integrity sha512-gow2COx3jJE6HNzxxWWlg4NMsfE/S9OfkV6tv3VLQvIAYmPHcM/S83T0zk9A2fNlvPqXuVmkffmwdJUAkW7dlQ==
+react-treat@1.0.0-beta.22:
+  version "1.0.0-beta.22"
+  resolved "https://registry.yarnpkg.com/react-treat/-/react-treat-1.0.0-beta.22.tgz#7afb8c651df74e81fc9f6375e985fc41b191f307"
+  integrity sha512-23Z3rjpq8DcH5Rvsa6zTbgtzE/Z6i91htOyVFjEjzTCEWUPI6YwAioa0JX/QGfjzVlRSDuIPiHmuPqSJsB4B+Q==
 
 react-treebeard@3.1.0:
   version "3.1.0"
@@ -13684,9 +13684,10 @@ sisteransi@^1.0.0:
   resolved "https://registry.yarnpkg.com/sisteransi/-/sisteransi-1.0.0.tgz#77d9622ff909080f1c19e5f4a1df0c1b0a27b88c"
   integrity sha512-N+z4pHB4AmUv0SjveWRd6q1Nj5w62m5jodv+GD8lvmbY/83T/rpbJGZOnK5T149OldDj4Db07BSv9xY4K6NTPQ==
 
-sku@seek-oss/sku#playroom:
-  version "0.0.0-development"
-  resolved "https://codeload.github.com/seek-oss/sku/tar.gz/b90ebf4ae4ecc43fa80eeace5b81b0483c6ff7de"
+sku@8.6.0:
+  version "8.6.0"
+  resolved "https://registry.yarnpkg.com/sku/-/sku-8.6.0.tgz#34ac1da6fcbfdea0cb4b077d7c41e90c518afef2"
+  integrity sha512-fGmv2uMLbep+A0m228cg7Kdx3qr4jHZ/gCuek4qnAQUNlL/QtFeXOapso+IrAqJxekv6C0UXigDX6otbi2h+tA==
   dependencies:
     "@babel/core" "^7.1.2"
     "@babel/plugin-proposal-class-properties" "^7.1.0"
@@ -13768,7 +13769,7 @@ sku@seek-oss/sku#playroom:
     prettier "1.15.3"
     raw-loader "^1.0.0"
     react-hot-loader "^3.1.3"
-    react-treat "1.0.0-beta.20"
+    react-treat "1.0.0-beta.22"
     rimraf "^2.6.2"
     serialize-javascript "^1.6.1"
     start-server-webpack-plugin "^2.2.5"
@@ -13776,7 +13777,7 @@ sku@seek-oss/sku#playroom:
     svgo "^1.0.5"
     svgo-loader "^2.1.0"
     traverse "^0.6.6"
-    treat "1.0.0-beta.20"
+    treat "1.0.0-beta.22"
     tree-kill "^1.2.1"
     tslint "^5.11.0"
     tslint-config-seek "^1.0.0"
@@ -14880,10 +14881,10 @@ travis-deploy-once@^5.0.9:
     url-join "^4.0.0"
     yargs "^12.0.1"
 
-treat@1.0.0-beta.20:
-  version "1.0.0-beta.20"
-  resolved "https://registry.yarnpkg.com/treat/-/treat-1.0.0-beta.20.tgz#1e3e405cd8d99013dc7e5abbdf6ee1ddc690c4b9"
-  integrity sha512-U0dZvLHTOheM47UnbgOdnyBn4/3zRq/5p3zV9uILap6iwSIAuSaK50dtlftchJNicFtlMXBITTLF0YBJBlP12Q==
+treat@1.0.0-beta.22:
+  version "1.0.0-beta.22"
+  resolved "https://registry.yarnpkg.com/treat/-/treat-1.0.0-beta.22.tgz#a836854d0bd0e3359e2075ae6eb9265e5627d518"
+  integrity sha512-rkHohrFHJRMticA/rYTvdaUHBG36eo4LAeAIHbLh0Z5BaNMIdcypOzXCIC3O7YeJ5uroOm+RDH7y5FT4WbBReQ==
   dependencies:
     "@hapi/joi" "^15.0.3"
     "@types/lodash" "^4.14.123"
