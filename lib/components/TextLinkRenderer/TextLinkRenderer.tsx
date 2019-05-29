@@ -4,7 +4,6 @@ import ActionsContext from '../Actions/ActionsContext';
 import { Text } from '../Text/Text';
 import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
 import * as styles from './TextLinkRenderer.treat';
-import { useTheme } from '../private/ThemeContext';
 import useBox from '../../hooks/useBox';
 import { useTextColor, useTouchableSpace } from '../../hooks/typography';
 
@@ -22,14 +21,13 @@ export const TextLinkRenderer = ({
   inline = false,
   children,
 }: TextLinkRendererProps) => {
-  const { atoms } = useTheme();
   const inActions = useContext(ActionsContext);
-  const defaultStyles = [styles.root, atoms.reset.a, useTextColor('link')];
+  const defaultStyles = [styles.root, useTextColor('link')];
 
   if (inline) {
     return children({
       style: {},
-      className: useClassNames(defaultStyles),
+      className: useClassNames(defaultStyles, useBox({ component: 'a' })),
     });
   }
 
@@ -37,6 +35,7 @@ export const TextLinkRenderer = ({
 
   if (inActions) {
     const actionStyles = useBox({
+      component: 'a',
       display: 'block',
       width: 'full',
       paddingLeft: 'small',
@@ -72,7 +71,10 @@ export const TextLinkRenderer = ({
         className: useClassNames(
           defaultStyles,
           touchableStyles,
-          useBox({ display: 'inlineBlock' }),
+          useBox({
+            component: 'a',
+            display: 'inlineBlock',
+          }),
         ),
       })}
     </Text>

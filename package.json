@@ -4,8 +4,7 @@
   "description": "Themeable design system for the SEEK Group",
   "main": "lib/components/index.ts",
   "sideEffects": [
-    "lib/themes/**/*",
-    "lib/reset/*"
+    "lib/themes/**/*"
   ],
   "scripts": {
     "check-integrity": "yarn check --integrity && echo 'Ignore paths from lint-staged'",

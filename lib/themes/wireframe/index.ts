@@ -1,4 +1,4 @@
-import reset from '../../reset/reset.css.js';
+import '../applyReset';
 import treatTheme from './theme.treat';
 import tokens from './tokens';
 import { Theme } from '../theme';
@@ -6,7 +6,6 @@ import { Theme } from '../theme';
 const theme: Theme = {
   name: 'wireframe',
   tokens,
-  atoms: { reset },
   treatTheme,
 };
 

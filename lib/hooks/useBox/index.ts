@@ -1,9 +1,12 @@
-import * as styles from './box.treat';
+import { ReactType } from 'react';
 import { useClassNames } from 'sku/treat';
+import * as resetStyles from './reset.treat';
+import * as styles from './box.treat';
 
 type ResponsiveProp<AtomName> = AtomName | [AtomName, AtomName];
 
 export interface UseBoxProps {
+  component: ReactType;
   paddingTop?: ResponsiveProp<keyof typeof styles.padding.top>;
   paddingBottom?: ResponsiveProp<keyof typeof styles.padding.bottom>;
   paddingLeft?: ResponsiveProp<keyof typeof styles.padding.left>;
@@ -38,6 +41,7 @@ function getResponsiveClasses<PropName extends string>(
 }
 
 export default ({
+  component,
   paddingTop,
   paddingBottom,
   paddingLeft,
@@ -56,6 +60,8 @@ export default ({
   width,
 }: UseBoxProps) =>
   useClassNames(
+    resetStyles.base,
+    resetStyles.element[component as keyof typeof resetStyles.element],
     styles.backgroundColor[backgroundColor!],
     styles.borderRadius[borderRadius!],
     styles.boxShadow[boxShadow!],

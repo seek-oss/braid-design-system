@@ -24,7 +24,6 @@ export { FieldMessage } from './FieldMessage/FieldMessage';
 export { Heading } from './Heading/Heading';
 export { Hidden } from './Hidden/Hidden';
 export { Radio } from './Radio/Radio';
-export { Reset } from './Reset/Reset';
 export { Secondary } from './Secondary/Secondary';
 export { Strong } from './Strong/Strong';
 export { Text } from './Text/Text';
