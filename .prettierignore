@@ -2,5 +2,6 @@
 coverage/
 dist-storybook/
 docs/dist/
+docs/dist/playroom/
 report/
 # end managed by sku

@@ -13,6 +13,7 @@ componentDocs.json
 coverage/
 dist-storybook/
 docs/dist/
+docs/dist/playroom/
 report/
 tsconfig.json
 tslint.json
