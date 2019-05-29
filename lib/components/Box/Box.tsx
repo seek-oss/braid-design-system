@@ -1,6 +1,5 @@
 import React, { AllHTMLAttributes, ReactType, createElement } from 'react';
 import useBox, { UseBoxProps } from '../../hooks/useBox';
-import useReset from '../../hooks/useReset';
 import { ContrastProvider } from './ContrastContext';
 import { Omit } from 'utility-types';
 
@@ -32,6 +31,7 @@ export const Box = ({
   ...restProps
 }: BoxProps) => {
   const boxStyles = useBox({
+    component,
     paddingTop,
     paddingBottom,
     paddingLeft,
@@ -50,16 +50,14 @@ export const Box = ({
     width,
   });
 
-  const ResetBox = createElement(component, {
-    className: `${useReset(component)} ${boxStyles}${
-      className ? ` ${className}` : ''
-    }`,
+  const element = createElement(component, {
+    className: `${boxStyles}${className ? ` ${className}` : ''}`,
     ...restProps,
   });
 
   return backgroundColor ? (
-    <ContrastProvider value={backgroundColor}>{ResetBox}</ContrastProvider>
+    <ContrastProvider value={backgroundColor}>{element}</ContrastProvider>
   ) : (
-    ResetBox
+    element
   );
 };

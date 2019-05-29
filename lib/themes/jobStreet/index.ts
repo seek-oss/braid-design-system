@@ -1,4 +1,4 @@
-import '../../hooks/useReset/reset.treat';
+import '../applyReset';
 import treatTheme from './theme.treat';
 import tokens from './tokens';
 import { Theme } from '../theme';
