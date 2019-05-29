@@ -47,7 +47,7 @@ const select = style({
   appearance: 'none',
 });
 
-export const specificResets = {
+export const element = {
   article: block,
   aside: block,
   details: block,

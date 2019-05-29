@@ -61,9 +61,7 @@ export default ({
 }: UseBoxProps) =>
   useClassNames(
     resetStyles.base,
-    resetStyles.specificResets[
-      component as keyof typeof resetStyles.specificResets
-    ],
+    resetStyles.element[component as keyof typeof resetStyles.element],
     styles.backgroundColor[backgroundColor!],
     styles.borderRadius[borderRadius!],
     styles.boxShadow[boxShadow!],
