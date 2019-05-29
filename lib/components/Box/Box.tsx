@@ -1,13 +1,11 @@
-import React, { AllHTMLAttributes, ReactType, createElement } from 'react';
+import React, { AllHTMLAttributes, createElement } from 'react';
 import useBox, { UseBoxProps } from '../../hooks/useBox';
 import { ContrastProvider } from './ContrastContext';
-import { Omit } from 'utility-types';
+import { Optional, Omit } from 'utility-types';
 
 export interface BoxProps
-  extends UseBoxProps,
-    Omit<AllHTMLAttributes<HTMLElement>, 'width'> {
-  component?: ReactType;
-}
+  extends Optional<UseBoxProps, 'component'>,
+    Omit<AllHTMLAttributes<HTMLElement>, 'width'> {}
 
 export const Box = ({
   component = 'div',

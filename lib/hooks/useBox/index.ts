@@ -6,7 +6,7 @@ import * as styles from './box.treat';
 type ResponsiveProp<AtomName> = AtomName | [AtomName, AtomName];
 
 export interface UseBoxProps {
-  component?: ReactType;
+  component: ReactType;
   paddingTop?: ResponsiveProp<keyof typeof styles.padding.top>;
   paddingBottom?: ResponsiveProp<keyof typeof styles.padding.bottom>;
   paddingLeft?: ResponsiveProp<keyof typeof styles.padding.left>;
@@ -41,7 +41,7 @@ function getResponsiveClasses<PropName extends string>(
 }
 
 export default ({
-  component = 'div',
+  component,
   paddingTop,
   paddingBottom,
   paddingLeft,
