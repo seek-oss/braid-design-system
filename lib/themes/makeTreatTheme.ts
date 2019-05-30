@@ -13,6 +13,27 @@ interface ThemeVars extends Tokens {
       strong: number;
     };
   };
+  spacing: {
+    row: {
+      xxsmall: number;
+      xsmall: number;
+      small: number;
+      medium: number;
+      large: number;
+      xlarge: number;
+      xxlarge: number;
+    };
+    column: {
+      gutter: number;
+      xxsmall: number;
+      xsmall: number;
+      small: number;
+      medium: number;
+      large: number;
+      xlarge: number;
+      xxlarge: number;
+    };
+  };
   transforms: {
     touchable: string;
   };

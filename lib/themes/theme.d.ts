@@ -12,20 +12,6 @@ type ResponsiveHeading = Record<Breakpoint, TextDefinition> &
 type ResponsiveText = Record<Breakpoint, TextDefinition>;
 export type FieldTone = 'neutral' | 'critical' | 'positive';
 
-// Spacing definitions
-interface SpacingToken {
-  xxsmall: number;
-  xsmall: number;
-  small: number;
-  medium: number;
-  large: number;
-  xlarge: number;
-  xxlarge: number;
-}
-interface ColumnSpacingToken extends SpacingToken {
-  gutter: number;
-}
-
 export interface Tokens {
   rowHeight: number;
   columnWidth: number;
@@ -34,8 +20,6 @@ export interface Tokens {
   descenderHeightScale: number;
   heading: Record<'level1' | 'level2' | 'level3', ResponsiveHeading>;
   text: Record<'small' | 'standard' | 'large', ResponsiveText>;
-  rowSpacing: SpacingToken;
-  columnSpacing: ColumnSpacingToken;
 }
 
 export interface Theme {

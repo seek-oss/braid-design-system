@@ -9,7 +9,7 @@ export const chevron = style(({ touchableRows, rowHeight }) => ({
   height: touchableRows * rowHeight,
 }));
 
-export const field = style(({ columnSpacing, columnWidth, text }) => ({
+export const field = style(({ spacing, columnWidth, text }) => ({
   paddingRight:
-    columnSpacing.small * columnWidth * 2 + text.standard.mobile.size,
+    spacing.column.small * columnWidth * 2 + text.standard.mobile.size,
 }));

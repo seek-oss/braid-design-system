@@ -1,5 +1,108 @@
 import { Tokens } from '../../themes/theme';
 
+const white = '#fff';
+const black = '#000';
+const blue2 = '#298EB9';
+const blue3 = '#94C9E0';
+const blue5 = '#EEF8FC';
+const alert = '#eb0000';
+const grey1 = '#333';
+const grey2 = '#666';
+const grey4 = '#ccc';
+const candidate = '#0c4b85'; // SEEK Asia name for this color
+const info = candidate;
+const positive = '#498307';
+const critical = alert;
+
+const formAccent = blue2;
+const brandAccent = '#0d3880';
+const focus = blue3;
+const link = blue2;
+
+const treatTokens = {
+  name: 'seekAsia',
+  typography: {
+    fontFamily:
+      'Muli, -apple-system, system-ui, "Segoe UI", Roboto, "Noto Sans", Ubuntu, "Droid Sans", "Helvetica Neue", Arial, sans-serif',
+    fontWeight: {
+      regular: 400,
+      medium: 500,
+      strong: 700,
+    },
+  },
+  spacing: {
+    row: {
+      xxsmall: 1,
+      xsmall: 2,
+      small: 3,
+      medium: 4,
+      large: 6,
+      xlarge: 8,
+      xxlarge: 16,
+    },
+    column: {
+      gutter: 5,
+      xxsmall: 1,
+      xsmall: 2,
+      small: 3,
+      medium: 4,
+      large: 6,
+      xlarge: 8,
+      xxlarge: 16,
+    },
+  },
+  transforms: {
+    touchable: 'scale(0.98)',
+  },
+  transitions: {
+    fast: 'transform .125s ease, opacity .125s ease',
+    touchable: 'transform 0.2s cubic-bezier(0.02, 1.505, 0.745, 1.235)',
+  },
+  border: {
+    radius: {
+      standard: '4px',
+    },
+    width: {
+      standard: 1,
+      large: 2,
+    },
+    color: {
+      standard: grey4,
+      focus,
+      critical,
+      formAccent,
+    },
+  },
+  color: {
+    foreground: {
+      link,
+      linkHover: link,
+      black,
+      neutral: grey1,
+      brandAccent,
+      formAccent,
+      formAccentDisabled: grey4,
+      critical,
+      info,
+      positive,
+      secondary: grey2,
+      white,
+    },
+    background: {
+      input: white,
+      inputDisabled: grey4,
+      brandAccent,
+      formAccent,
+      formAccentDisabled: grey4,
+      selection: blue5,
+      card: white,
+      critical,
+      info,
+      positive,
+    },
+  },
+};
+
 const tokens: Tokens = {
   rowHeight: 4,
   columnWidth: 4,
@@ -76,25 +179,9 @@ const tokens: Tokens = {
       },
     },
   },
-  rowSpacing: {
-    xxsmall: 1,
-    xsmall: 2,
-    small: 3,
-    medium: 4,
-    large: 6,
-    xlarge: 8,
-    xxlarge: 16,
-  },
-  columnSpacing: {
-    gutter: 5,
-    xxsmall: 1,
-    xsmall: 2,
-    small: 3,
-    medium: 4,
-    large: 6,
-    xlarge: 8,
-    xxlarge: 16,
-  },
 };
 
-export default tokens;
+export default {
+  ...tokens,
+  ...treatTokens,
+};

@@ -29,62 +29,62 @@ const spaceMapToCss = <Map extends string>(
 };
 
 export const margin = {
-  top: css(({ rowSpacing, rowHeight }) =>
-    spaceMapToCss(rowSpacing, rowHeight, 'marginTop'),
+  top: css(({ spacing, rowHeight }) =>
+    spaceMapToCss(spacing.row, rowHeight, 'marginTop'),
   ),
-  bottom: css(({ rowSpacing, rowHeight }) =>
-    spaceMapToCss(rowSpacing, rowHeight, 'marginBottom'),
+  bottom: css(({ spacing, rowHeight }) =>
+    spaceMapToCss(spacing.row, rowHeight, 'marginBottom'),
   ),
-  left: css(({ columnSpacing, columnWidth }) =>
-    spaceMapToCss(columnSpacing, columnWidth, 'marginLeft'),
+  left: css(({ spacing, columnWidth }) =>
+    spaceMapToCss(spacing.column, columnWidth, 'marginLeft'),
   ),
-  right: css(({ columnSpacing, columnWidth }) =>
-    spaceMapToCss(columnSpacing, columnWidth, 'marginRight'),
+  right: css(({ spacing, columnWidth }) =>
+    spaceMapToCss(spacing.column, columnWidth, 'marginRight'),
   ),
 };
 
 export const marginDesktop = {
-  top: css(({ rowSpacing, rowHeight, utils: { desktopStyles } }) =>
-    spaceMapToCss(rowSpacing, rowHeight, 'marginTop', desktopStyles),
+  top: css(({ spacing, rowHeight, utils: { desktopStyles } }) =>
+    spaceMapToCss(spacing.row, rowHeight, 'marginTop', desktopStyles),
   ),
-  bottom: css(({ rowSpacing, rowHeight, utils: { desktopStyles } }) =>
-    spaceMapToCss(rowSpacing, rowHeight, 'marginBottom', desktopStyles),
+  bottom: css(({ spacing, rowHeight, utils: { desktopStyles } }) =>
+    spaceMapToCss(spacing.row, rowHeight, 'marginBottom', desktopStyles),
   ),
-  left: css(({ columnSpacing, columnWidth, utils: { desktopStyles } }) =>
-    spaceMapToCss(columnSpacing, columnWidth, 'marginLeft', desktopStyles),
+  left: css(({ spacing, columnWidth, utils: { desktopStyles } }) =>
+    spaceMapToCss(spacing.column, columnWidth, 'marginLeft', desktopStyles),
   ),
-  right: css(({ columnSpacing, columnWidth, utils: { desktopStyles } }) =>
-    spaceMapToCss(columnSpacing, columnWidth, 'marginRight', desktopStyles),
+  right: css(({ spacing, columnWidth, utils: { desktopStyles } }) =>
+    spaceMapToCss(spacing.column, columnWidth, 'marginRight', desktopStyles),
   ),
 };
 
 export const padding = {
-  top: css(({ rowSpacing, rowHeight }) =>
-    spaceMapToCss(rowSpacing, rowHeight, 'paddingTop'),
+  top: css(({ spacing, rowHeight }) =>
+    spaceMapToCss(spacing.row, rowHeight, 'paddingTop'),
   ),
-  bottom: css(({ rowSpacing, rowHeight }) =>
-    spaceMapToCss(rowSpacing, rowHeight, 'paddingBottom'),
+  bottom: css(({ spacing, rowHeight }) =>
+    spaceMapToCss(spacing.row, rowHeight, 'paddingBottom'),
   ),
-  left: css(({ columnSpacing, columnWidth }) =>
-    spaceMapToCss(columnSpacing, columnWidth, 'paddingLeft'),
+  left: css(({ spacing, columnWidth }) =>
+    spaceMapToCss(spacing.column, columnWidth, 'paddingLeft'),
   ),
-  right: css(({ columnSpacing, columnWidth }) =>
-    spaceMapToCss(columnSpacing, columnWidth, 'paddingRight'),
+  right: css(({ spacing, columnWidth }) =>
+    spaceMapToCss(spacing.column, columnWidth, 'paddingRight'),
   ),
 };
 
 export const paddingDesktop = {
-  top: css(({ rowSpacing, rowHeight, utils: { desktopStyles } }) =>
-    spaceMapToCss(rowSpacing, rowHeight, 'paddingTop', desktopStyles),
+  top: css(({ spacing, rowHeight, utils: { desktopStyles } }) =>
+    spaceMapToCss(spacing.row, rowHeight, 'paddingTop', desktopStyles),
   ),
-  bottom: css(({ rowSpacing, rowHeight, utils: { desktopStyles } }) =>
-    spaceMapToCss(rowSpacing, rowHeight, 'paddingBottom', desktopStyles),
+  bottom: css(({ spacing, rowHeight, utils: { desktopStyles } }) =>
+    spaceMapToCss(spacing.row, rowHeight, 'paddingBottom', desktopStyles),
   ),
-  left: css(({ columnSpacing, columnWidth, utils: { desktopStyles } }) =>
-    spaceMapToCss(columnSpacing, columnWidth, 'paddingLeft', desktopStyles),
+  left: css(({ spacing, columnWidth, utils: { desktopStyles } }) =>
+    spaceMapToCss(spacing.column, columnWidth, 'paddingLeft', desktopStyles),
   ),
-  right: css(({ columnSpacing, columnWidth, utils: { desktopStyles } }) =>
-    spaceMapToCss(columnSpacing, columnWidth, 'paddingRight', desktopStyles),
+  right: css(({ spacing, columnWidth, utils: { desktopStyles } }) =>
+    spaceMapToCss(spacing.column, columnWidth, 'paddingRight', desktopStyles),
   ),
 };
 
