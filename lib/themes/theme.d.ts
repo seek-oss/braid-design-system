@@ -13,11 +13,6 @@ type ResponsiveText = Record<Breakpoint, TextDefinition>;
 export type FieldTone = 'neutral' | 'critical' | 'positive';
 
 export interface Tokens {
-  rowHeight: number;
-  columnWidth: number;
-  touchableRows: number;
-  responsiveBreakpoint: number;
-  descenderHeightScale: number;
   heading: Record<'level1' | 'level2' | 'level3', ResponsiveHeading>;
   text: Record<'small' | 'standard' | 'large', ResponsiveText>;
 }

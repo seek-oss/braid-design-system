@@ -24,13 +24,20 @@ const treatTokens = {
   typography: {
     fontFamily:
       'Muli, -apple-system, system-ui, "Segoe UI", Roboto, "Noto Sans", Ubuntu, "Droid Sans", "Helvetica Neue", Arial, sans-serif',
+    descenderHeightScale: 0.13,
     fontWeight: {
       regular: 400,
       medium: 500,
       strong: 700,
     },
   },
+  grid: {
+    row: 4,
+    column: 4,
+  },
+  responsiveBreakpoint: 768,
   spacing: {
+    touchableRows: 10,
     row: {
       xxsmall: 1,
       xsmall: 2,
@@ -104,11 +111,6 @@ const treatTokens = {
 };
 
 const tokens: Tokens = {
-  rowHeight: 4,
-  columnWidth: 4,
-  touchableRows: 10,
-  responsiveBreakpoint: 768,
-  descenderHeightScale: 0.13,
   heading: {
     level1: {
       regular: 'strong',

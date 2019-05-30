@@ -1,8 +1,8 @@
 import isEqual from 'lodash/isEqual';
 import { Styles } from 'sku/treat';
-import { Tokens } from './theme';
+import { TreatTokens } from './makeTreatTheme';
 
-export default (tokens: Tokens) => {
+export default (tokens: TreatTokens) => {
   const desktopStyles = <StyleBlock>(styles: StyleBlock) => ({
     '@media': {
       [`screen and (min-width: ${tokens.responsiveBreakpoint}px)`]: styles,
@@ -14,7 +14,7 @@ export default (tokens: Tokens) => {
     ...(isEqual(mobile, desktop) ? {} : desktopStyles(desktop)),
   });
 
-  const rows = (x: number) => x * tokens.rowHeight;
+  const rows = (x: number) => x * tokens.grid.row;
 
   return { desktopStyles, responsiveStyles, rows };
 };

@@ -41,18 +41,18 @@ const alignTextToGrid = (
 
 const makeTypographyRules = (
   textDefinition: Record<Breakpoint, TextDefinition>,
-  { rowHeight, descenderHeightScale, utils }: Theme,
+  { grid, typography, utils }: Theme,
 ) => {
   const mobile = alignTextToGrid(
     textDefinition.mobile,
-    rowHeight,
-    descenderHeightScale,
+    grid.row,
+    typography.descenderHeightScale,
   );
 
   const desktop = alignTextToGrid(
     textDefinition.desktop,
-    rowHeight,
-    descenderHeightScale,
+    grid.row,
+    typography.descenderHeightScale,
   );
 
   return {
@@ -119,11 +119,11 @@ export const color = css(theme => {
 });
 
 const touchableSpace = (theme: Theme, breakpoint: Breakpoint) => {
-  const { touchableRows, rowHeight } = theme;
+  const { spacing, utils } = theme;
 
   return mapValues(theme.text, textDefinition => {
-    const touchableHeight = touchableRows * rowHeight;
-    const textHeight = textDefinition[breakpoint].rows * rowHeight;
+    const touchableHeight = utils.rows(spacing.touchableRows);
+    const textHeight = utils.rows(textDefinition[breakpoint].rows);
     const space = (touchableHeight - textHeight) / 2;
     const spaceStyles = {
       paddingTop: space,

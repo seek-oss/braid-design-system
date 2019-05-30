@@ -3,17 +3,24 @@ import { createTheme } from 'sku/treat';
 import { Tokens } from './theme';
 import makeUtils from './makeUtils';
 
-interface ThemeVars extends Tokens {
+export interface TreatTokens extends Tokens {
   name: string;
   typography: {
     fontFamily: string;
+    descenderHeightScale: number;
     fontWeight: {
       regular: number;
       medium: number;
       strong: number;
     };
   };
+  grid: {
+    row: number;
+    column: number;
+  };
+  responsiveBreakpoint: number;
   spacing: {
+    touchableRows: number;
     row: {
       xxsmall: number;
       xsmall: number;
@@ -86,12 +93,12 @@ interface ThemeVars extends Tokens {
   };
 }
 
-const addUtilsToTheme = (vars: ThemeVars) => ({
-  ...vars,
-  utils: makeUtils(vars),
+const addUtilsToTheme = (treatTokens: TreatTokens) => ({
+  ...treatTokens,
+  utils: makeUtils(treatTokens),
 });
 
-export default (themeVars: ThemeVars) =>
-  createTheme(addUtilsToTheme(themeVars));
+export default (treatTokens: TreatTokens) =>
+  createTheme(addUtilsToTheme(treatTokens));
 
 export type TreatTheme = ReturnType<typeof addUtilsToTheme>;

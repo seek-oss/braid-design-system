@@ -15,13 +15,20 @@ const treatTokens = {
   typography: {
     fontFamily:
       'Roboto, "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif',
+    descenderHeightScale: 0.16,
     fontWeight: {
       regular: 400,
       medium: 500,
       strong: 700,
     },
   },
+  grid: {
+    row: 6,
+    column: 5,
+  },
+  responsiveBreakpoint: 740,
   spacing: {
+    touchableRows: 8,
     row: {
       xxsmall: 1,
       xsmall: 2,
@@ -95,11 +102,6 @@ const treatTokens = {
 };
 
 const tokens: Tokens = {
-  rowHeight: 6,
-  columnWidth: 5,
-  touchableRows: 8,
-  responsiveBreakpoint: 740,
-  descenderHeightScale: 0.16,
   heading: {
     level1: {
       regular: 'medium',

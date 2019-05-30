@@ -1,6 +1,6 @@
 import { style } from 'sku/treat';
 
-export const field = style(({ rowHeight }) => ({
+export const field = style(({ utils: { rows } }) => ({
   resize: 'vertical',
-  minHeight: rowHeight * 15,
+  minHeight: rows(15),
 }));
