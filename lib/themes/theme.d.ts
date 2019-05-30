@@ -9,12 +9,10 @@ type FontWeight = 'regular' | 'medium' | 'strong';
 type Breakpoint = 'mobile' | 'desktop';
 type ResponsiveHeading = Record<Breakpoint, TextDefinition> &
   Record<'regular' | 'weak', FontWeight>;
-type ResponsiveText = Record<Breakpoint, TextDefinition>;
 export type FieldTone = 'neutral' | 'critical' | 'positive';
 
 export interface Tokens {
   heading: Record<'level1' | 'level2' | 'level3', ResponsiveHeading>;
-  text: Record<'small' | 'standard' | 'large', ResponsiveText>;
 }
 
 export interface Theme {

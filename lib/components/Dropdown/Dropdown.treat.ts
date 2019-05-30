@@ -9,7 +9,8 @@ export const chevron = style(({ utils, spacing }) => ({
   height: utils.rows(spacing.touchableRows),
 }));
 
-export const field = style(({ spacing, grid, text }) => ({
+export const field = style(({ spacing, grid, typography }) => ({
   paddingRight:
-    spacing.column.small * grid.column * 2 + text.standard.mobile.size,
+    spacing.column.small * grid.column * 2 +
+    typography.text.standard.mobile.size,
 }));

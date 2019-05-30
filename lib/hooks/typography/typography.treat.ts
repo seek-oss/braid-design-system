@@ -78,9 +78,11 @@ const makeTypographyRules = (
 };
 
 export const text = {
-  small: css(theme => makeTypographyRules(theme.text.small, theme)),
-  standard: css(theme => makeTypographyRules(theme.text.standard, theme)),
-  large: css(theme => makeTypographyRules(theme.text.large, theme)),
+  small: css(theme => makeTypographyRules(theme.typography.text.small, theme)),
+  standard: css(theme =>
+    makeTypographyRules(theme.typography.text.standard, theme),
+  ),
+  large: css(theme => makeTypographyRules(theme.typography.text.large, theme)),
 };
 
 export const heading = {
@@ -121,7 +123,7 @@ export const color = css(theme => {
 const touchableSpace = (theme: Theme, breakpoint: Breakpoint) => {
   const { spacing, utils } = theme;
 
-  return mapValues(theme.text, textDefinition => {
+  return mapValues(theme.typography.text, textDefinition => {
     const touchableHeight = utils.rows(spacing.touchableRows);
     const textHeight = utils.rows(textDefinition[breakpoint].rows);
     const space = (touchableHeight - textHeight) / 2;

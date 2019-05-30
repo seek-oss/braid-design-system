@@ -3,6 +3,14 @@ import { createTheme } from 'sku/treat';
 import { Tokens } from './theme';
 import makeUtils from './makeUtils';
 
+type TextDefinition = Record<
+  'mobile' | 'desktop',
+  {
+    size: number;
+    rows: number;
+  }
+>;
+
 export interface TreatTokens extends Tokens {
   name: string;
   typography: {
@@ -12,6 +20,11 @@ export interface TreatTokens extends Tokens {
       regular: number;
       medium: number;
       strong: number;
+    };
+    text: {
+      small: TextDefinition;
+      standard: TextDefinition;
+      large: TextDefinition;
     };
   };
   grid: {

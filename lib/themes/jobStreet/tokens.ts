@@ -19,6 +19,38 @@ const treatTokens = {
       medium: 500,
       strong: 600,
     },
+    text: {
+      small: {
+        mobile: {
+          size: 14,
+          rows: 5,
+        },
+        desktop: {
+          size: 14,
+          rows: 5,
+        },
+      },
+      standard: {
+        mobile: {
+          size: 14,
+          rows: 5,
+        },
+        desktop: {
+          size: 14,
+          rows: 5,
+        },
+      },
+      large: {
+        mobile: {
+          size: 16,
+          rows: 6,
+        },
+        desktop: {
+          size: 16,
+          rows: 6,
+        },
+      },
+    },
   },
   grid: {
     row: 4,
@@ -135,38 +167,6 @@ const tokens: Tokens = {
       desktop: {
         size: 24,
         rows: 8,
-      },
-    },
-  },
-  text: {
-    small: {
-      mobile: {
-        size: 14,
-        rows: 5,
-      },
-      desktop: {
-        size: 14,
-        rows: 5,
-      },
-    },
-    standard: {
-      mobile: {
-        size: 14,
-        rows: 5,
-      },
-      desktop: {
-        size: 14,
-        rows: 5,
-      },
-    },
-    large: {
-      mobile: {
-        size: 16,
-        rows: 6,
-      },
-      desktop: {
-        size: 16,
-        rows: 6,
       },
     },
   },
