@@ -1,4 +1,4 @@
-import { Tokens } from '../../themes/theme';
+import { TreatTokens } from '../makeTreatTheme';
 import { rgba } from 'polished';
 
 const focus = rgba('#428bca', 0.7);
@@ -9,7 +9,7 @@ const positive = 'green';
 const brandAccent = '#fff200';
 const black = '#333';
 
-const treatTokens = {
+const tokens: TreatTokens = {
   name: 'jobStreet',
   typography: {
     fontFamily: '"Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif',
@@ -18,6 +18,44 @@ const treatTokens = {
       regular: 400,
       medium: 500,
       strong: 600,
+    },
+    heading: {
+      weight: {
+        weak: 'regular',
+        regular: 'strong',
+      },
+      level: {
+        '1': {
+          mobile: {
+            size: 28,
+            rows: 9,
+          },
+          desktop: {
+            size: 36,
+            rows: 11,
+          },
+        },
+        '2': {
+          mobile: {
+            size: 24,
+            rows: 8,
+          },
+          desktop: {
+            size: 30,
+            rows: 9,
+          },
+        },
+        '3': {
+          mobile: {
+            size: 20,
+            rows: 7,
+          },
+          desktop: {
+            size: 24,
+            rows: 8,
+          },
+        },
+      },
     },
     text: {
       small: {
@@ -131,48 +169,4 @@ const treatTokens = {
   },
 };
 
-const tokens: Tokens = {
-  heading: {
-    level1: {
-      regular: 'strong',
-      weak: 'regular',
-      mobile: {
-        size: 28,
-        rows: 9,
-      },
-      desktop: {
-        size: 36,
-        rows: 11,
-      },
-    },
-    level2: {
-      regular: 'strong',
-      weak: 'regular',
-      mobile: {
-        size: 24,
-        rows: 8,
-      },
-      desktop: {
-        size: 30,
-        rows: 9,
-      },
-    },
-    level3: {
-      regular: 'strong',
-      weak: 'regular',
-      mobile: {
-        size: 20,
-        rows: 7,
-      },
-      desktop: {
-        size: 24,
-        rows: 8,
-      },
-    },
-  },
-};
-
-export default {
-  ...tokens,
-  ...treatTokens,
-};
+export default tokens;

@@ -1,25 +1,33 @@
 import './treatTheme.d';
 import { createTheme } from 'sku/treat';
-import { Tokens } from './theme';
 import makeUtils from './makeUtils';
 
+export type Breakpoint = 'mobile' | 'desktop';
 type TextDefinition = Record<
-  'mobile' | 'desktop',
+  Breakpoint,
   {
     size: number;
     rows: number;
   }
 >;
+type FontWeight = 'regular' | 'medium' | 'strong';
 
-export interface TreatTokens extends Tokens {
+export interface TreatTokens {
   name: string;
   typography: {
     fontFamily: string;
     descenderHeightScale: number;
-    fontWeight: {
-      regular: number;
-      medium: number;
-      strong: number;
+    fontWeight: Record<FontWeight, number>;
+    heading: {
+      weight: {
+        weak: FontWeight;
+        regular: FontWeight;
+      };
+      level: {
+        '1': TextDefinition;
+        '2': TextDefinition;
+        '3': TextDefinition;
+      };
     };
     text: {
       small: TextDefinition;

@@ -1,4 +1,4 @@
-import { Tokens } from '../../themes/theme';
+import { TreatTokens } from '../makeTreatTheme';
 
 const white = '#fff';
 const black = '#000';
@@ -19,7 +19,7 @@ const brandAccent = '#0d3880';
 const focus = blue3;
 const link = blue2;
 
-const treatTokens = {
+const tokens: TreatTokens = {
   name: 'seekAsia',
   typography: {
     fontFamily:
@@ -29,6 +29,44 @@ const treatTokens = {
       regular: 400,
       medium: 500,
       strong: 700,
+    },
+    heading: {
+      weight: {
+        weak: 'medium',
+        regular: 'strong',
+      },
+      level: {
+        '1': {
+          mobile: {
+            size: 28,
+            rows: 9,
+          },
+          desktop: {
+            size: 34,
+            rows: 11,
+          },
+        },
+        '2': {
+          mobile: {
+            size: 24,
+            rows: 8,
+          },
+          desktop: {
+            size: 28,
+            rows: 9,
+          },
+        },
+        '3': {
+          mobile: {
+            size: 20,
+            rows: 7,
+          },
+          desktop: {
+            size: 24,
+            rows: 8,
+          },
+        },
+      },
     },
     text: {
       small: {
@@ -142,48 +180,4 @@ const treatTokens = {
   },
 };
 
-const tokens: Tokens = {
-  heading: {
-    level1: {
-      regular: 'strong',
-      weak: 'medium',
-      mobile: {
-        size: 28,
-        rows: 9,
-      },
-      desktop: {
-        size: 34,
-        rows: 11,
-      },
-    },
-    level2: {
-      regular: 'strong',
-      weak: 'medium',
-      mobile: {
-        size: 24,
-        rows: 8,
-      },
-      desktop: {
-        size: 28,
-        rows: 9,
-      },
-    },
-    level3: {
-      regular: 'strong',
-      weak: 'medium',
-      mobile: {
-        size: 20,
-        rows: 7,
-      },
-      desktop: {
-        size: 24,
-        rows: 8,
-      },
-    },
-  },
-};
-
-export default {
-  ...tokens,
-  ...treatTokens,
-};
+export default tokens;

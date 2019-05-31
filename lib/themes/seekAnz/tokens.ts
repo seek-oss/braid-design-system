@@ -1,4 +1,4 @@
-import { Tokens } from '../../themes/theme';
+import { TreatTokens } from '../makeTreatTheme';
 import { rgba } from 'polished';
 
 const focus = rgba('#1e90ff', 0.7);
@@ -10,7 +10,7 @@ const info = '#9556b7';
 const black = '#1c1c1c';
 const link = '#2765cf';
 
-const treatTokens = {
+const tokens: TreatTokens = {
   name: 'seekAnz',
   typography: {
     fontFamily:
@@ -20,6 +20,44 @@ const treatTokens = {
       regular: 400,
       medium: 500,
       strong: 700,
+    },
+    heading: {
+      weight: {
+        weak: 'regular',
+        regular: 'medium',
+      },
+      level: {
+        '1': {
+          mobile: {
+            size: 28,
+            rows: 6,
+          },
+          desktop: {
+            size: 42,
+            rows: 8,
+          },
+        },
+        '2': {
+          mobile: {
+            size: 21,
+            rows: 5,
+          },
+          desktop: {
+            size: 28,
+            rows: 6,
+          },
+        },
+        '3': {
+          mobile: {
+            size: 21,
+            rows: 5,
+          },
+          desktop: {
+            size: 21,
+            rows: 5,
+          },
+        },
+      },
     },
     text: {
       small: {
@@ -133,48 +171,4 @@ const treatTokens = {
   },
 };
 
-const tokens: Tokens = {
-  heading: {
-    level1: {
-      regular: 'medium',
-      weak: 'regular',
-      mobile: {
-        size: 28,
-        rows: 6,
-      },
-      desktop: {
-        size: 42,
-        rows: 8,
-      },
-    },
-    level2: {
-      regular: 'medium',
-      weak: 'regular',
-      mobile: {
-        size: 21,
-        rows: 5,
-      },
-      desktop: {
-        size: 28,
-        rows: 6,
-      },
-    },
-    level3: {
-      regular: 'medium',
-      weak: 'regular',
-      mobile: {
-        size: 21,
-        rows: 5,
-      },
-      desktop: {
-        size: 21,
-        rows: 5,
-      },
-    },
-  },
-};
-
-export default {
-  ...tokens,
-  ...treatTokens,
-};
+export default tokens;

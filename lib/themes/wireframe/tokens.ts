@@ -1,4 +1,4 @@
-import { Tokens } from '../theme';
+import { TreatTokens } from '../makeTreatTheme';
 
 const formAccent = 'black';
 const critical = 'red';
@@ -10,7 +10,7 @@ const black = '#2b2b2b';
 const white = '#fff';
 const link = '#4c77bb';
 
-const treatTokens = {
+const tokens: TreatTokens = {
   name: 'wireframe',
   typography: {
     fontFamily: 'Courier, monospace',
@@ -19,6 +19,44 @@ const treatTokens = {
       regular: 400,
       medium: 500,
       strong: 600,
+    },
+    heading: {
+      weight: {
+        weak: 'regular',
+        regular: 'medium',
+      },
+      level: {
+        '1': {
+          mobile: {
+            size: 28,
+            rows: 6,
+          },
+          desktop: {
+            size: 42,
+            rows: 8,
+          },
+        },
+        '2': {
+          mobile: {
+            size: 21,
+            rows: 5,
+          },
+          desktop: {
+            size: 28,
+            rows: 6,
+          },
+        },
+        '3': {
+          mobile: {
+            size: 21,
+            rows: 5,
+          },
+          desktop: {
+            size: 21,
+            rows: 5,
+          },
+        },
+      },
     },
     text: {
       small: {
@@ -132,48 +170,4 @@ const treatTokens = {
   },
 };
 
-const tokens: Tokens = {
-  heading: {
-    level1: {
-      regular: 'medium',
-      weak: 'regular',
-      mobile: {
-        size: 28,
-        rows: 6,
-      },
-      desktop: {
-        size: 42,
-        rows: 8,
-      },
-    },
-    level2: {
-      regular: 'medium',
-      weak: 'regular',
-      mobile: {
-        size: 21,
-        rows: 5,
-      },
-      desktop: {
-        size: 28,
-        rows: 6,
-      },
-    },
-    level3: {
-      regular: 'medium',
-      weak: 'regular',
-      mobile: {
-        size: 21,
-        rows: 5,
-      },
-      desktop: {
-        size: 21,
-        rows: 5,
-      },
-    },
-  },
-};
-
-export default {
-  ...tokens,
-  ...treatTokens,
-};
+export default tokens;
