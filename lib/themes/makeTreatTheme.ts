@@ -1,16 +1,65 @@
-import './treatTheme.d';
+import './theme.d';
 import { createTheme } from 'sku/treat';
-import { Tokens } from './theme';
 import makeUtils from './makeUtils';
 
-interface ThemeVars extends Tokens {
+export type Breakpoint = 'mobile' | 'desktop';
+type TextDefinition = Record<
+  Breakpoint,
+  {
+    size: number;
+    rows: number;
+  }
+>;
+type FontWeight = 'regular' | 'medium' | 'strong';
+
+export interface TreatTokens {
   name: string;
   typography: {
     fontFamily: string;
-    fontWeight: {
-      regular: number;
+    descenderHeightScale: number;
+    fontWeight: Record<FontWeight, number>;
+    heading: {
+      weight: {
+        weak: FontWeight;
+        regular: FontWeight;
+      };
+      level: {
+        '1': TextDefinition;
+        '2': TextDefinition;
+        '3': TextDefinition;
+      };
+    };
+    text: {
+      small: TextDefinition;
+      standard: TextDefinition;
+      large: TextDefinition;
+    };
+  };
+  grid: {
+    row: number;
+    column: number;
+  };
+  responsiveBreakpoint: number;
+  spacing: {
+    touchableRows: number;
+    row: {
+      xxsmall: number;
+      xsmall: number;
+      small: number;
       medium: number;
-      strong: number;
+      large: number;
+      xlarge: number;
+      xxlarge: number;
+    };
+    column: {
+      gutter: number;
+      xxsmall: number;
+      xsmall: number;
+      small: number;
+      medium: number;
+      large: number;
+      xlarge: number;
+      xxlarge: number;
     };
   };
   transforms: {
@@ -65,12 +114,12 @@ interface ThemeVars extends Tokens {
   };
 }
 
-const addUtilsToTheme = (vars: ThemeVars) => ({
-  ...vars,
-  utils: makeUtils(vars),
+const addUtilsToTheme = (treatTokens: TreatTokens) => ({
+  ...treatTokens,
+  utils: makeUtils(treatTokens),
 });
 
-export default (themeVars: ThemeVars) =>
-  createTheme(addUtilsToTheme(themeVars));
+export default (treatTokens: TreatTokens) =>
+  createTheme(addUtilsToTheme(treatTokens));
 
 export type TreatTheme = ReturnType<typeof addUtilsToTheme>;

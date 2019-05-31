@@ -1,6 +1,5 @@
 import { useClassNames } from 'sku/treat';
 import * as styles from './typography.treat';
-import { useTheme } from '../../components/private/ThemeContext';
 import { useForeground } from '../../components/Box/ContrastContext';
 
 export interface UseTextProps {
@@ -35,16 +34,6 @@ interface HeadingParams {
   baseline: boolean;
 }
 
-const resolveLevelToken = (level: HeadingLevel) => {
-  const { tokens } = useTheme();
-
-  return {
-    '1': tokens.heading.level1,
-    '2': tokens.heading.level2,
-    '3': tokens.heading.level3,
-  }[level];
-};
-
 export const useHeading = ({
   weight = 'regular',
   level,
@@ -52,7 +41,7 @@ export const useHeading = ({
 }: HeadingParams) =>
   useClassNames(
     styles.fontFamily,
-    styles.fontWeight[resolveLevelToken(level)[weight]],
+    styles.headingWeight[weight],
     styles.heading[level].fontSize,
     useTextColor('neutral'),
     {

@@ -14,7 +14,7 @@ const makeSizeRules = (size: number) => ({ width: size, height: size });
 
 export const inlineSizes = css(theme => {
   const { responsiveStyles } = theme.utils;
-  const { standard, large } = theme.text;
+  const { standard, large } = theme.typography.text;
 
   return {
     standard: responsiveStyles(
@@ -30,7 +30,7 @@ export const inlineSizes = css(theme => {
 
 export const blockSizes = css(theme => {
   const { responsiveStyles, rows } = theme.utils;
-  const { standard, large } = theme.text;
+  const { standard, large } = theme.typography.text;
 
   return {
     standard: responsiveStyles(

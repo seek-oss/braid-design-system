@@ -95,7 +95,7 @@ export const Components = withRouter(({ location }: RouteComponentProps) => {
                   <Box paddingBottom="small">
                     <BulletList>
                       {Object.keys(components)
-                        .filter(x => !/icon/i.test(x))
+                        .filter(x => !/icon/i.test(x) && !/^use/.test(x))
                         .sort()
                         .map(componentName => (
                           <Bullet key={componentName}>
@@ -117,7 +117,9 @@ export const Components = withRouter(({ location }: RouteComponentProps) => {
                   </Box>
                   <BulletList>
                     {Object.keys(components)
-                      .filter(x => /icon/i.test(x) && x !== 'Icon')
+                      .filter(
+                        x => /icon/i.test(x) && x !== 'Icon' && !/^use/.test(x),
+                      )
                       .sort()
                       .map(iconName => (
                         <Bullet key={iconName}>

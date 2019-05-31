@@ -1,99 +1,172 @@
-import { Tokens } from '../theme';
+import { TreatTokens } from '../makeTreatTheme';
 
-const tokens: Tokens = {
-  rowHeight: 6,
-  columnWidth: 5,
-  touchableRows: 8,
+const formAccent = 'black';
+const critical = 'red';
+const positive = 'green';
+const info = 'navy';
+const brandAccent = 'DarkOrange';
+const focus = 'DeepSkyBlue';
+const black = '#2b2b2b';
+const white = '#fff';
+const link = '#4c77bb';
+
+const tokens: TreatTokens = {
+  name: 'wireframe',
+  typography: {
+    fontFamily: 'Courier, monospace',
+    descenderHeightScale: 0.16,
+    fontWeight: {
+      regular: 400,
+      medium: 500,
+      strong: 600,
+    },
+    heading: {
+      weight: {
+        weak: 'regular',
+        regular: 'medium',
+      },
+      level: {
+        '1': {
+          mobile: {
+            size: 28,
+            rows: 6,
+          },
+          desktop: {
+            size: 42,
+            rows: 8,
+          },
+        },
+        '2': {
+          mobile: {
+            size: 21,
+            rows: 5,
+          },
+          desktop: {
+            size: 28,
+            rows: 6,
+          },
+        },
+        '3': {
+          mobile: {
+            size: 21,
+            rows: 5,
+          },
+          desktop: {
+            size: 21,
+            rows: 5,
+          },
+        },
+      },
+    },
+    text: {
+      small: {
+        mobile: {
+          size: 14,
+          rows: 5,
+        },
+        desktop: {
+          size: 14,
+          rows: 5,
+        },
+      },
+      standard: {
+        mobile: {
+          size: 16,
+          rows: 4,
+        },
+        desktop: {
+          size: 16,
+          rows: 4,
+        },
+      },
+      large: {
+        mobile: {
+          size: 18,
+          rows: 4,
+        },
+        desktop: {
+          size: 18,
+          rows: 4,
+        },
+      },
+    },
+  },
+  grid: {
+    row: 6,
+    column: 5,
+  },
   responsiveBreakpoint: 768,
-  descenderHeightScale: 0.16,
-  heading: {
-    level1: {
-      regular: 'medium',
-      weak: 'regular',
-      mobile: {
-        size: 28,
-        rows: 6,
-      },
-      desktop: {
-        size: 42,
-        rows: 8,
-      },
+  spacing: {
+    touchableRows: 8,
+    row: {
+      xxsmall: 1,
+      xsmall: 2,
+      small: 3,
+      medium: 4,
+      large: 6,
+      xlarge: 8,
+      xxlarge: 16,
     },
-    level2: {
-      regular: 'medium',
-      weak: 'regular',
-      mobile: {
-        size: 21,
-        rows: 5,
-      },
-      desktop: {
-        size: 28,
-        rows: 6,
-      },
-    },
-    level3: {
-      regular: 'medium',
-      weak: 'regular',
-      mobile: {
-        size: 21,
-        rows: 5,
-      },
-      desktop: {
-        size: 21,
-        rows: 5,
-      },
+    column: {
+      gutter: 5,
+      xxsmall: 1,
+      xsmall: 2,
+      small: 3,
+      medium: 4,
+      large: 6,
+      xlarge: 8,
+      xxlarge: 16,
     },
   },
-  text: {
-    small: {
-      mobile: {
-        size: 14,
-        rows: 5,
-      },
-      desktop: {
-        size: 14,
-        rows: 5,
-      },
+  transforms: {
+    touchable: 'scale(0.97)',
+  },
+  transitions: {
+    fast: 'transform .125s ease, opacity .125s ease',
+    touchable: 'transform 0.2s cubic-bezier(0.02, 1.505, 0.745, 1.235)',
+  },
+  border: {
+    radius: {
+      standard: '4px',
     },
-    standard: {
-      mobile: {
-        size: 16,
-        rows: 4,
-      },
-      desktop: {
-        size: 16,
-        rows: 4,
-      },
+    width: {
+      standard: 1,
+      large: 2,
     },
-    large: {
-      mobile: {
-        size: 18,
-        rows: 4,
-      },
-      desktop: {
-        size: 18,
-        rows: 4,
-      },
+    color: {
+      standard: '#777',
+      focus,
+      critical,
+      formAccent,
     },
   },
-  rowSpacing: {
-    xxsmall: 1,
-    xsmall: 2,
-    small: 3,
-    medium: 4,
-    large: 6,
-    xlarge: 8,
-    xxlarge: 16,
-  },
-  columnSpacing: {
-    gutter: 5,
-    xxsmall: 1,
-    xsmall: 2,
-    small: 3,
-    medium: 4,
-    large: 6,
-    xlarge: 8,
-    xxlarge: 16,
+  color: {
+    foreground: {
+      link,
+      linkHover: link,
+      black,
+      neutral: black,
+      brandAccent,
+      formAccent,
+      formAccentDisabled: '#ccc',
+      critical,
+      info,
+      positive,
+      secondary: '#777',
+      white,
+    },
+    background: {
+      input: white,
+      inputDisabled: '#eee',
+      brandAccent,
+      formAccent,
+      formAccentDisabled: '#ccc',
+      selection: '#eee',
+      card: white,
+      critical,
+      info,
+      positive,
+    },
   },
 };
 

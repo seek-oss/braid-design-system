@@ -10,7 +10,7 @@ export const grow = style({
 
 export const minHeight = style(theme => {
   const { responsiveStyles, rows } = theme.utils;
-  const { mobile, desktop } = theme.text.standard;
+  const { mobile, desktop } = theme.typography.text.standard;
 
   return responsiveStyles(
     { minHeight: rows(mobile.rows) },

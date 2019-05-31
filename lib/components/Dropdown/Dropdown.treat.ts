@@ -1,15 +1,16 @@
 import { style } from 'sku/treat';
 
-export const chevron = style(({ touchableRows, rowHeight }) => ({
+export const chevron = style(({ utils, spacing }) => ({
   position: 'absolute',
   pointerEvents: 'none',
   top: 0,
   right: 0,
   alignItems: 'center',
-  height: touchableRows * rowHeight,
+  height: utils.rows(spacing.touchableRows),
 }));
 
-export const field = style(({ columnSpacing, columnWidth, text }) => ({
+export const field = style(({ spacing, grid, typography }) => ({
   paddingRight:
-    columnSpacing.small * columnWidth * 2 + text.standard.mobile.size,
+    spacing.column.small * grid.column * 2 +
+    typography.text.standard.mobile.size,
 }));

@@ -1,22 +1,23 @@
 import { style } from 'sku/treat';
-import { Tokens } from '../../../themes/theme';
+import { Theme } from 'treat/theme';
 
-const getSize = ({ touchableRows, text, rowHeight }: Tokens) => {
+const getSize = ({ spacing, typography, utils }: Theme) => {
   // We currently don't support responsive checkboxes and
   // radio buttons, but nobody actually needs it (so far)
-  const scale = text.standard.mobile.size / 28;
-  const rows = Math.round(touchableRows * scale);
+  const scale = typography.text.standard.mobile.size / 28;
+  const rows = Math.round(spacing.touchableRows * scale);
 
-  return rows * rowHeight;
+  return utils.rows(rows);
 };
 
-export const fieldSize = style(tokens => {
-  const size = getSize(tokens);
+export const fieldSize = style(theme => {
+  const size = getSize(theme);
+  const { spacing, utils } = theme;
 
   return {
     height: size,
     width: size,
-    marginTop: (tokens.touchableRows * tokens.rowHeight - size) / 2,
+    marginTop: (utils.rows(spacing.touchableRows) - size) / 2,
   };
 });
 
@@ -45,8 +46,8 @@ export const label = style({
   },
 });
 
-export const children = style(tokens => {
-  const size = getSize(tokens);
+export const children = style(theme => {
+  const size = getSize(theme);
 
   return {
     marginLeft: size,

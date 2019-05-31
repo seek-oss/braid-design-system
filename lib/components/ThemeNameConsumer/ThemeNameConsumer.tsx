@@ -1,14 +1,10 @@
 import { ReactElement } from 'react';
-import { useTheme } from '../private/ThemeContext';
+import { useThemeName } from './ThemeNameContext';
 
 interface ThemeNameConsumerProps {
   children(name: string): ReactElement;
 }
 
 export const ThemeNameConsumer = ({ children }: ThemeNameConsumerProps) => {
-  const theme = useTheme();
-
-  return children(theme.name);
+  return children(useThemeName());
 };
-
-export const useThemeName = () => useTheme().name;

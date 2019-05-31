@@ -1,11 +1,11 @@
 import React from 'react';
-import tokens from '../../themes/wireframe/tokens';
 import { ComponentDocs, ComponentExample } from '../../../docs/src/types';
 import { Box } from './Box';
 import { HideCode } from '../private/HideCode';
+import tokens from '../../themes/wireframe/tokens';
 
-type Space = keyof typeof tokens.columnSpacing;
-const spacing = Object.keys(tokens.columnSpacing) as Space[];
+type Space = keyof typeof tokens.spacing.column;
+const spacing = Object.keys(tokens.spacing.column) as Space[];
 
 const docs: ComponentDocs = {
   storybook: false,
@@ -13,33 +13,25 @@ const docs: ComponentDocs = {
     (space): ComponentExample => ({
       label: `"${space}" spacing`,
       render: () => (
-        <Box backgroundColor="formAccent" style={{ overflow: 'auto' }}>
+        <Box
+          backgroundColor="formAccent"
+          style={{ overflow: 'auto', maxWidth: '300px' }}
+        >
           <Box
-            paddingLeft={space}
-            paddingRight={space}
             marginLeft={space}
             marginRight={space}
             {...(space === 'gutter'
               ? {
-                  paddingTop: 'small',
-                  paddingBottom: 'small',
-                  marginTop: 'small',
-                  marginBottom: 'small',
+                  marginTop: 'none',
+                  marginBottom: 'none',
                 }
               : {
-                  paddingTop: space,
-                  paddingBottom: space,
                   marginTop: space,
                   marginBottom: space,
                 })}
-            backgroundColor="card"
-            borderRadius="standard"
           >
             <HideCode>
-              <Box
-                borderRadius="standard"
-                style={{ backgroundColor: 'pink', height: '20px' }}
-              />
+              <Box style={{ backgroundColor: 'whitesmoke', height: '20px' }} />
             </HideCode>
           </Box>
         </Box>

@@ -2,8 +2,8 @@ import mapValues from 'lodash/mapValues';
 import { style, css } from 'sku/treat';
 import { Theme } from 'treat/theme';
 import basekick from 'basekick';
-import { Breakpoint } from '../../themes/theme';
 import { getAccessibleVariant, isLight, mapToStyleProperty } from '../../utils';
+import { Breakpoint } from '../../themes/makeTreatTheme';
 
 export const fontFamily = style(({ typography }) => ({
   fontFamily: typography.fontFamily,
@@ -41,18 +41,18 @@ const alignTextToGrid = (
 
 const makeTypographyRules = (
   textDefinition: Record<Breakpoint, TextDefinition>,
-  { rowHeight, descenderHeightScale, utils }: Theme,
+  { grid, typography, utils }: Theme,
 ) => {
   const mobile = alignTextToGrid(
     textDefinition.mobile,
-    rowHeight,
-    descenderHeightScale,
+    grid.row,
+    typography.descenderHeightScale,
   );
 
   const desktop = alignTextToGrid(
     textDefinition.desktop,
-    rowHeight,
-    descenderHeightScale,
+    grid.row,
+    typography.descenderHeightScale,
   );
 
   return {
@@ -78,15 +78,29 @@ const makeTypographyRules = (
 };
 
 export const text = {
-  small: css(theme => makeTypographyRules(theme.text.small, theme)),
-  standard: css(theme => makeTypographyRules(theme.text.standard, theme)),
-  large: css(theme => makeTypographyRules(theme.text.large, theme)),
+  small: css(theme => makeTypographyRules(theme.typography.text.small, theme)),
+  standard: css(theme =>
+    makeTypographyRules(theme.typography.text.standard, theme),
+  ),
+  large: css(theme => makeTypographyRules(theme.typography.text.large, theme)),
 };
 
+export const headingWeight = css(({ typography }) =>
+  mapValues(typography.heading.weight, weight => ({
+    fontWeight: typography.fontWeight[weight],
+  })),
+);
+
 export const heading = {
-  '1': css(theme => makeTypographyRules(theme.heading.level1, theme)),
-  '2': css(theme => makeTypographyRules(theme.heading.level2, theme)),
-  '3': css(theme => makeTypographyRules(theme.heading.level3, theme)),
+  '1': css(theme =>
+    makeTypographyRules(theme.typography.heading.level['1'], theme),
+  ),
+  '2': css(theme =>
+    makeTypographyRules(theme.typography.heading.level['2'], theme),
+  ),
+  '3': css(theme =>
+    makeTypographyRules(theme.typography.heading.level['3'], theme),
+  ),
 };
 
 export const color = css(theme => {
@@ -119,11 +133,11 @@ export const color = css(theme => {
 });
 
 const touchableSpace = (theme: Theme, breakpoint: Breakpoint) => {
-  const { touchableRows, rowHeight } = theme;
+  const { spacing, utils } = theme;
 
-  return mapValues(theme.text, textDefinition => {
-    const touchableHeight = touchableRows * rowHeight;
-    const textHeight = textDefinition[breakpoint].rows * rowHeight;
+  return mapValues(theme.typography.text, textDefinition => {
+    const touchableHeight = utils.rows(spacing.touchableRows);
+    const textHeight = utils.rows(textDefinition[breakpoint].rows);
     const space = (touchableHeight - textHeight) / 2;
     const spaceStyles = {
       paddingTop: space,
