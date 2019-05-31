@@ -56,4 +56,4 @@ export const useTextColor = (color: keyof typeof styles.color) =>
   useClassNames(styles.color[useForeground(color)]);
 
 export const useTouchableSpace = (size: keyof typeof styles.touchable) =>
-  useClassNames(styles.touchable[size], styles.touchableDesktop[size]);
+  useClassNames(styles.touchable[size]);
