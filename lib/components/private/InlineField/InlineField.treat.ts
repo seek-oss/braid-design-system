@@ -10,13 +10,14 @@ const getSize = ({ spacing, typography, utils }: Theme) => {
   return utils.rows(rows);
 };
 
-export const fieldSize = style(tokens => {
-  const size = getSize(tokens);
+export const fieldSize = style(theme => {
+  const size = getSize(theme);
+  const { spacing, utils } = theme;
 
   return {
     height: size,
     width: size,
-    marginTop: (tokens.spacing.touchableRows * tokens.grid.row - size) / 2,
+    marginTop: utils.rows(spacing.touchableRows) - size / 2,
   };
 });
 
@@ -45,8 +46,8 @@ export const label = style({
   },
 });
 
-export const children = style(tokens => {
-  const size = getSize(tokens);
+export const children = style(theme => {
+  const size = getSize(theme);
 
   return {
     marginLeft: size,
