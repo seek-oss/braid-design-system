@@ -3310,10 +3310,10 @@ babel-plugin-transform-undefined-to-void@^6.9.4:
   resolved "https://registry.yarnpkg.com/babel-plugin-transform-undefined-to-void/-/babel-plugin-transform-undefined-to-void-6.9.4.tgz#be241ca81404030678b748717322b89d0c8fe280"
   integrity sha1-viQcqBQEAwZ4t0hxcyK4nQyP4oA=
 
-babel-plugin-treat@1.0.0-beta.8:
-  version "1.0.0-beta.8"
-  resolved "https://registry.yarnpkg.com/babel-plugin-treat/-/babel-plugin-treat-1.0.0-beta.8.tgz#9921d5e36a2cb52b5e57f72e22920b215594504b"
-  integrity sha512-CG4Ji9FVPNPZ8cM8ns7YWd6/mAM+6mqAMVOCtpXWizh2hChI572Q58iepsM+gMVKbSNqKaAikvBwDW+HKmfuMA==
+babel-plugin-treat@1.0.0-beta.23:
+  version "1.0.0-beta.23"
+  resolved "https://registry.yarnpkg.com/babel-plugin-treat/-/babel-plugin-treat-1.0.0-beta.23.tgz#e39f219686c6cb955aed174b07b8fef7a982d9be"
+  integrity sha512-U3XwAG1VMoE5YOAsc6h79wndN/kjVzqXfz7EssHTpj1KH640IooYwxFMrVdmV66Kr9iL41I0S65j3FqnioiO5A==
 
 babel-polyfill@6.26.0:
   version "6.26.0"
@@ -12569,10 +12569,10 @@ react-transition-group@^2.0.0, react-transition-group@^2.6.1:
     prop-types "^15.6.2"
     react-lifecycles-compat "^3.0.4"
 
-react-treat@1.0.0-beta.22:
-  version "1.0.0-beta.22"
-  resolved "https://registry.yarnpkg.com/react-treat/-/react-treat-1.0.0-beta.22.tgz#7afb8c651df74e81fc9f6375e985fc41b191f307"
-  integrity sha512-23Z3rjpq8DcH5Rvsa6zTbgtzE/Z6i91htOyVFjEjzTCEWUPI6YwAioa0JX/QGfjzVlRSDuIPiHmuPqSJsB4B+Q==
+react-treat@1.0.0-beta.26:
+  version "1.0.0-beta.26"
+  resolved "https://registry.yarnpkg.com/react-treat/-/react-treat-1.0.0-beta.26.tgz#1ffce83ec6ba3e15dfa6097eaf958cedfea4e6f9"
+  integrity sha512-px2QAFsSOIY/hVerjp3K9ahgm5RveVhiTdd/+3jdYYeoMo7lF86E1e9jHznFV2QQCAxJhNeA0YjOrJK5BAzerw==
 
 react-treebeard@3.1.0:
   version "3.1.0"
@@ -13684,10 +13684,10 @@ sisteransi@^1.0.0:
   resolved "https://registry.yarnpkg.com/sisteransi/-/sisteransi-1.0.0.tgz#77d9622ff909080f1c19e5f4a1df0c1b0a27b88c"
   integrity sha512-N+z4pHB4AmUv0SjveWRd6q1Nj5w62m5jodv+GD8lvmbY/83T/rpbJGZOnK5T149OldDj4Db07BSv9xY4K6NTPQ==
 
-sku@8.6.0:
-  version "8.6.0"
-  resolved "https://registry.yarnpkg.com/sku/-/sku-8.6.0.tgz#34ac1da6fcbfdea0cb4b077d7c41e90c518afef2"
-  integrity sha512-fGmv2uMLbep+A0m228cg7Kdx3qr4jHZ/gCuek4qnAQUNlL/QtFeXOapso+IrAqJxekv6C0UXigDX6otbi2h+tA==
+sku@8.7.0:
+  version "8.7.0"
+  resolved "https://registry.yarnpkg.com/sku/-/sku-8.7.0.tgz#cf262fbf793bc688c253ae63c135cf081362a487"
+  integrity sha512-jpkoNkH3qtnO7P/VFxRpf8622FNrkc4XdNVFXT1JWoLZb/xTKwWyIIZlREFhso17leA6+U2uqs3OZuaE16oT4w==
   dependencies:
     "@babel/core" "^7.1.2"
     "@babel/plugin-proposal-class-properties" "^7.1.0"
@@ -13722,7 +13722,7 @@ sku@8.6.0:
     babel-plugin-seek-style-guide "^1.0.0"
     babel-plugin-syntax-dynamic-import "^6.18.0"
     babel-plugin-transform-react-remove-prop-types "^0.4.18"
-    babel-plugin-treat "1.0.0-beta.8"
+    babel-plugin-treat "1.0.0-beta.23"
     browserslist "^4.4.0"
     browserslist-config-seek "^2.0.0"
     chalk "^2.4.1"
@@ -13769,7 +13769,7 @@ sku@8.6.0:
     prettier "1.15.3"
     raw-loader "^1.0.0"
     react-hot-loader "^3.1.3"
-    react-treat "1.0.0-beta.22"
+    react-treat "1.0.0-beta.26"
     rimraf "^2.6.2"
     serialize-javascript "^1.6.1"
     start-server-webpack-plugin "^2.2.5"
@@ -13777,7 +13777,7 @@ sku@8.6.0:
     svgo "^1.0.5"
     svgo-loader "^2.1.0"
     traverse "^0.6.6"
-    treat "1.0.0-beta.22"
+    treat "1.0.0-beta.26"
     tree-kill "^1.2.1"
     tslint "^5.11.0"
     tslint-config-seek "^1.0.0"
@@ -14881,15 +14881,16 @@ travis-deploy-once@^5.0.9:
     url-join "^4.0.0"
     yargs "^12.0.1"
 
-treat@1.0.0-beta.22:
-  version "1.0.0-beta.22"
-  resolved "https://registry.yarnpkg.com/treat/-/treat-1.0.0-beta.22.tgz#a836854d0bd0e3359e2075ae6eb9265e5627d518"
-  integrity sha512-rkHohrFHJRMticA/rYTvdaUHBG36eo4LAeAIHbLh0Z5BaNMIdcypOzXCIC3O7YeJ5uroOm+RDH7y5FT4WbBReQ==
+treat@1.0.0-beta.26:
+  version "1.0.0-beta.26"
+  resolved "https://registry.yarnpkg.com/treat/-/treat-1.0.0-beta.26.tgz#6aa325b2da7773bdd050b41ee6dc9ca52de412dd"
+  integrity sha512-Gae9I/5frO6O0oQ1QUWrmxpi6IPopnahGNBpKWFm7eakRlDIx1k7/Q7T/paAEUjNyhgLpL197j8klhfjBRfVFA==
   dependencies:
     "@hapi/joi" "^15.0.3"
     "@types/lodash" "^4.14.123"
     autoprefixer "^9.5.0"
     bluebird "^3.5.4"
+    chalk "^2.4.2"
     css-loader "^2.1.0"
     css-selector-parser "^1.3.0"
     cssnano "^4.1.10"
