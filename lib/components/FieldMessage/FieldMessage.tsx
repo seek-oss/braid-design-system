@@ -5,7 +5,8 @@ import { Text, TextProps } from '../Text/Text';
 import { ErrorIcon } from '../icons/ErrorIcon/ErrorIcon';
 import { TickCircleIcon } from '../icons/TickCircleIcon/TickCircleIcon';
 import * as styles from './FieldMessage.treat';
-import { FieldTone } from '../../themes/theme';
+
+type FieldTone = 'neutral' | 'critical' | 'positive';
 
 export interface FieldMessageProps extends TextProps {
   id: string;

@@ -1,9 +1,11 @@
 import React, { ReactNode, AllHTMLAttributes } from 'react';
-import { FieldTone } from '../../../themes/theme';
 import { useClassNames } from 'sku/treat';
 import { Box, BoxProps } from '../../Box/Box';
 import { FieldLabel } from '../../FieldLabel/FieldLabel';
-import { FieldMessage } from '../../FieldMessage/FieldMessage';
+import {
+  FieldMessage,
+  FieldMessageProps,
+} from '../../FieldMessage/FieldMessage';
 import { FieldOverlay } from '../FieldOverlay/FieldOverlay';
 import * as styles from './Field.treat';
 import { useText, useTouchableSpace } from '../../../hooks/typography';
@@ -19,7 +21,7 @@ export interface FieldProps {
   description?: string;
   message?: ReactNode | false;
   secondaryMessage?: ReactNode;
-  tone?: FieldTone;
+  tone?: FieldMessageProps['tone'];
 }
 
 type PassthroughProps = 'id' | 'name' | 'disabled';
