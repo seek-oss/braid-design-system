@@ -1,4 +1,4 @@
-import './treatTheme.d';
+import './theme.d';
 import { createTheme } from 'sku/treat';
 import makeUtils from './makeUtils';
 

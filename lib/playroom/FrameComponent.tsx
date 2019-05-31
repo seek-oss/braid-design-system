@@ -1,9 +1,9 @@
 import React, { Fragment, ReactNode } from 'react';
 import { ThemeProvider } from '../components';
-import { Theme } from '../themes/theme';
+import { ThemeProviderProps } from '../components/ThemeProvider/ThemeProvider';
 
 interface Props {
-  theme: Theme;
+  theme: ThemeProviderProps['theme'];
   children: ReactNode;
 }
 

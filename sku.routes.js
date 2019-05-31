@@ -7,6 +7,7 @@ const componentsSource = fs.readFileSync(componentsPath, 'utf-8'); // eslint-dis
 const components = componentsSource
   .match(/export { [A-Za-z]+/g)
   .map(x => x.replace('export { ', ''))
+  .filter(x => !/^use/.test(x))
   .sort();
 const [iconNames, componentNames] = partition(components, x =>
   /.+Icon$/i.test(x),

@@ -1,15 +1,15 @@
 import React, { ReactNode } from 'react';
 import { TreatProvider } from 'sku/treat';
-import ThemeContext from '../private/ThemeContext';
+import ThemeNameContext from '../ThemeNameConsumer/ThemeNameContext';
 import { Theme } from '../../themes/theme';
 
-interface ThemeProviderProps {
+export interface ThemeProviderProps {
   theme: Theme;
   children: ReactNode;
 }
 
 export const ThemeProvider = ({ theme, children }: ThemeProviderProps) => (
-  <ThemeContext.Provider value={theme}>
+  <ThemeNameContext.Provider value={theme.name}>
     <TreatProvider theme={theme.treatTheme}>{children}</TreatProvider>
-  </ThemeContext.Provider>
+  </ThemeNameContext.Provider>
 );

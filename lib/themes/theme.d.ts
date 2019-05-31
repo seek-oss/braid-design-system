@@ -1,6 +1,6 @@
 import { ThemeRef } from 'sku/treat';
 
-export interface Theme {
+interface Theme {
   readonly name: string;
   readonly treatTheme: ThemeRef;
 }
