@@ -17,7 +17,7 @@ export const fieldSize = style(theme => {
   return {
     height: size,
     width: size,
-    marginTop: utils.rows(spacing.touchableRows) - size / 2,
+    marginTop: (utils.rows(spacing.touchableRows) - size) / 2,
   };
 });
 
