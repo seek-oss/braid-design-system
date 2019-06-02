@@ -23,12 +23,12 @@ const renderIcon = (tone: FieldTone = 'neutral') => {
 
   const Icon: Record<FieldTone, ReactNode> = {
     neutral: null,
-    critical: <ErrorIcon fill="critical" />,
-    positive: <TickCircleIcon fill="positive" />,
+    critical: <ErrorIcon fill="critical" inline />,
+    positive: <TickCircleIcon fill="positive" inline />,
   };
 
   return (
-    <Box paddingRight="xsmall" className={useClassNames(styles.fixedSize)}>
+    <Box paddingRight="xxsmall" className={useClassNames(styles.fixedSize)}>
       {Icon[tone]}
     </Box>
   );
