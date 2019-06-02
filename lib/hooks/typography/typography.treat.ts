@@ -9,17 +9,9 @@ export const fontFamily = style(({ typography }) => ({
   fontFamily: typography.fontFamily,
 }));
 
-export const fontWeight = css(({ typography }) => ({
-  regular: {
-    fontWeight: typography.fontWeight.regular,
-  },
-  medium: {
-    fontWeight: typography.fontWeight.medium,
-  },
-  strong: {
-    fontWeight: typography.fontWeight.strong,
-  },
-}));
+export const fontWeight = css(({ typography }) =>
+  mapToStyleProperty(typography.fontWeight, 'fontWeight'),
+);
 
 interface TextDefinition {
   rows: number;
@@ -132,22 +124,26 @@ export const color = css(theme => {
   };
 });
 
-const touchableSpace = (theme: Theme, breakpoint: Breakpoint) => {
-  const { spacing, utils } = theme;
+const makeTouchableSpacing = (touchableHeight: number, textHeight: number) => {
+  const space = (touchableHeight - textHeight) / 2;
 
-  return mapValues(theme.typography.text, textDefinition => {
-    const touchableHeight = utils.rows(spacing.touchableRows);
-    const textHeight = utils.rows(textDefinition[breakpoint].rows);
-    const space = (touchableHeight - textHeight) / 2;
-    const spaceStyles = {
-      paddingTop: space,
-      paddingBottom: space,
-    };
-
-    return breakpoint === 'desktop'
-      ? theme.utils.desktopStyles(spaceStyles)
-      : spaceStyles;
-  });
+  return {
+    paddingTop: space,
+    paddingBottom: space,
+  };
 };
-export const touchable = css(theme => touchableSpace(theme, 'mobile'));
-export const touchableDesktop = css(theme => touchableSpace(theme, 'desktop'));
+
+export const touchable = css(({ typography, spacing, utils }) =>
+  mapValues(typography.text, textDefinition =>
+    utils.responsiveStyles(
+      makeTouchableSpacing(
+        utils.rows(spacing.touchableRows),
+        utils.rows(textDefinition.mobile.rows),
+      ),
+      makeTouchableSpacing(
+        utils.rows(spacing.touchableRows),
+        utils.rows(textDefinition.desktop.rows),
+      ),
+    ),
+  ),
+);

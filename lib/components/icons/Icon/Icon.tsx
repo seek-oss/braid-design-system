@@ -4,7 +4,7 @@ import { Box } from '../../Box/Box';
 import * as styles from './Icon.treat';
 import { useTextColor, UseTextProps } from '../../../hooks/typography';
 
-type IconSize = 'standard' | 'large' | 'fill';
+type IconSize = NonNullable<UseTextProps['size']> | 'fill';
 
 export interface IconProps {
   size?: IconSize;
