@@ -19,7 +19,7 @@ const docs: ComponentDocs = {
           checked={false}
           onChange={handler}
           label="Label"
-          message={false}
+          reserveMessageSpace={false}
         />
       ),
     },
@@ -31,7 +31,7 @@ const docs: ComponentDocs = {
           checked={true}
           onChange={handler}
           label="Label"
-          message={false}
+          reserveMessageSpace={false}
         />
       ),
     },
@@ -44,7 +44,7 @@ const docs: ComponentDocs = {
           checked={false}
           onChange={handler}
           label="Label"
-          message={false}
+          reserveMessageSpace={false}
         />
       ),
     },
@@ -82,7 +82,7 @@ const docs: ComponentDocs = {
           checked={true}
           onChange={handler}
           label="Label"
-          message={false}
+          reserveMessageSpace={false}
         >
           <Text>This text is visible when the checkbox is checked.</Text>
         </Checkbox>
