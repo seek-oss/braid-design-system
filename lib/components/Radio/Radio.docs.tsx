@@ -12,27 +12,9 @@ const docs: ComponentDocs = {
       ),
     },
     {
-      label: 'Radio Button without Message Placeholder',
-      render: ({ id, handler }) => (
-        <Radio
-          id={id}
-          checked={false}
-          onChange={handler}
-          label="Label"
-          message={false}
-        />
-      ),
-    },
-    {
       label: 'Checked Radio Button',
       render: ({ id, handler }) => (
-        <Radio
-          id={id}
-          checked={true}
-          onChange={handler}
-          label="Label"
-          message={false}
-        />
+        <Radio id={id} checked={true} onChange={handler} label="Label" />
       ),
     },
     {
@@ -44,7 +26,6 @@ const docs: ComponentDocs = {
           checked={false}
           onChange={handler}
           label="Label"
-          message={false}
         />
       ),
     },
@@ -56,7 +37,6 @@ const docs: ComponentDocs = {
           checked={false}
           onChange={handler}
           label="Label"
-          message="This is a critical message"
           tone="critical"
         />
       ),
@@ -69,7 +49,6 @@ const docs: ComponentDocs = {
           checked={false}
           onChange={handler}
           label="Label"
-          message="This is a positive message"
           tone="positive"
         />
       ),
@@ -77,13 +56,7 @@ const docs: ComponentDocs = {
     {
       label: 'Nested Radio Button',
       render: ({ id, handler }) => (
-        <Radio
-          id={id}
-          checked={true}
-          onChange={handler}
-          label="Label"
-          message={false}
-        >
+        <Radio id={id} checked={true} onChange={handler} label="Label">
           <Text>This text is visible when the radio button is checked.</Text>
         </Radio>
       ),
