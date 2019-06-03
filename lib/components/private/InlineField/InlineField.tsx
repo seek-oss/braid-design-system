@@ -21,6 +21,7 @@ export interface InlineFieldProps {
   name?: FormElementProps['name'];
   disabled?: FormElementProps['disabled'];
   message?: FieldMessageProps['message'];
+  reserveMessageSpace?: FieldMessageProps['reserveMessageSpace'];
   tone?: FieldMessageProps['tone'];
   children?: ReactNode;
 }
@@ -38,6 +39,7 @@ export const InlineField = ({
   type,
   children,
   message,
+  reserveMessageSpace = false,
   tone = 'neutral',
   disabled = false,
 }: InternalInlineFieldProps) => {
@@ -129,6 +131,7 @@ export const InlineField = ({
         tone={tone}
         disabled={disabled}
         message={message}
+        reserveMessageSpace={reserveMessageSpace}
       />
     </Box>
   );

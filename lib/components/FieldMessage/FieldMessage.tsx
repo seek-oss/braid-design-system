@@ -10,7 +10,8 @@ type FieldTone = 'neutral' | 'critical' | 'positive';
 
 export interface FieldMessageProps extends TextProps {
   id: string;
-  message: ReactNode | false;
+  message: ReactNode;
+  reserveMessageSpace?: boolean;
   tone?: FieldTone;
   secondaryMessage?: ReactNode;
   disabled?: boolean;
@@ -39,9 +40,10 @@ export const FieldMessage = ({
   tone = 'neutral',
   message,
   secondaryMessage,
+  reserveMessageSpace = true,
   disabled = false,
 }: FieldMessageProps) => {
-  if (message === false) {
+  if (!message && !reserveMessageSpace) {
     return null;
   }
 

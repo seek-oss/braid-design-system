@@ -5,6 +5,7 @@ import React, {
   isValidElement,
 } from 'react';
 import { useClassNames } from 'sku/treat';
+import { Omit } from 'utility-types';
 import { Box } from '../Box/Box';
 import { Field, FieldProps } from '../private/Field/Field';
 import * as styles from './Dropdown.treat';
@@ -15,7 +16,7 @@ type ValidDropdownChildren = AllHTMLAttributes<
   HTMLOptionElement | HTMLOptGroupElement
 >;
 type SelectProps = AllHTMLAttributes<HTMLSelectElement>;
-interface DropdownProps extends FieldProps {
+interface DropdownProps extends Omit<FieldProps, 'secondaryMessage'> {
   children: ValidDropdownChildren[] | ValidDropdownChildren;
   value: NonNullable<SelectProps['value']>;
   onChange: NonNullable<SelectProps['onChange']>;
@@ -36,20 +37,13 @@ const getColor = (
 };
 
 export const Dropdown = ({
-  id,
-  name,
-  disabled,
-  label,
-  secondaryLabel,
-  tertiaryLabel,
-  message,
-  tone = 'neutral',
   children,
   value,
   onChange,
   onBlur,
   onFocus,
   placeholder,
+  ...restProps
 }: DropdownProps) => {
   Children.forEach(children, child => {
     if (!(isValidElement(child) && /^(option|optgroup)$/.test(child.type))) {
@@ -60,16 +54,7 @@ export const Dropdown = ({
   });
 
   return (
-    <Field
-      id={id}
-      name={name}
-      disabled={disabled}
-      label={label}
-      secondaryLabel={secondaryLabel}
-      tertiaryLabel={tertiaryLabel}
-      tone={tone}
-      message={message}
-    >
+    <Field {...restProps} secondaryMessage={null}>
       {({ className, paddingLeft, paddingRight, ...fieldProps }) => (
         <Fragment>
           <Box
