@@ -42,18 +42,6 @@ const docs: ComponentDocs = {
       ),
     },
     {
-      label: 'Positive Radio Button',
-      render: ({ id, handler }) => (
-        <Radio
-          id={id}
-          checked={false}
-          onChange={handler}
-          label="Label"
-          tone="positive"
-        />
-      ),
-    },
-    {
       label: 'Nested Radio Button',
       render: ({ id, handler }) => (
         <Radio id={id} checked={true} onChange={handler} label="Label">
