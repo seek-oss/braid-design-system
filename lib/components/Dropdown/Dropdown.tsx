@@ -36,15 +36,17 @@ const getColor = (
   return 'neutral';
 };
 
-export const Dropdown = ({
-  children,
-  value,
-  onChange,
-  onBlur,
-  onFocus,
-  placeholder,
-  ...restProps
-}: DropdownProps) => {
+export const Dropdown = (props: DropdownProps) => {
+  const {
+    children,
+    value,
+    onChange,
+    onBlur,
+    onFocus,
+    placeholder,
+    ...restProps
+  } = props;
+
   Children.forEach(children, child => {
     if (!(isValidElement(child) && /^(option|optgroup)$/.test(child.type))) {
       throw new Error(
