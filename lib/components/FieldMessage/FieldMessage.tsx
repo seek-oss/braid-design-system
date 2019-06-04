@@ -1,10 +1,11 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, Fragment } from 'react';
 import { useClassNames } from 'sku/treat';
 import { Box } from '../Box/Box';
 import { Text, TextProps } from '../Text/Text';
 import { ErrorIcon } from '../icons/ErrorIcon/ErrorIcon';
 import { TickCircleIcon } from '../icons/TickCircleIcon/TickCircleIcon';
 import * as styles from './FieldMessage.treat';
+import { useText } from '../../hooks/typography';
 
 type FieldTone = 'neutral' | 'critical' | 'positive';
 
@@ -23,8 +24,8 @@ const renderIcon = (tone: FieldTone = 'neutral') => {
 
   const Icon: Record<FieldTone, ReactNode> = {
     neutral: null,
-    critical: <ErrorIcon fill="critical" inline />,
-    positive: <TickCircleIcon fill="positive" inline />,
+    critical: <ErrorIcon fill="critical" size="small" inline />,
+    positive: <TickCircleIcon fill="positive" size="small" inline />,
   };
 
   return (
@@ -48,18 +49,21 @@ export const FieldMessage = ({
   return (
     <Box
       id={id}
-      paddingBottom="small"
       display="flex"
-      className={useClassNames(styles.root)}
+      className={useClassNames(styles.root, styles.minHeight)}
     >
-      <Box className={useClassNames(styles.minHeight, styles.grow)}>
+      <Box
+        display="flex"
+        className={useClassNames(
+          styles.grow,
+          useText({ size: 'small', color: tone, baseline: true }),
+        )}
+      >
         {disabled ? null : (
-          <Text color={tone}>
-            <Box display="flex">
-              {renderIcon(tone)}
-              {message}
-            </Box>
-          </Text>
+          <Fragment>
+            {renderIcon(tone)}
+            {message}
+          </Fragment>
         )}
       </Box>
       {secondaryMessage && !disabled ? (
