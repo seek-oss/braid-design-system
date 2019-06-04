@@ -20,6 +20,7 @@ export interface InlineFieldProps {
   label: NonNullable<FieldLabelProps['label']>;
   onChange: NonNullable<FormElementProps['onChange']>;
   checked: NonNullable<FormElementProps['checked']>;
+  value?: FormElementProps['value'];
   name?: FormElementProps['name'];
   disabled?: FormElementProps['disabled'];
   message?: FieldMessageProps['message'];
@@ -35,6 +36,7 @@ interface InternalInlineFieldProps extends InlineFieldProps {
 export const InlineField = ({
   id,
   name,
+  value,
   checked,
   onChange,
   label,
@@ -64,6 +66,7 @@ export const InlineField = ({
         id={id}
         name={name}
         onChange={onChange}
+        value={value}
         checked={checked}
         className={useClassNames(styles.realField, styles.fieldSize)}
         aria-describedby={messageId}
