@@ -62,11 +62,11 @@ const tokens: TreatTokens = {
       small: {
         mobile: {
           size: 14,
-          rows: 5,
+          rows: 3,
         },
         desktop: {
           size: 14,
-          rows: 5,
+          rows: 3,
         },
       },
       standard: {

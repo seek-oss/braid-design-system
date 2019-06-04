@@ -1,14 +1,15 @@
 import React, { ReactNode } from 'react';
 import { useClassNames } from 'sku/treat';
 import { Box } from '../Box/Box';
-import { Text, TextProps } from '../Text/Text';
+import { Text } from '../Text/Text';
 import { ErrorIcon } from '../icons/ErrorIcon/ErrorIcon';
 import { TickCircleIcon } from '../icons/TickCircleIcon/TickCircleIcon';
 import * as styles from './FieldMessage.treat';
+import { useThemeName } from '../ThemeNameConsumer/ThemeNameContext';
 
 type FieldTone = 'neutral' | 'critical' | 'positive';
 
-export interface FieldMessageProps extends TextProps {
+export interface FieldMessageProps {
   id: string;
   message: ReactNode;
   reserveMessageSpace?: boolean;
@@ -24,8 +25,8 @@ const renderIcon = (tone: FieldTone = 'neutral') => {
 
   const Icon: Record<FieldTone, ReactNode> = {
     neutral: null,
-    critical: <ErrorIcon fill="critical" inline />,
-    positive: <TickCircleIcon fill="positive" inline />,
+    critical: <ErrorIcon fill="critical" size="small" inline />,
+    positive: <TickCircleIcon fill="positive" size="small" inline />,
   };
 
   return (
@@ -47,16 +48,22 @@ export const FieldMessage = ({
     return null;
   }
 
+  // Temporary switch to support maintaining a consistent UX
+  // while consumers migrate forms from seek-style-guide.
+  // Can be removed once we have form field parity and have
+  // given consumers the opportunity to migrate.
+  const isSeekAu = useThemeName() === 'seekAnz';
+
   return (
     <Box
       id={id}
-      paddingBottom="small"
+      paddingBottom={isSeekAu ? 'xxsmall' : 'xsmall'}
       display="flex"
-      className={useClassNames(styles.root)}
+      className={useClassNames(styles.root, styles.minHeight)}
     >
-      <Box className={useClassNames(styles.minHeight, styles.grow)}>
+      <Box className={useClassNames(styles.grow)}>
         {disabled ? null : (
-          <Text color={tone}>
+          <Text size="small" color={tone}>
             <Box display="flex">
               {renderIcon(tone)}
               {message}
