@@ -1,11 +1,12 @@
-import { useClassNames } from 'sku/treat';
-import * as styles from './typography.treat';
+import { useStyles } from 'sku/react-treat';
+import classnames from 'classnames';
 import { useForeground } from '../../components/Box/ContrastContext';
+import * as styleRefs from './typography.treat';
 
 export interface UseTextProps {
-  weight?: keyof typeof styles.fontWeight;
-  size?: keyof typeof styles.text;
-  color?: keyof typeof styles.color;
+  weight?: keyof typeof styleRefs.fontWeight;
+  size?: keyof typeof styleRefs.text;
+  color?: keyof typeof styleRefs.color;
   baseline: boolean;
 }
 
@@ -14,8 +15,10 @@ export const useText = ({
   size = 'standard',
   color = 'neutral',
   baseline,
-}: UseTextProps) =>
-  useClassNames(
+}: UseTextProps) => {
+  const styles = useStyles(styleRefs);
+
+  return classnames(
     styles.fontFamily,
     styles.fontWeight[weight],
     styles.text[size].fontSize,
@@ -24,8 +27,9 @@ export const useText = ({
       [styles.text[size].transform]: baseline,
     },
   );
+};
 
-export type HeadingLevel = keyof typeof styles.heading;
+export type HeadingLevel = keyof typeof styleRefs.heading;
 export type HeadingWeight = 'regular' | 'weak';
 
 interface HeadingParams {
@@ -38,8 +42,10 @@ export const useHeading = ({
   weight = 'regular',
   level,
   baseline,
-}: HeadingParams) =>
-  useClassNames(
+}: HeadingParams) => {
+  const styles = useStyles(styleRefs);
+
+  return classnames(
     styles.fontFamily,
     styles.headingWeight[weight],
     styles.heading[level].fontSize,
@@ -48,12 +54,13 @@ export const useHeading = ({
       [styles.heading[level].transform]: baseline,
     },
   );
+};
 
-export const useWeight = (weight: keyof typeof styles.fontWeight) =>
-  useClassNames(styles.fontWeight[weight]);
+export const useWeight = (weight: keyof typeof styleRefs.fontWeight) =>
+  useStyles(styleRefs).fontWeight[weight];
 
-export const useTextColor = (color: keyof typeof styles.color) =>
-  useClassNames(styles.color[useForeground(color)]);
+export const useTextColor = (color: keyof typeof styleRefs.color) =>
+  useStyles(styleRefs).color[useForeground(color)];
 
-export const useTouchableSpace = (size: keyof typeof styles.touchable) =>
-  useClassNames(styles.touchable[size]);
+export const useTouchableSpace = (size: keyof typeof styleRefs.touchable) =>
+  useStyles(styleRefs).touchable[size];

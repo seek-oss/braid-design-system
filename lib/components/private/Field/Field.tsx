@@ -1,5 +1,6 @@
 import React, { ReactNode, AllHTMLAttributes } from 'react';
-import { useClassNames } from 'sku/treat';
+import { useStyles } from 'sku/react-treat';
+import classnames from 'classnames';
 import { Box, BoxProps } from '../../Box/Box';
 import { FieldLabel, FieldLabelProps } from '../../FieldLabel/FieldLabel';
 import {
@@ -7,8 +8,8 @@ import {
   FieldMessageProps,
 } from '../../FieldMessage/FieldMessage';
 import { FieldOverlay } from '../FieldOverlay/FieldOverlay';
-import * as styles from './Field.treat';
 import { useText, useTouchableSpace } from '../../../hooks/typography';
+import * as styleRefs from './Field.treat';
 
 type FormElementProps = AllHTMLAttributes<HTMLFormElement>;
 export interface FieldProps {
@@ -55,6 +56,7 @@ export const Field = ({
   reserveMessageSpace = true,
   tone = 'neutral',
 }: InternalFieldProps) => {
+  const styles = useStyles(styleRefs);
   const messageId = `${id}-message`;
 
   return (
@@ -81,7 +83,7 @@ export const Field = ({
           borderRadius: 'standard',
           'aria-describedby': messageId,
           disabled,
-          className: useClassNames(
+          className: classnames(
             styles.field,
             useText({ size: 'standard', baseline: false }),
             useTouchableSpace('standard'),

@@ -4,13 +4,14 @@ import React, {
   Children,
   isValidElement,
 } from 'react';
-import { useClassNames } from 'sku/treat';
+import { useStyles } from 'sku/react-treat';
+import classnames from 'classnames';
 import { Omit } from 'utility-types';
 import { Box } from '../Box/Box';
 import { Field, FieldProps } from '../private/Field/Field';
-import * as styles from './Dropdown.treat';
 import { ChevronIcon } from '../icons/ChevronIcon/ChevronIcon';
 import { useTextColor } from '../../hooks/typography';
+import * as styleRefs from './Dropdown.treat';
 
 type ValidDropdownChildren = AllHTMLAttributes<
   HTMLOptionElement | HTMLOptGroupElement
@@ -47,6 +48,8 @@ export const Dropdown = (props: DropdownProps) => {
     ...restProps
   } = props;
 
+  const styles = useStyles(styleRefs);
+
   Children.forEach(children, child => {
     if (!(isValidElement(child) && /^(option|optgroup)$/.test(child.type))) {
       throw new Error(
@@ -67,7 +70,7 @@ export const Dropdown = (props: DropdownProps) => {
             onBlur={onBlur}
             onFocus={onFocus}
             placeholder={placeholder}
-            className={useClassNames(
+            className={classnames(
               styles.field,
               className,
               useTextColor(getColor(placeholder, value)),
@@ -83,7 +86,7 @@ export const Dropdown = (props: DropdownProps) => {
             paddingLeft={paddingLeft}
             paddingRight={paddingRight}
             display="flex"
-            className={useClassNames(styles.chevron)}
+            className={styles.chevron}
           >
             <ChevronIcon inline />
           </Box>
