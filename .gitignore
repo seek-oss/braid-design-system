@@ -6,6 +6,7 @@ package-lock.json
 .vscode/
 .idea/
 componentDocs.json
+spike.json
 
 # managed by sku
 .eslintrc

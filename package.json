@@ -26,7 +26,8 @@
     "post-commit-status": "node scripts/postCommitStatus.js",
     "commit": "git-cz",
     "travis-deploy-once": "travis-deploy-once",
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release",
+    "spike": "node spike"
   },
   "config": {
     "commitizen": {
