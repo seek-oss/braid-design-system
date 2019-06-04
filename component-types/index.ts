@@ -2,14 +2,19 @@
 /* eslint-disable no-process-exit */
 /* eslint-disable no-console */
 // eslint-disable-file
-const fs = require('fs');
-const path = require('path');
-const ts = require('typescript');
+import fs from 'fs';
+import path from 'path';
+import ts from 'typescript';
 
-const aliasWhitelist = ['ResponsiveProp', 'ReactNode'];
+const aliasWhitelist = [
+  'ResponsiveProp',
+  'ReactNode',
+  'ReactType',
+  'ReactElement',
+];
 
 (async () => {
-  const tsconfigPath = path.join(__dirname, 'tsconfig.json');
+  const tsconfigPath = path.join(__dirname, '../tsconfig.json');
   const basePath = path.dirname(tsconfigPath);
   const { config, error } = ts.readConfigFile(tsconfigPath, filename =>
     fs.readFileSync(filename, 'utf8'),
@@ -29,7 +34,7 @@ const aliasWhitelist = ['ResponsiveProp', 'ReactNode'];
   );
 
   if (errors && errors.length) {
-    console.error(error[0]);
+    console.error(errors[0]);
     process.exit(1);
   }
 
@@ -39,7 +44,7 @@ const aliasWhitelist = ['ResponsiveProp', 'ReactNode'];
 
   const checker = program.getTypeChecker();
 
-  const getComponentPropsType = exp => {
+  const getComponentPropsType = (exp: ts.Symbol) => {
     const type = checker.getTypeOfSymbolAtLocation(
       exp,
       exp.valueDeclaration || exp.declarations[0],
@@ -68,7 +73,16 @@ const aliasWhitelist = ['ResponsiveProp', 'ReactNode'];
     return null;
   };
 
-  const normaliseType = type => {
+  type NormalisedType =
+    | string
+    | { union: true; types: Array<NormalisedType> }
+    | { alias: string; params: Array<NormalisedType> };
+
+  const normaliseType = (type: ts.Type): NormalisedType => {
+    if (checker.typeToString(type) === 'boolean') {
+      return 'boolean';
+    }
+
     const baseConstraint = checker.getBaseConstraintOfType(type);
 
     if (baseConstraint && baseConstraint.aliasSymbol) {
@@ -96,7 +110,7 @@ const aliasWhitelist = ['ResponsiveProp', 'ReactNode'];
     return checker.typeToString(type);
   };
 
-  const getComponentDocs = exp => {
+  const getComponentDocs = (exp: ts.Symbol) => {
     const propsObj = getComponentPropsType(exp);
 
     if (!propsObj || !propsObj.valueDeclaration) {
@@ -108,6 +122,7 @@ const aliasWhitelist = ['ResponsiveProp', 'ReactNode'];
     );
 
     return Object.assign(
+      {},
       ...propsType.getProperties().map(prop => {
         const propName = prop.getName();
 
@@ -127,7 +142,7 @@ const aliasWhitelist = ['ResponsiveProp', 'ReactNode'];
             required: !isOptional,
             type: aliasWhitelist.includes(typeAlias)
               ? typeAlias
-              : normaliseType(propType, propsObj.valueDeclaration),
+              : normaliseType(propType),
           },
         };
       }),
@@ -141,20 +156,22 @@ const aliasWhitelist = ['ResponsiveProp', 'ReactNode'];
     ) {
       const moduleSymbol = checker.getSymbolAtLocation(sourceFile);
 
-      const docs = checker
-        .getExportsOfModule(moduleSymbol)
-        .map(moduleExport => {
-          return {
-            componentName: moduleExport.escapedName,
-            props: getComponentDocs(moduleExport),
-          };
-        });
+      if (moduleSymbol) {
+        const docs = checker
+          .getExportsOfModule(moduleSymbol)
+          .map(moduleExport => {
+            return {
+              componentName: moduleExport.escapedName,
+              props: getComponentDocs(moduleExport),
+            };
+          });
 
-      fs.writeFileSync(
-        path.join(__dirname, 'spike.json'),
-        JSON.stringify(docs, null, 2),
-        'utf8',
-      );
+        fs.writeFileSync(
+          path.join(__dirname, 'spike.json'),
+          JSON.stringify(docs, null, 2),
+          'utf8',
+        );
+      }
     }
   }
 })();

@@ -27,7 +27,7 @@
     "commit": "git-cz",
     "travis-deploy-once": "travis-deploy-once",
     "semantic-release": "semantic-release",
-    "spike": "node spike"
+    "component-types": "ts-node component-types/index.ts"
   },
   "config": {
     "commitizen": {
@@ -110,7 +110,8 @@
     "semantic-release": "^15.13.3",
     "sku": "8.7.0",
     "surge": "^0.20.1",
-    "travis-deploy-once": "^5.0.9"
+    "travis-deploy-once": "^5.0.9",
+    "ts-node": "^8.2.0"
   },
   "toolchain": {
     "node": "10.15.1",
