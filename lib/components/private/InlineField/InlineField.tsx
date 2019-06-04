@@ -13,6 +13,7 @@ import { TickIcon } from '../../icons/TickIcon/TickIcon';
 import { useTouchableSpace } from '../../../hooks/typography';
 
 const tones = ['neutral', 'critical'] as const;
+type InlineFieldTone = typeof tones[number];
 
 type FormElementProps = AllHTMLAttributes<HTMLFormElement>;
 export interface InlineFieldProps {
@@ -25,7 +26,7 @@ export interface InlineFieldProps {
   disabled?: FormElementProps['disabled'];
   message?: FieldMessageProps['message'];
   reserveMessageSpace?: FieldMessageProps['reserveMessageSpace'];
-  tone?: 'neutral' | 'critical';
+  tone?: InlineFieldTone;
   children?: ReactNode;
 }
 

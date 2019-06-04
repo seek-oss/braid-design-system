@@ -7,7 +7,8 @@ import { TickCircleIcon } from '../icons/TickCircleIcon/TickCircleIcon';
 import * as styles from './FieldMessage.treat';
 import { useThemeName } from '../ThemeNameConsumer/ThemeNameContext';
 
-type FieldTone = 'neutral' | 'critical' | 'positive';
+const tones = ['neutral', 'critical', 'positive'] as const;
+type FieldTone = typeof tones[number];
 
 export interface FieldMessageProps {
   id: string;
@@ -44,6 +45,10 @@ export const FieldMessage = ({
   reserveMessageSpace = true,
   disabled = false,
 }: FieldMessageProps) => {
+  if (tones.indexOf(tone) === -1) {
+    throw new Error(`Invalid tone: ${tone}`);
+  }
+
   if (!message && !reserveMessageSpace) {
     return null;
   }
@@ -63,7 +68,7 @@ export const FieldMessage = ({
     >
       <Box className={useClassNames(styles.grow)}>
         {disabled ? null : (
-          <Text size="small" color={tone}>
+          <Text size="small" color={tone === 'neutral' ? 'secondary' : tone}>
             <Box display="flex">
               {renderIcon(tone)}
               {message}
