@@ -1,10 +1,10 @@
-import React, { ReactNode, Fragment } from 'react';
+import React, { ReactNode } from 'react';
 import { useClassNames } from 'sku/treat';
 import { Box } from '../Box/Box';
+import { Text } from '../Text/Text';
 import { ErrorIcon } from '../icons/ErrorIcon/ErrorIcon';
 import { TickCircleIcon } from '../icons/TickCircleIcon/TickCircleIcon';
 import * as styles from './FieldMessage.treat';
-import { useText } from '../../hooks/typography';
 
 type FieldTone = 'neutral' | 'critical' | 'positive';
 
@@ -53,18 +53,14 @@ export const FieldMessage = ({
       display="flex"
       className={useClassNames(styles.root, styles.minHeight)}
     >
-      <Box
-        display="flex"
-        className={useClassNames(
-          styles.grow,
-          useText({ size: 'small', color: tone, baseline: true }),
-        )}
-      >
+      <Box className={useClassNames(styles.grow)}>
         {disabled ? null : (
-          <Fragment>
-            {renderIcon(tone)}
-            {message}
-          </Fragment>
+          <Text size="small" color={tone}>
+            <Box display="flex">
+              {renderIcon(tone)}
+              {message}
+            </Box>
+          </Text>
         )}
       </Box>
       {secondaryMessage && !disabled ? (
