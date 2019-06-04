@@ -12,6 +12,8 @@ import { Text } from '../../Text/Text';
 import { TickIcon } from '../../icons/TickIcon/TickIcon';
 import { useTouchableSpace } from '../../../hooks/typography';
 
+const tones = ['neutral', 'critical'] as const;
+
 type FormElementProps = AllHTMLAttributes<HTMLFormElement>;
 export interface InlineFieldProps {
   id: NonNullable<FormElementProps['id']>;
@@ -22,7 +24,7 @@ export interface InlineFieldProps {
   disabled?: FormElementProps['disabled'];
   message?: FieldMessageProps['message'];
   reserveMessageSpace?: FieldMessageProps['reserveMessageSpace'];
-  tone?: FieldMessageProps['tone'];
+  tone?: 'neutral' | 'critical';
   children?: ReactNode;
 }
 
@@ -49,6 +51,10 @@ export const InlineField = ({
     [styles.circle]: type === 'radio',
   };
   const fieldBorderRadius = isCheckbox ? 'standard' : undefined;
+
+  if (tones.indexOf(tone) === -1) {
+    throw new Error(`Invalid tone: ${tone}`);
+  }
 
   return (
     <Box>

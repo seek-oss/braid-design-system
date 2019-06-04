@@ -62,19 +62,6 @@ const docs: ComponentDocs = {
       ),
     },
     {
-      label: 'Positive Checkbox',
-      render: ({ id, handler }) => (
-        <Checkbox
-          id={id}
-          checked={false}
-          onChange={handler}
-          label="Label"
-          message="This is a positive message"
-          tone="positive"
-        />
-      ),
-    },
-    {
       label: 'Nested Checkbox',
       render: ({ id, handler }) => (
         <Checkbox
