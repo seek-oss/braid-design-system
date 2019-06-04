@@ -5,6 +5,7 @@ import { Text } from '../Text/Text';
 import { ErrorIcon } from '../icons/ErrorIcon/ErrorIcon';
 import { TickCircleIcon } from '../icons/TickCircleIcon/TickCircleIcon';
 import * as styles from './FieldMessage.treat';
+import { useThemeName } from '../ThemeNameConsumer/ThemeNameContext';
 
 type FieldTone = 'neutral' | 'critical' | 'positive';
 
@@ -47,9 +48,16 @@ export const FieldMessage = ({
     return null;
   }
 
+  // Temporary switch to support maintaining a consistent UX
+  // while consumers migrate forms from seek-style-guide.
+  // Can be removed once we have form field parity and have
+  // given consumers the opportunity to migrate.
+  const isSeekAu = useThemeName() === 'seekAnz';
+
   return (
     <Box
       id={id}
+      paddingBottom={isSeekAu ? 'xxsmall' : 'xsmall'}
       display="flex"
       className={useClassNames(styles.root, styles.minHeight)}
     >
