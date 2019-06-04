@@ -19,8 +19,8 @@ export interface InlineFieldProps {
   id: NonNullable<FormElementProps['id']>;
   label: NonNullable<FieldLabelProps['label']>;
   onChange: NonNullable<FormElementProps['onChange']>;
-  value: NonNullable<FormElementProps['value']>;
   checked: NonNullable<FormElementProps['checked']>;
+  value?: FormElementProps['value'];
   name?: FormElementProps['name'];
   disabled?: FormElementProps['disabled'];
   message?: FieldMessageProps['message'];

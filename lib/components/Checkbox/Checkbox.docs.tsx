@@ -8,13 +8,7 @@ const docs: ComponentDocs = {
     {
       label: 'Standard Checkbox',
       render: ({ id, handler }) => (
-        <Checkbox
-          id={id}
-          value=""
-          checked={false}
-          onChange={handler}
-          label="Label"
-        />
+        <Checkbox id={id} checked={false} onChange={handler} label="Label" />
       ),
     },
     {
@@ -22,7 +16,6 @@ const docs: ComponentDocs = {
       render: ({ id, handler }) => (
         <Checkbox
           id={id}
-          value=""
           checked={false}
           onChange={handler}
           label="Label"
@@ -35,7 +28,6 @@ const docs: ComponentDocs = {
       render: ({ id, handler }) => (
         <Checkbox
           id={id}
-          value=""
           checked={true}
           onChange={handler}
           label="Label"
@@ -48,7 +40,6 @@ const docs: ComponentDocs = {
       render: ({ id, handler }) => (
         <Checkbox
           id={id}
-          value=""
           disabled={true}
           checked={false}
           onChange={handler}
@@ -62,7 +53,6 @@ const docs: ComponentDocs = {
       render: ({ id, handler }) => (
         <Checkbox
           id={id}
-          value=""
           checked={false}
           onChange={handler}
           label="Label"
@@ -76,7 +66,6 @@ const docs: ComponentDocs = {
       render: ({ id, handler }) => (
         <Checkbox
           id={id}
-          value=""
           checked={true}
           onChange={handler}
           label="Label"
