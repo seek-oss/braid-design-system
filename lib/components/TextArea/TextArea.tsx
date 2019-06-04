@@ -1,12 +1,13 @@
 import React, { ReactNode, AllHTMLAttributes } from 'react';
 import { useClassNames } from 'sku/treat';
+import { Omit } from 'utility-types';
 import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';
 import * as styles from './TextArea.treat';
 import { Field, FieldProps } from '../private/Field/Field';
 
 type NativeTextAreaProps = AllHTMLAttributes<HTMLTextAreaElement>;
-interface TextAreaProps extends FieldProps {
+interface TextAreaProps extends Omit<FieldProps, 'secondaryMessage'> {
   value: NonNullable<NativeTextAreaProps['value']>;
   onChange: NonNullable<NativeTextAreaProps['onChange']>;
   onBlur?: NativeTextAreaProps['onBlur'];
@@ -34,32 +35,16 @@ const renderCount = ({
 };
 
 export const TextArea = ({
-  id,
-  name,
-  disabled,
-  label,
-  secondaryLabel,
-  tertiaryLabel,
-  description,
-  message,
-  tone = 'neutral',
   value,
   onChange,
   onBlur,
   onFocus,
   placeholder,
   limit,
+  ...restProps
 }: TextAreaProps) => (
   <Field
-    id={id}
-    name={name}
-    disabled={disabled}
-    label={label}
-    secondaryLabel={secondaryLabel}
-    tertiaryLabel={tertiaryLabel}
-    description={description}
-    tone={tone}
-    message={message}
+    {...restProps}
     secondaryMessage={renderCount({
       limit,
       value,

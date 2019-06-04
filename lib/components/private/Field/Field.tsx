@@ -1,7 +1,7 @@
 import React, { ReactNode, AllHTMLAttributes } from 'react';
 import { useClassNames } from 'sku/treat';
 import { Box, BoxProps } from '../../Box/Box';
-import { FieldLabel } from '../../FieldLabel/FieldLabel';
+import { FieldLabel, FieldLabelProps } from '../../FieldLabel/FieldLabel';
 import {
   FieldMessage,
   FieldMessageProps,
@@ -15,12 +15,13 @@ export interface FieldProps {
   id: NonNullable<FormElementProps['id']>;
   name?: FormElementProps['name'];
   disabled?: FormElementProps['disabled'];
-  label?: string;
-  secondaryLabel?: ReactNode;
-  tertiaryLabel?: ReactNode;
-  description?: string;
-  message?: ReactNode | false;
-  secondaryMessage?: ReactNode;
+  label?: FieldLabelProps['label'];
+  secondaryLabel?: FieldLabelProps['secondaryLabel'];
+  tertiaryLabel?: FieldLabelProps['tertiaryLabel'];
+  description?: FieldLabelProps['description'];
+  message?: FieldMessageProps['message'];
+  secondaryMessage?: FieldMessageProps['secondaryMessage'];
+  reserveMessageSpace?: FieldMessageProps['reserveMessageSpace'];
   tone?: FieldMessageProps['tone'];
 }
 
@@ -51,6 +52,7 @@ export const Field = ({
   children,
   message,
   secondaryMessage,
+  reserveMessageSpace = true,
   tone = 'neutral',
 }: InternalFieldProps) => {
   const messageId = `${id}-message`;
@@ -94,6 +96,7 @@ export const Field = ({
         disabled={disabled}
         message={message}
         secondaryMessage={secondaryMessage}
+        reserveMessageSpace={reserveMessageSpace}
       />
     </Box>
   );

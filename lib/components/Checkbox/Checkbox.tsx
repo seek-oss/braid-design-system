@@ -5,5 +5,5 @@ import {
 } from '../private/InlineField/InlineField';
 
 export const Checkbox = (props: InlineFieldProps) => (
-  <InlineField {...props} type="checkbox" />
+  <InlineField reserveMessageSpace={true} {...props} type="checkbox" />
 );
