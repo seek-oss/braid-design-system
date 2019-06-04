@@ -1,7 +1,6 @@
 import React, { ReactNode, Fragment } from 'react';
 import { useClassNames } from 'sku/treat';
 import { Box } from '../Box/Box';
-import { Text, TextProps } from '../Text/Text';
 import { ErrorIcon } from '../icons/ErrorIcon/ErrorIcon';
 import { TickCircleIcon } from '../icons/TickCircleIcon/TickCircleIcon';
 import * as styles from './FieldMessage.treat';
@@ -9,7 +8,7 @@ import { useText } from '../../hooks/typography';
 
 type FieldTone = 'neutral' | 'critical' | 'positive';
 
-export interface FieldMessageProps extends TextProps {
+export interface FieldMessageProps {
   id: string;
   message: ReactNode | false;
   tone?: FieldTone;
