@@ -8,13 +8,25 @@ const docs: ComponentDocs = {
     {
       label: 'Standard Radio Button',
       render: ({ id, handler }) => (
-        <Radio id={id} checked={false} onChange={handler} label="Label" />
+        <Radio
+          id={id}
+          value=""
+          checked={false}
+          onChange={handler}
+          label="Label"
+        />
       ),
     },
     {
       label: 'Checked Radio Button',
       render: ({ id, handler }) => (
-        <Radio id={id} checked={true} onChange={handler} label="Label" />
+        <Radio
+          id={id}
+          value=""
+          checked={true}
+          onChange={handler}
+          label="Label"
+        />
       ),
     },
     {
@@ -23,6 +35,7 @@ const docs: ComponentDocs = {
         <Radio
           id={id}
           disabled={true}
+          value=""
           checked={false}
           onChange={handler}
           label="Label"
@@ -34,6 +47,7 @@ const docs: ComponentDocs = {
       render: ({ id, handler }) => (
         <Radio
           id={id}
+          value=""
           checked={false}
           onChange={handler}
           label="Label"
@@ -44,7 +58,7 @@ const docs: ComponentDocs = {
     {
       label: 'Nested Radio Button',
       render: ({ id, handler }) => (
-        <Radio id={id} checked={true} onChange={handler} label="Label">
+        <Radio id={id} value="" checked={true} onChange={handler} label="Label">
           <Text>This text is visible when the radio button is checked.</Text>
         </Radio>
       ),
