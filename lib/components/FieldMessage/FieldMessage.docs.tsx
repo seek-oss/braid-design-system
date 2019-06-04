@@ -38,7 +38,7 @@ const docs: ComponentDocs = {
     },
     {
       label: "No message, i.e. don't reserve white space",
-      code: `<FieldMessage message={false} />`,
+      code: `<FieldMessage reserveMessageSpace={false} />`,
     },
   ],
 };
