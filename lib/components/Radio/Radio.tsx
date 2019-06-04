@@ -8,12 +8,11 @@ import {
 interface RadioProps
   extends Omit<InlineFieldProps, 'message' | 'reserveMessageSpace'> {}
 
-export const Radio = ({ tone, ...restProps }: RadioProps) => (
+export const Radio = (props: RadioProps) => (
   <InlineField
-    {...restProps}
+    {...props}
     type="radio"
     message={null}
     reserveMessageSpace={false}
-    tone={tone}
   />
 );
