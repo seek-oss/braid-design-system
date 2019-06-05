@@ -33,7 +33,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
       onFocus,
       placeholder,
       ...restProps
-    }: TextFieldProps,
+    },
     ref,
   ) => (
     <Field {...restProps} ref={ref} secondaryMessage={null}>

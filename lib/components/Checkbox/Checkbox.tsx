@@ -5,7 +5,7 @@ import {
 } from '../private/InlineField/InlineField';
 
 export const Checkbox = forwardRef<HTMLInputElement, InlineFieldProps>(
-  (props: InlineFieldProps, ref) => (
+  (props, ref) => (
     <InlineField
       reserveMessageSpace={true}
       {...props}

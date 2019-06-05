@@ -7,7 +7,7 @@ export interface BoxProps
   extends Optional<UseBoxProps, 'component'>,
     Omit<AllHTMLAttributes<HTMLElement>, 'width'> {}
 
-export const Box = forwardRef(
+export const Box = forwardRef<HTMLElement, BoxProps>(
   (
     {
       component = 'div',
@@ -29,7 +29,7 @@ export const Box = forwardRef(
       width,
       className,
       ...restProps
-    }: BoxProps,
+    },
     ref,
   ) => {
     const boxStyles = useBox({

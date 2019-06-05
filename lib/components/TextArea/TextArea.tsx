@@ -37,15 +37,7 @@ const renderCount = ({
 
 export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
   (
-    {
-      value,
-      onChange,
-      onBlur,
-      onFocus,
-      placeholder,
-      limit,
-      ...restProps
-    }: TextAreaProps,
+    { value, onChange, onBlur, onFocus, placeholder, limit, ...restProps },
     ref,
   ) => {
     const styles = useStyles(styleRefs);

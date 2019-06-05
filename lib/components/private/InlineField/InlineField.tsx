@@ -35,7 +35,7 @@ interface InternalInlineFieldProps extends InlineFieldProps {
   type: 'checkbox' | 'radio';
 }
 
-export const InlineField = forwardRef(
+export const InlineField = forwardRef<HTMLElement, InternalInlineFieldProps>(
   (
     {
       id,
@@ -50,7 +50,7 @@ export const InlineField = forwardRef(
       reserveMessageSpace = false,
       tone = 'neutral',
       disabled = false,
-    }: InternalInlineFieldProps,
+    },
     ref,
   ) => {
     const styles = useStyles(styleRefs);

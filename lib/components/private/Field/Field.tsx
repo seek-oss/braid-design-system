@@ -1,4 +1,4 @@
-import React, { ReactNode, AllHTMLAttributes, forwardRef } from 'react';
+import React, { ReactNode, AllHTMLAttributes, forwardRef, Ref } from 'react';
 import { useStyles } from 'sku/react-treat';
 import classnames from 'classnames';
 import { Box, BoxProps } from '../../Box/Box';
@@ -41,11 +41,13 @@ interface FieldRenderProps extends Pick<FieldProps, PassthroughProps> {
   className: string;
 }
 
+type FieldRef = HTMLElement;
+
 interface InternalFieldProps extends FieldProps {
-  children(props: FieldRenderProps, ref): ReactNode;
+  children(props: FieldRenderProps, ref: Ref<FieldRef>): ReactNode;
 }
 
-export const Field = forwardRef(
+export const Field = forwardRef<FieldRef, InternalFieldProps>(
   (
     {
       id,
@@ -62,7 +64,7 @@ export const Field = forwardRef(
       reserveMessageSpace = true,
       tone = 'neutral',
       data,
-    }: InternalFieldProps,
+    },
     ref,
   ) => {
     const styles = useStyles(styleRefs);
