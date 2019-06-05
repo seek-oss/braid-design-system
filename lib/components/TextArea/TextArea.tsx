@@ -1,4 +1,4 @@
-import React, { ReactNode, AllHTMLAttributes } from 'react';
+import React, { ReactNode, AllHTMLAttributes, forwardRef } from 'react';
 import { useClassNames } from 'sku/treat';
 import { Omit } from 'utility-types';
 import { Box } from '../Box/Box';
@@ -34,34 +34,41 @@ const renderCount = ({
   );
 };
 
-export const TextArea = ({
-  value,
-  onChange,
-  onBlur,
-  onFocus,
-  placeholder,
-  limit,
-  ...restProps
-}: TextAreaProps) => (
-  <Field
-    {...restProps}
-    secondaryMessage={renderCount({
-      limit,
+export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
+  (
+    {
       value,
-    })}
-  >
-    {({ className, ...fieldProps }) => (
-      <Box
-        component="textarea"
-        rows={3}
-        value={value}
-        onChange={onChange}
-        onBlur={onBlur}
-        onFocus={onFocus}
-        placeholder={placeholder}
-        className={useClassNames(styles.field, className)}
-        {...fieldProps}
-      />
-    )}
-  </Field>
+      onChange,
+      onBlur,
+      onFocus,
+      placeholder,
+      limit,
+      ...restProps
+    }: TextAreaProps,
+    ref,
+  ) => (
+    <Field
+      {...restProps}
+      ref={ref}
+      secondaryMessage={renderCount({
+        limit,
+        value,
+      })}
+    >
+      {({ className, ...fieldProps }, fieldRef) => (
+        <Box
+          component="textarea"
+          rows={3}
+          value={value}
+          onChange={onChange}
+          onBlur={onBlur}
+          onFocus={onFocus}
+          placeholder={placeholder}
+          className={useClassNames(styles.field, className)}
+          {...fieldProps}
+          ref={fieldRef}
+        />
+      )}
+    </Field>
+  ),
 );

@@ -128,7 +128,7 @@ const tokens: TreatTokens = {
   },
   border: {
     radius: {
-      standard: '4px',
+      standard: '2px',
     },
     width: {
       standard: 1,

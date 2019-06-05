@@ -1,4 +1,4 @@
-import React, { ReactNode, AllHTMLAttributes } from 'react';
+import React, { ReactNode, AllHTMLAttributes, forwardRef } from 'react';
 import { useClassNames } from 'sku/treat';
 import * as styles from './InlineField.treat';
 import { Box } from '../../Box/Box';
@@ -34,115 +34,124 @@ interface InternalInlineFieldProps extends InlineFieldProps {
   type: 'checkbox' | 'radio';
 }
 
-export const InlineField = ({
-  id,
-  name,
-  value,
-  checked,
-  onChange,
-  label,
-  type,
-  children,
-  message,
-  reserveMessageSpace = false,
-  tone = 'neutral',
-  disabled = false,
-}: InternalInlineFieldProps) => {
-  const messageId = `${id}-message`;
-  const isCheckbox = type === 'checkbox';
-  const radioStyles = {
-    [styles.circle]: type === 'radio',
-  };
-  const fieldBorderRadius = isCheckbox ? 'standard' : undefined;
+export const InlineField = forwardRef(
+  (
+    {
+      id,
+      name,
+      value,
+      checked,
+      onChange,
+      label,
+      type,
+      children,
+      message,
+      reserveMessageSpace = false,
+      tone = 'neutral',
+      disabled = false,
+    }: InternalInlineFieldProps,
+    ref,
+  ) => {
+    const messageId = `${id}-message`;
+    const isCheckbox = type === 'checkbox';
+    const radioStyles = {
+      [styles.circle]: type === 'radio',
+    };
+    const fieldBorderRadius = isCheckbox ? 'standard' : undefined;
 
-  if (tones.indexOf(tone) === -1) {
-    throw new Error(`Invalid tone: ${tone}`);
-  }
+    if (tones.indexOf(tone) === -1) {
+      throw new Error(`Invalid tone: ${tone}`);
+    }
 
-  return (
-    <Box>
-      <Box
-        component="input"
-        type={type}
-        id={id}
-        name={name}
-        onChange={onChange}
-        value={value}
-        checked={checked}
-        className={useClassNames(styles.realField, styles.fieldSize)}
-        aria-describedby={messageId}
-        disabled={disabled}
-      />
-      <Box display="flex">
+    return (
+      <Box>
         <Box
-          className={useClassNames(
-            styles.fakeField,
-            styles.fieldSize,
-            radioStyles,
-          )}
-          marginRight="small"
-          backgroundColor={disabled ? 'inputDisabled' : 'input'}
-          borderRadius={fieldBorderRadius}
-          boxShadow={
-            tone === 'critical' && !disabled
-              ? 'borderCritical'
-              : 'borderStandard'
-          }
-        >
-          <FieldOverlay
-            variant={tone === 'critical' && isCheckbox ? tone : undefined}
-            backgroundColor={disabled ? 'formAccentDisabled' : 'formAccent'}
+          component="input"
+          type={type}
+          id={id}
+          name={name}
+          onChange={onChange}
+          value={value}
+          checked={checked}
+          className={useClassNames(styles.realField, styles.fieldSize)}
+          aria-describedby={messageId}
+          disabled={disabled}
+          ref={ref}
+        />
+        <Box display="flex">
+          <Box
+            className={useClassNames(
+              styles.fakeField,
+              styles.fieldSize,
+              radioStyles,
+            )}
+            marginRight="small"
+            backgroundColor={disabled ? 'inputDisabled' : 'input'}
             borderRadius={fieldBorderRadius}
-            className={useClassNames(styles.selected, radioStyles)}
-          />
-          {isCheckbox ? (
-            <Box transition="fast" width="full" className={styles.icon}>
-              <TickIcon size="fill" fill="white" />
-            </Box>
-          ) : null}
-          <FieldOverlay
-            variant="focus"
-            borderRadius={fieldBorderRadius}
-            className={useClassNames(styles.focusOverlay, radioStyles)}
-          />
-          <FieldOverlay
-            variant="hover"
-            borderRadius={fieldBorderRadius}
-            className={useClassNames(styles.hoverOverlay, radioStyles)}
-          />
-        </Box>
-        <Box
-          component="label"
-          htmlFor={id}
-          className={useClassNames(styles.label, useTouchableSpace('standard'))}
-        >
-          <Text
-            component="span"
-            baseline={false}
-            weight={checked ? 'strong' : undefined}
-            color={disabled ? 'secondary' : undefined}
+            boxShadow={
+              tone === 'critical' && !disabled
+                ? 'borderCritical'
+                : 'borderStandard'
+            }
           >
-            {label}
-          </Text>
+            <FieldOverlay
+              variant={tone === 'critical' && isCheckbox ? tone : undefined}
+              backgroundColor={disabled ? 'formAccentDisabled' : 'formAccent'}
+              borderRadius={fieldBorderRadius}
+              className={useClassNames(styles.selected, radioStyles)}
+            />
+            {isCheckbox ? (
+              <Box transition="fast" width="full" className={styles.icon}>
+                <TickIcon size="fill" fill="white" />
+              </Box>
+            ) : null}
+            <FieldOverlay
+              variant="focus"
+              borderRadius={fieldBorderRadius}
+              className={useClassNames(styles.focusOverlay, radioStyles)}
+            />
+            <FieldOverlay
+              variant="hover"
+              borderRadius={fieldBorderRadius}
+              className={useClassNames(styles.hoverOverlay, radioStyles)}
+            />
+          </Box>
+          <Box
+            component="label"
+            htmlFor={id}
+            className={useClassNames(
+              styles.label,
+              useTouchableSpace('standard'),
+            )}
+          >
+            <Text
+              component="span"
+              baseline={false}
+              weight={checked ? 'strong' : undefined}
+              color={disabled ? 'secondary' : undefined}
+            >
+              {label}
+            </Text>
+          </Box>
         </Box>
+        {children ? (
+          <Box
+            display="none"
+            paddingLeft="small"
+            paddingBottom="small"
+            className={useClassNames(styles.children)}
+          >
+            {children}
+          </Box>
+        ) : null}
+        <FieldMessage
+          id={messageId}
+          tone={tone}
+          disabled={disabled}
+          message={message}
+          reserveMessageSpace={reserveMessageSpace}
+        />
       </Box>
-      {children ? (
-        <Box
-          display="none"
-          paddingLeft="small"
-          paddingBottom="small"
-          className={useClassNames(styles.children)}
-        >
-          {children}
-        </Box>
-      ) : null}
-      <FieldMessage
-        id={messageId}
-        tone={tone}
-        disabled={disabled}
-        message={message}
-        reserveMessageSpace={reserveMessageSpace}
-      />
-    </Box>
-  );
-};
+    );
+  },
+);

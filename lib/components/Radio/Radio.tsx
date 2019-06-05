@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { Omit } from 'utility-types';
 import {
   InlineField,
@@ -8,11 +8,14 @@ import {
 interface RadioProps
   extends Omit<InlineFieldProps, 'message' | 'reserveMessageSpace'> {}
 
-export const Radio = (props: RadioProps) => (
-  <InlineField
-    {...props}
-    type="radio"
-    message={null}
-    reserveMessageSpace={false}
-  />
+export const Radio = forwardRef<HTMLInputElement, RadioProps>(
+  (props: RadioProps, ref) => (
+    <InlineField
+      {...props}
+      type="radio"
+      message={null}
+      reserveMessageSpace={false}
+      ref={ref}
+    />
+  ),
 );
