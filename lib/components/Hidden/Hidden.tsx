@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
-import { useClassNames } from 'sku/treat';
+import { useStyles } from 'sku/react-treat';
 import { Box } from '../Box/Box';
-import * as styles from './Hidden.treat';
+import * as styleRefs from './Hidden.treat';
 
 export interface HiddenProps {
   children: ReactNode;
@@ -20,6 +20,7 @@ export const Hidden = ({
   screen: hiddenOnScreen = false,
   print: hiddenOnPrint = false,
 }: HiddenProps) => {
+  const styles = useStyles(styleRefs);
   const display = inline ? 'inline' : 'block';
 
   return (
@@ -28,9 +29,7 @@ export const Hidden = ({
         hiddenOnMobile || hiddenOnScreen ? 'none' : display,
         hiddenOnDesktop || hiddenOnScreen ? 'none' : display,
       ]}
-      className={
-        hiddenOnPrint ? useClassNames(styles.hiddenOnPrint) : undefined
-      }
+      className={hiddenOnPrint ? styles.hiddenOnPrint : undefined}
       component={inline ? 'span' : 'div'}
     >
       {children}

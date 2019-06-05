@@ -1,10 +1,10 @@
 import React, { ReactNode } from 'react';
-import { useClassNames } from 'sku/treat';
+import { useStyles } from 'sku/react-treat';
 import { Box } from '../Box/Box';
 import { Secondary } from '../Secondary/Secondary';
 import { Strong } from '../Strong/Strong';
 import { Text } from '../Text/Text';
-import * as styles from './FieldLabel.treat';
+import * as styleRefs from './FieldLabel.treat';
 
 export interface FieldLabelProps {
   id: string;
@@ -21,17 +21,15 @@ export const FieldLabel = ({
   tertiaryLabel,
   description,
 }: FieldLabelProps) => {
+  const styles = useStyles(styleRefs);
+
   if (!label) {
     return null;
   }
 
   return (
     <Box paddingBottom="xsmall">
-      <Box
-        component="span"
-        display="flex"
-        className={useClassNames(styles.spaceBetween)}
-      >
+      <Box component="span" display="flex" className={styles.spaceBetween}>
         <label htmlFor={id}>
           <Text component="span">
             <Strong>{label}</Strong>

@@ -1,28 +1,29 @@
 import { ReactType } from 'react';
-import { useClassNames } from 'sku/treat';
-import * as resetStyles from './reset.treat';
-import * as styles from './box.treat';
+import { useStyles } from 'sku/react-treat';
+import classnames from 'classnames';
+import * as resetStyleRefs from './reset.treat';
+import * as styleRefs from './box.treat';
 
 type ResponsiveProp<AtomName> = AtomName | [AtomName, AtomName];
 
 export interface UseBoxProps {
   component: ReactType;
-  paddingTop?: ResponsiveProp<keyof typeof styles.padding.top>;
-  paddingBottom?: ResponsiveProp<keyof typeof styles.padding.bottom>;
-  paddingLeft?: ResponsiveProp<keyof typeof styles.padding.left>;
-  paddingRight?: ResponsiveProp<keyof typeof styles.padding.right>;
-  marginTop?: ResponsiveProp<keyof typeof styles.margin.top>;
-  marginBottom?: ResponsiveProp<keyof typeof styles.margin.bottom>;
-  marginLeft?: ResponsiveProp<keyof typeof styles.margin.left>;
-  marginRight?: ResponsiveProp<keyof typeof styles.margin.left>;
-  display?: ResponsiveProp<keyof typeof styles.display>;
-  flexDirection?: ResponsiveProp<keyof typeof styles.flexDirection>;
-  borderRadius?: keyof typeof styles.borderRadius;
-  backgroundColor?: keyof typeof styles.backgroundColor;
-  boxShadow?: keyof typeof styles.boxShadow;
-  transform?: keyof typeof styles.transform;
-  transition?: keyof typeof styles.transition;
-  width?: keyof typeof styles.width;
+  paddingTop?: ResponsiveProp<keyof typeof styleRefs.padding.top>;
+  paddingBottom?: ResponsiveProp<keyof typeof styleRefs.padding.bottom>;
+  paddingLeft?: ResponsiveProp<keyof typeof styleRefs.padding.left>;
+  paddingRight?: ResponsiveProp<keyof typeof styleRefs.padding.right>;
+  marginTop?: ResponsiveProp<keyof typeof styleRefs.margin.top>;
+  marginBottom?: ResponsiveProp<keyof typeof styleRefs.margin.bottom>;
+  marginLeft?: ResponsiveProp<keyof typeof styleRefs.margin.left>;
+  marginRight?: ResponsiveProp<keyof typeof styleRefs.margin.left>;
+  display?: ResponsiveProp<keyof typeof styleRefs.display>;
+  flexDirection?: ResponsiveProp<keyof typeof styleRefs.flexDirection>;
+  borderRadius?: keyof typeof styleRefs.borderRadius;
+  backgroundColor?: keyof typeof styleRefs.backgroundColor;
+  boxShadow?: keyof typeof styleRefs.boxShadow;
+  transform?: keyof typeof styleRefs.transform;
+  transition?: keyof typeof styleRefs.transition;
+  width?: keyof typeof styleRefs.width;
 }
 
 function getResponsiveClasses<PropName extends string>(
@@ -58,10 +59,13 @@ export default ({
   transition,
   transform,
   width,
-}: UseBoxProps) =>
-  useClassNames(
+}: UseBoxProps) => {
+  const resetStyles = useStyles(resetStyleRefs);
+  const styles = useStyles(styleRefs);
+
+  return classnames(
     resetStyles.base,
-    resetStyles.element[component as keyof typeof resetStyles.element],
+    resetStyles.element[component as keyof typeof resetStyleRefs.element],
     styles.backgroundColor[backgroundColor!],
     styles.borderRadius[borderRadius!],
     styles.boxShadow[boxShadow!],
@@ -125,3 +129,4 @@ export default ({
         flexDirection,
       ),
   );
+};

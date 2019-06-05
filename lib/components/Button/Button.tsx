@@ -1,10 +1,11 @@
 import React, { ReactNode, AllHTMLAttributes } from 'react';
-import { useClassNames } from 'sku/treat';
+import { useStyles } from 'sku/react-treat';
+import classnames from 'classnames';
 import { Box, BoxProps } from '../Box/Box';
 import { Text, TextProps } from '../Text/Text';
 import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
-import * as styles from './Button.treat';
 import { useTouchableSpace } from '../../hooks/typography';
+import * as styleRefs from './Button.treat';
 
 type ButtonWeight = 'weak' | 'regular' | 'strong';
 type ButtonState = 'base' | 'hover' | 'active';
@@ -50,6 +51,7 @@ export const Button = ({
   weight = 'regular',
   type = 'button',
 }: ButtonProps) => {
+  const styles = useStyles(styleRefs);
   const isWeak = weight === 'weak';
 
   return (
@@ -63,27 +65,27 @@ export const Button = ({
       backgroundColor={backgroundColor.base[weight]}
       transform="touchable"
       transition="touchable"
-      className={useClassNames(styles.root, {
+      className={classnames(styles.root, {
         [styles.weak]: isWeak,
       })}
       onClick={onClick}
     >
       <FieldOverlay
         variant="focus"
-        className={useClassNames(styles.focusOverlay)}
+        className={classnames(styles.focusOverlay)}
       />
       <FieldOverlay
         backgroundColor={backgroundColor.hover[weight]}
-        className={useClassNames(styles.hoverOverlay)}
+        className={classnames(styles.hoverOverlay)}
       />
       <FieldOverlay
         backgroundColor={backgroundColor.active[weight]}
-        className={useClassNames(styles.activeOverlay)}
+        className={classnames(styles.activeOverlay)}
       />
       <Box
         paddingLeft="gutter"
         paddingRight="gutter"
-        className={useClassNames(styles.content, useTouchableSpace('standard'))}
+        className={classnames(styles.content, useTouchableSpace('standard'))}
       >
         <Text baseline={false} weight="medium" color={foregroundColor[weight]}>
           {children}

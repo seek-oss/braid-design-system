@@ -1,11 +1,12 @@
 import React, { ReactNode } from 'react';
-import { useClassNames } from 'sku/treat';
+import { useStyles } from 'sku/react-treat';
+import classnames from 'classnames';
 import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';
 import { ErrorIcon } from '../icons/ErrorIcon/ErrorIcon';
 import { TickCircleIcon } from '../icons/TickCircleIcon/TickCircleIcon';
-import * as styles from './FieldMessage.treat';
 import { useThemeName } from '../ThemeNameConsumer/ThemeNameContext';
+import * as styleRefs from './FieldMessage.treat';
 
 const tones = ['neutral', 'critical', 'positive'] as const;
 type FieldTone = typeof tones[number];
@@ -20,6 +21,8 @@ export interface FieldMessageProps {
 }
 
 const renderIcon = (tone: FieldTone = 'neutral') => {
+  const styles = useStyles(styleRefs);
+
   if (tone === 'neutral') {
     return null;
   }
@@ -31,7 +34,7 @@ const renderIcon = (tone: FieldTone = 'neutral') => {
   };
 
   return (
-    <Box paddingRight="xxsmall" className={useClassNames(styles.fixedSize)}>
+    <Box paddingRight="xxsmall" className={styles.fixedSize}>
       {Icon[tone]}
     </Box>
   );
@@ -53,6 +56,8 @@ export const FieldMessage = ({
     return null;
   }
 
+  const styles = useStyles(styleRefs);
+
   // Temporary switch to support maintaining a consistent UX
   // while consumers migrate forms from seek-style-guide.
   // Can be removed once we have form field parity and have
@@ -64,9 +69,9 @@ export const FieldMessage = ({
       id={id}
       paddingBottom={isSeekAu ? 'xxsmall' : 'xsmall'}
       display="flex"
-      className={useClassNames(styles.root, styles.minHeight)}
+      className={classnames(styles.root, styles.minHeight)}
     >
-      <Box className={useClassNames(styles.grow)}>
+      <Box className={styles.grow}>
         {disabled ? null : (
           <Text size="small" color={tone === 'neutral' ? 'secondary' : tone}>
             <Box display="flex">
@@ -77,7 +82,7 @@ export const FieldMessage = ({
         )}
       </Box>
       {secondaryMessage && !disabled ? (
-        <Box paddingLeft="xsmall" className={useClassNames(styles.fixedSize)}>
+        <Box paddingLeft="xsmall" className={styles.fixedSize}>
           {secondaryMessage}
         </Box>
       ) : null}

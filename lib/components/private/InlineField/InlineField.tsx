@@ -1,6 +1,6 @@
 import React, { ReactNode, AllHTMLAttributes, forwardRef } from 'react';
-import { useClassNames } from 'sku/treat';
-import * as styles from './InlineField.treat';
+import { useStyles } from 'sku/react-treat';
+import classnames from 'classnames';
 import { Box } from '../../Box/Box';
 import { FieldLabelProps } from '../../FieldLabel/FieldLabel';
 import {
@@ -11,6 +11,7 @@ import { FieldOverlay } from '../FieldOverlay/FieldOverlay';
 import { Text } from '../../Text/Text';
 import { TickIcon } from '../../icons/TickIcon/TickIcon';
 import { useTouchableSpace } from '../../../hooks/typography';
+import * as styleRefs from './InlineField.treat';
 
 const tones = ['neutral', 'critical'] as const;
 type InlineFieldTone = typeof tones[number];
@@ -52,6 +53,7 @@ export const InlineField = forwardRef(
     }: InternalInlineFieldProps,
     ref,
   ) => {
+    const styles = useStyles(styleRefs);
     const messageId = `${id}-message`;
     const isCheckbox = type === 'checkbox';
     const radioStyles = {
@@ -73,14 +75,14 @@ export const InlineField = forwardRef(
           onChange={onChange}
           value={value}
           checked={checked}
-          className={useClassNames(styles.realField, styles.fieldSize)}
+          className={classnames(styles.realField, styles.fieldSize)}
           aria-describedby={messageId}
           disabled={disabled}
           ref={ref}
         />
         <Box display="flex">
           <Box
-            className={useClassNames(
+            className={classnames(
               styles.fakeField,
               styles.fieldSize,
               radioStyles,
@@ -98,7 +100,7 @@ export const InlineField = forwardRef(
               variant={tone === 'critical' && isCheckbox ? tone : undefined}
               backgroundColor={disabled ? 'formAccentDisabled' : 'formAccent'}
               borderRadius={fieldBorderRadius}
-              className={useClassNames(styles.selected, radioStyles)}
+              className={classnames(styles.selected, radioStyles)}
             />
             {isCheckbox ? (
               <Box transition="fast" width="full" className={styles.icon}>
@@ -108,21 +110,18 @@ export const InlineField = forwardRef(
             <FieldOverlay
               variant="focus"
               borderRadius={fieldBorderRadius}
-              className={useClassNames(styles.focusOverlay, radioStyles)}
+              className={classnames(styles.focusOverlay, radioStyles)}
             />
             <FieldOverlay
               variant="hover"
               borderRadius={fieldBorderRadius}
-              className={useClassNames(styles.hoverOverlay, radioStyles)}
+              className={classnames(styles.hoverOverlay, radioStyles)}
             />
           </Box>
           <Box
             component="label"
             htmlFor={id}
-            className={useClassNames(
-              styles.label,
-              useTouchableSpace('standard'),
-            )}
+            className={classnames(styles.label, useTouchableSpace('standard'))}
           >
             <Text
               component="span"
@@ -139,7 +138,7 @@ export const InlineField = forwardRef(
             display="none"
             paddingLeft="small"
             paddingBottom="small"
-            className={useClassNames(styles.children)}
+            className={styles.children}
           >
             {children}
           </Box>

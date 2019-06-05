@@ -1,10 +1,11 @@
 import React, { ReactNode, AllHTMLAttributes, forwardRef } from 'react';
-import { useClassNames } from 'sku/treat';
+import { useStyles } from 'sku/react-treat';
+import classnames from 'classnames';
 import { Omit } from 'utility-types';
 import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';
-import * as styles from './TextArea.treat';
 import { Field, FieldProps } from '../private/Field/Field';
+import * as styleRefs from './TextArea.treat';
 
 type NativeTextAreaProps = AllHTMLAttributes<HTMLTextAreaElement>;
 interface TextAreaProps extends Omit<FieldProps, 'secondaryMessage'> {
@@ -46,29 +47,33 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
       ...restProps
     }: TextAreaProps,
     ref,
-  ) => (
-    <Field
-      {...restProps}
-      ref={ref}
-      secondaryMessage={renderCount({
-        limit,
-        value,
-      })}
-    >
-      {({ className, ...fieldProps }, fieldRef) => (
-        <Box
-          component="textarea"
-          rows={3}
-          value={value}
-          onChange={onChange}
-          onBlur={onBlur}
-          onFocus={onFocus}
-          placeholder={placeholder}
-          className={useClassNames(styles.field, className)}
-          {...fieldProps}
-          ref={fieldRef}
-        />
-      )}
-    </Field>
-  ),
+  ) => {
+    const styles = useStyles(styleRefs);
+
+    return (
+      <Field
+        {...restProps}
+        ref={ref}
+        secondaryMessage={renderCount({
+          limit,
+          value,
+        })}
+      >
+        {({ className, ...fieldProps }, fieldRef) => (
+          <Box
+            component="textarea"
+            rows={3}
+            value={value}
+            onChange={onChange}
+            onBlur={onBlur}
+            onFocus={onFocus}
+            placeholder={placeholder}
+            className={classnames(styles.field, className)}
+            {...fieldProps}
+            ref={fieldRef}
+          />
+        )}
+      </Field>
+    );
+  },
 );

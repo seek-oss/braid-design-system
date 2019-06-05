@@ -1,5 +1,6 @@
 import React, { ReactNode, AllHTMLAttributes, forwardRef } from 'react';
-import { useClassNames } from 'sku/treat';
+import { useStyles } from 'sku/react-treat';
+import classnames from 'classnames';
 import { Box, BoxProps } from '../../Box/Box';
 import { FieldLabel, FieldLabelProps } from '../../FieldLabel/FieldLabel';
 import {
@@ -7,9 +8,9 @@ import {
   FieldMessageProps,
 } from '../../FieldMessage/FieldMessage';
 import { FieldOverlay } from '../FieldOverlay/FieldOverlay';
-import * as styles from './Field.treat';
 import { useText, useTouchableSpace } from '../../../hooks/typography';
 import mapKeys from 'lodash/mapKeys';
+import * as styleRefs from './Field.treat';
 
 type FormElementProps = AllHTMLAttributes<HTMLFormElement>;
 export interface FieldProps {
@@ -64,6 +65,7 @@ export const Field = forwardRef(
     }: InternalFieldProps,
     ref,
   ) => {
+    const styles = useStyles(styleRefs);
     const messageId = `${id}-message`;
     let dataAttributes = {};
 
@@ -98,7 +100,7 @@ export const Field = forwardRef(
               disabled,
               autoComplete,
               ...dataAttributes,
-              className: useClassNames(
+              className: classnames(
                 styles.field,
                 useText({ size: 'standard', baseline: false }),
                 useTouchableSpace('standard'),
