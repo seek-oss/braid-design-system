@@ -1,20 +1,24 @@
-/* eslint-disable no-sync */
-/* eslint-disable no-process-exit */
-/* eslint-disable no-console */
-// eslint-disable-file
 import fs from 'fs';
 import path from 'path';
 import ts from 'typescript';
 
-const aliasWhitelist = [
-  'ResponsiveProp',
-  'ReactNode',
-  'ReactType',
-  'ReactElement',
-];
+const aliasWhitelist = ['ResponsiveProp'];
 
-(async () => {
-  const tsconfigPath = path.join(__dirname, '../tsconfig.json');
+const tsconfigPath = path.join(__dirname, '../tsconfig.json');
+const componentsFile = path.join(__dirname, '../lib/components/index.ts');
+
+export interface PropDetails {
+  propName: string;
+  required: boolean;
+  type: NormalisedPropType;
+}
+
+export type NormalisedPropType =
+  | string
+  | { type: 'union'; types: Array<NormalisedPropType> }
+  | { type: 'alias'; alias: string; params: Array<NormalisedPropType> };
+
+export default () => {
   const basePath = path.dirname(tsconfigPath);
   const { config, error } = ts.readConfigFile(tsconfigPath, filename =>
     fs.readFileSync(filename, 'utf8'),
@@ -37,8 +41,6 @@ const aliasWhitelist = [
     console.error(errors[0]);
     process.exit(1);
   }
-
-  const componentsFile = 'lib/components/index.ts';
 
   const program = ts.createProgram([componentsFile], options);
 
@@ -73,36 +75,28 @@ const aliasWhitelist = [
     return null;
   };
 
-  type NormalisedType =
-    | string
-    | { union: true; types: Array<NormalisedType> }
-    | { alias: string; params: Array<NormalisedType> };
-
-  const normaliseType = (type: ts.Type): NormalisedType => {
+  const normaliseType = (type: ts.Type): NormalisedPropType => {
     if (checker.typeToString(type) === 'boolean') {
       return 'boolean';
     }
 
-    const baseConstraint = checker.getBaseConstraintOfType(type);
-
-    if (baseConstraint && baseConstraint.aliasSymbol) {
-      const alias = baseConstraint.aliasSymbol.getName();
+    if (type.aliasSymbol) {
+      const alias = type.aliasSymbol.getName();
 
       if (aliasWhitelist.includes(alias)) {
         return {
-          params: baseConstraint.aliasTypeArguments
-            ? baseConstraint.aliasTypeArguments.map(aliasArg =>
-                normaliseType(aliasArg),
-              )
+          params: type.aliasTypeArguments
+            ? type.aliasTypeArguments.map(aliasArg => normaliseType(aliasArg))
             : [],
           alias,
+          type: 'alias',
         };
       }
     }
 
     if (type.isUnion()) {
       return {
-        union: true,
+        type: 'union',
         types: type.types.map(unionItem => normaliseType(unionItem)),
       };
     }
@@ -139,6 +133,7 @@ const aliasWhitelist = [
 
         return {
           [propName]: {
+            propName,
             required: !isOptional,
             type: aliasWhitelist.includes(typeAlias)
               ? typeAlias
@@ -157,21 +152,17 @@ const aliasWhitelist = [
       const moduleSymbol = checker.getSymbolAtLocation(sourceFile);
 
       if (moduleSymbol) {
-        const docs = checker
-          .getExportsOfModule(moduleSymbol)
-          .map(moduleExport => {
+        return Object.assign(
+          {},
+          ...checker.getExportsOfModule(moduleSymbol).map(moduleExport => {
             return {
-              componentName: moduleExport.escapedName,
-              props: getComponentDocs(moduleExport),
+              [moduleExport.escapedName as string]: {
+                props: getComponentDocs(moduleExport),
+              },
             };
-          });
-
-        fs.writeFileSync(
-          path.join(__dirname, 'spike.json'),
-          JSON.stringify(docs, null, 2),
-          'utf8',
+          }),
         );
       }
     }
   }
-})();
+};

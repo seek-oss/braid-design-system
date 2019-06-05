@@ -13,7 +13,7 @@
     "start": "concurrently \"sku start\" \"OPEN_TAB=false sku playroom\"",
     "lint": "sku lint",
     "format": "sku format",
-    "generate-component-docs": "node lib/componentDocs/generateComponentDocs.js",
+    "generate-component-docs": "ts-node generate-component-docs",
     "prelint": "yarn generate-component-docs",
     "prestart": "yarn generate-component-docs",
     "prebuild": "yarn generate-component-docs",
@@ -26,8 +26,7 @@
     "post-commit-status": "node scripts/postCommitStatus.js",
     "commit": "git-cz",
     "travis-deploy-once": "travis-deploy-once",
-    "semantic-release": "semantic-release",
-    "component-types": "ts-node component-types/index.ts"
+    "semantic-release": "semantic-release"
   },
   "config": {
     "commitizen": {
