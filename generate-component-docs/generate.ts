@@ -1,3 +1,4 @@
+/* tslint:disable */
 import fs from 'fs';
 import path from 'path';
 import ts from 'typescript';
@@ -26,7 +27,7 @@ export default () => {
 
   if (error) {
     console.error(error);
-    process.exit(1);
+    throw error;
   }
 
   const { options, errors } = ts.parseJsonConfigFileContent(
@@ -39,7 +40,7 @@ export default () => {
 
   if (errors && errors.length) {
     console.error(errors[0]);
-    process.exit(1);
+    throw errors[0];
   }
 
   const program = ts.createProgram([componentsFile], options);

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`public API Actions 1`] = `
+exports[`Public API Actions 1`] = `
 Object {
   "props": Object {
     "children": Object {
@@ -24,7 +24,7 @@ Object {
 }
 `;
 
-exports[`public API Alert 1`] = `
+exports[`Public API Alert 1`] = `
 Object {
   "props": Object {
     "children": Object {
@@ -71,7 +71,7 @@ Object {
 }
 `;
 
-exports[`public API Box 1`] = `
+exports[`Public API Box 1`] = `
 Object {
   "props": Object {
     "about": Object {
@@ -2616,7 +2616,7 @@ Object {
 }
 `;
 
-exports[`public API Bullet 1`] = `
+exports[`Public API Bullet 1`] = `
 Object {
   "props": Object {
     "children": Object {
@@ -2640,7 +2640,7 @@ Object {
 }
 `;
 
-exports[`public API BulletList 1`] = `
+exports[`Public API BulletList 1`] = `
 Object {
   "props": Object {
     "children": Object {
@@ -2664,7 +2664,7 @@ Object {
 }
 `;
 
-exports[`public API Button 1`] = `
+exports[`Public API Button 1`] = `
 Object {
   "props": Object {
     "children": Object {
@@ -2710,7 +2710,7 @@ Object {
 }
 `;
 
-exports[`public API Card 1`] = `
+exports[`Public API Card 1`] = `
 Object {
   "props": Object {
     "children": Object {
@@ -2734,7 +2734,7 @@ Object {
 }
 `;
 
-exports[`public API Checkbox 1`] = `
+exports[`Public API Checkbox 1`] = `
 Object {
   "props": Object {
     "checked": Object {
@@ -2829,7 +2829,7 @@ Object {
 }
 `;
 
-exports[`public API ChevronIcon 1`] = `
+exports[`Public API ChevronIcon 1`] = `
 Object {
   "props": Object {
     "direction": Object {
@@ -2891,7 +2891,7 @@ Object {
 }
 `;
 
-exports[`public API Column 1`] = `
+exports[`Public API Column 1`] = `
 Object {
   "props": Object {
     "children": Object {
@@ -2915,7 +2915,7 @@ Object {
 }
 `;
 
-exports[`public API Columns 1`] = `
+exports[`Public API Columns 1`] = `
 Object {
   "props": Object {
     "children": Object {
@@ -2933,13 +2933,13 @@ Object {
 }
 `;
 
-exports[`public API Divider 1`] = `
+exports[`Public API Divider 1`] = `
 Object {
   "props": Object {},
 }
 `;
 
-exports[`public API Dropdown 1`] = `
+exports[`Public API Dropdown 1`] = `
 Object {
   "props": Object {
     "children": Object {
@@ -3094,7 +3094,7 @@ Object {
 }
 `;
 
-exports[`public API ErrorIcon 1`] = `
+exports[`Public API ErrorIcon 1`] = `
 Object {
   "props": Object {
     "fill": Object {
@@ -3143,7 +3143,7 @@ Object {
 }
 `;
 
-exports[`public API FieldLabel 1`] = `
+exports[`Public API FieldLabel 1`] = `
 Object {
   "props": Object {
     "description": Object {
@@ -3223,7 +3223,7 @@ Object {
 }
 `;
 
-exports[`public API FieldMessage 1`] = `
+exports[`Public API FieldMessage 1`] = `
 Object {
   "props": Object {
     "baseline": Object {
@@ -3540,7 +3540,7 @@ Object {
 }
 `;
 
-exports[`public API Heading 1`] = `
+exports[`Public API Heading 1`] = `
 Object {
   "props": Object {
     "children": Object {
@@ -3771,7 +3771,7 @@ Object {
 }
 `;
 
-exports[`public API Hidden 1`] = `
+exports[`Public API Hidden 1`] = `
 Object {
   "props": Object {
     "children": Object {
@@ -3820,7 +3820,7 @@ Object {
 }
 `;
 
-exports[`public API InfoIcon 1`] = `
+exports[`Public API InfoIcon 1`] = `
 Object {
   "props": Object {
     "fill": Object {
@@ -3869,7 +3869,7 @@ Object {
 }
 `;
 
-exports[`public API Radio 1`] = `
+exports[`Public API Radio 1`] = `
 Object {
   "props": Object {
     "checked": Object {
@@ -3964,7 +3964,7 @@ Object {
 }
 `;
 
-exports[`public API Secondary 1`] = `
+exports[`Public API Secondary 1`] = `
 Object {
   "props": Object {
     "children": Object {
@@ -3988,7 +3988,7 @@ Object {
 }
 `;
 
-exports[`public API Strong 1`] = `
+exports[`Public API Strong 1`] = `
 Object {
   "props": Object {
     "children": Object {
@@ -4012,7 +4012,7 @@ Object {
 }
 `;
 
-exports[`public API Text 1`] = `
+exports[`Public API Text 1`] = `
 Object {
   "props": Object {
     "baseline": Object {
@@ -4273,7 +4273,7 @@ Object {
 }
 `;
 
-exports[`public API TextArea 1`] = `
+exports[`Public API TextArea 1`] = `
 Object {
   "props": Object {
     "description": Object {
@@ -4422,7 +4422,7 @@ Object {
 }
 `;
 
-exports[`public API TextField 1`] = `
+exports[`Public API TextField 1`] = `
 Object {
   "props": Object {
     "description": Object {
@@ -4582,7 +4582,7 @@ Object {
 }
 `;
 
-exports[`public API TextLink 1`] = `
+exports[`Public API TextLink 1`] = `
 Object {
   "props": Object {
     "about": Object {
@@ -6658,7 +6658,7 @@ Object {
 }
 `;
 
-exports[`public API TextLinkRenderer 1`] = `
+exports[`Public API TextLinkRenderer 1`] = `
 Object {
   "props": Object {
     "children": Object {
@@ -6675,7 +6675,7 @@ Object {
 }
 `;
 
-exports[`public API ThemeNameConsumer 1`] = `
+exports[`Public API ThemeNameConsumer 1`] = `
 Object {
   "props": Object {
     "children": Object {
@@ -6687,7 +6687,7 @@ Object {
 }
 `;
 
-exports[`public API ThemeProvider 1`] = `
+exports[`Public API ThemeProvider 1`] = `
 Object {
   "props": Object {
     "children": Object {
@@ -6716,7 +6716,7 @@ Object {
 }
 `;
 
-exports[`public API TickCircleIcon 1`] = `
+exports[`Public API TickCircleIcon 1`] = `
 Object {
   "props": Object {
     "fill": Object {
@@ -6765,7 +6765,7 @@ Object {
 }
 `;
 
-exports[`public API TickIcon 1`] = `
+exports[`Public API TickIcon 1`] = `
 Object {
   "props": Object {
     "fill": Object {
@@ -6814,7 +6814,7 @@ Object {
 }
 `;
 
-exports[`public API useThemeName 1`] = `
+exports[`Public API useThemeName 1`] = `
 Object {
   "props": Object {},
 }

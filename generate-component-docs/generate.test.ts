@@ -1,6 +1,6 @@
 import generate from './generate';
 
-describe('public API', () => {
+describe('Public API', () => {
   const componentDocs = generate();
 
   it.each(Object.keys(componentDocs))('%s', componentName => {

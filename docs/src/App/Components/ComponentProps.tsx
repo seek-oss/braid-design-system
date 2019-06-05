@@ -1,7 +1,8 @@
+/* tslint:disable */
 import React, { Fragment } from 'react';
 import partition from 'lodash/partition';
 import { Box, Text, Secondary, Heading } from '../../../../lib/components';
-import componentDocs from '../../../../lib/componentDocs/componentDocs.json';
+import componentDocs from '../../../../generate-component-docs/componentDocs.json';
 import {
   PropDetails,
   NormalisedPropType,
