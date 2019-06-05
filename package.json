@@ -10,6 +10,7 @@
     "check-integrity": "yarn check --integrity && echo 'Ignore paths from lint-staged'",
     "pretest": "sku configure",
     "test": "yarn check --integrity && yarn lint && yarn build",
+    "contract-test": "sku test",
     "start": "concurrently \"sku start\" \"OPEN_TAB=false sku playroom\"",
     "lint": "sku lint",
     "format": "sku format",

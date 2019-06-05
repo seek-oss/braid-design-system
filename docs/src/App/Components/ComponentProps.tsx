@@ -20,7 +20,7 @@ const docs = componentDocs as Record<
 >;
 
 interface Props {
-  componentName: ComponentName;
+  componentName: string;
 }
 
 const isValidComponentName = (

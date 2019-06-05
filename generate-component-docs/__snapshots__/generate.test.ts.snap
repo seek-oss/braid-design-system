@@ -1,0 +1,6821 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`public API Actions 1`] = `
+Object {
+  "props": Object {
+    "children": Object {
+      "propName": "children",
+      "required": true,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+          "false",
+          "true",
+          "{}",
+          "ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>",
+          "ReactNodeArray",
+          "ReactPortal",
+        ],
+      },
+    },
+  },
+}
+`;
+
+exports[`public API Alert 1`] = `
+Object {
+  "props": Object {
+    "children": Object {
+      "propName": "children",
+      "required": true,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+          "false",
+          "true",
+          "{}",
+          "ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>",
+          "ReactNodeArray",
+          "ReactPortal",
+        ],
+      },
+    },
+    "tone": Object {
+      "propName": "tone",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "\\"info\\"",
+          "\\"critical\\"",
+          "\\"positive\\"",
+        ],
+      },
+    },
+    "weight": Object {
+      "propName": "weight",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "\\"strong\\"",
+          "\\"regular\\"",
+        ],
+      },
+    },
+  },
+}
+`;
+
+exports[`public API Box 1`] = `
+Object {
+  "props": Object {
+    "about": Object {
+      "propName": "about",
+      "required": false,
+      "type": "string",
+    },
+    "accept": Object {
+      "propName": "accept",
+      "required": false,
+      "type": "string",
+    },
+    "acceptCharset": Object {
+      "propName": "acceptCharset",
+      "required": false,
+      "type": "string",
+    },
+    "accessKey": Object {
+      "propName": "accessKey",
+      "required": false,
+      "type": "string",
+    },
+    "action": Object {
+      "propName": "action",
+      "required": false,
+      "type": "string",
+    },
+    "allowFullScreen": Object {
+      "propName": "allowFullScreen",
+      "required": false,
+      "type": "boolean",
+    },
+    "allowTransparency": Object {
+      "propName": "allowTransparency",
+      "required": false,
+      "type": "boolean",
+    },
+    "alt": Object {
+      "propName": "alt",
+      "required": false,
+      "type": "string",
+    },
+    "aria-activedescendant": Object {
+      "propName": "aria-activedescendant",
+      "required": false,
+      "type": "string",
+    },
+    "aria-atomic": Object {
+      "propName": "aria-atomic",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "false",
+          "true",
+          "\\"false\\"",
+          "\\"true\\"",
+        ],
+      },
+    },
+    "aria-autocomplete": Object {
+      "propName": "aria-autocomplete",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "\\"list\\"",
+          "\\"none\\"",
+          "\\"inline\\"",
+          "\\"both\\"",
+        ],
+      },
+    },
+    "aria-busy": Object {
+      "propName": "aria-busy",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "false",
+          "true",
+          "\\"false\\"",
+          "\\"true\\"",
+        ],
+      },
+    },
+    "aria-checked": Object {
+      "propName": "aria-checked",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "false",
+          "true",
+          "\\"false\\"",
+          "\\"true\\"",
+          "\\"mixed\\"",
+        ],
+      },
+    },
+    "aria-colcount": Object {
+      "propName": "aria-colcount",
+      "required": false,
+      "type": "number",
+    },
+    "aria-colindex": Object {
+      "propName": "aria-colindex",
+      "required": false,
+      "type": "number",
+    },
+    "aria-colspan": Object {
+      "propName": "aria-colspan",
+      "required": false,
+      "type": "number",
+    },
+    "aria-controls": Object {
+      "propName": "aria-controls",
+      "required": false,
+      "type": "string",
+    },
+    "aria-current": Object {
+      "propName": "aria-current",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "false",
+          "true",
+          "\\"step\\"",
+          "\\"time\\"",
+          "\\"false\\"",
+          "\\"true\\"",
+          "\\"page\\"",
+          "\\"location\\"",
+          "\\"date\\"",
+        ],
+      },
+    },
+    "aria-describedby": Object {
+      "propName": "aria-describedby",
+      "required": false,
+      "type": "string",
+    },
+    "aria-details": Object {
+      "propName": "aria-details",
+      "required": false,
+      "type": "string",
+    },
+    "aria-disabled": Object {
+      "propName": "aria-disabled",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "false",
+          "true",
+          "\\"false\\"",
+          "\\"true\\"",
+        ],
+      },
+    },
+    "aria-dropeffect": Object {
+      "propName": "aria-dropeffect",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "\\"none\\"",
+          "\\"link\\"",
+          "\\"copy\\"",
+          "\\"execute\\"",
+          "\\"move\\"",
+          "\\"popup\\"",
+        ],
+      },
+    },
+    "aria-errormessage": Object {
+      "propName": "aria-errormessage",
+      "required": false,
+      "type": "string",
+    },
+    "aria-expanded": Object {
+      "propName": "aria-expanded",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "false",
+          "true",
+          "\\"false\\"",
+          "\\"true\\"",
+        ],
+      },
+    },
+    "aria-flowto": Object {
+      "propName": "aria-flowto",
+      "required": false,
+      "type": "string",
+    },
+    "aria-grabbed": Object {
+      "propName": "aria-grabbed",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "false",
+          "true",
+          "\\"false\\"",
+          "\\"true\\"",
+        ],
+      },
+    },
+    "aria-haspopup": Object {
+      "propName": "aria-haspopup",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "false",
+          "true",
+          "\\"grid\\"",
+          "\\"dialog\\"",
+          "\\"menu\\"",
+          "\\"false\\"",
+          "\\"true\\"",
+          "\\"listbox\\"",
+          "\\"tree\\"",
+        ],
+      },
+    },
+    "aria-hidden": Object {
+      "propName": "aria-hidden",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "false",
+          "true",
+          "\\"false\\"",
+          "\\"true\\"",
+        ],
+      },
+    },
+    "aria-invalid": Object {
+      "propName": "aria-invalid",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "false",
+          "true",
+          "\\"false\\"",
+          "\\"true\\"",
+          "\\"grammar\\"",
+          "\\"spelling\\"",
+        ],
+      },
+    },
+    "aria-keyshortcuts": Object {
+      "propName": "aria-keyshortcuts",
+      "required": false,
+      "type": "string",
+    },
+    "aria-label": Object {
+      "propName": "aria-label",
+      "required": false,
+      "type": "string",
+    },
+    "aria-labelledby": Object {
+      "propName": "aria-labelledby",
+      "required": false,
+      "type": "string",
+    },
+    "aria-level": Object {
+      "propName": "aria-level",
+      "required": false,
+      "type": "number",
+    },
+    "aria-live": Object {
+      "propName": "aria-live",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "\\"off\\"",
+          "\\"assertive\\"",
+          "\\"polite\\"",
+        ],
+      },
+    },
+    "aria-modal": Object {
+      "propName": "aria-modal",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "false",
+          "true",
+          "\\"false\\"",
+          "\\"true\\"",
+        ],
+      },
+    },
+    "aria-multiline": Object {
+      "propName": "aria-multiline",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "false",
+          "true",
+          "\\"false\\"",
+          "\\"true\\"",
+        ],
+      },
+    },
+    "aria-multiselectable": Object {
+      "propName": "aria-multiselectable",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "false",
+          "true",
+          "\\"false\\"",
+          "\\"true\\"",
+        ],
+      },
+    },
+    "aria-orientation": Object {
+      "propName": "aria-orientation",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "\\"horizontal\\"",
+          "\\"vertical\\"",
+        ],
+      },
+    },
+    "aria-owns": Object {
+      "propName": "aria-owns",
+      "required": false,
+      "type": "string",
+    },
+    "aria-placeholder": Object {
+      "propName": "aria-placeholder",
+      "required": false,
+      "type": "string",
+    },
+    "aria-posinset": Object {
+      "propName": "aria-posinset",
+      "required": false,
+      "type": "number",
+    },
+    "aria-pressed": Object {
+      "propName": "aria-pressed",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "false",
+          "true",
+          "\\"false\\"",
+          "\\"true\\"",
+          "\\"mixed\\"",
+        ],
+      },
+    },
+    "aria-readonly": Object {
+      "propName": "aria-readonly",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "false",
+          "true",
+          "\\"false\\"",
+          "\\"true\\"",
+        ],
+      },
+    },
+    "aria-relevant": Object {
+      "propName": "aria-relevant",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "\\"all\\"",
+          "\\"text\\"",
+          "\\"additions\\"",
+          "\\"additions text\\"",
+          "\\"removals\\"",
+        ],
+      },
+    },
+    "aria-required": Object {
+      "propName": "aria-required",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "false",
+          "true",
+          "\\"false\\"",
+          "\\"true\\"",
+        ],
+      },
+    },
+    "aria-roledescription": Object {
+      "propName": "aria-roledescription",
+      "required": false,
+      "type": "string",
+    },
+    "aria-rowcount": Object {
+      "propName": "aria-rowcount",
+      "required": false,
+      "type": "number",
+    },
+    "aria-rowindex": Object {
+      "propName": "aria-rowindex",
+      "required": false,
+      "type": "number",
+    },
+    "aria-rowspan": Object {
+      "propName": "aria-rowspan",
+      "required": false,
+      "type": "number",
+    },
+    "aria-selected": Object {
+      "propName": "aria-selected",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "false",
+          "true",
+          "\\"false\\"",
+          "\\"true\\"",
+        ],
+      },
+    },
+    "aria-setsize": Object {
+      "propName": "aria-setsize",
+      "required": false,
+      "type": "number",
+    },
+    "aria-sort": Object {
+      "propName": "aria-sort",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "\\"none\\"",
+          "\\"ascending\\"",
+          "\\"descending\\"",
+          "\\"other\\"",
+        ],
+      },
+    },
+    "aria-valuemax": Object {
+      "propName": "aria-valuemax",
+      "required": false,
+      "type": "number",
+    },
+    "aria-valuemin": Object {
+      "propName": "aria-valuemin",
+      "required": false,
+      "type": "number",
+    },
+    "aria-valuenow": Object {
+      "propName": "aria-valuenow",
+      "required": false,
+      "type": "number",
+    },
+    "aria-valuetext": Object {
+      "propName": "aria-valuetext",
+      "required": false,
+      "type": "string",
+    },
+    "as": Object {
+      "propName": "as",
+      "required": false,
+      "type": "string",
+    },
+    "async": Object {
+      "propName": "async",
+      "required": false,
+      "type": "boolean",
+    },
+    "autoCapitalize": Object {
+      "propName": "autoCapitalize",
+      "required": false,
+      "type": "string",
+    },
+    "autoComplete": Object {
+      "propName": "autoComplete",
+      "required": false,
+      "type": "string",
+    },
+    "autoCorrect": Object {
+      "propName": "autoCorrect",
+      "required": false,
+      "type": "string",
+    },
+    "autoFocus": Object {
+      "propName": "autoFocus",
+      "required": false,
+      "type": "boolean",
+    },
+    "autoPlay": Object {
+      "propName": "autoPlay",
+      "required": false,
+      "type": "boolean",
+    },
+    "autoSave": Object {
+      "propName": "autoSave",
+      "required": false,
+      "type": "string",
+    },
+    "backgroundColor": Object {
+      "propName": "backgroundColor",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "\\"info\\"",
+          "\\"critical\\"",
+          "\\"positive\\"",
+          "\\"input\\"",
+          "\\"inputDisabled\\"",
+          "\\"brandAccent\\"",
+          "\\"formAccent\\"",
+          "\\"formAccentDisabled\\"",
+          "\\"selection\\"",
+          "\\"card\\"",
+          "\\"formAccentActive\\"",
+          "\\"formAccentHover\\"",
+          "\\"brandAccentActive\\"",
+          "\\"brandAccentHover\\"",
+          "\\"infoLight\\"",
+          "\\"criticalLight\\"",
+          "\\"positiveLight\\"",
+        ],
+      },
+    },
+    "borderRadius": Object {
+      "propName": "borderRadius",
+      "required": false,
+      "type": "\\"standard\\"",
+    },
+    "boxShadow": Object {
+      "propName": "boxShadow",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "\\"outlineFocus\\"",
+          "\\"borderStandard\\"",
+          "\\"borderCritical\\"",
+          "\\"borderFormAccent\\"",
+          "\\"borderFormAccentLarge\\"",
+        ],
+      },
+    },
+    "capture": Object {
+      "propName": "capture",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "false",
+          "true",
+        ],
+      },
+    },
+    "cellPadding": Object {
+      "propName": "cellPadding",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+        ],
+      },
+    },
+    "cellSpacing": Object {
+      "propName": "cellSpacing",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+        ],
+      },
+    },
+    "challenge": Object {
+      "propName": "challenge",
+      "required": false,
+      "type": "string",
+    },
+    "charSet": Object {
+      "propName": "charSet",
+      "required": false,
+      "type": "string",
+    },
+    "checked": Object {
+      "propName": "checked",
+      "required": false,
+      "type": "boolean",
+    },
+    "children": Object {
+      "propName": "children",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+          "false",
+          "true",
+          "{}",
+          "ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>",
+          "ReactNodeArray",
+          "ReactPortal",
+        ],
+      },
+    },
+    "cite": Object {
+      "propName": "cite",
+      "required": false,
+      "type": "string",
+    },
+    "classID": Object {
+      "propName": "classID",
+      "required": false,
+      "type": "string",
+    },
+    "className": Object {
+      "propName": "className",
+      "required": false,
+      "type": "string",
+    },
+    "colSpan": Object {
+      "propName": "colSpan",
+      "required": false,
+      "type": "number",
+    },
+    "color": Object {
+      "propName": "color",
+      "required": false,
+      "type": "string",
+    },
+    "cols": Object {
+      "propName": "cols",
+      "required": false,
+      "type": "number",
+    },
+    "component": Object {
+      "propName": "component",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "\\"symbol\\"",
+          "\\"object\\"",
+          "\\"strong\\"",
+          "\\"cite\\"",
+          "\\"data\\"",
+          "\\"form\\"",
+          "\\"label\\"",
+          "\\"pattern\\"",
+          "\\"span\\"",
+          "\\"summary\\"",
+          "\\"style\\"",
+          "\\"title\\"",
+          "\\"clipPath\\"",
+          "\\"filter\\"",
+          "\\"mask\\"",
+          "\\"marker\\"",
+          "\\"small\\"",
+          "\\"input\\"",
+          "\\"a\\"",
+          "\\"abbr\\"",
+          "\\"address\\"",
+          "\\"area\\"",
+          "\\"article\\"",
+          "\\"aside\\"",
+          "\\"audio\\"",
+          "\\"b\\"",
+          "\\"base\\"",
+          "\\"bdi\\"",
+          "\\"bdo\\"",
+          "\\"big\\"",
+          "\\"blockquote\\"",
+          "\\"body\\"",
+          "\\"br\\"",
+          "\\"button\\"",
+          "\\"canvas\\"",
+          "\\"caption\\"",
+          "\\"code\\"",
+          "\\"col\\"",
+          "\\"colgroup\\"",
+          "\\"datalist\\"",
+          "\\"dd\\"",
+          "\\"del\\"",
+          "\\"details\\"",
+          "\\"dfn\\"",
+          "\\"dialog\\"",
+          "\\"div\\"",
+          "\\"dl\\"",
+          "\\"dt\\"",
+          "\\"em\\"",
+          "\\"embed\\"",
+          "\\"fieldset\\"",
+          "\\"figcaption\\"",
+          "\\"figure\\"",
+          "\\"footer\\"",
+          "\\"h1\\"",
+          "\\"h2\\"",
+          "\\"h3\\"",
+          "\\"h4\\"",
+          "\\"h5\\"",
+          "\\"h6\\"",
+          "\\"head\\"",
+          "\\"header\\"",
+          "\\"hgroup\\"",
+          "\\"hr\\"",
+          "\\"html\\"",
+          "\\"i\\"",
+          "\\"iframe\\"",
+          "\\"img\\"",
+          "\\"ins\\"",
+          "\\"kbd\\"",
+          "\\"keygen\\"",
+          "\\"legend\\"",
+          "\\"li\\"",
+          "\\"link\\"",
+          "\\"main\\"",
+          "\\"map\\"",
+          "\\"mark\\"",
+          "\\"menu\\"",
+          "\\"menuitem\\"",
+          "\\"meta\\"",
+          "\\"meter\\"",
+          "\\"nav\\"",
+          "\\"noindex\\"",
+          "\\"noscript\\"",
+          "\\"ol\\"",
+          "\\"optgroup\\"",
+          "\\"option\\"",
+          "\\"output\\"",
+          "\\"p\\"",
+          "\\"param\\"",
+          "\\"picture\\"",
+          "\\"pre\\"",
+          "\\"progress\\"",
+          "\\"q\\"",
+          "\\"rp\\"",
+          "\\"rt\\"",
+          "\\"ruby\\"",
+          "\\"s\\"",
+          "\\"samp\\"",
+          "\\"script\\"",
+          "\\"section\\"",
+          "\\"select\\"",
+          "\\"source\\"",
+          "\\"sub\\"",
+          "\\"sup\\"",
+          "\\"table\\"",
+          "\\"tbody\\"",
+          "\\"td\\"",
+          "\\"textarea\\"",
+          "\\"tfoot\\"",
+          "\\"th\\"",
+          "\\"thead\\"",
+          "\\"time\\"",
+          "\\"tr\\"",
+          "\\"track\\"",
+          "\\"u\\"",
+          "\\"ul\\"",
+          "\\"var\\"",
+          "\\"video\\"",
+          "\\"wbr\\"",
+          "\\"webview\\"",
+          "\\"svg\\"",
+          "\\"animate\\"",
+          "\\"animateMotion\\"",
+          "\\"animateTransform\\"",
+          "\\"circle\\"",
+          "\\"defs\\"",
+          "\\"desc\\"",
+          "\\"ellipse\\"",
+          "\\"feBlend\\"",
+          "\\"feColorMatrix\\"",
+          "\\"feComponentTransfer\\"",
+          "\\"feComposite\\"",
+          "\\"feConvolveMatrix\\"",
+          "\\"feDiffuseLighting\\"",
+          "\\"feDisplacementMap\\"",
+          "\\"feDistantLight\\"",
+          "\\"feDropShadow\\"",
+          "\\"feFlood\\"",
+          "\\"feFuncA\\"",
+          "\\"feFuncB\\"",
+          "\\"feFuncG\\"",
+          "\\"feFuncR\\"",
+          "\\"feGaussianBlur\\"",
+          "\\"feImage\\"",
+          "\\"feMerge\\"",
+          "\\"feMergeNode\\"",
+          "\\"feMorphology\\"",
+          "\\"feOffset\\"",
+          "\\"fePointLight\\"",
+          "\\"feSpecularLighting\\"",
+          "\\"feSpotLight\\"",
+          "\\"feTile\\"",
+          "\\"feTurbulence\\"",
+          "\\"foreignObject\\"",
+          "\\"g\\"",
+          "\\"image\\"",
+          "\\"line\\"",
+          "\\"linearGradient\\"",
+          "\\"metadata\\"",
+          "\\"mpath\\"",
+          "\\"path\\"",
+          "\\"polygon\\"",
+          "\\"polyline\\"",
+          "\\"radialGradient\\"",
+          "\\"rect\\"",
+          "\\"stop\\"",
+          "\\"switch\\"",
+          "\\"text\\"",
+          "\\"textPath\\"",
+          "\\"tspan\\"",
+          "\\"use\\"",
+          "\\"view\\"",
+          "ComponentClass<any, any>",
+          "FunctionComponent<any>",
+        ],
+      },
+    },
+    "content": Object {
+      "propName": "content",
+      "required": false,
+      "type": "string",
+    },
+    "contentEditable": Object {
+      "propName": "contentEditable",
+      "required": false,
+      "type": "boolean",
+    },
+    "contextMenu": Object {
+      "propName": "contextMenu",
+      "required": false,
+      "type": "string",
+    },
+    "controls": Object {
+      "propName": "controls",
+      "required": false,
+      "type": "boolean",
+    },
+    "coords": Object {
+      "propName": "coords",
+      "required": false,
+      "type": "string",
+    },
+    "crossOrigin": Object {
+      "propName": "crossOrigin",
+      "required": false,
+      "type": "string",
+    },
+    "dangerouslySetInnerHTML": Object {
+      "propName": "dangerouslySetInnerHTML",
+      "required": false,
+      "type": "{ __html: string; }",
+    },
+    "data": Object {
+      "propName": "data",
+      "required": false,
+      "type": "string",
+    },
+    "datatype": Object {
+      "propName": "datatype",
+      "required": false,
+      "type": "string",
+    },
+    "dateTime": Object {
+      "propName": "dateTime",
+      "required": false,
+      "type": "string",
+    },
+    "default": Object {
+      "propName": "default",
+      "required": false,
+      "type": "boolean",
+    },
+    "defaultChecked": Object {
+      "propName": "defaultChecked",
+      "required": false,
+      "type": "boolean",
+    },
+    "defaultValue": Object {
+      "propName": "defaultValue",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "string[]",
+        ],
+      },
+    },
+    "defer": Object {
+      "propName": "defer",
+      "required": false,
+      "type": "boolean",
+    },
+    "dir": Object {
+      "propName": "dir",
+      "required": false,
+      "type": "string",
+    },
+    "disabled": Object {
+      "propName": "disabled",
+      "required": false,
+      "type": "boolean",
+    },
+    "display": Object {
+      "propName": "display",
+      "required": false,
+      "type": Object {
+        "alias": "ResponsiveProp",
+        "params": Array [
+          Object {
+            "type": "union",
+            "types": Array [
+              "\\"flex\\"",
+              "\\"none\\"",
+              "\\"block\\"",
+              "\\"inline\\"",
+              "\\"inlineBlock\\"",
+            ],
+          },
+        ],
+        "type": "alias",
+      },
+    },
+    "download": Object {
+      "propName": "download",
+      "required": false,
+      "type": "any",
+    },
+    "draggable": Object {
+      "propName": "draggable",
+      "required": false,
+      "type": "boolean",
+    },
+    "encType": Object {
+      "propName": "encType",
+      "required": false,
+      "type": "string",
+    },
+    "flexDirection": Object {
+      "propName": "flexDirection",
+      "required": false,
+      "type": Object {
+        "alias": "ResponsiveProp",
+        "params": Array [
+          Object {
+            "type": "union",
+            "types": Array [
+              "\\"row\\"",
+              "\\"column\\"",
+            ],
+          },
+        ],
+        "type": "alias",
+      },
+    },
+    "form": Object {
+      "propName": "form",
+      "required": false,
+      "type": "string",
+    },
+    "formAction": Object {
+      "propName": "formAction",
+      "required": false,
+      "type": "string",
+    },
+    "formEncType": Object {
+      "propName": "formEncType",
+      "required": false,
+      "type": "string",
+    },
+    "formMethod": Object {
+      "propName": "formMethod",
+      "required": false,
+      "type": "string",
+    },
+    "formNoValidate": Object {
+      "propName": "formNoValidate",
+      "required": false,
+      "type": "boolean",
+    },
+    "formTarget": Object {
+      "propName": "formTarget",
+      "required": false,
+      "type": "string",
+    },
+    "frameBorder": Object {
+      "propName": "frameBorder",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+        ],
+      },
+    },
+    "headers": Object {
+      "propName": "headers",
+      "required": false,
+      "type": "string",
+    },
+    "height": Object {
+      "propName": "height",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+        ],
+      },
+    },
+    "hidden": Object {
+      "propName": "hidden",
+      "required": false,
+      "type": "boolean",
+    },
+    "high": Object {
+      "propName": "high",
+      "required": false,
+      "type": "number",
+    },
+    "href": Object {
+      "propName": "href",
+      "required": false,
+      "type": "string",
+    },
+    "hrefLang": Object {
+      "propName": "hrefLang",
+      "required": false,
+      "type": "string",
+    },
+    "htmlFor": Object {
+      "propName": "htmlFor",
+      "required": false,
+      "type": "string",
+    },
+    "httpEquiv": Object {
+      "propName": "httpEquiv",
+      "required": false,
+      "type": "string",
+    },
+    "id": Object {
+      "propName": "id",
+      "required": false,
+      "type": "string",
+    },
+    "inlist": Object {
+      "propName": "inlist",
+      "required": false,
+      "type": "any",
+    },
+    "inputMode": Object {
+      "propName": "inputMode",
+      "required": false,
+      "type": "string",
+    },
+    "integrity": Object {
+      "propName": "integrity",
+      "required": false,
+      "type": "string",
+    },
+    "is": Object {
+      "propName": "is",
+      "required": false,
+      "type": "string",
+    },
+    "itemID": Object {
+      "propName": "itemID",
+      "required": false,
+      "type": "string",
+    },
+    "itemProp": Object {
+      "propName": "itemProp",
+      "required": false,
+      "type": "string",
+    },
+    "itemRef": Object {
+      "propName": "itemRef",
+      "required": false,
+      "type": "string",
+    },
+    "itemScope": Object {
+      "propName": "itemScope",
+      "required": false,
+      "type": "boolean",
+    },
+    "itemType": Object {
+      "propName": "itemType",
+      "required": false,
+      "type": "string",
+    },
+    "keyParams": Object {
+      "propName": "keyParams",
+      "required": false,
+      "type": "string",
+    },
+    "keyType": Object {
+      "propName": "keyType",
+      "required": false,
+      "type": "string",
+    },
+    "kind": Object {
+      "propName": "kind",
+      "required": false,
+      "type": "string",
+    },
+    "label": Object {
+      "propName": "label",
+      "required": false,
+      "type": "string",
+    },
+    "lang": Object {
+      "propName": "lang",
+      "required": false,
+      "type": "string",
+    },
+    "list": Object {
+      "propName": "list",
+      "required": false,
+      "type": "string",
+    },
+    "loop": Object {
+      "propName": "loop",
+      "required": false,
+      "type": "boolean",
+    },
+    "low": Object {
+      "propName": "low",
+      "required": false,
+      "type": "number",
+    },
+    "manifest": Object {
+      "propName": "manifest",
+      "required": false,
+      "type": "string",
+    },
+    "marginBottom": Object {
+      "propName": "marginBottom",
+      "required": false,
+      "type": Object {
+        "alias": "ResponsiveProp",
+        "params": Array [
+          Object {
+            "type": "union",
+            "types": Array [
+              "\\"none\\"",
+              "\\"xxsmall\\"",
+              "\\"xsmall\\"",
+              "\\"small\\"",
+              "\\"medium\\"",
+              "\\"large\\"",
+              "\\"xlarge\\"",
+              "\\"xxlarge\\"",
+            ],
+          },
+        ],
+        "type": "alias",
+      },
+    },
+    "marginHeight": Object {
+      "propName": "marginHeight",
+      "required": false,
+      "type": "number",
+    },
+    "marginLeft": Object {
+      "propName": "marginLeft",
+      "required": false,
+      "type": Object {
+        "alias": "ResponsiveProp",
+        "params": Array [
+          Object {
+            "type": "union",
+            "types": Array [
+              "\\"none\\"",
+              "\\"xxsmall\\"",
+              "\\"xsmall\\"",
+              "\\"small\\"",
+              "\\"medium\\"",
+              "\\"large\\"",
+              "\\"xlarge\\"",
+              "\\"xxlarge\\"",
+              "\\"gutter\\"",
+            ],
+          },
+        ],
+        "type": "alias",
+      },
+    },
+    "marginRight": Object {
+      "propName": "marginRight",
+      "required": false,
+      "type": Object {
+        "alias": "ResponsiveProp",
+        "params": Array [
+          Object {
+            "type": "union",
+            "types": Array [
+              "\\"none\\"",
+              "\\"xxsmall\\"",
+              "\\"xsmall\\"",
+              "\\"small\\"",
+              "\\"medium\\"",
+              "\\"large\\"",
+              "\\"xlarge\\"",
+              "\\"xxlarge\\"",
+              "\\"gutter\\"",
+            ],
+          },
+        ],
+        "type": "alias",
+      },
+    },
+    "marginTop": Object {
+      "propName": "marginTop",
+      "required": false,
+      "type": Object {
+        "alias": "ResponsiveProp",
+        "params": Array [
+          Object {
+            "type": "union",
+            "types": Array [
+              "\\"none\\"",
+              "\\"xxsmall\\"",
+              "\\"xsmall\\"",
+              "\\"small\\"",
+              "\\"medium\\"",
+              "\\"large\\"",
+              "\\"xlarge\\"",
+              "\\"xxlarge\\"",
+            ],
+          },
+        ],
+        "type": "alias",
+      },
+    },
+    "marginWidth": Object {
+      "propName": "marginWidth",
+      "required": false,
+      "type": "number",
+    },
+    "max": Object {
+      "propName": "max",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+        ],
+      },
+    },
+    "maxLength": Object {
+      "propName": "maxLength",
+      "required": false,
+      "type": "number",
+    },
+    "media": Object {
+      "propName": "media",
+      "required": false,
+      "type": "string",
+    },
+    "mediaGroup": Object {
+      "propName": "mediaGroup",
+      "required": false,
+      "type": "string",
+    },
+    "method": Object {
+      "propName": "method",
+      "required": false,
+      "type": "string",
+    },
+    "min": Object {
+      "propName": "min",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+        ],
+      },
+    },
+    "minLength": Object {
+      "propName": "minLength",
+      "required": false,
+      "type": "number",
+    },
+    "multiple": Object {
+      "propName": "multiple",
+      "required": false,
+      "type": "boolean",
+    },
+    "muted": Object {
+      "propName": "muted",
+      "required": false,
+      "type": "boolean",
+    },
+    "name": Object {
+      "propName": "name",
+      "required": false,
+      "type": "string",
+    },
+    "noValidate": Object {
+      "propName": "noValidate",
+      "required": false,
+      "type": "boolean",
+    },
+    "nonce": Object {
+      "propName": "nonce",
+      "required": false,
+      "type": "string",
+    },
+    "onAbort": Object {
+      "propName": "onAbort",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLElement, Event>) => void",
+    },
+    "onAbortCapture": Object {
+      "propName": "onAbortCapture",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLElement, Event>) => void",
+    },
+    "onAnimationEnd": Object {
+      "propName": "onAnimationEnd",
+      "required": false,
+      "type": "(event: AnimationEvent<HTMLElement>) => void",
+    },
+    "onAnimationEndCapture": Object {
+      "propName": "onAnimationEndCapture",
+      "required": false,
+      "type": "(event: AnimationEvent<HTMLElement>) => void",
+    },
+    "onAnimationIteration": Object {
+      "propName": "onAnimationIteration",
+      "required": false,
+      "type": "(event: AnimationEvent<HTMLElement>) => void",
+    },
+    "onAnimationIterationCapture": Object {
+      "propName": "onAnimationIterationCapture",
+      "required": false,
+      "type": "(event: AnimationEvent<HTMLElement>) => void",
+    },
+    "onAnimationStart": Object {
+      "propName": "onAnimationStart",
+      "required": false,
+      "type": "(event: AnimationEvent<HTMLElement>) => void",
+    },
+    "onAnimationStartCapture": Object {
+      "propName": "onAnimationStartCapture",
+      "required": false,
+      "type": "(event: AnimationEvent<HTMLElement>) => void",
+    },
+    "onAuxClick": Object {
+      "propName": "onAuxClick",
+      "required": false,
+      "type": "(event: MouseEvent<HTMLElement, MouseEvent>) => void",
+    },
+    "onAuxClickCapture": Object {
+      "propName": "onAuxClickCapture",
+      "required": false,
+      "type": "(event: MouseEvent<HTMLElement, MouseEvent>) => void",
+    },
+    "onBeforeInput": Object {
+      "propName": "onBeforeInput",
+      "required": false,
+      "type": "(event: FormEvent<HTMLElement>) => void",
+    },
+    "onBeforeInputCapture": Object {
+      "propName": "onBeforeInputCapture",
+      "required": false,
+      "type": "(event: FormEvent<HTMLElement>) => void",
+    },
+    "onBlur": Object {
+      "propName": "onBlur",
+      "required": false,
+      "type": "(event: FocusEvent<HTMLElement>) => void",
+    },
+    "onBlurCapture": Object {
+      "propName": "onBlurCapture",
+      "required": false,
+      "type": "(event: FocusEvent<HTMLElement>) => void",
+    },
+    "onCanPlay": Object {
+      "propName": "onCanPlay",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLElement, Event>) => void",
+    },
+    "onCanPlayCapture": Object {
+      "propName": "onCanPlayCapture",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLElement, Event>) => void",
+    },
+    "onCanPlayThrough": Object {
+      "propName": "onCanPlayThrough",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLElement, Event>) => void",
+    },
+    "onCanPlayThroughCapture": Object {
+      "propName": "onCanPlayThroughCapture",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLElement, Event>) => void",
+    },
+    "onChange": Object {
+      "propName": "onChange",
+      "required": false,
+      "type": "(event: FormEvent<HTMLElement>) => void",
+    },
+    "onChangeCapture": Object {
+      "propName": "onChangeCapture",
+      "required": false,
+      "type": "(event: FormEvent<HTMLElement>) => void",
+    },
+    "onClick": Object {
+      "propName": "onClick",
+      "required": false,
+      "type": "(event: MouseEvent<HTMLElement, MouseEvent>) => void",
+    },
+    "onClickCapture": Object {
+      "propName": "onClickCapture",
+      "required": false,
+      "type": "(event: MouseEvent<HTMLElement, MouseEvent>) => void",
+    },
+    "onCompositionEnd": Object {
+      "propName": "onCompositionEnd",
+      "required": false,
+      "type": "(event: CompositionEvent<HTMLElement>) => void",
+    },
+    "onCompositionEndCapture": Object {
+      "propName": "onCompositionEndCapture",
+      "required": false,
+      "type": "(event: CompositionEvent<HTMLElement>) => void",
+    },
+    "onCompositionStart": Object {
+      "propName": "onCompositionStart",
+      "required": false,
+      "type": "(event: CompositionEvent<HTMLElement>) => void",
+    },
+    "onCompositionStartCapture": Object {
+      "propName": "onCompositionStartCapture",
+      "required": false,
+      "type": "(event: CompositionEvent<HTMLElement>) => void",
+    },
+    "onCompositionUpdate": Object {
+      "propName": "onCompositionUpdate",
+      "required": false,
+      "type": "(event: CompositionEvent<HTMLElement>) => void",
+    },
+    "onCompositionUpdateCapture": Object {
+      "propName": "onCompositionUpdateCapture",
+      "required": false,
+      "type": "(event: CompositionEvent<HTMLElement>) => void",
+    },
+    "onContextMenu": Object {
+      "propName": "onContextMenu",
+      "required": false,
+      "type": "(event: MouseEvent<HTMLElement, MouseEvent>) => void",
+    },
+    "onContextMenuCapture": Object {
+      "propName": "onContextMenuCapture",
+      "required": false,
+      "type": "(event: MouseEvent<HTMLElement, MouseEvent>) => void",
+    },
+    "onCopy": Object {
+      "propName": "onCopy",
+      "required": false,
+      "type": "(event: ClipboardEvent<HTMLElement>) => void",
+    },
+    "onCopyCapture": Object {
+      "propName": "onCopyCapture",
+      "required": false,
+      "type": "(event: ClipboardEvent<HTMLElement>) => void",
+    },
+    "onCut": Object {
+      "propName": "onCut",
+      "required": false,
+      "type": "(event: ClipboardEvent<HTMLElement>) => void",
+    },
+    "onCutCapture": Object {
+      "propName": "onCutCapture",
+      "required": false,
+      "type": "(event: ClipboardEvent<HTMLElement>) => void",
+    },
+    "onDoubleClick": Object {
+      "propName": "onDoubleClick",
+      "required": false,
+      "type": "(event: MouseEvent<HTMLElement, MouseEvent>) => void",
+    },
+    "onDoubleClickCapture": Object {
+      "propName": "onDoubleClickCapture",
+      "required": false,
+      "type": "(event: MouseEvent<HTMLElement, MouseEvent>) => void",
+    },
+    "onDrag": Object {
+      "propName": "onDrag",
+      "required": false,
+      "type": "(event: DragEvent<HTMLElement>) => void",
+    },
+    "onDragCapture": Object {
+      "propName": "onDragCapture",
+      "required": false,
+      "type": "(event: DragEvent<HTMLElement>) => void",
+    },
+    "onDragEnd": Object {
+      "propName": "onDragEnd",
+      "required": false,
+      "type": "(event: DragEvent<HTMLElement>) => void",
+    },
+    "onDragEndCapture": Object {
+      "propName": "onDragEndCapture",
+      "required": false,
+      "type": "(event: DragEvent<HTMLElement>) => void",
+    },
+    "onDragEnter": Object {
+      "propName": "onDragEnter",
+      "required": false,
+      "type": "(event: DragEvent<HTMLElement>) => void",
+    },
+    "onDragEnterCapture": Object {
+      "propName": "onDragEnterCapture",
+      "required": false,
+      "type": "(event: DragEvent<HTMLElement>) => void",
+    },
+    "onDragExit": Object {
+      "propName": "onDragExit",
+      "required": false,
+      "type": "(event: DragEvent<HTMLElement>) => void",
+    },
+    "onDragExitCapture": Object {
+      "propName": "onDragExitCapture",
+      "required": false,
+      "type": "(event: DragEvent<HTMLElement>) => void",
+    },
+    "onDragLeave": Object {
+      "propName": "onDragLeave",
+      "required": false,
+      "type": "(event: DragEvent<HTMLElement>) => void",
+    },
+    "onDragLeaveCapture": Object {
+      "propName": "onDragLeaveCapture",
+      "required": false,
+      "type": "(event: DragEvent<HTMLElement>) => void",
+    },
+    "onDragOver": Object {
+      "propName": "onDragOver",
+      "required": false,
+      "type": "(event: DragEvent<HTMLElement>) => void",
+    },
+    "onDragOverCapture": Object {
+      "propName": "onDragOverCapture",
+      "required": false,
+      "type": "(event: DragEvent<HTMLElement>) => void",
+    },
+    "onDragStart": Object {
+      "propName": "onDragStart",
+      "required": false,
+      "type": "(event: DragEvent<HTMLElement>) => void",
+    },
+    "onDragStartCapture": Object {
+      "propName": "onDragStartCapture",
+      "required": false,
+      "type": "(event: DragEvent<HTMLElement>) => void",
+    },
+    "onDrop": Object {
+      "propName": "onDrop",
+      "required": false,
+      "type": "(event: DragEvent<HTMLElement>) => void",
+    },
+    "onDropCapture": Object {
+      "propName": "onDropCapture",
+      "required": false,
+      "type": "(event: DragEvent<HTMLElement>) => void",
+    },
+    "onDurationChange": Object {
+      "propName": "onDurationChange",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLElement, Event>) => void",
+    },
+    "onDurationChangeCapture": Object {
+      "propName": "onDurationChangeCapture",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLElement, Event>) => void",
+    },
+    "onEmptied": Object {
+      "propName": "onEmptied",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLElement, Event>) => void",
+    },
+    "onEmptiedCapture": Object {
+      "propName": "onEmptiedCapture",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLElement, Event>) => void",
+    },
+    "onEncrypted": Object {
+      "propName": "onEncrypted",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLElement, Event>) => void",
+    },
+    "onEncryptedCapture": Object {
+      "propName": "onEncryptedCapture",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLElement, Event>) => void",
+    },
+    "onEnded": Object {
+      "propName": "onEnded",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLElement, Event>) => void",
+    },
+    "onEndedCapture": Object {
+      "propName": "onEndedCapture",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLElement, Event>) => void",
+    },
+    "onError": Object {
+      "propName": "onError",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLElement, Event>) => void",
+    },
+    "onErrorCapture": Object {
+      "propName": "onErrorCapture",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLElement, Event>) => void",
+    },
+    "onFocus": Object {
+      "propName": "onFocus",
+      "required": false,
+      "type": "(event: FocusEvent<HTMLElement>) => void",
+    },
+    "onFocusCapture": Object {
+      "propName": "onFocusCapture",
+      "required": false,
+      "type": "(event: FocusEvent<HTMLElement>) => void",
+    },
+    "onGotPointerCapture": Object {
+      "propName": "onGotPointerCapture",
+      "required": false,
+      "type": "(event: PointerEvent<HTMLElement>) => void",
+    },
+    "onGotPointerCaptureCapture": Object {
+      "propName": "onGotPointerCaptureCapture",
+      "required": false,
+      "type": "(event: PointerEvent<HTMLElement>) => void",
+    },
+    "onInput": Object {
+      "propName": "onInput",
+      "required": false,
+      "type": "(event: FormEvent<HTMLElement>) => void",
+    },
+    "onInputCapture": Object {
+      "propName": "onInputCapture",
+      "required": false,
+      "type": "(event: FormEvent<HTMLElement>) => void",
+    },
+    "onInvalid": Object {
+      "propName": "onInvalid",
+      "required": false,
+      "type": "(event: FormEvent<HTMLElement>) => void",
+    },
+    "onInvalidCapture": Object {
+      "propName": "onInvalidCapture",
+      "required": false,
+      "type": "(event: FormEvent<HTMLElement>) => void",
+    },
+    "onKeyDown": Object {
+      "propName": "onKeyDown",
+      "required": false,
+      "type": "(event: KeyboardEvent<HTMLElement>) => void",
+    },
+    "onKeyDownCapture": Object {
+      "propName": "onKeyDownCapture",
+      "required": false,
+      "type": "(event: KeyboardEvent<HTMLElement>) => void",
+    },
+    "onKeyPress": Object {
+      "propName": "onKeyPress",
+      "required": false,
+      "type": "(event: KeyboardEvent<HTMLElement>) => void",
+    },
+    "onKeyPressCapture": Object {
+      "propName": "onKeyPressCapture",
+      "required": false,
+      "type": "(event: KeyboardEvent<HTMLElement>) => void",
+    },
+    "onKeyUp": Object {
+      "propName": "onKeyUp",
+      "required": false,
+      "type": "(event: KeyboardEvent<HTMLElement>) => void",
+    },
+    "onKeyUpCapture": Object {
+      "propName": "onKeyUpCapture",
+      "required": false,
+      "type": "(event: KeyboardEvent<HTMLElement>) => void",
+    },
+    "onLoad": Object {
+      "propName": "onLoad",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLElement, Event>) => void",
+    },
+    "onLoadCapture": Object {
+      "propName": "onLoadCapture",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLElement, Event>) => void",
+    },
+    "onLoadStart": Object {
+      "propName": "onLoadStart",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLElement, Event>) => void",
+    },
+    "onLoadStartCapture": Object {
+      "propName": "onLoadStartCapture",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLElement, Event>) => void",
+    },
+    "onLoadedData": Object {
+      "propName": "onLoadedData",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLElement, Event>) => void",
+    },
+    "onLoadedDataCapture": Object {
+      "propName": "onLoadedDataCapture",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLElement, Event>) => void",
+    },
+    "onLoadedMetadata": Object {
+      "propName": "onLoadedMetadata",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLElement, Event>) => void",
+    },
+    "onLoadedMetadataCapture": Object {
+      "propName": "onLoadedMetadataCapture",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLElement, Event>) => void",
+    },
+    "onLostPointerCapture": Object {
+      "propName": "onLostPointerCapture",
+      "required": false,
+      "type": "(event: PointerEvent<HTMLElement>) => void",
+    },
+    "onLostPointerCaptureCapture": Object {
+      "propName": "onLostPointerCaptureCapture",
+      "required": false,
+      "type": "(event: PointerEvent<HTMLElement>) => void",
+    },
+    "onMouseDown": Object {
+      "propName": "onMouseDown",
+      "required": false,
+      "type": "(event: MouseEvent<HTMLElement, MouseEvent>) => void",
+    },
+    "onMouseDownCapture": Object {
+      "propName": "onMouseDownCapture",
+      "required": false,
+      "type": "(event: MouseEvent<HTMLElement, MouseEvent>) => void",
+    },
+    "onMouseEnter": Object {
+      "propName": "onMouseEnter",
+      "required": false,
+      "type": "(event: MouseEvent<HTMLElement, MouseEvent>) => void",
+    },
+    "onMouseLeave": Object {
+      "propName": "onMouseLeave",
+      "required": false,
+      "type": "(event: MouseEvent<HTMLElement, MouseEvent>) => void",
+    },
+    "onMouseMove": Object {
+      "propName": "onMouseMove",
+      "required": false,
+      "type": "(event: MouseEvent<HTMLElement, MouseEvent>) => void",
+    },
+    "onMouseMoveCapture": Object {
+      "propName": "onMouseMoveCapture",
+      "required": false,
+      "type": "(event: MouseEvent<HTMLElement, MouseEvent>) => void",
+    },
+    "onMouseOut": Object {
+      "propName": "onMouseOut",
+      "required": false,
+      "type": "(event: MouseEvent<HTMLElement, MouseEvent>) => void",
+    },
+    "onMouseOutCapture": Object {
+      "propName": "onMouseOutCapture",
+      "required": false,
+      "type": "(event: MouseEvent<HTMLElement, MouseEvent>) => void",
+    },
+    "onMouseOver": Object {
+      "propName": "onMouseOver",
+      "required": false,
+      "type": "(event: MouseEvent<HTMLElement, MouseEvent>) => void",
+    },
+    "onMouseOverCapture": Object {
+      "propName": "onMouseOverCapture",
+      "required": false,
+      "type": "(event: MouseEvent<HTMLElement, MouseEvent>) => void",
+    },
+    "onMouseUp": Object {
+      "propName": "onMouseUp",
+      "required": false,
+      "type": "(event: MouseEvent<HTMLElement, MouseEvent>) => void",
+    },
+    "onMouseUpCapture": Object {
+      "propName": "onMouseUpCapture",
+      "required": false,
+      "type": "(event: MouseEvent<HTMLElement, MouseEvent>) => void",
+    },
+    "onPaste": Object {
+      "propName": "onPaste",
+      "required": false,
+      "type": "(event: ClipboardEvent<HTMLElement>) => void",
+    },
+    "onPasteCapture": Object {
+      "propName": "onPasteCapture",
+      "required": false,
+      "type": "(event: ClipboardEvent<HTMLElement>) => void",
+    },
+    "onPause": Object {
+      "propName": "onPause",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLElement, Event>) => void",
+    },
+    "onPauseCapture": Object {
+      "propName": "onPauseCapture",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLElement, Event>) => void",
+    },
+    "onPlay": Object {
+      "propName": "onPlay",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLElement, Event>) => void",
+    },
+    "onPlayCapture": Object {
+      "propName": "onPlayCapture",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLElement, Event>) => void",
+    },
+    "onPlaying": Object {
+      "propName": "onPlaying",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLElement, Event>) => void",
+    },
+    "onPlayingCapture": Object {
+      "propName": "onPlayingCapture",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLElement, Event>) => void",
+    },
+    "onPointerCancel": Object {
+      "propName": "onPointerCancel",
+      "required": false,
+      "type": "(event: PointerEvent<HTMLElement>) => void",
+    },
+    "onPointerCancelCapture": Object {
+      "propName": "onPointerCancelCapture",
+      "required": false,
+      "type": "(event: PointerEvent<HTMLElement>) => void",
+    },
+    "onPointerDown": Object {
+      "propName": "onPointerDown",
+      "required": false,
+      "type": "(event: PointerEvent<HTMLElement>) => void",
+    },
+    "onPointerDownCapture": Object {
+      "propName": "onPointerDownCapture",
+      "required": false,
+      "type": "(event: PointerEvent<HTMLElement>) => void",
+    },
+    "onPointerEnter": Object {
+      "propName": "onPointerEnter",
+      "required": false,
+      "type": "(event: PointerEvent<HTMLElement>) => void",
+    },
+    "onPointerEnterCapture": Object {
+      "propName": "onPointerEnterCapture",
+      "required": false,
+      "type": "(event: PointerEvent<HTMLElement>) => void",
+    },
+    "onPointerLeave": Object {
+      "propName": "onPointerLeave",
+      "required": false,
+      "type": "(event: PointerEvent<HTMLElement>) => void",
+    },
+    "onPointerLeaveCapture": Object {
+      "propName": "onPointerLeaveCapture",
+      "required": false,
+      "type": "(event: PointerEvent<HTMLElement>) => void",
+    },
+    "onPointerMove": Object {
+      "propName": "onPointerMove",
+      "required": false,
+      "type": "(event: PointerEvent<HTMLElement>) => void",
+    },
+    "onPointerMoveCapture": Object {
+      "propName": "onPointerMoveCapture",
+      "required": false,
+      "type": "(event: PointerEvent<HTMLElement>) => void",
+    },
+    "onPointerOut": Object {
+      "propName": "onPointerOut",
+      "required": false,
+      "type": "(event: PointerEvent<HTMLElement>) => void",
+    },
+    "onPointerOutCapture": Object {
+      "propName": "onPointerOutCapture",
+      "required": false,
+      "type": "(event: PointerEvent<HTMLElement>) => void",
+    },
+    "onPointerOver": Object {
+      "propName": "onPointerOver",
+      "required": false,
+      "type": "(event: PointerEvent<HTMLElement>) => void",
+    },
+    "onPointerOverCapture": Object {
+      "propName": "onPointerOverCapture",
+      "required": false,
+      "type": "(event: PointerEvent<HTMLElement>) => void",
+    },
+    "onPointerUp": Object {
+      "propName": "onPointerUp",
+      "required": false,
+      "type": "(event: PointerEvent<HTMLElement>) => void",
+    },
+    "onPointerUpCapture": Object {
+      "propName": "onPointerUpCapture",
+      "required": false,
+      "type": "(event: PointerEvent<HTMLElement>) => void",
+    },
+    "onProgress": Object {
+      "propName": "onProgress",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLElement, Event>) => void",
+    },
+    "onProgressCapture": Object {
+      "propName": "onProgressCapture",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLElement, Event>) => void",
+    },
+    "onRateChange": Object {
+      "propName": "onRateChange",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLElement, Event>) => void",
+    },
+    "onRateChangeCapture": Object {
+      "propName": "onRateChangeCapture",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLElement, Event>) => void",
+    },
+    "onReset": Object {
+      "propName": "onReset",
+      "required": false,
+      "type": "(event: FormEvent<HTMLElement>) => void",
+    },
+    "onResetCapture": Object {
+      "propName": "onResetCapture",
+      "required": false,
+      "type": "(event: FormEvent<HTMLElement>) => void",
+    },
+    "onScroll": Object {
+      "propName": "onScroll",
+      "required": false,
+      "type": "(event: UIEvent<HTMLElement>) => void",
+    },
+    "onScrollCapture": Object {
+      "propName": "onScrollCapture",
+      "required": false,
+      "type": "(event: UIEvent<HTMLElement>) => void",
+    },
+    "onSeeked": Object {
+      "propName": "onSeeked",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLElement, Event>) => void",
+    },
+    "onSeekedCapture": Object {
+      "propName": "onSeekedCapture",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLElement, Event>) => void",
+    },
+    "onSeeking": Object {
+      "propName": "onSeeking",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLElement, Event>) => void",
+    },
+    "onSeekingCapture": Object {
+      "propName": "onSeekingCapture",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLElement, Event>) => void",
+    },
+    "onSelect": Object {
+      "propName": "onSelect",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLElement, Event>) => void",
+    },
+    "onSelectCapture": Object {
+      "propName": "onSelectCapture",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLElement, Event>) => void",
+    },
+    "onStalled": Object {
+      "propName": "onStalled",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLElement, Event>) => void",
+    },
+    "onStalledCapture": Object {
+      "propName": "onStalledCapture",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLElement, Event>) => void",
+    },
+    "onSubmit": Object {
+      "propName": "onSubmit",
+      "required": false,
+      "type": "(event: FormEvent<HTMLElement>) => void",
+    },
+    "onSubmitCapture": Object {
+      "propName": "onSubmitCapture",
+      "required": false,
+      "type": "(event: FormEvent<HTMLElement>) => void",
+    },
+    "onSuspend": Object {
+      "propName": "onSuspend",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLElement, Event>) => void",
+    },
+    "onSuspendCapture": Object {
+      "propName": "onSuspendCapture",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLElement, Event>) => void",
+    },
+    "onTimeUpdate": Object {
+      "propName": "onTimeUpdate",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLElement, Event>) => void",
+    },
+    "onTimeUpdateCapture": Object {
+      "propName": "onTimeUpdateCapture",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLElement, Event>) => void",
+    },
+    "onTouchCancel": Object {
+      "propName": "onTouchCancel",
+      "required": false,
+      "type": "(event: TouchEvent<HTMLElement>) => void",
+    },
+    "onTouchCancelCapture": Object {
+      "propName": "onTouchCancelCapture",
+      "required": false,
+      "type": "(event: TouchEvent<HTMLElement>) => void",
+    },
+    "onTouchEnd": Object {
+      "propName": "onTouchEnd",
+      "required": false,
+      "type": "(event: TouchEvent<HTMLElement>) => void",
+    },
+    "onTouchEndCapture": Object {
+      "propName": "onTouchEndCapture",
+      "required": false,
+      "type": "(event: TouchEvent<HTMLElement>) => void",
+    },
+    "onTouchMove": Object {
+      "propName": "onTouchMove",
+      "required": false,
+      "type": "(event: TouchEvent<HTMLElement>) => void",
+    },
+    "onTouchMoveCapture": Object {
+      "propName": "onTouchMoveCapture",
+      "required": false,
+      "type": "(event: TouchEvent<HTMLElement>) => void",
+    },
+    "onTouchStart": Object {
+      "propName": "onTouchStart",
+      "required": false,
+      "type": "(event: TouchEvent<HTMLElement>) => void",
+    },
+    "onTouchStartCapture": Object {
+      "propName": "onTouchStartCapture",
+      "required": false,
+      "type": "(event: TouchEvent<HTMLElement>) => void",
+    },
+    "onTransitionEnd": Object {
+      "propName": "onTransitionEnd",
+      "required": false,
+      "type": "(event: TransitionEvent<HTMLElement>) => void",
+    },
+    "onTransitionEndCapture": Object {
+      "propName": "onTransitionEndCapture",
+      "required": false,
+      "type": "(event: TransitionEvent<HTMLElement>) => void",
+    },
+    "onVolumeChange": Object {
+      "propName": "onVolumeChange",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLElement, Event>) => void",
+    },
+    "onVolumeChangeCapture": Object {
+      "propName": "onVolumeChangeCapture",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLElement, Event>) => void",
+    },
+    "onWaiting": Object {
+      "propName": "onWaiting",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLElement, Event>) => void",
+    },
+    "onWaitingCapture": Object {
+      "propName": "onWaitingCapture",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLElement, Event>) => void",
+    },
+    "onWheel": Object {
+      "propName": "onWheel",
+      "required": false,
+      "type": "(event: WheelEvent<HTMLElement>) => void",
+    },
+    "onWheelCapture": Object {
+      "propName": "onWheelCapture",
+      "required": false,
+      "type": "(event: WheelEvent<HTMLElement>) => void",
+    },
+    "open": Object {
+      "propName": "open",
+      "required": false,
+      "type": "boolean",
+    },
+    "optimum": Object {
+      "propName": "optimum",
+      "required": false,
+      "type": "number",
+    },
+    "paddingBottom": Object {
+      "propName": "paddingBottom",
+      "required": false,
+      "type": Object {
+        "alias": "ResponsiveProp",
+        "params": Array [
+          Object {
+            "type": "union",
+            "types": Array [
+              "\\"none\\"",
+              "\\"xxsmall\\"",
+              "\\"xsmall\\"",
+              "\\"small\\"",
+              "\\"medium\\"",
+              "\\"large\\"",
+              "\\"xlarge\\"",
+              "\\"xxlarge\\"",
+            ],
+          },
+        ],
+        "type": "alias",
+      },
+    },
+    "paddingLeft": Object {
+      "propName": "paddingLeft",
+      "required": false,
+      "type": Object {
+        "alias": "ResponsiveProp",
+        "params": Array [
+          Object {
+            "type": "union",
+            "types": Array [
+              "\\"none\\"",
+              "\\"xxsmall\\"",
+              "\\"xsmall\\"",
+              "\\"small\\"",
+              "\\"medium\\"",
+              "\\"large\\"",
+              "\\"xlarge\\"",
+              "\\"xxlarge\\"",
+              "\\"gutter\\"",
+            ],
+          },
+        ],
+        "type": "alias",
+      },
+    },
+    "paddingRight": Object {
+      "propName": "paddingRight",
+      "required": false,
+      "type": Object {
+        "alias": "ResponsiveProp",
+        "params": Array [
+          Object {
+            "type": "union",
+            "types": Array [
+              "\\"none\\"",
+              "\\"xxsmall\\"",
+              "\\"xsmall\\"",
+              "\\"small\\"",
+              "\\"medium\\"",
+              "\\"large\\"",
+              "\\"xlarge\\"",
+              "\\"xxlarge\\"",
+              "\\"gutter\\"",
+            ],
+          },
+        ],
+        "type": "alias",
+      },
+    },
+    "paddingTop": Object {
+      "propName": "paddingTop",
+      "required": false,
+      "type": Object {
+        "alias": "ResponsiveProp",
+        "params": Array [
+          Object {
+            "type": "union",
+            "types": Array [
+              "\\"none\\"",
+              "\\"xxsmall\\"",
+              "\\"xsmall\\"",
+              "\\"small\\"",
+              "\\"medium\\"",
+              "\\"large\\"",
+              "\\"xlarge\\"",
+              "\\"xxlarge\\"",
+            ],
+          },
+        ],
+        "type": "alias",
+      },
+    },
+    "pattern": Object {
+      "propName": "pattern",
+      "required": false,
+      "type": "string",
+    },
+    "placeholder": Object {
+      "propName": "placeholder",
+      "required": false,
+      "type": "string",
+    },
+    "playsInline": Object {
+      "propName": "playsInline",
+      "required": false,
+      "type": "boolean",
+    },
+    "poster": Object {
+      "propName": "poster",
+      "required": false,
+      "type": "string",
+    },
+    "prefix": Object {
+      "propName": "prefix",
+      "required": false,
+      "type": "string",
+    },
+    "preload": Object {
+      "propName": "preload",
+      "required": false,
+      "type": "string",
+    },
+    "property": Object {
+      "propName": "property",
+      "required": false,
+      "type": "string",
+    },
+    "radioGroup": Object {
+      "propName": "radioGroup",
+      "required": false,
+      "type": "string",
+    },
+    "readOnly": Object {
+      "propName": "readOnly",
+      "required": false,
+      "type": "boolean",
+    },
+    "rel": Object {
+      "propName": "rel",
+      "required": false,
+      "type": "string",
+    },
+    "required": Object {
+      "propName": "required",
+      "required": false,
+      "type": "boolean",
+    },
+    "resource": Object {
+      "propName": "resource",
+      "required": false,
+      "type": "string",
+    },
+    "results": Object {
+      "propName": "results",
+      "required": false,
+      "type": "number",
+    },
+    "reversed": Object {
+      "propName": "reversed",
+      "required": false,
+      "type": "boolean",
+    },
+    "role": Object {
+      "propName": "role",
+      "required": false,
+      "type": "string",
+    },
+    "rowSpan": Object {
+      "propName": "rowSpan",
+      "required": false,
+      "type": "number",
+    },
+    "rows": Object {
+      "propName": "rows",
+      "required": false,
+      "type": "number",
+    },
+    "sandbox": Object {
+      "propName": "sandbox",
+      "required": false,
+      "type": "string",
+    },
+    "scope": Object {
+      "propName": "scope",
+      "required": false,
+      "type": "string",
+    },
+    "scoped": Object {
+      "propName": "scoped",
+      "required": false,
+      "type": "boolean",
+    },
+    "scrolling": Object {
+      "propName": "scrolling",
+      "required": false,
+      "type": "string",
+    },
+    "seamless": Object {
+      "propName": "seamless",
+      "required": false,
+      "type": "boolean",
+    },
+    "security": Object {
+      "propName": "security",
+      "required": false,
+      "type": "string",
+    },
+    "selected": Object {
+      "propName": "selected",
+      "required": false,
+      "type": "boolean",
+    },
+    "shape": Object {
+      "propName": "shape",
+      "required": false,
+      "type": "string",
+    },
+    "size": Object {
+      "propName": "size",
+      "required": false,
+      "type": "number",
+    },
+    "sizes": Object {
+      "propName": "sizes",
+      "required": false,
+      "type": "string",
+    },
+    "slot": Object {
+      "propName": "slot",
+      "required": false,
+      "type": "string",
+    },
+    "span": Object {
+      "propName": "span",
+      "required": false,
+      "type": "number",
+    },
+    "spellCheck": Object {
+      "propName": "spellCheck",
+      "required": false,
+      "type": "boolean",
+    },
+    "src": Object {
+      "propName": "src",
+      "required": false,
+      "type": "string",
+    },
+    "srcDoc": Object {
+      "propName": "srcDoc",
+      "required": false,
+      "type": "string",
+    },
+    "srcLang": Object {
+      "propName": "srcLang",
+      "required": false,
+      "type": "string",
+    },
+    "srcSet": Object {
+      "propName": "srcSet",
+      "required": false,
+      "type": "string",
+    },
+    "start": Object {
+      "propName": "start",
+      "required": false,
+      "type": "number",
+    },
+    "step": Object {
+      "propName": "step",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+        ],
+      },
+    },
+    "style": Object {
+      "propName": "style",
+      "required": false,
+      "type": "CSSProperties",
+    },
+    "summary": Object {
+      "propName": "summary",
+      "required": false,
+      "type": "string",
+    },
+    "suppressContentEditableWarning": Object {
+      "propName": "suppressContentEditableWarning",
+      "required": false,
+      "type": "boolean",
+    },
+    "suppressHydrationWarning": Object {
+      "propName": "suppressHydrationWarning",
+      "required": false,
+      "type": "boolean",
+    },
+    "tabIndex": Object {
+      "propName": "tabIndex",
+      "required": false,
+      "type": "number",
+    },
+    "target": Object {
+      "propName": "target",
+      "required": false,
+      "type": "string",
+    },
+    "title": Object {
+      "propName": "title",
+      "required": false,
+      "type": "string",
+    },
+    "transform": Object {
+      "propName": "transform",
+      "required": false,
+      "type": "\\"touchable\\"",
+    },
+    "transition": Object {
+      "propName": "transition",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "\\"touchable\\"",
+          "\\"fast\\"",
+        ],
+      },
+    },
+    "type": Object {
+      "propName": "type",
+      "required": false,
+      "type": "string",
+    },
+    "typeof": Object {
+      "propName": "typeof",
+      "required": false,
+      "type": "string",
+    },
+    "unselectable": Object {
+      "propName": "unselectable",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "\\"on\\"",
+          "\\"off\\"",
+        ],
+      },
+    },
+    "useMap": Object {
+      "propName": "useMap",
+      "required": false,
+      "type": "string",
+    },
+    "value": Object {
+      "propName": "value",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+          "string[]",
+        ],
+      },
+    },
+    "vocab": Object {
+      "propName": "vocab",
+      "required": false,
+      "type": "string",
+    },
+    "width": Object {
+      "propName": "width",
+      "required": false,
+      "type": "\\"full\\"",
+    },
+    "wmode": Object {
+      "propName": "wmode",
+      "required": false,
+      "type": "string",
+    },
+    "wrap": Object {
+      "propName": "wrap",
+      "required": false,
+      "type": "string",
+    },
+  },
+}
+`;
+
+exports[`public API Bullet 1`] = `
+Object {
+  "props": Object {
+    "children": Object {
+      "propName": "children",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+          "false",
+          "true",
+          "{}",
+          "ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>",
+          "ReactNodeArray",
+          "ReactPortal",
+        ],
+      },
+    },
+  },
+}
+`;
+
+exports[`public API BulletList 1`] = `
+Object {
+  "props": Object {
+    "children": Object {
+      "propName": "children",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+          "false",
+          "true",
+          "{}",
+          "ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>",
+          "ReactNodeArray",
+          "ReactPortal",
+        ],
+      },
+    },
+  },
+}
+`;
+
+exports[`public API Button 1`] = `
+Object {
+  "props": Object {
+    "children": Object {
+      "propName": "children",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+          "false",
+          "true",
+          "{}",
+          "ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>",
+          "ReactNodeArray",
+          "ReactPortal",
+        ],
+      },
+    },
+    "onClick": Object {
+      "propName": "onClick",
+      "required": false,
+      "type": "(event: MouseEvent<HTMLButtonElement, MouseEvent>) => void",
+    },
+    "type": Object {
+      "propName": "type",
+      "required": false,
+      "type": "string",
+    },
+    "weight": Object {
+      "propName": "weight",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "\\"strong\\"",
+          "\\"regular\\"",
+          "\\"weak\\"",
+        ],
+      },
+    },
+  },
+}
+`;
+
+exports[`public API Card 1`] = `
+Object {
+  "props": Object {
+    "children": Object {
+      "propName": "children",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+          "false",
+          "true",
+          "{}",
+          "ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>",
+          "ReactNodeArray",
+          "ReactPortal",
+        ],
+      },
+    },
+  },
+}
+`;
+
+exports[`public API Checkbox 1`] = `
+Object {
+  "props": Object {
+    "checked": Object {
+      "propName": "checked",
+      "required": true,
+      "type": "boolean",
+    },
+    "children": Object {
+      "propName": "children",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+          "false",
+          "true",
+          "{}",
+          "ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>",
+          "ReactNodeArray",
+          "ReactPortal",
+        ],
+      },
+    },
+    "disabled": Object {
+      "propName": "disabled",
+      "required": false,
+      "type": "boolean",
+    },
+    "id": Object {
+      "propName": "id",
+      "required": true,
+      "type": "string",
+    },
+    "label": Object {
+      "propName": "label",
+      "required": true,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+          "false",
+          "true",
+          "{}",
+          "ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>",
+          "ReactNodeArray",
+          "ReactPortal",
+        ],
+      },
+    },
+    "message": Object {
+      "propName": "message",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+          "false",
+          "true",
+          "{}",
+          "ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>",
+          "ReactNodeArray",
+          "ReactPortal",
+        ],
+      },
+    },
+    "name": Object {
+      "propName": "name",
+      "required": false,
+      "type": "string",
+    },
+    "onChange": Object {
+      "propName": "onChange",
+      "required": true,
+      "type": "(event: FormEvent<HTMLFormElement>) => void",
+    },
+    "tone": Object {
+      "propName": "tone",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "\\"critical\\"",
+          "\\"positive\\"",
+          "\\"neutral\\"",
+        ],
+      },
+    },
+  },
+}
+`;
+
+exports[`public API ChevronIcon 1`] = `
+Object {
+  "props": Object {
+    "direction": Object {
+      "propName": "direction",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "\\"left\\"",
+          "\\"right\\"",
+          "\\"up\\"",
+          "\\"down\\"",
+        ],
+      },
+    },
+    "fill": Object {
+      "propName": "fill",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "\\"info\\"",
+          "\\"critical\\"",
+          "\\"positive\\"",
+          "\\"brandAccent\\"",
+          "\\"formAccent\\"",
+          "\\"formAccentDisabled\\"",
+          "\\"black\\"",
+          "\\"white\\"",
+          "\\"link\\"",
+          "\\"neutral\\"",
+          "\\"secondary\\"",
+          "\\"criticalContrast\\"",
+          "\\"positiveContrast\\"",
+          "\\"infoContrast\\"",
+          "\\"brandAccentForeground\\"",
+        ],
+      },
+    },
+    "inline": Object {
+      "propName": "inline",
+      "required": false,
+      "type": "boolean",
+    },
+    "size": Object {
+      "propName": "size",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "\\"fill\\"",
+          "\\"small\\"",
+          "\\"large\\"",
+          "\\"standard\\"",
+        ],
+      },
+    },
+  },
+}
+`;
+
+exports[`public API Column 1`] = `
+Object {
+  "props": Object {
+    "children": Object {
+      "propName": "children",
+      "required": true,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+          "false",
+          "true",
+          "{}",
+          "ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>",
+          "ReactNodeArray",
+          "ReactPortal",
+        ],
+      },
+    },
+  },
+}
+`;
+
+exports[`public API Columns 1`] = `
+Object {
+  "props": Object {
+    "children": Object {
+      "propName": "children",
+      "required": true,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "ReactElement<ColumnProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>",
+          "ReactElement<ColumnProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>[]",
+        ],
+      },
+    },
+  },
+}
+`;
+
+exports[`public API Divider 1`] = `
+Object {
+  "props": Object {},
+}
+`;
+
+exports[`public API Dropdown 1`] = `
+Object {
+  "props": Object {
+    "children": Object {
+      "propName": "children",
+      "required": true,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "AllHTMLAttributes<HTMLOptGroupElement | HTMLOptionElement>",
+          "AllHTMLAttributes<HTMLOptGroupElement | HTMLOptionElement>[]",
+        ],
+      },
+    },
+    "description": Object {
+      "propName": "description",
+      "required": false,
+      "type": "string",
+    },
+    "disabled": Object {
+      "propName": "disabled",
+      "required": false,
+      "type": "boolean",
+    },
+    "id": Object {
+      "propName": "id",
+      "required": true,
+      "type": "string",
+    },
+    "label": Object {
+      "propName": "label",
+      "required": false,
+      "type": "string",
+    },
+    "message": Object {
+      "propName": "message",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+          "false",
+          "true",
+          "{}",
+          "ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>",
+          "ReactNodeArray",
+          "ReactPortal",
+        ],
+      },
+    },
+    "name": Object {
+      "propName": "name",
+      "required": false,
+      "type": "string",
+    },
+    "onBlur": Object {
+      "propName": "onBlur",
+      "required": false,
+      "type": "(event: FocusEvent<HTMLSelectElement>) => void",
+    },
+    "onChange": Object {
+      "propName": "onChange",
+      "required": true,
+      "type": "(event: FormEvent<HTMLSelectElement>) => void",
+    },
+    "onFocus": Object {
+      "propName": "onFocus",
+      "required": false,
+      "type": "(event: FocusEvent<HTMLSelectElement>) => void",
+    },
+    "placeholder": Object {
+      "propName": "placeholder",
+      "required": false,
+      "type": "string",
+    },
+    "secondaryLabel": Object {
+      "propName": "secondaryLabel",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+          "false",
+          "true",
+          "{}",
+          "ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>",
+          "ReactNodeArray",
+          "ReactPortal",
+        ],
+      },
+    },
+    "secondaryMessage": Object {
+      "propName": "secondaryMessage",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+          "false",
+          "true",
+          "{}",
+          "ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>",
+          "ReactNodeArray",
+          "ReactPortal",
+        ],
+      },
+    },
+    "tertiaryLabel": Object {
+      "propName": "tertiaryLabel",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+          "false",
+          "true",
+          "{}",
+          "ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>",
+          "ReactNodeArray",
+          "ReactPortal",
+        ],
+      },
+    },
+    "tone": Object {
+      "propName": "tone",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "\\"critical\\"",
+          "\\"positive\\"",
+          "\\"neutral\\"",
+        ],
+      },
+    },
+    "value": Object {
+      "propName": "value",
+      "required": true,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+          "string[]",
+        ],
+      },
+    },
+  },
+}
+`;
+
+exports[`public API ErrorIcon 1`] = `
+Object {
+  "props": Object {
+    "fill": Object {
+      "propName": "fill",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "\\"info\\"",
+          "\\"critical\\"",
+          "\\"positive\\"",
+          "\\"brandAccent\\"",
+          "\\"formAccent\\"",
+          "\\"formAccentDisabled\\"",
+          "\\"black\\"",
+          "\\"white\\"",
+          "\\"link\\"",
+          "\\"neutral\\"",
+          "\\"secondary\\"",
+          "\\"criticalContrast\\"",
+          "\\"positiveContrast\\"",
+          "\\"infoContrast\\"",
+          "\\"brandAccentForeground\\"",
+        ],
+      },
+    },
+    "inline": Object {
+      "propName": "inline",
+      "required": false,
+      "type": "boolean",
+    },
+    "size": Object {
+      "propName": "size",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "\\"fill\\"",
+          "\\"small\\"",
+          "\\"large\\"",
+          "\\"standard\\"",
+        ],
+      },
+    },
+  },
+}
+`;
+
+exports[`public API FieldLabel 1`] = `
+Object {
+  "props": Object {
+    "description": Object {
+      "propName": "description",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+          "false",
+          "true",
+          "{}",
+          "ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>",
+          "ReactNodeArray",
+          "ReactPortal",
+        ],
+      },
+    },
+    "id": Object {
+      "propName": "id",
+      "required": true,
+      "type": "string",
+    },
+    "label": Object {
+      "propName": "label",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+          "false",
+          "true",
+          "{}",
+          "ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>",
+          "ReactNodeArray",
+          "ReactPortal",
+        ],
+      },
+    },
+    "secondaryLabel": Object {
+      "propName": "secondaryLabel",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+          "false",
+          "true",
+          "{}",
+          "ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>",
+          "ReactNodeArray",
+          "ReactPortal",
+        ],
+      },
+    },
+    "tertiaryLabel": Object {
+      "propName": "tertiaryLabel",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+          "false",
+          "true",
+          "{}",
+          "ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>",
+          "ReactNodeArray",
+          "ReactPortal",
+        ],
+      },
+    },
+  },
+}
+`;
+
+exports[`public API FieldMessage 1`] = `
+Object {
+  "props": Object {
+    "baseline": Object {
+      "propName": "baseline",
+      "required": false,
+      "type": "boolean",
+    },
+    "children": Object {
+      "propName": "children",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+          "false",
+          "true",
+          "{}",
+          "ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>",
+          "ReactNodeArray",
+          "ReactPortal",
+        ],
+      },
+    },
+    "color": Object {
+      "propName": "color",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "\\"info\\"",
+          "\\"critical\\"",
+          "\\"positive\\"",
+          "\\"brandAccent\\"",
+          "\\"formAccent\\"",
+          "\\"formAccentDisabled\\"",
+          "\\"black\\"",
+          "\\"white\\"",
+          "\\"link\\"",
+          "\\"neutral\\"",
+          "\\"secondary\\"",
+          "\\"criticalContrast\\"",
+          "\\"positiveContrast\\"",
+          "\\"infoContrast\\"",
+          "\\"brandAccentForeground\\"",
+        ],
+      },
+    },
+    "component": Object {
+      "propName": "component",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "\\"symbol\\"",
+          "\\"object\\"",
+          "\\"strong\\"",
+          "\\"cite\\"",
+          "\\"data\\"",
+          "\\"form\\"",
+          "\\"label\\"",
+          "\\"pattern\\"",
+          "\\"span\\"",
+          "\\"summary\\"",
+          "\\"style\\"",
+          "\\"title\\"",
+          "\\"clipPath\\"",
+          "\\"filter\\"",
+          "\\"mask\\"",
+          "\\"marker\\"",
+          "\\"small\\"",
+          "\\"input\\"",
+          "\\"a\\"",
+          "\\"abbr\\"",
+          "\\"address\\"",
+          "\\"area\\"",
+          "\\"article\\"",
+          "\\"aside\\"",
+          "\\"audio\\"",
+          "\\"b\\"",
+          "\\"base\\"",
+          "\\"bdi\\"",
+          "\\"bdo\\"",
+          "\\"big\\"",
+          "\\"blockquote\\"",
+          "\\"body\\"",
+          "\\"br\\"",
+          "\\"button\\"",
+          "\\"canvas\\"",
+          "\\"caption\\"",
+          "\\"code\\"",
+          "\\"col\\"",
+          "\\"colgroup\\"",
+          "\\"datalist\\"",
+          "\\"dd\\"",
+          "\\"del\\"",
+          "\\"details\\"",
+          "\\"dfn\\"",
+          "\\"dialog\\"",
+          "\\"div\\"",
+          "\\"dl\\"",
+          "\\"dt\\"",
+          "\\"em\\"",
+          "\\"embed\\"",
+          "\\"fieldset\\"",
+          "\\"figcaption\\"",
+          "\\"figure\\"",
+          "\\"footer\\"",
+          "\\"h1\\"",
+          "\\"h2\\"",
+          "\\"h3\\"",
+          "\\"h4\\"",
+          "\\"h5\\"",
+          "\\"h6\\"",
+          "\\"head\\"",
+          "\\"header\\"",
+          "\\"hgroup\\"",
+          "\\"hr\\"",
+          "\\"html\\"",
+          "\\"i\\"",
+          "\\"iframe\\"",
+          "\\"img\\"",
+          "\\"ins\\"",
+          "\\"kbd\\"",
+          "\\"keygen\\"",
+          "\\"legend\\"",
+          "\\"li\\"",
+          "\\"link\\"",
+          "\\"main\\"",
+          "\\"map\\"",
+          "\\"mark\\"",
+          "\\"menu\\"",
+          "\\"menuitem\\"",
+          "\\"meta\\"",
+          "\\"meter\\"",
+          "\\"nav\\"",
+          "\\"noindex\\"",
+          "\\"noscript\\"",
+          "\\"ol\\"",
+          "\\"optgroup\\"",
+          "\\"option\\"",
+          "\\"output\\"",
+          "\\"p\\"",
+          "\\"param\\"",
+          "\\"picture\\"",
+          "\\"pre\\"",
+          "\\"progress\\"",
+          "\\"q\\"",
+          "\\"rp\\"",
+          "\\"rt\\"",
+          "\\"ruby\\"",
+          "\\"s\\"",
+          "\\"samp\\"",
+          "\\"script\\"",
+          "\\"section\\"",
+          "\\"select\\"",
+          "\\"source\\"",
+          "\\"sub\\"",
+          "\\"sup\\"",
+          "\\"table\\"",
+          "\\"tbody\\"",
+          "\\"td\\"",
+          "\\"textarea\\"",
+          "\\"tfoot\\"",
+          "\\"th\\"",
+          "\\"thead\\"",
+          "\\"time\\"",
+          "\\"tr\\"",
+          "\\"track\\"",
+          "\\"u\\"",
+          "\\"ul\\"",
+          "\\"var\\"",
+          "\\"video\\"",
+          "\\"wbr\\"",
+          "\\"webview\\"",
+          "\\"svg\\"",
+          "\\"animate\\"",
+          "\\"animateMotion\\"",
+          "\\"animateTransform\\"",
+          "\\"circle\\"",
+          "\\"defs\\"",
+          "\\"desc\\"",
+          "\\"ellipse\\"",
+          "\\"feBlend\\"",
+          "\\"feColorMatrix\\"",
+          "\\"feComponentTransfer\\"",
+          "\\"feComposite\\"",
+          "\\"feConvolveMatrix\\"",
+          "\\"feDiffuseLighting\\"",
+          "\\"feDisplacementMap\\"",
+          "\\"feDistantLight\\"",
+          "\\"feDropShadow\\"",
+          "\\"feFlood\\"",
+          "\\"feFuncA\\"",
+          "\\"feFuncB\\"",
+          "\\"feFuncG\\"",
+          "\\"feFuncR\\"",
+          "\\"feGaussianBlur\\"",
+          "\\"feImage\\"",
+          "\\"feMerge\\"",
+          "\\"feMergeNode\\"",
+          "\\"feMorphology\\"",
+          "\\"feOffset\\"",
+          "\\"fePointLight\\"",
+          "\\"feSpecularLighting\\"",
+          "\\"feSpotLight\\"",
+          "\\"feTile\\"",
+          "\\"feTurbulence\\"",
+          "\\"foreignObject\\"",
+          "\\"g\\"",
+          "\\"image\\"",
+          "\\"line\\"",
+          "\\"linearGradient\\"",
+          "\\"metadata\\"",
+          "\\"mpath\\"",
+          "\\"path\\"",
+          "\\"polygon\\"",
+          "\\"polyline\\"",
+          "\\"radialGradient\\"",
+          "\\"rect\\"",
+          "\\"stop\\"",
+          "\\"switch\\"",
+          "\\"text\\"",
+          "\\"textPath\\"",
+          "\\"tspan\\"",
+          "\\"use\\"",
+          "\\"view\\"",
+          "ComponentClass<any, any>",
+          "FunctionComponent<any>",
+        ],
+      },
+    },
+    "disabled": Object {
+      "propName": "disabled",
+      "required": false,
+      "type": "boolean",
+    },
+    "id": Object {
+      "propName": "id",
+      "required": true,
+      "type": "string",
+    },
+    "message": Object {
+      "propName": "message",
+      "required": true,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+          "false",
+          "true",
+          "{}",
+          "ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>",
+          "ReactNodeArray",
+          "ReactPortal",
+        ],
+      },
+    },
+    "secondaryMessage": Object {
+      "propName": "secondaryMessage",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+          "false",
+          "true",
+          "{}",
+          "ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>",
+          "ReactNodeArray",
+          "ReactPortal",
+        ],
+      },
+    },
+    "size": Object {
+      "propName": "size",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "\\"small\\"",
+          "\\"large\\"",
+          "\\"standard\\"",
+        ],
+      },
+    },
+    "tone": Object {
+      "propName": "tone",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "\\"critical\\"",
+          "\\"positive\\"",
+          "\\"neutral\\"",
+        ],
+      },
+    },
+    "weight": Object {
+      "propName": "weight",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "\\"strong\\"",
+          "\\"regular\\"",
+          "\\"medium\\"",
+        ],
+      },
+    },
+  },
+}
+`;
+
+exports[`public API Heading 1`] = `
+Object {
+  "props": Object {
+    "children": Object {
+      "propName": "children",
+      "required": true,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+          "false",
+          "true",
+          "{}",
+          "ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>",
+          "ReactNodeArray",
+          "ReactPortal",
+        ],
+      },
+    },
+    "component": Object {
+      "propName": "component",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "\\"symbol\\"",
+          "\\"object\\"",
+          "\\"strong\\"",
+          "\\"cite\\"",
+          "\\"data\\"",
+          "\\"form\\"",
+          "\\"label\\"",
+          "\\"pattern\\"",
+          "\\"span\\"",
+          "\\"summary\\"",
+          "\\"style\\"",
+          "\\"title\\"",
+          "\\"clipPath\\"",
+          "\\"filter\\"",
+          "\\"mask\\"",
+          "\\"marker\\"",
+          "\\"small\\"",
+          "\\"input\\"",
+          "\\"a\\"",
+          "\\"abbr\\"",
+          "\\"address\\"",
+          "\\"area\\"",
+          "\\"article\\"",
+          "\\"aside\\"",
+          "\\"audio\\"",
+          "\\"b\\"",
+          "\\"base\\"",
+          "\\"bdi\\"",
+          "\\"bdo\\"",
+          "\\"big\\"",
+          "\\"blockquote\\"",
+          "\\"body\\"",
+          "\\"br\\"",
+          "\\"button\\"",
+          "\\"canvas\\"",
+          "\\"caption\\"",
+          "\\"code\\"",
+          "\\"col\\"",
+          "\\"colgroup\\"",
+          "\\"datalist\\"",
+          "\\"dd\\"",
+          "\\"del\\"",
+          "\\"details\\"",
+          "\\"dfn\\"",
+          "\\"dialog\\"",
+          "\\"div\\"",
+          "\\"dl\\"",
+          "\\"dt\\"",
+          "\\"em\\"",
+          "\\"embed\\"",
+          "\\"fieldset\\"",
+          "\\"figcaption\\"",
+          "\\"figure\\"",
+          "\\"footer\\"",
+          "\\"h1\\"",
+          "\\"h2\\"",
+          "\\"h3\\"",
+          "\\"h4\\"",
+          "\\"h5\\"",
+          "\\"h6\\"",
+          "\\"head\\"",
+          "\\"header\\"",
+          "\\"hgroup\\"",
+          "\\"hr\\"",
+          "\\"html\\"",
+          "\\"i\\"",
+          "\\"iframe\\"",
+          "\\"img\\"",
+          "\\"ins\\"",
+          "\\"kbd\\"",
+          "\\"keygen\\"",
+          "\\"legend\\"",
+          "\\"li\\"",
+          "\\"link\\"",
+          "\\"main\\"",
+          "\\"map\\"",
+          "\\"mark\\"",
+          "\\"menu\\"",
+          "\\"menuitem\\"",
+          "\\"meta\\"",
+          "\\"meter\\"",
+          "\\"nav\\"",
+          "\\"noindex\\"",
+          "\\"noscript\\"",
+          "\\"ol\\"",
+          "\\"optgroup\\"",
+          "\\"option\\"",
+          "\\"output\\"",
+          "\\"p\\"",
+          "\\"param\\"",
+          "\\"picture\\"",
+          "\\"pre\\"",
+          "\\"progress\\"",
+          "\\"q\\"",
+          "\\"rp\\"",
+          "\\"rt\\"",
+          "\\"ruby\\"",
+          "\\"s\\"",
+          "\\"samp\\"",
+          "\\"script\\"",
+          "\\"section\\"",
+          "\\"select\\"",
+          "\\"source\\"",
+          "\\"sub\\"",
+          "\\"sup\\"",
+          "\\"table\\"",
+          "\\"tbody\\"",
+          "\\"td\\"",
+          "\\"textarea\\"",
+          "\\"tfoot\\"",
+          "\\"th\\"",
+          "\\"thead\\"",
+          "\\"time\\"",
+          "\\"tr\\"",
+          "\\"track\\"",
+          "\\"u\\"",
+          "\\"ul\\"",
+          "\\"var\\"",
+          "\\"video\\"",
+          "\\"wbr\\"",
+          "\\"webview\\"",
+          "\\"svg\\"",
+          "\\"animate\\"",
+          "\\"animateMotion\\"",
+          "\\"animateTransform\\"",
+          "\\"circle\\"",
+          "\\"defs\\"",
+          "\\"desc\\"",
+          "\\"ellipse\\"",
+          "\\"feBlend\\"",
+          "\\"feColorMatrix\\"",
+          "\\"feComponentTransfer\\"",
+          "\\"feComposite\\"",
+          "\\"feConvolveMatrix\\"",
+          "\\"feDiffuseLighting\\"",
+          "\\"feDisplacementMap\\"",
+          "\\"feDistantLight\\"",
+          "\\"feDropShadow\\"",
+          "\\"feFlood\\"",
+          "\\"feFuncA\\"",
+          "\\"feFuncB\\"",
+          "\\"feFuncG\\"",
+          "\\"feFuncR\\"",
+          "\\"feGaussianBlur\\"",
+          "\\"feImage\\"",
+          "\\"feMerge\\"",
+          "\\"feMergeNode\\"",
+          "\\"feMorphology\\"",
+          "\\"feOffset\\"",
+          "\\"fePointLight\\"",
+          "\\"feSpecularLighting\\"",
+          "\\"feSpotLight\\"",
+          "\\"feTile\\"",
+          "\\"feTurbulence\\"",
+          "\\"foreignObject\\"",
+          "\\"g\\"",
+          "\\"image\\"",
+          "\\"line\\"",
+          "\\"linearGradient\\"",
+          "\\"metadata\\"",
+          "\\"mpath\\"",
+          "\\"path\\"",
+          "\\"polygon\\"",
+          "\\"polyline\\"",
+          "\\"radialGradient\\"",
+          "\\"rect\\"",
+          "\\"stop\\"",
+          "\\"switch\\"",
+          "\\"text\\"",
+          "\\"textPath\\"",
+          "\\"tspan\\"",
+          "\\"use\\"",
+          "\\"view\\"",
+          "ComponentClass<any, any>",
+          "FunctionComponent<any>",
+        ],
+      },
+    },
+    "level": Object {
+      "propName": "level",
+      "required": true,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "\\"1\\"",
+          "\\"2\\"",
+          "\\"3\\"",
+        ],
+      },
+    },
+    "weight": Object {
+      "propName": "weight",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "\\"regular\\"",
+          "\\"weak\\"",
+        ],
+      },
+    },
+  },
+}
+`;
+
+exports[`public API Hidden 1`] = `
+Object {
+  "props": Object {
+    "children": Object {
+      "propName": "children",
+      "required": true,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+          "false",
+          "true",
+          "{}",
+          "ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>",
+          "ReactNodeArray",
+          "ReactPortal",
+        ],
+      },
+    },
+    "desktop": Object {
+      "propName": "desktop",
+      "required": false,
+      "type": "boolean",
+    },
+    "inline": Object {
+      "propName": "inline",
+      "required": false,
+      "type": "boolean",
+    },
+    "mobile": Object {
+      "propName": "mobile",
+      "required": false,
+      "type": "boolean",
+    },
+    "print": Object {
+      "propName": "print",
+      "required": false,
+      "type": "boolean",
+    },
+    "screen": Object {
+      "propName": "screen",
+      "required": false,
+      "type": "boolean",
+    },
+  },
+}
+`;
+
+exports[`public API InfoIcon 1`] = `
+Object {
+  "props": Object {
+    "fill": Object {
+      "propName": "fill",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "\\"info\\"",
+          "\\"critical\\"",
+          "\\"positive\\"",
+          "\\"brandAccent\\"",
+          "\\"formAccent\\"",
+          "\\"formAccentDisabled\\"",
+          "\\"black\\"",
+          "\\"white\\"",
+          "\\"link\\"",
+          "\\"neutral\\"",
+          "\\"secondary\\"",
+          "\\"criticalContrast\\"",
+          "\\"positiveContrast\\"",
+          "\\"infoContrast\\"",
+          "\\"brandAccentForeground\\"",
+        ],
+      },
+    },
+    "inline": Object {
+      "propName": "inline",
+      "required": false,
+      "type": "boolean",
+    },
+    "size": Object {
+      "propName": "size",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "\\"fill\\"",
+          "\\"small\\"",
+          "\\"large\\"",
+          "\\"standard\\"",
+        ],
+      },
+    },
+  },
+}
+`;
+
+exports[`public API Radio 1`] = `
+Object {
+  "props": Object {
+    "checked": Object {
+      "propName": "checked",
+      "required": true,
+      "type": "boolean",
+    },
+    "children": Object {
+      "propName": "children",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+          "false",
+          "true",
+          "{}",
+          "ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>",
+          "ReactNodeArray",
+          "ReactPortal",
+        ],
+      },
+    },
+    "disabled": Object {
+      "propName": "disabled",
+      "required": false,
+      "type": "boolean",
+    },
+    "id": Object {
+      "propName": "id",
+      "required": true,
+      "type": "string",
+    },
+    "label": Object {
+      "propName": "label",
+      "required": true,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+          "false",
+          "true",
+          "{}",
+          "ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>",
+          "ReactNodeArray",
+          "ReactPortal",
+        ],
+      },
+    },
+    "message": Object {
+      "propName": "message",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+          "false",
+          "true",
+          "{}",
+          "ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>",
+          "ReactNodeArray",
+          "ReactPortal",
+        ],
+      },
+    },
+    "name": Object {
+      "propName": "name",
+      "required": false,
+      "type": "string",
+    },
+    "onChange": Object {
+      "propName": "onChange",
+      "required": true,
+      "type": "(event: FormEvent<HTMLFormElement>) => void",
+    },
+    "tone": Object {
+      "propName": "tone",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "\\"critical\\"",
+          "\\"positive\\"",
+          "\\"neutral\\"",
+        ],
+      },
+    },
+  },
+}
+`;
+
+exports[`public API Secondary 1`] = `
+Object {
+  "props": Object {
+    "children": Object {
+      "propName": "children",
+      "required": true,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+          "false",
+          "true",
+          "{}",
+          "ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>",
+          "ReactNodeArray",
+          "ReactPortal",
+        ],
+      },
+    },
+  },
+}
+`;
+
+exports[`public API Strong 1`] = `
+Object {
+  "props": Object {
+    "children": Object {
+      "propName": "children",
+      "required": true,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+          "false",
+          "true",
+          "{}",
+          "ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>",
+          "ReactNodeArray",
+          "ReactPortal",
+        ],
+      },
+    },
+  },
+}
+`;
+
+exports[`public API Text 1`] = `
+Object {
+  "props": Object {
+    "baseline": Object {
+      "propName": "baseline",
+      "required": false,
+      "type": "boolean",
+    },
+    "children": Object {
+      "propName": "children",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+          "false",
+          "true",
+          "{}",
+          "ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>",
+          "ReactNodeArray",
+          "ReactPortal",
+        ],
+      },
+    },
+    "color": Object {
+      "propName": "color",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "\\"info\\"",
+          "\\"critical\\"",
+          "\\"positive\\"",
+          "\\"brandAccent\\"",
+          "\\"formAccent\\"",
+          "\\"formAccentDisabled\\"",
+          "\\"black\\"",
+          "\\"white\\"",
+          "\\"link\\"",
+          "\\"neutral\\"",
+          "\\"secondary\\"",
+          "\\"criticalContrast\\"",
+          "\\"positiveContrast\\"",
+          "\\"infoContrast\\"",
+          "\\"brandAccentForeground\\"",
+        ],
+      },
+    },
+    "component": Object {
+      "propName": "component",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "\\"symbol\\"",
+          "\\"object\\"",
+          "\\"strong\\"",
+          "\\"cite\\"",
+          "\\"data\\"",
+          "\\"form\\"",
+          "\\"label\\"",
+          "\\"pattern\\"",
+          "\\"span\\"",
+          "\\"summary\\"",
+          "\\"style\\"",
+          "\\"title\\"",
+          "\\"clipPath\\"",
+          "\\"filter\\"",
+          "\\"mask\\"",
+          "\\"marker\\"",
+          "\\"small\\"",
+          "\\"input\\"",
+          "\\"a\\"",
+          "\\"abbr\\"",
+          "\\"address\\"",
+          "\\"area\\"",
+          "\\"article\\"",
+          "\\"aside\\"",
+          "\\"audio\\"",
+          "\\"b\\"",
+          "\\"base\\"",
+          "\\"bdi\\"",
+          "\\"bdo\\"",
+          "\\"big\\"",
+          "\\"blockquote\\"",
+          "\\"body\\"",
+          "\\"br\\"",
+          "\\"button\\"",
+          "\\"canvas\\"",
+          "\\"caption\\"",
+          "\\"code\\"",
+          "\\"col\\"",
+          "\\"colgroup\\"",
+          "\\"datalist\\"",
+          "\\"dd\\"",
+          "\\"del\\"",
+          "\\"details\\"",
+          "\\"dfn\\"",
+          "\\"dialog\\"",
+          "\\"div\\"",
+          "\\"dl\\"",
+          "\\"dt\\"",
+          "\\"em\\"",
+          "\\"embed\\"",
+          "\\"fieldset\\"",
+          "\\"figcaption\\"",
+          "\\"figure\\"",
+          "\\"footer\\"",
+          "\\"h1\\"",
+          "\\"h2\\"",
+          "\\"h3\\"",
+          "\\"h4\\"",
+          "\\"h5\\"",
+          "\\"h6\\"",
+          "\\"head\\"",
+          "\\"header\\"",
+          "\\"hgroup\\"",
+          "\\"hr\\"",
+          "\\"html\\"",
+          "\\"i\\"",
+          "\\"iframe\\"",
+          "\\"img\\"",
+          "\\"ins\\"",
+          "\\"kbd\\"",
+          "\\"keygen\\"",
+          "\\"legend\\"",
+          "\\"li\\"",
+          "\\"link\\"",
+          "\\"main\\"",
+          "\\"map\\"",
+          "\\"mark\\"",
+          "\\"menu\\"",
+          "\\"menuitem\\"",
+          "\\"meta\\"",
+          "\\"meter\\"",
+          "\\"nav\\"",
+          "\\"noindex\\"",
+          "\\"noscript\\"",
+          "\\"ol\\"",
+          "\\"optgroup\\"",
+          "\\"option\\"",
+          "\\"output\\"",
+          "\\"p\\"",
+          "\\"param\\"",
+          "\\"picture\\"",
+          "\\"pre\\"",
+          "\\"progress\\"",
+          "\\"q\\"",
+          "\\"rp\\"",
+          "\\"rt\\"",
+          "\\"ruby\\"",
+          "\\"s\\"",
+          "\\"samp\\"",
+          "\\"script\\"",
+          "\\"section\\"",
+          "\\"select\\"",
+          "\\"source\\"",
+          "\\"sub\\"",
+          "\\"sup\\"",
+          "\\"table\\"",
+          "\\"tbody\\"",
+          "\\"td\\"",
+          "\\"textarea\\"",
+          "\\"tfoot\\"",
+          "\\"th\\"",
+          "\\"thead\\"",
+          "\\"time\\"",
+          "\\"tr\\"",
+          "\\"track\\"",
+          "\\"u\\"",
+          "\\"ul\\"",
+          "\\"var\\"",
+          "\\"video\\"",
+          "\\"wbr\\"",
+          "\\"webview\\"",
+          "\\"svg\\"",
+          "\\"animate\\"",
+          "\\"animateMotion\\"",
+          "\\"animateTransform\\"",
+          "\\"circle\\"",
+          "\\"defs\\"",
+          "\\"desc\\"",
+          "\\"ellipse\\"",
+          "\\"feBlend\\"",
+          "\\"feColorMatrix\\"",
+          "\\"feComponentTransfer\\"",
+          "\\"feComposite\\"",
+          "\\"feConvolveMatrix\\"",
+          "\\"feDiffuseLighting\\"",
+          "\\"feDisplacementMap\\"",
+          "\\"feDistantLight\\"",
+          "\\"feDropShadow\\"",
+          "\\"feFlood\\"",
+          "\\"feFuncA\\"",
+          "\\"feFuncB\\"",
+          "\\"feFuncG\\"",
+          "\\"feFuncR\\"",
+          "\\"feGaussianBlur\\"",
+          "\\"feImage\\"",
+          "\\"feMerge\\"",
+          "\\"feMergeNode\\"",
+          "\\"feMorphology\\"",
+          "\\"feOffset\\"",
+          "\\"fePointLight\\"",
+          "\\"feSpecularLighting\\"",
+          "\\"feSpotLight\\"",
+          "\\"feTile\\"",
+          "\\"feTurbulence\\"",
+          "\\"foreignObject\\"",
+          "\\"g\\"",
+          "\\"image\\"",
+          "\\"line\\"",
+          "\\"linearGradient\\"",
+          "\\"metadata\\"",
+          "\\"mpath\\"",
+          "\\"path\\"",
+          "\\"polygon\\"",
+          "\\"polyline\\"",
+          "\\"radialGradient\\"",
+          "\\"rect\\"",
+          "\\"stop\\"",
+          "\\"switch\\"",
+          "\\"text\\"",
+          "\\"textPath\\"",
+          "\\"tspan\\"",
+          "\\"use\\"",
+          "\\"view\\"",
+          "ComponentClass<any, any>",
+          "FunctionComponent<any>",
+        ],
+      },
+    },
+    "size": Object {
+      "propName": "size",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "\\"small\\"",
+          "\\"large\\"",
+          "\\"standard\\"",
+        ],
+      },
+    },
+    "weight": Object {
+      "propName": "weight",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "\\"strong\\"",
+          "\\"regular\\"",
+          "\\"medium\\"",
+        ],
+      },
+    },
+  },
+}
+`;
+
+exports[`public API TextArea 1`] = `
+Object {
+  "props": Object {
+    "description": Object {
+      "propName": "description",
+      "required": false,
+      "type": "string",
+    },
+    "disabled": Object {
+      "propName": "disabled",
+      "required": false,
+      "type": "boolean",
+    },
+    "id": Object {
+      "propName": "id",
+      "required": true,
+      "type": "string",
+    },
+    "label": Object {
+      "propName": "label",
+      "required": false,
+      "type": "string",
+    },
+    "limit": Object {
+      "propName": "limit",
+      "required": false,
+      "type": "number",
+    },
+    "message": Object {
+      "propName": "message",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+          "false",
+          "true",
+          "{}",
+          "ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>",
+          "ReactNodeArray",
+          "ReactPortal",
+        ],
+      },
+    },
+    "name": Object {
+      "propName": "name",
+      "required": false,
+      "type": "string",
+    },
+    "onBlur": Object {
+      "propName": "onBlur",
+      "required": false,
+      "type": "(event: FocusEvent<HTMLTextAreaElement>) => void",
+    },
+    "onChange": Object {
+      "propName": "onChange",
+      "required": true,
+      "type": "(event: FormEvent<HTMLTextAreaElement>) => void",
+    },
+    "onFocus": Object {
+      "propName": "onFocus",
+      "required": false,
+      "type": "(event: FocusEvent<HTMLTextAreaElement>) => void",
+    },
+    "placeholder": Object {
+      "propName": "placeholder",
+      "required": false,
+      "type": "string",
+    },
+    "secondaryLabel": Object {
+      "propName": "secondaryLabel",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+          "false",
+          "true",
+          "{}",
+          "ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>",
+          "ReactNodeArray",
+          "ReactPortal",
+        ],
+      },
+    },
+    "secondaryMessage": Object {
+      "propName": "secondaryMessage",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+          "false",
+          "true",
+          "{}",
+          "ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>",
+          "ReactNodeArray",
+          "ReactPortal",
+        ],
+      },
+    },
+    "tertiaryLabel": Object {
+      "propName": "tertiaryLabel",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+          "false",
+          "true",
+          "{}",
+          "ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>",
+          "ReactNodeArray",
+          "ReactPortal",
+        ],
+      },
+    },
+    "tone": Object {
+      "propName": "tone",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "\\"critical\\"",
+          "\\"positive\\"",
+          "\\"neutral\\"",
+        ],
+      },
+    },
+    "value": Object {
+      "propName": "value",
+      "required": true,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+          "string[]",
+        ],
+      },
+    },
+  },
+}
+`;
+
+exports[`public API TextField 1`] = `
+Object {
+  "props": Object {
+    "description": Object {
+      "propName": "description",
+      "required": false,
+      "type": "string",
+    },
+    "disabled": Object {
+      "propName": "disabled",
+      "required": false,
+      "type": "boolean",
+    },
+    "id": Object {
+      "propName": "id",
+      "required": true,
+      "type": "string",
+    },
+    "label": Object {
+      "propName": "label",
+      "required": false,
+      "type": "string",
+    },
+    "message": Object {
+      "propName": "message",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+          "false",
+          "true",
+          "{}",
+          "ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>",
+          "ReactNodeArray",
+          "ReactPortal",
+        ],
+      },
+    },
+    "name": Object {
+      "propName": "name",
+      "required": false,
+      "type": "string",
+    },
+    "onBlur": Object {
+      "propName": "onBlur",
+      "required": false,
+      "type": "(event: FocusEvent<HTMLInputElement>) => void",
+    },
+    "onChange": Object {
+      "propName": "onChange",
+      "required": true,
+      "type": "(event: FormEvent<HTMLInputElement>) => void",
+    },
+    "onFocus": Object {
+      "propName": "onFocus",
+      "required": false,
+      "type": "(event: FocusEvent<HTMLInputElement>) => void",
+    },
+    "placeholder": Object {
+      "propName": "placeholder",
+      "required": false,
+      "type": "string",
+    },
+    "secondaryLabel": Object {
+      "propName": "secondaryLabel",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+          "false",
+          "true",
+          "{}",
+          "ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>",
+          "ReactNodeArray",
+          "ReactPortal",
+        ],
+      },
+    },
+    "secondaryMessage": Object {
+      "propName": "secondaryMessage",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+          "false",
+          "true",
+          "{}",
+          "ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>",
+          "ReactNodeArray",
+          "ReactPortal",
+        ],
+      },
+    },
+    "tertiaryLabel": Object {
+      "propName": "tertiaryLabel",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+          "false",
+          "true",
+          "{}",
+          "ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>",
+          "ReactNodeArray",
+          "ReactPortal",
+        ],
+      },
+    },
+    "tone": Object {
+      "propName": "tone",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "\\"critical\\"",
+          "\\"positive\\"",
+          "\\"neutral\\"",
+        ],
+      },
+    },
+    "type": Object {
+      "propName": "type",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "\\"number\\"",
+          "\\"text\\"",
+          "\\"password\\"",
+          "\\"email\\"",
+          "\\"search\\"",
+          "\\"tel\\"",
+          "\\"url\\"",
+        ],
+      },
+    },
+    "value": Object {
+      "propName": "value",
+      "required": true,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+          "string[]",
+        ],
+      },
+    },
+  },
+}
+`;
+
+exports[`public API TextLink 1`] = `
+Object {
+  "props": Object {
+    "about": Object {
+      "propName": "about",
+      "required": false,
+      "type": "string",
+    },
+    "accept": Object {
+      "propName": "accept",
+      "required": false,
+      "type": "string",
+    },
+    "acceptCharset": Object {
+      "propName": "acceptCharset",
+      "required": false,
+      "type": "string",
+    },
+    "accessKey": Object {
+      "propName": "accessKey",
+      "required": false,
+      "type": "string",
+    },
+    "action": Object {
+      "propName": "action",
+      "required": false,
+      "type": "string",
+    },
+    "allowFullScreen": Object {
+      "propName": "allowFullScreen",
+      "required": false,
+      "type": "boolean",
+    },
+    "allowTransparency": Object {
+      "propName": "allowTransparency",
+      "required": false,
+      "type": "boolean",
+    },
+    "alt": Object {
+      "propName": "alt",
+      "required": false,
+      "type": "string",
+    },
+    "aria-activedescendant": Object {
+      "propName": "aria-activedescendant",
+      "required": false,
+      "type": "string",
+    },
+    "aria-atomic": Object {
+      "propName": "aria-atomic",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "false",
+          "true",
+          "\\"false\\"",
+          "\\"true\\"",
+        ],
+      },
+    },
+    "aria-autocomplete": Object {
+      "propName": "aria-autocomplete",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "\\"list\\"",
+          "\\"none\\"",
+          "\\"inline\\"",
+          "\\"both\\"",
+        ],
+      },
+    },
+    "aria-busy": Object {
+      "propName": "aria-busy",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "false",
+          "true",
+          "\\"false\\"",
+          "\\"true\\"",
+        ],
+      },
+    },
+    "aria-checked": Object {
+      "propName": "aria-checked",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "false",
+          "true",
+          "\\"false\\"",
+          "\\"true\\"",
+          "\\"mixed\\"",
+        ],
+      },
+    },
+    "aria-colcount": Object {
+      "propName": "aria-colcount",
+      "required": false,
+      "type": "number",
+    },
+    "aria-colindex": Object {
+      "propName": "aria-colindex",
+      "required": false,
+      "type": "number",
+    },
+    "aria-colspan": Object {
+      "propName": "aria-colspan",
+      "required": false,
+      "type": "number",
+    },
+    "aria-controls": Object {
+      "propName": "aria-controls",
+      "required": false,
+      "type": "string",
+    },
+    "aria-current": Object {
+      "propName": "aria-current",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "false",
+          "true",
+          "\\"step\\"",
+          "\\"time\\"",
+          "\\"false\\"",
+          "\\"true\\"",
+          "\\"page\\"",
+          "\\"location\\"",
+          "\\"date\\"",
+        ],
+      },
+    },
+    "aria-describedby": Object {
+      "propName": "aria-describedby",
+      "required": false,
+      "type": "string",
+    },
+    "aria-details": Object {
+      "propName": "aria-details",
+      "required": false,
+      "type": "string",
+    },
+    "aria-disabled": Object {
+      "propName": "aria-disabled",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "false",
+          "true",
+          "\\"false\\"",
+          "\\"true\\"",
+        ],
+      },
+    },
+    "aria-dropeffect": Object {
+      "propName": "aria-dropeffect",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "\\"none\\"",
+          "\\"link\\"",
+          "\\"copy\\"",
+          "\\"execute\\"",
+          "\\"move\\"",
+          "\\"popup\\"",
+        ],
+      },
+    },
+    "aria-errormessage": Object {
+      "propName": "aria-errormessage",
+      "required": false,
+      "type": "string",
+    },
+    "aria-expanded": Object {
+      "propName": "aria-expanded",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "false",
+          "true",
+          "\\"false\\"",
+          "\\"true\\"",
+        ],
+      },
+    },
+    "aria-flowto": Object {
+      "propName": "aria-flowto",
+      "required": false,
+      "type": "string",
+    },
+    "aria-grabbed": Object {
+      "propName": "aria-grabbed",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "false",
+          "true",
+          "\\"false\\"",
+          "\\"true\\"",
+        ],
+      },
+    },
+    "aria-haspopup": Object {
+      "propName": "aria-haspopup",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "false",
+          "true",
+          "\\"grid\\"",
+          "\\"dialog\\"",
+          "\\"menu\\"",
+          "\\"false\\"",
+          "\\"true\\"",
+          "\\"listbox\\"",
+          "\\"tree\\"",
+        ],
+      },
+    },
+    "aria-hidden": Object {
+      "propName": "aria-hidden",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "false",
+          "true",
+          "\\"false\\"",
+          "\\"true\\"",
+        ],
+      },
+    },
+    "aria-invalid": Object {
+      "propName": "aria-invalid",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "false",
+          "true",
+          "\\"false\\"",
+          "\\"true\\"",
+          "\\"grammar\\"",
+          "\\"spelling\\"",
+        ],
+      },
+    },
+    "aria-keyshortcuts": Object {
+      "propName": "aria-keyshortcuts",
+      "required": false,
+      "type": "string",
+    },
+    "aria-label": Object {
+      "propName": "aria-label",
+      "required": false,
+      "type": "string",
+    },
+    "aria-labelledby": Object {
+      "propName": "aria-labelledby",
+      "required": false,
+      "type": "string",
+    },
+    "aria-level": Object {
+      "propName": "aria-level",
+      "required": false,
+      "type": "number",
+    },
+    "aria-live": Object {
+      "propName": "aria-live",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "\\"off\\"",
+          "\\"assertive\\"",
+          "\\"polite\\"",
+        ],
+      },
+    },
+    "aria-modal": Object {
+      "propName": "aria-modal",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "false",
+          "true",
+          "\\"false\\"",
+          "\\"true\\"",
+        ],
+      },
+    },
+    "aria-multiline": Object {
+      "propName": "aria-multiline",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "false",
+          "true",
+          "\\"false\\"",
+          "\\"true\\"",
+        ],
+      },
+    },
+    "aria-multiselectable": Object {
+      "propName": "aria-multiselectable",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "false",
+          "true",
+          "\\"false\\"",
+          "\\"true\\"",
+        ],
+      },
+    },
+    "aria-orientation": Object {
+      "propName": "aria-orientation",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "\\"horizontal\\"",
+          "\\"vertical\\"",
+        ],
+      },
+    },
+    "aria-owns": Object {
+      "propName": "aria-owns",
+      "required": false,
+      "type": "string",
+    },
+    "aria-placeholder": Object {
+      "propName": "aria-placeholder",
+      "required": false,
+      "type": "string",
+    },
+    "aria-posinset": Object {
+      "propName": "aria-posinset",
+      "required": false,
+      "type": "number",
+    },
+    "aria-pressed": Object {
+      "propName": "aria-pressed",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "false",
+          "true",
+          "\\"false\\"",
+          "\\"true\\"",
+          "\\"mixed\\"",
+        ],
+      },
+    },
+    "aria-readonly": Object {
+      "propName": "aria-readonly",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "false",
+          "true",
+          "\\"false\\"",
+          "\\"true\\"",
+        ],
+      },
+    },
+    "aria-relevant": Object {
+      "propName": "aria-relevant",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "\\"all\\"",
+          "\\"text\\"",
+          "\\"additions\\"",
+          "\\"additions text\\"",
+          "\\"removals\\"",
+        ],
+      },
+    },
+    "aria-required": Object {
+      "propName": "aria-required",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "false",
+          "true",
+          "\\"false\\"",
+          "\\"true\\"",
+        ],
+      },
+    },
+    "aria-roledescription": Object {
+      "propName": "aria-roledescription",
+      "required": false,
+      "type": "string",
+    },
+    "aria-rowcount": Object {
+      "propName": "aria-rowcount",
+      "required": false,
+      "type": "number",
+    },
+    "aria-rowindex": Object {
+      "propName": "aria-rowindex",
+      "required": false,
+      "type": "number",
+    },
+    "aria-rowspan": Object {
+      "propName": "aria-rowspan",
+      "required": false,
+      "type": "number",
+    },
+    "aria-selected": Object {
+      "propName": "aria-selected",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "false",
+          "true",
+          "\\"false\\"",
+          "\\"true\\"",
+        ],
+      },
+    },
+    "aria-setsize": Object {
+      "propName": "aria-setsize",
+      "required": false,
+      "type": "number",
+    },
+    "aria-sort": Object {
+      "propName": "aria-sort",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "\\"none\\"",
+          "\\"ascending\\"",
+          "\\"descending\\"",
+          "\\"other\\"",
+        ],
+      },
+    },
+    "aria-valuemax": Object {
+      "propName": "aria-valuemax",
+      "required": false,
+      "type": "number",
+    },
+    "aria-valuemin": Object {
+      "propName": "aria-valuemin",
+      "required": false,
+      "type": "number",
+    },
+    "aria-valuenow": Object {
+      "propName": "aria-valuenow",
+      "required": false,
+      "type": "number",
+    },
+    "aria-valuetext": Object {
+      "propName": "aria-valuetext",
+      "required": false,
+      "type": "string",
+    },
+    "as": Object {
+      "propName": "as",
+      "required": false,
+      "type": "string",
+    },
+    "async": Object {
+      "propName": "async",
+      "required": false,
+      "type": "boolean",
+    },
+    "autoCapitalize": Object {
+      "propName": "autoCapitalize",
+      "required": false,
+      "type": "string",
+    },
+    "autoComplete": Object {
+      "propName": "autoComplete",
+      "required": false,
+      "type": "string",
+    },
+    "autoCorrect": Object {
+      "propName": "autoCorrect",
+      "required": false,
+      "type": "string",
+    },
+    "autoFocus": Object {
+      "propName": "autoFocus",
+      "required": false,
+      "type": "boolean",
+    },
+    "autoPlay": Object {
+      "propName": "autoPlay",
+      "required": false,
+      "type": "boolean",
+    },
+    "autoSave": Object {
+      "propName": "autoSave",
+      "required": false,
+      "type": "string",
+    },
+    "capture": Object {
+      "propName": "capture",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "false",
+          "true",
+        ],
+      },
+    },
+    "cellPadding": Object {
+      "propName": "cellPadding",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+        ],
+      },
+    },
+    "cellSpacing": Object {
+      "propName": "cellSpacing",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+        ],
+      },
+    },
+    "challenge": Object {
+      "propName": "challenge",
+      "required": false,
+      "type": "string",
+    },
+    "charSet": Object {
+      "propName": "charSet",
+      "required": false,
+      "type": "string",
+    },
+    "checked": Object {
+      "propName": "checked",
+      "required": false,
+      "type": "boolean",
+    },
+    "children": Object {
+      "propName": "children",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+          "false",
+          "true",
+          "{}",
+          "ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>",
+          "ReactNodeArray",
+          "ReactPortal",
+        ],
+      },
+    },
+    "cite": Object {
+      "propName": "cite",
+      "required": false,
+      "type": "string",
+    },
+    "classID": Object {
+      "propName": "classID",
+      "required": false,
+      "type": "string",
+    },
+    "colSpan": Object {
+      "propName": "colSpan",
+      "required": false,
+      "type": "number",
+    },
+    "color": Object {
+      "propName": "color",
+      "required": false,
+      "type": "string",
+    },
+    "cols": Object {
+      "propName": "cols",
+      "required": false,
+      "type": "number",
+    },
+    "content": Object {
+      "propName": "content",
+      "required": false,
+      "type": "string",
+    },
+    "contentEditable": Object {
+      "propName": "contentEditable",
+      "required": false,
+      "type": "boolean",
+    },
+    "contextMenu": Object {
+      "propName": "contextMenu",
+      "required": false,
+      "type": "string",
+    },
+    "controls": Object {
+      "propName": "controls",
+      "required": false,
+      "type": "boolean",
+    },
+    "coords": Object {
+      "propName": "coords",
+      "required": false,
+      "type": "string",
+    },
+    "crossOrigin": Object {
+      "propName": "crossOrigin",
+      "required": false,
+      "type": "string",
+    },
+    "dangerouslySetInnerHTML": Object {
+      "propName": "dangerouslySetInnerHTML",
+      "required": false,
+      "type": "{ __html: string; }",
+    },
+    "data": Object {
+      "propName": "data",
+      "required": false,
+      "type": "string",
+    },
+    "datatype": Object {
+      "propName": "datatype",
+      "required": false,
+      "type": "string",
+    },
+    "dateTime": Object {
+      "propName": "dateTime",
+      "required": false,
+      "type": "string",
+    },
+    "default": Object {
+      "propName": "default",
+      "required": false,
+      "type": "boolean",
+    },
+    "defaultChecked": Object {
+      "propName": "defaultChecked",
+      "required": false,
+      "type": "boolean",
+    },
+    "defaultValue": Object {
+      "propName": "defaultValue",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "string[]",
+        ],
+      },
+    },
+    "defer": Object {
+      "propName": "defer",
+      "required": false,
+      "type": "boolean",
+    },
+    "dir": Object {
+      "propName": "dir",
+      "required": false,
+      "type": "string",
+    },
+    "disabled": Object {
+      "propName": "disabled",
+      "required": false,
+      "type": "boolean",
+    },
+    "download": Object {
+      "propName": "download",
+      "required": false,
+      "type": "any",
+    },
+    "draggable": Object {
+      "propName": "draggable",
+      "required": false,
+      "type": "boolean",
+    },
+    "encType": Object {
+      "propName": "encType",
+      "required": false,
+      "type": "string",
+    },
+    "form": Object {
+      "propName": "form",
+      "required": false,
+      "type": "string",
+    },
+    "formAction": Object {
+      "propName": "formAction",
+      "required": false,
+      "type": "string",
+    },
+    "formEncType": Object {
+      "propName": "formEncType",
+      "required": false,
+      "type": "string",
+    },
+    "formMethod": Object {
+      "propName": "formMethod",
+      "required": false,
+      "type": "string",
+    },
+    "formNoValidate": Object {
+      "propName": "formNoValidate",
+      "required": false,
+      "type": "boolean",
+    },
+    "formTarget": Object {
+      "propName": "formTarget",
+      "required": false,
+      "type": "string",
+    },
+    "frameBorder": Object {
+      "propName": "frameBorder",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+        ],
+      },
+    },
+    "headers": Object {
+      "propName": "headers",
+      "required": false,
+      "type": "string",
+    },
+    "height": Object {
+      "propName": "height",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+        ],
+      },
+    },
+    "hidden": Object {
+      "propName": "hidden",
+      "required": false,
+      "type": "boolean",
+    },
+    "high": Object {
+      "propName": "high",
+      "required": false,
+      "type": "number",
+    },
+    "href": Object {
+      "propName": "href",
+      "required": false,
+      "type": "string",
+    },
+    "hrefLang": Object {
+      "propName": "hrefLang",
+      "required": false,
+      "type": "string",
+    },
+    "htmlFor": Object {
+      "propName": "htmlFor",
+      "required": false,
+      "type": "string",
+    },
+    "httpEquiv": Object {
+      "propName": "httpEquiv",
+      "required": false,
+      "type": "string",
+    },
+    "id": Object {
+      "propName": "id",
+      "required": false,
+      "type": "string",
+    },
+    "inline": Object {
+      "propName": "inline",
+      "required": false,
+      "type": "boolean",
+    },
+    "inlist": Object {
+      "propName": "inlist",
+      "required": false,
+      "type": "any",
+    },
+    "inputMode": Object {
+      "propName": "inputMode",
+      "required": false,
+      "type": "string",
+    },
+    "integrity": Object {
+      "propName": "integrity",
+      "required": false,
+      "type": "string",
+    },
+    "is": Object {
+      "propName": "is",
+      "required": false,
+      "type": "string",
+    },
+    "itemID": Object {
+      "propName": "itemID",
+      "required": false,
+      "type": "string",
+    },
+    "itemProp": Object {
+      "propName": "itemProp",
+      "required": false,
+      "type": "string",
+    },
+    "itemRef": Object {
+      "propName": "itemRef",
+      "required": false,
+      "type": "string",
+    },
+    "itemScope": Object {
+      "propName": "itemScope",
+      "required": false,
+      "type": "boolean",
+    },
+    "itemType": Object {
+      "propName": "itemType",
+      "required": false,
+      "type": "string",
+    },
+    "keyParams": Object {
+      "propName": "keyParams",
+      "required": false,
+      "type": "string",
+    },
+    "keyType": Object {
+      "propName": "keyType",
+      "required": false,
+      "type": "string",
+    },
+    "kind": Object {
+      "propName": "kind",
+      "required": false,
+      "type": "string",
+    },
+    "label": Object {
+      "propName": "label",
+      "required": false,
+      "type": "string",
+    },
+    "lang": Object {
+      "propName": "lang",
+      "required": false,
+      "type": "string",
+    },
+    "list": Object {
+      "propName": "list",
+      "required": false,
+      "type": "string",
+    },
+    "loop": Object {
+      "propName": "loop",
+      "required": false,
+      "type": "boolean",
+    },
+    "low": Object {
+      "propName": "low",
+      "required": false,
+      "type": "number",
+    },
+    "manifest": Object {
+      "propName": "manifest",
+      "required": false,
+      "type": "string",
+    },
+    "marginHeight": Object {
+      "propName": "marginHeight",
+      "required": false,
+      "type": "number",
+    },
+    "marginWidth": Object {
+      "propName": "marginWidth",
+      "required": false,
+      "type": "number",
+    },
+    "max": Object {
+      "propName": "max",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+        ],
+      },
+    },
+    "maxLength": Object {
+      "propName": "maxLength",
+      "required": false,
+      "type": "number",
+    },
+    "media": Object {
+      "propName": "media",
+      "required": false,
+      "type": "string",
+    },
+    "mediaGroup": Object {
+      "propName": "mediaGroup",
+      "required": false,
+      "type": "string",
+    },
+    "method": Object {
+      "propName": "method",
+      "required": false,
+      "type": "string",
+    },
+    "min": Object {
+      "propName": "min",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+        ],
+      },
+    },
+    "minLength": Object {
+      "propName": "minLength",
+      "required": false,
+      "type": "number",
+    },
+    "multiple": Object {
+      "propName": "multiple",
+      "required": false,
+      "type": "boolean",
+    },
+    "muted": Object {
+      "propName": "muted",
+      "required": false,
+      "type": "boolean",
+    },
+    "name": Object {
+      "propName": "name",
+      "required": false,
+      "type": "string",
+    },
+    "noValidate": Object {
+      "propName": "noValidate",
+      "required": false,
+      "type": "boolean",
+    },
+    "nonce": Object {
+      "propName": "nonce",
+      "required": false,
+      "type": "string",
+    },
+    "onAbort": Object {
+      "propName": "onAbort",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLAnchorElement, Event>) => void",
+    },
+    "onAbortCapture": Object {
+      "propName": "onAbortCapture",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLAnchorElement, Event>) => void",
+    },
+    "onAnimationEnd": Object {
+      "propName": "onAnimationEnd",
+      "required": false,
+      "type": "(event: AnimationEvent<HTMLAnchorElement>) => void",
+    },
+    "onAnimationEndCapture": Object {
+      "propName": "onAnimationEndCapture",
+      "required": false,
+      "type": "(event: AnimationEvent<HTMLAnchorElement>) => void",
+    },
+    "onAnimationIteration": Object {
+      "propName": "onAnimationIteration",
+      "required": false,
+      "type": "(event: AnimationEvent<HTMLAnchorElement>) => void",
+    },
+    "onAnimationIterationCapture": Object {
+      "propName": "onAnimationIterationCapture",
+      "required": false,
+      "type": "(event: AnimationEvent<HTMLAnchorElement>) => void",
+    },
+    "onAnimationStart": Object {
+      "propName": "onAnimationStart",
+      "required": false,
+      "type": "(event: AnimationEvent<HTMLAnchorElement>) => void",
+    },
+    "onAnimationStartCapture": Object {
+      "propName": "onAnimationStartCapture",
+      "required": false,
+      "type": "(event: AnimationEvent<HTMLAnchorElement>) => void",
+    },
+    "onAuxClick": Object {
+      "propName": "onAuxClick",
+      "required": false,
+      "type": "(event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void",
+    },
+    "onAuxClickCapture": Object {
+      "propName": "onAuxClickCapture",
+      "required": false,
+      "type": "(event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void",
+    },
+    "onBeforeInput": Object {
+      "propName": "onBeforeInput",
+      "required": false,
+      "type": "(event: FormEvent<HTMLAnchorElement>) => void",
+    },
+    "onBeforeInputCapture": Object {
+      "propName": "onBeforeInputCapture",
+      "required": false,
+      "type": "(event: FormEvent<HTMLAnchorElement>) => void",
+    },
+    "onBlur": Object {
+      "propName": "onBlur",
+      "required": false,
+      "type": "(event: FocusEvent<HTMLAnchorElement>) => void",
+    },
+    "onBlurCapture": Object {
+      "propName": "onBlurCapture",
+      "required": false,
+      "type": "(event: FocusEvent<HTMLAnchorElement>) => void",
+    },
+    "onCanPlay": Object {
+      "propName": "onCanPlay",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLAnchorElement, Event>) => void",
+    },
+    "onCanPlayCapture": Object {
+      "propName": "onCanPlayCapture",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLAnchorElement, Event>) => void",
+    },
+    "onCanPlayThrough": Object {
+      "propName": "onCanPlayThrough",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLAnchorElement, Event>) => void",
+    },
+    "onCanPlayThroughCapture": Object {
+      "propName": "onCanPlayThroughCapture",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLAnchorElement, Event>) => void",
+    },
+    "onChange": Object {
+      "propName": "onChange",
+      "required": false,
+      "type": "(event: FormEvent<HTMLAnchorElement>) => void",
+    },
+    "onChangeCapture": Object {
+      "propName": "onChangeCapture",
+      "required": false,
+      "type": "(event: FormEvent<HTMLAnchorElement>) => void",
+    },
+    "onClick": Object {
+      "propName": "onClick",
+      "required": false,
+      "type": "(event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void",
+    },
+    "onClickCapture": Object {
+      "propName": "onClickCapture",
+      "required": false,
+      "type": "(event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void",
+    },
+    "onCompositionEnd": Object {
+      "propName": "onCompositionEnd",
+      "required": false,
+      "type": "(event: CompositionEvent<HTMLAnchorElement>) => void",
+    },
+    "onCompositionEndCapture": Object {
+      "propName": "onCompositionEndCapture",
+      "required": false,
+      "type": "(event: CompositionEvent<HTMLAnchorElement>) => void",
+    },
+    "onCompositionStart": Object {
+      "propName": "onCompositionStart",
+      "required": false,
+      "type": "(event: CompositionEvent<HTMLAnchorElement>) => void",
+    },
+    "onCompositionStartCapture": Object {
+      "propName": "onCompositionStartCapture",
+      "required": false,
+      "type": "(event: CompositionEvent<HTMLAnchorElement>) => void",
+    },
+    "onCompositionUpdate": Object {
+      "propName": "onCompositionUpdate",
+      "required": false,
+      "type": "(event: CompositionEvent<HTMLAnchorElement>) => void",
+    },
+    "onCompositionUpdateCapture": Object {
+      "propName": "onCompositionUpdateCapture",
+      "required": false,
+      "type": "(event: CompositionEvent<HTMLAnchorElement>) => void",
+    },
+    "onContextMenu": Object {
+      "propName": "onContextMenu",
+      "required": false,
+      "type": "(event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void",
+    },
+    "onContextMenuCapture": Object {
+      "propName": "onContextMenuCapture",
+      "required": false,
+      "type": "(event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void",
+    },
+    "onCopy": Object {
+      "propName": "onCopy",
+      "required": false,
+      "type": "(event: ClipboardEvent<HTMLAnchorElement>) => void",
+    },
+    "onCopyCapture": Object {
+      "propName": "onCopyCapture",
+      "required": false,
+      "type": "(event: ClipboardEvent<HTMLAnchorElement>) => void",
+    },
+    "onCut": Object {
+      "propName": "onCut",
+      "required": false,
+      "type": "(event: ClipboardEvent<HTMLAnchorElement>) => void",
+    },
+    "onCutCapture": Object {
+      "propName": "onCutCapture",
+      "required": false,
+      "type": "(event: ClipboardEvent<HTMLAnchorElement>) => void",
+    },
+    "onDoubleClick": Object {
+      "propName": "onDoubleClick",
+      "required": false,
+      "type": "(event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void",
+    },
+    "onDoubleClickCapture": Object {
+      "propName": "onDoubleClickCapture",
+      "required": false,
+      "type": "(event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void",
+    },
+    "onDrag": Object {
+      "propName": "onDrag",
+      "required": false,
+      "type": "(event: DragEvent<HTMLAnchorElement>) => void",
+    },
+    "onDragCapture": Object {
+      "propName": "onDragCapture",
+      "required": false,
+      "type": "(event: DragEvent<HTMLAnchorElement>) => void",
+    },
+    "onDragEnd": Object {
+      "propName": "onDragEnd",
+      "required": false,
+      "type": "(event: DragEvent<HTMLAnchorElement>) => void",
+    },
+    "onDragEndCapture": Object {
+      "propName": "onDragEndCapture",
+      "required": false,
+      "type": "(event: DragEvent<HTMLAnchorElement>) => void",
+    },
+    "onDragEnter": Object {
+      "propName": "onDragEnter",
+      "required": false,
+      "type": "(event: DragEvent<HTMLAnchorElement>) => void",
+    },
+    "onDragEnterCapture": Object {
+      "propName": "onDragEnterCapture",
+      "required": false,
+      "type": "(event: DragEvent<HTMLAnchorElement>) => void",
+    },
+    "onDragExit": Object {
+      "propName": "onDragExit",
+      "required": false,
+      "type": "(event: DragEvent<HTMLAnchorElement>) => void",
+    },
+    "onDragExitCapture": Object {
+      "propName": "onDragExitCapture",
+      "required": false,
+      "type": "(event: DragEvent<HTMLAnchorElement>) => void",
+    },
+    "onDragLeave": Object {
+      "propName": "onDragLeave",
+      "required": false,
+      "type": "(event: DragEvent<HTMLAnchorElement>) => void",
+    },
+    "onDragLeaveCapture": Object {
+      "propName": "onDragLeaveCapture",
+      "required": false,
+      "type": "(event: DragEvent<HTMLAnchorElement>) => void",
+    },
+    "onDragOver": Object {
+      "propName": "onDragOver",
+      "required": false,
+      "type": "(event: DragEvent<HTMLAnchorElement>) => void",
+    },
+    "onDragOverCapture": Object {
+      "propName": "onDragOverCapture",
+      "required": false,
+      "type": "(event: DragEvent<HTMLAnchorElement>) => void",
+    },
+    "onDragStart": Object {
+      "propName": "onDragStart",
+      "required": false,
+      "type": "(event: DragEvent<HTMLAnchorElement>) => void",
+    },
+    "onDragStartCapture": Object {
+      "propName": "onDragStartCapture",
+      "required": false,
+      "type": "(event: DragEvent<HTMLAnchorElement>) => void",
+    },
+    "onDrop": Object {
+      "propName": "onDrop",
+      "required": false,
+      "type": "(event: DragEvent<HTMLAnchorElement>) => void",
+    },
+    "onDropCapture": Object {
+      "propName": "onDropCapture",
+      "required": false,
+      "type": "(event: DragEvent<HTMLAnchorElement>) => void",
+    },
+    "onDurationChange": Object {
+      "propName": "onDurationChange",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLAnchorElement, Event>) => void",
+    },
+    "onDurationChangeCapture": Object {
+      "propName": "onDurationChangeCapture",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLAnchorElement, Event>) => void",
+    },
+    "onEmptied": Object {
+      "propName": "onEmptied",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLAnchorElement, Event>) => void",
+    },
+    "onEmptiedCapture": Object {
+      "propName": "onEmptiedCapture",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLAnchorElement, Event>) => void",
+    },
+    "onEncrypted": Object {
+      "propName": "onEncrypted",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLAnchorElement, Event>) => void",
+    },
+    "onEncryptedCapture": Object {
+      "propName": "onEncryptedCapture",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLAnchorElement, Event>) => void",
+    },
+    "onEnded": Object {
+      "propName": "onEnded",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLAnchorElement, Event>) => void",
+    },
+    "onEndedCapture": Object {
+      "propName": "onEndedCapture",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLAnchorElement, Event>) => void",
+    },
+    "onError": Object {
+      "propName": "onError",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLAnchorElement, Event>) => void",
+    },
+    "onErrorCapture": Object {
+      "propName": "onErrorCapture",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLAnchorElement, Event>) => void",
+    },
+    "onFocus": Object {
+      "propName": "onFocus",
+      "required": false,
+      "type": "(event: FocusEvent<HTMLAnchorElement>) => void",
+    },
+    "onFocusCapture": Object {
+      "propName": "onFocusCapture",
+      "required": false,
+      "type": "(event: FocusEvent<HTMLAnchorElement>) => void",
+    },
+    "onGotPointerCapture": Object {
+      "propName": "onGotPointerCapture",
+      "required": false,
+      "type": "(event: PointerEvent<HTMLAnchorElement>) => void",
+    },
+    "onGotPointerCaptureCapture": Object {
+      "propName": "onGotPointerCaptureCapture",
+      "required": false,
+      "type": "(event: PointerEvent<HTMLAnchorElement>) => void",
+    },
+    "onInput": Object {
+      "propName": "onInput",
+      "required": false,
+      "type": "(event: FormEvent<HTMLAnchorElement>) => void",
+    },
+    "onInputCapture": Object {
+      "propName": "onInputCapture",
+      "required": false,
+      "type": "(event: FormEvent<HTMLAnchorElement>) => void",
+    },
+    "onInvalid": Object {
+      "propName": "onInvalid",
+      "required": false,
+      "type": "(event: FormEvent<HTMLAnchorElement>) => void",
+    },
+    "onInvalidCapture": Object {
+      "propName": "onInvalidCapture",
+      "required": false,
+      "type": "(event: FormEvent<HTMLAnchorElement>) => void",
+    },
+    "onKeyDown": Object {
+      "propName": "onKeyDown",
+      "required": false,
+      "type": "(event: KeyboardEvent<HTMLAnchorElement>) => void",
+    },
+    "onKeyDownCapture": Object {
+      "propName": "onKeyDownCapture",
+      "required": false,
+      "type": "(event: KeyboardEvent<HTMLAnchorElement>) => void",
+    },
+    "onKeyPress": Object {
+      "propName": "onKeyPress",
+      "required": false,
+      "type": "(event: KeyboardEvent<HTMLAnchorElement>) => void",
+    },
+    "onKeyPressCapture": Object {
+      "propName": "onKeyPressCapture",
+      "required": false,
+      "type": "(event: KeyboardEvent<HTMLAnchorElement>) => void",
+    },
+    "onKeyUp": Object {
+      "propName": "onKeyUp",
+      "required": false,
+      "type": "(event: KeyboardEvent<HTMLAnchorElement>) => void",
+    },
+    "onKeyUpCapture": Object {
+      "propName": "onKeyUpCapture",
+      "required": false,
+      "type": "(event: KeyboardEvent<HTMLAnchorElement>) => void",
+    },
+    "onLoad": Object {
+      "propName": "onLoad",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLAnchorElement, Event>) => void",
+    },
+    "onLoadCapture": Object {
+      "propName": "onLoadCapture",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLAnchorElement, Event>) => void",
+    },
+    "onLoadStart": Object {
+      "propName": "onLoadStart",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLAnchorElement, Event>) => void",
+    },
+    "onLoadStartCapture": Object {
+      "propName": "onLoadStartCapture",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLAnchorElement, Event>) => void",
+    },
+    "onLoadedData": Object {
+      "propName": "onLoadedData",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLAnchorElement, Event>) => void",
+    },
+    "onLoadedDataCapture": Object {
+      "propName": "onLoadedDataCapture",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLAnchorElement, Event>) => void",
+    },
+    "onLoadedMetadata": Object {
+      "propName": "onLoadedMetadata",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLAnchorElement, Event>) => void",
+    },
+    "onLoadedMetadataCapture": Object {
+      "propName": "onLoadedMetadataCapture",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLAnchorElement, Event>) => void",
+    },
+    "onLostPointerCapture": Object {
+      "propName": "onLostPointerCapture",
+      "required": false,
+      "type": "(event: PointerEvent<HTMLAnchorElement>) => void",
+    },
+    "onLostPointerCaptureCapture": Object {
+      "propName": "onLostPointerCaptureCapture",
+      "required": false,
+      "type": "(event: PointerEvent<HTMLAnchorElement>) => void",
+    },
+    "onMouseDown": Object {
+      "propName": "onMouseDown",
+      "required": false,
+      "type": "(event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void",
+    },
+    "onMouseDownCapture": Object {
+      "propName": "onMouseDownCapture",
+      "required": false,
+      "type": "(event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void",
+    },
+    "onMouseEnter": Object {
+      "propName": "onMouseEnter",
+      "required": false,
+      "type": "(event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void",
+    },
+    "onMouseLeave": Object {
+      "propName": "onMouseLeave",
+      "required": false,
+      "type": "(event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void",
+    },
+    "onMouseMove": Object {
+      "propName": "onMouseMove",
+      "required": false,
+      "type": "(event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void",
+    },
+    "onMouseMoveCapture": Object {
+      "propName": "onMouseMoveCapture",
+      "required": false,
+      "type": "(event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void",
+    },
+    "onMouseOut": Object {
+      "propName": "onMouseOut",
+      "required": false,
+      "type": "(event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void",
+    },
+    "onMouseOutCapture": Object {
+      "propName": "onMouseOutCapture",
+      "required": false,
+      "type": "(event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void",
+    },
+    "onMouseOver": Object {
+      "propName": "onMouseOver",
+      "required": false,
+      "type": "(event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void",
+    },
+    "onMouseOverCapture": Object {
+      "propName": "onMouseOverCapture",
+      "required": false,
+      "type": "(event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void",
+    },
+    "onMouseUp": Object {
+      "propName": "onMouseUp",
+      "required": false,
+      "type": "(event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void",
+    },
+    "onMouseUpCapture": Object {
+      "propName": "onMouseUpCapture",
+      "required": false,
+      "type": "(event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void",
+    },
+    "onPaste": Object {
+      "propName": "onPaste",
+      "required": false,
+      "type": "(event: ClipboardEvent<HTMLAnchorElement>) => void",
+    },
+    "onPasteCapture": Object {
+      "propName": "onPasteCapture",
+      "required": false,
+      "type": "(event: ClipboardEvent<HTMLAnchorElement>) => void",
+    },
+    "onPause": Object {
+      "propName": "onPause",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLAnchorElement, Event>) => void",
+    },
+    "onPauseCapture": Object {
+      "propName": "onPauseCapture",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLAnchorElement, Event>) => void",
+    },
+    "onPlay": Object {
+      "propName": "onPlay",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLAnchorElement, Event>) => void",
+    },
+    "onPlayCapture": Object {
+      "propName": "onPlayCapture",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLAnchorElement, Event>) => void",
+    },
+    "onPlaying": Object {
+      "propName": "onPlaying",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLAnchorElement, Event>) => void",
+    },
+    "onPlayingCapture": Object {
+      "propName": "onPlayingCapture",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLAnchorElement, Event>) => void",
+    },
+    "onPointerCancel": Object {
+      "propName": "onPointerCancel",
+      "required": false,
+      "type": "(event: PointerEvent<HTMLAnchorElement>) => void",
+    },
+    "onPointerCancelCapture": Object {
+      "propName": "onPointerCancelCapture",
+      "required": false,
+      "type": "(event: PointerEvent<HTMLAnchorElement>) => void",
+    },
+    "onPointerDown": Object {
+      "propName": "onPointerDown",
+      "required": false,
+      "type": "(event: PointerEvent<HTMLAnchorElement>) => void",
+    },
+    "onPointerDownCapture": Object {
+      "propName": "onPointerDownCapture",
+      "required": false,
+      "type": "(event: PointerEvent<HTMLAnchorElement>) => void",
+    },
+    "onPointerEnter": Object {
+      "propName": "onPointerEnter",
+      "required": false,
+      "type": "(event: PointerEvent<HTMLAnchorElement>) => void",
+    },
+    "onPointerEnterCapture": Object {
+      "propName": "onPointerEnterCapture",
+      "required": false,
+      "type": "(event: PointerEvent<HTMLAnchorElement>) => void",
+    },
+    "onPointerLeave": Object {
+      "propName": "onPointerLeave",
+      "required": false,
+      "type": "(event: PointerEvent<HTMLAnchorElement>) => void",
+    },
+    "onPointerLeaveCapture": Object {
+      "propName": "onPointerLeaveCapture",
+      "required": false,
+      "type": "(event: PointerEvent<HTMLAnchorElement>) => void",
+    },
+    "onPointerMove": Object {
+      "propName": "onPointerMove",
+      "required": false,
+      "type": "(event: PointerEvent<HTMLAnchorElement>) => void",
+    },
+    "onPointerMoveCapture": Object {
+      "propName": "onPointerMoveCapture",
+      "required": false,
+      "type": "(event: PointerEvent<HTMLAnchorElement>) => void",
+    },
+    "onPointerOut": Object {
+      "propName": "onPointerOut",
+      "required": false,
+      "type": "(event: PointerEvent<HTMLAnchorElement>) => void",
+    },
+    "onPointerOutCapture": Object {
+      "propName": "onPointerOutCapture",
+      "required": false,
+      "type": "(event: PointerEvent<HTMLAnchorElement>) => void",
+    },
+    "onPointerOver": Object {
+      "propName": "onPointerOver",
+      "required": false,
+      "type": "(event: PointerEvent<HTMLAnchorElement>) => void",
+    },
+    "onPointerOverCapture": Object {
+      "propName": "onPointerOverCapture",
+      "required": false,
+      "type": "(event: PointerEvent<HTMLAnchorElement>) => void",
+    },
+    "onPointerUp": Object {
+      "propName": "onPointerUp",
+      "required": false,
+      "type": "(event: PointerEvent<HTMLAnchorElement>) => void",
+    },
+    "onPointerUpCapture": Object {
+      "propName": "onPointerUpCapture",
+      "required": false,
+      "type": "(event: PointerEvent<HTMLAnchorElement>) => void",
+    },
+    "onProgress": Object {
+      "propName": "onProgress",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLAnchorElement, Event>) => void",
+    },
+    "onProgressCapture": Object {
+      "propName": "onProgressCapture",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLAnchorElement, Event>) => void",
+    },
+    "onRateChange": Object {
+      "propName": "onRateChange",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLAnchorElement, Event>) => void",
+    },
+    "onRateChangeCapture": Object {
+      "propName": "onRateChangeCapture",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLAnchorElement, Event>) => void",
+    },
+    "onReset": Object {
+      "propName": "onReset",
+      "required": false,
+      "type": "(event: FormEvent<HTMLAnchorElement>) => void",
+    },
+    "onResetCapture": Object {
+      "propName": "onResetCapture",
+      "required": false,
+      "type": "(event: FormEvent<HTMLAnchorElement>) => void",
+    },
+    "onScroll": Object {
+      "propName": "onScroll",
+      "required": false,
+      "type": "(event: UIEvent<HTMLAnchorElement>) => void",
+    },
+    "onScrollCapture": Object {
+      "propName": "onScrollCapture",
+      "required": false,
+      "type": "(event: UIEvent<HTMLAnchorElement>) => void",
+    },
+    "onSeeked": Object {
+      "propName": "onSeeked",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLAnchorElement, Event>) => void",
+    },
+    "onSeekedCapture": Object {
+      "propName": "onSeekedCapture",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLAnchorElement, Event>) => void",
+    },
+    "onSeeking": Object {
+      "propName": "onSeeking",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLAnchorElement, Event>) => void",
+    },
+    "onSeekingCapture": Object {
+      "propName": "onSeekingCapture",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLAnchorElement, Event>) => void",
+    },
+    "onSelect": Object {
+      "propName": "onSelect",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLAnchorElement, Event>) => void",
+    },
+    "onSelectCapture": Object {
+      "propName": "onSelectCapture",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLAnchorElement, Event>) => void",
+    },
+    "onStalled": Object {
+      "propName": "onStalled",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLAnchorElement, Event>) => void",
+    },
+    "onStalledCapture": Object {
+      "propName": "onStalledCapture",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLAnchorElement, Event>) => void",
+    },
+    "onSubmit": Object {
+      "propName": "onSubmit",
+      "required": false,
+      "type": "(event: FormEvent<HTMLAnchorElement>) => void",
+    },
+    "onSubmitCapture": Object {
+      "propName": "onSubmitCapture",
+      "required": false,
+      "type": "(event: FormEvent<HTMLAnchorElement>) => void",
+    },
+    "onSuspend": Object {
+      "propName": "onSuspend",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLAnchorElement, Event>) => void",
+    },
+    "onSuspendCapture": Object {
+      "propName": "onSuspendCapture",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLAnchorElement, Event>) => void",
+    },
+    "onTimeUpdate": Object {
+      "propName": "onTimeUpdate",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLAnchorElement, Event>) => void",
+    },
+    "onTimeUpdateCapture": Object {
+      "propName": "onTimeUpdateCapture",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLAnchorElement, Event>) => void",
+    },
+    "onTouchCancel": Object {
+      "propName": "onTouchCancel",
+      "required": false,
+      "type": "(event: TouchEvent<HTMLAnchorElement>) => void",
+    },
+    "onTouchCancelCapture": Object {
+      "propName": "onTouchCancelCapture",
+      "required": false,
+      "type": "(event: TouchEvent<HTMLAnchorElement>) => void",
+    },
+    "onTouchEnd": Object {
+      "propName": "onTouchEnd",
+      "required": false,
+      "type": "(event: TouchEvent<HTMLAnchorElement>) => void",
+    },
+    "onTouchEndCapture": Object {
+      "propName": "onTouchEndCapture",
+      "required": false,
+      "type": "(event: TouchEvent<HTMLAnchorElement>) => void",
+    },
+    "onTouchMove": Object {
+      "propName": "onTouchMove",
+      "required": false,
+      "type": "(event: TouchEvent<HTMLAnchorElement>) => void",
+    },
+    "onTouchMoveCapture": Object {
+      "propName": "onTouchMoveCapture",
+      "required": false,
+      "type": "(event: TouchEvent<HTMLAnchorElement>) => void",
+    },
+    "onTouchStart": Object {
+      "propName": "onTouchStart",
+      "required": false,
+      "type": "(event: TouchEvent<HTMLAnchorElement>) => void",
+    },
+    "onTouchStartCapture": Object {
+      "propName": "onTouchStartCapture",
+      "required": false,
+      "type": "(event: TouchEvent<HTMLAnchorElement>) => void",
+    },
+    "onTransitionEnd": Object {
+      "propName": "onTransitionEnd",
+      "required": false,
+      "type": "(event: TransitionEvent<HTMLAnchorElement>) => void",
+    },
+    "onTransitionEndCapture": Object {
+      "propName": "onTransitionEndCapture",
+      "required": false,
+      "type": "(event: TransitionEvent<HTMLAnchorElement>) => void",
+    },
+    "onVolumeChange": Object {
+      "propName": "onVolumeChange",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLAnchorElement, Event>) => void",
+    },
+    "onVolumeChangeCapture": Object {
+      "propName": "onVolumeChangeCapture",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLAnchorElement, Event>) => void",
+    },
+    "onWaiting": Object {
+      "propName": "onWaiting",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLAnchorElement, Event>) => void",
+    },
+    "onWaitingCapture": Object {
+      "propName": "onWaitingCapture",
+      "required": false,
+      "type": "(event: SyntheticEvent<HTMLAnchorElement, Event>) => void",
+    },
+    "onWheel": Object {
+      "propName": "onWheel",
+      "required": false,
+      "type": "(event: WheelEvent<HTMLAnchorElement>) => void",
+    },
+    "onWheelCapture": Object {
+      "propName": "onWheelCapture",
+      "required": false,
+      "type": "(event: WheelEvent<HTMLAnchorElement>) => void",
+    },
+    "open": Object {
+      "propName": "open",
+      "required": false,
+      "type": "boolean",
+    },
+    "optimum": Object {
+      "propName": "optimum",
+      "required": false,
+      "type": "number",
+    },
+    "pattern": Object {
+      "propName": "pattern",
+      "required": false,
+      "type": "string",
+    },
+    "placeholder": Object {
+      "propName": "placeholder",
+      "required": false,
+      "type": "string",
+    },
+    "playsInline": Object {
+      "propName": "playsInline",
+      "required": false,
+      "type": "boolean",
+    },
+    "poster": Object {
+      "propName": "poster",
+      "required": false,
+      "type": "string",
+    },
+    "prefix": Object {
+      "propName": "prefix",
+      "required": false,
+      "type": "string",
+    },
+    "preload": Object {
+      "propName": "preload",
+      "required": false,
+      "type": "string",
+    },
+    "property": Object {
+      "propName": "property",
+      "required": false,
+      "type": "string",
+    },
+    "radioGroup": Object {
+      "propName": "radioGroup",
+      "required": false,
+      "type": "string",
+    },
+    "readOnly": Object {
+      "propName": "readOnly",
+      "required": false,
+      "type": "boolean",
+    },
+    "rel": Object {
+      "propName": "rel",
+      "required": false,
+      "type": "string",
+    },
+    "required": Object {
+      "propName": "required",
+      "required": false,
+      "type": "boolean",
+    },
+    "resource": Object {
+      "propName": "resource",
+      "required": false,
+      "type": "string",
+    },
+    "results": Object {
+      "propName": "results",
+      "required": false,
+      "type": "number",
+    },
+    "reversed": Object {
+      "propName": "reversed",
+      "required": false,
+      "type": "boolean",
+    },
+    "role": Object {
+      "propName": "role",
+      "required": false,
+      "type": "string",
+    },
+    "rowSpan": Object {
+      "propName": "rowSpan",
+      "required": false,
+      "type": "number",
+    },
+    "rows": Object {
+      "propName": "rows",
+      "required": false,
+      "type": "number",
+    },
+    "sandbox": Object {
+      "propName": "sandbox",
+      "required": false,
+      "type": "string",
+    },
+    "scope": Object {
+      "propName": "scope",
+      "required": false,
+      "type": "string",
+    },
+    "scoped": Object {
+      "propName": "scoped",
+      "required": false,
+      "type": "boolean",
+    },
+    "scrolling": Object {
+      "propName": "scrolling",
+      "required": false,
+      "type": "string",
+    },
+    "seamless": Object {
+      "propName": "seamless",
+      "required": false,
+      "type": "boolean",
+    },
+    "security": Object {
+      "propName": "security",
+      "required": false,
+      "type": "string",
+    },
+    "selected": Object {
+      "propName": "selected",
+      "required": false,
+      "type": "boolean",
+    },
+    "shape": Object {
+      "propName": "shape",
+      "required": false,
+      "type": "string",
+    },
+    "size": Object {
+      "propName": "size",
+      "required": false,
+      "type": "number",
+    },
+    "sizes": Object {
+      "propName": "sizes",
+      "required": false,
+      "type": "string",
+    },
+    "slot": Object {
+      "propName": "slot",
+      "required": false,
+      "type": "string",
+    },
+    "span": Object {
+      "propName": "span",
+      "required": false,
+      "type": "number",
+    },
+    "spellCheck": Object {
+      "propName": "spellCheck",
+      "required": false,
+      "type": "boolean",
+    },
+    "src": Object {
+      "propName": "src",
+      "required": false,
+      "type": "string",
+    },
+    "srcDoc": Object {
+      "propName": "srcDoc",
+      "required": false,
+      "type": "string",
+    },
+    "srcLang": Object {
+      "propName": "srcLang",
+      "required": false,
+      "type": "string",
+    },
+    "srcSet": Object {
+      "propName": "srcSet",
+      "required": false,
+      "type": "string",
+    },
+    "start": Object {
+      "propName": "start",
+      "required": false,
+      "type": "number",
+    },
+    "step": Object {
+      "propName": "step",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+        ],
+      },
+    },
+    "summary": Object {
+      "propName": "summary",
+      "required": false,
+      "type": "string",
+    },
+    "suppressContentEditableWarning": Object {
+      "propName": "suppressContentEditableWarning",
+      "required": false,
+      "type": "boolean",
+    },
+    "suppressHydrationWarning": Object {
+      "propName": "suppressHydrationWarning",
+      "required": false,
+      "type": "boolean",
+    },
+    "tabIndex": Object {
+      "propName": "tabIndex",
+      "required": false,
+      "type": "number",
+    },
+    "target": Object {
+      "propName": "target",
+      "required": false,
+      "type": "string",
+    },
+    "title": Object {
+      "propName": "title",
+      "required": false,
+      "type": "string",
+    },
+    "type": Object {
+      "propName": "type",
+      "required": false,
+      "type": "string",
+    },
+    "typeof": Object {
+      "propName": "typeof",
+      "required": false,
+      "type": "string",
+    },
+    "unselectable": Object {
+      "propName": "unselectable",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "\\"on\\"",
+          "\\"off\\"",
+        ],
+      },
+    },
+    "useMap": Object {
+      "propName": "useMap",
+      "required": false,
+      "type": "string",
+    },
+    "value": Object {
+      "propName": "value",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+          "string[]",
+        ],
+      },
+    },
+    "vocab": Object {
+      "propName": "vocab",
+      "required": false,
+      "type": "string",
+    },
+    "width": Object {
+      "propName": "width",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+        ],
+      },
+    },
+    "wmode": Object {
+      "propName": "wmode",
+      "required": false,
+      "type": "string",
+    },
+    "wrap": Object {
+      "propName": "wrap",
+      "required": false,
+      "type": "string",
+    },
+  },
+}
+`;
+
+exports[`public API TextLinkRenderer 1`] = `
+Object {
+  "props": Object {
+    "children": Object {
+      "propName": "children",
+      "required": true,
+      "type": "(styleProps: StyleProps) => ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>",
+    },
+    "inline": Object {
+      "propName": "inline",
+      "required": false,
+      "type": "boolean",
+    },
+  },
+}
+`;
+
+exports[`public API ThemeNameConsumer 1`] = `
+Object {
+  "props": Object {
+    "children": Object {
+      "propName": "children",
+      "required": true,
+      "type": "(name: string) => ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>",
+    },
+  },
+}
+`;
+
+exports[`public API ThemeProvider 1`] = `
+Object {
+  "props": Object {
+    "children": Object {
+      "propName": "children",
+      "required": true,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+          "false",
+          "true",
+          "{}",
+          "ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>",
+          "ReactNodeArray",
+          "ReactPortal",
+        ],
+      },
+    },
+    "theme": Object {
+      "propName": "theme",
+      "required": true,
+      "type": "Theme",
+    },
+  },
+}
+`;
+
+exports[`public API TickCircleIcon 1`] = `
+Object {
+  "props": Object {
+    "fill": Object {
+      "propName": "fill",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "\\"info\\"",
+          "\\"critical\\"",
+          "\\"positive\\"",
+          "\\"brandAccent\\"",
+          "\\"formAccent\\"",
+          "\\"formAccentDisabled\\"",
+          "\\"black\\"",
+          "\\"white\\"",
+          "\\"link\\"",
+          "\\"neutral\\"",
+          "\\"secondary\\"",
+          "\\"criticalContrast\\"",
+          "\\"positiveContrast\\"",
+          "\\"infoContrast\\"",
+          "\\"brandAccentForeground\\"",
+        ],
+      },
+    },
+    "inline": Object {
+      "propName": "inline",
+      "required": false,
+      "type": "boolean",
+    },
+    "size": Object {
+      "propName": "size",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "\\"fill\\"",
+          "\\"small\\"",
+          "\\"large\\"",
+          "\\"standard\\"",
+        ],
+      },
+    },
+  },
+}
+`;
+
+exports[`public API TickIcon 1`] = `
+Object {
+  "props": Object {
+    "fill": Object {
+      "propName": "fill",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "\\"info\\"",
+          "\\"critical\\"",
+          "\\"positive\\"",
+          "\\"brandAccent\\"",
+          "\\"formAccent\\"",
+          "\\"formAccentDisabled\\"",
+          "\\"black\\"",
+          "\\"white\\"",
+          "\\"link\\"",
+          "\\"neutral\\"",
+          "\\"secondary\\"",
+          "\\"criticalContrast\\"",
+          "\\"positiveContrast\\"",
+          "\\"infoContrast\\"",
+          "\\"brandAccentForeground\\"",
+        ],
+      },
+    },
+    "inline": Object {
+      "propName": "inline",
+      "required": false,
+      "type": "boolean",
+    },
+    "size": Object {
+      "propName": "size",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "\\"fill\\"",
+          "\\"small\\"",
+          "\\"large\\"",
+          "\\"standard\\"",
+        ],
+      },
+    },
+  },
+}
+`;
+
+exports[`public API useThemeName 1`] = `
+Object {
+  "props": Object {},
+}
+`;
