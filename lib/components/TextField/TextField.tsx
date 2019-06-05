@@ -1,4 +1,5 @@
 import React, { AllHTMLAttributes } from 'react';
+import { Omit } from 'utility-types';
 import { Box } from '../Box/Box';
 import { Field, FieldProps } from '../private/Field/Field';
 
@@ -13,7 +14,7 @@ const validTypes = {
 };
 
 type InputProps = AllHTMLAttributes<HTMLInputElement>;
-interface TextFieldProps extends FieldProps {
+interface TextFieldProps extends Omit<FieldProps, 'secondaryMessage'> {
   value: NonNullable<InputProps['value']>;
   type?: keyof typeof validTypes;
   onChange: NonNullable<InputProps['onChange']>;
@@ -23,31 +24,15 @@ interface TextFieldProps extends FieldProps {
 }
 
 export const TextField = ({
-  id,
-  name,
-  disabled,
-  label,
-  secondaryLabel,
-  tertiaryLabel,
-  message,
-  tone = 'neutral',
-  type = 'text',
   value,
+  type = 'text',
   onChange,
   onBlur,
   onFocus,
   placeholder,
+  ...restProps
 }: TextFieldProps) => (
-  <Field
-    id={id}
-    name={name}
-    disabled={disabled}
-    label={label}
-    secondaryLabel={secondaryLabel}
-    tertiaryLabel={tertiaryLabel}
-    tone={tone}
-    message={message}
-  >
+  <Field {...restProps} secondaryMessage={null}>
     {fieldProps => (
       <Box
         component="input"

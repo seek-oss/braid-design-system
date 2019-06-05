@@ -1,11 +1,12 @@
 import React, { CSSProperties, useContext, ReactElement } from 'react';
-import { useClassNames } from 'sku/treat';
+import { useStyles } from 'sku/react-treat';
+import classnames from 'classnames';
 import ActionsContext from '../Actions/ActionsContext';
 import { Text } from '../Text/Text';
 import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
-import * as styles from './TextLinkRenderer.treat';
 import useBox from '../../hooks/useBox';
 import { useTextColor, useTouchableSpace } from '../../hooks/typography';
+import * as styleRefs from './TextLinkRenderer.treat';
 
 interface StyleProps {
   style: CSSProperties;
@@ -21,13 +22,14 @@ export const TextLinkRenderer = ({
   inline = false,
   children,
 }: TextLinkRendererProps) => {
+  const styles = useStyles(styleRefs);
   const inActions = useContext(ActionsContext);
   const defaultStyles = [styles.root, useTextColor('link')];
 
   if (inline) {
     return children({
       style: {},
-      className: useClassNames(defaultStyles, useBox({ component: 'a' })),
+      className: classnames(defaultStyles, useBox({ component: 'a' })),
     });
   }
 
@@ -45,20 +47,17 @@ export const TextLinkRenderer = ({
 
     return (
       <Text baseline={false}>
-        <span className={useClassNames(styles.overlayContainer)}>
+        <span className={styles.overlayContainer}>
           {children({
             style: {},
-            className: useClassNames(
+            className: classnames(
               defaultStyles,
               touchableStyles,
               styles.button,
               actionStyles,
             ),
           })}
-          <FieldOverlay
-            variant="focus"
-            className={useClassNames(styles.focusOverlay)}
-          />
+          <FieldOverlay variant="focus" className={styles.focusOverlay} />
         </span>
       </Text>
     );
@@ -68,7 +67,7 @@ export const TextLinkRenderer = ({
     <Text baseline={false}>
       {children({
         style: {},
-        className: useClassNames(
+        className: classnames(
           defaultStyles,
           touchableStyles,
           useBox({

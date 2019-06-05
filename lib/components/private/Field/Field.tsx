@@ -1,26 +1,28 @@
 import React, { ReactNode, AllHTMLAttributes } from 'react';
-import { useClassNames } from 'sku/treat';
+import { useStyles } from 'sku/react-treat';
+import classnames from 'classnames';
 import { Box, BoxProps } from '../../Box/Box';
-import { FieldLabel } from '../../FieldLabel/FieldLabel';
+import { FieldLabel, FieldLabelProps } from '../../FieldLabel/FieldLabel';
 import {
   FieldMessage,
   FieldMessageProps,
 } from '../../FieldMessage/FieldMessage';
 import { FieldOverlay } from '../FieldOverlay/FieldOverlay';
-import * as styles from './Field.treat';
 import { useText, useTouchableSpace } from '../../../hooks/typography';
+import * as styleRefs from './Field.treat';
 
 type FormElementProps = AllHTMLAttributes<HTMLFormElement>;
 export interface FieldProps {
   id: NonNullable<FormElementProps['id']>;
   name?: FormElementProps['name'];
   disabled?: FormElementProps['disabled'];
-  label?: string;
-  secondaryLabel?: ReactNode;
-  tertiaryLabel?: ReactNode;
-  description?: string;
-  message?: ReactNode | false;
-  secondaryMessage?: ReactNode;
+  label?: FieldLabelProps['label'];
+  secondaryLabel?: FieldLabelProps['secondaryLabel'];
+  tertiaryLabel?: FieldLabelProps['tertiaryLabel'];
+  description?: FieldLabelProps['description'];
+  message?: FieldMessageProps['message'];
+  secondaryMessage?: FieldMessageProps['secondaryMessage'];
+  reserveMessageSpace?: FieldMessageProps['reserveMessageSpace'];
   tone?: FieldMessageProps['tone'];
 }
 
@@ -51,8 +53,10 @@ export const Field = ({
   children,
   message,
   secondaryMessage,
+  reserveMessageSpace = true,
   tone = 'neutral',
 }: InternalFieldProps) => {
+  const styles = useStyles(styleRefs);
   const messageId = `${id}-message`;
 
   return (
@@ -79,7 +83,7 @@ export const Field = ({
           borderRadius: 'standard',
           'aria-describedby': messageId,
           disabled,
-          className: useClassNames(
+          className: classnames(
             styles.field,
             useText({ size: 'standard', baseline: false }),
             useTouchableSpace('standard'),
@@ -94,6 +98,7 @@ export const Field = ({
         disabled={disabled}
         message={message}
         secondaryMessage={secondaryMessage}
+        reserveMessageSpace={reserveMessageSpace}
       />
     </Box>
   );

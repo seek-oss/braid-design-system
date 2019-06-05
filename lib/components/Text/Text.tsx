@@ -1,8 +1,9 @@
 import React, { ReactNode } from 'react';
-import { useClassNames } from 'sku/treat';
+import { useStyles } from 'sku/react-treat';
+import classnames from 'classnames';
 import { Box, BoxProps } from '../Box/Box';
-import * as styles from './Text.treat';
 import { useText, UseTextProps } from '../../hooks/typography';
+import * as styleRefs from './Text.treat';
 
 export interface TextProps extends Pick<BoxProps, 'component'> {
   children?: ReactNode;
@@ -20,13 +21,14 @@ export const Text = ({
   baseline = true,
   children,
 }: TextProps) => {
+  const styles = useStyles(styleRefs);
   const isListItem = typeof component === 'string' && /^li$/i.test(component);
 
   return (
     <Box
       display={!isListItem ? 'block' : undefined}
       component={component}
-      className={useClassNames(useText({ weight, size, baseline, color }), {
+      className={classnames(useText({ weight, size, baseline, color }), {
         [styles.listItem]: isListItem,
       })}
     >

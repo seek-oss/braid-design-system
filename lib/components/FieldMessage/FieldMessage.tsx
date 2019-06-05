@@ -1,34 +1,40 @@
 import React, { ReactNode } from 'react';
-import { useClassNames } from 'sku/treat';
+import { useStyles } from 'sku/react-treat';
+import classnames from 'classnames';
 import { Box } from '../Box/Box';
-import { Text, TextProps } from '../Text/Text';
+import { Text } from '../Text/Text';
 import { ErrorIcon } from '../icons/ErrorIcon/ErrorIcon';
 import { TickCircleIcon } from '../icons/TickCircleIcon/TickCircleIcon';
-import * as styles from './FieldMessage.treat';
+import { useThemeName } from '../ThemeNameConsumer/ThemeNameContext';
+import * as styleRefs from './FieldMessage.treat';
 
-type FieldTone = 'neutral' | 'critical' | 'positive';
+const tones = ['neutral', 'critical', 'positive'] as const;
+type FieldTone = typeof tones[number];
 
-export interface FieldMessageProps extends TextProps {
+export interface FieldMessageProps {
   id: string;
-  message: ReactNode | false;
+  message: ReactNode;
+  reserveMessageSpace?: boolean;
   tone?: FieldTone;
   secondaryMessage?: ReactNode;
   disabled?: boolean;
 }
 
 const renderIcon = (tone: FieldTone = 'neutral') => {
+  const styles = useStyles(styleRefs);
+
   if (tone === 'neutral') {
     return null;
   }
 
   const Icon: Record<FieldTone, ReactNode> = {
     neutral: null,
-    critical: <ErrorIcon fill="critical" inline />,
-    positive: <TickCircleIcon fill="positive" inline />,
+    critical: <ErrorIcon fill="critical" size="small" inline />,
+    positive: <TickCircleIcon fill="positive" size="small" inline />,
   };
 
   return (
-    <Box paddingRight="xxsmall" className={useClassNames(styles.fixedSize)}>
+    <Box paddingRight="xxsmall" className={styles.fixedSize}>
       {Icon[tone]}
     </Box>
   );
@@ -39,22 +45,35 @@ export const FieldMessage = ({
   tone = 'neutral',
   message,
   secondaryMessage,
+  reserveMessageSpace = true,
   disabled = false,
 }: FieldMessageProps) => {
-  if (message === false) {
+  if (tones.indexOf(tone) === -1) {
+    throw new Error(`Invalid tone: ${tone}`);
+  }
+
+  if (!message && !reserveMessageSpace) {
     return null;
   }
+
+  const styles = useStyles(styleRefs);
+
+  // Temporary switch to support maintaining a consistent UX
+  // while consumers migrate forms from seek-style-guide.
+  // Can be removed once we have form field parity and have
+  // given consumers the opportunity to migrate.
+  const isSeekAu = useThemeName() === 'seekAnz';
 
   return (
     <Box
       id={id}
-      paddingBottom="small"
+      paddingBottom={isSeekAu ? 'xxsmall' : 'xsmall'}
       display="flex"
-      className={useClassNames(styles.root)}
+      className={classnames(styles.root, styles.minHeight)}
     >
-      <Box className={useClassNames(styles.minHeight, styles.grow)}>
+      <Box className={styles.grow}>
         {disabled ? null : (
-          <Text color={tone}>
+          <Text size="small" color={tone === 'neutral' ? 'secondary' : tone}>
             <Box display="flex">
               {renderIcon(tone)}
               {message}
@@ -63,7 +82,7 @@ export const FieldMessage = ({
         )}
       </Box>
       {secondaryMessage && !disabled ? (
-        <Box paddingLeft="xsmall" className={useClassNames(styles.fixedSize)}>
+        <Box paddingLeft="xsmall" className={styles.fixedSize}>
           {secondaryMessage}
         </Box>
       ) : null}

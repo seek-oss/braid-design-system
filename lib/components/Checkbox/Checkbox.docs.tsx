@@ -19,7 +19,7 @@ const docs: ComponentDocs = {
           checked={false}
           onChange={handler}
           label="Label"
-          message={false}
+          reserveMessageSpace={false}
         />
       ),
     },
@@ -31,7 +31,7 @@ const docs: ComponentDocs = {
           checked={true}
           onChange={handler}
           label="Label"
-          message={false}
+          reserveMessageSpace={false}
         />
       ),
     },
@@ -44,7 +44,7 @@ const docs: ComponentDocs = {
           checked={false}
           onChange={handler}
           label="Label"
-          message={false}
+          reserveMessageSpace={false}
         />
       ),
     },
@@ -62,19 +62,6 @@ const docs: ComponentDocs = {
       ),
     },
     {
-      label: 'Positive Checkbox',
-      render: ({ id, handler }) => (
-        <Checkbox
-          id={id}
-          checked={false}
-          onChange={handler}
-          label="Label"
-          message="This is a positive message"
-          tone="positive"
-        />
-      ),
-    },
-    {
       label: 'Nested Checkbox',
       render: ({ id, handler }) => (
         <Checkbox
@@ -82,7 +69,7 @@ const docs: ComponentDocs = {
           checked={true}
           onChange={handler}
           label="Label"
-          message={false}
+          reserveMessageSpace={false}
         >
           <Text>This text is visible when the checkbox is checked.</Text>
         </Checkbox>

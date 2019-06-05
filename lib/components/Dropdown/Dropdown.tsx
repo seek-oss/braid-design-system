@@ -4,18 +4,20 @@ import React, {
   Children,
   isValidElement,
 } from 'react';
-import { useClassNames } from 'sku/treat';
+import { useStyles } from 'sku/react-treat';
+import classnames from 'classnames';
+import { Omit } from 'utility-types';
 import { Box } from '../Box/Box';
 import { Field, FieldProps } from '../private/Field/Field';
-import * as styles from './Dropdown.treat';
 import { ChevronIcon } from '../icons/ChevronIcon/ChevronIcon';
 import { useTextColor } from '../../hooks/typography';
+import * as styleRefs from './Dropdown.treat';
 
 type ValidDropdownChildren = AllHTMLAttributes<
   HTMLOptionElement | HTMLOptGroupElement
 >;
 type SelectProps = AllHTMLAttributes<HTMLSelectElement>;
-interface DropdownProps extends FieldProps {
+interface DropdownProps extends Omit<FieldProps, 'secondaryMessage'> {
   children: ValidDropdownChildren[] | ValidDropdownChildren;
   value: NonNullable<SelectProps['value']>;
   onChange: NonNullable<SelectProps['onChange']>;
@@ -35,22 +37,19 @@ const getColor = (
   return 'neutral';
 };
 
-export const Dropdown = ({
-  id,
-  name,
-  disabled,
-  label,
-  secondaryLabel,
-  tertiaryLabel,
-  message,
-  tone = 'neutral',
-  children,
-  value,
-  onChange,
-  onBlur,
-  onFocus,
-  placeholder,
-}: DropdownProps) => {
+export const Dropdown = (props: DropdownProps) => {
+  const {
+    children,
+    value,
+    onChange,
+    onBlur,
+    onFocus,
+    placeholder,
+    ...restProps
+  } = props;
+
+  const styles = useStyles(styleRefs);
+
   Children.forEach(children, child => {
     if (!(isValidElement(child) && /^(option|optgroup)$/.test(child.type))) {
       throw new Error(
@@ -60,16 +59,7 @@ export const Dropdown = ({
   });
 
   return (
-    <Field
-      id={id}
-      name={name}
-      disabled={disabled}
-      label={label}
-      secondaryLabel={secondaryLabel}
-      tertiaryLabel={tertiaryLabel}
-      tone={tone}
-      message={message}
-    >
+    <Field {...restProps} secondaryMessage={null}>
       {({ className, paddingLeft, paddingRight, ...fieldProps }) => (
         <Fragment>
           <Box
@@ -80,7 +70,7 @@ export const Dropdown = ({
             onBlur={onBlur}
             onFocus={onFocus}
             placeholder={placeholder}
-            className={useClassNames(
+            className={classnames(
               styles.field,
               className,
               useTextColor(getColor(placeholder, value)),
@@ -96,7 +86,7 @@ export const Dropdown = ({
             paddingLeft={paddingLeft}
             paddingRight={paddingRight}
             display="flex"
-            className={useClassNames(styles.chevron)}
+            className={styles.chevron}
           >
             <ChevronIcon inline />
           </Box>

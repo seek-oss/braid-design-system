@@ -1,8 +1,9 @@
 import React, { ComponentType } from 'react';
-import { useClassNames } from 'sku/treat';
+import { useStyles } from 'sku/react-treat';
+import classnames from 'classnames';
 import { Box } from '../../Box/Box';
-import * as styles from './Icon.treat';
 import { useTextColor, UseTextProps } from '../../../hooks/typography';
+import * as styleRefs from './Icon.treat';
 
 type IconSize = NonNullable<UseTextProps['size']> | 'fill';
 
@@ -14,6 +15,8 @@ export interface IconProps {
 }
 
 const resolveSizeClasses = (size: IconSize, inline: boolean) => {
+  const styles = useStyles(styleRefs);
+
   if (size === 'fill') {
     return styles.fullHeight;
   }
@@ -28,15 +31,19 @@ export const Icon = ({
   svgComponent,
   inline = false,
   fill,
-}: IconProps) => (
-  <Box
-    component={svgComponent}
-    width={size === 'fill' ? 'full' : undefined}
-    display={inline ? 'inlineBlock' : 'block'}
-    className={useClassNames(
-      resolveSizeClasses(size, inline),
-      styles.currentColor,
-      fill ? useTextColor(fill) : null,
-    )}
-  />
-);
+}: IconProps) => {
+  const styles = useStyles(styleRefs);
+
+  return (
+    <Box
+      component={svgComponent}
+      width={size === 'fill' ? 'full' : undefined}
+      display={inline ? 'inlineBlock' : 'block'}
+      className={classnames(
+        resolveSizeClasses(size, inline),
+        styles.currentColor,
+        fill ? useTextColor(fill) : null,
+      )}
+    />
+  );
+};

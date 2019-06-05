@@ -1,12 +1,14 @@
 import React, { ReactNode, AllHTMLAttributes } from 'react';
-import { useClassNames } from 'sku/treat';
+import { useStyles } from 'sku/react-treat';
+import classnames from 'classnames';
+import { Omit } from 'utility-types';
 import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';
-import * as styles from './TextArea.treat';
 import { Field, FieldProps } from '../private/Field/Field';
+import * as styleRefs from './TextArea.treat';
 
 type NativeTextAreaProps = AllHTMLAttributes<HTMLTextAreaElement>;
-interface TextAreaProps extends FieldProps {
+interface TextAreaProps extends Omit<FieldProps, 'secondaryMessage'> {
   value: NonNullable<NativeTextAreaProps['value']>;
   onChange: NonNullable<NativeTextAreaProps['onChange']>;
   onBlur?: NativeTextAreaProps['onBlur'];
@@ -34,49 +36,37 @@ const renderCount = ({
 };
 
 export const TextArea = ({
-  id,
-  name,
-  disabled,
-  label,
-  secondaryLabel,
-  tertiaryLabel,
-  description,
-  message,
-  tone = 'neutral',
   value,
   onChange,
   onBlur,
   onFocus,
   placeholder,
   limit,
-}: TextAreaProps) => (
-  <Field
-    id={id}
-    name={name}
-    disabled={disabled}
-    label={label}
-    secondaryLabel={secondaryLabel}
-    tertiaryLabel={tertiaryLabel}
-    description={description}
-    tone={tone}
-    message={message}
-    secondaryMessage={renderCount({
-      limit,
-      value,
-    })}
-  >
-    {({ className, ...fieldProps }) => (
-      <Box
-        component="textarea"
-        rows={3}
-        value={value}
-        onChange={onChange}
-        onBlur={onBlur}
-        onFocus={onFocus}
-        placeholder={placeholder}
-        className={useClassNames(styles.field, className)}
-        {...fieldProps}
-      />
-    )}
-  </Field>
-);
+  ...restProps
+}: TextAreaProps) => {
+  const styles = useStyles(styleRefs);
+
+  return (
+    <Field
+      {...restProps}
+      secondaryMessage={renderCount({
+        limit,
+        value,
+      })}
+    >
+      {({ className, ...fieldProps }) => (
+        <Box
+          component="textarea"
+          rows={3}
+          value={value}
+          onChange={onChange}
+          onBlur={onBlur}
+          onFocus={onFocus}
+          placeholder={placeholder}
+          className={classnames(styles.field, className)}
+          {...fieldProps}
+        />
+      )}
+    </Field>
+  );
+};
