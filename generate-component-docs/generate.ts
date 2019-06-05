@@ -56,16 +56,12 @@ export default () => {
     const callSignatures = type.getCallSignatures();
 
     if (callSignatures.length) {
-      // Could be a stateless component.  Is a function, so the props object we're interested
-      // in is the (only) parameter.
-
       for (const sig of callSignatures) {
         const params = sig.getParameters();
         if (params.length === 0) {
           continue;
         }
-        // Maybe we could check return type instead,
-        // but not sure if Element, ReactElement<T> are all possible values
+
         const propsParam = params[0];
         if (propsParam.name === 'props' || params.length === 1) {
           return propsParam;
