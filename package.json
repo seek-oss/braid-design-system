@@ -9,11 +9,12 @@
   "scripts": {
     "check-integrity": "yarn check --integrity && echo 'Ignore paths from lint-staged'",
     "pretest": "sku configure",
-    "test": "yarn check --integrity && yarn lint && yarn build",
+    "test": "yarn check --integrity && yarn lint && yarn build && yarn contract-test",
+    "contract-test": "sku test contract",
     "start": "concurrently \"sku start\" \"OPEN_TAB=false sku playroom\"",
     "lint": "sku lint",
     "format": "sku format",
-    "generate-component-docs": "node lib/componentDocs/generateComponentDocs.js",
+    "generate-component-docs": "ts-node generate-component-docs",
     "prelint": "yarn generate-component-docs",
     "prestart": "yarn generate-component-docs",
     "prebuild": "yarn generate-component-docs",
@@ -94,13 +95,11 @@
     "concurrently": "^4.1.0",
     "cz-conventional-changelog": "^2.1.0",
     "dedent": "0.7.0",
-    "fast-glob": "^2.2.4",
     "focus-visible": "^4.1.5",
     "gh-pages": "^2.0.1",
     "husky": "^1.1.3",
     "lint-staged": "^8.0.4",
     "react": "^16.8.4",
-    "react-docgen-typescript": "^1.12.1",
     "react-dom": "^16.8.4",
     "react-element-to-jsx-string": "^14.0.1",
     "react-router": "^4.3.1",
@@ -111,7 +110,8 @@
     "semantic-release": "^15.13.3",
     "sku": "8.7.0",
     "surge": "^0.20.1",
-    "travis-deploy-once": "^5.0.9"
+    "travis-deploy-once": "^5.0.9",
+    "ts-node": "^8.2.0"
   },
   "toolchain": {
     "node": "10.15.1",
