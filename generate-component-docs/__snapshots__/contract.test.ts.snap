@@ -2362,6 +2362,17 @@ Object {
       "required": false,
       "type": "boolean",
     },
+    "ref": Object {
+      "propName": "ref",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "(instance: HTMLElement | null) => void",
+          "RefObject<HTMLElement>",
+        ],
+      },
+    },
     "rel": Object {
       "propName": "rel",
       "required": false,
@@ -2813,6 +2824,17 @@ Object {
       "required": true,
       "type": "(event: FormEvent<HTMLFormElement>) => void",
     },
+    "ref": Object {
+      "propName": "ref",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "(instance: HTMLInputElement | null) => void",
+          "RefObject<HTMLInputElement>",
+        ],
+      },
+    },
     "reserveMessageSpace": Object {
       "propName": "reserveMessageSpace",
       "required": false,
@@ -2958,6 +2980,11 @@ Object {
 exports[`Public API Contract Dropdown 1`] = `
 Object {
   "props": Object {
+    "autoComplete": Object {
+      "propName": "autoComplete",
+      "required": false,
+      "type": "string",
+    },
     "children": Object {
       "propName": "children",
       "required": true,
@@ -2968,6 +2995,11 @@ Object {
           "AllHTMLAttributes<HTMLOptGroupElement | HTMLOptionElement>[]",
         ],
       },
+    },
+    "data": Object {
+      "propName": "data",
+      "required": false,
+      "type": "object",
     },
     "description": Object {
       "propName": "description",
@@ -3054,6 +3086,17 @@ Object {
       "propName": "placeholder",
       "required": false,
       "type": "string",
+    },
+    "ref": Object {
+      "propName": "ref",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "(instance: HTMLSelectElement | null) => void",
+          "RefObject<HTMLSelectElement>",
+        ],
+      },
     },
     "reserveMessageSpace": Object {
       "propName": "reserveMessageSpace",
@@ -3710,6 +3753,17 @@ Object {
       "required": true,
       "type": "(event: FormEvent<HTMLFormElement>) => void",
     },
+    "ref": Object {
+      "propName": "ref",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "(instance: HTMLInputElement | null) => void",
+          "RefObject<HTMLInputElement>",
+        ],
+      },
+    },
     "tone": Object {
       "propName": "tone",
       "required": false,
@@ -4049,6 +4103,16 @@ Object {
 exports[`Public API Contract TextArea 1`] = `
 Object {
   "props": Object {
+    "autoComplete": Object {
+      "propName": "autoComplete",
+      "required": false,
+      "type": "string",
+    },
+    "data": Object {
+      "propName": "data",
+      "required": false,
+      "type": "object",
+    },
     "description": Object {
       "propName": "description",
       "required": false,
@@ -4140,6 +4204,17 @@ Object {
       "required": false,
       "type": "string",
     },
+    "ref": Object {
+      "propName": "ref",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "(instance: HTMLTextAreaElement | null) => void",
+          "RefObject<HTMLTextAreaElement>",
+        ],
+      },
+    },
     "reserveMessageSpace": Object {
       "propName": "reserveMessageSpace",
       "required": false,
@@ -4210,6 +4285,16 @@ Object {
 exports[`Public API Contract TextField 1`] = `
 Object {
   "props": Object {
+    "autoComplete": Object {
+      "propName": "autoComplete",
+      "required": false,
+      "type": "string",
+    },
+    "data": Object {
+      "propName": "data",
+      "required": false,
+      "type": "object",
+    },
     "description": Object {
       "propName": "description",
       "required": false,
@@ -4295,6 +4380,17 @@ Object {
       "propName": "placeholder",
       "required": false,
       "type": "string",
+    },
+    "ref": Object {
+      "propName": "ref",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "(instance: HTMLInputElement | null) => void",
+          "RefObject<HTMLInputElement>",
+        ],
+      },
     },
     "reserveMessageSpace": Object {
       "propName": "reserveMessageSpace",
