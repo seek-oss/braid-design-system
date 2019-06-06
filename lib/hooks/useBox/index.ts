@@ -1,4 +1,3 @@
-import { ReactType } from 'react';
 import { useStyles } from 'sku/react-treat';
 import classnames from 'classnames';
 import * as resetStyleRefs from './reset.treat';
@@ -7,7 +6,7 @@ import * as styleRefs from './box.treat';
 type ResponsiveProp<AtomName> = AtomName | [AtomName, AtomName];
 
 export interface UseBoxProps {
-  component: ReactType;
+  component: keyof JSX.IntrinsicElements;
   paddingTop?: ResponsiveProp<keyof typeof styleRefs.padding.top>;
   paddingBottom?: ResponsiveProp<keyof typeof styleRefs.padding.bottom>;
   paddingLeft?: ResponsiveProp<keyof typeof styleRefs.padding.left>;
