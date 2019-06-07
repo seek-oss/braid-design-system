@@ -1,4 +1,4 @@
-import React, { ReactNode, AllHTMLAttributes } from 'react';
+import React, { ReactNode, AllHTMLAttributes, forwardRef } from 'react';
 import { useStyles } from 'sku/react-treat';
 import classnames from 'classnames';
 import { Omit } from 'utility-types';
@@ -35,38 +35,37 @@ const renderCount = ({
   );
 };
 
-export const TextArea = ({
-  value,
-  onChange,
-  onBlur,
-  onFocus,
-  placeholder,
-  limit,
-  ...restProps
-}: TextAreaProps) => {
-  const styles = useStyles(styleRefs);
+export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
+  (
+    { value, onChange, onBlur, onFocus, placeholder, limit, ...restProps },
+    ref,
+  ) => {
+    const styles = useStyles(styleRefs);
 
-  return (
-    <Field
-      {...restProps}
-      secondaryMessage={renderCount({
-        limit,
-        value,
-      })}
-    >
-      {({ className, ...fieldProps }) => (
-        <Box
-          component="textarea"
-          rows={3}
-          value={value}
-          onChange={onChange}
-          onBlur={onBlur}
-          onFocus={onFocus}
-          placeholder={placeholder}
-          className={classnames(styles.field, className)}
-          {...fieldProps}
-        />
-      )}
-    </Field>
-  );
-};
+    return (
+      <Field
+        {...restProps}
+        ref={ref}
+        secondaryMessage={renderCount({
+          limit,
+          value,
+        })}
+      >
+        {({ className, ...fieldProps }, fieldRef) => (
+          <Box
+            component="textarea"
+            rows={3}
+            value={value}
+            onChange={onChange}
+            onBlur={onBlur}
+            onFocus={onFocus}
+            placeholder={placeholder}
+            className={classnames(styles.field, className)}
+            {...fieldProps}
+            ref={fieldRef}
+          />
+        )}
+      </Field>
+    );
+  },
+);

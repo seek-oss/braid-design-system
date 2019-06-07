@@ -3,6 +3,7 @@ import React, {
   AllHTMLAttributes,
   Children,
   isValidElement,
+  forwardRef,
 } from 'react';
 import { useStyles } from 'sku/react-treat';
 import classnames from 'classnames';
@@ -37,61 +38,68 @@ const getColor = (
   return 'neutral';
 };
 
-export const Dropdown = (props: DropdownProps) => {
-  const {
-    children,
-    value,
-    onChange,
-    onBlur,
-    onFocus,
-    placeholder,
-    ...restProps
-  } = props;
+export const Dropdown = forwardRef<HTMLSelectElement, DropdownProps>(
+  (props: DropdownProps, ref) => {
+    const {
+      children,
+      value,
+      onChange,
+      onBlur,
+      onFocus,
+      placeholder,
+      ...restProps
+    } = props;
 
-  const styles = useStyles(styleRefs);
+    const styles = useStyles(styleRefs);
 
-  Children.forEach(children, child => {
-    if (!(isValidElement(child) && /^(option|optgroup)$/.test(child.type))) {
-      throw new Error(
-        '`Dropdown` only accepts children of type `option` or `optgroup`.',
-      );
-    }
-  });
+    Children.forEach(children, child => {
+      if (!(isValidElement(child) && /^(option|optgroup)$/.test(child.type))) {
+        throw new Error(
+          '`Dropdown` only accepts children of type `option` or `optgroup`.',
+        );
+      }
+    });
 
-  return (
-    <Field {...restProps} secondaryMessage={null}>
-      {({ className, paddingLeft, paddingRight, ...fieldProps }) => (
-        <Fragment>
-          <Box
-            component="select"
-            paddingLeft={paddingLeft}
-            value={value}
-            onChange={onChange}
-            onBlur={onBlur}
-            onFocus={onFocus}
-            placeholder={placeholder}
-            className={classnames(
-              styles.field,
-              className,
-              useTextColor(getColor(placeholder, value)),
-            )}
-            {...fieldProps}
-          >
-            <option value="" selected={!value} disabled={true}>
-              {placeholder}
-            </option>
-            <Fragment>{children}</Fragment>
-          </Box>
-          <Box
-            paddingLeft={paddingLeft}
-            paddingRight={paddingRight}
-            display="flex"
-            className={styles.chevron}
-          >
-            <ChevronIcon inline />
-          </Box>
-        </Fragment>
-      )}
-    </Field>
-  );
-};
+    return (
+      <Field {...restProps} ref={ref} secondaryMessage={null}>
+        {(
+          { className, paddingLeft, paddingRight, ...fieldProps },
+          fieldRef,
+        ) => (
+          <Fragment>
+            <Box
+              component="select"
+              paddingLeft={paddingLeft}
+              value={value}
+              defaultValue={typeof value === 'undefined' ? '' : undefined}
+              onChange={onChange}
+              onBlur={onBlur}
+              onFocus={onFocus}
+              placeholder={placeholder}
+              className={classnames(
+                styles.field,
+                className,
+                useTextColor(getColor(placeholder, value)),
+              )}
+              {...fieldProps}
+              ref={fieldRef}
+            >
+              <option value="" disabled={true}>
+                {placeholder}
+              </option>
+              <Fragment>{children}</Fragment>
+            </Box>
+            <Box
+              paddingLeft={paddingLeft}
+              paddingRight={paddingRight}
+              display="flex"
+              className={styles.chevron}
+            >
+              <ChevronIcon inline />
+            </Box>
+          </Fragment>
+        )}
+      </Field>
+    );
+  },
+);

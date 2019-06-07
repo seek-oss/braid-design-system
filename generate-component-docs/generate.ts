@@ -4,6 +4,7 @@ import path from 'path';
 import ts from 'typescript';
 
 const aliasWhitelist = ['ResponsiveProp'];
+const propBlacklist = ['key'];
 
 const tsconfigPath = path.join(__dirname, '../tsconfig.json');
 const componentsFile = path.join(__dirname, '../lib/components/index.ts');
@@ -114,30 +115,33 @@ export default () => {
 
     return Object.assign(
       {},
-      ...propsType.getProperties().map(prop => {
-        const propName = prop.getName();
+      ...propsType
+        .getProperties()
+        .filter(prop => !propBlacklist.includes(prop.getName()))
+        .map(prop => {
+          const propName = prop.getName();
 
-        // Find type of prop by looking in context of the props object itself.
-        const propType = checker
-          .getTypeOfSymbolAtLocation(prop, propsObj.valueDeclaration)
-          .getNonNullableType();
+          // Find type of prop by looking in context of the props object itself.
+          const propType = checker
+            .getTypeOfSymbolAtLocation(prop, propsObj.valueDeclaration)
+            .getNonNullableType();
 
-        const isOptional = (prop.getFlags() & ts.SymbolFlags.Optional) !== 0;
+          const isOptional = (prop.getFlags() & ts.SymbolFlags.Optional) !== 0;
 
-        const typeAlias = checker.typeToString(
-          checker.getTypeAtLocation(prop.valueDeclaration),
-        );
+          const typeAlias = checker.typeToString(
+            checker.getTypeAtLocation(prop.valueDeclaration),
+          );
 
-        return {
-          [propName]: {
-            propName,
-            required: !isOptional,
-            type: aliasWhitelist.includes(typeAlias)
-              ? typeAlias
-              : normaliseType(propType),
-          },
-        };
-      }),
+          return {
+            [propName]: {
+              propName,
+              required: !isOptional,
+              type: aliasWhitelist.includes(typeAlias)
+                ? typeAlias
+                : normaliseType(propType),
+            },
+          };
+        }),
     );
   };
 

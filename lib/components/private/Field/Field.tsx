@@ -1,4 +1,4 @@
-import React, { ReactNode, AllHTMLAttributes } from 'react';
+import React, { ReactNode, AllHTMLAttributes, forwardRef, Ref } from 'react';
 import { useStyles } from 'sku/react-treat';
 import classnames from 'classnames';
 import { Box, BoxProps } from '../../Box/Box';
@@ -8,6 +8,7 @@ import {
   FieldMessageProps,
 } from '../../FieldMessage/FieldMessage';
 import { FieldOverlay } from '../FieldOverlay/FieldOverlay';
+import buildDataAttributes, { DataAttributeMap } from '../buildDataAttributes';
 import { useText, useTouchableSpace } from '../../../hooks/typography';
 import * as styleRefs from './Field.treat';
 
@@ -16,6 +17,7 @@ export interface FieldProps {
   id: NonNullable<FormElementProps['id']>;
   name?: FormElementProps['name'];
   disabled?: FormElementProps['disabled'];
+  autoComplete?: FormElementProps['autoComplete'];
   label?: FieldLabelProps['label'];
   secondaryLabel?: FieldLabelProps['secondaryLabel'];
   tertiaryLabel?: FieldLabelProps['tertiaryLabel'];
@@ -24,9 +26,10 @@ export interface FieldProps {
   secondaryMessage?: FieldMessageProps['secondaryMessage'];
   reserveMessageSpace?: FieldMessageProps['reserveMessageSpace'];
   tone?: FieldMessageProps['tone'];
+  data?: DataAttributeMap;
 }
 
-type PassthroughProps = 'id' | 'name' | 'disabled';
+type PassthroughProps = 'id' | 'name' | 'disabled' | 'autoComplete';
 interface FieldRenderProps extends Pick<FieldProps, PassthroughProps> {
   backgroundColor: BoxProps['backgroundColor'];
   boxShadow: BoxProps['boxShadow'];
@@ -38,68 +41,82 @@ interface FieldRenderProps extends Pick<FieldProps, PassthroughProps> {
   className: string;
 }
 
+type FieldRef = HTMLElement;
+
 interface InternalFieldProps extends FieldProps {
-  children(props: FieldRenderProps): ReactNode;
+  children(props: FieldRenderProps, ref: Ref<FieldRef>): ReactNode;
 }
 
-export const Field = ({
-  id,
-  name,
-  disabled = false,
-  label,
-  secondaryLabel,
-  tertiaryLabel,
-  description,
-  children,
-  message,
-  secondaryMessage,
-  reserveMessageSpace = true,
-  tone = 'neutral',
-}: InternalFieldProps) => {
-  const styles = useStyles(styleRefs);
-  const messageId = `${id}-message`;
+export const Field = forwardRef<FieldRef, InternalFieldProps>(
+  (
+    {
+      id,
+      name,
+      disabled = false,
+      autoComplete,
+      label,
+      secondaryLabel,
+      tertiaryLabel,
+      description,
+      children,
+      message,
+      secondaryMessage,
+      reserveMessageSpace = true,
+      tone = 'neutral',
+      data,
+    },
+    ref,
+  ) => {
+    const styles = useStyles(styleRefs);
+    const messageId = `${id}-message`;
 
-  return (
-    <Box>
-      <FieldLabel
-        id={id}
-        label={label}
-        secondaryLabel={secondaryLabel}
-        tertiaryLabel={tertiaryLabel}
-        description={description}
-      />
-      <Box className={styles.fieldContainer}>
-        {children({
-          id,
-          name,
-          backgroundColor: disabled ? 'inputDisabled' : 'input',
-          boxShadow:
-            tone === 'critical' && !disabled
-              ? 'borderCritical'
-              : 'borderStandard',
-          width: 'full',
-          paddingLeft: 'small',
-          paddingRight: 'small',
-          borderRadius: 'standard',
-          'aria-describedby': messageId,
-          disabled,
-          className: classnames(
-            styles.field,
-            useText({ size: 'standard', baseline: false }),
-            useTouchableSpace('standard'),
-          ),
-        })}
-        <FieldOverlay variant="focus" className={styles.focusOverlay} />
-        <FieldOverlay variant="hover" className={styles.hoverOverlay} />
+    return (
+      <Box>
+        <FieldLabel
+          id={id}
+          label={label}
+          secondaryLabel={secondaryLabel}
+          tertiaryLabel={tertiaryLabel}
+          description={description}
+        />
+        <Box className={styles.fieldContainer}>
+          {children(
+            {
+              id,
+              name,
+              backgroundColor: disabled ? 'inputDisabled' : 'input',
+              boxShadow:
+                tone === 'critical' && !disabled
+                  ? 'borderCritical'
+                  : 'borderStandard',
+              width: 'full',
+              paddingLeft: 'small',
+              paddingRight: 'small',
+              borderRadius: 'standard',
+              'aria-describedby': messageId,
+              disabled,
+              autoComplete,
+              ...buildDataAttributes(data),
+              className: classnames(
+                styles.field,
+                useText({ size: 'standard', baseline: false }),
+                useTouchableSpace('standard'),
+              ),
+            },
+            ref,
+          )}
+          <FieldOverlay variant="focus" className={styles.focusOverlay} />
+          <FieldOverlay variant="hover" className={styles.hoverOverlay} />
+        </Box>
+        <FieldMessage
+          id={messageId}
+          tone={tone}
+          disabled={disabled}
+          message={message}
+          secondaryMessage={secondaryMessage}
+          reserveMessageSpace={reserveMessageSpace}
+        />
       </Box>
-      <FieldMessage
-        id={messageId}
-        tone={tone}
-        disabled={disabled}
-        message={message}
-        secondaryMessage={secondaryMessage}
-        reserveMessageSpace={reserveMessageSpace}
-      />
-    </Box>
-  );
-};
+    );
+  },
+);
