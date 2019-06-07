@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentDocs } from '../../../docs/src/types';
+import { ComponentDocs } from '../../../site/src/types';
 import { Actions } from './Actions';
 import { Button } from '../Button/Button';
 import { TextLink } from '../TextLink/TextLink';

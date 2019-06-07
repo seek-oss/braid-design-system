@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import values from 'lodash/values';
 import * as themes from '../themes';
 import { ThemeProvider } from '../components';
-import { ComponentDocs } from '../../docs/src/types';
+import { ComponentDocs } from '../../site/src/types';
 
 const handler = () => {
   /* No-op for docs examples */

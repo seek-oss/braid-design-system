@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentDocs } from '../../../docs/src/types';
+import { ComponentDocs } from '../../../site/src/types';
 import { Columns } from '../Columns/Columns';
 import { Column } from './Column';
 import { Box } from '../Box/Box';

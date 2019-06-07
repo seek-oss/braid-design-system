@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentDocs, ComponentExample } from '../../../docs/src/types';
+import { ComponentDocs, ComponentExample } from '../../../site/src/types';
 import { Box } from './Box';
 import { HideCode } from '../private/HideCode';
 import tokens from '../../themes/wireframe/tokens';

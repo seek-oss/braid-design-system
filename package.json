@@ -23,7 +23,7 @@
     "storybook": "sku storybook",
     "chromatic": "sku chromatic",
     "deploy": "node scripts/deploy.js",
-    "deploy-preview": "surge -p ./docs/dist",
+    "deploy-preview": "surge -p ./site/dist",
     "post-commit-status": "node scripts/postCommitStatus.js",
     "commit": "git-cz",
     "travis-deploy-once": "travis-deploy-once",
