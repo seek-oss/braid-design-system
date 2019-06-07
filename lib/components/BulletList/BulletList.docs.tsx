@@ -1,5 +1,5 @@
 import bulletDocs from '../Bullet/Bullet.docs';
-import { ComponentDocs } from '../../../docs/src/types';
+import { ComponentDocs } from '../../../site/src/types';
 
 const docs: ComponentDocs = {
   examples: bulletDocs.examples,

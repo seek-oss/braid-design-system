@@ -12,9 +12,9 @@ componentDocs.json
 .prettierrc
 coverage/
 dist-storybook/
-docs/dist/
-docs/dist/playroom/
 report/
+site/dist/
+site/dist/playroom/
 tsconfig.json
 tslint.json
 # end managed by sku
