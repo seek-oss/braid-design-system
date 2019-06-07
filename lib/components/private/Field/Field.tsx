@@ -8,8 +8,8 @@ import {
   FieldMessageProps,
 } from '../../FieldMessage/FieldMessage';
 import { FieldOverlay } from '../FieldOverlay/FieldOverlay';
+import buildDataAttributes, { DataAttributeMap } from '../buildDataAttributes';
 import { useText, useTouchableSpace } from '../../../hooks/typography';
-import mapKeys from 'lodash/mapKeys';
 import * as styleRefs from './Field.treat';
 
 type FormElementProps = AllHTMLAttributes<HTMLFormElement>;
@@ -26,7 +26,7 @@ export interface FieldProps {
   secondaryMessage?: FieldMessageProps['secondaryMessage'];
   reserveMessageSpace?: FieldMessageProps['reserveMessageSpace'];
   tone?: FieldMessageProps['tone'];
-  data?: object;
+  data?: DataAttributeMap;
 }
 
 type PassthroughProps = 'id' | 'name' | 'disabled' | 'autoComplete';
@@ -69,11 +69,6 @@ export const Field = forwardRef<FieldRef, InternalFieldProps>(
   ) => {
     const styles = useStyles(styleRefs);
     const messageId = `${id}-message`;
-    let dataAttributes = {};
-
-    if (data) {
-      dataAttributes = mapKeys(data, (_, attrName) => `data-${attrName}`);
-    }
 
     return (
       <Box>
@@ -101,7 +96,7 @@ export const Field = forwardRef<FieldRef, InternalFieldProps>(
               'aria-describedby': messageId,
               disabled,
               autoComplete,
-              ...dataAttributes,
+              ...buildDataAttributes(data),
               className: classnames(
                 styles.field,
                 useText({ size: 'standard', baseline: false }),

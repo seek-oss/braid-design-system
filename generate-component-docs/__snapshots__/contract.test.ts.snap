@@ -2770,6 +2770,11 @@ Object {
         ],
       },
     },
+    "data": Object {
+      "propName": "data",
+      "required": false,
+      "type": "Record<string, ReactText>",
+    },
     "disabled": Object {
       "propName": "disabled",
       "required": false,
@@ -2999,7 +3004,7 @@ Object {
     "data": Object {
       "propName": "data",
       "required": false,
-      "type": "object",
+      "type": "Record<string, ReactText>",
     },
     "description": Object {
       "propName": "description",
@@ -3716,6 +3721,11 @@ Object {
         ],
       },
     },
+    "data": Object {
+      "propName": "data",
+      "required": false,
+      "type": "Record<string, ReactText>",
+    },
     "disabled": Object {
       "propName": "disabled",
       "required": false,
@@ -4111,7 +4121,7 @@ Object {
     "data": Object {
       "propName": "data",
       "required": false,
-      "type": "object",
+      "type": "Record<string, ReactText>",
     },
     "description": Object {
       "propName": "description",
@@ -4293,7 +4303,7 @@ Object {
     "data": Object {
       "propName": "data",
       "required": false,
-      "type": "object",
+      "type": "Record<string, ReactText>",
     },
     "description": Object {
       "propName": "description",

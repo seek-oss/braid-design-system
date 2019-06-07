@@ -11,6 +11,7 @@ import { FieldOverlay } from '../FieldOverlay/FieldOverlay';
 import { Text } from '../../Text/Text';
 import { TickIcon } from '../../icons/TickIcon/TickIcon';
 import { useTouchableSpace } from '../../../hooks/typography';
+import buildDataAttributes, { DataAttributeMap } from '../buildDataAttributes';
 import * as styleRefs from './InlineField.treat';
 
 const tones = ['neutral', 'critical'] as const;
@@ -29,6 +30,7 @@ export interface InlineFieldProps {
   reserveMessageSpace?: FieldMessageProps['reserveMessageSpace'];
   tone?: InlineFieldTone;
   children?: ReactNode;
+  data?: DataAttributeMap;
 }
 
 interface InternalInlineFieldProps extends InlineFieldProps {
@@ -42,6 +44,7 @@ export const InlineField = forwardRef<HTMLElement, InternalInlineFieldProps>(
       name,
       value,
       checked,
+      data,
       onChange,
       label,
       type,
@@ -79,6 +82,7 @@ export const InlineField = forwardRef<HTMLElement, InternalInlineFieldProps>(
           aria-describedby={messageId}
           disabled={disabled}
           ref={ref}
+          {...buildDataAttributes(data)}
         />
         <Box display="flex">
           <Box
