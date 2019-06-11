@@ -57,6 +57,7 @@ export const FieldMessage = ({
   }
 
   const styles = useStyles(styleRefs);
+  const showMessage = !disabled && message;
 
   // Temporary switch to support maintaining a consistent UX
   // while consumers migrate forms from seek-style-guide.
@@ -69,17 +70,17 @@ export const FieldMessage = ({
       id={id}
       paddingBottom={isSeekAu ? 'xxsmall' : 'xsmall'}
       display="flex"
-      className={classnames(styles.root, styles.minHeight)}
+      className={styles.root}
     >
-      <Box className={styles.grow}>
-        {disabled ? null : (
+      <Box className={classnames(styles.grow, styles.minHeight)}>
+        {showMessage ? (
           <Text size="small" color={tone === 'neutral' ? 'secondary' : tone}>
             <Box display="flex">
               {renderIcon(tone)}
               {message}
             </Box>
           </Text>
-        )}
+        ) : null}
       </Box>
       {secondaryMessage && !disabled ? (
         <Box paddingLeft="xsmall" className={styles.fixedSize}>
