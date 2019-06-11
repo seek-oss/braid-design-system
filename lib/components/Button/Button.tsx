@@ -16,6 +16,7 @@ export interface ButtonProps {
   type?: NativeButtonProps['type'];
   children?: ReactNode;
   weight?: ButtonWeight;
+  'aria-describedby'?: NativeButtonProps['aria-describedby'];
 }
 
 const backgroundColor: Record<
@@ -50,6 +51,7 @@ export const Button = ({
   children,
   weight = 'regular',
   type = 'button',
+  'aria-describedby': ariaDescribedBy,
 }: ButtonProps) => {
   const styles = useStyles(styleRefs);
   const isWeak = weight === 'weak';
@@ -58,6 +60,7 @@ export const Button = ({
     <Box
       component="button"
       type={type}
+      aria-describedby={ariaDescribedBy}
       width="full"
       display="block"
       borderRadius="standard"

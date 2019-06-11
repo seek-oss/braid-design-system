@@ -2678,6 +2678,11 @@ Object {
 exports[`Public API Contract Button 1`] = `
 Object {
   "props": Object {
+    "aria-describedby": Object {
+      "propName": "aria-describedby",
+      "required": false,
+      "type": "string",
+    },
     "children": Object {
       "propName": "children",
       "required": false,
