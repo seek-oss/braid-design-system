@@ -128,7 +128,6 @@ export const InlineField = forwardRef<HTMLElement, InternalInlineFieldProps>(
             className={classnames(styles.label, useTouchableSpace('standard'))}
           >
             <Text
-              component="span"
               baseline={false}
               weight={checked ? 'strong' : undefined}
               color={disabled ? 'secondary' : undefined}
