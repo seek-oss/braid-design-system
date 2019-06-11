@@ -6,6 +6,7 @@ import { useText, UseTextProps } from '../../hooks/typography';
 import * as styleRefs from './Text.treat';
 
 export interface TextProps extends Pick<BoxProps, 'component'> {
+  id?: string;
   children?: ReactNode;
   size?: UseTextProps['size'];
   color?: UseTextProps['color'];
@@ -14,7 +15,8 @@ export interface TextProps extends Pick<BoxProps, 'component'> {
 }
 
 export const Text = ({
-  component,
+  id,
+  component = 'span',
   size,
   color,
   weight,
@@ -26,6 +28,7 @@ export const Text = ({
 
   return (
     <Box
+      id={id}
       display={!isListItem ? 'block' : undefined}
       component={component}
       className={classnames(useText({ weight, size, baseline, color }), {
