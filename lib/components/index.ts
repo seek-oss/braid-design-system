@@ -21,7 +21,7 @@ export { Radio } from './Radio/Radio';
 export { Secondary } from './Secondary/Secondary';
 export { Strong } from './Strong/Strong';
 export { Text } from './Text/Text';
-export { TextArea } from './TextArea/TextArea';
+export { Textarea } from './Textarea/Textarea';
 export { TextField } from './TextField/TextField';
 export { TextLink } from './TextLink/TextLink';
 export { TextLinkRenderer } from './TextLinkRenderer/TextLinkRenderer';
