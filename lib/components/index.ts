@@ -17,6 +17,7 @@ export { FieldLabel } from './FieldLabel/FieldLabel';
 export { FieldMessage } from './FieldMessage/FieldMessage';
 export { Heading } from './Heading/Heading';
 export { Hidden } from './Hidden/Hidden';
+export { Paragraph } from './Paragraph/Paragraph';
 export { Radio } from './Radio/Radio';
 export { Secondary } from './Secondary/Secondary';
 export { Strong } from './Strong/Strong';
