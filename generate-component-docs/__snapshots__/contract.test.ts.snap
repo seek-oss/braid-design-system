@@ -3711,6 +3711,30 @@ Object {
 }
 `;
 
+exports[`Public API Contract Paragraph 1`] = `
+Object {
+  "props": Object {
+    "children": Object {
+      "propName": "children",
+      "required": true,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+          "false",
+          "true",
+          "{}",
+          "ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>",
+          "ReactNodeArray",
+          "ReactPortal",
+        ],
+      },
+    },
+  },
+}
+`;
+
 exports[`Public API Contract Radio 1`] = `
 Object {
   "props": Object {
@@ -4106,6 +4130,11 @@ Object {
           "FunctionComponent<any>",
         ],
       },
+    },
+    "id": Object {
+      "propName": "id",
+      "required": false,
+      "type": "string",
     },
     "size": Object {
       "propName": "size",
