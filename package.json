@@ -73,7 +73,7 @@
     "csstype": "^2.6.4",
     "lodash": "^4.17.11",
     "polished": "^3.0.3",
-    "utility-types": "^3.2.1"
+    "utility-types": "^3.7.0"
   },
   "peerDependencies": {
     "react": "^16.8.0",

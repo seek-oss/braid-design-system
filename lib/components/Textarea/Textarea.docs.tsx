@@ -1,15 +1,15 @@
 import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import { TextArea } from './TextArea';
+import { Textarea } from './Textarea';
 import { TextLink } from '../TextLink/TextLink';
 
 const docs: ComponentDocs = {
   examples: [
     {
-      label: 'TextArea',
+      label: 'Textarea',
       render: ({ id, handler }) => (
         <div style={{ maxWidth: '300px' }}>
-          <TextArea
+          <Textarea
             id={id}
             value="Senior Developer"
             onChange={handler}
@@ -19,10 +19,10 @@ const docs: ComponentDocs = {
       ),
     },
     {
-      label: 'TextArea with message',
+      label: 'Textarea with message',
       render: ({ id, handler }) => (
         <div style={{ maxWidth: '300px' }}>
-          <TextArea
+          <Textarea
             id={id}
             value=""
             onChange={handler}
@@ -33,10 +33,10 @@ const docs: ComponentDocs = {
       ),
     },
     {
-      label: 'TextArea with secondary label',
+      label: 'Textarea with secondary label',
       render: ({ id, handler }) => (
         <div style={{ maxWidth: '300px' }}>
-          <TextArea
+          <Textarea
             id={id}
             value=""
             onChange={handler}
@@ -47,10 +47,10 @@ const docs: ComponentDocs = {
       ),
     },
     {
-      label: 'TextArea with tertiary label',
+      label: 'Textarea with tertiary label',
       render: ({ id, handler }) => (
         <div style={{ maxWidth: '300px' }}>
-          <TextArea
+          <Textarea
             id={id}
             value=""
             onChange={handler}
@@ -62,10 +62,10 @@ const docs: ComponentDocs = {
       ),
     },
     {
-      label: 'TextArea with error',
+      label: 'Textarea with error',
       render: ({ id, handler }) => (
         <div style={{ maxWidth: '300px' }}>
-          <TextArea
+          <Textarea
             id={id}
             value="No"
             onChange={handler}
@@ -77,10 +77,10 @@ const docs: ComponentDocs = {
       ),
     },
     {
-      label: 'TextArea with postive message',
+      label: 'Textarea with postive message',
       render: ({ id, handler }) => (
         <div style={{ maxWidth: '300px' }}>
-          <TextArea
+          <Textarea
             id={id}
             value="Yes"
             onChange={handler}
@@ -92,29 +92,29 @@ const docs: ComponentDocs = {
       ),
     },
     {
-      label: 'TextArea with a limit',
+      label: 'Textarea with a limit',
       render: ({ id, handler }) => (
         <div style={{ maxWidth: '300px' }}>
-          <TextArea
+          <Textarea
             id={id}
             value=""
             onChange={handler}
             label="Do you like Braid?"
-            limit={100}
+            lineLimit={100}
           />
         </div>
       ),
     },
     {
-      label: 'TextArea with value exceeding limit',
+      label: 'Textarea with value exceeding limit',
       render: ({ id, handler }) => (
         <div style={{ maxWidth: '300px' }}>
-          <TextArea
+          <Textarea
             id={id}
             value="Yes I do"
             onChange={handler}
             label="Do you like Braid?"
-            limit={5}
+            lineLimit={5}
           />
         </div>
       ),

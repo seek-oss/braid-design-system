@@ -4110,188 +4110,6 @@ Object {
 }
 `;
 
-exports[`Public API Contract TextArea 1`] = `
-Object {
-  "props": Object {
-    "autoComplete": Object {
-      "propName": "autoComplete",
-      "required": false,
-      "type": "string",
-    },
-    "data": Object {
-      "propName": "data",
-      "required": false,
-      "type": "Record<string, ReactText>",
-    },
-    "description": Object {
-      "propName": "description",
-      "required": false,
-      "type": Object {
-        "type": "union",
-        "types": Array [
-          "string",
-          "number",
-          "false",
-          "true",
-          "{}",
-          "ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>",
-          "ReactNodeArray",
-          "ReactPortal",
-        ],
-      },
-    },
-    "disabled": Object {
-      "propName": "disabled",
-      "required": false,
-      "type": "boolean",
-    },
-    "id": Object {
-      "propName": "id",
-      "required": true,
-      "type": "string",
-    },
-    "label": Object {
-      "propName": "label",
-      "required": false,
-      "type": Object {
-        "type": "union",
-        "types": Array [
-          "string",
-          "number",
-          "false",
-          "true",
-          "{}",
-          "ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>",
-          "ReactNodeArray",
-          "ReactPortal",
-        ],
-      },
-    },
-    "limit": Object {
-      "propName": "limit",
-      "required": false,
-      "type": "number",
-    },
-    "message": Object {
-      "propName": "message",
-      "required": false,
-      "type": Object {
-        "type": "union",
-        "types": Array [
-          "string",
-          "number",
-          "false",
-          "true",
-          "{}",
-          "ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>",
-          "ReactNodeArray",
-          "ReactPortal",
-        ],
-      },
-    },
-    "name": Object {
-      "propName": "name",
-      "required": false,
-      "type": "string",
-    },
-    "onBlur": Object {
-      "propName": "onBlur",
-      "required": false,
-      "type": "(event: FocusEvent<HTMLTextAreaElement>) => void",
-    },
-    "onChange": Object {
-      "propName": "onChange",
-      "required": true,
-      "type": "(event: FormEvent<HTMLTextAreaElement>) => void",
-    },
-    "onFocus": Object {
-      "propName": "onFocus",
-      "required": false,
-      "type": "(event: FocusEvent<HTMLTextAreaElement>) => void",
-    },
-    "placeholder": Object {
-      "propName": "placeholder",
-      "required": false,
-      "type": "string",
-    },
-    "ref": Object {
-      "propName": "ref",
-      "required": false,
-      "type": Object {
-        "type": "union",
-        "types": Array [
-          "(instance: HTMLTextAreaElement | null) => void",
-          "RefObject<HTMLTextAreaElement>",
-        ],
-      },
-    },
-    "reserveMessageSpace": Object {
-      "propName": "reserveMessageSpace",
-      "required": false,
-      "type": "boolean",
-    },
-    "secondaryLabel": Object {
-      "propName": "secondaryLabel",
-      "required": false,
-      "type": Object {
-        "type": "union",
-        "types": Array [
-          "string",
-          "number",
-          "false",
-          "true",
-          "{}",
-          "ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>",
-          "ReactNodeArray",
-          "ReactPortal",
-        ],
-      },
-    },
-    "tertiaryLabel": Object {
-      "propName": "tertiaryLabel",
-      "required": false,
-      "type": Object {
-        "type": "union",
-        "types": Array [
-          "string",
-          "number",
-          "false",
-          "true",
-          "{}",
-          "ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>",
-          "ReactNodeArray",
-          "ReactPortal",
-        ],
-      },
-    },
-    "tone": Object {
-      "propName": "tone",
-      "required": false,
-      "type": Object {
-        "type": "union",
-        "types": Array [
-          "\\"critical\\"",
-          "\\"positive\\"",
-          "\\"neutral\\"",
-        ],
-      },
-    },
-    "value": Object {
-      "propName": "value",
-      "required": true,
-      "type": Object {
-        "type": "union",
-        "types": Array [
-          "string",
-          "number",
-          "string[]",
-        ],
-      },
-    },
-  },
-}
-`;
-
 exports[`Public API Contract TextField 1`] = `
 Object {
   "props": Object {
@@ -6573,6 +6391,203 @@ Object {
       "propName": "inline",
       "required": false,
       "type": "boolean",
+    },
+  },
+}
+`;
+
+exports[`Public API Contract Textarea 1`] = `
+Object {
+  "props": Object {
+    "autoComplete": Object {
+      "propName": "autoComplete",
+      "required": false,
+      "type": "string",
+    },
+    "characterLimit": Object {
+      "propName": "characterLimit",
+      "required": false,
+      "type": "number",
+    },
+    "data": Object {
+      "propName": "data",
+      "required": false,
+      "type": "Record<string, ReactText>",
+    },
+    "description": Object {
+      "propName": "description",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+          "false",
+          "true",
+          "{}",
+          "ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>",
+          "ReactNodeArray",
+          "ReactPortal",
+        ],
+      },
+    },
+    "disabled": Object {
+      "propName": "disabled",
+      "required": false,
+      "type": "boolean",
+    },
+    "grow": Object {
+      "propName": "grow",
+      "required": false,
+      "type": "boolean",
+    },
+    "id": Object {
+      "propName": "id",
+      "required": true,
+      "type": "string",
+    },
+    "label": Object {
+      "propName": "label",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+          "false",
+          "true",
+          "{}",
+          "ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>",
+          "ReactNodeArray",
+          "ReactPortal",
+        ],
+      },
+    },
+    "lineLimit": Object {
+      "propName": "lineLimit",
+      "required": false,
+      "type": "number",
+    },
+    "lines": Object {
+      "propName": "lines",
+      "required": false,
+      "type": "number",
+    },
+    "message": Object {
+      "propName": "message",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+          "false",
+          "true",
+          "{}",
+          "ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>",
+          "ReactNodeArray",
+          "ReactPortal",
+        ],
+      },
+    },
+    "name": Object {
+      "propName": "name",
+      "required": false,
+      "type": "string",
+    },
+    "onBlur": Object {
+      "propName": "onBlur",
+      "required": false,
+      "type": "(event: FocusEvent<HTMLTextAreaElement>) => void",
+    },
+    "onChange": Object {
+      "propName": "onChange",
+      "required": true,
+      "type": "(event: FormEvent<HTMLTextAreaElement>) => void",
+    },
+    "onFocus": Object {
+      "propName": "onFocus",
+      "required": false,
+      "type": "(event: FocusEvent<HTMLTextAreaElement>) => void",
+    },
+    "placeholder": Object {
+      "propName": "placeholder",
+      "required": false,
+      "type": "string",
+    },
+    "ref": Object {
+      "propName": "ref",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "(instance: HTMLTextAreaElement | null) => void",
+          "RefObject<HTMLTextAreaElement>",
+        ],
+      },
+    },
+    "reserveMessageSpace": Object {
+      "propName": "reserveMessageSpace",
+      "required": false,
+      "type": "boolean",
+    },
+    "secondaryLabel": Object {
+      "propName": "secondaryLabel",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+          "false",
+          "true",
+          "{}",
+          "ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>",
+          "ReactNodeArray",
+          "ReactPortal",
+        ],
+      },
+    },
+    "tertiaryLabel": Object {
+      "propName": "tertiaryLabel",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+          "false",
+          "true",
+          "{}",
+          "ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>",
+          "ReactNodeArray",
+          "ReactPortal",
+        ],
+      },
+    },
+    "tone": Object {
+      "propName": "tone",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "\\"critical\\"",
+          "\\"positive\\"",
+          "\\"neutral\\"",
+        ],
+      },
+    },
+    "value": Object {
+      "propName": "value",
+      "required": true,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+          "string[]",
+        ],
+      },
     },
   },
 }
