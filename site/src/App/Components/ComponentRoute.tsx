@@ -4,15 +4,10 @@ import dedent from 'dedent';
 import { ComponentProps } from './ComponentProps';
 import { ExternalLink } from './Link';
 import { ThemeProvider, Box, Text } from '../../../../lib/components';
-import {
-  wireframe,
-  jobStreet,
-  seekAsia,
-  seekAnz,
-} from '../../../../lib/themes';
+import { wireframe, jobStreet, jobsDB, seekAnz } from '../../../../lib/themes';
 import { ComponentDocs } from '../../types';
 
-const themes = [wireframe, jobStreet, seekAsia, seekAnz];
+const themes = [wireframe, jobStreet, jobsDB, seekAnz];
 const handler = () => {
   /* No-op for docs examples */
 };
