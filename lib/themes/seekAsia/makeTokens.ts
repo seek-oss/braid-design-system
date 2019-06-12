@@ -13,14 +13,20 @@ const candidate = '#0c4b85'; // SEEK Asia name for this color
 const info = candidate;
 const positive = '#498307';
 const critical = alert;
-
-const formAccent = blue2;
-const brandAccent = '#0d3880';
 const focus = blue3;
 const link = blue2;
 
-const tokens: TreatTokens = {
-  name: 'seekAsia',
+interface SeekAsiaBrandTokens {
+  name: string;
+  brandAccent: string;
+  formAccent: string;
+}
+export default ({
+  name,
+  brandAccent,
+  formAccent,
+}: SeekAsiaBrandTokens): TreatTokens => ({
+  name,
   typography: {
     fontFamily:
       'Muli, -apple-system, system-ui, "Segoe UI", Roboto, "Noto Sans", Ubuntu, "Droid Sans", "Helvetica Neue", Arial, sans-serif',
@@ -178,6 +184,4 @@ const tokens: TreatTokens = {
       positive,
     },
   },
-};
-
-export default tokens;
+});

@@ -1,3 +1,4 @@
 export { default as seekAnz } from './seekAnz';
-export { jobsDB, jobStreet, default as seekAsia } from './seekAsia';
+export { default as jobsDb } from './jobsDb';
+export { default as jobStreet } from './jobStreet';
 export { default as wireframe } from './wireframe';
