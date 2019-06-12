@@ -3,8 +3,11 @@ import { useWeight } from '../../hooks/typography';
 
 export interface StrongProps {
   children: ReactNode;
+  id?: string;
 }
 
-export const Strong = ({ children }: StrongProps) => (
-  <strong className={useWeight('strong')}>{children}</strong>
+export const Strong = ({ children, id }: StrongProps) => (
+  <strong className={useWeight('strong')} id={id}>
+    {children}
+  </strong>
 );

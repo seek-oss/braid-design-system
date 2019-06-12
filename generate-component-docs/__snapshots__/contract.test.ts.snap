@@ -44,6 +44,11 @@ Object {
         ],
       },
     },
+    "id": Object {
+      "propName": "id",
+      "required": false,
+      "type": "string",
+    },
     "tone": Object {
       "propName": "tone",
       "required": false,
@@ -2700,6 +2705,11 @@ Object {
         ],
       },
     },
+    "id": Object {
+      "propName": "id",
+      "required": false,
+      "type": "string",
+    },
     "onClick": Object {
       "propName": "onClick",
       "required": false,
@@ -3576,6 +3586,11 @@ Object {
         ],
       },
     },
+    "id": Object {
+      "propName": "id",
+      "required": false,
+      "type": "string",
+    },
     "level": Object {
       "propName": "level",
       "required": true,
@@ -3850,6 +3865,11 @@ Object {
         ],
       },
     },
+    "id": Object {
+      "propName": "id",
+      "required": false,
+      "type": "string",
+    },
   },
 }
 `;
@@ -3873,6 +3893,11 @@ Object {
           "ReactPortal",
         ],
       },
+    },
+    "id": Object {
+      "propName": "id",
+      "required": false,
+      "type": "string",
     },
   },
 }

@@ -12,6 +12,7 @@ type ButtonState = 'base' | 'hover' | 'active';
 
 type NativeButtonProps = AllHTMLAttributes<HTMLButtonElement>;
 export interface ButtonProps {
+  id?: NativeButtonProps['id'];
   onClick?: NativeButtonProps['onClick'];
   type?: NativeButtonProps['type'];
   children?: ReactNode;
@@ -51,6 +52,7 @@ export const Button = ({
   children,
   weight = 'regular',
   type = 'button',
+  id,
   'aria-describedby': ariaDescribedBy,
 }: ButtonProps) => {
   const styles = useStyles(styleRefs);
@@ -58,6 +60,7 @@ export const Button = ({
 
   return (
     <Box
+      id={id}
       component="button"
       type={type}
       aria-describedby={ariaDescribedBy}

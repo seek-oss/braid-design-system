@@ -14,6 +14,7 @@ export interface AlertProps {
   tone?: Tone;
   weight?: AlertWeight;
   children: ReactNode;
+  id?: string;
 }
 
 const backgroundColorForTone = (tone: Tone, weight: AlertWeight) => {
@@ -44,6 +45,7 @@ export const Alert = ({
   tone = 'info',
   weight = 'regular',
   children,
+  id,
 }: AlertProps) => {
   const styles = useStyles(styleRefs);
   const backgroundColor = backgroundColorForTone(tone, weight);
@@ -52,6 +54,7 @@ export const Alert = ({
 
   return (
     <Box
+      id={id}
       backgroundColor={backgroundColor}
       paddingLeft="gutter"
       paddingRight="gutter"
