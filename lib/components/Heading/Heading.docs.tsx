@@ -3,6 +3,7 @@ import { ComponentDocs } from '../../../site/src/types';
 import { Heading } from './Heading';
 
 const docs: ComponentDocs = {
+  migrationGuide: true,
   examples: [
     {
       label: 'Level 1',

@@ -3,6 +3,7 @@ import examplesForIcon from '../../private/examplesForIcon';
 import { InfoIcon } from './InfoIcon';
 
 const docs: ComponentDocs = {
+  migrationGuide: true,
   examples: examplesForIcon(InfoIcon),
 };
 

@@ -1,0 +1,36 @@
+# Textarea Migration Guide
+
+## API Changes
+
+- `message={false}` is now `reserveMessageSpace={false}`.
+- Now supports `grow={boolean}` to allow auto-expansion while typing, so you may be able to delete some custom code.
+- Data attributes must now be passed via the `data` prop, e.g. `data={{ automation: 'test-id' }}`.
+- No longer accepts arbitrary DOM properties, e.g. `className`. Please check that everything you need is exposed via the [public API.](https://seek-oss.github.io/braid-design-system/components/Textarea)
+
+## TBD
+
+- Inline error highlighting.
+
+### Diff
+
+```diff
+-<Textarea message={false} />
++<Textarea reserveMessageSpace={false} />
+
+-<Textarea data-automation="..." />
++<Textarea data={{ automation: '...' }} />
+
+-<Textarea initialRows={...} />
++<Textarea lines={3} />
+
+-<Textarea maxRows={...} />
++<Textarea lineLimit={10} />
+
+-<Textarea countFeedback={() => { ... }} />
++<Textarea characterLimit={500} />
+```
+
+## Previous Implementations
+
+- [SEEK Style Guide](https://seek-oss.github.io/seek-style-guide/textarea)
+- [SEEK Asia Style Guide](https://seekinternational.github.io/seek-asia-style-guide/textarea)

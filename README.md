@@ -45,13 +45,9 @@ export default () => (
 );
 ```
 
-## Themes
+## Style Guide Migration
 
-[List of available themes.](./lib/themes)
-
-## Components
-
-[List of available components.](./lib/components)
+If you're migrating from an existing style guide, please refer to the [Style Guide Migration](./docs/Style%20Guide%20Migration.md) guide.
 
 ## Local Development
 

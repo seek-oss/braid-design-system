@@ -3,6 +3,7 @@ import { ComponentDocs } from '../../../site/src/types';
 import { Dropdown } from './Dropdown';
 
 const docs: ComponentDocs = {
+  migrationGuide: true,
   examples: [
     {
       label: 'Dropdown with placeholder',

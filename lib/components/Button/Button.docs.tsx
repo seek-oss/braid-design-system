@@ -3,6 +3,7 @@ import { ComponentDocs } from '../../../site/src/types';
 import { Button } from './Button';
 
 const docs: ComponentDocs = {
+  migrationGuide: true,
   examples: [
     {
       label: 'Default Button',

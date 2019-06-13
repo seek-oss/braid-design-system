@@ -4,6 +4,7 @@ import { Checkbox } from './Checkbox';
 import { Text } from '../Text/Text';
 
 const docs: ComponentDocs = {
+  migrationGuide: true,
   examples: [
     {
       label: 'Standard Checkbox',

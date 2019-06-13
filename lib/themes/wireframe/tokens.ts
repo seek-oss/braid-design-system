@@ -18,12 +18,12 @@ const tokens: TreatTokens = {
     fontWeight: {
       regular: 400,
       medium: 500,
-      strong: 600,
+      strong: 700,
     },
     heading: {
       weight: {
         weak: 'regular',
-        regular: 'medium',
+        regular: 'strong',
       },
       level: {
         '1': {
