@@ -5,6 +5,7 @@ import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';
 
 const docs: ComponentDocs = {
+  migrationGuide: true,
   examples: [
     {
       label: 'Standard Card',

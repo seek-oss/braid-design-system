@@ -4,6 +4,7 @@ import { TextField } from './TextField';
 import { TextLink } from '../TextLink/TextLink';
 
 const docs: ComponentDocs = {
+  migrationGuide: true,
   examples: [
     {
       label: 'TextField',

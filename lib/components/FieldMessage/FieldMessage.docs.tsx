@@ -3,6 +3,7 @@ import { ComponentDocs } from '../../../site/src/types';
 import { FieldMessage } from './FieldMessage';
 
 const docs: ComponentDocs = {
+  migrationGuide: true,
   examples: [
     {
       label: 'Critical Field Message',

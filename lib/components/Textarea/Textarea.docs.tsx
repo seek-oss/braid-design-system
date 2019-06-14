@@ -4,6 +4,7 @@ import { Textarea } from './Textarea';
 import { TextLink } from '../TextLink/TextLink';
 
 const docs: ComponentDocs = {
+  migrationGuide: true,
   examples: [
     {
       label: 'Textarea',
