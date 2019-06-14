@@ -4,6 +4,7 @@ import { Bullet } from './Bullet';
 import { BulletList } from '../BulletList/BulletList';
 
 const docs: ComponentDocs = {
+  migrationGuide: true,
   examples: [
     {
       label: 'Standard Bullets',

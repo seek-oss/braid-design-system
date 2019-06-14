@@ -7,6 +7,7 @@ import { Text } from '../Text/Text';
 import { HideCode } from '../private/HideCode';
 
 const docs: ComponentDocs = {
+  migrationGuide: true,
   examples: [
     {
       label: 'Columns',
