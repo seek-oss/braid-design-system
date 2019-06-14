@@ -8,6 +8,7 @@
 - Renamed `tone` prop to `color`.
 - Removed `weak` weight.
 - Removed boolean size props in favour of `size` and `color` props.
+- Removed `bullet` prop. Use [`Bullet`](https://seek-oss.github.io/braid-design-system/components/Bullet) insted.
 - No longer accepts arbitrary DOM properties, e.g. `className`. Please check that everything you need is exposed via the [public API.](https://seek-oss.github.io/braid-design-system/components/Text)
 
 ### Diff
