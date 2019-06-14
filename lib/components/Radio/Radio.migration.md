@@ -2,7 +2,7 @@
 
 ## API Changes
 
-- `message={false}` is now `reserveMessageSpace={false}`.
+- No longer accepts a `message` prop, since radio buttons can't be used in isolation.
 - Data attributes must now be passed via the `data` prop, e.g. `data={{ automation: 'test-id' }}`.
 - No longer accepts arbitrary DOM properties, e.g. `className`. Please check that everything you need is exposed via the [public API.](https://seek-oss.github.io/braid-design-system/components/Radio)
 
@@ -13,9 +13,6 @@
 ### Diff
 
 ```diff
--<Radio message={false} />
-+<Radio reserveMessageSpace={false} />
-
 -<Radio data-automation="..." />
 +<Radio data={{ automation: '...' }} />
 ```

@@ -2,14 +2,13 @@
 
 ## API Changes
 
-- The `color` prop has been removed in favour of `weight={'strong' | 'regular' | 'weak'}`.
-- The `transparent`/`hyperlink` color has been removed. Use [`TextLink`](TextLink)/[`TextLinkRenderer`](http://localhost:8080/components/TextLinkRenderer) instead.
+- The `color` and `ghost` props have been removed in favour of `weight={'strong' | 'regular' | 'weak'}`.
+- The `transparent`/`hyperlink` color has been removed. Use [`TextLink`](https://seek-oss.github.io/braid-design-system/components/TextLink)/[`TextLinkRenderer`](https://seek-oss.github.io/braid-design-system/components/TextLinkRenderer) instead.
 - No longer accepts arbitrary DOM properties, e.g. `className`. Please check that everything you need is exposed via the [public API.](https://seek-oss.github.io/braid-design-system/components/Button)
 
 ## TBD
 
-- No longer accepts arbitrary DOM properties, e.g. `className`.
-- `ButtonRenderer` or similar, like [TextLinkRenderer](http://localhost:8080/components/TextLinkRenderer).
+- `ButtonRenderer` or similar, like [TextLinkRenderer](https://seek-oss.github.io/braid-design-system/components/TextLinkRenderer).
 - `compact={boolean}`
 
 ## Diff

@@ -3,7 +3,7 @@
 ## API Changes
 
 - All child nodes must be wrapped in a [`Column`](https://seek-oss.github.io/braid-design-system/components/Column) component.
-- Deprecated `flexible={boolean}`, since that was only needed for backwards compatibility.
+- Removed `flexible={boolean}`, since that was only needed for backwards compatibility.
 - No longer accepts arbitrary DOM properties, e.g. `className`. Please check that everything you need is exposed via the [public API.](https://seek-oss.github.io/braid-design-system/components/Columns)
 
 ## TBD
