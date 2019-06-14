@@ -38,6 +38,7 @@ Since Braid is an entirely new design system, we've taken the opportunity to rev
 - [`Checkbox`](../lib/components/Checkbox/Checkbox.migration.md)
 - [`Columns`](../lib/components/Columns/Columns.migration.md)
 - [`Dropdown`](../lib/components/Dropdown/Dropdown.migration.md)
+- [`FieldLabel`](../lib/components/FieldLabel/FieldLabel.migration.md)
 - [`FieldMessage`](../lib/components/FieldMessage/FieldMessage.migration.md)
 - [Icons](../lib/components/icons/Icon/Icon.migration.md)
 - [`Radio`](../lib/components/Radio/Radio.migration.md)
