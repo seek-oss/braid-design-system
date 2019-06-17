@@ -10,10 +10,11 @@ import {
   Paragraph,
   Text,
 } from '../../../../lib/components';
-import { wireframe, jobStreet, jobsDB, seekAnz } from '../../../../lib/themes';
+import { wireframe, jobStreet, jobsDb, seekAnz } from '../../../../lib/themes';
+
 import { ComponentDocs } from '../../types';
 
-const themes = [wireframe, jobStreet, jobsDB, seekAnz];
+const themes = [seekAnz, jobsDb, jobStreet, wireframe];
 const handler = () => {
   /* No-op for docs examples */
 };

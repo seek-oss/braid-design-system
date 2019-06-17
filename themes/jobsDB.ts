@@ -1,1 +1,1 @@
-export { jobsDB } from './../lib/themes/seekAsia';
+export { default } from './../lib/themes/jobsDb';
