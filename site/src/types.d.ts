@@ -13,6 +13,7 @@ export interface RenderContext {
 }
 
 export interface ComponentDocs {
+  migrationGuide?: boolean;
   storybook?: boolean;
   examples: Array<ComponentExample>;
 }

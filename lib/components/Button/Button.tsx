@@ -12,10 +12,12 @@ type ButtonState = 'base' | 'hover' | 'active';
 
 type NativeButtonProps = AllHTMLAttributes<HTMLButtonElement>;
 export interface ButtonProps {
+  id?: NativeButtonProps['id'];
   onClick?: NativeButtonProps['onClick'];
   type?: NativeButtonProps['type'];
   children?: ReactNode;
   weight?: ButtonWeight;
+  'aria-describedby'?: NativeButtonProps['aria-describedby'];
 }
 
 const backgroundColor: Record<
@@ -50,14 +52,18 @@ export const Button = ({
   children,
   weight = 'regular',
   type = 'button',
+  id,
+  'aria-describedby': ariaDescribedBy,
 }: ButtonProps) => {
   const styles = useStyles(styleRefs);
   const isWeak = weight === 'weak';
 
   return (
     <Box
+      id={id}
       component="button"
       type={type}
+      aria-describedby={ariaDescribedBy}
       width="full"
       display="block"
       borderRadius="standard"

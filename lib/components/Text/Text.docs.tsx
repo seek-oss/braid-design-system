@@ -3,6 +3,7 @@ import { ComponentDocs } from '../../../site/src/types';
 import { Text } from './Text';
 
 const docs: ComponentDocs = {
+  migrationGuide: true,
   examples: [
     { label: 'Standard Text', render: () => <Text>Standard text.</Text> },
     {

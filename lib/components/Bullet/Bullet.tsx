@@ -8,7 +8,7 @@ export interface BulletProps {
 
 export const Bullet = ({ children }: BulletProps) => (
   <Text component="li">
-    <Box display="block" component="span" paddingBottom="xsmall">
+    <Box display="block" component="span" paddingBottom="xxsmall">
       {children}
     </Box>
   </Text>

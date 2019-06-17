@@ -18,6 +18,7 @@ export interface HeadingProps {
   level: HeadingLevel;
   weight?: HeadingWeight;
   component?: BoxProps['component'];
+  id?: string;
 }
 
 export const Heading = ({
@@ -25,8 +26,10 @@ export const Heading = ({
   weight,
   component,
   children,
+  id,
 }: HeadingProps) => (
   <Box
+    id={id}
     component={component || resolveDefaultComponent[level]}
     paddingBottom={level === '1' ? 'small' : 'xsmall'}
     className={useHeading({ weight, level, baseline: true })}

@@ -3,8 +3,19 @@ import reactElementToJSXString from 'react-element-to-jsx-string';
 import dedent from 'dedent';
 import { ComponentProps } from './ComponentProps';
 import { ExternalLink } from './Link';
-import { ThemeProvider, Box, Text } from '../../../../lib/components';
-import { wireframe, jobStreet, jobsDB, seekAnz } from '../../../../lib/themes';
+import {
+  ThemeProvider,
+  Box,
+  Heading,
+  Paragraph,
+  Text,
+} from '../../../../lib/components';
+import {
+  wireframe,
+  jobStreet,
+  jobsDB,
+  seekAnz,
+} from '../../../../lib/themes';
 import { ComponentDocs } from '../../types';
 
 const themes = [wireframe, jobStreet, jobsDB, seekAnz];
@@ -35,13 +46,12 @@ export const ComponentRoute = ({
 
   const componentPath = category ? `${category}/` : '';
   const sourceUrl = `${sourceUrlPrefix}/lib/components/${componentPath}${componentName}`;
+  const migrationGuideUrl = `${sourceUrl}/${componentName}.migration.md`;
 
   return (
     <Box>
       <Box paddingBottom="small">
-        <Text size="large" weight="strong">
-          {componentName}
-        </Text>
+        <Heading level="2">{componentName}</Heading>
       </Box>
       {examples.length > 0 ? (
         <Box paddingBottom="small">
@@ -108,14 +118,29 @@ export const ComponentRoute = ({
       </Box>
 
       <Box paddingBottom="small">
-        <Text weight="strong">Source</Text>
+        <Heading level="3">Further References</Heading>
       </Box>
       <Box paddingBottom="large">
-        <Text>
-          <ExternalLink inline href={sourceUrl} rel="noopener noreferrer">
-            View on GitHub
-          </ExternalLink>
-        </Text>
+        <Paragraph>
+          <Text>
+            <ExternalLink inline href={sourceUrl} rel="noopener noreferrer">
+              View Source
+            </ExternalLink>
+          </Text>
+        </Paragraph>
+        <Paragraph>
+          <Text>
+            {docs.migrationGuide ? (
+              <ExternalLink
+                inline
+                href={migrationGuideUrl}
+                rel="noopener noreferrer"
+              >
+                Migration Guide
+              </ExternalLink>
+            ) : null}
+          </Text>
+        </Paragraph>
       </Box>
     </Box>
   );

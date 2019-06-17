@@ -3,6 +3,7 @@ import { ComponentDocs } from '../../../site/src/types';
 import { Alert } from './Alert';
 
 const docs: ComponentDocs = {
+  migrationGuide: true,
   examples: [
     {
       label: 'Info Alert',

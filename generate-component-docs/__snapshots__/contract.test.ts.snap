@@ -44,6 +44,11 @@ Object {
         ],
       },
     },
+    "id": Object {
+      "propName": "id",
+      "required": false,
+      "type": "string",
+    },
     "tone": Object {
       "propName": "tone",
       "required": false,
@@ -2678,6 +2683,11 @@ Object {
 exports[`Public API Contract Button 1`] = `
 Object {
   "props": Object {
+    "aria-describedby": Object {
+      "propName": "aria-describedby",
+      "required": false,
+      "type": "string",
+    },
     "children": Object {
       "propName": "children",
       "required": false,
@@ -2694,6 +2704,11 @@ Object {
           "ReactPortal",
         ],
       },
+    },
+    "id": Object {
+      "propName": "id",
+      "required": false,
+      "type": "string",
     },
     "onClick": Object {
       "propName": "onClick",
@@ -3571,6 +3586,11 @@ Object {
         ],
       },
     },
+    "id": Object {
+      "propName": "id",
+      "required": false,
+      "type": "string",
+    },
     "level": Object {
       "propName": "level",
       "required": true,
@@ -3845,6 +3865,11 @@ Object {
         ],
       },
     },
+    "id": Object {
+      "propName": "id",
+      "required": false,
+      "type": "string",
+    },
   },
 }
 `;
@@ -3868,6 +3893,11 @@ Object {
           "ReactPortal",
         ],
       },
+    },
+    "id": Object {
+      "propName": "id",
+      "required": false,
+      "type": "string",
     },
   },
 }
