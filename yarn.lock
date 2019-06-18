@@ -2092,7 +2092,7 @@
   dependencies:
     "@types/react" "*"
 
-"@types/lodash@^4.14.123", "@types/lodash@^4.14.132":
+"@types/lodash@^4.14.132":
   version "4.14.132"
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.132.tgz#8ce45ca8745ff2e004fac0de0ab46f61e390ffa0"
   integrity sha512-RNUU1rrh85NgUJcjOOr96YXr+RHwInGbaQCZmlitqOaCKXffj8bh+Zxwuq5rjDy5OgzFldDVoqk4pyLEDiwxIw==
@@ -8515,6 +8515,11 @@ java-properties@^0.2.9:
   resolved "https://registry.yarnpkg.com/java-properties/-/java-properties-0.2.10.tgz#2551560c25fa1ad94d998218178f233ad9b18f60"
   integrity sha512-CpKJh9VRNhS+XqZtg1UMejETGEiqwCGDC/uwPEEQwc2nfdbSm73SIE29TplG2gLYuBOOTNDqxzG6A9NtEPLt0w==
 
+javascript-stringify@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/javascript-stringify/-/javascript-stringify-2.0.0.tgz#ef750216ae66504ffd670b68c8b8aa07bdf7b588"
+  integrity sha512-zzK8+ByrzvOL6N92hRewwUKL0wN0TOaIuUjX0Jj8lraxWvr5wHYs2YTjaj2lstF+8qMv5cmPPef47va8NT8lDw==
+
 jest-changed-files@^24.8.0:
   version "24.8.0"
   resolved "https://registry.yarnpkg.com/jest-changed-files/-/jest-changed-files-24.8.0.tgz#7e7eb21cf687587a85e50f3d249d1327e15b157b"
@@ -12589,10 +12594,10 @@ react-transition-group@^2.0.0, react-transition-group@^2.6.1:
     prop-types "^15.6.2"
     react-lifecycles-compat "^3.0.4"
 
-react-treat@1.0.0-beta.26:
-  version "1.0.0-beta.26"
-  resolved "https://registry.yarnpkg.com/react-treat/-/react-treat-1.0.0-beta.26.tgz#1ffce83ec6ba3e15dfa6097eaf958cedfea4e6f9"
-  integrity sha512-px2QAFsSOIY/hVerjp3K9ahgm5RveVhiTdd/+3jdYYeoMo7lF86E1e9jHznFV2QQCAxJhNeA0YjOrJK5BAzerw==
+react-treat@1.0.0-beta.31:
+  version "1.0.0-beta.31"
+  resolved "https://registry.yarnpkg.com/react-treat/-/react-treat-1.0.0-beta.31.tgz#55fd264fb622cbec6e8fa39fe242331d8c20ba0d"
+  integrity sha512-Miq/WSV61BdxZ4y5sU3jTihlgixTytZ+kjrPrcL6RmumQq6DWA9AfvZcNHOF0lKU6O6RyedVnnN7/wGMG8WVrA==
 
 react-treebeard@3.1.0:
   version "3.1.0"
@@ -13704,10 +13709,10 @@ sisteransi@^1.0.0:
   resolved "https://registry.yarnpkg.com/sisteransi/-/sisteransi-1.0.0.tgz#77d9622ff909080f1c19e5f4a1df0c1b0a27b88c"
   integrity sha512-N+z4pHB4AmUv0SjveWRd6q1Nj5w62m5jodv+GD8lvmbY/83T/rpbJGZOnK5T149OldDj4Db07BSv9xY4K6NTPQ==
 
-sku@8.7.0:
-  version "8.7.0"
-  resolved "https://registry.yarnpkg.com/sku/-/sku-8.7.0.tgz#cf262fbf793bc688c253ae63c135cf081362a487"
-  integrity sha512-jpkoNkH3qtnO7P/VFxRpf8622FNrkc4XdNVFXT1JWoLZb/xTKwWyIIZlREFhso17leA6+U2uqs3OZuaE16oT4w==
+sku@8.7.1:
+  version "8.7.1"
+  resolved "https://registry.yarnpkg.com/sku/-/sku-8.7.1.tgz#382624de497e3684495d7134bd2a40446c3ca79e"
+  integrity sha512-sywpzM6e34AwZw4+9PZ7CZwVksLSdx3cL+sn/46Wz8TjsHCUYIiu5ugjSVuRJxA06aEeCemrfpvM1sqXWrQoSw==
   dependencies:
     "@babel/core" "^7.1.2"
     "@babel/plugin-proposal-class-properties" "^7.1.0"
@@ -13789,7 +13794,7 @@ sku@8.7.0:
     prettier "1.15.3"
     raw-loader "^1.0.0"
     react-hot-loader "^3.1.3"
-    react-treat "1.0.0-beta.26"
+    react-treat "1.0.0-beta.31"
     rimraf "^2.6.2"
     serialize-javascript "^1.6.1"
     start-server-webpack-plugin "^2.2.5"
@@ -13797,7 +13802,7 @@ sku@8.7.0:
     svgo "^1.0.5"
     svgo-loader "^2.1.0"
     traverse "^0.6.6"
-    treat "1.0.0-beta.26"
+    treat "1.0.0-beta.31"
     tree-kill "^1.2.1"
     tslint "^5.11.0"
     tslint-config-seek "^1.0.0"
@@ -14901,13 +14906,12 @@ travis-deploy-once@^5.0.9:
     url-join "^4.0.0"
     yargs "^12.0.1"
 
-treat@1.0.0-beta.26:
-  version "1.0.0-beta.26"
-  resolved "https://registry.yarnpkg.com/treat/-/treat-1.0.0-beta.26.tgz#6aa325b2da7773bdd050b41ee6dc9ca52de412dd"
-  integrity sha512-Gae9I/5frO6O0oQ1QUWrmxpi6IPopnahGNBpKWFm7eakRlDIx1k7/Q7T/paAEUjNyhgLpL197j8klhfjBRfVFA==
+treat@1.0.0-beta.31:
+  version "1.0.0-beta.31"
+  resolved "https://registry.yarnpkg.com/treat/-/treat-1.0.0-beta.31.tgz#db90414d120fa0fb1badac7e6a71ae97dc1c576d"
+  integrity sha512-GG9lH8v+jrI7b86G0BLAHGHza/YDLdrBUYtin++pdqy/wrCqSqCruXpXo9aSScfIBBzkSd8wWKbcqnggR/3s2g==
   dependencies:
     "@hapi/joi" "^15.0.3"
-    "@types/lodash" "^4.14.123"
     autoprefixer "^9.5.0"
     bluebird "^3.5.4"
     chalk "^2.4.2"
@@ -14917,7 +14921,9 @@ treat@1.0.0-beta.26:
     csstype "^2.6.3"
     dedent "^0.7.0"
     eval "^0.1.2"
+    javascript-stringify "^2.0.0"
     loader-utils "^1.2.3"
+    lodash "^4.17.11"
     normalize-path "^3.0.0"
     postcss "^7.0.14"
     postcss-js "^2.0.0"
