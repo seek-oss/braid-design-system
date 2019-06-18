@@ -1,9 +1,10 @@
 import mapValues from 'lodash/mapValues';
-import { style, css } from 'sku/treat';
+import { style, css, ClassRef } from 'sku/treat';
 import { Theme } from 'treat/theme';
 import basekick from 'basekick';
 import { getAccessibleVariant, isLight, mapToStyleProperty } from '../../utils';
 import { Breakpoint } from '../../themes/makeTreatTheme';
+import { UseBoxProps } from '../useBox';
 
 export const fontFamily = style(({ typography }) => ({
   fontFamily: typography.fontFamily,
@@ -109,13 +110,6 @@ export const color = css(theme => {
           }
         : {}),
     },
-    criticalContrast: {
-      color: getAccessibleVariant(foreground.critical),
-    },
-    positiveContrast: {
-      color: getAccessibleVariant(foreground.positive),
-    },
-    infoContrast: { color: getAccessibleVariant(foreground.info) },
     brandAccentForeground: {
       color: isLight(foreground.brandAccent)
         ? foreground.black
@@ -123,6 +117,45 @@ export const color = css(theme => {
     },
   };
 });
+
+type BackgroundColor = NonNullable<UseBoxProps['backgroundColor']>;
+type ForegroundColor = keyof typeof color;
+type ColorContrast = {
+  [background in BackgroundColor]?: {
+    [foreground in ForegroundColor]?: ClassRef
+  }
+};
+export const colorContrast: ColorContrast = {
+  criticalLight: {
+    critical: style(theme => ({
+      color: getAccessibleVariant(theme.color.foreground.critical),
+    })),
+  },
+  positiveLight: {
+    positive: style(theme => ({
+      color: getAccessibleVariant(theme.color.foreground.positive),
+    })),
+  },
+  infoLight: {
+    info: style(theme => ({
+      color: getAccessibleVariant(theme.color.foreground.info),
+    })),
+  },
+  brandAccent: {
+    neutral: style(theme => ({
+      color: isLight(theme.color.foreground.brandAccent)
+        ? theme.color.foreground.black
+        : theme.color.foreground.white,
+    })),
+  },
+  formAccent: {
+    neutral: style(theme => ({
+      color: isLight(theme.color.foreground.formAccent)
+        ? theme.color.foreground.black
+        : theme.color.foreground.white,
+    })),
+  },
+};
 
 const makeTouchableSpacing = (touchableHeight: number, textHeight: number) => {
   const space = (touchableHeight - textHeight) / 2;

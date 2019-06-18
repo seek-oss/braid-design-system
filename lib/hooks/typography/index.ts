@@ -1,6 +1,6 @@
 import { useStyles } from 'sku/react-treat';
 import classnames from 'classnames';
-import { useForeground } from '../../components/Box/ContrastContext';
+import { useContrast } from '../../components/Box/ContrastContext';
 import * as styleRefs from './typography.treat';
 
 export interface UseTextProps {
@@ -59,8 +59,24 @@ export const useHeading = ({
 export const useWeight = (weight: keyof typeof styleRefs.fontWeight) =>
   useStyles(styleRefs).fontWeight[weight];
 
-export const useTextColor = (color: keyof typeof styleRefs.color) =>
-  useStyles(styleRefs).color[useForeground(color)];
+export const useTextColor = (color: keyof typeof styleRefs.color) => {
+  const styles = useStyles(styleRefs);
+  const background = useContrast();
+
+  if (background) {
+    const backgroundContrast = styles.colorContrast[background];
+
+    if (backgroundContrast) {
+      const altColor = backgroundContrast[color];
+
+      if (altColor) {
+        return altColor;
+      }
+    }
+  }
+
+  return styles.color[color];
+};
 
 export const useTouchableSpace = (size: keyof typeof styleRefs.touchable) =>
   useStyles(styleRefs).touchable[size];
