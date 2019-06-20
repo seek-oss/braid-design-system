@@ -20,26 +20,10 @@ export interface FieldMessageProps {
   disabled?: boolean;
 }
 
-const renderIcon = (tone: FieldTone = 'neutral') => {
-  const styles = useStyles(styleRefs);
-
-  if (tone === 'neutral') {
-    return null;
-  }
-
-  const Icon: Record<FieldTone, ReactNode> = {
-    neutral: null,
-    critical: <ErrorIcon fill="critical" size="small" inline />,
-    positive: <TickCircleIcon fill="positive" size="small" inline />,
-  };
-
-  return (
-    <Box paddingRight="xxsmall" className={styles.fixedSize}>
-      {Icon[tone]}
-    </Box>
-  );
+const Icon: Record<'critical' | 'positive', ReactNode> = {
+  critical: <ErrorIcon fill="critical" size="small" inline />,
+  positive: <TickCircleIcon fill="positive" size="small" inline />,
 };
-
 export const FieldMessage = ({
   id,
   tone = 'neutral',
@@ -76,7 +60,11 @@ export const FieldMessage = ({
         {showMessage ? (
           <Text size="small" color={tone === 'neutral' ? 'secondary' : tone}>
             <Box display="flex">
-              {renderIcon(tone)}
+              {tone !== 'neutral' ? (
+                <Box paddingRight="xxsmall" className={styles.fixedSize}>
+                  {Icon[tone]}
+                </Box>
+              ) : null}
               {message}
             </Box>
           </Text>
