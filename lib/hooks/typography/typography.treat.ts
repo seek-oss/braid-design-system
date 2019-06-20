@@ -1,15 +1,16 @@
 import mapValues from 'lodash/mapValues';
-import { style, css } from 'sku/treat';
+import { style, styleMap, ClassRef } from 'sku/treat';
 import { Theme } from 'treat/theme';
 import basekick from 'basekick';
 import { getAccessibleVariant, isLight, mapToStyleProperty } from '../../utils';
 import { Breakpoint } from '../../themes/makeTreatTheme';
+import { UseBoxProps } from '../useBox';
 
 export const fontFamily = style(({ typography }) => ({
   fontFamily: typography.fontFamily,
 }));
 
-export const fontWeight = css(({ typography }) =>
+export const fontWeight = styleMap(({ typography }) =>
   mapToStyleProperty(typography.fontWeight, 'fontWeight'),
 );
 
@@ -70,32 +71,36 @@ const makeTypographyRules = (
 };
 
 export const text = {
-  small: css(theme => makeTypographyRules(theme.typography.text.small, theme)),
-  standard: css(theme =>
+  small: styleMap(theme =>
+    makeTypographyRules(theme.typography.text.small, theme),
+  ),
+  standard: styleMap(theme =>
     makeTypographyRules(theme.typography.text.standard, theme),
   ),
-  large: css(theme => makeTypographyRules(theme.typography.text.large, theme)),
+  large: styleMap(theme =>
+    makeTypographyRules(theme.typography.text.large, theme),
+  ),
 };
 
-export const headingWeight = css(({ typography }) =>
+export const headingWeight = styleMap(({ typography }) =>
   mapValues(typography.heading.weight, weight => ({
     fontWeight: typography.fontWeight[weight],
   })),
 );
 
 export const heading = {
-  '1': css(theme =>
+  '1': styleMap(theme =>
     makeTypographyRules(theme.typography.heading.level['1'], theme),
   ),
-  '2': css(theme =>
+  '2': styleMap(theme =>
     makeTypographyRules(theme.typography.heading.level['2'], theme),
   ),
-  '3': css(theme =>
+  '3': styleMap(theme =>
     makeTypographyRules(theme.typography.heading.level['3'], theme),
   ),
 };
 
-export const color = css(theme => {
+export const color = styleMap(theme => {
   const { linkHover, link, ...foreground } = theme.color.foreground;
 
   return {
@@ -109,20 +114,66 @@ export const color = css(theme => {
           }
         : {}),
     },
-    criticalContrast: {
-      color: getAccessibleVariant(foreground.critical),
-    },
-    positiveContrast: {
-      color: getAccessibleVariant(foreground.positive),
-    },
-    infoContrast: { color: getAccessibleVariant(foreground.info) },
-    brandAccentForeground: {
-      color: isLight(foreground.brandAccent)
-        ? foreground.black
-        : foreground.white,
-    },
   };
 });
+
+const accessibleColorVariants = styleMap(({ color: { foreground } }) => ({
+  critical: {
+    color: getAccessibleVariant(foreground.critical),
+  },
+  positive: {
+    color: getAccessibleVariant(foreground.positive),
+  },
+  info: {
+    color: getAccessibleVariant(foreground.info),
+  },
+}));
+
+const textColorForBackground = (
+  background: keyof Theme['color']['background'],
+) =>
+  style(theme => ({
+    color: isLight(theme.color.background[background])
+      ? theme.color.foreground.black
+      : theme.color.foreground.white,
+  }));
+
+type ForegroundColor = keyof typeof color;
+type BackgroundColor = NonNullable<UseBoxProps['backgroundColor']>;
+type BackgroundContrast = {
+  [background in BackgroundColor]?: {
+    [foreground in ForegroundColor | 'default']?: ClassRef
+  }
+};
+export const backgroundContrast: BackgroundContrast = {
+  criticalLight: {
+    default: accessibleColorVariants.critical,
+    critical: accessibleColorVariants.critical,
+  },
+  positiveLight: {
+    default: accessibleColorVariants.positive,
+    positive: accessibleColorVariants.positive,
+  },
+  infoLight: {
+    default: accessibleColorVariants.info,
+    info: accessibleColorVariants.info,
+  },
+  brandAccent: {
+    default: textColorForBackground('brandAccent'),
+  },
+  formAccent: {
+    default: textColorForBackground('formAccent'),
+  },
+  positive: {
+    default: textColorForBackground('positive'),
+  },
+  critical: {
+    default: textColorForBackground('critical'),
+  },
+  info: {
+    default: textColorForBackground('info'),
+  },
+};
 
 const makeTouchableSpacing = (touchableHeight: number, textHeight: number) => {
   const space = (touchableHeight - textHeight) / 2;
@@ -133,7 +184,7 @@ const makeTouchableSpacing = (touchableHeight: number, textHeight: number) => {
   };
 };
 
-export const touchable = css(({ typography, spacing, utils }) =>
+export const touchable = styleMap(({ typography, spacing, utils }) =>
   mapValues(typography.text, textDefinition =>
     utils.responsiveStyles(
       makeTouchableSpacing(
