@@ -49,7 +49,6 @@ export const Alert = ({
 }: AlertProps) => {
   const styles = useStyles(styleRefs);
   const backgroundColor = backgroundColorForTone(tone, weight);
-  const color = weight === 'strong' ? 'white' : tone;
   const Icon = icons[tone];
 
   return (
@@ -64,12 +63,10 @@ export const Alert = ({
     >
       {Icon ? (
         <Box paddingRight="small" display="flex" className={styles.icon}>
-          <Icon fill={color} />
+          <Icon />
         </Box>
       ) : null}
-      <Text color={color} baseline={false}>
-        {children}
-      </Text>
+      <Text baseline={false}>{children}</Text>
     </Box>
   );
 };

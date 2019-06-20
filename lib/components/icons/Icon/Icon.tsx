@@ -42,7 +42,7 @@ export const Icon = ({
       className={classnames(
         resolveSizeClasses(size, inline),
         styles.currentColor,
-        fill ? useTextColor(fill) : null,
+        useTextColor(fill),
       )}
     />
   );

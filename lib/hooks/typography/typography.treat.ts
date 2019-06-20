@@ -1,9 +1,10 @@
 import mapValues from 'lodash/mapValues';
-import { style, styleMap } from 'sku/treat';
+import { style, styleMap, ClassRef } from 'sku/treat';
 import { Theme } from 'treat/theme';
 import basekick from 'basekick';
 import { getAccessibleVariant, isLight, mapToStyleProperty } from '../../utils';
 import { Breakpoint } from '../../themes/makeTreatTheme';
+import { UseBoxProps } from '../useBox';
 
 export const fontFamily = style(({ typography }) => ({
   fontFamily: typography.fontFamily,
@@ -113,20 +114,66 @@ export const color = styleMap(theme => {
           }
         : {}),
     },
-    criticalContrast: {
-      color: getAccessibleVariant(foreground.critical),
-    },
-    positiveContrast: {
-      color: getAccessibleVariant(foreground.positive),
-    },
-    infoContrast: { color: getAccessibleVariant(foreground.info) },
-    brandAccentForeground: {
-      color: isLight(foreground.brandAccent)
-        ? foreground.black
-        : foreground.white,
-    },
   };
 });
+
+const accessibleColorVariants = styleMap(({ color: { foreground } }) => ({
+  critical: {
+    color: getAccessibleVariant(foreground.critical),
+  },
+  positive: {
+    color: getAccessibleVariant(foreground.positive),
+  },
+  info: {
+    color: getAccessibleVariant(foreground.info),
+  },
+}));
+
+const textColorForBackground = (
+  background: keyof Theme['color']['background'],
+) =>
+  style(theme => ({
+    color: isLight(theme.color.background[background])
+      ? theme.color.foreground.black
+      : theme.color.foreground.white,
+  }));
+
+type ForegroundColor = keyof typeof color;
+type BackgroundColor = NonNullable<UseBoxProps['backgroundColor']>;
+type BackgroundContrast = {
+  [background in BackgroundColor]?: {
+    [foreground in ForegroundColor | 'default']?: ClassRef
+  }
+};
+export const backgroundContrast: BackgroundContrast = {
+  criticalLight: {
+    default: accessibleColorVariants.critical,
+    critical: accessibleColorVariants.critical,
+  },
+  positiveLight: {
+    default: accessibleColorVariants.positive,
+    positive: accessibleColorVariants.positive,
+  },
+  infoLight: {
+    default: accessibleColorVariants.info,
+    info: accessibleColorVariants.info,
+  },
+  brandAccent: {
+    default: textColorForBackground('brandAccent'),
+  },
+  formAccent: {
+    default: textColorForBackground('formAccent'),
+  },
+  positive: {
+    default: textColorForBackground('positive'),
+  },
+  critical: {
+    default: textColorForBackground('critical'),
+  },
+  info: {
+    default: textColorForBackground('info'),
+  },
+};
 
 const makeTouchableSpacing = (touchableHeight: number, textHeight: number) => {
   const space = (touchableHeight - textHeight) / 2;
