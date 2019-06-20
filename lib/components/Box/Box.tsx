@@ -1,6 +1,6 @@
 import React, { AllHTMLAttributes, createElement, forwardRef } from 'react';
 import useBox, { UseBoxProps } from '../../hooks/useBox';
-import { ContrastProvider } from './ContrastContext';
+import { BackgroundProvider } from './BackgroundContext';
 import { Optional, Omit } from 'utility-types';
 
 export interface BoxProps
@@ -59,7 +59,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
     });
 
     return backgroundColor ? (
-      <ContrastProvider value={backgroundColor}>{element}</ContrastProvider>
+      <BackgroundProvider value={backgroundColor}>{element}</BackgroundProvider>
     ) : (
       element
     );

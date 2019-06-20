@@ -2,7 +2,7 @@ import React, { ReactNode, AllHTMLAttributes } from 'react';
 import { useStyles } from 'sku/react-treat';
 import classnames from 'classnames';
 import { Box, BoxProps } from '../Box/Box';
-import { Text, TextProps } from '../Text/Text';
+import { Text } from '../Text/Text';
 import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
 import { useTouchableSpace } from '../../hooks/typography';
 import * as styleRefs from './Button.treat';
@@ -39,12 +39,6 @@ const backgroundColor: Record<
     regular: 'formAccentActive',
     strong: 'brandAccentActive',
   },
-};
-
-const foregroundColor: Record<ButtonWeight, TextProps['color']> = {
-  weak: 'formAccent',
-  regular: 'white',
-  strong: 'brandAccentForeground',
 };
 
 export const Button = ({
@@ -93,7 +87,11 @@ export const Button = ({
         paddingRight="gutter"
         className={classnames(styles.content, useTouchableSpace('standard'))}
       >
-        <Text baseline={false} weight="medium" color={foregroundColor[weight]}>
+        <Text
+          baseline={false}
+          weight="medium"
+          color={weight === 'weak' ? 'formAccent' : undefined}
+        >
           {children}
         </Text>
       </Box>

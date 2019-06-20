@@ -90,7 +90,6 @@ export interface TreatTokens {
       linkHover: string;
       black: string;
       neutral: string;
-      brandAccent: string;
       formAccent: string;
       formAccentDisabled: string;
       critical: string;

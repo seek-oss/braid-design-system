@@ -110,50 +110,64 @@ export const color = css(theme => {
           }
         : {}),
     },
-    brandAccentForeground: {
-      color: isLight(foreground.brandAccent)
-        ? foreground.black
-        : foreground.white,
-    },
   };
 });
 
-type BackgroundColor = NonNullable<UseBoxProps['backgroundColor']>;
+const accessibleColorVariants = css(({ color: { foreground } }) => ({
+  critical: {
+    color: getAccessibleVariant(foreground.critical),
+  },
+  positive: {
+    color: getAccessibleVariant(foreground.positive),
+  },
+  info: {
+    color: getAccessibleVariant(foreground.info),
+  },
+}));
+
+const textColorForBackground = (
+  background: keyof Theme['color']['background'],
+) =>
+  style(theme => ({
+    color: isLight(theme.color.background[background])
+      ? theme.color.foreground.black
+      : theme.color.foreground.white,
+  }));
+
 type ForegroundColor = keyof typeof color;
-type ColorContrast = {
+type BackgroundColor = NonNullable<UseBoxProps['backgroundColor']>;
+type BackgroundContrast = {
   [background in BackgroundColor]?: {
-    [foreground in ForegroundColor]?: ClassRef
+    [foreground in ForegroundColor | 'default']?: ClassRef
   }
 };
-export const colorContrast: ColorContrast = {
+export const backgroundContrast: BackgroundContrast = {
   criticalLight: {
-    critical: style(theme => ({
-      color: getAccessibleVariant(theme.color.foreground.critical),
-    })),
+    default: accessibleColorVariants.critical,
+    critical: accessibleColorVariants.critical,
   },
   positiveLight: {
-    positive: style(theme => ({
-      color: getAccessibleVariant(theme.color.foreground.positive),
-    })),
+    default: accessibleColorVariants.positive,
+    positive: accessibleColorVariants.positive,
   },
   infoLight: {
-    info: style(theme => ({
-      color: getAccessibleVariant(theme.color.foreground.info),
-    })),
+    default: accessibleColorVariants.info,
+    info: accessibleColorVariants.info,
   },
   brandAccent: {
-    neutral: style(theme => ({
-      color: isLight(theme.color.foreground.brandAccent)
-        ? theme.color.foreground.black
-        : theme.color.foreground.white,
-    })),
+    default: textColorForBackground('brandAccent'),
   },
   formAccent: {
-    neutral: style(theme => ({
-      color: isLight(theme.color.foreground.formAccent)
-        ? theme.color.foreground.black
-        : theme.color.foreground.white,
-    })),
+    default: textColorForBackground('formAccent'),
+  },
+  positive: {
+    default: textColorForBackground('positive'),
+  },
+  critical: {
+    default: textColorForBackground('critical'),
+  },
+  info: {
+    default: textColorForBackground('info'),
   },
 };
 

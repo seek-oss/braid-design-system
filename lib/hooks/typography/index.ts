@@ -1,6 +1,6 @@
 import { useStyles } from 'sku/react-treat';
 import classnames from 'classnames';
-import { useContrast } from '../../components/Box/ContrastContext';
+import { useBackground } from '../../components/Box/BackgroundContext';
 import * as styleRefs from './typography.treat';
 
 export interface UseTextProps {
@@ -13,7 +13,7 @@ export interface UseTextProps {
 export const useText = ({
   weight = 'regular',
   size = 'standard',
-  color = 'neutral',
+  color,
   baseline,
 }: UseTextProps) => {
   const styles = useStyles(styleRefs);
@@ -49,7 +49,7 @@ export const useHeading = ({
     styles.fontFamily,
     styles.headingWeight[weight],
     styles.heading[level].fontSize,
-    useTextColor('neutral'),
+    useTextColor(),
     {
       [styles.heading[level].transform]: baseline,
     },
@@ -59,23 +59,20 @@ export const useHeading = ({
 export const useWeight = (weight: keyof typeof styleRefs.fontWeight) =>
   useStyles(styleRefs).fontWeight[weight];
 
-export const useTextColor = (color: keyof typeof styleRefs.color) => {
+export const useTextColor = (color?: keyof typeof styleRefs.color) => {
   const styles = useStyles(styleRefs);
-  const background = useContrast();
+  const background = useBackground();
 
-  if (background) {
-    const backgroundContrast = styles.colorContrast[background];
+  const backgroundContrast = styles.backgroundContrast[background!];
+  if (backgroundContrast) {
+    const altColor = backgroundContrast[color || 'default'];
 
-    if (backgroundContrast) {
-      const altColor = backgroundContrast[color];
-
-      if (altColor) {
-        return altColor;
-      }
+    if (altColor) {
+      return altColor;
     }
   }
 
-  return styles.color[color];
+  return styles.color[color || 'neutral'];
 };
 
 export const useTouchableSpace = (size: keyof typeof styleRefs.touchable) =>

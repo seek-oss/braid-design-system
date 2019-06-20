@@ -146,7 +146,6 @@ const tokens: TreatTokens = {
       linkHover: link,
       black,
       neutral: black,
-      brandAccent,
       formAccent,
       formAccentDisabled: '#ccc',
       critical,
