@@ -1,5 +1,5 @@
 import isEqual from 'lodash/isEqual';
-import { Styles } from 'sku/treat';
+import { Style } from 'sku/treat';
 import { TreatTokens } from './makeTreatTheme';
 
 export default (tokens: TreatTokens) => {
@@ -9,7 +9,7 @@ export default (tokens: TreatTokens) => {
     },
   });
 
-  const responsiveStyles = (mobile: Styles, desktop: Styles): Styles => ({
+  const responsiveStyles = (mobile: Style, desktop: Style): Style => ({
     ...mobile,
     ...(isEqual(mobile, desktop) ? {} : desktopStyles(desktop)),
   });

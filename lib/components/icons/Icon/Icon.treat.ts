@@ -1,4 +1,4 @@
-import { style, css } from 'sku/treat';
+import { style, styleMap } from 'sku/treat';
 import mapValues from 'lodash/mapValues';
 
 export const inline = style({
@@ -13,7 +13,7 @@ export const fullHeight = style({
 
 const makeSizeRules = (size: number) => ({ width: size, height: size });
 
-export const inlineSizes = css(({ utils, typography }) =>
+export const inlineSizes = styleMap(({ utils, typography }) =>
   mapValues(typography.text, ({ mobile, desktop }) =>
     utils.responsiveStyles(
       makeSizeRules(mobile.size),
@@ -22,7 +22,7 @@ export const inlineSizes = css(({ utils, typography }) =>
   ),
 );
 
-export const blockSizes = css(({ utils, typography }) =>
+export const blockSizes = styleMap(({ utils, typography }) =>
   mapValues(typography.text, ({ mobile, desktop }) =>
     utils.responsiveStyles(
       makeSizeRules(utils.rows(mobile.rows)),
