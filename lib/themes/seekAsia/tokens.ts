@@ -157,7 +157,6 @@ const tokens: TreatTokens = {
       black,
       neutral: grey1,
       formAccent,
-      formAccentDisabled: grey4,
       critical,
       info,
       positive,

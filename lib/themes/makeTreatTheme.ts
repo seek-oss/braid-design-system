@@ -91,7 +91,6 @@ export interface TreatTokens {
       black: string;
       neutral: string;
       formAccent: string;
-      formAccentDisabled: string;
       critical: string;
       info: string;
       positive: string;
