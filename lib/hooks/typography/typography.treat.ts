@@ -1,5 +1,5 @@
 import mapValues from 'lodash/mapValues';
-import { style, css } from 'sku/treat';
+import { style, styleMap } from 'sku/treat';
 import { Theme } from 'treat/theme';
 import basekick from 'basekick';
 import { getAccessibleVariant, isLight, mapToStyleProperty } from '../../utils';
@@ -9,7 +9,7 @@ export const fontFamily = style(({ typography }) => ({
   fontFamily: typography.fontFamily,
 }));
 
-export const fontWeight = css(({ typography }) =>
+export const fontWeight = styleMap(({ typography }) =>
   mapToStyleProperty(typography.fontWeight, 'fontWeight'),
 );
 
@@ -70,32 +70,36 @@ const makeTypographyRules = (
 };
 
 export const text = {
-  small: css(theme => makeTypographyRules(theme.typography.text.small, theme)),
-  standard: css(theme =>
+  small: styleMap(theme =>
+    makeTypographyRules(theme.typography.text.small, theme),
+  ),
+  standard: styleMap(theme =>
     makeTypographyRules(theme.typography.text.standard, theme),
   ),
-  large: css(theme => makeTypographyRules(theme.typography.text.large, theme)),
+  large: styleMap(theme =>
+    makeTypographyRules(theme.typography.text.large, theme),
+  ),
 };
 
-export const headingWeight = css(({ typography }) =>
+export const headingWeight = styleMap(({ typography }) =>
   mapValues(typography.heading.weight, weight => ({
     fontWeight: typography.fontWeight[weight],
   })),
 );
 
 export const heading = {
-  '1': css(theme =>
+  '1': styleMap(theme =>
     makeTypographyRules(theme.typography.heading.level['1'], theme),
   ),
-  '2': css(theme =>
+  '2': styleMap(theme =>
     makeTypographyRules(theme.typography.heading.level['2'], theme),
   ),
-  '3': css(theme =>
+  '3': styleMap(theme =>
     makeTypographyRules(theme.typography.heading.level['3'], theme),
   ),
 };
 
-export const color = css(theme => {
+export const color = styleMap(theme => {
   const { linkHover, link, ...foreground } = theme.color.foreground;
 
   return {
@@ -133,7 +137,7 @@ const makeTouchableSpacing = (touchableHeight: number, textHeight: number) => {
   };
 };
 
-export const touchable = css(({ typography, spacing, utils }) =>
+export const touchable = styleMap(({ typography, spacing, utils }) =>
   mapValues(typography.text, textDefinition =>
     utils.responsiveStyles(
       makeTouchableSpacing(
