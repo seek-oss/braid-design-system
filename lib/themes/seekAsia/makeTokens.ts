@@ -1,19 +1,19 @@
 import { TreatTokens } from '../makeTreatTheme';
 
 interface SeekAsiaBrandTokens {
-  name: string;
-  classic?: boolean;
+  name: 'jobStreet' | 'jobStreetClassic' | 'jobsDb';
   brandAccent: string;
   formAccent: string;
 }
 export default ({
   name,
-  classic = false,
   brandAccent,
   formAccent,
 }: SeekAsiaBrandTokens): TreatTokens => {
+  const classic = name === 'jobStreetClassic';
+
   const white = '#fff';
-  const black = '#000';
+  const black = classic ? '#333' : '#000';
   const blue2 = '#298EB9';
   const blue3 = '#94C9E0';
   const blue5 = '#EEF8FC';
@@ -22,18 +22,20 @@ export default ({
   const grey2 = '#666';
   const grey4 = '#ccc';
   const candidate = '#0c4b85'; // SEEK Asia name for this color
-  const info = candidate;
+  const info = classic ? '#142d69' : candidate;
   const positive = '#498307';
   const critical = alert;
   const focus = blue3;
   const link = classic ? '#1c3f94' : blue2;
   const linkHover = classic ? '#142d69' : blue2;
+  const selection = classic ? '#E8EBF4' : blue5;
 
   return {
     name,
     typography: {
-      fontFamily:
-        'Muli, -apple-system, system-ui, "Segoe UI", Roboto, "Noto Sans", Ubuntu, "Droid Sans", "Helvetica Neue", Arial, sans-serif',
+      fontFamily: classic
+        ? '"Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif'
+        : 'Muli, -apple-system, system-ui, "Segoe UI", Roboto, "Noto Sans", Ubuntu, "Droid Sans", "Helvetica Neue", Arial, sans-serif',
       descenderHeightScale: 0.13,
       fontWeight: {
         regular: 400,
@@ -147,7 +149,7 @@ export default ({
     },
     border: {
       radius: {
-        standard: classic ? '3px' : '4px',
+        standard: '4px',
       },
       width: {
         standard: 1,
@@ -179,7 +181,7 @@ export default ({
         brandAccent,
         formAccent,
         formAccentDisabled: grey4,
-        selection: blue5,
+        selection,
         card: white,
         critical,
         info,
