@@ -1,19 +1,21 @@
 import { TreatTokens } from '../makeTreatTheme';
+import { DeepPartial } from 'utility-types';
+import merge from 'lodash/merge';
 
 interface SeekAsiaBrandTokens {
   name: 'jobStreet' | 'jobStreetClassic' | 'jobsDb';
   brandAccent: string;
   formAccent: string;
+  tokenOverrides?: DeepPartial<TreatTokens>;
 }
 export default ({
   name,
   brandAccent,
   formAccent,
+  tokenOverrides = {},
 }: SeekAsiaBrandTokens): TreatTokens => {
-  const classic = name === 'jobStreetClassic';
-
   const white = '#fff';
-  const black = classic ? '#333' : '#000';
+  const black = '#000';
   const blue2 = '#298EB9';
   const blue3 = '#94C9E0';
   const blue5 = '#EEF8FC';
@@ -22,20 +24,19 @@ export default ({
   const grey2 = '#666';
   const grey4 = '#ccc';
   const candidate = '#0c4b85'; // SEEK Asia name for this color
-  const info = classic ? '#142d69' : candidate;
+  const info = candidate;
   const positive = '#498307';
   const critical = alert;
   const focus = blue3;
-  const link = classic ? '#1c3f94' : blue2;
-  const linkHover = classic ? '#142d69' : blue2;
-  const selection = classic ? '#E8EBF4' : blue5;
+  const link = blue2;
+  const linkHover = blue2;
+  const selection = blue5;
 
-  return {
+  const tokens: TreatTokens = {
     name,
     typography: {
-      fontFamily: classic
-        ? '"Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif'
-        : 'Muli, -apple-system, system-ui, "Segoe UI", Roboto, "Noto Sans", Ubuntu, "Droid Sans", "Helvetica Neue", Arial, sans-serif',
+      fontFamily:
+        'Muli, -apple-system, system-ui, "Segoe UI", Roboto, "Noto Sans", Ubuntu, "Droid Sans", "Helvetica Neue", Arial, sans-serif',
       descenderHeightScale: 0.13,
       fontWeight: {
         regular: 400,
@@ -83,32 +84,32 @@ export default ({
       text: {
         small: {
           mobile: {
-            size: classic ? 12 : 14,
-            rows: classic ? 5 : 5,
+            size: 14,
+            rows: 5,
           },
           desktop: {
-            size: classic ? 12 : 14,
-            rows: classic ? 5 : 5,
+            size: 14,
+            rows: 5,
           },
         },
         standard: {
           mobile: {
-            size: classic ? 14 : 16,
-            rows: classic ? 5 : 6,
+            size: 16,
+            rows: 6,
           },
           desktop: {
-            size: classic ? 14 : 16,
-            rows: classic ? 5 : 6,
+            size: 16,
+            rows: 6,
           },
         },
         large: {
           mobile: {
-            size: classic ? 16 : 18,
-            rows: classic ? 6 : 6,
+            size: 18,
+            rows: 6,
           },
           desktop: {
-            size: classic ? 16 : 18,
-            rows: classic ? 6 : 6,
+            size: 18,
+            rows: 6,
           },
         },
       },
@@ -189,4 +190,6 @@ export default ({
       },
     },
   };
+
+  return merge(tokens, tokenOverrides);
 };
