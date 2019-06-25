@@ -3,7 +3,7 @@ import { DeepPartial } from 'utility-types';
 import merge from 'lodash/merge';
 
 interface SeekAsiaBrandTokens {
-  name: 'jobStreet' | 'jobStreetClassic' | 'jobsDb';
+  name: string;
   brandAccent: string;
   formAccent: string;
   tokenOverrides?: DeepPartial<TreatTokens>;
