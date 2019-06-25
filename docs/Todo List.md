@@ -10,7 +10,6 @@ Please note that, while there may be existing implementations of these in other 
 - [`Autosuggest`](https://seek-oss.github.io/seek-style-guide/autosuggest)
 - [`Badge`](https://seek-oss.github.io/seek-style-guide/badge)
 - [`Loader`](https://seek-oss.github.io/seek-style-guide/loader)
-- [`MonthPicker`](https://seek-oss.github.io/seek-style-guide/monthpicker)
 - [`Pill`](https://seek-oss.github.io/seek-style-guide/pill)
 - [`Rating`](https://seek-oss.github.io/seek-style-guide/rating)
 - [`SlideToggle`](https://seek-oss.github.io/seek-style-guide/slidetoggle)
