@@ -1,5 +1,6 @@
 import React, { ChangeEvent, FocusEvent, createRef } from 'react';
 import classnames from 'classnames';
+import range from 'lodash/range';
 import { isMobile } from 'is-mobile';
 import { Omit } from 'utility-types';
 import { useStyles } from 'sku/treat';
@@ -7,8 +8,6 @@ import { Box } from '../Box/Box';
 import { Hidden } from '../Hidden/Hidden';
 import { Dropdown } from '../Dropdown/Dropdown';
 import { FieldProps, Field } from '../private/Field/Field';
-import { Months } from './Months';
-import { Years } from './Years';
 import * as styleRefs from './MonthPicker.treat';
 
 interface MonthPickerValue {
@@ -26,6 +25,42 @@ interface MonthPickerProps
   maxYear?: number;
   ascendingYears?: boolean;
 }
+
+const months = [
+  { value: '1', label: 'Jan' },
+  { value: '2', label: 'Feb' },
+  { value: '3', label: 'Mar' },
+  { value: '4', label: 'Apr' },
+  { value: '5', label: 'May' },
+  { value: '6', label: 'Jun' },
+  { value: '7', label: 'Jul' },
+  { value: '8', label: 'Aug' },
+  { value: '9', label: 'Sep' },
+  { value: '10', label: 'Oct' },
+  { value: '11', label: 'Nov' },
+  { value: '12', label: 'Dec' },
+];
+const getMonths = () =>
+  months.map(month => (
+    <option value={month.value} key={month.value}>
+      {month.label}
+    </option>
+  ));
+
+const getYears = (min: number, max: number, ascending: boolean) => {
+  const start = ascending ? min : max;
+  const end = ascending ? max + 1 : min - 1;
+
+  return range(start, end).map(year => {
+    const yearStr = String(year);
+
+    return (
+      <option value={yearStr} key={yearStr}>
+        {yearStr}
+      </option>
+    );
+  });
+};
 
 const currYear = new Date().getFullYear();
 const renderNativeInput = isMobile({ tablet: true });
@@ -184,7 +219,7 @@ export const MonthPicker = ({
                 placeholder="Month"
                 ref={monthRef}
               >
-                <Months />
+                {getMonths()}
               </Dropdown>
             </Box>
 
@@ -204,7 +239,7 @@ export const MonthPicker = ({
                 placeholder="Year"
                 ref={yearRef}
               >
-                <Years min={minYear} max={maxYear} ascending={ascendingYears} />
+                {getYears(minYear, maxYear, ascendingYears)}
               </Dropdown>
             </Box>
           </Box>
