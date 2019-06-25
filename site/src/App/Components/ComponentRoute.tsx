@@ -10,11 +10,10 @@ import {
   Paragraph,
   Text,
 } from '../../../../lib/components';
-import { wireframe, jobStreet, jobsDb, seekAnz } from '../../../../lib/themes';
+import * as themes from '../../../../lib/themes';
 
 import { ComponentDocs } from '../../types';
 
-const themes = [seekAnz, jobsDb, jobStreet, wireframe];
 const handler = () => {
   /* No-op for docs examples */
 };
@@ -65,7 +64,7 @@ export const ComponentRoute = ({
             </Box>
           ) : null}
           {render
-            ? themes.map(theme => (
+            ? Object.values(themes).map(theme => (
                 <Box key={theme.name} marginBottom="large">
                   <Box paddingBottom="small">
                     <Text color="secondary">Theme: {theme.name}</Text>
