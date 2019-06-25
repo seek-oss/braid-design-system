@@ -1,5 +1,4 @@
 import React, { ChangeEvent, FocusEvent, createRef } from 'react';
-import range from 'lodash/range';
 import classnames from 'classnames';
 import { isMobile } from 'is-mobile';
 import { Omit } from 'utility-types';
@@ -8,6 +7,8 @@ import { Box } from '../Box/Box';
 import { Hidden } from '../Hidden/Hidden';
 import { Dropdown } from '../Dropdown/Dropdown';
 import { FieldProps, Field } from '../private/Field/Field';
+import { Months } from './Months';
+import { Years } from './Years';
 import * as styleRefs from './MonthPicker.treat';
 
 interface MonthPickerValue {
@@ -17,8 +18,8 @@ interface MonthPickerValue {
 
 interface MonthPickerProps
   extends Omit<FieldProps, 'autoComplete' | 'secondaryMessage'> {
-  value: NonNullable<MonthPickerValue>;
-  onChange: NonNullable<(value: MonthPickerValue, event: ChangeEvent) => void>;
+  value: MonthPickerValue;
+  onChange: (value: MonthPickerValue, event: ChangeEvent) => void;
   onBlur?: (value: MonthPickerValue, event: FocusEvent) => void;
   onFocus?: (event: FocusEvent) => void;
   minYear?: number;
@@ -26,59 +27,12 @@ interface MonthPickerProps
   ascendingYears?: boolean;
 }
 
-/* ---------------------------- */
-/* Build month & year options   */
-/* ---------------------------- */
-const months = [
-  { value: '1', label: 'Jan' },
-  { value: '2', label: 'Feb' },
-  { value: '3', label: 'Mar' },
-  { value: '4', label: 'Apr' },
-  { value: '5', label: 'May' },
-  { value: '6', label: 'Jun' },
-  { value: '7', label: 'Jul' },
-  { value: '8', label: 'Aug' },
-  { value: '9', label: 'Sep' },
-  { value: '10', label: 'Oct' },
-  { value: '11', label: 'Nov' },
-  { value: '12', label: 'Dec' },
-];
-const getMonths = () =>
-  months.map(m => (
-    <option value={m.value} key={m.value}>
-      {m.label}
-    </option>
-  ));
-
-const getYears = (min: number, max: number, ascending: boolean) => {
-  const start = ascending ? min : max;
-  const end = ascending ? max + 1 : min - 1;
-
-  return range(start, end).map(year => {
-    const yearStr = String(year);
-
-    return (
-      <option value={yearStr} key={yearStr}>
-        {yearStr}
-      </option>
-    );
-  });
-};
-
-/* ---------------------------- */
-/* Set constant variables       */
-/* ---------------------------- */
 const currYear = new Date().getFullYear();
 const renderNativeInput = isMobile({ tablet: true });
 const monthRef = createRef<HTMLSelectElement>();
 const yearRef = createRef<HTMLSelectElement>();
 
-type FieldType = keyof MonthPickerValue | 'native';
-
-/* ---------------------------- */
-/* Custom value parsing helpers */
-/* ---------------------------- */
-const customValueToString = ({ month, year }: MonthPickerProps['value']) =>
+const customValueToString = ({ month, year }: MonthPickerValue) =>
   month && year ? `${year}-${month < 10 ? '0' : ''}${month}` : undefined;
 
 const stringToCustomValue = (value: string) => {
@@ -90,9 +44,10 @@ const stringToCustomValue = (value: string) => {
   };
 };
 
+type FieldType = keyof MonthPickerValue | 'native';
 const nativeToCustomValue = (
   nativeValue: string,
-  value: MonthPickerProps['value'],
+  value: MonthPickerValue,
   fieldType: FieldType,
 ) =>
   ({
@@ -107,22 +62,19 @@ const nativeToCustomValue = (
     native: stringToCustomValue(nativeValue),
   }[fieldType]);
 
-/* ---------------------------- */
-/* Event handler management     */
-/* ---------------------------- */
-const handleChange = <E extends HTMLSelectElement | HTMLInputElement>(
+const handleChange = <Element extends HTMLSelectElement | HTMLInputElement>(
   { onChange, value }: Pick<MonthPickerProps, 'onChange' | 'value'>,
   fieldType: FieldType,
-) => (event: ChangeEvent<E>) => {
+) => (event: ChangeEvent<Element>) => {
   if (typeof onChange === 'function') {
     onChange(nativeToCustomValue(event.target.value, value, fieldType), event);
   }
 };
 
-const handleBlur = <E extends HTMLSelectElement | HTMLInputElement>(
+const handleBlur = <Element extends HTMLSelectElement | HTMLInputElement>(
   { onBlur, value }: Pick<MonthPickerProps, 'onBlur' | 'value'>,
   fieldType: FieldType,
-) => (event: FocusEvent<E>) => {
+) => (event: FocusEvent<Element>) => {
   if (typeof onBlur === 'function') {
     const isRelatedTargetExternal =
       event.relatedTarget !== monthRef.current &&
@@ -134,9 +86,9 @@ const handleBlur = <E extends HTMLSelectElement | HTMLInputElement>(
   }
 };
 
-const handleFocus = <E extends HTMLSelectElement | HTMLInputElement>({
+const handleFocus = <Element extends HTMLSelectElement | HTMLInputElement>({
   onFocus,
-}: Pick<MonthPickerProps, 'onFocus'>) => (event: FocusEvent<E>) => {
+}: Pick<MonthPickerProps, 'onFocus'>) => (event: FocusEvent<Element>) => {
   if (typeof onFocus === 'function') {
     const isRelatedTargetExternal =
       event.relatedTarget !== monthRef.current &&
@@ -232,7 +184,7 @@ export const MonthPicker = ({
                 placeholder="Month"
                 ref={monthRef}
               >
-                {getMonths()}
+                <Months />
               </Dropdown>
             </Box>
 
@@ -252,7 +204,7 @@ export const MonthPicker = ({
                 placeholder="Year"
                 ref={yearRef}
               >
-                {getYears(minYear, maxYear, ascendingYears)}
+                <Years min={minYear} max={maxYear} ascending={ascendingYears} />
               </Dropdown>
             </Box>
           </Box>

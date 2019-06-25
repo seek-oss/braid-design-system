@@ -2,7 +2,7 @@
 
 ## API Changes
 
-- `native={boolean}` has been deprecated in favour of making this decision internally, so no need to explicitly set this.
+- `native={boolean}` has been removed in favour of making this decision internally, so no need to explicitly set this.
 - `onChange` and `onBlur` handlers now receive the native event as a second argument. The first parameter is still the custom `value` object.
 - `message={false}` is now `reserveMessageSpace={false}`.
 - Data attributes must now be passed via the `data` prop, e.g. `data={{ automation: 'test-id' }}`.
