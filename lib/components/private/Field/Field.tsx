@@ -26,6 +26,7 @@ export interface FieldProps {
   secondaryMessage?: FieldMessageProps['secondaryMessage'];
   reserveMessageSpace?: FieldMessageProps['reserveMessageSpace'];
   tone?: FieldMessageProps['tone'];
+  'aria-describedby'?: FormElementProps['aria-describedby'];
   data?: DataAttributeMap;
 }
 
@@ -63,6 +64,7 @@ export const Field = forwardRef<FieldRef, InternalFieldProps>(
       secondaryMessage,
       reserveMessageSpace = true,
       tone = 'neutral',
+      'aria-describedby': ariaDescribedBy,
       data,
     },
     ref,
@@ -82,8 +84,14 @@ export const Field = forwardRef<FieldRef, InternalFieldProps>(
         <Box className={styles.fieldContainer}>
           {children(
             {
+              // non-visual props
               id,
               name,
+              'aria-describedby': ariaDescribedBy || messageId,
+              disabled,
+              autoComplete,
+              ...buildDataAttributes(data),
+              // visual props
               backgroundColor: disabled ? 'inputDisabled' : 'input',
               boxShadow:
                 tone === 'critical' && !disabled
@@ -93,10 +101,6 @@ export const Field = forwardRef<FieldRef, InternalFieldProps>(
               paddingLeft: 'small',
               paddingRight: 'small',
               borderRadius: 'standard',
-              'aria-describedby': messageId,
-              disabled,
-              autoComplete,
-              ...buildDataAttributes(data),
               className: classnames(
                 styles.field,
                 useText({ size: 'standard', baseline: false }),
