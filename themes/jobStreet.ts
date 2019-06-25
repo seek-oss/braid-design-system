@@ -1,1 +1,1 @@
-export { default } from './../lib/themes/jobStreet';
+export { default } from '../lib/themes/jobStreet';

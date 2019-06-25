@@ -1,1 +1,1 @@
-export { default } from './../lib/themes/jobsDb';
+export { default } from '../lib/themes/jobsDb';
