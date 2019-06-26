@@ -3800,17 +3800,17 @@ Object {
     "onBlur": Object {
       "propName": "onBlur",
       "required": false,
-      "type": "(value: MonthPickerValue, event: FocusEvent<Element>) => void",
+      "type": "FocusHandler",
     },
     "onChange": Object {
       "propName": "onChange",
       "required": true,
-      "type": "(value: MonthPickerValue, event: ChangeEvent<Element>) => void",
+      "type": "ChangeHandler",
     },
     "onFocus": Object {
       "propName": "onFocus",
       "required": false,
-      "type": "(event: FocusEvent<Element>) => void",
+      "type": "FocusHandler",
     },
     "reserveMessageSpace": Object {
       "propName": "reserveMessageSpace",

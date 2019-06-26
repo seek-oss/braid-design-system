@@ -15,12 +15,14 @@ interface MonthPickerValue {
   year: number | undefined;
 }
 
+type FocusHandler = () => void;
+type ChangeHandler = (value: MonthPickerValue) => void;
 interface MonthPickerProps
   extends Omit<FieldProps, 'autoComplete' | 'secondaryMessage'> {
   value: MonthPickerValue;
-  onChange: (value: MonthPickerValue, event: ChangeEvent) => void;
-  onBlur?: (value: MonthPickerValue, event: FocusEvent) => void;
-  onFocus?: (event: FocusEvent) => void;
+  onChange: ChangeHandler;
+  onBlur?: FocusHandler;
+  onFocus?: FocusHandler;
   minYear?: number;
   maxYear?: number;
   ascendingYears?: boolean;
@@ -64,8 +66,6 @@ const getYears = (min: number, max: number, ascending: boolean) => {
 
 const currYear = new Date().getFullYear();
 const renderNativeInput = isMobile({ tablet: true });
-const monthRef = createRef<HTMLSelectElement>();
-const yearRef = createRef<HTMLSelectElement>();
 
 const customValueToString = ({ month, year }: MonthPickerValue) =>
   month && year ? `${year}-${month < 10 ? '0' : ''}${month}` : undefined;
@@ -79,59 +79,27 @@ const stringToCustomValue = (value: string) => {
   };
 };
 
-type FieldType = keyof MonthPickerValue | 'native';
-const nativeToCustomValue = (
-  nativeValue: string,
+const makeChangeHandler = <
+  Element extends HTMLSelectElement | HTMLInputElement
+>(
+  onChange: ChangeHandler,
   value: MonthPickerValue,
-  fieldType: FieldType,
-) =>
-  ({
-    month: {
-      year: value && value.year ? value.year : undefined,
-      month: parseInt(nativeValue, 10) || undefined,
-    },
-    year: {
-      month: value && value.month ? value.month : undefined,
-      year: parseInt(nativeValue, 10) || undefined,
-    },
-    native: stringToCustomValue(nativeValue),
-  }[fieldType]);
-
-const handleChange = <Element extends HTMLSelectElement | HTMLInputElement>(
-  { onChange, value }: Pick<MonthPickerProps, 'onChange' | 'value'>,
-  fieldType: FieldType,
+  fieldType: keyof MonthPickerValue | 'native',
 ) => (event: ChangeEvent<Element>) => {
   if (typeof onChange === 'function') {
-    onChange(nativeToCustomValue(event.target.value, value, fieldType), event);
-  }
-};
-
-const handleBlur = <Element extends HTMLSelectElement | HTMLInputElement>(
-  { onBlur, value }: Pick<MonthPickerProps, 'onBlur' | 'value'>,
-  fieldType: FieldType,
-) => (event: FocusEvent<Element>) => {
-  if (typeof onBlur === 'function') {
-    const isRelatedTargetExternal =
-      event.relatedTarget !== monthRef.current &&
-      event.relatedTarget !== yearRef.current;
-
-    if (event.relatedTarget === null || isRelatedTargetExternal) {
-      onBlur(nativeToCustomValue(event.target.value, value, fieldType), event);
-    }
-  }
-};
-
-const handleFocus = <Element extends HTMLSelectElement | HTMLInputElement>({
-  onFocus,
-}: Pick<MonthPickerProps, 'onFocus'>) => (event: FocusEvent<Element>) => {
-  if (typeof onFocus === 'function') {
-    const isRelatedTargetExternal =
-      event.relatedTarget !== monthRef.current &&
-      event.relatedTarget !== yearRef.current;
-
-    if (event.relatedTarget === null || isRelatedTargetExternal) {
-      onFocus(event);
-    }
+    onChange(
+      {
+        month: {
+          year: value && value.year ? value.year : undefined,
+          month: parseInt(event.target.value, 10) || undefined,
+        },
+        year: {
+          month: value && value.month ? value.month : undefined,
+          year: parseInt(event.target.value, 10) || undefined,
+        },
+        native: stringToCustomValue(event.target.value),
+      }[fieldType],
+    );
   }
 };
 
@@ -154,6 +122,29 @@ export const MonthPicker = ({
   const currentValue = {
     month: value && value.month ? value.month : undefined,
     year: value && value.year ? value.year : undefined,
+  };
+
+  const monthRef = createRef<HTMLSelectElement>();
+  const yearRef = createRef<HTMLSelectElement>();
+
+  const makeFocusEventHandler = <
+    Element extends HTMLSelectElement | HTMLInputElement
+  >(
+    handler: FocusHandler,
+  ) => (event: FocusEvent<Element>) => {
+    if (typeof handler === 'function') {
+      if (renderNativeInput) {
+        handler();
+      } else {
+        const isRelatedTargetExternal =
+          event.relatedTarget !== monthRef.current &&
+          event.relatedTarget !== yearRef.current;
+
+        if (event.relatedTarget === null || isRelatedTargetExternal) {
+          handler();
+        }
+      }
+    }
   };
 
   const field = (
@@ -189,9 +180,9 @@ export const MonthPicker = ({
             component="input"
             type="month"
             value={customValueToString(currentValue)}
-            onChange={onChange && handleChange({ onChange, value }, 'native')}
-            onBlur={onBlur && handleBlur({ onBlur, value }, 'native')}
-            onFocus={onFocus && handleFocus({ onFocus })}
+            onChange={onChange && makeChangeHandler(onChange, value, 'native')}
+            onBlur={onBlur && makeFocusEventHandler(onBlur)}
+            onFocus={onFocus && makeFocusEventHandler(onFocus)}
             {...nonVisualFieldProps}
             backgroundColor={backgroundColor}
             boxShadow={boxShadow}
@@ -211,9 +202,9 @@ export const MonthPicker = ({
               <Dropdown
                 {...nonVisualFieldProps}
                 value={currentValue.month || ''}
-                onChange={handleChange({ onChange, value }, 'month')}
-                onBlur={onBlur && handleBlur({ onBlur, value }, 'month')}
-                onFocus={onFocus && handleFocus({ onFocus })}
+                onChange={makeChangeHandler(onChange, value, 'month')}
+                onBlur={onBlur && makeFocusEventHandler(onBlur)}
+                onFocus={onFocus && makeFocusEventHandler(onFocus)}
                 reserveMessageSpace={false}
                 tone={tone}
                 placeholder="Month"
@@ -231,9 +222,9 @@ export const MonthPicker = ({
                 id={`${id}-year`}
                 name={`${name}-year`}
                 value={currentValue.year || ''}
-                onChange={handleChange({ onChange, value }, 'year')}
-                onBlur={onBlur && handleBlur({ onBlur, value }, 'year')}
-                onFocus={onFocus && handleFocus({ onFocus })}
+                onChange={makeChangeHandler(onChange, value, 'year')}
+                onBlur={onBlur && makeFocusEventHandler(onBlur)}
+                onFocus={onFocus && makeFocusEventHandler(onFocus)}
                 reserveMessageSpace={false}
                 tone={tone}
                 placeholder="Year"
