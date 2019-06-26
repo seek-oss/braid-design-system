@@ -21,23 +21,54 @@ req.keys().forEach(filename => {
   const stories = storiesOf(componentName, module);
   const docs = req(filename).default as ComponentDocs;
 
-  if (docs.storybook === false) {
+  if (
+    docs.storybook === false ||
+    !docs.examples.some(({ render }) => typeof render === 'function')
+  ) {
     return;
   }
 
-  docs.examples.forEach(({ label = componentName, render }) => {
-    if (!render) {
-      return;
-    }
-
-    values(themes).forEach(theme => {
-      stories.add(`${label} (${theme.name})`, () => (
-        <BrowserRouter>
-          <ThemeProvider theme={theme}>
-            {render({ id: 'id', handler })}
-          </ThemeProvider>
-        </BrowserRouter>
-      ));
-    });
+  values(themes).forEach(theme => {
+    stories.add(theme.name, () => (
+      <BrowserRouter>
+        <ThemeProvider theme={theme}>
+          {docs.examples.map(({ label = componentName, render }, i) =>
+            render ? (
+              <div
+                key={i}
+                style={{
+                  minHeight: 300,
+                  paddingBottom: 32,
+                }}
+              >
+                <h4
+                  style={{
+                    margin: 0,
+                    marginBottom: 18,
+                    padding: 0,
+                    fontSize: 14,
+                    fontFamily: 'arial',
+                    color: '#ccc',
+                  }}
+                >
+                  {label}
+                </h4>
+                {render({ id: 'id', handler })}
+                <div style={{ paddingTop: 18 }}>
+                  <hr
+                    style={{
+                      margin: 0,
+                      border: 0,
+                      height: 1,
+                      background: '#eee',
+                    }}
+                  />
+                </div>
+              </div>
+            ) : null,
+          )}
+        </ThemeProvider>
+      </BrowserRouter>
+    ));
   });
 });
