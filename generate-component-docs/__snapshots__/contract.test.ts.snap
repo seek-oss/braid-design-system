@@ -3712,11 +3712,6 @@ Object {
 exports[`Public API Contract MonthPicker 1`] = `
 Object {
   "props": Object {
-    "aria-describedby": Object {
-      "propName": "aria-describedby",
-      "required": false,
-      "type": "string",
-    },
     "ascendingYears": Object {
       "propName": "ascendingYears",
       "required": false,

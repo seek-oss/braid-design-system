@@ -17,16 +17,15 @@ export interface FieldSetProps {
   message?: FieldMessageProps['message'];
   reserveMessageSpace?: FieldMessageProps['reserveMessageSpace'];
   tone?: FieldMessageProps['tone'];
-  children: ReactNode;
 }
 
-type PassthroughProps = 'disabled';
-interface FieldRenderProps extends Pick<FieldSetProps, PassthroughProps> {
+interface FieldSetRenderProps {
+  disabled?: FieldSetProps['disabled'];
   'aria-describedby'?: string;
 }
 
-interface InternalFieldProps extends FieldSetProps {
-  children(props: FieldRenderProps): ReactNode;
+interface InternalFieldSetProps extends FieldSetProps {
+  children(props: FieldSetRenderProps): ReactNode;
 }
 
 export const FieldSet = ({
@@ -40,7 +39,7 @@ export const FieldSet = ({
   message,
   reserveMessageSpace,
   tone,
-}: InternalFieldProps) => {
+}: InternalFieldSetProps) => {
   const messageId = `${id}-message`;
 
   return (

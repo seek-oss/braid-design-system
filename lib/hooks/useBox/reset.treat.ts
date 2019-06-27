@@ -45,6 +45,11 @@ const mark = style({
 
 const select = style({
   appearance: 'none',
+  selectors: {
+    '&::-ms-expand': {
+      display: 'none',
+    },
+  },
 });
 
 export const element = {
