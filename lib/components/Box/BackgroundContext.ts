@@ -1,9 +1,7 @@
 import { createContext, useContext } from 'react';
 import { BoxProps } from './Box';
 
-const backgroundContext = createContext<BoxProps['backgroundColor'] | null>(
-  null,
-);
+const backgroundContext = createContext<BoxProps['background'] | null>(null);
 
 export const BackgroundProvider = backgroundContext.Provider;
 

@@ -147,17 +147,17 @@ const getActiveColor = (color: string) =>
 const getHoverColor = (color: string) =>
   isLight(color) ? darken(0.05, color) : lighten(0.05, color);
 
-export const backgroundColor = styleMap(({ color: { background } }) => ({
-  ...mapToStyleProperty(background, 'backgroundColor'),
-  formAccentActive: { backgroundColor: getActiveColor(background.formAccent) },
-  formAccentHover: { backgroundColor: getHoverColor(background.formAccent) },
+export const background = styleMap(({ color }) => ({
+  ...mapToStyleProperty(color.background, 'background'),
+  formAccentActive: { background: getActiveColor(color.background.formAccent) },
+  formAccentHover: { background: getHoverColor(color.background.formAccent) },
   brandAccentActive: {
-    backgroundColor: getActiveColor(background.brandAccent),
+    background: getActiveColor(color.background.brandAccent),
   },
-  brandAccentHover: { backgroundColor: getHoverColor(background.brandAccent) },
-  infoLight: { backgroundColor: getLightVariant(background.info) },
-  criticalLight: { backgroundColor: getLightVariant(background.critical) },
-  positiveLight: { backgroundColor: getLightVariant(background.positive) },
+  brandAccentHover: { background: getHoverColor(color.background.brandAccent) },
+  infoLight: { background: getLightVariant(color.background.info) },
+  criticalLight: { background: getLightVariant(color.background.critical) },
+  positiveLight: { background: getLightVariant(color.background.positive) },
 }));
 
 export const boxShadow = styleMap(

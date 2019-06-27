@@ -22,7 +22,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       display,
       flexDirection,
       borderRadius,
-      backgroundColor,
+      background,
       boxShadow,
       transition,
       transform,
@@ -45,7 +45,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       display,
       flexDirection,
       borderRadius,
-      backgroundColor,
+      background,
       boxShadow,
       transition,
       transform,
@@ -58,8 +58,8 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       ref,
     });
 
-    return backgroundColor ? (
-      <BackgroundProvider value={backgroundColor}>{element}</BackgroundProvider>
+    return background ? (
+      <BackgroundProvider value={background}>{element}</BackgroundProvider>
     ) : (
       element
     );
