@@ -7,7 +7,7 @@ import {
 } from '../../FieldMessage/FieldMessage';
 
 type FormElementProps = AllHTMLAttributes<HTMLFormElement>;
-export interface FieldSetProps {
+export interface FieldGroupProps {
   id: NonNullable<FormElementProps['id']>;
   disabled?: FormElementProps['disabled'];
   label?: FieldLabelProps['label'];
@@ -19,16 +19,16 @@ export interface FieldSetProps {
   tone?: FieldMessageProps['tone'];
 }
 
-interface FieldSetRenderProps {
-  disabled?: FieldSetProps['disabled'];
+interface FieldGroupRenderProps {
+  disabled?: FieldGroupProps['disabled'];
   'aria-describedby'?: string;
 }
 
-interface InternalFieldSetProps extends FieldSetProps {
-  children(props: FieldSetRenderProps): ReactNode;
+interface InternalFieldGroupProps extends FieldGroupProps {
+  children(props: FieldGroupRenderProps): ReactNode;
 }
 
-export const FieldSet = ({
+export const FieldGroup = ({
   id,
   disabled,
   children,
@@ -39,7 +39,7 @@ export const FieldSet = ({
   message,
   reserveMessageSpace,
   tone,
-}: InternalFieldSetProps) => {
+}: InternalFieldGroupProps) => {
   const messageId = `${id}-message`;
 
   return (

@@ -8,7 +8,7 @@ import { Box } from '../Box/Box';
 import { Hidden } from '../Hidden/Hidden';
 import { Dropdown } from '../Dropdown/Dropdown';
 import { FieldProps, Field } from '../private/Field/Field';
-import { FieldSet } from '../private/FieldSet/FieldSet';
+import { FieldGroup } from '../private/FieldGroup/FieldGroup';
 import * as styleRefs from './MonthPicker.treat';
 
 interface MonthPickerValue {
@@ -190,15 +190,15 @@ export const MonthPicker = ({
     </Field>
   );
 
-  const customFieldSet = (
-    <FieldSet
+  const customFieldGroup = (
+    <FieldGroup
       id={id}
       label={label}
       tone={tone}
       disabled={disabled}
       {...restProps}
     >
-      {fieldSetProps => (
+      {fieldGroupProps => (
         <Box display="flex">
           <Box className={styles.grow}>
             <Hidden screen={true} print={true}>
@@ -213,7 +213,7 @@ export const MonthPicker = ({
               reserveMessageSpace={false}
               tone={tone}
               placeholder="Month"
-              {...fieldSetProps}
+              {...fieldGroupProps}
               ref={monthRef}
             >
               {getMonths()}
@@ -235,7 +235,7 @@ export const MonthPicker = ({
               reserveMessageSpace={false}
               tone={tone}
               placeholder="Year"
-              {...fieldSetProps}
+              {...fieldGroupProps}
               ref={yearRef}
             >
               {getYears(minYear, maxYear, ascendingYears)}
@@ -243,8 +243,8 @@ export const MonthPicker = ({
           </Box>
         </Box>
       )}
-    </FieldSet>
+    </FieldGroup>
   );
 
-  return renderNativeInput ? nativeField : customFieldSet;
+  return renderNativeInput ? nativeField : customFieldGroup;
 };

@@ -37,7 +37,7 @@ export const FieldLabel = ({
   return (
     <Box paddingBottom="xsmall">
       <Box component="span" display="flex" className={styles.spaceBetween}>
-        {id ? <label htmlFor={id}>{labelEl}</label> : labelEl}
+        {id === false ? labelEl : <label htmlFor={id}>{labelEl}</label>}
         {tertiaryLabel ? <Text>&nbsp;{tertiaryLabel}</Text> : null}
       </Box>
       {description ? (
