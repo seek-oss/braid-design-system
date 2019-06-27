@@ -82,7 +82,7 @@ export const ComponentRoute = ({
             <Text tone="secondary">Code:</Text>
           </Box>
           <Box
-            backgroundColor="formAccent"
+            background="formAccent"
             paddingLeft="small"
             paddingRight="small"
             paddingTop="xxsmall"
