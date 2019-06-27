@@ -9,6 +9,14 @@ const propBlacklist = ['key'];
 const tsconfigPath = path.join(__dirname, '../tsconfig.json');
 const componentsFile = path.join(__dirname, '../lib/components/index.ts');
 
+const reactNodeType =
+  'string | number | boolean | {} | ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)> | ReactNodeArray | ReactPortal';
+
+const stringAliases: Record<string, string> = {
+  [reactNodeType]: 'ReactNode',
+  boolean: 'boolean',
+};
+
 export interface PropDetails {
   propName: string;
   required: boolean;
@@ -74,8 +82,10 @@ export default () => {
   };
 
   const normaliseType = (type: ts.Type): NormalisedPropType => {
-    if (checker.typeToString(type) === 'boolean') {
-      return 'boolean';
+    const typeString = checker.typeToString(type);
+
+    if (stringAliases[typeString]) {
+      return stringAliases[typeString];
     }
 
     if (type.aliasSymbol) {

@@ -1,11 +1,13 @@
+import { typeSerializer, contractSerializer } from './contractSerialiser';
 import generate from './generate';
 
-describe('Public API Contract', () => {
-  const componentDocs = generate();
+expect.addSnapshotSerializer(typeSerializer);
+expect.addSnapshotSerializer(contractSerializer);
 
-  it.each(Object.keys(componentDocs))('%s', componentName => {
-    const componentProps = componentDocs[componentName];
+const componentDocs = generate();
 
-    expect(componentProps).toMatchSnapshot();
-  });
+it.each(Object.keys(componentDocs))('%s', componentName => {
+  const componentProps = componentDocs[componentName];
+
+  expect(componentProps).toMatchSnapshot();
 });
