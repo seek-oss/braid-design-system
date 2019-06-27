@@ -3250,7 +3250,13 @@ Object {
     "id": Object {
       "propName": "id",
       "required": true,
-      "type": "string",
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "false",
+        ],
+      },
     },
     "label": Object {
       "propName": "label",
@@ -3791,11 +3797,6 @@ Object {
       "propName": "minYear",
       "required": false,
       "type": "number",
-    },
-    "name": Object {
-      "propName": "name",
-      "required": false,
-      "type": "string",
     },
     "onBlur": Object {
       "propName": "onBlur",
