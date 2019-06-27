@@ -32,7 +32,7 @@ export interface FieldProps {
 
 type PassthroughProps = 'id' | 'name' | 'disabled' | 'autoComplete';
 interface FieldRenderProps extends Pick<FieldProps, PassthroughProps> {
-  backgroundColor: BoxProps['backgroundColor'];
+  background: BoxProps['background'];
   boxShadow: BoxProps['boxShadow'];
   borderRadius: BoxProps['borderRadius'];
   width: BoxProps['width'];
@@ -86,7 +86,7 @@ export const Field = forwardRef<FieldRef, InternalFieldProps>(
             {
               id,
               name,
-              backgroundColor: disabled ? 'inputDisabled' : 'input',
+              background: disabled ? 'inputDisabled' : 'input',
               boxShadow:
                 tone === 'critical' && !disabled
                   ? 'borderCritical'

@@ -597,8 +597,8 @@ Object {
       "required": false,
       "type": "string",
     },
-    "backgroundColor": Object {
-      "propName": "backgroundColor",
+    "background": Object {
+      "propName": "background",
       "required": false,
       "type": Object {
         "type": "union",

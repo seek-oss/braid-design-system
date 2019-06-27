@@ -144,7 +144,7 @@ const textColorForBackground = (
   }));
 
 type Foreground = keyof typeof tone;
-type Background = NonNullable<UseBoxProps['backgroundColor']>;
+type Background = NonNullable<UseBoxProps['background']>;
 type BackgroundContrast = {
   [background in Background]?: {
     [foreground in Foreground | 'default']?: ClassRef

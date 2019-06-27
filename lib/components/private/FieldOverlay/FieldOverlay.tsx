@@ -3,7 +3,7 @@ import { Overlay, OverlayProps } from '../Overlay/Overlay';
 
 type FieldOverlayVariant = 'focus' | 'hover' | 'critical';
 export interface FieldOverlayProps
-  extends Pick<OverlayProps, 'backgroundColor' | 'borderRadius' | 'className'> {
+  extends Pick<OverlayProps, 'background' | 'borderRadius' | 'className'> {
   variant?: FieldOverlayVariant;
 }
 

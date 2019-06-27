@@ -15,7 +15,7 @@ const docs: ComponentDocs = {
           <Column>
             <HideCode>
               <Box
-                backgroundColor="selection"
+                background="selection"
                 paddingTop="small"
                 paddingBottom="small"
                 paddingLeft="small"
@@ -27,7 +27,7 @@ const docs: ComponentDocs = {
           <Column>
             <HideCode>
               <Box
-                backgroundColor="selection"
+                background="selection"
                 paddingTop="small"
                 paddingBottom="small"
                 paddingLeft="small"
@@ -39,7 +39,7 @@ const docs: ComponentDocs = {
           <Column>
             <HideCode>
               <Box
-                backgroundColor="selection"
+                background="selection"
                 paddingTop="small"
                 paddingBottom="small"
                 paddingLeft="small"
