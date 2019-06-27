@@ -3247,8 +3247,8 @@ Object {
         ],
       },
     },
-    "id": Object {
-      "propName": "id",
+    "htmlFor": Object {
+      "propName": "htmlFor",
       "required": true,
       "type": Object {
         "type": "union",

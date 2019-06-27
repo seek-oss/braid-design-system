@@ -75,7 +75,7 @@ export const Field = forwardRef<FieldRef, InternalFieldProps>(
     return (
       <Box>
         <FieldLabel
-          id={id}
+          htmlFor={id}
           label={label}
           secondaryLabel={secondaryLabel}
           tertiaryLabel={tertiaryLabel}
