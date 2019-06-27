@@ -9,7 +9,7 @@ const docs: ComponentDocs = {
       label: 'Standard Field Label',
       render: () => (
         <div style={{ maxWidth: '300px' }}>
-          <FieldLabel id="standard" label="This is a field label" />
+          <FieldLabel htmlFor="id" label="This is a field label" />
         </div>
       ),
     },
@@ -18,7 +18,7 @@ const docs: ComponentDocs = {
       render: () => (
         <div style={{ maxWidth: '300px' }}>
           <FieldLabel
-            id="secondary"
+            htmlFor="id"
             label="Username"
             secondaryLabel="Max 30 characters"
           />
@@ -30,7 +30,7 @@ const docs: ComponentDocs = {
       render: () => (
         <div style={{ maxWidth: '300px' }}>
           <FieldLabel
-            id="tertiary"
+            htmlFor="id"
             label="Password"
             tertiaryLabel={<TextLink inline>Forgot password?</TextLink>}
           />
@@ -42,7 +42,7 @@ const docs: ComponentDocs = {
       render: () => (
         <div style={{ maxWidth: '300px' }}>
           <FieldLabel
-            id="all"
+            htmlFor="id"
             label="Title"
             secondaryLabel="Optional"
             tertiaryLabel={<TextLink inline>Help?</TextLink>}
