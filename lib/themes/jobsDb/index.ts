@@ -3,7 +3,7 @@ import treatTheme from './theme.treat';
 import { Theme } from '../theme';
 
 const theme: Theme = {
-  name: 'seekAsia',
+  name: 'jobsDb',
   treatTheme,
 };
 
