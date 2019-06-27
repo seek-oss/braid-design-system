@@ -3722,11 +3722,6 @@ Object {
       "required": false,
       "type": "boolean",
     },
-    "data": Object {
-      "propName": "data",
-      "required": false,
-      "type": "Record<string, ReactText>",
-    },
     "description": Object {
       "propName": "description",
       "required": false,
