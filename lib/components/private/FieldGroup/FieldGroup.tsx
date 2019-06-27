@@ -46,7 +46,7 @@ export const FieldGroup = ({
     <Box component="fieldset" disabled={disabled} id={id}>
       <Box component="legend">
         <FieldLabel
-          id={false}
+          htmlFor={false}
           label={label}
           secondaryLabel={secondaryLabel}
           tertiaryLabel={tertiaryLabel}

@@ -95,7 +95,7 @@ export const InlineField = forwardRef<HTMLElement, InternalInlineFieldProps>(
               radioStyles,
             )}
             marginRight="small"
-            backgroundColor={disabled ? 'inputDisabled' : 'input'}
+            background={disabled ? 'inputDisabled' : 'input'}
             borderRadius={fieldBorderRadius}
             boxShadow={
               tone === 'critical' && !disabled
@@ -105,7 +105,7 @@ export const InlineField = forwardRef<HTMLElement, InternalInlineFieldProps>(
           >
             <FieldOverlay
               variant={tone === 'critical' && isCheckbox ? tone : undefined}
-              backgroundColor={accentBackground}
+              background={accentBackground}
               borderRadius={fieldBorderRadius}
               className={classnames(styles.selected, radioStyles)}
             />

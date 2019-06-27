@@ -4,7 +4,7 @@ import dedent from 'dedent';
 import { ComponentProps } from './ComponentProps';
 import { ExternalLink } from './Link';
 import {
-  ThemeProvider,
+  BraidProvider,
   Box,
   Heading,
   Paragraph,
@@ -69,12 +69,12 @@ export const ComponentRoute = ({
                   <Box paddingBottom="small">
                     <Text tone="secondary">Theme: {theme.name}</Text>
                   </Box>
-                  <ThemeProvider theme={theme}>
+                  <BraidProvider theme={theme}>
                     {render({
                       id: `${index}_${theme.name}`,
                       handler,
                     })}
-                  </ThemeProvider>
+                  </BraidProvider>
                 </Box>
               ))
             : null}
@@ -82,7 +82,7 @@ export const ComponentRoute = ({
             <Text tone="secondary">Code:</Text>
           </Box>
           <Box
-            backgroundColor="formAccent"
+            background="formAccent"
             paddingLeft="small"
             paddingRight="small"
             paddingTop="xxsmall"

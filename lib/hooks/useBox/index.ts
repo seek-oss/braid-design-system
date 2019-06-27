@@ -19,7 +19,7 @@ export interface UseBoxProps {
   display?: ResponsiveProp<keyof typeof styleRefs.display>;
   flexDirection?: ResponsiveProp<keyof typeof styleRefs.flexDirection>;
   borderRadius?: keyof typeof styleRefs.borderRadius;
-  backgroundColor?: keyof typeof styleRefs.backgroundColor;
+  background?: keyof typeof styleRefs.background;
   boxShadow?: keyof typeof styleRefs.boxShadow;
   transform?: keyof typeof styleRefs.transform;
   transition?: keyof typeof styleRefs.transition;
@@ -54,7 +54,7 @@ export default ({
   display,
   flexDirection,
   borderRadius,
-  backgroundColor,
+  background,
   boxShadow,
   transition,
   transform,
@@ -66,7 +66,7 @@ export default ({
   return classnames(
     resetStyles.base,
     resetStyles.element[component as keyof typeof resetStyleRefs.element],
-    styles.backgroundColor[backgroundColor!],
+    styles.background[background!],
     styles.borderRadius[borderRadius!],
     styles.boxShadow[boxShadow!],
     styles.transition[transition!],

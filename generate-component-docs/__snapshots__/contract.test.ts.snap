@@ -185,7 +185,7 @@ autoCorrect?: string
 autoFocus?: boolean
 autoPlay?: boolean
 autoSave?: string
-backgroundColor?: 
+background?: 
   | "info"
   | "critical"
   | "positive"
@@ -808,6 +808,11 @@ wmode?: string
 wrap?: string
 `;
 
+exports[`BraidProvider 1`] = `
+children: ReactNode
+theme: Theme
+`;
+
 exports[`Bullet 1`] = `children?: ReactNode`;
 
 exports[`BulletList 1`] = `children?: ReactNode`;
@@ -933,7 +938,7 @@ tone?:
 
 exports[`FieldLabel 1`] = `
 description?: ReactNode
-id: 
+htmlFor: 
   | string
   | false
 label?: ReactNode
@@ -1990,11 +1995,6 @@ value:
 `;
 
 exports[`ThemeNameConsumer 1`] = `children: (name: string) => ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>`;
-
-exports[`ThemeProvider 1`] = `
-children: ReactNode
-theme: Theme
-`;
 
 exports[`TickCircleIcon 1`] = `
 inline?: boolean

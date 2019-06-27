@@ -7,7 +7,7 @@ import { Text } from '../Text/Text';
 import * as styleRefs from './FieldLabel.treat';
 
 export interface FieldLabelProps {
-  id: string | false;
+  htmlFor: string | false;
   label?: ReactNode;
   secondaryLabel?: ReactNode;
   tertiaryLabel?: ReactNode;
@@ -15,7 +15,7 @@ export interface FieldLabelProps {
 }
 
 export const FieldLabel = ({
-  id,
+  htmlFor,
   label,
   secondaryLabel,
   tertiaryLabel,
@@ -37,7 +37,11 @@ export const FieldLabel = ({
   return (
     <Box paddingBottom="xsmall">
       <Box component="span" display="flex" className={styles.spaceBetween}>
-        {id === false ? labelEl : <label htmlFor={id}>{labelEl}</label>}
+        {htmlFor === false ? (
+          labelEl
+        ) : (
+          <label htmlFor={htmlFor}>{labelEl}</label>
+        )}
         {tertiaryLabel ? <Text>&nbsp;{tertiaryLabel}</Text> : null}
       </Box>
       {description ? (

@@ -7,16 +7,12 @@ import * as styleRefs from './Overlay.treat';
 export type OverlayProps = Partial<
   Pick<
     BoxProps,
-    | 'backgroundColor'
-    | 'borderRadius'
-    | 'boxShadow'
-    | 'transition'
-    | 'className'
+    'background' | 'borderRadius' | 'boxShadow' | 'transition' | 'className'
   >
 >;
 
 export const Overlay = ({
-  backgroundColor,
+  background,
   borderRadius,
   boxShadow,
   transition,
@@ -26,7 +22,7 @@ export const Overlay = ({
 
   return (
     <Box
-      backgroundColor={backgroundColor}
+      background={background}
       borderRadius={borderRadius}
       boxShadow={boxShadow}
       transition={transition}
