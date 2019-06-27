@@ -8,6 +8,7 @@ import { Box } from '../Box/Box';
 import { Hidden } from '../Hidden/Hidden';
 import { Dropdown } from '../Dropdown/Dropdown';
 import { FieldProps, Field } from '../private/Field/Field';
+import { FieldSet } from '../private/FieldSet/FieldSet';
 import * as styleRefs from './MonthPicker.treat';
 
 interface MonthPickerValue {
@@ -18,7 +19,7 @@ interface MonthPickerValue {
 type FocusHandler = () => void;
 type ChangeHandler = (value: MonthPickerValue) => void;
 interface MonthPickerProps
-  extends Omit<FieldProps, 'autoComplete' | 'secondaryMessage'> {
+  extends Omit<FieldProps, 'name' | 'autoComplete' | 'secondaryMessage'> {
   value: MonthPickerValue;
   onChange: ChangeHandler;
   onBlur?: FocusHandler;
@@ -105,7 +106,6 @@ const makeChangeHandler = <
 
 export const MonthPicker = ({
   id,
-  name,
   value,
   label,
   onChange,
@@ -126,118 +126,121 @@ export const MonthPicker = ({
 
   const monthRef = createRef<HTMLSelectElement>();
   const yearRef = createRef<HTMLSelectElement>();
+  const monthId = `${id}-month`;
+  const yearId = `${id}-year`;
 
-  const makeFocusEventHandler = <
-    Element extends HTMLSelectElement | HTMLInputElement
-  >(
-    handler: FocusHandler,
-  ) => (event: FocusEvent<Element>) => {
-    if (typeof handler === 'function') {
-      if (renderNativeInput) {
-        handler();
-      } else {
-        const isRelatedTargetExternal =
-          event.relatedTarget !== monthRef.current &&
-          event.relatedTarget !== yearRef.current;
+  const blurHandler = onBlur
+    ? (event: FocusEvent<HTMLSelectElement>) => {
+        const fireIfExternal = (element: any) => {
+          if (element !== monthRef.current && element !== yearRef.current) {
+            onBlur();
+          }
+        };
 
-        if (event.relatedTarget === null || isRelatedTargetExternal) {
-          handler();
+        if (event.relatedTarget !== null) {
+          fireIfExternal(event.relatedTarget);
+        } else {
+          // IE 9 - 11 Hack -- relatedTarget is null in blur event
+          setTimeout(() => {
+            fireIfExternal(document.activeElement);
+          });
         }
       }
-    }
-  };
+    : undefined;
 
-  const field = (
+  const focusHandler = onFocus
+    ? (event: FocusEvent<HTMLSelectElement>) => {
+        if (
+          event.relatedTarget !== monthRef.current &&
+          event.relatedTarget !== yearRef.current
+        ) {
+          onFocus();
+        }
+      }
+    : undefined;
+
+  const nativeField = (
     <Field
-      id={`${id}-month`}
-      name={`${name}-month`}
+      id={id}
       tone={tone}
       disabled={disabled}
-      label={
-        <Box component={renderNativeInput ? 'span' : 'legend'}>
-          {label}
-          <Box component="span" display="none">
-            Month
-          </Box>
-        </Box>
-      }
+      label={label}
       {...restProps}
+      name={undefined}
       autoComplete={undefined}
       secondaryMessage={null}
     >
-      {({
-        backgroundColor,
-        boxShadow,
-        width,
-        paddingLeft,
-        paddingRight,
-        borderRadius,
-        className,
-        ...nonVisualFieldProps
-      }) =>
-        renderNativeInput ? (
-          <Box
-            component="input"
-            type="month"
-            value={customValueToString(currentValue)}
-            onChange={onChange && makeChangeHandler(onChange, value, 'native')}
-            onBlur={onBlur && makeFocusEventHandler(onBlur)}
-            onFocus={onFocus && makeFocusEventHandler(onFocus)}
-            {...nonVisualFieldProps}
-            backgroundColor={backgroundColor}
-            boxShadow={boxShadow}
-            width={width}
-            paddingLeft={paddingLeft}
-            paddingRight={paddingRight}
-            borderRadius={borderRadius}
-            className={classnames(className, styles.nativeInput)}
-          />
-        ) : (
-          <Box display="flex" className={styles.alignBottom}>
-            <Hidden screen={true} print={true}>
-              <label htmlFor={`${id}-year`}>{`${label} Year`}</label>
-            </Hidden>
-
-            <Box className={styles.grow}>
-              <Dropdown
-                {...nonVisualFieldProps}
-                value={currentValue.month || ''}
-                onChange={makeChangeHandler(onChange, value, 'month')}
-                onBlur={onBlur && makeFocusEventHandler(onBlur)}
-                onFocus={onFocus && makeFocusEventHandler(onFocus)}
-                reserveMessageSpace={false}
-                tone={tone}
-                placeholder="Month"
-                ref={monthRef}
-              >
-                {getMonths()}
-              </Dropdown>
-            </Box>
-
-            <Box paddingRight="gutter" />
-
-            <Box className={styles.grow}>
-              <Dropdown
-                {...nonVisualFieldProps}
-                id={`${id}-year`}
-                name={`${name}-year`}
-                value={currentValue.year || ''}
-                onChange={makeChangeHandler(onChange, value, 'year')}
-                onBlur={onBlur && makeFocusEventHandler(onBlur)}
-                onFocus={onFocus && makeFocusEventHandler(onFocus)}
-                reserveMessageSpace={false}
-                tone={tone}
-                placeholder="Year"
-                ref={yearRef}
-              >
-                {getYears(minYear, maxYear, ascendingYears)}
-              </Dropdown>
-            </Box>
-          </Box>
-        )
-      }
+      {({ className, ...fieldProps }, fieldRef) => (
+        <Box
+          component="input"
+          type="month"
+          value={customValueToString(currentValue)}
+          onChange={onChange && makeChangeHandler(onChange, value, 'native')}
+          onBlur={onBlur}
+          onFocus={onFocus}
+          {...fieldProps}
+          className={classnames(className, styles.nativeInput)}
+          ref={fieldRef}
+        />
+      )}
     </Field>
   );
 
-  return renderNativeInput ? field : <Box component="fieldset">{field}</Box>;
+  const customFieldSet = (
+    <FieldSet
+      id={id}
+      label={label}
+      tone={tone}
+      disabled={disabled}
+      {...restProps}
+    >
+      {fieldSetProps => (
+        <Box display="flex">
+          <Box className={styles.grow}>
+            <Hidden screen={true} print={true}>
+              <label htmlFor={monthId}>{`${label} month`}</label>
+            </Hidden>
+            <Dropdown
+              id={monthId}
+              value={currentValue.month || ''}
+              onChange={makeChangeHandler(onChange, value, 'month')}
+              onBlur={blurHandler}
+              onFocus={focusHandler}
+              reserveMessageSpace={false}
+              tone={tone}
+              placeholder="Month"
+              {...fieldSetProps}
+              ref={monthRef}
+            >
+              {getMonths()}
+            </Dropdown>
+          </Box>
+
+          <Box paddingRight="gutter" />
+
+          <Box className={styles.grow}>
+            <Hidden screen={true} print={true}>
+              <label htmlFor={yearId}>{`${label} year`}</label>
+            </Hidden>
+            <Dropdown
+              id={yearId}
+              value={currentValue.year || ''}
+              onChange={makeChangeHandler(onChange, value, 'year')}
+              onBlur={blurHandler}
+              onFocus={focusHandler}
+              reserveMessageSpace={false}
+              tone={tone}
+              placeholder="Year"
+              {...fieldSetProps}
+              ref={yearRef}
+            >
+              {getYears(minYear, maxYear, ascendingYears)}
+            </Dropdown>
+          </Box>
+        </Box>
+      )}
+    </FieldSet>
+  );
+
+  return renderNativeInput ? nativeField : customFieldSet;
 };

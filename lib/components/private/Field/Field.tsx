@@ -38,7 +38,7 @@ interface FieldRenderProps extends Pick<FieldProps, PassthroughProps> {
   width: BoxProps['width'];
   paddingLeft: BoxProps['paddingLeft'];
   paddingRight: BoxProps['paddingRight'];
-  'aria-describedby': string;
+  'aria-describedby'?: string;
   className: string;
 }
 
@@ -53,7 +53,7 @@ export const Field = forwardRef<FieldRef, InternalFieldProps>(
     {
       id,
       name,
-      disabled = false,
+      disabled,
       autoComplete,
       label,
       secondaryLabel,
@@ -62,8 +62,8 @@ export const Field = forwardRef<FieldRef, InternalFieldProps>(
       children,
       message,
       secondaryMessage,
-      reserveMessageSpace = true,
-      tone = 'neutral',
+      reserveMessageSpace,
+      tone,
       'aria-describedby': ariaDescribedBy,
       data,
     },
@@ -87,7 +87,9 @@ export const Field = forwardRef<FieldRef, InternalFieldProps>(
               // non-visual props
               id,
               name,
-              'aria-describedby': ariaDescribedBy || messageId,
+              ...((message || ariaDescribedBy) && {
+                'aria-describedby': ariaDescribedBy || messageId,
+              }),
               disabled,
               autoComplete,
               ...buildDataAttributes(data),

@@ -10,10 +10,7 @@ export const nativeInput = style({
   },
 });
 
-export const alignBottom = style({
-  alignItems: 'flex-end',
-});
-
 export const grow = style({
   flexGrow: 1,
+  flexBasis: '1%',
 });
