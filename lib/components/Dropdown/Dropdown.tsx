@@ -11,7 +11,7 @@ import { Omit } from 'utility-types';
 import { Box } from '../Box/Box';
 import { Field, FieldProps } from '../private/Field/Field';
 import { ChevronIcon } from '../icons/ChevronIcon/ChevronIcon';
-import { useTextColor } from '../../hooks/typography';
+import { useTextTone } from '../../hooks/typography';
 import * as styleRefs from './Dropdown.treat';
 
 type ValidDropdownChildren = AllHTMLAttributes<
@@ -27,7 +27,7 @@ interface DropdownProps extends Omit<FieldProps, 'secondaryMessage'> {
   placeholder?: string;
 }
 
-const getColor = (
+const getTone = (
   placeholder: DropdownProps['placeholder'],
   value: DropdownProps['value'],
 ) => {
@@ -79,7 +79,7 @@ export const Dropdown = forwardRef<HTMLSelectElement, DropdownProps>(
               className={classnames(
                 styles.field,
                 className,
-                useTextColor(getColor(placeholder, value)),
+                useTextTone(getTone(placeholder, value)),
               )}
               {...fieldProps}
               ref={fieldRef}

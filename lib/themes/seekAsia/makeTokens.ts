@@ -15,7 +15,6 @@ export default ({
   tokenOverrides = {},
 }: SeekAsiaBrandTokens): TreatTokens => {
   const white = '#fff';
-  const black = '#000';
   const blue2 = '#298EB9';
   const blue3 = '#94C9E0';
   const blue5 = '#EEF8FC';
@@ -167,14 +166,13 @@ export default ({
       foreground: {
         link,
         linkHover,
-        black,
         neutral: grey1,
+        neutralInverted: white,
         formAccent,
         critical,
         info,
         positive,
         secondary: grey2,
-        white,
       },
       background: {
         input: white,

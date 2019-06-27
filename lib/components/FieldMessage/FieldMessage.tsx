@@ -21,8 +21,8 @@ export interface FieldMessageProps {
 }
 
 const Icon: Record<'critical' | 'positive', ReactNode> = {
-  critical: <ErrorIcon fill="critical" size="small" inline />,
-  positive: <TickCircleIcon fill="positive" size="small" inline />,
+  critical: <ErrorIcon tone="critical" size="small" inline />,
+  positive: <TickCircleIcon tone="positive" size="small" inline />,
 };
 export const FieldMessage = ({
   id,
@@ -58,7 +58,7 @@ export const FieldMessage = ({
     >
       <Box className={classnames(styles.grow, styles.minHeight)}>
         {showMessage ? (
-          <Text size="small" color={tone === 'neutral' ? 'secondary' : tone}>
+          <Text size="small" tone={tone === 'neutral' ? 'secondary' : tone}>
             <Box display="flex">
               {tone !== 'neutral' ? (
                 <Box paddingRight="xxsmall" className={styles.fixedSize}>

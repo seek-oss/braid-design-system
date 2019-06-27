@@ -90,7 +90,7 @@ export const Button = ({
         <Text
           baseline={false}
           weight="medium"
-          color={weight === 'weak' ? 'formAccent' : undefined}
+          tone={weight === 'weak' ? 'formAccent' : undefined}
         >
           {children}
         </Text>
