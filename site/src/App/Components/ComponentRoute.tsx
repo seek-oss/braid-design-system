@@ -67,7 +67,7 @@ export const ComponentRoute = ({
             ? Object.values(themes).map(theme => (
                 <Box key={theme.name} marginBottom="large">
                   <Box paddingBottom="small">
-                    <Text color="secondary">Theme: {theme.name}</Text>
+                    <Text tone="secondary">Theme: {theme.name}</Text>
                   </Box>
                   <ThemeProvider theme={theme}>
                     {render({
@@ -79,20 +79,20 @@ export const ComponentRoute = ({
               ))
             : null}
           <Box paddingBottom="small">
-            <Text color="secondary">Code:</Text>
+            <Text tone="secondary">Code:</Text>
           </Box>
           <Box
+            backgroundColor="formAccent"
             paddingLeft="small"
             paddingRight="small"
             paddingTop="xxsmall"
             paddingBottom="small"
             borderRadius="standard"
             style={{
-              backgroundColor: '#2b2b2b',
               overflowX: 'auto',
             }}
           >
-            <Text component="pre" color="white">
+            <Text component="pre">
               {render && !code
                 ? cleanCodeSnippet(
                     reactElementToJSXString(render({ id: 'id', handler }), {

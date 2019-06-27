@@ -13,6 +13,7 @@ import { TickIcon } from '../../icons/TickIcon/TickIcon';
 import { useTouchableSpace } from '../../../hooks/typography';
 import buildDataAttributes, { DataAttributeMap } from '../buildDataAttributes';
 import * as styleRefs from './InlineField.treat';
+import { BackgroundProvider } from 'lib/components/Box/BackgroundContext';
 
 const tones = ['neutral', 'critical'] as const;
 type InlineFieldTone = typeof tones[number];
@@ -68,6 +69,8 @@ export const InlineField = forwardRef<HTMLElement, InternalInlineFieldProps>(
       throw new Error(`Invalid tone: ${tone}`);
     }
 
+    const accentBackground = disabled ? 'formAccentDisabled' : 'formAccent';
+
     return (
       <Box>
         <Box
@@ -102,13 +105,18 @@ export const InlineField = forwardRef<HTMLElement, InternalInlineFieldProps>(
           >
             <FieldOverlay
               variant={tone === 'critical' && isCheckbox ? tone : undefined}
-              backgroundColor={disabled ? 'formAccentDisabled' : 'formAccent'}
+              backgroundColor={accentBackground}
               borderRadius={fieldBorderRadius}
               className={classnames(styles.selected, radioStyles)}
             />
             {isCheckbox ? (
               <Box transition="fast" width="full" className={styles.icon}>
-                <TickIcon size="fill" fill="white" />
+                <BackgroundProvider value={accentBackground}>
+                  <TickIcon
+                    size="fill"
+                    tone={disabled ? 'secondary' : undefined}
+                  />
+                </BackgroundProvider>
               </Box>
             ) : null}
             <FieldOverlay
@@ -130,7 +138,7 @@ export const InlineField = forwardRef<HTMLElement, InternalInlineFieldProps>(
             <Text
               baseline={false}
               weight={checked ? 'strong' : undefined}
-              color={disabled ? 'secondary' : undefined}
+              tone={disabled ? 'secondary' : undefined}
             >
               {label}
             </Text>

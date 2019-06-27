@@ -1,6 +1,6 @@
 import { TreatTokens } from '../makeTreatTheme';
 
-const formAccent = 'black';
+const formAccent = '#2b2b2b';
 const critical = 'red';
 const positive = 'green';
 const info = 'navy';
@@ -144,14 +144,13 @@ const tokens: TreatTokens = {
     foreground: {
       link,
       linkHover: link,
-      black,
       neutral: black,
+      neutralInverted: white,
       formAccent,
       critical,
       info,
       positive,
       secondary: '#777',
-      white,
     },
     background: {
       input: white,

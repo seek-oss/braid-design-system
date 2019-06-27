@@ -100,8 +100,13 @@ export const heading = {
   ),
 };
 
-export const color = styleMap(theme => {
-  const { linkHover, link, ...foreground } = theme.color.foreground;
+export const tone = styleMap(theme => {
+  const {
+    linkHover,
+    link,
+    neutralInverted, // Omit from public API
+    ...foreground
+  } = theme.color.foreground;
 
   return {
     ...mapToStyleProperty(foreground, 'color'),
@@ -134,15 +139,15 @@ const textColorForBackground = (
 ) =>
   style(theme => ({
     color: isLight(theme.color.background[background])
-      ? theme.color.foreground.black
-      : theme.color.foreground.white,
+      ? theme.color.foreground.neutral
+      : theme.color.foreground.neutralInverted,
   }));
 
-type ForegroundColor = keyof typeof color;
-type BackgroundColor = NonNullable<UseBoxProps['backgroundColor']>;
+type Foreground = keyof typeof tone;
+type Background = NonNullable<UseBoxProps['backgroundColor']>;
 type BackgroundContrast = {
-  [background in BackgroundColor]?: {
-    [foreground in ForegroundColor | 'default']?: ClassRef
+  [background in Background]?: {
+    [foreground in Foreground | 'default']?: ClassRef
   }
 };
 export const backgroundContrast: BackgroundContrast = {
