@@ -71,6 +71,7 @@
     "basekick": "^3.1.1",
     "classnames": "^2.2.6",
     "csstype": "^2.6.4",
+    "is-mobile": "^2.0.1",
     "lodash": "^4.17.11",
     "polished": "^3.0.3",
     "utility-types": "^3.7.0"

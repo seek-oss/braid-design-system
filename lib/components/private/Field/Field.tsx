@@ -26,6 +26,7 @@ export interface FieldProps {
   secondaryMessage?: FieldMessageProps['secondaryMessage'];
   reserveMessageSpace?: FieldMessageProps['reserveMessageSpace'];
   tone?: FieldMessageProps['tone'];
+  'aria-describedby'?: FormElementProps['aria-describedby'];
   data?: DataAttributeMap;
 }
 
@@ -37,7 +38,7 @@ interface FieldRenderProps extends Pick<FieldProps, PassthroughProps> {
   width: BoxProps['width'];
   paddingLeft: BoxProps['paddingLeft'];
   paddingRight: BoxProps['paddingRight'];
-  'aria-describedby': string;
+  'aria-describedby'?: string;
   className: string;
 }
 
@@ -52,7 +53,7 @@ export const Field = forwardRef<FieldRef, InternalFieldProps>(
     {
       id,
       name,
-      disabled = false,
+      disabled,
       autoComplete,
       label,
       secondaryLabel,
@@ -61,8 +62,9 @@ export const Field = forwardRef<FieldRef, InternalFieldProps>(
       children,
       message,
       secondaryMessage,
-      reserveMessageSpace = true,
-      tone = 'neutral',
+      reserveMessageSpace,
+      tone,
+      'aria-describedby': ariaDescribedBy,
       data,
     },
     ref,
@@ -93,7 +95,9 @@ export const Field = forwardRef<FieldRef, InternalFieldProps>(
               paddingLeft: 'small',
               paddingRight: 'small',
               borderRadius: 'standard',
-              'aria-describedby': messageId,
+              ...((message || ariaDescribedBy) && {
+                'aria-describedby': ariaDescribedBy || messageId,
+              }),
               disabled,
               autoComplete,
               ...buildDataAttributes(data),

@@ -2994,6 +2994,11 @@ Object {
 exports[`Public API Contract Dropdown 1`] = `
 Object {
   "props": Object {
+    "aria-describedby": Object {
+      "propName": "aria-describedby",
+      "required": false,
+      "type": "string",
+    },
     "autoComplete": Object {
       "propName": "autoComplete",
       "required": false,
@@ -3245,7 +3250,13 @@ Object {
     "id": Object {
       "propName": "id",
       "required": true,
-      "type": "string",
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "false",
+        ],
+      },
     },
     "label": Object {
       "propName": "label",
@@ -3693,6 +3704,160 @@ Object {
           "\\"standard\\"",
         ],
       },
+    },
+  },
+}
+`;
+
+exports[`Public API Contract MonthPicker 1`] = `
+Object {
+  "props": Object {
+    "ascendingYears": Object {
+      "propName": "ascendingYears",
+      "required": false,
+      "type": "boolean",
+    },
+    "description": Object {
+      "propName": "description",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+          "false",
+          "true",
+          "{}",
+          "ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>",
+          "ReactNodeArray",
+          "ReactPortal",
+        ],
+      },
+    },
+    "disabled": Object {
+      "propName": "disabled",
+      "required": false,
+      "type": "boolean",
+    },
+    "id": Object {
+      "propName": "id",
+      "required": true,
+      "type": "string",
+    },
+    "label": Object {
+      "propName": "label",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+          "false",
+          "true",
+          "{}",
+          "ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>",
+          "ReactNodeArray",
+          "ReactPortal",
+        ],
+      },
+    },
+    "maxYear": Object {
+      "propName": "maxYear",
+      "required": false,
+      "type": "number",
+    },
+    "message": Object {
+      "propName": "message",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+          "false",
+          "true",
+          "{}",
+          "ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>",
+          "ReactNodeArray",
+          "ReactPortal",
+        ],
+      },
+    },
+    "minYear": Object {
+      "propName": "minYear",
+      "required": false,
+      "type": "number",
+    },
+    "onBlur": Object {
+      "propName": "onBlur",
+      "required": false,
+      "type": "FocusHandler",
+    },
+    "onChange": Object {
+      "propName": "onChange",
+      "required": true,
+      "type": "ChangeHandler",
+    },
+    "onFocus": Object {
+      "propName": "onFocus",
+      "required": false,
+      "type": "FocusHandler",
+    },
+    "reserveMessageSpace": Object {
+      "propName": "reserveMessageSpace",
+      "required": false,
+      "type": "boolean",
+    },
+    "secondaryLabel": Object {
+      "propName": "secondaryLabel",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+          "false",
+          "true",
+          "{}",
+          "ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>",
+          "ReactNodeArray",
+          "ReactPortal",
+        ],
+      },
+    },
+    "tertiaryLabel": Object {
+      "propName": "tertiaryLabel",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+          "false",
+          "true",
+          "{}",
+          "ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>",
+          "ReactNodeArray",
+          "ReactPortal",
+        ],
+      },
+    },
+    "tone": Object {
+      "propName": "tone",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "\\"critical\\"",
+          "\\"positive\\"",
+          "\\"neutral\\"",
+        ],
+      },
+    },
+    "value": Object {
+      "propName": "value",
+      "required": true,
+      "type": "MonthPickerValue",
     },
   },
 }
@@ -4148,6 +4313,11 @@ Object {
 exports[`Public API Contract TextField 1`] = `
 Object {
   "props": Object {
+    "aria-describedby": Object {
+      "propName": "aria-describedby",
+      "required": false,
+      "type": "string",
+    },
     "autoComplete": Object {
       "propName": "autoComplete",
       "required": false,
@@ -6434,6 +6604,11 @@ Object {
 exports[`Public API Contract Textarea 1`] = `
 Object {
   "props": Object {
+    "aria-describedby": Object {
+      "propName": "aria-describedby",
+      "required": false,
+      "type": "string",
+    },
     "autoComplete": Object {
       "propName": "autoComplete",
       "required": false,

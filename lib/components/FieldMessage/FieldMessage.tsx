@@ -30,7 +30,7 @@ export const FieldMessage = ({
   message,
   secondaryMessage,
   reserveMessageSpace = true,
-  disabled = false,
+  disabled,
 }: FieldMessageProps) => {
   if (tones.indexOf(tone) === -1) {
     throw new Error(`Invalid tone: ${tone}`);
