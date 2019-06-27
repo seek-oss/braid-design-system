@@ -5,9 +5,8 @@
 - No longer handles heading text. Use [`Heading`](https://seek-oss.github.io/braid-design-system/components/Heading) instead.
 - Deprecated `conversational`/`loud`/`intimate`/`whispering` in favour of `size={'large' | 'standard' | 'small'}` and `weight={'strong' | 'regular'}`. Please note that this is a breaking change to our design language. When migrating, try to match existing styling as much as possible in consultation with your local designer.
 - No longer renders white space below it, also removing the need for a `raw` prop. Consider using a [`Paragraph`](https://seek-oss.github.io/braid-design-system/components/Paragraph) component instead, where semantically appropriate.
-- Renamed `tone` prop to `color`.
 - Removed `weak` weight.
-- Removed boolean size props in favour of `size` and `color` props.
+- Removed boolean size props in favour of `size` and `tone` props.
 - Removed `bullet` prop. Use [`Bullet`](https://seek-oss.github.io/braid-design-system/components/Bullet) insted.
 - No longer accepts arbitrary DOM properties, e.g. `className`. Please check that everything you need is exposed via the [public API.](https://seek-oss.github.io/braid-design-system/components/Text)
 
@@ -28,7 +27,7 @@
 -<Text large>...</Text>
 -<Text positive>...</Text>
 +<Text size="large">...</Text>
-+<Text color="positive">...</Text>
++<Text tone="positive">...</Text>
 ```
 
 ### SEEK Asia Style Guide

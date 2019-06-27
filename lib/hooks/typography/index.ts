@@ -6,14 +6,14 @@ import * as styleRefs from './typography.treat';
 export interface UseTextProps {
   weight?: keyof typeof styleRefs.fontWeight;
   size?: keyof typeof styleRefs.text;
-  color?: keyof typeof styleRefs.color;
+  tone?: keyof typeof styleRefs.tone;
   baseline: boolean;
 }
 
 export const useText = ({
   weight = 'regular',
   size = 'standard',
-  color,
+  tone,
   baseline,
 }: UseTextProps) => {
   const styles = useStyles(styleRefs);
@@ -22,7 +22,7 @@ export const useText = ({
     styles.fontFamily,
     styles.fontWeight[weight],
     styles.text[size].fontSize,
-    useTextColor(color),
+    useTextTone(tone),
     {
       [styles.text[size].transform]: baseline,
     },
@@ -49,7 +49,7 @@ export const useHeading = ({
     styles.fontFamily,
     styles.headingWeight[weight],
     styles.heading[level].fontSize,
-    useTextColor(),
+    useTextTone(),
     {
       [styles.heading[level].transform]: baseline,
     },
@@ -59,20 +59,20 @@ export const useHeading = ({
 export const useWeight = (weight: keyof typeof styleRefs.fontWeight) =>
   useStyles(styleRefs).fontWeight[weight];
 
-export const useTextColor = (color?: keyof typeof styleRefs.color) => {
+export const useTextTone = (tone?: keyof typeof styleRefs.tone) => {
   const styles = useStyles(styleRefs);
   const background = useBackground();
 
   const backgroundContrast = styles.backgroundContrast[background!];
   if (backgroundContrast) {
-    const altColor = backgroundContrast[color || 'default'];
+    const altColor = backgroundContrast[tone || 'default'];
 
     if (altColor) {
       return altColor;
     }
   }
 
-  return styles.color[color || 'neutral'];
+  return styles.tone[tone || 'neutral'];
 };
 
 export const useTouchableSpace = (size: keyof typeof styleRefs.touchable) =>

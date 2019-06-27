@@ -42,7 +42,7 @@ export const FieldLabel = ({
       </Box>
       {description ? (
         <Box paddingTop="xxsmall" paddingBottom="xxsmall">
-          <Text color="secondary">{description}</Text>
+          <Text tone="secondary">{description}</Text>
         </Box>
       ) : null}
     </Box>

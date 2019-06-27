@@ -88,14 +88,13 @@ export interface TreatTokens {
     foreground: {
       link: string;
       linkHover: string;
-      black: string;
       neutral: string;
+      neutralInverted: string;
       formAccent: string;
       critical: string;
       info: string;
       positive: string;
       secondary: string;
-      white: string;
     };
     background: {
       input: string;

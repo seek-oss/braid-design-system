@@ -2903,24 +2903,6 @@ Object {
         ],
       },
     },
-    "fill": Object {
-      "propName": "fill",
-      "required": false,
-      "type": Object {
-        "type": "union",
-        "types": Array [
-          "\\"info\\"",
-          "\\"critical\\"",
-          "\\"positive\\"",
-          "\\"formAccent\\"",
-          "\\"black\\"",
-          "\\"white\\"",
-          "\\"link\\"",
-          "\\"neutral\\"",
-          "\\"secondary\\"",
-        ],
-      },
-    },
     "inline": Object {
       "propName": "inline",
       "required": false,
@@ -2936,6 +2918,22 @@ Object {
           "\\"small\\"",
           "\\"large\\"",
           "\\"standard\\"",
+        ],
+      },
+    },
+    "tone": Object {
+      "propName": "tone",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "\\"info\\"",
+          "\\"critical\\"",
+          "\\"positive\\"",
+          "\\"formAccent\\"",
+          "\\"link\\"",
+          "\\"neutral\\"",
+          "\\"secondary\\"",
         ],
       },
     },
@@ -3187,24 +3185,6 @@ Object {
 exports[`Public API Contract ErrorIcon 1`] = `
 Object {
   "props": Object {
-    "fill": Object {
-      "propName": "fill",
-      "required": false,
-      "type": Object {
-        "type": "union",
-        "types": Array [
-          "\\"info\\"",
-          "\\"critical\\"",
-          "\\"positive\\"",
-          "\\"formAccent\\"",
-          "\\"black\\"",
-          "\\"white\\"",
-          "\\"link\\"",
-          "\\"neutral\\"",
-          "\\"secondary\\"",
-        ],
-      },
-    },
     "inline": Object {
       "propName": "inline",
       "required": false,
@@ -3220,6 +3200,22 @@ Object {
           "\\"small\\"",
           "\\"large\\"",
           "\\"standard\\"",
+        ],
+      },
+    },
+    "tone": Object {
+      "propName": "tone",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "\\"info\\"",
+          "\\"critical\\"",
+          "\\"positive\\"",
+          "\\"formAccent\\"",
+          "\\"link\\"",
+          "\\"neutral\\"",
+          "\\"secondary\\"",
         ],
       },
     },
@@ -3669,24 +3665,6 @@ Object {
 exports[`Public API Contract InfoIcon 1`] = `
 Object {
   "props": Object {
-    "fill": Object {
-      "propName": "fill",
-      "required": false,
-      "type": Object {
-        "type": "union",
-        "types": Array [
-          "\\"info\\"",
-          "\\"critical\\"",
-          "\\"positive\\"",
-          "\\"formAccent\\"",
-          "\\"black\\"",
-          "\\"white\\"",
-          "\\"link\\"",
-          "\\"neutral\\"",
-          "\\"secondary\\"",
-        ],
-      },
-    },
     "inline": Object {
       "propName": "inline",
       "required": false,
@@ -3702,6 +3680,22 @@ Object {
           "\\"small\\"",
           "\\"large\\"",
           "\\"standard\\"",
+        ],
+      },
+    },
+    "tone": Object {
+      "propName": "tone",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "\\"info\\"",
+          "\\"critical\\"",
+          "\\"positive\\"",
+          "\\"formAccent\\"",
+          "\\"link\\"",
+          "\\"neutral\\"",
+          "\\"secondary\\"",
         ],
       },
     },
@@ -4075,24 +4069,6 @@ Object {
         ],
       },
     },
-    "color": Object {
-      "propName": "color",
-      "required": false,
-      "type": Object {
-        "type": "union",
-        "types": Array [
-          "\\"info\\"",
-          "\\"critical\\"",
-          "\\"positive\\"",
-          "\\"formAccent\\"",
-          "\\"black\\"",
-          "\\"white\\"",
-          "\\"link\\"",
-          "\\"neutral\\"",
-          "\\"secondary\\"",
-        ],
-      },
-    },
     "component": Object {
       "propName": "component",
       "required": false,
@@ -4291,6 +4267,22 @@ Object {
           "\\"small\\"",
           "\\"large\\"",
           "\\"standard\\"",
+        ],
+      },
+    },
+    "tone": Object {
+      "propName": "tone",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "\\"info\\"",
+          "\\"critical\\"",
+          "\\"positive\\"",
+          "\\"formAccent\\"",
+          "\\"link\\"",
+          "\\"neutral\\"",
+          "\\"secondary\\"",
         ],
       },
     },
@@ -6847,24 +6839,6 @@ Object {
 exports[`Public API Contract TickCircleIcon 1`] = `
 Object {
   "props": Object {
-    "fill": Object {
-      "propName": "fill",
-      "required": false,
-      "type": Object {
-        "type": "union",
-        "types": Array [
-          "\\"info\\"",
-          "\\"critical\\"",
-          "\\"positive\\"",
-          "\\"formAccent\\"",
-          "\\"black\\"",
-          "\\"white\\"",
-          "\\"link\\"",
-          "\\"neutral\\"",
-          "\\"secondary\\"",
-        ],
-      },
-    },
     "inline": Object {
       "propName": "inline",
       "required": false,
@@ -6880,6 +6854,22 @@ Object {
           "\\"small\\"",
           "\\"large\\"",
           "\\"standard\\"",
+        ],
+      },
+    },
+    "tone": Object {
+      "propName": "tone",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "\\"info\\"",
+          "\\"critical\\"",
+          "\\"positive\\"",
+          "\\"formAccent\\"",
+          "\\"link\\"",
+          "\\"neutral\\"",
+          "\\"secondary\\"",
         ],
       },
     },
@@ -6890,24 +6880,6 @@ Object {
 exports[`Public API Contract TickIcon 1`] = `
 Object {
   "props": Object {
-    "fill": Object {
-      "propName": "fill",
-      "required": false,
-      "type": Object {
-        "type": "union",
-        "types": Array [
-          "\\"info\\"",
-          "\\"critical\\"",
-          "\\"positive\\"",
-          "\\"formAccent\\"",
-          "\\"black\\"",
-          "\\"white\\"",
-          "\\"link\\"",
-          "\\"neutral\\"",
-          "\\"secondary\\"",
-        ],
-      },
-    },
     "inline": Object {
       "propName": "inline",
       "required": false,
@@ -6923,6 +6895,22 @@ Object {
           "\\"small\\"",
           "\\"large\\"",
           "\\"standard\\"",
+        ],
+      },
+    },
+    "tone": Object {
+      "propName": "tone",
+      "required": false,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "\\"info\\"",
+          "\\"critical\\"",
+          "\\"positive\\"",
+          "\\"formAccent\\"",
+          "\\"link\\"",
+          "\\"neutral\\"",
+          "\\"secondary\\"",
         ],
       },
     },
