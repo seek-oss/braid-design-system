@@ -5,7 +5,11 @@ import ActionsContext from '../Actions/ActionsContext';
 import { Text } from '../Text/Text';
 import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
 import useBox from '../../hooks/useBox';
-import { useTextColor, useTouchableSpace } from '../../hooks/typography';
+import {
+  useTextColor,
+  useTouchableSpace,
+  useWeight,
+} from '../../hooks/typography';
 import * as styleRefs from './TextLinkRenderer.treat';
 
 interface StyleProps {
@@ -24,7 +28,11 @@ export const TextLinkRenderer = ({
 }: TextLinkRendererProps) => {
   const styles = useStyles(styleRefs);
   const inActions = useContext(ActionsContext);
-  const defaultStyles = [styles.root, useTextColor('link')];
+  const defaultStyles = [
+    styles.root,
+    useTextColor('link'),
+    useWeight('medium'),
+  ];
 
   if (inline) {
     return children({
