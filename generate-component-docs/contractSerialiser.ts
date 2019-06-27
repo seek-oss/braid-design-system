@@ -1,3 +1,4 @@
+import sortBy from 'lodash/sortBy';
 import { PropDetails, NormalisedPropType } from './generate';
 
 interface ComponentContract {
@@ -38,7 +39,7 @@ export const typeSerializer = {
 
 export const contractSerializer = {
   print: ({ props }: ComponentContract, serializer: (value: any) => string) => {
-    return Object.values(props)
+    return sortBy(Object.values(props), ({ propName }) => propName)
       .map(
         ({ propName, required, type }) =>
           `${propName}${required ? '' : '?'}: ${serializer(type)}`,
