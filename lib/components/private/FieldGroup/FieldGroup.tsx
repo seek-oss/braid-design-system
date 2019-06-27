@@ -43,7 +43,7 @@ export const FieldGroup = ({
   const messageId = `${id}-message`;
 
   return (
-    <Box component="fieldset" disabled={disabled}>
+    <Box component="fieldset" disabled={disabled} id={id}>
       <Box component="legend">
         <FieldLabel
           id={false}
