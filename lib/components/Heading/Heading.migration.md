@@ -11,7 +11,7 @@
 
 ## TBD
 
-- `color={string}`
+- `tone={string}`
 
 ## Diff
 

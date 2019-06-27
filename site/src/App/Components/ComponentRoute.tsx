@@ -4,7 +4,7 @@ import dedent from 'dedent';
 import { ComponentProps } from './ComponentProps';
 import { ExternalLink } from './Link';
 import {
-  ThemeProvider,
+  BraidProvider,
   Box,
   Heading,
   Paragraph,
@@ -67,32 +67,32 @@ export const ComponentRoute = ({
             ? Object.values(themes).map(theme => (
                 <Box key={theme.name} marginBottom="large">
                   <Box paddingBottom="small">
-                    <Text color="secondary">Theme: {theme.name}</Text>
+                    <Text tone="secondary">Theme: {theme.name}</Text>
                   </Box>
-                  <ThemeProvider theme={theme}>
+                  <BraidProvider theme={theme}>
                     {render({
                       id: `${index}_${theme.name}`,
                       handler,
                     })}
-                  </ThemeProvider>
+                  </BraidProvider>
                 </Box>
               ))
             : null}
           <Box paddingBottom="small">
-            <Text color="secondary">Code:</Text>
+            <Text tone="secondary">Code:</Text>
           </Box>
           <Box
+            background="formAccent"
             paddingLeft="small"
             paddingRight="small"
             paddingTop="xxsmall"
             paddingBottom="small"
             borderRadius="standard"
             style={{
-              backgroundColor: '#2b2b2b',
               overflowX: 'auto',
             }}
           >
-            <Text component="pre" color="white">
+            <Text component="pre">
               {render && !code
                 ? cleanCodeSnippet(
                     reactElementToJSXString(render({ id: 'id', handler }), {

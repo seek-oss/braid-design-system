@@ -2,7 +2,7 @@ import React, { ComponentType } from 'react';
 import { useStyles } from 'sku/react-treat';
 import classnames from 'classnames';
 import { Box } from '../../Box/Box';
-import { useTextColor, UseTextProps } from '../../../hooks/typography';
+import { useTextTone, UseTextProps } from '../../../hooks/typography';
 import * as styleRefs from './Icon.treat';
 
 type IconSize = NonNullable<UseTextProps['size']> | 'fill';
@@ -10,7 +10,7 @@ type IconSize = NonNullable<UseTextProps['size']> | 'fill';
 export interface IconProps {
   size?: IconSize;
   inline?: boolean;
-  fill?: UseTextProps['color'];
+  tone?: UseTextProps['tone'];
   svgComponent: ComponentType;
 }
 
@@ -30,7 +30,7 @@ export const Icon = ({
   size = 'standard',
   svgComponent,
   inline = false,
-  fill,
+  tone,
 }: IconProps) => {
   const styles = useStyles(styleRefs);
 
@@ -42,7 +42,7 @@ export const Icon = ({
       className={classnames(
         resolveSizeClasses(size, inline),
         styles.currentColor,
-        useTextColor(fill),
+        useTextTone(tone),
       )}
     />
   );

@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { useTextColor } from '../../hooks/typography';
+import { useTextTone } from '../../hooks/typography';
 
 export interface SecondaryProps {
   children: ReactNode;
@@ -7,7 +7,7 @@ export interface SecondaryProps {
 }
 
 export const Secondary = ({ children, id }: SecondaryProps) => (
-  <span className={useTextColor('secondary')} id={id}>
+  <span className={useTextTone('secondary')} id={id}>
     {children}
   </span>
 );

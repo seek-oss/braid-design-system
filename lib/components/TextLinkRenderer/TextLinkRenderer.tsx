@@ -6,7 +6,7 @@ import { Text } from '../Text/Text';
 import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
 import useBox from '../../hooks/useBox';
 import {
-  useTextColor,
+  useTextTone,
   useTouchableSpace,
   useWeight,
 } from '../../hooks/typography';
@@ -28,11 +28,7 @@ export const TextLinkRenderer = ({
 }: TextLinkRendererProps) => {
   const styles = useStyles(styleRefs);
   const inActions = useContext(ActionsContext);
-  const defaultStyles = [
-    styles.root,
-    useTextColor('link'),
-    useWeight('medium'),
-  ];
+  const defaultStyles = [styles.root, useTextTone('link'), useWeight('medium')];
 
   if (inline) {
     return children({
