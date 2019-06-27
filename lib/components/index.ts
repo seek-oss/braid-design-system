@@ -1,4 +1,4 @@
-export { ThemeProvider } from './ThemeProvider/ThemeProvider';
+export { BraidProvider } from './BraidProvider/BraidProvider';
 export { ThemeNameConsumer } from './ThemeNameConsumer/ThemeNameConsumer';
 export { useThemeName } from './ThemeNameConsumer/ThemeNameContext';
 export { Actions } from './Actions/Actions';

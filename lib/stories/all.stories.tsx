@@ -3,7 +3,7 @@ import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import values from 'lodash/values';
 import * as themes from '../themes';
-import { ThemeProvider } from '../components';
+import { BraidProvider } from '../components';
 import { ComponentDocs } from '../../site/src/types';
 
 const handler = () => {
@@ -33,7 +33,7 @@ req.keys().forEach(filename => {
     .forEach(theme => {
       stories.add(theme.name, () => (
         <BrowserRouter>
-          <ThemeProvider theme={theme}>
+          <BraidProvider theme={theme}>
             {docs.examples.map(({ label = componentName, render }, i) =>
               render ? (
                 <div
@@ -69,7 +69,7 @@ req.keys().forEach(filename => {
                 </div>
               ) : null,
             )}
-          </ThemeProvider>
+          </BraidProvider>
         </BrowserRouter>
       ));
     });
