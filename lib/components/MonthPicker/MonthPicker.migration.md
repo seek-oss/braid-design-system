@@ -3,9 +3,9 @@
 ## API Changes
 
 - `native={boolean}` has been removed in favour of making this decision internally, so no need to explicitly set this.
-- `onChange` and `onBlur` handlers now receive the native event as a second argument. The first parameter is still the custom `value` object.
+- `onBlur` no longer recieves the value as a parameter.
+- `onFocus` no longer recieves the native event as a parameter.
 - `message={false}` is now `reserveMessageSpace={false}`.
-- Data attributes must now be passed via the `data` prop, e.g. `data={{ automation: 'test-id' }}`.
 - No longer accepts arbitrary DOM properties, e.g. `className`. Please check that everything you need is exposed via the [public API.](https://seek-oss.github.io/braid-design-system/components/MonthPicker)
 
 ### Diff
@@ -16,9 +16,6 @@
 
 -<MonthPicker message={false} />
 +<MonthPicker reserveMessageSpace={false} />
-
--<MonthPicker data-automation="..." />
-+<MonthPicker data={{ automation: '...' }} />
 ```
 
 ## Previous Implementations

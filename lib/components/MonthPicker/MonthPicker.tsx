@@ -19,7 +19,10 @@ interface MonthPickerValue {
 type FocusHandler = () => void;
 type ChangeHandler = (value: MonthPickerValue) => void;
 interface MonthPickerProps
-  extends Omit<FieldProps, 'name' | 'autoComplete' | 'secondaryMessage'> {
+  extends Omit<
+    FieldProps,
+    'data' | 'name' | 'autoComplete' | 'secondaryMessage'
+  > {
   value: MonthPickerValue;
   onChange: ChangeHandler;
   onBlur?: FocusHandler;
@@ -166,6 +169,7 @@ export const MonthPicker = ({
       disabled={disabled}
       label={label}
       {...restProps}
+      data={undefined}
       name={undefined}
       autoComplete={undefined}
       secondaryMessage={null}
