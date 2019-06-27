@@ -14,7 +14,7 @@ const docs: ComponentDocs = {
       label: `"${space}" spacing`,
       render: () => (
         <Box
-          backgroundColor="formAccent"
+          background="formAccent"
           style={{ overflow: 'auto', maxWidth: '300px' }}
         >
           <Box
@@ -31,7 +31,7 @@ const docs: ComponentDocs = {
                 })}
           >
             <HideCode>
-              <Box style={{ backgroundColor: 'whitesmoke', height: '20px' }} />
+              <Box style={{ background: 'whitesmoke', height: '20px' }} />
             </HideCode>
           </Box>
         </Box>

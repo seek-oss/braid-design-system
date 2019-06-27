@@ -9,7 +9,7 @@ export interface TextProps extends Pick<BoxProps, 'component'> {
   id?: string;
   children?: ReactNode;
   size?: UseTextProps['size'];
-  color?: UseTextProps['color'];
+  tone?: UseTextProps['tone'];
   weight?: UseTextProps['weight'];
   baseline?: UseTextProps['baseline'];
 }
@@ -18,7 +18,7 @@ export const Text = ({
   id,
   component = 'span',
   size,
-  color,
+  tone,
   weight,
   baseline = true,
   children,
@@ -31,7 +31,7 @@ export const Text = ({
       id={id}
       display={!isListItem ? 'block' : undefined}
       component={component}
-      className={classnames(useText({ weight, size, baseline, color }), {
+      className={classnames(useText({ weight, size, baseline, tone }), {
         [styles.listItem]: isListItem,
       })}
     >

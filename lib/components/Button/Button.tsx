@@ -20,9 +20,9 @@ export interface ButtonProps {
   'aria-describedby'?: NativeButtonProps['aria-describedby'];
 }
 
-const backgroundColor: Record<
+const background: Record<
   ButtonState,
-  Record<ButtonWeight, BoxProps['backgroundColor'] | undefined>
+  Record<ButtonWeight, BoxProps['background'] | undefined>
 > = {
   base: {
     weak: undefined,
@@ -62,7 +62,7 @@ export const Button = ({
       display="block"
       borderRadius="standard"
       boxShadow={isWeak ? 'borderFormAccentLarge' : undefined}
-      backgroundColor={backgroundColor.base[weight]}
+      background={background.base[weight]}
       transform="touchable"
       transition="touchable"
       className={classnames(styles.root, {
@@ -75,11 +75,11 @@ export const Button = ({
         className={classnames(styles.focusOverlay)}
       />
       <FieldOverlay
-        backgroundColor={backgroundColor.hover[weight]}
+        background={background.hover[weight]}
         className={classnames(styles.hoverOverlay)}
       />
       <FieldOverlay
-        backgroundColor={backgroundColor.active[weight]}
+        background={background.active[weight]}
         className={classnames(styles.activeOverlay)}
       />
       <Box
@@ -90,7 +90,7 @@ export const Button = ({
         <Text
           baseline={false}
           weight="medium"
-          color={weight === 'weak' ? 'formAccent' : undefined}
+          tone={weight === 'weak' ? 'formAccent' : undefined}
         >
           {children}
         </Text>

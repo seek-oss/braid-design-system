@@ -145,14 +145,13 @@ const tokens: TreatTokens = {
     foreground: {
       link,
       linkHover: link,
-      black,
       neutral: black,
+      neutralInverted: 'white',
       formAccent,
       critical,
       info,
       positive,
       secondary: '#1c1c1ca1',
-      white: 'white',
     },
     background: {
       input: '#fff',

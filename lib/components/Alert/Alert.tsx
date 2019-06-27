@@ -17,7 +17,7 @@ export interface AlertProps {
   id?: string;
 }
 
-const backgroundColorForTone = (tone: Tone, weight: AlertWeight) => {
+const backgroundForTone = (tone: Tone, weight: AlertWeight) => {
   if (weight === 'strong') {
     return tone;
   }
@@ -48,13 +48,13 @@ export const Alert = ({
   id,
 }: AlertProps) => {
   const styles = useStyles(styleRefs);
-  const backgroundColor = backgroundColorForTone(tone, weight);
+  const background = backgroundForTone(tone, weight);
   const Icon = icons[tone];
 
   return (
     <Box
       id={id}
-      backgroundColor={backgroundColor}
+      background={background}
       paddingLeft="gutter"
       paddingRight="gutter"
       paddingTop="medium"

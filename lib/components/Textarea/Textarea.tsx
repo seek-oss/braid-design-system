@@ -43,7 +43,7 @@ const renderCount = ({
   const valid = diff >= 0;
 
   return (
-    <Text size="small" color={valid ? 'secondary' : 'critical'}>
+    <Text size="small" tone={valid ? 'secondary' : 'critical'}>
       {diff}
     </Text>
   );

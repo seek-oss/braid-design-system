@@ -8,7 +8,7 @@ export interface CardProps {
 export const Card = ({ children }: CardProps) => (
   <Box paddingBottom="medium">
     <Box
-      backgroundColor="card"
+      background="card"
       paddingTop="small"
       paddingBottom="large"
       paddingLeft="gutter"
