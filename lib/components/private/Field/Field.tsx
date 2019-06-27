@@ -84,16 +84,8 @@ export const Field = forwardRef<FieldRef, InternalFieldProps>(
         <Box className={styles.fieldContainer}>
           {children(
             {
-              // non-visual props
               id,
               name,
-              ...((message || ariaDescribedBy) && {
-                'aria-describedby': ariaDescribedBy || messageId,
-              }),
-              disabled,
-              autoComplete,
-              ...buildDataAttributes(data),
-              // visual props
               backgroundColor: disabled ? 'inputDisabled' : 'input',
               boxShadow:
                 tone === 'critical' && !disabled
@@ -103,6 +95,12 @@ export const Field = forwardRef<FieldRef, InternalFieldProps>(
               paddingLeft: 'small',
               paddingRight: 'small',
               borderRadius: 'standard',
+              ...((message || ariaDescribedBy) && {
+                'aria-describedby': ariaDescribedBy || messageId,
+              }),
+              disabled,
+              autoComplete,
+              ...buildDataAttributes(data),
               className: classnames(
                 styles.field,
                 useText({ size: 'standard', baseline: false }),
