@@ -6807,7 +6807,7 @@ Object {
 }
 `;
 
-exports[`Public API Contract ThemeProvider 1`] = `
+exports[`Public API Contract BraidProvider 1`] = `
 Object {
   "props": Object {
     "children": Object {

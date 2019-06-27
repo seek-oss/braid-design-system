@@ -1,17 +1,17 @@
 import React, { Fragment, ReactNode } from 'react';
-import { ThemeProvider } from '../components';
-import { ThemeProviderProps } from '../components/ThemeProvider/ThemeProvider';
+import { BraidProvider } from '../components';
+import { BraidProviderProps } from '../components/BraidProvider/BraidProvider';
 
 interface Props {
-  theme: ThemeProviderProps['theme'];
+  theme: BraidProviderProps['theme'];
   children: ReactNode;
 }
 
 export default ({ theme, children }: Props) => (
-  <ThemeProvider theme={theme}>
+  <BraidProvider theme={theme}>
     <Fragment>
       <style>{`html,body { margin: 0; }`}</style>
       {children}
     </Fragment>
-  </ThemeProvider>
+  </BraidProvider>
 );

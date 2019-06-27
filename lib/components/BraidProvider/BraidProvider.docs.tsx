@@ -7,9 +7,9 @@ const docs: ComponentDocs = {
         import { wireframe } from 'braid-design-system/lib/themes';
 
         export default () => (
-          <ThemeProvider theme={wireframe}>
+          <BraidProvider theme={wireframe}>
             ...
-          </ThemeProvider>
+          </BraidProvider>
         );
       `,
     },

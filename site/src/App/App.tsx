@@ -4,7 +4,7 @@ import React from 'react';
 import { withRouter, Route } from 'react-router';
 import { CSSTransition } from 'react-transition-group';
 
-import { ThemeProvider } from '../../../lib/components';
+import { BraidProvider } from '../../../lib/components';
 import { Home } from './Home/Home';
 import { Components } from './Components/Components';
 import * as styles from './App.treat';
@@ -20,7 +20,7 @@ const routes = [
 ];
 
 export const App = withRouter(() => (
-  <ThemeProvider theme={themes.wireframe}>
+  <BraidProvider theme={themes.wireframe}>
     <div>
       {routes.map(({ path, exact, Component }) => (
         <Route key={path} exact={exact} path={path}>
@@ -39,5 +39,5 @@ export const App = withRouter(() => (
         </Route>
       ))}
     </div>
-  </ThemeProvider>
+  </BraidProvider>
 ));

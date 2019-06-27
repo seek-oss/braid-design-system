@@ -33,15 +33,15 @@ import React from 'react';
 // ...etc.
 ```
 
-Finally, render the `ThemeProvider` component, providing the imported theme via the `theme` prop:
+Finally, render the `BraidProvider` component, providing the imported theme via the `theme` prop:
 
 ```js
-import { ThemeProvider, Text } from 'braid-design-system';
+import { BraidProvider, Text } from 'braid-design-system';
 
 export default () => (
-  <ThemeProvider theme={jobStreetTheme}>
+  <BraidProvider theme={jobStreetTheme}>
     <Text>Hello World!</Text>
-  </ThemeProvider>
+  </BraidProvider>
 );
 ```
 
