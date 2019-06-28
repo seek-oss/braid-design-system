@@ -74,7 +74,7 @@ const PropList = ({
   props,
 }: {
   label: string;
-  props: Array<NormalisedInterface['props']>;
+  props: Array<{ propName: string; type: NormalisedPropType }>;
 }) => {
   if (props.length === 0) {
     return null;
