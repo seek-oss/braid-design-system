@@ -4,21 +4,14 @@ import partition from 'lodash/partition';
 import { Box, Text, Secondary, Heading } from '../../../../lib/components';
 import componentDocs from '../../../../generate-component-docs/componentDocs.json';
 import {
-  PropDetails,
+  NormalisedInterface,
   NormalisedPropType,
 } from '../../../../generate-component-docs/generate';
 
 type ComponentName = keyof typeof componentDocs;
 
 // @ts-ignore
-const docs = componentDocs as Record<
-  ComponentName,
-  {
-    props: {
-      [propName: string]: PropDetails;
-    };
-  }
->;
+const docs = componentDocs as Record<ComponentName, NormalisedInterface>;
 
 interface Props {
   componentName: string;
@@ -48,6 +41,22 @@ const PropType = ({ type }: { type: NormalisedPropType }) => {
     );
   }
 
+  if (type.type === 'interface') {
+    return (
+      <Fragment>
+        {'{'}
+        {Object.values(type.props).map(({ propName, required, type }) => (
+          <Box paddingLeft="small">
+            {propName}
+            {required ? ': ' : '?: '}
+            <PropType type={type} />;
+          </Box>
+        ))}
+        {'}'}
+      </Fragment>
+    );
+  }
+
   return (
     <Fragment>
       {type.types.map((unionType, index) => (
@@ -65,7 +74,7 @@ const PropList = ({
   props,
 }: {
   label: string;
-  props: Array<PropDetails>;
+  props: Array<{ propName: string; type: NormalisedPropType }>;
 }) => {
   if (props.length === 0) {
     return null;
