@@ -2632,12 +2632,41 @@ Object {
 }
 `;
 
+exports[`Public API Contract BraidProvider 1`] = `
+Object {
+  "props": Object {
+    "children": Object {
+      "propName": "children",
+      "required": true,
+      "type": Object {
+        "type": "union",
+        "types": Array [
+          "string",
+          "number",
+          "false",
+          "true",
+          "{}",
+          "ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>",
+          "ReactNodeArray",
+          "ReactPortal",
+        ],
+      },
+    },
+    "theme": Object {
+      "propName": "theme",
+      "required": true,
+      "type": "Theme",
+    },
+  },
+}
+`;
+
 exports[`Public API Contract Bullet 1`] = `
 Object {
   "props": Object {
     "children": Object {
       "propName": "children",
-      "required": false,
+      "required": true,
       "type": Object {
         "type": "union",
         "types": Array [
@@ -2661,7 +2690,7 @@ Object {
   "props": Object {
     "children": Object {
       "propName": "children",
-      "required": false,
+      "required": true,
       "type": Object {
         "type": "union",
         "types": Array [
@@ -6802,35 +6831,6 @@ Object {
       "propName": "children",
       "required": true,
       "type": "(name: string) => ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>",
-    },
-  },
-}
-`;
-
-exports[`Public API Contract BraidProvider 1`] = `
-Object {
-  "props": Object {
-    "children": Object {
-      "propName": "children",
-      "required": true,
-      "type": Object {
-        "type": "union",
-        "types": Array [
-          "string",
-          "number",
-          "false",
-          "true",
-          "{}",
-          "ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>",
-          "ReactNodeArray",
-          "ReactPortal",
-        ],
-      },
-    },
-    "theme": Object {
-      "propName": "theme",
-      "required": true,
-      "type": "Theme",
     },
   },
 }
