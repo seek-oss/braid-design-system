@@ -20,7 +20,7 @@ export const typeSerializer = {
         .map(
           ({ propName, required, type: propType }) =>
             `\n${indent(
-              `${propName}${required ? '' : '?'}: ${serializer(propType)};`,
+              `${propName}${required ? '' : '?'}: ${serializer(propType)}`,
             )}`,
         )
         .join('')}\n}`;
