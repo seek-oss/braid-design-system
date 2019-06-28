@@ -828,13 +828,13 @@ exports[`BraidProvider 1`] = `
 
 exports[`Bullet 1`] = `
 {
-  children?: ReactNode;
+  children: ReactNode;
 }
 `;
 
 exports[`BulletList 1`] = `
 {
-  children?: ReactNode;
+  children: ReactNode;
 }
 `;
 

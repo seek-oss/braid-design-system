@@ -3,7 +3,7 @@ import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';
 
 export interface BulletProps {
-  children?: ReactNode;
+  children: ReactNode;
 }
 
 export const Bullet = ({ children }: BulletProps) => (
