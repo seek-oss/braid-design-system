@@ -1,6 +1,6 @@
 {
   "name": "braid-design-system",
-  "version": "0.0.1",
+  "version": "0.0.0-development",
   "description": "Themeable design system for the SEEK Group",
   "main": "lib/components/index.ts",
   "sideEffects": [
@@ -83,10 +83,6 @@
   "devDependencies": {
     "@commitlint/cli": "^7.2.1",
     "@octokit/rest": "^15.16.1",
-    "@semantic-release/commit-analyzer": "^6.1.0",
-    "@semantic-release/github": "^5.2.10",
-    "@semantic-release/npm": "^5.1.4",
-    "@semantic-release/release-notes-generator": "^7.1.4",
     "@types/dedent": "^0.7.0",
     "@types/react-dom": "^16.8.2",
     "@types/react-router-dom": "^4.3.1",
