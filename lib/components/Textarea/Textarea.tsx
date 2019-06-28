@@ -54,7 +54,8 @@ const pxToInt = (str: string | null) =>
 
 const calculateLines = (
   target: HTMLTextAreaElement,
-  lineLimit: TextareaProps['lineLimit'],
+  lines: number,
+  lineLimit?: number,
 ) => {
   const { paddingBottom, paddingTop, lineHeight } = window.getComputedStyle(
     target,
@@ -64,6 +65,10 @@ const calculateLines = (
   const currentRows = Math.floor(
     (target.scrollHeight - padding) / pxToInt(lineHeight),
   );
+
+  if (target && target.value === '') {
+    return lines;
+  }
 
   return typeof lineLimit === 'number' && currentRows > lineLimit
     ? lineLimit
@@ -105,7 +110,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
             value={value}
             onChange={(e: ChangeEvent<HTMLTextAreaElement>) => {
               if (grow) {
-                setRows(calculateLines(e.target, lineLimit));
+                setRows(calculateLines(e.target, lines, lineLimit));
               }
               if (typeof onChange === 'function') {
                 onChange(e);
