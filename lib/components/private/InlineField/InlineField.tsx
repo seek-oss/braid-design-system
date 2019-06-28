@@ -13,7 +13,7 @@ import { TickIcon } from '../../icons/TickIcon/TickIcon';
 import { useTouchableSpace } from '../../../hooks/typography';
 import buildDataAttributes, { DataAttributeMap } from '../buildDataAttributes';
 import * as styleRefs from './InlineField.treat';
-import { BackgroundProvider } from 'lib/components/Box/BackgroundContext';
+import { BackgroundProvider } from '../../Box/BackgroundContext';
 
 const tones = ['neutral', 'critical'] as const;
 type InlineFieldTone = typeof tones[number];
