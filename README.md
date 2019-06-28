@@ -1,5 +1,5 @@
 <div align="center" >
-  <img src="logo.png" alt="BRAID" title="BRAID" width="310px" />
+  <img src="logo.png" alt="BRAID" title="BRAID" width="186px" />
   <br/>
   <br/>
   Themeable design system for the SEEK Group.
