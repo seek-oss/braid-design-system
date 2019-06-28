@@ -1,8 +1,7 @@
-import { typeSerializer, contractSerializer } from './contractSerialiser';
+import { typeSerializer } from './contractSerialiser';
 import generate from './generate';
 
 expect.addSnapshotSerializer(typeSerializer);
-expect.addSnapshotSerializer(contractSerializer);
 
 const componentDocs = generate();
 

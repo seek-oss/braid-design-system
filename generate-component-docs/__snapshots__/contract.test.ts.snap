@@ -1,2033 +1,5510 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Actions 1`] = `children: ReactNode`;
+exports[`Actions 1`] = `
+{
+  children: ReactNode;
+}
+`;
 
 exports[`Alert 1`] = `
-children: ReactNode
-id?: string
-tone?: 
-  | "info"
-  | "critical"
-  | "positive"
-weight?: 
-  | "strong"
-  | "regular"
+{
+  children: ReactNode;
+  id?: string;
+  tone?: 
+    | "info"
+    | "critical"
+    | "positive";
+  weight?: 
+    | "strong"
+    | "regular";
+}
 `;
 
 exports[`Box 1`] = `
-about?: string
-accept?: string
-acceptCharset?: string
-accessKey?: string
-action?: string
-allowFullScreen?: boolean
-allowTransparency?: boolean
-alt?: string
-aria-activedescendant?: string
-aria-atomic?: 
-  | false
-  | true
-  | "false"
-  | "true"
-aria-autocomplete?: 
-  | "list"
-  | "none"
-  | "inline"
-  | "both"
-aria-busy?: 
-  | false
-  | true
-  | "false"
-  | "true"
-aria-checked?: 
-  | false
-  | true
-  | "false"
-  | "true"
-  | "mixed"
-aria-colcount?: number
-aria-colindex?: number
-aria-colspan?: number
-aria-controls?: string
-aria-current?: 
-  | false
-  | true
-  | "step"
-  | "time"
-  | "false"
-  | "true"
-  | "page"
-  | "location"
-  | "date"
-aria-describedby?: string
-aria-details?: string
-aria-disabled?: 
-  | false
-  | true
-  | "false"
-  | "true"
-aria-dropeffect?: 
-  | "none"
-  | "link"
-  | "copy"
-  | "execute"
-  | "move"
-  | "popup"
-aria-errormessage?: string
-aria-expanded?: 
-  | false
-  | true
-  | "false"
-  | "true"
-aria-flowto?: string
-aria-grabbed?: 
-  | false
-  | true
-  | "false"
-  | "true"
-aria-haspopup?: 
-  | false
-  | true
-  | "grid"
-  | "dialog"
-  | "menu"
-  | "false"
-  | "true"
-  | "listbox"
-  | "tree"
-aria-hidden?: 
-  | false
-  | true
-  | "false"
-  | "true"
-aria-invalid?: 
-  | false
-  | true
-  | "false"
-  | "true"
-  | "grammar"
-  | "spelling"
-aria-keyshortcuts?: string
-aria-label?: string
-aria-labelledby?: string
-aria-level?: number
-aria-live?: 
-  | "off"
-  | "assertive"
-  | "polite"
-aria-modal?: 
-  | false
-  | true
-  | "false"
-  | "true"
-aria-multiline?: 
-  | false
-  | true
-  | "false"
-  | "true"
-aria-multiselectable?: 
-  | false
-  | true
-  | "false"
-  | "true"
-aria-orientation?: 
-  | "horizontal"
-  | "vertical"
-aria-owns?: string
-aria-placeholder?: string
-aria-posinset?: number
-aria-pressed?: 
-  | false
-  | true
-  | "false"
-  | "true"
-  | "mixed"
-aria-readonly?: 
-  | false
-  | true
-  | "false"
-  | "true"
-aria-relevant?: 
-  | "all"
-  | "text"
-  | "additions"
-  | "additions text"
-  | "removals"
-aria-required?: 
-  | false
-  | true
-  | "false"
-  | "true"
-aria-roledescription?: string
-aria-rowcount?: number
-aria-rowindex?: number
-aria-rowspan?: number
-aria-selected?: 
-  | false
-  | true
-  | "false"
-  | "true"
-aria-setsize?: number
-aria-sort?: 
-  | "none"
-  | "ascending"
-  | "descending"
-  | "other"
-aria-valuemax?: number
-aria-valuemin?: number
-aria-valuenow?: number
-aria-valuetext?: string
-as?: string
-async?: boolean
-autoCapitalize?: string
-autoComplete?: string
-autoCorrect?: string
-autoFocus?: boolean
-autoPlay?: boolean
-autoSave?: string
-background?: 
-  | "info"
-  | "critical"
-  | "positive"
-  | "input"
-  | "inputDisabled"
-  | "brandAccent"
-  | "formAccent"
-  | "formAccentDisabled"
-  | "selection"
-  | "card"
-  | "formAccentActive"
-  | "formAccentHover"
-  | "brandAccentActive"
-  | "brandAccentHover"
-  | "infoLight"
-  | "criticalLight"
-  | "positiveLight"
-borderRadius?: "standard"
-boxShadow?: 
-  | "outlineFocus"
-  | "borderStandard"
-  | "borderCritical"
-  | "borderFormAccent"
-  | "borderFormAccentLarge"
-capture?: 
-  | string
-  | false
-  | true
-cellPadding?: 
-  | string
-  | number
-cellSpacing?: 
-  | string
-  | number
-challenge?: string
-charSet?: string
-checked?: boolean
-children?: ReactNode
-cite?: string
-classID?: string
-className?: string
-colSpan?: number
-color?: string
-cols?: number
-component?: 
-  | "symbol"
-  | "object"
-  | "strong"
-  | "cite"
-  | "data"
-  | "form"
-  | "label"
-  | "pattern"
-  | "span"
-  | "summary"
-  | "style"
-  | "title"
-  | "clipPath"
-  | "filter"
-  | "mask"
-  | "marker"
-  | "small"
-  | "input"
-  | "a"
-  | "abbr"
-  | "address"
-  | "area"
-  | "article"
-  | "aside"
-  | "audio"
-  | "b"
-  | "base"
-  | "bdi"
-  | "bdo"
-  | "big"
-  | "blockquote"
-  | "body"
-  | "br"
-  | "button"
-  | "canvas"
-  | "caption"
-  | "code"
-  | "col"
-  | "colgroup"
-  | "datalist"
-  | "dd"
-  | "del"
-  | "details"
-  | "dfn"
-  | "dialog"
-  | "div"
-  | "dl"
-  | "dt"
-  | "em"
-  | "embed"
-  | "fieldset"
-  | "figcaption"
-  | "figure"
-  | "footer"
-  | "h1"
-  | "h2"
-  | "h3"
-  | "h4"
-  | "h5"
-  | "h6"
-  | "head"
-  | "header"
-  | "hgroup"
-  | "hr"
-  | "html"
-  | "i"
-  | "iframe"
-  | "img"
-  | "ins"
-  | "kbd"
-  | "keygen"
-  | "legend"
-  | "li"
-  | "link"
-  | "main"
-  | "map"
-  | "mark"
-  | "menu"
-  | "menuitem"
-  | "meta"
-  | "meter"
-  | "nav"
-  | "noindex"
-  | "noscript"
-  | "ol"
-  | "optgroup"
-  | "option"
-  | "output"
-  | "p"
-  | "param"
-  | "picture"
-  | "pre"
-  | "progress"
-  | "q"
-  | "rp"
-  | "rt"
-  | "ruby"
-  | "s"
-  | "samp"
-  | "script"
-  | "section"
-  | "select"
-  | "source"
-  | "sub"
-  | "sup"
-  | "table"
-  | "tbody"
-  | "td"
-  | "textarea"
-  | "tfoot"
-  | "th"
-  | "thead"
-  | "time"
-  | "tr"
-  | "track"
-  | "u"
-  | "ul"
-  | "var"
-  | "video"
-  | "wbr"
-  | "webview"
-  | "svg"
-  | "animate"
-  | "animateMotion"
-  | "animateTransform"
-  | "circle"
-  | "defs"
-  | "desc"
-  | "ellipse"
-  | "feBlend"
-  | "feColorMatrix"
-  | "feComponentTransfer"
-  | "feComposite"
-  | "feConvolveMatrix"
-  | "feDiffuseLighting"
-  | "feDisplacementMap"
-  | "feDistantLight"
-  | "feDropShadow"
-  | "feFlood"
-  | "feFuncA"
-  | "feFuncB"
-  | "feFuncG"
-  | "feFuncR"
-  | "feGaussianBlur"
-  | "feImage"
-  | "feMerge"
-  | "feMergeNode"
-  | "feMorphology"
-  | "feOffset"
-  | "fePointLight"
-  | "feSpecularLighting"
-  | "feSpotLight"
-  | "feTile"
-  | "feTurbulence"
-  | "foreignObject"
-  | "g"
-  | "image"
-  | "line"
-  | "linearGradient"
-  | "metadata"
-  | "mpath"
-  | "path"
-  | "polygon"
-  | "polyline"
-  | "radialGradient"
-  | "rect"
-  | "stop"
-  | "switch"
-  | "text"
-  | "textPath"
-  | "tspan"
-  | "use"
-  | "view"
-  | ComponentClass<any, any>
-  | FunctionComponent<any>
-content?: string
-contentEditable?: boolean
-contextMenu?: string
-controls?: boolean
-coords?: string
-crossOrigin?: string
-dangerouslySetInnerHTML?: { __html: string; }
-data?: string
-datatype?: string
-dateTime?: string
-default?: boolean
-defaultChecked?: boolean
-defaultValue?: 
-  | string
-  | string[]
-defer?: boolean
-dir?: string
-disabled?: boolean
-display?: ResponsiveProp<
-  | "flex"
-  | "none"
-  | "block"
-  | "inline"
-  | "inlineBlock"
->
-download?: any
-draggable?: boolean
-encType?: string
-flexDirection?: ResponsiveProp<
-  | "row"
-  | "column"
->
-form?: string
-formAction?: string
-formEncType?: string
-formMethod?: string
-formNoValidate?: boolean
-formTarget?: string
-frameBorder?: 
-  | string
-  | number
-headers?: string
-height?: 
-  | string
-  | number
-hidden?: boolean
-high?: number
-href?: string
-hrefLang?: string
-htmlFor?: string
-httpEquiv?: string
-id?: string
-inlist?: any
-inputMode?: string
-integrity?: string
-is?: string
-itemID?: string
-itemProp?: string
-itemRef?: string
-itemScope?: boolean
-itemType?: string
-keyParams?: string
-keyType?: string
-kind?: string
-label?: string
-lang?: string
-list?: string
-loop?: boolean
-low?: number
-manifest?: string
-marginBottom?: ResponsiveProp<
-  | "none"
-  | "xxsmall"
-  | "xsmall"
-  | "small"
-  | "medium"
-  | "large"
-  | "xlarge"
-  | "xxlarge"
->
-marginHeight?: number
-marginLeft?: ResponsiveProp<
-  | "none"
-  | "xxsmall"
-  | "xsmall"
-  | "small"
-  | "medium"
-  | "large"
-  | "xlarge"
-  | "xxlarge"
-  | "gutter"
->
-marginRight?: ResponsiveProp<
-  | "none"
-  | "xxsmall"
-  | "xsmall"
-  | "small"
-  | "medium"
-  | "large"
-  | "xlarge"
-  | "xxlarge"
-  | "gutter"
->
-marginTop?: ResponsiveProp<
-  | "none"
-  | "xxsmall"
-  | "xsmall"
-  | "small"
-  | "medium"
-  | "large"
-  | "xlarge"
-  | "xxlarge"
->
-marginWidth?: number
-max?: 
-  | string
-  | number
-maxLength?: number
-media?: string
-mediaGroup?: string
-method?: string
-min?: 
-  | string
-  | number
-minLength?: number
-multiple?: boolean
-muted?: boolean
-name?: string
-noValidate?: boolean
-nonce?: string
-onAbort?: (event: SyntheticEvent<HTMLElement, Event>) => void
-onAbortCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void
-onAnimationEnd?: (event: AnimationEvent<HTMLElement>) => void
-onAnimationEndCapture?: (event: AnimationEvent<HTMLElement>) => void
-onAnimationIteration?: (event: AnimationEvent<HTMLElement>) => void
-onAnimationIterationCapture?: (event: AnimationEvent<HTMLElement>) => void
-onAnimationStart?: (event: AnimationEvent<HTMLElement>) => void
-onAnimationStartCapture?: (event: AnimationEvent<HTMLElement>) => void
-onAuxClick?: (event: MouseEvent<HTMLElement, MouseEvent>) => void
-onAuxClickCapture?: (event: MouseEvent<HTMLElement, MouseEvent>) => void
-onBeforeInput?: (event: FormEvent<HTMLElement>) => void
-onBeforeInputCapture?: (event: FormEvent<HTMLElement>) => void
-onBlur?: (event: FocusEvent<HTMLElement>) => void
-onBlurCapture?: (event: FocusEvent<HTMLElement>) => void
-onCanPlay?: (event: SyntheticEvent<HTMLElement, Event>) => void
-onCanPlayCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void
-onCanPlayThrough?: (event: SyntheticEvent<HTMLElement, Event>) => void
-onCanPlayThroughCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void
-onChange?: (event: FormEvent<HTMLElement>) => void
-onChangeCapture?: (event: FormEvent<HTMLElement>) => void
-onClick?: (event: MouseEvent<HTMLElement, MouseEvent>) => void
-onClickCapture?: (event: MouseEvent<HTMLElement, MouseEvent>) => void
-onCompositionEnd?: (event: CompositionEvent<HTMLElement>) => void
-onCompositionEndCapture?: (event: CompositionEvent<HTMLElement>) => void
-onCompositionStart?: (event: CompositionEvent<HTMLElement>) => void
-onCompositionStartCapture?: (event: CompositionEvent<HTMLElement>) => void
-onCompositionUpdate?: (event: CompositionEvent<HTMLElement>) => void
-onCompositionUpdateCapture?: (event: CompositionEvent<HTMLElement>) => void
-onContextMenu?: (event: MouseEvent<HTMLElement, MouseEvent>) => void
-onContextMenuCapture?: (event: MouseEvent<HTMLElement, MouseEvent>) => void
-onCopy?: (event: ClipboardEvent<HTMLElement>) => void
-onCopyCapture?: (event: ClipboardEvent<HTMLElement>) => void
-onCut?: (event: ClipboardEvent<HTMLElement>) => void
-onCutCapture?: (event: ClipboardEvent<HTMLElement>) => void
-onDoubleClick?: (event: MouseEvent<HTMLElement, MouseEvent>) => void
-onDoubleClickCapture?: (event: MouseEvent<HTMLElement, MouseEvent>) => void
-onDrag?: (event: DragEvent<HTMLElement>) => void
-onDragCapture?: (event: DragEvent<HTMLElement>) => void
-onDragEnd?: (event: DragEvent<HTMLElement>) => void
-onDragEndCapture?: (event: DragEvent<HTMLElement>) => void
-onDragEnter?: (event: DragEvent<HTMLElement>) => void
-onDragEnterCapture?: (event: DragEvent<HTMLElement>) => void
-onDragExit?: (event: DragEvent<HTMLElement>) => void
-onDragExitCapture?: (event: DragEvent<HTMLElement>) => void
-onDragLeave?: (event: DragEvent<HTMLElement>) => void
-onDragLeaveCapture?: (event: DragEvent<HTMLElement>) => void
-onDragOver?: (event: DragEvent<HTMLElement>) => void
-onDragOverCapture?: (event: DragEvent<HTMLElement>) => void
-onDragStart?: (event: DragEvent<HTMLElement>) => void
-onDragStartCapture?: (event: DragEvent<HTMLElement>) => void
-onDrop?: (event: DragEvent<HTMLElement>) => void
-onDropCapture?: (event: DragEvent<HTMLElement>) => void
-onDurationChange?: (event: SyntheticEvent<HTMLElement, Event>) => void
-onDurationChangeCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void
-onEmptied?: (event: SyntheticEvent<HTMLElement, Event>) => void
-onEmptiedCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void
-onEncrypted?: (event: SyntheticEvent<HTMLElement, Event>) => void
-onEncryptedCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void
-onEnded?: (event: SyntheticEvent<HTMLElement, Event>) => void
-onEndedCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void
-onError?: (event: SyntheticEvent<HTMLElement, Event>) => void
-onErrorCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void
-onFocus?: (event: FocusEvent<HTMLElement>) => void
-onFocusCapture?: (event: FocusEvent<HTMLElement>) => void
-onGotPointerCapture?: (event: PointerEvent<HTMLElement>) => void
-onGotPointerCaptureCapture?: (event: PointerEvent<HTMLElement>) => void
-onInput?: (event: FormEvent<HTMLElement>) => void
-onInputCapture?: (event: FormEvent<HTMLElement>) => void
-onInvalid?: (event: FormEvent<HTMLElement>) => void
-onInvalidCapture?: (event: FormEvent<HTMLElement>) => void
-onKeyDown?: (event: KeyboardEvent<HTMLElement>) => void
-onKeyDownCapture?: (event: KeyboardEvent<HTMLElement>) => void
-onKeyPress?: (event: KeyboardEvent<HTMLElement>) => void
-onKeyPressCapture?: (event: KeyboardEvent<HTMLElement>) => void
-onKeyUp?: (event: KeyboardEvent<HTMLElement>) => void
-onKeyUpCapture?: (event: KeyboardEvent<HTMLElement>) => void
-onLoad?: (event: SyntheticEvent<HTMLElement, Event>) => void
-onLoadCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void
-onLoadStart?: (event: SyntheticEvent<HTMLElement, Event>) => void
-onLoadStartCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void
-onLoadedData?: (event: SyntheticEvent<HTMLElement, Event>) => void
-onLoadedDataCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void
-onLoadedMetadata?: (event: SyntheticEvent<HTMLElement, Event>) => void
-onLoadedMetadataCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void
-onLostPointerCapture?: (event: PointerEvent<HTMLElement>) => void
-onLostPointerCaptureCapture?: (event: PointerEvent<HTMLElement>) => void
-onMouseDown?: (event: MouseEvent<HTMLElement, MouseEvent>) => void
-onMouseDownCapture?: (event: MouseEvent<HTMLElement, MouseEvent>) => void
-onMouseEnter?: (event: MouseEvent<HTMLElement, MouseEvent>) => void
-onMouseLeave?: (event: MouseEvent<HTMLElement, MouseEvent>) => void
-onMouseMove?: (event: MouseEvent<HTMLElement, MouseEvent>) => void
-onMouseMoveCapture?: (event: MouseEvent<HTMLElement, MouseEvent>) => void
-onMouseOut?: (event: MouseEvent<HTMLElement, MouseEvent>) => void
-onMouseOutCapture?: (event: MouseEvent<HTMLElement, MouseEvent>) => void
-onMouseOver?: (event: MouseEvent<HTMLElement, MouseEvent>) => void
-onMouseOverCapture?: (event: MouseEvent<HTMLElement, MouseEvent>) => void
-onMouseUp?: (event: MouseEvent<HTMLElement, MouseEvent>) => void
-onMouseUpCapture?: (event: MouseEvent<HTMLElement, MouseEvent>) => void
-onPaste?: (event: ClipboardEvent<HTMLElement>) => void
-onPasteCapture?: (event: ClipboardEvent<HTMLElement>) => void
-onPause?: (event: SyntheticEvent<HTMLElement, Event>) => void
-onPauseCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void
-onPlay?: (event: SyntheticEvent<HTMLElement, Event>) => void
-onPlayCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void
-onPlaying?: (event: SyntheticEvent<HTMLElement, Event>) => void
-onPlayingCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void
-onPointerCancel?: (event: PointerEvent<HTMLElement>) => void
-onPointerCancelCapture?: (event: PointerEvent<HTMLElement>) => void
-onPointerDown?: (event: PointerEvent<HTMLElement>) => void
-onPointerDownCapture?: (event: PointerEvent<HTMLElement>) => void
-onPointerEnter?: (event: PointerEvent<HTMLElement>) => void
-onPointerEnterCapture?: (event: PointerEvent<HTMLElement>) => void
-onPointerLeave?: (event: PointerEvent<HTMLElement>) => void
-onPointerLeaveCapture?: (event: PointerEvent<HTMLElement>) => void
-onPointerMove?: (event: PointerEvent<HTMLElement>) => void
-onPointerMoveCapture?: (event: PointerEvent<HTMLElement>) => void
-onPointerOut?: (event: PointerEvent<HTMLElement>) => void
-onPointerOutCapture?: (event: PointerEvent<HTMLElement>) => void
-onPointerOver?: (event: PointerEvent<HTMLElement>) => void
-onPointerOverCapture?: (event: PointerEvent<HTMLElement>) => void
-onPointerUp?: (event: PointerEvent<HTMLElement>) => void
-onPointerUpCapture?: (event: PointerEvent<HTMLElement>) => void
-onProgress?: (event: SyntheticEvent<HTMLElement, Event>) => void
-onProgressCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void
-onRateChange?: (event: SyntheticEvent<HTMLElement, Event>) => void
-onRateChangeCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void
-onReset?: (event: FormEvent<HTMLElement>) => void
-onResetCapture?: (event: FormEvent<HTMLElement>) => void
-onScroll?: (event: UIEvent<HTMLElement>) => void
-onScrollCapture?: (event: UIEvent<HTMLElement>) => void
-onSeeked?: (event: SyntheticEvent<HTMLElement, Event>) => void
-onSeekedCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void
-onSeeking?: (event: SyntheticEvent<HTMLElement, Event>) => void
-onSeekingCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void
-onSelect?: (event: SyntheticEvent<HTMLElement, Event>) => void
-onSelectCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void
-onStalled?: (event: SyntheticEvent<HTMLElement, Event>) => void
-onStalledCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void
-onSubmit?: (event: FormEvent<HTMLElement>) => void
-onSubmitCapture?: (event: FormEvent<HTMLElement>) => void
-onSuspend?: (event: SyntheticEvent<HTMLElement, Event>) => void
-onSuspendCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void
-onTimeUpdate?: (event: SyntheticEvent<HTMLElement, Event>) => void
-onTimeUpdateCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void
-onTouchCancel?: (event: TouchEvent<HTMLElement>) => void
-onTouchCancelCapture?: (event: TouchEvent<HTMLElement>) => void
-onTouchEnd?: (event: TouchEvent<HTMLElement>) => void
-onTouchEndCapture?: (event: TouchEvent<HTMLElement>) => void
-onTouchMove?: (event: TouchEvent<HTMLElement>) => void
-onTouchMoveCapture?: (event: TouchEvent<HTMLElement>) => void
-onTouchStart?: (event: TouchEvent<HTMLElement>) => void
-onTouchStartCapture?: (event: TouchEvent<HTMLElement>) => void
-onTransitionEnd?: (event: TransitionEvent<HTMLElement>) => void
-onTransitionEndCapture?: (event: TransitionEvent<HTMLElement>) => void
-onVolumeChange?: (event: SyntheticEvent<HTMLElement, Event>) => void
-onVolumeChangeCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void
-onWaiting?: (event: SyntheticEvent<HTMLElement, Event>) => void
-onWaitingCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void
-onWheel?: (event: WheelEvent<HTMLElement>) => void
-onWheelCapture?: (event: WheelEvent<HTMLElement>) => void
-open?: boolean
-optimum?: number
-paddingBottom?: ResponsiveProp<
-  | "none"
-  | "xxsmall"
-  | "xsmall"
-  | "small"
-  | "medium"
-  | "large"
-  | "xlarge"
-  | "xxlarge"
->
-paddingLeft?: ResponsiveProp<
-  | "none"
-  | "xxsmall"
-  | "xsmall"
-  | "small"
-  | "medium"
-  | "large"
-  | "xlarge"
-  | "xxlarge"
-  | "gutter"
->
-paddingRight?: ResponsiveProp<
-  | "none"
-  | "xxsmall"
-  | "xsmall"
-  | "small"
-  | "medium"
-  | "large"
-  | "xlarge"
-  | "xxlarge"
-  | "gutter"
->
-paddingTop?: ResponsiveProp<
-  | "none"
-  | "xxsmall"
-  | "xsmall"
-  | "small"
-  | "medium"
-  | "large"
-  | "xlarge"
-  | "xxlarge"
->
-pattern?: string
-placeholder?: string
-playsInline?: boolean
-poster?: string
-prefix?: string
-preload?: string
-property?: string
-radioGroup?: string
-readOnly?: boolean
-ref?: 
-  | (instance: HTMLElement | null) => void
-  | RefObject<HTMLElement>
-rel?: string
-required?: boolean
-resource?: string
-results?: number
-reversed?: boolean
-role?: string
-rowSpan?: number
-rows?: number
-sandbox?: string
-scope?: string
-scoped?: boolean
-scrolling?: string
-seamless?: boolean
-security?: string
-selected?: boolean
-shape?: string
-size?: number
-sizes?: string
-slot?: string
-span?: number
-spellCheck?: boolean
-src?: string
-srcDoc?: string
-srcLang?: string
-srcSet?: string
-start?: number
-step?: 
-  | string
-  | number
-style?: CSSProperties
-summary?: string
-suppressContentEditableWarning?: boolean
-suppressHydrationWarning?: boolean
-tabIndex?: number
-target?: string
-title?: string
-transform?: "touchable"
-transition?: 
-  | "touchable"
-  | "fast"
-type?: string
-typeof?: string
-unselectable?: 
-  | "on"
-  | "off"
-useMap?: string
-value?: 
-  | string
-  | number
-  | string[]
-vocab?: string
-width?: "full"
-wmode?: string
-wrap?: string
+{
+  about?: string;
+  accept?: string;
+  acceptCharset?: string;
+  accessKey?: string;
+  action?: string;
+  allowFullScreen?: boolean;
+  allowTransparency?: boolean;
+  alt?: string;
+  aria-activedescendant?: string;
+  aria-atomic?: 
+    | false
+    | true
+    | "false"
+    | "true";
+  aria-autocomplete?: 
+    | "list"
+    | "none"
+    | "inline"
+    | "both";
+  aria-busy?: 
+    | false
+    | true
+    | "false"
+    | "true";
+  aria-checked?: 
+    | false
+    | true
+    | "false"
+    | "true"
+    | "mixed";
+  aria-colcount?: number;
+  aria-colindex?: number;
+  aria-colspan?: number;
+  aria-controls?: string;
+  aria-current?: 
+    | false
+    | true
+    | "step"
+    | "time"
+    | "false"
+    | "true"
+    | "page"
+    | "location"
+    | "date";
+  aria-describedby?: string;
+  aria-details?: string;
+  aria-disabled?: 
+    | false
+    | true
+    | "false"
+    | "true";
+  aria-dropeffect?: 
+    | "none"
+    | "link"
+    | "copy"
+    | "execute"
+    | "move"
+    | "popup";
+  aria-errormessage?: string;
+  aria-expanded?: 
+    | false
+    | true
+    | "false"
+    | "true";
+  aria-flowto?: string;
+  aria-grabbed?: 
+    | false
+    | true
+    | "false"
+    | "true";
+  aria-haspopup?: 
+    | false
+    | true
+    | "grid"
+    | "dialog"
+    | "menu"
+    | "false"
+    | "true"
+    | "listbox"
+    | "tree";
+  aria-hidden?: 
+    | false
+    | true
+    | "false"
+    | "true";
+  aria-invalid?: 
+    | false
+    | true
+    | "false"
+    | "true"
+    | "grammar"
+    | "spelling";
+  aria-keyshortcuts?: string;
+  aria-label?: string;
+  aria-labelledby?: string;
+  aria-level?: number;
+  aria-live?: 
+    | "off"
+    | "assertive"
+    | "polite";
+  aria-modal?: 
+    | false
+    | true
+    | "false"
+    | "true";
+  aria-multiline?: 
+    | false
+    | true
+    | "false"
+    | "true";
+  aria-multiselectable?: 
+    | false
+    | true
+    | "false"
+    | "true";
+  aria-orientation?: 
+    | "horizontal"
+    | "vertical";
+  aria-owns?: string;
+  aria-placeholder?: string;
+  aria-posinset?: number;
+  aria-pressed?: 
+    | false
+    | true
+    | "false"
+    | "true"
+    | "mixed";
+  aria-readonly?: 
+    | false
+    | true
+    | "false"
+    | "true";
+  aria-relevant?: 
+    | "all"
+    | "text"
+    | "additions"
+    | "additions text"
+    | "removals";
+  aria-required?: 
+    | false
+    | true
+    | "false"
+    | "true";
+  aria-roledescription?: string;
+  aria-rowcount?: number;
+  aria-rowindex?: number;
+  aria-rowspan?: number;
+  aria-selected?: 
+    | false
+    | true
+    | "false"
+    | "true";
+  aria-setsize?: number;
+  aria-sort?: 
+    | "none"
+    | "ascending"
+    | "descending"
+    | "other";
+  aria-valuemax?: number;
+  aria-valuemin?: number;
+  aria-valuenow?: number;
+  aria-valuetext?: string;
+  as?: string;
+  async?: boolean;
+  autoCapitalize?: string;
+  autoComplete?: string;
+  autoCorrect?: string;
+  autoFocus?: boolean;
+  autoPlay?: boolean;
+  autoSave?: string;
+  background?: 
+    | "info"
+    | "critical"
+    | "positive"
+    | "input"
+    | "inputDisabled"
+    | "brandAccent"
+    | "formAccent"
+    | "formAccentDisabled"
+    | "selection"
+    | "card"
+    | "formAccentActive"
+    | "formAccentHover"
+    | "brandAccentActive"
+    | "brandAccentHover"
+    | "infoLight"
+    | "criticalLight"
+    | "positiveLight";
+  borderRadius?: "standard";
+  boxShadow?: 
+    | "outlineFocus"
+    | "borderStandard"
+    | "borderCritical"
+    | "borderFormAccent"
+    | "borderFormAccentLarge";
+  capture?: 
+    | string
+    | false
+    | true;
+  cellPadding?: 
+    | string
+    | number;
+  cellSpacing?: 
+    | string
+    | number;
+  challenge?: string;
+  charSet?: string;
+  checked?: boolean;
+  children?: ReactNode;
+  cite?: string;
+  classID?: string;
+  className?: string;
+  colSpan?: number;
+  color?: string;
+  cols?: number;
+  component?: 
+    | "symbol"
+    | "object"
+    | "strong"
+    | "cite"
+    | "data"
+    | "form"
+    | "label"
+    | "pattern"
+    | "span"
+    | "summary"
+    | "style"
+    | "title"
+    | "clipPath"
+    | "filter"
+    | "mask"
+    | "marker"
+    | "small"
+    | "input"
+    | "a"
+    | "abbr"
+    | "address"
+    | "area"
+    | "article"
+    | "aside"
+    | "audio"
+    | "b"
+    | "base"
+    | "bdi"
+    | "bdo"
+    | "big"
+    | "blockquote"
+    | "body"
+    | "br"
+    | "button"
+    | "canvas"
+    | "caption"
+    | "code"
+    | "col"
+    | "colgroup"
+    | "datalist"
+    | "dd"
+    | "del"
+    | "details"
+    | "dfn"
+    | "dialog"
+    | "div"
+    | "dl"
+    | "dt"
+    | "em"
+    | "embed"
+    | "fieldset"
+    | "figcaption"
+    | "figure"
+    | "footer"
+    | "h1"
+    | "h2"
+    | "h3"
+    | "h4"
+    | "h5"
+    | "h6"
+    | "head"
+    | "header"
+    | "hgroup"
+    | "hr"
+    | "html"
+    | "i"
+    | "iframe"
+    | "img"
+    | "ins"
+    | "kbd"
+    | "keygen"
+    | "legend"
+    | "li"
+    | "link"
+    | "main"
+    | "map"
+    | "mark"
+    | "menu"
+    | "menuitem"
+    | "meta"
+    | "meter"
+    | "nav"
+    | "noindex"
+    | "noscript"
+    | "ol"
+    | "optgroup"
+    | "option"
+    | "output"
+    | "p"
+    | "param"
+    | "picture"
+    | "pre"
+    | "progress"
+    | "q"
+    | "rp"
+    | "rt"
+    | "ruby"
+    | "s"
+    | "samp"
+    | "script"
+    | "section"
+    | "select"
+    | "source"
+    | "sub"
+    | "sup"
+    | "table"
+    | "tbody"
+    | "td"
+    | "textarea"
+    | "tfoot"
+    | "th"
+    | "thead"
+    | "time"
+    | "tr"
+    | "track"
+    | "u"
+    | "ul"
+    | "var"
+    | "video"
+    | "wbr"
+    | "webview"
+    | "svg"
+    | "animate"
+    | "animateMotion"
+    | "animateTransform"
+    | "circle"
+    | "defs"
+    | "desc"
+    | "ellipse"
+    | "feBlend"
+    | "feColorMatrix"
+    | "feComponentTransfer"
+    | "feComposite"
+    | "feConvolveMatrix"
+    | "feDiffuseLighting"
+    | "feDisplacementMap"
+    | "feDistantLight"
+    | "feDropShadow"
+    | "feFlood"
+    | "feFuncA"
+    | "feFuncB"
+    | "feFuncG"
+    | "feFuncR"
+    | "feGaussianBlur"
+    | "feImage"
+    | "feMerge"
+    | "feMergeNode"
+    | "feMorphology"
+    | "feOffset"
+    | "fePointLight"
+    | "feSpecularLighting"
+    | "feSpotLight"
+    | "feTile"
+    | "feTurbulence"
+    | "foreignObject"
+    | "g"
+    | "image"
+    | "line"
+    | "linearGradient"
+    | "metadata"
+    | "mpath"
+    | "path"
+    | "polygon"
+    | "polyline"
+    | "radialGradient"
+    | "rect"
+    | "stop"
+    | "switch"
+    | "text"
+    | "textPath"
+    | "tspan"
+    | "use"
+    | "view"
+    | ComponentClass<any, any>
+    | FunctionComponent<any>;
+  content?: string;
+  contentEditable?: boolean;
+  contextMenu?: string;
+  controls?: boolean;
+  coords?: string;
+  crossOrigin?: string;
+  dangerouslySetInnerHTML?: { __html: string; };
+  data?: string;
+  datatype?: string;
+  dateTime?: string;
+  default?: boolean;
+  defaultChecked?: boolean;
+  defaultValue?: 
+    | string
+    | string[];
+  defer?: boolean;
+  dir?: string;
+  disabled?: boolean;
+  display?: ResponsiveProp<
+    | "flex"
+    | "none"
+    | "block"
+    | "inline"
+    | "inlineBlock"
+  >;
+  download?: any;
+  draggable?: boolean;
+  encType?: string;
+  flexDirection?: ResponsiveProp<
+    | "row"
+    | "column"
+  >;
+  form?: string;
+  formAction?: string;
+  formEncType?: string;
+  formMethod?: string;
+  formNoValidate?: boolean;
+  formTarget?: string;
+  frameBorder?: 
+    | string
+    | number;
+  headers?: string;
+  height?: 
+    | string
+    | number;
+  hidden?: boolean;
+  high?: number;
+  href?: string;
+  hrefLang?: string;
+  htmlFor?: string;
+  httpEquiv?: string;
+  id?: string;
+  inlist?: any;
+  inputMode?: string;
+  integrity?: string;
+  is?: string;
+  itemID?: string;
+  itemProp?: string;
+  itemRef?: string;
+  itemScope?: boolean;
+  itemType?: string;
+  keyParams?: string;
+  keyType?: string;
+  kind?: string;
+  label?: string;
+  lang?: string;
+  list?: string;
+  loop?: boolean;
+  low?: number;
+  manifest?: string;
+  marginBottom?: ResponsiveProp<
+    | "none"
+    | "xxsmall"
+    | "xsmall"
+    | "small"
+    | "medium"
+    | "large"
+    | "xlarge"
+    | "xxlarge"
+  >;
+  marginHeight?: number;
+  marginLeft?: ResponsiveProp<
+    | "none"
+    | "xxsmall"
+    | "xsmall"
+    | "small"
+    | "medium"
+    | "large"
+    | "xlarge"
+    | "xxlarge"
+    | "gutter"
+  >;
+  marginRight?: ResponsiveProp<
+    | "none"
+    | "xxsmall"
+    | "xsmall"
+    | "small"
+    | "medium"
+    | "large"
+    | "xlarge"
+    | "xxlarge"
+    | "gutter"
+  >;
+  marginTop?: ResponsiveProp<
+    | "none"
+    | "xxsmall"
+    | "xsmall"
+    | "small"
+    | "medium"
+    | "large"
+    | "xlarge"
+    | "xxlarge"
+  >;
+  marginWidth?: number;
+  max?: 
+    | string
+    | number;
+  maxLength?: number;
+  media?: string;
+  mediaGroup?: string;
+  method?: string;
+  min?: 
+    | string
+    | number;
+  minLength?: number;
+  multiple?: boolean;
+  muted?: boolean;
+  name?: string;
+  noValidate?: boolean;
+  nonce?: string;
+  onAbort?: (event: SyntheticEvent<HTMLElement, Event>) => void;
+  onAbortCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void;
+  onAnimationEnd?: (event: AnimationEvent<HTMLElement>) => void;
+  onAnimationEndCapture?: (event: AnimationEvent<HTMLElement>) => void;
+  onAnimationIteration?: (event: AnimationEvent<HTMLElement>) => void;
+  onAnimationIterationCapture?: (event: AnimationEvent<HTMLElement>) => void;
+  onAnimationStart?: (event: AnimationEvent<HTMLElement>) => void;
+  onAnimationStartCapture?: (event: AnimationEvent<HTMLElement>) => void;
+  onAuxClick?: (event: MouseEvent<HTMLElement, MouseEvent>) => void;
+  onAuxClickCapture?: (event: MouseEvent<HTMLElement, MouseEvent>) => void;
+  onBeforeInput?: (event: FormEvent<HTMLElement>) => void;
+  onBeforeInputCapture?: (event: FormEvent<HTMLElement>) => void;
+  onBlur?: (event: FocusEvent<HTMLElement>) => void;
+  onBlurCapture?: (event: FocusEvent<HTMLElement>) => void;
+  onCanPlay?: (event: SyntheticEvent<HTMLElement, Event>) => void;
+  onCanPlayCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void;
+  onCanPlayThrough?: (event: SyntheticEvent<HTMLElement, Event>) => void;
+  onCanPlayThroughCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void;
+  onChange?: (event: FormEvent<HTMLElement>) => void;
+  onChangeCapture?: (event: FormEvent<HTMLElement>) => void;
+  onClick?: (event: MouseEvent<HTMLElement, MouseEvent>) => void;
+  onClickCapture?: (event: MouseEvent<HTMLElement, MouseEvent>) => void;
+  onCompositionEnd?: (event: CompositionEvent<HTMLElement>) => void;
+  onCompositionEndCapture?: (event: CompositionEvent<HTMLElement>) => void;
+  onCompositionStart?: (event: CompositionEvent<HTMLElement>) => void;
+  onCompositionStartCapture?: (event: CompositionEvent<HTMLElement>) => void;
+  onCompositionUpdate?: (event: CompositionEvent<HTMLElement>) => void;
+  onCompositionUpdateCapture?: (event: CompositionEvent<HTMLElement>) => void;
+  onContextMenu?: (event: MouseEvent<HTMLElement, MouseEvent>) => void;
+  onContextMenuCapture?: (event: MouseEvent<HTMLElement, MouseEvent>) => void;
+  onCopy?: (event: ClipboardEvent<HTMLElement>) => void;
+  onCopyCapture?: (event: ClipboardEvent<HTMLElement>) => void;
+  onCut?: (event: ClipboardEvent<HTMLElement>) => void;
+  onCutCapture?: (event: ClipboardEvent<HTMLElement>) => void;
+  onDoubleClick?: (event: MouseEvent<HTMLElement, MouseEvent>) => void;
+  onDoubleClickCapture?: (event: MouseEvent<HTMLElement, MouseEvent>) => void;
+  onDrag?: (event: DragEvent<HTMLElement>) => void;
+  onDragCapture?: (event: DragEvent<HTMLElement>) => void;
+  onDragEnd?: (event: DragEvent<HTMLElement>) => void;
+  onDragEndCapture?: (event: DragEvent<HTMLElement>) => void;
+  onDragEnter?: (event: DragEvent<HTMLElement>) => void;
+  onDragEnterCapture?: (event: DragEvent<HTMLElement>) => void;
+  onDragExit?: (event: DragEvent<HTMLElement>) => void;
+  onDragExitCapture?: (event: DragEvent<HTMLElement>) => void;
+  onDragLeave?: (event: DragEvent<HTMLElement>) => void;
+  onDragLeaveCapture?: (event: DragEvent<HTMLElement>) => void;
+  onDragOver?: (event: DragEvent<HTMLElement>) => void;
+  onDragOverCapture?: (event: DragEvent<HTMLElement>) => void;
+  onDragStart?: (event: DragEvent<HTMLElement>) => void;
+  onDragStartCapture?: (event: DragEvent<HTMLElement>) => void;
+  onDrop?: (event: DragEvent<HTMLElement>) => void;
+  onDropCapture?: (event: DragEvent<HTMLElement>) => void;
+  onDurationChange?: (event: SyntheticEvent<HTMLElement, Event>) => void;
+  onDurationChangeCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void;
+  onEmptied?: (event: SyntheticEvent<HTMLElement, Event>) => void;
+  onEmptiedCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void;
+  onEncrypted?: (event: SyntheticEvent<HTMLElement, Event>) => void;
+  onEncryptedCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void;
+  onEnded?: (event: SyntheticEvent<HTMLElement, Event>) => void;
+  onEndedCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void;
+  onError?: (event: SyntheticEvent<HTMLElement, Event>) => void;
+  onErrorCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void;
+  onFocus?: (event: FocusEvent<HTMLElement>) => void;
+  onFocusCapture?: (event: FocusEvent<HTMLElement>) => void;
+  onGotPointerCapture?: (event: PointerEvent<HTMLElement>) => void;
+  onGotPointerCaptureCapture?: (event: PointerEvent<HTMLElement>) => void;
+  onInput?: (event: FormEvent<HTMLElement>) => void;
+  onInputCapture?: (event: FormEvent<HTMLElement>) => void;
+  onInvalid?: (event: FormEvent<HTMLElement>) => void;
+  onInvalidCapture?: (event: FormEvent<HTMLElement>) => void;
+  onKeyDown?: (event: KeyboardEvent<HTMLElement>) => void;
+  onKeyDownCapture?: (event: KeyboardEvent<HTMLElement>) => void;
+  onKeyPress?: (event: KeyboardEvent<HTMLElement>) => void;
+  onKeyPressCapture?: (event: KeyboardEvent<HTMLElement>) => void;
+  onKeyUp?: (event: KeyboardEvent<HTMLElement>) => void;
+  onKeyUpCapture?: (event: KeyboardEvent<HTMLElement>) => void;
+  onLoad?: (event: SyntheticEvent<HTMLElement, Event>) => void;
+  onLoadCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void;
+  onLoadStart?: (event: SyntheticEvent<HTMLElement, Event>) => void;
+  onLoadStartCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void;
+  onLoadedData?: (event: SyntheticEvent<HTMLElement, Event>) => void;
+  onLoadedDataCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void;
+  onLoadedMetadata?: (event: SyntheticEvent<HTMLElement, Event>) => void;
+  onLoadedMetadataCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void;
+  onLostPointerCapture?: (event: PointerEvent<HTMLElement>) => void;
+  onLostPointerCaptureCapture?: (event: PointerEvent<HTMLElement>) => void;
+  onMouseDown?: (event: MouseEvent<HTMLElement, MouseEvent>) => void;
+  onMouseDownCapture?: (event: MouseEvent<HTMLElement, MouseEvent>) => void;
+  onMouseEnter?: (event: MouseEvent<HTMLElement, MouseEvent>) => void;
+  onMouseLeave?: (event: MouseEvent<HTMLElement, MouseEvent>) => void;
+  onMouseMove?: (event: MouseEvent<HTMLElement, MouseEvent>) => void;
+  onMouseMoveCapture?: (event: MouseEvent<HTMLElement, MouseEvent>) => void;
+  onMouseOut?: (event: MouseEvent<HTMLElement, MouseEvent>) => void;
+  onMouseOutCapture?: (event: MouseEvent<HTMLElement, MouseEvent>) => void;
+  onMouseOver?: (event: MouseEvent<HTMLElement, MouseEvent>) => void;
+  onMouseOverCapture?: (event: MouseEvent<HTMLElement, MouseEvent>) => void;
+  onMouseUp?: (event: MouseEvent<HTMLElement, MouseEvent>) => void;
+  onMouseUpCapture?: (event: MouseEvent<HTMLElement, MouseEvent>) => void;
+  onPaste?: (event: ClipboardEvent<HTMLElement>) => void;
+  onPasteCapture?: (event: ClipboardEvent<HTMLElement>) => void;
+  onPause?: (event: SyntheticEvent<HTMLElement, Event>) => void;
+  onPauseCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void;
+  onPlay?: (event: SyntheticEvent<HTMLElement, Event>) => void;
+  onPlayCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void;
+  onPlaying?: (event: SyntheticEvent<HTMLElement, Event>) => void;
+  onPlayingCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void;
+  onPointerCancel?: (event: PointerEvent<HTMLElement>) => void;
+  onPointerCancelCapture?: (event: PointerEvent<HTMLElement>) => void;
+  onPointerDown?: (event: PointerEvent<HTMLElement>) => void;
+  onPointerDownCapture?: (event: PointerEvent<HTMLElement>) => void;
+  onPointerEnter?: (event: PointerEvent<HTMLElement>) => void;
+  onPointerEnterCapture?: (event: PointerEvent<HTMLElement>) => void;
+  onPointerLeave?: (event: PointerEvent<HTMLElement>) => void;
+  onPointerLeaveCapture?: (event: PointerEvent<HTMLElement>) => void;
+  onPointerMove?: (event: PointerEvent<HTMLElement>) => void;
+  onPointerMoveCapture?: (event: PointerEvent<HTMLElement>) => void;
+  onPointerOut?: (event: PointerEvent<HTMLElement>) => void;
+  onPointerOutCapture?: (event: PointerEvent<HTMLElement>) => void;
+  onPointerOver?: (event: PointerEvent<HTMLElement>) => void;
+  onPointerOverCapture?: (event: PointerEvent<HTMLElement>) => void;
+  onPointerUp?: (event: PointerEvent<HTMLElement>) => void;
+  onPointerUpCapture?: (event: PointerEvent<HTMLElement>) => void;
+  onProgress?: (event: SyntheticEvent<HTMLElement, Event>) => void;
+  onProgressCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void;
+  onRateChange?: (event: SyntheticEvent<HTMLElement, Event>) => void;
+  onRateChangeCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void;
+  onReset?: (event: FormEvent<HTMLElement>) => void;
+  onResetCapture?: (event: FormEvent<HTMLElement>) => void;
+  onScroll?: (event: UIEvent<HTMLElement>) => void;
+  onScrollCapture?: (event: UIEvent<HTMLElement>) => void;
+  onSeeked?: (event: SyntheticEvent<HTMLElement, Event>) => void;
+  onSeekedCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void;
+  onSeeking?: (event: SyntheticEvent<HTMLElement, Event>) => void;
+  onSeekingCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void;
+  onSelect?: (event: SyntheticEvent<HTMLElement, Event>) => void;
+  onSelectCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void;
+  onStalled?: (event: SyntheticEvent<HTMLElement, Event>) => void;
+  onStalledCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void;
+  onSubmit?: (event: FormEvent<HTMLElement>) => void;
+  onSubmitCapture?: (event: FormEvent<HTMLElement>) => void;
+  onSuspend?: (event: SyntheticEvent<HTMLElement, Event>) => void;
+  onSuspendCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void;
+  onTimeUpdate?: (event: SyntheticEvent<HTMLElement, Event>) => void;
+  onTimeUpdateCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void;
+  onTouchCancel?: (event: TouchEvent<HTMLElement>) => void;
+  onTouchCancelCapture?: (event: TouchEvent<HTMLElement>) => void;
+  onTouchEnd?: (event: TouchEvent<HTMLElement>) => void;
+  onTouchEndCapture?: (event: TouchEvent<HTMLElement>) => void;
+  onTouchMove?: (event: TouchEvent<HTMLElement>) => void;
+  onTouchMoveCapture?: (event: TouchEvent<HTMLElement>) => void;
+  onTouchStart?: (event: TouchEvent<HTMLElement>) => void;
+  onTouchStartCapture?: (event: TouchEvent<HTMLElement>) => void;
+  onTransitionEnd?: (event: TransitionEvent<HTMLElement>) => void;
+  onTransitionEndCapture?: (event: TransitionEvent<HTMLElement>) => void;
+  onVolumeChange?: (event: SyntheticEvent<HTMLElement, Event>) => void;
+  onVolumeChangeCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void;
+  onWaiting?: (event: SyntheticEvent<HTMLElement, Event>) => void;
+  onWaitingCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void;
+  onWheel?: (event: WheelEvent<HTMLElement>) => void;
+  onWheelCapture?: (event: WheelEvent<HTMLElement>) => void;
+  open?: boolean;
+  optimum?: number;
+  paddingBottom?: ResponsiveProp<
+    | "none"
+    | "xxsmall"
+    | "xsmall"
+    | "small"
+    | "medium"
+    | "large"
+    | "xlarge"
+    | "xxlarge"
+  >;
+  paddingLeft?: ResponsiveProp<
+    | "none"
+    | "xxsmall"
+    | "xsmall"
+    | "small"
+    | "medium"
+    | "large"
+    | "xlarge"
+    | "xxlarge"
+    | "gutter"
+  >;
+  paddingRight?: ResponsiveProp<
+    | "none"
+    | "xxsmall"
+    | "xsmall"
+    | "small"
+    | "medium"
+    | "large"
+    | "xlarge"
+    | "xxlarge"
+    | "gutter"
+  >;
+  paddingTop?: ResponsiveProp<
+    | "none"
+    | "xxsmall"
+    | "xsmall"
+    | "small"
+    | "medium"
+    | "large"
+    | "xlarge"
+    | "xxlarge"
+  >;
+  pattern?: string;
+  placeholder?: string;
+  playsInline?: boolean;
+  poster?: string;
+  prefix?: string;
+  preload?: string;
+  property?: string;
+  radioGroup?: string;
+  readOnly?: boolean;
+  ref?: 
+    | (instance: HTMLElement | null) => void
+    | RefObject<HTMLElement>;
+  rel?: string;
+  required?: boolean;
+  resource?: string;
+  results?: number;
+  reversed?: boolean;
+  role?: string;
+  rowSpan?: number;
+  rows?: number;
+  sandbox?: string;
+  scope?: string;
+  scoped?: boolean;
+  scrolling?: string;
+  seamless?: boolean;
+  security?: string;
+  selected?: boolean;
+  shape?: string;
+  size?: number;
+  sizes?: string;
+  slot?: string;
+  span?: number;
+  spellCheck?: boolean;
+  src?: string;
+  srcDoc?: string;
+  srcLang?: string;
+  srcSet?: string;
+  start?: number;
+  step?: 
+    | string
+    | number;
+  style?: {
+    KhtmlBoxAlign?: 
+      | "start"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "center"
+      | "stretch"
+      | "end"
+      | "baseline";
+    KhtmlBoxDirection?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "normal"
+      | "reverse";
+    KhtmlBoxFlex?: 
+      | number
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset";
+    KhtmlBoxFlexGroup?: 
+      | number
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset";
+    KhtmlBoxLines?: 
+      | "multiple"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "single";
+    KhtmlBoxOrdinalGroup?: 
+      | number
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset";
+    KhtmlBoxOrient?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "horizontal"
+      | "vertical"
+      | "block-axis"
+      | "inline-axis";
+    KhtmlBoxPack?: 
+      | "start"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "center"
+      | "end"
+      | "justify";
+    KhtmlLineBreak?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "normal"
+      | "auto"
+      | "strict"
+      | "loose";
+    KhtmlOpacity?: 
+      | number
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset";
+    KhtmlUserSelect?: 
+      | "contain"
+      | "all"
+      | "none"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "text"
+      | "auto"
+      | "-moz-none"
+      | "element";
+    MozAnimation?: 
+      | string
+      | number;
+    MozAnimationDelay?: string;
+    MozAnimationDirection?: string;
+    MozAnimationDuration?: string;
+    MozAnimationFillMode?: string;
+    MozAnimationIterationCount?: 
+      | string
+      | number;
+    MozAnimationName?: string;
+    MozAnimationPlayState?: string;
+    MozAnimationTimingFunction?: string;
+    MozAppearance?: 
+      | "none"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "button"
+      | "menuitem"
+      | "listbox"
+      | "button-bevel"
+      | "checkbox"
+      | "menulist"
+      | "menulist-button"
+      | "radio"
+      | "searchfield"
+      | "textfield"
+      | "-moz-mac-unified-toolbar"
+      | "-moz-win-borderless-glass"
+      | "-moz-win-browsertabbar-toolbox"
+      | "-moz-win-communications-toolbox"
+      | "-moz-win-communicationstext"
+      | "-moz-win-exclude-glass"
+      | "-moz-win-glass"
+      | "-moz-win-media-toolbox"
+      | "-moz-win-mediatext"
+      | "-moz-window-button-box"
+      | "-moz-window-button-box-maximized"
+      | "-moz-window-button-close"
+      | "-moz-window-button-maximize"
+      | "-moz-window-button-minimize"
+      | "-moz-window-button-restore"
+      | "-moz-window-frame-bottom"
+      | "-moz-window-frame-left"
+      | "-moz-window-frame-right"
+      | "-moz-window-titlebar"
+      | "-moz-window-titlebar-maximized"
+      | "button-arrow-down"
+      | "button-arrow-next"
+      | "button-arrow-previous"
+      | "button-arrow-up"
+      | "button-focus"
+      | "caret"
+      | "checkbox-container"
+      | "checkbox-label"
+      | "checkmenuitem"
+      | "dualbutton"
+      | "groupbox"
+      | "listitem"
+      | "menuarrow"
+      | "menubar"
+      | "menucheckbox"
+      | "menuimage"
+      | "menuitemtext"
+      | "menulist-text"
+      | "menulist-textfield"
+      | "menupopup"
+      | "menuradio"
+      | "menuseparator"
+      | "meterbar"
+      | "meterchunk"
+      | "progressbar"
+      | "progressbar-vertical"
+      | "progresschunk"
+      | "progresschunk-vertical"
+      | "radio-container"
+      | "radio-label"
+      | "radiomenuitem"
+      | "range"
+      | "range-thumb"
+      | "resizer"
+      | "resizerpanel"
+      | "scale-horizontal"
+      | "scale-vertical"
+      | "scalethumb-horizontal"
+      | "scalethumb-vertical"
+      | "scalethumbend"
+      | "scalethumbstart"
+      | "scalethumbtick"
+      | "scrollbarbutton-down"
+      | "scrollbarbutton-left"
+      | "scrollbarbutton-right"
+      | "scrollbarbutton-up"
+      | "scrollbarthumb-horizontal"
+      | "scrollbarthumb-vertical"
+      | "scrollbartrack-horizontal"
+      | "scrollbartrack-vertical"
+      | "separator"
+      | "sheet"
+      | "spinner"
+      | "spinner-downbutton"
+      | "spinner-textfield"
+      | "spinner-upbutton"
+      | "splitter"
+      | "statusbar"
+      | "statusbarpanel"
+      | "tab"
+      | "tab-scroll-arrow-back"
+      | "tab-scroll-arrow-forward"
+      | "tabpanel"
+      | "tabpanels"
+      | "textfield-multiline"
+      | "toolbar"
+      | "toolbarbutton"
+      | "toolbarbutton-dropdown"
+      | "toolbargripper"
+      | "toolbox"
+      | "tooltip"
+      | "treeheader"
+      | "treeheadercell"
+      | "treeheadersortarrow"
+      | "treeitem"
+      | "treeline"
+      | "treetwisty"
+      | "treetwistyopen"
+      | "treeview";
+    MozBackfaceVisibility?: 
+      | "hidden"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "visible";
+    MozBackgroundClip?: string;
+    MozBackgroundInlinePolicy?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "clone"
+      | "slice";
+    MozBackgroundOrigin?: string;
+    MozBackgroundSize?: 
+      | string
+      | number;
+    MozBinding?: string;
+    MozBorderBottomColors?: string;
+    MozBorderEndColor?: string;
+    MozBorderEndStyle?: 
+      | "hidden"
+      | "inset"
+      | "none"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "dashed"
+      | "dotted"
+      | "double"
+      | "groove"
+      | "outset"
+      | "ridge"
+      | "solid";
+    MozBorderEndWidth?: 
+      | string
+      | number;
+    MozBorderImage?: 
+      | string
+      | number;
+    MozBorderLeftColors?: string;
+    MozBorderRadius?: 
+      | string
+      | number;
+    MozBorderRadiusBottomleft?: 
+      | string
+      | number;
+    MozBorderRadiusBottomright?: 
+      | string
+      | number;
+    MozBorderRadiusTopleft?: 
+      | string
+      | number;
+    MozBorderRadiusTopright?: 
+      | string
+      | number;
+    MozBorderRightColors?: string;
+    MozBorderStartColor?: string;
+    MozBorderStartStyle?: 
+      | "hidden"
+      | "inset"
+      | "none"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "dashed"
+      | "dotted"
+      | "double"
+      | "groove"
+      | "outset"
+      | "ridge"
+      | "solid";
+    MozBorderTopColors?: string;
+    MozBoxAlign?: 
+      | "start"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "center"
+      | "stretch"
+      | "end"
+      | "baseline";
+    MozBoxDirection?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "normal"
+      | "reverse";
+    MozBoxFlex?: 
+      | number
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset";
+    MozBoxOrdinalGroup?: 
+      | number
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset";
+    MozBoxOrient?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "horizontal"
+      | "vertical"
+      | "block-axis"
+      | "inline-axis";
+    MozBoxPack?: 
+      | "start"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "center"
+      | "end"
+      | "justify";
+    MozBoxShadow?: string;
+    MozBoxSizing?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "border-box"
+      | "content-box";
+    MozColumnCount?: 
+      | number
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "auto";
+    MozColumnFill?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "auto"
+      | "balance"
+      | "balance-all";
+    MozColumnGap?: 
+      | string
+      | number;
+    MozColumnRule?: 
+      | string
+      | number;
+    MozColumnRuleColor?: string;
+    MozColumnRuleStyle?: string;
+    MozColumnRuleWidth?: 
+      | string
+      | number;
+    MozColumnWidth?: 
+      | string
+      | number;
+    MozColumns?: 
+      | string
+      | number;
+    MozContextProperties?: string;
+    MozFloatEdge?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "border-box"
+      | "content-box"
+      | "padding-box"
+      | "margin-box";
+    MozFontFeatureSettings?: string;
+    MozFontLanguageOverride?: string;
+    MozForceBrokenImageIcon?: 
+      | number
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset";
+    MozHyphens?: 
+      | "none"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "auto"
+      | "manual";
+    MozImageRegion?: string;
+    MozMarginEnd?: 
+      | string
+      | number;
+    MozMarginStart?: 
+      | string
+      | number;
+    MozOpacity?: 
+      | number
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset";
+    MozOrient?: 
+      | "block"
+      | "inline"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "horizontal"
+      | "vertical";
+    MozOutline?: 
+      | string
+      | number;
+    MozOutlineColor?: string;
+    MozOutlineRadius?: 
+      | string
+      | number;
+    MozOutlineRadiusBottomleft?: 
+      | string
+      | number;
+    MozOutlineRadiusBottomright?: 
+      | string
+      | number;
+    MozOutlineRadiusTopleft?: 
+      | string
+      | number;
+    MozOutlineRadiusTopright?: 
+      | string
+      | number;
+    MozOutlineStyle?: string;
+    MozOutlineWidth?: 
+      | string
+      | number;
+    MozPaddingEnd?: 
+      | string
+      | number;
+    MozPaddingStart?: 
+      | string
+      | number;
+    MozPerspective?: 
+      | string
+      | number;
+    MozPerspectiveOrigin?: 
+      | string
+      | number;
+    MozStackSizing?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "ignore"
+      | "stretch-to-fit";
+    MozTabSize?: 
+      | string
+      | number;
+    MozTextAlignLast?: 
+      | "start"
+      | "left"
+      | "right"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "center"
+      | "end"
+      | "auto"
+      | "justify";
+    MozTextBlink?: 
+      | "none"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "blink";
+    MozTextDecorationColor?: string;
+    MozTextDecorationLine?: string;
+    MozTextDecorationStyle?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "dashed"
+      | "dotted"
+      | "double"
+      | "solid"
+      | "wavy";
+    MozTextSizeAdjust?: string;
+    MozTransformOrigin?: 
+      | string
+      | number;
+    MozTransformStyle?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "flat"
+      | "preserve-3d";
+    MozTransition?: string;
+    MozTransitionDelay?: string;
+    MozTransitionDuration?: string;
+    MozTransitionProperty?: string;
+    MozTransitionTimingFunction?: string;
+    MozUserFocus?: 
+      | "none"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "normal"
+      | "ignore"
+      | "select-after"
+      | "select-all"
+      | "select-before"
+      | "select-menu"
+      | "select-same";
+    MozUserInput?: 
+      | "disabled"
+      | "none"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "auto"
+      | "enabled";
+    MozUserModify?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "read-only"
+      | "read-write"
+      | "write-only";
+    MozUserSelect?: 
+      | "contain"
+      | "all"
+      | "none"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "text"
+      | "auto"
+      | "-moz-none"
+      | "element";
+    MozWindowDragging?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "drag"
+      | "no-drag";
+    MozWindowShadow?: 
+      | "default"
+      | "none"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "menu"
+      | "sheet"
+      | "tooltip";
+    OAnimation?: 
+      | string
+      | number;
+    OAnimationDelay?: string;
+    OAnimationDirection?: string;
+    OAnimationDuration?: string;
+    OAnimationFillMode?: string;
+    OAnimationIterationCount?: 
+      | string
+      | number;
+    OAnimationName?: string;
+    OAnimationPlayState?: string;
+    OAnimationTimingFunction?: string;
+    OBackgroundSize?: 
+      | string
+      | number;
+    OBorderImage?: 
+      | string
+      | number;
+    OObjectFit?: 
+      | "contain"
+      | "fill"
+      | "none"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "cover"
+      | "scale-down";
+    OObjectPosition?: 
+      | string
+      | number;
+    OTabSize?: 
+      | string
+      | number;
+    OTextOverflow?: string;
+    OTransform?: string;
+    OTransformOrigin?: 
+      | string
+      | number;
+    OTransition?: string;
+    OTransitionDelay?: string;
+    OTransitionDuration?: string;
+    OTransitionProperty?: string;
+    OTransitionTimingFunction?: string;
+    WebkitAlignContent?: string;
+    WebkitAlignItems?: string;
+    WebkitAlignSelf?: string;
+    WebkitAnimation?: 
+      | string
+      | number;
+    WebkitAnimationDelay?: string;
+    WebkitAnimationDirection?: string;
+    WebkitAnimationDuration?: string;
+    WebkitAnimationFillMode?: string;
+    WebkitAnimationIterationCount?: 
+      | string
+      | number;
+    WebkitAnimationName?: string;
+    WebkitAnimationPlayState?: string;
+    WebkitAnimationTimingFunction?: string;
+    WebkitAppearance?: 
+      | "none"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "button"
+      | "meter"
+      | "textarea"
+      | "listbox"
+      | "button-bevel"
+      | "checkbox"
+      | "menulist"
+      | "menulist-button"
+      | "progress-bar"
+      | "push-button"
+      | "radio"
+      | "searchfield"
+      | "slider-horizontal"
+      | "square-button"
+      | "textfield"
+      | "caret"
+      | "listitem"
+      | "menulist-text"
+      | "menulist-textfield"
+      | "default-button"
+      | "inner-spin-button"
+      | "media-controls-background"
+      | "media-controls-fullscreen-background"
+      | "media-current-time-display"
+      | "media-enter-fullscreen-button"
+      | "media-exit-fullscreen-button"
+      | "media-fullscreen-button"
+      | "media-mute-button"
+      | "media-overlay-play-button"
+      | "media-play-button"
+      | "media-seek-back-button"
+      | "media-seek-forward-button"
+      | "media-slider"
+      | "media-sliderthumb"
+      | "media-time-remaining-display"
+      | "media-toggle-closed-captions-button"
+      | "media-volume-slider"
+      | "media-volume-slider-container"
+      | "media-volume-sliderthumb"
+      | "progress-bar-value"
+      | "searchfield-cancel-button"
+      | "searchfield-decoration"
+      | "searchfield-results-button"
+      | "searchfield-results-decoration"
+      | "slider-vertical"
+      | "sliderthumb-horizontal"
+      | "sliderthumb-vertical";
+    WebkitBackdropFilter?: string;
+    WebkitBackfaceVisibility?: 
+      | "hidden"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "visible";
+    WebkitBackgroundClip?: string;
+    WebkitBackgroundOrigin?: string;
+    WebkitBackgroundSize?: 
+      | string
+      | number;
+    WebkitBorderBefore?: 
+      | string
+      | number;
+    WebkitBorderBeforeColor?: string;
+    WebkitBorderBeforeStyle?: string;
+    WebkitBorderBeforeWidth?: 
+      | string
+      | number;
+    WebkitBorderBottomLeftRadius?: 
+      | string
+      | number;
+    WebkitBorderBottomRightRadius?: 
+      | string
+      | number;
+    WebkitBorderImage?: 
+      | string
+      | number;
+    WebkitBorderImageSlice?: 
+      | string
+      | number;
+    WebkitBorderRadius?: 
+      | string
+      | number;
+    WebkitBorderTopLeftRadius?: 
+      | string
+      | number;
+    WebkitBorderTopRightRadius?: 
+      | string
+      | number;
+    WebkitBoxAlign?: 
+      | "start"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "center"
+      | "stretch"
+      | "end"
+      | "baseline";
+    WebkitBoxDecorationBreak?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "clone"
+      | "slice";
+    WebkitBoxDirection?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "normal"
+      | "reverse";
+    WebkitBoxFlex?: 
+      | number
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset";
+    WebkitBoxFlexGroup?: 
+      | number
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset";
+    WebkitBoxLines?: 
+      | "multiple"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "single";
+    WebkitBoxOrdinalGroup?: 
+      | number
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset";
+    WebkitBoxOrient?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "horizontal"
+      | "vertical"
+      | "block-axis"
+      | "inline-axis";
+    WebkitBoxPack?: 
+      | "start"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "center"
+      | "end"
+      | "justify";
+    WebkitBoxReflect?: 
+      | string
+      | number;
+    WebkitBoxShadow?: string;
+    WebkitBoxSizing?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "border-box"
+      | "content-box";
+    WebkitClipPath?: string;
+    WebkitColorAdjust?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "economy"
+      | "exact";
+    WebkitColumnCount?: 
+      | number
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "auto";
+    WebkitColumnGap?: 
+      | string
+      | number;
+    WebkitColumnRule?: 
+      | string
+      | number;
+    WebkitColumnRuleColor?: string;
+    WebkitColumnRuleStyle?: string;
+    WebkitColumnRuleWidth?: 
+      | string
+      | number;
+    WebkitColumnSpan?: 
+      | "all"
+      | "none"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset";
+    WebkitColumnWidth?: 
+      | string
+      | number;
+    WebkitColumns?: 
+      | string
+      | number;
+    WebkitFilter?: string;
+    WebkitFlex?: 
+      | string
+      | number;
+    WebkitFlexBasis?: 
+      | string
+      | number;
+    WebkitFlexDirection?: 
+      | "row"
+      | "column"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "column-reverse"
+      | "row-reverse";
+    WebkitFlexFlow?: string;
+    WebkitFlexGrow?: 
+      | number
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset";
+    WebkitFlexShrink?: 
+      | number
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset";
+    WebkitFlexWrap?: 
+      | "wrap"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "nowrap"
+      | "wrap-reverse";
+    WebkitFontFeatureSettings?: string;
+    WebkitFontKerning?: 
+      | "none"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "normal"
+      | "auto";
+    WebkitFontVariantLigatures?: string;
+    WebkitHyphens?: 
+      | "none"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "auto"
+      | "manual";
+    WebkitJustifyContent?: string;
+    WebkitLineBreak?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "normal"
+      | "auto"
+      | "strict"
+      | "loose";
+    WebkitLineClamp?: 
+      | number
+      | "none"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset";
+    WebkitMarginEnd?: 
+      | string
+      | number;
+    WebkitMarginStart?: 
+      | string
+      | number;
+    WebkitMask?: 
+      | string
+      | number;
+    WebkitMaskAttachment?: string;
+    WebkitMaskClip?: string;
+    WebkitMaskComposite?: string;
+    WebkitMaskImage?: string;
+    WebkitMaskOrigin?: string;
+    WebkitMaskPosition?: 
+      | string
+      | number;
+    WebkitMaskPositionX?: 
+      | string
+      | number;
+    WebkitMaskPositionY?: 
+      | string
+      | number;
+    WebkitMaskRepeat?: string;
+    WebkitMaskRepeatX?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "no-repeat"
+      | "repeat"
+      | "round"
+      | "space";
+    WebkitMaskRepeatY?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "no-repeat"
+      | "repeat"
+      | "round"
+      | "space";
+    WebkitMaskSize?: 
+      | string
+      | number;
+    WebkitMaxInlineSize?: 
+      | string
+      | number;
+    WebkitOrder?: 
+      | number
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset";
+    WebkitOverflowScrolling?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "auto"
+      | "touch";
+    WebkitPaddingEnd?: 
+      | string
+      | number;
+    WebkitPaddingStart?: 
+      | string
+      | number;
+    WebkitPerspective?: 
+      | string
+      | number;
+    WebkitPerspectiveOrigin?: 
+      | string
+      | number;
+    WebkitScrollSnapPointsX?: string;
+    WebkitScrollSnapPointsY?: string;
+    WebkitScrollSnapType?: string;
+    WebkitShapeMargin?: 
+      | string
+      | number;
+    WebkitTapHighlightColor?: string;
+    WebkitTextCombine?: string;
+    WebkitTextDecorationColor?: string;
+    WebkitTextDecorationLine?: string;
+    WebkitTextDecorationSkip?: string;
+    WebkitTextDecorationStyle?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "dashed"
+      | "dotted"
+      | "double"
+      | "solid"
+      | "wavy";
+    WebkitTextEmphasis?: string;
+    WebkitTextEmphasisColor?: string;
+    WebkitTextEmphasisPosition?: string;
+    WebkitTextEmphasisStyle?: string;
+    WebkitTextFillColor?: string;
+    WebkitTextOrientation?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "mixed"
+      | "sideways"
+      | "upright";
+    WebkitTextSizeAdjust?: string;
+    WebkitTextStroke?: 
+      | string
+      | number;
+    WebkitTextStrokeColor?: string;
+    WebkitTextStrokeWidth?: 
+      | string
+      | number;
+    WebkitTouchCallout?: 
+      | "default"
+      | "none"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset";
+    WebkitTransform?: string;
+    WebkitTransformOrigin?: 
+      | string
+      | number;
+    WebkitTransformStyle?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "flat"
+      | "preserve-3d";
+    WebkitTransition?: string;
+    WebkitTransitionDelay?: string;
+    WebkitTransitionDuration?: string;
+    WebkitTransitionProperty?: string;
+    WebkitTransitionTimingFunction?: string;
+    WebkitUserModify?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "read-only"
+      | "read-write"
+      | "read-write-plaintext-only";
+    WebkitUserSelect?: 
+      | "contain"
+      | "all"
+      | "none"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "text"
+      | "auto"
+      | "-moz-none"
+      | "element";
+    WebkitWritingMode?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "horizontal-tb"
+      | "sideways-lr"
+      | "sideways-rl"
+      | "vertical-lr"
+      | "vertical-rl";
+    WebkitmaskSize?: 
+      | string
+      | number;
+    alignContent?: string;
+    alignItems?: string;
+    alignSelf?: string;
+    alignmentBaseline?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "baseline"
+      | "auto"
+      | "middle"
+      | "after-edge"
+      | "alphabetic"
+      | "before-edge"
+      | "central"
+      | "hanging"
+      | "ideographic"
+      | "mathematical"
+      | "text-after-edge"
+      | "text-before-edge";
+    all?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset";
+    animation?: 
+      | string
+      | number;
+    animationDelay?: string;
+    animationDirection?: string;
+    animationDuration?: string;
+    animationFillMode?: string;
+    animationIterationCount?: 
+      | string
+      | number;
+    animationName?: string;
+    animationPlayState?: string;
+    animationTimingFunction?: string;
+    appearance?: 
+      | "none"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "button"
+      | "meter"
+      | "textarea"
+      | "listbox"
+      | "button-bevel"
+      | "checkbox"
+      | "menulist"
+      | "menulist-button"
+      | "progress-bar"
+      | "push-button"
+      | "radio"
+      | "searchfield"
+      | "slider-horizontal"
+      | "square-button"
+      | "textfield";
+    backdropFilter?: string;
+    backfaceVisibility?: 
+      | "hidden"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "visible";
+    background?: 
+      | string
+      | number;
+    backgroundAttachment?: string;
+    backgroundBlendMode?: string;
+    backgroundClip?: string;
+    backgroundColor?: string;
+    backgroundImage?: string;
+    backgroundOrigin?: string;
+    backgroundPosition?: 
+      | string
+      | number;
+    backgroundPositionX?: 
+      | string
+      | number;
+    backgroundPositionY?: 
+      | string
+      | number;
+    backgroundRepeat?: string;
+    backgroundSize?: 
+      | string
+      | number;
+    baselineShift?: 
+      | string
+      | number;
+    blockOverflow?: string;
+    blockSize?: 
+      | string
+      | number;
+    border?: 
+      | string
+      | number;
+    borderBlock?: 
+      | string
+      | number;
+    borderBlockColor?: string;
+    borderBlockEnd?: 
+      | string
+      | number;
+    borderBlockEndColor?: string;
+    borderBlockEndStyle?: 
+      | "hidden"
+      | "inset"
+      | "none"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "dashed"
+      | "dotted"
+      | "double"
+      | "groove"
+      | "outset"
+      | "ridge"
+      | "solid";
+    borderBlockEndWidth?: 
+      | string
+      | number;
+    borderBlockStart?: 
+      | string
+      | number;
+    borderBlockStartColor?: string;
+    borderBlockStartStyle?: 
+      | "hidden"
+      | "inset"
+      | "none"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "dashed"
+      | "dotted"
+      | "double"
+      | "groove"
+      | "outset"
+      | "ridge"
+      | "solid";
+    borderBlockStartWidth?: 
+      | string
+      | number;
+    borderBlockStyle?: 
+      | "hidden"
+      | "inset"
+      | "none"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "dashed"
+      | "dotted"
+      | "double"
+      | "groove"
+      | "outset"
+      | "ridge"
+      | "solid";
+    borderBlockWidth?: 
+      | string
+      | number;
+    borderBottom?: 
+      | string
+      | number;
+    borderBottomColor?: string;
+    borderBottomLeftRadius?: 
+      | string
+      | number;
+    borderBottomRightRadius?: 
+      | string
+      | number;
+    borderBottomStyle?: 
+      | "hidden"
+      | "inset"
+      | "none"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "dashed"
+      | "dotted"
+      | "double"
+      | "groove"
+      | "outset"
+      | "ridge"
+      | "solid";
+    borderBottomWidth?: 
+      | string
+      | number;
+    borderCollapse?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "collapse"
+      | "separate";
+    borderColor?: string;
+    borderEndEndRadius?: 
+      | string
+      | number;
+    borderEndStartRadius?: 
+      | string
+      | number;
+    borderImage?: 
+      | string
+      | number;
+    borderImageOutset?: 
+      | string
+      | number;
+    borderImageRepeat?: string;
+    borderImageSlice?: 
+      | string
+      | number;
+    borderImageSource?: string;
+    borderImageWidth?: 
+      | string
+      | number;
+    borderInline?: 
+      | string
+      | number;
+    borderInlineColor?: string;
+    borderInlineEnd?: 
+      | string
+      | number;
+    borderInlineEndColor?: string;
+    borderInlineEndStyle?: 
+      | "hidden"
+      | "inset"
+      | "none"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "dashed"
+      | "dotted"
+      | "double"
+      | "groove"
+      | "outset"
+      | "ridge"
+      | "solid";
+    borderInlineEndWidth?: 
+      | string
+      | number;
+    borderInlineStart?: 
+      | string
+      | number;
+    borderInlineStartColor?: string;
+    borderInlineStartStyle?: 
+      | "hidden"
+      | "inset"
+      | "none"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "dashed"
+      | "dotted"
+      | "double"
+      | "groove"
+      | "outset"
+      | "ridge"
+      | "solid";
+    borderInlineStartWidth?: 
+      | string
+      | number;
+    borderInlineStyle?: 
+      | "hidden"
+      | "inset"
+      | "none"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "dashed"
+      | "dotted"
+      | "double"
+      | "groove"
+      | "outset"
+      | "ridge"
+      | "solid";
+    borderInlineWidth?: 
+      | string
+      | number;
+    borderLeft?: 
+      | string
+      | number;
+    borderLeftColor?: string;
+    borderLeftStyle?: 
+      | "hidden"
+      | "inset"
+      | "none"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "dashed"
+      | "dotted"
+      | "double"
+      | "groove"
+      | "outset"
+      | "ridge"
+      | "solid";
+    borderLeftWidth?: 
+      | string
+      | number;
+    borderRadius?: 
+      | string
+      | number;
+    borderRight?: 
+      | string
+      | number;
+    borderRightColor?: string;
+    borderRightStyle?: 
+      | "hidden"
+      | "inset"
+      | "none"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "dashed"
+      | "dotted"
+      | "double"
+      | "groove"
+      | "outset"
+      | "ridge"
+      | "solid";
+    borderRightWidth?: 
+      | string
+      | number;
+    borderSpacing?: 
+      | string
+      | number;
+    borderStartEndRadius?: 
+      | string
+      | number;
+    borderStartStartRadius?: 
+      | string
+      | number;
+    borderStyle?: string;
+    borderTop?: 
+      | string
+      | number;
+    borderTopColor?: string;
+    borderTopLeftRadius?: 
+      | string
+      | number;
+    borderTopRightRadius?: 
+      | string
+      | number;
+    borderTopStyle?: 
+      | "hidden"
+      | "inset"
+      | "none"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "dashed"
+      | "dotted"
+      | "double"
+      | "groove"
+      | "outset"
+      | "ridge"
+      | "solid";
+    borderTopWidth?: 
+      | string
+      | number;
+    borderWidth?: 
+      | string
+      | number;
+    bottom?: 
+      | string
+      | number;
+    boxAlign?: 
+      | "start"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "center"
+      | "stretch"
+      | "end"
+      | "baseline";
+    boxDecorationBreak?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "clone"
+      | "slice";
+    boxDirection?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "normal"
+      | "reverse";
+    boxFlex?: 
+      | number
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset";
+    boxFlexGroup?: 
+      | number
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset";
+    boxLines?: 
+      | "multiple"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "single";
+    boxOrdinalGroup?: 
+      | number
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset";
+    boxOrient?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "horizontal"
+      | "vertical"
+      | "block-axis"
+      | "inline-axis";
+    boxPack?: 
+      | "start"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "center"
+      | "end"
+      | "justify";
+    boxShadow?: string;
+    boxSizing?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "border-box"
+      | "content-box";
+    breakAfter?: 
+      | "left"
+      | "right"
+      | "all"
+      | "column"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "page"
+      | "auto"
+      | "always"
+      | "avoid"
+      | "avoid-column"
+      | "avoid-page"
+      | "avoid-region"
+      | "recto"
+      | "region"
+      | "verso";
+    breakBefore?: 
+      | "left"
+      | "right"
+      | "all"
+      | "column"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "page"
+      | "auto"
+      | "always"
+      | "avoid"
+      | "avoid-column"
+      | "avoid-page"
+      | "avoid-region"
+      | "recto"
+      | "region"
+      | "verso";
+    breakInside?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "auto"
+      | "avoid"
+      | "avoid-column"
+      | "avoid-page"
+      | "avoid-region";
+    captionSide?: 
+      | "bottom"
+      | "top"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "block-end"
+      | "block-start"
+      | "inline-end"
+      | "inline-start";
+    caretColor?: string;
+    clear?: 
+      | "left"
+      | "right"
+      | "none"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "both"
+      | "inline-end"
+      | "inline-start";
+    clip?: string;
+    clipPath?: string;
+    clipRule?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "evenodd"
+      | "nonzero";
+    color?: string;
+    colorAdjust?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "economy"
+      | "exact";
+    colorInterpolation?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "auto"
+      | "linearRGB"
+      | "sRGB";
+    colorRendering?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "auto"
+      | "optimizeSpeed"
+      | "optimizeQuality";
+    columnCount?: 
+      | number
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "auto";
+    columnFill?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "auto"
+      | "balance"
+      | "balance-all";
+    columnGap?: 
+      | string
+      | number;
+    columnRule?: 
+      | string
+      | number;
+    columnRuleColor?: string;
+    columnRuleStyle?: string;
+    columnRuleWidth?: 
+      | string
+      | number;
+    columnSpan?: 
+      | "all"
+      | "none"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset";
+    columnWidth?: 
+      | string
+      | number;
+    columns?: 
+      | string
+      | number;
+    contain?: string;
+    content?: string;
+    counterIncrement?: string;
+    counterReset?: string;
+    cursor?: string;
+    direction?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "ltr"
+      | "rtl";
+    display?: string;
+    dominantBaseline?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "auto"
+      | "middle"
+      | "alphabetic"
+      | "central"
+      | "hanging"
+      | "ideographic"
+      | "mathematical"
+      | "text-after-edge"
+      | "text-before-edge"
+      | "no-change"
+      | "reset-size"
+      | "use-script";
+    emptyCells?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "hide"
+      | "show";
+    fill?: string;
+    fillOpacity?: 
+      | number
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset";
+    fillRule?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "evenodd"
+      | "nonzero";
+    filter?: string;
+    flex?: 
+      | string
+      | number;
+    flexBasis?: 
+      | string
+      | number;
+    flexDirection?: 
+      | "row"
+      | "column"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "column-reverse"
+      | "row-reverse";
+    flexFlow?: string;
+    flexGrow?: 
+      | number
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset";
+    flexShrink?: 
+      | number
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset";
+    flexWrap?: 
+      | "wrap"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "nowrap"
+      | "wrap-reverse";
+    float?: 
+      | "left"
+      | "right"
+      | "none"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "inline-end"
+      | "inline-start";
+    floodColor?: string;
+    floodOpacity?: 
+      | number
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset";
+    font?: string;
+    fontFamily?: string;
+    fontFeatureSettings?: string;
+    fontKerning?: 
+      | "none"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "normal"
+      | "auto";
+    fontLanguageOverride?: string;
+    fontOpticalSizing?: 
+      | "none"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "auto";
+    fontSize?: 
+      | string
+      | number;
+    fontSizeAdjust?: 
+      | number
+      | "none"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset";
+    fontStretch?: string;
+    fontStyle?: string;
+    fontSynthesis?: string;
+    fontVariant?: string;
+    fontVariantAlternates?: string;
+    fontVariantCaps?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "normal"
+      | "all-petite-caps"
+      | "all-small-caps"
+      | "petite-caps"
+      | "small-caps"
+      | "titling-caps"
+      | "unicase";
+    fontVariantEastAsian?: string;
+    fontVariantLigatures?: string;
+    fontVariantNumeric?: string;
+    fontVariantPosition?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "sub"
+      | "normal"
+      | "super";
+    fontVariationSettings?: string;
+    fontWeight?: 
+      | number
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "normal"
+      | "bold"
+      | "bolder"
+      | "lighter";
+    gap?: 
+      | string
+      | number;
+    glyphOrientationVertical?: 
+      | string
+      | number;
+    grid?: string;
+    gridArea?: 
+      | string
+      | number;
+    gridAutoColumns?: 
+      | string
+      | number;
+    gridAutoFlow?: string;
+    gridAutoRows?: 
+      | string
+      | number;
+    gridColumn?: 
+      | string
+      | number;
+    gridColumnEnd?: 
+      | string
+      | number;
+    gridColumnGap?: 
+      | string
+      | number;
+    gridColumnStart?: 
+      | string
+      | number;
+    gridGap?: 
+      | string
+      | number;
+    gridRow?: 
+      | string
+      | number;
+    gridRowEnd?: 
+      | string
+      | number;
+    gridRowGap?: 
+      | string
+      | number;
+    gridRowStart?: 
+      | string
+      | number;
+    gridTemplate?: string;
+    gridTemplateAreas?: string;
+    gridTemplateColumns?: 
+      | string
+      | number;
+    gridTemplateRows?: 
+      | string
+      | number;
+    hangingPunctuation?: string;
+    height?: 
+      | string
+      | number;
+    hyphens?: 
+      | "none"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "auto"
+      | "manual";
+    imageOrientation?: string;
+    imageRendering?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "auto"
+      | "-moz-crisp-edges"
+      | "-o-crisp-edges"
+      | "-webkit-optimize-contrast"
+      | "crisp-edges"
+      | "pixelated";
+    imageResolution?: string;
+    imeMode?: 
+      | "disabled"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "normal"
+      | "auto"
+      | "active"
+      | "inactive";
+    initialLetter?: 
+      | string
+      | number;
+    inlineSize?: 
+      | string
+      | number;
+    inset?: 
+      | string
+      | number;
+    insetBlock?: 
+      | string
+      | number;
+    insetBlockEnd?: 
+      | string
+      | number;
+    insetBlockStart?: 
+      | string
+      | number;
+    insetInline?: 
+      | string
+      | number;
+    insetInlineEnd?: 
+      | string
+      | number;
+    insetInlineStart?: 
+      | string
+      | number;
+    isolation?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "auto"
+      | "isolate";
+    justifyContent?: string;
+    justifyItems?: string;
+    justifySelf?: string;
+    left?: 
+      | string
+      | number;
+    letterSpacing?: 
+      | string
+      | number;
+    lightingColor?: string;
+    lineBreak?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "normal"
+      | "auto"
+      | "strict"
+      | "loose";
+    lineClamp?: 
+      | number
+      | "none"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset";
+    lineHeight?: 
+      | string
+      | number;
+    lineHeightStep?: 
+      | string
+      | number;
+    listStyle?: string;
+    listStyleImage?: string;
+    listStylePosition?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "inside"
+      | "outside";
+    listStyleType?: string;
+    margin?: 
+      | string
+      | number;
+    marginBlock?: 
+      | string
+      | number;
+    marginBlockEnd?: 
+      | string
+      | number;
+    marginBlockStart?: 
+      | string
+      | number;
+    marginBottom?: 
+      | string
+      | number;
+    marginInline?: 
+      | string
+      | number;
+    marginInlineEnd?: 
+      | string
+      | number;
+    marginInlineStart?: 
+      | string
+      | number;
+    marginLeft?: 
+      | string
+      | number;
+    marginRight?: 
+      | string
+      | number;
+    marginTop?: 
+      | string
+      | number;
+    marker?: string;
+    markerEnd?: string;
+    markerMid?: string;
+    markerStart?: string;
+    mask?: 
+      | string
+      | number;
+    maskBorder?: 
+      | string
+      | number;
+    maskBorderMode?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "alpha"
+      | "luminance";
+    maskBorderOutset?: 
+      | string
+      | number;
+    maskBorderRepeat?: string;
+    maskBorderSlice?: 
+      | string
+      | number;
+    maskBorderSource?: string;
+    maskBorderWidth?: 
+      | string
+      | number;
+    maskClip?: string;
+    maskComposite?: string;
+    maskImage?: string;
+    maskMode?: string;
+    maskOrigin?: string;
+    maskPosition?: 
+      | string
+      | number;
+    maskRepeat?: string;
+    maskSize?: 
+      | string
+      | number;
+    maskType?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "alpha"
+      | "luminance";
+    maxBlockSize?: 
+      | string
+      | number;
+    maxHeight?: 
+      | string
+      | number;
+    maxInlineSize?: 
+      | string
+      | number;
+    maxLines?: 
+      | number
+      | "none"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset";
+    maxWidth?: 
+      | string
+      | number;
+    minBlockSize?: 
+      | string
+      | number;
+    minHeight?: 
+      | string
+      | number;
+    minInlineSize?: 
+      | string
+      | number;
+    minWidth?: 
+      | string
+      | number;
+    mixBlendMode?: 
+      | "color"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "hue"
+      | "saturation"
+      | "normal"
+      | "color-burn"
+      | "color-dodge"
+      | "darken"
+      | "difference"
+      | "exclusion"
+      | "hard-light"
+      | "lighten"
+      | "luminosity"
+      | "multiply"
+      | "overlay"
+      | "screen"
+      | "soft-light";
+    motion?: 
+      | string
+      | number;
+    motionDistance?: 
+      | string
+      | number;
+    motionPath?: string;
+    motionRotation?: string;
+    msAccelerator?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "false"
+      | "true";
+    msAlignSelf?: string;
+    msBlockProgression?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "bt"
+      | "lr"
+      | "rl"
+      | "tb";
+    msContentZoomChaining?: 
+      | "none"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "chained";
+    msContentZoomLimit?: string;
+    msContentZoomLimitMax?: string;
+    msContentZoomLimitMin?: string;
+    msContentZoomSnap?: string;
+    msContentZoomSnapPoints?: string;
+    msContentZoomSnapType?: 
+      | "none"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "mandatory"
+      | "proximity";
+    msContentZooming?: 
+      | "zoom"
+      | "none"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset";
+    msFilter?: string;
+    msFlex?: 
+      | string
+      | number;
+    msFlexDirection?: 
+      | "row"
+      | "column"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "column-reverse"
+      | "row-reverse";
+    msFlexPositive?: 
+      | number
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset";
+    msFlowFrom?: string;
+    msFlowInto?: string;
+    msGridColumns?: 
+      | string
+      | number;
+    msGridRows?: 
+      | string
+      | number;
+    msHighContrastAdjust?: 
+      | "none"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "auto";
+    msHyphenateLimitChars?: 
+      | string
+      | number;
+    msHyphenateLimitLines?: 
+      | number
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "no-limit";
+    msHyphenateLimitZone?: 
+      | string
+      | number;
+    msHyphens?: 
+      | "none"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "auto"
+      | "manual";
+    msImeAlign?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "auto"
+      | "after";
+    msImeMode?: 
+      | "disabled"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "normal"
+      | "auto"
+      | "active"
+      | "inactive";
+    msLineBreak?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "normal"
+      | "auto"
+      | "strict"
+      | "loose";
+    msOrder?: 
+      | number
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset";
+    msOverflowStyle?: 
+      | "none"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "auto"
+      | "-ms-autohiding-scrollbar"
+      | "scrollbar";
+    msOverflowX?: 
+      | "hidden"
+      | "clip"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "scroll"
+      | "auto"
+      | "visible";
+    msOverflowY?: 
+      | "hidden"
+      | "clip"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "scroll"
+      | "auto"
+      | "visible";
+    msScrollChaining?: 
+      | "none"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "chained";
+    msScrollLimit?: string;
+    msScrollLimitXMax?: 
+      | string
+      | number;
+    msScrollLimitXMin?: 
+      | string
+      | number;
+    msScrollLimitYMax?: 
+      | string
+      | number;
+    msScrollLimitYMin?: 
+      | string
+      | number;
+    msScrollRails?: 
+      | "none"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "railed";
+    msScrollSnapPointsX?: string;
+    msScrollSnapPointsY?: string;
+    msScrollSnapType?: 
+      | "none"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "mandatory"
+      | "proximity";
+    msScrollSnapX?: string;
+    msScrollSnapY?: string;
+    msScrollTranslation?: 
+      | "none"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "vertical-to-horizontal";
+    msScrollbar3dlightColor?: string;
+    msScrollbarArrowColor?: string;
+    msScrollbarBaseColor?: string;
+    msScrollbarDarkshadowColor?: string;
+    msScrollbarFaceColor?: string;
+    msScrollbarHighlightColor?: string;
+    msScrollbarShadowColor?: string;
+    msScrollbarTrackColor?: string;
+    msTextAutospace?: 
+      | "none"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "ideograph-alpha"
+      | "ideograph-numeric"
+      | "ideograph-parenthesis"
+      | "ideograph-space";
+    msTextCombineHorizontal?: string;
+    msTextOverflow?: string;
+    msTextSizeAdjust?: string;
+    msTouchAction?: string;
+    msTouchSelect?: 
+      | "none"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "grippers";
+    msTransform?: string;
+    msTransformOrigin?: 
+      | string
+      | number;
+    msUserSelect?: 
+      | "none"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "text"
+      | "element";
+    msWordBreak?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "normal"
+      | "break-word"
+      | "break-all"
+      | "keep-all";
+    msWrapFlow?: 
+      | "start"
+      | "clear"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "both"
+      | "end"
+      | "auto"
+      | "maximum";
+    msWrapMargin?: 
+      | string
+      | number;
+    msWrapThrough?: 
+      | "wrap"
+      | "none"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset";
+    msWritingMode?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "horizontal-tb"
+      | "sideways-lr"
+      | "sideways-rl"
+      | "vertical-lr"
+      | "vertical-rl";
+    objectFit?: 
+      | "contain"
+      | "fill"
+      | "none"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "cover"
+      | "scale-down";
+    objectPosition?: 
+      | string
+      | number;
+    offset?: 
+      | string
+      | number;
+    offsetAnchor?: 
+      | string
+      | number;
+    offsetBlock?: 
+      | string
+      | number;
+    offsetBlockEnd?: 
+      | string
+      | number;
+    offsetBlockStart?: 
+      | string
+      | number;
+    offsetDistance?: 
+      | string
+      | number;
+    offsetInline?: 
+      | string
+      | number;
+    offsetInlineEnd?: 
+      | string
+      | number;
+    offsetInlineStart?: 
+      | string
+      | number;
+    offsetPath?: string;
+    offsetPosition?: 
+      | string
+      | number;
+    offsetRotate?: string;
+    offsetRotation?: string;
+    opacity?: 
+      | number
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset";
+    order?: 
+      | number
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset";
+    orphans?: 
+      | number
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset";
+    outline?: 
+      | string
+      | number;
+    outlineColor?: string;
+    outlineOffset?: 
+      | string
+      | number;
+    outlineStyle?: string;
+    outlineWidth?: 
+      | string
+      | number;
+    overflow?: string;
+    overflowAnchor?: 
+      | "none"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "auto";
+    overflowClipBox?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "content-box"
+      | "padding-box";
+    overflowWrap?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "normal"
+      | "anywhere"
+      | "break-word";
+    overflowX?: 
+      | "hidden"
+      | "clip"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "scroll"
+      | "auto"
+      | "visible";
+    overflowY?: 
+      | "hidden"
+      | "clip"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "scroll"
+      | "auto"
+      | "visible";
+    overscrollBehavior?: string;
+    overscrollBehaviorX?: 
+      | "contain"
+      | "none"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "auto";
+    overscrollBehaviorY?: 
+      | "contain"
+      | "none"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "auto";
+    padding?: 
+      | string
+      | number;
+    paddingBlock?: 
+      | string
+      | number;
+    paddingBlockEnd?: 
+      | string
+      | number;
+    paddingBlockStart?: 
+      | string
+      | number;
+    paddingBottom?: 
+      | string
+      | number;
+    paddingInline?: 
+      | string
+      | number;
+    paddingInlineEnd?: 
+      | string
+      | number;
+    paddingInlineStart?: 
+      | string
+      | number;
+    paddingLeft?: 
+      | string
+      | number;
+    paddingRight?: 
+      | string
+      | number;
+    paddingTop?: 
+      | string
+      | number;
+    pageBreakAfter?: 
+      | "left"
+      | "right"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "auto"
+      | "always"
+      | "avoid"
+      | "recto"
+      | "verso";
+    pageBreakBefore?: 
+      | "left"
+      | "right"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "auto"
+      | "always"
+      | "avoid"
+      | "recto"
+      | "verso";
+    pageBreakInside?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "auto"
+      | "avoid";
+    paintOrder?: string;
+    perspective?: 
+      | string
+      | number;
+    perspectiveOrigin?: 
+      | string
+      | number;
+    placeContent?: string;
+    placeItems?: string;
+    placeSelf?: string;
+    pointerEvents?: 
+      | "all"
+      | "fill"
+      | "stroke"
+      | "none"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "auto"
+      | "visible"
+      | "painted"
+      | "visibleFill"
+      | "visiblePainted"
+      | "visibleStroke";
+    position?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "fixed"
+      | "-webkit-sticky"
+      | "absolute"
+      | "relative"
+      | "static"
+      | "sticky";
+    quotes?: string;
+    resize?: 
+      | "none"
+      | "block"
+      | "inline"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "both"
+      | "horizontal"
+      | "vertical";
+    right?: 
+      | string
+      | number;
+    rotate?: string;
+    rowGap?: 
+      | string
+      | number;
+    rubyAlign?: 
+      | "start"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "center"
+      | "space-around"
+      | "space-between";
+    rubyMerge?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "auto"
+      | "collapse"
+      | "separate";
+    rubyPosition?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "inter-character"
+      | "over"
+      | "under";
+    scale?: 
+      | string
+      | number;
+    scrollBehavior?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "auto"
+      | "smooth";
+    scrollMargin?: 
+      | string
+      | number;
+    scrollMarginBlock?: 
+      | string
+      | number;
+    scrollMarginBlockEnd?: 
+      | string
+      | number;
+    scrollMarginBlockStart?: 
+      | string
+      | number;
+    scrollMarginBottom?: 
+      | string
+      | number;
+    scrollMarginInline?: 
+      | string
+      | number;
+    scrollMarginInlineEnd?: 
+      | string
+      | number;
+    scrollMarginInlineStart?: 
+      | string
+      | number;
+    scrollMarginLeft?: 
+      | string
+      | number;
+    scrollMarginRight?: 
+      | string
+      | number;
+    scrollMarginTop?: 
+      | string
+      | number;
+    scrollPadding?: 
+      | string
+      | number;
+    scrollPaddingBlock?: 
+      | string
+      | number;
+    scrollPaddingBlockEnd?: 
+      | string
+      | number;
+    scrollPaddingBlockStart?: 
+      | string
+      | number;
+    scrollPaddingBottom?: 
+      | string
+      | number;
+    scrollPaddingInline?: 
+      | string
+      | number;
+    scrollPaddingInlineEnd?: 
+      | string
+      | number;
+    scrollPaddingInlineStart?: 
+      | string
+      | number;
+    scrollPaddingLeft?: 
+      | string
+      | number;
+    scrollPaddingRight?: 
+      | string
+      | number;
+    scrollPaddingTop?: 
+      | string
+      | number;
+    scrollSnapAlign?: string;
+    scrollSnapCoordinate?: 
+      | string
+      | number;
+    scrollSnapDestination?: 
+      | string
+      | number;
+    scrollSnapPointsX?: string;
+    scrollSnapPointsY?: string;
+    scrollSnapStop?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "normal"
+      | "always";
+    scrollSnapType?: string;
+    scrollSnapTypeX?: 
+      | "none"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "mandatory"
+      | "proximity";
+    scrollSnapTypeY?: 
+      | "none"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "mandatory"
+      | "proximity";
+    scrollbarColor?: string;
+    scrollbarWidth?: 
+      | "none"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "auto"
+      | "thin";
+    shapeImageThreshold?: 
+      | number
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset";
+    shapeMargin?: 
+      | string
+      | number;
+    shapeOutside?: string;
+    shapeRendering?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "auto"
+      | "geometricPrecision"
+      | "optimizeSpeed"
+      | "crispEdges";
+    stopColor?: string;
+    stopOpacity?: 
+      | number
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset";
+    stroke?: string;
+    strokeDasharray?: 
+      | string
+      | number;
+    strokeDashoffset?: 
+      | string
+      | number;
+    strokeLinecap?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "round"
+      | "butt"
+      | "square";
+    strokeLinejoin?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "round"
+      | "bevel"
+      | "miter";
+    strokeMiterlimit?: 
+      | number
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset";
+    strokeOpacity?: 
+      | number
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset";
+    strokeWidth?: 
+      | string
+      | number;
+    tabSize?: 
+      | string
+      | number;
+    tableLayout?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "fixed"
+      | "auto";
+    textAlign?: 
+      | "start"
+      | "left"
+      | "right"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "center"
+      | "end"
+      | "justify"
+      | "match-parent";
+    textAlignLast?: 
+      | "start"
+      | "left"
+      | "right"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "center"
+      | "end"
+      | "auto"
+      | "justify";
+    textAnchor?: 
+      | "start"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "end"
+      | "middle";
+    textCombineHorizontal?: string;
+    textCombineUpright?: string;
+    textDecoration?: string;
+    textDecorationColor?: string;
+    textDecorationLine?: string;
+    textDecorationSkip?: string;
+    textDecorationSkipInk?: 
+      | "none"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "auto";
+    textDecorationStyle?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "dashed"
+      | "dotted"
+      | "double"
+      | "solid"
+      | "wavy";
+    textEmphasis?: string;
+    textEmphasisColor?: string;
+    textEmphasisPosition?: string;
+    textEmphasisStyle?: string;
+    textIndent?: 
+      | string
+      | number;
+    textJustify?: 
+      | "none"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "auto"
+      | "inter-character"
+      | "inter-word";
+    textOrientation?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "mixed"
+      | "sideways"
+      | "upright";
+    textOverflow?: string;
+    textRendering?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "auto"
+      | "geometricPrecision"
+      | "optimizeLegibility"
+      | "optimizeSpeed";
+    textShadow?: string;
+    textSizeAdjust?: string;
+    textTransform?: 
+      | "none"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "full-width"
+      | "capitalize"
+      | "full-size-kana"
+      | "lowercase"
+      | "uppercase";
+    textUnderlinePosition?: string;
+    top?: 
+      | string
+      | number;
+    touchAction?: string;
+    transform?: string;
+    transformBox?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "border-box"
+      | "fill-box"
+      | "view-box";
+    transformOrigin?: 
+      | string
+      | number;
+    transformStyle?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "flat"
+      | "preserve-3d";
+    transition?: string;
+    transitionDelay?: string;
+    transitionDuration?: string;
+    transitionProperty?: string;
+    transitionTimingFunction?: string;
+    translate?: 
+      | string
+      | number;
+    unicodeBidi?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "embed"
+      | "normal"
+      | "isolate"
+      | "-moz-isolate"
+      | "-moz-isolate-override"
+      | "-moz-plaintext"
+      | "-webkit-isolate"
+      | "bidi-override"
+      | "isolate-override"
+      | "plaintext";
+    userSelect?: 
+      | "contain"
+      | "all"
+      | "none"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "text"
+      | "auto"
+      | "-moz-none"
+      | "element";
+    vectorEffect?: 
+      | "none"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "non-scaling-stroke";
+    verticalAlign?: 
+      | string
+      | number;
+    visibility?: 
+      | "hidden"
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "visible"
+      | "collapse";
+    whiteSpace?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "pre"
+      | "normal"
+      | "nowrap"
+      | "-moz-pre-wrap"
+      | "pre-line"
+      | "pre-wrap";
+    widows?: 
+      | number
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset";
+    width?: 
+      | string
+      | number;
+    willChange?: string;
+    wordBreak?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "normal"
+      | "break-word"
+      | "break-all"
+      | "keep-all";
+    wordSpacing?: 
+      | string
+      | number;
+    wordWrap?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "normal"
+      | "break-word";
+    writingMode?: 
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "horizontal-tb"
+      | "sideways-lr"
+      | "sideways-rl"
+      | "vertical-lr"
+      | "vertical-rl";
+    zIndex?: 
+      | number
+      | "-moz-initial"
+      | "inherit"
+      | "initial"
+      | "revert"
+      | "unset"
+      | "auto";
+    zoom?: 
+      | string
+      | number;
+  };
+  summary?: string;
+  suppressContentEditableWarning?: boolean;
+  suppressHydrationWarning?: boolean;
+  tabIndex?: number;
+  target?: string;
+  title?: string;
+  transform?: "touchable";
+  transition?: 
+    | "touchable"
+    | "fast";
+  type?: string;
+  typeof?: string;
+  unselectable?: 
+    | "on"
+    | "off";
+  useMap?: string;
+  value?: 
+    | string
+    | number
+    | string[];
+  vocab?: string;
+  width?: "full";
+  wmode?: string;
+  wrap?: string;
+}
 `;
 
 exports[`BraidProvider 1`] = `
-children: ReactNode
-theme: Theme
+{
+  children: ReactNode;
+  theme: {
+    name: string;
+    treatTheme: string;
+  };
+}
 `;
 
-exports[`Bullet 1`] = `children?: ReactNode`;
+exports[`Bullet 1`] = `
+{
+  children?: ReactNode;
+}
+`;
 
-exports[`BulletList 1`] = `children?: ReactNode`;
+exports[`BulletList 1`] = `
+{
+  children?: ReactNode;
+}
+`;
 
 exports[`Button 1`] = `
-aria-describedby?: string
-children?: ReactNode
-id?: string
-onClick?: (event: MouseEvent<HTMLButtonElement, MouseEvent>) => void
-type?: string
-weight?: 
-  | "strong"
-  | "regular"
-  | "weak"
+{
+  aria-describedby?: string;
+  children?: ReactNode;
+  id?: string;
+  onClick?: (event: MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  type?: string;
+  weight?: 
+    | "strong"
+    | "regular"
+    | "weak";
+}
 `;
 
-exports[`Card 1`] = `children?: ReactNode`;
+exports[`Card 1`] = `
+{
+  children?: ReactNode;
+}
+`;
 
 exports[`Checkbox 1`] = `
-checked: boolean
-children?: ReactNode
-data?: Record<string, ReactText>
-disabled?: boolean
-id: string
-label: ReactNode
-message?: ReactNode
-name?: string
-onChange: (event: FormEvent<HTMLFormElement>) => void
-ref?: 
-  | (instance: HTMLInputElement | null) => void
-  | RefObject<HTMLInputElement>
-reserveMessageSpace?: boolean
-tone?: 
-  | "critical"
-  | "neutral"
-value?: 
-  | string
-  | number
-  | string[]
+{
+  checked: boolean;
+  children?: ReactNode;
+  data?: Record<string, ReactText>;
+  disabled?: boolean;
+  id: string;
+  label: ReactNode;
+  message?: ReactNode;
+  name?: string;
+  onChange: (event: FormEvent<HTMLFormElement>) => void;
+  ref?: 
+    | (instance: HTMLInputElement | null) => void
+    | RefObject<HTMLInputElement>;
+  reserveMessageSpace?: boolean;
+  tone?: 
+    | "critical"
+    | "neutral";
+  value?: 
+    | string
+    | number
+    | string[];
+}
 `;
 
 exports[`ChevronIcon 1`] = `
-direction?: 
-  | "left"
-  | "right"
-  | "up"
-  | "down"
-inline?: boolean
-size?: 
-  | "fill"
-  | "small"
-  | "large"
-  | "standard"
-tone?: 
-  | "info"
-  | "critical"
-  | "positive"
-  | "formAccent"
-  | "link"
-  | "neutral"
-  | "secondary"
+{
+  direction?: 
+    | "left"
+    | "right"
+    | "up"
+    | "down";
+  inline?: boolean;
+  size?: 
+    | "fill"
+    | "small"
+    | "large"
+    | "standard";
+  tone?: 
+    | "info"
+    | "critical"
+    | "positive"
+    | "formAccent"
+    | "link"
+    | "neutral"
+    | "secondary";
+}
 `;
 
-exports[`Column 1`] = `children: ReactNode`;
+exports[`Column 1`] = `
+{
+  children: ReactNode;
+}
+`;
 
 exports[`Columns 1`] = `
-children: 
-  | ReactElement<ColumnProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>
-  | ReactElement<ColumnProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>[]
+{
+  children: 
+    | ReactElement<ColumnProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>
+    | ReactElement<ColumnProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>[];
+}
 `;
 
-exports[`Divider 1`] = ``;
+exports[`Divider 1`] = `
+{
+}
+`;
 
 exports[`Dropdown 1`] = `
-aria-describedby?: string
-autoComplete?: string
-children: 
-  | AllHTMLAttributes<HTMLOptGroupElement | HTMLOptionElement>
-  | AllHTMLAttributes<HTMLOptGroupElement | HTMLOptionElement>[]
-data?: Record<string, ReactText>
-description?: ReactNode
-disabled?: boolean
-id: string
-label?: ReactNode
-message?: ReactNode
-name?: string
-onBlur?: (event: FocusEvent<HTMLSelectElement>) => void
-onChange: (event: FormEvent<HTMLSelectElement>) => void
-onFocus?: (event: FocusEvent<HTMLSelectElement>) => void
-placeholder?: string
-ref?: 
-  | (instance: HTMLSelectElement | null) => void
-  | RefObject<HTMLSelectElement>
-reserveMessageSpace?: boolean
-secondaryLabel?: ReactNode
-tertiaryLabel?: ReactNode
-tone?: 
-  | "critical"
-  | "positive"
-  | "neutral"
-value: 
-  | string
-  | number
-  | string[]
+{
+  aria-describedby?: string;
+  autoComplete?: string;
+  children: 
+    | AllHTMLAttributes<HTMLOptGroupElement | HTMLOptionElement>
+    | AllHTMLAttributes<HTMLOptGroupElement | HTMLOptionElement>[];
+  data?: Record<string, ReactText>;
+  description?: ReactNode;
+  disabled?: boolean;
+  id: string;
+  label?: ReactNode;
+  message?: ReactNode;
+  name?: string;
+  onBlur?: (event: FocusEvent<HTMLSelectElement>) => void;
+  onChange: (event: FormEvent<HTMLSelectElement>) => void;
+  onFocus?: (event: FocusEvent<HTMLSelectElement>) => void;
+  placeholder?: string;
+  ref?: 
+    | (instance: HTMLSelectElement | null) => void
+    | RefObject<HTMLSelectElement>;
+  reserveMessageSpace?: boolean;
+  secondaryLabel?: ReactNode;
+  tertiaryLabel?: ReactNode;
+  tone?: 
+    | "critical"
+    | "positive"
+    | "neutral";
+  value: 
+    | string
+    | number
+    | string[];
+}
 `;
 
 exports[`ErrorIcon 1`] = `
-inline?: boolean
-size?: 
-  | "fill"
-  | "small"
-  | "large"
-  | "standard"
-tone?: 
-  | "info"
-  | "critical"
-  | "positive"
-  | "formAccent"
-  | "link"
-  | "neutral"
-  | "secondary"
+{
+  inline?: boolean;
+  size?: 
+    | "fill"
+    | "small"
+    | "large"
+    | "standard";
+  tone?: 
+    | "info"
+    | "critical"
+    | "positive"
+    | "formAccent"
+    | "link"
+    | "neutral"
+    | "secondary";
+}
 `;
 
 exports[`FieldLabel 1`] = `
-description?: ReactNode
-htmlFor: 
-  | string
-  | false
-label?: ReactNode
-secondaryLabel?: ReactNode
-tertiaryLabel?: ReactNode
+{
+  description?: ReactNode;
+  htmlFor: 
+    | string
+    | false;
+  label?: ReactNode;
+  secondaryLabel?: ReactNode;
+  tertiaryLabel?: ReactNode;
+}
 `;
 
 exports[`FieldMessage 1`] = `
-disabled?: boolean
-id: string
-message: ReactNode
-reserveMessageSpace?: boolean
-secondaryMessage?: ReactNode
-tone?: 
-  | "critical"
-  | "positive"
-  | "neutral"
+{
+  disabled?: boolean;
+  id: string;
+  message: ReactNode;
+  reserveMessageSpace?: boolean;
+  secondaryMessage?: ReactNode;
+  tone?: 
+    | "critical"
+    | "positive"
+    | "neutral";
+}
 `;
 
 exports[`Heading 1`] = `
-children: ReactNode
-component?: 
-  | "symbol"
-  | "object"
-  | "strong"
-  | "cite"
-  | "data"
-  | "form"
-  | "label"
-  | "pattern"
-  | "span"
-  | "summary"
-  | "style"
-  | "title"
-  | "clipPath"
-  | "filter"
-  | "mask"
-  | "marker"
-  | "small"
-  | "input"
-  | "a"
-  | "abbr"
-  | "address"
-  | "area"
-  | "article"
-  | "aside"
-  | "audio"
-  | "b"
-  | "base"
-  | "bdi"
-  | "bdo"
-  | "big"
-  | "blockquote"
-  | "body"
-  | "br"
-  | "button"
-  | "canvas"
-  | "caption"
-  | "code"
-  | "col"
-  | "colgroup"
-  | "datalist"
-  | "dd"
-  | "del"
-  | "details"
-  | "dfn"
-  | "dialog"
-  | "div"
-  | "dl"
-  | "dt"
-  | "em"
-  | "embed"
-  | "fieldset"
-  | "figcaption"
-  | "figure"
-  | "footer"
-  | "h1"
-  | "h2"
-  | "h3"
-  | "h4"
-  | "h5"
-  | "h6"
-  | "head"
-  | "header"
-  | "hgroup"
-  | "hr"
-  | "html"
-  | "i"
-  | "iframe"
-  | "img"
-  | "ins"
-  | "kbd"
-  | "keygen"
-  | "legend"
-  | "li"
-  | "link"
-  | "main"
-  | "map"
-  | "mark"
-  | "menu"
-  | "menuitem"
-  | "meta"
-  | "meter"
-  | "nav"
-  | "noindex"
-  | "noscript"
-  | "ol"
-  | "optgroup"
-  | "option"
-  | "output"
-  | "p"
-  | "param"
-  | "picture"
-  | "pre"
-  | "progress"
-  | "q"
-  | "rp"
-  | "rt"
-  | "ruby"
-  | "s"
-  | "samp"
-  | "script"
-  | "section"
-  | "select"
-  | "source"
-  | "sub"
-  | "sup"
-  | "table"
-  | "tbody"
-  | "td"
-  | "textarea"
-  | "tfoot"
-  | "th"
-  | "thead"
-  | "time"
-  | "tr"
-  | "track"
-  | "u"
-  | "ul"
-  | "var"
-  | "video"
-  | "wbr"
-  | "webview"
-  | "svg"
-  | "animate"
-  | "animateMotion"
-  | "animateTransform"
-  | "circle"
-  | "defs"
-  | "desc"
-  | "ellipse"
-  | "feBlend"
-  | "feColorMatrix"
-  | "feComponentTransfer"
-  | "feComposite"
-  | "feConvolveMatrix"
-  | "feDiffuseLighting"
-  | "feDisplacementMap"
-  | "feDistantLight"
-  | "feDropShadow"
-  | "feFlood"
-  | "feFuncA"
-  | "feFuncB"
-  | "feFuncG"
-  | "feFuncR"
-  | "feGaussianBlur"
-  | "feImage"
-  | "feMerge"
-  | "feMergeNode"
-  | "feMorphology"
-  | "feOffset"
-  | "fePointLight"
-  | "feSpecularLighting"
-  | "feSpotLight"
-  | "feTile"
-  | "feTurbulence"
-  | "foreignObject"
-  | "g"
-  | "image"
-  | "line"
-  | "linearGradient"
-  | "metadata"
-  | "mpath"
-  | "path"
-  | "polygon"
-  | "polyline"
-  | "radialGradient"
-  | "rect"
-  | "stop"
-  | "switch"
-  | "text"
-  | "textPath"
-  | "tspan"
-  | "use"
-  | "view"
-  | ComponentClass<any, any>
-  | FunctionComponent<any>
-id?: string
-level: 
-  | "1"
-  | "2"
-  | "3"
-weight?: 
-  | "regular"
-  | "weak"
+{
+  children: ReactNode;
+  component?: 
+    | "symbol"
+    | "object"
+    | "strong"
+    | "cite"
+    | "data"
+    | "form"
+    | "label"
+    | "pattern"
+    | "span"
+    | "summary"
+    | "style"
+    | "title"
+    | "clipPath"
+    | "filter"
+    | "mask"
+    | "marker"
+    | "small"
+    | "input"
+    | "a"
+    | "abbr"
+    | "address"
+    | "area"
+    | "article"
+    | "aside"
+    | "audio"
+    | "b"
+    | "base"
+    | "bdi"
+    | "bdo"
+    | "big"
+    | "blockquote"
+    | "body"
+    | "br"
+    | "button"
+    | "canvas"
+    | "caption"
+    | "code"
+    | "col"
+    | "colgroup"
+    | "datalist"
+    | "dd"
+    | "del"
+    | "details"
+    | "dfn"
+    | "dialog"
+    | "div"
+    | "dl"
+    | "dt"
+    | "em"
+    | "embed"
+    | "fieldset"
+    | "figcaption"
+    | "figure"
+    | "footer"
+    | "h1"
+    | "h2"
+    | "h3"
+    | "h4"
+    | "h5"
+    | "h6"
+    | "head"
+    | "header"
+    | "hgroup"
+    | "hr"
+    | "html"
+    | "i"
+    | "iframe"
+    | "img"
+    | "ins"
+    | "kbd"
+    | "keygen"
+    | "legend"
+    | "li"
+    | "link"
+    | "main"
+    | "map"
+    | "mark"
+    | "menu"
+    | "menuitem"
+    | "meta"
+    | "meter"
+    | "nav"
+    | "noindex"
+    | "noscript"
+    | "ol"
+    | "optgroup"
+    | "option"
+    | "output"
+    | "p"
+    | "param"
+    | "picture"
+    | "pre"
+    | "progress"
+    | "q"
+    | "rp"
+    | "rt"
+    | "ruby"
+    | "s"
+    | "samp"
+    | "script"
+    | "section"
+    | "select"
+    | "source"
+    | "sub"
+    | "sup"
+    | "table"
+    | "tbody"
+    | "td"
+    | "textarea"
+    | "tfoot"
+    | "th"
+    | "thead"
+    | "time"
+    | "tr"
+    | "track"
+    | "u"
+    | "ul"
+    | "var"
+    | "video"
+    | "wbr"
+    | "webview"
+    | "svg"
+    | "animate"
+    | "animateMotion"
+    | "animateTransform"
+    | "circle"
+    | "defs"
+    | "desc"
+    | "ellipse"
+    | "feBlend"
+    | "feColorMatrix"
+    | "feComponentTransfer"
+    | "feComposite"
+    | "feConvolveMatrix"
+    | "feDiffuseLighting"
+    | "feDisplacementMap"
+    | "feDistantLight"
+    | "feDropShadow"
+    | "feFlood"
+    | "feFuncA"
+    | "feFuncB"
+    | "feFuncG"
+    | "feFuncR"
+    | "feGaussianBlur"
+    | "feImage"
+    | "feMerge"
+    | "feMergeNode"
+    | "feMorphology"
+    | "feOffset"
+    | "fePointLight"
+    | "feSpecularLighting"
+    | "feSpotLight"
+    | "feTile"
+    | "feTurbulence"
+    | "foreignObject"
+    | "g"
+    | "image"
+    | "line"
+    | "linearGradient"
+    | "metadata"
+    | "mpath"
+    | "path"
+    | "polygon"
+    | "polyline"
+    | "radialGradient"
+    | "rect"
+    | "stop"
+    | "switch"
+    | "text"
+    | "textPath"
+    | "tspan"
+    | "use"
+    | "view"
+    | ComponentClass<any, any>
+    | FunctionComponent<any>;
+  id?: string;
+  level: 
+    | "1"
+    | "2"
+    | "3";
+  weight?: 
+    | "regular"
+    | "weak";
+}
 `;
 
 exports[`Hidden 1`] = `
-children: ReactNode
-desktop?: boolean
-inline?: boolean
-mobile?: boolean
-print?: boolean
-screen?: boolean
+{
+  children: ReactNode;
+  desktop?: boolean;
+  inline?: boolean;
+  mobile?: boolean;
+  print?: boolean;
+  screen?: boolean;
+}
 `;
 
 exports[`InfoIcon 1`] = `
-inline?: boolean
-size?: 
-  | "fill"
-  | "small"
-  | "large"
-  | "standard"
-tone?: 
-  | "info"
-  | "critical"
-  | "positive"
-  | "formAccent"
-  | "link"
-  | "neutral"
-  | "secondary"
+{
+  inline?: boolean;
+  size?: 
+    | "fill"
+    | "small"
+    | "large"
+    | "standard";
+  tone?: 
+    | "info"
+    | "critical"
+    | "positive"
+    | "formAccent"
+    | "link"
+    | "neutral"
+    | "secondary";
+}
 `;
 
 exports[`MonthPicker 1`] = `
-ascendingYears?: boolean
-description?: ReactNode
-disabled?: boolean
-id: string
-label?: ReactNode
-maxYear?: number
-message?: ReactNode
-minYear?: number
-onBlur?: FocusHandler
-onChange: ChangeHandler
-onFocus?: FocusHandler
-reserveMessageSpace?: boolean
-secondaryLabel?: ReactNode
-tertiaryLabel?: ReactNode
-tone?: 
-  | "critical"
-  | "positive"
-  | "neutral"
-value: MonthPickerValue
+{
+  ascendingYears?: boolean;
+  description?: ReactNode;
+  disabled?: boolean;
+  id: string;
+  label?: ReactNode;
+  maxYear?: number;
+  message?: ReactNode;
+  minYear?: number;
+  onBlur?: FocusHandler;
+  onChange: ChangeHandler;
+  onFocus?: FocusHandler;
+  reserveMessageSpace?: boolean;
+  secondaryLabel?: ReactNode;
+  tertiaryLabel?: ReactNode;
+  tone?: 
+    | "critical"
+    | "positive"
+    | "neutral";
+  value: {
+    month?: number;
+    year?: number;
+  };
+}
 `;
 
-exports[`Paragraph 1`] = `children: ReactNode`;
+exports[`Paragraph 1`] = `
+{
+  children: ReactNode;
+}
+`;
 
 exports[`Radio 1`] = `
-checked: boolean
-children?: ReactNode
-data?: Record<string, ReactText>
-disabled?: boolean
-id: string
-label: ReactNode
-name?: string
-onChange: (event: FormEvent<HTMLFormElement>) => void
-ref?: 
-  | (instance: HTMLInputElement | null) => void
-  | RefObject<HTMLInputElement>
-tone?: 
-  | "critical"
-  | "neutral"
-value?: 
-  | string
-  | number
-  | string[]
+{
+  checked: boolean;
+  children?: ReactNode;
+  data?: Record<string, ReactText>;
+  disabled?: boolean;
+  id: string;
+  label: ReactNode;
+  name?: string;
+  onChange: (event: FormEvent<HTMLFormElement>) => void;
+  ref?: 
+    | (instance: HTMLInputElement | null) => void
+    | RefObject<HTMLInputElement>;
+  tone?: 
+    | "critical"
+    | "neutral";
+  value?: 
+    | string
+    | number
+    | string[];
+}
 `;
 
 exports[`Secondary 1`] = `
-children: ReactNode
-id?: string
+{
+  children: ReactNode;
+  id?: string;
+}
 `;
 
 exports[`Strong 1`] = `
-children: ReactNode
-id?: string
+{
+  children: ReactNode;
+  id?: string;
+}
 `;
 
 exports[`Text 1`] = `
-baseline?: boolean
-children?: ReactNode
-component?: 
-  | "symbol"
-  | "object"
-  | "strong"
-  | "cite"
-  | "data"
-  | "form"
-  | "label"
-  | "pattern"
-  | "span"
-  | "summary"
-  | "style"
-  | "title"
-  | "clipPath"
-  | "filter"
-  | "mask"
-  | "marker"
-  | "small"
-  | "input"
-  | "a"
-  | "abbr"
-  | "address"
-  | "area"
-  | "article"
-  | "aside"
-  | "audio"
-  | "b"
-  | "base"
-  | "bdi"
-  | "bdo"
-  | "big"
-  | "blockquote"
-  | "body"
-  | "br"
-  | "button"
-  | "canvas"
-  | "caption"
-  | "code"
-  | "col"
-  | "colgroup"
-  | "datalist"
-  | "dd"
-  | "del"
-  | "details"
-  | "dfn"
-  | "dialog"
-  | "div"
-  | "dl"
-  | "dt"
-  | "em"
-  | "embed"
-  | "fieldset"
-  | "figcaption"
-  | "figure"
-  | "footer"
-  | "h1"
-  | "h2"
-  | "h3"
-  | "h4"
-  | "h5"
-  | "h6"
-  | "head"
-  | "header"
-  | "hgroup"
-  | "hr"
-  | "html"
-  | "i"
-  | "iframe"
-  | "img"
-  | "ins"
-  | "kbd"
-  | "keygen"
-  | "legend"
-  | "li"
-  | "link"
-  | "main"
-  | "map"
-  | "mark"
-  | "menu"
-  | "menuitem"
-  | "meta"
-  | "meter"
-  | "nav"
-  | "noindex"
-  | "noscript"
-  | "ol"
-  | "optgroup"
-  | "option"
-  | "output"
-  | "p"
-  | "param"
-  | "picture"
-  | "pre"
-  | "progress"
-  | "q"
-  | "rp"
-  | "rt"
-  | "ruby"
-  | "s"
-  | "samp"
-  | "script"
-  | "section"
-  | "select"
-  | "source"
-  | "sub"
-  | "sup"
-  | "table"
-  | "tbody"
-  | "td"
-  | "textarea"
-  | "tfoot"
-  | "th"
-  | "thead"
-  | "time"
-  | "tr"
-  | "track"
-  | "u"
-  | "ul"
-  | "var"
-  | "video"
-  | "wbr"
-  | "webview"
-  | "svg"
-  | "animate"
-  | "animateMotion"
-  | "animateTransform"
-  | "circle"
-  | "defs"
-  | "desc"
-  | "ellipse"
-  | "feBlend"
-  | "feColorMatrix"
-  | "feComponentTransfer"
-  | "feComposite"
-  | "feConvolveMatrix"
-  | "feDiffuseLighting"
-  | "feDisplacementMap"
-  | "feDistantLight"
-  | "feDropShadow"
-  | "feFlood"
-  | "feFuncA"
-  | "feFuncB"
-  | "feFuncG"
-  | "feFuncR"
-  | "feGaussianBlur"
-  | "feImage"
-  | "feMerge"
-  | "feMergeNode"
-  | "feMorphology"
-  | "feOffset"
-  | "fePointLight"
-  | "feSpecularLighting"
-  | "feSpotLight"
-  | "feTile"
-  | "feTurbulence"
-  | "foreignObject"
-  | "g"
-  | "image"
-  | "line"
-  | "linearGradient"
-  | "metadata"
-  | "mpath"
-  | "path"
-  | "polygon"
-  | "polyline"
-  | "radialGradient"
-  | "rect"
-  | "stop"
-  | "switch"
-  | "text"
-  | "textPath"
-  | "tspan"
-  | "use"
-  | "view"
-  | ComponentClass<any, any>
-  | FunctionComponent<any>
-id?: string
-size?: 
-  | "small"
-  | "large"
-  | "standard"
-tone?: 
-  | "info"
-  | "critical"
-  | "positive"
-  | "formAccent"
-  | "link"
-  | "neutral"
-  | "secondary"
-weight?: 
-  | "strong"
-  | "regular"
-  | "medium"
+{
+  baseline?: boolean;
+  children?: ReactNode;
+  component?: 
+    | "symbol"
+    | "object"
+    | "strong"
+    | "cite"
+    | "data"
+    | "form"
+    | "label"
+    | "pattern"
+    | "span"
+    | "summary"
+    | "style"
+    | "title"
+    | "clipPath"
+    | "filter"
+    | "mask"
+    | "marker"
+    | "small"
+    | "input"
+    | "a"
+    | "abbr"
+    | "address"
+    | "area"
+    | "article"
+    | "aside"
+    | "audio"
+    | "b"
+    | "base"
+    | "bdi"
+    | "bdo"
+    | "big"
+    | "blockquote"
+    | "body"
+    | "br"
+    | "button"
+    | "canvas"
+    | "caption"
+    | "code"
+    | "col"
+    | "colgroup"
+    | "datalist"
+    | "dd"
+    | "del"
+    | "details"
+    | "dfn"
+    | "dialog"
+    | "div"
+    | "dl"
+    | "dt"
+    | "em"
+    | "embed"
+    | "fieldset"
+    | "figcaption"
+    | "figure"
+    | "footer"
+    | "h1"
+    | "h2"
+    | "h3"
+    | "h4"
+    | "h5"
+    | "h6"
+    | "head"
+    | "header"
+    | "hgroup"
+    | "hr"
+    | "html"
+    | "i"
+    | "iframe"
+    | "img"
+    | "ins"
+    | "kbd"
+    | "keygen"
+    | "legend"
+    | "li"
+    | "link"
+    | "main"
+    | "map"
+    | "mark"
+    | "menu"
+    | "menuitem"
+    | "meta"
+    | "meter"
+    | "nav"
+    | "noindex"
+    | "noscript"
+    | "ol"
+    | "optgroup"
+    | "option"
+    | "output"
+    | "p"
+    | "param"
+    | "picture"
+    | "pre"
+    | "progress"
+    | "q"
+    | "rp"
+    | "rt"
+    | "ruby"
+    | "s"
+    | "samp"
+    | "script"
+    | "section"
+    | "select"
+    | "source"
+    | "sub"
+    | "sup"
+    | "table"
+    | "tbody"
+    | "td"
+    | "textarea"
+    | "tfoot"
+    | "th"
+    | "thead"
+    | "time"
+    | "tr"
+    | "track"
+    | "u"
+    | "ul"
+    | "var"
+    | "video"
+    | "wbr"
+    | "webview"
+    | "svg"
+    | "animate"
+    | "animateMotion"
+    | "animateTransform"
+    | "circle"
+    | "defs"
+    | "desc"
+    | "ellipse"
+    | "feBlend"
+    | "feColorMatrix"
+    | "feComponentTransfer"
+    | "feComposite"
+    | "feConvolveMatrix"
+    | "feDiffuseLighting"
+    | "feDisplacementMap"
+    | "feDistantLight"
+    | "feDropShadow"
+    | "feFlood"
+    | "feFuncA"
+    | "feFuncB"
+    | "feFuncG"
+    | "feFuncR"
+    | "feGaussianBlur"
+    | "feImage"
+    | "feMerge"
+    | "feMergeNode"
+    | "feMorphology"
+    | "feOffset"
+    | "fePointLight"
+    | "feSpecularLighting"
+    | "feSpotLight"
+    | "feTile"
+    | "feTurbulence"
+    | "foreignObject"
+    | "g"
+    | "image"
+    | "line"
+    | "linearGradient"
+    | "metadata"
+    | "mpath"
+    | "path"
+    | "polygon"
+    | "polyline"
+    | "radialGradient"
+    | "rect"
+    | "stop"
+    | "switch"
+    | "text"
+    | "textPath"
+    | "tspan"
+    | "use"
+    | "view"
+    | ComponentClass<any, any>
+    | FunctionComponent<any>;
+  id?: string;
+  size?: 
+    | "small"
+    | "large"
+    | "standard";
+  tone?: 
+    | "info"
+    | "critical"
+    | "positive"
+    | "formAccent"
+    | "link"
+    | "neutral"
+    | "secondary";
+  weight?: 
+    | "strong"
+    | "regular"
+    | "medium";
+}
 `;
 
 exports[`TextField 1`] = `
-aria-describedby?: string
-autoComplete?: string
-data?: Record<string, ReactText>
-description?: ReactNode
-disabled?: boolean
-id: string
-label?: ReactNode
-message?: ReactNode
-name?: string
-onBlur?: (event: FocusEvent<HTMLInputElement>) => void
-onChange: (event: FormEvent<HTMLInputElement>) => void
-onFocus?: (event: FocusEvent<HTMLInputElement>) => void
-placeholder?: string
-ref?: 
-  | (instance: HTMLInputElement | null) => void
-  | RefObject<HTMLInputElement>
-reserveMessageSpace?: boolean
-secondaryLabel?: ReactNode
-tertiaryLabel?: ReactNode
-tone?: 
-  | "critical"
-  | "positive"
-  | "neutral"
-type?: 
-  | "number"
-  | "text"
-  | "password"
-  | "email"
-  | "search"
-  | "tel"
-  | "url"
-value: 
-  | string
-  | number
-  | string[]
+{
+  aria-describedby?: string;
+  autoComplete?: string;
+  data?: Record<string, ReactText>;
+  description?: ReactNode;
+  disabled?: boolean;
+  id: string;
+  label?: ReactNode;
+  message?: ReactNode;
+  name?: string;
+  onBlur?: (event: FocusEvent<HTMLInputElement>) => void;
+  onChange: (event: FormEvent<HTMLInputElement>) => void;
+  onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
+  placeholder?: string;
+  ref?: 
+    | (instance: HTMLInputElement | null) => void
+    | RefObject<HTMLInputElement>;
+  reserveMessageSpace?: boolean;
+  secondaryLabel?: ReactNode;
+  tertiaryLabel?: ReactNode;
+  tone?: 
+    | "critical"
+    | "positive"
+    | "neutral";
+  type?: 
+    | "number"
+    | "text"
+    | "password"
+    | "email"
+    | "search"
+    | "tel"
+    | "url";
+  value: 
+    | string
+    | number
+    | string[];
+}
 `;
 
 exports[`TextLink 1`] = `
-about?: string
-accept?: string
-acceptCharset?: string
-accessKey?: string
-action?: string
-allowFullScreen?: boolean
-allowTransparency?: boolean
-alt?: string
-aria-activedescendant?: string
-aria-atomic?: 
-  | false
-  | true
-  | "false"
-  | "true"
-aria-autocomplete?: 
-  | "list"
-  | "none"
-  | "inline"
-  | "both"
-aria-busy?: 
-  | false
-  | true
-  | "false"
-  | "true"
-aria-checked?: 
-  | false
-  | true
-  | "false"
-  | "true"
-  | "mixed"
-aria-colcount?: number
-aria-colindex?: number
-aria-colspan?: number
-aria-controls?: string
-aria-current?: 
-  | false
-  | true
-  | "step"
-  | "time"
-  | "false"
-  | "true"
-  | "page"
-  | "location"
-  | "date"
-aria-describedby?: string
-aria-details?: string
-aria-disabled?: 
-  | false
-  | true
-  | "false"
-  | "true"
-aria-dropeffect?: 
-  | "none"
-  | "link"
-  | "copy"
-  | "execute"
-  | "move"
-  | "popup"
-aria-errormessage?: string
-aria-expanded?: 
-  | false
-  | true
-  | "false"
-  | "true"
-aria-flowto?: string
-aria-grabbed?: 
-  | false
-  | true
-  | "false"
-  | "true"
-aria-haspopup?: 
-  | false
-  | true
-  | "grid"
-  | "dialog"
-  | "menu"
-  | "false"
-  | "true"
-  | "listbox"
-  | "tree"
-aria-hidden?: 
-  | false
-  | true
-  | "false"
-  | "true"
-aria-invalid?: 
-  | false
-  | true
-  | "false"
-  | "true"
-  | "grammar"
-  | "spelling"
-aria-keyshortcuts?: string
-aria-label?: string
-aria-labelledby?: string
-aria-level?: number
-aria-live?: 
-  | "off"
-  | "assertive"
-  | "polite"
-aria-modal?: 
-  | false
-  | true
-  | "false"
-  | "true"
-aria-multiline?: 
-  | false
-  | true
-  | "false"
-  | "true"
-aria-multiselectable?: 
-  | false
-  | true
-  | "false"
-  | "true"
-aria-orientation?: 
-  | "horizontal"
-  | "vertical"
-aria-owns?: string
-aria-placeholder?: string
-aria-posinset?: number
-aria-pressed?: 
-  | false
-  | true
-  | "false"
-  | "true"
-  | "mixed"
-aria-readonly?: 
-  | false
-  | true
-  | "false"
-  | "true"
-aria-relevant?: 
-  | "all"
-  | "text"
-  | "additions"
-  | "additions text"
-  | "removals"
-aria-required?: 
-  | false
-  | true
-  | "false"
-  | "true"
-aria-roledescription?: string
-aria-rowcount?: number
-aria-rowindex?: number
-aria-rowspan?: number
-aria-selected?: 
-  | false
-  | true
-  | "false"
-  | "true"
-aria-setsize?: number
-aria-sort?: 
-  | "none"
-  | "ascending"
-  | "descending"
-  | "other"
-aria-valuemax?: number
-aria-valuemin?: number
-aria-valuenow?: number
-aria-valuetext?: string
-as?: string
-async?: boolean
-autoCapitalize?: string
-autoComplete?: string
-autoCorrect?: string
-autoFocus?: boolean
-autoPlay?: boolean
-autoSave?: string
-capture?: 
-  | string
-  | false
-  | true
-cellPadding?: 
-  | string
-  | number
-cellSpacing?: 
-  | string
-  | number
-challenge?: string
-charSet?: string
-checked?: boolean
-children?: ReactNode
-cite?: string
-classID?: string
-colSpan?: number
-color?: string
-cols?: number
-content?: string
-contentEditable?: boolean
-contextMenu?: string
-controls?: boolean
-coords?: string
-crossOrigin?: string
-dangerouslySetInnerHTML?: { __html: string; }
-data?: string
-datatype?: string
-dateTime?: string
-default?: boolean
-defaultChecked?: boolean
-defaultValue?: 
-  | string
-  | string[]
-defer?: boolean
-dir?: string
-disabled?: boolean
-download?: any
-draggable?: boolean
-encType?: string
-form?: string
-formAction?: string
-formEncType?: string
-formMethod?: string
-formNoValidate?: boolean
-formTarget?: string
-frameBorder?: 
-  | string
-  | number
-headers?: string
-height?: 
-  | string
-  | number
-hidden?: boolean
-high?: number
-href?: string
-hrefLang?: string
-htmlFor?: string
-httpEquiv?: string
-id?: string
-inline?: boolean
-inlist?: any
-inputMode?: string
-integrity?: string
-is?: string
-itemID?: string
-itemProp?: string
-itemRef?: string
-itemScope?: boolean
-itemType?: string
-keyParams?: string
-keyType?: string
-kind?: string
-label?: string
-lang?: string
-list?: string
-loop?: boolean
-low?: number
-manifest?: string
-marginHeight?: number
-marginWidth?: number
-max?: 
-  | string
-  | number
-maxLength?: number
-media?: string
-mediaGroup?: string
-method?: string
-min?: 
-  | string
-  | number
-minLength?: number
-multiple?: boolean
-muted?: boolean
-name?: string
-noValidate?: boolean
-nonce?: string
-onAbort?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-onAbortCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-onAnimationEnd?: (event: AnimationEvent<HTMLAnchorElement>) => void
-onAnimationEndCapture?: (event: AnimationEvent<HTMLAnchorElement>) => void
-onAnimationIteration?: (event: AnimationEvent<HTMLAnchorElement>) => void
-onAnimationIterationCapture?: (event: AnimationEvent<HTMLAnchorElement>) => void
-onAnimationStart?: (event: AnimationEvent<HTMLAnchorElement>) => void
-onAnimationStartCapture?: (event: AnimationEvent<HTMLAnchorElement>) => void
-onAuxClick?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-onAuxClickCapture?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-onBeforeInput?: (event: FormEvent<HTMLAnchorElement>) => void
-onBeforeInputCapture?: (event: FormEvent<HTMLAnchorElement>) => void
-onBlur?: (event: FocusEvent<HTMLAnchorElement>) => void
-onBlurCapture?: (event: FocusEvent<HTMLAnchorElement>) => void
-onCanPlay?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-onCanPlayCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-onCanPlayThrough?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-onCanPlayThroughCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-onChange?: (event: FormEvent<HTMLAnchorElement>) => void
-onChangeCapture?: (event: FormEvent<HTMLAnchorElement>) => void
-onClick?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-onClickCapture?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-onCompositionEnd?: (event: CompositionEvent<HTMLAnchorElement>) => void
-onCompositionEndCapture?: (event: CompositionEvent<HTMLAnchorElement>) => void
-onCompositionStart?: (event: CompositionEvent<HTMLAnchorElement>) => void
-onCompositionStartCapture?: (event: CompositionEvent<HTMLAnchorElement>) => void
-onCompositionUpdate?: (event: CompositionEvent<HTMLAnchorElement>) => void
-onCompositionUpdateCapture?: (event: CompositionEvent<HTMLAnchorElement>) => void
-onContextMenu?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-onContextMenuCapture?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-onCopy?: (event: ClipboardEvent<HTMLAnchorElement>) => void
-onCopyCapture?: (event: ClipboardEvent<HTMLAnchorElement>) => void
-onCut?: (event: ClipboardEvent<HTMLAnchorElement>) => void
-onCutCapture?: (event: ClipboardEvent<HTMLAnchorElement>) => void
-onDoubleClick?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-onDoubleClickCapture?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-onDrag?: (event: DragEvent<HTMLAnchorElement>) => void
-onDragCapture?: (event: DragEvent<HTMLAnchorElement>) => void
-onDragEnd?: (event: DragEvent<HTMLAnchorElement>) => void
-onDragEndCapture?: (event: DragEvent<HTMLAnchorElement>) => void
-onDragEnter?: (event: DragEvent<HTMLAnchorElement>) => void
-onDragEnterCapture?: (event: DragEvent<HTMLAnchorElement>) => void
-onDragExit?: (event: DragEvent<HTMLAnchorElement>) => void
-onDragExitCapture?: (event: DragEvent<HTMLAnchorElement>) => void
-onDragLeave?: (event: DragEvent<HTMLAnchorElement>) => void
-onDragLeaveCapture?: (event: DragEvent<HTMLAnchorElement>) => void
-onDragOver?: (event: DragEvent<HTMLAnchorElement>) => void
-onDragOverCapture?: (event: DragEvent<HTMLAnchorElement>) => void
-onDragStart?: (event: DragEvent<HTMLAnchorElement>) => void
-onDragStartCapture?: (event: DragEvent<HTMLAnchorElement>) => void
-onDrop?: (event: DragEvent<HTMLAnchorElement>) => void
-onDropCapture?: (event: DragEvent<HTMLAnchorElement>) => void
-onDurationChange?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-onDurationChangeCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-onEmptied?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-onEmptiedCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-onEncrypted?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-onEncryptedCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-onEnded?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-onEndedCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-onError?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-onErrorCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-onFocus?: (event: FocusEvent<HTMLAnchorElement>) => void
-onFocusCapture?: (event: FocusEvent<HTMLAnchorElement>) => void
-onGotPointerCapture?: (event: PointerEvent<HTMLAnchorElement>) => void
-onGotPointerCaptureCapture?: (event: PointerEvent<HTMLAnchorElement>) => void
-onInput?: (event: FormEvent<HTMLAnchorElement>) => void
-onInputCapture?: (event: FormEvent<HTMLAnchorElement>) => void
-onInvalid?: (event: FormEvent<HTMLAnchorElement>) => void
-onInvalidCapture?: (event: FormEvent<HTMLAnchorElement>) => void
-onKeyDown?: (event: KeyboardEvent<HTMLAnchorElement>) => void
-onKeyDownCapture?: (event: KeyboardEvent<HTMLAnchorElement>) => void
-onKeyPress?: (event: KeyboardEvent<HTMLAnchorElement>) => void
-onKeyPressCapture?: (event: KeyboardEvent<HTMLAnchorElement>) => void
-onKeyUp?: (event: KeyboardEvent<HTMLAnchorElement>) => void
-onKeyUpCapture?: (event: KeyboardEvent<HTMLAnchorElement>) => void
-onLoad?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-onLoadCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-onLoadStart?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-onLoadStartCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-onLoadedData?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-onLoadedDataCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-onLoadedMetadata?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-onLoadedMetadataCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-onLostPointerCapture?: (event: PointerEvent<HTMLAnchorElement>) => void
-onLostPointerCaptureCapture?: (event: PointerEvent<HTMLAnchorElement>) => void
-onMouseDown?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-onMouseDownCapture?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-onMouseEnter?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-onMouseLeave?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-onMouseMove?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-onMouseMoveCapture?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-onMouseOut?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-onMouseOutCapture?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-onMouseOver?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-onMouseOverCapture?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-onMouseUp?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-onMouseUpCapture?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-onPaste?: (event: ClipboardEvent<HTMLAnchorElement>) => void
-onPasteCapture?: (event: ClipboardEvent<HTMLAnchorElement>) => void
-onPause?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-onPauseCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-onPlay?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-onPlayCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-onPlaying?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-onPlayingCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-onPointerCancel?: (event: PointerEvent<HTMLAnchorElement>) => void
-onPointerCancelCapture?: (event: PointerEvent<HTMLAnchorElement>) => void
-onPointerDown?: (event: PointerEvent<HTMLAnchorElement>) => void
-onPointerDownCapture?: (event: PointerEvent<HTMLAnchorElement>) => void
-onPointerEnter?: (event: PointerEvent<HTMLAnchorElement>) => void
-onPointerEnterCapture?: (event: PointerEvent<HTMLAnchorElement>) => void
-onPointerLeave?: (event: PointerEvent<HTMLAnchorElement>) => void
-onPointerLeaveCapture?: (event: PointerEvent<HTMLAnchorElement>) => void
-onPointerMove?: (event: PointerEvent<HTMLAnchorElement>) => void
-onPointerMoveCapture?: (event: PointerEvent<HTMLAnchorElement>) => void
-onPointerOut?: (event: PointerEvent<HTMLAnchorElement>) => void
-onPointerOutCapture?: (event: PointerEvent<HTMLAnchorElement>) => void
-onPointerOver?: (event: PointerEvent<HTMLAnchorElement>) => void
-onPointerOverCapture?: (event: PointerEvent<HTMLAnchorElement>) => void
-onPointerUp?: (event: PointerEvent<HTMLAnchorElement>) => void
-onPointerUpCapture?: (event: PointerEvent<HTMLAnchorElement>) => void
-onProgress?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-onProgressCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-onRateChange?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-onRateChangeCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-onReset?: (event: FormEvent<HTMLAnchorElement>) => void
-onResetCapture?: (event: FormEvent<HTMLAnchorElement>) => void
-onScroll?: (event: UIEvent<HTMLAnchorElement>) => void
-onScrollCapture?: (event: UIEvent<HTMLAnchorElement>) => void
-onSeeked?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-onSeekedCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-onSeeking?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-onSeekingCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-onSelect?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-onSelectCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-onStalled?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-onStalledCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-onSubmit?: (event: FormEvent<HTMLAnchorElement>) => void
-onSubmitCapture?: (event: FormEvent<HTMLAnchorElement>) => void
-onSuspend?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-onSuspendCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-onTimeUpdate?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-onTimeUpdateCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-onTouchCancel?: (event: TouchEvent<HTMLAnchorElement>) => void
-onTouchCancelCapture?: (event: TouchEvent<HTMLAnchorElement>) => void
-onTouchEnd?: (event: TouchEvent<HTMLAnchorElement>) => void
-onTouchEndCapture?: (event: TouchEvent<HTMLAnchorElement>) => void
-onTouchMove?: (event: TouchEvent<HTMLAnchorElement>) => void
-onTouchMoveCapture?: (event: TouchEvent<HTMLAnchorElement>) => void
-onTouchStart?: (event: TouchEvent<HTMLAnchorElement>) => void
-onTouchStartCapture?: (event: TouchEvent<HTMLAnchorElement>) => void
-onTransitionEnd?: (event: TransitionEvent<HTMLAnchorElement>) => void
-onTransitionEndCapture?: (event: TransitionEvent<HTMLAnchorElement>) => void
-onVolumeChange?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-onVolumeChangeCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-onWaiting?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-onWaitingCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-onWheel?: (event: WheelEvent<HTMLAnchorElement>) => void
-onWheelCapture?: (event: WheelEvent<HTMLAnchorElement>) => void
-open?: boolean
-optimum?: number
-pattern?: string
-placeholder?: string
-playsInline?: boolean
-poster?: string
-prefix?: string
-preload?: string
-property?: string
-radioGroup?: string
-readOnly?: boolean
-rel?: string
-required?: boolean
-resource?: string
-results?: number
-reversed?: boolean
-role?: string
-rowSpan?: number
-rows?: number
-sandbox?: string
-scope?: string
-scoped?: boolean
-scrolling?: string
-seamless?: boolean
-security?: string
-selected?: boolean
-shape?: string
-size?: number
-sizes?: string
-slot?: string
-span?: number
-spellCheck?: boolean
-src?: string
-srcDoc?: string
-srcLang?: string
-srcSet?: string
-start?: number
-step?: 
-  | string
-  | number
-summary?: string
-suppressContentEditableWarning?: boolean
-suppressHydrationWarning?: boolean
-tabIndex?: number
-target?: string
-title?: string
-type?: string
-typeof?: string
-unselectable?: 
-  | "on"
-  | "off"
-useMap?: string
-value?: 
-  | string
-  | number
-  | string[]
-vocab?: string
-width?: 
-  | string
-  | number
-wmode?: string
-wrap?: string
+{
+  about?: string;
+  accept?: string;
+  acceptCharset?: string;
+  accessKey?: string;
+  action?: string;
+  allowFullScreen?: boolean;
+  allowTransparency?: boolean;
+  alt?: string;
+  aria-activedescendant?: string;
+  aria-atomic?: 
+    | false
+    | true
+    | "false"
+    | "true";
+  aria-autocomplete?: 
+    | "list"
+    | "none"
+    | "inline"
+    | "both";
+  aria-busy?: 
+    | false
+    | true
+    | "false"
+    | "true";
+  aria-checked?: 
+    | false
+    | true
+    | "false"
+    | "true"
+    | "mixed";
+  aria-colcount?: number;
+  aria-colindex?: number;
+  aria-colspan?: number;
+  aria-controls?: string;
+  aria-current?: 
+    | false
+    | true
+    | "step"
+    | "time"
+    | "false"
+    | "true"
+    | "page"
+    | "location"
+    | "date";
+  aria-describedby?: string;
+  aria-details?: string;
+  aria-disabled?: 
+    | false
+    | true
+    | "false"
+    | "true";
+  aria-dropeffect?: 
+    | "none"
+    | "link"
+    | "copy"
+    | "execute"
+    | "move"
+    | "popup";
+  aria-errormessage?: string;
+  aria-expanded?: 
+    | false
+    | true
+    | "false"
+    | "true";
+  aria-flowto?: string;
+  aria-grabbed?: 
+    | false
+    | true
+    | "false"
+    | "true";
+  aria-haspopup?: 
+    | false
+    | true
+    | "grid"
+    | "dialog"
+    | "menu"
+    | "false"
+    | "true"
+    | "listbox"
+    | "tree";
+  aria-hidden?: 
+    | false
+    | true
+    | "false"
+    | "true";
+  aria-invalid?: 
+    | false
+    | true
+    | "false"
+    | "true"
+    | "grammar"
+    | "spelling";
+  aria-keyshortcuts?: string;
+  aria-label?: string;
+  aria-labelledby?: string;
+  aria-level?: number;
+  aria-live?: 
+    | "off"
+    | "assertive"
+    | "polite";
+  aria-modal?: 
+    | false
+    | true
+    | "false"
+    | "true";
+  aria-multiline?: 
+    | false
+    | true
+    | "false"
+    | "true";
+  aria-multiselectable?: 
+    | false
+    | true
+    | "false"
+    | "true";
+  aria-orientation?: 
+    | "horizontal"
+    | "vertical";
+  aria-owns?: string;
+  aria-placeholder?: string;
+  aria-posinset?: number;
+  aria-pressed?: 
+    | false
+    | true
+    | "false"
+    | "true"
+    | "mixed";
+  aria-readonly?: 
+    | false
+    | true
+    | "false"
+    | "true";
+  aria-relevant?: 
+    | "all"
+    | "text"
+    | "additions"
+    | "additions text"
+    | "removals";
+  aria-required?: 
+    | false
+    | true
+    | "false"
+    | "true";
+  aria-roledescription?: string;
+  aria-rowcount?: number;
+  aria-rowindex?: number;
+  aria-rowspan?: number;
+  aria-selected?: 
+    | false
+    | true
+    | "false"
+    | "true";
+  aria-setsize?: number;
+  aria-sort?: 
+    | "none"
+    | "ascending"
+    | "descending"
+    | "other";
+  aria-valuemax?: number;
+  aria-valuemin?: number;
+  aria-valuenow?: number;
+  aria-valuetext?: string;
+  as?: string;
+  async?: boolean;
+  autoCapitalize?: string;
+  autoComplete?: string;
+  autoCorrect?: string;
+  autoFocus?: boolean;
+  autoPlay?: boolean;
+  autoSave?: string;
+  capture?: 
+    | string
+    | false
+    | true;
+  cellPadding?: 
+    | string
+    | number;
+  cellSpacing?: 
+    | string
+    | number;
+  challenge?: string;
+  charSet?: string;
+  checked?: boolean;
+  children?: ReactNode;
+  cite?: string;
+  classID?: string;
+  colSpan?: number;
+  color?: string;
+  cols?: number;
+  content?: string;
+  contentEditable?: boolean;
+  contextMenu?: string;
+  controls?: boolean;
+  coords?: string;
+  crossOrigin?: string;
+  dangerouslySetInnerHTML?: { __html: string; };
+  data?: string;
+  datatype?: string;
+  dateTime?: string;
+  default?: boolean;
+  defaultChecked?: boolean;
+  defaultValue?: 
+    | string
+    | string[];
+  defer?: boolean;
+  dir?: string;
+  disabled?: boolean;
+  download?: any;
+  draggable?: boolean;
+  encType?: string;
+  form?: string;
+  formAction?: string;
+  formEncType?: string;
+  formMethod?: string;
+  formNoValidate?: boolean;
+  formTarget?: string;
+  frameBorder?: 
+    | string
+    | number;
+  headers?: string;
+  height?: 
+    | string
+    | number;
+  hidden?: boolean;
+  high?: number;
+  href?: string;
+  hrefLang?: string;
+  htmlFor?: string;
+  httpEquiv?: string;
+  id?: string;
+  inline?: boolean;
+  inlist?: any;
+  inputMode?: string;
+  integrity?: string;
+  is?: string;
+  itemID?: string;
+  itemProp?: string;
+  itemRef?: string;
+  itemScope?: boolean;
+  itemType?: string;
+  keyParams?: string;
+  keyType?: string;
+  kind?: string;
+  label?: string;
+  lang?: string;
+  list?: string;
+  loop?: boolean;
+  low?: number;
+  manifest?: string;
+  marginHeight?: number;
+  marginWidth?: number;
+  max?: 
+    | string
+    | number;
+  maxLength?: number;
+  media?: string;
+  mediaGroup?: string;
+  method?: string;
+  min?: 
+    | string
+    | number;
+  minLength?: number;
+  multiple?: boolean;
+  muted?: boolean;
+  name?: string;
+  noValidate?: boolean;
+  nonce?: string;
+  onAbort?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void;
+  onAbortCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void;
+  onAnimationEnd?: (event: AnimationEvent<HTMLAnchorElement>) => void;
+  onAnimationEndCapture?: (event: AnimationEvent<HTMLAnchorElement>) => void;
+  onAnimationIteration?: (event: AnimationEvent<HTMLAnchorElement>) => void;
+  onAnimationIterationCapture?: (event: AnimationEvent<HTMLAnchorElement>) => void;
+  onAnimationStart?: (event: AnimationEvent<HTMLAnchorElement>) => void;
+  onAnimationStartCapture?: (event: AnimationEvent<HTMLAnchorElement>) => void;
+  onAuxClick?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
+  onAuxClickCapture?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
+  onBeforeInput?: (event: FormEvent<HTMLAnchorElement>) => void;
+  onBeforeInputCapture?: (event: FormEvent<HTMLAnchorElement>) => void;
+  onBlur?: (event: FocusEvent<HTMLAnchorElement>) => void;
+  onBlurCapture?: (event: FocusEvent<HTMLAnchorElement>) => void;
+  onCanPlay?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void;
+  onCanPlayCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void;
+  onCanPlayThrough?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void;
+  onCanPlayThroughCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void;
+  onChange?: (event: FormEvent<HTMLAnchorElement>) => void;
+  onChangeCapture?: (event: FormEvent<HTMLAnchorElement>) => void;
+  onClick?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
+  onClickCapture?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
+  onCompositionEnd?: (event: CompositionEvent<HTMLAnchorElement>) => void;
+  onCompositionEndCapture?: (event: CompositionEvent<HTMLAnchorElement>) => void;
+  onCompositionStart?: (event: CompositionEvent<HTMLAnchorElement>) => void;
+  onCompositionStartCapture?: (event: CompositionEvent<HTMLAnchorElement>) => void;
+  onCompositionUpdate?: (event: CompositionEvent<HTMLAnchorElement>) => void;
+  onCompositionUpdateCapture?: (event: CompositionEvent<HTMLAnchorElement>) => void;
+  onContextMenu?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
+  onContextMenuCapture?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
+  onCopy?: (event: ClipboardEvent<HTMLAnchorElement>) => void;
+  onCopyCapture?: (event: ClipboardEvent<HTMLAnchorElement>) => void;
+  onCut?: (event: ClipboardEvent<HTMLAnchorElement>) => void;
+  onCutCapture?: (event: ClipboardEvent<HTMLAnchorElement>) => void;
+  onDoubleClick?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
+  onDoubleClickCapture?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
+  onDrag?: (event: DragEvent<HTMLAnchorElement>) => void;
+  onDragCapture?: (event: DragEvent<HTMLAnchorElement>) => void;
+  onDragEnd?: (event: DragEvent<HTMLAnchorElement>) => void;
+  onDragEndCapture?: (event: DragEvent<HTMLAnchorElement>) => void;
+  onDragEnter?: (event: DragEvent<HTMLAnchorElement>) => void;
+  onDragEnterCapture?: (event: DragEvent<HTMLAnchorElement>) => void;
+  onDragExit?: (event: DragEvent<HTMLAnchorElement>) => void;
+  onDragExitCapture?: (event: DragEvent<HTMLAnchorElement>) => void;
+  onDragLeave?: (event: DragEvent<HTMLAnchorElement>) => void;
+  onDragLeaveCapture?: (event: DragEvent<HTMLAnchorElement>) => void;
+  onDragOver?: (event: DragEvent<HTMLAnchorElement>) => void;
+  onDragOverCapture?: (event: DragEvent<HTMLAnchorElement>) => void;
+  onDragStart?: (event: DragEvent<HTMLAnchorElement>) => void;
+  onDragStartCapture?: (event: DragEvent<HTMLAnchorElement>) => void;
+  onDrop?: (event: DragEvent<HTMLAnchorElement>) => void;
+  onDropCapture?: (event: DragEvent<HTMLAnchorElement>) => void;
+  onDurationChange?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void;
+  onDurationChangeCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void;
+  onEmptied?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void;
+  onEmptiedCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void;
+  onEncrypted?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void;
+  onEncryptedCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void;
+  onEnded?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void;
+  onEndedCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void;
+  onError?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void;
+  onErrorCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void;
+  onFocus?: (event: FocusEvent<HTMLAnchorElement>) => void;
+  onFocusCapture?: (event: FocusEvent<HTMLAnchorElement>) => void;
+  onGotPointerCapture?: (event: PointerEvent<HTMLAnchorElement>) => void;
+  onGotPointerCaptureCapture?: (event: PointerEvent<HTMLAnchorElement>) => void;
+  onInput?: (event: FormEvent<HTMLAnchorElement>) => void;
+  onInputCapture?: (event: FormEvent<HTMLAnchorElement>) => void;
+  onInvalid?: (event: FormEvent<HTMLAnchorElement>) => void;
+  onInvalidCapture?: (event: FormEvent<HTMLAnchorElement>) => void;
+  onKeyDown?: (event: KeyboardEvent<HTMLAnchorElement>) => void;
+  onKeyDownCapture?: (event: KeyboardEvent<HTMLAnchorElement>) => void;
+  onKeyPress?: (event: KeyboardEvent<HTMLAnchorElement>) => void;
+  onKeyPressCapture?: (event: KeyboardEvent<HTMLAnchorElement>) => void;
+  onKeyUp?: (event: KeyboardEvent<HTMLAnchorElement>) => void;
+  onKeyUpCapture?: (event: KeyboardEvent<HTMLAnchorElement>) => void;
+  onLoad?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void;
+  onLoadCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void;
+  onLoadStart?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void;
+  onLoadStartCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void;
+  onLoadedData?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void;
+  onLoadedDataCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void;
+  onLoadedMetadata?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void;
+  onLoadedMetadataCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void;
+  onLostPointerCapture?: (event: PointerEvent<HTMLAnchorElement>) => void;
+  onLostPointerCaptureCapture?: (event: PointerEvent<HTMLAnchorElement>) => void;
+  onMouseDown?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
+  onMouseDownCapture?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
+  onMouseEnter?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
+  onMouseLeave?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
+  onMouseMove?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
+  onMouseMoveCapture?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
+  onMouseOut?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
+  onMouseOutCapture?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
+  onMouseOver?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
+  onMouseOverCapture?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
+  onMouseUp?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
+  onMouseUpCapture?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
+  onPaste?: (event: ClipboardEvent<HTMLAnchorElement>) => void;
+  onPasteCapture?: (event: ClipboardEvent<HTMLAnchorElement>) => void;
+  onPause?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void;
+  onPauseCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void;
+  onPlay?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void;
+  onPlayCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void;
+  onPlaying?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void;
+  onPlayingCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void;
+  onPointerCancel?: (event: PointerEvent<HTMLAnchorElement>) => void;
+  onPointerCancelCapture?: (event: PointerEvent<HTMLAnchorElement>) => void;
+  onPointerDown?: (event: PointerEvent<HTMLAnchorElement>) => void;
+  onPointerDownCapture?: (event: PointerEvent<HTMLAnchorElement>) => void;
+  onPointerEnter?: (event: PointerEvent<HTMLAnchorElement>) => void;
+  onPointerEnterCapture?: (event: PointerEvent<HTMLAnchorElement>) => void;
+  onPointerLeave?: (event: PointerEvent<HTMLAnchorElement>) => void;
+  onPointerLeaveCapture?: (event: PointerEvent<HTMLAnchorElement>) => void;
+  onPointerMove?: (event: PointerEvent<HTMLAnchorElement>) => void;
+  onPointerMoveCapture?: (event: PointerEvent<HTMLAnchorElement>) => void;
+  onPointerOut?: (event: PointerEvent<HTMLAnchorElement>) => void;
+  onPointerOutCapture?: (event: PointerEvent<HTMLAnchorElement>) => void;
+  onPointerOver?: (event: PointerEvent<HTMLAnchorElement>) => void;
+  onPointerOverCapture?: (event: PointerEvent<HTMLAnchorElement>) => void;
+  onPointerUp?: (event: PointerEvent<HTMLAnchorElement>) => void;
+  onPointerUpCapture?: (event: PointerEvent<HTMLAnchorElement>) => void;
+  onProgress?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void;
+  onProgressCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void;
+  onRateChange?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void;
+  onRateChangeCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void;
+  onReset?: (event: FormEvent<HTMLAnchorElement>) => void;
+  onResetCapture?: (event: FormEvent<HTMLAnchorElement>) => void;
+  onScroll?: (event: UIEvent<HTMLAnchorElement>) => void;
+  onScrollCapture?: (event: UIEvent<HTMLAnchorElement>) => void;
+  onSeeked?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void;
+  onSeekedCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void;
+  onSeeking?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void;
+  onSeekingCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void;
+  onSelect?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void;
+  onSelectCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void;
+  onStalled?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void;
+  onStalledCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void;
+  onSubmit?: (event: FormEvent<HTMLAnchorElement>) => void;
+  onSubmitCapture?: (event: FormEvent<HTMLAnchorElement>) => void;
+  onSuspend?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void;
+  onSuspendCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void;
+  onTimeUpdate?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void;
+  onTimeUpdateCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void;
+  onTouchCancel?: (event: TouchEvent<HTMLAnchorElement>) => void;
+  onTouchCancelCapture?: (event: TouchEvent<HTMLAnchorElement>) => void;
+  onTouchEnd?: (event: TouchEvent<HTMLAnchorElement>) => void;
+  onTouchEndCapture?: (event: TouchEvent<HTMLAnchorElement>) => void;
+  onTouchMove?: (event: TouchEvent<HTMLAnchorElement>) => void;
+  onTouchMoveCapture?: (event: TouchEvent<HTMLAnchorElement>) => void;
+  onTouchStart?: (event: TouchEvent<HTMLAnchorElement>) => void;
+  onTouchStartCapture?: (event: TouchEvent<HTMLAnchorElement>) => void;
+  onTransitionEnd?: (event: TransitionEvent<HTMLAnchorElement>) => void;
+  onTransitionEndCapture?: (event: TransitionEvent<HTMLAnchorElement>) => void;
+  onVolumeChange?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void;
+  onVolumeChangeCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void;
+  onWaiting?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void;
+  onWaitingCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void;
+  onWheel?: (event: WheelEvent<HTMLAnchorElement>) => void;
+  onWheelCapture?: (event: WheelEvent<HTMLAnchorElement>) => void;
+  open?: boolean;
+  optimum?: number;
+  pattern?: string;
+  placeholder?: string;
+  playsInline?: boolean;
+  poster?: string;
+  prefix?: string;
+  preload?: string;
+  property?: string;
+  radioGroup?: string;
+  readOnly?: boolean;
+  rel?: string;
+  required?: boolean;
+  resource?: string;
+  results?: number;
+  reversed?: boolean;
+  role?: string;
+  rowSpan?: number;
+  rows?: number;
+  sandbox?: string;
+  scope?: string;
+  scoped?: boolean;
+  scrolling?: string;
+  seamless?: boolean;
+  security?: string;
+  selected?: boolean;
+  shape?: string;
+  size?: number;
+  sizes?: string;
+  slot?: string;
+  span?: number;
+  spellCheck?: boolean;
+  src?: string;
+  srcDoc?: string;
+  srcLang?: string;
+  srcSet?: string;
+  start?: number;
+  step?: 
+    | string
+    | number;
+  summary?: string;
+  suppressContentEditableWarning?: boolean;
+  suppressHydrationWarning?: boolean;
+  tabIndex?: number;
+  target?: string;
+  title?: string;
+  type?: string;
+  typeof?: string;
+  unselectable?: 
+    | "on"
+    | "off";
+  useMap?: string;
+  value?: 
+    | string
+    | number
+    | string[];
+  vocab?: string;
+  width?: 
+    | string
+    | number;
+  wmode?: string;
+  wrap?: string;
+}
 `;
 
 exports[`TextLinkRenderer 1`] = `
-children: (styleProps: StyleProps) => ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>
-inline?: boolean
+{
+  children: (styleProps: StyleProps) => ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>;
+  inline?: boolean;
+}
 `;
 
 exports[`Textarea 1`] = `
-aria-describedby?: string
-autoComplete?: string
-characterLimit?: number
-data?: Record<string, ReactText>
-description?: ReactNode
-disabled?: boolean
-grow?: boolean
-id: string
-label?: ReactNode
-lineLimit?: number
-lines?: number
-message?: ReactNode
-name?: string
-onBlur?: (event: FocusEvent<HTMLTextAreaElement>) => void
-onChange: (event: FormEvent<HTMLTextAreaElement>) => void
-onFocus?: (event: FocusEvent<HTMLTextAreaElement>) => void
-placeholder?: string
-ref?: 
-  | (instance: HTMLTextAreaElement | null) => void
-  | RefObject<HTMLTextAreaElement>
-reserveMessageSpace?: boolean
-secondaryLabel?: ReactNode
-tertiaryLabel?: ReactNode
-tone?: 
-  | "critical"
-  | "positive"
-  | "neutral"
-value: 
-  | string
-  | number
-  | string[]
+{
+  aria-describedby?: string;
+  autoComplete?: string;
+  characterLimit?: number;
+  data?: Record<string, ReactText>;
+  description?: ReactNode;
+  disabled?: boolean;
+  grow?: boolean;
+  id: string;
+  label?: ReactNode;
+  lineLimit?: number;
+  lines?: number;
+  message?: ReactNode;
+  name?: string;
+  onBlur?: (event: FocusEvent<HTMLTextAreaElement>) => void;
+  onChange: (event: FormEvent<HTMLTextAreaElement>) => void;
+  onFocus?: (event: FocusEvent<HTMLTextAreaElement>) => void;
+  placeholder?: string;
+  ref?: 
+    | (instance: HTMLTextAreaElement | null) => void
+    | RefObject<HTMLTextAreaElement>;
+  reserveMessageSpace?: boolean;
+  secondaryLabel?: ReactNode;
+  tertiaryLabel?: ReactNode;
+  tone?: 
+    | "critical"
+    | "positive"
+    | "neutral";
+  value: 
+    | string
+    | number
+    | string[];
+}
 `;
 
-exports[`ThemeNameConsumer 1`] = `children: (name: string) => ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>`;
+exports[`ThemeNameConsumer 1`] = `
+{
+  children: (name: string) => ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>;
+}
+`;
 
 exports[`TickCircleIcon 1`] = `
-inline?: boolean
-size?: 
-  | "fill"
-  | "small"
-  | "large"
-  | "standard"
-tone?: 
-  | "info"
-  | "critical"
-  | "positive"
-  | "formAccent"
-  | "link"
-  | "neutral"
-  | "secondary"
+{
+  inline?: boolean;
+  size?: 
+    | "fill"
+    | "small"
+    | "large"
+    | "standard";
+  tone?: 
+    | "info"
+    | "critical"
+    | "positive"
+    | "formAccent"
+    | "link"
+    | "neutral"
+    | "secondary";
+}
 `;
 
 exports[`TickIcon 1`] = `
-inline?: boolean
-size?: 
-  | "fill"
-  | "small"
-  | "large"
-  | "standard"
-tone?: 
-  | "info"
-  | "critical"
-  | "positive"
-  | "formAccent"
-  | "link"
-  | "neutral"
-  | "secondary"
+{
+  inline?: boolean;
+  size?: 
+    | "fill"
+    | "small"
+    | "large"
+    | "standard";
+  tone?: 
+    | "info"
+    | "critical"
+    | "positive"
+    | "formAccent"
+    | "link"
+    | "neutral"
+    | "secondary";
+}
 `;
 
-exports[`useThemeName 1`] = ``;
+exports[`useThemeName 1`] = `
+{
+}
+`;

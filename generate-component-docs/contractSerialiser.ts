@@ -1,11 +1,5 @@
 import sortBy from 'lodash/sortBy';
-import { PropDetails, NormalisedPropType } from './generate';
-
-interface ComponentContract {
-  props: {
-    [propName: string]: PropDetails;
-  };
-}
+import { NormalisedPropType } from './generate';
 
 export const typeSerializer = {
   print: (
@@ -21,6 +15,15 @@ export const typeSerializer = {
           return `\n${indent(`| ${serializer(subType)}`)}`;
         })
         .join('');
+    } else if (type.type === 'interface') {
+      return `{${sortBy(Object.values(type.props), ({ propName }) => propName)
+        .map(
+          ({ propName, required, type: propType }) =>
+            `\n${indent(
+              `${propName}${required ? '' : '?'}: ${serializer(propType)};`,
+            )}`,
+        )
+        .join('')}\n}`;
     } else {
       return `${type.alias}<${type.params
         .map(param => `${serializer(param)}`)
@@ -29,25 +32,10 @@ export const typeSerializer = {
   },
 
   test: (val: any) => {
-    return (
-      typeof val === 'string' ||
-      ((typeof val === 'object' && val.type === 'union') ||
-        (typeof val === 'object' && val.type === 'alias'))
-    );
-  },
-};
+    if (typeof val === 'object') {
+      return ['union', 'interface', 'alias'].includes(val.type);
+    }
 
-export const contractSerializer = {
-  print: ({ props }: ComponentContract, serializer: (value: any) => string) => {
-    return sortBy(Object.values(props), ({ propName }) => propName)
-      .map(
-        ({ propName, required, type }) =>
-          `${propName}${required ? '' : '?'}: ${serializer(type)}`,
-      )
-      .join('\n');
-  },
-
-  test: (val: any) => {
-    return val && val.hasOwnProperty('props');
+    return typeof val === 'string';
   },
 };
