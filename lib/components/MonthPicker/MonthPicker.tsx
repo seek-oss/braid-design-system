@@ -12,8 +12,8 @@ import { FieldGroup } from '../private/FieldGroup/FieldGroup';
 import * as styleRefs from './MonthPicker.treat';
 
 interface MonthPickerValue {
-  month: number | undefined;
-  year: number | undefined;
+  month?: number;
+  year?: number;
 }
 
 type FocusHandler = () => void;

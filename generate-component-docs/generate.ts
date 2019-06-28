@@ -9,16 +9,32 @@ const propBlacklist = ['key'];
 const tsconfigPath = path.join(__dirname, '../tsconfig.json');
 const componentsFile = path.join(__dirname, '../lib/components/index.ts');
 
-export interface PropDetails {
-  propName: string;
-  required: boolean;
-  type: NormalisedPropType;
+const reactNodeType =
+  'string | number | boolean | {} | ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)> | ReactNodeArray | ReactPortal';
+
+const stringAliases: Record<string, string> = {
+  [reactNodeType]: 'ReactNode',
+  // with an explicit alias 'boolean' becomes a union of 'true' | 'false'
+  boolean: 'boolean',
+  CSSProperties: 'CSSProperties',
+};
+
+export interface NormalisedInterface {
+  type: 'interface';
+  props: {
+    [propName: string]: {
+      propName: string;
+      required: boolean;
+      type: NormalisedPropType;
+    };
+  };
 }
 
 export type NormalisedPropType =
   | string
   | { type: 'union'; types: Array<NormalisedPropType> }
-  | { type: 'alias'; alias: string; params: Array<NormalisedPropType> };
+  | { type: 'alias'; alias: string; params: Array<NormalisedPropType> }
+  | NormalisedInterface;
 
 export default () => {
   const basePath = path.dirname(tsconfigPath);
@@ -73,9 +89,54 @@ export default () => {
     return null;
   };
 
-  const normaliseType = (type: ts.Type): NormalisedPropType => {
-    if (checker.typeToString(type) === 'boolean') {
-      return 'boolean';
+  const normalizeInterface = (
+    propsType: ts.Type,
+    propsObj: ts.Symbol,
+  ): NormalisedInterface => {
+    return {
+      type: 'interface',
+      props: Object.assign(
+        {},
+        ...propsType
+          .getProperties()
+          .filter(prop => !propBlacklist.includes(prop.getName()))
+          .map(prop => {
+            const propName = prop.getName();
+
+            // Find type of prop by looking in context of the props object itself.
+            const propType = checker
+              .getTypeOfSymbolAtLocation(prop, propsObj.valueDeclaration)
+              .getNonNullableType();
+
+            const isOptional =
+              (prop.getFlags() & ts.SymbolFlags.Optional) !== 0;
+
+            const typeAlias = checker.typeToString(
+              checker.getTypeAtLocation(prop.valueDeclaration),
+            );
+
+            return {
+              [propName]: {
+                propName,
+                required: !isOptional,
+                type: aliasWhitelist.includes(typeAlias)
+                  ? typeAlias
+                  : normaliseType(propType, propsObj),
+              },
+            };
+          }),
+      ),
+    };
+  };
+
+  const normaliseType = (
+    type: ts.Type,
+    propsObj: ts.Symbol,
+  ): NormalisedPropType => {
+    const typeString = checker.typeToString(type);
+
+    if (stringAliases[typeString]) {
+      return stringAliases[typeString];
     }
 
     if (type.aliasSymbol) {
@@ -84,7 +145,9 @@ export default () => {
       if (aliasWhitelist.includes(alias)) {
         return {
           params: type.aliasTypeArguments
-            ? type.aliasTypeArguments.map(aliasArg => normaliseType(aliasArg))
+            ? type.aliasTypeArguments.map(aliasArg =>
+                normaliseType(aliasArg, propsObj),
+              )
             : [],
           alias,
           type: 'alias',
@@ -95,54 +158,30 @@ export default () => {
     if (type.isUnion()) {
       return {
         type: 'union',
-        types: type.types.map(unionItem => normaliseType(unionItem)),
+        types: type.types.map(unionItem => normaliseType(unionItem, propsObj)),
       };
     }
 
-    return checker.typeToString(type);
+    if (type.isClassOrInterface()) {
+      return normalizeInterface(type, propsObj);
+    }
+
+    return typeString;
   };
 
   const getComponentDocs = (exp: ts.Symbol) => {
     const propsObj = getComponentPropsType(exp);
 
     if (!propsObj || !propsObj.valueDeclaration) {
-      return {};
+      return { type: 'interface', props: {} };
     }
+
     const propsType = checker.getTypeOfSymbolAtLocation(
       propsObj,
       propsObj.valueDeclaration,
     );
 
-    return Object.assign(
-      {},
-      ...propsType
-        .getProperties()
-        .filter(prop => !propBlacklist.includes(prop.getName()))
-        .map(prop => {
-          const propName = prop.getName();
-
-          // Find type of prop by looking in context of the props object itself.
-          const propType = checker
-            .getTypeOfSymbolAtLocation(prop, propsObj.valueDeclaration)
-            .getNonNullableType();
-
-          const isOptional = (prop.getFlags() & ts.SymbolFlags.Optional) !== 0;
-
-          const typeAlias = checker.typeToString(
-            checker.getTypeAtLocation(prop.valueDeclaration),
-          );
-
-          return {
-            [propName]: {
-              propName,
-              required: !isOptional,
-              type: aliasWhitelist.includes(typeAlias)
-                ? typeAlias
-                : normaliseType(propType),
-            },
-          };
-        }),
-    );
+    return normalizeInterface(propsType, propsObj);
   };
 
   for (const sourceFile of program.getSourceFiles()) {
@@ -157,9 +196,9 @@ export default () => {
           {},
           ...checker.getExportsOfModule(moduleSymbol).map(moduleExport => {
             return {
-              [moduleExport.escapedName as string]: {
-                props: getComponentDocs(moduleExport),
-              },
+              [moduleExport.escapedName as string]: getComponentDocs(
+                moduleExport,
+              ),
             };
           }),
         );
