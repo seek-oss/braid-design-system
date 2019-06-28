@@ -16,6 +16,7 @@ const stringAliases: Record<string, string> = {
   [reactNodeType]: 'ReactNode',
   // with an explicit alias 'boolean' becomes a union of 'true' | 'false'
   boolean: 'boolean',
+  CSSProperties: 'CSSProperties',
 };
 
 export interface NormalisedInterface {
