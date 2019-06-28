@@ -10,10 +10,6 @@
   <hr />
 </div>
 
-```bash
-$ npm install --save braid-design-system
-```
-
 ## Setup
 
 > This guide is currently optimised for usage with [sku](https://github.com/seek-oss/sku), since it's configured to support Braid out of the box. If your project has a custom build setup, you'll need some extra guidance from project contributors to configure your bundler.
