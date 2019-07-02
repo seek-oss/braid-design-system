@@ -2,7 +2,6 @@ import React, { ReactNode, AllHTMLAttributes, forwardRef } from 'react';
 import { useStyles } from 'sku/react-treat';
 import classnames from 'classnames';
 import { Box } from '../../Box/Box';
-import { BackgroundProvider } from '../../Box/BackgroundContext';
 import { FieldLabelProps } from '../../FieldLabel/FieldLabel';
 import {
   FieldMessage,
@@ -34,9 +33,42 @@ export interface InlineFieldProps {
   data?: DataAttributeMap;
 }
 
+type FieldType = 'checkbox' | 'radio';
 interface InternalInlineFieldProps extends InlineFieldProps {
-  type: 'checkbox' | 'radio';
+  type: FieldType;
 }
+
+const Indicator = ({
+  type,
+  hover = false,
+  disabled = false,
+}: {
+  type: FieldType;
+  hover?: boolean;
+  disabled?: boolean;
+}) => {
+  const styles = useStyles(styleRefs);
+  const isCheckbox = type === 'checkbox';
+
+  return isCheckbox ? (
+    <Box transition="fast" className={styles.indicator}>
+      <TickIcon
+        size="fill"
+        tone={disabled ? 'secondary' : hover ? 'formAccent' : undefined}
+      />
+    </Box>
+  ) : (
+    <Box
+      background={disabled ? 'formAccentDisabled' : 'formAccent'}
+      borderRadius={isCheckbox ? 'standard' : undefined}
+      transition="fast"
+      width="full"
+      className={classnames(styles.indicator, styles.radio, {
+        [styles.circle]: !isCheckbox,
+      })}
+    />
+  );
+};
 
 export const InlineField = forwardRef<HTMLElement, InternalInlineFieldProps>(
   (
@@ -58,17 +90,17 @@ export const InlineField = forwardRef<HTMLElement, InternalInlineFieldProps>(
     ref,
   ) => {
     const styles = useStyles(styleRefs);
-    const messageId = `${id}-message`;
-    const isCheckbox = type === 'checkbox';
-    const radioStyles = {
-      [styles.circle]: type === 'radio',
-    };
-    const fieldBorderRadius = isCheckbox ? 'standard' : undefined;
 
     if (tones.indexOf(tone) === -1) {
       throw new Error(`Invalid tone: ${tone}`);
     }
 
+    const messageId = `${id}-message`;
+    const isCheckbox = type === 'checkbox';
+    const circleIfRadio = {
+      [styles.circle]: type === 'radio',
+    };
+    const fieldBorderRadius = isCheckbox ? 'standard' : undefined;
     const accentBackground = disabled ? 'formAccentDisabled' : 'formAccent';
 
     return (
@@ -81,7 +113,7 @@ export const InlineField = forwardRef<HTMLElement, InternalInlineFieldProps>(
           onChange={onChange}
           value={value}
           checked={checked}
-          className={classnames(styles.realField, styles.fieldSize)}
+          className={classnames(styles.realField, styles.realFieldSize)}
           aria-describedby={messageId}
           disabled={disabled}
           ref={ref}
@@ -91,10 +123,9 @@ export const InlineField = forwardRef<HTMLElement, InternalInlineFieldProps>(
           <Box
             className={classnames(
               styles.fakeField,
-              styles.fieldSize,
-              radioStyles,
+              styles.fakeFieldSize,
+              circleIfRadio,
             )}
-            marginRight="small"
             background={disabled ? 'inputDisabled' : 'input'}
             borderRadius={fieldBorderRadius}
             boxShadow={
@@ -105,33 +136,29 @@ export const InlineField = forwardRef<HTMLElement, InternalInlineFieldProps>(
           >
             <FieldOverlay
               variant={tone === 'critical' && isCheckbox ? tone : undefined}
-              background={accentBackground}
+              background={isCheckbox ? accentBackground : undefined}
               borderRadius={fieldBorderRadius}
-              className={classnames(styles.selected, radioStyles)}
-            />
-            {isCheckbox ? (
-              <Box transition="fast" width="full" className={styles.icon}>
-                <BackgroundProvider value={accentBackground}>
-                  <TickIcon
-                    size="fill"
-                    tone={disabled ? 'secondary' : undefined}
-                  />
-                </BackgroundProvider>
-              </Box>
-            ) : null}
+              className={classnames(styles.selected, circleIfRadio)}
+            >
+              <Indicator type={type} disabled={disabled} />
+            </FieldOverlay>
+
             <FieldOverlay
               variant="focus"
               borderRadius={fieldBorderRadius}
-              className={classnames(styles.focusOverlay, radioStyles)}
+              className={classnames(styles.focusOverlay, circleIfRadio)}
             />
             <FieldOverlay
               variant="hover"
               borderRadius={fieldBorderRadius}
-              className={classnames(styles.hoverOverlay, radioStyles)}
-            />
+              className={classnames(styles.hoverOverlay, circleIfRadio)}
+            >
+              <Indicator type={type} hover={true} />
+            </FieldOverlay>
           </Box>
           <Box
             component="label"
+            paddingLeft="small"
             htmlFor={id}
             className={classnames(styles.label, useTouchableSpace('standard'))}
           >
