@@ -3,6 +3,7 @@ import { rgba } from 'polished';
 
 const focus = rgba('#1e90ff', 0.7);
 const formAccent = '#2765cf';
+const brand = '#0d3880';
 const brandAccent = '#e60278';
 const positive = '#169400';
 const critical = brandAccent;
@@ -154,6 +155,7 @@ const tokens: TreatTokens = {
       secondary: '#1c1c1ca1',
     },
     background: {
+      brand,
       input: '#fff',
       inputDisabled: '#eee',
       brandAccent,

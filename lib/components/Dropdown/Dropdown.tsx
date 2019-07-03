@@ -95,7 +95,7 @@ export const Dropdown = forwardRef<HTMLSelectElement, DropdownProps>(
               display="flex"
               className={styles.chevron}
             >
-              <ChevronIcon inline />
+              <ChevronIcon tone="neutral" inline />
             </Box>
           </Fragment>
         )}

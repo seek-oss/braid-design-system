@@ -1,11 +1,13 @@
 import makeTokens from '../seekAsia/makeTokens';
 
+const brand = '#1c3f94';
 const info = '#142d69';
 
 export default makeTokens({
   name: 'jobStreetClassic',
-  formAccent: '#1c3f94',
+  brand,
   brandAccent: '#fff200',
+  formAccent: brand,
   tokenOverrides: {
     typography: {
       fontFamily:

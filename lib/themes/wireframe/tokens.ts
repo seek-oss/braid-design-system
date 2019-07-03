@@ -153,6 +153,7 @@ const tokens: TreatTokens = {
       secondary: '#777',
     },
     background: {
+      brand: black,
       input: white,
       inputDisabled: '#eee',
       brandAccent,
