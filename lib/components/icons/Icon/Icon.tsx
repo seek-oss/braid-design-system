@@ -39,6 +39,7 @@ export const Icon = ({
       component={svgComponent}
       width={size === 'fill' ? 'full' : undefined}
       display={inline ? 'inlineBlock' : 'block'}
+      position={inline ? 'relative' : undefined}
       className={classnames(
         resolveSizeClasses(size, inline),
         styles.currentColor,

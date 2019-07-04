@@ -81,7 +81,7 @@ export const Field = forwardRef<FieldRef, InternalFieldProps>(
           tertiaryLabel={tertiaryLabel}
           description={description}
         />
-        <Box className={styles.fieldContainer}>
+        <Box position="relative">
           {children(
             {
               id,

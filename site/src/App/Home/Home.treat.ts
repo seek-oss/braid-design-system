@@ -1,7 +1,6 @@
 import { style, globalStyle } from 'sku/treat';
 
 export const source = style({
-  position: 'absolute',
   top: 0,
   right: 0,
   height: '10vh',

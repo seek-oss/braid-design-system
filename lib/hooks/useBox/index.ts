@@ -24,6 +24,7 @@ export interface UseBoxProps {
   transform?: keyof typeof styleRefs.transform;
   transition?: keyof typeof styleRefs.transition;
   width?: keyof typeof styleRefs.width;
+  position?: keyof typeof styleRefs.position;
 }
 
 function getResponsiveClasses<PropName extends string>(
@@ -59,6 +60,7 @@ export default ({
   transition,
   transform,
   width,
+  position,
 }: UseBoxProps) => {
   const resetStyles = useStyles(resetStyleRefs);
   const styles = useStyles(styleRefs);
@@ -72,6 +74,7 @@ export default ({
     styles.transition[transition!],
     styles.transform[transform!],
     styles.width[width!],
+    styles.position[position!],
     marginTop &&
       getResponsiveClasses(
         styles.margin.top,

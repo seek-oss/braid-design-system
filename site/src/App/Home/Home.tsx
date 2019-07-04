@@ -81,7 +81,7 @@ export const Home = () => {
             </Box>
           </Box>
 
-          <Box className={styles.source}>
+          <Box position="absolute" className={styles.source}>
             <a
               href="https://github.com/seek-oss/braid-design-system"
               title="View on GitHub"

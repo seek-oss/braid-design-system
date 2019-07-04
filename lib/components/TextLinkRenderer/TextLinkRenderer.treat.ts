@@ -13,11 +13,6 @@ export const button = style({
   textAlign: 'center',
 });
 
-export const overlayContainer = style({
-  display: 'block',
-  position: 'relative',
-});
-
 export const focusOverlay = style({
   selectors: {
     [`${root}:focus ~ &`]: {

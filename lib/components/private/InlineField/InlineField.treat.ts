@@ -11,7 +11,6 @@ const getSize = ({ spacing, typography, utils }: Theme) => {
 };
 
 export const realField = style({
-  position: 'absolute',
   opacity: 0,
   zIndex: 1,
   selectors: {
@@ -27,7 +26,6 @@ export const realFieldSize = style(({ spacing, utils }) => ({
 }));
 
 export const fakeField = style({
-  position: 'relative',
   flexShrink: 0,
 });
 

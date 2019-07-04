@@ -5,6 +5,7 @@ import ActionsContext from '../Actions/ActionsContext';
 import { Text } from '../Text/Text';
 import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
 import useBox from '../../hooks/useBox';
+import { Box } from '../Box/Box';
 import {
   useTextTone,
   useTouchableSpace,
@@ -51,7 +52,7 @@ export const TextLinkRenderer = ({
 
     return (
       <Text baseline={false}>
-        <span className={styles.overlayContainer}>
+        <Box component="span" display="block" position="relative">
           {children({
             style: {},
             className: classnames(
@@ -62,7 +63,7 @@ export const TextLinkRenderer = ({
             ),
           })}
           <FieldOverlay variant="focus" className={styles.focusOverlay} />
-        </span>
+        </Box>
       </Text>
     );
   }

@@ -7,8 +7,13 @@ export const Divider = () => {
   const styles = useStyles(styleRefs);
 
   return (
-    <Box className={styles.root}>
-      <Box boxShadow="borderStandard" width="full" className={styles.divider} />
+    <Box position="relative">
+      <Box
+        position="absolute"
+        boxShadow="borderStandard"
+        width="full"
+        className={styles.divider}
+      />
     </Box>
   );
 };

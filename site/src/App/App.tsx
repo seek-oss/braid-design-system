@@ -4,7 +4,7 @@ import React from 'react';
 import { withRouter, Route } from 'react-router';
 import { CSSTransition } from 'react-transition-group';
 
-import { BraidProvider } from '../../../lib/components';
+import { BraidProvider, Box } from '../../../lib/components';
 import { Home } from './Home/Home';
 import { Components } from './Components/Components';
 import * as styles from './App.treat';
@@ -31,9 +31,9 @@ export const App = withRouter(() => (
               classNames={{ ...styles }}
               unmountOnExit
             >
-              <div className={styles.transitionContainer}>
+              <Box position="absolute" className={styles.transitionContainer}>
                 <Component />
-              </div>
+              </Box>
             </CSSTransition>
           )}
         </Route>

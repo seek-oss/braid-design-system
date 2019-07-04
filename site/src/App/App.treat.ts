@@ -22,7 +22,6 @@ export const exitActive = style({
 });
 
 export const transitionContainer = style({
-  position: 'absolute',
   top: 0,
   bottom: 0,
   left: 0,

@@ -9,7 +9,6 @@ const mobile = `screen and (max-width: ${breakpoint - 1}px)`;
 const desktop = `screen and (min-width: ${breakpoint}px)`;
 
 export const header = style({
-  position: 'fixed',
   background: 'white',
   alignItems: 'center',
   justifyContent: 'space-between',
@@ -28,7 +27,6 @@ export const container = style({
 export const menuOpen = style({});
 
 export const menu = style({
-  position: 'fixed',
   zIndex: 2,
   top: headerHeight,
   left: 0,
