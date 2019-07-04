@@ -97,6 +97,7 @@ export interface TreatTokens {
       secondary: string;
     };
     background: {
+      brand: string;
       input: string;
       inputDisabled: string;
       brandAccent: string;

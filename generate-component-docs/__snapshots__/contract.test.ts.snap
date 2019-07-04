@@ -196,6 +196,7 @@ exports[`Box 1`] = `
     | "info"
     | "critical"
     | "positive"
+    | "brand"
     | "input"
     | "inputDisabled"
     | "brandAccent"

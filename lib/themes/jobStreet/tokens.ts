@@ -1,7 +1,10 @@
 import makeTokens from '../seekAsia/makeTokens';
 
+const brand = '#1c3f94';
+
 export default makeTokens({
   name: 'jobStreet',
-  formAccent: '#1c3f94',
+  brand,
   brandAccent: '#fff200',
+  formAccent: brand,
 });
