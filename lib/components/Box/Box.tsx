@@ -27,6 +27,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       transition,
       transform,
       width,
+      position,
       className,
       ...restProps
     },
@@ -50,6 +51,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       transition,
       transform,
       width,
+      position,
     });
 
     const element = createElement(component, {

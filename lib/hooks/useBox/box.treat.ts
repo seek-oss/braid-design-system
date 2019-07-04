@@ -107,6 +107,13 @@ const widthRules = {
 };
 export const width = styleMap(mapToStyleProperty(widthRules, 'width'));
 
+const positionRules = {
+  absolute: 'absolute',
+  relative: 'relative',
+  fixed: 'fixed',
+};
+export const position = styleMap(mapToStyleProperty(positionRules, 'position'));
+
 const displayRules = {
   block: 'block',
   inline: 'inline',

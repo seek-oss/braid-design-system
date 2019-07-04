@@ -59,6 +59,7 @@ export const Button = ({
       type={type}
       aria-describedby={ariaDescribedBy}
       width="full"
+      position="relative"
       display="block"
       borderRadius="standard"
       boxShadow={isWeak ? 'borderFormAccentLarge' : undefined}
@@ -83,6 +84,7 @@ export const Button = ({
         className={classnames(styles.activeOverlay)}
       />
       <Box
+        position="relative"
         paddingLeft="gutter"
         paddingRight="gutter"
         className={classnames(styles.content, useTouchableSpace('standard'))}

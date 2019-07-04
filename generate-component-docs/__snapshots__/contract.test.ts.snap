@@ -750,6 +750,10 @@ exports[`Box 1`] = `
   pattern?: string
   placeholder?: string
   playsInline?: boolean
+  position?: 
+    | "fixed"
+    | "absolute"
+    | "relative"
   poster?: string
   prefix?: string
   preload?: string

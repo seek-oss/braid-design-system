@@ -3,7 +3,6 @@ import mapValues from 'lodash/mapValues';
 
 export const inline = style({
   verticalAlign: 'middle',
-  position: 'relative',
   top: '-0.105em', // Arbitrary magic number, to vertically align to text
 });
 

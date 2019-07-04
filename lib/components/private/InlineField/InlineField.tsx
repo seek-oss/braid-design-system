@@ -113,6 +113,7 @@ export const InlineField = forwardRef<HTMLElement, InternalInlineFieldProps>(
           onChange={onChange}
           value={value}
           checked={checked}
+          position="absolute"
           className={classnames(styles.realField, styles.realFieldSize)}
           aria-describedby={messageId}
           disabled={disabled}
@@ -121,6 +122,7 @@ export const InlineField = forwardRef<HTMLElement, InternalInlineFieldProps>(
         />
         <Box display="flex">
           <Box
+            position="relative"
             className={classnames(
               styles.fakeField,
               styles.fakeFieldSize,

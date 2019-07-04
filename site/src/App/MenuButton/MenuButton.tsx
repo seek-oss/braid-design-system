@@ -1,7 +1,7 @@
 import React from 'react';
 import { useStyles } from 'sku/react-treat';
 import classnames from 'classnames';
-import { Hidden } from '../../../../lib/components';
+import { Hidden, Box } from '../../../../lib/components';
 import * as styleRefs from './MenuButton.treat';
 
 interface MenuButtonProps {
@@ -14,7 +14,9 @@ export const MenuButton = ({ open = false, onClick }: MenuButtonProps) => {
 
   return (
     <Hidden print>
-      <button
+      <Box
+        component="button"
+        position="relative"
         className={classnames({
           [styles.root]: true,
           [styles.isOpen]: open,
@@ -22,10 +24,19 @@ export const MenuButton = ({ open = false, onClick }: MenuButtonProps) => {
         onClick={onClick}
         aria-label={open ? 'Close menu' : 'Open menu'}
       >
-        <div className={classnames(styles.bar, styles.bar1)} />
-        <div className={classnames(styles.bar, styles.bar2)} />
-        <div className={classnames(styles.bar, styles.bar3)} />
-      </button>
+        <Box
+          position="absolute"
+          className={classnames(styles.bar, styles.bar1)}
+        />
+        <Box
+          position="absolute"
+          className={classnames(styles.bar, styles.bar2)}
+        />
+        <Box
+          position="absolute"
+          className={classnames(styles.bar, styles.bar3)}
+        />
+      </Box>
     </Hidden>
   );
 };

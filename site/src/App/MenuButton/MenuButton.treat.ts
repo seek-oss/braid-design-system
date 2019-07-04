@@ -4,7 +4,6 @@ export const isOpen = style({});
 export const isHidden = style({});
 
 export const root = style({
-  position: 'relative',
   cursor: 'pointer',
   width: '31px',
   height: '27px',
@@ -25,7 +24,6 @@ export const root = style({
 });
 
 export const bar = style({
-  position: 'absolute',
   left: 0,
   right: 0,
   height: '5px',

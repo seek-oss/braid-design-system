@@ -27,6 +27,7 @@ export const Components = withRouter(({ location }: RouteComponentProps) => {
             paddingBottom="large"
             paddingLeft="gutter"
             paddingRight="gutter"
+            position="fixed"
             display="flex"
             width="full"
             className={styles.header}
@@ -49,7 +50,8 @@ export const Components = withRouter(({ location }: RouteComponentProps) => {
             className={styles.container}
           >
             <Hidden print>
-              <div
+              <Box
+                position="fixed"
                 className={`${styles.menu} ${
                   isMenuOpen ? styles.menuOpen : ''
                 }`}
@@ -134,7 +136,7 @@ export const Components = withRouter(({ location }: RouteComponentProps) => {
                       ))}
                   </BulletList>
                 </Box>
-              </div>
+              </Box>
             </Hidden>
             <Box
               paddingLeft="gutter"

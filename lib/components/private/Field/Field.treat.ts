@@ -1,9 +1,5 @@
 import { style } from 'sku/treat';
 
-export const fieldContainer = style({
-  position: 'relative',
-});
-
 export const field = style({
   outline: 'none',
 });
