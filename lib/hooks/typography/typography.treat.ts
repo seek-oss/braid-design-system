@@ -163,6 +163,9 @@ export const backgroundContrast: BackgroundContrast = {
     default: accessibleColorVariants.info,
     info: accessibleColorVariants.info,
   },
+  brand: {
+    default: textColorForBackground('brand'),
+  },
   brandAccent: {
     default: textColorForBackground('brandAccent'),
   },

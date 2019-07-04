@@ -4,12 +4,14 @@ import merge from 'lodash/merge';
 
 interface SeekAsiaBrandTokens {
   name: string;
+  brand: string;
   brandAccent: string;
   formAccent: string;
   tokenOverrides?: DeepPartial<TreatTokens>;
 }
 export default ({
   name,
+  brand,
   brandAccent,
   formAccent,
   tokenOverrides = {},
@@ -175,6 +177,7 @@ export default ({
         secondary: grey2,
       },
       background: {
+        brand,
         input: white,
         inputDisabled: grey4,
         brandAccent,
