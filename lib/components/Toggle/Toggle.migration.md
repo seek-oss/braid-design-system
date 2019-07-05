@@ -5,7 +5,7 @@
 - `checked={boolean}` is now `on={boolean}`.
 - `hideLabel={boolean}` has been removed.
 - `children` are no longer accepted.
-- `position={'left'|'right'}` has been replaced by `align={left|right}`, where the arrangement still flips but the toggle is also now right aligned in the parent container. Also applies for the `toggleAfterLabel=(boolean)` in Seek Asia Style Guide.
+- `position={'left'|'right'}` has been replaced by `align={'left'|'right'}`. Please note that visual impact of these `'left'` and `'right'` values has been flipped (e.g. `position="left" is equivalent to `align="right"`), and `align="right"` also aligns the toggle to the right of its parent container. Also applies for the `toggleAfterLabel=(boolean)` in Seek Asia Style Guide.
 - No longer accepts arbitrary DOM properties, e.g. `className`. Please check that everything you need is exposed via the [public API.](https://seek-oss.github.io/braid-design-system/components/Toggle)
 
 ## TBD
