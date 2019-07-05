@@ -1,19 +1,18 @@
-import React, { AllHTMLAttributes, ChangeEvent } from 'react';
+import React, { AllHTMLAttributes, ChangeEvent, ReactNode } from 'react';
 import { useStyles } from 'sku/react-treat';
 import classnames from 'classnames';
 import { Box } from '../Box/Box';
-import { FieldLabelProps } from '../FieldLabel/FieldLabel';
 import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
 import { Text } from '../Text/Text';
+import { TickIcon } from '../icons/TickIcon/TickIcon';
 import { useTouchableSpace } from '../../hooks/typography';
 import * as styleRefs from './Toggle.treat';
-import { TickIcon } from '../icons/TickIcon/TickIcon';
 
 type HTMLInputProps = AllHTMLAttributes<HTMLInputElement>;
 type ChangeHandler = (value: boolean) => void;
 export interface ToggleProps {
   id: NonNullable<HTMLInputProps['id']>;
-  label: FieldLabelProps['label'];
+  label: ReactNode;
   on: boolean;
   onChange: ChangeHandler;
   align?: 'left' | 'right';
@@ -92,8 +91,8 @@ export const Toggle = ({
       <Box
         component="label"
         htmlFor={id}
-        paddingLeft={align === 'left' ? 'small' : undefined}
-        paddingRight={align === 'right' ? 'small' : undefined}
+        paddingLeft={align === 'left' ? 'xsmall' : undefined}
+        paddingRight={align === 'right' ? 'xsmall' : undefined}
         className={classnames(styles.label, useTouchableSpace('standard'))}
       >
         <Text baseline={false} weight={on ? 'strong' : undefined}>
