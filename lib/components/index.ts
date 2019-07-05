@@ -27,6 +27,7 @@ export { Textarea } from './Textarea/Textarea';
 export { TextField } from './TextField/TextField';
 export { TextLink } from './TextLink/TextLink';
 export { TextLinkRenderer } from './TextLinkRenderer/TextLinkRenderer';
+export { Toggle } from './Toggle/Toggle';
 export { ChevronIcon } from './icons/ChevronIcon/ChevronIcon';
 export { ErrorIcon } from './icons/ErrorIcon/ErrorIcon';
 export { InfoIcon } from './icons/InfoIcon/InfoIcon';

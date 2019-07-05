@@ -1,14 +1,5 @@
 import { style } from 'sku/treat';
-import { Theme } from 'treat/theme';
-
-const getSize = ({ spacing, typography, utils }: Theme) => {
-  // We currently don't support responsive checkboxes and
-  // radio buttons, but nobody actually needs it (so far)
-  const scale = typography.text.standard.mobile.size / 28;
-  const rows = Math.round(spacing.touchableRows * scale);
-
-  return utils.rows(rows);
-};
+import getSize from './getSize';
 
 export const realField = style({
   opacity: 0,
