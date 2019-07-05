@@ -13,6 +13,16 @@ export default makeTokens({
       fontFamily:
         '"Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif',
       text: {
+        xsmall: {
+          mobile: {
+            size: 11,
+            rows: 4,
+          },
+          desktop: {
+            size: 11,
+            rows: 4,
+          },
+        },
         small: {
           mobile: {
             size: 12,

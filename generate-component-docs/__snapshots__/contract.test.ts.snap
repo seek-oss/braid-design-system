@@ -20,6 +20,21 @@ exports[`Alert 1`] = `
 }
 `;
 
+exports[`Badge 1`] = `
+{
+  children: ReactNode
+  id?: string
+  tone?: 
+    | "info"
+    | "critical"
+    | "positive"
+    | "secondary"
+  weight?: 
+    | "strong"
+    | "regular"
+}
+`;
+
 exports[`Box 1`] = `
 {
   about?: string
@@ -196,6 +211,7 @@ exports[`Box 1`] = `
     | "info"
     | "critical"
     | "positive"
+    | "secondary"
     | "brand"
     | "input"
     | "inputDisabled"
@@ -211,6 +227,7 @@ exports[`Box 1`] = `
     | "infoLight"
     | "criticalLight"
     | "positiveLight"
+    | "secondaryLight"
   borderRadius?: "standard"
   boxShadow?: 
     | "outlineFocus"
@@ -898,6 +915,7 @@ exports[`ChevronIcon 1`] = `
   inline?: boolean
   size?: 
     | "fill"
+    | "xsmall"
     | "small"
     | "large"
     | "standard"
@@ -905,10 +923,10 @@ exports[`ChevronIcon 1`] = `
     | "info"
     | "critical"
     | "positive"
+    | "secondary"
     | "formAccent"
     | "link"
     | "neutral"
-    | "secondary"
 }
 `;
 
@@ -971,6 +989,7 @@ exports[`ErrorIcon 1`] = `
   inline?: boolean
   size?: 
     | "fill"
+    | "xsmall"
     | "small"
     | "large"
     | "standard"
@@ -978,10 +997,10 @@ exports[`ErrorIcon 1`] = `
     | "info"
     | "critical"
     | "positive"
+    | "secondary"
     | "formAccent"
     | "link"
     | "neutral"
-    | "secondary"
 }
 `;
 
@@ -1217,6 +1236,7 @@ exports[`InfoIcon 1`] = `
   inline?: boolean
   size?: 
     | "fill"
+    | "xsmall"
     | "small"
     | "large"
     | "standard"
@@ -1224,10 +1244,10 @@ exports[`InfoIcon 1`] = `
     | "info"
     | "critical"
     | "positive"
+    | "secondary"
     | "formAccent"
     | "link"
     | "neutral"
-    | "secondary"
 }
 `;
 
@@ -1483,6 +1503,7 @@ exports[`Text 1`] = `
     | FunctionComponent<any>
   id?: string
   size?: 
+    | "xsmall"
     | "small"
     | "large"
     | "standard"
@@ -1490,10 +1511,10 @@ exports[`Text 1`] = `
     | "info"
     | "critical"
     | "positive"
+    | "secondary"
     | "formAccent"
     | "link"
     | "neutral"
-    | "secondary"
   weight?: 
     | "strong"
     | "regular"
@@ -2089,6 +2110,7 @@ exports[`TickCircleIcon 1`] = `
   inline?: boolean
   size?: 
     | "fill"
+    | "xsmall"
     | "small"
     | "large"
     | "standard"
@@ -2096,10 +2118,10 @@ exports[`TickCircleIcon 1`] = `
     | "info"
     | "critical"
     | "positive"
+    | "secondary"
     | "formAccent"
     | "link"
     | "neutral"
-    | "secondary"
 }
 `;
 
@@ -2108,6 +2130,7 @@ exports[`TickIcon 1`] = `
   inline?: boolean
   size?: 
     | "fill"
+    | "xsmall"
     | "small"
     | "large"
     | "standard"
@@ -2115,10 +2138,10 @@ exports[`TickIcon 1`] = `
     | "info"
     | "critical"
     | "positive"
+    | "secondary"
     | "formAccent"
     | "link"
     | "neutral"
-    | "secondary"
 }
 `;
 

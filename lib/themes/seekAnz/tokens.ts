@@ -10,6 +10,7 @@ const critical = brandAccent;
 const info = '#9556b7';
 const black = '#1c1c1c';
 const link = '#2765cf';
+const secondary = '#1c1c1ca1';
 
 const tokens: TreatTokens = {
   name: 'seekAnz',
@@ -61,6 +62,16 @@ const tokens: TreatTokens = {
       },
     },
     text: {
+      xsmall: {
+        mobile: {
+          size: 12,
+          rows: 3,
+        },
+        desktop: {
+          size: 12,
+          rows: 3,
+        },
+      },
       small: {
         mobile: {
           size: 14,
@@ -152,7 +163,7 @@ const tokens: TreatTokens = {
       critical,
       info,
       positive,
-      secondary: '#1c1c1ca1',
+      secondary,
     },
     background: {
       brand,
@@ -166,6 +177,7 @@ const tokens: TreatTokens = {
       critical,
       info,
       positive,
+      secondary,
     },
   },
 };

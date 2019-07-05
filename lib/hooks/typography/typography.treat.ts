@@ -71,6 +71,9 @@ const makeTypographyRules = (
 };
 
 export const text = {
+  xsmall: styleMap(theme =>
+    makeTypographyRules(theme.typography.text.xsmall, theme),
+  ),
   small: styleMap(theme =>
     makeTypographyRules(theme.typography.text.small, theme),
   ),
@@ -180,6 +183,9 @@ export const backgroundContrast: BackgroundContrast = {
   },
   info: {
     default: textColorForBackground('info'),
+  },
+  secondary: {
+    default: textColorForBackground('secondary'),
   },
 };
 

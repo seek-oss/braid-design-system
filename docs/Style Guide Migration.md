@@ -31,6 +31,7 @@ Since Braid is an entirely new design system, we've taken the opportunity to rev
 > Note: Links to these migration guides are also available at the bottom of each component page on the Braid documentation site.
 
 - [`Alert`](../lib/components/Alert/Alert.migration.md)
+- [`Badge`](../lib/components/Badge/Badge.migration.md)
 - [`Bullet`](../lib/components/Bullet/Bullet.migration.md)
 - [`Button`](../lib/components/Button/Button.migration.md)
 - `ButtonGroup` -> [`Actions`](../lib/components/Actions/Actions.migration.md)
