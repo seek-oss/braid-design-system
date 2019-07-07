@@ -45,6 +45,7 @@ Since Braid is an entirely new design system, we've taken the opportunity to rev
 - [`MonthPicker`](../lib/components/MonthPicker/MonthPicker.migration.md)
 - [`Radio`](../lib/components/Radio/Radio.migration.md)
 - [`Secondary`](../lib/components/Secondary/Secondary.migration.md)
+- `SlideToggle` -> [`Toggle`](../lib/components/Toggle/Toggle.migration.md)
 - [`Strong`](../lib/components/Strong/Strong.migration.md)
 - [`Text`](../lib/components/Text/Text.migration.md)
 - `Text` (Headings) -> [`Heading`](../lib/components/Heading/Heading.migration.md)

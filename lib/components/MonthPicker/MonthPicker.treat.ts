@@ -5,7 +5,7 @@ export const nativeInput = style({
   selectors: {
     '&::-webkit-inner-spin-button, &::-webkit-calendar-picker-indicator, &::-webkit-clear-button': {
       display: 'none',
-      '-webkit-appearance': 'none',
+      WebkitAppearance: 'none',
     },
   },
 });

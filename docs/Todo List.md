@@ -11,7 +11,6 @@ Please note that, while there may be existing implementations of these in other 
 - [`Loader`](https://seek-oss.github.io/seek-style-guide/loader)
 - [`Pill`](https://seek-oss.github.io/seek-style-guide/pill)
 - [`Rating`](https://seek-oss.github.io/seek-style-guide/rating)
-- [`SlideToggle`](https://seek-oss.github.io/seek-style-guide/slidetoggle)
 
 ## Research and Development
 
