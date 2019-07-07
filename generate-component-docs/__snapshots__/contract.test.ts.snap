@@ -412,6 +412,7 @@ exports[`Box 1`] = `
     | "tspan"
     | "use"
     | "view"
+    | "template"
     | ComponentClass<any, any>
     | FunctionComponent<any>
   content?: string
@@ -1188,6 +1189,7 @@ exports[`Heading 1`] = `
     | "tspan"
     | "use"
     | "view"
+    | "template"
     | ComponentClass<any, any>
     | FunctionComponent<any>
   id?: string
@@ -1479,6 +1481,7 @@ exports[`Text 1`] = `
     | "tspan"
     | "use"
     | "view"
+    | "template"
     | ComponentClass<any, any>
     | FunctionComponent<any>
   id?: string
