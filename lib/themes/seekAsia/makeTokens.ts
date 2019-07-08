@@ -32,6 +32,7 @@ export default ({
   const link = blue2;
   const linkHover = blue2;
   const selection = blue5;
+  const secondary = grey2;
 
   const tokens: TreatTokens = {
     name,
@@ -83,6 +84,16 @@ export default ({
         },
       },
       text: {
+        xsmall: {
+          mobile: {
+            size: 12,
+            rows: 4,
+          },
+          desktop: {
+            size: 12,
+            rows: 4,
+          },
+        },
         small: {
           mobile: {
             size: 14,
@@ -174,7 +185,7 @@ export default ({
         critical,
         info,
         positive,
-        secondary: grey2,
+        secondary,
       },
       background: {
         brand,
@@ -188,6 +199,7 @@ export default ({
         critical,
         info,
         positive,
+        secondary,
       },
     },
   };
