@@ -121,12 +121,11 @@ export function findClosestAccessibleDarkerColor(
 
 export function getLightVariant(color: string) {
   const { hue, saturation } = parseToHsl(color);
-  const isHighlySaturated = saturation > 0.9;
 
   return toColorString({
     hue,
-    saturation: isHighlySaturated ? 0.8 : saturation,
-    lightness: 0.96,
+    saturation: saturation * 0.45,
+    lightness: 0.95 - getLuminance(color) * 0.05,
   });
 }
 
