@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';
 import * as styleRefs from './Badge.treat';
@@ -9,7 +9,7 @@ type BadgeWeight = 'strong' | 'regular';
 export interface BadgeProps {
   tone?: Tone;
   weight?: BadgeWeight;
-  children: ReactNode;
+  children: string;
   id?: string;
 }
 
@@ -42,6 +42,10 @@ export const Badge = ({
   id,
 }: BadgeProps) => {
   const styles = useStyles(styleRefs);
+
+  if (typeof children !== 'string') {
+    throw new Error('Badge may only contain a `string`');
+  }
 
   return (
     <Box className={styles.outer}>

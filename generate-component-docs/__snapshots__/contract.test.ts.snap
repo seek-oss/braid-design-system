@@ -22,7 +22,7 @@ exports[`Alert 1`] = `
 
 exports[`Badge 1`] = `
 {
-  children: ReactNode
+  children: string
   id?: string
   tone?: 
     | "info"
