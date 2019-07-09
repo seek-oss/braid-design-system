@@ -1,5 +1,5 @@
 import mapValues from 'lodash/mapValues';
-import { style, styleMap, ClassRef, styleTree } from 'sku/treat';
+import { style, styleMap, styleTree, ClassRef } from 'sku/treat';
 import { Theme } from 'treat/theme';
 import basekick from 'basekick';
 import { getAccessibleVariant, isLight, mapToStyleProperty } from '../../utils';
