@@ -32,7 +32,7 @@
 +<Heading level="3">Heading</Heading>
 
 -<h4>
--  <Text heading>Heading</Text>
+-  <Text subheading>Heading</Text>
 -</h4>
 +<Heading level="4">Heading</Heading>
 ```
