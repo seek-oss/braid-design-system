@@ -1,5 +1,5 @@
 import mapValues from 'lodash/mapValues';
-import { style, styleMap, ClassRef } from 'sku/treat';
+import { style, styleMap, ClassRef, styleTree } from 'sku/treat';
 import { Theme } from 'treat/theme';
 import basekick from 'basekick';
 import { getAccessibleVariant, isLight, mapToStyleProperty } from '../../utils';
@@ -70,20 +70,11 @@ const makeTypographyRules = (
   };
 };
 
-export const text = {
-  xsmall: styleMap(theme =>
-    makeTypographyRules(theme.typography.text.xsmall, theme),
+export const text = styleTree((theme, styleNode) =>
+  mapValues(theme.typography.text, size =>
+    mapValues(makeTypographyRules(size, theme), styleNode),
   ),
-  small: styleMap(theme =>
-    makeTypographyRules(theme.typography.text.small, theme),
-  ),
-  standard: styleMap(theme =>
-    makeTypographyRules(theme.typography.text.standard, theme),
-  ),
-  large: styleMap(theme =>
-    makeTypographyRules(theme.typography.text.large, theme),
-  ),
-};
+);
 
 export const headingWeight = styleMap(({ typography }) =>
   mapValues(typography.heading.weight, weight => ({
@@ -91,17 +82,11 @@ export const headingWeight = styleMap(({ typography }) =>
   })),
 );
 
-export const heading = {
-  '1': styleMap(theme =>
-    makeTypographyRules(theme.typography.heading.level['1'], theme),
+export const heading = styleTree((theme, styleNode) =>
+  mapValues(theme.typography.heading.level, level =>
+    mapValues(makeTypographyRules(level, theme), styleNode),
   ),
-  '2': styleMap(theme =>
-    makeTypographyRules(theme.typography.heading.level['2'], theme),
-  ),
-  '3': styleMap(theme =>
-    makeTypographyRules(theme.typography.heading.level['3'], theme),
-  ),
-};
+);
 
 export const tone = styleMap(theme => {
   const {

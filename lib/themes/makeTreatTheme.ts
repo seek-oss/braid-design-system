@@ -27,6 +27,7 @@ export interface TreatTokens {
         '1': TextDefinition;
         '2': TextDefinition;
         '3': TextDefinition;
+        '4': TextDefinition;
       };
     };
     text: {
