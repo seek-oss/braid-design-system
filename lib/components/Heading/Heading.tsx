@@ -1,4 +1,5 @@
 import React, { ReactNode } from 'react';
+import HeadingContext from './HeadingContext';
 import { Box, BoxProps } from '../Box/Box';
 import {
   useHeading,
@@ -28,12 +29,14 @@ export const Heading = ({
   children,
   id,
 }: HeadingProps) => (
-  <Box
-    id={id}
-    component={component || resolveDefaultComponent[level]}
-    paddingBottom={level === '1' ? 'small' : 'xsmall'}
-    className={useHeading({ weight, level, baseline: true })}
-  >
-    {children}
-  </Box>
+  <HeadingContext.Provider value={true}>
+    <Box
+      id={id}
+      component={component || resolveDefaultComponent[level]}
+      paddingBottom={level === '1' ? 'small' : 'xsmall'}
+      className={useHeading({ weight, level, baseline: true })}
+    >
+      {children}
+    </Box>
+  </HeadingContext.Provider>
 );
