@@ -41,6 +41,18 @@ const docs: ComponentDocs = {
         </Heading>
       ),
     },
+    {
+      label: 'Level 4',
+      render: () => <Heading level="4">Heading Level 4</Heading>,
+    },
+    {
+      label: 'Level 4 Weak',
+      render: () => (
+        <Heading level="4" weight="weak">
+          Heading Level 4 Weak
+        </Heading>
+      ),
+    },
   ],
 };
 
