@@ -1,10 +1,10 @@
 import { TreatTokens } from '../makeTreatTheme';
 
-const formAccent = '#2b2b2b';
+const formAccent = '#404040';
 const critical = 'red';
 const positive = 'green';
 const info = 'navy';
-const brandAccent = 'DarkOrange';
+const brandAccent = 'black';
 const focus = 'DeepSkyBlue';
 const black = '#2b2b2b';
 const white = '#fff';

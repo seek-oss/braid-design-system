@@ -23,7 +23,7 @@ interface TextFieldProps extends Omit<FieldProps, 'secondaryMessage'> {
   placeholder?: InputProps['placeholder'];
 }
 
-export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
+const NamedTextField = forwardRef<HTMLInputElement, TextFieldProps>(
   (
     {
       value,
@@ -53,3 +53,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
     </Field>
   ),
 );
+
+NamedTextField.displayName = 'TextField';
+
+export const TextField = NamedTextField;

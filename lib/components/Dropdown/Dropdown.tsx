@@ -38,7 +38,7 @@ const getTone = (
   return 'neutral';
 };
 
-export const Dropdown = forwardRef<HTMLSelectElement, DropdownProps>(
+const NamedDropdown = forwardRef<HTMLSelectElement, DropdownProps>(
   (props: DropdownProps, ref) => {
     const {
       children,
@@ -104,3 +104,7 @@ export const Dropdown = forwardRef<HTMLSelectElement, DropdownProps>(
     );
   },
 );
+
+NamedDropdown.displayName = 'Dropdown';
+
+export const Dropdown = NamedDropdown;

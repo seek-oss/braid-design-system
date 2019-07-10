@@ -4,7 +4,7 @@ import {
   InlineFieldProps,
 } from '../private/InlineField/InlineField';
 
-export const Checkbox = forwardRef<HTMLInputElement, InlineFieldProps>(
+const NamedCheckbox = forwardRef<HTMLInputElement, InlineFieldProps>(
   (props, ref) => (
     <InlineField
       reserveMessageSpace={true}
@@ -14,3 +14,7 @@ export const Checkbox = forwardRef<HTMLInputElement, InlineFieldProps>(
     />
   ),
 );
+
+NamedCheckbox.displayName = 'Checkbox';
+
+export const Checkbox = NamedCheckbox;
