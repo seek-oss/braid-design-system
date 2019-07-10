@@ -59,6 +59,16 @@ const tokens: TreatTokens = {
             rows: 5,
           },
         },
+        '4': {
+          mobile: {
+            size: 18,
+            rows: 4,
+          },
+          desktop: {
+            size: 18,
+            rows: 4,
+          },
+        },
       },
     },
     text: {

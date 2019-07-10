@@ -81,6 +81,16 @@ export default ({
               rows: 8,
             },
           },
+          '4': {
+            mobile: {
+              size: 18,
+              rows: 6,
+            },
+            desktop: {
+              size: 20,
+              rows: 7,
+            },
+          },
         },
       },
       text: {
