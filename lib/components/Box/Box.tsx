@@ -7,7 +7,7 @@ export interface BoxProps
   extends Optional<UseBoxProps, 'component'>,
     Omit<AllHTMLAttributes<HTMLElement>, 'width'> {}
 
-export const Box = forwardRef<HTMLElement, BoxProps>(
+const NamedBox = forwardRef<HTMLElement, BoxProps>(
   (
     {
       component = 'div',
@@ -67,3 +67,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
     );
   },
 );
+
+NamedBox.displayName = 'Box';
+
+export const Box = NamedBox;

@@ -75,7 +75,7 @@ const calculateLines = (
     : currentRows;
 };
 
-export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
+const NamedTextarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
   (
     {
       value,
@@ -128,3 +128,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
     );
   },
 );
+
+NamedTextarea.displayName = 'Textarea';
+
+export const Textarea = NamedTextarea;
