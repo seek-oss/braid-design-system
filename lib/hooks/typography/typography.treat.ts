@@ -142,17 +142,28 @@ const accessibleColorVariants = styleMap(({ color: { foreground } }) => ({
 
 const textColorForBackground = (
   background: keyof Theme['color']['background'],
-) =>
-  style(theme => ({
-    color: isLight(theme.color.background[background])
-      ? theme.color.foreground.neutral
-      : theme.color.foreground.neutralInverted,
+) => {
+  const resolveOverride = (theme: Theme) => {
+    // Override to ensure we use `neutral` foreground color when on
+    // JobsDB `brandAccent` background.
+    if (theme.name === 'jobsDb' && background === 'brandAccent') {
+      return theme.color.foreground.neutralInverted;
+    }
+  };
+
+  return style(theme => ({
+    color:
+      resolveOverride(theme) ||
+      (isLight(theme.color.background[background])
+        ? theme.color.foreground.neutral
+        : theme.color.foreground.neutralInverted),
   }));
+};
 
 type Foreground = keyof typeof tone;
-type Background = NonNullable<UseBoxProps['background']>;
+type BoxBackground = NonNullable<UseBoxProps['background']>;
 type BackgroundContrast = {
-  [background in Background]?: {
+  [background in BoxBackground]?: {
     [foreground in Foreground | 'default']?: ClassRef
   }
 };
