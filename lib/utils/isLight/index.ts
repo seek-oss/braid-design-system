@@ -32,7 +32,7 @@ export const isLight = (inputColor: string) => {
     const { red, green, blue } = parseToRgb(color);
 
     // Convert RGB to YIQ to better take into account the
-    // luminence of the separate color channels:
+    // luminance of the separate color channels:
     //
     // Further reading:
     //   - YIQ:
