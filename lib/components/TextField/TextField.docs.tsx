@@ -4,7 +4,7 @@ import { TextField } from './TextField';
 import { TextLink } from '../TextLink/TextLink';
 
 const Container = ({ children }: { children: ReactNode }) => (
-  <Fragment>{children}</Fragment>
+  <div style={{ maxWidth: '300px' }}>{children}</div>
 );
 
 const docs: ComponentDocs = {
