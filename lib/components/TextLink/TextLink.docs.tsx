@@ -70,6 +70,23 @@ const docs: ComponentDocs = {
       ),
     },
     {
+      label: 'Xsmall Text Link',
+      render: () => (
+        <Text size="xsmall">
+          The last word of a sentence is a{' '}
+          <TextLink href="">text link.</TextLink>
+        </Text>
+      ),
+    },
+    {
+      label: 'Xsmall Block Text Link',
+      render: () => (
+        <TextLink href="">
+          <Text size="xsmall">Text Link</Text>
+        </TextLink>
+      ),
+    },
+    {
       label: 'Heading Level 1 Link',
       render: () => (
         <TextLink href="">
@@ -113,6 +130,22 @@ const docs: ComponentDocs = {
       label: 'Heading Level 3 Link (Inline)',
       render: () => (
         <Heading level="3">
+          The last word of this heading is a <TextLink href="">link.</TextLink>
+        </Heading>
+      ),
+    },
+    {
+      label: 'Heading Level 4 Link',
+      render: () => (
+        <TextLink href="">
+          <Heading level="4">Heading link.</Heading>
+        </TextLink>
+      ),
+    },
+    {
+      label: 'Heading Level 4 Link (Inline)',
+      render: () => (
+        <Heading level="4">
           The last word of this heading is a <TextLink href="">link.</TextLink>
         </Heading>
       ),
