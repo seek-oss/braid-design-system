@@ -1,4 +1,4 @@
-import { getLuminance } from 'polished';
+import { parseToRgb } from 'polished';
 // @ts-ignore
 import { parse as parseGradient } from 'gradient-parser';
 
@@ -28,5 +28,22 @@ export const isLight = (inputColor: string) => {
     ? getLinearGradientColors(inputColor)
     : [inputColor];
 
-  return colors.some(color => getLuminance(color) > 0.6);
+  return colors.some(color => {
+    const { red, green, blue } = parseToRgb(color);
+
+    // Convert RGB to YIQ to better take into account the
+    // luminance of the separate color channels:
+    //
+    // Further reading:
+    //   - YIQ:
+    //     https://en.wikipedia.org/wiki/YIQ
+    //   - Calculating contrast:
+    //     https://24ways.org/2010/calculating-color-contrast/
+
+    const yiq = (red * 299 + green * 587 + blue * 114) / 1000;
+
+    // Colour is considered `light` if greater than the midpoint:
+    // eg. 256 / 2 = 128.
+    return yiq >= 128;
+  });
 };

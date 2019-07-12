@@ -12,6 +12,7 @@ const resolveDefaultComponent = {
   '1': 'h1',
   '2': 'h2',
   '3': 'h3',
+  '4': 'h4',
 } as const;
 
 export interface HeadingProps {
@@ -21,6 +22,18 @@ export interface HeadingProps {
   component?: BoxProps['component'];
   id?: string;
 }
+
+const resolvePaddingForLevel = (level: HeadingLevel) => {
+  if (level === '1') {
+    return 'small';
+  }
+
+  if (level === '4') {
+    return 'xxsmall';
+  }
+
+  return 'xsmall';
+};
 
 export const Heading = ({
   level,
@@ -33,7 +46,7 @@ export const Heading = ({
     <Box
       id={id}
       component={component || resolveDefaultComponent[level]}
-      paddingBottom={level === '1' ? 'small' : 'xsmall'}
+      paddingBottom={resolvePaddingForLevel(level)}
       className={useHeading({ weight, level, baseline: true })}
     >
       {children}

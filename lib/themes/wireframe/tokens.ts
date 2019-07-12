@@ -9,6 +9,7 @@ const focus = 'DeepSkyBlue';
 const black = '#2b2b2b';
 const white = '#fff';
 const link = '#4c77bb';
+const secondary = '#777';
 
 const tokens: TreatTokens = {
   name: 'wireframe',
@@ -56,9 +57,29 @@ const tokens: TreatTokens = {
             rows: 5,
           },
         },
+        '4': {
+          mobile: {
+            size: 18,
+            rows: 4,
+          },
+          desktop: {
+            size: 18,
+            rows: 4,
+          },
+        },
       },
     },
     text: {
+      xsmall: {
+        mobile: {
+          size: 12,
+          rows: 3,
+        },
+        desktop: {
+          size: 12,
+          rows: 3,
+        },
+      },
       small: {
         mobile: {
           size: 14,
@@ -150,7 +171,7 @@ const tokens: TreatTokens = {
       critical,
       info,
       positive,
-      secondary: '#777',
+      secondary,
     },
     background: {
       brand: black,
@@ -164,6 +185,7 @@ const tokens: TreatTokens = {
       critical,
       info,
       positive,
+      secondary,
     },
   },
 };

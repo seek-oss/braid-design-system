@@ -8,7 +8,6 @@ Please note that, while there may be existing implementations of these in other 
 
 - Icons
 - [`Autosuggest`](https://seek-oss.github.io/seek-style-guide/autosuggest)
-- [`Badge`](https://seek-oss.github.io/seek-style-guide/badge)
 - [`Loader`](https://seek-oss.github.io/seek-style-guide/loader)
 - [`Pill`](https://seek-oss.github.io/seek-style-guide/pill)
 - [`Rating`](https://seek-oss.github.io/seek-style-guide/rating)
