@@ -1,4 +1,4 @@
-import { ComponentType, ReactNode, SyntheticEvent } from 'react';
+import { ComponentType, ReactNode, SyntheticEvent, ReactElement } from 'react';
 
 export interface AppConfig {
   playroomUrl: string;
@@ -20,11 +20,10 @@ export interface ComponentDocs {
 
 export interface ComponentExample {
   label?: string;
-  render?: (
-    args: {
-      id: string;
-      handler: (event: SyntheticEvent) => void;
-    },
-  ) => ReactNode;
+  render?: (props: {
+    id: string;
+    handler: (event: SyntheticEvent) => void;
+  }) => JSX.Element;
+  Container?: (props: { children: ReactNode }) => JSX.Element;
   code?: string;
 }

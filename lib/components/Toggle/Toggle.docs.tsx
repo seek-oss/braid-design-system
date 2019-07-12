@@ -23,16 +23,17 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Right aligned',
+      Container: ({ children }) => (
+        <div style={{ maxWidth: '300px' }}>{children}</div>
+      ),
       render: ({ id }) => (
-        <div style={{ maxWidth: '300px' }}>
-          <Toggle
-            on={true}
-            align="right"
-            label="Aligned right"
-            id={id}
-            onChange={handler}
-          />
-        </div>
+        <Toggle
+          on={true}
+          align="right"
+          label="Aligned right"
+          id={id}
+          onChange={handler}
+        />
       ),
     },
   ],

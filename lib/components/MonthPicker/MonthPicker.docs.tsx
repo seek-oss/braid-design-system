@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import { MonthPicker } from './MonthPicker';
 
@@ -6,48 +6,49 @@ const handler = () => {
   /* No-op for docs examples */
 };
 
+const Container = ({ children }: { children: ReactNode }) => (
+  <div style={{ maxWidth: '300px' }}>{children}</div>
+);
+
 const docs: ComponentDocs = {
   migrationGuide: true,
   examples: [
     {
       label: 'Default',
+      Container,
       render: ({ id }) => (
-        <div style={{ maxWidth: '300px' }}>
-          <MonthPicker
-            id={id}
-            label="Started"
-            value={{ month: undefined, year: undefined }}
-            onChange={handler}
-          />
-        </div>
+        <MonthPicker
+          id={id}
+          label="Started"
+          value={{ month: undefined, year: undefined }}
+          onChange={handler}
+        />
       ),
     },
     {
       label: 'Selected values',
+      Container,
       render: ({ id }) => (
-        <div style={{ maxWidth: '300px' }}>
-          <MonthPicker
-            id={id}
-            label="Started"
-            value={{ month: 12, year: 2018 }}
-            onChange={handler}
-          />
-        </div>
+        <MonthPicker
+          id={id}
+          label="Started"
+          value={{ month: 12, year: 2018 }}
+          onChange={handler}
+        />
       ),
     },
     {
       label: 'Critical message',
+      Container,
       render: ({ id }) => (
-        <div style={{ maxWidth: '300px' }}>
-          <MonthPicker
-            id={id}
-            label="Started"
-            tone="critical"
-            message="This is a critical message."
-            value={{ month: 1, year: 2019 }}
-            onChange={handler}
-          />
-        </div>
+        <MonthPicker
+          id={id}
+          label="Started"
+          tone="critical"
+          message="This is a critical message."
+          value={{ month: 1, year: 2019 }}
+          onChange={handler}
+        />
       ),
     },
   ],

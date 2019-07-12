@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import { Card } from './Card';
 import { Box } from '../Box/Box';
@@ -9,20 +9,25 @@ const docs: ComponentDocs = {
   examples: [
     {
       label: 'Standard Card',
-      render: () => (
+      Container: ({ children }) => (
         <Box
           paddingLeft="gutter"
           paddingRight="gutter"
           paddingTop="medium"
           style={{ backgroundColor: '#ccc' }}
         >
-          <Card>
-            <Text>This text is inside a card.</Text>
-          </Card>
-          <Card>
-            <Text>This text is inside a card.</Text>
-          </Card>
+          {children}
         </Box>
+      ),
+      render: () => (
+        <Fragment>
+          <Card>
+            <Text>This text is inside a card.</Text>
+          </Card>
+          <Card>
+            <Text>This text is inside a card.</Text>
+          </Card>
+        </Fragment>
       ),
     },
   ],
