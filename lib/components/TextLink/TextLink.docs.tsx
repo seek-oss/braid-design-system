@@ -10,7 +10,7 @@ const docs: ComponentDocs = {
   migrationGuide: true,
   examples: [
     {
-      label: 'Inline Text Link',
+      label: 'Text Link',
       render: () => (
         <Text>
           The last word of a sentence is a{' '}
@@ -36,7 +36,7 @@ const docs: ComponentDocs = {
       ),
     },
     {
-      label: 'Large Inline Text Link',
+      label: 'Large Text Link',
       render: () => (
         <Text size="large">
           The last word of a sentence is a{' '}
@@ -53,7 +53,7 @@ const docs: ComponentDocs = {
       ),
     },
     {
-      label: 'Small Inline Text Link',
+      label: 'Small Text Link',
       render: () => (
         <Text size="small">
           The last word of a sentence is a{' '}
