@@ -54,7 +54,7 @@ const docs: ComponentDocs = {
           <TextField
             label="Title"
             secondaryLabel="Optional"
-            tertiaryLabel={<TextLink inline>Help?</TextLink>}
+            tertiaryLabel={<TextLink>Help?</TextLink>}
             id={id}
             value=""
             onChange={handler}
