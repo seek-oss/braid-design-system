@@ -66,7 +66,7 @@ export const useWeight = (weight: keyof typeof styleRefs.fontWeight) => {
   const styles = useStyles(styleRefs);
   const inTextLinkRenderer = useContext(TextLinkRendererContext);
 
-  return inTextLinkRenderer ? null : styles.fontWeight[weight];
+  return inTextLinkRenderer ? undefined : styles.fontWeight[weight];
 };
 
 export const useTextTone = (tone?: keyof typeof styleRefs.tone) => {
