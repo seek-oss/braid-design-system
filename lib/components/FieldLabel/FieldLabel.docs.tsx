@@ -32,7 +32,7 @@ const docs: ComponentDocs = {
         <FieldLabel
           htmlFor="id"
           label="Password"
-          tertiaryLabel={<TextLink inline>Forgot password?</TextLink>}
+          tertiaryLabel={<TextLink>Forgot password?</TextLink>}
         />
       ),
     },
@@ -44,7 +44,7 @@ const docs: ComponentDocs = {
           htmlFor="id"
           label="Title"
           secondaryLabel="Optional"
-          tertiaryLabel={<TextLink inline>Help?</TextLink>}
+          tertiaryLabel={<TextLink>Help?</TextLink>}
         />
       ),
     },
