@@ -20,10 +20,12 @@ export interface ComponentDocs {
 
 export interface ComponentExample {
   label?: string;
-  render?: (props: {
-    id: string;
-    handler: (event: SyntheticEvent) => void;
-  }) => JSX.Element;
+  render?: (
+    props: {
+      id: string;
+      handler: (event: SyntheticEvent) => void;
+    },
+  ) => JSX.Element;
   Container?: (props: { children: ReactNode }) => JSX.Element;
   code?: string;
 }
