@@ -1,5 +1,5 @@
+import React, { ReactNode, Fragment } from 'react';
 import { storiesOf } from 'sku/@storybook/react';
-import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import values from 'lodash/values';
 import * as themes from '../themes';
@@ -9,6 +9,10 @@ import { ComponentDocs } from '../../site/src/types';
 const handler = () => {
   /* No-op for docs examples */
 };
+
+const DefaultContainer = ({ children }: { children: ReactNode }) => (
+  <Fragment>{children}</Fragment>
+);
 
 const req = require.context('../components', true, /\.docs\.tsx?$/);
 req.keys().forEach(filename => {
@@ -34,40 +38,44 @@ req.keys().forEach(filename => {
       stories.add(theme.name, () => (
         <BrowserRouter>
           <BraidProvider theme={theme}>
-            {docs.examples.map(({ label = componentName, render }, i) =>
-              render ? (
-                <div
-                  key={i}
-                  style={{
-                    minHeight: 300,
-                    paddingBottom: 32,
-                  }}
-                >
-                  <h4
+            {docs.examples.map(
+              (
+                { label = componentName, render, Container = DefaultContainer },
+                i,
+              ) =>
+                render ? (
+                  <div
+                    key={i}
                     style={{
-                      margin: 0,
-                      marginBottom: 18,
-                      padding: 0,
-                      fontSize: 14,
-                      fontFamily: 'arial',
-                      color: '#ccc',
+                      minHeight: 300,
+                      paddingBottom: 32,
                     }}
                   >
-                    {label}
-                  </h4>
-                  {render({ id: 'id', handler })}
-                  <div style={{ paddingTop: 18 }}>
-                    <hr
+                    <h4
                       style={{
                         margin: 0,
-                        border: 0,
-                        height: 1,
-                        background: '#eee',
+                        marginBottom: 18,
+                        padding: 0,
+                        fontSize: 14,
+                        fontFamily: 'arial',
+                        color: '#ccc',
                       }}
-                    />
+                    >
+                      {label}
+                    </h4>
+                    <Container>{render({ id: 'id', handler })}</Container>
+                    <div style={{ paddingTop: 18 }}>
+                      <hr
+                        style={{
+                          margin: 0,
+                          border: 0,
+                          height: 1,
+                          background: '#eee',
+                        }}
+                      />
+                    </div>
                   </div>
-                </div>
-              ) : null,
+                ) : null,
             )}
           </BraidProvider>
         </BrowserRouter>
