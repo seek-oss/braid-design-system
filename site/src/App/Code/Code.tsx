@@ -29,11 +29,6 @@ const CodeButton = ({
       className={styles.button}
       {...restProps}
     >
-      <Box component="span" position="relative" className={styles.buttonText}>
-        <Text size="xsmall" baseline={false}>
-          {children}
-        </Text>
-      </Box>
       <FieldOverlay
         variant="focus"
         className={classnames(styles.focusOverlay)}
@@ -46,6 +41,16 @@ const CodeButton = ({
         background="formAccentActive"
         className={classnames(styles.activeOverlay)}
       />
+      <Box
+        component="span"
+        // display="block"
+        position="relative"
+        className={styles.buttonText}
+      >
+        <Text size="xsmall" baseline={false}>
+          {children}
+        </Text>
+      </Box>
     </Box>
   );
 };

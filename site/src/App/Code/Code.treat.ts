@@ -43,7 +43,6 @@ export const focusOverlay = [
 ];
 
 export const buttonText = style({
-  zIndex: 1,
   pointerEvents: 'none',
   userSelect: 'none',
 });
