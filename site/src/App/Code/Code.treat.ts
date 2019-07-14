@@ -1,16 +1,23 @@
 import { style } from 'sku/treat';
 
+export const code = style({
+  overflowX: 'auto',
+  borderBottomLeftRadius: '0 !important',
+  borderBottomRightRadius: '0 !important',
+});
+
+export const toolbar = style({
+  justifyContent: 'flex-end',
+  borderTopLeftRadius: '0 !important',
+  borderTopRightRadius: '0 !important',
+});
+
 export const button = style({
   cursor: 'pointer',
   outline: 'none',
 });
 
-const overlay = style({
-  transition: 'opacity 0.2s',
-});
-
 export const activeOverlay = [
-  overlay,
   style({
     selectors: {
       [`${button}:active &`]: {
@@ -21,7 +28,6 @@ export const activeOverlay = [
 ];
 
 export const hoverOverlay = [
-  overlay,
   style({
     selectors: {
       [`${button}:hover:not(:active) &`]: {
@@ -32,7 +38,6 @@ export const hoverOverlay = [
 ];
 
 export const focusOverlay = [
-  overlay,
   style({
     selectors: {
       [`${button}:focus &`]: {
