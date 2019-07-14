@@ -10,7 +10,6 @@ export const weak = style({
 });
 
 const overlay = style({
-  transition: 'opacity 0.2s',
   selectors: {
     [`${weak} &`]: {
       zIndex: 2,
