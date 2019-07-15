@@ -27,14 +27,15 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Critical with long (wrapping) message',
+      Container: ({ children }) => (
+        <div style={{ maxWidth: '300px' }}>{children}</div>
+      ),
       render: ({ id }) => (
-        <div style={{ maxWidth: '300px' }}>
-          <FieldMessage
-            id={id}
-            tone="critical"
-            message="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sodales hendrerit nulla."
-          />
-        </div>
+        <FieldMessage
+          id={id}
+          tone="critical"
+          message="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sodales hendrerit nulla."
+        />
       ),
     },
     {

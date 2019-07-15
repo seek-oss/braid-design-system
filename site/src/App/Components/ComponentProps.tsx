@@ -33,8 +33,8 @@ const PropType = ({ type }: { type: NormalisedPropType }) => {
       <Fragment>
         {type.alias}
         {'<'}
-        {type.params.map(paramType => (
-          <PropType type={paramType} />
+        {type.params.map((paramType, index) => (
+          <PropType key={index} type={paramType} />
         ))}
         {'>'}
       </Fragment>
@@ -46,7 +46,7 @@ const PropType = ({ type }: { type: NormalisedPropType }) => {
       <Fragment>
         {'{'}
         {Object.values(type.props).map(({ propName, required, type }) => (
-          <Box paddingLeft="small">
+          <Box key={propName} paddingLeft="small">
             {propName}
             {required ? ': ' : '?: '}
             <PropType type={type} />;
@@ -60,7 +60,7 @@ const PropType = ({ type }: { type: NormalisedPropType }) => {
   return (
     <Fragment>
       {type.types.map((unionType, index) => (
-        <Fragment>
+        <Fragment key={index}>
           {index > 0 && <Secondary> | </Secondary>}
           <PropType type={unionType} />
         </Fragment>

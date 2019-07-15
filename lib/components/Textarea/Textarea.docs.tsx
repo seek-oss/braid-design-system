@@ -1,123 +1,119 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import { Textarea } from './Textarea';
 import { TextLink } from '../TextLink/TextLink';
+
+const Container = ({ children }: { children: ReactNode }) => (
+  <div style={{ maxWidth: '300px' }}>{children}</div>
+);
 
 const docs: ComponentDocs = {
   migrationGuide: true,
   examples: [
     {
       label: 'Textarea',
+      Container,
       render: ({ id, handler }) => (
-        <div style={{ maxWidth: '300px' }}>
-          <Textarea
-            id={id}
-            value="Senior Developer"
-            onChange={handler}
-            label="Job Title"
-          />
-        </div>
+        <Textarea
+          id={id}
+          value="Senior Developer"
+          onChange={handler}
+          label="Job Title"
+        />
       ),
     },
     {
       label: 'Textarea with message',
+      Container,
       render: ({ id, handler }) => (
-        <div style={{ maxWidth: '300px' }}>
-          <Textarea
-            id={id}
-            value=""
-            onChange={handler}
-            label="Job Title"
-            message="e.g. Senior Developer"
-          />
-        </div>
+        <Textarea
+          id={id}
+          value=""
+          onChange={handler}
+          label="Job Title"
+          message="e.g. Senior Developer"
+        />
       ),
     },
     {
       label: 'Textarea with secondary label',
+      Container,
       render: ({ id, handler }) => (
-        <div style={{ maxWidth: '300px' }}>
-          <Textarea
-            id={id}
-            value=""
-            onChange={handler}
-            label="Title"
-            secondaryLabel="Optional"
-          />
-        </div>
+        <Textarea
+          id={id}
+          value=""
+          onChange={handler}
+          label="Title"
+          secondaryLabel="Optional"
+        />
       ),
     },
     {
       label: 'Textarea with tertiary label',
+      Container,
       render: ({ id, handler }) => (
-        <div style={{ maxWidth: '300px' }}>
-          <Textarea
-            id={id}
-            value=""
-            onChange={handler}
-            label="Title"
-            secondaryLabel="Optional"
-            tertiaryLabel={<TextLink>Help?</TextLink>}
-          />
-        </div>
+        <Textarea
+          id={id}
+          value=""
+          onChange={handler}
+          label="Title"
+          secondaryLabel="Optional"
+          tertiaryLabel={<TextLink>Help?</TextLink>}
+        />
       ),
     },
     {
       label: 'Textarea with error',
+      Container,
       render: ({ id, handler }) => (
-        <div style={{ maxWidth: '300px' }}>
-          <Textarea
-            id={id}
-            value="No"
-            onChange={handler}
-            label="Do you like Braid?"
-            message="Answer is incorrect"
-            tone="critical"
-          />
-        </div>
+        <Textarea
+          id={id}
+          value="No"
+          onChange={handler}
+          label="Do you like Braid?"
+          message="Answer is incorrect"
+          tone="critical"
+        />
       ),
     },
     {
       label: 'Textarea with postive message',
+      Container,
       render: ({ id, handler }) => (
-        <div style={{ maxWidth: '300px' }}>
-          <Textarea
-            id={id}
-            value="Yes"
-            onChange={handler}
-            label="Do you like Braid?"
-            message="Nice one!"
-            tone="positive"
-          />
-        </div>
+        <Textarea
+          id={id}
+          value="Yes"
+          onChange={handler}
+          label="Do you like Braid?"
+          message="Nice one!"
+          tone="positive"
+        />
       ),
     },
     {
       label: 'Textarea with a limit',
+      Container,
       render: ({ id, handler }) => (
-        <div style={{ maxWidth: '300px' }}>
-          <Textarea
-            id={id}
-            value=""
-            onChange={handler}
-            label="Do you like Braid?"
-            lineLimit={100}
-          />
-        </div>
+        <Textarea
+          id={id}
+          value=""
+          onChange={handler}
+          label="Do you like Braid?"
+          lineLimit={100}
+        />
       ),
     },
     {
       label: 'Textarea with value exceeding limit',
+      Container,
       render: ({ id, handler }) => (
-        <div style={{ maxWidth: '300px' }}>
-          <Textarea
-            id={id}
-            value="Yes I do"
-            onChange={handler}
-            label="Do you like Braid?"
-            lineLimit={5}
-          />
-        </div>
+        <Textarea
+          id={id}
+          value="Yes I do"
+          onChange={handler}
+          label="Do you like Braid?"
+          lineLimit={5}
+        />
       ),
     },
   ],

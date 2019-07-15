@@ -1,33 +1,28 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import { Button } from './Button';
+
+const Container = ({ children }: { children: ReactNode }) => (
+  <div style={{ maxWidth: '300px' }}>{children}</div>
+);
 
 const docs: ComponentDocs = {
   migrationGuide: true,
   examples: [
     {
       label: 'Default Button',
-      render: () => (
-        <div style={{ maxWidth: '300px' }}>
-          <Button>Submit</Button>
-        </div>
-      ),
+      Container,
+      render: () => <Button>Submit</Button>,
     },
     {
       label: 'Strong Button',
-      render: () => (
-        <div style={{ maxWidth: '300px' }}>
-          <Button weight="strong">Submit</Button>
-        </div>
-      ),
+      Container,
+      render: () => <Button weight="strong">Submit</Button>,
     },
     {
       label: 'Weak Button',
-      render: () => (
-        <div style={{ maxWidth: '300px' }}>
-          <Button weight="weak">Submit</Button>
-        </div>
-      ),
+      Container,
+      render: () => <Button weight="weak">Submit</Button>,
     },
   ],
 };

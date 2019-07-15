@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode, Fragment } from 'react';
 import reactElementToJSXString from 'react-element-to-jsx-string';
 import dedent from 'dedent';
 import { ComponentProps } from './ComponentProps';
@@ -13,10 +13,15 @@ import {
 import * as themes from '../../../../lib/themes';
 
 import { ComponentDocs } from '../../types';
+import Code from '../Code/Code';
 
 const handler = () => {
   /* No-op for docs examples */
 };
+
+const DefaultContainer = ({ children }: { children: ReactNode }) => (
+  <Fragment>{children}</Fragment>
+);
 
 const cleanCodeSnippet = (code: string) =>
   code.replace(/<HideCode>.*?<\/HideCode>/gs, '...');
@@ -56,57 +61,55 @@ export const ComponentRoute = ({
           </Text>
         </Box>
       ) : null}
-      {examples.map(({ label, render, code }, index) => (
-        <Box key={index} marginBottom="xxlarge">
-          {label ? (
-            <Box paddingBottom="small">
-              <Text>{label}</Text>
-            </Box>
-          ) : null}
-          {render
-            ? Object.values(themes).map(theme => (
-                <Box key={theme.name} marginBottom="large">
-                  <Box paddingBottom="small">
-                    <Text tone="secondary">Theme: {theme.name}</Text>
-                  </Box>
-                  <BraidProvider theme={theme}>
-                    {render({
-                      id: `${index}_${theme.name}`,
-                      handler,
-                    })}
-                  </BraidProvider>
+      {examples.map(
+        ({ label, render, code, Container = DefaultContainer }, index) => {
+          const codeAsString =
+            render && !code
+              ? cleanCodeSnippet(
+                  reactElementToJSXString(render({ id: 'id', handler }), {
+                    useBooleanShorthandSyntax: false,
+                    showDefaultProps: false,
+                    showFunctions: false,
+                    filterProps: ['onChange', 'onBlur', 'onFocus'],
+                  }),
+                )
+              : code
+              ? cleanCodeSnippet(dedent(code))
+              : null;
+
+          return (
+            <Box key={index} marginBottom="xxlarge">
+              {label ? (
+                <Box paddingBottom="small">
+                  <Text>{label}</Text>
                 </Box>
-              ))
-            : null}
-          <Box paddingBottom="small">
-            <Text tone="secondary">Code:</Text>
-          </Box>
-          <Box
-            background="brandAccent"
-            paddingLeft="small"
-            paddingRight="small"
-            paddingTop="xxsmall"
-            paddingBottom="small"
-            borderRadius="standard"
-            style={{
-              overflowX: 'auto',
-            }}
-          >
-            <Text component="pre">
-              {render && !code
-                ? cleanCodeSnippet(
-                    reactElementToJSXString(render({ id: 'id', handler }), {
-                      useBooleanShorthandSyntax: false,
-                      showDefaultProps: false,
-                      showFunctions: true,
-                    }),
-                  )
+              ) : null}
+              {render
+                ? Object.values(themes).map(theme => (
+                    <Box key={theme.name} marginBottom="large">
+                      <Box paddingBottom="small">
+                        <Text tone="secondary">Theme: {theme.name}</Text>
+                      </Box>
+                      <BraidProvider theme={theme}>
+                        <Container>
+                          {render({ id: `${index}_${theme.name}`, handler })}
+                        </Container>
+                      </BraidProvider>
+                    </Box>
+                  ))
                 : null}
-              {code ? cleanCodeSnippet(dedent(code)) : null}
-            </Text>
-          </Box>
-        </Box>
-      ))}
+              {codeAsString ? (
+                <Fragment>
+                  <Box paddingBottom="small">
+                    <Text tone="secondary">Code:</Text>
+                  </Box>
+                  <Code>{codeAsString}</Code>
+                </Fragment>
+              ) : null}
+            </Box>
+          );
+        },
+      )}
 
       <Box paddingBottom="small">
         <ComponentProps componentName={componentName} />

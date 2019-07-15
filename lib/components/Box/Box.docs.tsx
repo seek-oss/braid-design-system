@@ -12,28 +12,31 @@ const docs: ComponentDocs = {
   examples: spacing.map(
     (space): ComponentExample => ({
       label: `"${space}" spacing`,
-      render: () => (
+      Container: ({ children }) => (
         <Box
           background="formAccent"
           style={{ overflow: 'auto', maxWidth: '300px' }}
         >
-          <Box
-            marginLeft={space}
-            marginRight={space}
-            {...(space === 'gutter'
-              ? {
-                  marginTop: 'none',
-                  marginBottom: 'none',
-                }
-              : {
-                  marginTop: space,
-                  marginBottom: space,
-                })}
-          >
-            <HideCode>
-              <Box style={{ background: 'whitesmoke', height: '20px' }} />
-            </HideCode>
-          </Box>
+          {children}
+        </Box>
+      ),
+      render: () => (
+        <Box
+          marginLeft={space}
+          marginRight={space}
+          {...(space === 'gutter'
+            ? {
+                marginTop: 'none',
+                marginBottom: 'none',
+              }
+            : {
+                marginTop: space,
+                marginBottom: space,
+              })}
+        >
+          <HideCode>
+            <Box style={{ background: 'whitesmoke', height: '20px' }} />
+          </HideCode>
         </Box>
       ),
     }),
