@@ -4,6 +4,7 @@ import { Theme } from '../theme';
 
 const theme: Theme = {
   name: 'jobStreet',
+  background: '#e5e5e5',
   treatTheme,
 };
 
