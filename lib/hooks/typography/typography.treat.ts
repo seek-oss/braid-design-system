@@ -164,8 +164,8 @@ type Foreground = keyof typeof tone;
 type BoxBackground = NonNullable<UseBoxProps['background']>;
 type BackgroundContrast = {
   [background in BoxBackground]?: {
-    [foreground in Foreground | 'default']?: ClassRef
-  }
+    [foreground in Foreground | 'default']?: ClassRef;
+  };
 };
 export const backgroundContrast: BackgroundContrast = {
   criticalLight: {
