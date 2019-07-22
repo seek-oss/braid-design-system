@@ -1,4 +1,4 @@
-import { style } from 'treat';
+import { style } from 'sku/treat';
 
 export const base = style({
   margin: 0,
