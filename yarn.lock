@@ -10048,6 +10048,11 @@ lodash@^4.17.13:
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.14.tgz#9ce487ae66c96254fe20b599f21b6816028078ba"
   integrity sha512-mmKYbW3GLuJeX+iGP+Y7Gp1AiGHGbXHCOh/jZmrawMmsE7MS4znI3RL2FsjbqOyMayHInjOeykW7PEajUk1/xw==
 
+lodash@^4.17.15:
+  version "4.17.15"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
+  integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
+
 log-symbols@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/log-symbols/-/log-symbols-1.0.2.tgz#376ff7b58ea3086a0f09facc74617eca501e1a18"
@@ -14034,10 +14039,10 @@ sisteransi@^1.0.0:
   resolved "https://registry.yarnpkg.com/sisteransi/-/sisteransi-1.0.2.tgz#ec57d64b6f25c4f26c0e2c7dd23f2d7f12f7e418"
   integrity sha512-ZcYcZcT69nSLAR2oLN2JwNmLkJEKGooFMCdvOkFrToUt/WfcRWqhIg4P4KwY4dmLbuyXIx4o4YmPsvMRJYJd/w==
 
-sku@8.9.1:
-  version "8.9.1"
-  resolved "https://registry.yarnpkg.com/sku/-/sku-8.9.1.tgz#e294e78353eb630373efbeab9241a7144160feb6"
-  integrity sha512-TuTlpreyBxP3210Dgo7VaypKHWkMFbu2VKHLlnoho9Dboa4xbDurZrIAkrEtK3fArTxscHeBbK02i8sM2V8peQ==
+sku@8.9.2:
+  version "8.9.2"
+  resolved "https://registry.yarnpkg.com/sku/-/sku-8.9.2.tgz#a9577f22482f7a1f7fdad27965a8a52ce5743d5c"
+  integrity sha512-Y+GixM2Xn9bOGAiSI+vVPzDzuYICnqTHuwgmXPApN5ftLIC85dOwFaPDr8hg+HP2hhoBtOnMoN6KvksmSx4s1g==
   dependencies:
     "@babel/core" "^7.5.5"
     "@babel/plugin-proposal-class-properties" "^7.5.5"
@@ -14108,7 +14113,7 @@ sku@8.9.1:
     kopy "^8.3.0"
     less "^3.8.1"
     less-loader "^4.1.0"
-    lodash "^4.17.10"
+    lodash "^4.17.15"
     memoizee "^0.4.14"
     mini-css-extract-plugin "^0.5.0"
     node-emoji "^1.8.1"
