@@ -37,20 +37,28 @@ const table = style({
   borderSpacing: 0,
 });
 
+const appearance = style({
+  appearance: 'none',
+});
+
+const field = [block, appearance];
+
 // Custom reset rules
 const mark = style({
   backgroundColor: 'transparent',
   color: 'inherit',
 });
 
-const select = style({
-  appearance: 'none',
-  selectors: {
-    '&::-ms-expand': {
-      display: 'none',
+const select = [
+  ...field,
+  style({
+    selectors: {
+      '&::-ms-expand': {
+        display: 'none',
+      },
     },
-  },
-});
+  }),
+];
 
 const button = style({
   background: 'none',
@@ -68,7 +76,6 @@ export const element = {
   menu: block,
   nav: block,
   section: block,
-  textarea: block,
   ul: list,
   ol: list,
   blockquote: quote,
@@ -78,4 +85,6 @@ export const element = {
   mark,
   select,
   button,
+  textarea: field,
+  input: field,
 };
