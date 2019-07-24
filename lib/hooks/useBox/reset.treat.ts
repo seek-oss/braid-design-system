@@ -52,6 +52,10 @@ const select = style({
   },
 });
 
+const button = style({
+  background: 'none',
+});
+
 export const element = {
   article: block,
   aside: block,
@@ -73,4 +77,5 @@ export const element = {
   table,
   mark,
   select,
+  button,
 };
