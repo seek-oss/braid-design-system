@@ -4,7 +4,7 @@ const docs: ComponentDocs = {
   examples: [
     {
       code: `
-        import { wireframe } from 'braid-design-system/lib/themes';
+        import wireframe from 'braid-design-system/themes/wireframe';
 
         export default () => (
           <BraidProvider theme={wireframe}>
