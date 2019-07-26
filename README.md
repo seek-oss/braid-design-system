@@ -27,7 +27,7 @@ Then, import the desired theme at the _very top_ of your application (e.g. `src/
 For example:
 
 ```js
-import jobStreetTheme from 'braid-design-system/lib/themes/jobStreet';
+import jobStreetTheme from 'braid-design-system/themes/jobStreet';
 import React from 'react';
 // ...etc.
 ```
