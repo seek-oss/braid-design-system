@@ -11,6 +11,7 @@ import { FieldOverlay } from '../FieldOverlay/FieldOverlay';
 import buildDataAttributes, { DataAttributeMap } from '../buildDataAttributes';
 import { useText, useTouchableSpace } from '../../../hooks/typography';
 import * as styleRefs from './Field.treat';
+import { BackgroundProvider } from 'lib/components/Box/BackgroundContext';
 
 type FormElementProps = AllHTMLAttributes<HTMLFormElement>;
 export interface FieldProps {
@@ -71,6 +72,7 @@ export const Field = forwardRef<FieldRef, InternalFieldProps>(
   ) => {
     const styles = useStyles(styleRefs);
     const messageId = `${id}-message`;
+    const background = disabled ? 'inputDisabled' : 'input';
 
     return (
       <Box>
@@ -82,33 +84,39 @@ export const Field = forwardRef<FieldRef, InternalFieldProps>(
           description={description}
         />
         <Box position="relative">
-          {children(
-            {
-              id,
-              name,
-              background: disabled ? 'inputDisabled' : 'input',
-              boxShadow:
-                tone === 'critical' && !disabled
-                  ? 'borderCritical'
-                  : 'borderStandard',
-              width: 'full',
-              paddingLeft: 'small',
-              paddingRight: 'small',
-              borderRadius: 'standard',
-              ...((message || ariaDescribedBy) && {
-                'aria-describedby': ariaDescribedBy || messageId,
-              }),
-              disabled,
-              autoComplete,
-              ...buildDataAttributes(data),
-              className: classnames(
-                styles.field,
-                useText({ size: 'standard', baseline: false }),
-                useTouchableSpace('standard'),
-              ),
-            },
-            ref,
-          )}
+          <BackgroundProvider value={background}>
+            {children(
+              {
+                id,
+                name,
+                background,
+                boxShadow:
+                  tone === 'critical' && !disabled
+                    ? 'borderCritical'
+                    : 'borderStandard',
+                width: 'full',
+                paddingLeft: 'small',
+                paddingRight: 'small',
+                borderRadius: 'standard',
+                ...((message || ariaDescribedBy) && {
+                  'aria-describedby': ariaDescribedBy || messageId,
+                }),
+                disabled,
+                autoComplete,
+                ...buildDataAttributes(data),
+                className: classnames(
+                  styles.field,
+                  useText({
+                    backgroundContext: background,
+                    size: 'standard',
+                    baseline: false,
+                  }),
+                  useTouchableSpace('standard'),
+                ),
+              },
+              ref,
+            )}
+          </BackgroundProvider>
           <FieldOverlay variant="focus" className={styles.focusOverlay} />
           <FieldOverlay variant="hover" className={styles.hoverOverlay} />
         </Box>

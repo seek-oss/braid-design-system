@@ -1,6 +1,12 @@
-import React from 'react';
+import React, { Fragment, ReactNode } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import { Heading } from './Heading';
+import { Box } from '../Box/Box';
+import { background as boxBackgrounds } from '../../hooks/useBox/box.treat';
+
+const Container = ({ children }: { children: ReactNode }) => (
+  <div style={{ maxWidth: '300px' }}>{children}</div>
+);
 
 const docs: ComponentDocs = {
   migrationGuide: true,
@@ -52,6 +58,26 @@ const docs: ComponentDocs = {
           Heading Level 4 Weak
         </Heading>
       ),
+    },
+    {
+      label: 'Heading Contrast',
+      docsSite: false,
+      Container,
+      render: () => {
+        const backgrounds = Object.keys(boxBackgrounds) as Array<
+          keyof typeof boxBackgrounds
+        >;
+
+        return (
+          <Fragment>
+            {backgrounds.sort().map(background => (
+              <Box background={background}>
+                <Heading level="4">{background}</Heading>
+              </Box>
+            ))}
+          </Fragment>
+        );
+      },
     },
   ],
 };
