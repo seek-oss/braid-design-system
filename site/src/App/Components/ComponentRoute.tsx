@@ -61,65 +61,57 @@ export const ComponentRoute = ({
           </Text>
         </Box>
       ) : null}
-      {examples.map((example, index) => {
-        const {
-          label,
-          docsSite = true,
-          render,
-          code,
-          Container = DefaultContainer,
-        } = example;
+      {examples
+        .filter(example => example.docsSite !== false)
+        .map((example, index) => {
+          const { label, render, code, Container = DefaultContainer } = example;
 
-        if (!docsSite) {
-          return null;
-        }
+          const codeAsString =
+            render && !code
+              ? cleanCodeSnippet(
+                  reactElementToJSXString(render({ id: 'id', handler }), {
+                    useBooleanShorthandSyntax: false,
+                    showDefaultProps: false,
+                    showFunctions: false,
+                    filterProps: ['onChange', 'onBlur', 'onFocus'],
+                  }),
+                )
+              : code
+              ? cleanCodeSnippet(dedent(code))
+              : null;
 
-        const codeAsString =
-          render && !code
-            ? cleanCodeSnippet(
-                reactElementToJSXString(render({ id: 'id', handler }), {
-                  useBooleanShorthandSyntax: false,
-                  showDefaultProps: false,
-                  showFunctions: false,
-                  filterProps: ['onChange', 'onBlur', 'onFocus'],
-                }),
-              )
-            : code
-            ? cleanCodeSnippet(dedent(code))
-            : null;
-
-        return (
-          <Box key={index} marginBottom="xxlarge">
-            {label ? (
-              <Box paddingBottom="small">
-                <Text>{label}</Text>
-              </Box>
-            ) : null}
-            {render
-              ? Object.values(themes).map(theme => (
-                  <Box key={theme.name} marginBottom="large">
-                    <Box paddingBottom="small">
-                      <Text tone="secondary">Theme: {theme.name}</Text>
-                    </Box>
-                    <BraidProvider theme={theme}>
-                      <Container>
-                        {render({ id: `${index}_${theme.name}`, handler })}
-                      </Container>
-                    </BraidProvider>
-                  </Box>
-                ))
-              : null}
-            {codeAsString ? (
-              <Fragment>
+          return (
+            <Box key={index} marginBottom="xxlarge">
+              {label ? (
                 <Box paddingBottom="small">
-                  <Text tone="secondary">Code:</Text>
+                  <Text>{label}</Text>
                 </Box>
-                <Code>{codeAsString}</Code>
-              </Fragment>
-            ) : null}
-          </Box>
-        );
-      })}
+              ) : null}
+              {render
+                ? Object.values(themes).map(theme => (
+                    <Box key={theme.name} marginBottom="large">
+                      <Box paddingBottom="small">
+                        <Text tone="secondary">Theme: {theme.name}</Text>
+                      </Box>
+                      <BraidProvider theme={theme}>
+                        <Container>
+                          {render({ id: `${index}_${theme.name}`, handler })}
+                        </Container>
+                      </BraidProvider>
+                    </Box>
+                  ))
+                : null}
+              {codeAsString ? (
+                <Fragment>
+                  <Box paddingBottom="small">
+                    <Text tone="secondary">Code:</Text>
+                  </Box>
+                  <Code>{codeAsString}</Code>
+                </Fragment>
+              ) : null}
+            </Box>
+          );
+        })}
 
       <Box paddingBottom="small">
         <ComponentProps componentName={componentName} />
