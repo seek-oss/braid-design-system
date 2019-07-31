@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import { Dropdown } from './Dropdown';
+import { Box } from '../Box/Box';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <div style={{ maxWidth: '300px' }}>{children}</div>
@@ -69,6 +70,24 @@ const docs: ComponentDocs = {
           <option value="1">Developer</option>
           <option value="2">Designer</option>
         </Dropdown>
+      ),
+    },
+    {
+      label: 'Dropdown on Brand Background',
+      Container,
+      render: ({ id, handler }) => (
+        <Box background="brand" paddingLeft="small" paddingRight="small">
+          <Dropdown
+            label="Job Title"
+            id={id}
+            onChange={handler}
+            value=""
+            placeholder="Please select a role title"
+          >
+            <option value="1">Developer</option>
+            <option value="2">Designer</option>
+          </Dropdown>
+        </Box>
       ),
     },
   ],

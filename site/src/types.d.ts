@@ -20,6 +20,7 @@ export interface ComponentDocs {
 
 export interface ComponentExample {
   label?: string;
+  docsSite?: boolean;
   render?: (props: {
     id: string;
     handler: (event: SyntheticEvent) => void;

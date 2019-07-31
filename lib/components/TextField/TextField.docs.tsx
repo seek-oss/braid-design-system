@@ -2,6 +2,7 @@ import React, { ReactNode } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import { TextField } from './TextField';
 import { TextLink } from '../TextLink/TextLink';
+import { Box } from '../Box/Box';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <div style={{ maxWidth: '300px' }}>{children}</div>
@@ -88,6 +89,20 @@ const docs: ComponentDocs = {
           tone="positive"
           onChange={handler}
         />
+      ),
+    },
+    {
+      label: 'TextField on Brand Background',
+      Container,
+      render: ({ id, handler }) => (
+        <Box background="brand" paddingLeft="small" paddingRight="small">
+          <TextField
+            label="Job Title"
+            id={id}
+            onChange={handler}
+            value="Senior Developer"
+          />
+        </Box>
       ),
     },
   ],

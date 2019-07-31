@@ -61,8 +61,11 @@ export const ComponentRoute = ({
           </Text>
         </Box>
       ) : null}
-      {examples.map(
-        ({ label, render, code, Container = DefaultContainer }, index) => {
+      {examples
+        .filter(example => example.docsSite !== false)
+        .map((example, index) => {
+          const { label, render, code, Container = DefaultContainer } = example;
+
           const codeAsString =
             render && !code
               ? cleanCodeSnippet(
@@ -108,8 +111,7 @@ export const ComponentRoute = ({
               ) : null}
             </Box>
           );
-        },
-      )}
+        })}
 
       <Box paddingBottom="small">
         <ComponentProps componentName={componentName} />

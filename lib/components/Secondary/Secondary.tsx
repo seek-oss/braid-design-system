@@ -7,7 +7,7 @@ export interface SecondaryProps {
 }
 
 export const Secondary = ({ children, id }: SecondaryProps) => (
-  <span className={useTextTone('secondary')} id={id}>
+  <span className={useTextTone({ tone: 'secondary' })} id={id}>
     {children}
   </span>
 );

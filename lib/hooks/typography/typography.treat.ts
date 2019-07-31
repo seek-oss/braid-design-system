@@ -186,7 +186,19 @@ export const backgroundContrast: BackgroundContrast = {
   brandAccent: {
     default: textColorForBackground('brandAccent'),
   },
+  brandAccentHover: {
+    default: textColorForBackground('brandAccent'),
+  },
+  brandAccentActive: {
+    default: textColorForBackground('brandAccent'),
+  },
   formAccent: {
+    default: textColorForBackground('formAccent'),
+  },
+  formAccentHover: {
+    default: textColorForBackground('formAccent'),
+  },
+  formAccentActive: {
     default: textColorForBackground('formAccent'),
   },
   positive: {
