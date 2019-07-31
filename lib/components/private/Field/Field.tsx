@@ -2,6 +2,7 @@ import React, { ReactNode, AllHTMLAttributes, forwardRef, Ref } from 'react';
 import { useStyles } from 'sku/react-treat';
 import classnames from 'classnames';
 import { Box, BoxProps } from '../../Box/Box';
+import { BackgroundProvider } from '../../Box/BackgroundContext';
 import { FieldLabel, FieldLabelProps } from '../../FieldLabel/FieldLabel';
 import {
   FieldMessage,
@@ -11,7 +12,6 @@ import { FieldOverlay } from '../FieldOverlay/FieldOverlay';
 import buildDataAttributes, { DataAttributeMap } from '../buildDataAttributes';
 import { useText, useTouchableSpace } from '../../../hooks/typography';
 import * as styleRefs from './Field.treat';
-import { BackgroundProvider } from 'lib/components/Box/BackgroundContext';
 
 type FormElementProps = AllHTMLAttributes<HTMLFormElement>;
 export interface FieldProps {
