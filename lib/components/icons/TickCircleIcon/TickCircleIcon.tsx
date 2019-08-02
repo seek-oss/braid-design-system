@@ -1,10 +1,10 @@
 import React from 'react';
-import { Omit } from 'utility-types';
-import { Icon, IconProps } from '../Icon/Icon';
+import { Box } from '../../Box/Box';
+import useIcon, { UseIconProps } from '../../../hooks/useIcon';
 import { TickCircleSvg } from './TickCircleSvg';
 
-export type TickCircleIconProps = Omit<IconProps, 'svgComponent'>;
+export const TickCircleIcon = (props: UseIconProps) => {
+  const iconProps = useIcon(props);
 
-export const TickCircleIcon = (props: TickCircleIconProps) => (
-  <Icon svgComponent={TickCircleSvg} {...props} />
-);
+  return <Box component={TickCircleSvg} {...iconProps} />;
+};

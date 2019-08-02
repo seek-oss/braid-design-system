@@ -1,6 +1,6 @@
 import React, { AllHTMLAttributes } from 'react';
-import { Omit } from 'utility-types';
-import { Icon, IconProps } from '../../../../lib/components/icons/Icon/Icon';
+import { Box } from '../../../../lib/components';
+import useIcon, { UseIconProps } from '../../../../lib/hooks/useIcon';
 
 // Adapted from https://github.com/feathericons/feather
 const CopySvg = (props: AllHTMLAttributes<SVGElement>) => (
@@ -20,8 +20,8 @@ const CopySvg = (props: AllHTMLAttributes<SVGElement>) => (
   </svg>
 );
 
-export type CopyIconProps = Omit<IconProps, 'svgComponent'>;
+export const CopyIcon = (props: UseIconProps) => {
+  const iconProps = useIcon(props);
 
-export const CopyIcon = (props: CopyIconProps) => (
-  <Icon svgComponent={CopySvg} {...props} />
-);
+  return <Box component={CopySvg} {...iconProps} />;
+};
