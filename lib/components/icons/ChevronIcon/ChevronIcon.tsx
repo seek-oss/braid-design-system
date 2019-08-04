@@ -1,33 +1,31 @@
 import React from 'react';
 import { useStyles } from 'sku/react-treat';
 import classnames from 'classnames';
-import { Omit } from 'utility-types';
 import { Box } from '../../Box/Box';
-import { Icon, IconProps } from '../Icon/Icon';
+import useIcon, { UseIconProps } from '../../../hooks/useIcon';
 import { ChevronSvg } from './ChevronSvg';
 import * as styleRefs from './ChevronIcon.treat';
 
-export interface ChevronIconProps extends Omit<IconProps, 'svgComponent'> {
+export interface ChevronIconProps extends UseIconProps {
   direction?: 'up' | 'down' | 'left' | 'right';
 }
 
 export const ChevronIcon = ({
   direction = 'down',
-  inline,
-  ...restProps
+  ...props
 }: ChevronIconProps) => {
   const styles = useStyles(styleRefs);
+  const { className, ...iconProps } = useIcon(props);
 
   return (
     <Box
-      display={inline ? 'inlineBlock' : undefined}
-      className={classnames(styles.root, {
+      component={ChevronSvg}
+      className={classnames(styles.root, className, {
         [styles.up]: direction === 'up',
         [styles.left]: direction === 'left',
         [styles.right]: direction === 'right',
       })}
-    >
-      <Icon svgComponent={ChevronSvg} inline={inline} {...restProps} />
-    </Box>
+      {...iconProps}
+    />
   );
 };

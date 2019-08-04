@@ -1,6 +1,6 @@
 import React, { AllHTMLAttributes } from 'react';
-import { Omit } from 'utility-types';
-import { Icon, IconProps } from '../../../../lib/components/icons/Icon/Icon';
+import { Box } from '../../../../lib/components';
+import useIcon, { UseIconProps } from '../../../../lib/hooks/useIcon';
 
 // Adapted from https://github.com/feathericons/feather
 const PlaySvg = (props: AllHTMLAttributes<SVGElement>) => (
@@ -19,8 +19,8 @@ const PlaySvg = (props: AllHTMLAttributes<SVGElement>) => (
   </svg>
 );
 
-export type PlayIconProps = Omit<IconProps, 'svgComponent'>;
+export const PlayIcon = (props: UseIconProps) => {
+  const iconProps = useIcon(props);
 
-export const PlayIcon = (props: PlayIconProps) => (
-  <Icon svgComponent={PlaySvg} {...props} />
-);
+  return <Box component={PlaySvg} {...iconProps} />;
+};

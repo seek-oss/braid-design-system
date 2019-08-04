@@ -46,7 +46,11 @@ function useLinkStyles() {
   const inHeading = useContext(HeadingContext);
   const mediumWeight = useWeight('medium');
 
-  return [styles.root, useTextTone('link'), !inHeading ? mediumWeight : null];
+  return [
+    styles.root,
+    useTextTone({ tone: 'link' }),
+    !inHeading ? mediumWeight : null,
+  ];
 }
 
 function InlineLink({ children }: TextLinkRendererProps) {

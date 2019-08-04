@@ -164,8 +164,8 @@ type Foreground = keyof typeof tone;
 type BoxBackground = NonNullable<UseBoxProps['background']>;
 type BackgroundContrast = {
   [background in BoxBackground]?: {
-    [foreground in Foreground | 'default']?: ClassRef
-  }
+    [foreground in Foreground | 'default']?: ClassRef;
+  };
 };
 export const backgroundContrast: BackgroundContrast = {
   criticalLight: {
@@ -186,7 +186,19 @@ export const backgroundContrast: BackgroundContrast = {
   brandAccent: {
     default: textColorForBackground('brandAccent'),
   },
+  brandAccentHover: {
+    default: textColorForBackground('brandAccent'),
+  },
+  brandAccentActive: {
+    default: textColorForBackground('brandAccent'),
+  },
   formAccent: {
+    default: textColorForBackground('formAccent'),
+  },
+  formAccentHover: {
+    default: textColorForBackground('formAccent'),
+  },
+  formAccentActive: {
     default: textColorForBackground('formAccent'),
   },
   positive: {

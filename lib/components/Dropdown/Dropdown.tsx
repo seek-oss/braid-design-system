@@ -79,7 +79,7 @@ const NamedDropdown = forwardRef<HTMLSelectElement, DropdownProps>(
               className={classnames(
                 styles.field,
                 className,
-                useTextTone(getTone(placeholder, value)),
+                useTextTone({ tone: getTone(placeholder, value) }),
               )}
               {...fieldProps}
               ref={fieldRef}
@@ -96,7 +96,7 @@ const NamedDropdown = forwardRef<HTMLSelectElement, DropdownProps>(
               display="flex"
               className={styles.chevron}
             >
-              <ChevronIcon tone="neutral" inline />
+              <ChevronIcon size="fill" />
             </Box>
           </Fragment>
         )}

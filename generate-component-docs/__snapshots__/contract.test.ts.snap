@@ -35,6 +35,27 @@ exports[`Badge 1`] = `
 }
 `;
 
+exports[`BookmarkIcon 1`] = `
+{
+  active?: boolean
+  inline?: boolean
+  size?: 
+    | "fill"
+    | "xsmall"
+    | "small"
+    | "large"
+    | "standard"
+  tone?: 
+    | "info"
+    | "critical"
+    | "positive"
+    | "secondary"
+    | "formAccent"
+    | "link"
+    | "neutral"
+}
+`;
+
 exports[`Box 1`] = `
 {
   about?: string
