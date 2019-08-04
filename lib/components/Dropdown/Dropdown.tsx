@@ -96,7 +96,7 @@ const NamedDropdown = forwardRef<HTMLSelectElement, DropdownProps>(
               display="flex"
               className={styles.chevron}
             >
-              <ChevronIcon inline />
+              <ChevronIcon size="fill" />
             </Box>
           </Fragment>
         )}
