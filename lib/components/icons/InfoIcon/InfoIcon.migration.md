@@ -1,3 +1,3 @@
 # InfoIcon Migration Guide
 
-Please refer to the [Icon Migration Guide.](../Icon/Icon.migration.md)
+Please refer to the [Icon Migration Guide.](../Icon.migration.md)

@@ -1,10 +1,10 @@
 import React from 'react';
-import { Omit } from 'utility-types';
-import { Icon, IconProps } from '../Icon/Icon';
+import { Box } from '../../Box/Box';
+import useIcon, { UseIconProps } from '../../../hooks/useIcon';
 import { InfoSvg } from './InfoSvg';
 
-export type InfoIconProps = Omit<IconProps, 'svgComponent'>;
+export const InfoIcon = (props: UseIconProps) => {
+  const iconProps = useIcon(props);
 
-export const InfoIcon = (props: InfoIconProps) => (
-  <Icon svgComponent={InfoSvg} {...props} />
-);
+  return <Box component={InfoSvg} {...iconProps} />;
+};
