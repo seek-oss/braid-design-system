@@ -6,10 +6,6 @@ export const inline = style({
   top: '-0.105em', // Arbitrary magic number, to vertically align to text
 });
 
-export const fullHeight = style({
-  height: '100%',
-});
-
 const makeSizeRules = (size: number) => ({ width: size, height: size });
 
 export const inlineSizes = styleMap(({ utils, typography }) =>

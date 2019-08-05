@@ -60,6 +60,7 @@ export const Toggle = ({
           <Box
             position="absolute"
             width="full"
+            height="full"
             background="formAccent"
             transition="fast"
             className={styles.slideTrackSelected}

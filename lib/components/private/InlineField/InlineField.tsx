@@ -63,7 +63,8 @@ const Indicator = ({
       borderRadius={isCheckbox ? 'standard' : undefined}
       transition="fast"
       width="full"
-      className={classnames(styles.indicator, styles.radio, {
+      height="full"
+      className={classnames(styles.indicator, {
         [styles.circle]: !isCheckbox,
       })}
     />

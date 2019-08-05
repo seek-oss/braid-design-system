@@ -59,7 +59,6 @@ export const slideTrackSelected = style(theme => {
   const trackWidth = theme.utils.rows(theme.spacing.touchableRows);
 
   return {
-    height: '100%',
     selectors: {
       [`${realField}:not(:checked) + ${slideContainer} &`]: {
         transform: `translateX(-${trackWidth}px)`,
