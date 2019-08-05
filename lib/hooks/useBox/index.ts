@@ -15,7 +15,7 @@ export interface UseBoxProps {
   marginTop?: ResponsiveProp<keyof typeof styleRefs.margin.top>;
   marginBottom?: ResponsiveProp<keyof typeof styleRefs.margin.bottom>;
   marginLeft?: ResponsiveProp<keyof typeof styleRefs.margin.left>;
-  marginRight?: ResponsiveProp<keyof typeof styleRefs.margin.left>;
+  marginRight?: ResponsiveProp<keyof typeof styleRefs.margin.right>;
   display?: ResponsiveProp<keyof typeof styleRefs.display>;
   flexDirection?: ResponsiveProp<keyof typeof styleRefs.flexDirection>;
   borderRadius?: keyof typeof styleRefs.borderRadius;
@@ -23,6 +23,7 @@ export interface UseBoxProps {
   boxShadow?: keyof typeof styleRefs.boxShadow;
   transform?: keyof typeof styleRefs.transform;
   transition?: keyof typeof styleRefs.transition;
+  height?: keyof typeof styleRefs.height;
   width?: keyof typeof styleRefs.width;
   position?: keyof typeof styleRefs.position;
 }
@@ -59,6 +60,7 @@ export default ({
   boxShadow,
   transition,
   transform,
+  height,
   width,
   position,
 }: UseBoxProps) => {
@@ -73,6 +75,7 @@ export default ({
     styles.boxShadow[boxShadow!],
     styles.transition[transition!],
     styles.transform[transform!],
+    styles.height[height!],
     styles.width[width!],
     styles.position[position!],
     marginTop &&

@@ -12,33 +12,31 @@ export interface UseIconProps {
   tone?: UseTextProps['tone'];
 }
 
-const resolveSizeClasses = (size: IconSize, inline: boolean) => {
-  const styles = useStyles(styleRefs);
-
-  if (size === 'fill') {
-    return styles.fullHeight;
-  }
-
-  return inline
-    ? [styles.inline, styles.inlineSizes[size]]
-    : styles.blockSizes[size];
-};
-
 export default ({
   size = 'standard',
   inline = false,
   tone,
 }: UseIconProps): BoxProps => {
   const styles = useStyles(styleRefs);
+  const defaultStyles = [styles.currentColor, useTextTone({ tone })];
+
+  if (size === 'fill') {
+    return {
+      width: 'full',
+      height: 'full',
+      display: 'block',
+      className: classnames(defaultStyles),
+    };
+  }
 
   return {
-    width: size === 'fill' ? 'full' : undefined,
     display: inline ? 'inlineBlock' : 'block',
     position: inline ? 'relative' : undefined,
     className: classnames(
-      resolveSizeClasses(size, inline),
-      styles.currentColor,
-      useTextTone({ tone }),
+      defaultStyles,
+      inline
+        ? [styles.inline, styles.inlineSizes[size]]
+        : styles.blockSizes[size],
     ),
   };
 };

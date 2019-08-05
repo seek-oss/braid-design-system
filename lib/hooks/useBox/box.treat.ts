@@ -107,6 +107,11 @@ const widthRules = {
 };
 export const width = styleMap(mapToStyleProperty(widthRules, 'width'));
 
+const heightRules = {
+  full: '100%',
+};
+export const height = styleMap(mapToStyleProperty(heightRules, 'height'));
+
 const positionRules = {
   absolute: 'absolute',
   relative: 'relative',
