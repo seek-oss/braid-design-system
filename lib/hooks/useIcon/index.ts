@@ -24,6 +24,7 @@ export default ({
     return {
       width: 'full',
       height: 'full',
+      display: 'block',
       className: classnames(defaultStyles),
     };
   }
