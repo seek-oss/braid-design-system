@@ -17,9 +17,7 @@ export const BraidProvider = ({
   <ThemeNameContext.Provider value={theme.name}>
     <TreatProvider theme={theme.treatTheme}>
       {styleBody ? (
-        <style type="text/css">{`body{margin:0;padding:0;background:${
-          theme.background
-        }}`}</style>
+        <style type="text/css">{`body{margin:0;padding:0;background:${theme.background}}`}</style>
       ) : null}
       {children}
     </TreatProvider>
