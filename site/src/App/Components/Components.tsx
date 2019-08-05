@@ -32,7 +32,7 @@ export const Components = withRouter(({ location }: RouteComponentProps) => {
             width="full"
             className={styles.header}
           >
-            <Link to="/" inline>
+            <Link to="/">
               <Logo />
             </Link>
 
@@ -70,7 +70,6 @@ export const Components = withRouter(({ location }: RouteComponentProps) => {
                     <BulletList>
                       <Bullet>
                         <ExternalLink
-                          inline
                           href="https://github.com/seek-oss/braid-design-system"
                           rel="noopener noreferrer"
                           onClick={() => setMenuOpen(isComponentsHome)}
@@ -80,7 +79,6 @@ export const Components = withRouter(({ location }: RouteComponentProps) => {
                       </Bullet>
                       <Bullet>
                         <ExternalLink
-                          inline
                           href={playroomUrl}
                           onClick={() => setMenuOpen(isComponentsHome)}
                         >
@@ -102,7 +100,6 @@ export const Components = withRouter(({ location }: RouteComponentProps) => {
                         .map(componentName => (
                           <Bullet key={componentName}>
                             <Link
-                              inline
                               to={`/components/${componentName}`}
                               onClick={() => setMenuOpen(false)}
                             >
@@ -126,7 +123,6 @@ export const Components = withRouter(({ location }: RouteComponentProps) => {
                       .map(iconName => (
                         <Bullet key={iconName}>
                           <Link
-                            inline
                             to={`/icons/${iconName}`}
                             onClick={() => setMenuOpen(false)}
                           >

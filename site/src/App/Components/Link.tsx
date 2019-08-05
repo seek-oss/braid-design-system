@@ -6,20 +6,14 @@ import {
 import { Omit } from 'utility-types';
 import { TextLinkRenderer, TextLink } from '../../../../lib/components';
 
-interface LinkProps extends ReactRouterLinkProps {
-  inline?: boolean;
-}
-
-export const Link = (props: LinkProps) => (
+export const Link = (props: ReactRouterLinkProps) => (
   <TextLinkRenderer>
     {textLinkProps => <ReactRouterLink {...props} {...textLinkProps} />}
   </TextLinkRenderer>
 );
 
 interface ExternalLinkProps
-  extends Omit<AllHTMLAttributes<HTMLAnchorElement>, 'style' | 'className'> {
-  inline?: boolean;
-}
+  extends Omit<AllHTMLAttributes<HTMLAnchorElement>, 'style' | 'className'> {}
 export const ExternalLink = (props: ExternalLinkProps) => (
   <TextLink {...props} />
 );
