@@ -5,7 +5,7 @@ import { Optional, Omit } from 'utility-types';
 
 export interface BoxProps
   extends Optional<UseBoxProps, 'component'>,
-    Omit<AllHTMLAttributes<HTMLElement>, 'width'> {}
+    Omit<AllHTMLAttributes<HTMLElement>, 'width' | 'height'> {}
 
 const NamedBox = forwardRef<HTMLElement, BoxProps>(
   (
@@ -26,6 +26,7 @@ const NamedBox = forwardRef<HTMLElement, BoxProps>(
       boxShadow,
       transition,
       transform,
+      height,
       width,
       position,
       className,
@@ -50,6 +51,7 @@ const NamedBox = forwardRef<HTMLElement, BoxProps>(
       boxShadow,
       transition,
       transform,
+      height,
       width,
       position,
     });
