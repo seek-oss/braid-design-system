@@ -123,7 +123,7 @@ export const ComponentRoute = ({
       <Box paddingBottom="large">
         <Paragraph>
           <Text>
-            <ExternalLink inline href={sourceUrl} rel="noopener noreferrer">
+            <ExternalLink href={sourceUrl} rel="noopener noreferrer">
               View Source
             </ExternalLink>
           </Text>
@@ -131,11 +131,7 @@ export const ComponentRoute = ({
         <Paragraph>
           <Text>
             {docs.migrationGuide ? (
-              <ExternalLink
-                inline
-                href={migrationGuideUrl}
-                rel="noopener noreferrer"
-              >
+              <ExternalLink href={migrationGuideUrl} rel="noopener noreferrer">
                 Migration Guide
               </ExternalLink>
             ) : null}

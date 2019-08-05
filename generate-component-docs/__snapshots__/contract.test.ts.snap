@@ -495,9 +495,7 @@ exports[`Box 1`] = `
     | string
     | number
   headers?: string
-  height?: 
-    | string
-    | number
+  height?: "full"
   hidden?: boolean
   high?: number
   href?: string

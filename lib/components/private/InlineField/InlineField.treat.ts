@@ -53,10 +53,6 @@ export const children = style(theme => {
   };
 });
 
-export const radio = style({
-  height: '100%',
-});
-
 export const circle = style({
   borderRadius: '100%',
 });
