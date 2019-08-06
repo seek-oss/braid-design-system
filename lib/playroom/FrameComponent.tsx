@@ -9,9 +9,6 @@ interface Props {
 
 export default ({ theme, children }: Props) => (
   <BraidProvider theme={theme}>
-    <Fragment>
-      <style>{`html,body { margin: 0; }`}</style>
-      {children}
-    </Fragment>
+    <Fragment>{children}</Fragment>
   </BraidProvider>
 );
