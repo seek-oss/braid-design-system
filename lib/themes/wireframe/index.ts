@@ -4,6 +4,7 @@ import { Theme } from '../theme';
 
 const theme: Theme = {
   name: 'wireframe',
+  background: '#fff',
   treatTheme,
 };
 

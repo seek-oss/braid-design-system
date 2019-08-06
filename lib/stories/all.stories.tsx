@@ -37,7 +37,7 @@ req.keys().forEach(filename => {
     .forEach(theme => {
       stories.add(theme.name, () => (
         <BrowserRouter>
-          <BraidProvider theme={theme}>
+          <BraidProvider theme={theme} styleBody={false}>
             {docs.examples.map(
               (
                 { label = componentName, render, Container = DefaultContainer },

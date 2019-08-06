@@ -44,6 +44,14 @@ export default () => (
 );
 ```
 
+If you're rendering within the context of another application, you may want to opt out of the provided body styles, which set the background color and reset margin and padding:
+
+```js
+<BraidProvider theme={jobStreetTheme} styleBody={false}>
+  <Text>Hello World!</Text>
+</BraidProvider>
+```
+
 ## Style Guide Migration
 
 If you're migrating from an existing style guide, please refer to the [Style Guide Migration](./docs/Style%20Guide%20Migration.md) guide.

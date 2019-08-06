@@ -861,7 +861,9 @@ exports[`Box 1`] = `
 exports[`BraidProvider 1`] = `
 {
   children: ReactNode
+  styleBody?: boolean
   theme: {
+    background: string
     name: string
     treatTheme: string
   }
