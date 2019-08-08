@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <defs>
+        <style>
+            .cls-1,.cls-2{fill:none;}.cls-2{stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;}
+        </style>
+    </defs>
+    <title>add</title>
+    <g id="_01" data-name="01">
+        <g id="add">
+            <rect id="artboard_guide-3" data-name="artboard guide" class="cls-1" width="24" height="24"/>
+            <g id="add-2" data-name="add">
+                <line class="cls-2" x1="12" y1="6" x2="12" y2="18"/>
+                <line class="cls-2" x1="18" y1="12" x2="6" y2="12"/>
+            </g>
+        </g>
+    </g>
+</svg>

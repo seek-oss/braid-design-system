@@ -29,9 +29,5 @@ export { TextField } from './TextField/TextField';
 export { TextLink } from './TextLink/TextLink';
 export { TextLinkRenderer } from './TextLinkRenderer/TextLinkRenderer';
 export { Toggle } from './Toggle/Toggle';
-export { BookmarkIcon } from './icons/BookmarkIcon/BookmarkIcon';
-export { ChevronIcon } from './icons/ChevronIcon/ChevronIcon';
-export { ErrorIcon } from './icons/ErrorIcon/ErrorIcon';
-export { InfoIcon } from './icons/InfoIcon/InfoIcon';
-export { TickCircleIcon } from './icons/TickCircleIcon/TickCircleIcon';
-export { TickIcon } from './icons/TickIcon/TickIcon';
+
+export * from './icons';
