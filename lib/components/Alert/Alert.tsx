@@ -62,7 +62,7 @@ export const Alert = ({
       display="flex"
     >
       {Icon ? (
-        <Box paddingRight="small" display="flex" className={styles.icon}>
+        <Box paddingRight="small" className={styles.icon}>
           <Icon />
         </Box>
       ) : null}
