@@ -87,7 +87,7 @@ export default ({ children }: CodeProps) => {
         className={styles.toolbar}
       >
         <CodeButton onClick={() => copy(children)} title="Copy to clipboard">
-          <CopyIcon size="xsmall" inline /> Copy
+          <CopyIcon /> Copy
         </CodeButton>
         {/^import/m.test(children) ? null : (
           <Fragment>
@@ -99,7 +99,7 @@ export default ({ children }: CodeProps) => {
               style={{ textDecoration: 'none' }}
               title="Open in Playroom"
             >
-              <PlayIcon size="xsmall" inline /> Open in Playroom
+              <PlayIcon /> Open in Playroom
             </CodeButton>
           </Fragment>
         )}

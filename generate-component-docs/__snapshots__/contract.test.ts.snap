@@ -38,7 +38,6 @@ exports[`Badge 1`] = `
 exports[`BookmarkIcon 1`] = `
 {
   active?: boolean
-  inline?: boolean
   size?: 
     | "fill"
     | "xsmall"
@@ -934,7 +933,6 @@ exports[`ChevronIcon 1`] = `
     | "right"
     | "up"
     | "down"
-  inline?: boolean
   size?: 
     | "fill"
     | "xsmall"
@@ -1008,7 +1006,6 @@ exports[`Dropdown 1`] = `
 
 exports[`ErrorIcon 1`] = `
 {
-  inline?: boolean
   size?: 
     | "fill"
     | "xsmall"
@@ -1257,7 +1254,6 @@ exports[`Hidden 1`] = `
 
 exports[`InfoIcon 1`] = `
 {
-  inline?: boolean
   size?: 
     | "fill"
     | "xsmall"
@@ -2130,7 +2126,6 @@ exports[`ThemeNameConsumer 1`] = `
 
 exports[`TickCircleIcon 1`] = `
 {
-  inline?: boolean
   size?: 
     | "fill"
     | "xsmall"
@@ -2150,7 +2145,6 @@ exports[`TickCircleIcon 1`] = `
 
 exports[`TickIcon 1`] = `
 {
-  inline?: boolean
   size?: 
     | "fill"
     | "xsmall"

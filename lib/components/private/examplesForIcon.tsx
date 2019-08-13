@@ -20,7 +20,7 @@ export default (Icon: ComponentType<UseIconProps>) => {
       label: 'Standard Inline',
       render: () => (
         <Text>
-          Standard <Icon inline /> text
+          Standard <Icon /> text
         </Text>
       ),
     },
@@ -41,7 +41,7 @@ export default (Icon: ComponentType<UseIconProps>) => {
       label: 'Large Inline',
       render: () => (
         <Text size="large">
-          Large <Icon size="large" inline /> text
+          Large <Icon /> text
         </Text>
       ),
     },
