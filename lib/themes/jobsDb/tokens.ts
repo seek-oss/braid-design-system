@@ -87,7 +87,7 @@ export default makeTokens({
         large: {
           mobile: {
             size: 16,
-            rows: 7,
+            rows: 6,
           },
           desktop: {
             size: 18,
