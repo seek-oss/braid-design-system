@@ -43,7 +43,7 @@ export default ({
       fontWeight: {
         regular: 400,
         medium: 500,
-        strong: 700,
+        strong: 800,
       },
       heading: {
         weight: {
