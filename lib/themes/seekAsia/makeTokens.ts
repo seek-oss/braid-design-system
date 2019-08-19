@@ -57,8 +57,8 @@ export default ({
               rows: 9,
             },
             desktop: {
-              size: 34,
-              rows: 11,
+              size: 48,
+              rows: 15,
             },
           },
           '2': {
@@ -67,18 +67,18 @@ export default ({
               rows: 8,
             },
             desktop: {
-              size: 28,
-              rows: 9,
+              size: 32,
+              rows: 10,
             },
           },
           '3': {
             mobile: {
-              size: 20,
+              size: 18,
               rows: 7,
             },
             desktop: {
-              size: 24,
-              rows: 8,
+              size: 20,
+              rows: 7,
             },
           },
           '4': {
@@ -87,7 +87,7 @@ export default ({
               rows: 6,
             },
             desktop: {
-              size: 20,
+              size: 18,
               rows: 7,
             },
           },
@@ -117,21 +117,21 @@ export default ({
         standard: {
           mobile: {
             size: 16,
-            rows: 6,
+            rows: 5,
           },
           desktop: {
             size: 16,
-            rows: 6,
+            rows: 5,
           },
         },
         large: {
           mobile: {
-            size: 18,
+            size: 16,
             rows: 6,
           },
           desktop: {
             size: 18,
-            rows: 6,
+            rows: 7,
           },
         },
       },
