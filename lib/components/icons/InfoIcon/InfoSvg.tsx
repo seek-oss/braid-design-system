@@ -1,7 +1,15 @@
 import React, { AllHTMLAttributes } from 'react';
 
 export const InfoSvg = (props: AllHTMLAttributes<SVGElement>) => (
-  <svg x="0" y="0" width="16" height="16" viewBox="0 0 30 30" {...props}>
+  <svg
+    x="0"
+    y="0"
+    width="16"
+    height="16"
+    viewBox="0 0 30 30"
+    fill="currentColor"
+    {...props}
+  >
     <path
       d="M14.905,21.843c-0.552,0-1-0.447-1-1v-8.236c0-0.552,0.448-1,1-1s1,0.448,1,1v8.236
           C15.905,21.396,15.458,21.843,14.905,21.843z"
