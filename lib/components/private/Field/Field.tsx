@@ -37,7 +37,7 @@ interface FieldRenderProps extends Pick<FieldProps, PassthroughProps> {
   boxShadow: BoxProps['boxShadow'];
   borderRadius: BoxProps['borderRadius'];
   width: BoxProps['width'];
-  paddingX: BoxProps['paddingLeft'];
+  paddingX: BoxProps['paddingX'];
   'aria-describedby'?: string;
   className: string;
 }
