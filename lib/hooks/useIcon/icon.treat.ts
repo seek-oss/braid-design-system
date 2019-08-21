@@ -18,5 +18,3 @@ export const blockSizes = styleMap(({ utils, typography }) =>
     ),
   ),
 );
-
-export const currentColor = style({ fill: 'currentColor' });
