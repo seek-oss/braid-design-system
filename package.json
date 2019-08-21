@@ -7,7 +7,6 @@
     "lib/themes/**/*"
   ],
   "scripts": {
-    "check-integrity": "yarn check --integrity && echo 'Ignore paths from lint-staged'",
     "pretest": "sku configure",
     "test": "yarn check --integrity && yarn lint && yarn build && yarn contract-test",
     "contract-test": "sku test contract",
@@ -95,7 +94,7 @@
     "react-transition-group": "^2.6.1",
     "renovate-config-seek": "0.4.0",
     "semantic-release": "^15.13.3",
-    "sku": "8.10.0",
+    "sku": "8.10.1",
     "surge": "^0.20.1",
     "travis-deploy-once": "^5.0.9",
     "ts-node": "^8.2.0"
