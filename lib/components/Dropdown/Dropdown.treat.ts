@@ -6,6 +6,7 @@ export const chevron = style(({ utils, spacing }) => ({
   right: 0,
   alignItems: 'center',
   height: utils.rows(spacing.touchableRows),
+  width: utils.rows(spacing.touchableRows),
 }));
 
 export const field = style(({ spacing, grid, typography }) => ({
