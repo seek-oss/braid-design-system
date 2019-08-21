@@ -1,3 +1,6 @@
 import { createContext } from 'react';
+import { UseTextProps } from '../../hooks/typography';
 
-export default createContext(false);
+const textContext = createContext<UseTextProps | false>(false);
+
+export default textContext;
