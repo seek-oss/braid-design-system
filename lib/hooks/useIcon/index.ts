@@ -16,17 +16,18 @@ export interface UseIconProps {
 
 export default ({ size, tone }: UseIconProps): BoxProps => {
   const styles = useStyles(styleRefs);
-  const inText = useContext(TextContext);
-  const inHeading = useContext(HeadingContext);
+  const textContext = useContext(TextContext);
+  const headingContext = useContext(HeadingContext);
+  const inheritedTone = textContext ? textContext.tone : undefined;
+  const resolvedTone = useTextTone({ tone: tone || inheritedTone });
 
-  const defaultStyles = [styles.currentColor, useTextTone({ tone })];
-  const isInline = inText || inHeading;
+  const isInline = textContext || headingContext;
 
   if (process.env.NODE_ENV !== 'production') {
     if (isInline && size) {
       throw new Error(
         `Specifying a custom \`size\` for an \`Icon\` inside the context of a \`<${
-          inText ? 'Text' : 'Heading'
+          textContext ? 'Text' : 'Heading'
         }>\` component is invalid. See the documentation for correct usage: https://seek-oss.github.io/braid-design-system/components/`,
       );
     }
@@ -37,7 +38,7 @@ export default ({ size, tone }: UseIconProps): BoxProps => {
       width: 'full',
       height: 'full',
       display: 'block',
-      className: classnames(defaultStyles),
+      className: resolvedTone,
     };
   }
 
@@ -45,7 +46,7 @@ export default ({ size, tone }: UseIconProps): BoxProps => {
     display: isInline ? 'inlineBlock' : 'block',
     position: isInline ? 'relative' : undefined,
     className: classnames(
-      defaultStyles,
+      resolvedTone,
       isInline ? styles.inline : styles.blockSizes[size || 'standard'],
     ),
   };
