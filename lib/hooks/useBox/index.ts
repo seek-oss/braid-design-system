@@ -1,27 +1,42 @@
 import { ReactType } from 'react';
 import { useStyles } from 'sku/react-treat';
 import classnames from 'classnames';
+import { SetIntersection } from 'utility-types';
 import * as resetStyleRefs from './reset.treat';
 import * as styleRefs from './box.treat';
 
 type ResponsiveProp<AtomName> = AtomName | [AtomName, AtomName];
 
+type DirectionalSpace<
+  Direction extends 'top' | 'bottom' | 'left' | 'right'
+> = SetIntersection<
+  keyof typeof styleRefs.padding[Direction],
+  keyof typeof styleRefs.margin[Direction]
+>;
+type SpaceTop = DirectionalSpace<'top'>;
+type SpaceBottom = DirectionalSpace<'bottom'>;
+type SpaceLeft = DirectionalSpace<'left'>;
+type SpaceRight = DirectionalSpace<'right'>;
+type SpaceX = SetIntersection<SpaceLeft, SpaceRight>;
+type SpaceY = SetIntersection<SpaceTop, SpaceBottom>;
+type Space = SetIntersection<SpaceX, SpaceY>;
+
 export interface UseBoxProps {
   component: ReactType;
-  padding?: ResponsiveProp<keyof typeof styleRefs.padding.top>;
-  paddingX?: ResponsiveProp<keyof typeof styleRefs.padding.left>;
-  paddingY?: ResponsiveProp<keyof typeof styleRefs.padding.top>;
-  paddingTop?: ResponsiveProp<keyof typeof styleRefs.padding.top>;
-  paddingBottom?: ResponsiveProp<keyof typeof styleRefs.padding.bottom>;
-  paddingLeft?: ResponsiveProp<keyof typeof styleRefs.padding.left>;
-  paddingRight?: ResponsiveProp<keyof typeof styleRefs.padding.right>;
-  margin?: ResponsiveProp<keyof typeof styleRefs.margin.top>;
-  marginX?: ResponsiveProp<keyof typeof styleRefs.margin.left>;
-  marginY?: ResponsiveProp<keyof typeof styleRefs.margin.top>;
-  marginTop?: ResponsiveProp<keyof typeof styleRefs.margin.top>;
-  marginBottom?: ResponsiveProp<keyof typeof styleRefs.margin.bottom>;
-  marginLeft?: ResponsiveProp<keyof typeof styleRefs.margin.left>;
-  marginRight?: ResponsiveProp<keyof typeof styleRefs.margin.right>;
+  padding?: ResponsiveProp<Space>;
+  paddingX?: ResponsiveProp<SpaceX>;
+  paddingY?: ResponsiveProp<SpaceY>;
+  paddingTop?: ResponsiveProp<SpaceTop>;
+  paddingBottom?: ResponsiveProp<SpaceBottom>;
+  paddingLeft?: ResponsiveProp<SpaceLeft>;
+  paddingRight?: ResponsiveProp<SpaceRight>;
+  margin?: ResponsiveProp<Space>;
+  marginX?: ResponsiveProp<SpaceX>;
+  marginY?: ResponsiveProp<SpaceY>;
+  marginTop?: ResponsiveProp<SpaceTop>;
+  marginBottom?: ResponsiveProp<SpaceBottom>;
+  marginLeft?: ResponsiveProp<SpaceLeft>;
+  marginRight?: ResponsiveProp<SpaceRight>;
   display?: ResponsiveProp<keyof typeof styleRefs.display>;
   flexDirection?: ResponsiveProp<keyof typeof styleRefs.flexDirection>;
   borderRadius?: keyof typeof styleRefs.borderRadius;
