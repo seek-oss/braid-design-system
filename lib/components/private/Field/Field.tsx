@@ -37,8 +37,7 @@ interface FieldRenderProps extends Pick<FieldProps, PassthroughProps> {
   boxShadow: BoxProps['boxShadow'];
   borderRadius: BoxProps['borderRadius'];
   width: BoxProps['width'];
-  paddingLeft: BoxProps['paddingLeft'];
-  paddingRight: BoxProps['paddingRight'];
+  paddingX: BoxProps['paddingLeft'];
   'aria-describedby'?: string;
   className: string;
 }
@@ -95,8 +94,7 @@ export const Field = forwardRef<FieldRef, InternalFieldProps>(
                     ? 'borderCritical'
                     : 'borderStandard',
                 width: 'full',
-                paddingLeft: 'small',
-                paddingRight: 'small',
+                paddingX: 'small',
                 borderRadius: 'standard',
                 ...((message || ariaDescribedBy) && {
                   'aria-describedby': ariaDescribedBy || messageId,

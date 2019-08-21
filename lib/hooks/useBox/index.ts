@@ -8,10 +8,16 @@ type ResponsiveProp<AtomName> = AtomName | [AtomName, AtomName];
 
 export interface UseBoxProps {
   component: ReactType;
+  padding?: ResponsiveProp<keyof typeof styleRefs.padding.top>;
+  paddingX?: ResponsiveProp<keyof typeof styleRefs.padding.left>;
+  paddingY?: ResponsiveProp<keyof typeof styleRefs.padding.top>;
   paddingTop?: ResponsiveProp<keyof typeof styleRefs.padding.top>;
   paddingBottom?: ResponsiveProp<keyof typeof styleRefs.padding.bottom>;
   paddingLeft?: ResponsiveProp<keyof typeof styleRefs.padding.left>;
   paddingRight?: ResponsiveProp<keyof typeof styleRefs.padding.right>;
+  margin?: ResponsiveProp<keyof typeof styleRefs.margin.top>;
+  marginX?: ResponsiveProp<keyof typeof styleRefs.margin.left>;
+  marginY?: ResponsiveProp<keyof typeof styleRefs.margin.top>;
   marginTop?: ResponsiveProp<keyof typeof styleRefs.margin.top>;
   marginBottom?: ResponsiveProp<keyof typeof styleRefs.margin.bottom>;
   marginLeft?: ResponsiveProp<keyof typeof styleRefs.margin.left>;
@@ -45,10 +51,16 @@ function getResponsiveClasses<PropName extends string>(
 
 export default ({
   component,
+  padding,
+  paddingX,
+  paddingY,
   paddingTop,
   paddingBottom,
   paddingLeft,
   paddingRight,
+  margin,
+  marginX,
+  marginY,
   marginTop,
   marginBottom,
   marginLeft,
@@ -67,6 +79,16 @@ export default ({
   const resetStyles = useStyles(resetStyleRefs);
   const styles = useStyles(styleRefs);
 
+  const resolvedPaddingTop = paddingTop || paddingY || padding;
+  const resolvedPaddingBottom = paddingBottom || paddingY || padding;
+  const resolvedPaddingLeft = paddingLeft || paddingX || padding;
+  const resolvedPaddingRight = paddingRight || paddingX || padding;
+
+  const resolvedMarginTop = marginTop || marginY || margin;
+  const resolvedMarginBottom = marginBottom || marginY || margin;
+  const resolvedMarginLeft = marginLeft || marginX || margin;
+  const resolvedMarginRight = marginRight || marginX || margin;
+
   return classnames(
     resetStyles.base,
     resetStyles.element[component as keyof typeof resetStyleRefs.element],
@@ -78,53 +100,53 @@ export default ({
     styles.height[height!],
     styles.width[width!],
     styles.position[position!],
-    marginTop &&
+    resolvedMarginTop &&
       getResponsiveClasses(
         styles.margin.top,
         styles.marginDesktop.top,
-        marginTop,
+        resolvedMarginTop,
       ),
-    marginRight &&
-      getResponsiveClasses(
-        styles.margin.right,
-        styles.marginDesktop.right,
-        marginRight,
-      ),
-    marginBottom &&
+    resolvedMarginBottom &&
       getResponsiveClasses(
         styles.margin.bottom,
         styles.marginDesktop.bottom,
-        marginBottom,
+        resolvedMarginBottom,
       ),
-    marginLeft &&
+    resolvedMarginLeft &&
       getResponsiveClasses(
         styles.margin.left,
         styles.marginDesktop.left,
-        marginLeft,
+        resolvedMarginLeft,
       ),
-    paddingTop &&
+    resolvedMarginRight &&
+      getResponsiveClasses(
+        styles.margin.right,
+        styles.marginDesktop.right,
+        resolvedMarginRight,
+      ),
+    resolvedPaddingTop &&
       getResponsiveClasses(
         styles.padding.top,
         styles.paddingDesktop.top,
-        paddingTop,
+        resolvedPaddingTop,
       ),
-    paddingRight &&
-      getResponsiveClasses(
-        styles.padding.right,
-        styles.paddingDesktop.right,
-        paddingRight,
-      ),
-    paddingBottom &&
+    resolvedPaddingBottom &&
       getResponsiveClasses(
         styles.padding.bottom,
         styles.paddingDesktop.bottom,
-        paddingBottom,
+        resolvedPaddingBottom,
       ),
-    paddingLeft &&
+    resolvedPaddingLeft &&
       getResponsiveClasses(
         styles.padding.left,
         styles.paddingDesktop.left,
-        paddingLeft,
+        resolvedPaddingLeft,
+      ),
+    resolvedPaddingRight &&
+      getResponsiveClasses(
+        styles.padding.right,
+        styles.paddingDesktop.right,
+        resolvedPaddingRight,
       ),
     display &&
       getResponsiveClasses(styles.display, styles.displayDesktop, display),
