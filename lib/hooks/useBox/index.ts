@@ -1,7 +1,6 @@
 import { ReactType } from 'react';
 import { useStyles } from 'sku/react-treat';
 import classnames from 'classnames';
-import { SetIntersection } from 'utility-types';
 import * as resetStyleRefs from './reset.treat';
 import * as styleRefs from './box.treat';
 
@@ -9,7 +8,7 @@ type ResponsiveProp<AtomName> = AtomName | [AtomName, AtomName];
 
 type DirectionalSpace<
   Direction extends 'top' | 'bottom' | 'left' | 'right'
-> = SetIntersection<
+> = Extract<
   keyof typeof styleRefs.padding[Direction],
   keyof typeof styleRefs.margin[Direction]
 >;
@@ -17,9 +16,9 @@ type SpaceTop = DirectionalSpace<'top'>;
 type SpaceBottom = DirectionalSpace<'bottom'>;
 type SpaceLeft = DirectionalSpace<'left'>;
 type SpaceRight = DirectionalSpace<'right'>;
-type SpaceX = SetIntersection<SpaceLeft, SpaceRight>;
-type SpaceY = SetIntersection<SpaceTop, SpaceBottom>;
-type Space = SetIntersection<SpaceX, SpaceY>;
+type SpaceX = Extract<SpaceLeft, SpaceRight>;
+type SpaceY = Extract<SpaceTop, SpaceBottom>;
+type Space = Extract<SpaceX, SpaceY>;
 
 export interface UseBoxProps {
   component: ReactType;
