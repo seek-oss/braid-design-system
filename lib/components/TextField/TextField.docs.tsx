@@ -95,7 +95,7 @@ const docs: ComponentDocs = {
       label: 'TextField on Brand Background',
       Container,
       render: ({ id, handler }) => (
-        <Box background="brand" paddingLeft="small" paddingRight="small">
+        <Box background="brand" paddingX="small">
           <TextField
             label="Job Title"
             id={id}

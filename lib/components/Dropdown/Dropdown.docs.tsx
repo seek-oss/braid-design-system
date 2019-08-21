@@ -76,7 +76,7 @@ const docs: ComponentDocs = {
       label: 'Dropdown on Brand Background',
       Container,
       render: ({ id, handler }) => (
-        <Box background="brand" paddingLeft="small" paddingRight="small">
+        <Box background="brand" paddingX="small">
           <Dropdown
             label="Job Title"
             id={id}

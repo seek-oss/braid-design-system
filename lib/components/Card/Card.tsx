@@ -11,8 +11,7 @@ export const Card = ({ children }: CardProps) => (
       background="card"
       paddingTop="small"
       paddingBottom="large"
-      paddingLeft="gutter"
-      paddingRight="gutter"
+      paddingX="gutter"
     >
       {children}
     </Box>

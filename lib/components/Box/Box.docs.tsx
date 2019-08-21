@@ -22,16 +22,13 @@ const docs: ComponentDocs = {
       ),
       render: () => (
         <Box
-          marginLeft={space}
-          marginRight={space}
           {...(space === 'gutter'
             ? {
-                marginTop: 'none',
-                marginBottom: 'none',
+                marginX: space,
+                marginY: 'none',
               }
             : {
-                marginTop: space,
-                marginBottom: space,
+                margin: space,
               })}
         >
           <HideCode>

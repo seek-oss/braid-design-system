@@ -53,8 +53,7 @@ export const Badge = ({
         id={id}
         display="inlineBlock"
         background={backgroundForTone(tone, weight)}
-        paddingLeft="xsmall"
-        paddingRight="xsmall"
+        paddingX="xsmall"
         borderRadius="standard"
         className={styles.inner}
       >
