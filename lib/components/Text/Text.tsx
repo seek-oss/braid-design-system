@@ -39,7 +39,7 @@ export const Text = ({
   }
 
   return (
-    <TextContext.Provider value={true}>
+    <TextContext.Provider value={{ tone, size, weight, baseline }}>
       <Box
         id={id}
         display={!isListItem ? 'block' : undefined}

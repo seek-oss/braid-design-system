@@ -11,8 +11,7 @@ const docs: ComponentDocs = {
       label: 'Standard Card',
       Container: ({ children }) => (
         <Box
-          paddingLeft="gutter"
-          paddingRight="gutter"
+          paddingX="gutter"
           paddingTop="medium"
           style={{ backgroundColor: '#ccc' }}
         >

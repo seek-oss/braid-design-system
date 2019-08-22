@@ -62,14 +62,11 @@ const NamedDropdown = forwardRef<HTMLSelectElement, DropdownProps>(
 
     return (
       <Field {...restProps} ref={ref} secondaryMessage={null}>
-        {(
-          { className, paddingLeft, paddingRight, ...fieldProps },
-          fieldRef,
-        ) => (
+        {({ className, paddingX, ...fieldProps }, fieldRef) => (
           <Fragment>
             <Box
               component="select"
-              paddingLeft={paddingLeft}
+              paddingLeft={paddingX}
               value={value}
               defaultValue={typeof value === 'undefined' ? '' : undefined}
               onChange={onChange}
@@ -90,8 +87,7 @@ const NamedDropdown = forwardRef<HTMLSelectElement, DropdownProps>(
               <Fragment>{children}</Fragment>
             </Box>
             <Box
-              paddingLeft={paddingLeft}
-              paddingRight={paddingRight}
+              paddingX={paddingX}
               position="absolute"
               display="flex"
               className={styles.chevron}

@@ -151,13 +151,16 @@ const textColorForBackground = (
     }
   };
 
-  return style(theme => ({
-    color:
-      resolveOverride(theme) ||
-      (isLight(theme.color.background[background])
-        ? theme.color.foreground.neutral
-        : theme.color.foreground.neutralInverted),
-  }));
+  return style(
+    theme => ({
+      color:
+        resolveOverride(theme) ||
+        (isLight(theme.color.background[background])
+          ? theme.color.foreground.neutral
+          : theme.color.foreground.neutralInverted),
+    }),
+    `textColorForBackground-${background}`,
+  );
 };
 
 type Foreground = keyof typeof tone;

@@ -55,14 +55,12 @@ export const Alert = ({
     <Box
       id={id}
       background={background}
-      paddingLeft="gutter"
-      paddingRight="gutter"
-      paddingTop="medium"
-      paddingBottom="medium"
+      paddingX="gutter"
+      paddingY="medium"
       display="flex"
     >
       {Icon ? (
-        <Box paddingRight="small" display="flex" className={styles.icon}>
+        <Box paddingRight="small" className={styles.icon}>
           <Icon />
         </Box>
       ) : null}

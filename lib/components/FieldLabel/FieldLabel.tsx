@@ -45,7 +45,7 @@ export const FieldLabel = ({
         {tertiaryLabel ? <Text>&nbsp;{tertiaryLabel}</Text> : null}
       </Box>
       {description ? (
-        <Box paddingTop="xxsmall" paddingBottom="xxsmall">
+        <Box paddingY="xxsmall">
           <Text tone="secondary">{description}</Text>
         </Box>
       ) : null}

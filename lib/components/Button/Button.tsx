@@ -85,8 +85,7 @@ export const Button = ({
       />
       <Box
         position="relative"
-        paddingLeft="gutter"
-        paddingRight="gutter"
+        paddingX="gutter"
         className={classnames(styles.content, useTouchableSpace('standard'))}
       >
         <Text

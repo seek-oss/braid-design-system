@@ -38,7 +38,6 @@ exports[`Badge 1`] = `
 exports[`BookmarkIcon 1`] = `
 {
   active?: boolean
-  inline?: boolean
   size?: 
     | "fill"
     | "xsmall"
@@ -521,6 +520,16 @@ exports[`Box 1`] = `
   loop?: boolean
   low?: number
   manifest?: string
+  margin?: ResponsiveProp<
+    | "none"
+    | "xxsmall"
+    | "xsmall"
+    | "small"
+    | "medium"
+    | "large"
+    | "xlarge"
+    | "xxlarge"
+  >
   marginBottom?: ResponsiveProp<
     | "none"
     | "xxsmall"
@@ -565,6 +574,27 @@ exports[`Box 1`] = `
     | "xxlarge"
   >
   marginWidth?: number
+  marginX?: ResponsiveProp<
+    | "none"
+    | "xxsmall"
+    | "xsmall"
+    | "small"
+    | "medium"
+    | "large"
+    | "xlarge"
+    | "xxlarge"
+    | "gutter"
+  >
+  marginY?: ResponsiveProp<
+    | "none"
+    | "xxsmall"
+    | "xsmall"
+    | "small"
+    | "medium"
+    | "large"
+    | "xlarge"
+    | "xxlarge"
+  >
   max?: 
     | string
     | number
@@ -743,6 +773,16 @@ exports[`Box 1`] = `
   onWheelCapture?: (event: WheelEvent<HTMLElement>) => void
   open?: boolean
   optimum?: number
+  padding?: ResponsiveProp<
+    | "none"
+    | "xxsmall"
+    | "xsmall"
+    | "small"
+    | "medium"
+    | "large"
+    | "xlarge"
+    | "xxlarge"
+  >
   paddingBottom?: ResponsiveProp<
     | "none"
     | "xxsmall"
@@ -776,6 +816,27 @@ exports[`Box 1`] = `
     | "gutter"
   >
   paddingTop?: ResponsiveProp<
+    | "none"
+    | "xxsmall"
+    | "xsmall"
+    | "small"
+    | "medium"
+    | "large"
+    | "xlarge"
+    | "xxlarge"
+  >
+  paddingX?: ResponsiveProp<
+    | "none"
+    | "xxsmall"
+    | "xsmall"
+    | "small"
+    | "medium"
+    | "large"
+    | "xlarge"
+    | "xxlarge"
+    | "gutter"
+  >
+  paddingY?: ResponsiveProp<
     | "none"
     | "xxsmall"
     | "xsmall"
@@ -934,7 +995,6 @@ exports[`ChevronIcon 1`] = `
     | "right"
     | "up"
     | "down"
-  inline?: boolean
   size?: 
     | "fill"
     | "xsmall"
@@ -1008,7 +1068,6 @@ exports[`Dropdown 1`] = `
 
 exports[`ErrorIcon 1`] = `
 {
-  inline?: boolean
   size?: 
     | "fill"
     | "xsmall"
@@ -1257,7 +1316,6 @@ exports[`Hidden 1`] = `
 
 exports[`InfoIcon 1`] = `
 {
-  inline?: boolean
   size?: 
     | "fill"
     | "xsmall"
@@ -2130,7 +2188,6 @@ exports[`ThemeNameConsumer 1`] = `
 
 exports[`TickCircleIcon 1`] = `
 {
-  inline?: boolean
   size?: 
     | "fill"
     | "xsmall"
@@ -2150,7 +2207,6 @@ exports[`TickCircleIcon 1`] = `
 
 exports[`TickIcon 1`] = `
 {
-  inline?: boolean
   size?: 
     | "fill"
     | "xsmall"

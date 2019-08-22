@@ -11,10 +11,16 @@ const NamedBox = forwardRef<HTMLElement, BoxProps>(
   (
     {
       component = 'div',
+      padding,
+      paddingX,
+      paddingY,
       paddingTop,
       paddingBottom,
       paddingLeft,
       paddingRight,
+      margin,
+      marginX,
+      marginY,
       marginTop,
       marginBottom,
       marginLeft,
@@ -36,10 +42,16 @@ const NamedBox = forwardRef<HTMLElement, BoxProps>(
   ) => {
     const boxStyles = useBox({
       component,
+      padding,
+      paddingX,
+      paddingY,
       paddingTop,
       paddingBottom,
       paddingLeft,
       paddingRight,
+      margin,
+      marginX,
+      marginY,
       marginTop,
       marginBottom,
       marginLeft,

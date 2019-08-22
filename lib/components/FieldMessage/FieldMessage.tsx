@@ -21,8 +21,8 @@ export interface FieldMessageProps {
 }
 
 const Icon: Record<'critical' | 'positive', ReactNode> = {
-  critical: <ErrorIcon tone="critical" size="small" inline />,
-  positive: <TickCircleIcon tone="positive" size="small" inline />,
+  critical: <ErrorIcon tone="critical" />,
+  positive: <TickCircleIcon tone="positive" />,
 };
 export const FieldMessage = ({
   id,

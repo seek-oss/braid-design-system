@@ -23,10 +23,8 @@ const CodeButton = ({
       component={component}
       background="secondaryLight"
       borderRadius="standard"
-      paddingTop="xxsmall"
-      paddingBottom="xxsmall"
-      paddingLeft="xsmall"
-      paddingRight="xsmall"
+      paddingY="xxsmall"
+      paddingX="xsmall"
       position="relative"
       className={styles.button}
       {...restProps}
@@ -79,15 +77,14 @@ export default ({ children }: CodeProps) => {
       </Box>
       <Box
         display="flex"
-        paddingTop="xxsmall"
-        paddingBottom="xxsmall"
+        paddingY="xxsmall"
         paddingRight="xxsmall"
         background="secondaryLight"
         borderRadius="standard"
         className={styles.toolbar}
       >
         <CodeButton onClick={() => copy(children)} title="Copy to clipboard">
-          <CopyIcon size="xsmall" inline /> Copy
+          <CopyIcon /> Copy
         </CodeButton>
         {/^import/m.test(children) ? null : (
           <Fragment>
@@ -99,7 +96,7 @@ export default ({ children }: CodeProps) => {
               style={{ textDecoration: 'none' }}
               title="Open in Playroom"
             >
-              <PlayIcon size="xsmall" inline /> Open in Playroom
+              <PlayIcon /> Open in Playroom
             </CodeButton>
           </Fragment>
         )}

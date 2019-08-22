@@ -10,8 +10,7 @@ const Action = ({ children }: { children: ReactNode }) => (
   <Box
     display="flex"
     width="full"
-    marginLeft={['none', 'xxsmall']}
-    marginRight={['none', 'xxsmall']}
+    marginX={['none', 'xxsmall']}
     paddingBottom={['xsmall', 'none']}
   >
     {children}
@@ -26,8 +25,7 @@ export const Home = () => {
           <Box
             display="flex"
             flexDirection="column"
-            paddingLeft="gutter"
-            paddingRight="gutter"
+            paddingX="gutter"
             className={styles.content}
           >
             <Box
