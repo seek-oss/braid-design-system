@@ -23,10 +23,8 @@ const CodeButton = ({
       component={component}
       background="secondaryLight"
       borderRadius="standard"
-      paddingTop="xxsmall"
-      paddingBottom="xxsmall"
-      paddingLeft="xsmall"
-      paddingRight="xsmall"
+      paddingY="xxsmall"
+      paddingX="xsmall"
       position="relative"
       className={styles.button}
       {...restProps}
@@ -79,8 +77,7 @@ export default ({ children }: CodeProps) => {
       </Box>
       <Box
         display="flex"
-        paddingTop="xxsmall"
-        paddingBottom="xxsmall"
+        paddingY="xxsmall"
         paddingRight="xxsmall"
         background="secondaryLight"
         borderRadius="standard"

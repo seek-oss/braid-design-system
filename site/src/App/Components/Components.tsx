@@ -23,10 +23,8 @@ export const Components = withRouter(({ location }: RouteComponentProps) => {
       {({ playroomUrl, sourceUrlPrefix }) => (
         <div>
           <Box
-            paddingTop="large"
-            paddingBottom="large"
-            paddingLeft="gutter"
-            paddingRight="gutter"
+            paddingY="large"
+            paddingX="gutter"
             position="fixed"
             display="flex"
             width="full"
@@ -56,11 +54,7 @@ export const Components = withRouter(({ location }: RouteComponentProps) => {
                   isMenuOpen ? styles.menuOpen : ''
                 }`}
               >
-                <Box
-                  paddingBottom="xlarge"
-                  paddingLeft="gutter"
-                  paddingRight="gutter"
-                >
+                <Box paddingBottom="xlarge" paddingX="gutter">
                   <Box paddingBottom="small">
                     <Text size="large" weight="strong">
                       Tools
@@ -135,8 +129,7 @@ export const Components = withRouter(({ location }: RouteComponentProps) => {
               </Box>
             </Hidden>
             <Box
-              paddingLeft="gutter"
-              paddingRight="gutter"
+              paddingX="gutter"
               paddingBottom="xlarge"
               className={styles.content}
             >
