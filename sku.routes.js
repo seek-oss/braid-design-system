@@ -1,17 +1,19 @@
 const fs = require('fs');
 const path = require('path');
-const partition = require('lodash/partition');
 
-const componentsPath = path.join(__dirname, 'lib/components/index.ts');
-const componentsSource = fs.readFileSync(componentsPath, 'utf-8'); // eslint-disable-line no-sync
-const components = componentsSource
-  .match(/export { [A-Za-z]+/g)
-  .map(x => x.replace('export { ', ''))
-  .filter(x => !/^use/.test(x))
-  .sort();
-const [iconNames, componentNames] = partition(components, x =>
-  /.+Icon$/i.test(x),
-);
+const getExports = relativePath => {
+  const sourcePath = path.join(__dirname, relativePath);
+  const source = fs.readFileSync(sourcePath, 'utf-8'); // eslint-disable-line no-sync
+
+  return source
+    .match(/export { [A-Za-z]+/g)
+    .map(x => x.replace('export { ', ''))
+    .filter(x => !/^use/.test(x))
+    .sort();
+};
+
+const componentNames = getExports('lib/components/index.ts');
+const iconNames = getExports('lib/components/icons/index.ts');
 
 module.exports = [
   { route: '/', name: 'home' },
