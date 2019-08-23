@@ -45,28 +45,41 @@ const svgrConfig = {
   plugins: ['@svgr/plugin-jsx', '@svgr/plugin-prettier'],
 };
 
+const baseDir = path.join(__dirname, '..');
+const iconComponentsDir = path.join(baseDir, 'lib/components/icons');
+
 (async () => {
+  // First clean up any existing SVG components
+  const existingComponentPaths = await globby(
+    'lib/components/icons/*/*Svg.tsx',
+    {
+      cwd: baseDir,
+      absolute: true,
+    },
+  );
+  await Promise.all(
+    existingComponentPaths.map(async existingComponentPath => {
+      await fs.remove(existingComponentPath);
+    }),
+  );
+
+  // Load SVGs
   const svgFilePaths = await globby('icons/*.svg', {
-    cwd: path.join(__dirname, '..'),
+    cwd: baseDir,
     absolute: true,
   });
 
-  const iconComponentsDir = path.join(
-    __dirname,
-    '..',
-    'lib',
-    'components',
-    'icons',
-  );
-
   await Promise.all(
     svgFilePaths.map(async svgFilePath => {
+      // Split out the icon variants (e.g. bookmark-active.svg)
       const [svgName, variantName] = path
         .basename(svgFilePath, '.svg')
         .split('-');
 
       const rawSvg = await fs.readFile(svgFilePath, 'utf-8');
       const svg = rawSvg.replace(/ data-name=".*?"/g, '');
+
+      // Run through SVGO
       const optimisedSvg = (await svgo.optimize(svg)).data;
 
       // Validate SVG before import
