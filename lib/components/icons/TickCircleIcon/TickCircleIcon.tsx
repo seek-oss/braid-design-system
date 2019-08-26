@@ -1,10 +1,12 @@
 import React from 'react';
 import { Box } from '../../Box/Box';
 import useIcon, { UseIconProps } from '../../../hooks/useIcon';
-import { TickCircleSvg } from './TickCircleSvg';
+import { TickCircleIconSvg } from './TickCircleIconSvg';
 
-export const TickCircleIcon = (props: UseIconProps) => {
+export type TickCircleIconProps = UseIconProps;
+
+export const TickCircleIcon = (props: TickCircleIconProps) => {
   const iconProps = useIcon(props);
 
-  return <Box component={TickCircleSvg} {...iconProps} />;
+  return <Box component={TickCircleIconSvg} {...iconProps} />;
 };
