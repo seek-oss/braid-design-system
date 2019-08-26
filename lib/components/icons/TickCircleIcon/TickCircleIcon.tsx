@@ -5,7 +5,7 @@ import { TickCircleIconSvg } from './TickCircleIconSvg';
 
 export type TickCircleIconProps = UseIconProps;
 
-export const TickCircleIcon = (props: UseIconProps) => {
+export const TickCircleIcon = (props: TickCircleIconProps) => {
   const iconProps = useIcon(props);
 
   return <Box component={TickCircleIconSvg} {...iconProps} />;

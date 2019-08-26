@@ -5,7 +5,7 @@ import { ErrorIconSvg } from './ErrorIconSvg';
 
 export type ErrorIconProps = UseIconProps;
 
-export const ErrorIcon = (props: UseIconProps) => {
+export const ErrorIcon = (props: ErrorIconProps) => {
   const iconProps = useIcon(props);
 
   return <Box component={ErrorIconSvg} {...iconProps} />;

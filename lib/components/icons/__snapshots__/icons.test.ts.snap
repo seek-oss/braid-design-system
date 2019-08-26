@@ -6,6 +6,7 @@ exports[`BookmarkIconActiveSvg should match snapshot 1`] = `
 export const BookmarkIconActiveSvg = (props: AllHTMLAttributes<SVGElement>) => (
   <svg
     viewBox=\\"0 0 24 24\\"
+    focusable=\\"false\\"
     fill=\\"currentColor\\"
     width={16}
     height={16}
@@ -26,6 +27,7 @@ exports[`BookmarkIconSvg should match snapshot 1`] = `
 export const BookmarkIconSvg = (props: AllHTMLAttributes<SVGElement>) => (
   <svg
     viewBox=\\"0 0 24 24\\"
+    focusable=\\"false\\"
     fill=\\"currentColor\\"
     width={16}
     height={16}
@@ -46,6 +48,7 @@ exports[`ChevronIconSvg should match snapshot 1`] = `
 export const ChevronIconSvg = (props: AllHTMLAttributes<SVGElement>) => (
   <svg
     viewBox=\\"0 0 1024 1024\\"
+    focusable=\\"false\\"
     fill=\\"currentColor\\"
     width={16}
     height={16}
@@ -66,6 +69,7 @@ exports[`ErrorIconSvg should match snapshot 1`] = `
 export const ErrorIconSvg = (props: AllHTMLAttributes<SVGElement>) => (
   <svg
     viewBox=\\"0 0 512 512\\"
+    focusable=\\"false\\"
     fill=\\"currentColor\\"
     width={16}
     height={16}
@@ -86,6 +90,7 @@ exports[`InfoIconSvg should match snapshot 1`] = `
 export const InfoIconSvg = (props: AllHTMLAttributes<SVGElement>) => (
   <svg
     viewBox=\\"0 0 30 30\\"
+    focusable=\\"false\\"
     fill=\\"currentColor\\"
     width={16}
     height={16}
@@ -110,6 +115,7 @@ exports[`TickCircleIconSvg should match snapshot 1`] = `
 export const TickCircleIconSvg = (props: AllHTMLAttributes<SVGElement>) => (
   <svg
     viewBox=\\"0 0 16 16\\"
+    focusable=\\"false\\"
     fill=\\"currentColor\\"
     width={16}
     height={16}
@@ -130,6 +136,7 @@ exports[`TickIconSvg should match snapshot 1`] = `
 export const TickIconSvg = (props: AllHTMLAttributes<SVGElement>) => (
   <svg
     viewBox=\\"90.471 302.809 823 823\\"
+    focusable=\\"false\\"
     fill=\\"currentColor\\"
     width={16}
     height={16}

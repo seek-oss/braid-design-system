@@ -39,7 +39,12 @@ const svgo = new SVGO({
 });
 
 const svgrConfig = {
-  svgProps: { fill: 'currentColor', width: 16, height: 16 },
+  svgProps: {
+    focusable: 'false',
+    fill: 'currentColor',
+    width: 16,
+    height: 16,
+  },
   replaceAttrValues: { '#000': 'currentColor' },
   template: componentTemplate,
   plugins: ['@svgr/plugin-jsx', '@svgr/plugin-prettier'],
@@ -51,7 +56,7 @@ const iconComponentsDir = path.join(baseDir, 'lib/components/icons');
 (async () => {
   // First clean up any existing SVG components
   const existingComponentPaths = await globby(
-    'lib/components/icons/*/*Svg.tsx',
+    path.join(iconComponentsDir, '*/*Svg.tsx'),
     {
       cwd: baseDir,
       absolute: true,
@@ -124,10 +129,8 @@ const iconComponentsDir = path.join(baseDir, 'lib/components/icons');
 
       const templateFileIfMissing = async (relativePath, contents) => {
         const filePath = path.join(iconDir, relativePath);
-        if (!(await fs.exists(filePath))) {
-          await fs.writeFile(filePath, `${contents}\n`, {
-            encoding: 'utf-8',
-          });
+        if (!(await fs.pathExists(filePath))) {
+          await fs.writeFile(filePath, `${contents}\n`, 'utf-8');
         }
       };
 
@@ -142,7 +145,7 @@ const iconComponentsDir = path.join(baseDir, 'lib/components/icons');
 
           export type ${iconName}Props = UseIconProps;
 
-          export const ${iconName} = (props: UseIconProps) => {
+          export const ${iconName} = (props: ${iconName}Props) => {
             const iconProps = useIcon(props);
 
             return <Box component={${svgComponentName}} {...iconProps} />;
@@ -180,11 +183,11 @@ const iconComponentsDir = path.join(baseDir, 'lib/components/icons');
   );
 
   // Create icons/index.ts
-  const files = await fs.readdir(iconComponentsDir);
-  const iconComponents = files.filter(
-    file => file.includes('Icon') && !file.includes('.'),
+  const iconComponentNames = (await fs.readdir(iconComponentsDir)).filter(
+    // Only include directories that contain an icon, e.g. exclude '__snapshots__'
+    fileOrDir => !fileOrDir.includes('.') && fileOrDir.includes('Icon'),
   );
-  const iconExports = iconComponents
+  const iconExports = iconComponentNames
     .map(componentFile => path.basename(componentFile, '.tsx'))
     .map(
       component =>

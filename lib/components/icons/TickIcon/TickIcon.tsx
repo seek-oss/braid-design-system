@@ -5,7 +5,7 @@ import { TickIconSvg } from './TickIconSvg';
 
 export type TickIconProps = UseIconProps;
 
-export const TickIcon = (props: UseIconProps) => {
+export const TickIcon = (props: TickIconProps) => {
   const iconProps = useIcon(props);
 
   return <Box component={TickIconSvg} {...iconProps} />;

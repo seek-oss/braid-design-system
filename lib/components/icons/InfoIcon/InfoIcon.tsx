@@ -5,7 +5,7 @@ import { InfoIconSvg } from './InfoIconSvg';
 
 export type InfoIconProps = UseIconProps;
 
-export const InfoIcon = (props: UseIconProps) => {
+export const InfoIcon = (props: InfoIconProps) => {
   const iconProps = useIcon(props);
 
   return <Box component={InfoIconSvg} {...iconProps} />;
