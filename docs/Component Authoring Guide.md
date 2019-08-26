@@ -1,4 +1,4 @@
-# Component Authoring Best Practices
+# Component Authoring Guide
 
 This document provides guidance for consumers on how to author components that best leverage Braid.
 
