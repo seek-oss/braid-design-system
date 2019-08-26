@@ -75,7 +75,6 @@
     "@svgr/core": "^4.3.2",
     "@svgr/plugin-jsx": "^4.3.2",
     "@svgr/plugin-prettier": "^4.3.2",
-    "@svgr/plugin-svgo": "^4.3.1",
     "@types/base64-url": "^2.2.0",
     "@types/dedent": "^0.7.0",
     "@types/react-dom": "^16.8.2",
