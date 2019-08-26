@@ -5212,12 +5212,13 @@ css-loader@^3.2.0:
     postcss-value-parser "^4.0.0"
     schema-utils "^2.0.0"
 
-css-modules-typescript-loader@1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/css-modules-typescript-loader/-/css-modules-typescript-loader-1.1.1.tgz#fe03e2f02ed620c5c6825958f6945395ddf1d0df"
-  integrity sha512-eAQ6o7ATdO+9UYhe6BPEOg8e5zTfaAjNqyqwzrUm4yex48n2dYgBejWVkjpvOQ2CjsV1pHLadwwDUFYU9F6Akg==
+css-modules-typescript-loader@3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/css-modules-typescript-loader/-/css-modules-typescript-loader-3.0.0.tgz#ed5255f3e6d48b1a975c82c05525ce2fc73bd1e6"
+  integrity sha512-22H3eIiwWfA5o02z0ZvDPXbmblj1CopOHnEhm0xMHmXi9aU3mgGf/I66+aFlZYP67xekVXlGI6tDFtNnPciUtA==
   dependencies:
     line-diff "^2.0.1"
+    loader-utils "^1.2.3"
 
 css-select-base-adapter@^0.1.1:
   version "0.1.1"
@@ -14125,6 +14126,13 @@ rimraf@2, rimraf@2.6.3, rimraf@2.x.x, rimraf@^2.2.8, rimraf@^2.5.2, rimraf@^2.5.
   dependencies:
     glob "^7.1.3"
 
+rimraf@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-3.0.0.tgz#614176d4b3010b75e5c390eb0ee96f6dc0cebb9b"
+  integrity sha512-NDGVxTsjqfunkds7CqsOiEnxln4Bo7Nddl3XhS4pXg5OzwkLqJ971ZVAAnB+DDLnF76N+VnDEiBHaVV8I06SUg==
+  dependencies:
+    glob "^7.1.3"
+
 ripemd160@^2.0.0, ripemd160@^2.0.1:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/ripemd160/-/ripemd160-2.0.2.tgz#a1c1a6f624751577ba5d07914cbc92850585890c"
@@ -14564,10 +14572,10 @@ sisteransi@^1.0.0:
   resolved "https://registry.yarnpkg.com/sisteransi/-/sisteransi-1.0.2.tgz#ec57d64b6f25c4f26c0e2c7dd23f2d7f12f7e418"
   integrity sha512-ZcYcZcT69nSLAR2oLN2JwNmLkJEKGooFMCdvOkFrToUt/WfcRWqhIg4P4KwY4dmLbuyXIx4o4YmPsvMRJYJd/w==
 
-sku@8.10.1:
-  version "8.10.1"
-  resolved "https://registry.yarnpkg.com/sku/-/sku-8.10.1.tgz#69232db65726d1ebcd64bb62e127803e9b5c75a7"
-  integrity sha512-ld7p7zzVem7IA6Kv8T0m/rkHOa+fYgMHPUs5ANRoqRjPvOUoFloa521ZGLP+cWQKfBpS+Qd9Av3wmxwHVvNw3Q==
+sku@8.10.2:
+  version "8.10.2"
+  resolved "https://registry.yarnpkg.com/sku/-/sku-8.10.2.tgz#dc285d3e94b725675d3eb4497566281357440b45"
+  integrity sha512-cqipJHuYkeRZgWsNKXL5eKGAjByzqxCHEdTOeH9Rf5AoVKuqhk84Z4rVPYn6+8d7oPrpxSJyFI1MpsXgu6oJPQ==
   dependencies:
     "@babel/core" "^7.5.5"
     "@babel/plugin-proposal-class-properties" "^7.5.5"
@@ -14608,7 +14616,7 @@ sku@8.10.1:
     command-line-args "^5.1.1"
     cross-spawn "^6.0.5"
     css-loader "^3.2.0"
-    css-modules-typescript-loader "1.1.1"
+    css-modules-typescript-loader "3.0.0"
     cssnano "^4.1.10"
     death "^1.1.0"
     debug "^4.1.1"
@@ -14649,7 +14657,7 @@ sku@8.10.1:
     raw-loader "^3.1.0"
     react-hot-loader "3.1.3"
     react-treat "^1.0.2"
-    rimraf "^2.6.3"
+    rimraf "^3.0.0"
     serialize-javascript "^1.7.0"
     start-server-webpack-plugin "^2.2.5"
     storybook-chromatic "^2.1.0"
