@@ -141,7 +141,7 @@ Braid is built on top of [`🍬 treat`](https://seek-oss.github.io/treat) (impor
 
 **Before writing a treat file, we highly recommend that you read the [treat documentation](https://seek-oss.github.io/treat).**
 
-While higher level Braid components don't support custom style overrides (e.g. `className` and `style`), `Box` is the one exception. However, you should take care to ensure that custom classes on `Box` only use for styles that are not available via its prop interface.
+While higher level Braid components don't support custom style overrides (e.g. `className` and `style`), `Box` is the one exception. However, you should take care to ensure that custom classes on `Box` only use styles that are not available via its prop interface.
 
 For example, if you wanted to render an element as `display: flex`, but with a custom, responsive `flex-basis` value:
 
