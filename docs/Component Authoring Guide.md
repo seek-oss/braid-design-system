@@ -28,7 +28,7 @@ Braid provides consumers with a suite of components that are powered by an under
 
 ### High level components
 
-Braid high level components are most likely the ones you would come to expect from a design system, e.g. `Text`, `Heading`, `Card`, `Button`, `TextField`, etc.
+Braid's high level components are most likely the ones you would come to expect from a design system, e.g. `Text`, `Heading`, `Card`, `Button`, `TextField`, etc.
 
 An example of composing a simple view leveraging some of these could be:
 
@@ -46,9 +46,9 @@ An example of composing a simple view leveraging some of these could be:
 
 ### Layout components
 
-Ideally we should be able to arrange our high level components on the screen using layout components. Currently we have a limited set including `Actions` for laying out buttons, and `Columns` for the more general cases.
+Ideally we should be able to arrange our high level components on the screen using layout components. Currently, we have a limited set including `Actions` for laying out buttons, and `Columns` for the more general cases.
 
-For example, the `Actions` component encapsulates the responsive rules for laying out links and buttons:
+For example, the `Actions` component encapsulates the responsive rules for laying out buttons and links:
 
 ```diff
 <Card>
@@ -88,7 +88,7 @@ Another example is `Columns` which has various responsive rules for laying out c
 
 If you're unable to satisfy a design using the built-in set of higher level components, Braid also provides consumers with the `Box` component. `Box` provides consumers with direct access to the themed atomic styles that Braid uses internally, without the overhead of having to create and import a separate style sheet. A nice side-effect of this approach is that your appliction will be reusing existing CSS rules rather than generating new ones, keeping your bundle size to a minimum.
 
-The props names for `Box` mostly mimic standard CSS properties, while their values are more semantic, allowing the corresponding CSS rules to be computed across themes.
+The prop names for `Box` mostly mimic standard CSS properties, while their values are more semantic, allowing the corresponding CSS rules to be computed across themes.
 
 ```diff
 +<Box marginBottom="large">
@@ -137,11 +137,11 @@ For example, in order to render a semantic `fieldset` element without the native
 
 ### Still need custom CSS?
 
-Braid is built on top of [`🍬 treat`](https://seek-oss.github.io/treat) (imported via `sku/treat`), which satisfies our requirements for themeable, statically extracted CSS. Custom styles on top of Braid should use treat in order to gain access to the underlying theme variables.
+Braid is built on top of [treat](https://seek-oss.github.io/treat) (imported via `sku/treat`), which satisfies our requirements for themeable, statically extracted CSS. Custom styles on top of Braid should use treat in order to gain access to the underlying theme variables.
 
 **Before writing a treat file, we highly recommend that you read the [treat documentation](https://seek-oss.github.io/treat).**
 
-While higher level Braid components don't support custom style overrides (e.g. `className` and `style`), `Box` is the one exception. However, you should take care to ensure that custom classes on `Box` only use for styles that are not available via its prop interface.
+While higher level Braid components don't support custom style overrides (e.g. `className` and `style`), `Box` is the one exception. However, you should take care to ensure that custom classes on `Box` only use styles that are not available via its prop interface.
 
 For example, if you wanted to render an element as `display: flex`, but with a custom, responsive `flex-basis` value:
 

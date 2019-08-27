@@ -1,4 +1,6 @@
 # managed by sku
+*.css.js.d.ts
+*.less.d.ts
 coverage/
 dist-storybook/
 report/

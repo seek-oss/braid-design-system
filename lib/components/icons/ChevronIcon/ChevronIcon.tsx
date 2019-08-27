@@ -3,7 +3,7 @@ import { useStyles } from 'sku/react-treat';
 import classnames from 'classnames';
 import { Box } from '../../Box/Box';
 import useIcon, { UseIconProps } from '../../../hooks/useIcon';
-import { ChevronSvg } from './ChevronSvg';
+import { ChevronIconSvg } from './ChevronIconSvg';
 import * as styleRefs from './ChevronIcon.treat';
 
 export interface ChevronIconProps extends UseIconProps {
@@ -19,7 +19,7 @@ export const ChevronIcon = ({
 
   return (
     <Box
-      component={ChevronSvg}
+      component={ChevronIconSvg}
       className={classnames(styles.root, className, {
         [styles.up]: direction === 'up',
         [styles.left]: direction === 'left',

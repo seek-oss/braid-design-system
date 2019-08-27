@@ -1,7 +1,8 @@
 import React from 'react';
 import { Box } from '../../Box/Box';
 import useIcon, { UseIconProps } from '../../../hooks/useIcon';
-import { BookmarkSvg, BookmarkSvgActive } from './BookmarkSvg';
+import { BookmarkIconSvg } from './BookmarkIconSvg';
+import { BookmarkIconActiveSvg } from './BookmarkIconActiveSvg';
 
 export interface BookmarkIconProps extends UseIconProps {
   active?: boolean;
@@ -14,6 +15,9 @@ export const BookmarkIcon = ({
   const iconProps = useIcon(props);
 
   return (
-    <Box component={active ? BookmarkSvgActive : BookmarkSvg} {...iconProps} />
+    <Box
+      component={active ? BookmarkIconActiveSvg : BookmarkIconSvg}
+      {...iconProps}
+    />
   );
 };

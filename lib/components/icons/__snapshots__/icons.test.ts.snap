@@ -1,0 +1,152 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BookmarkIconActiveSvg should match snapshot 1`] = `
+"import React, { AllHTMLAttributes } from 'react';
+
+export const BookmarkIconActiveSvg = (props: AllHTMLAttributes<SVGElement>) => (
+  <svg
+    viewBox=\\"0 0 24 24\\"
+    focusable=\\"false\\"
+    fill=\\"currentColor\\"
+    width={16}
+    height={16}
+    {...props}
+  >
+    <path
+      d=\\"M18 22c-2 0-6-4-6-4s-4 4-6 4a2.07 2.07 0 01-2-2V4a2 2 0 012-2h12a2 2 0 012 2v16a2.07 2.07 0 01-2 2z\\"
+      fill=\\"currentColor\\"
+    />
+  </svg>
+);
+"
+`;
+
+exports[`BookmarkIconSvg should match snapshot 1`] = `
+"import React, { AllHTMLAttributes } from 'react';
+
+export const BookmarkIconSvg = (props: AllHTMLAttributes<SVGElement>) => (
+  <svg
+    viewBox=\\"0 0 24 24\\"
+    focusable=\\"false\\"
+    fill=\\"currentColor\\"
+    width={16}
+    height={16}
+    {...props}
+  >
+    <path
+      d=\\"M18 4v16c-.78-.17-2.93-1.76-4.6-3.41A2 2 0 0012 16a2 2 0 00-1.42.59C8.89 18.26 6.76 19.85 6 20V4h12m0-2H6a2 2 0 00-2 2v16a2.07 2.07 0 002 2c2 0 6-4 6-4s4 4 6 4a2.07 2.07 0 002-2V4a2 2 0 00-2-2z\\"
+      fill=\\"currentColor\\"
+    />
+  </svg>
+);
+"
+`;
+
+exports[`ChevronIconSvg should match snapshot 1`] = `
+"import React, { AllHTMLAttributes } from 'react';
+
+export const ChevronIconSvg = (props: AllHTMLAttributes<SVGElement>) => (
+  <svg
+    viewBox=\\"0 0 1024 1024\\"
+    focusable=\\"false\\"
+    fill=\\"currentColor\\"
+    width={16}
+    height={16}
+    {...props}
+  >
+    <path
+      d=\\"M945 266l78 67-510 524L3 333l75-69 435 451 432-449z\\"
+      fill=\\"currentColor\\"
+    />
+  </svg>
+);
+"
+`;
+
+exports[`ErrorIconSvg should match snapshot 1`] = `
+"import React, { AllHTMLAttributes } from 'react';
+
+export const ErrorIconSvg = (props: AllHTMLAttributes<SVGElement>) => (
+  <svg
+    viewBox=\\"0 0 512 512\\"
+    focusable=\\"false\\"
+    fill=\\"currentColor\\"
+    width={16}
+    height={16}
+    {...props}
+  >
+    <path
+      d=\\"M489.308 156.341c-12.902-30.484-31.355-57.856-54.861-81.357-23.512-23.501-50.883-41.959-81.377-54.855C321.495 6.776 287.964.007 253.42.007s-68.066 6.769-99.635 20.122c-30.484 12.902-57.856 31.35-81.357 54.851-23.511 23.501-41.968 50.877-54.865 81.357-13.342 31.575-20.122 65.111-20.122 99.656 0 34.56 6.774 68.08 20.122 99.656 12.902 30.485 31.36 57.856 54.861 81.367s50.877 41.959 81.357 54.856c31.575 13.348 65.096 20.122 99.635 20.122 34.56 0 68.081-6.759 99.656-20.122 30.485-12.902 57.856-31.35 81.372-54.856 23.5-23.5 41.964-50.883 54.861-81.367 13.368-31.58 20.137-65.106 20.137-99.661 0-34.544-6.774-68.076-20.132-99.645zM232.99 371.167h41.334a6.693 6.693 0 016.687 6.692v41.063a6.692 6.692 0 01-6.692 6.697H232.98a6.691 6.691 0 01-6.692-6.692v-41.063a6.687 6.687 0 016.686-6.697zm-6.686-59.116V92.464a6.686 6.686 0 016.686-6.692h41.063c3.707 0 6.707 3 6.707 6.697v219.587c0 3.697-3 6.692-6.707 6.692H232.99c-3.696 0-6.692-3-6.692-6.692z\\"
+      fill=\\"currentColor\\"
+    />
+  </svg>
+);
+"
+`;
+
+exports[`InfoIconSvg should match snapshot 1`] = `
+"import React, { AllHTMLAttributes } from 'react';
+
+export const InfoIconSvg = (props: AllHTMLAttributes<SVGElement>) => (
+  <svg
+    viewBox=\\"0 0 30 30\\"
+    focusable=\\"false\\"
+    fill=\\"currentColor\\"
+    width={16}
+    height={16}
+    {...props}
+  >
+    <path
+      d=\\"M14.905 21.843a1 1 0 01-1-1v-8.236a1 1 0 012 0v8.236a1 1 0 01-1 1zm0-11.635c-.552 0-1-.448-1-1s.448-1.025 1-1.025 1 .422 1 .975v.051a1 1 0 01-1 .999z\\"
+      fill=\\"currentColor\\"
+    />
+    <path
+      d=\\"M15.001 28.499C7.556 28.499 1.499 22.443 1.499 15c0-7.444 6.057-13.5 13.502-13.5 7.442 0 13.498 6.056 13.498 13.5 0 7.443-6.056 13.499-13.498 13.499zm0-24.998C8.659 3.501 3.499 8.66 3.499 15c0 6.34 5.16 11.499 11.502 11.499 6.34 0 11.498-5.158 11.498-11.499 0-6.34-5.158-11.499-11.498-11.499z\\"
+      fill=\\"currentColor\\"
+    />
+  </svg>
+);
+"
+`;
+
+exports[`TickCircleIconSvg should match snapshot 1`] = `
+"import React, { AllHTMLAttributes } from 'react';
+
+export const TickCircleIconSvg = (props: AllHTMLAttributes<SVGElement>) => (
+  <svg
+    viewBox=\\"0 0 16 16\\"
+    focusable=\\"false\\"
+    fill=\\"currentColor\\"
+    width={16}
+    height={16}
+    {...props}
+  >
+    <path
+      d=\\"M8 .5a7.5 7.5 0 100 15 7.5 7.5 0 000-15zm4.47 5.328l-5.59 5.98a.745.745 0 01-1.093.001L3.537 9.41a.752.752 0 011.096-1.027l1.7 1.814L11.375 4.8a.75.75 0 011.096 1.024z\\"
+      fill=\\"currentColor\\"
+    />
+  </svg>
+);
+"
+`;
+
+exports[`TickIconSvg should match snapshot 1`] = `
+"import React, { AllHTMLAttributes } from 'react';
+
+export const TickIconSvg = (props: AllHTMLAttributes<SVGElement>) => (
+  <svg
+    viewBox=\\"90.471 302.809 823 823\\"
+    focusable=\\"false\\"
+    fill=\\"currentColor\\"
+    width={16}
+    height={16}
+    {...props}
+  >
+    <path
+      d=\\"M365.407 1022.185L90.677 747.457l67.883-67.882L365.406 886.42l479.977-479.988 67.883 67.882\\"
+      fill=\\"currentColor\\"
+    />
+  </svg>
+);
+"
+`;
