@@ -483,6 +483,8 @@ exports[`Box 1`] = `
   flexDirection?: ResponsiveProp<
     | "row"
     | "column"
+    | "rowReverse"
+    | "columnReverse"
   >
   form?: string
   formAction?: string
@@ -1015,14 +1017,38 @@ exports[`ChevronIcon 1`] = `
 exports[`Column 1`] = `
 {
   children: ReactNode
+  size?: 
+    | "1/2"
+    | "1/3"
+    | "2/3"
+    | "1/4"
+    | "2/4"
+    | "3/4"
+    | "1/5"
+    | "2/5"
+    | "3/5"
+    | "4/5"
+    | "fit"
 }
 `;
 
 exports[`Columns 1`] = `
 {
   children: 
-    | ReactElement<ColumnProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>
-    | ReactElement<ColumnProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>[]
+    | Column
+    | Column[]
+  collapse?: boolean
+  gutters?: 
+    | "none"
+    | "xxsmall"
+    | "xsmall"
+    | "small"
+    | "medium"
+    | "large"
+    | "xlarge"
+    | "xxlarge"
+    | "gutter"
+  reverse?: boolean
 }
 `;
 

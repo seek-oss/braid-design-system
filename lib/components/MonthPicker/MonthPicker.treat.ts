@@ -9,8 +9,3 @@ export const nativeInput = style({
     },
   },
 });
-
-export const grow = style({
-  flexGrow: 1,
-  flexBasis: '1%',
-});
