@@ -53,8 +53,8 @@ export const Columns = ({
         collapse ? styles.collapse : undefined,
       )}
     >
-      {orderedChildren.map(child => (
-        <ColumnsContext.Provider value={{ collapse, gutters }}>
+      {orderedChildren.map((child, index) => (
+        <ColumnsContext.Provider value={{ collapse, gutters }} key={index}>
           {child}
         </ColumnsContext.Provider>
       ))}

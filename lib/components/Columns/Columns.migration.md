@@ -37,7 +37,7 @@
 
 ## Migrating from `AsidedLayout`
 
-If the `size` being used previously was a percentage, migrating should be a matter of identifying the closest supported `size`, eg. `30%` may change to `1/3`.
+If the `size` being used previously was a percentage, migrating should be a matter of identifying the closest supported `width`, eg. `30%` may change to `1/3`.
 
 ### Before
 
@@ -51,7 +51,7 @@ If the `size` being used previously was a percentage, migrating should be a matt
 
 ```jsx
 <Columns collapse>
-  <Column size="1/4">
+  <Column width="1/4">
     <CustomSideBar />
   </Column>
   <Column>
@@ -60,7 +60,7 @@ If the `size` being used previously was a percentage, migrating should be a matt
 </Columns>
 ```
 
-If the `size` being used was a specific pixel value, you can set the column size to `fit` and then apply the fixed width to the content using a class.
+If the `size` being used was a specific pixel value, you can set the `width` to `content` and then apply the fixed width to the content using a class.
 
 ### Before
 
@@ -74,7 +74,7 @@ If the `size` being used was a specific pixel value, you can set the column size
 
 ```jsx
 <Columns collapse>
-  <Column size="fit">
+  <Column width="content">
     <Box className={styles.width}>
       {' '}
       /* Create a class that sets the width*/
