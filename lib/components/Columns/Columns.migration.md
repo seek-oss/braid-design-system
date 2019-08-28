@@ -76,8 +76,7 @@ If the `size` being used was a specific pixel value, you can set the `width` to 
 <Columns collapse>
   <Column width="content">
     <Box className={styles.width}>
-      {' '}
-      /* Create a class that sets the width*/
+      {/* Create a class that sets the width */}
       <CustomSideBar />
     </Box>
   </Column>
