@@ -14,7 +14,6 @@ export const width = styleMap({
   '1/3': getSizeStyle(1 / 3),
   '2/3': getSizeStyle(2 / 3),
   '1/4': getSizeStyle(1 / 4),
-  '2/4': getSizeStyle(2 / 4),
   '3/4': getSizeStyle(3 / 4),
   '1/5': getSizeStyle(1 / 5),
   '2/5': getSizeStyle(2 / 5),
