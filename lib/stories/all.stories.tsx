@@ -49,6 +49,7 @@ req.keys().forEach(filename => {
                     style={{
                       minHeight: 300,
                       paddingBottom: 32,
+                      overflow: 'hidden',
                     }}
                   >
                     <h4
