@@ -1,22 +1,21 @@
 import React, { Children, ReactElement, createContext } from 'react';
+import classnames from 'classnames';
+import { useStyles } from 'sku/treat';
 import { Box } from '../Box/Box';
 import { ColumnProps } from '../Column/Column';
 import { SpaceX } from '../../hooks/useBox';
+import * as styleRefs from './Columns.treat';
 
 const defaultCollapse = false;
 const defaultReverse = false;
 const defaultGutters = 'large';
 
 interface ColumnsContext {
-  index: number;
   collapse: boolean;
-  reverse: boolean;
   gutters: SpaceX;
 }
 export const ColumnsContext = createContext<ColumnsContext>({
-  index: -1,
   collapse: defaultCollapse,
-  reverse: defaultReverse,
   gutters: defaultGutters,
 });
 
@@ -33,6 +32,8 @@ export const Columns = ({
   reverse = defaultReverse,
   gutters = defaultGutters,
 }: ColumnsProps) => {
+  const styles = useStyles(styleRefs);
+
   const shouldReverseDesktop = collapse && reverse;
   const shouldReverseEverywhere = !collapse && reverse;
 
@@ -47,11 +48,13 @@ export const Columns = ({
         collapse ? 'column' : 'row',
         shouldReverseDesktop ? 'rowReverse' : 'row',
       ]}
+      className={classnames(
+        gutters !== 'none' ? styles.gutterOffset[gutters] : undefined,
+        collapse ? styles.collapse : undefined,
+      )}
     >
-      {orderedChildren.map((child, index) => (
-        <ColumnsContext.Provider
-          value={{ collapse, reverse: shouldReverseDesktop, index, gutters }}
-        >
+      {orderedChildren.map(child => (
+        <ColumnsContext.Provider value={{ collapse, gutters }}>
           {child}
         </ColumnsContext.Provider>
       ))}

@@ -37,10 +37,10 @@ const docs: ComponentDocs = {
       ),
     },
     {
-      label: 'Specific Sizes',
+      label: 'Specific Widths',
       render: () => (
         <Columns>
-          <Column size="1/5">
+          <Column width="1/5">
             <HideCode>
               <Content>&#8533;</Content>
             </HideCode>
@@ -50,7 +50,7 @@ const docs: ComponentDocs = {
               <Content>Fluid</Content>
             </HideCode>
           </Column>
-          <Column size="1/3">
+          <Column width="1/3">
             <HideCode>
               <Content>&#8531;</Content>
             </HideCode>
@@ -59,12 +59,12 @@ const docs: ComponentDocs = {
       ),
     },
     {
-      label: 'Fit to content',
+      label: 'Content width',
       render: () => (
         <Columns>
-          <Column size="fit">
+          <Column width="content">
             <HideCode>
-              <Content>Fit content</Content>
+              <Content>Content</Content>
             </HideCode>
           </Column>
           <Column>
