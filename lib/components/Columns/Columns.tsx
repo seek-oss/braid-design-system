@@ -1,4 +1,4 @@
-import React, { Children, ReactElement, createContext } from 'react';
+import React, { Children, ReactElement, createContext, useMemo } from 'react';
 import classnames from 'classnames';
 import { useStyles } from 'sku/treat';
 import { Box } from '../Box/Box';
@@ -37,6 +37,12 @@ export const Columns = ({
   const shouldReverseDesktop = collapse && reverse;
   const shouldReverseEverywhere = !collapse && reverse;
 
+  // Prevent re-renders when context values haven't changed
+  const columnsContextValue = useMemo(() => ({ collapse, gutter }), [
+    collapse,
+    gutter,
+  ]);
+
   return (
     <Box
       display="flex"
@@ -49,7 +55,7 @@ export const Columns = ({
         collapse ? styles.collapse : undefined,
       )}
     >
-      <ColumnsContext.Provider value={{ collapse, gutter }}>
+      <ColumnsContext.Provider value={columnsContextValue}>
         {shouldReverseEverywhere
           ? Children.toArray(children).reverse()
           : Children.toArray(children)}
