@@ -8,29 +8,29 @@ import * as styleRefs from './Columns.treat';
 
 const defaultCollapse = false;
 const defaultReverse = false;
-const defaultGutters = 'large';
+const defaultGutter = 'large';
 
 interface ColumnsContext {
   collapse: boolean;
-  gutters: SpaceX;
+  gutter: SpaceX;
 }
 export const ColumnsContext = createContext<ColumnsContext>({
   collapse: defaultCollapse,
-  gutters: defaultGutters,
+  gutter: defaultGutter,
 });
 
 export interface ColumnsProps {
   children: Array<ReactElement<ColumnProps>> | ReactElement<ColumnProps>;
   collapse?: boolean;
   reverse?: boolean;
-  gutters?: SpaceX;
+  gutter?: SpaceX;
 }
 
 export const Columns = ({
   children,
   collapse = defaultCollapse,
   reverse = defaultReverse,
-  gutters = defaultGutters,
+  gutter = defaultGutter,
 }: ColumnsProps) => {
   const styles = useStyles(styleRefs);
 
@@ -45,11 +45,11 @@ export const Columns = ({
         shouldReverseDesktop ? 'rowReverse' : 'row',
       ]}
       className={classnames(
-        gutters !== 'none' ? styles.gutterOffset[gutters] : undefined,
+        gutter !== 'none' ? styles.gutterOffset[gutter] : undefined,
         collapse ? styles.collapse : undefined,
       )}
     >
-      <ColumnsContext.Provider value={{ collapse, gutters }}>
+      <ColumnsContext.Provider value={{ collapse, gutter }}>
         {shouldReverseEverywhere
           ? Children.toArray(children).reverse()
           : Children.toArray(children)}

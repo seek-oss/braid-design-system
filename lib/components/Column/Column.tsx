@@ -12,14 +12,14 @@ export interface ColumnProps {
 
 export const Column = ({ children, width }: ColumnProps) => {
   const styles = useStyles(styleRefs);
-  const { collapse, gutters } = useContext(ColumnsContext);
+  const { collapse, gutter } = useContext(ColumnsContext);
 
   return (
     <Box
       width={width !== 'content' ? 'full' : undefined}
       className={classnames(styles.column, styles.width[width!])}
     >
-      <Box paddingLeft={[collapse ? 'none' : gutters, gutters]}>{children}</Box>
+      <Box paddingLeft={[collapse ? 'none' : gutter, gutter]}>{children}</Box>
     </Box>
   );
 };

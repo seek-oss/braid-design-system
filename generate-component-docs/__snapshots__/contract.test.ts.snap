@@ -1037,7 +1037,7 @@ exports[`Columns 1`] = `
     | Column
     | Column[]
   collapse?: boolean
-  gutters?: 
+  gutter?: 
     | "none"
     | "xxsmall"
     | "xsmall"

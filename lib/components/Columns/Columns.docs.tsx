@@ -57,7 +57,7 @@ const docs: ComponentDocs = {
     {
       label: 'Custom gutter size, e.g. `small`',
       render: () => (
-        <Columns gutters="small">
+        <Columns gutter="small">
           <Column>
             <HideCode>
               <Content />
@@ -72,9 +72,9 @@ const docs: ComponentDocs = {
       ),
     },
     {
-      label: 'No gutters',
+      label: 'No gutter',
       render: () => (
-        <Columns gutters="none">
+        <Columns gutter="none">
           <Column>
             <HideCode>
               <Content />
