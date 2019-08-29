@@ -51,11 +51,11 @@ If the `size` being used previously was a percentage, migrating should be a matt
 
 ```jsx
 <Columns collapse>
-  <Column width="1/4">
-    <CustomSideBar />
-  </Column>
   <Column>
     <MainContent />
+  </Column>
+  <Column width="1/4">
+    <CustomSideBar />
   </Column>
 </Columns>
 ```
@@ -74,14 +74,14 @@ If the `size` being used was a specific pixel value, you can set the `width` to 
 
 ```jsx
 <Columns collapse>
+  <Column>
+    <MainContent />
+  </Column>
   <Column width="content">
     <Box className={styles.width}>
       {/* Create a class that sets the width */}
       <CustomSideBar />
     </Box>
-  </Column>
-  <Column>
-    <MainContent />
   </Column>
 </Columns>
 ```
