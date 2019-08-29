@@ -8,7 +8,7 @@ import * as styleRefs from './Columns.treat';
 
 const defaultCollapse = false;
 const defaultReverse = false;
-const defaultGutter = 'large';
+const defaultGutter = 'gutter';
 
 interface ColumnsContext {
   collapse: boolean;

@@ -86,6 +86,19 @@ If the `size` being used was a specific pixel value, you can set the `width` to 
 </Columns>
 ```
 
+The default gutter width for columns is different to the `AsidedLayout` gutter width. If this is a problem, you can reinstate the old value with `gutter="large"`.
+
+```
+<Columns collapse gutter="large">
+  <Column>
+    <MainContent />
+  </Column>
+  <Column width="1/4">
+    <CustomSideBar />
+  </Column>
+</Columns>
+```
+
 ## Previous Implementations
 
 `Columns`
