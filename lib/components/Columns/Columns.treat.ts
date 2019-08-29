@@ -1,4 +1,4 @@
-import { styleMap, style } from 'sku/treat';
+import { style, styleMap } from 'sku/treat';
 import { mapToStyleProperty } from '../../utils';
 
 export const gutterOffset = styleMap(theme =>

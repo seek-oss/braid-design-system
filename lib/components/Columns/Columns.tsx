@@ -37,10 +37,6 @@ export const Columns = ({
   const shouldReverseDesktop = collapse && reverse;
   const shouldReverseEverywhere = !collapse && reverse;
 
-  const orderedChildren = shouldReverseEverywhere
-    ? Children.toArray(children).reverse()
-    : Children.toArray(children);
-
   return (
     <Box
       display="flex"
@@ -53,11 +49,11 @@ export const Columns = ({
         collapse ? styles.collapse : undefined,
       )}
     >
-      {orderedChildren.map((child, index) => (
-        <ColumnsContext.Provider value={{ collapse, gutters }} key={index}>
-          {child}
-        </ColumnsContext.Provider>
-      ))}
+      <ColumnsContext.Provider value={{ collapse, gutters }}>
+        {shouldReverseEverywhere
+          ? Children.toArray(children).reverse()
+          : Children.toArray(children)}
+      </ColumnsContext.Provider>
     </Box>
   );
 };
