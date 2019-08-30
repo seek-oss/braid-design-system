@@ -58,7 +58,7 @@ export const Columns = ({
       <ColumnsContext.Provider value={columnsContextValue}>
         {shouldReverseEverywhere
           ? Children.toArray(children).reverse()
-          : Children.toArray(children)}
+          : children}
       </ColumnsContext.Provider>
     </Box>
   );
