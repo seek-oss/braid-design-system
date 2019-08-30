@@ -1,4 +1,4 @@
-import React, { ReactNode, useContext } from 'react';
+import React, { ReactNode, useContext, useMemo } from 'react';
 import { useStyles } from 'sku/react-treat';
 import classnames from 'classnames';
 import TextContext from './TextContext';
@@ -28,6 +28,17 @@ export const Text = ({
   const isListItem = typeof component === 'string' && /^li$/i.test(component);
   const textStyles = useText({ weight, size, baseline, tone });
 
+  // Prevent re-renders when context values haven't changed
+  const textContextValue = useMemo(
+    () => ({
+      tone,
+      size,
+      weight,
+      baseline,
+    }),
+    [tone, size, weight, baseline],
+  );
+
   if (process.env.NODE_ENV !== 'production') {
     const inText = useContext(TextContext);
 
@@ -39,7 +50,7 @@ export const Text = ({
   }
 
   return (
-    <TextContext.Provider value={{ tone, size, weight, baseline }}>
+    <TextContext.Provider value={textContextValue}>
       <Box
         id={id}
         display={!isListItem ? 'block' : undefined}
