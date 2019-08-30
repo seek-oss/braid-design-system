@@ -54,16 +54,12 @@ export const useHeading = ({
   backgroundContext,
 }: HeadingParams) => {
   const styles = useStyles(styleRefs);
-  const inTextLinkRenderer = useContext(TextLinkRendererContext);
 
   return classnames(
     styles.fontFamily,
     styles.headingWeight[weight],
     styles.heading[level].fontSize,
-    useTextTone({
-      tone: inTextLinkRenderer ? 'link' : undefined,
-      backgroundContext,
-    }),
+    useTextTone({ backgroundContext }),
     {
       [styles.heading[level].transform]: baseline,
     },
@@ -85,6 +81,7 @@ export const useTextTone = ({
   backgroundContext?: BoxProps['background'];
 } = {}) => {
   const styles = useStyles(styleRefs);
+  const inTextLinkRenderer = useContext(TextLinkRendererContext);
   const backgroundContext = useBackground();
   const background = backgroundContextOverride || backgroundContext;
 
@@ -97,7 +94,15 @@ export const useTextTone = ({
     }
   }
 
-  return styles.tone[tone || 'neutral'];
+  if (tone) {
+    return styles.tone[tone];
+  }
+
+  if (inTextLinkRenderer) {
+    return styles.tone.link;
+  }
+
+  return styles.tone.neutral;
 };
 
 export const useTouchableSpace = (size: keyof typeof styleRefs.touchable) =>
