@@ -16,7 +16,7 @@ type SpaceTop = DirectionalSpace<'top'>;
 type SpaceBottom = DirectionalSpace<'bottom'>;
 type SpaceLeft = DirectionalSpace<'left'>;
 type SpaceRight = DirectionalSpace<'right'>;
-type SpaceX = Extract<SpaceLeft, SpaceRight>;
+export type SpaceX = Extract<SpaceLeft, SpaceRight>;
 type SpaceY = Extract<SpaceTop, SpaceBottom>;
 type Space = Extract<SpaceX, SpaceY>;
 
