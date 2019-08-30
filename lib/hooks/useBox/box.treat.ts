@@ -137,7 +137,9 @@ export const displayDesktop = styleMap(({ utils: { desktopStyles } }) =>
 
 const flexDirectionRules = {
   row: 'row',
+  rowReverse: 'row-reverse',
   column: 'column',
+  columnReverse: 'column-reverse',
 };
 export const flexDirection = styleMap(
   mapToStyleProperty(flexDirectionRules, 'flexDirection'),

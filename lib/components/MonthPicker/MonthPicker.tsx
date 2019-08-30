@@ -5,6 +5,8 @@ import { isMobile } from 'is-mobile';
 import { Omit } from 'utility-types';
 import { useStyles } from 'sku/treat';
 import { Box } from '../Box/Box';
+import { Column } from '../Column/Column';
+import { Columns } from '../Columns/Columns';
 import { Hidden } from '../Hidden/Hidden';
 import { Dropdown } from '../Dropdown/Dropdown';
 import { FieldProps, Field } from '../private/Field/Field';
@@ -199,8 +201,8 @@ export const MonthPicker = ({
       {...restProps}
     >
       {fieldGroupProps => (
-        <Box display="flex">
-          <Box className={styles.grow}>
+        <Columns gutter="medium">
+          <Column>
             <Hidden screen={true} print={true}>
               <label htmlFor={monthId}>{`${label} month`}</label>
             </Hidden>
@@ -218,11 +220,8 @@ export const MonthPicker = ({
             >
               {getMonths()}
             </Dropdown>
-          </Box>
-
-          <Box paddingRight="gutter" />
-
-          <Box className={styles.grow}>
+          </Column>
+          <Column>
             <Hidden screen={true} print={true}>
               <label htmlFor={yearId}>{`${label} year`}</label>
             </Hidden>
@@ -240,8 +239,8 @@ export const MonthPicker = ({
             >
               {getYears(minYear, maxYear, ascendingYears)}
             </Dropdown>
-          </Box>
-        </Box>
+          </Column>
+        </Columns>
       )}
     </FieldGroup>
   );

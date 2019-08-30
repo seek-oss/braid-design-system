@@ -4,10 +4,6 @@ import getSize from '../private/InlineField/getSize';
 const toggleWidthRatio = 1.6;
 const anticipationRatio = 0.12;
 
-export const right = style({
-  flexDirection: 'row-reverse',
-});
-
 export const realField = style({
   opacity: 0,
   zIndex: 1,

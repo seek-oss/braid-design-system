@@ -38,9 +38,7 @@ export const Toggle = ({
   return (
     <Box
       display="flex"
-      className={classnames({
-        [styles.right]: align === 'right',
-      })}
+      flexDirection={align === 'right' ? 'rowReverse' : undefined}
     >
       <Box
         component="input"

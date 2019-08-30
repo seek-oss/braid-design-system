@@ -1,23 +1,25 @@
 import React, { ReactNode, useContext } from 'react';
+import classnames from 'classnames';
 import { useStyles } from 'sku/react-treat';
-import { ColumnsContext } from '../Columns/Columns';
 import { Box } from '../Box/Box';
+import { ColumnsContext } from '../Columns/Columns';
 import * as styleRefs from './Column.treat';
 
 export interface ColumnProps {
   children: ReactNode;
+  width?: keyof typeof styleRefs.width;
 }
 
-export const Column = ({ children }: ColumnProps) => {
+export const Column = ({ children, width }: ColumnProps) => {
   const styles = useStyles(styleRefs);
-  const { index } = useContext(ColumnsContext);
+  const { collapse, gutter } = useContext(ColumnsContext);
 
   return (
     <Box
-      marginLeft={['none', index === 0 ? 'none' : 'large']}
-      className={styles.column}
+      width={width !== 'content' ? 'full' : undefined}
+      className={classnames(styles.column, styles.width[width!])}
     >
-      {children}
+      <Box paddingLeft={[collapse ? 'none' : gutter, gutter]}>{children}</Box>
     </Box>
   );
 };
