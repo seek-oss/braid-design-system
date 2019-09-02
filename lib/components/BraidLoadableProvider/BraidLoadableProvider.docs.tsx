@@ -4,12 +4,12 @@ const docs: ComponentDocs = {
   examples: [
     {
       code: `
-        import { BraidProviderLoadable } from 'braid-design-system';
+        import { BraidLoadableProvider } from 'braid-design-system';
 
-        export default ({ themeName }) => (
-          <BraidProviderLoadable themeName="themeName">
+        export default () => (
+          <BraidLoadableProvider themeName="wireframe">
             ...
-          </BraidProviderLoadable>
+          </BraidLoadableProvider>
         );
       `,
     },
