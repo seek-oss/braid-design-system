@@ -12,13 +12,15 @@ const BraidLoadable = loadable.lib(props =>
 
 interface BraidProviderLoadableProps extends Omit<BraidProviderProps, 'theme'> {
   themeName: string;
+  fallback?: JSX.Element;
 }
 export const BraidProviderLoadable = ({
   themeName,
   children,
+  fallback,
   ...restProps
 }: BraidProviderLoadableProps) => (
-  <BraidLoadable themeName={themeName}>
+  <BraidLoadable themeName={themeName} fallback={fallback}>
     {({ default: theme }: any) => (
       <BraidProvider theme={theme} {...restProps}>
         {children}
