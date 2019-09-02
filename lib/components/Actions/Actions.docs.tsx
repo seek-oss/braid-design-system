@@ -9,7 +9,7 @@ const docs: ComponentDocs = {
   examples: [
     {
       label: 'Actions with Strong Button and TextLink',
-      render: () => (
+      Example: () => (
         <Actions>
           <Button weight="strong">Strong</Button>
           <TextLink href="#">TextLink</TextLink>
@@ -18,7 +18,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Actions with Regular Button and Weak Button',
-      render: () => (
+      Example: () => (
         <Actions>
           <Button weight="regular">Regular</Button>
           <Button weight="weak">Weak</Button>
@@ -27,7 +27,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Actions with Weak Buttons and Regular Button',
-      render: () => (
+      Example: () => (
         <Actions>
           <Button weight="weak">Weak</Button>
           <Button weight="weak">Weak</Button>

@@ -8,23 +8,23 @@ const docs: ComponentDocs = {
   examples: [
     {
       label: 'Default',
-      render: () => <ChevronIcon />,
+      Example: () => <ChevronIcon />,
     },
     {
       label: 'Left',
-      render: () => <ChevronIcon direction="left" />,
+      Example: () => <ChevronIcon direction="left" />,
     },
     {
       label: 'Right',
-      render: () => <ChevronIcon direction="right" />,
+      Example: () => <ChevronIcon direction="right" />,
     },
     {
       label: 'Up',
-      render: () => <ChevronIcon direction="up" />,
+      Example: () => <ChevronIcon direction="up" />,
     },
     {
       label: 'Down',
-      render: () => <ChevronIcon direction="down" />,
+      Example: () => <ChevronIcon direction="down" />,
     },
     ...examplesForIcon(ChevronIcon),
   ],

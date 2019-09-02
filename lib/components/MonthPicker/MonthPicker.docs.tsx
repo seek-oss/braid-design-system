@@ -16,7 +16,7 @@ const docs: ComponentDocs = {
     {
       label: 'Default',
       Container,
-      render: ({ id }) => (
+      Example: ({ id }) => (
         <MonthPicker
           id={id}
           label="Started"
@@ -28,7 +28,7 @@ const docs: ComponentDocs = {
     {
       label: 'Selected values',
       Container,
-      render: ({ id }) => (
+      Example: ({ id }) => (
         <MonthPicker
           id={id}
           label="Started"
@@ -40,7 +40,7 @@ const docs: ComponentDocs = {
     {
       label: 'Critical message',
       Container,
-      render: ({ id }) => (
+      Example: ({ id }) => (
         <MonthPicker
           id={id}
           label="Started"

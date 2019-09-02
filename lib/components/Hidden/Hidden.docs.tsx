@@ -7,7 +7,7 @@ const docs: ComponentDocs = {
   examples: [
     {
       label: 'Hidden on Mobile',
-      render: () => (
+      Example: () => (
         <Fragment>
           <Text>The following line is hidden on mobile:</Text>
           <Hidden mobile>
@@ -18,7 +18,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Hidden on Desktop',
-      render: () => (
+      Example: () => (
         <Fragment>
           <Text>The following line is hidden on desktop:</Text>
           <Hidden desktop>
@@ -29,7 +29,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Hidden on Print',
-      render: () => (
+      Example: () => (
         <Fragment>
           <Text>The following line is hidden on print:</Text>
           <Hidden print>
@@ -40,7 +40,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Hidden on Screen',
-      render: () => (
+      Example: () => (
         <Fragment>
           <Text>The following line is hidden on screen:</Text>
           <Hidden screen>
@@ -51,7 +51,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Hidden on Mobile (Inline)',
-      render: () => (
+      Example: () => (
         <Text>
           The following text node is hidden on mobile:{' '}
           <Hidden inline mobile>
@@ -62,7 +62,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Hidden on Desktop (Inline)',
-      render: () => (
+      Example: () => (
         <Text>
           The following text node is hidden on desktop:{' '}
           <Hidden inline desktop>
@@ -73,7 +73,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Hidden on Print (Inline)',
-      render: () => (
+      Example: () => (
         <Text>
           The following text node is hidden on print:{' '}
           <Hidden inline print>
@@ -84,7 +84,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Hidden on Screen (Inline)',
-      render: () => (
+      Example: () => (
         <Text>
           The following text node is hidden on screen:{' '}
           <Hidden inline screen>

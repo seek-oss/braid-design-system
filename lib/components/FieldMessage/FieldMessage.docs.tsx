@@ -7,7 +7,7 @@ const docs: ComponentDocs = {
   examples: [
     {
       label: 'Critical Field Message',
-      render: ({ id }) => (
+      Example: ({ id }) => (
         <FieldMessage
           id={id}
           tone="critical"
@@ -17,7 +17,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Positive Field Message',
-      render: ({ id }) => (
+      Example: ({ id }) => (
         <FieldMessage
           id={id}
           tone="positive"
@@ -30,7 +30,7 @@ const docs: ComponentDocs = {
       Container: ({ children }) => (
         <div style={{ maxWidth: '300px' }}>{children}</div>
       ),
-      render: ({ id }) => (
+      Example: ({ id }) => (
         <FieldMessage
           id={id}
           tone="critical"

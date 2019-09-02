@@ -6,7 +6,7 @@ const docs: ComponentDocs = {
   storybook: false,
   examples: [
     {
-      render: () => (
+      Example: () => (
         <ThemeNameConsumer>
           {themeName => <span>The active theme is {themeName}.</span>}
         </ThemeNameConsumer>

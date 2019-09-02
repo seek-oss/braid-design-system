@@ -64,17 +64,25 @@ export const ComponentRoute = ({
       {examples
         .filter(example => example.docsSite !== false)
         .map((example, index) => {
-          const { label, render, code, Container = DefaultContainer } = example;
+          const {
+            label,
+            Example,
+            code,
+            Container = DefaultContainer,
+          } = example;
 
           const codeAsString =
-            render && !code
+            Example && !code
               ? cleanCodeSnippet(
-                  reactElementToJSXString(render({ id: 'id', handler }), {
-                    useBooleanShorthandSyntax: false,
-                    showDefaultProps: false,
-                    showFunctions: false,
-                    filterProps: ['onChange', 'onBlur', 'onFocus'],
-                  }),
+                  reactElementToJSXString(
+                    <Example id="id" handler={handler} />,
+                    {
+                      useBooleanShorthandSyntax: false,
+                      showDefaultProps: false,
+                      showFunctions: false,
+                      filterProps: ['onChange', 'onBlur', 'onFocus'],
+                    },
+                  ),
                 )
               : code
               ? cleanCodeSnippet(dedent(code))
@@ -87,7 +95,7 @@ export const ComponentRoute = ({
                   <Text>{label}</Text>
                 </Box>
               ) : null}
-              {render
+              {Example
                 ? Object.values(themes).map(theme => (
                     <Box key={theme.name} marginBottom="large">
                       <Box paddingBottom="small">
@@ -95,7 +103,10 @@ export const ComponentRoute = ({
                       </Box>
                       <BraidProvider theme={theme}>
                         <Container>
-                          {render({ id: `${index}_${theme.name}`, handler })}
+                          <Example
+                            id={`${index}_${theme.name}`}
+                            handler={handler}
+                          />
                         </Container>
                       </BraidProvider>
                     </Box>

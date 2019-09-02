@@ -18,7 +18,7 @@ const docs: ComponentDocs = {
           {children}
         </Box>
       ),
-      render: () => (
+      Example: () => (
         <Fragment>
           <Card>
             <Text>This text is inside a card.</Text>

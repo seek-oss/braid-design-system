@@ -15,13 +15,13 @@ export interface RenderContext {
 export interface ComponentDocs {
   migrationGuide?: boolean;
   storybook?: boolean;
-  examples: Array<ComponentExample>;
+  examples: ComponentExample[];
 }
 
 export interface ComponentExample {
   label?: string;
   docsSite?: boolean;
-  render?: (props: {
+  Example?: (props: {
     id: string;
     handler: (event: SyntheticEvent) => void;
   }) => JSX.Element;
