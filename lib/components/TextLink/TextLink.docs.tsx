@@ -5,6 +5,7 @@ import { Text } from '../Text/Text';
 import { Heading } from '../Heading/Heading';
 import { Actions } from '../Actions/Actions';
 import { Button } from '../Button/Button';
+import { ChevronIcon } from '../icons';
 
 const docs: ComponentDocs = {
   migrationGuide: true,
@@ -148,6 +149,43 @@ const docs: ComponentDocs = {
         <Heading level="4">
           The last word of this heading is a <TextLink href="">link.</TextLink>
         </Heading>
+      ),
+    },
+    {
+      label: 'Text Link with icon',
+      docsSite: false,
+      render: () => (
+        <Text>
+          The last word of a sentence is a{' '}
+          <TextLink href="">
+            text link
+            <ChevronIcon direction="right" />
+          </TextLink>
+          .
+        </Text>
+      ),
+    },
+    {
+      label: 'Block Text Link with icon',
+      docsSite: false,
+      render: () => (
+        <TextLink href="">
+          <Text>
+            Text Link <ChevronIcon direction="right" />
+          </Text>
+        </TextLink>
+      ),
+    },
+    {
+      label: 'Text Link inside Actions with icon',
+      docsSite: false,
+      render: () => (
+        <Actions>
+          <Button>Button</Button>
+          <TextLink href="">
+            Text Link <ChevronIcon direction="right" />
+          </TextLink>
+        </Actions>
       ),
     },
   ],
