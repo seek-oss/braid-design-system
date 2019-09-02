@@ -97,7 +97,7 @@ function ButtonLink({ children }: TextLinkRendererProps) {
             styles.button,
             useLinkStyles(),
             useText(buttonLinkTextProps),
-            useTouchableSpace('standard'),
+            useTouchableSpace(buttonLinkTextProps.size),
             useBox({
               component: 'a',
               display: 'block',
