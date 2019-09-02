@@ -921,6 +921,15 @@ exports[`Box 1`] = `
 }
 `;
 
+exports[`BraidLoadableProvider 1`] = `
+{
+  children: ReactNode
+  fallback?: ReactNode
+  styleBody?: boolean
+  themeName: string
+}
+`;
+
 exports[`BraidProvider 1`] = `
 {
   children: ReactNode

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import loadable from 'sku/@loadable/component';
 import {
   BraidProvider,
@@ -10,17 +10,16 @@ const BraidLoadable = loadable.lib(props =>
   import(`../../../themes/${props.themeName}`),
 );
 
-interface BraidProviderLoadableProps extends Omit<BraidProviderProps, 'theme'> {
+interface BraidLoadableProviderProps extends Omit<BraidProviderProps, 'theme'> {
   themeName: string;
-  fallback?: JSX.Element;
+  fallback?: ReactNode;
 }
-export const BraidProviderLoadable = ({
+export const BraidLoadableProvider = ({
   themeName,
   children,
-  fallback,
   ...restProps
-}: BraidProviderLoadableProps) => (
-  <BraidLoadable themeName={themeName} fallback={fallback}>
+}: BraidLoadableProviderProps) => (
+  <BraidLoadable themeName={themeName}>
     {({ default: theme }: any) => (
       <BraidProvider theme={theme} {...restProps}>
         {children}
