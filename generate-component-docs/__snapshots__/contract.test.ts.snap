@@ -11,12 +11,12 @@ exports[`Alert 1`] = `
   children: ReactNode
   id?: string
   tone?: 
-    | "info"
     | "critical"
+    | "info"
     | "positive"
   weight?: 
-    | "strong"
     | "regular"
+    | "strong"
 }
 `;
 
@@ -25,13 +25,13 @@ exports[`Badge 1`] = `
   children: string
   id?: string
   tone?: 
-    | "info"
     | "critical"
+    | "info"
     | "positive"
     | "secondary"
   weight?: 
-    | "strong"
     | "regular"
+    | "strong"
 }
 `;
 
@@ -40,18 +40,18 @@ exports[`BookmarkIcon 1`] = `
   active?: boolean
   size?: 
     | "fill"
-    | "xsmall"
-    | "small"
     | "large"
+    | "small"
     | "standard"
+    | "xsmall"
   tone?: 
-    | "info"
     | "critical"
-    | "positive"
-    | "secondary"
     | "formAccent"
+    | "info"
     | "link"
     | "neutral"
+    | "positive"
+    | "secondary"
 }
 `;
 
@@ -67,111 +67,111 @@ exports[`Box 1`] = `
   alt?: string
   aria-activedescendant?: string
   aria-atomic?: 
-    | false
-    | true
     | "false"
     | "true"
+    | false
+    | true
   aria-autocomplete?: 
+    | "both"
+    | "inline"
     | "list"
     | "none"
-    | "inline"
-    | "both"
   aria-busy?: 
-    | false
-    | true
     | "false"
     | "true"
+    | false
+    | true
   aria-checked?: 
+    | "false"
+    | "mixed"
+    | "true"
     | false
     | true
-    | "false"
-    | "true"
-    | "mixed"
   aria-colcount?: number
   aria-colindex?: number
   aria-colspan?: number
   aria-controls?: string
   aria-current?: 
-    | false
-    | true
+    | "date"
+    | "false"
+    | "location"
+    | "page"
     | "step"
     | "time"
-    | "false"
     | "true"
-    | "page"
-    | "location"
-    | "date"
+    | false
+    | true
   aria-describedby?: string
   aria-details?: string
   aria-disabled?: 
-    | false
-    | true
     | "false"
     | "true"
+    | false
+    | true
   aria-dropeffect?: 
-    | "none"
-    | "link"
     | "copy"
     | "execute"
+    | "link"
     | "move"
+    | "none"
     | "popup"
   aria-errormessage?: string
   aria-expanded?: 
-    | false
-    | true
     | "false"
     | "true"
+    | false
+    | true
   aria-flowto?: string
   aria-grabbed?: 
-    | false
-    | true
     | "false"
     | "true"
+    | false
+    | true
   aria-haspopup?: 
-    | false
-    | true
-    | "grid"
     | "dialog"
-    | "menu"
     | "false"
-    | "true"
+    | "grid"
     | "listbox"
+    | "menu"
     | "tree"
+    | "true"
+    | false
+    | true
   aria-hidden?: 
-    | false
-    | true
     | "false"
     | "true"
+    | false
+    | true
   aria-invalid?: 
-    | false
-    | true
     | "false"
-    | "true"
     | "grammar"
     | "spelling"
+    | "true"
+    | false
+    | true
   aria-keyshortcuts?: string
   aria-label?: string
   aria-labelledby?: string
   aria-level?: number
   aria-live?: 
-    | "off"
     | "assertive"
+    | "off"
     | "polite"
   aria-modal?: 
-    | false
-    | true
     | "false"
     | "true"
+    | false
+    | true
   aria-multiline?: 
-    | false
-    | true
     | "false"
     | "true"
+    | false
+    | true
   aria-multiselectable?: 
-    | false
-    | true
     | "false"
     | "true"
+    | false
+    | true
   aria-orientation?: 
     | "horizontal"
     | "vertical"
@@ -179,41 +179,41 @@ exports[`Box 1`] = `
   aria-placeholder?: string
   aria-posinset?: number
   aria-pressed?: 
-    | false
-    | true
     | "false"
-    | "true"
     | "mixed"
+    | "true"
+    | false
+    | true
   aria-readonly?: 
-    | false
-    | true
     | "false"
     | "true"
+    | false
+    | true
   aria-relevant?: 
-    | "all"
-    | "text"
-    | "additions"
     | "additions text"
+    | "additions"
+    | "all"
     | "removals"
+    | "text"
   aria-required?: 
-    | false
-    | true
     | "false"
     | "true"
+    | false
+    | true
   aria-roledescription?: string
   aria-rowcount?: number
   aria-rowindex?: number
   aria-rowspan?: number
   aria-selected?: 
-    | false
-    | true
     | "false"
     | "true"
+    | false
+    | true
   aria-setsize?: number
   aria-sort?: 
-    | "none"
     | "ascending"
     | "descending"
+    | "none"
     | "other"
   aria-valuemax?: number
   aria-valuemin?: number
@@ -228,43 +228,43 @@ exports[`Box 1`] = `
   autoPlay?: boolean
   autoSave?: string
   background?: 
-    | "info"
-    | "critical"
-    | "positive"
-    | "secondary"
     | "brand"
-    | "input"
-    | "inputDisabled"
     | "brandAccent"
-    | "formAccent"
-    | "formAccentDisabled"
-    | "selection"
-    | "card"
-    | "formAccentActive"
-    | "formAccentHover"
     | "brandAccentActive"
     | "brandAccentHover"
-    | "infoLight"
+    | "card"
+    | "critical"
     | "criticalLight"
+    | "formAccent"
+    | "formAccentActive"
+    | "formAccentDisabled"
+    | "formAccentHover"
+    | "info"
+    | "infoLight"
+    | "input"
+    | "inputDisabled"
+    | "positive"
     | "positiveLight"
+    | "secondary"
     | "secondaryLight"
+    | "selection"
   borderRadius?: "standard"
   boxShadow?: 
-    | "outlineFocus"
-    | "borderStandard"
     | "borderCritical"
     | "borderFormAccent"
     | "borderFormAccentLarge"
+    | "borderStandard"
+    | "outlineFocus"
   capture?: 
-    | string
     | false
+    | string
     | true
   cellPadding?: 
-    | string
     | number
+    | string
   cellSpacing?: 
-    | string
     | number
+    | string
   challenge?: string
   charSet?: string
   checked?: boolean
@@ -276,27 +276,12 @@ exports[`Box 1`] = `
   color?: string
   cols?: number
   component?: 
-    | "symbol"
-    | "object"
-    | "strong"
-    | "cite"
-    | "data"
-    | "form"
-    | "label"
-    | "pattern"
-    | "span"
-    | "summary"
-    | "style"
-    | "title"
-    | "clipPath"
-    | "filter"
-    | "mask"
-    | "marker"
-    | "small"
-    | "input"
     | "a"
     | "abbr"
     | "address"
+    | "animate"
+    | "animateMotion"
+    | "animateTransform"
     | "area"
     | "article"
     | "aside"
@@ -312,99 +297,27 @@ exports[`Box 1`] = `
     | "button"
     | "canvas"
     | "caption"
+    | "circle"
+    | "cite"
+    | "clipPath"
     | "code"
     | "col"
     | "colgroup"
+    | "data"
     | "datalist"
     | "dd"
+    | "defs"
     | "del"
+    | "desc"
     | "details"
     | "dfn"
     | "dialog"
     | "div"
     | "dl"
     | "dt"
+    | "ellipse"
     | "em"
     | "embed"
-    | "fieldset"
-    | "figcaption"
-    | "figure"
-    | "footer"
-    | "h1"
-    | "h2"
-    | "h3"
-    | "h4"
-    | "h5"
-    | "h6"
-    | "head"
-    | "header"
-    | "hgroup"
-    | "hr"
-    | "html"
-    | "i"
-    | "iframe"
-    | "img"
-    | "ins"
-    | "kbd"
-    | "keygen"
-    | "legend"
-    | "li"
-    | "link"
-    | "main"
-    | "map"
-    | "mark"
-    | "menu"
-    | "menuitem"
-    | "meta"
-    | "meter"
-    | "nav"
-    | "noindex"
-    | "noscript"
-    | "ol"
-    | "optgroup"
-    | "option"
-    | "output"
-    | "p"
-    | "param"
-    | "picture"
-    | "pre"
-    | "progress"
-    | "q"
-    | "rp"
-    | "rt"
-    | "ruby"
-    | "s"
-    | "samp"
-    | "script"
-    | "section"
-    | "select"
-    | "source"
-    | "sub"
-    | "sup"
-    | "table"
-    | "tbody"
-    | "td"
-    | "textarea"
-    | "tfoot"
-    | "th"
-    | "thead"
-    | "time"
-    | "tr"
-    | "track"
-    | "u"
-    | "ul"
-    | "var"
-    | "video"
-    | "wbr"
-    | "webview"
-    | "svg"
-    | "animate"
-    | "animateMotion"
-    | "animateTransform"
-    | "circle"
-    | "defs"
-    | "desc"
-    | "ellipse"
     | "feBlend"
     | "feColorMatrix"
     | "feComponentTransfer"
@@ -430,26 +343,113 @@ exports[`Box 1`] = `
     | "feSpotLight"
     | "feTile"
     | "feTurbulence"
+    | "fieldset"
+    | "figcaption"
+    | "figure"
+    | "filter"
+    | "footer"
     | "foreignObject"
+    | "form"
     | "g"
+    | "h1"
+    | "h2"
+    | "h3"
+    | "h4"
+    | "h5"
+    | "h6"
+    | "head"
+    | "header"
+    | "hgroup"
+    | "hr"
+    | "html"
+    | "i"
+    | "iframe"
     | "image"
+    | "img"
+    | "input"
+    | "ins"
+    | "kbd"
+    | "keygen"
+    | "label"
+    | "legend"
+    | "li"
     | "line"
     | "linearGradient"
+    | "link"
+    | "main"
+    | "map"
+    | "mark"
+    | "marker"
+    | "mask"
+    | "menu"
+    | "menuitem"
+    | "meta"
     | "metadata"
+    | "meter"
     | "mpath"
+    | "nav"
+    | "noindex"
+    | "noscript"
+    | "object"
+    | "ol"
+    | "optgroup"
+    | "option"
+    | "output"
+    | "p"
+    | "param"
     | "path"
+    | "pattern"
+    | "picture"
     | "polygon"
     | "polyline"
+    | "pre"
+    | "progress"
+    | "q"
     | "radialGradient"
     | "rect"
+    | "rp"
+    | "rt"
+    | "ruby"
+    | "s"
+    | "samp"
+    | "script"
+    | "section"
+    | "select"
+    | "small"
+    | "source"
+    | "span"
     | "stop"
+    | "strong"
+    | "style"
+    | "sub"
+    | "summary"
+    | "sup"
+    | "svg"
     | "switch"
+    | "symbol"
+    | "table"
+    | "tbody"
+    | "td"
+    | "template"
     | "text"
     | "textPath"
+    | "textarea"
+    | "tfoot"
+    | "th"
+    | "thead"
+    | "time"
+    | "title"
+    | "tr"
+    | "track"
     | "tspan"
+    | "u"
+    | "ul"
     | "use"
+    | "var"
+    | "video"
     | "view"
-    | "template"
+    | "wbr"
+    | "webview"
     | ComponentClass<any, any>
     | FunctionComponent<any>
   content?: string
@@ -471,20 +471,20 @@ exports[`Box 1`] = `
   dir?: string
   disabled?: boolean
   display?: ResponsiveProp<
-    | "flex"
-    | "none"
     | "block"
+    | "flex"
     | "inline"
     | "inlineBlock"
+    | "none"
   >
   download?: any
   draggable?: boolean
   encType?: string
   flexDirection?: ResponsiveProp<
-    | "row"
     | "column"
-    | "rowReverse"
     | "columnReverse"
+    | "row"
+    | "rowReverse"
   >
   form?: string
   formAction?: string
@@ -493,8 +493,8 @@ exports[`Box 1`] = `
   formNoValidate?: boolean
   formTarget?: string
   frameBorder?: 
-    | string
     | number
+    | string
   headers?: string
   height?: "full"
   hidden?: boolean
@@ -523,90 +523,90 @@ exports[`Box 1`] = `
   low?: number
   manifest?: string
   margin?: ResponsiveProp<
-    | "none"
-    | "xxsmall"
-    | "xsmall"
-    | "small"
-    | "medium"
     | "large"
+    | "medium"
+    | "none"
+    | "small"
     | "xlarge"
+    | "xsmall"
     | "xxlarge"
+    | "xxsmall"
   >
   marginBottom?: ResponsiveProp<
-    | "none"
-    | "xxsmall"
-    | "xsmall"
-    | "small"
-    | "medium"
     | "large"
+    | "medium"
+    | "none"
+    | "small"
     | "xlarge"
+    | "xsmall"
     | "xxlarge"
+    | "xxsmall"
   >
   marginHeight?: number
   marginLeft?: ResponsiveProp<
-    | "none"
-    | "xxsmall"
-    | "xsmall"
-    | "small"
-    | "medium"
-    | "large"
-    | "xlarge"
-    | "xxlarge"
     | "gutter"
+    | "large"
+    | "medium"
+    | "none"
+    | "small"
+    | "xlarge"
+    | "xsmall"
+    | "xxlarge"
+    | "xxsmall"
   >
   marginRight?: ResponsiveProp<
-    | "none"
-    | "xxsmall"
-    | "xsmall"
-    | "small"
-    | "medium"
-    | "large"
-    | "xlarge"
-    | "xxlarge"
     | "gutter"
+    | "large"
+    | "medium"
+    | "none"
+    | "small"
+    | "xlarge"
+    | "xsmall"
+    | "xxlarge"
+    | "xxsmall"
   >
   marginTop?: ResponsiveProp<
-    | "none"
-    | "xxsmall"
-    | "xsmall"
-    | "small"
-    | "medium"
     | "large"
+    | "medium"
+    | "none"
+    | "small"
     | "xlarge"
+    | "xsmall"
     | "xxlarge"
+    | "xxsmall"
   >
   marginWidth?: number
   marginX?: ResponsiveProp<
-    | "none"
-    | "xxsmall"
-    | "xsmall"
-    | "small"
-    | "medium"
-    | "large"
-    | "xlarge"
-    | "xxlarge"
     | "gutter"
+    | "large"
+    | "medium"
+    | "none"
+    | "small"
+    | "xlarge"
+    | "xsmall"
+    | "xxlarge"
+    | "xxsmall"
   >
   marginY?: ResponsiveProp<
-    | "none"
-    | "xxsmall"
-    | "xsmall"
-    | "small"
-    | "medium"
     | "large"
+    | "medium"
+    | "none"
+    | "small"
     | "xlarge"
+    | "xsmall"
     | "xxlarge"
+    | "xxsmall"
   >
   max?: 
-    | string
     | number
+    | string
   maxLength?: number
   media?: string
   mediaGroup?: string
   method?: string
   min?: 
-    | string
     | number
+    | string
   minLength?: number
   multiple?: boolean
   muted?: boolean
@@ -776,84 +776,84 @@ exports[`Box 1`] = `
   open?: boolean
   optimum?: number
   padding?: ResponsiveProp<
-    | "none"
-    | "xxsmall"
-    | "xsmall"
-    | "small"
-    | "medium"
     | "large"
+    | "medium"
+    | "none"
+    | "small"
     | "xlarge"
+    | "xsmall"
     | "xxlarge"
+    | "xxsmall"
   >
   paddingBottom?: ResponsiveProp<
-    | "none"
-    | "xxsmall"
-    | "xsmall"
-    | "small"
-    | "medium"
     | "large"
+    | "medium"
+    | "none"
+    | "small"
     | "xlarge"
+    | "xsmall"
     | "xxlarge"
+    | "xxsmall"
   >
   paddingLeft?: ResponsiveProp<
-    | "none"
-    | "xxsmall"
-    | "xsmall"
-    | "small"
-    | "medium"
-    | "large"
-    | "xlarge"
-    | "xxlarge"
     | "gutter"
+    | "large"
+    | "medium"
+    | "none"
+    | "small"
+    | "xlarge"
+    | "xsmall"
+    | "xxlarge"
+    | "xxsmall"
   >
   paddingRight?: ResponsiveProp<
-    | "none"
-    | "xxsmall"
-    | "xsmall"
-    | "small"
-    | "medium"
-    | "large"
-    | "xlarge"
-    | "xxlarge"
     | "gutter"
+    | "large"
+    | "medium"
+    | "none"
+    | "small"
+    | "xlarge"
+    | "xsmall"
+    | "xxlarge"
+    | "xxsmall"
   >
   paddingTop?: ResponsiveProp<
-    | "none"
-    | "xxsmall"
-    | "xsmall"
-    | "small"
-    | "medium"
     | "large"
+    | "medium"
+    | "none"
+    | "small"
     | "xlarge"
+    | "xsmall"
     | "xxlarge"
+    | "xxsmall"
   >
   paddingX?: ResponsiveProp<
-    | "none"
-    | "xxsmall"
-    | "xsmall"
-    | "small"
-    | "medium"
-    | "large"
-    | "xlarge"
-    | "xxlarge"
     | "gutter"
+    | "large"
+    | "medium"
+    | "none"
+    | "small"
+    | "xlarge"
+    | "xsmall"
+    | "xxlarge"
+    | "xxsmall"
   >
   paddingY?: ResponsiveProp<
-    | "none"
-    | "xxsmall"
-    | "xsmall"
-    | "small"
-    | "medium"
     | "large"
+    | "medium"
+    | "none"
+    | "small"
     | "xlarge"
+    | "xsmall"
     | "xxlarge"
+    | "xxsmall"
   >
   pattern?: string
   placeholder?: string
   playsInline?: boolean
   position?: 
-    | "fixed"
     | "absolute"
+    | "fixed"
     | "relative"
   poster?: string
   prefix?: string
@@ -891,8 +891,8 @@ exports[`Box 1`] = `
   srcSet?: string
   start?: number
   step?: 
-    | string
     | number
+    | string
   style?: CSSProperties
   summary?: string
   suppressContentEditableWarning?: boolean
@@ -902,22 +902,31 @@ exports[`Box 1`] = `
   title?: string
   transform?: "touchable"
   transition?: 
-    | "touchable"
     | "fast"
+    | "touchable"
   type?: string
   typeof?: string
   unselectable?: 
-    | "on"
     | "off"
+    | "on"
   useMap?: string
   value?: 
-    | string
     | number
+    | string
     | string[]
   vocab?: string
   width?: "full"
   wmode?: string
   wrap?: string
+}
+`;
+
+exports[`BraidLoadableProvider 1`] = `
+{
+  children: ReactNode
+  fallback?: ReactNode
+  styleBody?: boolean
+  themeName: string
 }
 `;
 
@@ -953,8 +962,8 @@ exports[`Button 1`] = `
   onClick?: (event: MouseEvent<HTMLButtonElement, MouseEvent>) => void
   type?: string
   weight?: 
-    | "strong"
     | "regular"
+    | "strong"
     | "weak"
 }
 `;
@@ -984,8 +993,8 @@ exports[`Checkbox 1`] = `
     | "critical"
     | "neutral"
   value?: 
-    | string
     | number
+    | string
     | string[]
 }
 `;
@@ -993,24 +1002,24 @@ exports[`Checkbox 1`] = `
 exports[`ChevronIcon 1`] = `
 {
   direction?: 
+    | "down"
     | "left"
     | "right"
     | "up"
-    | "down"
   size?: 
     | "fill"
-    | "xsmall"
-    | "small"
     | "large"
+    | "small"
     | "standard"
+    | "xsmall"
   tone?: 
-    | "info"
     | "critical"
-    | "positive"
-    | "secondary"
     | "formAccent"
+    | "info"
     | "link"
     | "neutral"
+    | "positive"
+    | "secondary"
 }
 `;
 
@@ -1018,16 +1027,16 @@ exports[`Column 1`] = `
 {
   children: ReactNode
   width?: 
-    | "content"
     | "1/2"
     | "1/3"
-    | "2/3"
     | "1/4"
-    | "3/4"
     | "1/5"
+    | "2/3"
     | "2/5"
+    | "3/4"
     | "3/5"
     | "4/5"
+    | "content"
 }
 `;
 
@@ -1038,15 +1047,15 @@ exports[`Columns 1`] = `
     | Column[]
   collapse?: boolean
   gutter?: 
-    | "none"
-    | "xxsmall"
-    | "xsmall"
-    | "small"
-    | "medium"
-    | "large"
-    | "xlarge"
-    | "xxlarge"
     | "gutter"
+    | "large"
+    | "medium"
+    | "none"
+    | "small"
+    | "xlarge"
+    | "xsmall"
+    | "xxlarge"
+    | "xxsmall"
   reverse?: boolean
 }
 `;
@@ -1082,11 +1091,11 @@ exports[`Dropdown 1`] = `
   tertiaryLabel?: ReactNode
   tone?: 
     | "critical"
-    | "positive"
     | "neutral"
+    | "positive"
   value: 
-    | string
     | number
+    | string
     | string[]
 }
 `;
@@ -1095,18 +1104,18 @@ exports[`ErrorIcon 1`] = `
 {
   size?: 
     | "fill"
-    | "xsmall"
-    | "small"
     | "large"
+    | "small"
     | "standard"
+    | "xsmall"
   tone?: 
-    | "info"
     | "critical"
-    | "positive"
-    | "secondary"
     | "formAccent"
+    | "info"
     | "link"
     | "neutral"
+    | "positive"
+    | "secondary"
 }
 `;
 
@@ -1114,8 +1123,8 @@ exports[`FieldLabel 1`] = `
 {
   description?: ReactNode
   htmlFor: 
-    | string
     | false
+    | string
   label?: ReactNode
   secondaryLabel?: ReactNode
   tertiaryLabel?: ReactNode
@@ -1131,8 +1140,8 @@ exports[`FieldMessage 1`] = `
   secondaryMessage?: ReactNode
   tone?: 
     | "critical"
-    | "positive"
     | "neutral"
+    | "positive"
 }
 `;
 
@@ -1140,27 +1149,12 @@ exports[`Heading 1`] = `
 {
   children: ReactNode
   component?: 
-    | "symbol"
-    | "object"
-    | "strong"
-    | "cite"
-    | "data"
-    | "form"
-    | "label"
-    | "pattern"
-    | "span"
-    | "summary"
-    | "style"
-    | "title"
-    | "clipPath"
-    | "filter"
-    | "mask"
-    | "marker"
-    | "small"
-    | "input"
     | "a"
     | "abbr"
     | "address"
+    | "animate"
+    | "animateMotion"
+    | "animateTransform"
     | "area"
     | "article"
     | "aside"
@@ -1176,99 +1170,27 @@ exports[`Heading 1`] = `
     | "button"
     | "canvas"
     | "caption"
+    | "circle"
+    | "cite"
+    | "clipPath"
     | "code"
     | "col"
     | "colgroup"
+    | "data"
     | "datalist"
     | "dd"
+    | "defs"
     | "del"
+    | "desc"
     | "details"
     | "dfn"
     | "dialog"
     | "div"
     | "dl"
     | "dt"
+    | "ellipse"
     | "em"
     | "embed"
-    | "fieldset"
-    | "figcaption"
-    | "figure"
-    | "footer"
-    | "h1"
-    | "h2"
-    | "h3"
-    | "h4"
-    | "h5"
-    | "h6"
-    | "head"
-    | "header"
-    | "hgroup"
-    | "hr"
-    | "html"
-    | "i"
-    | "iframe"
-    | "img"
-    | "ins"
-    | "kbd"
-    | "keygen"
-    | "legend"
-    | "li"
-    | "link"
-    | "main"
-    | "map"
-    | "mark"
-    | "menu"
-    | "menuitem"
-    | "meta"
-    | "meter"
-    | "nav"
-    | "noindex"
-    | "noscript"
-    | "ol"
-    | "optgroup"
-    | "option"
-    | "output"
-    | "p"
-    | "param"
-    | "picture"
-    | "pre"
-    | "progress"
-    | "q"
-    | "rp"
-    | "rt"
-    | "ruby"
-    | "s"
-    | "samp"
-    | "script"
-    | "section"
-    | "select"
-    | "source"
-    | "sub"
-    | "sup"
-    | "table"
-    | "tbody"
-    | "td"
-    | "textarea"
-    | "tfoot"
-    | "th"
-    | "thead"
-    | "time"
-    | "tr"
-    | "track"
-    | "u"
-    | "ul"
-    | "var"
-    | "video"
-    | "wbr"
-    | "webview"
-    | "svg"
-    | "animate"
-    | "animateMotion"
-    | "animateTransform"
-    | "circle"
-    | "defs"
-    | "desc"
-    | "ellipse"
     | "feBlend"
     | "feColorMatrix"
     | "feComponentTransfer"
@@ -1294,26 +1216,113 @@ exports[`Heading 1`] = `
     | "feSpotLight"
     | "feTile"
     | "feTurbulence"
+    | "fieldset"
+    | "figcaption"
+    | "figure"
+    | "filter"
+    | "footer"
     | "foreignObject"
+    | "form"
     | "g"
+    | "h1"
+    | "h2"
+    | "h3"
+    | "h4"
+    | "h5"
+    | "h6"
+    | "head"
+    | "header"
+    | "hgroup"
+    | "hr"
+    | "html"
+    | "i"
+    | "iframe"
     | "image"
+    | "img"
+    | "input"
+    | "ins"
+    | "kbd"
+    | "keygen"
+    | "label"
+    | "legend"
+    | "li"
     | "line"
     | "linearGradient"
+    | "link"
+    | "main"
+    | "map"
+    | "mark"
+    | "marker"
+    | "mask"
+    | "menu"
+    | "menuitem"
+    | "meta"
     | "metadata"
+    | "meter"
     | "mpath"
+    | "nav"
+    | "noindex"
+    | "noscript"
+    | "object"
+    | "ol"
+    | "optgroup"
+    | "option"
+    | "output"
+    | "p"
+    | "param"
     | "path"
+    | "pattern"
+    | "picture"
     | "polygon"
     | "polyline"
+    | "pre"
+    | "progress"
+    | "q"
     | "radialGradient"
     | "rect"
+    | "rp"
+    | "rt"
+    | "ruby"
+    | "s"
+    | "samp"
+    | "script"
+    | "section"
+    | "select"
+    | "small"
+    | "source"
+    | "span"
     | "stop"
+    | "strong"
+    | "style"
+    | "sub"
+    | "summary"
+    | "sup"
+    | "svg"
     | "switch"
+    | "symbol"
+    | "table"
+    | "tbody"
+    | "td"
+    | "template"
     | "text"
     | "textPath"
+    | "textarea"
+    | "tfoot"
+    | "th"
+    | "thead"
+    | "time"
+    | "title"
+    | "tr"
+    | "track"
     | "tspan"
+    | "u"
+    | "ul"
     | "use"
+    | "var"
+    | "video"
     | "view"
-    | "template"
+    | "wbr"
+    | "webview"
     | ComponentClass<any, any>
     | FunctionComponent<any>
   id?: string
@@ -1343,18 +1352,18 @@ exports[`InfoIcon 1`] = `
 {
   size?: 
     | "fill"
-    | "xsmall"
-    | "small"
     | "large"
+    | "small"
     | "standard"
+    | "xsmall"
   tone?: 
-    | "info"
     | "critical"
-    | "positive"
-    | "secondary"
     | "formAccent"
+    | "info"
     | "link"
     | "neutral"
+    | "positive"
+    | "secondary"
 }
 `;
 
@@ -1376,8 +1385,8 @@ exports[`MonthPicker 1`] = `
   tertiaryLabel?: ReactNode
   tone?: 
     | "critical"
-    | "positive"
     | "neutral"
+    | "positive"
   value: {
     month?: number
     year?: number
@@ -1408,8 +1417,8 @@ exports[`Radio 1`] = `
     | "critical"
     | "neutral"
   value?: 
-    | string
     | number
+    | string
     | string[]
 }
 `;
@@ -1433,27 +1442,12 @@ exports[`Text 1`] = `
   baseline?: boolean
   children?: ReactNode
   component?: 
-    | "symbol"
-    | "object"
-    | "strong"
-    | "cite"
-    | "data"
-    | "form"
-    | "label"
-    | "pattern"
-    | "span"
-    | "summary"
-    | "style"
-    | "title"
-    | "clipPath"
-    | "filter"
-    | "mask"
-    | "marker"
-    | "small"
-    | "input"
     | "a"
     | "abbr"
     | "address"
+    | "animate"
+    | "animateMotion"
+    | "animateTransform"
     | "area"
     | "article"
     | "aside"
@@ -1469,99 +1463,27 @@ exports[`Text 1`] = `
     | "button"
     | "canvas"
     | "caption"
+    | "circle"
+    | "cite"
+    | "clipPath"
     | "code"
     | "col"
     | "colgroup"
+    | "data"
     | "datalist"
     | "dd"
+    | "defs"
     | "del"
+    | "desc"
     | "details"
     | "dfn"
     | "dialog"
     | "div"
     | "dl"
     | "dt"
+    | "ellipse"
     | "em"
     | "embed"
-    | "fieldset"
-    | "figcaption"
-    | "figure"
-    | "footer"
-    | "h1"
-    | "h2"
-    | "h3"
-    | "h4"
-    | "h5"
-    | "h6"
-    | "head"
-    | "header"
-    | "hgroup"
-    | "hr"
-    | "html"
-    | "i"
-    | "iframe"
-    | "img"
-    | "ins"
-    | "kbd"
-    | "keygen"
-    | "legend"
-    | "li"
-    | "link"
-    | "main"
-    | "map"
-    | "mark"
-    | "menu"
-    | "menuitem"
-    | "meta"
-    | "meter"
-    | "nav"
-    | "noindex"
-    | "noscript"
-    | "ol"
-    | "optgroup"
-    | "option"
-    | "output"
-    | "p"
-    | "param"
-    | "picture"
-    | "pre"
-    | "progress"
-    | "q"
-    | "rp"
-    | "rt"
-    | "ruby"
-    | "s"
-    | "samp"
-    | "script"
-    | "section"
-    | "select"
-    | "source"
-    | "sub"
-    | "sup"
-    | "table"
-    | "tbody"
-    | "td"
-    | "textarea"
-    | "tfoot"
-    | "th"
-    | "thead"
-    | "time"
-    | "tr"
-    | "track"
-    | "u"
-    | "ul"
-    | "var"
-    | "video"
-    | "wbr"
-    | "webview"
-    | "svg"
-    | "animate"
-    | "animateMotion"
-    | "animateTransform"
-    | "circle"
-    | "defs"
-    | "desc"
-    | "ellipse"
     | "feBlend"
     | "feColorMatrix"
     | "feComponentTransfer"
@@ -1587,46 +1509,133 @@ exports[`Text 1`] = `
     | "feSpotLight"
     | "feTile"
     | "feTurbulence"
+    | "fieldset"
+    | "figcaption"
+    | "figure"
+    | "filter"
+    | "footer"
     | "foreignObject"
+    | "form"
     | "g"
+    | "h1"
+    | "h2"
+    | "h3"
+    | "h4"
+    | "h5"
+    | "h6"
+    | "head"
+    | "header"
+    | "hgroup"
+    | "hr"
+    | "html"
+    | "i"
+    | "iframe"
     | "image"
+    | "img"
+    | "input"
+    | "ins"
+    | "kbd"
+    | "keygen"
+    | "label"
+    | "legend"
+    | "li"
     | "line"
     | "linearGradient"
+    | "link"
+    | "main"
+    | "map"
+    | "mark"
+    | "marker"
+    | "mask"
+    | "menu"
+    | "menuitem"
+    | "meta"
     | "metadata"
+    | "meter"
     | "mpath"
+    | "nav"
+    | "noindex"
+    | "noscript"
+    | "object"
+    | "ol"
+    | "optgroup"
+    | "option"
+    | "output"
+    | "p"
+    | "param"
     | "path"
+    | "pattern"
+    | "picture"
     | "polygon"
     | "polyline"
+    | "pre"
+    | "progress"
+    | "q"
     | "radialGradient"
     | "rect"
+    | "rp"
+    | "rt"
+    | "ruby"
+    | "s"
+    | "samp"
+    | "script"
+    | "section"
+    | "select"
+    | "small"
+    | "source"
+    | "span"
     | "stop"
+    | "strong"
+    | "style"
+    | "sub"
+    | "summary"
+    | "sup"
+    | "svg"
     | "switch"
+    | "symbol"
+    | "table"
+    | "tbody"
+    | "td"
+    | "template"
     | "text"
     | "textPath"
+    | "textarea"
+    | "tfoot"
+    | "th"
+    | "thead"
+    | "time"
+    | "title"
+    | "tr"
+    | "track"
     | "tspan"
+    | "u"
+    | "ul"
     | "use"
+    | "var"
+    | "video"
     | "view"
-    | "template"
+    | "wbr"
+    | "webview"
     | ComponentClass<any, any>
     | FunctionComponent<any>
   id?: string
   size?: 
-    | "xsmall"
-    | "small"
     | "large"
+    | "small"
     | "standard"
+    | "xsmall"
   tone?: 
-    | "info"
     | "critical"
-    | "positive"
-    | "secondary"
     | "formAccent"
+    | "info"
     | "link"
     | "neutral"
+    | "positive"
+    | "secondary"
   weight?: 
-    | "strong"
-    | "regular"
     | "medium"
+    | "regular"
+    | "strong"
 }
 `;
 
@@ -1653,19 +1662,19 @@ exports[`TextField 1`] = `
   tertiaryLabel?: ReactNode
   tone?: 
     | "critical"
-    | "positive"
     | "neutral"
+    | "positive"
   type?: 
-    | "number"
-    | "text"
-    | "password"
     | "email"
+    | "number"
+    | "password"
     | "search"
     | "tel"
+    | "text"
     | "url"
   value: 
-    | string
     | number
+    | string
     | string[]
 }
 `;
@@ -1682,111 +1691,111 @@ exports[`TextLink 1`] = `
   alt?: string
   aria-activedescendant?: string
   aria-atomic?: 
-    | false
-    | true
     | "false"
     | "true"
+    | false
+    | true
   aria-autocomplete?: 
+    | "both"
+    | "inline"
     | "list"
     | "none"
-    | "inline"
-    | "both"
   aria-busy?: 
-    | false
-    | true
     | "false"
     | "true"
+    | false
+    | true
   aria-checked?: 
+    | "false"
+    | "mixed"
+    | "true"
     | false
     | true
-    | "false"
-    | "true"
-    | "mixed"
   aria-colcount?: number
   aria-colindex?: number
   aria-colspan?: number
   aria-controls?: string
   aria-current?: 
-    | false
-    | true
+    | "date"
+    | "false"
+    | "location"
+    | "page"
     | "step"
     | "time"
-    | "false"
     | "true"
-    | "page"
-    | "location"
-    | "date"
+    | false
+    | true
   aria-describedby?: string
   aria-details?: string
   aria-disabled?: 
-    | false
-    | true
     | "false"
     | "true"
+    | false
+    | true
   aria-dropeffect?: 
-    | "none"
-    | "link"
     | "copy"
     | "execute"
+    | "link"
     | "move"
+    | "none"
     | "popup"
   aria-errormessage?: string
   aria-expanded?: 
-    | false
-    | true
     | "false"
     | "true"
+    | false
+    | true
   aria-flowto?: string
   aria-grabbed?: 
-    | false
-    | true
     | "false"
     | "true"
+    | false
+    | true
   aria-haspopup?: 
-    | false
-    | true
-    | "grid"
     | "dialog"
-    | "menu"
     | "false"
-    | "true"
+    | "grid"
     | "listbox"
+    | "menu"
     | "tree"
+    | "true"
+    | false
+    | true
   aria-hidden?: 
-    | false
-    | true
     | "false"
     | "true"
+    | false
+    | true
   aria-invalid?: 
-    | false
-    | true
     | "false"
-    | "true"
     | "grammar"
     | "spelling"
+    | "true"
+    | false
+    | true
   aria-keyshortcuts?: string
   aria-label?: string
   aria-labelledby?: string
   aria-level?: number
   aria-live?: 
-    | "off"
     | "assertive"
+    | "off"
     | "polite"
   aria-modal?: 
-    | false
-    | true
     | "false"
     | "true"
+    | false
+    | true
   aria-multiline?: 
-    | false
-    | true
     | "false"
     | "true"
+    | false
+    | true
   aria-multiselectable?: 
-    | false
-    | true
     | "false"
     | "true"
+    | false
+    | true
   aria-orientation?: 
     | "horizontal"
     | "vertical"
@@ -1794,41 +1803,41 @@ exports[`TextLink 1`] = `
   aria-placeholder?: string
   aria-posinset?: number
   aria-pressed?: 
-    | false
-    | true
     | "false"
-    | "true"
     | "mixed"
+    | "true"
+    | false
+    | true
   aria-readonly?: 
-    | false
-    | true
     | "false"
     | "true"
+    | false
+    | true
   aria-relevant?: 
-    | "all"
-    | "text"
-    | "additions"
     | "additions text"
+    | "additions"
+    | "all"
     | "removals"
+    | "text"
   aria-required?: 
-    | false
-    | true
     | "false"
     | "true"
+    | false
+    | true
   aria-roledescription?: string
   aria-rowcount?: number
   aria-rowindex?: number
   aria-rowspan?: number
   aria-selected?: 
-    | false
-    | true
     | "false"
     | "true"
+    | false
+    | true
   aria-setsize?: number
   aria-sort?: 
-    | "none"
     | "ascending"
     | "descending"
+    | "none"
     | "other"
   aria-valuemax?: number
   aria-valuemin?: number
@@ -1843,15 +1852,15 @@ exports[`TextLink 1`] = `
   autoPlay?: boolean
   autoSave?: string
   capture?: 
-    | string
     | false
+    | string
     | true
   cellPadding?: 
-    | string
     | number
+    | string
   cellSpacing?: 
-    | string
     | number
+    | string
   challenge?: string
   charSet?: string
   checked?: boolean
@@ -1889,12 +1898,12 @@ exports[`TextLink 1`] = `
   formNoValidate?: boolean
   formTarget?: string
   frameBorder?: 
-    | string
     | number
+    | string
   headers?: string
   height?: 
-    | string
     | number
+    | string
   hidden?: boolean
   high?: number
   href?: string
@@ -1923,15 +1932,15 @@ exports[`TextLink 1`] = `
   marginHeight?: number
   marginWidth?: number
   max?: 
-    | string
     | number
+    | string
   maxLength?: number
   media?: string
   mediaGroup?: string
   method?: string
   min?: 
-    | string
     | number
+    | string
   minLength?: number
   multiple?: boolean
   muted?: boolean
@@ -2136,8 +2145,8 @@ exports[`TextLink 1`] = `
   srcSet?: string
   start?: number
   step?: 
-    | string
     | number
+    | string
   summary?: string
   suppressContentEditableWarning?: boolean
   suppressHydrationWarning?: boolean
@@ -2147,17 +2156,17 @@ exports[`TextLink 1`] = `
   type?: string
   typeof?: string
   unselectable?: 
-    | "on"
     | "off"
+    | "on"
   useMap?: string
   value?: 
-    | string
     | number
+    | string
     | string[]
   vocab?: string
   width?: 
-    | string
     | number
+    | string
   wmode?: string
   wrap?: string
 }
@@ -2196,11 +2205,11 @@ exports[`Textarea 1`] = `
   tertiaryLabel?: ReactNode
   tone?: 
     | "critical"
-    | "positive"
     | "neutral"
+    | "positive"
   value: 
-    | string
     | number
+    | string
     | string[]
 }
 `;
@@ -2215,18 +2224,18 @@ exports[`TickCircleIcon 1`] = `
 {
   size?: 
     | "fill"
-    | "xsmall"
-    | "small"
     | "large"
+    | "small"
     | "standard"
+    | "xsmall"
   tone?: 
-    | "info"
     | "critical"
-    | "positive"
-    | "secondary"
     | "formAccent"
+    | "info"
     | "link"
     | "neutral"
+    | "positive"
+    | "secondary"
 }
 `;
 
@@ -2234,18 +2243,18 @@ exports[`TickIcon 1`] = `
 {
   size?: 
     | "fill"
-    | "xsmall"
-    | "small"
     | "large"
+    | "small"
     | "standard"
+    | "xsmall"
   tone?: 
-    | "info"
     | "critical"
-    | "positive"
-    | "secondary"
     | "formAccent"
+    | "info"
     | "link"
     | "neutral"
+    | "positive"
+    | "secondary"
 }
 `;
 
