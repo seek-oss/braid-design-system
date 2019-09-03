@@ -2196,6 +2196,7 @@ exports[`Textarea 1`] = `
   onBlur?: (event: FocusEvent<HTMLTextAreaElement>) => void
   onChange: (event: FormEvent<HTMLTextAreaElement>) => void
   onFocus?: (event: FocusEvent<HTMLTextAreaElement>) => void
+  onPaste?: (event: ClipboardEvent<HTMLTextAreaElement>) => void
   placeholder?: string
   ref?: 
     | (instance: HTMLTextAreaElement | null) => void
