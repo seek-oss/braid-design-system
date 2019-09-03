@@ -11,6 +11,7 @@ export const typeSerializer = {
       return type;
     } else if (type.type === 'union') {
       return type.types
+        .sort()
         .map(subType => {
           return `\n${indent(`| ${serializer(subType)}`)}`;
         })
