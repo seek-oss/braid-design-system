@@ -74,15 +74,12 @@ export const ComponentRoute = ({
           const codeAsString =
             Example && !code
               ? cleanCodeSnippet(
-                  reactElementToJSXString(
-                    <Example id="id" handler={handler} />,
-                    {
-                      useBooleanShorthandSyntax: false,
-                      showDefaultProps: false,
-                      showFunctions: false,
-                      filterProps: ['onChange', 'onBlur', 'onFocus'],
-                    },
-                  ),
+                  reactElementToJSXString(Example({ id: 'id', handler }), {
+                    useBooleanShorthandSyntax: false,
+                    showDefaultProps: false,
+                    showFunctions: false,
+                    filterProps: ['onChange', 'onBlur', 'onFocus'],
+                  }),
                 )
               : code
               ? cleanCodeSnippet(dedent(code))
