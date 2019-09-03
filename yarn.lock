@@ -3762,6 +3762,15 @@ before-after-hook@^1.1.0, before-after-hook@^1.4.0:
   resolved "https://registry.yarnpkg.com/before-after-hook/-/before-after-hook-1.4.0.tgz#2b6bf23dca4f32e628fd2747c10a37c74a4b484d"
   integrity sha512-l5r9ir56nda3qu14nAXIlyq1MmUSs0meCIaFAh8HwkFwP1F8eToOuS3ah2VAHHcY04jaYD7FpJC5JTXHYRbkzg==
 
+bent@^6.1.0:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/bent/-/bent-6.1.0.tgz#5712ac19bf6e583cda0f162f766b1f468476985d"
+  integrity sha512-D6NaNcLrcIovZOzwm9LoV5nf0yKeqWVad2ec74T3esh8CXHzRtZM70z5prUtXM+H9kA6+0RRDfBDaxy9iScKig==
+  dependencies:
+    bytesish "^0.3.1"
+    caseless "~0.12.0"
+    is-stream "^2.0.0"
+
 bfj@^6.1.1:
   version "6.1.2"
   resolved "https://registry.yarnpkg.com/bfj/-/bfj-6.1.2.tgz#325c861a822bcb358a41c78a33b8e6e2086dde7f"
@@ -4094,6 +4103,11 @@ bytes@3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/bytes/-/bytes-3.1.0.tgz#f6cf7933a360e0588fa9fde85651cdc7f805d1f6"
   integrity sha512-zauLjrfCG+xvoyaqLoV8bLVXXNGC4JqlxFCutSDWA6fJrTo2ZuvLYTqZ7aHBLZSMOopbzwv8f+wZcVzfVTI2Dg==
+
+bytesish@^0.3.1:
+  version "0.3.3"
+  resolved "https://registry.yarnpkg.com/bytesish/-/bytesish-0.3.3.tgz#103399440705adba36e48b42b52a3ad6dfff09cb"
+  integrity sha512-Q5eMmjkF3PnHDA0k/34/aGodPWxYL/2bAB1j17JQXeejbGsWaJLpKJqLCcpe+e37Oqg+UZig0kF5vgslOOyUJQ==
 
 cacache@^11.0.1:
   version "11.3.2"
@@ -14698,10 +14712,10 @@ sisteransi@^1.0.0:
   resolved "https://registry.yarnpkg.com/sisteransi/-/sisteransi-1.0.2.tgz#ec57d64b6f25c4f26c0e2c7dd23f2d7f12f7e418"
   integrity sha512-ZcYcZcT69nSLAR2oLN2JwNmLkJEKGooFMCdvOkFrToUt/WfcRWqhIg4P4KwY4dmLbuyXIx4o4YmPsvMRJYJd/w==
 
-sku@8.10.2:
-  version "8.10.2"
-  resolved "https://registry.yarnpkg.com/sku/-/sku-8.10.2.tgz#dc285d3e94b725675d3eb4497566281357440b45"
-  integrity sha512-cqipJHuYkeRZgWsNKXL5eKGAjByzqxCHEdTOeH9Rf5AoVKuqhk84Z4rVPYn6+8d7oPrpxSJyFI1MpsXgu6oJPQ==
+sku@8.11.1:
+  version "8.11.1"
+  resolved "https://registry.yarnpkg.com/sku/-/sku-8.11.1.tgz#0236c59140a01b1e7361761f34d8fa557a32ffac"
+  integrity sha512-rAj7JyWZk26ohmRhs3LBpFUatwOiWMp2PqhoJK6m701jcuSgRJdXbGYOWUkqxlxbXL+hHY33hc3u6+SqvnxAFw==
   dependencies:
     "@babel/core" "^7.5.5"
     "@babel/plugin-proposal-class-properties" "^7.5.5"
@@ -14736,6 +14750,7 @@ sku@8.10.2:
     babel-plugin-syntax-dynamic-import "^6.18.0"
     babel-plugin-transform-react-remove-prop-types "^0.4.24"
     babel-plugin-treat "^1.0.0"
+    bent "^6.1.0"
     browserslist "^4.6.6"
     browserslist-config-seek "^2.0.0"
     chalk "^2.4.2"
