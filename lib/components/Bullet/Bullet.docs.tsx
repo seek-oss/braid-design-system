@@ -8,7 +8,7 @@ const docs: ComponentDocs = {
   examples: [
     {
       label: 'Standard Bullets',
-      render: () => (
+      Example: () => (
         <BulletList>
           <Bullet>This is a bullet.</Bullet>
           <Bullet>This is a bullet.</Bullet>

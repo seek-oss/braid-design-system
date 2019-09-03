@@ -11,13 +11,13 @@ const docs: ComponentDocs = {
   examples: [
     {
       label: 'Toggle off',
-      render: ({ id }) => (
+      Example: ({ id }) => (
         <Toggle on={false} label="Toggled off" id={id} onChange={handler} />
       ),
     },
     {
       label: 'Toggle on',
-      render: ({ id }) => (
+      Example: ({ id }) => (
         <Toggle on={true} label="Toggled on" id={id} onChange={handler} />
       ),
     },
@@ -26,7 +26,7 @@ const docs: ComponentDocs = {
       Container: ({ children }) => (
         <div style={{ maxWidth: '300px' }}>{children}</div>
       ),
-      render: ({ id }) => (
+      Example: ({ id }) => (
         <Toggle
           on={true}
           align="right"

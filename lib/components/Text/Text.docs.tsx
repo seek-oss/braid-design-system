@@ -11,19 +11,19 @@ const Container = ({ children }: { children: ReactNode }) => (
 const docs: ComponentDocs = {
   migrationGuide: true,
   examples: [
-    { label: 'Standard Text', render: () => <Text>Standard text.</Text> },
+    { label: 'Standard Text', Example: () => <Text>Standard text.</Text> },
     {
       label: 'Small Text',
-      render: () => <Text size="small">Small text.</Text>,
+      Example: () => <Text size="small">Small text.</Text>,
     },
     {
       label: 'Large Text',
-      render: () => <Text size="large">Large text.</Text>,
+      Example: () => <Text size="large">Large text.</Text>,
     },
     {
       label: 'Text on Brand Background',
       Container,
-      render: () => (
+      Example: () => (
         <Box background="brand" paddingBottom="xsmall" paddingLeft="xsmall">
           <Text>Brand background.</Text>
         </Box>
@@ -33,7 +33,7 @@ const docs: ComponentDocs = {
       label: 'Text Contrast',
       docsSite: false,
       Container,
-      render: () => {
+      Example: () => {
         const backgrounds = Object.keys(boxBackgrounds) as Array<
           keyof typeof boxBackgrounds
         >;

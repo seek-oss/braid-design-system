@@ -27,7 +27,7 @@ req.keys().forEach(filename => {
 
   if (
     docs.storybook === false ||
-    !docs.examples.some(({ render }) => typeof render === 'function')
+    !docs.examples.some(({ Example }) => typeof Example === 'function')
   ) {
     return;
   }
@@ -40,10 +40,14 @@ req.keys().forEach(filename => {
           <BraidProvider theme={theme} styleBody={false}>
             {docs.examples.map(
               (
-                { label = componentName, render, Container = DefaultContainer },
+                {
+                  label = componentName,
+                  Example,
+                  Container = DefaultContainer,
+                },
                 i,
               ) =>
-                render ? (
+                Example ? (
                   <div
                     key={i}
                     style={{
@@ -64,7 +68,9 @@ req.keys().forEach(filename => {
                     >
                       {label}
                     </h4>
-                    <Container>{render({ id: 'id', handler })}</Container>
+                    <Container>
+                      <Example id="id" handler={handler} />
+                    </Container>
                     <div style={{ paddingTop: 18 }}>
                       <hr
                         style={{

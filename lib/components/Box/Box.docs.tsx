@@ -20,7 +20,7 @@ const docs: ComponentDocs = {
           {children}
         </Box>
       ),
-      render: () => (
+      Example: () => (
         <Box
           {...(space === 'gutter'
             ? {

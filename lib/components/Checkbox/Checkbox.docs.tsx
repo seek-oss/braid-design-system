@@ -8,13 +8,13 @@ const docs: ComponentDocs = {
   examples: [
     {
       label: 'Standard Checkbox',
-      render: ({ id, handler }) => (
+      Example: ({ id, handler }) => (
         <Checkbox id={id} checked={false} onChange={handler} label="Label" />
       ),
     },
     {
       label: 'Checkbox without Message Placeholder',
-      render: ({ id, handler }) => (
+      Example: ({ id, handler }) => (
         <Checkbox
           id={id}
           checked={false}
@@ -26,7 +26,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Checked Checkbox',
-      render: ({ id, handler }) => (
+      Example: ({ id, handler }) => (
         <Checkbox
           id={id}
           checked={true}
@@ -38,7 +38,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Disabled Checkbox',
-      render: ({ id, handler }) => (
+      Example: ({ id, handler }) => (
         <Checkbox
           id={id}
           disabled={true}
@@ -51,7 +51,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Critical Checkbox',
-      render: ({ id, handler }) => (
+      Example: ({ id, handler }) => (
         <Checkbox
           id={id}
           checked={false}
@@ -64,7 +64,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Nested Checkbox',
-      render: ({ id, handler }) => (
+      Example: ({ id, handler }) => (
         <Checkbox
           id={id}
           checked={true}

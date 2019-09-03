@@ -12,7 +12,7 @@ const docs: ComponentDocs = {
   examples: [
     {
       label: 'Text Link',
-      render: () => (
+      Example: () => (
         <Text>
           The last word of a sentence is a{' '}
           <TextLink href="">text link.</TextLink>
@@ -21,7 +21,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Block Text Link',
-      render: () => (
+      Example: () => (
         <TextLink href="">
           <Text>Text Link</Text>
         </TextLink>
@@ -29,7 +29,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Text Link inside Actions',
-      render: () => (
+      Example: () => (
         <Actions>
           <Button>Button</Button>
           <TextLink href="">Text Link</TextLink>
@@ -38,7 +38,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Large Text Link',
-      render: () => (
+      Example: () => (
         <Text size="large">
           The last word of a sentence is a{' '}
           <TextLink href="">text link.</TextLink>
@@ -47,7 +47,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Large Block Text Link',
-      render: () => (
+      Example: () => (
         <TextLink href="">
           <Text size="large">Text Link</Text>
         </TextLink>
@@ -55,7 +55,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Small Text Link',
-      render: () => (
+      Example: () => (
         <Text size="small">
           The last word of a sentence is a{' '}
           <TextLink href="">text link.</TextLink>
@@ -64,7 +64,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Small Block Text Link',
-      render: () => (
+      Example: () => (
         <TextLink href="">
           <Text size="small">Text Link</Text>
         </TextLink>
@@ -72,7 +72,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Xsmall Text Link',
-      render: () => (
+      Example: () => (
         <Text size="xsmall">
           The last word of a sentence is a{' '}
           <TextLink href="">text link.</TextLink>
@@ -81,7 +81,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Xsmall Block Text Link',
-      render: () => (
+      Example: () => (
         <TextLink href="">
           <Text size="xsmall">Text Link</Text>
         </TextLink>
@@ -89,7 +89,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Heading Level 1 Link',
-      render: () => (
+      Example: () => (
         <TextLink href="">
           <Heading level="1">Heading link.</Heading>
         </TextLink>
@@ -97,7 +97,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Heading Level 1 Link (Inline)',
-      render: () => (
+      Example: () => (
         <Heading level="1">
           The last word of this heading is a <TextLink href="">link.</TextLink>
         </Heading>
@@ -105,7 +105,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Heading Level 2 Link',
-      render: () => (
+      Example: () => (
         <TextLink href="">
           <Heading level="2">Heading link.</Heading>
         </TextLink>
@@ -113,7 +113,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Heading Level 2 Link (Inline)',
-      render: () => (
+      Example: () => (
         <Heading level="2">
           The last word of this heading is a <TextLink href="">link.</TextLink>
         </Heading>
@@ -121,7 +121,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Heading Level 3 Link',
-      render: () => (
+      Example: () => (
         <TextLink href="">
           <Heading level="3">Heading link.</Heading>
         </TextLink>
@@ -129,7 +129,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Heading Level 3 Link (Inline)',
-      render: () => (
+      Example: () => (
         <Heading level="3">
           The last word of this heading is a <TextLink href="">link.</TextLink>
         </Heading>
@@ -137,7 +137,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Heading Level 4 Link',
-      render: () => (
+      Example: () => (
         <TextLink href="">
           <Heading level="4">Heading link.</Heading>
         </TextLink>
@@ -145,7 +145,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Heading Level 4 Link (Inline)',
-      render: () => (
+      Example: () => (
         <Heading level="4">
           The last word of this heading is a <TextLink href="">link.</TextLink>
         </Heading>

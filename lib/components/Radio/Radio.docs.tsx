@@ -8,19 +8,19 @@ const docs: ComponentDocs = {
   examples: [
     {
       label: 'Standard Radio Button',
-      render: ({ id, handler }) => (
+      Example: ({ id, handler }) => (
         <Radio id={id} checked={false} onChange={handler} label="Label" />
       ),
     },
     {
       label: 'Checked Radio Button',
-      render: ({ id, handler }) => (
+      Example: ({ id, handler }) => (
         <Radio id={id} checked={true} onChange={handler} label="Label" />
       ),
     },
     {
       label: 'Disabled Radio Button',
-      render: ({ id, handler }) => (
+      Example: ({ id, handler }) => (
         <Radio
           id={id}
           disabled={true}
@@ -32,7 +32,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Critical Radio Button',
-      render: ({ id, handler }) => (
+      Example: ({ id, handler }) => (
         <Radio
           id={id}
           checked={false}
@@ -44,7 +44,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Nested Radio Button',
-      render: ({ id, handler }) => (
+      Example: ({ id, handler }) => (
         <Radio id={id} checked={true} onChange={handler} label="Label">
           <Text>This text is visible when the radio button is checked.</Text>
         </Radio>

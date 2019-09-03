@@ -8,11 +8,11 @@ const docs: ComponentDocs = {
   examples: [
     {
       label: 'Default',
-      render: () => <BookmarkIcon />,
+      Example: () => <BookmarkIcon />,
     },
     {
       label: 'Active',
-      render: () => <BookmarkIcon active={true} />,
+      Example: () => <BookmarkIcon active={true} />,
     },
     ...examplesForIcon(BookmarkIcon),
   ],

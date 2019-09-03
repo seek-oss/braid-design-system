@@ -13,11 +13,11 @@ const docs: ComponentDocs = {
   examples: [
     {
       label: 'Level 1',
-      render: () => <Heading level="1">Heading Level 1</Heading>,
+      Example: () => <Heading level="1">Heading Level 1</Heading>,
     },
     {
       label: 'Level 1 Weak',
-      render: () => (
+      Example: () => (
         <Heading level="1" weight="weak">
           Heading Level 1 Weak
         </Heading>
@@ -25,11 +25,11 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Level 2',
-      render: () => <Heading level="2">Heading Level 2</Heading>,
+      Example: () => <Heading level="2">Heading Level 2</Heading>,
     },
     {
       label: 'Level 2 Weak',
-      render: () => (
+      Example: () => (
         <Heading level="2" weight="weak">
           Heading Level 2 Weak
         </Heading>
@@ -37,11 +37,11 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Level 3',
-      render: () => <Heading level="3">Heading Level 3</Heading>,
+      Example: () => <Heading level="3">Heading Level 3</Heading>,
     },
     {
       label: 'Level 3 Weak',
-      render: () => (
+      Example: () => (
         <Heading level="3" weight="weak">
           Heading Level 3 Weak
         </Heading>
@@ -49,11 +49,11 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Level 4',
-      render: () => <Heading level="4">Heading Level 4</Heading>,
+      Example: () => <Heading level="4">Heading Level 4</Heading>,
     },
     {
       label: 'Level 4 Weak',
-      render: () => (
+      Example: () => (
         <Heading level="4" weight="weak">
           Heading Level 4 Weak
         </Heading>
@@ -63,7 +63,7 @@ const docs: ComponentDocs = {
       label: 'Heading Contrast',
       docsSite: false,
       Container,
-      render: () => {
+      Example: () => {
         const backgrounds = Object.keys(boxBackgrounds) as Array<
           keyof typeof boxBackgrounds
         >;
