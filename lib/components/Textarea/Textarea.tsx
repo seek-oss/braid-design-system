@@ -19,6 +19,7 @@ interface TextareaProps extends Omit<FieldProps, 'secondaryMessage'> {
   onChange: NonNullable<NativeTextareaProps['onChange']>;
   onBlur?: NativeTextareaProps['onBlur'];
   onFocus?: NativeTextareaProps['onFocus'];
+  onPaste?: NativeTextareaProps['onPaste'];
   placeholder?: NativeTextareaProps['placeholder'];
   characterLimit?: number;
   lines?: number;
@@ -82,6 +83,7 @@ const NamedTextarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
       onChange,
       onBlur,
       onFocus,
+      onPaste,
       placeholder,
       characterLimit,
       lines = 3,
@@ -118,6 +120,7 @@ const NamedTextarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
             }}
             onBlur={onBlur}
             onFocus={onFocus}
+            onPaste={onPaste}
             placeholder={placeholder}
             className={classnames(styles.field, className)}
             {...fieldProps}
