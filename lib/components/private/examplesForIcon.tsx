@@ -13,7 +13,7 @@ export default (Icon: ComponentType<UseIconProps>) => {
   return [
     {
       label: 'Standard',
-      render: () => (
+      Example: () => (
         <Box display="flex" style={{ alignItems: 'center' }}>
           <Box marginRight="xsmall">
             <Icon />
@@ -24,7 +24,7 @@ export default (Icon: ComponentType<UseIconProps>) => {
     },
     {
       label: 'Standard Inline',
-      render: () => (
+      Example: () => (
         <Text>
           Standard <Icon /> text
         </Text>
@@ -32,7 +32,7 @@ export default (Icon: ComponentType<UseIconProps>) => {
     },
     {
       label: 'Large',
-      render: () => (
+      Example: () => (
         <Box display="flex" style={{ alignItems: 'center' }}>
           <Box marginRight="xsmall">
             <Icon size="large" />
@@ -45,7 +45,7 @@ export default (Icon: ComponentType<UseIconProps>) => {
     },
     {
       label: 'Large Inline',
-      render: () => (
+      Example: () => (
         <Text size="large">
           Large <Icon /> text
         </Text>
@@ -53,7 +53,7 @@ export default (Icon: ComponentType<UseIconProps>) => {
     },
     {
       label: 'Fill to container, eg. 100x100',
-      render: () => (
+      Example: () => (
         <Box style={{ height: '100px', width: '100px' }}>
           <Icon size="fill" />
         </Box>
@@ -62,7 +62,7 @@ export default (Icon: ComponentType<UseIconProps>) => {
     {
       label: 'Blocks sizes (i.e. full line height)',
       docsSite: false,
-      render: () => {
+      Example: () => {
         const sizes = Object.keys(textSizes) as Array<keyof typeof textSizes>;
 
         return (
@@ -86,7 +86,7 @@ export default (Icon: ComponentType<UseIconProps>) => {
     {
       label: 'Auto size (via TextContext)',
       docsSite: false,
-      render: () => {
+      Example: () => {
         const sizes = Object.keys(textSizes) as Array<keyof typeof textSizes>;
 
         return (
@@ -103,7 +103,7 @@ export default (Icon: ComponentType<UseIconProps>) => {
     {
       label: 'Auto Size (via HeadingContext)',
       docsSite: false,
-      render: () => {
+      Example: () => {
         const headings = Object.keys(headingSizes) as Array<
           keyof typeof headingSizes
         >;
@@ -122,7 +122,7 @@ export default (Icon: ComponentType<UseIconProps>) => {
     {
       label: 'Auto Tone (via TextContext)',
       docsSite: false,
-      render: () => {
+      Example: () => {
         const iconTones = Object.keys(tones) as Array<keyof typeof tones>;
 
         return (
@@ -142,7 +142,7 @@ export default (Icon: ComponentType<UseIconProps>) => {
     {
       label: 'Auto Tone with Background Contrast (via TextContext)',
       docsSite: false,
-      render: () => (
+      Example: () => (
         <Box background="brand">
           <Text baseline={false}>
             Default <Icon />, explicitly positive <Icon tone="positive" />

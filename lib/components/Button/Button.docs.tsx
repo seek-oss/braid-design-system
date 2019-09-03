@@ -12,17 +12,17 @@ const docs: ComponentDocs = {
     {
       label: 'Default Button',
       Container,
-      render: () => <Button>Submit</Button>,
+      Example: () => <Button>Submit</Button>,
     },
     {
       label: 'Strong Button',
       Container,
-      render: () => <Button weight="strong">Submit</Button>,
+      Example: () => <Button weight="strong">Submit</Button>,
     },
     {
       label: 'Weak Button',
       Container,
-      render: () => <Button weight="weak">Submit</Button>,
+      Example: () => <Button weight="weak">Submit</Button>,
     },
   ],
 };

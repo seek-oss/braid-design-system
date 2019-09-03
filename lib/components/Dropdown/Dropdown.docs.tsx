@@ -13,7 +13,7 @@ const docs: ComponentDocs = {
     {
       label: 'Dropdown with placeholder',
       Container,
-      render: ({ id, handler }) => (
+      Example: ({ id, handler }) => (
         <Dropdown
           label="Job Title"
           id={id}
@@ -29,7 +29,7 @@ const docs: ComponentDocs = {
     {
       label: 'Dropdown with options group',
       Container,
-      render: ({ id, handler }) => (
+      Example: ({ id, handler }) => (
         <Dropdown
           label="Location"
           id={id}
@@ -48,7 +48,7 @@ const docs: ComponentDocs = {
     {
       label: 'Dropdown without placeholder',
       Container,
-      render: ({ id, handler }) => (
+      Example: ({ id, handler }) => (
         <Dropdown label="Job Title" id={id} onChange={handler} value="">
           <option value="1">Developer</option>
           <option value="2">Designer</option>
@@ -58,7 +58,7 @@ const docs: ComponentDocs = {
     {
       label: 'Dropdown in invalid state',
       Container,
-      render: ({ id, handler }) => (
+      Example: ({ id, handler }) => (
         <Dropdown
           label="Job Title"
           id={id}
@@ -75,7 +75,7 @@ const docs: ComponentDocs = {
     {
       label: 'Dropdown on Brand Background',
       Container,
-      render: ({ id, handler }) => (
+      Example: ({ id, handler }) => (
         <Box background="brand" paddingX="small">
           <Dropdown
             label="Job Title"

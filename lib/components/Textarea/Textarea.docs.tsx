@@ -13,7 +13,7 @@ const docs: ComponentDocs = {
     {
       label: 'Textarea',
       Container,
-      render: ({ id, handler }) => (
+      Example: ({ id, handler }) => (
         <Textarea
           id={id}
           value="Senior Developer"
@@ -25,7 +25,7 @@ const docs: ComponentDocs = {
     {
       label: 'Textarea with message',
       Container,
-      render: ({ id, handler }) => (
+      Example: ({ id, handler }) => (
         <Textarea
           id={id}
           value=""
@@ -38,7 +38,7 @@ const docs: ComponentDocs = {
     {
       label: 'Textarea with secondary label',
       Container,
-      render: ({ id, handler }) => (
+      Example: ({ id, handler }) => (
         <Textarea
           id={id}
           value=""
@@ -51,7 +51,7 @@ const docs: ComponentDocs = {
     {
       label: 'Textarea with tertiary label',
       Container,
-      render: ({ id, handler }) => (
+      Example: ({ id, handler }) => (
         <Textarea
           id={id}
           value=""
@@ -65,7 +65,7 @@ const docs: ComponentDocs = {
     {
       label: 'Textarea with error',
       Container,
-      render: ({ id, handler }) => (
+      Example: ({ id, handler }) => (
         <Textarea
           id={id}
           value="No"
@@ -79,7 +79,7 @@ const docs: ComponentDocs = {
     {
       label: 'Textarea with postive message',
       Container,
-      render: ({ id, handler }) => (
+      Example: ({ id, handler }) => (
         <Textarea
           id={id}
           value="Yes"
@@ -93,7 +93,7 @@ const docs: ComponentDocs = {
     {
       label: 'Textarea with a limit',
       Container,
-      render: ({ id, handler }) => (
+      Example: ({ id, handler }) => (
         <Textarea
           id={id}
           value=""
@@ -106,7 +106,7 @@ const docs: ComponentDocs = {
     {
       label: 'Textarea with value exceeding limit',
       Container,
-      render: ({ id, handler }) => (
+      Example: ({ id, handler }) => (
         <Textarea
           id={id}
           value="Yes I do"

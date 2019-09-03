@@ -14,7 +14,7 @@ const docs: ComponentDocs = {
     {
       label: 'TextField',
       Container,
-      render: ({ id, handler }) => (
+      Example: ({ id, handler }) => (
         <TextField
           label="Job Title"
           id={id}
@@ -26,7 +26,7 @@ const docs: ComponentDocs = {
     {
       label: 'TextField with message',
       Container,
-      render: ({ id, handler }) => (
+      Example: ({ id, handler }) => (
         <TextField
           label="Job Title"
           id={id}
@@ -39,7 +39,7 @@ const docs: ComponentDocs = {
     {
       label: 'TextField with secondary label',
       Container,
-      render: ({ id, handler }) => (
+      Example: ({ id, handler }) => (
         <TextField
           label="Title"
           secondaryLabel="Optional"
@@ -52,7 +52,7 @@ const docs: ComponentDocs = {
     {
       label: 'TextField with tertiary label',
       Container,
-      render: ({ id, handler }) => (
+      Example: ({ id, handler }) => (
         <TextField
           label="Title"
           secondaryLabel="Optional"
@@ -66,7 +66,7 @@ const docs: ComponentDocs = {
     {
       label: 'TextField with error',
       Container,
-      render: ({ id, handler }) => (
+      Example: ({ id, handler }) => (
         <TextField
           label="Do you like Braid?"
           tone="critical"
@@ -80,7 +80,7 @@ const docs: ComponentDocs = {
     {
       label: 'TextField with postive message',
       Container,
-      render: ({ id, handler }) => (
+      Example: ({ id, handler }) => (
         <TextField
           label="Do you like Braid?"
           id={id}
@@ -94,7 +94,7 @@ const docs: ComponentDocs = {
     {
       label: 'TextField on Brand Background',
       Container,
-      render: ({ id, handler }) => (
+      Example: ({ id, handler }) => (
         <Box background="brand" paddingX="small">
           <TextField
             label="Job Title"

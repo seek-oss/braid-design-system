@@ -8,7 +8,7 @@ const docs: ComponentDocs = {
   examples: [
     {
       label: 'TextLink with Custom Renderer',
-      render: () => (
+      Example: () => (
         <Text>
           The last word of this sentence is a{' '}
           <TextLinkRenderer>

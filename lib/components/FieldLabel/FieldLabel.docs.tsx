@@ -12,12 +12,12 @@ const docs: ComponentDocs = {
     {
       label: 'Standard Field Label',
       Container,
-      render: () => <FieldLabel htmlFor="id" label="This is a field label" />,
+      Example: () => <FieldLabel htmlFor="id" label="This is a field label" />,
     },
     {
       label: 'Field Label with secondary',
       Container,
-      render: () => (
+      Example: () => (
         <FieldLabel
           htmlFor="id"
           label="Username"
@@ -28,7 +28,7 @@ const docs: ComponentDocs = {
     {
       label: 'Field Label with tertiary label',
       Container,
-      render: () => (
+      Example: () => (
         <FieldLabel
           htmlFor="id"
           label="Password"
@@ -39,7 +39,7 @@ const docs: ComponentDocs = {
     {
       label: 'Field Label with all types',
       Container,
-      render: () => (
+      Example: () => (
         <FieldLabel
           htmlFor="id"
           label="Title"

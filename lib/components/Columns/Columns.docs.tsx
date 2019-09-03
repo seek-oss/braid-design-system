@@ -17,7 +17,7 @@ const docs: ComponentDocs = {
   examples: [
     {
       label: 'Default',
-      render: () => (
+      Example: () => (
         <Columns>
           <Column>
             <HideCode>
@@ -39,7 +39,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Collapse on mobile',
-      render: () => (
+      Example: () => (
         <Columns collapse>
           <Column>
             <HideCode>
@@ -56,7 +56,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Custom gutter size, e.g. `small`',
-      render: () => (
+      Example: () => (
         <Columns gutter="small">
           <Column>
             <HideCode>
@@ -73,7 +73,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'No gutter',
-      render: () => (
+      Example: () => (
         <Columns gutter="none">
           <Column>
             <HideCode>
@@ -90,7 +90,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Reverse',
-      render: () => (
+      Example: () => (
         <Columns reverse>
           <Column>
             <HideCode>

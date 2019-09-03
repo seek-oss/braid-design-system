@@ -7,11 +7,11 @@ const docs: ComponentDocs = {
   examples: [
     {
       label: 'Info Badge',
-      render: () => <Badge tone="info">Featured</Badge>,
+      Example: () => <Badge tone="info">Featured</Badge>,
     },
     {
       label: 'Strong Info Badge',
-      render: () => (
+      Example: () => (
         <Badge tone="info" weight="strong">
           Featured
         </Badge>
@@ -19,11 +19,11 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Critical Badge',
-      render: () => <Badge tone="critical">Overdue</Badge>,
+      Example: () => <Badge tone="critical">Overdue</Badge>,
     },
     {
       label: 'Strong Critical Badge',
-      render: () => (
+      Example: () => (
         <Badge tone="critical" weight="strong">
           Overdue
         </Badge>
@@ -31,11 +31,11 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Positive Badge',
-      render: () => <Badge tone="positive">New</Badge>,
+      Example: () => <Badge tone="positive">New</Badge>,
     },
     {
       label: 'Strong Positive Badge',
-      render: () => (
+      Example: () => (
         <Badge tone="positive" weight="strong">
           New
         </Badge>
@@ -43,11 +43,11 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Secondary Badge',
-      render: () => <Badge tone="secondary">10m ago</Badge>,
+      Example: () => <Badge tone="secondary">10m ago</Badge>,
     },
     {
       label: 'Strong Secondary Badge',
-      render: () => (
+      Example: () => (
         <Badge tone="secondary" weight="strong">
           10m ago
         </Badge>

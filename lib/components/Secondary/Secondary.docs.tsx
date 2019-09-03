@@ -7,7 +7,7 @@ const docs: ComponentDocs = {
   migrationGuide: true,
   examples: [
     {
-      render: () => (
+      Example: () => (
         <Text>
           The word in the <Secondary>middle</Secondary> is secondary text.
         </Text>

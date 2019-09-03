@@ -19,7 +19,7 @@ const docs: ComponentDocs = {
   examples: [
     {
       label: 'Standard Columns',
-      render: () => (
+      Example: () => (
         <Columns>
           <Column>
             <HideCode>
@@ -41,7 +41,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Available widths',
-      render: () => (
+      Example: () => (
         <Fragment>
           {widths.map(width => (
             <Columns>
@@ -65,7 +65,7 @@ const docs: ComponentDocs = {
     {
       label: 'Gutter align',
       docsSite: false,
-      render: () => (
+      Example: () => (
         <Fragment>
           <Box marginBottom="medium">
             <Columns>

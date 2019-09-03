@@ -7,7 +7,7 @@ const docs: ComponentDocs = {
   examples: [
     {
       label: 'Standard Paragraph',
-      render: () => (
+      Example: () => (
         <Paragraph>
           <Text>Standard</Text>
           <Text>Paragraph</Text>
