@@ -80,30 +80,34 @@ function TouchableLink({ children }: TextLinkRendererProps) {
   );
 }
 
+const buttonLinkTextProps = {
+  size: 'standard',
+  tone: 'link',
+  baseline: false,
+} as const;
 function ButtonLink({ children }: TextLinkRendererProps) {
   const styles = useStyles(styleRefs);
 
   return (
     <Box position="relative">
-      {children({
-        style: {},
-        className: classnames(
-          styles.button,
-          useLinkStyles(),
-          useText({
-            size: 'standard',
-            baseline: false,
-          }),
-          useTouchableSpace('standard'),
-          useBox({
-            component: 'a',
-            display: 'block',
-            width: 'full',
-            paddingX: 'small',
-            borderRadius: 'standard',
-          }),
-        ),
-      })}
+      <TextContext.Provider value={buttonLinkTextProps}>
+        {children({
+          style: {},
+          className: classnames(
+            styles.button,
+            useLinkStyles(),
+            useText(buttonLinkTextProps),
+            useTouchableSpace(buttonLinkTextProps.size),
+            useBox({
+              component: 'a',
+              display: 'block',
+              width: 'full',
+              paddingX: 'small',
+              borderRadius: 'standard',
+            }),
+          ),
+        })}
+      </TextContext.Provider>
       <FieldOverlay variant="focus" className={styles.focusOverlay} />
     </Box>
   );
