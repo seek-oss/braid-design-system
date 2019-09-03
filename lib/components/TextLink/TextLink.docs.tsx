@@ -154,7 +154,7 @@ const docs: ComponentDocs = {
     {
       label: 'Text Link with icon',
       docsSite: false,
-      render: () => (
+      Example: () => (
         <Text>
           The last word of a sentence is a{' '}
           <TextLink href="">
@@ -168,7 +168,7 @@ const docs: ComponentDocs = {
     {
       label: 'Block Text Link with icon',
       docsSite: false,
-      render: () => (
+      Example: () => (
         <TextLink href="">
           <Text>
             Text Link <ChevronIcon direction="right" />
@@ -179,7 +179,7 @@ const docs: ComponentDocs = {
     {
       label: 'Text Link inside Actions with icon',
       docsSite: false,
-      render: () => (
+      Example: () => (
         <Actions>
           <Button>Button</Button>
           <TextLink href="">
