@@ -1,6 +1,6 @@
-export { BookmarkIcon } from './BookmarkIcon/BookmarkIcon';
-export { ChevronIcon } from './ChevronIcon/ChevronIcon';
-export { ErrorIcon } from './ErrorIcon/ErrorIcon';
-export { InfoIcon } from './InfoIcon/InfoIcon';
-export { TickCircleIcon } from './TickCircleIcon/TickCircleIcon';
-export { TickIcon } from './TickIcon/TickIcon';
+export { IconBookmark } from './IconBookmark/IconBookmark';
+export { IconChevron } from './IconChevron/IconChevron';
+export { IconCritical } from './IconCritical/IconCritical';
+export { IconInfo } from './IconInfo/IconInfo';
+export { IconPositive } from './IconPositive/IconPositive';
+export { IconTick } from './IconTick/IconTick';

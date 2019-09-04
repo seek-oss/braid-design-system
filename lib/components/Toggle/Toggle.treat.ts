@@ -93,16 +93,16 @@ export const slider = style(theme => {
 });
 
 export const icon = style({
-  transform: 'scale(.5)',
+  transform: 'scale(.75)',
   selectors: {
     [`${realField}:active + ${slideContainer} &`]: {
-      transform: 'scale(.5) rotate(-25deg)',
+      transform: 'scale(.75) rotate(-25deg)',
     },
     [`${realField}:checked + ${slideContainer} &`]: {
       opacity: 1,
     },
     [`${realField}:active:checked + ${slideContainer} &`]: {
-      transform: 'scale(.5) rotate(6deg)',
+      transform: 'scale(.75) rotate(6deg)',
     },
   },
 });

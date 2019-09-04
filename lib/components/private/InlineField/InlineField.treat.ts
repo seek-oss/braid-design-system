@@ -82,10 +82,10 @@ export const hoverOverlay = style({
 });
 
 export const indicator = style({
-  transform: 'scale(0.6)',
+  transform: 'scale(0.85)',
   selectors: {
     [`${realField}:active + * > ${fakeField} > * > &`]: {
-      transform: 'scale(0.5)',
+      transform: 'scale(0.75)',
     },
     [`${hoverOverlay} > &`]: {
       opacity: 0.2,

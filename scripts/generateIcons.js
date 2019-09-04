@@ -95,14 +95,14 @@ const iconComponentsDir = path.join(baseDir, 'lib/components/icons');
         // Validate color attributes
         ['stroke', 'fill'].forEach(attr => {
           const color = $el.attr(attr);
-          const validColors = ['currentColor', 'black', '#000', '#000000'];
+          const validColors = ['currentColor', 'none', '#000'];
           if (color && !validColors.includes(color)) {
             throw new Error(`${svgName}: Invalid ${attr} color: ${$.html(el)}`);
           }
         });
       });
 
-      const iconName = `${pascalCase(svgName)}Icon`;
+      const iconName = `Icon${pascalCase(svgName)}`;
       const svgComponentName = `${iconName}${
         variantName ? pascalCase(variantName) : ''
       }Svg`;

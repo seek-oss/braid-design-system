@@ -5,7 +5,7 @@ import { Text } from '../Text/Text';
 import { Heading } from '../Heading/Heading';
 import { Actions } from '../Actions/Actions';
 import { Button } from '../Button/Button';
-import { ChevronIcon } from '../icons';
+import { IconChevron } from '../icons';
 
 const docs: ComponentDocs = {
   migrationGuide: true,
@@ -159,7 +159,7 @@ const docs: ComponentDocs = {
           The last word of a sentence is a{' '}
           <TextLink href="">
             text link
-            <ChevronIcon direction="right" />
+            <IconChevron direction="right" />
           </TextLink>
           .
         </Text>
@@ -171,7 +171,7 @@ const docs: ComponentDocs = {
       Example: () => (
         <TextLink href="">
           <Text>
-            Text Link <ChevronIcon direction="right" />
+            Text Link <IconChevron direction="right" />
           </Text>
         </TextLink>
       ),
@@ -183,7 +183,7 @@ const docs: ComponentDocs = {
         <Actions>
           <Button>Button</Button>
           <TextLink href="">
-            Text Link <ChevronIcon direction="right" />
+            Text Link <IconChevron direction="right" />
           </TextLink>
         </Actions>
       ),

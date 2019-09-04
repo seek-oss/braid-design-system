@@ -10,7 +10,7 @@ import classnames from 'classnames';
 import { Omit } from 'utility-types';
 import { Box } from '../Box/Box';
 import { Field, FieldProps } from '../private/Field/Field';
-import { ChevronIcon } from '../icons/ChevronIcon/ChevronIcon';
+import { IconChevron } from '../icons';
 import { useTextTone } from '../../hooks/typography';
 import * as styleRefs from './Dropdown.treat';
 
@@ -92,7 +92,7 @@ const NamedDropdown = forwardRef<HTMLSelectElement, DropdownProps>(
               display="flex"
               className={styles.chevron}
             >
-              <ChevronIcon size="fill" />
+              <IconChevron size="fill" />
             </Box>
           </Fragment>
         )}

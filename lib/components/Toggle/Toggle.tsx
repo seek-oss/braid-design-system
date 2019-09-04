@@ -4,7 +4,7 @@ import classnames from 'classnames';
 import { Box } from '../Box/Box';
 import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
 import { Text } from '../Text/Text';
-import { TickIcon } from '../icons/TickIcon/TickIcon';
+import { IconTick } from '../icons';
 import { useTouchableSpace } from '../../hooks/typography';
 import * as styleRefs from './Toggle.treat';
 
@@ -73,7 +73,7 @@ export const Toggle = ({
           className={classnames(styles.slider, styles.circle)}
         >
           <FieldOverlay className={styles.icon}>
-            <TickIcon tone="formAccent" size="fill" />
+            <IconTick tone="formAccent" size="fill" />
           </FieldOverlay>
           <FieldOverlay
             variant="focus"

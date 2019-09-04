@@ -35,26 +35,6 @@ exports[`Badge 1`] = `
 }
 `;
 
-exports[`BookmarkIcon 1`] = `
-{
-  active?: boolean
-  size?: 
-    | "fill"
-    | "large"
-    | "small"
-    | "standard"
-    | "xsmall"
-  tone?: 
-    | "critical"
-    | "formAccent"
-    | "info"
-    | "link"
-    | "neutral"
-    | "positive"
-    | "secondary"
-}
-`;
-
 exports[`Box 1`] = `
 {
   about?: string
@@ -990,30 +970,6 @@ exports[`Checkbox 1`] = `
 }
 `;
 
-exports[`ChevronIcon 1`] = `
-{
-  direction?: 
-    | "down"
-    | "left"
-    | "right"
-    | "up"
-  size?: 
-    | "fill"
-    | "large"
-    | "small"
-    | "standard"
-    | "xsmall"
-  tone?: 
-    | "critical"
-    | "formAccent"
-    | "info"
-    | "link"
-    | "neutral"
-    | "positive"
-    | "secondary"
-}
-`;
-
 exports[`Column 1`] = `
 {
   children: ReactNode
@@ -1088,25 +1044,6 @@ exports[`Dropdown 1`] = `
     | number
     | string
     | string[]
-}
-`;
-
-exports[`ErrorIcon 1`] = `
-{
-  size?: 
-    | "fill"
-    | "large"
-    | "small"
-    | "standard"
-    | "xsmall"
-  tone?: 
-    | "critical"
-    | "formAccent"
-    | "info"
-    | "link"
-    | "neutral"
-    | "positive"
-    | "secondary"
 }
 `;
 
@@ -1339,7 +1276,108 @@ exports[`Hidden 1`] = `
 }
 `;
 
-exports[`InfoIcon 1`] = `
+exports[`IconBookmark 1`] = `
+{
+  active?: boolean
+  size?: 
+    | "fill"
+    | "large"
+    | "small"
+    | "standard"
+    | "xsmall"
+  tone?: 
+    | "critical"
+    | "formAccent"
+    | "info"
+    | "link"
+    | "neutral"
+    | "positive"
+    | "secondary"
+}
+`;
+
+exports[`IconChevron 1`] = `
+{
+  direction?: 
+    | "down"
+    | "left"
+    | "right"
+    | "up"
+  size?: 
+    | "fill"
+    | "large"
+    | "small"
+    | "standard"
+    | "xsmall"
+  tone?: 
+    | "critical"
+    | "formAccent"
+    | "info"
+    | "link"
+    | "neutral"
+    | "positive"
+    | "secondary"
+}
+`;
+
+exports[`IconCritical 1`] = `
+{
+  size?: 
+    | "fill"
+    | "large"
+    | "small"
+    | "standard"
+    | "xsmall"
+  tone?: 
+    | "critical"
+    | "formAccent"
+    | "info"
+    | "link"
+    | "neutral"
+    | "positive"
+    | "secondary"
+}
+`;
+
+exports[`IconInfo 1`] = `
+{
+  size?: 
+    | "fill"
+    | "large"
+    | "small"
+    | "standard"
+    | "xsmall"
+  tone?: 
+    | "critical"
+    | "formAccent"
+    | "info"
+    | "link"
+    | "neutral"
+    | "positive"
+    | "secondary"
+}
+`;
+
+exports[`IconPositive 1`] = `
+{
+  size?: 
+    | "fill"
+    | "large"
+    | "small"
+    | "standard"
+    | "xsmall"
+  tone?: 
+    | "critical"
+    | "formAccent"
+    | "info"
+    | "link"
+    | "neutral"
+    | "positive"
+    | "secondary"
+}
+`;
+
+exports[`IconTick 1`] = `
 {
   size?: 
     | "fill"
@@ -2209,44 +2247,6 @@ exports[`Textarea 1`] = `
 exports[`ThemeNameConsumer 1`] = `
 {
   children: (name: string) => ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>
-}
-`;
-
-exports[`TickCircleIcon 1`] = `
-{
-  size?: 
-    | "fill"
-    | "large"
-    | "small"
-    | "standard"
-    | "xsmall"
-  tone?: 
-    | "critical"
-    | "formAccent"
-    | "info"
-    | "link"
-    | "neutral"
-    | "positive"
-    | "secondary"
-}
-`;
-
-exports[`TickIcon 1`] = `
-{
-  size?: 
-    | "fill"
-    | "large"
-    | "small"
-    | "standard"
-    | "xsmall"
-  tone?: 
-    | "critical"
-    | "formAccent"
-    | "info"
-    | "link"
-    | "neutral"
-    | "positive"
-    | "secondary"
 }
 `;
 

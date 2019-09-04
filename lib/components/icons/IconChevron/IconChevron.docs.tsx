@@ -1,32 +1,32 @@
 import React from 'react';
 import { ComponentDocs } from '../../../../site/src/types';
 import examplesForIcon from '../../private/examplesForIcon';
-import { ChevronIcon } from './ChevronIcon';
+import { IconChevron } from './IconChevron';
 
 const docs: ComponentDocs = {
   migrationGuide: true,
   examples: [
     {
       label: 'Default',
-      Example: () => <ChevronIcon />,
+      Example: () => <IconChevron />,
     },
     {
       label: 'Left',
-      Example: () => <ChevronIcon direction="left" />,
+      Example: () => <IconChevron direction="left" />,
     },
     {
       label: 'Right',
-      Example: () => <ChevronIcon direction="right" />,
+      Example: () => <IconChevron direction="right" />,
     },
     {
       label: 'Up',
-      Example: () => <ChevronIcon direction="up" />,
+      Example: () => <IconChevron direction="up" />,
     },
     {
       label: 'Down',
-      Example: () => <ChevronIcon direction="down" />,
+      Example: () => <IconChevron direction="down" />,
     },
-    ...examplesForIcon(ChevronIcon),
+    ...examplesForIcon(IconChevron),
   ],
 };
 

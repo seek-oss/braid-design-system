@@ -9,7 +9,7 @@ import {
 } from '../../FieldMessage/FieldMessage';
 import { FieldOverlay } from '../FieldOverlay/FieldOverlay';
 import { Text } from '../../Text/Text';
-import { TickIcon } from '../../icons/TickIcon/TickIcon';
+import { IconTick } from '../../icons';
 import { useTouchableSpace } from '../../../hooks/typography';
 import buildDataAttributes, { DataAttributeMap } from '../buildDataAttributes';
 import * as styleRefs from './InlineField.treat';
@@ -52,7 +52,7 @@ const Indicator = ({
 
   return isCheckbox ? (
     <Box transition="fast" className={styles.indicator}>
-      <TickIcon
+      <IconTick
         size="fill"
         tone={disabled ? 'secondary' : hover ? 'formAccent' : undefined}
       />
