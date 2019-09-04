@@ -87,8 +87,8 @@ export default ({
               rows: 6,
             },
             desktop: {
-              size: 20,
-              rows: 7,
+              size: 18,
+              rows: 6,
             },
           },
         },
