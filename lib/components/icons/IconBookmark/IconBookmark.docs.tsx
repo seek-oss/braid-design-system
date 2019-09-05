@@ -1,20 +1,20 @@
 import React from 'react';
 import { ComponentDocs } from '../../../../site/src/types';
 import examplesForIcon from '../../private/examplesForIcon';
-import { BookmarkIcon } from './BookmarkIcon';
+import { IconBookmark } from './IconBookmark';
 
 const docs: ComponentDocs = {
   migrationGuide: true,
   examples: [
     {
       label: 'Default',
-      Example: () => <BookmarkIcon />,
+      Example: () => <IconBookmark />,
     },
     {
       label: 'Active',
-      Example: () => <BookmarkIcon active={true} />,
+      Example: () => <IconBookmark active={true} />,
     },
-    ...examplesForIcon(BookmarkIcon),
+    ...examplesForIcon(IconBookmark),
   ],
 };
 

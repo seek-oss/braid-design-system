@@ -3,8 +3,7 @@ import { useStyles } from 'sku/react-treat';
 import classnames from 'classnames';
 import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';
-import { ErrorIcon } from '../icons/ErrorIcon/ErrorIcon';
-import { TickCircleIcon } from '../icons/TickCircleIcon/TickCircleIcon';
+import { IconCritical, IconPositive } from '../icons';
 import { useThemeName } from '../ThemeNameConsumer/ThemeNameContext';
 import * as styleRefs from './FieldMessage.treat';
 
@@ -21,8 +20,8 @@ export interface FieldMessageProps {
 }
 
 const Icon: Record<'critical' | 'positive', ReactNode> = {
-  critical: <ErrorIcon tone="critical" />,
-  positive: <TickCircleIcon tone="positive" />,
+  critical: <IconCritical tone="critical" />,
+  positive: <IconPositive tone="positive" />,
 };
 export const FieldMessage = ({
   id,

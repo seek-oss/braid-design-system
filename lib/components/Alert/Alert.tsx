@@ -2,9 +2,7 @@ import React, { ReactNode } from 'react';
 import { useStyles } from 'sku/react-treat';
 import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';
-import { InfoIcon } from '../icons/InfoIcon/InfoIcon';
-import { ErrorIcon } from '../icons/ErrorIcon/ErrorIcon';
-import { TickCircleIcon } from '../icons/TickCircleIcon/TickCircleIcon';
+import { IconInfo, IconCritical, IconPositive } from '../icons';
 import * as styleRefs from './Alert.treat';
 
 type Tone = 'info' | 'critical' | 'positive';
@@ -36,9 +34,9 @@ const backgroundForTone = (tone: Tone, weight: AlertWeight) => {
 };
 
 const icons = {
-  info: InfoIcon,
-  critical: ErrorIcon,
-  positive: TickCircleIcon,
+  info: IconInfo,
+  critical: IconCritical,
+  positive: IconPositive,
 };
 
 export const Alert = ({

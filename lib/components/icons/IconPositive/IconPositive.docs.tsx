@@ -1,10 +1,10 @@
 import { ComponentDocs } from '../../../../site/src/types';
 import examplesForIcon from '../../private/examplesForIcon';
-import { TickCircleIcon } from './TickCircleIcon';
+import { IconPositive } from './IconPositive';
 
 const docs: ComponentDocs = {
   migrationGuide: true,
-  examples: examplesForIcon(TickCircleIcon),
+  examples: examplesForIcon(IconPositive),
 };
 
 export default docs;

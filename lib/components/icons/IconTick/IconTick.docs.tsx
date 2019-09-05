@@ -1,10 +1,10 @@
 import { ComponentDocs } from '../../../../site/src/types';
 import examplesForIcon from '../../private/examplesForIcon';
-import { ErrorIcon } from './ErrorIcon';
+import { IconTick } from './IconTick';
 
 const docs: ComponentDocs = {
   migrationGuide: true,
-  examples: examplesForIcon(ErrorIcon),
+  examples: examplesForIcon(IconTick),
 };
 
 export default docs;

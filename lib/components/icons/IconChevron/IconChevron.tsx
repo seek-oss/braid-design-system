@@ -3,23 +3,23 @@ import { useStyles } from 'sku/react-treat';
 import classnames from 'classnames';
 import { Box } from '../../Box/Box';
 import useIcon, { UseIconProps } from '../../../hooks/useIcon';
-import { ChevronIconSvg } from './ChevronIconSvg';
-import * as styleRefs from './ChevronIcon.treat';
+import { IconChevronSvg } from './IconChevronSvg';
+import * as styleRefs from './IconChevron.treat';
 
-export interface ChevronIconProps extends UseIconProps {
+export interface IconChevronProps extends UseIconProps {
   direction?: 'up' | 'down' | 'left' | 'right';
 }
 
-export const ChevronIcon = ({
+export const IconChevron = ({
   direction = 'down',
   ...props
-}: ChevronIconProps) => {
+}: IconChevronProps) => {
   const styles = useStyles(styleRefs);
   const { className, ...iconProps } = useIcon(props);
 
   return (
     <Box
-      component={ChevronIconSvg}
+      component={IconChevronSvg}
       className={classnames(styles.root, className, {
         [styles.up]: direction === 'up',
         [styles.left]: direction === 'left',

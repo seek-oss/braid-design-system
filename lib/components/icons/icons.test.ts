@@ -2,7 +2,7 @@ import globby from 'globby';
 import path from 'path';
 import fs from 'fs';
 
-const svgComponentPaths = globby.sync('*Icon/*Svg.tsx', {
+const svgComponentPaths = globby.sync('Icon*/*Svg.tsx', {
   cwd: __dirname,
   absolute: true,
 });
