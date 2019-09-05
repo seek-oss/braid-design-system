@@ -24,7 +24,7 @@ export default ({
   const grey1 = '#333';
   const grey2 = '#666';
   const grey4 = '#ccc';
-  const candidate = '#0c4b85'; // SEEK Asia name for this color
+  const candidate = '#282acc'; // SEEK Asia name for this color
   const info = candidate;
   const positive = '#498307';
   const critical = alert;

@@ -1,7 +1,7 @@
 import makeTokens from '../seekAsia/makeTokens';
 
 const teal = '#0e7e8b';
-const blue = '#0c4b85';
+const blue = '#282acc';
 
 export default makeTokens({
   name: 'jobsDb',
