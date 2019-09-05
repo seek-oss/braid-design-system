@@ -20,6 +20,35 @@ exports[`Alert 1`] = `
 }
 `;
 
+exports[`Autosuggest 1`] = `
+{
+  aria-describedby?: string
+  automaticSelection?: boolean
+  data?: Record<string, ReactText>
+  description?: ReactNode
+  disabled?: boolean
+  id: string
+  label?: ReactNode
+  message?: ReactNode
+  name?: string
+  onBlur?: () => void
+  onChange: (value: AutosuggestValue<Value>) => void
+  onFocus?: () => void
+  placeholder?: string
+  reserveMessageSpace?: boolean
+  secondaryLabel?: ReactNode
+  secondaryMessage?: ReactNode
+  showMobileBackdrop?: boolean
+  suggestions: (AutosuggestValue<Value> | GroupedSuggestion<Value>)[]
+  tertiaryLabel?: ReactNode
+  tone?: 
+    | "critical"
+    | "neutral"
+    | "positive"
+  value: AutosuggestValue<Value>
+}
+`;
+
 exports[`Badge 1`] = `
 {
   children: string
@@ -235,6 +264,7 @@ exports[`Box 1`] = `
     | "borderFormAccentLarge"
     | "borderStandard"
     | "outlineFocus"
+    | "standard"
   capture?: 
     | false
     | string
@@ -1053,6 +1083,7 @@ exports[`FieldLabel 1`] = `
   htmlFor: 
     | false
     | string
+  id?: string
   label?: ReactNode
   secondaryLabel?: ReactNode
   tertiaryLabel?: ReactNode

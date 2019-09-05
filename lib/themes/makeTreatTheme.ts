@@ -86,6 +86,9 @@ export interface TreatTokens {
       formAccent: string;
     };
   };
+  shadows: {
+    standard: string;
+  };
   color: {
     foreground: {
       link: string;

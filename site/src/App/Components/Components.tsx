@@ -16,16 +16,16 @@ export const Components = withRouter(({ location }: RouteComponentProps) => {
   );
 
   const isComponentsHome = location.pathname === '/components';
-  const showMenuButton = /(?<=\/components\/).*/.test(location.pathname);
+  const showMenuButton = /(\/components\/).*/.test(location.pathname);
 
   return (
     <ConfigConsumer>
       {({ playroomUrl, sourceUrlPrefix }) => (
-        <div>
+        <div className={isMenuOpen ? styles.isOpen : undefined}>
           <Box
             paddingY="large"
             paddingX="gutter"
-            position="fixed"
+            position="absolute"
             display="flex"
             width="full"
             className={styles.header}
@@ -48,12 +48,7 @@ export const Components = withRouter(({ location }: RouteComponentProps) => {
             className={styles.container}
           >
             <Hidden print>
-              <Box
-                position="fixed"
-                className={`${styles.menu} ${
-                  isMenuOpen ? styles.menuOpen : ''
-                }`}
-              >
+              <Box position="fixed" className={styles.menu}>
                 <Box paddingBottom="xlarge" paddingX="gutter">
                   <Box paddingBottom="small">
                     <Text size="large" weight="strong">

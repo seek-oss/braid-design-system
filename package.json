@@ -7,16 +7,15 @@
     "lib/themes/**/*"
   ],
   "scripts": {
-    "pretest": "sku configure",
-    "test": "yarn check --integrity && yarn lint && yarn build && yarn unit",
-    "unit": "sku test",
+    "ci": "yarn check --integrity && yarn lint && yarn build && yarn test",
+    "test": "sku test",
     "start": "concurrently -n \"docs-site,playroom\" -c \"magenta,greenBright\" \"sku start\" \"OPEN_TAB=false sku playroom\"",
     "lint": "sku lint && yarn lint-absolute-imports",
     "lint-absolute-imports": "! grep -R \" from 'lib/\" lib/*",
     "format": "sku format",
     "generate-component-docs": "ts-node generate-component-docs",
     "generate-icons": "node scripts/generateIcons.js",
-    "setup": "concurrently -n \"component-docs,icons\" -c \"blueBright,yellowBright\" \"yarn generate-component-docs\" \"yarn generate-icons\"",
+    "setup": "sku configure && concurrently -n \"component-docs,icons\" -c \"blueBright,yellowBright\" \"yarn generate-component-docs\" \"yarn generate-icons\"",
     "prelint": "yarn setup",
     "prestart": "yarn setup",
     "prebuild": "yarn setup",
@@ -56,11 +55,13 @@
     "@types/classnames": "^2.2.8",
     "@types/lodash": "^4.14.132",
     "@types/react": "^16.8.8",
+    "autosuggest-highlight": "^3.1.1",
     "basekick": "^3.1.1",
     "classnames": "^2.2.6",
     "csstype": "^2.6.4",
     "gradient-parser": "^0.1.5",
     "is-mobile": "^2.0.1",
+    "isolated-scroll": "^0.1.0",
     "lodash": "^4.17.11",
     "polished": "^3.0.3",
     "utility-types": "^3.7.0"
@@ -75,6 +76,10 @@
     "@svgr/core": "^4.3.2",
     "@svgr/plugin-jsx": "^4.3.2",
     "@svgr/plugin-prettier": "^4.3.2",
+    "@testing-library/jest-dom": "^4.0.0",
+    "@testing-library/react": "^8.0.7",
+    "@testing-library/user-event": "^4.2.4",
+    "@types/autosuggest-highlight": "^3.1.0",
     "@types/base64-url": "^2.2.0",
     "@types/dedent": "^0.7.0",
     "@types/react-dom": "^16.8.2",
@@ -108,7 +113,7 @@
     "travis-deploy-once": "^5.0.9",
     "ts-node": "^8.2.0"
   },
-  "toolchain": {
+  "volta": {
     "node": "10.15.1",
     "yarn": "1.13.0"
   }

@@ -163,6 +163,9 @@ const tokens: TreatTokens = {
       formAccent,
     },
   },
+  shadows: {
+    standard: '0 9px 30px rgba(0,0,0,.4)',
+  },
   color: {
     foreground: {
       link,
@@ -182,7 +185,7 @@ const tokens: TreatTokens = {
       brandAccent,
       formAccent,
       formAccentDisabled: '#ccc',
-      selection: '#f5f8ff',
+      selection: '#eee',
       card: '#fff',
       critical,
       info,

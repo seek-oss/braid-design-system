@@ -3,6 +3,7 @@ export { ThemeNameConsumer } from './ThemeNameConsumer/ThemeNameConsumer';
 export { useThemeName } from './ThemeNameConsumer/ThemeNameContext';
 export { Actions } from './Actions/Actions';
 export { Alert } from './Alert/Alert';
+export { Autosuggest } from './Autosuggest/Autosuggest';
 export { Badge } from './Badge/Badge';
 export { Box } from './Box/Box';
 export { Bullet } from './Bullet/Bullet';

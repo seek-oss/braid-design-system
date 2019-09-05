@@ -1,8 +1,9 @@
 import React, {
+  forwardRef,
+  Fragment,
+  useState,
   ReactNode,
   AllHTMLAttributes,
-  forwardRef,
-  useState,
   ChangeEvent,
 } from 'react';
 import { useStyles } from 'sku/react-treat';
@@ -14,7 +15,8 @@ import { Field, FieldProps } from '../private/Field/Field';
 import * as styleRefs from './Textarea.treat';
 
 type NativeTextareaProps = AllHTMLAttributes<HTMLTextAreaElement>;
-interface TextareaProps extends Omit<FieldProps, 'secondaryMessage'> {
+interface TextareaProps
+  extends Omit<FieldProps, 'labelId' | 'secondaryMessage'> {
   value: NonNullable<NativeTextareaProps['value']>;
   onChange: NonNullable<NativeTextareaProps['onChange']>;
   onBlur?: NativeTextareaProps['onBlur'];
@@ -100,32 +102,36 @@ const NamedTextarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
       <Field
         {...restProps}
         ref={ref}
+        labelId={undefined}
         secondaryMessage={renderCount({
           characterLimit,
           value,
         })}
       >
-        {({ className, ...fieldProps }, fieldRef) => (
-          <Box
-            component="textarea"
-            rows={rows}
-            value={value}
-            onChange={(e: ChangeEvent<HTMLTextAreaElement>) => {
-              if (grow) {
-                setRows(calculateLines(e.target, lines, lineLimit));
-              }
-              if (typeof onChange === 'function') {
-                onChange(e);
-              }
-            }}
-            onBlur={onBlur}
-            onFocus={onFocus}
-            onPaste={onPaste}
-            placeholder={placeholder}
-            className={classnames(styles.field, className)}
-            {...fieldProps}
-            ref={fieldRef}
-          />
+        {(overlays, { className, ...fieldProps }, fieldRef) => (
+          <Fragment>
+            <Box
+              component="textarea"
+              rows={rows}
+              value={value}
+              onChange={(e: ChangeEvent<HTMLTextAreaElement>) => {
+                if (grow) {
+                  setRows(calculateLines(e.target, lines, lineLimit));
+                }
+                if (typeof onChange === 'function') {
+                  onChange(e);
+                }
+              }}
+              onBlur={onBlur}
+              onFocus={onFocus}
+              onPaste={onPaste}
+              placeholder={placeholder}
+              className={classnames(styles.field, className)}
+              {...fieldProps}
+              ref={fieldRef}
+            />
+            {overlays}
+          </Fragment>
         )}
       </Field>
     );
