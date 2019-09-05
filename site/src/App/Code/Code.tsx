@@ -21,7 +21,7 @@ const CodeButton = ({
   return (
     <Box
       component={component}
-      background="secondaryLight"
+      background="neutralLight"
       borderRadius="standard"
       paddingY="xxsmall"
       paddingX="xsmall"
@@ -79,7 +79,7 @@ export default ({ children }: CodeProps) => {
         display="flex"
         paddingY="xxsmall"
         paddingRight="xxsmall"
-        background="secondaryLight"
+        background="neutralLight"
         borderRadius="standard"
         className={styles.toolbar}
       >

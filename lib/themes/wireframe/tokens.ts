@@ -10,6 +10,7 @@ const black = '#2b2b2b';
 const white = '#fff';
 const link = '#4c77bb';
 const secondary = '#777';
+const neutral = '#777';
 
 const tokens: TreatTokens = {
   name: 'wireframe',
@@ -185,7 +186,7 @@ const tokens: TreatTokens = {
       critical,
       info,
       positive,
-      secondary,
+      neutral,
     },
   },
 };
