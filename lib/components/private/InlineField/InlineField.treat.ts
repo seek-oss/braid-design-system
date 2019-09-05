@@ -1,7 +1,7 @@
 import { style } from 'sku/treat';
 import getSize from './getSize';
 
-export const realField = style({
+const realFieldBase = style({
   opacity: 0,
   zIndex: 1,
   selectors: {
@@ -11,16 +11,18 @@ export const realField = style({
   },
 });
 
-export const realFieldSize = style(({ spacing, utils }) => ({
+const realFieldSize = style(({ spacing, utils }) => ({
   height: utils.rows(spacing.touchableRows),
   width: utils.rows(spacing.touchableRows),
 }));
 
-export const fakeField = style({
+export const realField = [realFieldSize, realFieldBase];
+
+const fakeFieldBase = style({
   flexShrink: 0,
 });
 
-export const fakeFieldSize = style(theme => {
+const fakeFieldSize = style(theme => {
   const size = getSize(theme);
   const { spacing, utils } = theme;
 
@@ -31,10 +33,12 @@ export const fakeFieldSize = style(theme => {
   };
 });
 
+export const fakeField = [fakeFieldSize, fakeFieldBase];
+
 export const label = style({
   userSelect: 'none',
   selectors: {
-    [`${realField}:not(:disabled) + * > ${fakeField} + &`]: {
+    [`${realFieldBase}:not(:disabled) + * > ${fakeFieldBase} + &`]: {
       cursor: 'pointer',
     },
   },
@@ -46,7 +50,7 @@ export const children = style(theme => {
   return {
     marginLeft: size,
     selectors: {
-      [`${realField}:checked ~ &`]: {
+      [`${realFieldBase}:checked ~ &`]: {
         display: 'block',
       },
     },
@@ -59,7 +63,7 @@ export const circle = style({
 
 export const selected = style({
   selectors: {
-    [`${realField}:checked + * > ${fakeField} > &`]: {
+    [`${realFieldBase}:checked + * > ${fakeFieldBase} > &`]: {
       opacity: 1,
     },
   },
@@ -67,7 +71,7 @@ export const selected = style({
 
 export const focusOverlay = style({
   selectors: {
-    [`${realField}:focus + * > ${fakeField} > &`]: {
+    [`${realFieldBase}:focus + * > ${fakeFieldBase} > &`]: {
       opacity: 1,
     },
   },
@@ -75,20 +79,38 @@ export const focusOverlay = style({
 
 export const hoverOverlay = style({
   selectors: {
-    [`${realField}:hover:not(:checked):not(:disabled) + * > ${fakeField} > &`]: {
+    [`${realFieldBase}:hover:not(:checked):not(:disabled) + * > ${fakeFieldBase} > &`]: {
       opacity: 1,
     },
   },
 });
 
 export const indicator = style({
-  transform: 'scale(0.85)',
   selectors: {
-    [`${realField}:active + * > ${fakeField} > * > &`]: {
-      transform: 'scale(0.75)',
-    },
     [`${hoverOverlay} > &`]: {
       opacity: 0.2,
     },
   },
 });
+
+const checkboxScale = style({
+  transform: 'scale(0.85)',
+  selectors: {
+    [`${realFieldBase}:active + * > ${fakeFieldBase} > * > &`]: {
+      transform: 'scale(0.75)',
+    },
+  },
+});
+
+export const checkboxIndicator = [indicator, checkboxScale];
+
+const radioScale = style({
+  transform: 'scale(0.6)',
+  selectors: {
+    [`${realFieldBase}:active + * > ${fakeFieldBase} > * > &`]: {
+      transform: 'scale(0.5)',
+    },
+  },
+});
+
+export const radioIndicator = [indicator, circle, radioScale];

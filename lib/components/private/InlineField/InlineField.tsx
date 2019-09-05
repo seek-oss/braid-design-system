@@ -51,7 +51,7 @@ const Indicator = ({
   const isCheckbox = type === 'checkbox';
 
   return isCheckbox ? (
-    <Box transition="fast" className={styles.indicator}>
+    <Box transition="fast" className={classnames(styles.checkboxIndicator)}>
       <IconTick
         size="fill"
         tone={disabled ? 'secondary' : hover ? 'formAccent' : undefined}
@@ -60,13 +60,10 @@ const Indicator = ({
   ) : (
     <Box
       background={disabled ? 'formAccentDisabled' : 'formAccent'}
-      borderRadius={isCheckbox ? 'standard' : undefined}
       transition="fast"
       width="full"
       height="full"
-      className={classnames(styles.indicator, {
-        [styles.circle]: !isCheckbox,
-      })}
+      className={classnames(styles.radioIndicator)}
     />
   );
 };
@@ -115,7 +112,7 @@ export const InlineField = forwardRef<HTMLElement, InternalInlineFieldProps>(
           value={value}
           checked={checked}
           position="absolute"
-          className={classnames(styles.realField, styles.realFieldSize)}
+          className={classnames(styles.realField)}
           aria-describedby={messageId}
           disabled={disabled}
           ref={ref}
@@ -124,11 +121,7 @@ export const InlineField = forwardRef<HTMLElement, InternalInlineFieldProps>(
         <Box display="flex">
           <Box
             position="relative"
-            className={classnames(
-              styles.fakeField,
-              styles.fakeFieldSize,
-              circleIfRadio,
-            )}
+            className={classnames(styles.fakeField, circleIfRadio)}
             background={disabled ? 'inputDisabled' : 'input'}
             borderRadius={fieldBorderRadius}
             boxShadow={
