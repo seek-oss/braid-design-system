@@ -32,6 +32,7 @@ Since Braid is an entirely new design system, we've taken the opportunity to rev
 
 - [`Alert`](../lib/components/Alert/Alert.migration.md)
 - `AsidedLayout` -> [`Columns`](../lib/components/Columns/Columns.migration.md#migrating-from-asidedlayout)
+- [`Autosuggest`](../lib/components/Autosuggest/Autosuggest.migration.md)
 - [`Badge`](../lib/components/Badge/Badge.migration.md)
 - [`Bullet`](../lib/components/Bullet/Bullet.migration.md)
 - [`Button`](../lib/components/Button/Button.migration.md)

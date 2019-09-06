@@ -7,7 +7,6 @@ If you urgently need any of the following, please let us know in the `#braid-sup
 Please note that, while there may be existing implementations of these in other design systems, we are planning to revisit each API.
 
 - Icons
-- [`Autosuggest`](https://seek-oss.github.io/seek-style-guide/autosuggest)
 - [`Loader`](https://seek-oss.github.io/seek-style-guide/loader)
 - [`Pill`](https://seek-oss.github.io/seek-style-guide/pill)
 - [`Rating`](https://seek-oss.github.io/seek-style-guide/rating)
