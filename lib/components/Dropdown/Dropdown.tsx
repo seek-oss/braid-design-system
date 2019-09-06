@@ -18,7 +18,8 @@ type ValidDropdownChildren = AllHTMLAttributes<
   HTMLOptionElement | HTMLOptGroupElement
 >;
 type SelectProps = AllHTMLAttributes<HTMLSelectElement>;
-interface DropdownProps extends Omit<FieldProps, 'secondaryMessage'> {
+interface DropdownProps
+  extends Omit<FieldProps, 'labelId' | 'secondaryMessage'> {
   children: ValidDropdownChildren[] | ValidDropdownChildren;
   value: NonNullable<SelectProps['value']>;
   onChange: NonNullable<SelectProps['onChange']>;
@@ -61,8 +62,13 @@ const NamedDropdown = forwardRef<HTMLSelectElement, DropdownProps>(
     });
 
     return (
-      <Field {...restProps} ref={ref} secondaryMessage={null}>
-        {({ className, paddingX, ...fieldProps }, fieldRef) => (
+      <Field
+        {...restProps}
+        ref={ref}
+        labelId={undefined}
+        secondaryMessage={null}
+      >
+        {(overlays, { className, paddingX, ...fieldProps }, fieldRef) => (
           <Fragment>
             <Box
               component="select"
@@ -86,6 +92,7 @@ const NamedDropdown = forwardRef<HTMLSelectElement, DropdownProps>(
               </option>
               <Fragment>{children}</Fragment>
             </Box>
+            {overlays}
             <Box
               paddingX={paddingX}
               position="absolute"

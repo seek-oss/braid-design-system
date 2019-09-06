@@ -1,4 +1,4 @@
-import React, { AllHTMLAttributes, forwardRef } from 'react';
+import React, { forwardRef, Fragment, AllHTMLAttributes } from 'react';
 import { Omit } from 'utility-types';
 import { Box } from '../Box/Box';
 import { Field, FieldProps } from '../private/Field/Field';
@@ -14,7 +14,8 @@ const validTypes = {
 };
 
 type InputProps = AllHTMLAttributes<HTMLInputElement>;
-interface TextFieldProps extends Omit<FieldProps, 'secondaryMessage'> {
+interface TextFieldProps
+  extends Omit<FieldProps, 'labelId' | 'secondaryMessage'> {
   value: NonNullable<InputProps['value']>;
   type?: keyof typeof validTypes;
   onChange: NonNullable<InputProps['onChange']>;
@@ -36,19 +37,22 @@ const NamedTextField = forwardRef<HTMLInputElement, TextFieldProps>(
     },
     ref,
   ) => (
-    <Field {...restProps} ref={ref} secondaryMessage={null}>
-      {(fieldProps, fieldRef) => (
-        <Box
-          component="input"
-          type={validTypes[type]}
-          value={value}
-          onChange={onChange}
-          onFocus={onFocus}
-          onBlur={onBlur}
-          placeholder={placeholder}
-          {...fieldProps}
-          ref={fieldRef}
-        />
+    <Field {...restProps} ref={ref} labelId={undefined} secondaryMessage={null}>
+      {(overlays, fieldProps, fieldRef) => (
+        <Fragment>
+          <Box
+            component="input"
+            type={validTypes[type]}
+            value={value}
+            onChange={onChange}
+            onFocus={onFocus}
+            onBlur={onBlur}
+            placeholder={placeholder}
+            {...fieldProps}
+            ref={fieldRef}
+          />
+          {overlays}
+        </Fragment>
       )}
     </Field>
   ),

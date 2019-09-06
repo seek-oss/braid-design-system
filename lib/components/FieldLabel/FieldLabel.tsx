@@ -7,6 +7,7 @@ import { Text } from '../Text/Text';
 import * as styleRefs from './FieldLabel.treat';
 
 export interface FieldLabelProps {
+  id?: string;
   htmlFor: string | false;
   label?: ReactNode;
   secondaryLabel?: ReactNode;
@@ -15,6 +16,7 @@ export interface FieldLabelProps {
 }
 
 export const FieldLabel = ({
+  id,
   htmlFor,
   label,
   secondaryLabel,
@@ -40,7 +42,9 @@ export const FieldLabel = ({
         {htmlFor === false ? (
           labelEl
         ) : (
-          <label htmlFor={htmlFor}>{labelEl}</label>
+          <label id={id} htmlFor={htmlFor}>
+            {labelEl}
+          </label>
         )}
         {tertiaryLabel ? <Text>&nbsp;{tertiaryLabel}</Text> : null}
       </Box>

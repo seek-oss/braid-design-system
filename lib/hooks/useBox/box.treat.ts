@@ -176,7 +176,8 @@ export const background = styleMap(({ color }) => ({
 }));
 
 export const boxShadow = styleMap(
-  ({ border: { width: borderWidth, color } }) => ({
+  ({ border: { width: borderWidth, color }, shadows }) => ({
+    ...mapToStyleProperty(shadows, 'boxShadow'),
     outlineFocus: {
       boxShadow: `0 0 0 ${borderWidth.large}px ${color.focus}`,
     },

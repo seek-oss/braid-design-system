@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FocusEvent, createRef } from 'react';
+import React, { ChangeEvent, FocusEvent, createRef, Fragment } from 'react';
 import classnames from 'classnames';
 import range from 'lodash/range';
 import { isMobile } from 'is-mobile';
@@ -23,7 +23,12 @@ type ChangeHandler = (value: MonthPickerValue) => void;
 interface MonthPickerProps
   extends Omit<
     FieldProps,
-    'aria-describedby' | 'data' | 'name' | 'autoComplete' | 'secondaryMessage'
+    | 'labelId'
+    | 'aria-describedby'
+    | 'data'
+    | 'name'
+    | 'autoComplete'
+    | 'secondaryMessage'
   > {
   value: MonthPickerValue;
   onChange: ChangeHandler;
@@ -171,23 +176,27 @@ export const MonthPicker = ({
       disabled={disabled}
       label={label}
       {...restProps}
+      labelId={undefined}
       data={undefined}
       name={undefined}
       autoComplete={undefined}
       secondaryMessage={null}
     >
-      {({ className, ...fieldProps }, fieldRef) => (
-        <Box
-          component="input"
-          type="month"
-          value={customValueToString(currentValue)}
-          onChange={onChange && makeChangeHandler(onChange, value, 'native')}
-          onBlur={onBlur}
-          onFocus={onFocus}
-          {...fieldProps}
-          className={classnames(className, styles.nativeInput)}
-          ref={fieldRef}
-        />
+      {(overlays, { className, ...fieldProps }, fieldRef) => (
+        <Fragment>
+          <Box
+            component="input"
+            type="month"
+            value={customValueToString(currentValue)}
+            onChange={onChange && makeChangeHandler(onChange, value, 'native')}
+            onBlur={onBlur}
+            onFocus={onFocus}
+            {...fieldProps}
+            className={classnames(className, styles.nativeInput)}
+            ref={fieldRef}
+          />
+          {overlays}
+        </Fragment>
       )}
     </Field>
   );
