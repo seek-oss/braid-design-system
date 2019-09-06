@@ -506,7 +506,7 @@ export function Autosuggest<Value>({
                   position="absolute"
                   background="card"
                   borderRadius="standard"
-                  boxShadow="standard"
+                  boxShadow="large"
                   width="full"
                   marginTop="xxsmall"
                   paddingY="xxsmall"

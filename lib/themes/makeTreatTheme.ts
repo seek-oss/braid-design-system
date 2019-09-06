@@ -87,7 +87,7 @@ export interface TreatTokens {
     };
   };
   shadows: {
-    standard: string;
+    large: string;
   };
   color: {
     foreground: {

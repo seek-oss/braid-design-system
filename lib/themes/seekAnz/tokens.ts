@@ -164,7 +164,7 @@ const tokens: TreatTokens = {
     },
   },
   shadows: {
-    standard: '0 9px 30px rgba(0,0,0,.4)',
+    large: '0 9px 30px rgba(0,0,0,.4)',
   },
   color: {
     foreground: {
