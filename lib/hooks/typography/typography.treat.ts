@@ -213,8 +213,8 @@ export const backgroundContrast: BackgroundContrast = {
   info: {
     default: textColorForBackground('info'),
   },
-  secondary: {
-    default: textColorForBackground('secondary'),
+  neutral: {
+    default: textColorForBackground('neutral'),
   },
 };
 

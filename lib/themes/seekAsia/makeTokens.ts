@@ -33,6 +33,7 @@ export default ({
   const linkHover = blue2;
   const selection = blue5;
   const secondary = grey2;
+  const neutral = grey2;
 
   const tokens: TreatTokens = {
     name,
@@ -212,7 +213,7 @@ export default ({
         critical,
         info,
         positive,
-        secondary,
+        neutral,
       },
     },
   };

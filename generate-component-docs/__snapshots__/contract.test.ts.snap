@@ -56,8 +56,8 @@ exports[`Badge 1`] = `
   tone?: 
     | "critical"
     | "info"
+    | "neutral"
     | "positive"
-    | "secondary"
   weight?: 
     | "regular"
     | "strong"
@@ -252,10 +252,10 @@ exports[`Box 1`] = `
     | "infoLight"
     | "input"
     | "inputDisabled"
+    | "neutral"
+    | "neutralLight"
     | "positive"
     | "positiveLight"
-    | "secondary"
-    | "secondaryLight"
     | "selection"
   borderRadius?: "standard"
   boxShadow?: 

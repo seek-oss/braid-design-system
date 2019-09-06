@@ -172,7 +172,7 @@ export const background = styleMap(({ color }) => ({
   infoLight: { background: getLightVariant(color.background.info) },
   criticalLight: { background: getLightVariant(color.background.critical) },
   positiveLight: { background: getLightVariant(color.background.positive) },
-  secondaryLight: { background: getLightVariant(color.background.secondary) },
+  neutralLight: { background: getLightVariant(color.background.neutral) },
 }));
 
 export const boxShadow = styleMap(

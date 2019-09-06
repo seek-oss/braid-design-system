@@ -113,7 +113,7 @@ export interface TreatTokens {
       card: string;
       critical: string;
       positive: string;
-      secondary: string;
+      neutral: string;
     };
   };
 }
