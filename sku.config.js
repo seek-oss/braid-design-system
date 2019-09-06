@@ -5,14 +5,7 @@ const isGitHubPages =
   !process.env.TRAVIS_PULL_REQUEST_SHA;
 
 module.exports = {
-  srcPaths: [
-    'lib',
-    'site/src',
-    'scripts',
-    '@types',
-    'generate-component-docs',
-    'test',
-  ],
+  srcPaths: ['lib', 'site/src', 'scripts', '@types', 'generate-component-docs'],
   clientEntry: 'site/src/client.tsx',
   renderEntry: 'site/src/render.tsx',
   routes,
@@ -25,5 +18,4 @@ module.exports = {
   playroomThemes: 'lib/themes/index.ts',
   playroomFrameComponent: 'lib/playroom/FrameComponent.tsx',
   playroomTarget: 'site/dist/playroom',
-  setupTests: './test/setup',
 };

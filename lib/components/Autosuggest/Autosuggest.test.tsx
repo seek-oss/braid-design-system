@@ -1,7 +1,7 @@
+import '@testing-library/jest-dom/extend-expect';
 import React, { useState } from 'react';
 import { render, cleanup, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import '@testing-library/jest-dom/extend-expect';
 import { BraidProvider, Autosuggest } from '..';
 import { wireframe } from '../../themes';
 import { AutosuggestProps } from './Autosuggest';
