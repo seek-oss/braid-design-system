@@ -263,8 +263,8 @@ exports[`Box 1`] = `
     | "borderFormAccent"
     | "borderFormAccentLarge"
     | "borderStandard"
+    | "large"
     | "outlineFocus"
-    | "standard"
   capture?: 
     | false
     | string
