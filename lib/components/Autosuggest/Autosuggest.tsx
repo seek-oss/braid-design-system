@@ -81,6 +81,7 @@ function Suggestion({
   matchedSections,
   ...restProps
 }: SuggestionProps) {
+  const styles = useStyles(styleRefs);
   const suggestionParts = parseHighlights(
     value,
     matchedSections.map(({ start, end }) => [start, end]),
@@ -89,7 +90,7 @@ function Suggestion({
   return (
     <Box
       component="li"
-      style={{ cursor: 'pointer' }}
+      className={styles.menuItem}
       onMouseDown={event => {
         // Without this `onClick` will not fire due to the input blur event
         event.preventDefault();
@@ -106,8 +107,7 @@ function Suggestion({
         component="span"
         display="block"
         background={highlighted ? 'selection' : undefined}
-        paddingLeft="small"
-        paddingRight="small"
+        paddingX="small"
         className={useTouchableSpace('standard')}
       >
         <Text baseline={false}>
@@ -132,8 +132,7 @@ function GroupHeading({ children }: GroupHeadingProps) {
 
   return (
     <Box
-      paddingLeft="small"
-      paddingRight="small"
+      paddingX="small"
       borderRadius="standard"
       className={classnames(
         styles.groupHeading,
@@ -510,8 +509,7 @@ export function Autosuggest<Value>({
                   boxShadow="standard"
                   width="full"
                   marginTop="xxsmall"
-                  paddingTop="xxsmall"
-                  paddingBottom="xxsmall"
+                  paddingY="xxsmall"
                   className={classnames(styles.menu)}
                   ref={menuRef}
                   {...a11y.menuProps}

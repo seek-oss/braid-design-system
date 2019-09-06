@@ -112,7 +112,7 @@ const docs: ComponentDocs = {
         const [value, setValue] = useState<Value>({ text: '' });
 
         return (
-          <Box background="brand" paddingLeft="small" paddingRight="small">
+          <Box background="brand" paddingX="small">
             <Autosuggest
               showMobileBackdrop
               label="I like to eat"

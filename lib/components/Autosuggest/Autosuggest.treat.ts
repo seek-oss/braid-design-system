@@ -43,3 +43,7 @@ export const menu = [menuBase, menuHeight];
 export const groupHeading = style({
   textTransform: 'uppercase',
 });
+
+export const menuItem = style({
+  cursor: 'pointer',
+});
