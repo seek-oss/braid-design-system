@@ -1,9 +1,10 @@
 import React, {
   Fragment,
   useRef,
-  KeyboardEvent,
   useReducer,
+  useCallback,
   ChangeEvent,
+  KeyboardEvent,
 } from 'react';
 import classnames from 'classnames';
 import { useStyles } from 'sku/react-treat';
@@ -25,13 +26,16 @@ type SuggestionMatch = Array<{ start: number; end: number }>;
 
 interface AutosuggestValue<Value = any> {
   text: string;
-  highlights?: SuggestionMatch;
   value?: Value;
+}
+
+interface Suggestion<Value = any> extends AutosuggestValue<Value> {
+  highlights?: SuggestionMatch;
 }
 
 interface GroupedSuggestion<Value> {
   label: string;
-  suggestions: Array<AutosuggestValue<Value>>;
+  suggestions: Array<Suggestion<Value>>;
 }
 
 // Action type IDs (allows action type names to be minified)
@@ -66,7 +70,7 @@ interface AutosuggestState<Value> {
   previewValue: AutosuggestValue<Value> | null;
 }
 
-interface SuggestionProps {
+interface SuggestionItemProps {
   highlighted: boolean;
   selected: boolean;
   value: string;
@@ -74,13 +78,13 @@ interface SuggestionProps {
   onClick: () => void;
   onMouseMove: () => void;
 }
-function Suggestion({
+function SuggestionItem({
   highlighted,
   selected,
   value,
   matchedSections,
   ...restProps
-}: SuggestionProps) {
+}: SuggestionItemProps) {
   const styles = useStyles(styleRefs);
   const suggestionParts = parseHighlights(
     value,
@@ -151,12 +155,12 @@ function GroupHeading({ children }: GroupHeadingProps) {
 }
 
 function normaliseSuggestions<Value>(
-  suggestions: Array<GroupedSuggestion<Value> | AutosuggestValue<Value>>,
+  suggestions: Array<GroupedSuggestion<Value> | Suggestion<Value>>,
 ) {
   let index = 0;
-  const normalisedSuggestions: Array<AutosuggestValue<Value>> = [];
+  const normalisedSuggestions: Array<Suggestion<Value>> = [];
   const groupHeadingIndexes = new Map<number, string>();
-  const groupHeadingForSuggestion = new Map<AutosuggestValue<Value>, string>();
+  const groupHeadingForSuggestion = new Map<Suggestion<Value>, string>();
 
   for (const item of suggestions) {
     if ('suggestions' in item) {
@@ -177,6 +181,17 @@ function normaliseSuggestions<Value>(
   };
 }
 
+function valueFromSuggestion<Value>(
+  suggestion: Suggestion<Value>,
+): AutosuggestValue<Value> {
+  return 'value' in suggestion
+    ? {
+        text: suggestion.text,
+        value: suggestion.value,
+      }
+    : { text: suggestion.text };
+}
+
 const noop = () => {
   /**/
 };
@@ -184,7 +199,7 @@ const noop = () => {
 export interface AutosuggestProps<Value>
   extends Omit<FieldProps, 'autoComplete' | 'labelId'> {
   value: AutosuggestValue<Value>;
-  suggestions: Array<AutosuggestValue<Value> | GroupedSuggestion<Value>>;
+  suggestions: Array<Suggestion<Value> | GroupedSuggestion<Value>>;
   onChange: (value: AutosuggestValue<Value>) => void;
   automaticSelection?: boolean;
   showMobileBackdrop?: boolean;
@@ -205,6 +220,13 @@ export function Autosuggest<Value>({
   ...restProps
 }: AutosuggestProps<Value>) {
   const styles = useStyles(styleRefs);
+
+  const fireChange = useCallback(
+    (suggestion: Suggestion<Value>) =>
+      onChange(valueFromSuggestion(suggestion)),
+    [onChange],
+  );
+
   const inputRef = useRef<HTMLInputElement>(null);
   const rootRef = useRef<HTMLDivElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -353,7 +375,7 @@ export function Autosuggest<Value>({
       const inputValue = e.target.value;
 
       dispatch({ type: INPUT_CHANGE });
-      onChange({ text: inputValue });
+      fireChange({ text: inputValue });
     },
     onFocus: () => {
       // Only scroll the autosuggest to the top of the viewport
@@ -377,13 +399,13 @@ export function Autosuggest<Value>({
       }
 
       if (previewValue) {
-        onChange(previewValue);
+        fireChange(previewValue);
       } else if (
         automaticSelection &&
         value.text.length > 0 &&
         normalisedSuggestions.length > 0
       ) {
-        onChange(normalisedSuggestions[0]);
+        fireChange(normalisedSuggestions[0]);
       }
 
       dispatch({ type: INPUT_BLUR });
@@ -423,7 +445,7 @@ export function Autosuggest<Value>({
         case 'Escape': {
           event.preventDefault();
           if (previewValue === null && value.text) {
-            onChange({ text: '' });
+            fireChange({ text: '' });
           }
 
           dispatch({ type: INPUT_ESCAPE });
@@ -432,7 +454,7 @@ export function Autosuggest<Value>({
         case 'Enter': {
           if (typeof highlightedIndex === 'number') {
             event.preventDefault();
-            onChange(normalisedSuggestions[highlightedIndex]);
+            fireChange(normalisedSuggestions[highlightedIndex]);
           }
 
           dispatch({ type: INPUT_ENTER });
@@ -524,14 +546,13 @@ export function Autosuggest<Value>({
                             {groupHeading ? (
                               <GroupHeading>{groupHeading}</GroupHeading>
                             ) : null}
-                            <Suggestion
+                            <SuggestionItem
                               value={text}
                               highlighted={highlightedIndex === index}
                               matchedSections={suggestion.highlights || []}
                               selected={value === suggestion}
                               onClick={() => {
-                                onChange(suggestion);
-
+                                fireChange(suggestion);
                                 dispatch({ type: SUGGESTION_MOUSE_CLICK });
                               }}
                               onMouseMove={() => {
