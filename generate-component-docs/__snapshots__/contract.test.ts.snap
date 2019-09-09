@@ -39,7 +39,7 @@ exports[`Autosuggest 1`] = `
   secondaryLabel?: ReactNode
   secondaryMessage?: ReactNode
   showMobileBackdrop?: boolean
-  suggestions: (AutosuggestValue<Value> | GroupedSuggestion<Value>)[]
+  suggestions: (Suggestion<Value> | GroupedSuggestion<Value>)[]
   tertiaryLabel?: ReactNode
   tone?: 
     | "critical"
