@@ -5,7 +5,14 @@ const isGitHubPages =
   !process.env.TRAVIS_PULL_REQUEST_SHA;
 
 module.exports = {
-  srcPaths: ['lib', 'site/src', 'scripts', '@types', 'generate-component-docs'],
+  srcPaths: [
+    'lib',
+    'site/src',
+    'scripts',
+    '@types',
+    'generate-component-docs',
+    'reset',
+  ],
   clientEntry: 'site/src/client.tsx',
   renderEntry: 'site/src/render.tsx',
   routes,

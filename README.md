@@ -27,7 +27,7 @@ At the _very top_ of your application, import the reset, required theme and the 
 For example:
 
 ```js
-import 'braid-design-system/lib/reset'; // <-- Must be first
+import 'braid-design-system/reset'; // <-- Must be first
 import jobStreetTheme from 'braid-design-system/themes/jobStreet';
 import { BraidProvider, Text } from 'braid-design-system';
 // ...etc.
@@ -36,7 +36,7 @@ import { BraidProvider, Text } from 'braid-design-system';
 Finally, render the `BraidProvider` component, providing the imported theme via the `theme` prop:
 
 ```js
-import 'braid-design-system/lib/reset';
+import 'braid-design-system/reset';
 import jobStreetTheme from 'braid-design-system/themes/jobStreet';
 import { BraidProvider, Text } from 'braid-design-system';
 
@@ -60,7 +60,7 @@ If you're rendering within the context of another application, you may want to o
 If you require multiple themes and want to code split them, you can subsitute the `BraidProvider` with the `BraidLoadableProvider`, passing it the necessary `themeName` at runtime. Remove any explicit theme imports you may have.
 
 ```js
-import 'braid-design-system/lib/reset';
+import 'braid-design-system/reset';
 import { BraidLoadableProvider, Text } from 'braid-design-system';
 
 export default ({ themeName }) => (
