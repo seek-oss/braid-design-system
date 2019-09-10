@@ -4,6 +4,7 @@ import React from 'react';
 import { withRouter, Route } from 'react-router';
 import { CSSTransition } from 'react-transition-group';
 
+import '../../../lib/reset';
 import { BraidProvider, Box } from '../../../lib/components';
 import { Home } from './Home/Home';
 import { Components } from './Components/Components';

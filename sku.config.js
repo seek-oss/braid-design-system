@@ -14,7 +14,7 @@ module.exports = {
   publicPath: isGitHubPages ? '/braid-design-system/' : '/',
   displayNamesProd: true,
   playroomTitle: 'BRAID',
-  playroomComponents: 'lib/components/index.ts',
+  playroomComponents: 'lib/playroom/components.ts',
   playroomThemes: 'lib/themes/index.ts',
   playroomFrameComponent: 'lib/playroom/FrameComponent.tsx',
   playroomTarget: 'site/dist/playroom',

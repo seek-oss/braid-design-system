@@ -4,7 +4,8 @@
   "description": "Themeable design system for the SEEK Group",
   "main": "lib/components/index.ts",
   "sideEffects": [
-    "lib/themes/**/*"
+    "lib/themes/**/*",
+    "lib/reset/**/*"
   ],
   "scripts": {
     "ci": "yarn check --integrity && yarn lint && yarn build && yarn test",
@@ -54,12 +55,14 @@
   "dependencies": {
     "@types/autosuggest-highlight": "^3.1.0",
     "@types/classnames": "^2.2.8",
+    "@types/dedent": "^0.7.0",
     "@types/lodash": "^4.14.132",
     "@types/react": "^16.8.8",
     "autosuggest-highlight": "^3.1.1",
     "basekick": "^3.1.1",
     "classnames": "^2.2.6",
     "csstype": "^2.6.4",
+    "dedent": "0.7.0",
     "gradient-parser": "^0.1.5",
     "is-mobile": "^2.0.1",
     "isolated-scroll": "^0.1.0",
@@ -81,7 +84,6 @@
     "@testing-library/react": "^8.0.7",
     "@testing-library/user-event": "^4.2.4",
     "@types/base64-url": "^2.2.0",
-    "@types/dedent": "^0.7.0",
     "@types/react-dom": "^16.8.2",
     "@types/react-router-dom": "^4.3.1",
     "@types/react-transition-group": "^2.0.16",
@@ -93,7 +95,6 @@
     "concurrently": "^4.1.0",
     "copy-to-clipboard": "^3.2.0",
     "cz-conventional-changelog": "^2.1.0",
-    "dedent": "0.7.0",
     "focus-visible": "^4.1.5",
     "fs-extra": "^8.1.0",
     "gh-pages": "^2.0.1",
