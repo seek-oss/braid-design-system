@@ -86,6 +86,9 @@ export interface TreatTokens {
       formAccent: string;
     };
   };
+  shadows: {
+    large: string;
+  };
   color: {
     foreground: {
       link: string;
@@ -110,7 +113,7 @@ export interface TreatTokens {
       card: string;
       critical: string;
       positive: string;
-      secondary: string;
+      neutral: string;
     };
   };
 }

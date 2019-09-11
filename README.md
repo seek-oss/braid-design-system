@@ -20,21 +20,24 @@ In your sku project, first install this library:
 $ npm install --save braid-design-system
 ```
 
-Then, import the desired theme at the _very top_ of your application (e.g. `src/client.js`), before importing anything else.
+At the _very top_ of your application, import the reset, required theme and the `BraidProvider` component.
 
-**WARNING: Since the theme contains styles that may be overridden by invididual components, the theme needs to be imported first to avoid CSS ordering issues.**
+**WARNING: The reset styles must be imported first to avoid CSS ordering issues.**
 
 For example:
 
 ```js
+import 'braid-design-system/reset'; // <-- Must be first
 import jobStreetTheme from 'braid-design-system/themes/jobStreet';
-import React from 'react';
+import { BraidProvider, Text } from 'braid-design-system';
 // ...etc.
 ```
 
 Finally, render the `BraidProvider` component, providing the imported theme via the `theme` prop:
 
 ```js
+import 'braid-design-system/reset';
+import jobStreetTheme from 'braid-design-system/themes/jobStreet';
 import { BraidProvider, Text } from 'braid-design-system';
 
 export default () => (
@@ -50,6 +53,21 @@ If you're rendering within the context of another application, you may want to o
 <BraidProvider theme={jobStreetTheme} styleBody={false}>
   <Text>Hello World!</Text>
 </BraidProvider>
+```
+
+## Multi-theme setup
+
+If you require multiple themes and want to code split them, you can subsitute the `BraidProvider` with the `BraidLoadableProvider`, passing it the necessary `themeName` at runtime. Remove any explicit theme imports you may have.
+
+```js
+import 'braid-design-system/reset';
+import { BraidLoadableProvider, Text } from 'braid-design-system';
+
+export default ({ themeName }) => (
+  <BraidLoadableProvider themeName={themeName}>
+    <Text>Hello World!</Text>
+  </BraidLoadableProvider>
+);
 ```
 
 ## Style Guide Migration

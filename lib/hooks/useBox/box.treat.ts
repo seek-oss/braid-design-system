@@ -172,11 +172,12 @@ export const background = styleMap(({ color }) => ({
   infoLight: { background: getLightVariant(color.background.info) },
   criticalLight: { background: getLightVariant(color.background.critical) },
   positiveLight: { background: getLightVariant(color.background.positive) },
-  secondaryLight: { background: getLightVariant(color.background.secondary) },
+  neutralLight: { background: getLightVariant(color.background.neutral) },
 }));
 
 export const boxShadow = styleMap(
-  ({ border: { width: borderWidth, color } }) => ({
+  ({ border: { width: borderWidth, color }, shadows }) => ({
+    ...mapToStyleProperty(shadows, 'boxShadow'),
     outlineFocus: {
       boxShadow: `0 0 0 ${borderWidth.large}px ${color.focus}`,
     },

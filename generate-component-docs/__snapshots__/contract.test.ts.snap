@@ -20,6 +20,35 @@ exports[`Alert 1`] = `
 }
 `;
 
+exports[`Autosuggest 1`] = `
+{
+  aria-describedby?: string
+  automaticSelection?: boolean
+  data?: Record<string, ReactText>
+  description?: ReactNode
+  disabled?: boolean
+  id: string
+  label?: ReactNode
+  message?: ReactNode
+  name?: string
+  onBlur?: () => void
+  onChange: (value: AutosuggestValue<Value>) => void
+  onFocus?: () => void
+  placeholder?: string
+  reserveMessageSpace?: boolean
+  secondaryLabel?: ReactNode
+  secondaryMessage?: ReactNode
+  showMobileBackdrop?: boolean
+  suggestions: (Suggestion<Value> | GroupedSuggestion<Value>)[]
+  tertiaryLabel?: ReactNode
+  tone?: 
+    | "critical"
+    | "neutral"
+    | "positive"
+  value: AutosuggestValue<Value>
+}
+`;
+
 exports[`Badge 1`] = `
 {
   children: string
@@ -27,8 +56,8 @@ exports[`Badge 1`] = `
   tone?: 
     | "critical"
     | "info"
+    | "neutral"
     | "positive"
-    | "secondary"
   weight?: 
     | "regular"
     | "strong"
@@ -223,10 +252,10 @@ exports[`Box 1`] = `
     | "infoLight"
     | "input"
     | "inputDisabled"
+    | "neutral"
+    | "neutralLight"
     | "positive"
     | "positiveLight"
-    | "secondary"
-    | "secondaryLight"
     | "selection"
   borderRadius?: "standard"
   boxShadow?: 
@@ -234,6 +263,7 @@ exports[`Box 1`] = `
     | "borderFormAccent"
     | "borderFormAccentLarge"
     | "borderStandard"
+    | "large"
     | "outlineFocus"
   capture?: 
     | false
@@ -901,6 +931,15 @@ exports[`Box 1`] = `
 }
 `;
 
+exports[`BraidLoadableProvider 1`] = `
+{
+  children: ReactNode
+  fallback?: ReactNode
+  styleBody?: boolean
+  themeName: string
+}
+`;
+
 exports[`BraidProvider 1`] = `
 {
   children: ReactNode
@@ -1053,6 +1092,7 @@ exports[`FieldLabel 1`] = `
   htmlFor: 
     | false
     | string
+  id?: string
   label?: ReactNode
   secondaryLabel?: ReactNode
   tertiaryLabel?: ReactNode

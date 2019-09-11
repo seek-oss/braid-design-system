@@ -21,6 +21,7 @@ export interface ComponentDocs {
 export interface ComponentExample {
   label?: string;
   docsSite?: boolean;
+  storybook?: boolean;
   Example?: (props: {
     id: string;
     handler: (event: SyntheticEvent) => void;

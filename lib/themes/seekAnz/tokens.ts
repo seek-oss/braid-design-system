@@ -8,6 +8,7 @@ const brandAccent = '#e60278';
 const positive = '#169400';
 const critical = brandAccent;
 const info = '#9556b7';
+const neutral = '#747474';
 const black = '#1c1c1c';
 const link = '#2765cf';
 const secondary = '#1c1c1ca1';
@@ -163,6 +164,9 @@ const tokens: TreatTokens = {
       formAccent,
     },
   },
+  shadows: {
+    large: '0 9px 30px rgba(0,0,0,.4)',
+  },
   color: {
     foreground: {
       link,
@@ -182,12 +186,12 @@ const tokens: TreatTokens = {
       brandAccent,
       formAccent,
       formAccentDisabled: '#ccc',
-      selection: '#f5f8ff',
+      selection: '#eee',
       card: '#fff',
       critical,
       info,
       positive,
-      secondary,
+      neutral,
     },
   },
 };

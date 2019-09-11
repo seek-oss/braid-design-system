@@ -42,14 +42,14 @@ const docs: ComponentDocs = {
       ),
     },
     {
-      label: 'Secondary Badge',
-      Example: () => <Badge tone="secondary">10m ago</Badge>,
+      label: 'Neutral Badge',
+      Example: () => <Badge tone="neutral">Expired</Badge>,
     },
     {
-      label: 'Strong Secondary Badge',
+      label: 'Strong Neutral Badge',
       Example: () => (
-        <Badge tone="secondary" weight="strong">
-          10m ago
+        <Badge tone="neutral" weight="strong">
+          Expired
         </Badge>
       ),
     },

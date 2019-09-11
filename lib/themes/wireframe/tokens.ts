@@ -10,6 +10,7 @@ const black = '#2b2b2b';
 const white = '#fff';
 const link = '#4c77bb';
 const secondary = '#777';
+const neutral = '#777';
 
 const tokens: TreatTokens = {
   name: 'wireframe',
@@ -161,6 +162,9 @@ const tokens: TreatTokens = {
       formAccent,
     },
   },
+  shadows: {
+    large: '0 9px 30px rgba(0,0,0,.4)',
+  },
   color: {
     foreground: {
       link,
@@ -185,7 +189,7 @@ const tokens: TreatTokens = {
       critical,
       info,
       positive,
-      secondary,
+      neutral,
     },
   },
 };

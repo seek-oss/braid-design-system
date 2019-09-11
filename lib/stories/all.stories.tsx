@@ -41,13 +41,14 @@ req.keys().forEach(filename => {
             {docs.examples.map(
               (
                 {
+                  storybook = true,
                   label = componentName,
                   Example,
                   Container = DefaultContainer,
                 },
                 i,
               ) =>
-                Example ? (
+                Example && storybook ? (
                   <div
                     key={i}
                     style={{

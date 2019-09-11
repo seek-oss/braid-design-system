@@ -1,4 +1,10 @@
-import React, { ReactNode, AllHTMLAttributes, forwardRef, Ref } from 'react';
+import React, {
+  forwardRef,
+  Fragment,
+  ReactNode,
+  AllHTMLAttributes,
+  Ref,
+} from 'react';
 import { useStyles } from 'sku/react-treat';
 import classnames from 'classnames';
 import { Box, BoxProps } from '../../Box/Box';
@@ -16,6 +22,7 @@ import * as styleRefs from './Field.treat';
 type FormElementProps = AllHTMLAttributes<HTMLFormElement>;
 export interface FieldProps {
   id: NonNullable<FormElementProps['id']>;
+  labelId?: string;
   name?: FormElementProps['name'];
   disabled?: FormElementProps['disabled'];
   autoComplete?: FormElementProps['autoComplete'];
@@ -45,13 +52,18 @@ interface FieldRenderProps extends Pick<FieldProps, PassthroughProps> {
 type FieldRef = HTMLElement;
 
 interface InternalFieldProps extends FieldProps {
-  children(props: FieldRenderProps, ref: Ref<FieldRef>): ReactNode;
+  children(
+    overlays: ReactNode,
+    props: FieldRenderProps,
+    ref: Ref<FieldRef>,
+  ): ReactNode;
 }
 
 export const Field = forwardRef<FieldRef, InternalFieldProps>(
   (
     {
       id,
+      labelId,
       name,
       disabled,
       autoComplete,
@@ -73,9 +85,17 @@ export const Field = forwardRef<FieldRef, InternalFieldProps>(
     const messageId = `${id}-message`;
     const background = disabled ? 'inputDisabled' : 'input';
 
+    const overlays = (
+      <Fragment>
+        <FieldOverlay variant="focus" className={styles.focusOverlay} />
+        <FieldOverlay variant="hover" className={styles.hoverOverlay} />
+      </Fragment>
+    );
+
     return (
       <Box>
         <FieldLabel
+          id={labelId}
           htmlFor={id}
           label={label}
           secondaryLabel={secondaryLabel}
@@ -85,6 +105,7 @@ export const Field = forwardRef<FieldRef, InternalFieldProps>(
         <Box position="relative">
           <BackgroundProvider value={background}>
             {children(
+              overlays,
               {
                 id,
                 name,
@@ -115,8 +136,6 @@ export const Field = forwardRef<FieldRef, InternalFieldProps>(
               ref,
             )}
           </BackgroundProvider>
-          <FieldOverlay variant="focus" className={styles.focusOverlay} />
-          <FieldOverlay variant="hover" className={styles.hoverOverlay} />
         </Box>
         <FieldMessage
           id={messageId}

@@ -33,6 +33,7 @@ export default ({
   const linkHover = blue2;
   const selection = blue5;
   const secondary = grey2;
+  const neutral = grey2;
 
   const tokens: TreatTokens = {
     name,
@@ -185,6 +186,9 @@ export default ({
         formAccent,
       },
     },
+    shadows: {
+      large: '0 9px 30px rgba(0,0,0,.4)',
+    },
     color: {
       foreground: {
         link,
@@ -209,7 +213,7 @@ export default ({
         critical,
         info,
         positive,
-        secondary,
+        neutral,
       },
     },
   };

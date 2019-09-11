@@ -5,7 +5,14 @@ const isGitHubPages =
   !process.env.TRAVIS_PULL_REQUEST_SHA;
 
 module.exports = {
-  srcPaths: ['lib', 'site/src', 'scripts', '@types', 'generate-component-docs'],
+  srcPaths: [
+    'lib',
+    'site/src',
+    'scripts',
+    '@types',
+    'generate-component-docs',
+    'reset',
+  ],
   clientEntry: 'site/src/client.tsx',
   renderEntry: 'site/src/render.tsx',
   routes,
@@ -14,7 +21,7 @@ module.exports = {
   publicPath: isGitHubPages ? '/braid-design-system/' : '/',
   displayNamesProd: true,
   playroomTitle: 'BRAID',
-  playroomComponents: 'lib/components/index.ts',
+  playroomComponents: 'lib/playroom/components.ts',
   playroomThemes: 'lib/themes/index.ts',
   playroomFrameComponent: 'lib/playroom/FrameComponent.tsx',
   playroomTarget: 'site/dist/playroom',

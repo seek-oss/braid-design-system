@@ -8,6 +8,8 @@ const breakpoint = 740;
 const mobile = `screen and (max-width: ${breakpoint - 1}px)`;
 const desktop = `screen and (min-width: ${breakpoint}px)`;
 
+export const isOpen = style({});
+
 export const header = style({
   background: 'white',
   alignItems: 'center',
@@ -15,7 +17,13 @@ export const header = style({
   zIndex: 3,
   '@media': {
     [desktop]: {
+      position: 'fixed',
       width: desktopMenuWidth,
+    },
+  },
+  selectors: {
+    [`${isOpen} &`]: {
+      position: 'fixed',
     },
   },
 });
@@ -23,8 +31,6 @@ export const header = style({
 export const container = style({
   paddingTop: headerHeight,
 });
-
-export const menuOpen = style({});
 
 export const menu = style({
   zIndex: 2,
@@ -41,7 +47,7 @@ export const menu = style({
       transform: 'translateY(-5px)',
       pointerEvents: 'none',
       selectors: {
-        [`&${menuOpen}`]: {
+        [`${isOpen} &`]: {
           opacity: 1,
           transform: 'none',
           pointerEvents: 'auto',
