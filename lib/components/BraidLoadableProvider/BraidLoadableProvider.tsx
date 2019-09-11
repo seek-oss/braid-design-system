@@ -16,14 +16,12 @@ interface BraidLoadableProviderProps extends Omit<BraidProviderProps, 'theme'> {
 }
 export const BraidLoadableProvider = ({
   themeName,
-  children,
+  fallback,
   ...restProps
 }: BraidLoadableProviderProps) => (
-  <BraidLoadable themeName={themeName}>
+  <BraidLoadable themeName={themeName} fallback={fallback}>
     {({ default: theme }: any) => (
-      <BraidProvider theme={theme} {...restProps}>
-        {children}
-      </BraidProvider>
+      <BraidProvider {...restProps} theme={theme} />
     )}
   </BraidLoadable>
 );
