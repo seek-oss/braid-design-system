@@ -48,8 +48,8 @@ export default ({
       },
       heading: {
         weight: {
-          weak: 'medium',
-          regular: 'strong',
+          weak: 'regular',
+          regular: 'medium',
         },
         level: {
           '1': {
