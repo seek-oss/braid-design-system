@@ -43,7 +43,7 @@ export default ({
       descenderHeightScale: 0.13,
       fontWeight: {
         regular: 400,
-        medium: 500,
+        medium: 600,
         strong: 700,
       },
       heading: {
