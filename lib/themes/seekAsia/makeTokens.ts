@@ -49,7 +49,7 @@ export default ({
       heading: {
         weight: {
           weak: 'regular',
-          regular: 'medium',
+          regular: 'strong',
         },
         level: {
           '1': {
