@@ -66,6 +66,9 @@ export const useHeading = ({
   );
 };
 
+export const useTextSize = (size: keyof typeof styleRefs.text) =>
+  useStyles(styleRefs).text[size].fontSize;
+
 export const useWeight = (weight: keyof typeof styleRefs.fontWeight) => {
   const styles = useStyles(styleRefs);
   const inTextLinkRenderer = useContext(TextLinkRendererContext);

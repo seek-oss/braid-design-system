@@ -26,6 +26,8 @@ export const Home = () => {
             display="flex"
             flexDirection="column"
             paddingX="gutter"
+            alignItems="center"
+            justifyContent="center"
             className={styles.content}
           >
             <Box
@@ -45,6 +47,7 @@ export const Home = () => {
                 <Box
                   component="span"
                   display="flex"
+                  justifyContent="center"
                   className={styles.subtitle}
                 >
                   <span>Themeable design system</span>&nbsp;

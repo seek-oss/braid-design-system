@@ -20,8 +20,6 @@ export const sourceLink = style({
 
 export const content = style({
   height: '100vh',
-  alignItems: 'center',
-  justifyContent: 'center',
 });
 
 export const container = style({
@@ -50,7 +48,6 @@ export const linkButton = style({
 
 export const subtitle = style({
   flexWrap: 'wrap',
-  justifyContent: 'center',
 });
 
 globalStyle(`${subtitle} > *`, {

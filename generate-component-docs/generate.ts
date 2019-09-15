@@ -12,16 +12,11 @@ const componentsFile = path.join(__dirname, '../lib/components/index.ts');
 const reactNodeType =
   'string | number | boolean | {} | ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)> | ReactNodeArray | ReactPortal';
 
-const columnType =
-  'ReactElement<ColumnProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>';
-
 const stringAliases: Record<string, string> = {
   [reactNodeType]: 'ReactNode',
   // with an explicit alias 'boolean' becomes a union of 'true' | 'false'
   boolean: 'boolean',
   CSSProperties: 'CSSProperties',
-  [columnType]: 'Column',
-  [`${columnType}[]`]: 'Column[]',
 };
 
 export interface NormalisedInterface {

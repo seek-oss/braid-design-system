@@ -19,7 +19,7 @@ export const backdrop = style({
 });
 
 export const backdropVisibility = styleMap({
-  hidden: { opacity: 0, pointerEvents: 'none' },
+  hidden: { opacity: 0 },
   visible: { opacity: 0.7 },
 });
 
@@ -42,8 +42,4 @@ export const menu = [menuBase, menuHeight];
 
 export const groupHeading = style({
   textTransform: 'uppercase',
-});
-
-export const menuItem = style({
-  cursor: 'pointer',
 });

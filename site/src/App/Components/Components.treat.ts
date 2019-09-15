@@ -12,8 +12,6 @@ export const isOpen = style({});
 
 export const header = style({
   background: 'white',
-  alignItems: 'center',
-  justifyContent: 'space-between',
   zIndex: 3,
   '@media': {
     [desktop]: {

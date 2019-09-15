@@ -65,6 +65,9 @@ describe('Autosuggest', () => {
     userEvent.click(input);
     expect(queryByLabelText('Apples')).toBeInTheDocument();
 
+    // Ensure no clear buttons are present
+    expect(queryByLabelText('Clear')).not.toBeInTheDocument();
+
     fireEvent.blur(input);
     expect(queryByLabelText('Apples')).toBe(null);
   });
@@ -140,6 +143,62 @@ describe('Autosuggest', () => {
 
     fireEvent.blur(input);
     expect(blurHandler).toHaveBeenCalledWith();
+  });
+
+  it("should call 'onClear' handler when clearing suggestions", () => {
+    const clearHandler = jest.fn();
+    const { input, queryByLabelText, changeHandler } = renderAutosuggest({
+      value: { text: '' },
+      suggestions: [
+        {
+          text: 'Apples',
+          value: 'apples',
+          highlights: [{ start: 0, end: 4 }],
+          onClear: clearHandler,
+          clearLabel: 'Clear "Apples"',
+        },
+        {
+          text: 'Bananas',
+          value: 'bananas',
+          highlights: [{ start: 0, end: 4 }],
+          onClear: clearHandler,
+          clearLabel: 'Clear "Bananas"',
+        },
+        {
+          text: 'Carrots',
+          value: 'carrots',
+          highlights: [{ start: 0, end: 4 }],
+        },
+      ],
+    });
+
+    userEvent.click(input);
+
+    expect(clearHandler).not.toHaveBeenCalled();
+
+    const clearApples = queryByLabelText('Clear "Apples"');
+    expect(clearApples).toBeInTheDocument();
+    if (clearApples) {
+      fireEvent.click(clearApples);
+    }
+    expect(clearHandler).toHaveBeenNthCalledWith(1, {
+      text: 'Apples',
+      value: 'apples',
+    });
+    clearHandler.mockClear();
+
+    const clearBananas = queryByLabelText('Clear "Bananas"');
+    expect(clearBananas).toBeInTheDocument();
+    if (clearBananas) {
+      fireEvent.click(clearBananas);
+    }
+    expect(clearHandler).toHaveBeenNthCalledWith(1, {
+      text: 'Bananas',
+      value: 'bananas',
+    });
+    clearHandler.mockClear();
+
+    expect(changeHandler).not.toHaveBeenCalled();
   });
 
   describe('keyboard access', () => {

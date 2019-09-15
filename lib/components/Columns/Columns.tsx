@@ -20,7 +20,7 @@ export const ColumnsContext = createContext<ColumnsContext>({
 });
 
 export interface ColumnsProps {
-  children: Array<ReactElement<ColumnProps>> | ReactElement<ColumnProps>;
+  children: ReactElement<ColumnProps> | Array<ReactElement<ColumnProps> | null>;
   collapse?: boolean;
   reverse?: boolean;
   gutter?: SpaceX;
