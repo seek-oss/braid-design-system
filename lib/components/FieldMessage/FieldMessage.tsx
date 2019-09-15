@@ -53,7 +53,7 @@ export const FieldMessage = ({
       id={id}
       paddingBottom={isSeekAu ? 'xxsmall' : 'xsmall'}
       display="flex"
-      className={styles.root}
+      justifyContent="flexEnd"
     >
       <Box className={classnames(styles.grow, styles.minHeight)}>
         {showMessage ? (

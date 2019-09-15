@@ -14,7 +14,7 @@ export default (Icon: ComponentType<UseIconProps>) => {
     {
       label: 'Standard',
       Example: () => (
-        <Box display="flex" style={{ alignItems: 'center' }}>
+        <Box display="flex" alignItems="center">
           <Box marginRight="xsmall">
             <Icon />
           </Box>
@@ -33,7 +33,7 @@ export default (Icon: ComponentType<UseIconProps>) => {
     {
       label: 'Large',
       Example: () => (
-        <Box display="flex" style={{ alignItems: 'center' }}>
+        <Box display="flex" alignItems="center">
           <Box marginRight="xsmall">
             <Icon size="large" />
           </Box>
@@ -68,11 +68,7 @@ export default (Icon: ComponentType<UseIconProps>) => {
         return (
           <Fragment>
             {sizes.map(size => (
-              <Box
-                display="flex"
-                marginBottom="xxsmall"
-                style={{ alignItems: 'center' }}
-              >
+              <Box display="flex" marginBottom="xxsmall" alignItems="center">
                 <Box marginRight="xxsmall">
                   <Icon size={size} />
                 </Box>

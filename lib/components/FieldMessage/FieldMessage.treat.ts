@@ -1,9 +1,5 @@
 import { style } from 'sku/treat';
 
-export const root = style({
-  justifyContent: 'flex-end',
-});
-
 export const grow = style({
   flexGrow: 1,
 });

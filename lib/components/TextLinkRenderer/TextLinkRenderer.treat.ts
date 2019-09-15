@@ -1,7 +1,6 @@
 import { style } from 'sku/treat';
 
 export const root = style({
-  cursor: 'pointer',
   textDecoration: 'none',
   ':hover': {
     textDecoration: 'underline',

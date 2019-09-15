@@ -16,6 +16,7 @@ export const MenuButton = ({ open = false, onClick }: MenuButtonProps) => {
     <Hidden print>
       <Box
         component="button"
+        cursor="pointer"
         position="relative"
         className={classnames({
           [styles.root]: true,

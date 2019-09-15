@@ -27,6 +27,8 @@ export const Components = withRouter(({ location }: RouteComponentProps) => {
             paddingX="gutter"
             position="absolute"
             display="flex"
+            alignItems="center"
+            justifyContent="spaceBetween"
             width="full"
             className={styles.header}
           >

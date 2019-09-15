@@ -58,7 +58,13 @@ function InlineLink({ children }: TextLinkRendererProps) {
     <TextLinkRendererContext.Provider value={true}>
       {children({
         style: {},
-        className: classnames(useLinkStyles(), useBox({ component: 'a' })),
+        className: classnames(
+          useLinkStyles(),
+          useBox({
+            component: 'a',
+            cursor: 'pointer',
+          }),
+        ),
       })}
     </TextLinkRendererContext.Provider>
   );
@@ -72,7 +78,11 @@ function TouchableLink({ children }: TextLinkRendererProps) {
           style: {},
           className: classnames(
             useLinkStyles(),
-            useBox({ component: 'a', display: 'block' }),
+            useBox({
+              component: 'a',
+              cursor: 'pointer',
+              display: 'block',
+            }),
           ),
         })}
       </Box>
@@ -100,6 +110,7 @@ function ButtonLink({ children }: TextLinkRendererProps) {
             useTouchableSpace(buttonLinkTextProps.size),
             useBox({
               component: 'a',
+              cursor: 'pointer',
               display: 'block',
               width: 'full',
               paddingX: 'small',

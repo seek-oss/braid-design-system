@@ -56,6 +56,7 @@ export const Button = ({
     <Box
       id={id}
       component="button"
+      cursor="pointer"
       type={type}
       aria-describedby={ariaDescribedBy}
       width="full"
@@ -86,6 +87,7 @@ export const Button = ({
       <Box
         position="relative"
         paddingX="gutter"
+        pointerEvents="none"
         className={classnames(styles.content, useTouchableSpace('standard'))}
       >
         <Text

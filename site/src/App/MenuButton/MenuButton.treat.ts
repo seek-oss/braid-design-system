@@ -4,7 +4,6 @@ export const isOpen = style({});
 export const isHidden = style({});
 
 export const root = style({
-  cursor: 'pointer',
   width: '31px',
   height: '27px',
   border: 0,

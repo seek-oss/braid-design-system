@@ -97,6 +97,8 @@ const NamedDropdown = forwardRef<HTMLSelectElement, DropdownProps>(
               paddingX={paddingX}
               position="absolute"
               display="flex"
+              alignItems="center"
+              pointerEvents="none"
               className={styles.chevron}
             >
               <IconChevron size="fill" />

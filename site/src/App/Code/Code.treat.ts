@@ -7,13 +7,11 @@ export const code = style({
 });
 
 export const toolbar = style({
-  justifyContent: 'flex-end',
   borderTopLeftRadius: '0 !important',
   borderTopRightRadius: '0 !important',
 });
 
 export const button = style({
-  cursor: 'pointer',
   outline: 'none',
 });
 
@@ -48,6 +46,5 @@ export const focusOverlay = [
 ];
 
 export const buttonText = style({
-  pointerEvents: 'none',
   userSelect: 'none',
 });

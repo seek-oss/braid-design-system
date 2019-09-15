@@ -98,19 +98,45 @@ export const transition = styleMap(({ transitions }) =>
   mapToStyleProperty(transitions, 'transition'),
 );
 
-export const borderRadius = styleMap(({ border }) =>
-  mapToStyleProperty(border.radius, 'borderRadius'),
-);
+const borderRadiusRules = {
+  full: '100%',
+};
+export const borderRadius = {
+  ...styleMap(
+    mapToStyleProperty(borderRadiusRules, 'borderRadius'),
+    'borderRadius',
+  ),
+  ...styleMap(
+    ({ border }) => mapToStyleProperty(border.radius, 'borderRadius'),
+    'borderRadius',
+  ),
+};
 
 const widthRules = {
   full: '100%',
 };
-export const width = styleMap(mapToStyleProperty(widthRules, 'width'));
+export const width = {
+  ...styleMap(mapToStyleProperty(widthRules, 'width'), 'width'),
+  ...styleMap(
+    theme => ({
+      touchable: { width: theme.grid.row * theme.spacing.touchableRows },
+    }),
+    'width',
+  ),
+};
 
 const heightRules = {
   full: '100%',
 };
-export const height = styleMap(mapToStyleProperty(heightRules, 'height'));
+export const height = {
+  ...styleMap(mapToStyleProperty(heightRules, 'height'), 'height'),
+  ...styleMap(
+    theme => ({
+      touchable: { height: theme.grid.row * theme.spacing.touchableRows },
+    }),
+    'height',
+  ),
+};
 
 const positionRules = {
   absolute: 'absolute',
@@ -132,6 +158,42 @@ export const displayDesktop = styleMap(({ utils: { desktopStyles } }) =>
     desktopStyles({
       [propertyName]: value,
     }),
+  ),
+);
+
+const alignItemsRules = {
+  flexStart: 'flex-start',
+  center: 'center',
+  flexEnd: 'flex-end',
+};
+export const alignItems = styleMap(
+  mapToStyleProperty(alignItemsRules, 'alignItems'),
+);
+export const alignItemsDesktop = styleMap(({ utils: { desktopStyles } }) =>
+  mapToStyleProperty(alignItemsRules, 'alignItems', (value, propertyName) =>
+    desktopStyles({
+      [propertyName]: value,
+    }),
+  ),
+);
+
+const justifyContentRules = {
+  flexStart: 'flex-start',
+  center: 'center',
+  flexEnd: 'flex-end',
+  spaceBetween: 'space-between',
+};
+export const justifyContent = styleMap(
+  mapToStyleProperty(justifyContentRules, 'justifyContent'),
+);
+export const justifyContentDesktop = styleMap(({ utils: { desktopStyles } }) =>
+  mapToStyleProperty(
+    justifyContentRules,
+    'justifyContent',
+    (value, propertyName) =>
+      desktopStyles({
+        [propertyName]: value,
+      }),
   ),
 );
 
@@ -195,3 +257,11 @@ export const boxShadow = styleMap(
     },
   }),
 );
+
+export const cursor = styleMap({
+  pointer: { cursor: 'pointer' },
+});
+
+export const pointerEvents = styleMap({
+  none: { pointerEvents: 'none' },
+});
