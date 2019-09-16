@@ -4,6 +4,7 @@ import React, {
   useReducer,
   useCallback,
   ChangeEvent,
+  MouseEvent,
   KeyboardEvent,
 } from 'react';
 import classnames from 'classnames';
@@ -13,6 +14,7 @@ import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';
 import { Strong } from '../Strong/Strong';
 import { Field, FieldProps } from '../private/Field/Field';
+import { ClearButton } from '../iconButtons/ClearButton/ClearButton';
 import { useTouchableSpace, useText } from '../../hooks/typography';
 import { getNextIndex } from './getNextIndex';
 import { normalizeArrowKey } from './normalizeArrowKey';
@@ -31,6 +33,8 @@ interface AutosuggestValue<Value = any> {
 
 interface Suggestion<Value = any> extends AutosuggestValue<Value> {
   highlights?: SuggestionMatch;
+  onClear?: (value: AutosuggestValue<Value>) => void;
+  clearLabel?: string;
 }
 
 interface GroupedSuggestion<Value> {
@@ -71,30 +75,29 @@ interface AutosuggestState<Value> {
 }
 
 interface SuggestionItemProps {
+  suggestion: Suggestion;
   highlighted: boolean;
   selected: boolean;
-  value: string;
-  matchedSections: SuggestionMatch;
   onClick: () => void;
   onMouseMove: () => void;
 }
 function SuggestionItem({
+  suggestion,
   highlighted,
   selected,
-  value,
-  matchedSections,
   ...restProps
 }: SuggestionItemProps) {
-  const styles = useStyles(styleRefs);
+  const { highlights = [], onClear, clearLabel } = suggestion;
+
   const suggestionParts = parseHighlights(
-    value,
-    matchedSections.map(({ start, end }) => [start, end]),
+    suggestion.text,
+    highlights.map(({ start, end }) => [start, end]),
   );
 
   return (
     <Box
       component="li"
-      className={styles.menuItem}
+      cursor="pointer"
       onMouseDown={event => {
         // Without this `onClick` will not fire due to the input blur event
         event.preventDefault();
@@ -109,20 +112,33 @@ function SuggestionItem({
       */}
       <Box
         component="span"
-        display="block"
+        display="flex"
+        justifyContent="spaceBetween"
         background={highlighted ? 'selection' : undefined}
         paddingX="small"
-        className={useTouchableSpace('standard')}
+        paddingRight={onClear ? 'none' : undefined}
       >
-        <Text baseline={false}>
-          {suggestionParts.map(({ highlight, text }, index) =>
-            selected || highlight ? (
-              <Strong key={index}>{text}</Strong>
-            ) : (
-              <Fragment key={index}>{text}</Fragment>
-            ),
-          )}
-        </Text>
+        <Box className={useTouchableSpace('standard')}>
+          <Text baseline={false}>
+            {suggestionParts.map(({ highlight, text }, index) =>
+              selected || highlight ? (
+                <Strong key={index}>{text}</Strong>
+              ) : (
+                <Fragment key={index}>{text}</Fragment>
+              ),
+            )}
+          </Text>
+        </Box>
+        {typeof onClear === 'function' ? (
+          <ClearButton
+            label={clearLabel || 'Clear suggestion'}
+            onClick={(event: MouseEvent) => {
+              event.preventDefault();
+              event.stopPropagation();
+              onClear(valueFromSuggestion(suggestion));
+            }}
+          />
+        ) : null}
       </Box>
     </Box>
   );
@@ -478,6 +494,7 @@ export function Autosuggest<Value>({
           position="fixed"
           transition="fast"
           display={['block', 'none']}
+          pointerEvents={isOpen ? undefined : 'none'}
           className={classnames(
             styles.backdrop,
             styles.backdropVisibility[isOpen ? 'visible' : 'hidden'],
@@ -547,9 +564,8 @@ export function Autosuggest<Value>({
                               <GroupHeading>{groupHeading}</GroupHeading>
                             ) : null}
                             <SuggestionItem
-                              value={text}
+                              suggestion={suggestion}
                               highlighted={highlightedIndex === index}
-                              matchedSections={suggestion.highlights || []}
                               selected={value === suggestion}
                               onClick={() => {
                                 fireChange(suggestion);

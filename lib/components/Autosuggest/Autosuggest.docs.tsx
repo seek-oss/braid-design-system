@@ -38,6 +38,7 @@ const docs: ComponentDocs = {
       Container,
       Example: ({ id }) => {
         const [value, setValue] = useState<Value>({ text: '' });
+        const [showRecent, setShowRecent] = useState(true);
 
         return (
           <Autosuggest
@@ -45,10 +46,25 @@ const docs: ComponentDocs = {
             id={id}
             value={value}
             onChange={setValue}
-            suggestions={makeSuggestions(
-              ['Apples', 'Bananas', 'Broccoli', 'Carrots'],
-              value.text,
-            )}
+            suggestions={[
+              ...(showRecent && value.text === ''
+                ? [
+                    {
+                      text: 'Apples',
+                      onClear: () => setShowRecent(false),
+                    },
+                  ]
+                : []),
+              ...makeSuggestions(
+                [
+                  ...(value.text !== '' ? ['Apples'] : []),
+                  'Bananas',
+                  'Broccoli',
+                  'Carrots',
+                ],
+                value.text,
+              ),
+            ]}
           />
         );
       },

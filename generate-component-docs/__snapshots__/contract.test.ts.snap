@@ -1393,6 +1393,25 @@ exports[`IconChevron 1`] = `
 }
 `;
 
+exports[`IconClear 1`] = `
+{
+  size?: 
+    | "fill"
+    | "large"
+    | "small"
+    | "standard"
+    | "xsmall"
+  tone?: 
+    | "critical"
+    | "formAccent"
+    | "info"
+    | "link"
+    | "neutral"
+    | "positive"
+    | "secondary"
+}
+`;
+
 exports[`IconCritical 1`] = `
 {
   size?: 
