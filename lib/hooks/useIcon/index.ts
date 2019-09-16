@@ -4,16 +4,34 @@ import classnames from 'classnames';
 import { BoxProps } from '../../components/Box/Box';
 import TextContext from '../../components/Text/TextContext';
 import HeadingContext from '../../components/Heading/HeadingContext';
-import { useTextTone, UseTextProps } from '../../hooks/typography';
+import { useTextSize, useTextTone, UseTextProps } from '../../hooks/typography';
 import * as styleRefs from './icon.treat';
 
 type IconSize = NonNullable<UseTextProps['size']> | 'fill';
+
+export interface UseIconSizeProps {
+  size?: Exclude<IconSize, 'fill'>;
+}
+export const useIconSize = ({ size = 'standard' }: UseIconSizeProps = {}) => {
+  const styles = useStyles(styleRefs);
+
+  return classnames(styles.size, useTextSize(size));
+};
+
+export interface UseIconContainerSizeProps {
+  size?: Exclude<IconSize, 'fill'>;
+}
+export const useIconContainerSize = ({
+  size = 'standard',
+}: UseIconContainerSizeProps = {}) => {
+  const styles = useStyles(styleRefs);
+  return styles.blockSizes[size];
+};
 
 export interface UseIconProps {
   size?: IconSize;
   tone?: UseTextProps['tone'];
 }
-
 export default ({ size, tone }: UseIconProps): BoxProps => {
   const styles = useStyles(styleRefs);
   const textContext = useContext(TextContext);
@@ -47,6 +65,7 @@ export default ({ size, tone }: UseIconProps): BoxProps => {
     position: isInline ? 'relative' : undefined,
     className: classnames(
       resolvedTone,
+      styles.size,
       isInline ? styles.inline : styles.blockSizes[size || 'standard'],
     ),
   };
