@@ -2,10 +2,6 @@ import { style } from 'sku/treat';
 
 export const button = style({});
 
-export const overlay = style({
-  opacity: 0,
-});
-
 export const hoverOverlay = style({
   selectors: {
     [`${button}:hover &, ${button}:focus &`]: {

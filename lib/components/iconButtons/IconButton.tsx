@@ -1,6 +1,5 @@
 import React, { AllHTMLAttributes, ReactNode } from 'react';
 import { useStyles } from 'sku/treat';
-import classnames from 'classnames';
 import { Box } from '..';
 import { Overlay } from '../private/Overlay/Overlay';
 import {
@@ -50,12 +49,12 @@ export const IconButton = ({ label, onClick, children }: IconButtonProps) => {
           background="card"
           transition="fast"
           borderRadius="full"
-          className={classnames(styles.overlay, styles.hoverOverlay)}
+          className={styles.hoverOverlay}
         />
         <Overlay
           boxShadow="outlineFocus"
           transition="fast"
-          className={classnames(styles.overlay, styles.focusOverlay)}
+          className={styles.focusOverlay}
         />
         <Box position="relative" className={iconStyles}>
           {children({ size: 'fill', tone: 'secondary' })}
