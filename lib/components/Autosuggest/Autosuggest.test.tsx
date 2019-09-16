@@ -66,7 +66,7 @@ describe('Autosuggest', () => {
     expect(queryByLabelText('Apples')).toBeInTheDocument();
 
     // Ensure no clear buttons are present
-    expect(queryByLabelText('Clear')).not.toBeInTheDocument();
+    expect(queryByLabelText('Clear suggestion')).not.toBeInTheDocument();
 
     fireEvent.blur(input);
     expect(queryByLabelText('Apples')).toBe(null);

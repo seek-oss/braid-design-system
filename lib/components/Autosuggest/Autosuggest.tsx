@@ -10,7 +10,9 @@ import React, {
 import classnames from 'classnames';
 import { useStyles } from 'sku/react-treat';
 import parseHighlights from 'autosuggest-highlight/parse';
-import { Box, Text, Strong, Columns, Column } from '../';
+import { Box } from '../Box/Box';
+import { Text } from '../Text/Text';
+import { Strong } from '../Strong/Strong';
 import { Field, FieldProps } from '../private/Field/Field';
 import { ClearButton } from '../iconButtons/ClearButton/ClearButton';
 import { useTouchableSpace, useText } from '../../hooks/typography';
@@ -110,41 +112,33 @@ function SuggestionItem({
       */}
       <Box
         component="span"
-        display="block"
+        display="flex"
+        justifyContent="spaceBetween"
         background={highlighted ? 'selection' : undefined}
         paddingX="small"
         paddingRight={onClear ? 'none' : undefined}
       >
-        <Columns>
-          <Column>
-            <Box className={useTouchableSpace('standard')}>
-              <Text baseline={false}>
-                {suggestionParts.map(({ highlight, text }, index) =>
-                  selected || highlight ? (
-                    <Strong key={index}>{text}</Strong>
-                  ) : (
-                    <Fragment key={index}>{text}</Fragment>
-                  ),
-                )}
-              </Text>
-            </Box>
-          </Column>
-          {typeof onClear === 'function' ? (
-            <Column width="content">
-              <ClearButton
-                label={clearLabel || 'Clear suggestion'}
-                onClick={(event: MouseEvent) => {
-                  event.preventDefault();
-                  event.stopPropagation();
-
-                  if (typeof onClear === 'function') {
-                    onClear(valueFromSuggestion(suggestion));
-                  }
-                }}
-              />
-            </Column>
-          ) : null}
-        </Columns>
+        <Box className={useTouchableSpace('standard')}>
+          <Text baseline={false}>
+            {suggestionParts.map(({ highlight, text }, index) =>
+              selected || highlight ? (
+                <Strong key={index}>{text}</Strong>
+              ) : (
+                <Fragment key={index}>{text}</Fragment>
+              ),
+            )}
+          </Text>
+        </Box>
+        {typeof onClear === 'function' ? (
+          <ClearButton
+            label={clearLabel || 'Clear suggestion'}
+            onClick={(event: MouseEvent) => {
+              event.preventDefault();
+              event.stopPropagation();
+              onClear(valueFromSuggestion(suggestion));
+            }}
+          />
+        ) : null}
       </Box>
     </Box>
   );

@@ -1048,8 +1048,8 @@ exports[`Column 1`] = `
 exports[`Columns 1`] = `
 {
   children: 
-    | (ReactElement<ColumnProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)> | null)[]
-    | ReactElement<ColumnProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>
+    | Column
+    | Column[]
   collapse?: boolean
   gutter?: 
     | "gutter"
