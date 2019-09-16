@@ -17,7 +17,7 @@ type SpaceBottom = DirectionalSpace<'bottom'>;
 type SpaceLeft = DirectionalSpace<'left'>;
 type SpaceRight = DirectionalSpace<'right'>;
 export type SpaceX = Extract<SpaceLeft, SpaceRight>;
-type SpaceY = Extract<SpaceTop, SpaceBottom>;
+export type SpaceY = Extract<SpaceTop, SpaceBottom>;
 type Space = Extract<SpaceX, SpaceY>;
 
 export interface UseBoxProps {
