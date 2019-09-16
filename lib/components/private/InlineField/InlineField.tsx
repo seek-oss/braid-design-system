@@ -132,7 +132,7 @@ export const InlineField = forwardRef<HTMLElement, InternalInlineFieldProps>(
               variant={tone === 'critical' && isCheckbox ? tone : undefined}
               background={isCheckbox ? accentBackground : undefined}
               borderRadius={fieldBorderRadius}
-              className={classnames(styles.selected)}
+              className={styles.selected}
             >
               <Indicator type={type} disabled={disabled} />
             </FieldOverlay>
@@ -140,12 +140,12 @@ export const InlineField = forwardRef<HTMLElement, InternalInlineFieldProps>(
             <FieldOverlay
               variant="focus"
               borderRadius={fieldBorderRadius}
-              className={classnames(styles.focusOverlay)}
+              className={styles.focusOverlay}
             />
             <FieldOverlay
               variant="hover"
               borderRadius={fieldBorderRadius}
-              className={classnames(styles.hoverOverlay)}
+              className={styles.hoverOverlay}
             >
               <Indicator type={type} hover={true} />
             </FieldOverlay>
