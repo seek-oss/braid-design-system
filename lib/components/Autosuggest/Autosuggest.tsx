@@ -129,10 +129,10 @@ function SuggestionItem({
               </Text>
             </Box>
           </Column>
-          {onClear && clearLabel ? (
+          {typeof onClear === 'function' ? (
             <Column width="content">
               <ClearButton
-                label={clearLabel}
+                label={clearLabel || 'Clear suggestion'}
                 onClick={(event: MouseEvent) => {
                   event.preventDefault();
                   event.stopPropagation();
