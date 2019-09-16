@@ -50,13 +50,18 @@ const docs: ComponentDocs = {
               ...(showRecent && value.text === ''
                 ? [
                     {
-                      text: 'Chocolate',
+                      text: 'Apples',
                       onClear: () => setShowRecent(false),
                     },
                   ]
                 : []),
               ...makeSuggestions(
-                ['Apples', 'Bananas', 'Broccoli', 'Carrots'],
+                [
+                  ...(value.text !== '' ? ['Apples'] : []),
+                  'Bananas',
+                  'Broccoli',
+                  'Carrots',
+                ],
                 value.text,
               ),
             ]}
