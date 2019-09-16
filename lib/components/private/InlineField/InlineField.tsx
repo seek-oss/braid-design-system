@@ -63,6 +63,7 @@ const Indicator = ({
       transition="fast"
       width="full"
       height="full"
+      borderRadius="full"
       className={classnames(styles.radioIndicator)}
     />
   );
@@ -95,10 +96,7 @@ export const InlineField = forwardRef<HTMLElement, InternalInlineFieldProps>(
 
     const messageId = `${id}-message`;
     const isCheckbox = type === 'checkbox';
-    const circleIfRadio = {
-      [styles.circle]: type === 'radio',
-    };
-    const fieldBorderRadius = isCheckbox ? 'standard' : undefined;
+    const fieldBorderRadius = isCheckbox ? 'standard' : 'full';
     const accentBackground = disabled ? 'formAccentDisabled' : 'formAccent';
 
     return (
@@ -121,7 +119,7 @@ export const InlineField = forwardRef<HTMLElement, InternalInlineFieldProps>(
         <Box display="flex">
           <Box
             position="relative"
-            className={classnames(styles.fakeField, circleIfRadio)}
+            className={classnames(styles.fakeField)}
             background={disabled ? 'inputDisabled' : 'input'}
             borderRadius={fieldBorderRadius}
             boxShadow={
@@ -134,7 +132,7 @@ export const InlineField = forwardRef<HTMLElement, InternalInlineFieldProps>(
               variant={tone === 'critical' && isCheckbox ? tone : undefined}
               background={isCheckbox ? accentBackground : undefined}
               borderRadius={fieldBorderRadius}
-              className={classnames(styles.selected, circleIfRadio)}
+              className={styles.selected}
             >
               <Indicator type={type} disabled={disabled} />
             </FieldOverlay>
@@ -142,12 +140,12 @@ export const InlineField = forwardRef<HTMLElement, InternalInlineFieldProps>(
             <FieldOverlay
               variant="focus"
               borderRadius={fieldBorderRadius}
-              className={classnames(styles.focusOverlay, circleIfRadio)}
+              className={styles.focusOverlay}
             />
             <FieldOverlay
               variant="hover"
               borderRadius={fieldBorderRadius}
-              className={classnames(styles.hoverOverlay, circleIfRadio)}
+              className={styles.hoverOverlay}
             >
               <Indicator type={type} hover={true} />
             </FieldOverlay>

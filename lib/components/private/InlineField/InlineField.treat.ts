@@ -57,10 +57,6 @@ export const children = style(theme => {
   };
 });
 
-export const circle = style({
-  borderRadius: '100%',
-});
-
 export const selected = style({
   selectors: {
     [`${realFieldBase}:checked + * > ${fakeFieldBase} > &`]: {
@@ -113,4 +109,4 @@ const radioScale = style({
   },
 });
 
-export const radioIndicator = [indicator, circle, radioScale];
+export const radioIndicator = [indicator, radioScale];

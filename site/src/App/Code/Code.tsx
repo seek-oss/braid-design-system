@@ -21,6 +21,7 @@ const CodeButton = ({
   return (
     <Box
       component={component}
+      cursor="pointer"
       background="neutralLight"
       borderRadius="standard"
       paddingY="xxsmall"
@@ -38,7 +39,12 @@ const CodeButton = ({
         className={classnames(styles.hoverOverlay)}
       />
       <FieldOverlay className={classnames(styles.activeOverlay)} />
-      <Box component="span" position="relative" className={styles.buttonText}>
+      <Box
+        component="span"
+        position="relative"
+        pointerEvents="none"
+        className={styles.buttonText}
+      >
         <Text size="xsmall" baseline={false}>
           {children}
         </Text>
@@ -77,6 +83,7 @@ export default ({ children }: CodeProps) => {
       </Box>
       <Box
         display="flex"
+        justifyContent="flexEnd"
         paddingY="xxsmall"
         paddingRight="xxsmall"
         background="neutralLight"

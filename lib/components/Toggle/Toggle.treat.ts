@@ -32,9 +32,7 @@ export const fieldSize = style(theme => {
   };
 });
 
-export const slideContainer = style({
-  alignItems: 'center',
-});
+export const slideContainer = style({});
 
 export const slideTrack = style(theme => {
   const size = getSize(theme);
@@ -63,10 +61,6 @@ export const slideTrackSelected = style(theme => {
   };
 });
 
-export const circle = style({
-  borderRadius: '100%',
-});
-
 export const slider = style(theme => {
   const size = getSize(theme);
   const trackWidth = size * toggleWidthRatio;
@@ -76,8 +70,6 @@ export const slider = style(theme => {
   return {
     height: size,
     width: size,
-    alignItems: 'center',
-    justifyContent: 'center',
     selectors: {
       [`${realField}:active + ${slideContainer} &`]: {
         transform: `translateX(-${anticipation}px)`,
