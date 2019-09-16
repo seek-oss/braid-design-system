@@ -38,6 +38,8 @@ export interface UseBoxProps {
   marginRight?: ResponsiveProp<SpaceRight>;
   display?: ResponsiveProp<keyof typeof styleRefs.display>;
   flexDirection?: ResponsiveProp<keyof typeof styleRefs.flexDirection>;
+  alignItems?: ResponsiveProp<keyof typeof styleRefs.alignItems>;
+  justifyContent?: ResponsiveProp<keyof typeof styleRefs.justifyContent>;
   borderRadius?: keyof typeof styleRefs.borderRadius;
   background?: keyof typeof styleRefs.background;
   boxShadow?: keyof typeof styleRefs.boxShadow;
@@ -46,6 +48,8 @@ export interface UseBoxProps {
   height?: keyof typeof styleRefs.height;
   width?: keyof typeof styleRefs.width;
   position?: keyof typeof styleRefs.position;
+  cursor?: keyof typeof styleRefs.cursor;
+  pointerEvents?: keyof typeof styleRefs.pointerEvents;
 }
 
 function getResponsiveClasses<PropName extends string>(
@@ -81,6 +85,8 @@ export default ({
   marginRight,
   display,
   flexDirection,
+  alignItems,
+  justifyContent,
   borderRadius,
   background,
   boxShadow,
@@ -89,6 +95,8 @@ export default ({
   height,
   width,
   position,
+  cursor,
+  pointerEvents,
 }: UseBoxProps) => {
   const resetStyles = useStyles(resetStyleRefs);
   const styles = useStyles(styleRefs);
@@ -114,6 +122,8 @@ export default ({
     styles.height[height!],
     styles.width[width!],
     styles.position[position!],
+    styles.cursor[cursor!],
+    styles.pointerEvents[pointerEvents!],
     resolvedMarginTop &&
       getResponsiveClasses(
         styles.margin.top,
@@ -169,6 +179,18 @@ export default ({
         styles.flexDirection,
         styles.flexDirectionDesktop,
         flexDirection,
+      ),
+    alignItems &&
+      getResponsiveClasses(
+        styles.alignItems,
+        styles.alignItemsDesktop,
+        alignItems,
+      ),
+    justifyContent &&
+      getResponsiveClasses(
+        styles.justifyContent,
+        styles.justifyContentDesktop,
+        justifyContent,
       ),
   );
 };

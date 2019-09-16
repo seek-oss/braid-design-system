@@ -29,6 +29,7 @@ export const Overlay = ({
   return (
     <Box
       position="absolute"
+      pointerEvents="none"
       background={background}
       borderRadius={borderRadius}
       boxShadow={boxShadow}

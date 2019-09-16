@@ -52,6 +52,7 @@ export const Toggle = ({
       <Box
         position="relative"
         display="flex"
+        alignItems="center"
         className={classnames(styles.slideContainer, styles.fieldSize)}
       >
         <Box position="absolute" width="full" className={styles.slideTrack}>
@@ -70,20 +71,23 @@ export const Toggle = ({
           boxShadow="borderStandard"
           transition="fast"
           display="flex"
-          className={classnames(styles.slider, styles.circle)}
+          alignItems="center"
+          justifyContent="center"
+          borderRadius="full"
+          className={styles.slider}
         >
           <FieldOverlay className={styles.icon}>
             <IconTick tone="formAccent" size="fill" />
           </FieldOverlay>
           <FieldOverlay
             variant="focus"
-            borderRadius={undefined}
-            className={classnames(styles.focusOverlay, styles.circle)}
+            borderRadius="full"
+            className={styles.focusOverlay}
           />
           <FieldOverlay
             variant="hover"
-            borderRadius={undefined}
-            className={classnames(styles.hoverOverlay, styles.circle)}
+            borderRadius="full"
+            className={styles.hoverOverlay}
           />
         </Box>
       </Box>

@@ -71,6 +71,11 @@ exports[`Box 1`] = `
   acceptCharset?: string
   accessKey?: string
   action?: string
+  alignItems?: ResponsiveProp<
+    | "center"
+    | "flexEnd"
+    | "flexStart"
+  >
   allowFullScreen?: boolean
   allowTransparency?: boolean
   alt?: string
@@ -257,7 +262,9 @@ exports[`Box 1`] = `
     | "positive"
     | "positiveLight"
     | "selection"
-  borderRadius?: "standard"
+  borderRadius?: 
+    | "full"
+    | "standard"
   boxShadow?: 
     | "borderCritical"
     | "borderFormAccent"
@@ -468,6 +475,7 @@ exports[`Box 1`] = `
   controls?: boolean
   coords?: string
   crossOrigin?: string
+  cursor?: "pointer"
   dangerouslySetInnerHTML?: { __html: string; }
   data?: string
   datatype?: string
@@ -506,7 +514,9 @@ exports[`Box 1`] = `
     | number
     | string
   headers?: string
-  height?: "full"
+  height?: 
+    | "full"
+    | "touchable"
   hidden?: boolean
   high?: number
   href?: string
@@ -523,6 +533,12 @@ exports[`Box 1`] = `
   itemRef?: string
   itemScope?: boolean
   itemType?: string
+  justifyContent?: ResponsiveProp<
+    | "center"
+    | "flexEnd"
+    | "flexStart"
+    | "spaceBetween"
+  >
   keyParams?: string
   keyType?: string
   kind?: string
@@ -861,6 +877,7 @@ exports[`Box 1`] = `
   pattern?: string
   placeholder?: string
   playsInline?: boolean
+  pointerEvents?: "none"
   position?: 
     | "absolute"
     | "fixed"
@@ -925,7 +942,9 @@ exports[`Box 1`] = `
     | string
     | string[]
   vocab?: string
-  width?: "full"
+  width?: 
+    | "full"
+    | "touchable"
   wmode?: string
   wrap?: string
 }

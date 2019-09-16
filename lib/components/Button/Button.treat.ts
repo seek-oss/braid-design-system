@@ -1,7 +1,6 @@
 import { style } from 'sku/treat';
 
 export const root = style({
-  cursor: 'pointer',
   outline: 'none',
 });
 
@@ -58,7 +57,6 @@ export const focusOverlay = [
 
 export const content = style({
   zIndex: 1,
-  pointerEvents: 'none',
   overflow: 'hidden',
   textOverflow: 'ellipsis',
   userSelect: 'none',
