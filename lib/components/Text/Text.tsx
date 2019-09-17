@@ -1,5 +1,4 @@
 import React, { ReactNode, useContext, useMemo } from 'react';
-import classnames from 'classnames';
 import TextContext from './TextContext';
 import { Box, BoxProps } from '../Box/Box';
 import { useText, UseTextProps } from '../../hooks/typography';
@@ -47,12 +46,7 @@ export const Text = ({
 
   return (
     <TextContext.Provider value={textContextValue}>
-      <Box
-        id={id}
-        display="block"
-        component={component}
-        className={classnames(textStyles)}
-      >
+      <Box id={id} display="block" component={component} className={textStyles}>
         {children}
       </Box>
     </TextContext.Provider>

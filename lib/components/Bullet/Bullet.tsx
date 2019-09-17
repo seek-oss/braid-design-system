@@ -1,10 +1,10 @@
 import React, { ReactNode, useContext } from 'react';
+import { useStyles } from 'sku/treat';
 import classnames from 'classnames';
 import { Box } from '../Box/Box';
 import { useText } from '../../hooks/typography';
 import { BulletListContext } from '../BulletList/BulletList';
 import * as styleRefs from './Bullet.treat';
-import { useStyles } from 'sku/treat';
 
 export interface BulletProps {
   children: ReactNode;
