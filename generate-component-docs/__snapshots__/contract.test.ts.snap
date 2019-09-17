@@ -980,6 +980,20 @@ exports[`Bullet 1`] = `
 exports[`BulletList 1`] = `
 {
   children: ReactNode
+  size?: 
+    | "large"
+    | "small"
+    | "standard"
+    | "xsmall"
+  space?: 
+    | "large"
+    | "medium"
+    | "none"
+    | "small"
+    | "xlarge"
+    | "xsmall"
+    | "xxlarge"
+    | "xxsmall"
 }
 `;
 
