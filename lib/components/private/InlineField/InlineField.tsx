@@ -100,7 +100,7 @@ export const InlineField = forwardRef<HTMLElement, InternalInlineFieldProps>(
     const accentBackground = disabled ? 'formAccentDisabled' : 'formAccent';
 
     return (
-      <Box>
+      <Box position="relative">
         <Box
           component="input"
           type={type}
