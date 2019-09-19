@@ -37,6 +37,7 @@ export const Toggle = ({
 
   return (
     <Box
+      position="relative"
       display="flex"
       flexDirection={align === 'right' ? 'rowReverse' : undefined}
     >
