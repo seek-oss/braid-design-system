@@ -17,6 +17,7 @@ export interface ButtonProps {
   type?: NativeButtonProps['type'];
   children?: ReactNode;
   weight?: ButtonWeight;
+  loading?: boolean;
   'aria-describedby'?: NativeButtonProps['aria-describedby'];
 }
 
@@ -47,6 +48,7 @@ export const Button = ({
   weight = 'regular',
   type = 'button',
   id,
+  loading = false,
   'aria-describedby': ariaDescribedBy,
 }: ButtonProps) => {
   const styles = useStyles(styleRefs);
@@ -71,6 +73,7 @@ export const Button = ({
         [styles.weak]: isWeak,
       })}
       onClick={onClick}
+      disabled={loading}
     >
       <FieldOverlay
         variant="focus"
@@ -96,6 +99,36 @@ export const Button = ({
           tone={weight === 'weak' ? 'formAccent' : undefined}
         >
           {children}
+          {loading ? (
+            <Box
+              aria-hidden
+              component="span"
+              display="inlineBlock"
+              position="relative"
+              className={styles.loading}
+            >
+              <Box
+                component="span"
+                display="block"
+                position="absolute"
+                className={styles.ellipsis}
+              >
+                {'\u2026'}
+              </Box>
+              {/*
+                This box ensures that the space reserved for the
+                ellipsis is relative to the theme's font size
+                and character width.
+              */}
+              <Box
+                component="span"
+                display="inline"
+                className={styles.visibilityHidden}
+              >
+                {'\u2026'}
+              </Box>
+            </Box>
+          ) : null}
         </Text>
       </Box>
     </Box>
