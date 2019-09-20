@@ -9,6 +9,7 @@ export { Alert } from './Alert/Alert';
 export { Autosuggest } from './Autosuggest/Autosuggest';
 export { Badge } from './Badge/Badge';
 export { Box } from './Box/Box';
+export { BoxRenderer } from './Box/BoxRenderer';
 export { Bullet } from './Bullet/Bullet';
 export { BulletList } from './BulletList/BulletList';
 export { Button } from './Button/Button';

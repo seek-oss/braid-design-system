@@ -6,7 +6,7 @@ import TextContext from '../Text/TextContext';
 import HeadingContext from '../Heading/HeadingContext';
 import ActionsContext from '../Actions/ActionsContext';
 import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
-import useBox from '../../hooks/useBox';
+import { useBoxStyles } from '../Box/useBoxStyles';
 import { Box } from '../Box/Box';
 import {
   useTextTone,
@@ -60,7 +60,7 @@ function InlineLink({ children }: TextLinkRendererProps) {
         style: {},
         className: classnames(
           useLinkStyles(),
-          useBox({
+          useBoxStyles({
             component: 'a',
             cursor: 'pointer',
           }),
@@ -78,7 +78,7 @@ function TouchableLink({ children }: TextLinkRendererProps) {
           style: {},
           className: classnames(
             useLinkStyles(),
-            useBox({
+            useBoxStyles({
               component: 'a',
               cursor: 'pointer',
               display: 'block',
@@ -108,7 +108,7 @@ function ButtonLink({ children }: TextLinkRendererProps) {
             useLinkStyles(),
             useText(buttonLinkTextProps),
             useTouchableSpace(buttonLinkTextProps.size),
-            useBox({
+            useBoxStyles({
               component: 'a',
               cursor: 'pointer',
               display: 'block',
