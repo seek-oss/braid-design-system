@@ -24,6 +24,12 @@ const docs: ComponentDocs = {
       Container,
       Example: () => <Button weight="weak">Submit</Button>,
     },
+    {
+      label: 'Loading Button',
+      Container,
+      Example: () => <Button loading>Loading</Button>,
+      storybook: false,
+    },
   ],
 };
 

@@ -63,3 +63,23 @@ export const content = style({
   whiteSpace: 'nowrap',
   textAlign: 'center',
 });
+
+export const loading = style({
+  verticalAlign: 'top',
+  textAlign: 'left',
+});
+export const ellipsis = style({
+  width: 0,
+  textAlign: 'left',
+  overflowX: 'hidden',
+  animationDuration: '1s',
+  animationIterationCount: 'infinite',
+  '@keyframes': {
+    to: {
+      width: 20,
+    },
+  },
+});
+export const visibilityHidden = style({
+  visibility: 'hidden',
+});
