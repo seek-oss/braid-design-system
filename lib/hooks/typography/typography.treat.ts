@@ -4,7 +4,7 @@ import { Theme } from 'treat/theme';
 import basekick from 'basekick';
 import { getAccessibleVariant, isLight, mapToStyleProperty } from '../../utils';
 import { Breakpoint } from '../../themes/makeTreatTheme';
-import { UseBoxProps } from '../useBox';
+import { UseBoxStylesProps } from '../../components/Box/useBoxStyles';
 
 export const fontFamily = style(({ typography }) => ({
   fontFamily: typography.fontFamily,
@@ -164,7 +164,7 @@ const textColorForBackground = (
 };
 
 type Foreground = keyof typeof tone;
-type BoxBackground = NonNullable<UseBoxProps['background']>;
+type BoxBackground = NonNullable<UseBoxStylesProps['background']>;
 type BackgroundContrast = {
   [background in BoxBackground]?: {
     [foreground in Foreground | 'default']?: ClassRef;

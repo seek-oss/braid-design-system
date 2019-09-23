@@ -1,7 +1,7 @@
 import React, { ReactNode, createContext, Children } from 'react';
 import { Box } from '../Box/Box';
 import { UseTextProps } from '../../hooks/typography';
-import { SpaceY } from '../../hooks/useBox';
+import { SpaceY } from '../Box/useBoxStyles';
 
 const defaultSize = 'standard';
 const defaultSpace = 'xxsmall';

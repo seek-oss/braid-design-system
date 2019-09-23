@@ -1,10 +1,10 @@
-import React, { AllHTMLAttributes, createElement, forwardRef } from 'react';
-import useBox, { UseBoxProps } from '../../hooks/useBox';
-import { BackgroundProvider } from './BackgroundContext';
+import { createElement, forwardRef, AllHTMLAttributes } from 'react';
+import { useBoxStyles, UseBoxStylesProps } from './useBoxStyles';
+import { renderBackgroundProvider } from './BackgroundContext';
 import { Optional, Omit } from 'utility-types';
 
 export interface BoxProps
-  extends Optional<UseBoxProps, 'component'>,
+  extends Optional<UseBoxStylesProps, 'component'>,
     Omit<AllHTMLAttributes<HTMLElement>, 'width' | 'height'> {}
 
 const NamedBox = forwardRef<HTMLElement, BoxProps>(
@@ -44,7 +44,7 @@ const NamedBox = forwardRef<HTMLElement, BoxProps>(
     },
     ref,
   ) => {
-    const boxStyles = useBox({
+    const boxStyles = useBoxStyles({
       component,
       padding,
       paddingX,
@@ -82,11 +82,7 @@ const NamedBox = forwardRef<HTMLElement, BoxProps>(
       ref,
     });
 
-    return background ? (
-      <BackgroundProvider value={background}>{element}</BackgroundProvider>
-    ) : (
-      element
-    );
+    return renderBackgroundProvider(background, element);
   },
 );
 
