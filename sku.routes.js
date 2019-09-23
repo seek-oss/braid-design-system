@@ -1,6 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 
+const undocumentedExports = ['useThemeName', 'BoxRenderer'];
+
 const getExports = relativePath => {
   const sourcePath = path.join(__dirname, relativePath);
   const source = fs.readFileSync(sourcePath, 'utf-8'); // eslint-disable-line no-sync
@@ -8,7 +10,7 @@ const getExports = relativePath => {
   return source
     .match(/export { [A-Za-z]+/g)
     .map(x => x.replace('export { ', ''))
-    .filter(x => !/^use/.test(x))
+    .filter(x => !undocumentedExports.includes(x))
     .sort();
 };
 

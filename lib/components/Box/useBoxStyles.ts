@@ -2,7 +2,7 @@ import { ReactType } from 'react';
 import { useStyles } from 'sku/react-treat';
 import classnames from 'classnames';
 import * as resetStyleRefs from '../../reset/reset.treat';
-import * as styleRefs from './box.treat';
+import * as styleRefs from './useBoxStyles.treat';
 
 type ResponsiveProp<AtomName> = AtomName | [AtomName, AtomName];
 
@@ -20,7 +20,7 @@ export type SpaceX = Extract<SpaceLeft, SpaceRight>;
 export type SpaceY = Extract<SpaceTop, SpaceBottom>;
 type Space = Extract<SpaceX, SpaceY>;
 
-export interface UseBoxProps {
+export interface UseBoxStylesProps {
   component: ReactType;
   padding?: ResponsiveProp<Space>;
   paddingX?: ResponsiveProp<SpaceX>;
@@ -67,7 +67,7 @@ function getResponsiveClasses<PropName extends string>(
   }
 }
 
-export default ({
+export const useBoxStyles = ({
   component,
   padding,
   paddingX,
@@ -97,7 +97,7 @@ export default ({
   position,
   cursor,
   pointerEvents,
-}: UseBoxProps) => {
+}: UseBoxStylesProps) => {
   const resetStyles = useStyles(resetStyleRefs);
   const styles = useStyles(styleRefs);
 

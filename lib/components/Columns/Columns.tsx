@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import { useStyles } from 'sku/treat';
 import { Box } from '../Box/Box';
 import { ColumnProps } from '../Column/Column';
-import { SpaceX } from '../../hooks/useBox';
+import { SpaceX } from '../Box/useBoxStyles';
 import * as styleRefs from './Columns.treat';
 
 const defaultCollapse = false;
