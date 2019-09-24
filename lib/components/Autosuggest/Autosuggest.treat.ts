@@ -27,9 +27,9 @@ const menuBase = style({
   overflowY: 'auto',
   zIndex: zIndex.pageOverlay,
 });
-const menuHeight = style(({ utils, spacing }) => {
+const menuHeight = style(({ utils, grid, touchableSpace, space }) => {
   const calcMenuHeight = (numSuggestions: number) =>
-    utils.rows(spacing.touchableRows * numSuggestions + spacing.row.xxsmall);
+    grid * (touchableSpace * numSuggestions + space.xxsmall);
 
   return {
     maxHeight: calcMenuHeight(6),

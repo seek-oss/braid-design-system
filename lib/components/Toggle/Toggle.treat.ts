@@ -24,7 +24,7 @@ export const label = style({
 });
 
 export const fieldSize = style(theme => {
-  const size = theme.utils.rows(theme.spacing.touchableRows);
+  const size = theme.grid * theme.touchableSpace;
 
   return {
     width: getSize(theme) * toggleWidthRatio,
@@ -36,7 +36,7 @@ export const slideContainer = style({});
 
 export const slideTrack = style(theme => {
   const size = getSize(theme);
-  const height = size - theme.grid.row;
+  const height = size - theme.grid;
 
   return {
     height,
@@ -50,7 +50,7 @@ export const slideTrack = style(theme => {
 });
 
 export const slideTrackSelected = style(theme => {
-  const trackWidth = theme.utils.rows(theme.spacing.touchableRows);
+  const trackWidth = theme.grid * theme.touchableSpace;
 
   return {
     selectors: {

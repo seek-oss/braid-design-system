@@ -37,32 +37,18 @@ export interface TreatTokens {
       large: TextDefinition;
     };
   };
-  grid: {
-    row: number;
-    column: number;
-  };
   responsiveBreakpoint: number;
-  spacing: {
-    touchableRows: number;
-    row: {
-      xxsmall: number;
-      xsmall: number;
-      small: number;
-      medium: number;
-      large: number;
-      xlarge: number;
-      xxlarge: number;
-    };
-    column: {
-      gutter: number;
-      xxsmall: number;
-      xsmall: number;
-      small: number;
-      medium: number;
-      large: number;
-      xlarge: number;
-      xxlarge: number;
-    };
+  grid: number;
+  touchableSpace: number;
+  space: {
+    gutter: number;
+    xxsmall: number;
+    xsmall: number;
+    small: number;
+    medium: number;
+    large: number;
+    xlarge: number;
+    xxlarge: number;
   };
   transforms: {
     touchable: string;
