@@ -38,54 +38,56 @@ req.keys().forEach(filename => {
     .forEach(theme => {
       stories.add(theme.name, () => (
         <BrowserRouter>
-          <BraidProvider theme={theme} styleBody={false}>
-            {docs.examples.map(
-              (
-                {
-                  storybook = true,
-                  label = componentName,
-                  Example,
-                  Container = DefaultContainer,
-                },
-                i,
-              ) =>
-                Example && storybook ? (
-                  <div
-                    key={i}
-                    style={{
-                      minHeight: 300,
-                      paddingBottom: 32,
-                      overflow: 'hidden',
-                    }}
-                  >
-                    <h4
+          <BraidProvider theme={theme}>
+            <div style={{ background: 'white' }}>
+              {docs.examples.map(
+                (
+                  {
+                    storybook = true,
+                    label = componentName,
+                    Example,
+                    Container = DefaultContainer,
+                  },
+                  i,
+                ) =>
+                  Example && storybook ? (
+                    <div
+                      key={i}
                       style={{
-                        margin: 0,
-                        marginBottom: 18,
-                        padding: 0,
-                        fontSize: 14,
-                        fontFamily: 'arial',
-                        color: '#ccc',
+                        minHeight: 300,
+                        paddingBottom: 32,
+                        overflow: 'hidden',
                       }}
                     >
-                      {label}
-                    </h4>
-                    <Container>
-                      <Example id="id" handler={handler} />
-                    </Container>
-                    <div style={{ paddingTop: 18 }}>
-                      <hr
+                      <h4
                         style={{
                           margin: 0,
-                          border: 0,
-                          height: 1,
-                          background: '#eee',
+                          marginBottom: 18,
+                          padding: 0,
+                          fontSize: 14,
+                          fontFamily: 'arial',
+                          color: '#ccc',
                         }}
-                      />
+                      >
+                        {label}
+                      </h4>
+                      <Container>
+                        <Example id="id" handler={handler} />
+                      </Container>
+                      <div style={{ paddingTop: 18 }}>
+                        <hr
+                          style={{
+                            margin: 0,
+                            border: 0,
+                            height: 1,
+                            background: '#eee',
+                          }}
+                        />
+                      </div>
                     </div>
-                  </div>
-                ) : null,
-            )}
+                  ) : null,
+              )}
+            </div>
           </BraidProvider>
         </BrowserRouter>
       ));
