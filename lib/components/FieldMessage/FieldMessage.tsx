@@ -4,7 +4,6 @@ import classnames from 'classnames';
 import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';
 import { IconCritical, IconPositive } from '../icons';
-import { useThemeName } from '../ThemeNameConsumer/ThemeNameContext';
 import * as styleRefs from './FieldMessage.treat';
 
 const tones = ['neutral', 'critical', 'positive'] as const;
@@ -42,19 +41,8 @@ export const FieldMessage = ({
   const styles = useStyles(styleRefs);
   const showMessage = !disabled && message;
 
-  // Temporary switch to support maintaining a consistent UX
-  // while consumers migrate forms from seek-style-guide.
-  // Can be removed once we have form field parity and have
-  // given consumers the opportunity to migrate.
-  const isSeekAu = useThemeName() === 'seekAnz';
-
   return (
-    <Box
-      id={id}
-      paddingBottom={isSeekAu ? 'xxsmall' : 'xsmall'}
-      display="flex"
-      justifyContent="flexEnd"
-    >
+    <Box id={id} paddingBottom="xsmall" display="flex" justifyContent="flexEnd">
       <Box className={classnames(styles.grow, styles.minHeight)}>
         {showMessage ? (
           <Text size="small" tone={tone === 'neutral' ? 'secondary' : tone}>
