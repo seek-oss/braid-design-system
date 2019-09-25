@@ -3,10 +3,10 @@ import { mapToStyleProperty } from '../../utils';
 
 export const gutterOffset = styleMap(theme =>
   mapToStyleProperty(
-    theme.spacing.column,
+    theme.space,
     'marginLeft',
     (space: number, propertyName) => ({
-      [propertyName]: -(space * theme.grid.column),
+      [propertyName]: -(space * theme.grid),
     }),
   ),
 );

@@ -33,41 +33,41 @@ const tokens: TreatTokens = {
         '1': {
           mobile: {
             size: 28,
-            rows: 6,
+            rows: 9,
           },
           desktop: {
             size: 42,
-            rows: 8,
+            rows: 11,
           },
         },
         '2': {
           mobile: {
             size: 21,
-            rows: 5,
+            rows: 8,
           },
           desktop: {
             size: 28,
-            rows: 6,
+            rows: 9,
           },
         },
         '3': {
           mobile: {
             size: 21,
-            rows: 5,
+            rows: 7,
           },
           desktop: {
             size: 21,
-            rows: 5,
+            rows: 7,
           },
         },
         '4': {
           mobile: {
             size: 18,
-            rows: 5,
+            rows: 7,
           },
           desktop: {
             size: 18,
-            rows: 5,
+            rows: 7,
           },
         },
       },
@@ -76,71 +76,57 @@ const tokens: TreatTokens = {
       xsmall: {
         mobile: {
           size: 12,
-          rows: 3,
+          rows: 5,
         },
         desktop: {
           size: 12,
-          rows: 3,
+          rows: 5,
         },
       },
       small: {
         mobile: {
           size: 14,
-          rows: 3,
+          rows: 5,
         },
         desktop: {
           size: 14,
-          rows: 3,
+          rows: 5,
         },
       },
       standard: {
         mobile: {
           size: 16,
-          rows: 4,
+          rows: 6,
         },
         desktop: {
           size: 16,
-          rows: 4,
+          rows: 6,
         },
       },
       large: {
         mobile: {
           size: 18,
-          rows: 5,
+          rows: 7,
         },
         desktop: {
           size: 18,
-          rows: 5,
+          rows: 7,
         },
       },
     },
   },
-  grid: {
-    row: 6,
-    column: 5,
-  },
   responsiveBreakpoint: 740,
-  spacing: {
-    touchableRows: 8,
-    row: {
-      xxsmall: 1,
-      xsmall: 2,
-      small: 3,
-      medium: 4,
-      large: 6,
-      xlarge: 8,
-      xxlarge: 16,
-    },
-    column: {
-      gutter: 5,
-      xxsmall: 1,
-      xsmall: 2,
-      small: 3,
-      medium: 4,
-      large: 6,
-      xlarge: 8,
-      xxlarge: 16,
-    },
+  grid: 4,
+  touchableSize: 12,
+  space: {
+    gutter: 6,
+    xxsmall: 1,
+    xsmall: 2,
+    small: 3,
+    medium: 5,
+    large: 8,
+    xlarge: 12,
+    xxlarge: 24,
   },
   transforms: {
     touchable: 'scale(0.95)',

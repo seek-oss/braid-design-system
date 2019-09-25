@@ -1,7 +1,7 @@
 import { style } from 'sku/treat';
 import getSize from './getSize';
 
-const realFieldBase = style({
+export const realField = style({
   opacity: 0,
   zIndex: 1,
   selectors: {
@@ -11,25 +11,18 @@ const realFieldBase = style({
   },
 });
 
-const realFieldSize = style(({ spacing, utils }) => ({
-  height: utils.rows(spacing.touchableRows),
-  width: utils.rows(spacing.touchableRows),
-}));
-
-export const realField = [realFieldSize, realFieldBase];
-
 const fakeFieldBase = style({
   flexShrink: 0,
 });
 
 const fakeFieldSize = style(theme => {
   const size = getSize(theme);
-  const { spacing, utils } = theme;
+  const { touchableSize, grid } = theme;
 
   return {
     height: size,
     width: size,
-    marginTop: (utils.rows(spacing.touchableRows) - size) / 2,
+    marginTop: (grid * touchableSize - size) / 2,
   };
 });
 
@@ -38,7 +31,7 @@ export const fakeField = [fakeFieldSize, fakeFieldBase];
 export const label = style({
   userSelect: 'none',
   selectors: {
-    [`${realFieldBase}:not(:disabled) + * > ${fakeFieldBase} + &`]: {
+    [`${realField}:not(:disabled) + * > ${fakeFieldBase} + &`]: {
       cursor: 'pointer',
     },
   },
@@ -50,7 +43,7 @@ export const children = style(theme => {
   return {
     marginLeft: size,
     selectors: {
-      [`${realFieldBase}:checked ~ &`]: {
+      [`${realField}:checked ~ &`]: {
         display: 'block',
       },
     },
@@ -59,7 +52,7 @@ export const children = style(theme => {
 
 export const selected = style({
   selectors: {
-    [`${realFieldBase}:checked + * > ${fakeFieldBase} > &`]: {
+    [`${realField}:checked + * > ${fakeFieldBase} > &`]: {
       opacity: 1,
     },
   },
@@ -67,7 +60,7 @@ export const selected = style({
 
 export const focusOverlay = style({
   selectors: {
-    [`${realFieldBase}:focus + * > ${fakeFieldBase} > &`]: {
+    [`${realField}:focus + * > ${fakeFieldBase} > &`]: {
       opacity: 1,
     },
   },
@@ -75,7 +68,7 @@ export const focusOverlay = style({
 
 export const hoverOverlay = style({
   selectors: {
-    [`${realFieldBase}:hover:not(:checked):not(:disabled) + * > ${fakeFieldBase} > &`]: {
+    [`${realField}:hover:not(:checked):not(:disabled) + * > ${fakeFieldBase} > &`]: {
       opacity: 1,
     },
   },
@@ -92,7 +85,7 @@ export const indicator = style({
 const checkboxScale = style({
   transform: 'scale(0.85)',
   selectors: {
-    [`${realFieldBase}:active + * > ${fakeFieldBase} > * > &`]: {
+    [`${realField}:active + * > ${fakeFieldBase} > * > &`]: {
       transform: 'scale(0.75)',
     },
   },
@@ -103,7 +96,7 @@ export const checkboxIndicator = [indicator, checkboxScale];
 const radioScale = style({
   transform: 'scale(0.6)',
   selectors: {
-    [`${realFieldBase}:active + * > ${fakeFieldBase} > * > &`]: {
+    [`${realField}:active + * > ${fakeFieldBase} > * > &`]: {
       transform: 'scale(0.5)',
     },
   },

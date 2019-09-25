@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import { useStyles } from 'sku/treat';
 import { Box } from '../Box/Box';
 import { ColumnProps } from '../Column/Column';
-import { SpaceX } from '../Box/useBoxStyles';
+import { Space } from '../Box/useBoxStyles';
 import * as styleRefs from './Columns.treat';
 
 const defaultCollapse = false;
@@ -12,7 +12,7 @@ const defaultGutter = 'gutter';
 
 interface ColumnsContext {
   collapse: boolean;
-  gutter: SpaceX;
+  gutter: Space;
 }
 export const ColumnsContext = createContext<ColumnsContext>({
   collapse: defaultCollapse,
@@ -23,7 +23,7 @@ export interface ColumnsProps {
   children: Array<ReactElement<ColumnProps>> | ReactElement<ColumnProps>;
   collapse?: boolean;
   reverse?: boolean;
-  gutter?: SpaceX;
+  gutter?: Space;
 }
 
 export const Columns = ({
