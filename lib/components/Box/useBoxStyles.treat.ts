@@ -1,91 +1,64 @@
-import { style, styleMap, Style } from 'sku/treat';
+import { style, styleMap } from 'sku/treat';
 import { Properties } from 'csstype';
 import { darken, lighten } from 'polished';
 import { getLightVariant, isLight, mapToStyleProperty } from '../../utils';
+import { Theme } from 'treat/theme';
 
-const spaceMapToCss = <Map extends string>(
-  spaceMap: Record<Map, number>,
-  scale: number,
+const spaceMapToCss = (
+  theme: Theme,
   cssPropertyName: keyof Properties,
-  desktopStyles?: (value: Style) => Style,
+  generateDesktopOnlyRules: boolean = false,
 ) => {
-  const spaceMapWithNone = {
-    ...spaceMap,
+  const spaceWithNone = {
+    ...theme.space,
     none: 0,
   };
 
   return mapToStyleProperty(
-    spaceMapWithNone,
+    spaceWithNone,
     cssPropertyName,
     (value: number, propertyName) =>
-      desktopStyles
-        ? desktopStyles({
-            [propertyName]: value * scale,
+      generateDesktopOnlyRules
+        ? theme.utils.desktopStyles({
+            [propertyName]: value * theme.grid,
           })
         : {
-            [propertyName]: value * scale,
+            [propertyName]: value * theme.grid,
           },
   );
 };
 
+const spaceMapToDesktopCss = (
+  theme: Theme,
+  cssPropertyName: keyof Properties,
+) => spaceMapToCss(theme, cssPropertyName, true);
+
 export const margin = {
-  top: styleMap(({ spacing, grid }) =>
-    spaceMapToCss(spacing.row, grid.row, 'marginTop'),
-  ),
-  bottom: styleMap(({ spacing, grid }) =>
-    spaceMapToCss(spacing.row, grid.row, 'marginBottom'),
-  ),
-  left: styleMap(({ spacing, grid }) =>
-    spaceMapToCss(spacing.column, grid.column, 'marginLeft'),
-  ),
-  right: styleMap(({ spacing, grid }) =>
-    spaceMapToCss(spacing.column, grid.column, 'marginRight'),
-  ),
+  top: styleMap(theme => spaceMapToCss(theme, 'marginTop')),
+  bottom: styleMap(theme => spaceMapToCss(theme, 'marginBottom')),
+  left: styleMap(theme => spaceMapToCss(theme, 'marginLeft')),
+  right: styleMap(theme => spaceMapToCss(theme, 'marginRight')),
 };
 
 export const marginDesktop = {
-  top: styleMap(({ spacing, grid, utils: { desktopStyles } }) =>
-    spaceMapToCss(spacing.row, grid.row, 'marginTop', desktopStyles),
-  ),
-  bottom: styleMap(({ spacing, grid, utils: { desktopStyles } }) =>
-    spaceMapToCss(spacing.row, grid.row, 'marginBottom', desktopStyles),
-  ),
-  left: styleMap(({ spacing, grid, utils: { desktopStyles } }) =>
-    spaceMapToCss(spacing.column, grid.column, 'marginLeft', desktopStyles),
-  ),
-  right: styleMap(({ spacing, grid, utils: { desktopStyles } }) =>
-    spaceMapToCss(spacing.column, grid.column, 'marginRight', desktopStyles),
-  ),
+  top: styleMap(theme => spaceMapToDesktopCss(theme, 'marginTop')),
+  bottom: styleMap(theme => spaceMapToDesktopCss(theme, 'marginBottom')),
+  left: styleMap(theme => spaceMapToDesktopCss(theme, 'marginLeft')),
+  right: styleMap(theme => spaceMapToDesktopCss(theme, 'marginRight')),
 };
 
 export const padding = {
-  top: styleMap(({ spacing, grid }) =>
-    spaceMapToCss(spacing.row, grid.row, 'paddingTop'),
-  ),
-  bottom: styleMap(({ spacing, grid }) =>
-    spaceMapToCss(spacing.row, grid.row, 'paddingBottom'),
-  ),
-  left: styleMap(({ spacing, grid }) =>
-    spaceMapToCss(spacing.column, grid.column, 'paddingLeft'),
-  ),
-  right: styleMap(({ spacing, grid }) =>
-    spaceMapToCss(spacing.column, grid.column, 'paddingRight'),
-  ),
+  top: styleMap(theme => spaceMapToCss(theme, 'paddingTop')),
+  bottom: styleMap(theme => spaceMapToCss(theme, 'paddingBottom')),
+  left: styleMap(theme => spaceMapToCss(theme, 'paddingLeft')),
+  right: styleMap(theme => spaceMapToCss(theme, 'paddingRight')),
 };
 
 export const paddingDesktop = {
-  top: styleMap(({ spacing, grid, utils: { desktopStyles } }) =>
-    spaceMapToCss(spacing.row, grid.row, 'paddingTop', desktopStyles),
-  ),
-  bottom: styleMap(({ spacing, grid, utils: { desktopStyles } }) =>
-    spaceMapToCss(spacing.row, grid.row, 'paddingBottom', desktopStyles),
-  ),
-  left: styleMap(({ spacing, grid, utils: { desktopStyles } }) =>
-    spaceMapToCss(spacing.column, grid.column, 'paddingLeft', desktopStyles),
-  ),
-  right: styleMap(({ spacing, grid, utils: { desktopStyles } }) =>
-    spaceMapToCss(spacing.column, grid.column, 'paddingRight', desktopStyles),
-  ),
+  top: styleMap(theme => spaceMapToDesktopCss(theme, 'paddingTop')),
+  bottom: styleMap(theme => spaceMapToDesktopCss(theme, 'paddingBottom')),
+  left: styleMap(theme => spaceMapToDesktopCss(theme, 'paddingLeft')),
+  right: styleMap(theme => spaceMapToDesktopCss(theme, 'paddingRight')),
 };
 
 export const transform = {
@@ -119,7 +92,7 @@ export const width = {
   ...styleMap(mapToStyleProperty(widthRules, 'width'), 'width'),
   ...styleMap(
     theme => ({
-      touchable: { width: theme.grid.row * theme.spacing.touchableRows },
+      touchable: { width: theme.grid * theme.touchableSize },
     }),
     'width',
   ),
@@ -132,7 +105,7 @@ export const height = {
   ...styleMap(mapToStyleProperty(heightRules, 'height'), 'height'),
   ...styleMap(
     theme => ({
-      touchable: { height: theme.grid.row * theme.spacing.touchableRows },
+      touchable: { height: theme.grid * theme.touchableSize },
     }),
     'height',
   ),

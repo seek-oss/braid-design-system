@@ -1,41 +1,29 @@
 import { ReactType } from 'react';
 import { useStyles } from 'sku/react-treat';
 import classnames from 'classnames';
+import { Theme } from 'treat/theme';
 import * as resetStyleRefs from '../../reset/reset.treat';
 import * as styleRefs from './useBoxStyles.treat';
 
 type ResponsiveProp<AtomName> = AtomName | [AtomName, AtomName];
-
-type DirectionalSpace<
-  Direction extends 'top' | 'bottom' | 'left' | 'right'
-> = Extract<
-  keyof typeof styleRefs.padding[Direction],
-  keyof typeof styleRefs.margin[Direction]
->;
-type SpaceTop = DirectionalSpace<'top'>;
-type SpaceBottom = DirectionalSpace<'bottom'>;
-type SpaceLeft = DirectionalSpace<'left'>;
-type SpaceRight = DirectionalSpace<'right'>;
-export type SpaceX = Extract<SpaceLeft, SpaceRight>;
-export type SpaceY = Extract<SpaceTop, SpaceBottom>;
-type Space = Extract<SpaceX, SpaceY>;
+export type Space = keyof Theme['space'] | 'none';
 
 export interface UseBoxStylesProps {
   component: ReactType;
   padding?: ResponsiveProp<Space>;
-  paddingX?: ResponsiveProp<SpaceX>;
-  paddingY?: ResponsiveProp<SpaceY>;
-  paddingTop?: ResponsiveProp<SpaceTop>;
-  paddingBottom?: ResponsiveProp<SpaceBottom>;
-  paddingLeft?: ResponsiveProp<SpaceLeft>;
-  paddingRight?: ResponsiveProp<SpaceRight>;
+  paddingX?: ResponsiveProp<Space>;
+  paddingY?: ResponsiveProp<Space>;
+  paddingTop?: ResponsiveProp<Space>;
+  paddingBottom?: ResponsiveProp<Space>;
+  paddingLeft?: ResponsiveProp<Space>;
+  paddingRight?: ResponsiveProp<Space>;
   margin?: ResponsiveProp<Space>;
-  marginX?: ResponsiveProp<SpaceX>;
-  marginY?: ResponsiveProp<SpaceY>;
-  marginTop?: ResponsiveProp<SpaceTop>;
-  marginBottom?: ResponsiveProp<SpaceBottom>;
-  marginLeft?: ResponsiveProp<SpaceLeft>;
-  marginRight?: ResponsiveProp<SpaceRight>;
+  marginX?: ResponsiveProp<Space>;
+  marginY?: ResponsiveProp<Space>;
+  marginTop?: ResponsiveProp<Space>;
+  marginBottom?: ResponsiveProp<Space>;
+  marginLeft?: ResponsiveProp<Space>;
+  marginRight?: ResponsiveProp<Space>;
   display?: ResponsiveProp<keyof typeof styleRefs.display>;
   flexDirection?: ResponsiveProp<keyof typeof styleRefs.flexDirection>;
   alignItems?: ResponsiveProp<keyof typeof styleRefs.alignItems>;

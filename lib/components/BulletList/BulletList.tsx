@@ -1,13 +1,13 @@
 import React, { ReactNode, createContext, Children } from 'react';
 import { Box } from '../Box/Box';
 import { UseTextProps } from '../../hooks/typography';
-import { SpaceY } from '../Box/useBoxStyles';
+import { Space } from '../Box/useBoxStyles';
 
 const defaultSize = 'standard';
 const defaultSpace = 'xxsmall';
 interface BulletListContext {
   size: UseTextProps['size'];
-  space?: SpaceY;
+  space?: Space;
 }
 export const BulletListContext = createContext<BulletListContext>({
   size: defaultSize,
@@ -17,7 +17,7 @@ export const BulletListContext = createContext<BulletListContext>({
 export interface BulletListProps {
   children: ReactNode;
   size?: UseTextProps['size'];
-  space?: SpaceY;
+  space?: Space;
 }
 
 export const BulletList = ({

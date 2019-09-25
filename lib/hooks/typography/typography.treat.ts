@@ -38,13 +38,13 @@ const makeTypographyRules = (
 ) => {
   const mobile = alignTextToGrid(
     textDefinition.mobile,
-    grid.row,
+    grid,
     typography.descenderHeightScale,
   );
 
   const desktop = alignTextToGrid(
     textDefinition.desktop,
-    grid.row,
+    grid,
     typography.descenderHeightScale,
   );
 
@@ -227,17 +227,18 @@ const makeTouchableSpacing = (touchableHeight: number, textHeight: number) => {
   };
 };
 
-export const touchable = styleMap(({ typography, spacing, utils }) =>
-  mapValues(typography.text, textDefinition =>
-    utils.responsiveStyles(
-      makeTouchableSpacing(
-        utils.rows(spacing.touchableRows),
-        utils.rows(textDefinition.mobile.rows),
-      ),
-      makeTouchableSpacing(
-        utils.rows(spacing.touchableRows),
-        utils.rows(textDefinition.desktop.rows),
+export const touchable = styleMap(
+  ({ grid, typography, touchableSize, utils }) =>
+    mapValues(typography.text, textDefinition =>
+      utils.responsiveStyles(
+        makeTouchableSpacing(
+          grid * touchableSize,
+          grid * textDefinition.mobile.rows,
+        ),
+        makeTouchableSpacing(
+          grid * touchableSize,
+          grid * textDefinition.desktop.rows,
+        ),
       ),
     ),
-  ),
 );
