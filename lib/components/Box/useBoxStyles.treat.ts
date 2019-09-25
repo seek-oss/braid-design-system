@@ -92,7 +92,7 @@ export const width = {
   ...styleMap(mapToStyleProperty(widthRules, 'width'), 'width'),
   ...styleMap(
     theme => ({
-      touchable: { width: theme.grid * theme.touchableSpace },
+      touchable: { width: theme.grid * theme.touchableSize },
     }),
     'width',
   ),
@@ -105,7 +105,7 @@ export const height = {
   ...styleMap(mapToStyleProperty(heightRules, 'height'), 'height'),
   ...styleMap(
     theme => ({
-      touchable: { height: theme.grid * theme.touchableSpace },
+      touchable: { height: theme.grid * theme.touchableSize },
     }),
     'height',
   ),

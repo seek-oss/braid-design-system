@@ -17,12 +17,12 @@ const fakeFieldBase = style({
 
 const fakeFieldSize = style(theme => {
   const size = getSize(theme);
-  const { touchableSpace, grid } = theme;
+  const { touchableSize, grid } = theme;
 
   return {
     height: size,
     width: size,
-    marginTop: (grid * touchableSpace - size) / 2,
+    marginTop: (grid * touchableSize - size) / 2,
   };
 });
 

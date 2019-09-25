@@ -39,7 +39,7 @@ export interface TreatTokens {
   };
   responsiveBreakpoint: number;
   grid: number;
-  touchableSpace: number;
+  touchableSize: number;
   space: {
     gutter: number;
     xxsmall: number;

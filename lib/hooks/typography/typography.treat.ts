@@ -228,15 +228,15 @@ const makeTouchableSpacing = (touchableHeight: number, textHeight: number) => {
 };
 
 export const touchable = styleMap(
-  ({ grid, typography, touchableSpace, utils }) =>
+  ({ grid, typography, touchableSize, utils }) =>
     mapValues(typography.text, textDefinition =>
       utils.responsiveStyles(
         makeTouchableSpacing(
-          grid * touchableSpace,
+          grid * touchableSize,
           grid * textDefinition.mobile.rows,
         ),
         makeTouchableSpacing(
-          grid * touchableSpace,
+          grid * touchableSize,
           grid * textDefinition.desktop.rows,
         ),
       ),
