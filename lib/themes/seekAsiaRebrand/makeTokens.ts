@@ -2,6 +2,7 @@ import { TreatTokens } from '../makeTreatTheme';
 import { DeepPartial } from 'utility-types';
 import merge from 'lodash/merge';
 import palette from './palette';
+import { lighten } from 'polished';
 
 interface SeekAsiaBrandTokens {
   name: string;
@@ -21,9 +22,10 @@ export default ({
   const formAccent = palette.saLink;
   const link = palette.saLink;
   const disabled = palette.saGrayLight;
-  const focus = '#a3ccea';
-  const textNeutral = '#333';
-  const selection = '#eef5fa';
+  const textNeutral = palette.saGrayDarker;
+  const secondary = palette.saGrayDark;
+  const focus = lighten(0.3, palette.saBlueLight);
+  const selection = lighten(0.3, palette.saBlueLight);
 
   const tokens: TreatTokens = {
     name,
@@ -156,7 +158,7 @@ export default ({
         large: 2,
       },
       color: {
-        standard: palette.saGrayLighter,
+        standard: palette.saGrayLight,
         focus,
         critical,
         formAccent,
@@ -175,7 +177,7 @@ export default ({
         critical,
         info,
         positive,
-        secondary: palette.saGrayDark,
+        secondary,
       },
       background: {
         brand,
