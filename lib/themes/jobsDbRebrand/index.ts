@@ -3,7 +3,7 @@ import { Theme } from '../theme';
 
 const theme: Theme = {
   name: 'jobsDbRebrand',
-  background: '#eee',
+  background: '#edeff3',
   treatTheme,
 };
 

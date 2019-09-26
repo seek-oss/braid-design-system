@@ -149,6 +149,10 @@ const textColorForBackground = (
     if (theme.name === 'jobsDb' && background === 'brandAccent') {
       return theme.color.foreground.neutralInverted;
     }
+
+    if (theme.name === 'jobsDbRebrand' && background === 'info') {
+      return theme.color.foreground.neutralInverted;
+    }
   };
 
   return style(
