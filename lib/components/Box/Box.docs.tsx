@@ -4,14 +4,14 @@ import { Box } from './Box';
 import { HideCode } from '../private/HideCode';
 import tokens from '../../themes/wireframe/tokens';
 
-type Space = keyof typeof tokens.spacing.column;
-const spacing = Object.keys(tokens.spacing.column) as Space[];
+type Space = keyof typeof tokens.space;
+const spaceScale = Object.keys(tokens.space) as Space[];
 
 const docs: ComponentDocs = {
   storybook: false,
-  examples: spacing.map(
+  examples: spaceScale.map(
     (space): ComponentExample => ({
-      label: `"${space}" spacing`,
+      label: `"${space}" space`,
       Container: ({ children }) => (
         <Box
           background="formAccent"
@@ -21,16 +21,7 @@ const docs: ComponentDocs = {
         </Box>
       ),
       Example: () => (
-        <Box
-          {...(space === 'gutter'
-            ? {
-                marginX: space,
-                marginY: 'none',
-              }
-            : {
-                margin: space,
-              })}
-        >
+        <Box margin={space}>
           <HideCode>
             <Box style={{ background: 'whitesmoke', height: '20px' }} />
           </HideCode>

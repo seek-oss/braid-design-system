@@ -4,13 +4,12 @@ export const grow = style({
   flexGrow: 1,
 });
 
-export const minHeight = style(theme => {
-  const { responsiveStyles, rows } = theme.utils;
-  const { mobile, desktop } = theme.typography.text.small;
+export const minHeight = style(({ utils, grid, typography }) => {
+  const { mobile, desktop } = typography.text.small;
 
-  return responsiveStyles(
-    { minHeight: rows(mobile.rows) },
-    { minHeight: rows(desktop.rows) },
+  return utils.responsiveStyles(
+    { minHeight: grid * mobile.rows },
+    { minHeight: grid * desktop.rows },
   );
 });
 

@@ -549,6 +549,7 @@ exports[`Box 1`] = `
   low?: number
   manifest?: string
   margin?: ResponsiveProp<
+    | "gutter"
     | "large"
     | "medium"
     | "none"
@@ -559,6 +560,7 @@ exports[`Box 1`] = `
     | "xxsmall"
   >
   marginBottom?: ResponsiveProp<
+    | "gutter"
     | "large"
     | "medium"
     | "none"
@@ -592,6 +594,7 @@ exports[`Box 1`] = `
     | "xxsmall"
   >
   marginTop?: ResponsiveProp<
+    | "gutter"
     | "large"
     | "medium"
     | "none"
@@ -614,6 +617,7 @@ exports[`Box 1`] = `
     | "xxsmall"
   >
   marginY?: ResponsiveProp<
+    | "gutter"
     | "large"
     | "medium"
     | "none"
@@ -802,6 +806,7 @@ exports[`Box 1`] = `
   open?: boolean
   optimum?: number
   padding?: ResponsiveProp<
+    | "gutter"
     | "large"
     | "medium"
     | "none"
@@ -812,6 +817,7 @@ exports[`Box 1`] = `
     | "xxsmall"
   >
   paddingBottom?: ResponsiveProp<
+    | "gutter"
     | "large"
     | "medium"
     | "none"
@@ -844,6 +850,7 @@ exports[`Box 1`] = `
     | "xxsmall"
   >
   paddingTop?: ResponsiveProp<
+    | "gutter"
     | "large"
     | "medium"
     | "none"
@@ -865,6 +872,7 @@ exports[`Box 1`] = `
     | "xxsmall"
   >
   paddingY?: ResponsiveProp<
+    | "gutter"
     | "large"
     | "medium"
     | "none"
@@ -1190,6 +1198,7 @@ exports[`BoxRenderer 1`] = `
     | "spaceBetween"
   >
   margin?: ResponsiveProp<
+    | "gutter"
     | "large"
     | "medium"
     | "none"
@@ -1200,6 +1209,7 @@ exports[`BoxRenderer 1`] = `
     | "xxsmall"
   >
   marginBottom?: ResponsiveProp<
+    | "gutter"
     | "large"
     | "medium"
     | "none"
@@ -1232,6 +1242,7 @@ exports[`BoxRenderer 1`] = `
     | "xxsmall"
   >
   marginTop?: ResponsiveProp<
+    | "gutter"
     | "large"
     | "medium"
     | "none"
@@ -1253,6 +1264,7 @@ exports[`BoxRenderer 1`] = `
     | "xxsmall"
   >
   marginY?: ResponsiveProp<
+    | "gutter"
     | "large"
     | "medium"
     | "none"
@@ -1263,6 +1275,7 @@ exports[`BoxRenderer 1`] = `
     | "xxsmall"
   >
   padding?: ResponsiveProp<
+    | "gutter"
     | "large"
     | "medium"
     | "none"
@@ -1273,6 +1286,7 @@ exports[`BoxRenderer 1`] = `
     | "xxsmall"
   >
   paddingBottom?: ResponsiveProp<
+    | "gutter"
     | "large"
     | "medium"
     | "none"
@@ -1305,6 +1319,7 @@ exports[`BoxRenderer 1`] = `
     | "xxsmall"
   >
   paddingTop?: ResponsiveProp<
+    | "gutter"
     | "large"
     | "medium"
     | "none"
@@ -1326,6 +1341,7 @@ exports[`BoxRenderer 1`] = `
     | "xxsmall"
   >
   paddingY?: ResponsiveProp<
+    | "gutter"
     | "large"
     | "medium"
     | "none"
@@ -1386,6 +1402,7 @@ exports[`BulletList 1`] = `
     | "standard"
     | "xsmall"
   space?: 
+    | "gutter"
     | "large"
     | "medium"
     | "none"
