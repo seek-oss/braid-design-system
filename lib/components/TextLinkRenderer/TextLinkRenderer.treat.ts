@@ -1,6 +1,10 @@
 import { style } from 'sku/treat';
 
-export const root = style({
+export const underlineAlways = style({
+  textDecoration: 'underline',
+});
+
+export const underlineOnHoverOnly = style({
   textDecoration: 'none',
   ':hover': {
     textDecoration: 'underline',
@@ -14,7 +18,7 @@ export const button = style({
 
 export const focusOverlay = style({
   selectors: {
-    [`${root}:focus ~ &`]: {
+    [`${button}:focus ~ &`]: {
       opacity: 1,
     },
   },

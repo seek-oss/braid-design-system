@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import { TextLink } from './TextLink';
 import { Text } from '../Text/Text';
@@ -6,6 +6,8 @@ import { Heading } from '../Heading/Heading';
 import { Actions } from '../Actions/Actions';
 import { Button } from '../Button/Button';
 import { IconChevron } from '../icons';
+import { background as boxBackgrounds } from '../Box/useBoxStyles.treat';
+import { Box } from '../Box/Box';
 
 const docs: ComponentDocs = {
   migrationGuide: true,
@@ -187,6 +189,27 @@ const docs: ComponentDocs = {
           </TextLink>
         </Actions>
       ),
+    },
+    {
+      label: 'TextLink Contrast',
+      docsSite: false,
+      Example: () => {
+        const backgrounds = Object.keys(boxBackgrounds) as Array<
+          keyof typeof boxBackgrounds
+        >;
+
+        return (
+          <Fragment>
+            {backgrounds.sort().map(background => (
+              <Box background={background} key={background}>
+                <Text baseline={false}>
+                  {background} <TextLink href="">with link</TextLink>
+                </Text>
+              </Box>
+            ))}
+          </Fragment>
+        );
+      },
     },
   ],
 };
