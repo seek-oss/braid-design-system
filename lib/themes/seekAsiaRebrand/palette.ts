@@ -25,6 +25,8 @@ export default {
   notice: '#ffc842',
   positive: '#028616',
   neutral: '#989ba2',
-  info: '#4799d3',
+  // Desired `info` colour is `#4799d3`, however white text is in-accessible on this.
+  // The closest colour that meets a contrast ratio of 4.51 is `#2B7CB6`.
+  info: '#2B7CB6',
   promote: '#5f37b7',
 };
