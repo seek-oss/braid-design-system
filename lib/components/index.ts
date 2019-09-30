@@ -17,6 +17,7 @@ export { Card } from './Card/Card';
 export { Checkbox } from './Checkbox/Checkbox';
 export { Column } from './Column/Column';
 export { Columns } from './Columns/Columns';
+export { ContentBlock } from './ContentBlock/ContentBlock';
 export { Divider } from './Divider/Divider';
 export { Dropdown } from './Dropdown/Dropdown';
 export { FieldLabel } from './FieldLabel/FieldLabel';

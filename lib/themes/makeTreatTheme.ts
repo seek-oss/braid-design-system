@@ -38,6 +38,10 @@ export interface TreatTokens {
     };
   };
   responsiveBreakpoint: number;
+  contentWidth: {
+    medium: number;
+    large: number;
+  };
   grid: number;
   touchableSize: number;
   space: {
