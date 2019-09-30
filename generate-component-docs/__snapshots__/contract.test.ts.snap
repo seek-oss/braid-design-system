@@ -1497,6 +1497,15 @@ exports[`Columns 1`] = `
 }
 `;
 
+exports[`ContentBlock 1`] = `
+{
+  children: ReactNode
+  width?: 
+    | "large"
+    | "medium"
+}
+`;
+
 exports[`Divider 1`] = `
 {
 }

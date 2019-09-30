@@ -114,6 +114,10 @@ const tokens: TreatTokens = {
     },
   },
   responsiveBreakpoint: 768,
+  contentWidth: {
+    medium: 940,
+    large: 1280,
+  },
   grid: 4,
   touchableSize: 12,
   space: {
