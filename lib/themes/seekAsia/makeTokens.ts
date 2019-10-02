@@ -41,6 +41,7 @@ export default ({
       fontFamily:
         'Muli, -apple-system, system-ui, "Segoe UI", Roboto, "Noto Sans", Ubuntu, "Droid Sans", "Helvetica Neue", Arial, sans-serif',
       descenderHeightScale: 0.13,
+      webFont: 'Muli',
       fontWeight: {
         regular: 400,
         medium: 600,

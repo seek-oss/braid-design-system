@@ -1,7 +1,8 @@
-import treatTheme from './theme.treat';
+import { treatTheme, runtimeTokens } from './theme.treat';
 import { Theme } from '../theme';
 
 const theme: Theme = {
+  ...runtimeTokens,
   name: 'wireframe',
   background: '#fff',
   treatTheme,
