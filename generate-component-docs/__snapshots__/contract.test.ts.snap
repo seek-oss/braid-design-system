@@ -1383,6 +1383,7 @@ exports[`BraidProvider 1`] = `
     background: string
     name: string
     treatTheme: string
+    webFonts: { linkTag: string; }[]
   }
 }
 `;
