@@ -16,6 +16,7 @@ export interface TreatTokens {
   name: string;
   typography: {
     fontFamily: string;
+    webFont: string | null;
     descenderHeightScale: number;
     fontWeight: Record<FontWeight, number>;
     heading: {
@@ -38,6 +39,10 @@ export interface TreatTokens {
     };
   };
   responsiveBreakpoint: number;
+  contentWidth: {
+    medium: number;
+    large: number;
+  };
   grid: number;
   touchableSize: number;
   space: {
