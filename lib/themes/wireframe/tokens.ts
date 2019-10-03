@@ -17,6 +17,7 @@ const tokens: TreatTokens = {
   typography: {
     fontFamily: 'Courier, monospace',
     descenderHeightScale: 0.16,
+    webFont: null,
     fontWeight: {
       regular: 400,
       medium: 500,

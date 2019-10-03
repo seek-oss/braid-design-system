@@ -12,6 +12,7 @@ export default makeTokens({
     typography: {
       fontFamily:
         '"Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif',
+      webFont: null,
       text: {
         xsmall: {
           mobile: {

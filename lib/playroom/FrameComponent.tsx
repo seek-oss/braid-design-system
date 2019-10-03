@@ -8,7 +8,14 @@ interface Props {
 }
 
 export default ({ theme, children }: Props) => (
-  <BraidProvider theme={theme}>
-    <Fragment>{children}</Fragment>
-  </BraidProvider>
+  <Fragment>
+    <div
+      dangerouslySetInnerHTML={{
+        __html: theme.webFonts.map(font => font.linkTag).join(''),
+      }}
+    />
+    <BraidProvider theme={theme}>
+      <Fragment>{children}</Fragment>
+    </BraidProvider>
+  </Fragment>
 );

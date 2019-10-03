@@ -3,9 +3,11 @@ import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router';
 import dedent from 'dedent';
+import { uniq, flatten, values } from 'lodash';
 import { App } from './App/App';
 import { RenderContext } from './types';
 import { ConfigProvider } from './App/ConfigContext';
+import * as themes from '../../lib/themes';
 
 const skuRender: Render<RenderContext> = {
   renderApp: ({ route }) => {
@@ -54,8 +56,14 @@ const skuRender: Render<RenderContext> = {
     appConfig,
   }),
 
-  renderDocument: ({ headTags, bodyTags, app: { html, publicPath } }) =>
-    dedent`
+  renderDocument: ({ headTags, bodyTags, app: { html, publicPath } }) => {
+    const webFontLinkTags = uniq(
+      flatten(values(themes).map(theme => theme.webFonts)).map(
+        font => font.linkTag,
+      ),
+    ).join('');
+
+    return dedent`
       <!doctype html>
       <html lang="en">
         <head>
@@ -64,6 +72,7 @@ const skuRender: Render<RenderContext> = {
           <meta name="author" content="SEEK Group">
           <meta name="viewport" content="width=device-width, initial-scale=1.0">
           <meta name="robots" content="noindex">
+          ${webFontLinkTags}
           ${headTags}
           <link rel="icon" type="image/png" sizes="16x16" href="${publicPath}favicon-16x16.png" />
           <link rel="icon" type="image/png" sizes="32x32" href="${publicPath}favicon-32x32.png" />
@@ -72,7 +81,8 @@ const skuRender: Render<RenderContext> = {
         <body><div id="app">{{ html }}</div></body>
         ${bodyTags}
       </html>
-    `.replace('{{ html }}', html), // Maintain indenting in 'pre' tags
+    `.replace('{{ html }}', html); // Maintain indenting in 'pre' tags
+  },
 };
 
 export default skuRender;

@@ -16,6 +16,7 @@ export interface TreatTokens {
   name: string;
   typography: {
     fontFamily: string;
+    webFont: string | null;
     descenderHeightScale: number;
     fontWeight: Record<FontWeight, number>;
     heading: {
