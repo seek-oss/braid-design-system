@@ -4,7 +4,7 @@
 
 - No longer handles heading text. Use [`Heading`](https://seek-oss.github.io/braid-design-system/components/Heading) instead.
 - Deprecated `conversational`/`loud`/`intimate`/`whispering` in favour of `size={'large' | 'standard' | 'small'}` and `weight={'strong' | 'regular'}`. Please note that this is a breaking change to our design language. When migrating, try to match existing styling as much as possible in consultation with your local designer.
-- No longer renders white space below it, also removing the need for a `raw` prop. Consider using a [`Paragraph`](https://seek-oss.github.io/braid-design-system/components/Paragraph) component instead, where semantically appropriate.
+- No longer renders white space below it, also removing the need for a `raw` prop. Consider using a [`Stack`](https://seek-oss.github.io/braid-design-system/components/Stack) component instead.
 - Removed `weak` weight.
 - Removed boolean size props in favour of `size` and `tone` props.
 - Removed `bullet` prop. Use [`Bullet`](https://seek-oss.github.io/braid-design-system/components/Bullet) insted.
@@ -17,11 +17,13 @@
 -<Text raw>...</Text>
 +<Text>...</Text>
 
-// Apply white space with <Paragraph>:
+// Apply white space with <Stack>:
 -<Text>...</Text>
-+<Paragraph>
+-<Text>...</Text>
++<Stack space="small">
 +  <Text>...</Text>
-+</Paragraph>
++  <Text>...</Text>
++</Stack>
 
 // Swap boolean props for enum props:
 -<Text large>...</Text>

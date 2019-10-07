@@ -12,6 +12,7 @@ export interface UseTextProps {
   tone?: keyof typeof styleRefs.tone;
   baseline: boolean;
   backgroundContext?: BoxProps['background'];
+  _LEGACY_SPACE_?: boolean;
 }
 
 export const useText = ({
@@ -20,19 +21,21 @@ export const useText = ({
   tone,
   baseline,
   backgroundContext,
+  _LEGACY_SPACE_ = false,
 }: UseTextProps) => {
   const styles = useStyles(styleRefs);
   const inTextLinkRenderer = useContext(TextLinkRendererContext);
 
   return classnames(
     styles.fontFamily,
-    styles.text[size].fontSize,
+    styles.text[size].base,
     inTextLinkRenderer
       ? useTouchableSpace(size)
       : [
           useTextTone({ tone, backgroundContext }),
           styles.fontWeight[weight],
-          baseline ? styles.text[size].transform : null,
+          baseline ? styles.text[size].baseline : null,
+          baseline && !_LEGACY_SPACE_ ? styles.text[size].cropFirstLine : null,
         ],
   );
 };
@@ -40,11 +43,12 @@ export const useText = ({
 export type HeadingLevel = keyof typeof styleRefs.heading;
 export type HeadingWeight = 'regular' | 'weak';
 
-interface HeadingParams {
+interface UseHeadingParams {
   weight?: HeadingWeight;
   level: HeadingLevel;
   baseline: boolean;
   backgroundContext?: BoxProps['background'];
+  _LEGACY_SPACE_?: boolean;
 }
 
 export const useHeading = ({
@@ -52,22 +56,24 @@ export const useHeading = ({
   level,
   baseline,
   backgroundContext,
-}: HeadingParams) => {
+  _LEGACY_SPACE_ = false,
+}: UseHeadingParams) => {
   const styles = useStyles(styleRefs);
 
   return classnames(
     styles.fontFamily,
     styles.headingWeight[weight],
-    styles.heading[level].fontSize,
+    styles.heading[level].base,
+    _LEGACY_SPACE_ ? null : styles.heading[level].cropFirstLine,
     useTextTone({ backgroundContext }),
     {
-      [styles.heading[level].transform]: baseline,
+      [styles.heading[level].baseline]: baseline,
     },
   );
 };
 
 export const useTextSize = (size: keyof typeof styleRefs.text) =>
-  useStyles(styleRefs).text[size].fontSize;
+  useStyles(styleRefs).text[size].base;
 
 export const useWeight = (weight: keyof typeof styleRefs.fontWeight) => {
   const styles = useStyles(styleRefs);

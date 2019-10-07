@@ -4,6 +4,14 @@ export const column = style({
   minWidth: 0,
 });
 
+export const columnContent = style({
+  selectors: {
+    [`${column}:first-child &`]: {
+      paddingTop: 0,
+    },
+  },
+});
+
 const getSizeStyle = (scale: number) => ({
   flex: `0 0 ${scale * 100}%`,
 });

@@ -210,7 +210,7 @@ export const MonthPicker = ({
       {...restProps}
     >
       {fieldGroupProps => (
-        <Columns gutter="medium">
+        <Columns space="medium">
           <Column>
             <Hidden screen={true} print={true}>
               <label htmlFor={monthId}>{`${label} month`}</label>

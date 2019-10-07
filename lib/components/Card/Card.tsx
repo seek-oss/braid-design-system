@@ -6,14 +6,7 @@ export interface CardProps {
 }
 
 export const Card = ({ children }: CardProps) => (
-  <Box paddingBottom="medium">
-    <Box
-      background="card"
-      paddingTop="small"
-      paddingBottom="large"
-      paddingX="gutter"
-    >
-      {children}
-    </Box>
+  <Box background="card" paddingX="gutter" paddingY="large">
+    {children}
   </Box>
 );

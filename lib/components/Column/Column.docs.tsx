@@ -20,7 +20,7 @@ const docs: ComponentDocs = {
     {
       label: 'Standard Columns',
       Example: () => (
-        <Columns>
+        <Columns space="small">
           <Column>
             <HideCode>
               <Content />
@@ -44,7 +44,7 @@ const docs: ComponentDocs = {
       Example: () => (
         <Fragment>
           {widths.map(width => (
-            <Columns key={width}>
+            <Columns space="small" key={width}>
               <Column width={width}>
                 <HideCode>
                   <Content>{width}</Content>
@@ -68,7 +68,7 @@ const docs: ComponentDocs = {
       Example: () => (
         <Fragment>
           <Box marginBottom="medium">
-            <Columns>
+            <Columns space="small">
               <Column>
                 <HideCode>
                   <Content>Fluid</Content>
@@ -82,7 +82,7 @@ const docs: ComponentDocs = {
             </Columns>
           </Box>
           <Box marginBottom="medium">
-            <Columns>
+            <Columns space="small">
               <Column width="1/2">
                 <HideCode>
                   <Content>&#189;</Content>
@@ -96,7 +96,7 @@ const docs: ComponentDocs = {
             </Columns>
           </Box>
           <Box marginBottom="medium">
-            <Columns>
+            <Columns space="small">
               <Column width="1/2">
                 <HideCode>
                   <Content>&#189;</Content>
@@ -110,7 +110,7 @@ const docs: ComponentDocs = {
             </Columns>
           </Box>
           <Box marginBottom="medium">
-            <Columns>
+            <Columns space="small">
               <Column width="1/4">
                 <HideCode>
                   <Content>&#188;</Content>
@@ -129,7 +129,7 @@ const docs: ComponentDocs = {
             </Columns>
           </Box>
           <Box marginBottom="medium">
-            <Columns>
+            <Columns space="small">
               <Column width="1/3">
                 <HideCode>
                   <Content>&#8531;</Content>
@@ -148,7 +148,7 @@ const docs: ComponentDocs = {
             </Columns>
           </Box>
           <Box marginBottom="medium">
-            <Columns reverse>
+            <Columns space="small" reverse>
               <Column width="1/3">
                 <HideCode>
                   <Content>&#8531;</Content>
