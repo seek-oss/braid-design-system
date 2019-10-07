@@ -33,9 +33,7 @@
     <Text>Content...</Text>
   <Card>
   <Card>
-    <Section>
-      <Text>Content...</Text>
-    </Section>
+    <Text>Content...</Text>
   <Card>
 </Stack>
 ```
