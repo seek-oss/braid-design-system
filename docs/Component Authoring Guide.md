@@ -131,12 +131,12 @@ If you're unable to satisfy a design using the built-in set of higher level comp
 The prop names for `Box` mostly mimic standard CSS properties, while their values are more semantic, allowing the corresponding CSS rules to be computed across themes.
 
 ```diff
-+<Box marginBottom="large">
++<Box background="brand" boxShadow="large" padding="large">
   <Text>My first Braid component</Text>
 +</Box>
 ```
 
-<sup>[Preview in Playroom &#08594;](https://seek-oss.github.io/braid-design-system/playroom/#?code=PEJveCBtYXJnaW5Cb3R0b209ImxhcmdlIj4KICA8VGV4dD5NeSBmaXJzdCBCcmFpZCBjb21wb25lbnQ8L1RleHQ-CjwvQm94Pgo)</sup>
+<sup>[Preview in Playroom &#08594;](https://seek-oss.github.io/braid-design-system/playroom/#?code=PEJveCBiYWNrZ3JvdW5kPSJicmFuZCIgYm94U2hhZG93PSJsYXJnZSIgcGFkZGluZz0ibGFyZ2UiPgogIDxUZXh0Pk15IGZpcnN0IEJyYWlkIGNvbXBvbmVudDwvVGV4dD4KPC9Cb3g-Cg)</sup>
 
 You can explore the complete API for `Box` on the [documentation site](https://seek-oss.github.io/braid-design-system/components/Box). For TypeScript users, you should also find that the `Box` API is available for autocompletion and type checking within your editor.
 
@@ -190,10 +190,10 @@ For example, if you wanted to render an element as `display: flex`, but with a c
 import { style } from 'sku/treat';
 
 export const root = style(theme => ({
-  flexBasis: theme.grid.column * 3,
+  flexBasis: theme.grid * 3,
 
   ...theme.utils.desktopStyles({
-    flexBasis: theme.grid.column * 5,
+    flexBasis: theme.grid * 5,
   }),
 }));
 ```
