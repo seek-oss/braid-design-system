@@ -1,4 +1,4 @@
-import React, { ReactNode, Children, createElement, Fragment } from 'react';
+import React, { ReactNode, Children, Fragment } from 'react';
 import classnames from 'classnames';
 import { useStyles } from 'sku/treat';
 import { Divider } from '../Divider/Divider';
@@ -25,10 +25,10 @@ export interface StackProps {
   space: UseBoxStylesProps['padding'];
   dividers?: boolean;
 }
+
 export const Stack = ({ children, space, dividers = false }: StackProps) => {
-  const itemComponent = 'div';
   const stackClasses = useStackItem({
-    component: itemComponent,
+    component: 'div',
     space,
   });
   const stackItems = Children.toArray(children);
@@ -39,20 +39,16 @@ export const Stack = ({ children, space, dividers = false }: StackProps) => {
 
   return (
     <div>
-      {stackItems.map((child, index) =>
-        createElement(itemComponent, {
-          key: index,
-          className: dividers ? undefined : stackClasses,
-          children: [
-            child,
-            dividers && index !== stackItems.length - 1 ? (
-              <Box paddingY={space}>
-                <Divider />
-              </Box>
-            ) : null,
-          ],
-        }),
-      )}
+      {stackItems.map((child, index) => (
+        <div className={dividers ? undefined : stackClasses} key={index}>
+          {dividers && index > 0 ? (
+            <Box paddingY={space}>
+              <Divider />
+            </Box>
+          ) : null}
+          {child}
+        </div>
+      ))}
     </div>
   );
 };
