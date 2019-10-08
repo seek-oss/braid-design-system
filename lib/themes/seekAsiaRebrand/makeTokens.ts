@@ -17,6 +17,7 @@ export default ({
   const critical = palette.critical;
   const positive = palette.positive;
   const info = palette.info;
+  const promote = palette.promote;
   const neutral = palette.neutral;
   const white = palette.saWhite;
   const formAccent = palette.formAccent;
@@ -181,6 +182,7 @@ export default ({
         formAccent,
         critical,
         info,
+        promote,
         positive,
         secondary,
       },
@@ -195,6 +197,7 @@ export default ({
         card: white,
         critical,
         info,
+        promote,
         positive,
         neutral,
       },
