@@ -1,6 +1,6 @@
 export default {
   // Brand
-  brandAccent: '#0d00ec',
+  formAccent: '#0d00ec',
   saBlue: '#282acc',
   saBlueDark: '#1d307F',
   saBlueLight: '#4799D3',

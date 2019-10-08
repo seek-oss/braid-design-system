@@ -19,7 +19,7 @@ export default ({
   const info = palette.info;
   const neutral = palette.neutral;
   const white = palette.saWhite;
-  const formAccent = palette.saLink;
+  const formAccent = palette.formAccent;
   const link = palette.saLink;
   const disabled = palette.saGrayLight;
   const textNeutral = palette.saGrayDarker;
