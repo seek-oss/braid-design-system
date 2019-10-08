@@ -7,7 +7,8 @@ const brand = '#0d3880';
 const brandAccent = '#e60278';
 const positive = '#169400';
 const critical = brandAccent;
-const info = '#9556b7';
+const info = '#1e468c';
+const promote = '#9556b7';
 const neutral = '#747474';
 const black = '#1c1c1c';
 const link = '#2765cf';
@@ -167,6 +168,7 @@ const tokens: TreatTokens = {
       formAccent,
       critical,
       info,
+      promote,
       positive,
       secondary,
     },
@@ -180,6 +182,7 @@ const tokens: TreatTokens = {
       selection: '#eee',
       card: '#fff',
       critical,
+      promote,
       info,
       positive,
       neutral,

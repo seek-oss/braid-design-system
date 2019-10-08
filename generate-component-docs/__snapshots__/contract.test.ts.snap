@@ -14,6 +14,7 @@ exports[`Alert 1`] = `
     | "critical"
     | "info"
     | "positive"
+    | "promote"
   weight?: 
     | "regular"
     | "strong"
@@ -58,6 +59,7 @@ exports[`Badge 1`] = `
     | "info"
     | "neutral"
     | "positive"
+    | "promote"
   weight?: 
     | "regular"
     | "strong"
@@ -261,6 +263,8 @@ exports[`Box 1`] = `
     | "neutralLight"
     | "positive"
     | "positiveLight"
+    | "promote"
+    | "promoteLight"
     | "selection"
   borderRadius?: 
     | "full"
@@ -985,6 +989,8 @@ exports[`BoxRenderer 1`] = `
     | "neutralLight"
     | "positive"
     | "positiveLight"
+    | "promote"
+    | "promoteLight"
     | "selection"
   borderRadius?: 
     | "full"
@@ -1793,6 +1799,7 @@ exports[`IconBookmark 1`] = `
     | "link"
     | "neutral"
     | "positive"
+    | "promote"
     | "secondary"
 }
 `;
@@ -1817,6 +1824,7 @@ exports[`IconChevron 1`] = `
     | "link"
     | "neutral"
     | "positive"
+    | "promote"
     | "secondary"
 }
 `;
@@ -1836,6 +1844,7 @@ exports[`IconClear 1`] = `
     | "link"
     | "neutral"
     | "positive"
+    | "promote"
     | "secondary"
 }
 `;
@@ -1855,6 +1864,7 @@ exports[`IconCritical 1`] = `
     | "link"
     | "neutral"
     | "positive"
+    | "promote"
     | "secondary"
 }
 `;
@@ -1874,6 +1884,7 @@ exports[`IconInfo 1`] = `
     | "link"
     | "neutral"
     | "positive"
+    | "promote"
     | "secondary"
 }
 `;
@@ -1893,6 +1904,27 @@ exports[`IconPositive 1`] = `
     | "link"
     | "neutral"
     | "positive"
+    | "promote"
+    | "secondary"
+}
+`;
+
+exports[`IconPromote 1`] = `
+{
+  size?: 
+    | "fill"
+    | "large"
+    | "small"
+    | "standard"
+    | "xsmall"
+  tone?: 
+    | "critical"
+    | "formAccent"
+    | "info"
+    | "link"
+    | "neutral"
+    | "positive"
+    | "promote"
     | "secondary"
 }
 `;
@@ -1912,6 +1944,7 @@ exports[`IconTick 1`] = `
     | "link"
     | "neutral"
     | "positive"
+    | "promote"
     | "secondary"
 }
 `;
@@ -2180,6 +2213,7 @@ exports[`Text 1`] = `
     | "link"
     | "neutral"
     | "positive"
+    | "promote"
     | "secondary"
   weight?: 
     | "medium"

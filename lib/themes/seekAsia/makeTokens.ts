@@ -26,6 +26,7 @@ export default ({
   const grey4 = '#ccc';
   const candidate = '#0c4b85'; // SEEK Asia name for this color
   const info = candidate;
+  const promote = '#923f92';
   const positive = '#498307';
   const critical = alert;
   const focus = blue3;
@@ -188,6 +189,7 @@ export default ({
         neutralInverted: white,
         formAccent,
         critical,
+        promote,
         info,
         positive,
         secondary,
@@ -202,6 +204,7 @@ export default ({
         selection,
         card: white,
         critical,
+        promote,
         info,
         positive,
         neutral,

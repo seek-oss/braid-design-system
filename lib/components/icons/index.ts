@@ -4,4 +4,5 @@ export { IconClear } from './IconClear/IconClear';
 export { IconCritical } from './IconCritical/IconCritical';
 export { IconInfo } from './IconInfo/IconInfo';
 export { IconPositive } from './IconPositive/IconPositive';
+export { IconPromote } from './IconPromote/IconPromote';
 export { IconTick } from './IconTick/IconTick';
