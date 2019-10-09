@@ -7,23 +7,24 @@ import * as styleRefs from './useBoxStyles.treat';
 
 type ResponsiveProp<AtomName> = AtomName | [AtomName, AtomName];
 export type Space = keyof Theme['space'] | 'none';
+export type ResponsiveSpace = ResponsiveProp<Space>;
 
 export interface UseBoxStylesProps {
   component: ReactType;
-  padding?: ResponsiveProp<Space>;
-  paddingX?: ResponsiveProp<Space>;
-  paddingY?: ResponsiveProp<Space>;
-  paddingTop?: ResponsiveProp<Space>;
-  paddingBottom?: ResponsiveProp<Space>;
-  paddingLeft?: ResponsiveProp<Space>;
-  paddingRight?: ResponsiveProp<Space>;
-  margin?: ResponsiveProp<Space>;
-  marginX?: ResponsiveProp<Space>;
-  marginY?: ResponsiveProp<Space>;
-  marginTop?: ResponsiveProp<Space>;
-  marginBottom?: ResponsiveProp<Space>;
-  marginLeft?: ResponsiveProp<Space>;
-  marginRight?: ResponsiveProp<Space>;
+  padding?: ResponsiveSpace;
+  paddingX?: ResponsiveSpace;
+  paddingY?: ResponsiveSpace;
+  paddingTop?: ResponsiveSpace;
+  paddingBottom?: ResponsiveSpace;
+  paddingLeft?: ResponsiveSpace;
+  paddingRight?: ResponsiveSpace;
+  margin?: ResponsiveSpace;
+  marginX?: ResponsiveSpace;
+  marginY?: ResponsiveSpace;
+  marginTop?: ResponsiveSpace;
+  marginBottom?: ResponsiveSpace;
+  marginLeft?: ResponsiveSpace;
+  marginRight?: ResponsiveSpace;
   display?: ResponsiveProp<keyof typeof styleRefs.display>;
   flexDirection?: ResponsiveProp<keyof typeof styleRefs.flexDirection>;
   alignItems?: ResponsiveProp<keyof typeof styleRefs.alignItems>;

@@ -35,54 +35,94 @@ An example of composing a simple view leveraging some of these could be:
 ```jsx
 <Card>
   <Heading level="4">Title</Heading>
-  <Paragraph>
-    <Text>My first Braid component</Text>
-  </Paragraph>
+  <Text>My first Braid component</Text>
   <Button>Click me</Button>
 </Card>
 ```
 
-<sup>[Preview in Playroom &#08594;](https://seek-oss.github.io/braid-design-system/playroom/#?code=PENhcmQ-CiAgPEhlYWRpbmcgbGV2ZWw9IjQiPlRpdGxlPC9IZWFkaW5nPgogIDxQYXJhZ3JhcGg-CiAgICA8VGV4dD5NeSBmaXJzdCBCcmFpZCBjb21wb25lbnQ8L1RleHQ-CiAgPC9QYXJhZ3JhcGg-CiAgPEJ1dHRvbj5DbGljayBtZTwvQnV0dG9uPgo8L0NhcmQ-Cg)</sup>
+<sup>[Preview in Playroom &#08594;](https://seek-oss.github.io/braid-design-system/playroom/#?code=PENhcmQ-CiAgPEhlYWRpbmcgbGV2ZWw9IjQiPlRpdGxlPC9IZWFkaW5nPgogIDxUZXh0Pk15IGZpcnN0IEJyYWlkIGNvbXBvbmVudDwvVGV4dD4KICA8QnV0dG9uPkNsaWNrIG1lPC9CdXR0b24-CjwvQ2FyZD4K)</sup>
+
+You'll notice that each of these components don't provide any surrounding white space. This is where our layout components come in.
 
 ### Layout components
 
-Ideally we should be able to arrange our high level components on the screen using layout components. Currently, we have a limited set including `Actions` for laying out buttons, and `Columns` for the more general cases.
-
-For example, the `Actions` component encapsulates the responsive rules for laying out buttons and links:
+In order to distribute white space evenly between components, wrap sibling elements in a `Stack` component with a custom `space` property:
 
 ```diff
 <Card>
-  <Heading level="4">Title</Heading>
-  <Paragraph>
++  <Stack space="small">
+    <Heading level="4">Title</Heading>
     <Text>My first Braid component</Text>
-  </Paragraph>
-+  <Actions>
     <Button>Click me</Button>
-    <TextLink href="#">Cancel</TextLink>
-+  </Actions>
++  </Stack>
 </Card>
 ```
 
-<sup>[Preview in Playroom &#08594;](https://seek-oss.github.io/braid-design-system/playroom/#?code=PENhcmQ-CiAgPEhlYWRpbmcgbGV2ZWw9IjQiPlRpdGxlPC9IZWFkaW5nPgogIDxQYXJhZ3JhcGg-CiAgICA8VGV4dD5NeSBmaXJzdCBCcmFpZCBjb21wb25lbnQ8L1RleHQ-CiAgPC9QYXJhZ3JhcGg-CiAgPEFjdGlvbnM-CiAgICA8QnV0dG9uPkNsaWNrIG1lPC9CdXR0b24-CiAgICA8VGV4dExpbmsgaHJlZj0iIyI-Q2FuY2VsPC9UZXh0TGluaz4KICA8L0FjdGlvbnM-CjwvQ2FyZD4K)</sup>
+<sup>[Preview in Playroom &#08594;](https://seek-oss.github.io/braid-design-system/playroom/#?code=PENhcmQ-CiAgPFN0YWNrIHNwYWNlPSJzbWFsbCI-CiAgICA8SGVhZGluZyBsZXZlbD0iNCI-VGl0bGU8L0hlYWRpbmc-CiAgICA8VGV4dD5NeSBmaXJzdCBCcmFpZCBjb21wb25lbnQ8L1RleHQ-CiAgICA8QnV0dG9uPkNsaWNrIG1lPC9CdXR0b24-CiAgPC9TdGFjaz4KPC9DYXJkPgo)</sup>
 
-Another example is `Columns` which has various responsive rules for laying out content. In the default case, it arranges columns side by side on large devices, collapsing into a single column on small screens:
+The `space` property is a responsive prop, which means that it can also accept an array of values representing each breakpoint. For example:
 
 ```diff
-+<Columns>
+<Card>
++  <Stack space={['small', 'medium']}>
+    <Heading level="4">Title</Heading>
+    <Text>My first Braid component</Text>
+    <Button>Click me</Button>
++  </Stack>
+</Card>
+```
+
+<sup>[Preview in Playroom &#08594;](https://seek-oss.github.io/braid-design-system/playroom/#?code=PENhcmQ-CiAgPFN0YWNrIHNwYWNlPXtbInNtYWxsIiwgIm1lZGl1bSJdfT4KICAgIDxIZWFkaW5nIGxldmVsPSI0Ij5UaXRsZTwvSGVhZGluZz4KICAgIDxUZXh0Pk15IGZpcnN0IEJyYWlkIGNvbXBvbmVudDwvVGV4dD4KICAgIDxCdXR0b24-Q2xpY2sgbWU8L0J1dHRvbj4KICA8L1N0YWNrPgo8L0NhcmQ-Cg)</sup>
+
+For horizontal layouts, `Columns` provides various responsive rules for laying out content. For example, if you wanted to render a two-column layout that collapses to a single column on mobile:
+
+```diff
++<Columns space="gutter" collapse>
 +  <Column>
     <Card>
-      <Heading level="4">Title</Heading>
-      <Text>My first Braid component</Text>
+      <Stack space="small">
+        <Heading level="4">Column 1</Heading>
+        <Text>My first Braid component</Text>
+      </Stack>
     </Card>
 +  </Column>
 +  <Column>
-    <Heading level="4">Column 2</Heading>
-    <Text>My second Braid component</Text>
+    <Card>
+      <Stack space="small">
+        <Heading level="4">Column 2</Heading>
+        <Text>My second Braid component</Text>
+      </Stack>
+    </Card>
 +  </Column>
 +</Columns>
 ```
 
-<sup>[Preview in Playroom &#08594;](https://seek-oss.github.io/braid-design-system/playroom/#?code=PENvbHVtbnM-CiAgPENvbHVtbj4KICAgIDxDYXJkPgogICAgICA8SGVhZGluZyBsZXZlbD0iNCI-VGl0bGU8L0hlYWRpbmc-CiAgICAgIDxQYXJhZ3JhcGg-CiAgICAgICAgPFRleHQ-TXkgZmlyc3QgQnJhaWQgY29tcG9uZW50PC9UZXh0PgogICAgICA8L1BhcmFncmFwaD4KICAgICAgPEJ1dHRvbj5DbGljayBtZTwvQnV0dG9uPgogICAgPC9DYXJkPgogIDwvQ29sdW1uPgogIDxDb2x1bW4-CiAgICA8Q2FyZD4KICAgICAgPEhlYWRpbmcgbGV2ZWw9IjQiPkNvbHVtbiAyPC9IZWFkaW5nPgogICAgICA8VGV4dD5NeSBzZWNvbmQgQnJhaWQgY29tcG9uZW50PC9UZXh0PgogICAgPC9DYXJkPgogIDwvQ29sdW1uPgo8L0NvbHVtbnM-Cg)</sup>
+<sup>[Preview in Playroom &#08594;](https://seek-oss.github.io/braid-design-system/playroom/#?code=PENvbHVtbnMgc3BhY2U9Imd1dHRlciIgY29sbGFwc2U-CiAgPENvbHVtbj4KICAgIDxDYXJkPgogICAgICA8U3RhY2sgc3BhY2U9InNtYWxsIj4KICAgICAgICA8SGVhZGluZyBsZXZlbD0iNCI-Q29sdW1uIDE8L0hlYWRpbmc-CiAgICAgICAgPFRleHQ-TXkgZmlyc3QgQnJhaWQgY29tcG9uZW50PC9UZXh0PgogICAgICA8L1N0YWNrPgogICAgPC9DYXJkPgogIDwvQ29sdW1uPgogIDxDb2x1bW4-CiAgICA8Q2FyZD4KICAgICAgPFN0YWNrIHNwYWNlPSJzbWFsbCI-CiAgICAgICAgPEhlYWRpbmcgbGV2ZWw9IjQiPkNvbHVtbiAyPC9IZWFkaW5nPgogICAgICAgIDxUZXh0Pk15IHNlY29uZCBCcmFpZCBjb21wb25lbnQ8L1RleHQ-CiAgICAgIDwvU3RhY2s-CiAgICA8L0NhcmQ-CiAgPC9Db2x1bW4-CjwvQ29sdW1ucz4K)</sup>
+
+This `space` property is also responsive, supporting an array of values for each breakpoint. For example:
+
+```diff
++<Columns space={['xxsmall', 'gutter']} collapse>
++  <Column>
+    <Card>
+      <Stack space="small">
+        <Heading level="4">Column 1</Heading>
+        <Text>My first Braid component</Text>
+      </Stack>
+    </Card>
++  </Column>
++  <Column>
+    <Card>
+      <Stack space="small">
+        <Heading level="4">Column 2</Heading>
+        <Text>My second Braid component</Text>
+      </Stack>
+    </Card>
++  </Column>
++</Columns>
+```
+
+<sup>[Preview in Playroom &#08594;](https://seek-oss.github.io/braid-design-system/playroom/#?code=PENvbHVtbnMgc3BhY2U9e1sieHhzbWFsbCIsICJndXR0ZXIiXX0gY29sbGFwc2U-CiAgPENvbHVtbj4KICAgIDxDYXJkPgogICAgICA8U3RhY2sgc3BhY2U9InNtYWxsIj4KICAgICAgICA8SGVhZGluZyBsZXZlbD0iNCI-Q29sdW1uIDE8L0hlYWRpbmc-CiAgICAgICAgPFRleHQ-TXkgZmlyc3QgQnJhaWQgY29tcG9uZW50PC9UZXh0PgogICAgICA8L1N0YWNrPgogICAgPC9DYXJkPgogIDwvQ29sdW1uPgogIDxDb2x1bW4-CiAgICA8Q2FyZD4KICAgICAgPFN0YWNrIHNwYWNlPSJzbWFsbCI-CiAgICAgICAgPEhlYWRpbmcgbGV2ZWw9IjQiPkNvbHVtbiAyPC9IZWFkaW5nPgogICAgICAgIDxUZXh0Pk15IHNlY29uZCBCcmFpZCBjb21wb25lbnQ8L1RleHQ-CiAgICAgIDwvU3RhY2s-CiAgICA8L0NhcmQ-CiAgPC9Db2x1bW4-CjwvQ29sdW1ucz4K)</sup>
 
 ### Need a custom component?
 
@@ -91,12 +131,12 @@ If you're unable to satisfy a design using the built-in set of higher level comp
 The prop names for `Box` mostly mimic standard CSS properties, while their values are more semantic, allowing the corresponding CSS rules to be computed across themes.
 
 ```diff
-+<Box marginBottom="large">
++<Box background="brand" boxShadow="large" padding="large">
   <Text>My first Braid component</Text>
 +</Box>
 ```
 
-<sup>[Preview in Playroom &#08594;](https://seek-oss.github.io/braid-design-system/playroom/#?code=PEJveCBtYXJnaW5Cb3R0b209ImxhcmdlIj4KICA8VGV4dD5NeSBmaXJzdCBCcmFpZCBjb21wb25lbnQ8L1RleHQ-CjwvQm94Pgo)</sup>
+<sup>[Preview in Playroom &#08594;](https://seek-oss.github.io/braid-design-system/playroom/#?code=PEJveCBiYWNrZ3JvdW5kPSJicmFuZCIgYm94U2hhZG93PSJsYXJnZSIgcGFkZGluZz0ibGFyZ2UiPgogIDxUZXh0Pk15IGZpcnN0IEJyYWlkIGNvbXBvbmVudDwvVGV4dD4KPC9Cb3g-Cg)</sup>
 
 You can explore the complete API for `Box` on the [documentation site](https://seek-oss.github.io/braid-design-system/components/Box). For TypeScript users, you should also find that the `Box` API is available for autocompletion and type checking within your editor.
 
@@ -150,10 +190,10 @@ For example, if you wanted to render an element as `display: flex`, but with a c
 import { style } from 'sku/treat';
 
 export const root = style(theme => ({
-  flexBasis: theme.grid.column * 3,
+  flexBasis: theme.grid * 3,
 
   ...theme.utils.desktopStyles({
-    flexBasis: theme.grid.column * 5,
+    flexBasis: theme.grid * 5,
   }),
 }));
 ```

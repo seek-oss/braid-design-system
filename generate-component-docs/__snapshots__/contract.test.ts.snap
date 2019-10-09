@@ -1402,7 +1402,7 @@ exports[`BulletList 1`] = `
     | "small"
     | "standard"
     | "xsmall"
-  space?: 
+  space?: ResponsiveProp<
     | "gutter"
     | "large"
     | "medium"
@@ -1412,6 +1412,7 @@ exports[`BulletList 1`] = `
     | "xsmall"
     | "xxlarge"
     | "xxsmall"
+  >
 }
 `;
 
@@ -1484,7 +1485,8 @@ exports[`Columns 1`] = `
     | Column
     | Column[]
   collapse?: boolean
-  gutter?: 
+  reverse?: boolean
+  space: ResponsiveProp<
     | "gutter"
     | "large"
     | "medium"
@@ -1494,7 +1496,7 @@ exports[`Columns 1`] = `
     | "xsmall"
     | "xxlarge"
     | "xxsmall"
-  reverse?: boolean
+  >
 }
 `;
 
@@ -1576,6 +1578,7 @@ exports[`FieldMessage 1`] = `
 
 exports[`Heading 1`] = `
 {
+  _LEGACY_SPACE_?: boolean
   children: ReactNode
   component?: 
     | "a"
@@ -1943,12 +1946,6 @@ exports[`MonthPicker 1`] = `
 }
 `;
 
-exports[`Paragraph 1`] = `
-{
-  children: ReactNode
-}
-`;
-
 exports[`Radio 1`] = `
 {
   checked: boolean
@@ -1979,6 +1976,24 @@ exports[`Secondary 1`] = `
 }
 `;
 
+exports[`Stack 1`] = `
+{
+  children: ReactNode
+  dividers?: boolean
+  space: ResponsiveProp<
+    | "gutter"
+    | "large"
+    | "medium"
+    | "none"
+    | "small"
+    | "xlarge"
+    | "xsmall"
+    | "xxlarge"
+    | "xxsmall"
+  >
+}
+`;
+
 exports[`Strong 1`] = `
 {
   children: ReactNode
@@ -1988,6 +2003,7 @@ exports[`Strong 1`] = `
 
 exports[`Text 1`] = `
 {
+  _LEGACY_SPACE_?: boolean
   baseline?: boolean
   children?: ReactNode
   component?: 

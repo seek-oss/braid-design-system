@@ -16,8 +16,9 @@ const tokens: TreatTokens = {
   name: 'wireframe',
   typography: {
     fontFamily: 'Courier, monospace',
-    descenderHeightScale: 0.16,
     webFont: null,
+    descenderHeightScale: 0.16,
+    capHeightScale: 0.502,
     fontWeight: {
       regular: 400,
       medium: 500,

@@ -22,7 +22,7 @@
 ### After
 
 ```jsx
-<Columns collapse>
+<Columns space="small" collapse>
   <Column>
     <Text>Content...</Text>
   </Column>
@@ -50,7 +50,7 @@ If the `size` being used previously was a percentage, migrating should be a matt
 ### After
 
 ```jsx
-<Columns collapse>
+<Columns space="gutter" collapse>
   <Column>
     <MainContent />
   </Column>
@@ -73,7 +73,7 @@ If the `size` being used was a specific pixel value, you can set the `width` to 
 ### After
 
 ```jsx
-<Columns collapse>
+<Columns space="gutter" collapse>
   <Column>
     <MainContent />
   </Column>
@@ -82,19 +82,6 @@ If the `size` being used was a specific pixel value, you can set the `width` to 
       {/* Create a class that sets the width */}
       <CustomSideBar />
     </Box>
-  </Column>
-</Columns>
-```
-
-The default gutter width for columns is different to the `AsidedLayout` gutter width. If this is a problem, you can reinstate the old value with `gutter="large"`.
-
-```
-<Columns collapse gutter="large">
-  <Column>
-    <MainContent />
-  </Column>
-  <Column width="1/4">
-    <CustomSideBar />
   </Column>
 </Columns>
 ```

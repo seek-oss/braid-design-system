@@ -1,7 +1,13 @@
 /* tslint:disable */
 import React, { Fragment } from 'react';
 import partition from 'lodash/partition';
-import { Box, Text, Secondary, Heading } from '../../../../lib/components';
+import {
+  Box,
+  Text,
+  Secondary,
+  Heading,
+  Stack,
+} from '../../../../lib/components';
 import componentDocs from '../../../../generate-component-docs/componentDocs.json';
 import {
   NormalisedInterface,
@@ -81,19 +87,19 @@ const PropList = ({
   }
 
   return (
-    <Fragment>
+    <Stack space="gutter">
       <Heading level="3">{label}</Heading>
       {props.map(({ propName, type }) => {
         return (
-          <Box key={propName} paddingBottom="small">
+          <Stack space="xsmall" key={propName}>
             <Text weight="strong">{propName}</Text>
             <Text>
               <PropType type={type} />
             </Text>
-          </Box>
+          </Stack>
         );
       })}
-    </Fragment>
+    </Stack>
   );
 };
 
@@ -110,9 +116,9 @@ export const ComponentProps = ({ componentName }: Props) => {
   );
 
   return Object.keys(props).length === 0 ? null : (
-    <Fragment>
+    <Stack space="large">
       <PropList label="Required props" props={requiredProps} />
       <PropList label="Optional props" props={optionalProps} />
-    </Fragment>
+    </Stack>
   );
 };

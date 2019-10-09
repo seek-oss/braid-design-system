@@ -21,6 +21,7 @@ export interface HeadingProps {
   weight?: HeadingWeight;
   component?: BoxProps['component'];
   id?: string;
+  _LEGACY_SPACE_?: boolean;
 }
 
 const resolvePaddingForLevel = (level: HeadingLevel) => {
@@ -41,13 +42,14 @@ export const Heading = ({
   component,
   children,
   id,
+  _LEGACY_SPACE_ = false,
 }: HeadingProps) => (
   <HeadingContext.Provider value={true}>
     <Box
       id={id}
       component={component || resolveDefaultComponent[level]}
-      paddingBottom={resolvePaddingForLevel(level)}
-      className={useHeading({ weight, level, baseline: true })}
+      paddingBottom={_LEGACY_SPACE_ ? resolvePaddingForLevel(level) : undefined}
+      className={useHeading({ weight, level, baseline: true, _LEGACY_SPACE_ })}
     >
       {children}
     </Box>

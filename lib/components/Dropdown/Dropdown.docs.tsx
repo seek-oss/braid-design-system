@@ -76,13 +76,14 @@ const docs: ComponentDocs = {
       label: 'Dropdown on Brand Background',
       Container,
       Example: ({ id, handler }) => (
-        <Box background="brand" paddingX="small">
+        <Box background="brand" padding="small">
           <Dropdown
             label="Job Title"
             id={id}
             onChange={handler}
             value=""
             placeholder="Please select a role title"
+            reserveMessageSpace={false}
           >
             <option value="1">Developer</option>
             <option value="2">Designer</option>
