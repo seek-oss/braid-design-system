@@ -95,12 +95,13 @@ const docs: ComponentDocs = {
       label: 'TextField on Brand Background',
       Container,
       Example: ({ id, handler }) => (
-        <Box background="brand" paddingX="small">
+        <Box background="brand" padding="small">
           <TextField
             label="Job Title"
             id={id}
             onChange={handler}
             value="Senior Developer"
+            reserveMessageSpace={false}
           />
         </Box>
       ),

@@ -3,45 +3,51 @@ import classnames from 'classnames';
 import { useStyles } from 'sku/treat';
 import { Box } from '../Box/Box';
 import { ColumnProps } from '../Column/Column';
-import { Space } from '../Box/useBoxStyles';
+import { Space, ResponsiveSpace } from '../Box/useBoxStyles';
 import * as styleRefs from './Columns.treat';
 
 const defaultCollapse = false;
 const defaultReverse = false;
-const defaultGutter = 'gutter';
+const defaultSpace = 'none';
 
-interface ColumnsContext {
+interface ColumnsContextValue {
   collapse: boolean;
-  gutter: Space;
+  mobileSpace: Space;
+  desktopSpace: Space;
 }
-export const ColumnsContext = createContext<ColumnsContext>({
+export const ColumnsContext = createContext<ColumnsContextValue>({
   collapse: defaultCollapse,
-  gutter: defaultGutter,
+  mobileSpace: defaultSpace,
+  desktopSpace: defaultSpace,
 });
 
 export interface ColumnsProps {
   children: Array<ReactElement<ColumnProps>> | ReactElement<ColumnProps>;
   collapse?: boolean;
   reverse?: boolean;
-  gutter?: Space;
+  space: ResponsiveSpace;
 }
 
 export const Columns = ({
   children,
   collapse = defaultCollapse,
   reverse = defaultReverse,
-  gutter = defaultGutter,
+  space = defaultSpace,
 }: ColumnsProps) => {
   const styles = useStyles(styleRefs);
 
-  const shouldReverseDesktop = collapse && reverse;
-  const shouldReverseEverywhere = !collapse && reverse;
+  const [mobileSpace, desktopSpace] = Array.isArray(space)
+    ? space
+    : [space, space];
 
   // Prevent re-renders when context values haven't changed
-  const columnsContextValue = useMemo(() => ({ collapse, gutter }), [
-    collapse,
-    gutter,
-  ]);
+  const columnsContextValue = useMemo(
+    () => ({ collapse, mobileSpace, desktopSpace }),
+    [collapse, mobileSpace, desktopSpace],
+  );
+
+  const shouldReverseDesktop = collapse && reverse;
+  const shouldReverseEverywhere = !collapse && reverse;
 
   return (
     <Box
@@ -51,8 +57,13 @@ export const Columns = ({
         shouldReverseDesktop ? 'rowReverse' : 'row',
       ]}
       className={classnames(
-        gutter !== 'none' ? styles.gutterOffset[gutter] : undefined,
-        collapse ? styles.collapse : undefined,
+        !collapse && mobileSpace !== 'none'
+          ? styles.gutterOffset[mobileSpace]
+          : null,
+        collapse || desktopSpace !== mobileSpace
+          ? styles.gutterOffsetDesktop[desktopSpace]
+          : null,
+        collapse ? styles.collapse : null,
       )}
     >
       <ColumnsContext.Provider value={columnsContextValue}>

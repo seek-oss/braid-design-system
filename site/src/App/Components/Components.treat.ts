@@ -1,7 +1,7 @@
 import { globalStyle, style } from 'sku/treat';
 
 const desktopMenuWidth = '270px';
-const headerHeight = '96px';
+const headerHeight = '108px';
 
 const breakpoint = 740;
 

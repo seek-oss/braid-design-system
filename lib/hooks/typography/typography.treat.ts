@@ -1,7 +1,7 @@
 import mapValues from 'lodash/mapValues';
 import { style, styleMap, ClassRef } from 'sku/treat';
 import { Theme } from 'treat/theme';
-import basekick from 'basekick';
+import basekick from './basekick';
 import { getAccessibleVariant, isLight, mapToStyleProperty } from '../../utils';
 import { Breakpoint } from '../../themes/makeTreatTheme';
 import { UseBoxStylesProps } from '../../components/Box/useBoxStyles';
@@ -23,6 +23,7 @@ const alignTextToGrid = (
   textDefinition: TextDefinition,
   gridRowHeight: number,
   descenderHeightScale: number,
+  capHeight: number,
 ) =>
   basekick({
     baseFontSize: 1,
@@ -30,6 +31,7 @@ const alignTextToGrid = (
     typeRowSpan: textDefinition.rows,
     gridRowHeight,
     descenderHeightScale,
+    capHeight,
   });
 
 const makeTypographyRules = (
@@ -40,32 +42,22 @@ const makeTypographyRules = (
     textDefinition.mobile,
     grid,
     typography.descenderHeightScale,
+    typography.capHeightScale,
   );
 
   const desktop = alignTextToGrid(
     textDefinition.desktop,
     grid,
     typography.descenderHeightScale,
+    typography.capHeightScale,
   );
 
   return {
-    fontSize: utils.responsiveStyles(
-      {
-        fontSize: mobile.fontSize,
-        lineHeight: mobile.lineHeight,
-      },
-      {
-        fontSize: desktop.fontSize,
-        lineHeight: desktop.lineHeight,
-      },
-    ),
-    transform: utils.responsiveStyles(
-      {
-        transform: mobile.transform,
-      },
-      {
-        transform: desktop.transform,
-      },
+    base: utils.responsiveStyles(mobile.base, desktop.base),
+    baseline: utils.responsiveStyles(mobile.baseline, desktop.baseline),
+    cropFirstLine: utils.responsiveStyles(
+      mobile.cropFirstLine,
+      desktop.cropFirstLine,
     ),
   };
 };

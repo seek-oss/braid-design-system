@@ -7,7 +7,7 @@ import {
   BraidProvider,
   Box,
   Heading,
-  Paragraph,
+  Stack,
   Text,
 } from '../../../../lib/components';
 import * as themes from '../../../../lib/themes';
@@ -49,17 +49,13 @@ export const ComponentRoute = ({
   const migrationGuideUrl = `${sourceUrl}/${componentName}.migration.md`;
 
   return (
-    <Box>
-      <Box paddingBottom="small">
-        <Heading level="2">{componentName}</Heading>
-      </Box>
+    <Stack space="large">
+      <Heading level="2">{componentName}</Heading>
       {examples.length > 0 ? (
-        <Box paddingBottom="small">
-          <Text weight="strong">
-            Example
-            {examples.length > 1 ? 's' : ''}
-          </Text>
-        </Box>
+        <Text weight="strong">
+          Example
+          {examples.length > 1 ? 's' : ''}
+        </Text>
       ) : null}
       {examples
         .filter(example => example.docsSite !== false)
@@ -86,66 +82,52 @@ export const ComponentRoute = ({
               : null;
 
           return (
-            <Box key={index} marginBottom="xxlarge">
-              {label ? (
-                <Box paddingBottom="small">
-                  <Text>{label}</Text>
-                </Box>
-              ) : null}
-              {Example
-                ? Object.values(themes).map(theme => (
-                    <Box key={theme.name} marginBottom="large">
-                      <Box paddingBottom="small">
-                        <Text tone="secondary">Theme: {theme.name}</Text>
+            <Box key={index} marginBottom="xlarge">
+              <Stack space="gutter">
+                {label ? <Text>{label}</Text> : null}
+                {Example
+                  ? Object.values(themes).map(theme => (
+                      <Box key={theme.name} marginBottom="medium">
+                        <Stack space="gutter">
+                          <Text tone="secondary">Theme: {theme.name}</Text>
+                          <BraidProvider theme={theme}>
+                            <Container>
+                              <Example
+                                id={`${index}_${theme.name}`}
+                                handler={handler}
+                              />
+                            </Container>
+                          </BraidProvider>
+                        </Stack>
                       </Box>
-                      <BraidProvider theme={theme}>
-                        <Container>
-                          <Example
-                            id={`${index}_${theme.name}`}
-                            handler={handler}
-                          />
-                        </Container>
-                      </BraidProvider>
-                    </Box>
-                  ))
-                : null}
-              {codeAsString ? (
-                <Fragment>
-                  <Box paddingBottom="small">
+                    ))
+                  : null}
+                {codeAsString ? (
+                  <Stack space="gutter">
                     <Text tone="secondary">Code:</Text>
-                  </Box>
-                  <Code>{codeAsString}</Code>
-                </Fragment>
-              ) : null}
+                    <Code>{codeAsString}</Code>
+                  </Stack>
+                ) : null}
+              </Stack>
             </Box>
           );
         })}
 
-      <Box paddingBottom="small">
-        <ComponentProps componentName={componentName} />
-      </Box>
+      <ComponentProps componentName={componentName} />
 
-      <Box paddingBottom="small">
-        <Heading level="3">Further References</Heading>
-      </Box>
-      <Box paddingBottom="large">
-        <Paragraph>
-          <Text>
-            <ExternalLink href={sourceUrl} rel="noopener noreferrer">
-              View Source
-            </ExternalLink>
-          </Text>
-        </Paragraph>
-        <Paragraph>
-          <Text>
-            {docs.migrationGuide ? (
-              <ExternalLink href={migrationGuideUrl} rel="noopener noreferrer">
-                Migration Guide
-              </ExternalLink>
-            ) : null}
-          </Text>
-        </Paragraph>
-      </Box>
-    </Box>
+      <Heading level="3">Further References</Heading>
+      <Text>
+        <ExternalLink href={sourceUrl} rel="noopener noreferrer">
+          View Source
+        </ExternalLink>
+      </Text>
+      <Text>
+        {docs.migrationGuide ? (
+          <ExternalLink href={migrationGuideUrl} rel="noopener noreferrer">
+            Migration Guide
+          </ExternalLink>
+        ) : null}
+      </Text>
+    </Stack>
   );
 };

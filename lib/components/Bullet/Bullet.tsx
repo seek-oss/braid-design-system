@@ -4,11 +4,14 @@ import classnames from 'classnames';
 import { Box } from '../Box/Box';
 import { useText } from '../../hooks/typography';
 import { BulletListContext } from '../BulletList/BulletList';
+import { useStackItem } from '../Stack/Stack';
 import * as styleRefs from './Bullet.treat';
 
 export interface BulletProps {
   children: ReactNode;
 }
+
+const component = 'li';
 
 export const Bullet = ({ children }: BulletProps) => {
   const styles = useStyles(styleRefs);
@@ -16,9 +19,12 @@ export const Bullet = ({ children }: BulletProps) => {
 
   return (
     <Box
-      component="li"
-      paddingBottom={space}
-      className={classnames(useText({ size, baseline: true }), styles.listItem)}
+      component={component}
+      className={classnames(
+        useText({ size, baseline: true }),
+        useStackItem({ component, space }),
+        styles.listItem,
+      )}
     >
       {children}
     </Box>

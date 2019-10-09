@@ -1,52 +1,53 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import { Hidden } from './Hidden';
 import { Text } from '../Text/Text';
+import { Stack } from '../Stack/Stack';
 
 const docs: ComponentDocs = {
   examples: [
     {
       label: 'Hidden on Mobile',
       Example: () => (
-        <Fragment>
+        <Stack space="small">
           <Text>The following line is hidden on mobile:</Text>
           <Hidden mobile>
             <Text>Hidden on mobile.</Text>
           </Hidden>
-        </Fragment>
+        </Stack>
       ),
     },
     {
       label: 'Hidden on Desktop',
       Example: () => (
-        <Fragment>
+        <Stack space="small">
           <Text>The following line is hidden on desktop:</Text>
           <Hidden desktop>
             <Text>Hidden on desktop.</Text>
           </Hidden>
-        </Fragment>
+        </Stack>
       ),
     },
     {
       label: 'Hidden on Print',
       Example: () => (
-        <Fragment>
+        <Stack space="small">
           <Text>The following line is hidden on print:</Text>
           <Hidden print>
             <Text>Hidden on print.</Text>
           </Hidden>
-        </Fragment>
+        </Stack>
       ),
     },
     {
       label: 'Hidden on Screen',
       Example: () => (
-        <Fragment>
+        <Stack space="small">
           <Text>The following line is hidden on screen:</Text>
           <Hidden screen>
             <Text>Hidden on screen.</Text>
           </Hidden>
-        </Fragment>
+        </Stack>
       ),
     },
     {

@@ -128,7 +128,7 @@ const docs: ComponentDocs = {
         const [value, setValue] = useState<Value>({ text: '' });
 
         return (
-          <Box background="brand" paddingX="small">
+          <Box background="brand" padding="small">
             <Autosuggest
               showMobileBackdrop
               label="I like to eat"
@@ -139,6 +139,7 @@ const docs: ComponentDocs = {
                 ['Apples', 'Bananas', 'Broccoli', 'Carrots'],
                 value.text,
               )}
+              reserveMessageSpace={false}
             />
           </Box>
         );

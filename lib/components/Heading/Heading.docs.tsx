@@ -1,8 +1,10 @@
-import React, { Fragment, ReactNode } from 'react';
+import React, { ReactNode, Fragment } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import { Heading } from './Heading';
 import { Box } from '../Box/Box';
+import { Stack } from '../Stack/Stack';
 import { background as boxBackgrounds } from '../Box/useBoxStyles.treat';
+import { heading as headingLevels } from '../../hooks/typography/typography.treat';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <div style={{ maxWidth: '300px' }}>{children}</div>
@@ -60,6 +62,52 @@ const docs: ComponentDocs = {
       ),
     },
     {
+      label: 'Heading Spacing',
+      docsSite: false,
+      Example: () => {
+        const levels = Object.keys(headingLevels) as Array<
+          keyof typeof headingLevels
+        >;
+
+        return (
+          <Stack space="medium">
+            {levels.sort().map(level => (
+              <Box background="neutralLight">
+                <Heading level={level}>
+                  Level {level} Heading (Line 1)
+                  <br />
+                  Level {level} Heading (Line 2)
+                </Heading>
+              </Box>
+            ))}
+          </Stack>
+        );
+      },
+    },
+    {
+      label: 'Heading Spacing (Legacy)',
+      docsSite: false,
+      Example: () => {
+        const levels = Object.keys(headingLevels) as Array<
+          keyof typeof headingLevels
+        >;
+
+        return (
+          <Stack space="medium">
+            {levels.sort().map(level => (
+              <Box background="neutralLight">
+                <Heading level={level} _LEGACY_SPACE_>
+                  Level {level} Heading (Line 1)
+                  <br />
+                  Level {level} Heading (Line 2)
+                </Heading>
+              </Box>
+            ))}
+          </Stack>
+        );
+      },
+    },
+    {
       label: 'Heading Contrast',
       docsSite: false,
       Container,
@@ -71,7 +119,7 @@ const docs: ComponentDocs = {
         return (
           <Fragment>
             {backgrounds.sort().map(background => (
-              <Box background={background}>
+              <Box background={background} paddingY="xsmall">
                 <Heading level="4">{background}</Heading>
               </Box>
             ))}

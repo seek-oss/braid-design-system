@@ -3,6 +3,7 @@ import { Box } from '../Box/Box';
 import { Secondary } from '../Secondary/Secondary';
 import { Strong } from '../Strong/Strong';
 import { Text } from '../Text/Text';
+import { Stack } from '../Stack/Stack';
 
 export interface FieldLabelProps {
   id?: string;
@@ -33,7 +34,7 @@ export const FieldLabel = ({
   );
 
   return (
-    <Box paddingBottom="xsmall">
+    <Stack space="xsmall">
       <Box component="span" display="flex" justifyContent="spaceBetween">
         {htmlFor === false ? (
           labelEl
@@ -49,6 +50,6 @@ export const FieldLabel = ({
           <Text tone="secondary">{description}</Text>
         </Box>
       ) : null}
-    </Box>
+    </Stack>
   );
 };

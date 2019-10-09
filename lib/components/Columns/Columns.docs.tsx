@@ -16,14 +16,79 @@ const docs: ComponentDocs = {
   migrationGuide: true,
   examples: [
     {
-      label: 'Default',
+      label: 'No space',
       Example: () => (
-        <Columns>
+        <Columns space="none">
           <Column>
             <HideCode>
               <Content />
             </HideCode>
           </Column>
+          <Column>
+            <HideCode>
+              <Content />
+            </HideCode>
+          </Column>
+        </Columns>
+      ),
+    },
+    {
+      label: 'Custom space, e.g. small',
+      Example: () => (
+        <Columns space="small">
+          <Column>
+            <HideCode>
+              <Content />
+            </HideCode>
+          </Column>
+          <Column>
+            <HideCode>
+              <Content />
+            </HideCode>
+          </Column>
+        </Columns>
+      ),
+    },
+    {
+      label: 'Responsive space, e.g. ["small", "large"]',
+      Example: () => (
+        <Columns space={['small', 'large']}>
+          <Column>
+            <HideCode>
+              <Content />
+            </HideCode>
+          </Column>
+          <Column>
+            <HideCode>
+              <Content />
+            </HideCode>
+          </Column>
+        </Columns>
+      ),
+    },
+    {
+      label: 'Responsive space with `none` on mobile, e.g. ["none", "gutter"]',
+      docsSite: false,
+      Example: () => (
+        <Columns space={['none', 'gutter']}>
+          <Column>
+            <HideCode>
+              <Content />
+            </HideCode>
+          </Column>
+          <Column>
+            <HideCode>
+              <Content />
+            </HideCode>
+          </Column>
+        </Columns>
+      ),
+    },
+    {
+      label: 'Responsive space with `none` on desktop, e.g. ["small", "none"]',
+      docsSite: false,
+      Example: () => (
+        <Columns space={['small', 'none']}>
           <Column>
             <HideCode>
               <Content />
@@ -40,7 +105,7 @@ const docs: ComponentDocs = {
     {
       label: 'Collapse on mobile',
       Example: () => (
-        <Columns collapse>
+        <Columns space="small" collapse>
           <Column>
             <HideCode>
               <Content>First</Content>
@@ -55,34 +120,73 @@ const docs: ComponentDocs = {
       ),
     },
     {
-      label: 'Custom gutter size, e.g. `small`',
+      label: 'Collapse on mobile with custom space, e.g. "small"',
       Example: () => (
-        <Columns gutter="small">
+        <Columns space="small" collapse>
           <Column>
             <HideCode>
-              <Content />
+              <Content>First</Content>
             </HideCode>
           </Column>
           <Column>
             <HideCode>
-              <Content />
+              <Content>Second</Content>
             </HideCode>
           </Column>
         </Columns>
       ),
     },
     {
-      label: 'No gutter',
+      label:
+        'Collapse on mobile with responsive space, e.g. ["small", "large"]',
       Example: () => (
-        <Columns gutter="none">
+        <Columns space={['small', 'large']} collapse>
           <Column>
             <HideCode>
-              <Content />
+              <Content>First</Content>
             </HideCode>
           </Column>
           <Column>
             <HideCode>
-              <Content />
+              <Content>Second</Content>
+            </HideCode>
+          </Column>
+        </Columns>
+      ),
+    },
+    {
+      label:
+        'Collapse on mobile with responsive space and `none` on mobile, e.g. ["none", "gutter"]',
+      docsSite: false,
+      Example: () => (
+        <Columns space={['none', 'gutter']} collapse>
+          <Column>
+            <HideCode>
+              <Content>First</Content>
+            </HideCode>
+          </Column>
+          <Column>
+            <HideCode>
+              <Content>Second</Content>
+            </HideCode>
+          </Column>
+        </Columns>
+      ),
+    },
+    {
+      label:
+        'Collapse on mobile with responsive space and `none` on desktop, e.g. ["small", "none"]',
+      docsSite: false,
+      Example: () => (
+        <Columns space={['small', 'none']} collapse>
+          <Column>
+            <HideCode>
+              <Content>First</Content>
+            </HideCode>
+          </Column>
+          <Column>
+            <HideCode>
+              <Content>Second</Content>
             </HideCode>
           </Column>
         </Columns>
@@ -91,7 +195,7 @@ const docs: ComponentDocs = {
     {
       label: 'Reverse',
       Example: () => (
-        <Columns reverse>
+        <Columns space="small" reverse>
           <Column>
             <HideCode>
               <Content>First</Content>

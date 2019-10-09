@@ -15,6 +15,7 @@ import {
   FieldMessageProps,
 } from '../../FieldMessage/FieldMessage';
 import { FieldOverlay } from '../FieldOverlay/FieldOverlay';
+import { Stack } from '../../Stack/Stack';
 import buildDataAttributes, { DataAttributeMap } from '../buildDataAttributes';
 import { useText, useTouchableSpace } from '../../../hooks/typography';
 import * as styleRefs from './Field.treat';
@@ -74,7 +75,7 @@ export const Field = forwardRef<FieldRef, InternalFieldProps>(
       children,
       message,
       secondaryMessage,
-      reserveMessageSpace,
+      reserveMessageSpace = true,
       tone,
       'aria-describedby': ariaDescribedBy,
       data,
@@ -93,15 +94,18 @@ export const Field = forwardRef<FieldRef, InternalFieldProps>(
     );
 
     return (
-      <Box>
-        <FieldLabel
-          id={labelId}
-          htmlFor={id}
-          label={label}
-          secondaryLabel={secondaryLabel}
-          tertiaryLabel={tertiaryLabel}
-          description={description}
-        />
+      <Stack space="xsmall">
+        {label ? (
+          <FieldLabel
+            id={labelId}
+            htmlFor={id}
+            label={label}
+            secondaryLabel={secondaryLabel}
+            tertiaryLabel={tertiaryLabel}
+            description={description}
+          />
+        ) : null}
+
         <Box position="relative">
           <BackgroundProvider value={background}>
             {children(
@@ -137,15 +141,18 @@ export const Field = forwardRef<FieldRef, InternalFieldProps>(
             )}
           </BackgroundProvider>
         </Box>
-        <FieldMessage
-          id={messageId}
-          tone={tone}
-          disabled={disabled}
-          message={message}
-          secondaryMessage={secondaryMessage}
-          reserveMessageSpace={reserveMessageSpace}
-        />
-      </Box>
+
+        {message || reserveMessageSpace ? (
+          <FieldMessage
+            id={messageId}
+            tone={tone}
+            disabled={disabled}
+            message={message}
+            secondaryMessage={secondaryMessage}
+            reserveMessageSpace={reserveMessageSpace}
+          />
+        ) : null}
+      </Stack>
     );
   },
 );

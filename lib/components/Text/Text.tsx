@@ -10,6 +10,7 @@ export interface TextProps extends Pick<BoxProps, 'component'> {
   tone?: UseTextProps['tone'];
   weight?: UseTextProps['weight'];
   baseline?: UseTextProps['baseline'];
+  _LEGACY_SPACE_?: boolean;
 }
 
 export const Text = ({
@@ -19,9 +20,10 @@ export const Text = ({
   tone,
   weight,
   baseline = true,
+  _LEGACY_SPACE_ = false,
   children,
 }: TextProps) => {
-  const textStyles = useText({ weight, size, baseline, tone });
+  const textStyles = useText({ weight, size, baseline, tone, _LEGACY_SPACE_ });
 
   // Prevent re-renders when context values haven't changed
   const textContextValue = useMemo(

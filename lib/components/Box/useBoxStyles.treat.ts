@@ -17,7 +17,7 @@ const spaceMapToCss = (
   return mapToStyleProperty(
     spaceWithNone,
     cssPropertyName,
-    (value: number, propertyName) =>
+    (value, propertyName) =>
       generateDesktopOnlyRules
         ? theme.utils.desktopStyles({
             [propertyName]: value * theme.grid,

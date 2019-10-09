@@ -37,19 +37,19 @@ const docs: ComponentDocs = {
       ),
     },
     {
-      label: 'No additional space between Bullets',
+      label: 'Decreased space between Bullets',
       Example: () => (
-        <BulletList space="none">
-          <Bullet>No additional space below bullet.</Bullet>
-          <Bullet>No additional space below bullet.</Bullet>
-          <Bullet>No additional space below bullet.</Bullet>
+        <BulletList space="xsmall">
+          <Bullet>Decreased space below bullet.</Bullet>
+          <Bullet>Decreased space below bullet.</Bullet>
+          <Bullet>Decreased space below bullet.</Bullet>
         </BulletList>
       ),
     },
     {
       label: 'Increased space between Bullets',
       Example: () => (
-        <BulletList space="medium">
+        <BulletList space="xlarge">
           <Bullet>Increased space below bullet.</Bullet>
           <Bullet>Increased space below bullet.</Bullet>
           <Bullet>Increased space below bullet.</Bullet>
