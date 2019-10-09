@@ -1,4 +1,4 @@
-import React, { ComponentType, Fragment } from 'react';
+import React, { ComponentType } from 'react';
 import { Text } from '../Text/Text';
 import { Box } from '../Box/Box';
 import { Heading } from '../Heading/Heading';
@@ -8,6 +8,7 @@ import {
   text as textSizes,
   tone as tones,
 } from '../../hooks/typography/typography.treat';
+import { Stack } from '../Stack/Stack';
 
 export default (Icon: ComponentType<UseIconProps>) => {
   return [
@@ -66,16 +67,16 @@ export default (Icon: ComponentType<UseIconProps>) => {
         const sizes = Object.keys(textSizes) as Array<keyof typeof textSizes>;
 
         return (
-          <Fragment>
+          <Stack space="small">
             {sizes.map(size => (
-              <Box display="flex" marginBottom="xxsmall" alignItems="center">
+              <Box display="flex" alignItems="center">
                 <Box marginRight="xxsmall">
                   <Icon size={size} />
                 </Box>
                 <Text baseline={false}>{size}</Text>
               </Box>
             ))}
-          </Fragment>
+          </Stack>
         );
       },
     },
@@ -86,13 +87,13 @@ export default (Icon: ComponentType<UseIconProps>) => {
         const sizes = Object.keys(textSizes) as Array<keyof typeof textSizes>;
 
         return (
-          <Fragment>
+          <Stack space="medium">
             {sizes.map(size => (
               <Text size={size}>
                 <Icon /> {size}
               </Text>
             ))}
-          </Fragment>
+          </Stack>
         );
       },
     },
@@ -105,13 +106,13 @@ export default (Icon: ComponentType<UseIconProps>) => {
         >;
 
         return (
-          <Fragment>
+          <Stack space="large">
             {headings.sort().map(heading => (
               <Heading level={heading}>
                 <Icon /> level {heading}
               </Heading>
             ))}
-          </Fragment>
+          </Stack>
         );
       },
     },
@@ -122,7 +123,7 @@ export default (Icon: ComponentType<UseIconProps>) => {
         const iconTones = Object.keys(tones) as Array<keyof typeof tones>;
 
         return (
-          <Fragment>
+          <Stack space="small">
             {iconTones.map(tone => (
               <Text tone={tone}>
                 <Icon /> {tone}
@@ -131,7 +132,7 @@ export default (Icon: ComponentType<UseIconProps>) => {
             <Text tone="critical">
               Critical text overridden to positive <Icon tone="positive" /> icon
             </Text>
-          </Fragment>
+          </Stack>
         );
       },
     },
