@@ -34,7 +34,7 @@ export const FieldLabel = ({
   );
 
   return (
-    <Stack space="small">
+    <Stack space="xsmall">
       <Box component="span" display="flex" justifyContent="spaceBetween">
         {htmlFor === false ? (
           labelEl
@@ -45,7 +45,11 @@ export const FieldLabel = ({
         )}
         {tertiaryLabel ? <Text>&nbsp;{tertiaryLabel}</Text> : null}
       </Box>
-      {description ? <Text tone="secondary">{description}</Text> : null}
+      {description ? (
+        <Box paddingY="xxsmall">
+          <Text tone="secondary">{description}</Text>
+        </Box>
+      ) : null}
     </Stack>
   );
 };

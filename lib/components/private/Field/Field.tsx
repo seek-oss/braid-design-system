@@ -94,62 +94,64 @@ export const Field = forwardRef<FieldRef, InternalFieldProps>(
     );
 
     return (
-      <Stack space="small">
-        <FieldLabel
-          id={labelId}
-          htmlFor={id}
-          label={label}
-          secondaryLabel={secondaryLabel}
-          tertiaryLabel={tertiaryLabel}
-          description={description}
-        />
-        <Stack space="xsmall">
-          <Box position="relative">
-            <BackgroundProvider value={background}>
-              {children(
-                overlays,
-                {
-                  id,
-                  name,
-                  background,
-                  boxShadow:
-                    tone === 'critical' && !disabled
-                      ? 'borderCritical'
-                      : 'borderStandard',
-                  width: 'full',
-                  paddingX: 'small',
-                  borderRadius: 'standard',
-                  ...((message || ariaDescribedBy) && {
-                    'aria-describedby': ariaDescribedBy || messageId,
+      <Stack space="xsmall">
+        {label ? (
+          <FieldLabel
+            id={labelId}
+            htmlFor={id}
+            label={label}
+            secondaryLabel={secondaryLabel}
+            tertiaryLabel={tertiaryLabel}
+            description={description}
+          />
+        ) : null}
+
+        <Box position="relative">
+          <BackgroundProvider value={background}>
+            {children(
+              overlays,
+              {
+                id,
+                name,
+                background,
+                boxShadow:
+                  tone === 'critical' && !disabled
+                    ? 'borderCritical'
+                    : 'borderStandard',
+                width: 'full',
+                paddingX: 'small',
+                borderRadius: 'standard',
+                ...((message || ariaDescribedBy) && {
+                  'aria-describedby': ariaDescribedBy || messageId,
+                }),
+                disabled,
+                autoComplete,
+                ...buildDataAttributes(data),
+                className: classnames(
+                  styles.field,
+                  useText({
+                    backgroundContext: background,
+                    size: 'standard',
+                    baseline: false,
                   }),
-                  disabled,
-                  autoComplete,
-                  ...buildDataAttributes(data),
-                  className: classnames(
-                    styles.field,
-                    useText({
-                      backgroundContext: background,
-                      size: 'standard',
-                      baseline: false,
-                    }),
-                    useTouchableSpace('standard'),
-                  ),
-                },
-                ref,
-              )}
-            </BackgroundProvider>
-          </Box>
-          {message || reserveMessageSpace ? (
-            <FieldMessage
-              id={messageId}
-              tone={tone}
-              disabled={disabled}
-              message={message}
-              secondaryMessage={secondaryMessage}
-              reserveMessageSpace={reserveMessageSpace}
-            />
-          ) : null}
-        </Stack>
+                  useTouchableSpace('standard'),
+                ),
+              },
+              ref,
+            )}
+          </BackgroundProvider>
+        </Box>
+
+        {message || reserveMessageSpace ? (
+          <FieldMessage
+            id={messageId}
+            tone={tone}
+            disabled={disabled}
+            message={message}
+            secondaryMessage={secondaryMessage}
+            reserveMessageSpace={reserveMessageSpace}
+          />
+        ) : null}
       </Stack>
     );
   },

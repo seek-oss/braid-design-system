@@ -5,6 +5,7 @@ import {
   FieldMessage,
   FieldMessageProps,
 } from '../../FieldMessage/FieldMessage';
+import { Stack } from '../../Stack/Stack';
 
 type FormElementProps = AllHTMLAttributes<HTMLFormElement>;
 export interface FieldGroupProps {
@@ -37,35 +38,41 @@ export const FieldGroup = ({
   tertiaryLabel,
   description,
   message,
-  reserveMessageSpace,
+  reserveMessageSpace = true,
   tone,
 }: InternalFieldGroupProps) => {
   const messageId = `${id}-message`;
 
   return (
     <Box component="fieldset" disabled={disabled} id={id}>
-      <Box component="legend">
-        <FieldLabel
-          htmlFor={false}
-          label={label}
-          secondaryLabel={secondaryLabel}
-          tertiaryLabel={tertiaryLabel}
-          description={description}
-        />
-      </Box>
+      <Stack space="xsmall">
+        {label ? (
+          <Box component="legend">
+            <FieldLabel
+              htmlFor={false}
+              label={label}
+              secondaryLabel={secondaryLabel}
+              tertiaryLabel={tertiaryLabel}
+              description={description}
+            />
+          </Box>
+        ) : null}
 
-      {children({
-        disabled,
-        ...(message && { 'aria-describedby': messageId }),
-      })}
+        {children({
+          disabled,
+          ...(message && { 'aria-describedby': messageId }),
+        })}
 
-      <FieldMessage
-        id={messageId}
-        tone={tone}
-        disabled={disabled}
-        message={message}
-        reserveMessageSpace={reserveMessageSpace}
-      />
+        {message || reserveMessageSpace ? (
+          <FieldMessage
+            id={messageId}
+            tone={tone}
+            disabled={disabled}
+            message={message}
+            reserveMessageSpace={reserveMessageSpace}
+          />
+        ) : null}
+      </Stack>
     </Box>
   );
 };
