@@ -78,7 +78,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Text Contrast',
-      docsSite: true,
+      docsSite: false,
       Container,
       Example: () => {
         const backgrounds = Object.keys(boxBackgrounds) as Array<
