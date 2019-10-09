@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, Fragment } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import { Heading } from './Heading';
 import { Box } from '../Box/Box';
@@ -117,13 +117,13 @@ const docs: ComponentDocs = {
         >;
 
         return (
-          <Stack space="medium">
+          <Fragment>
             {backgrounds.sort().map(background => (
-              <Box background={background}>
+              <Box background={background} paddingY="xsmall">
                 <Heading level="4">{background}</Heading>
               </Box>
             ))}
-          </Stack>
+          </Fragment>
         );
       },
     },

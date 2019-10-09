@@ -78,7 +78,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Text Contrast',
-      docsSite: false,
+      docsSite: true,
       Container,
       Example: () => {
         const backgrounds = Object.keys(boxBackgrounds) as Array<
@@ -88,8 +88,8 @@ const docs: ComponentDocs = {
         return (
           <Fragment>
             {backgrounds.sort().map(background => (
-              <Box background={background}>
-                <Text baseline={false}>{background}</Text>
+              <Box background={background} paddingY="xsmall">
+                <Text>{background}</Text>
               </Box>
             ))}
           </Fragment>
