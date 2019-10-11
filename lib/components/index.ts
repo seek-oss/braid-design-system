@@ -24,6 +24,7 @@ export { FieldLabel } from './FieldLabel/FieldLabel';
 export { FieldMessage } from './FieldMessage/FieldMessage';
 export { Heading } from './Heading/Heading';
 export { Hidden } from './Hidden/Hidden';
+export { Inline } from './Inline/Inline';
 export { MonthPicker } from './MonthPicker/MonthPicker';
 export { Radio } from './Radio/Radio';
 export { Secondary } from './Secondary/Secondary';

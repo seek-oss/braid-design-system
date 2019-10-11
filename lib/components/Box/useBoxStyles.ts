@@ -2,10 +2,13 @@ import { ReactType } from 'react';
 import { useStyles } from 'sku/react-treat';
 import classnames from 'classnames';
 import { Theme } from 'treat/theme';
+import {
+  resolveResponsiveProp,
+  ResponsiveProp,
+} from '../../utils/resolveResponsiveProp';
 import * as resetStyleRefs from '../../reset/reset.treat';
 import * as styleRefs from './useBoxStyles.treat';
 
-type ResponsiveProp<AtomName> = AtomName | [AtomName, AtomName];
 export type Space = keyof Theme['space'] | 'none';
 export type ResponsiveSpace = ResponsiveProp<Space>;
 
@@ -39,21 +42,6 @@ export interface UseBoxStylesProps {
   position?: keyof typeof styleRefs.position;
   cursor?: keyof typeof styleRefs.cursor;
   pointerEvents?: keyof typeof styleRefs.pointerEvents;
-}
-
-function getResponsiveClasses<PropName extends string>(
-  mobileClasses: Record<PropName, string>,
-  desktopClasses: Record<PropName, string>,
-  propName: ResponsiveProp<PropName>,
-) {
-  if (typeof propName === 'string') {
-    return mobileClasses[propName!];
-  } else if (propName instanceof Array) {
-    const [mobileProp, desktopProp] = propName;
-    return mobileProp !== desktopProp
-      ? [mobileClasses[mobileProp!], desktopClasses[desktopProp!]]
-      : mobileClasses[mobileProp!];
-  }
 }
 
 export const useBoxStyles = ({
@@ -114,72 +102,72 @@ export const useBoxStyles = ({
     styles.cursor[cursor!],
     styles.pointerEvents[pointerEvents!],
     resolvedMarginTop &&
-      getResponsiveClasses(
+      resolveResponsiveProp(
+        resolvedMarginTop,
         styles.margin.top,
         styles.marginDesktop.top,
-        resolvedMarginTop,
       ),
     resolvedMarginBottom &&
-      getResponsiveClasses(
+      resolveResponsiveProp(
+        resolvedMarginBottom,
         styles.margin.bottom,
         styles.marginDesktop.bottom,
-        resolvedMarginBottom,
       ),
     resolvedMarginLeft &&
-      getResponsiveClasses(
+      resolveResponsiveProp(
+        resolvedMarginLeft,
         styles.margin.left,
         styles.marginDesktop.left,
-        resolvedMarginLeft,
       ),
     resolvedMarginRight &&
-      getResponsiveClasses(
+      resolveResponsiveProp(
+        resolvedMarginRight,
         styles.margin.right,
         styles.marginDesktop.right,
-        resolvedMarginRight,
       ),
     resolvedPaddingTop &&
-      getResponsiveClasses(
+      resolveResponsiveProp(
+        resolvedPaddingTop,
         styles.padding.top,
         styles.paddingDesktop.top,
-        resolvedPaddingTop,
       ),
     resolvedPaddingBottom &&
-      getResponsiveClasses(
+      resolveResponsiveProp(
+        resolvedPaddingBottom,
         styles.padding.bottom,
         styles.paddingDesktop.bottom,
-        resolvedPaddingBottom,
       ),
     resolvedPaddingLeft &&
-      getResponsiveClasses(
+      resolveResponsiveProp(
+        resolvedPaddingLeft,
         styles.padding.left,
         styles.paddingDesktop.left,
-        resolvedPaddingLeft,
       ),
     resolvedPaddingRight &&
-      getResponsiveClasses(
+      resolveResponsiveProp(
+        resolvedPaddingRight,
         styles.padding.right,
         styles.paddingDesktop.right,
-        resolvedPaddingRight,
       ),
     display &&
-      getResponsiveClasses(styles.display, styles.displayDesktop, display),
+      resolveResponsiveProp(display, styles.display, styles.displayDesktop),
     flexDirection &&
-      getResponsiveClasses(
+      resolveResponsiveProp(
+        flexDirection,
         styles.flexDirection,
         styles.flexDirectionDesktop,
-        flexDirection,
       ),
     alignItems &&
-      getResponsiveClasses(
+      resolveResponsiveProp(
+        alignItems,
         styles.alignItems,
         styles.alignItemsDesktop,
-        alignItems,
       ),
     justifyContent &&
-      getResponsiveClasses(
+      resolveResponsiveProp(
+        justifyContent,
         styles.justifyContent,
         styles.justifyContentDesktop,
-        justifyContent,
       ),
   );
 };
