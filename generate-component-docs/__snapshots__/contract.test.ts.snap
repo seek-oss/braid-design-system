@@ -1919,6 +1919,23 @@ exports[`IconTick 1`] = `
 }
 `;
 
+exports[`Inline 1`] = `
+{
+  children: ReactNode
+  space: ResponsiveProp<
+    | "gutter"
+    | "large"
+    | "medium"
+    | "none"
+    | "small"
+    | "xlarge"
+    | "xsmall"
+    | "xxlarge"
+    | "xxsmall"
+  >
+}
+`;
+
 exports[`MonthPicker 1`] = `
 {
   ascendingYears?: boolean

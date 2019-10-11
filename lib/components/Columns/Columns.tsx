@@ -1,10 +1,8 @@
 import React, { Children, ReactElement, createContext, useMemo } from 'react';
-import classnames from 'classnames';
-import { useStyles } from 'sku/treat';
 import { Box } from '../Box/Box';
 import { ColumnProps } from '../Column/Column';
 import { Space, ResponsiveSpace } from '../Box/useBoxStyles';
-import * as styleRefs from './Columns.treat';
+import { useNegativeOffsetX } from '../../hooks/useNegativeOffset/useNegativeOffset';
 
 const defaultCollapse = false;
 const defaultReverse = false;
@@ -34,8 +32,6 @@ export const Columns = ({
   reverse = defaultReverse,
   space = defaultSpace,
 }: ColumnsProps) => {
-  const styles = useStyles(styleRefs);
-
   const [mobileSpace, desktopSpace] = Array.isArray(space)
     ? space
     : [space, space];
@@ -48,6 +44,10 @@ export const Columns = ({
 
   const shouldReverseDesktop = collapse && reverse;
   const shouldReverseEverywhere = !collapse && reverse;
+  const negativeOffsetX = useNegativeOffsetX([
+    collapse ? 'none' : mobileSpace,
+    desktopSpace,
+  ]);
 
   return (
     <Box
@@ -56,15 +56,7 @@ export const Columns = ({
         collapse ? 'column' : 'row',
         shouldReverseDesktop ? 'rowReverse' : 'row',
       ]}
-      className={classnames(
-        !collapse && mobileSpace !== 'none'
-          ? styles.gutterOffset[mobileSpace]
-          : null,
-        collapse || desktopSpace !== mobileSpace
-          ? styles.gutterOffsetDesktop[desktopSpace]
-          : null,
-        collapse ? styles.collapse : null,
-      )}
+      className={negativeOffsetX}
     >
       <ColumnsContext.Provider value={columnsContextValue}>
         {shouldReverseEverywhere
