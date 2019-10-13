@@ -34,6 +34,7 @@ export { Textarea } from './Textarea/Textarea';
 export { TextField } from './TextField/TextField';
 export { TextLink } from './TextLink/TextLink';
 export { TextLinkRenderer } from './TextLinkRenderer/TextLinkRenderer';
+export { useToast } from './useToast/ToastContext';
 export { Toggle } from './Toggle/Toggle';
 
 export * from './icons';
