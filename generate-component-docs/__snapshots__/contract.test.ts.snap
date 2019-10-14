@@ -483,6 +483,7 @@ exports[`Box 1`] = `
   default?: boolean
   defaultChecked?: boolean
   defaultValue?: 
+    | number
     | string
     | string[]
   defer?: boolean
@@ -1876,7 +1877,83 @@ exports[`IconCritical 1`] = `
 }
 `;
 
+exports[`IconDate 1`] = `
+{
+  size?: 
+    | "fill"
+    | "large"
+    | "small"
+    | "standard"
+    | "xsmall"
+  tone?: 
+    | "critical"
+    | "formAccent"
+    | "info"
+    | "link"
+    | "neutral"
+    | "positive"
+    | "secondary"
+}
+`;
+
+exports[`IconFacebook 1`] = `
+{
+  size?: 
+    | "fill"
+    | "large"
+    | "small"
+    | "standard"
+    | "xsmall"
+  tone?: 
+    | "critical"
+    | "formAccent"
+    | "info"
+    | "link"
+    | "neutral"
+    | "positive"
+    | "secondary"
+}
+`;
+
 exports[`IconInfo 1`] = `
+{
+  size?: 
+    | "fill"
+    | "large"
+    | "small"
+    | "standard"
+    | "xsmall"
+  tone?: 
+    | "critical"
+    | "formAccent"
+    | "info"
+    | "link"
+    | "neutral"
+    | "positive"
+    | "secondary"
+}
+`;
+
+exports[`IconLocation 1`] = `
+{
+  size?: 
+    | "fill"
+    | "large"
+    | "small"
+    | "standard"
+    | "xsmall"
+  tone?: 
+    | "critical"
+    | "formAccent"
+    | "info"
+    | "link"
+    | "neutral"
+    | "positive"
+    | "secondary"
+}
+`;
+
+exports[`IconMoney 1`] = `
 {
   size?: 
     | "fill"
@@ -1914,7 +1991,45 @@ exports[`IconPositive 1`] = `
 }
 `;
 
+exports[`IconSearch 1`] = `
+{
+  size?: 
+    | "fill"
+    | "large"
+    | "small"
+    | "standard"
+    | "xsmall"
+  tone?: 
+    | "critical"
+    | "formAccent"
+    | "info"
+    | "link"
+    | "neutral"
+    | "positive"
+    | "secondary"
+}
+`;
+
 exports[`IconTick 1`] = `
+{
+  size?: 
+    | "fill"
+    | "large"
+    | "small"
+    | "standard"
+    | "xsmall"
+  tone?: 
+    | "critical"
+    | "formAccent"
+    | "info"
+    | "link"
+    | "neutral"
+    | "positive"
+    | "secondary"
+}
+`;
+
+exports[`IconTwitter 1`] = `
 {
   size?: 
     | "fill"
@@ -2479,6 +2594,7 @@ exports[`TextLink 1`] = `
   default?: boolean
   defaultChecked?: boolean
   defaultValue?: 
+    | number
     | string
     | string[]
   defer?: boolean
