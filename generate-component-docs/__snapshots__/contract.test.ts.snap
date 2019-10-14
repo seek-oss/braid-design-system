@@ -1423,7 +1423,21 @@ exports[`Button 1`] = `
   id?: string
   loading?: boolean
   onClick?: (event: MouseEvent<HTMLButtonElement, MouseEvent>) => void
-  type?: string
+  type?: 
+    | "button"
+    | "reset"
+    | "submit"
+  weight?: 
+    | "regular"
+    | "strong"
+    | "weak"
+}
+`;
+
+exports[`ButtonRenderer 1`] = `
+{
+  children: (ButtonChildren: ComponentType<ButtonChildrenProps>, styleProps: { style: CSSProperties; className: string; }) => ReactNode
+  loading?: boolean
   weight?: 
     | "regular"
     | "strong"
