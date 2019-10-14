@@ -136,6 +136,7 @@ export const ButtonRenderer = ({
   const styles = useStyles(styleRefs);
   const isWeak = weight === 'weak';
   const background = backgroundVariants.base[weight];
+
   const buttonStyles = classnames(
     styles.root,
     isWeak ? styles.weak : null,
@@ -152,15 +153,16 @@ export const ButtonRenderer = ({
       transition: 'touchable',
     }),
   );
-  const buttonProps = {
-    style: {},
-    className: buttonStyles,
-  };
 
   const buttonChildrenContextValue = useMemo(() => ({ weight, loading }), [
     weight,
     loading,
   ]);
+
+  const buttonProps = {
+    style: {},
+    className: buttonStyles,
+  };
 
   return (
     <BackgroundProvider value={background}>
