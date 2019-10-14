@@ -7,6 +7,7 @@ const isGitHubPages =
 module.exports = {
   srcPaths: [
     'lib',
+    'themes',
     'site/src',
     'scripts',
     '@types',

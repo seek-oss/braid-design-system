@@ -1,57 +1,47 @@
 import { TreatTokens } from '../makeTreatTheme';
 import { DeepPartial } from 'utility-types';
+import { rgba } from 'polished';
 import merge from 'lodash/merge';
 
-interface SeekAsiaBrandTokens {
+interface MakeTokensOptions {
   name: string;
   brand: string;
   brandAccent: string;
-  formAccent: string;
   tokenOverrides?: DeepPartial<TreatTokens>;
 }
-export default ({
+export const makeTokens = ({
   name,
   brand,
   brandAccent,
-  formAccent,
   tokenOverrides = {},
-}: SeekAsiaBrandTokens): TreatTokens => {
-  const white = '#fff';
-  const blue2 = '#298EB9';
-  const blue3 = '#94C9E0';
-  const blue5 = '#EEF8FC';
-  const alert = '#eb0000';
-  const grey1 = '#333';
-  const grey2 = '#666';
-  const grey4 = '#ccc';
-  const candidate = '#0c4b85'; // SEEK Asia name for this color
-  const info = candidate;
-  const positive = '#498307';
-  const critical = alert;
-  const focus = blue3;
-  const link = blue2;
-  const linkHover = blue2;
-  const selection = blue5;
-  const secondary = grey2;
-  const neutral = grey2;
+}: MakeTokensOptions): TreatTokens => {
+  const focus = rgba('#1e90ff', 0.7);
+  const formAccent = '#2765cf';
+  const positive = '#169400';
+  const critical = brandAccent;
+  const info = '#9556b7';
+  const neutral = '#747474';
+  const black = '#1c1c1c';
+  const link = '#2765cf';
+  const secondary = '#1c1c1ca1';
 
   const tokens: TreatTokens = {
     name,
     typography: {
       fontFamily:
-        'Muli, -apple-system, system-ui, "Segoe UI", Roboto, "Noto Sans", Ubuntu, "Droid Sans", "Helvetica Neue", Arial, sans-serif',
-      webFont: 'Muli',
-      descenderHeightScale: 0.14,
+        'Roboto, "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif',
+      webFont: null,
+      descenderHeightScale: 0.165,
       capHeightScale: 0.6,
       fontWeight: {
         regular: 400,
-        medium: 600,
+        medium: 500,
         strong: 700,
       },
       heading: {
         weight: {
           weak: 'regular',
-          regular: 'strong',
+          regular: 'medium',
         },
         level: {
           '1': {
@@ -60,13 +50,13 @@ export default ({
               rows: 9,
             },
             desktop: {
-              size: 34,
+              size: 42,
               rows: 11,
             },
           },
           '2': {
             mobile: {
-              size: 24,
+              size: 21,
               rows: 8,
             },
             desktop: {
@@ -76,22 +66,22 @@ export default ({
           },
           '3': {
             mobile: {
-              size: 20,
+              size: 21,
               rows: 7,
             },
             desktop: {
-              size: 24,
-              rows: 8,
+              size: 21,
+              rows: 7,
             },
           },
           '4': {
             mobile: {
               size: 18,
-              rows: 6,
+              rows: 7,
             },
             desktop: {
               size: 18,
-              rows: 6,
+              rows: 7,
             },
           },
         },
@@ -100,11 +90,11 @@ export default ({
         xsmall: {
           mobile: {
             size: 12,
-            rows: 4,
+            rows: 5,
           },
           desktop: {
             size: 12,
-            rows: 4,
+            rows: 5,
           },
         },
         small: {
@@ -130,34 +120,34 @@ export default ({
         large: {
           mobile: {
             size: 18,
-            rows: 6,
+            rows: 7,
           },
           desktop: {
             size: 18,
-            rows: 6,
+            rows: 7,
           },
         },
       },
     },
-    responsiveBreakpoint: 768,
+    responsiveBreakpoint: 740,
     contentWidth: {
       medium: 940,
       large: 1280,
     },
     grid: 4,
-    touchableSize: 10,
+    touchableSize: 12,
     space: {
-      gutter: 5,
+      gutter: 6,
       xxsmall: 1,
       xsmall: 2,
       small: 3,
-      medium: 4,
-      large: 6,
-      xlarge: 8,
-      xxlarge: 16,
+      medium: 5,
+      large: 8,
+      xlarge: 12,
+      xxlarge: 24,
     },
     transforms: {
-      touchable: 'scale(0.98)',
+      touchable: 'scale(0.95)',
     },
     transitions: {
       fast: 'transform .125s ease, opacity .125s ease',
@@ -165,14 +155,14 @@ export default ({
     },
     border: {
       radius: {
-        standard: '4px',
+        standard: '2px',
       },
       width: {
         standard: 1,
         large: 2,
       },
       color: {
-        standard: grey4,
+        standard: '#d6d6d6',
         focus,
         critical,
         formAccent,
@@ -184,9 +174,9 @@ export default ({
     color: {
       foreground: {
         link,
-        linkHover,
-        neutral: grey1,
-        neutralInverted: white,
+        linkHover: link,
+        neutral: black,
+        neutralInverted: 'white',
         formAccent,
         critical,
         info,
@@ -195,13 +185,13 @@ export default ({
       },
       background: {
         brand,
-        input: white,
-        inputDisabled: grey4,
+        input: '#fff',
+        inputDisabled: '#eee',
         brandAccent,
         formAccent,
-        formAccentDisabled: grey4,
-        selection,
-        card: white,
+        formAccentDisabled: '#ccc',
+        selection: '#eee',
+        card: '#fff',
         critical,
         info,
         positive,

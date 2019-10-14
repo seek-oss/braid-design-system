@@ -1,7 +1,7 @@
 import { makeTokens } from '../baseTokens/seekAnz';
 
 export default makeTokens({
-  name: 'seekAnz',
-  brand: '#0d3880',
-  brandAccent: '#e60278',
+  name: 'seekBusiness',
+  brand: '#009fd4',
+  brandAccent: '#0d3880',
 });
