@@ -4598,7 +4598,7 @@ colors@1.0.3:
   resolved "https://registry.yarnpkg.com/colors/-/colors-1.0.3.tgz#0433f44d809680fdeb60ed260f1b0c262e82a40b"
   integrity sha1-BDP0TYCWgP3rYO0mDxsMJi6CpAs=
 
-colors@^1.1.2:
+colors@^1.0.3, colors@^1.1.2:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/colors/-/colors-1.4.0.tgz#c50491479d4c1bdaed2c9ced32cf7c7dc2360f78"
   integrity sha512-a+UqTh4kgZg/SlGvfbzDHpgRu7AAQOmmqRHJnxhRZICKFUT91brVhNNt58CMWU9PsBbv3PDCZUHbVxuDiH2mtA==
@@ -6530,6 +6530,13 @@ evp_bytestokey@^1.0.0, evp_bytestokey@^1.0.3:
   dependencies:
     md5.js "^1.3.4"
     safe-buffer "^5.1.1"
+
+exception-formatter@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/exception-formatter/-/exception-formatter-2.1.2.tgz#7f91ee49a203b81de5fb3039bf9646cd40338321"
+  integrity sha512-LHBd3npNQZ47GeO5jPTorbCvw2/BxxFNn9JG+FjjhifwI/jC5zi2W+UX//FrlIfTXvW4nRx2jthy1ujTVHhsLw==
+  dependencies:
+    colors "^1.0.3"
 
 exec-sh@^0.3.2:
   version "0.3.2"
@@ -12126,6 +12133,11 @@ path-to-regexp@^1.7.0:
   dependencies:
     isarray "0.0.1"
 
+path-to-regexp@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/path-to-regexp/-/path-to-regexp-3.1.0.tgz#f45a9cc4dc6331ae8f131e0ce4fde8607f802367"
+  integrity sha512-PtHLisEvUOepjc+sStXxJ/pDV/s5UBTOKWJY2SOz3e6E/iN/jLknY9WL72kTwRrwXDUbZTEAtSnJbz2fF127DA==
+
 path-type@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/path-type/-/path-type-1.1.0.tgz#59c44f7ee491da704da415da5a4070ba4f8fe441"
@@ -14634,10 +14646,10 @@ sisteransi@^1.0.3:
   resolved "https://registry.yarnpkg.com/sisteransi/-/sisteransi-1.0.3.tgz#98168d62b79e3a5e758e27ae63c4a053d748f4eb"
   integrity sha512-SbEG75TzH8G7eVXFSN5f9EExILKfly7SUvVY5DhhYLvfhKqhDFY0OzevWa/zwak0RLRfWS5AvfMWpd9gJvr5Yg==
 
-sku@8.13.1:
-  version "8.13.1"
-  resolved "https://registry.yarnpkg.com/sku/-/sku-8.13.1.tgz#85c9da2678ceac49e8ebe272b85ba0d752592837"
-  integrity sha512-8GEK09qvXklswYQn1S07qPkmghUG15MxQ0hx8GfGHiPSXiUdgdlYvA5sJE1uAjaJxsTwXrv8LCD7vLdZTs3g2w==
+sku@8.14.0:
+  version "8.14.0"
+  resolved "https://registry.yarnpkg.com/sku/-/sku-8.14.0.tgz#90a45c4a155d1af1d6b8bf7e9b46ccdde700964e"
+  integrity sha512-IEy/4JReEGeasvQygzrdjS5eq23SX2GK4kNgI3sqDUvgkCBdhC+l2ieY5G4deyh2rIpqPEiiYwf3JneT087JDg==
   dependencies:
     "@babel/core" "^7.5.5"
     "@babel/plugin-proposal-class-properties" "^7.5.5"
@@ -14690,6 +14702,8 @@ sku@8.13.1:
     escape-string-regexp "^2.0.0"
     eslint "^6.1.0"
     eslint-config-seek "^4.3.1"
+    eval "^0.1.4"
+    exception-formatter "^2.1.2"
     express "^4.16.3"
     fast-glob "^3.0.4"
     fastest-validator "^0.6.17"
@@ -14713,6 +14727,7 @@ sku@8.13.1:
     mini-css-extract-plugin "^0.8.0"
     node-emoji "^1.10.0"
     open "^6.4.0"
+    path-to-regexp "^3.1.0"
     playroom "^0.9.4"
     postcss-js "^2.0.2"
     postcss-loader "^3.0.0"
