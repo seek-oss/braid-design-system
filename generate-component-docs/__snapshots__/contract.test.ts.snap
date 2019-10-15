@@ -483,7 +483,6 @@ exports[`Box 1`] = `
   default?: boolean
   defaultChecked?: boolean
   defaultValue?: 
-    | number
     | string
     | string[]
   defer?: boolean
@@ -2594,7 +2593,6 @@ exports[`TextLink 1`] = `
   default?: boolean
   defaultChecked?: boolean
   defaultValue?: 
-    | number
     | string
     | string[]
   defer?: boolean
