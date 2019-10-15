@@ -1,8 +1,16 @@
 import { style } from 'sku/treat';
-import * as zIndex from '../private/zIndex';
+import { pageOverlay } from '../private/zIndex';
 
-export const root = style(({ color }) => ({
-  zIndex: zIndex.pageOverlay,
+export const toast = style({
   pointerEvents: 'all',
-  borderLeft: `3px solid ${color.background.neutral}`,
-}));
+  maxWidth: 400,
+});
+
+export const messageContainer = style({ flex: '1 1 auto' });
+
+export const toaster = style({
+  bottom: 0,
+  zIndex: pageOverlay,
+});
+
+export const noShrink = style({ flexShrink: 0 });

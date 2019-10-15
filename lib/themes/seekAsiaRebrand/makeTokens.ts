@@ -158,6 +158,7 @@ export default ({
     border: {
       radius: {
         standard: '4px',
+        baller: '8px',
       },
       width: {
         standard: 1,

@@ -6,20 +6,19 @@ import React, {
   ReactNode,
   useState,
   useEffect,
+  Fragment,
 } from 'react';
 import { createPortal } from 'react-dom';
-import { Box, Stack } from '..';
-import { Toast as ToastComponent } from './Toast';
-
-interface Toast {
-  message: string;
-}
+import { useTheme } from 'sku/treat';
+import { Toast, Toaster } from './Toaster';
 
 type AddToast = (toast: Toast) => void;
 
 const ToastControllerContext = createContext<AddToast | null>(null);
 
-type Actions = { type: 'QUEUE_TOAST'; value: Toast } | { type: 'REMOVE_TOAST' };
+type Actions =
+  | { type: 'QUEUE_TOAST'; value: Toast }
+  | { type: 'REMOVE_TOAST'; value: number };
 
 interface ToastState {
   activeToasts: Toast[];
@@ -36,12 +35,12 @@ function reducer(state: ToastState, action: Actions) {
     }
 
     case 'REMOVE_TOAST': {
+      const newActiveToasts = state.activeToasts.slice();
+      newActiveToasts.splice(action.value, 1);
+
       return {
         ...state,
-        activeToasts: state.activeToasts.slice(
-          0,
-          state.activeToasts.length - 1,
-        ),
+        activeToasts: newActiveToasts,
       };
     }
   }
@@ -53,6 +52,12 @@ interface ToastProviderProps {
   children: ReactNode;
 }
 export const ToastProvider = ({ children }: ToastProviderProps) => {
+  const currentContext = useContext(ToastControllerContext);
+  if (currentContext !== null) {
+    // Bail early as "ToastProvider" is already setup
+    return <Fragment>{children}</Fragment>;
+  }
+
   const [{ activeToasts }, dispatch] = useReducer(reducer, {
     activeToasts: [],
     queuedToasts: [],
@@ -63,31 +68,17 @@ export const ToastProvider = ({ children }: ToastProviderProps) => {
     [],
   );
 
-  const removeToast = () => dispatch({ type: 'REMOVE_TOAST' });
+  const removeToast = useCallback(
+    (toastIndex: number) =>
+      dispatch({ type: 'REMOVE_TOAST', value: toastIndex }),
+    [],
+  );
 
   return (
     <ToastControllerContext.Provider value={addToast}>
       {children}
       <ToastPortal>
-        <Box
-          position="fixed"
-          display="flex"
-          justifyContent="center"
-          paddingBottom="medium"
-          width="full"
-          pointerEvents="none"
-          style={{ bottom: 0 }}
-        >
-          <Stack space="medium">
-            {activeToasts.map(({ message }, index) => (
-              <ToastComponent
-                key={index}
-                message={message}
-                onClear={removeToast}
-              />
-            ))}
-          </Stack>
-        </Box>
+        <Toaster activeToasts={activeToasts} removeToast={removeToast} />
       </ToastPortal>
     </ToastControllerContext.Provider>
   );
@@ -122,11 +113,13 @@ const ToastPortal = ({ children }: ToastPortalProps) => {
 };
 
 export const useToast = () => {
+  const treatTheme = useTheme();
   const addToast = useContext(ToastControllerContext);
 
   if (addToast === null) {
     throw new Error('No "ToastProvider" configured');
   }
 
-  return addToast;
+  return (props: Omit<Toast, 'treatTheme'>) =>
+    addToast({ ...props, treatTheme });
 };
