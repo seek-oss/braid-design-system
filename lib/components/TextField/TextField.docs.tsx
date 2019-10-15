@@ -24,6 +24,19 @@ const docs: ComponentDocs = {
       ),
     },
     {
+      docsSite: false,
+      label: 'TextField with default padding',
+      Container,
+      Example: ({ id, handler }) => (
+        <TextField
+          label="Job Title"
+          id={id}
+          onChange={handler}
+          value="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+        />
+      ),
+    },
+    {
       label: 'TextField with clear button',
       Container,
       Example: ({ id }) => {
@@ -42,7 +55,7 @@ const docs: ComponentDocs = {
     },
     {
       docsSite: false,
-      label: 'TextField with clear button with visible padding',
+      label: 'TextField with clear button padding',
       Container,
       Example: ({ id, handler }) => (
         <TextField

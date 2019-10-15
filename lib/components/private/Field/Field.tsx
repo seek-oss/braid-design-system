@@ -17,8 +17,8 @@ import {
   FieldMessageProps,
 } from '../../FieldMessage/FieldMessage';
 import { FieldOverlay } from '../FieldOverlay/FieldOverlay';
-import { ClearFieldButton } from '../ClearFieldButton/ClearFieldButton';
 import { Stack } from '../../Stack/Stack';
+import { ClearButton } from '../../iconButtons/ClearButton/ClearButton';
 import buildDataAttributes, { DataAttributeMap } from '../buildDataAttributes';
 import { useText, useTouchableSpace } from '../../../hooks/typography';
 import * as styleRefs from './Field.treat';
@@ -126,6 +126,7 @@ export const Field = forwardRef<FieldRef, InternalFieldProps>(
       <Box
         position="absolute"
         transition="fast"
+        pointerEvents={clearButtonVisible ? undefined : 'none'}
         className={classnames(
           styles.clearButton,
           styles.clearButtonVisibility[
@@ -133,10 +134,7 @@ export const Field = forwardRef<FieldRef, InternalFieldProps>(
           ],
         )}
       >
-        <ClearFieldButton
-          onMouseDown={clearHandler}
-          keyboardAccessible={false}
-        />
+        <ClearButton onMouseDown={clearHandler} keyboardAccessible={false} />
       </Box>
     ) : null;
 
