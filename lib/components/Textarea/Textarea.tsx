@@ -16,7 +16,7 @@ import * as styleRefs from './Textarea.treat';
 
 type NativeTextareaProps = AllHTMLAttributes<HTMLTextAreaElement>;
 interface TextareaProps
-  extends Omit<FieldProps, 'labelId' | 'secondaryMessage'> {
+  extends Omit<FieldProps, 'labelId' | 'secondaryMessage' | 'onClear'> {
   value: NonNullable<NativeTextareaProps['value']>;
   onChange: NonNullable<NativeTextareaProps['onChange']>;
   onBlur?: NativeTextareaProps['onBlur'];

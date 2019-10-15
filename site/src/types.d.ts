@@ -22,10 +22,7 @@ export interface ComponentExample {
   label?: string;
   docsSite?: boolean;
   storybook?: boolean;
-  Example?: (props: {
-    id: string;
-    handler: (event: SyntheticEvent) => void;
-  }) => JSX.Element;
+  Example?: (props: { id: string; handler: () => void }) => JSX.Element;
   Container?: (props: { children: ReactNode }) => JSX.Element;
   code?: string;
 }

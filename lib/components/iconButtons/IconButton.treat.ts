@@ -1,6 +1,8 @@
 import { style } from 'sku/treat';
 
-export const button = style({});
+export const button = style({
+  outline: 'none',
+});
 
 export const hoverOverlay = style({
   selectors: {

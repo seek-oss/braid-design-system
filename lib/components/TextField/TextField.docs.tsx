@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { useState, ReactNode } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import { TextField } from './TextField';
 import { TextLink } from '../TextLink/TextLink';
@@ -20,6 +20,37 @@ const docs: ComponentDocs = {
           id={id}
           onChange={handler}
           value="Senior Developer"
+        />
+      ),
+    },
+    {
+      label: 'TextField with clear button',
+      Container,
+      Example: ({ id }) => {
+        const [value, setValue] = useState('Clear me');
+
+        return (
+          <TextField
+            label="Job Title"
+            id={id}
+            onChange={e => setValue(e.currentTarget.value)}
+            onClear={() => setValue('')}
+            value={value}
+          />
+        );
+      },
+    },
+    {
+      docsSite: false,
+      label: 'TextField with clear button with visible padding',
+      Container,
+      Example: ({ id, handler }) => (
+        <TextField
+          label="Job Title"
+          id={id}
+          onChange={handler}
+          onClear={handler}
+          value="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
         />
       ),
     },

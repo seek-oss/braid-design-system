@@ -1,4 +1,4 @@
-import React, { forwardRef, Fragment, AllHTMLAttributes } from 'react';
+import React, { forwardRef, AllHTMLAttributes } from 'react';
 import { Omit } from 'utility-types';
 import { Box } from '../Box/Box';
 import { Field, FieldProps } from '../private/Field/Field';
@@ -37,9 +37,15 @@ const NamedTextField = forwardRef<HTMLInputElement, TextFieldProps>(
     },
     ref,
   ) => (
-    <Field {...restProps} ref={ref} labelId={undefined} secondaryMessage={null}>
-      {(overlays, fieldProps, fieldRef) => (
-        <Fragment>
+    <Field
+      {...restProps}
+      value={value}
+      ref={ref}
+      labelId={undefined}
+      secondaryMessage={null}
+    >
+      {(overlays, fieldProps, fieldRef, cancelButton) => (
+        <Box position="relative">
           <Box
             component="input"
             type={validTypes[type]}
@@ -52,7 +58,8 @@ const NamedTextField = forwardRef<HTMLInputElement, TextFieldProps>(
             ref={fieldRef}
           />
           {overlays}
-        </Fragment>
+          {cancelButton}
+        </Box>
       )}
     </Field>
   ),
