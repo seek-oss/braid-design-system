@@ -7,18 +7,19 @@ interface MakeTokensOptions {
   name: string;
   brand: string;
   brandAccent: string;
+  formAccent: string;
   tokenOverrides?: DeepPartial<TreatTokens>;
 }
 export const makeTokens = ({
   name,
   brand,
   brandAccent,
+  formAccent,
   tokenOverrides = {},
 }: MakeTokensOptions): TreatTokens => {
   const focus = rgba('#1e90ff', 0.7);
-  const formAccent = '#2765cf';
   const positive = '#169400';
-  const critical = brandAccent;
+  const critical = '#e60278';
   const info = '#9556b7';
   const neutral = '#747474';
   const black = '#1c1c1c';
