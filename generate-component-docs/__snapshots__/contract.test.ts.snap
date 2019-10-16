@@ -33,6 +33,7 @@ exports[`Autosuggest 1`] = `
   name?: string
   onBlur?: () => void
   onChange: (value: AutosuggestValue<Value>) => void
+  onClear?: () => void
   onFocus?: () => void
   placeholder?: string
   reserveMessageSpace?: boolean
@@ -2248,6 +2249,7 @@ exports[`TextField 1`] = `
   name?: string
   onBlur?: (event: FocusEvent<HTMLInputElement>) => void
   onChange: (event: FormEvent<HTMLInputElement>) => void
+  onClear?: () => void
   onFocus?: (event: FocusEvent<HTMLInputElement>) => void
   placeholder?: string
   ref?: 

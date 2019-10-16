@@ -46,6 +46,7 @@ const docs: ComponentDocs = {
             id={id}
             value={value}
             onChange={setValue}
+            onClear={() => setValue({ text: '' })}
             suggestions={[
               ...(showRecent && value.text === ''
                 ? [
@@ -82,6 +83,7 @@ const docs: ComponentDocs = {
             id={id}
             value={value}
             onChange={setValue}
+            onClear={() => setValue({ text: '' })}
             suggestions={makeSuggestions(
               ['Apples', 'Bananas', 'Broccoli', 'Carrots'],
               value.text,
@@ -102,6 +104,7 @@ const docs: ComponentDocs = {
             id={id}
             value={value}
             onChange={setValue}
+            onClear={() => setValue({ text: '' })}
             suggestions={[
               {
                 label: 'Fruit',
@@ -135,6 +138,7 @@ const docs: ComponentDocs = {
               id={id}
               value={value}
               onChange={setValue}
+              onClear={() => setValue({ text: '' })}
               suggestions={makeSuggestions(
                 ['Apples', 'Bananas', 'Broccoli', 'Carrots'],
                 value.text,
@@ -157,6 +161,7 @@ const docs: ComponentDocs = {
             id={id}
             value={value}
             onChange={setValue}
+            onClear={() => setValue({ text: '' })}
             tone="critical"
             message="You must make a selection"
             suggestions={makeSuggestions(
