@@ -1,12 +1,17 @@
 import { style, styleMap } from 'sku/treat';
 import * as zIndex from '../private/zIndex';
 
-export const containerOpen = style({
+export const zIndexContainer = style({
   zIndex: zIndex.pageOverlay,
 });
 
-export const inputOpen = style({
+export const zIndexInput = style({
   zIndex: zIndex.pageOverlay + 1,
+});
+
+export const cancelButton = style({
+  top: 0,
+  right: 0,
 });
 
 export const backdrop = style({

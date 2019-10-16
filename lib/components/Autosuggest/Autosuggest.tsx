@@ -212,8 +212,11 @@ const noop = () => {
   /**/
 };
 
+const fallbackValue = { text: '' };
+const fallbackSuggestions: Suggestion[] = [];
+
 export interface AutosuggestProps<Value>
-  extends Omit<FieldProps, 'autoComplete' | 'labelId'> {
+  extends Omit<FieldProps, 'value' | 'autoComplete' | 'labelId'> {
   value: AutosuggestValue<Value>;
   suggestions: Array<Suggestion<Value> | GroupedSuggestion<Value>>;
   onChange: (value: AutosuggestValue<Value>) => void;
@@ -225,8 +228,8 @@ export interface AutosuggestProps<Value>
 }
 export function Autosuggest<Value>({
   id,
-  value,
-  suggestions,
+  value = fallbackValue,
+  suggestions = fallbackSuggestions,
   onChange = noop,
   automaticSelection = false,
   showMobileBackdrop = false,
@@ -505,12 +508,18 @@ export function Autosuggest<Value>({
         {...(showMobileBackdrop && isOpen
           ? {
               position: 'relative',
-              className: styles.containerOpen,
+              className: styles.zIndexContainer,
             }
           : null)}
       >
         <Box position="relative" ref={rootRef}>
-          <Field {...restProps} id={id} labelId={a11y.labelProps.id}>
+          <Field
+            {...restProps}
+            id={id}
+            labelId={a11y.labelProps.id}
+            value={value.text}
+            ref={inputRef}
+          >
             {(
               overlays,
               {
@@ -521,6 +530,8 @@ export function Autosuggest<Value>({
                 className,
                 ...restFieldProps
               },
+              fieldRef,
+              cancelButton,
             ) => (
               <Box {...a11y.rootProps}>
                 <Box
@@ -535,9 +546,9 @@ export function Autosuggest<Value>({
                   position="relative"
                   className={classnames(
                     className,
-                    isOpen ? styles.inputOpen : null,
+                    isOpen ? styles.zIndexInput : null,
                   )}
-                  ref={inputRef}
+                  ref={fieldRef}
                 />
                 <Box
                   component="ul"
@@ -591,6 +602,17 @@ export function Autosuggest<Value>({
                     : null}
                 </Box>
                 {overlays}
+                {cancelButton ? (
+                  <Box
+                    position="absolute"
+                    className={classnames(
+                      styles.cancelButton,
+                      isOpen ? styles.zIndexInput : undefined,
+                    )}
+                  >
+                    {cancelButton}
+                  </Box>
+                ) : null}
               </Box>
             )}
           </Field>
