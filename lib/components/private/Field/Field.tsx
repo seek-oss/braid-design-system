@@ -1,5 +1,7 @@
 import React, {
   forwardRef,
+  useRef,
+  useCallback,
   Fragment,
   ReactNode,
   AllHTMLAttributes,
@@ -16,6 +18,7 @@ import {
 } from '../../FieldMessage/FieldMessage';
 import { FieldOverlay } from '../FieldOverlay/FieldOverlay';
 import { Stack } from '../../Stack/Stack';
+import { ClearButton } from '../../iconButtons/ClearButton/ClearButton';
 import buildDataAttributes, { DataAttributeMap } from '../buildDataAttributes';
 import { useText, useTouchableSpace } from '../../../hooks/typography';
 import * as styleRefs from './Field.treat';
@@ -23,6 +26,7 @@ import * as styleRefs from './Field.treat';
 type FormElementProps = AllHTMLAttributes<HTMLFormElement>;
 export interface FieldProps {
   id: NonNullable<FormElementProps['id']>;
+  value?: FormElementProps['value'];
   labelId?: string;
   name?: FormElementProps['name'];
   disabled?: FormElementProps['disabled'];
@@ -37,6 +41,7 @@ export interface FieldProps {
   tone?: FieldMessageProps['tone'];
   'aria-describedby'?: FormElementProps['aria-describedby'];
   data?: DataAttributeMap;
+  onClear?: () => void;
 }
 
 type PassthroughProps = 'id' | 'name' | 'disabled' | 'autoComplete';
@@ -57,6 +62,7 @@ interface InternalFieldProps extends FieldProps {
     overlays: ReactNode,
     props: FieldRenderProps,
     ref: Ref<FieldRef>,
+    cancelButton: ReactNode,
   ): ReactNode;
 }
 
@@ -64,6 +70,7 @@ export const Field = forwardRef<FieldRef, InternalFieldProps>(
   (
     {
       id,
+      value,
       labelId,
       name,
       disabled,
@@ -79,12 +86,34 @@ export const Field = forwardRef<FieldRef, InternalFieldProps>(
       tone,
       'aria-describedby': ariaDescribedBy,
       data,
+      onClear,
     },
-    ref,
+    forwardedRef,
   ) => {
     const styles = useStyles(styleRefs);
+
+    // We need a ref regardless so we can imperatively
+    // focus the field when clicking the clear button
+    const defaultRef = useRef(null);
+    const ref = forwardedRef || defaultRef;
+
     const messageId = `${id}-message`;
     const background = disabled ? 'inputDisabled' : 'input';
+
+    const clearHandler = useCallback(() => {
+      if (typeof onClear !== 'function') {
+        return;
+      }
+
+      onClear();
+
+      if (ref && typeof ref === 'object' && ref.current) {
+        ref.current.focus();
+      }
+    }, [onClear, ref]);
+
+    const clearButtonVisible =
+      onClear && typeof value === 'string' && value.length > 0;
 
     const overlays = (
       <Fragment>
@@ -92,6 +121,22 @@ export const Field = forwardRef<FieldRef, InternalFieldProps>(
         <FieldOverlay variant="hover" className={styles.hoverOverlay} />
       </Fragment>
     );
+
+    const clearButton = onClear ? (
+      <Box
+        position="absolute"
+        transition="fast"
+        pointerEvents={clearButtonVisible ? undefined : 'none'}
+        className={classnames(
+          styles.clearButton,
+          styles.clearButtonVisibility[
+            clearButtonVisible ? 'visible' : 'hidden'
+          ],
+        )}
+      >
+        <ClearButton onMouseDown={clearHandler} keyboardAccessible={false} />
+      </Box>
+    ) : null;
 
     return (
       <Stack space="xsmall">
@@ -135,9 +180,11 @@ export const Field = forwardRef<FieldRef, InternalFieldProps>(
                     baseline: false,
                   }),
                   useTouchableSpace('standard'),
+                  onClear ? styles.clearButtonSpace : null,
                 ),
               },
               ref,
+              clearButton,
             )}
           </BackgroundProvider>
         </Box>

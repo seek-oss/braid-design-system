@@ -37,8 +37,14 @@ const NamedTextField = forwardRef<HTMLInputElement, TextFieldProps>(
     },
     ref,
   ) => (
-    <Field {...restProps} ref={ref} labelId={undefined} secondaryMessage={null}>
-      {(overlays, fieldProps, fieldRef) => (
+    <Field
+      {...restProps}
+      value={value}
+      ref={ref}
+      labelId={undefined}
+      secondaryMessage={null}
+    >
+      {(overlays, fieldProps, fieldRef, cancelButton) => (
         <Fragment>
           <Box
             component="input"
@@ -52,6 +58,7 @@ const NamedTextField = forwardRef<HTMLInputElement, TextFieldProps>(
             ref={fieldRef}
           />
           {overlays}
+          {cancelButton}
         </Fragment>
       )}
     </Field>

@@ -25,11 +25,13 @@ export const Inline = ({ space = 'none', children }: InlineProps) => {
         display="flex"
         className={classnames(styles.flexWrap, negativeOffsetX)}
       >
-        {Children.map(children, child => (
-          <Box paddingLeft={space} paddingTop={space}>
-            {child}
-          </Box>
-        ))}
+        {Children.map(children, child =>
+          child !== null && child !== undefined ? (
+            <Box paddingLeft={space} paddingTop={space}>
+              {child}
+            </Box>
+          ) : null,
+        )}
       </Box>
     </Box>
   );
