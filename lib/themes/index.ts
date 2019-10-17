@@ -1,4 +1,5 @@
 export { default as seekAnz } from './seekAnz';
+export { default as seekBusiness } from './seekBusiness';
 export { default as jobsDbRebrand } from './jobsDbRebrand';
 export { default as jobsDb } from './jobsDb';
 export { default as jobStreet } from './jobStreet';
