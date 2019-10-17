@@ -1895,25 +1895,6 @@ exports[`IconDate 1`] = `
 }
 `;
 
-exports[`IconFacebook 1`] = `
-{
-  size?: 
-    | "fill"
-    | "large"
-    | "small"
-    | "standard"
-    | "xsmall"
-  tone?: 
-    | "critical"
-    | "formAccent"
-    | "info"
-    | "link"
-    | "neutral"
-    | "positive"
-    | "secondary"
-}
-`;
-
 exports[`IconInfo 1`] = `
 {
   size?: 
@@ -2009,7 +1990,7 @@ exports[`IconSearch 1`] = `
 }
 `;
 
-exports[`IconTick 1`] = `
+exports[`IconSocialFacebook 1`] = `
 {
   size?: 
     | "fill"
@@ -2028,7 +2009,26 @@ exports[`IconTick 1`] = `
 }
 `;
 
-exports[`IconTwitter 1`] = `
+exports[`IconSocialTwitter 1`] = `
+{
+  size?: 
+    | "fill"
+    | "large"
+    | "small"
+    | "standard"
+    | "xsmall"
+  tone?: 
+    | "critical"
+    | "formAccent"
+    | "info"
+    | "link"
+    | "neutral"
+    | "positive"
+    | "secondary"
+}
+`;
+
+exports[`IconTick 1`] = `
 {
   size?: 
     | "fill"
