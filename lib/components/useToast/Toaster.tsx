@@ -1,47 +1,57 @@
 import React from 'react';
-import { TreatProvider, useStyles } from 'sku/treat';
+import { useStyles } from 'sku/treat';
 
 import * as styleRefs from './Toast.treat';
-import { Box, Stack } from '..';
-import { Toast as ToastComponent } from './Toast';
-import { ContentBlock } from '../../playroom/components';
+import ToastComponent from './Toast';
+import { Box } from '../Box/Box';
+import { useFlipList } from './useFlipList';
 
 export interface Toast {
+  id: string;
   treatTheme: string;
   tone: 'neutral' | 'critical';
   message: string;
   description?: string;
   action?: boolean;
+  timed?: boolean;
 }
 
 interface ToasterProps {
-  activeToasts: Toast[];
-  removeToast: (toastIndex: number) => void;
+  toasts: Toast[];
+  removeToast: (id: string) => void;
 }
-export const Toaster = ({ activeToasts, removeToast }: ToasterProps) => {
+export const Toaster = ({ toasts, removeToast }: ToasterProps) => {
   const styles = useStyles(styleRefs);
+
+  const { itemRef, remove } = useFlipList();
 
   return (
     <Box
       position="fixed"
-      paddingBottom="medium"
-      paddingX="small"
-      pointerEvents="none"
-      width="full"
-      className={styles.toaster}
+      style={{
+        zIndex: 300,
+        left: 0,
+        bottom: 0,
+      }}
     >
-      <ContentBlock>
-        <Stack space="medium">
-          {activeToasts.map(({ treatTheme, ...restProps }, index) => (
-            <TreatProvider theme={treatTheme} key={index}>
-              <ToastComponent
-                onClear={() => removeToast(index)}
-                {...restProps}
-              />
-            </TreatProvider>
-          ))}
-        </Stack>
-      </ContentBlock>
+      {toasts.map(({ id, ...rest }) => (
+        <ToastComponent
+          key={id}
+          ref={itemRef(id)}
+          positionStyles={{}}
+          onClear={() => {
+            console.log('Removing', id);
+
+            remove(id, () => {
+              console.log('Remove animtion finished for', id);
+
+              removeToast(id);
+            });
+          }}
+          timed={false}
+          {...rest}
+        />
+      ))}
     </Box>
   );
 };

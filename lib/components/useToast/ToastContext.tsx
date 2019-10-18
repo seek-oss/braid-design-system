@@ -12,35 +12,35 @@ import { createPortal } from 'react-dom';
 import { useTheme } from 'sku/treat';
 import { Toast, Toaster } from './Toaster';
 
+let toastCounter = 0;
+
 type AddToast = (toast: Toast) => void;
 
 const ToastControllerContext = createContext<AddToast | null>(null);
 
 type Actions =
   | { type: 'QUEUE_TOAST'; value: Toast }
-  | { type: 'REMOVE_TOAST'; value: number };
+  | { type: 'REMOVE_TOAST'; value: string };
 
 interface ToastState {
-  activeToasts: Toast[];
-  queuedToasts: Toast[];
+  toasts: Toast[];
 }
 
-function reducer(state: ToastState, action: Actions) {
+function reducer(state: ToastState, action: Actions): ToastState {
   switch (action.type) {
     case 'QUEUE_TOAST': {
       return {
         ...state,
-        activeToasts: [...state.activeToasts, action.value],
+        toasts: [...state.toasts, action.value],
       };
     }
 
     case 'REMOVE_TOAST': {
-      const newActiveToasts = state.activeToasts.slice();
-      newActiveToasts.splice(action.value, 1);
+      const toasts = state.toasts.filter(({ id }) => id !== action.value);
 
       return {
         ...state,
-        activeToasts: newActiveToasts,
+        toasts,
       };
     }
   }
@@ -58,9 +58,8 @@ export const ToastProvider = ({ children }: ToastProviderProps) => {
     return <Fragment>{children}</Fragment>;
   }
 
-  const [{ activeToasts }, dispatch] = useReducer(reducer, {
-    activeToasts: [],
-    queuedToasts: [],
+  const [{ toasts }, dispatch] = useReducer(reducer, {
+    toasts: [],
   });
 
   const addToast = useCallback(
@@ -69,8 +68,7 @@ export const ToastProvider = ({ children }: ToastProviderProps) => {
   );
 
   const removeToast = useCallback(
-    (toastIndex: number) =>
-      dispatch({ type: 'REMOVE_TOAST', value: toastIndex }),
+    (id: string) => dispatch({ type: 'REMOVE_TOAST', value: id }),
     [],
   );
 
@@ -78,7 +76,7 @@ export const ToastProvider = ({ children }: ToastProviderProps) => {
     <ToastControllerContext.Provider value={addToast}>
       {children}
       <ToastPortal>
-        <Toaster activeToasts={activeToasts} removeToast={removeToast} />
+        <Toaster toasts={toasts.slice(0, 2)} removeToast={removeToast} />
       </ToastPortal>
     </ToastControllerContext.Provider>
   );
@@ -120,6 +118,6 @@ export const useToast = () => {
     throw new Error('No "ToastProvider" configured');
   }
 
-  return (props: Omit<Toast, 'treatTheme'>) =>
-    addToast({ ...props, treatTheme });
+  return (props: Omit<Toast, 'treatTheme' | 'id'>) =>
+    addToast({ ...props, treatTheme, id: `${toastCounter++}` });
 };

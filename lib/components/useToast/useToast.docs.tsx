@@ -20,7 +20,11 @@ const docs: ComponentDocs = {
         return (
           <Button
             onClick={() =>
-              makeToast({ message: 'Honey or Vegemite?', tone: 'neutral' })
+              makeToast({
+                message: 'Honey or Vegemite?',
+                tone: 'neutral',
+                timed: true,
+              })
             }
           >
             Show toast
