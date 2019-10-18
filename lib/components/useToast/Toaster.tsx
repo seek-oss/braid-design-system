@@ -3,7 +3,7 @@ import { useStyles } from 'sku/treat';
 
 import * as styleRefs from './Toast.treat';
 import ToastComponent from './Toast';
-import { Box } from '../Box/Box';
+import { ContentBlock, Box, Stack } from '..';
 import { useFlipList } from './useFlipList';
 
 export interface Toast {
@@ -28,30 +28,28 @@ export const Toaster = ({ toasts, removeToast }: ToasterProps) => {
   return (
     <Box
       position="fixed"
-      style={{
-        zIndex: 300,
-        left: 0,
-        bottom: 0,
-      }}
+      width="full"
+      paddingX="small"
+      className={styles.toaster}
     >
-      {toasts.map(({ id, ...rest }) => (
-        <ToastComponent
-          key={id}
-          ref={itemRef(id)}
-          positionStyles={{}}
-          onClear={() => {
-            console.log('Removing', id);
-
-            remove(id, () => {
-              console.log('Remove animtion finished for', id);
-
-              removeToast(id);
-            });
-          }}
-          timed={false}
-          {...rest}
-        />
-      ))}
+      <ContentBlock>
+        <Stack space="small">
+          {toasts.map(({ id, ...rest }) => (
+            <ToastComponent
+              key={id}
+              ref={itemRef(id)}
+              positionStyles={{}}
+              onClear={() => {
+                remove(id, () => {
+                  removeToast(id);
+                });
+              }}
+              timed={false}
+              {...rest}
+            />
+          ))}
+        </Stack>
+      </ContentBlock>
     </Box>
   );
 };

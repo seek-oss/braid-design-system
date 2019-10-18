@@ -1,9 +1,9 @@
 import { useMemo, useCallback, useLayoutEffect } from 'react';
 
 interface Transform {
-  property: 'opacity' | 'transform';
+  property: 'opacity' | 'transform' | 'scale';
   transition: string;
-  from: string;
+  from?: string;
   to?: string;
 }
 
@@ -14,18 +14,30 @@ const animate = (
 ) => {
   const transitions: string[] = [];
 
-  transforms.forEach(({ transition, property, from }) => {
+  transforms.forEach(({ transition, property, from = '' }) => {
     element.style.setProperty(property, from);
     transitions.push(transition);
   });
   element.style.setProperty('transition', '');
 
+  const transitionEndHandler = (ev: TransitionEvent) => {
+    if (ev.target !== element) {
+      return;
+    }
+
+    element.style.setProperty('transition', '');
+
+    if (done) {
+      done();
+    }
+
+    element.removeEventListener('transitionend', transitionEndHandler);
+  };
+
+  element.addEventListener('transitionend', transitionEndHandler);
+
   window.requestAnimationFrame(() => {
     window.requestAnimationFrame(() => {
-      if (done) {
-        element.addEventListener('transitionend', done);
-      }
-
       element.style.setProperty('transition', transitions.join(','));
 
       transforms.forEach(({ property, to = '' }) => {
@@ -40,7 +52,10 @@ export const useFlipList = () => {
   const positions = useMemo(() => new Map<string, number>(), []);
 
   useLayoutEffect(() => {
-    const animations: Array<{ element: HTMLElement; y: number }> = [];
+    const animations: Array<{
+      element: HTMLElement;
+      transforms: Transform[];
+    }> = [];
 
     Array.from(refs.entries()).forEach(([id, element]) => {
       if (element) {
@@ -48,29 +63,44 @@ export const useFlipList = () => {
         const { top, height } = element.getBoundingClientRect();
 
         if (typeof prevTop === 'number' && prevTop !== top) {
-          console.log(id, 'moved');
-
-          animations.push({ element, y: prevTop - top });
-        } else {
-          console.log(id, 'entered');
-
-          animations.push({ element, y: height });
+          // Move animation
+          animations.push({
+            element,
+            transforms: [
+              {
+                property: 'transform',
+                from: `translateY(${prevTop - top}px)`,
+                transition: 'transform 0.25s ease',
+              },
+            ],
+          });
+        } else if (typeof prevTop !== 'number') {
+          // Enter animation
+          animations.push({
+            element,
+            transforms: [
+              {
+                property: 'transform',
+                from: `translateY(${height}px)`,
+                transition: 'transform 0.25s ease',
+              },
+              {
+                property: 'opacity',
+                from: '0',
+                transition: 'opacity 0.25s ease',
+              },
+            ],
+          });
         }
 
         positions.set(id, element.getBoundingClientRect().top);
       } else {
-        console.log(id, 'exited');
+        refs.delete(id);
       }
     });
 
-    animations.forEach(({ element, y }) => {
-      animate(element, [
-        {
-          property: 'transform',
-          from: `translateY(${y}px)`,
-          transition: 'transform 1s ease',
-        },
-      ]);
+    animations.forEach(({ element, transforms }) => {
+      animate(element, transforms);
     });
   });
 
@@ -78,14 +108,19 @@ export const useFlipList = () => {
     const element = refs.get(id);
 
     if (element) {
+      // Removal animation
       animate(
         element,
         [
           {
             property: 'opacity',
-            from: '1',
             to: '0',
-            transition: 'opacity 1s ease',
+            transition: 'opacity 0.25s ease',
+          },
+          {
+            property: 'transform',
+            to: 'translateY(50%)',
+            transition: 'transform 0.25s ease',
           },
         ],
         cb,
