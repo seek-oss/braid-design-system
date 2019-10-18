@@ -1,4 +1,4 @@
-import React, { useEffect, CSSProperties } from 'react';
+import React, { useEffect } from 'react';
 import classnames from 'classnames';
 
 import * as styleRefs from './Toast.treat';
@@ -19,7 +19,6 @@ interface ToastProps {
   description?: string;
   action?: boolean;
   timed?: boolean;
-  positionStyles: CSSProperties;
 }
 const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
   (
@@ -31,12 +30,11 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
       onClear,
       action = false,
       timed = true,
-      positionStyles,
     },
     ref,
   ) => {
     useEffect(() => {
-      if (false) {
+      if (timed) {
         const timeoutId = window.setTimeout(() => {
           onClear();
         }, 5000);

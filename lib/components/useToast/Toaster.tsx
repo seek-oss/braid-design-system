@@ -31,6 +31,7 @@ export const Toaster = ({ toasts, removeToast }: ToasterProps) => {
       width="full"
       paddingX="small"
       className={styles.toaster}
+      aria-live="polite"
     >
       <ContentBlock>
         <Stack space="small">
@@ -38,13 +39,11 @@ export const Toaster = ({ toasts, removeToast }: ToasterProps) => {
             <ToastComponent
               key={id}
               ref={itemRef(id)}
-              positionStyles={{}}
               onClear={() => {
                 remove(id, () => {
                   removeToast(id);
                 });
               }}
-              timed={false}
               {...rest}
             />
           ))}
