@@ -2,20 +2,20 @@ import { TreatTokens } from '../makeTreatTheme';
 import { DeepPartial } from 'utility-types';
 import merge from 'lodash/merge';
 
-interface SeekAsiaBrandTokens {
+interface MakeTokensOptions {
   name: string;
   brand: string;
   brandAccent: string;
   formAccent: string;
   tokenOverrides?: DeepPartial<TreatTokens>;
 }
-export default ({
+export const makeTokens = ({
   name,
   brand,
   brandAccent,
   formAccent,
   tokenOverrides = {},
-}: SeekAsiaBrandTokens): TreatTokens => {
+}: MakeTokensOptions): TreatTokens => {
   const white = '#fff';
   const blue2 = '#298EB9';
   const blue3 = '#94C9E0';

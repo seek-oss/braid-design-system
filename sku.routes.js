@@ -20,6 +20,6 @@ const iconNames = getExports('lib/components/icons/index.ts');
 module.exports = [
   { route: '/', name: 'home' },
   { route: '/components', name: 'components' },
-  ...componentNames.map(name => ({ route: `/components/${name}/`, name })),
-  ...iconNames.map(name => ({ route: `/icons/${name}/`, name })),
+  ...componentNames.map(name => ({ route: `/components/${name}`, name })),
+  ...iconNames.map(name => ({ route: `/icons/${name}`, name })),
 ];

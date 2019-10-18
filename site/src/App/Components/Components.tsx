@@ -139,6 +139,7 @@ export const Components = withRouter(({ location }: RouteComponentProps) => {
                   <ComponentRoute
                     sourceUrlPrefix={sourceUrlPrefix}
                     componentName={match.params.componentName}
+                    key={match.params.componentName} // Force remount per page to fix hooks errors when generating code snippets
                   />
                 )}
               />

@@ -9,7 +9,7 @@ import React, {
   Fragment,
 } from 'react';
 import { createPortal } from 'react-dom';
-import { useTheme } from 'sku/treat';
+import { useTheme } from 'sku/react-treat';
 import { Toast, Toaster } from './Toaster';
 
 let toastCounter = 0;

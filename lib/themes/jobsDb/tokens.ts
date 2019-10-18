@@ -1,4 +1,4 @@
-import makeTokens from '../seekAsia/makeTokens';
+import { makeTokens } from '../baseTokens/seekAsia';
 
 const teal = '#0e7e8b';
 const blue = '#0c4b85';

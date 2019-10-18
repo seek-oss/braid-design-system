@@ -33,6 +33,7 @@ exports[`Autosuggest 1`] = `
   name?: string
   onBlur?: () => void
   onChange: (value: AutosuggestValue<Value>) => void
+  onClear?: () => void
   onFocus?: () => void
   placeholder?: string
   reserveMessageSpace?: boolean
@@ -1423,7 +1424,21 @@ exports[`Button 1`] = `
   id?: string
   loading?: boolean
   onClick?: (event: MouseEvent<HTMLButtonElement, MouseEvent>) => void
-  type?: string
+  type?: 
+    | "button"
+    | "reset"
+    | "submit"
+  weight?: 
+    | "regular"
+    | "strong"
+    | "weak"
+}
+`;
+
+exports[`ButtonRenderer 1`] = `
+{
+  children: (ButtonChildren: ComponentType<ButtonChildrenProps>, styleProps: { style: CSSProperties; className: string; }) => ReactNode
+  loading?: boolean
   weight?: 
     | "regular"
     | "strong"
@@ -1862,7 +1877,64 @@ exports[`IconCritical 1`] = `
 }
 `;
 
+exports[`IconDate 1`] = `
+{
+  size?: 
+    | "fill"
+    | "large"
+    | "small"
+    | "standard"
+    | "xsmall"
+  tone?: 
+    | "critical"
+    | "formAccent"
+    | "info"
+    | "link"
+    | "neutral"
+    | "positive"
+    | "secondary"
+}
+`;
+
 exports[`IconInfo 1`] = `
+{
+  size?: 
+    | "fill"
+    | "large"
+    | "small"
+    | "standard"
+    | "xsmall"
+  tone?: 
+    | "critical"
+    | "formAccent"
+    | "info"
+    | "link"
+    | "neutral"
+    | "positive"
+    | "secondary"
+}
+`;
+
+exports[`IconLocation 1`] = `
+{
+  size?: 
+    | "fill"
+    | "large"
+    | "small"
+    | "standard"
+    | "xsmall"
+  tone?: 
+    | "critical"
+    | "formAccent"
+    | "info"
+    | "link"
+    | "neutral"
+    | "positive"
+    | "secondary"
+}
+`;
+
+exports[`IconMoney 1`] = `
 {
   size?: 
     | "fill"
@@ -1900,6 +1972,63 @@ exports[`IconPositive 1`] = `
 }
 `;
 
+exports[`IconSearch 1`] = `
+{
+  size?: 
+    | "fill"
+    | "large"
+    | "small"
+    | "standard"
+    | "xsmall"
+  tone?: 
+    | "critical"
+    | "formAccent"
+    | "info"
+    | "link"
+    | "neutral"
+    | "positive"
+    | "secondary"
+}
+`;
+
+exports[`IconSocialFacebook 1`] = `
+{
+  size?: 
+    | "fill"
+    | "large"
+    | "small"
+    | "standard"
+    | "xsmall"
+  tone?: 
+    | "critical"
+    | "formAccent"
+    | "info"
+    | "link"
+    | "neutral"
+    | "positive"
+    | "secondary"
+}
+`;
+
+exports[`IconSocialTwitter 1`] = `
+{
+  size?: 
+    | "fill"
+    | "large"
+    | "small"
+    | "standard"
+    | "xsmall"
+  tone?: 
+    | "critical"
+    | "formAccent"
+    | "info"
+    | "link"
+    | "neutral"
+    | "positive"
+    | "secondary"
+}
+`;
+
 exports[`IconTick 1`] = `
 {
   size?: 
@@ -1916,6 +2045,23 @@ exports[`IconTick 1`] = `
     | "neutral"
     | "positive"
     | "secondary"
+}
+`;
+
+exports[`Inline 1`] = `
+{
+  children: ReactNode
+  space: ResponsiveProp<
+    | "gutter"
+    | "large"
+    | "medium"
+    | "none"
+    | "small"
+    | "xlarge"
+    | "xsmall"
+    | "xxlarge"
+    | "xxsmall"
+  >
 }
 `;
 
@@ -2217,6 +2363,7 @@ exports[`TextField 1`] = `
   name?: string
   onBlur?: (event: FocusEvent<HTMLInputElement>) => void
   onChange: (event: FormEvent<HTMLInputElement>) => void
+  onClear?: () => void
   onFocus?: (event: FocusEvent<HTMLInputElement>) => void
   placeholder?: string
   ref?: 

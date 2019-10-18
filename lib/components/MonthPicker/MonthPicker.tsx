@@ -23,12 +23,14 @@ type ChangeHandler = (value: MonthPickerValue) => void;
 interface MonthPickerProps
   extends Omit<
     FieldProps,
+    | 'value'
     | 'labelId'
     | 'aria-describedby'
     | 'data'
     | 'name'
     | 'autoComplete'
     | 'secondaryMessage'
+    | 'onClear'
   > {
   value: MonthPickerValue;
   onChange: ChangeHandler;

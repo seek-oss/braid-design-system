@@ -1,4 +1,4 @@
-import makeTokens from '../seekAsia/makeTokens';
+import { makeTokens } from '../baseTokens/seekAsia';
 
 const brand = '#1c3f94';
 const info = '#142d69';
