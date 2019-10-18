@@ -202,8 +202,13 @@ describe('Autosuggest', () => {
   });
 
   describe('keyboard access', () => {
-    it("shouldn't select anything on enter if the user hasn't navigated the list", () => {
-      const { input, changeHandler, getInputValue } = renderAutosuggest({
+    it("shouldn't select anything and close the list on enter if the user hasn't navigated the list", () => {
+      const {
+        input,
+        changeHandler,
+        getInputValue,
+        queryByLabelText,
+      } = renderAutosuggest({
         value: { text: '' },
         suggestions: [
           {
@@ -224,6 +229,8 @@ describe('Autosuggest', () => {
 
       expect(getInputValue()).toBe('');
       expect(changeHandler).not.toHaveBeenCalled();
+
+      expect(queryByLabelText('Apples')).toBe(null); // Ensure menu has closed
     });
 
     it('should select a suggestion on enter after navigating the list', () => {
