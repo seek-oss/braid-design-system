@@ -339,15 +339,11 @@ export function Autosuggest<Value>({
       }
 
       case INPUT_ENTER: {
-        if (typeof state.highlightedIndex === 'number') {
-          return {
-            ...state,
-            isOpen: false,
-            previewValue: null,
-          };
-        }
-
-        return state;
+        return {
+          ...state,
+          isOpen: false,
+          previewValue: null,
+        };
       }
 
       case SUGGESTION_MOUSE_ENTER: {
