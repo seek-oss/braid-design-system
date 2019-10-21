@@ -191,7 +191,6 @@ export const makeTokens = ({
     border: {
       radius: {
         standard: '4px',
-        large: '8px',
       },
       width: {
         standard: 1,

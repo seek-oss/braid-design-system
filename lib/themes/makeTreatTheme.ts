@@ -66,7 +66,6 @@ export interface TreatTokens {
   border: {
     radius: {
       standard: string;
-      large: string;
     };
     width: {
       standard: number;
