@@ -1,8 +1,9 @@
 import { useMemo, useCallback, useLayoutEffect } from 'react';
 
+const transition = 'transform 0.25s ease, opacity 0.25s ease';
+
 interface Transform {
   property: 'opacity' | 'transform' | 'scale';
-  transition: string;
   from?: string;
   to?: string;
 }
@@ -12,11 +13,8 @@ const animate = (
   transforms: Transform[],
   done?: () => void,
 ) => {
-  const transitions: string[] = [];
-
-  transforms.forEach(({ transition, property, from = '' }) => {
+  transforms.forEach(({ property, from = '' }) => {
     element.style.setProperty(property, from);
-    transitions.push(transition);
   });
   element.style.setProperty('transition', '');
 
@@ -38,7 +36,7 @@ const animate = (
 
   window.requestAnimationFrame(() => {
     window.requestAnimationFrame(() => {
-      element.style.setProperty('transition', transitions.join(','));
+      element.style.setProperty('transition', transition);
 
       transforms.forEach(({ property, to = '' }) => {
         element.style.setProperty(property, to);
@@ -70,7 +68,6 @@ export const useFlipList = () => {
               {
                 property: 'transform',
                 from: `translateY(${prevTop - top}px)`,
-                transition: 'transform 0.25s ease',
               },
             ],
           });
@@ -82,12 +79,10 @@ export const useFlipList = () => {
               {
                 property: 'transform',
                 from: `translateY(${height}px)`,
-                transition: 'transform 0.25s ease',
               },
               {
                 property: 'opacity',
                 from: '0',
-                transition: 'opacity 0.25s ease',
               },
             ],
           });
@@ -115,12 +110,10 @@ export const useFlipList = () => {
           {
             property: 'opacity',
             to: '0',
-            transition: 'opacity 0.25s ease',
           },
           {
             property: 'transform',
             to: 'translateY(50%)',
-            transition: 'transform 0.25s ease',
           },
         ],
         cb,
