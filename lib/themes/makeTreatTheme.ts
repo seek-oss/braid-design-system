@@ -66,6 +66,7 @@ export interface TreatTokens {
   border: {
     radius: {
       standard: string;
+      large: string;
     };
     width: {
       standard: number;
@@ -79,6 +80,8 @@ export interface TreatTokens {
     };
   };
   shadows: {
+    small: string;
+    medium: string;
     large: string;
   };
   color: {
