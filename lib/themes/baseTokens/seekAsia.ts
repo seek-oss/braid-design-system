@@ -19,6 +19,7 @@ export const makeTokens = ({
   const white = '#fff';
   const blue2 = '#298EB9';
   const blue3 = '#94C9E0';
+  const blue5 = '#EEF8FC';
   const alert = '#eb0000';
   const grey1 = '#333';
   const grey2 = '#666';
@@ -31,6 +32,7 @@ export const makeTokens = ({
   const focus = blue3;
   const link = blue2;
   const linkHover = blue2;
+  const selection = blue5;
   const secondary = grey2;
   const neutral = grey2;
 
@@ -204,7 +206,7 @@ export const makeTokens = ({
         brandAccent,
         formAccent,
         formAccentDisabled: grey4,
-        selection: grey5,
+        selection,
         card: white,
         critical,
         info,
