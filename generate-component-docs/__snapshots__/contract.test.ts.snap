@@ -1799,6 +1799,25 @@ exports[`Hidden 1`] = `
 }
 `;
 
+exports[`IconAdd 1`] = `
+{
+  size?: 
+    | "fill"
+    | "large"
+    | "small"
+    | "standard"
+    | "xsmall"
+  tone?: 
+    | "critical"
+    | "formAccent"
+    | "info"
+    | "link"
+    | "neutral"
+    | "positive"
+    | "secondary"
+}
+`;
+
 exports[`IconBookmark 1`] = `
 {
   active?: boolean
