@@ -6,7 +6,7 @@ export const column = style({
 
 export const columnContent = style({
   selectors: {
-    [`${column}:first-child &`]: {
+    [`${column}:first-child > &`]: {
       paddingTop: 0,
     },
   },
