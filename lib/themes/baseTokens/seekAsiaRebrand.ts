@@ -145,11 +145,11 @@ export const makeTokens = ({
         standard: {
           mobile: {
             size: 16,
-            rows: 5,
+            rows: 6,
           },
           desktop: {
             size: 16,
-            rows: 5,
+            rows: 6,
           },
         },
         large: {
