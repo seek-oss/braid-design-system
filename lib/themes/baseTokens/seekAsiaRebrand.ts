@@ -170,7 +170,7 @@ export const makeTokens = ({
       large: 1280,
     },
     grid: 4,
-    touchableSize: 12,
+    touchableSize: 11,
     space: {
       gutter: 5,
       xxsmall: 1,
