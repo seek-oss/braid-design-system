@@ -71,7 +71,7 @@ export const makeTokens = ({
       fontWeight: {
         regular: 400,
         medium: 600,
-        strong: 700,
+        strong: 900,
       },
       heading: {
         weight: {
@@ -145,11 +145,11 @@ export const makeTokens = ({
         standard: {
           mobile: {
             size: 16,
-            rows: 5,
+            rows: 6,
           },
           desktop: {
             size: 16,
-            rows: 5,
+            rows: 6,
           },
         },
         large: {
@@ -170,7 +170,7 @@ export const makeTokens = ({
       large: 1280,
     },
     grid: 4,
-    touchableSize: 12,
+    touchableSize: 11,
     space: {
       gutter: 5,
       xxsmall: 1,
