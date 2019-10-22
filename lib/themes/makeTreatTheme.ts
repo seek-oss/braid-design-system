@@ -79,6 +79,8 @@ export interface TreatTokens {
     };
   };
   shadows: {
+    small: string;
+    medium: string;
     large: string;
   };
   color: {

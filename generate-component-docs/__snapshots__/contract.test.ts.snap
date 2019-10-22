@@ -272,7 +272,9 @@ exports[`Box 1`] = `
     | "borderFormAccentLarge"
     | "borderStandard"
     | "large"
+    | "medium"
     | "outlineFocus"
+    | "small"
   capture?: 
     | false
     | string
@@ -996,7 +998,9 @@ exports[`BoxRenderer 1`] = `
     | "borderFormAccentLarge"
     | "borderStandard"
     | "large"
+    | "medium"
     | "outlineFocus"
+    | "small"
   children: (className: string) => ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)> | null
   component: 
     | "a"
