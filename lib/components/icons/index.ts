@@ -1,3 +1,4 @@
+export { IconAdd } from './IconAdd/IconAdd';
 export { IconBookmark } from './IconBookmark/IconBookmark';
 export { IconChevron } from './IconChevron/IconChevron';
 export { IconClear } from './IconClear/IconClear';
