@@ -53,7 +53,7 @@ export const makeTokens = ({
   const neutral = palette.neutral;
   const white = palette.saWhite;
   const formAccent = palette.formAccent;
-  const formAccentDisable = palette.saGrayLight;
+  const formAccentDisabled = palette.saGrayLight;
   const link = palette.saLink;
   const disabled = palette.saGrayLighter;
   const textNeutral = palette.saGrayDarker;
@@ -230,7 +230,7 @@ export const makeTokens = ({
         inputDisabled: disabled,
         brandAccent,
         formAccent,
-        formAccentDisabled: formAccentDisable,
+        formAccentDisabled,
         selection,
         card: white,
         critical,
