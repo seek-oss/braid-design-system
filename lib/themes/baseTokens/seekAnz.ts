@@ -157,7 +157,6 @@ export const makeTokens = ({
     border: {
       radius: {
         standard: '2px',
-        baller: '4px',
       },
       width: {
         standard: 1,

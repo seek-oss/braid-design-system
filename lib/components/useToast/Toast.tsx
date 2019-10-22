@@ -61,7 +61,7 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
           <LeftHighlight
             display="inlineBlock"
             boxShadow="large"
-            borderRadius="baller"
+            borderRadius="standard"
             tone={tone}
           >
             <Box
