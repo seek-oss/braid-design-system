@@ -179,7 +179,12 @@ export const makeTokens = ({
       },
     },
     shadows: {
-      large: '0 9px 30px rgba(0,0,0,.4)',
+      small:
+        '0 2px 4px 0px rgba(28,28,28,.1), 0 2px 2px -2px rgba(28,28,28,.1), 0 4px 4px -4px rgba(28,28,28,.2)',
+      medium:
+        '0 2px 4px 0px rgba(28,28,28,.1), 0 8px 8px -4px rgba(28,28,28,.1), 0 12px 12px -8px rgba(28,28,28,.2)',
+      large:
+        '0 2px 4px 0px rgba(28,28,28,.1), 0 12px 12px -4px rgba(28,28,28,.1), 0 20px 20px -12px rgba(28,28,28,.2)',
     },
     color: {
       foreground: {
