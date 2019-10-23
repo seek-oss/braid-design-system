@@ -59,7 +59,7 @@ export const makeTokens = ({
   const textNeutral = palette.saGrayDarker;
   const secondary = palette.saGrayDark;
   const focus = lighten(0.3, palette.saBlueLight);
-  const selection = lighten(0.3, palette.saBlueLight);
+  const selection = lighten(0.4, palette.saBlueLight);
 
   const tokens: TreatTokens = {
     name,
