@@ -9,8 +9,8 @@ const palette = {
   saBlue: '#282acc',
   saBlueDark: '#1d307F',
   saBlueLight: '#4799D3',
-  saPurple: '#3f11a3',
-  saPurpleDark: '#8318B6',
+  saPurpleDark: '#3f11a3',
+  saPurple: '#8318b6',
 
   // Buttons & Filters
   saCta: '#e50379',
