@@ -181,7 +181,7 @@ const tokens: TreatTokens = {
       brandAccent,
       formAccent,
       formAccentDisabled: '#ccc',
-      selection: '#eee',
+      selection: '#f1f7ff',
       card: white,
       critical,
       info,
