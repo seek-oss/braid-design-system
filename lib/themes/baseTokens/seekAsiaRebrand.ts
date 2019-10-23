@@ -5,7 +5,7 @@ import { lighten } from 'polished';
 
 const palette = {
   // Brand
-  formAccent: '#0d00ec',
+  formAccent: '#0068ff',
   saBlue: '#282acc',
   saBlueDark: '#1d307F',
   saBlueLight: '#4799D3',
