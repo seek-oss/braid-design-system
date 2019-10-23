@@ -6,15 +6,15 @@ import { lighten } from 'polished';
 const palette = {
   // Brand
   formAccent: '#0068ff',
+  saBlueDark: '#1d307f',
   saBlue: '#282acc',
-  saBlueDark: '#1d307F',
-  saBlueLight: '#4799D3',
+  saBlueLight: '#4799d3',
   saPurpleDark: '#3f11a3',
   saPurple: '#8318b6',
 
   // Buttons & Filters
   saCta: '#e50379',
-  saLink: '#0068ff',
+  saLink: '#0069ff',
 
   // Grayscale
   saBlack: '#000',
@@ -33,7 +33,7 @@ const palette = {
   neutral: '#989ba2',
   // Desired `info` colour is `#4799d3`, however white text is in-accessible on this.
   // The closest colour that meets a contrast ratio of 4.51 is `#2B7CB6`.
-  info: '#2B7CB6',
+  info: '#2b7cb6',
   promote: '#5f37b7',
 };
 
