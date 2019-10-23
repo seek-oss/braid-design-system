@@ -196,7 +196,7 @@ export const makeTokens = ({
         brandAccent,
         formAccent,
         formAccentDisabled: '#ccc',
-        selection: '#eee',
+        selection: '#f1f7ff',
         card: '#fff',
         critical,
         info,
