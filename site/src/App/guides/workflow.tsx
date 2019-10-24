@@ -1,5 +1,11 @@
 import React from 'react';
-import { Heading, Text, TextLink, Strong } from '../../../../lib/components';
+import {
+  Heading,
+  Text,
+  TextLink,
+  BulletList,
+  Bullet,
+} from '../../../../lib/components';
 import { TextStack } from '../TextStack/TextStack';
 import { useConfig } from '../ConfigContext';
 import { Page } from '../../types.d';
@@ -13,8 +19,8 @@ const page: Page = {
       <TextStack>
         <Heading level="2">Workflow</Heading>
         <Text tone="secondary">
-          This guide is presented as a series of questions that a consumer might
-          reasonably ask as they make their way through a typical product design
+          This guide is presented as a series of questions that you might
+          reasonably ask as you make your way through a typical product design
           and development workflow.
         </Text>
         <Heading level="3">How do I design with Braid?</Heading>
@@ -25,99 +31,142 @@ const page: Page = {
           step in the design process.
         </Text>
         <Text>
-          But there's are tradeoff here. The longer your design process spends
-          away from code, the higher the risk that you'll create something
-          that's non-standard and/or difficult to implement. Design systems like
-          Braid are specially placed to deal with this problem by enabling you
-          to design directly in code rather than constantly paying the cost of
-          translating from one medium to another.
+          However, the longer your design process spends away from code, the
+          higher the risk that you'll create something that's non-standard
+          and/or costly to implement. Design systems like Braid aim to solve
+          this problem by enabling you to design directly in the final medium
+          rather than constantly (and expensively!) translating from one medium
+          to another.
         </Text>
         <Text>
-          As part of the Braid site, we offer a{' '}
+          Traditional design tools are still important, but they should be
+          viewed as a means of quickly generating concepts that feed into the
+          code prototyping phase. We need to start thinking of code needs as
+          part of the design process itself, not something we write once all
+          design work is finished. Designers and developers should ideally work
+          closer together, abd much earlier in that process than we typically
+          have in the past.
+        </Text>
+        <Text>
+          To help empower this workflow, we offer a{' '}
           <TextLink href={playroomUrl}>Playroom</TextLink> tool for rapidly
-          prototyping with Braid directly. Obviously, there's a slight learning
-          curve to this, but it's well worth the investment if you're looking to
-          streamline the communication between design and development and ensure
-          that your designs are as feasible as possible.
+          prototyping with Braid directly. You have access to the entire suite
+          of Braid components, along with an instant preview of what your
+          interface will look like across a variety of screen sizes and brands.
+          Obviously, there's a slight learning curve to this, but we think it's
+          well worth the investment.
         </Text>
         <Text>
-          One of the primary goals of Playroom is to help surface the disconnect
-          between concept design work and the design system. If something is
-          missing in Braid, that's fine, but this should be highlighted as early
-          as possible.
+          By prototyping in code, you'll find yourself surfacing the gaps
+          between your concept design work and the existing design system. If
+          something is missing in Braid, the code prototyping phase should
+          highlight this much earlier.
         </Text>
-        <Heading level="3">Am I supposed to write code now?</Heading>
+        <Heading level="3">Is there a Sketch library?</Heading>
+        <Text>
+          Braid has many features that are more powerful than what illustration
+          tools like Sketch can support, including:
+        </Text>
+        <BulletList>
+          <Bullet>Design tokens.</Bullet>
+          <Bullet>Cross-brand theming.</Bullet>
+          <Bullet>Responsive layouts.</Bullet>
+          <Bullet>Standardised spacing and layout components.</Bullet>
+          <Bullet>Contextual colour palettes.</Bullet>
+          <Bullet>Standardised interactions.</Bullet>
+          <Bullet>Dynamic content.</Bullet>
+        </BulletList>
+        <Text>
+          Translating these to a static medium like Sketch would be an exercise
+          in throwing away most of what makes Braid valuable.
+        </Text>
+        <Text>
+          Rather than trying to improve the quality of our mock ups, we're
+          instead aiming to optimise the design workflow around the layer that
+          users actually interact with.
+        </Text>
+        <Heading level="3">Do I need to write code?</Heading>
         <Text>
           Not necessarily. You might prefer to pair up with a developer to
-          iterate on your designs together. It's entirely up to you. However,
-          Braid and Playroom are specifically designed to be approachable for
-          non-developers, even if they're slightly more intimidating than most
-          design tools at first glance. That said,
+          iterate on your designs together. It's entirely up to you.
+        </Text>
+        <Text>
+          However, Braid and Playroom are specifically designed to be
+          approachable for non-developers. While they may seem more intimidating
+          than most design tools at first glance, we've worked hard to keep the
+          learning curve as low as possible and minimise the amount of knowledge
+          required to be productive.
         </Text>
         <Text>
           This might sound like a massive change, but we're hoping that it's not
-          as big of a jump as you might think. Braid components are designed to
-          let you create UI at a high level using design-centric terms (e.g.
-          Text, Card, Columns) rather than low level HTML and CSS constructs.
-          The typical concern with code is that it will slow you down, but we're
-          actually hoping that this will actually let you design faster!
+          as big of a jump as you might think. Braid components let you create
+          UI at a high level using design-centric terms (e.g. Text, Card,
+          Columns) rather than low level HTML and CSS constructs, which is
+          essential in opening up the system to non-developers.
         </Text>
         <Heading level="3">Won't this slow us down?</Heading>
+        <Text>The goal is to actually let you design faster!</Text>
         <Text>
-          If working in Playroom is too slow, that's a sign that our design
-          system is incomplete, so it's important that we have these discussions
-          early during the design process where we have an opportunity to fix
-          it.
+          If working in Playroom is too slow, that's probably a sign that our
+          design system is incomplete. It's important that we discuss these
+          issues early during the design process where we have more opportunity
+          to fix them.
         </Text>
         <Text>
-          If this is your first time using Playroom, we recommend reaching out
-          in our #braid-design-support Slack channel. We'll be more than happy
-          to work with you to make sure that you're comfortable working in this
-          environment.
+          In cases like these, traditional design tools are still an appropriate
+          way to fill the gaps, but you should let us know in our
+          #braid-design-support Slack channel when this is required so we can
+          better support your needs in the future.
         </Text>
+        <Heading level="3">What if this is too much of a leap for me?</Heading>
         <Text>
-          Another option is to reach out to your local front-end developer who
-          may already be familiar with Playroom.
+          We recommend reaching out in our #braid-design-support Slack channel.
+          We'll be more than happy to work with you to make sure that you're
+          comfortable working in this environment.
         </Text>
         <Heading level="3">What if my designs look different to Braid?</Heading>
         <Text>
-          Keep in mind that a design system's job is to standardise the look and
-          feel of your product, not to match concept designs pixel-for-pixel.
+          A design system's job is to help standardise the look and feel of an
+          entire product suite, not to match individual concept designs
+          pixel-for-pixel. It's a good idea to start by iterating on your design
+          in code to try alternative approaches.
         </Text>
         <Text>
-          If you're looking to minimise issues during the development process,
-          the ideal approach is to iterate on your design in Playroom, making
-          full use of Braid's existing components rather than accidentally
-          inventing custom solutions. Working with a design system effectively
-          is all about making tradeoffs. You should be open to changing minor
-          details that aren't critical to the success of the end product. You
-          might end up using fewer borders, different colours, different spacing
-          might be different. The goal is to solve the end user's problem, not
-          to perfectly match an existing concept design.
+          You should be open to changing minor details that aren't critical to
+          the success of the product. You might end up using fewer borders,
+          different colours, different spacing. The goal is to solve the end
+          user's problem, not to perfectly match an existing concept design.
         </Text>
         <Text>
-          However, it's natural that most designs will feature some degree of
-          customisation that is impossible within the current system. Don't feel
-          like every single component needs to exist in the design system.
+          That said, it's natural that most designs will feature some degree of
+          customisation that isn't officially supported within the existing
+          system. It's entirely possible that you're using a pattern that is
+          truly unique to your product. Don't feel like every single component
+          needs to exist in Braid.
         </Text>
         <Text>
-          That said, it's possible that you're using a pattern that should be in
-          Braid but currently isn't. Let us know in #braid-design-support and
-          we'll give you personalised advice on how best to navigate this.
+          It's also possible that you're using a pattern that should be in Braid
+          but currently isn't. Whether or not we adopt a new pattern, and how
+          quickly we adopt it, depends heavily on a wide variety of factors, so
+          having a quick chat is the best way to manage this. Reach out in
+          #braid-design-support and we'll give you personalised advice on how
+          best to move forwards.
         </Text>
         <Heading level="3">What if I need a new component right away?</Heading>
         <Text>
-          <Strong>
-            Generally speaking, you should never be blocked waiting for Braid.
-          </Strong>{' '}
-          Developers are perfectly capable of writing new components and custom
-          styling within their projects, and they should always err on the side
-          of delivery. When this happens, it's a good idea to let us know in
-          #braid-design-support so that we can keep an eye on the current gaps
-          in our system and work towards long term solutions, but this shouldn't
-          come at the expense of delivering real value to users.
+          Generally speaking, you should never be blocked waiting for Braid.
         </Text>
-        <Heading level="3">How do I know which </Heading>
+        <Text>
+          Our job is to standardise existing patterns, not to hold back new
+          ones. Developers are perfectly capable of writing new components and
+          custom styling within their projects, and they should always err on
+          the side of delivery.
+        </Text>
+        <Text>
+          When you inevitably create new patterns, it's a good idea to let us
+          know in #braid-design-support so that we can keep an eye on it and
+          work towards long term solutions.
+        </Text>
       </TextStack>
     );
   },
