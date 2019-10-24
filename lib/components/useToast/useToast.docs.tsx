@@ -23,7 +23,6 @@ const docs: ComponentDocs = {
               makeToast({
                 message: 'Honey or Vegemite?',
                 tone: 'neutral',
-                timed: true,
               })
             }
           >
@@ -50,6 +49,7 @@ const docs: ComponentDocs = {
                 message: 'Honey or Vegemite',
                 tone: 'neutral',
                 description: 'Sweet or salty, the choice is all yours?',
+                action: true,
               })
             }
           >
@@ -101,6 +101,7 @@ const docs: ComponentDocs = {
               makeToast({
                 message: 'Toast is burnt',
                 tone: 'critical',
+                action: true,
                 description:
                   '3 is too high for fruit toast. Try setting 2 for ideal crispness.',
               })

@@ -29,7 +29,7 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
       tone,
       onClear,
       action = false,
-      timed = true,
+      timed = false,
     },
     ref,
   ) => {
@@ -57,7 +57,7 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
 
     return (
       <TreatProvider theme={treatTheme}>
-        <Box ref={ref}>
+        <Box paddingBottom="small" ref={ref}>
           <LeftHighlight
             display="inlineBlock"
             boxShadow="large"
@@ -67,32 +67,33 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
             <Box
               display="flex"
               paddingLeft="medium"
-              paddingY="xsmall"
+              paddingY="small"
               background="card"
+              boxShadow="borderStandard"
               className={styles.toast}
             >
               {icon}
-              <Box className={classnames(touchable, styles.messageContainer)}>
-                <Stack space="xsmall">
-                  <Text baseline={false}>{message}</Text>
-                  {description ? (
-                    <Text baseline={false} tone="secondary">
-                      {description}
-                    </Text>
-                  ) : null}
-                  {action ? (
-                    <Text>
-                      <TextLinkRenderer>
-                        {textLinkProps => (
-                          <Box component="button" {...textLinkProps}>
-                            Got it
-                          </Box>
-                        )}
-                      </TextLinkRenderer>
-                    </Text>
-                  ) : null}
-                </Stack>
-              </Box>
+              <Stack space="xxsmall">
+                <Text baseline={false}>{message}</Text>
+                {description ? (
+                  <Text baseline={false} tone="secondary">
+                    {description}
+                  </Text>
+                ) : null}
+                {action ? (
+                  <TextLinkRenderer>
+                    {textLinkProps => (
+                      <Box
+                        component="button"
+                        className={touchable}
+                        {...textLinkProps}
+                      >
+                        <Text>Got it</Text>
+                      </Box>
+                    )}
+                  </TextLinkRenderer>
+                ) : null}
+              </Stack>
               <Box className={styles.noShrink}>
                 <ClearButton onClick={onClear} />
               </Box>

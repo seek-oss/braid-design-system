@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react';
 
 import * as styleRefs from './LeftHighlight.treat';
 import { Box } from '../..';
-import { useStyles } from 'sku/treat';
+import { useStyles } from 'sku/react-treat';
 import { UseBoxStylesProps } from '../../Box/useBoxStyles';
 
 interface LeftHighlightProps {

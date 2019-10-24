@@ -34,20 +34,18 @@ export const Toaster = ({ toasts, removeToast }: ToasterProps) => {
       aria-live="polite"
     >
       <ContentBlock>
-        <Stack space="small">
-          {toasts.map(({ id, ...rest }) => (
-            <ToastComponent
-              key={id}
-              ref={itemRef(id)}
-              onClear={() => {
-                remove(id, () => {
-                  removeToast(id);
-                });
-              }}
-              {...rest}
-            />
-          ))}
-        </Stack>
+        {toasts.map(({ id, ...rest }) => (
+          <ToastComponent
+            key={id}
+            ref={itemRef(id)}
+            onClear={() => {
+              remove(id, () => {
+                removeToast(id);
+              });
+            }}
+            {...rest}
+          />
+        ))}
       </ContentBlock>
     </Box>
   );
