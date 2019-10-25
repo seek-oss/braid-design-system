@@ -2107,6 +2107,13 @@ exports[`Inline 1`] = `
 }
 `;
 
+exports[`MenuItem 1`] = `
+{
+  children: string
+  onClick?: () => void
+}
+`;
+
 exports[`MonthPicker 1`] = `
 {
   ascendingYears?: boolean
@@ -2131,6 +2138,19 @@ exports[`MonthPicker 1`] = `
     month?: number
     year?: number
   }
+}
+`;
+
+exports[`OverflowMenu 1`] = `
+{
+  align?: 
+    | "left"
+    | "right"
+  children: 
+    | ReactElement<OverflowMenuItemProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>
+    | ReactElement<OverflowMenuItemProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>[]
+  onClose?: () => void
+  onOpen?: () => void
 }
 `;
 

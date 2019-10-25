@@ -26,6 +26,7 @@ export { FieldMessage } from './FieldMessage/FieldMessage';
 export { Heading } from './Heading/Heading';
 export { Hidden } from './Hidden/Hidden';
 export { Inline } from './Inline/Inline';
+export { OverflowMenu, MenuItem } from './OverflowMenu/OverflowMenu';
 export { MonthPicker } from './MonthPicker/MonthPicker';
 export { Radio } from './Radio/Radio';
 export { Secondary } from './Secondary/Secondary';
