@@ -1976,6 +1976,25 @@ exports[`IconMoney 1`] = `
 }
 `;
 
+exports[`IconOverflow 1`] = `
+{
+  size?: 
+    | "fill"
+    | "large"
+    | "small"
+    | "standard"
+    | "xsmall"
+  tone?: 
+    | "critical"
+    | "formAccent"
+    | "info"
+    | "link"
+    | "neutral"
+    | "positive"
+    | "secondary"
+}
+`;
+
 exports[`IconPositive 1`] = `
 {
   size?: 
