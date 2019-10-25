@@ -1,26 +1,44 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { IconButton, IconButtonProps } from '../IconButton';
 import { IconClear } from '../..';
 
 export type ClearButtonProps = Pick<
   IconButtonProps,
-  'onClick' | 'onMouseDown' | 'label' | 'keyboardAccessible'
+  | 'onClick'
+  | 'onMouseDown'
+  | 'onKeyDown'
+  | 'label'
+  | 'keyboardAccessible'
+  | 'aria-haspopup'
+  | 'aria-expanded'
 >;
 
-export const ClearButton = ({
-  label = 'Clear',
-  onClick,
-  onMouseDown,
-  keyboardAccessible,
-}: ClearButtonProps) => {
-  return (
-    <IconButton
-      label={label}
-      onClick={onClick}
-      onMouseDown={onMouseDown}
-      keyboardAccessible={keyboardAccessible}
-    >
-      {iconProps => <IconClear {...iconProps} />}
-    </IconButton>
-  );
-};
+export const ClearButton = forwardRef<HTMLButtonElement, ClearButtonProps>(
+  (
+    {
+      label = 'Clear',
+      onClick,
+      onKeyDown,
+      onMouseDown,
+      keyboardAccessible,
+      'aria-haspopup': ariaHasPopUp,
+      'aria-expanded': ariaExpanded,
+    },
+    forwardedRef,
+  ) => {
+    return (
+      <IconButton
+        label={label}
+        onClick={onClick}
+        onKeyDown={onKeyDown}
+        onMouseDown={onMouseDown}
+        keyboardAccessible={keyboardAccessible}
+        aria-haspopup={ariaHasPopUp}
+        aria-expanded={ariaExpanded}
+        ref={forwardedRef}
+      >
+        {iconProps => <IconClear {...iconProps} />}
+      </IconButton>
+    );
+  },
+);
