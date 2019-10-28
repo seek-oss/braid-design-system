@@ -29,18 +29,15 @@ export const backdrop = style({
   zIndex: zIndex.backdrop,
 });
 
+export const menuIsClosed = style(theme => ({
+  transform: `translateY(-${theme.grid * 2}px)`,
+  opacity: 0,
+  visibility: 'hidden',
+}));
+
 export const menu = style({
   zIndex: zIndex.pageOverlay,
-});
-
-export const menuBorder = style({ opacity: 1 });
-
-export const alignRight = style({
   right: 0,
 });
 
-export const menuItem = style({
-  textAlign: 'left',
-  outline: 'none',
-  whiteSpace: 'nowrap',
-});
+export const showOverlay = style({ opacity: 1 });

@@ -1,8 +1,8 @@
 import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import { Box } from '../Box/Box';
-import { OverflowMenu } from './OverflowMenu';
-import { OverflowMenuItem } from '../OverflowMenuItem/OverflowMenuItem';
+import { OverflowMenuItem } from './OverflowMenuItem';
+import { OverflowMenu } from '../OverflowMenu/OverflowMenu';
 
 const docs: ComponentDocs = {
   examples: [

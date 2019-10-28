@@ -7,7 +7,7 @@ import {
   RenderResult,
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { BraidProvider, OverflowMenu, MenuItem } from '..';
+import { BraidProvider, OverflowMenu, OverflowMenuItem } from '..';
 import { wireframe } from '../../themes';
 
 const TAB = 9;
@@ -17,6 +17,12 @@ const SPACE = 32;
 const ARROW_UP = 38;
 const ARROW_DOWN = 40;
 
+function isVisible(menu: HTMLElement) {
+  return !Array.from(menu.classList).some(cls =>
+    cls.startsWith('menuIsClosed'),
+  );
+}
+
 function renderOverflowMenu() {
   const openHandler = jest.fn();
   const closeHandler = jest.fn();
@@ -24,10 +30,16 @@ function renderOverflowMenu() {
 
   const { getAllByRole } = render(
     <BraidProvider theme={wireframe}>
-      <OverflowMenu onOpen={openHandler} onClose={closeHandler}>
-        <MenuItem onClick={() => menuItemHandler('first')}>First</MenuItem>
-        <MenuItem onClick={() => menuItemHandler('second')}>Second</MenuItem>
-        <MenuItem onClick={() => menuItemHandler('third')}>Third</MenuItem>
+      <OverflowMenu label="Options" onOpen={openHandler} onClose={closeHandler}>
+        <OverflowMenuItem onClick={() => menuItemHandler('first')}>
+          First
+        </OverflowMenuItem>
+        <OverflowMenuItem onClick={() => menuItemHandler('second')}>
+          Second
+        </OverflowMenuItem>
+        <OverflowMenuItem onClick={() => menuItemHandler('third')}>
+          Third
+        </OverflowMenuItem>
       </OverflowMenu>
     </BraidProvider>,
   );
@@ -63,11 +75,11 @@ describe('OverflowMenu', () => {
 
       const { menu, menuButton } = getElements({ getAllByRole });
 
-      expect(menu).not.toBeVisible();
+      expect(isVisible(menu)).toBe(false);
 
       userEvent.click(menuButton);
 
-      expect(menu).toBeVisible();
+      expect(isVisible(menu)).toBe(true);
       expect(menuButton).toHaveFocus();
       expect(openHandler).toHaveBeenCalledTimes(1);
       expect(closeHandler).not.toHaveBeenCalled();
@@ -81,7 +93,7 @@ describe('OverflowMenu', () => {
       userEvent.click(menuButton);
       userEvent.click(menuButton);
 
-      expect(menu).not.toBeVisible();
+      expect(isVisible(menu)).toBe(false);
       expect(menuButton).toHaveFocus();
       expect(closeHandler).toHaveBeenCalledTimes(1);
     });
@@ -136,12 +148,12 @@ describe('OverflowMenu', () => {
       userEvent.click(menuButton);
       openHandler.mockClear(); // Clear initial open invocation, to allow later negative assertion
 
-      expect(menu).toBeVisible();
+      expect(isVisible(menu)).toBe(true);
       // `userEvent` is clashing with state update from the `onMouseEnter` handler
       // on menu item. Need to use `fireEvent`.
       fireEvent.click(menuItems[1]);
 
-      expect(menu).not.toBeVisible();
+      expect(isVisible(menu)).toBe(false);
       expect(openHandler).not.toHaveBeenCalled();
       expect(closeHandler).toHaveBeenCalledTimes(1);
       expect(menuItemHandler).toHaveBeenNthCalledWith(1, 'second');
@@ -156,12 +168,12 @@ describe('OverflowMenu', () => {
       const { getAllByRole, openHandler, closeHandler } = renderOverflowMenu();
 
       const { menu, menuButton } = getElements({ getAllByRole });
-      expect(menu).not.toBeVisible();
+      expect(isVisible(menu)).toBe(false);
 
       fireEvent.keyDown(menuButton, { keyCode: ENTER });
       const { menuItems } = getElements({ getAllByRole });
 
-      expect(menu).toBeVisible();
+      expect(isVisible(menu)).toBe(true);
       expect(menuItems[0]).toHaveFocus();
       expect(openHandler).toHaveBeenCalledTimes(1);
       expect(closeHandler).not.toHaveBeenCalled();
@@ -171,12 +183,12 @@ describe('OverflowMenu', () => {
       const { getAllByRole, openHandler, closeHandler } = renderOverflowMenu();
 
       const { menu, menuButton } = getElements({ getAllByRole });
-      expect(menu).not.toBeVisible();
+      expect(isVisible(menu)).toBe(false);
 
       fireEvent.keyDown(menuButton, { keyCode: SPACE });
       const { menuItems } = getElements({ getAllByRole });
 
-      expect(menu).toBeVisible();
+      expect(isVisible(menu)).toBe(true);
       expect(menuItems[0]).toHaveFocus();
       expect(openHandler).toHaveBeenCalledTimes(1);
       expect(closeHandler).not.toHaveBeenCalled();
@@ -186,12 +198,12 @@ describe('OverflowMenu', () => {
       const { getAllByRole, openHandler, closeHandler } = renderOverflowMenu();
 
       const { menu, menuButton } = getElements({ getAllByRole });
-      expect(menu).not.toBeVisible();
+      expect(isVisible(menu)).toBe(false);
 
       fireEvent.keyDown(menuButton, { keyCode: ARROW_DOWN });
       const { menuItems } = getElements({ getAllByRole });
 
-      expect(menu).toBeVisible();
+      expect(isVisible(menu)).toBe(true);
       expect(menuItems[0]).toHaveFocus();
       expect(openHandler).toHaveBeenCalledTimes(1);
       expect(closeHandler).not.toHaveBeenCalled();
@@ -201,12 +213,12 @@ describe('OverflowMenu', () => {
       const { getAllByRole, openHandler, closeHandler } = renderOverflowMenu();
 
       const { menu, menuButton } = getElements({ getAllByRole });
-      expect(menu).not.toBeVisible();
+      expect(isVisible(menu)).toBe(false);
 
       fireEvent.keyDown(menuButton, { keyCode: ARROW_UP });
       const { menuItems } = getElements({ getAllByRole });
 
-      expect(menu).toBeVisible();
+      expect(isVisible(menu)).toBe(true);
       expect(menuItems[2]).toHaveFocus();
       expect(openHandler).toHaveBeenCalledTimes(1);
       expect(closeHandler).not.toHaveBeenCalled();
@@ -224,7 +236,7 @@ describe('OverflowMenu', () => {
 
       fireEvent.keyDown(menuItems[0], { keyCode: ESCAPE });
 
-      expect(menu).not.toBeVisible();
+      expect(isVisible(menu)).toBe(false);
       expect(menuButton).toHaveFocus();
       expect(openHandler).not.toHaveBeenCalled();
       expect(closeHandler).toHaveBeenCalledTimes(1);
@@ -242,7 +254,7 @@ describe('OverflowMenu', () => {
 
       fireEvent.keyDown(menuItems[0], { keyCode: TAB });
 
-      expect(menu).not.toBeVisible();
+      expect(isVisible(menu)).toBe(false);
       expect(menuButton).toHaveFocus();
       expect(openHandler).not.toHaveBeenCalled();
       expect(closeHandler).toHaveBeenCalledTimes(1);
@@ -252,7 +264,7 @@ describe('OverflowMenu', () => {
       const { getAllByRole } = renderOverflowMenu();
 
       const { menu, menuButton } = getElements({ getAllByRole });
-      expect(menu).not.toBeVisible();
+      expect(isVisible(menu)).toBe(false);
 
       fireEvent.keyDown(menuButton, { keyCode: ARROW_DOWN });
       const firstDown = getElements({ getAllByRole });
@@ -279,7 +291,7 @@ describe('OverflowMenu', () => {
       const { getAllByRole } = renderOverflowMenu();
 
       const { menu, menuButton } = getElements({ getAllByRole });
-      expect(menu).not.toBeVisible();
+      expect(isVisible(menu)).toBe(false);
 
       fireEvent.keyDown(menuButton, { keyCode: ARROW_UP });
       const firstUp = getElements({ getAllByRole });
@@ -324,7 +336,7 @@ describe('OverflowMenu', () => {
       // Action the item
       fireEvent.keyDown(secondMenuItem, { keyCode: ENTER });
 
-      expect(menu).not.toBeVisible();
+      expect(isVisible(menu)).toBe(false);
       expect(closeHandler).toHaveBeenCalledTimes(1);
       expect(menuItemHandler).toHaveBeenNthCalledWith(1, 'second');
       expect(menuButton).toHaveFocus();

@@ -9,6 +9,7 @@ export type ClearButtonProps = Pick<
   | 'onKeyDown'
   | 'label'
   | 'keyboardAccessible'
+  | 'active'
   | 'aria-haspopup'
   | 'aria-expanded'
 >;
@@ -16,11 +17,12 @@ export type ClearButtonProps = Pick<
 export const ClearButton = forwardRef<HTMLButtonElement, ClearButtonProps>(
   (
     {
-      label = 'Clear',
+      label,
       onClick,
       onKeyDown,
       onMouseDown,
       keyboardAccessible,
+      active,
       'aria-haspopup': ariaHasPopUp,
       'aria-expanded': ariaExpanded,
     },
@@ -33,6 +35,7 @@ export const ClearButton = forwardRef<HTMLButtonElement, ClearButtonProps>(
         onKeyDown={onKeyDown}
         onMouseDown={onMouseDown}
         keyboardAccessible={keyboardAccessible}
+        active={active}
         aria-haspopup={ariaHasPopUp}
         aria-expanded={ariaExpanded}
         ref={forwardedRef}

@@ -4,20 +4,17 @@ import React, {
   KeyboardEvent,
   createContext,
   Children,
-  useContext,
   useRef,
-  useEffect,
   useCallback,
 } from 'react';
 import classnames from 'classnames';
 import { useStyles } from 'sku/treat';
 import { Box } from '../Box/Box';
-import { Text } from '../Text/Text';
-import { useTouchableSpace } from '../../hooks/typography';
 import { normalizeKey } from '../private/normalizeKey';
 import { OverflowButton } from '../iconButtons/OverflowButton/OverflowButton';
-import * as styleRefs from './OverflowMenu.treat';
 import { Overlay } from '../private/Overlay/Overlay';
+import { OverflowMenuItemProps } from '../OverflowMenuItem/OverflowMenuItem';
+import * as styleRefs from './OverflowMenu.treat';
 
 interface OverflowMenuContextValues {
   isHighlighted: boolean;
@@ -29,7 +26,7 @@ const noop = () => {
   /* noop */
 };
 
-const OverflowMenuContext = createContext<OverflowMenuContextValues>({
+export const OverflowMenuContext = createContext<OverflowMenuContextValues>({
   isHighlighted: false,
   keyboardNavigationHandler: noop,
   mouseNavigationHandler: noop,
@@ -37,9 +34,9 @@ const OverflowMenuContext = createContext<OverflowMenuContextValues>({
 });
 
 interface OverflowMenuProps {
-  align?: 'left' | 'right';
   onOpen?: () => void;
   onClose?: () => void;
+  label: string;
   children:
     | Array<ReactElement<OverflowMenuItemProps>>
     | ReactElement<OverflowMenuItemProps>;
@@ -47,9 +44,9 @@ interface OverflowMenuProps {
 
 const CLOSED_INDEX = -1;
 export const OverflowMenu = ({
-  align = 'right',
   onOpen,
   onClose,
+  label,
   children,
 }: OverflowMenuProps) => {
   const styles = useStyles(styleRefs);
@@ -159,8 +156,10 @@ export const OverflowMenu = ({
       <Box display="inlineBlock" position="relative">
         <Box width="touchable" className={styles.triggerOffset}>
           <OverflowButton
+            label={label}
             aria-haspopup="true"
             aria-expanded={openState}
+            active={openState}
             ref={buttonRef}
             onKeyDown={onTriggerKeyDown}
             onClick={() => {
@@ -171,18 +170,14 @@ export const OverflowMenu = ({
 
         <Box
           role="menu"
-          hidden={!openState}
-          display={openState ? 'block' : 'none'}
           position="absolute"
           onMouseLeave={mouseOutOfMenuHandler}
           boxShadow="medium"
           borderRadius="standard"
           background="card"
           marginTop="small"
-          className={classnames(
-            styles.menu,
-            align === 'right' && styles.alignRight,
-          )}
+          transition="fast"
+          className={classnames(styles.menu, !openState && styles.menuIsClosed)}
         >
           <Box paddingY="xxsmall">
             {items.map((item, index) => (
@@ -202,7 +197,7 @@ export const OverflowMenu = ({
           <Overlay
             boxShadow="borderStandard"
             borderRadius="standard"
-            className={styles.menuBorder}
+            className={styles.showOverlay}
           />
         </Box>
       </Box>
@@ -210,78 +205,6 @@ export const OverflowMenu = ({
       {openState ? (
         <Box onClick={close} position="fixed" className={styles.backdrop} />
       ) : null}
-    </Box>
-  );
-};
-
-interface OverflowMenuItemProps {
-  children: string;
-  onClick?: () => void;
-}
-export const MenuItem = ({ children, onClick }: OverflowMenuItemProps) => {
-  const styles = useStyles(styleRefs);
-  const {
-    isHighlighted,
-    keyboardNavigationHandler,
-    mouseNavigationHandler,
-    closeMenu,
-  } = useContext(OverflowMenuContext);
-  const menuItemRef = useRef<HTMLButtonElement>(null);
-
-  useEffect(() => {
-    if (menuItemRef.current && isHighlighted) {
-      menuItemRef.current.focus();
-    }
-  }, [isHighlighted]);
-
-  const clickHandler = useCallback(() => {
-    closeMenu();
-
-    if (typeof onClick === 'function') {
-      onClick();
-    }
-  }, [closeMenu, onClick]);
-
-  const onKeyDown = useCallback(
-    (event: KeyboardEvent<HTMLButtonElement>) => {
-      const targetKey = normalizeKey(event);
-
-      if (targetKey === 'Enter') {
-        // Prevents the double trigger of `Enter` firing onKeyDown
-        // and subsequently triggering the `onClick` handler.
-        event.preventDefault();
-        clickHandler();
-      } else {
-        keyboardNavigationHandler(event);
-      }
-    },
-    [clickHandler, keyboardNavigationHandler],
-  );
-
-  const menuItemTextSize = 'standard';
-
-  return (
-    <Box
-      component="button"
-      role="menuitem"
-      tabIndex={-1}
-      ref={menuItemRef}
-      onKeyDown={onKeyDown}
-      onMouseEnter={mouseNavigationHandler}
-      onClick={clickHandler}
-      display="block"
-      width="full"
-      paddingX="small"
-      background={isHighlighted ? 'selection' : undefined}
-      cursor="pointer"
-      className={classnames(
-        useTouchableSpace(menuItemTextSize),
-        styles.menuItem,
-      )}
-    >
-      <Text size={menuItemTextSize} baseline={false}>
-        {children}
-      </Text>
     </Box>
   );
 };

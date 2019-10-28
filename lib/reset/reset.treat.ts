@@ -64,6 +64,14 @@ const button = style({
   background: 'none',
 });
 
+const a = style({
+  textDecoration: 'none',
+  color: 'inherit',
+  ':visited': {
+    color: 'inherit',
+  },
+});
+
 export const element = {
   article: block,
   aside: block,
@@ -81,6 +89,7 @@ export const element = {
   blockquote: quote,
   q: quote,
   body,
+  a,
   table,
   mark,
   select,

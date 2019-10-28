@@ -6,6 +6,7 @@ import React, {
   forwardRef,
 } from 'react';
 import { useStyles } from 'sku/treat';
+import classnames from 'classnames';
 import { Box } from '..';
 import { Overlay } from '../private/Overlay/Overlay';
 import {
@@ -18,7 +19,7 @@ import * as styleRefs from './IconButton.treat';
 
 type NativeButtonProps = AllHTMLAttributes<HTMLButtonElement>;
 export interface IconButtonProps {
-  label?: string;
+  label: string;
   children: (props: UseIconProps) => ReactNode;
   onClick?: NativeButtonProps['onClick'];
   onMouseDown?: NativeButtonProps['onMouseDown'];
@@ -26,6 +27,7 @@ export interface IconButtonProps {
   'aria-haspopup'?: NativeButtonProps['aria-haspopup'];
   'aria-expanded'?: NativeButtonProps['aria-expanded'];
   keyboardAccessible?: boolean;
+  active?: boolean;
 }
 
 export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
@@ -38,6 +40,7 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
       'aria-haspopup': ariaHasPopUp,
       'aria-expanded': ariaExpanded,
       keyboardAccessible = true,
+      active = false,
       children,
     },
     forwardedRef,
@@ -107,7 +110,10 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
             background={background === 'selection' ? 'card' : 'neutralLight'}
             transition="fast"
             borderRadius="full"
-            className={styles.hoverOverlay}
+            className={classnames(
+              styles.hoverOverlay,
+              active && styles.forceActive,
+            )}
           />
           {keyboardAccessible ? (
             <Overlay
