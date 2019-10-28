@@ -3,7 +3,6 @@ import React, {
   useContext,
   useRef,
   useEffect,
-  useCallback,
   ReactNode,
 } from 'react';
 import classnames from 'classnames';
@@ -27,7 +26,6 @@ export const OverflowMenuItem = ({
   type = 'button',
 }: OverflowMenuItemProps) => {
   const styles = useStyles(styleRefs);
-
   const menuContext = useContext(OverflowMenuContext);
 
   if (process.env.NODE_ENV !== 'production') {
@@ -52,29 +50,26 @@ export const OverflowMenuItem = ({
     }
   }, [isHighlighted]);
 
-  const clickHandler = useCallback(() => {
+  const clickHandler = () => {
     closeMenu();
 
     if (typeof onClick === 'function') {
       onClick();
     }
-  }, [closeMenu, onClick]);
+  };
 
-  const onKeyDown = useCallback(
-    (event: KeyboardEvent<HTMLButtonElement>) => {
-      const targetKey = normalizeKey(event);
+  const onKeyDown = (event: KeyboardEvent<HTMLButtonElement>) => {
+    const targetKey = normalizeKey(event);
 
-      if (targetKey === 'Enter') {
-        // Prevents the double trigger of `Enter` firing onKeyDown
-        // and subsequently triggering the `onClick` handler.
-        event.preventDefault();
-        clickHandler();
-      } else {
-        keyboardNavigationHandler(event);
-      }
-    },
-    [clickHandler, keyboardNavigationHandler],
-  );
+    if (targetKey === 'Enter') {
+      // Prevents the double trigger of `Enter` firing onKeyDown
+      // and subsequently triggering the `onClick` handler.
+      event.preventDefault();
+      clickHandler();
+    } else {
+      keyboardNavigationHandler(event);
+    }
+  };
 
   const menuItemTextSize = 'standard';
 

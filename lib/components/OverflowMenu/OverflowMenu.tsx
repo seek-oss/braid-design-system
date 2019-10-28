@@ -5,7 +5,6 @@ import React, {
   createContext,
   Children,
   useRef,
-  useCallback,
 } from 'react';
 import classnames from 'classnames';
 import { useStyles } from 'sku/treat';
@@ -84,37 +83,34 @@ export const OverflowMenu = ({
     }
   };
 
-  const onTriggerKeyDown = useCallback(
-    (event: KeyboardEvent<HTMLButtonElement>) => {
-      const targetKey = normalizeKey(event);
+  const onTriggerKeyDown = (event: KeyboardEvent<HTMLButtonElement>) => {
+    const targetKey = normalizeKey(event);
 
-      const openMenuKeys = ['ArrowDown', 'ArrowUp', ' ', 'Enter'];
+    const openMenuKeys = ['ArrowDown', 'ArrowUp', ' ', 'Enter'];
 
-      if (openMenuKeys.indexOf(targetKey) > -1) {
-        if (targetKey === 'ArrowUp') {
-          // Open and highlight last
-          setHighlightIndex(items.length - 1);
-          open({
-            highlightFirst: false,
-          });
-        } else {
-          // Open and highlight first
-          open({
-            highlightFirst: true,
-          });
-        }
-
-        // Prevents the double trigger of `Enter` firing onKeyDown
-        // and subsequently triggering the `onClick` handler.
-        event.preventDefault();
+    if (openMenuKeys.indexOf(targetKey) > -1) {
+      if (targetKey === 'ArrowUp') {
+        // Open and highlight last
+        setHighlightIndex(items.length - 1);
+        open({
+          highlightFirst: false,
+        });
+      } else {
+        // Open and highlight first
+        open({
+          highlightFirst: true,
+        });
       }
 
-      if (targetKey === 'Escape') {
-        close();
-      }
-    },
-    [],
-  );
+      // Prevents the double trigger of `Enter` firing onKeyDown
+      // and subsequently triggering the `onClick` handler.
+      event.preventDefault();
+    }
+
+    if (targetKey === 'Escape') {
+      close();
+    }
+  };
 
   const down = () => {
     const isLast = highlightIndex === items.length - 1;
@@ -126,30 +122,26 @@ export const OverflowMenu = ({
     setHighlightIndex(isFirst ? items.length - 1 : highlightIndex - 1);
   };
 
-  const keyboardNavigationHandler = useCallback(
-    (event: KeyboardEvent<HTMLButtonElement>) => {
-      const targetKey = normalizeKey(event);
+  const keyboardNavigationHandler = (
+    event: KeyboardEvent<HTMLButtonElement>,
+  ) => {
+    const targetKey = normalizeKey(event);
 
-      const actions: Record<string, () => void> = {
-        ArrowDown: down,
-        ArrowUp: up,
-        Escape: close,
-        Tab: close,
-      };
+    const actions: Record<string, () => void> = {
+      ArrowDown: down,
+      ArrowUp: up,
+      Escape: close,
+      Tab: close,
+    };
 
-      if (actions[targetKey]) {
-        actions[targetKey]();
-        // Stops arrow keys scrolling the document when navigating the list
-        event.preventDefault();
-      }
-    },
-    [openState, highlightIndex],
-  );
+    if (actions[targetKey]) {
+      actions[targetKey]();
+      // Stops arrow keys scrolling the document when navigating the list
+      event.preventDefault();
+    }
+  };
 
-  const mouseOutOfMenuHandler = useCallback(
-    () => setHighlightIndex(CLOSED_INDEX),
-    [],
-  );
+  const mouseOutOfMenuHandler = () => setHighlightIndex(CLOSED_INDEX);
 
   return (
     <Box className={styles.root}>
