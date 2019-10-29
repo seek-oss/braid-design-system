@@ -16,7 +16,7 @@ import { Strong } from '../Strong/Strong';
 import { Field, FieldProps } from '../private/Field/Field';
 import { ClearButton } from '../iconButtons/ClearButton/ClearButton';
 import { useTouchableSpace, useText } from '../../hooks/typography';
-import { getNextIndex } from './getNextIndex';
+import { getNextIndex } from '../private/getNextIndex';
 import { normalizeKey } from '../private/normalizeKey';
 import { smoothScroll } from './smoothScroll';
 import { useScrollIntoView } from './useScrollIntoView';
