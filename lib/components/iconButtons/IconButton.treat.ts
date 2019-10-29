@@ -2,6 +2,11 @@ import { style } from 'sku/treat';
 
 export const button = style({
   outline: 'none',
+  selectors: {
+    [`&::-moz-focus-inner`]: {
+      border: 0,
+    },
+  },
 });
 
 export const forceActive = style({});
