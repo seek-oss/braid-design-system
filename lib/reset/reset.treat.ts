@@ -67,9 +67,6 @@ const button = style({
 const a = style({
   textDecoration: 'none',
   color: 'inherit',
-  ':visited': {
-    color: 'inherit',
-  },
 });
 
 export const element = {
