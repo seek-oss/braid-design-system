@@ -6,6 +6,7 @@ export type ClearButtonProps = Pick<
   IconButtonProps,
   | 'onClick'
   | 'onMouseDown'
+  | 'onKeyUp'
   | 'onKeyDown'
   | 'label'
   | 'keyboardAccessible'
@@ -19,6 +20,7 @@ export const ClearButton = forwardRef<HTMLButtonElement, ClearButtonProps>(
     {
       label,
       onClick,
+      onKeyUp,
       onKeyDown,
       onMouseDown,
       keyboardAccessible,
@@ -32,6 +34,7 @@ export const ClearButton = forwardRef<HTMLButtonElement, ClearButtonProps>(
       <IconButton
         label={label}
         onClick={onClick}
+        onKeyUp={onKeyUp}
         onKeyDown={onKeyDown}
         onMouseDown={onMouseDown}
         keyboardAccessible={keyboardAccessible}

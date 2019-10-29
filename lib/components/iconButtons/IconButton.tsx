@@ -23,6 +23,7 @@ export interface IconButtonProps {
   children: (props: UseIconProps) => ReactNode;
   onClick?: NativeButtonProps['onClick'];
   onMouseDown?: NativeButtonProps['onMouseDown'];
+  onKeyUp?: NativeButtonProps['onKeyUp'];
   onKeyDown?: NativeButtonProps['onKeyDown'];
   'aria-haspopup'?: NativeButtonProps['aria-haspopup'];
   'aria-expanded'?: NativeButtonProps['aria-expanded'];
@@ -36,6 +37,7 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
       label,
       onClick,
       onMouseDown,
+      onKeyUp,
       onKeyDown,
       'aria-haspopup': ariaHasPopUp,
       'aria-expanded': ariaExpanded,
@@ -87,6 +89,7 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
         aria-expanded={ariaExpanded}
         title={label}
         onClick={onClick}
+        onKeyUp={onKeyUp}
         onKeyDown={onKeyDown}
         onMouseDown={handleMouseDown}
         display="flex"

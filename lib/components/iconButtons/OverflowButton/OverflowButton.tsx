@@ -6,6 +6,7 @@ export type OverflowButtonProps = Pick<
   IconButtonProps,
   | 'onClick'
   | 'onMouseDown'
+  | 'onKeyUp'
   | 'onKeyDown'
   | 'label'
   | 'keyboardAccessible'
@@ -22,6 +23,7 @@ export const OverflowButton = forwardRef<
     {
       label,
       onClick,
+      onKeyUp,
       onKeyDown,
       onMouseDown,
       keyboardAccessible,
@@ -35,6 +37,7 @@ export const OverflowButton = forwardRef<
       <IconButton
         label={label}
         onClick={onClick}
+        onKeyUp={onKeyUp}
         onKeyDown={onKeyDown}
         onMouseDown={onMouseDown}
         keyboardAccessible={keyboardAccessible}
