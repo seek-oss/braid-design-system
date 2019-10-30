@@ -13,7 +13,10 @@ exports[`Alert 1`] = `
   tone?: 
     | "critical"
     | "info"
+    | "notice"
     | "positive"
+    | "promote"
+    | "warning"
   weight?: 
     | "regular"
     | "strong"
@@ -59,7 +62,10 @@ exports[`Badge 1`] = `
     | "critical"
     | "info"
     | "neutral"
+    | "notice"
     | "positive"
+    | "promote"
+    | "warning"
   weight?: 
     | "regular"
     | "strong"
@@ -261,9 +267,15 @@ exports[`Box 1`] = `
     | "inputDisabled"
     | "neutral"
     | "neutralLight"
+    | "notice"
+    | "noticeLight"
     | "positive"
     | "positiveLight"
+    | "promote"
+    | "promoteLight"
     | "selection"
+    | "warning"
+    | "warningLight"
   borderRadius?: 
     | "full"
     | "standard"
@@ -987,9 +999,15 @@ exports[`BoxRenderer 1`] = `
     | "inputDisabled"
     | "neutral"
     | "neutralLight"
+    | "notice"
+    | "noticeLight"
     | "positive"
     | "positiveLight"
+    | "promote"
+    | "promoteLight"
     | "selection"
+    | "warning"
+    | "warningLight"
   borderRadius?: 
     | "full"
     | "standard"
@@ -1815,8 +1833,11 @@ exports[`IconAdd 1`] = `
     | "info"
     | "link"
     | "neutral"
+    | "notice"
     | "positive"
+    | "promote"
     | "secondary"
+    | "warning"
 }
 `;
 
@@ -1835,8 +1856,11 @@ exports[`IconBookmark 1`] = `
     | "info"
     | "link"
     | "neutral"
+    | "notice"
     | "positive"
+    | "promote"
     | "secondary"
+    | "warning"
 }
 `;
 
@@ -1859,8 +1883,11 @@ exports[`IconChevron 1`] = `
     | "info"
     | "link"
     | "neutral"
+    | "notice"
     | "positive"
+    | "promote"
     | "secondary"
+    | "warning"
 }
 `;
 
@@ -1878,8 +1905,11 @@ exports[`IconClear 1`] = `
     | "info"
     | "link"
     | "neutral"
+    | "notice"
     | "positive"
+    | "promote"
     | "secondary"
+    | "warning"
 }
 `;
 
@@ -1897,8 +1927,11 @@ exports[`IconCritical 1`] = `
     | "info"
     | "link"
     | "neutral"
+    | "notice"
     | "positive"
+    | "promote"
     | "secondary"
+    | "warning"
 }
 `;
 
@@ -1916,8 +1949,11 @@ exports[`IconDate 1`] = `
     | "info"
     | "link"
     | "neutral"
+    | "notice"
     | "positive"
+    | "promote"
     | "secondary"
+    | "warning"
 }
 `;
 
@@ -1935,8 +1971,11 @@ exports[`IconInfo 1`] = `
     | "info"
     | "link"
     | "neutral"
+    | "notice"
     | "positive"
+    | "promote"
     | "secondary"
+    | "warning"
 }
 `;
 
@@ -1954,8 +1993,11 @@ exports[`IconLocation 1`] = `
     | "info"
     | "link"
     | "neutral"
+    | "notice"
     | "positive"
+    | "promote"
     | "secondary"
+    | "warning"
 }
 `;
 
@@ -1973,8 +2015,11 @@ exports[`IconMoney 1`] = `
     | "info"
     | "link"
     | "neutral"
+    | "notice"
     | "positive"
+    | "promote"
     | "secondary"
+    | "warning"
 }
 `;
 
@@ -1992,8 +2037,11 @@ exports[`IconOverflow 1`] = `
     | "info"
     | "link"
     | "neutral"
+    | "notice"
     | "positive"
+    | "promote"
     | "secondary"
+    | "warning"
 }
 `;
 
@@ -2011,8 +2059,11 @@ exports[`IconPositive 1`] = `
     | "info"
     | "link"
     | "neutral"
+    | "notice"
     | "positive"
+    | "promote"
     | "secondary"
+    | "warning"
 }
 `;
 
@@ -2030,8 +2081,11 @@ exports[`IconSearch 1`] = `
     | "info"
     | "link"
     | "neutral"
+    | "notice"
     | "positive"
+    | "promote"
     | "secondary"
+    | "warning"
 }
 `;
 
@@ -2049,8 +2103,11 @@ exports[`IconSocialFacebook 1`] = `
     | "info"
     | "link"
     | "neutral"
+    | "notice"
     | "positive"
+    | "promote"
     | "secondary"
+    | "warning"
 }
 `;
 
@@ -2068,8 +2125,11 @@ exports[`IconSocialTwitter 1`] = `
     | "info"
     | "link"
     | "neutral"
+    | "notice"
     | "positive"
+    | "promote"
     | "secondary"
+    | "warning"
 }
 `;
 
@@ -2087,8 +2147,11 @@ exports[`IconTick 1`] = `
     | "info"
     | "link"
     | "neutral"
+    | "notice"
     | "positive"
+    | "promote"
     | "secondary"
+    | "warning"
 }
 `;
 
@@ -2406,8 +2469,11 @@ exports[`Text 1`] = `
     | "info"
     | "link"
     | "neutral"
+    | "notice"
     | "positive"
+    | "promote"
     | "secondary"
+    | "warning"
   weight?: 
     | "medium"
     | "regular"

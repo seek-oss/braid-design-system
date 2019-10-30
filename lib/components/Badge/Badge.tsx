@@ -4,7 +4,14 @@ import { Text } from '../Text/Text';
 import * as styleRefs from './Badge.treat';
 import { useStyles } from 'sku/treat';
 
-type Tone = 'info' | 'critical' | 'positive' | 'neutral';
+type Tone =
+  | 'info'
+  | 'critical'
+  | 'positive'
+  | 'neutral'
+  | 'warning'
+  | 'notice'
+  | 'promote';
 type BadgeWeight = 'strong' | 'regular';
 export interface BadgeProps {
   tone?: Tone;
@@ -32,6 +39,18 @@ const backgroundForTone = (tone: Tone, weight: BadgeWeight) => {
 
   if (tone === 'neutral') {
     return 'neutralLight';
+  }
+
+  if (tone === 'warning') {
+    return 'warningLight';
+  }
+
+  if (tone === 'notice') {
+    return 'noticeLight';
+  }
+
+  if (tone === 'promote') {
+    return 'promoteLight';
   }
 };
 

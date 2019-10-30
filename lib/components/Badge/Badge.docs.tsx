@@ -53,6 +53,42 @@ const docs: ComponentDocs = {
         </Badge>
       ),
     },
+    {
+      label: 'Warning Badge',
+      Example: () => <Badge tone="warning">Warning</Badge>,
+    },
+    {
+      label: 'Strong Warning Badge',
+      Example: () => (
+        <Badge tone="warning" weight="strong">
+          Warning
+        </Badge>
+      ),
+    },
+    {
+      label: 'Notice Badge',
+      Example: () => <Badge tone="notice">Notice</Badge>,
+    },
+    {
+      label: 'Strong Notice Badge',
+      Example: () => (
+        <Badge tone="notice" weight="strong">
+          Warning
+        </Badge>
+      ),
+    },
+    {
+      label: 'Promote Badge',
+      Example: () => <Badge tone="promote">Promote</Badge>,
+    },
+    {
+      label: 'Strong Promote Badge',
+      Example: () => (
+        <Badge tone="promote" weight="strong">
+          Warning
+        </Badge>
+      ),
+    },
   ],
 };
 
