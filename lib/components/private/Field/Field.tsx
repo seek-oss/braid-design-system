@@ -134,7 +134,11 @@ export const Field = forwardRef<FieldRef, InternalFieldProps>(
           ],
         )}
       >
-        <ClearButton onMouseDown={clearHandler} keyboardAccessible={false} />
+        <ClearButton
+          label="Clear"
+          onMouseDown={clearHandler}
+          keyboardAccessible={false}
+        />
       </Box>
     ) : null;
 

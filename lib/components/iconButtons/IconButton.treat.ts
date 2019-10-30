@@ -2,14 +2,21 @@ import { style } from 'sku/treat';
 
 export const button = style({
   outline: 'none',
+  selectors: {
+    [`&::-moz-focus-inner`]: {
+      border: 0,
+    },
+  },
 });
+
+export const forceActive = style({});
 
 export const hoverOverlay = style({
   selectors: {
     [`${button}:hover &, ${button}:focus &`]: {
       opacity: 1,
     },
-    [`${button}:active &`]: {
+    [`${button}:active &, ${forceActive}&`]: {
       opacity: 0.8,
     },
   },
