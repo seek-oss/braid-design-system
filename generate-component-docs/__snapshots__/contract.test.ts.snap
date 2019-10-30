@@ -1978,6 +1978,25 @@ exports[`IconMoney 1`] = `
 }
 `;
 
+exports[`IconOverflow 1`] = `
+{
+  size?: 
+    | "fill"
+    | "large"
+    | "small"
+    | "standard"
+    | "xsmall"
+  tone?: 
+    | "critical"
+    | "formAccent"
+    | "info"
+    | "link"
+    | "neutral"
+    | "positive"
+    | "secondary"
+}
+`;
+
 exports[`IconPositive 1`] = `
 {
   size?: 
@@ -2114,6 +2133,27 @@ exports[`MonthPicker 1`] = `
     month?: number
     year?: number
   }
+}
+`;
+
+exports[`OverflowMenu 1`] = `
+{
+  children: 
+    | ReactElement<OverflowMenuItemProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>
+    | ReactElement<OverflowMenuItemProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>[]
+  label: string
+  onClose?: () => void
+  onOpen?: () => void
+}
+`;
+
+exports[`OverflowMenuItem 1`] = `
+{
+  children: ReactNode
+  onClick?: () => void
+  type?: 
+    | "button"
+    | "link"
 }
 `;
 
