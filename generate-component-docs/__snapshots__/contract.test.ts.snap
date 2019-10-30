@@ -13,10 +13,7 @@ exports[`Alert 1`] = `
   tone?: 
     | "critical"
     | "info"
-    | "notice"
     | "positive"
-    | "promote"
-    | "warning"
   weight?: 
     | "regular"
     | "strong"
