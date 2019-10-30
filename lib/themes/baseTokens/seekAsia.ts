@@ -2,6 +2,12 @@ import { TreatTokens } from '../makeTreatTheme';
 import { DeepPartial } from 'utility-types';
 import merge from 'lodash/merge';
 
+const palette = {
+  warning: '#f36e23',
+  notice: '#ffc842',
+  promote: '#5f37b7',
+};
+
 interface MakeTokensOptions {
   name: string;
   brand: string;
@@ -35,6 +41,9 @@ export const makeTokens = ({
   const selection = blue5;
   const secondary = grey2;
   const neutral = grey2;
+  const warning = palette.warning;
+  const notice = palette.notice;
+  const promote = palette.promote;
 
   const tokens: TreatTokens = {
     name,
@@ -198,6 +207,9 @@ export const makeTokens = ({
         info,
         positive,
         secondary,
+        warning,
+        notice,
+        promote,
       },
       background: {
         brand,
@@ -212,6 +224,9 @@ export const makeTokens = ({
         info,
         positive,
         neutral,
+        warning,
+        notice,
+        promote,
       },
     },
   };

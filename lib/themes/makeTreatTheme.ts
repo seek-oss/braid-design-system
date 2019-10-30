@@ -94,6 +94,9 @@ export interface TreatTokens {
       info: string;
       positive: string;
       secondary: string;
+      warning: string;
+      notice: string;
+      promote: string;
     };
     background: {
       brand: string;
@@ -108,6 +111,9 @@ export interface TreatTokens {
       critical: string;
       positive: string;
       neutral: string;
+      warning: string;
+      notice: string;
+      promote: string;
     };
   };
 }

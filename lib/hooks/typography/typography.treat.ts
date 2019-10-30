@@ -130,6 +130,15 @@ const accessibleColorVariants = styleMap(({ color: { foreground } }) => ({
   info: {
     color: getAccessibleVariant(foreground.info),
   },
+  warning: {
+    color: getAccessibleVariant(foreground.warning),
+  },
+  notice: {
+    color: getAccessibleVariant(foreground.notice),
+  },
+  promote: {
+    color: getAccessibleVariant(foreground.promote),
+  },
 }));
 
 const textColorForBackground = (
@@ -175,6 +184,18 @@ export const backgroundContrast: BackgroundContrast = {
     default: accessibleColorVariants.info,
     info: accessibleColorVariants.info,
   },
+  warningLight: {
+    default: accessibleColorVariants.warning,
+    info: accessibleColorVariants.warning,
+  },
+  noticeLight: {
+    default: accessibleColorVariants.notice,
+    info: accessibleColorVariants.notice,
+  },
+  promoteLight: {
+    default: accessibleColorVariants.promote,
+    info: accessibleColorVariants.promote,
+  },
   brand: {
     default: textColorForBackground('brand'),
   },
@@ -207,6 +228,15 @@ export const backgroundContrast: BackgroundContrast = {
   },
   neutral: {
     default: textColorForBackground('neutral'),
+  },
+  warning: {
+    default: textColorForBackground('warning'),
+  },
+  notice: {
+    default: textColorForBackground('notice'),
+  },
+  promote: {
+    default: textColorForBackground('promote'),
   },
 };
 

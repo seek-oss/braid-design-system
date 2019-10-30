@@ -14,7 +14,7 @@ const palette = {
 
   // Buttons & Filters
   saCta: '#e50379',
-  saLink: '#0069ff',
+  saLink: '#0068ff',
 
   // Grayscale
   saBlack: '#000',
@@ -27,13 +27,14 @@ const palette = {
   saWhite: '#fff',
 
   // Tones
-  critical: '#d30b41',
+  critical: '#c00034',
+  warning: '#f36e23',
   notice: '#ffc842',
   positive: '#028616',
-  neutral: '#989ba2',
+  neutral: '#5e5f66',
   // Desired `info` colour is `#4799d3`, however white text is in-accessible on this.
   // The closest colour that meets a contrast ratio of 4.51 is `#2B7CB6`.
-  info: '#2b7cb6',
+  info: '#2578c1',
   promote: '#5f37b7',
 };
 
@@ -60,6 +61,9 @@ export const makeTokens = ({
   const secondary = palette.saGrayDark;
   const focus = lighten(0.3, palette.saBlueLight);
   const selection = lighten(0.4, palette.saBlueLight);
+  const warning = palette.warning;
+  const notice = palette.notice;
+  const promote = palette.promote;
 
   const tokens: TreatTokens = {
     name,
@@ -126,7 +130,7 @@ export const makeTokens = ({
         xsmall: {
           mobile: {
             size: 12,
-            rows: 4,
+            rows: 5,
           },
           desktop: {
             size: 12,
@@ -223,6 +227,9 @@ export const makeTokens = ({
         info,
         positive,
         secondary,
+        warning,
+        notice,
+        promote,
       },
       background: {
         brand,
@@ -237,6 +244,9 @@ export const makeTokens = ({
         info,
         positive,
         neutral,
+        warning,
+        notice,
+        promote,
       },
     },
   };

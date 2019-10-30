@@ -12,6 +12,10 @@ const link = '#4c77bb';
 const secondary = '#777';
 const neutral = '#777';
 
+const warning = '#f36e23';
+const notice = '#ffc842';
+const promote = '#5f37b7';
+
 const tokens: TreatTokens = {
   name: 'wireframe',
   typography: {
@@ -173,6 +177,9 @@ const tokens: TreatTokens = {
       info,
       positive,
       secondary,
+      warning,
+      notice,
+      promote,
     },
     background: {
       brand: black,
@@ -187,6 +194,9 @@ const tokens: TreatTokens = {
       info,
       positive,
       neutral,
+      warning,
+      notice,
+      promote,
     },
   },
 };
