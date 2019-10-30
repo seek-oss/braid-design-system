@@ -5,10 +5,19 @@ import {
   cleanup,
   fireEvent,
   RenderResult,
+  act,
 } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import genericUserEvent from '@testing-library/user-event';
 import { BraidProvider, OverflowMenu, OverflowMenuItem } from '..';
 import { wireframe } from '../../themes';
+
+// The generic `user-event` library currently doesn't have knowledge
+// of the react lifecycle, e.g. it's methods are not wrapped with
+// the `act` function. See issue for details:
+// https://github.com/testing-library/user-event/issues/128
+const userEvent = {
+  click: (el: HTMLElement) => act(() => genericUserEvent.click(el)),
+};
 
 const TAB = 9;
 const ENTER = 13;
@@ -170,7 +179,7 @@ describe('OverflowMenu', () => {
       const { menu, menuButton } = getElements({ getAllByRole });
       expect(isVisible(menu)).toBe(false);
 
-      fireEvent.keyDown(menuButton, { keyCode: ENTER });
+      fireEvent.keyUp(menuButton, { keyCode: ENTER });
       const { menuItems } = getElements({ getAllByRole });
 
       expect(isVisible(menu)).toBe(true);
@@ -185,7 +194,7 @@ describe('OverflowMenu', () => {
       const { menu, menuButton } = getElements({ getAllByRole });
       expect(isVisible(menu)).toBe(false);
 
-      fireEvent.keyDown(menuButton, { keyCode: SPACE });
+      fireEvent.keyUp(menuButton, { keyCode: SPACE });
       const { menuItems } = getElements({ getAllByRole });
 
       expect(isVisible(menu)).toBe(true);
@@ -200,7 +209,7 @@ describe('OverflowMenu', () => {
       const { menu, menuButton } = getElements({ getAllByRole });
       expect(isVisible(menu)).toBe(false);
 
-      fireEvent.keyDown(menuButton, { keyCode: ARROW_DOWN });
+      fireEvent.keyUp(menuButton, { keyCode: ARROW_DOWN });
       const { menuItems } = getElements({ getAllByRole });
 
       expect(isVisible(menu)).toBe(true);
@@ -215,7 +224,7 @@ describe('OverflowMenu', () => {
       const { menu, menuButton } = getElements({ getAllByRole });
       expect(isVisible(menu)).toBe(false);
 
-      fireEvent.keyDown(menuButton, { keyCode: ARROW_UP });
+      fireEvent.keyUp(menuButton, { keyCode: ARROW_UP });
       const { menuItems } = getElements({ getAllByRole });
 
       expect(isVisible(menu)).toBe(true);
@@ -234,7 +243,7 @@ describe('OverflowMenu', () => {
       userEvent.click(menuButton);
       openHandler.mockClear(); // Clear initial open invocation, to allow later negative assertion
 
-      fireEvent.keyDown(menuItems[0], { keyCode: ESCAPE });
+      fireEvent.keyUp(menuItems[0], { keyCode: ESCAPE });
 
       expect(isVisible(menu)).toBe(false);
       expect(menuButton).toHaveFocus();
@@ -266,22 +275,22 @@ describe('OverflowMenu', () => {
       const { menu, menuButton } = getElements({ getAllByRole });
       expect(isVisible(menu)).toBe(false);
 
-      fireEvent.keyDown(menuButton, { keyCode: ARROW_DOWN });
+      fireEvent.keyUp(menuButton, { keyCode: ARROW_DOWN });
       const firstDown = getElements({ getAllByRole });
       const firstMenuItem = firstDown.menuItems[0];
       expect(firstMenuItem).toHaveFocus();
 
-      fireEvent.keyDown(firstMenuItem, { keyCode: ARROW_DOWN });
+      fireEvent.keyUp(firstMenuItem, { keyCode: ARROW_DOWN });
       const secondDown = getElements({ getAllByRole });
       const secondMenuItem = secondDown.menuItems[1];
       expect(secondMenuItem).toHaveFocus();
 
-      fireEvent.keyDown(secondMenuItem, { keyCode: ARROW_DOWN });
+      fireEvent.keyUp(secondMenuItem, { keyCode: ARROW_DOWN });
       const thirdDown = getElements({ getAllByRole });
       const thirdMenuItem = thirdDown.menuItems[2];
       expect(thirdMenuItem).toHaveFocus();
 
-      fireEvent.keyDown(thirdMenuItem, { keyCode: ARROW_DOWN });
+      fireEvent.keyUp(thirdMenuItem, { keyCode: ARROW_DOWN });
       const forthDown = getElements({ getAllByRole });
       const firstMenuItemAgain = forthDown.menuItems[0];
       expect(firstMenuItemAgain).toHaveFocus();
@@ -293,22 +302,22 @@ describe('OverflowMenu', () => {
       const { menu, menuButton } = getElements({ getAllByRole });
       expect(isVisible(menu)).toBe(false);
 
-      fireEvent.keyDown(menuButton, { keyCode: ARROW_UP });
+      fireEvent.keyUp(menuButton, { keyCode: ARROW_UP });
       const firstUp = getElements({ getAllByRole });
       const thirdMenuItem = firstUp.menuItems[2];
       expect(thirdMenuItem).toHaveFocus();
 
-      fireEvent.keyDown(thirdMenuItem, { keyCode: ARROW_UP });
+      fireEvent.keyUp(thirdMenuItem, { keyCode: ARROW_UP });
       const secondUp = getElements({ getAllByRole });
       const secondMenuItem = secondUp.menuItems[1];
       expect(secondMenuItem).toHaveFocus();
 
-      fireEvent.keyDown(secondMenuItem, { keyCode: ARROW_UP });
+      fireEvent.keyUp(secondMenuItem, { keyCode: ARROW_UP });
       const thirdUp = getElements({ getAllByRole });
       const firstMenuItem = thirdUp.menuItems[0];
       expect(firstMenuItem).toHaveFocus();
 
-      fireEvent.keyDown(firstMenuItem, { keyCode: ARROW_UP });
+      fireEvent.keyUp(firstMenuItem, { keyCode: ARROW_UP });
       const forthUp = getElements({ getAllByRole });
       const lastMenuItemAgain = forthUp.menuItems[2];
       expect(lastMenuItemAgain).toHaveFocus();
@@ -324,17 +333,17 @@ describe('OverflowMenu', () => {
       const { menu, menuButton } = getElements({ getAllByRole });
 
       // Open menu
-      fireEvent.keyDown(menuButton, { keyCode: ENTER });
+      fireEvent.keyUp(menuButton, { keyCode: ENTER });
       const firstDown = getElements({ getAllByRole });
       const firstMenuItem = firstDown.menuItems[0];
 
       // Navigate down one item
-      fireEvent.keyDown(firstMenuItem, { keyCode: ARROW_DOWN });
+      fireEvent.keyUp(firstMenuItem, { keyCode: ARROW_DOWN });
       const secondDown = getElements({ getAllByRole });
       const secondMenuItem = secondDown.menuItems[1];
 
       // Action the item
-      fireEvent.keyDown(secondMenuItem, { keyCode: ENTER });
+      fireEvent.keyUp(secondMenuItem, { keyCode: ENTER });
 
       expect(isVisible(menu)).toBe(false);
       expect(closeHandler).toHaveBeenCalledTimes(1);

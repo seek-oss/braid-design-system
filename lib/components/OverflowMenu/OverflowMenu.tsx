@@ -1,36 +1,33 @@
 import React, {
-  useState,
   ReactElement,
   KeyboardEvent,
   createContext,
   Children,
   useRef,
+  useReducer,
+  useEffect,
 } from 'react';
 import classnames from 'classnames';
 import { useStyles } from 'sku/treat';
 import { Box } from '../Box/Box';
 import { normalizeKey } from '../private/normalizeKey';
 import { OverflowButton } from '../iconButtons/OverflowButton/OverflowButton';
+import { getNextIndex } from '../private/getNextIndex';
 import { Overlay } from '../private/Overlay/Overlay';
 import { OverflowMenuItemProps } from '../OverflowMenuItem/OverflowMenuItem';
+import { actionTypes, Action } from './OverflowMenu.actions';
 import * as styleRefs from './OverflowMenu.treat';
 
 interface OverflowMenuContextValues {
   isHighlighted: boolean;
-  keyboardNavigationHandler: (event: KeyboardEvent<HTMLButtonElement>) => void;
-  mouseNavigationHandler: () => void;
-  closeMenu: () => void;
+  index: number;
+  dispatch: (action: Action) => void;
+  focusTrigger: () => void;
 }
-const noop = () => {
-  /* noop */
-};
 
-export const OverflowMenuContext = createContext<OverflowMenuContextValues>({
-  isHighlighted: false,
-  keyboardNavigationHandler: noop,
-  mouseNavigationHandler: noop,
-  closeMenu: noop,
-});
+export const OverflowMenuContext = createContext<OverflowMenuContextValues | null>(
+  null,
+);
 
 interface OverflowMenuProps {
   onOpen?: () => void;
@@ -41,7 +38,36 @@ interface OverflowMenuProps {
     | ReactElement<OverflowMenuItemProps>;
 }
 
+const {
+  MENU_TRIGGER_UP,
+  MENU_ITEM_UP,
+  MENU_TRIGGER_DOWN,
+  MENU_ITEM_DOWN,
+  MENU_ITEM_ESCAPE,
+  MENU_ITEM_TAB,
+  MENU_ITEM_ENTER,
+  MENU_ITEM_SPACE,
+  MENU_ITEM_CLICK,
+  MENU_ITEM_HOVER,
+  MENU_TRIGGER_ENTER,
+  MENU_TRIGGER_SPACE,
+  MENU_TRIGGER_CLICK,
+  MENU_TRIGGER_TAB,
+  MENU_TRIGGER_ESCAPE,
+  BACKDROP_CLICK,
+  MENU_MOUSE_LEAVE,
+} = actionTypes;
+
+interface State {
+  open: boolean;
+  highlightIndex: number;
+}
+
 const CLOSED_INDEX = -1;
+const initialState: State = {
+  open: false,
+  highlightIndex: CLOSED_INDEX,
+};
 export const OverflowMenu = ({
   onOpen,
   onClose,
@@ -49,99 +75,139 @@ export const OverflowMenu = ({
   children,
 }: OverflowMenuProps) => {
   const styles = useStyles(styleRefs);
-  const [openState, setOpenState] = useState(false);
-  const [highlightIndex, setHighlightIndex] = useState(CLOSED_INDEX);
   const buttonRef = useRef<HTMLButtonElement>(null);
+  const hasOpened = useRef<boolean>(false);
   const items = Children.toArray(children);
 
-  const open = ({ highlightFirst }: { highlightFirst: boolean }) => {
-    if (!openState) {
-      setOpenState(true);
-
-      if (highlightFirst) {
-        setHighlightIndex(0);
+  const [{ open, highlightIndex }, dispatch] = useReducer(
+    (state: State, action: Action): State => {
+      switch (action.type) {
+        case MENU_TRIGGER_UP:
+        case MENU_ITEM_UP: {
+          return {
+            ...state,
+            open: true,
+            highlightIndex: getNextIndex(
+              -1,
+              state.highlightIndex,
+              items.length,
+            ),
+          };
+        }
+        case MENU_TRIGGER_DOWN:
+        case MENU_ITEM_DOWN: {
+          return {
+            ...state,
+            open: true,
+            highlightIndex: getNextIndex(1, state.highlightIndex, items.length),
+          };
+        }
+        case BACKDROP_CLICK:
+        case MENU_TRIGGER_ESCAPE:
+        case MENU_TRIGGER_TAB:
+        case MENU_ITEM_ESCAPE:
+        case MENU_ITEM_TAB:
+        case MENU_ITEM_ENTER:
+        case MENU_ITEM_SPACE:
+        case MENU_ITEM_CLICK: {
+          return { ...state, open: false, highlightIndex: CLOSED_INDEX };
+        }
+        case MENU_ITEM_HOVER: {
+          return { ...state, highlightIndex: action.value };
+        }
+        case MENU_TRIGGER_ENTER:
+        case MENU_TRIGGER_SPACE: {
+          return {
+            ...state,
+            open: !state.open,
+            highlightIndex: state.open ? CLOSED_INDEX : 0,
+          };
+        }
+        case MENU_MOUSE_LEAVE: {
+          return {
+            ...state,
+            highlightIndex: CLOSED_INDEX,
+          };
+        }
+        case MENU_TRIGGER_CLICK: {
+          return { ...state, open: !state.open };
+        }
+        default:
+          return state;
       }
+    },
+    initialState,
+  );
+
+  useEffect(() => {
+    if (open) {
+      hasOpened.current = true;
 
       if (typeof onOpen === 'function') {
         onOpen();
       }
+    } else {
+      if (typeof onClose === 'function' && hasOpened.current) {
+        onClose();
+      }
+    }
+  }, [open]);
+
+  const focusTrigger = () => {
+    if (buttonRef && buttonRef.current) {
+      buttonRef.current.focus();
     }
   };
 
-  const close = () => {
-    if (openState) {
-      setOpenState(false);
-      setHighlightIndex(CLOSED_INDEX);
+  const onTriggerKeyUp = (event: KeyboardEvent<HTMLButtonElement>) => {
+    const targetKey = normalizeKey(event);
 
-      if (buttonRef && buttonRef.current) {
-        buttonRef.current.focus();
-      }
+    // Space key in keyup/keydown handler in Firefox triggers a click event.
+    // This means the menu never opens, by returning early for Firefox the
+    // menu is opened by firing the click handler. Only trade off is the
+    // first menu item is not highlighted automatically, but considering
+    // space keyboard interactions are optional this is acceptable.
+    //   See Firefox bug details: https://bugzilla.mozilla.org/show_bug.cgi?id=1220143
+    //   See WAI-ARIA keyboard iteractions: https://www.w3.org/TR/wai-aria-practices-1.1/#keyboard-interaction-12
+    //
+    // Firefox useragent check taken from the `bowser` package:
+    // https://github.com/lancedikson/bowser/blob/ea8d9c54271d7b52fecd507ae8b1ba495842bc68/src/parser-browsers.js#L520
+    if (
+      targetKey === ' ' &&
+      /firefox|iceweasel|fxios/i.test(navigator.userAgent)
+    ) {
+      return;
+    }
 
-      if (typeof onClose === 'function') {
-        onClose();
-      }
+    const action: Record<string, Action> = {
+      ArrowDown: { type: MENU_TRIGGER_DOWN },
+      ArrowUp: { type: MENU_TRIGGER_UP },
+      Enter: { type: MENU_TRIGGER_ENTER },
+      ' ': { type: MENU_TRIGGER_SPACE },
+      Escape: { type: MENU_TRIGGER_ESCAPE },
+    };
+
+    if (action[targetKey]) {
+      dispatch(action[targetKey]);
     }
   };
 
   const onTriggerKeyDown = (event: KeyboardEvent<HTMLButtonElement>) => {
     const targetKey = normalizeKey(event);
 
-    const openMenuKeys = ['ArrowDown', 'ArrowUp', ' ', 'Enter'];
-
-    if (openMenuKeys.indexOf(targetKey) > -1) {
-      if (targetKey === 'ArrowUp') {
-        // Open and highlight last
-        setHighlightIndex(items.length - 1);
-        open({
-          highlightFirst: false,
-        });
-      } else {
-        // Open and highlight first
-        open({
-          highlightFirst: true,
-        });
-      }
-
-      // Prevents the double trigger of `Enter` firing onKeyDown
-      // and subsequently triggering the `onClick` handler.
-      event.preventDefault();
+    if (targetKey === 'Tab') {
+      dispatch({ type: MENU_ITEM_TAB });
     }
 
-    if (targetKey === 'Escape') {
-      close();
-    }
-  };
+    // Prevent arrow keys scrolling the document while navigating the menu
+    const isArrowPress = targetKey.indexOf('Arrow') === 0;
+    // Prevent enter or space press from triggering the click handler
+    const isActionKeyPress = targetKey === 'Enter' || targetKey === ' ';
 
-  const down = () => {
-    const isLast = highlightIndex === items.length - 1;
-    setHighlightIndex(isLast ? 0 : highlightIndex + 1);
-  };
-
-  const up = () => {
-    const isFirst = highlightIndex === 0;
-    setHighlightIndex(isFirst ? items.length - 1 : highlightIndex - 1);
-  };
-
-  const keyboardNavigationHandler = (
-    event: KeyboardEvent<HTMLButtonElement>,
-  ) => {
-    const targetKey = normalizeKey(event);
-
-    const actions: Record<string, () => void> = {
-      ArrowDown: down,
-      ArrowUp: up,
-      Escape: close,
-      Tab: close,
-    };
-
-    if (actions[targetKey]) {
-      actions[targetKey]();
-      // Stops arrow keys scrolling the document when navigating the list
+    if (isArrowPress || isActionKeyPress) {
       event.preventDefault();
     }
   };
-
-  const mouseOutOfMenuHandler = () => setHighlightIndex(CLOSED_INDEX);
 
   return (
     <Box className={styles.root}>
@@ -150,26 +216,28 @@ export const OverflowMenu = ({
           <OverflowButton
             label={label}
             aria-haspopup="true"
-            aria-expanded={openState}
-            active={openState}
+            aria-expanded={open}
+            active={open}
             ref={buttonRef}
+            onKeyUp={onTriggerKeyUp}
             onKeyDown={onTriggerKeyDown}
-            onClick={() => {
-              openState ? close() : open({ highlightFirst: false });
-            }}
+            onClick={() => dispatch({ type: MENU_TRIGGER_CLICK })}
           />
         </Box>
 
         <Box
           role="menu"
           position="absolute"
-          onMouseLeave={mouseOutOfMenuHandler}
+          onMouseLeave={() => {
+            dispatch({ type: MENU_MOUSE_LEAVE });
+            focusTrigger();
+          }}
           boxShadow="medium"
           borderRadius="standard"
           background="card"
           marginTop="small"
           transition="fast"
-          className={classnames(styles.menu, !openState && styles.menuIsClosed)}
+          className={classnames(styles.menu, !open && styles.menuIsClosed)}
         >
           <Box paddingY="xxsmall">
             {items.map((item, index) => (
@@ -177,9 +245,9 @@ export const OverflowMenu = ({
                 key={index}
                 value={{
                   isHighlighted: index === highlightIndex,
-                  keyboardNavigationHandler,
-                  mouseNavigationHandler: () => setHighlightIndex(index),
-                  closeMenu: close,
+                  index,
+                  dispatch,
+                  focusTrigger,
                 }}
               >
                 {item}
@@ -194,8 +262,12 @@ export const OverflowMenu = ({
         </Box>
       </Box>
 
-      {openState ? (
-        <Box onClick={close} position="fixed" className={styles.backdrop} />
+      {open ? (
+        <Box
+          onClick={() => dispatch({ type: BACKDROP_CLICK })}
+          position="fixed"
+          className={styles.backdrop}
+        />
       ) : null}
     </Box>
   );
