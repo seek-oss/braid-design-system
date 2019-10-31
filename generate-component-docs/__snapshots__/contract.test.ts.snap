@@ -496,6 +496,7 @@ exports[`Box 1`] = `
   default?: boolean
   defaultChecked?: boolean
   defaultValue?: 
+    | number
     | string
     | string[]
   defer?: boolean
@@ -538,7 +539,15 @@ exports[`Box 1`] = `
   httpEquiv?: string
   id?: string
   inlist?: any
-  inputMode?: string
+  inputMode?: 
+    | "decimal"
+    | "email"
+    | "none"
+    | "numeric"
+    | "search"
+    | "tel"
+    | "text"
+    | "url"
   integrity?: string
   is?: string
   itemID?: string
@@ -2724,6 +2733,7 @@ exports[`TextLink 1`] = `
   default?: boolean
   defaultChecked?: boolean
   defaultValue?: 
+    | number
     | string
     | string[]
   defer?: boolean
@@ -2753,7 +2763,15 @@ exports[`TextLink 1`] = `
   httpEquiv?: string
   id?: string
   inlist?: any
-  inputMode?: string
+  inputMode?: 
+    | "decimal"
+    | "email"
+    | "none"
+    | "numeric"
+    | "search"
+    | "tel"
+    | "text"
+    | "url"
   integrity?: string
   is?: string
   itemID?: string
