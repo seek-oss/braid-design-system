@@ -10416,6 +10416,11 @@ lru-queue@0.1:
   dependencies:
     es5-ext "~0.10.2"
 
+lz-string@^1.4.4:
+  version "1.4.4"
+  resolved "https://registry.yarnpkg.com/lz-string/-/lz-string-1.4.4.tgz#c0d8eaf36059f705796e1e344811cf4c498d3a26"
+  integrity sha1-wNjq82BZ9wV5bh40SBHPTEmNOiY=
+
 macos-release@^2.2.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/macos-release/-/macos-release-2.3.0.tgz#eb1930b036c0800adebccd5f17bc4c12de8bb71f"
@@ -12328,10 +12333,10 @@ pkginfo@0.x.x:
   resolved "https://registry.yarnpkg.com/pkginfo/-/pkginfo-0.4.1.tgz#b5418ef0439de5425fc4995042dced14fb2a84ff"
   integrity sha1-tUGO8EOd5UJfxJlQQtztFPsqhP8=
 
-playroom@^0.9.4:
-  version "0.9.4"
-  resolved "https://registry.yarnpkg.com/playroom/-/playroom-0.9.4.tgz#d2853895e38368976e29ec44c08a3b7699fd5597"
-  integrity sha512-/QsW+QI5uCm9z7IKnOBSYmQDJYFA8wOL7nakDjL/hQ+Glpb6kFr6pnZTxvVUQWv3gxwR3I6i5tuq5HAST83o5A==
+playroom@^0.10.1:
+  version "0.10.1"
+  resolved "https://registry.yarnpkg.com/playroom/-/playroom-0.10.1.tgz#66bf0d4c8985241ef7a78d28b12236574cf917f7"
+  integrity sha512-cpD/eOkQ6hzslCrxjpXIkjO5avITyARwc4AFZDWoIUHRhRFxEM4+VPTiZh9R144mhpzpaCIZQQzZH8PcOpWYkw==
   dependencies:
     "@babel/core" "^7.1.0"
     "@babel/preset-env" "^7.2.0"
@@ -12354,6 +12359,7 @@ playroom@^0.9.4:
     less-loader "^4.1.0"
     localforage "^1.7.2"
     lodash "^4.17.15"
+    lz-string "^1.4.4"
     mini-css-extract-plugin "^0.4.3"
     opn "^5.4.0"
     parse-prop-types "^0.3.0"
@@ -14712,10 +14718,10 @@ sisteransi@^1.0.3:
   resolved "https://registry.yarnpkg.com/sisteransi/-/sisteransi-1.0.3.tgz#98168d62b79e3a5e758e27ae63c4a053d748f4eb"
   integrity sha512-SbEG75TzH8G7eVXFSN5f9EExILKfly7SUvVY5DhhYLvfhKqhDFY0OzevWa/zwak0RLRfWS5AvfMWpd9gJvr5Yg==
 
-sku@8.14.3:
-  version "8.14.3"
-  resolved "https://registry.yarnpkg.com/sku/-/sku-8.14.3.tgz#0512eda6d7d4c2c171c30674955f765eb201991a"
-  integrity sha512-Fe/kuycJOC3yu83Rr0WLqKI5MNbvHQNbnLz9IFI1nAr/q+hWH6/S3eMWNDk2hgsmhSjj6+p0T0nkBOtKjXauWA==
+sku@8.14.4:
+  version "8.14.4"
+  resolved "https://registry.yarnpkg.com/sku/-/sku-8.14.4.tgz#04c20aa347badab1bf97bf896c95a1acb6cfe674"
+  integrity sha512-ivUvCjY4wDIMsze0i+yRwbGW0kDyKN02LdxcnF3KNM5QPX1gHGAT240h9V6D3yb1vYhLA3H5sOUuZrj0LSGvfg==
   dependencies:
     "@babel/core" "^7.5.5"
     "@babel/plugin-proposal-class-properties" "^7.5.5"
@@ -14794,7 +14800,7 @@ sku@8.14.3:
     node-emoji "^1.10.0"
     open "^6.4.0"
     path-to-regexp "^3.1.0"
-    playroom "^0.9.4"
+    playroom "^0.10.1"
     postcss-js "^2.0.2"
     postcss-loader "^3.0.0"
     prettier "1.18.2"
