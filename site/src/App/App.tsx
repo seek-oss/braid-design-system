@@ -1,7 +1,7 @@
 // Import all themes up front so CSS overrides work
 import * as themes from '../../../lib/themes';
-import React from 'react';
-import { withRouter, Route } from 'react-router';
+import React, { StrictMode } from 'react';
+import { Route } from 'react-router';
 import { CSSTransition } from 'react-transition-group';
 
 import '../../../lib/reset';
@@ -20,7 +20,7 @@ const routes = [
   },
 ];
 
-export const App = withRouter(() => (
+export const App = () => (
   <BraidProvider theme={themes.wireframe}>
     <div>
       {routes.map(({ path, exact, Component }) => (
@@ -32,13 +32,15 @@ export const App = withRouter(() => (
               classNames={{ ...styles }}
               unmountOnExit
             >
-              <Box position="absolute" className={styles.transitionContainer}>
-                <Component />
-              </Box>
+              <StrictMode>
+                <Box position="absolute" className={styles.transitionContainer}>
+                  <Component />
+                </Box>
+              </StrictMode>
             </CSSTransition>
           )}
         </Route>
       ))}
     </div>
   </BraidProvider>
-));
+);

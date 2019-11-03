@@ -7,6 +7,7 @@ export { IconDate } from './IconDate/IconDate';
 export { IconInfo } from './IconInfo/IconInfo';
 export { IconLocation } from './IconLocation/IconLocation';
 export { IconMoney } from './IconMoney/IconMoney';
+export { IconOverflow } from './IconOverflow/IconOverflow';
 export { IconPositive } from './IconPositive/IconPositive';
 export { IconSearch } from './IconSearch/IconSearch';
 export { IconSocialFacebook } from './IconSocialFacebook/IconSocialFacebook';

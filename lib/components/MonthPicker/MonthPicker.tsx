@@ -31,6 +31,7 @@ interface MonthPickerProps
     | 'autoComplete'
     | 'secondaryMessage'
     | 'onClear'
+    | 'autoFocus'
   > {
   value: MonthPickerValue;
   onChange: ChangeHandler;

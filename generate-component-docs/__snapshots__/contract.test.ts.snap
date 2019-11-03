@@ -23,6 +23,7 @@ exports[`Alert 1`] = `
 exports[`Autosuggest 1`] = `
 {
   aria-describedby?: string
+  autoFocus?: boolean
   automaticSelection?: boolean
   data?: Record<string, ReactText>
   description?: ReactNode
@@ -486,6 +487,7 @@ exports[`Box 1`] = `
   default?: boolean
   defaultChecked?: boolean
   defaultValue?: 
+    | number
     | string
     | string[]
   defer?: boolean
@@ -528,7 +530,15 @@ exports[`Box 1`] = `
   httpEquiv?: string
   id?: string
   inlist?: any
-  inputMode?: string
+  inputMode?: 
+    | "decimal"
+    | "email"
+    | "none"
+    | "numeric"
+    | "search"
+    | "tel"
+    | "text"
+    | "url"
   integrity?: string
   is?: string
   itemID?: string
@@ -1537,6 +1547,7 @@ exports[`Dropdown 1`] = `
 {
   aria-describedby?: string
   autoComplete?: string
+  autoFocus?: boolean
   children: 
     | AllHTMLAttributes<HTMLOptGroupElement | HTMLOptionElement>
     | AllHTMLAttributes<HTMLOptGroupElement | HTMLOptionElement>[]
@@ -1976,6 +1987,25 @@ exports[`IconMoney 1`] = `
 }
 `;
 
+exports[`IconOverflow 1`] = `
+{
+  size?: 
+    | "fill"
+    | "large"
+    | "small"
+    | "standard"
+    | "xsmall"
+  tone?: 
+    | "critical"
+    | "formAccent"
+    | "info"
+    | "link"
+    | "neutral"
+    | "positive"
+    | "secondary"
+}
+`;
+
 exports[`IconPositive 1`] = `
 {
   size?: 
@@ -2112,6 +2142,27 @@ exports[`MonthPicker 1`] = `
     month?: number
     year?: number
   }
+}
+`;
+
+exports[`OverflowMenu 1`] = `
+{
+  children: 
+    | ReactElement<OverflowMenuItemProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>
+    | ReactElement<OverflowMenuItemProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>[]
+  label: string
+  onClose?: () => void
+  onOpen?: () => void
+}
+`;
+
+exports[`OverflowMenuItem 1`] = `
+{
+  children: ReactNode
+  onClick?: () => void
+  type?: 
+    | "button"
+    | "link"
 }
 `;
 
@@ -2377,6 +2428,7 @@ exports[`TextField 1`] = `
 {
   aria-describedby?: string
   autoComplete?: string
+  autoFocus?: boolean
   data?: Record<string, ReactText>
   description?: ReactNode
   disabled?: boolean
@@ -2618,6 +2670,7 @@ exports[`TextLink 1`] = `
   default?: boolean
   defaultChecked?: boolean
   defaultValue?: 
+    | number
     | string
     | string[]
   defer?: boolean
@@ -2647,7 +2700,15 @@ exports[`TextLink 1`] = `
   httpEquiv?: string
   id?: string
   inlist?: any
-  inputMode?: string
+  inputMode?: 
+    | "decimal"
+    | "email"
+    | "none"
+    | "numeric"
+    | "search"
+    | "tel"
+    | "text"
+    | "url"
   integrity?: string
   is?: string
   itemID?: string
@@ -2917,6 +2978,7 @@ exports[`Textarea 1`] = `
 {
   aria-describedby?: string
   autoComplete?: string
+  autoFocus?: boolean
   characterLimit?: number
   data?: Record<string, ReactText>
   description?: ReactNode

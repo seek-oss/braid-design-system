@@ -42,9 +42,15 @@ export interface FieldProps {
   'aria-describedby'?: FormElementProps['aria-describedby'];
   data?: DataAttributeMap;
   onClear?: () => void;
+  autoFocus?: boolean;
 }
 
-type PassthroughProps = 'id' | 'name' | 'disabled' | 'autoComplete';
+type PassthroughProps =
+  | 'id'
+  | 'name'
+  | 'disabled'
+  | 'autoComplete'
+  | 'autoFocus';
 interface FieldRenderProps extends Pick<FieldProps, PassthroughProps> {
   background: BoxProps['background'];
   boxShadow: BoxProps['boxShadow'];
@@ -87,6 +93,7 @@ export const Field = forwardRef<FieldRef, InternalFieldProps>(
       'aria-describedby': ariaDescribedBy,
       data,
       onClear,
+      autoFocus,
     },
     forwardedRef,
   ) => {
@@ -134,7 +141,11 @@ export const Field = forwardRef<FieldRef, InternalFieldProps>(
           ],
         )}
       >
-        <ClearButton onMouseDown={clearHandler} keyboardAccessible={false} />
+        <ClearButton
+          label="Clear"
+          onMouseDown={clearHandler}
+          keyboardAccessible={false}
+        />
       </Box>
     ) : null;
 
@@ -171,6 +182,7 @@ export const Field = forwardRef<FieldRef, InternalFieldProps>(
                 }),
                 disabled,
                 autoComplete,
+                autoFocus,
                 ...buildDataAttributes(data),
                 className: classnames(
                   styles.field,

@@ -1,8 +1,8 @@
 import React, { forwardRef } from 'react';
 import { IconButton, IconButtonProps } from '../IconButton';
-import { IconClear } from '../..';
+import { IconOverflow } from '../..';
 
-export type ClearButtonProps = Pick<
+export type OverflowButtonProps = Pick<
   IconButtonProps,
   | 'onClick'
   | 'onMouseDown'
@@ -15,7 +15,10 @@ export type ClearButtonProps = Pick<
   | 'aria-expanded'
 >;
 
-export const ClearButton = forwardRef<HTMLButtonElement, ClearButtonProps>(
+export const OverflowButton = forwardRef<
+  HTMLButtonElement,
+  OverflowButtonProps
+>(
   (
     {
       label,
@@ -43,7 +46,7 @@ export const ClearButton = forwardRef<HTMLButtonElement, ClearButtonProps>(
         aria-expanded={ariaExpanded}
         ref={forwardedRef}
       >
-        {iconProps => <IconClear {...iconProps} />}
+        {iconProps => <IconOverflow {...iconProps} />}
       </IconButton>
     );
   },

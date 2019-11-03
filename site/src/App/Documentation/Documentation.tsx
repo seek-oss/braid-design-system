@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { withRouter, Route, RouteComponentProps } from 'react-router';
 import map from 'lodash/map';
 import guides from '../guides';
+import { Route, useLocation } from 'react-router-dom';
 import * as components from '../../../../lib/components';
 import { Logo } from '../Logo/Logo';
 import { ComponentRoute } from './ComponentRoute';
@@ -12,7 +12,8 @@ import { ConfigConsumer } from '../ConfigContext';
 
 const { Text, Box, Hidden, Stack } = components;
 
-export const Documentation = withRouter(({ location }: RouteComponentProps) => {
+export const Documentation = () => {
+  const location = useLocation();
   const [isMenuOpen, setMenuOpen] = useState(
     !/^\/(guides|components|icons)\/(.*)/.test(location.pathname),
   );
@@ -180,4 +181,4 @@ export const Documentation = withRouter(({ location }: RouteComponentProps) => {
       )}
     </ConfigConsumer>
   );
-});
+};
