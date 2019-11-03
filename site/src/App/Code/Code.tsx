@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { useStyles } from 'react-treat';
 import copy from 'copy-to-clipboard';
-import base64url from 'base64-url';
+import { createUrl } from 'sku/playroom/utils';
 import classnames from 'classnames';
 import { useConfig } from '../ConfigContext';
 import { Box, Text } from '../../../../lib/components';
@@ -97,7 +97,7 @@ export default ({ children }: CodeProps) => {
             <CodeButton
               component="a"
               target="_blank"
-              href={`${playroomUrl}#?code=${base64url.encode(children)}`}
+              href={createUrl({ baseUrl: playroomUrl, code: children })}
               style={{ textDecoration: 'none' }}
               title="Open in Playroom"
             >
