@@ -67,7 +67,7 @@
     "gradient-parser": "^0.1.5",
     "is-mobile": "^2.0.1",
     "isolated-scroll": "^0.1.0",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.15",
     "polished": "^3.0.3",
     "utility-types": "^3.7.0"
   },
