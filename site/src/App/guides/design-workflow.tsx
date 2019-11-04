@@ -8,52 +8,51 @@ import {
 } from '../../../../lib/components';
 import { TextStack } from '../TextStack/TextStack';
 import { useConfig } from '../ConfigContext';
-import { Page } from '../../types.d';
+import { Page } from '../../types';
 
 const page: Page = {
-  title: 'Workflow',
+  title: 'Design Workflow',
   Component: () => {
     const { playroomUrl } = useConfig();
 
     return (
       <TextStack>
-        <Heading level="2">Workflow</Heading>
+        <Heading level="2">Design Workflow</Heading>
         <Text tone="secondary">
           This guide is presented as a series of questions that you might
           reasonably ask as you make your way through a typical product design
           and development workflow.
         </Text>
-        <Heading level="3">How do I design with Braid?</Heading>
+        <Heading level="3">How do I get started with a new design?</Heading>
         <Text>
-          Early on in your design process, you're likely to reach for something
-          relatively low fidelity like Sketch, Figma, Axure... even pencil and
-          paper. Exploring concepts with minimal overhead is an important first
-          step in the design process.
+          All design tools are still at your disposal. Paper and pencil, Sketch,
+          Axure, Keynote... whatever you like! Iterate quickly. Don’t feel like
+          you beed to get overly hung up on Braid early in the design process.
         </Text>
+        <Heading level="3">
+          How do I leverage Braid in my design process?
+        </Heading>
         <Text>
-          However, the longer your design process spends away from code, the
-          higher the risk that you'll create something that's non-standard
-          and/or costly to implement. Design systems like Braid aim to solve
-          this problem by enabling you to design directly in the final medium
-          rather than constantly (and expensively!) translating from one medium
-          to another.
+          The primary goal of design systems like Braid is to enable you to
+          design directly in the final medium, rather than constantly (and
+          expensively!) translating from one medium to another.
         </Text>
         <Text>
           Traditional design tools are still important, but they should be
           viewed as a means of quickly generating concepts that feed into the
-          code prototyping phase. We need to start thinking of code needs as
-          part of the design process itself, not something we write once all
-          design work is finished. Designers and developers should ideally work
-          closer together, abd much earlier in that process than we typically
-          have in the past.
+          code prototyping phase. We need to start thinking of code as part of
+          the design process itself, not something we write once all design work
+          is finished. Designers and developers should ideally work closer
+          together, and much earlier in the process than we typically have in
+          the past.
         </Text>
         <Text>
-          To help empower this workflow, we offer a{' '}
-          <TextLink href={playroomUrl}>Playroom</TextLink> tool for rapidly
+          To help empower this workflow, we provide{' '}
+          <TextLink href={playroomUrl}>Playroom</TextLink> as a tool for rapidly
           prototyping with Braid directly. You have access to the entire suite
           of Braid components, along with an instant preview of what your
           interface will look like across a variety of screen sizes and brands.
-          Obviously, there's a slight learning curve to this, but we think it's
+          There's obviously a slight learning curve to this, but we think it's
           well worth the investment.
         </Text>
         <Text>
