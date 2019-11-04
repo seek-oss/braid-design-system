@@ -1,4 +1,5 @@
 import { TreatTokens } from './makeTreatTheme';
+import values from 'lodash/values';
 
 const makeWebFonts = (tokens: TreatTokens) => {
   const name = tokens.typography.webFont;
@@ -7,7 +8,7 @@ const makeWebFonts = (tokens: TreatTokens) => {
     return [];
   }
 
-  const weights = Object.values(tokens.typography.fontWeight);
+  const weights = values(tokens.typography.fontWeight);
   const linkTag = `<link href="https://fonts.googleapis.com/css?family=${name}:${weights
     .sort()
     .join(',')}" rel="stylesheet" />`;
