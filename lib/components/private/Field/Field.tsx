@@ -10,7 +10,7 @@ import React, {
 import { useStyles } from 'sku/react-treat';
 import classnames from 'classnames';
 import { Box, BoxProps } from '../../Box/Box';
-import { BackgroundProvider } from '../../Box/BackgroundContext';
+import { BackgroundProvider, useBackground } from '../../Box/BackgroundContext';
 import { FieldLabel, FieldLabelProps } from '../../FieldLabel/FieldLabel';
 import {
   FieldMessage,
@@ -105,7 +105,9 @@ export const Field = forwardRef<FieldRef, InternalFieldProps>(
     const ref = forwardedRef || defaultRef;
 
     const messageId = `${id}-message`;
-    const background = disabled ? 'inputDisabled' : 'input';
+    const fieldBackground = disabled ? 'inputDisabled' : 'input';
+    const fieldBoxShadow: BoxProps['boxShadow'] =
+      useBackground() === 'brand' ? 'borderStandardInverted' : 'borderStandard';
 
     const clearHandler = useCallback(() => {
       if (typeof onClear !== 'function') {
@@ -163,17 +165,17 @@ export const Field = forwardRef<FieldRef, InternalFieldProps>(
         ) : null}
 
         <Box position="relative">
-          <BackgroundProvider value={background}>
+          <BackgroundProvider value={fieldBackground}>
             {children(
               overlays,
               {
                 id,
                 name,
-                background,
+                background: fieldBackground,
                 boxShadow:
                   tone === 'critical' && !disabled
                     ? 'borderCritical'
-                    : 'borderStandard',
+                    : fieldBoxShadow,
                 width: 'full',
                 paddingX: 'small',
                 borderRadius: 'standard',
@@ -187,7 +189,7 @@ export const Field = forwardRef<FieldRef, InternalFieldProps>(
                 className: classnames(
                   styles.field,
                   useText({
-                    backgroundContext: background,
+                    backgroundContext: fieldBackground,
                     size: 'standard',
                     baseline: false,
                   }),
