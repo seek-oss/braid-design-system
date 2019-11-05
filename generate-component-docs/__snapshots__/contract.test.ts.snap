@@ -28,6 +28,7 @@ exports[`Autosuggest 1`] = `
   data?: Record<string, ReactText>
   description?: ReactNode
   disabled?: boolean
+  icon?: ReactNode
   id: string
   label?: ReactNode
   message?: ReactNode
@@ -1558,6 +1559,7 @@ exports[`Dropdown 1`] = `
   data?: Record<string, ReactText>
   description?: ReactNode
   disabled?: boolean
+  icon?: ReactNode
   id: string
   label?: ReactNode
   message?: ReactNode
@@ -2436,6 +2438,7 @@ exports[`TextField 1`] = `
   data?: Record<string, ReactText>
   description?: ReactNode
   disabled?: boolean
+  icon?: ReactNode
   id: string
   label?: ReactNode
   message?: ReactNode

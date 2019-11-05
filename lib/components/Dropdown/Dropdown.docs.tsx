@@ -2,6 +2,7 @@ import React, { ReactNode } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import { Dropdown } from './Dropdown';
 import { Box } from '../Box/Box';
+import { IconLocation } from '../icons';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <div style={{ maxWidth: '300px' }}>{children}</div>
@@ -44,6 +45,25 @@ const docs: ComponentDocs = {
           <option value="3020">Wonthaggi</option>
         </Dropdown>
       ),
+    },
+    {
+      label: 'Dropdown with icon',
+      Container,
+      Example: ({ id, handler }) => {
+        return (
+          <Dropdown
+            label="Location"
+            id={id}
+            icon={<IconLocation />}
+            placeholder="Please select a location"
+            value=""
+            onChange={handler}
+          >
+            <option value="3004">Melbourne</option>
+            <option value="3002">Sydney</option>
+          </Dropdown>
+        );
+      },
     },
     {
       label: 'Dropdown without placeholder',
