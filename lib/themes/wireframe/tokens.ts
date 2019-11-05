@@ -149,6 +149,7 @@ const tokens: TreatTokens = {
     },
     color: {
       standard: '#777',
+      standardInverted: white,
       focus,
       critical,
       formAccent,

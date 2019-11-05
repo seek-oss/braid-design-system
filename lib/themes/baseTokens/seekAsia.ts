@@ -174,6 +174,7 @@ export const makeTokens = ({
       },
       color: {
         standard: grey4,
+        standardInverted: white,
         focus,
         critical,
         formAccent,

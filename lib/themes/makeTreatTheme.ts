@@ -73,6 +73,7 @@ export interface TreatTokens {
     };
     color: {
       standard: string;
+      standardInverted: string;
       focus: string;
       critical: string;
       formAccent: string;

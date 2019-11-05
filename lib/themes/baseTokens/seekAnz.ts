@@ -17,6 +17,7 @@ export const makeTokens = ({
   formAccent,
   tokenOverrides = {},
 }: MakeTokensOptions): TreatTokens => {
+  const white = '#fff';
   const focus = rgba('#1e90ff', 0.7);
   const positive = '#169400';
   const critical = '#e60278';
@@ -164,6 +165,7 @@ export const makeTokens = ({
       },
       color: {
         standard: '#d6d6d6',
+        standardInverted: white,
         focus,
         critical,
         formAccent,
@@ -182,7 +184,7 @@ export const makeTokens = ({
         link,
         linkHover: link,
         neutral: black,
-        neutralInverted: 'white',
+        neutralInverted: white,
         formAccent,
         critical,
         info,
@@ -191,13 +193,13 @@ export const makeTokens = ({
       },
       background: {
         brand,
-        input: '#fff',
+        input: white,
         inputDisabled: '#eee',
         brandAccent,
         formAccent,
         formAccentDisabled: '#ccc',
         selection: '#f1f7ff',
-        card: '#fff',
+        card: white,
         critical,
         info,
         positive,
