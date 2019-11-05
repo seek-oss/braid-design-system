@@ -17,8 +17,8 @@ import { Strong } from '../Strong/Strong';
 import { Field, FieldProps } from '../private/Field/Field';
 import { ClearButton } from '../iconButtons/ClearButton/ClearButton';
 import { useTouchableSpace, useText } from '../../hooks/typography';
-import { getNextIndex } from '../private/getNextIndex';
-import { normalizeKey } from '../private/normalizeKey';
+import { getNextIndex } from './getNextIndex';
+import { normalizeArrowKey } from './normalizeArrowKey';
 import { smoothScroll } from './smoothScroll';
 import { useScrollIntoView } from './useScrollIntoView';
 import { useIsolatedScroll } from './useIsolatedScroll';
@@ -55,7 +55,7 @@ const INPUT_ESCAPE = 7;
 const INPUT_ENTER = 8;
 const SUGGESTION_MOUSE_CLICK = 9;
 const SUGGESTION_MOUSE_ENTER = 10;
-const UPDATE_HIGHLIGHTED_INDEX = 11;
+const HAS_SUGGESTIONS_CHANGED = 11;
 
 type Action =
   | { type: typeof INPUT_FOCUS }
@@ -69,7 +69,7 @@ type Action =
   | { type: typeof INPUT_ENTER }
   | { type: typeof SUGGESTION_MOUSE_CLICK }
   | { type: typeof SUGGESTION_MOUSE_ENTER; value: number }
-  | { type: typeof UPDATE_HIGHLIGHTED_INDEX };
+  | { type: typeof HAS_SUGGESTIONS_CHANGED };
 
 interface AutosuggestState<Value> {
   highlightedIndex: number | null;
@@ -365,11 +365,13 @@ export function Autosuggest<Value>({
         };
       }
 
-      case UPDATE_HIGHLIGHTED_INDEX: {
-        return {
-          ...state,
-          highlightedIndex: hasSuggestions && automaticSelection ? 0 : null,
-        };
+      case HAS_SUGGESTIONS_CHANGED: {
+        return automaticSelection
+          ? {
+              ...state,
+              highlightedIndex: hasSuggestions ? 0 : null,
+            }
+          : state;
       }
     }
 
@@ -394,7 +396,9 @@ export function Autosuggest<Value>({
   useIsolatedScroll(menuRef.current);
 
   useEffect(() => {
-    dispatch({ type: UPDATE_HIGHLIGHTED_INDEX });
+    dispatch({
+      type: HAS_SUGGESTIONS_CHANGED,
+    });
   }, [hasSuggestions]);
 
   const inputProps = {
@@ -441,7 +445,7 @@ export function Autosuggest<Value>({
       onBlur();
     },
     onKeyDown: (event: KeyboardEvent) => {
-      const targetKey = normalizeKey(event);
+      const targetKey = normalizeArrowKey(event);
 
       // Fix bug in Chrome + VoiceOver where the
       // input is blurred when pressing arrow up/down
