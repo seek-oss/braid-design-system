@@ -86,7 +86,7 @@ export const makeTokens = ({
               rows: 9,
             },
             desktop: {
-              size: 48,
+              size: 42,
               rows: 15,
             },
           },
