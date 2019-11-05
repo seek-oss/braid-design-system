@@ -219,6 +219,9 @@ export const boxShadow = styleMap(
     borderStandard: {
       boxShadow: `inset 0 0 0 ${borderWidth.standard}px ${color.standard}`,
     },
+    borderStandardInverted: {
+      boxShadow: `inset 0 0 0 ${borderWidth.standard}px ${color.standardInverted}`,
+    },
     borderCritical: {
       boxShadow: `inset 0 0 0 ${borderWidth.standard}px ${color.critical}`,
     },
@@ -227,6 +230,9 @@ export const boxShadow = styleMap(
     },
     borderFormAccentLarge: {
       boxShadow: `inset 0 0 0 ${borderWidth.large}px ${color.formAccent}`,
+    },
+    borderStandardInvertedLarge: {
+      boxShadow: `inset 0 0 0 ${borderWidth.large}px ${color.standardInverted}`,
     },
   }),
 );

@@ -199,6 +199,7 @@ export const makeTokens = ({
       },
       color: {
         standard: palette.saGrayLight,
+        standardInverted: white,
         focus,
         critical,
         formAccent,

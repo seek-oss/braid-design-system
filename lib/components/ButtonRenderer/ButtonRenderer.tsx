@@ -10,35 +10,63 @@ import React, {
 import classnames from 'classnames';
 import { useStyles } from 'sku/treat';
 import { useBoxStyles, UseBoxStylesProps } from '../Box/useBoxStyles';
-import { BackgroundProvider } from '../Box/BackgroundContext';
+import { BackgroundProvider, useBackground } from '../Box/BackgroundContext';
 import { Box } from '../Box/Box';
-import { Text } from '../Text/Text';
+import { Text, TextProps } from '../Text/Text';
 import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
 import { useTouchableSpace } from '../../hooks/typography';
 import * as styleRefs from './ButtonRenderer.treat';
 
 type ButtonWeight = 'weak' | 'regular' | 'strong';
-type ButtonState = 'base' | 'hover' | 'active';
-
-const backgroundVariants: Record<
-  ButtonState,
-  Record<ButtonWeight, UseBoxStylesProps['background'] | undefined>
+type ButtonVariant = 'strong' | 'regular' | 'weak' | 'weakInverted';
+const buttonVariants: Record<
+  ButtonVariant,
+  {
+    textTone: TextProps['tone'];
+    background: UseBoxStylesProps['background'];
+    backgroundHover: UseBoxStylesProps['background'];
+    backgroundActive: UseBoxStylesProps['background'];
+    boxShadow: UseBoxStylesProps['boxShadow'];
+  }
 > = {
-  base: {
-    weak: undefined,
-    regular: 'formAccent',
-    strong: 'brandAccent',
+  strong: {
+    textTone: undefined,
+    background: 'brandAccent',
+    backgroundHover: 'brandAccentHover',
+    backgroundActive: 'brandAccentActive',
+    boxShadow: undefined,
   },
-  hover: {
-    weak: 'formAccentHover',
-    regular: 'formAccentHover',
-    strong: 'brandAccentHover',
+  regular: {
+    textTone: undefined,
+    background: 'formAccent',
+    backgroundHover: 'formAccentHover',
+    backgroundActive: 'formAccentActive',
+    boxShadow: undefined,
   },
-  active: {
-    weak: 'formAccentActive',
-    regular: 'formAccentActive',
-    strong: 'brandAccentActive',
+  weak: {
+    textTone: 'formAccent',
+    background: undefined,
+    backgroundHover: 'formAccentHover',
+    backgroundActive: 'formAccentActive',
+    boxShadow: 'borderFormAccentLarge',
   },
+  weakInverted: {
+    textTone: undefined,
+    background: undefined,
+    backgroundHover: 'formAccentHover',
+    backgroundActive: 'formAccentActive',
+    boxShadow: 'borderStandardInvertedLarge',
+  },
+};
+
+const getButtonVariant = (
+  weight: ButtonWeight,
+  background: UseBoxStylesProps['background'] | null,
+) => {
+  const variantName =
+    weight === 'weak' && background === 'brand' ? 'weakInverted' : weight;
+
+  return buttonVariants[variantName];
 };
 
 const ButtonChildrenContext = createContext<{
@@ -53,6 +81,7 @@ interface ButtonChildrenProps {
 const ButtonChildren = ({ children }: ButtonChildrenProps) => {
   const styles = useStyles(styleRefs);
   const { weight, loading } = useContext(ButtonChildrenContext);
+  const buttonVariant = getButtonVariant(weight, useBackground());
 
   return (
     <Fragment>
@@ -61,11 +90,11 @@ const ButtonChildren = ({ children }: ButtonChildrenProps) => {
         className={classnames(styles.focusOverlay)}
       />
       <FieldOverlay
-        background={backgroundVariants.hover[weight]}
+        background={buttonVariant.backgroundHover}
         className={classnames(styles.hoverOverlay)}
       />
       <FieldOverlay
-        background={backgroundVariants.active[weight]}
+        background={buttonVariant.backgroundActive}
         className={classnames(styles.activeOverlay)}
       />
       <Box
@@ -74,11 +103,7 @@ const ButtonChildren = ({ children }: ButtonChildrenProps) => {
         pointerEvents="none"
         className={classnames(styles.content, useTouchableSpace('standard'))}
       >
-        <Text
-          baseline={false}
-          weight="medium"
-          tone={weight === 'weak' ? 'formAccent' : undefined}
-        >
+        <Text baseline={false} weight="medium" tone={buttonVariant.textTone}>
           {children}
           {loading ? (
             <Box
@@ -135,7 +160,7 @@ export const ButtonRenderer = ({
 }: ButtonRendererProps) => {
   const styles = useStyles(styleRefs);
   const isWeak = weight === 'weak';
-  const background = backgroundVariants.base[weight];
+  const { background, boxShadow } = getButtonVariant(weight, useBackground());
 
   const buttonStyles = classnames(
     styles.root,
@@ -147,7 +172,7 @@ export const ButtonRenderer = ({
       position: 'relative',
       display: 'block',
       borderRadius: 'standard',
-      boxShadow: isWeak ? 'borderFormAccentLarge' : undefined,
+      boxShadow,
       background,
       transform: 'touchable',
       transition: 'touchable',
@@ -164,11 +189,15 @@ export const ButtonRenderer = ({
     className: buttonStyles,
   };
 
-  return (
-    <BackgroundProvider value={background}>
-      <ButtonChildrenContext.Provider value={buttonChildrenContextValue}>
-        {children(ButtonChildren, buttonProps)}
-      </ButtonChildrenContext.Provider>
-    </BackgroundProvider>
+  const button = (
+    <ButtonChildrenContext.Provider value={buttonChildrenContextValue}>
+      {children(ButtonChildren, buttonProps)}
+    </ButtonChildrenContext.Provider>
+  );
+
+  return background ? (
+    <BackgroundProvider value={background}>{button}</BackgroundProvider>
+  ) : (
+    button
   );
 };
