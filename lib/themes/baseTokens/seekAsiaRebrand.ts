@@ -86,7 +86,7 @@ export const makeTokens = ({
               rows: 9,
             },
             desktop: {
-              size: 48,
+              size: 42,
               rows: 15,
             },
           },
@@ -199,6 +199,7 @@ export const makeTokens = ({
       },
       color: {
         standard: palette.saGrayLight,
+        standardInverted: white,
         focus,
         critical,
         formAccent,
