@@ -6,6 +6,7 @@ import React, {
   ChangeEvent,
   MouseEvent,
   KeyboardEvent,
+  useEffect,
 } from 'react';
 import classnames from 'classnames';
 import { useStyles } from 'sku/react-treat';
@@ -54,6 +55,7 @@ const INPUT_ESCAPE = 7;
 const INPUT_ENTER = 8;
 const SUGGESTION_MOUSE_CLICK = 9;
 const SUGGESTION_MOUSE_ENTER = 10;
+const UPDATE_HIGHLIGHTED_INDEX = 11;
 
 type Action =
   | { type: typeof INPUT_FOCUS }
@@ -66,7 +68,8 @@ type Action =
   | { type: typeof INPUT_ESCAPE }
   | { type: typeof INPUT_ENTER }
   | { type: typeof SUGGESTION_MOUSE_CLICK }
-  | { type: typeof SUGGESTION_MOUSE_ENTER; value: number };
+  | { type: typeof SUGGESTION_MOUSE_ENTER; value: number }
+  | { type: typeof UPDATE_HIGHLIGHTED_INDEX };
 
 interface AutosuggestState<Value> {
   highlightedIndex: number | null;
@@ -361,6 +364,13 @@ export function Autosuggest<Value>({
           highlightedIndex: null,
         };
       }
+
+      case UPDATE_HIGHLIGHTED_INDEX: {
+        return {
+          ...state,
+          highlightedIndex: hasSuggestions && automaticSelection ? 0 : null,
+        };
+      }
     }
 
     return state;
@@ -382,6 +392,10 @@ export function Autosuggest<Value>({
 
   useScrollIntoView(highlightedItem, menuRef.current);
   useIsolatedScroll(menuRef.current);
+
+  useEffect(() => {
+    dispatch({ type: UPDATE_HIGHLIGHTED_INDEX });
+  }, [hasSuggestions]);
 
   const inputProps = {
     value: previewValue ? previewValue.text : value.text,
