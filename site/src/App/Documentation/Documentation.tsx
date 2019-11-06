@@ -147,11 +147,7 @@ export const Documentation = () => {
                 </Box>
               </Box>
             </Hidden>
-            <Box
-              paddingX="gutter"
-              paddingBottom="xlarge"
-              className={styles.content}
-            >
+            <Box paddingX="gutter" className={styles.content}>
               {map(guides, ({ Component }, path) => (
                 <Route key={path} path={path} component={Component} />
               ))}
