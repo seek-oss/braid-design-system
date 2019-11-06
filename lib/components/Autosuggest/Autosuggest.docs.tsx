@@ -3,6 +3,7 @@ import { ComponentDocs } from '../../../site/src/types';
 import { Autosuggest } from './Autosuggest';
 import matchHighlights from 'autosuggest-highlight/match';
 import { Box } from '../Box/Box';
+import { IconSearch } from '../icons';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <div style={{ maxWidth: '300px' }}>{children}</div>
@@ -119,6 +120,28 @@ const docs: ComponentDocs = {
                 ),
               },
             ]}
+          />
+        );
+      },
+    },
+    {
+      label: 'Standard suggestions with an icon',
+      Container,
+      Example: ({ id }) => {
+        const [value, setValue] = useState<Value>({ text: '' });
+
+        return (
+          <Autosuggest
+            label="I like to eat"
+            id={id}
+            value={value}
+            icon={<IconSearch />}
+            onChange={setValue}
+            onClear={() => setValue({ text: '' })}
+            suggestions={makeSuggestions(
+              ['Apples', 'Bananas', 'Broccoli', 'Carrots'],
+              value.text,
+            )}
           />
         );
       },

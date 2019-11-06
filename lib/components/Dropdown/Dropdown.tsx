@@ -13,6 +13,7 @@ import { Field, FieldProps } from '../private/Field/Field';
 import { IconChevron } from '../icons';
 import { useTextTone } from '../../hooks/typography';
 import * as styleRefs from './Dropdown.treat';
+import { Text } from '../Text/Text';
 
 type ValidDropdownChildren = AllHTMLAttributes<
   HTMLOptionElement | HTMLOptGroupElement
@@ -68,8 +69,15 @@ const NamedDropdown = forwardRef<HTMLSelectElement, DropdownProps>(
         labelId={undefined}
         secondaryMessage={null}
       >
-        {(overlays, { className, paddingX, ...fieldProps }, fieldRef) => (
+        {(
+          overlays,
+          { className, paddingX, ...fieldProps },
+          fieldRef,
+          _,
+          icon,
+        ) => (
           <Fragment>
+            {icon}
             <Box
               component="select"
               paddingLeft={paddingX}
@@ -94,16 +102,18 @@ const NamedDropdown = forwardRef<HTMLSelectElement, DropdownProps>(
             </Box>
             {overlays}
             <Box
-              paddingX={paddingX}
               position="absolute"
               display="flex"
               alignItems="center"
+              justifyContent="center"
               pointerEvents="none"
               height="touchable"
               width="touchable"
               className={styles.chevron}
             >
-              <IconChevron size="fill" />
+              <Text baseline={false}>
+                <IconChevron />
+              </Text>
             </Box>
           </Fragment>
         )}

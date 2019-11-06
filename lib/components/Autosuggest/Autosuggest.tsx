@@ -550,6 +550,7 @@ export function Autosuggest<Value>({
               },
               fieldRef,
               cancelButton,
+              icon,
             ) => (
               <Box {...a11y.rootProps}>
                 <Box
@@ -562,12 +563,10 @@ export function Autosuggest<Value>({
                   {...inputProps}
                   type="text"
                   position="relative"
-                  className={classnames(
-                    className,
-                    isOpen ? styles.zIndexInput : null,
-                  )}
+                  className={className}
                   ref={fieldRef}
                 />
+                {icon}
                 <Box
                   component="ul"
                   display={isOpen && hasSuggestions ? 'block' : 'none'}
@@ -621,13 +620,7 @@ export function Autosuggest<Value>({
                 </Box>
                 {overlays}
                 {cancelButton ? (
-                  <Box
-                    position="absolute"
-                    className={classnames(
-                      styles.cancelButton,
-                      isOpen ? styles.zIndexInput : undefined,
-                    )}
-                  >
+                  <Box position="absolute" className={styles.cancelButton}>
                     {cancelButton}
                   </Box>
                 ) : null}

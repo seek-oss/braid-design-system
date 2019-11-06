@@ -21,6 +21,7 @@ import { Stack } from '../../Stack/Stack';
 import { ClearButton } from '../../iconButtons/ClearButton/ClearButton';
 import buildDataAttributes, { DataAttributeMap } from '../buildDataAttributes';
 import { useText, useTouchableSpace } from '../../../hooks/typography';
+import { Text } from '../../Text/Text';
 import * as styleRefs from './Field.treat';
 
 type FormElementProps = AllHTMLAttributes<HTMLFormElement>;
@@ -43,6 +44,7 @@ export interface FieldProps {
   data?: DataAttributeMap;
   onClear?: () => void;
   autoFocus?: boolean;
+  icon?: ReactNode;
 }
 
 type PassthroughProps =
@@ -69,6 +71,7 @@ interface InternalFieldProps extends FieldProps {
     props: FieldRenderProps,
     ref: Ref<FieldRef>,
     cancelButton: ReactNode,
+    icon: ReactNode,
   ): ReactNode;
 }
 
@@ -94,6 +97,7 @@ export const Field = forwardRef<FieldRef, InternalFieldProps>(
       data,
       onClear,
       autoFocus,
+      icon,
     },
     forwardedRef,
   ) => {
@@ -194,11 +198,26 @@ export const Field = forwardRef<FieldRef, InternalFieldProps>(
                     baseline: false,
                   }),
                   useTouchableSpace('standard'),
-                  onClear ? styles.clearButtonSpace : null,
+                  clearButtonVisible ? styles.clearButtonSpace : null,
+                  icon ? styles.iconSpace : null,
                 ),
               },
               ref,
               clearButton,
+              icon ? (
+                <Box
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="center"
+                  position="absolute"
+                  height="touchable"
+                  width="touchable"
+                  pointerEvents="none"
+                  className={styles.icon}
+                >
+                  <Text baseline={false}>{icon}</Text>
+                </Box>
+              ) : null,
             )}
           </BackgroundProvider>
         </Box>

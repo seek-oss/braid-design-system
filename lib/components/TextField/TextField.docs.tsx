@@ -3,6 +3,7 @@ import { ComponentDocs } from '../../../site/src/types';
 import { TextField } from './TextField';
 import { TextLink } from '../TextLink/TextLink';
 import { Box } from '../Box/Box';
+import { IconSearch } from '../icons';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <div style={{ maxWidth: '300px' }}>{children}</div>
@@ -48,6 +49,24 @@ const docs: ComponentDocs = {
             id={id}
             onChange={e => setValue(e.currentTarget.value)}
             onClear={() => setValue('')}
+            value={value}
+          />
+        );
+      },
+    },
+    {
+      label: 'TextField with icon',
+      Container,
+      Example: ({ id }) => {
+        const [value, setValue] = useState('');
+
+        return (
+          <TextField
+            label="Job Title"
+            id={id}
+            icon={<IconSearch />}
+            placeholder="Enter a job title"
+            onChange={e => setValue(e.currentTarget.value)}
             value={value}
           />
         );
