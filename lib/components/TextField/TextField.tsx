@@ -44,8 +44,9 @@ const NamedTextField = forwardRef<HTMLInputElement, TextFieldProps>(
       labelId={undefined}
       secondaryMessage={null}
     >
-      {(overlays, fieldProps, fieldRef, cancelButton) => (
+      {(overlays, fieldProps, fieldRef, cancelButton, icon) => (
         <Fragment>
+          {icon}
           <Box
             component="input"
             type={validTypes[type]}
