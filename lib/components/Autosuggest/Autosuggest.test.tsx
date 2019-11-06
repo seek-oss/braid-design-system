@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom/extend-expect';
-import React, { useState } from 'react';
-import { render, cleanup, fireEvent } from '@testing-library/react';
+import React, { useState, Dispatch } from 'react';
+import { render, act, cleanup, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { BraidProvider, Autosuggest } from '..';
 import { wireframe } from '../../themes';
@@ -10,7 +10,7 @@ afterEach(cleanup);
 
 function renderAutosuggest<Value>({
   value: initialValue,
-  suggestions,
+  suggestions: suggestionsProp,
   automaticSelection,
   onFocus,
   onBlur,
@@ -18,9 +18,17 @@ function renderAutosuggest<Value>({
   AutosuggestProps<Value>,
   'value' | 'suggestions' | 'automaticSelection' | 'onFocus' | 'onBlur'
 >) {
+  type Suggestions = typeof suggestionsProp;
   const changeHandler = jest.fn();
+
+  let suggestions: Suggestions = [];
+  let setSuggestions: Dispatch<Suggestions> = () => {
+    /* */
+  };
+
   const TestCase = () => {
     const [value, setValue] = useState(initialValue);
+    [suggestions, setSuggestions] = useState(suggestionsProp);
 
     return (
       <BraidProvider theme={wireframe}>
@@ -50,6 +58,7 @@ function renderAutosuggest<Value>({
     changeHandler,
     queryByLabelText,
     queryByText,
+    setSuggestions: (x: Suggestions) => act(() => setSuggestions(x)),
   };
 }
 
@@ -522,6 +531,47 @@ describe('Autosuggest', () => {
       await userEvent.type(input, 'a');
       expect(changeHandler).toHaveBeenNthCalledWith(1, { text: 'a' });
       changeHandler.mockClear();
+
+      fireEvent.keyDown(input, { key: 'Enter' });
+      expect(getInputValue()).toBe('Apples');
+      expect(changeHandler).toHaveBeenNthCalledWith(1, {
+        text: 'Apples',
+        value: 'apples',
+      });
+    });
+
+    it('should select the first suggestion on enter after typing something when the suggestions are async', async () => {
+      const {
+        input,
+        changeHandler,
+        getInputValue,
+        setSuggestions,
+      } = renderAutosuggest({
+        automaticSelection: true,
+        value: { text: '' },
+        suggestions: [],
+      });
+      userEvent.click(input);
+      expect(getInputValue()).toBe('');
+
+      await userEvent.type(input, 'a');
+      expect(changeHandler).toHaveBeenNthCalledWith(1, { text: 'a' });
+      changeHandler.mockClear();
+
+      // Simulate suggestions coming back from an API
+      await new Promise(resolve => {
+        setTimeout(() => {
+          setSuggestions([
+            {
+              text: 'Apples',
+              value: 'apples',
+              highlights: [{ start: 0, end: 4 }],
+            },
+          ]);
+
+          resolve();
+        }, 100);
+      });
 
       fireEvent.keyDown(input, { key: 'Enter' });
       expect(getInputValue()).toBe('Apples');
