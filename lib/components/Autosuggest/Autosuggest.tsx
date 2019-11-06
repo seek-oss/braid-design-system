@@ -17,8 +17,8 @@ import { Strong } from '../Strong/Strong';
 import { Field, FieldProps } from '../private/Field/Field';
 import { ClearButton } from '../iconButtons/ClearButton/ClearButton';
 import { useTouchableSpace, useText } from '../../hooks/typography';
-import { getNextIndex } from './getNextIndex';
-import { normalizeArrowKey } from './normalizeArrowKey';
+import { getNextIndex } from '../private/getNextIndex';
+import { normalizeKey } from '../private/normalizeKey';
 import { smoothScroll } from './smoothScroll';
 import { useScrollIntoView } from './useScrollIntoView';
 import { useIsolatedScroll } from './useIsolatedScroll';
@@ -445,7 +445,7 @@ export function Autosuggest<Value>({
       onBlur();
     },
     onKeyDown: (event: KeyboardEvent) => {
-      const targetKey = normalizeArrowKey(event);
+      const targetKey = normalizeKey(event);
 
       // Fix bug in Chrome + VoiceOver where the
       // input is blurred when pressing arrow up/down
