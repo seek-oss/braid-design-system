@@ -221,7 +221,10 @@ export const OverflowMenu = ({
             ref={buttonRef}
             onKeyUp={onTriggerKeyUp}
             onKeyDown={onTriggerKeyDown}
-            onClick={() => dispatch({ type: MENU_TRIGGER_CLICK })}
+            onClick={event => {
+              event.stopPropagation();
+              dispatch({ type: MENU_TRIGGER_CLICK });
+            }}
           />
         </Box>
 
@@ -264,7 +267,10 @@ export const OverflowMenu = ({
 
       {open ? (
         <Box
-          onClick={() => dispatch({ type: BACKDROP_CLICK })}
+          onClick={event => {
+            event.stopPropagation();
+            dispatch({ type: BACKDROP_CLICK });
+          }}
           position="fixed"
           className={styles.backdrop}
         />
