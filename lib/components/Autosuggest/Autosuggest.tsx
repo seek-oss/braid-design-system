@@ -302,7 +302,10 @@ export function Autosuggest<Value>({
           ...state,
           isOpen: true,
           previewValue: null,
-          highlightedIndex: hasSuggestions && automaticSelection ? 0 : null,
+          highlightedIndex:
+            hasSuggestions && automaticSelection && value.text.length > 0
+              ? 0
+              : null,
         };
       }
 
@@ -369,7 +372,8 @@ export function Autosuggest<Value>({
         return automaticSelection
           ? {
               ...state,
-              highlightedIndex: hasSuggestions ? 0 : null,
+              highlightedIndex:
+                hasSuggestions && value.text.length > 0 ? 0 : null,
             }
           : state;
       }
