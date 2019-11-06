@@ -21,7 +21,8 @@ export const makeTokens = ({
   const focus = rgba('#1e90ff', 0.7);
   const positive = '#169400';
   const critical = '#e60278';
-  const info = '#9556b7';
+  const info = '#1e468c';
+  const promote = '#9556b7';
   const neutral = '#747474';
   const black = '#1c1c1c';
   const link = '#2765cf';
@@ -188,6 +189,7 @@ export const makeTokens = ({
         formAccent,
         critical,
         info,
+        promote,
         positive,
         secondary,
       },
@@ -202,6 +204,7 @@ export const makeTokens = ({
         card: white,
         critical,
         info,
+        promote,
         positive,
         neutral,
       },

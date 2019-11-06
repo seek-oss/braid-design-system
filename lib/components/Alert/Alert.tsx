@@ -2,10 +2,10 @@ import React, { ReactNode } from 'react';
 import { useStyles } from 'sku/react-treat';
 import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';
-import { IconInfo, IconCritical, IconPositive } from '../icons';
+import { IconInfo, IconCritical, IconPositive, IconPromote } from '../icons';
 import * as styleRefs from './Alert.treat';
 
-type Tone = 'info' | 'critical' | 'positive';
+type Tone = 'info' | 'critical' | 'positive' | 'promote';
 type AlertWeight = 'strong' | 'regular';
 
 export interface AlertProps {
@@ -31,12 +31,17 @@ const backgroundForTone = (tone: Tone, weight: AlertWeight) => {
   if (tone === 'info') {
     return 'infoLight';
   }
+
+  if (tone === 'promote') {
+    return 'promoteLight';
+  }
 };
 
 const icons = {
   info: IconInfo,
   critical: IconCritical,
   positive: IconPositive,
+  promote: IconPromote,
 };
 
 export const Alert = ({

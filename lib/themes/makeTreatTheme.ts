@@ -93,6 +93,7 @@ export interface TreatTokens {
       formAccent: string;
       critical: string;
       info: string;
+      promote: string;
       positive: string;
       secondary: string;
     };
@@ -105,6 +106,7 @@ export interface TreatTokens {
       formAccentDisabled: string;
       selection: string;
       info: string;
+      promote: string;
       card: string;
       critical: string;
       positive: string;

@@ -7,49 +7,61 @@ const docs: ComponentDocs = {
   examples: [
     {
       label: 'Info Badge',
-      Example: () => <Badge tone="info">Featured</Badge>,
+      Example: () => <Badge tone="info">Info</Badge>,
     },
     {
       label: 'Strong Info Badge',
       Example: () => (
         <Badge tone="info" weight="strong">
-          Featured
+          Info
         </Badge>
       ),
     },
     {
       label: 'Critical Badge',
-      Example: () => <Badge tone="critical">Overdue</Badge>,
+      Example: () => <Badge tone="critical">Critical</Badge>,
     },
     {
       label: 'Strong Critical Badge',
       Example: () => (
         <Badge tone="critical" weight="strong">
-          Overdue
+          Critical
         </Badge>
       ),
     },
     {
       label: 'Positive Badge',
-      Example: () => <Badge tone="positive">New</Badge>,
+      Example: () => <Badge tone="positive">Positive</Badge>,
     },
     {
       label: 'Strong Positive Badge',
       Example: () => (
         <Badge tone="positive" weight="strong">
-          New
+          Positive
+        </Badge>
+      ),
+    },
+    {
+      label: 'Promote Badge',
+      Example: () => <Badge tone="promote">Promote</Badge>,
+    },
+    {
+      label: 'Strong Promote Badge',
+      Example: () => (
+        <Badge tone="promote" weight="strong">
+          Promote
         </Badge>
       ),
     },
     {
       label: 'Neutral Badge',
-      Example: () => <Badge tone="neutral">Expired</Badge>,
+      Example: () => <Badge tone="neutral">Neutral</Badge>,
     },
     {
       label: 'Strong Neutral Badge',
       Example: () => (
         <Badge tone="neutral" weight="strong">
-          Expired
+          Neutral
         </Badge>
       ),
     },

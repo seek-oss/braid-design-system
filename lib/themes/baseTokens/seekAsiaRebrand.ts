@@ -30,7 +30,7 @@ const palette = {
   critical: '#d30b41',
   notice: '#ffc842',
   positive: '#028616',
-  neutral: '#989ba2',
+  neutral: '#5e5f66',
   // Desired `info` colour is `#4799d3`, however white text is in-accessible on this.
   // The closest colour that meets a contrast ratio of 4.51 is `#2B7CB6`.
   info: '#2b7cb6',
@@ -50,6 +50,7 @@ export const makeTokens = ({
   const critical = palette.critical;
   const positive = palette.positive;
   const info = palette.info;
+  const promote = palette.promote;
   const neutral = palette.neutral;
   const white = palette.saWhite;
   const formAccent = palette.formAccent;
@@ -222,6 +223,7 @@ export const makeTokens = ({
         formAccent,
         critical,
         info,
+        promote,
         positive,
         secondary,
       },
@@ -236,6 +238,7 @@ export const makeTokens = ({
         card: white,
         critical,
         info,
+        promote,
         positive,
         neutral,
       },
