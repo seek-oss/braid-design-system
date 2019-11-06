@@ -72,7 +72,7 @@ export const makeTokens = ({
       fontWeight: {
         regular: 400,
         medium: 600,
-        strong: 900,
+        strong: 800,
       },
       heading: {
         weight: {
