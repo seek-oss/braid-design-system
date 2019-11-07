@@ -2,6 +2,7 @@
 import fs from 'fs';
 import path from 'path';
 import ts from 'typescript';
+import isEqual from 'lodash/isEqual';
 
 const aliasWhitelist = ['ResponsiveProp'];
 const propBlacklist = ['key'];
@@ -9,20 +10,22 @@ const propBlacklist = ['key'];
 const tsconfigPath = path.join(__dirname, '../tsconfig.json');
 const componentsFile = path.join(__dirname, '../lib/components/index.ts');
 
-const reactNodeType =
-  'string | number | boolean | {} | ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)> | ReactNodeArray | ReactPortal';
-
-const columnType =
-  'ReactElement<ColumnProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>';
-
 const stringAliases: Record<string, string> = {
-  [reactNodeType]: 'ReactNode',
   // with an explicit alias 'boolean' becomes a union of 'true' | 'false'
   boolean: 'boolean',
   CSSProperties: 'CSSProperties',
-  [columnType]: 'Column',
-  [`${columnType}[]`]: 'Column[]',
 };
+
+const reactNodeTypes = [
+  'string',
+  'number',
+  'false',
+  'true',
+  '{}',
+  'ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>',
+  'ReactNodeArray',
+  'ReactPortal',
+];
 
 export interface NormalisedInterface {
   type: 'interface';
@@ -161,10 +164,13 @@ export default () => {
     }
 
     if (type.isUnion()) {
-      return {
-        type: 'union',
-        types: type.types.map(unionItem => normaliseType(unionItem, propsObj)),
-      };
+      const types = type.types.map(unionItem =>
+        checker.typeToString(unionItem),
+      );
+
+      return isEqual(types, reactNodeTypes)
+        ? 'ReactNode'
+        : { type: 'union', types };
     }
 
     if (type.isClassOrInterface()) {
