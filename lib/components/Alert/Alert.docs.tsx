@@ -20,6 +20,20 @@ const docs: ComponentDocs = {
       ),
     },
     {
+      label: 'Promote Alert',
+      Example: () => (
+        <Alert tone="promote">This is a promoted piece of information.</Alert>
+      ),
+    },
+    {
+      label: 'Strong Promote Alert',
+      Example: () => (
+        <Alert weight="strong" tone="promote">
+          This is a promoted piece of information.
+        </Alert>
+      ),
+    },
+    {
       label: 'Critical Alert',
       Example: () => (
         <Alert tone="critical">This is a critical piece of information.</Alert>

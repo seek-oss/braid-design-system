@@ -4,6 +4,7 @@ const formAccent = '#404040';
 const critical = 'red';
 const positive = 'green';
 const info = 'navy';
+const promote = 'purple';
 const brandAccent = 'black';
 const focus = 'DeepSkyBlue';
 const black = '#2b2b2b';
@@ -172,6 +173,7 @@ const tokens: TreatTokens = {
       formAccent,
       critical,
       info,
+      promote,
       positive,
       secondary,
     },
@@ -186,6 +188,7 @@ const tokens: TreatTokens = {
       card: white,
       critical,
       info,
+      promote,
       positive,
       neutral,
     },
