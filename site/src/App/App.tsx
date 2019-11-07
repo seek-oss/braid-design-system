@@ -7,16 +7,16 @@ import { CSSTransition } from 'react-transition-group';
 import '../../../lib/reset';
 import { BraidProvider, Box } from '../../../lib/components';
 import { Home } from './Home/Home';
-import { Components } from './Components/Components';
+import { Documentation } from './Documentation/Documentation';
 import * as styles from './App.treat';
 
 const routes = [
   { path: '/', name: 'Home', exact: true, Component: Home },
   {
-    path: '/(components|icons)',
-    name: 'Components',
+    path: '/(guides|components|icons)',
+    name: 'Documentation',
     exact: false,
-    Component: Components,
+    Component: Documentation,
   },
 ];
 

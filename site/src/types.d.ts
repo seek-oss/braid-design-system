@@ -12,6 +12,11 @@ export interface RenderContext {
   appConfig: AppConfig;
 }
 
+export interface Page {
+  title: string;
+  Component: ComponentType;
+}
+
 export interface ComponentDocs {
   migrationGuide?: boolean;
   storybook?: boolean;
