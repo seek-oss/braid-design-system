@@ -68,6 +68,7 @@ export const content = style({
     },
     [desktop]: {
       paddingLeft: `${desktopMenuWidth} !important`,
+      paddingBottom: 100,
     },
   },
 });

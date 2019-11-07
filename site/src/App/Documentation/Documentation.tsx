@@ -1,23 +1,27 @@
 import React, { useState } from 'react';
+import map from 'lodash/map';
+import guides from '../guides';
 import { Route, useLocation } from 'react-router-dom';
 import * as components from '../../../../lib/components';
 import { Logo } from '../Logo/Logo';
 import { ComponentRoute } from './ComponentRoute';
 import { Link, ExternalLink } from './Link';
-import * as styles from './Components.treat';
+import * as styles from './Documentation.treat';
 import { MenuButton } from '../MenuButton/MenuButton';
 import { ConfigConsumer } from '../ConfigContext';
 
 const { Text, Box, Hidden, Stack } = components;
 
-export const Components = () => {
+export const Documentation = () => {
   const location = useLocation();
   const [isMenuOpen, setMenuOpen] = useState(
-    !/^\/components\/(.*)/.test(location.pathname),
+    !/^\/(guides|components|icons)\/(.*)/.test(location.pathname),
   );
 
   const isComponentsHome = location.pathname === '/components';
-  const showMenuButton = /(\/components\/).*/.test(location.pathname);
+  const showMenuButton = /(\/(guides|components|icons)\/).*/.test(
+    location.pathname,
+  );
 
   return (
     <ConfigConsumer>
@@ -79,6 +83,20 @@ export const Components = () => {
                     </Stack>
 
                     <Text size="large" weight="strong">
+                      Guides
+                    </Text>
+
+                    <Stack space="gutter">
+                      {map(guides, (guide, path) => (
+                        <Text key={path}>
+                          <Link to={path} onClick={() => setMenuOpen(false)}>
+                            {guide.title}
+                          </Link>
+                        </Text>
+                      ))}
+                    </Stack>
+
+                    <Text size="large" weight="strong">
                       Components
                     </Text>
 
@@ -129,11 +147,10 @@ export const Components = () => {
                 </Box>
               </Box>
             </Hidden>
-            <Box
-              paddingX="gutter"
-              paddingBottom="xlarge"
-              className={styles.content}
-            >
+            <Box paddingX="gutter" className={styles.content}>
+              {map(guides, ({ Component }, path) => (
+                <Route key={path} path={path} component={Component} />
+              ))}
               <Route
                 path="/components/:componentName"
                 render={({ match }) => (

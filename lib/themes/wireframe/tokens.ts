@@ -97,21 +97,21 @@ const tokens: TreatTokens = {
       standard: {
         mobile: {
           size: 16,
-          rows: 6,
+          rows: 7,
         },
         desktop: {
           size: 16,
-          rows: 6,
+          rows: 7,
         },
       },
       large: {
         mobile: {
           size: 18,
-          rows: 7,
+          rows: 8,
         },
         desktop: {
           size: 18,
-          rows: 7,
+          rows: 8,
         },
       },
     },
