@@ -1,7 +1,7 @@
 import designWorkflow from './design-workflow';
-import codeWorkflow from './code-workflow';
+import developmentWorkflow from './development-workflow';
 
 export default {
   '/guides/design-workflow': designWorkflow,
-  '/guides/code-workflow': codeWorkflow,
+  '/guides/development-workflow': developmentWorkflow,
 };
