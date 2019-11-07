@@ -205,6 +205,7 @@ export const background = styleMap(({ color }) => ({
   },
   brandAccentHover: { background: getHoverColor(color.background.brandAccent) },
   infoLight: { background: getLightVariant(color.background.info) },
+  promoteLight: { background: getLightVariant(color.background.promote) },
   criticalLight: { background: getLightVariant(color.background.critical) },
   positiveLight: { background: getLightVariant(color.background.positive) },
   neutralLight: { background: getLightVariant(color.background.neutral) },

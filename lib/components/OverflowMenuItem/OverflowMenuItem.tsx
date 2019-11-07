@@ -120,7 +120,8 @@ export const OverflowMenuItem = ({
       onKeyUp={onKeyUp}
       onKeyDown={onKeyDown}
       onMouseEnter={() => dispatch({ type: MENU_ITEM_HOVER, value: index })}
-      onClick={() => {
+      onClick={event => {
+        event.stopPropagation();
         dispatch({ type: MENU_ITEM_CLICK });
         clickHandler();
       }}
