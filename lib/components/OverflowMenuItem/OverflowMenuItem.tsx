@@ -122,6 +122,7 @@ export const OverflowMenuItem = ({
       onMouseEnter={() => dispatch({ type: MENU_ITEM_HOVER, value: index })}
       onClick={event => {
         event.stopPropagation();
+        event.preventDefault();
         dispatch({ type: MENU_ITEM_CLICK });
         clickHandler();
       }}
