@@ -223,6 +223,7 @@ export const OverflowMenu = ({
             onKeyDown={onTriggerKeyDown}
             onClick={event => {
               event.stopPropagation();
+              event.preventDefault();
               dispatch({ type: MENU_TRIGGER_CLICK });
             }}
           />
@@ -269,6 +270,7 @@ export const OverflowMenu = ({
         <Box
           onClick={event => {
             event.stopPropagation();
+            event.preventDefault();
             dispatch({ type: BACKDROP_CLICK });
           }}
           position="fixed"
