@@ -9,6 +9,7 @@ export { IconLocation } from './IconLocation/IconLocation';
 export { IconMoney } from './IconMoney/IconMoney';
 export { IconOverflow } from './IconOverflow/IconOverflow';
 export { IconPositive } from './IconPositive/IconPositive';
+export { IconPromote } from './IconPromote/IconPromote';
 export { IconSearch } from './IconSearch/IconSearch';
 export { IconSocialFacebook } from './IconSocialFacebook/IconSocialFacebook';
 export { IconSocialTwitter } from './IconSocialTwitter/IconSocialTwitter';

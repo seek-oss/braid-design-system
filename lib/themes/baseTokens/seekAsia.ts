@@ -27,6 +27,7 @@ export const makeTokens = ({
   const grey5 = '#eee';
   const candidate = '#0c4b85'; // SEEK Asia name for this color
   const info = candidate;
+  const promote = '#923f92';
   const positive = '#498307';
   const critical = alert;
   const focus = blue3;
@@ -197,6 +198,7 @@ export const makeTokens = ({
         formAccent,
         critical,
         info,
+        promote,
         positive,
         secondary,
       },
@@ -211,6 +213,7 @@ export const makeTokens = ({
         card: white,
         critical,
         info,
+        promote,
         positive,
         neutral,
       },

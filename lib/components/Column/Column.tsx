@@ -22,6 +22,7 @@ export const Column = ({ children, width }: ColumnProps) => {
       <Box
         paddingLeft={[collapse ? 'none' : mobileSpace, desktopSpace]}
         paddingTop={collapse ? [mobileSpace, 'none'] : undefined}
+        height="full"
         className={styles.columnContent}
       >
         {children}
