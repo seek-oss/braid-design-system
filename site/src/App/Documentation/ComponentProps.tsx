@@ -99,7 +99,9 @@ const PropList = ({
 
   return (
     <Stack space="gutter">
-      <Heading level="3">{label}</Heading>
+      <Heading level="3" component="h4">
+        {label}
+      </Heading>
       {props.map(({ propName, type }) => {
         return (
           <Stack space="xsmall" key={propName}>

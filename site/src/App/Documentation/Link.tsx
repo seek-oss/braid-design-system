@@ -15,5 +15,5 @@ export const Link = (props: ReactRouterLinkProps) => (
 interface ExternalLinkProps
   extends Omit<AllHTMLAttributes<HTMLAnchorElement>, 'style' | 'className'> {}
 export const ExternalLink = (props: ExternalLinkProps) => (
-  <TextLink {...props} />
+  <TextLink {...props} rel="noopener noreferrer" />
 );
