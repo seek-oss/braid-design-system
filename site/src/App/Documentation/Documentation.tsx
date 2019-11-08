@@ -12,6 +12,8 @@ import { ConfigConsumer } from '../ConfigContext';
 
 const { Text, Box, Hidden, Stack } = components;
 
+const responsiveGutter: ['gutter', 'large'] = ['gutter', 'large'];
+
 export const Documentation = () => {
   const location = useLocation();
   const [isMenuOpen, setMenuOpen] = useState(
@@ -29,7 +31,7 @@ export const Documentation = () => {
         <div className={isMenuOpen ? styles.isOpen : undefined}>
           <Box
             paddingY="large"
-            paddingX="gutter"
+            paddingX={responsiveGutter}
             position="absolute"
             display="flex"
             alignItems="center"
@@ -56,7 +58,7 @@ export const Documentation = () => {
           >
             <Hidden print>
               <Box position="fixed" className={styles.menu}>
-                <Box paddingBottom="xlarge" paddingX="gutter">
+                <Box paddingBottom="xlarge" paddingX={responsiveGutter}>
                   <Stack space="large">
                     <Text size="large" weight="strong">
                       Tools
@@ -147,30 +149,32 @@ export const Documentation = () => {
                 </Box>
               </Box>
             </Hidden>
-            <Box paddingX="gutter" className={styles.content}>
-              {map(guides, ({ Component }, path) => (
-                <Route key={path} path={path} component={Component} />
-              ))}
-              <Route
-                path="/components/:componentName"
-                render={({ match }) => (
-                  <ComponentRoute
-                    sourceUrlPrefix={sourceUrlPrefix}
-                    componentName={match.params.componentName}
-                    key={match.params.componentName} // Force remount per page to fix hooks errors when generating code snippets
-                  />
-                )}
-              />
-              <Route
-                path="/icons/:componentName"
-                render={({ match }) => (
-                  <ComponentRoute
-                    sourceUrlPrefix={sourceUrlPrefix}
-                    componentName={match.params.componentName}
-                    category="icons"
-                  />
-                )}
-              />
+            <Box className={styles.content}>
+              <Box paddingX={responsiveGutter}>
+                {map(guides, ({ Component }, path) => (
+                  <Route key={path} path={path} component={Component} />
+                ))}
+                <Route
+                  path="/components/:componentName"
+                  render={({ match }) => (
+                    <ComponentRoute
+                      sourceUrlPrefix={sourceUrlPrefix}
+                      componentName={match.params.componentName}
+                      key={match.params.componentName} // Force remount per page to fix hooks errors when generating code snippets
+                    />
+                  )}
+                />
+                <Route
+                  path="/icons/:componentName"
+                  render={({ match }) => (
+                    <ComponentRoute
+                      sourceUrlPrefix={sourceUrlPrefix}
+                      componentName={match.params.componentName}
+                      category="icons"
+                    />
+                  )}
+                />
+              </Box>
             </Box>
           </Box>
         </div>

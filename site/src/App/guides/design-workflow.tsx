@@ -130,7 +130,7 @@ const page: Page = {
         <Text>
           Once you’re happy with a prototype in {playroomLink}, moving it into
           your application shouldn’t require much work at all since it’s built
-          with design system itself. This is in stark contrast to the
+          with the design system itself. This is in stark contrast to the
           traditional process of manually translating from Sketch/Figma/etc.
           which is typically slow and error prone.
         </Text>

@@ -1,9 +1,9 @@
 import { globalStyle, style } from 'sku/treat';
 
-const desktopMenuWidth = '270px';
+const desktopMenuWidth = '260px';
 const headerHeight = '108px';
 
-const breakpoint = 740;
+const breakpoint = 768;
 
 const mobile = `screen and (max-width: ${breakpoint - 1}px)`;
 const desktop = `screen and (min-width: ${breakpoint}px)`;
@@ -60,6 +60,7 @@ export const menu = style({
 
 export const content = style({
   flexGrow: 1,
+  paddingBottom: 80,
   '@media': {
     [mobile]: {
       opacity: 1,
@@ -68,7 +69,6 @@ export const content = style({
     },
     [desktop]: {
       paddingLeft: `${desktopMenuWidth} !important`,
-      paddingBottom: 100,
     },
   },
 });
