@@ -51,11 +51,13 @@ export const Iconography = () => {
               <Overlay
                 boxShadow="borderStandard"
                 borderRadius="standard"
+                transition="fast"
                 className={styles.overlay}
               />
               <Overlay
                 boxShadow="medium"
                 borderRadius="standard"
+                transition="fast"
                 className={styles.overlay}
               />
             </Box>
