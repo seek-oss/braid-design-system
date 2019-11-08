@@ -31,6 +31,17 @@ const isValidComponentName = (
 
 const PropType = ({ type }: { type: NormalisedPropType }) => {
   if (typeof type === 'string') {
+    // Display child component type (e.g. Column | Column[])
+    const matches = type.match(/^ReactElement<([A-Z]{1}[a-zA-Z]+)Props/);
+    if (matches && matches.length >= 2) {
+      return (
+        <Fragment>
+          {matches[1]}
+          {/* Support arrays: */ /\[\]$/.test(type) ? '[]' : ''}
+        </Fragment>
+      );
+    }
+
     return <Fragment>{type}</Fragment>;
   }
 
