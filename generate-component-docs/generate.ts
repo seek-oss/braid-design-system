@@ -170,7 +170,12 @@ export default () => {
 
       return isEqual(types, reactNodeTypes)
         ? 'ReactNode'
-        : { type: 'union', types };
+        : {
+            type: 'union',
+            types: type.types.map(unionItem =>
+              normaliseType(unionItem, propsObj),
+            ),
+          };
     }
 
     if (type.isClassOrInterface()) {

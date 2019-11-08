@@ -1022,7 +1022,7 @@ exports[`BoxRenderer 1`] = `
     | "medium"
     | "outlineFocus"
     | "small"
-  children: (className: string) => ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)> | null
+  children: (className: string) => ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)> | null
   component: 
     | "a"
     | "abbr"
@@ -1522,8 +1522,8 @@ exports[`Column 1`] = `
 exports[`Columns 1`] = `
 {
   children: 
-    | ReactElement<ColumnProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)>
-    | ReactElement<ColumnProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)>[]
+    | ReactElement<ColumnProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>
+    | ReactElement<ColumnProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>[]
   collapse?: boolean
   reverse?: boolean
   space: ResponsiveProp<
@@ -1560,8 +1560,8 @@ exports[`Dropdown 1`] = `
   autoComplete?: string
   autoFocus?: boolean
   children: 
-    | ValidDropdownChildren
-    | ValidDropdownChildren[]
+    | AllHTMLAttributes<HTMLOptGroupElement | HTMLOptionElement>
+    | AllHTMLAttributes<HTMLOptGroupElement | HTMLOptionElement>[]
   data?: Record<string, ReactText>
   description?: ReactNode
   disabled?: boolean
@@ -2195,8 +2195,8 @@ exports[`MonthPicker 1`] = `
 exports[`OverflowMenu 1`] = `
 {
   children: 
-    | ReactElement<OverflowMenuItemProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)>
-    | ReactElement<OverflowMenuItemProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)>[]
+    | ReactElement<OverflowMenuItemProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>
+    | ReactElement<OverflowMenuItemProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>[]
   label: string
   onClose?: () => void
   onOpen?: () => void
@@ -3019,7 +3019,7 @@ exports[`TextLink 1`] = `
 
 exports[`TextLinkRenderer 1`] = `
 {
-  children: (styleProps: StyleProps) => ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)>
+  children: (styleProps: StyleProps) => ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>
 }
 `;
 
@@ -3063,7 +3063,7 @@ exports[`Textarea 1`] = `
 
 exports[`ThemeNameConsumer 1`] = `
 {
-  children: (name: string) => ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)>
+  children: (name: string) => ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>
 }
 `;
 
