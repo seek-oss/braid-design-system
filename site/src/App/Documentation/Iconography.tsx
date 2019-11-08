@@ -1,19 +1,13 @@
 import React from 'react';
 import { Link as ReactRouterLink } from 'react-router-dom';
 import { useStyles } from 'sku/treat';
+import { useBoxStyles } from '../../../../lib/components/Box/useBoxStyles';
 import { Inline, Box, Text } from '../../../../lib/components';
 import { Overlay } from '../../../../lib/components/private/Overlay/Overlay';
 import * as icons from '../../../../lib/components/icons';
 import * as styleRefs from './Iconography.treat';
-import { BoxProps } from '../../../../lib/components/Box/Box';
 
 type IconName = keyof typeof icons;
-
-const BraidLink = ({ href, children }: BoxProps) => (
-  <Box component="a" href={href}>
-    {children}
-  </Box>
-);
 
 export const Iconography = () => {
   const styles = useStyles(styleRefs);
@@ -26,9 +20,9 @@ export const Iconography = () => {
 
         return (
           <ReactRouterLink
-            component={BraidLink}
             key={icon}
             to={`/components/${icon}`}
+            className={useBoxStyles({ component: 'a' })}
           >
             <Box
               position="relative"
