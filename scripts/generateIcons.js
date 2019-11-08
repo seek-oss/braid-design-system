@@ -157,13 +157,20 @@ const iconComponentsDir = path.join(baseDir, 'lib/components/icons');
       await templateFileIfMissing(
         `${iconName}.docs.tsx`,
         dedent`
+          import React from 'react';
           import { ComponentDocs } from '../../../../site/src/types';
-          import examplesForIcon from '../../private/examplesForIcon';
           import { ${iconName} } from './${iconName}';
 
           const docs: ComponentDocs = {
             migrationGuide: true,
-            examples: examplesForIcon(${iconName}),
+            foundation: true,
+            storybook: false,
+            examples: [
+              {
+                label: 'Default',
+                Example: () => <${iconName} />,
+              },
+            ],
           };
 
           export default docs;

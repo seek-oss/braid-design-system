@@ -28,29 +28,30 @@ const cleanCodeSnippet = (code: string) =>
 
 interface ComponentRouteProps {
   componentName: string;
-  category?: string;
+  subfolder?: string;
   sourceUrlPrefix: string;
 }
 
 export const ComponentRoute = ({
   componentName,
-  category,
+  subfolder = '',
   sourceUrlPrefix,
 }: ComponentRouteProps) => {
-  const docs: ComponentDocs = category
-    ? require(`../../../../lib/components/${category}/${componentName}/${componentName}.docs.tsx`)
-        .default
-    : require(`../../../../lib/components/${componentName}/${componentName}.docs.tsx`)
-        .default;
+  const componentFolder = `lib/components/${
+    subfolder ? `${subfolder}/` : ''
+  }${componentName}`;
+  const docs: ComponentDocs = require(`../../../../${componentFolder}/${componentName}.docs.tsx`)
+    .default;
   const examples = docs.examples || [];
 
-  const componentPath = category ? `${category}/` : '';
-  const sourceUrl = `${sourceUrlPrefix}/lib/components/${componentPath}${componentName}`;
-  const migrationGuideUrl = `${sourceUrl}/${componentName}.migration.md`;
+  const sourceUrl = `${sourceUrlPrefix}/${componentFolder}`;
+  const migrationGuideUrl = `${sourceUrlPrefix}/${componentFolder}/${componentName}.migration.md`;
 
   return (
     <Stack space="large">
-      <Heading level="2">{componentName}</Heading>
+      <Heading level="2" component="h3">
+        {componentName}
+      </Heading>
       {examples.length > 0 ? (
         <Text weight="strong">
           Example
@@ -81,27 +82,33 @@ export const ComponentRoute = ({
               ? cleanCodeSnippet(dedent(code))
               : null;
 
+          const ExampleInContainer = ({ id }: { id: string }) => (
+            <Container>
+              {Example && <Example id={id} handler={handler} />}
+            </Container>
+          );
+
+          // Only render foundation elements in `wireframe` no need to theme them
+          const exampleEl = docs.foundation ? (
+            <ExampleInContainer id={`${index}`} />
+          ) : (
+            Object.values(themes).map(theme => (
+              <Box key={theme.name} marginBottom="medium">
+                <Stack space="gutter">
+                  <Text tone="secondary">Theme: {theme.name}</Text>
+                  <BraidProvider theme={theme}>
+                    <ExampleInContainer id={`${index}_${theme.name}`} />
+                  </BraidProvider>
+                </Stack>
+              </Box>
+            ))
+          );
+
           return (
             <Box key={index} marginBottom="xlarge">
               <Stack space="gutter">
                 {label ? <Text>{label}</Text> : null}
-                {Example
-                  ? Object.values(themes).map(theme => (
-                      <Box key={theme.name} marginBottom="medium">
-                        <Stack space="gutter">
-                          <Text tone="secondary">Theme: {theme.name}</Text>
-                          <BraidProvider theme={theme}>
-                            <Container>
-                              <Example
-                                id={`${index}_${theme.name}`}
-                                handler={handler}
-                              />
-                            </Container>
-                          </BraidProvider>
-                        </Stack>
-                      </Box>
-                    ))
-                  : null}
+                {Example ? exampleEl : null}
                 {codeAsString ? (
                   <Stack space="gutter">
                     <Text tone="secondary">Code:</Text>
@@ -115,17 +122,15 @@ export const ComponentRoute = ({
 
       <ComponentProps componentName={componentName} />
 
-      <Heading level="3">Further References</Heading>
+      <Heading level="3" component="h4">
+        Further References
+      </Heading>
       <Text>
-        <ExternalLink href={sourceUrl} rel="noopener noreferrer">
-          View Source
-        </ExternalLink>
+        <ExternalLink href={sourceUrl}>View Source</ExternalLink>
       </Text>
       <Text>
         {docs.migrationGuide ? (
-          <ExternalLink href={migrationGuideUrl} rel="noopener noreferrer">
-            Migration Guide
-          </ExternalLink>
+          <ExternalLink href={migrationGuideUrl}>Migration Guide</ExternalLink>
         ) : null}
       </Text>
     </Stack>

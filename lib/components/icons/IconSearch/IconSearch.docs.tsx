@@ -1,10 +1,17 @@
+import React from 'react';
 import { ComponentDocs } from '../../../../site/src/types';
-import examplesForIcon from '../../private/examplesForIcon';
 import { IconSearch } from './IconSearch';
 
 const docs: ComponentDocs = {
   migrationGuide: true,
-  examples: examplesForIcon(IconSearch),
+  foundation: true,
+  storybook: false,
+  examples: [
+    {
+      label: 'Default',
+      Example: () => <IconSearch />,
+    },
+  ],
 };
 
 export default docs;

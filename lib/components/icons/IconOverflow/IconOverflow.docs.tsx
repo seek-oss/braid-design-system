@@ -1,10 +1,17 @@
+import React from 'react';
 import { ComponentDocs } from '../../../../site/src/types';
-import examplesForIcon from '../../private/examplesForIcon';
 import { IconOverflow } from './IconOverflow';
 
 const docs: ComponentDocs = {
   migrationGuide: true,
-  examples: examplesForIcon(IconOverflow),
+  foundation: true,
+  storybook: false,
+  examples: [
+    {
+      label: 'Default',
+      Example: () => <IconOverflow />,
+    },
+  ],
 };
 
 export default docs;
