@@ -5,12 +5,49 @@ import { Route, useLocation } from 'react-router-dom';
 import * as components from '../../../../lib/components';
 import { Logo } from '../Logo/Logo';
 import { ComponentRoute } from './ComponentRoute';
+import { Iconography } from './Iconography';
 import { Link, ExternalLink } from './Link';
 import * as styles from './Documentation.treat';
 import { MenuButton } from '../MenuButton/MenuButton';
 import { ConfigConsumer } from '../ConfigContext';
 
-const { Text, Box, Hidden, Stack } = components;
+const { Heading, Text, Box, Hidden, Stack } = components;
+
+interface MenuItem {
+  name: string;
+  path: string;
+  external: boolean;
+  onClick: () => void;
+}
+const MenuSectionList = ({
+  title,
+  items,
+}: {
+  title: string;
+  items: MenuItem[];
+}) => (
+  <Stack space="large">
+    <Heading level="4" component="h2">
+      {title}
+    </Heading>
+
+    <Stack space="gutter">
+      {items.map(({ name, path, onClick, external }) => (
+        <Text key={name}>
+          {external ? (
+            <ExternalLink href={path} onClick={onClick}>
+              {name}
+            </ExternalLink>
+          ) : (
+            <Link to={path} onClick={onClick}>
+              {name}
+            </Link>
+          )}
+        </Text>
+      ))}
+    </Stack>
+  </Stack>
+);
 
 const responsiveGutter: ['gutter', 'large'] = ['gutter', 'large'];
 
@@ -57,96 +94,66 @@ export const Documentation = () => {
             className={styles.container}
           >
             <Hidden print>
-              <Box position="fixed" className={styles.menu}>
-                <Box paddingBottom="xlarge" paddingX={responsiveGutter}>
-                  <Stack space="large">
-                    <Text size="large" weight="strong">
-                      Tools
-                    </Text>
+              <Box
+                position="fixed"
+                paddingBottom="xlarge"
+                paddingX={responsiveGutter}
+                className={styles.menu}
+              >
+                <Stack space="xlarge">
+                  <MenuSectionList
+                    title="Tools"
+                    items={[
+                      {
+                        name: 'Source',
+                        path: 'https://github.com/seek-oss/braid-design-system',
+                        external: true,
+                        onClick: () => setMenuOpen(isComponentsHome),
+                      },
+                      {
+                        name: 'Playroom',
+                        path: playroomUrl,
+                        external: true,
+                        onClick: () => setMenuOpen(isComponentsHome),
+                      },
+                    ]}
+                  />
 
-                    <Stack space="gutter">
-                      <Text>
-                        <ExternalLink
-                          href="https://github.com/seek-oss/braid-design-system"
-                          rel="noopener noreferrer"
-                          onClick={() => setMenuOpen(isComponentsHome)}
-                        >
-                          Source
-                        </ExternalLink>
-                      </Text>
-                      <Text>
-                        <ExternalLink
-                          href={playroomUrl}
-                          onClick={() => setMenuOpen(isComponentsHome)}
-                        >
-                          Playroom
-                        </ExternalLink>
-                      </Text>
-                    </Stack>
+                  <MenuSectionList
+                    title="Guides"
+                    items={map(guides, (guide, path) => ({
+                      name: guide.title,
+                      path,
+                      external: false,
+                      onClick: () => setMenuOpen(false),
+                    }))}
+                  />
 
-                    <Text size="large" weight="strong">
-                      Guides
-                    </Text>
+                  <MenuSectionList
+                    title="Foundations"
+                    items={[
+                      {
+                        name: 'Iconography',
+                        path: `/foundations/iconography`,
+                        external: false,
+                        onClick: () => setMenuOpen(false),
+                      },
+                    ]}
+                  />
 
-                    <Stack space="gutter">
-                      {map(guides, (guide, path) => (
-                        <Text key={path}>
-                          <Link to={path} onClick={() => setMenuOpen(false)}>
-                            {guide.title}
-                          </Link>
-                        </Text>
-                      ))}
-                    </Stack>
-
-                    <Text size="large" weight="strong">
-                      Components
-                    </Text>
-
-                    <Stack space="gutter">
-                      {Object.keys(components)
-                        .filter(
-                          x =>
-                            !/icon/i.test(x) &&
-                            !/^use/.test(x) &&
-                            x !== 'BoxRenderer',
-                        )
-                        .sort()
-                        .map(componentName => (
-                          <Text key={componentName}>
-                            <Link
-                              to={`/components/${componentName}`}
-                              onClick={() => setMenuOpen(false)}
-                            >
-                              {componentName}
-                            </Link>
-                          </Text>
-                        ))}
-                    </Stack>
-
-                    <Text size="large" weight="strong">
-                      Icons
-                    </Text>
-
-                    <Stack space="gutter">
-                      {Object.keys(components)
-                        .filter(
-                          x =>
-                            /icon/i.test(x) && x !== 'Icon' && !/^use/.test(x),
-                        )
-                        .sort()
-                        .map(iconName => (
-                          <Text key={iconName}>
-                            <Link
-                              to={`/icons/${iconName}`}
-                              onClick={() => setMenuOpen(false)}
-                            >
-                              {iconName}
-                            </Link>
-                          </Text>
-                        ))}
-                    </Stack>
-                  </Stack>
-                </Box>
+                  <MenuSectionList
+                    title="Components"
+                    items={Object.keys(components)
+                      .filter(x => !/^(Icon|use|BoxRenderer)/.test(x))
+                      .sort()
+                      .map(componentName => ({
+                        name: componentName,
+                        path: `/components/${componentName}`,
+                        external: false,
+                        onClick: () => setMenuOpen(false),
+                      }))}
+                  />
+                </Stack>
               </Box>
             </Hidden>
             <Box className={styles.content}>
@@ -154,23 +161,24 @@ export const Documentation = () => {
                 {map(guides, ({ Component }, path) => (
                   <Route key={path} path={path} component={Component} />
                 ))}
+
+                <Route
+                  path="/foundations/iconography"
+                  component={Iconography}
+                />
+
                 <Route
                   path="/components/:componentName"
                   render={({ match }) => (
                     <ComponentRoute
-                      sourceUrlPrefix={sourceUrlPrefix}
-                      componentName={match.params.componentName}
                       key={match.params.componentName} // Force remount per page to fix hooks errors when generating code snippets
-                    />
-                  )}
-                />
-                <Route
-                  path="/icons/:componentName"
-                  render={({ match }) => (
-                    <ComponentRoute
-                      sourceUrlPrefix={sourceUrlPrefix}
+                      subfolder={
+                        /^Icon/.test(match.params.componentName)
+                          ? 'icons'
+                          : undefined
+                      }
                       componentName={match.params.componentName}
-                      category="icons"
+                      sourceUrlPrefix={sourceUrlPrefix}
                     />
                   )}
                 />

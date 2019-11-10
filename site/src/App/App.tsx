@@ -13,7 +13,7 @@ import * as styles from './App.treat';
 const routes = [
   { path: '/', name: 'Home', exact: true, Component: Home },
   {
-    path: '/(guides|components|icons)',
+    path: '/(guides|components|foundations)',
     name: 'Documentation',
     exact: false,
     Component: Documentation,

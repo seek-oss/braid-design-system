@@ -1,10 +1,17 @@
+import React from 'react';
 import { ComponentDocs } from '../../../../site/src/types';
-import examplesForIcon from '../../private/examplesForIcon';
 import { IconPositive } from './IconPositive';
 
 const docs: ComponentDocs = {
   migrationGuide: true,
-  examples: examplesForIcon(IconPositive),
+  foundation: true,
+  storybook: false,
+  examples: [
+    {
+      label: 'Default',
+      Example: () => <IconPositive />,
+    },
+  ],
 };
 
 export default docs;

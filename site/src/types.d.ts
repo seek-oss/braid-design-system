@@ -19,6 +19,7 @@ export interface Page {
 
 export interface ComponentDocs {
   migrationGuide?: boolean;
+  foundation?: boolean;
   storybook?: boolean;
   examples: ComponentExample[];
 }

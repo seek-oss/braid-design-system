@@ -27,8 +27,9 @@ const guideRoutes = getPages('site/src/App/guides/index.ts');
 
 module.exports = [
   { route: '/', name: 'home' },
+  ...guideRoutes.map(route => ({ route })),
+  { route: `/foundations/iconography`, name: 'iconography' },
   { route: '/components', name: 'components' },
   ...componentNames.map(name => ({ route: `/components/${name}`, name })),
-  ...iconNames.map(name => ({ route: `/icons/${name}`, name })),
-  ...guideRoutes.map(route => ({ route })),
+  ...iconNames.map(name => ({ route: `/components/${name}`, name })),
 ];

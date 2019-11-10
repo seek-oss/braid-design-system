@@ -1,10 +1,11 @@
 import React from 'react';
 import { ComponentDocs } from '../../../../site/src/types';
-import examplesForIcon from '../../private/examplesForIcon';
 import { IconChevron } from './IconChevron';
 
 const docs: ComponentDocs = {
   migrationGuide: true,
+  foundation: true,
+  storybook: false,
   examples: [
     {
       label: 'Default',
@@ -26,7 +27,6 @@ const docs: ComponentDocs = {
       label: 'Down',
       Example: () => <IconChevron direction="down" />,
     },
-    ...examplesForIcon(IconChevron),
   ],
 };
 
