@@ -35,7 +35,7 @@ export const Home = () => {
               paddingBottom="xxsmall"
               className={styles.container}
             >
-              <Logo width="100%" />
+              <Logo />
             </Box>
 
             <Box

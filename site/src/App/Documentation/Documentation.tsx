@@ -49,6 +49,8 @@ const MenuSectionList = ({
   </Stack>
 );
 
+const responsiveGutter: ['gutter', 'large'] = ['gutter', 'large'];
+
 export const Documentation = () => {
   const location = useLocation();
   const [isMenuOpen, setMenuOpen] = useState(
@@ -66,7 +68,7 @@ export const Documentation = () => {
         <div className={isMenuOpen ? styles.isOpen : undefined}>
           <Box
             paddingY="large"
-            paddingX="gutter"
+            paddingX={responsiveGutter}
             position="absolute"
             display="flex"
             alignItems="center"
@@ -94,8 +96,9 @@ export const Documentation = () => {
             <Hidden print>
               <Box
                 position="fixed"
+                paddingTop="small"
                 paddingBottom="xlarge"
-                paddingX="gutter"
+                paddingX={responsiveGutter}
                 className={styles.menu}
               >
                 <Stack space="xlarge">
@@ -154,28 +157,33 @@ export const Documentation = () => {
                 </Stack>
               </Box>
             </Hidden>
-            <Box paddingX="gutter" className={styles.content}>
-              {map(guides, ({ Component }, path) => (
-                <Route key={path} path={path} component={Component} />
-              ))}
+            <Box className={styles.content}>
+              <Box paddingY="small" paddingX={responsiveGutter}>
+                {map(guides, ({ Component }, path) => (
+                  <Route key={path} path={path} component={Component} />
+                ))}
 
-              <Route path="/foundations/iconography" component={Iconography} />
+                <Route
+                  path="/foundations/iconography"
+                  component={Iconography}
+                />
 
-              <Route
-                path="/components/:componentName"
-                render={({ match }) => (
-                  <ComponentRoute
-                    key={match.params.componentName} // Force remount per page to fix hooks errors when generating code snippets
-                    subfolder={
-                      /^Icon/.test(match.params.componentName)
-                        ? 'icons'
-                        : undefined
-                    }
-                    componentName={match.params.componentName}
-                    sourceUrlPrefix={sourceUrlPrefix}
-                  />
-                )}
-              />
+                <Route
+                  path="/components/:componentName"
+                  render={({ match }) => (
+                    <ComponentRoute
+                      key={match.params.componentName} // Force remount per page to fix hooks errors when generating code snippets
+                      subfolder={
+                        /^Icon/.test(match.params.componentName)
+                          ? 'icons'
+                          : undefined
+                      }
+                      componentName={match.params.componentName}
+                      sourceUrlPrefix={sourceUrlPrefix}
+                    />
+                  )}
+                />
+              </Box>
             </Box>
           </Box>
         </div>
