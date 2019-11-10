@@ -96,6 +96,7 @@ export const Documentation = () => {
             <Hidden print>
               <Box
                 position="fixed"
+                paddingTop="small"
                 paddingBottom="xlarge"
                 paddingX={responsiveGutter}
                 className={styles.menu}
@@ -157,7 +158,7 @@ export const Documentation = () => {
               </Box>
             </Hidden>
             <Box className={styles.content}>
-              <Box paddingX={responsiveGutter}>
+              <Box paddingY="small" paddingX={responsiveGutter}>
                 {map(guides, ({ Component }, path) => (
                   <Route key={path} path={path} component={Component} />
                 ))}
