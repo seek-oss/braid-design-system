@@ -49,7 +49,7 @@ const MenuSectionList = ({
   </Stack>
 );
 
-const responsiveGutter: ['gutter', 'large'] = ['gutter', 'large'];
+const responsiveGutter = ['gutter', 'large'] as const;
 
 export const Documentation = () => {
   const location = useLocation();
