@@ -32,10 +32,10 @@ export const Home = () => {
           >
             <Box
               width="full"
-              paddingBottom="xxsmall"
+              paddingBottom="small"
               className={styles.container}
             >
-              <Logo />
+              <Logo width="100%" />
             </Box>
 
             <Box
