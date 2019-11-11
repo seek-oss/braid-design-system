@@ -1446,6 +1446,7 @@ exports[`Button 1`] = `
 {
   aria-describedby?: string
   children?: ReactNode
+  data?: Record<string, ReactText>
   id?: string
   loading?: boolean
   onClick?: (event: MouseEvent<HTMLButtonElement, MouseEvent>) => void
