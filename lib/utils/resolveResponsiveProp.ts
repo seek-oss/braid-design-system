@@ -1,4 +1,6 @@
-export type ResponsiveProp<AtomName> = AtomName | [AtomName, AtomName];
+export type ResponsiveProp<AtomName> =
+  | AtomName
+  | Readonly<[AtomName, AtomName]>;
 export const resolveResponsiveProp = <Keys extends string>(
   value: ResponsiveProp<Keys>,
   mobileAtoms: Record<Keys, string>,
