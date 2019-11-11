@@ -168,6 +168,7 @@ export const makeTokens = ({
         standard: '#d6d6d6',
         standardInverted: white,
         focus,
+        formHover: formAccent,
         critical,
         formAccent,
       },

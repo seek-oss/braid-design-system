@@ -178,6 +178,7 @@ export const makeTokens = ({
         standardInverted: white,
         focus,
         critical,
+        formHover: formAccent,
         formAccent,
       },
     },

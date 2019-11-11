@@ -16,7 +16,7 @@ const boxShadowForVariant: Record<
 > = {
   default: 'borderStandard',
   focus: 'outlineFocus',
-  hover: 'borderFormAccent',
+  hover: 'borderFormHover',
   critical: 'borderCritical',
 };
 

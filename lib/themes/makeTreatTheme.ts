@@ -76,6 +76,7 @@ export interface TreatTokens {
       standardInverted: string;
       focus: string;
       critical: string;
+      formHover: string;
       formAccent: string;
     };
   };

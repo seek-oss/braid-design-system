@@ -153,6 +153,7 @@ const tokens: TreatTokens = {
       standardInverted: white,
       focus,
       critical,
+      formHover: formAccent,
       formAccent,
     },
   },
