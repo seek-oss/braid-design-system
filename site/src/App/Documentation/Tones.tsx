@@ -179,7 +179,8 @@ export const Tones = () => {
       <Text>
         The usage of colour in the system is designed to have a strong
         correlation with the tone of voice being used. The system makes
-        available a spectrum of tones which are leveraged across the suite.
+        available a spectrum of tones which are leveraged across the entire
+        component suite.
       </Text>
 
       <Columns space={['small', 'gutter']}>
