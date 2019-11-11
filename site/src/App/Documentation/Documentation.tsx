@@ -78,7 +78,9 @@ export const Documentation = () => {
             className={styles.header}
           >
             <Link to="/">
-              <Logo />
+              <Box className={styles.logo}>
+                <Logo />
+              </Box>
             </Link>
 
             <Box display={[showMenuButton ? 'block' : 'none', 'block']}>

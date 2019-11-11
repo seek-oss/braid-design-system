@@ -58,6 +58,11 @@ export const menu = style({
   },
 });
 
+export const logo = style({
+  width: 36,
+  overflow: 'hidden',
+});
+
 export const content = style({
   flexGrow: 1,
   paddingBottom: 80,
