@@ -15,6 +15,7 @@ export const Logo = ({ width = '164px' }: LogoProps) => (
     viewBox="20 0 560 110"
     enableBackground="new 20 0 560 110"
   >
+    <title>BRAID</title>
     <g>
       <path
         d="M224.025,58.845c-1.844-1.644-4.226-3.274-7.08-4.846c-1.447-0.799-2.72-1.424-3.833-1.876c3.36-1.531,6.377-4.104,9-7.682
