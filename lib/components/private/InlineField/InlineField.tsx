@@ -51,7 +51,11 @@ const Indicator = ({
   const isCheckbox = type === 'checkbox';
 
   return isCheckbox ? (
-    <Box transition="fast" className={classnames(styles.checkboxIndicator)}>
+    <Box
+      height="full" // Needed for IE11
+      transition="fast"
+      className={classnames(styles.checkboxIndicator)}
+    >
       <IconTick
         size="fill"
         tone={disabled ? 'secondary' : hover ? 'formAccent' : undefined}
