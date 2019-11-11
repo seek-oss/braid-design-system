@@ -8,9 +8,9 @@ import { ComponentRoute } from './ComponentRoute';
 import { Iconography } from './Iconography';
 import { Tones } from './Tones';
 import { Link, ExternalLink } from './Link';
-import * as styles from './Documentation.treat';
 import { MenuButton } from '../MenuButton/MenuButton';
 import { ConfigConsumer } from '../ConfigContext';
+import * as styles from './Documentation.treat';
 
 const { Heading, Text, Box, Hidden, Stack } = components;
 
@@ -83,7 +83,10 @@ export const Documentation = () => {
               </Box>
             </Link>
 
-            <Box display={[showMenuButton ? 'block' : 'none', 'block']}>
+            <Box
+              display={[showMenuButton ? 'block' : 'none', 'block']}
+              className={styles.menuButton}
+            >
               <MenuButton
                 open={isMenuOpen}
                 onClick={() => setMenuOpen(!isMenuOpen)}
