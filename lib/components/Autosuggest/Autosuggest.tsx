@@ -542,7 +542,6 @@ export function Autosuggest<Value>({
               overlays,
               {
                 background,
-                boxShadow,
                 borderRadius,
                 paddingX,
                 className,
@@ -555,7 +554,6 @@ export function Autosuggest<Value>({
               <Box {...a11y.rootProps}>
                 <Box
                   component="input"
-                  boxShadow={boxShadow}
                   borderRadius={borderRadius}
                   paddingX={paddingX}
                   {...restFieldProps}

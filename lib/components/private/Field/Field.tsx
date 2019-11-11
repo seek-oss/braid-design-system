@@ -55,7 +55,6 @@ type PassthroughProps =
   | 'autoFocus';
 interface FieldRenderProps extends Pick<FieldProps, PassthroughProps> {
   background: BoxProps['background'];
-  boxShadow: BoxProps['boxShadow'];
   borderRadius: BoxProps['borderRadius'];
   width: BoxProps['width'];
   paddingX: BoxProps['paddingX'];
@@ -110,8 +109,7 @@ export const Field = forwardRef<FieldRef, InternalFieldProps>(
 
     const messageId = `${id}-message`;
     const fieldBackground = disabled ? 'inputDisabled' : 'input';
-    const fieldBoxShadow: BoxProps['boxShadow'] =
-      useBackground() === 'brand' ? 'borderStandardInverted' : 'borderStandard';
+    const showFieldBorder = useBackground() !== 'brand';
 
     const clearHandler = useCallback(() => {
       if (typeof onClear !== 'function') {
@@ -130,6 +128,11 @@ export const Field = forwardRef<FieldRef, InternalFieldProps>(
 
     const overlays = (
       <Fragment>
+        <FieldOverlay variant="default" visible={showFieldBorder} />
+        <FieldOverlay
+          variant="critical"
+          visible={tone === 'critical' && !disabled}
+        />
         <FieldOverlay variant="focus" className={styles.focusOverlay} />
         <FieldOverlay variant="hover" className={styles.hoverOverlay} />
       </Fragment>
@@ -176,10 +179,6 @@ export const Field = forwardRef<FieldRef, InternalFieldProps>(
                 id,
                 name,
                 background: fieldBackground,
-                boxShadow:
-                  tone === 'critical' && !disabled
-                    ? 'borderCritical'
-                    : fieldBoxShadow,
                 width: 'full',
                 paddingX: 'small',
                 borderRadius: 'standard',
