@@ -6,6 +6,7 @@ import * as components from '../../../../lib/components';
 import { Logo } from '../Logo/Logo';
 import { ComponentRoute } from './ComponentRoute';
 import { Iconography } from './Iconography';
+import { Tones } from './Tones';
 import { Link, ExternalLink } from './Link';
 import * as styles from './Documentation.treat';
 import { MenuButton } from '../MenuButton/MenuButton';
@@ -58,7 +59,7 @@ export const Documentation = () => {
   );
 
   const isComponentsHome = location.pathname === '/components';
-  const showMenuButton = /(\/(guides|components|icons)\/).*/.test(
+  const showMenuButton = /(\/(guides|components|foundations)\/).*/.test(
     location.pathname,
   );
 
@@ -134,6 +135,12 @@ export const Documentation = () => {
                     title="Foundations"
                     items={[
                       {
+                        name: 'Tones',
+                        path: `/foundations/tones`,
+                        external: false,
+                        onClick: () => setMenuOpen(false),
+                      },
+                      {
                         name: 'Iconography',
                         path: `/foundations/iconography`,
                         external: false,
@@ -162,6 +169,8 @@ export const Documentation = () => {
                 {map(guides, ({ Component }, path) => (
                   <Route key={path} path={path} component={Component} />
                 ))}
+
+                <Route path="/foundations/tones" component={Tones} />
 
                 <Route
                   path="/foundations/iconography"

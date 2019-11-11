@@ -1,7 +1,7 @@
 import { style } from 'sku/treat';
 
 export const icon = style({
-  width: 170,
+  width: 120,
 });
 
 export const iconContainer = style({});
