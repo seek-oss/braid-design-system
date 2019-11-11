@@ -1,17 +1,17 @@
 import { TreatTokens } from '../makeTreatTheme';
 
 const formAccent = '#404040';
-const critical = 'red';
-const positive = 'green';
-const info = 'navy';
-const promote = 'purple';
+const critical = '#ef3e4a';
+const positive = '#34c8a5';
+const info = '#2c88f7';
+const promote = '#855be5';
 const brandAccent = 'black';
 const focus = 'DeepSkyBlue';
 const black = '#2b2b2b';
 const white = '#fff';
 const link = '#4c77bb';
 const secondary = '#777';
-const neutral = '#777';
+const neutral = '#d0d9e6';
 
 const tokens: TreatTokens = {
   name: 'wireframe',
