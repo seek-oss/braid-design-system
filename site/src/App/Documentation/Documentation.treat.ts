@@ -1,9 +1,8 @@
 import { globalStyle, style } from 'sku/treat';
 
-const desktopMenuWidth = '260px';
+const desktopMenuWidth = '276px';
 const headerHeight = '100px';
-
-const breakpoint = 768;
+const breakpoint = 984;
 
 const mobile = `screen and (max-width: ${breakpoint - 1}px)`;
 const desktop = `screen and (min-width: ${breakpoint}px)`;
@@ -54,6 +53,14 @@ export const menu = style({
     },
     [desktop]: {
       width: desktopMenuWidth,
+    },
+  },
+});
+
+export const menuButton = style({
+  '@media': {
+    [desktop]: {
+      display: 'none !important',
     },
   },
 });
