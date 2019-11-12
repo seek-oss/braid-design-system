@@ -61,6 +61,7 @@ export const makeTokens = ({
   const secondary = palette.saGrayDark;
   const focus = lighten(0.3, palette.saBlueLight);
   const selection = lighten(0.4, palette.saBlueLight);
+  const formHover = lighten(0.15, palette.saBlueLight);
 
   const tokens: TreatTokens = {
     name,
@@ -203,6 +204,7 @@ export const makeTokens = ({
         standardInverted: white,
         focus,
         critical,
+        formHover,
         formAccent,
       },
     },

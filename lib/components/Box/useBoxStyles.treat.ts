@@ -226,6 +226,9 @@ export const boxShadow = styleMap(
     borderCritical: {
       boxShadow: `inset 0 0 0 ${borderWidth.standard}px ${color.critical}`,
     },
+    borderFormHover: {
+      boxShadow: `inset 0 0 0 ${borderWidth.standard}px ${color.formHover}`,
+    },
     borderFormAccent: {
       boxShadow: `inset 0 0 0 ${borderWidth.standard}px ${color.formAccent}`,
     },
