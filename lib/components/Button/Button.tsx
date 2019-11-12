@@ -3,6 +3,9 @@ import {
   ButtonRenderer,
   ButtonRendererProps,
 } from '../ButtonRenderer/ButtonRenderer';
+import buildDataAttributes, {
+  DataAttributeMap,
+} from '../private/buildDataAttributes';
 
 type NativeButtonProps = AllHTMLAttributes<HTMLButtonElement>;
 export interface ButtonProps {
@@ -13,6 +16,7 @@ export interface ButtonProps {
   weight?: ButtonRendererProps['weight'];
   loading?: ButtonRendererProps['loading'];
   'aria-describedby'?: NativeButtonProps['aria-describedby'];
+  data?: DataAttributeMap;
 }
 
 export const Button = ({
@@ -23,6 +27,7 @@ export const Button = ({
   id,
   loading = false,
   'aria-describedby': ariaDescribedBy,
+  data,
 }: ButtonProps) => {
   return (
     <ButtonRenderer weight={weight} loading={loading}>
@@ -34,6 +39,7 @@ export const Button = ({
           onClick={onClick}
           disabled={loading}
           {...buttonProps}
+          {...buildDataAttributes(data)}
         >
           <ButtonChildren>{children}</ButtonChildren>
         </button>
