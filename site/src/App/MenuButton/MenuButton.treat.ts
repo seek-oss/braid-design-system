@@ -15,11 +15,6 @@ export const root = style({
       pointerEvents: 'none',
     },
   },
-  '@media': {
-    'screen and (min-width: 740px)': {
-      display: 'none',
-    },
-  },
 });
 
 export const bar = style({
