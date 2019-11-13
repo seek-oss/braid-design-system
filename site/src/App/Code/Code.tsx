@@ -64,7 +64,7 @@ export default ({ children }: CodeProps) => {
     <Box
       position="relative"
       style={{
-        maxWidth: 800,
+        maxWidth: 864,
       }}
     >
       <Box
