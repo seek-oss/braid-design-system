@@ -3070,6 +3070,16 @@ exports[`Inline 1`] = `
 }
 `;
 
+exports[`Loader 1`] = `
+{
+  size?: 
+    | "large"
+    | "small"
+    | "standard"
+    | "xsmall"
+}
+`;
+
 exports[`MonthPicker 1`] = `
 {
   ascendingYears?: boolean
