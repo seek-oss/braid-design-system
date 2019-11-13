@@ -8,7 +8,7 @@ export const resolveResponsiveProp = <Keys extends string>(
 ) => {
   if (typeof value === 'string') {
     return mobileAtoms[value!];
-  } else if (value instanceof Array) {
+  } else if (Array.isArray(value)) {
     const [mobileValue, desktopValue] = value;
     return mobileValue !== desktopValue
       ? [mobileAtoms[mobileValue!], desktopAtoms[desktopValue!]]
