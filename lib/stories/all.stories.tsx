@@ -46,64 +46,73 @@ req.keys().forEach(filename => {
     : values(themes).filter(theme => theme.name !== 'wireframe');
 
   storyThemes.forEach(theme => {
-    stories.add(
-      theme.name,
-      () => (
-        <BrowserRouter>
-          <BraidProvider theme={theme}>
-            <div style={{ background: 'white' }}>
-              {docs.examples.map(
-                (
-                  {
-                    storybook = true,
-                    label = componentName,
-                    Example,
-                    Container = DefaultContainer,
-                  },
-                  i,
-                ) =>
-                  Example && storybook ? (
-                    <div
-                      key={i}
+    stories.add(theme.name, () => (
+      <BrowserRouter>
+        <BraidProvider theme={theme}>
+          <style type="text/css">
+            {`
+            .noAnimation * {
+              animation-delay: -0.0001s !important;
+              animation-duration: 0s !important;
+              animation-play-state: paused !important;
+            }`}
+          </style>
+          <div
+            className="noAnimation"
+            style={{
+              background: 'white',
+            }}
+          >
+            {docs.examples.map(
+              (
+                {
+                  storybook = true,
+                  label = componentName,
+                  Example,
+                  Container = DefaultContainer,
+                },
+                i,
+              ) =>
+                Example && storybook ? (
+                  <div
+                    key={i}
+                    style={{
+                      minHeight: 300,
+                      paddingBottom: 32,
+                      overflow: 'hidden',
+                    }}
+                  >
+                    <h4
                       style={{
-                        minHeight: 300,
-                        paddingBottom: 32,
-                        overflow: 'hidden',
+                        margin: 0,
+                        marginBottom: 18,
+                        padding: 0,
+                        fontSize: 14,
+                        fontFamily: 'arial',
+                        color: '#ccc',
                       }}
                     >
-                      <h4
+                      {label}
+                    </h4>
+                    <Container>
+                      <Example id="id" handler={handler} />
+                    </Container>
+                    <div style={{ paddingTop: 18 }}>
+                      <hr
                         style={{
                           margin: 0,
-                          marginBottom: 18,
-                          padding: 0,
-                          fontSize: 14,
-                          fontFamily: 'arial',
-                          color: '#ccc',
+                          border: 0,
+                          height: 1,
+                          background: '#eee',
                         }}
-                      >
-                        {label}
-                      </h4>
-                      <Container>
-                        <Example id="id" handler={handler} />
-                      </Container>
-                      <div style={{ paddingTop: 18 }}>
-                        <hr
-                          style={{
-                            margin: 0,
-                            border: 0,
-                            height: 1,
-                            background: '#eee',
-                          }}
-                        />
-                      </div>
+                      />
                     </div>
-                  ) : null,
-              )}
-            </div>
-          </BraidProvider>
-        </BrowserRouter>
-      ),
-      { chromatic: { pauseAnimationAtEnd: true } },
-    );
+                  </div>
+                ) : null,
+            )}
+          </div>
+        </BraidProvider>
+      </BrowserRouter>
+    ));
   });
 });
