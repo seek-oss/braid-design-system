@@ -35,11 +35,7 @@ export const Loader = ({ size = 'standard' }: LoaderProps) => {
         <Box
           key={index}
           borderRadius="full"
-          background={
-            backgroundContext
-              ? resolveBgForContext[backgroundContext]
-              : 'neutral'
-          }
+          background={resolveBgForContext[backgroundContext!] || 'neutral'}
           className={classnames(styles.indicator, styles.size[size])}
         />
       ))}
