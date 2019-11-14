@@ -1482,12 +1482,13 @@ exports[`Card 1`] = `
 
 exports[`Checkbox 1`] = `
 {
+  aria-labelledby?: string
   checked: boolean
   children?: ReactNode
   data?: Record<string, ReactText>
   disabled?: boolean
   id: string
-  label: ReactNode
+  label?: ReactNode
   message?: ReactNode
   name?: string
   onChange: (event: FormEvent<HTMLFormElement>) => void
@@ -3130,12 +3131,13 @@ exports[`OverflowMenuItem 1`] = `
 
 exports[`Radio 1`] = `
 {
+  aria-labelledby?: string
   checked: boolean
   children?: ReactNode
   data?: Record<string, ReactText>
   disabled?: boolean
   id: string
-  label: ReactNode
+  label?: ReactNode
   name?: string
   onChange: (event: FormEvent<HTMLFormElement>) => void
   ref?: 

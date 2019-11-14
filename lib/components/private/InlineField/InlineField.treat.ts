@@ -15,18 +15,25 @@ const fakeFieldBase = style({
   flexShrink: 0,
 });
 
-const fakeFieldSize = style(theme => {
+export const visibleFieldSize = style(theme => {
   const size = getSize(theme);
-  const { touchableSize, grid } = theme;
 
   return {
     height: size,
     width: size,
+  };
+});
+
+export const fakeFieldTopOffset = style(theme => {
+  const size = getSize(theme);
+  const { touchableSize, grid } = theme;
+
+  return {
     marginTop: (grid * touchableSize - size) / 2,
   };
 });
 
-export const fakeField = [fakeFieldSize, fakeFieldBase];
+export const fakeField = [visibleFieldSize, fakeFieldBase];
 
 export const label = style({
   userSelect: 'none',
