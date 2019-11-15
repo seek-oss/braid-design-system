@@ -85,17 +85,14 @@ const ButtonChildren = ({ children }: ButtonChildrenProps) => {
 
   return (
     <Fragment>
-      <FieldOverlay
-        variant="focus"
-        className={classnames(styles.focusOverlay)}
-      />
+      <FieldOverlay variant="focus" className={styles.focusOverlay} />
       <FieldOverlay
         background={buttonVariant.backgroundHover}
-        className={classnames(styles.hoverOverlay)}
+        className={styles.hoverOverlay}
       />
       <FieldOverlay
         background={buttonVariant.backgroundActive}
-        className={classnames(styles.activeOverlay)}
+        className={styles.activeOverlay}
       />
       <Box
         position="relative"
