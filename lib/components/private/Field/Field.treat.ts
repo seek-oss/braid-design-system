@@ -1,5 +1,4 @@
 import { style, styleMap } from 'sku/treat';
-import * as zIndex from '../zIndex';
 
 export const field = style({
   outline: 'none',
@@ -18,7 +17,6 @@ export const iconSpace = style(theme => ({
 }));
 
 export const icon = style({
-  zIndex: zIndex.inlineOverlay,
   top: 0,
   left: 0,
 });
