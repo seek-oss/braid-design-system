@@ -1,7 +1,5 @@
-import { TreatTokens } from '../themes/makeTreatTheme';
+import { breakpoints, TreatTokens } from '../themes/makeTreatTheme';
 type Breakpoint = keyof TreatTokens['breakpoint'];
-
-const breakpoints = ['mobile', 'tablet', 'desktop'] as const;
 
 export interface ResponsiveRangeProps {
   above?: Exclude<Breakpoint, 'desktop'>;

@@ -2,7 +2,8 @@ import './treatTheme.d';
 import { createTheme } from 'sku/treat';
 import { makeThemeUtils } from './themeUtils';
 
-type Breakpoint = 'mobile' | 'tablet' | 'desktop';
+export const breakpoints = ['mobile', 'tablet', 'desktop'] as const;
+type Breakpoint = typeof breakpoints[number];
 
 export type TextBreakpoint = Exclude<Breakpoint, 'desktop'>;
 
