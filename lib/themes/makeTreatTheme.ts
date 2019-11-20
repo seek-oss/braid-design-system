@@ -1,10 +1,13 @@
 import './treatTheme.d';
 import { createTheme } from 'sku/treat';
-import makeUtils from './makeUtils';
+import { makeThemeUtils } from './themeUtils';
 
-export type Breakpoint = 'mobile' | 'desktop';
+type Breakpoint = 'mobile' | 'tablet' | 'desktop';
+
+export type TextBreakpoint = Exclude<Breakpoint, 'desktop'>;
+
 type TextDefinition = Record<
-  Breakpoint,
+  TextBreakpoint,
   {
     size: number;
     rows: number;
@@ -39,7 +42,7 @@ export interface TreatTokens {
       large: TextDefinition;
     };
   };
-  responsiveBreakpoint: number;
+  breakpoint: Record<Breakpoint, number>;
   contentWidth: {
     medium: number;
     large: number;
@@ -118,7 +121,7 @@ export interface TreatTokens {
 
 const addUtilsToTheme = (treatTokens: TreatTokens) => ({
   ...treatTokens,
-  utils: makeUtils(treatTokens),
+  utils: makeThemeUtils(treatTokens),
 });
 
 export default (treatTokens: TreatTokens) =>

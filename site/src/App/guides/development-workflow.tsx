@@ -259,13 +259,13 @@ const page: Page = {
           // myComponent.treat.ts
           import { style } from 'sku/treat';
 
-          export const root = style(theme => ({
-            flexBasis: theme.grid * 3,
-
-            ...theme.utils.desktopStyles({
-              flexBasis: theme.grid * 5,
+          export const root = style(theme =>
+            theme.utils.responsiveStyle({
+              mobile: { flexBasis: theme.grid * 3 },
+              tablet: { flexBasis: theme.grid * 5 },
+              desktop: { flexBasis: theme.grid * 8 },
             }),
-          }));
+          );
         `}</Code>
         <Text>
           Because treat files are written in TypeScript, the ‘theme’ object will

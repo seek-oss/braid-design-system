@@ -2,34 +2,32 @@ import { globalStyle, style } from 'sku/treat';
 
 const desktopMenuWidth = '276px';
 const headerHeight = '100px';
-const breakpoint = 984;
-
-const mobile = `screen and (max-width: ${breakpoint - 1}px)`;
-const desktop = `screen and (min-width: ${breakpoint}px)`;
 
 export const isOpen = style({});
 
-export const header = style({
-  background: 'white',
-  zIndex: 3,
-  '@media': {
-    [desktop]: {
+export const header = style(({ utils }) =>
+  utils.responsiveStyle({
+    mobile: {
+      background: 'white',
+      zIndex: 3,
+      selectors: {
+        [`${isOpen} &`]: {
+          position: 'fixed',
+        },
+      },
+    },
+    desktop: {
       position: 'fixed',
       width: desktopMenuWidth,
     },
-  },
-  selectors: {
-    [`${isOpen} &`]: {
-      position: 'fixed',
-    },
-  },
-});
+  }),
+);
 
 export const container = style({
   paddingTop: headerHeight,
 });
 
-export const menu = style({
+export const menu = style(theme => ({
   zIndex: 2,
   top: headerHeight,
   left: 0,
@@ -38,7 +36,7 @@ export const menu = style({
   overflow: 'auto',
   transition: 'opacity .2s ease, transform .2s ease',
   '@media': {
-    [mobile]: {
+    [`screen and (max-width: ${theme.breakpoint.desktop - 1}px)`]: {
       background: 'white',
       opacity: 0,
       transform: 'translateY(-5px)',
@@ -51,39 +49,31 @@ export const menu = style({
         },
       },
     },
-    [desktop]: {
+    [`screen and (min-width: ${theme.breakpoint.desktop}px)`]: {
       width: desktopMenuWidth,
     },
   },
-});
-
-export const menuButton = style({
-  '@media': {
-    [desktop]: {
-      display: 'none !important',
-    },
-  },
-});
+}));
 
 export const logo = style({
   width: 36,
   overflow: 'hidden',
 });
 
-export const content = style({
+export const content = style(theme => ({
   flexGrow: 1,
   paddingBottom: 80,
   '@media': {
-    [mobile]: {
+    [`screen and (max-width: ${theme.breakpoint.desktop - 1}px)`]: {
       opacity: 1,
       pointerEvents: 'auto',
       transition: 'opacity .1s ease, transform .3s ease',
     },
-    [desktop]: {
+    [`screen and (min-width: ${theme.breakpoint.desktop}px)`]: {
       paddingLeft: `${desktopMenuWidth} !important`,
     },
   },
-});
+}));
 
 globalStyle('html, body', {
   margin: 0,

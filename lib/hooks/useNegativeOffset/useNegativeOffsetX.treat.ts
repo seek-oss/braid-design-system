@@ -8,10 +8,18 @@ export const mobile = styleMap(({ space, grid }) => ({
   })),
 }));
 
+export const tablet = styleMap(({ space, grid, utils }) =>
+  mapToStyleProperty({ none: 0, ...space }, 'marginLeft', (x, propertyName) =>
+    utils.responsiveStyle({
+      tablet: { [propertyName]: -(x * grid) },
+    }),
+  ),
+);
+
 export const desktop = styleMap(({ space, grid, utils }) =>
   mapToStyleProperty({ none: 0, ...space }, 'marginLeft', (x, propertyName) =>
-    utils.desktopStyles({
-      [propertyName]: -(x * grid),
+    utils.responsiveStyle({
+      desktop: { [propertyName]: -(x * grid) },
     }),
   ),
 );

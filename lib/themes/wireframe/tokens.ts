@@ -36,7 +36,7 @@ const tokens: TreatTokens = {
             size: 28,
             rows: 9,
           },
-          desktop: {
+          tablet: {
             size: 42,
             rows: 11,
           },
@@ -46,7 +46,7 @@ const tokens: TreatTokens = {
             size: 21,
             rows: 8,
           },
-          desktop: {
+          tablet: {
             size: 28,
             rows: 9,
           },
@@ -56,7 +56,7 @@ const tokens: TreatTokens = {
             size: 21,
             rows: 7,
           },
-          desktop: {
+          tablet: {
             size: 21,
             rows: 7,
           },
@@ -66,7 +66,7 @@ const tokens: TreatTokens = {
             size: 18,
             rows: 7,
           },
-          desktop: {
+          tablet: {
             size: 18,
             rows: 7,
           },
@@ -79,7 +79,7 @@ const tokens: TreatTokens = {
           size: 12,
           rows: 5,
         },
-        desktop: {
+        tablet: {
           size: 12,
           rows: 5,
         },
@@ -89,7 +89,7 @@ const tokens: TreatTokens = {
           size: 14,
           rows: 5,
         },
-        desktop: {
+        tablet: {
           size: 14,
           rows: 5,
         },
@@ -99,7 +99,7 @@ const tokens: TreatTokens = {
           size: 16,
           rows: 7,
         },
-        desktop: {
+        tablet: {
           size: 16,
           rows: 7,
         },
@@ -109,14 +109,18 @@ const tokens: TreatTokens = {
           size: 18,
           rows: 8,
         },
-        desktop: {
+        tablet: {
           size: 18,
           rows: 8,
         },
       },
     },
   },
-  responsiveBreakpoint: 768,
+  breakpoint: {
+    mobile: 0,
+    tablet: 768,
+    desktop: 992,
+  },
   contentWidth: {
     medium: 940,
     large: 1280,

@@ -135,9 +135,9 @@ const ToneDefinition = ({ tone }: { tone: Tone }) => {
         </Column>
       </Columns>
 
-      <Columns space={['xsmall', 'medium']} collapse>
+      <Columns space={['xsmall', 'medium']} collapseBelow="tablet">
         <Column width="content">
-          <Hidden mobile>
+          <Hidden below="tablet">
             <Box width="touchable" />
           </Hidden>
         </Column>
@@ -147,7 +147,11 @@ const ToneDefinition = ({ tone }: { tone: Tone }) => {
 
             {usageTypes.map(usageType =>
               usage[usageType].length > 0 ? (
-                <Columns key={usageType} space={['medium', 'large']} collapse>
+                <Columns
+                  key={usageType}
+                  space={['medium', 'large']}
+                  collapseBelow="tablet"
+                >
                   <Column width="1/5">
                     <Text tone="secondary">{usageType}</Text>
                   </Column>
@@ -193,7 +197,7 @@ export const Tones = () => {
                 width="full"
                 height="touchable"
               />
-              <Hidden mobile>
+              <Hidden below="tablet">
                 <Box className={styles.swatchLabel}>
                   <Text tone="secondary">{tone}</Text>
                 </Box>

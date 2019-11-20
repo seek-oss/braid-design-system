@@ -19,10 +19,22 @@ export const mobile = styleMap(({ space, grid }) =>
   ),
 );
 
+export const tablet = styleMap(({ space, grid, utils }) =>
+  mapToStyleProperty({ none: 0, ...space }, 'marginTop', (x, propertyName) =>
+    utils.responsiveStyle({
+      tablet: beforeFirstChild({
+        [propertyName]: -(x * grid) - preventCollapse,
+      }),
+    }),
+  ),
+);
+
 export const desktop = styleMap(({ space, grid, utils }) =>
   mapToStyleProperty({ none: 0, ...space }, 'marginTop', (x, propertyName) =>
-    utils.desktopStyles(
-      beforeFirstChild({ [propertyName]: -(x * grid) - preventCollapse }),
-    ),
+    utils.responsiveStyle({
+      desktop: beforeFirstChild({
+        [propertyName]: -(x * grid) - preventCollapse,
+      }),
+    }),
   ),
 );
