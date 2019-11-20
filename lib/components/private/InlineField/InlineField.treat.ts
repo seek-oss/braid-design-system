@@ -1,6 +1,12 @@
 import { style } from 'sku/treat';
 import getSize from './getSize';
 
+// Reset the z-index at the parent level to scope
+// overrides internally.
+export const root = style({
+  zIndex: 0,
+});
+
 export const realField = style({
   opacity: 0,
   zIndex: 1,

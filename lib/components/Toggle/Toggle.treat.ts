@@ -4,6 +4,12 @@ import getSize from '../private/InlineField/getSize';
 const toggleWidthRatio = 1.6;
 const anticipationRatio = 0.12;
 
+// Reset the z-index at the parent level to scope
+// overrides internally.
+export const root = style({
+  zIndex: 0,
+});
+
 export const realField = style({
   opacity: 0,
   zIndex: 1,

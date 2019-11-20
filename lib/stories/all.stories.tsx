@@ -49,7 +49,20 @@ req.keys().forEach(filename => {
     stories.add(theme.name, () => (
       <BrowserRouter>
         <BraidProvider theme={theme}>
-          <div style={{ background: 'white' }}>
+          <style type="text/css">
+            {`
+            .noAnimation * {
+              animation-delay: -0.0001s !important;
+              animation-duration: 0s !important;
+              animation-play-state: paused !important;
+            }`}
+          </style>
+          <div
+            className="noAnimation"
+            style={{
+              background: 'white',
+            }}
+          >
             {docs.examples.map(
               (
                 {
