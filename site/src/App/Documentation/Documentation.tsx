@@ -86,18 +86,12 @@ export const Documentation = () => {
               </Box>
             </Link>
 
-            <Box
-              display={[
-                showMenuButton ? 'block' : 'none',
-                showMenuButton ? 'block' : 'none',
-                'none',
-              ]}
-            >
+            <Hidden screen={!showMenuButton} above="tablet">
               <MenuButton
                 open={isMenuOpen}
                 onClick={() => setMenuOpen(!isMenuOpen)}
               />
-            </Box>
+            </Hidden>
           </Box>
 
           <Box
