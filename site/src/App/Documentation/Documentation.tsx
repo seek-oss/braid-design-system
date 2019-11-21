@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useStyles } from 'sku/treat';
 import map from 'lodash/map';
 import guides from '../guides';
 import { Route, useLocation } from 'react-router-dom';
@@ -10,7 +11,7 @@ import { Tones } from './Tones';
 import { Link, ExternalLink } from './Link';
 import { MenuButton } from '../MenuButton/MenuButton';
 import { ConfigConsumer } from '../ConfigContext';
-import * as styles from './Documentation.treat';
+import * as styleRefs from './Documentation.treat';
 
 const { Heading, Text, Box, Hidden, Stack } = components;
 
@@ -53,6 +54,8 @@ const MenuSectionList = ({
 const responsiveGutter = ['gutter', 'large'] as const;
 
 export const Documentation = () => {
+  const styles = useStyles(styleRefs);
+
   const location = useLocation();
   const [isMenuOpen, setMenuOpen] = useState(
     !/^\/(guides|components|icons)\/(.*)/.test(location.pathname),
@@ -83,15 +86,12 @@ export const Documentation = () => {
               </Box>
             </Link>
 
-            <Box
-              display={[showMenuButton ? 'block' : 'none', 'block']}
-              className={styles.menuButton}
-            >
+            <Hidden screen={!showMenuButton} above="tablet">
               <MenuButton
                 open={isMenuOpen}
                 onClick={() => setMenuOpen(!isMenuOpen)}
               />
-            </Box>
+            </Hidden>
           </Box>
 
           <Box

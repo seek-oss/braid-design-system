@@ -32,12 +32,14 @@ const menuHeight = style(({ utils, grid, touchableSize, space }) => {
   const calcMenuHeight = (numSuggestions: number) =>
     grid * (touchableSize * numSuggestions + space.xxsmall);
 
-  return {
-    maxHeight: calcMenuHeight(6),
-    ...utils.desktopStyles({
+  return utils.responsiveStyle({
+    mobile: {
+      maxHeight: calcMenuHeight(6),
+    },
+    tablet: {
       maxHeight: calcMenuHeight(8),
-    }),
-  };
+    },
+  });
 });
 export const menu = [menuBase, menuHeight];
 

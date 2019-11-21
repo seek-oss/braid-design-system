@@ -87,7 +87,7 @@ export const makeTokens = ({
               size: 28,
               rows: 9,
             },
-            desktop: {
+            tablet: {
               size: 42,
               rows: 15,
             },
@@ -97,7 +97,7 @@ export const makeTokens = ({
               size: 24,
               rows: 8,
             },
-            desktop: {
+            tablet: {
               size: 32,
               rows: 10,
             },
@@ -107,7 +107,7 @@ export const makeTokens = ({
               size: 20,
               rows: 7,
             },
-            desktop: {
+            tablet: {
               size: 20,
               rows: 7,
             },
@@ -117,7 +117,7 @@ export const makeTokens = ({
               size: 18,
               rows: 7,
             },
-            desktop: {
+            tablet: {
               size: 18,
               rows: 7,
             },
@@ -130,7 +130,7 @@ export const makeTokens = ({
             size: 12,
             rows: 4,
           },
-          desktop: {
+          tablet: {
             size: 12,
             rows: 4,
           },
@@ -140,7 +140,7 @@ export const makeTokens = ({
             size: 14,
             rows: 5,
           },
-          desktop: {
+          tablet: {
             size: 14,
             rows: 5,
           },
@@ -150,7 +150,7 @@ export const makeTokens = ({
             size: 16,
             rows: 6,
           },
-          desktop: {
+          tablet: {
             size: 16,
             rows: 6,
           },
@@ -160,14 +160,18 @@ export const makeTokens = ({
             size: 18,
             rows: 7,
           },
-          desktop: {
+          tablet: {
             size: 18,
             rows: 7,
           },
         },
       },
     },
-    responsiveBreakpoint: 768,
+    breakpoint: {
+      mobile: 0,
+      tablet: 768,
+      desktop: 992,
+    },
     contentWidth: {
       medium: 940,
       large: 1280,

@@ -55,18 +55,18 @@ export const root = style({
 });
 
 export const size = styleMap(({ utils, typography }) =>
-  mapValues(typography.text, ({ mobile, desktop }) =>
-    utils.responsiveStyles(
-      {
+  mapValues(typography.text, ({ mobile, tablet }) =>
+    utils.responsiveStyle({
+      mobile: {
         width: mobile.size,
         height: mobile.size,
         margin: `0 ${Math.round(mobile.size * 0.15)}px`,
       },
-      {
-        width: desktop.size,
-        height: desktop.size,
-        margin: `0 ${Math.round(desktop.size * 0.15)}px`,
+      tablet: {
+        width: tablet.size,
+        height: tablet.size,
+        margin: `0 ${Math.round(tablet.size * 0.15)}px`,
       },
-    ),
+    }),
   ),
 );

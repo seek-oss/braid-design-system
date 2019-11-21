@@ -3,7 +3,7 @@ import { style, styleMap, ClassRef } from 'sku/treat';
 import { Theme } from 'treat/theme';
 import basekick from './basekick';
 import { getAccessibleVariant, isLight, mapToStyleProperty } from '../../utils';
-import { Breakpoint } from '../../themes/makeTreatTheme';
+import { TextBreakpoint } from '../../themes/makeTreatTheme';
 import { UseBoxStylesProps } from '../../components/Box/useBoxStyles';
 
 export const fontFamily = style(({ typography }) => ({
@@ -35,7 +35,7 @@ const alignTextToGrid = (
   });
 
 const makeTypographyRules = (
-  textDefinition: Record<Breakpoint, TextDefinition>,
+  textDefinition: Record<TextBreakpoint, TextDefinition>,
   { grid, typography, utils }: Theme,
 ) => {
   const mobile = alignTextToGrid(
@@ -45,20 +45,26 @@ const makeTypographyRules = (
     typography.capHeightScale,
   );
 
-  const desktop = alignTextToGrid(
-    textDefinition.desktop,
+  const tablet = alignTextToGrid(
+    textDefinition.tablet,
     grid,
     typography.descenderHeightScale,
     typography.capHeightScale,
   );
 
   return {
-    base: utils.responsiveStyles(mobile.base, desktop.base),
-    baseline: utils.responsiveStyles(mobile.baseline, desktop.baseline),
-    cropFirstLine: utils.responsiveStyles(
-      mobile.cropFirstLine,
-      desktop.cropFirstLine,
-    ),
+    base: utils.responsiveStyle({
+      mobile: mobile.base,
+      tablet: tablet.base,
+    }),
+    baseline: utils.responsiveStyle({
+      mobile: mobile.baseline,
+      tablet: tablet.baseline,
+    }),
+    cropFirstLine: utils.responsiveStyle({
+      mobile: mobile.cropFirstLine,
+      tablet: tablet.cropFirstLine,
+    }),
   };
 };
 
@@ -232,15 +238,15 @@ const makeTouchableSpacing = (touchableHeight: number, textHeight: number) => {
 export const touchable = styleMap(
   ({ grid, typography, touchableSize, utils }) =>
     mapValues(typography.text, textDefinition =>
-      utils.responsiveStyles(
-        makeTouchableSpacing(
+      utils.responsiveStyle({
+        mobile: makeTouchableSpacing(
           grid * touchableSize,
           grid * textDefinition.mobile.rows,
         ),
-        makeTouchableSpacing(
+        tablet: makeTouchableSpacing(
           grid * touchableSize,
-          grid * textDefinition.desktop.rows,
+          grid * textDefinition.tablet.rows,
         ),
-      ),
+      }),
     ),
 );

@@ -1527,7 +1527,9 @@ exports[`Columns 1`] = `
   children: 
     | ReactElement<ColumnProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)>
     | ReactElement<ColumnProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)>[]
-  collapse?: boolean
+  collapseBelow?: 
+    | "desktop"
+    | "tablet"
   reverse?: boolean
   space: ResponsiveProp<
     | "gutter"
@@ -1816,10 +1818,14 @@ exports[`Heading 1`] = `
 
 exports[`Hidden 1`] = `
 {
+  above?: 
+    | "mobile"
+    | "tablet"
+  below?: 
+    | "desktop"
+    | "tablet"
   children: ReactNode
-  desktop?: boolean
   inline?: boolean
-  mobile?: boolean
   print?: boolean
   screen?: boolean
 }

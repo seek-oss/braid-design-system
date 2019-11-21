@@ -12,7 +12,13 @@ export interface ColumnProps {
 
 export const Column = ({ children, width }: ColumnProps) => {
   const styles = useStyles(styleRefs);
-  const { collapse, mobileSpace, desktopSpace } = useContext(ColumnsContext);
+  const {
+    collapseMobile,
+    collapseTablet,
+    mobileSpace,
+    tabletSpace,
+    desktopSpace,
+  } = useContext(ColumnsContext);
 
   return (
     <Box
@@ -20,8 +26,20 @@ export const Column = ({ children, width }: ColumnProps) => {
       className={classnames(styles.column, styles.width[width!])}
     >
       <Box
-        paddingLeft={[collapse ? 'none' : mobileSpace, desktopSpace]}
-        paddingTop={collapse ? [mobileSpace, 'none'] : undefined}
+        paddingLeft={[
+          collapseMobile ? 'none' : mobileSpace,
+          collapseTablet ? 'none' : tabletSpace,
+          desktopSpace,
+        ]}
+        paddingTop={
+          collapseMobile || collapseTablet
+            ? [
+                collapseMobile ? mobileSpace : 'none',
+                collapseTablet ? tabletSpace : 'none',
+                'none',
+              ]
+            : undefined
+        }
         height="full"
         className={styles.columnContent}
       >
