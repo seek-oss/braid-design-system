@@ -5,6 +5,7 @@ import { OverflowMenu } from './OverflowMenu';
 import { OverflowMenuItem } from '../OverflowMenuItem/OverflowMenuItem';
 
 const docs: ComponentDocs = {
+  category: 'Interaction',
   examples: [
     {
       label: 'Default',

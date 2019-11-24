@@ -32,6 +32,7 @@ interface Value {
 }
 
 const docs: ComponentDocs = {
+  category: 'Interaction',
   migrationGuide: true,
   examples: [
     {

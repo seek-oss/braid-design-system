@@ -7,6 +7,7 @@ const handler = () => {
 };
 
 const docs: ComponentDocs = {
+  category: 'Interaction',
   migrationGuide: true,
   examples: [
     {

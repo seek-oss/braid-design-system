@@ -3,6 +3,7 @@ import { ComponentDocs } from '../../../site/src/types';
 import { Alert } from './Alert';
 
 const docs: ComponentDocs = {
+  category: 'Content',
   migrationGuide: true,
   examples: [
     {

@@ -3,6 +3,7 @@ import { ComponentDocs } from '../../../../site/src/types';
 import { IconSearch } from './IconSearch';
 
 const docs: ComponentDocs = {
+  category: 'Icon',
   migrationGuide: true,
   foundation: true,
   storybook: false,

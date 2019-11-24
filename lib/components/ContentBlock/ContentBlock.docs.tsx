@@ -5,6 +5,7 @@ import { HideCode } from '../private/HideCode';
 import { ContentBlock } from './ContentBlock';
 
 const docs: ComponentDocs = {
+  category: 'Layout',
   examples: [
     {
       label: 'Default Content Block',

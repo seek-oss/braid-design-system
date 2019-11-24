@@ -32,6 +32,7 @@ const Header = ({ children = 'Content' }: { children?: ReactNode }) => (
 );
 
 const docs: ComponentDocs = {
+  category: 'Layout',
   migrationGuide: true,
   examples: [
     ...spaces.map(space => ({

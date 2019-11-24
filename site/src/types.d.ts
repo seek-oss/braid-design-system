@@ -18,6 +18,7 @@ export interface Page {
 }
 
 export interface ComponentDocs {
+  category: 'Logic' | 'Layout' | 'Content' | 'Interaction' | 'Icon';
   migrationGuide?: boolean;
   foundation?: boolean;
   storybook?: boolean;

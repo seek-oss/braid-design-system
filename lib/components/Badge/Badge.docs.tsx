@@ -3,6 +3,7 @@ import { ComponentDocs } from '../../../site/src/types';
 import { Badge } from './Badge';
 
 const docs: ComponentDocs = {
+  category: 'Content',
   migrationGuide: true,
   examples: [
     {

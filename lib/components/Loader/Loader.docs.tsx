@@ -5,6 +5,7 @@ import { background as boxBackgrounds } from '../Box/useBoxStyles.treat';
 import { Box } from '../Box/Box';
 
 const docs: ComponentDocs = {
+  category: 'Content',
   examples: [
     {
       label: 'Default',

@@ -3,6 +3,7 @@ import { ComponentDocs } from '../../../../site/src/types';
 import { IconStar } from './IconStar';
 
 const docs: ComponentDocs = {
+  category: 'Icon',
   migrationGuide: true,
   foundation: true,
   storybook: false,

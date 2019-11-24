@@ -162,6 +162,7 @@ const iconComponentsDir = path.join(baseDir, 'lib/components/icons');
           import { ${iconName} } from './${iconName}';
 
           const docs: ComponentDocs = {
+            category: 'Icon',
             migrationGuide: true,
             foundation: true,
             storybook: false,

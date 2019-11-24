@@ -3,6 +3,7 @@ import { ComponentDocs } from '../../../site/src/types';
 import { Divider } from './Divider';
 
 const docs: ComponentDocs = {
+  category: 'Layout',
   examples: [
     {
       label: 'Standard Divider',

@@ -3,6 +3,7 @@ import { ComponentDocs } from '../../../site/src/types';
 import { FieldMessage } from './FieldMessage';
 
 const docs: ComponentDocs = {
+  category: 'Interaction',
   migrationGuide: true,
   examples: [
     {

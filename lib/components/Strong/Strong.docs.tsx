@@ -4,6 +4,7 @@ import { Strong } from './Strong';
 import { Text } from '../Text/Text';
 
 const docs: ComponentDocs = {
+  category: 'Content',
   migrationGuide: true,
   examples: [
     {

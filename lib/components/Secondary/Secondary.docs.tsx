@@ -4,6 +4,7 @@ import { Secondary } from './Secondary';
 import { Text } from '../Text/Text';
 
 const docs: ComponentDocs = {
+  category: 'Content',
   migrationGuide: true,
   examples: [
     {

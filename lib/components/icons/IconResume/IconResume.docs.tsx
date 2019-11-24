@@ -3,6 +3,7 @@ import { ComponentDocs } from '../../../../site/src/types';
 import { IconResume } from './IconResume';
 
 const docs: ComponentDocs = {
+  category: 'Icon',
   migrationGuide: true,
   foundation: true,
   storybook: false,
