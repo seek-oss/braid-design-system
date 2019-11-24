@@ -5,6 +5,7 @@ import { Text } from '../Text/Text';
 import { Stack } from '../Stack/Stack';
 
 const docs: ComponentDocs = {
+  category: 'Layout',
   examples: [
     {
       label: 'Hidden below tablet',

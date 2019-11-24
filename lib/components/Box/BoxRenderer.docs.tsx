@@ -4,6 +4,7 @@ import { BoxRenderer } from './BoxRenderer';
 import { Text } from '../Text/Text';
 
 const docs: ComponentDocs = {
+  category: 'Layout',
   examples: [
     {
       label: 'Standard BoxRenderer',

@@ -8,6 +8,7 @@ type Space = keyof typeof tokens.space;
 const spaceScale = Object.keys(tokens.space) as Space[];
 
 const docs: ComponentDocs = {
+  category: 'Layout',
   storybook: false,
   examples: spaceScale.map(
     (space): ComponentExample => ({

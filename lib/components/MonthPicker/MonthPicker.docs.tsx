@@ -11,6 +11,7 @@ const Container = ({ children }: { children: ReactNode }) => (
 );
 
 const docs: ComponentDocs = {
+  category: 'Interaction',
   migrationGuide: true,
   examples: [
     {

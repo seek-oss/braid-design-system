@@ -8,6 +8,7 @@ const Container = ({ children }: { children: ReactNode }) => (
 );
 
 const docs: ComponentDocs = {
+  category: 'Interaction',
   examples: [
     {
       label: 'Standard Field Label',

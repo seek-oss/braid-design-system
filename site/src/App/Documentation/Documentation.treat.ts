@@ -1,6 +1,6 @@
 import { globalStyle, style } from 'sku/treat';
 
-const desktopMenuWidth = '276px';
+const desktopMenuWidth = '284px';
 const headerHeight = '100px';
 
 export const isOpen = style({});

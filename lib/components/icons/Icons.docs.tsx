@@ -27,6 +27,7 @@ const Icons = ({ tone }: { tone?: UseIconProps['tone'] }) => (
 );
 
 const docs: ComponentDocs = {
+  category: 'Icon',
   migrationGuide: true,
   foundation: true,
   examples: [

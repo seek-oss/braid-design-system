@@ -4,6 +4,7 @@ import { Radio } from './Radio';
 import { Text } from '../Text/Text';
 
 const docs: ComponentDocs = {
+  category: 'Interaction',
   migrationGuide: true,
   examples: [
     {

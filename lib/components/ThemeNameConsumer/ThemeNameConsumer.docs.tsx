@@ -3,6 +3,7 @@ import { ComponentDocs } from '../../../site/src/types';
 import { ThemeNameConsumer } from './ThemeNameConsumer';
 
 const docs: ComponentDocs = {
+  category: 'Logic',
   storybook: false,
   examples: [
     {

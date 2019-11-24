@@ -19,6 +19,7 @@ const Item = () => (
 );
 
 const docs: ComponentDocs = {
+  category: 'Layout',
   examples: [
     ...spaces.map(space => ({
       label: `Space: ${space}`,

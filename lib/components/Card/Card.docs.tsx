@@ -5,6 +5,7 @@ import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';
 
 const docs: ComponentDocs = {
+  category: 'Layout',
   migrationGuide: true,
   examples: [
     {

@@ -5,6 +5,7 @@ import { TextLinkRenderer } from './TextLinkRenderer';
 import { Text } from '../Text/Text';
 
 const docs: ComponentDocs = {
+  category: 'Interaction',
   examples: [
     {
       label: 'TextLink with Custom Renderer',

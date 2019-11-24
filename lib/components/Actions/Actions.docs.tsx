@@ -5,6 +5,7 @@ import { Button } from '../Button/Button';
 import { TextLink } from '../TextLink/TextLink';
 
 const docs: ComponentDocs = {
+  category: 'Interaction',
   migrationGuide: true,
   examples: [
     {

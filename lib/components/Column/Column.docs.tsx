@@ -16,6 +16,7 @@ const Content = ({ children = 'Column' }) => (
 );
 
 const docs: ComponentDocs = {
+  category: 'Layout',
   examples: [
     {
       label: 'Standard Columns',

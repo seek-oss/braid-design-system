@@ -10,6 +10,7 @@ import { background as boxBackgrounds } from '../Box/useBoxStyles.treat';
 import { Box } from '../Box/Box';
 
 const docs: ComponentDocs = {
+  category: 'Interaction',
   migrationGuide: true,
   examples: [
     {
