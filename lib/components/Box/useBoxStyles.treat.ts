@@ -295,3 +295,27 @@ export const cursor = styleMap({
 export const pointerEvents = styleMap({
   none: { pointerEvents: 'none' },
 });
+
+const textAlignRules = {
+  left: 'left',
+  center: 'center',
+  right: 'right',
+};
+
+export const textAlign = styleMap(
+  mapToStyleProperty(textAlignRules, 'textAlign'),
+);
+export const textAlignTablet = styleMap(({ utils: { responsiveStyle } }) =>
+  mapToStyleProperty(textAlignRules, 'textAlign', (value, propertyName) =>
+    responsiveStyle({
+      tablet: { [propertyName]: value },
+    }),
+  ),
+);
+export const textAlignDesktop = styleMap(({ utils: { responsiveStyle } }) =>
+  mapToStyleProperty(textAlignRules, 'textAlign', (value, propertyName) =>
+    responsiveStyle({
+      desktop: { [propertyName]: value },
+    }),
+  ),
+);

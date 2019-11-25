@@ -955,6 +955,11 @@ exports[`Box 1`] = `
   suppressHydrationWarning?: boolean
   tabIndex?: number
   target?: string
+  textAlign?: ResponsiveProp<
+    | "center"
+    | "left"
+    | "right"
+  >
   title?: string
   transform?: "touchable"
   transition?: 
@@ -1384,6 +1389,11 @@ exports[`BoxRenderer 1`] = `
     | "absolute"
     | "fixed"
     | "relative"
+  textAlign?: ResponsiveProp<
+    | "center"
+    | "left"
+    | "right"
+  >
   transform?: "touchable"
   transition?: 
     | "fast"
@@ -1626,6 +1636,11 @@ exports[`FieldMessage 1`] = `
 exports[`Heading 1`] = `
 {
   _LEGACY_SPACE_?: boolean
+  align?: ResponsiveProp<
+    | "center"
+    | "left"
+    | "right"
+  >
   children: ReactNode
   component?: 
     | "a"
@@ -3192,6 +3207,11 @@ exports[`Strong 1`] = `
 exports[`Text 1`] = `
 {
   _LEGACY_SPACE_?: boolean
+  align?: ResponsiveProp<
+    | "center"
+    | "left"
+    | "right"
+  >
   baseline?: boolean
   children?: ReactNode
   component?: 

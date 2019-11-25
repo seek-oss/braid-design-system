@@ -19,6 +19,7 @@ export interface HeadingProps {
   children: ReactNode;
   level: HeadingLevel;
   weight?: HeadingWeight;
+  align?: BoxProps['textAlign'];
   component?: BoxProps['component'];
   id?: string;
   _LEGACY_SPACE_?: boolean;
@@ -41,6 +42,7 @@ export const Heading = ({
   weight,
   component,
   children,
+  align,
   id,
   _LEGACY_SPACE_ = false,
 }: HeadingProps) => (
@@ -49,6 +51,7 @@ export const Heading = ({
       id={id}
       component={component || resolveDefaultComponent[level]}
       paddingBottom={_LEGACY_SPACE_ ? resolvePaddingForLevel(level) : undefined}
+      textAlign={align}
       className={useHeading({ weight, level, baseline: true, _LEGACY_SPACE_ })}
     >
       {children}

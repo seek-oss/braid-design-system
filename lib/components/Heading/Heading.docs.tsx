@@ -3,7 +3,10 @@ import { ComponentDocs } from '../../../site/src/types';
 import { Heading } from './Heading';
 import { Box } from '../Box/Box';
 import { Stack } from '../Stack/Stack';
-import { background as boxBackgrounds } from '../Box/useBoxStyles.treat';
+import {
+  background as boxBackgrounds,
+  textAlign,
+} from '../Box/useBoxStyles.treat';
 import { heading as headingLevels } from '../../hooks/typography/typography.treat';
 
 const Container = ({ children }: { children: ReactNode }) => (
@@ -84,6 +87,36 @@ const docs: ComponentDocs = {
           </Stack>
         );
       },
+    },
+    {
+      label: 'Heading Alignment',
+      docsSite: false,
+      Container,
+      Example: () => {
+        const alignments = Object.keys(textAlign) as Array<
+          keyof typeof textAlign
+        >;
+
+        return (
+          <Stack space="medium">
+            {alignments.map(alignment => (
+              <Heading level="4" align={alignment} key={alignment}>
+                {alignment}
+              </Heading>
+            ))}
+          </Stack>
+        );
+      },
+    },
+    {
+      label: 'Heading Alignment (responsive)',
+      docsSite: false,
+      Container,
+      Example: () => (
+        <Heading level="4" align={['right', 'center', 'left']}>
+          Right aligned mobile, center on tablet, left on desktop
+        </Heading>
+      ),
     },
     {
       label: 'Heading Spacing (Legacy)',

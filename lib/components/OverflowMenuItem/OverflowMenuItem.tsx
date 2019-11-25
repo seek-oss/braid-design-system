@@ -131,6 +131,7 @@ export const OverflowMenuItem = ({
       paddingX="small"
       background={isHighlighted ? 'selection' : undefined}
       cursor="pointer"
+      textAlign="left"
       className={classnames(
         useTouchableSpace(menuItemTextSize),
         styles.menuItem,

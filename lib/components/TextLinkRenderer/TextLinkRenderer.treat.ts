@@ -13,7 +13,6 @@ export const underlineOnHoverOnly = style({
 
 export const button = style({
   outline: 'none',
-  textAlign: 'center',
 });
 
 export const focusOverlay = style({

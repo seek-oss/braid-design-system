@@ -32,6 +32,7 @@ export interface UseBoxStylesProps {
   flexDirection?: ResponsiveProp<keyof typeof styleRefs.flexDirection>;
   alignItems?: ResponsiveProp<keyof typeof styleRefs.alignItems>;
   justifyContent?: ResponsiveProp<keyof typeof styleRefs.justifyContent>;
+  textAlign?: ResponsiveProp<keyof typeof styleRefs.textAlign>;
   borderRadius?: keyof typeof styleRefs.borderRadius;
   background?: keyof typeof styleRefs.background;
   boxShadow?: keyof typeof styleRefs.boxShadow;
@@ -64,6 +65,7 @@ export const useBoxStyles = ({
   flexDirection,
   alignItems,
   justifyContent,
+  textAlign,
   borderRadius,
   background,
   boxShadow,
@@ -184,6 +186,13 @@ export const useBoxStyles = ({
         styles.justifyContent,
         styles.justifyContentTablet,
         styles.justifyContentDesktop,
+      ),
+    textAlign &&
+      resolveResponsiveProp(
+        textAlign,
+        styles.textAlign,
+        styles.textAlignTablet,
+        styles.textAlignDesktop,
       ),
   );
 };
