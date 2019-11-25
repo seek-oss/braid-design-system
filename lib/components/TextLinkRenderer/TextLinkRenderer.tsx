@@ -121,6 +121,7 @@ function ButtonLink({ children }: TextLinkRendererProps) {
               width: 'full',
               paddingX: 'small',
               borderRadius: 'standard',
+              textAlign: 'center',
             }),
           ),
         })}

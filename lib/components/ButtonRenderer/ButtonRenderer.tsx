@@ -98,6 +98,7 @@ const ButtonChildren = ({ children }: ButtonChildrenProps) => {
         position="relative"
         paddingX="gutter"
         pointerEvents="none"
+        textAlign="center"
         className={classnames(styles.content, useTouchableSpace('standard'))}
       >
         <Text baseline={false} weight="medium" tone={buttonVariant.textTone}>
@@ -108,6 +109,7 @@ const ButtonChildren = ({ children }: ButtonChildrenProps) => {
               component="span"
               display="inlineBlock"
               position="relative"
+              textAlign="left"
               className={styles.loading}
             >
               <Box
