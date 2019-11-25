@@ -298,8 +298,8 @@ export const pointerEvents = styleMap({
 
 const textAlignRules = {
   left: 'left',
-  right: 'right',
   center: 'center',
+  right: 'right',
 };
 
 export const textAlign = styleMap(
