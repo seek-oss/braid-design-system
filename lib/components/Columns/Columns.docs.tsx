@@ -106,6 +106,88 @@ const docs: ComponentDocs = {
       ),
     },
     {
+      label: 'Vertically align to center',
+      Example: () => (
+        <Columns space="small" alignY="center">
+          <Column>
+            <HideCode>
+              <Content>Content</Content>
+              <Content>Content</Content>
+            </HideCode>
+          </Column>
+          <Column>
+            <HideCode>
+              <Content>Content</Content>
+              <Content>Content</Content>
+              <Content>Content</Content>
+            </HideCode>
+          </Column>
+        </Columns>
+      ),
+    },
+    {
+      label: 'Vertically align to bottom',
+      Example: () => (
+        <Columns space="small" alignY="bottom">
+          <Column>
+            <HideCode>
+              <Content>Content</Content>
+              <Content>Content</Content>
+            </HideCode>
+          </Column>
+          <Column>
+            <HideCode>
+              <Content>Content</Content>
+              <Content>Content</Content>
+              <Content>Content</Content>
+            </HideCode>
+          </Column>
+        </Columns>
+      ),
+    },
+    {
+      label:
+        'Responsive alignment (e.g. top on mobile, center on tablet upwards)',
+      Example: () => (
+        <Columns space="small" alignY={['top', 'center']}>
+          <Column>
+            <HideCode>
+              <Content>Content</Content>
+              <Content>Content</Content>
+            </HideCode>
+          </Column>
+          <Column>
+            <HideCode>
+              <Content>Content</Content>
+              <Content>Content</Content>
+              <Content>Content</Content>
+            </HideCode>
+          </Column>
+        </Columns>
+      ),
+    },
+    {
+      label: 'Alignment + collapse',
+      docsSite: false,
+      Example: () => (
+        <Columns space="small" collapseBelow="tablet" alignY="center">
+          <Column>
+            <HideCode>
+              <Content>Content</Content>
+              <Content>Content</Content>
+            </HideCode>
+          </Column>
+          <Column>
+            <HideCode>
+              <Content>Content</Content>
+              <Content>Content</Content>
+              <Content>Content</Content>
+            </HideCode>
+          </Column>
+        </Columns>
+      ),
+    },
+    {
       label: 'Collapse below tablet',
       Example: () => (
         <Columns space="small" collapseBelow="tablet">

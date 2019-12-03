@@ -3,11 +3,15 @@ import { Box } from '../Box/Box';
 import { ColumnProps } from '../Column/Column';
 import { Space, ResponsiveSpace } from '../Box/useBoxStyles';
 import { useNegativeOffsetX } from '../../hooks/useNegativeOffset/useNegativeOffset';
-import { normaliseResponsiveProp } from '../../utils/responsiveProp';
+import {
+  normaliseResponsiveProp,
+  ResponsiveProp,
+} from '../../utils/responsiveProp';
 import {
   resolveResponsiveRangeProps,
   ResponsiveRangeProps,
 } from '../../utils/responsiveRangeProps';
+import { AlignY, alignYToFlexAlign } from '../../utils/align';
 
 interface ColumnsContextValue {
   collapseMobile: boolean;
@@ -28,6 +32,7 @@ export interface ColumnsProps {
   children: Array<ReactElement<ColumnProps>> | ReactElement<ColumnProps>;
   collapseBelow?: ResponsiveRangeProps['below'];
   reverse?: boolean;
+  alignY?: ResponsiveProp<AlignY>;
   space: ResponsiveSpace;
 }
 
@@ -36,6 +41,7 @@ export const Columns = ({
   collapseBelow,
   reverse = false,
   space = 'none',
+  alignY,
 }: ColumnsProps) => {
   const [mobileSpace, tabletSpace, desktopSpace] = normaliseResponsiveProp(
     space,
@@ -70,6 +76,7 @@ export const Columns = ({
   return (
     <Box
       display="flex"
+      alignItems={alignYToFlexAlign(alignY)}
       flexDirection={[
         collapseMobile ? 'column' : 'row',
         collapseTablet ? 'column' : rowReverseTablet ? 'rowReverse' : 'row',
