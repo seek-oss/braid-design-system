@@ -22,7 +22,7 @@ export const Bullet = ({ children }: BulletProps) => {
       component={component}
       className={classnames(
         useText({ size, baseline: true }),
-        useStackItem({ component, space }),
+        useStackItem({ component, space, align: 'left' }),
         styles.listItem,
       )}
     >

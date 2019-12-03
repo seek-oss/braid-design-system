@@ -9,15 +9,28 @@ import * as styleRefs from './Stack.treat';
 import { Box } from '../Box/Box';
 
 export interface UseStackProps {
+  align: ResponsiveProp<Align>;
   component: UseBoxStylesProps['component'];
   space: UseBoxStylesProps['paddingBottom'];
 }
 
-export const useStackItem = ({ component, space }: UseStackProps) => {
+export const useStackItem = ({ align, component, space }: UseStackProps) => {
   const styles = useStyles(styleRefs);
 
   return classnames(
-    useBoxStyles({ component, paddingBottom: space }),
+    useBoxStyles({
+      component,
+      paddingBottom: space,
+      // If we're aligned left across all screen sizes,
+      // there's actually no alignment work to do.
+      ...(align === 'left'
+        ? {}
+        : {
+            display: mapResponsiveProp(align, alignToDisplay),
+            flexDirection: 'column',
+            alignItems: alignToFlexAlign(align),
+          }),
+    }),
     styles.excludingLast,
   );
 };
@@ -41,10 +54,7 @@ export const Stack = ({
   align = 'left',
   dividers = false,
 }: StackProps) => {
-  const stackClasses = useStackItem({
-    component: 'div',
-    space,
-  });
+  const stackClasses = useStackItem({ component: 'div', space, align });
   const stackItems = Children.toArray(children);
 
   if (stackItems.length <= 1 && align === 'left') {
@@ -54,26 +64,14 @@ export const Stack = ({
   return (
     <div>
       {stackItems.map((child, index) => (
-        <Box
-          className={dividers ? undefined : stackClasses}
-          key={index}
-          // If we're aligned left across all screen sizes,
-          // there's actually no work to do.
-          {...(align === 'left'
-            ? {}
-            : {
-                display: mapResponsiveProp(align, alignToDisplay),
-                flexDirection: 'column',
-                alignItems: alignToFlexAlign(align),
-              })}
-        >
+        <div className={dividers ? undefined : stackClasses} key={index}>
           {dividers && index > 0 ? (
             <Box width="full" paddingY={space}>
               <Divider />
             </Box>
           ) : null}
           {child}
-        </Box>
+        </div>
       ))}
     </div>
   );
