@@ -57,6 +57,61 @@ const docs: ComponentDocs = {
         </Inline>
       ),
     },
+    {
+      label: 'Align to center',
+      Container,
+      Example: () => (
+        <Inline space="small" align="center">
+          <Item />
+          <Item />
+          <Item />
+          <Item />
+          <Item />
+          <Item />
+          <Item />
+          <Item />
+          <Item />
+          <Item />
+        </Inline>
+      ),
+    },
+    {
+      label: 'Align to right',
+      Container,
+      Example: () => (
+        <Inline space="small" align="right">
+          <Item />
+          <Item />
+          <Item />
+          <Item />
+          <Item />
+          <Item />
+          <Item />
+          <Item />
+          <Item />
+          <Item />
+        </Inline>
+      ),
+    },
+    {
+      label:
+        'Responsive alignment (e.g. center on mobile, left from tablet upwards)',
+      Container,
+      Example: () => (
+        <Inline space="small" align={['center', 'left']}>
+          <Item />
+          <Item />
+          <Item />
+          <Item />
+          <Item />
+          <Item />
+          <Item />
+          <Item />
+          <Item />
+          <Item />
+        </Inline>
+      ),
+    },
   ],
 };
 

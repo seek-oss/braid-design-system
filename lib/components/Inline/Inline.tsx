@@ -7,14 +7,17 @@ import {
   useNegativeOffsetX,
   useNegativeOffsetY,
 } from '../../hooks/useNegativeOffset/useNegativeOffset';
+import { ResponsiveProp } from '../../utils/responsiveProp';
+import { Align, alignToFlexAlign } from '../../utils/align';
 import * as styleRefs from './Inline.treat';
 
 export interface InlineProps {
+  align?: ResponsiveProp<Align>;
   space: ResponsiveSpace;
   children: ReactNode;
 }
 
-export const Inline = ({ space = 'none', children }: InlineProps) => {
+export const Inline = ({ space = 'none', align, children }: InlineProps) => {
   const styles = useStyles(styleRefs);
   const negativeOffsetX = useNegativeOffsetX(space);
   const negativeOffsetY = useNegativeOffsetY(space);
@@ -23,6 +26,7 @@ export const Inline = ({ space = 'none', children }: InlineProps) => {
     <Box className={classnames(negativeOffsetY)}>
       <Box
         display="flex"
+        justifyContent={alignToFlexAlign(align)}
         className={classnames(styles.flexWrap, negativeOffsetX)}
       >
         {Children.map(children, child =>

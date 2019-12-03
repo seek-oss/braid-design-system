@@ -1,5 +1,6 @@
 import {
   normaliseResponsiveProp,
+  mapResponsiveProp,
   resolveResponsiveProp,
 } from './responsiveProp';
 
@@ -12,6 +13,27 @@ describe('normaliseResponsiveProp', () => {
 
   test.each(testData)('%p returns %p', (props, expected) => {
     expect(normaliseResponsiveProp(props)).toEqual(expected);
+  });
+});
+
+describe('mapResponsiveProp', () => {
+  const mockMap = {
+    foo: 'mappedFoo',
+    bar: 'mappedBar',
+    baz: 'mappedBaz',
+  };
+
+  const testData = [
+    ['foo', mockMap, 'mappedFoo'],
+    [['foo', 'foo'], mockMap, ['mappedFoo', 'mappedFoo', 'mappedFoo']],
+    [['foo', 'foo', 'foo'], mockMap, ['mappedFoo', 'mappedFoo', 'mappedFoo']],
+    [['foo', 'bar'], mockMap, ['mappedFoo', 'mappedBar', 'mappedBar']],
+    [['foo', 'bar', 'bar'], mockMap, ['mappedFoo', 'mappedBar', 'mappedBar']],
+    [['foo', 'bar', 'baz'], mockMap, ['mappedFoo', 'mappedBar', 'mappedBaz']],
+  ] as const;
+
+  test.each(testData)('%p returns %p', (props, map, expected) => {
+    expect(mapResponsiveProp(props, map)).toEqual(expected);
   });
 });
 

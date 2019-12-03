@@ -1534,6 +1534,11 @@ exports[`Column 1`] = `
 
 exports[`Columns 1`] = `
 {
+  alignY?: ResponsiveProp<
+    | "bottom"
+    | "center"
+    | "top"
+  >
   children: 
     | ReactElement<ColumnProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)>
     | ReactElement<ColumnProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)>[]
@@ -3076,6 +3081,11 @@ exports[`IconVideo 1`] = `
 
 exports[`Inline 1`] = `
 {
+  align?: ResponsiveProp<
+    | "center"
+    | "left"
+    | "right"
+  >
   children: ReactNode
   space: ResponsiveProp<
     | "gutter"
@@ -3181,6 +3191,11 @@ exports[`Secondary 1`] = `
 
 exports[`Stack 1`] = `
 {
+  align?: ResponsiveProp<
+    | "center"
+    | "left"
+    | "right"
+  >
   children: ReactNode
   dividers?: boolean
   space: ResponsiveProp<

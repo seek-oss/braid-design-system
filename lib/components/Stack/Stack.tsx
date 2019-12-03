@@ -2,6 +2,8 @@ import React, { ReactNode, Children, Fragment } from 'react';
 import classnames from 'classnames';
 import { useStyles } from 'sku/treat';
 import { Divider } from '../Divider/Divider';
+import { Align, alignToFlexAlign } from '../../utils/align';
+import { ResponsiveProp, mapResponsiveProp } from '../../utils/responsiveProp';
 import { useBoxStyles, UseBoxStylesProps } from '../Box/useBoxStyles';
 import * as styleRefs from './Stack.treat';
 import { Box } from '../Box/Box';
@@ -20,34 +22,58 @@ export const useStackItem = ({ component, space }: UseStackProps) => {
   );
 };
 
+const alignToDisplay = {
+  left: 'block',
+  center: 'flex',
+  right: 'flex',
+} as const;
+
 export interface StackProps {
   children: ReactNode;
   space: UseBoxStylesProps['padding'];
+  align?: ResponsiveProp<Align>;
   dividers?: boolean;
 }
 
-export const Stack = ({ children, space, dividers = false }: StackProps) => {
+export const Stack = ({
+  children,
+  space,
+  align = 'left',
+  dividers = false,
+}: StackProps) => {
   const stackClasses = useStackItem({
     component: 'div',
     space,
   });
   const stackItems = Children.toArray(children);
 
-  if (stackItems.length <= 1) {
+  if (stackItems.length <= 1 && align === 'left') {
     return <Fragment>{stackItems}</Fragment>;
   }
 
   return (
     <div>
       {stackItems.map((child, index) => (
-        <div className={dividers ? undefined : stackClasses} key={index}>
+        <Box
+          className={dividers ? undefined : stackClasses}
+          key={index}
+          // If we're aligned left across all screen sizes,
+          // there's actually no work to do.
+          {...(align === 'left'
+            ? {}
+            : {
+                display: mapResponsiveProp(align, alignToDisplay),
+                flexDirection: 'column',
+                alignItems: alignToFlexAlign(align),
+              })}
+        >
           {dividers && index > 0 ? (
-            <Box paddingY={space}>
+            <Box width="full" paddingY={space}>
               <Divider />
             </Box>
           ) : null}
           {child}
-        </div>
+        </Box>
       ))}
     </div>
   );

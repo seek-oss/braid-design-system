@@ -24,6 +24,29 @@ export const normaliseResponsiveProp = <Keys extends string>(
   throw new Error(`Invalid responsive prop length: ${JSON.stringify(value)}`);
 };
 
+export const mapResponsiveProp = <
+  Keys extends string,
+  MappedValues extends string
+>(
+  value: ResponsiveProp<Keys> | undefined,
+  valueMap: Record<Keys, MappedValues>,
+): ResponsiveProp<MappedValues> | undefined => {
+  if (value === undefined) {
+    return value;
+  }
+
+  // If it's not a responsive prop, just map it directly
+  if (typeof value === 'string') {
+    return valueMap[value];
+  }
+
+  const [mobileValue, tabletValue, desktopValue] = normaliseResponsiveProp(
+    value,
+  );
+
+  return [valueMap[mobileValue], valueMap[tabletValue], valueMap[desktopValue]];
+};
+
 export const resolveResponsiveProp = <Keys extends string>(
   value: ResponsiveProp<Keys>,
   mobileAtoms: Record<Keys, string>,
