@@ -33,6 +33,7 @@ export const makeTokens = ({
   const focus = blue3;
   const link = blue2;
   const linkHover = blue2;
+  const linkVisited = '#3f11a3';
   const selection = blue5;
   const secondary = grey2;
   const neutral = grey2;
@@ -198,6 +199,7 @@ export const makeTokens = ({
       foreground: {
         link,
         linkHover,
+        linkVisited,
         neutral: grey1,
         neutralInverted: white,
         formAccent,

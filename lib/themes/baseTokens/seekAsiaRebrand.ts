@@ -56,6 +56,7 @@ export const makeTokens = ({
   const formAccent = palette.formAccent;
   const formAccentDisabled = palette.saGrayLight;
   const link = palette.saLink;
+  const linkVisited = palette.saPurple;
   const disabled = palette.saGrayLighter;
   const textNeutral = palette.saGrayDarker;
   const secondary = palette.saGrayDark;
@@ -224,6 +225,7 @@ export const makeTokens = ({
       foreground: {
         link,
         linkHover: link,
+        linkVisited,
         neutral: textNeutral,
         neutralInverted: white,
         formAccent,

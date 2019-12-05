@@ -93,6 +93,7 @@ export interface TreatTokens {
     foreground: {
       link: string;
       linkHover: string;
+      linkVisited: string;
       neutral: string;
       neutralInverted: string;
       formAccent: string;
