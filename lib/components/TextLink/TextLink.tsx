@@ -10,8 +10,8 @@ export interface TextLinkProps
   extends Omit<TextLinkRendererProps, 'children'>,
     Omit<AnchorProps, 'className' | 'style'> {}
 
-export const TextLink = (props: TextLinkProps) => (
-  <TextLinkRenderer>
+export const TextLink = ({ showVisited, ...props }: TextLinkProps) => (
+  <TextLinkRenderer showVisited={showVisited}>
     {styleProps => <a {...props} {...styleProps} />}
   </TextLinkRenderer>
 );

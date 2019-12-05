@@ -23,6 +23,7 @@ interface StyleProps {
 }
 
 export interface TextLinkRendererProps {
+  showVisited?: boolean;
   children: (styleProps: StyleProps) => ReactElement;
 }
 
@@ -42,7 +43,7 @@ export const TextLinkRenderer = (props: TextLinkRendererProps) => {
   return <InlineLink {...props} />;
 };
 
-function useLinkStyles() {
+function useLinkStyles(showVisited: boolean) {
   const styles = useStyles(styleRefs);
   const inHeading = useContext(HeadingContext);
   const backgroundContext = useBackground();
@@ -56,16 +57,17 @@ function useLinkStyles() {
       tone: highlightLink ? 'link' : undefined,
     }),
     !inHeading ? mediumWeight : null,
+    showVisited ? styles.visited : null,
   ];
 }
 
-function InlineLink({ children }: TextLinkRendererProps) {
+function InlineLink({ showVisited = false, children }: TextLinkRendererProps) {
   return (
     <TextLinkRendererContext.Provider value={true}>
       {children({
         style: {},
         className: classnames(
-          useLinkStyles(),
+          useLinkStyles(showVisited),
           useBoxStyles({
             component: 'a',
             cursor: 'pointer',
@@ -76,14 +78,17 @@ function InlineLink({ children }: TextLinkRendererProps) {
   );
 }
 
-function TouchableLink({ children }: TextLinkRendererProps) {
+function TouchableLink({
+  showVisited = false,
+  children,
+}: TextLinkRendererProps) {
   return (
     <TextLinkRendererContext.Provider value={true}>
       <Box display="flex">
         {children({
           style: {},
           className: classnames(
-            useLinkStyles(),
+            useLinkStyles(showVisited),
             useBoxStyles({
               component: 'a',
               cursor: 'pointer',
@@ -101,7 +106,7 @@ const buttonLinkTextProps = {
   tone: 'link',
   baseline: false,
 } as const;
-function ButtonLink({ children }: TextLinkRendererProps) {
+function ButtonLink({ showVisited = false, children }: TextLinkRendererProps) {
   const styles = useStyles(styleRefs);
 
   return (
@@ -111,7 +116,7 @@ function ButtonLink({ children }: TextLinkRendererProps) {
           style: {},
           className: classnames(
             styles.button,
-            useLinkStyles(),
+            useLinkStyles(showVisited),
             useText(buttonLinkTextProps),
             useTouchableSpace(buttonLinkTextProps.size),
             useBoxStyles({
