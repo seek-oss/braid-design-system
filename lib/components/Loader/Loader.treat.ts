@@ -36,7 +36,7 @@ export const indicator = [
   }),
 ];
 
-export const root = style({
+export const delay = style({
   opacity: 0,
   '@keyframes': {
     from: {
@@ -51,7 +51,7 @@ export const root = style({
   animationFillMode: 'forwards',
   animationTimingFunction: 'ease-in',
   animationDuration: '0.25s',
-  animationDelay: '1s',
+  animationDelay: '0.8s',
 });
 
 export const size = styleMap(({ utils, typography }) =>

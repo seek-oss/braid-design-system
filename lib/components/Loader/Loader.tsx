@@ -23,14 +23,18 @@ const resolveBgForContext: Partial<
 
 interface LoaderProps {
   size?: keyof typeof styleRefs.size;
+  delayVisibility?: boolean;
 }
 
-export const Loader = ({ size = 'standard' }: LoaderProps) => {
+export const Loader = ({
+  size = 'standard',
+  delayVisibility = false,
+}: LoaderProps) => {
   const styles = useStyles(styleRefs);
   const backgroundContext = useBackground();
 
   return (
-    <Box display="flex" className={styles.root}>
+    <Box display="flex" className={delayVisibility ? styles.delay : undefined}>
       {indicators.map((_, index) => (
         <Box
           key={index}

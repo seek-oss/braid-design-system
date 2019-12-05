@@ -12,6 +12,10 @@ const docs: ComponentDocs = {
       Example: () => <Loader />,
     },
     {
+      label: 'Delay visibility (used to prevent loading flicker)',
+      Example: () => <Loader delayVisibility />,
+    },
+    {
       label: 'xsmall',
       Example: () => <Loader size="xsmall" />,
     },
