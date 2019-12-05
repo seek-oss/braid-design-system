@@ -108,7 +108,9 @@ export const tone = styleMap(theme => {
   const {
     linkHover,
     link,
-    neutralInverted, // Omit from public API
+    // Omit from public API
+    linkVisited,
+    neutralInverted,
     ...foreground
   } = theme.color.foreground;
 

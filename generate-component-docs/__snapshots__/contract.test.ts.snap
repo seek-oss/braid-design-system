@@ -3935,6 +3935,7 @@ exports[`TextLink 1`] = `
   security?: string
   selected?: boolean
   shape?: string
+  showVisited?: boolean
   size?: number
   sizes?: string
   slot?: string
@@ -3976,6 +3977,7 @@ exports[`TextLink 1`] = `
 exports[`TextLinkRenderer 1`] = `
 {
   children: (styleProps: StyleProps) => ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)>
+  showVisited?: boolean
 }
 `;
 

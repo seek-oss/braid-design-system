@@ -26,6 +26,7 @@ export const makeTokens = ({
   const neutral = '#747474';
   const black = '#1c1c1c';
   const link = '#2765cf';
+  const linkVisited = '#733d90';
   const secondary = '#1c1c1ca1';
 
   const tokens: TreatTokens = {
@@ -189,6 +190,7 @@ export const makeTokens = ({
       foreground: {
         link,
         linkHover: link,
+        linkVisited,
         neutral: black,
         neutralInverted: white,
         formAccent,

@@ -23,6 +23,17 @@ const docs: ComponentDocs = {
       ),
     },
     {
+      label: 'Visited Text Link',
+      Example: () => (
+        <Text>
+          The last word of a sentence is a{' '}
+          <TextLink href="" showVisited>
+            visited link.
+          </TextLink>
+        </Text>
+      ),
+    },
+    {
       label: 'Block Text Link',
       Example: () => (
         <TextLink href="">

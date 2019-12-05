@@ -10,6 +10,7 @@ const focus = 'DeepSkyBlue';
 const black = '#2b2b2b';
 const white = '#fff';
 const link = '#4c77bb';
+const linkVisited = 'DarkViolet';
 const secondary = '#777';
 const neutral = '#d0d9e6';
 
@@ -173,6 +174,7 @@ const tokens: TreatTokens = {
     foreground: {
       link,
       linkHover: link,
+      linkVisited,
       neutral: black,
       neutralInverted: white,
       formAccent,
