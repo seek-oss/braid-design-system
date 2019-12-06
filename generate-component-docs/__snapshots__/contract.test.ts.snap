@@ -3103,6 +3103,7 @@ exports[`Inline 1`] = `
 
 exports[`Loader 1`] = `
 {
+  delayVisibility?: boolean
   size?: 
     | "large"
     | "small"
