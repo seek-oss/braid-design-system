@@ -4,9 +4,9 @@ import { useStyles } from 'sku/treat';
 import { Box } from '../Box/Box';
 import { ResponsiveSpace } from '../Box/useBoxStyles';
 import {
-  useNegativeOffsetX,
-  useNegativeOffsetY,
-} from '../../hooks/useNegativeOffset/useNegativeOffset';
+  useNegativeMarginLeft,
+  useNegativeMarginTop,
+} from '../../hooks/useNegativeMargin/useNegativeMargin';
 import { ResponsiveProp } from '../../utils/responsiveProp';
 import { Align, alignToFlexAlign } from '../../utils/align';
 import * as styleRefs from './Inline.treat';
@@ -19,15 +19,15 @@ export interface InlineProps {
 
 export const Inline = ({ space = 'none', align, children }: InlineProps) => {
   const styles = useStyles(styleRefs);
-  const negativeOffsetX = useNegativeOffsetX(space);
-  const negativeOffsetY = useNegativeOffsetY(space);
+  const negativeMarginLeft = useNegativeMarginLeft(space);
+  const negativeMarginTop = useNegativeMarginTop(space);
 
   return (
-    <Box className={classnames(negativeOffsetY)}>
+    <div className={classnames(negativeMarginTop)}>
       <Box
         display="flex"
         justifyContent={alignToFlexAlign(align)}
-        className={classnames(styles.flexWrap, negativeOffsetX)}
+        className={classnames(styles.flexWrap, negativeMarginLeft)}
       >
         {Children.map(children, child =>
           child !== null && child !== undefined ? (
@@ -37,6 +37,6 @@ export const Inline = ({ space = 'none', align, children }: InlineProps) => {
           ) : null,
         )}
       </Box>
-    </Box>
+    </div>
   );
 };

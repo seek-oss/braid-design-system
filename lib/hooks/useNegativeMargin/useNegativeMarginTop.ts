@@ -4,20 +4,22 @@ import {
   resolveResponsiveProp,
   ResponsiveProp,
 } from '../../utils/responsiveProp';
-import * as styleRefs from './useNegativeOffsetY.treat';
+import * as styleRefs from './useNegativeMarginTop.treat';
 
-type NegativeOffset = Extract<
+type NegativeMarginTop = Extract<
   Extract<keyof typeof styleRefs.mobile, keyof typeof styleRefs.tablet>,
   Extract<keyof typeof styleRefs.mobile, keyof typeof styleRefs.desktop>
 >;
 
-export const useNegativeOffsetY = (space: ResponsiveProp<NegativeOffset>) => {
+export const useNegativeMarginTop = (
+  space: ResponsiveProp<NegativeMarginTop>,
+) => {
   const styles = useStyles(styleRefs);
-  const offsetY = resolveResponsiveProp(
+  const negativeMarginTop = resolveResponsiveProp(
     space,
     styles.mobile,
     styles.tablet,
     styles.desktop,
   );
-  return classnames(styles.base, offsetY);
+  return classnames(styles.base, negativeMarginTop);
 };

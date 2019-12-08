@@ -2,7 +2,7 @@ import React, { Children, ReactElement, createContext, useMemo } from 'react';
 import { Box } from '../Box/Box';
 import { ColumnProps } from '../Column/Column';
 import { Space, ResponsiveSpace } from '../Box/useBoxStyles';
-import { useNegativeOffsetX } from '../../hooks/useNegativeOffset/useNegativeOffset';
+import { useNegativeMarginLeft } from '../../hooks/useNegativeMargin/useNegativeMargin';
 import {
   normaliseResponsiveProp,
   ResponsiveProp,
@@ -67,7 +67,7 @@ export const Columns = ({
   const rowReverseDesktop = (collapseMobile || collapseTablet) && reverse;
   const reverseDocumentOrder = !collapseMobile && !collapseTablet && reverse;
 
-  const negativeOffsetX = useNegativeOffsetX([
+  const negativeMarginLeft = useNegativeMarginLeft([
     collapseMobile ? 'none' : mobileSpace,
     collapseTablet ? 'none' : tabletSpace,
     desktopSpace,
@@ -82,7 +82,7 @@ export const Columns = ({
         collapseTablet ? 'column' : rowReverseTablet ? 'rowReverse' : 'row',
         rowReverseDesktop ? 'rowReverse' : 'row',
       ]}
-      className={negativeOffsetX}
+      className={negativeMarginLeft}
     >
       <ColumnsContext.Provider value={columnsContextValue}>
         {reverseDocumentOrder ? Children.toArray(children).reverse() : children}
