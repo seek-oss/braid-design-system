@@ -1,12 +1,14 @@
 import { style, styleMap } from 'sku/treat';
 import { mapToStyleProperty } from '../../utils';
 
+const preventCollapse = 1;
+
 const negativeMarginTop = (grid: number, rows: number) => ({
-  ':before': { marginTop: -(grid * rows) },
+  ':before': { marginTop: -(grid * rows) - preventCollapse },
 });
 
 export const base = style({
-  paddingTop: 0.05, // Prevent margin collapse
+  paddingTop: preventCollapse,
   ':before': { content: '""', display: 'block' },
 });
 
