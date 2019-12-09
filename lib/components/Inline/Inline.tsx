@@ -23,7 +23,7 @@ export const Inline = ({ space = 'none', align, children }: InlineProps) => {
   const negativeMarginTop = useNegativeMarginTop(space);
 
   return (
-    <div className={classnames(negativeMarginTop)}>
+    <Box className={classnames(negativeMarginTop)}>
       <Box
         display="flex"
         justifyContent={alignToFlexAlign(align)}
@@ -37,6 +37,6 @@ export const Inline = ({ space = 'none', align, children }: InlineProps) => {
           ) : null,
         )}
       </Box>
-    </div>
+    </Box>
   );
 };
