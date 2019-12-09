@@ -40,6 +40,7 @@ exports[`Autosuggest 1`] = `
   onFocus?: () => void
   placeholder?: string
   reserveMessageSpace?: boolean
+  scrollToTopOnMobile?: boolean
   secondaryLabel?: ReactNode
   secondaryMessage?: ReactNode
   showMobileBackdrop?: boolean
