@@ -225,6 +225,7 @@ export interface AutosuggestProps<Value>
   onChange: (value: AutosuggestValue<Value>) => void;
   automaticSelection?: boolean;
   showMobileBackdrop?: boolean;
+  scrollToTopOnMobile?: boolean;
   onBlur?: () => void;
   onFocus?: () => void;
   placeholder?: string;
@@ -236,6 +237,7 @@ export function Autosuggest<Value>({
   onChange = noop,
   automaticSelection = false,
   showMobileBackdrop = false,
+  scrollToTopOnMobile = true,
   onFocus = noop,
   onBlur = noop,
   placeholder,
@@ -423,7 +425,7 @@ export function Autosuggest<Value>({
         mobileDetectionRef.current &&
         getComputedStyle(mobileDetectionRef.current).display === 'block';
 
-      if (rootRef.current && isMobile) {
+      if (rootRef.current && isMobile && scrollToTopOnMobile) {
         smoothScroll(rootRef.current); // tslint:disable-line no-floating-promises
       }
 
