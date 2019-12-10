@@ -1,9 +1,9 @@
-import React, { AllHTMLAttributes } from 'react';
+import React, { SVGProps } from 'react';
 import { Box } from '../../../../lib/components';
 import useIcon, { UseIconProps } from '../../../../lib/hooks/useIcon';
 
 // Adapted from https://github.com/feathericons/feather
-const PlaySvg = (props: AllHTMLAttributes<SVGElement>) => (
+const PlaySvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox="0 0 24 24"
     width="24"

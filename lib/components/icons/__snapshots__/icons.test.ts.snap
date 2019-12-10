@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`IconAddSvg should match snapshot 1`] = `
-"import React, { AllHTMLAttributes } from 'react';
+"import React, { SVGProps } from 'react';
 
-export const IconAddSvg = (props: AllHTMLAttributes<SVGElement>) => (
+export const IconAddSvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
@@ -19,9 +19,9 @@ export const IconAddSvg = (props: AllHTMLAttributes<SVGElement>) => (
 `;
 
 exports[`IconBookmarkActiveSvg should match snapshot 1`] = `
-"import React, { AllHTMLAttributes } from 'react';
+"import React, { SVGProps } from 'react';
 
-export const IconBookmarkActiveSvg = (props: AllHTMLAttributes<SVGElement>) => (
+export const IconBookmarkActiveSvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
@@ -37,9 +37,9 @@ export const IconBookmarkActiveSvg = (props: AllHTMLAttributes<SVGElement>) => (
 `;
 
 exports[`IconBookmarkSvg should match snapshot 1`] = `
-"import React, { AllHTMLAttributes } from 'react';
+"import React, { SVGProps } from 'react';
 
-export const IconBookmarkSvg = (props: AllHTMLAttributes<SVGElement>) => (
+export const IconBookmarkSvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
@@ -55,9 +55,9 @@ export const IconBookmarkSvg = (props: AllHTMLAttributes<SVGElement>) => (
 `;
 
 exports[`IconChevronSvg should match snapshot 1`] = `
-"import React, { AllHTMLAttributes } from 'react';
+"import React, { SVGProps } from 'react';
 
-export const IconChevronSvg = (props: AllHTMLAttributes<SVGElement>) => (
+export const IconChevronSvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
@@ -73,9 +73,9 @@ export const IconChevronSvg = (props: AllHTMLAttributes<SVGElement>) => (
 `;
 
 exports[`IconClearSvg should match snapshot 1`] = `
-"import React, { AllHTMLAttributes } from 'react';
+"import React, { SVGProps } from 'react';
 
-export const IconClearSvg = (props: AllHTMLAttributes<SVGElement>) => (
+export const IconClearSvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
@@ -91,9 +91,9 @@ export const IconClearSvg = (props: AllHTMLAttributes<SVGElement>) => (
 `;
 
 exports[`IconCompanySvg should match snapshot 1`] = `
-"import React, { AllHTMLAttributes } from 'react';
+"import React, { SVGProps } from 'react';
 
-export const IconCompanySvg = (props: AllHTMLAttributes<SVGElement>) => (
+export const IconCompanySvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
@@ -110,9 +110,9 @@ export const IconCompanySvg = (props: AllHTMLAttributes<SVGElement>) => (
 `;
 
 exports[`IconComposeSvg should match snapshot 1`] = `
-"import React, { AllHTMLAttributes } from 'react';
+"import React, { SVGProps } from 'react';
 
-export const IconComposeSvg = (props: AllHTMLAttributes<SVGElement>) => (
+export const IconComposeSvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
@@ -129,9 +129,9 @@ export const IconComposeSvg = (props: AllHTMLAttributes<SVGElement>) => (
 `;
 
 exports[`IconCopySvg should match snapshot 1`] = `
-"import React, { AllHTMLAttributes } from 'react';
+"import React, { SVGProps } from 'react';
 
-export const IconCopySvg = (props: AllHTMLAttributes<SVGElement>) => (
+export const IconCopySvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
@@ -148,9 +148,9 @@ export const IconCopySvg = (props: AllHTMLAttributes<SVGElement>) => (
 `;
 
 exports[`IconCreditCardSvg should match snapshot 1`] = `
-"import React, { AllHTMLAttributes } from 'react';
+"import React, { SVGProps } from 'react';
 
-export const IconCreditCardSvg = (props: AllHTMLAttributes<SVGElement>) => (
+export const IconCreditCardSvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
@@ -167,9 +167,9 @@ export const IconCreditCardSvg = (props: AllHTMLAttributes<SVGElement>) => (
 `;
 
 exports[`IconCriticalSvg should match snapshot 1`] = `
-"import React, { AllHTMLAttributes } from 'react';
+"import React, { SVGProps } from 'react';
 
-export const IconCriticalSvg = (props: AllHTMLAttributes<SVGElement>) => (
+export const IconCriticalSvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
@@ -187,9 +187,9 @@ export const IconCriticalSvg = (props: AllHTMLAttributes<SVGElement>) => (
 `;
 
 exports[`IconDateSvg should match snapshot 1`] = `
-"import React, { AllHTMLAttributes } from 'react';
+"import React, { SVGProps } from 'react';
 
-export const IconDateSvg = (props: AllHTMLAttributes<SVGElement>) => (
+export const IconDateSvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
@@ -205,9 +205,9 @@ export const IconDateSvg = (props: AllHTMLAttributes<SVGElement>) => (
 `;
 
 exports[`IconDeleteSvg should match snapshot 1`] = `
-"import React, { AllHTMLAttributes } from 'react';
+"import React, { SVGProps } from 'react';
 
-export const IconDeleteSvg = (props: AllHTMLAttributes<SVGElement>) => (
+export const IconDeleteSvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
@@ -224,9 +224,9 @@ export const IconDeleteSvg = (props: AllHTMLAttributes<SVGElement>) => (
 `;
 
 exports[`IconDocumentSvg should match snapshot 1`] = `
-"import React, { AllHTMLAttributes } from 'react';
+"import React, { SVGProps } from 'react';
 
-export const IconDocumentSvg = (props: AllHTMLAttributes<SVGElement>) => (
+export const IconDocumentSvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
@@ -243,9 +243,9 @@ export const IconDocumentSvg = (props: AllHTMLAttributes<SVGElement>) => (
 `;
 
 exports[`IconDownloadSvg should match snapshot 1`] = `
-"import React, { AllHTMLAttributes } from 'react';
+"import React, { SVGProps } from 'react';
 
-export const IconDownloadSvg = (props: AllHTMLAttributes<SVGElement>) => (
+export const IconDownloadSvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
@@ -261,9 +261,9 @@ export const IconDownloadSvg = (props: AllHTMLAttributes<SVGElement>) => (
 `;
 
 exports[`IconEditSvg should match snapshot 1`] = `
-"import React, { AllHTMLAttributes } from 'react';
+"import React, { SVGProps } from 'react';
 
-export const IconEditSvg = (props: AllHTMLAttributes<SVGElement>) => (
+export const IconEditSvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
@@ -279,9 +279,9 @@ export const IconEditSvg = (props: AllHTMLAttributes<SVGElement>) => (
 `;
 
 exports[`IconEducationSvg should match snapshot 1`] = `
-"import React, { AllHTMLAttributes } from 'react';
+"import React, { SVGProps } from 'react';
 
-export const IconEducationSvg = (props: AllHTMLAttributes<SVGElement>) => (
+export const IconEducationSvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
@@ -297,9 +297,9 @@ export const IconEducationSvg = (props: AllHTMLAttributes<SVGElement>) => (
 `;
 
 exports[`IconFilterSvg should match snapshot 1`] = `
-"import React, { AllHTMLAttributes } from 'react';
+"import React, { SVGProps } from 'react';
 
-export const IconFilterSvg = (props: AllHTMLAttributes<SVGElement>) => (
+export const IconFilterSvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
@@ -315,9 +315,9 @@ export const IconFilterSvg = (props: AllHTMLAttributes<SVGElement>) => (
 `;
 
 exports[`IconGridSvg should match snapshot 1`] = `
-"import React, { AllHTMLAttributes } from 'react';
+"import React, { SVGProps } from 'react';
 
-export const IconGridSvg = (props: AllHTMLAttributes<SVGElement>) => (
+export const IconGridSvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
@@ -333,9 +333,9 @@ export const IconGridSvg = (props: AllHTMLAttributes<SVGElement>) => (
 `;
 
 exports[`IconHeartActiveSvg should match snapshot 1`] = `
-"import React, { AllHTMLAttributes } from 'react';
+"import React, { SVGProps } from 'react';
 
-export const IconHeartActiveSvg = (props: AllHTMLAttributes<SVGElement>) => (
+export const IconHeartActiveSvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
@@ -351,9 +351,9 @@ export const IconHeartActiveSvg = (props: AllHTMLAttributes<SVGElement>) => (
 `;
 
 exports[`IconHeartSvg should match snapshot 1`] = `
-"import React, { AllHTMLAttributes } from 'react';
+"import React, { SVGProps } from 'react';
 
-export const IconHeartSvg = (props: AllHTMLAttributes<SVGElement>) => (
+export const IconHeartSvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
@@ -369,9 +369,9 @@ export const IconHeartSvg = (props: AllHTMLAttributes<SVGElement>) => (
 `;
 
 exports[`IconHelpSvg should match snapshot 1`] = `
-"import React, { AllHTMLAttributes } from 'react';
+"import React, { SVGProps } from 'react';
 
-export const IconHelpSvg = (props: AllHTMLAttributes<SVGElement>) => (
+export const IconHelpSvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
@@ -388,9 +388,9 @@ export const IconHelpSvg = (props: AllHTMLAttributes<SVGElement>) => (
 `;
 
 exports[`IconHistorySvg should match snapshot 1`] = `
-"import React, { AllHTMLAttributes } from 'react';
+"import React, { SVGProps } from 'react';
 
-export const IconHistorySvg = (props: AllHTMLAttributes<SVGElement>) => (
+export const IconHistorySvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
@@ -407,9 +407,9 @@ export const IconHistorySvg = (props: AllHTMLAttributes<SVGElement>) => (
 `;
 
 exports[`IconHomeSvg should match snapshot 1`] = `
-"import React, { AllHTMLAttributes } from 'react';
+"import React, { SVGProps } from 'react';
 
-export const IconHomeSvg = (props: AllHTMLAttributes<SVGElement>) => (
+export const IconHomeSvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
@@ -425,9 +425,9 @@ export const IconHomeSvg = (props: AllHTMLAttributes<SVGElement>) => (
 `;
 
 exports[`IconImageSvg should match snapshot 1`] = `
-"import React, { AllHTMLAttributes } from 'react';
+"import React, { SVGProps } from 'react';
 
-export const IconImageSvg = (props: AllHTMLAttributes<SVGElement>) => (
+export const IconImageSvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
@@ -444,9 +444,9 @@ export const IconImageSvg = (props: AllHTMLAttributes<SVGElement>) => (
 `;
 
 exports[`IconInfoSvg should match snapshot 1`] = `
-"import React, { AllHTMLAttributes } from 'react';
+"import React, { SVGProps } from 'react';
 
-export const IconInfoSvg = (props: AllHTMLAttributes<SVGElement>) => (
+export const IconInfoSvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
@@ -463,9 +463,9 @@ export const IconInfoSvg = (props: AllHTMLAttributes<SVGElement>) => (
 `;
 
 exports[`IconInvoiceSvg should match snapshot 1`] = `
-"import React, { AllHTMLAttributes } from 'react';
+"import React, { SVGProps } from 'react';
 
-export const IconInvoiceSvg = (props: AllHTMLAttributes<SVGElement>) => (
+export const IconInvoiceSvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
@@ -482,9 +482,9 @@ export const IconInvoiceSvg = (props: AllHTMLAttributes<SVGElement>) => (
 `;
 
 exports[`IconListSvg should match snapshot 1`] = `
-"import React, { AllHTMLAttributes } from 'react';
+"import React, { SVGProps } from 'react';
 
-export const IconListSvg = (props: AllHTMLAttributes<SVGElement>) => (
+export const IconListSvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
@@ -503,9 +503,9 @@ export const IconListSvg = (props: AllHTMLAttributes<SVGElement>) => (
 `;
 
 exports[`IconLocationSvg should match snapshot 1`] = `
-"import React, { AllHTMLAttributes } from 'react';
+"import React, { SVGProps } from 'react';
 
-export const IconLocationSvg = (props: AllHTMLAttributes<SVGElement>) => (
+export const IconLocationSvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
@@ -522,9 +522,9 @@ export const IconLocationSvg = (props: AllHTMLAttributes<SVGElement>) => (
 `;
 
 exports[`IconMailSvg should match snapshot 1`] = `
-"import React, { AllHTMLAttributes } from 'react';
+"import React, { SVGProps } from 'react';
 
-export const IconMailSvg = (props: AllHTMLAttributes<SVGElement>) => (
+export const IconMailSvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
@@ -540,9 +540,9 @@ export const IconMailSvg = (props: AllHTMLAttributes<SVGElement>) => (
 `;
 
 exports[`IconMinusSvg should match snapshot 1`] = `
-"import React, { AllHTMLAttributes } from 'react';
+"import React, { SVGProps } from 'react';
 
-export const IconMinusSvg = (props: AllHTMLAttributes<SVGElement>) => (
+export const IconMinusSvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
@@ -558,9 +558,9 @@ export const IconMinusSvg = (props: AllHTMLAttributes<SVGElement>) => (
 `;
 
 exports[`IconMoneySvg should match snapshot 1`] = `
-"import React, { AllHTMLAttributes } from 'react';
+"import React, { SVGProps } from 'react';
 
-export const IconMoneySvg = (props: AllHTMLAttributes<SVGElement>) => (
+export const IconMoneySvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
@@ -576,9 +576,9 @@ export const IconMoneySvg = (props: AllHTMLAttributes<SVGElement>) => (
 `;
 
 exports[`IconNewWindowSvg should match snapshot 1`] = `
-"import React, { AllHTMLAttributes } from 'react';
+"import React, { SVGProps } from 'react';
 
-export const IconNewWindowSvg = (props: AllHTMLAttributes<SVGElement>) => (
+export const IconNewWindowSvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
@@ -595,9 +595,9 @@ export const IconNewWindowSvg = (props: AllHTMLAttributes<SVGElement>) => (
 `;
 
 exports[`IconNoteSvg should match snapshot 1`] = `
-"import React, { AllHTMLAttributes } from 'react';
+"import React, { SVGProps } from 'react';
 
-export const IconNoteSvg = (props: AllHTMLAttributes<SVGElement>) => (
+export const IconNoteSvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
@@ -614,9 +614,9 @@ export const IconNoteSvg = (props: AllHTMLAttributes<SVGElement>) => (
 `;
 
 exports[`IconOverflowSvg should match snapshot 1`] = `
-"import React, { AllHTMLAttributes } from 'react';
+"import React, { SVGProps } from 'react';
 
-export const IconOverflowSvg = (props: AllHTMLAttributes<SVGElement>) => (
+export const IconOverflowSvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
@@ -634,9 +634,9 @@ export const IconOverflowSvg = (props: AllHTMLAttributes<SVGElement>) => (
 `;
 
 exports[`IconPeopleSvg should match snapshot 1`] = `
-"import React, { AllHTMLAttributes } from 'react';
+"import React, { SVGProps } from 'react';
 
-export const IconPeopleSvg = (props: AllHTMLAttributes<SVGElement>) => (
+export const IconPeopleSvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
@@ -652,9 +652,9 @@ export const IconPeopleSvg = (props: AllHTMLAttributes<SVGElement>) => (
 `;
 
 exports[`IconPersonAddSvg should match snapshot 1`] = `
-"import React, { AllHTMLAttributes } from 'react';
+"import React, { SVGProps } from 'react';
 
-export const IconPersonAddSvg = (props: AllHTMLAttributes<SVGElement>) => (
+export const IconPersonAddSvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
@@ -670,9 +670,9 @@ export const IconPersonAddSvg = (props: AllHTMLAttributes<SVGElement>) => (
 `;
 
 exports[`IconPersonVerifiedSvg should match snapshot 1`] = `
-"import React, { AllHTMLAttributes } from 'react';
+"import React, { SVGProps } from 'react';
 
-export const IconPersonVerifiedSvg = (props: AllHTMLAttributes<SVGElement>) => (
+export const IconPersonVerifiedSvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
@@ -689,9 +689,9 @@ export const IconPersonVerifiedSvg = (props: AllHTMLAttributes<SVGElement>) => (
 `;
 
 exports[`IconPhoneSvg should match snapshot 1`] = `
-"import React, { AllHTMLAttributes } from 'react';
+"import React, { SVGProps } from 'react';
 
-export const IconPhoneSvg = (props: AllHTMLAttributes<SVGElement>) => (
+export const IconPhoneSvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
@@ -707,9 +707,9 @@ export const IconPhoneSvg = (props: AllHTMLAttributes<SVGElement>) => (
 `;
 
 exports[`IconPositiveSvg should match snapshot 1`] = `
-"import React, { AllHTMLAttributes } from 'react';
+"import React, { SVGProps } from 'react';
 
-export const IconPositiveSvg = (props: AllHTMLAttributes<SVGElement>) => (
+export const IconPositiveSvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
@@ -726,9 +726,9 @@ export const IconPositiveSvg = (props: AllHTMLAttributes<SVGElement>) => (
 `;
 
 exports[`IconPrintSvg should match snapshot 1`] = `
-"import React, { AllHTMLAttributes } from 'react';
+"import React, { SVGProps } from 'react';
 
-export const IconPrintSvg = (props: AllHTMLAttributes<SVGElement>) => (
+export const IconPrintSvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
@@ -744,9 +744,9 @@ export const IconPrintSvg = (props: AllHTMLAttributes<SVGElement>) => (
 `;
 
 exports[`IconProfileSvg should match snapshot 1`] = `
-"import React, { AllHTMLAttributes } from 'react';
+"import React, { SVGProps } from 'react';
 
-export const IconProfileSvg = (props: AllHTMLAttributes<SVGElement>) => (
+export const IconProfileSvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
@@ -762,9 +762,9 @@ export const IconProfileSvg = (props: AllHTMLAttributes<SVGElement>) => (
 `;
 
 exports[`IconPromoteSvg should match snapshot 1`] = `
-"import React, { AllHTMLAttributes } from 'react';
+"import React, { SVGProps } from 'react';
 
-export const IconPromoteSvg = (props: AllHTMLAttributes<SVGElement>) => (
+export const IconPromoteSvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
@@ -780,9 +780,9 @@ export const IconPromoteSvg = (props: AllHTMLAttributes<SVGElement>) => (
 `;
 
 exports[`IconRecommendedSvg should match snapshot 1`] = `
-"import React, { AllHTMLAttributes } from 'react';
+"import React, { SVGProps } from 'react';
 
-export const IconRecommendedSvg = (props: AllHTMLAttributes<SVGElement>) => (
+export const IconRecommendedSvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
@@ -798,9 +798,9 @@ export const IconRecommendedSvg = (props: AllHTMLAttributes<SVGElement>) => (
 `;
 
 exports[`IconResumeSvg should match snapshot 1`] = `
-"import React, { AllHTMLAttributes } from 'react';
+"import React, { SVGProps } from 'react';
 
-export const IconResumeSvg = (props: AllHTMLAttributes<SVGElement>) => (
+export const IconResumeSvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
@@ -818,9 +818,9 @@ export const IconResumeSvg = (props: AllHTMLAttributes<SVGElement>) => (
 `;
 
 exports[`IconSearchSvg should match snapshot 1`] = `
-"import React, { AllHTMLAttributes } from 'react';
+"import React, { SVGProps } from 'react';
 
-export const IconSearchSvg = (props: AllHTMLAttributes<SVGElement>) => (
+export const IconSearchSvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
@@ -836,9 +836,9 @@ export const IconSearchSvg = (props: AllHTMLAttributes<SVGElement>) => (
 `;
 
 exports[`IconSecuritySvg should match snapshot 1`] = `
-"import React, { AllHTMLAttributes } from 'react';
+"import React, { SVGProps } from 'react';
 
-export const IconSecuritySvg = (props: AllHTMLAttributes<SVGElement>) => (
+export const IconSecuritySvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
@@ -854,9 +854,9 @@ export const IconSecuritySvg = (props: AllHTMLAttributes<SVGElement>) => (
 `;
 
 exports[`IconSendSvg should match snapshot 1`] = `
-"import React, { AllHTMLAttributes } from 'react';
+"import React, { SVGProps } from 'react';
 
-export const IconSendSvg = (props: AllHTMLAttributes<SVGElement>) => (
+export const IconSendSvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
@@ -872,9 +872,9 @@ export const IconSendSvg = (props: AllHTMLAttributes<SVGElement>) => (
 `;
 
 exports[`IconSentSvg should match snapshot 1`] = `
-"import React, { AllHTMLAttributes } from 'react';
+"import React, { SVGProps } from 'react';
 
-export const IconSentSvg = (props: AllHTMLAttributes<SVGElement>) => (
+export const IconSentSvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
@@ -890,9 +890,9 @@ export const IconSentSvg = (props: AllHTMLAttributes<SVGElement>) => (
 `;
 
 exports[`IconSettingsSvg should match snapshot 1`] = `
-"import React, { AllHTMLAttributes } from 'react';
+"import React, { SVGProps } from 'react';
 
-export const IconSettingsSvg = (props: AllHTMLAttributes<SVGElement>) => (
+export const IconSettingsSvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
@@ -909,9 +909,9 @@ export const IconSettingsSvg = (props: AllHTMLAttributes<SVGElement>) => (
 `;
 
 exports[`IconShareSvg should match snapshot 1`] = `
-"import React, { AllHTMLAttributes } from 'react';
+"import React, { SVGProps } from 'react';
 
-export const IconShareSvg = (props: AllHTMLAttributes<SVGElement>) => (
+export const IconShareSvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
@@ -927,9 +927,9 @@ export const IconShareSvg = (props: AllHTMLAttributes<SVGElement>) => (
 `;
 
 exports[`IconSocialFacebookSvg should match snapshot 1`] = `
-"import React, { AllHTMLAttributes } from 'react';
+"import React, { SVGProps } from 'react';
 
-export const IconSocialFacebookSvg = (props: AllHTMLAttributes<SVGElement>) => (
+export const IconSocialFacebookSvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     width={16}
     height={16}
@@ -945,9 +945,9 @@ export const IconSocialFacebookSvg = (props: AllHTMLAttributes<SVGElement>) => (
 `;
 
 exports[`IconSocialGitHubSvg should match snapshot 1`] = `
-"import React, { AllHTMLAttributes } from 'react';
+"import React, { SVGProps } from 'react';
 
-export const IconSocialGitHubSvg = (props: AllHTMLAttributes<SVGElement>) => (
+export const IconSocialGitHubSvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     width={16}
     height={16}
@@ -966,11 +966,9 @@ export const IconSocialGitHubSvg = (props: AllHTMLAttributes<SVGElement>) => (
 `;
 
 exports[`IconSocialInstagramSvg should match snapshot 1`] = `
-"import React, { AllHTMLAttributes } from 'react';
+"import React, { SVGProps } from 'react';
 
-export const IconSocialInstagramSvg = (
-  props: AllHTMLAttributes<SVGElement>,
-) => (
+export const IconSocialInstagramSvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     width={16}
     height={16}
@@ -988,9 +986,9 @@ export const IconSocialInstagramSvg = (
 `;
 
 exports[`IconSocialLinkedInSvg should match snapshot 1`] = `
-"import React, { AllHTMLAttributes } from 'react';
+"import React, { SVGProps } from 'react';
 
-export const IconSocialLinkedInSvg = (props: AllHTMLAttributes<SVGElement>) => (
+export const IconSocialLinkedInSvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     width={16}
     height={16}
@@ -1006,9 +1004,9 @@ export const IconSocialLinkedInSvg = (props: AllHTMLAttributes<SVGElement>) => (
 `;
 
 exports[`IconSocialMediumSvg should match snapshot 1`] = `
-"import React, { AllHTMLAttributes } from 'react';
+"import React, { SVGProps } from 'react';
 
-export const IconSocialMediumSvg = (props: AllHTMLAttributes<SVGElement>) => (
+export const IconSocialMediumSvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     width={16}
     height={16}
@@ -1024,9 +1022,9 @@ export const IconSocialMediumSvg = (props: AllHTMLAttributes<SVGElement>) => (
 `;
 
 exports[`IconSocialTwitterSvg should match snapshot 1`] = `
-"import React, { AllHTMLAttributes } from 'react';
+"import React, { SVGProps } from 'react';
 
-export const IconSocialTwitterSvg = (props: AllHTMLAttributes<SVGElement>) => (
+export const IconSocialTwitterSvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     width={16}
     height={16}
@@ -1042,9 +1040,9 @@ export const IconSocialTwitterSvg = (props: AllHTMLAttributes<SVGElement>) => (
 `;
 
 exports[`IconStarActiveSvg should match snapshot 1`] = `
-"import React, { AllHTMLAttributes } from 'react';
+"import React, { SVGProps } from 'react';
 
-export const IconStarActiveSvg = (props: AllHTMLAttributes<SVGElement>) => (
+export const IconStarActiveSvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
@@ -1060,9 +1058,9 @@ export const IconStarActiveSvg = (props: AllHTMLAttributes<SVGElement>) => (
 `;
 
 exports[`IconStarSvg should match snapshot 1`] = `
-"import React, { AllHTMLAttributes } from 'react';
+"import React, { SVGProps } from 'react';
 
-export const IconStarSvg = (props: AllHTMLAttributes<SVGElement>) => (
+export const IconStarSvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
@@ -1078,9 +1076,9 @@ export const IconStarSvg = (props: AllHTMLAttributes<SVGElement>) => (
 `;
 
 exports[`IconSubCategorySvg should match snapshot 1`] = `
-"import React, { AllHTMLAttributes } from 'react';
+"import React, { SVGProps } from 'react';
 
-export const IconSubCategorySvg = (props: AllHTMLAttributes<SVGElement>) => (
+export const IconSubCategorySvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
@@ -1096,9 +1094,9 @@ export const IconSubCategorySvg = (props: AllHTMLAttributes<SVGElement>) => (
 `;
 
 exports[`IconTagSvg should match snapshot 1`] = `
-"import React, { AllHTMLAttributes } from 'react';
+"import React, { SVGProps } from 'react';
 
-export const IconTagSvg = (props: AllHTMLAttributes<SVGElement>) => (
+export const IconTagSvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
@@ -1115,9 +1113,9 @@ export const IconTagSvg = (props: AllHTMLAttributes<SVGElement>) => (
 `;
 
 exports[`IconTickSvg should match snapshot 1`] = `
-"import React, { AllHTMLAttributes } from 'react';
+"import React, { SVGProps } from 'react';
 
-export const IconTickSvg = (props: AllHTMLAttributes<SVGElement>) => (
+export const IconTickSvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
@@ -1133,9 +1131,9 @@ export const IconTickSvg = (props: AllHTMLAttributes<SVGElement>) => (
 `;
 
 exports[`IconTimeSvg should match snapshot 1`] = `
-"import React, { AllHTMLAttributes } from 'react';
+"import React, { SVGProps } from 'react';
 
-export const IconTimeSvg = (props: AllHTMLAttributes<SVGElement>) => (
+export const IconTimeSvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
@@ -1152,9 +1150,9 @@ export const IconTimeSvg = (props: AllHTMLAttributes<SVGElement>) => (
 `;
 
 exports[`IconUploadSvg should match snapshot 1`] = `
-"import React, { AllHTMLAttributes } from 'react';
+"import React, { SVGProps } from 'react';
 
-export const IconUploadSvg = (props: AllHTMLAttributes<SVGElement>) => (
+export const IconUploadSvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
@@ -1170,9 +1168,9 @@ export const IconUploadSvg = (props: AllHTMLAttributes<SVGElement>) => (
 `;
 
 exports[`IconVideoSvg should match snapshot 1`] = `
-"import React, { AllHTMLAttributes } from 'react';
+"import React, { SVGProps } from 'react';
 
-export const IconVideoSvg = (props: AllHTMLAttributes<SVGElement>) => (
+export const IconVideoSvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
