@@ -7,12 +7,10 @@ import { UseBoxStylesProps } from '../Box/useBoxStyles';
 import * as styleRefs from './Loader.treat';
 
 const indicators = [...Array(3)];
-const resolveBgForContext: Partial<
-  Record<
-    NonNullable<UseBoxStylesProps['background']>,
-    UseBoxStylesProps['background']
-  >
-> = {
+const resolveBgForContext: Partial<Record<
+  NonNullable<UseBoxStylesProps['background']>,
+  UseBoxStylesProps['background']
+>> = {
   brand: 'card',
   formAccent: 'card',
   brandAccent: 'card',

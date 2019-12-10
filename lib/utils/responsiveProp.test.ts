@@ -7,8 +7,14 @@ import {
 describe('normaliseResponsiveProp', () => {
   const testData = [
     ['value', ['value', 'value', 'value']],
-    [['mobile', 'tablet'], ['mobile', 'tablet', 'tablet']],
-    [['mobile', 'tablet', 'desktop'], ['mobile', 'tablet', 'desktop']],
+    [
+      ['mobile', 'tablet'],
+      ['mobile', 'tablet', 'tablet'],
+    ],
+    [
+      ['mobile', 'tablet', 'desktop'],
+      ['mobile', 'tablet', 'desktop'],
+    ],
   ] as const;
 
   test.each(testData)('%p returns %p', (props, expected) => {
