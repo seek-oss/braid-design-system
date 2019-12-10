@@ -9,9 +9,9 @@ const { default: svgr } = require('@svgr/core');
 
 const componentTemplate = ({ template }, opts, { componentName, jsx }) => {
   const code = `
-    import React, { AllHTMLAttributes } from 'react';
+    import React, { SVGProps } from 'react';
     NEWLINE
-    export const COMPONENT_NAME = (props: AllHTMLAttributes<SVGElement>) => COMPONENT_JSX;
+    export const COMPONENT_NAME = (props: SVGProps<SVGSVGElement>) => COMPONENT_JSX;
   `;
 
   const reactTemplate = template.smart(code, {
