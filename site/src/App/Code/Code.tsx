@@ -1,15 +1,38 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, ReactChild } from 'react';
 import { useStyles } from 'react-treat';
 import copy from 'copy-to-clipboard';
+import memoize from 'lodash/memoize';
+import reactElementToJSXString from 'react-element-to-jsx-string';
+import prettier from 'prettier/standalone';
+import babylonParser from 'prettier/parser-babylon';
 import { createUrl } from 'sku/playroom/utils';
 import classnames from 'classnames';
 import { useConfig } from '../ConfigContext';
-import { Box, Text } from '../../../../lib/components';
+import { Box, Stack, Text, BraidProvider } from '../../../../lib/components';
 import { BoxProps } from '../../../../lib/components/Box/Box';
 import { FieldOverlay } from '../../../../lib/components/private/FieldOverlay/FieldOverlay';
 import { CopyIcon } from './CopyIcon';
 import { PlayIcon } from './PlayIcon';
 import * as styleRefs from './Code.treat';
+import { seekAnz } from '../../../../lib/themes';
+
+// @ts-ignore
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import editorTheme from './editorTheme';
+
+const formatSnippet = memoize(
+  snippet =>
+    prettier
+      .format(snippet, {
+        parser: 'babylon',
+        plugins: [babylonParser],
+        semi: false,
+      })
+      .replace(/^;/, ''), // Remove leading semicolons from JSX
+);
+
+const cleanSnippet = (code: string) =>
+  code.replace(/<HideCode>.*?<\/HideCode>/gs, '...');
 
 const CodeButton = ({
   component = 'button',
@@ -54,11 +77,25 @@ const CodeButton = ({
 };
 
 interface CodeProps {
-  children: string;
+  children: ReactChild;
 }
 export default ({ children }: CodeProps) => {
   const styles = useStyles(styleRefs);
   const { playroomUrl } = useConfig();
+
+  const renderPreview = typeof children !== 'string';
+  const snippet = cleanSnippet(
+    formatSnippet(
+      !renderPreview
+        ? (children as string)
+        : reactElementToJSXString(children, {
+            useBooleanShorthandSyntax: false,
+            showDefaultProps: false,
+            showFunctions: false,
+            filterProps: ['onChange', 'onBlur', 'onFocus'],
+          }),
+    ),
+  );
 
   return (
     <Box
@@ -67,18 +104,31 @@ export default ({ children }: CodeProps) => {
         maxWidth: 864,
       }}
     >
-      <Box
-        background="brandAccent"
-        position="relative"
-        paddingX="small"
-        paddingY="xsmall"
-        borderRadius="standard"
-        className={styles.code}
-      >
-        <Text component="pre" baseline={false}>
-          {children}
-        </Text>
-      </Box>
+      <Stack space="xsmall">
+        {renderPreview && (
+          <Box
+            padding="small"
+            background="neutralLight"
+            borderRadius="standard"
+          >
+            <BraidProvider theme={seekAnz} styleBody={false}>
+              {children}
+            </BraidProvider>
+          </Box>
+        )}
+        <Box
+          position="relative"
+          padding="medium"
+          borderRadius="standard"
+          className={styles.code}
+        >
+          <Text component="pre" baseline={false}>
+            <SyntaxHighlighter language="jsx" style={editorTheme}>
+              {snippet}
+            </SyntaxHighlighter>
+          </Text>
+        </Box>
+      </Stack>
       <Box
         display="flex"
         justifyContent="flexEnd"
@@ -88,16 +138,16 @@ export default ({ children }: CodeProps) => {
         borderRadius="standard"
         className={styles.toolbar}
       >
-        <CodeButton onClick={() => copy(children)} title="Copy to clipboard">
+        <CodeButton onClick={() => copy(snippet)} title="Copy to clipboard">
           <CopyIcon /> Copy
         </CodeButton>
-        {/^import/m.test(children) ? null : (
+        {/^import/m.test(snippet) ? null : (
           <Fragment>
             <Box paddingLeft="xxsmall" />
             <CodeButton
               component="a"
               target="_blank"
-              href={createUrl({ baseUrl: playroomUrl, code: children })}
+              href={createUrl({ baseUrl: playroomUrl, code: snippet })}
               style={{ textDecoration: 'none' }}
               title="Open in Playroom"
             >

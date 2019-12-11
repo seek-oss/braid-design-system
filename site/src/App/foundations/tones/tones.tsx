@@ -1,5 +1,5 @@
 import React from 'react';
-import { BoxProps } from '../../../../lib/components/Box/Box';
+import { BoxProps } from '../../../../../lib/components/Box/Box';
 import {
   Box,
   Text,
@@ -9,8 +9,9 @@ import {
   Stack,
   Divider,
   Hidden,
-} from '../../../../lib/components';
-import { TextStack } from '../TextStack/TextStack';
+} from '../../../../../lib/components';
+import { TextStack } from '../../TextStack/TextStack';
+import { Page } from '../../../types';
 
 const tones = ['critical', 'positive', 'neutral', 'info', 'promote'] as const;
 type Tone = typeof tones[number];
@@ -171,40 +172,47 @@ const ToneDefinition = ({ tone }: { tone: Tone }) => {
     </Stack>
   );
 };
-export const Tones = () => (
-  <TextStack>
-    <Heading level="2">Tones</Heading>
 
-    <Text>
-      The usage of colour in the system is designed to have a strong correlation
-      with the tone of voice being used. The system makes available a spectrum
-      of tones which are leveraged across the entire component suite.
-    </Text>
+const page: Page = {
+  title: 'Tones',
+  Component: () => (
+    <TextStack>
+      <Heading level="2">Tones</Heading>
 
-    <Columns space={['small', 'gutter']}>
+      <Text>
+        The usage of colour in the system is designed to have a strong
+        correlation with the tone of voice being used. The system makes
+        available a spectrum of tones which are leveraged across the entire
+        component suite.
+      </Text>
+
+      <Columns space={['small', 'gutter']}>
+        {tones.map(tone => (
+          <Column key={tone}>
+            <Stack space={['none', 'xsmall']}>
+              <Box
+                background={toneDocs[tone].swatch}
+                borderRadius="standard"
+                width="full"
+                height="touchable"
+              />
+              <Hidden below="tablet">
+                <Box textAlign="center">
+                  <Text tone="secondary">{tone}</Text>
+                </Box>
+              </Hidden>
+            </Stack>
+          </Column>
+        ))}
+      </Columns>
+
+      <Divider />
+
       {tones.map(tone => (
-        <Column key={tone}>
-          <Stack space={['none', 'xsmall']}>
-            <Box
-              background={toneDocs[tone].swatch}
-              borderRadius="standard"
-              width="full"
-              height="touchable"
-            />
-            <Hidden below="tablet">
-              <Box textAlign="center">
-                <Text tone="secondary">{tone}</Text>
-              </Box>
-            </Hidden>
-          </Stack>
-        </Column>
+        <ToneDefinition key={tone} tone={tone} />
       ))}
-    </Columns>
+    </TextStack>
+  ),
+};
 
-    <Divider />
-
-    {tones.map(tone => (
-      <ToneDefinition key={tone} tone={tone} />
-    ))}
-  </TextStack>
-);
+export default page;

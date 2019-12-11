@@ -5,14 +5,14 @@ const critical = '#ef3e4a';
 const positive = '#34c8a5';
 const info = '#2c88f7';
 const promote = '#855be5';
-const brandAccent = 'black';
+const brandAccent = '#111';
 const focus = 'DeepSkyBlue';
-const black = '#2b2b2b';
+const black = '#303030';
 const white = '#fff';
 const link = '#4c77bb';
 const linkVisited = 'DarkViolet';
 const secondary = '#777';
-const neutral = '#d0d9e6';
+const neutral = '#edeef1';
 
 const tokens: TreatTokens = {
   name: 'wireframe',

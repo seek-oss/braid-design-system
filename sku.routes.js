@@ -23,13 +23,14 @@ const getPages = relativePath => {
 
 const componentNames = getExports('lib/components/index.ts');
 const iconNames = getExports('lib/components/icons/index.ts');
+
 const guideRoutes = getPages('site/src/App/guides/index.ts');
+const foundationRoutes = getPages('site/src/App/foundations/index.ts');
 
 module.exports = [
   { route: '/', name: 'home' },
   ...guideRoutes.map(route => ({ route })),
-  { route: `/foundations/iconography`, name: 'iconography' },
-  { route: `/foundations/tones`, name: 'tones' },
+  ...foundationRoutes.map(route => ({ route })),
   { route: '/components', name: 'components' },
   ...componentNames.map(name => ({ route: `/components/${name}`, name })),
   ...iconNames.map(name => ({ route: `/components/${name}`, name })),

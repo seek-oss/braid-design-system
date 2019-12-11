@@ -3,12 +3,11 @@ import { useStyles } from 'sku/treat';
 import map from 'lodash/map';
 import groupBy from 'lodash/groupBy';
 import guides from '../guides';
+import foundations from '../foundations';
 import { Route, useLocation } from 'react-router-dom';
 import * as components from '../../../../lib/components';
 import { Logo } from '../Logo/Logo';
 import { ComponentRoute } from './ComponentRoute';
-import { Iconography } from './Iconography';
-import { Tones } from './Tones';
 import { Link, ExternalLink } from './Link';
 import { MenuButton } from '../MenuButton/MenuButton';
 import { ConfigConsumer } from '../ConfigContext';
@@ -152,20 +151,12 @@ export const Documentation = () => {
 
                   <MenuSectionList
                     title="Foundations"
-                    items={[
-                      {
-                        name: 'Tones',
-                        path: `/foundations/tones`,
-                        external: false,
-                        onClick: () => setMenuOpen(false),
-                      },
-                      {
-                        name: 'Iconography',
-                        path: `/foundations/iconography`,
-                        external: false,
-                        onClick: () => setMenuOpen(false),
-                      },
-                    ]}
+                    items={map(foundations, (guide, path) => ({
+                      name: guide.title,
+                      path,
+                      external: false,
+                      onClick: () => setMenuOpen(false),
+                    }))}
                   />
 
                   {['Layout', 'Content', 'Interaction', 'Logic'].map(
@@ -201,16 +192,9 @@ export const Documentation = () => {
             </Hidden>
             <Box className={styles.content}>
               <Box paddingY="small" paddingX={responsiveGutter}>
-                {map(guides, ({ Component }, path) => (
+                {map({ ...guides, ...foundations }, ({ Component }, path) => (
                   <Route key={path} path={path} component={Component} />
                 ))}
-
-                <Route path="/foundations/tones" component={Tones} />
-
-                <Route
-                  path="/foundations/iconography"
-                  component={Iconography}
-                />
 
                 <Route
                   path="/components/:componentName"

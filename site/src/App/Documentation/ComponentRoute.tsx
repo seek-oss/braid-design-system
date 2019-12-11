@@ -23,9 +23,6 @@ const DefaultContainer = ({ children }: { children: ReactNode }) => (
   <Fragment>{children}</Fragment>
 );
 
-const cleanCodeSnippet = (code: string) =>
-  code.replace(/<HideCode>.*?<\/HideCode>/gs, '...');
-
 interface ComponentRouteProps {
   componentName: string;
   subfolder?: string;
@@ -70,16 +67,14 @@ export const ComponentRoute = ({
 
           const codeAsString =
             Example && !code
-              ? cleanCodeSnippet(
-                  reactElementToJSXString(Example({ id: 'id', handler }), {
-                    useBooleanShorthandSyntax: false,
-                    showDefaultProps: false,
-                    showFunctions: false,
-                    filterProps: ['onChange', 'onBlur', 'onFocus'],
-                  }),
-                )
+              ? reactElementToJSXString(Example({ id: 'id', handler }), {
+                  useBooleanShorthandSyntax: false,
+                  showDefaultProps: false,
+                  showFunctions: false,
+                  filterProps: ['onChange', 'onBlur', 'onFocus'],
+                })
               : code
-              ? cleanCodeSnippet(dedent(code))
+              ? dedent(code)
               : null;
 
           const ExampleInContainer = ({ id }: { id: string }) => (

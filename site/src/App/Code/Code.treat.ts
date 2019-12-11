@@ -1,6 +1,7 @@
 import { style } from 'sku/treat';
 
 export const code = style({
+  background: '#010d19',
   overflowX: 'auto',
   borderBottomLeftRadius: '0 !important',
   borderBottomRightRadius: '0 !important',
