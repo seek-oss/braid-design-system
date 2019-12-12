@@ -1,6 +1,5 @@
 import React, { ReactNode, Fragment } from 'react';
 import reactElementToJSXString from 'react-element-to-jsx-string';
-import dedent from 'dedent';
 import { ComponentProps } from './ComponentProps';
 import { ExternalLink } from './Link';
 import {
@@ -22,9 +21,6 @@ const handler = () => {
 const DefaultContainer = ({ children }: { children: ReactNode }) => (
   <Fragment>{children}</Fragment>
 );
-
-const cleanCodeSnippet = (code: string) =>
-  code.replace(/<HideCode>.*?<\/HideCode>/gs, '...');
 
 interface ComponentRouteProps {
   componentName: string;
@@ -70,17 +66,13 @@ export const ComponentRoute = ({
 
           const codeAsString =
             Example && !code
-              ? cleanCodeSnippet(
-                  reactElementToJSXString(Example({ id: 'id', handler }), {
-                    useBooleanShorthandSyntax: false,
-                    showDefaultProps: false,
-                    showFunctions: false,
-                    filterProps: ['onChange', 'onBlur', 'onFocus'],
-                  }),
-                )
-              : code
-              ? cleanCodeSnippet(dedent(code))
-              : null;
+              ? reactElementToJSXString(Example({ id: 'id', handler }), {
+                  useBooleanShorthandSyntax: false,
+                  showDefaultProps: false,
+                  showFunctions: false,
+                  filterProps: ['onChange', 'onBlur', 'onFocus'],
+                })
+              : code;
 
           const ExampleInContainer = ({ id }: { id: string }) => (
             <Container>
