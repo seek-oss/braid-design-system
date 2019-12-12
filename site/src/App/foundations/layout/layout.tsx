@@ -51,7 +51,9 @@ const page: Page = {
           effectively with Braid.
         </Text>
 
-        <Divider />
+        <div id="spacing">
+          <Divider />
+        </div>
 
         <Heading level="3">Spacing</Heading>
         <Text>
@@ -62,7 +64,7 @@ const page: Page = {
 
         <Stack space="small">
           {spaceScale.map(space => (
-            <Columns space="xsmall" alignY="center">
+            <Columns key={space} space="xsmall" alignY="center">
               <Column width="content">
                 <Box style={{ width: 100 }}>
                   <Text baseline={false}>{space}</Text>
@@ -85,15 +87,17 @@ const page: Page = {
           Note: The exact pixel values in this scale may vary betweeen themes.
         </Text>
 
-        <Divider />
+        <div id="box">
+          <Divider />
+        </div>
 
         <Heading level="3">Box</Heading>
         <Text>
-          Box is the most low-level layout component provided by Braid. Its job
-          is to render an individual element on the screen.
+          ‘Box’ is the most low-level layout component provided by Braid. Its
+          job is to render an individual element on the screen.
         </Text>
         <Text>
-          In terms of page layout, Box most notably provides a set of padding
+          In terms of page layout, ‘Box’ most notably provides a set of padding
           options which can be used to create container elements with internal
           spacing.
         </Text>
@@ -109,7 +113,7 @@ const page: Page = {
         <Text>These options accept a value from our white space scale.</Text>
         <Text>
           For example, if you wanted to create a container element with small
-          spacing on all sides
+          spacing on all sides:
         </Text>
         <Code>
           <Box padding="small">
@@ -143,12 +147,14 @@ const page: Page = {
           </Box>
         </Code>
 
-        <Divider />
+        <div id="card">
+          <Divider />
+        </div>
 
         <Heading level="3">Card</Heading>
         <Text>
-          Rather than nesting content in arbitrary Box elements, you may prefer
-          to use standard Card elements instead.
+          Rather than nesting content in arbitrary ‘Box’ elements, you may
+          prefer to use standard ‘Card’ elements instead.
         </Text>
         <Code>
           <Card>
@@ -156,16 +162,18 @@ const page: Page = {
           </Card>
         </Code>
 
-        <Divider />
+        <div id="stack">
+          <Divider />
+        </div>
 
         <Heading level="3">Stack</Heading>
         <Text>
           The most common white space on screen is between elements stacked
-          vertically. For this use case, Braid provides a Stack component that
-          accepts a ‘space’ option.
+          vertically. For this use case, Braid provides a ‘Stack’ component that
+          accepts a ‘space’ prop.
         </Text>
         <Text>
-          For example, if you wanted to render a stack of Heading and Text
+          For example, if you wanted to render a stack of ‘Heading’ and ‘Text’
           elements with large spacing between them:
         </Text>
         <Code>
@@ -178,7 +186,7 @@ const page: Page = {
           </Card>
         </Code>
         <Text>
-          Just like Box, you can also specify different spacing values for
+          Just like ‘Box’, you can also specify different spacing values for
           different screen sizes:
         </Text>
         <Code>
@@ -205,7 +213,7 @@ const page: Page = {
         </Code>
         <Text>
           If you’d prefer to take control over the placement of dividers, you
-          can use the Divider component directly:
+          can use the ‘Divider’ component directly:
         </Text>
         <Code>
           <Card>
@@ -218,12 +226,9 @@ const page: Page = {
           </Card>
         </Code>
         <Text>
-          Note that, as with most components, you can nest multiple Stacks to
-          create nested white space rules.
-        </Text>
-        <Text>
-          For example, if you wanted to create multiple grouped blocks of text
-          like you might see on a job summary card:
+          Multiple ‘Stack’ components can be nested to create more complex white
+          space rules. For example, if you wanted to create multiple grouped
+          blocks of text like you might see on a job summary card:
         </Text>
         <Code>
           <Card>
@@ -245,8 +250,8 @@ const page: Page = {
           </Card>
         </Code>
         <Text>
-          Stacks also support custom horizontal alignment. For example, if you
-          wanted to centre align all content within a card:
+          ‘Stack’ also supports horizontal alignment. For example, if you wanted
+          to centre align all content within a card:
         </Text>
         <Code>
           <Card>
@@ -263,14 +268,16 @@ const page: Page = {
           </Card>
         </Code>
 
-        <Divider />
+        <div id="inline">
+          <Divider />
+        </div>
 
         <Heading level="3">Inline</Heading>
 
         <Text>
           If you’d like to render a set of components in a row with equal
           spacing around them, wrapping onto multiple lines when necessary,
-          Braid provides an Inline component:
+          Braid provides an ‘Inline’ component:
         </Text>
 
         <Code>
@@ -290,7 +297,7 @@ const page: Page = {
         </Code>
 
         <Text>
-          Similar to Stack, Inline also supports horizontal alignment of its
+          Similar to ‘Stack’, ‘Inline’ also supports horizontal alignment of its
           children:
         </Text>
 
@@ -304,13 +311,15 @@ const page: Page = {
           </Card>
         </Code>
 
-        <Divider />
+        <div id="columns">
+          <Divider />
+        </div>
 
         <Heading level="3">Columns</Heading>
 
         <Text>
           If you need to lay out content horizontally, Braid provides the
-          Columns and Column components:
+          ‘Columns’ and ‘Column’ components:
         </Text>
 
         <Code>
@@ -330,7 +339,7 @@ const page: Page = {
 
         <Text>
           If you’d like the columns to stack vertically on smaller screens, you
-          can provide the ‘collapseBelow’ option.
+          can provide the ‘collapseBelow’ prop.
         </Text>
         <Text>
           For example, if you wanted cards to be rendered vertically on mobile
@@ -353,8 +362,8 @@ const page: Page = {
         </Code>
 
         <Text>
-          By default, all columns are of equal width. However, you can also
-          customise the width of each column individually.
+          All columns are of equal width by default, but you can also customise
+          the width of each column individually.
         </Text>
         <Text>
           For example, if you wanted to render a main content area and a
@@ -382,8 +391,8 @@ const page: Page = {
           within it.
         </Text>
         <Text>
-          For example, if you wanted a card with a left-aligned heading and a
-          right-aligned overflow menu:
+          For example, if you wanted a card with a left-aligned ‘Heading’ and a
+          right-aligned ‘OverflowMenu’:
         </Text>
 
         <Code>
@@ -412,7 +421,7 @@ const page: Page = {
                   </OverflowMenu>
                 </Column>
               </Columns>
-              <Text>Card content...</Text>
+              <Text>Card content</Text>
             </Stack>
           </Card>
         </Code>
@@ -439,8 +448,8 @@ const page: Page = {
         </Code>
 
         <Text>
-          If you have columns that are of varying height, you can center them
-          vertically with the ‘alignY’ option:
+          If you have ‘Column’ elements that are of varying height, you can
+          center them vertically with the ‘alignY’ prop:
         </Text>
 
         <Code>
@@ -473,7 +482,10 @@ const page: Page = {
             </Column>
           </Columns>
         </Code>
-        <Divider />
+
+        <div id="contentblock">
+          <Divider />
+        </div>
 
         <Heading level="3">ContentBlock</Heading>
 
@@ -494,7 +506,7 @@ const page: Page = {
 
         <Text>
           If you’d like a larger content block, you can optionally provide the
-          ‘width’ option:
+          ‘width’ prop:
         </Text>
 
         <Code>

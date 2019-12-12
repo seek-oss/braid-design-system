@@ -162,6 +162,7 @@ export const Documentation = () => {
                   {['Layout', 'Content', 'Interaction', 'Logic'].map(
                     category => (
                       <MenuSectionList
+                        key={category}
                         title={`${category} Components`}
                         items={componentsByCategory[category].map(
                           ({ name }) => ({

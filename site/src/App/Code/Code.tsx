@@ -24,7 +24,7 @@ const formatSnippet = memoize(
   snippet =>
     prettier
       .format(snippet, {
-        parser: 'babylon',
+        parser: 'babel',
         plugins: [babylonParser],
         semi: false,
       })
