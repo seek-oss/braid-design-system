@@ -389,7 +389,7 @@ const page: Page = {
         <Code>
           <Card>
             <Stack space="medium">
-              <Columns space="small" collapseBelow="tablet">
+              <Columns space="small">
                 <Column>
                   <Heading level="3">Card heading</Heading>
                 </Column>
@@ -448,26 +448,26 @@ const page: Page = {
             <Column>
               <Card>
                 <Stack space="medium" align="center">
-                  <Text>Column 1</Text>
-                  <Text>Column 1</Text>
+                  <Text>Column</Text>
+                  <Text>Column</Text>
                 </Stack>
               </Card>
             </Column>
             <Column>
               <Card>
                 <Stack space="medium" align="center">
-                  <Text>Column 2</Text>
-                  <Text>Column 2</Text>
-                  <Text>Column 2</Text>
-                  <Text>Column 2</Text>
+                  <Text>Column</Text>
+                  <Text>Column</Text>
+                  <Text>Column</Text>
+                  <Text>Column</Text>
                 </Stack>
               </Card>
             </Column>
             <Column>
               <Card>
                 <Stack space="medium" align="center">
-                  <Text>Column 3</Text>
-                  <Text>Column 3</Text>
+                  <Text>Column</Text>
+                  <Text>Column</Text>
                 </Stack>
               </Card>
             </Column>

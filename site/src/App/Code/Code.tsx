@@ -9,12 +9,12 @@ import { createUrl } from 'sku/playroom/utils';
 import classnames from 'classnames';
 import { useConfig } from '../ConfigContext';
 import { Box, Stack, Text, BraidProvider } from '../../../../lib/components';
+import { seekAnz } from '../../../../lib/themes';
 import { BoxProps } from '../../../../lib/components/Box/Box';
 import { FieldOverlay } from '../../../../lib/components/private/FieldOverlay/FieldOverlay';
 import { CopyIcon } from './CopyIcon';
 import { PlayIcon } from './PlayIcon';
 import * as styleRefs from './Code.treat';
-import { seekAnz } from '../../../../lib/themes';
 
 // @ts-ignore
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
@@ -83,11 +83,10 @@ export default ({ children }: CodeProps) => {
   const styles = useStyles(styleRefs);
   const { playroomUrl } = useConfig();
 
-  const renderPreview = typeof children !== 'string';
   const snippet = cleanSnippet(
     formatSnippet(
-      !renderPreview
-        ? (children as string)
+      typeof children === 'string'
+        ? children
         : reactElementToJSXString(children, {
             useBooleanShorthandSyntax: false,
             showDefaultProps: false,
@@ -105,7 +104,7 @@ export default ({ children }: CodeProps) => {
       }}
     >
       <Stack space="xsmall">
-        {renderPreview && (
+        {typeof children !== 'string' && (
           <Box
             padding="small"
             background="neutralLight"

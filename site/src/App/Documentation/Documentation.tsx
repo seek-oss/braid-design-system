@@ -59,7 +59,7 @@ export const Documentation = () => {
 
   const location = useLocation();
   const [isMenuOpen, setMenuOpen] = useState(
-    !/^\/(guides|components|icons)\/(.*)/.test(location.pathname),
+    !/^\/(guides|components|foundations|icons)\/(.*)/.test(location.pathname),
   );
 
   const isComponentsHome = location.pathname === '/components';
