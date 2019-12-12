@@ -1,6 +1,5 @@
 import React, { ReactNode, Fragment } from 'react';
 import reactElementToJSXString from 'react-element-to-jsx-string';
-import dedent from 'dedent';
 import { ComponentProps } from './ComponentProps';
 import { ExternalLink } from './Link';
 import {
@@ -73,9 +72,7 @@ export const ComponentRoute = ({
                   showFunctions: false,
                   filterProps: ['onChange', 'onBlur', 'onFocus'],
                 })
-              : code
-              ? dedent(code)
-              : null;
+              : code;
 
           const ExampleInContainer = ({ id }: { id: string }) => (
             <Container>
