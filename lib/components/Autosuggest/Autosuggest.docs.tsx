@@ -12,7 +12,7 @@ const Container = ({ children }: { children: ReactNode }) => (
 const makeSuggestions = (
   labels: string[],
   inputValue: string,
-  initialValue: number = 0,
+  initialValue = 0,
 ) =>
   labels
     .filter(text => !inputValue || matchHighlights(text, inputValue).length)

@@ -25,11 +25,10 @@ export const typeSerializer = {
             )}`,
         )
         .join('')}\n}`;
-    } else {
-      return `${type.alias}<${type.params
-        .map(param => `${serializer(param)}`)
-        .join(',')}\n>`;
     }
+    return `${type.alias}<${type.params
+      .map(param => `${serializer(param)}`)
+      .join(',')}\n>`;
   },
 
   test: (val: any) => {

@@ -1,4 +1,4 @@
-import { ComponentType, ReactNode, SyntheticEvent, ReactElement } from 'react';
+import { ComponentType, ReactNode } from 'react';
 
 export interface AppConfig {
   playroomUrl: string;

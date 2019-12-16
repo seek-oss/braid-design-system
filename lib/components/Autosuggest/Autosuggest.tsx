@@ -379,9 +379,11 @@ export function Autosuggest<Value>({
             }
           : state;
       }
-    }
 
-    return state;
+      default: {
+        throw new Error(`Invalid Autosuggest action: ${action.type}`);
+      }
+    }
   };
 
   const [{ isOpen, previewValue, highlightedIndex }, dispatch] = useReducer(
@@ -497,6 +499,9 @@ export function Autosuggest<Value>({
           }
 
           dispatch({ type: INPUT_ENTER });
+          return;
+        }
+        default: {
           return;
         }
       }

@@ -15,30 +15,32 @@ export interface UseTextProps {
   _LEGACY_SPACE_?: boolean;
 }
 
-export const useText = ({
+export function useText({
   weight = 'regular',
   size = 'standard',
   tone,
   baseline,
   backgroundContext,
   _LEGACY_SPACE_ = false,
-}: UseTextProps) => {
+}: UseTextProps) {
   const styles = useStyles(styleRefs);
   const inTextLinkRenderer = useContext(TextLinkRendererContext);
+  const space = useTouchableSpace(size);
+  const textTone = useTextTone({ tone, backgroundContext });
 
   return classnames(
     styles.fontFamily,
     styles.text[size].base,
     inTextLinkRenderer
-      ? useTouchableSpace(size)
+      ? space
       : [
-          useTextTone({ tone, backgroundContext }),
+          textTone,
           styles.fontWeight[weight],
           baseline ? styles.text[size].baseline : null,
           baseline && !_LEGACY_SPACE_ ? styles.text[size].cropFirstLine : null,
         ],
   );
-};
+}
 
 export type HeadingLevel = keyof typeof styleRefs.heading;
 export type HeadingWeight = 'regular' | 'weak';
@@ -51,44 +53,46 @@ interface UseHeadingParams {
   _LEGACY_SPACE_?: boolean;
 }
 
-export const useHeading = ({
+export function useHeading({
   weight = 'regular',
   level,
   baseline,
   backgroundContext,
   _LEGACY_SPACE_ = false,
-}: UseHeadingParams) => {
+}: UseHeadingParams) {
   const styles = useStyles(styleRefs);
+  const textTone = useTextTone({ backgroundContext });
 
   return classnames(
     styles.fontFamily,
     styles.headingWeight[weight],
     styles.heading[level].base,
     _LEGACY_SPACE_ ? null : styles.heading[level].cropFirstLine,
-    useTextTone({ backgroundContext }),
+    textTone,
     {
       [styles.heading[level].baseline]: baseline,
     },
   );
-};
+}
 
-export const useTextSize = (size: keyof typeof styleRefs.text) =>
-  useStyles(styleRefs).text[size].base;
+export function useTextSize(size: keyof typeof styleRefs.text) {
+  return useStyles(styleRefs).text[size].base;
+}
 
-export const useWeight = (weight: keyof typeof styleRefs.fontWeight) => {
+export function useWeight(weight: keyof typeof styleRefs.fontWeight) {
   const styles = useStyles(styleRefs);
   const inTextLinkRenderer = useContext(TextLinkRendererContext);
 
   return inTextLinkRenderer ? undefined : styles.fontWeight[weight];
-};
+}
 
-export const useTextTone = ({
+export function useTextTone({
   tone,
   backgroundContext: backgroundContextOverride,
 }: {
   tone?: keyof typeof styleRefs.tone;
   backgroundContext?: BoxProps['background'];
-} = {}) => {
+} = {}) {
   const styles = useStyles(styleRefs);
   const inTextLinkRenderer = useContext(TextLinkRendererContext);
   const backgroundContext = useBackground();
@@ -112,7 +116,8 @@ export const useTextTone = ({
   }
 
   return styles.tone.neutral;
-};
+}
 
-export const useTouchableSpace = (size: keyof typeof styleRefs.touchable) =>
-  useStyles(styleRefs).touchable[size];
+export function useTouchableSpace(size: keyof typeof styleRefs.touchable) {
+  return useStyles(styleRefs).touchable[size];
+}

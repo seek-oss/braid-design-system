@@ -29,6 +29,8 @@ export const FieldMessage = ({
   reserveMessageSpace = true,
   disabled,
 }: FieldMessageProps) => {
+  const styles = useStyles(styleRefs);
+
   if (tones.indexOf(tone) === -1) {
     throw new Error(`Invalid tone: ${tone}`);
   }
@@ -37,7 +39,6 @@ export const FieldMessage = ({
     return null;
   }
 
-  const styles = useStyles(styleRefs);
   const showMessage = !disabled && message;
 
   return (

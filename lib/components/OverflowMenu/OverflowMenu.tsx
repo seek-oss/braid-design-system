@@ -146,12 +146,10 @@ export const OverflowMenu = ({
       if (typeof onOpen === 'function') {
         onOpen();
       }
-    } else {
-      if (typeof onClose === 'function' && hasOpened.current) {
-        onClose();
-      }
+    } else if (typeof onClose === 'function' && hasOpened.current) {
+      onClose();
     }
-  }, [open]);
+  }, [onClose, onOpen, open]);
 
   const focusTrigger = () => {
     if (buttonRef && buttonRef.current) {

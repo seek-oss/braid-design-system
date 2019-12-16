@@ -79,6 +79,7 @@ export const Columns = ({
       alignItems={alignYToFlexAlign(alignY)}
       flexDirection={[
         collapseMobile ? 'column' : 'row',
+        // eslint-disable-next-line no-nested-ternary
         collapseTablet ? 'column' : rowReverseTablet ? 'rowReverse' : 'row',
         rowReverseDesktop ? 'rowReverse' : 'row',
       ]}
