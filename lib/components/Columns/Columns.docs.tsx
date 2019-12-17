@@ -387,20 +387,25 @@ const docs: ComponentDocs = {
     {
       label:
         'Test: Collapsed "content" columns should be full width when setting "alignY"',
-      docsSite: false,
+      // docsSite: false,
       Example: () => (
         <Columns space="small" alignY="bottom" collapseBelow="tablet">
           <Column>
             <HideCode>
-              <Content>Content</Content>
-              <Content>Content</Content>
+              <Content>No width</Content>
+            </HideCode>
+          </Column>
+          <Column width="1/2">
+            <HideCode>
+              <Content>1/2 width</Content>
+              <Content>1/2 width</Content>
             </HideCode>
           </Column>
           <Column width="content">
             <HideCode>
-              <Content>Content</Content>
-              <Content>Content</Content>
-              <Content>Content</Content>
+              <Content>Content width</Content>
+              <Content>Content width</Content>
+              <Content>Content width</Content>
             </HideCode>
           </Column>
         </Columns>
