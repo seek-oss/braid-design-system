@@ -1,4 +1,4 @@
-/* tslint:disable */
+/* eslint-disable no-console */
 import fs from 'fs';
 import path from 'path';
 import ts from 'typescript';
@@ -47,6 +47,7 @@ export type NormalisedPropType =
 export default () => {
   const basePath = path.dirname(tsconfigPath);
   const { config, error } = ts.readConfigFile(tsconfigPath, filename =>
+    // eslint-disable-next-line no-sync
     fs.readFileSync(filename, 'utf8'),
   );
 
@@ -72,7 +73,7 @@ export default () => {
 
   const checker = program.getTypeChecker();
 
-  const getComponentPropsType = (exp: ts.Symbol) => {
+  function getComponentPropsType(exp: ts.Symbol) {
     const type = checker.getTypeOfSymbolAtLocation(
       exp,
       exp.valueDeclaration || exp.declarations[0],
@@ -95,12 +96,12 @@ export default () => {
     }
 
     return null;
-  };
+  }
 
-  const normalizeInterface = (
+  function normalizeInterface(
     propsType: ts.Type,
     propsObj: ts.Symbol,
-  ): NormalisedInterface => {
+  ): NormalisedInterface {
     return {
       type: 'interface',
       props: Object.assign(
@@ -135,12 +136,12 @@ export default () => {
           }),
       ),
     };
-  };
+  }
 
-  const normaliseType = (
+  function normaliseType(
     type: ts.Type,
     propsObj: ts.Symbol,
-  ): NormalisedPropType => {
+  ): NormalisedPropType {
     const typeString = checker.typeToString(type);
 
     if (stringAliases[typeString]) {
@@ -183,9 +184,9 @@ export default () => {
     }
 
     return typeString;
-  };
+  }
 
-  const getComponentDocs = (exp: ts.Symbol) => {
+  function getComponentDocs(exp: ts.Symbol) {
     const propsObj = getComponentPropsType(exp);
 
     if (!propsObj || !propsObj.valueDeclaration) {
@@ -198,7 +199,7 @@ export default () => {
     );
 
     return normalizeInterface(propsType, propsObj);
-  };
+  }
 
   for (const sourceFile of program.getSourceFiles()) {
     if (

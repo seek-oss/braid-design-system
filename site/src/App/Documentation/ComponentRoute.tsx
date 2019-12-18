@@ -66,7 +66,8 @@ export const ComponentRoute = ({
 
           const codeAsString =
             Example && !code
-              ? reactElementToJSXString(Example({ id: 'id', handler }), {
+              ? // eslint-disable-next-line new-cap
+                reactElementToJSXString(Example({ id: 'id', handler }), {
                   useBooleanShorthandSyntax: false,
                   showDefaultProps: false,
                   showFunctions: false,

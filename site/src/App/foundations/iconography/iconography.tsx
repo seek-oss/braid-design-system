@@ -110,15 +110,14 @@ const page: Page = {
                 );
 
                 if (filteredList.length === 0) {
-                  const suggestions = didYouMean(searchText, iconNames, {
-                    returnType: ReturnTypeEnums.ALL_CLOSEST_MATCHES,
-                    matchPath: ['displayName'],
-                  });
-                  const suggestionList = suggestions
-                    ? Array.isArray(suggestions)
-                      ? suggestions
-                      : [suggestions]
-                    : [];
+                  const suggestions =
+                    didYouMean(searchText, iconNames, {
+                      returnType: ReturnTypeEnums.ALL_CLOSEST_MATCHES,
+                      matchPath: ['displayName'],
+                    }) ?? [];
+                  const suggestionList = Array.isArray(suggestions)
+                    ? suggestions
+                    : [suggestions];
 
                   setDisambiguated(suggestionList && suggestionList.length > 0);
                   setIconList(suggestionList);

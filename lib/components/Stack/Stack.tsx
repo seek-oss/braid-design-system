@@ -14,6 +14,12 @@ export interface UseStackProps {
   space: UseBoxStylesProps['paddingBottom'];
 }
 
+const alignToDisplay = {
+  left: 'block',
+  center: 'flex',
+  right: 'flex',
+} as const;
+
 export const useStackItem = ({ align, component, space }: UseStackProps) => {
   const styles = useStyles(styleRefs);
 
@@ -34,12 +40,6 @@ export const useStackItem = ({ align, component, space }: UseStackProps) => {
     styles.excludingLast,
   );
 };
-
-const alignToDisplay = {
-  left: 'block',
-  center: 'flex',
-  right: 'flex',
-} as const;
 
 export interface StackProps {
   children: ReactNode;

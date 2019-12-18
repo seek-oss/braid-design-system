@@ -1,4 +1,3 @@
-/* tslint:disable */
 import React, { Fragment } from 'react';
 import partition from 'lodash/partition';
 import {
@@ -62,13 +61,15 @@ const PropType = ({ type }: { type: NormalisedPropType }) => {
     return (
       <Fragment>
         {'{'}
-        {Object.values(type.props).map(({ propName, required, type }) => (
-          <Box key={propName} paddingLeft="small">
-            {propName}
-            {required ? ': ' : '?: '}
-            <PropType type={type} />;
-          </Box>
-        ))}
+        {Object.values(type.props).map(
+          ({ propName, required, type: propType }) => (
+            <Box key={propName} paddingLeft="small">
+              {propName}
+              {required ? ': ' : '?: '}
+              <PropType type={propType} />;
+            </Box>
+          ),
+        )}
         {'}'}
       </Fragment>
     );
