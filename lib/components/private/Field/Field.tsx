@@ -10,7 +10,10 @@ import React, {
 import { useStyles } from 'sku/react-treat';
 import classnames from 'classnames';
 import { Box, BoxProps } from '../../Box/Box';
-import { BackgroundProvider, useBackground } from '../../Box/BackgroundContext';
+import {
+  BackgroundProvider,
+  useBackgroundLightness,
+} from '../../Box/BackgroundContext';
 import { FieldLabel, FieldLabelProps } from '../../FieldLabel/FieldLabel';
 import {
   FieldMessage,
@@ -109,7 +112,7 @@ export const Field = forwardRef<FieldRef, InternalFieldProps>(
 
     const messageId = `${id}-message`;
     const fieldBackground = disabled ? 'inputDisabled' : 'input';
-    const showFieldBorder = useBackground() !== 'brand';
+    const showFieldBorder = useBackgroundLightness() === 'light';
 
     const clearHandler = useCallback(() => {
       if (typeof onClear !== 'function') {

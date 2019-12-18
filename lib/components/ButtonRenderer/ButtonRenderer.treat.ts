@@ -9,6 +9,8 @@ export const weak = style({
   backgroundColor: 'transparent',
 });
 
+export const inverted = style({});
+
 export const activeOverlay = style({
   selectors: {
     [`${root}:active &`]: {
@@ -27,6 +29,9 @@ export const hoverOverlay = style({
     },
     [`${weak}:hover:not(:active) &`]: {
       opacity: 0.075,
+    },
+    [`${weak}${inverted}:hover:not(:active) &`]: {
+      opacity: 0.15,
     },
   },
 });

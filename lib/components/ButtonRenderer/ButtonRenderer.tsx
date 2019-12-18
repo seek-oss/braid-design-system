@@ -10,7 +10,10 @@ import React, {
 import classnames from 'classnames';
 import { useStyles } from 'sku/treat';
 import { useBoxStyles, UseBoxStylesProps } from '../Box/useBoxStyles';
-import { BackgroundProvider, useBackground } from '../Box/BackgroundContext';
+import {
+  BackgroundProvider,
+  useBackgroundLightness,
+} from '../Box/BackgroundContext';
 import { Box } from '../Box/Box';
 import { Text, TextProps } from '../Text/Text';
 import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
@@ -53,18 +56,17 @@ const buttonVariants: Record<
   weakInverted: {
     textTone: undefined,
     background: undefined,
-    backgroundHover: 'formAccentHover',
-    backgroundActive: 'formAccentActive',
+    backgroundHover: 'card',
+    backgroundActive: 'card',
     boxShadow: 'borderStandardInvertedLarge',
   },
 };
 
-const getButtonVariant = (
-  weight: ButtonWeight,
-  background: UseBoxStylesProps['background'] | null,
-) => {
+const useButtonVariant = (weight: ButtonWeight) => {
   const variantName =
-    weight === 'weak' && background === 'brand' ? 'weakInverted' : weight;
+    useBackgroundLightness() === 'dark' && weight === 'weak'
+      ? 'weakInverted'
+      : weight;
 
   return buttonVariants[variantName];
 };
@@ -81,7 +83,7 @@ interface ButtonChildrenProps {
 const ButtonChildren = ({ children }: ButtonChildrenProps) => {
   const styles = useStyles(styleRefs);
   const { weight, loading } = useContext(ButtonChildrenContext);
-  const buttonVariant = getButtonVariant(weight, useBackground());
+  const buttonVariant = useButtonVariant(weight);
 
   return (
     <Fragment>
@@ -159,11 +161,12 @@ export const ButtonRenderer = ({
 }: ButtonRendererProps) => {
   const styles = useStyles(styleRefs);
   const isWeak = weight === 'weak';
-  const { background, boxShadow } = getButtonVariant(weight, useBackground());
+  const { background, boxShadow } = useButtonVariant(weight);
 
   const buttonStyles = classnames(
     styles.root,
     isWeak ? styles.weak : null,
+    useBackgroundLightness() === 'dark' ? styles.inverted : null,
     useBoxStyles({
       component: 'button',
       cursor: 'pointer',
