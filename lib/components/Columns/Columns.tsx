@@ -75,7 +75,11 @@ export const Columns = ({
 
   return (
     <Box
-      display="flex"
+      display={[
+        collapseMobile ? 'block' : 'flex',
+        collapseTablet ? 'block' : 'flex',
+        'flex',
+      ]}
       alignItems={alignYToFlexAlign(alignY)}
       flexDirection={[
         collapseMobile ? 'column' : 'row',
