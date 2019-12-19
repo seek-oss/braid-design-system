@@ -16,3 +16,9 @@ export const renderBackgroundProvider = (
   );
 
 export const useBackground = () => useContext(backgroundContext);
+
+export const useBackgroundLightness = () => {
+  const background = useBackground();
+
+  return background === 'brand' ? 'dark' : 'light';
+};
