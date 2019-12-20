@@ -1,9 +1,10 @@
 import mapValues from 'lodash/mapValues';
+import omit from 'lodash/omit';
 import { style, styleMap, ClassRef } from 'sku/treat';
 import { Theme } from 'treat/theme';
 import basekick from './basekick';
-import { getAccessibleVariant, isLight, mapToStyleProperty } from '../../utils';
-import { TextBreakpoint } from '../../themes/makeTreatTheme';
+import { getAccessibleVariant, mapToStyleProperty } from '../../utils';
+import { TextBreakpoint } from '../../themes/makeBraidTheme';
 import { UseBoxStylesProps } from '../../components/Box/useBoxStyles';
 
 export const fontFamily = style(({ typography }) => ({
@@ -104,29 +105,36 @@ export const heading = {
   ),
 };
 
-export const tone = styleMap(theme => {
-  const {
-    linkHover,
-    link,
-    // Omit from public API
-    linkVisited,
-    neutralInverted,
-    ...foreground
-  } = theme.color.foreground;
+export const tone = {
+  ...styleMap(theme => {
+    return mapToStyleProperty(
+      omit(theme.color.foreground, [
+        'linkHover',
+        'linkVisited',
+        'neutral',
+        'neutralInverted',
+      ]),
+      'color',
+    );
+  }),
+  link: style(({ color: { foreground } }) => ({
+    color: foreground.link,
+    ...(foreground.link !== foreground.linkHover
+      ? {
+          ':hover': { color: foreground.linkHover },
+          ':focus': { color: foreground.linkHover },
+        }
+      : {}),
+  })),
+};
 
-  return {
-    ...mapToStyleProperty(foreground, 'color'),
-    link: {
-      color: link,
-      ...(link !== linkHover
-        ? {
-            ':hover': { color: linkHover },
-            ':focus': { color: linkHover },
-          }
-        : {}),
-    },
-  };
-});
+export const neutral = style(theme => ({
+  color: theme.color.foreground.neutral,
+}));
+
+export const neutralInverted = style(theme => ({
+  color: theme.color.foreground.neutralInverted,
+}));
 
 const accessibleColorVariants = styleMap(({ color: { foreground } }) => ({
   critical: {
@@ -143,88 +151,29 @@ const accessibleColorVariants = styleMap(({ color: { foreground } }) => ({
   },
 }));
 
-const textColorForBackground = (
-  background: keyof Theme['color']['background'],
-) => {
-  const resolveOverride = (theme: Theme) => {
-    // Override to ensure we use `neutral` foreground color when on
-    // JobsDB `brandAccent` background.
-    if (theme.name === 'jobsDb' && background === 'brandAccent') {
-      return theme.color.foreground.neutralInverted;
-    }
-  };
-
-  return style(
-    theme => ({
-      color:
-        resolveOverride(theme) ||
-        (isLight(theme.color.background[background])
-          ? theme.color.foreground.neutral
-          : theme.color.foreground.neutralInverted),
-    }),
-    `textColorForBackground-${background}`,
-  );
-};
-
 type Foreground = keyof typeof tone;
 type BoxBackground = NonNullable<UseBoxStylesProps['background']>;
-type BackgroundContrast = {
+type ToneOverridesForBackground = {
   [background in BoxBackground]?: {
-    [foreground in Foreground | 'default']?: ClassRef;
+    [foreground in Foreground | 'neutral']?: ClassRef;
   };
 };
-export const backgroundContrast: BackgroundContrast = {
+export const toneOverridesForBackground: ToneOverridesForBackground = {
   criticalLight: {
-    default: accessibleColorVariants.critical,
+    neutral: accessibleColorVariants.critical,
     critical: accessibleColorVariants.critical,
   },
   positiveLight: {
-    default: accessibleColorVariants.positive,
+    neutral: accessibleColorVariants.positive,
     positive: accessibleColorVariants.positive,
   },
   infoLight: {
-    default: accessibleColorVariants.info,
+    neutral: accessibleColorVariants.info,
     info: accessibleColorVariants.info,
   },
   promoteLight: {
-    default: accessibleColorVariants.promote,
+    neutral: accessibleColorVariants.promote,
     promote: accessibleColorVariants.promote,
-  },
-  brand: {
-    default: textColorForBackground('brand'),
-  },
-  brandAccent: {
-    default: textColorForBackground('brandAccent'),
-  },
-  brandAccentHover: {
-    default: textColorForBackground('brandAccent'),
-  },
-  brandAccentActive: {
-    default: textColorForBackground('brandAccent'),
-  },
-  formAccent: {
-    default: textColorForBackground('formAccent'),
-  },
-  formAccentHover: {
-    default: textColorForBackground('formAccent'),
-  },
-  formAccentActive: {
-    default: textColorForBackground('formAccent'),
-  },
-  positive: {
-    default: textColorForBackground('positive'),
-  },
-  critical: {
-    default: textColorForBackground('critical'),
-  },
-  info: {
-    default: textColorForBackground('info'),
-  },
-  promote: {
-    default: textColorForBackground('promote'),
-  },
-  neutral: {
-    default: textColorForBackground('neutral'),
   },
 };
 

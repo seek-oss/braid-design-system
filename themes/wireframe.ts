@@ -1,1 +1,1 @@
-export { default } from '../lib/themes/wireframe';
+export { theme as default } from '../lib/themes/wireframe/theme.treat';

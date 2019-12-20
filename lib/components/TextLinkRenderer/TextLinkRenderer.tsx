@@ -48,14 +48,11 @@ function useLinkStyles(showVisited: boolean) {
   const inHeading = useContext(HeadingContext);
   const backgroundContext = useBackground();
   const mediumWeight = useWeight('medium');
-
   const highlightLink = backgroundContext === 'card' || !backgroundContext;
 
   return [
     highlightLink ? styles.underlineOnHoverOnly : styles.underlineAlways,
-    useTextTone({
-      tone: highlightLink ? 'link' : undefined,
-    }),
+    useTextTone({ tone: highlightLink ? 'link' : 'neutral' }),
     !inHeading ? mediumWeight : null,
     showVisited ? styles.visited : null,
   ];

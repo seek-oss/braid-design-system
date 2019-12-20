@@ -1,4 +1,4 @@
-import { TreatTokens } from '../makeTreatTheme';
+import { TreatTokens } from '../makeBraidTheme';
 import { DeepPartial } from 'utility-types';
 import { rgba } from 'polished';
 import merge from 'lodash/merge';
@@ -201,6 +201,7 @@ export const makeTokens = ({
         secondary,
       },
       background: {
+        body: '#eee',
         brand,
         input: white,
         inputDisabled: '#eee',

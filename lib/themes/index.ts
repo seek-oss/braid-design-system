@@ -1,7 +1,7 @@
-export { default as seekAnz } from './seekAnz';
-export { default as seekBusiness } from './seekBusiness';
-export { default as jobsDbRebrand } from './jobsDbRebrand';
-export { default as jobsDb } from './jobsDb';
-export { default as jobStreet } from './jobStreet';
-export { default as jobStreetClassic } from './jobStreetClassic';
-export { default as wireframe } from './wireframe';
+export { theme as seekAnz } from './seekAnz/theme.treat';
+export { theme as seekBusiness } from './seekBusiness/theme.treat';
+export { theme as jobsDbRebrand } from './jobsDbRebrand/theme.treat';
+export { theme as jobsDb } from './jobsDb/theme.treat';
+export { theme as jobStreet } from './jobStreet/theme.treat';
+export { theme as jobStreetClassic } from './jobStreetClassic/theme.treat';
+export { theme as wireframe } from './wireframe/theme.treat';

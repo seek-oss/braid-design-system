@@ -1,15 +1,20 @@
 import { useContext } from 'react';
 import { useStyles } from 'sku/react-treat';
 import classnames from 'classnames';
-import { useBackground } from '../../components/Box/BackgroundContext';
+import {
+  useBackground,
+  useBackgroundLightness,
+} from '../../components/Box/BackgroundContext';
 import { BoxProps } from '../../components/Box/Box';
 import TextLinkRendererContext from '../../components/TextLinkRenderer/TextLinkRendererContext';
 import * as styleRefs from './typography.treat';
 
+type TextTone = keyof typeof styleRefs.tone | 'neutral';
+
 export interface UseTextProps {
   weight?: keyof typeof styleRefs.fontWeight;
   size?: keyof typeof styleRefs.text;
-  tone?: keyof typeof styleRefs.tone;
+  tone?: TextTone;
   baseline: boolean;
   backgroundContext?: BoxProps['background'];
   _LEGACY_SPACE_?: boolean;
@@ -18,7 +23,7 @@ export interface UseTextProps {
 export function useText({
   weight = 'regular',
   size = 'standard',
-  tone,
+  tone = 'neutral',
   baseline,
   backgroundContext,
   _LEGACY_SPACE_ = false,
@@ -61,7 +66,7 @@ export function useHeading({
   _LEGACY_SPACE_ = false,
 }: UseHeadingParams) {
   const styles = useStyles(styleRefs);
-  const textTone = useTextTone({ backgroundContext });
+  const textTone = useTextTone({ tone: 'neutral', backgroundContext });
 
   return classnames(
     styles.fontFamily,
@@ -87,27 +92,28 @@ export function useWeight(weight: keyof typeof styleRefs.fontWeight) {
 }
 
 export function useTextTone({
-  tone,
+  tone = 'neutral',
   backgroundContext: backgroundContextOverride,
 }: {
-  tone?: keyof typeof styleRefs.tone;
+  tone: TextTone;
   backgroundContext?: BoxProps['background'];
-} = {}) {
+}) {
   const styles = useStyles(styleRefs);
   const inTextLinkRenderer = useContext(TextLinkRendererContext);
   const backgroundContext = useBackground();
+  const backgroundLightness = useBackgroundLightness();
   const background = backgroundContextOverride || backgroundContext;
 
-  const backgroundContrast = styles.backgroundContrast[background!];
-  if (backgroundContrast) {
-    const altColor = backgroundContrast[tone || 'default'];
+  const toneOverrides = styles.toneOverridesForBackground[background!];
+  if (toneOverrides) {
+    const toneOverride = toneOverrides[tone];
 
-    if (altColor) {
-      return altColor;
+    if (toneOverride) {
+      return toneOverride;
     }
   }
 
-  if (tone) {
+  if (tone !== 'neutral') {
     return styles.tone[tone];
   }
 
@@ -115,7 +121,9 @@ export function useTextTone({
     return styles.tone.link;
   }
 
-  return styles.tone.neutral;
+  return backgroundLightness === 'light'
+    ? styles.neutral
+    : styles.neutralInverted;
 }
 
 export function useTouchableSpace(size: keyof typeof styleRefs.touchable) {

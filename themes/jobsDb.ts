@@ -1,1 +1,1 @@
-export { default } from '../lib/themes/jobsDb';
+export { theme as default } from '../lib/themes/jobsDb/theme.treat';

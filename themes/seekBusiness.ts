@@ -1,1 +1,1 @@
-export { default } from '../lib/themes/seekBusiness';
+export { theme as default } from '../lib/themes/seekBusiness/theme.treat';

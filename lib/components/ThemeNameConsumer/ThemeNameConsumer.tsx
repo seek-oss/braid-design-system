@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { useThemeName } from './ThemeNameContext';
+import { useThemeName } from './useThemeName';
 
 interface ThemeNameConsumerProps {
   children(name: string): ReactElement;

@@ -1,7 +1,7 @@
 import { style, styleMap } from 'sku/treat';
 import { Properties } from 'csstype';
-import { darken, lighten } from 'polished';
-import { getLightVariant, isLight, mapToStyleProperty } from '../../utils';
+import omit from 'lodash/omit';
+import { mapToStyleProperty } from '../../utils';
 import { Theme } from 'treat/theme';
 
 const spaceMapToCss = (
@@ -237,26 +237,9 @@ export const flexDirectionDesktop = styleMap(({ utils: { responsiveStyle } }) =>
   ),
 );
 
-const getActiveColor = (color: string) =>
-  isLight(color) ? darken(0.1, color) : darken(0.05, color);
-
-const getHoverColor = (color: string) =>
-  isLight(color) ? darken(0.05, color) : lighten(0.05, color);
-
-export const background = styleMap(({ color }) => ({
-  ...mapToStyleProperty(color.background, 'background'),
-  formAccentActive: { background: getActiveColor(color.background.formAccent) },
-  formAccentHover: { background: getHoverColor(color.background.formAccent) },
-  brandAccentActive: {
-    background: getActiveColor(color.background.brandAccent),
-  },
-  brandAccentHover: { background: getHoverColor(color.background.brandAccent) },
-  infoLight: { background: getLightVariant(color.background.info) },
-  promoteLight: { background: getLightVariant(color.background.promote) },
-  criticalLight: { background: getLightVariant(color.background.critical) },
-  positiveLight: { background: getLightVariant(color.background.positive) },
-  neutralLight: { background: getLightVariant(color.background.neutral) },
-}));
+export const background = styleMap(({ color }) =>
+  mapToStyleProperty(omit(color.background, 'body'), 'background'),
+);
 
 export const boxShadow = styleMap(
   ({ border: { width: borderWidth, color }, shadows }) => ({

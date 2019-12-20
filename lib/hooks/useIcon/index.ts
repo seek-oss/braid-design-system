@@ -36,7 +36,8 @@ export default ({ size, tone }: UseIconProps): BoxProps => {
   const styles = useStyles(styleRefs);
   const textContext = useContext(TextContext);
   const headingContext = useContext(HeadingContext);
-  const inheritedTone = textContext ? textContext.tone : undefined;
+  const inheritedTone =
+    textContext && textContext.tone ? textContext.tone : 'neutral';
   const resolvedTone = useTextTone({ tone: tone || inheritedTone });
 
   const isInline = textContext || headingContext;
