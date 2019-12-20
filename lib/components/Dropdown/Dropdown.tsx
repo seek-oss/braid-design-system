@@ -11,7 +11,6 @@ import { Omit } from 'utility-types';
 import { Box } from '../Box/Box';
 import { Field, FieldProps } from '../private/Field/Field';
 import { IconChevron } from '../icons';
-import { useTextTone } from '../../hooks/typography';
 import * as styleRefs from './Dropdown.treat';
 import { Text } from '../Text/Text';
 
@@ -28,17 +27,6 @@ interface DropdownProps
   onFocus?: SelectProps['onFocus'];
   placeholder?: string;
 }
-
-const getTone = (
-  placeholder: DropdownProps['placeholder'],
-  value: DropdownProps['value'],
-) => {
-  if (!value && placeholder) {
-    return 'secondary';
-  }
-
-  return 'neutral';
-};
 
 const NamedDropdown = forwardRef<HTMLSelectElement, DropdownProps>(
   (props: DropdownProps, ref) => {
@@ -68,6 +56,7 @@ const NamedDropdown = forwardRef<HTMLSelectElement, DropdownProps>(
         ref={ref}
         labelId={undefined}
         secondaryMessage={null}
+        value={value}
       >
         {(
           overlays,
@@ -87,11 +76,7 @@ const NamedDropdown = forwardRef<HTMLSelectElement, DropdownProps>(
               onBlur={onBlur}
               onFocus={onFocus}
               placeholder={placeholder}
-              className={classnames(
-                styles.field,
-                className,
-                useTextTone({ tone: getTone(placeholder, value) }),
-              )}
+              className={classnames(styles.field, className)}
               {...fieldProps}
               ref={fieldRef}
             >

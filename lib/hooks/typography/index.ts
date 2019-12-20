@@ -101,8 +101,8 @@ export function useTextTone({
   const styles = useStyles(styleRefs);
   const inTextLinkRenderer = useContext(TextLinkRendererContext);
   const backgroundContext = useBackground();
-  const backgroundLightness = useBackgroundLightness();
   const background = backgroundContextOverride || backgroundContext;
+  const backgroundLightness = useBackgroundLightness(background);
 
   const toneOverrides = styles.toneOverridesForBackground[background!];
   if (toneOverrides) {

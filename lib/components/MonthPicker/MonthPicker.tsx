@@ -179,6 +179,7 @@ export const MonthPicker = ({
       tone={tone}
       disabled={disabled}
       label={label}
+      value={customValueToString(currentValue)}
       {...restProps}
       labelId={undefined}
       data={undefined}

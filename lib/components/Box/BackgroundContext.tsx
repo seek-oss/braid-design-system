@@ -18,8 +18,11 @@ export const renderBackgroundProvider = (
 
 export const useBackground = () => useContext(backgroundContext);
 
-export const useBackgroundLightness = () => {
-  const background = useBackground();
+export const useBackgroundLightness = (
+  backgroundOverride?: ReturnType<typeof useBackground>,
+) => {
+  const backgroundFromContext = useBackground();
+  const background = backgroundOverride || backgroundFromContext;
   const { backgroundLightness } = useBraidTheme();
   const defaultLightness = backgroundLightness.body;
 

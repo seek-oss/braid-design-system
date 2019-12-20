@@ -126,8 +126,8 @@ export const Field = forwardRef<FieldRef, InternalFieldProps>(
       }
     }, [onClear, ref]);
 
-    const clearButtonVisible =
-      onClear && typeof value === 'string' && value.length > 0;
+    const hasValue = typeof value === 'string' && value.length > 0;
+    const clearButtonVisible = onClear && hasValue;
 
     const overlays = (
       <Fragment>
@@ -196,6 +196,7 @@ export const Field = forwardRef<FieldRef, InternalFieldProps>(
                   styles.field,
                   useText({
                     backgroundContext: fieldBackground,
+                    tone: hasValue ? 'neutral' : 'secondary',
                     size: 'standard',
                     baseline: false,
                   }),
