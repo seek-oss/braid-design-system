@@ -126,7 +126,8 @@ export const Field = forwardRef<FieldRef, InternalFieldProps>(
       }
     }, [onClear, ref]);
 
-    const hasValue = typeof value === 'string' && value.length > 0;
+    const hasValue =
+      typeof value === 'string' ? value.length > 0 : value != null;
     const clearButtonVisible = onClear && hasValue;
 
     const overlays = (
