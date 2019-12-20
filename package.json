@@ -120,7 +120,7 @@
   },
   "resolutions": {
     "acorn": "6.3.0",
-    "playroom": "^0.14.1"
+    "playroom": "^0.14.2"
   },
   "volta": {
     "node": "10.15.1",
