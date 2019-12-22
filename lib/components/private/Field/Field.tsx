@@ -195,6 +195,7 @@ export const Field = forwardRef<FieldRef, InternalFieldProps>(
                 ...buildDataAttributes(data),
                 className: classnames(
                   styles.field,
+                  styles.placeholderColor,
                   useText({
                     backgroundContext: fieldBackground,
                     tone: hasValue ? 'neutral' : 'secondary',
