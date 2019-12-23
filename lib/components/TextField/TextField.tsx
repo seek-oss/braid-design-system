@@ -14,7 +14,7 @@ const validTypes = {
 };
 
 type InputProps = AllHTMLAttributes<HTMLInputElement>;
-interface TextFieldProps
+export interface TextFieldProps
   extends Omit<FieldProps, 'labelId' | 'secondaryMessage'> {
   value: NonNullable<InputProps['value']>;
   type?: keyof typeof validTypes;
