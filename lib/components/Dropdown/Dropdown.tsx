@@ -18,7 +18,7 @@ type ValidDropdownChildren = AllHTMLAttributes<
   HTMLOptionElement | HTMLOptGroupElement
 >;
 type SelectProps = AllHTMLAttributes<HTMLSelectElement>;
-interface DropdownProps
+export interface DropdownProps
   extends Omit<FieldProps, 'labelId' | 'secondaryMessage' | 'onClear'> {
   children: ValidDropdownChildren[] | ValidDropdownChildren;
   value: NonNullable<SelectProps['value']>;
