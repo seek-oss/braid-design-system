@@ -20,7 +20,7 @@ interface MonthPickerValue {
 
 type FocusHandler = () => void;
 type ChangeHandler = (value: MonthPickerValue) => void;
-interface MonthPickerProps
+export interface MonthPickerProps
   extends Omit<
     FieldProps,
     | 'value'

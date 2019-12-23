@@ -15,7 +15,7 @@ import { Field, FieldProps } from '../private/Field/Field';
 import * as styleRefs from './Textarea.treat';
 
 type NativeTextareaProps = AllHTMLAttributes<HTMLTextAreaElement>;
-interface TextareaProps
+export interface TextareaProps
   extends Omit<
     FieldProps,
     'labelId' | 'secondaryMessage' | 'onClear' | 'icon'
