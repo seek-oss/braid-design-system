@@ -1,15 +1,25 @@
-import React, { ReactNode } from 'react';
+import React, { createContext, useContext, ReactNode } from 'react';
 import { TreatProvider } from 'sku/treat';
 import { ensureResetImported } from '../../reset/resetTracker';
-import ThemeNameContext from '../ThemeNameConsumer/ThemeNameContext';
-import { Theme } from '../../themes/theme';
+import { BraidTheme } from '../../themes/BraidTheme.d';
 
 if (process.env.NODE_ENV === 'development') {
   ensureResetImported();
 }
 
+const BraidThemeContext = createContext<BraidTheme | null>(null);
+export const useBraidTheme = () => {
+  const braidTheme = useContext(BraidThemeContext);
+
+  if (braidTheme === null) {
+    throw new Error('No Braid theme available on context');
+  }
+
+  return braidTheme;
+};
+
 export interface BraidProviderProps {
-  theme: Theme;
+  theme: BraidTheme;
   styleBody?: boolean;
   children: ReactNode;
 }
@@ -19,12 +29,12 @@ export const BraidProvider = ({
   styleBody = true,
   children,
 }: BraidProviderProps) => (
-  <ThemeNameContext.Provider value={theme.name}>
+  <BraidThemeContext.Provider value={theme}>
     <TreatProvider theme={theme.treatTheme}>
       {styleBody ? (
         <style type="text/css">{`body{margin:0;padding:0;background:${theme.background}}`}</style>
       ) : null}
       {children}
     </TreatProvider>
-  </ThemeNameContext.Provider>
+  </BraidThemeContext.Provider>
 );

@@ -105,6 +105,7 @@ const NamedTextarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
       <Field
         {...restProps}
         ref={ref}
+        value={value}
         labelId={undefined}
         secondaryMessage={renderCount({
           characterLimit,

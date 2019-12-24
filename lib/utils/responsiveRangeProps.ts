@@ -1,4 +1,4 @@
-import { breakpoints, TreatTokens } from '../themes/makeTreatTheme';
+import { breakpoints, TreatTokens } from '../themes/makeBraidTheme';
 type Breakpoint = keyof TreatTokens['breakpoint'];
 
 export interface ResponsiveRangeProps {

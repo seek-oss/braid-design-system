@@ -84,7 +84,9 @@ const docs: ComponentDocs = {
       label: 'Auto Tone (via TextContext)',
       docsSite: false,
       Example: () => {
-        const iconTones = Object.keys(tones) as Array<keyof typeof tones>;
+        const iconTones = ['neutral', ...Object.keys(tones)].sort() as Array<
+          keyof typeof tones | 'neutral'
+        >;
 
         return (
           <Stack space="large">

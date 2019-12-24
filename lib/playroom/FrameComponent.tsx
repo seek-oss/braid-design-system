@@ -1,9 +1,9 @@
 import React, { Fragment, ReactNode } from 'react';
 import { BraidProvider } from '../components';
-import { BraidProviderProps } from '../components/BraidProvider/BraidProvider';
+import { BraidTheme } from '../themes/BraidTheme.d';
 
 interface Props {
-  theme: BraidProviderProps['theme'];
+  theme: BraidTheme;
   children: ReactNode;
 }
 

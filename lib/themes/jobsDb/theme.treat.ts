@@ -1,6 +1,4 @@
-import makeTreatTheme from '../makeTreatTheme';
-import makeRuntimeTokens from '../makeRuntimeTokens';
+import { makeBraidTheme } from '../makeBraidTheme';
 import tokens from './tokens';
 
-export const treatTheme = makeTreatTheme(tokens);
-export const runtimeTokens = makeRuntimeTokens(tokens);
+export const theme = makeBraidTheme(tokens);

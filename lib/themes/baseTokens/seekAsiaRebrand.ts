@@ -1,4 +1,4 @@
-import { TreatTokens } from '../makeTreatTheme';
+import { TreatTokens } from '../makeBraidTheme';
 import { DeepPartial } from 'utility-types';
 import merge from 'lodash/merge';
 import { lighten } from 'polished';
@@ -45,6 +45,7 @@ export const makeTokens = ({
   name,
   tokenOverrides = {},
 }: MakeTokensOptions): TreatTokens => {
+  const body = palette.saGrayLighter;
   const brandAccent = palette.saCta;
   const brand = palette.saBlue;
   const critical = palette.critical;
@@ -236,6 +237,7 @@ export const makeTokens = ({
         secondary,
       },
       background: {
+        body,
         brand,
         input: white,
         inputDisabled: disabled,

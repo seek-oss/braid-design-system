@@ -1,9 +1,10 @@
-import { TreatTokens } from '../makeTreatTheme';
+import { TreatTokens } from '../makeBraidTheme';
 import { DeepPartial } from 'utility-types';
 import merge from 'lodash/merge';
 
 interface MakeTokensOptions {
   name: string;
+  bodyBackground: string;
   brand: string;
   brandAccent: string;
   formAccent: string;
@@ -11,6 +12,7 @@ interface MakeTokensOptions {
 }
 export const makeTokens = ({
   name,
+  bodyBackground,
   brand,
   brandAccent,
   formAccent,
@@ -210,6 +212,7 @@ export const makeTokens = ({
         secondary,
       },
       background: {
+        body: bodyBackground,
         brand,
         input: white,
         inputDisabled: grey5,

@@ -1,6 +1,7 @@
-import React, { ReactNode } from 'react';
+import React, { Fragment, ReactNode } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import { Box } from '../Box/Box';
+import { background as boxBackgrounds } from '../Box/useBoxStyles.treat';
 import { Button } from './Button';
 
 const Container = ({ children }: { children: ReactNode }) => (
@@ -40,6 +41,26 @@ const docs: ComponentDocs = {
       Container,
       Example: () => <Button loading>Loading</Button>,
       storybook: false,
+    },
+    {
+      label: 'Weak Button Contrast',
+      docsSite: false,
+      Container,
+      Example: () => {
+        const backgrounds = Object.keys(boxBackgrounds) as Array<
+          keyof typeof boxBackgrounds
+        >;
+
+        return (
+          <Fragment>
+            {backgrounds.sort().map(background => (
+              <Box key={background} background={background} padding="medium">
+                <Button weight="weak">{background}</Button>
+              </Box>
+            ))}
+          </Fragment>
+        );
+      },
     },
   ],
 };

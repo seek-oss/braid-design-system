@@ -4,6 +4,12 @@ export const field = style({
   outline: 'none',
 });
 
+export const placeholderColor = style(theme => ({
+  '::placeholder': {
+    color: theme.color.foreground.secondary,
+  },
+}));
+
 export const clearButtonSpace = style(theme => ({
   paddingRight: theme.grid * theme.touchableSize,
 }));

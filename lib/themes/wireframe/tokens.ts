@@ -1,8 +1,8 @@
-import { TreatTokens } from '../makeTreatTheme';
+import { TreatTokens } from '../makeBraidTheme';
 
 const formAccent = '#404040';
 const critical = '#ef3e4a';
-const positive = '#34c8a5';
+const positive = '#00af50';
 const info = '#2c88f7';
 const promote = '#855be5';
 const brandAccent = '#111';
@@ -185,6 +185,7 @@ const tokens: TreatTokens = {
       secondary,
     },
     background: {
+      body: white,
       brand: black,
       input: white,
       inputDisabled: '#eee',

@@ -1,6 +1,6 @@
 /* tslint:disable */
 declare module 'treat/theme' {
-  type BraidTheme = import('./makeTreatTheme').TreatTheme;
+  type TreatTheme = import('./makeBraidTheme').TreatTheme;
 
-  export interface Theme extends BraidTheme {}
+  export interface Theme extends TreatTheme {}
 }
