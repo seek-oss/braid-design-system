@@ -8808,6 +8808,11 @@ interpret@^1.0.0, interpret@^1.2.0:
   resolved "https://registry.yarnpkg.com/interpret/-/interpret-1.2.0.tgz#d5061a6224be58e8083985f5014d844359576296"
   integrity sha512-mT34yGKMNceBQUoVn7iCDKDntA7SC6gycMAWzGx1z/CMCTV7b2AAtXlo3nRyHZ1FelRkQbQjprHSYGwzLtkVbw==
 
+intersection-observer@^0.7.0:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/intersection-observer/-/intersection-observer-0.7.0.tgz#ee16bee978db53516ead2f0a8154b09b400bbdc9"
+  integrity sha512-Id0Fij0HsB/vKWGeBe9PxeY45ttRiBmhFyyt/geBdDHBYNctMRTE3dC1U3ujzz3lap+hVXlEcVaB56kZP/eEUg==
+
 into-stream@^5.0.0:
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/into-stream/-/into-stream-5.1.1.tgz#f9a20a348a11f3c13face22763f2d02e127f4db8"
@@ -12665,10 +12670,10 @@ pkginfo@0.x.x:
   resolved "https://registry.yarnpkg.com/pkginfo/-/pkginfo-0.4.1.tgz#b5418ef0439de5425fc4995042dced14fb2a84ff"
   integrity sha1-tUGO8EOd5UJfxJlQQtztFPsqhP8=
 
-playroom@^0.14.0, playroom@^0.14.2:
-  version "0.14.2"
-  resolved "https://registry.yarnpkg.com/playroom/-/playroom-0.14.2.tgz#b8a4128744975d654a8b95e92b4c12bcd9711da6"
-  integrity sha512-2sgVwkSFTa6Jivk9FpLqMZkjbRB5F9RFo0NACgR7Fw/iGcbb1uebK644wPoCU0Yl6XMBxbhppHLqv1PDH69cHQ==
+playroom@^0.14.0, playroom@^0.14.5:
+  version "0.14.5"
+  resolved "https://registry.yarnpkg.com/playroom/-/playroom-0.14.5.tgz#01afaca8d918a5652979d079341fee762d7a14c9"
+  integrity sha512-yWrlzgPWdXXHE82p9InPYmGYBEKHAxw3hk7Ud3Nwiv+i2pl0I1s2PWPn0/HUtP9bV3tKI5fGqOVFk+AKapFPLQ==
   dependencies:
     "@babel/cli" "^7.7.5"
     "@babel/core" "^7.7.5"
@@ -12702,6 +12707,7 @@ playroom@^0.14.0, playroom@^0.14.2:
     find-up "^4.1.0"
     friendly-errors-webpack-plugin "^1.7.0"
     html-webpack-plugin "^4.0.0-beta.5"
+    intersection-observer "^0.7.0"
     less "^3.10.3"
     less-loader "^5.0.0"
     less-vars-loader "^1.1.0"
