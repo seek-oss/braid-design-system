@@ -59,3 +59,4 @@ export { IconTick } from './IconTick/IconTick';
 export { IconTime } from './IconTime/IconTime';
 export { IconUpload } from './IconUpload/IconUpload';
 export { IconVideo } from './IconVideo/IconVideo';
+export { IconWorkExperience } from './IconWorkExperience/IconWorkExperience';

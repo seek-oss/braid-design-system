@@ -3075,6 +3075,26 @@ exports[`IconVideo 1`] = `
 }
 `;
 
+exports[`IconWorkExperience 1`] = `
+{
+  size?: 
+    | "fill"
+    | "large"
+    | "small"
+    | "standard"
+    | "xsmall"
+  tone?: 
+    | "critical"
+    | "formAccent"
+    | "info"
+    | "link"
+    | "neutral"
+    | "positive"
+    | "promote"
+    | "secondary"
+}
+`;
+
 exports[`Inline 1`] = `
 {
   align?: ResponsiveProp<
