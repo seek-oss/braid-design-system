@@ -9,6 +9,7 @@ const handler = () => {
 const docs: ComponentDocs = {
   category: 'Interaction',
   migrationGuide: true,
+  screenshotWidths: [320],
   examples: [
     {
       label: 'Toggle off',

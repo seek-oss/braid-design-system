@@ -16,6 +16,7 @@ const Container = ({ children }: { children: ReactNode }) => (
 const docs: ComponentDocs = {
   category: 'Content',
   migrationGuide: true,
+  screenshotWidths: [320, 1200],
   examples: [
     {
       label: 'Level 1',

@@ -15,6 +15,7 @@ const Content = ({ children = 'Column' }) => (
 const docs: ComponentDocs = {
   category: 'Layout',
   migrationGuide: true,
+  screenshotWidths: [320, 768, 1200],
   examples: [
     {
       label: 'No space',

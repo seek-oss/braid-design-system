@@ -46,16 +46,22 @@ req.keys().forEach(filename => {
     : values(themes).filter(theme => theme.name !== 'wireframe');
 
   storyThemes.forEach(theme => {
-    stories.add(theme.name, () => (
+    const storyConfig = {
+      chromatic: {
+        viewports: docs.screenshotWidths || [320, 1200],
+      },
+    };
+
+    const renderStory = () => (
       <BrowserRouter>
         <BraidProvider theme={theme}>
           <style type="text/css">
             {`
-            .noAnimation * {
-              animation-delay: -0.0001s !important;
-              animation-duration: 0s !important;
-              animation-play-state: paused !important;
-            }`}
+              .noAnimation * {
+                animation-delay: -0.0001s !important;
+                animation-duration: 0s !important;
+                animation-play-state: paused !important;
+              }`}
           </style>
           <div
             className="noAnimation"
@@ -113,6 +119,8 @@ req.keys().forEach(filename => {
           </div>
         </BraidProvider>
       </BrowserRouter>
-    ));
+    );
+
+    stories.add(theme.name, renderStory, storyConfig);
   });
 });

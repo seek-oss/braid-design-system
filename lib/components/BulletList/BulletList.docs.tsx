@@ -3,6 +3,8 @@ import { ComponentDocs } from '../../../site/src/types';
 
 const docs: ComponentDocs = {
   category: 'Content',
+  storybook: false,
+  screenshotWidths: [],
   examples: bulletDocs.examples,
 };
 

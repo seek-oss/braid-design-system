@@ -30,6 +30,7 @@ const docs: ComponentDocs = {
   category: 'Icon',
   migrationGuide: true,
   foundation: true,
+  screenshotWidths: [320],
   examples: [
     {
       label: 'Default',
