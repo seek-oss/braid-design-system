@@ -3158,8 +3158,8 @@ exports[`MonthPicker 1`] = `
 exports[`OverflowMenu 1`] = `
 {
   children: 
+    | (false | ReactElement<OverflowMenuItemProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)> | null)[]
     | ReactElement<OverflowMenuItemProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)>
-    | ReactElement<OverflowMenuItemProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)>[]
   label: string
   onClose?: () => void
   onOpen?: () => void
