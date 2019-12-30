@@ -34,7 +34,7 @@ interface OverflowMenuProps {
   onClose?: () => void;
   label: string;
   children:
-    | Array<ReactElement<OverflowMenuItemProps> | null>
+    | Array<ReactElement<OverflowMenuItemProps> | null | boolean>
     | ReactElement<OverflowMenuItemProps>;
 }
 
