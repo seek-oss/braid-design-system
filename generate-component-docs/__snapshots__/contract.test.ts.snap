@@ -4042,6 +4042,31 @@ exports[`ThemeNameConsumer 1`] = `
 }
 `;
 
+exports[`Tiles 1`] = `
+{
+  children: ReactNode
+  columns: ResponsiveProp<
+    | 1
+    | 2
+    | 3
+    | 4
+    | 5
+  >
+  dividers?: boolean
+  space: ResponsiveProp<
+    | "gutter"
+    | "large"
+    | "medium"
+    | "none"
+    | "small"
+    | "xlarge"
+    | "xsmall"
+    | "xxlarge"
+    | "xxsmall"
+  >
+}
+`;
+
 exports[`Toggle 1`] = `
 {
   align?: 
