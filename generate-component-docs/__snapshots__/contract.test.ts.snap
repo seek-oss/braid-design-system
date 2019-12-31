@@ -3214,6 +3214,10 @@ exports[`Stack 1`] = `
     | "right"
   >
   children: ReactNode
+  component?: 
+    | "div"
+    | "ol"
+    | "ul"
   dividers?: boolean
   space: ResponsiveProp<
     | "gutter"
