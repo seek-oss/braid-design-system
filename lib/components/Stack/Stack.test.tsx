@@ -41,7 +41,7 @@ describe('Stack', () => {
     ).toEqual(['LI', 'LI', 'LI']);
   });
 
-  it('should render a valid unordered list when "component" is "ol"', () => {
+  it('should render a valid ordered list when "component" is "ol"', () => {
     const { getByRole } = render(
       <BraidProvider theme={wireframe}>
         <Stack component="ol" space="small">
