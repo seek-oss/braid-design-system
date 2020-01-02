@@ -55,7 +55,7 @@ export const Stack = ({
   dividers = false,
 }: StackProps) => {
   const stackClasses = useStackItem({ component: 'div', space, align });
-  const stackItems = Children.toArray(children);
+  const stackItems = Children.toArray(children).filter(child => Boolean(child));
 
   if (stackItems.length <= 1 && align === 'left') {
     return <Fragment>{stackItems}</Fragment>;
