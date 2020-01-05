@@ -41,7 +41,10 @@ export const useStackItem = ({ align, component, space }: UseStackProps) => {
   );
 };
 
+const validStackComponents = ['div', 'ol', 'ul'] as const;
+
 export interface StackProps {
+  component?: typeof validStackComponents[number];
   children: ReactNode;
   space: UseBoxStylesProps['padding'];
   align?: ResponsiveProp<Align>;
@@ -49,30 +52,45 @@ export interface StackProps {
 }
 
 export const Stack = ({
+  component = 'div',
   children,
   space,
   align = 'left',
   dividers = false,
 }: StackProps) => {
-  const stackClasses = useStackItem({ component: 'div', space, align });
+  if (
+    process.env.NODE_ENV === 'development' &&
+    !validStackComponents.includes(component)
+  ) {
+    throw new Error(`Invalid Stack component: ${component}`);
+  }
+
+  const stackClasses = useStackItem({ component, space, align });
   const stackItems = Children.toArray(children);
 
-  if (stackItems.length <= 1 && align === 'left') {
+  const isList = component === 'ol' || component === 'ul';
+  const stackItemComponent = isList ? 'li' : 'div';
+
+  if (stackItems.length <= 1 && align === 'left' && !isList) {
     return <Fragment>{stackItems}</Fragment>;
   }
 
   return (
-    <div>
+    <Box component={component}>
       {stackItems.map((child, index) => (
-        <div className={dividers ? undefined : stackClasses} key={index}>
+        <Box
+          component={stackItemComponent}
+          className={dividers ? undefined : stackClasses}
+          key={index}
+        >
           {dividers && index > 0 ? (
             <Box width="full" paddingY={space}>
               <Divider />
             </Box>
           ) : null}
           {child}
-        </div>
+        </Box>
       ))}
-    </div>
+    </Box>
   );
 };
