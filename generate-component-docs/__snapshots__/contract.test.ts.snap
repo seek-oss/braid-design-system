@@ -54,6 +54,15 @@ exports[`Autosuggest 1`] = `
 }
 `;
 
+exports[`BackgroundProvider 1`] = `
+{
+  children: ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>
+  type: 
+    | "dark"
+    | "light"
+}
+`;
+
 exports[`Badge 1`] = `
 {
   children: string
