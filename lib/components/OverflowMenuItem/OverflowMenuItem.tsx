@@ -14,6 +14,9 @@ import { OverflowMenuContext } from '../OverflowMenu/OverflowMenu';
 import { actionTypes, Action } from '../OverflowMenu/OverflowMenu.actions';
 import * as styleRefs from './OverflowMenuItem.treat';
 import { Text } from '../Text/Text';
+import buildDataAttributes, {
+  DataAttributeMap,
+} from '../private/buildDataAttributes';
 
 type MenuType = 'link' | 'button';
 
@@ -21,6 +24,7 @@ export interface OverflowMenuItemProps {
   children: ReactNode;
   onClick?: () => void;
   type?: MenuType;
+  data?: DataAttributeMap;
 }
 
 const {
@@ -38,6 +42,7 @@ export const OverflowMenuItem = ({
   children,
   onClick,
   type = 'button',
+  data,
 }: OverflowMenuItemProps) => {
   const styles = useStyles(styleRefs);
   const menuContext = useContext(OverflowMenuContext);
@@ -136,6 +141,7 @@ export const OverflowMenuItem = ({
         useTouchableSpace(menuItemTextSize),
         styles.menuItem,
       )}
+      {...buildDataAttributes(data)}
     >
       {/*
         Rendering Text component to provide rendering context
