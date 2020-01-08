@@ -2674,6 +2674,26 @@ exports[`IconRecommended 1`] = `
 }
 `;
 
+exports[`IconRefresh 1`] = `
+{
+  size?: 
+    | "fill"
+    | "large"
+    | "small"
+    | "standard"
+    | "xsmall"
+  tone?: 
+    | "critical"
+    | "formAccent"
+    | "info"
+    | "link"
+    | "neutral"
+    | "positive"
+    | "promote"
+    | "secondary"
+}
+`;
+
 exports[`IconResume 1`] = `
 {
   size?: 
@@ -2937,6 +2957,26 @@ exports[`IconSocialTwitter 1`] = `
 exports[`IconStar 1`] = `
 {
   active?: boolean
+  size?: 
+    | "fill"
+    | "large"
+    | "small"
+    | "standard"
+    | "xsmall"
+  tone?: 
+    | "critical"
+    | "formAccent"
+    | "info"
+    | "link"
+    | "neutral"
+    | "positive"
+    | "promote"
+    | "secondary"
+}
+`;
+
+exports[`IconStatistics 1`] = `
+{
   size?: 
     | "fill"
     | "large"
