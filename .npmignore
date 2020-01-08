@@ -1,1 +1,15 @@
-demo/
+.github/
+docs/
+generate-component-docs/
+report/
+scripts/
+site/
+dist-storybook/
+icons/
+**/__snapshots__/**/*
+*.docs.tsx
+*.migration.md
+*.playroom.tsx
+*.test.tsx
+*.test.ts
+yarn.lock
