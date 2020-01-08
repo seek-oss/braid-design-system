@@ -3209,6 +3209,7 @@ exports[`OverflowMenu 1`] = `
 exports[`OverflowMenuItem 1`] = `
 {
   children: ReactNode
+  data?: Record<string, string | number>
   onClick?: () => void
   type?: 
     | "button"
