@@ -27,28 +27,6 @@ const docs: ComponentDocs = {
         </Box>
       ),
     },
-    {
-      label: 'With data props',
-      Example: ({ handler }) => (
-        <Box style={{ paddingLeft: '100px', maxWidth: '200px' }}>
-          <OverflowMenu label="Options">
-            <OverflowMenuItem onClick={handler} data={{ foo: 'bar' }}>
-              First
-            </OverflowMenuItem>
-            <OverflowMenuItem onClick={handler}>Second</OverflowMenuItem>
-            <OverflowMenuItem type="link" data={{ foo: 'baz' }}>
-              <Box
-                component="a"
-                href="https://seek-oss.github.io/braid-design-system/components/OverflowMenu"
-                target="_blank"
-              >
-                Link to page
-              </Box>
-            </OverflowMenuItem>
-          </OverflowMenu>
-        </Box>
-      ),
-    },
   ],
 };
 
