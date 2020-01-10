@@ -201,3 +201,13 @@ export const touchable = styleMap(
       }),
     ),
 );
+
+export const truncate = style({
+  whiteSpace: 'nowrap',
+  overflow: 'hidden',
+  textOverflow: 'ellipsis',
+  // Allows ascenders/descenders to overflow container
+  // Padding one extra to offset basekick styles, need better solution to handle `baseline={false}`
+  padding: '11px 0px !important',
+  margin: '-10px 0px',
+});
