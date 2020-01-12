@@ -2,22 +2,10 @@ import React from 'react';
 import classnames from 'classnames';
 import { useStyles } from 'sku/treat';
 import { Box } from '../Box/Box';
-import { useBackground } from '../Box/BackgroundContext';
-import { UseBoxStylesProps } from '../Box/useBoxStyles';
+import { useBackgroundLightness } from '../Box/BackgroundContext';
 import * as styleRefs from './Loader.treat';
 
 const indicators = [...Array(3)];
-const resolveBgForContext: Partial<Record<
-  NonNullable<UseBoxStylesProps['background']>,
-  UseBoxStylesProps['background']
->> = {
-  brand: 'card',
-  formAccent: 'card',
-  brandAccent: 'card',
-  neutral: 'card',
-  neutralLight: 'neutral',
-  card: 'neutral',
-};
 
 interface LoaderProps {
   size?: keyof typeof styleRefs.size;
@@ -29,7 +17,7 @@ export const Loader = ({
   delayVisibility = false,
 }: LoaderProps) => {
   const styles = useStyles(styleRefs);
-  const backgroundContext = useBackground();
+  const parentBackgroundColor = useBackgroundLightness();
 
   return (
     <Box display="flex" className={delayVisibility ? styles.delay : undefined}>
@@ -37,7 +25,7 @@ export const Loader = ({
         <Box
           key={index}
           borderRadius="full"
-          background={resolveBgForContext[backgroundContext!] || 'neutral'}
+          background={parentBackgroundColor === 'dark' ? 'card' : 'neutral'}
           className={classnames(styles.indicator, styles.size[size])}
         />
       ))}
