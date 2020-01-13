@@ -1,5 +1,4 @@
 import React, { ReactNode, useContext, useMemo } from 'react';
-import classnames from 'classnames';
 import TextContext from './TextContext';
 import { Box, BoxProps } from '../Box/Box';
 import { useText, UseTextProps, useTruncate } from '../../hooks/typography';
@@ -54,6 +53,19 @@ export const Text = ({
     }
   }
 
+  const content = truncate ? (
+    <Box
+      component="span"
+      display="block"
+      overflow="hidden"
+      className={truncateStyles}
+    >
+      {children}
+    </Box>
+  ) : (
+    children
+  );
+
   return (
     <TextContext.Provider value={textContextValue}>
       <Box
@@ -61,9 +73,9 @@ export const Text = ({
         display="block"
         component={component}
         textAlign={align}
-        className={classnames(textStyles, truncate ? truncateStyles : '')}
+        className={textStyles}
       >
-        {children}
+        {content}
       </Box>
     </TextContext.Provider>
   );

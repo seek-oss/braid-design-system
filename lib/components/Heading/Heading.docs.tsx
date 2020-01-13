@@ -66,6 +66,16 @@ const docs: ComponentDocs = {
       ),
     },
     {
+      label: 'Truncate a long heading',
+      Example: () => (
+        <Box style={{ width: 150 }}>
+          <Heading level="2" truncate>
+            Long heading
+          </Heading>
+        </Box>
+      ),
+    },
+    {
       label: 'Heading Spacing',
       docsSite: false,
       Example: () => {

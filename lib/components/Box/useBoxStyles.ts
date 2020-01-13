@@ -43,6 +43,7 @@ export interface UseBoxStylesProps {
   position?: keyof typeof styleRefs.position;
   cursor?: keyof typeof styleRefs.cursor;
   pointerEvents?: keyof typeof styleRefs.pointerEvents;
+  overflow?: keyof typeof styleRefs.overflow;
 }
 
 export const useBoxStyles = ({
@@ -76,6 +77,7 @@ export const useBoxStyles = ({
   position,
   cursor,
   pointerEvents,
+  overflow,
 }: UseBoxStylesProps) => {
   const resetStyles = useStyles(resetStyleRefs);
   const styles = useStyles(styleRefs);
@@ -103,6 +105,7 @@ export const useBoxStyles = ({
     styles.position[position!],
     styles.cursor[cursor!],
     styles.pointerEvents[pointerEvents!],
+    styles.overflow[overflow!],
     resolvedMarginTop &&
       resolveResponsiveProp(
         resolvedMarginTop,
