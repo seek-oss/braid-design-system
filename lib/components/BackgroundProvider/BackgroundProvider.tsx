@@ -15,3 +15,5 @@ export const BackgroundProvider = ({
     children,
   );
 };
+
+BackgroundProvider.displayName = 'BackgroundProvider';
