@@ -68,9 +68,9 @@ const docs: ComponentDocs = {
     {
       label: 'Truncate a long heading',
       Example: () => (
-        <Box style={{ width: 150 }}>
+        <Box style={{ width: 160 }}>
           <Heading level="2" truncate>
-            Long heading
+            Really long heading
           </Heading>
         </Box>
       ),
