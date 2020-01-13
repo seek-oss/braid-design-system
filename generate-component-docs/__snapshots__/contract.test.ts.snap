@@ -836,6 +836,11 @@ exports[`Box 1`] = `
   onWheelCapture?: (event: WheelEvent<HTMLElement>) => void
   open?: boolean
   optimum?: number
+  overflow?: 
+    | "auto"
+    | "hidden"
+    | "scroll"
+    | "visible"
   padding?: ResponsiveProp<
     | "gutter"
     | "large"
@@ -1317,6 +1322,11 @@ exports[`BoxRenderer 1`] = `
     | "xxlarge"
     | "xxsmall"
   >
+  overflow?: 
+    | "auto"
+    | "hidden"
+    | "scroll"
+    | "visible"
   padding?: ResponsiveProp<
     | "gutter"
     | "large"
@@ -1835,6 +1845,7 @@ exports[`Heading 1`] = `
     | "2"
     | "3"
     | "4"
+  truncate?: boolean
   weight?: 
     | "regular"
     | "weak"
@@ -3493,6 +3504,7 @@ exports[`Text 1`] = `
     | "positive"
     | "promote"
     | "secondary"
+  truncate?: boolean
   weight?: 
     | "medium"
     | "regular"
