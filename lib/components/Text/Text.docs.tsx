@@ -28,6 +28,14 @@ const docs: ComponentDocs = {
       Example: () => <Text size="large">Large text.</Text>,
     },
     {
+      label: 'Truncating long text',
+      Example: () => (
+        <Box style={{ width: 90 }}>
+          <Text truncate>Long piece of text</Text>
+        </Box>
+      ),
+    },
+    {
       label: 'Text on Brand Background',
       Container,
       Example: () => (

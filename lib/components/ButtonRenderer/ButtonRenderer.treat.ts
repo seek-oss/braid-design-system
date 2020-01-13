@@ -45,10 +45,7 @@ export const focusOverlay = style({
 });
 
 export const content = style({
-  overflow: 'hidden',
-  textOverflow: 'ellipsis',
   userSelect: 'none',
-  whiteSpace: 'nowrap',
 });
 
 export const loading = style({

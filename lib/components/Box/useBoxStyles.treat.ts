@@ -302,3 +302,11 @@ export const textAlignDesktop = styleMap(({ utils: { responsiveStyle } }) =>
     }),
   ),
 );
+
+const overflowRules = {
+  hidden: 'hidden',
+  scroll: 'scroll',
+  visible: 'visible',
+  auto: 'auto',
+};
+export const overflow = styleMap(mapToStyleProperty(overflowRules, 'overflow'));

@@ -57,7 +57,12 @@ export const Toggle = ({
         alignItems="center"
         className={classnames(styles.slideContainer, styles.fieldSize)}
       >
-        <Box position="absolute" width="full" className={styles.slideTrack}>
+        <Box
+          position="absolute"
+          width="full"
+          overflow="hidden"
+          className={styles.slideTrack}
+        >
           <Box
             position="absolute"
             width="full"

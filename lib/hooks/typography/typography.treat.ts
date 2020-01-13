@@ -201,3 +201,8 @@ export const touchable = styleMap(
       }),
     ),
 );
+
+export const truncate = style({
+  whiteSpace: 'nowrap',
+  textOverflow: 'ellipsis',
+});

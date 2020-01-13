@@ -101,6 +101,7 @@ const ButtonChildren = ({ children }: ButtonChildrenProps) => {
         paddingX="gutter"
         pointerEvents="none"
         textAlign="center"
+        overflow="hidden"
         className={classnames(styles.content, useTouchableSpace('standard'))}
       >
         <Text baseline={false} weight="medium" tone={buttonVariant.textTone}>
