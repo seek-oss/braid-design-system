@@ -17,6 +17,9 @@ import { Overlay } from '../private/Overlay/Overlay';
 import { OverflowMenuItemProps } from '../OverflowMenuItem/OverflowMenuItem';
 import { actionTypes, Action } from './OverflowMenu.actions';
 import * as styleRefs from './OverflowMenu.treat';
+import buildDataAttributes, {
+  DataAttributeMap,
+} from '../private/buildDataAttributes';
 
 interface OverflowMenuContextValues {
   isHighlighted: boolean;
@@ -33,6 +36,7 @@ interface OverflowMenuProps {
   onOpen?: () => void;
   onClose?: () => void;
   label: string;
+  data?: DataAttributeMap;
   children:
     | Array<ReactElement<OverflowMenuItemProps> | null | false>
     | ReactElement<OverflowMenuItemProps>;
@@ -73,6 +77,7 @@ export const OverflowMenu = ({
   onClose,
   label,
   children,
+  data,
 }: OverflowMenuProps) => {
   const styles = useStyles(styleRefs);
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -208,7 +213,7 @@ export const OverflowMenu = ({
   };
 
   return (
-    <Box className={styles.root}>
+    <Box className={styles.root} {...buildDataAttributes(data)}>
       <Box display="inlineBlock" position="relative">
         <Box width="touchable" className={styles.triggerOffset}>
           <OverflowButton
