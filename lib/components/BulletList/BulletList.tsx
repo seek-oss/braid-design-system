@@ -6,8 +6,8 @@ import { UseStackProps } from '../Stack/Stack';
 const defaultSize = 'standard';
 const defaultSpace = 'medium';
 interface BulletListContextValue {
-  size: UseTextProps['size'];
-  space: UseStackProps['space'];
+  size: NonNullable<UseTextProps['size']>;
+  space: NonNullable<UseStackProps['space']>;
 }
 export const BulletListContext = createContext<BulletListContextValue>({
   size: defaultSize,
