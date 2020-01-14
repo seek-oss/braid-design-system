@@ -1,4 +1,4 @@
-import React, { ReactNode, Children, Fragment } from 'react';
+import React, { Children, Fragment } from 'react';
 import classnames from 'classnames';
 import { useStyles } from 'sku/treat';
 import { Divider } from '../Divider/Divider';
@@ -7,6 +7,7 @@ import { ResponsiveProp, mapResponsiveProp } from '../../utils/responsiveProp';
 import { useBoxStyles, UseBoxStylesProps } from '../Box/useBoxStyles';
 import * as styleRefs from './Stack.treat';
 import { Box } from '../Box/Box';
+import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 
 export interface UseStackProps {
   align: ResponsiveProp<Align>;
@@ -45,7 +46,7 @@ const validStackComponents = ['div', 'ol', 'ul'] as const;
 
 export interface StackProps {
   component?: typeof validStackComponents[number];
-  children: ReactNode;
+  children: ReactNodeNoStrings;
   space: UseBoxStylesProps['padding'];
   align?: ResponsiveProp<Align>;
   dividers?: boolean;
