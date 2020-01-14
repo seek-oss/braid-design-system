@@ -1,7 +1,8 @@
 export { BraidProvider } from './BraidProvider/BraidProvider';
 export { BraidLoadableProvider } from './BraidLoadableProvider/BraidLoadableProvider';
 export { ThemeNameConsumer } from './ThemeNameConsumer/ThemeNameConsumer';
-export { useThemeName } from './ThemeNameConsumer/useThemeName';
+export { useThemeName } from './useThemeName/useThemeName';
+export { useThemeTokens } from './useThemeTokens/useThemeTokens';
 export { Actions } from './Actions/Actions';
 export { Alert } from './Alert/Alert';
 export { Autosuggest } from './Autosuggest/Autosuggest';
