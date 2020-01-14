@@ -3162,7 +3162,7 @@ exports[`Inline 1`] = `
     | "left"
     | "right"
   >
-  children: ReactNode
+  children: ReactNodeNoStrings
   space: ResponsiveProp<
     | "gutter"
     | "large"
@@ -3275,7 +3275,7 @@ exports[`Stack 1`] = `
     | "left"
     | "right"
   >
-  children: ReactNode
+  children: ReactNodeNoStrings
   component?: 
     | "div"
     | "ol"
@@ -4111,7 +4111,7 @@ exports[`ThemeNameConsumer 1`] = `
 
 exports[`Tiles 1`] = `
 {
-  children: ReactNode
+  children: ReactNodeNoStrings
   columns: ResponsiveProp<
     | 1
     | 2

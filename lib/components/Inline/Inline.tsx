@@ -1,4 +1,4 @@
-import React, { Children, ReactNode } from 'react';
+import React, { Children } from 'react';
 import classnames from 'classnames';
 import { useStyles } from 'sku/treat';
 import { Box } from '../Box/Box';
@@ -10,11 +10,12 @@ import {
 import { ResponsiveProp } from '../../utils/responsiveProp';
 import { Align, alignToFlexAlign } from '../../utils/align';
 import * as styleRefs from './Inline.treat';
+import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 
 export interface InlineProps {
   align?: ResponsiveProp<Align>;
   space: ResponsiveSpace;
-  children: ReactNode;
+  children: ReactNodeNoStrings;
 }
 
 export const Inline = ({ space = 'none', align, children }: InlineProps) => {
