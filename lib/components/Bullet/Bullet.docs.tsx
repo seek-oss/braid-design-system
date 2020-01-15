@@ -31,9 +31,9 @@ const docs: ComponentDocs = {
       label: 'Xsmall Bullets',
       Example: () => (
         <BulletList size="xsmall">
-          <Bullet>This is a small bullet.</Bullet>
-          <Bullet>This is a small bullet.</Bullet>
-          <Bullet>This is a small bullet.</Bullet>
+          <Bullet>This is an xsmall bullet.</Bullet>
+          <Bullet>This is an xsmall bullet.</Bullet>
+          <Bullet>This is an xsmall bullet.</Bullet>
         </BulletList>
       ),
     },
