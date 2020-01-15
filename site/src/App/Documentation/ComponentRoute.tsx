@@ -62,6 +62,7 @@ export const ComponentRoute = ({
             Example,
             code,
             Container = DefaultContainer,
+            playroom,
           } = example;
 
           const codeAsString =
@@ -105,7 +106,7 @@ export const ComponentRoute = ({
                 {codeAsString ? (
                   <Stack space="gutter">
                     <Text tone="secondary">Code:</Text>
-                    <Code>{codeAsString}</Code>
+                    <Code playroom={playroom}>{codeAsString}</Code>
                   </Stack>
                 ) : null}
               </Stack>
