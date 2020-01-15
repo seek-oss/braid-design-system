@@ -16,13 +16,13 @@ const component = 'li';
 
 export const Bullet = ({ children }: BulletProps) => {
   const styles = useStyles(styleRefs);
-  const { size, space } = useContext(BulletListContext);
+  const { size, space, tone } = useContext(BulletListContext);
 
   return (
     <Box
       component={component}
       className={classnames(
-        useText({ size, baseline: true }),
+        useText({ size, baseline: true, tone }),
         useStackItem({ component, space, align: 'left' }),
       )}
     >
