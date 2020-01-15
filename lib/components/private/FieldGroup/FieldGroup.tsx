@@ -1,4 +1,4 @@
-import React, { AllHTMLAttributes, ReactNode } from 'react';
+import React, { AllHTMLAttributes } from 'react';
 import { Box } from '../../Box/Box';
 import { FieldLabel, FieldLabelProps } from '../../FieldLabel/FieldLabel';
 import {
@@ -6,6 +6,7 @@ import {
   FieldMessageProps,
 } from '../../FieldMessage/FieldMessage';
 import { Stack } from '../../Stack/Stack';
+import { ReactNodeNoStrings } from '../ReactNodeNoStrings';
 
 type FormElementProps = AllHTMLAttributes<HTMLFormElement>;
 export interface FieldGroupProps {
@@ -26,7 +27,7 @@ interface FieldGroupRenderProps {
 }
 
 interface InternalFieldGroupProps extends FieldGroupProps {
-  children(props: FieldGroupRenderProps): ReactNode;
+  children(props: FieldGroupRenderProps): ReactNodeNoStrings;
 }
 
 export const FieldGroup = ({

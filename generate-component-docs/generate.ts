@@ -27,6 +27,13 @@ const reactNodeTypes = [
   'ReactPortal',
 ];
 
+const reactNodeNoStringsTypes = [
+  'false',
+  'true',
+  'ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>',
+  'ReactNodeArray',
+];
+
 export interface NormalisedInterface {
   type: 'interface';
   props: {
@@ -169,14 +176,18 @@ export default () => {
         checker.typeToString(unionItem),
       );
 
-      return isEqual(types, reactNodeTypes)
-        ? 'ReactNode'
-        : {
-            type: 'union',
-            types: type.types.map(unionItem =>
-              normaliseType(unionItem, propsObj),
-            ),
-          };
+      if (isEqual(types, reactNodeTypes)) {
+        return 'ReactNode';
+      }
+
+      if (isEqual(types, reactNodeNoStringsTypes)) {
+        return 'ReactNodeNoStrings';
+      }
+
+      return {
+        type: 'union',
+        types: type.types.map(unionItem => normaliseType(unionItem, propsObj)),
+      };
     }
 
     if (type.isClassOrInterface()) {
