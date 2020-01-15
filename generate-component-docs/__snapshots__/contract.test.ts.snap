@@ -1895,6 +1895,23 @@ exports[`IconAdd 1`] = `
 exports[`IconBookmark 1`] = `
 {
   active?: boolean
+  size?: 
+    | "fill"
+    | "large"
+    | "small"
+    | "standard"
+    | "xsmall"
+  title?: string
+  titleId?: string
+  tone?: 
+    | "critical"
+    | "formAccent"
+    | "info"
+    | "link"
+    | "neutral"
+    | "positive"
+    | "promote"
+    | "secondary"
 }
 `;
 
@@ -1905,6 +1922,23 @@ exports[`IconChevron 1`] = `
     | "left"
     | "right"
     | "up"
+  size?: 
+    | "fill"
+    | "large"
+    | "small"
+    | "standard"
+    | "xsmall"
+  title?: string
+  titleId?: string
+  tone?: 
+    | "critical"
+    | "formAccent"
+    | "info"
+    | "link"
+    | "neutral"
+    | "positive"
+    | "promote"
+    | "secondary"
 }
 `;
 
@@ -2219,6 +2253,23 @@ exports[`IconGrid 1`] = `
 exports[`IconHeart 1`] = `
 {
   active?: boolean
+  size?: 
+    | "fill"
+    | "large"
+    | "small"
+    | "standard"
+    | "xsmall"
+  title?: string
+  titleId?: string
+  tone?: 
+    | "critical"
+    | "formAccent"
+    | "info"
+    | "link"
+    | "neutral"
+    | "positive"
+    | "promote"
+    | "secondary"
 }
 `;
 
@@ -3039,6 +3090,23 @@ exports[`IconSocialTwitter 1`] = `
 exports[`IconStar 1`] = `
 {
   active?: boolean
+  size?: 
+    | "fill"
+    | "large"
+    | "small"
+    | "standard"
+    | "xsmall"
+  title?: string
+  titleId?: string
+  tone?: 
+    | "critical"
+    | "formAccent"
+    | "info"
+    | "link"
+    | "neutral"
+    | "positive"
+    | "promote"
+    | "secondary"
 }
 `;
 
