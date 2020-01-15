@@ -17,6 +17,7 @@ const NamedRadio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => (
     type="radio"
     message={null}
     reserveMessageSpace={false}
+    required={undefined}
     ref={ref}
   />
 ));
