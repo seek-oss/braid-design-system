@@ -35,7 +35,7 @@ export type UseIconProps = {
   tone?: UseTextProps['tone'];
 } & OptionalTitle;
 
-export default ({ size, tone }: UseIconProps): BoxProps => {
+export default ({ size, tone, ...titleProps }: UseIconProps): BoxProps => {
   const styles = useStyles(styleRefs);
   const textContext = useContext(TextContext);
   const headingContext = useContext(HeadingContext);
@@ -61,6 +61,7 @@ export default ({ size, tone }: UseIconProps): BoxProps => {
       height: 'full',
       display: 'block',
       className: resolvedTone,
+      ...titleProps,
     };
   }
 
@@ -72,5 +73,6 @@ export default ({ size, tone }: UseIconProps): BoxProps => {
       styles.size,
       isInline ? styles.inline : styles.blockSizes[size || 'standard'],
     ),
+    ...titleProps,
   };
 };
