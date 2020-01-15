@@ -226,7 +226,11 @@ export function makeBraidTheme(treatTokens: TreatTokens) {
 
   return {
     treatTheme: createTheme(decoratedTokens),
-    tokens: treatTokens,
+    space: {
+      grid: treatTokens.grid,
+      space: treatTokens.space,
+    },
+    color: treatTokens.color,
     ...makeRuntimeTokens(decoratedTokens),
   };
 }
