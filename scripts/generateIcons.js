@@ -9,9 +9,11 @@ const { default: svgr } = require('@svgr/core');
 
 const componentTemplate = ({ template }, opts, { componentName, jsx }) => {
   const code = `
-    import React, { SVGProps } from 'react';
+    import React from 'react';
     NEWLINE
-    export const COMPONENT_NAME = (props: SVGProps<SVGSVGElement>) => COMPONENT_JSX;
+    import { SVGProps } from '../SVGTypes';
+    NEWLINE
+    export const COMPONENT_NAME = ({ title, titleId, ...props }: SVGProps) => COMPONENT_JSX;
   `;
 
   const reactTemplate = template.smart(code, {
@@ -44,10 +46,12 @@ const svgrConfig = {
     fill: 'currentColor',
     width: 16,
     height: 16,
+    role: 'img',
   },
   replaceAttrValues: { '#000': 'currentColor' },
   template: componentTemplate,
   plugins: ['@svgr/plugin-jsx', '@svgr/plugin-prettier'],
+  titleProp: true,
 };
 
 const baseDir = path.join(__dirname, '..');

@@ -4,9 +4,9 @@ import useIcon, { UseIconProps } from '../../../hooks/useIcon';
 import { IconHeartSvg } from './IconHeartSvg';
 import { IconHeartActiveSvg } from './IconHeartActiveSvg';
 
-export interface IconHeartProps extends UseIconProps {
+export type IconHeartProps = UseIconProps & {
   active?: boolean;
-}
+};
 
 export const IconHeart = ({ active = false, ...props }: IconHeartProps) => {
   const iconProps = useIcon(props);
