@@ -19,6 +19,7 @@ export interface FieldGroupProps {
   message?: FieldMessageProps['message'];
   reserveMessageSpace?: FieldMessageProps['reserveMessageSpace'];
   tone?: FieldMessageProps['tone'];
+  required?: boolean;
 }
 
 interface FieldGroupRenderProps {
@@ -41,11 +42,17 @@ export const FieldGroup = ({
   message,
   reserveMessageSpace = true,
   tone,
+  required,
 }: InternalFieldGroupProps) => {
   const messageId = `${id}-message`;
 
   return (
-    <Box component="fieldset" disabled={disabled} id={id}>
+    <Box
+      component="fieldset"
+      disabled={disabled}
+      id={id}
+      aria-required={required}
+    >
       <Stack space="xsmall">
         {label ? (
           <Box component="legend">
