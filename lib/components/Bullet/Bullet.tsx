@@ -5,6 +5,7 @@ import { Box } from '../Box/Box';
 import { useText } from '../../hooks/typography';
 import { BulletListContext } from '../BulletList/BulletList';
 import { useStackItem } from '../Stack/Stack';
+import { useLineHeightContainer } from '../../hooks/useLineHeightContainer/useLineHeightContainer';
 import * as styleRefs from './Bullet.treat';
 
 export interface BulletProps {
@@ -23,10 +24,23 @@ export const Bullet = ({ children }: BulletProps) => {
       className={classnames(
         useText({ size, baseline: true }),
         useStackItem({ component, space, align: 'left' }),
-        styles.listItem,
       )}
     >
-      {children}
+      <Box display="flex">
+        <Box
+          display="flex"
+          alignItems="center"
+          className={useLineHeightContainer(size)}
+        >
+          <Box
+            borderRadius="full"
+            className={classnames(styles.currentColor, styles.size[size])}
+          />
+        </Box>
+        <Box paddingLeft={size === 'xsmall' ? 'xsmall' : 'small'}>
+          {children}
+        </Box>
+      </Box>
     </Box>
   );
 };

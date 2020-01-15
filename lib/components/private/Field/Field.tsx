@@ -48,6 +48,7 @@ export interface FieldProps {
   onClear?: () => void;
   autoFocus?: boolean;
   icon?: ReactNode;
+  required?: boolean;
 }
 
 type PassthroughProps =
@@ -62,6 +63,7 @@ interface FieldRenderProps extends Pick<FieldProps, PassthroughProps> {
   width: BoxProps['width'];
   paddingX: BoxProps['paddingX'];
   'aria-describedby'?: string;
+  'aria-required'?: boolean;
   className: string;
 }
 
@@ -100,6 +102,7 @@ export const Field = forwardRef<FieldRef, InternalFieldProps>(
       onClear,
       autoFocus,
       icon,
+      required,
     },
     forwardedRef,
   ) => {
@@ -189,6 +192,7 @@ export const Field = forwardRef<FieldRef, InternalFieldProps>(
                 ...((message || ariaDescribedBy) && {
                   'aria-describedby': ariaDescribedBy || messageId,
                 }),
+                'aria-required': required,
                 disabled,
                 autoComplete,
                 autoFocus,
