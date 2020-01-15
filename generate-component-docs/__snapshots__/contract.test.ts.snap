@@ -1438,7 +1438,7 @@ exports[`BraidProvider 1`] = `
 {
   children: ReactNode
   styleBody?: boolean
-  theme: { name: string; background: string; webFonts: { linkTag: string; }[]; backgroundLightness: { formAccentActive: "dark" | "light"; formAccentHover: "dark" | "light"; brandAccentActive: "dark" | "light"; ... 19 more ...; neutral: "dark" | "light"; }; treatTheme: string; }
+  theme: { name: string; background: string; webFonts: { linkTag: string; }[]; space: { grid: number; space: { gutter: number; xxsmall: number; xsmall: number; small: number; medium: number; large: number; xlarge: number; xxlarge: number; }; }; color: { ...; }; backgroundLightness: { ...; }; treatTheme: string; }
 }
 `;
 
@@ -4149,6 +4149,16 @@ exports[`Toggle 1`] = `
   label: ReactNode
   on: boolean
   onChange: ChangeHandler
+}
+`;
+
+exports[`useColor 1`] = `
+{
+}
+`;
+
+exports[`useSpace 1`] = `
+{
 }
 `;
 

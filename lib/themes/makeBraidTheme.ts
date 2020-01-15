@@ -181,6 +181,11 @@ const makeRuntimeTokens = (tokens: TreatTheme) => ({
   name: tokens.name,
   background: tokens.color.background.body,
   webFonts: makeWebFonts(tokens),
+  space: {
+    grid: tokens.grid,
+    space: tokens.space,
+  },
+  color: tokens.color,
   backgroundLightness: mapValues(
     tokens.color.background,
     (background, name) => {
