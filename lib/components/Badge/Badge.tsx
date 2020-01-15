@@ -52,16 +52,22 @@ export const Badge = ({
   }
 
   return (
-    <Box className={styles.outer}>
+    <Box display="flex" className={styles.outer}>
       <Box
         id={id}
-        display="inlineBlock"
+        title={children}
         background={backgroundForTone(tone, weight)}
         paddingX="xsmall"
         borderRadius="standard"
-        className={styles.inner}
+        overflow="hidden"
       >
-        <Text component="span" weight="medium" size="xsmall" baseline={false}>
+        <Text
+          component="span"
+          weight="medium"
+          size="xsmall"
+          truncate
+          baseline={false}
+        >
           {children}
         </Text>
       </Box>

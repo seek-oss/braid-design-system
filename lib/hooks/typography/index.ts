@@ -129,3 +129,7 @@ export function useTextTone({
 export function useTouchableSpace(size: keyof typeof styleRefs.touchable) {
   return useStyles(styleRefs).touchable[size];
 }
+
+export function useTruncate() {
+  return useStyles(styleRefs).truncate;
+}

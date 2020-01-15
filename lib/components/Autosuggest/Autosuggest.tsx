@@ -49,13 +49,11 @@ const INPUT_BLUR = 1;
 const INPUT_CHANGE = 2;
 const INPUT_ARROW_UP = 3;
 const INPUT_ARROW_DOWN = 4;
-const INPUT_ARROW_LEFT = 5;
-const INPUT_ARROW_RIGHT = 6;
-const INPUT_ESCAPE = 7;
-const INPUT_ENTER = 8;
-const SUGGESTION_MOUSE_CLICK = 9;
-const SUGGESTION_MOUSE_ENTER = 10;
-const HAS_SUGGESTIONS_CHANGED = 11;
+const INPUT_ESCAPE = 5;
+const INPUT_ENTER = 6;
+const SUGGESTION_MOUSE_CLICK = 7;
+const SUGGESTION_MOUSE_ENTER = 8;
+const HAS_SUGGESTIONS_CHANGED = 9;
 
 type Action =
   | { type: typeof INPUT_FOCUS }
@@ -63,8 +61,6 @@ type Action =
   | { type: typeof INPUT_CHANGE }
   | { type: typeof INPUT_ARROW_UP }
   | { type: typeof INPUT_ARROW_DOWN }
-  | { type: typeof INPUT_ARROW_LEFT }
-  | { type: typeof INPUT_ARROW_RIGHT }
   | { type: typeof INPUT_ESCAPE }
   | { type: typeof INPUT_ENTER }
   | { type: typeof SUGGESTION_MOUSE_CLICK }
@@ -381,7 +377,9 @@ export function Autosuggest<Value>({
       }
 
       default: {
-        throw new Error(`Invalid Autosuggest action: ${action.type}`);
+        // eslint-disable-next-line no-console
+        console.error(new Error(`Invalid Autosuggest action: ${action}`));
+        return state;
       }
     }
   };
@@ -473,14 +471,6 @@ export function Autosuggest<Value>({
         case 'ArrowUp': {
           event.preventDefault();
           dispatch({ type: INPUT_ARROW_UP });
-          return;
-        }
-        case 'ArrowLeft': {
-          dispatch({ type: INPUT_ARROW_LEFT });
-          return;
-        }
-        case 'ArrowRight': {
-          dispatch({ type: INPUT_ARROW_RIGHT });
           return;
         }
         case 'Escape': {

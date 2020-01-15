@@ -29,6 +29,16 @@ const docs: ComponentDocs = {
       ),
     },
     {
+      label: 'Xsmall Bullets',
+      Example: () => (
+        <BulletList size="xsmall">
+          <Bullet>This is an xsmall bullet.</Bullet>
+          <Bullet>This is an xsmall bullet.</Bullet>
+          <Bullet>This is an xsmall bullet.</Bullet>
+        </BulletList>
+      ),
+    },
+    {
       label: 'Large Bullets',
       Example: () => (
         <BulletList size="large">
@@ -55,6 +65,16 @@ const docs: ComponentDocs = {
           <Bullet>Increased space below bullet.</Bullet>
           <Bullet>Increased space below bullet.</Bullet>
           <Bullet>Increased space below bullet.</Bullet>
+        </BulletList>
+      ),
+    },
+    {
+      label: 'Secondary Tone',
+      Example: () => (
+        <BulletList tone="secondary">
+          <Bullet>This is a secondary bullet.</Bullet>
+          <Bullet>This is a secondary bullet.</Bullet>
+          <Bullet>This is a secondary bullet.</Bullet>
         </BulletList>
       ),
     },

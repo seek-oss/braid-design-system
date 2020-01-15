@@ -1,10 +1,13 @@
 export { BraidProvider } from './BraidProvider/BraidProvider';
 export { BraidLoadableProvider } from './BraidLoadableProvider/BraidLoadableProvider';
 export { ThemeNameConsumer } from './ThemeNameConsumer/ThemeNameConsumer';
-export { useThemeName } from './ThemeNameConsumer/useThemeName';
+export { useThemeName } from './useThemeName/useThemeName';
+export { useSpace } from './useSpace/useSpace';
+export { useColor } from './useColor/useColor';
 export { Actions } from './Actions/Actions';
 export { Alert } from './Alert/Alert';
 export { Autosuggest } from './Autosuggest/Autosuggest';
+export { BackgroundProvider } from './BackgroundProvider/BackgroundProvider';
 export { Badge } from './Badge/Badge';
 export { Box } from './Box/Box';
 export { BoxRenderer } from './Box/BoxRenderer';
@@ -37,6 +40,7 @@ export { Textarea } from './Textarea/Textarea';
 export { TextField } from './TextField/TextField';
 export { TextLink } from './TextLink/TextLink';
 export { TextLinkRenderer } from './TextLinkRenderer/TextLinkRenderer';
+export { Tiles } from './Tiles/Tiles';
 export { Toggle } from './Toggle/Toggle';
 
 export * from './icons';

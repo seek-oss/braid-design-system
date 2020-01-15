@@ -84,7 +84,7 @@ export const transition = styleMap(({ transitions }) =>
 );
 
 const borderRadiusRules = {
-  full: '100%',
+  full: '50%',
 };
 export const borderRadius = {
   ...styleMap(
@@ -302,3 +302,11 @@ export const textAlignDesktop = styleMap(({ utils: { responsiveStyle } }) =>
     }),
   ),
 );
+
+const overflowRules = {
+  hidden: 'hidden',
+  scroll: 'scroll',
+  visible: 'visible',
+  auto: 'auto',
+};
+export const overflow = styleMap(mapToStyleProperty(overflowRules, 'overflow'));

@@ -69,7 +69,7 @@ export const Documentation = () => {
 
   const componentsByCategory = groupBy(
     Object.keys(components)
-      .filter(name => !/^(Icon|use|BoxRenderer)/.test(name))
+      .filter(name => !/^(Icon|BoxRenderer)/.test(name))
       .map(name => {
         const docs: ComponentDocs = require(`../../../../lib/components/${name}/${name}.docs.tsx`)
           .default;
@@ -94,7 +94,7 @@ export const Documentation = () => {
             className={styles.header}
           >
             <Link to="/">
-              <Box className={styles.logo}>
+              <Box overflow="hidden" className={styles.logo}>
                 <Logo />
               </Box>
             </Link>
@@ -118,6 +118,7 @@ export const Documentation = () => {
                 paddingTop="small"
                 paddingBottom="xlarge"
                 paddingX={responsiveGutter}
+                overflow="auto"
                 className={styles.menu}
               >
                 <Stack space="xlarge">

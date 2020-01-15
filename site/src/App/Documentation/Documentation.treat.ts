@@ -33,7 +33,6 @@ export const menu = style(theme => ({
   left: 0,
   bottom: 0,
   right: 0,
-  overflow: 'auto',
   transition: 'opacity .2s ease, transform .2s ease',
   '@media': {
     [`screen and (max-width: ${theme.breakpoint.desktop - 1}px)`]: {
@@ -57,7 +56,6 @@ export const menu = style(theme => ({
 
 export const logo = style({
   width: 36,
-  overflow: 'hidden',
 });
 
 export const content = style(theme => ({

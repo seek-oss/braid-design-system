@@ -77,9 +77,10 @@ const CodeButton = ({
 };
 
 interface CodeProps {
+  playroom?: boolean;
   children: ReactChild;
 }
-export default ({ children }: CodeProps) => {
+export default ({ playroom = true, children }: CodeProps) => {
   const styles = useStyles(styleRefs);
   const { playroomUrl } = useConfig();
 
@@ -140,7 +141,7 @@ export default ({ children }: CodeProps) => {
         <CodeButton onClick={() => copy(snippet)} title="Copy to clipboard">
           <CopyIcon /> Copy
         </CodeButton>
-        {/^import/m.test(snippet) ? null : (
+        {/^import/m.test(snippet) || !playroom ? null : (
           <Fragment>
             <Box paddingLeft="xxsmall" />
             <CodeButton

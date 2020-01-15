@@ -14,6 +14,7 @@ import {
   IconPromote,
   Badge,
   Inline,
+  Tiles,
   ContentBlock,
   OverflowMenu,
   OverflowMenuItem,
@@ -26,13 +27,15 @@ import tokens from '../../../../../lib/themes/wireframe/tokens';
 import { Page } from '../../../types';
 import * as styleRefs from './layout.treat';
 
+const slugify = (string: string) => string.replace(/ /, '-');
+
 interface LinkableHeadingProps {
   level?: HeadingProps['level'];
   children: string;
 }
 const LinkableHeading = ({ children, level = '3' }: LinkableHeadingProps) => {
   const styles = useStyles(styleRefs);
-  const slug = children.toLowerCase().replace(/ /, '-');
+  const slug = slugify(children);
 
   return (
     <Box className={styles.linkableHeading}>
@@ -46,6 +49,10 @@ const LinkableHeading = ({ children, level = '3' }: LinkableHeadingProps) => {
     </Box>
   );
 };
+
+const HeadingLink = ({ children }: { children: string }) => (
+  <TextLink href={`#${slugify(children)}`}>{children}</TextLink>
+);
 
 type Space = 'none' | keyof typeof tokens.space;
 const spaceScale = ['none', ...Object.keys(tokens.space)] as Space[];
@@ -62,6 +69,28 @@ const page: Page = {
     return (
       <TextStack>
         <Heading level="2">Layout</Heading>
+
+        <Divider />
+
+        <BulletList>
+          {[
+            'Spacing',
+            'Box',
+            'Card',
+            'Stack',
+            'Inline',
+            'Columns',
+            'Tiles',
+            'ContentBlock',
+          ].map(section => (
+            <Bullet key={section}>
+              <HeadingLink>{section}</HeadingLink>
+            </Bullet>
+          ))}
+        </BulletList>
+
+        <Divider />
+
         <Text>
           The guiding principle for layout in Braid is that components should
           not provide surrounding white space. Instead, spacing between elements
@@ -477,6 +506,121 @@ const page: Page = {
               </Card>
             </Column>
           </Columns>
+        </Code>
+
+        <Divider />
+
+        <LinkableHeading>Tiles</LinkableHeading>
+        <Text>
+          If you’d like to render a grid of components with equal spacing
+          between them, Braid provides a ‘Tiles’ component:
+        </Text>
+
+        <Code>
+          <Tiles columns={3} space="small">
+            <Card>
+              <Text>Tile</Text>
+            </Card>
+            <Card>
+              <Text>Tile</Text>
+            </Card>
+            <Card>
+              <Text>Tile</Text>
+            </Card>
+            <Card>
+              <Text>Tile</Text>
+            </Card>
+            <Card>
+              <Text>Tile</Text>
+            </Card>
+            <Card>
+              <Text>Tile</Text>
+            </Card>
+            <Card>
+              <Text>Tile</Text>
+            </Card>
+            <Card>
+              <Text>Tile</Text>
+            </Card>
+            <Card>
+              <Text>Tile</Text>
+            </Card>
+          </Tiles>
+        </Code>
+
+        <Text>
+          If you need to customise the spacing and number of columns per screen
+          size, the ‘columns’ prop is responsive. For example, if you wanted a
+          single column on mobile and three columns from tablet upwards:
+        </Text>
+
+        <Code>
+          <Tiles columns={[1, 3]} space={['xsmall', 'small']}>
+            <Card>
+              <Text>Tile</Text>
+            </Card>
+            <Card>
+              <Text>Tile</Text>
+            </Card>
+            <Card>
+              <Text>Tile</Text>
+            </Card>
+            <Card>
+              <Text>Tile</Text>
+            </Card>
+            <Card>
+              <Text>Tile</Text>
+            </Card>
+            <Card>
+              <Text>Tile</Text>
+            </Card>
+            <Card>
+              <Text>Tile</Text>
+            </Card>
+            <Card>
+              <Text>Tile</Text>
+            </Card>
+            <Card>
+              <Text>Tile</Text>
+            </Card>
+          </Tiles>
+        </Code>
+
+        <Text>
+          When the tiles are collapsed to a single column, you can optionally
+          show dividers between them with the ‘dividers’ prop:
+        </Text>
+
+        <Code>
+          <Tiles columns={[1, 3]} space={['none', 'small']} dividers>
+            <Card>
+              <Text>Tile</Text>
+            </Card>
+            <Card>
+              <Text>Tile</Text>
+            </Card>
+            <Card>
+              <Text>Tile</Text>
+            </Card>
+            <Card>
+              <Text>Tile</Text>
+            </Card>
+            <Card>
+              <Text>Tile</Text>
+            </Card>
+            <Card>
+              <Text>Tile</Text>
+            </Card>
+            <Card>
+              <Text>Tile</Text>
+            </Card>
+            <Card>
+              <Text>Tile</Text>
+            </Card>
+            <Card>
+              <Text>Tile</Text>
+            </Card>
+          </Tiles>
         </Code>
 
         <Divider />

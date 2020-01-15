@@ -39,6 +39,7 @@ exports[`Autosuggest 1`] = `
   onClear?: () => void
   onFocus?: () => void
   placeholder?: string
+  required?: boolean
   reserveMessageSpace?: boolean
   scrollToTopOnMobile?: boolean
   secondaryLabel?: ReactNode
@@ -51,6 +52,15 @@ exports[`Autosuggest 1`] = `
     | "neutral"
     | "positive"
   value: AutosuggestValue<Value>
+}
+`;
+
+exports[`BackgroundProvider 1`] = `
+{
+  children: ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>
+  type: 
+    | "dark"
+    | "light"
 }
 `;
 
@@ -827,6 +837,11 @@ exports[`Box 1`] = `
   onWheelCapture?: (event: WheelEvent<HTMLElement>) => void
   open?: boolean
   optimum?: number
+  overflow?: 
+    | "auto"
+    | "hidden"
+    | "scroll"
+    | "visible"
   padding?: ResponsiveProp<
     | "gutter"
     | "large"
@@ -1308,6 +1323,11 @@ exports[`BoxRenderer 1`] = `
     | "xxlarge"
     | "xxsmall"
   >
+  overflow?: 
+    | "auto"
+    | "hidden"
+    | "scroll"
+    | "visible"
   padding?: ResponsiveProp<
     | "gutter"
     | "large"
@@ -1418,7 +1438,7 @@ exports[`BraidProvider 1`] = `
 {
   children: ReactNode
   styleBody?: boolean
-  theme: { name: string; background: string; webFonts: { linkTag: string; }[]; backgroundLightness: { formAccentActive: "dark" | "light"; formAccentHover: "dark" | "light"; brandAccentActive: "dark" | "light"; ... 19 more ...; neutral: "dark" | "light"; }; treatTheme: string; }
+  theme: { name: string; background: string; webFonts: { linkTag: string; }[]; space: { grid: number; space: { gutter: number; xxsmall: number; xsmall: number; small: number; medium: number; large: number; xlarge: number; xxlarge: number; }; }; color: { ...; }; backgroundLightness: { ...; }; treatTheme: string; }
 }
 `;
 
@@ -1447,6 +1467,9 @@ exports[`BulletList 1`] = `
     | "xxlarge"
     | "xxsmall"
   >
+  tone?: 
+    | "neutral"
+    | "secondary"
 }
 `;
 
@@ -1500,6 +1523,7 @@ exports[`Checkbox 1`] = `
   ref?: 
     | (instance: HTMLInputElement | null) => void
     | RefObject<HTMLInputElement>
+  required?: boolean
   reserveMessageSpace?: boolean
   tone?: 
     | "critical"
@@ -1593,6 +1617,7 @@ exports[`Dropdown 1`] = `
   ref?: 
     | (instance: HTMLSelectElement | null) => void
     | RefObject<HTMLSelectElement>
+  required?: boolean
   reserveMessageSpace?: boolean
   secondaryLabel?: ReactNode
   tertiaryLabel?: ReactNode
@@ -1826,6 +1851,7 @@ exports[`Heading 1`] = `
     | "2"
     | "3"
     | "4"
+  truncate?: boolean
   weight?: 
     | "regular"
     | "weak"
@@ -1855,6 +1881,8 @@ exports[`IconAdd 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -1876,6 +1904,8 @@ exports[`IconBookmark 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -1901,6 +1931,8 @@ exports[`IconChevron 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -1921,6 +1953,8 @@ exports[`IconClear 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -1941,6 +1975,8 @@ exports[`IconCompany 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -1961,6 +1997,8 @@ exports[`IconCompose 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -1981,6 +2019,8 @@ exports[`IconCopy 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2001,6 +2041,8 @@ exports[`IconCreditCard 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2021,6 +2063,8 @@ exports[`IconCritical 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2041,6 +2085,8 @@ exports[`IconDate 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2061,6 +2107,8 @@ exports[`IconDelete 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2081,6 +2129,8 @@ exports[`IconDocument 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2101,6 +2151,8 @@ exports[`IconDownload 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2121,6 +2173,8 @@ exports[`IconEdit 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2141,6 +2195,8 @@ exports[`IconEducation 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2161,6 +2217,8 @@ exports[`IconFilter 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2181,6 +2239,8 @@ exports[`IconGrid 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2202,6 +2262,8 @@ exports[`IconHeart 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2222,6 +2284,8 @@ exports[`IconHelp 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2242,6 +2306,8 @@ exports[`IconHistory 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2262,6 +2328,8 @@ exports[`IconHome 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2282,6 +2350,8 @@ exports[`IconImage 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2302,6 +2372,8 @@ exports[`IconInfo 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2322,6 +2394,8 @@ exports[`IconInvoice 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2342,6 +2416,8 @@ exports[`IconList 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2362,6 +2438,8 @@ exports[`IconLocation 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2382,6 +2460,8 @@ exports[`IconMail 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2402,6 +2482,8 @@ exports[`IconMinus 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2422,6 +2504,8 @@ exports[`IconMoney 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2442,6 +2526,8 @@ exports[`IconNewWindow 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2462,6 +2548,8 @@ exports[`IconNote 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2482,6 +2570,8 @@ exports[`IconOverflow 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2502,6 +2592,8 @@ exports[`IconPeople 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2522,6 +2614,8 @@ exports[`IconPersonAdd 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2542,6 +2636,8 @@ exports[`IconPersonVerified 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2562,6 +2658,8 @@ exports[`IconPhone 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2582,6 +2680,8 @@ exports[`IconPositive 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2602,6 +2702,8 @@ exports[`IconPrint 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2622,6 +2724,8 @@ exports[`IconProfile 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2642,6 +2746,8 @@ exports[`IconPromote 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2662,6 +2768,30 @@ exports[`IconRecommended 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
+  tone?: 
+    | "critical"
+    | "formAccent"
+    | "info"
+    | "link"
+    | "neutral"
+    | "positive"
+    | "promote"
+    | "secondary"
+}
+`;
+
+exports[`IconRefresh 1`] = `
+{
+  size?: 
+    | "fill"
+    | "large"
+    | "small"
+    | "standard"
+    | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2682,6 +2812,8 @@ exports[`IconResume 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2702,6 +2834,8 @@ exports[`IconSearch 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2722,6 +2856,8 @@ exports[`IconSecurity 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2742,6 +2878,8 @@ exports[`IconSend 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2762,6 +2900,8 @@ exports[`IconSent 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2782,6 +2922,8 @@ exports[`IconSettings 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2802,6 +2944,8 @@ exports[`IconShare 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2822,6 +2966,8 @@ exports[`IconSocialFacebook 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2842,6 +2988,8 @@ exports[`IconSocialGitHub 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2862,6 +3010,8 @@ exports[`IconSocialInstagram 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2882,6 +3032,8 @@ exports[`IconSocialLinkedIn 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2902,6 +3054,8 @@ exports[`IconSocialMedium 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2922,6 +3076,8 @@ exports[`IconSocialTwitter 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2943,6 +3099,30 @@ exports[`IconStar 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
+  tone?: 
+    | "critical"
+    | "formAccent"
+    | "info"
+    | "link"
+    | "neutral"
+    | "positive"
+    | "promote"
+    | "secondary"
+}
+`;
+
+exports[`IconStatistics 1`] = `
+{
+  size?: 
+    | "fill"
+    | "large"
+    | "small"
+    | "standard"
+    | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2963,6 +3143,8 @@ exports[`IconSubCategory 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2983,6 +3165,8 @@ exports[`IconTag 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -3003,6 +3187,8 @@ exports[`IconTick 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -3023,6 +3209,8 @@ exports[`IconTime 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -3043,6 +3231,8 @@ exports[`IconUpload 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -3063,6 +3253,8 @@ exports[`IconVideo 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -3083,6 +3275,8 @@ exports[`IconWorkExperience 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -3102,7 +3296,7 @@ exports[`Inline 1`] = `
     | "left"
     | "right"
   >
-  children: ReactNode
+  children: ReactNodeNoStrings
   space: ResponsiveProp<
     | "gutter"
     | "large"
@@ -3141,6 +3335,7 @@ exports[`MonthPicker 1`] = `
   onBlur?: FocusHandler
   onChange: ChangeHandler
   onFocus?: FocusHandler
+  required?: boolean
   reserveMessageSpace?: boolean
   secondaryLabel?: ReactNode
   tertiaryLabel?: ReactNode
@@ -3160,6 +3355,7 @@ exports[`OverflowMenu 1`] = `
   children: 
     | (false | ReactElement<OverflowMenuItemProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)> | null)[]
     | ReactElement<OverflowMenuItemProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)>
+  data?: Record<string, string | number>
   label: string
   onClose?: () => void
   onOpen?: () => void
@@ -3169,6 +3365,7 @@ exports[`OverflowMenu 1`] = `
 exports[`OverflowMenuItem 1`] = `
 {
   children: ReactNode
+  data?: Record<string, string | number>
   onClick?: () => void
   type?: 
     | "button"
@@ -3213,7 +3410,11 @@ exports[`Stack 1`] = `
     | "left"
     | "right"
   >
-  children: ReactNode
+  children: ReactNodeNoStrings
+  component?: 
+    | "div"
+    | "ol"
+    | "ul"
   dividers?: boolean
   space: ResponsiveProp<
     | "gutter"
@@ -3438,6 +3639,7 @@ exports[`Text 1`] = `
     | "positive"
     | "promote"
     | "secondary"
+  truncate?: boolean
   weight?: 
     | "medium"
     | "regular"
@@ -3466,6 +3668,7 @@ exports[`TextField 1`] = `
   ref?: 
     | (instance: HTMLInputElement | null) => void
     | RefObject<HTMLInputElement>
+  required?: boolean
   reserveMessageSpace?: boolean
   secondaryLabel?: ReactNode
   tertiaryLabel?: ReactNode
@@ -4022,6 +4225,7 @@ exports[`Textarea 1`] = `
   ref?: 
     | (instance: HTMLTextAreaElement | null) => void
     | RefObject<HTMLTextAreaElement>
+  required?: boolean
   reserveMessageSpace?: boolean
   secondaryLabel?: ReactNode
   tertiaryLabel?: ReactNode
@@ -4042,6 +4246,31 @@ exports[`ThemeNameConsumer 1`] = `
 }
 `;
 
+exports[`Tiles 1`] = `
+{
+  children: ReactNodeNoStrings
+  columns: ResponsiveProp<
+    | 1
+    | 2
+    | 3
+    | 4
+    | 5
+  >
+  dividers?: boolean
+  space: ResponsiveProp<
+    | "gutter"
+    | "large"
+    | "medium"
+    | "none"
+    | "small"
+    | "xlarge"
+    | "xsmall"
+    | "xxlarge"
+    | "xxsmall"
+  >
+}
+`;
+
 exports[`Toggle 1`] = `
 {
   align?: 
@@ -4051,6 +4280,16 @@ exports[`Toggle 1`] = `
   label: ReactNode
   on: boolean
   onChange: ChangeHandler
+}
+`;
+
+exports[`useColor 1`] = `
+{
+}
+`;
+
+exports[`useSpace 1`] = `
+{
 }
 `;
 
