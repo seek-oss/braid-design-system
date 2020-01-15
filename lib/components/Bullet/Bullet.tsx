@@ -13,7 +13,6 @@ export interface BulletProps {
 }
 
 const component = 'li';
-const bulletSize = 'xxsmall';
 
 export const Bullet = ({ children }: BulletProps) => {
   const styles = useStyles(styleRefs);
@@ -35,12 +34,12 @@ export const Bullet = ({ children }: BulletProps) => {
         >
           <Box
             borderRadius="full"
-            paddingTop={bulletSize}
-            paddingLeft={bulletSize}
-            className={styles.currentColor}
+            className={classnames(styles.currentColor, styles.size[size])}
           />
         </Box>
-        <Box paddingLeft="small">{children}</Box>
+        <Box paddingLeft={size === 'xsmall' ? 'xsmall' : 'small'}>
+          {children}
+        </Box>
       </Box>
     </Box>
   );
