@@ -31,6 +31,7 @@ export interface InlineFieldProps {
   tone?: InlineFieldTone;
   children?: ReactNode;
   data?: DataAttributeMap;
+  required?: boolean;
 }
 
 type FieldType = 'checkbox' | 'radio';
@@ -96,6 +97,7 @@ export const InlineField = forwardRef<HTMLElement, InternalInlineFieldProps>(
       reserveMessageSpace = false,
       tone = 'neutral',
       disabled = false,
+      required,
     },
     ref,
   ) => {
@@ -125,6 +127,7 @@ export const InlineField = forwardRef<HTMLElement, InternalInlineFieldProps>(
           height="touchable"
           className={styles.realField}
           aria-describedby={messageId}
+          aria-required={required}
           disabled={disabled}
           ref={ref}
           {...buildDataAttributes(data)}

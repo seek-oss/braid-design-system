@@ -39,6 +39,7 @@ exports[`Autosuggest 1`] = `
   onClear?: () => void
   onFocus?: () => void
   placeholder?: string
+  required?: boolean
   reserveMessageSpace?: boolean
   scrollToTopOnMobile?: boolean
   secondaryLabel?: ReactNode
@@ -1519,6 +1520,7 @@ exports[`Checkbox 1`] = `
   ref?: 
     | (instance: HTMLInputElement | null) => void
     | RefObject<HTMLInputElement>
+  required?: boolean
   reserveMessageSpace?: boolean
   tone?: 
     | "critical"
@@ -1612,6 +1614,7 @@ exports[`Dropdown 1`] = `
   ref?: 
     | (instance: HTMLSelectElement | null) => void
     | RefObject<HTMLSelectElement>
+  required?: boolean
   reserveMessageSpace?: boolean
   secondaryLabel?: ReactNode
   tertiaryLabel?: ReactNode
@@ -3201,6 +3204,7 @@ exports[`MonthPicker 1`] = `
   onBlur?: FocusHandler
   onChange: ChangeHandler
   onFocus?: FocusHandler
+  required?: boolean
   reserveMessageSpace?: boolean
   secondaryLabel?: ReactNode
   tertiaryLabel?: ReactNode
@@ -3251,6 +3255,7 @@ exports[`Radio 1`] = `
   ref?: 
     | (instance: HTMLInputElement | null) => void
     | RefObject<HTMLInputElement>
+  required?: boolean
   tone?: 
     | "critical"
     | "neutral"
@@ -3533,6 +3538,7 @@ exports[`TextField 1`] = `
   ref?: 
     | (instance: HTMLInputElement | null) => void
     | RefObject<HTMLInputElement>
+  required?: boolean
   reserveMessageSpace?: boolean
   secondaryLabel?: ReactNode
   tertiaryLabel?: ReactNode
@@ -4089,6 +4095,7 @@ exports[`Textarea 1`] = `
   ref?: 
     | (instance: HTMLTextAreaElement | null) => void
     | RefObject<HTMLTextAreaElement>
+  required?: boolean
   reserveMessageSpace?: boolean
   secondaryLabel?: ReactNode
   tertiaryLabel?: ReactNode
