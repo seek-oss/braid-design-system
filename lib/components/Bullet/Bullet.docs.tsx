@@ -67,6 +67,16 @@ const docs: ComponentDocs = {
         </BulletList>
       ),
     },
+    {
+      label: 'Secondary Tone',
+      Example: () => (
+        <BulletList tone="secondary">
+          <Bullet>This is a secondary bullet.</Bullet>
+          <Bullet>This is a secondary bullet.</Bullet>
+          <Bullet>This is a secondary bullet.</Bullet>
+        </BulletList>
+      ),
+    },
   ],
 };
 
