@@ -28,6 +28,16 @@ const docs: ComponentDocs = {
       ),
     },
     {
+      label: 'Xsmall Bullets',
+      Example: () => (
+        <BulletList size="xsmall">
+          <Bullet>This is an xsmall bullet.</Bullet>
+          <Bullet>This is an xsmall bullet.</Bullet>
+          <Bullet>This is an xsmall bullet.</Bullet>
+        </BulletList>
+      ),
+    },
+    {
       label: 'Large Bullets',
       Example: () => (
         <BulletList size="large">
