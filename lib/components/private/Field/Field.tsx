@@ -95,7 +95,7 @@ export const Field = forwardRef<FieldRef, InternalFieldProps>(
       children,
       message,
       secondaryMessage,
-      reserveMessageSpace = true,
+      reserveMessageSpace = false,
       tone,
       'aria-describedby': ariaDescribedBy,
       data,

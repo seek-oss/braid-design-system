@@ -104,7 +104,6 @@ const docs: ComponentDocs = {
             onChange={handler}
             value=""
             placeholder="Please select a role title"
-            reserveMessageSpace={false}
           >
             <option value="1">Developer</option>
             <option value="2">Designer</option>

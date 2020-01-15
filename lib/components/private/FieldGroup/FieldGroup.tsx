@@ -40,7 +40,7 @@ export const FieldGroup = ({
   tertiaryLabel,
   description,
   message,
-  reserveMessageSpace = true,
+  reserveMessageSpace = false,
   tone,
   required,
 }: InternalFieldGroupProps) => {

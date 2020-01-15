@@ -97,7 +97,6 @@ const page: Page = {
               placeholder="Search"
               autoComplete="off"
               autoFocus={true}
-              reserveMessageSpace={false}
               value={searchTerm}
               onChange={({ currentTarget }) => {
                 const searchText = currentTarget.value;

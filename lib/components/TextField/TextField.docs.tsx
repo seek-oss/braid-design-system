@@ -165,7 +165,6 @@ const docs: ComponentDocs = {
             id={id}
             onChange={handler}
             value="Senior Developer"
-            reserveMessageSpace={false}
           />
         </Box>
       ),
