@@ -4,9 +4,9 @@ import useIcon, { UseIconProps } from '../../../hooks/useIcon';
 import { IconBookmarkSvg } from './IconBookmarkSvg';
 import { IconBookmarkActiveSvg } from './IconBookmarkActiveSvg';
 
-export interface IconBookmarkProps extends UseIconProps {
+export type IconBookmarkProps = UseIconProps & {
   active?: boolean;
-}
+};
 
 export const IconBookmark = ({
   active = false,

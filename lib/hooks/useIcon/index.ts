@@ -1,6 +1,8 @@
 import { useContext } from 'react';
 import { useStyles } from 'sku/react-treat';
 import classnames from 'classnames';
+
+import { OptionalTitle } from '../../components/icons/SVGTypes';
 import { BoxProps } from '../../components/Box/Box';
 import TextContext from '../../components/Text/TextContext';
 import HeadingContext from '../../components/Heading/HeadingContext';
@@ -28,10 +30,11 @@ export const useIconContainerSize = ({
   return styles.blockSizes[size];
 };
 
-export interface UseIconProps {
+export type UseIconProps = {
   size?: IconSize;
   tone?: UseTextProps['tone'];
-}
+} & OptionalTitle;
+
 export default ({ size, tone }: UseIconProps): BoxProps => {
   const styles = useStyles(styleRefs);
   const textContext = useContext(TextContext);

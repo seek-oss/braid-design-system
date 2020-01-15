@@ -1878,6 +1878,8 @@ exports[`IconAdd 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -1893,21 +1895,6 @@ exports[`IconAdd 1`] = `
 exports[`IconBookmark 1`] = `
 {
   active?: boolean
-  size?: 
-    | "fill"
-    | "large"
-    | "small"
-    | "standard"
-    | "xsmall"
-  tone?: 
-    | "critical"
-    | "formAccent"
-    | "info"
-    | "link"
-    | "neutral"
-    | "positive"
-    | "promote"
-    | "secondary"
 }
 `;
 
@@ -1918,21 +1905,6 @@ exports[`IconChevron 1`] = `
     | "left"
     | "right"
     | "up"
-  size?: 
-    | "fill"
-    | "large"
-    | "small"
-    | "standard"
-    | "xsmall"
-  tone?: 
-    | "critical"
-    | "formAccent"
-    | "info"
-    | "link"
-    | "neutral"
-    | "positive"
-    | "promote"
-    | "secondary"
 }
 `;
 
@@ -1944,6 +1916,8 @@ exports[`IconClear 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -1964,6 +1938,8 @@ exports[`IconCompany 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -1984,6 +1960,8 @@ exports[`IconCompose 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2004,6 +1982,8 @@ exports[`IconCopy 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2024,6 +2004,8 @@ exports[`IconCreditCard 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2044,6 +2026,8 @@ exports[`IconCritical 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2064,6 +2048,8 @@ exports[`IconDate 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2084,6 +2070,8 @@ exports[`IconDelete 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2104,6 +2092,8 @@ exports[`IconDocument 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2124,6 +2114,8 @@ exports[`IconDownload 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2144,6 +2136,8 @@ exports[`IconEdit 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2164,6 +2158,8 @@ exports[`IconEducation 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2184,6 +2180,8 @@ exports[`IconFilter 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2204,6 +2202,8 @@ exports[`IconGrid 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2219,21 +2219,6 @@ exports[`IconGrid 1`] = `
 exports[`IconHeart 1`] = `
 {
   active?: boolean
-  size?: 
-    | "fill"
-    | "large"
-    | "small"
-    | "standard"
-    | "xsmall"
-  tone?: 
-    | "critical"
-    | "formAccent"
-    | "info"
-    | "link"
-    | "neutral"
-    | "positive"
-    | "promote"
-    | "secondary"
 }
 `;
 
@@ -2245,6 +2230,8 @@ exports[`IconHelp 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2265,6 +2252,8 @@ exports[`IconHistory 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2285,6 +2274,8 @@ exports[`IconHome 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2305,6 +2296,8 @@ exports[`IconImage 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2325,6 +2318,8 @@ exports[`IconInfo 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2345,6 +2340,8 @@ exports[`IconInvoice 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2365,6 +2362,8 @@ exports[`IconList 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2385,6 +2384,8 @@ exports[`IconLocation 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2405,6 +2406,8 @@ exports[`IconMail 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2425,6 +2428,8 @@ exports[`IconMinus 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2445,6 +2450,8 @@ exports[`IconMoney 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2465,6 +2472,8 @@ exports[`IconNewWindow 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2485,6 +2494,8 @@ exports[`IconNote 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2505,6 +2516,8 @@ exports[`IconOverflow 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2525,6 +2538,8 @@ exports[`IconPeople 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2545,6 +2560,8 @@ exports[`IconPersonAdd 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2565,6 +2582,8 @@ exports[`IconPersonVerified 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2585,6 +2604,8 @@ exports[`IconPhone 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2605,6 +2626,8 @@ exports[`IconPositive 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2625,6 +2648,8 @@ exports[`IconPrint 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2645,6 +2670,8 @@ exports[`IconProfile 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2665,6 +2692,8 @@ exports[`IconPromote 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2685,6 +2714,8 @@ exports[`IconRecommended 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2705,6 +2736,8 @@ exports[`IconRefresh 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2725,6 +2758,8 @@ exports[`IconResume 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2745,6 +2780,8 @@ exports[`IconSearch 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2765,6 +2802,8 @@ exports[`IconSecurity 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2785,6 +2824,8 @@ exports[`IconSend 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2805,6 +2846,8 @@ exports[`IconSent 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2825,6 +2868,8 @@ exports[`IconSettings 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2845,6 +2890,8 @@ exports[`IconShare 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2865,6 +2912,8 @@ exports[`IconSocialFacebook 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2885,6 +2934,8 @@ exports[`IconSocialGitHub 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2905,6 +2956,8 @@ exports[`IconSocialInstagram 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2925,6 +2978,8 @@ exports[`IconSocialLinkedIn 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2945,6 +3000,8 @@ exports[`IconSocialMedium 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2965,6 +3022,8 @@ exports[`IconSocialTwitter 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -2980,21 +3039,6 @@ exports[`IconSocialTwitter 1`] = `
 exports[`IconStar 1`] = `
 {
   active?: boolean
-  size?: 
-    | "fill"
-    | "large"
-    | "small"
-    | "standard"
-    | "xsmall"
-  tone?: 
-    | "critical"
-    | "formAccent"
-    | "info"
-    | "link"
-    | "neutral"
-    | "positive"
-    | "promote"
-    | "secondary"
 }
 `;
 
@@ -3006,6 +3050,8 @@ exports[`IconStatistics 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -3026,6 +3072,8 @@ exports[`IconSubCategory 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -3046,6 +3094,8 @@ exports[`IconTag 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -3066,6 +3116,8 @@ exports[`IconTick 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -3086,6 +3138,8 @@ exports[`IconTime 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -3106,6 +3160,8 @@ exports[`IconUpload 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -3126,6 +3182,8 @@ exports[`IconVideo 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"
@@ -3146,6 +3204,8 @@ exports[`IconWorkExperience 1`] = `
     | "small"
     | "standard"
     | "xsmall"
+  title?: string
+  titleId?: string
   tone?: 
     | "critical"
     | "formAccent"

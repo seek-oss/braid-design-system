@@ -6,9 +6,9 @@ import useIcon, { UseIconProps } from '../../../hooks/useIcon';
 import { IconChevronSvg } from './IconChevronSvg';
 import * as styleRefs from './IconChevron.treat';
 
-export interface IconChevronProps extends UseIconProps {
+export type IconChevronProps = UseIconProps & {
   direction?: 'up' | 'down' | 'left' | 'right';
-}
+};
 
 export const IconChevron = ({
   direction = 'down',
