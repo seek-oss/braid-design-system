@@ -127,7 +127,7 @@ export const InlineField = forwardRef<HTMLElement, InternalInlineFieldProps>(
           height="touchable"
           className={styles.realField}
           aria-describedby={messageId}
-          aria-required={required}
+          aria-required={type === 'checkbox' ? required : undefined}
           disabled={disabled}
           ref={ref}
           {...buildDataAttributes(data)}

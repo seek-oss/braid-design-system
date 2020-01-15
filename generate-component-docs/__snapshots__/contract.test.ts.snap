@@ -3255,7 +3255,6 @@ exports[`Radio 1`] = `
   ref?: 
     | (instance: HTMLInputElement | null) => void
     | RefObject<HTMLInputElement>
-  required?: boolean
   tone?: 
     | "critical"
     | "neutral"
