@@ -4,7 +4,7 @@ import { ThemeNameConsumer } from './ThemeNameConsumer';
 
 const docs: ComponentDocs = {
   category: 'Logic',
-  storybook: false,
+  screenshotWidths: [],
   examples: [
     {
       Example: () => (

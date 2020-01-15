@@ -33,6 +33,7 @@ const Header = ({ children = 'Content' }: { children?: ReactNode }) => (
 
 const docs: ComponentDocs = {
   category: 'Layout',
+  screenshotWidths: [320, 768],
   migrationGuide: true,
   examples: [
     ...spaces.map(space => ({
