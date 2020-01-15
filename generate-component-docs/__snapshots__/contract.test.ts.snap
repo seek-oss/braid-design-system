@@ -1467,6 +1467,9 @@ exports[`BulletList 1`] = `
     | "xxlarge"
     | "xxsmall"
   >
+  tone?: 
+    | "neutral"
+    | "secondary"
 }
 `;
 
