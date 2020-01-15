@@ -6,7 +6,8 @@ import { OptionalTitle } from '../../components/icons/SVGTypes';
 import { BoxProps } from '../../components/Box/Box';
 import TextContext from '../../components/Text/TextContext';
 import HeadingContext from '../../components/Heading/HeadingContext';
-import { useTextSize, useTextTone, UseTextProps } from '../../hooks/typography';
+import { useTextSize, useTextTone, UseTextProps } from '../typography';
+import { useLineHeightContainer } from '../useLineHeightContainer/useLineHeightContainer';
 import * as styleRefs from './icon.treat';
 
 type IconSize = NonNullable<UseTextProps['size']> | 'fill';
@@ -23,11 +24,11 @@ export const useIconSize = ({ size = 'standard' }: UseIconSizeProps = {}) => {
 export interface UseIconContainerSizeProps {
   size?: Exclude<IconSize, 'fill'>;
 }
-export const useIconContainerSize = ({
-  size = 'standard',
-}: UseIconContainerSizeProps = {}) => {
+export const useIconContainerSize = (
+  size: Exclude<IconSize, 'fill'> = 'standard',
+) => {
   const styles = useStyles(styleRefs);
-  return styles.blockSizes[size];
+  return classnames(styles.blockWidths[size], useLineHeightContainer(size));
 };
 
 export type UseIconProps = {
@@ -42,8 +43,10 @@ export default ({ size, tone, ...titleProps }: UseIconProps): BoxProps => {
   const inheritedTone =
     textContext && textContext.tone ? textContext.tone : 'neutral';
   const resolvedTone = useTextTone({ tone: tone || inheritedTone });
-
   const isInline = textContext || headingContext;
+  const blockSizeStyles = useIconContainerSize(
+    size !== 'fill' ? size : 'standard',
+  );
 
   if (process.env.NODE_ENV !== 'production') {
     if (isInline && size) {
@@ -71,7 +74,7 @@ export default ({ size, tone, ...titleProps }: UseIconProps): BoxProps => {
     className: classnames(
       resolvedTone,
       styles.size,
-      isInline ? styles.inline : styles.blockSizes[size || 'standard'],
+      isInline ? styles.inline : blockSizeStyles,
     ),
     ...titleProps,
   };

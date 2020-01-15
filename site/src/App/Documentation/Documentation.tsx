@@ -69,7 +69,7 @@ export const Documentation = () => {
 
   const componentsByCategory = groupBy(
     Object.keys(components)
-      .filter(name => !/^(Icon|use|BoxRenderer)/.test(name))
+      .filter(name => !/^(Icon|BoxRenderer)/.test(name))
       .map(name => {
         const docs: ComponentDocs = require(`../../../../lib/components/${name}/${name}.docs.tsx`)
           .default;
