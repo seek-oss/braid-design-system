@@ -50,7 +50,7 @@ export default ({ size, tone, ...titleProps }: UseIconProps): SVGProps => {
   const isInline = textContext || headingContext;
 
   const blockSizeStyles = useIconContainerSize(
-    isCustomSize(size) ? 'standard' : size,
+    isCustomSize(size) ? 'standard' || 'crop' : size,
   );
 
   const customSize = isCustomSize(size);
