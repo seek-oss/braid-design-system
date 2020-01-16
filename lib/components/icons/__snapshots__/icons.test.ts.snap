@@ -49,7 +49,7 @@ export const IconBookmarkActiveSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '4.9941725730896 2 14.011648178100586 20.100000381469727',
+        viewBox: '5 2 14 20.1',
         ...restProps,
       }
     : restProps;
@@ -85,7 +85,7 @@ export const IconBookmarkSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '4.9941725730896 2 14.011648178100586 20.100000381469727',
+        viewBox: '5 2 14 20.1',
         ...restProps,
       }
     : restProps;
@@ -121,7 +121,7 @@ export const IconChevronSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '2.999999523162842 7 17.999998092651367 10',
+        viewBox: '3 7 18 10',
         ...restProps,
       }
     : restProps;
@@ -157,7 +157,7 @@ export const IconClearSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '4.999999523162842 4.999999523162842 14 13.999998092651367',
+        viewBox: '5 5 14 14',
         ...restProps,
       }
     : restProps;
@@ -230,7 +230,7 @@ export const IconComposeSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '3 0.800000011920929 20.19999885559082 20.200000762939453',
+        viewBox: '3 0.8 20.2 20.2',
         ...restProps,
       }
     : restProps;
@@ -452,8 +452,7 @@ export const IconDocumentSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox:
-          '3.9915425777435303 1.999999761581421 16.00845718383789 20.00845718383789',
+        viewBox: '4 2 16 20',
         ...restProps,
       }
     : restProps;
@@ -526,7 +525,7 @@ export const IconEditSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '2.962501049041748 3.049999713897705 18.862499237060547 18.75',
+        viewBox: '3 3 18.9 18.8',
         ...restProps,
       }
     : restProps;
@@ -670,7 +669,7 @@ export const IconHeartActiveSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '3 4 18 16.000001907348633',
+        viewBox: '3 4 18 16',
         ...restProps,
       }
     : restProps;
@@ -706,7 +705,7 @@ export const IconHeartSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '3 4 18 16.000001907348633',
+        viewBox: '3 4 18 16',
         ...restProps,
       }
     : restProps;
@@ -779,8 +778,7 @@ export const IconHistorySvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox:
-          '-0.004051879048347473 1.9749999046325684 22.029050827026367 20.024999618530273',
+        viewBox: '0 2 22 20',
         ...restProps,
       }
     : restProps;
@@ -817,7 +815,7 @@ export const IconHomeSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '3.000000476837158 1.9749999046325684 18 20.024999618530273',
+        viewBox: '3 2 18 20',
         ...restProps,
       }
     : restProps;
@@ -927,7 +925,7 @@ export const IconInvoiceSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '3 2 18.000001907348633 20.049999237060547',
+        viewBox: '3 2 18 20',
         ...restProps,
       }
     : restProps;
@@ -1148,7 +1146,7 @@ export const IconNewWindowSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '4 2.1000001430511475 17.299999237060547 17.899999618530273',
+        viewBox: '4 2.1 17.3 17.9',
         ...restProps,
       }
     : restProps;
@@ -1185,7 +1183,7 @@ export const IconNoteSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '3 3.000000238418579 18 18',
+        viewBox: '3 3 18 18',
         ...restProps,
       }
     : restProps;
@@ -1332,7 +1330,7 @@ export const IconPersonVerifiedSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '2.999999761581421 1.0249998569488525 18 21.975000381469727',
+        viewBox: '3 1 18 22',
         ...restProps,
       }
     : restProps;
@@ -1369,8 +1367,7 @@ export const IconPhoneSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox:
-          '3.001744031906128 2.999999761581421 17.998258590698242 17.99900245666504',
+        viewBox: '3 3 18 18',
         ...restProps,
       }
     : restProps;
@@ -1551,7 +1548,7 @@ export const IconRecommendedSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '5 1 14 22.049999237060547',
+        viewBox: '5 1 14 22',
         ...restProps,
       }
     : restProps;
@@ -1587,8 +1584,7 @@ export const IconRefreshSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox:
-          '1.9990975856781006 2.0100018978118896 21.90068817138672 19.989999771118164',
+        viewBox: '2 2 21.9 20',
         ...restProps,
       }
     : restProps;
@@ -1662,7 +1658,7 @@ export const IconSearchSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '2 2 20.000001907348633 20',
+        viewBox: '2 2 20 20',
         ...restProps,
       }
     : restProps;
@@ -1734,8 +1730,7 @@ export const IconSendSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox:
-          '1.0000007152557373 2.000000238418579 21.000001907348633 21.099998474121094',
+        viewBox: '1 2 21 21.1',
         ...restProps,
       }
     : restProps;
@@ -1771,7 +1766,7 @@ export const IconSentSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '3 4.400000095367432 18 15.600000381469727',
+        viewBox: '3 4.4 18 15.6',
         ...restProps,
       }
     : restProps;
@@ -1807,8 +1802,7 @@ export const IconSettingsSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox:
-          '1.9808381795883179 0.8861571550369263 20.13810920715332 22.21384048461914',
+        viewBox: '2 0.9 20.1 22.2',
         ...restProps,
       }
     : restProps;
@@ -1845,7 +1839,7 @@ export const IconShareSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '3 4.400000095367432 18 15.600000381469727',
+        viewBox: '3 4.4 18 15.6',
         ...restProps,
       }
     : restProps;
@@ -1881,8 +1875,7 @@ export const IconSocialFacebookSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox:
-          '7.849999904632568 3.990910768508911 8.301000595092773 16.00908851623535',
+        viewBox: '7.8 4 8.3 16',
         ...restProps,
       }
     : restProps;
@@ -1918,8 +1911,7 @@ export const IconSocialGitHubSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox:
-          '2.0017647743225098 1.9999990463256836 20.00529670715332 19.505577087402344',
+        viewBox: '2 2 20 19.5',
         ...restProps,
       }
     : restProps;
@@ -1996,7 +1988,7 @@ export const IconSocialLinkedInSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '5.000000476837158 5.013000965118408 14 13.975000381469727',
+        viewBox: '5 5 14 14',
         ...restProps,
       }
     : restProps;
@@ -2068,8 +2060,7 @@ export const IconSocialTwitterSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox:
-          '5.000000953674316 6.313666343688965 14.000000953674316 11.375519752502441',
+        viewBox: '5 6.3 14 11.4',
         ...restProps,
       }
     : restProps;
@@ -2105,8 +2096,7 @@ export const IconStarActiveSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox:
-          '0.9846852421760559 1.0590457916259766 22.050159454345703 21.0819091796875',
+        viewBox: '1 1.1 22.1 21.1',
         ...restProps,
       }
     : restProps;
@@ -2142,8 +2132,7 @@ export const IconStarSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox:
-          '0.9624995589256287 1.0749999284744263 22.075000762939453 20.934017181396484',
+        viewBox: '1 1.1 22.1 20.9',
         ...restProps,
       }
     : restProps;
@@ -2179,7 +2168,7 @@ export const IconStatisticsSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '3 4.012295246124268 18 15.98770523071289',
+        viewBox: '3 4 18 16',
         ...restProps,
       }
     : restProps;
@@ -2216,7 +2205,7 @@ export const IconSubCategorySvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '5 5 14 13.999998092651367',
+        viewBox: '5 5 14 14',
         ...restProps,
       }
     : restProps;
@@ -2252,8 +2241,7 @@ export const IconTagSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox:
-          '1.8000001907348633 1.9999992847442627 21.20000457763672 21.19999885559082',
+        viewBox: '1.8 2 21.2 21.2',
         ...restProps,
       }
     : restProps;
@@ -2290,7 +2278,7 @@ export const IconTickSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '3.999999523162842 6 15.999998092651367 12',
+        viewBox: '4 6 16 12',
         ...restProps,
       }
     : restProps;
@@ -2399,7 +2387,7 @@ export const IconVideoSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '4.999999523162842 5.02500057220459 14 13.97499942779541',
+        viewBox: '5 5 14 14',
         ...restProps,
       }
     : restProps;
@@ -2435,7 +2423,7 @@ export const IconWorkExperienceSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '0.9999995827674866 1.9999998807907104 22 20',
+        viewBox: '1 2 22 20',
         ...restProps,
       }
     : restProps;

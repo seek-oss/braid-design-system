@@ -5,6 +5,7 @@ const globby = require('globby');
 const cheerio = require('cheerio');
 const { pascalCase } = require('change-case');
 const dedent = require('dedent');
+const roundTo = require('round-to');
 
 const forceUpdate = process.argv.includes('--force');
 const lastUpdatedPath = path.join(__dirname, 'icon-updates.json');
@@ -111,11 +112,13 @@ const iconComponentsDir = path.join(baseDir, 'lib/components/icons');
     const page = await browser.newPage();
     await page.setContent(svg);
 
-    const result = await page.$eval('svg', svgElement => {
+    const viewboxArray = await page.$eval('svg', svgElement => {
       const { x, y, width, height } = svgElement.getBBox();
 
-      return [x, y, width, height].join(' ');
+      return [x, y, width, height];
     });
+
+    const result = viewboxArray.map(v => roundTo(v, 1)).join(' ');
 
     await page.close();
 

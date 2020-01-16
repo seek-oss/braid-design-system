@@ -114,6 +114,7 @@
     "react-syntax-highlighter": "^11.0.2",
     "react-transition-group": "^4.3.0",
     "renovate-config-seek": "0.4.0",
+    "round-to": "^4.0.0",
     "semantic-release": "^15.13.3",
     "sku": "9.1.0",
     "surge": "^0.20.1",
