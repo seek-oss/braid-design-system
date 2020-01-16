@@ -37,8 +37,22 @@ const docs: ComponentDocs = {
       Example: () => <Icons />,
     },
     {
+      label: 'Cropped',
+      Example: () => (
+        <Inline space="small">
+          {iconNames.map(icon => {
+            const IconComponent = icons[icon];
+            return (
+              <Box boxShadow="borderCritical" key={icon}>
+                <IconComponent />
+              </Box>
+            );
+          })}
+        </Inline>
+      ),
+    },
+    {
       label: 'Auto size (via TextContext)',
-      docsSite: false,
       Example: () => {
         const sizes = Object.keys(textSizes) as Array<keyof typeof textSizes>;
 
@@ -58,7 +72,6 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Auto Size (via HeadingContext)',
-      docsSite: false,
       Example: () => {
         const headings = Object.keys(headingSizes) as Array<
           keyof typeof headingSizes
@@ -83,7 +96,6 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Auto Tone (via TextContext)',
-      docsSite: false,
       Example: () => {
         const iconTones = ['neutral', ...Object.keys(tones)].sort() as Array<
           keyof typeof tones | 'neutral'
@@ -105,7 +117,6 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Override auto tone explicitly',
-      docsSite: false,
       Example: () => (
         <Text tone="critical">
           Critical text overridden to positive icons:
@@ -115,7 +126,6 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Auto Tone with Background Contrast (via TextContext)',
-      docsSite: false,
       Example: () => (
         <Box background="brand" padding="xsmall">
           <Stack space="medium">
