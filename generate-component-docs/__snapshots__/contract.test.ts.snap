@@ -528,6 +528,11 @@ exports[`Box 1`] = `
     | "row"
     | "rowReverse"
   >
+  flexWrap?: ResponsiveProp<
+    | "nowrap"
+    | "wrap"
+    | "wrapReverse"
+  >
   form?: string
   formAction?: string
   formEncType?: string
@@ -1236,6 +1241,11 @@ exports[`BoxRenderer 1`] = `
     | "columnReverse"
     | "row"
     | "rowReverse"
+  >
+  flexWrap?: ResponsiveProp<
+    | "nowrap"
+    | "wrap"
+    | "wrapReverse"
   >
   height?: 
     | "full"

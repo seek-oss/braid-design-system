@@ -1,10 +1,6 @@
-import { style, styleMap } from 'sku/treat';
+import { styleMap } from 'sku/treat';
 import mapValues from 'lodash/mapValues';
 import { TreatTokens } from '../../themes/makeBraidTheme';
-
-export const flexWrap = style({
-  flexWrap: 'wrap',
-});
 
 const columnsWidths = {
   '1': '100%',
