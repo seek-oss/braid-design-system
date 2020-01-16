@@ -7,6 +7,7 @@ import { Text } from '../Text/Text';
 const docs: ComponentDocs = {
   category: 'Layout',
   migrationGuide: true,
+  screenshotWidths: [320],
   examples: [
     {
       label: 'Default',

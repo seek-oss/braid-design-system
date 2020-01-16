@@ -6,6 +6,7 @@ import { Stack } from '../Stack/Stack';
 
 const docs: ComponentDocs = {
   category: 'Layout',
+  screenshotWidths: [320, 768, 1200],
   examples: [
     {
       label: 'Hidden below tablet',

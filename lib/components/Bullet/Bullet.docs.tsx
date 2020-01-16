@@ -6,6 +6,7 @@ import { BulletList } from '../BulletList/BulletList';
 const docs: ComponentDocs = {
   category: 'Content',
   migrationGuide: true,
+  screenshotWidths: [320],
   examples: [
     {
       label: 'Standard Bullets',

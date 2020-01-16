@@ -6,6 +6,7 @@ import { Text } from '../Text/Text';
 
 const docs: ComponentDocs = {
   category: 'Interaction',
+  screenshotWidths: [320],
   examples: [
     {
       label: 'TextLink with Custom Renderer',

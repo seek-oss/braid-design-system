@@ -20,6 +20,7 @@ const Item = () => (
 
 const docs: ComponentDocs = {
   category: 'Layout',
+  screenshotWidths: [320, 768],
   examples: [
     ...spaces.map(space => ({
       label: `Space: ${space}`,

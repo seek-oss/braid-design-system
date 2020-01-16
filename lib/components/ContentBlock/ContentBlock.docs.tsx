@@ -6,6 +6,7 @@ import { ContentBlock } from './ContentBlock';
 
 const docs: ComponentDocs = {
   category: 'Layout',
+  screenshotWidths: [320, 1200],
   examples: [
     {
       label: 'Default Content Block',

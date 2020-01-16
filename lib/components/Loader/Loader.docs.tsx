@@ -6,6 +6,7 @@ import { Box } from '../Box/Box';
 
 const docs: ComponentDocs = {
   category: 'Content',
+  screenshotWidths: [320],
   examples: [
     {
       label: 'Default',

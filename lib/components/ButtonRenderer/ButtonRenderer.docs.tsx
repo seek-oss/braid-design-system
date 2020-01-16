@@ -9,6 +9,7 @@ const Container = ({ children }: { children: ReactNode }) => (
 
 const docs: ComponentDocs = {
   category: 'Interaction',
+  screenshotWidths: [320],
   examples: [
     {
       label: 'Button with Custom Renderer',
