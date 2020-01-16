@@ -1,12 +1,21 @@
+/* eslint-disable no-console */
 const path = require('path');
 const fs = require('fs-extra');
 const globby = require('globby');
 const cheerio = require('cheerio');
 const { pascalCase } = require('change-case');
 const dedent = require('dedent');
-const SVGO = require('svgo');
-const { default: svgr } = require('@svgr/core');
-const puppeteer = require('puppeteer');
+
+const forceUpdate = process.argv.includes('--force');
+const lastUpdatedPath = path.join(__dirname, 'icon-updates.json');
+
+let lastUpdated = {};
+try {
+  // eslint-ignore-next-line
+  lastUpdated = require(lastUpdatedPath);
+} catch (e) {
+  console.log(`Couldn't read icon-updates file. Updating all SVGs...`);
+}
 
 const makeComponentTemplate = smallestViewBox => (
   { template },
@@ -39,24 +48,63 @@ const makeComponentTemplate = smallestViewBox => (
   });
 };
 
-const svgo = new SVGO({
-  multipass: true,
-  plugins: [
-    { removeViewBox: false },
-    {
-      inlineStyles: {
-        onlyMatchedOnce: false,
-      },
-    },
-    { convertStyleToAttrs: true },
-    { removeDimensions: true },
-  ],
-});
-
 const baseDir = path.join(__dirname, '..');
 const iconComponentsDir = path.join(baseDir, 'lib/components/icons');
 
 (async () => {
+  // Load SVGs
+  const svgFilePaths = await globby('icons/*.svg', {
+    cwd: baseDir,
+    absolute: true,
+  });
+
+  let filesToUpdate = [];
+
+  if (forceUpdate) {
+    filesToUpdate = [...svgFilePaths];
+  } else {
+    for (let i = 0; i < svgFilePaths.length; i++) {
+      const svgFilePath = svgFilePaths[i];
+      const { mtime } = await fs.stat(svgFilePath);
+      const fileLastModified = mtime.toJSON();
+
+      if (
+        !lastUpdated[svgFilePath] ||
+        lastUpdated[svgFilePath] !== fileLastModified
+      ) {
+        filesToUpdate.push(svgFilePath);
+        lastUpdated[svgFilePath] = fileLastModified;
+      }
+    }
+
+    if (filesToUpdate.length === 0) {
+      // Nothing to do
+      console.log(
+        'No icon updates required. Run with "--force" flag to update anyway.',
+      );
+
+      return;
+    }
+  }
+
+  const puppeteer = require('puppeteer');
+  const SVGO = require('svgo');
+  const { default: svgr } = require('@svgr/core');
+
+  const svgo = new SVGO({
+    multipass: true,
+    plugins: [
+      { removeViewBox: false },
+      {
+        inlineStyles: {
+          onlyMatchedOnce: false,
+        },
+      },
+      { convertStyleToAttrs: true },
+      { removeDimensions: true },
+    ],
+  });
+
   const browser = await puppeteer.launch();
 
   const getBBox = async svg => {
@@ -74,28 +122,8 @@ const iconComponentsDir = path.join(baseDir, 'lib/components/icons');
     return result;
   };
 
-  // First clean up any existing SVG components
-  const existingComponentPaths = await globby(
-    path.join(iconComponentsDir, '*/*Svg.tsx'),
-    {
-      cwd: baseDir,
-      absolute: true,
-    },
-  );
   await Promise.all(
-    existingComponentPaths.map(async existingComponentPath => {
-      await fs.remove(existingComponentPath);
-    }),
-  );
-
-  // Load SVGs
-  const svgFilePaths = await globby('icons/*.svg', {
-    cwd: baseDir,
-    absolute: true,
-  });
-
-  await Promise.all(
-    svgFilePaths.map(async svgFilePath => {
+    filesToUpdate.map(async svgFilePath => {
       // Split out the icon variants (e.g. bookmark-active.svg)
       const [svgName, variantName] = path
         .basename(svgFilePath, '.svg')
@@ -242,6 +270,13 @@ const iconComponentsDir = path.join(baseDir, 'lib/components/icons');
     .concat('\n');
   const iconsIndexPath = path.join(iconComponentsDir, 'index.ts');
   await fs.writeFile(iconsIndexPath, iconExports, 'utf-8');
+
+  // write last updated
+  await fs.writeFile(
+    lastUpdatedPath,
+    JSON.stringify(lastUpdated, null, 2),
+    'utf-8',
+  );
 
   await browser.close();
 })();
