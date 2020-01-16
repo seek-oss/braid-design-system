@@ -45,7 +45,7 @@ req.keys().forEach(filename => {
   storyThemes.forEach(theme => {
     const storyConfig = {
       chromatic: {
-        viewports: docs.screenshotWidths || [320, 1200],
+        viewports: docs.screenshotWidths,
       },
     };
 
