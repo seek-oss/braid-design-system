@@ -531,7 +531,6 @@ exports[`Box 1`] = `
   flexWrap?: ResponsiveProp<
     | "nowrap"
     | "wrap"
-    | "wrapReverse"
   >
   form?: string
   formAction?: string
@@ -1245,7 +1244,6 @@ exports[`BoxRenderer 1`] = `
   flexWrap?: ResponsiveProp<
     | "nowrap"
     | "wrap"
-    | "wrapReverse"
   >
   height?: 
     | "full"

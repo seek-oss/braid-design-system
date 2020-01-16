@@ -239,7 +239,6 @@ export const flexDirectionDesktop = styleMap(({ utils: { responsiveStyle } }) =>
 
 const flexWrapRules = {
   wrap: 'wrap',
-  wrapReverse: 'wrap-reverse',
   nowrap: 'nowrap',
 };
 export const flexWrap = styleMap(mapToStyleProperty(flexWrapRules, 'flexWrap'));
