@@ -44,7 +44,7 @@ const docs: ComponentDocs = {
             const IconComponent = icons[icon];
             return (
               <Box boxShadow="borderCritical" key={icon}>
-                <IconComponent />
+                <IconComponent size="crop" />
               </Box>
             );
           })}

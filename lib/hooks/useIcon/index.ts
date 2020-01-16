@@ -48,12 +48,12 @@ export default ({ size, tone, ...titleProps }: UseIconProps): SVGProps => {
     textContext && textContext.tone ? textContext.tone : 'neutral';
   const resolvedTone = useTextTone({ tone: tone || inheritedTone });
   const isInline = textContext || headingContext;
-  const customSize = isCustomSize(size);
 
   const blockSizeStyles = useIconContainerSize(
     isCustomSize(size) ? 'standard' : size,
   );
 
+  const customSize = isCustomSize(size);
   const boxStyles = useBoxStyles(
     customSize
       ? {
