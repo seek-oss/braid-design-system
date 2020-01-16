@@ -242,20 +242,6 @@ const flexWrapRules = {
   nowrap: 'nowrap',
 };
 export const flexWrap = styleMap(mapToStyleProperty(flexWrapRules, 'flexWrap'));
-export const flexWrapTablet = styleMap(({ utils: { responsiveStyle } }) =>
-  mapToStyleProperty(flexWrapRules, 'flexWrap', (value, propertyName) =>
-    responsiveStyle({
-      tablet: { [propertyName]: value },
-    }),
-  ),
-);
-export const flexWrapDesktop = styleMap(({ utils: { responsiveStyle } }) =>
-  mapToStyleProperty(flexWrapRules, 'flexWrap', (value, propertyName) =>
-    responsiveStyle({
-      desktop: { [propertyName]: value },
-    }),
-  ),
-);
 
 export const background = styleMap(({ color }) =>
   mapToStyleProperty(omit(color.background, 'body'), 'background'),
