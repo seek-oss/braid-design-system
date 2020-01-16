@@ -1,5 +1,4 @@
 import React, { SVGProps } from 'react';
-import { Box } from '../../../../lib/components';
 import useIcon, { UseIconProps } from '../../../../lib/hooks/useIcon';
 
 // Adapted from https://github.com/feathericons/feather
@@ -22,5 +21,5 @@ const PlaySvg = (props: SVGProps<SVGSVGElement>) => (
 export const PlayIcon = (props: UseIconProps) => {
   const iconProps = useIcon(props);
 
-  return <Box component={PlaySvg} {...iconProps} />;
+  return <PlaySvg {...iconProps} />;
 };

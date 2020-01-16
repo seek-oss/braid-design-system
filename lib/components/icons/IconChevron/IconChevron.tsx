@@ -1,7 +1,6 @@
 import React from 'react';
 import { useStyles } from 'sku/react-treat';
 import classnames from 'classnames';
-import { Box } from '../../Box/Box';
 import useIcon, { UseIconProps } from '../../../hooks/useIcon';
 import { IconChevronSvg } from './IconChevronSvg';
 import * as styleRefs from './IconChevron.treat';
@@ -18,8 +17,7 @@ export const IconChevron = ({
   const { className, ...iconProps } = useIcon(props);
 
   return (
-    <Box
-      component={IconChevronSvg}
+    <IconChevronSvg
       className={classnames(styles.root, className, {
         [styles.up]: direction === 'up',
         [styles.left]: direction === 'left',

@@ -1,5 +1,4 @@
 import React from 'react';
-import { Box } from '../../Box/Box';
 import useIcon, { UseIconProps } from '../../../hooks/useIcon';
 import { IconBookmarkSvg } from './IconBookmarkSvg';
 import { IconBookmarkActiveSvg } from './IconBookmarkActiveSvg';
@@ -14,10 +13,9 @@ export const IconBookmark = ({
 }: IconBookmarkProps) => {
   const iconProps = useIcon(props);
 
-  return (
-    <Box
-      component={active ? IconBookmarkActiveSvg : IconBookmarkSvg}
-      {...iconProps}
-    />
+  return active ? (
+    <IconBookmarkActiveSvg {...iconProps} />
+  ) : (
+    <IconBookmarkSvg {...iconProps} />
   );
 };

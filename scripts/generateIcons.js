@@ -6,15 +6,26 @@ const { pascalCase } = require('change-case');
 const dedent = require('dedent');
 const SVGO = require('svgo');
 const { default: svgr } = require('@svgr/core');
+const puppeteer = require('puppeteer');
 
-const componentTemplate = ({ template }, opts, { componentName, jsx }) => {
+const makeComponentTemplate = smallestViewBox => (
+  { template },
+  opts,
+  { componentName, jsx },
+) => {
   const code = `
     import React from 'react';
     NEWLINE
     import { SVGProps } from '../SVGTypes';
     NEWLINE
-    export const COMPONENT_NAME = ({ title, titleId, ...props }: SVGProps) => COMPONENT_JSX;
-  `;
+    export const COMPONENT_NAME = ({ title, titleId, crop, ...restProps }: SVGProps) => {
+      const props = crop ? { viewBox: 'SMALLEST_VIEW_BOX', ...restProps } : restProps;
+      NEWLINE
+      return (
+        COMPONENT_JSX
+      );
+    }
+`;
 
   const reactTemplate = template.smart(code, {
     plugins: ['react', 'typescript'],
@@ -24,6 +35,7 @@ const componentTemplate = ({ template }, opts, { componentName, jsx }) => {
     COMPONENT_NAME: componentName,
     COMPONENT_JSX: jsx,
     NEWLINE: '\n',
+    SMALLEST_VIEW_BOX: smallestViewBox,
   });
 };
 
@@ -37,27 +49,31 @@ const svgo = new SVGO({
       },
     },
     { convertStyleToAttrs: true },
+    { removeDimensions: true },
   ],
 });
-
-const svgrConfig = {
-  svgProps: {
-    focusable: 'false',
-    fill: 'currentColor',
-    width: 16,
-    height: 16,
-    role: 'img',
-  },
-  replaceAttrValues: { '#000': 'currentColor' },
-  template: componentTemplate,
-  plugins: ['@svgr/plugin-jsx', '@svgr/plugin-prettier'],
-  titleProp: true,
-};
 
 const baseDir = path.join(__dirname, '..');
 const iconComponentsDir = path.join(baseDir, 'lib/components/icons');
 
 (async () => {
+  const browser = await puppeteer.launch();
+
+  const getBBox = async svg => {
+    const page = await browser.newPage();
+    await page.setContent(svg);
+
+    const result = await page.$eval('svg', svgElement => {
+      const { x, y, width, height } = svgElement.getBBox();
+
+      return [x, y, width, height].join(' ');
+    });
+
+    await page.close();
+
+    return result;
+  };
+
   // First clean up any existing SVG components
   const existingComponentPaths = await globby(
     path.join(iconComponentsDir, '*/*Svg.tsx'),
@@ -91,6 +107,8 @@ const iconComponentsDir = path.join(baseDir, 'lib/components/icons');
       // Run through SVGO
       const optimisedSvg = (await svgo.optimize(svg)).data;
 
+      const smallestViewBox = await getBBox(optimisedSvg);
+
       // Validate SVG before import
       const $ = cheerio.load(optimisedSvg);
       $('svg *').each((i, el) => {
@@ -110,9 +128,25 @@ const iconComponentsDir = path.join(baseDir, 'lib/components/icons');
       const svgComponentName = `${iconName}${
         variantName ? pascalCase(variantName) : ''
       }Svg`;
-      const svgComponent = await svgr(optimisedSvg, svgrConfig, {
-        componentName: svgComponentName,
-      });
+
+      const svgComponent = await svgr(
+        optimisedSvg,
+        {
+          svgProps: {
+            focusable: 'false',
+            fill: 'currentColor',
+            height: 24,
+            role: 'img',
+          },
+          replaceAttrValues: { '#000': 'currentColor' },
+          template: makeComponentTemplate(smallestViewBox),
+          plugins: ['@svgr/plugin-jsx', '@svgr/plugin-prettier'],
+          titleProp: true,
+        },
+        {
+          componentName: svgComponentName,
+        },
+      );
 
       // Create icon directory if it's missing
       const iconDir = path.join(iconComponentsDir, iconName);
@@ -143,7 +177,6 @@ const iconComponentsDir = path.join(baseDir, 'lib/components/icons');
         `${iconName}.tsx`,
         dedent`
           import React from 'react';
-          import { Box } from '../../Box/Box';
           import useIcon, { UseIconProps } from '../../../hooks/useIcon';
           import { ${svgComponentName} } from './${svgComponentName}';
 
@@ -152,7 +185,7 @@ const iconComponentsDir = path.join(baseDir, 'lib/components/icons');
           export const ${iconName} = (props: ${iconName}Props) => {
             const iconProps = useIcon(props);
 
-            return <Box component={${svgComponentName}} {...iconProps} />;
+            return <${svgComponentName} {...iconProps} />;
           };
         `,
       );
@@ -209,4 +242,6 @@ const iconComponentsDir = path.join(baseDir, 'lib/components/icons');
     .concat('\n');
   const iconsIndexPath = path.join(iconComponentsDir, 'index.ts');
   await fs.writeFile(iconsIndexPath, iconExports, 'utf-8');
+
+  await browser.close();
 })();

@@ -105,6 +105,7 @@
     "globby": "^10.0.1",
     "husky": "^1.1.3",
     "prettier": "^1.19.1",
+    "puppeteer": "^2.0.0",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-element-to-jsx-string": "^14.0.1",
@@ -116,6 +117,7 @@
     "semantic-release": "^15.13.3",
     "sku": "9.1.0",
     "surge": "^0.20.1",
+    "svgo": "1.3.2",
     "travis-deploy-once": "^5.0.9",
     "ts-node": "^8.2.0",
     "uuid": "^3.3.3"
