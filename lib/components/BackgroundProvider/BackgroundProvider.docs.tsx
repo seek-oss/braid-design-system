@@ -6,7 +6,7 @@ import { Box } from '../Box/Box';
 
 const docs: ComponentDocs = {
   category: 'Logic',
-  storybook: false,
+  screenshotWidths: [],
   examples: [
     {
       label: 'Custom dark background',

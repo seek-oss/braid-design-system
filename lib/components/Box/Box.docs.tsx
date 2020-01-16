@@ -9,7 +9,7 @@ const spaceScale = Object.keys(tokens.space) as Space[];
 
 const docs: ComponentDocs = {
   category: 'Layout',
-  storybook: false,
+  screenshotWidths: [],
   examples: spaceScale.map(
     (space): ComponentExample => ({
       label: `"${space}" space`,

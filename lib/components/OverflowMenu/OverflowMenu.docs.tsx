@@ -6,6 +6,7 @@ import { OverflowMenuItem } from '../OverflowMenuItem/OverflowMenuItem';
 
 const docs: ComponentDocs = {
   category: 'Interaction',
+  screenshotWidths: [320],
   examples: [
     {
       label: 'Default',

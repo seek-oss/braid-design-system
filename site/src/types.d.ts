@@ -21,7 +21,7 @@ export interface ComponentDocs {
   category: 'Logic' | 'Layout' | 'Content' | 'Interaction' | 'Icon';
   migrationGuide?: boolean;
   foundation?: boolean;
-  storybook?: boolean;
+  screenshotWidths: Array<320 | 768 | 1200>;
   examples: ComponentExample[];
 }
 

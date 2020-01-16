@@ -5,6 +5,7 @@ import { Alert } from './Alert';
 const docs: ComponentDocs = {
   category: 'Content',
   migrationGuide: true,
+  screenshotWidths: [320],
   examples: [
     {
       label: 'Info Alert',

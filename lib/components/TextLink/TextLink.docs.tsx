@@ -12,6 +12,7 @@ import { Box } from '../Box/Box';
 const docs: ComponentDocs = {
   category: 'Interaction',
   migrationGuide: true,
+  screenshotWidths: [320, 768],
   examples: [
     {
       label: 'Text Link',
