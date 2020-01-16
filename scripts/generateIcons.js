@@ -7,7 +7,7 @@ const { pascalCase } = require('change-case');
 const dedent = require('dedent');
 const roundTo = require('round-to');
 
-const forceUpdate = process.argv.includes('--force');
+const forceUpdate = process.env.CI || process.argv.includes('--force');
 const lastUpdatedPath = path.join(__dirname, 'icon-updates.json');
 
 let lastUpdated = {};
