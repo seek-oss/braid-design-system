@@ -7,6 +7,7 @@ import { TextLink } from '../TextLink/TextLink';
 const docs: ComponentDocs = {
   category: 'Interaction',
   migrationGuide: true,
+  screenshotWidths: [320, 768],
   examples: [
     {
       label: 'Actions with Strong Button and TextLink',

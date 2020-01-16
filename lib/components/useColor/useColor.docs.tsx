@@ -4,7 +4,7 @@ import { useColor } from './useColor';
 
 const docs: ComponentDocs = {
   category: 'Logic',
-  storybook: false,
+  screenshotWidths: [],
   examples: [
     {
       playroom: false,

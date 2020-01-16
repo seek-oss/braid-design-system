@@ -5,6 +5,7 @@ import { Badge } from './Badge';
 const docs: ComponentDocs = {
   category: 'Content',
   migrationGuide: true,
+  screenshotWidths: [320],
   examples: [
     {
       label: 'Info Badge',

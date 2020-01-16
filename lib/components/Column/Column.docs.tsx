@@ -17,6 +17,7 @@ const Content = ({ children = 'Column' }) => (
 
 const docs: ComponentDocs = {
   category: 'Layout',
+  screenshotWidths: [320],
   examples: [
     {
       label: 'Standard Columns',
