@@ -1,4 +1,4 @@
-import { style, globalStyle } from 'sku/treat';
+import { style } from 'sku/treat';
 
 export const source = style({
   top: 0,
@@ -46,10 +46,6 @@ export const linkButton = style({
   },
 });
 
-export const subtitle = style({
-  flexWrap: 'wrap',
-});
-
-globalStyle(`${subtitle} > *`, {
+export const nowrap = style({
   whiteSpace: 'nowrap',
 });

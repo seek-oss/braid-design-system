@@ -43,10 +43,7 @@ export const Tiles = ({
 
   return (
     <Box className={negativeMarginTop}>
-      <Box
-        display="flex"
-        className={classnames(styles.flexWrap, negativeMarginLeft)}
-      >
+      <Box display="flex" flexWrap="wrap" className={negativeMarginLeft}>
         {Children.map(children, (child, i) => (
           <Box
             className={classnames(
