@@ -12,7 +12,7 @@ const docs: ComponentDocs = {
     {
       label: 'Default',
       Container: ({ children }) => (
-        <Box padding="gutter" style={{ backgroundColor: '#ccc' }}>
+        <Box padding="gutter" background="neutralLight">
           {children}
         </Box>
       ),
