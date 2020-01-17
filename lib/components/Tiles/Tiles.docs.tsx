@@ -15,7 +15,7 @@ const docs: ComponentDocs = {
       Example: () => (
         <Tiles space="small" columns={columns}>
           {[...new Array(columns * exampleRows)].map((_, i) => (
-            <Placeholder key={i} height={140} />
+            <Placeholder key={i} height={40} />
           ))}
         </Tiles>
       ),
@@ -25,7 +25,7 @@ const docs: ComponentDocs = {
       Example: () => (
         <Tiles space="xsmall" columns={[1, 4]}>
           {[...new Array(4 * exampleRows)].map((_, i) => (
-            <Placeholder key={i} height={140} />
+            <Placeholder key={i} height={40} />
           ))}
         </Tiles>
       ),
