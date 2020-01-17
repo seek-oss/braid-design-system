@@ -2,8 +2,8 @@ import React, { ReactNode } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import { Box, Stack } from '../';
 import { StackProps } from './Stack';
+import { Placeholder } from '../private/Placeholder/Placeholder';
 import { padding } from '../Box/useBoxStyles.treat';
-import { Placeholder } from '../../playroom/components';
 
 const spaces = Object.keys(padding.top).filter(
   space => space !== 'none',
@@ -25,9 +25,9 @@ const docs: ComponentDocs = {
       Container,
       Example: () => (
         <Stack space={space}>
-          <Placeholder height={100} />
-          <Placeholder height={100} />
-          <Placeholder height={100} />
+          <Placeholder height={40} />
+          <Placeholder height={40} />
+          <Placeholder height={40} />
         </Stack>
       ),
     })),
