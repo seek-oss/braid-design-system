@@ -7,14 +7,7 @@ import {
 export type CheckboxProps = InlineFieldProps;
 
 const NamedCheckbox = forwardRef<HTMLInputElement, CheckboxProps>(
-  (props, ref) => (
-    <InlineField
-      reserveMessageSpace={true}
-      {...props}
-      type="checkbox"
-      ref={ref}
-    />
-  ),
+  (props, ref) => <InlineField {...props} type="checkbox" ref={ref} />,
 );
 
 NamedCheckbox.displayName = 'Checkbox';
