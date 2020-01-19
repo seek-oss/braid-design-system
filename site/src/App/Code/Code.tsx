@@ -31,9 +31,6 @@ const formatSnippet = memoize(
       .replace(/^;/, ''), // Remove leading semicolons from JSX
 );
 
-const cleanSnippet = (code: string) =>
-  code.replace(/<HideCode>.*?<\/HideCode>/gs, '...');
-
 const CodeButton = ({
   component = 'button',
   children,
@@ -84,17 +81,15 @@ export default ({ playroom = true, children }: CodeProps) => {
   const styles = useStyles(styleRefs);
   const { playroomUrl } = useConfig();
 
-  const snippet = cleanSnippet(
-    formatSnippet(
-      typeof children === 'string'
-        ? children
-        : reactElementToJSXString(children, {
-            useBooleanShorthandSyntax: false,
-            showDefaultProps: false,
-            showFunctions: false,
-            filterProps: ['onChange', 'onBlur', 'onFocus'],
-          }),
-    ),
+  const snippet = formatSnippet(
+    typeof children === 'string'
+      ? children
+      : reactElementToJSXString(children, {
+          useBooleanShorthandSyntax: false,
+          showDefaultProps: false,
+          showFunctions: false,
+          filterProps: ['onChange', 'onBlur', 'onFocus'],
+        }),
   );
 
   return (

@@ -1,5 +1,6 @@
 import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
+import { Placeholder } from '../private/Placeholder/Placeholder';
 import { useSpace } from './useSpace';
 
 const docs: ComponentDocs = {
@@ -12,12 +13,9 @@ const docs: ComponentDocs = {
         const { space, grid } = useSpace();
 
         return (
-          <div
-            style={{
-              width: grid * space.large,
-              height: grid * space.large,
-              backgroundColor: 'deepskyblue',
-            }}
+          <Placeholder
+            width={grid * space.xxlarge}
+            height={grid * space.xxlarge}
           />
         );
       },
@@ -25,12 +23,9 @@ const docs: ComponentDocs = {
         const { space, grid } = useSpace();
 
         return (
-          <div
-            style={{
-              width: grid * space.large,
-              height: grid * space.large,
-              backgroundColor: 'deepskyblue',
-            }}
+          <Placeholder
+            width={grid * space.xxlarge}
+            height={grid * space.xxlarge}
           />
         );
       `,
