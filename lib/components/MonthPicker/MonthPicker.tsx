@@ -226,7 +226,6 @@ export const MonthPicker = ({
               onChange={makeChangeHandler(onChange, value, 'month')}
               onBlur={blurHandler}
               onFocus={focusHandler}
-              reserveMessageSpace={false}
               tone={tone}
               placeholder="Month"
               {...fieldGroupProps}
@@ -245,7 +244,6 @@ export const MonthPicker = ({
               onChange={makeChangeHandler(onChange, value, 'year')}
               onBlur={blurHandler}
               onFocus={focusHandler}
-              reserveMessageSpace={false}
               tone={tone}
               placeholder="Year"
               {...fieldGroupProps}
