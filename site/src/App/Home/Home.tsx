@@ -48,10 +48,11 @@ export const Home = () => {
                   component="span"
                   display="flex"
                   justifyContent="center"
-                  className={styles.subtitle}
+                  flexWrap="wrap"
                 >
-                  <span>Themeable design system</span>&nbsp;
-                  <span>for the SEEK Group</span>
+                  <span className={styles.nowrap}>Themeable design system</span>
+                  &nbsp;
+                  <span className={styles.nowrap}>for the SEEK Group</span>
                 </Box>
               </Text>
             </Box>

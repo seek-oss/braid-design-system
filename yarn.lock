@@ -13916,6 +13916,11 @@ react-router-dom@^5.1.2:
     tiny-invariant "^1.0.2"
     tiny-warning "^1.0.0"
 
+react-router-scroll-memory@^2.0.5:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/react-router-scroll-memory/-/react-router-scroll-memory-2.0.5.tgz#3afcdf2e7c51310f95950c40f6a2d316e8cb0641"
+  integrity sha512-UI3NvDR7GktewfaeI05BKgKQ4nEhhf9M5sFhIBxhu8ZYOmlRQqsXy16EabHOEPEPzwQZXSb1swKucwsN8zy3bA==
+
 react-router@5.1.2, react-router@^5.1.2:
   version "5.1.2"
   resolved "https://registry.yarnpkg.com/react-router/-/react-router-5.1.2.tgz#6ea51d789cb36a6be1ba5f7c0d48dd9e817d3418"

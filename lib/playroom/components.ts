@@ -10,3 +10,5 @@ export { PlayroomTextarea as Textarea } from '../components/Textarea/Textarea.pl
 export { PlayroomTextField as TextField } from '../components/TextField/TextField.playroom';
 export { PlayroomTextLink as TextLink } from '../components/TextLink/TextLink.playroom';
 export { PlayroomToggle as Toggle } from '../components/Toggle/Toggle.playroom';
+
+export { Placeholder } from '../components/private/Placeholder/Placeholder';

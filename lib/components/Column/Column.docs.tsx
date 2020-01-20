@@ -1,19 +1,10 @@
 import React, { Fragment } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import { Columns } from '../Columns/Columns';
-import { Column } from './Column';
-import { Box } from '../Box/Box';
-import { Text } from '../Text/Text';
-import { HideCode } from '../private/HideCode';
+import { Columns, Column, Box, Stack } from '../';
+import { Placeholder } from '../private/Placeholder/Placeholder';
 import { width as columnWidths } from '../Column/Column.treat';
 
 const widths = Object.keys(columnWidths) as Array<keyof typeof columnWidths>;
-
-const Content = ({ children = 'Column' }) => (
-  <Box background="infoLight" marginBottom="medium" padding="small">
-    <Text baseline={false}>{children}</Text>
-  </Box>
-);
 
 const docs: ComponentDocs = {
   category: 'Layout',
@@ -24,19 +15,13 @@ const docs: ComponentDocs = {
       Example: () => (
         <Columns space="small">
           <Column>
-            <HideCode>
-              <Content />
-            </HideCode>
+            <Placeholder height={60} label="Column" />
           </Column>
           <Column>
-            <HideCode>
-              <Content />
-            </HideCode>
+            <Placeholder height={60} label="Column" />
           </Column>
           <Column>
-            <HideCode>
-              <Content />
-            </HideCode>
+            <Placeholder height={60} label="Column" />
           </Column>
         </Columns>
       ),
@@ -44,24 +29,18 @@ const docs: ComponentDocs = {
     {
       label: 'Available widths',
       Example: () => (
-        <Fragment>
+        <Stack space="medium">
           {widths.map(width => (
             <Columns space="small" key={width}>
               <Column width={width}>
-                <HideCode>
-                  <Content>{width}</Content>
-                </HideCode>
+                <Placeholder height={60} label={width} />
               </Column>
               <Column>
-                <HideCode>
-                  <Box style={{ opacity: 0.5 }}>
-                    <Content>Fluid</Content>
-                  </Box>
-                </HideCode>
+                <Placeholder height={60} label="Fluid" />
               </Column>
             </Columns>
           ))}
-        </Fragment>
+        </Stack>
       ),
     },
     {
@@ -72,99 +51,69 @@ const docs: ComponentDocs = {
           <Box marginBottom="medium">
             <Columns space="small">
               <Column>
-                <HideCode>
-                  <Content>Fluid</Content>
-                </HideCode>
+                <Placeholder height={60} label="Fluid" />
               </Column>
               <Column>
-                <HideCode>
-                  <Content>Fluid</Content>
-                </HideCode>
+                <Placeholder height={60} label="Fluid" />
               </Column>
             </Columns>
           </Box>
           <Box marginBottom="medium">
             <Columns space="small">
               <Column width="1/2">
-                <HideCode>
-                  <Content>&#189;</Content>
-                </HideCode>
+                <Placeholder height={60} label="&#189;" />
               </Column>
               <Column>
-                <HideCode>
-                  <Content>Fluid</Content>
-                </HideCode>
+                <Placeholder height={60} label="Fluid" />
               </Column>
             </Columns>
           </Box>
           <Box marginBottom="medium">
             <Columns space="small">
               <Column width="1/2">
-                <HideCode>
-                  <Content>&#189;</Content>
-                </HideCode>
+                <Placeholder height={60} label="&#189;" />
               </Column>
               <Column width="1/2">
-                <HideCode>
-                  <Content>&#189;</Content>
-                </HideCode>
+                <Placeholder height={60} label="&#189;" />
               </Column>
             </Columns>
           </Box>
           <Box marginBottom="medium">
             <Columns space="small">
               <Column width="1/4">
-                <HideCode>
-                  <Content>&#188;</Content>
-                </HideCode>
+                <Placeholder height={60} label="&#188;" />
               </Column>
               <Column width="1/4">
-                <HideCode>
-                  <Content>&#188;</Content>
-                </HideCode>
+                <Placeholder height={60} label="&#188;" />
               </Column>
               <Column>
-                <HideCode>
-                  <Content>Fluid</Content>
-                </HideCode>
+                <Placeholder height={60} label="Fluid" />
               </Column>
             </Columns>
           </Box>
           <Box marginBottom="medium">
             <Columns space="small">
               <Column width="1/3">
-                <HideCode>
-                  <Content>&#8531;</Content>
-                </HideCode>
+                <Placeholder height={60} label="&#8531;" />
               </Column>
               <Column width="1/4">
-                <HideCode>
-                  <Content>&#188;</Content>
-                </HideCode>
+                <Placeholder height={60} label="&#188;" />
               </Column>
               <Column width="content">
-                <HideCode>
-                  <Content>Content</Content>
-                </HideCode>
+                <Placeholder height={60} label="Content" />
               </Column>
             </Columns>
           </Box>
           <Box marginBottom="medium">
             <Columns space="small" reverse>
               <Column width="1/3">
-                <HideCode>
-                  <Content>&#8531;</Content>
-                </HideCode>
+                <Placeholder height={60} label="&#8531;" />
               </Column>
               <Column width="1/4">
-                <HideCode>
-                  <Content>&#188;</Content>
-                </HideCode>
+                <Placeholder height={60} label="&#188;" />
               </Column>
               <Column width="content">
-                <HideCode>
-                  <Content>Content</Content>
-                </HideCode>
+                <Placeholder height={60} label="Content" />
               </Column>
             </Columns>
           </Box>

@@ -237,6 +237,12 @@ export const flexDirectionDesktop = styleMap(({ utils: { responsiveStyle } }) =>
   ),
 );
 
+const flexWrapRules = {
+  wrap: 'wrap',
+  nowrap: 'nowrap',
+};
+export const flexWrap = styleMap(mapToStyleProperty(flexWrapRules, 'flexWrap'));
+
 export const background = styleMap(({ color }) =>
   mapToStyleProperty(omit(color.background, 'body'), 'background'),
 );

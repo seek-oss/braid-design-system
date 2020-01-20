@@ -168,7 +168,6 @@ const docs: ComponentDocs = {
                 ['Apples', 'Bananas', 'Broccoli', 'Carrots'],
                 value.text,
               )}
-              reserveMessageSpace={false}
             />
           </Box>
         );

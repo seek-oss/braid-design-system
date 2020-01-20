@@ -1,9 +1,8 @@
 import React, { ReactNode } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import { Box } from '../Box/Box';
-import { Stack, StackProps } from './Stack';
-import { HideCode } from '../private/HideCode';
-import { Heading } from '../Heading/Heading';
+import { Box, Stack } from '../';
+import { StackProps } from './Stack';
+import { Placeholder } from '../private/Placeholder/Placeholder';
 import { padding } from '../Box/useBoxStyles.treat';
 
 const spaces = Object.keys(padding.top).filter(
@@ -11,23 +10,8 @@ const spaces = Object.keys(padding.top).filter(
 ) as Array<StackProps['space']>;
 
 const Container = ({ children }: { children: ReactNode }) => (
-  <Box background="infoLight" style={{ maxWidth: '300px' }}>
+  <Box background="neutralLight" style={{ maxWidth: '300px' }}>
     {children}
-  </Box>
-);
-
-const Item = () => (
-  <Box
-    background="card"
-    boxShadow="borderStandard"
-    borderRadius="standard"
-    padding="small"
-  />
-);
-
-const Header = ({ children = 'Content' }: { children?: ReactNode }) => (
-  <Box background="card">
-    <Heading level="3">{children}</Heading>
   </Box>
 );
 
@@ -41,15 +25,9 @@ const docs: ComponentDocs = {
       Container,
       Example: () => (
         <Stack space={space}>
-          <HideCode>
-            <Header>{`Stack space: ${space}`}</Header>
-          </HideCode>
-          <HideCode>
-            <Item />
-          </HideCode>
-          <HideCode>
-            <Item />
-          </HideCode>
+          <Placeholder height={40} />
+          <Placeholder height={40} />
+          <Placeholder height={40} />
         </Stack>
       ),
     })),
@@ -58,9 +36,9 @@ const docs: ComponentDocs = {
       Container,
       Example: () => (
         <Stack space="gutter" align="center">
-          <Box padding="small" background="info" style={{ width: 50 }} />
-          <Box padding="small" background="info" style={{ width: 70 }} />
-          <Box padding="small" background="info" style={{ width: 100 }} />
+          <Placeholder height={40} width={40} />
+          <Placeholder height={40} width={60} />
+          <Placeholder height={40} width={80} />
         </Stack>
       ),
     },
@@ -69,9 +47,9 @@ const docs: ComponentDocs = {
       Container,
       Example: () => (
         <Stack space="gutter" align="right">
-          <Box padding="small" background="info" style={{ width: 50 }} />
-          <Box padding="small" background="info" style={{ width: 70 }} />
-          <Box padding="small" background="info" style={{ width: 100 }} />
+          <Placeholder height={40} width={40} />
+          <Placeholder height={40} width={60} />
+          <Placeholder height={40} width={80} />
         </Stack>
       ),
     },
@@ -81,9 +59,9 @@ const docs: ComponentDocs = {
       Container,
       Example: () => (
         <Stack space="gutter" align={['center', 'left']}>
-          <Box padding="small" background="info" style={{ width: 50 }} />
-          <Box padding="small" background="info" style={{ width: 70 }} />
-          <Box padding="small" background="info" style={{ width: 100 }} />
+          <Placeholder height={40} width={40} />
+          <Placeholder height={40} width={60} />
+          <Placeholder height={40} width={80} />
         </Stack>
       ),
     },
@@ -92,15 +70,9 @@ const docs: ComponentDocs = {
       Container,
       Example: () => (
         <Stack space="gutter" dividers>
-          <HideCode>
-            <Header>Stack with dividers</Header>
-          </HideCode>
-          <HideCode>
-            <Item />
-          </HideCode>
-          <HideCode>
-            <Item />
-          </HideCode>
+          <Placeholder height={40} />
+          <Placeholder height={40} />
+          <Placeholder height={40} />
         </Stack>
       ),
     },
