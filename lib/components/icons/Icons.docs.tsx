@@ -134,7 +134,7 @@ const docs: ComponentDocs = {
             const IconComponent = icons[icon];
             return (
               <Box style={{ height: 24 }} boxShadow="borderCritical" key={icon}>
-                <IconComponent size="fill" crop />
+                <IconComponent size="fill" cropX />
               </Box>
             );
           })}

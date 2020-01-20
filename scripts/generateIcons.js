@@ -28,8 +28,8 @@ const makeComponentTemplate = croppedViewbox => (
     NEWLINE
     import { SVGProps } from '../SVGTypes';
     NEWLINE
-    export const COMPONENT_NAME = ({ title, titleId, crop, ...restProps }: SVGProps) => {
-      const props = crop ? { 
+    export const COMPONENT_NAME = ({ title, titleId, cropX, ...restProps }: SVGProps) => {
+      const props = cropX ? { 
         viewBox: 'CROPPED_VIEWBOX',
         ...restProps, 
       } : restProps;

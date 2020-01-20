@@ -28,7 +28,7 @@ export interface UseIconContainerSizeProps {
 export type UseIconProps = {
   size?: IconSize;
   tone?: UseTextProps['tone'];
-  crop?: boolean;
+  cropX?: boolean;
 } & OptionalTitle;
 
 export default ({ size, tone, ...titleProps }: UseIconProps): SVGProps => {

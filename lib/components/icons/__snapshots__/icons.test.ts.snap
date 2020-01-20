@@ -8,10 +8,10 @@ import { SVGProps } from '../SVGTypes';
 export const IconAddSvg = ({
   title,
   titleId,
-  crop,
+  cropX,
   ...restProps
 }: SVGProps) => {
-  const props = crop
+  const props = cropX
     ? {
         viewBox: '5 0 14 24',
         ...restProps,
@@ -44,10 +44,10 @@ import { SVGProps } from '../SVGTypes';
 export const IconBookmarkActiveSvg = ({
   title,
   titleId,
-  crop,
+  cropX,
   ...restProps
 }: SVGProps) => {
-  const props = crop
+  const props = cropX
     ? {
         viewBox: '5 0 14 24',
         ...restProps,
@@ -80,10 +80,10 @@ import { SVGProps } from '../SVGTypes';
 export const IconBookmarkSvg = ({
   title,
   titleId,
-  crop,
+  cropX,
   ...restProps
 }: SVGProps) => {
-  const props = crop
+  const props = cropX
     ? {
         viewBox: '5 0 14 24',
         ...restProps,
@@ -116,10 +116,10 @@ import { SVGProps } from '../SVGTypes';
 export const IconChevronSvg = ({
   title,
   titleId,
-  crop,
+  cropX,
   ...restProps
 }: SVGProps) => {
-  const props = crop
+  const props = cropX
     ? {
         viewBox: '3 0 18 24',
         ...restProps,
@@ -152,10 +152,10 @@ import { SVGProps } from '../SVGTypes';
 export const IconClearSvg = ({
   title,
   titleId,
-  crop,
+  cropX,
   ...restProps
 }: SVGProps) => {
-  const props = crop
+  const props = cropX
     ? {
         viewBox: '5 0 14 24',
         ...restProps,
@@ -188,10 +188,10 @@ import { SVGProps } from '../SVGTypes';
 export const IconCompanySvg = ({
   title,
   titleId,
-  crop,
+  cropX,
   ...restProps
 }: SVGProps) => {
-  const props = crop
+  const props = cropX
     ? {
         viewBox: '5 0 14 24',
         ...restProps,
@@ -225,10 +225,10 @@ import { SVGProps } from '../SVGTypes';
 export const IconComposeSvg = ({
   title,
   titleId,
-  crop,
+  cropX,
   ...restProps
 }: SVGProps) => {
-  const props = crop
+  const props = cropX
     ? {
         viewBox: '3 0 20 24',
         ...restProps,
@@ -262,10 +262,10 @@ import { SVGProps } from '../SVGTypes';
 export const IconCopySvg = ({
   title,
   titleId,
-  crop,
+  cropX,
   ...restProps
 }: SVGProps) => {
-  const props = crop
+  const props = cropX
     ? {
         viewBox: '3 0 19 24',
         ...restProps,
@@ -299,10 +299,10 @@ import { SVGProps } from '../SVGTypes';
 export const IconCreditCardSvg = ({
   title,
   titleId,
-  crop,
+  cropX,
   ...restProps
 }: SVGProps) => {
-  const props = crop
+  const props = cropX
     ? {
         viewBox: '1 0 22 24',
         ...restProps,
@@ -336,10 +336,10 @@ import { SVGProps } from '../SVGTypes';
 export const IconCriticalSvg = ({
   title,
   titleId,
-  crop,
+  cropX,
   ...restProps
 }: SVGProps) => {
-  const props = crop
+  const props = cropX
     ? {
         viewBox: '1 0 22 24',
         ...restProps,
@@ -374,10 +374,10 @@ import { SVGProps } from '../SVGTypes';
 export const IconDateSvg = ({
   title,
   titleId,
-  crop,
+  cropX,
   ...restProps
 }: SVGProps) => {
-  const props = crop
+  const props = cropX
     ? {
         viewBox: '2 0 20 24',
         ...restProps,
@@ -410,10 +410,10 @@ import { SVGProps } from '../SVGTypes';
 export const IconDeleteSvg = ({
   title,
   titleId,
-  crop,
+  cropX,
   ...restProps
 }: SVGProps) => {
-  const props = crop
+  const props = cropX
     ? {
         viewBox: '3 0 18 24',
         ...restProps,
@@ -447,10 +447,10 @@ import { SVGProps } from '../SVGTypes';
 export const IconDocumentSvg = ({
   title,
   titleId,
-  crop,
+  cropX,
   ...restProps
 }: SVGProps) => {
-  const props = crop
+  const props = cropX
     ? {
         viewBox: '4 0 16 24',
         ...restProps,
@@ -484,10 +484,10 @@ import { SVGProps } from '../SVGTypes';
 export const IconDownloadSvg = ({
   title,
   titleId,
-  crop,
+  cropX,
   ...restProps
 }: SVGProps) => {
-  const props = crop
+  const props = cropX
     ? {
         viewBox: '4 0 16 24',
         ...restProps,
@@ -520,10 +520,10 @@ import { SVGProps } from '../SVGTypes';
 export const IconEditSvg = ({
   title,
   titleId,
-  crop,
+  cropX,
   ...restProps
 }: SVGProps) => {
-  const props = crop
+  const props = cropX
     ? {
         viewBox: '3 0 19 24',
         ...restProps,
@@ -556,10 +556,10 @@ import { SVGProps } from '../SVGTypes';
 export const IconEducationSvg = ({
   title,
   titleId,
-  crop,
+  cropX,
   ...restProps
 }: SVGProps) => {
-  const props = crop
+  const props = cropX
     ? {
         viewBox: '4 0 16 24',
         ...restProps,
@@ -592,10 +592,10 @@ import { SVGProps } from '../SVGTypes';
 export const IconFilterSvg = ({
   title,
   titleId,
-  crop,
+  cropX,
   ...restProps
 }: SVGProps) => {
-  const props = crop
+  const props = cropX
     ? {
         viewBox: '2 0 20 24',
         ...restProps,
@@ -628,10 +628,10 @@ import { SVGProps } from '../SVGTypes';
 export const IconGridSvg = ({
   title,
   titleId,
-  crop,
+  cropX,
   ...restProps
 }: SVGProps) => {
-  const props = crop
+  const props = cropX
     ? {
         viewBox: '3 0 18 24',
         ...restProps,
@@ -664,10 +664,10 @@ import { SVGProps } from '../SVGTypes';
 export const IconHeartActiveSvg = ({
   title,
   titleId,
-  crop,
+  cropX,
   ...restProps
 }: SVGProps) => {
-  const props = crop
+  const props = cropX
     ? {
         viewBox: '3 0 18 24',
         ...restProps,
@@ -700,10 +700,10 @@ import { SVGProps } from '../SVGTypes';
 export const IconHeartSvg = ({
   title,
   titleId,
-  crop,
+  cropX,
   ...restProps
 }: SVGProps) => {
-  const props = crop
+  const props = cropX
     ? {
         viewBox: '3 0 18 24',
         ...restProps,
@@ -736,10 +736,10 @@ import { SVGProps } from '../SVGTypes';
 export const IconHelpSvg = ({
   title,
   titleId,
-  crop,
+  cropX,
   ...restProps
 }: SVGProps) => {
-  const props = crop
+  const props = cropX
     ? {
         viewBox: '1 0 22 24',
         ...restProps,
@@ -773,10 +773,10 @@ import { SVGProps } from '../SVGTypes';
 export const IconHistorySvg = ({
   title,
   titleId,
-  crop,
+  cropX,
   ...restProps
 }: SVGProps) => {
-  const props = crop
+  const props = cropX
     ? {
         viewBox: '0 0 22 24',
         ...restProps,
@@ -810,10 +810,10 @@ import { SVGProps } from '../SVGTypes';
 export const IconHomeSvg = ({
   title,
   titleId,
-  crop,
+  cropX,
   ...restProps
 }: SVGProps) => {
-  const props = crop
+  const props = cropX
     ? {
         viewBox: '3 0 18 24',
         ...restProps,
@@ -846,10 +846,10 @@ import { SVGProps } from '../SVGTypes';
 export const IconImageSvg = ({
   title,
   titleId,
-  crop,
+  cropX,
   ...restProps
 }: SVGProps) => {
-  const props = crop
+  const props = cropX
     ? {
         viewBox: '2 0 20 24',
         ...restProps,
@@ -883,10 +883,10 @@ import { SVGProps } from '../SVGTypes';
 export const IconInfoSvg = ({
   title,
   titleId,
-  crop,
+  cropX,
   ...restProps
 }: SVGProps) => {
-  const props = crop
+  const props = cropX
     ? {
         viewBox: '1 0 22 24',
         ...restProps,
@@ -920,10 +920,10 @@ import { SVGProps } from '../SVGTypes';
 export const IconInvoiceSvg = ({
   title,
   titleId,
-  crop,
+  cropX,
   ...restProps
 }: SVGProps) => {
-  const props = crop
+  const props = cropX
     ? {
         viewBox: '3 0 18 24',
         ...restProps,
@@ -957,10 +957,10 @@ import { SVGProps } from '../SVGTypes';
 export const IconListSvg = ({
   title,
   titleId,
-  crop,
+  cropX,
   ...restProps
 }: SVGProps) => {
-  const props = crop
+  const props = cropX
     ? {
         viewBox: '4 0 16 24',
         ...restProps,
@@ -996,10 +996,10 @@ import { SVGProps } from '../SVGTypes';
 export const IconLocationSvg = ({
   title,
   titleId,
-  crop,
+  cropX,
   ...restProps
 }: SVGProps) => {
-  const props = crop
+  const props = cropX
     ? {
         viewBox: '4 0 16 24',
         ...restProps,
@@ -1033,10 +1033,10 @@ import { SVGProps } from '../SVGTypes';
 export const IconMailSvg = ({
   title,
   titleId,
-  crop,
+  cropX,
   ...restProps
 }: SVGProps) => {
-  const props = crop
+  const props = cropX
     ? {
         viewBox: '2 0 20 24',
         ...restProps,
@@ -1069,10 +1069,10 @@ import { SVGProps } from '../SVGTypes';
 export const IconMinusSvg = ({
   title,
   titleId,
-  crop,
+  cropX,
   ...restProps
 }: SVGProps) => {
-  const props = crop
+  const props = cropX
     ? {
         viewBox: '5 0 14 24',
         ...restProps,
@@ -1105,10 +1105,10 @@ import { SVGProps } from '../SVGTypes';
 export const IconMoneySvg = ({
   title,
   titleId,
-  crop,
+  cropX,
   ...restProps
 }: SVGProps) => {
-  const props = crop
+  const props = cropX
     ? {
         viewBox: '7 0 10 24',
         ...restProps,
@@ -1141,10 +1141,10 @@ import { SVGProps } from '../SVGTypes';
 export const IconNewWindowSvg = ({
   title,
   titleId,
-  crop,
+  cropX,
   ...restProps
 }: SVGProps) => {
-  const props = crop
+  const props = cropX
     ? {
         viewBox: '4 0 17 24',
         ...restProps,
@@ -1178,10 +1178,10 @@ import { SVGProps } from '../SVGTypes';
 export const IconNoteSvg = ({
   title,
   titleId,
-  crop,
+  cropX,
   ...restProps
 }: SVGProps) => {
-  const props = crop
+  const props = cropX
     ? {
         viewBox: '3 0 18 24',
         ...restProps,
@@ -1215,10 +1215,10 @@ import { SVGProps } from '../SVGTypes';
 export const IconOverflowSvg = ({
   title,
   titleId,
-  crop,
+  cropX,
   ...restProps
 }: SVGProps) => {
-  const props = crop
+  const props = cropX
     ? {
         viewBox: '10 0 4 24',
         ...restProps,
@@ -1253,10 +1253,10 @@ import { SVGProps } from '../SVGTypes';
 export const IconPeopleSvg = ({
   title,
   titleId,
-  crop,
+  cropX,
   ...restProps
 }: SVGProps) => {
-  const props = crop
+  const props = cropX
     ? {
         viewBox: '3 0 18 24',
         ...restProps,
@@ -1289,10 +1289,10 @@ import { SVGProps } from '../SVGTypes';
 export const IconPersonAddSvg = ({
   title,
   titleId,
-  crop,
+  cropX,
   ...restProps
 }: SVGProps) => {
-  const props = crop
+  const props = cropX
     ? {
         viewBox: '2 0 20 24',
         ...restProps,
@@ -1325,10 +1325,10 @@ import { SVGProps } from '../SVGTypes';
 export const IconPersonVerifiedSvg = ({
   title,
   titleId,
-  crop,
+  cropX,
   ...restProps
 }: SVGProps) => {
-  const props = crop
+  const props = cropX
     ? {
         viewBox: '3 0 18 24',
         ...restProps,
@@ -1362,10 +1362,10 @@ import { SVGProps } from '../SVGTypes';
 export const IconPhoneSvg = ({
   title,
   titleId,
-  crop,
+  cropX,
   ...restProps
 }: SVGProps) => {
-  const props = crop
+  const props = cropX
     ? {
         viewBox: '3 0 18 24',
         ...restProps,
@@ -1398,10 +1398,10 @@ import { SVGProps } from '../SVGTypes';
 export const IconPositiveSvg = ({
   title,
   titleId,
-  crop,
+  cropX,
   ...restProps
 }: SVGProps) => {
-  const props = crop
+  const props = cropX
     ? {
         viewBox: '1 0 22 24',
         ...restProps,
@@ -1435,10 +1435,10 @@ import { SVGProps } from '../SVGTypes';
 export const IconPrintSvg = ({
   title,
   titleId,
-  crop,
+  cropX,
   ...restProps
 }: SVGProps) => {
-  const props = crop
+  const props = cropX
     ? {
         viewBox: '2 0 20 24',
         ...restProps,
@@ -1471,10 +1471,10 @@ import { SVGProps } from '../SVGTypes';
 export const IconProfileSvg = ({
   title,
   titleId,
-  crop,
+  cropX,
   ...restProps
 }: SVGProps) => {
-  const props = crop
+  const props = cropX
     ? {
         viewBox: '5 0 14 24',
         ...restProps,
@@ -1507,10 +1507,10 @@ import { SVGProps } from '../SVGTypes';
 export const IconPromoteSvg = ({
   title,
   titleId,
-  crop,
+  cropX,
   ...restProps
 }: SVGProps) => {
-  const props = crop
+  const props = cropX
     ? {
         viewBox: '2 0 20 24',
         ...restProps,
@@ -1543,10 +1543,10 @@ import { SVGProps } from '../SVGTypes';
 export const IconRecommendedSvg = ({
   title,
   titleId,
-  crop,
+  cropX,
   ...restProps
 }: SVGProps) => {
-  const props = crop
+  const props = cropX
     ? {
         viewBox: '5 0 14 24',
         ...restProps,
@@ -1579,10 +1579,10 @@ import { SVGProps } from '../SVGTypes';
 export const IconRefreshSvg = ({
   title,
   titleId,
-  crop,
+  cropX,
   ...restProps
 }: SVGProps) => {
-  const props = crop
+  const props = cropX
     ? {
         viewBox: '2 0 22 24',
         ...restProps,
@@ -1615,10 +1615,10 @@ import { SVGProps } from '../SVGTypes';
 export const IconResumeSvg = ({
   title,
   titleId,
-  crop,
+  cropX,
   ...restProps
 }: SVGProps) => {
-  const props = crop
+  const props = cropX
     ? {
         viewBox: '4 0 16 24',
         ...restProps,
@@ -1653,10 +1653,10 @@ import { SVGProps } from '../SVGTypes';
 export const IconSearchSvg = ({
   title,
   titleId,
-  crop,
+  cropX,
   ...restProps
 }: SVGProps) => {
-  const props = crop
+  const props = cropX
     ? {
         viewBox: '2 0 20 24',
         ...restProps,
@@ -1689,10 +1689,10 @@ import { SVGProps } from '../SVGTypes';
 export const IconSecuritySvg = ({
   title,
   titleId,
-  crop,
+  cropX,
   ...restProps
 }: SVGProps) => {
-  const props = crop
+  const props = cropX
     ? {
         viewBox: '4 0 16 24',
         ...restProps,
@@ -1725,10 +1725,10 @@ import { SVGProps } from '../SVGTypes';
 export const IconSendSvg = ({
   title,
   titleId,
-  crop,
+  cropX,
   ...restProps
 }: SVGProps) => {
-  const props = crop
+  const props = cropX
     ? {
         viewBox: '1 0 21 24',
         ...restProps,
@@ -1761,10 +1761,10 @@ import { SVGProps } from '../SVGTypes';
 export const IconSentSvg = ({
   title,
   titleId,
-  crop,
+  cropX,
   ...restProps
 }: SVGProps) => {
-  const props = crop
+  const props = cropX
     ? {
         viewBox: '3 0 18 24',
         ...restProps,
@@ -1797,10 +1797,10 @@ import { SVGProps } from '../SVGTypes';
 export const IconSettingsSvg = ({
   title,
   titleId,
-  crop,
+  cropX,
   ...restProps
 }: SVGProps) => {
-  const props = crop
+  const props = cropX
     ? {
         viewBox: '2 0 20 24',
         ...restProps,
@@ -1834,10 +1834,10 @@ import { SVGProps } from '../SVGTypes';
 export const IconShareSvg = ({
   title,
   titleId,
-  crop,
+  cropX,
   ...restProps
 }: SVGProps) => {
-  const props = crop
+  const props = cropX
     ? {
         viewBox: '3 0 18 24',
         ...restProps,
@@ -1870,10 +1870,10 @@ import { SVGProps } from '../SVGTypes';
 export const IconSocialFacebookSvg = ({
   title,
   titleId,
-  crop,
+  cropX,
   ...restProps
 }: SVGProps) => {
-  const props = crop
+  const props = cropX
     ? {
         viewBox: '8 0 8 24',
         ...restProps,
@@ -1906,10 +1906,10 @@ import { SVGProps } from '../SVGTypes';
 export const IconSocialGitHubSvg = ({
   title,
   titleId,
-  crop,
+  cropX,
   ...restProps
 }: SVGProps) => {
-  const props = crop
+  const props = cropX
     ? {
         viewBox: '2 0 20 24',
         ...restProps,
@@ -1945,10 +1945,10 @@ import { SVGProps } from '../SVGTypes';
 export const IconSocialInstagramSvg = ({
   title,
   titleId,
-  crop,
+  cropX,
   ...restProps
 }: SVGProps) => {
-  const props = crop
+  const props = cropX
     ? {
         viewBox: '4 0 16 24',
         ...restProps,
@@ -1983,10 +1983,10 @@ import { SVGProps } from '../SVGTypes';
 export const IconSocialLinkedInSvg = ({
   title,
   titleId,
-  crop,
+  cropX,
   ...restProps
 }: SVGProps) => {
-  const props = crop
+  const props = cropX
     ? {
         viewBox: '5 0 14 24',
         ...restProps,
@@ -2019,10 +2019,10 @@ import { SVGProps } from '../SVGTypes';
 export const IconSocialMediumSvg = ({
   title,
   titleId,
-  crop,
+  cropX,
   ...restProps
 }: SVGProps) => {
-  const props = crop
+  const props = cropX
     ? {
         viewBox: '3 0 18 24',
         ...restProps,
@@ -2055,10 +2055,10 @@ import { SVGProps } from '../SVGTypes';
 export const IconSocialTwitterSvg = ({
   title,
   titleId,
-  crop,
+  cropX,
   ...restProps
 }: SVGProps) => {
-  const props = crop
+  const props = cropX
     ? {
         viewBox: '5 0 14 24',
         ...restProps,
@@ -2091,10 +2091,10 @@ import { SVGProps } from '../SVGTypes';
 export const IconStarActiveSvg = ({
   title,
   titleId,
-  crop,
+  cropX,
   ...restProps
 }: SVGProps) => {
-  const props = crop
+  const props = cropX
     ? {
         viewBox: '1 0 22 24',
         ...restProps,
@@ -2127,10 +2127,10 @@ import { SVGProps } from '../SVGTypes';
 export const IconStarSvg = ({
   title,
   titleId,
-  crop,
+  cropX,
   ...restProps
 }: SVGProps) => {
-  const props = crop
+  const props = cropX
     ? {
         viewBox: '1 0 22 24',
         ...restProps,
@@ -2163,10 +2163,10 @@ import { SVGProps } from '../SVGTypes';
 export const IconStatisticsSvg = ({
   title,
   titleId,
-  crop,
+  cropX,
   ...restProps
 }: SVGProps) => {
-  const props = crop
+  const props = cropX
     ? {
         viewBox: '3 0 18 24',
         ...restProps,
@@ -2200,10 +2200,10 @@ import { SVGProps } from '../SVGTypes';
 export const IconSubCategorySvg = ({
   title,
   titleId,
-  crop,
+  cropX,
   ...restProps
 }: SVGProps) => {
-  const props = crop
+  const props = cropX
     ? {
         viewBox: '5 0 14 24',
         ...restProps,
@@ -2236,10 +2236,10 @@ import { SVGProps } from '../SVGTypes';
 export const IconTagSvg = ({
   title,
   titleId,
-  crop,
+  cropX,
   ...restProps
 }: SVGProps) => {
-  const props = crop
+  const props = cropX
     ? {
         viewBox: '2 0 21 24',
         ...restProps,
@@ -2273,10 +2273,10 @@ import { SVGProps } from '../SVGTypes';
 export const IconTickSvg = ({
   title,
   titleId,
-  crop,
+  cropX,
   ...restProps
 }: SVGProps) => {
-  const props = crop
+  const props = cropX
     ? {
         viewBox: '4 0 16 24',
         ...restProps,
@@ -2309,10 +2309,10 @@ import { SVGProps } from '../SVGTypes';
 export const IconTimeSvg = ({
   title,
   titleId,
-  crop,
+  cropX,
   ...restProps
 }: SVGProps) => {
-  const props = crop
+  const props = cropX
     ? {
         viewBox: '1 0 22 24',
         ...restProps,
@@ -2346,10 +2346,10 @@ import { SVGProps } from '../SVGTypes';
 export const IconUploadSvg = ({
   title,
   titleId,
-  crop,
+  cropX,
   ...restProps
 }: SVGProps) => {
-  const props = crop
+  const props = cropX
     ? {
         viewBox: '4 0 16 24',
         ...restProps,
@@ -2382,10 +2382,10 @@ import { SVGProps } from '../SVGTypes';
 export const IconVideoSvg = ({
   title,
   titleId,
-  crop,
+  cropX,
   ...restProps
 }: SVGProps) => {
-  const props = crop
+  const props = cropX
     ? {
         viewBox: '5 0 14 24',
         ...restProps,
@@ -2418,10 +2418,10 @@ import { SVGProps } from '../SVGTypes';
 export const IconWorkExperienceSvg = ({
   title,
   titleId,
-  crop,
+  cropX,
   ...restProps
 }: SVGProps) => {
-  const props = crop
+  const props = cropX
     ? {
         viewBox: '1 0 22 24',
         ...restProps,
