@@ -10,12 +10,14 @@ export interface PlaceholderProps {
   height: string | number;
   width?: string | number;
   label?: string;
+  shape?: 'rectangle' | 'round';
 }
 
 export const Placeholder = ({
   label,
   width = 'auto',
   height = 120,
+  shape = 'rectangle',
 }: PlaceholderProps) => {
   const styles = useStyles(styleRefs);
   const backgroundLightness = useBackgroundLightness();
@@ -35,6 +37,7 @@ export const Placeholder = ({
         display="flex"
         alignItems="center"
         justifyContent="center"
+        borderRadius={shape === 'round' ? 'full' : undefined}
         className={styles.box[backgroundLightness]}
         style={{ width, height }}
       >
