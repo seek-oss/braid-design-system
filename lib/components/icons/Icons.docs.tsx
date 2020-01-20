@@ -37,21 +37,6 @@ const docs: ComponentDocs = {
       Example: () => <Icons />,
     },
     {
-      label: 'Cropped',
-      Example: () => (
-        <Inline space="small">
-          {iconNames.map(icon => {
-            const IconComponent = icons[icon];
-            return (
-              <Box style={{ height: 24 }} boxShadow="borderCritical" key={icon}>
-                <IconComponent size="fill" crop />
-              </Box>
-            );
-          })}
-        </Inline>
-      ),
-    },
-    {
       label: 'Auto size (via TextContext)',
       Example: () => {
         const sizes = Object.keys(textSizes) as Array<keyof typeof textSizes>;
@@ -139,6 +124,21 @@ const docs: ComponentDocs = {
             </Text>
           </Stack>
         </Box>
+      ),
+    },
+    {
+      label: 'Cropped',
+      Example: () => (
+        <Inline space="small">
+          {iconNames.map(icon => {
+            const IconComponent = icons[icon];
+            return (
+              <Box style={{ height: 24 }} boxShadow="borderCritical" key={icon}>
+                <IconComponent size="fill" crop />
+              </Box>
+            );
+          })}
+        </Inline>
       ),
     },
   ],
