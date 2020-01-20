@@ -43,8 +43,8 @@ const docs: ComponentDocs = {
           {iconNames.map(icon => {
             const IconComponent = icons[icon];
             return (
-              <Box boxShadow="borderCritical" key={icon}>
-                <IconComponent size="crop" />
+              <Box style={{ height: 24 }} boxShadow="borderCritical" key={icon}>
+                <IconComponent size="fill" crop />
               </Box>
             );
           })}

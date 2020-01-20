@@ -1875,8 +1875,8 @@ exports[`Hidden 1`] = `
 
 exports[`IconAdd 1`] = `
 {
+  crop?: boolean
   size?: 
-    | "crop"
     | "fill"
     | "large"
     | "small"
@@ -1899,8 +1899,8 @@ exports[`IconAdd 1`] = `
 exports[`IconBookmark 1`] = `
 {
   active?: boolean
+  crop?: boolean
   size?: 
-    | "crop"
     | "fill"
     | "large"
     | "small"
@@ -1922,13 +1922,13 @@ exports[`IconBookmark 1`] = `
 
 exports[`IconChevron 1`] = `
 {
+  crop?: boolean
   direction?: 
     | "down"
     | "left"
     | "right"
     | "up"
   size?: 
-    | "crop"
     | "fill"
     | "large"
     | "small"
@@ -1950,8 +1950,8 @@ exports[`IconChevron 1`] = `
 
 exports[`IconClear 1`] = `
 {
+  crop?: boolean
   size?: 
-    | "crop"
     | "fill"
     | "large"
     | "small"
@@ -1973,8 +1973,8 @@ exports[`IconClear 1`] = `
 
 exports[`IconCompany 1`] = `
 {
+  crop?: boolean
   size?: 
-    | "crop"
     | "fill"
     | "large"
     | "small"
@@ -1996,8 +1996,8 @@ exports[`IconCompany 1`] = `
 
 exports[`IconCompose 1`] = `
 {
+  crop?: boolean
   size?: 
-    | "crop"
     | "fill"
     | "large"
     | "small"
@@ -2019,8 +2019,8 @@ exports[`IconCompose 1`] = `
 
 exports[`IconCopy 1`] = `
 {
+  crop?: boolean
   size?: 
-    | "crop"
     | "fill"
     | "large"
     | "small"
@@ -2042,8 +2042,8 @@ exports[`IconCopy 1`] = `
 
 exports[`IconCreditCard 1`] = `
 {
+  crop?: boolean
   size?: 
-    | "crop"
     | "fill"
     | "large"
     | "small"
@@ -2065,8 +2065,8 @@ exports[`IconCreditCard 1`] = `
 
 exports[`IconCritical 1`] = `
 {
+  crop?: boolean
   size?: 
-    | "crop"
     | "fill"
     | "large"
     | "small"
@@ -2088,8 +2088,8 @@ exports[`IconCritical 1`] = `
 
 exports[`IconDate 1`] = `
 {
+  crop?: boolean
   size?: 
-    | "crop"
     | "fill"
     | "large"
     | "small"
@@ -2111,8 +2111,8 @@ exports[`IconDate 1`] = `
 
 exports[`IconDelete 1`] = `
 {
+  crop?: boolean
   size?: 
-    | "crop"
     | "fill"
     | "large"
     | "small"
@@ -2134,8 +2134,8 @@ exports[`IconDelete 1`] = `
 
 exports[`IconDocument 1`] = `
 {
+  crop?: boolean
   size?: 
-    | "crop"
     | "fill"
     | "large"
     | "small"
@@ -2157,8 +2157,8 @@ exports[`IconDocument 1`] = `
 
 exports[`IconDownload 1`] = `
 {
+  crop?: boolean
   size?: 
-    | "crop"
     | "fill"
     | "large"
     | "small"
@@ -2180,8 +2180,8 @@ exports[`IconDownload 1`] = `
 
 exports[`IconEdit 1`] = `
 {
+  crop?: boolean
   size?: 
-    | "crop"
     | "fill"
     | "large"
     | "small"
@@ -2203,8 +2203,8 @@ exports[`IconEdit 1`] = `
 
 exports[`IconEducation 1`] = `
 {
+  crop?: boolean
   size?: 
-    | "crop"
     | "fill"
     | "large"
     | "small"
@@ -2226,8 +2226,8 @@ exports[`IconEducation 1`] = `
 
 exports[`IconFilter 1`] = `
 {
+  crop?: boolean
   size?: 
-    | "crop"
     | "fill"
     | "large"
     | "small"
@@ -2249,8 +2249,8 @@ exports[`IconFilter 1`] = `
 
 exports[`IconGrid 1`] = `
 {
+  crop?: boolean
   size?: 
-    | "crop"
     | "fill"
     | "large"
     | "small"
@@ -2273,8 +2273,8 @@ exports[`IconGrid 1`] = `
 exports[`IconHeart 1`] = `
 {
   active?: boolean
+  crop?: boolean
   size?: 
-    | "crop"
     | "fill"
     | "large"
     | "small"
@@ -2296,8 +2296,8 @@ exports[`IconHeart 1`] = `
 
 exports[`IconHelp 1`] = `
 {
+  crop?: boolean
   size?: 
-    | "crop"
     | "fill"
     | "large"
     | "small"
@@ -2319,8 +2319,8 @@ exports[`IconHelp 1`] = `
 
 exports[`IconHistory 1`] = `
 {
+  crop?: boolean
   size?: 
-    | "crop"
     | "fill"
     | "large"
     | "small"
@@ -2342,8 +2342,8 @@ exports[`IconHistory 1`] = `
 
 exports[`IconHome 1`] = `
 {
+  crop?: boolean
   size?: 
-    | "crop"
     | "fill"
     | "large"
     | "small"
@@ -2365,8 +2365,8 @@ exports[`IconHome 1`] = `
 
 exports[`IconImage 1`] = `
 {
+  crop?: boolean
   size?: 
-    | "crop"
     | "fill"
     | "large"
     | "small"
@@ -2388,8 +2388,8 @@ exports[`IconImage 1`] = `
 
 exports[`IconInfo 1`] = `
 {
+  crop?: boolean
   size?: 
-    | "crop"
     | "fill"
     | "large"
     | "small"
@@ -2411,8 +2411,8 @@ exports[`IconInfo 1`] = `
 
 exports[`IconInvoice 1`] = `
 {
+  crop?: boolean
   size?: 
-    | "crop"
     | "fill"
     | "large"
     | "small"
@@ -2434,8 +2434,8 @@ exports[`IconInvoice 1`] = `
 
 exports[`IconList 1`] = `
 {
+  crop?: boolean
   size?: 
-    | "crop"
     | "fill"
     | "large"
     | "small"
@@ -2457,8 +2457,8 @@ exports[`IconList 1`] = `
 
 exports[`IconLocation 1`] = `
 {
+  crop?: boolean
   size?: 
-    | "crop"
     | "fill"
     | "large"
     | "small"
@@ -2480,8 +2480,8 @@ exports[`IconLocation 1`] = `
 
 exports[`IconMail 1`] = `
 {
+  crop?: boolean
   size?: 
-    | "crop"
     | "fill"
     | "large"
     | "small"
@@ -2503,8 +2503,8 @@ exports[`IconMail 1`] = `
 
 exports[`IconMinus 1`] = `
 {
+  crop?: boolean
   size?: 
-    | "crop"
     | "fill"
     | "large"
     | "small"
@@ -2526,8 +2526,8 @@ exports[`IconMinus 1`] = `
 
 exports[`IconMoney 1`] = `
 {
+  crop?: boolean
   size?: 
-    | "crop"
     | "fill"
     | "large"
     | "small"
@@ -2549,8 +2549,8 @@ exports[`IconMoney 1`] = `
 
 exports[`IconNewWindow 1`] = `
 {
+  crop?: boolean
   size?: 
-    | "crop"
     | "fill"
     | "large"
     | "small"
@@ -2572,8 +2572,8 @@ exports[`IconNewWindow 1`] = `
 
 exports[`IconNote 1`] = `
 {
+  crop?: boolean
   size?: 
-    | "crop"
     | "fill"
     | "large"
     | "small"
@@ -2595,8 +2595,8 @@ exports[`IconNote 1`] = `
 
 exports[`IconOverflow 1`] = `
 {
+  crop?: boolean
   size?: 
-    | "crop"
     | "fill"
     | "large"
     | "small"
@@ -2618,8 +2618,8 @@ exports[`IconOverflow 1`] = `
 
 exports[`IconPeople 1`] = `
 {
+  crop?: boolean
   size?: 
-    | "crop"
     | "fill"
     | "large"
     | "small"
@@ -2641,8 +2641,8 @@ exports[`IconPeople 1`] = `
 
 exports[`IconPersonAdd 1`] = `
 {
+  crop?: boolean
   size?: 
-    | "crop"
     | "fill"
     | "large"
     | "small"
@@ -2664,8 +2664,8 @@ exports[`IconPersonAdd 1`] = `
 
 exports[`IconPersonVerified 1`] = `
 {
+  crop?: boolean
   size?: 
-    | "crop"
     | "fill"
     | "large"
     | "small"
@@ -2687,8 +2687,8 @@ exports[`IconPersonVerified 1`] = `
 
 exports[`IconPhone 1`] = `
 {
+  crop?: boolean
   size?: 
-    | "crop"
     | "fill"
     | "large"
     | "small"
@@ -2710,8 +2710,8 @@ exports[`IconPhone 1`] = `
 
 exports[`IconPositive 1`] = `
 {
+  crop?: boolean
   size?: 
-    | "crop"
     | "fill"
     | "large"
     | "small"
@@ -2733,8 +2733,8 @@ exports[`IconPositive 1`] = `
 
 exports[`IconPrint 1`] = `
 {
+  crop?: boolean
   size?: 
-    | "crop"
     | "fill"
     | "large"
     | "small"
@@ -2756,8 +2756,8 @@ exports[`IconPrint 1`] = `
 
 exports[`IconProfile 1`] = `
 {
+  crop?: boolean
   size?: 
-    | "crop"
     | "fill"
     | "large"
     | "small"
@@ -2779,8 +2779,8 @@ exports[`IconProfile 1`] = `
 
 exports[`IconPromote 1`] = `
 {
+  crop?: boolean
   size?: 
-    | "crop"
     | "fill"
     | "large"
     | "small"
@@ -2802,8 +2802,8 @@ exports[`IconPromote 1`] = `
 
 exports[`IconRecommended 1`] = `
 {
+  crop?: boolean
   size?: 
-    | "crop"
     | "fill"
     | "large"
     | "small"
@@ -2825,8 +2825,8 @@ exports[`IconRecommended 1`] = `
 
 exports[`IconRefresh 1`] = `
 {
+  crop?: boolean
   size?: 
-    | "crop"
     | "fill"
     | "large"
     | "small"
@@ -2848,8 +2848,8 @@ exports[`IconRefresh 1`] = `
 
 exports[`IconResume 1`] = `
 {
+  crop?: boolean
   size?: 
-    | "crop"
     | "fill"
     | "large"
     | "small"
@@ -2871,8 +2871,8 @@ exports[`IconResume 1`] = `
 
 exports[`IconSearch 1`] = `
 {
+  crop?: boolean
   size?: 
-    | "crop"
     | "fill"
     | "large"
     | "small"
@@ -2894,8 +2894,8 @@ exports[`IconSearch 1`] = `
 
 exports[`IconSecurity 1`] = `
 {
+  crop?: boolean
   size?: 
-    | "crop"
     | "fill"
     | "large"
     | "small"
@@ -2917,8 +2917,8 @@ exports[`IconSecurity 1`] = `
 
 exports[`IconSend 1`] = `
 {
+  crop?: boolean
   size?: 
-    | "crop"
     | "fill"
     | "large"
     | "small"
@@ -2940,8 +2940,8 @@ exports[`IconSend 1`] = `
 
 exports[`IconSent 1`] = `
 {
+  crop?: boolean
   size?: 
-    | "crop"
     | "fill"
     | "large"
     | "small"
@@ -2963,8 +2963,8 @@ exports[`IconSent 1`] = `
 
 exports[`IconSettings 1`] = `
 {
+  crop?: boolean
   size?: 
-    | "crop"
     | "fill"
     | "large"
     | "small"
@@ -2986,8 +2986,8 @@ exports[`IconSettings 1`] = `
 
 exports[`IconShare 1`] = `
 {
+  crop?: boolean
   size?: 
-    | "crop"
     | "fill"
     | "large"
     | "small"
@@ -3009,8 +3009,8 @@ exports[`IconShare 1`] = `
 
 exports[`IconSocialFacebook 1`] = `
 {
+  crop?: boolean
   size?: 
-    | "crop"
     | "fill"
     | "large"
     | "small"
@@ -3032,8 +3032,8 @@ exports[`IconSocialFacebook 1`] = `
 
 exports[`IconSocialGitHub 1`] = `
 {
+  crop?: boolean
   size?: 
-    | "crop"
     | "fill"
     | "large"
     | "small"
@@ -3055,8 +3055,8 @@ exports[`IconSocialGitHub 1`] = `
 
 exports[`IconSocialInstagram 1`] = `
 {
+  crop?: boolean
   size?: 
-    | "crop"
     | "fill"
     | "large"
     | "small"
@@ -3078,8 +3078,8 @@ exports[`IconSocialInstagram 1`] = `
 
 exports[`IconSocialLinkedIn 1`] = `
 {
+  crop?: boolean
   size?: 
-    | "crop"
     | "fill"
     | "large"
     | "small"
@@ -3101,8 +3101,8 @@ exports[`IconSocialLinkedIn 1`] = `
 
 exports[`IconSocialMedium 1`] = `
 {
+  crop?: boolean
   size?: 
-    | "crop"
     | "fill"
     | "large"
     | "small"
@@ -3124,8 +3124,8 @@ exports[`IconSocialMedium 1`] = `
 
 exports[`IconSocialTwitter 1`] = `
 {
+  crop?: boolean
   size?: 
-    | "crop"
     | "fill"
     | "large"
     | "small"
@@ -3148,8 +3148,8 @@ exports[`IconSocialTwitter 1`] = `
 exports[`IconStar 1`] = `
 {
   active?: boolean
+  crop?: boolean
   size?: 
-    | "crop"
     | "fill"
     | "large"
     | "small"
@@ -3171,8 +3171,8 @@ exports[`IconStar 1`] = `
 
 exports[`IconStatistics 1`] = `
 {
+  crop?: boolean
   size?: 
-    | "crop"
     | "fill"
     | "large"
     | "small"
@@ -3194,8 +3194,8 @@ exports[`IconStatistics 1`] = `
 
 exports[`IconSubCategory 1`] = `
 {
+  crop?: boolean
   size?: 
-    | "crop"
     | "fill"
     | "large"
     | "small"
@@ -3217,8 +3217,8 @@ exports[`IconSubCategory 1`] = `
 
 exports[`IconTag 1`] = `
 {
+  crop?: boolean
   size?: 
-    | "crop"
     | "fill"
     | "large"
     | "small"
@@ -3240,8 +3240,8 @@ exports[`IconTag 1`] = `
 
 exports[`IconTick 1`] = `
 {
+  crop?: boolean
   size?: 
-    | "crop"
     | "fill"
     | "large"
     | "small"
@@ -3263,8 +3263,8 @@ exports[`IconTick 1`] = `
 
 exports[`IconTime 1`] = `
 {
+  crop?: boolean
   size?: 
-    | "crop"
     | "fill"
     | "large"
     | "small"
@@ -3286,8 +3286,8 @@ exports[`IconTime 1`] = `
 
 exports[`IconUpload 1`] = `
 {
+  crop?: boolean
   size?: 
-    | "crop"
     | "fill"
     | "large"
     | "small"
@@ -3309,8 +3309,8 @@ exports[`IconUpload 1`] = `
 
 exports[`IconVideo 1`] = `
 {
+  crop?: boolean
   size?: 
-    | "crop"
     | "fill"
     | "large"
     | "small"
@@ -3332,8 +3332,8 @@ exports[`IconVideo 1`] = `
 
 exports[`IconWorkExperience 1`] = `
 {
+  crop?: boolean
   size?: 
-    | "crop"
     | "fill"
     | "large"
     | "small"

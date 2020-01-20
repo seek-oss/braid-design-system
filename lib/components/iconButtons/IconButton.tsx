@@ -9,13 +9,10 @@ import { useStyles } from 'sku/treat';
 import classnames from 'classnames';
 import { Box } from '..';
 import { Overlay } from '../private/Overlay/Overlay';
-import {
-  useIconSize,
-  useIconContainerSize,
-  UseIconProps,
-} from '../../hooks/useIcon';
+import { useIconSize, UseIconProps } from '../../hooks/useIcon';
 import { useBackground } from '../Box/BackgroundContext';
 import * as styleRefs from './IconButton.treat';
+import { useLineHeightContainer } from '../../hooks/useLineHeightContainer/useLineHeightContainer';
 
 type NativeButtonProps = AllHTMLAttributes<HTMLButtonElement>;
 export interface IconButtonProps {
@@ -48,7 +45,7 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
     forwardedRef,
   ) => {
     const styles = useStyles(styleRefs);
-    const iconContainerStyles = useIconContainerSize();
+    const iconContainerStyles = useLineHeightContainer('standard');
     const iconStyles = useIconSize();
     const background = useBackground();
 

@@ -3,21 +3,17 @@ import { useStyles } from 'sku/react-treat';
 import classnames from 'classnames';
 
 import { SVGProps, OptionalTitle } from '../../components/icons/SVGTypes';
+import { useBoxStyles } from './../../components/Box/useBoxStyles';
 import TextContext from '../../components/Text/TextContext';
 import HeadingContext from '../../components/Heading/HeadingContext';
-import { useBoxStyles } from '../../components/Box/useBoxStyles';
 import { useTextSize, useTextTone, UseTextProps } from '../typography';
 import { useLineHeightContainer } from '../useLineHeightContainer/useLineHeightContainer';
 import * as styleRefs from './icon.treat';
 
-type CustomSVGSize = 'fill' | 'crop';
-type IconSize = NonNullable<UseTextProps['size']> | CustomSVGSize;
-
-const isCustomSize = (size: IconSize | undefined): size is CustomSVGSize =>
-  size === 'fill' || size === 'crop';
+type IconSize = NonNullable<UseTextProps['size']> | 'fill';
 
 export interface UseIconSizeProps {
-  size?: Exclude<IconSize, CustomSVGSize>;
+  size?: Exclude<IconSize, 'fill'>;
 }
 export const useIconSize = ({ size = 'standard' }: UseIconSizeProps = {}) => {
   const styles = useStyles(styleRefs);
@@ -26,18 +22,13 @@ export const useIconSize = ({ size = 'standard' }: UseIconSizeProps = {}) => {
 };
 
 export interface UseIconContainerSizeProps {
-  size?: Exclude<IconSize, CustomSVGSize>;
+  size?: Exclude<IconSize, 'fill'>;
 }
-export const useIconContainerSize = (
-  size: Exclude<IconSize, CustomSVGSize> = 'standard',
-) => {
-  const styles = useStyles(styleRefs);
-  return classnames(styles.blockWidths[size], useLineHeightContainer(size));
-};
 
 export type UseIconProps = {
   size?: IconSize;
   tone?: UseTextProps['tone'];
+  crop?: boolean;
 } & OptionalTitle;
 
 export default ({ size, tone, ...titleProps }: UseIconProps): SVGProps => {
@@ -48,26 +39,15 @@ export default ({ size, tone, ...titleProps }: UseIconProps): SVGProps => {
     textContext && textContext.tone ? textContext.tone : 'neutral';
   const resolvedTone = useTextTone({ tone: tone || inheritedTone });
   const isInline = textContext || headingContext;
-
-  const blockSizeStyles = useIconContainerSize(
-    isCustomSize(size) ? 'standard' : size,
+  const blockSizeStyles = useLineHeightContainer(
+    size && size !== 'fill' ? size : 'standard',
   );
 
-  const customSize = isCustomSize(size);
-  const boxStyles = useBoxStyles(
-    customSize
-      ? {
-          component: 'svg',
-          width: 'full',
-          height: 'full',
-          display: 'block',
-        }
-      : {
-          component: 'svg',
-          display: isInline ? 'inlineBlock' : 'block',
-          position: isInline ? 'relative' : undefined,
-        },
-  );
+  const className = useBoxStyles({
+    component: 'svg',
+    display: isInline ? 'inlineBlock' : 'block',
+    position: isInline ? 'relative' : undefined,
+  });
 
   if (process.env.NODE_ENV !== 'production') {
     if (isInline && size) {
@@ -79,17 +59,16 @@ export default ({ size, tone, ...titleProps }: UseIconProps): SVGProps => {
     }
   }
 
-  if (customSize) {
+  if (size === 'fill') {
     return {
-      crop: size === 'crop',
-      className: classnames(boxStyles, resolvedTone),
+      className: classnames(className, resolvedTone),
       ...titleProps,
     };
   }
 
   return {
     className: classnames(
-      boxStyles,
+      className,
       resolvedTone,
       styles.size,
       isInline ? styles.inline : blockSizeStyles,

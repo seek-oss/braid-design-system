@@ -13,7 +13,7 @@ export const IconAddSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '5 5 14 14',
+        viewBox: '5 0 14 24',
         ...restProps,
       }
     : restProps;
@@ -23,8 +23,8 @@ export const IconAddSvg = ({
       viewBox=\\"0 0 24 24\\"
       focusable=\\"false\\"
       fill=\\"currentColor\\"
-      height={24}
       role=\\"img\\"
+      height=\\"100%\\"
       aria-labelledby={titleId}
       {...props}
     >
@@ -49,7 +49,7 @@ export const IconBookmarkActiveSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '5 2 14 20.1',
+        viewBox: '5 0 14 24',
         ...restProps,
       }
     : restProps;
@@ -59,8 +59,8 @@ export const IconBookmarkActiveSvg = ({
       viewBox=\\"0 0 24 24\\"
       focusable=\\"false\\"
       fill=\\"currentColor\\"
-      height={24}
       role=\\"img\\"
+      height=\\"100%\\"
       aria-labelledby={titleId}
       {...props}
     >
@@ -85,7 +85,7 @@ export const IconBookmarkSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '5 2 14 20.1',
+        viewBox: '5 0 14 24',
         ...restProps,
       }
     : restProps;
@@ -95,8 +95,8 @@ export const IconBookmarkSvg = ({
       viewBox=\\"0 0 24 24\\"
       focusable=\\"false\\"
       fill=\\"currentColor\\"
-      height={24}
       role=\\"img\\"
+      height=\\"100%\\"
       aria-labelledby={titleId}
       {...props}
     >
@@ -121,7 +121,7 @@ export const IconChevronSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '3 7 18 10',
+        viewBox: '3 0 18 24',
         ...restProps,
       }
     : restProps;
@@ -131,8 +131,8 @@ export const IconChevronSvg = ({
       viewBox=\\"0 0 24 24\\"
       focusable=\\"false\\"
       fill=\\"currentColor\\"
-      height={24}
       role=\\"img\\"
+      height=\\"100%\\"
       aria-labelledby={titleId}
       {...props}
     >
@@ -157,7 +157,7 @@ export const IconClearSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '5 5 14 14',
+        viewBox: '5 0 14 24',
         ...restProps,
       }
     : restProps;
@@ -167,8 +167,8 @@ export const IconClearSvg = ({
       viewBox=\\"0 0 24 24\\"
       focusable=\\"false\\"
       fill=\\"currentColor\\"
-      height={24}
       role=\\"img\\"
+      height=\\"100%\\"
       aria-labelledby={titleId}
       {...props}
     >
@@ -193,7 +193,7 @@ export const IconCompanySvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '5 1 14 21',
+        viewBox: '5 0 14 24',
         ...restProps,
       }
     : restProps;
@@ -203,8 +203,8 @@ export const IconCompanySvg = ({
       viewBox=\\"0 0 24 24\\"
       focusable=\\"false\\"
       fill=\\"currentColor\\"
-      height={24}
       role=\\"img\\"
+      height=\\"100%\\"
       aria-labelledby={titleId}
       {...props}
     >
@@ -230,7 +230,7 @@ export const IconComposeSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '3 0.8 20.2 20.2',
+        viewBox: '3 0 20 24',
         ...restProps,
       }
     : restProps;
@@ -240,8 +240,8 @@ export const IconComposeSvg = ({
       viewBox=\\"0 0 24 24\\"
       focusable=\\"false\\"
       fill=\\"currentColor\\"
-      height={24}
       role=\\"img\\"
+      height=\\"100%\\"
       aria-labelledby={titleId}
       {...props}
     >
@@ -267,7 +267,7 @@ export const IconCopySvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '3 2 19 19',
+        viewBox: '3 0 19 24',
         ...restProps,
       }
     : restProps;
@@ -277,8 +277,8 @@ export const IconCopySvg = ({
       viewBox=\\"0 0 24 24\\"
       focusable=\\"false\\"
       fill=\\"currentColor\\"
-      height={24}
       role=\\"img\\"
+      height=\\"100%\\"
       aria-labelledby={titleId}
       {...props}
     >
@@ -304,7 +304,7 @@ export const IconCreditCardSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '1 4 22 16',
+        viewBox: '1 0 22 24',
         ...restProps,
       }
     : restProps;
@@ -314,8 +314,8 @@ export const IconCreditCardSvg = ({
       viewBox=\\"0 0 24 24\\"
       focusable=\\"false\\"
       fill=\\"currentColor\\"
-      height={24}
       role=\\"img\\"
+      height=\\"100%\\"
       aria-labelledby={titleId}
       {...props}
     >
@@ -341,7 +341,7 @@ export const IconCriticalSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '1 1 22 22',
+        viewBox: '1 0 22 24',
         ...restProps,
       }
     : restProps;
@@ -351,8 +351,8 @@ export const IconCriticalSvg = ({
       viewBox=\\"0 0 24 24\\"
       focusable=\\"false\\"
       fill=\\"currentColor\\"
-      height={24}
       role=\\"img\\"
+      height=\\"100%\\"
       aria-labelledby={titleId}
       {...props}
     >
@@ -379,7 +379,7 @@ export const IconDateSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '2 2 20 20',
+        viewBox: '2 0 20 24',
         ...restProps,
       }
     : restProps;
@@ -389,8 +389,8 @@ export const IconDateSvg = ({
       viewBox=\\"0 0 24 24\\"
       focusable=\\"false\\"
       fill=\\"currentColor\\"
-      height={24}
       role=\\"img\\"
+      height=\\"100%\\"
       aria-labelledby={titleId}
       {...props}
     >
@@ -415,7 +415,7 @@ export const IconDeleteSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '3 1 18 21',
+        viewBox: '3 0 18 24',
         ...restProps,
       }
     : restProps;
@@ -425,8 +425,8 @@ export const IconDeleteSvg = ({
       viewBox=\\"0 0 24 24\\"
       focusable=\\"false\\"
       fill=\\"currentColor\\"
-      height={24}
       role=\\"img\\"
+      height=\\"100%\\"
       aria-labelledby={titleId}
       {...props}
     >
@@ -452,7 +452,7 @@ export const IconDocumentSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '4 2 16 20',
+        viewBox: '4 0 16 24',
         ...restProps,
       }
     : restProps;
@@ -462,8 +462,8 @@ export const IconDocumentSvg = ({
       viewBox=\\"0 0 24 24\\"
       focusable=\\"false\\"
       fill=\\"currentColor\\"
-      height={24}
       role=\\"img\\"
+      height=\\"100%\\"
       aria-labelledby={titleId}
       {...props}
     >
@@ -489,7 +489,7 @@ export const IconDownloadSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '4 3 16 18',
+        viewBox: '4 0 16 24',
         ...restProps,
       }
     : restProps;
@@ -499,8 +499,8 @@ export const IconDownloadSvg = ({
       viewBox=\\"0 0 24 24\\"
       focusable=\\"false\\"
       fill=\\"currentColor\\"
-      height={24}
       role=\\"img\\"
+      height=\\"100%\\"
       aria-labelledby={titleId}
       {...props}
     >
@@ -525,7 +525,7 @@ export const IconEditSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '3 3 18.9 18.8',
+        viewBox: '3 0 19 24',
         ...restProps,
       }
     : restProps;
@@ -535,8 +535,8 @@ export const IconEditSvg = ({
       viewBox=\\"0 0 24 24\\"
       focusable=\\"false\\"
       fill=\\"currentColor\\"
-      height={24}
       role=\\"img\\"
+      height=\\"100%\\"
       aria-labelledby={titleId}
       {...props}
     >
@@ -561,7 +561,7 @@ export const IconEducationSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '4 2 16 20',
+        viewBox: '4 0 16 24',
         ...restProps,
       }
     : restProps;
@@ -571,8 +571,8 @@ export const IconEducationSvg = ({
       viewBox=\\"0 0 24 24\\"
       focusable=\\"false\\"
       fill=\\"currentColor\\"
-      height={24}
       role=\\"img\\"
+      height=\\"100%\\"
       aria-labelledby={titleId}
       {...props}
     >
@@ -597,7 +597,7 @@ export const IconFilterSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '2 4 20 16',
+        viewBox: '2 0 20 24',
         ...restProps,
       }
     : restProps;
@@ -607,8 +607,8 @@ export const IconFilterSvg = ({
       viewBox=\\"0 0 24 24\\"
       focusable=\\"false\\"
       fill=\\"currentColor\\"
-      height={24}
       role=\\"img\\"
+      height=\\"100%\\"
       aria-labelledby={titleId}
       {...props}
     >
@@ -633,7 +633,7 @@ export const IconGridSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '3 3 18 18',
+        viewBox: '3 0 18 24',
         ...restProps,
       }
     : restProps;
@@ -643,8 +643,8 @@ export const IconGridSvg = ({
       viewBox=\\"0 0 24 24\\"
       focusable=\\"false\\"
       fill=\\"currentColor\\"
-      height={24}
       role=\\"img\\"
+      height=\\"100%\\"
       aria-labelledby={titleId}
       {...props}
     >
@@ -669,7 +669,7 @@ export const IconHeartActiveSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '3 4 18 16',
+        viewBox: '3 0 18 24',
         ...restProps,
       }
     : restProps;
@@ -679,8 +679,8 @@ export const IconHeartActiveSvg = ({
       viewBox=\\"0 0 24 24\\"
       focusable=\\"false\\"
       fill=\\"currentColor\\"
-      height={24}
       role=\\"img\\"
+      height=\\"100%\\"
       aria-labelledby={titleId}
       {...props}
     >
@@ -705,7 +705,7 @@ export const IconHeartSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '3 4 18 16',
+        viewBox: '3 0 18 24',
         ...restProps,
       }
     : restProps;
@@ -715,8 +715,8 @@ export const IconHeartSvg = ({
       viewBox=\\"0 0 24 24\\"
       focusable=\\"false\\"
       fill=\\"currentColor\\"
-      height={24}
       role=\\"img\\"
+      height=\\"100%\\"
       aria-labelledby={titleId}
       {...props}
     >
@@ -741,7 +741,7 @@ export const IconHelpSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '1 1 22 22',
+        viewBox: '1 0 22 24',
         ...restProps,
       }
     : restProps;
@@ -751,8 +751,8 @@ export const IconHelpSvg = ({
       viewBox=\\"0 0 24 24\\"
       focusable=\\"false\\"
       fill=\\"currentColor\\"
-      height={24}
       role=\\"img\\"
+      height=\\"100%\\"
       aria-labelledby={titleId}
       {...props}
     >
@@ -778,7 +778,7 @@ export const IconHistorySvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '0 2 22 20',
+        viewBox: '0 0 22 24',
         ...restProps,
       }
     : restProps;
@@ -788,8 +788,8 @@ export const IconHistorySvg = ({
       viewBox=\\"0 0 24 24\\"
       focusable=\\"false\\"
       fill=\\"currentColor\\"
-      height={24}
       role=\\"img\\"
+      height=\\"100%\\"
       aria-labelledby={titleId}
       {...props}
     >
@@ -815,7 +815,7 @@ export const IconHomeSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '3 2 18 20',
+        viewBox: '3 0 18 24',
         ...restProps,
       }
     : restProps;
@@ -825,8 +825,8 @@ export const IconHomeSvg = ({
       viewBox=\\"0 0 24 24\\"
       focusable=\\"false\\"
       fill=\\"currentColor\\"
-      height={24}
       role=\\"img\\"
+      height=\\"100%\\"
       aria-labelledby={titleId}
       {...props}
     >
@@ -851,7 +851,7 @@ export const IconImageSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '2 2 20 20',
+        viewBox: '2 0 20 24',
         ...restProps,
       }
     : restProps;
@@ -861,8 +861,8 @@ export const IconImageSvg = ({
       viewBox=\\"0 0 24 24\\"
       focusable=\\"false\\"
       fill=\\"currentColor\\"
-      height={24}
       role=\\"img\\"
+      height=\\"100%\\"
       aria-labelledby={titleId}
       {...props}
     >
@@ -888,7 +888,7 @@ export const IconInfoSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '1 1 22 22',
+        viewBox: '1 0 22 24',
         ...restProps,
       }
     : restProps;
@@ -898,8 +898,8 @@ export const IconInfoSvg = ({
       viewBox=\\"0 0 24 24\\"
       focusable=\\"false\\"
       fill=\\"currentColor\\"
-      height={24}
       role=\\"img\\"
+      height=\\"100%\\"
       aria-labelledby={titleId}
       {...props}
     >
@@ -925,7 +925,7 @@ export const IconInvoiceSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '3 2 18 20',
+        viewBox: '3 0 18 24',
         ...restProps,
       }
     : restProps;
@@ -935,8 +935,8 @@ export const IconInvoiceSvg = ({
       viewBox=\\"0 0 24 24\\"
       focusable=\\"false\\"
       fill=\\"currentColor\\"
-      height={24}
       role=\\"img\\"
+      height=\\"100%\\"
       aria-labelledby={titleId}
       {...props}
     >
@@ -962,7 +962,7 @@ export const IconListSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '4 6 16 12',
+        viewBox: '4 0 16 24',
         ...restProps,
       }
     : restProps;
@@ -972,8 +972,8 @@ export const IconListSvg = ({
       viewBox=\\"0 0 24 24\\"
       focusable=\\"false\\"
       fill=\\"currentColor\\"
-      height={24}
       role=\\"img\\"
+      height=\\"100%\\"
       aria-labelledby={titleId}
       {...props}
     >
@@ -1001,7 +1001,7 @@ export const IconLocationSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '4 1 16 22',
+        viewBox: '4 0 16 24',
         ...restProps,
       }
     : restProps;
@@ -1011,8 +1011,8 @@ export const IconLocationSvg = ({
       viewBox=\\"0 0 24 24\\"
       focusable=\\"false\\"
       fill=\\"currentColor\\"
-      height={24}
       role=\\"img\\"
+      height=\\"100%\\"
       aria-labelledby={titleId}
       {...props}
     >
@@ -1038,7 +1038,7 @@ export const IconMailSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '2 4 20 16',
+        viewBox: '2 0 20 24',
         ...restProps,
       }
     : restProps;
@@ -1048,8 +1048,8 @@ export const IconMailSvg = ({
       viewBox=\\"0 0 24 24\\"
       focusable=\\"false\\"
       fill=\\"currentColor\\"
-      height={24}
       role=\\"img\\"
+      height=\\"100%\\"
       aria-labelledby={titleId}
       {...props}
     >
@@ -1074,7 +1074,7 @@ export const IconMinusSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '5 11 14 2',
+        viewBox: '5 0 14 24',
         ...restProps,
       }
     : restProps;
@@ -1084,8 +1084,8 @@ export const IconMinusSvg = ({
       viewBox=\\"0 0 24 24\\"
       focusable=\\"false\\"
       fill=\\"currentColor\\"
-      height={24}
       role=\\"img\\"
+      height=\\"100%\\"
       aria-labelledby={titleId}
       {...props}
     >
@@ -1110,7 +1110,7 @@ export const IconMoneySvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '7 2 10 20',
+        viewBox: '7 0 10 24',
         ...restProps,
       }
     : restProps;
@@ -1120,8 +1120,8 @@ export const IconMoneySvg = ({
       viewBox=\\"0 0 24 24\\"
       focusable=\\"false\\"
       fill=\\"currentColor\\"
-      height={24}
       role=\\"img\\"
+      height=\\"100%\\"
       aria-labelledby={titleId}
       {...props}
     >
@@ -1146,7 +1146,7 @@ export const IconNewWindowSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '4 2.1 17.3 17.9',
+        viewBox: '4 0 17 24',
         ...restProps,
       }
     : restProps;
@@ -1156,8 +1156,8 @@ export const IconNewWindowSvg = ({
       viewBox=\\"0 0 24 24\\"
       focusable=\\"false\\"
       fill=\\"currentColor\\"
-      height={24}
       role=\\"img\\"
+      height=\\"100%\\"
       aria-labelledby={titleId}
       {...props}
     >
@@ -1183,7 +1183,7 @@ export const IconNoteSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '3 3 18 18',
+        viewBox: '3 0 18 24',
         ...restProps,
       }
     : restProps;
@@ -1193,8 +1193,8 @@ export const IconNoteSvg = ({
       viewBox=\\"0 0 24 24\\"
       focusable=\\"false\\"
       fill=\\"currentColor\\"
-      height={24}
       role=\\"img\\"
+      height=\\"100%\\"
       aria-labelledby={titleId}
       {...props}
     >
@@ -1220,7 +1220,7 @@ export const IconOverflowSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '10 2 4 20',
+        viewBox: '10 0 4 24',
         ...restProps,
       }
     : restProps;
@@ -1230,8 +1230,8 @@ export const IconOverflowSvg = ({
       viewBox=\\"0 0 24 24\\"
       focusable=\\"false\\"
       fill=\\"currentColor\\"
-      height={24}
       role=\\"img\\"
+      height=\\"100%\\"
       aria-labelledby={titleId}
       {...props}
     >
@@ -1258,7 +1258,7 @@ export const IconPeopleSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '3 3 18 17',
+        viewBox: '3 0 18 24',
         ...restProps,
       }
     : restProps;
@@ -1268,8 +1268,8 @@ export const IconPeopleSvg = ({
       viewBox=\\"0 0 24 24\\"
       focusable=\\"false\\"
       fill=\\"currentColor\\"
-      height={24}
       role=\\"img\\"
+      height=\\"100%\\"
       aria-labelledby={titleId}
       {...props}
     >
@@ -1294,7 +1294,7 @@ export const IconPersonAddSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '2 5 20 14',
+        viewBox: '2 0 20 24',
         ...restProps,
       }
     : restProps;
@@ -1304,8 +1304,8 @@ export const IconPersonAddSvg = ({
       viewBox=\\"0 0 24 24\\"
       focusable=\\"false\\"
       fill=\\"currentColor\\"
-      height={24}
       role=\\"img\\"
+      height=\\"100%\\"
       aria-labelledby={titleId}
       {...props}
     >
@@ -1330,7 +1330,7 @@ export const IconPersonVerifiedSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '3 1 18 22',
+        viewBox: '3 0 18 24',
         ...restProps,
       }
     : restProps;
@@ -1340,8 +1340,8 @@ export const IconPersonVerifiedSvg = ({
       viewBox=\\"0 0 24 24\\"
       focusable=\\"false\\"
       fill=\\"currentColor\\"
-      height={24}
       role=\\"img\\"
+      height=\\"100%\\"
       aria-labelledby={titleId}
       {...props}
     >
@@ -1367,7 +1367,7 @@ export const IconPhoneSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '3 3 18 18',
+        viewBox: '3 0 18 24',
         ...restProps,
       }
     : restProps;
@@ -1377,8 +1377,8 @@ export const IconPhoneSvg = ({
       viewBox=\\"0 0 24 24\\"
       focusable=\\"false\\"
       fill=\\"currentColor\\"
-      height={24}
       role=\\"img\\"
+      height=\\"100%\\"
       aria-labelledby={titleId}
       {...props}
     >
@@ -1403,7 +1403,7 @@ export const IconPositiveSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '1 1 22 22',
+        viewBox: '1 0 22 24',
         ...restProps,
       }
     : restProps;
@@ -1413,8 +1413,8 @@ export const IconPositiveSvg = ({
       viewBox=\\"0 0 24 24\\"
       focusable=\\"false\\"
       fill=\\"currentColor\\"
-      height={24}
       role=\\"img\\"
+      height=\\"100%\\"
       aria-labelledby={titleId}
       {...props}
     >
@@ -1440,7 +1440,7 @@ export const IconPrintSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '2 2 20 20',
+        viewBox: '2 0 20 24',
         ...restProps,
       }
     : restProps;
@@ -1450,8 +1450,8 @@ export const IconPrintSvg = ({
       viewBox=\\"0 0 24 24\\"
       focusable=\\"false\\"
       fill=\\"currentColor\\"
-      height={24}
       role=\\"img\\"
+      height=\\"100%\\"
       aria-labelledby={titleId}
       {...props}
     >
@@ -1476,7 +1476,7 @@ export const IconProfileSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '5 4 14 16',
+        viewBox: '5 0 14 24',
         ...restProps,
       }
     : restProps;
@@ -1486,8 +1486,8 @@ export const IconProfileSvg = ({
       viewBox=\\"0 0 24 24\\"
       focusable=\\"false\\"
       fill=\\"currentColor\\"
-      height={24}
       role=\\"img\\"
+      height=\\"100%\\"
       aria-labelledby={titleId}
       {...props}
     >
@@ -1512,7 +1512,7 @@ export const IconPromoteSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '2 3 20 19',
+        viewBox: '2 0 20 24',
         ...restProps,
       }
     : restProps;
@@ -1522,8 +1522,8 @@ export const IconPromoteSvg = ({
       viewBox=\\"0 0 24 24\\"
       focusable=\\"false\\"
       fill=\\"currentColor\\"
-      height={24}
       role=\\"img\\"
+      height=\\"100%\\"
       aria-labelledby={titleId}
       {...props}
     >
@@ -1548,7 +1548,7 @@ export const IconRecommendedSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '5 1 14 22',
+        viewBox: '5 0 14 24',
         ...restProps,
       }
     : restProps;
@@ -1558,8 +1558,8 @@ export const IconRecommendedSvg = ({
       viewBox=\\"0 0 24 24\\"
       focusable=\\"false\\"
       fill=\\"currentColor\\"
-      height={24}
       role=\\"img\\"
+      height=\\"100%\\"
       aria-labelledby={titleId}
       {...props}
     >
@@ -1584,7 +1584,7 @@ export const IconRefreshSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '2 2 21.9 20',
+        viewBox: '2 0 22 24',
         ...restProps,
       }
     : restProps;
@@ -1594,8 +1594,8 @@ export const IconRefreshSvg = ({
       viewBox=\\"0 0 24 24\\"
       focusable=\\"false\\"
       fill=\\"currentColor\\"
-      height={24}
       role=\\"img\\"
+      height=\\"100%\\"
       aria-labelledby={titleId}
       {...props}
     >
@@ -1620,7 +1620,7 @@ export const IconResumeSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '4 2 16 20',
+        viewBox: '4 0 16 24',
         ...restProps,
       }
     : restProps;
@@ -1630,8 +1630,8 @@ export const IconResumeSvg = ({
       viewBox=\\"0 0 24 24\\"
       focusable=\\"false\\"
       fill=\\"currentColor\\"
-      height={24}
       role=\\"img\\"
+      height=\\"100%\\"
       aria-labelledby={titleId}
       {...props}
     >
@@ -1658,7 +1658,7 @@ export const IconSearchSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '2 2 20 20',
+        viewBox: '2 0 20 24',
         ...restProps,
       }
     : restProps;
@@ -1668,8 +1668,8 @@ export const IconSearchSvg = ({
       viewBox=\\"0 0 24 24\\"
       focusable=\\"false\\"
       fill=\\"currentColor\\"
-      height={24}
       role=\\"img\\"
+      height=\\"100%\\"
       aria-labelledby={titleId}
       {...props}
     >
@@ -1694,7 +1694,7 @@ export const IconSecuritySvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '4 2 16 20',
+        viewBox: '4 0 16 24',
         ...restProps,
       }
     : restProps;
@@ -1704,8 +1704,8 @@ export const IconSecuritySvg = ({
       viewBox=\\"0 0 24 24\\"
       focusable=\\"false\\"
       fill=\\"currentColor\\"
-      height={24}
       role=\\"img\\"
+      height=\\"100%\\"
       aria-labelledby={titleId}
       {...props}
     >
@@ -1730,7 +1730,7 @@ export const IconSendSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '1 2 21 21.1',
+        viewBox: '1 0 21 24',
         ...restProps,
       }
     : restProps;
@@ -1740,8 +1740,8 @@ export const IconSendSvg = ({
       viewBox=\\"0 0 24 24\\"
       focusable=\\"false\\"
       fill=\\"currentColor\\"
-      height={24}
       role=\\"img\\"
+      height=\\"100%\\"
       aria-labelledby={titleId}
       {...props}
     >
@@ -1766,7 +1766,7 @@ export const IconSentSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '3 4.4 18 15.6',
+        viewBox: '3 0 18 24',
         ...restProps,
       }
     : restProps;
@@ -1776,8 +1776,8 @@ export const IconSentSvg = ({
       viewBox=\\"0 0 24 24\\"
       focusable=\\"false\\"
       fill=\\"currentColor\\"
-      height={24}
       role=\\"img\\"
+      height=\\"100%\\"
       aria-labelledby={titleId}
       {...props}
     >
@@ -1802,7 +1802,7 @@ export const IconSettingsSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '2 0.9 20.1 22.2',
+        viewBox: '2 0 20 24',
         ...restProps,
       }
     : restProps;
@@ -1812,8 +1812,8 @@ export const IconSettingsSvg = ({
       viewBox=\\"0 0 24 24\\"
       focusable=\\"false\\"
       fill=\\"currentColor\\"
-      height={24}
       role=\\"img\\"
+      height=\\"100%\\"
       aria-labelledby={titleId}
       {...props}
     >
@@ -1839,7 +1839,7 @@ export const IconShareSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '3 4.4 18 15.6',
+        viewBox: '3 0 18 24',
         ...restProps,
       }
     : restProps;
@@ -1849,8 +1849,8 @@ export const IconShareSvg = ({
       viewBox=\\"0 0 24 24\\"
       focusable=\\"false\\"
       fill=\\"currentColor\\"
-      height={24}
       role=\\"img\\"
+      height=\\"100%\\"
       aria-labelledby={titleId}
       {...props}
     >
@@ -1875,7 +1875,7 @@ export const IconSocialFacebookSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '7.8 4 8.3 16',
+        viewBox: '8 0 8 24',
         ...restProps,
       }
     : restProps;
@@ -1885,8 +1885,8 @@ export const IconSocialFacebookSvg = ({
       viewBox=\\"0 0 24 24\\"
       focusable=\\"false\\"
       fill=\\"currentColor\\"
-      height={24}
       role=\\"img\\"
+      height=\\"100%\\"
       aria-labelledby={titleId}
       {...props}
     >
@@ -1911,7 +1911,7 @@ export const IconSocialGitHubSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '2 2 20 19.5',
+        viewBox: '2 0 20 24',
         ...restProps,
       }
     : restProps;
@@ -1921,8 +1921,8 @@ export const IconSocialGitHubSvg = ({
       viewBox=\\"0 0 24 24\\"
       focusable=\\"false\\"
       fill=\\"currentColor\\"
-      height={24}
       role=\\"img\\"
+      height=\\"100%\\"
       aria-labelledby={titleId}
       {...props}
     >
@@ -1950,7 +1950,7 @@ export const IconSocialInstagramSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '4 4 16 16',
+        viewBox: '4 0 16 24',
         ...restProps,
       }
     : restProps;
@@ -1960,8 +1960,8 @@ export const IconSocialInstagramSvg = ({
       viewBox=\\"0 0 24 24\\"
       focusable=\\"false\\"
       fill=\\"currentColor\\"
-      height={24}
       role=\\"img\\"
+      height=\\"100%\\"
       aria-labelledby={titleId}
       {...props}
     >
@@ -1988,7 +1988,7 @@ export const IconSocialLinkedInSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '5 5 14 14',
+        viewBox: '5 0 14 24',
         ...restProps,
       }
     : restProps;
@@ -1998,8 +1998,8 @@ export const IconSocialLinkedInSvg = ({
       viewBox=\\"0 0 24 24\\"
       focusable=\\"false\\"
       fill=\\"currentColor\\"
-      height={24}
       role=\\"img\\"
+      height=\\"100%\\"
       aria-labelledby={titleId}
       {...props}
     >
@@ -2024,7 +2024,7 @@ export const IconSocialMediumSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '3 3 18 18',
+        viewBox: '3 0 18 24',
         ...restProps,
       }
     : restProps;
@@ -2034,8 +2034,8 @@ export const IconSocialMediumSvg = ({
       viewBox=\\"0 0 24 24\\"
       focusable=\\"false\\"
       fill=\\"currentColor\\"
-      height={24}
       role=\\"img\\"
+      height=\\"100%\\"
       aria-labelledby={titleId}
       {...props}
     >
@@ -2060,7 +2060,7 @@ export const IconSocialTwitterSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '5 6.3 14 11.4',
+        viewBox: '5 0 14 24',
         ...restProps,
       }
     : restProps;
@@ -2070,8 +2070,8 @@ export const IconSocialTwitterSvg = ({
       viewBox=\\"0 0 24 24\\"
       focusable=\\"false\\"
       fill=\\"currentColor\\"
-      height={24}
       role=\\"img\\"
+      height=\\"100%\\"
       aria-labelledby={titleId}
       {...props}
     >
@@ -2096,7 +2096,7 @@ export const IconStarActiveSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '1 1.1 22.1 21.1',
+        viewBox: '1 0 22 24',
         ...restProps,
       }
     : restProps;
@@ -2106,8 +2106,8 @@ export const IconStarActiveSvg = ({
       viewBox=\\"0 0 24 24\\"
       focusable=\\"false\\"
       fill=\\"currentColor\\"
-      height={24}
       role=\\"img\\"
+      height=\\"100%\\"
       aria-labelledby={titleId}
       {...props}
     >
@@ -2132,7 +2132,7 @@ export const IconStarSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '1 1.1 22.1 20.9',
+        viewBox: '1 0 22 24',
         ...restProps,
       }
     : restProps;
@@ -2142,8 +2142,8 @@ export const IconStarSvg = ({
       viewBox=\\"0 0 24 24\\"
       focusable=\\"false\\"
       fill=\\"currentColor\\"
-      height={24}
       role=\\"img\\"
+      height=\\"100%\\"
       aria-labelledby={titleId}
       {...props}
     >
@@ -2168,7 +2168,7 @@ export const IconStatisticsSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '3 4 18 16',
+        viewBox: '3 0 18 24',
         ...restProps,
       }
     : restProps;
@@ -2178,8 +2178,8 @@ export const IconStatisticsSvg = ({
       viewBox=\\"0 0 24 24\\"
       focusable=\\"false\\"
       fill=\\"currentColor\\"
-      height={24}
       role=\\"img\\"
+      height=\\"100%\\"
       aria-labelledby={titleId}
       {...props}
     >
@@ -2205,7 +2205,7 @@ export const IconSubCategorySvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '5 5 14 14',
+        viewBox: '5 0 14 24',
         ...restProps,
       }
     : restProps;
@@ -2215,8 +2215,8 @@ export const IconSubCategorySvg = ({
       viewBox=\\"0 0 24 24\\"
       focusable=\\"false\\"
       fill=\\"currentColor\\"
-      height={24}
       role=\\"img\\"
+      height=\\"100%\\"
       aria-labelledby={titleId}
       {...props}
     >
@@ -2241,7 +2241,7 @@ export const IconTagSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '1.8 2 21.2 21.2',
+        viewBox: '2 0 21 24',
         ...restProps,
       }
     : restProps;
@@ -2251,8 +2251,8 @@ export const IconTagSvg = ({
       viewBox=\\"0 0 24 24\\"
       focusable=\\"false\\"
       fill=\\"currentColor\\"
-      height={24}
       role=\\"img\\"
+      height=\\"100%\\"
       aria-labelledby={titleId}
       {...props}
     >
@@ -2278,7 +2278,7 @@ export const IconTickSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '4 6 16 12',
+        viewBox: '4 0 16 24',
         ...restProps,
       }
     : restProps;
@@ -2288,8 +2288,8 @@ export const IconTickSvg = ({
       viewBox=\\"0 0 24 24\\"
       focusable=\\"false\\"
       fill=\\"currentColor\\"
-      height={24}
       role=\\"img\\"
+      height=\\"100%\\"
       aria-labelledby={titleId}
       {...props}
     >
@@ -2314,7 +2314,7 @@ export const IconTimeSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '1 1 22 22',
+        viewBox: '1 0 22 24',
         ...restProps,
       }
     : restProps;
@@ -2324,8 +2324,8 @@ export const IconTimeSvg = ({
       viewBox=\\"0 0 24 24\\"
       focusable=\\"false\\"
       fill=\\"currentColor\\"
-      height={24}
       role=\\"img\\"
+      height=\\"100%\\"
       aria-labelledby={titleId}
       {...props}
     >
@@ -2351,7 +2351,7 @@ export const IconUploadSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '4 3 16 18',
+        viewBox: '4 0 16 24',
         ...restProps,
       }
     : restProps;
@@ -2361,8 +2361,8 @@ export const IconUploadSvg = ({
       viewBox=\\"0 0 24 24\\"
       focusable=\\"false\\"
       fill=\\"currentColor\\"
-      height={24}
       role=\\"img\\"
+      height=\\"100%\\"
       aria-labelledby={titleId}
       {...props}
     >
@@ -2387,7 +2387,7 @@ export const IconVideoSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '5 5 14 14',
+        viewBox: '5 0 14 24',
         ...restProps,
       }
     : restProps;
@@ -2397,8 +2397,8 @@ export const IconVideoSvg = ({
       viewBox=\\"0 0 24 24\\"
       focusable=\\"false\\"
       fill=\\"currentColor\\"
-      height={24}
       role=\\"img\\"
+      height=\\"100%\\"
       aria-labelledby={titleId}
       {...props}
     >
@@ -2423,7 +2423,7 @@ export const IconWorkExperienceSvg = ({
 }: SVGProps) => {
   const props = crop
     ? {
-        viewBox: '1 2 22 20',
+        viewBox: '1 0 22 24',
         ...restProps,
       }
     : restProps;
@@ -2433,8 +2433,8 @@ export const IconWorkExperienceSvg = ({
       viewBox=\\"0 0 24 24\\"
       focusable=\\"false\\"
       fill=\\"currentColor\\"
-      height={24}
       role=\\"img\\"
+      height=\\"100%\\"
       aria-labelledby={titleId}
       {...props}
     >

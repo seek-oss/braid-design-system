@@ -18,7 +18,7 @@ try {
   console.log(`Couldn't read icon-updates file. Updating all SVGs...`);
 }
 
-const makeComponentTemplate = smallestViewBox => (
+const makeComponentTemplate = croppedViewbox => (
   { template },
   opts,
   { componentName, jsx },
@@ -29,7 +29,10 @@ const makeComponentTemplate = smallestViewBox => (
     import { SVGProps } from '../SVGTypes';
     NEWLINE
     export const COMPONENT_NAME = ({ title, titleId, crop, ...restProps }: SVGProps) => {
-      const props = crop ? { viewBox: 'SMALLEST_VIEW_BOX', ...restProps } : restProps;
+      const props = crop ? { 
+        viewBox: 'CROPPED_VIEWBOX',
+        ...restProps, 
+      } : restProps;
       NEWLINE
       return (
         COMPONENT_JSX
@@ -45,7 +48,7 @@ const makeComponentTemplate = smallestViewBox => (
     COMPONENT_NAME: componentName,
     COMPONENT_JSX: jsx,
     NEWLINE: '\n',
-    SMALLEST_VIEW_BOX: smallestViewBox,
+    CROPPED_VIEWBOX: croppedViewbox,
   });
 };
 
@@ -108,21 +111,25 @@ const iconComponentsDir = path.join(baseDir, 'lib/components/icons');
 
   const browser = await puppeteer.launch();
 
-  const getBBox = async svg => {
+  const cropHorizontalSpace = async svg => {
     const page = await browser.newPage();
     await page.setContent(svg);
 
-    const viewboxArray = await page.$eval('svg', svgElement => {
-      const { x, y, width, height } = svgElement.getBBox();
+    const boundingBox = await page.$eval('svg', svgElement => {
+      const { x, width } = svgElement.getBBox();
 
-      return [x, y, width, height];
+      return {
+        x,
+        width,
+      };
     });
 
-    const result = viewboxArray.map(v => roundTo(v, 1)).join(' ');
+    const { x, width } = boundingBox;
+    const viewBox = [x, 0, width, 24].map(v => roundTo(v, 0)).join(' ');
 
     await page.close();
 
-    return result;
+    return viewBox;
   };
 
   await Promise.all(
@@ -138,7 +145,7 @@ const iconComponentsDir = path.join(baseDir, 'lib/components/icons');
       // Run through SVGO
       const optimisedSvg = (await svgo.optimize(svg)).data;
 
-      const smallestViewBox = await getBBox(optimisedSvg);
+      const croppedViewbox = await cropHorizontalSpace(optimisedSvg);
 
       // Validate SVG before import
       const $ = cheerio.load(optimisedSvg);
@@ -166,11 +173,11 @@ const iconComponentsDir = path.join(baseDir, 'lib/components/icons');
           svgProps: {
             focusable: 'false',
             fill: 'currentColor',
-            height: 24,
             role: 'img',
+            height: '100%',
           },
           replaceAttrValues: { '#000': 'currentColor' },
-          template: makeComponentTemplate(smallestViewBox),
+          template: makeComponentTemplate(croppedViewbox),
           plugins: ['@svgr/plugin-jsx', '@svgr/plugin-prettier'],
           titleProp: true,
         },
