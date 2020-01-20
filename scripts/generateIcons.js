@@ -125,7 +125,7 @@ const iconComponentsDir = path.join(baseDir, 'lib/components/icons');
     });
 
     const { x, width } = boundingBox;
-    const viewBox = [x, 0, width, 24].map(v => roundTo(v, 0)).join(' ');
+    const viewBox = [x, 0, width, 24].map(v => roundTo(v, 1)).join(' ');
 
     await page.close();
 

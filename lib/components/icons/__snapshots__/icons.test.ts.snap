@@ -230,7 +230,7 @@ export const IconComposeSvg = ({
 }: SVGProps) => {
   const props = cropX
     ? {
-        viewBox: '3 0 20 24',
+        viewBox: '3 0 20.2 24',
         ...restProps,
       }
     : restProps;
@@ -525,7 +525,7 @@ export const IconEditSvg = ({
 }: SVGProps) => {
   const props = cropX
     ? {
-        viewBox: '3 0 19 24',
+        viewBox: '3 0 18.9 24',
         ...restProps,
       }
     : restProps;
@@ -1146,7 +1146,7 @@ export const IconNewWindowSvg = ({
 }: SVGProps) => {
   const props = cropX
     ? {
-        viewBox: '4 0 17 24',
+        viewBox: '4 0 17.3 24',
         ...restProps,
       }
     : restProps;
@@ -1584,7 +1584,7 @@ export const IconRefreshSvg = ({
 }: SVGProps) => {
   const props = cropX
     ? {
-        viewBox: '2 0 22 24',
+        viewBox: '2 0 21.9 24',
         ...restProps,
       }
     : restProps;
@@ -1802,7 +1802,7 @@ export const IconSettingsSvg = ({
 }: SVGProps) => {
   const props = cropX
     ? {
-        viewBox: '2 0 20 24',
+        viewBox: '2 0 20.1 24',
         ...restProps,
       }
     : restProps;
@@ -1875,7 +1875,7 @@ export const IconSocialFacebookSvg = ({
 }: SVGProps) => {
   const props = cropX
     ? {
-        viewBox: '8 0 8 24',
+        viewBox: '7.8 0 8.3 24',
         ...restProps,
       }
     : restProps;
@@ -2096,7 +2096,7 @@ export const IconStarActiveSvg = ({
 }: SVGProps) => {
   const props = cropX
     ? {
-        viewBox: '1 0 22 24',
+        viewBox: '1 0 22.1 24',
         ...restProps,
       }
     : restProps;
@@ -2132,7 +2132,7 @@ export const IconStarSvg = ({
 }: SVGProps) => {
   const props = cropX
     ? {
-        viewBox: '1 0 22 24',
+        viewBox: '1 0 22.1 24',
         ...restProps,
       }
     : restProps;
@@ -2241,7 +2241,7 @@ export const IconTagSvg = ({
 }: SVGProps) => {
   const props = cropX
     ? {
-        viewBox: '2 0 21 24',
+        viewBox: '1.8 0 21.2 24',
         ...restProps,
       }
     : restProps;
