@@ -1,21 +1,38 @@
 import { style } from 'sku/treat';
 import getSize from './getSize';
+import { hitArea } from '../touchable/hitArea';
+import { debugTouchable } from '../touchable/debugTouchable';
 
 // Reset the z-index at the parent level to scope
 // overrides internally.
 export const root = style({
   zIndex: 0,
+  ':hover': {
+    zIndex: 1,
+  },
 });
 
-export const realField = style({
+const realFieldBase = style({
   opacity: 0,
   zIndex: 1,
+  width: hitArea,
+  height: hitArea,
   selectors: {
+    ...debugTouchable(),
     [`&:not(:disabled)`]: {
       cursor: 'pointer',
     },
   },
 });
+
+export const realFieldPosition = style(theme => {
+  const size = getSize(theme);
+  const centerOffset = -(hitArea - size) / 2;
+
+  return { top: centerOffset, left: centerOffset };
+});
+
+export const realField = [realFieldBase, realFieldPosition];
 
 const fakeFieldBase = style({
   flexShrink: 0,
@@ -23,24 +40,30 @@ const fakeFieldBase = style({
 
 const fakeFieldSize = style(theme => {
   const size = getSize(theme);
-  const { touchableSize, grid } = theme;
 
   return {
     height: size,
     width: size,
-    marginTop: (grid * touchableSize - size) / 2,
   };
 });
 
 export const fakeField = [fakeFieldSize, fakeFieldBase];
 
-export const label = style({
-  userSelect: 'none',
-  selectors: {
-    [`${realField}:not(:disabled) + * > ${fakeFieldBase} + &`]: {
-      cursor: 'pointer',
+export const label = style(theme => {
+  // Uses mobile standard text to mirror behaviour in getSize
+  const standardTextHeight =
+    theme.typography.text.standard.mobile.rows * theme.grid;
+  const offset = (getSize(theme) - standardTextHeight) / 2;
+
+  return {
+    paddingTop: offset,
+    userSelect: 'none',
+    selectors: {
+      [`${realFieldBase}:not(:disabled) + * > ${fakeFieldBase} + &`]: {
+        cursor: 'pointer',
+      },
     },
-  },
+  };
 });
 
 export const children = style(theme => {
@@ -49,7 +72,7 @@ export const children = style(theme => {
   return {
     marginLeft: size,
     selectors: {
-      [`${realField}:checked ~ &`]: {
+      [`${realFieldBase}:checked ~ &`]: {
         display: 'block',
       },
     },
@@ -58,7 +81,7 @@ export const children = style(theme => {
 
 export const selected = style({
   selectors: {
-    [`${realField}:checked + * > ${fakeFieldBase} > &`]: {
+    [`${realFieldBase}:checked + * > ${fakeFieldBase} > &`]: {
       opacity: 1,
     },
   },
@@ -66,7 +89,7 @@ export const selected = style({
 
 export const focusOverlay = style({
   selectors: {
-    [`${realField}:focus + * > ${fakeFieldBase} > &`]: {
+    [`${realFieldBase}:focus + * > ${fakeFieldBase} > &`]: {
       opacity: 1,
     },
   },
@@ -74,7 +97,7 @@ export const focusOverlay = style({
 
 export const hoverOverlay = style({
   selectors: {
-    [`${realField}:hover:not(:checked):not(:disabled) + * > ${fakeFieldBase} > &`]: {
+    [`${realFieldBase}:hover:not(:checked):not(:disabled) + * > ${fakeFieldBase} > &`]: {
       opacity: 1,
     },
   },
@@ -91,7 +114,7 @@ export const indicator = style({
 const checkboxScale = style({
   transform: 'scale(0.85)',
   selectors: {
-    [`${realField}:active + * > ${fakeFieldBase} > * > &`]: {
+    [`${realFieldBase}:active + * > ${fakeFieldBase} > * > &`]: {
       transform: 'scale(0.75)',
     },
   },
@@ -102,7 +125,7 @@ export const checkboxIndicator = [indicator, checkboxScale];
 const radioScale = style({
   transform: 'scale(0.6)',
   selectors: {
-    [`${realField}:active + * > ${fakeFieldBase} > * > &`]: {
+    [`${realFieldBase}:active + * > ${fakeFieldBase} > * > &`]: {
       transform: 'scale(0.5)',
     },
   },

@@ -5,7 +5,7 @@ import { Box } from '../Box/Box';
 import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
 import { Text } from '../Text/Text';
 import { IconTick } from '../icons';
-import { useTouchableSpace } from '../../hooks/typography';
+import { useVirtualTouchable } from '../private/touchable/useVirtualTouchable';
 import * as styleRefs from './Toggle.treat';
 
 type HTMLInputProps = AllHTMLAttributes<HTMLInputElement>;
@@ -103,7 +103,7 @@ export const Toggle = ({
         htmlFor={id}
         paddingLeft={align === 'left' ? 'xsmall' : undefined}
         paddingRight={align === 'right' ? 'xsmall' : undefined}
-        className={classnames(styles.label, useTouchableSpace('standard'))}
+        className={classnames(styles.label, useVirtualTouchable())}
       >
         <Text baseline={false} weight={on ? 'strong' : undefined}>
           {label}

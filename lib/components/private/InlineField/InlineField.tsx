@@ -10,7 +10,7 @@ import {
 import { FieldOverlay } from '../FieldOverlay/FieldOverlay';
 import { Text } from '../../Text/Text';
 import { IconTick } from '../../icons';
-import { useTouchableSpace } from '../../../hooks/typography';
+import { useVirtualTouchable } from '../touchable/useVirtualTouchable';
 import buildDataAttributes, { DataAttributeMap } from '../buildDataAttributes';
 import * as styleRefs from './InlineField.treat';
 
@@ -111,6 +111,7 @@ export const InlineField = forwardRef<HTMLElement, InternalInlineFieldProps>(
     const isCheckbox = type === 'checkbox';
     const fieldBorderRadius = isCheckbox ? 'standard' : 'full';
     const accentBackground = disabled ? 'formAccentDisabled' : 'formAccent';
+    const hasMessage = message || reserveMessageSpace;
 
     return (
       <Box position="relative" className={styles.root}>
@@ -123,9 +124,7 @@ export const InlineField = forwardRef<HTMLElement, InternalInlineFieldProps>(
           value={value}
           checked={checked}
           position="absolute"
-          width="touchable"
-          height="touchable"
-          className={styles.realField}
+          className={classnames(styles.realField)}
           aria-describedby={messageId}
           aria-required={required}
           disabled={disabled}
@@ -170,7 +169,7 @@ export const InlineField = forwardRef<HTMLElement, InternalInlineFieldProps>(
             component="label"
             paddingLeft="small"
             htmlFor={id}
-            className={classnames(styles.label, useTouchableSpace('standard'))}
+            className={classnames(styles.label, useVirtualTouchable())}
           >
             <Text
               baseline={false}
@@ -185,19 +184,24 @@ export const InlineField = forwardRef<HTMLElement, InternalInlineFieldProps>(
           <Box
             display="none"
             paddingLeft="small"
-            paddingBottom="small"
+            paddingTop="xsmall"
+            paddingBottom={hasMessage ? 'xxsmall' : undefined}
             className={styles.children}
           >
             {children}
           </Box>
         ) : null}
-        <FieldMessage
-          id={messageId}
-          tone={tone}
-          disabled={disabled}
-          message={message}
-          reserveMessageSpace={reserveMessageSpace}
-        />
+        {hasMessage ? (
+          <Box paddingTop="xsmall">
+            <FieldMessage
+              id={messageId}
+              tone={tone}
+              disabled={disabled}
+              message={message}
+              reserveMessageSpace={reserveMessageSpace}
+            />
+          </Box>
+        ) : null}
       </Box>
     );
   },
