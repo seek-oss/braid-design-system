@@ -1,4 +1,4 @@
-import { ReactType } from 'react';
+import { ElementType } from 'react';
 import { useStyles } from 'sku/react-treat';
 import classnames from 'classnames';
 import { Theme } from 'treat/theme';
@@ -13,7 +13,7 @@ export type Space = keyof Theme['space'] | 'none';
 export type ResponsiveSpace = ResponsiveProp<Space>;
 
 export interface UseBoxStylesProps {
-  component: ReactType;
+  component: ElementType | null;
   padding?: ResponsiveSpace;
   paddingX?: ResponsiveSpace;
   paddingY?: ResponsiveSpace;
@@ -95,8 +95,9 @@ export const useBoxStyles = ({
   const resolvedMarginRight = marginRight || marginX || margin;
 
   return classnames(
-    resetStyles.base,
-    resetStyles.element[component as keyof typeof resetStyleRefs.element],
+    component !== null && resetStyles.base,
+    component !== null &&
+      resetStyles.element[component as keyof typeof resetStyleRefs.element],
     styles.background[background!],
     styles.borderRadius[borderRadius!],
     styles.boxShadow[boxShadow!],
@@ -108,70 +109,70 @@ export const useBoxStyles = ({
     styles.cursor[cursor!],
     styles.pointerEvents[pointerEvents!],
     styles.overflow[overflow!],
-    resolvedMarginTop &&
+    resolvedMarginTop !== undefined &&
       resolveResponsiveProp(
         resolvedMarginTop,
         styles.margin.top,
         styles.marginTablet.top,
         styles.marginDesktop.top,
       ),
-    resolvedMarginBottom &&
+    resolvedMarginBottom !== undefined &&
       resolveResponsiveProp(
         resolvedMarginBottom,
         styles.margin.bottom,
         styles.marginTablet.bottom,
         styles.marginDesktop.bottom,
       ),
-    resolvedMarginLeft &&
+    resolvedMarginLeft !== undefined &&
       resolveResponsiveProp(
         resolvedMarginLeft,
         styles.margin.left,
         styles.marginTablet.left,
         styles.marginDesktop.left,
       ),
-    resolvedMarginRight &&
+    resolvedMarginRight !== undefined &&
       resolveResponsiveProp(
         resolvedMarginRight,
         styles.margin.right,
         styles.marginTablet.right,
         styles.marginDesktop.right,
       ),
-    resolvedPaddingTop &&
+    resolvedPaddingTop !== undefined &&
       resolveResponsiveProp(
         resolvedPaddingTop,
         styles.padding.top,
         styles.paddingTablet.top,
         styles.paddingDesktop.top,
       ),
-    resolvedPaddingBottom &&
+    resolvedPaddingBottom !== undefined &&
       resolveResponsiveProp(
         resolvedPaddingBottom,
         styles.padding.bottom,
         styles.paddingTablet.bottom,
         styles.paddingDesktop.bottom,
       ),
-    resolvedPaddingLeft &&
+    resolvedPaddingLeft !== undefined &&
       resolveResponsiveProp(
         resolvedPaddingLeft,
         styles.padding.left,
         styles.paddingTablet.left,
         styles.paddingDesktop.left,
       ),
-    resolvedPaddingRight &&
+    resolvedPaddingRight !== undefined &&
       resolveResponsiveProp(
         resolvedPaddingRight,
         styles.padding.right,
         styles.paddingTablet.right,
         styles.paddingDesktop.right,
       ),
-    display &&
+    display !== undefined &&
       resolveResponsiveProp(
         display,
         styles.display,
         styles.displayTablet,
         styles.displayDesktop,
       ),
-    flexDirection &&
+    flexDirection !== undefined &&
       resolveResponsiveProp(
         flexDirection,
         styles.flexDirection,
@@ -179,21 +180,21 @@ export const useBoxStyles = ({
         styles.flexDirectionDesktop,
       ),
     styles.flexWrap[flexWrap!],
-    alignItems &&
+    alignItems !== undefined &&
       resolveResponsiveProp(
         alignItems,
         styles.alignItems,
         styles.alignItemsTablet,
         styles.alignItemsDesktop,
       ),
-    justifyContent &&
+    justifyContent !== undefined &&
       resolveResponsiveProp(
         justifyContent,
         styles.justifyContent,
         styles.justifyContentTablet,
         styles.justifyContentDesktop,
       ),
-    textAlign &&
+    textAlign !== undefined &&
       resolveResponsiveProp(
         textAlign,
         styles.textAlign,
