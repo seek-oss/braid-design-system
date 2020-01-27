@@ -60,6 +60,17 @@ const select = [
   }),
 ];
 
+const input = [
+  ...field,
+  style({
+    selectors: {
+      '&::-ms-clear': {
+        display: 'none',
+      },
+    },
+  }),
+];
+
 const button = style({
   background: 'none',
 });
@@ -92,5 +103,5 @@ export const element = {
   select,
   button,
   textarea: field,
-  input: field,
+  input,
 };
