@@ -1,5 +1,7 @@
 import { style } from 'sku/treat';
 import getSize from '../private/InlineField/getSize';
+import { hitArea } from '../private/touchable/hitArea';
+import { debugTouchable } from '../private/touchable/debugTouchable';
 
 const toggleWidthRatio = 1.6;
 const anticipationRatio = 0.12;
@@ -8,37 +10,64 @@ const anticipationRatio = 0.12;
 // overrides internally.
 export const root = style({
   zIndex: 0,
+  ':hover': {
+    zIndex: 1,
+  },
 });
 
-export const realField = style({
+const realFieldBase = style({
   opacity: 0,
+  height: hitArea,
   zIndex: 1,
   selectors: {
+    ...debugTouchable(),
     [`&:not(:disabled)`]: {
       cursor: 'pointer',
     },
   },
 });
 
-export const label = style({
-  userSelect: 'none',
-  selectors: {
-    [`${realField}:not(:disabled) ~ &`]: {
-      cursor: 'pointer',
-    },
-  },
-});
-
-export const fieldSize = style(theme => {
-  const size = theme.grid * theme.touchableSize;
+const realFieldPosition = style(theme => {
+  const centerOffset = -(hitArea - getSize(theme)) / 2;
 
   return {
-    width: getSize(theme) * toggleWidthRatio,
-    height: size,
+    top: centerOffset,
   };
 });
 
-export const slideContainer = style({});
+export const realField = [realFieldBase, realFieldPosition];
+
+export const label = [
+  style({
+    userSelect: 'none',
+    selectors: {
+      [`${realFieldBase}:not(:disabled) ~ &`]: {
+        cursor: 'pointer',
+      },
+    },
+  }),
+  style(theme => {
+    const size = getSize(theme);
+    const lineHeight = theme.grid * theme.typography.text.standard.mobile.rows;
+    const padding = (size - lineHeight) / 2;
+    return {
+      paddingTop: padding,
+      paddingBottom: padding,
+    };
+  }),
+];
+
+export const fieldSize = style(theme => ({
+  width: getSize(theme) * toggleWidthRatio,
+}));
+
+const slideContainerBase = style({});
+
+const slideContainerHeight = style(theme => ({
+  height: getSize(theme),
+}));
+
+export const slideContainer = [slideContainerBase, slideContainerHeight];
 
 export const slideTrack = style(theme => {
   const size = getSize(theme);
@@ -59,7 +88,7 @@ export const slideTrackSelected = style(theme => {
 
   return {
     selectors: {
-      [`${realField}:not(:checked) + ${slideContainer} &`]: {
+      [`${realFieldBase}:not(:checked) + ${slideContainerBase} &`]: {
         transform: `translateX(-${trackWidth}px)`,
       },
     },
@@ -76,13 +105,13 @@ export const slider = style(theme => {
     height: size,
     width: size,
     selectors: {
-      [`${realField}:active + ${slideContainer} &`]: {
+      [`${realFieldBase}:active + ${slideContainerBase} &`]: {
         transform: `translateX(-${anticipation}px)`,
       },
-      [`${realField}:checked + ${slideContainer} &`]: {
+      [`${realFieldBase}:checked + ${slideContainerBase} &`]: {
         transform: `translateX(${slideDistance}px)`,
       },
-      [`${realField}:active:checked + ${slideContainer} &`]: {
+      [`${realFieldBase}:active:checked + ${slideContainerBase} &`]: {
         transform: `translateX(${slideDistance + anticipation}px)`,
       },
     },
@@ -92,13 +121,13 @@ export const slider = style(theme => {
 export const icon = style({
   transform: 'scale(.75)',
   selectors: {
-    [`${realField}:active + ${slideContainer} &`]: {
+    [`${realFieldBase}:active + ${slideContainerBase} &`]: {
       transform: 'scale(.75) rotate(-25deg)',
     },
-    [`${realField}:checked + ${slideContainer} &`]: {
+    [`${realFieldBase}:checked + ${slideContainerBase} &`]: {
       opacity: 1,
     },
-    [`${realField}:active:checked + ${slideContainer} &`]: {
+    [`${realFieldBase}:active:checked + ${slideContainerBase} &`]: {
       transform: 'scale(.75) rotate(6deg)',
     },
   },
@@ -106,7 +135,7 @@ export const icon = style({
 
 export const focusOverlay = style({
   selectors: {
-    [`${realField}:focus + ${slideContainer} &, ${realField}:active + ${slideContainer} &`]: {
+    [`${realFieldBase}:focus + ${slideContainerBase} &, ${realFieldBase}:active + ${slideContainerBase} &`]: {
       opacity: 1,
     },
   },
@@ -114,7 +143,7 @@ export const focusOverlay = style({
 
 export const hoverOverlay = style({
   selectors: {
-    [`${realField}:hover:not(:disabled) + ${slideContainer} &`]: {
+    [`${realFieldBase}:hover:not(:disabled) + ${slideContainerBase} &`]: {
       opacity: 1,
     },
   },
