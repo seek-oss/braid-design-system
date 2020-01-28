@@ -29,21 +29,15 @@ export function useText({
   _LEGACY_SPACE_ = false,
 }: UseTextProps) {
   const styles = useStyles(styleRefs);
-  const inTextLinkRenderer = useContext(TextLinkRendererContext);
-  const space = useTouchableSpace(size);
   const textTone = useTextTone({ tone, backgroundContext });
 
   return classnames(
     styles.fontFamily,
     styles.text[size].base,
-    inTextLinkRenderer
-      ? space
-      : [
-          textTone,
-          styles.fontWeight[weight],
-          baseline ? styles.text[size].baseline : null,
-          baseline && !_LEGACY_SPACE_ ? styles.text[size].cropFirstLine : null,
-        ],
+    textTone,
+    styles.fontWeight[weight],
+    baseline ? styles.text[size].baseline : null,
+    baseline && !_LEGACY_SPACE_ ? styles.text[size].cropFirstLine : null,
   );
 }
 

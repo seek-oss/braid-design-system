@@ -16,6 +16,7 @@ import {
 } from '../../hooks/typography';
 import * as styleRefs from './TextLinkRenderer.treat';
 import { useBackground } from '../Box/BackgroundContext';
+import { useVirtualTouchable } from '../private/touchable/useVirtualTouchable';
 
 interface StyleProps {
   style: CSSProperties;
@@ -24,20 +25,29 @@ interface StyleProps {
 
 export interface TextLinkRendererProps {
   showVisited?: boolean;
+  touchable?: boolean;
   children: (styleProps: StyleProps) => ReactElement;
 }
 
 export const TextLinkRenderer = (props: TextLinkRendererProps) => {
-  const inText = useContext(TextContext);
-  const inHeading = useContext(HeadingContext);
   const inActions = useContext(ActionsContext);
+
+  if (process.env.NODE_ENV !== 'production') {
+    // NODE_ENV is static so hook call is not conditional
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const inText = useContext(TextContext);
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const inHeading = useContext(HeadingContext);
+
+    if (!inText && !inHeading && !inActions) {
+      throw new Error(
+        'TextLink components must be rendered within a Text or Heading component.',
+      );
+    }
+  }
 
   if (inActions) {
     return <ButtonLink {...props} />;
-  }
-
-  if (!inText && !inHeading) {
-    return <TouchableLink {...props} />;
   }
 
   return <InlineLink {...props} />;
@@ -58,7 +68,13 @@ function useLinkStyles(showVisited: boolean) {
   ];
 }
 
-function InlineLink({ showVisited = false, children }: TextLinkRendererProps) {
+function InlineLink({
+  showVisited = false,
+  touchable = false,
+  children,
+}: TextLinkRendererProps) {
+  const virtualTouchableStyle = useVirtualTouchable();
+
   return (
     <TextLinkRendererContext.Provider value={true}>
       {children({
@@ -69,31 +85,9 @@ function InlineLink({ showVisited = false, children }: TextLinkRendererProps) {
             component: 'a',
             cursor: 'pointer',
           }),
+          touchable && virtualTouchableStyle,
         ),
       })}
-    </TextLinkRendererContext.Provider>
-  );
-}
-
-function TouchableLink({
-  showVisited = false,
-  children,
-}: TextLinkRendererProps) {
-  return (
-    <TextLinkRendererContext.Provider value={true}>
-      <Box display="flex">
-        {children({
-          style: {},
-          className: classnames(
-            useLinkStyles(showVisited),
-            useBoxStyles({
-              component: 'a',
-              cursor: 'pointer',
-              display: 'block',
-            }),
-          ),
-        })}
-      </Box>
     </TextLinkRendererContext.Provider>
   );
 }
