@@ -1,4 +1,4 @@
-import React, { ReactNode, useContext } from 'react';
+import React, { ReactNode, useContext, useMemo } from 'react';
 import { useStyles } from 'sku/treat';
 import classnames from 'classnames';
 import { Box } from '../Box/Box';
@@ -7,6 +7,7 @@ import { BulletListContext } from '../BulletList/BulletList';
 import { useStackItem } from '../Stack/Stack';
 import { useLineHeightContainer } from '../../hooks/useLineHeightContainer/useLineHeightContainer';
 import * as styleRefs from './Bullet.treat';
+import TextContext from '../Text/TextContext';
 
 export interface BulletProps {
   children: ReactNode;
@@ -18,29 +19,49 @@ export const Bullet = ({ children }: BulletProps) => {
   const styles = useStyles(styleRefs);
   const { size, space, tone } = useContext(BulletListContext);
 
+  // Prevent re-renders when context values haven't changed
+  const textContextValue = useMemo(
+    () => ({
+      size,
+      tone,
+      baseline: true,
+    }),
+    [tone, size],
+  );
+
   return (
-    <Box
-      component={component}
-      className={classnames(
-        useText({ size, baseline: true, tone }),
-        useStackItem({ component, space, align: 'left' }),
-      )}
-    >
-      <Box display="flex">
-        <Box
-          display="flex"
-          alignItems="center"
-          className={useLineHeightContainer(size)}
-        >
+    <TextContext.Provider value={textContextValue}>
+      <Box
+        component={component}
+        className={classnames(
+          useText({
+            size,
+            baseline: true,
+            tone,
+          }),
+          useStackItem({
+            component,
+            space,
+            align: 'left',
+          }),
+        )}
+      >
+        <Box display="flex">
           <Box
-            borderRadius="full"
-            className={classnames(styles.currentColor, styles.size[size])}
-          />
-        </Box>
-        <Box paddingLeft={size === 'xsmall' ? 'xsmall' : 'small'}>
-          {children}
+            display="flex"
+            alignItems="center"
+            className={useLineHeightContainer(size)}
+          >
+            <Box
+              borderRadius="full"
+              className={classnames(styles.currentColor, styles.size[size])}
+            />
+          </Box>
+          <Box paddingLeft={size === 'xsmall' ? 'xsmall' : 'small'}>
+            {children}
+          </Box>
         </Box>
       </Box>
-    </Box>
+    </TextContext.Provider>
   );
 };

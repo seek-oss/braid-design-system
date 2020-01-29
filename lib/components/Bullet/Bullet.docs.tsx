@@ -2,6 +2,7 @@ import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import { Bullet } from './Bullet';
 import { BulletList } from '../BulletList/BulletList';
+import { TextLink } from '../TextLink/TextLink';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -75,6 +76,23 @@ const docs: ComponentDocs = {
           <Bullet>This is a secondary bullet.</Bullet>
           <Bullet>This is a secondary bullet.</Bullet>
           <Bullet>This is a secondary bullet.</Bullet>
+        </BulletList>
+      ),
+    },
+    {
+      label: 'With TextLink',
+      docsSite: false,
+      Example: () => (
+        <BulletList>
+          <Bullet>
+            This is a text <TextLink>link</TextLink>.
+          </Bullet>
+          <Bullet>
+            This is a secondary <TextLink>link</TextLink>.
+          </Bullet>
+          <Bullet>
+            This is a secondary <TextLink>link</TextLink>.
+          </Bullet>
         </BulletList>
       ),
     },
