@@ -1,11 +1,17 @@
-import { createElement, forwardRef, AllHTMLAttributes } from 'react';
+import {
+  createElement,
+  forwardRef,
+  AllHTMLAttributes,
+  ElementType,
+} from 'react';
 import { useBoxStyles, UseBoxStylesProps } from './useBoxStyles';
 import { renderBackgroundProvider } from './BackgroundContext';
-import { Optional, Omit } from 'utility-types';
 
 export interface BoxProps
-  extends Optional<UseBoxStylesProps, 'component'>,
-    Omit<AllHTMLAttributes<HTMLElement>, 'width' | 'height'> {}
+  extends Omit<UseBoxStylesProps, 'component'>,
+    Omit<AllHTMLAttributes<HTMLElement>, 'width' | 'height'> {
+  component?: ElementType;
+}
 
 const NamedBox = forwardRef<HTMLElement, BoxProps>(
   (
