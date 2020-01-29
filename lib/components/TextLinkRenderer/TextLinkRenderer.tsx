@@ -25,7 +25,7 @@ interface StyleProps {
 
 export interface TextLinkRendererProps {
   showVisited?: boolean;
-  touchable?: boolean;
+  hitArea?: 'standard' | 'large';
   children: (styleProps: StyleProps) => ReactElement;
 }
 
@@ -70,7 +70,7 @@ function useLinkStyles(showVisited: boolean) {
 
 function InlineLink({
   showVisited = false,
-  touchable = false,
+  hitArea = 'standard',
   children,
 }: TextLinkRendererProps) {
   const virtualTouchableStyle = useVirtualTouchable();
@@ -85,7 +85,7 @@ function InlineLink({
             component: 'a',
             cursor: 'pointer',
           }),
-          touchable && virtualTouchableStyle,
+          hitArea === 'large' && virtualTouchableStyle,
         ),
       })}
     </TextLinkRendererContext.Provider>
