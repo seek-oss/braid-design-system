@@ -18,7 +18,9 @@ const docs: ComponentDocs = {
       label: 'Text Link',
       Example: () => (
         <Text>
-          <TextLink href="">Text link</TextLink>
+          <TextLink href="" hitArea="large">
+            Text link
+          </TextLink>
         </Text>
       ),
     },
