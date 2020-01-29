@@ -97,8 +97,20 @@ const buttonLinkTextProps = {
   tone: 'link',
   baseline: false,
 } as const;
-function ButtonLink({ showVisited = false, children }: TextLinkRendererProps) {
+function ButtonLink({
+  showVisited = false,
+  hitArea,
+  children,
+}: TextLinkRendererProps) {
   const styles = useStyles(styleRefs);
+
+  if (process.env.NODE_ENV !== 'production') {
+    if (typeof hitArea === 'string') {
+      throw new Error(
+        'TextLink components should not set "hitArea" within Actions',
+      );
+    }
+  }
 
   return (
     <Box position="relative">
