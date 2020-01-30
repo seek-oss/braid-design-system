@@ -1,5 +1,5 @@
 import React from 'react';
-import { useStyles } from 'sku/treat';
+import { useStyles } from 'sku/react-treat';
 import { Box } from '../Box/Box';
 import { useBackgroundLightness } from '../Box/BackgroundContext';
 import * as styleRefs from './Loader.treat';

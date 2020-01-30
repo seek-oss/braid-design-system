@@ -5,7 +5,7 @@ import React, {
   MouseEvent,
   forwardRef,
 } from 'react';
-import { useStyles } from 'sku/treat';
+import { useStyles } from 'sku/react-treat';
 import { Box } from '..';
 import { Overlay } from '../private/Overlay/Overlay';
 import {

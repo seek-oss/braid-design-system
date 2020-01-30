@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useStyles } from 'sku/treat';
+import { useStyles } from 'sku/react-treat';
 import map from 'lodash/map';
 import groupBy from 'lodash/groupBy';
 import guides from '../guides';
