@@ -311,7 +311,7 @@ exports[`Box 1`] = `
   children?: ReactNode
   cite?: string
   classID?: string
-  className?: string
+  className?: string | number | boolean | ClassDictionary | ClassArray
   colSpan?: number
   color?: string
   cols?: number
@@ -1049,6 +1049,7 @@ exports[`BoxRenderer 1`] = `
     | "outlineFocus"
     | "small"
   children: (className: string) => ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)> | null
+  className?: string | number | boolean | ClassDictionary | ClassArray
   component: 
     | "a"
     | "abbr"
