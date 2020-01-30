@@ -7,7 +7,6 @@ import React, {
   ChangeEvent,
 } from 'react';
 import { useStyles } from 'sku/react-treat';
-import classnames from 'classnames';
 import { Omit } from 'utility-types';
 import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';
@@ -130,7 +129,7 @@ const NamedTextarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
               onFocus={onFocus}
               onPaste={onPaste}
               placeholder={placeholder}
-              className={classnames(styles.field, className)}
+              className={[styles.field, className]}
               {...fieldProps}
               ref={fieldRef}
             />

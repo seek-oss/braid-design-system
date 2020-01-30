@@ -1,6 +1,5 @@
 import React, { ReactNode, useContext, useMemo } from 'react';
 import { useStyles } from 'sku/treat';
-import classnames from 'classnames';
 import { Box } from '../Box/Box';
 import { useText } from '../../hooks/typography';
 import { BulletListContext } from '../BulletList/BulletList';
@@ -33,7 +32,7 @@ export const Bullet = ({ children }: BulletProps) => {
     <TextContext.Provider value={textContextValue}>
       <Box
         component={component}
-        className={classnames(
+        className={[
           useText({
             size,
             baseline: true,
@@ -44,7 +43,7 @@ export const Bullet = ({ children }: BulletProps) => {
             space,
             align: 'left',
           }),
-        )}
+        ]}
       >
         <Box display="flex">
           <Box
@@ -54,7 +53,7 @@ export const Bullet = ({ children }: BulletProps) => {
           >
             <Box
               borderRadius="full"
-              className={classnames(styles.currentColor, styles.size[size])}
+              className={[styles.currentColor, styles.size[size]]}
             />
           </Box>
           <Box paddingLeft={size === 'xsmall' ? 'xsmall' : 'small'}>

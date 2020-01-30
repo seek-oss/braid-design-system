@@ -1,8 +1,6 @@
 import React, { ChangeEvent, FocusEvent, createRef, Fragment } from 'react';
-import classnames from 'classnames';
 import range from 'lodash/range';
 import { isMobile } from 'is-mobile';
-import { Omit } from 'utility-types';
 import { useStyles } from 'sku/treat';
 import { Box } from '../Box/Box';
 import { Column } from '../Column/Column';
@@ -197,7 +195,7 @@ export const MonthPicker = ({
             onBlur={onBlur}
             onFocus={onFocus}
             {...fieldProps}
-            className={classnames(className, styles.nativeInput)}
+            className={[className, styles.nativeInput]}
             ref={fieldRef}
           />
           {overlays}

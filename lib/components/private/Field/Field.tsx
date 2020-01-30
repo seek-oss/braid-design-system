@@ -150,12 +150,12 @@ export const Field = forwardRef<FieldRef, InternalFieldProps>(
         position="absolute"
         transition="fast"
         pointerEvents={clearButtonVisible ? undefined : 'none'}
-        className={classnames(
+        className={[
           styles.clearButton,
           styles.clearButtonVisibility[
             clearButtonVisible ? 'visible' : 'hidden'
           ],
-        )}
+        ]}
       >
         <ClearButton
           label="Clear"

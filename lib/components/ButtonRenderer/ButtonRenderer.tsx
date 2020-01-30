@@ -7,7 +7,6 @@ import React, {
   CSSProperties,
   ComponentType,
 } from 'react';
-import classnames from 'classnames';
 import { useStyles } from 'sku/treat';
 import { useBoxStyles, UseBoxStylesProps } from '../Box/useBoxStyles';
 import {
@@ -102,7 +101,7 @@ const ButtonChildren = ({ children }: ButtonChildrenProps) => {
         pointerEvents="none"
         textAlign="center"
         overflow="hidden"
-        className={classnames(styles.content, useTouchableSpace('standard'))}
+        className={[styles.content, useTouchableSpace('standard')]}
       >
         <Text baseline={false} weight="medium" tone={buttonVariant.textTone}>
           {children}
@@ -164,23 +163,23 @@ export const ButtonRenderer = ({
   const isWeak = weight === 'weak';
   const { background, boxShadow } = useButtonVariant(weight);
 
-  const buttonStyles = classnames(
-    styles.root,
-    isWeak ? styles.weak : null,
-    useBackgroundLightness() === 'dark' ? styles.inverted : null,
-    useBoxStyles({
-      component: 'button',
-      cursor: 'pointer',
-      width: 'full',
-      position: 'relative',
-      display: 'block',
-      borderRadius: 'standard',
-      boxShadow,
-      background,
-      transform: 'touchable',
-      transition: 'touchable',
-    }),
-  );
+  const buttonStyles = useBoxStyles({
+    component: 'button',
+    cursor: 'pointer',
+    width: 'full',
+    position: 'relative',
+    display: 'block',
+    borderRadius: 'standard',
+    boxShadow,
+    background,
+    transform: 'touchable',
+    transition: 'touchable',
+    className: [
+      styles.root,
+      isWeak ? styles.weak : null,
+      useBackgroundLightness() === 'dark' ? styles.inverted : null,
+    ],
+  });
 
   const buttonChildrenContextValue = useMemo(() => ({ weight, loading }), [
     weight,

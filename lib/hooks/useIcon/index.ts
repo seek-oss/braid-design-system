@@ -71,11 +71,11 @@ export default ({ size, tone, ...titleProps }: UseIconProps): BoxProps => {
   return {
     display: isInline ? 'inlineBlock' : 'block',
     position: isInline ? 'relative' : undefined,
-    className: classnames(
+    className: [
       resolvedTone,
       styles.size,
       isInline ? styles.inline : blockSizeStyles,
-    ),
+    ],
     ...titleProps,
   };
 };
