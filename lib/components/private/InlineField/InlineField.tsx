@@ -1,6 +1,5 @@
 import React, { ReactNode, AllHTMLAttributes, forwardRef } from 'react';
 import { useStyles } from 'sku/react-treat';
-import classnames from 'classnames';
 import { Box } from '../../Box/Box';
 import { FieldLabelProps } from '../../FieldLabel/FieldLabel';
 import {
@@ -65,7 +64,7 @@ const Indicator = ({
     <Box
       height="full" // Needed for IE11
       transition="fast"
-      className={classnames(styles.checkboxIndicator)}
+      className={styles.checkboxIndicator}
     >
       <IconTick size="fill" tone={iconTone} />
     </Box>
@@ -76,7 +75,7 @@ const Indicator = ({
       width="full"
       height="full"
       borderRadius="full"
-      className={classnames(styles.radioIndicator)}
+      className={styles.radioIndicator}
     />
   );
 };
@@ -124,7 +123,7 @@ export const InlineField = forwardRef<HTMLElement, InternalInlineFieldProps>(
           value={value}
           checked={checked}
           position="absolute"
-          className={classnames(styles.realField)}
+          className={styles.realField}
           aria-describedby={messageId}
           aria-required={required}
           disabled={disabled}
@@ -134,7 +133,7 @@ export const InlineField = forwardRef<HTMLElement, InternalInlineFieldProps>(
         <Box display="flex">
           <Box
             position="relative"
-            className={classnames(styles.fakeField)}
+            className={styles.fakeField}
             background={disabled ? 'inputDisabled' : 'input'}
             borderRadius={fieldBorderRadius}
             boxShadow={
@@ -169,7 +168,7 @@ export const InlineField = forwardRef<HTMLElement, InternalInlineFieldProps>(
             component="label"
             paddingLeft="small"
             htmlFor={id}
-            className={classnames(styles.label, useVirtualTouchable())}
+            className={[styles.label, useVirtualTouchable()]}
           >
             <Text
               baseline={false}

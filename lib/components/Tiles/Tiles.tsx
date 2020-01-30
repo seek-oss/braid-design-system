@@ -1,6 +1,5 @@
 import React, { Children } from 'react';
 import { useStyles } from 'sku/react-treat';
-import classnames from 'classnames';
 import { Box } from '../Box/Box';
 import { Divider } from '../Divider/Divider';
 import { ResponsiveSpace } from '../Box/useBoxStyles';
@@ -46,11 +45,11 @@ export const Tiles = ({
       <Box display="flex" flexWrap="wrap" className={negativeMarginLeft}>
         {Children.map(children, (child, i) => (
           <Box
-            className={classnames(
+            className={[
               styles.columnsMobile[mobileColumns],
               styles.columnsTablet[tabletColumns],
               styles.columnsDesktop[desktopColumns],
-            )}
+            ]}
           >
             <Box
               // This needs to be a separate element to support IE11.

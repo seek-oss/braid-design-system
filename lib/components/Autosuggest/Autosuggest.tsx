@@ -8,7 +8,6 @@ import React, {
   KeyboardEvent,
   useEffect,
 } from 'react';
-import classnames from 'classnames';
 import { useStyles } from 'sku/react-treat';
 import parseHighlights from 'autosuggest-highlight/parse';
 import { Box } from '../Box/Box';
@@ -161,7 +160,7 @@ function GroupHeading({ children }: GroupHeadingProps) {
     <Box
       paddingX="small"
       borderRadius="standard"
-      className={classnames(
+      className={[
         styles.groupHeading,
         useTouchableSpace('xsmall'),
         useText({
@@ -170,7 +169,7 @@ function GroupHeading({ children }: GroupHeadingProps) {
           weight: 'strong',
           tone: 'formAccent',
         }),
-      )}
+      ]}
     >
       {children}
     </Box>
@@ -521,10 +520,10 @@ export function Autosuggest<Value>({
           transition="fast"
           display={['block', 'none']}
           pointerEvents={isOpen ? undefined : 'none'}
-          className={classnames(
+          className={[
             styles.backdrop,
             styles.backdropVisibility[isOpen ? 'visible' : 'hidden'],
-          )}
+          ]}
         />
       ) : null}
       <Box
@@ -580,7 +579,7 @@ export function Autosuggest<Value>({
                   width="full"
                   marginTop="xxsmall"
                   paddingY="xxsmall"
-                  className={classnames(styles.menu)}
+                  className={styles.menu}
                   ref={menuRef}
                   {...a11y.menuProps}
                 >

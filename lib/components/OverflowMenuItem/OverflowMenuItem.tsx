@@ -5,7 +5,6 @@ import React, {
   useEffect,
   ReactNode,
 } from 'react';
-import classnames from 'classnames';
 import { useStyles } from 'sku/treat';
 import { Box } from '../Box/Box';
 import { useTouchableSpace } from '../../hooks/typography';
@@ -137,10 +136,7 @@ export const OverflowMenuItem = ({
       background={isHighlighted ? 'selection' : undefined}
       cursor="pointer"
       textAlign="left"
-      className={classnames(
-        useTouchableSpace(menuItemTextSize),
-        styles.menuItem,
-      )}
+      className={[useTouchableSpace(menuItemTextSize), styles.menuItem]}
       {...buildDataAttributes(data)}
     >
       {/*

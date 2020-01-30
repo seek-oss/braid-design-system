@@ -1,6 +1,5 @@
 import React from 'react';
 import { useStyles } from 'sku/react-treat';
-import classnames from 'classnames';
 import { Box } from '../../Box/Box';
 import useIcon, { UseIconProps } from '../../../hooks/useIcon';
 import { IconChevronSvg } from './IconChevronSvg';
@@ -20,11 +19,15 @@ export const IconChevron = ({
   return (
     <Box
       component={IconChevronSvg}
-      className={classnames(styles.root, className, {
-        [styles.up]: direction === 'up',
-        [styles.left]: direction === 'left',
-        [styles.right]: direction === 'right',
-      })}
+      className={[
+        styles.root,
+        className,
+        {
+          [styles.up]: direction === 'up',
+          [styles.left]: direction === 'left',
+          [styles.right]: direction === 'right',
+        },
+      ]}
       {...iconProps}
     />
   );

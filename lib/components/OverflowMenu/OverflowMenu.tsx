@@ -7,7 +7,6 @@ import React, {
   useReducer,
   useEffect,
 } from 'react';
-import classnames from 'classnames';
 import { useStyles } from 'sku/treat';
 import { Box } from '../Box/Box';
 import { normalizeKey } from '../private/normalizeKey';
@@ -244,7 +243,7 @@ export const OverflowMenu = ({
           background="card"
           marginTop="small"
           transition="fast"
-          className={classnames(styles.menu, !open && styles.menuIsClosed)}
+          className={[styles.menu, !open && styles.menuIsClosed]}
         >
           <Box paddingY="xxsmall">
             {items.map((item, index) => (

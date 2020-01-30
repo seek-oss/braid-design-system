@@ -1,6 +1,5 @@
 import React, { AllHTMLAttributes, ChangeEvent, ReactNode } from 'react';
 import { useStyles } from 'sku/react-treat';
-import classnames from 'classnames';
 import { Box } from '../Box/Box';
 import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
 import { Text } from '../Text/Text';
@@ -49,13 +48,13 @@ export const Toggle = ({
         checked={on}
         onChange={handleChange(onChange)}
         position="absolute"
-        className={classnames(styles.realField, styles.fieldSize)}
+        className={[styles.realField, styles.fieldSize]}
       />
       <Box
         position="relative"
         display="flex"
         alignItems="center"
-        className={classnames(styles.slideContainer, styles.fieldSize)}
+        className={[styles.slideContainer, styles.fieldSize]}
       >
         <Box
           position="absolute"
@@ -103,7 +102,7 @@ export const Toggle = ({
         htmlFor={id}
         paddingLeft={align === 'left' ? 'xsmall' : undefined}
         paddingRight={align === 'right' ? 'xsmall' : undefined}
-        className={classnames(styles.label, useVirtualTouchable())}
+        className={[styles.label, useVirtualTouchable()]}
       >
         <Text baseline={false} weight={on ? 'strong' : undefined}>
           {label}

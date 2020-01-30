@@ -1,5 +1,4 @@
 import React from 'react';
-import classnames from 'classnames';
 import { useStyles } from 'sku/treat';
 import { Box } from '../Box/Box';
 import { useBackgroundLightness } from '../Box/BackgroundContext';
@@ -26,7 +25,7 @@ export const Loader = ({
           key={index}
           borderRadius="full"
           background={parentBackgroundColor === 'dark' ? 'card' : 'neutral'}
-          className={classnames(styles.indicator, styles.size[size])}
+          className={[styles.indicator, styles.size[size]]}
         />
       ))}
     </Box>

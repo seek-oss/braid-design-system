@@ -6,7 +6,6 @@ import React, {
   forwardRef,
 } from 'react';
 import { useStyles } from 'sku/treat';
-import classnames from 'classnames';
 import { Box } from '..';
 import { Overlay } from '../private/Overlay/Overlay';
 import {
@@ -113,10 +112,7 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
             }
             transition="fast"
             borderRadius="full"
-            className={classnames(
-              styles.hoverOverlay,
-              active && styles.forceActive,
-            )}
+            className={[styles.hoverOverlay, active && styles.forceActive]}
           />
           {keyboardAccessible ? (
             <Overlay

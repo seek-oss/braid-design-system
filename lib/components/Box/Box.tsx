@@ -9,7 +9,7 @@ import { renderBackgroundProvider } from './BackgroundContext';
 
 export interface BoxProps
   extends Omit<UseBoxStylesProps, 'component'>,
-    Omit<AllHTMLAttributes<HTMLElement>, 'width' | 'height'> {
+    Omit<AllHTMLAttributes<HTMLElement>, 'width' | 'height' | 'className'> {
   component?: ElementType;
 }
 
@@ -86,10 +86,11 @@ const NamedBox = forwardRef<HTMLElement, BoxProps>(
       cursor,
       pointerEvents,
       overflow,
+      className,
     });
 
     const element = createElement(component, {
-      className: `${boxStyles}${className ? ` ${className}` : ''}`,
+      className: boxStyles,
       ...restProps,
       ref,
     });

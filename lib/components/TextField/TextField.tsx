@@ -1,5 +1,4 @@
 import React, { forwardRef, Fragment, AllHTMLAttributes } from 'react';
-import { Omit } from 'utility-types';
 import { Box } from '../Box/Box';
 import { Field, FieldProps } from '../private/Field/Field';
 

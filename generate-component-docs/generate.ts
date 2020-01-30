@@ -14,6 +14,8 @@ const stringAliases: Record<string, string> = {
   // with an explicit alias 'boolean' becomes a union of 'true' | 'false'
   boolean: 'boolean',
   CSSProperties: 'CSSProperties',
+  'string | number | boolean | ClassDictionary | ClassArray':
+    'string | number | boolean | ClassDictionary | ClassArray',
 };
 
 const reactNodeTypes = [
