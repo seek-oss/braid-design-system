@@ -1,5 +1,4 @@
 import React, { Children, Fragment } from 'react';
-import classnames from 'classnames';
 import { useStyles } from 'sku/treat';
 import { Divider } from '../Divider/Divider';
 import { Align, alignToFlexAlign } from '../../utils/align';
@@ -24,22 +23,20 @@ const alignToDisplay = {
 export const useStackItem = ({ align, component, space }: UseStackProps) => {
   const styles = useStyles(styleRefs);
 
-  return classnames(
-    useBoxStyles({
-      component,
-      paddingBottom: space,
-      // If we're aligned left across all screen sizes,
-      // there's actually no alignment work to do.
-      ...(align === 'left'
-        ? {}
-        : {
-            display: mapResponsiveProp(align, alignToDisplay),
-            flexDirection: 'column',
-            alignItems: alignToFlexAlign(align),
-          }),
-    }),
-    styles.excludingLast,
-  );
+  return useBoxStyles({
+    component,
+    className: styles.excludingLast,
+    paddingBottom: space,
+    // If we're aligned left across all screen sizes,
+    // there's actually no alignment work to do.
+    ...(align === 'left'
+      ? {}
+      : {
+          display: mapResponsiveProp(align, alignToDisplay),
+          flexDirection: 'column',
+          alignItems: alignToFlexAlign(align),
+        }),
+  });
 };
 
 const validStackComponents = ['div', 'ol', 'ul'] as const;

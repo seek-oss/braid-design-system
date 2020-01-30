@@ -6,8 +6,6 @@ import React, {
   forwardRef,
 } from 'react';
 import { useStyles } from 'sku/react-treat';
-import classnames from 'classnames';
-import { Omit } from 'utility-types';
 import { Box } from '../Box/Box';
 import { Field, FieldProps } from '../private/Field/Field';
 import { IconChevron } from '../icons';
@@ -76,7 +74,7 @@ const NamedDropdown = forwardRef<HTMLSelectElement, DropdownProps>(
               onBlur={onBlur}
               onFocus={onFocus}
               placeholder={placeholder}
-              className={classnames(styles.field, className)}
+              className={[styles.field, className]}
               {...fieldProps}
               ref={fieldRef}
             >

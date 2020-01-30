@@ -1,6 +1,5 @@
 import React from 'react';
 import { useStyles } from 'sku/react-treat';
-import classnames from 'classnames';
 import { Box, BoxProps } from '../../Box/Box';
 import * as styleRefs from './Overlay.treat';
 
@@ -38,11 +37,7 @@ export const Overlay = ({
       borderRadius={borderRadius}
       boxShadow={boxShadow}
       transition={transition}
-      className={classnames(
-        styles.root,
-        !visible ? styles.hidden : null,
-        className,
-      )}
+      className={[styles.root, !visible ? styles.hidden : null, className]}
     >
       {children}
     </Box>

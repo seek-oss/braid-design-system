@@ -1,5 +1,4 @@
 import React, { AllHTMLAttributes } from 'react';
-import { Omit } from 'utility-types';
 import {
   TextLinkRenderer,
   TextLinkRendererProps,

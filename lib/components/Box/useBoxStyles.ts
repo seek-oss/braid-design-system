@@ -45,6 +45,7 @@ export interface UseBoxStylesProps {
   cursor?: keyof typeof styleRefs.cursor;
   pointerEvents?: keyof typeof styleRefs.pointerEvents;
   overflow?: keyof typeof styleRefs.overflow;
+  className?: Parameters<typeof classnames>[0];
 }
 
 export const useBoxStyles = ({
@@ -80,6 +81,7 @@ export const useBoxStyles = ({
   cursor,
   pointerEvents,
   overflow,
+  className,
 }: UseBoxStylesProps) => {
   const resetStyles = useStyles(resetStyleRefs);
   const styles = useStyles(styleRefs);
@@ -201,5 +203,6 @@ export const useBoxStyles = ({
         styles.textAlignTablet,
         styles.textAlignDesktop,
       ),
+    className,
   );
 };
