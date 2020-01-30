@@ -7,7 +7,7 @@ import React, {
   useReducer,
   useEffect,
 } from 'react';
-import { useStyles } from 'sku/treat';
+import { useStyles } from 'sku/react-treat';
 import { Box } from '../Box/Box';
 import { normalizeKey } from '../private/normalizeKey';
 import { OverflowButton } from '../iconButtons/OverflowButton/OverflowButton';

@@ -1,5 +1,5 @@
 import React, { Children, Fragment } from 'react';
-import { useStyles } from 'sku/treat';
+import { useStyles } from 'sku/react-treat';
 import { Divider } from '../Divider/Divider';
 import { Align, alignToFlexAlign } from '../../utils/align';
 import { ResponsiveProp, mapResponsiveProp } from '../../utils/responsiveProp';

@@ -2,7 +2,7 @@ import React from 'react';
 import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';
 import * as styleRefs from './Badge.treat';
-import { useStyles } from 'sku/treat';
+import { useStyles } from 'sku/react-treat';
 
 type Tone = 'info' | 'critical' | 'positive' | 'neutral' | 'promote';
 type BadgeWeight = 'strong' | 'regular';
