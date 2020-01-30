@@ -93,11 +93,13 @@ export const Documentation = () => {
             width="full"
             className={styles.header}
           >
-            <Link to="/">
-              <Box overflow="hidden" className={styles.logo}>
-                <Logo />
-              </Box>
-            </Link>
+            <Text baseline={false}>
+              <Link to="/">
+                <Box overflow="hidden" className={styles.logo}>
+                  <Logo />
+                </Box>
+              </Link>
+            </Text>
 
             <Hidden screen={!showMenuButton} above="tablet">
               <MenuButton

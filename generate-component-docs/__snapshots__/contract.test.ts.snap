@@ -3933,6 +3933,9 @@ exports[`TextLink 1`] = `
     | string
   hidden?: boolean
   high?: number
+  hitArea?: 
+    | "large"
+    | "standard"
   href?: string
   hrefLang?: string
   htmlFor?: string
@@ -4211,6 +4214,9 @@ exports[`TextLink 1`] = `
 exports[`TextLinkRenderer 1`] = `
 {
   children: (styleProps: StyleProps) => ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)>
+  hitArea?: 
+    | "large"
+    | "standard"
   showVisited?: boolean
 }
 `;
