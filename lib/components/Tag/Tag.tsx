@@ -29,7 +29,7 @@ export const Tag = ({ onClear, clearLabel = 'Clear', children }: TagProps) => {
           {children}
         </Text>
         {onClear ? (
-          <Box paddingLeft="xxsmall">
+          <Box display="flex" paddingLeft="xxsmall">
             <ClearButton label={clearLabel} onClick={onClear} />
           </Box>
         ) : null}
