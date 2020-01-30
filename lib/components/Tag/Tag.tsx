@@ -20,9 +20,9 @@ export const Tag = ({ onClear, clearLabel = 'Clear', children }: TagProps) => {
         display="flex"
         alignItems="center"
         background="neutralLight"
-        paddingX="small"
         paddingY={styles.constants.paddingY}
-        paddingRight={onClear ? 'xxsmall' : undefined}
+        paddingLeft="small"
+        paddingRight={onClear ? 'xxsmall' : 'small'}
         className={styles.borderRadius}
       >
         <Text size={styles.constants.textSize} baseline={false}>
