@@ -3446,7 +3446,7 @@ exports[`Strong 1`] = `
 
 exports[`Tag 1`] = `
 {
-  children: ReactNode
+  children: string
   clearLabel?: string
   onClear?: () => void
 }
