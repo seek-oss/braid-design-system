@@ -3443,6 +3443,14 @@ exports[`Strong 1`] = `
 }
 `;
 
+exports[`Tag 1`] = `
+{
+  children: ReactNode
+  clearLabel?: string
+  onClear?: () => void
+}
+`;
+
 exports[`Text 1`] = `
 {
   _LEGACY_SPACE_?: boolean

@@ -215,7 +215,7 @@ export const OverflowMenu = ({
   return (
     <Box className={styles.root} {...buildDataAttributes(data)}>
       <Box display="inlineBlock" position="relative">
-        <Box width="touchable" className={styles.triggerOffset}>
+        <Box className={styles.triggerOffset}>
           <OverflowButton
             label={label}
             aria-haspopup="true"

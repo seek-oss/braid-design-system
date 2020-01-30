@@ -12,8 +12,8 @@ export const virtualTouchable = style({
     minWidth: hitArea,
     height: '100%',
     top: '50%',
-    left: 0,
-    right: 0,
+    left: -10,
+    right: -10,
   },
   selectors: {
     ...debugTouchable({ after: true }),
