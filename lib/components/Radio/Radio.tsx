@@ -1,5 +1,4 @@
 import React, { forwardRef } from 'react';
-import { Omit } from 'utility-types';
 import {
   InlineField,
   InlineFieldProps,

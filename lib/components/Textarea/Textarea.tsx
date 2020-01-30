@@ -7,7 +7,6 @@ import React, {
   ChangeEvent,
 } from 'react';
 import { useStyles } from 'sku/react-treat';
-import { Omit } from 'utility-types';
 import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';
 import { Field, FieldProps } from '../private/Field/Field';
