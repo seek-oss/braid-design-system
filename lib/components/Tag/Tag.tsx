@@ -1,15 +1,15 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { useStyles } from 'sku/treat';
 import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';
 import { ClearButton } from '../iconButtons/ClearButton/ClearButton';
 import * as styleRefs from './Tag.treat';
 
-export interface TagProps {
-  onClear?: () => void;
-  clearLabel?: string;
-  children: ReactNode;
-}
+type AllOrNone<T> = T | { [K in keyof T]?: never };
+
+export type TagProps = {
+  children: string;
+} & AllOrNone<{ onClear: () => void; clearLabel: string }>;
 
 export const Tag = ({ onClear, clearLabel = 'Clear', children }: TagProps) => {
   const styles = useStyles(styleRefs);

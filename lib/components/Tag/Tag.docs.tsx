@@ -14,26 +14,34 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Clearable Tag',
-      Example: ({ handler }) => <Tag onClear={handler}>Tag</Tag>,
+      Example: ({ handler }) => (
+        <Tag onClear={handler} clearLabel="Clear tag">
+          Tag
+        </Tag>
+      ),
     },
     {
       label: 'Multiline Tag',
-      docsSite: true,
+      docsSite: false,
       Example: ({ handler }) => (
-        <Tag onClear={handler}>
-          Multiline tag
-          <br />
-          Multiline tag
+        <Tag onClear={handler} clearLabel="Clear tag">
+          The quick brown fox jumps over the lazy dog. The quick brown fox jumps
+          over the lazy dog. The quick brown fox jumps over the lazy dog. The
+          quick brown fox jumps over the lazy dog. The quick brown fox jumps
+          over the lazy dog. The quick brown fox jumps over the lazy dog. The
+          quick brown fox jumps over the lazy dog.
         </Tag>
       ),
     },
     {
       label: 'Test: Standard and clearable tags should be equal height',
-      docsSite: true,
+      docsSite: false,
       Example: ({ handler }) => (
         <Inline space="small">
           <Tag>Tag</Tag>
-          <Tag onClear={handler}>Tag</Tag>
+          <Tag onClear={handler} clearLabel="Clear tag">
+            Tag
+          </Tag>
         </Inline>
       ),
     },

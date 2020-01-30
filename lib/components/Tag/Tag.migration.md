@@ -8,6 +8,7 @@
 
 - Renamed from `Pill` to `Tag`.
 - Renamed the `onClose` prop to `onClear`.
+- When providing an `onClear` function, you must also provide a `clearLabel` prop to maintain accessibility.
 - The `buttonType` prop has been removed. The clear button is now always of type `"button"`.
 - The `text` prop has been removed as this was a backwards compatibility layer. Tag content must always be provided as a child node.
 - No longer accepts arbitrary DOM properties, e.g. `className`. Please check that everything you need is exposed via the [public API](https://seek-oss.github.io/braid-design-system/components/Tag).
@@ -19,7 +20,7 @@
 +<Tag>Content</Tag>
 
 -<Pill onClose={() => { ... }}>Content</Pill>
-+<Tag onClear={() => { ... }}>Content</Tag>
++<Tag onClear={() => { ... }} clearLabel="Clear tag">Content</Tag>
 
 -<Pill text="Content" />
 +<Tag>Content</Tag>
