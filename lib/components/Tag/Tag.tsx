@@ -12,14 +12,18 @@ export type TagProps = {
 } & AllOrNone<{ onClear: () => void; clearLabel: string }>;
 
 export const Tag = ({ onClear, clearLabel = 'Clear', children }: TagProps) => {
-  if (process.env.NODE_ENV !== 'production' && typeof children !== 'string') {
+  if (
+    process.env.NODE_ENV !== 'production' &&
+    typeof children !== 'undefined' &&
+    typeof children !== 'string'
+  ) {
     throw new Error('Tag may only contain a `string`');
   }
 
   const styles = useStyles(styleRefs);
 
   return (
-    <Box display="flex" minWidth={0}>
+    <Box display="flex">
       <Box
         display="flex"
         minWidth={0}
