@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link as ReactRouterLink } from 'react-router-dom';
-import { useStyles } from 'sku/treat';
+import { useStyles } from 'sku/react-treat';
 import didYouMean, { ReturnTypeEnums } from 'didyoumean2';
 import { useBoxStyles } from '../../../../../lib/components/Box/useBoxStyles';
 import {

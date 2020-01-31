@@ -7,7 +7,7 @@ import React, {
   CSSProperties,
   ComponentType,
 } from 'react';
-import { useStyles } from 'sku/treat';
+import { useStyles } from 'sku/react-treat';
 import { useBoxStyles, UseBoxStylesProps } from '../Box/useBoxStyles';
 import {
   BackgroundProvider,

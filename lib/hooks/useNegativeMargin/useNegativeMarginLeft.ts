@@ -1,4 +1,4 @@
-import { useStyles } from 'sku/treat';
+import { useStyles } from 'sku/react-treat';
 import classnames from 'classnames';
 import {
   resolveResponsiveProp,
