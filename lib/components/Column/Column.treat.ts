@@ -1,8 +1,6 @@
 import { style, styleMap } from 'sku/treat';
 
-export const column = style({
-  minWidth: 0,
-});
+export const column = style({});
 
 export const columnContent = style({
   selectors: {

@@ -29,7 +29,7 @@ export const Inline = ({ space = 'none', align, children }: InlineProps) => {
       >
         {Children.map(children, child =>
           child !== null && child !== undefined ? (
-            <Box paddingLeft={space} paddingTop={space}>
+            <Box minWidth={0} paddingLeft={space} paddingTop={space}>
               {child}
             </Box>
           ) : null,

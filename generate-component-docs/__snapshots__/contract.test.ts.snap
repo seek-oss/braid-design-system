@@ -673,6 +673,7 @@ exports[`Box 1`] = `
     | number
     | string
   minLength?: number
+  minWidth?: 0
   multiple?: boolean
   muted?: boolean
   name?: string
@@ -1330,6 +1331,7 @@ exports[`BoxRenderer 1`] = `
     | "xxlarge"
     | "xxsmall"
   >
+  minWidth?: 0
   overflow?: 
     | "auto"
     | "hidden"

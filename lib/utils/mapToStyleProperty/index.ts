@@ -3,10 +3,10 @@ import { Properties } from 'csstype';
 import { Style } from 'sku/treat';
 
 export const mapToStyleProperty = <
-  Map extends string,
+  Key extends string | number,
   Value extends string | number
 >(
-  map: Record<Map, Value>,
+  map: Record<Key, Value>,
   propertyName: keyof Properties,
   mapper?: (value: Value, propertyName: keyof Properties) => Style,
 ) =>

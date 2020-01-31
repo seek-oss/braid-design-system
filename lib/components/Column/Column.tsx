@@ -21,6 +21,7 @@ export const Column = ({ children, width }: ColumnProps) => {
 
   return (
     <Box
+      minWidth={0}
       width={width !== 'content' ? 'full' : undefined}
       className={[styles.column, styles.width[width!]]}
     >

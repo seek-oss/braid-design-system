@@ -316,3 +316,10 @@ const overflowRules = {
   auto: 'auto',
 };
 export const overflow = styleMap(mapToStyleProperty(overflowRules, 'overflow'));
+
+const minWidthRules = {
+  0: 0,
+};
+export const minWidth = styleMap(
+  mapToStyleProperty(minWidthRules, 'minWidth'),
+) as Record<keyof typeof minWidthRules, string>; // Remove this when 'styleMap' supports numbers as keys and it's been released to sku consumers

@@ -21,7 +21,7 @@ const docs: ComponentDocs = {
       ),
     },
     {
-      label: 'Multiline Tag',
+      label: 'Truncated Tag',
       docsSite: false,
       Example: ({ handler }) => (
         <Tag onClear={handler} clearLabel="Clear tag">
