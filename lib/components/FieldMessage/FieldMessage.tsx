@@ -50,7 +50,11 @@ export const FieldMessage = ({
             className={showMessage ? undefined : styles.noSelect}
           >
             {showMessage && tone !== 'neutral' ? (
-              <Box paddingRight="xxsmall" className={styles.fixedSize}>
+              <Box
+                paddingRight="xxsmall"
+                flexShrink={0}
+                className={styles.fixedSize}
+              >
                 {Icon[tone]}
               </Box>
             ) : null}

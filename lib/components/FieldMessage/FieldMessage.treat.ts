@@ -9,6 +9,5 @@ export const noSelect = style({
 });
 
 export const fixedSize = style({
-  flexShrink: 0,
   flexGrow: 0,
 });

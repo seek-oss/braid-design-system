@@ -15,7 +15,6 @@ const getSizeStyle = (scale: number) => ({
 });
 
 export const width = styleMap({
-  content: { flexShrink: 0 },
   '1/2': getSizeStyle(1 / 2),
   '1/3': getSizeStyle(1 / 3),
   '2/3': getSizeStyle(2 / 3),

@@ -243,6 +243,13 @@ const flexWrapRules = {
 };
 export const flexWrap = styleMap(mapToStyleProperty(flexWrapRules, 'flexWrap'));
 
+const flexShrinkRules = {
+  0: 0,
+};
+export const flexShrink = styleMap(
+  mapToStyleProperty(flexShrinkRules, 'flexShrink'),
+) as Record<keyof typeof flexShrinkRules, string>; // Remove this when 'styleMap' supports numbers as keys and it's been released to sku consumers
+
 export const background = styleMap(({ color }) =>
   mapToStyleProperty(omit(color.background, 'body'), 'background'),
 );
@@ -318,7 +325,7 @@ const overflowRules = {
 export const overflow = styleMap(mapToStyleProperty(overflowRules, 'overflow'));
 
 const minWidthRules = {
-  0: 0,
+  0: '0%', // We use a percentage here so it supports IE11: https://css-tricks.com/flexbox-truncated-text/#comment-1611744
 };
 export const minWidth = styleMap(
   mapToStyleProperty(minWidthRules, 'minWidth'),

@@ -6,7 +6,7 @@ import * as styleRefs from './Column.treat';
 
 export interface ColumnProps {
   children: ReactNode;
-  width?: keyof typeof styleRefs.width;
+  width?: keyof typeof styleRefs.width | 'content';
 }
 
 export const Column = ({ children, width }: ColumnProps) => {
@@ -23,7 +23,11 @@ export const Column = ({ children, width }: ColumnProps) => {
     <Box
       minWidth={0}
       width={width !== 'content' ? 'full' : undefined}
-      className={[styles.column, styles.width[width!]]}
+      flexShrink={width === 'content' ? 0 : undefined}
+      className={[
+        styles.column,
+        width !== 'content' ? styles.width[width!] : null,
+      ]}
     >
       <Box
         paddingLeft={[
