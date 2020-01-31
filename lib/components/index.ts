@@ -35,6 +35,7 @@ export { Radio } from './Radio/Radio';
 export { Secondary } from './Secondary/Secondary';
 export { Stack } from './Stack/Stack';
 export { Strong } from './Strong/Strong';
+export { Tag } from './Tag/Tag';
 export { Text } from './Text/Text';
 export { Textarea } from './Textarea/Textarea';
 export { TextField } from './TextField/TextField';

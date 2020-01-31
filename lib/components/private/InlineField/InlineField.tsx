@@ -132,6 +132,7 @@ export const InlineField = forwardRef<HTMLElement, InternalInlineFieldProps>(
         />
         <Box display="flex">
           <Box
+            flexShrink={0}
             position="relative"
             className={styles.fakeField}
             background={disabled ? 'inputDisabled' : 'input'}

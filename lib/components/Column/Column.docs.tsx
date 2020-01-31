@@ -4,7 +4,10 @@ import { Columns, Column, Box, Stack } from '../';
 import { Placeholder } from '../private/Placeholder/Placeholder';
 import { width as columnWidths } from '../Column/Column.treat';
 
-const widths = Object.keys(columnWidths) as Array<keyof typeof columnWidths>;
+const widths = [
+  'content',
+  ...(Object.keys(columnWidths) as Array<keyof typeof columnWidths>),
+] as const;
 
 const docs: ComponentDocs = {
   category: 'Layout',

@@ -34,9 +34,7 @@ export const realFieldPosition = style(theme => {
 
 export const realField = [realFieldBase, realFieldPosition];
 
-const fakeFieldBase = style({
-  flexShrink: 0,
-});
+const fakeFieldBase = style({});
 
 const fakeFieldSize = style(theme => {
   const size = getSize(theme);

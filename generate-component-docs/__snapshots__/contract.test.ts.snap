@@ -528,6 +528,7 @@ exports[`Box 1`] = `
     | "row"
     | "rowReverse"
   >
+  flexShrink?: 0
   flexWrap?: 
     | "nowrap"
     | "wrap"
@@ -673,6 +674,7 @@ exports[`Box 1`] = `
     | number
     | string
   minLength?: number
+  minWidth?: 0
   multiple?: boolean
   muted?: boolean
   name?: string
@@ -1241,6 +1243,7 @@ exports[`BoxRenderer 1`] = `
     | "row"
     | "rowReverse"
   >
+  flexShrink?: 0
   flexWrap?: 
     | "nowrap"
     | "wrap"
@@ -1330,6 +1333,7 @@ exports[`BoxRenderer 1`] = `
     | "xxlarge"
     | "xxsmall"
   >
+  minWidth?: 0
   overflow?: 
     | "auto"
     | "hidden"
@@ -3441,6 +3445,14 @@ exports[`Strong 1`] = `
 {
   children: ReactNode
   id?: string
+}
+`;
+
+exports[`Tag 1`] = `
+{
+  children: string
+  clearLabel?: string
+  onClear?: () => void
 }
 `;
 

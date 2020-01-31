@@ -13,6 +13,7 @@ import {
   useIconContainerSize,
   UseIconProps,
 } from '../../hooks/useIcon';
+import { useVirtualTouchable } from '../private/touchable/useVirtualTouchable';
 import { useBackground } from '../Box/BackgroundContext';
 import * as styleRefs from './IconButton.treat';
 
@@ -82,7 +83,7 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
         type="button"
         ref={forwardedRef}
         cursor="pointer"
-        className={styles.button}
+        className={[styles.button, useVirtualTouchable()]}
         aria-label={label}
         aria-haspopup={ariaHasPopUp}
         aria-expanded={ariaExpanded}
@@ -91,11 +92,6 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
         onKeyUp={onKeyUp}
         onKeyDown={onKeyDown}
         onMouseDown={handleMouseDown}
-        display="flex"
-        alignItems="center"
-        justifyContent="center"
-        width="touchable"
-        height="touchable"
         transform="touchable"
         transition="touchable"
         tabIndex={!keyboardAccessible ? -1 : undefined}
@@ -109,7 +105,11 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
           pointerEvents="none"
         >
           <Overlay
-            background={background === 'selection' ? 'card' : 'neutralLight'}
+            background={
+              !background || background === 'card' || background === 'input'
+                ? 'neutralLight'
+                : 'card'
+            }
             transition="fast"
             borderRadius="full"
             className={[styles.hoverOverlay, active && styles.forceActive]}

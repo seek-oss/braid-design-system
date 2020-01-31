@@ -148,6 +148,11 @@ export const Field = forwardRef<FieldRef, InternalFieldProps>(
     const clearButton = onClear ? (
       <Box
         position="absolute"
+        width="touchable"
+        height="touchable"
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
         transition="fast"
         pointerEvents={clearButtonVisible ? undefined : 'none'}
         className={[
