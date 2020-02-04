@@ -70,7 +70,7 @@ export const Alert = ({
         </Column>
         {onClose ? (
           <Column width="content">
-            <ClearButton label={closeLabel} />
+            <ClearButton tone="neutral" label={closeLabel} onClick={onClose} />
           </Column>
         ) : null}
       </Columns>

@@ -14,7 +14,10 @@ import {
   UseIconProps,
 } from '../../hooks/useIcon';
 import { useVirtualTouchable } from '../private/touchable/useVirtualTouchable';
-import { useBackground } from '../Box/BackgroundContext';
+import {
+  useBackground,
+  useBackgroundLightness,
+} from '../Box/BackgroundContext';
 import * as styleRefs from './IconButton.treat';
 
 type NativeButtonProps = AllHTMLAttributes<HTMLButtonElement>;
@@ -29,6 +32,7 @@ export interface IconButtonProps {
   'aria-expanded'?: NativeButtonProps['aria-expanded'];
   keyboardAccessible?: boolean;
   active?: boolean;
+  tone?: 'neutral' | 'secondary';
 }
 
 export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
@@ -43,6 +47,7 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
       'aria-expanded': ariaExpanded,
       keyboardAccessible = true,
       active = false,
+      tone = 'secondary',
       children,
     },
     forwardedRef,
@@ -51,6 +56,7 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
     const iconContainerStyles = useIconContainerSize();
     const iconStyles = useIconSize();
     const background = useBackground();
+    const backgroundLightness = useBackgroundLightness();
 
     const handleMouseDown = useCallback(
       (event: MouseEvent<HTMLButtonElement>) => {
@@ -112,18 +118,22 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
             }
             transition="fast"
             borderRadius="full"
-            className={[styles.hoverOverlay, active && styles.forceActive]}
+            className={[
+              styles.hoverOverlay,
+              active && styles.forceActive,
+              backgroundLightness === 'dark' && styles.darkBackground,
+            ]}
           />
           {keyboardAccessible ? (
             <Overlay
               boxShadow="outlineFocus"
               transition="fast"
               borderRadius="full"
-              className={styles.focusOverlay}
+              className={[styles.focusOverlay]}
             />
           ) : null}
           <Box position="relative" className={iconStyles}>
-            {children({ size: 'fill', tone: 'secondary' })}
+            {children({ size: 'fill', tone })}
           </Box>
         </Box>
       </Box>
