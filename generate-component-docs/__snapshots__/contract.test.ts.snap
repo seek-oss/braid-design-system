@@ -9,7 +9,9 @@ exports[`Actions 1`] = `
 exports[`Alert 1`] = `
 {
   children: ReactNode
+  closeLabel?: string
   id?: string
+  onClose?: () => void
   tone?: 
     | "critical"
     | "info"
@@ -1571,8 +1573,8 @@ exports[`Columns 1`] = `
     | "top"
   >
   children: 
+    | (ReactElement<ColumnProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)> | null)[]
     | ReactElement<ColumnProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)>
-    | ReactElement<ColumnProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)>[]
   collapseBelow?: 
     | "desktop"
     | "tablet"
