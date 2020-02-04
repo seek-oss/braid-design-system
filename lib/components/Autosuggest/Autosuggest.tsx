@@ -128,14 +128,22 @@ function SuggestionItem({
           </Text>
         </Box>
         {typeof onClear === 'function' ? (
-          <ClearButton
-            label={clearLabel || 'Clear suggestion'}
-            onClick={(event: MouseEvent) => {
-              event.preventDefault();
-              event.stopPropagation();
-              onClear(valueFromSuggestion(suggestion));
-            }}
-          />
+          <Box
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            width="touchable"
+            height="touchable"
+          >
+            <ClearButton
+              label={clearLabel || 'Clear suggestion'}
+              onClick={(event: MouseEvent) => {
+                event.preventDefault();
+                event.stopPropagation();
+                onClear(valueFromSuggestion(suggestion));
+              }}
+            />
+          </Box>
         ) : null}
       </Box>
     </Box>

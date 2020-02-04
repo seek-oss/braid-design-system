@@ -34,6 +34,7 @@ const NamedBox = forwardRef<HTMLElement, BoxProps>(
       display,
       flexDirection,
       flexWrap,
+      flexShrink,
       alignItems,
       justifyContent,
       textAlign,
@@ -48,6 +49,7 @@ const NamedBox = forwardRef<HTMLElement, BoxProps>(
       cursor,
       pointerEvents,
       overflow,
+      minWidth,
       className,
       ...restProps
     },
@@ -72,6 +74,7 @@ const NamedBox = forwardRef<HTMLElement, BoxProps>(
       display,
       flexDirection,
       flexWrap,
+      flexShrink,
       alignItems,
       justifyContent,
       textAlign,
@@ -86,6 +89,7 @@ const NamedBox = forwardRef<HTMLElement, BoxProps>(
       cursor,
       pointerEvents,
       overflow,
+      minWidth,
       className,
     });
 

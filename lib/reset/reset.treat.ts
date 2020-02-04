@@ -8,6 +8,7 @@ export const base = style({
   fontSize: '100%',
   font: 'inherit',
   verticalAlign: 'baseline',
+  WebkitTapHighlightColor: 'transparent',
 });
 
 // HTML5 display-role reset for older browsers
