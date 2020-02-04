@@ -13,6 +13,7 @@ export type ClearButtonProps = Pick<
   | 'active'
   | 'aria-haspopup'
   | 'aria-expanded'
+  | 'tone'
 >;
 
 export const ClearButton = forwardRef<HTMLButtonElement, ClearButtonProps>(
@@ -27,6 +28,7 @@ export const ClearButton = forwardRef<HTMLButtonElement, ClearButtonProps>(
       active,
       'aria-haspopup': ariaHasPopUp,
       'aria-expanded': ariaExpanded,
+      tone,
     },
     forwardedRef,
   ) => {
@@ -41,6 +43,7 @@ export const ClearButton = forwardRef<HTMLButtonElement, ClearButtonProps>(
         active={active}
         aria-haspopup={ariaHasPopUp}
         aria-expanded={ariaExpanded}
+        tone={tone}
         ref={forwardedRef}
       >
         {iconProps => <IconClear {...iconProps} />}
