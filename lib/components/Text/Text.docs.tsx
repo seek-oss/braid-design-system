@@ -40,8 +40,11 @@ const docs: ComponentDocs = {
       label: 'Text on Brand Background',
       Container,
       Example: () => (
-        <Box background="brand" padding="xsmall">
-          <Text>Brand background.</Text>
+        <Box background="brand" padding="medium">
+          <Stack space="small">
+            <Text>Neutral text</Text>
+            <Text tone="secondary">Secondary text</Text>
+          </Stack>
         </Box>
       ),
     },

@@ -108,16 +108,18 @@ export function useTextTone({
   }
 
   if (tone !== 'neutral') {
-    return styles.tone[tone];
+    return tone in styles.invertableTone
+      ? styles.invertableTone[tone as keyof typeof styles.invertableTone][
+          backgroundLightness
+        ]
+      : styles.tone[tone];
   }
 
   if (inTextLinkRenderer) {
     return styles.tone.link;
   }
 
-  return backgroundLightness === 'light'
-    ? styles.neutral
-    : styles.neutralInverted;
+  return styles.invertableTone.neutral[backgroundLightness];
 }
 
 export function useTouchableSpace(size: keyof typeof styleRefs.touchable) {
