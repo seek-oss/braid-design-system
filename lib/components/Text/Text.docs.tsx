@@ -4,6 +4,8 @@ import { ComponentDocs } from '../../../site/src/types';
 import { Text } from './Text';
 import { Box } from '../Box/Box';
 import { Stack } from '../Stack/Stack';
+import { Column } from '../Column/Column';
+import { Columns } from '../Columns/Columns';
 import {
   background as boxBackgrounds,
   textAlign,
@@ -134,8 +136,17 @@ const docs: ComponentDocs = {
         return (
           <Fragment>
             {backgrounds.sort().map(background => (
-              <Box key={background} background={background} paddingY="xsmall">
-                <Text>{background}</Text>
+              <Box key={background} background={background} padding="xsmall">
+                <Columns space="medium">
+                  <Column>
+                    <Text size="small">{background}</Text>
+                  </Column>
+                  <Column width="content">
+                    <Text size="small" tone="secondary">
+                      Secondary
+                    </Text>
+                  </Column>
+                </Columns>
               </Box>
             ))}
           </Fragment>
