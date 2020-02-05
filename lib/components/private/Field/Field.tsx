@@ -236,7 +236,7 @@ export const Field = forwardRef<FieldRef, InternalFieldProps>(
           </BackgroundProvider>
         </Box>
 
-        {message || secondaryMessage || reserveMessageSpace ? (
+        {message || reserveMessageSpace ? (
           <FieldMessage
             id={messageId}
             tone={tone}
