@@ -35,7 +35,7 @@ export const FieldMessage = ({
     throw new Error(`Invalid tone: ${tone}`);
   }
 
-  if (!message && !reserveMessageSpace) {
+  if (!message && !secondaryMessage && !reserveMessageSpace) {
     return null;
   }
 

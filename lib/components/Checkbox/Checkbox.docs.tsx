@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import { Checkbox } from './Checkbox';
-import { Text } from '../Text/Text';
+import { Checkbox, Text } from '../';
+import { Checkbox as PlayroomCheckbox } from '../../playroom/components';
 
 const docs: ComponentDocs = {
   category: 'Interaction',
@@ -58,6 +58,16 @@ const docs: ComponentDocs = {
           <Text>This text is visible when the checkbox is checked.</Text>
         </Checkbox>
       ),
+    },
+  ],
+  snippets: [
+    {
+      name: 'Unchecked',
+      code: <PlayroomCheckbox label="Label" checked={false} />,
+    },
+    {
+      name: 'Checked',
+      code: <PlayroomCheckbox label="Label" checked={true} />,
     },
   ],
 };

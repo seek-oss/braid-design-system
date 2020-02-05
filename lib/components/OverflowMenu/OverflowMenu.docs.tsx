@@ -1,8 +1,6 @@
 import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import { Box } from '../Box/Box';
-import { OverflowMenu } from './OverflowMenu';
-import { OverflowMenuItem } from '../OverflowMenuItem/OverflowMenuItem';
+import { Box, OverflowMenu, OverflowMenuItem } from '../';
 
 const docs: ComponentDocs = {
   category: 'Interaction',
@@ -26,6 +24,17 @@ const docs: ComponentDocs = {
             </OverflowMenuItem>
           </OverflowMenu>
         </Box>
+      ),
+    },
+  ],
+  snippets: [
+    {
+      name: 'Standard',
+      code: (
+        <OverflowMenu label="Options">
+          <OverflowMenuItem>Option</OverflowMenuItem>
+          <OverflowMenuItem>Option</OverflowMenuItem>
+        </OverflowMenu>
       ),
     },
   ],

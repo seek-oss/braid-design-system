@@ -46,6 +46,30 @@ const docs: ComponentDocs = {
       ),
     },
   ],
+  snippets: [
+    {
+      name: 'Standard',
+      code: <Tag>Tag</Tag>,
+    },
+    {
+      name: 'Dismissable',
+      code: (
+        <Tag onClear={() => {}} clearLabel="Dismiss">
+          Tag
+        </Tag>
+      ),
+    },
+    {
+      name: 'Group',
+      code: (
+        <Inline space="small">
+          <Tag>Tag</Tag>
+          <Tag>Tag</Tag>
+          <Tag>Tag</Tag>
+        </Inline>
+      ),
+    },
+  ],
 };
 
 export default docs;

@@ -1,9 +1,7 @@
 import React, { useState, ReactNode } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import { TextField } from './TextField';
-import { TextLink } from '../TextLink/TextLink';
-import { Box } from '../Box/Box';
-import { IconSearch } from '../icons';
+import { Box, IconSearch, TextField, TextLink } from '../';
+import { TextField as PlayroomTextField } from '../../playroom/components';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <div style={{ maxWidth: '300px' }}>{children}</div>
@@ -168,6 +166,45 @@ const docs: ComponentDocs = {
             value="Senior Developer"
           />
         </Box>
+      ),
+    },
+  ],
+  snippets: [
+    {
+      name: 'Standard',
+      code: <PlayroomTextField label="Label" />,
+    },
+    {
+      name: 'Optional',
+      code: <PlayroomTextField label="Label" secondaryLabel="Optional" />,
+    },
+    {
+      name: 'With error',
+      code: (
+        <PlayroomTextField label="Label" tone="critical" message="Required" />
+      ),
+    },
+    {
+      name: 'With description',
+      code: (
+        <PlayroomTextField
+          label="Label"
+          description="More detailed description of field."
+        />
+      ),
+    },
+    {
+      name: 'Search field with icon',
+      code: <PlayroomTextField icon={<IconSearch />} placeholder="Search" />,
+    },
+    {
+      name: 'Password field',
+      code: (
+        <PlayroomTextField
+          label="Password"
+          tertiaryLabel={<TextLink>Forgot password?</TextLink>}
+          type="password"
+        />
       ),
     },
   ],

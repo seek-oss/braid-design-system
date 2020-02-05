@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import { Badge } from './Badge';
+import { Badge, Inline } from '../';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -65,6 +65,98 @@ const docs: ComponentDocs = {
         <Badge tone="neutral" weight="strong">
           Neutral
         </Badge>
+      ),
+    },
+  ],
+  snippets: [
+    {
+      name: 'Info',
+      code: (
+        <Inline space="xsmall">
+          <Badge tone="info">Badge</Badge>
+        </Inline>
+      ),
+    },
+    {
+      name: 'Info (strong)',
+      code: (
+        <Inline space="xsmall">
+          <Badge tone="info" weight="strong">
+            Badge
+          </Badge>
+        </Inline>
+      ),
+    },
+    {
+      name: 'Promote',
+      code: (
+        <Inline space="xsmall">
+          <Badge tone="promote">Badge</Badge>
+        </Inline>
+      ),
+    },
+    {
+      name: 'Promote (strong)',
+      code: (
+        <Inline space="xsmall">
+          <Badge tone="promote" weight="strong">
+            Badge
+          </Badge>
+        </Inline>
+      ),
+    },
+    {
+      name: 'Positive',
+      code: (
+        <Inline space="xsmall">
+          <Badge tone="positive">Badge</Badge>
+        </Inline>
+      ),
+    },
+    {
+      name: 'Positive (strong)',
+      code: (
+        <Inline space="xsmall">
+          <Badge tone="positive" weight="strong">
+            Badge
+          </Badge>
+        </Inline>
+      ),
+    },
+    {
+      name: 'Critical',
+      code: (
+        <Inline space="xsmall">
+          <Badge tone="critical">Badge</Badge>
+        </Inline>
+      ),
+    },
+    {
+      name: 'Critical (strong)',
+      code: (
+        <Inline space="xsmall">
+          <Badge tone="critical" weight="strong">
+            Badge
+          </Badge>
+        </Inline>
+      ),
+    },
+    {
+      name: 'Neutral',
+      code: (
+        <Inline space="xsmall">
+          <Badge tone="neutral">Badge</Badge>
+        </Inline>
+      ),
+    },
+    {
+      name: 'Neutral (strong)',
+      code: (
+        <Inline space="xsmall">
+          <Badge tone="neutral" weight="strong">
+            Badge
+          </Badge>
+        </Inline>
       ),
     },
   ],

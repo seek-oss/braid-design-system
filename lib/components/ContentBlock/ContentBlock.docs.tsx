@@ -30,6 +30,24 @@ const docs: ComponentDocs = {
       ),
     },
   ],
+  snippets: [
+    {
+      name: 'Standard',
+      code: (
+        <ContentBlock>
+          <Placeholder height={100} label="Content block" />
+        </ContentBlock>
+      ),
+    },
+    {
+      name: 'Large',
+      code: (
+        <ContentBlock width="large">
+          <Placeholder height={100} label="Content block" />
+        </ContentBlock>
+      ),
+    },
+  ],
 };
 
 export default docs;

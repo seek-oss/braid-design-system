@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { Optional } from 'utility-types';
 import { useFallbackId } from '../../playroom/utils';
-import { TextField, TextFieldProps } from './TextField';
+import { TextField as BraidTextField, TextFieldProps } from './TextField';
 
 type PlayroomTextFieldProps = Optional<
   TextFieldProps,
   'id' | 'value' | 'onChange'
 >;
 
-export const PlayroomTextField = ({
+export const TextField = ({
   id,
   value,
   onChange,
@@ -18,7 +18,7 @@ export const PlayroomTextField = ({
   const [fallbackValue, setFallbackValue] = useState('');
 
   return (
-    <TextField
+    <BraidTextField
       id={id ?? fallbackId}
       value={value ?? fallbackValue}
       onChange={

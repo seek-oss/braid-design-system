@@ -1,13 +1,15 @@
 import React, { Fragment } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import { TextLink } from './TextLink';
-import { Text } from '../Text/Text';
-import { Heading } from '../Heading/Heading';
-import { Actions } from '../Actions/Actions';
-import { Button } from '../Button/Button';
-import { IconChevron } from '../icons';
+import {
+  Actions,
+  Box,
+  Button,
+  Heading,
+  IconChevron,
+  Text,
+  TextLink,
+} from '../';
 import { background as boxBackgrounds } from '../Box/useBoxStyles.treat';
-import { Box } from '../Box/Box';
 
 const docs: ComponentDocs = {
   category: 'Interaction',
@@ -158,6 +160,36 @@ const docs: ComponentDocs = {
           </Fragment>
         );
       },
+    },
+  ],
+  snippets: [
+    {
+      name: 'Inline link',
+      code: (
+        <Text>
+          <TextLink href="">Link text</TextLink>
+        </Text>
+      ),
+    },
+    {
+      name: 'Large hit area',
+      code: (
+        <Text>
+          <TextLink href="" hitArea="large">
+            Large hit area
+          </TextLink>
+        </Text>
+      ),
+    },
+    {
+      name: 'Visited',
+      code: (
+        <Text>
+          <TextLink href="" showVisited>
+            Visited link
+          </TextLink>
+        </Text>
+      ),
     },
   ],
 };
