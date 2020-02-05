@@ -79,7 +79,7 @@ const docs: ComponentDocs = {
   ],
   snippets: [
     {
-      name: 'Xxsmall Space',
+      name: 'XXSmall Space',
       code: (
         <Stack space="xxsmall">
           <Placeholder height={40} />
@@ -89,7 +89,7 @@ const docs: ComponentDocs = {
       ),
     },
     {
-      name: 'Xsmall Space',
+      name: 'XSmall Space',
       code: (
         <Stack space="xsmall">
           <Placeholder height={40} />

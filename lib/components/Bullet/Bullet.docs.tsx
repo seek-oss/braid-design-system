@@ -97,7 +97,7 @@ const docs: ComponentDocs = {
   ],
   snippets: [
     {
-      name: 'Xsmall Space',
+      name: 'XSmall Space',
       code: (
         <BulletList space="xsmall">
           <Bullet>Bullet</Bullet>
