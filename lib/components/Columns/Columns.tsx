@@ -29,7 +29,10 @@ export const ColumnsContext = createContext<ColumnsContextValue>({
 });
 
 export interface ColumnsProps {
-  children: Array<ReactElement<ColumnProps>> | ReactElement<ColumnProps>;
+  children:
+    | Array<ReactElement<ColumnProps> | null>
+    | ReactElement<ColumnProps>
+    | null;
   collapseBelow?: ResponsiveRangeProps['below'];
   reverse?: boolean;
   alignY?: ResponsiveProp<AlignY>;

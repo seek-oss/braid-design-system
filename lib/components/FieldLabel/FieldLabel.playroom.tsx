@@ -16,8 +16,8 @@ export const FieldLabel = ({
   return (
     <BraidFieldLabel
       id={id ?? fallbackId}
-      {...restProps}
       htmlFor={htmlFor ?? fallbackFor}
+      {...restProps}
     />
   );
 };

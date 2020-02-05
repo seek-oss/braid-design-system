@@ -14,6 +14,14 @@ const docs: ComponentDocs = {
       ),
     },
     {
+      label: 'Dismissible alert',
+      Example: () => (
+        <Alert onClose={() => {}} closeLabel="Close info alert">
+          This is an important piece of information.
+        </Alert>
+      ),
+    },
+    {
       label: 'Strong Info Alert',
       Example: () => (
         <Alert weight="strong" tone="info">
@@ -67,49 +75,57 @@ const docs: ComponentDocs = {
   snippets: [
     {
       name: 'Critical',
-      code: <Alert tone="critical">Alert</Alert>,
+      code: <Alert tone="critical">Critical Alert</Alert>,
     },
     {
       name: 'Critical (Strong)',
       code: (
         <Alert tone="critical" weight="strong">
-          Alert
+          Critical Alert
         </Alert>
       ),
     },
     {
       name: 'Positive',
-      code: <Alert tone="positive">Alert</Alert>,
+      code: <Alert tone="positive">Positive Alert</Alert>,
     },
     {
       name: 'Positive (Strong)',
       code: (
         <Alert tone="positive" weight="strong">
-          Alert
+          Positive Alert
         </Alert>
       ),
     },
     {
       name: 'Info',
-      code: <Alert tone="info">Alert</Alert>,
+      code: <Alert tone="info">Info Alert</Alert>,
     },
     {
       name: 'Info (Strong)',
       code: (
         <Alert tone="info" weight="strong">
-          Alert
+          Info Alert
         </Alert>
       ),
     },
     {
       name: 'Promote',
-      code: <Alert tone="promote">Alert</Alert>,
+      code: <Alert tone="promote">Promote Alert</Alert>,
     },
     {
       name: 'Promote (Strong)',
       code: (
         <Alert tone="promote" weight="strong">
-          Alert
+          Promote Alert
+        </Alert>
+      ),
+    },
+    {
+      name: 'Dismissible alert',
+      code: (
+        <Alert onClose={() => {}} closeLabel="Close">
+          Dismissible Alert
         </Alert>
       ),
     },
