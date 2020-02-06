@@ -116,7 +116,7 @@ const makeChangeHandler = <
   }
 };
 
-export const MonthPicker = ({
+const MonthPicker = ({
   id,
   value,
   label,
@@ -257,3 +257,7 @@ export const MonthPicker = ({
 
   return renderNativeInput ? nativeField : customFieldGroup;
 };
+
+MonthPicker.displayName = 'MonthPicker';
+
+export { MonthPicker };
