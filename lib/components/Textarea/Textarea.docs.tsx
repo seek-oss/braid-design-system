@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useState } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import { Textarea } from './Textarea';
 import { TextLink } from '../TextLink/TextLink';
@@ -79,7 +79,7 @@ const docs: ComponentDocs = {
       ),
     },
     {
-      label: 'Textarea with postive message',
+      label: 'Textarea with positive message',
       Container,
       Example: ({ id, handler }) => (
         <Textarea
@@ -93,30 +93,59 @@ const docs: ComponentDocs = {
       ),
     },
     {
-      label: 'Textarea with a limit',
+      label: 'Textarea grow field with typing, limited to 6 lines',
       Container,
-      Example: ({ id, handler }) => (
-        <Textarea
-          id={id}
-          value=""
-          onChange={handler}
-          label="Do you like Braid?"
-          lineLimit={100}
-        />
-      ),
+      Example: ({ id }) => {
+        const [value, setValue] = useState('');
+
+        return (
+          <Textarea
+            id={id}
+            value={value}
+            onChange={e => setValue(e.currentTarget.value)}
+            label="Do you like Braid?"
+            lineLimit={6}
+          />
+        );
+      },
     },
     {
-      label: 'Textarea with value exceeding limit',
+      label: 'Textarea nearing character limit, eg. 50 characters',
       Container,
-      Example: ({ id, handler }) => (
-        <Textarea
-          id={id}
-          value="Yes I do"
-          onChange={handler}
-          label="Do you like Braid?"
-          lineLimit={5}
-        />
-      ),
+      Example: ({ id }) => {
+        const [value, setValue] = useState(
+          'The text is nearing the 50 character limit',
+        );
+
+        return (
+          <Textarea
+            id={id}
+            value={value}
+            onChange={e => setValue(e.currentTarget.value)}
+            label="Do you like Braid?"
+            characterLimit={50}
+          />
+        );
+      },
+    },
+    {
+      label: 'Textarea exceeding character limit, eg. > 50 characters',
+      Container,
+      Example: ({ id }) => {
+        const [value, setValue] = useState(
+          'The long piece of text exceeding the specified 50 character limit',
+        );
+
+        return (
+          <Textarea
+            id={id}
+            value={value}
+            onChange={e => setValue(e.currentTarget.value)}
+            label="Do you like Braid?"
+            characterLimit={50}
+          />
+        );
+      },
     },
   ],
 };
