@@ -21,7 +21,7 @@
     "prelint": "yarn setup",
     "prestart": "yarn setup",
     "prebuild": "yarn setup",
-    "build": "concurrently -n \"docs-site,playroom\" -c \"magenta,greenBright\" \"sku build\" \"sku build-playroom\"",
+    "build": "concurrently -n \"docs-site,playroom\" -c \"magenta,greenBright\" \"sku build\" \"NODE_ENV=production sku build-playroom\"",
     "playroom": "sku playroom",
     "storybook": "sku storybook",
     "chromatic": "sku chromatic",
