@@ -14,6 +14,14 @@ const docs: ComponentDocs = {
       ),
     },
     {
+      label: 'Dismissible alert',
+      Example: () => (
+        <Alert onClose={() => {}} closeLabel="Close info alert">
+          This is an important piece of information.
+        </Alert>
+      ),
+    },
+    {
       label: 'Strong Info Alert',
       Example: () => (
         <Alert weight="strong" tone="info">

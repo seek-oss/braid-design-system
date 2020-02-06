@@ -1,6 +1,5 @@
 import { SVGProps as ReactSVGProps } from 'react';
-
-type AllOrNone<T> = T | { [K in keyof T]?: never };
+import { AllOrNone } from '../private/AllOrNone';
 
 export type OptionalTitle = AllOrNone<{ title: string; titleId: string }>;
 
