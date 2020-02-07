@@ -1,8 +1,8 @@
 import React, { ReactNode } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import { Box } from '../Box/Box';
-import { Inline, InlineProps } from './Inline';
 import { Placeholder } from '../private/Placeholder/Placeholder';
+import { InlineProps } from './Inline';
+import { Box, Inline } from '../';
 import { padding } from '../Box/useBoxStyles.treat';
 
 const spaces = Object.keys(padding.top).filter(
@@ -104,6 +104,48 @@ const docs: ComponentDocs = {
           <Placeholder width={48} height={48} />
           <Placeholder width={48} height={48} />
           <Placeholder width={48} height={48} />
+          <Placeholder width={48} height={48} />
+          <Placeholder width={48} height={48} />
+          <Placeholder width={48} height={48} />
+        </Inline>
+      ),
+    },
+  ],
+  snippets: [
+    {
+      name: 'Small space',
+      code: (
+        <Inline space="small">
+          <Placeholder width={48} height={48} />
+          <Placeholder width={48} height={48} />
+          <Placeholder width={48} height={48} />
+        </Inline>
+      ),
+    },
+    {
+      name: 'Medium space',
+      code: (
+        <Inline space="medium">
+          <Placeholder width={48} height={48} />
+          <Placeholder width={48} height={48} />
+          <Placeholder width={48} height={48} />
+        </Inline>
+      ),
+    },
+    {
+      name: 'Responsive space',
+      code: (
+        <Inline space={['small', 'large']}>
+          <Placeholder width={48} height={48} />
+          <Placeholder width={48} height={48} />
+          <Placeholder width={48} height={48} />
+        </Inline>
+      ),
+    },
+    {
+      name: 'Responsive alignment',
+      code: (
+        <Inline space="small" align={['center', 'left']}>
           <Placeholder width={48} height={48} />
           <Placeholder width={48} height={48} />
           <Placeholder width={48} height={48} />

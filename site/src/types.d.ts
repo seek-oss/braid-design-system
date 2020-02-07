@@ -1,4 +1,6 @@
 import { ComponentType, ReactNode } from 'react';
+import { Snippets } from 'sku/playroom';
+import { Optional } from 'utility-types';
 
 export interface AppConfig {
   playroomUrl: string;
@@ -17,12 +19,17 @@ export interface Page {
   Component: ComponentType;
 }
 
+interface DocsSnippet extends Optional<Snippets[number], 'group'> {
+  code: ReactChild;
+}
+
 export interface ComponentDocs {
   category: 'Logic' | 'Layout' | 'Content' | 'Interaction' | 'Icon';
   migrationGuide?: boolean;
   foundation?: boolean;
   screenshotWidths: Array<320 | 768 | 1200>;
   examples: ComponentExample[];
+  snippets?: DocsSnippet[];
 }
 
 export interface ComponentExample {

@@ -1,8 +1,7 @@
 import React, { Fragment } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import { Loader } from './Loader';
 import { background as boxBackgrounds } from '../Box/useBoxStyles.treat';
-import { Box } from '../Box/Box';
+import { Box, Loader } from '../';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -52,6 +51,7 @@ const docs: ComponentDocs = {
       },
     },
   ],
+  snippets: [{ name: 'Standard', code: <Loader /> }],
 };
 
 export default docs;

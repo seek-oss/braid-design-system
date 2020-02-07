@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { Optional } from 'utility-types';
 import { useFallbackId } from '../../playroom/utils';
-import { Dropdown, DropdownProps } from './Dropdown';
+import { Dropdown as BraidDropdown, DropdownProps } from './Dropdown';
 
 type PlayroomDropdownProps = Optional<
   DropdownProps,
   'id' | 'value' | 'onChange'
 >;
 
-export const PlayroomDropdown = ({
+export const Dropdown = ({
   id,
   value,
   onChange,
@@ -20,7 +20,7 @@ export const PlayroomDropdown = ({
   );
 
   return (
-    <Dropdown
+    <BraidDropdown
       id={id ?? fallbackId}
       value={value === undefined ? fallbackValue : value}
       onChange={

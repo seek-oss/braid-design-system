@@ -1,9 +1,7 @@
 import React, { Fragment, ReactNode } from 'react';
 import { titleCase } from 'change-case';
 import { ComponentDocs } from '../../../site/src/types';
-import { Text } from './Text';
-import { Box } from '../Box/Box';
-import { Stack } from '../Stack/Stack';
+import { Box, Text, Stack, Column, Columns } from '../';
 import {
   background as boxBackgrounds,
   textAlign,
@@ -40,8 +38,11 @@ const docs: ComponentDocs = {
       label: 'Text on Brand Background',
       Container,
       Example: () => (
-        <Box background="brand" padding="xsmall">
-          <Text>Brand background.</Text>
+        <Box background="brand" padding="medium">
+          <Stack space="small">
+            <Text>Neutral text</Text>
+            <Text tone="secondary">Secondary text</Text>
+          </Stack>
         </Box>
       ),
     },
@@ -131,13 +132,56 @@ const docs: ComponentDocs = {
         return (
           <Fragment>
             {backgrounds.sort().map(background => (
-              <Box key={background} background={background} paddingY="xsmall">
-                <Text>{background}</Text>
+              <Box key={background} background={background} padding="xsmall">
+                <Columns space="medium">
+                  <Column>
+                    <Text size="small">{background}</Text>
+                  </Column>
+                  <Column width="content">
+                    <Text size="small" tone="secondary">
+                      Secondary
+                    </Text>
+                  </Column>
+                </Columns>
               </Box>
             ))}
           </Fragment>
         );
       },
+    },
+  ],
+  snippets: [
+    {
+      name: 'Standard',
+      code: <Text>Standard text</Text>,
+    },
+    {
+      name: 'Small',
+      code: <Text size="small">Small text</Text>,
+    },
+    {
+      name: 'Large',
+      code: <Text size="large">Large text</Text>,
+    },
+    {
+      name: 'Tone (critical)',
+      code: <Text tone="critical">Critical text</Text>,
+    },
+    {
+      name: 'Tone (positive)',
+      code: <Text tone="positive">Positive text</Text>,
+    },
+    {
+      name: 'Tone (secondary)',
+      code: <Text tone="secondary">Secondary text</Text>,
+    },
+    {
+      name: 'Weight (strong)',
+      code: <Text weight="strong">Strong text</Text>,
+    },
+    {
+      name: 'Weight (medium)',
+      code: <Text weight="medium">Medium text</Text>,
     },
   ],
 };

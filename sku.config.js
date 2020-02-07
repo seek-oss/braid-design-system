@@ -24,6 +24,7 @@ module.exports = {
   provideDefaultChromaticViewports: false,
   playroomTitle: 'BRAID',
   playroomComponents: './lib/playroom/components.ts',
+  playroomSnippets: './lib/playroom/snippets.ts',
   playroomThemes: './lib/themes/index.ts',
   playroomFrameComponent: './lib/playroom/FrameComponent.tsx',
   playroomTarget: './site/dist/playroom',
