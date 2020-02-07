@@ -295,7 +295,7 @@ const docs: ComponentDocs = {
       ),
     },
     {
-      name: 'Location search',
+      name: 'With icon',
       code: (
         <Autosuggest
           id="location"

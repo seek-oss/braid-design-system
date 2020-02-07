@@ -194,16 +194,15 @@ const docs: ComponentDocs = {
       ),
     },
     {
-      name: 'Search field with icon',
+      name: 'With icon',
       code: <PlayroomTextField icon={<IconSearch />} placeholder="Search" />,
     },
     {
-      name: 'Password field',
+      name: 'With tertiary label',
       code: (
         <PlayroomTextField
-          label="Password"
-          tertiaryLabel={<TextLink>Forgot password?</TextLink>}
-          type="password"
+          label="Label"
+          tertiaryLabel={<TextLink>Help</TextLink>}
         />
       ),
     },
