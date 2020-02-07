@@ -59,7 +59,7 @@ const docs: ComponentDocs = {
       ),
     },
     {
-      name: '3 columns, small space',
+      name: '3 columns, medium space',
       code: (
         <Tiles space="medium" columns={3}>
           <Placeholder height={48} />

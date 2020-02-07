@@ -71,91 +71,71 @@ const docs: ComponentDocs = {
   snippets: [
     {
       name: 'Info',
-      code: (
-        <Inline space="xsmall">
-          <Badge tone="info">Badge</Badge>
-        </Inline>
-      ),
+      code: <Badge tone="info">Badge</Badge>,
     },
     {
       name: 'Info (strong)',
       code: (
-        <Inline space="xsmall">
-          <Badge tone="info" weight="strong">
-            Badge
-          </Badge>
-        </Inline>
+        <Badge tone="info" weight="strong">
+          Badge
+        </Badge>
       ),
     },
     {
       name: 'Promote',
-      code: (
-        <Inline space="xsmall">
-          <Badge tone="promote">Badge</Badge>
-        </Inline>
-      ),
+      code: <Badge tone="promote">Badge</Badge>,
     },
     {
       name: 'Promote (strong)',
       code: (
-        <Inline space="xsmall">
-          <Badge tone="promote" weight="strong">
-            Badge
-          </Badge>
-        </Inline>
+        <Badge tone="promote" weight="strong">
+          Badge
+        </Badge>
       ),
     },
     {
       name: 'Positive',
-      code: (
-        <Inline space="xsmall">
-          <Badge tone="positive">Badge</Badge>
-        </Inline>
-      ),
+      code: <Badge tone="positive">Badge</Badge>,
     },
     {
       name: 'Positive (strong)',
       code: (
-        <Inline space="xsmall">
-          <Badge tone="positive" weight="strong">
-            Badge
-          </Badge>
-        </Inline>
+        <Badge tone="positive" weight="strong">
+          Badge
+        </Badge>
       ),
     },
     {
       name: 'Critical',
-      code: (
-        <Inline space="xsmall">
-          <Badge tone="critical">Badge</Badge>
-        </Inline>
-      ),
+      code: <Badge tone="critical">Badge</Badge>,
     },
     {
       name: 'Critical (strong)',
       code: (
-        <Inline space="xsmall">
-          <Badge tone="critical" weight="strong">
-            Badge
-          </Badge>
-        </Inline>
+        <Badge tone="critical" weight="strong">
+          Badge
+        </Badge>
       ),
     },
     {
       name: 'Neutral',
-      code: (
-        <Inline space="xsmall">
-          <Badge tone="neutral">Badge</Badge>
-        </Inline>
-      ),
+      code: <Badge tone="neutral">Badge</Badge>,
     },
     {
       name: 'Neutral (strong)',
       code: (
-        <Inline space="xsmall">
-          <Badge tone="neutral" weight="strong">
-            Badge
-          </Badge>
+        <Badge tone="neutral" weight="strong">
+          Badge
+        </Badge>
+      ),
+    },
+    {
+      name: 'Multiple',
+      code: (
+        <Inline space="small">
+          <Badge tone="info">Badge</Badge>
+          <Badge tone="positive">Badge</Badge>
+          <Badge tone="promote">Badge</Badge>
         </Inline>
       ),
     },
