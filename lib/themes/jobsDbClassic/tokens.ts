@@ -4,7 +4,7 @@ const blue = '#0c4b85';
 const blue2 = '#298EB9';
 
 export default makeTokens({
-  name: 'jobsDb',
+  name: 'jobsDbClassic',
   bodyBackground: '#eee',
   brand: blue,
   formAccent: blue2,

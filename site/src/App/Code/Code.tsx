@@ -9,7 +9,7 @@ import { createUrl } from 'sku/playroom/utils';
 import classnames from 'classnames';
 import { useConfig } from '../ConfigContext';
 import { Box, Stack, Text, BraidProvider } from '../../../../lib/components';
-import { seekAnz } from '../../../../lib/themes';
+import { seekAnzClassic } from '../../../../lib/themes';
 import { BoxProps } from '../../../../lib/components/Box/Box';
 import { FieldOverlay } from '../../../../lib/components/private/FieldOverlay/FieldOverlay';
 import { CopyIcon } from './CopyIcon';
@@ -106,7 +106,7 @@ export default ({ playroom = true, children }: CodeProps) => {
             background="neutralLight"
             borderRadius="standard"
           >
-            <BraidProvider theme={seekAnz} styleBody={false}>
+            <BraidProvider theme={seekAnzClassic} styleBody={false}>
               {children}
             </BraidProvider>
           </Box>

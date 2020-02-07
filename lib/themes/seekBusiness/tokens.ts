@@ -1,4 +1,4 @@
-import { makeTokens } from '../baseTokens/seekAnz';
+import { makeTokens } from '../baseTokens/seekAnzClassic';
 
 export default makeTokens({
   name: 'seekBusiness',
