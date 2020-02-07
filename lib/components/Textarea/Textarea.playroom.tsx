@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { Optional } from 'utility-types';
 import { useFallbackId } from '../../playroom/utils';
-import { Textarea, TextareaProps } from './Textarea';
+import { Textarea as BraidTextarea, TextareaProps } from './Textarea';
 
 type PlayroomTextareaProps = Optional<
   TextareaProps,
   'id' | 'value' | 'onChange'
 >;
 
-export const PlayroomTextarea = ({
+export const Textarea = ({
   id,
   value,
   onChange,
@@ -18,7 +18,7 @@ export const PlayroomTextarea = ({
   const [fallbackValue, setFallbackValue] = useState('');
 
   return (
-    <Textarea
+    <BraidTextarea
       id={id ?? fallbackId}
       value={value ?? fallbackValue}
       onChange={

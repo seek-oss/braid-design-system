@@ -1,7 +1,7 @@
 import React, { ReactNode, useState } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import { Textarea } from './Textarea';
-import { TextLink } from '../TextLink/TextLink';
+import { Textarea, TextLink } from '../';
+import { Textarea as PlayroomTextarea } from '../../playroom/components';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <div style={{ maxWidth: '300px' }}>{children}</div>
@@ -146,6 +146,36 @@ const docs: ComponentDocs = {
           />
         );
       },
+    },
+  ],
+  snippets: [
+    {
+      name: 'Standard',
+      code: <PlayroomTextarea label="Textarea" />,
+    },
+    {
+      name: 'With character limit',
+      code: (
+        <PlayroomTextarea
+          label="Textarea"
+          secondaryLabel="Max 100 characters"
+          characterLimit={100}
+        />
+      ),
+    },
+    {
+      name: 'Fixed height, 5 lines',
+      code: <PlayroomTextarea label="Textarea" lines={5} grow={false} />,
+    },
+    {
+      name: 'Grow with typing, limit to 7 lines',
+      code: <PlayroomTextarea label="Textarea" lineLimit={7} />,
+    },
+    {
+      name: 'With error',
+      code: (
+        <PlayroomTextarea label="Textarea" tone="critical" message="Required" />
+      ),
     },
   ],
 };

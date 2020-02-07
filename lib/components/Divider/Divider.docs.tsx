@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import { Divider } from './Divider';
+import { Divider } from '../';
 
 const docs: ComponentDocs = {
   category: 'Layout',
@@ -11,6 +11,7 @@ const docs: ComponentDocs = {
       Example: () => <Divider />,
     },
   ],
+  snippets: [{ name: 'Standard', code: <Divider /> }],
 };
 
 export default docs;

@@ -1,9 +1,7 @@
 import React, { useState, ReactNode } from 'react';
-import { ComponentDocs } from '../../../site/src/types';
-import { Autosuggest } from './Autosuggest';
 import matchHighlights from 'autosuggest-highlight/match';
-import { Box } from '../Box/Box';
-import { IconSearch } from '../icons';
+import { ComponentDocs } from '../../../site/src/types';
+import { Autosuggest, Box, IconSearch, IconLocation } from '../';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <div style={{ maxWidth: '300px' }}>{children}</div>
@@ -195,6 +193,127 @@ const docs: ComponentDocs = {
           />
         );
       },
+    },
+  ],
+  snippets: [
+    {
+      name: 'Standard',
+      code: (
+        <Autosuggest
+          id="fruit"
+          label="Fruit"
+          value={{ text: '' }}
+          onChange={() => {}}
+          suggestions={[
+            { text: 'Apples' },
+            { text: 'Bananas' },
+            { text: 'Carrots' },
+          ]}
+        />
+      ),
+    },
+    {
+      name: 'Grouped suggestions',
+      code: (
+        <Autosuggest
+          label="I like to eat"
+          id="grouped"
+          value={{ text: '' }}
+          onChange={() => {}}
+          onClear={() => {}}
+          suggestions={[
+            {
+              label: 'Fruit',
+              suggestions: [
+                { text: 'Apples' },
+                { text: 'Bananas' },
+                { text: 'Carrots' },
+              ],
+            },
+            {
+              label: 'Vegetables',
+              suggestions: [
+                { text: 'Broccoli' },
+                { text: 'Carrots' },
+                { text: 'Carrots' },
+              ],
+            },
+          ]}
+        />
+      ),
+    },
+    {
+      name: 'With mobile backdrop',
+      code: (
+        <Autosuggest
+          showMobileBackdrop
+          id="mobile"
+          label="Fruit"
+          value={{ text: '' }}
+          onChange={() => {}}
+          suggestions={[
+            { text: 'Apples' },
+            { text: 'Bananas' },
+            { text: 'Carrots' },
+          ]}
+        />
+      ),
+    },
+    {
+      name: 'With error',
+      code: (
+        <Autosuggest
+          label="I like to eat"
+          id="error"
+          value={{ text: '' }}
+          onChange={() => {}}
+          tone="critical"
+          message="You must make a selection"
+          suggestions={[
+            { text: 'Apples' },
+            { text: 'Bananas' },
+            { text: 'Carrots' },
+          ]}
+        />
+      ),
+    },
+    {
+      name: 'With description',
+      code: (
+        <Autosuggest
+          label="Fruit"
+          id="error"
+          value={{ text: '' }}
+          onChange={() => {}}
+          description="Select your favourite fruit to eat from the available suggestions."
+          suggestions={[
+            { text: 'Apples' },
+            { text: 'Bananas' },
+            { text: 'Carrots' },
+          ]}
+        />
+      ),
+    },
+    {
+      name: 'With icon',
+      code: (
+        <Autosuggest
+          id="location"
+          icon={<IconLocation />}
+          placeholder="Enter a location"
+          value={{ text: '' }}
+          onChange={() => {}}
+          suggestions={[
+            { text: 'Adelaide' },
+            { text: 'Brisbane' },
+            { text: 'Darwin' },
+            { text: 'Hobart' },
+            { text: 'Melbourne' },
+            { text: 'Perth' },
+            { text: 'Sydney' },
+          ]}
+        />
+      ),
     },
   ],
 };

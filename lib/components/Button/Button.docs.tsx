@@ -1,8 +1,7 @@
 import React, { Fragment, ReactNode } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import { Box } from '../Box/Box';
 import { background as boxBackgrounds } from '../Box/useBoxStyles.treat';
-import { Button } from './Button';
+import { Box, Button } from '../';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <div style={{ maxWidth: '300px' }}>{children}</div>
@@ -62,6 +61,20 @@ const docs: ComponentDocs = {
           </Fragment>
         );
       },
+    },
+  ],
+  snippets: [
+    {
+      name: 'Standard',
+      code: <Button>Submit</Button>,
+    },
+    {
+      name: 'Strong',
+      code: <Button weight="strong">Submit</Button>,
+    },
+    {
+      name: 'Weak',
+      code: <Button weight="weak">Submit</Button>,
     },
   ],
 };

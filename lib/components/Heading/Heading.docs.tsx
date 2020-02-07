@@ -1,13 +1,11 @@
 import React, { ReactNode, Fragment } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import { Heading } from './Heading';
-import { Box } from '../Box/Box';
-import { Stack } from '../Stack/Stack';
 import {
   background as boxBackgrounds,
   textAlign,
 } from '../Box/useBoxStyles.treat';
 import { heading as headingLevels } from '../../hooks/typography/typography.treat';
+import { Box, Heading, Stack } from '../';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <div style={{ maxWidth: '300px' }}>{children}</div>
@@ -171,6 +169,56 @@ const docs: ComponentDocs = {
           </Fragment>
         );
       },
+    },
+  ],
+  snippets: [
+    {
+      name: 'Level 1',
+      code: <Heading level="1">Heading</Heading>,
+    },
+    {
+      name: 'Level 1 (Weak)',
+      code: (
+        <Heading level="1" weight="weak">
+          Heading
+        </Heading>
+      ),
+    },
+    {
+      name: 'Level 2',
+      code: <Heading level="2">Heading</Heading>,
+    },
+    {
+      name: 'Level 2 (Weak)',
+      code: (
+        <Heading level="2" weight="weak">
+          Heading
+        </Heading>
+      ),
+    },
+    {
+      name: 'Level 3',
+      code: <Heading level="3">Heading</Heading>,
+    },
+    {
+      name: 'Level 3 (Weak)',
+      code: (
+        <Heading level="3" weight="weak">
+          Heading
+        </Heading>
+      ),
+    },
+    {
+      name: 'Level 4',
+      code: <Heading level="4">Heading</Heading>,
+    },
+    {
+      name: 'Level 4 (Weak)',
+      code: (
+        <Heading level="4" weight="weak">
+          Heading
+        </Heading>
+      ),
     },
   ],
 };

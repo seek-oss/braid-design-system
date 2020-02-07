@@ -1,8 +1,6 @@
 import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import { Bullet } from './Bullet';
-import { BulletList } from '../BulletList/BulletList';
-import { TextLink } from '../TextLink/TextLink';
+import { Bullet, BulletList, TextLink } from '../';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -93,6 +91,48 @@ const docs: ComponentDocs = {
           <Bullet>
             This is a secondary <TextLink>link</TextLink>.
           </Bullet>
+        </BulletList>
+      ),
+    },
+  ],
+  snippets: [
+    {
+      name: 'XSmall Space',
+      code: (
+        <BulletList space="xsmall">
+          <Bullet>Bullet</Bullet>
+          <Bullet>Bullet</Bullet>
+          <Bullet>Bullet</Bullet>
+        </BulletList>
+      ),
+    },
+    {
+      name: 'Small Space',
+      code: (
+        <BulletList space="small">
+          <Bullet>Bullet</Bullet>
+          <Bullet>Bullet</Bullet>
+          <Bullet>Bullet</Bullet>
+        </BulletList>
+      ),
+    },
+    {
+      name: 'Medium Space',
+      code: (
+        <BulletList space="medium">
+          <Bullet>Bullet</Bullet>
+          <Bullet>Bullet</Bullet>
+          <Bullet>Bullet</Bullet>
+        </BulletList>
+      ),
+    },
+    {
+      name: 'Secondary',
+      code: (
+        <BulletList space="medium" tone="secondary">
+          <Bullet>Bullet</Bullet>
+          <Bullet>Bullet</Bullet>
+          <Bullet>Bullet</Bullet>
         </BulletList>
       ),
     },

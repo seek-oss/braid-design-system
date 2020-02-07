@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import { MonthPicker } from './MonthPicker';
+import { MonthPicker } from '../';
+import { MonthPicker as PlayroomMonthPicker } from '../../playroom/components';
 
 const handler = () => {
   /* No-op for docs examples */
@@ -51,6 +52,18 @@ const docs: ComponentDocs = {
           value={{ month: 1, year: 2019 }}
           onChange={handler}
         />
+      ),
+    },
+  ],
+  snippets: [
+    {
+      name: 'Standard',
+      code: <PlayroomMonthPicker label="Month" />,
+    },
+    {
+      name: 'With error',
+      code: (
+        <PlayroomMonthPicker label="Month" tone="critical" message="Required" />
       ),
     },
   ],

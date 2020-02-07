@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
 import { Optional } from 'utility-types';
 import { useFallbackId } from '../../playroom/utils';
-import { Autosuggest, AutosuggestProps } from './Autosuggest';
+import {
+  Autosuggest as BraidAutosuggest,
+  AutosuggestProps,
+} from './Autosuggest';
 
 type PlayroomAutosuggestProps<Value> = Optional<
   AutosuggestProps<Value>,
   'id' | 'value' | 'onChange'
 >;
 
-export function PlayroomAutosuggest<Value>({
+export function Autosuggest<Value>({
   id,
   value,
   onChange,
@@ -18,7 +21,7 @@ export function PlayroomAutosuggest<Value>({
   const [fallbackValue, setFallbackValue] = useState({ text: '' });
 
   return (
-    <Autosuggest
+    <BraidAutosuggest
       id={id ?? fallbackId}
       value={value ?? fallbackValue}
       onChange={onChange ?? setFallbackValue}

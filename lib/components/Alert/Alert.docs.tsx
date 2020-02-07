@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import { Alert } from './Alert';
+import { Alert } from '../';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -68,6 +68,64 @@ const docs: ComponentDocs = {
       Example: () => (
         <Alert weight="strong" tone="positive">
           This is a positive piece of information.
+        </Alert>
+      ),
+    },
+  ],
+  snippets: [
+    {
+      name: 'Critical',
+      code: <Alert tone="critical">Critical Alert</Alert>,
+    },
+    {
+      name: 'Critical (Strong)',
+      code: (
+        <Alert tone="critical" weight="strong">
+          Critical Alert
+        </Alert>
+      ),
+    },
+    {
+      name: 'Positive',
+      code: <Alert tone="positive">Positive Alert</Alert>,
+    },
+    {
+      name: 'Positive (Strong)',
+      code: (
+        <Alert tone="positive" weight="strong">
+          Positive Alert
+        </Alert>
+      ),
+    },
+    {
+      name: 'Info',
+      code: <Alert tone="info">Info Alert</Alert>,
+    },
+    {
+      name: 'Info (Strong)',
+      code: (
+        <Alert tone="info" weight="strong">
+          Info Alert
+        </Alert>
+      ),
+    },
+    {
+      name: 'Promote',
+      code: <Alert tone="promote">Promote Alert</Alert>,
+    },
+    {
+      name: 'Promote (Strong)',
+      code: (
+        <Alert tone="promote" weight="strong">
+          Promote Alert
+        </Alert>
+      ),
+    },
+    {
+      name: 'Dismissible alert',
+      code: (
+        <Alert onClose={() => {}} closeLabel="Close">
+          Dismissible Alert
         </Alert>
       ),
     },
