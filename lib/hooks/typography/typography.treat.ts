@@ -113,6 +113,7 @@ export const tone = {
         'linkVisited',
         'neutral',
         'neutralInverted',
+        'secondaryInverted',
       ]),
       'color',
     );
@@ -128,13 +129,24 @@ export const tone = {
   })),
 };
 
-export const neutral = style(theme => ({
-  color: theme.color.foreground.neutral,
-}));
-
-export const neutralInverted = style(theme => ({
-  color: theme.color.foreground.neutralInverted,
-}));
+export const invertableTone = {
+  neutral: styleMap(theme => ({
+    light: {
+      color: theme.color.foreground.neutral,
+    },
+    dark: {
+      color: theme.color.foreground.neutralInverted,
+    },
+  })),
+  secondary: styleMap(theme => ({
+    light: {
+      color: theme.color.foreground.secondary,
+    },
+    dark: {
+      color: theme.color.foreground.secondaryInverted,
+    },
+  })),
+};
 
 const accessibleColorVariants = styleMap(({ color: { foreground } }) => ({
   critical: {

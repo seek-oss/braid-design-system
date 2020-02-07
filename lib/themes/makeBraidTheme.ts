@@ -106,6 +106,7 @@ export interface TreatTokens {
       promote: string;
       positive: string;
       secondary: string;
+      secondaryInverted: string;
     };
     background: {
       body: string;
