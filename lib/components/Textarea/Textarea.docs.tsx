@@ -147,6 +147,46 @@ const docs: ComponentDocs = {
         );
       },
     },
+    {
+      label: 'Textarea highlighting a range as critical',
+      Container,
+      Example: ({ id }) => {
+        const [value, setValue] = useState(
+          'The long piece of text highlighting a range as critical',
+        );
+
+        return (
+          <Textarea
+            id={id}
+            value={value}
+            onChange={e => setValue(e.currentTarget.value)}
+            label="Do you like Braid?"
+            description="Characters 9-22 are invalid"
+            highlightRanges={[{ start: 9, end: 22, tone: 'critical' }]}
+          />
+        );
+      },
+    },
+    {
+      label: 'Textarea highlighting a range as info',
+      Container,
+      Example: ({ id }) => {
+        const [value, setValue] = useState(
+          'The long piece of text highlighting a range as info',
+        );
+
+        return (
+          <Textarea
+            id={id}
+            value={value}
+            onChange={e => setValue(e.currentTarget.value)}
+            label="Do you like Braid?"
+            description="Characters 9-22 are invalid"
+            highlightRanges={[{ start: 9, end: 22, tone: 'info' }]}
+          />
+        );
+      },
+    },
   ],
   snippets: [
     {
@@ -175,6 +215,17 @@ const docs: ComponentDocs = {
       name: 'With error',
       code: (
         <PlayroomTextarea label="Textarea" tone="critical" message="Required" />
+      ),
+    },
+    {
+      name: 'With highlighting',
+      code: (
+        <PlayroomTextarea
+          label="Textarea"
+          tone="critical"
+          description="Characters 11-20 are invalid"
+          highlightRanges={[{ start: 11, end: 20 }]}
+        />
       ),
     },
   ],
