@@ -18,6 +18,6 @@ export const field = [
 export const highlights = style({
   top: 0,
   left: 0,
-  color: 'transparent!important',
+  color: 'transparent !important',
   wordBreak: 'break-word',
 });
