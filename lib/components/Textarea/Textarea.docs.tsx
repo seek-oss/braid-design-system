@@ -148,11 +148,11 @@ const docs: ComponentDocs = {
       },
     },
     {
-      label: 'Textarea highlighting a range as critical',
+      label: 'Textarea highlighting a range',
       Container,
       Example: ({ id }) => {
         const [value, setValue] = useState(
-          'The long piece of text highlighting a range as critical',
+          'The long piece of text highlighting a range',
         );
 
         return (
@@ -162,27 +162,7 @@ const docs: ComponentDocs = {
             onChange={e => setValue(e.currentTarget.value)}
             label="Do you like Braid?"
             description="Characters 9-22 are invalid"
-            highlightRanges={[{ start: 9, end: 22, tone: 'critical' }]}
-          />
-        );
-      },
-    },
-    {
-      label: 'Textarea highlighting a range as info',
-      Container,
-      Example: ({ id }) => {
-        const [value, setValue] = useState(
-          'The long piece of text highlighting a range as info',
-        );
-
-        return (
-          <Textarea
-            id={id}
-            value={value}
-            onChange={e => setValue(e.currentTarget.value)}
-            label="Do you like Braid?"
-            description="Characters 9-22 are invalid"
-            highlightRanges={[{ start: 9, end: 22, tone: 'info' }]}
+            highlightRanges={[{ start: 9, end: 22 }]}
           />
         );
       },

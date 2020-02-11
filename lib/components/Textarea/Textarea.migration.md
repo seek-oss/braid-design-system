@@ -7,7 +7,7 @@
 - `countFeedback={(value: string) => ({ count: number, show: boolean })}` is now expressed as `characterLimit={number}`.
 - Now supports `grow={boolean}` to allow auto-expansion while typing, so you may be able to delete some custom code.
 - Data attributes must now be passed via the `data` prop, e.g. `data={{ automation: 'test-id' }}`.
-- `invalidText` is now `highlightRanges`. No longer supports a string or single range, only arrays of ranges. A range can now also optionally accept a `tone`, supporting both `critical` and `info` (`critical` is the default).
+- `invalidText` is now `highlightRanges`. No longer supports a string or single range, only arrays of ranges.
 - No longer accepts arbitrary DOM properties, e.g. `className`. Please check that everything you need is exposed via the [public API.](https://seek-oss.github.io/braid-design-system/components/Textarea)
 
 ### Diff

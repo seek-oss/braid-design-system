@@ -1,8 +1,5 @@
 import { formatRanges } from './formatRanges';
 
-const INFO = 'info' as const;
-const CRITICAL = 'critical' as const;
-
 describe('formatRanges', () => {
   it('should return the unformatted text if no highlighting is required', () => {
     const value = 'aaaaaaaaa bbbbbbbbbb';
@@ -24,9 +21,7 @@ describe('formatRanges', () => {
     expect(formatRanges(value, ranges)).toMatchInlineSnapshot(`
       Array [
         "my str",
-        <Highlight
-          tone="critical"
-        >
+        <Highlight>
           ing of text
         </Highlight>,
       ]
@@ -38,15 +33,12 @@ describe('formatRanges', () => {
     const ranges = [
       {
         start: 6,
-        tone: INFO,
       },
     ];
     expect(formatRanges(value, ranges)).toMatchInlineSnapshot(`
       Array [
         "my str",
-        <Highlight
-          tone="info"
-        >
+        <Highlight>
           ing of text
         </Highlight>,
       ]
@@ -59,15 +51,12 @@ describe('formatRanges', () => {
       {
         start: 3,
         end: 9,
-        tone: CRITICAL,
       },
     ];
     expect(formatRanges(value, ranges)).toMatchInlineSnapshot(`
       Array [
         "my ",
-        <Highlight
-          tone="critical"
-        >
+        <Highlight>
           longer
         </Highlight>,
         " text",
@@ -81,37 +70,28 @@ describe('formatRanges', () => {
       {
         start: 3,
         end: 6,
-        tone: CRITICAL,
       },
       {
         start: 7,
         end: 8,
-        tone: INFO,
       },
       {
         start: 12,
         end: 13,
-        tone: CRITICAL,
       },
     ];
     expect(formatRanges(value, ranges)).toMatchInlineSnapshot(`
       Array [
         "my ",
-        <Highlight
-          tone="critical"
-        >
+        <Highlight>
           lon
         </Highlight>,
         "g",
-        <Highlight
-          tone="info"
-        >
+        <Highlight>
           e
         </Highlight>,
         "r te",
-        <Highlight
-          tone="critical"
-        >
+        <Highlight>
           x
         </Highlight>,
         "t",
@@ -125,20 +105,16 @@ describe('formatRanges', () => {
       {
         start: 10,
         end: 20,
-        tone: CRITICAL,
       },
       {
         start: 30,
         end: 40,
-        tone: CRITICAL,
       },
     ];
     expect(formatRanges(value, ranges)).toMatchInlineSnapshot(`
       Array [
         "aaaaaaaaaa",
-        <Highlight
-          tone="critical"
-        >
+        <Highlight>
           bbb
         </Highlight>,
       ]

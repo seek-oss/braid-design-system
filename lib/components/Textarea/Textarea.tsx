@@ -10,14 +10,7 @@ import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';
 import { formatRanges } from './formatRanges';
 import { Field, FieldProps } from '../private/Field/Field';
-import { HighlightProps } from './Highlight/Highlight';
 import * as styleRefs from './Textarea.treat';
-
-type HighlightRange = {
-  start: number;
-  end?: number;
-  tone?: HighlightProps['tone'];
-};
 
 type NativeTextareaProps = AllHTMLAttributes<HTMLTextAreaElement>;
 export interface TextareaProps
@@ -31,7 +24,10 @@ export interface TextareaProps
   onFocus?: NativeTextareaProps['onFocus'];
   onPaste?: NativeTextareaProps['onPaste'];
   placeholder?: NativeTextareaProps['placeholder'];
-  highlightRanges?: HighlightRange[];
+  highlightRanges?: Array<{
+    start: number;
+    end?: number;
+  }>;
   characterLimit?: number;
   lines?: number;
   lineLimit?: number;

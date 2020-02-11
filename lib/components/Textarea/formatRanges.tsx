@@ -1,28 +1,21 @@
 import React, { ReactChild } from 'react';
 import flatten from 'lodash/flatten';
 import { TextareaProps } from './Textarea';
-import { Highlight, HighlightProps } from './Highlight/Highlight';
-
-type Range = TextareaProps['highlightRanges'];
-
-interface TextToHighlight {
-  text: string;
-  tone?: HighlightProps['tone'];
-}
+import { Highlight } from './Highlight/Highlight';
 
 export const formatRanges = (
   value: string,
-  highlightRanges: NonNullable<Range>,
+  highlightRanges: NonNullable<TextareaProps['highlightRanges']>,
 ): ReactChild[] => {
   if (highlightRanges && value) {
-    const textToHighlight: TextToHighlight[] = [];
+    const textToHighlight: string[] = [];
     const splitText: string[] = [];
 
     highlightRanges.forEach((range, i) => {
-      const { start, end, tone } = range;
+      const { start, end } = range;
       const highlightedText = value.slice(start, end);
       if (highlightedText) {
-        textToHighlight.push({ text: highlightedText, tone });
+        textToHighlight.push(highlightedText);
       }
       if (i === 0) {
         splitText.push(value.slice(0, start));
@@ -40,12 +33,7 @@ export const formatRanges = (
       splitText.map((text, i) => {
         if (i !== splitText.length - 1) {
           if (textToHighlight[i]) {
-            return [
-              text,
-              <Highlight key={i} tone={textToHighlight[i].tone || 'critical'}>
-                {textToHighlight[i].text}
-              </Highlight>,
-            ];
+            return [text, <Highlight key={i}>{textToHighlight[i]}</Highlight>];
           }
           return [text];
         }
