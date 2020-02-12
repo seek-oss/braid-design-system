@@ -53,7 +53,7 @@ export const Badge = ({
     );
 
     if (invalidChildren) {
-      throw new Error('Badge may only contain a `string`');
+      throw new Error('Badge may only contain strings or numbers');
     }
   }
 
