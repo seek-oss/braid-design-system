@@ -20,4 +20,5 @@ export const highlights = style({
   left: 0,
   color: 'transparent !important',
   wordBreak: 'break-word',
+  whiteSpace: 'pre-wrap',
 });
