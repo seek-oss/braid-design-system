@@ -3,7 +3,10 @@ import React, {
   useState,
   ReactNode,
   AllHTMLAttributes,
-  ChangeEvent,
+  useRef,
+  UIEvent,
+  useCallback,
+  FormEvent,
 } from 'react';
 import { useStyles } from 'sku/react-treat';
 import { Box } from '../Box/Box';
@@ -103,9 +106,16 @@ const NamedTextarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
   ) => {
     const styles = useStyles(styleRefs);
     const [rows, setRows] = useState(lines);
-
-    const highlights =
-      highlightRanges && formatRanges(String(value), highlightRanges);
+    const highlightsRef = useRef<HTMLDivElement>(null);
+    const updateScroll = useCallback(
+      (scrollTop: number) => {
+        if (highlightsRef.current) {
+          highlightsRef.current.scrollTop = scrollTop;
+        }
+      },
+      [highlightsRef],
+    );
+    const hasHighlights = Boolean(highlightRanges);
 
     return (
       <Field
@@ -124,9 +134,11 @@ const NamedTextarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
             background={background}
             className={styles.resetZIndex}
           >
-            {highlights ? (
+            {hasHighlights ? (
               <Box
+                ref={highlightsRef}
                 position="absolute"
+                overflow="hidden"
                 pointerEvents="none"
                 width="full"
                 height="full"
@@ -134,7 +146,7 @@ const NamedTextarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
                 className={[styles.highlights, className]}
                 {...fieldProps}
               >
-                {highlights}
+                {formatRanges(String(value), highlightRanges)}
               </Box>
             ) : null}
             <Box
@@ -142,17 +154,26 @@ const NamedTextarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
               position="relative"
               rows={rows}
               value={value}
-              onChange={(e: ChangeEvent<HTMLTextAreaElement>) => {
+              onChange={(e: FormEvent<HTMLTextAreaElement>) => {
                 if (grow) {
-                  setRows(calculateLines(e.target, lines, lineLimit));
+                  setRows(calculateLines(e.currentTarget, lines, lineLimit));
                 }
                 if (typeof onChange === 'function') {
                   onChange(e);
+                }
+                if (hasHighlights) {
+                  updateScroll(e.currentTarget.scrollTop);
                 }
               }}
               onBlur={onBlur}
               onFocus={onFocus}
               onPaste={onPaste}
+              onScroll={
+                hasHighlights
+                  ? (event: UIEvent<HTMLTextAreaElement>) =>
+                      updateScroll(event.currentTarget.scrollTop)
+                  : undefined
+              }
               placeholder={placeholder}
               className={[styles.field, className]}
               {...fieldProps}

@@ -5,7 +5,7 @@ import { Highlight } from './Highlight/Highlight';
 
 export const formatRanges = (
   value: string,
-  highlightRanges: NonNullable<TextareaProps['highlightRanges']>,
+  highlightRanges: TextareaProps['highlightRanges'],
 ): ReactChild[] => {
   if (highlightRanges && value) {
     const textToHighlight: string[] = [];
