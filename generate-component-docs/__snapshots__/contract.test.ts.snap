@@ -4238,6 +4238,7 @@ exports[`Textarea 1`] = `
   description?: ReactNode
   disabled?: boolean
   grow?: boolean
+  highlightRanges?: { start: number; end?: number | undefined; }[]
   id: string
   label?: ReactNode
   lineLimit?: number

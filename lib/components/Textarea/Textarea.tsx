@@ -1,6 +1,5 @@
 import React, {
   forwardRef,
-  Fragment,
   useState,
   ReactNode,
   AllHTMLAttributes,
@@ -9,6 +8,7 @@ import React, {
 import { useStyles } from 'sku/react-treat';
 import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';
+import { formatRanges } from './formatRanges';
 import { Field, FieldProps } from '../private/Field/Field';
 import * as styleRefs from './Textarea.treat';
 
@@ -24,6 +24,10 @@ export interface TextareaProps
   onFocus?: NativeTextareaProps['onFocus'];
   onPaste?: NativeTextareaProps['onPaste'];
   placeholder?: NativeTextareaProps['placeholder'];
+  highlightRanges?: Array<{
+    start: number;
+    end?: number;
+  }>;
   characterLimit?: number;
   lines?: number;
   lineLimit?: number;
@@ -89,6 +93,7 @@ const NamedTextarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
       onPaste,
       placeholder,
       characterLimit,
+      highlightRanges,
       lines = 3,
       lineLimit,
       grow = true,
@@ -98,6 +103,9 @@ const NamedTextarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
   ) => {
     const styles = useStyles(styleRefs);
     const [rows, setRows] = useState(lines);
+
+    const highlights =
+      highlightRanges && formatRanges(String(value), highlightRanges);
 
     return (
       <Field
@@ -110,10 +118,28 @@ const NamedTextarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           value,
         })}
       >
-        {(overlays, { className, ...fieldProps }, fieldRef) => (
-          <Fragment>
+        {(overlays, { className, background, ...fieldProps }, fieldRef) => (
+          <Box
+            position="relative"
+            background={background}
+            className={styles.resetZIndex}
+          >
+            {highlights ? (
+              <Box
+                position="absolute"
+                pointerEvents="none"
+                width="full"
+                height="full"
+                aria-hidden="true"
+                className={[styles.highlights, className]}
+                {...fieldProps}
+              >
+                {highlights}
+              </Box>
+            ) : null}
             <Box
               component="textarea"
+              position="relative"
               rows={rows}
               value={value}
               onChange={(e: ChangeEvent<HTMLTextAreaElement>) => {
@@ -133,7 +159,7 @@ const NamedTextarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
               ref={fieldRef}
             />
             {overlays}
-          </Fragment>
+          </Box>
         )}
       </Field>
     );
