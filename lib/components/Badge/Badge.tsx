@@ -47,8 +47,14 @@ export const Badge = ({
 }: BadgeProps) => {
   const styles = useStyles(styleRefs);
 
-  if (typeof children !== 'string') {
-    throw new Error('Badge may only contain a `string`');
+  if (process.env.NODE_ENV !== 'production') {
+    const invalidChildren = React.Children.toArray(children).some(
+      child => !['string', 'number'].includes(typeof child),
+    );
+
+    if (invalidChildren) {
+      throw new Error('Badge may only contain a `string`');
+    }
   }
 
   return (
