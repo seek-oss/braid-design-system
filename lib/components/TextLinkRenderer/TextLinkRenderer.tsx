@@ -16,6 +16,7 @@ import {
 } from '../../hooks/typography';
 import * as styleRefs from './TextLinkRenderer.treat';
 import { useBackground } from '../Box/BackgroundContext';
+import { useVirtualTouchable } from '../private/touchable/useVirtualTouchable';
 
 interface StyleProps {
   style: CSSProperties;
@@ -23,75 +24,70 @@ interface StyleProps {
 }
 
 export interface TextLinkRendererProps {
+  showVisited?: boolean;
+  hitArea?: 'standard' | 'large';
   children: (styleProps: StyleProps) => ReactElement;
 }
 
 export const TextLinkRenderer = (props: TextLinkRendererProps) => {
-  const inText = useContext(TextContext);
-  const inHeading = useContext(HeadingContext);
   const inActions = useContext(ActionsContext);
+
+  if (process.env.NODE_ENV !== 'production') {
+    // NODE_ENV is static so hook call is not conditional
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const inText = useContext(TextContext);
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const inHeading = useContext(HeadingContext);
+
+    if (!inText && !inHeading && !inActions) {
+      throw new Error(
+        'TextLink components must be rendered within a Text or Heading component.',
+      );
+    }
+  }
 
   if (inActions) {
     return <ButtonLink {...props} />;
   }
 
-  if (!inText && !inHeading) {
-    return <TouchableLink {...props} />;
-  }
-
   return <InlineLink {...props} />;
 };
 
-function useLinkStyles() {
+function useLinkStyles(showVisited: boolean) {
   const styles = useStyles(styleRefs);
   const inHeading = useContext(HeadingContext);
   const backgroundContext = useBackground();
   const mediumWeight = useWeight('medium');
-
   const highlightLink = backgroundContext === 'card' || !backgroundContext;
 
   return [
     highlightLink ? styles.underlineOnHoverOnly : styles.underlineAlways,
-    useTextTone({
-      tone: highlightLink ? 'link' : undefined,
-    }),
+    useTextTone({ tone: highlightLink ? 'link' : 'neutral' }),
     !inHeading ? mediumWeight : null,
+    showVisited ? styles.visited : null,
   ];
 }
 
-function InlineLink({ children }: TextLinkRendererProps) {
+function InlineLink({
+  showVisited = false,
+  hitArea = 'standard',
+  children,
+}: TextLinkRendererProps) {
+  const virtualTouchableStyle = useVirtualTouchable();
+
   return (
     <TextLinkRendererContext.Provider value={true}>
       {children({
         style: {},
         className: classnames(
-          useLinkStyles(),
+          useLinkStyles(showVisited),
           useBoxStyles({
             component: 'a',
             cursor: 'pointer',
           }),
+          hitArea === 'large' && virtualTouchableStyle,
         ),
       })}
-    </TextLinkRendererContext.Provider>
-  );
-}
-
-function TouchableLink({ children }: TextLinkRendererProps) {
-  return (
-    <TextLinkRendererContext.Provider value={true}>
-      <Box display="flex">
-        {children({
-          style: {},
-          className: classnames(
-            useLinkStyles(),
-            useBoxStyles({
-              component: 'a',
-              cursor: 'pointer',
-              display: 'block',
-            }),
-          ),
-        })}
-      </Box>
     </TextLinkRendererContext.Provider>
   );
 }
@@ -101,8 +97,20 @@ const buttonLinkTextProps = {
   tone: 'link',
   baseline: false,
 } as const;
-function ButtonLink({ children }: TextLinkRendererProps) {
+function ButtonLink({
+  showVisited = false,
+  hitArea,
+  children,
+}: TextLinkRendererProps) {
   const styles = useStyles(styleRefs);
+
+  if (process.env.NODE_ENV !== 'production') {
+    if (typeof hitArea === 'string') {
+      throw new Error(
+        'TextLink components should not set "hitArea" within Actions',
+      );
+    }
+  }
 
   return (
     <Box position="relative">
@@ -111,7 +119,7 @@ function ButtonLink({ children }: TextLinkRendererProps) {
           style: {},
           className: classnames(
             styles.button,
-            useLinkStyles(),
+            useLinkStyles(showVisited),
             useText(buttonLinkTextProps),
             useTouchableSpace(buttonLinkTextProps.size),
             useBoxStyles({
@@ -121,6 +129,7 @@ function ButtonLink({ children }: TextLinkRendererProps) {
               width: 'full',
               paddingX: 'small',
               borderRadius: 'standard',
+              textAlign: 'center',
             }),
           ),
         })}

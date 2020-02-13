@@ -1,12 +1,14 @@
 import React, { forwardRef } from 'react';
-import { Omit } from 'utility-types';
 import {
   InlineField,
   InlineFieldProps,
 } from '../private/InlineField/InlineField';
 
-interface RadioProps
-  extends Omit<InlineFieldProps, 'message' | 'reserveMessageSpace'> {}
+export interface RadioProps
+  extends Omit<
+    InlineFieldProps,
+    'message' | 'reserveMessageSpace' | 'required'
+  > {}
 
 const NamedRadio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => (
   <InlineField
@@ -14,6 +16,7 @@ const NamedRadio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => (
     type="radio"
     message={null}
     reserveMessageSpace={false}
+    required={undefined}
     ref={ref}
   />
 ));

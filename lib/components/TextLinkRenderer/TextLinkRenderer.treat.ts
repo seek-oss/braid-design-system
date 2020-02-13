@@ -11,9 +11,14 @@ export const underlineOnHoverOnly = style({
   },
 });
 
+export const visited = style(theme => ({
+  ':visited': {
+    color: theme.color.foreground.linkVisited,
+  },
+}));
+
 export const button = style({
   outline: 'none',
-  textAlign: 'center',
 });
 
 export const focusOverlay = style({

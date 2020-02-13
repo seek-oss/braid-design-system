@@ -1,10 +1,18 @@
+import React from 'react';
 import { ComponentDocs } from '../../../../site/src/types';
-import examplesForIcon from '../../private/examplesForIcon';
 import { IconLocation } from './IconLocation';
 
 const docs: ComponentDocs = {
+  category: 'Icon',
   migrationGuide: true,
-  examples: examplesForIcon(IconLocation),
+  foundation: true,
+  screenshotWidths: [],
+  examples: [
+    {
+      label: 'Default',
+      Example: () => <IconLocation />,
+    },
+  ],
 };
 
 export default docs;

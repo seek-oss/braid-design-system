@@ -2,11 +2,13 @@ import React, { ReactNode } from 'react';
 import { useStyles } from 'sku/react-treat';
 import { Box } from '../Box/Box';
 import * as styleRefs from './Hidden.treat';
+import {
+  resolveResponsiveRangeProps,
+  ResponsiveRangeProps,
+} from '../../utils/responsiveRangeProps';
 
-export interface HiddenProps {
+export interface HiddenProps extends ResponsiveRangeProps {
   children: ReactNode;
-  mobile?: boolean;
-  desktop?: boolean;
   screen?: boolean;
   print?: boolean;
   inline?: boolean;
@@ -14,21 +16,35 @@ export interface HiddenProps {
 
 export const Hidden = ({
   children,
-  inline = false,
-  mobile: hiddenOnMobile = false,
-  desktop: hiddenOnDesktop = false,
-  screen: hiddenOnScreen = false,
-  print: hiddenOnPrint = false,
+  above,
+  below,
+  screen,
+  print,
+  inline,
 }: HiddenProps) => {
+  const hiddenOnScreen = Boolean(screen);
+  const hiddenOnPrint = Boolean(print);
+
+  const [
+    hiddenOnMobile,
+    hiddenOnTablet,
+    hiddenOnDesktop,
+  ] = resolveResponsiveRangeProps({ above, below });
+
   const styles = useStyles(styleRefs);
   const display = inline ? 'inline' : 'block';
 
   return (
     <Box
-      display={[
-        hiddenOnMobile || hiddenOnScreen ? 'none' : display,
-        hiddenOnDesktop || hiddenOnScreen ? 'none' : display,
-      ]}
+      display={
+        hiddenOnScreen
+          ? 'none'
+          : [
+              hiddenOnMobile ? 'none' : display,
+              hiddenOnTablet ? 'none' : display,
+              hiddenOnDesktop ? 'none' : display,
+            ]
+      }
       className={hiddenOnPrint ? styles.hiddenOnPrint : undefined}
       component={inline ? 'span' : 'div'}
     >

@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import classnames from 'classnames';
 
 import * as styleRefs from './Toast.treat';
 import { Box, Text, TextLinkRenderer } from '..';
@@ -43,7 +42,7 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
           window.clearTimeout(timeoutId);
         };
       }
-    }, [timed]);
+    }, [timed, onClear]);
 
     const styles = useStyles(styleRefs);
     const touchable = useTouchableSpace('standard');
@@ -95,7 +94,7 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
                 ) : null}
               </Stack>
               <Box className={styles.noShrink}>
-                <ClearButton onClick={onClear} />
+                <ClearButton onClick={onClear} label="Clear message" />
               </Box>
             </Box>
           </LeftHighlight>

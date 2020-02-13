@@ -1,10 +1,12 @@
 import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import { Radio } from './Radio';
-import { Text } from '../Text/Text';
+import { Radio, Text } from '../';
+import { Radio as PlayroomRadio } from '../../playroom/components';
 
 const docs: ComponentDocs = {
+  category: 'Interaction',
   migrationGuide: true,
+  screenshotWidths: [320],
   examples: [
     {
       label: 'Standard Radio Button',
@@ -49,6 +51,16 @@ const docs: ComponentDocs = {
           <Text>This text is visible when the radio button is checked.</Text>
         </Radio>
       ),
+    },
+  ],
+  snippets: [
+    {
+      name: 'Standard',
+      code: <PlayroomRadio checked={false} label="Label" />,
+    },
+    {
+      name: 'Checked',
+      code: <PlayroomRadio checked={true} label="Label" />,
     },
   ],
 };

@@ -1,16 +1,18 @@
-import { TreatTokens } from '../makeTreatTheme';
+import { TreatTokens } from '../makeBraidTheme';
 
 const formAccent = '#404040';
-const critical = 'red';
-const positive = 'green';
-const info = 'navy';
-const brandAccent = 'black';
+const critical = '#ef3e4a';
+const positive = '#00af50';
+const info = '#2c88f7';
+const promote = '#855be5';
+const brandAccent = '#111';
 const focus = 'DeepSkyBlue';
-const black = '#2b2b2b';
+const black = '#303030';
 const white = '#fff';
 const link = '#4c77bb';
+const linkVisited = 'DarkViolet';
 const secondary = '#777';
-const neutral = '#777';
+const neutral = '#edeef1';
 
 const tokens: TreatTokens = {
   name: 'wireframe',
@@ -35,7 +37,7 @@ const tokens: TreatTokens = {
             size: 28,
             rows: 9,
           },
-          desktop: {
+          tablet: {
             size: 42,
             rows: 11,
           },
@@ -45,7 +47,7 @@ const tokens: TreatTokens = {
             size: 21,
             rows: 8,
           },
-          desktop: {
+          tablet: {
             size: 28,
             rows: 9,
           },
@@ -55,7 +57,7 @@ const tokens: TreatTokens = {
             size: 21,
             rows: 7,
           },
-          desktop: {
+          tablet: {
             size: 21,
             rows: 7,
           },
@@ -65,7 +67,7 @@ const tokens: TreatTokens = {
             size: 18,
             rows: 7,
           },
-          desktop: {
+          tablet: {
             size: 18,
             rows: 7,
           },
@@ -78,7 +80,7 @@ const tokens: TreatTokens = {
           size: 12,
           rows: 5,
         },
-        desktop: {
+        tablet: {
           size: 12,
           rows: 5,
         },
@@ -88,7 +90,7 @@ const tokens: TreatTokens = {
           size: 14,
           rows: 5,
         },
-        desktop: {
+        tablet: {
           size: 14,
           rows: 5,
         },
@@ -96,26 +98,30 @@ const tokens: TreatTokens = {
       standard: {
         mobile: {
           size: 16,
-          rows: 6,
+          rows: 7,
         },
-        desktop: {
+        tablet: {
           size: 16,
-          rows: 6,
+          rows: 7,
         },
       },
       large: {
         mobile: {
           size: 18,
-          rows: 7,
+          rows: 8,
         },
-        desktop: {
+        tablet: {
           size: 18,
-          rows: 7,
+          rows: 8,
         },
       },
     },
   },
-  responsiveBreakpoint: 768,
+  breakpoint: {
+    mobile: 0,
+    tablet: 768,
+    desktop: 992,
+  },
   contentWidth: {
     medium: 940,
     large: 1280,
@@ -149,8 +155,10 @@ const tokens: TreatTokens = {
     },
     color: {
       standard: '#777',
+      standardInverted: white,
       focus,
       critical,
+      formHover: formAccent,
       formAccent,
     },
   },
@@ -166,25 +174,30 @@ const tokens: TreatTokens = {
     foreground: {
       link,
       linkHover: link,
+      linkVisited,
       neutral: black,
       neutralInverted: white,
       formAccent,
       critical,
       info,
+      promote,
       positive,
       secondary,
+      secondaryInverted: 'hsla(0, 0%, 100%, 0.65)',
     },
     background: {
+      body: white,
       brand: black,
       input: white,
       inputDisabled: '#eee',
       brandAccent,
       formAccent,
       formAccentDisabled: '#ccc',
-      selection: '#eee',
+      selection: '#f1f7ff',
       card: white,
       critical,
       info,
+      promote,
       positive,
       neutral,
     },

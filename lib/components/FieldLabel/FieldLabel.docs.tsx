@@ -1,25 +1,29 @@
 import React, { ReactNode } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import { FieldLabel } from './FieldLabel';
-import { TextLink } from '../TextLink/TextLink';
+import { FieldLabel, TextLink } from '../';
+import { FieldLabel as PlayroomFieldLabel } from '../../playroom/components';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <div style={{ maxWidth: '300px' }}>{children}</div>
 );
 
 const docs: ComponentDocs = {
+  category: 'Interaction',
+  screenshotWidths: [320],
   examples: [
     {
       label: 'Standard Field Label',
       Container,
-      Example: () => <FieldLabel htmlFor="id" label="This is a field label" />,
+      Example: ({ id }) => (
+        <FieldLabel htmlFor={id} label="This is a field label" />
+      ),
     },
     {
       label: 'Field Label with secondary',
       Container,
-      Example: () => (
+      Example: ({ id }) => (
         <FieldLabel
-          htmlFor="id"
+          htmlFor={id}
           label="Username"
           secondaryLabel="Max 30 characters"
         />
@@ -28,9 +32,9 @@ const docs: ComponentDocs = {
     {
       label: 'Field Label with tertiary label',
       Container,
-      Example: () => (
+      Example: ({ id }) => (
         <FieldLabel
-          htmlFor="id"
+          htmlFor={id}
           label="Password"
           tertiaryLabel={<TextLink>Forgot password?</TextLink>}
         />
@@ -39,10 +43,30 @@ const docs: ComponentDocs = {
     {
       label: 'Field Label with all types',
       Container,
-      Example: () => (
+      Example: ({ id }) => (
         <FieldLabel
-          htmlFor="id"
+          htmlFor={id}
           label="Title"
+          secondaryLabel="Optional"
+          tertiaryLabel={<TextLink>Help?</TextLink>}
+        />
+      ),
+    },
+  ],
+  snippets: [
+    {
+      name: 'Standard',
+      code: <PlayroomFieldLabel label="Label" />,
+    },
+    {
+      name: 'Standard with secondary label',
+      code: <PlayroomFieldLabel label="Label" secondaryLabel="Optional" />,
+    },
+    {
+      name: 'Standard with tertiary label',
+      code: (
+        <PlayroomFieldLabel
+          label="Label"
           secondaryLabel="Optional"
           tertiaryLabel={<TextLink>Help?</TextLink>}
         />

@@ -1,17 +1,20 @@
 import React, { ReactNode, Fragment } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import { Heading } from './Heading';
-import { Box } from '../Box/Box';
-import { Stack } from '../Stack/Stack';
-import { background as boxBackgrounds } from '../Box/useBoxStyles.treat';
+import {
+  background as boxBackgrounds,
+  textAlign,
+} from '../Box/useBoxStyles.treat';
 import { heading as headingLevels } from '../../hooks/typography/typography.treat';
+import { Box, Heading, Stack } from '../';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <div style={{ maxWidth: '300px' }}>{children}</div>
 );
 
 const docs: ComponentDocs = {
+  category: 'Content',
   migrationGuide: true,
+  screenshotWidths: [320, 768],
   examples: [
     {
       label: 'Level 1',
@@ -62,6 +65,16 @@ const docs: ComponentDocs = {
       ),
     },
     {
+      label: 'Truncate a long heading',
+      Example: () => (
+        <Box style={{ width: 160 }}>
+          <Heading level="2" truncate>
+            Really long heading
+          </Heading>
+        </Box>
+      ),
+    },
+    {
       label: 'Heading Spacing',
       docsSite: false,
       Example: () => {
@@ -72,7 +85,7 @@ const docs: ComponentDocs = {
         return (
           <Stack space="medium">
             {levels.sort().map(level => (
-              <Box background="neutralLight">
+              <Box key={level} background="neutralLight">
                 <Heading level={level}>
                   Level {level} Heading (Line 1)
                   <br />
@@ -85,6 +98,36 @@ const docs: ComponentDocs = {
       },
     },
     {
+      label: 'Heading Alignment',
+      docsSite: false,
+      Container,
+      Example: () => {
+        const alignments = Object.keys(textAlign) as Array<
+          keyof typeof textAlign
+        >;
+
+        return (
+          <Stack space="medium">
+            {alignments.map(alignment => (
+              <Heading level="4" align={alignment} key={alignment}>
+                {alignment}
+              </Heading>
+            ))}
+          </Stack>
+        );
+      },
+    },
+    {
+      label: 'Heading Alignment (responsive)',
+      docsSite: false,
+      Container,
+      Example: () => (
+        <Heading level="4" align={['right', 'center', 'left']}>
+          Right aligned mobile, center on tablet, left on desktop
+        </Heading>
+      ),
+    },
+    {
       label: 'Heading Spacing (Legacy)',
       docsSite: false,
       Example: () => {
@@ -95,7 +138,7 @@ const docs: ComponentDocs = {
         return (
           <Stack space="medium">
             {levels.sort().map(level => (
-              <Box background="neutralLight">
+              <Box key={level} background="neutralLight">
                 <Heading level={level} _LEGACY_SPACE_>
                   Level {level} Heading (Line 1)
                   <br />
@@ -119,13 +162,63 @@ const docs: ComponentDocs = {
         return (
           <Fragment>
             {backgrounds.sort().map(background => (
-              <Box background={background} paddingY="xsmall">
+              <Box key={background} background={background} paddingY="xsmall">
                 <Heading level="4">{background}</Heading>
               </Box>
             ))}
           </Fragment>
         );
       },
+    },
+  ],
+  snippets: [
+    {
+      name: 'Level 1',
+      code: <Heading level="1">Heading</Heading>,
+    },
+    {
+      name: 'Level 1 (Weak)',
+      code: (
+        <Heading level="1" weight="weak">
+          Heading
+        </Heading>
+      ),
+    },
+    {
+      name: 'Level 2',
+      code: <Heading level="2">Heading</Heading>,
+    },
+    {
+      name: 'Level 2 (Weak)',
+      code: (
+        <Heading level="2" weight="weak">
+          Heading
+        </Heading>
+      ),
+    },
+    {
+      name: 'Level 3',
+      code: <Heading level="3">Heading</Heading>,
+    },
+    {
+      name: 'Level 3 (Weak)',
+      code: (
+        <Heading level="3" weight="weak">
+          Heading
+        </Heading>
+      ),
+    },
+    {
+      name: 'Level 4',
+      code: <Heading level="4">Heading</Heading>,
+    },
+    {
+      name: 'Level 4 (Weak)',
+      code: (
+        <Heading level="4" weight="weak">
+          Heading
+        </Heading>
+      ),
     },
   ],
 };

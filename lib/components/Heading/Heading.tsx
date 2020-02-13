@@ -3,6 +3,7 @@ import HeadingContext from './HeadingContext';
 import { Box, BoxProps } from '../Box/Box';
 import {
   useHeading,
+  useTruncate,
   HeadingLevel,
   HeadingWeight,
 } from '../../hooks/typography';
@@ -19,8 +20,10 @@ export interface HeadingProps {
   children: ReactNode;
   level: HeadingLevel;
   weight?: HeadingWeight;
+  align?: BoxProps['textAlign'];
   component?: BoxProps['component'];
   id?: string;
+  truncate?: boolean;
   _LEGACY_SPACE_?: boolean;
 }
 
@@ -41,17 +44,43 @@ export const Heading = ({
   weight,
   component,
   children,
+  align,
   id,
+  truncate = false,
   _LEGACY_SPACE_ = false,
-}: HeadingProps) => (
-  <HeadingContext.Provider value={true}>
+}: HeadingProps) => {
+  const truncateStyles = useTruncate();
+  const content = truncate ? (
     <Box
-      id={id}
-      component={component || resolveDefaultComponent[level]}
-      paddingBottom={_LEGACY_SPACE_ ? resolvePaddingForLevel(level) : undefined}
-      className={useHeading({ weight, level, baseline: true, _LEGACY_SPACE_ })}
+      component="span"
+      display="block"
+      overflow="hidden"
+      className={truncateStyles}
     >
       {children}
     </Box>
-  </HeadingContext.Provider>
-);
+  ) : (
+    children
+  );
+
+  return (
+    <HeadingContext.Provider value={true}>
+      <Box
+        id={id}
+        component={component || resolveDefaultComponent[level]}
+        paddingBottom={
+          _LEGACY_SPACE_ ? resolvePaddingForLevel(level) : undefined
+        }
+        textAlign={align}
+        className={useHeading({
+          weight,
+          level,
+          baseline: true,
+          _LEGACY_SPACE_,
+        })}
+      >
+        {content}
+      </Box>
+    </HeadingContext.Provider>
+  );
+};

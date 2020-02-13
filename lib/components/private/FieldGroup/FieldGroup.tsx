@@ -1,4 +1,4 @@
-import React, { AllHTMLAttributes, ReactNode } from 'react';
+import React, { AllHTMLAttributes } from 'react';
 import { Box } from '../../Box/Box';
 import { FieldLabel, FieldLabelProps } from '../../FieldLabel/FieldLabel';
 import {
@@ -6,6 +6,7 @@ import {
   FieldMessageProps,
 } from '../../FieldMessage/FieldMessage';
 import { Stack } from '../../Stack/Stack';
+import { ReactNodeNoStrings } from '../ReactNodeNoStrings';
 
 type FormElementProps = AllHTMLAttributes<HTMLFormElement>;
 export interface FieldGroupProps {
@@ -18,6 +19,7 @@ export interface FieldGroupProps {
   message?: FieldMessageProps['message'];
   reserveMessageSpace?: FieldMessageProps['reserveMessageSpace'];
   tone?: FieldMessageProps['tone'];
+  required?: boolean;
 }
 
 interface FieldGroupRenderProps {
@@ -26,7 +28,7 @@ interface FieldGroupRenderProps {
 }
 
 interface InternalFieldGroupProps extends FieldGroupProps {
-  children(props: FieldGroupRenderProps): ReactNode;
+  children(props: FieldGroupRenderProps): ReactNodeNoStrings;
 }
 
 export const FieldGroup = ({
@@ -38,13 +40,19 @@ export const FieldGroup = ({
   tertiaryLabel,
   description,
   message,
-  reserveMessageSpace = true,
+  reserveMessageSpace = false,
   tone,
+  required,
 }: InternalFieldGroupProps) => {
   const messageId = `${id}-message`;
 
   return (
-    <Box component="fieldset" disabled={disabled} id={id}>
+    <Box
+      component="fieldset"
+      disabled={disabled}
+      id={id}
+      aria-required={required}
+    >
       <Stack space="xsmall">
         {label ? (
           <Box component="legend">

@@ -1,19 +1,23 @@
 import React, { ReactNode } from 'react';
-import { useStyles } from 'sku/react-treat';
 import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';
-import { IconInfo, IconCritical, IconPositive } from '../icons';
-import * as styleRefs from './Alert.treat';
+import { IconInfo, IconCritical, IconPositive, IconPromote } from '../icons';
+import { AllOrNone } from '../private/AllOrNone';
+import { ClearButton } from '../iconButtons/ClearButton/ClearButton';
+import { Columns } from '../Columns/Columns';
+import { Column } from '../Column/Column';
 
-type Tone = 'info' | 'critical' | 'positive';
+type Tone = 'info' | 'critical' | 'positive' | 'promote';
 type AlertWeight = 'strong' | 'regular';
 
-export interface AlertProps {
+type CloseProps = AllOrNone<{ onClose: () => void; closeLabel: string }>;
+
+export type AlertProps = {
   tone?: Tone;
   weight?: AlertWeight;
   children: ReactNode;
   id?: string;
-}
+} & CloseProps;
 
 const backgroundForTone = (tone: Tone, weight: AlertWeight) => {
   if (weight === 'strong') {
@@ -31,12 +35,17 @@ const backgroundForTone = (tone: Tone, weight: AlertWeight) => {
   if (tone === 'info') {
     return 'infoLight';
   }
+
+  if (tone === 'promote') {
+    return 'promoteLight';
+  }
 };
 
 const icons = {
   info: IconInfo,
   critical: IconCritical,
   positive: IconPositive,
+  promote: IconPromote,
 };
 
 export const Alert = ({
@@ -44,25 +53,27 @@ export const Alert = ({
   weight = 'regular',
   children,
   id,
+  closeLabel = 'Close',
+  onClose,
 }: AlertProps) => {
-  const styles = useStyles(styleRefs);
   const background = backgroundForTone(tone, weight);
   const Icon = icons[tone];
 
   return (
-    <Box
-      id={id}
-      background={background}
-      paddingX="gutter"
-      paddingY="medium"
-      display="flex"
-    >
-      {Icon ? (
-        <Box paddingRight="small" className={styles.icon}>
+    <Box id={id} background={background} paddingX="gutter" paddingY="medium">
+      <Columns space="small">
+        <Column width="content">
           <Icon />
-        </Box>
-      ) : null}
-      <Text baseline={false}>{children}</Text>
+        </Column>
+        <Column>
+          <Text baseline={false}>{children}</Text>
+        </Column>
+        {onClose ? (
+          <Column width="content">
+            <ClearButton tone="neutral" label={closeLabel} onClick={onClose} />
+          </Column>
+        ) : null}
+      </Columns>
     </Box>
   );
 };

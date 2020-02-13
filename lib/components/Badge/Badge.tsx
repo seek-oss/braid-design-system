@@ -2,9 +2,9 @@ import React from 'react';
 import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';
 import * as styleRefs from './Badge.treat';
-import { useStyles } from 'sku/treat';
+import { useStyles } from 'sku/react-treat';
 
-type Tone = 'info' | 'critical' | 'positive' | 'neutral';
+type Tone = 'info' | 'critical' | 'positive' | 'neutral' | 'promote';
 type BadgeWeight = 'strong' | 'regular';
 export interface BadgeProps {
   tone?: Tone;
@@ -30,6 +30,10 @@ const backgroundForTone = (tone: Tone, weight: BadgeWeight) => {
     return 'infoLight';
   }
 
+  if (tone === 'promote') {
+    return 'promoteLight';
+  }
+
   if (tone === 'neutral') {
     return 'neutralLight';
   }
@@ -43,21 +47,33 @@ export const Badge = ({
 }: BadgeProps) => {
   const styles = useStyles(styleRefs);
 
-  if (typeof children !== 'string') {
-    throw new Error('Badge may only contain a `string`');
+  if (process.env.NODE_ENV !== 'production') {
+    const invalidChildren = React.Children.toArray(children).some(
+      child => !['string', 'number'].includes(typeof child),
+    );
+
+    if (invalidChildren) {
+      throw new Error('Badge may only contain strings or numbers');
+    }
   }
 
   return (
-    <Box className={styles.outer}>
+    <Box display="flex" className={styles.outer}>
       <Box
         id={id}
-        display="inlineBlock"
+        title={children}
         background={backgroundForTone(tone, weight)}
         paddingX="xsmall"
         borderRadius="standard"
-        className={styles.inner}
+        overflow="hidden"
       >
-        <Text component="span" weight="medium" size="xsmall" baseline={false}>
+        <Text
+          component="span"
+          weight="medium"
+          size="xsmall"
+          truncate
+          baseline={false}
+        >
           {children}
         </Text>
       </Box>

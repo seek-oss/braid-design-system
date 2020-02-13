@@ -1,7 +1,8 @@
-/* tslint:disable */
+/* eslint-disable no-console */
 import fs from 'fs';
 import path from 'path';
 import ts from 'typescript';
+import isEqual from 'lodash/isEqual';
 
 const aliasWhitelist = ['ResponsiveProp'];
 const propBlacklist = ['key'];
@@ -9,20 +10,31 @@ const propBlacklist = ['key'];
 const tsconfigPath = path.join(__dirname, '../tsconfig.json');
 const componentsFile = path.join(__dirname, '../lib/components/index.ts');
 
-const reactNodeType =
-  'string | number | boolean | {} | ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)> | ReactNodeArray | ReactPortal';
-
-const columnType =
-  'ReactElement<ColumnProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>';
-
 const stringAliases: Record<string, string> = {
-  [reactNodeType]: 'ReactNode',
   // with an explicit alias 'boolean' becomes a union of 'true' | 'false'
   boolean: 'boolean',
   CSSProperties: 'CSSProperties',
-  [columnType]: 'Column',
-  [`${columnType}[]`]: 'Column[]',
+  'string | number | boolean | ClassDictionary | ClassArray':
+    'string | number | boolean | ClassDictionary | ClassArray',
 };
+
+const reactNodeTypes = [
+  'string',
+  'number',
+  'false',
+  'true',
+  '{}',
+  'ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>',
+  'ReactNodeArray',
+  'ReactPortal',
+];
+
+const reactNodeNoStringsTypes = [
+  'false',
+  'true',
+  'ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>',
+  'ReactNodeArray',
+];
 
 export interface NormalisedInterface {
   type: 'interface';
@@ -44,6 +56,7 @@ export type NormalisedPropType =
 export default () => {
   const basePath = path.dirname(tsconfigPath);
   const { config, error } = ts.readConfigFile(tsconfigPath, filename =>
+    // eslint-disable-next-line no-sync
     fs.readFileSync(filename, 'utf8'),
   );
 
@@ -69,7 +82,7 @@ export default () => {
 
   const checker = program.getTypeChecker();
 
-  const getComponentPropsType = (exp: ts.Symbol) => {
+  function getComponentPropsType(exp: ts.Symbol) {
     const type = checker.getTypeOfSymbolAtLocation(
       exp,
       exp.valueDeclaration || exp.declarations[0],
@@ -92,12 +105,12 @@ export default () => {
     }
 
     return null;
-  };
+  }
 
-  const normalizeInterface = (
+  function normalizeInterface(
     propsType: ts.Type,
     propsObj: ts.Symbol,
-  ): NormalisedInterface => {
+  ): NormalisedInterface {
     return {
       type: 'interface',
       props: Object.assign(
@@ -132,12 +145,12 @@ export default () => {
           }),
       ),
     };
-  };
+  }
 
-  const normaliseType = (
+  function normaliseType(
     type: ts.Type,
     propsObj: ts.Symbol,
-  ): NormalisedPropType => {
+  ): NormalisedPropType {
     const typeString = checker.typeToString(type);
 
     if (stringAliases[typeString]) {
@@ -161,6 +174,18 @@ export default () => {
     }
 
     if (type.isUnion()) {
+      const types = type.types.map(unionItem =>
+        checker.typeToString(unionItem),
+      );
+
+      if (isEqual(types, reactNodeTypes)) {
+        return 'ReactNode';
+      }
+
+      if (isEqual(types, reactNodeNoStringsTypes)) {
+        return 'ReactNodeNoStrings';
+      }
+
       return {
         type: 'union',
         types: type.types.map(unionItem => normaliseType(unionItem, propsObj)),
@@ -172,9 +197,9 @@ export default () => {
     }
 
     return typeString;
-  };
+  }
 
-  const getComponentDocs = (exp: ts.Symbol) => {
+  function getComponentDocs(exp: ts.Symbol) {
     const propsObj = getComponentPropsType(exp);
 
     if (!propsObj || !propsObj.valueDeclaration) {
@@ -187,7 +212,7 @@ export default () => {
     );
 
     return normalizeInterface(propsType, propsObj);
-  };
+  }
 
   for (const sourceFile of program.getSourceFiles()) {
     if (

@@ -1,10 +1,11 @@
 import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import { Secondary } from './Secondary';
-import { Text } from '../Text/Text';
+import { Secondary, Text } from '../';
 
 const docs: ComponentDocs = {
+  category: 'Content',
   migrationGuide: true,
+  screenshotWidths: [320],
   examples: [
     {
       Example: () => (
@@ -14,6 +15,7 @@ const docs: ComponentDocs = {
       ),
     },
   ],
+  snippets: [{ name: 'Standard', code: <Secondary>Secondary</Secondary> }],
 };
 
 export default docs;

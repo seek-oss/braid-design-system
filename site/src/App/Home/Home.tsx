@@ -32,7 +32,7 @@ export const Home = () => {
           >
             <Box
               width="full"
-              paddingBottom="xxsmall"
+              paddingBottom="small"
               className={styles.container}
             >
               <Logo width="100%" />
@@ -48,10 +48,11 @@ export const Home = () => {
                   component="span"
                   display="flex"
                   justifyContent="center"
-                  className={styles.subtitle}
+                  flexWrap="wrap"
                 >
-                  <span>Themeable design system</span>&nbsp;
-                  <span>for the SEEK Group</span>
+                  <span className={styles.nowrap}>Themeable design system</span>
+                  &nbsp;
+                  <span className={styles.nowrap}>for the SEEK Group</span>
                 </Box>
               </Text>
             </Box>
@@ -67,7 +68,7 @@ export const Home = () => {
                   className={styles.linkButton}
                   tabIndex={-1}
                 >
-                  <Button weight="weak">Components</Button>
+                  <Button weight="weak">Documentation</Button>
                 </Link>
               </Action>
               <Action>

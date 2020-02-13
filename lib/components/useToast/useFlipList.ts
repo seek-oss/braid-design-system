@@ -99,33 +99,36 @@ export const useFlipList = () => {
     });
   });
 
-  const remove = useCallback((id: string, cb: () => void) => {
-    const element = refs.get(id);
+  const remove = useCallback(
+    (id: string, cb: () => void) => {
+      const element = refs.get(id);
 
-    if (element) {
-      // Removal animation
-      animate(
-        element,
-        [
-          {
-            property: 'opacity',
-            to: '0',
-          },
-          {
-            property: 'transform',
-            to: 'translateY(50%)',
-          },
-        ],
-        cb,
-      );
-    }
-  }, []);
+      if (element) {
+        // Removal animation
+        animate(
+          element,
+          [
+            {
+              property: 'opacity',
+              to: '0',
+            },
+            {
+              property: 'transform',
+              to: 'translateY(50%)',
+            },
+          ],
+          cb,
+        );
+      }
+    },
+    [refs],
+  );
 
   const itemRef = useCallback(
     (id: string) => (ref: HTMLElement | null) => {
       refs.set(id, ref);
     },
-    [],
+    [refs],
   );
 
   return {

@@ -1,12 +1,14 @@
-import fs from 'fs';
+import fs from 'fs-extra';
 import path from 'path';
 
 import generate from './generate';
 
-const typeDocs = generate();
+(async () => {
+  const typeDocs = generate();
 
-fs.writeFileSync(
-  path.join(__dirname, './componentDocs.json'),
-  JSON.stringify(typeDocs, null, 2),
-  'utf8',
-);
+  await fs.writeFile(
+    path.join(__dirname, './componentDocs.json'),
+    JSON.stringify(typeDocs, null, 2),
+    'utf8',
+  );
+})();

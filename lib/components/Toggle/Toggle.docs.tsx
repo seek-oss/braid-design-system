@@ -1,13 +1,16 @@
 import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import { Toggle } from './Toggle';
+import { Toggle } from '../';
+import { Toggle as PlayroomToggle } from '../../playroom/components';
 
 const handler = () => {
   /* no op for docs examples */
 };
 
 const docs: ComponentDocs = {
+  category: 'Interaction',
   migrationGuide: true,
+  screenshotWidths: [320],
   examples: [
     {
       label: 'Toggle off',
@@ -35,6 +38,24 @@ const docs: ComponentDocs = {
           onChange={handler}
         />
       ),
+    },
+  ],
+  snippets: [
+    {
+      name: 'On',
+      code: <PlayroomToggle label="Toggled on" on />,
+    },
+    {
+      name: 'Off',
+      code: <PlayroomToggle label="Toggled off" on={false} />,
+    },
+    {
+      name: 'On, Aligned right',
+      code: <PlayroomToggle label="Toggled on" align="right" on />,
+    },
+    {
+      name: 'Off, Aligned right',
+      code: <PlayroomToggle label="Toggled off" align="right" on={false} />,
     },
   ],
 };

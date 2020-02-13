@@ -1,14 +1,16 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useState } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import { Textarea } from './Textarea';
-import { TextLink } from '../TextLink/TextLink';
+import { Textarea, TextLink } from '../';
+import { Textarea as PlayroomTextarea } from '../../playroom/components';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <div style={{ maxWidth: '300px' }}>{children}</div>
 );
 
 const docs: ComponentDocs = {
+  category: 'Interaction',
   migrationGuide: true,
+  screenshotWidths: [320],
   examples: [
     {
       label: 'Textarea',
@@ -77,7 +79,7 @@ const docs: ComponentDocs = {
       ),
     },
     {
-      label: 'Textarea with postive message',
+      label: 'Textarea with positive message',
       Container,
       Example: ({ id, handler }) => (
         <Textarea
@@ -91,28 +93,118 @@ const docs: ComponentDocs = {
       ),
     },
     {
-      label: 'Textarea with a limit',
+      label: 'Textarea grow field with typing, limited to 6 lines',
       Container,
-      Example: ({ id, handler }) => (
-        <Textarea
-          id={id}
-          value=""
-          onChange={handler}
-          label="Do you like Braid?"
-          lineLimit={100}
+      Example: ({ id }) => {
+        const [value, setValue] = useState('');
+
+        return (
+          <Textarea
+            id={id}
+            value={value}
+            onChange={e => setValue(e.currentTarget.value)}
+            label="Do you like Braid?"
+            lineLimit={6}
+          />
+        );
+      },
+    },
+    {
+      label: 'Textarea nearing character limit, eg. 50 characters',
+      Container,
+      Example: ({ id }) => {
+        const [value, setValue] = useState(
+          'The text is nearing the 50 character limit',
+        );
+
+        return (
+          <Textarea
+            id={id}
+            value={value}
+            onChange={e => setValue(e.currentTarget.value)}
+            label="Do you like Braid?"
+            characterLimit={50}
+          />
+        );
+      },
+    },
+    {
+      label: 'Textarea exceeding character limit, eg. > 50 characters',
+      Container,
+      Example: ({ id }) => {
+        const [value, setValue] = useState(
+          'The long piece of text exceeding the specified 50 character limit',
+        );
+
+        return (
+          <Textarea
+            id={id}
+            value={value}
+            onChange={e => setValue(e.currentTarget.value)}
+            label="Do you like Braid?"
+            characterLimit={50}
+          />
+        );
+      },
+    },
+    {
+      label: 'Textarea highlighting a range',
+      Container,
+      Example: ({ id }) => {
+        const [value, setValue] = useState(
+          'The long piece of text highlighting a range',
+        );
+
+        return (
+          <Textarea
+            id={id}
+            value={value}
+            onChange={e => setValue(e.currentTarget.value)}
+            label="Do you like Braid?"
+            description="Characters 9-22 are invalid"
+            highlightRanges={[{ start: 9, end: 22 }]}
+          />
+        );
+      },
+    },
+  ],
+  snippets: [
+    {
+      name: 'Standard',
+      code: <PlayroomTextarea label="Textarea" />,
+    },
+    {
+      name: 'With character limit',
+      code: (
+        <PlayroomTextarea
+          label="Textarea"
+          secondaryLabel="Max 100 characters"
+          characterLimit={100}
         />
       ),
     },
     {
-      label: 'Textarea with value exceeding limit',
-      Container,
-      Example: ({ id, handler }) => (
-        <Textarea
-          id={id}
-          value="Yes I do"
-          onChange={handler}
-          label="Do you like Braid?"
-          lineLimit={5}
+      name: 'Fixed height, 5 lines',
+      code: <PlayroomTextarea label="Textarea" lines={5} grow={false} />,
+    },
+    {
+      name: 'Grow with typing, limit to 7 lines',
+      code: <PlayroomTextarea label="Textarea" lineLimit={7} />,
+    },
+    {
+      name: 'With error',
+      code: (
+        <PlayroomTextarea label="Textarea" tone="critical" message="Required" />
+      ),
+    },
+    {
+      name: 'With highlighting',
+      code: (
+        <PlayroomTextarea
+          label="Textarea"
+          tone="critical"
+          description="Characters 11-20 are invalid"
+          highlightRanges={[{ start: 11, end: 20 }]}
         />
       ),
     },

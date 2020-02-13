@@ -47,17 +47,10 @@ function reducer(state: ToastState, action: Actions): ToastState {
 
   return state;
 }
-
 interface ToastProviderProps {
   children: ReactNode;
 }
-export const ToastProvider = ({ children }: ToastProviderProps) => {
-  const currentContext = useContext(ToastControllerContext);
-  if (currentContext !== null) {
-    // Bail early as "ToastProvider" is already setup
-    return <Fragment>{children}</Fragment>;
-  }
-
+const InternalToastProvider = ({ children }: ToastProviderProps) => {
   const [{ toasts }, dispatch] = useReducer(reducer, {
     toasts: [],
   });
@@ -80,6 +73,17 @@ export const ToastProvider = ({ children }: ToastProviderProps) => {
       </ToastPortal>
     </ToastControllerContext.Provider>
   );
+};
+
+export const ToastProvider = ({ children }: ToastProviderProps) => {
+  const currentContext = useContext(ToastControllerContext);
+
+  if (currentContext !== null) {
+    // Bail early as "ToastProvider" is already setup
+    return <Fragment>{children}</Fragment>;
+  }
+
+  return <InternalToastProvider>{children}</InternalToastProvider>;
 };
 
 interface ToastPortalProps {

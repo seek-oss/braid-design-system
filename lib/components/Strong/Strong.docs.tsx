@@ -1,10 +1,11 @@
 import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import { Strong } from './Strong';
-import { Text } from '../Text/Text';
+import { Strong, Text } from '../';
 
 const docs: ComponentDocs = {
+  category: 'Content',
   migrationGuide: true,
+  screenshotWidths: [320],
   examples: [
     {
       Example: () => (
@@ -12,6 +13,12 @@ const docs: ComponentDocs = {
           The last word of this sentence is <Strong>strong.</Strong>
         </Text>
       ),
+    },
+  ],
+  snippets: [
+    {
+      name: 'Standard',
+      code: <Strong>Strong text</Strong>,
     },
   ],
 };

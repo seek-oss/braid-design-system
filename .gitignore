@@ -17,5 +17,4 @@ report/
 site/dist/
 site/dist/playroom/
 tsconfig.json
-tslint.json
 # end managed by sku

@@ -1,12 +1,13 @@
 export { BraidProvider } from './BraidProvider/BraidProvider';
-export {
-  BraidLoadableProvider,
-} from './BraidLoadableProvider/BraidLoadableProvider';
+export { BraidLoadableProvider } from './BraidLoadableProvider/BraidLoadableProvider';
 export { ThemeNameConsumer } from './ThemeNameConsumer/ThemeNameConsumer';
-export { useThemeName } from './ThemeNameConsumer/ThemeNameContext';
+export { useThemeName } from './useThemeName/useThemeName';
+export { useSpace } from './useSpace/useSpace';
+export { useColor } from './useColor/useColor';
 export { Actions } from './Actions/Actions';
 export { Alert } from './Alert/Alert';
 export { Autosuggest } from './Autosuggest/Autosuggest';
+export { BackgroundProvider } from './BackgroundProvider/BackgroundProvider';
 export { Badge } from './Badge/Badge';
 export { Box } from './Box/Box';
 export { BoxRenderer } from './Box/BoxRenderer';
@@ -26,17 +27,22 @@ export { FieldMessage } from './FieldMessage/FieldMessage';
 export { Heading } from './Heading/Heading';
 export { Hidden } from './Hidden/Hidden';
 export { Inline } from './Inline/Inline';
+export { Loader } from './Loader/Loader';
+export { OverflowMenu } from './OverflowMenu/OverflowMenu';
+export { OverflowMenuItem } from './OverflowMenuItem/OverflowMenuItem';
 export { MonthPicker } from './MonthPicker/MonthPicker';
 export { Radio } from './Radio/Radio';
 export { Secondary } from './Secondary/Secondary';
 export { Stack } from './Stack/Stack';
 export { Strong } from './Strong/Strong';
+export { Tag } from './Tag/Tag';
 export { Text } from './Text/Text';
 export { Textarea } from './Textarea/Textarea';
 export { TextField } from './TextField/TextField';
 export { TextLink } from './TextLink/TextLink';
 export { TextLinkRenderer } from './TextLinkRenderer/TextLinkRenderer';
-export { useToast } from './useToast/ToastContext';
+export { Tiles } from './Tiles/Tiles';
 export { Toggle } from './Toggle/Toggle';
+export { useToast } from './useToast/ToastContext';
 
 export * from './icons';

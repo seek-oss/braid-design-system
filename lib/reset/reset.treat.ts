@@ -8,6 +8,7 @@ export const base = style({
   fontSize: '100%',
   font: 'inherit',
   verticalAlign: 'baseline',
+  WebkitTapHighlightColor: 'transparent',
 });
 
 // HTML5 display-role reset for older browsers
@@ -60,8 +61,24 @@ const select = [
   }),
 ];
 
+const input = [
+  ...field,
+  style({
+    selectors: {
+      '&::-ms-clear': {
+        display: 'none',
+      },
+    },
+  }),
+];
+
 const button = style({
   background: 'none',
+});
+
+const a = style({
+  textDecoration: 'none',
+  color: 'inherit',
 });
 
 export const element = {
@@ -81,10 +98,11 @@ export const element = {
   blockquote: quote,
   q: quote,
   body,
+  a,
   table,
   mark,
   select,
   button,
   textarea: field,
-  input: field,
+  input,
 };

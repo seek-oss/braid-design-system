@@ -8,8 +8,8 @@ const Container = ({ children }: { children: ReactNode }) => (
 );
 
 const docs: ComponentDocs = {
-  migrationGuide: true,
-
+  screenshotWidths: [],
+  category: 'Content',
   examples: [
     {
       label: 'Nuetral Toast',

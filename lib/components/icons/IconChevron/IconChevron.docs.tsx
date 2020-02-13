@@ -1,10 +1,12 @@
 import React from 'react';
 import { ComponentDocs } from '../../../../site/src/types';
-import examplesForIcon from '../../private/examplesForIcon';
 import { IconChevron } from './IconChevron';
 
 const docs: ComponentDocs = {
+  category: 'Icon',
   migrationGuide: true,
+  foundation: true,
+  screenshotWidths: [],
   examples: [
     {
       label: 'Default',
@@ -26,7 +28,6 @@ const docs: ComponentDocs = {
       label: 'Down',
       Example: () => <IconChevron direction="down" />,
     },
-    ...examplesForIcon(IconChevron),
   ],
 };
 

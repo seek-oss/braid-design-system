@@ -1,10 +1,18 @@
+import React from 'react';
 import { ComponentDocs } from '../../../../site/src/types';
-import examplesForIcon from '../../private/examplesForIcon';
 import { IconDate } from './IconDate';
 
 const docs: ComponentDocs = {
+  category: 'Icon',
   migrationGuide: true,
-  examples: examplesForIcon(IconDate),
+  foundation: true,
+  screenshotWidths: [],
+  examples: [
+    {
+      label: 'Default',
+      Example: () => <IconDate />,
+    },
+  ],
 };
 
 export default docs;

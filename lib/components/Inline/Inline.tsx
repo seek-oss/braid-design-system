@@ -1,33 +1,35 @@
-import React, { Children, ReactNode } from 'react';
-import classnames from 'classnames';
-import { useStyles } from 'sku/treat';
+import React, { Children } from 'react';
 import { Box } from '../Box/Box';
 import { ResponsiveSpace } from '../Box/useBoxStyles';
 import {
-  useNegativeOffsetX,
-  useNegativeOffsetY,
-} from '../../hooks/useNegativeOffset/useNegativeOffset';
-import * as styleRefs from './Inline.treat';
+  useNegativeMarginLeft,
+  useNegativeMarginTop,
+} from '../../hooks/useNegativeMargin/useNegativeMargin';
+import { ResponsiveProp } from '../../utils/responsiveProp';
+import { Align, alignToFlexAlign } from '../../utils/align';
+import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 
 export interface InlineProps {
+  align?: ResponsiveProp<Align>;
   space: ResponsiveSpace;
-  children: ReactNode;
+  children: ReactNodeNoStrings;
 }
 
-export const Inline = ({ space = 'none', children }: InlineProps) => {
-  const styles = useStyles(styleRefs);
-  const negativeOffsetX = useNegativeOffsetX(space);
-  const negativeOffsetY = useNegativeOffsetY(space);
+export const Inline = ({ space = 'none', align, children }: InlineProps) => {
+  const negativeMarginLeft = useNegativeMarginLeft(space);
+  const negativeMarginTop = useNegativeMarginTop(space);
 
   return (
-    <Box className={classnames(negativeOffsetY)}>
+    <Box className={negativeMarginTop}>
       <Box
         display="flex"
-        className={classnames(styles.flexWrap, negativeOffsetX)}
+        justifyContent={alignToFlexAlign(align)}
+        flexWrap="wrap"
+        className={negativeMarginLeft}
       >
         {Children.map(children, child =>
           child !== null && child !== undefined ? (
-            <Box paddingLeft={space} paddingTop={space}>
+            <Box minWidth={0} paddingLeft={space} paddingTop={space}>
               {child}
             </Box>
           ) : null,

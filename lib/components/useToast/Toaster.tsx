@@ -3,7 +3,7 @@ import { useStyles } from 'sku/treat';
 
 import * as styleRefs from './Toast.treat';
 import ToastComponent from './Toast';
-import { ContentBlock, Box, Stack } from '..';
+import { ContentBlock, Box } from '..';
 import { useFlipList } from './useFlipList';
 
 export interface Toast {

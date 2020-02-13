@@ -29,15 +29,16 @@ export const FieldMessage = ({
   reserveMessageSpace = true,
   disabled,
 }: FieldMessageProps) => {
+  const styles = useStyles(styleRefs);
+
   if (tones.indexOf(tone) === -1) {
     throw new Error(`Invalid tone: ${tone}`);
   }
 
-  if (!message && !reserveMessageSpace) {
+  if (!message && !secondaryMessage && !reserveMessageSpace) {
     return null;
   }
 
-  const styles = useStyles(styleRefs);
   const showMessage = !disabled && message;
 
   return (
@@ -49,7 +50,11 @@ export const FieldMessage = ({
             className={showMessage ? undefined : styles.noSelect}
           >
             {showMessage && tone !== 'neutral' ? (
-              <Box paddingRight="xxsmall" className={styles.fixedSize}>
+              <Box
+                paddingRight="xxsmall"
+                flexShrink={0}
+                className={styles.fixedSize}
+              >
                 {Icon[tone]}
               </Box>
             ) : null}

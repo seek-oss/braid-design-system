@@ -1,11 +1,17 @@
-import { createElement, forwardRef, AllHTMLAttributes } from 'react';
+import {
+  createElement,
+  forwardRef,
+  AllHTMLAttributes,
+  ElementType,
+} from 'react';
 import { useBoxStyles, UseBoxStylesProps } from './useBoxStyles';
 import { renderBackgroundProvider } from './BackgroundContext';
-import { Optional, Omit } from 'utility-types';
 
 export interface BoxProps
-  extends Optional<UseBoxStylesProps, 'component'>,
-    Omit<AllHTMLAttributes<HTMLElement>, 'width' | 'height'> {}
+  extends Omit<UseBoxStylesProps, 'component'>,
+    Omit<AllHTMLAttributes<HTMLElement>, 'width' | 'height' | 'className'> {
+  component?: ElementType;
+}
 
 const NamedBox = forwardRef<HTMLElement, BoxProps>(
   (
@@ -27,8 +33,11 @@ const NamedBox = forwardRef<HTMLElement, BoxProps>(
       marginRight,
       display,
       flexDirection,
+      flexWrap,
+      flexShrink,
       alignItems,
       justifyContent,
+      textAlign,
       borderRadius,
       background,
       boxShadow,
@@ -39,6 +48,8 @@ const NamedBox = forwardRef<HTMLElement, BoxProps>(
       position,
       cursor,
       pointerEvents,
+      overflow,
+      minWidth,
       className,
       ...restProps
     },
@@ -62,8 +73,11 @@ const NamedBox = forwardRef<HTMLElement, BoxProps>(
       marginRight,
       display,
       flexDirection,
+      flexWrap,
+      flexShrink,
       alignItems,
       justifyContent,
+      textAlign,
       borderRadius,
       background,
       boxShadow,
@@ -74,10 +88,13 @@ const NamedBox = forwardRef<HTMLElement, BoxProps>(
       position,
       cursor,
       pointerEvents,
+      overflow,
+      minWidth,
+      className,
     });
 
     const element = createElement(component, {
-      className: `${boxStyles}${className ? ` ${className}` : ''}`,
+      className: boxStyles,
       ...restProps,
       ref,
     });

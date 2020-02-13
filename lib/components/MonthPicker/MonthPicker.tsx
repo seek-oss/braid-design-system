@@ -1,9 +1,7 @@
 import React, { ChangeEvent, FocusEvent, createRef, Fragment } from 'react';
-import classnames from 'classnames';
 import range from 'lodash/range';
 import { isMobile } from 'is-mobile';
-import { Omit } from 'utility-types';
-import { useStyles } from 'sku/treat';
+import { useStyles } from 'sku/react-treat';
 import { Box } from '../Box/Box';
 import { Column } from '../Column/Column';
 import { Columns } from '../Columns/Columns';
@@ -20,7 +18,7 @@ interface MonthPickerValue {
 
 type FocusHandler = () => void;
 type ChangeHandler = (value: MonthPickerValue) => void;
-interface MonthPickerProps
+export interface MonthPickerProps
   extends Omit<
     FieldProps,
     | 'value'
@@ -31,6 +29,8 @@ interface MonthPickerProps
     | 'autoComplete'
     | 'secondaryMessage'
     | 'onClear'
+    | 'autoFocus'
+    | 'icon'
   > {
   value: MonthPickerValue;
   onChange: ChangeHandler;
@@ -116,7 +116,7 @@ const makeChangeHandler = <
   }
 };
 
-export const MonthPicker = ({
+const MonthPicker = ({
   id,
   value,
   label,
@@ -177,6 +177,7 @@ export const MonthPicker = ({
       tone={tone}
       disabled={disabled}
       label={label}
+      value={customValueToString(currentValue)}
       {...restProps}
       labelId={undefined}
       data={undefined}
@@ -194,7 +195,7 @@ export const MonthPicker = ({
             onBlur={onBlur}
             onFocus={onFocus}
             {...fieldProps}
-            className={classnames(className, styles.nativeInput)}
+            className={[className, styles.nativeInput]}
             ref={fieldRef}
           />
           {overlays}
@@ -223,7 +224,6 @@ export const MonthPicker = ({
               onChange={makeChangeHandler(onChange, value, 'month')}
               onBlur={blurHandler}
               onFocus={focusHandler}
-              reserveMessageSpace={false}
               tone={tone}
               placeholder="Month"
               {...fieldGroupProps}
@@ -242,7 +242,6 @@ export const MonthPicker = ({
               onChange={makeChangeHandler(onChange, value, 'year')}
               onBlur={blurHandler}
               onFocus={focusHandler}
-              reserveMessageSpace={false}
               tone={tone}
               placeholder="Year"
               {...fieldGroupProps}
@@ -258,3 +257,7 @@ export const MonthPicker = ({
 
   return renderNativeInput ? nativeField : customFieldGroup;
 };
+
+MonthPicker.displayName = 'MonthPicker';
+
+export { MonthPicker };

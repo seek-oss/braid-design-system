@@ -1,5 +1,4 @@
 import React, { AllHTMLAttributes } from 'react';
-import { Omit } from 'utility-types';
 import {
   TextLinkRenderer,
   TextLinkRendererProps,
@@ -10,8 +9,8 @@ export interface TextLinkProps
   extends Omit<TextLinkRendererProps, 'children'>,
     Omit<AnchorProps, 'className' | 'style'> {}
 
-export const TextLink = (props: TextLinkProps) => (
-  <TextLinkRenderer>
+export const TextLink = ({ showVisited, hitArea, ...props }: TextLinkProps) => (
+  <TextLinkRenderer showVisited={showVisited} hitArea={hitArea}>
     {styleProps => <a {...props} {...styleProps} />}
   </TextLinkRenderer>
 );

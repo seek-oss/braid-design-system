@@ -1,20 +1,20 @@
-import { TreatTokens } from '../makeTreatTheme';
+import { TreatTokens } from '../makeBraidTheme';
 import { DeepPartial } from 'utility-types';
 import merge from 'lodash/merge';
 import { lighten } from 'polished';
 
 const palette = {
   // Brand
-  formAccent: '#0d00ec',
+  formAccent: '#0068ff',
+  saBlueDark: '#1d307f',
   saBlue: '#282acc',
-  saBlueDark: '#1d307F',
-  saBlueLight: '#4799D3',
-  saPurple: '#3f11a3',
-  saPurpleDark: '#8318B6',
+  saBlueLight: '#4799d3',
+  saPurpleDark: '#3f11a3',
+  saPurple: '#8318b6',
 
   // Buttons & Filters
   saCta: '#e50379',
-  saLink: '#0068ff',
+  saLink: '#0069ff',
 
   // Grayscale
   saBlack: '#000',
@@ -30,10 +30,10 @@ const palette = {
   critical: '#d30b41',
   notice: '#ffc842',
   positive: '#028616',
-  neutral: '#989ba2',
+  neutral: '#5e5f66',
   // Desired `info` colour is `#4799d3`, however white text is in-accessible on this.
   // The closest colour that meets a contrast ratio of 4.51 is `#2B7CB6`.
-  info: '#2B7CB6',
+  info: '#2b7cb6',
   promote: '#5f37b7',
 };
 
@@ -45,20 +45,25 @@ export const makeTokens = ({
   name,
   tokenOverrides = {},
 }: MakeTokensOptions): TreatTokens => {
+  const body = palette.saGrayLighter;
   const brandAccent = palette.saCta;
   const brand = palette.saBlue;
   const critical = palette.critical;
   const positive = palette.positive;
   const info = palette.info;
+  const promote = palette.promote;
   const neutral = palette.neutral;
   const white = palette.saWhite;
   const formAccent = palette.formAccent;
+  const formAccentDisabled = palette.saGrayLight;
   const link = palette.saLink;
-  const disabled = palette.saGrayLight;
+  const linkVisited = palette.saPurple;
+  const disabled = palette.saGrayLighter;
   const textNeutral = palette.saGrayDarker;
   const secondary = palette.saGrayDark;
   const focus = lighten(0.3, palette.saBlueLight);
-  const selection = lighten(0.3, palette.saBlueLight);
+  const selection = lighten(0.4, palette.saBlueLight);
+  const formHover = lighten(0.15, palette.saBlueLight);
 
   const tokens: TreatTokens = {
     name,
@@ -71,7 +76,7 @@ export const makeTokens = ({
       fontWeight: {
         regular: 400,
         medium: 600,
-        strong: 700,
+        strong: 800,
       },
       heading: {
         weight: {
@@ -84,8 +89,8 @@ export const makeTokens = ({
               size: 28,
               rows: 9,
             },
-            desktop: {
-              size: 48,
+            tablet: {
+              size: 42,
               rows: 15,
             },
           },
@@ -94,7 +99,7 @@ export const makeTokens = ({
               size: 24,
               rows: 8,
             },
-            desktop: {
+            tablet: {
               size: 32,
               rows: 10,
             },
@@ -104,7 +109,7 @@ export const makeTokens = ({
               size: 20,
               rows: 7,
             },
-            desktop: {
+            tablet: {
               size: 20,
               rows: 7,
             },
@@ -114,7 +119,7 @@ export const makeTokens = ({
               size: 18,
               rows: 7,
             },
-            desktop: {
+            tablet: {
               size: 18,
               rows: 7,
             },
@@ -127,7 +132,7 @@ export const makeTokens = ({
             size: 12,
             rows: 4,
           },
-          desktop: {
+          tablet: {
             size: 12,
             rows: 4,
           },
@@ -137,7 +142,7 @@ export const makeTokens = ({
             size: 14,
             rows: 5,
           },
-          desktop: {
+          tablet: {
             size: 14,
             rows: 5,
           },
@@ -145,11 +150,11 @@ export const makeTokens = ({
         standard: {
           mobile: {
             size: 16,
-            rows: 5,
+            rows: 6,
           },
-          desktop: {
+          tablet: {
             size: 16,
-            rows: 5,
+            rows: 6,
           },
         },
         large: {
@@ -157,20 +162,24 @@ export const makeTokens = ({
             size: 18,
             rows: 7,
           },
-          desktop: {
+          tablet: {
             size: 18,
             rows: 7,
           },
         },
       },
     },
-    responsiveBreakpoint: 768,
+    breakpoint: {
+      mobile: 0,
+      tablet: 768,
+      desktop: 992,
+    },
     contentWidth: {
       medium: 940,
       large: 1280,
     },
     grid: 4,
-    touchableSize: 12,
+    touchableSize: 11,
     space: {
       gutter: 5,
       xxsmall: 1,
@@ -198,8 +207,10 @@ export const makeTokens = ({
       },
       color: {
         standard: palette.saGrayLight,
+        standardInverted: white,
         focus,
         critical,
+        formHover,
         formAccent,
       },
     },
@@ -215,25 +226,30 @@ export const makeTokens = ({
       foreground: {
         link,
         linkHover: link,
+        linkVisited,
         neutral: textNeutral,
         neutralInverted: white,
         formAccent,
         critical,
         info,
+        promote,
         positive,
         secondary,
+        secondaryInverted: 'hsla(0, 0%, 100%, 0.65)',
       },
       background: {
+        body,
         brand,
         input: white,
         inputDisabled: disabled,
         brandAccent,
         formAccent,
-        formAccentDisabled: disabled,
+        formAccentDisabled,
         selection,
         card: white,
         critical,
         info,
+        promote,
         positive,
         neutral,
       },

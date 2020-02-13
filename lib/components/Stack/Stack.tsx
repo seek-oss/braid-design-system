@@ -1,54 +1,94 @@
-import React, { ReactNode, Children, Fragment } from 'react';
-import classnames from 'classnames';
-import { useStyles } from 'sku/treat';
+import React, { Children, Fragment } from 'react';
+import { useStyles } from 'sku/react-treat';
 import { Divider } from '../Divider/Divider';
+import { Align, alignToFlexAlign } from '../../utils/align';
+import { ResponsiveProp, mapResponsiveProp } from '../../utils/responsiveProp';
 import { useBoxStyles, UseBoxStylesProps } from '../Box/useBoxStyles';
 import * as styleRefs from './Stack.treat';
 import { Box } from '../Box/Box';
+import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 
 export interface UseStackProps {
+  align: ResponsiveProp<Align>;
   component: UseBoxStylesProps['component'];
   space: UseBoxStylesProps['paddingBottom'];
 }
 
-export const useStackItem = ({ component, space }: UseStackProps) => {
+const alignToDisplay = {
+  left: 'block',
+  center: 'flex',
+  right: 'flex',
+} as const;
+
+export const useStackItem = ({ align, component, space }: UseStackProps) => {
   const styles = useStyles(styleRefs);
 
-  return classnames(
-    useBoxStyles({ component, paddingBottom: space }),
-    styles.excludingLast,
-  );
+  return useBoxStyles({
+    component,
+    className: styles.excludingLast,
+    paddingBottom: space,
+    // If we're aligned left across all screen sizes,
+    // there's actually no alignment work to do.
+    ...(align === 'left'
+      ? {}
+      : {
+          display: mapResponsiveProp(align, alignToDisplay),
+          flexDirection: 'column',
+          alignItems: alignToFlexAlign(align),
+        }),
+  });
 };
 
+const validStackComponents = ['div', 'ol', 'ul'] as const;
+
 export interface StackProps {
-  children: ReactNode;
+  component?: typeof validStackComponents[number];
+  children: ReactNodeNoStrings;
   space: UseBoxStylesProps['padding'];
+  align?: ResponsiveProp<Align>;
   dividers?: boolean;
 }
 
-export const Stack = ({ children, space, dividers = false }: StackProps) => {
-  const stackClasses = useStackItem({
-    component: 'div',
-    space,
-  });
+export const Stack = ({
+  component = 'div',
+  children,
+  space,
+  align = 'left',
+  dividers = false,
+}: StackProps) => {
+  if (
+    process.env.NODE_ENV === 'development' &&
+    !validStackComponents.includes(component)
+  ) {
+    throw new Error(`Invalid Stack component: ${component}`);
+  }
+
+  const stackClasses = useStackItem({ component, space, align });
   const stackItems = Children.toArray(children);
 
-  if (stackItems.length <= 1) {
+  const isList = component === 'ol' || component === 'ul';
+  const stackItemComponent = isList ? 'li' : 'div';
+
+  if (stackItems.length <= 1 && align === 'left' && !isList) {
     return <Fragment>{stackItems}</Fragment>;
   }
 
   return (
-    <div>
+    <Box component={component}>
       {stackItems.map((child, index) => (
-        <div className={dividers ? undefined : stackClasses} key={index}>
+        <Box
+          component={stackItemComponent}
+          className={dividers ? undefined : stackClasses}
+          key={index}
+        >
           {dividers && index > 0 ? (
-            <Box paddingY={space}>
+            <Box width="full" paddingY={space}>
               <Divider />
             </Box>
           ) : null}
           {child}
-        </div>
+        </Box>
       ))}
-    </div>
+    </Box>
   );
 };

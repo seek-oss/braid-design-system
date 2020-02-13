@@ -1,6 +1,5 @@
 import React, { ReactNode, AllHTMLAttributes, forwardRef } from 'react';
 import { useStyles } from 'sku/react-treat';
-import classnames from 'classnames';
 import { Box } from '../../Box/Box';
 import { FieldLabelProps } from '../../FieldLabel/FieldLabel';
 import {
@@ -10,7 +9,7 @@ import {
 import { FieldOverlay } from '../FieldOverlay/FieldOverlay';
 import { Text } from '../../Text/Text';
 import { IconTick } from '../../icons';
-import { useTouchableSpace } from '../../../hooks/typography';
+import { useVirtualTouchable } from '../touchable/useVirtualTouchable';
 import buildDataAttributes, { DataAttributeMap } from '../buildDataAttributes';
 import * as styleRefs from './InlineField.treat';
 
@@ -31,6 +30,7 @@ export interface InlineFieldProps {
   tone?: InlineFieldTone;
   children?: ReactNode;
   data?: DataAttributeMap;
+  required?: boolean;
 }
 
 type FieldType = 'checkbox' | 'radio';
@@ -50,12 +50,23 @@ const Indicator = ({
   const styles = useStyles(styleRefs);
   const isCheckbox = type === 'checkbox';
 
+  const iconTone = (() => {
+    if (disabled) {
+      return 'secondary';
+    }
+
+    if (hover) {
+      return 'formAccent';
+    }
+  })();
+
   return isCheckbox ? (
-    <Box transition="fast" className={classnames(styles.checkboxIndicator)}>
-      <IconTick
-        size="fill"
-        tone={disabled ? 'secondary' : hover ? 'formAccent' : undefined}
-      />
+    <Box
+      height="full" // Needed for IE11
+      transition="fast"
+      className={styles.checkboxIndicator}
+    >
+      <IconTick size="fill" tone={iconTone} />
     </Box>
   ) : (
     <Box
@@ -64,7 +75,7 @@ const Indicator = ({
       width="full"
       height="full"
       borderRadius="full"
-      className={classnames(styles.radioIndicator)}
+      className={styles.radioIndicator}
     />
   );
 };
@@ -85,6 +96,7 @@ export const InlineField = forwardRef<HTMLElement, InternalInlineFieldProps>(
       reserveMessageSpace = false,
       tone = 'neutral',
       disabled = false,
+      required,
     },
     ref,
   ) => {
@@ -98,9 +110,10 @@ export const InlineField = forwardRef<HTMLElement, InternalInlineFieldProps>(
     const isCheckbox = type === 'checkbox';
     const fieldBorderRadius = isCheckbox ? 'standard' : 'full';
     const accentBackground = disabled ? 'formAccentDisabled' : 'formAccent';
+    const hasMessage = message || reserveMessageSpace;
 
     return (
-      <Box position="relative">
+      <Box position="relative" className={styles.root}>
         <Box
           component="input"
           type={type}
@@ -110,18 +123,18 @@ export const InlineField = forwardRef<HTMLElement, InternalInlineFieldProps>(
           value={value}
           checked={checked}
           position="absolute"
-          width="touchable"
-          height="touchable"
           className={styles.realField}
           aria-describedby={messageId}
+          aria-required={required}
           disabled={disabled}
           ref={ref}
           {...buildDataAttributes(data)}
         />
         <Box display="flex">
           <Box
+            flexShrink={0}
             position="relative"
-            className={classnames(styles.fakeField)}
+            className={styles.fakeField}
             background={disabled ? 'inputDisabled' : 'input'}
             borderRadius={fieldBorderRadius}
             boxShadow={
@@ -156,7 +169,7 @@ export const InlineField = forwardRef<HTMLElement, InternalInlineFieldProps>(
             component="label"
             paddingLeft="small"
             htmlFor={id}
-            className={classnames(styles.label, useTouchableSpace('standard'))}
+            className={[styles.label, useVirtualTouchable()]}
           >
             <Text
               baseline={false}
@@ -171,19 +184,24 @@ export const InlineField = forwardRef<HTMLElement, InternalInlineFieldProps>(
           <Box
             display="none"
             paddingLeft="small"
-            paddingBottom="small"
+            paddingTop="xsmall"
+            paddingBottom={hasMessage ? 'xxsmall' : undefined}
             className={styles.children}
           >
             {children}
           </Box>
         ) : null}
-        <FieldMessage
-          id={messageId}
-          tone={tone}
-          disabled={disabled}
-          message={message}
-          reserveMessageSpace={reserveMessageSpace}
-        />
+        {hasMessage ? (
+          <Box paddingTop="xsmall">
+            <FieldMessage
+              id={messageId}
+              tone={tone}
+              disabled={disabled}
+              message={message}
+              reserveMessageSpace={reserveMessageSpace}
+            />
+          </Box>
+        ) : null}
       </Box>
     );
   },

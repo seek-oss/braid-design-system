@@ -1,11 +1,12 @@
 import { makeTokens } from '../baseTokens/seekAsia';
 
-const teal = '#0e7e8b';
 const blue = '#0c4b85';
+const blue2 = '#298EB9';
 
 export default makeTokens({
   name: 'jobsDb',
-  brand: `linear-gradient(90deg, ${teal}, ${blue})`,
-  formAccent: blue,
+  bodyBackground: '#eee',
+  brand: blue,
+  formAccent: blue2,
   brandAccent: '#ff9000',
 });

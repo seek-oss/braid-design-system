@@ -1,13 +1,13 @@
 import { style, styleMap } from 'sku/treat';
 import { Properties } from 'csstype';
-import { darken, lighten } from 'polished';
-import { getLightVariant, isLight, mapToStyleProperty } from '../../utils';
+import omit from 'lodash/omit';
+import { mapToStyleProperty } from '../../utils';
 import { Theme } from 'treat/theme';
 
 const spaceMapToCss = (
   theme: Theme,
   cssPropertyName: keyof Properties,
-  generateDesktopOnlyRules: boolean = false,
+  breakpoint: keyof Theme['breakpoint'],
 ) => {
   const spaceWithNone = {
     ...theme.space,
@@ -17,48 +17,60 @@ const spaceMapToCss = (
   return mapToStyleProperty(
     spaceWithNone,
     cssPropertyName,
-    (value, propertyName) =>
-      generateDesktopOnlyRules
-        ? theme.utils.desktopStyles({
-            [propertyName]: value * theme.grid,
-          })
+    (value, propertyName) => {
+      const styles = {
+        [propertyName]: value * theme.grid,
+      };
+
+      const minWidth = theme.breakpoint[breakpoint];
+
+      return minWidth === 0
+        ? styles
         : {
-            [propertyName]: value * theme.grid,
-          },
+            '@media': {
+              [`screen and (min-width: ${minWidth}px)`]: styles,
+            },
+          };
+    },
   );
 };
 
-const spaceMapToDesktopCss = (
-  theme: Theme,
-  cssPropertyName: keyof Properties,
-) => spaceMapToCss(theme, cssPropertyName, true);
-
 export const margin = {
-  top: styleMap(theme => spaceMapToCss(theme, 'marginTop')),
-  bottom: styleMap(theme => spaceMapToCss(theme, 'marginBottom')),
-  left: styleMap(theme => spaceMapToCss(theme, 'marginLeft')),
-  right: styleMap(theme => spaceMapToCss(theme, 'marginRight')),
+  top: styleMap(theme => spaceMapToCss(theme, 'marginTop', 'mobile')),
+  bottom: styleMap(theme => spaceMapToCss(theme, 'marginBottom', 'mobile')),
+  left: styleMap(theme => spaceMapToCss(theme, 'marginLeft', 'mobile')),
+  right: styleMap(theme => spaceMapToCss(theme, 'marginRight', 'mobile')),
 };
-
+export const marginTablet = {
+  top: styleMap(theme => spaceMapToCss(theme, 'marginTop', 'tablet')),
+  bottom: styleMap(theme => spaceMapToCss(theme, 'marginBottom', 'tablet')),
+  left: styleMap(theme => spaceMapToCss(theme, 'marginLeft', 'tablet')),
+  right: styleMap(theme => spaceMapToCss(theme, 'marginRight', 'tablet')),
+};
 export const marginDesktop = {
-  top: styleMap(theme => spaceMapToDesktopCss(theme, 'marginTop')),
-  bottom: styleMap(theme => spaceMapToDesktopCss(theme, 'marginBottom')),
-  left: styleMap(theme => spaceMapToDesktopCss(theme, 'marginLeft')),
-  right: styleMap(theme => spaceMapToDesktopCss(theme, 'marginRight')),
+  top: styleMap(theme => spaceMapToCss(theme, 'marginTop', 'desktop')),
+  bottom: styleMap(theme => spaceMapToCss(theme, 'marginBottom', 'desktop')),
+  left: styleMap(theme => spaceMapToCss(theme, 'marginLeft', 'desktop')),
+  right: styleMap(theme => spaceMapToCss(theme, 'marginRight', 'desktop')),
 };
 
 export const padding = {
-  top: styleMap(theme => spaceMapToCss(theme, 'paddingTop')),
-  bottom: styleMap(theme => spaceMapToCss(theme, 'paddingBottom')),
-  left: styleMap(theme => spaceMapToCss(theme, 'paddingLeft')),
-  right: styleMap(theme => spaceMapToCss(theme, 'paddingRight')),
+  top: styleMap(theme => spaceMapToCss(theme, 'paddingTop', 'mobile')),
+  bottom: styleMap(theme => spaceMapToCss(theme, 'paddingBottom', 'mobile')),
+  left: styleMap(theme => spaceMapToCss(theme, 'paddingLeft', 'mobile')),
+  right: styleMap(theme => spaceMapToCss(theme, 'paddingRight', 'mobile')),
 };
-
+export const paddingTablet = {
+  top: styleMap(theme => spaceMapToCss(theme, 'paddingTop', 'tablet')),
+  bottom: styleMap(theme => spaceMapToCss(theme, 'paddingBottom', 'tablet')),
+  left: styleMap(theme => spaceMapToCss(theme, 'paddingLeft', 'tablet')),
+  right: styleMap(theme => spaceMapToCss(theme, 'paddingRight', 'tablet')),
+};
 export const paddingDesktop = {
-  top: styleMap(theme => spaceMapToDesktopCss(theme, 'paddingTop')),
-  bottom: styleMap(theme => spaceMapToDesktopCss(theme, 'paddingBottom')),
-  left: styleMap(theme => spaceMapToDesktopCss(theme, 'paddingLeft')),
-  right: styleMap(theme => spaceMapToDesktopCss(theme, 'paddingRight')),
+  top: styleMap(theme => spaceMapToCss(theme, 'paddingTop', 'desktop')),
+  bottom: styleMap(theme => spaceMapToCss(theme, 'paddingBottom', 'desktop')),
+  left: styleMap(theme => spaceMapToCss(theme, 'paddingLeft', 'desktop')),
+  right: styleMap(theme => spaceMapToCss(theme, 'paddingRight', 'desktop')),
 };
 
 export const transform = {
@@ -72,7 +84,7 @@ export const transition = styleMap(({ transitions }) =>
 );
 
 const borderRadiusRules = {
-  full: '100%',
+  full: '50%',
 };
 export const borderRadius = {
   ...styleMap(
@@ -126,10 +138,17 @@ const displayRules = {
   flex: 'flex',
 };
 export const display = styleMap(mapToStyleProperty(displayRules, 'display'));
-export const displayDesktop = styleMap(({ utils: { desktopStyles } }) =>
+export const displayTablet = styleMap(({ utils: { responsiveStyle } }) =>
   mapToStyleProperty(displayRules, 'display', (value, propertyName) =>
-    desktopStyles({
-      [propertyName]: value,
+    responsiveStyle({
+      tablet: { [propertyName]: value },
+    }),
+  ),
+);
+export const displayDesktop = styleMap(({ utils: { responsiveStyle } }) =>
+  mapToStyleProperty(displayRules, 'display', (value, propertyName) =>
+    responsiveStyle({
+      desktop: { [propertyName]: value },
     }),
   ),
 );
@@ -142,10 +161,17 @@ const alignItemsRules = {
 export const alignItems = styleMap(
   mapToStyleProperty(alignItemsRules, 'alignItems'),
 );
-export const alignItemsDesktop = styleMap(({ utils: { desktopStyles } }) =>
+export const alignItemsTablet = styleMap(({ utils: { responsiveStyle } }) =>
   mapToStyleProperty(alignItemsRules, 'alignItems', (value, propertyName) =>
-    desktopStyles({
-      [propertyName]: value,
+    responsiveStyle({
+      tablet: { [propertyName]: value },
+    }),
+  ),
+);
+export const alignItemsDesktop = styleMap(({ utils: { responsiveStyle } }) =>
+  mapToStyleProperty(alignItemsRules, 'alignItems', (value, propertyName) =>
+    responsiveStyle({
+      desktop: { [propertyName]: value },
     }),
   ),
 );
@@ -159,15 +185,26 @@ const justifyContentRules = {
 export const justifyContent = styleMap(
   mapToStyleProperty(justifyContentRules, 'justifyContent'),
 );
-export const justifyContentDesktop = styleMap(({ utils: { desktopStyles } }) =>
+export const justifyContentTablet = styleMap(({ utils: { responsiveStyle } }) =>
   mapToStyleProperty(
     justifyContentRules,
     'justifyContent',
     (value, propertyName) =>
-      desktopStyles({
-        [propertyName]: value,
+      responsiveStyle({
+        tablet: { [propertyName]: value },
       }),
   ),
+);
+export const justifyContentDesktop = styleMap(
+  ({ utils: { responsiveStyle } }) =>
+    mapToStyleProperty(
+      justifyContentRules,
+      'justifyContent',
+      (value, propertyName) =>
+        responsiveStyle({
+          desktop: { [propertyName]: value },
+        }),
+    ),
 );
 
 const flexDirectionRules = {
@@ -179,36 +216,43 @@ const flexDirectionRules = {
 export const flexDirection = styleMap(
   mapToStyleProperty(flexDirectionRules, 'flexDirection'),
 );
-export const flexDirectionDesktop = styleMap(({ utils: { desktopStyles } }) =>
+export const flexDirectionTablet = styleMap(({ utils: { responsiveStyle } }) =>
   mapToStyleProperty(
     flexDirectionRules,
     'flexDirection',
     (value, propertyName) =>
-      desktopStyles({
-        [propertyName]: value,
+      responsiveStyle({
+        tablet: { [propertyName]: value },
+      }),
+  ),
+);
+export const flexDirectionDesktop = styleMap(({ utils: { responsiveStyle } }) =>
+  mapToStyleProperty(
+    flexDirectionRules,
+    'flexDirection',
+    (value, propertyName) =>
+      responsiveStyle({
+        desktop: { [propertyName]: value },
       }),
   ),
 );
 
-const getActiveColor = (color: string) =>
-  isLight(color) ? darken(0.1, color) : darken(0.05, color);
+const flexWrapRules = {
+  wrap: 'wrap',
+  nowrap: 'nowrap',
+};
+export const flexWrap = styleMap(mapToStyleProperty(flexWrapRules, 'flexWrap'));
 
-const getHoverColor = (color: string) =>
-  isLight(color) ? darken(0.05, color) : lighten(0.05, color);
+const flexShrinkRules = {
+  0: 0,
+};
+export const flexShrink = styleMap(
+  mapToStyleProperty(flexShrinkRules, 'flexShrink'),
+) as Record<keyof typeof flexShrinkRules, string>; // Remove this when 'styleMap' supports numbers as keys and it's been released to sku consumers
 
-export const background = styleMap(({ color }) => ({
-  ...mapToStyleProperty(color.background, 'background'),
-  formAccentActive: { background: getActiveColor(color.background.formAccent) },
-  formAccentHover: { background: getHoverColor(color.background.formAccent) },
-  brandAccentActive: {
-    background: getActiveColor(color.background.brandAccent),
-  },
-  brandAccentHover: { background: getHoverColor(color.background.brandAccent) },
-  infoLight: { background: getLightVariant(color.background.info) },
-  criticalLight: { background: getLightVariant(color.background.critical) },
-  positiveLight: { background: getLightVariant(color.background.positive) },
-  neutralLight: { background: getLightVariant(color.background.neutral) },
-}));
+export const background = styleMap(({ color }) =>
+  mapToStyleProperty(omit(color.background, 'body'), 'background'),
+);
 
 export const boxShadow = styleMap(
   ({ border: { width: borderWidth, color }, shadows }) => ({
@@ -219,14 +263,23 @@ export const boxShadow = styleMap(
     borderStandard: {
       boxShadow: `inset 0 0 0 ${borderWidth.standard}px ${color.standard}`,
     },
+    borderStandardInverted: {
+      boxShadow: `inset 0 0 0 ${borderWidth.standard}px ${color.standardInverted}`,
+    },
     borderCritical: {
       boxShadow: `inset 0 0 0 ${borderWidth.standard}px ${color.critical}`,
+    },
+    borderFormHover: {
+      boxShadow: `inset 0 0 0 ${borderWidth.standard}px ${color.formHover}`,
     },
     borderFormAccent: {
       boxShadow: `inset 0 0 0 ${borderWidth.standard}px ${color.formAccent}`,
     },
     borderFormAccentLarge: {
       boxShadow: `inset 0 0 0 ${borderWidth.large}px ${color.formAccent}`,
+    },
+    borderStandardInvertedLarge: {
+      boxShadow: `inset 0 0 0 ${borderWidth.large}px ${color.standardInverted}`,
     },
   }),
 );
@@ -238,3 +291,42 @@ export const cursor = styleMap({
 export const pointerEvents = styleMap({
   none: { pointerEvents: 'none' },
 });
+
+const textAlignRules = {
+  left: 'left',
+  center: 'center',
+  right: 'right',
+};
+
+export const textAlign = styleMap(
+  mapToStyleProperty(textAlignRules, 'textAlign'),
+);
+export const textAlignTablet = styleMap(({ utils: { responsiveStyle } }) =>
+  mapToStyleProperty(textAlignRules, 'textAlign', (value, propertyName) =>
+    responsiveStyle({
+      tablet: { [propertyName]: value },
+    }),
+  ),
+);
+export const textAlignDesktop = styleMap(({ utils: { responsiveStyle } }) =>
+  mapToStyleProperty(textAlignRules, 'textAlign', (value, propertyName) =>
+    responsiveStyle({
+      desktop: { [propertyName]: value },
+    }),
+  ),
+);
+
+const overflowRules = {
+  hidden: 'hidden',
+  scroll: 'scroll',
+  visible: 'visible',
+  auto: 'auto',
+};
+export const overflow = styleMap(mapToStyleProperty(overflowRules, 'overflow'));
+
+const minWidthRules = {
+  0: '0%', // We use a percentage here so it supports IE11: https://css-tricks.com/flexbox-truncated-text/#comment-1611744
+};
+export const minWidth = styleMap(
+  mapToStyleProperty(minWidthRules, 'minWidth'),
+) as Record<keyof typeof minWidthRules, string>; // Remove this when 'styleMap' supports numbers as keys and it's been released to sku consumers

@@ -1,44 +1,45 @@
 import { useContext } from 'react';
 import { useStyles } from 'sku/react-treat';
 import classnames from 'classnames';
-import { useBackground } from '../../components/Box/BackgroundContext';
+import {
+  useBackground,
+  useBackgroundLightness,
+} from '../../components/Box/BackgroundContext';
 import { BoxProps } from '../../components/Box/Box';
 import TextLinkRendererContext from '../../components/TextLinkRenderer/TextLinkRendererContext';
 import * as styleRefs from './typography.treat';
 
+type TextTone = keyof typeof styleRefs.tone | 'neutral';
+
 export interface UseTextProps {
   weight?: keyof typeof styleRefs.fontWeight;
   size?: keyof typeof styleRefs.text;
-  tone?: keyof typeof styleRefs.tone;
+  tone?: TextTone;
   baseline: boolean;
   backgroundContext?: BoxProps['background'];
   _LEGACY_SPACE_?: boolean;
 }
 
-export const useText = ({
+export function useText({
   weight = 'regular',
   size = 'standard',
-  tone,
+  tone = 'neutral',
   baseline,
   backgroundContext,
   _LEGACY_SPACE_ = false,
-}: UseTextProps) => {
+}: UseTextProps) {
   const styles = useStyles(styleRefs);
-  const inTextLinkRenderer = useContext(TextLinkRendererContext);
+  const textTone = useTextTone({ tone, backgroundContext });
 
   return classnames(
     styles.fontFamily,
     styles.text[size].base,
-    inTextLinkRenderer
-      ? useTouchableSpace(size)
-      : [
-          useTextTone({ tone, backgroundContext }),
-          styles.fontWeight[weight],
-          baseline ? styles.text[size].baseline : null,
-          baseline && !_LEGACY_SPACE_ ? styles.text[size].cropFirstLine : null,
-        ],
+    textTone,
+    styles.fontWeight[weight],
+    baseline ? styles.text[size].baseline : null,
+    baseline && !_LEGACY_SPACE_ ? styles.text[size].cropFirstLine : null,
   );
-};
+}
 
 export type HeadingLevel = keyof typeof styleRefs.heading;
 export type HeadingWeight = 'regular' | 'weak';
@@ -51,68 +52,80 @@ interface UseHeadingParams {
   _LEGACY_SPACE_?: boolean;
 }
 
-export const useHeading = ({
+export function useHeading({
   weight = 'regular',
   level,
   baseline,
   backgroundContext,
   _LEGACY_SPACE_ = false,
-}: UseHeadingParams) => {
+}: UseHeadingParams) {
   const styles = useStyles(styleRefs);
+  const textTone = useTextTone({ tone: 'neutral', backgroundContext });
 
   return classnames(
     styles.fontFamily,
     styles.headingWeight[weight],
     styles.heading[level].base,
     _LEGACY_SPACE_ ? null : styles.heading[level].cropFirstLine,
-    useTextTone({ backgroundContext }),
+    textTone,
     {
       [styles.heading[level].baseline]: baseline,
     },
   );
-};
+}
 
-export const useTextSize = (size: keyof typeof styleRefs.text) =>
-  useStyles(styleRefs).text[size].base;
+export function useTextSize(size: keyof typeof styleRefs.text) {
+  return useStyles(styleRefs).text[size].base;
+}
 
-export const useWeight = (weight: keyof typeof styleRefs.fontWeight) => {
+export function useWeight(weight: keyof typeof styleRefs.fontWeight) {
   const styles = useStyles(styleRefs);
   const inTextLinkRenderer = useContext(TextLinkRendererContext);
 
   return inTextLinkRenderer ? undefined : styles.fontWeight[weight];
-};
+}
 
-export const useTextTone = ({
-  tone,
+export function useTextTone({
+  tone = 'neutral',
   backgroundContext: backgroundContextOverride,
 }: {
-  tone?: keyof typeof styleRefs.tone;
+  tone: TextTone;
   backgroundContext?: BoxProps['background'];
-} = {}) => {
+}) {
   const styles = useStyles(styleRefs);
   const inTextLinkRenderer = useContext(TextLinkRendererContext);
   const backgroundContext = useBackground();
   const background = backgroundContextOverride || backgroundContext;
+  const backgroundLightness = useBackgroundLightness(background);
 
-  const backgroundContrast = styles.backgroundContrast[background!];
-  if (backgroundContrast) {
-    const altColor = backgroundContrast[tone || 'default'];
+  const toneOverrides = styles.toneOverridesForBackground[background!];
+  if (toneOverrides) {
+    const toneOverride = toneOverrides[tone];
 
-    if (altColor) {
-      return altColor;
+    if (toneOverride) {
+      return toneOverride;
     }
   }
 
-  if (tone) {
-    return styles.tone[tone];
+  if (tone !== 'neutral') {
+    return tone in styles.invertableTone
+      ? styles.invertableTone[tone as keyof typeof styles.invertableTone][
+          backgroundLightness
+        ]
+      : styles.tone[tone];
   }
 
   if (inTextLinkRenderer) {
     return styles.tone.link;
   }
 
-  return styles.tone.neutral;
-};
+  return styles.invertableTone.neutral[backgroundLightness];
+}
 
-export const useTouchableSpace = (size: keyof typeof styleRefs.touchable) =>
-  useStyles(styleRefs).touchable[size];
+export function useTouchableSpace(size: keyof typeof styleRefs.touchable) {
+  return useStyles(styleRefs).touchable[size];
+}
+
+export function useTruncate() {
+  return useStyles(styleRefs).truncate;
+}

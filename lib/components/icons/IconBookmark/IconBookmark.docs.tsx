@@ -1,10 +1,12 @@
 import React from 'react';
 import { ComponentDocs } from '../../../../site/src/types';
-import examplesForIcon from '../../private/examplesForIcon';
 import { IconBookmark } from './IconBookmark';
 
 const docs: ComponentDocs = {
+  category: 'Icon',
   migrationGuide: true,
+  foundation: true,
+  screenshotWidths: [],
   examples: [
     {
       label: 'Default',
@@ -14,7 +16,6 @@ const docs: ComponentDocs = {
       label: 'Active',
       Example: () => <IconBookmark active={true} />,
     },
-    ...examplesForIcon(IconBookmark),
   ],
 };
 

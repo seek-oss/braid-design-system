@@ -1,33 +1,22 @@
 import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import { Columns } from './Columns';
-import { Column } from '../Column/Column';
-import { Box } from '../Box/Box';
-import { Text } from '../Text/Text';
-import { HideCode } from '../private/HideCode';
-
-const Content = ({ children = 'Column' }) => (
-  <Box background="selection" padding="small">
-    <Text baseline={false}>{children}</Text>
-  </Box>
-);
+import { Placeholder } from '../private/Placeholder/Placeholder';
+import { Columns, Column, Stack } from '../';
 
 const docs: ComponentDocs = {
+  category: 'Layout',
   migrationGuide: true,
+  screenshotWidths: [320, 768, 1200],
   examples: [
     {
       label: 'No space',
       Example: () => (
         <Columns space="none">
           <Column>
-            <HideCode>
-              <Content />
-            </HideCode>
+            <Placeholder height={60} />
           </Column>
           <Column>
-            <HideCode>
-              <Content />
-            </HideCode>
+            <Placeholder height={60} />
           </Column>
         </Columns>
       ),
@@ -37,14 +26,10 @@ const docs: ComponentDocs = {
       Example: () => (
         <Columns space="small">
           <Column>
-            <HideCode>
-              <Content />
-            </HideCode>
+            <Placeholder height={60} />
           </Column>
           <Column>
-            <HideCode>
-              <Content />
-            </HideCode>
+            <Placeholder height={60} />
           </Column>
         </Columns>
       ),
@@ -54,140 +39,234 @@ const docs: ComponentDocs = {
       Example: () => (
         <Columns space={['small', 'large']}>
           <Column>
-            <HideCode>
-              <Content />
-            </HideCode>
+            <Placeholder height={60} />
           </Column>
           <Column>
-            <HideCode>
-              <Content />
-            </HideCode>
+            <Placeholder height={60} />
           </Column>
         </Columns>
       ),
     },
     {
-      label: 'Responsive space with `none` on mobile, e.g. ["none", "gutter"]',
+      label:
+        'Responsive space with `none` below tablet, e.g. ["none", "gutter"]',
       docsSite: false,
       Example: () => (
         <Columns space={['none', 'gutter']}>
           <Column>
-            <HideCode>
-              <Content />
-            </HideCode>
+            <Placeholder height={60} />
           </Column>
           <Column>
-            <HideCode>
-              <Content />
-            </HideCode>
+            <Placeholder height={60} />
           </Column>
         </Columns>
       ),
     },
     {
-      label: 'Responsive space with `none` on desktop, e.g. ["small", "none"]',
+      label:
+        'Responsive space with `none` above mobile, e.g. ["small", "none"]',
       docsSite: false,
       Example: () => (
         <Columns space={['small', 'none']}>
           <Column>
-            <HideCode>
-              <Content />
-            </HideCode>
+            <Placeholder height={60} />
           </Column>
           <Column>
-            <HideCode>
-              <Content />
-            </HideCode>
+            <Placeholder height={60} />
           </Column>
         </Columns>
       ),
     },
     {
-      label: 'Collapse on mobile',
+      label: 'Vertically align to center',
       Example: () => (
-        <Columns space="small" collapse>
+        <Columns space="small" alignY="center">
           <Column>
-            <HideCode>
-              <Content>First</Content>
-            </HideCode>
+            <Placeholder height={60} />
           </Column>
           <Column>
-            <HideCode>
-              <Content>Second</Content>
-            </HideCode>
+            <Placeholder height={100} />
           </Column>
         </Columns>
       ),
     },
     {
-      label: 'Collapse on mobile with custom space, e.g. "small"',
+      label: 'Vertically align to bottom',
       Example: () => (
-        <Columns space="small" collapse>
+        <Columns space="small" alignY="bottom">
           <Column>
-            <HideCode>
-              <Content>First</Content>
-            </HideCode>
+            <Placeholder height={60} />
           </Column>
           <Column>
-            <HideCode>
-              <Content>Second</Content>
-            </HideCode>
+            <Placeholder height={100} />
           </Column>
         </Columns>
       ),
     },
     {
       label:
-        'Collapse on mobile with responsive space, e.g. ["small", "large"]',
+        'Responsive alignment (e.g. top on mobile, center on tablet upwards)',
       Example: () => (
-        <Columns space={['small', 'large']} collapse>
+        <Columns space="small" alignY={['top', 'center']}>
           <Column>
-            <HideCode>
-              <Content>First</Content>
-            </HideCode>
+            <Placeholder height={60} />
           </Column>
           <Column>
-            <HideCode>
-              <Content>Second</Content>
-            </HideCode>
+            <Placeholder height={100} />
           </Column>
         </Columns>
       ),
     },
     {
-      label:
-        'Collapse on mobile with responsive space and `none` on mobile, e.g. ["none", "gutter"]',
+      label: 'Alignment + collapse',
       docsSite: false,
       Example: () => (
-        <Columns space={['none', 'gutter']} collapse>
+        <Columns space="small" collapseBelow="tablet" alignY="center">
           <Column>
-            <HideCode>
-              <Content>First</Content>
-            </HideCode>
+            <Placeholder height={60} />
           </Column>
           <Column>
-            <HideCode>
-              <Content>Second</Content>
-            </HideCode>
+            <Placeholder height={100} />
+          </Column>
+        </Columns>
+      ),
+    },
+    {
+      label: 'Collapse below tablet',
+      Example: () => (
+        <Columns space="small" collapseBelow="tablet">
+          <Column>
+            <Placeholder height={60} label="First" />
+          </Column>
+          <Column>
+            <Placeholder height={60} label="Second" />
+          </Column>
+        </Columns>
+      ),
+    },
+    {
+      label: 'Collapse below desktop',
+      Example: () => (
+        <Columns space="small" collapseBelow="desktop">
+          <Column>
+            <Placeholder height={60} label="First" />
+          </Column>
+          <Column>
+            <Placeholder height={60} label="Second" />
+          </Column>
+        </Columns>
+      ),
+    },
+    {
+      label: 'Collapse below tablet with custom space, e.g. "small"',
+      Example: () => (
+        <Columns space="small" collapseBelow="tablet">
+          <Column>
+            <Placeholder height={60} label="First" />
+          </Column>
+          <Column>
+            <Placeholder height={60} label="Second" />
+          </Column>
+        </Columns>
+      ),
+    },
+    {
+      label: 'Collapse below desktop with custom space, e.g. "small"',
+      Example: () => (
+        <Columns space="small" collapseBelow="desktop">
+          <Column>
+            <Placeholder height={60} label="First" />
+          </Column>
+          <Column>
+            <Placeholder height={60} label="Second" />
           </Column>
         </Columns>
       ),
     },
     {
       label:
-        'Collapse on mobile with responsive space and `none` on desktop, e.g. ["small", "none"]',
-      docsSite: false,
+        'Collapse below tablet with responsive space, e.g. ["small", "large"]',
       Example: () => (
-        <Columns space={['small', 'none']} collapse>
+        <Columns space={['small', 'large']} collapseBelow="tablet">
           <Column>
-            <HideCode>
-              <Content>First</Content>
-            </HideCode>
+            <Placeholder height={60} label="First" />
           </Column>
           <Column>
-            <HideCode>
-              <Content>Second</Content>
-            </HideCode>
+            <Placeholder height={60} label="Second" />
+          </Column>
+        </Columns>
+      ),
+    },
+    {
+      label:
+        'Collapse below desktop with responsive space, e.g. ["small", "medium", "xlarge"]',
+      Example: () => (
+        <Columns space={['small', 'medium', 'xlarge']} collapseBelow="desktop">
+          <Column>
+            <Placeholder height={60} label="First" />
+          </Column>
+          <Column>
+            <Placeholder height={60} label="Second" />
+          </Column>
+        </Columns>
+      ),
+    },
+    {
+      label:
+        'Collapse below tablet with responsive space and `none` below tablet, e.g. ["none", "gutter"]',
+      docsSite: false,
+      Example: () => (
+        <Columns space={['none', 'gutter']} collapseBelow="tablet">
+          <Column>
+            <Placeholder height={60} label="First" />
+          </Column>
+          <Column>
+            <Placeholder height={60} label="Second" />
+          </Column>
+        </Columns>
+      ),
+    },
+    {
+      label:
+        'Collapse below desktop with responsive space and `none` below desktop, e.g. ["none", "xsmall", gutter"]',
+      docsSite: false,
+      Example: () => (
+        <Columns space={['none', 'xsmall', 'gutter']} collapseBelow="desktop">
+          <Column>
+            <Placeholder height={60} label="First" />
+          </Column>
+          <Column>
+            <Placeholder height={60} label="Second" />
+          </Column>
+        </Columns>
+      ),
+    },
+    {
+      label:
+        'Collapse below tablet with responsive space and `none` above mobile, e.g. ["small", "none"]',
+      docsSite: false,
+      Example: () => (
+        <Columns space={['small', 'none']} collapseBelow="tablet">
+          <Column>
+            <Placeholder height={60} label="First" />
+          </Column>
+          <Column>
+            <Placeholder height={60} label="Second" />
+          </Column>
+        </Columns>
+      ),
+    },
+    {
+      label:
+        'Collapse below desktop with responsive space and `none` above tablet, e.g. ["small", "medium, "none"]',
+      docsSite: false,
+      Example: () => (
+        <Columns space={['small', 'medium', 'none']} collapseBelow="desktop">
+          <Column>
+            <Placeholder height={60} label="First" />
+          </Column>
+          <Column>
+            <Placeholder height={60} label="Second" />
           </Column>
         </Columns>
       ),
@@ -197,14 +276,125 @@ const docs: ComponentDocs = {
       Example: () => (
         <Columns space="small" reverse>
           <Column>
-            <HideCode>
-              <Content>First</Content>
-            </HideCode>
+            <Placeholder height={60} label="First" />
           </Column>
           <Column>
-            <HideCode>
-              <Content>Second</Content>
-            </HideCode>
+            <Placeholder height={60} label="Second" />
+          </Column>
+        </Columns>
+      ),
+    },
+    {
+      label:
+        'Test: Collapsed "content" columns should be full width when setting "alignY"',
+      docsSite: false,
+      Example: () => (
+        <Columns space="small" alignY="bottom" collapseBelow="tablet">
+          <Column>
+            <Placeholder height={60} label="No width" />
+          </Column>
+          <Column width="1/2">
+            <Placeholder height={100} label="1/2 width" />
+          </Column>
+          <Column width="content">
+            <Placeholder height={140} label="Content width" />
+          </Column>
+        </Columns>
+      ),
+    },
+  ],
+  snippets: [
+    {
+      name: '2 Columns',
+      code: (
+        <Columns space="gutter">
+          <Column>
+            <Stack space="small">
+              <Placeholder height={60} label="Column" />
+            </Stack>
+          </Column>
+          <Column>
+            <Stack space="small">
+              <Placeholder height={60} label="Column" />
+            </Stack>
+          </Column>
+        </Columns>
+      ),
+    },
+    {
+      name: '2 Columns (Collapse Below Tablet)',
+      code: (
+        <Columns space="gutter" collapseBelow="tablet">
+          <Column>
+            <Stack space="small">
+              <Placeholder height={60} label="Column" />
+            </Stack>
+          </Column>
+          <Column>
+            <Stack space="small">
+              <Placeholder height={60} label="Column" />
+            </Stack>
+          </Column>
+        </Columns>
+      ),
+    },
+    {
+      name: '3 Columns',
+      code: (
+        <Columns space="gutter">
+          <Column>
+            <Stack space="small">
+              <Placeholder height={60} label="Column" />
+            </Stack>
+          </Column>
+          <Column>
+            <Stack space="small">
+              <Placeholder height={60} label="Column" />
+            </Stack>
+          </Column>
+          <Column>
+            <Stack space="small">
+              <Placeholder height={60} label="Column" />
+            </Stack>
+          </Column>
+        </Columns>
+      ),
+    },
+    {
+      name: '3 Columns (Collapse Below Tablet)',
+      code: (
+        <Columns space="gutter" collapseBelow="tablet">
+          <Column>
+            <Stack space="small">
+              <Placeholder height={60} label="Column" />
+            </Stack>
+          </Column>
+          <Column>
+            <Stack space="small">
+              <Placeholder height={60} label="Column" />
+            </Stack>
+          </Column>
+          <Column>
+            <Stack space="small">
+              <Placeholder height={60} label="Column" />
+            </Stack>
+          </Column>
+        </Columns>
+      ),
+    },
+    {
+      name: 'Main Content With Sidebar',
+      code: (
+        <Columns space="gutter" collapseBelow="tablet">
+          <Column width="2/3">
+            <Stack space="small">
+              <Placeholder height={400} label="Main" />
+            </Stack>
+          </Column>
+          <Column>
+            <Stack space="small">
+              <Placeholder height={100} label="Sidebar" />
+            </Stack>
           </Column>
         </Columns>
       ),

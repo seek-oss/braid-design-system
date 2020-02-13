@@ -1,12 +1,10 @@
 import { style, styleMap } from 'sku/treat';
 
-export const column = style({
-  minWidth: 0,
-});
+export const column = style({});
 
 export const columnContent = style({
   selectors: {
-    [`${column}:first-child &`]: {
+    [`${column}:first-child > &`]: {
       paddingTop: 0,
     },
   },
@@ -17,7 +15,6 @@ const getSizeStyle = (scale: number) => ({
 });
 
 export const width = styleMap({
-  content: { flexShrink: 0 },
   '1/2': getSizeStyle(1 / 2),
   '1/3': getSizeStyle(1 / 3),
   '2/3': getSizeStyle(2 / 3),

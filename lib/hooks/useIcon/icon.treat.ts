@@ -11,13 +11,11 @@ export const inline = style({
   top: '-0.105em', // Arbitrary magic number, to vertically align to text
 });
 
-const makeSizeRules = (x: number) => ({ width: x, height: x });
-
-export const blockSizes = styleMap(({ utils, grid, typography }) =>
-  mapValues(typography.text, ({ mobile, desktop }) =>
-    utils.responsiveStyles(
-      makeSizeRules(grid * mobile.rows),
-      makeSizeRules(grid * desktop.rows),
-    ),
+export const blockWidths = styleMap(({ utils, grid, typography }) =>
+  mapValues(typography.text, ({ mobile, tablet }) =>
+    utils.responsiveStyle({
+      mobile: { width: grid * mobile.rows },
+      tablet: { width: grid * tablet.rows },
+    }),
   ),
 );

@@ -1,11 +1,10 @@
 import React, { AllHTMLAttributes, ChangeEvent, ReactNode } from 'react';
 import { useStyles } from 'sku/react-treat';
-import classnames from 'classnames';
 import { Box } from '../Box/Box';
 import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
 import { Text } from '../Text/Text';
 import { IconTick } from '../icons';
-import { useTouchableSpace } from '../../hooks/typography';
+import { useVirtualTouchable } from '../private/touchable/useVirtualTouchable';
 import * as styleRefs from './Toggle.treat';
 
 type HTMLInputProps = AllHTMLAttributes<HTMLInputElement>;
@@ -40,6 +39,7 @@ export const Toggle = ({
       position="relative"
       display="flex"
       flexDirection={align === 'right' ? 'rowReverse' : undefined}
+      className={styles.root}
     >
       <Box
         component="input"
@@ -48,15 +48,20 @@ export const Toggle = ({
         checked={on}
         onChange={handleChange(onChange)}
         position="absolute"
-        className={classnames(styles.realField, styles.fieldSize)}
+        className={[styles.realField, styles.fieldSize]}
       />
       <Box
         position="relative"
         display="flex"
         alignItems="center"
-        className={classnames(styles.slideContainer, styles.fieldSize)}
+        className={[styles.slideContainer, styles.fieldSize]}
       >
-        <Box position="absolute" width="full" className={styles.slideTrack}>
+        <Box
+          position="absolute"
+          width="full"
+          overflow="hidden"
+          className={styles.slideTrack}
+        >
           <Box
             position="absolute"
             width="full"
@@ -97,7 +102,7 @@ export const Toggle = ({
         htmlFor={id}
         paddingLeft={align === 'left' ? 'xsmall' : undefined}
         paddingRight={align === 'right' ? 'xsmall' : undefined}
-        className={classnames(styles.label, useTouchableSpace('standard'))}
+        className={[styles.label, useVirtualTouchable()]}
       >
         <Text baseline={false} weight={on ? 'strong' : undefined}>
           {label}

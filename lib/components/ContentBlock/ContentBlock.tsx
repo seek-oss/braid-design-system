@@ -1,6 +1,5 @@
 import React, { ReactNode } from 'react';
-import { useStyles } from 'sku/treat';
-import classnames from 'classnames';
+import { useStyles } from 'sku/react-treat';
 import { Box } from '../Box/Box';
 import * as styleRefs from './ContentBlock.treat';
 
@@ -15,9 +14,5 @@ export const ContentBlock = ({
 }: ContentBlockProps) => {
   const styles = useStyles(styleRefs);
 
-  return (
-    <Box className={classnames(styles.root, styles.width[width])}>
-      {children}
-    </Box>
-  );
+  return <Box className={[styles.root, styles.width[width]]}>{children}</Box>;
 };

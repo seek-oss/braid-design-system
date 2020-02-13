@@ -5,6 +5,7 @@ const info = '#142d69';
 
 export default makeTokens({
   name: 'jobStreetClassic',
+  bodyBackground: '#e5e5e5',
   brand,
   brandAccent: '#fff200',
   formAccent: brand,
@@ -21,7 +22,7 @@ export default makeTokens({
             size: 11,
             rows: 4,
           },
-          desktop: {
+          tablet: {
             size: 11,
             rows: 4,
           },
@@ -31,7 +32,7 @@ export default makeTokens({
             size: 12,
             rows: 5,
           },
-          desktop: {
+          tablet: {
             size: 12,
             rows: 5,
           },
@@ -41,7 +42,7 @@ export default makeTokens({
             size: 14,
             rows: 5,
           },
-          desktop: {
+          tablet: {
             size: 14,
             rows: 5,
           },
@@ -51,7 +52,7 @@ export default makeTokens({
             size: 16,
             rows: 6,
           },
-          desktop: {
+          tablet: {
             size: 16,
             rows: 6,
           },

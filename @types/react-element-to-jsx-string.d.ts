@@ -3,7 +3,7 @@ declare module 'react-element-to-jsx-string' {
 
   const reactElementToJsxString: (
     element: ReactNode,
-    options: {
+    options?: {
       filterProps?: Array<string>;
       showDefaultProps?: boolean;
       showFunctions?: boolean;

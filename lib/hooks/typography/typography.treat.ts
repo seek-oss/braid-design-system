@@ -1,10 +1,11 @@
 import mapValues from 'lodash/mapValues';
+import omit from 'lodash/omit';
 import { style, styleMap, ClassRef } from 'sku/treat';
 import { Theme } from 'treat/theme';
 import basekick from './basekick';
-import { getAccessibleVariant, isLight, mapToStyleProperty } from '../../utils';
-import { Breakpoint } from '../../themes/makeTreatTheme';
-import { UseBoxStylesProps } from '../../components/Box/useBoxStyles';
+import { getAccessibleVariant, mapToStyleProperty } from '../../utils';
+import { BackgroundVariant } from './../../components/Box/BackgroundContext';
+import { TextBreakpoint } from '../../themes/makeBraidTheme';
 
 export const fontFamily = style(({ typography }) => ({
   fontFamily: typography.fontFamily,
@@ -35,7 +36,7 @@ const alignTextToGrid = (
   });
 
 const makeTypographyRules = (
-  textDefinition: Record<Breakpoint, TextDefinition>,
+  textDefinition: Record<TextBreakpoint, TextDefinition>,
   { grid, typography, utils }: Theme,
 ) => {
   const mobile = alignTextToGrid(
@@ -45,20 +46,26 @@ const makeTypographyRules = (
     typography.capHeightScale,
   );
 
-  const desktop = alignTextToGrid(
-    textDefinition.desktop,
+  const tablet = alignTextToGrid(
+    textDefinition.tablet,
     grid,
     typography.descenderHeightScale,
     typography.capHeightScale,
   );
 
   return {
-    base: utils.responsiveStyles(mobile.base, desktop.base),
-    baseline: utils.responsiveStyles(mobile.baseline, desktop.baseline),
-    cropFirstLine: utils.responsiveStyles(
-      mobile.cropFirstLine,
-      desktop.cropFirstLine,
-    ),
+    base: utils.responsiveStyle({
+      mobile: mobile.base,
+      tablet: tablet.base,
+    }),
+    baseline: utils.responsiveStyle({
+      mobile: mobile.baseline,
+      tablet: tablet.baseline,
+    }),
+    cropFirstLine: utils.responsiveStyle({
+      mobile: mobile.cropFirstLine,
+      tablet: tablet.cropFirstLine,
+    }),
   };
 };
 
@@ -98,27 +105,48 @@ export const heading = {
   ),
 };
 
-export const tone = styleMap(theme => {
-  const {
-    linkHover,
-    link,
-    neutralInverted, // Omit from public API
-    ...foreground
-  } = theme.color.foreground;
+export const tone = {
+  ...styleMap(theme => {
+    return mapToStyleProperty(
+      omit(theme.color.foreground, [
+        'linkHover',
+        'linkVisited',
+        'neutral',
+        'neutralInverted',
+        'secondaryInverted',
+      ]),
+      'color',
+    );
+  }),
+  link: style(({ color: { foreground } }) => ({
+    color: foreground.link,
+    ...(foreground.link !== foreground.linkHover
+      ? {
+          ':hover': { color: foreground.linkHover },
+          ':focus': { color: foreground.linkHover },
+        }
+      : {}),
+  })),
+};
 
-  return {
-    ...mapToStyleProperty(foreground, 'color'),
-    link: {
-      color: link,
-      ...(link !== linkHover
-        ? {
-            ':hover': { color: linkHover },
-            ':focus': { color: linkHover },
-          }
-        : {}),
+export const invertableTone = {
+  neutral: styleMap(theme => ({
+    light: {
+      color: theme.color.foreground.neutral,
     },
-  };
-});
+    dark: {
+      color: theme.color.foreground.neutralInverted,
+    },
+  })),
+  secondary: styleMap(theme => ({
+    light: {
+      color: theme.color.foreground.secondary,
+    },
+    dark: {
+      color: theme.color.foreground.secondaryInverted,
+    },
+  })),
+};
 
 const accessibleColorVariants = styleMap(({ color: { foreground } }) => ({
   critical: {
@@ -130,83 +158,34 @@ const accessibleColorVariants = styleMap(({ color: { foreground } }) => ({
   info: {
     color: getAccessibleVariant(foreground.info),
   },
+  promote: {
+    color: getAccessibleVariant(foreground.promote),
+  },
 }));
 
-const textColorForBackground = (
-  background: keyof Theme['color']['background'],
-) => {
-  const resolveOverride = (theme: Theme) => {
-    // Override to ensure we use `neutral` foreground color when on
-    // JobsDB `brandAccent` background.
-    if (theme.name === 'jobsDb' && background === 'brandAccent') {
-      return theme.color.foreground.neutralInverted;
-    }
-  };
-
-  return style(
-    theme => ({
-      color:
-        resolveOverride(theme) ||
-        (isLight(theme.color.background[background])
-          ? theme.color.foreground.neutral
-          : theme.color.foreground.neutralInverted),
-    }),
-    `textColorForBackground-${background}`,
-  );
-};
-
 type Foreground = keyof typeof tone;
-type BoxBackground = NonNullable<UseBoxStylesProps['background']>;
-type BackgroundContrast = {
+type BoxBackground = NonNullable<BackgroundVariant>;
+type ToneOverridesForBackground = {
   [background in BoxBackground]?: {
-    [foreground in Foreground | 'default']?: ClassRef;
+    [foreground in Foreground | 'neutral']?: ClassRef;
   };
 };
-export const backgroundContrast: BackgroundContrast = {
+export const toneOverridesForBackground: ToneOverridesForBackground = {
   criticalLight: {
-    default: accessibleColorVariants.critical,
+    neutral: accessibleColorVariants.critical,
     critical: accessibleColorVariants.critical,
   },
   positiveLight: {
-    default: accessibleColorVariants.positive,
+    neutral: accessibleColorVariants.positive,
     positive: accessibleColorVariants.positive,
   },
   infoLight: {
-    default: accessibleColorVariants.info,
+    neutral: accessibleColorVariants.info,
     info: accessibleColorVariants.info,
   },
-  brand: {
-    default: textColorForBackground('brand'),
-  },
-  brandAccent: {
-    default: textColorForBackground('brandAccent'),
-  },
-  brandAccentHover: {
-    default: textColorForBackground('brandAccent'),
-  },
-  brandAccentActive: {
-    default: textColorForBackground('brandAccent'),
-  },
-  formAccent: {
-    default: textColorForBackground('formAccent'),
-  },
-  formAccentHover: {
-    default: textColorForBackground('formAccent'),
-  },
-  formAccentActive: {
-    default: textColorForBackground('formAccent'),
-  },
-  positive: {
-    default: textColorForBackground('positive'),
-  },
-  critical: {
-    default: textColorForBackground('critical'),
-  },
-  info: {
-    default: textColorForBackground('info'),
-  },
-  neutral: {
-    default: textColorForBackground('neutral'),
+  promoteLight: {
+    neutral: accessibleColorVariants.promote,
+    promote: accessibleColorVariants.promote,
   },
 };
 
@@ -222,15 +201,20 @@ const makeTouchableSpacing = (touchableHeight: number, textHeight: number) => {
 export const touchable = styleMap(
   ({ grid, typography, touchableSize, utils }) =>
     mapValues(typography.text, textDefinition =>
-      utils.responsiveStyles(
-        makeTouchableSpacing(
+      utils.responsiveStyle({
+        mobile: makeTouchableSpacing(
           grid * touchableSize,
           grid * textDefinition.mobile.rows,
         ),
-        makeTouchableSpacing(
+        tablet: makeTouchableSpacing(
           grid * touchableSize,
-          grid * textDefinition.desktop.rows,
+          grid * textDefinition.tablet.rows,
         ),
-      ),
+      }),
     ),
 );
+
+export const truncate = style({
+  whiteSpace: 'nowrap',
+  textOverflow: 'ellipsis',
+});

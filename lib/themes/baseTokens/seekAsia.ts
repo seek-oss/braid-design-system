@@ -1,9 +1,10 @@
-import { TreatTokens } from '../makeTreatTheme';
+import { TreatTokens } from '../makeBraidTheme';
 import { DeepPartial } from 'utility-types';
 import merge from 'lodash/merge';
 
 interface MakeTokensOptions {
   name: string;
+  bodyBackground: string;
   brand: string;
   brandAccent: string;
   formAccent: string;
@@ -11,6 +12,7 @@ interface MakeTokensOptions {
 }
 export const makeTokens = ({
   name,
+  bodyBackground,
   brand,
   brandAccent,
   formAccent,
@@ -24,13 +26,16 @@ export const makeTokens = ({
   const grey1 = '#333';
   const grey2 = '#666';
   const grey4 = '#ccc';
+  const grey5 = '#eee';
   const candidate = '#0c4b85'; // SEEK Asia name for this color
   const info = candidate;
+  const promote = '#923f92';
   const positive = '#498307';
   const critical = alert;
   const focus = blue3;
   const link = blue2;
   const linkHover = blue2;
+  const linkVisited = '#3f11a3';
   const selection = blue5;
   const secondary = grey2;
   const neutral = grey2;
@@ -59,7 +64,7 @@ export const makeTokens = ({
               size: 28,
               rows: 9,
             },
-            desktop: {
+            tablet: {
               size: 34,
               rows: 11,
             },
@@ -69,7 +74,7 @@ export const makeTokens = ({
               size: 24,
               rows: 8,
             },
-            desktop: {
+            tablet: {
               size: 28,
               rows: 9,
             },
@@ -79,7 +84,7 @@ export const makeTokens = ({
               size: 20,
               rows: 7,
             },
-            desktop: {
+            tablet: {
               size: 24,
               rows: 8,
             },
@@ -89,7 +94,7 @@ export const makeTokens = ({
               size: 18,
               rows: 6,
             },
-            desktop: {
+            tablet: {
               size: 18,
               rows: 6,
             },
@@ -102,7 +107,7 @@ export const makeTokens = ({
             size: 12,
             rows: 4,
           },
-          desktop: {
+          tablet: {
             size: 12,
             rows: 4,
           },
@@ -112,7 +117,7 @@ export const makeTokens = ({
             size: 14,
             rows: 5,
           },
-          desktop: {
+          tablet: {
             size: 14,
             rows: 5,
           },
@@ -122,7 +127,7 @@ export const makeTokens = ({
             size: 16,
             rows: 6,
           },
-          desktop: {
+          tablet: {
             size: 16,
             rows: 6,
           },
@@ -132,14 +137,18 @@ export const makeTokens = ({
             size: 18,
             rows: 6,
           },
-          desktop: {
+          tablet: {
             size: 18,
             rows: 6,
           },
         },
       },
     },
-    responsiveBreakpoint: 768,
+    breakpoint: {
+      mobile: 0,
+      tablet: 768,
+      desktop: 992,
+    },
     contentWidth: {
       medium: 940,
       large: 1280,
@@ -173,8 +182,10 @@ export const makeTokens = ({
       },
       color: {
         standard: grey4,
+        standardInverted: white,
         focus,
         critical,
+        formHover: formAccent,
         formAccent,
       },
     },
@@ -190,18 +201,22 @@ export const makeTokens = ({
       foreground: {
         link,
         linkHover,
+        linkVisited,
         neutral: grey1,
         neutralInverted: white,
         formAccent,
         critical,
         info,
+        promote,
         positive,
         secondary,
+        secondaryInverted: 'hsla(0, 0%, 100%, 0.65)',
       },
       background: {
+        body: bodyBackground,
         brand,
         input: white,
-        inputDisabled: grey4,
+        inputDisabled: grey5,
         brandAccent,
         formAccent,
         formAccentDisabled: grey4,
@@ -209,6 +224,7 @@ export const makeTokens = ({
         card: white,
         critical,
         info,
+        promote,
         positive,
         neutral,
       },

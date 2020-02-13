@@ -7,38 +7,67 @@ import React, {
   CSSProperties,
   ComponentType,
 } from 'react';
-import classnames from 'classnames';
-import { useStyles } from 'sku/treat';
+import { useStyles } from 'sku/react-treat';
 import { useBoxStyles, UseBoxStylesProps } from '../Box/useBoxStyles';
-import { BackgroundProvider } from '../Box/BackgroundContext';
+import {
+  BackgroundProvider,
+  useBackgroundLightness,
+} from '../Box/BackgroundContext';
 import { Box } from '../Box/Box';
-import { Text } from '../Text/Text';
+import { Text, TextProps } from '../Text/Text';
 import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
 import { useTouchableSpace } from '../../hooks/typography';
 import * as styleRefs from './ButtonRenderer.treat';
 
 type ButtonWeight = 'weak' | 'regular' | 'strong';
-type ButtonState = 'base' | 'hover' | 'active';
-
-const backgroundVariants: Record<
-  ButtonState,
-  Record<ButtonWeight, UseBoxStylesProps['background'] | undefined>
+type ButtonVariant = 'strong' | 'regular' | 'weak' | 'weakInverted';
+const buttonVariants: Record<
+  ButtonVariant,
+  {
+    textTone: TextProps['tone'];
+    background: UseBoxStylesProps['background'];
+    backgroundHover: UseBoxStylesProps['background'];
+    backgroundActive: UseBoxStylesProps['background'];
+    boxShadow: UseBoxStylesProps['boxShadow'];
+  }
 > = {
-  base: {
-    weak: undefined,
-    regular: 'formAccent',
-    strong: 'brandAccent',
+  strong: {
+    textTone: undefined,
+    background: 'brandAccent',
+    backgroundHover: 'brandAccentHover',
+    backgroundActive: 'brandAccentActive',
+    boxShadow: undefined,
   },
-  hover: {
-    weak: 'formAccentHover',
-    regular: 'formAccentHover',
-    strong: 'brandAccentHover',
+  regular: {
+    textTone: undefined,
+    background: 'formAccent',
+    backgroundHover: 'formAccentHover',
+    backgroundActive: 'formAccentActive',
+    boxShadow: undefined,
   },
-  active: {
-    weak: 'formAccentActive',
-    regular: 'formAccentActive',
-    strong: 'brandAccentActive',
+  weak: {
+    textTone: 'formAccent',
+    background: undefined,
+    backgroundHover: 'formAccentHover',
+    backgroundActive: 'formAccentActive',
+    boxShadow: 'borderFormAccentLarge',
   },
+  weakInverted: {
+    textTone: undefined,
+    background: undefined,
+    backgroundHover: 'card',
+    backgroundActive: 'card',
+    boxShadow: 'borderStandardInvertedLarge',
+  },
+};
+
+const useButtonVariant = (weight: ButtonWeight) => {
+  const variantName =
+    useBackgroundLightness() === 'dark' && weight === 'weak'
+      ? 'weakInverted'
+      : weight;
+
+  return buttonVariants[variantName];
 };
 
 const ButtonChildrenContext = createContext<{
@@ -53,32 +82,28 @@ interface ButtonChildrenProps {
 const ButtonChildren = ({ children }: ButtonChildrenProps) => {
   const styles = useStyles(styleRefs);
   const { weight, loading } = useContext(ButtonChildrenContext);
+  const buttonVariant = useButtonVariant(weight);
 
   return (
     <Fragment>
+      <FieldOverlay variant="focus" className={styles.focusOverlay} />
       <FieldOverlay
-        variant="focus"
-        className={classnames(styles.focusOverlay)}
+        background={buttonVariant.backgroundHover}
+        className={styles.hoverOverlay}
       />
       <FieldOverlay
-        background={backgroundVariants.hover[weight]}
-        className={classnames(styles.hoverOverlay)}
-      />
-      <FieldOverlay
-        background={backgroundVariants.active[weight]}
-        className={classnames(styles.activeOverlay)}
+        background={buttonVariant.backgroundActive}
+        className={styles.activeOverlay}
       />
       <Box
         position="relative"
         paddingX="gutter"
         pointerEvents="none"
-        className={classnames(styles.content, useTouchableSpace('standard'))}
+        textAlign="center"
+        overflow="hidden"
+        className={[styles.content, useTouchableSpace('standard')]}
       >
-        <Text
-          baseline={false}
-          weight="medium"
-          tone={weight === 'weak' ? 'formAccent' : undefined}
-        >
+        <Text baseline={false} weight="medium" tone={buttonVariant.textTone}>
           {children}
           {loading ? (
             <Box
@@ -86,6 +111,7 @@ const ButtonChildren = ({ children }: ButtonChildrenProps) => {
               component="span"
               display="inlineBlock"
               position="relative"
+              textAlign="left"
               className={styles.loading}
             >
               <Box
@@ -135,24 +161,25 @@ export const ButtonRenderer = ({
 }: ButtonRendererProps) => {
   const styles = useStyles(styleRefs);
   const isWeak = weight === 'weak';
-  const background = backgroundVariants.base[weight];
+  const { background, boxShadow } = useButtonVariant(weight);
 
-  const buttonStyles = classnames(
-    styles.root,
-    isWeak ? styles.weak : null,
-    useBoxStyles({
-      component: 'button',
-      cursor: 'pointer',
-      width: 'full',
-      position: 'relative',
-      display: 'block',
-      borderRadius: 'standard',
-      boxShadow: isWeak ? 'borderFormAccentLarge' : undefined,
-      background,
-      transform: 'touchable',
-      transition: 'touchable',
-    }),
-  );
+  const buttonStyles = useBoxStyles({
+    component: 'button',
+    cursor: 'pointer',
+    width: 'full',
+    position: 'relative',
+    display: 'block',
+    borderRadius: 'standard',
+    boxShadow,
+    background,
+    transform: 'touchable',
+    transition: 'touchable',
+    className: [
+      styles.root,
+      isWeak ? styles.weak : null,
+      useBackgroundLightness() === 'dark' ? styles.inverted : null,
+    ],
+  });
 
   const buttonChildrenContextValue = useMemo(() => ({ weight, loading }), [
     weight,
@@ -164,11 +191,15 @@ export const ButtonRenderer = ({
     className: buttonStyles,
   };
 
-  return (
-    <BackgroundProvider value={background}>
-      <ButtonChildrenContext.Provider value={buttonChildrenContextValue}>
-        {children(ButtonChildren, buttonProps)}
-      </ButtonChildrenContext.Provider>
-    </BackgroundProvider>
+  const button = (
+    <ButtonChildrenContext.Provider value={buttonChildrenContextValue}>
+      {children(ButtonChildren, buttonProps)}
+    </ButtonChildrenContext.Provider>
+  );
+
+  return background ? (
+    <BackgroundProvider value={background}>{button}</BackgroundProvider>
+  ) : (
+    button
   );
 };

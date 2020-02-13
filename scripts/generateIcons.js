@@ -9,9 +9,11 @@ const { default: svgr } = require('@svgr/core');
 
 const componentTemplate = ({ template }, opts, { componentName, jsx }) => {
   const code = `
-    import React, { AllHTMLAttributes } from 'react';
+    import React from 'react';
     NEWLINE
-    export const COMPONENT_NAME = (props: AllHTMLAttributes<SVGElement>) => COMPONENT_JSX;
+    import { SVGProps } from '../SVGTypes';
+    NEWLINE
+    export const COMPONENT_NAME = ({ title, titleId, ...props }: SVGProps) => COMPONENT_JSX;
   `;
 
   const reactTemplate = template.smart(code, {
@@ -44,10 +46,12 @@ const svgrConfig = {
     fill: 'currentColor',
     width: 16,
     height: 16,
+    role: 'img',
   },
   replaceAttrValues: { '#000': 'currentColor' },
   template: componentTemplate,
   plugins: ['@svgr/plugin-jsx', '@svgr/plugin-prettier'],
+  titleProp: true,
 };
 
 const baseDir = path.join(__dirname, '..');
@@ -157,13 +161,21 @@ const iconComponentsDir = path.join(baseDir, 'lib/components/icons');
       await templateFileIfMissing(
         `${iconName}.docs.tsx`,
         dedent`
+          import React from 'react';
           import { ComponentDocs } from '../../../../site/src/types';
-          import examplesForIcon from '../../private/examplesForIcon';
           import { ${iconName} } from './${iconName}';
 
           const docs: ComponentDocs = {
+            category: 'Icon',
             migrationGuide: true,
-            examples: examplesForIcon(${iconName}),
+            foundation: true,
+            screenshotWidths: [],
+            examples: [
+              {
+                label: 'Default',
+                Example: () => <${iconName} />,
+              },
+            ],
           };
 
           export default docs;

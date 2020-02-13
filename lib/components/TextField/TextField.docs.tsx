@@ -1,15 +1,16 @@
 import React, { useState, ReactNode } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import { TextField } from './TextField';
-import { TextLink } from '../TextLink/TextLink';
-import { Box } from '../Box/Box';
+import { Box, IconSearch, TextField, TextLink } from '../';
+import { TextField as PlayroomTextField } from '../../playroom/components';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <div style={{ maxWidth: '300px' }}>{children}</div>
 );
 
 const docs: ComponentDocs = {
+  category: 'Interaction',
   migrationGuide: true,
+  screenshotWidths: [320],
   examples: [
     {
       label: 'TextField',
@@ -48,6 +49,24 @@ const docs: ComponentDocs = {
             id={id}
             onChange={e => setValue(e.currentTarget.value)}
             onClear={() => setValue('')}
+            value={value}
+          />
+        );
+      },
+    },
+    {
+      label: 'TextField with icon',
+      Container,
+      Example: ({ id }) => {
+        const [value, setValue] = useState('');
+
+        return (
+          <TextField
+            label="Job Title"
+            id={id}
+            icon={<IconSearch />}
+            placeholder="Enter a job title"
+            onChange={e => setValue(e.currentTarget.value)}
             value={value}
           />
         );
@@ -145,9 +164,46 @@ const docs: ComponentDocs = {
             id={id}
             onChange={handler}
             value="Senior Developer"
-            reserveMessageSpace={false}
           />
         </Box>
+      ),
+    },
+  ],
+  snippets: [
+    {
+      name: 'Standard',
+      code: <PlayroomTextField label="Label" />,
+    },
+    {
+      name: 'Optional',
+      code: <PlayroomTextField label="Label" secondaryLabel="Optional" />,
+    },
+    {
+      name: 'With error',
+      code: (
+        <PlayroomTextField label="Label" tone="critical" message="Required" />
+      ),
+    },
+    {
+      name: 'With description',
+      code: (
+        <PlayroomTextField
+          label="Label"
+          description="More detailed description of field."
+        />
+      ),
+    },
+    {
+      name: 'With icon',
+      code: <PlayroomTextField icon={<IconSearch />} placeholder="Search" />,
+    },
+    {
+      name: 'With tertiary label',
+      code: (
+        <PlayroomTextField
+          label="Label"
+          tertiaryLabel={<TextLink>Help</TextLink>}
+        />
       ),
     },
   ],

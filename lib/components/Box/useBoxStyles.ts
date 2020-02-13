@@ -1,11 +1,11 @@
-import { ReactType } from 'react';
+import { ElementType } from 'react';
 import { useStyles } from 'sku/react-treat';
 import classnames from 'classnames';
 import { Theme } from 'treat/theme';
 import {
   resolveResponsiveProp,
   ResponsiveProp,
-} from '../../utils/resolveResponsiveProp';
+} from '../../utils/responsiveProp';
 import * as resetStyleRefs from '../../reset/reset.treat';
 import * as styleRefs from './useBoxStyles.treat';
 
@@ -13,7 +13,7 @@ export type Space = keyof Theme['space'] | 'none';
 export type ResponsiveSpace = ResponsiveProp<Space>;
 
 export interface UseBoxStylesProps {
-  component: ReactType;
+  component: ElementType | null;
   padding?: ResponsiveSpace;
   paddingX?: ResponsiveSpace;
   paddingY?: ResponsiveSpace;
@@ -30,8 +30,11 @@ export interface UseBoxStylesProps {
   marginRight?: ResponsiveSpace;
   display?: ResponsiveProp<keyof typeof styleRefs.display>;
   flexDirection?: ResponsiveProp<keyof typeof styleRefs.flexDirection>;
+  flexWrap?: keyof typeof styleRefs.flexWrap;
+  flexShrink?: keyof typeof styleRefs.flexShrink;
   alignItems?: ResponsiveProp<keyof typeof styleRefs.alignItems>;
   justifyContent?: ResponsiveProp<keyof typeof styleRefs.justifyContent>;
+  textAlign?: ResponsiveProp<keyof typeof styleRefs.textAlign>;
   borderRadius?: keyof typeof styleRefs.borderRadius;
   background?: keyof typeof styleRefs.background;
   boxShadow?: keyof typeof styleRefs.boxShadow;
@@ -42,6 +45,9 @@ export interface UseBoxStylesProps {
   position?: keyof typeof styleRefs.position;
   cursor?: keyof typeof styleRefs.cursor;
   pointerEvents?: keyof typeof styleRefs.pointerEvents;
+  overflow?: keyof typeof styleRefs.overflow;
+  minWidth?: keyof typeof styleRefs.minWidth;
+  className?: Parameters<typeof classnames>[0];
 }
 
 export const useBoxStyles = ({
@@ -62,8 +68,11 @@ export const useBoxStyles = ({
   marginRight,
   display,
   flexDirection,
+  flexWrap,
+  flexShrink,
   alignItems,
   justifyContent,
+  textAlign,
   borderRadius,
   background,
   boxShadow,
@@ -74,6 +83,9 @@ export const useBoxStyles = ({
   position,
   cursor,
   pointerEvents,
+  overflow,
+  minWidth,
+  className,
 }: UseBoxStylesProps) => {
   const resetStyles = useStyles(resetStyleRefs);
   const styles = useStyles(styleRefs);
@@ -89,8 +101,9 @@ export const useBoxStyles = ({
   const resolvedMarginRight = marginRight || marginX || margin;
 
   return classnames(
-    resetStyles.base,
-    resetStyles.element[component as keyof typeof resetStyleRefs.element],
+    component !== null && resetStyles.base,
+    component !== null &&
+      resetStyles.element[component as keyof typeof resetStyleRefs.element],
     styles.background[background!],
     styles.borderRadius[borderRadius!],
     styles.boxShadow[boxShadow!],
@@ -101,73 +114,101 @@ export const useBoxStyles = ({
     styles.position[position!],
     styles.cursor[cursor!],
     styles.pointerEvents[pointerEvents!],
-    resolvedMarginTop &&
+    styles.overflow[overflow!],
+    styles.minWidth[minWidth!],
+    resolvedMarginTop !== undefined &&
       resolveResponsiveProp(
         resolvedMarginTop,
         styles.margin.top,
+        styles.marginTablet.top,
         styles.marginDesktop.top,
       ),
-    resolvedMarginBottom &&
+    resolvedMarginBottom !== undefined &&
       resolveResponsiveProp(
         resolvedMarginBottom,
         styles.margin.bottom,
+        styles.marginTablet.bottom,
         styles.marginDesktop.bottom,
       ),
-    resolvedMarginLeft &&
+    resolvedMarginLeft !== undefined &&
       resolveResponsiveProp(
         resolvedMarginLeft,
         styles.margin.left,
+        styles.marginTablet.left,
         styles.marginDesktop.left,
       ),
-    resolvedMarginRight &&
+    resolvedMarginRight !== undefined &&
       resolveResponsiveProp(
         resolvedMarginRight,
         styles.margin.right,
+        styles.marginTablet.right,
         styles.marginDesktop.right,
       ),
-    resolvedPaddingTop &&
+    resolvedPaddingTop !== undefined &&
       resolveResponsiveProp(
         resolvedPaddingTop,
         styles.padding.top,
+        styles.paddingTablet.top,
         styles.paddingDesktop.top,
       ),
-    resolvedPaddingBottom &&
+    resolvedPaddingBottom !== undefined &&
       resolveResponsiveProp(
         resolvedPaddingBottom,
         styles.padding.bottom,
+        styles.paddingTablet.bottom,
         styles.paddingDesktop.bottom,
       ),
-    resolvedPaddingLeft &&
+    resolvedPaddingLeft !== undefined &&
       resolveResponsiveProp(
         resolvedPaddingLeft,
         styles.padding.left,
+        styles.paddingTablet.left,
         styles.paddingDesktop.left,
       ),
-    resolvedPaddingRight &&
+    resolvedPaddingRight !== undefined &&
       resolveResponsiveProp(
         resolvedPaddingRight,
         styles.padding.right,
+        styles.paddingTablet.right,
         styles.paddingDesktop.right,
       ),
-    display &&
-      resolveResponsiveProp(display, styles.display, styles.displayDesktop),
-    flexDirection &&
+    display !== undefined &&
+      resolveResponsiveProp(
+        display,
+        styles.display,
+        styles.displayTablet,
+        styles.displayDesktop,
+      ),
+    flexDirection !== undefined &&
       resolveResponsiveProp(
         flexDirection,
         styles.flexDirection,
+        styles.flexDirectionTablet,
         styles.flexDirectionDesktop,
       ),
-    alignItems &&
+    styles.flexWrap[flexWrap!],
+    styles.flexShrink[flexShrink!],
+    alignItems !== undefined &&
       resolveResponsiveProp(
         alignItems,
         styles.alignItems,
+        styles.alignItemsTablet,
         styles.alignItemsDesktop,
       ),
-    justifyContent &&
+    justifyContent !== undefined &&
       resolveResponsiveProp(
         justifyContent,
         styles.justifyContent,
+        styles.justifyContentTablet,
         styles.justifyContentDesktop,
       ),
+    textAlign !== undefined &&
+      resolveResponsiveProp(
+        textAlign,
+        styles.textAlign,
+        styles.textAlignTablet,
+        styles.textAlignDesktop,
+      ),
+    className,
   );
 };
