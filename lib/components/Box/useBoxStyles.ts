@@ -32,6 +32,7 @@ export interface UseBoxStylesProps {
   flexDirection?: ResponsiveProp<keyof typeof styleRefs.flexDirection>;
   flexWrap?: keyof typeof styleRefs.flexWrap;
   flexShrink?: keyof typeof styleRefs.flexShrink;
+  flexGrow?: keyof typeof styleRefs.flexGrow;
   alignItems?: ResponsiveProp<keyof typeof styleRefs.alignItems>;
   justifyContent?: ResponsiveProp<keyof typeof styleRefs.justifyContent>;
   textAlign?: ResponsiveProp<keyof typeof styleRefs.textAlign>;
@@ -70,6 +71,7 @@ export const useBoxStyles = ({
   flexDirection,
   flexWrap,
   flexShrink,
+  flexGrow,
   alignItems,
   justifyContent,
   textAlign,
@@ -188,6 +190,7 @@ export const useBoxStyles = ({
       ),
     styles.flexWrap[flexWrap!],
     styles.flexShrink[flexShrink!],
+    styles.flexGrow[flexGrow!],
     alignItems !== undefined &&
       resolveResponsiveProp(
         alignItems,

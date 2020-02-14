@@ -250,6 +250,14 @@ export const flexShrink = styleMap(
   mapToStyleProperty(flexShrinkRules, 'flexShrink'),
 ) as Record<keyof typeof flexShrinkRules, string>; // Remove this when 'styleMap' supports numbers as keys and it's been released to sku consumers
 
+const flexGrowRules = {
+  0: 0,
+  1: 1,
+};
+export const flexGrow = styleMap(
+  mapToStyleProperty(flexGrowRules, 'flexGrow'),
+) as Record<keyof typeof flexGrowRules, string>; // Remove this when 'styleMap' supports numbers as keys and it's been released to sku consumers
+
 export const background = styleMap(({ color }) =>
   mapToStyleProperty(omit(color.background, 'body'), 'background'),
 );

@@ -43,18 +43,14 @@ export const FieldMessage = ({
 
   return (
     <Box id={id} display="flex" justifyContent="flexEnd">
-      <Box className={styles.grow}>
+      <Box flexGrow={1}>
         <Text size="small" tone={tone === 'neutral' ? 'secondary' : tone}>
           <Box
             display="flex"
             className={showMessage ? undefined : styles.noSelect}
           >
             {showMessage && tone !== 'neutral' ? (
-              <Box
-                paddingRight="xxsmall"
-                flexShrink={0}
-                className={styles.fixedSize}
-              >
+              <Box paddingRight="xxsmall" flexShrink={0} flexGrow={0}>
                 {Icon[tone]}
               </Box>
             ) : null}
@@ -63,7 +59,7 @@ export const FieldMessage = ({
         </Text>
       </Box>
       {secondaryMessage && !disabled ? (
-        <Box paddingLeft="xsmall" className={styles.fixedSize}>
+        <Box paddingLeft="xsmall" flexGrow={0}>
           {secondaryMessage}
         </Box>
       ) : null}
