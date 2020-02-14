@@ -14,7 +14,7 @@ export interface ToggleProps {
   label: ReactNode;
   on: boolean;
   onChange: ChangeHandler;
-  align?: 'left' | 'right';
+  align?: 'left' | 'right' | 'justify';
 }
 
 const handleChange = (onChange: ChangeHandler) => (
@@ -38,7 +38,7 @@ export const Toggle = ({
     <Box
       position="relative"
       display="flex"
-      flexDirection={align === 'right' ? 'rowReverse' : undefined}
+      flexDirection={align === 'left' ? undefined : 'rowReverse'}
       className={styles.root}
     >
       <Box
@@ -102,6 +102,7 @@ export const Toggle = ({
         htmlFor={id}
         paddingLeft={align === 'left' ? 'xsmall' : undefined}
         paddingRight={align === 'right' ? 'xsmall' : undefined}
+        flexGrow={align === 'justify' ? 1 : undefined}
         className={[styles.label, useVirtualTouchable()]}
       >
         <Text baseline={false} weight={on ? 'strong' : undefined}>
