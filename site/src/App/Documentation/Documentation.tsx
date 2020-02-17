@@ -29,19 +29,11 @@ const getComponentDocs = ({
   componentName: string;
   isIcon: boolean;
 }) => {
-  const normalizedComponentRoute = (isIcon
+  const normalizedComponentRoute = isIcon
     ? `./icons/${componentName}/${componentName}.docs.tsx`
-    : `./${componentName}/${componentName}.docs.tsx`
-  ).toUpperCase();
-  const docImportPath = componentDocsContext
-    .keys()
-    .find(doc => normalizedComponentRoute === doc.toUpperCase());
+    : `./${componentName}/${componentName}.docs.tsx`;
 
-  if (!docImportPath) {
-    throw new Error(`Can't import docs for ${componentName}`);
-  }
-
-  return componentDocsContext(docImportPath).default;
+  return componentDocsContext(normalizedComponentRoute).default;
 };
 
 interface MenuItem {
