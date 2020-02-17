@@ -39,6 +39,21 @@ const docs: ComponentDocs = {
         />
       ),
     },
+    {
+      label: 'Justified',
+      Container: ({ children }) => (
+        <div style={{ maxWidth: '300px' }}>{children}</div>
+      ),
+      Example: ({ id }) => (
+        <Toggle
+          on={true}
+          align="justify"
+          label="Justified"
+          id={id}
+          onChange={handler}
+        />
+      ),
+    },
   ],
   snippets: [
     {
@@ -56,6 +71,14 @@ const docs: ComponentDocs = {
     {
       name: 'Off, Aligned right',
       code: <PlayroomToggle label="Toggled off" align="right" on={false} />,
+    },
+    {
+      name: 'On, Justified',
+      code: <PlayroomToggle label="Toggled on" align="justify" on />,
+    },
+    {
+      name: 'Off, Justified',
+      code: <PlayroomToggle label="Toggled off" align="justify" on={false} />,
     },
   ],
 };

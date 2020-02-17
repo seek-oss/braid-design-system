@@ -194,7 +194,7 @@ export const Documentation = () => {
                 </Stack>
               </Box>
             </Hidden>
-            <Box minWidth={0} className={styles.content}>
+            <Box minWidth={0} flexGrow={1} className={styles.content}>
               <Box paddingY="small" paddingX={responsiveGutter}>
                 {map({ ...guides, ...foundations }, ({ Component }, path) => (
                   <Route key={path} path={path} component={Component} />

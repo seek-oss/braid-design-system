@@ -59,7 +59,6 @@ export const logo = style({
 });
 
 export const content = style(theme => ({
-  flexGrow: 1,
   paddingBottom: 80,
   '@media': {
     [`screen and (max-width: ${theme.breakpoint.desktop - 1}px)`]: {
