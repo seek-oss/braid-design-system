@@ -1,5 +1,5 @@
 import React, { ReactChild } from 'react';
-import flatten from 'lodash/flatten';
+import parseHighlights from 'autosuggest-highlight/parse';
 import { TextareaProps } from './Textarea';
 import { Highlight } from './Highlight/Highlight';
 
@@ -8,38 +8,45 @@ export const formatRanges = (
   highlightRanges: TextareaProps['highlightRanges'],
 ): ReactChild[] => {
   if (highlightRanges && value) {
-    const textToHighlight: string[] = [];
-    const splitText: string[] = [];
+    let lastEnd = 0;
 
-    highlightRanges.forEach((range, i) => {
-      const { start, end } = range;
-      const highlightedText = value.slice(start, end);
-      if (highlightedText) {
-        textToHighlight.push(highlightedText);
-      }
-      if (i === 0) {
-        splitText.push(value.slice(0, start));
-      }
-      if (highlightRanges[i + 1]) {
-        splitText.push(
-          end ? value.slice(end, highlightRanges[i + 1].start) : '',
-        );
-      } else {
-        splitText.push(end ? value.slice(end, value.length) : '');
-      }
-    });
+    const validatedAndSortedRanges = highlightRanges
+      // sort ranges by start index
+      .sort((a, b) => (a.start > b.start ? 1 : -1))
+      .reduce((acc, { end, start }) => {
+        const resolvedEnd = end || value.length;
 
-    return flatten(
-      splitText.map((text, i) => {
-        if (i !== splitText.length - 1) {
-          if (textToHighlight[i]) {
-            return [text, <Highlight key={i}>{textToHighlight[i]}</Highlight>];
-          }
-          return [text];
+        // skip range if end character is less than start character
+        if (resolvedEnd <= start) {
+          return acc;
         }
-        return text;
-      }),
-    ).filter(item => item !== null && item !== '');
+
+        // handle overlapping ranges
+        const adjustedRange = [];
+        if (resolvedEnd > lastEnd) {
+          adjustedRange.push({
+            // if overlapping, start from end of last range otherwise start from specified range
+            start: start < lastEnd ? lastEnd : start,
+            end,
+          });
+          lastEnd = resolvedEnd;
+        }
+
+        return [...acc, ...adjustedRange];
+      }, [] as NonNullable<TextareaProps['highlightRanges']>);
+
+    return parseHighlights(
+      value,
+      validatedAndSortedRanges.map(({ start, end }) => [
+        start,
+        end || value.length,
+      ]),
+    ).reduce((acc, { text, highlight }, i) => {
+      if (text) {
+        acc.push(highlight ? <Highlight key={i}>{text}</Highlight> : text);
+      }
+      return acc;
+    }, [] as ReactChild[]);
   }
 
   return [value];
