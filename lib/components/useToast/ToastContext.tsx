@@ -10,7 +10,9 @@ import React, {
 } from 'react';
 import { createPortal } from 'react-dom';
 import { useTheme } from 'sku/react-treat';
-import { Toast, Toaster } from './Toaster';
+
+import { Toaster } from './Toaster';
+import { Toast } from './ToastTypes';
 
 let toastCounter = 0;
 

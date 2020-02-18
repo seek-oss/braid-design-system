@@ -1,20 +1,11 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useStyles } from 'sku/treat';
 
+import { ContentBlock, Box } from '..';
 import * as styleRefs from './Toast.treat';
 import ToastComponent from './Toast';
-import { ContentBlock, Box } from '..';
 import { useFlipList } from './useFlipList';
-
-export interface Toast {
-  id: string;
-  treatTheme: string;
-  tone: 'neutral' | 'critical';
-  message: string;
-  description?: string;
-  action?: boolean;
-  timed?: boolean;
-}
+import { Toast } from './ToastTypes';
 
 interface ToasterProps {
   toasts: Toast[];
@@ -24,6 +15,15 @@ export const Toaster = ({ toasts, removeToast }: ToasterProps) => {
   const styles = useStyles(styleRefs);
 
   const { itemRef, remove } = useFlipList();
+
+  const onClear = useCallback(
+    (id: string) => {
+      remove(id, () => {
+        removeToast(id);
+      });
+    },
+    [remove, removeToast],
+  );
 
   return (
     <Box
@@ -38,11 +38,8 @@ export const Toaster = ({ toasts, removeToast }: ToasterProps) => {
           <ToastComponent
             key={id}
             ref={itemRef(id)}
-            onClear={() => {
-              remove(id, () => {
-                removeToast(id);
-              });
-            }}
+            id={id}
+            onClear={onClear}
             {...rest}
           />
         ))}
