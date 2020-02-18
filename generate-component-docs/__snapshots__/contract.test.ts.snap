@@ -530,6 +530,9 @@ exports[`Box 1`] = `
     | "row"
     | "rowReverse"
   >
+  flexGrow?: 
+    | 0
+    | 1
   flexShrink?: 0
   flexWrap?: 
     | "nowrap"
@@ -1245,6 +1248,9 @@ exports[`BoxRenderer 1`] = `
     | "row"
     | "rowReverse"
   >
+  flexGrow?: 
+    | 0
+    | 1
   flexShrink?: 0
   flexWrap?: 
     | "nowrap"
@@ -4494,6 +4500,7 @@ exports[`Tiles 1`] = `
 exports[`Toggle 1`] = `
 {
   align?: 
+    | "justify"
     | "left"
     | "right"
   id: string

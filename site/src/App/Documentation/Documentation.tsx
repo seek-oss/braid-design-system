@@ -16,6 +16,26 @@ import * as styleRefs from './Documentation.treat';
 
 const { Text, Box, Hidden, Stack } = components;
 
+const componentDocsContext = require.context(
+  '../../../../lib/components',
+  true,
+  /.docs\.tsx$/,
+);
+
+const getComponentDocs = ({
+  componentName,
+  isIcon,
+}: {
+  componentName: string;
+  isIcon: boolean;
+}) => {
+  const normalizedComponentRoute = isIcon
+    ? `./icons/${componentName}/${componentName}.docs.tsx`
+    : `./${componentName}/${componentName}.docs.tsx`;
+
+  return componentDocsContext(normalizedComponentRoute).default;
+};
+
 interface MenuItem {
   name: string;
   path: string;
@@ -71,8 +91,10 @@ export const Documentation = () => {
     Object.keys(components)
       .filter(name => !/^(Icon|BoxRenderer)/.test(name))
       .map(name => {
-        const docs: ComponentDocs = require(`../../../../lib/components/${name}/${name}.docs.tsx`)
-          .default;
+        const docs: ComponentDocs = getComponentDocs({
+          componentName: name,
+          isIcon: false,
+        });
 
         return { name, ...docs };
       }),
@@ -194,7 +216,7 @@ export const Documentation = () => {
                 </Stack>
               </Box>
             </Hidden>
-            <Box minWidth={0} className={styles.content}>
+            <Box minWidth={0} flexGrow={1} className={styles.content}>
               <Box paddingY="small" paddingX={responsiveGutter}>
                 {map({ ...guides, ...foundations }, ({ Component }, path) => (
                   <Route key={path} path={path} component={Component} />
@@ -211,6 +233,10 @@ export const Documentation = () => {
                           : undefined
                       }
                       componentName={match.params.componentName}
+                      docs={getComponentDocs({
+                        componentName: match.params.componentName,
+                        isIcon: /^Icon/.test(match.params.componentName),
+                      })}
                       sourceUrlPrefix={sourceUrlPrefix}
                     />
                   )}

@@ -26,18 +26,18 @@ interface ComponentRouteProps {
   componentName: string;
   subfolder?: string;
   sourceUrlPrefix: string;
+  docs: ComponentDocs;
 }
 
 export const ComponentRoute = ({
   componentName,
   subfolder = '',
   sourceUrlPrefix,
+  docs,
 }: ComponentRouteProps) => {
   const componentFolder = `lib/components/${
     subfolder ? `${subfolder}/` : ''
   }${componentName}`;
-  const docs: ComponentDocs = require(`../../../../${componentFolder}/${componentName}.docs.tsx`)
-    .default;
   const examples = docs.examples || [];
 
   const sourceUrl = `${sourceUrlPrefix}/${componentFolder}`;
