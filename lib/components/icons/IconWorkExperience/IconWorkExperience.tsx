@@ -7,7 +7,7 @@ export type IconWorkExperienceProps = UseIconProps;
 
 export const IconWorkExperience = (props: IconWorkExperienceProps) => {
   const iconProps = useIcon(props, {
-    nudge: {
+    verticalCorrection: {
       uppercase: 'up',
       lowercase: 'up',
     },

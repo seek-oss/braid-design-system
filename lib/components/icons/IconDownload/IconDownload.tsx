@@ -7,7 +7,7 @@ export type IconDownloadProps = UseIconProps;
 
 export const IconDownload = (props: IconDownloadProps) => {
   const iconProps = useIcon(props, {
-    nudge: {
+    verticalCorrection: {
       uppercase: 'none',
       lowercase: 'up',
     },

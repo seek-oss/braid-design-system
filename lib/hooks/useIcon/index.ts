@@ -38,20 +38,20 @@ export type UseIconProps = {
 } & OptionalTitle;
 
 type PrivateIconProps = {
-  nudge?: {
-    lowercase: keyof typeof styleRefs.inlineNudge;
-    uppercase: keyof typeof styleRefs.inlineNudge;
+  verticalCorrection?: {
+    lowercase: keyof typeof styleRefs.alignY.lowercase;
+    uppercase: keyof typeof styleRefs.alignY.uppercase;
   };
 };
 
-const detaultNudge = {
+const detaultVerticalCorrection = {
   uppercase: 'none',
   lowercase: 'none',
 } as const;
 
 export default (
   { size, tone, alignY, ...titleProps }: UseIconProps,
-  { nudge = detaultNudge }: PrivateIconProps = {},
+  { verticalCorrection = detaultVerticalCorrection }: PrivateIconProps = {},
 ): BoxProps => {
   const styles = useStyles(styleRefs);
   const textContext = useContext(TextContext);
@@ -99,12 +99,11 @@ export default (
       isInline
         ? [
             styles.inline,
-            styles.inlineNudge[
-              alignY === 'lowercase' ? nudge.lowercase : nudge.uppercase
+            styles.alignY[alignY || 'uppercase'][
+              alignY ? verticalCorrection[alignY] : 'none'
             ],
           ]
         : blockSizeStyles,
-      isInline && alignY === 'lowercase' ? styles.inlineLowercase : null,
     ],
     ...titleProps,
   };
