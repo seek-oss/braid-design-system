@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, useCallback } from 'react';
+import React, { useCallback } from 'react';
 
 import * as styleRefs from './Toast.treat';
 import { useStyles, TreatProvider } from 'sku/treat';
@@ -15,6 +15,7 @@ import {
 } from '../../components';
 import { ClearButton } from '../iconButtons/ClearButton/ClearButton';
 import { LeftHighlight } from '../private/LeftHighlight/LeftHighlight';
+import { useTimeout } from './useTimeout';
 import { Toast as ToastType, ToastAction } from './ToastTypes';
 
 const durations = {
@@ -22,43 +23,7 @@ const durations = {
   '10s': 10000,
 } as const;
 
-interface UseTimeoutProps {
-  onTimeout: () => void;
-  duration: number;
-  enabled: boolean;
-}
-const useTimeout = ({ onTimeout, duration, enabled }: UseTimeoutProps) => {
-  const [activated, setActivated] = useState(enabled);
-  const timeoutRef = useRef<number | undefined>();
-
-  const stopTimeout = useCallback(() => {
-    window.clearTimeout(timeoutRef.current);
-    setActivated(false);
-  }, []);
-
-  useEffect(() => {
-    if (activated) {
-      timeoutRef.current = window.setTimeout(() => {
-        onTimeout();
-      }, duration);
-
-      return () => {
-        stopTimeout();
-      };
-    }
-  }, [onTimeout, activated, duration, stopTimeout]);
-
-  const startTimeout = useCallback(() => {
-    if (enabled) {
-      setActivated(true);
-    }
-  }, [enabled]);
-
-  return {
-    stopTimeout,
-    startTimeout,
-  };
-};
+const sideSpace = 'medium' as const;
 
 interface ActionProps extends ToastAction {
   removeToast: () => void;
@@ -116,19 +81,28 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
             {description}
           </Text>
         ) : null}
-        <Inline space="small">
+        <Inline space={sideSpace}>
           {actions.map(action => (
             <Action key={action.label} removeToast={remove} {...action} />
           ))}
         </Inline>
       </Stack>
     ) : (
-      <Inline space="small">
-        <Text baseline={false}>{message}</Text>
-        {actions.map(action => (
-          <Action key={action.label} removeToast={remove} {...action} />
-        ))}
-      </Inline>
+      <Box display="flex" flexWrap="wrap">
+        <Box paddingRight={actions.length ? sideSpace : undefined}>
+          <Text baseline={false}>{message}</Text>
+        </Box>
+        <Box display="flex">
+          {actions.map((action, index) => (
+            <Box
+              paddingLeft={index > 0 ? sideSpace : undefined}
+              key={action.label}
+            >
+              <Action removeToast={remove} {...action} />
+            </Box>
+          ))}
+        </Box>
+      </Box>
     );
 
     return (
@@ -163,7 +137,9 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
                 ) : null}
                 <Column>{content}</Column>
                 <Column width="content">
-                  <ClearButton onClick={remove} label="Clear message" />
+                  <Box paddingLeft="xsmall">
+                    <ClearButton onClick={remove} label="Clear message" />
+                  </Box>
                 </Column>
               </Columns>
             </Box>
