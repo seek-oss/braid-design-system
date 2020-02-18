@@ -31,7 +31,6 @@ export const Toaster = ({ toasts, removeToast }: ToasterProps) => {
       width="full"
       paddingX="small"
       className={styles.toaster}
-      aria-live="polite"
     >
       <ContentBlock>
         {toasts.map(({ id, ...rest }) => (

@@ -88,21 +88,19 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
         </Inline>
       </Stack>
     ) : (
-      <Box display="flex" flexWrap="wrap">
-        <Box paddingRight={actions.length ? sideSpace : undefined}>
-          <Text baseline={false}>{message}</Text>
-        </Box>
+      <Inline spaceX={sideSpace} spaceY="xxsmall">
+        <Text baseline={false}>{message}</Text>
         <Box display="flex">
           {actions.map((action, index) => (
             <Box
-              paddingLeft={index > 0 ? sideSpace : undefined}
+              paddingRight={index === actions.length - 1 ? 'small' : sideSpace}
               key={action.label}
             >
               <Action removeToast={remove} {...action} />
             </Box>
           ))}
         </Box>
-      </Box>
+      </Inline>
     );
 
     return (
@@ -124,20 +122,20 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
               boxShadow="borderStandard"
               borderRadius="standard"
               paddingY="small"
-              paddingX="medium"
               paddingLeft="medium"
-              paddingRight="small"
               className={styles.toast}
             >
-              <Columns space="small">
+              <Columns space="none">
                 {tone === 'critical' ? (
                   <Column width="content">
-                    <IconCritical tone="critical" />
+                    <Box paddingRight="small">
+                      <IconCritical tone="critical" />
+                    </Box>
                   </Column>
                 ) : null}
                 <Column>{content}</Column>
                 <Column width="content">
-                  <Box paddingLeft="xsmall">
+                  <Box width="touchable" display="flex" justifyContent="center">
                     <ClearButton onClick={remove} label="Clear message" />
                   </Box>
                 </Column>

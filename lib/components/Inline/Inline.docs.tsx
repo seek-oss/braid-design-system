@@ -1,13 +1,13 @@
 import React, { ReactNode } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import { Placeholder } from '../private/Placeholder/Placeholder';
-import { InlineProps } from './Inline';
+import { ResponsiveSpace } from '../Box/useBoxStyles';
 import { Box, Inline } from '../';
 import { padding } from '../Box/useBoxStyles.treat';
 
 const spaces = Object.keys(padding.top).filter(
   space => space !== 'none',
-) as Array<InlineProps['space']>;
+) as Array<ResponsiveSpace>;
 
 const Container = ({ children }: { children: ReactNode }) => (
   <Box background="neutralLight" style={{ maxWidth: '240px' }}>
