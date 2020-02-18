@@ -8,7 +8,18 @@ export const size = style({
 
 export const inline = style({
   verticalAlign: 'middle',
-  top: '-0.105em', // Arbitrary magic number, to vertically align to text
+});
+
+const baseNudge = -0.105;
+const stepNudge = 0.06;
+export const inlineNudge = styleMap({
+  none: { top: `${baseNudge}em` },
+  up: { top: `${baseNudge - stepNudge}em` },
+  down: { top: `${baseNudge + stepNudge}em` },
+});
+
+export const inlineLowercase = style({
+  transform: 'translateY(.04em)',
 });
 
 export const blockWidths = styleMap(({ utils, grid, typography }) =>

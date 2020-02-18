@@ -1888,6 +1888,9 @@ exports[`Hidden 1`] = `
 
 exports[`IconAdd 1`] = `
 {
+  alignY?: 
+    | "lowercase"
+    | "uppercase"
   size?: 
     | "fill"
     | "large"
@@ -1911,6 +1914,9 @@ exports[`IconAdd 1`] = `
 exports[`IconBookmark 1`] = `
 {
   active?: boolean
+  alignY?: 
+    | "lowercase"
+    | "uppercase"
   size?: 
     | "fill"
     | "large"
@@ -1933,6 +1939,9 @@ exports[`IconBookmark 1`] = `
 
 exports[`IconChevron 1`] = `
 {
+  alignY?: 
+    | "lowercase"
+    | "uppercase"
   direction?: 
     | "down"
     | "left"
@@ -1960,6 +1969,9 @@ exports[`IconChevron 1`] = `
 
 exports[`IconClear 1`] = `
 {
+  alignY?: 
+    | "lowercase"
+    | "uppercase"
   size?: 
     | "fill"
     | "large"
@@ -1982,6 +1994,9 @@ exports[`IconClear 1`] = `
 
 exports[`IconCompany 1`] = `
 {
+  alignY?: 
+    | "lowercase"
+    | "uppercase"
   size?: 
     | "fill"
     | "large"
@@ -2004,6 +2019,9 @@ exports[`IconCompany 1`] = `
 
 exports[`IconCompose 1`] = `
 {
+  alignY?: 
+    | "lowercase"
+    | "uppercase"
   size?: 
     | "fill"
     | "large"
@@ -2026,6 +2044,9 @@ exports[`IconCompose 1`] = `
 
 exports[`IconCopy 1`] = `
 {
+  alignY?: 
+    | "lowercase"
+    | "uppercase"
   size?: 
     | "fill"
     | "large"
@@ -2048,6 +2069,9 @@ exports[`IconCopy 1`] = `
 
 exports[`IconCreditCard 1`] = `
 {
+  alignY?: 
+    | "lowercase"
+    | "uppercase"
   size?: 
     | "fill"
     | "large"
@@ -2070,6 +2094,9 @@ exports[`IconCreditCard 1`] = `
 
 exports[`IconCritical 1`] = `
 {
+  alignY?: 
+    | "lowercase"
+    | "uppercase"
   size?: 
     | "fill"
     | "large"
@@ -2092,6 +2119,9 @@ exports[`IconCritical 1`] = `
 
 exports[`IconDate 1`] = `
 {
+  alignY?: 
+    | "lowercase"
+    | "uppercase"
   size?: 
     | "fill"
     | "large"
@@ -2114,6 +2144,9 @@ exports[`IconDate 1`] = `
 
 exports[`IconDelete 1`] = `
 {
+  alignY?: 
+    | "lowercase"
+    | "uppercase"
   size?: 
     | "fill"
     | "large"
@@ -2136,6 +2169,9 @@ exports[`IconDelete 1`] = `
 
 exports[`IconDocument 1`] = `
 {
+  alignY?: 
+    | "lowercase"
+    | "uppercase"
   size?: 
     | "fill"
     | "large"
@@ -2158,6 +2194,9 @@ exports[`IconDocument 1`] = `
 
 exports[`IconDownload 1`] = `
 {
+  alignY?: 
+    | "lowercase"
+    | "uppercase"
   size?: 
     | "fill"
     | "large"
@@ -2180,6 +2219,9 @@ exports[`IconDownload 1`] = `
 
 exports[`IconEdit 1`] = `
 {
+  alignY?: 
+    | "lowercase"
+    | "uppercase"
   size?: 
     | "fill"
     | "large"
@@ -2202,6 +2244,9 @@ exports[`IconEdit 1`] = `
 
 exports[`IconEducation 1`] = `
 {
+  alignY?: 
+    | "lowercase"
+    | "uppercase"
   size?: 
     | "fill"
     | "large"
@@ -2224,6 +2269,9 @@ exports[`IconEducation 1`] = `
 
 exports[`IconFilter 1`] = `
 {
+  alignY?: 
+    | "lowercase"
+    | "uppercase"
   size?: 
     | "fill"
     | "large"
@@ -2246,6 +2294,9 @@ exports[`IconFilter 1`] = `
 
 exports[`IconGrid 1`] = `
 {
+  alignY?: 
+    | "lowercase"
+    | "uppercase"
   size?: 
     | "fill"
     | "large"
@@ -2269,6 +2320,9 @@ exports[`IconGrid 1`] = `
 exports[`IconHeart 1`] = `
 {
   active?: boolean
+  alignY?: 
+    | "lowercase"
+    | "uppercase"
   size?: 
     | "fill"
     | "large"
@@ -2291,6 +2345,9 @@ exports[`IconHeart 1`] = `
 
 exports[`IconHelp 1`] = `
 {
+  alignY?: 
+    | "lowercase"
+    | "uppercase"
   size?: 
     | "fill"
     | "large"
@@ -2313,6 +2370,9 @@ exports[`IconHelp 1`] = `
 
 exports[`IconHistory 1`] = `
 {
+  alignY?: 
+    | "lowercase"
+    | "uppercase"
   size?: 
     | "fill"
     | "large"
@@ -2335,6 +2395,9 @@ exports[`IconHistory 1`] = `
 
 exports[`IconHome 1`] = `
 {
+  alignY?: 
+    | "lowercase"
+    | "uppercase"
   size?: 
     | "fill"
     | "large"
@@ -2357,6 +2420,9 @@ exports[`IconHome 1`] = `
 
 exports[`IconImage 1`] = `
 {
+  alignY?: 
+    | "lowercase"
+    | "uppercase"
   size?: 
     | "fill"
     | "large"
@@ -2379,6 +2445,9 @@ exports[`IconImage 1`] = `
 
 exports[`IconInfo 1`] = `
 {
+  alignY?: 
+    | "lowercase"
+    | "uppercase"
   size?: 
     | "fill"
     | "large"
@@ -2401,6 +2470,9 @@ exports[`IconInfo 1`] = `
 
 exports[`IconInvoice 1`] = `
 {
+  alignY?: 
+    | "lowercase"
+    | "uppercase"
   size?: 
     | "fill"
     | "large"
@@ -2423,6 +2495,9 @@ exports[`IconInvoice 1`] = `
 
 exports[`IconList 1`] = `
 {
+  alignY?: 
+    | "lowercase"
+    | "uppercase"
   size?: 
     | "fill"
     | "large"
@@ -2445,6 +2520,9 @@ exports[`IconList 1`] = `
 
 exports[`IconLocation 1`] = `
 {
+  alignY?: 
+    | "lowercase"
+    | "uppercase"
   size?: 
     | "fill"
     | "large"
@@ -2467,6 +2545,9 @@ exports[`IconLocation 1`] = `
 
 exports[`IconMail 1`] = `
 {
+  alignY?: 
+    | "lowercase"
+    | "uppercase"
   size?: 
     | "fill"
     | "large"
@@ -2489,6 +2570,9 @@ exports[`IconMail 1`] = `
 
 exports[`IconMinus 1`] = `
 {
+  alignY?: 
+    | "lowercase"
+    | "uppercase"
   size?: 
     | "fill"
     | "large"
@@ -2511,6 +2595,9 @@ exports[`IconMinus 1`] = `
 
 exports[`IconMoney 1`] = `
 {
+  alignY?: 
+    | "lowercase"
+    | "uppercase"
   size?: 
     | "fill"
     | "large"
@@ -2533,6 +2620,9 @@ exports[`IconMoney 1`] = `
 
 exports[`IconNewWindow 1`] = `
 {
+  alignY?: 
+    | "lowercase"
+    | "uppercase"
   size?: 
     | "fill"
     | "large"
@@ -2555,6 +2645,9 @@ exports[`IconNewWindow 1`] = `
 
 exports[`IconNote 1`] = `
 {
+  alignY?: 
+    | "lowercase"
+    | "uppercase"
   size?: 
     | "fill"
     | "large"
@@ -2577,6 +2670,9 @@ exports[`IconNote 1`] = `
 
 exports[`IconOverflow 1`] = `
 {
+  alignY?: 
+    | "lowercase"
+    | "uppercase"
   size?: 
     | "fill"
     | "large"
@@ -2599,6 +2695,9 @@ exports[`IconOverflow 1`] = `
 
 exports[`IconPeople 1`] = `
 {
+  alignY?: 
+    | "lowercase"
+    | "uppercase"
   size?: 
     | "fill"
     | "large"
@@ -2621,6 +2720,9 @@ exports[`IconPeople 1`] = `
 
 exports[`IconPersonAdd 1`] = `
 {
+  alignY?: 
+    | "lowercase"
+    | "uppercase"
   size?: 
     | "fill"
     | "large"
@@ -2643,6 +2745,9 @@ exports[`IconPersonAdd 1`] = `
 
 exports[`IconPersonVerified 1`] = `
 {
+  alignY?: 
+    | "lowercase"
+    | "uppercase"
   size?: 
     | "fill"
     | "large"
@@ -2665,6 +2770,9 @@ exports[`IconPersonVerified 1`] = `
 
 exports[`IconPhone 1`] = `
 {
+  alignY?: 
+    | "lowercase"
+    | "uppercase"
   size?: 
     | "fill"
     | "large"
@@ -2687,6 +2795,9 @@ exports[`IconPhone 1`] = `
 
 exports[`IconPositive 1`] = `
 {
+  alignY?: 
+    | "lowercase"
+    | "uppercase"
   size?: 
     | "fill"
     | "large"
@@ -2709,6 +2820,9 @@ exports[`IconPositive 1`] = `
 
 exports[`IconPrint 1`] = `
 {
+  alignY?: 
+    | "lowercase"
+    | "uppercase"
   size?: 
     | "fill"
     | "large"
@@ -2731,6 +2845,9 @@ exports[`IconPrint 1`] = `
 
 exports[`IconProfile 1`] = `
 {
+  alignY?: 
+    | "lowercase"
+    | "uppercase"
   size?: 
     | "fill"
     | "large"
@@ -2753,6 +2870,9 @@ exports[`IconProfile 1`] = `
 
 exports[`IconPromote 1`] = `
 {
+  alignY?: 
+    | "lowercase"
+    | "uppercase"
   size?: 
     | "fill"
     | "large"
@@ -2775,6 +2895,9 @@ exports[`IconPromote 1`] = `
 
 exports[`IconRecommended 1`] = `
 {
+  alignY?: 
+    | "lowercase"
+    | "uppercase"
   size?: 
     | "fill"
     | "large"
@@ -2797,6 +2920,9 @@ exports[`IconRecommended 1`] = `
 
 exports[`IconRefresh 1`] = `
 {
+  alignY?: 
+    | "lowercase"
+    | "uppercase"
   size?: 
     | "fill"
     | "large"
@@ -2819,6 +2945,9 @@ exports[`IconRefresh 1`] = `
 
 exports[`IconResume 1`] = `
 {
+  alignY?: 
+    | "lowercase"
+    | "uppercase"
   size?: 
     | "fill"
     | "large"
@@ -2841,6 +2970,9 @@ exports[`IconResume 1`] = `
 
 exports[`IconSearch 1`] = `
 {
+  alignY?: 
+    | "lowercase"
+    | "uppercase"
   size?: 
     | "fill"
     | "large"
@@ -2863,6 +2995,9 @@ exports[`IconSearch 1`] = `
 
 exports[`IconSecurity 1`] = `
 {
+  alignY?: 
+    | "lowercase"
+    | "uppercase"
   size?: 
     | "fill"
     | "large"
@@ -2885,6 +3020,9 @@ exports[`IconSecurity 1`] = `
 
 exports[`IconSend 1`] = `
 {
+  alignY?: 
+    | "lowercase"
+    | "uppercase"
   size?: 
     | "fill"
     | "large"
@@ -2907,6 +3045,9 @@ exports[`IconSend 1`] = `
 
 exports[`IconSent 1`] = `
 {
+  alignY?: 
+    | "lowercase"
+    | "uppercase"
   size?: 
     | "fill"
     | "large"
@@ -2929,6 +3070,9 @@ exports[`IconSent 1`] = `
 
 exports[`IconSettings 1`] = `
 {
+  alignY?: 
+    | "lowercase"
+    | "uppercase"
   size?: 
     | "fill"
     | "large"
@@ -2951,6 +3095,9 @@ exports[`IconSettings 1`] = `
 
 exports[`IconShare 1`] = `
 {
+  alignY?: 
+    | "lowercase"
+    | "uppercase"
   size?: 
     | "fill"
     | "large"
@@ -2973,6 +3120,9 @@ exports[`IconShare 1`] = `
 
 exports[`IconSocialFacebook 1`] = `
 {
+  alignY?: 
+    | "lowercase"
+    | "uppercase"
   size?: 
     | "fill"
     | "large"
@@ -2995,6 +3145,9 @@ exports[`IconSocialFacebook 1`] = `
 
 exports[`IconSocialGitHub 1`] = `
 {
+  alignY?: 
+    | "lowercase"
+    | "uppercase"
   size?: 
     | "fill"
     | "large"
@@ -3017,6 +3170,9 @@ exports[`IconSocialGitHub 1`] = `
 
 exports[`IconSocialInstagram 1`] = `
 {
+  alignY?: 
+    | "lowercase"
+    | "uppercase"
   size?: 
     | "fill"
     | "large"
@@ -3039,6 +3195,9 @@ exports[`IconSocialInstagram 1`] = `
 
 exports[`IconSocialLinkedIn 1`] = `
 {
+  alignY?: 
+    | "lowercase"
+    | "uppercase"
   size?: 
     | "fill"
     | "large"
@@ -3061,6 +3220,9 @@ exports[`IconSocialLinkedIn 1`] = `
 
 exports[`IconSocialMedium 1`] = `
 {
+  alignY?: 
+    | "lowercase"
+    | "uppercase"
   size?: 
     | "fill"
     | "large"
@@ -3083,6 +3245,9 @@ exports[`IconSocialMedium 1`] = `
 
 exports[`IconSocialTwitter 1`] = `
 {
+  alignY?: 
+    | "lowercase"
+    | "uppercase"
   size?: 
     | "fill"
     | "large"
@@ -3106,6 +3271,9 @@ exports[`IconSocialTwitter 1`] = `
 exports[`IconStar 1`] = `
 {
   active?: boolean
+  alignY?: 
+    | "lowercase"
+    | "uppercase"
   size?: 
     | "fill"
     | "large"
@@ -3128,6 +3296,9 @@ exports[`IconStar 1`] = `
 
 exports[`IconStatistics 1`] = `
 {
+  alignY?: 
+    | "lowercase"
+    | "uppercase"
   size?: 
     | "fill"
     | "large"
@@ -3150,6 +3321,9 @@ exports[`IconStatistics 1`] = `
 
 exports[`IconSubCategory 1`] = `
 {
+  alignY?: 
+    | "lowercase"
+    | "uppercase"
   size?: 
     | "fill"
     | "large"
@@ -3172,6 +3346,9 @@ exports[`IconSubCategory 1`] = `
 
 exports[`IconTag 1`] = `
 {
+  alignY?: 
+    | "lowercase"
+    | "uppercase"
   size?: 
     | "fill"
     | "large"
@@ -3194,6 +3371,9 @@ exports[`IconTag 1`] = `
 
 exports[`IconTick 1`] = `
 {
+  alignY?: 
+    | "lowercase"
+    | "uppercase"
   size?: 
     | "fill"
     | "large"
@@ -3216,6 +3396,9 @@ exports[`IconTick 1`] = `
 
 exports[`IconTime 1`] = `
 {
+  alignY?: 
+    | "lowercase"
+    | "uppercase"
   size?: 
     | "fill"
     | "large"
@@ -3238,6 +3421,9 @@ exports[`IconTime 1`] = `
 
 exports[`IconUpload 1`] = `
 {
+  alignY?: 
+    | "lowercase"
+    | "uppercase"
   size?: 
     | "fill"
     | "large"
@@ -3260,6 +3446,9 @@ exports[`IconUpload 1`] = `
 
 exports[`IconVideo 1`] = `
 {
+  alignY?: 
+    | "lowercase"
+    | "uppercase"
   size?: 
     | "fill"
     | "large"
@@ -3282,6 +3471,9 @@ exports[`IconVideo 1`] = `
 
 exports[`IconWorkExperience 1`] = `
 {
+  alignY?: 
+    | "lowercase"
+    | "uppercase"
   size?: 
     | "fill"
     | "large"

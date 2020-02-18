@@ -34,9 +34,25 @@ export const useIconContainerSize = (
 export type UseIconProps = {
   size?: IconSize;
   tone?: UseTextProps['tone'];
+  alignY?: 'uppercase' | 'lowercase';
 } & OptionalTitle;
 
-export default ({ size, tone, ...titleProps }: UseIconProps): BoxProps => {
+type PrivateIconProps = {
+  nudge?: {
+    lowercase: keyof typeof styleRefs.inlineNudge;
+    uppercase: keyof typeof styleRefs.inlineNudge;
+  };
+};
+
+const detaultNudge = {
+  uppercase: 'none',
+  lowercase: 'none',
+} as const;
+
+export default (
+  { size, tone, alignY, ...titleProps }: UseIconProps,
+  { nudge = detaultNudge }: PrivateIconProps = {},
+): BoxProps => {
   const styles = useStyles(styleRefs);
   const textContext = useContext(TextContext);
   const headingContext = useContext(HeadingContext);
@@ -54,6 +70,12 @@ export default ({ size, tone, ...titleProps }: UseIconProps): BoxProps => {
         `Specifying a custom \`size\` for an \`Icon\` inside the context of a \`<${
           textContext ? 'Text' : 'Heading'
         }>\` component is invalid. See the documentation for correct usage: https://seek-oss.github.io/braid-design-system/components/`,
+      );
+    }
+
+    if (!isInline && alignY) {
+      throw new Error(
+        `Specifying \`alignY\` for an \`Icon\` outside of a text component is invalid.`,
       );
     }
   }
@@ -74,7 +96,15 @@ export default ({ size, tone, ...titleProps }: UseIconProps): BoxProps => {
     className: [
       resolvedTone,
       styles.size,
-      isInline ? styles.inline : blockSizeStyles,
+      isInline
+        ? [
+            styles.inline,
+            styles.inlineNudge[
+              alignY === 'lowercase' ? nudge.lowercase : nudge.uppercase
+            ],
+          ]
+        : blockSizeStyles,
+      isInline && alignY === 'lowercase' ? styles.inlineLowercase : null,
     ],
     ...titleProps,
   };

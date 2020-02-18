@@ -14,7 +14,13 @@ export const IconChevron = ({
   ...props
 }: IconChevronProps) => {
   const styles = useStyles(styleRefs);
-  const { className, ...iconProps } = useIcon(props);
+  const { className, ...iconProps } = useIcon(props, {
+    nudge: {
+      uppercase: direction === 'up' || direction === 'down' ? 'down' : 'none',
+      lowercase:
+        direction === 'left' || direction === 'right' ? 'down' : 'none',
+    },
+  });
 
   return (
     <Box
