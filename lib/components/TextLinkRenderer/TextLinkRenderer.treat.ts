@@ -2,7 +2,6 @@ import { style } from 'sku/treat';
 
 export const underlineAlways = style({
   textDecoration: 'underline',
-  textUnderlinePosition: 'under',
 });
 
 export const underlineOnHoverOnly = style({
