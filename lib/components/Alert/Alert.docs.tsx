@@ -28,6 +28,12 @@ const docs: ComponentDocs = {
       ),
     },
     {
+      label: 'Caution Alert',
+      Example: () => (
+        <Alert tone="caution">This is a cautionary piece of information.</Alert>
+      ),
+    },
+    {
       label: 'Critical Alert',
       Example: () => (
         <Alert tone="critical">This is a critical piece of information.</Alert>
@@ -44,6 +50,10 @@ const docs: ComponentDocs = {
     {
       name: 'Critical',
       code: <Alert tone="critical">Critical Alert</Alert>,
+    },
+    {
+      name: 'Caution',
+      code: <Alert tone="caution">Caution Alert</Alert>,
     },
     {
       name: 'Positive',
