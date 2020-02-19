@@ -8,6 +8,7 @@ import {
 } from 'polished';
 
 const AA_CONTRAST = 4.52;
+const AA_NON_TEXT_CONTRAST = 3;
 
 // http://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html#key-terms
 export function contrast(color1: string, color2: string): number {
@@ -119,16 +120,44 @@ export function findClosestAccessibleDarkerColor(
   return minColor;
 }
 
+const smoothSaturation = (saturation: number, luminance: number) => {
+  const isBright = luminance > 0.6;
+
+  if (isBright) {
+    return saturation * 0.8;
+  }
+
+  return saturation * 0.45;
+};
+
+const smoothLightness = (lightness: number, luminance: number) => {
+  const isBright = luminance > 0.6;
+
+  if (isBright) {
+    return 0.95 - lightness * 0.03;
+  }
+
+  return 0.95 - lightness * 0.06;
+};
+
 export function getLightVariant(color: string) {
-  const { hue, saturation } = parseToHsl(color);
+  const { hue, saturation, lightness } = parseToHsl(color);
+  const luminance = getLuminance(color);
 
   return toColorString({
     hue,
-    saturation: saturation * 0.45,
-    lightness: 0.95 - getLuminance(color) * 0.05,
+    saturation: smoothSaturation(saturation, luminance),
+    lightness: smoothLightness(lightness, luminance),
   });
 }
 
-export function getAccessibleVariant(color: string) {
-  return findClosestAccessibleDarkerColor(color, getLightVariant(color));
+export function getAccessibleVariant(
+  color: string,
+  options: { nonText?: boolean } = {},
+) {
+  return findClosestAccessibleDarkerColor(
+    color,
+    getLightVariant(color),
+    options.nonText ? AA_NON_TEXT_CONTRAST : AA_CONTRAST,
+  );
 }

@@ -1,5 +1,6 @@
 export { IconAdd } from './IconAdd/IconAdd';
 export { IconBookmark } from './IconBookmark/IconBookmark';
+export { IconCaution } from './IconCaution/IconCaution';
 export { IconChevron } from './IconChevron/IconChevron';
 export { IconClear } from './IconClear/IconClear';
 export { IconCompany } from './IconCompany/IconCompany';

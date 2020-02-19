@@ -277,6 +277,18 @@ export const boxShadow = styleMap(
     borderCritical: {
       boxShadow: `inset 0 0 0 ${borderWidth.standard}px ${color.critical}`,
     },
+    borderCaution: {
+      boxShadow: `inset 0 0 0 ${borderWidth.standard}px ${color.caution}`,
+    },
+    borderPositive: {
+      boxShadow: `inset 0 0 0 ${borderWidth.standard}px ${color.positive}`,
+    },
+    borderInfo: {
+      boxShadow: `inset 0 0 0 ${borderWidth.standard}px ${color.info}`,
+    },
+    borderPromote: {
+      boxShadow: `inset 0 0 0 ${borderWidth.standard}px ${color.promote}`,
+    },
     borderFormHover: {
       boxShadow: `inset 0 0 0 ${borderWidth.standard}px ${color.formHover}`,
     },

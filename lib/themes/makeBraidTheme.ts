@@ -84,6 +84,10 @@ export interface TreatTokens {
       standardInverted: string;
       focus: string;
       critical: string;
+      info: string;
+      promote: string;
+      positive: string;
+      caution: string;
       formHover: string;
       formAccent: string;
     };
@@ -105,6 +109,7 @@ export interface TreatTokens {
       info: string;
       promote: string;
       positive: string;
+      caution: string;
       secondary: string;
       secondaryInverted: string;
     };
@@ -121,6 +126,7 @@ export interface TreatTokens {
       promote: string;
       card: string;
       critical: string;
+      caution: string;
       positive: string;
       neutral: string;
     };
@@ -149,6 +155,7 @@ const decorateTokens = (treatTokens: TreatTokens) => {
         promoteLight: getLightVariant(color.background.promote),
         criticalLight: getLightVariant(color.background.critical),
         positiveLight: getLightVariant(color.background.positive),
+        cautionLight: getLightVariant(color.background.caution),
         neutralLight: getLightVariant(color.background.neutral),
       },
     },
