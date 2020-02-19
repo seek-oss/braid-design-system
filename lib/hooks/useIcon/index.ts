@@ -100,7 +100,7 @@ export default (
         ? [
             styles.inline,
             styles.alignY[alignY || 'uppercase'][
-              alignY ? verticalCorrection[alignY] : 'none'
+              verticalCorrection[alignY || 'uppercase']
             ],
           ]
         : blockSizeStyles,
