@@ -37,10 +37,9 @@ req.keys().forEach(filename => {
     return;
   }
 
-  // Only render foundation elements in `wireframe` no need to theme them
-  const storyThemes = docs.foundation
-    ? values(themes).filter(theme => theme.name === 'wireframe')
-    : values(themes).filter(theme => theme.name !== 'wireframe');
+  const storyThemes = values(themes).filter(
+    theme => theme.name !== 'wireframe',
+  );
 
   storyThemes.forEach(theme => {
     const storyConfig = {
