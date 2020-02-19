@@ -1,79 +1,116 @@
 import React, { ReactNode } from 'react';
-import { Box } from '../Box/Box';
+import { useStyles } from 'sku/treat';
+import { Box, BoxProps } from '../Box/Box';
 import { Text } from '../Text/Text';
-import { IconInfo, IconCritical, IconPositive, IconPromote } from '../icons';
+import {
+  IconInfo,
+  IconCritical,
+  IconPositive,
+  IconPromote,
+  IconCaution,
+} from '../icons';
 import { AllOrNone } from '../private/AllOrNone';
 import { ClearButton } from '../iconButtons/ClearButton/ClearButton';
 import { Columns } from '../Columns/Columns';
 import { Column } from '../Column/Column';
+import { Overlay } from '../private/Overlay/Overlay';
+import { useBackground } from '../Box/BackgroundContext';
+import * as styleRefs from './Alert.treat';
 
-type Tone = 'info' | 'critical' | 'positive' | 'promote';
-type AlertWeight = 'strong' | 'regular';
+type Tone = 'promote' | 'info' | 'positive' | 'caution' | 'critical';
 
 type CloseProps = AllOrNone<{ onClose: () => void; closeLabel: string }>;
 
 export type AlertProps = {
   tone?: Tone;
-  weight?: AlertWeight;
   children: ReactNode;
   id?: string;
 } & CloseProps;
 
-const backgroundForTone = (tone: Tone, weight: AlertWeight) => {
-  if (weight === 'strong') {
-    return tone;
-  }
+const backgroundForTone = {
+  promote: 'promoteLight',
+  info: 'infoLight',
+  positive: 'positiveLight',
+  caution: 'cautionLight',
+  critical: 'criticalLight',
+} as Record<Tone, BoxProps['background']>;
 
-  if (tone === 'positive') {
-    return 'positiveLight';
-  }
-
-  if (tone === 'critical') {
-    return 'criticalLight';
-  }
-
-  if (tone === 'info') {
-    return 'infoLight';
-  }
-
-  if (tone === 'promote') {
-    return 'promoteLight';
-  }
-};
+const borderForTone = {
+  promote: 'borderPromote',
+  info: 'borderInfo',
+  positive: 'borderPositive',
+  caution: 'borderCaution',
+  critical: 'borderCritical',
+} as Record<Tone, BoxProps['boxShadow']>;
 
 const icons = {
-  info: IconInfo,
-  critical: IconCritical,
   positive: IconPositive,
+  info: IconInfo,
   promote: IconPromote,
+  caution: IconCaution,
+  critical: IconCritical,
 };
+
+const highlightBarSize = 'xxsmall';
 
 export const Alert = ({
   tone = 'info',
-  weight = 'regular',
   children,
   id,
   closeLabel = 'Close',
   onClose,
 }: AlertProps) => {
-  const background = backgroundForTone(tone, weight);
+  const styles = useStyles(styleRefs);
+  const parentBackground = useBackground();
   const Icon = icons[tone];
 
   return (
-    <Box id={id} background={background} paddingX="gutter" paddingY="medium">
-      <Columns space="small">
-        <Column width="content">
-          <Icon />
-        </Column>
-        <Column>
-          <Text baseline={false}>{children}</Text>
-        </Column>
-        {onClose ? (
+    <Box
+      id={id}
+      background={backgroundForTone[tone]}
+      padding="medium"
+      borderRadius="standard"
+      position="relative"
+      overflow="hidden"
+      role="alert"
+      aria-live="polite"
+    >
+      <Box paddingLeft={highlightBarSize}>
+        <Columns space="small">
           <Column width="content">
-            <ClearButton tone="neutral" label={closeLabel} onClick={onClose} />
+            <Icon tone={tone} />
           </Column>
-        ) : null}
-      </Columns>
+          <Column>
+            <Text baseline={false}>{children}</Text>
+          </Column>
+          {onClose ? (
+            <Column width="content">
+              <ClearButton
+                tone="neutral"
+                label={closeLabel}
+                onClick={onClose}
+              />
+            </Column>
+          ) : null}
+        </Columns>
+      </Box>
+      {parentBackground !== 'card' && (
+        <Overlay
+          borderRadius="standard"
+          boxShadow={borderForTone[tone]}
+          visible
+          className={{
+            [styles.toneBorder]: tone !== 'caution',
+            [styles.cautionBorder]: tone === 'caution',
+          }}
+        />
+      )}
+      <Box
+        background={tone}
+        paddingLeft={highlightBarSize}
+        position="absolute"
+        className={styles.highlightBar}
+      />
     </Box>
   );
 };
