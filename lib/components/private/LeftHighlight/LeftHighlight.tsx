@@ -27,7 +27,7 @@ export const LeftHighlight = ({
       display={display}
       borderRadius={borderRadius}
       boxShadow={boxShadow}
-      className={styles.leftHightlightContainer}
+      overflow="hidden"
     >
       {children}
       <Box

@@ -90,7 +90,7 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
     ) : (
       <Inline spaceX={sideSpace} spaceY="xxsmall">
         <Text baseline={false}>{message}</Text>
-        <Box display="flex">
+        <Box display="flex" aria-hidden>
           {actions.map((action, index) => (
             <Box
               paddingRight={index === actions.length - 1 ? 'small' : sideSpace}
@@ -106,6 +106,8 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
     return (
       <TreatProvider theme={treatTheme}>
         <Box
+          role="alert"
+          aria-live={tone === 'critical' ? 'assertive' : 'polite'}
           paddingBottom="small"
           ref={ref}
           onMouseEnter={stopTimeout}
@@ -135,8 +137,13 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
                 ) : null}
                 <Column>{content}</Column>
                 <Column width="content">
-                  <Box width="touchable" display="flex" justifyContent="center">
-                    <ClearButton onClick={remove} label="Clear message" />
+                  <Box
+                    width="touchable"
+                    display="flex"
+                    justifyContent="center"
+                    aria-hidden
+                  >
+                    <ClearButton onClick={remove} label="Dismiss alert" />
                   </Box>
                 </Column>
               </Columns>

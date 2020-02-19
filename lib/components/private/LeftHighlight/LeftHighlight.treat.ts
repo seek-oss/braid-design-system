@@ -1,9 +1,5 @@
 import { style } from 'sku/treat';
 
-export const leftHightlightContainer = style({
-  overflow: 'hidden',
-});
-
 export const leftHighlight = style({
   top: 0,
   bottom: 0,
