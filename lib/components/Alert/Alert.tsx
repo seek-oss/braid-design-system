@@ -51,6 +51,8 @@ const icons = {
   critical: IconCritical,
 };
 
+const highlightBarSize = 'xxsmall';
+
 export const Alert = ({
   tone = 'info',
   children,
@@ -66,27 +68,32 @@ export const Alert = ({
     <Box
       id={id}
       background={backgroundForTone[tone]}
-      paddingX="gutter"
-      paddingY="small"
+      padding="medium"
       borderRadius="standard"
       position="relative"
       overflow="hidden"
       role="alert"
       aria-live="polite"
     >
-      <Columns space="small">
-        <Column width="content">
-          <Icon tone={tone} />
-        </Column>
-        <Column>
-          <Text baseline={false}>{children}</Text>
-        </Column>
-        {onClose ? (
+      <Box paddingLeft={highlightBarSize}>
+        <Columns space="small">
           <Column width="content">
-            <ClearButton tone="neutral" label={closeLabel} onClick={onClose} />
+            <Icon tone={tone} />
           </Column>
-        ) : null}
-      </Columns>
+          <Column>
+            <Text baseline={false}>{children}</Text>
+          </Column>
+          {onClose ? (
+            <Column width="content">
+              <ClearButton
+                tone="neutral"
+                label={closeLabel}
+                onClick={onClose}
+              />
+            </Column>
+          ) : null}
+        </Columns>
+      </Box>
       {parentBackground !== 'card' && (
         <Overlay
           borderRadius="standard"
@@ -100,7 +107,7 @@ export const Alert = ({
       )}
       <Box
         background={tone}
-        paddingLeft="xxsmall"
+        paddingLeft={highlightBarSize}
         position="absolute"
         className={styles.highlightBar}
       />
