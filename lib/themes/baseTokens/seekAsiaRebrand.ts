@@ -28,7 +28,7 @@ const palette = {
 
   // Tones
   critical: '#d30b41',
-  notice: '#ffc842',
+  caution: '#ffc842',
   positive: '#028616',
   neutral: '#5e5f66',
   // Desired `info` colour is `#4799d3`, however white text is in-accessible on this.
@@ -52,6 +52,7 @@ export const makeTokens = ({
   const positive = palette.positive;
   const info = palette.info;
   const promote = palette.promote;
+  const caution = palette.caution;
   const neutral = palette.neutral;
   const white = palette.saWhite;
   const formAccent = palette.formAccent;
@@ -210,6 +211,10 @@ export const makeTokens = ({
         standardInverted: white,
         focus,
         critical,
+        info,
+        promote,
+        positive,
+        caution,
         formHover,
         formAccent,
       },
@@ -233,6 +238,7 @@ export const makeTokens = ({
         critical,
         info,
         promote,
+        caution,
         positive,
         secondary,
         secondaryInverted: 'hsla(0, 0%, 100%, 0.65)',
@@ -249,6 +255,7 @@ export const makeTokens = ({
         card: white,
         critical,
         info,
+        caution,
         promote,
         positive,
         neutral,

@@ -148,19 +148,21 @@ export const invertableTone = {
   })),
 };
 
+const accessibleColorForTone = (foreground: string) => ({
+  color: getAccessibleVariant(foreground),
+  selectors: {
+    ['svg&']: {
+      color: getAccessibleVariant(foreground, { nonText: true }),
+    },
+  },
+});
+
 const accessibleColorVariants = styleMap(({ color: { foreground } }) => ({
-  critical: {
-    color: getAccessibleVariant(foreground.critical),
-  },
-  positive: {
-    color: getAccessibleVariant(foreground.positive),
-  },
-  info: {
-    color: getAccessibleVariant(foreground.info),
-  },
-  promote: {
-    color: getAccessibleVariant(foreground.promote),
-  },
+  critical: accessibleColorForTone(foreground.critical),
+  caution: accessibleColorForTone(foreground.caution),
+  positive: accessibleColorForTone(foreground.positive),
+  info: accessibleColorForTone(foreground.info),
+  promote: accessibleColorForTone(foreground.promote),
 }));
 
 type Foreground = keyof typeof tone;
@@ -174,6 +176,10 @@ export const toneOverridesForBackground: ToneOverridesForBackground = {
   criticalLight: {
     neutral: accessibleColorVariants.critical,
     critical: accessibleColorVariants.critical,
+  },
+  cautionLight: {
+    neutral: accessibleColorVariants.caution,
+    caution: accessibleColorVariants.caution,
   },
   positiveLight: {
     neutral: accessibleColorVariants.positive,

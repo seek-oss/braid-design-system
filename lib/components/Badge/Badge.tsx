@@ -4,7 +4,15 @@ import { Text } from '../Text/Text';
 import * as styleRefs from './Badge.treat';
 import { useStyles } from 'sku/react-treat';
 
-type Tone = 'info' | 'critical' | 'positive' | 'neutral' | 'promote';
+const validTones = [
+  'promote',
+  'info',
+  'neutral',
+  'positive',
+  'caution',
+  'critical',
+] as const;
+type Tone = typeof validTones[number];
 type BadgeWeight = 'strong' | 'regular';
 export interface BadgeProps {
   tone?: Tone;
@@ -37,6 +45,10 @@ const backgroundForTone = (tone: Tone, weight: BadgeWeight) => {
   if (tone === 'neutral') {
     return 'neutralLight';
   }
+
+  if (tone === 'caution') {
+    return 'cautionLight';
+  }
 };
 
 export const Badge = ({
@@ -55,6 +67,10 @@ export const Badge = ({
     if (invalidChildren) {
       throw new Error('Badge may only contain strings or numbers');
     }
+
+    if (validTones.indexOf(tone) < 0) {
+      throw new Error(`Badge tone of "${tone}" is not valid.`);
+    }
   }
 
   return (
@@ -71,6 +87,7 @@ export const Badge = ({
           component="span"
           weight="medium"
           size="xsmall"
+          tone={weight === 'regular' ? tone : undefined}
           truncate
           baseline={false}
         >

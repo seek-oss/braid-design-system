@@ -31,6 +31,7 @@ export { Loader } from './Loader/Loader';
 export { OverflowMenu } from './OverflowMenu/OverflowMenu';
 export { OverflowMenuItem } from './OverflowMenuItem/OverflowMenuItem';
 export { MonthPicker } from './MonthPicker/MonthPicker';
+export { Notice } from './Notice/Notice';
 export { Radio } from './Radio/Radio';
 export { Secondary } from './Secondary/Secondary';
 export { Stack } from './Stack/Stack';

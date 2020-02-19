@@ -13,7 +13,14 @@ import {
 import { TextStack } from '../../TextStack/TextStack';
 import { Page } from '../../../types';
 
-const tones = ['critical', 'positive', 'neutral', 'info', 'promote'] as const;
+const tones = [
+  'critical',
+  'caution',
+  'positive',
+  'neutral',
+  'info',
+  'promote',
+] as const;
 type Tone = typeof tones[number];
 
 const usageTypes = [
@@ -42,6 +49,19 @@ const toneDocs: Record<Tone, ColourDoc> = {
       Graphs: ['Trending downward'],
       Time: ['Unsatisfactory'],
       Payments: ['Overdue', 'No Credits Remaining'],
+    },
+  },
+  caution: {
+    description:
+      'You should be aware something is happening or mid-way through a process. Could be a risk or an item that needs to be acted upon.',
+    swatch: 'caution',
+    usage: {
+      UI: ['Low Risk', 'Low Urgency', 'Pending', 'Upcoming'],
+      Messaging: ['Caution Message', 'Draft (label)'],
+      Status: ['Not Yet Contacted', 'Rating'],
+      Graphs: [],
+      Time: ['Below Average'],
+      Payments: ['Partially Paid', 'Credits Expire Soon', 'Low Credits'],
     },
   },
   positive: {
