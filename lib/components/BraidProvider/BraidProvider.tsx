@@ -1,7 +1,6 @@
 import React, { createContext, useContext, ReactNode } from 'react';
 import { TreatProvider } from 'sku/treat';
 import { ensureResetImported } from '../../reset/resetTracker';
-import { ToastProvider } from '../useToast/ToastContext';
 import { BraidTheme } from '../../themes/BraidTheme.d';
 
 if (process.env.NODE_ENV === 'development') {
@@ -32,12 +31,10 @@ export const BraidProvider = ({
 }: BraidProviderProps) => (
   <BraidThemeContext.Provider value={theme}>
     <TreatProvider theme={theme.treatTheme}>
-      <ToastProvider>
-        {styleBody ? (
-          <style type="text/css">{`body{margin:0;padding:0;background:${theme.background}}`}</style>
-        ) : null}
-        {children}
-      </ToastProvider>
+      {styleBody ? (
+        <style type="text/css">{`body{margin:0;padding:0;background:${theme.background}}`}</style>
+      ) : null}
+      {children}
     </TreatProvider>
   </BraidThemeContext.Provider>
 );

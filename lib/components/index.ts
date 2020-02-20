@@ -43,6 +43,6 @@ export { TextLink } from './TextLink/TextLink';
 export { TextLinkRenderer } from './TextLinkRenderer/TextLinkRenderer';
 export { Tiles } from './Tiles/Tiles';
 export { Toggle } from './Toggle/Toggle';
-export { useToast } from './useToast/ToastContext';
+export { ToastProvider, useToast } from './useToast/ToastContext';
 
 export * from './icons';

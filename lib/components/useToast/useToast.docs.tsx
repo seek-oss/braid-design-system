@@ -1,13 +1,16 @@
 import React, { ReactNode } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import { Button } from '../Button/Button';
+import { Button, Text } from '..';
 import { useToast } from './ToastContext';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <div style={{ maxWidth: '300px' }}>{children}</div>
 );
 
+const description = <Text>Toasts require a little setup to work</Text>;
+
 const docs: ComponentDocs = {
+  description,
   screenshotWidths: [],
   category: 'Content',
   examples: [

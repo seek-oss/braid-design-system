@@ -13,6 +13,7 @@ import { MenuButton } from '../MenuButton/MenuButton';
 import { ConfigConsumer } from '../ConfigContext';
 import { ComponentDocs } from '../../types';
 import * as styleRefs from './Documentation.treat';
+import undocumentedComponents from '../../../../undocumentedComponents.json';
 
 const { Text, Box, Hidden, Stack } = components;
 
@@ -89,7 +90,13 @@ export const Documentation = () => {
 
   const componentsByCategory = groupBy(
     Object.keys(components)
-      .filter(name => !/^(Icon|BoxRenderer)/.test(name))
+      .filter(name => {
+        if (name.startsWith('Icon')) {
+          return false;
+        }
+
+        return !undocumentedComponents.includes(name);
+      })
       .map(name => {
         const docs: ComponentDocs = getComponentDocs({
           componentName: name,
