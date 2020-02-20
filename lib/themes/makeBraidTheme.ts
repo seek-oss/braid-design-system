@@ -112,6 +112,7 @@ export interface TreatTokens {
       caution: string;
       secondary: string;
       secondaryInverted: string;
+      rating: string;
     };
     background: {
       body: string;

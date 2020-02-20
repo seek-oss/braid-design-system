@@ -114,6 +114,7 @@ export const tone = {
         'neutral',
         'neutralInverted',
         'secondaryInverted',
+        'rating',
       ]),
       'color',
     );

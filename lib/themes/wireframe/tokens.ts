@@ -190,6 +190,7 @@ const tokens: TreatTokens = {
       promote,
       secondary,
       secondaryInverted: 'hsla(0, 0%, 100%, 0.65)',
+      rating: black,
     },
     background: {
       body: white,

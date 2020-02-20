@@ -217,6 +217,7 @@ export const makeTokens = ({
         promote,
         secondary,
         secondaryInverted: 'hsla(0, 0%, 100%, 0.65)',
+        rating: '#ff9000',
       },
       background: {
         body: bodyBackground,
