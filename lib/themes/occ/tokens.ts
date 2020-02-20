@@ -127,8 +127,8 @@ const tokens: TreatTokens = {
     desktop: 992,
   },
   contentWidth: {
-    medium: 1140,
-    large: 1280, // TBD
+    medium: 984,
+    large: 1164,
   },
   grid: 4,
   touchableSize: 11,
