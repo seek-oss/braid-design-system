@@ -38,7 +38,12 @@ const Action = ({ label, onClick, removeToast }: ActionProps) => {
     <Text baseline={false}>
       <TextLinkRenderer hitArea="large">
         {textLinkProps => (
-          <Box component="button" onClick={handleClick} {...textLinkProps}>
+          <Box
+            component="button"
+            onClick={handleClick}
+            {...textLinkProps}
+            aria-hidden
+          >
             {label}
           </Box>
         )}
