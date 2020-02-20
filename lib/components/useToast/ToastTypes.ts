@@ -10,5 +10,5 @@ export interface Toast {
   message: string;
   description?: string;
   actions?: ToastAction[];
-  clearAfter?: '5s' | '10s' | 'never';
+  clearAfter?: '10s' | '20s';
 }

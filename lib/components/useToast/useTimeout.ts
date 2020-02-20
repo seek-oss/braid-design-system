@@ -3,14 +3,9 @@ import { useEffect, useState, useRef, useCallback } from 'react';
 interface UseTimeoutProps {
   onTimeout: () => void;
   duration: number;
-  enabled: boolean;
 }
-export const useTimeout = ({
-  onTimeout,
-  duration,
-  enabled,
-}: UseTimeoutProps) => {
-  const [activated, setActivated] = useState(enabled);
+export const useTimeout = ({ onTimeout, duration }: UseTimeoutProps) => {
+  const [activated, setActivated] = useState(true);
   const timeoutRef = useRef<number | undefined>();
 
   const stopTimeout = useCallback(() => {
@@ -31,10 +26,8 @@ export const useTimeout = ({
   }, [onTimeout, activated, duration, stopTimeout]);
 
   const startTimeout = useCallback(() => {
-    if (enabled) {
-      setActivated(true);
-    }
-  }, [enabled]);
+    setActivated(true);
+  }, []);
 
   return {
     stopTimeout,

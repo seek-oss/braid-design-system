@@ -19,8 +19,8 @@ import { useTimeout } from './useTimeout';
 import { Toast as ToastType, ToastAction } from './ToastTypes';
 
 const durations = {
-  '5s': 5000,
   '10s': 10000,
+  '20s': 20000,
 } as const;
 
 const sideSpace = 'medium' as const;
@@ -60,14 +60,13 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
       tone,
       onClear,
       actions = [],
-      clearAfter = '5s',
+      clearAfter = '10s',
     },
     ref,
   ) => {
     const remove = useCallback(() => onClear(id), [onClear, id]);
     const { stopTimeout, startTimeout } = useTimeout({
-      duration: clearAfter === 'never' ? 0 : durations[clearAfter],
-      enabled: clearAfter !== 'never',
+      duration: durations[clearAfter],
       onTimeout: remove,
     });
 
@@ -143,7 +142,7 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
                     justifyContent="center"
                     aria-hidden
                   >
-                    <ClearButton onClick={remove} label="Dismiss alert" />
+                    <ClearButton onClick={remove} label="Close" />
                   </Box>
                 </Column>
               </Columns>
