@@ -71,14 +71,14 @@ export const Rating = ({
           key={position}
           display="inlineBlock"
           className={{
-            [styles.spacing]: position !== ratingArr.length - 1,
+            [styles.starSpacing]: position !== ratingArr.length - 1,
           }}
         >
           <RatingStar percent={getPercent(rating, position)} />
         </Box>
       ))}
       {showTextRating && (
-        <Box component="span" paddingLeft="xsmall">
+        <Box component="span" className={styles.textSpacing}>
           {rating.toFixed(1)}
         </Box>
       )}
