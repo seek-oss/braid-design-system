@@ -128,7 +128,7 @@ const tokens: TreatTokens = {
   },
   contentWidth: {
     medium: 984,
-    large: 1164,
+    large: 1164, // TBD
   },
   grid: 4,
   touchableSize: 11,
@@ -193,6 +193,7 @@ const tokens: TreatTokens = {
       positive,
       secondary,
       secondaryInverted: 'hsla(0, 0%, 100%, 0.65)',
+      rating: '#f36e23',
     },
     background: {
       body: '#f5f5f8',
