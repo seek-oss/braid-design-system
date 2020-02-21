@@ -13,6 +13,7 @@ import { useTheme } from 'sku/react-treat';
 
 import { Toaster } from './Toaster';
 import { Toast } from './ToastTypes';
+import { ContentBlockProps } from '../ContentBlock/ContentBlock';
 
 let toastCounter = 0;
 
@@ -50,9 +51,10 @@ function reducer(state: ToastState, action: Actions): ToastState {
   return state;
 }
 interface ToastProviderProps {
+  width?: ContentBlockProps['width'];
   children: ReactNode;
 }
-const InternalToastProvider = ({ children }: ToastProviderProps) => {
+const InternalToastProvider = ({ width, children }: ToastProviderProps) => {
   const [{ toasts }, dispatch] = useReducer(reducer, {
     toasts: [],
   });
@@ -71,13 +73,17 @@ const InternalToastProvider = ({ children }: ToastProviderProps) => {
     <ToastControllerContext.Provider value={addToast}>
       {children}
       <ToastPortal>
-        <Toaster toasts={toasts.slice(0, 2)} removeToast={removeToast} />
+        <Toaster
+          width={width}
+          toasts={toasts.slice(0, 2)}
+          removeToast={removeToast}
+        />
       </ToastPortal>
     </ToastControllerContext.Provider>
   );
 };
 
-export const ToastProvider = ({ children }: ToastProviderProps) => {
+export const ToastProvider = ({ width, children }: ToastProviderProps) => {
   const currentContext = useContext(ToastControllerContext);
 
   if (currentContext !== null) {
@@ -85,7 +91,9 @@ export const ToastProvider = ({ children }: ToastProviderProps) => {
     return <Fragment>{children}</Fragment>;
   }
 
-  return <InternalToastProvider>{children}</InternalToastProvider>;
+  return (
+    <InternalToastProvider width={width}>{children}</InternalToastProvider>
+  );
 };
 
 interface ToastPortalProps {

@@ -6,12 +6,14 @@ import * as styleRefs from './Toast.treat';
 import ToastComponent from './Toast';
 import { useFlipList } from './useFlipList';
 import { Toast } from './ToastTypes';
+import { ContentBlockProps } from '../ContentBlock/ContentBlock';
 
 interface ToasterProps {
   toasts: Toast[];
   removeToast: (id: string) => void;
+  width?: ContentBlockProps['width'];
 }
-export const Toaster = ({ toasts, removeToast }: ToasterProps) => {
+export const Toaster = ({ width, toasts, removeToast }: ToasterProps) => {
   const styles = useStyles(styleRefs);
 
   const { itemRef, remove } = useFlipList();
@@ -32,7 +34,7 @@ export const Toaster = ({ toasts, removeToast }: ToasterProps) => {
       paddingX={['gutter', 'gutter', 'none']}
       className={styles.toaster}
     >
-      <ContentBlock>
+      <ContentBlock width={width}>
         {toasts.map(({ id, ...rest }) => (
           <ToastComponent
             key={id}

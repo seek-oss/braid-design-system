@@ -75,9 +75,9 @@ const docs: ComponentDocs = {
           <Button
             onClick={() =>
               makeToast({
-                message: 'Honey or Vegemite?',
+                message: 'Nuetral toast',
                 tone: 'neutral',
-                actions: [{ label: 'Undo', onClick: () => {} }],
+                actions: [{ label: 'View', onClick: () => {} }],
               })
             }
           >
@@ -88,7 +88,11 @@ const docs: ComponentDocs = {
       code: `
         const makeToast = useToast();
 
-        makeToast({ message: 'Honey or Vegemite?', tone: 'neutral' });
+        makeToast({
+          message: 'Nuetral toast',
+          tone: 'neutral',
+          actions: [{ label: 'View', onClick: () => {} }],
+        })
       `,
     },
     {
@@ -101,13 +105,11 @@ const docs: ComponentDocs = {
           <Button
             onClick={() =>
               makeToast({
-                message: 'Honey or Vegemite',
+                message: 'Nuetral toast',
                 tone: 'neutral',
-                description: 'Sweet or salty, the choice is all yours?',
-                actions: [
-                  { label: 'Undo', onClick: () => {} },
-                  { label: 'Goto Profile', onClick: () => {} },
-                ],
+                description:
+                  'With a longer piece of text describing what has occured.',
+                actions: [{ label: 'View', onClick: () => {} }],
               })
             }
           >
@@ -119,10 +121,11 @@ const docs: ComponentDocs = {
         const makeToast = useToast();
 
         makeToast({
-          message: 'Honey or Vegemite',
+          message: 'Nuetral toast',
           tone: 'neutral',
-          description: 'Sweet or salty, the choice is all yours?',
-        });
+          description: 'With a longer piece of text describing what has occured.',
+          actions: [{ label: 'View', onClick: () => {} }],
+        })
       `,
     },
     {
@@ -134,7 +137,7 @@ const docs: ComponentDocs = {
         return (
           <Button
             onClick={() =>
-              makeToast({ message: 'Toast is burnt', tone: 'critical' })
+              makeToast({ message: 'Critical toast', tone: 'critical' })
             }
           >
             Show toast
@@ -144,8 +147,8 @@ const docs: ComponentDocs = {
       code: `
         const makeToast = useToast();
 
-        makeToast({ message: 'Toast is burnt', tone: 'critical' });
-      `,
+        makeToast({ message: 'Critical toast', tone: 'critical' })
+        `,
     },
     {
       label: 'Critical Toast with description',
@@ -157,14 +160,11 @@ const docs: ComponentDocs = {
           <Button
             onClick={() =>
               makeToast({
-                message: 'Toast is burnt',
+                message: 'Critical toast',
                 tone: 'critical',
-                actions: [
-                  { label: 'Undo', onClick: () => {} },
-                  { label: 'Goto Profile', onClick: () => {} },
-                ],
                 description:
-                  '3 is too high for fruit toast. Try setting 2 for ideal crispness.',
+                  'With a longer piece of text describing what went wrong.',
+                actions: [{ label: 'Goto error', onClick: () => {} }],
               })
             }
           >
@@ -176,10 +176,11 @@ const docs: ComponentDocs = {
         const makeToast = useToast();
 
         makeToast({
-          message: 'Toast is burnt',
+          message: 'Critical toast',
           tone: 'critical',
           description:
-            '3 is too high for fruit toast. Try setting 2 for ideal crispness.',
+            'With a longer piece of text describing what went wrong.',
+          actions: [{ label: 'Goto error', onClick: () => {} }],
         })
       `,
     },
