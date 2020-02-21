@@ -33,6 +33,7 @@ export { OverflowMenuItem } from './OverflowMenuItem/OverflowMenuItem';
 export { MonthPicker } from './MonthPicker/MonthPicker';
 export { Notice } from './Notice/Notice';
 export { Radio } from './Radio/Radio';
+export { Rating } from './Rating/Rating';
 export { Secondary } from './Secondary/Secondary';
 export { Stack } from './Stack/Stack';
 export { Strong } from './Strong/Strong';
