@@ -3719,6 +3719,19 @@ exports[`Radio 1`] = `
 }
 `;
 
+exports[`Rating 1`] = `
+{
+  aria-label?: string
+  rating: number
+  showTextRating?: boolean
+  size?: 
+    | "large"
+    | "small"
+    | "standard"
+    | "xsmall"
+}
+`;
+
 exports[`Secondary 1`] = `
 {
   children: ReactNode

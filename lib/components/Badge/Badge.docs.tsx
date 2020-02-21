@@ -32,6 +32,18 @@ const docs: ComponentDocs = {
       ),
     },
     {
+      label: 'Caution Badge',
+      Example: () => <Badge tone="caution">Caution</Badge>,
+    },
+    {
+      label: 'Strong Caution Badge',
+      Example: () => (
+        <Badge tone="caution" weight="strong">
+          Caution
+        </Badge>
+      ),
+    },
+    {
       label: 'Positive Badge',
       Example: () => <Badge tone="positive">Positive</Badge>,
     },
@@ -101,6 +113,18 @@ const docs: ComponentDocs = {
       name: 'Positive (strong)',
       code: (
         <Badge tone="positive" weight="strong">
+          Badge
+        </Badge>
+      ),
+    },
+    {
+      name: 'Caution',
+      code: <Badge tone="caution">Badge</Badge>,
+    },
+    {
+      name: 'Caution (strong)',
+      code: (
+        <Badge tone="caution" weight="strong">
           Badge
         </Badge>
       ),
