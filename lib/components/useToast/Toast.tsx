@@ -127,7 +127,7 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
               background="card"
               boxShadow="borderStandard"
               borderRadius="standard"
-              paddingY="small"
+              paddingY="medium"
               paddingLeft="medium"
               className={styles.toast}
             >

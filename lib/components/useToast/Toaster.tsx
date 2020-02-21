@@ -29,7 +29,7 @@ export const Toaster = ({ toasts, removeToast }: ToasterProps) => {
     <Box
       position="fixed"
       width="full"
-      paddingX="gutter"
+      paddingX={['gutter', 'gutter', 'none']}
       className={styles.toaster}
     >
       <ContentBlock>
