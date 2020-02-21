@@ -3,7 +3,6 @@ import { useStyles } from 'sku/treat';
 import { useBackground } from '../Box/BackgroundContext';
 import useIcon, { UseIconProps } from '../../hooks/useIcon';
 import { Box } from '../Box/Box';
-import { Inline } from '../Inline/Inline';
 import { Text, TextProps } from '../Text/Text';
 import { IconStarSvg as IconStarEmptySvg } from '../icons/IconStar/IconStarSvg';
 import { IconStarHalfSvg } from '../icons/IconStar/IconStarHalfSvg';
@@ -43,6 +42,7 @@ const RatingStar = ({ percent, ...restProps }: RatingStar) => {
   );
 };
 
+const ratingArr = [...Array(5)];
 export interface Rating {
   rating: number;
   size?: TextProps['size'];
@@ -54,6 +54,8 @@ export const Rating = ({
   size = 'standard',
   showTextRating = true,
 }: Rating) => {
+  const styles = useStyles(styleRefs);
+
   if (process.env.NODE_ENV !== 'production') {
     if (typeof rating !== 'undefined' && (rating < 0 || rating > 5)) {
       throw new Error(
@@ -64,16 +66,22 @@ export const Rating = ({
 
   return (
     <Text size={size} baseline={false}>
-      <Inline space="xxsmall">
-        {[...Array(5)].map((_, position) => (
-          <RatingStar percent={getPercent(rating, position)} key={position} />
-        ))}
-        {showTextRating && (
-          <Box component="span" paddingLeft="xxsmall">
-            {rating.toFixed(1)}
-          </Box>
-        )}
-      </Inline>
+      {ratingArr.map((_, position) => (
+        <Box
+          key={position}
+          display="inlineBlock"
+          className={{
+            [styles.spacing]: position !== ratingArr.length - 1,
+          }}
+        >
+          <RatingStar percent={getPercent(rating, position)} />
+        </Box>
+      ))}
+      {showTextRating && (
+        <Box component="span" paddingLeft="xsmall">
+          {rating.toFixed(1)}
+        </Box>
+      )}
     </Text>
   );
 };
