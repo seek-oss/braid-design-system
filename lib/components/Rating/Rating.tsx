@@ -67,7 +67,7 @@ export const Rating = ({
   }
 
   return (
-    <Text size={size} baseline={false}>
+    <Text size={size}>
       <Box
         display="inlineBlock"
         aria-label={
