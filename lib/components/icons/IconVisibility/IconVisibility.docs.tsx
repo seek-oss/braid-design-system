@@ -12,6 +12,10 @@ const docs: ComponentDocs = {
       label: 'Default',
       Example: () => <IconVisibility />,
     },
+    {
+      label: 'Hidden',
+      Example: () => <IconVisibility hidden />,
+    },
   ],
 };
 
