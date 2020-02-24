@@ -1,6 +1,7 @@
 import { useMemo, useCallback, useLayoutEffect } from 'react';
 
-const transition = 'transform 0.25s ease, opacity 0.25s ease';
+const entranceTransition = 'transform 0.2s ease, opacity 0.2s ease';
+const exitTransition = 'opacity 0.1s ease';
 
 interface Transform {
   property: 'opacity' | 'transform' | 'scale';
@@ -11,6 +12,7 @@ interface Transform {
 const animate = (
   element: HTMLElement,
   transforms: Transform[],
+  transition: string,
   done?: () => void,
 ) => {
   transforms.forEach(({ property, from = '' }) => {
@@ -53,6 +55,7 @@ export const useFlipList = () => {
     const animations: Array<{
       element: HTMLElement;
       transforms: Transform[];
+      transition: string;
     }> = [];
 
     Array.from(refs.entries()).forEach(([id, element]) => {
@@ -64,6 +67,7 @@ export const useFlipList = () => {
           // Move animation
           animations.push({
             element,
+            transition: entranceTransition,
             transforms: [
               {
                 property: 'transform',
@@ -75,6 +79,7 @@ export const useFlipList = () => {
           // Enter animation
           animations.push({
             element,
+            transition: entranceTransition,
             transforms: [
               {
                 property: 'transform',
@@ -94,8 +99,8 @@ export const useFlipList = () => {
       }
     });
 
-    animations.forEach(({ element, transforms }) => {
-      animate(element, transforms);
+    animations.forEach(({ element, transforms, transition }) => {
+      animate(element, transforms, transition);
     });
   });
 
@@ -112,11 +117,8 @@ export const useFlipList = () => {
               property: 'opacity',
               to: '0',
             },
-            {
-              property: 'transform',
-              to: 'translateY(50%)',
-            },
           ],
+          exitTransition,
           cb,
         );
       }

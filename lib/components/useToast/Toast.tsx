@@ -113,6 +113,8 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
     return (
       <TreatProvider theme={treatTheme}>
         <Box
+          display="flex"
+          justifyContent="center"
           role="alert"
           aria-live={tone === 'critical' ? 'assertive' : 'polite'}
           paddingBottom="small"
