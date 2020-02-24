@@ -5,6 +5,7 @@ const critical = '#ef3e4a';
 const positive = '#00af50';
 const info = '#2c88f7';
 const promote = '#855be5';
+const caution = '#ffc600';
 const brandAccent = '#111';
 const focus = 'DeepSkyBlue';
 const black = '#303030';
@@ -158,6 +159,10 @@ const tokens: TreatTokens = {
       standardInverted: white,
       focus,
       critical,
+      info,
+      promote,
+      positive,
+      caution,
       formHover: formAccent,
       formAccent,
     },
@@ -179,11 +184,13 @@ const tokens: TreatTokens = {
       neutralInverted: white,
       formAccent,
       critical,
+      caution,
+      positive,
       info,
       promote,
-      positive,
       secondary,
       secondaryInverted: 'hsla(0, 0%, 100%, 0.65)',
+      rating: black,
     },
     background: {
       body: white,
@@ -196,10 +203,11 @@ const tokens: TreatTokens = {
       selection: '#f1f7ff',
       card: white,
       critical,
-      info,
-      promote,
+      caution,
       positive,
       neutral,
+      info,
+      promote,
     },
   },
 };

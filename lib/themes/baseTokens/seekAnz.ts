@@ -23,6 +23,7 @@ export const makeTokens = ({
   const critical = '#e60278';
   const info = '#1e468c';
   const promote = '#9556b7';
+  const caution = '#ffc600';
   const neutral = '#747474';
   const black = '#1c1c1c';
   const link = '#2765cf';
@@ -175,6 +176,10 @@ export const makeTokens = ({
         focus,
         formHover: formAccent,
         critical,
+        info,
+        promote,
+        positive,
+        caution,
         formAccent,
       },
     },
@@ -195,11 +200,13 @@ export const makeTokens = ({
         neutralInverted: white,
         formAccent,
         critical,
+        caution,
+        positive,
         info,
         promote,
-        positive,
         secondary,
         secondaryInverted: 'hsla(0, 0%, 100%, 0.65)',
+        rating: '#f57c00',
       },
       background: {
         body: '#eee',
@@ -212,10 +219,11 @@ export const makeTokens = ({
         selection: '#f1f7ff',
         card: white,
         critical,
-        info,
-        promote,
+        caution,
         positive,
         neutral,
+        info,
+        promote,
       },
     },
   };

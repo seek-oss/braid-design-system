@@ -3,32 +3,44 @@
 ## API Changes
 
 - The `message` prop has been removed in favour of passing `children`.
-- `level={'primary' | 'secondary' | 'tertiary'}` has been deprecated in favour of `weight={'strong' | 'regular'}`. Note, there is currently no equivalent for `level="tertiary"`.
+- `level={'primary' | 'secondary'}` have been deprecated in favour of a single visual weight. `level="tertiary"` has been replaced by the `Notice` component.
 - No longer accepts arbitrary DOM properties, e.g. `className`. Please check that everything you need is exposed via the [public API.](https://seek-oss.github.io/braid-design-system/components/Alert)
 
 ## Todo List
 
 - `hideIcon={true}`
-- `onClose={() => {...}}`
 
 ## TBD
 
 - `tone="help"`
-- `weight="weak"`
 - `pullout={boolean}`
 
-### Before
+## Diff
 
-```jsx
-<Alert tone="positive" level="primary" message="Successfully completed" />
+#### Primary/Secondary
+
+```diff
+ <Alert tone="positive"
+-  level="primary"
+-  message="Successfully completed"
+-/>
++>
++  Successfully completed
++</Alert>
 ```
 
-### After
+#### Tertiary
 
-```jsx
-<Alert tone="positive" weight="strong">
-  Successfully completed
-</Alert>
+```diff
+-<Alert
++<Notice
+   tone="positive"
+-  level="tertiary"
+-  message="Successfully completed"
+-/>
++>
++  Successfully completed
++</Notice>
 ```
 
 ## Previous Implementations

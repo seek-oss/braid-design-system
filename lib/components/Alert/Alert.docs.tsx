@@ -22,25 +22,15 @@ const docs: ComponentDocs = {
       ),
     },
     {
-      label: 'Strong Info Alert',
-      Example: () => (
-        <Alert weight="strong" tone="info">
-          This is an important piece of information.
-        </Alert>
-      ),
-    },
-    {
       label: 'Promote Alert',
       Example: () => (
         <Alert tone="promote">This is a promoted piece of information.</Alert>
       ),
     },
     {
-      label: 'Strong Promote Alert',
+      label: 'Caution Alert',
       Example: () => (
-        <Alert weight="strong" tone="promote">
-          This is a promoted piece of information.
-        </Alert>
+        <Alert tone="caution">This is a cautionary piece of information.</Alert>
       ),
     },
     {
@@ -50,25 +40,9 @@ const docs: ComponentDocs = {
       ),
     },
     {
-      label: 'Strong Critical Alert',
-      Example: () => (
-        <Alert weight="strong" tone="critical">
-          This is a critical piece of information.
-        </Alert>
-      ),
-    },
-    {
       label: 'Positive Alert',
       Example: () => (
         <Alert tone="positive">This is a positive piece of information.</Alert>
-      ),
-    },
-    {
-      label: 'Strong Positive Alert',
-      Example: () => (
-        <Alert weight="strong" tone="positive">
-          This is a positive piece of information.
-        </Alert>
       ),
     },
   ],
@@ -78,48 +52,20 @@ const docs: ComponentDocs = {
       code: <Alert tone="critical">Critical Alert</Alert>,
     },
     {
-      name: 'Critical (Strong)',
-      code: (
-        <Alert tone="critical" weight="strong">
-          Critical Alert
-        </Alert>
-      ),
+      name: 'Caution',
+      code: <Alert tone="caution">Caution Alert</Alert>,
     },
     {
       name: 'Positive',
       code: <Alert tone="positive">Positive Alert</Alert>,
     },
     {
-      name: 'Positive (Strong)',
-      code: (
-        <Alert tone="positive" weight="strong">
-          Positive Alert
-        </Alert>
-      ),
-    },
-    {
       name: 'Info',
       code: <Alert tone="info">Info Alert</Alert>,
     },
     {
-      name: 'Info (Strong)',
-      code: (
-        <Alert tone="info" weight="strong">
-          Info Alert
-        </Alert>
-      ),
-    },
-    {
       name: 'Promote',
       code: <Alert tone="promote">Promote Alert</Alert>,
-    },
-    {
-      name: 'Promote (Strong)',
-      code: (
-        <Alert tone="promote" weight="strong">
-          Promote Alert
-        </Alert>
-      ),
     },
     {
       name: 'Dismissible alert',

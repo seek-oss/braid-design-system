@@ -73,6 +73,31 @@ export const IconBookmarkSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
+exports[`IconCautionSvg should match snapshot 1`] = `
+"import React from 'react';
+
+import { SVGProps } from '../SVGTypes';
+
+export const IconCautionSvg = ({ title, titleId, ...props }: SVGProps) => (
+  <svg
+    width={16}
+    height={16}
+    viewBox=\\"0 0 24 24\\"
+    focusable=\\"false\\"
+    fill=\\"currentColor\\"
+    role=\\"img\\"
+    aria-labelledby={titleId}
+    {...props}
+  >
+    {title ? <title id={titleId}>{title}</title> : null}
+    <path d=\\"M22.71 17.262L14.738 3.71A3.183 3.183 0 0012 2.013 3.183 3.183 0 009.262 3.71L1.29 17.262a3.152 3.152 0 00-.14 3.225A3.152 3.152 0 004 22h16a3.023 3.023 0 002.71-4.738zM20 20H4c-1.1 0-1.544-.776-.986-1.724l7.972-13.552A1.232 1.232 0 0112 4.013a1.232 1.232 0 011.014.71l7.972 13.553C21.544 19.224 21.1 20 20 20z\\" />
+    <circle cx={12} cy={17} r={1} />
+    <path d=\\"M11.978 14a1 1 0 001-1V9a1 1 0 00-2 0v4a1 1 0 001 1z\\" />
+  </svg>
+);
+"
+`;
+
 exports[`IconChevronSvg should match snapshot 1`] = `
 "import React from 'react';
 
@@ -1384,6 +1409,29 @@ export const IconStarActiveSvg = ({ title, titleId, ...props }: SVGProps) => (
   >
     {title ? <title id={titleId}>{title}</title> : null}
     <path d=\\"M23 9c-.1-.4-.4-.6-.8-.7l-6.4-.9-2.9-5.8c-.3-.5-.9-.7-1.4-.4-.2.1-.3.2-.4.4L8.2 7.3l-6.3 1c-.6.1-1 .6-.9 1.1 0 .2.1.4.3.6l4.6 4.5-1.1 6.4c-.1.5.3 1.1.8 1.2.2 0 .4 0 .6-.1l5.7-3 5.7 3c.5.3 1.1.1 1.3-.4.1-.2.1-.4.1-.6l-1.1-6.4 4.6-4.5c.5-.4.6-.8.5-1.1z\\" />
+  </svg>
+);
+"
+`;
+
+exports[`IconStarHalfSvg should match snapshot 1`] = `
+"import React from 'react';
+
+import { SVGProps } from '../SVGTypes';
+
+export const IconStarHalfSvg = ({ title, titleId, ...props }: SVGProps) => (
+  <svg
+    width={16}
+    height={16}
+    viewBox=\\"0 0 24 24\\"
+    focusable=\\"false\\"
+    fill=\\"currentColor\\"
+    role=\\"img\\"
+    aria-labelledby={titleId}
+    {...props}
+  >
+    {title ? <title id={titleId}>{title}</title> : null}
+    <path d=\\"M22.951 8.954a1 1 0 00-.806-.68l-6.391-.935-2.858-5.782a1.042 1.042 0 00-1.793 0L8.246 7.339l-6.39.934a1 1 0 00-.553 1.706l4.623 4.498-1.091 6.354a1 1 0 001.45 1.054L12 18.883l5.715 3.002a1 1 0 001.45-1.054l-1.09-6.354 4.622-4.497a1.002 1.002 0 00.254-1.026zm-6.648 4.456a1 1 0 00-.288.886l.837 4.877-4.387-2.305a.99.99 0 00-.465-.115V4.257l2.193 4.44a1 1 0 00.752.545l4.905.717z\\" />
   </svg>
 );
 "

@@ -8,8 +8,23 @@ export const size = style({
 
 export const inline = style({
   verticalAlign: 'middle',
-  top: '-0.105em', // Arbitrary magic number, to vertically align to text
 });
+
+const uppercaseNudge = -0.105;
+const lowercaseNudge = uppercaseNudge + 0.04;
+const verticalCorrection = 0.06;
+export const alignY = {
+  uppercase: styleMap({
+    none: { top: `${uppercaseNudge}em` },
+    up: { top: `${uppercaseNudge - verticalCorrection}em` },
+    down: { top: `${uppercaseNudge + verticalCorrection}em` },
+  }),
+  lowercase: styleMap({
+    none: { top: `${lowercaseNudge}em` },
+    up: { top: `${lowercaseNudge - verticalCorrection}em` },
+    down: { top: `${lowercaseNudge + verticalCorrection}em` },
+  }),
+};
 
 export const blockWidths = styleMap(({ utils, grid, typography }) =>
   mapValues(typography.text, ({ mobile, tablet }) =>

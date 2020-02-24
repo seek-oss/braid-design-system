@@ -4,6 +4,7 @@ import { Text } from '../Text/Text';
 import { Box } from '../Box/Box';
 import { Heading } from '../Heading/Heading';
 import { Inline } from '../Inline/Inline';
+import { Button } from '../Button/Button';
 import { UseIconProps } from '../../hooks/useIcon';
 import {
   heading as headingSizes,
@@ -129,6 +130,48 @@ const docs: ComponentDocs = {
             </Text>
           </Stack>
         </Box>
+      ),
+    },
+    {
+      label: 'Alignment to text',
+      docsSite: false,
+      Example: () => (
+        <Stack space="small">
+          {iconNames.map(icon => {
+            const IconComponent = icons[icon];
+            return (
+              <Inline key={icon} space="medium">
+                <Text>
+                  <IconComponent /> Uppercase
+                </Text>
+                <Text>
+                  Lowercase <IconComponent alignY="lowercase" />
+                </Text>
+              </Inline>
+            );
+          })}
+        </Stack>
+      ),
+    },
+    {
+      label: 'Alignment to buttons',
+      docsSite: false,
+      Example: () => (
+        <Stack space="small">
+          {iconNames.map(icon => {
+            const IconComponent = icons[icon];
+            return (
+              <Inline key={icon} space="small">
+                <Button>
+                  <IconComponent /> Uppercase
+                </Button>
+                <Button>
+                  Lowercase <IconComponent alignY="lowercase" />
+                </Button>
+              </Inline>
+            );
+          })}
+        </Stack>
       ),
     },
   ],
