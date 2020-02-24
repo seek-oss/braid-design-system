@@ -5,6 +5,7 @@ import {
   Box,
   Button,
   Heading,
+  IconNewWindow,
   IconChevron,
   Text,
   TextLink,
@@ -153,7 +154,10 @@ const docs: ComponentDocs = {
             {backgrounds.sort().map(background => (
               <Box background={background} key={background}>
                 <Text baseline={false}>
-                  {background} <TextLink href="">with link</TextLink>
+                  {background}{' '}
+                  <TextLink href="">
+                    with link <IconNewWindow />
+                  </TextLink>
                 </Text>
               </Box>
             ))}

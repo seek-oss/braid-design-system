@@ -56,10 +56,9 @@ export default (
   const styles = useStyles(styleRefs);
   const textContext = useContext(TextContext);
   const headingContext = useContext(HeadingContext);
-  const inheritedTone =
-    textContext && textContext.tone ? textContext.tone : 'neutral';
-  const resolvedTone = useTextTone({ tone: tone || inheritedTone });
+  const textTone = useTextTone({ tone: tone || 'neutral' });
   const isInline = textContext || headingContext;
+  const toneStyles = tone || !isInline ? textTone : undefined;
   const blockSizeStyles = useIconContainerSize(
     size !== 'fill' ? size : 'standard',
   );
@@ -85,7 +84,7 @@ export default (
       width: 'full',
       height: 'full',
       display: 'block',
-      className: resolvedTone,
+      className: toneStyles,
       ...titleProps,
     };
   }
@@ -94,7 +93,7 @@ export default (
     display: isInline ? 'inlineBlock' : 'block',
     position: isInline ? 'relative' : undefined,
     className: [
-      resolvedTone,
+      toneStyles,
       styles.size,
       isInline
         ? [
