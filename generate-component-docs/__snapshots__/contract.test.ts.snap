@@ -2247,6 +2247,32 @@ exports[`IconDocument 1`] = `
 }
 `;
 
+exports[`IconDocumentBroken 1`] = `
+{
+  alignY?: 
+    | "lowercase"
+    | "uppercase"
+  size?: 
+    | "fill"
+    | "large"
+    | "small"
+    | "standard"
+    | "xsmall"
+  title?: string
+  titleId?: string
+  tone?: 
+    | "caution"
+    | "critical"
+    | "formAccent"
+    | "info"
+    | "link"
+    | "neutral"
+    | "positive"
+    | "promote"
+    | "secondary"
+}
+`;
+
 exports[`IconDownload 1`] = `
 {
   alignY?: 
@@ -2535,6 +2561,58 @@ exports[`IconInfo 1`] = `
 `;
 
 exports[`IconInvoice 1`] = `
+{
+  alignY?: 
+    | "lowercase"
+    | "uppercase"
+  size?: 
+    | "fill"
+    | "large"
+    | "small"
+    | "standard"
+    | "xsmall"
+  title?: string
+  titleId?: string
+  tone?: 
+    | "caution"
+    | "critical"
+    | "formAccent"
+    | "info"
+    | "link"
+    | "neutral"
+    | "positive"
+    | "promote"
+    | "secondary"
+}
+`;
+
+exports[`IconLink 1`] = `
+{
+  alignY?: 
+    | "lowercase"
+    | "uppercase"
+  size?: 
+    | "fill"
+    | "large"
+    | "small"
+    | "standard"
+    | "xsmall"
+  title?: string
+  titleId?: string
+  tone?: 
+    | "caution"
+    | "critical"
+    | "formAccent"
+    | "info"
+    | "link"
+    | "neutral"
+    | "positive"
+    | "promote"
+    | "secondary"
+}
+`;
+
+exports[`IconLinkBroken 1`] = `
 {
   alignY?: 
     | "lowercase"
@@ -3554,6 +3632,33 @@ exports[`IconVideo 1`] = `
   alignY?: 
     | "lowercase"
     | "uppercase"
+  size?: 
+    | "fill"
+    | "large"
+    | "small"
+    | "standard"
+    | "xsmall"
+  title?: string
+  titleId?: string
+  tone?: 
+    | "caution"
+    | "critical"
+    | "formAccent"
+    | "info"
+    | "link"
+    | "neutral"
+    | "positive"
+    | "promote"
+    | "secondary"
+}
+`;
+
+exports[`IconVisibility 1`] = `
+{
+  alignY?: 
+    | "lowercase"
+    | "uppercase"
+  hidden?: boolean
   size?: 
     | "fill"
     | "large"

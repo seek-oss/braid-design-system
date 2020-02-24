@@ -312,6 +312,35 @@ export const IconDeleteSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
+exports[`IconDocumentBrokenSvg should match snapshot 1`] = `
+"import React from 'react';
+
+import { SVGProps } from '../SVGTypes';
+
+export const IconDocumentBrokenSvg = ({
+  title,
+  titleId,
+  ...props
+}: SVGProps) => (
+  <svg
+    width={16}
+    height={16}
+    viewBox=\\"0 0 24 24\\"
+    focusable=\\"false\\"
+    fill=\\"currentColor\\"
+    role=\\"img\\"
+    aria-labelledby={titleId}
+    {...props}
+  >
+    {title ? <title id={titleId}>{title}</title> : null}
+    <path fill=\\"none\\" d=\\"M15 5.414V7h1.586L15 5.414z\\" />
+    <path d=\\"M19.707 7.293l-5-5A1 1 0 0014 2H7a3.003 3.003 0 00-3 3v14a3.003 3.003 0 003 3h5v-2H7a1 1 0 01-1-1V5a1 1 0 011-1h6v4a1 1 0 001 1h4v5h2V8a1 1 0 00-.293-.707zM15 7V5.414L16.586 7z\\" />
+    <path d=\\"M19.707 16.293a1 1 0 00-1.414 0L17 17.586l-1.293-1.293a1 1 0 00-1.414 1.414L15.586 19l-1.293 1.293a1 1 0 101.414 1.414L17 20.414l1.293 1.293a1 1 0 001.414-1.414L18.414 19l1.293-1.293a1 1 0 000-1.414z\\" />
+  </svg>
+);
+"
+`;
+
 exports[`IconDocumentSvg should match snapshot 1`] = `
 "import React from 'react';
 
@@ -640,6 +669,54 @@ export const IconInvoiceSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
+exports[`IconLinkBrokenSvg should match snapshot 1`] = `
+"import React from 'react';
+
+import { SVGProps } from '../SVGTypes';
+
+export const IconLinkBrokenSvg = ({ title, titleId, ...props }: SVGProps) => (
+  <svg
+    width={16}
+    height={16}
+    viewBox=\\"0 0 24 24\\"
+    focusable=\\"false\\"
+    fill=\\"currentColor\\"
+    role=\\"img\\"
+    aria-labelledby={titleId}
+    {...props}
+  >
+    {title ? <title id={titleId}>{title}</title> : null}
+    <path d=\\"M12.848 17.334a6.214 6.214 0 01-1.476-.2L9.44 19.066a3.188 3.188 0 11-4.51-4.508l2.962-2.961a3.208 3.208 0 014.509 0 1 1 0 101.414-1.414 5.205 5.205 0 00-6.832-.413 5.102 5.102 0 00-.505.413l-2.961 2.96a5.188 5.188 0 007.337 7.337l3.293-3.293a6.226 6.226 0 01-1.3.147z\\" />
+    <path d=\\"M11.15 6.664a6.214 6.214 0 011.476.2l1.932-1.932a3.188 3.188 0 114.508 4.508l-2.96 2.961a3.208 3.208 0 01-4.51 0 1 1 0 00-1.413 1.414 5.205 5.205 0 006.831.413 5.101 5.101 0 00.506-.413l2.96-2.96a5.188 5.188 0 00-7.336-7.337L9.85 6.812a6.226 6.226 0 011.298-.148zm-5.736-.25a.997.997 0 01-.707-.293L3.293 4.707a1 1 0 011.414-1.414l1.414 1.414a1 1 0 01-.707 1.707zM3.736 9.321a.994.994 0 01-.26-.034l-1.93-.517a1 1 0 01.518-1.932l1.931.517a1 1 0 01-.258 1.966zM8.32 4.735a.999.999 0 01-.965-.74l-.517-1.933a1 1 0 011.932-.517l.517 1.932a1 1 0 01-.967 1.258z\\" />
+  </svg>
+);
+"
+`;
+
+exports[`IconLinkSvg should match snapshot 1`] = `
+"import React from 'react';
+
+import { SVGProps } from '../SVGTypes';
+
+export const IconLinkSvg = ({ title, titleId, ...props }: SVGProps) => (
+  <svg
+    width={16}
+    height={16}
+    viewBox=\\"0 0 24 24\\"
+    focusable=\\"false\\"
+    fill=\\"currentColor\\"
+    role=\\"img\\"
+    aria-labelledby={titleId}
+    {...props}
+  >
+    {title ? <title id={titleId}>{title}</title> : null}
+    <path d=\\"M12.848 17.334a6.214 6.214 0 01-1.476-.2L9.44 19.066a3.188 3.188 0 11-4.51-4.508l2.962-2.961a3.208 3.208 0 014.509 0 1 1 0 101.414-1.414 5.205 5.205 0 00-6.832-.413 5.102 5.102 0 00-.505.413l-2.961 2.96a5.188 5.188 0 007.337 7.337l3.293-3.293a6.226 6.226 0 01-1.3.147z\\" />
+    <path d=\\"M11.15 6.664a6.214 6.214 0 011.476.2l1.932-1.932a3.188 3.188 0 114.508 4.508l-2.96 2.961a3.208 3.208 0 01-4.51 0 1 1 0 00-1.413 1.414 5.205 5.205 0 006.831.413 5.101 5.101 0 00.506-.413l2.96-2.96a5.188 5.188 0 00-7.336-7.337L9.85 6.812a6.226 6.226 0 011.298-.148z\\" />
+  </svg>
+);
+"
+`;
+
 exports[`IconListSvg should match snapshot 1`] = `
 "import React from 'react';
 
@@ -839,17 +916,18 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconPeopleSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    width={16}
+    height={16}
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
-    width={16}
-    height={16}
     role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
     {title ? <title id={titleId}>{title}</title> : null}
-    <path d=\\"M9 15c2.2 0 4-1.8 4-4s-1.8-4-4-4-4 1.8-4 4 1.8 4 4 4zm0-6c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm3 7H6c-1.7 0-3 1.3-3 3 0 .6.4 1 1 1s1-.4 1-1 .4-1 1-1h6c.6 0 1 .4 1 1s.4 1 1 1 1-.4 1-1c0-1.7-1.3-3-3-3zm3-11c1.1 0 2 .9 2 2s-.9 2-2 2h-.4c.2.7.4 1.3.4 2 2.2 0 4-1.8 4-4s-1.8-4-4-4c-1.6 0-3.1 1-3.7 2.5.6.3 1.2.6 1.7 1.1.2-.9 1.1-1.6 2-1.6zm3 7h-3.1c-.1.7-.4 1.4-.7 2H18c.6 0 1 .4 1 1s.4 1 1 1 1-.4 1-1c0-1.7-1.3-3-3-3z\\" />
+    <path d=\\"M14.772 4.023c.076-.006.15-.023.228-.023a3 3 0 010 6c-.078 0-.152-.017-.228-.023a6.529 6.529 0 01-1.325 1.751A4.934 4.934 0 0015 12a5 5 0 000-10 4.934 4.934 0 00-1.553.272 6.529 6.529 0 011.325 1.751zM17 14h-1.853a6.54 6.54 0 011.613 2H17a3.003 3.003 0 013 3v2a1 1 0 002 0v-2a5.006 5.006 0 00-5-5z\\" />
+    <path d=\\"M9 12a5 5 0 115-5 5.006 5.006 0 01-5 5zm0-8a3 3 0 103 3 3.003 3.003 0 00-3-3zm6 18a1 1 0 01-1-1v-2a3.003 3.003 0 00-3-3H7a3.003 3.003 0 00-3 3v2a1 1 0 01-2 0v-2a5.006 5.006 0 015-5h4a5.006 5.006 0 015 5v2a1 1 0 01-1 1z\\" />
   </svg>
 );
 "
@@ -862,17 +940,17 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconPersonAddSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    width={16}
+    height={16}
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
-    width={16}
-    height={16}
     role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
     {title ? <title id={titleId}>{title}</title> : null}
-    <path d=\\"M8 13c2.2 0 4-1.8 4-4s-1.8-4-4-4-4 1.8-4 4 1.8 4 4 4zm0-6c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm2 7H6c-2.2 0-4 1.8-4 4 0 .6.4 1 1 1s1-.4 1-1c0-1.1.9-2 2-2h4c1.1 0 2 .9 2 2 0 .6.4 1 1 1s1-.4 1-1c0-2.2-1.8-4-4-4zm11-5h-2V7c0-.6-.4-1-1-1s-1 .4-1 1v2h-2c-.6 0-1 .4-1 1s.4 1 1 1h2v2c0 .6.4 1 1 1s1-.4 1-1v-2h2c.6 0 1-.4 1-1s-.4-1-1-1z\\" />
+    <path d=\\"M9 12a5 5 0 10-5-5 5.006 5.006 0 005 5zm0-8a3 3 0 11-3 3 3.003 3.003 0 013-3zm12 7h-2V9a1 1 0 00-2 0v2h-2a1 1 0 000 2h2v2a1 1 0 002 0v-2h2a1 1 0 000-2zm-10 3H7a5.006 5.006 0 00-5 5v2a1 1 0 002 0v-2a3.003 3.003 0 013-3h4a3.003 3.003 0 013 3v2a1 1 0 002 0v-2a5.006 5.006 0 00-5-5z\\" />
   </svg>
 );
 "
@@ -983,17 +1061,17 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconProfileSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    width={16}
+    height={16}
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
-    width={16}
-    height={16}
     role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
     {title ? <title id={titleId}>{title}</title> : null}
-    <path d=\\"M12 14c2.8 0 5-2.2 5-5s-2.2-5-5-5-5 2.2-5 5 2.2 5 5 5zm0-8c1.7 0 3 1.3 3 3s-1.3 3-3 3-3-1.3-3-3 1.3-3 3-3zm3 9H9c-2.2 0-4 1.8-4 4 0 .6.4 1 1 1s1-.4 1-1c0-1.1.9-2 2-2h6c1.1 0 2 .9 2 2 0 .6.4 1 1 1s1-.4 1-1c0-2.2-1.8-4-4-4z\\" />
+    <path d=\\"M12 12a5 5 0 115-5 5.006 5.006 0 01-5 5zm0-8a3 3 0 103 3 3.003 3.003 0 00-3-3zm6 18a1 1 0 01-1-1v-2a3.003 3.003 0 00-3-3h-4a3.003 3.003 0 00-3 3v2a1 1 0 01-2 0v-2a5.006 5.006 0 015-5h4a5.006 5.006 0 015 5v2a1 1 0 01-1 1z\\" />
   </svg>
 );
 "
@@ -1619,6 +1697,61 @@ export const IconVideoSvg = ({ title, titleId, ...props }: SVGProps) => (
   >
     {title ? <title id={titleId}>{title}</title> : null}
     <path d=\\"M18.4 11.1l-12-6c-.3-.1-.6-.1-.9 0-.3.2-.5.6-.5.9v12c0 .3.2.7.5.9.1.1.3.1.5.1s.3 0 .4-.1l12-6c.3-.2.6-.5.6-.9s-.2-.7-.6-.9zM7 16.4V7.6l8.8 4.4L7 16.4z\\" />
+  </svg>
+);
+"
+`;
+
+exports[`IconVisibilityHiddenSvg should match snapshot 1`] = `
+"import React from 'react';
+
+import { SVGProps } from '../SVGTypes';
+
+export const IconVisibilityHiddenSvg = ({
+  title,
+  titleId,
+  ...props
+}: SVGProps) => (
+  <svg
+    width={16}
+    height={16}
+    viewBox=\\"0 0 24 24\\"
+    focusable=\\"false\\"
+    fill=\\"currentColor\\"
+    role=\\"img\\"
+    aria-labelledby={titleId}
+    {...props}
+  >
+    {title ? <title id={titleId}>{title}</title> : null}
+    <path
+      d=\\"M14.5 12a2.496 2.496 0 01-4.533 1.447l-2.32 2.32A8.144 8.144 0 0012 17c4.708 0 7.173-3.728 7.877-5a11.064 11.064 0 00-1.078-1.583.994.994 0 01-.163-.198 9.515 9.515 0 00-3.049-2.392l-2.14 2.14A2.492 2.492 0 0114.5 12zM12 7a8.612 8.612 0 00-6.64 3.224.996.996 0 01-.158.192A11.09 11.09 0 004.123 12a11.133 11.133 0 001.448 2.015l6.978-6.978C12.366 7.025 12.191 7 12 7z\\"
+      fill=\\"none\\"
+    />
+    <path d=\\"M4.123 12a11.09 11.09 0 011.079-1.584.996.996 0 00.158-.192A8.612 8.612 0 0112 7c.19 0 .366.025.55.037l1.762-1.763A10.159 10.159 0 0013 5.057V4a1 1 0 00-2 0v1.057a10.026 10.026 0 00-2.655.612l-.491-.85a1 1 0 00-1.733 1l.43.743a11.584 11.584 0 00-2.236 1.846l-.716-.414a1 1 0 00-1 1.733l.434.25a11.076 11.076 0 00-.945 1.613 1.001 1.001 0 000 .82 12.68 12.68 0 002.072 3.016l1.411-1.411A11.133 11.133 0 014.123 12zm17.789-.41a11.084 11.084 0 00-.945-1.612l.435-.251a1 1 0 00-1-1.733l-.716.414a11.8 11.8 0 00-1.418-1.262l2.439-2.439a1 1 0 00-1.414-1.414l-16 16a1 1 0 101.414 1.414l2.76-2.76A10.023 10.023 0 0012 19c6.867 0 9.791-6.32 9.912-6.59a1.001 1.001 0 000-.82zM12 17a8.097 8.097 0 01-3.008-.578l2.11-2.11A2.44 2.44 0 0012 14.5a2.5 2.5 0 002.5-2.5 2.44 2.44 0 00-.187-.899l2.52-2.52a9.956 9.956 0 011.803 1.638.994.994 0 00.163.198A11.064 11.064 0 0119.877 12c-.704 1.272-3.169 5-7.877 5z\\" />
+  </svg>
+);
+"
+`;
+
+exports[`IconVisibilitySvg should match snapshot 1`] = `
+"import React from 'react';
+
+import { SVGProps } from '../SVGTypes';
+
+export const IconVisibilitySvg = ({ title, titleId, ...props }: SVGProps) => (
+  <svg
+    width={16}
+    height={16}
+    viewBox=\\"0 0 24 24\\"
+    focusable=\\"false\\"
+    fill=\\"currentColor\\"
+    role=\\"img\\"
+    aria-labelledby={titleId}
+    {...props}
+  >
+    {title ? <title id={titleId}>{title}</title> : null}
+    <path d=\\"M21.912 11.59a11.084 11.084 0 00-.945-1.612l.435-.251a1 1 0 00-1-1.733l-.716.414a11.586 11.586 0 00-2.237-1.846l.43-.744a1 1 0 00-1.733-1l-.49.85A10.026 10.026 0 0013 5.059V4a1 1 0 00-2 0v1.057a10.026 10.026 0 00-2.655.612l-.491-.85a1 1 0 00-1.733 1l.43.743a11.586 11.586 0 00-2.237 1.846l-.716-.414a1 1 0 00-1 1.733l.435.251a11.084 11.084 0 00-.945 1.612 1.001 1.001 0 000 .82C2.209 12.68 5.133 19 12 19s9.791-6.32 9.912-6.59a1.001 1.001 0 000-.82zM12 17c-4.708 0-7.173-3.728-7.877-5a11.09 11.09 0 011.079-1.584.996.996 0 00.158-.192A8.612 8.612 0 0112 7a8.61 8.61 0 016.636 3.22.994.994 0 00.163.197A11.064 11.064 0 0119.877 12c-.704 1.272-3.169 5-7.877 5z\\" />
+    <circle cx={12} cy={12} r={2.5} />
   </svg>
 );
 "
