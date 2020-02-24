@@ -6,9 +6,9 @@ export interface ToastAction {
 export interface Toast {
   id: string;
   treatTheme: string;
-  tone: 'neutral' | 'critical';
+  tone: 'positive' | 'critical';
   message: string;
   description?: string;
-  actions?: ToastAction[];
+  action?: ToastAction;
   clearAfter?: '10s' | '20s';
 }

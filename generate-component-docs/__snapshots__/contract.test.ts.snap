@@ -4623,6 +4623,15 @@ exports[`Tiles 1`] = `
 }
 `;
 
+exports[`ToastProvider 1`] = `
+{
+  children: ReactNode
+  width?: 
+    | "large"
+    | "medium"
+}
+`;
+
 exports[`Toggle 1`] = `
 {
   align?: 
@@ -4647,6 +4656,11 @@ exports[`useSpace 1`] = `
 `;
 
 exports[`useThemeName 1`] = `
+{
+}
+`;
+
+exports[`useToast 1`] = `
 {
 }
 `;

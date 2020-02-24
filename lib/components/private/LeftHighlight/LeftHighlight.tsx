@@ -7,7 +7,7 @@ import { UseBoxStylesProps } from '../../Box/useBoxStyles';
 
 interface LeftHighlightProps {
   children: ReactNode;
-  tone: 'neutral' | 'critical';
+  tone: 'positive' | 'critical';
   borderRadius: UseBoxStylesProps['borderRadius'];
   boxShadow: UseBoxStylesProps['boxShadow'];
   display: UseBoxStylesProps['display'];

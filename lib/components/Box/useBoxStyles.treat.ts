@@ -350,8 +350,3 @@ const minWidthRules = {
 export const minWidth = styleMap(
   mapToStyleProperty(minWidthRules, 'minWidth'),
 ) as Record<keyof typeof minWidthRules, string>; // Remove this when 'styleMap' supports numbers as keys and it's been released to sku consumers
-
-const outlineRules = {
-  none: 'none',
-};
-export const outline = styleMap(mapToStyleProperty(outlineRules, 'outline'));

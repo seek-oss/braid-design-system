@@ -8,11 +8,11 @@ import {
   Inline,
   Columns,
   Column,
-  IconCritical,
   Box,
   Text,
   TextLinkRenderer,
 } from '../../components';
+import { IconPositive, IconCritical } from '../icons';
 import { ClearButton } from '../iconButtons/ClearButton/ClearButton';
 import { LeftHighlight } from '../private/LeftHighlight/LeftHighlight';
 import { useTimeout } from './useTimeout';
@@ -23,7 +23,10 @@ const durations = {
   '20s': 20000,
 } as const;
 
-const sideSpace = 'medium' as const;
+const toneToIcon = {
+  critical: IconCritical,
+  positive: IconPositive,
+};
 
 interface ActionProps extends ToastAction {
   removeToast: () => void;
@@ -40,6 +43,7 @@ const Action = ({ label, onClick, removeToast }: ActionProps) => {
         {textLinkProps => (
           <Box
             component="button"
+            paddingRight="xsmall"
             onClick={handleClick}
             {...textLinkProps}
             aria-hidden
@@ -64,7 +68,7 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
       description,
       tone,
       onClear,
-      actions = [],
+      action,
       clearAfter = '10s',
     },
     ref,
@@ -77,33 +81,32 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
 
     const styles = useStyles(styleRefs);
 
+    const Icon = toneToIcon[tone];
+
     const content = description ? (
       <Stack space="xxsmall">
-        <Text baseline={false}>{message}</Text>
+        <Text weight="strong" baseline={false}>
+          {message}
+        </Text>
         {description ? (
           <Text baseline={false} tone="secondary">
             {description}
           </Text>
         ) : null}
-        <Inline space={sideSpace}>
-          {actions.map(action => (
-            <Action key={action.label} removeToast={remove} {...action} />
-          ))}
-        </Inline>
+        {action ? (
+          <Action key={action.label} removeToast={remove} {...action} />
+        ) : null}
       </Stack>
     ) : (
-      <Inline spaceX={sideSpace} spaceY="xxsmall">
-        <Text baseline={false}>{message}</Text>
-        <Box display="flex" aria-hidden>
-          {actions.map((action, index) => (
-            <Box
-              paddingRight={index === actions.length - 1 ? 'small' : sideSpace}
-              key={action.label}
-            >
-              <Action removeToast={remove} {...action} />
-            </Box>
-          ))}
+      <Inline space="xxsmall">
+        <Box paddingRight="medium">
+          <Text weight="strong" baseline={false}>
+            {message}
+          </Text>
         </Box>
+        {action ? (
+          <Action key={action.label} removeToast={remove} {...action} />
+        ) : null}
       </Inline>
     );
 
@@ -132,13 +135,11 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
               className={styles.toast}
             >
               <Columns space="none">
-                {tone === 'critical' ? (
-                  <Column width="content">
-                    <Box paddingRight="small">
-                      <IconCritical tone="critical" />
-                    </Box>
-                  </Column>
-                ) : null}
+                <Column width="content">
+                  <Box paddingRight="small">
+                    <Icon tone={tone} />
+                  </Box>
+                </Column>
                 <Column>{content}</Column>
                 <Column width="content">
                   <Box

@@ -73,11 +73,7 @@ const InternalToastProvider = ({ width, children }: ToastProviderProps) => {
     <ToastControllerContext.Provider value={addToast}>
       {children}
       <ToastPortal>
-        <Toaster
-          width={width}
-          toasts={toasts.slice(0, 2)}
-          removeToast={removeToast}
-        />
+        <Toaster width={width} toasts={toasts} removeToast={removeToast} />
       </ToastPortal>
     </ToastControllerContext.Provider>
   );
