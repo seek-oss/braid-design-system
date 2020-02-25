@@ -53,16 +53,20 @@ export const TextLinkRenderer = (props: TextLinkRendererProps) => {
   return <InlineLink {...props} />;
 };
 
-function useLinkStyles(showVisited: boolean) {
+function useTextLinkTone() {
+  const backgroundContext = useBackground();
+  const highlightLink = backgroundContext === 'card' || !backgroundContext;
+  return highlightLink ? ('link' as const) : ('neutral' as const);
+}
+
+function useLinkStyles(tone: 'link' | 'neutral', showVisited: boolean) {
   const styles = useStyles(styleRefs);
   const inHeading = useContext(HeadingContext);
-  const backgroundContext = useBackground();
   const mediumWeight = useWeight('medium');
-  const highlightLink = backgroundContext === 'card' || !backgroundContext;
 
   return [
-    highlightLink ? styles.underlineOnHoverOnly : styles.underlineAlways,
-    useTextTone({ tone: highlightLink ? 'link' : 'neutral' }),
+    tone === 'link' ? styles.underlineOnHoverOnly : styles.underlineAlways,
+    useTextTone({ tone }),
     !inHeading ? mediumWeight : null,
     showVisited ? styles.visited : null,
   ];
@@ -74,13 +78,14 @@ function InlineLink({
   children,
 }: TextLinkRendererProps) {
   const virtualTouchableStyle = useVirtualTouchable();
+  const textLinkTone = useTextLinkTone();
 
   return (
-    <TextLinkRendererContext.Provider value={true}>
+    <TextLinkRendererContext.Provider value={textLinkTone}>
       {children({
         style: {},
         className: classnames(
-          useLinkStyles(showVisited),
+          useLinkStyles(textLinkTone, showVisited),
           useBoxStyles({
             component: 'a',
             cursor: 'pointer',
@@ -92,17 +97,18 @@ function InlineLink({
   );
 }
 
-const buttonLinkTextProps = {
-  size: 'standard',
-  tone: 'link',
-  baseline: false,
-} as const;
 function ButtonLink({
   showVisited = false,
   hitArea,
   children,
 }: TextLinkRendererProps) {
   const styles = useStyles(styleRefs);
+  const textLinkTone = useTextLinkTone();
+  const buttonLinkTextProps = {
+    size: 'standard',
+    tone: textLinkTone,
+    baseline: false,
+  } as const;
 
   if (process.env.NODE_ENV !== 'production') {
     if (typeof hitArea === 'string') {
@@ -114,26 +120,28 @@ function ButtonLink({
 
   return (
     <Box position="relative">
-      <TextContext.Provider value={buttonLinkTextProps}>
-        {children({
-          style: {},
-          className: classnames(
-            styles.button,
-            useLinkStyles(showVisited),
-            useText(buttonLinkTextProps),
-            useTouchableSpace(buttonLinkTextProps.size),
-            useBoxStyles({
-              component: 'a',
-              cursor: 'pointer',
-              display: 'block',
-              width: 'full',
-              paddingX: 'small',
-              borderRadius: 'standard',
-              textAlign: 'center',
-            }),
-          ),
-        })}
-      </TextContext.Provider>
+      <TextLinkRendererContext.Provider value={textLinkTone}>
+        <TextContext.Provider value={buttonLinkTextProps}>
+          {children({
+            style: {},
+            className: classnames(
+              styles.button,
+              useLinkStyles(textLinkTone, showVisited),
+              useText(buttonLinkTextProps),
+              useTouchableSpace(buttonLinkTextProps.size),
+              useBoxStyles({
+                component: 'a',
+                cursor: 'pointer',
+                display: 'block',
+                width: 'full',
+                paddingX: 'small',
+                borderRadius: 'standard',
+                textAlign: 'center',
+              }),
+            ),
+          })}
+        </TextContext.Provider>
+      </TextLinkRendererContext.Provider>
       <FieldOverlay variant="focus" className={styles.focusOverlay} />
     </Box>
   );

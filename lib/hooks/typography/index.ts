@@ -93,7 +93,7 @@ export function useTextTone({
   backgroundContext?: BoxProps['background'];
 }) {
   const styles = useStyles(styleRefs);
-  const inTextLinkRenderer = useContext(TextLinkRendererContext);
+  const textLinkTone = useContext(TextLinkRendererContext);
   const backgroundContext = useBackground();
   const background = backgroundContextOverride || backgroundContext;
   const backgroundLightness = useBackgroundLightness(background);
@@ -115,7 +115,7 @@ export function useTextTone({
       : styles.tone[tone];
   }
 
-  if (inTextLinkRenderer) {
+  if (textLinkTone === 'link') {
     return styles.tone.link;
   }
 

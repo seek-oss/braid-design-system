@@ -6,6 +6,7 @@ import { OptionalTitle } from '../../components/icons/SVGTypes';
 import { BoxProps } from '../../components/Box/Box';
 import TextContext from '../../components/Text/TextContext';
 import HeadingContext from '../../components/Heading/HeadingContext';
+import TextLinkRendererContext from '../../components/TextLinkRenderer/TextLinkRendererContext';
 import { useTextSize, useTextTone, UseTextProps } from '../typography';
 import { useLineHeightContainer } from '../useLineHeightContainer/useLineHeightContainer';
 import * as styleRefs from './icon.treat';
@@ -56,9 +57,11 @@ export default (
   const styles = useStyles(styleRefs);
   const textContext = useContext(TextContext);
   const headingContext = useContext(HeadingContext);
-  const textTone = useTextTone({ tone: tone || 'neutral' });
-  const isInline = textContext || headingContext;
-  const toneStyles = tone || !isInline ? textTone : undefined;
+  const textLinkRendererContext = useContext(TextLinkRendererContext);
+  const inheritedTone =
+    textContext && textContext.tone ? textContext.tone : 'neutral';
+  const resolvedTone = useTextTone({ tone: tone || inheritedTone });
+  const isInline = textContext || headingContext || textLinkRendererContext;
   const blockSizeStyles = useIconContainerSize(
     size !== 'fill' ? size : 'standard',
   );
@@ -84,7 +87,7 @@ export default (
       width: 'full',
       height: 'full',
       display: 'block',
-      className: toneStyles,
+      className: resolvedTone,
       ...titleProps,
     };
   }
@@ -93,7 +96,7 @@ export default (
     display: isInline ? 'inlineBlock' : 'block',
     position: isInline ? 'relative' : undefined,
     className: [
-      toneStyles,
+      resolvedTone,
       styles.size,
       isInline
         ? [

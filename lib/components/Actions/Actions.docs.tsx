@@ -1,6 +1,15 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import { Actions, Button, TextLink } from '../';
+import {
+  Actions,
+  Button,
+  TextLink,
+  Box,
+  Stack,
+  Text,
+  IconNewWindow,
+} from '../';
+import { background as boxBackgrounds } from '../Box/useBoxStyles.treat';
 
 const docs: ComponentDocs = {
   category: 'Interaction',
@@ -34,6 +43,33 @@ const docs: ComponentDocs = {
           <Button weight="regular">Regular</Button>
         </Actions>
       ),
+    },
+    {
+      label: 'Actions Contrast',
+      docsSite: false,
+      Example: () => {
+        const backgrounds = Object.keys(boxBackgrounds) as Array<
+          keyof typeof boxBackgrounds
+        >;
+
+        return (
+          <Fragment>
+            {[undefined, ...backgrounds.sort()].map(background => (
+              <Box key={background} background={background} padding="xsmall">
+                <Stack space="xsmall">
+                  <Text size="small">{background || 'No background'}</Text>
+                  <Actions>
+                    <Button weight="strong">Strong</Button>
+                    <TextLink href="#">
+                      TextLink <IconNewWindow />
+                    </TextLink>
+                  </Actions>
+                </Stack>
+              </Box>
+            ))}
+          </Fragment>
+        );
+      },
     },
   ],
   snippets: [
