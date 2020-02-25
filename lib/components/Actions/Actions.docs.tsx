@@ -54,8 +54,8 @@ const docs: ComponentDocs = {
 
         return (
           <Fragment>
-            {[undefined, ...backgrounds.sort()].map(background => (
-              <Box key={background} background={background} padding="xsmall">
+            {[undefined, ...backgrounds.sort()].map((background, i) => (
+              <Box key={i} background={background} padding="xsmall">
                 <Stack space="xsmall">
                   <Text size="small">{background || 'No background'}</Text>
                   <Actions>

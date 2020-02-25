@@ -151,8 +151,8 @@ const docs: ComponentDocs = {
 
         return (
           <Fragment>
-            {[undefined, ...backgrounds.sort()].map(background => (
-              <Box background={background} key={background}>
+            {[undefined, ...backgrounds.sort()].map((background, i) => (
+              <Box key={i} background={background}>
                 <Text baseline={false}>
                   {background || 'No background'}{' '}
                   <TextLink href="">
