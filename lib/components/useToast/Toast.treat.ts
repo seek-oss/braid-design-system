@@ -10,7 +10,3 @@ export const toaster = style({
   bottom: 0,
   zIndex: pageOverlay,
 });
-
-export const center = style({
-  margin: 'auto',
-});

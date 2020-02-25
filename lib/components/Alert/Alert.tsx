@@ -109,7 +109,9 @@ export const Alert = ({
         background={tone}
         paddingLeft={highlightBarSize}
         position="absolute"
-        className={styles.highlightBar}
+        left="0"
+        top="0"
+        bottom="0"
       />
     </Box>
   );

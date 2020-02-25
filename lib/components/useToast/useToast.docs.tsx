@@ -1,4 +1,5 @@
 import React, { ReactNode } from 'react';
+import { useTheme } from 'sku/react-treat';
 import { ComponentDocs } from '../../../site/src/types';
 import {
   Box,
@@ -11,6 +12,7 @@ import {
   Strong,
 } from '..';
 import Code from '../../../site/src/App/Code/Code';
+import Toast from './Toast';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <div style={{ maxWidth: '300px' }}>{children}</div>
@@ -94,7 +96,7 @@ const description = (
 
 const docs: ComponentDocs = {
   description,
-  screenshotWidths: [],
+  screenshotWidths: [320, 768],
   category: 'Content',
   examples: [
     {
@@ -214,6 +216,126 @@ const docs: ComponentDocs = {
           action: { label: 'Goto error', onClick: () => {} },
         })
       `,
+    },
+    {
+      label: 'Critical toast',
+      docsSite: false,
+      Example: () => {
+        const treatTheme = useTheme();
+
+        return (
+          <Toast
+            tone="critical"
+            message="Critical toast"
+            treatTheme={treatTheme}
+            onClear={() => {}}
+            id={'n/a'}
+          />
+        );
+      },
+    },
+    {
+      label: 'Critical toast w/actions',
+      docsSite: false,
+      Example: () => {
+        const treatTheme = useTheme();
+
+        return (
+          <Toast
+            tone="critical"
+            message="Critical toast"
+            action={{
+              label: 'Action',
+              onClick: () => {},
+            }}
+            treatTheme={treatTheme}
+            onClear={() => {}}
+            id={'n/a'}
+          />
+        );
+      },
+    },
+    {
+      label: 'Critical toast w/descriptions',
+      docsSite: false,
+      Example: () => {
+        const treatTheme = useTheme();
+
+        return (
+          <Toast
+            tone="critical"
+            message="Critical toast"
+            description="A really long description about toast stuff that is quite long and stuff"
+            action={{
+              label: 'Action',
+              onClick: () => {},
+            }}
+            treatTheme={treatTheme}
+            onClear={() => {}}
+            id={'n/a'}
+          />
+        );
+      },
+    },
+    {
+      label: 'Positive toast',
+      docsSite: false,
+      Example: () => {
+        const treatTheme = useTheme();
+
+        return (
+          <Toast
+            tone="positive"
+            message="Positive toast"
+            treatTheme={treatTheme}
+            onClear={() => {}}
+            id={'n/a'}
+          />
+        );
+      },
+    },
+    {
+      label: 'Positive toast w/actions',
+      docsSite: false,
+      Example: () => {
+        const treatTheme = useTheme();
+
+        return (
+          <Toast
+            tone="positive"
+            message="Positive toast"
+            action={{
+              label: 'Action',
+              onClick: () => {},
+            }}
+            treatTheme={treatTheme}
+            onClear={() => {}}
+            id={'n/a'}
+          />
+        );
+      },
+    },
+    {
+      label: 'Positive toast w/descriptions',
+      docsSite: false,
+      Example: () => {
+        const treatTheme = useTheme();
+
+        return (
+          <Toast
+            tone="positive"
+            message="Positive toast"
+            description="A really long description about toast stuff that is quite long and stuff"
+            action={{
+              label: 'Action',
+              onClick: () => {},
+            }}
+            treatTheme={treatTheme}
+            onClear={() => {}}
+            id={'n/a'}
+          />
+        );
+      },
     },
   ],
 };

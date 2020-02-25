@@ -51,6 +51,10 @@ const NamedBox = forwardRef<HTMLElement, BoxProps>(
       pointerEvents,
       overflow,
       minWidth,
+      top,
+      bottom,
+      right,
+      left,
       className,
       ...restProps
     },
@@ -92,6 +96,10 @@ const NamedBox = forwardRef<HTMLElement, BoxProps>(
       pointerEvents,
       overflow,
       minWidth,
+      top,
+      bottom,
+      right,
+      left,
       className,
     });
 

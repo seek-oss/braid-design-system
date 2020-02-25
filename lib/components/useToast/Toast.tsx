@@ -14,7 +14,6 @@ import {
 } from '../../components';
 import { IconPositive, IconCritical } from '../icons';
 import { ClearButton } from '../iconButtons/ClearButton/ClearButton';
-import { LeftHighlight } from '../private/LeftHighlight/LeftHighlight';
 import { useTimeout } from './useTimeout';
 import { Toast as ToastType, ToastAction } from './ToastTypes';
 
@@ -122,18 +121,15 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
           onMouseEnter={stopTimeout}
           onMouseLeave={startTimeout}
         >
-          <LeftHighlight
-            display="inlineBlock"
-            boxShadow="large"
-            borderRadius="standard"
-            tone={tone}
-          >
+          <Box boxShadow="large">
             <Box
               background="card"
+              position="relative"
               boxShadow="borderStandard"
               borderRadius="standard"
               paddingY="medium"
               paddingLeft="medium"
+              overflow="hidden"
               className={styles.toast}
             >
               <Columns space="none">
@@ -154,8 +150,16 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
                   </Box>
                 </Column>
               </Columns>
+              <Box
+                background={tone}
+                paddingLeft="xxsmall"
+                position="absolute"
+                left="0"
+                top="0"
+                bottom="0"
+              />
             </Box>
-          </LeftHighlight>
+          </Box>
         </Box>
       </TreatProvider>
     );
