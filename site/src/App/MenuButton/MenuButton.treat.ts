@@ -28,7 +28,6 @@ export const bar = style({
 });
 
 export const bar1 = style({
-  top: 0,
   selectors: {
     [`${isOpen} &`]: {
       transform: 'translateY(11px) rotate(45deg)',

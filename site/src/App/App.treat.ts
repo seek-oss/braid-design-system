@@ -20,10 +20,3 @@ export const exitActive = style({
   opacity: 0,
   transition: `opacity ${transitionSpeed}`,
 });
-
-export const transitionContainer = style({
-  top: 0,
-  bottom: 0,
-  left: 0,
-  right: 0,
-});

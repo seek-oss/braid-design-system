@@ -22,8 +22,6 @@ export const root = style({
 });
 
 export const backdrop = style({
-  top: 0,
-  left: 0,
   width: '100vw',
   height: '100vh',
   zIndex: zIndex.backdrop,

@@ -22,16 +22,6 @@ export const iconSpace = style(theme => ({
   paddingLeft: theme.grid * theme.touchableSize - textLeftOffset,
 }));
 
-export const icon = style({
-  top: 0,
-  left: 0,
-});
-
-export const clearButton = style({
-  top: 0,
-  right: 0,
-});
-
 export const clearButtonVisibility = styleMap({
   hidden: { opacity: 0 },
   visible: { opacity: 100 },

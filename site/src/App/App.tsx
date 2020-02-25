@@ -36,7 +36,10 @@ export const App = () => (
                 <StrictMode>
                   <Box
                     position="absolute"
-                    className={styles.transitionContainer}
+                    top={0}
+                    bottom={0}
+                    left={0}
+                    right={0}
                   >
                     <Component />
                   </Box>
