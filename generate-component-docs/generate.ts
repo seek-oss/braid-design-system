@@ -53,6 +53,19 @@ export type NormalisedPropType =
   | { type: 'alias'; alias: string; params: Array<NormalisedPropType> }
   | NormalisedInterface;
 
+export type ComponentDoc = {
+  exportType: 'component';
+  props: NormalisedInterface;
+};
+
+export type HookDoc = {
+  exportType: 'hook';
+  params: NormalisedPropType[];
+  returnType: NormalisedPropType;
+};
+
+export type ExportDoc = ComponentDoc | HookDoc;
+
 export default () => {
   const basePath = path.dirname(tsconfigPath);
   const { config, error } = ts.readConfigFile(tsconfigPath, filename =>
@@ -211,7 +224,32 @@ export default () => {
       propsObj.valueDeclaration,
     );
 
-    return normalizeInterface(propsType, propsObj);
+    return {
+      exportType: 'component',
+      props: normalizeInterface(propsType, propsObj),
+    };
+  }
+
+  function getHookDocs(exp: ts.Symbol): HookDoc {
+    const type = checker.getTypeOfSymbolAtLocation(
+      exp,
+      exp.valueDeclaration || exp.declarations[0],
+    );
+
+    const callSignature = type.getCallSignatures()[0];
+
+    return {
+      exportType: 'hook',
+      params: callSignature.getParameters().map(param => {
+        const paramType = checker.getTypeOfSymbolAtLocation(
+          param,
+          exp.valueDeclaration,
+        );
+
+        return normaliseType(paramType, exp);
+      }),
+      returnType: normaliseType(callSignature.getReturnType(), exp),
+    };
   }
 
   for (const sourceFile of program.getSourceFiles()) {
@@ -226,9 +264,11 @@ export default () => {
           {},
           ...checker.getExportsOfModule(moduleSymbol).map(moduleExport => {
             return {
-              [moduleExport.escapedName as string]: getComponentDocs(
-                moduleExport,
-              ),
+              [moduleExport.escapedName as string]: moduleExport
+                .getName()
+                .startsWith('use')
+                ? getHookDocs(moduleExport)
+                : getComponentDocs(moduleExport),
             };
           }),
         );
