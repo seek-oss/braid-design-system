@@ -6,7 +6,6 @@ import { OptionalTitle } from '../../components/icons/SVGTypes';
 import { BoxProps } from '../../components/Box/Box';
 import TextContext from '../../components/Text/TextContext';
 import HeadingContext from '../../components/Heading/HeadingContext';
-import TextLinkRendererContext from '../../components/TextLinkRenderer/TextLinkRendererContext';
 import { useTextSize, useTextTone, UseTextProps } from '../typography';
 import { useLineHeightContainer } from '../useLineHeightContainer/useLineHeightContainer';
 import * as styleRefs from './icon.treat';
@@ -57,11 +56,10 @@ export default (
   const styles = useStyles(styleRefs);
   const textContext = useContext(TextContext);
   const headingContext = useContext(HeadingContext);
-  const textLinkRendererContext = useContext(TextLinkRendererContext);
   const inheritedTone =
     textContext && textContext.tone ? textContext.tone : 'neutral';
   const resolvedTone = useTextTone({ tone: tone || inheritedTone });
-  const isInline = textContext || headingContext || textLinkRendererContext;
+  const isInline = textContext || headingContext;
   const blockSizeStyles = useIconContainerSize(
     size !== 'fill' ? size : 'standard',
   );
