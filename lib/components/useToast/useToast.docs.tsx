@@ -56,6 +56,38 @@ const description = (
         )
       `}
       </Code>
+      <Heading level="3">Usage</Heading>
+      <Code playroom={false}>
+        {`
+        import { useToast } from 'braid-design-system';
+
+        export const App = () => {
+          const showToast = useToast();
+
+          const onError = () => {
+            showToast({
+              tone: 'critical',
+              message: 'Some error occured',
+              description: 'Longer description of error and how to resolve it',
+              action: {
+                label: 'Retry',
+                onClick: retryFn
+              },
+              clearAfter: '20s' // Default is '10s'
+            });
+          };
+
+          const onSuccess = () => {
+            showToast({
+              tone: 'positive',
+              message: 'Message sent'
+            });
+          };
+
+          return <YourComponent onError={onError} onSuccess={onSuccess} />;
+        }
+      `}
+      </Code>
     </Stack>
   </Box>
 );

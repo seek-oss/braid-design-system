@@ -124,6 +124,9 @@ export const useToast = () => {
     throw new Error('No "ToastProvider" configured');
   }
 
-  return (props: Omit<Toast, 'treatTheme' | 'id'>) =>
-    addToast({ ...props, treatTheme, id: `${toastCounter++}` });
+  return useCallback(
+    (props: Omit<Toast, 'treatTheme' | 'id'>) =>
+      addToast({ ...props, treatTheme, id: `${toastCounter++}` }),
+    [treatTheme, addToast],
+  );
 };
