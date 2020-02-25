@@ -1,8 +1,6 @@
 import { style } from 'sku/treat';
 
 export const source = style({
-  top: 0,
-  right: 0,
   height: '10vh',
   width: '10vw',
   minHeight: '80px',

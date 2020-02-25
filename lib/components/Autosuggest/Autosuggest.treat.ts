@@ -5,14 +5,7 @@ export const zIndexContainer = style({
   zIndex: zIndex.pageOverlay,
 });
 
-export const cancelButton = style({
-  top: 0,
-  right: 0,
-});
-
 export const backdrop = style({
-  top: 0,
-  left: 0,
   width: '100vw',
   height: '100vh',
   zIndex: zIndex.backdrop,

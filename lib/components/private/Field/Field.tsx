@@ -155,12 +155,13 @@ export const Field = forwardRef<FieldRef, InternalFieldProps>(
         justifyContent="center"
         transition="fast"
         pointerEvents={clearButtonVisible ? undefined : 'none'}
-        className={[
-          styles.clearButton,
+        top={0}
+        right={0}
+        className={
           styles.clearButtonVisibility[
             clearButtonVisible ? 'visible' : 'hidden'
-          ],
-        ]}
+          ]
+        }
       >
         <ClearButton
           label="Clear"
@@ -227,7 +228,8 @@ export const Field = forwardRef<FieldRef, InternalFieldProps>(
                   height="touchable"
                   width="touchable"
                   pointerEvents="none"
-                  className={styles.icon}
+                  top={0}
+                  left={0}
                 >
                   <Text baseline={false}>{icon}</Text>
                 </Box>

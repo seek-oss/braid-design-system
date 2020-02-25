@@ -350,3 +350,13 @@ const minWidthRules = {
 export const minWidth = styleMap(
   mapToStyleProperty(minWidthRules, 'minWidth'),
 ) as Record<keyof typeof minWidthRules, string>; // Remove this when 'styleMap' supports numbers as keys and it's been released to sku consumers
+
+const relativePositionRules = {
+  0: 0,
+};
+export const relativePosition = {
+  top: styleMap(mapToStyleProperty(relativePositionRules, 'top')),
+  bottom: styleMap(mapToStyleProperty(relativePositionRules, 'bottom')),
+  left: styleMap(mapToStyleProperty(relativePositionRules, 'left')),
+  right: styleMap(mapToStyleProperty(relativePositionRules, 'right')),
+};

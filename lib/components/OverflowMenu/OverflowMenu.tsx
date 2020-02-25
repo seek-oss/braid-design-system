@@ -276,6 +276,8 @@ export const OverflowMenu = ({
             dispatch({ type: BACKDROP_CLICK });
           }}
           position="fixed"
+          top={0}
+          left={0}
           className={styles.backdrop}
         />
       ) : null}

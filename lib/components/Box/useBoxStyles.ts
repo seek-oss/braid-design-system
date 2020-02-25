@@ -48,6 +48,10 @@ export interface UseBoxStylesProps {
   pointerEvents?: keyof typeof styleRefs.pointerEvents;
   overflow?: keyof typeof styleRefs.overflow;
   minWidth?: keyof typeof styleRefs.minWidth;
+  top?: keyof typeof styleRefs.relativePosition.top;
+  bottom?: keyof typeof styleRefs.relativePosition.bottom;
+  left?: keyof typeof styleRefs.relativePosition.left;
+  right?: keyof typeof styleRefs.relativePosition.right;
   className?: Parameters<typeof classnames>[0];
 }
 
@@ -87,6 +91,10 @@ export const useBoxStyles = ({
   pointerEvents,
   overflow,
   minWidth,
+  top,
+  bottom,
+  right,
+  left,
   className,
 }: UseBoxStylesProps) => {
   const resetStyles = useStyles(resetStyleRefs);
@@ -118,6 +126,10 @@ export const useBoxStyles = ({
     styles.pointerEvents[pointerEvents!],
     styles.overflow[overflow!],
     styles.minWidth[minWidth!],
+    styles.relativePosition.top[top!],
+    styles.relativePosition.bottom[bottom!],
+    styles.relativePosition.right[right!],
+    styles.relativePosition.left[left!],
     resolvedMarginTop !== undefined &&
       resolveResponsiveProp(
         resolvedMarginTop,
