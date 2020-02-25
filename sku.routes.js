@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const undocumentedComponents = require('./undocumentedComponents.json');
+const undocumentedExports = require('./site/src/undocumentedExports.json');
 
 const getExports = relativePath => {
   const sourcePath = path.join(__dirname, relativePath);
@@ -13,7 +13,7 @@ const getExports = relativePath => {
 
       return namedExports.split(',').map(e => e.trim());
     })
-    .filter(x => !undocumentedComponents.includes(x))
+    .filter(x => !undocumentedExports.includes(x))
     .sort();
 };
 

@@ -13,7 +13,7 @@ import { MenuButton } from '../MenuButton/MenuButton';
 import { ConfigConsumer } from '../ConfigContext';
 import { ComponentDocs } from '../../types';
 import * as styleRefs from './Documentation.treat';
-import undocumentedComponents from '../../../../undocumentedComponents.json';
+import undocumentedExports from '../../undocumentedExports.json';
 
 const { Text, Box, Hidden, Stack } = components;
 
@@ -95,7 +95,7 @@ export const Documentation = () => {
           return false;
         }
 
-        return !undocumentedComponents.includes(name);
+        return !undocumentedExports.includes(name);
       })
       .map(name => {
         const docs: ComponentDocs = getComponentDocs({
