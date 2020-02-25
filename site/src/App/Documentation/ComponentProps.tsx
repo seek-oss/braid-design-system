@@ -9,14 +9,14 @@ import {
 } from '../../../../lib/components';
 import componentDocs from '../../../../generate-component-docs/componentDocs.json';
 import {
-  NormalisedInterface,
   NormalisedPropType,
+  ExportDoc,
 } from '../../../../generate-component-docs/generate';
 
 type ComponentName = keyof typeof componentDocs;
 
 // @ts-ignore
-const docs = componentDocs as Record<ComponentName, NormalisedInterface>;
+const docs = componentDocs as Record<ComponentName, ExportDoc>;
 
 interface Props {
   componentName: string;
@@ -122,14 +122,19 @@ export const ComponentProps = ({ componentName }: Props) => {
     return null;
   }
 
-  const { props } = docs[componentName];
+  const doc = docs[componentName];
 
+  if (doc.exportType === 'hook') {
+    return null;
+  }
+
+  // @ts-ignore
   const [requiredProps, optionalProps] = partition(
-    props,
+    doc.props.props,
     prop => prop.required,
   );
 
-  return Object.keys(props).length === 0 ? null : (
+  return Object.keys(doc.props).length === 0 ? null : (
     <Stack space="large">
       <PropList label="Required props" props={requiredProps} />
       <PropList label="Optional props" props={optionalProps} />
