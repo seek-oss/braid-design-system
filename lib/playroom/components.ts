@@ -1,7 +1,4 @@
-import React from 'react';
-import { useTheme } from 'sku/react-treat';
 import '../reset';
-import { default as ToastComponent } from '../components/useToast/Toast';
 export * from '../components';
 
 export { Autosuggest } from '../components/Autosuggest/Autosuggest.playroom';
@@ -17,10 +14,3 @@ export { TextLink } from '../components/TextLink/TextLink.playroom';
 export { Toggle } from '../components/Toggle/Toggle.playroom';
 
 export { Placeholder } from '../components/private/Placeholder/Placeholder';
-
-// @ts-ignore
-export const Toast = props => {
-  const treatTheme = useTheme();
-
-  return <ToastComponent treatTheme={treatTheme} {...props} />;
-};

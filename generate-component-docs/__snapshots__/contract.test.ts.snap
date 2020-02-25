@@ -5062,11 +5062,11 @@ Object {
 `;
 
 exports[`ToastProvider 1`] = `
-{
-  children: ReactNode
-  width?: 
-    | "large"
-    | "medium"
+Object {
+  exportType: component,
+  props: {
+    children: ReactNode
+},
 }
 `;
 
@@ -5111,6 +5111,9 @@ Object {
 `;
 
 exports[`useToast 1`] = `
-{
+Object {
+  exportType: hook,
+  params: Array [],
+  returnType: (props: Pick<Toast, "tone" | "description" | "message" | "action" | "clearAfter">) => void,
 }
 `;
