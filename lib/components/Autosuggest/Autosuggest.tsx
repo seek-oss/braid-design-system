@@ -520,6 +520,8 @@ export function Autosuggest<Value>({
           transition="fast"
           display={['block', 'none']}
           pointerEvents={isOpen ? undefined : 'none'}
+          top={0}
+          left={0}
           className={[
             styles.backdrop,
             styles.backdropVisibility[isOpen ? 'visible' : 'hidden'],
@@ -622,7 +624,7 @@ export function Autosuggest<Value>({
                 </Box>
                 {overlays}
                 {cancelButton ? (
-                  <Box position="absolute" className={styles.cancelButton}>
+                  <Box position="absolute" top={0} right={0}>
                     {cancelButton}
                   </Box>
                 ) : null}

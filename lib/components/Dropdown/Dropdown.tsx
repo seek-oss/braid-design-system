@@ -92,7 +92,8 @@ const NamedDropdown = forwardRef<HTMLSelectElement, DropdownProps>(
               pointerEvents="none"
               height="touchable"
               width="touchable"
-              className={styles.chevron}
+              top={0}
+              right={0}
             >
               <Text baseline={false}>
                 <IconChevron />

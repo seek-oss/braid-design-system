@@ -37,7 +37,11 @@ export const Overlay = ({
       borderRadius={borderRadius}
       boxShadow={boxShadow}
       transition={transition}
-      className={[styles.root, !visible ? styles.hidden : null, className]}
+      top={0}
+      bottom={0}
+      left={0}
+      right={0}
+      className={[!visible ? styles.hidden : null, className]}
     >
       {children}
     </Box>

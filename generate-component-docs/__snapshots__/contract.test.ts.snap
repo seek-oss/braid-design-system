@@ -303,6 +303,7 @@ Object {
     borderRadius?: 
         | "full"
         | "standard"
+    bottom?: 0
     boxShadow?: 
         | "borderCaution"
         | "borderCritical"
@@ -607,6 +608,7 @@ Object {
     kind?: string
     label?: string
     lang?: string
+    left?: 0
     list?: string
     loop?: boolean
     low?: number
@@ -973,6 +975,7 @@ Object {
     resource?: string
     results?: number
     reversed?: boolean
+    right?: 0
     role?: string
     rowSpan?: number
     rows?: number
@@ -1009,6 +1012,7 @@ Object {
         | "right"
     >
     title?: string
+    top?: 0
     transform?: "touchable"
     transition?: 
         | "fast"
@@ -1070,6 +1074,7 @@ Object {
     borderRadius?: 
         | "full"
         | "standard"
+    bottom?: 0
     boxShadow?: 
         | "borderCaution"
         | "borderCritical"
@@ -1295,6 +1300,7 @@ Object {
         | "flexStart"
         | "spaceBetween"
     >
+    left?: 0
     margin?: ResponsiveProp<
         | "gutter"
         | "large"
@@ -1460,11 +1466,13 @@ Object {
         | "absolute"
         | "fixed"
         | "relative"
+    right?: 0
     textAlign?: ResponsiveProp<
         | "center"
         | "left"
         | "right"
     >
+    top?: 0
     transform?: "touchable"
     transition?: 
         | "fast"
