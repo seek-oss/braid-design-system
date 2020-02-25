@@ -48,6 +48,7 @@ export const ComponentRoute = ({
       <Heading level="2" component="h3">
         {componentName}
       </Heading>
+      {docs.description}
       {examples.length > 0 ? (
         <Text weight="strong">
           Example
