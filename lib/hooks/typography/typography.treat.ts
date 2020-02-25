@@ -149,23 +149,14 @@ export const invertableTone = {
   })),
 };
 
-const accessibleColorForTone = (foreground: string) => {
-  const accessibleText = getAccessibleVariant(foreground);
-  const accessibleIcon = getAccessibleVariant(foreground, { nonText: true });
-
-  return {
-    color: accessibleText,
-    ...(accessibleIcon !== accessibleText
-      ? {
-          selectors: {
-            ['svg&']: {
-              color: accessibleIcon,
-            },
-          },
-        }
-      : {}),
-  };
-};
+const accessibleColorForTone = (foreground: string) => ({
+  color: getAccessibleVariant(foreground),
+  selectors: {
+    ['svg&']: {
+      color: getAccessibleVariant(foreground, { nonText: true }),
+    },
+  },
+});
 
 const accessibleColorVariants = styleMap(({ color: { foreground } }) => ({
   critical: accessibleColorForTone(foreground.critical),
