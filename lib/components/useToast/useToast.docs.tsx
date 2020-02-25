@@ -102,6 +102,7 @@ const docs: ComponentDocs = {
     {
       label: 'Positive Toast',
       Container,
+      storybook: false,
       Example: () => {
         const showToast = useToast();
 
@@ -131,6 +132,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Positive Toast with description',
+      storybook: false,
       Container,
       Example: () => {
         const showToast = useToast();
@@ -164,6 +166,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Critical Toast',
+      storybook: false,
       Container,
       Example: () => {
         const showToast = useToast();
@@ -186,6 +189,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Critical Toast with description',
+      storybook: false,
       Container,
       Example: () => {
         const showToast = useToast();
