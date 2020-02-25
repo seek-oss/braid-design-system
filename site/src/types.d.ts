@@ -1,6 +1,7 @@
 import { ComponentType, ReactNode } from 'react';
 import { Snippets } from 'sku/playroom';
 import { Optional } from 'utility-types';
+import { ReactNodeNoStrings } from './../../lib/components/private/ReactNodeNoStrings';
 
 export interface AppConfig {
   playroomUrl: string;
@@ -30,6 +31,7 @@ export interface ComponentDocs {
   screenshotWidths: Array<320 | 768 | 1200>;
   examples: ComponentExample[];
   snippets?: DocsSnippet[];
+  description?: ReactNodeNoStrings;
 }
 
 export interface ComponentExample {
