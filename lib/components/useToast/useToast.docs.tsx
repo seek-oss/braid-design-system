@@ -33,7 +33,7 @@ const description = (
       <Heading level="3">Setup</Heading>
       <Text>
         Unlike other Braid components, Toast is exposed via a hook and rendered
-        automatically at the bottom left of the viewport using a{' '}
+        automatically at the bottom of the viewport using a{' '}
         <TextLink href="https://reactjs.org/docs/portals.html">
           React portal
         </TextLink>
