@@ -355,18 +355,18 @@ const relativePositionRules = {
   0: 0,
 };
 // Remove this when 'styleMap' supports numbers as keys and it's been released to sku consumers,
-type PostionRulesType = Record<keyof typeof relativePositionRules, string>;
+type PositionRulesType = Record<keyof typeof relativePositionRules, string>;
 export const relativePosition = {
   top: styleMap(
     mapToStyleProperty(relativePositionRules, 'top'),
-  ) as PostionRulesType,
+  ) as PositionRulesType,
   bottom: styleMap(
     mapToStyleProperty(relativePositionRules, 'bottom'),
-  ) as PostionRulesType,
+  ) as PositionRulesType,
   left: styleMap(
     mapToStyleProperty(relativePositionRules, 'left'),
-  ) as PostionRulesType,
+  ) as PositionRulesType,
   right: styleMap(
     mapToStyleProperty(relativePositionRules, 'right'),
-  ) as PostionRulesType,
+  ) as PositionRulesType,
 };
