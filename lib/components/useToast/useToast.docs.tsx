@@ -233,7 +233,7 @@ const docs: ComponentDocs = {
             message="Critical toast"
             treatTheme={treatTheme}
             onClear={() => {}}
-            id={'n/a'}
+            id="n/a"
           />
         );
       },
@@ -247,14 +247,14 @@ const docs: ComponentDocs = {
         return (
           <Toast
             tone="critical"
-            message="Critical toast"
+            message="Critical toast w/action"
             action={{
-              label: 'Action',
+              label: 'Do the action',
               onClick: () => {},
             }}
             treatTheme={treatTheme}
             onClear={() => {}}
-            id={'n/a'}
+            id="n/a"
           />
         );
       },
@@ -276,7 +276,7 @@ const docs: ComponentDocs = {
             }}
             treatTheme={treatTheme}
             onClear={() => {}}
-            id={'n/a'}
+            id="n/a"
           />
         );
       },
@@ -293,7 +293,7 @@ const docs: ComponentDocs = {
             message="Positive toast"
             treatTheme={treatTheme}
             onClear={() => {}}
-            id={'n/a'}
+            id="n/a"
           />
         );
       },
@@ -307,14 +307,14 @@ const docs: ComponentDocs = {
         return (
           <Toast
             tone="positive"
-            message="Positive toast"
+            message="Positive toast w/actions"
             action={{
-              label: 'Action',
+              label: 'Do the action',
               onClick: () => {},
             }}
             treatTheme={treatTheme}
             onClear={() => {}}
-            id={'n/a'}
+            id="n/a"
           />
         );
       },
@@ -336,7 +336,7 @@ const docs: ComponentDocs = {
             }}
             treatTheme={treatTheme}
             onClear={() => {}}
-            id={'n/a'}
+            id="n/a"
           />
         );
       },

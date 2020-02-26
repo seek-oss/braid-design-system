@@ -31,6 +31,7 @@ export const Toaster = ({ toasts, removeToast }: ToasterProps) => {
       width="full"
       pointerEvents="none"
       paddingX="gutter"
+      bottom={0}
       className={styles.toaster}
     >
       {toasts.map(({ id, ...rest }) => (

@@ -7,6 +7,5 @@ export const toast = style({
 });
 
 export const toaster = style({
-  bottom: 0,
   zIndex: pageOverlay,
 });
