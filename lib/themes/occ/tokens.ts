@@ -95,7 +95,7 @@ const tokens: TreatTokens = {
           rows: 4,
         },
         tablet: {
-          size: 14,
+          size: 12,
           rows: 4,
         },
       },
@@ -203,7 +203,7 @@ const tokens: TreatTokens = {
       brandAccent,
       formAccent,
       formAccentDisabled: '#ccc',
-      selection: '#f1f7ff',
+      selection: '#fafafa',
       card: white,
       critical,
       caution,
