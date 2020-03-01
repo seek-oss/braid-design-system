@@ -20,9 +20,12 @@ type AddToast = (toast: Toast) => void;
 
 const ToastControllerContext = createContext<AddToast | null>(null);
 
+const QUEUE_TOAST = 0;
+const REMOVE_TOAST = 1;
+
 type Actions =
-  | { type: 'QUEUE_TOAST'; value: Toast }
-  | { type: 'REMOVE_TOAST'; value: string };
+  | { type: typeof QUEUE_TOAST; value: Toast }
+  | { type: typeof REMOVE_TOAST; value: string };
 
 interface ToastState {
   toasts: Toast[];
@@ -30,14 +33,14 @@ interface ToastState {
 
 function reducer(state: ToastState, action: Actions): ToastState {
   switch (action.type) {
-    case 'QUEUE_TOAST': {
+    case QUEUE_TOAST: {
       return {
         ...state,
         toasts: [...state.toasts, action.value],
       };
     }
 
-    case 'REMOVE_TOAST': {
+    case REMOVE_TOAST: {
       const toasts = state.toasts.filter(({ id }) => id !== action.value);
 
       return {
@@ -58,12 +61,12 @@ const InternalToastProvider = ({ children }: ToastProviderProps) => {
   });
 
   const addToast = useCallback(
-    (props: Toast) => dispatch({ type: 'QUEUE_TOAST', value: props }),
+    (props: Toast) => dispatch({ type: QUEUE_TOAST, value: props }),
     [],
   );
 
   const removeToast = useCallback(
-    (id: string) => dispatch({ type: 'REMOVE_TOAST', value: id }),
+    (id: string) => dispatch({ type: REMOVE_TOAST, value: id }),
     [],
   );
 
