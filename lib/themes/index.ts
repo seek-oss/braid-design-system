@@ -4,4 +4,5 @@ export { default as jobsDbRebrand } from './jobsDbRebrand';
 export { default as jobsDb } from './jobsDb';
 export { default as jobStreet } from './jobStreet';
 export { default as jobStreetClassic } from './jobStreetClassic';
+export { default as catho } from './catho';
 export { default as wireframe } from './wireframe';
