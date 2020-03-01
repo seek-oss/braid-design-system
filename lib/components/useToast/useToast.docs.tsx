@@ -75,7 +75,6 @@ const description = (
                 label: 'Retry',
                 onClick: retryFn
               },
-              clearAfter: '20s' // Default is '10s'
             });
           };
 

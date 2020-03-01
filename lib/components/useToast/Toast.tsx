@@ -17,11 +17,6 @@ import { ClearButton } from '../iconButtons/ClearButton/ClearButton';
 import { useTimeout } from './useTimeout';
 import { Toast as ToastType, ToastAction } from './ToastTypes';
 
-const durations = {
-  '10s': 10000,
-  '20s': 20000,
-} as const;
-
 const toneToIcon = {
   critical: IconCritical,
   positive: IconPositive,
@@ -59,22 +54,10 @@ interface ToastProps extends ToastType {
   onClear: (id: string) => void;
 }
 const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
-  (
-    {
-      treatTheme,
-      id,
-      message,
-      description,
-      tone,
-      onClear,
-      action,
-      clearAfter = '10s',
-    },
-    ref,
-  ) => {
+  ({ treatTheme, id, message, description, tone, onClear, action }, ref) => {
     const remove = useCallback(() => onClear(id), [onClear, id]);
     const { stopTimeout, startTimeout } = useTimeout({
-      duration: durations[clearAfter],
+      duration: 10000,
       onTimeout: remove,
     });
 
@@ -115,7 +98,6 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
           display="flex"
           justifyContent="center"
           role="alert"
-          aria-live={tone === 'critical' ? 'assertive' : 'polite'}
           paddingBottom="small"
           ref={ref}
           onMouseEnter={stopTimeout}
