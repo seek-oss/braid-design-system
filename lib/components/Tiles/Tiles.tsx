@@ -17,7 +17,7 @@ import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 export interface TilesProps {
   children: ReactNodeNoStrings;
   space: ResponsiveSpace;
-  columns: ResponsiveProp<1 | 2 | 3 | 4 | 5>;
+  columns: ResponsiveProp<1 | 2 | 3 | 4 | 5 | 6>;
   dividers?: boolean;
 }
 
@@ -45,13 +45,16 @@ export const Tiles = ({
       <Box display="flex" flexWrap="wrap" className={negativeMarginLeft}>
         {Children.map(children, (child, i) => (
           <Box
-            className={[
-              styles.columnsMobile[mobileColumns],
-              styles.columnsTablet[tabletColumns],
-              styles.columnsDesktop[desktopColumns],
-            ]}
+            className={{
+              [styles.columnsMobile[mobileColumns]]: true,
+              [styles.columnsTablet[tabletColumns]]:
+                tabletColumns !== mobileColumns,
+              [styles.columnsDesktop[desktopColumns]]:
+                desktopColumns !== tabletColumns,
+            }}
           >
             <Box
+              height="full"
               // This needs to be a separate element to support IE11.
               paddingTop={responsiveSpace}
               paddingLeft={responsiveSpace}

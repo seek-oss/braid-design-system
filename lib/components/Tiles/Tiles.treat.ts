@@ -8,6 +8,7 @@ const columnsWidths = {
   '3': `${100 / 3}%`,
   '4': `${100 / 4}%`,
   '5': `${100 / 5}%`,
+  '6': `${100 / 6}%`,
 } as const;
 
 const makeColumnsAtoms = (breakpoint: keyof TreatTokens['breakpoint']) =>
