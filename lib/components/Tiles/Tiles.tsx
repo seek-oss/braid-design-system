@@ -9,6 +9,7 @@ import {
 } from '../../hooks/useNegativeMargin/useNegativeMargin';
 import {
   normaliseResponsiveProp,
+  resolveResponsiveProp,
   ResponsiveProp,
 } from '../../utils/responsiveProp';
 import * as styleRefs from './Tiles.treat';
@@ -45,13 +46,12 @@ export const Tiles = ({
       <Box display="flex" flexWrap="wrap" className={negativeMarginLeft}>
         {Children.map(children, (child, i) => (
           <Box
-            className={{
-              [styles.columnsMobile[mobileColumns]]: true,
-              [styles.columnsTablet[tabletColumns]]:
-                tabletColumns !== mobileColumns,
-              [styles.columnsDesktop[desktopColumns]]:
-                desktopColumns !== tabletColumns,
-            }}
+            className={resolveResponsiveProp(
+              columns,
+              styles.columnsMobile,
+              styles.columnsTablet,
+              styles.columnsDesktop,
+            )}
           >
             <Box
               height="full"
