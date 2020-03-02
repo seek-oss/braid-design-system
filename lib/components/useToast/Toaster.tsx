@@ -35,13 +35,14 @@ export const Toaster = ({ toasts, removeToast }: ToasterProps) => {
       className={styles.toaster}
     >
       {toasts.map(({ id, ...rest }) => (
-        <ToastComponent
-          key={id}
-          ref={itemRef(id)}
-          id={id}
-          onClear={onClear}
-          {...rest}
-        />
+        <Box key={id} paddingBottom="small">
+          <ToastComponent
+            ref={itemRef(id)}
+            id={id}
+            onClear={onClear}
+            {...rest}
+          />
+        </Box>
       ))}
     </Box>
   );

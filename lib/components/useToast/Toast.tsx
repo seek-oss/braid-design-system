@@ -98,7 +98,6 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
           display="flex"
           justifyContent="center"
           role="alert"
-          paddingBottom="small"
           ref={ref}
           onMouseEnter={stopTimeout}
           onMouseLeave={startTimeout}

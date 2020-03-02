@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { useTheme } from 'sku/react-treat';
 import { ComponentDocs } from '../../../site/src/types';
 import {
@@ -10,13 +10,12 @@ import {
   Heading,
   TextLink,
   Strong,
+  Columns,
+  Column,
+  IconPromote,
 } from '..';
 import Code from '../../../site/src/App/Code/Code';
 import Toast from './Toast';
-
-const Container = ({ children }: { children: ReactNode }) => (
-  <div style={{ maxWidth: '300px' }}>{children}</div>
-);
 
 const description = (
   <Box style={{ maxWidth: 700 }}>
@@ -100,23 +99,38 @@ const docs: ComponentDocs = {
   examples: [
     {
       label: 'Positive Toast',
-      Container,
       storybook: false,
-      Example: () => {
+      playroom: false,
+      Example: ({ id, handler }) => {
         const showToast = useToast();
+        const theme = useTheme();
+
+        const toastProps = {
+          message: 'Positive toast',
+          tone: 'positive',
+          action: { label: 'View', onClick: () => {} },
+        } as const;
 
         return (
-          <Button
-            onClick={() =>
-              showToast({
-                message: 'Positive toast',
-                tone: 'positive',
-                action: { label: 'View', onClick: () => {} },
-              })
-            }
-          >
-            Show toast
-          </Button>
+          <Columns space="gutter" alignY="center" collapseBelow="tablet">
+            <Column width="content">
+              <Toast
+                id={id}
+                treatTheme={theme}
+                onClear={handler}
+                {...toastProps}
+              />
+            </Column>
+            <Column width="content">
+              <Box display="flex" justifyContent="center">
+                <Box>
+                  <Button onClick={() => showToast(toastProps)}>
+                    Show animation <IconPromote alignY="lowercase" />
+                  </Button>
+                </Box>
+              </Box>
+            </Column>
+          </Columns>
         );
       },
       code: `
@@ -132,24 +146,39 @@ const docs: ComponentDocs = {
     {
       label: 'Positive Toast with description',
       storybook: false,
-      Container,
-      Example: () => {
+      playroom: false,
+      Example: ({ id, handler }) => {
         const showToast = useToast();
+        const theme = useTheme();
+
+        const toastProps = {
+          message: 'Positive toast',
+          tone: 'positive',
+          description:
+            'With a longer piece of text describing what has occured.',
+          action: { label: 'View', onClick: () => {} },
+        } as const;
 
         return (
-          <Button
-            onClick={() =>
-              showToast({
-                message: 'Positive toast',
-                tone: 'positive',
-                description:
-                  'With a longer piece of text describing what has occured.',
-                action: { label: 'View', onClick: () => {} },
-              })
-            }
-          >
-            Show toast
-          </Button>
+          <Columns space="gutter" alignY="center" collapseBelow="tablet">
+            <Column width="content">
+              <Toast
+                id={id}
+                treatTheme={theme}
+                onClear={handler}
+                {...toastProps}
+              />
+            </Column>
+            <Column width="content">
+              <Box display="flex" justifyContent="center">
+                <Box>
+                  <Button onClick={() => showToast(toastProps)}>
+                    Show animation <IconPromote alignY="lowercase" />
+                  </Button>
+                </Box>
+              </Box>
+            </Column>
+          </Columns>
         );
       },
       code: `
@@ -166,18 +195,36 @@ const docs: ComponentDocs = {
     {
       label: 'Critical Toast',
       storybook: false,
-      Container,
-      Example: () => {
+      playroom: false,
+      Example: ({ id, handler }) => {
         const showToast = useToast();
+        const theme = useTheme();
+
+        const toastProps = {
+          message: 'Critical toast',
+          tone: 'critical',
+        } as const;
 
         return (
-          <Button
-            onClick={() =>
-              showToast({ message: 'Critical toast', tone: 'critical' })
-            }
-          >
-            Show toast
-          </Button>
+          <Columns space="gutter" alignY="center" collapseBelow="tablet">
+            <Column width="content">
+              <Toast
+                id={id}
+                treatTheme={theme}
+                onClear={handler}
+                {...toastProps}
+              />
+            </Column>
+            <Column width="content">
+              <Box display="flex" justifyContent="center">
+                <Box>
+                  <Button onClick={() => showToast(toastProps)}>
+                    Show animation <IconPromote alignY="lowercase" />
+                  </Button>
+                </Box>
+              </Box>
+            </Column>
+          </Columns>
         );
       },
       code: `
@@ -189,24 +236,39 @@ const docs: ComponentDocs = {
     {
       label: 'Critical Toast with description',
       storybook: false,
-      Container,
-      Example: () => {
+      playroom: false,
+      Example: ({ id, handler }) => {
         const showToast = useToast();
+        const theme = useTheme();
+
+        const toastProps = {
+          message: 'Critical toast',
+          tone: 'critical',
+          description:
+            'With a longer piece of text describing what went wrong.',
+          action: { label: 'Goto error', onClick: () => {} },
+        } as const;
 
         return (
-          <Button
-            onClick={() =>
-              showToast({
-                message: 'Critical toast',
-                tone: 'critical',
-                description:
-                  'With a longer piece of text describing what went wrong.',
-                action: { label: 'Goto error', onClick: () => {} },
-              })
-            }
-          >
-            Show toast
-          </Button>
+          <Columns space="gutter" alignY="center" collapseBelow="tablet">
+            <Column width="content">
+              <Toast
+                id={id}
+                treatTheme={theme}
+                onClear={handler}
+                {...toastProps}
+              />
+            </Column>
+            <Column width="content">
+              <Box display="flex" justifyContent="center">
+                <Box>
+                  <Button onClick={() => showToast(toastProps)}>
+                    Show animation <IconPromote alignY="lowercase" />
+                  </Button>
+                </Box>
+              </Box>
+            </Column>
+          </Columns>
         );
       },
       code: `
