@@ -22,6 +22,8 @@ export { Columns } from './Columns/Columns';
 export { ContentBlock } from './ContentBlock/ContentBlock';
 export { Divider } from './Divider/Divider';
 export { Dropdown } from './Dropdown/Dropdown';
+export { DropdownMenu } from './DropdownMenu/DropdownMenu';
+export { DropdownMenuItem } from './DropdownMenuItem/DropdownMenuItem';
 export { FieldLabel } from './FieldLabel/FieldLabel';
 export { FieldMessage } from './FieldMessage/FieldMessage';
 export { Heading } from './Heading/Heading';
