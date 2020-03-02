@@ -1,5 +1,7 @@
 import { useMemo, useCallback, useLayoutEffect } from 'react';
 
+const animationTimeout = 300;
+
 const entranceTransition = 'transform 0.2s ease, opacity 0.2s ease';
 const exitTransition = 'opacity 0.1s ease';
 
@@ -15,6 +17,12 @@ const animate = (
   transition: string,
   done?: () => void,
 ) => {
+  const fallbackTimeout = setTimeout(() => {
+    if (done) {
+      done();
+    }
+  }, animationTimeout);
+
   transforms.forEach(({ property, from = '' }) => {
     element.style.setProperty(property, from);
   });
@@ -32,6 +40,8 @@ const animate = (
     }
 
     element.removeEventListener('transitionend', transitionEndHandler);
+
+    clearTimeout(fallbackTimeout);
   };
 
   element.addEventListener('transitionend', transitionEndHandler);

@@ -127,7 +127,15 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
                     justifyContent="center"
                     aria-hidden
                   >
-                    <ClearButton onClick={remove} label="Close" />
+                    <ClearButton
+                      onClick={remove}
+                      label="Clear"
+                      data={
+                        process.env.NODE_ENV !== 'production'
+                          ? { testid: 'clearToast' }
+                          : {}
+                      }
+                    />
                   </Box>
                 </Column>
               </Columns>
