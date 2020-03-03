@@ -125,4 +125,43 @@ describe('useToast', () => {
       expect(queryAllToasts()).toHaveLength(0);
     });
   });
+
+  it('should handle multiple toasts with actions', async () => {
+    const {
+      showToast,
+      getAction,
+      queryAllToasts,
+      getToastByMessage,
+    } = renderTestApp();
+
+    const actionClickHandler1 = jest.fn();
+    const actionLabel1 = 'Action 1';
+    const actionClickHandler2 = jest.fn();
+    const actionLabel2 = 'Action 2';
+
+    showToast({
+      tone: 'critical',
+      message: 'Some toast',
+      action: { label: actionLabel1, onClick: actionClickHandler1 },
+    });
+
+    showToast({
+      tone: 'positive',
+      message: 'Some other toast',
+      action: { label: actionLabel2, onClick: actionClickHandler2 },
+    });
+
+    const action = getAction(actionLabel2);
+
+    userEvent.click(action);
+
+    expect(actionClickHandler1).toHaveBeenCalledTimes(0);
+    expect(actionClickHandler2).toHaveBeenCalledTimes(1);
+
+    await wait(() => {
+      // Toast should be removed after action press
+      expect(queryAllToasts()).toHaveLength(1);
+      expect(getToastByMessage('Some toast')).toBeInTheDocument();
+    });
+  });
 });
