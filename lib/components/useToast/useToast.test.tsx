@@ -1,7 +1,13 @@
 import '@testing-library/jest-dom/extend-expect';
 
 import React, { ReactNode } from 'react';
-import { cleanup, render, act, wait } from '@testing-library/react';
+import {
+  cleanup,
+  render,
+  act,
+  wait,
+  getByTestId,
+} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import wireframe from '../../themes/wireframe';
@@ -28,7 +34,7 @@ function renderTestApp() {
     return <div />;
   };
 
-  const { queryAllByRole, getByText, getByTestId } = render(
+  const { queryAllByRole, getByText } = render(
     <App>
       <TestCase />
     </App>,
@@ -41,51 +47,59 @@ function renderTestApp() {
       }),
     queryAllToasts: () => queryAllByRole('alert'),
     getAction: (actionLabel: string) => getByText(actionLabel),
-    clearToast: () => {
+    clearToast: (container: HTMLElement) => {
       act(() => {
-        userEvent.click(getByTestId('clearToast'));
+        userEvent.click(getByTestId(container, 'clearToast'));
       });
     },
+    getToastByMessage: (message: string) => getByText(message),
   };
 }
 
 describe('useToast', () => {
-  it('should handle adding toast', () => {
-    const { showToast, queryAllToasts } = renderTestApp();
-
-    expect(queryAllToasts()).toHaveLength(0);
-
-    showToast({ tone: 'critical', message: 'Some toast' });
-
-    expect(queryAllToasts()).toHaveLength(1);
-  });
-
-  it('should handle clearing toast', async () => {
+  it('should handle adding toast', async () => {
     const { showToast, queryAllToasts, clearToast } = renderTestApp();
 
     expect(queryAllToasts()).toHaveLength(0);
 
     showToast({ tone: 'critical', message: 'Some toast' });
 
-    expect(queryAllToasts()).toHaveLength(1);
+    const allToasts = queryAllToasts();
 
-    clearToast();
+    expect(allToasts).toHaveLength(1);
+
+    clearToast(allToasts[0]);
 
     await wait(() => {
       expect(queryAllToasts()).toHaveLength(0);
     });
   });
 
-  it('should handle multiple toasts', () => {
-    const { showToast, queryAllToasts } = renderTestApp();
+  it('should handle multiple toasts', async () => {
+    const {
+      showToast,
+      queryAllToasts,
+      clearToast,
+      getToastByMessage,
+    } = renderTestApp();
 
     expect(queryAllToasts()).toHaveLength(0);
 
-    showToast({ tone: 'critical', message: 'Some toast' });
-    showToast({ tone: 'positive', message: 'Some toast' });
-    showToast({ tone: 'critical', message: 'Some toast' });
+    showToast({ tone: 'critical', message: 'Toast 1' });
+    showToast({ tone: 'critical', message: 'Toast 2' });
+    showToast({ tone: 'critical', message: 'Toast 3' });
 
-    expect(queryAllToasts()).toHaveLength(3);
+    const allToasts = queryAllToasts();
+
+    expect(allToasts).toHaveLength(3);
+
+    clearToast(allToasts[1]);
+
+    await wait(() => {
+      expect(queryAllToasts()).toHaveLength(2);
+      expect(getToastByMessage('Toast 1')).toBeInTheDocument();
+      expect(getToastByMessage('Toast 3')).toBeInTheDocument();
+    });
   });
 
   it('should handle actions', async () => {
