@@ -13,6 +13,9 @@ export interface PlaceholderProps {
   shape?: 'rectangle' | 'round';
 }
 
+const resolveToPxIfUnitless = (value: string | number) =>
+  typeof value === 'string' && /[0-9]$/.test(value) ? `${value}px` : value;
+
 export const Placeholder = ({
   label,
   width = 'auto',
@@ -39,7 +42,10 @@ export const Placeholder = ({
         justifyContent="center"
         borderRadius={shape === 'round' ? 'full' : undefined}
         className={styles.box[backgroundLightness]}
-        style={{ width, height }}
+        style={{
+          width: resolveToPxIfUnitless(width),
+          height: resolveToPxIfUnitless(height),
+        }}
       >
         {label ? (
           <Box paddingX="xsmall" paddingY="xxsmall">
