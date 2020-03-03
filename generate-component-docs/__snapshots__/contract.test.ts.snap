@@ -59,6 +59,9 @@ Object {
         | "critical"
         | "neutral"
         | "positive"
+    type?: 
+        | "search"
+        | "text"
     value: AutosuggestValue<Value>
 },
 }
@@ -5070,6 +5073,15 @@ Object {
 }
 `;
 
+exports[`ToastProvider 1`] = `
+Object {
+  exportType: component,
+  props: {
+    children: ReactNode
+},
+}
+`;
+
 exports[`Toggle 1`] = `
 Object {
   exportType: component,
@@ -5107,5 +5119,13 @@ Object {
   exportType: hook,
   params: Array [],
   returnType: string,
+}
+`;
+
+exports[`useToast 1`] = `
+Object {
+  exportType: hook,
+  params: Array [],
+  returnType: (props: Pick<Toast, "tone" | "description" | "message" | "action">) => void,
 }
 `;

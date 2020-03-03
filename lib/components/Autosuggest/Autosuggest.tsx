@@ -232,6 +232,7 @@ export interface AutosuggestProps<Value>
   onBlur?: () => void;
   onFocus?: () => void;
   placeholder?: string;
+  type?: 'text' | 'search';
 }
 export function Autosuggest<Value>({
   id,
@@ -244,6 +245,7 @@ export function Autosuggest<Value>({
   onFocus = noop,
   onBlur = noop,
   placeholder,
+  type = 'text',
   ...restProps
 }: AutosuggestProps<Value>) {
   const styles = useStyles(styleRefs);
@@ -416,6 +418,7 @@ export function Autosuggest<Value>({
 
   const inputProps = {
     value: previewValue ? previewValue.text : value.text,
+    type: type === 'search' ? type : 'text',
     placeholder,
     onChange: (e: ChangeEvent<HTMLInputElement>) => {
       const inputValue = e.target.value;
@@ -565,7 +568,6 @@ export function Autosuggest<Value>({
                   {...restFieldProps}
                   {...a11y.inputProps}
                   {...inputProps}
-                  type="text"
                   position="relative"
                   className={className}
                   ref={fieldRef}
