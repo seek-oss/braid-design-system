@@ -59,6 +59,9 @@ Object {
         | "critical"
         | "neutral"
         | "positive"
+    type?: 
+        | "search"
+        | "text"
     value: AutosuggestValue<Value>
 },
 }
