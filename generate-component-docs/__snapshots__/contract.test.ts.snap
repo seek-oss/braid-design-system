@@ -4032,6 +4032,33 @@ Object {
 }
 `;
 
+exports[`Menu 1`] = `
+Object {
+  exportType: component,
+  props: {
+    align?: 
+        | "left"
+        | "right"
+    children: ReactNode
+    data?: Record<string, string | number>
+    onClose?: () => void
+    onOpen?: () => void
+    trigger: (props: TriggerProps, state: TriggerState) => ReactNode
+},
+}
+`;
+
+exports[`MenuItem 1`] = `
+Object {
+  exportType: component,
+  props: {
+    children: ReactNode
+    data?: Record<string, string | number>
+    onClick?: () => void
+},
+}
+`;
+
 exports[`MonthPicker 1`] = `
 Object {
   exportType: component,
@@ -4081,27 +4108,11 @@ exports[`OverflowMenu 1`] = `
 Object {
   exportType: component,
   props: {
-    children: 
-        | (false | ReactElement<OverflowMenuItemProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)> | null)[]
-        | ReactElement<OverflowMenuItemProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)>
+    children: ReactNode
     data?: Record<string, string | number>
     label: string
     onClose?: () => void
     onOpen?: () => void
-},
-}
-`;
-
-exports[`OverflowMenuItem 1`] = `
-Object {
-  exportType: component,
-  props: {
-    children: ReactNode
-    data?: Record<string, string | number>
-    onClick?: () => void
-    type?: 
-        | "button"
-        | "link"
 },
 }
 `;

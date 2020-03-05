@@ -8,7 +8,7 @@ import {
   act,
 } from '@testing-library/react';
 import genericUserEvent from '@testing-library/user-event';
-import { BraidProvider, OverflowMenu, OverflowMenuItem } from '..';
+import { BraidProvider, Menu, MenuItem } from '..';
 import { wireframe } from '../../themes';
 
 // The generic `user-event` library currently doesn't have knowledge
@@ -32,24 +32,22 @@ function isVisible(menu: HTMLElement) {
   );
 }
 
-function renderOverflowMenu() {
+function renderMenu() {
   const openHandler = jest.fn();
   const closeHandler = jest.fn();
   const menuItemHandler = jest.fn();
 
   const { getAllByRole } = render(
     <BraidProvider theme={wireframe}>
-      <OverflowMenu label="Options" onOpen={openHandler} onClose={closeHandler}>
-        <OverflowMenuItem onClick={() => menuItemHandler('first')}>
-          First
-        </OverflowMenuItem>
-        <OverflowMenuItem onClick={() => menuItemHandler('second')}>
-          Second
-        </OverflowMenuItem>
-        <OverflowMenuItem onClick={() => menuItemHandler('third')}>
-          Third
-        </OverflowMenuItem>
-      </OverflowMenu>
+      <Menu
+        trigger={triggerProps => <button {...triggerProps}>Menu</button>}
+        onOpen={openHandler}
+        onClose={closeHandler}
+      >
+        <MenuItem onClick={() => menuItemHandler('first')}>First</MenuItem>
+        <MenuItem onClick={() => menuItemHandler('second')}>Second</MenuItem>
+        <MenuItem onClick={() => menuItemHandler('third')}>Third</MenuItem>
+      </Menu>
     </BraidProvider>,
   );
 
@@ -75,12 +73,12 @@ function getElements({
   };
 }
 
-describe('OverflowMenu', () => {
+describe('Menu', () => {
   describe('Mouse interactions', () => {
     afterEach(cleanup);
 
     it('should open menu when clicked', () => {
-      const { getAllByRole, openHandler, closeHandler } = renderOverflowMenu();
+      const { getAllByRole, openHandler, closeHandler } = renderMenu();
 
       const { menu, menuButton } = getElements({ getAllByRole });
 
@@ -95,7 +93,7 @@ describe('OverflowMenu', () => {
     });
 
     it('should toggle the menu when clicked again', () => {
-      const { getAllByRole, closeHandler } = renderOverflowMenu();
+      const { getAllByRole, closeHandler } = renderMenu();
 
       const { menu, menuButton } = getElements({ getAllByRole });
 
@@ -108,7 +106,7 @@ describe('OverflowMenu', () => {
     });
 
     it('should set the focused menu item on mouse over', () => {
-      const { getAllByRole } = renderOverflowMenu();
+      const { getAllByRole } = renderMenu();
 
       const { menuButton, menuItems: initialMenuItems } = getElements({
         getAllByRole,
@@ -125,7 +123,7 @@ describe('OverflowMenu', () => {
     });
 
     it('should unfocus all menu items on mouse out', () => {
-      const { getAllByRole } = renderOverflowMenu();
+      const { getAllByRole } = renderMenu();
 
       const { menu, menuButton, menuItems } = getElements({
         getAllByRole,
@@ -150,7 +148,7 @@ describe('OverflowMenu', () => {
         openHandler,
         closeHandler,
         menuItemHandler,
-      } = renderOverflowMenu();
+      } = renderMenu();
 
       const { menu, menuButton, menuItems } = getElements({ getAllByRole });
 
@@ -174,7 +172,7 @@ describe('OverflowMenu', () => {
     afterEach(cleanup);
 
     it('should open the menu with enter key', () => {
-      const { getAllByRole, openHandler, closeHandler } = renderOverflowMenu();
+      const { getAllByRole, openHandler, closeHandler } = renderMenu();
 
       const { menu, menuButton } = getElements({ getAllByRole });
       expect(isVisible(menu)).toBe(false);
@@ -189,7 +187,7 @@ describe('OverflowMenu', () => {
     });
 
     it('should open the menu with space key', () => {
-      const { getAllByRole, openHandler, closeHandler } = renderOverflowMenu();
+      const { getAllByRole, openHandler, closeHandler } = renderMenu();
 
       const { menu, menuButton } = getElements({ getAllByRole });
       expect(isVisible(menu)).toBe(false);
@@ -204,7 +202,7 @@ describe('OverflowMenu', () => {
     });
 
     it('should open the menu with down arrow key', () => {
-      const { getAllByRole, openHandler, closeHandler } = renderOverflowMenu();
+      const { getAllByRole, openHandler, closeHandler } = renderMenu();
 
       const { menu, menuButton } = getElements({ getAllByRole });
       expect(isVisible(menu)).toBe(false);
@@ -219,7 +217,7 @@ describe('OverflowMenu', () => {
     });
 
     it('should open the menu with up arrow key', () => {
-      const { getAllByRole, openHandler, closeHandler } = renderOverflowMenu();
+      const { getAllByRole, openHandler, closeHandler } = renderMenu();
 
       const { menu, menuButton } = getElements({ getAllByRole });
       expect(isVisible(menu)).toBe(false);
@@ -234,7 +232,7 @@ describe('OverflowMenu', () => {
     });
 
     it('should close the menu with escape key', () => {
-      const { getAllByRole, openHandler, closeHandler } = renderOverflowMenu();
+      const { getAllByRole, openHandler, closeHandler } = renderMenu();
 
       const { menu, menuButton, menuItems } = getElements({
         getAllByRole,
@@ -252,7 +250,7 @@ describe('OverflowMenu', () => {
     });
 
     it('should close the menu with tab key', () => {
-      const { getAllByRole, openHandler, closeHandler } = renderOverflowMenu();
+      const { getAllByRole, openHandler, closeHandler } = renderMenu();
 
       const { menu, menuButton, menuItems } = getElements({
         getAllByRole,
@@ -270,7 +268,7 @@ describe('OverflowMenu', () => {
     });
 
     it('should be able to navigate down the list and back to the start', () => {
-      const { getAllByRole } = renderOverflowMenu();
+      const { getAllByRole } = renderMenu();
 
       const { menu, menuButton } = getElements({ getAllByRole });
       expect(isVisible(menu)).toBe(false);
@@ -297,7 +295,7 @@ describe('OverflowMenu', () => {
     });
 
     it('should be able to navigate up the list and back to the end', () => {
-      const { getAllByRole } = renderOverflowMenu();
+      const { getAllByRole } = renderMenu();
 
       const { menu, menuButton } = getElements({ getAllByRole });
       expect(isVisible(menu)).toBe(false);
@@ -324,11 +322,7 @@ describe('OverflowMenu', () => {
     });
 
     it('should trigger the click handler when selecting a menu item with enter', () => {
-      const {
-        getAllByRole,
-        closeHandler,
-        menuItemHandler,
-      } = renderOverflowMenu();
+      const { getAllByRole, closeHandler, menuItemHandler } = renderMenu();
 
       const { menu, menuButton } = getElements({ getAllByRole });
 
