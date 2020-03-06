@@ -5,7 +5,7 @@
   Themeable design system for the SEEK Group.
   <hr />
 
-[![Build Status](https://img.shields.io/travis/seek-oss/braid-design-system/master.svg?style=for-the-badge)](http://travis-ci.org/seek-oss/braid-design-system) [![npm](https://img.shields.io/npm/v/braid-design-system.svg?style=for-the-badge)](https://www.npmjs.com/package/braid-design-system) [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=for-the-badge)](https://github.com/semantic-release/semantic-release) [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=for-the-badge)](http://commitizen.github.io/cz-cli/)
+[![Build Status](https://img.shields.io/travis/seek-oss/braid-design-system/master.svg?style=for-the-badge)](http://travis-ci.org/seek-oss/braid-design-system) [![npm](https://img.shields.io/npm/v/braid-design-system.svg?style=for-the-badge)](https://www.npmjs.com/package/braid-design-system)
 
   <hr />
 </div>
