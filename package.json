@@ -29,7 +29,7 @@
     "deploy-preview": "surge -p ./site/dist",
     "post-commit-status": "node scripts/postCommitStatus.js",
     "travis-deploy-once": "travis-deploy-once",
-    "release": "changeset publish"
+    "release": "yarn setup && changeset publish"
   },
   "husky": {
     "hooks": {
