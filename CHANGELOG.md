@@ -1,5 +1,11 @@
 # braid-design-system
 
+## 23.0.1
+
+### Patch Changes
+
+- eae3496: Fix release of v23.0.0
+
 ## 23.0.0
 
 ### Major Changes
