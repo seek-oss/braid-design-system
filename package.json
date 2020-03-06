@@ -1,6 +1,6 @@
 {
   "name": "braid-design-system",
-  "version": "0.0.0-development",
+  "version": "22.5.1",
   "description": "Themeable design system for the SEEK Group",
   "main": "lib/components/index.ts",
   "sideEffects": [
@@ -28,18 +28,11 @@
     "deploy": "node scripts/deploy.js",
     "deploy-preview": "surge -p ./site/dist",
     "post-commit-status": "node scripts/postCommitStatus.js",
-    "commit": "git-cz",
     "travis-deploy-once": "travis-deploy-once",
-    "semantic-release": "semantic-release"
-  },
-  "config": {
-    "commitizen": {
-      "path": "cz-conventional-changelog"
-    }
+    "release": "changeset publish"
   },
   "husky": {
     "hooks": {
-      "commit-msg": "commitlint --edit --extends seek",
       "pre-commit": "sku pre-commit"
     }
   },
@@ -76,6 +69,7 @@
     "sku": ">=8.7.1"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.5.2",
     "@commitlint/cli": "^7.2.1",
     "@octokit/rest": "^15.16.1",
     "@svgr/core": "^5.0.1",
@@ -114,7 +108,6 @@
     "react-syntax-highlighter": "^11.0.2",
     "react-transition-group": "^4.3.0",
     "renovate-config-seek": "0.4.0",
-    "semantic-release": "^15.13.3",
     "sku": "9.3.3",
     "surge": "^0.20.1",
     "travis-deploy-once": "^5.0.9",
