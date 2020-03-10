@@ -68,6 +68,9 @@ const input = [
       '&::-ms-clear': {
         display: 'none',
       },
+      '&::-webkit-search-cancel-button': {
+        WebkitAppearance: 'none',
+      },
     },
   }),
 ];
