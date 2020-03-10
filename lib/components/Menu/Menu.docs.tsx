@@ -1,13 +1,36 @@
 import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import { Box, Menu, MenuItem, Text, IconChevron } from '..';
+import { Box, Menu, MenuItem, Text, Stack, IconChevron } from '..';
+import { TextLink } from '../TextLink/TextLink';
+import { Link } from '../../../site/src/App/Documentation/Link';
 
 const docs: ComponentDocs = {
-  category: 'Logic', // new name???
+  category: 'Interaction',
   screenshotWidths: [320],
+  description: (
+    <Stack space="large">
+      <Text>
+        The `Menu` component is a low level component that can be used to build
+        higher level menu components that adhere to the{' '}
+        <TextLink href="https://www.w3.org/TR/wai-aria-practices-1.1/#menu">
+          WAI Authoring Practices
+        </TextLink>
+        . For example, the{' '}
+        <Link to="/components/OverflowMenu">OverflowMenu</Link> uses this
+        internally.
+      </Text>
+      <Text>
+        Implementations of this component must provide a `trigger` that can
+        accept DOM properties, in particular event handlers and aria properties
+        used to manage the interactions. This trigger should either be, or
+        identify as, a `button` element.
+      </Text>
+    </Stack>
+  ),
   examples: [
     {
       label: 'Default',
+      playroom: false,
       Example: ({ handler }) => (
         <Menu
           trigger={(triggerProps, { open }) => (
@@ -29,6 +52,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Right aligned menu',
+      playroom: false,
       Container: ({ children }) => (
         <Box style={{ paddingLeft: '100px', maxWidth: '200px' }}>
           {children}

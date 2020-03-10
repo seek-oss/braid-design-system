@@ -18,34 +18,32 @@ import Code from '../../../site/src/App/Code/Code';
 import Toast from './Toast';
 
 const description = (
-  <Box style={{ maxWidth: 700 }}>
-    <Stack space="large">
-      <Text>
-        The Toast component is a good way to communicate out of flow messages,
-        and optionally provide some helpful actions to respond with. However, as
-        these actions can <Strong>NOT</Strong> be communicated to a screen
-        reader, they should only ever be treated as a helpful enhancement of the
-        experience. If the user should take a specific action as a result of a
-        Toast being displayed, this should be communicated through the
-        description property as well.
-      </Text>
-      <Heading level="3">Setup</Heading>
-      <Text>
-        Unlike other Braid components, Toast is exposed via a hook and rendered
-        automatically at the bottom of the viewport using a{' '}
-        <TextLink href="https://reactjs.org/docs/portals.html">
-          React portal
-        </TextLink>
-        . This is managed by the ToastProvider component. The useToast hook
-        won&apos;t work unless it is nested within a ToastProvider. Most apps
-        should just render this within their top level BraidProvider component.
-      </Text>
-      <Text weight="strong">
-        Warning: Only a render a single ToastProvider, not one per useToast
-        usage.
-      </Text>
-      <Code playroom={false}>
-        {`
+  <Stack space="large">
+    <Text>
+      The Toast component is a good way to communicate out of flow messages, and
+      optionally provide some helpful actions to respond with. However, as these
+      actions can <Strong>NOT</Strong> be communicated to a screen reader, they
+      should only ever be treated as a helpful enhancement of the experience. If
+      the user should take a specific action as a result of a Toast being
+      displayed, this should be communicated through the description property as
+      well.
+    </Text>
+    <Heading level="3">Setup</Heading>
+    <Text>
+      Unlike other Braid components, Toast is exposed via a hook and rendered
+      automatically at the bottom of the viewport using a{' '}
+      <TextLink href="https://reactjs.org/docs/portals.html">
+        React portal
+      </TextLink>
+      . This is managed by the ToastProvider component. The useToast hook
+      won&apos;t work unless it is nested within a ToastProvider. Most apps
+      should just render this within their top level BraidProvider component.
+    </Text>
+    <Text weight="strong">
+      Warning: Only a render a single ToastProvider, not one per useToast usage.
+    </Text>
+    <Code playroom={false}>
+      {`
         import { BraidProvider, ToastProvider } from 'braid-design-system';
 
         export const App = () => (
@@ -56,10 +54,10 @@ const description = (
           </BraidProvider>
         )
       `}
-      </Code>
-      <Heading level="3">Usage</Heading>
-      <Code playroom={false}>
-        {`
+    </Code>
+    <Heading level="3">Usage</Heading>
+    <Code playroom={false}>
+      {`
         import { useToast } from 'braid-design-system';
 
         export const App = () => {
@@ -87,9 +85,8 @@ const description = (
           return <YourComponent onError={onError} onSuccess={onSuccess} />;
         }
       `}
-      </Code>
-    </Stack>
-  </Box>
+    </Code>
+  </Stack>
 );
 
 const docs: ComponentDocs = {
