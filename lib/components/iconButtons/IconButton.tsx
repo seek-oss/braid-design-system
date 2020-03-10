@@ -136,6 +136,7 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
               transition="fast"
               borderRadius="full"
               className={styles.focusOverlay}
+              hideForNonKeyboardUsers
             />
           ) : null}
           <Box position="relative" className={iconStyles}>

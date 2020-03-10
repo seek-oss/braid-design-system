@@ -5,7 +5,12 @@ type FieldOverlayVariant = 'default' | 'focus' | 'hover' | 'critical';
 export interface FieldOverlayProps
   extends Pick<
     OverlayProps,
-    'children' | 'visible' | 'background' | 'borderRadius' | 'className'
+    | 'children'
+    | 'visible'
+    | 'hideForNonKeyboardUsers'
+    | 'background'
+    | 'borderRadius'
+    | 'className'
   > {
   variant?: FieldOverlayVariant;
 }

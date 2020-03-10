@@ -86,7 +86,11 @@ const ButtonChildren = ({ children }: ButtonChildrenProps) => {
 
   return (
     <Fragment>
-      <FieldOverlay variant="focus" className={styles.focusOverlay} />
+      <FieldOverlay
+        variant="focus"
+        hideForNonKeyboardUsers
+        className={styles.focusOverlay}
+      />
       <FieldOverlay
         background={buttonVariant.backgroundHover}
         className={styles.hoverOverlay}
