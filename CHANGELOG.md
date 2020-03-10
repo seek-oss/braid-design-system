@@ -1,5 +1,11 @@
 # braid-design-system
 
+## 23.0.2
+
+### Patch Changes
+
+- 9890660: Hide webkit native clear field on search type inputs
+
 ## 23.0.1
 
 ### Patch Changes
