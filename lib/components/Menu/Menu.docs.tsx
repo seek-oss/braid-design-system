@@ -6,7 +6,7 @@ import { Link } from '../../../site/src/App/Documentation/Link';
 
 const docs: ComponentDocs = {
   category: 'Interaction',
-  screenshotWidths: [320],
+  screenshotWidths: [],
   description: (
     <Stack space="large">
       <Text>
