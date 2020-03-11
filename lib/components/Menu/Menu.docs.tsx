@@ -3,6 +3,7 @@ import { ComponentDocs } from '../../../site/src/types';
 import { Box, Menu, MenuItem, Text, Stack, IconChevron } from '..';
 import { TextLink } from '../TextLink/TextLink';
 import { Link } from '../../../site/src/App/Documentation/Link';
+import dedent from 'dedent';
 
 const docs: ComponentDocs = {
   category: 'Interaction',
@@ -22,8 +23,7 @@ const docs: ComponentDocs = {
       <Text>
         Implementations of this component must provide a `trigger` that can
         accept DOM properties, in particular event handlers and aria properties
-        used to manage the interactions. This trigger should either be, or
-        identify as, a `button` element.
+        used to manage the interactions.
       </Text>
     </Stack>
   ),
@@ -31,6 +31,24 @@ const docs: ComponentDocs = {
     {
       label: 'Default',
       playroom: false,
+      code: dedent`
+        <Menu
+          trigger={(triggerProps, { open }) => (
+            <Box component="button" cursor="pointer" {...triggerProps}>
+              <Text>
+                Menu{' '}
+                <IconChevron
+                  direction={open ? 'up' : 'down'}
+                  alignY="lowercase"
+                />
+              </Text>
+            </Box>
+          )}
+        >
+          <MenuItem>First</MenuItem>
+          <MenuItem>Second</MenuItem>
+        </Menu>
+      `,
       Example: ({ handler }) => (
         <Menu
           trigger={(triggerProps, { open }) => (

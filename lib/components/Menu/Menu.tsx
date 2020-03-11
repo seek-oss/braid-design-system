@@ -223,6 +223,8 @@ export const Menu = ({
   const triggerProps = {
     'aria-haspopup': true,
     'aria-expanded': open,
+    role: 'button',
+    tabIndex: 0,
     ref: buttonRef,
     onKeyUp: onTriggerKeyUp,
     onKeyDown: onTriggerKeyDown,
