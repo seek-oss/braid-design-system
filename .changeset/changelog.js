@@ -44,7 +44,7 @@ const changelogFunctions = {
 
       const versionInfo = links.pull === null ? changeset.commit : links.pull;
 
-      const summary = `- ${firstLine}: ${versionInfo}`;
+      const summary = `- ${firstLine} (${versionInfo})`;
 
       return `${summary}\n${futureLines.map(l => `  ${l}`).join('\n')}`;
     } else {
