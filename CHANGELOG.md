@@ -1,5 +1,11 @@
 # braid-design-system
 
+## 23.0.3
+
+### Patch Changes
+
+- 273ed8a: seekUnifiedBeta: Decrease touchable height to 44px
+
 ## 23.0.2
 
 ### Patch Changes
