@@ -42,9 +42,7 @@ const changelogFunctions = {
         commit: changeset.commit,
       });
 
-      const versionInfo = `${changeset.commit} ${
-        links.pull === null ? '' : links.pull
-      }`;
+      const versionInfo = links.pull === null ? changeset.commit : links.pull;
 
       const summary = `- ${firstLine}: ${versionInfo}`;
 
