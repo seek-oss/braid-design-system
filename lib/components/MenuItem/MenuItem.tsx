@@ -42,7 +42,7 @@ export const MenuItem = ({ children, onClick, data }: MenuItemProps) => {
   if (!menuContext) {
     if (process.env.NODE_ENV !== 'production') {
       throw new Error(
-        'A MenuItem must be rendered as an immediate child of an Menu. See the documentation for correct usage: https://seek-oss.github.io/braid-design-system/components/Menu',
+        'A MenuItem must be rendered as an immediate child of an Menu. See the documentation for correct usage: https://seek-oss.github.io/braid-design-system/components/MenuRenderer',
       );
     } else {
       throw new Error('MenuItem rendered outside menu context');
