@@ -1399,6 +1399,14 @@
   dependencies:
     extendable-error "^0.1.5"
 
+"@changesets/get-github-info@^0.4.1":
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/@changesets/get-github-info/-/get-github-info-0.4.1.tgz#359562fb9ad1ba38b90f8d097337c8e36372d96c"
+  integrity sha512-UtBaB7rS2mvEvvsJCpNsR86wLd5dPaupXBCHDdcYY1kDATpLBrvCNj+Qq8HVDQeaYb4BnTOVl7sGjtnzGEMaxQ==
+  dependencies:
+    dataloader "^1.4.0"
+    node-fetch "^2.5.0"
+
 "@changesets/get-release-plan@^0.4.0":
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/@changesets/get-release-plan/-/get-release-plan-0.4.0.tgz#77cb074c4385ccc10b034bc10c2f03f533ce2e86"
@@ -5586,6 +5594,11 @@ data-urls@^1.0.0:
     abab "^2.0.0"
     whatwg-mimetype "^2.2.0"
     whatwg-url "^7.0.0"
+
+dataloader@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/dataloader/-/dataloader-1.4.0.tgz#bca11d867f5d3f1b9ed9f737bd15970c65dff5c8"
+  integrity sha512-68s5jYdlvasItOJnCuI2Q9s4q98g0pCyL3HrcKJu8KNugUl8ahgmZYg38ysLTgQjjXX3H8CJLkAvWrclWfcalw==
 
 date-fns@^1.27.2, date-fns@^1.30.1:
   version "1.30.1"
@@ -10818,7 +10831,7 @@ node-emoji@^1.10.0:
   dependencies:
     lodash.toarray "^4.4.0"
 
-node-fetch@^2.1.1, node-fetch@^2.6.0:
+node-fetch@^2.1.1, node-fetch@^2.5.0, node-fetch@^2.6.0:
   version "2.6.0"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.0.tgz#e633456386d4aa55863f676a7ab0daa8fdecb0fd"
   integrity sha512-8dG4H5ujfvFiqDmVu9fQ5bOHUC15JMjMY/Zumv26oOvvVJjM67KF8koCWIabKQ1GJIa9r2mMZscBq/TbdOcmNA==
