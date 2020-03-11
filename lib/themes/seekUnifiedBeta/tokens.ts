@@ -130,7 +130,7 @@ const tokens: TreatTokens = {
     large: 1280,
   },
   grid: 4,
-  touchableSize: 12,
+  touchableSize: 11,
   space: {
     gutter: 6,
     xxsmall: 1,
