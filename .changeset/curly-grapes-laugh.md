@@ -7,7 +7,7 @@ Add customisable menu component
 ## Breaking Changes
 
 - Rename `OverflowMenuItem` to `MenuItem`.
-- Removed `type="link"` from `OverflowMenuItem` due to accessibility issue with the approach (based on review of consumer usage, it did not seem to be used).
+- Removed `type="link"` from `OverflowMenuItem` due to an accessibility issue with the approach (based on review of consumer usage, it did not seem to be used).
 
 ## Features
 
@@ -28,7 +28,7 @@ Encapsulates all the behaviours of an accessible menu button, allowing consumers
 </Menu>
 ```
 
-## Migrations Guide
+## Migration Guide
 
 ### `OverflowMenuItem`
 
@@ -41,7 +41,7 @@ Rename `OverflowMenuItem` to `MenuItem`.
  </OverflowMenu>
 ```
 
-Changing the `type` is no longer supported due to accessibility issue with previous implementation. Please get in contact via slack if you depended on this.
+Changing the `type` is no longer supported due to an accessibility issue with the previous implementation. Please get in contact via Slack if you depended on this.
 
 ```diff
  <OverflowMenu label="Overflow">
