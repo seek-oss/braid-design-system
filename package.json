@@ -70,6 +70,7 @@
   },
   "devDependencies": {
     "@changesets/cli": "^2.5.2",
+    "@changesets/get-github-info": "^0.4.1",
     "@octokit/rest": "^15.16.1",
     "@svgr/core": "^5.0.1",
     "@svgr/plugin-jsx": "^5.0.1",
