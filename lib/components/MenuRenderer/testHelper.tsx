@@ -10,7 +10,7 @@ import {
 import genericUserEvent from '@testing-library/user-event';
 import { BraidProvider, MenuItem } from '..';
 import { wireframe } from '../../themes';
-import { MenuProps } from './Menu';
+import { MenuRendererProps } from './MenuRenderer';
 
 // The generic `user-event` library currently doesn't have knowledge
 // of the react lifecycle, e.g. it's methods are not wrapped with
@@ -36,7 +36,7 @@ function isVisible(menu: HTMLElement) {
 interface MenuTestSuiteParams {
   name: string;
   Component: React.FunctionComponent<
-    Pick<MenuProps, 'onOpen' | 'onClose' | 'children'>
+    Pick<MenuRendererProps, 'onOpen' | 'onClose' | 'children'>
   >;
 }
 

@@ -1,11 +1,12 @@
 import React from 'react';
 import { useStyles } from 'sku/treat';
-import { Menu, MenuProps } from '../Menu/Menu';
+import { MenuRenderer, MenuRendererProps } from '../MenuRenderer/MenuRenderer';
 import { OverflowButton } from '../iconButtons/OverflowButton/OverflowButton';
 import { Box } from '../Box/Box';
 import * as styleRefs from './OverflowMenu.treat';
 
-interface OverflowMenuProps extends Omit<MenuProps, 'trigger' | 'align'> {
+interface OverflowMenuProps
+  extends Omit<MenuRendererProps, 'trigger' | 'align'> {
   label: string;
 }
 
@@ -17,7 +18,7 @@ export const OverflowMenu = ({
   const styles = useStyles(styleRefs);
 
   return (
-    <Menu
+    <MenuRenderer
       trigger={(triggerProps, { open }) => (
         <Box className={styles.triggerOffset}>
           <OverflowButton label={label} active={open} {...triggerProps} />
@@ -27,6 +28,6 @@ export const OverflowMenu = ({
       {...menuProps}
     >
       {children}
-    </Menu>
+    </MenuRenderer>
   );
 };

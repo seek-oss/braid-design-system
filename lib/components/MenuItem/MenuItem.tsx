@@ -10,8 +10,8 @@ import { useStyles } from 'sku/react-treat';
 import { Box } from '../Box/Box';
 import { useTouchableSpace } from '../../hooks/typography';
 import { normalizeKey } from '../private/normalizeKey';
-import { MenuContext } from '../Menu/Menu';
-import { actionTypes, Action } from '../Menu/Menu.actions';
+import { MenuContext } from '../MenuRenderer/MenuRenderer';
+import { actionTypes, Action } from '../MenuRenderer/MenuRenderer.actions';
 import * as styleRefs from './MenuItem.treat';
 import { Text } from '../Text/Text';
 import buildDataAttributes, {

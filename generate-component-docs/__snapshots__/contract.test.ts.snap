@@ -4032,7 +4032,18 @@ Object {
 }
 `;
 
-exports[`Menu 1`] = `
+exports[`MenuItem 1`] = `
+Object {
+  exportType: component,
+  props: {
+    children: ReactNode
+    data?: Record<string, string | number>
+    onClick?: () => void
+},
+}
+`;
+
+exports[`MenuRenderer 1`] = `
 Object {
   exportType: component,
   props: {
@@ -4044,17 +4055,6 @@ Object {
     onClose?: () => void
     onOpen?: () => void
     trigger: (props: TriggerProps, state: TriggerState) => ReactNode
-},
-}
-`;
-
-exports[`MenuItem 1`] = `
-Object {
-  exportType: component,
-  props: {
-    children: ReactNode
-    data?: Record<string, string | number>
-    onClick?: () => void
 },
 }
 `;

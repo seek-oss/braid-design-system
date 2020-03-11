@@ -1,11 +1,11 @@
 import React from 'react';
 import { menuTestSuite } from './testHelper';
-import { Menu } from './Menu';
+import { MenuRenderer } from './MenuRenderer';
 
 menuTestSuite({
   name: 'Base',
   Component: props => (
-    <Menu
+    <MenuRenderer
       trigger={triggerProps => <button {...triggerProps}>Menu</button>}
       {...props}
     />

@@ -1,9 +1,16 @@
 import React from 'react';
-import { ComponentDocs } from '../../../site/src/types';
-import { Box, Menu, MenuItem, Text, Stack, IconChevron } from '..';
-import { TextLink } from '../TextLink/TextLink';
-import { Link } from '../../../site/src/App/Documentation/Link';
 import dedent from 'dedent';
+import { ComponentDocs } from '../../../site/src/types';
+import {
+  Box,
+  MenuRenderer,
+  MenuItem,
+  Text,
+  Stack,
+  IconChevron,
+  TextLink,
+} from '..';
+import { Link } from '../../../site/src/App/Documentation/Link';
 
 const docs: ComponentDocs = {
   category: 'Interaction',
@@ -30,11 +37,10 @@ const docs: ComponentDocs = {
   examples: [
     {
       label: 'Default',
-      playroom: false,
       code: dedent`
-        <Menu
+        <MenuRenderer
           trigger={(triggerProps, { open }) => (
-            <Box component="button" cursor="pointer" {...triggerProps}>
+            <Box {...triggerProps}>
               <Text>
                 Menu{' '}
                 <IconChevron
@@ -45,14 +51,14 @@ const docs: ComponentDocs = {
             </Box>
           )}
         >
-          <MenuItem>First</MenuItem>
-          <MenuItem>Second</MenuItem>
-        </Menu>
+          <MenuItem onClick={() => {}}>First</MenuItem>
+          <MenuItem onClick={() => {}}>Second</MenuItem>
+        </MenuRenderer>
       `,
       Example: ({ handler }) => (
-        <Menu
+        <MenuRenderer
           trigger={(triggerProps, { open }) => (
-            <Box component="button" cursor="pointer" {...triggerProps}>
+            <Box {...triggerProps}>
               <Text>
                 Menu{' '}
                 <IconChevron
@@ -65,22 +71,40 @@ const docs: ComponentDocs = {
         >
           <MenuItem onClick={handler}>First</MenuItem>
           <MenuItem onClick={handler}>Second</MenuItem>
-        </Menu>
+        </MenuRenderer>
       ),
     },
     {
       label: 'Right aligned menu',
-      playroom: false,
       Container: ({ children }) => (
         <Box style={{ paddingLeft: '100px', maxWidth: '200px' }}>
           {children}
         </Box>
       ),
-      Example: ({ handler }) => (
-        <Menu
+      code: dedent`
+        <MenuRenderer
           align="right"
           trigger={(triggerProps, { open }) => (
-            <Box component="button" cursor="pointer" {...triggerProps}>
+            <Box {...triggerProps}>
+              <Text>
+                Menu{' '}
+                <IconChevron
+                  direction={open ? 'up' : 'down'}
+                  alignY="lowercase"
+                />
+              </Text>
+            </Box>
+          )}
+        >
+          <MenuItem onClick={() => {}}>First</MenuItem>
+          <MenuItem onClick={() => {}}>Second</MenuItem>
+        </MenuRenderer>
+      `,
+      Example: ({ handler }) => (
+        <MenuRenderer
+          align="right"
+          trigger={(triggerProps, { open }) => (
+            <Box {...triggerProps}>
               <Text>
                 Menu{' '}
                 <IconChevron
@@ -93,7 +117,7 @@ const docs: ComponentDocs = {
         >
           <MenuItem onClick={handler}>First</MenuItem>
           <MenuItem onClick={handler}>Second</MenuItem>
-        </Menu>
+        </MenuRenderer>
       ),
     },
   ],

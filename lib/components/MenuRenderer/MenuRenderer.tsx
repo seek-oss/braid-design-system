@@ -14,8 +14,8 @@ import { Box } from '../Box/Box';
 import { normalizeKey } from '../private/normalizeKey';
 import { getNextIndex } from '../private/getNextIndex';
 import { Overlay } from '../private/Overlay/Overlay';
-import { actionTypes, Action } from './Menu.actions';
-import * as styleRefs from './Menu.treat';
+import { actionTypes, Action } from './MenuRenderer.actions';
+import * as styleRefs from './MenuRenderer.treat';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
@@ -40,7 +40,7 @@ interface TriggerProps {
 interface TriggerState {
   open: boolean;
 }
-export interface MenuProps {
+export interface MenuRendererProps {
   trigger: (props: TriggerProps, state: TriggerState) => ReactNode;
   align?: 'left' | 'right';
   onOpen?: () => void;
@@ -79,14 +79,14 @@ const initialState: State = {
   open: false,
   highlightIndex: CLOSED_INDEX,
 };
-export const Menu = ({
+export const MenuRenderer = ({
   onOpen,
   onClose,
   trigger,
   align = 'left',
   children,
   data,
-}: MenuProps) => {
+}: MenuRendererProps) => {
   const styles = useStyles(styleRefs);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const hasOpened = useRef<boolean>(false);

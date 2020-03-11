@@ -28,7 +28,7 @@ export { Heading } from './Heading/Heading';
 export { Hidden } from './Hidden/Hidden';
 export { Inline } from './Inline/Inline';
 export { Loader } from './Loader/Loader';
-export { Menu } from './Menu/Menu';
+export { MenuRenderer } from './MenuRenderer/MenuRenderer';
 export { MenuItem } from './MenuItem/MenuItem';
 export { OverflowMenu } from './OverflowMenu/OverflowMenu';
 export { MonthPicker } from './MonthPicker/MonthPicker';

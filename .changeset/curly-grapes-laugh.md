@@ -2,16 +2,16 @@
 'braid-design-system': major
 ---
 
-Add customisable menu component
+Add customisable `MenuRenderer` component
 
-## Breaking Changes
+**BREAKING CHANGES**
 
 - Rename `OverflowMenuItem` to `MenuItem`.
 - Removed `type="link"` from `OverflowMenuItem` due to an accessibility issue with the approach (based on review of consumer usage, it did not seem to be used).
 
-## Features
+**FEATURES**
 
-### `Menu`
+**`MenuRenderer`**
 
 Encapsulates all the behaviours of an accessible menu button, allowing consumers to define a custom `trigger` to open the menu. The trigger function receives two arguments:
 
@@ -19,18 +19,18 @@ Encapsulates all the behaviours of an accessible menu button, allowing consumers
 2. Menu state object containing the `open` state.
 
 ```tsx
-<Menu
+<MenuRenderer
   trigger={(triggerProps, { open }) => (
     <button {...triggerProps}>Menu</button>
   )}
 >
   <MenuItem onClick={...}>Option</MenuItem>
-</Menu>
+</MenuRenderer>
 ```
 
-## Migration Guide
+**MIGRATION GUIDE**
 
-### `OverflowMenuItem`
+**`OverflowMenuItem`**
 
 Rename `OverflowMenuItem` to `MenuItem`.
 
