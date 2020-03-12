@@ -14,8 +14,11 @@ import { ConfigConsumer } from '../ConfigContext';
 import { ComponentDocs } from '../../types';
 import * as styleRefs from './Documentation.treat';
 import undocumentedExports from '../../undocumentedExports.json';
+import { useThemeSettings } from '../ThemedExample/ThemedExample';
+import { IconButton } from '../../../../lib/components/iconButtons/IconButton';
+import { IconSettings } from '../../../../lib/components';
 
-const { Text, Box, Hidden, Stack } = components;
+const { Text, Box, Hidden, Stack, MenuRenderer, MenuItem } = components;
 
 const componentDocsContext = require.context(
   '../../../../lib/components',
@@ -77,6 +80,7 @@ const responsiveGutter = ['gutter', 'large'] as const;
 
 export const Documentation = () => {
   const styles = useStyles(styleRefs);
+  const { setTheme } = useThemeSettings();
 
   const location = useLocation();
   const [isMenuOpen, setMenuOpen] = useState(
@@ -137,6 +141,18 @@ export const Documentation = () => {
                 onClick={() => setMenuOpen(!isMenuOpen)}
               />
             </Hidden>
+
+            <MenuRenderer
+              trigger={triggerProps => (
+                <IconButton label="Theme settings" {...triggerProps}>
+                  {iconProps => <IconSettings {...iconProps} />}
+                </IconButton>
+              )}
+              align="right"
+            >
+              <MenuItem onClick={() => setTheme('seekAnz')}>Seek ANZ</MenuItem>
+              <MenuItem onClick={() => setTheme('jobsDb')}>Jobs DB</MenuItem>
+            </MenuRenderer>
           </Box>
 
           <Box

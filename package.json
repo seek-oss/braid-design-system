@@ -104,6 +104,7 @@
     "react-router-scroll-memory": "^2.0.5",
     "react-syntax-highlighter": "^11.0.2",
     "react-transition-group": "^4.3.0",
+    "react-use": "^13.27.0",
     "renovate-config-seek": "0.4.0",
     "sku": "9.3.3",
     "surge": "^0.20.1",
