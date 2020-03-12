@@ -112,8 +112,7 @@
     "uuid": "^3.3.3"
   },
   "resolutions": {
-    "acorn": "6.3.0",
-    "playroom": "0.16.0"
+    "playroom": "0.16.1"
   },
   "volta": {
     "node": "12.14.1",
