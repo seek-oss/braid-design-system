@@ -10,17 +10,15 @@ export const HideFocusRingsRoot = ({ children }: HideFocusRingsRootProps) => {
   const [hideFocusRings, setHideFocusRings] = useState(false);
 
   useEffect(() => {
-    const hide = () => setHideFocusRings(true);
-    const show = () => setHideFocusRings(false);
+    const eventName = hideFocusRings ? 'keydown' : 'mousemove';
+    const toggleFocusRings = () => setHideFocusRings(x => !x);
 
-    window.addEventListener('mousemove', hide);
-    window.addEventListener('keydown', show);
+    window.addEventListener(eventName, toggleFocusRings);
 
     return () => {
-      window.removeEventListener('mousemove', hide);
-      window.removeEventListener('keydown', show);
+      window.removeEventListener(eventName, toggleFocusRings);
     };
-  }, []);
+  }, [hideFocusRings]);
 
   return (
     <div {...(hideFocusRings ? { [hideFocusRingsDataAttribute]: true } : {})}>
