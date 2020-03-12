@@ -17,7 +17,7 @@ import {
   Tiles,
   ContentBlock,
   OverflowMenu,
-  OverflowMenuItem,
+  MenuItem,
   TextLink,
 } from '../../../../../lib/components';
 import { HeadingProps } from '../../../../../lib/components/Heading/Heading';
@@ -433,20 +433,20 @@ const page: Page = {
                 </Column>
                 <Column width="content">
                   <OverflowMenu label="Options">
-                    <OverflowMenuItem
+                    <MenuItem
                       onClick={() => {
                         /* */
                       }}
                     >
                       First
-                    </OverflowMenuItem>
-                    <OverflowMenuItem
+                    </MenuItem>
+                    <MenuItem
                       onClick={() => {
                         /* */
                       }}
                     >
                       Second
-                    </OverflowMenuItem>
+                    </MenuItem>
                   </OverflowMenu>
                 </Column>
               </Columns>

@@ -87,24 +87,25 @@ export const Documentation = () => {
   const showMenuButton = /(\/(guides|components|foundations)\/).*/.test(
     location.pathname,
   );
+  const filteredComponents = Object.keys(components)
+    .filter(name => {
+      if (name.startsWith('Icon')) {
+        return false;
+      }
+
+      return !undocumentedExports.includes(name);
+    })
+    .sort();
 
   const componentsByCategory = groupBy(
-    Object.keys(components)
-      .filter(name => {
-        if (name.startsWith('Icon')) {
-          return false;
-        }
+    filteredComponents.map(name => {
+      const docs: ComponentDocs = getComponentDocs({
+        componentName: name,
+        isIcon: false,
+      });
 
-        return !undocumentedExports.includes(name);
-      })
-      .map(name => {
-        const docs: ComponentDocs = getComponentDocs({
-          componentName: name,
-          isIcon: false,
-        });
-
-        return { name, ...docs };
-      }),
+      return { name, ...docs };
+    }),
     component => component.category,
   );
 
@@ -210,15 +211,12 @@ export const Documentation = () => {
 
                   <MenuSectionList
                     title="All Components"
-                    items={Object.keys(components)
-                      .filter(x => !/^(Icon|use|BoxRenderer)/.test(x))
-                      .sort()
-                      .map(componentName => ({
-                        name: componentName,
-                        path: `/components/${componentName}`,
-                        external: false,
-                        onClick: () => setMenuOpen(false),
-                      }))}
+                    items={filteredComponents.map(componentName => ({
+                      name: componentName,
+                      path: `/components/${componentName}`,
+                      external: false,
+                      onClick: () => setMenuOpen(false),
+                    }))}
                   />
                 </Stack>
               </Box>
