@@ -17,7 +17,7 @@ export interface OverlayProps
     >
   > {
   visible?: boolean;
-  hideForNonKeyboardUsers?: boolean;
+  onlyVisibleForKeyboardUsers?: boolean;
 }
 
 export const Overlay = ({
@@ -26,7 +26,7 @@ export const Overlay = ({
   boxShadow,
   transition,
   visible = false,
-  hideForNonKeyboardUsers = false,
+  onlyVisibleForKeyboardUsers = false,
   className,
   children,
 }: OverlayProps) => {
@@ -46,7 +46,7 @@ export const Overlay = ({
       right={0}
       className={[
         !visible ? styles.hidden : null,
-        hideForNonKeyboardUsers ? hideFocusRingsClass : null,
+        onlyVisibleForKeyboardUsers ? hideFocusRingsClass : null,
         className,
       ]}
     >

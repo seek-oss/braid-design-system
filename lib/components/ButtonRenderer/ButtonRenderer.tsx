@@ -88,7 +88,7 @@ const ButtonChildren = ({ children }: ButtonChildrenProps) => {
     <Fragment>
       <FieldOverlay
         variant="focus"
-        hideForNonKeyboardUsers
+        onlyVisibleForKeyboardUsers
         className={styles.focusOverlay}
       />
       <FieldOverlay

@@ -7,7 +7,7 @@ export interface FieldOverlayProps
     OverlayProps,
     | 'children'
     | 'visible'
-    | 'hideForNonKeyboardUsers'
+    | 'onlyVisibleForKeyboardUsers'
     | 'background'
     | 'borderRadius'
     | 'className'

@@ -1,9 +1,9 @@
 import { style } from 'sku/treat';
-import { hideFocusRingsRootClass } from './hideFocusRingsRootClass';
+import { hideFocusRingsDataAttribute } from './HideFocusRingsRoot';
 
 export const hideFocusRingsClass = style({
   selectors: {
-    [`.${hideFocusRingsRootClass} &`]: {
+    [`[${hideFocusRingsDataAttribute}] &`]: {
       opacity: '0 !important',
     },
   },
