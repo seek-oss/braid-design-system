@@ -18,8 +18,8 @@ const docs: ComponentDocs = {
   description: (
     <Stack space="large">
       <Text>
-        The `MenuRenderer` component is a low level component that can be used to build
-        higher level menu components that adhere to the{' '}
+        The `MenuRenderer` component is a low level component that can be used
+        to build higher level menu components that adhere to the{' '}
         <TextLink href="https://www.w3.org/TR/wai-aria-practices-1.1/#menu">
           WAI Authoring Practices
         </TextLink>
