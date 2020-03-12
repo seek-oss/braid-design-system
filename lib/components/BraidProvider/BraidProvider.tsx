@@ -1,8 +1,8 @@
 import React, { createContext, useContext, ReactNode } from 'react';
 import { TreatProvider } from 'sku/treat';
 import { ensureResetImported } from '../../reset/resetTracker';
-import { BraidTheme } from '../../themes/BraidTheme.d';
 import { HideFocusRingsRoot } from '../private/hideFocusRings/hideFocusRings';
+import { BraidTheme } from '../../themes/BraidTheme.d';
 
 if (process.env.NODE_ENV === 'development') {
   ensureResetImported();
@@ -35,7 +35,7 @@ export const BraidProvider = ({
   return (
     <BraidThemeContext.Provider value={theme}>
       <TreatProvider theme={theme.treatTheme}>
-        {styleBody && !alreadyInBraidProvider ? (
+        {styleBody ? (
           <style type="text/css">{`body{margin:0;padding:0;background:${theme.background}}`}</style>
         ) : null}
         {alreadyInBraidProvider ? (

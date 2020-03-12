@@ -1,7 +1,7 @@
 import React from 'react';
 import { useStyles } from 'sku/react-treat';
 import { Box, BoxProps } from '../../Box/Box';
-import { hideFocusRingsClass } from '../hideFocusRings/hideFocusRings';
+import { hideFocusRingsClassName } from '../hideFocusRings/hideFocusRings';
 import * as styleRefs from './Overlay.treat';
 
 export interface OverlayProps
@@ -17,7 +17,7 @@ export interface OverlayProps
     >
   > {
   visible?: boolean;
-  onlyVisibleForKeyboardUsers?: boolean;
+  onlyVisibleForKeyboardNavigation?: boolean;
 }
 
 export const Overlay = ({
@@ -26,7 +26,7 @@ export const Overlay = ({
   boxShadow,
   transition,
   visible = false,
-  onlyVisibleForKeyboardUsers = false,
+  onlyVisibleForKeyboardNavigation = false,
   className,
   children,
 }: OverlayProps) => {
@@ -46,7 +46,7 @@ export const Overlay = ({
       right={0}
       className={[
         !visible ? styles.hidden : null,
-        onlyVisibleForKeyboardUsers ? hideFocusRingsClass : null,
+        onlyVisibleForKeyboardNavigation ? hideFocusRingsClassName : null,
         className,
       ]}
     >
