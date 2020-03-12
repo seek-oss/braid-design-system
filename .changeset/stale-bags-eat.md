@@ -2,7 +2,7 @@
 'braid-design-system': patch
 ---
 
-Hide focus rings on buttons for non-keyboard users.
+Only show focus rings on buttons for keyboard navigation.
 
 Browsers automatically show focus rings on buttons when clicking/tapping on them, even though (for our purposes, at least) they're undesirable from a visual design perspective and redudant from a UX perspective.
 
