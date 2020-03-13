@@ -2,6 +2,7 @@ import React, { createContext, useContext, ReactNode } from 'react';
 import { TreatProvider } from 'sku/treat';
 import { ensureResetImported } from '../../reset/resetTracker';
 import { HideFocusRingsRoot } from '../private/hideFocusRings/hideFocusRings';
+import { BraidTestProviderContext } from '../BraidTestProvider/BraidTestProviderContext';
 import { BraidTheme } from '../../themes/BraidTheme.d';
 
 if (process.env.NODE_ENV === 'development') {
@@ -31,6 +32,7 @@ export const BraidProvider = ({
   children,
 }: BraidProviderProps) => {
   const alreadyInBraidProvider = Boolean(useContext(BraidThemeContext));
+  const inTestProvider = useContext(BraidTestProviderContext);
 
   return (
     <BraidThemeContext.Provider value={theme}>
@@ -38,7 +40,7 @@ export const BraidProvider = ({
         {styleBody ? (
           <style type="text/css">{`body{margin:0;padding:0;background:${theme.background}}`}</style>
         ) : null}
-        {alreadyInBraidProvider ? (
+        {alreadyInBraidProvider || inTestProvider ? (
           children
         ) : (
           <HideFocusRingsRoot>{children}</HideFocusRingsRoot>

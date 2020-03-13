@@ -4,6 +4,7 @@ import {
   BraidProvider,
   BraidProviderProps,
 } from '../BraidProvider/BraidProvider';
+import { BraidTestProviderContext } from './BraidTestProviderContext';
 
 interface BraidTestProviderProps
   extends Omit<BraidProviderProps, 'theme' | 'styleBody'> {
@@ -13,9 +14,11 @@ export const BraidTestProvider = ({
   themeName = 'wireframe',
   ...restProps
 }: BraidTestProviderProps) => (
-  <BraidProvider
-    {...restProps}
-    theme={themes[themeName]}
-    styleBody={undefined}
-  />
+  <BraidTestProviderContext.Provider value={true}>
+    <BraidProvider
+      {...restProps}
+      theme={themes[themeName]}
+      styleBody={undefined}
+    />
+  </BraidTestProviderContext.Provider>
 );
