@@ -1,79 +1,72 @@
 import { globalStyle, style } from 'sku/treat';
 
-const desktopMenuWidth = '284px';
-const headerHeight = '100px';
+const menuWidth = 240;
+const headerHeight = '76px';
 
 export const isOpen = style({});
 
 export const header = style(({ utils }) =>
   utils.responsiveStyle({
     mobile: {
-      background: 'white',
       zIndex: 3,
       selectors: {
-        [`${isOpen} &`]: {
+        [`&${isOpen}`]: {
           position: 'fixed',
         },
       },
     },
-    desktop: {
+    tablet: {
       position: 'fixed',
-      width: desktopMenuWidth,
     },
   }),
 );
 
 export const container = style({
   paddingTop: headerHeight,
+  marginBottom: headerHeight,
 });
 
-export const menu = style(theme => ({
-  zIndex: 2,
+export const contentWrapper = style({
   top: headerHeight,
-  left: 0,
-  bottom: 0,
-  right: 0,
-  transition: 'opacity .2s ease, transform .2s ease',
+});
+
+export const noContent = style({
+  opacity: 0,
+});
+
+export const menu = style(({ breakpoint }) => ({
+  top: headerHeight,
+  width: menuWidth,
   '@media': {
-    [`screen and (max-width: ${theme.breakpoint.desktop - 1}px)`]: {
-      background: 'white',
-      opacity: 0,
-      transform: 'translateY(-5px)',
-      pointerEvents: 'none',
+    [`screen and (max-width: ${breakpoint.tablet - 1}px)`]: {
       selectors: {
-        [`${isOpen} &`]: {
-          opacity: 1,
-          transform: 'none',
-          pointerEvents: 'auto',
+        [`&:not(${isOpen})`]: {
+          opacity: 0,
         },
       },
-    },
-    [`screen and (min-width: ${theme.breakpoint.desktop}px)`]: {
-      width: desktopMenuWidth,
     },
   },
 }));
 
-export const logo = style({
-  width: 36,
-});
-
-export const content = style(theme => ({
-  paddingBottom: 80,
+export const content = style(({ breakpoint, space, grid }) => ({
   '@media': {
-    [`screen and (max-width: ${theme.breakpoint.desktop - 1}px)`]: {
-      opacity: 1,
-      pointerEvents: 'auto',
-      transition: 'opacity .1s ease, transform .3s ease',
+    [`screen and (max-width: ${breakpoint.tablet - 1}px)`]: {
+      selectors: {
+        [`&${isOpen}`]: {
+          transform: `translateX(${menuWidth + space.gutter * 2 * grid}px)`,
+          opacity: 0.6,
+        },
+      },
     },
-    [`screen and (min-width: ${theme.breakpoint.desktop}px)`]: {
-      paddingLeft: `${desktopMenuWidth} !important`,
+    [`screen and (min-width: ${breakpoint.tablet}px)`]: {
+      marginLeft: `${menuWidth + space.gutter * grid}px`,
     },
   },
 }));
 
 globalStyle('html, body', {
   margin: 0,
+  height: '100%',
 });
 
 // :focus-visible polyfill: https://github.com/WICG/focus-visible

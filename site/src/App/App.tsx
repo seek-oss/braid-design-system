@@ -23,7 +23,7 @@ const routes = [
 export const App = () => (
   <BraidProvider theme={themes.wireframe}>
     <ToastProvider>
-      <div>
+      <Box height="full">
         {routes.map(({ path, exact, Component }) => (
           <Route key={path} exact={exact} path={path}>
             {({ match }) => (
@@ -36,6 +36,7 @@ export const App = () => (
                 <StrictMode>
                   <Box
                     position="absolute"
+                    overflow="auto"
                     top={0}
                     bottom={0}
                     left={0}
@@ -48,7 +49,7 @@ export const App = () => (
             )}
           </Route>
         ))}
-      </div>
+      </Box>
     </ToastProvider>
   </BraidProvider>
 );
