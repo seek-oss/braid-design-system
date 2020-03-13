@@ -1,5 +1,6 @@
 export { BraidProvider } from './BraidProvider/BraidProvider';
 export { BraidLoadableProvider } from './BraidLoadableProvider/BraidLoadableProvider';
+export { BraidTestProvider } from './BraidTestProvider/BraidTestProvider';
 export { ThemeNameConsumer } from './ThemeNameConsumer/ThemeNameConsumer';
 export { useThemeName } from './useThemeName/useThemeName';
 export { useSpace } from './useSpace/useSpace';
@@ -28,8 +29,9 @@ export { Heading } from './Heading/Heading';
 export { Hidden } from './Hidden/Hidden';
 export { Inline } from './Inline/Inline';
 export { Loader } from './Loader/Loader';
+export { MenuRenderer } from './MenuRenderer/MenuRenderer';
+export { MenuItem } from './MenuItem/MenuItem';
 export { OverflowMenu } from './OverflowMenu/OverflowMenu';
-export { OverflowMenuItem } from './OverflowMenuItem/OverflowMenuItem';
 export { MonthPicker } from './MonthPicker/MonthPicker';
 export { Notice } from './Notice/Notice';
 export { Radio } from './Radio/Radio';

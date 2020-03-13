@@ -20,6 +20,7 @@ module.exports = {
   public: './site/src/public',
   target: './site/dist',
   publicPath: isGitHubPages ? '/braid-design-system/' : '/',
+  setupTests: './setupTests.ts',
   displayNamesProd: true,
   provideDefaultChromaticViewports: false,
   playroomTitle: 'BRAID',

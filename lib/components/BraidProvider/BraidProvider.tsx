@@ -1,6 +1,8 @@
 import React, { createContext, useContext, ReactNode } from 'react';
 import { TreatProvider } from 'sku/treat';
 import { ensureResetImported } from '../../reset/resetTracker';
+import { HideFocusRingsRoot } from '../private/hideFocusRings/hideFocusRings';
+import { BraidTestProviderContext } from '../BraidTestProvider/BraidTestProviderContext';
 import { BraidTheme } from '../../themes/BraidTheme.d';
 
 if (process.env.NODE_ENV === 'development') {
@@ -28,13 +30,22 @@ export const BraidProvider = ({
   theme,
   styleBody = true,
   children,
-}: BraidProviderProps) => (
-  <BraidThemeContext.Provider value={theme}>
-    <TreatProvider theme={theme.treatTheme}>
-      {styleBody ? (
-        <style type="text/css">{`body{margin:0;padding:0;background:${theme.background}}`}</style>
-      ) : null}
-      {children}
-    </TreatProvider>
-  </BraidThemeContext.Provider>
-);
+}: BraidProviderProps) => {
+  const alreadyInBraidProvider = Boolean(useContext(BraidThemeContext));
+  const inTestProvider = useContext(BraidTestProviderContext);
+
+  return (
+    <BraidThemeContext.Provider value={theme}>
+      <TreatProvider theme={theme.treatTheme}>
+        {styleBody ? (
+          <style type="text/css">{`body{margin:0;padding:0;background:${theme.background}}`}</style>
+        ) : null}
+        {alreadyInBraidProvider || inTestProvider ? (
+          children
+        ) : (
+          <HideFocusRingsRoot>{children}</HideFocusRingsRoot>
+        )}
+      </TreatProvider>
+    </BraidThemeContext.Provider>
+  );
+};

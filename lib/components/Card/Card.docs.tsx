@@ -9,7 +9,7 @@ import {
   Columns,
   Column,
   OverflowMenu,
-  OverflowMenuItem,
+  MenuItem,
 } from '../';
 
 const docs: ComponentDocs = {
@@ -54,7 +54,7 @@ const docs: ComponentDocs = {
               </Column>
               <Column width="content">
                 <OverflowMenu label="Options">
-                  <OverflowMenuItem>Menu Item</OverflowMenuItem>
+                  <MenuItem>Menu Item</MenuItem>
                 </OverflowMenu>
               </Column>
             </Columns>
