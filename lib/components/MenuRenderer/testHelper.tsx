@@ -8,8 +8,7 @@ import {
   act,
 } from '@testing-library/react';
 import genericUserEvent from '@testing-library/user-event';
-import { BraidProvider, MenuItem } from '..';
-import { wireframe } from '../../themes';
+import { BraidTestProvider, MenuItem } from '..';
 import { MenuRendererProps } from './MenuRenderer';
 
 // The generic `user-event` library currently doesn't have knowledge
@@ -47,13 +46,13 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
     const menuItemHandler = jest.fn();
 
     const { getAllByRole } = render(
-      <BraidProvider theme={wireframe}>
+      <BraidTestProvider>
         <Component onOpen={openHandler} onClose={closeHandler}>
           <MenuItem onClick={() => menuItemHandler('first')}>First</MenuItem>
           <MenuItem onClick={() => menuItemHandler('second')}>Second</MenuItem>
           <MenuItem onClick={() => menuItemHandler('third')}>Third</MenuItem>
         </Component>
-      </BraidProvider>,
+      </BraidTestProvider>,
     );
 
     return {
