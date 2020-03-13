@@ -8,8 +8,7 @@ import babylonParser from 'prettier/parser-babylon';
 import { createUrl } from 'sku/playroom/utils';
 import classnames from 'classnames';
 import { useConfig } from '../ConfigContext';
-import { Box, Stack, Text, BraidProvider } from '../../../../lib/components';
-import { seekAnz } from '../../../../lib/themes';
+import { Box, Stack, Text } from '../../../../lib/components';
 import { BoxProps } from '../../../../lib/components/Box/Box';
 import { FieldOverlay } from '../../../../lib/components/private/FieldOverlay/FieldOverlay';
 import { CopyIcon } from './CopyIcon';
@@ -19,6 +18,7 @@ import * as styleRefs from './Code.treat';
 // @ts-ignore
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import editorTheme from './editorTheme';
+import { ThemedExample } from '../ThemedExample/ThemedExample';
 
 const formatSnippet = memoize(
   snippet =>
@@ -106,9 +106,7 @@ export default ({ playroom = true, children }: CodeProps) => {
             background="neutralLight"
             borderRadius="standard"
           >
-            <BraidProvider theme={seekAnz} styleBody={false}>
-              {children}
-            </BraidProvider>
+            <ThemedExample>{children}</ThemedExample>
           </Box>
         )}
         <Box

@@ -18,6 +18,7 @@ const neutral = '#747474';
 
 const tokens: TreatTokens = {
   name: 'seekUnifiedBeta',
+  displayName: 'SEEK Unified (Beta)',
   typography: {
     fontFamily:
       'Roboto, "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif',

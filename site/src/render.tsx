@@ -8,7 +8,6 @@ import { App } from './App/App';
 import { RenderContext } from './types';
 import { ConfigProvider } from './App/ConfigContext';
 import * as themes from '../../lib/themes';
-import { ThemeSettingProvider } from './App/ThemedExample/ThemedExample';
 
 const skuRender: Render<RenderContext> = {
   renderApp: ({ route }) => {
@@ -38,9 +37,7 @@ const skuRender: Render<RenderContext> = {
     const html = renderToString(
       <StaticRouter context={{}} location={route} basename={routerBasename}>
         <ConfigProvider value={appConfig}>
-          <ThemeSettingProvider isServer>
-            <App />
-          </ThemeSettingProvider>
+          <App />
         </ConfigProvider>
       </StaticRouter>,
     );

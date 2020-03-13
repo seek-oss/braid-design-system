@@ -12,6 +12,7 @@ import {
 } from '../../../../../lib/components';
 import { TextStack } from '../../TextStack/TextStack';
 import { Page } from '../../../types';
+import { ThemedExample } from '../../ThemedExample/ThemedExample';
 
 const tones = [
   'critical',
@@ -140,12 +141,14 @@ const ToneDefinition = ({ tone }: { tone: Tone }) => {
     <Stack space="small">
       <Columns space="medium">
         <Column width="content">
-          <Box
-            height="touchable"
-            width="touchable"
-            background={swatch}
-            borderRadius="standard"
-          />
+          <ThemedExample>
+            <Box
+              height="touchable"
+              width="touchable"
+              background={swatch}
+              borderRadius="standard"
+            />
+          </ThemedExample>
         </Column>
         <Column>
           <Box height="touchable" display="flex" alignItems="center">
@@ -210,12 +213,14 @@ const page: Page = {
         {tones.map(tone => (
           <Column key={tone}>
             <Stack space={['none', 'xsmall']}>
-              <Box
-                background={toneDocs[tone].swatch}
-                borderRadius="standard"
-                width="full"
-                height="touchable"
-              />
+              <ThemedExample>
+                <Box
+                  background={toneDocs[tone].swatch}
+                  borderRadius="standard"
+                  width="full"
+                  height="touchable"
+                />
+              </ThemedExample>
               <Hidden below="tablet">
                 <Box textAlign="center">
                   <Text tone="secondary">{tone}</Text>

@@ -1,13 +1,22 @@
-import React, { ReactNode, createContext, useContext } from 'react';
+import React, {
+  ReactNode,
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+} from 'react';
 import { useLocalStorage } from 'react-use';
 
 import * as themes from '../../../../lib/themes';
-import { BraidProvider } from '../../../../lib/components';
+import { BraidProvider, Box } from '../../../../lib/components';
+
+const defaultTheme = 'seekUnifiedBeta' as const;
 
 type ThemeKey = keyof typeof themes;
 
 interface ThemeSettingsContext {
-  theme: ThemeKey | undefined;
+  ready: boolean;
+  theme: ThemeKey;
   setTheme: (theme: ThemeKey) => void;
 }
 const themeSettingContext = createContext<ThemeSettingsContext | undefined>(
@@ -28,35 +37,34 @@ interface ThemedExampleProps {
   children: ReactNode;
 }
 export function ThemedExample({ children }: ThemedExampleProps) {
-  const { theme } = useThemeSettings();
-
-  if (!theme) {
-    return null;
-  }
+  const { theme, ready } = useThemeSettings();
 
   return (
-    <BraidProvider styleBody={false} theme={themes[theme]}>
-      {children}
-    </BraidProvider>
+    <Box style={{ opacity: ready ? 1 : 0 }} transition="fast">
+      <BraidProvider styleBody={false} theme={themes[theme]}>
+        {children}
+      </BraidProvider>
+    </Box>
   );
 }
 
 interface ThemeSettingProviderProps {
-  isServer?: boolean;
   children: ReactNode;
 }
-export function ThemeSettingProvider({
-  isServer = false,
-  children,
-}: ThemeSettingProviderProps) {
-  const [theme, setTheme] = useLocalStorage<ThemeKey | undefined>(
+export function ThemeSettingProvider({ children }: ThemeSettingProviderProps) {
+  const [ready, setReady] = useState(false);
+  const [theme, setTheme] = useLocalStorage<ThemeKey>(
     'theme-preference',
-    'seekUnifiedBeta',
+    defaultTheme,
   );
+
+  useEffect(() => {
+    setReady(true);
+  }, []);
 
   return (
     <themeSettingContext.Provider
-      value={{ theme: isServer ? undefined : theme, setTheme }}
+      value={{ ready, theme: ready ? theme : defaultTheme, setTheme }}
     >
       {children}
     </themeSettingContext.Provider>

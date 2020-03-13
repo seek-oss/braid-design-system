@@ -17,6 +17,7 @@ const neutral = '#edeef1';
 
 const tokens: TreatTokens = {
   name: 'wireframe',
+  displayName: 'Wireframe',
   typography: {
     fontFamily: 'Courier, monospace',
     webFont: null,

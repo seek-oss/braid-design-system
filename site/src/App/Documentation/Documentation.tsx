@@ -17,6 +17,7 @@ import undocumentedExports from '../../undocumentedExports.json';
 import { useThemeSettings } from '../ThemedExample/ThemedExample';
 import { IconButton } from '../../../../lib/components/iconButtons/IconButton';
 import { IconSettings } from '../../../../lib/components';
+import * as themes from '../../../../lib/themes';
 
 const { Text, Box, Hidden, Stack, MenuRenderer, MenuItem } = components;
 
@@ -150,8 +151,14 @@ export const Documentation = () => {
               )}
               align="right"
             >
-              <MenuItem onClick={() => setTheme('seekAnz')}>Seek ANZ</MenuItem>
-              <MenuItem onClick={() => setTheme('jobsDb')}>Jobs DB</MenuItem>
+              {Object.entries(themes).map(([theme, { displayName }]) => (
+                <MenuItem
+                  key={theme}
+                  onClick={() => setTheme(theme as keyof typeof themes)}
+                >
+                  {displayName}
+                </MenuItem>
+              ))}
             </MenuRenderer>
           </Box>
 
