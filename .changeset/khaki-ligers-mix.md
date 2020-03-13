@@ -4,7 +4,7 @@
 
 Add BraidTestProvider component.
 
-This is an alternative to `BraidProvider` for unit test environments.
+This is an alternative to `BraidProvider` for unit test environments. Note that, as the name implies, this should _not_ be used in production code.
 
 **MIGRATION GUIDE**
 

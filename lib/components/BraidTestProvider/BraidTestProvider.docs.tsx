@@ -1,13 +1,17 @@
 import React from 'react';
 import { seekAnz } from '../../themes';
 import { ComponentDocs } from '../../../site/src/types';
-import { Stack, Text } from '..';
+import { Stack, Text, Strong } from '..';
 
 const docs: ComponentDocs = {
   category: 'Logic',
   description: (
     <Stack space="large">
-      <Text>Alternative to `BraidProvider` for unit test environments.</Text>
+      <Text>
+        Alternative to `BraidProvider` for unit test environments. Note that, as
+        the name implies, this should <Strong>not</Strong> be used in production
+        code.
+      </Text>
     </Stack>
   ),
   screenshotWidths: [],
