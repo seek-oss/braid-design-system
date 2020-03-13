@@ -10,8 +10,7 @@ import {
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import wireframe from '../../themes/wireframe';
-import { BraidProvider, ToastProvider, useToast } from '..';
+import { BraidTestProvider, ToastProvider, useToast } from '..';
 
 afterAll(cleanup);
 
@@ -19,9 +18,9 @@ type ShowToast = ReturnType<typeof useToast>;
 
 function App({ children }: { children: ReactNode }) {
   return (
-    <BraidProvider theme={wireframe}>
+    <BraidTestProvider>
       <ToastProvider>{children}</ToastProvider>
-    </BraidProvider>
+    </BraidTestProvider>
   );
 }
 
