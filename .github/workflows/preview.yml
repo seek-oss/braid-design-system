@@ -1,4 +1,4 @@
-name: Preview
+name: Deploy preview
 
 on:
   push:
@@ -7,7 +7,6 @@ on:
 
 jobs:
   test:
-    name: Deploy preview
     runs-on: ubuntu-latest
     env:
       CI: true
