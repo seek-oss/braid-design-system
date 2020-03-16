@@ -1,12 +1,13 @@
 name: Test
 
+on:
+  push:
+    branches:
+      - !master
+
 jobs:
   test:
     name: Test
-    on:
-      pull_request:
-        branches:
-          - !master
     runs-on: ubuntu-latest
     steps:
       - name: Setup Node.js 12.x
