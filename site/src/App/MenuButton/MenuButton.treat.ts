@@ -4,8 +4,8 @@ export const isOpen = style({});
 export const isHidden = style({});
 
 export const root = style({
-  width: '31px',
-  height: '27px',
+  width: '18px',
+  height: '14px',
   border: 0,
   background: 'none',
   transition: 'all .1s ease',
@@ -20,9 +20,9 @@ export const root = style({
 export const bar = style({
   left: 0,
   right: 0,
-  height: '5px',
-  borderRadius: '5px',
-  background: 'black',
+  height: '2px',
+  borderRadius: '4px',
+  background: 'currentColor',
   transition: 'all .1s ease',
   transformOrigin: '50% 50%',
 });
@@ -30,13 +30,13 @@ export const bar = style({
 export const bar1 = style({
   selectors: {
     [`${isOpen} &`]: {
-      transform: 'translateY(11px) rotate(45deg)',
+      transform: 'translateY(6px) rotate(45deg)',
     },
   },
 });
 
 export const bar2 = style({
-  top: '11px',
+  top: '6px',
   selectors: {
     [`${isOpen} &`]: {
       opacity: 0,
@@ -45,10 +45,10 @@ export const bar2 = style({
 });
 
 export const bar3 = style({
-  top: '22px',
+  top: '12px',
   selectors: {
     [`${isOpen} &`]: {
-      transform: 'translateY(-11px) rotate(-45deg)',
+      transform: 'translateY(-6px) rotate(-45deg)',
     },
   },
 });
