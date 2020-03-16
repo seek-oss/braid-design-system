@@ -35,7 +35,7 @@ export const menu = style(({ breakpoint, space, grid }) => ({
       },
     },
     [`screen and (min-width: ${breakpoint.tablet}px)`]: {
-      top: headerHeight,
+      top: headerHeight + space.large * grid,
       width: menuWidth,
     },
   },
@@ -53,7 +53,7 @@ export const content = style(({ breakpoint, space, grid }) => ({
       },
     },
     [`screen and (min-width: ${breakpoint.tablet}px)`]: {
-      paddingTop: headerHeight,
+      paddingTop: headerHeight + space.large * grid,
       marginLeft: `${menuWidth}px`,
     },
   },

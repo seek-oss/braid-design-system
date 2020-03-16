@@ -84,7 +84,7 @@ const Header = ({
   menuOpen: boolean;
   menuClick: () => void;
 }) => (
-  <Box paddingY="medium">
+  <Box paddingY={['medium', 'large']}>
     <Text baseline={false}>
       <Box display="flex" alignItems="center">
         <Hidden print above="mobile">
