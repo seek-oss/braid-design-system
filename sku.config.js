@@ -1,8 +1,6 @@
 const routes = require('./sku.routes.js');
 
-const isGitHubPages =
-  process.env.TRAVIS_BRANCH === 'master' &&
-  !process.env.TRAVIS_PULL_REQUEST_SHA;
+const isGitHubPages = Boolean(process.env.IS_GITHUB_PAGES);
 
 module.exports = {
   srcPaths: [

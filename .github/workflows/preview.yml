@@ -31,3 +31,8 @@ jobs:
         env:
           SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }}
           SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
+
+      - name: Update PR status
+        run: yarn post-commit-status
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
