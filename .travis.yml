@@ -11,7 +11,7 @@ after_success:
       yarn travis-deploy-once "yarn chromatic";
 
       if [ -n "$TRAVIS_PULL_REQUEST_SHA" ]; then
-        yarn travis-deploy-once "yarn deploy-preview -- -d braid-design-system--${TRAVIS_PULL_REQUEST_SHA}.surge.sh";
+        # yarn travis-deploy-once "yarn deploy-preview -- -d braid-design-system--${TRAVIS_PULL_REQUEST_SHA}.surge.sh";
         yarn travis-deploy-once "yarn post-commit-status";
       elif [ "$TRAVIS_BRANCH" == "master" ]; then
         git config --global user.name "seek-oss-ci";
