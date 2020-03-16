@@ -1,10 +1,10 @@
-name: Test
+name: 🔬
 
 on: push
 
 jobs:
   test:
-    name: Suite
+    name: Lint & Test
     runs-on: ubuntu-latest
     env:
       CI: true
