@@ -18,16 +18,15 @@ jobs:
           node-version: 12.x
 
       - name: Install Dependencies
-        run: yarn
-
-      - name: Integrity check
-        run: yarn check --integrity
+        run: yarn --frozen-lockfile
 
       - name: Lint
         run: yarn lint
 
-      - name: Build
-        run: yarn build
-
       - name: Test
         run: yarn test
+
+      - name: Chromatic
+        run: yarn chromatic
+        env:
+          CHROMATIC_APP_CODE: ${{ secrets.CHROMATIC_APP_CODE }}

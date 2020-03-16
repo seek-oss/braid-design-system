@@ -8,7 +8,7 @@ script:
 
 after_success:
   - if [ ${TRAVIS_SECURE_ENV_VARS} = "true" ]; then
-      yarn travis-deploy-once "yarn chromatic";
+      # yarn travis-deploy-once "yarn chromatic";
 
       if [ -n "$TRAVIS_PULL_REQUEST_SHA" ]; then
         # yarn travis-deploy-once "yarn deploy-preview -- -d braid-design-system--${TRAVIS_PULL_REQUEST_SHA}.surge.sh";
