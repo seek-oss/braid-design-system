@@ -25,7 +25,7 @@
     "playroom": "sku playroom",
     "storybook": "sku storybook",
     "chromatic": "sku chromatic",
-    "deploy": "node scripts/deploy.js",
+    "deploy": "IS_GITHUB_PAGES=true node scripts/deploy.js",
     "deploy-preview": "surge -p ./site/dist",
     "post-commit-status": "node scripts/postCommitStatus.js",
     "travis-deploy-once": "travis-deploy-once",
