@@ -1,4 +1,4 @@
-name: 🚀
+name: Preview site
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
 
 jobs:
   preview:
-    name: Preview
+    name: Build & deploy
     runs-on: ubuntu-latest
     env:
       CI: true
