@@ -148,6 +148,7 @@ export const Documentation = () => {
               position={isMenuOpen ? 'fixed' : 'absolute'}
               top={0}
               bottom={0}
+              width={isMenuOpen ? 'full' : undefined}
               className={[styles.header, isMenuOpen ? styles.isOpen : '']}
             >
               <Header
@@ -238,8 +239,6 @@ export const Documentation = () => {
               display="flex"
               transition="fast"
               paddingLeft={['none', 'gutter', 'large']}
-              paddingBottom="xlarge"
-              paddingTop={['medium', 'none']}
               pointerEvents={isMenuOpen ? 'none' : undefined}
               className={[
                 styles.content,

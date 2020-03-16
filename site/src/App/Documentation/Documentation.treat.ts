@@ -5,14 +5,16 @@ const headerHeight = 76;
 
 export const isOpen = style({});
 
-export const header = style(({ utils }) => ({
-  width: menuWidth,
-  ...utils.responsiveStyle({
+export const header = style(({ utils }) =>
+  utils.responsiveStyle({
+    mobile: {
+      zIndex: 1,
+    },
     tablet: {
       position: 'fixed',
     },
   }),
-}));
+);
 
 export const noContent = style({
   opacity: 0,
@@ -22,24 +24,27 @@ export const container = style({
   maxHeight: '100vh',
 });
 
-export const menu = style(({ breakpoint }) => ({
-  top: headerHeight,
-  width: menuWidth,
+export const menu = style(({ breakpoint, space, grid }) => ({
   '@media': {
     [`screen and (max-width: ${breakpoint.tablet - 1}px)`]: {
+      top: headerHeight + space.medium * grid,
       selectors: {
         [`&:not(${isOpen})`]: {
           opacity: 0,
         },
       },
     },
+    [`screen and (min-width: ${breakpoint.tablet}px)`]: {
+      top: headerHeight,
+      width: menuWidth,
+    },
   },
 }));
 
 export const content = style(({ breakpoint, space, grid }) => ({
-  paddingTop: headerHeight,
   '@media': {
     [`screen and (max-width: ${breakpoint.tablet - 1}px)`]: {
+      paddingTop: headerHeight + space.medium * grid,
       selectors: {
         [`&${isOpen}`]: {
           transform: `translateX(${menuWidth + space.gutter * grid}px)`,
@@ -48,6 +53,7 @@ export const content = style(({ breakpoint, space, grid }) => ({
       },
     },
     [`screen and (min-width: ${breakpoint.tablet}px)`]: {
+      paddingTop: headerHeight,
       marginLeft: `${menuWidth}px`,
     },
   },
