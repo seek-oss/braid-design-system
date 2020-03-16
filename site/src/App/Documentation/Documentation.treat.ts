@@ -1,37 +1,25 @@
 import { globalStyle, style } from 'sku/treat';
 
 const menuWidth = 240;
-const headerHeight = '76px';
+const headerHeight = 76;
 
 export const isOpen = style({});
 
-export const header = style(({ utils }) =>
-  utils.responsiveStyle({
-    mobile: {
-      zIndex: 3,
-      selectors: {
-        [`&${isOpen}`]: {
-          position: 'fixed',
-        },
-      },
-    },
+export const header = style(({ utils }) => ({
+  width: menuWidth,
+  ...utils.responsiveStyle({
     tablet: {
       position: 'fixed',
     },
   }),
-);
-
-export const container = style({
-  paddingTop: headerHeight,
-  marginBottom: headerHeight,
-});
-
-export const contentWrapper = style({
-  top: headerHeight,
-});
+}));
 
 export const noContent = style({
   opacity: 0,
+});
+
+export const container = style({
+  maxHeight: '100vh',
 });
 
 export const menu = style(({ breakpoint }) => ({
@@ -49,24 +37,25 @@ export const menu = style(({ breakpoint }) => ({
 }));
 
 export const content = style(({ breakpoint, space, grid }) => ({
+  paddingTop: headerHeight,
   '@media': {
     [`screen and (max-width: ${breakpoint.tablet - 1}px)`]: {
       selectors: {
         [`&${isOpen}`]: {
-          transform: `translateX(${menuWidth + space.gutter * 2 * grid}px)`,
-          opacity: 0.6,
+          transform: `translateX(${menuWidth + space.gutter * grid}px)`,
+          opacity: 0.4,
         },
       },
     },
     [`screen and (min-width: ${breakpoint.tablet}px)`]: {
-      marginLeft: `${menuWidth + space.gutter * grid}px`,
+      marginLeft: `${menuWidth}px`,
     },
   },
 }));
 
 globalStyle('html, body', {
   margin: 0,
-  height: '100%',
+  minHeight: '100%',
 });
 
 // :focus-visible polyfill: https://github.com/WICG/focus-visible
