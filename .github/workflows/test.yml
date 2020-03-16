@@ -1,0 +1,30 @@
+name: Test
+
+jobs:
+  test:
+    name: Test
+    on:
+      pull_request:
+        branches:
+          - !master
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Node.js 12.x
+        uses: actions/setup-node@master
+        with:
+          node-version: 12.x
+
+      - name: Install Dependencies
+        run: yarn
+
+      - name: Integrity check
+        run: yarn check --integrity
+
+      - name: Lint
+        run: yarn lint
+
+      - name: Build
+        run: yarn Build
+
+      - name: Test
+        run: yarn test
