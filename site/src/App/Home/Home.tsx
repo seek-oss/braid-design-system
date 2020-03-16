@@ -38,7 +38,7 @@ export const Home = () => {
               paddingBottom="small"
               className={[styles.container, tone]}
             >
-              <Logo width="100%" height="auto" />
+              <Logo width="auto" height="auto" />
             </Box>
 
             <Box
