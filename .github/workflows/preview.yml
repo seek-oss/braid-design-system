@@ -21,6 +21,9 @@ jobs:
       - name: Install Dependencies
         run: yarn
 
+      - name: Build
+        run: yarn build
+
       - name: Deploy to surge
         run: yarn deploy-preview -d braid-design-system--${GITHUB_SHA}.surge.sh
         env:
