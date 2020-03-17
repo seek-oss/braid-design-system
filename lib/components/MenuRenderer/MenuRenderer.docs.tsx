@@ -120,6 +120,47 @@ const docs: ComponentDocs = {
         </MenuRenderer>
       ),
     },
+    {
+      label: 'Offset space for menu',
+      code: dedent`
+        <MenuRenderer
+          offsetSpace={['none', 'small']}
+          trigger={(triggerProps, { open }) => (
+            <Box {...triggerProps}>
+              <Text>
+                Menu{' '}
+                <IconChevron
+                  direction={open ? 'up' : 'down'}
+                  alignY="lowercase"
+                />
+              </Text>
+            </Box>
+          )}
+        >
+          <MenuItem onClick={() => {}}>First</MenuItem>
+          <MenuItem onClick={() => {}}>Second</MenuItem>
+        </MenuRenderer>
+      `,
+      Example: ({ handler }) => (
+        <MenuRenderer
+          offsetSpace={['none', 'small']}
+          trigger={(triggerProps, { open }) => (
+            <Box {...triggerProps}>
+              <Text>
+                Menu{' '}
+                <IconChevron
+                  direction={open ? 'up' : 'down'}
+                  alignY="lowercase"
+                />
+              </Text>
+            </Box>
+          )}
+        >
+          <MenuItem onClick={handler}>First</MenuItem>
+          <MenuItem onClick={handler}>Second</MenuItem>
+        </MenuRenderer>
+      ),
+    },
   ],
 };
 
