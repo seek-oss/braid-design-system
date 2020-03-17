@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useStyles } from 'sku/react-treat';
 import map from 'lodash/map';
 import groupBy from 'lodash/groupBy';
@@ -104,8 +104,14 @@ export const Documentation = () => {
   const styles = useStyles(styleRefs);
 
   const location = useLocation();
-  const isComponentsHome = location.pathname === '/components';
-  const [isMenuOpen, setMenuOpen] = useState(isComponentsHome);
+  const [isMenuOpen, setMenuOpen] = useState(false);
+  const [isComponentsHome, setComponentsHome] = useState(
+    location.pathname === '/components',
+  );
+
+  useEffect(() => {
+    setComponentsHome(location.pathname === '/components');
+  }, [location]);
 
   const menuRef = useRef<HTMLElement | null>(null);
   useIsolatedScroll(menuRef.current);
