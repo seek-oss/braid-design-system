@@ -19,10 +19,6 @@ const makeConfig = function() {
       ? repoUrl.replace('https://', `https://${GITHUB_TOKEN}@`)
       : repoUrl,
     logger: log,
-    user: {
-      name: 'seek-oss-ci',
-      email: 'opensource@seek.com.au',
-    },
   };
 };
 
@@ -30,6 +26,8 @@ ghpages.publish(basePath, makeConfig(), function(err) {
   if (err) {
     log('Deployment error');
     log(JSON.stringify(err));
+    // eslint-disable-next-line no-process-exit
+    process.exit(1);
   } else {
     log('Deployment complete!');
   }
