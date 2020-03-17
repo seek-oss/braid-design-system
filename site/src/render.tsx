@@ -12,11 +12,10 @@ import * as themes from '../../lib/themes';
 const skuRender: Render<RenderContext> = {
   renderApp: ({ route }) => {
     const {
-      TRAVIS_BRANCH: branch,
-      TRAVIS_PULL_REQUEST_SHA: prSha,
+      IS_GITHUB_PAGES: isGithubPages,
+      GITHUB_SHA: prSha,
       CI,
     } = process.env;
-    const isGithubPages = branch === 'master' && !prSha;
     const githubUrl = 'https://github.com/seek-oss/braid-design-system/tree/';
 
     const sourceUrlPrefix = `${githubUrl}${prSha || 'master'}`;

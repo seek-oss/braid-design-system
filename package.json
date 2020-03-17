@@ -9,7 +9,6 @@
     "reset/**/*"
   ],
   "scripts": {
-    "ci": "yarn check --integrity && yarn lint && yarn build && yarn test",
     "test": "sku test",
     "start": "concurrently -n \"docs-site,playroom\" -c \"magenta,greenBright\" \"sku start\" \"OPEN_TAB=false sku playroom\"",
     "lint": "sku lint && yarn lint-absolute-imports",
@@ -28,8 +27,7 @@
     "deploy": "node scripts/deploy.js",
     "deploy-preview": "surge -p ./site/dist",
     "post-commit-status": "node scripts/postCommitStatus.js",
-    "travis-deploy-once": "travis-deploy-once",
-    "release": "yarn setup && changeset publish"
+    "release": "yarn build && yarn deploy && changeset publish"
   },
   "husky": {
     "hooks": {
@@ -107,7 +105,6 @@
     "renovate-config-seek": "0.4.0",
     "sku": "9.3.3",
     "surge": "^0.20.1",
-    "travis-deploy-once": "^5.0.9",
     "ts-node": "^8.2.0",
     "uuid": "^3.3.3"
   },
