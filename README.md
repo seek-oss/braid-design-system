@@ -6,7 +6,7 @@
   <br/>
   <br/>
 
-[![Build Status](https://img.shields.io/github/workflow/status/seek-oss/braid-design-system/Test/master.svg?style=for-the-badge)](https://github.com/seek-oss/braid-design-system/actions) [![npm](https://img.shields.io/npm/v/braid-design-system.svg?style=for-the-badge)](https://www.npmjs.com/package/braid-design-system)
+[![npm](https://img.shields.io/npm/v/braid-design-system.svg?style=for-the-badge)](https://www.npmjs.com/package/braid-design-system)
 
   <hr />
 </div>
