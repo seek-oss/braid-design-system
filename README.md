@@ -3,9 +3,10 @@
   <br/>
   <br/>
   Themeable design system for the SEEK Group.
-  <hr />
+  <br/>
+  <br/>
 
-[![Build Status](https://img.shields.io/travis/seek-oss/braid-design-system/master.svg?style=for-the-badge)](http://travis-ci.org/seek-oss/braid-design-system) [![npm](https://img.shields.io/npm/v/braid-design-system.svg?style=for-the-badge)](https://www.npmjs.com/package/braid-design-system)
+[![npm](https://img.shields.io/npm/v/braid-design-system.svg?style=for-the-badge)](https://www.npmjs.com/package/braid-design-system)
 
   <hr />
 </div>

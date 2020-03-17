@@ -1,5 +1,6 @@
 export { BraidProvider } from './BraidProvider/BraidProvider';
 export { BraidLoadableProvider } from './BraidLoadableProvider/BraidLoadableProvider';
+export { BraidTestProvider } from './BraidTestProvider/BraidTestProvider';
 export { ThemeNameConsumer } from './ThemeNameConsumer/ThemeNameConsumer';
 export { useThemeName } from './useThemeName/useThemeName';
 export { useSpace } from './useSpace/useSpace';

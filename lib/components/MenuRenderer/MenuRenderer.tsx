@@ -10,15 +10,15 @@ import React, {
   Ref,
 } from 'react';
 import { useStyles } from 'sku/react-treat';
-import { Box } from '../Box/Box';
+import { Box, BoxProps } from '../Box/Box';
 import { normalizeKey } from '../private/normalizeKey';
 import { getNextIndex } from '../private/getNextIndex';
 import { Overlay } from '../private/Overlay/Overlay';
 import { actionTypes, Action } from './MenuRenderer.actions';
-import * as styleRefs from './MenuRenderer.treat';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
+import * as styleRefs from './MenuRenderer.treat';
 
 interface MenuContextValues {
   isHighlighted: boolean;
@@ -43,6 +43,7 @@ interface TriggerState {
 export interface MenuRendererProps {
   trigger: (props: TriggerProps, state: TriggerState) => ReactNode;
   align?: 'left' | 'right';
+  offsetSpace?: BoxProps['marginTop'];
   onOpen?: () => void;
   onClose?: () => void;
   data?: DataAttributeMap;
@@ -84,6 +85,7 @@ export const MenuRenderer = ({
   onClose,
   trigger,
   align = 'left',
+  offsetSpace = 'none',
   children,
   data,
 }: MenuRendererProps) => {
@@ -250,7 +252,7 @@ export const MenuRenderer = ({
           boxShadow="medium"
           borderRadius="standard"
           background="card"
-          marginTop="small"
+          marginTop={offsetSpace}
           transition="fast"
           right={align === 'right' ? 0 : undefined}
           className={[styles.menu, !open && styles.menuIsClosed]}

@@ -1510,6 +1510,23 @@ Object {
 }
 `;
 
+exports[`BraidTestProvider 1`] = `
+Object {
+  exportType: component,
+  props: {
+    children: ReactNode
+    themeName?: 
+        | "jobStreet"
+        | "jobStreetClassic"
+        | "jobsDb"
+        | "seekAnz"
+        | "seekBusiness"
+        | "seekUnifiedBeta"
+        | "wireframe"
+},
+}
+`;
+
 exports[`Bullet 1`] = `
 Object {
   exportType: component,
@@ -4052,6 +4069,17 @@ Object {
         | "right"
     children: ReactNode
     data?: Record<string, string | number>
+    offsetSpace?: ResponsiveProp<
+        | "gutter"
+        | "large"
+        | "medium"
+        | "none"
+        | "small"
+        | "xlarge"
+        | "xsmall"
+        | "xxlarge"
+        | "xxsmall"
+    >
     onClose?: () => void
     onOpen?: () => void
     trigger: (props: TriggerProps, state: TriggerState) => ReactNode

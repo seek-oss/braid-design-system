@@ -6,7 +6,7 @@ import { Box } from '../Box/Box';
 import * as styleRefs from './OverflowMenu.treat';
 
 interface OverflowMenuProps
-  extends Omit<MenuRendererProps, 'trigger' | 'align'> {
+  extends Omit<MenuRendererProps, 'trigger' | 'align' | 'offsetSpace'> {
   label: string;
 }
 
@@ -25,6 +25,7 @@ export const OverflowMenu = ({
         </Box>
       )}
       align="right"
+      offsetSpace="small"
       {...menuProps}
     >
       {children}
