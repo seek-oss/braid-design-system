@@ -1,5 +1,28 @@
 # braid-design-system
 
+## 24.1.0
+
+### Minor Changes
+
+- MenuRenderer: Add support for configuring the menu offset from the trigger ([#532](https://github.com/seek-oss/braid-design-system/pull/532))
+
+  **FEATURES**
+
+  **`MenuRenderer`**
+
+  Configure the offset distance between the menu trigger and menu using the `offsetSpace` prop. As with all space values in the system, this accepts a responsive prop.
+
+  ```diff
+   <MenuRenderer
+  +  offsetSpace="small"
+     trigger={(triggerProps, { open }) => (
+       <button {...triggerProps}>Menu</button>
+     )}
+   >
+     <MenuItem onClick={...}>Option</MenuItem>
+   </MenuRenderer>
+  ```
+
 ## 24.0.0
 
 ### Major Changes
