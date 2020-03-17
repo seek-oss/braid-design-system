@@ -46,6 +46,7 @@ export const Tiles = ({
       <Box display="flex" flexWrap="wrap" className={negativeMarginLeft}>
         {Children.map(children, (child, i) => (
           <Box
+            minWidth={0}
             className={resolveResponsiveProp(
               columns,
               styles.columnsMobile,
