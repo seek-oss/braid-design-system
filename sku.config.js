@@ -23,7 +23,6 @@ module.exports = {
   provideDefaultChromaticViewports: false,
   playroomTitle: 'BRAID',
   playroomComponents: './lib/playroom/components.ts',
-  playroomWidths: [320, 768, 1024, 1300],
   playroomSnippets: './lib/playroom/snippets.ts',
   playroomThemes: './lib/themes/index.ts',
   playroomFrameComponent: './lib/playroom/FrameComponent.tsx',
