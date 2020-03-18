@@ -18,7 +18,7 @@ import * as styleRefs from './Code.treat';
 // @ts-ignore
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import editorTheme from './editorTheme';
-import { ThemedExample } from '../ThemedExample/ThemedExample';
+import { ThemedExample } from '../ThemeSetting';
 
 const formatSnippet = memoize(
   snippet =>

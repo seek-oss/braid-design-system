@@ -16,7 +16,7 @@ import { ComponentDocs } from '../../types';
 import * as styleRefs from './Documentation.treat';
 import undocumentedExports from '../../undocumentedExports.json';
 import { Overlay } from '../../../../lib/components/private/Overlay/Overlay';
-import { ThemeToggle } from '../ThemedExample/ThemeToggle';
+import { ThemeToggle } from '../ThemeSetting';
 
 const { ContentBlock, Text, Box, Hidden, Stack } = components;
 

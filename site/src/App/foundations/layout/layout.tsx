@@ -26,7 +26,7 @@ import Code from '../../Code/Code';
 import tokens from '../../../../../lib/themes/wireframe/tokens';
 import { Page } from '../../../types';
 import * as styleRefs from './layout.treat';
-import { ThemedExample } from '../../ThemedExample/ThemedExample';
+import { ThemedExample } from '../../ThemeSetting';
 
 const slugify = (string: string) => string.replace(/ /, '-');
 

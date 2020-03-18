@@ -3,7 +3,7 @@ import React from 'react';
 import { Text, Box, MenuItem, MenuRenderer, IconChevron } from '../../../..';
 import * as themes from '../../../../lib/themes';
 
-import { useThemeSettings, ThemeKey } from './ThemedExample';
+import { useThemeSettings, ThemeKey } from './ThemeSettingContext';
 
 export function ThemeToggle() {
   const { theme, setTheme, ready } = useThemeSettings();

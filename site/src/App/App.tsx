@@ -8,7 +8,7 @@ import '../../../lib/reset';
 import { BraidProvider, Box, ToastProvider } from '../../../lib/components';
 import { Home } from './Home/Home';
 import { Documentation } from './Documentation/Documentation';
-import { ThemeSettingProvider } from './ThemedExample/ThemedExample';
+import { ThemeSettingProvider } from './ThemeSetting';
 import * as styles from './App.treat';
 
 const routes = [

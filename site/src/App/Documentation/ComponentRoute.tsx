@@ -6,7 +6,7 @@ import { Box, Heading, Stack, Text } from '../../../../lib/components';
 
 import { ComponentDocs } from '../../types';
 import Code from '../Code/Code';
-import { ThemedExample } from '../ThemedExample/ThemedExample';
+import { ThemedExample } from '../ThemeSetting';
 
 const handler = () => {
   /* No-op for docs examples */

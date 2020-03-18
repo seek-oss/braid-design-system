@@ -13,7 +13,7 @@ import {
 } from '../../../../../lib/components';
 import { TextStack } from '../../TextStack/TextStack';
 import { Page } from '../../../types';
-import { ThemedExample } from '../../ThemedExample/ThemedExample';
+import { ThemedExample } from '../../ThemeSetting';
 import * as styleRefs from './tones.treat';
 
 const tones = [
