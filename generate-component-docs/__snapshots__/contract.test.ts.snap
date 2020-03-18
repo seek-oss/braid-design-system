@@ -59,6 +59,9 @@ Object {
         | "critical"
         | "neutral"
         | "positive"
+    type?: 
+        | "search"
+        | "text"
     value: AutosuggestValue<Value>
 },
 }
@@ -303,6 +306,7 @@ Object {
     borderRadius?: 
         | "full"
         | "standard"
+    bottom?: 0
     boxShadow?: 
         | "borderCaution"
         | "borderCritical"
@@ -607,6 +611,7 @@ Object {
     kind?: string
     label?: string
     lang?: string
+    left?: 0
     list?: string
     loop?: boolean
     low?: number
@@ -973,6 +978,7 @@ Object {
     resource?: string
     results?: number
     reversed?: boolean
+    right?: 0
     role?: string
     rowSpan?: number
     rows?: number
@@ -1009,6 +1015,7 @@ Object {
         | "right"
     >
     title?: string
+    top?: 0
     transform?: "touchable"
     transition?: 
         | "fast"
@@ -1070,6 +1077,7 @@ Object {
     borderRadius?: 
         | "full"
         | "standard"
+    bottom?: 0
     boxShadow?: 
         | "borderCaution"
         | "borderCritical"
@@ -1295,6 +1303,7 @@ Object {
         | "flexStart"
         | "spaceBetween"
     >
+    left?: 0
     margin?: ResponsiveProp<
         | "gutter"
         | "large"
@@ -1460,11 +1469,13 @@ Object {
         | "absolute"
         | "fixed"
         | "relative"
+    right?: 0
     textAlign?: ResponsiveProp<
         | "center"
         | "left"
         | "right"
     >
+    top?: 0
     transform?: "touchable"
     transition?: 
         | "fast"
@@ -1495,6 +1506,24 @@ Object {
     children: ReactNode
     styleBody?: boolean
     theme: { name: string; background: string; webFonts: { linkTag: string; }[]; space: { grid: number; space: { gutter: number; xxsmall: number; xsmall: number; small: number; medium: number; large: number; xlarge: number; xxlarge: number; }; }; color: { ...; }; backgroundLightness: { ...; }; treatTheme: string; }
+},
+}
+`;
+
+exports[`BraidTestProvider 1`] = `
+Object {
+  exportType: component,
+  props: {
+    children: ReactNode
+    themeName?: 
+        | "jobStreet"
+        | "jobStreetClassic"
+        | "jobsDb"
+        | "occ"
+        | "seekAnz"
+        | "seekBusiness"
+        | "seekUnifiedBeta"
+        | "wireframe"
 },
 }
 `;
@@ -4021,6 +4050,44 @@ Object {
 }
 `;
 
+exports[`MenuItem 1`] = `
+Object {
+  exportType: component,
+  props: {
+    children: ReactNode
+    data?: Record<string, string | number>
+    onClick?: () => void
+},
+}
+`;
+
+exports[`MenuRenderer 1`] = `
+Object {
+  exportType: component,
+  props: {
+    align?: 
+        | "left"
+        | "right"
+    children: ReactNode
+    data?: Record<string, string | number>
+    offsetSpace?: ResponsiveProp<
+        | "gutter"
+        | "large"
+        | "medium"
+        | "none"
+        | "small"
+        | "xlarge"
+        | "xsmall"
+        | "xxlarge"
+        | "xxsmall"
+    >
+    onClose?: () => void
+    onOpen?: () => void
+    trigger: (props: TriggerProps, state: TriggerState) => ReactNode
+},
+}
+`;
+
 exports[`MonthPicker 1`] = `
 Object {
   exportType: component,
@@ -4070,27 +4137,11 @@ exports[`OverflowMenu 1`] = `
 Object {
   exportType: component,
   props: {
-    children: 
-        | (false | ReactElement<OverflowMenuItemProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)> | null)[]
-        | ReactElement<OverflowMenuItemProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)>
+    children: ReactNode
     data?: Record<string, string | number>
     label: string
     onClose?: () => void
     onOpen?: () => void
-},
-}
-`;
-
-exports[`OverflowMenuItem 1`] = `
-Object {
-  exportType: component,
-  props: {
-    children: ReactNode
-    data?: Record<string, string | number>
-    onClick?: () => void
-    type?: 
-        | "button"
-        | "link"
 },
 }
 `;
@@ -5044,6 +5095,7 @@ Object {
         | 3
         | 4
         | 5
+        | 6
     >
     dividers?: boolean
     space: ResponsiveProp<
@@ -5057,6 +5109,15 @@ Object {
         | "xxlarge"
         | "xxsmall"
     >
+},
+}
+`;
+
+exports[`ToastProvider 1`] = `
+Object {
+  exportType: component,
+  props: {
+    children: ReactNode
 },
 }
 `;
@@ -5098,5 +5159,13 @@ Object {
   exportType: hook,
   params: Array [],
   returnType: string,
+}
+`;
+
+exports[`useToast 1`] = `
+Object {
+  exportType: hook,
+  params: Array [],
+  returnType: (props: Pick<Toast, "tone" | "description" | "message" | "action">) => void,
 }
 `;

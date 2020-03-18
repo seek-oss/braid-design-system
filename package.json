@@ -1,6 +1,6 @@
 {
   "name": "braid-design-system",
-  "version": "0.0.0-development",
+  "version": "24.1.2",
   "description": "Themeable design system for the SEEK Group",
   "main": "lib/components/index.ts",
   "sideEffects": [
@@ -9,7 +9,6 @@
     "reset/**/*"
   ],
   "scripts": {
-    "ci": "yarn check --integrity && yarn lint && yarn build && yarn test",
     "test": "sku test",
     "start": "concurrently -n \"docs-site,playroom\" -c \"magenta,greenBright\" \"sku start\" \"OPEN_TAB=false sku playroom\"",
     "lint": "sku lint && yarn lint-absolute-imports",
@@ -28,18 +27,10 @@
     "deploy": "node scripts/deploy.js",
     "deploy-preview": "surge -p ./site/dist",
     "post-commit-status": "node scripts/postCommitStatus.js",
-    "commit": "git-cz",
-    "travis-deploy-once": "travis-deploy-once",
-    "semantic-release": "semantic-release"
-  },
-  "config": {
-    "commitizen": {
-      "path": "cz-conventional-changelog"
-    }
+    "release": "yarn build && yarn deploy && changeset publish"
   },
   "husky": {
     "hooks": {
-      "commit-msg": "commitlint --edit --extends seek",
       "pre-commit": "sku pre-commit"
     }
   },
@@ -76,7 +67,8 @@
     "sku": ">=8.7.1"
   },
   "devDependencies": {
-    "@commitlint/cli": "^7.2.1",
+    "@changesets/cli": "^2.5.2",
+    "@changesets/get-github-info": "^0.4.1",
     "@octokit/rest": "^15.16.1",
     "@svgr/core": "^5.0.1",
     "@svgr/plugin-jsx": "^5.0.1",
@@ -93,11 +85,8 @@
     "@types/webpack-env": "^1.14.0",
     "change-case": "^3.1.0",
     "cheerio": "^1.0.0-rc.3",
-    "commitizen": "^3.0.4",
-    "commitlint-config-seek": "1.0.0",
     "concurrently": "^4.1.0",
     "copy-to-clipboard": "^3.2.0",
-    "cz-conventional-changelog": "^2.1.0",
     "didyoumean2": "^3.1.2",
     "focus-visible": "^4.1.5",
     "fs-extra": "^8.1.0",
@@ -114,15 +103,13 @@
     "react-syntax-highlighter": "^11.0.2",
     "react-transition-group": "^4.3.0",
     "renovate-config-seek": "0.4.0",
-    "semantic-release": "^15.13.3",
     "sku": "9.3.3",
     "surge": "^0.20.1",
-    "travis-deploy-once": "^5.0.9",
     "ts-node": "^8.2.0",
     "uuid": "^3.3.3"
   },
   "resolutions": {
-    "acorn": "6.3.0"
+    "playroom": "0.16.1"
   },
   "volta": {
     "node": "12.14.1",

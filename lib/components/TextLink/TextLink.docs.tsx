@@ -5,6 +5,7 @@ import {
   Box,
   Button,
   Heading,
+  IconNewWindow,
   IconChevron,
   Text,
   TextLink,
@@ -150,10 +151,13 @@ const docs: ComponentDocs = {
 
         return (
           <Fragment>
-            {backgrounds.sort().map(background => (
-              <Box background={background} key={background}>
+            {[undefined, ...backgrounds.sort()].map((background, i) => (
+              <Box key={i} background={background}>
                 <Text baseline={false}>
-                  {background} <TextLink href="">with link</TextLink>
+                  {background || 'No background'}{' '}
+                  <TextLink href="">
+                    with link <IconNewWindow />
+                  </TextLink>
                 </Text>
               </Box>
             ))}

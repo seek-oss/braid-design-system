@@ -8,6 +8,9 @@ import React, {
 import { useStyles } from 'sku/react-treat';
 import { Box } from '..';
 import { Overlay } from '../private/Overlay/Overlay';
+import buildDataAttributes, {
+  DataAttributeMap,
+} from '../private/buildDataAttributes';
 import {
   useIconSize,
   useIconContainerSize,
@@ -33,6 +36,7 @@ export interface IconButtonProps {
   keyboardAccessible?: boolean;
   active?: boolean;
   tone?: 'neutral' | 'secondary';
+  data?: DataAttributeMap;
 }
 
 export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
@@ -48,6 +52,7 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
       keyboardAccessible = true,
       active = false,
       tone = 'secondary',
+      data,
       children,
     },
     forwardedRef,
@@ -101,6 +106,7 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
         transform="touchable"
         transition="touchable"
         tabIndex={!keyboardAccessible ? -1 : undefined}
+        {...buildDataAttributes(data)}
       >
         <Box
           position="relative"
@@ -130,6 +136,7 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
               transition="fast"
               borderRadius="full"
               className={styles.focusOverlay}
+              onlyVisibleForKeyboardNavigation
             />
           ) : null}
           <Box position="relative" className={iconStyles}>

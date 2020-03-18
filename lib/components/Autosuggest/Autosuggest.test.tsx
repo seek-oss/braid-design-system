@@ -2,8 +2,7 @@ import '@testing-library/jest-dom/extend-expect';
 import React, { useState, Dispatch } from 'react';
 import { render, act, cleanup, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { BraidProvider, Autosuggest } from '..';
-import { wireframe } from '../../themes';
+import { BraidTestProvider, Autosuggest } from '..';
 import { AutosuggestProps } from './Autosuggest';
 
 afterEach(cleanup);
@@ -31,7 +30,7 @@ function renderAutosuggest<Value>({
     [suggestions, setSuggestions] = useState(suggestionsProp);
 
     return (
-      <BraidProvider theme={wireframe}>
+      <BraidTestProvider>
         <Autosuggest
           id="fruit"
           automaticSelection={automaticSelection}
@@ -44,7 +43,7 @@ function renderAutosuggest<Value>({
           onFocus={onFocus}
           onBlur={onBlur}
         />
-      </BraidProvider>
+      </BraidTestProvider>
     );
   };
 

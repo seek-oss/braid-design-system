@@ -9,6 +9,7 @@ import {
 } from '../../hooks/useNegativeMargin/useNegativeMargin';
 import {
   normaliseResponsiveProp,
+  resolveResponsiveProp,
   ResponsiveProp,
 } from '../../utils/responsiveProp';
 import * as styleRefs from './Tiles.treat';
@@ -17,7 +18,7 @@ import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 export interface TilesProps {
   children: ReactNodeNoStrings;
   space: ResponsiveSpace;
-  columns: ResponsiveProp<1 | 2 | 3 | 4 | 5>;
+  columns: ResponsiveProp<1 | 2 | 3 | 4 | 5 | 6>;
   dividers?: boolean;
 }
 
@@ -45,13 +46,16 @@ export const Tiles = ({
       <Box display="flex" flexWrap="wrap" className={negativeMarginLeft}>
         {Children.map(children, (child, i) => (
           <Box
-            className={[
-              styles.columnsMobile[mobileColumns],
-              styles.columnsTablet[tabletColumns],
-              styles.columnsDesktop[desktopColumns],
-            ]}
+            minWidth={0}
+            className={resolveResponsiveProp(
+              columns,
+              styles.columnsMobile,
+              styles.columnsTablet,
+              styles.columnsDesktop,
+            )}
           >
             <Box
+              height="full"
               // This needs to be a separate element to support IE11.
               paddingTop={responsiveSpace}
               paddingLeft={responsiveSpace}

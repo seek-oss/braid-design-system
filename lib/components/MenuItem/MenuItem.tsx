@@ -4,25 +4,23 @@ import React, {
   useRef,
   useEffect,
   ReactNode,
+  MouseEvent,
 } from 'react';
 import { useStyles } from 'sku/react-treat';
 import { Box } from '../Box/Box';
 import { useTouchableSpace } from '../../hooks/typography';
 import { normalizeKey } from '../private/normalizeKey';
-import { OverflowMenuContext } from '../OverflowMenu/OverflowMenu';
-import { actionTypes, Action } from '../OverflowMenu/OverflowMenu.actions';
-import * as styleRefs from './OverflowMenuItem.treat';
+import { MenuContext } from '../MenuRenderer/MenuRenderer';
+import { actionTypes, Action } from '../MenuRenderer/MenuRenderer.actions';
+import * as styleRefs from './MenuItem.treat';
 import { Text } from '../Text/Text';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
 
-type MenuType = 'link' | 'button';
-
-export interface OverflowMenuItemProps {
+interface MenuItemProps {
   children: ReactNode;
   onClick?: () => void;
-  type?: MenuType;
   data?: DataAttributeMap;
 }
 
@@ -37,22 +35,17 @@ const {
   MENU_ITEM_HOVER,
 } = actionTypes;
 
-export const OverflowMenuItem = ({
-  children,
-  onClick,
-  type = 'button',
-  data,
-}: OverflowMenuItemProps) => {
+export const MenuItem = ({ children, onClick, data }: MenuItemProps) => {
   const styles = useStyles(styleRefs);
-  const menuContext = useContext(OverflowMenuContext);
+  const menuContext = useContext(MenuContext);
 
   if (!menuContext) {
     if (process.env.NODE_ENV !== 'production') {
       throw new Error(
-        'An OverflowMenuItem must be rendered as an immediate child of an OverflowMenu. See the documentation for correct usage: https://seek-oss.github.io/braid-design-system/components/OverflowMenu',
+        'A MenuItem must be rendered as an immediate child of an Menu. See the documentation for correct usage: https://seek-oss.github.io/braid-design-system/components/MenuRenderer',
       );
     } else {
-      throw new Error('OverflowMenuItem rendered outside menu context');
+      throw new Error('MenuItem rendered outside menu context');
     }
   }
 
@@ -117,14 +110,14 @@ export const OverflowMenuItem = ({
 
   return (
     <Box
-      component={type === 'button' ? 'button' : undefined}
-      role={type === 'link' ? 'link' : 'menuitem'}
+      component="button"
+      role="menuitem"
       tabIndex={-1}
       ref={menuItemRef}
       onKeyUp={onKeyUp}
       onKeyDown={onKeyDown}
       onMouseEnter={() => dispatch({ type: MENU_ITEM_HOVER, value: index })}
-      onClick={event => {
+      onClick={(event: MouseEvent) => {
         event.stopPropagation();
         event.preventDefault();
         dispatch({ type: MENU_ITEM_CLICK });

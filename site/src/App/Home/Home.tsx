@@ -1,6 +1,7 @@
 import React, { Fragment, ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { Box, Button, Text } from '../../../../lib/components';
+import { useTextTone } from '../../../../lib/hooks/typography';
 import { ConfigConsumer } from '../ConfigContext';
 import { Logo } from '../Logo/Logo';
 import { Github } from './Github/Github';
@@ -18,6 +19,8 @@ const Action = ({ children }: { children: ReactNode }) => (
 );
 
 export const Home = () => {
+  const tone = useTextTone({ tone: 'neutral' });
+
   return (
     <ConfigConsumer>
       {({ playroomUrl }) => (
@@ -33,9 +36,9 @@ export const Home = () => {
             <Box
               width="full"
               paddingBottom="small"
-              className={styles.container}
+              className={[styles.container, tone]}
             >
-              <Logo width="100%" />
+              <Logo width="auto" height="auto" />
             </Box>
 
             <Box
@@ -83,7 +86,7 @@ export const Home = () => {
             </Box>
           </Box>
 
-          <Box position="absolute" className={styles.source}>
+          <Box position="absolute" top={0} right={0} className={styles.source}>
             <a
               href="https://github.com/seek-oss/braid-design-system"
               title="View on GitHub"

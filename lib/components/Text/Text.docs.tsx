@@ -1,7 +1,7 @@
 import React, { Fragment, ReactNode } from 'react';
 import { titleCase } from 'change-case';
 import { ComponentDocs } from '../../../site/src/types';
-import { Box, Text, Stack, Column, Columns } from '../';
+import { Box, Text, Stack, Column, Columns, IconPositive } from '../';
 import {
   background as boxBackgrounds,
   textAlign,
@@ -135,11 +135,13 @@ const docs: ComponentDocs = {
               <Box key={background} background={background} padding="xsmall">
                 <Columns space="medium">
                   <Column>
-                    <Text size="small">{background}</Text>
+                    <Text size="small">
+                      {background} <IconPositive />
+                    </Text>
                   </Column>
                   <Column width="content">
                     <Text size="small" tone="secondary">
-                      Secondary
+                      Secondary <IconPositive />
                     </Text>
                   </Column>
                 </Columns>
