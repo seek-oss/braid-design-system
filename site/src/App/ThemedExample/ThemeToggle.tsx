@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Stack, Text, Dropdown } from '../../../..';
+import { Text, Box, MenuItem, MenuRenderer, IconChevron } from '../../../..';
 import * as themes from '../../../../lib/themes';
 
 import { useThemeSettings, ThemeKey } from './ThemedExample';
@@ -9,25 +9,29 @@ export function ThemeToggle() {
   const { theme, setTheme, ready } = useThemeSettings();
 
   return (
-    <Stack space="medium">
-      <Text weight="strong" component="h2">
-        Theme
-      </Text>
-      <Dropdown
-        id="theme-toggle"
-        value={ready ? theme : 'Loading...'}
-        onChange={ev => {
-          setTheme(ev.currentTarget.value as ThemeKey);
-        }}
-      >
-        {ready
-          ? Object.entries(themes).map(([themeKey, { displayName }]) => (
-              <option key={themeKey} value={themeKey}>
-                {displayName}
-              </option>
-            ))
-          : []}
-      </Dropdown>
-    </Stack>
+    <MenuRenderer
+      offsetSpace="small"
+      trigger={(triggerProps, { open }) => (
+        <Box component="button" {...triggerProps}>
+          {ready ? (
+            <Text>
+              {themes[theme].displayName}{' '}
+              <IconChevron
+                alignY="lowercase"
+                direction={open ? 'up' : 'down'}
+              />
+            </Text>
+          ) : (
+            <Text>&nbsp;</Text>
+          )}
+        </Box>
+      )}
+    >
+      {Object.entries(themes).map(([themeKey, { displayName }]) => (
+        <MenuItem key={themeKey} onClick={() => setTheme(themeKey as ThemeKey)}>
+          {displayName}
+        </MenuItem>
+      ))}
+    </MenuRenderer>
   );
 }

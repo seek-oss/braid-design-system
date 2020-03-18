@@ -169,7 +169,12 @@ export const Documentation = () => {
                 role={isMenuOpen ? 'menu' : undefined}
               >
                 <Stack space="xlarge">
-                  <ThemeToggle />
+                  <Stack space="medium">
+                    <Text weight="strong" component="h2">
+                      Theme
+                    </Text>
+                    <ThemeToggle />
+                  </Stack>
 
                   <MenuSectionList
                     title="Tools"
