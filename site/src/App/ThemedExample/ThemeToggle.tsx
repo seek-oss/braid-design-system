@@ -12,7 +12,7 @@ export function ThemeToggle() {
     <MenuRenderer
       offsetSpace="small"
       trigger={(triggerProps, { open }) => (
-        <Box component="button" {...triggerProps}>
+        <Box component="button" cursor="pointer" {...triggerProps}>
           {ready ? (
             <Text>
               {themes[theme].displayName}{' '}
