@@ -1,5 +1,29 @@
 # braid-design-system
 
+## 24.1.2
+
+### Patch Changes
+
+- Checkbox & Radio: Only add aria-describedby when a message is provided ([#542](https://github.com/seek-oss/braid-design-system/pull/542))
+
+  **BUG FIXES**
+
+  **`Checkbox` & `Radio`**
+
+  Both of these inputs were previously always adding the `aria-describedby` attribute, while conditionally rendering the `message` only when provided. This meant that elements without a `message` would be indicating that they are described by an element that does not exist.
+
+## 24.1.1
+
+### Patch Changes
+
+- Tiles: Honour column width for non-breaking content. ([#537](https://github.com/seek-oss/braid-design-system/pull/537))
+
+  **BUG FIXES**
+
+  **`Tiles`**
+
+  The column width of a tile was not being honoured when its child elements contained non-wrapping/breaking content.
+
 ## 24.1.0
 
 ### Minor Changes
