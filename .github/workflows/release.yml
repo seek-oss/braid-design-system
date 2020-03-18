@@ -27,7 +27,7 @@ jobs:
         run: yarn --frozen-lockfile
 
       - name: Create Release Pull Request or Publish to npm
-        uses: mattsjones/action@1c018d8
+        uses: mattsjones/action@9291099
         with:
           publish: yarn release
           userName: seek-oss-ci
