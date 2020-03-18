@@ -9,12 +9,15 @@ jobs:
   release:
     name: Publish & Deploy
     runs-on: ubuntu-latest
+    env:
+      CI: true
     steps:
       - name: Checkout Repo
         uses: actions/checkout@master
         with:
           # This makes Actions fetch all Git history so that Changesets can generate changelogs with the correct commits
           fetch-depth: 0
+          token: ${{ secrets.SEEK_OSS_CI_GITHUB_TOKEN }}
 
       - name: Setup Node.js 12.x
         uses: actions/setup-node@master
