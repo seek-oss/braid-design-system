@@ -1,5 +1,17 @@
 # braid-design-system
 
+## 24.1.1
+
+### Patch Changes
+
+- Tiles: Honour column width for non-breaking content. ([#537](https://github.com/seek-oss/braid-design-system/pull/537))
+
+  **BUG FIXES**
+
+  **`Tiles`**
+
+  The column width of a tile was not being honoured when its child elements contained non-wrapping/breaking content.
+
 ## 24.1.0
 
 ### Minor Changes
