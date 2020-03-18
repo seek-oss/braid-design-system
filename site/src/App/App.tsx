@@ -1,6 +1,6 @@
 // Import all themes up front so CSS overrides work
 import '../../../lib/themes';
-import { theme } from '../theme/theme.treat';
+import { theme as docsSiteTheme } from '../theme/theme.treat';
 import React, { StrictMode } from 'react';
 import { Route } from 'react-router';
 import { CSSTransition } from 'react-transition-group';
@@ -22,7 +22,7 @@ const routes = [
 ];
 
 export const App = () => (
-  <BraidProvider theme={theme}>
+  <BraidProvider theme={docsSiteTheme}>
     <ToastProvider>
       <div>
         {routes.map(({ path, exact, Component }) => (
