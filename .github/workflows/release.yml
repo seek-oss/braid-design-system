@@ -27,9 +27,11 @@ jobs:
         run: yarn --frozen-lockfile
 
       - name: Create Release Pull Request or Publish to npm
-        uses: changesets/action@65b9570
+        uses: mattsjones/action@1c018d8
         with:
           publish: yarn release
+          userName: seek-oss-ci
+          email: opensource@seek.com.au
         env:
           GITHUB_TOKEN: ${{ secrets.SEEK_OSS_CI_GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
