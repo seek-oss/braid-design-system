@@ -1,4 +1,4 @@
-import { TreatTokens } from '../makeBraidTheme';
+import { TreatTokens } from '../../../lib/themes/makeBraidTheme';
 
 const formAccent = '#404040';
 const critical = '#ef3e4a';
@@ -16,7 +16,7 @@ const secondary = '#777';
 const neutral = '#edeef1';
 
 const tokens: TreatTokens = {
-  name: 'wireframe',
+  name: 'Braid',
   typography: {
     fontFamily: 'Courier, monospace',
     webFont: null,
@@ -128,7 +128,7 @@ const tokens: TreatTokens = {
     large: 1280,
   },
   grid: 4,
-  touchableSize: 12,
+  touchableSize: 11,
   space: {
     gutter: 6,
     xxsmall: 1,
@@ -193,7 +193,7 @@ const tokens: TreatTokens = {
       rating: black,
     },
     background: {
-      body: 'whitesmoke',
+      body: white,
       brand: black,
       input: white,
       inputDisabled: '#eee',
