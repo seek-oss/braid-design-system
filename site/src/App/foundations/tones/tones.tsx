@@ -1,4 +1,5 @@
 import React from 'react';
+import { useStyles } from 'sku/treat';
 import { BoxProps } from '../../../../../lib/components/Box/Box';
 import {
   Box,
@@ -13,6 +14,7 @@ import {
 import { TextStack } from '../../TextStack/TextStack';
 import { Page } from '../../../types';
 import { ThemedExample } from '../../ThemedExample/ThemedExample';
+import * as styleRefs from './tones.treat';
 
 const tones = [
   'critical',
@@ -135,6 +137,7 @@ const toneDocs: Record<Tone, ColourDoc> = {
 };
 
 const ToneDefinition = ({ tone }: { tone: Tone }) => {
+  const styles = useStyles(styleRefs);
   const { swatch, description, usage } = toneDocs[tone];
 
   return (
@@ -142,12 +145,7 @@ const ToneDefinition = ({ tone }: { tone: Tone }) => {
       <Columns space="medium">
         <Column width="content">
           <ThemedExample>
-            <Box
-              height="touchable"
-              width="touchable"
-              background={swatch}
-              borderRadius="standard"
-            />
+            <Box background={swatch} className={styles.square} />
           </ThemedExample>
         </Column>
         <Column>
@@ -196,9 +194,10 @@ const ToneDefinition = ({ tone }: { tone: Tone }) => {
   );
 };
 
-const page: Page = {
-  title: 'Tones',
-  Component: () => (
+function TonePage() {
+  const styles = useStyles(styleRefs);
+
+  return (
     <TextStack>
       <Heading level="2">Tones</Heading>
 
@@ -216,9 +215,8 @@ const page: Page = {
               <ThemedExample>
                 <Box
                   background={toneDocs[tone].swatch}
-                  borderRadius="standard"
                   width="full"
-                  height="touchable"
+                  className={styles.rectangle}
                 />
               </ThemedExample>
               <Hidden below="tablet">
@@ -237,7 +235,12 @@ const page: Page = {
         <ToneDefinition key={tone} tone={tone} />
       ))}
     </TextStack>
-  ),
+  );
+}
+
+const page: Page = {
+  title: 'Tones',
+  Component: TonePage,
 };
 
 export default page;

@@ -16,6 +16,7 @@ import { ComponentDocs } from '../../types';
 import * as styleRefs from './Documentation.treat';
 import undocumentedExports from '../../undocumentedExports.json';
 import { Overlay } from '../../../../lib/components/private/Overlay/Overlay';
+import { ThemeToggle } from '../ThemedExample/ThemeToggle';
 
 const { ContentBlock, Text, Box, Hidden, Stack } = components;
 
@@ -168,6 +169,8 @@ export const Documentation = () => {
                 role={isMenuOpen ? 'menu' : undefined}
               >
                 <Stack space="xlarge">
+                  <ThemeToggle />
+
                   <MenuSectionList
                     title="Tools"
                     items={[

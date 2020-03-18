@@ -12,7 +12,7 @@ import { BraidProvider, Box } from '../../../../lib/components';
 
 const defaultTheme = 'seekUnifiedBeta' as const;
 
-type ThemeKey = keyof typeof themes;
+export type ThemeKey = keyof typeof themes;
 
 interface ThemeSettingsContext {
   ready: boolean;
