@@ -16,6 +16,7 @@ import { ComponentDocs } from '../../types';
 import * as styleRefs from './Documentation.treat';
 import undocumentedExports from '../../undocumentedExports.json';
 import { Overlay } from '../../../../lib/components/private/Overlay/Overlay';
+import { ThemeToggle } from '../ThemeSetting';
 
 const { ContentBlock, Text, Box, Hidden, Stack } = components;
 
@@ -38,6 +39,28 @@ const getComponentDocs = ({
 
   return componentDocsContext(normalizedComponentRoute).default;
 };
+
+const filteredComponents = Object.keys(components)
+  .filter(name => {
+    if (name.startsWith('Icon')) {
+      return false;
+    }
+
+    return !undocumentedExports.includes(name);
+  })
+  .sort();
+
+const componentsByCategory = groupBy(
+  filteredComponents.map(name => {
+    const docs: ComponentDocs = getComponentDocs({
+      componentName: name,
+      isIcon: false,
+    });
+
+    return { name, ...docs };
+  }),
+  component => component.category,
+);
 
 interface MenuItem {
   name: string;
@@ -110,28 +133,6 @@ export const Documentation = () => {
   const menuRef = useRef<HTMLElement | null>(null);
   useIsolatedScroll(menuRef.current);
 
-  const filteredComponents = Object.keys(components)
-    .filter(name => {
-      if (name.startsWith('Icon')) {
-        return false;
-      }
-
-      return !undocumentedExports.includes(name);
-    })
-    .sort();
-
-  const componentsByCategory = groupBy(
-    filteredComponents.map(name => {
-      const docs: ComponentDocs = getComponentDocs({
-        componentName: name,
-        isIcon: false,
-      });
-
-      return { name, ...docs };
-    }),
-    component => component.category,
-  );
-
   const bottomSpace = 'xxlarge';
 
   return (
@@ -168,6 +169,13 @@ export const Documentation = () => {
                 role={isMenuOpen ? 'menu' : undefined}
               >
                 <Stack space="xlarge">
+                  <Stack space="medium">
+                    <Text weight="strong" component="h2">
+                      Theme
+                    </Text>
+                    <ThemeToggle />
+                  </Stack>
+
                   <MenuSectionList
                     title="Tools"
                     items={[
@@ -242,7 +250,6 @@ export const Documentation = () => {
               pointerEvents={isMenuOpen ? 'none' : undefined}
               className={[
                 styles.content,
-                isComponentsHome ? styles.noContent : '',
                 isMenuOpen && !isComponentsHome ? styles.isOpen : '',
               ]}
             >

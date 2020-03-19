@@ -16,10 +16,6 @@ export const header = style(({ utils }) =>
   }),
 );
 
-export const noContent = style({
-  opacity: 0,
-});
-
 export const container = style({
   maxHeight: '100vh',
 });
