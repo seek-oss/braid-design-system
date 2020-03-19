@@ -45,12 +45,6 @@ export const ComponentRoute = ({
       {docs.description ? (
         <Box style={{ maxWidth: 700 }}>{docs.description}</Box>
       ) : null}
-      {examples.length > 0 ? (
-        <Text weight="strong">
-          Example
-          {examples.length > 1 ? 's' : ''}
-        </Text>
-      ) : null}
       {examples
         .filter(example => example.docsSite !== false)
         .map((example, index) => {
@@ -76,7 +70,7 @@ export const ComponentRoute = ({
           return (
             <Box key={index} marginBottom="xlarge">
               <Stack space="gutter">
-                {label ? <Text>{label}</Text> : null}
+                {label ? <Heading level="4">{label}</Heading> : null}
                 {Example ? (
                   <Container>
                     <ThemedExample>
@@ -85,10 +79,7 @@ export const ComponentRoute = ({
                   </Container>
                 ) : null}
                 {codeAsString ? (
-                  <Stack space="gutter">
-                    <Text tone="secondary">Code:</Text>
-                    <Code playroom={playroom}>{codeAsString}</Code>
-                  </Stack>
+                  <Code playroom={playroom}>{codeAsString}</Code>
                 ) : null}
               </Stack>
             </Box>
