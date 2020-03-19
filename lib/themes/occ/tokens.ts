@@ -19,6 +19,7 @@ const link = '#0946CB';
 
 const tokens: TreatTokens = {
   name: 'OCC',
+  displayName: 'OCC Mundial',
   typography: {
     fontFamily: "'Open Sans', sans-serif",
     webFont: 'Open Sans',
