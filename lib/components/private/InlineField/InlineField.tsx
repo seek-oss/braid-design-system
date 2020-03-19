@@ -1,4 +1,5 @@
-import React, { ReactNode, AllHTMLAttributes, forwardRef } from 'react';
+import * as React from 'react';
+import { ReactNode, AllHTMLAttributes, forwardRef } from 'react';
 import { useStyles } from 'sku/react-treat';
 import { Box } from '../../Box/Box';
 import { FieldLabelProps } from '../../FieldLabel/FieldLabel';

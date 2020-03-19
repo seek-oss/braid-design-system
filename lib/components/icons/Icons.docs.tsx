@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import { Text } from '../Text/Text';
 import { Box } from '../Box/Box';

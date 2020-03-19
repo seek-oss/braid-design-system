@@ -1,4 +1,5 @@
-import React, { Children } from 'react';
+import * as React from 'react';
+import { Children } from 'react';
 import { Box } from '../Box/Box';
 import { ResponsiveSpace } from '../Box/useBoxStyles';
 import {

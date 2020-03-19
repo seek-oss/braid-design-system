@@ -1,4 +1,5 @@
-import React, { Fragment, ReactNode } from 'react';
+import * as React from 'react';
+import { Fragment, ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { Box, Button, Text } from '../../../../lib/components';
 import { useTextTone } from '../../../../lib/hooks/typography';

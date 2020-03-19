@@ -1,4 +1,5 @@
-import React, { createContext, useContext, ReactNode } from 'react';
+import * as React from 'react';
+import { createContext, useContext, ReactNode } from 'react';
 import { TreatProvider } from 'sku/treat';
 import { ensureResetImported } from '../../reset/resetTracker';
 import { HideFocusRingsRoot } from '../private/hideFocusRings/hideFocusRings';

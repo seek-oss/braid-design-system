@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import { Checkbox, Text } from '../';
 import { Checkbox as PlayroomCheckbox } from '../../playroom/components';

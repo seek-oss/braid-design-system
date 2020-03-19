@@ -1,4 +1,5 @@
-import React, { AllHTMLAttributes } from 'react';
+import * as React from 'react';
+import { AllHTMLAttributes } from 'react';
 import {
   Link as ReactRouterLink,
   LinkProps as ReactRouterLinkProps,

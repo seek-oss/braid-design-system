@@ -1,4 +1,5 @@
-import React, { ReactNode, useContext, useMemo } from 'react';
+import * as React from 'react';
+import { ReactNode, useContext, useMemo } from 'react';
 import { useStyles } from 'sku/react-treat';
 import { Box } from '../Box/Box';
 import { useText } from '../../hooks/typography';

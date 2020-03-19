@@ -1,4 +1,5 @@
-import React, { ReactNode, Fragment } from 'react';
+import * as React from 'react';
+import { ReactNode, Fragment } from 'react';
 import reactElementToJSXString from 'react-element-to-jsx-string';
 import { ComponentProps } from './ComponentProps';
 import { ExternalLink } from './Link';

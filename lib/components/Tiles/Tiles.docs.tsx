@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import { Tiles, Box, Card, Text } from '../';
 import { Placeholder } from '../private/Placeholder/Placeholder';

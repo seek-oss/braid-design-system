@@ -1,4 +1,5 @@
-import React, { ReactNode } from 'react';
+import * as React from 'react';
+import { ReactNode } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import { Box, Dropdown, IconLocation } from '../';
 import { Dropdown as PlayroomDropdown } from '../../playroom/components';

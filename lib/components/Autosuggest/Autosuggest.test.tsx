@@ -1,5 +1,6 @@
 import '@testing-library/jest-dom/extend-expect';
-import React, { useState, Dispatch } from 'react';
+import * as React from 'react';
+import { useState, Dispatch } from 'react';
 import { render, act, cleanup, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { BraidTestProvider, Autosuggest } from '..';

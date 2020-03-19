@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import * as React from 'react';
+import { useState } from 'react';
 import { Optional } from 'utility-types';
 import { useFallbackId } from '../../playroom/utils';
 import { TextField as BraidTextField, TextFieldProps } from './TextField';

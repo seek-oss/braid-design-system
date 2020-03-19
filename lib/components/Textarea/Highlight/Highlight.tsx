@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { Box } from '../../Box/Box';
 import * as styleRefs from './Highlight.treat';
 import { useStyles } from 'sku/treat';

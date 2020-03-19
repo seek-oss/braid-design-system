@@ -1,4 +1,5 @@
-import React, { ReactNode } from 'react';
+import * as React from 'react';
+import { ReactNode } from 'react';
 import { IconInfo, IconCritical, IconPositive, IconPromote } from '../icons';
 import { Text } from '../Text/Text';
 import { Columns } from '../Columns/Columns';

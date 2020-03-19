@@ -1,4 +1,5 @@
-import React, { Fragment } from 'react';
+import * as React from 'react';
+import { Fragment } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import { Columns, Column, Box, Stack } from '../';
 import { Placeholder } from '../private/Placeholder/Placeholder';

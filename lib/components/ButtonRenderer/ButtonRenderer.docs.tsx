@@ -1,4 +1,5 @@
-import React, { ReactNode } from 'react';
+import * as React from 'react';
+import { ReactNode } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import { Link } from 'react-router-dom';
 import { ButtonRenderer } from './ButtonRenderer';
@@ -24,7 +25,7 @@ const docs: ComponentDocs = {
         </ButtonRenderer>
       ),
       code: `
-        import React from 'react';
+        import * as React from 'react';
         import { Link } from 'react-router-dom';
         import { ButtonRenderer } from 'braid-design-system';
 

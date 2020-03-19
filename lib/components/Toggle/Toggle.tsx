@@ -1,4 +1,5 @@
-import React, { AllHTMLAttributes, ChangeEvent, ReactNode } from 'react';
+import * as React from 'react';
+import { AllHTMLAttributes, ChangeEvent, ReactNode } from 'react';
 import { useStyles } from 'sku/react-treat';
 import { Box } from '../Box/Box';
 import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';

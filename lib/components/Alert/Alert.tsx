@@ -1,4 +1,5 @@
-import React, { ReactNode } from 'react';
+import * as React from 'react';
+import { ReactNode } from 'react';
 import { useStyles } from 'sku/treat';
 import { Box, BoxProps } from '../Box/Box';
 import { Text } from '../Text/Text';

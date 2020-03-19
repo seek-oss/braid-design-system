@@ -1,4 +1,5 @@
-import React, { Children, ReactElement, createContext, useMemo } from 'react';
+import * as React from 'react';
+import { Children, ReactElement, createContext, useMemo } from 'react';
 import { Box } from '../Box/Box';
 import { ColumnProps } from '../Column/Column';
 import { Space, ResponsiveSpace } from '../Box/useBoxStyles';

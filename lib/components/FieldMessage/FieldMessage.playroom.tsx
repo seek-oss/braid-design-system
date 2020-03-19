@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { Optional } from 'utility-types';
 import { useFallbackId } from '../../playroom/utils';
 import {

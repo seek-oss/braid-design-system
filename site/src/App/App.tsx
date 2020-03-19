@@ -1,4 +1,5 @@
-import React, { StrictMode } from 'react';
+import * as React from 'react';
+import { StrictMode } from 'react';
 import { Route } from 'react-router';
 import { CSSTransition } from 'react-transition-group';
 

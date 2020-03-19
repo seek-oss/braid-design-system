@@ -1,4 +1,5 @@
-import React, { forwardRef, Fragment, AllHTMLAttributes } from 'react';
+import * as React from 'react';
+import { forwardRef, Fragment, AllHTMLAttributes } from 'react';
 import { Box } from '../Box/Box';
 import { Field, FieldProps } from '../private/Field/Field';
 

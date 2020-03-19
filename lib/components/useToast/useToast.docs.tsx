@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { useTheme } from 'sku/react-treat';
 import { ComponentDocs } from '../../../site/src/types';
 import {

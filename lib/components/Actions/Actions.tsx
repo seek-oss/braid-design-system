@@ -1,4 +1,5 @@
-import React, { Children, ReactNode } from 'react';
+import * as React from 'react';
+import { Children, ReactNode } from 'react';
 import ActionsContext from './ActionsContext';
 import { Box } from '../Box/Box';
 

@@ -1,4 +1,5 @@
-import React, { ReactNode } from 'react';
+import * as React from 'react';
+import { ReactNode } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import { MonthPicker } from '../';
 import { MonthPicker as PlayroomMonthPicker } from '../../playroom/components';

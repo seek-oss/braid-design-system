@@ -1,4 +1,5 @@
-import React, { ReactNode, useContext, useMemo } from 'react';
+import * as React from 'react';
+import { ReactNode, useContext, useMemo } from 'react';
 import TextContext from './TextContext';
 import { Box, BoxProps } from '../Box/Box';
 import { useText, UseTextProps, useTruncate } from '../../hooks/typography';

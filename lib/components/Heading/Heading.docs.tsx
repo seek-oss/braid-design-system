@@ -1,4 +1,5 @@
-import React, { ReactNode, Fragment } from 'react';
+import * as React from 'react';
+import { ReactNode, Fragment } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import {
   background as boxBackgrounds,

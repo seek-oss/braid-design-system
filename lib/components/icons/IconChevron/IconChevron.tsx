@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { useStyles } from 'sku/react-treat';
 import { Box } from '../../Box/Box';
 import useIcon, { UseIconProps } from '../../../hooks/useIcon';

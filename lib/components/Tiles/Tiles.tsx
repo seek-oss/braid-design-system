@@ -1,4 +1,5 @@
-import React, { Children } from 'react';
+import * as React from 'react';
+import { Children } from 'react';
 import { useStyles } from 'sku/react-treat';
 import { Box } from '../Box/Box';
 import { Divider } from '../Divider/Divider';

@@ -1,4 +1,5 @@
-import React, { useState, ReactNode } from 'react';
+import * as React from 'react';
+import { useState, ReactNode } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import { Box, IconSearch, TextField, TextLink } from '../';
 import { TextField as PlayroomTextField } from '../../playroom/components';

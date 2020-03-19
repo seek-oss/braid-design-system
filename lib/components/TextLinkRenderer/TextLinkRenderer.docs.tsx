@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import { Link } from 'react-router-dom';
 import { TextLinkRenderer } from './TextLinkRenderer';
@@ -23,7 +23,7 @@ const docs: ComponentDocs = {
         </Text>
       ),
       code: `
-        import React from 'react';
+        import * as React from 'react';
         import { Link } from 'react-router-dom';
         import { TextLinkRenderer, Text } from 'braid-design-system';
 

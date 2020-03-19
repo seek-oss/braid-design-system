@@ -1,4 +1,5 @@
-import React, { useCallback } from 'react';
+import * as React from 'react';
+import { useCallback } from 'react';
 
 import * as styleRefs from './Toast.treat';
 import { useStyles, TreatProvider } from 'sku/treat';

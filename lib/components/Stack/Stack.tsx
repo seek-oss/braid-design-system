@@ -1,4 +1,5 @@
-import React, { Children, Fragment } from 'react';
+import * as React from 'react';
+import { Children, Fragment } from 'react';
 import { useStyles } from 'sku/react-treat';
 import { Divider } from '../Divider/Divider';
 import { Align, alignToFlexAlign } from '../../utils/align';

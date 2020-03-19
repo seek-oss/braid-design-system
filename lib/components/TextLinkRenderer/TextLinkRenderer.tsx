@@ -1,4 +1,5 @@
-import React, { CSSProperties, useContext, ReactElement } from 'react';
+import * as React from 'react';
+import { CSSProperties, useContext, ReactElement } from 'react';
 import { useStyles } from 'sku/react-treat';
 import classnames from 'classnames';
 import TextLinkRendererContext from './TextLinkRendererContext';

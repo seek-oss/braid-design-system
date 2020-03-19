@@ -1,4 +1,5 @@
-import React, { useState, useRef } from 'react';
+import * as React from 'react';
+import { useState, useRef } from 'react';
 import { useStyles } from 'sku/react-treat';
 import map from 'lodash/map';
 import groupBy from 'lodash/groupBy';

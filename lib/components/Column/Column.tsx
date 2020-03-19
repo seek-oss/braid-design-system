@@ -1,4 +1,5 @@
-import React, { ReactNode, useContext } from 'react';
+import * as React from 'react';
+import { ReactNode, useContext } from 'react';
 import { useStyles } from 'sku/react-treat';
 import { Box } from '../Box/Box';
 import { ColumnsContext } from '../Columns/Columns';

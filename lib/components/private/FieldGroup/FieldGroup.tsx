@@ -1,4 +1,5 @@
-import React, { AllHTMLAttributes } from 'react';
+import * as React from 'react';
+import { AllHTMLAttributes } from 'react';
 import { Box } from '../../Box/Box';
 import { FieldLabel, FieldLabelProps } from '../../FieldLabel/FieldLabel';
 import {

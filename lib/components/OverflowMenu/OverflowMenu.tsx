@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { useStyles } from 'sku/treat';
 import { MenuRenderer, MenuRendererProps } from '../MenuRenderer/MenuRenderer';
 import { OverflowButton } from '../iconButtons/OverflowButton/OverflowButton';

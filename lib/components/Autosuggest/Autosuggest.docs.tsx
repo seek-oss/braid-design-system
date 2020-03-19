@@ -1,4 +1,5 @@
-import React, { useState, ReactNode } from 'react';
+import * as React from 'react';
+import { useState, ReactNode } from 'react';
 import matchHighlights from 'autosuggest-highlight/match';
 import { ComponentDocs } from '../../../site/src/types';
 import { Autosuggest, Box, IconSearch, IconLocation } from '../';

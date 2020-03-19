@@ -1,4 +1,5 @@
-import React, { ReactNode, AllHTMLAttributes } from 'react';
+import * as React from 'react';
+import { ReactNode, AllHTMLAttributes } from 'react';
 import {
   ButtonRenderer,
   ButtonRendererProps,

@@ -1,4 +1,5 @@
-import React, { Fragment, ReactNode } from 'react';
+import * as React from 'react';
+import { Fragment, ReactNode } from 'react';
 import { titleCase } from 'change-case';
 import { ComponentDocs } from '../../../site/src/types';
 import { Box, Text, Stack, Column, Columns, IconPositive } from '../';

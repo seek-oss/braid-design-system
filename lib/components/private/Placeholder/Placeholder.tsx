@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { useStyles } from 'sku/react-treat';
 import { BraidProvider, Box, Text } from '../../';
 import { useBackgroundLightness } from '../../Box/BackgroundContext';

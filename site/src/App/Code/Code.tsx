@@ -1,4 +1,5 @@
-import React, { Fragment, ReactChild } from 'react';
+import * as React from 'react';
+import { Fragment, ReactChild } from 'react';
 import { useStyles } from 'react-treat';
 import copy from 'copy-to-clipboard';
 import memoize from 'lodash/memoize';

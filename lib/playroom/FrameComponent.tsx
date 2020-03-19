@@ -1,4 +1,5 @@
-import React, { Fragment, ReactNode } from 'react';
+import * as React from 'react';
+import { Fragment, ReactNode } from 'react';
 import { BraidProvider } from '../components';
 import { BraidTheme } from '../themes/BraidTheme.d';
 

@@ -1,4 +1,5 @@
-import React, { ChangeEvent, FocusEvent, createRef, Fragment } from 'react';
+import * as React from 'react';
+import { ChangeEvent, FocusEvent, createRef, Fragment } from 'react';
 import range from 'lodash/range';
 import { isMobile } from 'is-mobile';
 import { useStyles } from 'sku/react-treat';

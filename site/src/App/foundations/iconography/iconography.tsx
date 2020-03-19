@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import * as React from 'react';
+import { useState } from 'react';
 import { Link as ReactRouterLink } from 'react-router-dom';
 import { useStyles } from 'sku/react-treat';
 import didYouMean, { ReturnTypeEnums } from 'didyoumean2';
