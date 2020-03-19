@@ -18,6 +18,7 @@ const link = brand;
 
 const tokens: TreatTokens = {
   name: 'Catho',
+  displayName: 'Catho',
   typography: {
     fontFamily: "'Nunito Sans', sans-serif",
     webFont: 'Nunito Sans',
