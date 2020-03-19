@@ -70,7 +70,11 @@ export const ComponentRoute = ({
           return (
             <Box key={index} marginBottom="xlarge">
               <Stack space="gutter">
-                {label ? <Heading level="4">{label}</Heading> : null}
+                {label ? (
+                  <Text tone="secondary" component="h4">
+                    {label}
+                  </Text>
+                ) : null}
                 {Example ? (
                   <Container>
                     <ThemedExample>
