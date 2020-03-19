@@ -26,6 +26,7 @@ import Code from '../../Code/Code';
 import tokens from '../../../../../lib/themes/wireframe/tokens';
 import { Page } from '../../../types';
 import * as styleRefs from './layout.treat';
+import { ThemedExample } from '../../ThemeSetting';
 
 const slugify = (string: string) => string.replace(/ /, '-');
 
@@ -123,11 +124,13 @@ const page: Page = {
               </Column>
               <Column>
                 <Box display="flex">
-                  <Box
-                    background="formAccent"
-                    paddingLeft={space}
-                    paddingTop="medium"
-                  />
+                  <ThemedExample>
+                    <Box
+                      background="formAccent"
+                      paddingLeft={space}
+                      paddingTop="medium"
+                    />
+                  </ThemedExample>
                 </Box>
               </Column>
             </Columns>

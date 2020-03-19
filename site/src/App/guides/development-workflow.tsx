@@ -6,6 +6,12 @@ import {
   TextLink,
   Divider,
   Strong,
+  Card,
+  Button,
+  Stack,
+  Columns,
+  Column,
+  Box,
 } from '../../../../lib/components';
 import { TextStack } from '../TextStack/TextStack';
 import { Link } from '../Documentation/Link';
@@ -64,13 +70,13 @@ const page: Page = {
           An example of composing a simple view leveraging some of these could
           be:
         </Text>
-        <Code>{dedent`
+        <Code>
           <Card>
             <Heading level="4">Title</Heading>
             <Text>My first Braid component</Text>
             <Button>Click me</Button>
           </Card>
-        `}</Code>
+        </Code>
         <Text>
           You’ll notice that each of these components don’t provide any
           surrounding white space. This is where our layout components come in.
@@ -84,7 +90,7 @@ const page: Page = {
           ‘small’ space between items in a{' '}
           <Link to="/components/Stack">Stack</Link>:
         </Text>
-        <Code>{dedent`
+        <Code>
           <Card>
             <Stack space="small">
               <Heading level="4">Title</Heading>
@@ -92,30 +98,30 @@ const page: Page = {
               <Button>Click me</Button>
             </Stack>
           </Card>
-        `}</Code>
+        </Code>
         <Text>
           The ‘space’ property is a responsive prop, which means that it can
           also accept an array of values representing each breakpoint. For
           example, if you wanted ‘small’ space on mobile and ‘medium’ space on
           desktop:
         </Text>
-        <Code>{dedent`
+        <Code>
           <Card>
-            <Stack space={["small", "medium"]}>
+            <Stack space={['small', 'medium']}>
               <Heading level="4">Title</Heading>
               <Text>My first Braid component</Text>
               <Button>Click me</Button>
             </Stack>
           </Card>
-        `}</Code>
+        </Code>
         <Text>
           For horizontal layouts, <Link to="/components/Columns">Columns</Link>{' '}
           provides various responsive rules for laying out content. For example,
           if you wanted to render a two-column layout that collapses to a single
           column on mobile:
         </Text>
-        <Code>{dedent`
-          <Columns space="gutter" collapse>
+        <Code>
+          <Columns space="gutter" collapseBelow="tablet">
             <Column>
               <Card>
                 <Stack space="small">
@@ -133,14 +139,14 @@ const page: Page = {
               </Card>
             </Column>
           </Columns>
-        `}</Code>
+        </Code>
         <Text>
           This ‘space’ property is also responsive, supporting an array of
           values for each breakpoint. For example, if you wanted ‘xxsmall’ space
           on mobile and ‘gutter’ space on desktop:
         </Text>
-        <Code>{dedent`
-          <Columns space={['xxsmall', 'gutter']} collapse>
+        <Code>
+          <Columns space={['xxsmall', 'gutter']} collapseBelow="tablet">
             <Column>
               <Card>
                 <Stack space="small">
@@ -158,7 +164,7 @@ const page: Page = {
               </Card>
             </Column>
           </Columns>
-        `}</Code>
+        </Code>
 
         <Heading level="3">Need a custom component?</Heading>
         <Text>
@@ -176,11 +182,11 @@ const page: Page = {
           standard CSS properties, while their values are more semantic,
           allowing the corresponding CSS rules to be computed across themes.
         </Text>
-        <Code>{dedent`
+        <Code>
           <Box background="brand" boxShadow="large" padding="large">
             <Text>My first Braid component</Text>
           </Box>
-        `}</Code>
+        </Code>
         <Text>
           For more details, view the complete{' '}
           <Link to="/components/Box">Box documentation</Link>. For TypeScript
@@ -201,12 +207,12 @@ const page: Page = {
           For example, if we wanted to change the value for ‘display’
           responsively:
         </Text>
-        <Code>{dedent`
-          <Box display={["flex", "block"]}>
+        <Code>
+          <Box display={['flex', 'block']}>
             <Heading level="2">Flex on small screen</Heading>
             <Heading level="2">Block on large screen</Heading>
           </Box>
-        `}</Code>
+        </Code>
         <Text>
           For a list of low-level responsive props, check out the{' '}
           <Link to="/components/Box">Box documentation.</Link>
@@ -222,11 +228,11 @@ const page: Page = {
           For example, in order to render a semantic ‘fieldset’ element without
           the native browser styles:
         </Text>
-        <Code>{dedent`
+        <Code>
           <Box component="fieldset">
             <legend>Reset Fieldset</legend>
           </Box>
-        `}</Code>
+        </Code>
 
         <Heading level="3">Still need custom CSS?</Heading>
         <Text>

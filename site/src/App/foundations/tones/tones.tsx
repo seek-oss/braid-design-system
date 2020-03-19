@@ -1,4 +1,5 @@
 import React from 'react';
+import { useStyles } from 'sku/treat';
 import { BoxProps } from '../../../../../lib/components/Box/Box';
 import {
   Box,
@@ -12,6 +13,8 @@ import {
 } from '../../../../../lib/components';
 import { TextStack } from '../../TextStack/TextStack';
 import { Page } from '../../../types';
+import { ThemedExample } from '../../ThemeSetting';
+import * as styleRefs from './tones.treat';
 
 const tones = [
   'critical',
@@ -134,18 +137,16 @@ const toneDocs: Record<Tone, ColourDoc> = {
 };
 
 const ToneDefinition = ({ tone }: { tone: Tone }) => {
+  const styles = useStyles(styleRefs);
   const { swatch, description, usage } = toneDocs[tone];
 
   return (
     <Stack space="small">
       <Columns space="medium">
         <Column width="content">
-          <Box
-            height="touchable"
-            width="touchable"
-            background={swatch}
-            borderRadius="standard"
-          />
+          <ThemedExample>
+            <Box background={swatch} className={styles.square} />
+          </ThemedExample>
         </Column>
         <Column>
           <Box height="touchable" display="flex" alignItems="center">
@@ -193,9 +194,10 @@ const ToneDefinition = ({ tone }: { tone: Tone }) => {
   );
 };
 
-const page: Page = {
-  title: 'Tones',
-  Component: () => (
+function TonePage() {
+  const styles = useStyles(styleRefs);
+
+  return (
     <TextStack>
       <Heading level="2">Tones</Heading>
 
@@ -210,12 +212,13 @@ const page: Page = {
         {tones.map(tone => (
           <Column key={tone}>
             <Stack space={['none', 'xsmall']}>
-              <Box
-                background={toneDocs[tone].swatch}
-                borderRadius="standard"
-                width="full"
-                height="touchable"
-              />
+              <ThemedExample>
+                <Box
+                  background={toneDocs[tone].swatch}
+                  width="full"
+                  className={styles.rectangle}
+                />
+              </ThemedExample>
               <Hidden below="tablet">
                 <Box textAlign="center">
                   <Text tone="secondary">{tone}</Text>
@@ -232,7 +235,12 @@ const page: Page = {
         <ToneDefinition key={tone} tone={tone} />
       ))}
     </TextStack>
-  ),
+  );
+}
+
+const page: Page = {
+  title: 'Tones',
+  Component: TonePage,
 };
 
 export default page;
