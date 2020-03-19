@@ -8,15 +8,15 @@ import { App } from './App/App';
 import { RenderContext } from './types';
 import { ConfigProvider } from './App/ConfigContext';
 import * as themes from '../../lib/themes';
+import { theme as docSiteTheme } from './theme/theme.treat';
 
 const skuRender: Render<RenderContext> = {
   renderApp: ({ route }) => {
     const {
-      TRAVIS_BRANCH: branch,
-      TRAVIS_PULL_REQUEST_SHA: prSha,
+      IS_GITHUB_PAGES: isGithubPages,
+      GITHUB_SHA: prSha,
       CI,
     } = process.env;
-    const isGithubPages = branch === 'master' && !prSha;
     const githubUrl = 'https://github.com/seek-oss/braid-design-system/tree/';
 
     const sourceUrlPrefix = `${githubUrl}${prSha || 'master'}`;
@@ -58,9 +58,9 @@ const skuRender: Render<RenderContext> = {
 
   renderDocument: ({ headTags, bodyTags, app: { html, publicPath } }) => {
     const webFontLinkTags = uniq(
-      flatten(values(themes).map(theme => theme.webFonts)).map(
-        font => font.linkTag,
-      ),
+      flatten(
+        values({ ...themes, docSiteTheme }).map(theme => theme.webFonts),
+      ).map(font => font.linkTag),
     ).join('');
 
     return dedent`

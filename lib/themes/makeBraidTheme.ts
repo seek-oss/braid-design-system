@@ -22,6 +22,7 @@ type FontWeight = 'regular' | 'medium' | 'strong';
 
 export interface TreatTokens {
   name: string;
+  displayName: string;
   typography: {
     fontFamily: string;
     webFont: string | null;
@@ -188,6 +189,7 @@ const makeWebFonts = (tokens: TreatTheme) => {
 
 const makeRuntimeTokens = (tokens: TreatTheme) => ({
   name: tokens.name,
+  displayName: tokens.displayName,
   background: tokens.color.background.body,
   webFonts: makeWebFonts(tokens),
   space: {

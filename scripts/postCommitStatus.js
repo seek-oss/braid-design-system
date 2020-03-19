@@ -3,11 +3,11 @@
   try {
     console.log('Posting commit status to GitHub...');
 
-    const { GH_TOKEN, TRAVIS_PULL_REQUEST_SHA } = process.env;
+    const { GITHUB_TOKEN, GITHUB_SHA } = process.env;
 
-    if (!GH_TOKEN || !TRAVIS_PULL_REQUEST_SHA) {
+    if (!GITHUB_TOKEN || !GITHUB_SHA) {
       throw new Error(
-        'GH_TOKEN and TRAVIS_PULL_REQUEST_SHA environment variables must be present',
+        'GITHUB_TOKEN and GITHUB_SHA environment variables must be present',
       );
     }
 
@@ -15,16 +15,16 @@
 
     octokit.authenticate({
       type: 'token',
-      token: GH_TOKEN,
+      token: GITHUB_TOKEN,
     });
 
     await octokit.repos.createStatus({
       owner: 'seek-oss',
       repo: 'braid-design-system',
-      sha: TRAVIS_PULL_REQUEST_SHA,
+      sha: GITHUB_SHA,
       state: 'success',
       context: 'Preview Site',
-      target_url: `https://braid-design-system--${TRAVIS_PULL_REQUEST_SHA}.surge.sh`,
+      target_url: `https://braid-design-system--${GITHUB_SHA}.surge.sh`,
       description: 'The preview for this PR has been successfully deployed',
     });
 

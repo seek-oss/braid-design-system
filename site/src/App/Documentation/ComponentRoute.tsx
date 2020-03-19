@@ -2,17 +2,11 @@ import React, { ReactNode, Fragment } from 'react';
 import reactElementToJSXString from 'react-element-to-jsx-string';
 import { ComponentProps } from './ComponentProps';
 import { ExternalLink } from './Link';
-import {
-  BraidProvider,
-  Box,
-  Heading,
-  Stack,
-  Text,
-} from '../../../../lib/components';
-import * as themes from '../../../../lib/themes';
+import { Box, Heading, Stack, Text } from '../../../../lib/components';
 
 import { ComponentDocs } from '../../types';
 import Code from '../Code/Code';
+import { ThemedExample } from '../ThemeSetting';
 
 const handler = () => {
   /* No-op for docs examples */
@@ -48,12 +42,8 @@ export const ComponentRoute = ({
       <Heading level="2" component="h3">
         {componentName}
       </Heading>
-      {docs.description}
-      {examples.length > 0 ? (
-        <Text weight="strong">
-          Example
-          {examples.length > 1 ? 's' : ''}
-        </Text>
+      {docs.description ? (
+        <Box style={{ maxWidth: 700 }}>{docs.description}</Box>
       ) : null}
       {examples
         .filter(example => example.docsSite !== false)
@@ -77,38 +67,23 @@ export const ComponentRoute = ({
                 })
               : code;
 
-          const ExampleInContainer = ({ id }: { id: string }) => (
-            <Container>
-              {Example && <Example id={id} handler={handler} />}
-            </Container>
-          );
-
-          // Only render foundation elements in `wireframe` no need to theme them
-          const exampleEl = docs.foundation ? (
-            <ExampleInContainer id={`${index}`} />
-          ) : (
-            Object.values(themes).map(theme => (
-              <Box key={theme.name} marginBottom="medium">
-                <Stack space="gutter">
-                  <Text tone="secondary">Theme: {theme.name}</Text>
-                  <BraidProvider theme={theme}>
-                    <ExampleInContainer id={`${index}_${theme.name}`} />
-                  </BraidProvider>
-                </Stack>
-              </Box>
-            ))
-          );
-
           return (
             <Box key={index} marginBottom="xlarge">
               <Stack space="gutter">
-                {label ? <Text>{label}</Text> : null}
-                {Example ? exampleEl : null}
+                {label ? (
+                  <Text tone="secondary" component="h4">
+                    {label}
+                  </Text>
+                ) : null}
+                {Example ? (
+                  <Container>
+                    <ThemedExample>
+                      <Example id={`${index}`} handler={handler} />
+                    </ThemedExample>
+                  </Container>
+                ) : null}
                 {codeAsString ? (
-                  <Stack space="gutter">
-                    <Text tone="secondary">Code:</Text>
-                    <Code playroom={playroom}>{codeAsString}</Code>
-                  </Stack>
+                  <Code playroom={playroom}>{codeAsString}</Code>
                 ) : null}
               </Stack>
             </Box>

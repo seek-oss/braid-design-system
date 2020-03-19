@@ -4,6 +4,7 @@ import merge from 'lodash/merge';
 
 interface MakeTokensOptions {
   name: string;
+  displayName: string;
   bodyBackground: string;
   brand: string;
   brandAccent: string;
@@ -12,6 +13,7 @@ interface MakeTokensOptions {
 }
 export const makeTokens = ({
   name,
+  displayName,
   bodyBackground,
   brand,
   brandAccent,
@@ -43,6 +45,7 @@ export const makeTokens = ({
 
   const tokens: TreatTokens = {
     name,
+    displayName,
     typography: {
       fontFamily:
         'Muli, -apple-system, system-ui, "Segoe UI", Roboto, "Noto Sans", Ubuntu, "Droid Sans", "Helvetica Neue", Arial, sans-serif',

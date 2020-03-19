@@ -13,13 +13,18 @@ export const normaliseResponsiveProp = <Keys extends string | number>(
   if ('length' in value) {
     const { length } = value;
 
+    if (length === 2) {
+      const [mobileValue, tabletValue] = value;
+      return [mobileValue, tabletValue, tabletValue];
+    }
+
     if (length === 3) {
       return value as Readonly<[Keys, Keys, Keys]>;
     }
 
-    if (length === 2) {
-      const [mobileValue, tabletValue] = value;
-      return [mobileValue, tabletValue, tabletValue];
+    if (length === 1) {
+      const [mobileValue] = value;
+      return [mobileValue, mobileValue, mobileValue];
     }
 
     throw new Error(`Invalid responsive prop length: ${JSON.stringify(value)}`);

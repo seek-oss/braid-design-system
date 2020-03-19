@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useStyles } from 'sku/react-treat';
 import map from 'lodash/map';
 import groupBy from 'lodash/groupBy';
@@ -6,6 +6,7 @@ import guides from '../guides';
 import foundations from '../foundations';
 import { Route, useLocation } from 'react-router-dom';
 import * as components from '../../../../lib/components';
+import { useIsolatedScroll } from '../../../../lib/components/Autosuggest/useIsolatedScroll';
 import { Logo } from '../Logo/Logo';
 import { ComponentRoute } from './ComponentRoute';
 import { Link, ExternalLink } from './Link';
@@ -14,8 +15,10 @@ import { ConfigConsumer } from '../ConfigContext';
 import { ComponentDocs } from '../../types';
 import * as styleRefs from './Documentation.treat';
 import undocumentedExports from '../../undocumentedExports.json';
+import { Overlay } from '../../../../lib/components/private/Overlay/Overlay';
+import { ThemeToggle } from '../ThemeSetting';
 
-const { Text, Box, Hidden, Stack } = components;
+const { ContentBlock, Text, Box, Hidden, Stack } = components;
 
 const componentDocsContext = require.context(
   '../../../../lib/components',
@@ -37,6 +40,28 @@ const getComponentDocs = ({
   return componentDocsContext(normalizedComponentRoute).default;
 };
 
+const filteredComponents = Object.keys(components)
+  .filter(name => {
+    if (name.startsWith('Icon')) {
+      return false;
+    }
+
+    return !undocumentedExports.includes(name);
+  })
+  .sort();
+
+const componentsByCategory = groupBy(
+  filteredComponents.map(name => {
+    const docs: ComponentDocs = getComponentDocs({
+      componentName: name,
+      isIcon: false,
+    });
+
+    return { name, ...docs };
+  }),
+  component => component.category,
+);
+
 interface MenuItem {
   name: string;
   path: string;
@@ -50,109 +75,107 @@ const MenuSectionList = ({
   title: string;
   items: MenuItem[];
 }) => (
-  <Stack space="large">
-    <Text weight="strong" component="h2">
-      {title}
-    </Text>
+  <Box component="nav">
+    <Stack space="medium">
+      <Text weight="strong" component="h2">
+        {title}
+      </Text>
 
-    <Stack space="gutter">
-      {items.map(({ name, path, onClick, external }) => (
-        <Text key={name}>
-          {external ? (
-            <ExternalLink href={path} onClick={onClick}>
-              {name}
-            </ExternalLink>
-          ) : (
-            <Link to={path} onClick={onClick}>
-              {name}
-            </Link>
-          )}
-        </Text>
-      ))}
+      <Stack component="ul" space="medium">
+        {items.map(({ name, path, onClick, external }) => (
+          <Text key={name}>
+            {external ? (
+              <ExternalLink href={path} onClick={onClick} hitArea="large">
+                {name}
+              </ExternalLink>
+            ) : (
+              <Link to={path} onClick={onClick} hitArea="large">
+                {name}
+              </Link>
+            )}
+          </Text>
+        ))}
+      </Stack>
     </Stack>
-  </Stack>
+  </Box>
 );
 
-const responsiveGutter = ['gutter', 'large'] as const;
+const Header = ({
+  menuOpen,
+  menuClick,
+}: {
+  menuOpen: boolean;
+  menuClick: () => void;
+}) => (
+  <Box paddingY={['medium', 'large']}>
+    <Text baseline={false}>
+      <Box display="flex" alignItems="center">
+        <Hidden print above="mobile">
+          <Box paddingRight="medium" display="flex" alignItems="center">
+            <MenuButton open={menuOpen} onClick={menuClick} />
+          </Box>
+        </Hidden>
+        <Link to="/" tabIndex={menuOpen ? -1 : undefined}>
+          <Logo iconOnly height={32} />
+        </Link>
+      </Box>
+    </Text>
+  </Box>
+);
 
 export const Documentation = () => {
   const styles = useStyles(styleRefs);
 
   const location = useLocation();
-  const [isMenuOpen, setMenuOpen] = useState(
-    !/^\/(guides|components|foundations|icons)\/(.*)/.test(location.pathname),
-  );
-
   const isComponentsHome = location.pathname === '/components';
-  const showMenuButton = /(\/(guides|components|foundations)\/).*/.test(
-    location.pathname,
-  );
+  const [isMenuOpen, setMenuOpen] = useState(isComponentsHome);
 
-  const componentsByCategory = groupBy(
-    Object.keys(components)
-      .filter(name => {
-        if (name.startsWith('Icon')) {
-          return false;
-        }
+  const menuRef = useRef<HTMLElement | null>(null);
+  useIsolatedScroll(menuRef.current);
 
-        return !undocumentedExports.includes(name);
-      })
-      .map(name => {
-        const docs: ComponentDocs = getComponentDocs({
-          componentName: name,
-          isIcon: false,
-        });
-
-        return { name, ...docs };
-      }),
-    component => component.category,
-  );
+  const bottomSpace = 'xxlarge';
 
   return (
     <ConfigConsumer>
       {({ playroomUrl, sourceUrlPrefix }) => (
-        <div className={isMenuOpen ? styles.isOpen : undefined}>
-          <Box
-            paddingY="large"
-            paddingX={responsiveGutter}
-            position="absolute"
-            display="flex"
-            alignItems="center"
-            justifyContent="spaceBetween"
-            width="full"
-            className={styles.header}
-          >
-            <Text baseline={false}>
-              <Link to="/">
-                <Box overflow="hidden" className={styles.logo}>
-                  <Logo />
-                </Box>
-              </Link>
-            </Text>
-
-            <Hidden screen={!showMenuButton} above="tablet">
-              <MenuButton
-                open={isMenuOpen}
-                onClick={() => setMenuOpen(!isMenuOpen)}
+        <Box
+          paddingX={['gutter', 'large']}
+          paddingBottom={bottomSpace}
+          overflow={isMenuOpen ? 'hidden' : undefined}
+          className={isMenuOpen ? styles.container : undefined}
+        >
+          <ContentBlock width="large">
+            <Box
+              position={isMenuOpen ? 'fixed' : 'absolute'}
+              top={0}
+              bottom={0}
+              width={isMenuOpen ? 'full' : undefined}
+              className={[styles.header, isMenuOpen ? styles.isOpen : '']}
+            >
+              <Header
+                menuOpen={isMenuOpen}
+                menuClick={() => setMenuOpen(!isMenuOpen)}
               />
-            </Hidden>
-          </Box>
 
-          <Box
-            display="flex"
-            flexDirection={['column', 'row']}
-            className={styles.container}
-          >
-            <Hidden print>
               <Box
-                position="fixed"
-                paddingTop="small"
-                paddingBottom="xlarge"
-                paddingX={responsiveGutter}
+                ref={menuRef}
+                position="absolute"
+                bottom={0}
                 overflow="auto"
-                className={styles.menu}
+                paddingBottom={bottomSpace}
+                width="full"
+                transition="fast"
+                className={[styles.menu, isMenuOpen ? styles.isOpen : '']}
+                role={isMenuOpen ? 'menu' : undefined}
               >
                 <Stack space="xlarge">
+                  <Stack space="medium">
+                    <Text weight="strong" component="h2">
+                      Theme
+                    </Text>
+                    <ThemeToggle />
+                  </Stack>
+
                   <MenuSectionList
                     title="Tools"
                     items={[
@@ -160,13 +183,13 @@ export const Documentation = () => {
                         name: 'Source',
                         path: 'https://github.com/seek-oss/braid-design-system',
                         external: true,
-                        onClick: () => setMenuOpen(isComponentsHome),
+                        onClick: () => {},
                       },
                       {
                         name: 'Playroom',
                         path: playroomUrl,
                         external: true,
-                        onClick: () => setMenuOpen(isComponentsHome),
+                        onClick: () => {},
                       },
                     ]}
                   />
@@ -195,7 +218,7 @@ export const Documentation = () => {
                     category => (
                       <MenuSectionList
                         key={category}
-                        title={`${category} Components`}
+                        title={category}
                         items={componentsByCategory[category].map(
                           ({ name }) => ({
                             name,
@@ -210,21 +233,27 @@ export const Documentation = () => {
 
                   <MenuSectionList
                     title="All Components"
-                    items={Object.keys(components)
-                      .filter(x => !/^(Icon|use|BoxRenderer)/.test(x))
-                      .sort()
-                      .map(componentName => ({
-                        name: componentName,
-                        path: `/components/${componentName}`,
-                        external: false,
-                        onClick: () => setMenuOpen(false),
-                      }))}
+                    items={filteredComponents.map(componentName => ({
+                      name: componentName,
+                      path: `/components/${componentName}`,
+                      external: false,
+                      onClick: () => setMenuOpen(false),
+                    }))}
                   />
                 </Stack>
               </Box>
-            </Hidden>
-            <Box minWidth={0} flexGrow={1} className={styles.content}>
-              <Box paddingY="small" paddingX={responsiveGutter}>
+            </Box>
+            <Box
+              display="flex"
+              transition="fast"
+              paddingLeft={['none', 'gutter', 'large']}
+              pointerEvents={isMenuOpen ? 'none' : undefined}
+              className={[
+                styles.content,
+                isMenuOpen && !isComponentsHome ? styles.isOpen : '',
+              ]}
+            >
+              <Box position="relative" width="full">
                 {map({ ...guides, ...foundations }, ({ Component }, path) => (
                   <Route key={path} path={path} component={Component} />
                 ))}
@@ -248,10 +277,11 @@ export const Documentation = () => {
                     />
                   )}
                 />
+                <Overlay visible={isMenuOpen} />
               </Box>
             </Box>
-          </Box>
-        </div>
+          </ContentBlock>
+        </Box>
       )}
     </ConfigConsumer>
   );

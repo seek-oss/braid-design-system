@@ -5,6 +5,7 @@ const info = '#142d69';
 
 export default makeTokens({
   name: 'jobStreetClassic',
+  displayName: 'JobStreet (Classic)',
   bodyBackground: '#e5e5e5',
   brand,
   brandAccent: '#fff200',
