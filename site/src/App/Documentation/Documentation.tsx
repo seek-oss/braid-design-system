@@ -250,7 +250,6 @@ export const Documentation = () => {
               pointerEvents={isMenuOpen ? 'none' : undefined}
               className={[
                 styles.content,
-                isComponentsHome ? styles.noContent : '',
                 isMenuOpen && !isComponentsHome ? styles.isOpen : '',
               ]}
             >
