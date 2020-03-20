@@ -7,7 +7,7 @@ Please note that this is a breaking change to our design language. When migratin
 - When inside a `Text` or `Heading` component, icons inherit the `size` and `tone` accordingly. As a result it's likely that you will be able to remove custom icon sizing styles in your application.
 - If an icon is not in a `Text` or `Heading` the standard typographic hierarchy is available for sizing, eg. `size={'xsmall' | 'small' | 'standard' | 'large'}`) and will use the defined line height. Heading-sized icons are not supported outside of a heading context.
 - If you need a custom icon size, use `size="fill"` to make the icon fill its container.
-- If the icon's vertical alignment doesn't look quite right, consider using the `alignY` prop which supports a value of `"uppercase"` or `"lowercase"`.
+- If the vertical alignment of the icon doesn't look quite right, consider using the `alignY` prop which supports a value of `"uppercase"` or `"lowercase"`.
 - No longer accepts arbitrary DOM properties, e.g. `className`, `svgClassName`, etc.
 
 ### Diff
