@@ -136,9 +136,6 @@ const page: Page = {
             </Columns>
           ))}
         </Stack>
-        <Text tone="secondary" size="small">
-          Note: The exact pixel values in this scale may vary betweeen themes.
-        </Text>
 
         <Divider />
 
