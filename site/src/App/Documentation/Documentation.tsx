@@ -17,6 +17,7 @@ import * as styleRefs from './Documentation.treat';
 import undocumentedExports from '../../undocumentedExports.json';
 import { Overlay } from '../../../../lib/components/private/Overlay/Overlay';
 import { ThemeToggle } from '../ThemeSetting';
+import { Home } from '../Home/Home';
 
 const { ContentBlock, Text, Box, Hidden, Stack } = components;
 
@@ -254,6 +255,8 @@ export const Documentation = () => {
               ]}
             >
               <Box position="relative" width="full">
+                <Route path="/" exact component={Home} />
+
                 {map({ ...guides, ...foundations }, ({ Component }, path) => (
                   <Route key={path} path={path} component={Component} />
                 ))}
