@@ -41,6 +41,28 @@ const getComponentDocs = ({
   return componentDocsContext(normalizedComponentRoute).default;
 };
 
+const filteredComponents = Object.keys(components)
+  .filter(name => {
+    if (name.startsWith('Icon')) {
+      return false;
+    }
+
+    return !undocumentedExports.includes(name);
+  })
+  .sort();
+
+const componentsByCategory = groupBy(
+  filteredComponents.map(name => {
+    const docs: ComponentDocs = getComponentDocs({
+      componentName: name,
+      isIcon: false,
+    });
+
+    return { name, ...docs };
+  }),
+  component => component.category,
+);
+
 interface MenuItem {
   name: string;
   path: string;
@@ -111,28 +133,6 @@ export const Documentation = () => {
 
   const menuRef = useRef<HTMLElement | null>(null);
   useIsolatedScroll(menuRef.current);
-
-  const filteredComponents = Object.keys(components)
-    .filter(name => {
-      if (name.startsWith('Icon')) {
-        return false;
-      }
-
-      return !undocumentedExports.includes(name);
-    })
-    .sort();
-
-  const componentsByCategory = groupBy(
-    filteredComponents.map(name => {
-      const docs: ComponentDocs = getComponentDocs({
-        componentName: name,
-        isIcon: false,
-      });
-
-      return { name, ...docs };
-    }),
-    component => component.category,
-  );
 
   const bottomSpace = 'xxlarge';
 
