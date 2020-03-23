@@ -1,5 +1,5 @@
 ---
-"braid-design-system": patch
+'braid-design-system': patch
 ---
 
 Textarea: Fix trailing new line highlight issue
