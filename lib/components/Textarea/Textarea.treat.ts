@@ -19,9 +19,7 @@ export const highlights = style({
   color: 'transparent !important',
   wordBreak: 'break-word',
   whiteSpace: 'pre-wrap',
-  selectors: {
-    '&:after': {
-      content: '"\\A"',
-    },
+  ':after': {
+    content: '"\\A"',
   },
 });
