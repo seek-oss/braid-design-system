@@ -132,10 +132,10 @@ const page: Page = {
         As much as possible, we suggest using{' '}
         <ExternalLink href="https://testing-library.com/docs/dom-testing-library/api-queries#byrole">
           role based querying
-        </ExternalLink>
+        </ExternalLink>{' '}
         to maximise accessibilty. Queries based on text content, title text,
-        labels and display values are also a good secondary options. Some Braid
-        components also allow passing{' '}
+        labels and display values are also good options. Some Braid components
+        also allow passing{' '}
         <ExternalLink href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes">
           HTML data attributes
         </ExternalLink>{' '}
@@ -145,8 +145,8 @@ const page: Page = {
       </Text>
 
       <Text>
-        If you are having trouble targeting an element in a test please reach
-        out to us in{' '}
+        If you&rsquo;re having trouble targeting an element in a test, please
+        reach out to us in{' '}
         <ExternalLink href="https://seekchat.slack.com/channels/braid-support">
           #braid-support
         </ExternalLink>
@@ -188,10 +188,10 @@ const page: Page = {
         snapshots you have will grow and break more frequently. In our
         experience, this causes people to grow accustomed to approving
         screenshot diffs based on a cursory glance of the output, which means
-        that the odds of catching real issues is dramatically lower than a
-        standard assertion. This is especially relevant when using Braid because
-        the components will change frequently, causing many snapshots to break
-        through your app even though it remains functional.
+        that you&rsquo;re much less likely to notice when something goes wrong.
+        This is especially relevant when using Braid because the components will
+        change frequently, causing many snapshots to break through your app even
+        though it remains perfectly functional.
       </Text>
 
       <Text>
