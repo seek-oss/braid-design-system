@@ -1027,7 +1027,6 @@ Object {
         | "on"
     useMap?: string
     userSelect?: 
-        | "auto"
         | "none"
         | "text"
     value?: 
@@ -1485,7 +1484,6 @@ Object {
         | "fast"
         | "touchable"
     userSelect?: 
-        | "auto"
         | "none"
         | "text"
     width?: 
