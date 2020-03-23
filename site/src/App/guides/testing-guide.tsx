@@ -188,10 +188,10 @@ const page: Page = {
         snapshots you have will grow and break more frequently. In our
         experience, this causes people to grow accustomed to approving
         screenshot diffs based on a cursory glance of the output, which means
-        that you&rsquo;re much less likely to notice when something goes wrong.
-        This is especially relevant when using Braid because the components will
-        change frequently, causing many snapshots to break through your app even
-        though it remains perfectly functional.
+        that you&rsquo;re much less likely to notice when something is actually
+        broken. This is especially relevant when using Braid because the
+        components will change frequently, causing many snapshots to break
+        through your app even though it remains perfectly functional.
       </Text>
 
       <Text>
