@@ -53,6 +53,7 @@ export interface UseBoxStylesProps {
   left?: keyof typeof styleRefs.relativePosition.left;
   right?: keyof typeof styleRefs.relativePosition.right;
   className?: Parameters<typeof classnames>[0];
+  userSelect?: keyof typeof styleRefs.userSelect;
 }
 
 export const useBoxStyles = ({
@@ -96,6 +97,7 @@ export const useBoxStyles = ({
   right,
   left,
   className,
+  userSelect,
 }: UseBoxStylesProps) => {
   const resetStyles = useStyles(resetStyleRefs);
   const styles = useStyles(styleRefs);
@@ -225,5 +227,6 @@ export const useBoxStyles = ({
         styles.textAlignDesktop,
       ),
     className,
+    styles.userSelect[userSelect!],
   );
 };
