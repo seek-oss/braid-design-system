@@ -8,42 +8,46 @@ import {
   Text,
   BulletList,
   Bullet,
-  Alert,
+  Strong,
 } from '../../../../lib/components';
 import { Link, ExternalLink } from '../Documentation/Link';
 import Code from '../Code/Code';
 
 const page: Page = {
-  title: 'Testing guide',
+  title: 'Testing Guide',
   Component: () => (
     <TextStack>
-      <Heading level="2">Testing guide</Heading>
+      <Heading level="2">Testing Guide</Heading>
 
       <Text tone="secondary">
         This document aims to provide guidance and best practices for testing
         applications that use Braid.
       </Text>
 
-      <Alert tone="info">
-        The following info is opinions we&apos;ve formed from our experience
-        building Braid and other React applications. Each team should decide
-        what testing approach works best for them.
-      </Alert>
+      <Text tone="secondary">
+        Note that, while these opinions are based on our experience building
+        Braid and other React applications, each team is still free to decide
+        which testing strategy works best for them.
+      </Text>
 
       <Divider />
 
-      <Heading level="3">How do I render Braid components in jest?</Heading>
+      <Heading level="3">How do I render Braid components in Jest?</Heading>
 
       <Text>
-        Braid doesn&apos;t require any special setup to render within{' '}
-        <ExternalLink href="https://jestjs.io/">jest</ExternalLink>, however,
-        all Braid components must be wrapped in a provider. Unit tests should
-        use the{' '}
-        <Link to="/components/BraidTestProvider">BraidTestProvider</Link>. This
-        component performs the same role as the{' '}
+        Since Braid relies on{' '}
+        <ExternalLink href="https://github.com/seek-oss/sku">sku</ExternalLink>,
+        it doesn&rsquo;t require any special setup to render within{' '}
+        <ExternalLink href="https://jestjs.io/">Jest</ExternalLink>.
+      </Text>
+      <Text>
+        However, all Braid components must be wrapped in a provider. Unit tests
+        should use{' '}
+        <Link to="/components/BraidTestProvider">BraidTestProvider</Link>, which
+        performs the same role as{' '}
         <Link to="/components/BraidProvider">BraidProvider</Link> but smooths
         over a few issues that are unique to unit testing. It also sets a
-        default theme for you as themes are largely irrelevant when unit
+        default theme for you since themes are largely irrelevant when unit
         testing.
       </Text>
 
@@ -57,74 +61,101 @@ const page: Page = {
         will work perfectly fine, we recommend{' '}
         <ExternalLink href="https://testing-library.com/docs/react-testing-library/intro">
           React Testing Library
-        </ExternalLink>{' '}
-        and use it internally in the Braid codebase. We feel it encourages you
-        to write good tests.
+        </ExternalLink>
+        . In fact, we use it internally in the Braid codebase. We feel it
+        encourages you to write more effective unit tests by decoupling them
+        from implementation detail.
       </Text>
-
       <Text>
-        <ExternalLink href="https://testing-library.com/docs/react-testing-library/intro">
-          React Testing Library
+        For example, the vast majority of React Testing Library&rsquo;s API is
+        focused on{' '}
+        <ExternalLink href="https://testing-library.com/docs/dom-testing-library/api-queries#queries">
+          querying
         </ExternalLink>{' '}
-        has the following great features:
+        based on the output that a user sees, rather than using test IDs or
+        snapshotting raw markup.
       </Text>
-
-      <BulletList>
-        <Bullet>Forces you to treat your components like DOM elements</Bullet>
-        <Bullet>
-          <ExternalLink href="https://testing-library.com/docs/dom-testing-library/api-queries#byrole">
-            Role based querying
-          </ExternalLink>
-        </Bullet>
-        <Bullet>No shallow rendering</Bullet>
-      </BulletList>
-
-      <Heading level="3">What is a good unit test?</Heading>
-
-      <Text weight="medium">
-        This question is obviously a lot larger than Braid, but we will outline
-        our testing philosophy below in hopes it will help other teams decide
-        what&apos;s best for them.
-      </Text>
-
-      <Text>A good test:</Text>
-
-      <BulletList>
-        <Bullet>
-          Meaningfully documents the intended usage of the component
-        </Bullet>
-        <Bullet>Doesn&apos;t change when code is refactored</Bullet>
-        <Bullet>Encourages better API design</Bullet>
-        <Bullet>
-          Doesn&apos;t require knowledge of the implementation to be understood
-        </Bullet>
-      </BulletList>
-
       <Text>
-        Having good tests is priceless, especially when revisiting complex
-        components that handle many edge-cases. It also makes onboarding new
-        contributors easier as they can understand the tests without
-        understanding the implementation.
+        Most notably, it features{' '}
+        <ExternalLink href="https://testing-library.com/docs/dom-testing-library/api-queries#byrole">
+          role based querying
+        </ExternalLink>{' '}
+        that leverages the accessibilty of your application for testing
+        purposes. This has a nice side effect of making accessibilty much more
+        prominent during the development process.
       </Text>
-
-      <Text tone="secondary">Example of testing a Menu component:</Text>
-
+      <Text>
+        For example, a typical unit test written with React Testing Library
+        might look something like this:
+      </Text>
       <Code playroom={false}>{`
+        import { render } from 'react-testing-library';
+
         test('should open menu when clicked', () => {
           const { getByRole } = render(<MyMenu />);
-          
           expect(getByRole('menu')).not.toBeVisible();
-  
-          const menuTrigger = getByRole('button');
 
+          const menuTrigger = getByRole('button');
           menuTrigger.click();
-  
+
           expect(getByRole('menu')).toBeVisible();
         });
       `}</Code>
+      <Text>
+        We feel this approach to unit testing is more appropriate for Braid
+        consumers for a few reasons:
+      </Text>
+      <BulletList>
+        <Bullet>
+          Your tests will execute Braid code rather than mocking it or hiding it
+          behind shallow rendering. This is important if you want to catch
+          issues with the integration between your codebase and Braid.
+        </Bullet>
+        <Bullet>
+          It more clearly catches issues with Braid itself. Don&rsquo;t forget
+          that we make mistakes too. If we break something, your tests should
+          break too.
+        </Bullet>
+        <Bullet>
+          As we iterate on Braid&rsquo;s internals, you won&rsquo;t have
+          snapshot tests that constantly break because of implementation
+          details. Ideally, your test should only break if something is actually
+          broken.
+        </Bullet>
+      </BulletList>
+
+      <Heading level="3">
+        How do I query for elements rendered by Braid?
+      </Heading>
 
       <Text>
-        For more info on unit testing check out the following resources.
+        As much as possible, we suggest using{' '}
+        <ExternalLink href="https://testing-library.com/docs/dom-testing-library/api-queries#byrole">
+          role based querying
+        </ExternalLink>
+        to maximise accessibilty. Queries based on text content, title text,
+        labels and display values are also a good secondary options. Some Braid
+        components also allow passing{' '}
+        <ExternalLink href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes">
+          HTML data attributes
+        </ExternalLink>{' '}
+        via the `data` prop. This allows you to pass the `data-testid` prop used
+        by React Testing Library, but this should be treated as a last resort
+        since it&rsquo;s considered implementation detail.
+      </Text>
+
+      <Text>
+        If you are having trouble targeting an element in a test please reach
+        out to us in{' '}
+        <ExternalLink href="https://seekchat.slack.com/channels/braid-support">
+          #braid-support
+        </ExternalLink>
+        .
+      </Text>
+
+      <Text>
+        For more information on this style of unit testing, check out the
+        following resources:
       </Text>
       <BulletList>
         <Bullet>
@@ -135,59 +166,61 @@ const page: Page = {
         <Bullet>
           <ExternalLink href="https://kentcdodds.com/blog/testing-implementation-details">
             Testing Implementation Details
-          </ExternalLink>
+          </ExternalLink>{' '}
+          by Kent C. Dodds.
         </Bullet>
       </BulletList>
 
-      <Heading level="3">What about React snapshot testing?</Heading>
+      <Heading level="3">What about component snapshot testing?</Heading>
 
       <Text>
-        The main benefit of snapshots tests is how quick they are to create.
-        Teams often lean on them heavily to reach an arbitrary code coverage
-        metric. However, what&apos;s often not discussed is the on-going cost
-        they add to your code base.
+        The main benefit of snapshots tests is how quick they are to create,
+        which means that you can get a lot of code coverage with little effort.
+        However, what&rsquo;s often not discussed is their relative
+        effectiveness at catching issues compared to their maintenance cost.
       </Text>
 
       <Text>
-        Everytime a component changes (including it&apos;s children) the
-        snapshot will change, meaning the test is broken. It&apos;s very
-        difficult to tell whether the component still does what it&apos;s
-        supposed to do just by looking at the HTML it produced. Over time, the
-        amount of snapshots you have will grow and break more frequently. In our
-        experience this causes people to grow accustomed to them changing and
-        ignore them all together. This is especially relevant when using Braid,
-        as the components will change frequently, causing many snapshots to
-        break through your app, even though it remains functional.
+        Every time a component changes (including its children), the snapshot
+        will change, resulting in a broken test. It&rsquo;s very difficult to
+        tell whether the component still does what it&rsquo;s supposed to do
+        just by looking at the HTML it produced. Over time, the amount of
+        snapshots you have will grow and break more frequently. In our
+        experience, this causes people to grow accustomed to approving
+        screenshot diffs based on a cursory glance of the output, which means
+        that the odds of catching real issues is dramatically lower than a
+        standard assertion. This is especially relevant when using Braid because
+        the components will change frequently, causing many snapshots to break
+        through your app even though it remains functional.
       </Text>
 
       <Text>
-        Referencing our definition of a &quot;good test&quot;, snapshots
-        don&apos;t meet any of this criteria. Instead of documenting what a
-        component should do. They document what a component does right now.
-        Instead of being resilient to refactors, they break even when
-        meaningless changes occur (e.g. class names change).
-      </Text>
-
-      <Text>
-        What&apos;s often raised as a solution to some of the above is shallow
-        rendered snapshots. Check out &quot;
+        When dealing with overly noisy snapshot diffs, it&rsquo;s common for
+        people to reach for{' '}
+        <ExternalLink href="https://enzymejs.github.io/enzyme/docs/api/shallow.html">
+          shallow rendering
+        </ExternalLink>{' '}
+        of components as a solution. However, we believe that this further
+        reduces the effectiveness of your tests. Check out{' '}
         <ExternalLink href="https://kentcdodds.com/blog/why-i-never-use-shallow-rendering">
-          Why I Never Use Shallow Rendering
-        </ExternalLink>
-        &quot; for great article on the issues with shallow rendering.
+          &ldquo;Why I Never Use Shallow Rendering&rdquo;
+        </ExternalLink>{' '}
+        for great article on the issues with shallow rendering.
       </Text>
 
       <Text>
-        Note: The above is specifically discussing react component snapshots.
-        Snapshot testing is a great tool when applied to the appropriate
-        use-case.
+        <Strong>Note:</Strong> The above is specifically discussing React
+        component snapshots. Snapshot testing is a great tool when care is taken
+        to ensure that all snapshot diffs represent meaningful differences in
+        the behaviour of your application. In contrast, React component markup
+        can be quite volatile and full of irrelevant markup changes.
       </Text>
 
       <Heading level="3">What about integration tests?</Heading>
 
       <Text>
         We suggest all teams have at least a small number of integration tests
-        making sure their core flows work as expected. Here&apos;s a couple of
+        making sure their core flows work as expected. Here&rsquo;s a couple of
         great libraries to consider:
       </Text>
 
@@ -216,34 +249,6 @@ const page: Page = {
           </ExternalLink>
         </Bullet>
       </BulletList>
-
-      <Heading level="3">
-        How do I query for elements rendered by Braid?
-      </Heading>
-
-      <Text>
-        If you need to query for an element rendered via a Braid component we
-        suggest using{' '}
-        <ExternalLink href="https://testing-library.com/docs/dom-testing-library/api-queries#byrole">
-          role based querying
-        </ExternalLink>
-        . Targetting labels and ids is also a good option. Some Braid components
-        also allow passing{' '}
-        <ExternalLink href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes">
-          html data attributes
-        </ExternalLink>{' '}
-        via the `data` prop. This allows you to pass the `data-testid` prop used
-        by React Testing Library.
-      </Text>
-
-      <Text>
-        If you are having trouble targetting an element in a test please reach
-        out to us in{' '}
-        <ExternalLink href="https://seekchat.slack.com/channels/braid-support">
-          #braid-support
-        </ExternalLink>
-        .
-      </Text>
     </TextStack>
   ),
 };
