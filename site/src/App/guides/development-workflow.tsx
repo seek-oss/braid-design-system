@@ -14,7 +14,7 @@ import {
   Box,
 } from '../../../../lib/components';
 import { TextStack } from '../TextStack/TextStack';
-import { Link } from '../Documentation/Link';
+import { Link } from '../Link/Link';
 import Code from '../Code/Code';
 import { Page } from '../../types';
 
