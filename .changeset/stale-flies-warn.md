@@ -2,7 +2,7 @@
 'braid-design-system': minor
 ---
 
-Box: Add `userSelect="none"` to Box.
+Box: Add `userSelect="none"`.
 
 **FEATURES**
 
