@@ -52,8 +52,8 @@ export interface UseBoxStylesProps {
   bottom?: keyof typeof styleRefs.relativePosition.bottom;
   left?: keyof typeof styleRefs.relativePosition.left;
   right?: keyof typeof styleRefs.relativePosition.right;
-  className?: Parameters<typeof classnames>[0];
   userSelect?: keyof typeof styleRefs.userSelect;
+  className?: Parameters<typeof classnames>[0];
 }
 
 export const useBoxStyles = ({

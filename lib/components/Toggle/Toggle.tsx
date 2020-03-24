@@ -103,6 +103,7 @@ export const Toggle = ({
         paddingLeft={align === 'left' ? 'xsmall' : undefined}
         paddingRight={align === 'right' ? 'xsmall' : undefined}
         flexGrow={align === 'justify' ? 1 : undefined}
+        userSelect="none"
         className={[styles.label, useVirtualTouchable()]}
       >
         <Text baseline={false} weight={on ? 'strong' : undefined}>

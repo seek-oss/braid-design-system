@@ -373,5 +373,4 @@ export const relativePosition = {
 
 export const userSelect = styleMap({
   none: { userSelect: 'none' },
-  text: { userSelect: 'text' },
 });
