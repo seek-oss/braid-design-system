@@ -1,7 +1,7 @@
 import React, { ReactNode, Fragment } from 'react';
 import reactElementToJSXString from 'react-element-to-jsx-string';
 import { ComponentProps } from './ComponentProps';
-import { ExternalLink } from './Link';
+import { ExternalLink } from '../Link/Link';
 import { Box, Heading, Stack, Text } from '../../../../lib/components';
 
 import { ComponentDocs } from '../../types';

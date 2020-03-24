@@ -10,7 +10,7 @@ import {
   IconChevron,
   TextLink,
 } from '..';
-import { Link } from '../../../site/src/App/Documentation/Link';
+import { Link } from '../../../site/src/App/Link/Link';
 
 const docs: ComponentDocs = {
   category: 'Interaction',
