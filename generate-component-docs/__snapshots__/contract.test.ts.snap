@@ -1026,6 +1026,7 @@ Object {
         | "off"
         | "on"
     useMap?: string
+    userSelect?: "none"
     value?: 
         | number
         | string
@@ -1480,6 +1481,7 @@ Object {
     transition?: 
         | "fast"
         | "touchable"
+    userSelect?: "none"
     width?: 
         | "full"
         | "touchable"

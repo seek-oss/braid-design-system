@@ -370,3 +370,7 @@ export const relativePosition = {
     mapToStyleProperty(relativePositionRules, 'right'),
   ) as PositionRulesType,
 };
+
+export const userSelect = styleMap({
+  none: { userSelect: 'none' },
+});
