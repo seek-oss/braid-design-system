@@ -10,7 +10,7 @@ import {
 import { TextStack } from '../TextStack/TextStack';
 import { useConfig } from '../ConfigContext';
 import { Page } from '../../types';
-import { Link } from '../Documentation/Link';
+import { Link } from '../Link/Link';
 
 const braidDesignSupportLink = (
   <TextLink href="https://seekchat.slack.com/channels/braid-design-support">
