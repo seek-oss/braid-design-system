@@ -12,4 +12,4 @@
 
 ## Don't work at SEEK?
 
-**Please consider this repo read-only.** We're happy for you to follow along with our our work, copy it, fork it, ask us questions on Twitter, etc. but we're also wanting to minimise the overhead of managing contributions.
+**Please consider this repo read-only.** We're happy for you to follow along with our work, copy it, fork it, ask us questions on Twitter, etc. but we're also wanting to minimise the overhead of managing contributions.
