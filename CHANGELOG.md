@@ -6,8 +6,6 @@
 
 - Inline: Support vertical alignment ([#562](https://github.com/seek-oss/braid-design-system/pull/562))
 
-  **FEATURES**
-
   **`Inline`**
 
   Vertical alignment is now supported via the `alignY` prop, e.g. `<Inline space="small" alignY="center">`.
@@ -15,8 +13,6 @@
   This also supports responsive values, e.g. `<Inline space="small" alignY={['center', 'top']}>`
 
 - Box: Add `userSelect="none"`. ([#556](https://github.com/seek-oss/braid-design-system/pull/556))
-
-  **FEATURES**
 
   **`Box`**
 
