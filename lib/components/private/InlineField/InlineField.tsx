@@ -169,6 +169,7 @@ export const InlineField = forwardRef<HTMLElement, InternalInlineFieldProps>(
             component="label"
             paddingLeft="small"
             htmlFor={id}
+            userSelect="none"
             className={[styles.label, useVirtualTouchable()]}
           >
             <Text

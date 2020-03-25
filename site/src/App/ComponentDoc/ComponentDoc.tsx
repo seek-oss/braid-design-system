@@ -1,12 +1,13 @@
 import React, { ReactNode, Fragment } from 'react';
 import reactElementToJSXString from 'react-element-to-jsx-string';
 import { ComponentProps } from './ComponentProps';
-import { ExternalLink } from './Link';
+import { ExternalLink } from '../Link/Link';
 import { Box, Heading, Stack, Text } from '../../../../lib/components';
 
 import { ComponentDocs } from '../../types';
 import Code from '../Code/Code';
 import { ThemedExample } from '../ThemeSetting';
+import { useConfig } from '../ConfigContext';
 
 const handler = () => {
   /* No-op for docs examples */
@@ -16,19 +17,19 @@ const DefaultContainer = ({ children }: { children: ReactNode }) => (
   <Fragment>{children}</Fragment>
 );
 
-interface ComponentRouteProps {
+interface ComponentDocProps {
   componentName: string;
   subfolder?: string;
-  sourceUrlPrefix: string;
   docs: ComponentDocs;
 }
 
-export const ComponentRoute = ({
+export const ComponentDoc = ({
   componentName,
   subfolder = '',
-  sourceUrlPrefix,
   docs,
-}: ComponentRouteProps) => {
+}: ComponentDocProps) => {
+  const { sourceUrlPrefix } = useConfig();
+
   const componentFolder = `lib/components/${
     subfolder ? `${subfolder}/` : ''
   }${componentName}`;

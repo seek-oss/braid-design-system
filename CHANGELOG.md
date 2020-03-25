@@ -1,5 +1,17 @@
 # braid-design-system
 
+## 24.1.3
+
+### Patch Changes
+
+- Textarea: Fix trailing new line highlight issue ([#555](https://github.com/seek-oss/braid-design-system/pull/555))
+
+  **BUG FIXES**
+
+  **`Textarea`**
+
+  Fix for `highlightRanges`, where the highlights could get out of sync with the field value, if the value contained trailing new lines.
+
 ## 24.1.2
 
 ### Patch Changes

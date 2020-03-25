@@ -1,4 +1,5 @@
-import { ComponentType, ReactNode } from 'react';
+import { ReactNode } from 'react';
+import { RouteProps } from 'react-router';
 import { Snippets } from 'sku/playroom';
 import { Optional } from 'utility-types';
 import { ReactNodeNoStrings } from './../../lib/components/private/ReactNodeNoStrings';
@@ -15,9 +16,8 @@ export interface RenderContext {
   appConfig: AppConfig;
 }
 
-export interface Page {
+export interface Page extends RouteProps {
   title: string;
-  Component: ComponentType;
 }
 
 interface DocsSnippet extends Optional<Snippets[number], 'group'> {

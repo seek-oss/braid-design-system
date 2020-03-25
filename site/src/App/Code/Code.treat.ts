@@ -45,7 +45,3 @@ export const focusOverlay = [
     },
   }),
 ];
-
-export const buttonText = style({
-  userSelect: 'none',
-});
