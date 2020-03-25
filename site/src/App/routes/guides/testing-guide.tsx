@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { Page } from '../../types';
-import { TextStack } from '../TextStack/TextStack';
+import { Page } from '../../../types';
+import { TextStack } from '../../TextStack/TextStack';
 import {
   Heading,
   Divider,
@@ -9,13 +9,13 @@ import {
   BulletList,
   Bullet,
   Strong,
-} from '../../../../lib/components';
-import { Link, ExternalLink } from '../Documentation/Link';
-import Code from '../Code/Code';
+} from '../../../../../lib/components';
+import { Link, ExternalLink } from '../../Link/Link';
+import Code from '../../Code/Code';
 
 const page: Page = {
   title: 'Testing Guide',
-  Component: () => (
+  component: () => (
     <TextStack>
       <Heading level="2">Testing Guide</Heading>
 
