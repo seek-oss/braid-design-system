@@ -39,7 +39,6 @@ export const realField = [realFieldBase, realFieldPosition];
 
 export const label = [
   style({
-    userSelect: 'none',
     selectors: {
       [`${realFieldBase}:not(:disabled) ~ &`]: {
         cursor: 'pointer',

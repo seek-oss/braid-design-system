@@ -8,7 +8,6 @@ const defaultConfig: AppConfig = {
 
 const context = createContext(defaultConfig);
 
-export const ConfigConsumer = context.Consumer;
 export const ConfigProvider = context.Provider;
 
 export const useConfig = () => useContext(context);

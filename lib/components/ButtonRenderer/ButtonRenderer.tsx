@@ -105,7 +105,8 @@ const ButtonChildren = ({ children }: ButtonChildrenProps) => {
         pointerEvents="none"
         textAlign="center"
         overflow="hidden"
-        className={[styles.content, useTouchableSpace('standard')]}
+        userSelect="none"
+        className={useTouchableSpace('standard')}
       >
         <Text baseline={false} weight="medium" tone={buttonVariant.textTone}>
           {children}
