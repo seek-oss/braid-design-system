@@ -92,6 +92,10 @@ Start a local Storybook server:
 $ yarn storybook
 ```
 
+## Contributing
+
+Refer to [CONTRIBUTING.md](./CONTRIBUTING.md).
+
 ## Thanks
 
 [Chromatic](https://www.chromaticqa.com) for providing component screenshot testing, powered by [Storybook](https://storybook.js.org/).
