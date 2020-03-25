@@ -1,127 +1,103 @@
-import React from 'react';
-import map from 'lodash/map';
-import guides from '../guides';
-import foundations from '../foundations';
-import { Text, Box, Stack } from '../../../../lib/components';
-import { Link, ExternalLink } from '../Link/Link';
-import { ThemeToggle } from '../ThemeSetting';
-import {
-  categorisedComponents,
-  documentedComponents,
-} from './navigationHelpers';
-import { useConfig } from '../ConfigContext';
+import React, { useState, useRef, ReactNode } from 'react';
+import { useStyles } from 'sku/react-treat';
+import { useLocation } from 'react-router-dom';
+import { ContentBlock, Text, Box, Hidden } from '../../../../lib/components';
+import { useIsolatedScroll } from '../../../../lib/components/Autosuggest/useIsolatedScroll';
+import { Overlay } from '../../../../lib/components/private/Overlay/Overlay';
+import { Logo } from '../Logo/Logo';
+import { Link } from '../Link/Link';
+import { MenuButton } from '../MenuButton/MenuButton';
+import { SubNavigation } from '../SubNavigation/SubNavigation';
+import * as styleRefs from './Navigation.treat';
 
-interface NavigationItem {
-  name: string;
-  path: string;
-  external: boolean;
-  onClick?: () => void;
-}
-
-interface NavigationGroup {
-  title: string;
-  items: NavigationItem[];
-}
-
-const NavigationGroup = ({ title, items }: NavigationGroup) => (
-  <Box component="nav">
-    <Stack space="medium">
-      <Text weight="strong" component="h2">
-        {title}
-      </Text>
-
-      <Stack component="ul" space="medium">
-        {items.map(({ name, path, external, onClick }) => (
-          <Text key={name}>
-            {external ? (
-              <ExternalLink href={path} onClick={onClick} hitArea="large">
-                {name}
-              </ExternalLink>
-            ) : (
-              <Link to={path} onClick={onClick} hitArea="large">
-                {name}
-              </Link>
-            )}
-          </Text>
-        ))}
-      </Stack>
-    </Stack>
+const Header = ({
+  menuOpen,
+  menuClick,
+}: {
+  menuOpen: boolean;
+  menuClick: () => void;
+}) => (
+  <Box paddingY={['medium', 'large']}>
+    <Text baseline={false}>
+      <Box display="flex" alignItems="center">
+        <Hidden print above="mobile">
+          <Box paddingRight="medium" display="flex" alignItems="center">
+            <MenuButton open={menuOpen} onClick={menuClick} />
+          </Box>
+        </Hidden>
+        <Link to="/" tabIndex={menuOpen ? -1 : undefined}>
+          <Logo iconOnly height={32} />
+        </Link>
+      </Box>
+    </Text>
   </Box>
 );
 
 interface NavigationProps {
-  onSelect?: () => void;
+  children: ReactNode;
 }
-export const Navigation = ({ onSelect }: NavigationProps) => {
-  const { playroomUrl } = useConfig();
+export const Navigation = ({ children }: NavigationProps) => {
+  const styles = useStyles(styleRefs);
+
+  const location = useLocation();
+  const isComponentsHome = location.pathname === '/components';
+  const [isMenuOpen, setMenuOpen] = useState(isComponentsHome);
+
+  const menuRef = useRef<HTMLElement | null>(null);
+  useIsolatedScroll(menuRef.current);
+
+  const bottomSpace = 'xxlarge';
 
   return (
-    <Stack space="xlarge">
-      <Stack space="medium">
-        <Text weight="strong" component="h2">
-          Theme
-        </Text>
-        <ThemeToggle />
-      </Stack>
+    <Box
+      paddingX={['gutter', 'large']}
+      paddingBottom={bottomSpace}
+      overflow={isMenuOpen ? 'hidden' : undefined}
+      className={isMenuOpen ? styles.container : undefined}
+    >
+      <ContentBlock width="large">
+        <Box
+          position={isMenuOpen ? 'fixed' : 'absolute'}
+          top={0}
+          bottom={0}
+          width={isMenuOpen ? 'full' : undefined}
+          className={[styles.header, isMenuOpen ? styles.isOpen : '']}
+        >
+          <Header
+            menuOpen={isMenuOpen}
+            menuClick={() => setMenuOpen(!isMenuOpen)}
+          />
 
-      <NavigationGroup
-        title="Tools"
-        items={[
-          {
-            name: 'Source',
-            path: 'https://github.com/seek-oss/braid-design-system',
-            external: true,
-          },
-          {
-            name: 'Playroom',
-            path: playroomUrl,
-            external: true,
-          },
-        ]}
-      />
-
-      <NavigationGroup
-        title="Guides"
-        items={map(guides, (guide, path) => ({
-          name: guide.title,
-          path,
-          external: false,
-          onClick: onSelect,
-        }))}
-      />
-
-      <NavigationGroup
-        title="Foundations"
-        items={map(foundations, (guide, path) => ({
-          name: guide.title,
-          path,
-          external: false,
-          onClick: onSelect,
-        }))}
-      />
-
-      {['Layout', 'Content', 'Interaction', 'Logic'].map(category => (
-        <NavigationGroup
-          key={category}
-          title={category}
-          items={categorisedComponents[category].map(({ name }) => ({
-            name,
-            path: `/components/${name}`,
-            external: false,
-            onClick: onSelect,
-          }))}
-        />
-      ))}
-
-      <NavigationGroup
-        title="All Components"
-        items={documentedComponents.map(componentName => ({
-          name: componentName,
-          path: `/components/${componentName}`,
-          external: false,
-          onClick: onSelect,
-        }))}
-      />
-    </Stack>
+          <Box
+            ref={menuRef}
+            position="absolute"
+            bottom={0}
+            overflow="auto"
+            paddingBottom={bottomSpace}
+            width="full"
+            transition="fast"
+            className={[styles.menu, isMenuOpen ? styles.isOpen : '']}
+            role={isMenuOpen ? 'menu' : undefined}
+          >
+            <SubNavigation onSelect={() => setMenuOpen(false)} />
+          </Box>
+        </Box>
+        <Box
+          display="flex"
+          transition="fast"
+          paddingLeft={['none', 'gutter', 'large']}
+          pointerEvents={isMenuOpen ? 'none' : undefined}
+          className={[
+            styles.content,
+            isMenuOpen && !isComponentsHome ? styles.isOpen : '',
+          ]}
+        >
+          <Box position="relative" width="full">
+            {children}
+            <Overlay visible={isMenuOpen} />
+          </Box>
+        </Box>
+      </ContentBlock>
+    </Box>
   );
 };
