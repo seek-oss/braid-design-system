@@ -8,4 +8,6 @@ Inline: Support vertical alignment
 
 **`Inline`**
 
-Add support for vertical alignment via the `alignY` prop. Supports responsive space values.
+Vertical alignment is now supported via the `alignY` prop, e.g. `<Inline space="small" alignY="center">`.
+
+This also supports responsive values, e.g. `<Inline space="small" alignY={['center', 'top']}>`
