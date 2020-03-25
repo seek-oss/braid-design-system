@@ -1,6 +1,6 @@
 import '../../../lib/reset';
 import React, { StrictMode } from 'react';
-import { Route } from 'react-router';
+import { Route, Redirect } from 'react-router';
 import map from 'lodash/map';
 import { ThemeSettingProvider } from './ThemeSetting';
 import { theme as docsSiteTheme } from '../theme/theme.treat';
@@ -23,6 +23,7 @@ export const App = () => (
                 <Route key={path} {...routeProps} path={path} />
               ),
             )}
+            <Redirect path="/components" exact to="/" />
           </Navigation>
         </StrictMode>
       </ToastProvider>
