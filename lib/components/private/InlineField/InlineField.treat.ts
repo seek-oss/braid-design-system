@@ -55,7 +55,6 @@ export const label = style(theme => {
 
   return {
     paddingTop: offset,
-    userSelect: 'none',
     selectors: {
       [`${realFieldBase}:not(:disabled) + * > ${fakeFieldBase} + &`]: {
         cursor: 'pointer',

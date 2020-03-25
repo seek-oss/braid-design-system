@@ -1,9 +1,7 @@
 import React, { ReactNode } from 'react';
-import { useStyles } from 'sku/react-treat';
 import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';
 import { IconCritical, IconPositive } from '../icons';
-import * as styleRefs from './FieldMessage.treat';
 
 const tones = ['neutral', 'critical', 'positive'] as const;
 type FieldTone = typeof tones[number];
@@ -29,8 +27,6 @@ export const FieldMessage = ({
   reserveMessageSpace = true,
   disabled,
 }: FieldMessageProps) => {
-  const styles = useStyles(styleRefs);
-
   if (tones.indexOf(tone) === -1) {
     throw new Error(`Invalid tone: ${tone}`);
   }
@@ -45,10 +41,7 @@ export const FieldMessage = ({
     <Box id={id} display="flex" justifyContent="flexEnd">
       <Box flexGrow={1}>
         <Text size="small" tone={tone === 'neutral' ? 'secondary' : tone}>
-          <Box
-            display="flex"
-            className={showMessage ? undefined : styles.noSelect}
-          >
+          <Box display="flex" userSelect={showMessage ? undefined : 'none'}>
             {showMessage && tone !== 'neutral' ? (
               <Box paddingRight="xxsmall" flexShrink={0} flexGrow={0}>
                 {Icon[tone]}

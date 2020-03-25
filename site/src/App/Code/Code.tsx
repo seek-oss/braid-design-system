@@ -63,7 +63,7 @@ const CodeButton = ({
         component="span"
         position="relative"
         pointerEvents="none"
-        className={styles.buttonText}
+        userSelect="none"
       >
         <Text size="xsmall" baseline={false}>
           {children}

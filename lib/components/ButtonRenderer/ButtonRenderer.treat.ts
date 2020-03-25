@@ -44,10 +44,6 @@ export const focusOverlay = style({
   },
 });
 
-export const content = style({
-  userSelect: 'none',
-});
-
 export const loading = style({
   verticalAlign: 'top',
 });
