@@ -1,21 +1,21 @@
 import { TreatTokens } from '../makeBraidTheme';
-
-const linkVisited = 'DarkViolet';
+import { lighten } from 'polished';
 
 const brand = '#083cae';
 const brandAccent = '#f13465';
-const formAccent = brand; // or should it be '#1476fb' (also check was green #09ba8a)
-const focus = brand;
+const formAccent = brand;
+const focus = lighten(0.5, brand);
 const critical = '#db3737';
 const positive = '#009537';
 const caution = '#ffc549';
 const info = '#0946CB';
-const promote = '#5736ab'; // moved info to promote
+const promote = '#5736ab';
 const neutral = '#666';
 const black = '#222';
 const secondary = '#777';
 const white = '#fff';
 const link = '#0946CB';
+const linkVisited = '#5736ab';
 
 const tokens: TreatTokens = {
   name: 'OCC',
@@ -27,7 +27,7 @@ const tokens: TreatTokens = {
     capHeightScale: 0.58,
     fontWeight: {
       regular: 400,
-      medium: 500, // not currently used
+      medium: 600, // Not implemented rolling up to strong for consistency.
       strong: 600,
     },
     heading: {
@@ -37,14 +37,13 @@ const tokens: TreatTokens = {
       },
       level: {
         '1': {
-          // Level 1 same as 2 currently
           mobile: {
             size: 28,
             rows: 8,
           },
           tablet: {
-            size: 28,
-            rows: 8,
+            size: 57,
+            rows: 18,
           },
         },
         '2': {
@@ -53,8 +52,8 @@ const tokens: TreatTokens = {
             rows: 8,
           },
           tablet: {
-            size: 28,
-            rows: 8,
+            size: 36,
+            rows: 12,
           },
         },
         '3': {
@@ -129,7 +128,7 @@ const tokens: TreatTokens = {
   },
   contentWidth: {
     medium: 984,
-    large: 1164, // TBD
+    large: 1164,
   },
   grid: 4,
   touchableSize: 11,
