@@ -56,7 +56,7 @@ const docs: ComponentDocs = {
       ),
     },
     {
-      label: 'Align to center',
+      label: 'Align horizontally to center',
       Container,
       Example: () => (
         <Inline space="small" align="center">
@@ -74,7 +74,7 @@ const docs: ComponentDocs = {
       ),
     },
     {
-      label: 'Align to right',
+      label: 'Align horizontally to right',
       Container,
       Example: () => (
         <Inline space="small" align="right">
@@ -107,6 +107,17 @@ const docs: ComponentDocs = {
           <Placeholder width={48} height={48} />
           <Placeholder width={48} height={48} />
           <Placeholder width={48} height={48} />
+        </Inline>
+      ),
+    },
+    {
+      label: 'Align vertically',
+      Container,
+      Example: () => (
+        <Inline space="small" alignY="center">
+          <Placeholder width={48} height={40} />
+          <Placeholder width={48} height={100} />
+          <Placeholder width={48} height={60} />
         </Inline>
       ),
     },
@@ -143,12 +154,22 @@ const docs: ComponentDocs = {
       ),
     },
     {
-      name: 'Responsive alignment',
+      name: 'Responsive horizontal alignment',
       code: (
         <Inline space="small" align={['center', 'left']}>
           <Placeholder width={48} height={48} />
           <Placeholder width={48} height={48} />
           <Placeholder width={48} height={48} />
+        </Inline>
+      ),
+    },
+    {
+      name: 'Vertically centered',
+      code: (
+        <Inline space="small" alignY="center">
+          <Placeholder width={48} height={40} />
+          <Placeholder width={48} height={100} />
+          <Placeholder width={48} height={60} />
         </Inline>
       ),
     },
