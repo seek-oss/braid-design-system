@@ -4021,6 +4021,11 @@ Object {
         | "left"
         | "right"
     >
+    alignY?: ResponsiveProp<
+        | "bottom"
+        | "center"
+        | "top"
+    >
     children: ReactNodeNoStrings
     space: ResponsiveProp<
         | "gutter"

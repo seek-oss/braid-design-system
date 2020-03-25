@@ -6,16 +6,27 @@ import {
   useNegativeMarginTop,
 } from '../../hooks/useNegativeMargin/useNegativeMargin';
 import { ResponsiveProp } from '../../utils/responsiveProp';
-import { Align, alignToFlexAlign } from '../../utils/align';
+import {
+  Align,
+  alignToFlexAlign,
+  alignYToFlexAlign,
+  AlignY,
+} from '../../utils/align';
 import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 
 export interface InlineProps {
   align?: ResponsiveProp<Align>;
+  alignY?: ResponsiveProp<AlignY>;
   space: ResponsiveSpace;
   children: ReactNodeNoStrings;
 }
 
-export const Inline = ({ space = 'none', align, children }: InlineProps) => {
+export const Inline = ({
+  space = 'none',
+  align,
+  alignY,
+  children,
+}: InlineProps) => {
   const negativeMarginLeft = useNegativeMarginLeft(space);
   const negativeMarginTop = useNegativeMarginTop(space);
 
@@ -24,6 +35,7 @@ export const Inline = ({ space = 'none', align, children }: InlineProps) => {
       <Box
         display="flex"
         justifyContent={alignToFlexAlign(align)}
+        alignItems={alignYToFlexAlign(alignY)}
         flexWrap="wrap"
         className={negativeMarginLeft}
       >
