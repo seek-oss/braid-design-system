@@ -1,6 +1,6 @@
 import React from 'react';
 import { useStyles } from 'sku/treat';
-import { BoxProps } from '../../../../../lib/components/Box/Box';
+import { BoxProps } from '../../../../../../lib/components/Box/Box';
 import {
   Box,
   Text,
@@ -10,10 +10,10 @@ import {
   Stack,
   Divider,
   Hidden,
-} from '../../../../../lib/components';
-import { TextStack } from '../../TextStack/TextStack';
-import { Page } from '../../../types';
-import { ThemedExample } from '../../ThemeSetting';
+} from '../../../../../../lib/components';
+import { TextStack } from '../../../TextStack/TextStack';
+import { Page } from '../../../../types';
+import { ThemedExample } from '../../../ThemeSetting';
 import * as styleRefs from './tones.treat';
 
 const tones = [
@@ -240,7 +240,7 @@ function TonePage() {
 
 const page: Page = {
   title: 'Tones',
-  Component: TonePage,
+  component: TonePage,
 };
 
 export default page;

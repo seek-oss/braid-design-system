@@ -1,9 +1,10 @@
 import React from 'react';
-import { Text, Stack, Heading, Divider } from '../../../../lib/components';
-import { Link, ExternalLink } from '../Link/Link';
-import { useConfig } from '../ConfigContext';
+import { Text, Stack, Heading, Divider } from '../../../../../lib/components';
+import { Link, ExternalLink } from '../../Link/Link';
+import { useConfig } from '../../ConfigContext';
+import { Page } from '../../../types';
 
-export const Home = () => {
+const Home = () => {
   const { playroomUrl } = useConfig();
   return (
     <Stack space="xlarge">
@@ -86,4 +87,14 @@ export const Home = () => {
       </Text>
     </Stack>
   );
+};
+
+const page: Page = {
+  title: 'Home',
+  exact: true,
+  component: Home,
+};
+
+export default {
+  '/': page,
 };
