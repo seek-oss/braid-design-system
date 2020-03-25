@@ -34,7 +34,7 @@ module.exports = [
   { route: '/', name: 'home' },
   ...guideRoutes.map(route => ({ route })),
   ...foundationRoutes.map(route => ({ route })),
-  { route: '/components', name: 'components' },
+  { route: '/components', name: 'components' }, // Pre-rendering this route for url backwards compatibility.
   ...componentNames.map(name => ({ route: `/components/${name}`, name })),
   ...iconNames.map(name => ({ route: `/components/${name}`, name })),
 ];

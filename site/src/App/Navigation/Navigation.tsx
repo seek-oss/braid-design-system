@@ -1,6 +1,5 @@
 import React, { useState, useRef, ReactNode } from 'react';
 import { useStyles } from 'sku/react-treat';
-import { useLocation } from 'react-router-dom';
 import { ContentBlock, Text, Box, Hidden } from '../../../../lib/components';
 import { useIsolatedScroll } from '../../../../lib/components/Autosuggest/useIsolatedScroll';
 import { Overlay } from '../../../../lib/components/private/Overlay/Overlay';
@@ -38,10 +37,7 @@ interface NavigationProps {
 }
 export const Navigation = ({ children }: NavigationProps) => {
   const styles = useStyles(styleRefs);
-
-  const location = useLocation();
-  const isComponentsHome = location.pathname === '/components';
-  const [isMenuOpen, setMenuOpen] = useState(isComponentsHome);
+  const [isMenuOpen, setMenuOpen] = useState(false);
 
   const menuRef = useRef<HTMLElement | null>(null);
   useIsolatedScroll(menuRef.current);
@@ -87,10 +83,7 @@ export const Navigation = ({ children }: NavigationProps) => {
           transition="fast"
           paddingLeft={['none', 'gutter', 'large']}
           pointerEvents={isMenuOpen ? 'none' : undefined}
-          className={[
-            styles.content,
-            isMenuOpen && !isComponentsHome ? styles.isOpen : '',
-          ]}
+          className={[styles.content, isMenuOpen ? styles.isOpen : '']}
         >
           <Box position="relative" width="full">
             {children}
