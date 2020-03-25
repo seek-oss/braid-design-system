@@ -58,7 +58,7 @@ const page: Page = {
         <ExternalLink href="https://enzymejs.github.io/enzyme/">
           Enzyme
         </ExternalLink>{' '}
-        will work perfectly fine, we recommend{' '}
+        works perfectly well, we recommend{' '}
         <ExternalLink href="https://testing-library.com/docs/react-testing-library/intro">
           React Testing Library
         </ExternalLink>
@@ -72,8 +72,8 @@ const page: Page = {
         <ExternalLink href="https://testing-library.com/docs/dom-testing-library/api-queries#queries">
           querying
         </ExternalLink>{' '}
-        based on the output that a user sees, rather than using test IDs or
-        snapshotting raw markup.
+        DOM elements based on outcomes a user might expect, rather than using
+        test IDs or snapshotting raw markup.
       </Text>
       <Text>
         Most notably, it features{' '}
@@ -81,8 +81,8 @@ const page: Page = {
           role based querying
         </ExternalLink>{' '}
         that leverages the accessibilty of your application for testing
-        purposes. This has a nice side effect of making accessibilty much more
-        prominent during the development process.
+        purposes. This has the attractive side effect of making accessibilty
+        much more prominent during the development process.
       </Text>
       <Text>
         For example, a typical unit test written with React Testing Library
@@ -102,12 +102,12 @@ const page: Page = {
         });
       `}</Code>
       <Text>
-        We feel this approach to unit testing is more appropriate for Braid
+        We feel this approach to unit testing is more appropriate to Braid
         consumers for a few reasons:
       </Text>
       <BulletList>
         <Bullet>
-          Your tests will execute Braid code rather than mocking it or hiding it
+          Your tests will execute Braid code rather than mocking or hiding it
           behind shallow rendering. This is important if you want to catch
           issues with the integration between your codebase and Braid.
         </Bullet>
@@ -135,13 +135,13 @@ const page: Page = {
         </ExternalLink>{' '}
         to maximise accessibilty. Queries based on text content, title text,
         labels and display values are also good options. Some Braid components
-        also allow passing{' '}
+        allow passing{' '}
         <ExternalLink href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes">
           HTML data attributes
         </ExternalLink>{' '}
         via the `data` prop. This allows you to pass the `data-testid` prop used
-        by React Testing Library, but this should be treated as a last resort
-        since it&rsquo;s considered implementation detail.
+        by React Testing Library. However, using data props should be treated as
+        a last resort since it&rsquo;s considered implementation detail.
       </Text>
 
       <Text>
@@ -181,17 +181,17 @@ const page: Page = {
       </Text>
 
       <Text>
-        Every time a component changes (including its children), the snapshot
-        will change, resulting in a broken test. It&rsquo;s very difficult to
-        tell whether the component still does what it&rsquo;s supposed to do
-        just by looking at the HTML it produced. Over time, the amount of
-        snapshots you have will grow and break more frequently. In our
-        experience, this causes people to grow accustomed to approving
-        screenshot diffs based on a cursory glance of the output, which means
-        that you&rsquo;re much less likely to notice when something is actually
-        broken. This is especially relevant when using Braid because the
-        components will change frequently, causing many snapshots to break
-        through your app even though it remains perfectly functional.
+        Every time a component or its children change, the snapshot will change,
+        resulting in a broken test. It&rsquo;s very difficult to tell whether
+        the component still does what it&rsquo;s supposed to do just by looking
+        at the HTML it produced. Over time, the amount of snapshots you have
+        will grow and break more frequently. In our experience, this causes
+        people to grow accustomed to approving screenshot diffs based on a
+        cursory glance of the output, which means that you&rsquo;re much less
+        likely to notice when something is actually broken. This is especially
+        relevant when using Braid because the components will change frequently,
+        causing snapshots to break your app&rsquo;s tests even though it remains
+        perfectly functional.
       </Text>
 
       <Text>
@@ -200,28 +200,28 @@ const page: Page = {
         <ExternalLink href="https://enzymejs.github.io/enzyme/docs/api/shallow.html">
           shallow rendering
         </ExternalLink>{' '}
-        of components as a solution. However, we believe that this further
-        reduces the effectiveness of your tests. Check out{' '}
+        of components as a solution. However, we believe this further reduces
+        the effectiveness of your tests. Check out{' '}
         <ExternalLink href="https://kentcdodds.com/blog/why-i-never-use-shallow-rendering">
           &ldquo;Why I Never Use Shallow Rendering&rdquo;
         </ExternalLink>{' '}
-        for great article on the issues with shallow rendering.
+        for a great article on the issues with shallow rendering.
       </Text>
 
       <Text>
-        <Strong>Note:</Strong> The above is specifically discussing React
-        component snapshots. Snapshot testing is a great tool when care is taken
-        to ensure that all snapshot diffs represent meaningful differences in
-        the behaviour of your application. In contrast, React component markup
-        can be quite volatile and full of irrelevant markup changes.
+        <Strong>Note:</Strong> The above specifically discusses React component
+        snapshots. Snapshot testing is a great tool when care is taken to ensure
+        that all snapshot diffs represent meaningful differences in the
+        behaviour of your application. In contrast, React component markup can
+        be quite volatile and full of irrelevant markup changes.
       </Text>
 
       <Heading level="3">What about integration tests?</Heading>
 
       <Text>
-        We suggest all teams have at least a small number of integration tests
-        making sure their core flows work as expected. Here&rsquo;s a couple of
-        great libraries to consider:
+        We recommend all teams employ a small number of integration tests to
+        ensure their core flows work as expected. Here are some great libraries
+        to consider:
       </Text>
 
       <BulletList>
