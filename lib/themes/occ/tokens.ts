@@ -23,8 +23,8 @@ const tokens: TreatTokens = {
   typography: {
     fontFamily: "'Open Sans', sans-serif",
     webFont: 'Open Sans',
-    descenderHeightScale: 0.12,
-    capHeightScale: 0.58,
+    descenderHeightScale: 0.11,
+    capHeightScale: 0.71,
     fontWeight: {
       regular: 400,
       medium: 600, // Not implemented rolling up to strong for consistency.
