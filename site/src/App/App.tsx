@@ -1,6 +1,6 @@
 import '../../../lib/reset';
 import React, { StrictMode } from 'react';
-import { Route, Redirect } from 'react-router';
+import { Route, Switch, Redirect } from 'react-router';
 import map from 'lodash/map';
 import { ThemeSettingProvider } from './ThemeSetting';
 import { theme as docsSiteTheme } from '../theme/theme.treat';
@@ -12,21 +12,23 @@ import foundations from './routes/foundations';
 import components from './routes/components';
 
 export const App = () => (
-  <ThemeSettingProvider>
-    <BraidProvider theme={docsSiteTheme}>
-      <ToastProvider>
-        <StrictMode>
+  <StrictMode>
+    <ThemeSettingProvider>
+      <BraidProvider theme={docsSiteTheme}>
+        <ToastProvider>
           <Navigation>
-            {map(
-              { ...home, ...guides, ...foundations, ...components },
-              (routeProps, path) => (
-                <Route key={path} {...routeProps} path={path} />
-              ),
-            )}
-            <Redirect path="/components" exact to="/" />
+            <Switch>
+              {map(
+                { ...home, ...guides, ...foundations, ...components },
+                (routeProps, path) => (
+                  <Route key={path} {...routeProps} path={path} />
+                ),
+              )}
+              <Redirect path="/components" exact to="/" />
+            </Switch>
           </Navigation>
-        </StrictMode>
-      </ToastProvider>
-    </BraidProvider>
-  </ThemeSettingProvider>
+        </ToastProvider>
+      </BraidProvider>
+    </ThemeSettingProvider>
+  </StrictMode>
 );
