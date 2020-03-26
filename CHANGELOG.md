@@ -1,5 +1,13 @@
 # braid-design-system
 
+## 24.3.0
+
+### Minor Changes
+
+- Theme: Introduce the OCC theme ([#547](https://github.com/seek-oss/braid-design-system/pull/547))
+
+  Adds support to build product for the OCC market. This theme is an adaption of the [Atomic Design System](https://occmundial.github.io/occ-atomic/).
+
 ## 24.2.0
 
 ### Minor Changes
