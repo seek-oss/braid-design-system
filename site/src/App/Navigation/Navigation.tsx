@@ -17,20 +17,18 @@ const Header = ({
   menuOpen: boolean;
   menuClick: () => void;
 }) => (
-  <Box paddingY={['medium', 'large']}>
-    <Text baseline={false}>
-      <Box display="flex" alignItems="center">
-        <Hidden print above="mobile">
-          <Box paddingRight="medium" display="flex" alignItems="center">
-            <MenuButton open={menuOpen} onClick={menuClick} />
-          </Box>
-        </Hidden>
-        <Link to="/" tabIndex={menuOpen ? -1 : undefined}>
-          <Logo iconOnly height={32} />
-        </Link>
-      </Box>
-    </Text>
-  </Box>
+  <Text baseline={false}>
+    <Box display="flex" alignItems="center">
+      <Hidden print above="mobile">
+        <Box paddingRight="medium" display="flex" alignItems="center">
+          <MenuButton open={menuOpen} onClick={menuClick} />
+        </Box>
+      </Hidden>
+      <Link to="/" tabIndex={menuOpen ? -1 : undefined}>
+        <Logo iconOnly height={32} />
+      </Link>
+    </Box>
+  </Text>
 );
 
 interface NavigationProps {
@@ -40,8 +38,10 @@ const HEADER_HEIGHT = 96;
 const LARGE_SPACE = 32;
 const SUBNAV_WIDTH = 300;
 export const Navigation = ({ children }: NavigationProps) => {
+  const styles = useStyles(styleRefs);
   const { y: scrollTop } = useWindowScroll();
   const [showStickyHeader, setShowStickyHeader] = useState(false);
+  const [isMenuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     if (scrollTop > HEADER_HEIGHT - LARGE_SPACE) {
@@ -54,50 +54,69 @@ export const Navigation = ({ children }: NavigationProps) => {
   const menuRef = useRef<HTMLElement | null>(null);
   useIsolatedScroll(menuRef.current);
 
-  // const bottomSpace = 'xxlarge';
-
   return (
-    <Box>
+    <Box
+      overflow={isMenuOpen ? 'hidden' : undefined}
+      className={isMenuOpen ? styles.preventContentScroll : undefined}
+    >
       <Box
-        position="relative"
+        position="absolute"
+        width="full"
         background="positiveLight"
         padding="large"
-        style={{ zIndex: 1 }}
+        className={styles.header}
       >
-        <Text baseline={false}>
-          <Link to="/">
-            <Logo iconOnly height={32} />
-          </Link>
-        </Text>
+        <Header
+          menuOpen={isMenuOpen}
+          menuClick={() => setMenuOpen(!isMenuOpen)}
+        />
       </Box>
 
-      <Box position="fixed" bottom={0} top={0} style={{ width: SUBNAV_WIDTH }}>
+      <Box
+        position="fixed"
+        width="full"
+        bottom={0}
+        top={0}
+        transition="fast"
+        className={[styles.sideBar, isMenuOpen ? styles.isOpen : undefined]}
+      >
         <Box
+          display={['none', 'block']}
           padding="large"
           background="cautionLight"
           transition="fast"
-          style={{ opacity: showStickyHeader ? 1 : 0 }}
+          className={showStickyHeader ? undefined : styles.mockHeader}
         >
-          <Text baseline={false}>
-            <Link to="/">
-              <Logo iconOnly height={32} />
-            </Link>
-          </Text>
+          <Header
+            menuOpen={isMenuOpen}
+            menuClick={() => setMenuOpen(!isMenuOpen)}
+          />
         </Box>
+
+        <Overlay visible={isMenuOpen} boxShadow="large" />
+
         <Box
           ref={menuRef}
+          position="absolute"
+          left={0}
+          right={0}
+          bottom={0}
           background="criticalLight"
-          padding="large"
+          paddingY="large"
+          paddingLeft="large"
           overflow="scroll"
+          transition="fast"
+          className={styles.subNavigationContainer}
         >
-          <SubNavigation />
+          <SubNavigation onSelect={() => setMenuOpen(false)} />
         </Box>
       </Box>
 
       <Box
+        position="relative"
         background="infoLight"
         padding="large"
-        style={{ marginLeft: SUBNAV_WIDTH }}
+        className={styles.content}
       >
         {children}
       </Box>
