@@ -1,5 +1,11 @@
 # braid-design-system
 
+## 24.3.1
+
+### Patch Changes
+
+- Update deprecated treat imports ([#566](https://github.com/seek-oss/braid-design-system/pull/566))
+
 ## 24.3.0
 
 ### Minor Changes
