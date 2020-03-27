@@ -19,8 +19,8 @@ const tokens: TreatTokens = {
   name: 'Braid',
   displayName: 'Braid',
   typography: {
-    fontFamily: 'Courier, monospace',
-    webFont: null,
+    fontFamily: 'Cousine, monospace',
+    webFont: 'Cousine',
     descenderHeightScale: 0.16,
     capHeightScale: 0.502,
     fontWeight: {

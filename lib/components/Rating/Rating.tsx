@@ -1,5 +1,5 @@
 import React from 'react';
-import { useStyles } from 'sku/treat';
+import { useStyles } from 'sku/react-treat';
 import { useBackground } from '../Box/BackgroundContext';
 import useIcon, { UseIconProps } from '../../hooks/useIcon';
 import { Box } from '../Box/Box';
