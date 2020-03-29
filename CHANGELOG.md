@@ -1,5 +1,39 @@
 # braid-design-system
 
+## 24.3.1
+
+### Patch Changes
+
+- Update deprecated treat imports ([#566](https://github.com/seek-oss/braid-design-system/pull/566))
+
+## 24.3.0
+
+### Minor Changes
+
+- Theme: Introduce the OCC theme ([#547](https://github.com/seek-oss/braid-design-system/pull/547))
+
+  Adds support to build product for the OCC market. This theme is an adaption of the [Atomic Design System](https://occmundial.github.io/occ-atomic/).
+
+## 24.2.0
+
+### Minor Changes
+
+- Inline: Support vertical alignment ([#562](https://github.com/seek-oss/braid-design-system/pull/562))
+
+  **`Inline`**
+
+  Vertical alignment is now supported via the `alignY` prop, e.g. `<Inline space="small" alignY="center">`.
+
+  This also supports responsive values, e.g. `<Inline space="small" alignY={['center', 'top']}>`
+
+- Box: Add `userSelect="none"`. ([#556](https://github.com/seek-oss/braid-design-system/pull/556))
+
+  **`Box`**
+
+  You can now set `userSelect` to `"none"` directly on `Box`.
+
+  Since the default value of `user-select` in CSS is `"auto"`, you can make this value dynamic by conditionally setting it to `undefined`, e.g. `<Box userSelect={selectable ? undefined : 'none'}`.
+
 ## 24.1.3
 
 ### Patch Changes
