@@ -5,11 +5,38 @@ const docs: ComponentDocs = {
   screenshotWidths: [],
   examples: [
     {
+      label: 'Selecting a theme',
       code: `
         import wireframe from 'braid-design-system/themes/wireframe';
 
-        export default () => (
+        export const App = () => (
           <BraidProvider theme={wireframe}>
+            ...
+          </BraidProvider>
+        );
+      `,
+    },
+    {
+      label: 'Custom link implementation',
+      code: `
+        import React, { ComponentProps } from 'react';
+        import { Link as ReactRouterLink } from 'react-router-dom';
+        import { BraidProvider } from 'braid-design-system';
+
+        // First create the custom LinkComponent implementation:
+        const LinkComponent: ComponentProps<typeof BraidProvider>['linkComponent'] = ({
+          href,
+          ...restProps
+        }) =>
+          /^\\//.test(href) ? (
+            <ReactRouterLink to={href} {...restProps} />
+          ) : (
+            <a href={href} {...restProps} />
+          );
+
+        // Then pass it to BraidProvider:
+        export const App = () => (
+          <BraidProvider theme={jobStreetTheme} linkComponent={LinkComponent}>
             ...
           </BraidProvider>
         );

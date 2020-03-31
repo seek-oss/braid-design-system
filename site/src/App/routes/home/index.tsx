@@ -1,6 +1,11 @@
 import React from 'react';
-import { Text, Stack, Heading, Divider } from '../../../../../lib/components';
-import { Link, ExternalLink } from '../../Link/Link';
+import {
+  Text,
+  TextLink,
+  Stack,
+  Heading,
+  Divider,
+} from '../../../../../lib/components';
 import { useConfig } from '../../ConfigContext';
 import { Page } from '../../../types';
 
@@ -13,20 +18,14 @@ const Home = () => {
       </Stack>
       <Text>
         👋 Welcome to Braid, the themeable design system for the{' '}
-        <ExternalLink href="https://www.seek.com.au/about/">
-          SEEK Group
-        </ExternalLink>
-        .
+        <TextLink href="https://www.seek.com.au/about/">SEEK Group</TextLink>.
       </Text>
       <Text>
         Braid aims to make cross-brand UI development as fast as possible while
         maintaining a high level of quality and accessibility. In order to
         achieve this, Braid is implemented as a series of{' '}
-        <ExternalLink href="https://reactjs.org/">React</ExternalLink>{' '}
-        components and{' '}
-        <ExternalLink href="https://seek-oss.github.io/treat/">
-          treat
-        </ExternalLink>{' '}
+        <TextLink href="https://reactjs.org/">React</TextLink> components and{' '}
+        <TextLink href="https://seek-oss.github.io/treat/">treat</TextLink>{' '}
         themes.
       </Text>
       <Divider />
@@ -38,43 +37,48 @@ const Home = () => {
       </Text>
       <Text>
         Along with our work on{' '}
-        <ExternalLink href="https://github.com/seek-oss/playroom">
+        <TextLink href="https://github.com/seek-oss/playroom">
           Playroom
-        </ExternalLink>
+        </TextLink>
         , our goal is to empower designers and developers to iterate together in
         the same medium using the same components, reducing the need for high
         fidelity mock ups before development starts. We want to allow you to
         spend less time polishing mock ups and more time polishing the product.
         For more information about our philosophy, check out our{' '}
-        <Link to="/guides/design-workflow">design workflow guide</Link>.
+        <TextLink href="/guides/design-workflow">
+          design workflow guide
+        </TextLink>
+        .
       </Text>
       <Divider />
       <Heading level="3">Getting started</Heading>
       <Text>
         First, we recommend reading the{' '}
-        <Link to="/guides/design-workflow">design workflow</Link> and{' '}
-        <Link to="/guides/development-workflow">development workflow</Link>{' '}
+        <TextLink href="/guides/design-workflow">design workflow</TextLink> and{' '}
+        <TextLink href="/guides/development-workflow">
+          development workflow
+        </TextLink>{' '}
         guides. These capture our current views on how best to make use of Braid
         in your daily work.
       </Text>
       <Text>
         Next, you should read our{' '}
-        <Link to="/foundations/layout">layout guide</Link>. This goes into
-        detail about how we manage component composition and layout, which forms
-        the backbone of our system.
+        <TextLink href="/foundations/layout">layout guide</TextLink>. This goes
+        into detail about how we manage component composition and layout, which
+        forms the backbone of our system.
       </Text>
       <Text>
-        Then, read our <Link to="/foundations/tones">tones guide</Link> to get
-        an understanding of the common set of tones (positive, critical, etc.)
-        used throughout Braid.
+        Then, read our{' '}
+        <TextLink href="/foundations/tones">tones guide</TextLink> to get an
+        understanding of the common set of tones (positive, critical, etc.) used
+        throughout Braid.
       </Text>
       <Text>
         Finally, there&rsquo;s really no substitute for looking at all the
         available components, so just jump right in and start looking around. As
         you explore, you should familiarise yourself with our{' '}
-        <ExternalLink href={playroomUrl}>Braid Playroom</ExternalLink> which
-        allows you to try out the components without requiring a development
-        environment.
+        <TextLink href={playroomUrl}>Braid Playroom</TextLink> which allows you
+        to try out the components without requiring a development environment.
       </Text>
       <Divider />
       <Heading level="3">Support</Heading>

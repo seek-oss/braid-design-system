@@ -6,11 +6,11 @@ import {
   Heading,
   Divider,
   Text,
+  TextLink,
   BulletList,
   Bullet,
   Strong,
 } from '../../../../../lib/components';
-import { Link, ExternalLink } from '../../Link/Link';
 import Code from '../../Code/Code';
 
 const page: Page = {
@@ -36,18 +36,20 @@ const page: Page = {
 
       <Text>
         Since Braid relies on{' '}
-        <ExternalLink href="https://github.com/seek-oss/sku">sku</ExternalLink>,
-        it doesn&rsquo;t require any special setup to render within{' '}
-        <ExternalLink href="https://jestjs.io/">Jest</ExternalLink>.
+        <TextLink href="https://github.com/seek-oss/sku">sku</TextLink>, it
+        doesn&rsquo;t require any special setup to render within{' '}
+        <TextLink href="https://jestjs.io/">Jest</TextLink>.
       </Text>
       <Text>
         However, all Braid components must be wrapped in a provider. Unit tests
         should use{' '}
-        <Link to="/components/BraidTestProvider">BraidTestProvider</Link>, which
-        performs the same role as{' '}
-        <Link to="/components/BraidProvider">BraidProvider</Link> but smooths
-        over a few issues that are unique to unit testing. It also sets a
-        default theme for you since themes are largely irrelevant when unit
+        <TextLink href="/components/BraidTestProvider">
+          BraidTestProvider
+        </TextLink>
+        , which performs the same role as{' '}
+        <TextLink href="/components/BraidProvider">BraidProvider</TextLink> but
+        smooths over a few issues that are unique to unit testing. It also sets
+        a default theme for you since themes are largely irrelevant when unit
         testing.
       </Text>
 
@@ -55,13 +57,11 @@ const page: Page = {
 
       <Text>
         While{' '}
-        <ExternalLink href="https://enzymejs.github.io/enzyme/">
-          Enzyme
-        </ExternalLink>{' '}
+        <TextLink href="https://enzymejs.github.io/enzyme/">Enzyme</TextLink>{' '}
         works perfectly well, we recommend{' '}
-        <ExternalLink href="https://testing-library.com/docs/react-testing-library/intro">
+        <TextLink href="https://testing-library.com/docs/react-testing-library/intro">
           React Testing Library
-        </ExternalLink>
+        </TextLink>
         . In fact, we use it internally in the Braid codebase. We feel it
         encourages you to write more effective unit tests by decoupling them
         from implementation detail.
@@ -69,17 +69,17 @@ const page: Page = {
       <Text>
         For example, the vast majority of React Testing Library&rsquo;s API is
         focused on{' '}
-        <ExternalLink href="https://testing-library.com/docs/dom-testing-library/api-queries#queries">
+        <TextLink href="https://testing-library.com/docs/dom-testing-library/api-queries#queries">
           querying
-        </ExternalLink>{' '}
+        </TextLink>{' '}
         DOM elements based on outcomes a user might expect, rather than using
         test IDs or snapshotting raw markup.
       </Text>
       <Text>
         Most notably, it features{' '}
-        <ExternalLink href="https://testing-library.com/docs/dom-testing-library/api-queries#byrole">
+        <TextLink href="https://testing-library.com/docs/dom-testing-library/api-queries#byrole">
           role based querying
-        </ExternalLink>{' '}
+        </TextLink>{' '}
         that leverages the accessibilty of your application for testing
         purposes. This has the attractive side effect of making accessibilty
         much more prominent during the development process.
@@ -130,15 +130,15 @@ const page: Page = {
 
       <Text>
         As much as possible, we suggest using{' '}
-        <ExternalLink href="https://testing-library.com/docs/dom-testing-library/api-queries#byrole">
+        <TextLink href="https://testing-library.com/docs/dom-testing-library/api-queries#byrole">
           role based querying
-        </ExternalLink>{' '}
+        </TextLink>{' '}
         to maximise accessibilty. Queries based on text content, title text,
         labels and display values are also good options. Some Braid components
         allow passing{' '}
-        <ExternalLink href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes">
+        <TextLink href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes">
           HTML data attributes
-        </ExternalLink>{' '}
+        </TextLink>{' '}
         via the `data` prop. This allows you to pass the `data-testid` prop used
         by React Testing Library. However, using data props should be treated as
         a last resort since it&rsquo;s considered implementation detail.
@@ -147,9 +147,9 @@ const page: Page = {
       <Text>
         If you&rsquo;re having trouble targeting an element in a test, please
         reach out to us in{' '}
-        <ExternalLink href="https://seekchat.slack.com/channels/braid-support">
+        <TextLink href="https://seekchat.slack.com/channels/braid-support">
           #braid-support
-        </ExternalLink>
+        </TextLink>
         .
       </Text>
 
@@ -159,14 +159,14 @@ const page: Page = {
       </Text>
       <BulletList>
         <Bullet>
-          <ExternalLink href="https://testing-library.com/docs/react-testing-library/intro">
+          <TextLink href="https://testing-library.com/docs/react-testing-library/intro">
             React Testing Library documentation
-          </ExternalLink>
+          </TextLink>
         </Bullet>
         <Bullet>
-          <ExternalLink href="https://kentcdodds.com/blog/testing-implementation-details">
+          <TextLink href="https://kentcdodds.com/blog/testing-implementation-details">
             Testing Implementation Details
-          </ExternalLink>{' '}
+          </TextLink>{' '}
           by Kent C. Dodds.
         </Bullet>
       </BulletList>
@@ -197,14 +197,14 @@ const page: Page = {
       <Text>
         When dealing with overly noisy snapshot diffs, it&rsquo;s common for
         people to reach for{' '}
-        <ExternalLink href="https://enzymejs.github.io/enzyme/docs/api/shallow.html">
+        <TextLink href="https://enzymejs.github.io/enzyme/docs/api/shallow.html">
           shallow rendering
-        </ExternalLink>{' '}
+        </TextLink>{' '}
         of components as a solution. However, we believe this further reduces
         the effectiveness of your tests. Check out{' '}
-        <ExternalLink href="https://kentcdodds.com/blog/why-i-never-use-shallow-rendering">
+        <TextLink href="https://kentcdodds.com/blog/why-i-never-use-shallow-rendering">
           &ldquo;Why I Never Use Shallow Rendering&rdquo;
-        </ExternalLink>{' '}
+        </TextLink>{' '}
         for a great article on the issues with shallow rendering.
       </Text>
 
@@ -226,27 +226,27 @@ const page: Page = {
 
       <BulletList>
         <Bullet>
-          <ExternalLink href="https://www.cypress.io/">Cypress</ExternalLink>
+          <TextLink href="https://www.cypress.io/">Cypress</TextLink>
         </Bullet>
         <Bullet>
-          <ExternalLink href="https://testing-library.com/docs/cypress-testing-library/intro">
+          <TextLink href="https://testing-library.com/docs/cypress-testing-library/intro">
             Cypress Testing Library
-          </ExternalLink>
+          </TextLink>
         </Bullet>
         <Bullet>
-          <ExternalLink href="https://github.com/puppeteer/puppeteer">
+          <TextLink href="https://github.com/puppeteer/puppeteer">
             Puppeteer
-          </ExternalLink>
+          </TextLink>
         </Bullet>
         <Bullet>
-          <ExternalLink href="https://github.com/smooth-code/jest-puppeteer">
+          <TextLink href="https://github.com/smooth-code/jest-puppeteer">
             jest-puppeteer
-          </ExternalLink>
+          </TextLink>
         </Bullet>
         <Bullet>
-          <ExternalLink href="https://testing-library.com/docs/pptr-testing-library/intro">
+          <TextLink href="https://testing-library.com/docs/pptr-testing-library/intro">
             Puppeteer Testing Library
-          </ExternalLink>
+          </TextLink>
         </Bullet>
       </BulletList>
     </TextStack>

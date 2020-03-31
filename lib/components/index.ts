@@ -28,6 +28,7 @@ export { FieldMessage } from './FieldMessage/FieldMessage';
 export { Heading } from './Heading/Heading';
 export { Hidden } from './Hidden/Hidden';
 export { Inline } from './Inline/Inline';
+export { Link } from './Link/Link';
 export { Loader } from './Loader/Loader';
 export { MenuRenderer } from './MenuRenderer/MenuRenderer';
 export { MenuItem } from './MenuItem/MenuItem';

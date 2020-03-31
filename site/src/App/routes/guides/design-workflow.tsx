@@ -10,7 +10,6 @@ import {
 import { TextStack } from '../../TextStack/TextStack';
 import { useConfig } from '../../ConfigContext';
 import { Page } from '../../../types';
-import { Link } from '../../Link/Link';
 
 const braidDesignSupportLink = (
   <TextLink href="https://seekchat.slack.com/channels/braid-design-support">
@@ -144,10 +143,10 @@ const DesignWorkflow = () => {
         This might sound like a massive change, but we’re hoping that it’s not
         as big of a jump as you might think. Braid components allow you to work
         with high-level design-centric terms like{' '}
-        <Link to="/components/Text">Text</Link>,{' '}
-        <Link to="/components/Card">Card</Link> and{' '}
-        <Link to="/components/Columns">Columns</Link>, rather than the low-level
-        technical details of HTML and CSS.
+        <TextLink href="/components/Text">Text</TextLink>,{' '}
+        <TextLink href="/components/Card">Card</TextLink> and{' '}
+        <TextLink href="/components/Columns">Columns</TextLink>, rather than the
+        low-level technical details of HTML and CSS.
       </Text>
 
       <Heading level="3">When should I use high fidelity design tools?</Heading>

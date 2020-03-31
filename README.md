@@ -56,6 +56,32 @@ If you're rendering within the context of another application, you may want to o
 </BraidProvider>
 ```
 
+If you'd like to customise the technical implementation of all `Link` and `TextLink` components from Braid, you can pass a custom component to the `linkComponent` prop on `BraidProvider`. For example, if you wanted to ensure that all relative links are [React Router](https://reacttraining.com/react-router/) links:
+
+```tsx
+import React, { ComponentProps } from 'react';
+import { Link as ReactRouterLink } from 'react-router-dom';
+import { BraidProvider } from 'braid-design-system';
+
+// First create the custom LinkComponent implementation:
+const LinkComponent: ComponentProps<typeof BraidProvider>['linkComponent'] = ({
+  href,
+  ...restProps
+}) =>
+  /^\//.test(href) ? (
+    <ReactRouterLink to={href} {...restProps} />
+  ) : (
+    <a href={href} {...restProps} />
+  );
+
+// Then pass it to BraidProvider:
+export const App = () => (
+  <BraidProvider theme={jobStreetTheme} linkComponent={LinkComponent}>
+    ...
+  </BraidProvider>
+);
+```
+
 ## Multi-theme setup
 
 If you require multiple themes and want to code split them, you can subsitute the `BraidProvider` with the `BraidLoadableProvider`, passing it the necessary `themeName` at runtime. Remove any explicit theme imports you may have.

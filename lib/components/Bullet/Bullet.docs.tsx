@@ -83,13 +83,13 @@ const docs: ComponentDocs = {
       Example: () => (
         <BulletList>
           <Bullet>
-            This is a text <TextLink>link</TextLink>.
+            This is a text <TextLink href="#">link</TextLink>.
           </Bullet>
           <Bullet>
-            This is a secondary <TextLink>link</TextLink>.
+            This is a secondary <TextLink href="#">link</TextLink>.
           </Bullet>
           <Bullet>
-            This is a secondary <TextLink>link</TextLink>.
+            This is a secondary <TextLink href="#">link</TextLink>.
           </Bullet>
         </BulletList>
       ),

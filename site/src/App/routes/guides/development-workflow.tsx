@@ -14,7 +14,6 @@ import {
   Box,
 } from '../../../../../lib/components';
 import { TextStack } from '../../TextStack/TextStack';
-import { Link } from '../../Link/Link';
 import Code from '../../Code/Code';
 import { Page } from '../../../types';
 
@@ -52,11 +51,11 @@ const DevelopmentWorkflow = () => {
       <Text>
         Braid’s high level components are most likely the ones you would come to
         expect from a design system, e.g.{' '}
-        <Link to="/components/Text">Text</Link>,{' '}
-        <Link to="/components/Heading">Heading</Link>,{' '}
-        <Link to="/components/Card">Card</Link>,{' '}
-        <Link to="/components/Button">Button</Link>,{' '}
-        <Link to="/components/TextField">TextField</Link>, etc.
+        <TextLink href="/components/Text">Text</TextLink>,{' '}
+        <TextLink href="/components/Heading">Heading</TextLink>,{' '}
+        <TextLink href="/components/Card">Card</TextLink>,{' '}
+        <TextLink href="/components/Button">Button</TextLink>,{' '}
+        <TextLink href="/components/TextField">TextField</TextLink>, etc.
       </Text>
       <Text>
         For these high level components, we have opted against supporting style
@@ -82,10 +81,10 @@ const DevelopmentWorkflow = () => {
       <Heading level="3">Layout components</Heading>
       <Text>
         In order to distribute white space evenly between components, wrap
-        sibling elements in a <Link to="/components/Stack">Stack</Link>{' '}
-        component with a custom ‘space’ property. For example, if you wanted
-        ‘small’ space between items in a{' '}
-        <Link to="/components/Stack">Stack</Link>:
+        sibling elements in a{' '}
+        <TextLink href="/components/Stack">Stack</TextLink> component with a
+        custom ‘space’ property. For example, if you wanted ‘small’ space
+        between items in a <TextLink href="/components/Stack">Stack</TextLink>:
       </Text>
       <Code>
         <Card>
@@ -111,10 +110,10 @@ const DevelopmentWorkflow = () => {
         </Card>
       </Code>
       <Text>
-        For horizontal layouts, <Link to="/components/Columns">Columns</Link>{' '}
-        provides various responsive rules for laying out content. For example,
-        if you wanted to render a two-column layout that collapses to a single
-        column on mobile:
+        For horizontal layouts,{' '}
+        <TextLink href="/components/Columns">Columns</TextLink> provides various
+        responsive rules for laying out content. For example, if you wanted to
+        render a two-column layout that collapses to a single column on mobile:
       </Text>
       <Code>
         <Columns space="gutter" collapseBelow="tablet">
@@ -166,17 +165,18 @@ const DevelopmentWorkflow = () => {
       <Text>
         If you’re unable to satisfy a design using the built-in set of higher
         level components, Braid also provides consumers with the{' '}
-        <Link to="/components/Box">Box</Link> component that provides direct
-        access to the themed atomic styles that Braid uses internally, without
-        the overhead of having to create and import a separate style sheet. A
-        nice side-effect of this approach is that your application will be
-        reusing existing CSS rules rather than generating new ones, keeping your
-        bundle size to a minimum.
+        <TextLink href="/components/Box">Box</TextLink> component that provides
+        direct access to the themed atomic styles that Braid uses internally,
+        without the overhead of having to create and import a separate style
+        sheet. A nice side-effect of this approach is that your application will
+        be reusing existing CSS rules rather than generating new ones, keeping
+        your bundle size to a minimum.
       </Text>
       <Text>
-        The prop names for <Link to="/components/Box">Box</Link> mostly mimic
-        standard CSS properties, while their values are more semantic, allowing
-        the corresponding CSS rules to be computed across themes.
+        The prop names for <TextLink href="/components/Box">Box</TextLink>{' '}
+        mostly mimic standard CSS properties, while their values are more
+        semantic, allowing the corresponding CSS rules to be computed across
+        themes.
       </Text>
       <Code>
         <Box background="brand" boxShadow="large" padding="large">
@@ -185,19 +185,19 @@ const DevelopmentWorkflow = () => {
       </Code>
       <Text>
         For more details, view the complete{' '}
-        <Link to="/components/Box">Box documentation</Link>. For TypeScript
-        users, you should also find that the Box API is available for
+        <TextLink href="/components/Box">Box documentation</TextLink>. For
+        TypeScript users, you should also find that the Box API is available for
         autocompletion and type checking within your editor.
       </Text>
 
       <Heading level="3">Need responsive styles?</Heading>
       <Text>
         Previously, one of the main reasons for needing to create custom CSS was
-        to define responsive rules. The <Link to="/components/Box">Box</Link>{' '}
-        component makes this possible via{' '}
-        <Strong>responsive properties,</Strong> which are provided as an array
-        of values—one per defined breakpoint, where the first item is the mobile
-        value, followed by the desktop value.
+        to define responsive rules. The{' '}
+        <TextLink href="/components/Box">Box</TextLink> component makes this
+        possible via <Strong>responsive properties,</Strong> which are provided
+        as an array of values—one per defined breakpoint, where the first item
+        is the mobile value, followed by the desktop value.
       </Text>
       <Text>
         For example, if we wanted to change the value for ‘display’
@@ -211,14 +211,15 @@ const DevelopmentWorkflow = () => {
       </Code>
       <Text>
         For a list of low-level responsive props, check out the{' '}
-        <Link to="/components/Box">Box documentation.</Link>
+        <TextLink href="/components/Box">Box documentation.</TextLink>
       </Text>
 
       <Heading level="3">Need semantic markup?</Heading>
       <Text>
         A key difference with Braid is that it doesn’t use a standard global CSS
         reset. Instead, element styles are reset at the component level via{' '}
-        <Link to="/components/Box">Box</Link> and its ‘component’ prop.
+        <TextLink href="/components/Box">Box</TextLink> and its ‘component’
+        prop.
       </Text>
       <Text>
         For example, in order to render a semantic ‘fieldset’ element without
@@ -247,10 +248,11 @@ const DevelopmentWorkflow = () => {
       </Text>
       <Text>
         While higher level Braid components don’t support custom style overrides
-        (e.g. ‘className’ and ‘style’), <Link to="/components/Box">Box</Link> is
-        the one exception. However, you should take care to ensure that custom
-        classes on <Link to="/components/Box">Box</Link> only use styles that
-        are not available via its prop interface.
+        (e.g. ‘className’ and ‘style’),{' '}
+        <TextLink href="/components/Box">Box</TextLink> is the one exception.
+        However, you should take care to ensure that custom classes on{' '}
+        <TextLink href="/components/Box">Box</TextLink> only use styles that are
+        not available via its prop interface.
       </Text>
       <Text>
         For example, if you wanted to render an element as ‘display: flex’, but

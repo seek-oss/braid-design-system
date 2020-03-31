@@ -60,7 +60,7 @@ const docs: ComponentDocs = {
           onChange={handler}
           label="Title"
           secondaryLabel="Optional"
-          tertiaryLabel={<TextLink>Help?</TextLink>}
+          tertiaryLabel={<TextLink href="#">Help?</TextLink>}
         />
       ),
     },

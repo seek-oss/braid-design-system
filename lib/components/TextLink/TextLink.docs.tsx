@@ -7,6 +7,7 @@ import {
   Heading,
   IconNewWindow,
   IconChevron,
+  Stack,
   Text,
   TextLink,
 } from '../';
@@ -16,6 +17,33 @@ const docs: ComponentDocs = {
   category: 'Interaction',
   migrationGuide: true,
   screenshotWidths: [320, 768],
+  description: (
+    <Stack space="large">
+      <Text>
+        By default, this component renders a native `a` element. If you&rsquo;d
+        like to customise the implementation of this component (e.g. to use a{' '}
+        <TextLink href="https://reacttraining.com/react-router/">
+          React Router
+        </TextLink>{' '}
+        link instead), you can pass a custom `linkComponent` prop to{' '}
+        <TextLink href="/components/BraidProvider">BraidProvider</TextLink>.
+      </Text>
+      <Text>
+        If you want to render something that looks like a link but isn&rsquo;t
+        semantically a link (e.g. a button), you should use{' '}
+        <TextLink href="/components/TextLinkRenderer">
+          TextLinkRenderer
+        </TextLink>{' '}
+        instead.
+      </Text>
+      <Text>
+        Please note that this component must be nested within a{' '}
+        <TextLink href="/components/Text">Text</TextLink>,{' '}
+        <TextLink href="/components/Heading">Heading</TextLink> or{' '}
+        <TextLink href="/components/Actions">Actions</TextLink> component.
+      </Text>
+    </Stack>
+  ),
   examples: [
     {
       label: 'Text Link',
