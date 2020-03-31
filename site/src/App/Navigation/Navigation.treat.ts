@@ -1,59 +1,87 @@
 import { globalStyle, style } from 'sku/treat';
-
-const menuWidth = 240;
-const headerHeight = 76;
+import { pageOverlay } from '../../../../lib/components/private/zIndex';
+import { menuWidth, headerHeight, gutterSize } from './navigationSizes';
 
 export const isOpen = style({});
 
-export const header = style(({ utils }) =>
+const bodyBackground = style(({ color }) => ({
+  background: color.background.body,
+}));
+
+const headerOffset = style(({ utils, grid, space }) =>
   utils.responsiveStyle({
     mobile: {
-      zIndex: 1,
+      top: headerHeight,
     },
     tablet: {
-      position: 'fixed',
+      top: headerHeight + grid * space[gutterSize],
     },
   }),
 );
 
-export const container = style({
-  maxHeight: '100vh',
+const fixedWidthAboveMobile = style(({ utils, space, grid }) =>
+  utils.responsiveStyle({
+    tablet: {
+      width: menuWidth - grid * space[gutterSize],
+    },
+  }),
+);
+
+const overlay = style({
+  zIndex: pageOverlay,
 });
 
-export const menu = style(({ breakpoint, space, grid }) => ({
+const hideOnMobileWhenOpen = style(({ breakpoint }) => ({
   '@media': {
     [`screen and (max-width: ${breakpoint.tablet - 1}px)`]: {
-      top: headerHeight + space.medium * grid,
+      selectors: {
+        [`&${isOpen}`]: {
+          opacity: 0,
+        },
+      },
+    },
+  },
+}));
+
+const hideOnMobileWhenClosed = style(({ breakpoint }) => ({
+  '@media': {
+    [`screen and (max-width: ${breakpoint.tablet - 1}px)`]: {
       selectors: {
         [`&:not(${isOpen})`]: {
           opacity: 0,
         },
       },
     },
-    [`screen and (min-width: ${breakpoint.tablet}px)`]: {
-      top: headerHeight + space.large * grid,
-      width: menuWidth,
-    },
   },
 }));
 
-export const content = style(({ breakpoint, space, grid }) => ({
-  '@media': {
-    [`screen and (max-width: ${breakpoint.tablet - 1}px)`]: {
-      paddingTop: headerHeight + space.medium * grid,
-      selectors: {
-        [`&${isOpen}`]: {
-          transform: `translateX(${menuWidth + space.gutter * grid}px)`,
-          opacity: 0.4,
-        },
-      },
+const subNavOffsetAboveMobile = style(({ utils }) =>
+  utils.responsiveStyle({
+    tablet: {
+      marginLeft: menuWidth,
     },
-    [`screen and (min-width: ${breakpoint.tablet}px)`]: {
-      paddingTop: headerHeight + space.large * grid,
-      marginLeft: `${menuWidth}px`,
-    },
-  },
-}));
+  }),
+);
+
+export const hide = style({
+  opacity: 0,
+});
+
+export const subNavigationContainer = [
+  headerOffset,
+  bodyBackground,
+  overlay,
+  fixedWidthAboveMobile,
+  hideOnMobileWhenClosed,
+];
+
+export const pageContent = [
+  headerOffset,
+  subNavOffsetAboveMobile,
+  hideOnMobileWhenOpen,
+];
+
+export const stickyHeader = [bodyBackground];
 
 globalStyle('html, body', {
   margin: 0,
