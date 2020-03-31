@@ -7,7 +7,7 @@ const docs: ComponentDocs = {
   screenshotWidths: [320],
   examples: [
     {
-      label: 'Standard Divider',
+      label: 'Divider',
       Example: () => <Divider />,
     },
     {
@@ -16,7 +16,7 @@ const docs: ComponentDocs = {
     },
   ],
   snippets: [
-    { name: 'Standard', code: <Divider /> },
+    { name: 'Regular', code: <Divider /> },
     { name: 'Strong', code: <Divider weight="strong" /> },
   ],
 };
