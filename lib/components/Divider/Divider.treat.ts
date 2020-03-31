@@ -5,6 +5,6 @@ export const base = style(theme => ({
 }));
 
 export const weight = styleMap(theme => ({
-  standard: { background: theme.border.color.standard },
+  regular: { background: theme.border.color.standard },
   strong: { background: theme.color.foreground.neutral },
 }));

@@ -1709,7 +1709,7 @@ Object {
   exportType: component,
   props: {
     weight?: 
-        | "standard"
+        | "regular"
         | "strong"
 },
 }
@@ -4226,7 +4226,7 @@ Object {
         | "ol"
         | "ul"
     dividers?: 
-        | "standard"
+        | "regular"
         | "strong"
         | false
         | true
@@ -5115,7 +5115,7 @@ Object {
         | 6
     >
     dividers?: 
-        | "standard"
+        | "regular"
         | "strong"
         | false
         | true
