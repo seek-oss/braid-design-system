@@ -44,6 +44,20 @@ const docs: ComponentDocs = {
         </Box>
       ),
     },
+    {
+      label: 'Strong dividers (when in a single column)',
+      Example: () => (
+        <Box background="neutralLight" padding="small">
+          <Tiles space={['none', 'small']} columns={[1, 2]} dividers="strong">
+            {[...new Array(2 * exampleRows)].map((_, i) => (
+              <Card key={i}>
+                <Text>Tile</Text>
+              </Card>
+            ))}
+          </Tiles>
+        </Box>
+      ),
+    },
   ],
   snippets: [
     {

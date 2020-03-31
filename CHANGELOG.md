@@ -1,5 +1,25 @@
 # braid-design-system
 
+## 24.4.1
+
+### Patch Changes
+
+- Divider: Rename 'standard' weight to 'regular'. ([#572](https://github.com/seek-oss/braid-design-system/pull/572))
+
+## 24.4.0
+
+### Minor Changes
+
+- Divider: Add strong weight variant, e.g. `<Divider weight="strong">`. ([#569](https://github.com/seek-oss/braid-design-system/pull/569))
+
+  Note that this also affects the `dividers` prop on both `Stack` and `Tiles`, e.g. `<Stack space="medium" dividers="strong">`. You can still pass a boolean prop if you want to render the default divider styling, e.g. `<Stack space="medium" dividers>`, so this change is backwards compatible.
+
+## 24.3.1
+
+### Patch Changes
+
+- Update deprecated treat imports ([#566](https://github.com/seek-oss/braid-design-system/pull/566))
+
 ## 24.3.0
 
 ### Minor Changes

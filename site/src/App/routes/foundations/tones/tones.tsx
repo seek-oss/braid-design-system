@@ -1,5 +1,5 @@
 import React from 'react';
-import { useStyles } from 'sku/treat';
+import { useStyles } from 'sku/react-treat';
 import { BoxProps } from '../../../../../../lib/components/Box/Box';
 import {
   Box,

@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { useStyles } from 'sku/treat';
+import { useStyles } from 'sku/react-treat';
 
 import { Box } from '..';
 import * as styleRefs from './Toast.treat';
