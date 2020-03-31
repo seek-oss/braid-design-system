@@ -6,6 +6,12 @@ export function useScrollLock(lock: boolean) {
   const styles = useStyles(styleRefs);
 
   useEffect(() => {
-    document.body.classList[lock ? 'add' : 'remove'](styles.scrollLock);
+    if (lock) {
+      document.body.classList.add(styles.scrollLock);
+    }
+
+    return () => {
+      document.body.classList.remove(styles.scrollLock);
+    };
   }, [lock, styles.scrollLock]);
 }

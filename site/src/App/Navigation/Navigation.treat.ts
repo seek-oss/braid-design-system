@@ -1,7 +1,6 @@
 import { globalStyle, style } from 'sku/treat';
 import { pageOverlay } from '../../../../lib/components/private/zIndex';
-
-const menuWidth = 300;
+import { menuWidth, headerHeight, gutterSize } from './navigationSizes';
 
 export const isOpen = style({});
 
@@ -9,13 +8,13 @@ const bodyBackground = style(({ color }) => ({
   background: color.background.body,
 }));
 
-const headerOffset = style(({ utils }) =>
+const headerOffset = style(({ utils, grid, space }) =>
   utils.responsiveStyle({
     mobile: {
-      top: 96,
+      top: headerHeight,
     },
     tablet: {
-      top: 120,
+      top: headerHeight + grid * space[gutterSize],
     },
   }),
 );
@@ -23,7 +22,7 @@ const headerOffset = style(({ utils }) =>
 const fixedWidthAboveMobile = style(({ utils, space, grid }) =>
   utils.responsiveStyle({
     tablet: {
-      width: menuWidth - grid * space.medium,
+      width: menuWidth - grid * space[gutterSize],
     },
   }),
 );

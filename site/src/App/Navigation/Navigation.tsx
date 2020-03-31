@@ -16,9 +16,8 @@ import { SubNavigation } from '../SubNavigation/SubNavigation';
 import { useScrollLock } from '../useScrollLock/useScrollLock';
 import { MenuButton } from '../MenuButton/MenuButton';
 import { Logo } from '../Logo/Logo';
+import { gutterSize, menuButtonSize, headerSpaceY } from './navigationSizes';
 import * as styleRefs from './Navigation.treat';
-
-const space = 'medium';
 
 const Header = ({
   menuOpen,
@@ -27,7 +26,7 @@ const Header = ({
   menuOpen: boolean;
   menuClick: () => void;
 }) => (
-  <Box paddingY="large" paddingX={space}>
+  <Box paddingY={headerSpaceY} paddingX={gutterSize}>
     <Text component="div" baseline={false}>
       <Box display="flex" alignItems="center">
         <Hidden print above="mobile">
@@ -40,7 +39,7 @@ const Header = ({
           tabIndex={menuOpen ? -1 : undefined}
           className={useBoxStyles({ component: 'a' })}
         >
-          <Logo iconOnly height={32} />
+          <Logo iconOnly height={menuButtonSize} />
         </Link>
       </Box>
     </Text>
@@ -90,7 +89,7 @@ export const Navigation = ({ children }: NavigationProps) => {
 
   return (
     <ContentBlock width="large">
-      <Box paddingRight={['none', space]}>
+      <Box paddingRight={['none', gutterSize]}>
         <FixedContentBlock top={0} left={0} right={0}>
           <Header
             menuOpen={isMenuOpen}
@@ -103,7 +102,7 @@ export const Navigation = ({ children }: NavigationProps) => {
           overflow="scroll"
           bottom={0}
           paddingY="small"
-          paddingX={space}
+          paddingX={gutterSize}
           paddingBottom="xxlarge"
           width="full"
           display={[isMenuOpen ? 'block' : 'none', 'block']}
