@@ -145,7 +145,7 @@ const Iconography = () => {
           ) : null}
         </Stack>
 
-        <Inline space={['none', 'medium']}>
+        <Inline space={['none', 'small']}>
           {iconList.map(icon => (
             <IconTile
               key={icon.name}
