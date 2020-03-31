@@ -194,7 +194,7 @@ const tokens: TreatTokens = {
       rating: black,
     },
     background: {
-      body: white,
+      body: 'whitesmoke',
       brand: black,
       input: white,
       inputDisabled: '#eee',
