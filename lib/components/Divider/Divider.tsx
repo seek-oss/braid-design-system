@@ -3,16 +3,23 @@ import { useStyles } from 'sku/react-treat';
 import { Box } from '../Box/Box';
 import * as styleRefs from './Divider.treat';
 
-export const Divider = () => {
+export interface DividerProps {
+  weight?: keyof typeof styleRefs.weight;
+}
+
+const defaultWeight = 'standard';
+export const Divider = ({ weight = defaultWeight }: DividerProps) => {
   const styles = useStyles(styleRefs);
 
   return (
     <Box position="relative">
       <Box
         position="absolute"
-        boxShadow="borderStandard"
         width="full"
-        className={styles.divider}
+        className={[
+          styles.base,
+          styles.weight[weight] || styles.weight[defaultWeight],
+        ]}
       />
     </Box>
   );

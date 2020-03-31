@@ -10,8 +10,15 @@ const docs: ComponentDocs = {
       label: 'Standard Divider',
       Example: () => <Divider />,
     },
+    {
+      label: 'Strong Divider',
+      Example: () => <Divider weight="strong" />,
+    },
   ],
-  snippets: [{ name: 'Standard', code: <Divider /> }],
+  snippets: [
+    { name: 'Standard', code: <Divider /> },
+    { name: 'Strong', code: <Divider weight="strong" /> },
+  ],
 };
 
 export default docs;

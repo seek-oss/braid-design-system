@@ -76,6 +76,17 @@ const docs: ComponentDocs = {
         </Stack>
       ),
     },
+    {
+      label: 'Strong dividers',
+      Container,
+      Example: () => (
+        <Stack space="gutter" dividers="strong">
+          <Placeholder height={40} />
+          <Placeholder height={40} />
+          <Placeholder height={40} />
+        </Stack>
+      ),
+    },
   ],
   snippets: [
     {
