@@ -1705,7 +1705,13 @@ Object {
 `;
 
 exports[`Divider 1`] = `
-{
+Object {
+  exportType: component,
+  props: {
+    weight?: 
+        | "standard"
+        | "strong"
+},
 }
 `;
 
@@ -4219,7 +4225,11 @@ Object {
         | "div"
         | "ol"
         | "ul"
-    dividers?: boolean
+    dividers?: 
+        | "standard"
+        | "strong"
+        | false
+        | true
     space: ResponsiveProp<
         | "gutter"
         | "large"
@@ -5104,7 +5114,11 @@ Object {
         | 5
         | 6
     >
-    dividers?: boolean
+    dividers?: 
+        | "standard"
+        | "strong"
+        | false
+        | true
     space: ResponsiveProp<
         | "gutter"
         | "large"

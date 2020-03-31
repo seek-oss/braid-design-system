@@ -1,5 +1,8 @@
-import { style } from 'sku/treat';
+import { style, styleMap } from 'sku/treat';
 
-export const divider = style({
-  height: '1px',
-});
+export const base = style({ height: 1 });
+
+export const weight = styleMap(theme => ({
+  standard: { background: theme.border.color.standard },
+  strong: { background: theme.color.foreground.neutral },
+}));
