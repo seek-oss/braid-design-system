@@ -64,10 +64,6 @@ const subNavOffsetAboveMobile = style(({ utils }) =>
   }),
 );
 
-export const scrollLock = style({
-  overflow: 'hidden',
-});
-
 export const hide = style({
   opacity: 0,
 });

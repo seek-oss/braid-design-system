@@ -13,6 +13,7 @@ import { useIsolatedScroll } from '../../../../lib/components/Autosuggest/useIso
 import { useBoxStyles } from '../../../../lib/components/Box/useBoxStyles';
 import { BoxProps } from '../../../../lib/components/Box/Box';
 import { SubNavigation } from '../SubNavigation/SubNavigation';
+import { useScrollLock } from '../useScrollLock/useScrollLock';
 import { MenuButton } from '../MenuButton/MenuButton';
 import { Logo } from '../Logo/Logo';
 import * as styleRefs from './Navigation.treat';
@@ -60,34 +61,29 @@ interface NavigationProps {
 
 export const Navigation = ({ children }: NavigationProps) => {
   const styles = useStyles(styleRefs);
+  const lastScrollTop = useRef(0);
   const { y: scrollTop } = useWindowScroll();
-  const [showStickyHeader, setShowStickyHeader] = useState(false);
   const [isMenuOpen, setMenuOpen] = useState(false);
-
-  const [lastScrollTop, setLastScrollTop] = useState(0);
+  const [showStickyHeader, setShowStickyHeader] = useState(false);
   const [direction, setDirection] = useState<'up' | 'down' | null>(null);
 
+  const location = useLocation();
+  useEffect(() => setDirection(null), [location]);
+
   useInterval(() => {
-    if (lastScrollTop !== scrollTop) {
-      if (Math.abs(lastScrollTop - scrollTop) > 0) {
-        setDirection(scrollTop > lastScrollTop ? 'down' : 'up');
+    if (lastScrollTop.current !== scrollTop) {
+      if (Math.abs(lastScrollTop.current - scrollTop) > 0) {
+        setDirection(scrollTop > lastScrollTop.current ? 'down' : 'up');
       }
-      setLastScrollTop(scrollTop);
+      lastScrollTop.current = scrollTop;
     }
   }, 250);
-
-  const location = useLocation();
-  useEffect(() => {
-    setDirection(null);
-  }, [location]);
 
   useEffect(() => {
     setShowStickyHeader(scrollTop > 300 && direction === 'up');
   }, [direction, scrollTop]);
 
-  useEffect(() => {
-    document.body.classList[isMenuOpen ? 'add' : 'remove'](styles.scrollLock);
-  }, [isMenuOpen, styles.scrollLock]);
+  useScrollLock(isMenuOpen);
 
   const menuRef = useRef<HTMLElement | null>(null);
   useIsolatedScroll(menuRef.current);
