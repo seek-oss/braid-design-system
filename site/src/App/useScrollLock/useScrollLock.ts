@@ -8,10 +8,10 @@ export function useScrollLock(lock: boolean) {
   useEffect(() => {
     if (lock) {
       document.body.classList.add(styles.scrollLock);
-    }
 
-    return () => {
-      document.body.classList.remove(styles.scrollLock);
-    };
+      return () => {
+        document.body.classList.remove(styles.scrollLock);
+      };
+    }
   }, [lock, styles.scrollLock]);
 }
