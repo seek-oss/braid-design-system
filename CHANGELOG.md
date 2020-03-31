@@ -1,5 +1,11 @@
 # braid-design-system
 
+## 24.4.1
+
+### Patch Changes
+
+- Divider: Rename 'standard' weight to 'regular'. ([#572](https://github.com/seek-oss/braid-design-system/pull/572))
+
 ## 24.4.0
 
 ### Minor Changes
