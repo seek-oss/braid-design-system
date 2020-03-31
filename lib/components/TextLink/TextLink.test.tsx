@@ -1,11 +1,7 @@
 import '@testing-library/jest-dom/extend-expect';
-import React, { ComponentProps } from 'react';
+import React from 'react';
 import { render, cleanup } from '@testing-library/react';
-import { BraidTestProvider, Text, TextLink } from '..';
-
-type LinkComponentType = ComponentProps<
-  typeof BraidTestProvider
->['linkComponent'];
+import { BraidTestProvider, LinkComponent, Text, TextLink } from '..';
 
 afterEach(cleanup);
 
@@ -26,12 +22,12 @@ describe('TextLink', () => {
   });
 
   it('should render a custom link component if provided', () => {
-    const LinkComponent: LinkComponentType = props => (
+    const BraidLink: LinkComponent = props => (
       <a {...props} data-custom-link-component="true" />
     );
 
     const { getByRole } = render(
-      <BraidTestProvider linkComponent={LinkComponent}>
+      <BraidTestProvider linkComponent={BraidLink}>
         <Text>
           <TextLink href="/foo/bar">Link content</TextLink>
         </Text>
@@ -46,12 +42,12 @@ describe('TextLink', () => {
   });
 
   it("should inherit custom link components from the root provider if the nearest provider doesn't have one", () => {
-    const LinkComponent: LinkComponentType = props => (
+    const BraidLink: LinkComponent = props => (
       <a {...props} data-custom-link-component="true" />
     );
 
     const { getByRole } = render(
-      <BraidTestProvider linkComponent={LinkComponent}>
+      <BraidTestProvider linkComponent={BraidLink}>
         {/* Note: No linkComponent prop provided here: */}
         <BraidTestProvider>
           <Text>

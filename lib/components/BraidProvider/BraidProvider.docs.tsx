@@ -21,14 +21,11 @@ const docs: ComponentDocs = {
       code: `
         import React, { ComponentProps } from 'react';
         import { Link as ReactRouterLink } from 'react-router-dom';
-        import { BraidProvider } from 'braid-design-system';
+        import { BraidProvider, LinkComponent } from 'braid-design-system';
 
-        // First create the custom LinkComponent implementation:
-        const LinkComponent: ComponentProps<typeof BraidProvider>['linkComponent'] = ({
-          href,
-          ...restProps
-        }) =>
-          /^\\//.test(href) ? (
+        // First create the custom link implementation:
+        const BraidLink: LinkComponent = ({ href, ...restProps }) =>
+          /^\//.test(href) ? (
             <ReactRouterLink to={href} {...restProps} />
           ) : (
             <a href={href} {...restProps} />
@@ -36,7 +33,7 @@ const docs: ComponentDocs = {
 
         // Then pass it to BraidProvider:
         export const App = () => (
-          <BraidProvider theme={jobStreetTheme} linkComponent={LinkComponent}>
+          <BraidProvider theme={jobStreetTheme} linkComponent={BraidLink}>
             ...
           </BraidProvider>
         );

@@ -1,4 +1,7 @@
 export { BraidProvider } from './BraidProvider/BraidProvider';
+import { LinkComponent as _LinkComponent } from './BraidProvider/BraidProvider';
+export type LinkComponent = _LinkComponent;
+
 export { BraidLoadableProvider } from './BraidLoadableProvider/BraidLoadableProvider';
 export { BraidTestProvider } from './BraidTestProvider/BraidTestProvider';
 export { ThemeNameConsumer } from './ThemeNameConsumer/ThemeNameConsumer';

@@ -30,6 +30,7 @@ export interface LinkComponentProps
   extends AnchorHTMLAttributes<HTMLAnchorElement> {
   href: string;
 }
+export type LinkComponent = ComponentType<LinkComponentProps>;
 const DefaultLinkComponent = (props: LinkComponentProps) => <a {...props} />;
 const LinkComponentContext = createContext<ComponentType<LinkComponentProps>>(
   DefaultLinkComponent,

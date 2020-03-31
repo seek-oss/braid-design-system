@@ -9,8 +9,8 @@ const docs: ComponentDocs = {
   description: (
     <Stack space="large">
       <Text>
-        By default, renders a plain `a` tag without any visual styling, or the
-        `linkComponent` that was provided via{' '}
+        Renders a plain `a` tag without any visual styling, or the custom
+        `linkComponent` implementation that was provided via{' '}
         <TextLink href="/components/BraidProvider">BraidProvider</TextLink>.
       </Text>
       <Text>
