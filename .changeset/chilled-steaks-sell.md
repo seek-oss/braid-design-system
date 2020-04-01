@@ -13,7 +13,7 @@ import { BraidProvider, LinkComponent } from 'braid-design-system';
 
 // First create the custom link implementation:
 const BraidLink: LinkComponent = ({ href, ...restProps }) =>
-  /^\//.test(href) ? (
+  href[0] === '/' ? (
     <ReactRouterLink to={href} {...restProps} />
   ) : (
     <a href={href} {...restProps} />

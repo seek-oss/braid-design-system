@@ -1,10 +1,9 @@
 import React from 'react';
-import classnames from 'classnames';
 import {
   useLinkComponent,
   LinkComponentProps,
 } from '../BraidProvider/BraidProvider';
-import * as resetStyles from '../../reset';
+import { useBoxStyles } from '../Box/useBoxStyles';
 
 export type LinkProps = LinkComponentProps;
 
@@ -14,7 +13,7 @@ export const Link = ({ href, className, ...restProps }: LinkComponentProps) => {
   return (
     <LinkComponent
       href={href}
-      className={classnames(resetStyles.base, resetStyles.element.a, className)}
+      className={useBoxStyles({ component: 'a', className })}
       {...restProps}
     />
   );

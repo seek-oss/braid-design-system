@@ -17,7 +17,7 @@ import foundations from './routes/foundations';
 import components from './routes/components';
 
 const BraidLink: LinkComponent = ({ href, rel, ...restProps }) => {
-  return /^\//.test(href) && !/\/playroom\/?($|#)/.test(href) ? (
+  return href[0] === '/' && !/\/playroom\/?($|#)/.test(href) ? (
     <ReactRouterLink to={href} rel={rel} {...restProps} />
   ) : (
     <a href={href} rel={rel || 'noreferrer noopener'} {...restProps} />

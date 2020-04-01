@@ -5,7 +5,7 @@ import React, {
   ComponentType,
   AnchorHTMLAttributes,
 } from 'react';
-import { TreatProvider } from 'sku/treat';
+import { TreatProvider } from 'sku/react-treat';
 import { ensureResetImported } from '../../reset/resetTracker';
 import { HideFocusRingsRoot } from '../private/hideFocusRings/hideFocusRings';
 import { BraidTestProviderContext } from '../BraidTestProvider/BraidTestProviderContext';
