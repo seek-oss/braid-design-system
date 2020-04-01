@@ -32,15 +32,13 @@ export interface LinkComponentProps
 }
 export type LinkComponent = ComponentType<LinkComponentProps>;
 const DefaultLinkComponent = (props: LinkComponentProps) => <a {...props} />;
-const LinkComponentContext = createContext<ComponentType<LinkComponentProps>>(
-  DefaultLinkComponent,
-);
+const LinkComponentContext = createContext<LinkComponent>(DefaultLinkComponent);
 export const useLinkComponent = () => useContext(LinkComponentContext);
 
 export interface BraidProviderProps {
   theme: BraidTheme;
   styleBody?: boolean;
-  linkComponent?: ComponentType<LinkComponentProps>;
+  linkComponent?: LinkComponent;
   children: ReactNode;
 }
 
