@@ -8,11 +8,7 @@ import * as resetStyles from '../../reset';
 
 export type LinkProps = LinkComponentProps;
 
-export const Link = ({
-  href = '',
-  className,
-  ...restProps
-}: LinkComponentProps) => {
+export const Link = ({ href, className, ...restProps }: LinkComponentProps) => {
   const LinkComponent = useLinkComponent();
 
   return (
