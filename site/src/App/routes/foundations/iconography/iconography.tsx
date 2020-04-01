@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import { Link as ReactRouterLink } from 'react-router-dom';
 import { useStyles } from 'sku/react-treat';
 import didYouMean, { ReturnTypeEnums } from 'didyoumean2';
-import { useBoxStyles } from '../../../../../../lib/components/Box/useBoxStyles';
 import {
   Inline,
   Box,
   Text,
+  Link,
   Stack,
   Heading,
   TextField,
@@ -36,10 +35,7 @@ const IconTile = ({
   const IconComponent = icons[icon.name];
 
   return (
-    <ReactRouterLink
-      to={`/components/${icon.name}`}
-      className={useBoxStyles({ component: 'a' })}
-    >
+    <Link href={`/components/${icon.name}`}>
       <Box
         position="relative"
         display={'flex'}
@@ -74,7 +70,7 @@ const IconTile = ({
           className={styles.overlay}
         />
       </Box>
-    </ReactRouterLink>
+    </Link>
   );
 };
 

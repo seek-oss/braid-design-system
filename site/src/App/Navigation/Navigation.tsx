@@ -5,12 +5,17 @@ import React, {
   useEffect,
   forwardRef,
 } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { useWindowScroll, useInterval } from 'react-use';
 import { useStyles } from 'sku/react-treat';
-import { ContentBlock, Text, Box, Hidden } from '../../../../lib/components';
+import {
+  ContentBlock,
+  Text,
+  Link,
+  Box,
+  Hidden,
+} from '../../../../lib/components';
 import { useIsolatedScroll } from '../../../../lib/components/Autosuggest/useIsolatedScroll';
-import { useBoxStyles } from '../../../../lib/components/Box/useBoxStyles';
 import { BoxProps } from '../../../../lib/components/Box/Box';
 import { SubNavigation } from '../SubNavigation/SubNavigation';
 import { useScrollLock } from '../useScrollLock/useScrollLock';
@@ -34,11 +39,7 @@ const Header = ({
             <MenuButton open={menuOpen} onClick={menuClick} />
           </Box>
         </Hidden>
-        <Link
-          to="/"
-          tabIndex={menuOpen ? -1 : undefined}
-          className={useBoxStyles({ component: 'a' })}
-        >
+        <Link href="/" tabIndex={menuOpen ? -1 : undefined}>
           <Logo iconOnly height={menuButtonSize} />
         </Link>
       </Box>

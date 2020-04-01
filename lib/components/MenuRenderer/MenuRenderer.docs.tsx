@@ -10,7 +10,6 @@ import {
   IconChevron,
   TextLink,
 } from '..';
-import { Link } from '../../../site/src/App/Link/Link';
 
 const docs: ComponentDocs = {
   category: 'Interaction',
@@ -24,8 +23,8 @@ const docs: ComponentDocs = {
           WAI Authoring Practices
         </TextLink>
         . For example, the{' '}
-        <Link to="/components/OverflowMenu">OverflowMenu</Link> uses this
-        internally.
+        <TextLink href="/components/OverflowMenu">OverflowMenu</TextLink> uses
+        this internally.
       </Text>
       <Text>
         Implementations of this component must provide a `trigger` that can

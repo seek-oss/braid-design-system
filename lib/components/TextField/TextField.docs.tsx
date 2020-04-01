@@ -119,7 +119,7 @@ const docs: ComponentDocs = {
         <TextField
           label="Title"
           secondaryLabel="Optional"
-          tertiaryLabel={<TextLink>Help?</TextLink>}
+          tertiaryLabel={<TextLink href="#">Help?</TextLink>}
           id={id}
           value=""
           onChange={handler}
@@ -202,7 +202,7 @@ const docs: ComponentDocs = {
       code: (
         <PlayroomTextField
           label="Label"
-          tertiaryLabel={<TextLink>Help</TextLink>}
+          tertiaryLabel={<TextLink href="#">Help</TextLink>}
         />
       ),
     },
