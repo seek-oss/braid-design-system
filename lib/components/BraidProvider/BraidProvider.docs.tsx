@@ -25,7 +25,7 @@ const docs: ComponentDocs = {
 
         // First create the custom link implementation:
         const BraidLink: LinkComponent = ({ href, ...restProps }) =>
-          /^\//.test(href) ? (
+          /^\\//.test(href) ? (
             <ReactRouterLink to={href} {...restProps} />
           ) : (
             <a href={href} {...restProps} />
