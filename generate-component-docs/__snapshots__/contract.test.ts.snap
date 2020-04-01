@@ -4447,6 +4447,11 @@ Object {
 }
 `;
 
+exports[`LinkComponent 1`] = `
+{
+}
+`;
+
 exports[`Loader 1`] = `
 Object {
   exportType: component,
