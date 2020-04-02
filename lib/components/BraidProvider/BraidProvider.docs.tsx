@@ -19,9 +19,10 @@ const docs: ComponentDocs = {
     {
       label: 'Custom link implementation',
       code: `
-        import React, { ComponentProps } from 'react';
+        import React from 'react';
         import { Link as ReactRouterLink } from 'react-router-dom';
         import { BraidProvider, LinkComponent } from 'braid-design-system';
+        import wireframe from 'braid-design-system/themes/wireframe';
 
         // First create the custom link implementation:
         const BraidLink: LinkComponent = ({ href, ...restProps }) =>
@@ -33,7 +34,7 @@ const docs: ComponentDocs = {
 
         // Then pass it to BraidProvider:
         export const App = () => (
-          <BraidProvider theme={jobStreetTheme} linkComponent={BraidLink}>
+          <BraidProvider theme={wireframe} linkComponent={BraidLink}>
             ...
           </BraidProvider>
         );
