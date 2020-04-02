@@ -28,22 +28,20 @@ export const Button = ({
   loading = false,
   'aria-describedby': ariaDescribedBy,
   data,
-}: ButtonProps) => {
-  return (
-    <ButtonRenderer weight={weight} loading={loading}>
-      {(ButtonChildren, buttonProps) => (
-        <button
-          id={id}
-          type={type}
-          aria-describedby={ariaDescribedBy}
-          onClick={onClick}
-          disabled={loading}
-          {...buttonProps}
-          {...buildDataAttributes(data)}
-        >
-          <ButtonChildren>{children}</ButtonChildren>
-        </button>
-      )}
-    </ButtonRenderer>
-  );
-};
+}: ButtonProps) => (
+  <ButtonRenderer weight={weight} loading={loading}>
+    {(ButtonChildren, buttonProps) => (
+      <button
+        id={id}
+        type={type}
+        aria-describedby={ariaDescribedBy}
+        onClick={onClick}
+        disabled={loading}
+        {...buttonProps}
+        {...buildDataAttributes(data)}
+      >
+        <ButtonChildren>{children}</ButtonChildren>
+      </button>
+    )}
+  </ButtonRenderer>
+);

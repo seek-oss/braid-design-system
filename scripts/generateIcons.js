@@ -67,7 +67,7 @@ const iconComponentsDir = path.join(baseDir, 'lib/components/icons');
     },
   );
   await Promise.all(
-    existingComponentPaths.map(async existingComponentPath => {
+    existingComponentPaths.map(async (existingComponentPath) => {
       await fs.remove(existingComponentPath);
     }),
   );
@@ -79,7 +79,7 @@ const iconComponentsDir = path.join(baseDir, 'lib/components/icons');
   });
 
   await Promise.all(
-    svgFilePaths.map(async svgFilePath => {
+    svgFilePaths.map(async (svgFilePath) => {
       // Split out the icon variants (e.g. bookmark-active.svg)
       const [svgName, variantName] = path
         .basename(svgFilePath, '.svg')
@@ -97,7 +97,7 @@ const iconComponentsDir = path.join(baseDir, 'lib/components/icons');
         const $el = $(el);
 
         // Validate color attributes
-        ['stroke', 'fill'].forEach(attr => {
+        ['stroke', 'fill'].forEach((attr) => {
           const color = $el.attr(attr);
           const validColors = ['currentColor', 'none', '#000'];
           if (color && !validColors.includes(color)) {
@@ -197,12 +197,12 @@ const iconComponentsDir = path.join(baseDir, 'lib/components/icons');
   // Create icons/index.ts
   const iconComponentNames = (await fs.readdir(iconComponentsDir)).filter(
     // Only include directories that contain an icon, e.g. exclude '__snapshots__'
-    fileOrDir => !fileOrDir.includes('.') && fileOrDir.includes('Icon'),
+    (fileOrDir) => !fileOrDir.includes('.') && fileOrDir.includes('Icon'),
   );
   const iconExports = iconComponentNames
-    .map(componentFile => path.basename(componentFile, '.tsx'))
+    .map((componentFile) => path.basename(componentFile, '.tsx'))
     .map(
-      component =>
+      (component) =>
         `export { ${component} } from './${component}/${component}';`,
     )
     .join('\n')

@@ -16,11 +16,11 @@ import { Stack } from '../Stack/Stack';
 import * as icons from './index';
 
 type IconName = keyof typeof icons;
-const iconNames = Object.keys(icons).map(icon => icon as IconName);
+const iconNames = Object.keys(icons).map((icon) => icon as IconName);
 
 const Icons = ({ tone }: { tone?: UseIconProps['tone'] }) => (
   <Inline space="small">
-    {iconNames.map(icon => {
+    {iconNames.map((icon) => {
       const IconComponent = icons[icon];
       return <IconComponent key={icon} tone={tone} />;
     })}
@@ -45,7 +45,7 @@ const docs: ComponentDocs = {
 
         return (
           <Stack space="large">
-            {sizes.map(size => (
+            {sizes.map((size) => (
               <Stack key={size} space="medium">
                 <Text size={size}>{size}</Text>
                 <Text size={size}>
@@ -70,7 +70,7 @@ const docs: ComponentDocs = {
             {headings
               .sort()
               .reverse()
-              .map(heading => (
+              .map((heading) => (
                 <Stack key={heading} space="medium">
                   <Heading level={heading}>Level {heading}</Heading>
                   <Heading level={heading}>
@@ -92,7 +92,7 @@ const docs: ComponentDocs = {
 
         return (
           <Stack space="large">
-            {iconTones.map(tone => (
+            {iconTones.map((tone) => (
               <Stack key={tone} space="medium">
                 <Text tone={tone}>{tone}</Text>
                 <Text tone={tone}>
@@ -137,7 +137,7 @@ const docs: ComponentDocs = {
       docsSite: false,
       Example: () => (
         <Stack space="small">
-          {iconNames.map(icon => {
+          {iconNames.map((icon) => {
             const IconComponent = icons[icon];
             return (
               <Inline key={icon} space="medium">
@@ -158,7 +158,7 @@ const docs: ComponentDocs = {
       docsSite: false,
       Example: () => (
         <Stack space="small">
-          {iconNames.map(icon => {
+          {iconNames.map((icon) => {
             const IconComponent = icons[icon];
             return (
               <Inline key={icon} space="small">

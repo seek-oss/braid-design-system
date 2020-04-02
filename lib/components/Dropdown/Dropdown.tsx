@@ -40,7 +40,7 @@ const NamedDropdown = forwardRef<HTMLSelectElement, DropdownProps>(
 
     const styles = useStyles(styleRefs);
 
-    Children.forEach(children, child => {
+    Children.forEach(children, (child) => {
       if (!(isValidElement(child) && /^(option|optgroup)$/.test(child.type))) {
         throw new Error(
           '`Dropdown` only accepts children of type `option` or `optgroup`.',

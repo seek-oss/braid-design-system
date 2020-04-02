@@ -24,7 +24,7 @@ export const Checkbox = ({
       onChange={
         onChange
           ? onChange
-          : event => setFallbackChecked(event.currentTarget.checked)
+          : (event) => setFallbackChecked(event.currentTarget.checked)
       }
       {...restProps}
     />

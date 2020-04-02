@@ -11,7 +11,7 @@ const docs: ComponentDocs = {
       label: 'Standard BoxRenderer',
       Example: () => (
         <BoxRenderer component="ul" background="brand" padding="medium">
-          {className => (
+          {(className) => (
             <ul className={className}>
               <li>
                 <Text baseline={false}>

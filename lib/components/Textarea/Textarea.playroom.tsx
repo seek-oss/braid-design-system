@@ -24,7 +24,7 @@ export const Textarea = ({
       onChange={
         onChange
           ? onChange
-          : event => setFallbackValue(event.currentTarget.value)
+          : (event) => setFallbackValue(event.currentTarget.value)
       }
       {...restProps}
     />

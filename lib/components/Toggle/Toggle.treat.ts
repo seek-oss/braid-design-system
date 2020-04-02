@@ -27,7 +27,7 @@ const realFieldBase = style({
   },
 });
 
-const realFieldPosition = style(theme => {
+const realFieldPosition = style((theme) => {
   const centerOffset = -(hitArea - getSize(theme)) / 2;
 
   return {
@@ -45,7 +45,7 @@ export const label = [
       },
     },
   }),
-  style(theme => {
+  style((theme) => {
     const size = getSize(theme);
     const lineHeight = theme.grid * theme.typography.text.standard.mobile.rows;
     const padding = (size - lineHeight) / 2;
@@ -56,19 +56,19 @@ export const label = [
   }),
 ];
 
-export const fieldSize = style(theme => ({
+export const fieldSize = style((theme) => ({
   width: getSize(theme) * toggleWidthRatio,
 }));
 
 const slideContainerBase = style({});
 
-const slideContainerHeight = style(theme => ({
+const slideContainerHeight = style((theme) => ({
   height: getSize(theme),
 }));
 
 export const slideContainer = [slideContainerBase, slideContainerHeight];
 
-export const slideTrack = style(theme => {
+export const slideTrack = style((theme) => {
   const size = getSize(theme);
   const height = size - theme.grid;
 
@@ -82,7 +82,7 @@ export const slideTrack = style(theme => {
   };
 });
 
-export const slideTrackSelected = style(theme => {
+export const slideTrackSelected = style((theme) => {
   const trackWidth = theme.grid * theme.touchableSize;
 
   return {
@@ -94,7 +94,7 @@ export const slideTrackSelected = style(theme => {
   };
 });
 
-export const slider = style(theme => {
+export const slider = style((theme) => {
   const size = getSize(theme);
   const trackWidth = size * toggleWidthRatio;
   const anticipation = size * anticipationRatio;

@@ -8,8 +8,8 @@ import { BraidProvider } from '../components';
 import { ComponentDocs } from '../../site/src/types';
 
 const webFontLinkTags = uniq(
-  flatten(values(themes).map(theme => theme.webFonts)).map(
-    font => font.linkTag,
+  flatten(values(themes).map((theme) => theme.webFonts)).map(
+    (font) => font.linkTag,
   ),
 ).join('');
 document.head.innerHTML += webFontLinkTags;
@@ -23,7 +23,7 @@ const DefaultContainer = ({ children }: { children: ReactNode }) => (
 );
 
 const req = require.context('../components', true, /\.docs\.tsx?$/);
-req.keys().forEach(filename => {
+req.keys().forEach((filename) => {
   const matches = filename.match(/([a-zA-Z]+)\.docs\.tsx?$/);
   if (!matches) {
     return;
@@ -38,10 +38,10 @@ req.keys().forEach(filename => {
   }
 
   const storyThemes = values(themes).filter(
-    theme => theme.name !== 'wireframe',
+    (theme) => theme.name !== 'wireframe',
   );
 
-  storyThemes.forEach(theme => {
+  storyThemes.forEach((theme) => {
     const storyConfig = {
       chromatic: {
         viewports: docs.screenshotWidths,

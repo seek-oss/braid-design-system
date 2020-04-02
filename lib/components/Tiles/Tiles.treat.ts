@@ -15,8 +15,8 @@ const columnsWidths = {
 type ColumnWidths = Record<keyof typeof columnsWidths, string>;
 const makeColumnsAtoms = (breakpoint: keyof TreatTokens['breakpoint']) =>
   styleMap(
-    theme =>
-      mapValues(columnsWidths, width =>
+    (theme) =>
+      mapValues(columnsWidths, (width) =>
         theme.utils.responsiveStyle({ [breakpoint]: { flex: `0 0 ${width}` } }),
       ),
     `columns_${breakpoint}`,

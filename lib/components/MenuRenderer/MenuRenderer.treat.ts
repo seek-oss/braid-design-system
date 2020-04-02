@@ -16,7 +16,7 @@ export const backdrop = style({
   zIndex: zIndex.backdrop,
 });
 
-export const menuIsClosed = style(theme => ({
+export const menuIsClosed = style((theme) => ({
   transform: `translateY(-${theme.grid * 2}px)`,
   opacity: 0,
   visibility: 'hidden',

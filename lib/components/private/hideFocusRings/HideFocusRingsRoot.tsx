@@ -11,7 +11,7 @@ export const HideFocusRingsRoot = ({ children }: HideFocusRingsRootProps) => {
 
   useEffect(() => {
     const eventName = hideFocusRings ? 'keydown' : 'mousemove';
-    const toggleFocusRings = () => setHideFocusRings(x => !x);
+    const toggleFocusRings = () => setHideFocusRings((x) => !x);
 
     window.addEventListener(eventName, toggleFocusRings);
 

@@ -17,7 +17,7 @@ export const TextLink = ({ showVisited, hitArea, ...props }: TextLinkProps) => {
 
   return (
     <TextLinkRenderer showVisited={showVisited} hitArea={hitArea}>
-      {styleProps => <LinkComponent {...props} {...styleProps} />}
+      {(styleProps) => <LinkComponent {...props} {...styleProps} />}
     </TextLinkRenderer>
   );
 };

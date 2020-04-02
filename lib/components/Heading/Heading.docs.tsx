@@ -84,7 +84,7 @@ const docs: ComponentDocs = {
 
         return (
           <Stack space="medium">
-            {levels.sort().map(level => (
+            {levels.sort().map((level) => (
               <Box key={level} background="neutralLight">
                 <Heading level={level}>
                   Level {level} Heading (Line 1)
@@ -108,7 +108,7 @@ const docs: ComponentDocs = {
 
         return (
           <Stack space="medium">
-            {alignments.map(alignment => (
+            {alignments.map((alignment) => (
               <Heading level="4" align={alignment} key={alignment}>
                 {alignment}
               </Heading>
@@ -137,7 +137,7 @@ const docs: ComponentDocs = {
 
         return (
           <Stack space="medium">
-            {levels.sort().map(level => (
+            {levels.sort().map((level) => (
               <Box key={level} background="neutralLight">
                 <Heading level={level} _LEGACY_SPACE_>
                   Level {level} Heading (Line 1)
@@ -161,7 +161,7 @@ const docs: ComponentDocs = {
 
         return (
           <Fragment>
-            {backgrounds.sort().map(background => (
+            {backgrounds.sort().map((background) => (
               <Box key={background} background={background} paddingY="xsmall">
                 <Heading level="4">{background}</Heading>
               </Box>

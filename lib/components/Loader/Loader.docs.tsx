@@ -41,7 +41,7 @@ const docs: ComponentDocs = {
 
         return (
           <Fragment>
-            {backgrounds.sort().map(background => (
+            {backgrounds.sort().map((background) => (
               <Box key={background} background={background} padding="xsmall">
                 <Loader />
               </Box>

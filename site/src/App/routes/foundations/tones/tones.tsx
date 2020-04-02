@@ -165,7 +165,7 @@ const ToneDefinition = ({ tone }: { tone: Tone }) => {
           <TextStack space="large">
             <Text>{description}</Text>
 
-            {usageTypes.map(usageType =>
+            {usageTypes.map((usageType) =>
               usage[usageType].length > 0 ? (
                 <Columns
                   key={usageType}
@@ -209,7 +209,7 @@ function TonePage() {
       </Text>
 
       <Columns space={['small', 'gutter']}>
-        {tones.map(tone => (
+        {tones.map((tone) => (
           <Column key={tone}>
             <Stack space={['none', 'xsmall']}>
               <ThemedExample>
@@ -231,7 +231,7 @@ function TonePage() {
 
       <Divider />
 
-      {tones.map(tone => (
+      {tones.map((tone) => (
         <ToneDefinition key={tone} tone={tone} />
       ))}
     </TextStack>

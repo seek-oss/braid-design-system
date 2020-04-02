@@ -13,19 +13,19 @@ export const base = style({
 });
 
 export const mobile = styleMap(({ space, grid }) =>
-  mapToStyleProperty({ none: 0, ...space }, 'marginTop', rows =>
+  mapToStyleProperty({ none: 0, ...space }, 'marginTop', (rows) =>
     negativeMarginTop(grid, rows),
   ),
 );
 
 export const tablet = styleMap(({ space, grid, utils }) =>
-  mapToStyleProperty({ none: 0, ...space }, 'marginTop', rows =>
+  mapToStyleProperty({ none: 0, ...space }, 'marginTop', (rows) =>
     utils.responsiveStyle({ tablet: negativeMarginTop(grid, rows) }),
   ),
 );
 
 export const desktop = styleMap(({ space, grid, utils }) =>
-  mapToStyleProperty({ none: 0, ...space }, 'marginTop', rows =>
+  mapToStyleProperty({ none: 0, ...space }, 'marginTop', (rows) =>
     utils.responsiveStyle({ desktop: negativeMarginTop(grid, rows) }),
   ),
 );

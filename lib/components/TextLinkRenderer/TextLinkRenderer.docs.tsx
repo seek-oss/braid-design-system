@@ -25,7 +25,7 @@ const docs: ComponentDocs = {
           Even though it looks like a link, the last word of this sentence is
           actually a{' '}
           <TextLinkRenderer>
-            {textLinkProps => (
+            {(textLinkProps) => (
               <Box component="button" {...textLinkProps}>
                 button.
               </Box>

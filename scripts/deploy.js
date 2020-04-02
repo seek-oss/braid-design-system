@@ -6,14 +6,14 @@ const repoUrl = require('../package.json').repository.url;
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 const tokenRegex = GITHUB_TOKEN ? new RegExp(GITHUB_TOKEN, 'g') : null;
 
-const log = function(message) {
+const log = function (message) {
   // eslint-disable-next-line no-console
   console.log(
     tokenRegex ? message.replace(tokenRegex, '[GITHUB_TOKEN]') : message,
   );
 };
 
-const makeConfig = function() {
+const makeConfig = function () {
   return {
     repo: GITHUB_TOKEN
       ? repoUrl.replace('https://', `https://${GITHUB_TOKEN}@`)
@@ -22,7 +22,7 @@ const makeConfig = function() {
   };
 };
 
-ghpages.publish(basePath, makeConfig(), function(err) {
+ghpages.publish(basePath, makeConfig(), function (err) {
   if (err) {
     log('Deployment error');
     log(JSON.stringify(err));

@@ -4,13 +4,13 @@ export const field = style({
   outline: 'none',
 });
 
-export const placeholderColor = style(theme => ({
+export const placeholderColor = style((theme) => ({
   '::placeholder': {
     color: theme.color.foreground.secondary,
   },
 }));
 
-export const clearButtonSpace = style(theme => ({
+export const clearButtonSpace = style((theme) => ({
   paddingRight: theme.grid * theme.touchableSize,
 }));
 
@@ -18,7 +18,7 @@ export const clearButtonSpace = style(theme => ({
 // sits off the left of its container. Need to offset this so that
 // the white space does not look imbalanced.
 const textLeftOffset = 2;
-export const iconSpace = style(theme => ({
+export const iconSpace = style((theme) => ({
   paddingLeft: theme.grid * theme.touchableSize - textLeftOffset,
 }));
 

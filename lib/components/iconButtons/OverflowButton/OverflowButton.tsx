@@ -32,22 +32,20 @@ export const OverflowButton = forwardRef<
       'aria-expanded': ariaExpanded,
     },
     forwardedRef,
-  ) => {
-    return (
-      <IconButton
-        label={label}
-        onClick={onClick}
-        onKeyUp={onKeyUp}
-        onKeyDown={onKeyDown}
-        onMouseDown={onMouseDown}
-        keyboardAccessible={keyboardAccessible}
-        active={active}
-        aria-haspopup={ariaHasPopUp}
-        aria-expanded={ariaExpanded}
-        ref={forwardedRef}
-      >
-        {iconProps => <IconOverflow {...iconProps} />}
-      </IconButton>
-    );
-  },
+  ) => (
+    <IconButton
+      label={label}
+      onClick={onClick}
+      onKeyUp={onKeyUp}
+      onKeyDown={onKeyDown}
+      onMouseDown={onMouseDown}
+      keyboardAccessible={keyboardAccessible}
+      active={active}
+      aria-haspopup={ariaHasPopUp}
+      aria-expanded={ariaExpanded}
+      ref={forwardedRef}
+    >
+      {(iconProps) => <IconOverflow {...iconProps} />}
+    </IconButton>
+  ),
 );

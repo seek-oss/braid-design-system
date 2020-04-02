@@ -22,7 +22,7 @@ describe('TextLink', () => {
   });
 
   it('should render a custom link component if provided', () => {
-    const BraidLink: LinkComponent = props => (
+    const BraidLink: LinkComponent = (props) => (
       <a {...props} data-custom-link-component="true" />
     );
 
@@ -42,7 +42,7 @@ describe('TextLink', () => {
   });
 
   it("should inherit custom link components from the root provider if the nearest provider doesn't have one", () => {
-    const BraidLink: LinkComponent = props => (
+    const BraidLink: LinkComponent = (props) => (
       <a {...props} data-custom-link-component="true" />
     );
 

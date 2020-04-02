@@ -5,7 +5,7 @@ export const constants = {
   paddingY: 'xxsmall',
 } as const;
 
-export const borderRadius = style(theme => {
+export const borderRadius = style((theme) => {
   const textHeight =
     theme.typography.text[constants.textSize].mobile.rows * theme.grid;
   const paddingHeight = theme.space[constants.paddingY] * theme.grid * 2;

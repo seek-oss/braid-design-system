@@ -16,13 +16,12 @@ import guides from './routes/guides';
 import foundations from './routes/foundations';
 import components from './routes/components';
 
-const BraidLink: LinkComponent = ({ href, rel, ...restProps }) => {
-  return href[0] === '/' && !/\/playroom\/?($|#)/.test(href) ? (
+const BraidLink: LinkComponent = ({ href, rel, ...restProps }) =>
+  href[0] === '/' && !/\/playroom\/?($|#)/.test(href) ? (
     <ReactRouterLink to={href} rel={rel} {...restProps} />
   ) : (
     <a href={href} rel={rel || 'noreferrer noopener'} {...restProps} />
   );
-};
 
 export const App = () => (
   <StrictMode>

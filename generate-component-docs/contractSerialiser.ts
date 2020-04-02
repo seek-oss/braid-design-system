@@ -12,9 +12,7 @@ export const typeSerializer = {
     } else if (type.type === 'union') {
       return type.types
         .sort()
-        .map(subType => {
-          return `\n${indent(`| ${serializer(subType)}`)}`;
-        })
+        .map((subType) => `\n${indent(`| ${serializer(subType)}`)}`)
         .join('');
     } else if (type.type === 'interface') {
       return `{${sortBy(Object.values(type.props), ({ propName }) => propName)
@@ -27,7 +25,7 @@ export const typeSerializer = {
         .join('')}\n}`;
     }
     return `${type.alias}<${type.params
-      .map(param => `${serializer(param)}`)
+      .map((param) => `${serializer(param)}`)
       .join(',')}\n>`;
   },
 

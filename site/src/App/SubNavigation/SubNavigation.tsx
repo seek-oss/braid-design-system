@@ -90,7 +90,7 @@ export const SubNavigation = ({ onSelect }: SubNavigationProps) => {
         }))}
       />
 
-      {['Layout', 'Content', 'Interaction', 'Logic'].map(category => (
+      {['Layout', 'Content', 'Interaction', 'Logic'].map((category) => (
         <SubNavigationGroup
           key={category}
           title={category}
@@ -105,7 +105,7 @@ export const SubNavigation = ({ onSelect }: SubNavigationProps) => {
 
       <SubNavigationGroup
         title="All Components"
-        items={documentedComponents.map(componentName => ({
+        items={documentedComponents.map((componentName) => ({
           name: componentName,
           path: `/components/${componentName}`,
           external: false,
