@@ -282,7 +282,7 @@ export const MenuRenderer = ({
 
       {open ? (
         <Box
-          onClick={event => {
+          onClick={(event) => {
             event.stopPropagation();
             event.preventDefault();
             dispatch({ type: BACKDROP_CLICK });

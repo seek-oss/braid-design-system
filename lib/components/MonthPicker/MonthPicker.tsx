@@ -56,7 +56,7 @@ const months = [
   { value: '12', label: 'Dec' },
 ];
 const getMonths = () =>
-  months.map(month => (
+  months.map((month) => (
     <option value={month.value} key={month.value}>
       {month.label}
     </option>
@@ -66,7 +66,7 @@ const getYears = (min: number, max: number, ascending: boolean) => {
   const start = ascending ? min : max;
   const end = ascending ? max + 1 : min - 1;
 
-  return range(start, end).map(year => {
+  return range(start, end).map((year) => {
     const yearStr = String(year);
 
     return (
@@ -212,7 +212,7 @@ const MonthPicker = ({
       disabled={disabled}
       {...restProps}
     >
-      {fieldGroupProps => (
+      {(fieldGroupProps) => (
         <Columns space="medium">
           <Column>
             <Hidden screen={true} print={true}>

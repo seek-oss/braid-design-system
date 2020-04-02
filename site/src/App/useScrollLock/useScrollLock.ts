@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useStyles } from 'sku/treat';
+import { useStyles } from 'sku/react-treat';
 import * as styleRefs from './useScrollLock.treat';
 
 export function useScrollLock(lock: boolean) {

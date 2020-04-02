@@ -558,7 +558,7 @@ describe('Autosuggest', () => {
       changeHandler.mockClear();
 
       // Simulate suggestions coming back from an API
-      await new Promise(resolve => {
+      await new Promise((resolve) => {
         setTimeout(() => {
           setSuggestions([
             {
@@ -726,7 +726,7 @@ describe('Autosuggest', () => {
 
       // Wait a bit because we ignore blurs that happens too quickly
       // after pressing arrow down (to fix a bug in Chrome + VoiceOver)
-      await new Promise(resolve => setTimeout(resolve, 300));
+      await new Promise((resolve) => setTimeout(resolve, 300));
 
       fireEvent.blur(input);
       expect(getInputValue()).toBe('Carrots');

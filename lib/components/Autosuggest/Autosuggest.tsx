@@ -96,7 +96,7 @@ function SuggestionItem({
     <Box
       component="li"
       cursor="pointer"
-      onMouseDown={event => {
+      onMouseDown={(event) => {
         // Without this `onClick` will not fire due to the input blur event
         event.preventDefault();
       }}
@@ -187,7 +187,7 @@ function normaliseSuggestions<Value>(
   for (const item of suggestions) {
     if ('suggestions' in item) {
       groupHeadingIndexes.set(index, item.label);
-      item.suggestions.forEach(suggestion => {
+      item.suggestions.forEach((suggestion) => {
         groupHeadingForSuggestion.set(suggestion, item.label);
       });
       index += normalisedSuggestions.push(...item.suggestions);

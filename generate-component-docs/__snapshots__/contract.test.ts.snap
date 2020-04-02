@@ -483,6 +483,7 @@ Object {
         | "script"
         | "section"
         | "select"
+        | "slot"
         | "small"
         | "source"
         | "span"
@@ -521,7 +522,12 @@ Object {
         | ComponentClass<any, any>
         | FunctionComponent<any>
     content?: string
-    contentEditable?: boolean
+    contentEditable?: 
+        | "false"
+        | "inherit"
+        | "true"
+        | false
+        | true
     contextMenu?: string
     controls?: boolean
     coords?: string
@@ -548,7 +554,11 @@ Object {
         | "none"
     >
     download?: any
-    draggable?: boolean
+    draggable?: 
+        | "false"
+        | "true"
+        | false
+        | true
     encType?: string
     flexDirection?: ResponsiveProp<
         | "column"
@@ -840,8 +850,8 @@ Object {
     onRateChangeCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void
     onReset?: (event: FormEvent<HTMLElement>) => void
     onResetCapture?: (event: FormEvent<HTMLElement>) => void
-    onScroll?: (event: UIEvent<HTMLElement>) => void
-    onScrollCapture?: (event: UIEvent<HTMLElement>) => void
+    onScroll?: (event: UIEvent<HTMLElement, UIEvent>) => void
+    onScrollCapture?: (event: UIEvent<HTMLElement, UIEvent>) => void
     onSeeked?: (event: SyntheticEvent<HTMLElement, Event>) => void
     onSeekedCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void
     onSeeking?: (event: SyntheticEvent<HTMLElement, Event>) => void
@@ -994,7 +1004,11 @@ Object {
     sizes?: string
     slot?: string
     span?: number
-    spellCheck?: boolean
+    spellCheck?: 
+        | "false"
+        | "true"
+        | false
+        | true
     src?: string
     srcDoc?: string
     srcLang?: string
@@ -1020,6 +1034,9 @@ Object {
     transition?: 
         | "fast"
         | "touchable"
+    translate?: 
+        | "no"
+        | "yes"
     type?: string
     typeof?: string
     unselectable?: 
@@ -1237,6 +1254,7 @@ Object {
         | "script"
         | "section"
         | "select"
+        | "slot"
         | "small"
         | "source"
         | "span"
@@ -1949,6 +1967,7 @@ Object {
         | "script"
         | "section"
         | "select"
+        | "slot"
         | "small"
         | "source"
         | "span"
@@ -4224,7 +4243,12 @@ Object {
     children?: ReactNode
     className?: string
     color?: string
-    contentEditable?: boolean
+    contentEditable?: 
+        | "false"
+        | "inherit"
+        | "true"
+        | false
+        | true
     contextMenu?: string
     dangerouslySetInnerHTML?: { __html: string; }
     datatype?: string
@@ -4235,7 +4259,11 @@ Object {
         | string[]
     dir?: string
     download?: any
-    draggable?: boolean
+    draggable?: 
+        | "false"
+        | "true"
+        | false
+        | true
     hidden?: boolean
     href: string
     hrefLang?: string
@@ -4386,8 +4414,8 @@ Object {
     onRateChangeCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
     onReset?: (event: FormEvent<HTMLAnchorElement>) => void
     onResetCapture?: (event: FormEvent<HTMLAnchorElement>) => void
-    onScroll?: (event: UIEvent<HTMLAnchorElement>) => void
-    onScrollCapture?: (event: UIEvent<HTMLAnchorElement>) => void
+    onScroll?: (event: UIEvent<HTMLAnchorElement, UIEvent>) => void
+    onScrollCapture?: (event: UIEvent<HTMLAnchorElement, UIEvent>) => void
     onSeeked?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
     onSeekedCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
     onSeeking?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
@@ -4430,13 +4458,20 @@ Object {
     role?: string
     security?: string
     slot?: string
-    spellCheck?: boolean
+    spellCheck?: 
+        | "false"
+        | "true"
+        | false
+        | true
     style?: CSSProperties
     suppressContentEditableWarning?: boolean
     suppressHydrationWarning?: boolean
     tabIndex?: number
     target?: string
     title?: string
+    translate?: 
+        | "no"
+        | "yes"
     type?: string
     typeof?: string
     unselectable?: 
@@ -4821,6 +4856,7 @@ Object {
         | "script"
         | "section"
         | "select"
+        | "slot"
         | "small"
         | "source"
         | "span"
@@ -5095,7 +5131,12 @@ Object {
     autoSave?: string
     children?: ReactNode
     color?: string
-    contentEditable?: boolean
+    contentEditable?: 
+        | "false"
+        | "inherit"
+        | "true"
+        | false
+        | true
     contextMenu?: string
     dangerouslySetInnerHTML?: { __html: string; }
     datatype?: string
@@ -5106,7 +5147,11 @@ Object {
         | string[]
     dir?: string
     download?: any
-    draggable?: boolean
+    draggable?: 
+        | "false"
+        | "true"
+        | false
+        | true
     hidden?: boolean
     hitArea?: 
         | "large"
@@ -5260,8 +5305,8 @@ Object {
     onRateChangeCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
     onReset?: (event: FormEvent<HTMLAnchorElement>) => void
     onResetCapture?: (event: FormEvent<HTMLAnchorElement>) => void
-    onScroll?: (event: UIEvent<HTMLAnchorElement>) => void
-    onScrollCapture?: (event: UIEvent<HTMLAnchorElement>) => void
+    onScroll?: (event: UIEvent<HTMLAnchorElement, UIEvent>) => void
+    onScrollCapture?: (event: UIEvent<HTMLAnchorElement, UIEvent>) => void
     onSeeked?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
     onSeekedCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
     onSeeking?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
@@ -5305,12 +5350,19 @@ Object {
     security?: string
     showVisited?: boolean
     slot?: string
-    spellCheck?: boolean
+    spellCheck?: 
+        | "false"
+        | "true"
+        | false
+        | true
     suppressContentEditableWarning?: boolean
     suppressHydrationWarning?: boolean
     tabIndex?: number
     target?: string
     title?: string
+    translate?: 
+        | "no"
+        | "yes"
     type?: string
     typeof?: string
     unselectable?: 

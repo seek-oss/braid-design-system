@@ -36,41 +36,41 @@ const spaceMapToCss = (
 };
 
 export const margin = {
-  top: styleMap(theme => spaceMapToCss(theme, 'marginTop', 'mobile')),
-  bottom: styleMap(theme => spaceMapToCss(theme, 'marginBottom', 'mobile')),
-  left: styleMap(theme => spaceMapToCss(theme, 'marginLeft', 'mobile')),
-  right: styleMap(theme => spaceMapToCss(theme, 'marginRight', 'mobile')),
+  top: styleMap((theme) => spaceMapToCss(theme, 'marginTop', 'mobile')),
+  bottom: styleMap((theme) => spaceMapToCss(theme, 'marginBottom', 'mobile')),
+  left: styleMap((theme) => spaceMapToCss(theme, 'marginLeft', 'mobile')),
+  right: styleMap((theme) => spaceMapToCss(theme, 'marginRight', 'mobile')),
 };
 export const marginTablet = {
-  top: styleMap(theme => spaceMapToCss(theme, 'marginTop', 'tablet')),
-  bottom: styleMap(theme => spaceMapToCss(theme, 'marginBottom', 'tablet')),
-  left: styleMap(theme => spaceMapToCss(theme, 'marginLeft', 'tablet')),
-  right: styleMap(theme => spaceMapToCss(theme, 'marginRight', 'tablet')),
+  top: styleMap((theme) => spaceMapToCss(theme, 'marginTop', 'tablet')),
+  bottom: styleMap((theme) => spaceMapToCss(theme, 'marginBottom', 'tablet')),
+  left: styleMap((theme) => spaceMapToCss(theme, 'marginLeft', 'tablet')),
+  right: styleMap((theme) => spaceMapToCss(theme, 'marginRight', 'tablet')),
 };
 export const marginDesktop = {
-  top: styleMap(theme => spaceMapToCss(theme, 'marginTop', 'desktop')),
-  bottom: styleMap(theme => spaceMapToCss(theme, 'marginBottom', 'desktop')),
-  left: styleMap(theme => spaceMapToCss(theme, 'marginLeft', 'desktop')),
-  right: styleMap(theme => spaceMapToCss(theme, 'marginRight', 'desktop')),
+  top: styleMap((theme) => spaceMapToCss(theme, 'marginTop', 'desktop')),
+  bottom: styleMap((theme) => spaceMapToCss(theme, 'marginBottom', 'desktop')),
+  left: styleMap((theme) => spaceMapToCss(theme, 'marginLeft', 'desktop')),
+  right: styleMap((theme) => spaceMapToCss(theme, 'marginRight', 'desktop')),
 };
 
 export const padding = {
-  top: styleMap(theme => spaceMapToCss(theme, 'paddingTop', 'mobile')),
-  bottom: styleMap(theme => spaceMapToCss(theme, 'paddingBottom', 'mobile')),
-  left: styleMap(theme => spaceMapToCss(theme, 'paddingLeft', 'mobile')),
-  right: styleMap(theme => spaceMapToCss(theme, 'paddingRight', 'mobile')),
+  top: styleMap((theme) => spaceMapToCss(theme, 'paddingTop', 'mobile')),
+  bottom: styleMap((theme) => spaceMapToCss(theme, 'paddingBottom', 'mobile')),
+  left: styleMap((theme) => spaceMapToCss(theme, 'paddingLeft', 'mobile')),
+  right: styleMap((theme) => spaceMapToCss(theme, 'paddingRight', 'mobile')),
 };
 export const paddingTablet = {
-  top: styleMap(theme => spaceMapToCss(theme, 'paddingTop', 'tablet')),
-  bottom: styleMap(theme => spaceMapToCss(theme, 'paddingBottom', 'tablet')),
-  left: styleMap(theme => spaceMapToCss(theme, 'paddingLeft', 'tablet')),
-  right: styleMap(theme => spaceMapToCss(theme, 'paddingRight', 'tablet')),
+  top: styleMap((theme) => spaceMapToCss(theme, 'paddingTop', 'tablet')),
+  bottom: styleMap((theme) => spaceMapToCss(theme, 'paddingBottom', 'tablet')),
+  left: styleMap((theme) => spaceMapToCss(theme, 'paddingLeft', 'tablet')),
+  right: styleMap((theme) => spaceMapToCss(theme, 'paddingRight', 'tablet')),
 };
 export const paddingDesktop = {
-  top: styleMap(theme => spaceMapToCss(theme, 'paddingTop', 'desktop')),
-  bottom: styleMap(theme => spaceMapToCss(theme, 'paddingBottom', 'desktop')),
-  left: styleMap(theme => spaceMapToCss(theme, 'paddingLeft', 'desktop')),
-  right: styleMap(theme => spaceMapToCss(theme, 'paddingRight', 'desktop')),
+  top: styleMap((theme) => spaceMapToCss(theme, 'paddingTop', 'desktop')),
+  bottom: styleMap((theme) => spaceMapToCss(theme, 'paddingBottom', 'desktop')),
+  left: styleMap((theme) => spaceMapToCss(theme, 'paddingLeft', 'desktop')),
+  right: styleMap((theme) => spaceMapToCss(theme, 'paddingRight', 'desktop')),
 };
 
 export const transform = {
@@ -103,7 +103,7 @@ const widthRules = {
 export const width = {
   ...styleMap(mapToStyleProperty(widthRules, 'width'), 'width'),
   ...styleMap(
-    theme => ({
+    (theme) => ({
       touchable: { width: theme.grid * theme.touchableSize },
     }),
     'width',
@@ -116,7 +116,7 @@ const heightRules = {
 export const height = {
   ...styleMap(mapToStyleProperty(heightRules, 'height'), 'height'),
   ...styleMap(
-    theme => ({
+    (theme) => ({
       touchable: { height: theme.grid * theme.touchableSize },
     }),
     'height',

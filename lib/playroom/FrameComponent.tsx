@@ -11,7 +11,7 @@ export default ({ theme, children }: Props) => (
   <Fragment>
     <div
       dangerouslySetInnerHTML={{
-        __html: theme.webFonts.map(font => font.linkTag).join(''),
+        __html: theme.webFonts.map((font) => font.linkTag).join(''),
       }}
     />
     <BraidProvider theme={theme}>

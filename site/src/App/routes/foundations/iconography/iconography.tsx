@@ -19,7 +19,7 @@ import * as styleRefs from './iconography.treat';
 
 type IconName = keyof typeof icons;
 
-const iconNames = Object.keys(icons).map(icon => ({
+const iconNames = Object.keys(icons).map((icon) => ({
   name: icon as IconName,
   displayName: icon.replace(/^Icon/, ''),
 }));
@@ -142,7 +142,7 @@ const Iconography = () => {
         </Stack>
 
         <Inline space={['none', 'small']}>
-          {iconList.map(icon => (
+          {iconList.map((icon) => (
             <IconTile
               key={icon.name}
               icon={icon}

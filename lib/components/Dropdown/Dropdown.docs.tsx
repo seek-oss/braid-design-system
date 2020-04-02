@@ -50,21 +50,19 @@ const docs: ComponentDocs = {
     {
       label: 'Dropdown with icon',
       Container,
-      Example: ({ id, handler }) => {
-        return (
-          <Dropdown
-            label="Location"
-            id={id}
-            icon={<IconLocation />}
-            placeholder="Please select a location"
-            value=""
-            onChange={handler}
-          >
-            <option value="3004">Melbourne</option>
-            <option value="3002">Sydney</option>
-          </Dropdown>
-        );
-      },
+      Example: ({ id, handler }) => (
+        <Dropdown
+          label="Location"
+          id={id}
+          icon={<IconLocation />}
+          placeholder="Please select a location"
+          value=""
+          onChange={handler}
+        >
+          <option value="3004">Melbourne</option>
+          <option value="3002">Sydney</option>
+        </Dropdown>
+      ),
     },
     {
       label: 'Dropdown without placeholder',

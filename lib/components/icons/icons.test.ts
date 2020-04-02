@@ -7,7 +7,7 @@ const svgComponentPaths = globby.sync('Icon*/*Svg.tsx', {
   absolute: true,
 });
 
-svgComponentPaths.forEach(svgComponentPath => {
+svgComponentPaths.forEach((svgComponentPath) => {
   const componentName = path.basename(svgComponentPath, '.tsx');
 
   describe(componentName, () => {

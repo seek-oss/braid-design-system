@@ -36,7 +36,7 @@ describe('Stack', () => {
     expect(list.nodeName).toBe('UL');
 
     expect(
-      Array.from(list.childNodes).map(childNode => childNode.nodeName),
+      Array.from(list.childNodes).map((childNode) => childNode.nodeName),
     ).toEqual(['LI', 'LI', 'LI']);
   });
 
@@ -55,7 +55,7 @@ describe('Stack', () => {
     expect(list.nodeName).toBe('OL');
 
     expect(
-      Array.from(list.childNodes).map(childNode => childNode.nodeName),
+      Array.from(list.childNodes).map((childNode) => childNode.nodeName),
     ).toEqual(['LI', 'LI', 'LI']);
   });
 });

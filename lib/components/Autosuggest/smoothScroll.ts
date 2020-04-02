@@ -6,9 +6,8 @@ const addDelay = (delay: number, func: () => void) => {
   }
 };
 
-const easeModifier = (t: number) => {
-  return t > 0.5 ? 4 * Math.pow(t - 1, 3) + 1 : 4 * Math.pow(t, 3);
-};
+const easeModifier = (t: number) =>
+  t > 0.5 ? 4 * Math.pow(t - 1, 3) + 1 : 4 * Math.pow(t, 3);
 
 const getExpectedTime = (
   distance: number,
@@ -77,7 +76,7 @@ export const smoothScroll = (
   to: HTMLElement | string,
   { offset = 0, delay = 0, ...scrollOptions }: SmoothScrollOptions = {},
 ) =>
-  new Promise(resolve => {
+  new Promise((resolve) => {
     addDelay(delay, () => {
       let element = to;
 

@@ -53,7 +53,7 @@ const docs: ComponentDocs = {
 
         return (
           <Fragment>
-            {backgrounds.sort().map(background => (
+            {backgrounds.sort().map((background) => (
               <Box key={background} background={background} padding="medium">
                 <Button weight="weak">{background}</Button>
               </Box>

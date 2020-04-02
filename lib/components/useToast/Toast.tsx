@@ -34,7 +34,7 @@ const Action = ({ label, onClick, removeToast }: ActionProps) => {
   return (
     <Text baseline={false}>
       <TextLinkRenderer hitArea="large">
-        {textLinkProps => (
+        {(textLinkProps) => (
           <Box
             component="button"
             paddingRight="xsmall"

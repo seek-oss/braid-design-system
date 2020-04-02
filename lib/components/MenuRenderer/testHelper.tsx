@@ -27,7 +27,7 @@ const ARROW_UP = 38;
 const ARROW_DOWN = 40;
 
 function isVisible(menu: HTMLElement) {
-  return !Array.from(menu.classList).some(cls =>
+  return !Array.from(menu.classList).some((cls) =>
     cls.startsWith('menuIsClosed'),
   );
 }

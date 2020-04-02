@@ -44,7 +44,7 @@ export const ComponentDoc = ({
   const migrationGuideUrl = `${sourceUrlPrefix}/${componentFolder}/${componentName}.migration.md`;
 
   const filteredExamples = examples.filter(
-    example => example.docsSite !== false,
+    (example) => example.docsSite !== false,
   );
 
   return (

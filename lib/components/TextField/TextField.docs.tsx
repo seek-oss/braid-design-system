@@ -47,7 +47,7 @@ const docs: ComponentDocs = {
           <TextField
             label="Job Title"
             id={id}
-            onChange={e => setValue(e.currentTarget.value)}
+            onChange={(e) => setValue(e.currentTarget.value)}
             onClear={() => setValue('')}
             value={value}
           />
@@ -66,7 +66,7 @@ const docs: ComponentDocs = {
             id={id}
             icon={<IconSearch />}
             placeholder="Enter a job title"
-            onChange={e => setValue(e.currentTarget.value)}
+            onChange={(e) => setValue(e.currentTarget.value)}
             value={value}
           />
         );

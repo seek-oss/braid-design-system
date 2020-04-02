@@ -21,7 +21,7 @@ import editorTheme from './editorTheme';
 import { ThemedExample } from '../ThemeSetting';
 
 const formatSnippet = memoize(
-  snippet =>
+  (snippet) =>
     prettier
       .format(snippet, {
         parser: 'typescript',

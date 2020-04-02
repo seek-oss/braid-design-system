@@ -24,9 +24,8 @@ interface Props {
 
 const isValidComponentName = (
   componentName: string,
-): componentName is ComponentName => {
-  return componentDocs.hasOwnProperty(componentName);
-};
+): componentName is ComponentName =>
+  componentDocs.hasOwnProperty(componentName);
 
 const PropType = ({ type }: { type: NormalisedPropType }) => {
   if (typeof type === 'string') {
@@ -103,16 +102,14 @@ const PropList = ({
       <Heading level="3" component="h4">
         {label}
       </Heading>
-      {props.map(({ propName, type }) => {
-        return (
-          <Stack space="xsmall" key={propName}>
-            <Text weight="strong">{propName}</Text>
-            <Text>
-              <PropType type={type} />
-            </Text>
-          </Stack>
-        );
-      })}
+      {props.map(({ propName, type }) => (
+        <Stack space="xsmall" key={propName}>
+          <Text weight="strong">{propName}</Text>
+          <Text>
+            <PropType type={type} />
+          </Text>
+        </Stack>
+      ))}
     </Stack>
   );
 };
@@ -131,7 +128,7 @@ export const ComponentProps = ({ componentName }: Props) => {
   // @ts-ignore
   const [requiredProps, optionalProps] = partition(
     doc.props.props,
-    prop => prop.required,
+    (prop) => prop.required,
   );
 
   return Object.keys(doc.props).length === 0 ? null : (
