@@ -9,9 +9,10 @@
   If you'd like to customise the technical implementation of all `Link` and `TextLink` components from Braid, you can now pass a custom component to the `linkComponent` prop on `BraidProvider`. For example, if you wanted to ensure that all relative links are [React Router](https://reacttraining.com/react-router/) links:
 
   ```tsx
-  import React, { ComponentProps } from 'react';
+  import React from 'react';
   import { Link as ReactRouterLink } from 'react-router-dom';
   import { BraidProvider, LinkComponent } from 'braid-design-system';
+  import wireframe from 'braid-design-system/themes/wireframe';
 
   // First create the custom link implementation:
   const BraidLink: LinkComponent = ({ href, ...restProps }) =>
@@ -23,7 +24,7 @@
 
   // Then pass it to BraidProvider:
   export const App = () => (
-    <BraidProvider theme={jobStreetTheme} linkComponent={BraidLink}>
+    <BraidProvider theme={wireframe} linkComponent={BraidLink}>
       ...
     </BraidProvider>
   );
