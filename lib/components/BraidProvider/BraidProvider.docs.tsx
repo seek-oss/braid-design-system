@@ -25,7 +25,7 @@ const docs: ComponentDocs = {
         import wireframe from 'braid-design-system/themes/wireframe';
 
         // First create the custom link implementation:
-        const BraidLink: LinkComponent = ({ href, ...restProps }) =>
+        const CustomLink: LinkComponent = ({ href, ...restProps }) =>
           href[0] === '/' ? (
             <ReactRouterLink to={href} {...restProps} />
           ) : (
@@ -34,7 +34,7 @@ const docs: ComponentDocs = {
 
         // Then pass it to BraidProvider:
         export const App = () => (
-          <BraidProvider theme={wireframe} linkComponent={BraidLink}>
+          <BraidProvider theme={wireframe} linkComponent={CustomLink}>
             ...
           </BraidProvider>
         );

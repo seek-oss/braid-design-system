@@ -2,17 +2,17 @@ import '@testing-library/jest-dom/extend-expect';
 import React from 'react';
 import { render, cleanup } from '@testing-library/react';
 import { htmlToText } from '../../utils/htmlToText';
-import { BraidTestProvider, LinkComponent, Link } from '..';
+import { BraidTestProvider, LinkComponent, ButtonLink } from '..';
 
 afterEach(cleanup);
 
-describe('Link', () => {
+describe('ButtonLink', () => {
   it('should render a native link by default', () => {
     const { getByRole } = render(
       <BraidTestProvider>
-        <Link href="/foo/bar" data-attribute="true">
+        <ButtonLink href="/foo/bar" data-attribute="true">
           Link content
-        </Link>
+        </ButtonLink>
       </BraidTestProvider>,
     );
 
@@ -30,9 +30,9 @@ describe('Link', () => {
 
     const { getByRole } = render(
       <BraidTestProvider linkComponent={CustomLink}>
-        <Link href="/foo/bar" data-attribute="true">
+        <ButtonLink href="/foo/bar" data-attribute="true">
           Link content
-        </Link>
+        </ButtonLink>
       </BraidTestProvider>,
     );
 
@@ -53,9 +53,9 @@ describe('Link', () => {
       <BraidTestProvider linkComponent={CustomLink}>
         {/* Note: No linkComponent prop provided here: */}
         <BraidTestProvider>
-          <Link href="/foo/bar" data-attribute="true">
+          <ButtonLink href="/foo/bar" data-attribute="true">
             Link content
-          </Link>
+          </ButtonLink>
         </BraidTestProvider>
       </BraidTestProvider>,
     );
@@ -66,5 +66,25 @@ describe('Link', () => {
     expect(htmlToText(link.innerHTML)).toEqual('Link content');
     expect(link.getAttribute('data-attribute')).toEqual('true');
     expect(link.getAttribute('data-custom-link-component')).toEqual('true');
+  });
+
+  it('should not support custom styles', () => {
+    const { getByRole } = render(
+      <BraidTestProvider>
+        <ButtonLink
+          href="/foo/bar"
+          data-attribute="true"
+          // @ts-ignore
+          className="CUSTOM_CLASS_NAME"
+          style={{ color: 'CUSTOM_COLOR' }}
+        >
+          Link content
+        </ButtonLink>
+      </BraidTestProvider>,
+    );
+
+    const link = getByRole('link');
+    expect(link.classList.contains('CUSTOM_CLASS_NAME')).toEqual(false);
+    expect(link.style.color).not.toEqual('CUSTOM_COLOR');
   });
 });
