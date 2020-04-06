@@ -53,6 +53,16 @@ const docs: ComponentDocs = {
         </ButtonLink>
       ),
     },
+    {
+      label: 'Loading Button Link',
+      Container,
+      Example: () => (
+        <ButtonLink href="#" loading>
+          Loading
+        </ButtonLink>
+      ),
+      storybook: false,
+    },
   ],
 };
 
