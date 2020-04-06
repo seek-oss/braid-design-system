@@ -65,7 +65,7 @@ const docs: ComponentDocs = {
       Example: () => (
         <Text>
           The last word of a sentence is a{' '}
-          <TextLink href="#" showVisited>
+          <TextLink href="" showVisited>
             visited link.
           </TextLink>
         </Text>

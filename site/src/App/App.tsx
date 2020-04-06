@@ -25,7 +25,7 @@ const CustomLink: LinkComponent = ({ href, rel, onClick, ...restProps }) =>
       rel={rel || 'noreferrer noopener'}
       {...restProps}
       onClick={(event) => {
-        if (href === '#') {
+        if (href === '' || href === '#') {
           event.preventDefault();
         }
 
