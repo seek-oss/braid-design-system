@@ -14,6 +14,7 @@ import { Navigation } from './Navigation/Navigation';
 import home from './routes/home';
 import guides from './routes/guides';
 import foundations from './routes/foundations';
+import tutorials from './routes/tutorials';
 import components from './routes/components';
 
 const BraidLink: LinkComponent = ({ href, rel, ...restProps }) =>
@@ -31,7 +32,13 @@ export const App = () => (
           <Navigation>
             <Switch>
               {map(
-                { ...home, ...guides, ...foundations, ...components },
+                {
+                  ...home,
+                  ...guides,
+                  ...foundations,
+                  ...tutorials,
+                  ...components,
+                },
                 (routeProps, path) => (
                   <Route key={path} {...routeProps} path={path} />
                 ),
