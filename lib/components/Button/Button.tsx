@@ -22,10 +22,10 @@ export interface ButtonProps {
 export const Button = ({
   onClick,
   children,
-  weight = 'regular',
+  weight,
+  loading,
   type = 'button',
   id,
-  loading = false,
   'aria-describedby': ariaDescribedBy,
   data,
 }: ButtonProps) => (

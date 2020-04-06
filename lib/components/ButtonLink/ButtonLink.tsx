@@ -16,8 +16,8 @@ export interface ButtonLinkProps
 
 export const ButtonLink = ({
   children,
-  weight = 'regular',
-  loading = false,
+  weight,
+  loading,
   ...restProps
 }: ButtonLinkProps) => {
   const LinkComponent = useLinkComponent();
