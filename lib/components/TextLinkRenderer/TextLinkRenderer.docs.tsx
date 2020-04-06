@@ -8,8 +8,9 @@ const docs: ComponentDocs = {
   description: (
     <Stack space="large">
       <Text>
-        Allows you to render something that looks like a standard text link but
-        is semantically something different (e.g. a button).
+        Allows you to render something that looks like a{' '}
+        <TextLink href="/components/TextLink">TextLink</TextLink> but is
+        semantically something different, e.g. a button.
       </Text>
       <Text>
         If what you&rsquo;re rendering is semantically a link, consider using a{' '}
