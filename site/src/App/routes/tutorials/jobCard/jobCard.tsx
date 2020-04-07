@@ -1,4 +1,4 @@
-import React, { ReactNode, ReactChild } from 'react';
+import React, { ReactChild } from 'react';
 import { Page } from '../../../../types';
 import {
   Heading,
@@ -8,7 +8,6 @@ import {
   Stack,
   Columns,
   Column,
-  Box,
   Badge,
   IconTag,
   Rating,
@@ -17,18 +16,15 @@ import {
   IconMoney,
   IconBookmark,
   TextLink,
+  Bullet,
+  BulletList,
 } from '../../../../../../lib/components';
 import { TextStack } from '../../../TextStack/TextStack';
-import { ThemedExample } from '../../../ThemeSetting';
 import { Placeholder } from '../../../../../../lib/playroom/components';
 import Code from '../../../Code/Code';
 import { ReactNodeNoStrings } from '../../../../../../lib/components/private/ReactNodeNoStrings';
-
-const Preview = ({ children }: { children: ReactNode }) => (
-  <Box padding="medium" background="brand" borderRadius="standard">
-    <ThemedExample>{children}</ThemedExample>
-  </Box>
-);
+import { Preview } from '../../../Preview/Preview';
+import { PlayIcon } from '../../../Code/PlayIcon';
 
 interface StepProps {
   heading?: string;
@@ -39,7 +35,7 @@ const Step = ({ heading, detail, children }: StepProps) => (
   <Stack space="medium">
     {heading ? <Heading level="3">{heading}</Heading> : null}
     {detail}
-    <Code>{children}</Code>
+    <Code collapse>{children}</Code>
   </Stack>
 );
 
@@ -51,7 +47,14 @@ const page: Page = {
 
       <Text size="large">
         In this tutorial will build out a basic Job Card, taking the concepts
-        and ideas discussed in the guides & foundation documentation further.
+        and ideas discussed in the guides & foundation documentation and putting
+        them into practice.
+      </Text>
+
+      <Text size="large">
+        At any stage you can click the &ldquo;
+        <PlayIcon /> Open in Playroom&rdquo; button under the examples to view
+        the design across themes and viewports.
       </Text>
 
       <Preview>
@@ -101,7 +104,7 @@ const page: Page = {
           heading="1. Create the container"
           detail={
             <Text>
-              To get started, we will first add a `Card`, that will be the
+              To get started, we will first add a `Card` that will be the
               container for our job details.
             </Text>
           }
@@ -158,7 +161,7 @@ const page: Page = {
         </Step>
 
         <Step
-          heading="3. Laying out the content"
+          heading="4. Laying out the content"
           detail={
             <Text>
               Next step is to describe how &ldquo;tight&rdquo; or
@@ -186,13 +189,14 @@ const page: Page = {
         </Step>
 
         <Step
-          heading="4. Grouping content"
+          heading="5. Grouping content"
           detail={
             <Text>
-              Grouping the content in sections can help provide hierarchy to the
+              Grouping the content in sections can help provide structure to the
               information, and in turn, make it easier to digest. Let&rsquo;s
-              now tighten the information up to form a four descrete
-              sections—the header, meta, body and footer.
+              divide the information into four descrete sections—the header,
+              meta data, body and footer. For this we can use another{' '}
+              <TextLink href="/components/Stack">Stack</TextLink>.
             </Text>
           }
         >
@@ -219,15 +223,15 @@ const page: Page = {
         </Step>
 
         <Step
-          heading="5. Information hierarchy"
+          heading="6. Providing focus with tone"
           detail={
             <Text>
-              Not all the information within the card has the same priority. To
+              Not all the information presented has the same priority. To
               improve readability we can adjust the{' '}
               <TextLink href="/foundations/tones">tone</TextLink> and/or the
               size of some information. In this case, pushing some details back
               to &ldquo;secondary&rdquo; and/or reducing their
-              &ldquo;size&rdquo;.
+              &ldquo;size&rdquo; can help focus the user&rsquo;s attention.
             </Text>
           }
         >
@@ -262,12 +266,13 @@ const page: Page = {
         </Step>
 
         <Step
-          heading="6. Use of icons"
+          heading="7. Use of icons"
           detail={
             <Text>
               <TextLink href="/foundations/iconography">Icons</TextLink> can be
-              used to serve a visual cues to complement data and introduce some
-              more visual interest.
+              used to serve as visual cues to complement data and introduce some
+              more visual interest. Let&rsquo;s add icons next to each of the
+              pieces of meta data.
             </Text>
           }
         >
@@ -302,11 +307,11 @@ const page: Page = {
         </Step>
 
         <Step
-          heading="7. Adding additional content"
+          heading="8. Adding additional content"
           detail={
             <Text>
-              Adding or changing the information in a product is part of the
-              every day, let&rsquo;s look at adding a visual cue to indicate
+              Adding or changing the information presented in a UI is a very
+              common task. Let&rsquo;s look at adding a visual cue to indicate
               that this job is new. To do this, we will add a{' '}
               <TextLink href="/components/Badge">Badge</TextLink> in the header
               section of the card.
@@ -348,7 +353,7 @@ const page: Page = {
           detail={
             <Stack space="large">
               <Text>
-                Now let&rsquo;s add a{' '}
+                Let&rsquo;s also add a{' '}
                 <TextLink href="/components/Rating">Rating</TextLink> alongside
                 the company name. Ideally we want this to sit on the same line,
                 but if it does not fit due to the length of the name or the size
@@ -397,12 +402,12 @@ const page: Page = {
         </Step>
 
         <Step
-          heading="8. Changing the layout"
+          heading="9. Changing the layout"
           detail={
             <Text>
-              It is common to add new features that necessitate changing the
-              layout. Let&rsquo;s now add a save action to the top right corner
-              of the card. First add a 2 column layout to the top of the card.
+              Sometimes adding new features can necessitate changing the layout.
+              Let&rsquo;s add a save action to the top right corner of the card.
+              First add a 2 column layout to the top of the card.
             </Text>
           }
         >
@@ -551,10 +556,10 @@ const page: Page = {
         <Step
           detail={
             <Text>
-              By default, `Columns` are of equal width, in this design however,
+              By default, `Columns` are of equal width. In this design however,
               the second column should only we as wide as the save action
-              itself. This can be controlled by setting the `Column`
-              &ldquo;width&rdquo; to &ldquo;content&rdquo;.
+              itself. This can be controlled by setting the `Column` to have a
+              &ldquo;width&rdquo; of &ldquo;content&rdquo;.
             </Text>
           }
         >
@@ -600,7 +605,7 @@ const page: Page = {
         </Step>
 
         <Step
-          heading="9. Polish!"
+          heading="10. Polish!"
           detail={
             <Stack space="large">
               <Text>
@@ -656,6 +661,32 @@ const page: Page = {
           </Card>
         </Step>
       </Stack>
+
+      <Divider />
+
+      <TextStack>
+        <Heading level="3">Next steps</Heading>
+
+        <Stack space="large">
+          <Text>
+            Now that you are familiar with the code we have just written, this
+            is a good chance to head over to Playroom and continue refining this
+            design.
+          </Text>
+          <Text>You may want to consider:</Text>
+          <BulletList>
+            <Bullet>
+              Using <TextLink href="/components/Hidden">Hidden</TextLink> to
+              reduce the amount of data shown on mobile,
+            </Bullet>
+            <Bullet>
+              Specifying different spacing responsively using{' '}
+              <TextLink href="/foundations/layout#Stack">Stack</TextLink>,
+            </Bullet>
+            <Bullet>Add a company logo.</Bullet>
+          </BulletList>
+        </Stack>
+      </TextStack>
     </TextStack>
   ),
 };

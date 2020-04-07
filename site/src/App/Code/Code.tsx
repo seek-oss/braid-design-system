@@ -1,4 +1,4 @@
-import React, { Fragment, ReactChild } from 'react';
+import React, { ReactChild, useState } from 'react';
 import { useStyles } from 'react-treat';
 import copy from 'copy-to-clipboard';
 import memoize from 'lodash/memoize';
@@ -8,9 +8,19 @@ import typescriptParser from 'prettier/parser-typescript';
 import { createUrl } from 'sku/playroom/utils';
 import classnames from 'classnames';
 import { useConfig } from '../ConfigContext';
-import { Box, Stack, Text } from '../../../../lib/components';
+import {
+  Box,
+  Stack,
+  Text,
+  Inline,
+  Columns,
+  Column,
+  IconChevron,
+} from '../../../../lib/components';
 import { BoxProps } from '../../../../lib/components/Box/Box';
 import { FieldOverlay } from '../../../../lib/components/private/FieldOverlay/FieldOverlay';
+import { useBoxStyles } from '../../../../lib/components/Box/useBoxStyles';
+import { Preview } from '../Preview/Preview';
 import { CopyIcon } from './CopyIcon';
 import { PlayIcon } from './PlayIcon';
 import * as styleRefs from './Code.treat';
@@ -34,6 +44,7 @@ const formatSnippet = memoize(
 const CodeButton = ({
   component = 'button',
   children,
+  className,
   ...restProps
 }: BoxProps) => {
   const styles = useStyles(styleRefs);
@@ -47,7 +58,7 @@ const CodeButton = ({
       paddingY="xxsmall"
       paddingX="xsmall"
       position="relative"
-      className={styles.button}
+      className={[styles.button, className]}
       {...restProps}
     >
       <FieldOverlay
@@ -76,9 +87,11 @@ const CodeButton = ({
 interface CodeProps {
   playroom?: boolean;
   children: ReactChild;
+  collapse?: boolean;
 }
-export default ({ playroom = true, children }: CodeProps) => {
+export default ({ playroom = true, children, collapse = false }: CodeProps) => {
   const styles = useStyles(styleRefs);
+  const [hideCode, setHideCode] = useState(collapse);
   const { playroomUrl } = useConfig();
 
   const snippet = formatSnippet(
@@ -101,54 +114,67 @@ export default ({ playroom = true, children }: CodeProps) => {
     >
       <Stack space="xsmall">
         {typeof children !== 'string' && (
+          <Preview>
+            <ThemedExample>{children}</ThemedExample>
+          </Preview>
+        )}
+        <Box>
+          {hideCode ? null : (
+            <Box
+              position="relative"
+              padding="medium"
+              borderRadius="standard"
+              className={styles.code}
+            >
+              <Text component="pre" baseline={false}>
+                <SyntaxHighlighter language="tsx" style={editorTheme}>
+                  {snippet}
+                </SyntaxHighlighter>
+              </Text>
+            </Box>
+          )}
           <Box
-            padding="small"
+            padding="xxsmall"
             background="neutralLight"
             borderRadius="standard"
+            className={hideCode ? undefined : styles.toolbar}
           >
-            <ThemedExample>{children}</ThemedExample>
+            <Columns space="xxsmall" alignY="center">
+              <Column>
+                {collapse ? (
+                  <CodeButton onClick={() => setHideCode(!hideCode)}>
+                    <IconChevron direction={hideCode ? 'down' : 'up'} />
+                  </CodeButton>
+                ) : null}
+              </Column>
+              <Column>
+                <Inline space="xxsmall" align="right">
+                  <CodeButton
+                    onClick={() => copy(snippet)}
+                    title="Copy to clipboard"
+                  >
+                    <CopyIcon /> Copy
+                  </CodeButton>
+                  {/^import/m.test(snippet) || !playroom ? null : (
+                    <CodeButton
+                      component="a"
+                      target="_blank"
+                      href={createUrl({ baseUrl: playroomUrl, code: snippet })}
+                      className={useBoxStyles({
+                        component: 'a',
+                        display: 'block',
+                      })}
+                      title="Open in Playroom"
+                    >
+                      <PlayIcon /> Open in Playroom
+                    </CodeButton>
+                  )}
+                </Inline>
+              </Column>
+            </Columns>
           </Box>
-        )}
-        <Box
-          position="relative"
-          padding="medium"
-          borderRadius="standard"
-          className={styles.code}
-        >
-          <Text component="pre" baseline={false}>
-            <SyntaxHighlighter language="tsx" style={editorTheme}>
-              {snippet}
-            </SyntaxHighlighter>
-          </Text>
         </Box>
       </Stack>
-      <Box
-        display="flex"
-        justifyContent="flexEnd"
-        paddingY="xxsmall"
-        paddingRight="xxsmall"
-        background="neutralLight"
-        borderRadius="standard"
-        className={styles.toolbar}
-      >
-        <CodeButton onClick={() => copy(snippet)} title="Copy to clipboard">
-          <CopyIcon /> Copy
-        </CodeButton>
-        {/^import/m.test(snippet) || !playroom ? null : (
-          <Fragment>
-            <Box paddingLeft="xxsmall" />
-            <CodeButton
-              component="a"
-              target="_blank"
-              href={createUrl({ baseUrl: playroomUrl, code: snippet })}
-              style={{ textDecoration: 'none' }}
-              title="Open in Playroom"
-            >
-              <PlayIcon /> Open in Playroom
-            </CodeButton>
-          </Fragment>
-        )}
-      </Box>
     </Box>
   );
 };
