@@ -18,6 +18,7 @@ export { BoxRenderer } from './Box/BoxRenderer';
 export { Bullet } from './Bullet/Bullet';
 export { BulletList } from './BulletList/BulletList';
 export { Button } from './Button/Button';
+export { ButtonLink } from './ButtonLink/ButtonLink';
 export { ButtonRenderer } from './ButtonRenderer/ButtonRenderer';
 export { Card } from './Card/Card';
 export { Checkbox } from './Checkbox/Checkbox';

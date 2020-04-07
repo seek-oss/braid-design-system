@@ -17,17 +17,30 @@ import foundations from './routes/foundations';
 import tutorials from './routes/tutorials';
 import components from './routes/components';
 
-const BraidLink: LinkComponent = ({ href, rel, ...restProps }) =>
+const CustomLink: LinkComponent = ({ href, rel, onClick, ...restProps }) =>
   href[0] === '/' && !/\/playroom\/?($|#)/.test(href) ? (
-    <ReactRouterLink to={href} rel={rel} {...restProps} />
+    <ReactRouterLink to={href} rel={rel} onClick={onClick} {...restProps} />
   ) : (
-    <a href={href} rel={rel || 'noreferrer noopener'} {...restProps} />
+    <a
+      href={href}
+      rel={rel || 'noreferrer noopener'}
+      {...restProps}
+      onClick={(event) => {
+        if (href === '' || href === '#') {
+          event.preventDefault();
+        }
+
+        if (typeof onClick === 'function') {
+          onClick(event);
+        }
+      }}
+    />
   );
 
 export const App = () => (
   <StrictMode>
     <ThemeSettingProvider>
-      <BraidProvider theme={docsSiteTheme} linkComponent={BraidLink}>
+      <BraidProvider theme={docsSiteTheme} linkComponent={CustomLink}>
         <ToastProvider>
           <Navigation>
             <Switch>

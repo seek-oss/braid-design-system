@@ -1,5 +1,23 @@
 # braid-design-system
 
+## 25.1.0
+
+### Minor Changes
+
+- Add ButtonLink component ([#581](https://github.com/seek-oss/braid-design-system/pull/581))
+
+  You can now easily render semantic links that look like [Button](https://seek-oss.github.io/braid-design-system/components/Button) elements without needing to use the lower level [ButtonRenderer](https://seek-oss.github.io/braid-design-system/components/ButtonRenderer).
+
+  This component renders a native `a` element by default, but this can be customised via the `linkComponent` prop on [BraidProvider](https://seek-oss.github.io/braid-design-system/components/BraidProvider).
+
+  Example usage:
+
+  ```jsx
+  <ButtonLink href="#" weight="strong">
+    Submit
+  </ButtonLink>
+  ```
+
 ## 25.0.0
 
 ### Major Changes
@@ -15,7 +33,7 @@
   import wireframe from 'braid-design-system/themes/wireframe';
 
   // First create the custom link implementation:
-  const BraidLink: LinkComponent = ({ href, ...restProps }) =>
+  const CustomLink: LinkComponent = ({ href, ...restProps }) =>
     href[0] === '/' ? (
       <ReactRouterLink to={href} {...restProps} />
     ) : (
@@ -24,7 +42,7 @@
 
   // Then pass it to BraidProvider:
   export const App = () => (
-    <BraidProvider theme={wireframe} linkComponent={BraidLink}>
+    <BraidProvider theme={wireframe} linkComponent={CustomLink}>
       ...
     </BraidProvider>
   );

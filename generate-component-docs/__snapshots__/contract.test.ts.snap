@@ -1616,6 +1616,414 @@ Object {
 }
 `;
 
+exports[`ButtonLink 1`] = `
+Object {
+  exportType: component,
+  props: {
+    about?: string
+    accessKey?: string
+    aria-activedescendant?: string
+    aria-atomic?: 
+        | "false"
+        | "true"
+        | false
+        | true
+    aria-autocomplete?: 
+        | "both"
+        | "inline"
+        | "list"
+        | "none"
+    aria-busy?: 
+        | "false"
+        | "true"
+        | false
+        | true
+    aria-checked?: 
+        | "false"
+        | "mixed"
+        | "true"
+        | false
+        | true
+    aria-colcount?: number
+    aria-colindex?: number
+    aria-colspan?: number
+    aria-controls?: string
+    aria-current?: 
+        | "date"
+        | "false"
+        | "location"
+        | "page"
+        | "step"
+        | "time"
+        | "true"
+        | false
+        | true
+    aria-describedby?: string
+    aria-details?: string
+    aria-disabled?: 
+        | "false"
+        | "true"
+        | false
+        | true
+    aria-dropeffect?: 
+        | "copy"
+        | "execute"
+        | "link"
+        | "move"
+        | "none"
+        | "popup"
+    aria-errormessage?: string
+    aria-expanded?: 
+        | "false"
+        | "true"
+        | false
+        | true
+    aria-flowto?: string
+    aria-grabbed?: 
+        | "false"
+        | "true"
+        | false
+        | true
+    aria-haspopup?: 
+        | "dialog"
+        | "false"
+        | "grid"
+        | "listbox"
+        | "menu"
+        | "tree"
+        | "true"
+        | false
+        | true
+    aria-hidden?: 
+        | "false"
+        | "true"
+        | false
+        | true
+    aria-invalid?: 
+        | "false"
+        | "grammar"
+        | "spelling"
+        | "true"
+        | false
+        | true
+    aria-keyshortcuts?: string
+    aria-label?: string
+    aria-labelledby?: string
+    aria-level?: number
+    aria-live?: 
+        | "assertive"
+        | "off"
+        | "polite"
+    aria-modal?: 
+        | "false"
+        | "true"
+        | false
+        | true
+    aria-multiline?: 
+        | "false"
+        | "true"
+        | false
+        | true
+    aria-multiselectable?: 
+        | "false"
+        | "true"
+        | false
+        | true
+    aria-orientation?: 
+        | "horizontal"
+        | "vertical"
+    aria-owns?: string
+    aria-placeholder?: string
+    aria-posinset?: number
+    aria-pressed?: 
+        | "false"
+        | "mixed"
+        | "true"
+        | false
+        | true
+    aria-readonly?: 
+        | "false"
+        | "true"
+        | false
+        | true
+    aria-relevant?: 
+        | "additions text"
+        | "additions"
+        | "all"
+        | "removals"
+        | "text"
+    aria-required?: 
+        | "false"
+        | "true"
+        | false
+        | true
+    aria-roledescription?: string
+    aria-rowcount?: number
+    aria-rowindex?: number
+    aria-rowspan?: number
+    aria-selected?: 
+        | "false"
+        | "true"
+        | false
+        | true
+    aria-setsize?: number
+    aria-sort?: 
+        | "ascending"
+        | "descending"
+        | "none"
+        | "other"
+    aria-valuemax?: number
+    aria-valuemin?: number
+    aria-valuenow?: number
+    aria-valuetext?: string
+    autoCapitalize?: string
+    autoCorrect?: string
+    autoSave?: string
+    children?: ReactNode
+    color?: string
+    contentEditable?: 
+        | "false"
+        | "inherit"
+        | "true"
+        | false
+        | true
+    contextMenu?: string
+    dangerouslySetInnerHTML?: { __html: string; }
+    datatype?: string
+    defaultChecked?: boolean
+    defaultValue?: 
+        | number
+        | string
+        | string[]
+    dir?: string
+    download?: any
+    draggable?: 
+        | "false"
+        | "true"
+        | false
+        | true
+    hidden?: boolean
+    href: string
+    hrefLang?: string
+    id?: string
+    inlist?: any
+    inputMode?: 
+        | "decimal"
+        | "email"
+        | "none"
+        | "numeric"
+        | "search"
+        | "tel"
+        | "text"
+        | "url"
+    is?: string
+    itemID?: string
+    itemProp?: string
+    itemRef?: string
+    itemScope?: boolean
+    itemType?: string
+    lang?: string
+    loading?: boolean
+    media?: string
+    onAbort?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
+    onAbortCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
+    onAnimationEnd?: (event: AnimationEvent<HTMLAnchorElement>) => void
+    onAnimationEndCapture?: (event: AnimationEvent<HTMLAnchorElement>) => void
+    onAnimationIteration?: (event: AnimationEvent<HTMLAnchorElement>) => void
+    onAnimationIterationCapture?: (event: AnimationEvent<HTMLAnchorElement>) => void
+    onAnimationStart?: (event: AnimationEvent<HTMLAnchorElement>) => void
+    onAnimationStartCapture?: (event: AnimationEvent<HTMLAnchorElement>) => void
+    onAuxClick?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
+    onAuxClickCapture?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
+    onBeforeInput?: (event: FormEvent<HTMLAnchorElement>) => void
+    onBeforeInputCapture?: (event: FormEvent<HTMLAnchorElement>) => void
+    onBlur?: (event: FocusEvent<HTMLAnchorElement>) => void
+    onBlurCapture?: (event: FocusEvent<HTMLAnchorElement>) => void
+    onCanPlay?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
+    onCanPlayCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
+    onCanPlayThrough?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
+    onCanPlayThroughCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
+    onChange?: (event: FormEvent<HTMLAnchorElement>) => void
+    onChangeCapture?: (event: FormEvent<HTMLAnchorElement>) => void
+    onClick?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
+    onClickCapture?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
+    onCompositionEnd?: (event: CompositionEvent<HTMLAnchorElement>) => void
+    onCompositionEndCapture?: (event: CompositionEvent<HTMLAnchorElement>) => void
+    onCompositionStart?: (event: CompositionEvent<HTMLAnchorElement>) => void
+    onCompositionStartCapture?: (event: CompositionEvent<HTMLAnchorElement>) => void
+    onCompositionUpdate?: (event: CompositionEvent<HTMLAnchorElement>) => void
+    onCompositionUpdateCapture?: (event: CompositionEvent<HTMLAnchorElement>) => void
+    onContextMenu?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
+    onContextMenuCapture?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
+    onCopy?: (event: ClipboardEvent<HTMLAnchorElement>) => void
+    onCopyCapture?: (event: ClipboardEvent<HTMLAnchorElement>) => void
+    onCut?: (event: ClipboardEvent<HTMLAnchorElement>) => void
+    onCutCapture?: (event: ClipboardEvent<HTMLAnchorElement>) => void
+    onDoubleClick?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
+    onDoubleClickCapture?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
+    onDrag?: (event: DragEvent<HTMLAnchorElement>) => void
+    onDragCapture?: (event: DragEvent<HTMLAnchorElement>) => void
+    onDragEnd?: (event: DragEvent<HTMLAnchorElement>) => void
+    onDragEndCapture?: (event: DragEvent<HTMLAnchorElement>) => void
+    onDragEnter?: (event: DragEvent<HTMLAnchorElement>) => void
+    onDragEnterCapture?: (event: DragEvent<HTMLAnchorElement>) => void
+    onDragExit?: (event: DragEvent<HTMLAnchorElement>) => void
+    onDragExitCapture?: (event: DragEvent<HTMLAnchorElement>) => void
+    onDragLeave?: (event: DragEvent<HTMLAnchorElement>) => void
+    onDragLeaveCapture?: (event: DragEvent<HTMLAnchorElement>) => void
+    onDragOver?: (event: DragEvent<HTMLAnchorElement>) => void
+    onDragOverCapture?: (event: DragEvent<HTMLAnchorElement>) => void
+    onDragStart?: (event: DragEvent<HTMLAnchorElement>) => void
+    onDragStartCapture?: (event: DragEvent<HTMLAnchorElement>) => void
+    onDrop?: (event: DragEvent<HTMLAnchorElement>) => void
+    onDropCapture?: (event: DragEvent<HTMLAnchorElement>) => void
+    onDurationChange?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
+    onDurationChangeCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
+    onEmptied?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
+    onEmptiedCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
+    onEncrypted?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
+    onEncryptedCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
+    onEnded?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
+    onEndedCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
+    onError?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
+    onErrorCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
+    onFocus?: (event: FocusEvent<HTMLAnchorElement>) => void
+    onFocusCapture?: (event: FocusEvent<HTMLAnchorElement>) => void
+    onGotPointerCapture?: (event: PointerEvent<HTMLAnchorElement>) => void
+    onGotPointerCaptureCapture?: (event: PointerEvent<HTMLAnchorElement>) => void
+    onInput?: (event: FormEvent<HTMLAnchorElement>) => void
+    onInputCapture?: (event: FormEvent<HTMLAnchorElement>) => void
+    onInvalid?: (event: FormEvent<HTMLAnchorElement>) => void
+    onInvalidCapture?: (event: FormEvent<HTMLAnchorElement>) => void
+    onKeyDown?: (event: KeyboardEvent<HTMLAnchorElement>) => void
+    onKeyDownCapture?: (event: KeyboardEvent<HTMLAnchorElement>) => void
+    onKeyPress?: (event: KeyboardEvent<HTMLAnchorElement>) => void
+    onKeyPressCapture?: (event: KeyboardEvent<HTMLAnchorElement>) => void
+    onKeyUp?: (event: KeyboardEvent<HTMLAnchorElement>) => void
+    onKeyUpCapture?: (event: KeyboardEvent<HTMLAnchorElement>) => void
+    onLoad?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
+    onLoadCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
+    onLoadStart?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
+    onLoadStartCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
+    onLoadedData?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
+    onLoadedDataCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
+    onLoadedMetadata?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
+    onLoadedMetadataCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
+    onLostPointerCapture?: (event: PointerEvent<HTMLAnchorElement>) => void
+    onLostPointerCaptureCapture?: (event: PointerEvent<HTMLAnchorElement>) => void
+    onMouseDown?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
+    onMouseDownCapture?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
+    onMouseEnter?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
+    onMouseLeave?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
+    onMouseMove?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
+    onMouseMoveCapture?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
+    onMouseOut?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
+    onMouseOutCapture?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
+    onMouseOver?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
+    onMouseOverCapture?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
+    onMouseUp?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
+    onMouseUpCapture?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
+    onPaste?: (event: ClipboardEvent<HTMLAnchorElement>) => void
+    onPasteCapture?: (event: ClipboardEvent<HTMLAnchorElement>) => void
+    onPause?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
+    onPauseCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
+    onPlay?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
+    onPlayCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
+    onPlaying?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
+    onPlayingCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
+    onPointerCancel?: (event: PointerEvent<HTMLAnchorElement>) => void
+    onPointerCancelCapture?: (event: PointerEvent<HTMLAnchorElement>) => void
+    onPointerDown?: (event: PointerEvent<HTMLAnchorElement>) => void
+    onPointerDownCapture?: (event: PointerEvent<HTMLAnchorElement>) => void
+    onPointerEnter?: (event: PointerEvent<HTMLAnchorElement>) => void
+    onPointerEnterCapture?: (event: PointerEvent<HTMLAnchorElement>) => void
+    onPointerLeave?: (event: PointerEvent<HTMLAnchorElement>) => void
+    onPointerLeaveCapture?: (event: PointerEvent<HTMLAnchorElement>) => void
+    onPointerMove?: (event: PointerEvent<HTMLAnchorElement>) => void
+    onPointerMoveCapture?: (event: PointerEvent<HTMLAnchorElement>) => void
+    onPointerOut?: (event: PointerEvent<HTMLAnchorElement>) => void
+    onPointerOutCapture?: (event: PointerEvent<HTMLAnchorElement>) => void
+    onPointerOver?: (event: PointerEvent<HTMLAnchorElement>) => void
+    onPointerOverCapture?: (event: PointerEvent<HTMLAnchorElement>) => void
+    onPointerUp?: (event: PointerEvent<HTMLAnchorElement>) => void
+    onPointerUpCapture?: (event: PointerEvent<HTMLAnchorElement>) => void
+    onProgress?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
+    onProgressCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
+    onRateChange?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
+    onRateChangeCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
+    onReset?: (event: FormEvent<HTMLAnchorElement>) => void
+    onResetCapture?: (event: FormEvent<HTMLAnchorElement>) => void
+    onScroll?: (event: UIEvent<HTMLAnchorElement, UIEvent>) => void
+    onScrollCapture?: (event: UIEvent<HTMLAnchorElement, UIEvent>) => void
+    onSeeked?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
+    onSeekedCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
+    onSeeking?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
+    onSeekingCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
+    onSelect?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
+    onSelectCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
+    onStalled?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
+    onStalledCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
+    onSubmit?: (event: FormEvent<HTMLAnchorElement>) => void
+    onSubmitCapture?: (event: FormEvent<HTMLAnchorElement>) => void
+    onSuspend?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
+    onSuspendCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
+    onTimeUpdate?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
+    onTimeUpdateCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
+    onTouchCancel?: (event: TouchEvent<HTMLAnchorElement>) => void
+    onTouchCancelCapture?: (event: TouchEvent<HTMLAnchorElement>) => void
+    onTouchEnd?: (event: TouchEvent<HTMLAnchorElement>) => void
+    onTouchEndCapture?: (event: TouchEvent<HTMLAnchorElement>) => void
+    onTouchMove?: (event: TouchEvent<HTMLAnchorElement>) => void
+    onTouchMoveCapture?: (event: TouchEvent<HTMLAnchorElement>) => void
+    onTouchStart?: (event: TouchEvent<HTMLAnchorElement>) => void
+    onTouchStartCapture?: (event: TouchEvent<HTMLAnchorElement>) => void
+    onTransitionEnd?: (event: TransitionEvent<HTMLAnchorElement>) => void
+    onTransitionEndCapture?: (event: TransitionEvent<HTMLAnchorElement>) => void
+    onVolumeChange?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
+    onVolumeChangeCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
+    onWaiting?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
+    onWaitingCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
+    onWheel?: (event: WheelEvent<HTMLAnchorElement>) => void
+    onWheelCapture?: (event: WheelEvent<HTMLAnchorElement>) => void
+    ping?: string
+    placeholder?: string
+    prefix?: string
+    property?: string
+    radioGroup?: string
+    referrerPolicy?: string
+    rel?: string
+    resource?: string
+    results?: number
+    role?: string
+    security?: string
+    slot?: string
+    spellCheck?: 
+        | "false"
+        | "true"
+        | false
+        | true
+    suppressContentEditableWarning?: boolean
+    suppressHydrationWarning?: boolean
+    tabIndex?: number
+    target?: string
+    title?: string
+    translate?: 
+        | "no"
+        | "yes"
+    type?: string
+    typeof?: string
+    unselectable?: 
+        | "off"
+        | "on"
+    vocab?: string
+    weight?: 
+        | "regular"
+        | "strong"
+        | "weak"
+},
+}
+`;
+
 exports[`ButtonRenderer 1`] = `
 Object {
   exportType: component,
