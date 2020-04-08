@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FocusEvent, Fragment, createRef } from 'react';
+import React, { ChangeEvent, FocusEvent, createRef, Fragment } from 'react';
 import { isMobile } from 'is-mobile';
 import { useStyles } from 'sku/react-treat';
 import { Box } from '../Box/Box';
@@ -54,34 +54,23 @@ const months = [
   { value: '11', label: 'Nov' },
   { value: '12', label: 'Dec' },
 ];
-const Months = () => (
-  <Fragment>
-    {months.map((month) => (
-      <option value={month.value} key={month.value}>
-        {month.label}
+const getMonths = () =>
+  months.map((month) => (
+    <option value={month.value} key={month.value}>
+      {month.label}
+    </option>
+  ));
+
+const getYears = (min: number, max: number, ascending: boolean) =>
+  [...new Array(max - min + 1)].map((_v, i) => {
+    const yearStr = String(ascending ? i + min : max - i);
+
+    return (
+      <option value={yearStr} key={yearStr}>
+        {yearStr}
       </option>
-    ))}
-  </Fragment>
-);
-
-interface YearsProps {
-  min: number;
-  max: number;
-  ascending: boolean;
-}
-const Years = React.memo(({ min, max, ascending }: YearsProps) => (
-  <Fragment>
-    {[...new Array(max - min + 1)].map((_v, i) => {
-      const year = String(ascending ? i + min : max - i);
-
-      return (
-        <option value={year} key={year}>
-          {year}
-        </option>
-      );
-    })}
-  </Fragment>
-));
+    );
+  });
 
 const currYear = new Date().getFullYear();
 const renderNativeInput = isMobile({ tablet: true });
@@ -235,7 +224,7 @@ const MonthPicker = ({
               {...fieldGroupProps}
               ref={monthRef}
             >
-              <Months />
+              {getMonths()}
             </Dropdown>
           </Column>
           <Column>
@@ -253,7 +242,7 @@ const MonthPicker = ({
               {...fieldGroupProps}
               ref={yearRef}
             >
-              <Years min={minYear} max={maxYear} ascending={ascendingYears} />
+              {getYears(minYear, maxYear, ascendingYears)}
             </Dropdown>
           </Column>
         </Columns>
