@@ -87,3 +87,8 @@ globalStyle('html, body', {
   margin: 0,
   minHeight: '100%',
 });
+
+// :focus-visible polyfill: https://github.com/WICG/focus-visible
+globalStyle('.js-focus-visible :focus:not(.focus-visible)', {
+  outline: 'none',
+});
