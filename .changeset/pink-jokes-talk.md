@@ -2,10 +2,11 @@
 'braid-design-system': patch
 ---
 
-Drop lodash usage to decrease bundle size
+Drop lodash usage to decrease bundle size.
 
-Affected components:
+This directly affects `MonthPicker` and any components using the `data` prop:
 
 - All field components
-- All Menu components
+- OverflowMenu
+- MenuRenderer
 - Button
