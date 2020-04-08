@@ -28,7 +28,7 @@ describe('MonthPicker (Double dropdown)', () => {
     expect(options[27].value).toBe('1999');
   });
 
-  it('should render years ascending when request', () => {
+  it('should render years ascending when requested', () => {
     const onChange = jest.fn();
     const { getByPlaceholderText } = render(
       <BraidTestProvider>
