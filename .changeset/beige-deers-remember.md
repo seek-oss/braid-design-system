@@ -22,7 +22,7 @@ Example usage:
 
 Accordions manage their own state internally by default. If you'd like to take control of them yourself, you can pass an `expanded` prop to `AccordionItem` as well as an `onToggle` callback.
 
-```js
+```jsx
 const [expanded, setExpanded] = useState(false);
 
 <AccordionItem
