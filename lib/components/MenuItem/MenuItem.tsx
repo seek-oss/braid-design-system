@@ -129,6 +129,7 @@ export const MenuItem = ({ children, onClick, data }: MenuItemProps) => {
       background={isHighlighted ? 'selection' : undefined}
       cursor="pointer"
       textAlign="left"
+      outline="none"
       className={[useTouchableSpace(menuItemTextSize), styles.menuItem]}
       {...buildDataAttributes(data)}
     >

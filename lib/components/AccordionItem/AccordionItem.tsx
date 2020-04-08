@@ -1,0 +1,95 @@
+import React, { useState, ReactNode } from 'react';
+import { useStyles } from 'sku/react-treat';
+import { Box } from '../Box/Box';
+import { Heading } from '../Heading/Heading';
+import { Columns } from '../Columns/Columns';
+import { Column } from '../Column/Column';
+import { IconChevron } from '../icons';
+import { useVirtualTouchable } from '../private/touchable/useVirtualTouchable';
+import { Overlay } from '../private/Overlay/Overlay';
+import { hideFocusRingsClassName } from '../private/hideFocusRings/hideFocusRings';
+import * as styleRefs from './AccordionItem.treat';
+import { AllOrNone } from '../private/AllOrNone';
+
+const accordionSpace = 'large';
+
+export type AccordionItemBaseProps = {
+  id: string;
+  label: string;
+  children: ReactNode;
+};
+
+export type AccordionItemStateProps = AllOrNone<{
+  expanded: boolean;
+  onToggle: (expanded: boolean) => void;
+}>;
+
+export type AccordionItemProps = AccordionItemBaseProps &
+  AccordionItemStateProps;
+
+export const AccordionItem = ({
+  id,
+  label,
+  expanded: expandedProp,
+  onToggle,
+  children,
+}: AccordionItemProps) => {
+  if (process.env.NODE_ENV !== 'production') {
+    if (label !== undefined && typeof label !== 'string') {
+      throw new Error('Label must be a string');
+    }
+  }
+
+  const styles = useStyles(styleRefs);
+  const [expandedFallback, setExpandedFallback] = useState(false);
+
+  const expanded = expandedProp ?? expandedFallback;
+  const setExpanded = onToggle ?? setExpandedFallback;
+
+  return (
+    <Box>
+      <Box position="relative" display="flex">
+        <Box
+          component="button"
+          cursor="pointer"
+          className={[styles.button, useVirtualTouchable()]}
+          outline="none"
+          width="full"
+          textAlign="left"
+          aria-controls={id}
+          aria-expanded={expanded}
+          onClick={() => setExpanded(!expanded)}
+        >
+          <Columns space={accordionSpace}>
+            <Column>
+              <Heading component="div" level="4">
+                {label}
+              </Heading>
+            </Column>
+            <Column width="content">
+              <Heading component="div" level="4">
+                <IconChevron
+                  tone="secondary"
+                  direction={expanded ? 'up' : 'down'}
+                />
+              </Heading>
+            </Column>
+          </Columns>
+        </Box>
+        <Overlay
+          boxShadow="outlineFocus"
+          borderRadius="standard"
+          transition="fast"
+          className={[styles.focusRing, hideFocusRingsClassName]}
+        />
+      </Box>
+      <Box
+        id={id}
+        paddingTop={accordionSpace}
+        display={expanded ? 'block' : 'none'}
+      >
+        {children}
+      </Box>
+    </Box>
+  );
+};

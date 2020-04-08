@@ -8,6 +8,8 @@ export { ThemeNameConsumer } from './ThemeNameConsumer/ThemeNameConsumer';
 export { useThemeName } from './useThemeName/useThemeName';
 export { useSpace } from './useSpace/useSpace';
 export { useColor } from './useColor/useColor';
+export { Accordion } from './Accordion/Accordion';
+export { AccordionItem } from './AccordionItem/AccordionItem';
 export { Actions } from './Actions/Actions';
 export { Alert } from './Alert/Alert';
 export { Autosuggest } from './Autosuggest/Autosuggest';

@@ -62,6 +62,7 @@ interface FieldRenderProps extends Pick<FieldProps, PassthroughProps> {
   borderRadius: BoxProps['borderRadius'];
   width: BoxProps['width'];
   paddingX: BoxProps['paddingX'];
+  outline: BoxProps['outline'];
   'aria-describedby'?: string;
   'aria-required'?: boolean;
   className: string;
@@ -195,6 +196,7 @@ export const Field = forwardRef<FieldRef, InternalFieldProps>(
                 width: 'full',
                 paddingX: 'small',
                 borderRadius: 'standard',
+                outline: 'none',
                 ...((message || ariaDescribedBy) && {
                   'aria-describedby': ariaDescribedBy || messageId,
                 }),

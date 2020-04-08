@@ -12,9 +12,7 @@ export const toolbar = style({
   borderTopRightRadius: '0 !important',
 });
 
-export const button = style({
-  outline: 'none',
-});
+export const button = style({});
 
 export const activeOverlay = [
   style({
