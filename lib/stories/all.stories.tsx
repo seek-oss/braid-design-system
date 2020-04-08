@@ -33,7 +33,12 @@ req.keys().forEach((filename) => {
   const stories = storiesOf(componentName, module);
   const docs = req(filename).default as ComponentDocs;
 
-  if (!docs.examples.some(({ Example }) => typeof Example === 'function')) {
+  if (
+    !docs.examples.some(
+      ({ Example, storybook }) =>
+        typeof Example === 'function' && storybook !== false,
+    )
+  ) {
     return;
   }
 
