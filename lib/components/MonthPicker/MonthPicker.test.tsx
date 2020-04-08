@@ -1,25 +1,53 @@
 import '@testing-library/jest-dom/extend-expect';
 import React from 'react';
-import { render, cleanup } from '@testing-library/react';
-import { BraidTestProvider, Text, TextLink } from '..';
+import { render, cleanup, getAllByRole } from '@testing-library/react';
+import { BraidTestProvider, MonthPicker } from '..';
 
 afterEach(cleanup);
 
-describe('TextLink', () => {
-  it('should render a native link by default', () => {
-    const { getByRole } = render(
+describe('MonthPicker (Double dropdown)', () => {
+  it('should render years descending by default', () => {
+    const onChange = jest.fn();
+    const { getByPlaceholderText } = render(
       <BraidTestProvider>
-        <Text>
-          <TextLink href="/foo/bar" data-attribute="true">
-            Link content
-          </TextLink>
-        </Text>
+        <MonthPicker
+          id="month-picker"
+          value={{}}
+          onChange={onChange}
+          minYear={1999}
+          maxYear={2025}
+        />
       </BraidTestProvider>,
     );
 
-    const link = getByRole('link');
-    expect(link.nodeName).toEqual('A');
-    expect(link.getAttribute('href')).toEqual('/foo/bar');
-    expect(link.getAttribute('data-attribute')).toEqual('true');
+    const yearDropdown = getByPlaceholderText('Year');
+    const options = getAllByRole(yearDropdown, 'option') as HTMLOptionElement[];
+
+    expect(options).toHaveLength(28); // All unique values plus placeholder option
+    expect(options[1].value).toBe('2025');
+    expect(options[27].value).toBe('1999');
+  });
+
+  it('should render years ascending when request', () => {
+    const onChange = jest.fn();
+    const { getByPlaceholderText } = render(
+      <BraidTestProvider>
+        <MonthPicker
+          id="month-picker"
+          value={{}}
+          onChange={onChange}
+          minYear={1999}
+          maxYear={2025}
+          ascendingYears={true}
+        />
+      </BraidTestProvider>,
+    );
+
+    const yearDropdown = getByPlaceholderText('Year');
+    const options = getAllByRole(yearDropdown, 'option') as HTMLOptionElement[];
+
+    expect(options).toHaveLength(28); // All unique values plus placeholder option
+    expect(options[1].value).toBe('1999');
+    expect(options[27].value).toBe('2025');
   });
 });
