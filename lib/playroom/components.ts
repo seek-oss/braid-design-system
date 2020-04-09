@@ -1,6 +1,7 @@
 import '../reset';
 export * from '../components';
 
+export { AccordionItem } from '../components/AccordionItem/AccordionItem.playroom';
 export { Autosuggest } from '../components/Autosuggest/Autosuggest.playroom';
 export { ButtonLink } from '../components/ButtonLink/ButtonLink.playroom';
 export { Checkbox } from '../components/Checkbox/Checkbox.playroom';
