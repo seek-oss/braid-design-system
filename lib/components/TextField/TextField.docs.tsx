@@ -47,7 +47,7 @@ const docs: ComponentDocs = {
           <TextField
             label="Job Title"
             id={id}
-            onChange={e => setValue(e.currentTarget.value)}
+            onChange={(e) => setValue(e.currentTarget.value)}
             onClear={() => setValue('')}
             value={value}
           />
@@ -66,7 +66,7 @@ const docs: ComponentDocs = {
             id={id}
             icon={<IconSearch />}
             placeholder="Enter a job title"
-            onChange={e => setValue(e.currentTarget.value)}
+            onChange={(e) => setValue(e.currentTarget.value)}
             value={value}
           />
         );
@@ -119,7 +119,7 @@ const docs: ComponentDocs = {
         <TextField
           label="Title"
           secondaryLabel="Optional"
-          tertiaryLabel={<TextLink>Help?</TextLink>}
+          tertiaryLabel={<TextLink href="#">Help?</TextLink>}
           id={id}
           value=""
           onChange={handler}
@@ -202,7 +202,7 @@ const docs: ComponentDocs = {
       code: (
         <PlayroomTextField
           label="Label"
-          tertiaryLabel={<TextLink>Help</TextLink>}
+          tertiaryLabel={<TextLink href="#">Help</TextLink>}
         />
       ),
     },

@@ -1,10 +1,4 @@
-import React, {
-  Fragment,
-  AllHTMLAttributes,
-  Children,
-  isValidElement,
-  forwardRef,
-} from 'react';
+import React, { Fragment, AllHTMLAttributes, forwardRef } from 'react';
 import { useStyles } from 'sku/react-treat';
 import { Box } from '../Box/Box';
 import { Field, FieldProps } from '../private/Field/Field';
@@ -39,14 +33,6 @@ const NamedDropdown = forwardRef<HTMLSelectElement, DropdownProps>(
     } = props;
 
     const styles = useStyles(styleRefs);
-
-    Children.forEach(children, child => {
-      if (!(isValidElement(child) && /^(option|optgroup)$/.test(child.type))) {
-        throw new Error(
-          '`Dropdown` only accepts children of type `option` or `optgroup`.',
-        );
-      }
-    });
 
     return (
       <Field

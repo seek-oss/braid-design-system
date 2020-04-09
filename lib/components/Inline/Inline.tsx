@@ -39,7 +39,7 @@ export const Inline = ({
         flexWrap="wrap"
         className={negativeMarginLeft}
       >
-        {Children.map(children, child =>
+        {Children.map(children, (child) =>
           child !== null && child !== undefined ? (
             <Box minWidth={0} paddingLeft={space} paddingTop={space}>
               {child}

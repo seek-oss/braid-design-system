@@ -7,11 +7,18 @@ const docs: ComponentDocs = {
   screenshotWidths: [320],
   examples: [
     {
-      label: 'Standard Divider',
+      label: 'Divider',
       Example: () => <Divider />,
     },
+    {
+      label: 'Strong Divider',
+      Example: () => <Divider weight="strong" />,
+    },
   ],
-  snippets: [{ name: 'Standard', code: <Divider /> }],
+  snippets: [
+    { name: 'Regular', code: <Divider /> },
+    { name: 'Strong', code: <Divider weight="strong" /> },
+  ],
 };
 
 export default docs;

@@ -5,6 +5,5 @@ interface ThemeNameConsumerProps {
   children(name: string): ReactElement;
 }
 
-export const ThemeNameConsumer = ({ children }: ThemeNameConsumerProps) => {
-  return children(useThemeName());
-};
+export const ThemeNameConsumer = ({ children }: ThemeNameConsumerProps) =>
+  children(useThemeName());

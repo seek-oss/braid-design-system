@@ -61,7 +61,7 @@ export const Badge = ({
 
   if (process.env.NODE_ENV !== 'production') {
     const invalidChildren = React.Children.toArray(children).some(
-      child => !['string', 'number'].includes(typeof child),
+      (child) => !['string', 'number'].includes(typeof child),
     );
 
     if (invalidChildren) {

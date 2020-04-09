@@ -33,24 +33,22 @@ export const ClearButton = forwardRef<HTMLButtonElement, ClearButtonProps>(
       data,
     },
     forwardedRef,
-  ) => {
-    return (
-      <IconButton
-        label={label}
-        onClick={onClick}
-        onKeyUp={onKeyUp}
-        onKeyDown={onKeyDown}
-        onMouseDown={onMouseDown}
-        keyboardAccessible={keyboardAccessible}
-        active={active}
-        aria-haspopup={ariaHasPopUp}
-        aria-expanded={ariaExpanded}
-        tone={tone}
-        ref={forwardedRef}
-        data={data}
-      >
-        {iconProps => <IconClear {...iconProps} />}
-      </IconButton>
-    );
-  },
+  ) => (
+    <IconButton
+      label={label}
+      onClick={onClick}
+      onKeyUp={onKeyUp}
+      onKeyDown={onKeyDown}
+      onMouseDown={onMouseDown}
+      keyboardAccessible={keyboardAccessible}
+      active={active}
+      aria-haspopup={ariaHasPopUp}
+      aria-expanded={ariaExpanded}
+      tone={tone}
+      ref={forwardedRef}
+      data={data}
+    >
+      {(iconProps) => <IconClear {...iconProps} />}
+    </IconButton>
+  ),
 );

@@ -24,7 +24,7 @@ export const getComponentDocs = ({
 };
 
 export const documentedComponents = Object.keys(components)
-  .filter(name => {
+  .filter((name) => {
     if (name.startsWith('Icon')) {
       return false;
     }
@@ -34,7 +34,7 @@ export const documentedComponents = Object.keys(components)
   .sort();
 
 export const categorisedComponents = groupBy(
-  documentedComponents.map(name => {
+  documentedComponents.map((name) => {
     const docs: ComponentDocs = getComponentDocs({
       componentName: name,
       isIcon: false,
@@ -42,5 +42,5 @@ export const categorisedComponents = groupBy(
 
     return { name, ...docs };
   }),
-  component => component.category,
+  (component) => component.category,
 );

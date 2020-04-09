@@ -9,7 +9,7 @@ const docs: ComponentDocs = {
     {
       Example: () => (
         <ThemeNameConsumer>
-          {themeName => <span>The active theme is {themeName}.</span>}
+          {(themeName) => <span>The active theme is {themeName}.</span>}
         </ThemeNameConsumer>
       ),
       code: `

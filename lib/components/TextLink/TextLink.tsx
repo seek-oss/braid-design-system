@@ -1,16 +1,23 @@
-import React, { AllHTMLAttributes } from 'react';
+import React from 'react';
 import {
   TextLinkRenderer,
   TextLinkRendererProps,
 } from '../TextLinkRenderer/TextLinkRenderer';
+import {
+  useLinkComponent,
+  LinkComponentProps,
+} from '../BraidProvider/BraidProvider';
 
-type AnchorProps = AllHTMLAttributes<HTMLAnchorElement>;
 export interface TextLinkProps
   extends Omit<TextLinkRendererProps, 'children'>,
-    Omit<AnchorProps, 'className' | 'style'> {}
+    Omit<LinkComponentProps, 'className' | 'style'> {}
 
-export const TextLink = ({ showVisited, hitArea, ...props }: TextLinkProps) => (
-  <TextLinkRenderer showVisited={showVisited} hitArea={hitArea}>
-    {styleProps => <a {...props} {...styleProps} />}
-  </TextLinkRenderer>
-);
+export const TextLink = ({ showVisited, hitArea, ...props }: TextLinkProps) => {
+  const LinkComponent = useLinkComponent();
+
+  return (
+    <TextLinkRenderer showVisited={showVisited} hitArea={hitArea}>
+      {(styleProps) => <LinkComponent {...props} {...styleProps} />}
+    </TextLinkRenderer>
+  );
+};

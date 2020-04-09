@@ -1,7 +1,7 @@
 import React, { Children } from 'react';
 import { useStyles } from 'sku/react-treat';
 import { Box } from '../Box/Box';
-import { Divider } from '../Divider/Divider';
+import { Divider, DividerProps } from '../Divider/Divider';
 import { ResponsiveSpace } from '../Box/useBoxStyles';
 import {
   useNegativeMarginTop,
@@ -19,7 +19,7 @@ export interface TilesProps {
   children: ReactNodeNoStrings;
   space: ResponsiveSpace;
   columns: ResponsiveProp<1 | 2 | 3 | 4 | 5 | 6>;
-  dividers?: boolean;
+  dividers?: boolean | DividerProps['weight'];
 }
 
 export const Tiles = ({
@@ -69,7 +69,11 @@ export const Tiles = ({
                     desktopColumns === 1 ? 'block' : 'none',
                   ]}
                 >
-                  <Divider />
+                  {typeof dividers === 'string' ? (
+                    <Divider weight={dividers} />
+                  ) : (
+                    <Divider />
+                  )}
                 </Box>
               ) : null}
               {child}

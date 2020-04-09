@@ -70,44 +70,44 @@ const makeTypographyRules = (
 };
 
 export const text = {
-  xsmall: styleMap(theme =>
+  xsmall: styleMap((theme) =>
     makeTypographyRules(theme.typography.text.xsmall, theme),
   ),
-  small: styleMap(theme =>
+  small: styleMap((theme) =>
     makeTypographyRules(theme.typography.text.small, theme),
   ),
-  standard: styleMap(theme =>
+  standard: styleMap((theme) =>
     makeTypographyRules(theme.typography.text.standard, theme),
   ),
-  large: styleMap(theme =>
+  large: styleMap((theme) =>
     makeTypographyRules(theme.typography.text.large, theme),
   ),
 };
 
 export const headingWeight = styleMap(({ typography }) =>
-  mapValues(typography.heading.weight, weight => ({
+  mapValues(typography.heading.weight, (weight) => ({
     fontWeight: typography.fontWeight[weight],
   })),
 );
 
 export const heading = {
-  '1': styleMap(theme =>
+  '1': styleMap((theme) =>
     makeTypographyRules(theme.typography.heading.level['1'], theme),
   ),
-  '2': styleMap(theme =>
+  '2': styleMap((theme) =>
     makeTypographyRules(theme.typography.heading.level['2'], theme),
   ),
-  '3': styleMap(theme =>
+  '3': styleMap((theme) =>
     makeTypographyRules(theme.typography.heading.level['3'], theme),
   ),
-  '4': styleMap(theme =>
+  '4': styleMap((theme) =>
     makeTypographyRules(theme.typography.heading.level['4'], theme),
   ),
 };
 
 export const tone = {
-  ...styleMap(theme => {
-    return mapToStyleProperty(
+  ...styleMap((theme) =>
+    mapToStyleProperty(
       omit(theme.color.foreground, [
         'linkHover',
         'linkVisited',
@@ -117,8 +117,8 @@ export const tone = {
         'rating',
       ]),
       'color',
-    );
-  }),
+    ),
+  ),
   link: style(({ color: { foreground } }) => ({
     color: foreground.link,
     ...(foreground.link !== foreground.linkHover
@@ -131,7 +131,7 @@ export const tone = {
 };
 
 export const invertableTone = {
-  neutral: styleMap(theme => ({
+  neutral: styleMap((theme) => ({
     light: {
       color: theme.color.foreground.neutral,
     },
@@ -139,7 +139,7 @@ export const invertableTone = {
       color: theme.color.foreground.neutralInverted,
     },
   })),
-  secondary: styleMap(theme => ({
+  secondary: styleMap((theme) => ({
     light: {
       color: theme.color.foreground.secondary,
     },
@@ -207,7 +207,7 @@ const makeTouchableSpacing = (touchableHeight: number, textHeight: number) => {
 
 export const touchable = styleMap(
   ({ grid, typography, touchableSize, utils }) =>
-    mapValues(typography.text, textDefinition =>
+    mapValues(typography.text, (textDefinition) =>
       utils.responsiveStyle({
         mobile: makeTouchableSpacing(
           grid * touchableSize,

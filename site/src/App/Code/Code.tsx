@@ -4,7 +4,7 @@ import copy from 'copy-to-clipboard';
 import memoize from 'lodash/memoize';
 import reactElementToJSXString from 'react-element-to-jsx-string';
 import prettier from 'prettier/standalone';
-import babylonParser from 'prettier/parser-babylon';
+import typescriptParser from 'prettier/parser-typescript';
 import { createUrl } from 'sku/playroom/utils';
 import classnames from 'classnames';
 import { useConfig } from '../ConfigContext';
@@ -21,11 +21,11 @@ import editorTheme from './editorTheme';
 import { ThemedExample } from '../ThemeSetting';
 
 const formatSnippet = memoize(
-  snippet =>
+  (snippet) =>
     prettier
       .format(snippet, {
-        parser: 'babel',
-        plugins: [babylonParser],
+        parser: 'typescript',
+        plugins: [typescriptParser],
         semi: false,
       })
       .replace(/^;/, ''), // Remove leading semicolons from JSX
@@ -116,7 +116,7 @@ export default ({ playroom = true, children }: CodeProps) => {
           className={styles.code}
         >
           <Text component="pre" baseline={false}>
-            <SyntaxHighlighter language="jsx" style={editorTheme}>
+            <SyntaxHighlighter language="tsx" style={editorTheme}>
               {snippet}
             </SyntaxHighlighter>
           </Text>

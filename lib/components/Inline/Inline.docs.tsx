@@ -6,7 +6,7 @@ import { Box, Inline } from '../';
 import { padding } from '../Box/useBoxStyles.treat';
 
 const spaces = Object.keys(padding.top).filter(
-  space => space !== 'none',
+  (space) => space !== 'none',
 ) as Array<InlineProps['space']>;
 
 const Container = ({ children }: { children: ReactNode }) => (
@@ -19,7 +19,7 @@ const docs: ComponentDocs = {
   category: 'Layout',
   screenshotWidths: [320, 768],
   examples: [
-    ...spaces.map(space => ({
+    ...spaces.map((space) => ({
       label: `Space: ${space}`,
       Container,
       Example: () => (

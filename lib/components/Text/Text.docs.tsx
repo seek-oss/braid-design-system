@@ -57,7 +57,7 @@ const docs: ComponentDocs = {
 
         return (
           <Stack space="medium">
-            {alignments.map(alignment => (
+            {alignments.map((alignment) => (
               <Text align={alignment} key={alignment}>
                 {titleCase(alignment)}
               </Text>
@@ -85,7 +85,7 @@ const docs: ComponentDocs = {
 
         return (
           <Stack space="medium">
-            {sizes.sort().map(size => (
+            {sizes.sort().map((size) => (
               <Box key={size} background="neutralLight">
                 <Text size={size}>
                   {titleCase(size)} Text (Line 1)
@@ -107,7 +107,7 @@ const docs: ComponentDocs = {
 
         return (
           <Stack space="medium">
-            {sizes.sort().map(size => (
+            {sizes.sort().map((size) => (
               <Box key={size} background="neutralLight">
                 <Text size={size} _LEGACY_SPACE_>
                   {titleCase(size)} Text (Line 1)
@@ -131,7 +131,7 @@ const docs: ComponentDocs = {
 
         return (
           <Fragment>
-            {backgrounds.sort().map(background => (
+            {backgrounds.sort().map((background) => (
               <Box key={background} background={background} padding="xsmall">
                 <Columns space="medium">
                   <Column>

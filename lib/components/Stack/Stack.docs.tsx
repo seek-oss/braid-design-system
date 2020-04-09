@@ -6,7 +6,7 @@ import { Placeholder } from '../private/Placeholder/Placeholder';
 import { padding } from '../Box/useBoxStyles.treat';
 
 const spaces = Object.keys(padding.top).filter(
-  space => space !== 'none',
+  (space) => space !== 'none',
 ) as Array<StackProps['space']>;
 
 const Container = ({ children }: { children: ReactNode }) => (
@@ -20,7 +20,7 @@ const docs: ComponentDocs = {
   screenshotWidths: [320, 768],
   migrationGuide: true,
   examples: [
-    ...spaces.map(space => ({
+    ...spaces.map((space) => ({
       label: `Space: ${space}`,
       Container,
       Example: () => (
@@ -70,6 +70,17 @@ const docs: ComponentDocs = {
       Container,
       Example: () => (
         <Stack space="gutter" dividers>
+          <Placeholder height={40} />
+          <Placeholder height={40} />
+          <Placeholder height={40} />
+        </Stack>
+      ),
+    },
+    {
+      label: 'Strong dividers',
+      Container,
+      Example: () => (
+        <Stack space="gutter" dividers="strong">
           <Placeholder height={40} />
           <Placeholder height={40} />
           <Placeholder height={40} />

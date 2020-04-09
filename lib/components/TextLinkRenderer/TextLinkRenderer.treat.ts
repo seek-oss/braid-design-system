@@ -12,7 +12,7 @@ export const underlineOnHoverOnly = style({
   },
 });
 
-export const visited = style(theme => ({
+export const visited = style((theme) => ({
   ':visited': {
     color: theme.color.foreground.linkVisited,
   },

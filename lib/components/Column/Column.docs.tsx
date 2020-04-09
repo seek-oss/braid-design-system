@@ -33,7 +33,7 @@ const docs: ComponentDocs = {
       label: 'Available widths',
       Example: () => (
         <Stack space="medium">
-          {widths.map(width => (
+          {widths.map((width) => (
             <Columns space="small" key={width}>
               <Column width={width}>
                 <Placeholder height={60} label={width} />

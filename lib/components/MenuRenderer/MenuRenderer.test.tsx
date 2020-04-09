@@ -4,9 +4,9 @@ import { MenuRenderer } from './MenuRenderer';
 
 menuTestSuite({
   name: 'Base',
-  Component: props => (
+  Component: (props) => (
     <MenuRenderer
-      trigger={triggerProps => <button {...triggerProps}>Menu</button>}
+      trigger={(triggerProps) => <button {...triggerProps}>Menu</button>}
       {...props}
     />
   ),

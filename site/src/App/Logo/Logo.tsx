@@ -30,6 +30,7 @@ export const Logo = ({ width, height, iconOnly = false }: LogoProps) => {
         x="0px"
         y="0px"
         height="100%"
+        fill="currentColor"
         // Changed the first value to 20 to crop the whitespace
         viewBox="20 0 560 110"
         enableBackground="new 20 0 560 110"

@@ -68,7 +68,7 @@ export type ExportDoc = ComponentDoc | HookDoc;
 
 export default () => {
   const basePath = path.dirname(tsconfigPath);
-  const { config, error } = ts.readConfigFile(tsconfigPath, filename =>
+  const { config, error } = ts.readConfigFile(tsconfigPath, (filename) =>
     // eslint-disable-next-line no-sync
     fs.readFileSync(filename, 'utf8'),
   );
@@ -130,8 +130,8 @@ export default () => {
         {},
         ...propsType
           .getProperties()
-          .filter(prop => !propBlacklist.includes(prop.getName()))
-          .map(prop => {
+          .filter((prop) => !propBlacklist.includes(prop.getName()))
+          .map((prop) => {
             const propName = prop.getName();
 
             // Find type of prop by looking in context of the props object itself.
@@ -176,7 +176,7 @@ export default () => {
       if (aliasWhitelist.includes(alias)) {
         return {
           params: type.aliasTypeArguments
-            ? type.aliasTypeArguments.map(aliasArg =>
+            ? type.aliasTypeArguments.map((aliasArg) =>
                 normaliseType(aliasArg, propsObj),
               )
             : [],
@@ -187,7 +187,7 @@ export default () => {
     }
 
     if (type.isUnion()) {
-      const types = type.types.map(unionItem =>
+      const types = type.types.map((unionItem) =>
         checker.typeToString(unionItem),
       );
 
@@ -201,7 +201,9 @@ export default () => {
 
       return {
         type: 'union',
-        types: type.types.map(unionItem => normaliseType(unionItem, propsObj)),
+        types: type.types.map((unionItem) =>
+          normaliseType(unionItem, propsObj),
+        ),
       };
     }
 
@@ -240,7 +242,7 @@ export default () => {
 
     return {
       exportType: 'hook',
-      params: callSignature.getParameters().map(param => {
+      params: callSignature.getParameters().map((param) => {
         const paramType = checker.getTypeOfSymbolAtLocation(
           param,
           exp.valueDeclaration,
@@ -262,15 +264,13 @@ export default () => {
       if (moduleSymbol) {
         return Object.assign(
           {},
-          ...checker.getExportsOfModule(moduleSymbol).map(moduleExport => {
-            return {
-              [moduleExport.escapedName as string]: moduleExport
-                .getName()
-                .startsWith('use')
-                ? getHookDocs(moduleExport)
-                : getComponentDocs(moduleExport),
-            };
-          }),
+          ...checker.getExportsOfModule(moduleSymbol).map((moduleExport) => ({
+            [moduleExport.escapedName as string]: moduleExport
+              .getName()
+              .startsWith('use')
+              ? getHookDocs(moduleExport)
+              : getComponentDocs(moduleExport),
+          })),
         );
       }
     }

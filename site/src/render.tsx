@@ -59,8 +59,8 @@ const skuRender: Render<RenderContext> = {
   renderDocument: ({ headTags, bodyTags, app: { html, publicPath } }) => {
     const webFontLinkTags = uniq(
       flatten(
-        values({ ...themes, docSiteTheme }).map(theme => theme.webFonts),
-      ).map(font => font.linkTag),
+        values({ ...themes, docSiteTheme }).map((theme) => theme.webFonts),
+      ).map((font) => font.linkTag),
     ).join('');
 
     return dedent`

@@ -28,7 +28,7 @@ export const isLight = (inputColor: string) => {
     ? getLinearGradientColors(inputColor)
     : [inputColor];
 
-  return colors.some(color => {
+  return colors.some((color) => {
     const { red, green, blue } = parseToRgb(color);
 
     // Convert RGB to YIQ to better take into account the

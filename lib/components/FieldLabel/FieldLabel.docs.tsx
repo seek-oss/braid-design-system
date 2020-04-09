@@ -36,7 +36,7 @@ const docs: ComponentDocs = {
         <FieldLabel
           htmlFor={id}
           label="Password"
-          tertiaryLabel={<TextLink>Forgot password?</TextLink>}
+          tertiaryLabel={<TextLink href="#">Forgot password?</TextLink>}
         />
       ),
     },
@@ -48,7 +48,7 @@ const docs: ComponentDocs = {
           htmlFor={id}
           label="Title"
           secondaryLabel="Optional"
-          tertiaryLabel={<TextLink>Help?</TextLink>}
+          tertiaryLabel={<TextLink href="#">Help?</TextLink>}
         />
       ),
     },
@@ -68,7 +68,7 @@ const docs: ComponentDocs = {
         <PlayroomFieldLabel
           label="Label"
           secondaryLabel="Optional"
-          tertiaryLabel={<TextLink>Help?</TextLink>}
+          tertiaryLabel={<TextLink href="#">Help?</TextLink>}
         />
       ),
     },

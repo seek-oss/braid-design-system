@@ -60,7 +60,7 @@ const docs: ComponentDocs = {
           onChange={handler}
           label="Title"
           secondaryLabel="Optional"
-          tertiaryLabel={<TextLink>Help?</TextLink>}
+          tertiaryLabel={<TextLink href="#">Help?</TextLink>}
         />
       ),
     },
@@ -102,7 +102,7 @@ const docs: ComponentDocs = {
           <Textarea
             id={id}
             value={value}
-            onChange={e => setValue(e.currentTarget.value)}
+            onChange={(e) => setValue(e.currentTarget.value)}
             label="Do you like Braid?"
             lineLimit={6}
           />
@@ -121,7 +121,7 @@ const docs: ComponentDocs = {
           <Textarea
             id={id}
             value={value}
-            onChange={e => setValue(e.currentTarget.value)}
+            onChange={(e) => setValue(e.currentTarget.value)}
             label="Do you like Braid?"
             characterLimit={50}
           />
@@ -140,7 +140,7 @@ const docs: ComponentDocs = {
           <Textarea
             id={id}
             value={value}
-            onChange={e => setValue(e.currentTarget.value)}
+            onChange={(e) => setValue(e.currentTarget.value)}
             label="Do you like Braid?"
             characterLimit={50}
           />
@@ -159,7 +159,7 @@ const docs: ComponentDocs = {
           <Textarea
             id={id}
             value={value}
-            onChange={e => setValue(e.currentTarget.value)}
+            onChange={(e) => setValue(e.currentTarget.value)}
             label="Do you like Braid?"
             description="Characters 9-22 are invalid"
             highlightRanges={[{ start: 9, end: 22 }]}

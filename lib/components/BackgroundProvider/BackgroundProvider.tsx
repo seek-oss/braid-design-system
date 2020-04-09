@@ -9,11 +9,10 @@ export interface BackgroundProviderProps {
 export const BackgroundProvider = ({
   type,
   children,
-}: BackgroundProviderProps) => {
-  return renderBackgroundProvider(
+}: BackgroundProviderProps) =>
+  renderBackgroundProvider(
     type === 'dark' ? 'UNKNOWN_DARK' : 'UNKNOWN_LIGHT',
     children,
   );
-};
 
 BackgroundProvider.displayName = 'BackgroundProvider';

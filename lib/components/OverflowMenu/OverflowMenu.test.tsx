@@ -4,5 +4,5 @@ import { OverflowMenu } from './OverflowMenu';
 
 menuTestSuite({
   name: 'OverflowMenu',
-  Component: props => <OverflowMenu label="Overflow" {...props} />,
+  Component: (props) => <OverflowMenu label="Overflow" {...props} />,
 });

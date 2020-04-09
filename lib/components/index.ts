@@ -1,4 +1,7 @@
 export { BraidProvider } from './BraidProvider/BraidProvider';
+import { LinkComponent as _LinkComponent } from './BraidProvider/BraidProvider';
+export type LinkComponent = _LinkComponent;
+
 export { BraidLoadableProvider } from './BraidLoadableProvider/BraidLoadableProvider';
 export { BraidTestProvider } from './BraidTestProvider/BraidTestProvider';
 export { ThemeNameConsumer } from './ThemeNameConsumer/ThemeNameConsumer';
@@ -15,6 +18,7 @@ export { BoxRenderer } from './Box/BoxRenderer';
 export { Bullet } from './Bullet/Bullet';
 export { BulletList } from './BulletList/BulletList';
 export { Button } from './Button/Button';
+export { ButtonLink } from './ButtonLink/ButtonLink';
 export { ButtonRenderer } from './ButtonRenderer/ButtonRenderer';
 export { Card } from './Card/Card';
 export { Checkbox } from './Checkbox/Checkbox';
@@ -28,6 +32,7 @@ export { FieldMessage } from './FieldMessage/FieldMessage';
 export { Heading } from './Heading/Heading';
 export { Hidden } from './Hidden/Hidden';
 export { Inline } from './Inline/Inline';
+export { Link } from './Link/Link';
 export { Loader } from './Loader/Loader';
 export { MenuRenderer } from './MenuRenderer/MenuRenderer';
 export { MenuItem } from './MenuItem/MenuItem';

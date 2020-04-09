@@ -25,7 +25,7 @@ const realFieldBase = style({
   },
 });
 
-export const realFieldPosition = style(theme => {
+export const realFieldPosition = style((theme) => {
   const size = getSize(theme);
   const centerOffset = -(hitArea - size) / 2;
 
@@ -36,7 +36,7 @@ export const realField = [realFieldBase, realFieldPosition];
 
 const fakeFieldBase = style({});
 
-const fakeFieldSize = style(theme => {
+const fakeFieldSize = style((theme) => {
   const size = getSize(theme);
 
   return {
@@ -47,7 +47,7 @@ const fakeFieldSize = style(theme => {
 
 export const fakeField = [fakeFieldSize, fakeFieldBase];
 
-export const label = style(theme => {
+export const label = style((theme) => {
   // Uses mobile standard text to mirror behaviour in getSize
   const standardTextHeight =
     theme.typography.text.standard.mobile.rows * theme.grid;
@@ -63,7 +63,7 @@ export const label = style(theme => {
   };
 });
 
-export const children = style(theme => {
+export const children = style((theme) => {
   const size = getSize(theme);
 
   return {

@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 
 import * as styleRefs from './Toast.treat';
-import { useStyles, TreatProvider } from 'sku/treat';
+import { useStyles, TreatProvider } from 'sku/react-treat';
 
 import {
   Stack,
@@ -34,7 +34,7 @@ const Action = ({ label, onClick, removeToast }: ActionProps) => {
   return (
     <Text baseline={false}>
       <TextLinkRenderer hitArea="large">
-        {textLinkProps => (
+        {(textLinkProps) => (
           <Box
             component="button"
             paddingRight="xsmall"

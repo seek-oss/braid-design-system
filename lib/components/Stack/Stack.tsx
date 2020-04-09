@@ -1,6 +1,6 @@
 import React, { Children, Fragment } from 'react';
 import { useStyles } from 'sku/react-treat';
-import { Divider } from '../Divider/Divider';
+import { Divider, DividerProps } from '../Divider/Divider';
 import { Align, alignToFlexAlign } from '../../utils/align';
 import { ResponsiveProp, mapResponsiveProp } from '../../utils/responsiveProp';
 import { useBoxStyles, UseBoxStylesProps } from '../Box/useBoxStyles';
@@ -46,7 +46,7 @@ export interface StackProps {
   children: ReactNodeNoStrings;
   space: UseBoxStylesProps['padding'];
   align?: ResponsiveProp<Align>;
-  dividers?: boolean;
+  dividers?: boolean | DividerProps['weight'];
 }
 
 export const Stack = ({
@@ -83,7 +83,11 @@ export const Stack = ({
         >
           {dividers && index > 0 ? (
             <Box width="full" paddingY={space}>
-              <Divider />
+              {typeof dividers === 'string' ? (
+                <Divider weight={dividers} />
+              ) : (
+                <Divider />
+              )}
             </Box>
           ) : null}
           {child}

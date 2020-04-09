@@ -1,5 +1,117 @@
 # braid-design-system
 
+## 25.1.0
+
+### Minor Changes
+
+- Add ButtonLink component ([#581](https://github.com/seek-oss/braid-design-system/pull/581))
+
+  You can now easily render semantic links that look like [Button](https://seek-oss.github.io/braid-design-system/components/Button) elements without needing to use the lower level [ButtonRenderer](https://seek-oss.github.io/braid-design-system/components/ButtonRenderer).
+
+  This component renders a native `a` element by default, but this can be customised via the `linkComponent` prop on [BraidProvider](https://seek-oss.github.io/braid-design-system/components/BraidProvider).
+
+  Example usage:
+
+  ```jsx
+  <ButtonLink href="#" weight="strong">
+    Submit
+  </ButtonLink>
+  ```
+
+## 25.0.0
+
+### Major Changes
+
+- BraidProvider: Add `linkComponent` prop to customise link rendering. ([#574](https://github.com/seek-oss/braid-design-system/pull/574))
+
+  If you'd like to customise the technical implementation of all `Link` and `TextLink` components from Braid, you can now pass a custom component to the `linkComponent` prop on `BraidProvider`. For example, if you wanted to ensure that all relative links are [React Router](https://reacttraining.com/react-router/) links:
+
+  ```tsx
+  import React from 'react';
+  import { Link as ReactRouterLink } from 'react-router-dom';
+  import { BraidProvider, LinkComponent } from 'braid-design-system';
+  import wireframe from 'braid-design-system/themes/wireframe';
+
+  // First create the custom link implementation:
+  const CustomLink: LinkComponent = ({ href, ...restProps }) =>
+    href[0] === '/' ? (
+      <ReactRouterLink to={href} {...restProps} />
+    ) : (
+      <a href={href} {...restProps} />
+    );
+
+  // Then pass it to BraidProvider:
+  export const App = () => (
+    <BraidProvider theme={wireframe} linkComponent={CustomLink}>
+      ...
+    </BraidProvider>
+  );
+  ```
+
+  In order to make your custom link component available for any type of link (not just usages of `TextLink`), this release introduces a new `Link` component which renders an unstyled `a` tag by default.
+
+  **BREAKING CHANGES**
+
+  - `TextLink` now requires an `href` prop. Even though this is unlikely to affect anyone (a `TextLink` without an `href` isn't terribly useful), this is still technically a breaking change.
+
+    However, if you find an instance of `TextLink` that you think _shouldn't_ have an `href`, this is a sign that it's not _actually_ a link and you should use a [`TextLinkRenderer`](https://seek-oss.github.io/braid-design-system/components/TextLinkRenderer) instead. Unfortunately, because there's no way for us to know the semantics of your usage ahead of time, we're unable to provide a migration guide, so you'll need to be mindful of how this might impact accessibility.
+
+  - The props for `TextLink` now extend React's `AnchorHTMLAttributes<HTMLAnchorElement>` type rather than `AllHTMLAttributes<HTMLAnchorElement>`. While highly unlikely, this may cause type errors if you've passed props to `TextLink` that aren't considered to be valid anchor props.
+
+### Patch Changes
+
+- Themes: Fix OCC theme export ([#576](https://github.com/seek-oss/braid-design-system/pull/576))
+
+  The `braid-design-system/themes/occ` theme export is now exposed correctly.
+
+## 24.4.1
+
+### Patch Changes
+
+- Divider: Rename 'standard' weight to 'regular'. ([#572](https://github.com/seek-oss/braid-design-system/pull/572))
+
+## 24.4.0
+
+### Minor Changes
+
+- Divider: Add strong weight variant, e.g. `<Divider weight="strong">`. ([#569](https://github.com/seek-oss/braid-design-system/pull/569))
+
+  Note that this also affects the `dividers` prop on both `Stack` and `Tiles`, e.g. `<Stack space="medium" dividers="strong">`. You can still pass a boolean prop if you want to render the default divider styling, e.g. `<Stack space="medium" dividers>`, so this change is backwards compatible.
+
+## 24.3.1
+
+### Patch Changes
+
+- Update deprecated treat imports ([#566](https://github.com/seek-oss/braid-design-system/pull/566))
+
+## 24.3.0
+
+### Minor Changes
+
+- Theme: Introduce the OCC theme ([#547](https://github.com/seek-oss/braid-design-system/pull/547))
+
+  Adds support to build product for the OCC market. This theme is an adaption of the [Atomic Design System](https://occmundial.github.io/occ-atomic/).
+
+## 24.2.0
+
+### Minor Changes
+
+- Inline: Support vertical alignment ([#562](https://github.com/seek-oss/braid-design-system/pull/562))
+
+  **`Inline`**
+
+  Vertical alignment is now supported via the `alignY` prop, e.g. `<Inline space="small" alignY="center">`.
+
+  This also supports responsive values, e.g. `<Inline space="small" alignY={['center', 'top']}>`
+
+- Box: Add `userSelect="none"`. ([#556](https://github.com/seek-oss/braid-design-system/pull/556))
+
+  **`Box`**
+
+  You can now set `userSelect` to `"none"` directly on `Box`.
+
+  Since the default value of `user-select` in CSS is `"auto"`, you can make this value dynamic by conditionally setting it to `undefined`, e.g. `<Box userSelect={selectable ? undefined : 'none'}`.
+
 ## 24.1.3
 
 ### Patch Changes

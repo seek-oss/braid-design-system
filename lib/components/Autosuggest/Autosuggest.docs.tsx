@@ -13,7 +13,7 @@ const makeSuggestions = (
   initialValue = 0,
 ) =>
   labels
-    .filter(text => !inputValue || matchHighlights(text, inputValue).length)
+    .filter((text) => !inputValue || matchHighlights(text, inputValue).length)
     .map((text, i) => ({
       text,
       value: i + initialValue,
