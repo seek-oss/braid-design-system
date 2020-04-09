@@ -18,10 +18,7 @@ export const visited = style((theme) => ({
   },
 }));
 
-export const button = style({
-  outline: 'none',
-});
-
+export const button = style({});
 export const focusOverlay = style({
   selectors: {
     [`${button}:focus ~ &`]: {

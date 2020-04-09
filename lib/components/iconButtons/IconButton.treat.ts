@@ -1,7 +1,6 @@
 import { style } from 'sku/treat';
 
 export const button = style({
-  outline: 'none',
   zIndex: 0,
   ':hover': {
     zIndex: 1,
