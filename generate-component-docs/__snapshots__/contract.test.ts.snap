@@ -1569,6 +1569,7 @@ Object {
         | ComponentClass<LinkComponentProps, any>
         | FunctionComponent<LinkComponentProps>
     themeName?: 
+        | "catho"
         | "jobStreet"
         | "jobStreetClassic"
         | "jobsDb"
