@@ -1,5 +1,5 @@
 import { style } from 'sku/treat';
-import { hideFocusRingsDataAttribute } from '../components/private/hideFocusRings/hideFocusRings';
+import { hideFocusRingsDataAttribute } from '../components/private/hideFocusRings/hideFocusRingsDataAttribute';
 
 export const base = style({
   margin: 0,
