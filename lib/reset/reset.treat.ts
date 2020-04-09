@@ -1,4 +1,5 @@
 import { style } from 'sku/treat';
+import { hideFocusRingsDataAttribute } from '../components/private/hideFocusRings/hideFocusRings';
 
 export const base = style({
   margin: 0,
@@ -9,6 +10,11 @@ export const base = style({
   font: 'inherit',
   verticalAlign: 'baseline',
   WebkitTapHighlightColor: 'transparent',
+  selectors: {
+    [`[${hideFocusRingsDataAttribute}] &`]: {
+      outline: 'none',
+    },
+  },
 });
 
 // HTML5 display-role reset for older browsers

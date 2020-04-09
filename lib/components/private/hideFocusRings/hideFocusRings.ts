@@ -1,2 +1,5 @@
 export { hideFocusRingsClassName } from './hideFocusRings.treat';
-export { HideFocusRingsRoot } from './HideFocusRingsRoot';
+export {
+  hideFocusRingsDataAttribute,
+  HideFocusRingsRoot,
+} from './HideFocusRingsRoot';
