@@ -1,15 +1,11 @@
 import React, { useState, ReactNode } from 'react';
 import { useStyles } from 'sku/react-treat';
-import { Box } from '../Box/Box';
-import { Heading } from '../Heading/Heading';
-import { Columns } from '../Columns/Columns';
-import { Column } from '../Column/Column';
-import { IconChevron } from '../icons';
-import { useVirtualTouchable } from '../private/touchable/useVirtualTouchable';
-import { Overlay } from '../private/Overlay/Overlay';
-import { hideFocusRingsClassName } from '../private/hideFocusRings/hideFocusRings';
-import * as styleRefs from './AccordionItem.treat';
+import { Box, Columns, Column, Heading, IconChevron } from '../';
 import { AllOrNone } from '../private/AllOrNone';
+import { useVirtualTouchable } from '../private/touchable/useVirtualTouchable';
+import { hideFocusRingsClassName } from '../private/hideFocusRings/hideFocusRings';
+import { Overlay } from '../private/Overlay/Overlay';
+import * as styleRefs from './AccordionItem.treat';
 
 const accordionSpace = 'large';
 

@@ -6,6 +6,7 @@ import accordionDocs from '../Accordion/Accordion.docs';
 
 const docs: ComponentDocs = {
   ...accordionDocs,
+  migrationGuide: true,
   examples: accordionDocs.examples.map((example) => ({
     ...example,
     storybook: false,
