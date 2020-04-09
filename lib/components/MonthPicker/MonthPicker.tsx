@@ -1,5 +1,4 @@
 import React, { ChangeEvent, FocusEvent, createRef, Fragment } from 'react';
-import range from 'lodash/range';
 import { isMobile } from 'is-mobile';
 import { useStyles } from 'sku/react-treat';
 import { Box } from '../Box/Box';
@@ -62,12 +61,9 @@ const getMonths = () =>
     </option>
   ));
 
-const getYears = (min: number, max: number, ascending: boolean) => {
-  const start = ascending ? min : max;
-  const end = ascending ? max + 1 : min - 1;
-
-  return range(start, end).map((year) => {
-    const yearStr = String(year);
+const getYears = (min: number, max: number, ascending: boolean) =>
+  [...new Array(max - min + 1)].map((_v, i) => {
+    const yearStr = String(ascending ? i + min : max - i);
 
     return (
       <option value={yearStr} key={yearStr}>
@@ -75,7 +71,6 @@ const getYears = (min: number, max: number, ascending: boolean) => {
       </option>
     );
   });
-};
 
 const currYear = new Date().getFullYear();
 const renderNativeInput = isMobile({ tablet: true });
