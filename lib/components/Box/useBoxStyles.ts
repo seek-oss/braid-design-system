@@ -53,6 +53,7 @@ export interface UseBoxStylesProps {
   left?: keyof typeof styleRefs.relativePosition.left;
   right?: keyof typeof styleRefs.relativePosition.right;
   userSelect?: keyof typeof styleRefs.userSelect;
+  outline?: keyof typeof styleRefs.outline;
   className?: Parameters<typeof classnames>[0];
 }
 
@@ -96,8 +97,9 @@ export const useBoxStyles = ({
   bottom,
   right,
   left,
-  className,
   userSelect,
+  outline,
+  className,
 }: UseBoxStylesProps) => {
   const resetStyles = useStyles(resetStyleRefs);
   const styles = useStyles(styleRefs);
@@ -226,7 +228,8 @@ export const useBoxStyles = ({
         styles.textAlignTablet,
         styles.textAlignDesktop,
       ),
-    className,
     styles.userSelect[userSelect!],
+    styles.outline[outline!],
+    className,
   );
 };

@@ -1,5 +1,27 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Accordion 1`] = `
+Object {
+  exportType: component,
+  props: {
+    children: ReactNodeNoStrings
+},
+}
+`;
+
+exports[`AccordionItem 1`] = `
+Object {
+  exportType: component,
+  props: {
+    children: ReactNode
+    expanded?: boolean
+    id: string
+    label: string
+    onToggle?: (expanded: boolean) => void
+},
+}
+`;
+
 exports[`Actions 1`] = `
 Object {
   exportType: component,
@@ -884,6 +906,7 @@ Object {
     onWheelCapture?: (event: WheelEvent<HTMLElement>) => void
     open?: boolean
     optimum?: number
+    outline?: "none"
     overflow?: 
         | "auto"
         | "hidden"
@@ -1401,6 +1424,7 @@ Object {
         | "xxsmall"
     >
     minWidth?: 0
+    outline?: "none"
     overflow?: 
         | "auto"
         | "hidden"

@@ -132,6 +132,7 @@ function ButtonLink({
               useBoxStyles({
                 component: 'a',
                 cursor: 'pointer',
+                outline: 'none',
                 display: 'block',
                 width: 'full',
                 paddingX: 'small',

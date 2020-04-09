@@ -179,6 +179,7 @@ export const ButtonRenderer = ({
     background,
     transform: 'touchable',
     transition: 'touchable',
+    outline: 'none',
     className: [
       styles.root,
       isWeak ? styles.weak : null,

@@ -1,8 +1,6 @@
 import { style, styleMap } from 'sku/treat';
 
-export const field = style({
-  outline: 'none',
-});
+export const field = style({});
 
 export const placeholderColor = style((theme) => ({
   '::placeholder': {
