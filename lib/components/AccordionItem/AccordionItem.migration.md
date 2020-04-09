@@ -10,12 +10,12 @@
 
 ```diff
 -<AccordionItem
-  title="Accordion item"
-  onOpen={() => { ... }}
-  onClose={() => { ... }}>
+-  title="Accordion item"
+-  onOpen={() => { ... }}
+-  onClose={() => { ... }}>
 +<AccordionItem
-  label="Accordion item"
-  onToggle={(expanded) => { ... }}>
++  label="Accordion item"
++  onToggle={(expanded) => { ... }}>
 ```
 
 ## Previous Implementations
