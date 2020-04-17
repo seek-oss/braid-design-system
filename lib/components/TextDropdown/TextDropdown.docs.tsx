@@ -75,7 +75,7 @@ const docs: ComponentDocs = {
       },
     },
     {
-      label: 'With a strong weight along side text',
+      label: 'Within strong text',
       Container,
       Example: ({ id }) => {
         const [value, setValue] = useState('Relevance');
