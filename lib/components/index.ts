@@ -49,6 +49,7 @@ export { Strong } from './Strong/Strong';
 export { Tag } from './Tag/Tag';
 export { Text } from './Text/Text';
 export { Textarea } from './Textarea/Textarea';
+export { TextDropdown } from './TextDropdown/TextDropdown';
 export { TextField } from './TextField/TextField';
 export { TextLink } from './TextLink/TextLink';
 export { TextLinkRenderer } from './TextLinkRenderer/TextLinkRenderer';
