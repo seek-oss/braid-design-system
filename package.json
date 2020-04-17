@@ -10,17 +10,17 @@
   ],
   "scripts": {
     "test": "sku test",
-    "start": "concurrently -n \"docs-site,playroom\" -c \"magenta,greenBright\" \"sku start\" \"OPEN_TAB=false sku playroom\"",
+    "start": "SKU_TELEMETRY=false concurrently -n \"docs-site,playroom\" -c \"magenta,greenBright\" \"sku start\" \"OPEN_TAB=false sku playroom\"",
     "lint": "sku lint && yarn lint-absolute-imports",
     "lint-absolute-imports": "! grep -R \" from 'lib/\" lib/*",
     "format": "sku format",
     "generate-component-docs": "ts-node generate-component-docs",
     "generate-icons": "node scripts/generateIcons.js",
-    "setup": "sku configure && concurrently -n \"component-docs,icons\" -c \"blueBright,yellowBright\" \"yarn generate-component-docs\" \"yarn generate-icons\"",
+    "setup": "SKU_TELEMETRY=false sku configure && concurrently -n \"component-docs,icons\" -c \"blueBright,yellowBright\" \"yarn generate-component-docs\" \"yarn generate-icons\"",
     "prelint": "yarn setup",
     "prestart": "yarn setup",
     "prebuild": "yarn setup",
-    "build": "concurrently -n \"docs-site,playroom\" -c \"magenta,greenBright\" \"sku build\" \"sku build-playroom\"",
+    "build": "SKU_TELEMETRY=false concurrently -n \"docs-site,playroom\" -c \"magenta,greenBright\" \"sku build\" \"sku build-playroom\"",
     "playroom": "sku playroom",
     "storybook": "sku storybook",
     "chromatic": "sku chromatic",
@@ -31,7 +31,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "sku pre-commit"
+      "pre-commit": "SKU_TELEMETRY=false sku pre-commit"
     }
   },
   "repository": {
