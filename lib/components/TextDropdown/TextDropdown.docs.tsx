@@ -152,7 +152,7 @@ const docs: ComponentDocs = {
       ),
     },
     {
-      name: 'Strong weight with along side text',
+      name: 'Strong',
       code: (
         <Text>
           Sort by{' '}
