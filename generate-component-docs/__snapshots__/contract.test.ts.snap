@@ -5361,6 +5361,19 @@ Object {
 }
 `;
 
+exports[`TextDropdown 1`] = `
+Object {
+  exportType: component,
+  props: {
+    id: string
+    label: string
+    onChange: (value: Value) => void
+    options: TextDropdownValue<Value>[]
+    value: NonNullable<Value>
+},
+}
+`;
+
 exports[`TextField 1`] = `
 Object {
   exportType: component,
