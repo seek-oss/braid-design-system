@@ -1,5 +1,85 @@
 # braid-design-system
 
+## 25.3.0
+
+### Minor Changes
+
+- Inline: Add `collapseBelow` and `reverse` props. ([#593](https://github.com/seek-oss/braid-design-system/pull/593))
+
+  Similar to [Columns](https://seek-oss.github.io/braid-design-system/components/Columns), you can now responsively collapse an `Inline` into a vertical stack on mobile with the `collapseBelow` prop.
+
+  For example, if you want items to stack vertically below tablet:
+
+  ```js
+  <Inline space="small" collapseBelow="tablet">
+    ...
+  </Inline>
+  ```
+
+  Also similar to `Columns`, you can now reverse the order of items horizontally. This is particularly useful when combined with `align="right"`.
+
+  For example, if you're rendering buttons and you want your primary action on the right on desktop, but at the top on mobile:
+
+  ```js
+  <Inline space="small" collapseBelow="tablet" align="right" reverse>
+    <Button>Primary action</Button>
+    <Button weight="weak">Secondary action</Button>
+  </Inline>
+  ```
+
+- Columns: Add `align` prop ([#593](https://github.com/seek-oss/braid-design-system/pull/593))
+
+  When collapsing columns into a vertical stack on smaller screens, you can now control the alignment.
+
+  For example, if you want your columns to be horizontally centred on mobile:
+
+  ```js
+  <Columns space="small" collapseBelow="tablet" align="center">
+    <Column>...<Column>
+    <Column>...<Column>
+    <Column>...<Column>
+  </Columns>
+  ```
+
+  As a side effect, this also means that you can control the alignment of columns when the total width doesn't reach 100%.
+
+  For example:
+
+  ```js
+  <Columns space="small" align="center">
+    <Column width="1/3">...<Column>
+    <Column width="1/3">...<Column>
+  </Columns>
+  ```
+
+- Add TextDropdown component ([#594](https://github.com/seek-oss/braid-design-system/pull/594))
+
+  An inline dropdown that can be used as part of a sentence or as an
+  alternative to `Dropdown`, outside of a more structured form.
+
+  Inherits its styling from the parent typographic component, and as such
+  must be used nested within either a `Text` or `Heading` component.
+
+  Example usage:
+
+  ```tsx
+  const [jobTitle, setJobTitle] = useState('Developer');
+
+  <Text>
+    <TextDropdown
+      id="jobTitle"
+      label="Job Title"
+      value={jobTitle}
+      onChange={setJobTitle}
+      options={['Developer', 'Designer', 'Product Manager']}
+    />
+  </Text>;
+  ```
+
+### Patch Changes
+
+- Hide native focus rings on Box elements during mouse interactions ([#589](https://github.com/seek-oss/braid-design-system/pull/589))
+
 ## 25.2.0
 
 ### Minor Changes
