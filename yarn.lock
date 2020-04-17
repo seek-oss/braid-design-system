@@ -11235,6 +11235,11 @@ parse-json@^5.0.0:
     json-parse-better-errors "^1.0.1"
     lines-and-columns "^1.1.6"
 
+parse-ms@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/parse-ms/-/parse-ms-2.1.0.tgz#348565a753d4391fa524029956b172cb7753097d"
+  integrity sha512-kHt7kzLoS9VBZfUsiKjv43mr91ea+U05EyKkEtqp7vNbHxmaVuEqN7XxeEVnGrMtYOAxGrDElSi96K7EgO1zCA==
+
 parse-prop-types@^0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/parse-prop-types/-/parse-prop-types-0.3.0.tgz#c0d3ccff4e3baabed6ec498974a657314a8f18d8"
@@ -12039,6 +12044,13 @@ pretty-hrtime@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/pretty-hrtime/-/pretty-hrtime-1.0.3.tgz#b7e3ea42435a4c9b2759d99e0f201eb195802ee1"
   integrity sha1-t+PqQkNaTJsnWdmeDyAesZWALuE=
+
+pretty-ms@^6.0.1:
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/pretty-ms/-/pretty-ms-6.0.1.tgz#03ec6cfee20329f142645e63efad96bb775d3da4"
+  integrity sha512-ke4njoVmlotekHlHyCZ3wI/c5AMT8peuHs8rKJqekj/oR5G8lND2dVpicFlUz5cbZgE290vvkMuDwfj/OcW1kw==
+  dependencies:
+    parse-ms "^2.1.0"
 
 prismjs@^1.8.4:
   version "1.20.0"
@@ -13639,10 +13651,10 @@ sisteransi@^1.0.4:
   resolved "https://registry.yarnpkg.com/sisteransi/-/sisteransi-1.0.5.tgz#134d681297756437cc05ca01370d3a7a571075ed"
   integrity sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==
 
-sku@10.1.1:
-  version "10.1.1"
-  resolved "https://registry.yarnpkg.com/sku/-/sku-10.1.1.tgz#0f5e17297f8f66270a7d2611b5d82dca0187f0e8"
-  integrity sha512-eTQe+C+cGoCeNxrY6hWAN1mGYhhHJNoiO9UeID95umpIWoU0sfn2Ng4UmMCDl6CQDISbAqjwZcyyJ2It1z0iTg==
+sku@10.1.2:
+  version "10.1.2"
+  resolved "https://registry.yarnpkg.com/sku/-/sku-10.1.2.tgz#9488250b2d055cdff9628a5a664b2c168a9ae3e4"
+  integrity sha512-+bKO2avILRKWFeAMW485b1M37UHj+IbvgJU7FBG25D4gv7MZmJ3Gw2a/6rW43IEGMQxOg/lP90w5koREdSGxyQ==
   dependencies:
     "@babel/core" "^7.9.0"
     "@babel/plugin-proposal-class-properties" "^7.8.3"
@@ -13727,6 +13739,7 @@ sku@10.1.1:
     postcss-js "^2.0.2"
     postcss-loader "^3.0.0"
     prettier "2.0.2"
+    pretty-ms "^6.0.1"
     raw-loader "^4.0.0"
     react-treat "^1.0.2"
     rimraf "^3.0.0"
