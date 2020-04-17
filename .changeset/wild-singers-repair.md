@@ -4,7 +4,7 @@
 
 Add TextDropdown component
 
-A inline dropdown that can be used as part of a sentence or as an
+An inline dropdown that can be used as part of a sentence or as an
 alternative to `Dropdown`, outside of a more structured form.
 
 Inherits its styling from the parent typographic component, and as such
