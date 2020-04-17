@@ -19,6 +19,7 @@ import {
   OverflowMenu,
   MenuItem,
   TextLink,
+  Button,
 } from '../../../../../../lib/components';
 import { HeadingProps } from '../../../../../../lib/components/Heading/Heading';
 import { TextStack } from '../../../TextStack/TextStack';
@@ -349,6 +350,23 @@ const page: Page = {
         </Card>
       </Code>
 
+      <Text>
+        If you’d like the columns to stack vertically on smaller screens, you
+        can provide the ‘collapseBelow’ prop.
+      </Text>
+      <Text>
+        For example, if you wanted buttons to be rendered vertically on mobile
+        but horizontally from tablet upwards:
+      </Text>
+      <Code>
+        <Card>
+          <Inline space="small" collapseBelow="tablet">
+            <Button>Submit</Button>
+            <Button weight="weak">Cancel</Button>
+          </Inline>
+        </Card>
+      </Code>
+
       <Divider />
 
       <LinkableHeading>Columns</LinkableHeading>
@@ -371,8 +389,8 @@ const page: Page = {
         </Columns>
       </Code>
       <Text>
-        If you’d like the columns to stack vertically on smaller screens, you
-        can provide the ‘collapseBelow’ prop.
+        Similar to ‘Inline’, if you’d like the columns to stack vertically on
+        smaller screens, you can provide the ‘collapseBelow’ prop.
       </Text>
       <Text>
         For example, if you wanted cards to be rendered vertically on mobile but
