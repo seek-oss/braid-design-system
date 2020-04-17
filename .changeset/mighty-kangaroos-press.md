@@ -6,7 +6,7 @@ Columns: Add `align` prop
 
 When collapsing columns into a vertical stack on smaller screens, you can now control the alignment.
 
-For example, if you want your column content to be horizontally centred on mobile:
+For example, if you want your columns to be horizontally centred on mobile:
 
 ```js
 <Columns space="small" collapseBelow="tablet" align="center">
