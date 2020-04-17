@@ -17,6 +17,7 @@ export const Column = ({ children, width }: ColumnProps) => {
     mobileSpace,
     tabletSpace,
     desktopSpace,
+    collapsibleAlignmentChildProps,
   } = useContext(ColumnsContext);
 
   return (
@@ -45,6 +46,7 @@ export const Column = ({ children, width }: ColumnProps) => {
             : undefined
         }
         height="full"
+        {...collapsibleAlignmentChildProps}
         className={styles.columnContent}
       >
         {children}

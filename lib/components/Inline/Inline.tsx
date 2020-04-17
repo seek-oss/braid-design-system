@@ -5,18 +5,13 @@ import {
   useNegativeMarginLeft,
   useNegativeMarginTop,
 } from '../../hooks/useNegativeMargin/useNegativeMargin';
-import { ResponsiveProp } from '../../utils/responsiveProp';
-import {
-  Align,
-  alignToFlexAlign,
-  alignYToFlexAlign,
-  AlignY,
-} from '../../utils/align';
 import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
+import {
+  resolveCollapsibleAlignmentProps,
+  CollapsibleAlignmentProps,
+} from '../../utils/collapsibleAlignmentProps';
 
-export interface InlineProps {
-  align?: ResponsiveProp<Align>;
-  alignY?: ResponsiveProp<AlignY>;
+export interface InlineProps extends CollapsibleAlignmentProps {
   space: ResponsiveSpace;
   children: ReactNodeNoStrings;
 }
@@ -25,23 +20,39 @@ export const Inline = ({
   space = 'none',
   align,
   alignY,
+  collapseBelow,
+  reverse,
   children,
 }: InlineProps) => {
   const negativeMarginLeft = useNegativeMarginLeft(space);
   const negativeMarginTop = useNegativeMarginTop(space);
 
+  const {
+    collapsibleAlignmentProps,
+    collapsibleAlignmentChildProps,
+    orderChildren,
+  } = resolveCollapsibleAlignmentProps({
+    align,
+    alignY,
+    collapseBelow,
+    reverse,
+  });
+
   return (
     <Box className={negativeMarginTop}>
       <Box
-        display="flex"
-        justifyContent={alignToFlexAlign(align)}
-        alignItems={alignYToFlexAlign(alignY)}
-        flexWrap="wrap"
         className={negativeMarginLeft}
+        flexWrap="wrap"
+        {...collapsibleAlignmentProps}
       >
-        {Children.map(children, (child) =>
+        {Children.map(orderChildren(children), (child) =>
           child !== null && child !== undefined ? (
-            <Box minWidth={0} paddingLeft={space} paddingTop={space}>
+            <Box
+              minWidth={0}
+              paddingLeft={space}
+              paddingTop={space}
+              {...collapsibleAlignmentChildProps}
+            >
               {child}
             </Box>
           ) : null,
