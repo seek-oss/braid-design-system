@@ -1,5 +1,59 @@
 # braid-design-system
 
+## 25.2.0
+
+### Minor Changes
+
+- Theme: Introduce the Catho theme ([#550](https://github.com/seek-oss/braid-design-system/pull/550))
+
+  Adds support to build product for the Catho market. This theme is an adaption of the [Quantum Design System](https://catho.github.io/quantum).
+
+- Add `Accordion` and `AccordionItem` components ([#587](https://github.com/seek-oss/braid-design-system/pull/587))
+
+  Example usage:
+
+  ```jsx
+  <Accordion>
+    <AccordionItem id="item_1" label="Accordion item 1">
+      <Text>Accordion item content</Text>
+    </AccordionItem>
+    <AccordionItem id="item_2" label="Accordion item 2">
+      <Text>Accordion item content</Text>
+    </AccordionItem>
+    <AccordionItem id="item_3" label="Accordion item 3">
+      <Text>Accordion item content</Text>
+    </AccordionItem>
+  </Accordion>
+  ```
+
+  Accordions manage their own state internally by default. If you'd like to take control of them yourself, you can pass an `expanded` prop to `AccordionItem` as well as an `onToggle` callback.
+
+  ```jsx
+  const [expanded, setExpanded] = useState(false);
+
+  <AccordionItem
+    id="id"
+    label="Accordion item"
+    expanded={expanded}
+    onToggle={setExpanded}
+  >
+    <Text>Accordion item content</Text>
+  </AccordionItem>;
+  ```
+
+- Box: Add support for `outline="none"` ([#587](https://github.com/seek-oss/braid-design-system/pull/587))
+
+### Patch Changes
+
+- Drop lodash usage to decrease bundle size. ([#585](https://github.com/seek-oss/braid-design-system/pull/585))
+
+  This directly affects `MonthPicker` and any components using the `data` prop:
+
+  - All field components
+  - OverflowMenu
+  - MenuRenderer
+  - Button
+
 ## 25.1.0
 
 ### Minor Changes

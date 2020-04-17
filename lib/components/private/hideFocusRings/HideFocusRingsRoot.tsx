@@ -1,6 +1,5 @@
 import React, { useState, useEffect, ReactNode } from 'react';
-
-export const hideFocusRingsDataAttribute = 'data-braid-hidefocusrings';
+import { hideFocusRingsDataAttribute } from './hideFocusRingsDataAttribute';
 
 export interface HideFocusRingsRootProps {
   children: ReactNode;
