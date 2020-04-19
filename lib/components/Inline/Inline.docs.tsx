@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import { Placeholder } from '../private/Placeholder/Placeholder';
 import { InlineProps } from './Inline';
-import { Box, Inline } from '../';
+import { Box, Inline, Stack, Text, TextLink } from '../';
 import { padding } from '../Box/useBoxStyles.treat';
 
 const spaces = Object.keys(padding.top).filter(
@@ -17,11 +17,40 @@ const Container = ({ children }: { children: ReactNode }) => (
 
 const docs: ComponentDocs = {
   category: 'Layout',
-  screenshotWidths: [320, 768],
+  screenshotWidths: [320, 768, 1200],
+  description: (
+    <Stack space="large">
+      <Text>
+        Renders content horizontally with consistent{' '}
+        <TextLink href="/foundations/layout#Spacing">spacing</TextLink> between
+        all items, spanning multiple lines if needed.
+      </Text>
+    </Stack>
+  ),
   examples: [
+    {
+      label: 'Basic example',
+      Container,
+      storybook: false,
+      Example: () => (
+        <Inline space="small">
+          <Placeholder width={48} height={48} />
+          <Placeholder width={48} height={48} />
+          <Placeholder width={48} height={48} />
+          <Placeholder width={48} height={48} />
+          <Placeholder width={48} height={48} />
+          <Placeholder width={48} height={48} />
+          <Placeholder width={48} height={48} />
+          <Placeholder width={48} height={48} />
+          <Placeholder width={48} height={48} />
+          <Placeholder width={48} height={48} />
+        </Inline>
+      ),
+    },
     ...spaces.map((space) => ({
       label: `Space: ${space}`,
       Container,
+      docsSite: false,
       Example: () => (
         <Inline space={space}>
           <Placeholder width={48} height={48} />
@@ -118,6 +147,125 @@ const docs: ComponentDocs = {
           <Placeholder width={48} height={40} />
           <Placeholder width={48} height={100} />
           <Placeholder width={48} height={60} />
+        </Inline>
+      ),
+    },
+    {
+      label: 'Collapse below tablet',
+      Container,
+      Example: () => (
+        <Inline space="small" collapseBelow="tablet">
+          <Placeholder width={48} height={48} />
+          <Placeholder width={48} height={48} />
+          <Placeholder width={48} height={48} />
+          <Placeholder width={48} height={48} />
+          <Placeholder width={48} height={48} />
+          <Placeholder width={48} height={48} />
+        </Inline>
+      ),
+    },
+    {
+      label: 'Collapse below desktop',
+      Container,
+      Example: () => (
+        <Inline space="small" collapseBelow="desktop">
+          <Placeholder width={48} height={48} />
+          <Placeholder width={48} height={48} />
+          <Placeholder width={48} height={48} />
+          <Placeholder width={48} height={48} />
+          <Placeholder width={48} height={48} />
+          <Placeholder width={48} height={48} />
+        </Inline>
+      ),
+    },
+    {
+      label:
+        'Collapse below desktop with responsive space (e.g. "xxsmall" on mobile, "small" on tablet, "large" on desktop)',
+      Container,
+      Example: () => (
+        <Inline space={['xxsmall', 'medium', 'large']} collapseBelow="desktop">
+          <Placeholder width={48} height={48} />
+          <Placeholder width={48} height={48} />
+          <Placeholder width={48} height={48} />
+          <Placeholder width={48} height={48} />
+          <Placeholder width={48} height={48} />
+          <Placeholder width={48} height={48} />
+        </Inline>
+      ),
+    },
+    {
+      label: 'Collapse below desktop with alignment (e.g. "center")',
+      Container,
+      Example: () => (
+        <Inline space="small" collapseBelow="desktop" align="center">
+          <Placeholder width={48} height={48} />
+          <Placeholder width={48} height={48} />
+          <Placeholder width={48} height={48} />
+          <Placeholder width={48} height={48} />
+          <Placeholder width={48} height={48} />
+          <Placeholder width={48} height={48} />
+        </Inline>
+      ),
+    },
+    {
+      label:
+        'Test - collapseBelow + align: On mobile should be vertical and left aligned, on tablet should be vertical and centre aligned, on desktop should be horizontal and right aligned',
+      docsSite: false,
+      Container,
+      Example: () => (
+        <Inline
+          space="small"
+          collapseBelow="desktop"
+          align={['left', 'center', 'right']}
+        >
+          <Placeholder width={48} height={48} />
+          <Placeholder width={48} height={48} />
+          <Placeholder width={48} height={48} />
+          <Placeholder width={48} height={48} />
+          <Placeholder width={48} height={48} />
+          <Placeholder width={48} height={48} />
+        </Inline>
+      ),
+    },
+    {
+      label:
+        'Test - collapseBelow + align + reverse: On mobile should be vertical and left aligned, on tablet should be reversed horizontally and centre aligned, on desktop should be reversed horizontally and right aligned',
+      docsSite: false,
+      Container,
+      Example: () => (
+        <Inline
+          space="small"
+          collapseBelow="tablet"
+          align={['left', 'center', 'right']}
+          reverse
+        >
+          <Placeholder width={48} height={48} label="1" />
+          <Placeholder width={48} height={48} label="2" />
+          <Placeholder width={48} height={48} label="3" />
+          <Placeholder width={48} height={48} label="4" />
+          <Placeholder width={48} height={48} label="5" />
+          <Placeholder width={48} height={48} label="6" />
+        </Inline>
+      ),
+    },
+    {
+      label:
+        'Test - collapseBelow + align + reverse: On mobile should be vertical and left aligned, on tablet should be vertical and centre aligned, on desktop should be reversed horizontally and right aligned',
+      docsSite: false,
+      Container,
+      Example: () => (
+        <Inline
+          space="small"
+          collapseBelow="desktop"
+          align={['left', 'center', 'right']}
+          reverse
+        >
+          <Placeholder width={48} height={48} label="1" />
+          <Placeholder width={48} height={48} label="2" />
+          <Placeholder width={48} height={48} label="3" />
+          <Placeholder width={48} height={48} label="4" />
+          <Placeholder width={48} height={48} label="5" />
+          <Placeholder width={48} height={48} label="6" />
         </Inline>
       ),
     },

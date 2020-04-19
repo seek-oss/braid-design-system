@@ -1,17 +1,17 @@
-import React, { Children, ReactElement, createContext, useMemo } from 'react';
+import React, { createContext, ReactElement } from 'react';
 import { Box } from '../Box/Box';
 import { ColumnProps } from '../Column/Column';
 import { Space, ResponsiveSpace } from '../Box/useBoxStyles';
 import { useNegativeMarginLeft } from '../../hooks/useNegativeMargin/useNegativeMargin';
+import { normaliseResponsiveProp } from '../../utils/responsiveProp';
 import {
-  normaliseResponsiveProp,
-  ResponsiveProp,
-} from '../../utils/responsiveProp';
-import {
-  resolveResponsiveRangeProps,
-  ResponsiveRangeProps,
-} from '../../utils/responsiveRangeProps';
-import { AlignY, alignYToFlexAlign } from '../../utils/align';
+  resolveCollapsibleAlignmentProps,
+  CollapsibleAlignmentProps,
+} from '../../utils/collapsibleAlignmentProps';
+
+type CollapsibleAlignmentChildProps = ReturnType<
+  typeof resolveCollapsibleAlignmentProps
+>['collapsibleAlignmentChildProps'];
 
 interface ColumnsContextValue {
   collapseMobile: boolean;
@@ -19,24 +19,24 @@ interface ColumnsContextValue {
   mobileSpace: Space;
   tabletSpace: Space;
   desktopSpace: Space;
+  collapsibleAlignmentChildProps: CollapsibleAlignmentChildProps | {};
 }
+
 export const ColumnsContext = createContext<ColumnsContextValue>({
   collapseMobile: false,
   collapseTablet: false,
   mobileSpace: 'none',
   tabletSpace: 'none',
   desktopSpace: 'none',
+  collapsibleAlignmentChildProps: {},
 });
 
-export interface ColumnsProps {
+export interface ColumnsProps extends CollapsibleAlignmentProps {
+  space: ResponsiveSpace;
   children:
     | Array<ReactElement<ColumnProps> | null>
     | ReactElement<ColumnProps>
     | null;
-  collapseBelow?: ResponsiveRangeProps['below'];
-  reverse?: boolean;
-  alignY?: ResponsiveProp<AlignY>;
-  space: ResponsiveSpace;
 }
 
 export const Columns = ({
@@ -44,31 +44,25 @@ export const Columns = ({
   collapseBelow,
   reverse = false,
   space = 'none',
+  align,
   alignY,
 }: ColumnsProps) => {
   const [mobileSpace, tabletSpace, desktopSpace] = normaliseResponsiveProp(
     space,
   );
 
-  const [collapseMobile, collapseTablet] = resolveResponsiveRangeProps({
-    below: collapseBelow,
+  const {
+    collapsibleAlignmentProps,
+    collapsibleAlignmentChildProps,
+    collapseMobile,
+    collapseTablet,
+    orderChildren,
+  } = resolveCollapsibleAlignmentProps({
+    collapseBelow,
+    align,
+    alignY,
+    reverse,
   });
-
-  // Prevent re-renders when context values haven't changed
-  const columnsContextValue = useMemo(
-    () => ({
-      collapseMobile,
-      collapseTablet,
-      mobileSpace,
-      tabletSpace,
-      desktopSpace,
-    }),
-    [collapseMobile, collapseTablet, mobileSpace, tabletSpace, desktopSpace],
-  );
-
-  const rowReverseTablet = collapseMobile && reverse;
-  const rowReverseDesktop = (collapseMobile || collapseTablet) && reverse;
-  const reverseDocumentOrder = !collapseMobile && !collapseTablet && reverse;
 
   const negativeMarginLeft = useNegativeMarginLeft([
     collapseMobile ? 'none' : mobileSpace,
@@ -77,23 +71,18 @@ export const Columns = ({
   ]);
 
   return (
-    <Box
-      display={[
-        collapseMobile ? 'block' : 'flex',
-        collapseTablet ? 'block' : 'flex',
-        'flex',
-      ]}
-      alignItems={alignYToFlexAlign(alignY)}
-      flexDirection={[
-        collapseMobile ? 'column' : 'row',
-        // eslint-disable-next-line no-nested-ternary
-        collapseTablet ? 'column' : rowReverseTablet ? 'rowReverse' : 'row',
-        rowReverseDesktop ? 'rowReverse' : 'row',
-      ]}
-      className={negativeMarginLeft}
-    >
-      <ColumnsContext.Provider value={columnsContextValue}>
-        {reverseDocumentOrder ? Children.toArray(children).reverse() : children}
+    <Box {...collapsibleAlignmentProps} className={negativeMarginLeft}>
+      <ColumnsContext.Provider
+        value={{
+          collapseMobile,
+          collapseTablet,
+          mobileSpace,
+          tabletSpace,
+          desktopSpace,
+          collapsibleAlignmentChildProps,
+        }}
+      >
+        {orderChildren(children)}
       </ColumnsContext.Provider>
     </Box>
   );

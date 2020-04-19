@@ -26,7 +26,7 @@ exports[`Actions 1`] = `
 Object {
   exportType: component,
   props: {
-    children: ReactNode
+    children: ReactNodeNoStrings
 },
 }
 `;
@@ -2125,6 +2125,11 @@ exports[`Columns 1`] = `
 Object {
   exportType: component,
   props: {
+    align?: ResponsiveProp<
+        | "center"
+        | "left"
+        | "right"
+    >
     alignY?: ResponsiveProp<
         | "bottom"
         | "center"
@@ -4495,6 +4500,10 @@ Object {
         | "top"
     >
     children: ReactNodeNoStrings
+    collapseBelow?: 
+        | "desktop"
+        | "tablet"
+    reverse?: boolean
     space: ResponsiveProp<
         | "gutter"
         | "large"
@@ -5348,6 +5357,19 @@ Object {
         | "medium"
         | "regular"
         | "strong"
+},
+}
+`;
+
+exports[`TextDropdown 1`] = `
+Object {
+  exportType: component,
+  props: {
+    id: string
+    label: string
+    onChange: (value: Value) => void
+    options: TextDropdownValue<Value>[]
+    value: NonNullable<Value>
 },
 }
 `;

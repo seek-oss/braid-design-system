@@ -302,6 +302,84 @@ const docs: ComponentDocs = {
         </Columns>
       ),
     },
+    {
+      label:
+        'Test - collapseBelow + align: On mobile should be vertical and left aligned, on tablet should be horizontal and centre aligned, on desktop should be horizontal and right aligned',
+      docsSite: false,
+      Example: () => (
+        <Columns
+          space="small"
+          collapseBelow="tablet"
+          align={['left', 'center', 'right']}
+        >
+          <Column width="1/3">
+            <Placeholder height={60} label="First" />
+          </Column>
+          <Column width="1/3">
+            <Placeholder height={60} label="Second" />
+          </Column>
+        </Columns>
+      ),
+    },
+    {
+      label:
+        'Test - collapseBelow + align: On mobile should be vertical and left aligned, on tablet should be horizontal and centre aligned, on desktop should be horizontal and right aligned',
+      docsSite: false,
+      Example: () => (
+        <Columns
+          space="small"
+          collapseBelow="desktop"
+          align={['left', 'center', 'right']}
+        >
+          <Column width="1/3">
+            <Placeholder height={60} label="First" />
+          </Column>
+          <Column width="1/3">
+            <Placeholder height={60} label="Second" />
+          </Column>
+        </Columns>
+      ),
+    },
+    {
+      label:
+        'Test - collapseBelow + align + reverse: On mobile should be vertical and left aligned, on tablet should be reversed horizontally and centre aligned, on desktop should be reversed horizontally and right aligned',
+      docsSite: false,
+      Example: () => (
+        <Columns
+          space="small"
+          collapseBelow="tablet"
+          align={['left', 'center', 'right']}
+          reverse
+        >
+          <Column width="1/3">
+            <Placeholder height={60} label="First" />
+          </Column>
+          <Column width="1/3">
+            <Placeholder height={60} label="Second" />
+          </Column>
+        </Columns>
+      ),
+    },
+    {
+      label:
+        'Test - collapseBelow + align + reverse: On mobile should be vertical and left aligned, on tablet should be vertical and centre aligned, on desktop should be reversed horizontally and right aligned',
+      docsSite: false,
+      Example: () => (
+        <Columns
+          space="small"
+          collapseBelow="desktop"
+          align={['left', 'center', 'right']}
+          reverse
+        >
+          <Column width="1/3">
+            <Placeholder height={60} label="First" />
+          </Column>
+          <Column width="1/3">
+            <Placeholder height={60} label="Second" />
+          </Column>
+        </Columns>
+      ),
+    },
   ],
   snippets: [
     {
