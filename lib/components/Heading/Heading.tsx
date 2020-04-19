@@ -7,6 +7,9 @@ import {
   HeadingLevel,
   HeadingWeight,
 } from '../../hooks/typography';
+import buildDataAttributes, {
+  DataAttributeMap,
+} from '../private/buildDataAttributes';
 
 /* tslint:disable-next-line no-object-literal-type-assertion */
 const resolveDefaultComponent = {
@@ -25,6 +28,7 @@ export interface HeadingProps {
   id?: string;
   truncate?: boolean;
   _LEGACY_SPACE_?: boolean;
+  data?: DataAttributeMap;
 }
 
 const resolvePaddingForLevel = (level: HeadingLevel) => {
@@ -48,6 +52,7 @@ export const Heading = ({
   id,
   truncate = false,
   _LEGACY_SPACE_ = false,
+  data,
 }: HeadingProps) => {
   const truncateStyles = useTruncate();
   const content = truncate ? (
@@ -78,6 +83,7 @@ export const Heading = ({
           baseline: true,
           _LEGACY_SPACE_,
         })}
+        {...(data ? buildDataAttributes(data) : {})}
       >
         {content}
       </Box>

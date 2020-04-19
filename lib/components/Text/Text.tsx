@@ -1,6 +1,9 @@
 import React, { ReactNode, useContext, useMemo } from 'react';
 import TextContext from './TextContext';
 import { Box, BoxProps } from '../Box/Box';
+import buildDataAttributes, {
+  DataAttributeMap,
+} from '../private/buildDataAttributes';
 import { useText, UseTextProps, useTruncate } from '../../hooks/typography';
 
 export interface TextProps extends Pick<BoxProps, 'component'> {
@@ -13,6 +16,7 @@ export interface TextProps extends Pick<BoxProps, 'component'> {
   align?: BoxProps['textAlign'];
   truncate?: boolean;
   _LEGACY_SPACE_?: boolean;
+  data?: DataAttributeMap;
 }
 
 export const Text = ({
@@ -25,6 +29,7 @@ export const Text = ({
   baseline = true,
   truncate = false,
   _LEGACY_SPACE_ = false,
+  data,
   children,
 }: TextProps) => {
   const textStyles = useText({ weight, size, baseline, tone, _LEGACY_SPACE_ });
@@ -74,6 +79,7 @@ export const Text = ({
         component={component}
         textAlign={align}
         className={textStyles}
+        {...(data ? buildDataAttributes(data) : {})}
       >
         {content}
       </Box>
