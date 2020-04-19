@@ -2443,6 +2443,7 @@ Object {
         | "webview"
         | ComponentClass<any, any>
         | FunctionComponent<any>
+    data?: Record<string, string | number>
     id?: string
     level: 
         | "1"
@@ -5336,6 +5337,7 @@ Object {
         | "webview"
         | ComponentClass<any, any>
         | FunctionComponent<any>
+    data?: Record<string, string | number>
     id?: string
     size?: 
         | "large"
