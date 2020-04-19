@@ -83,7 +83,7 @@ export const Heading = ({
           baseline: true,
           _LEGACY_SPACE_,
         })}
-        {...(data ? buildDataAttributes(data) : {})}
+        {...(data ? buildDataAttributes(data) : undefined)}
       >
         {content}
       </Box>

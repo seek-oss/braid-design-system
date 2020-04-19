@@ -79,7 +79,7 @@ export const Text = ({
         component={component}
         textAlign={align}
         className={textStyles}
-        {...(data ? buildDataAttributes(data) : {})}
+        {...(data ? buildDataAttributes(data) : undefined)}
       >
         {content}
       </Box>
