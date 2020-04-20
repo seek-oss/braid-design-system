@@ -14,7 +14,12 @@ export function ThemeToggle() {
           label="Theme"
           value={theme}
           onChange={setTheme}
-          options={Object.keys(themes) as Array<keyof typeof themes>}
+          options={Object.entries(themes).map(
+            ([themeKey, { displayName }]) => ({
+              text: displayName,
+              value: themeKey as keyof typeof themes,
+            }),
+          )}
         />
       ) : (
         <Fragment>&nbsp;</Fragment>
