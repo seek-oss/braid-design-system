@@ -8,10 +8,9 @@ import React, {
 import { useLocalStorage } from 'react-use';
 
 import * as themes from '../../../../lib/themes';
+type ThemeKey = keyof typeof themes;
 
 const defaultTheme = 'seekUnifiedBeta' as const;
-
-export type ThemeKey = keyof typeof themes;
 
 interface ThemeSettingsContext {
   ready: boolean;
