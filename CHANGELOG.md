@@ -1,5 +1,11 @@
 # braid-design-system
 
+## 25.4.1
+
+### Patch Changes
+
+- Autosuggest: When using the `automaticSelection` prop, we now prevent automatic selection from ocurring if the input value hasn't changed since focusing the field ([#601](https://github.com/seek-oss/braid-design-system/pull/601))
+
 ## 25.4.0
 
 ### Minor Changes
