@@ -512,6 +512,64 @@ describe('Autosuggest', () => {
       expect(changeHandler).not.toHaveBeenCalled();
     });
 
+    it("shouldn't select anything on blur if the field is populated and the user hasn't typed anything", () => {
+      const { input, changeHandler, getInputValue } = renderAutosuggest({
+        automaticSelection: true,
+        value: { text: 'I already typed something' },
+        suggestions: [
+          {
+            text: 'Apples',
+            value: 'apples',
+            highlights: [{ start: 0, end: 4 }],
+          },
+          {
+            text: 'Bananas',
+            value: 'bananas',
+            highlights: [{ start: 0, end: 4 }],
+          },
+          {
+            text: 'Carrots',
+            value: 'carrots',
+            highlights: [{ start: 0, end: 4 }],
+          },
+        ],
+      });
+
+      userEvent.click(input);
+      fireEvent.blur(input);
+      expect(getInputValue()).toBe('I already typed something');
+      expect(changeHandler).not.toHaveBeenCalled();
+    });
+
+    it("shouldn't select anything on blur if the user clears the field", () => {
+      const { input, changeHandler, getInputValue } = renderAutosuggest({
+        automaticSelection: true,
+        value: { text: 'abc' },
+        suggestions: [
+          {
+            text: 'Apples',
+            value: 'apples',
+            highlights: [{ start: 0, end: 4 }],
+          },
+          {
+            text: 'Bananas',
+            value: 'bananas',
+            highlights: [{ start: 0, end: 4 }],
+          },
+          {
+            text: 'Carrots',
+            value: 'carrots',
+            highlights: [{ start: 0, end: 4 }],
+          },
+        ],
+      });
+
+      fireEvent.input(input, { target: { value: '' } });
+      fireEvent.blur(input);
+      expect(getInputValue()).toBe('');
+      expect(changeHandler).toHaveBeenCalledWith({ text: '' });
+    });
+
     it('should select the first suggestion on enter after typing something', async () => {
       const { input, changeHandler, getInputValue } = renderAutosuggest({
         automaticSelection: true,
