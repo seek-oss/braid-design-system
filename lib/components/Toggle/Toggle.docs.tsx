@@ -8,7 +8,7 @@ const handler = () => {
 };
 
 const docs: ComponentDocs = {
-  category: 'Interaction',
+  category: 'Content',
   migrationGuide: true,
   screenshotWidths: [320],
   examples: [

@@ -8,7 +8,7 @@ const Container = ({ children }: { children: ReactNode }) => (
 );
 
 const docs: ComponentDocs = {
-  category: 'Interaction',
+  category: 'Content',
   description: (
     <Stack space="large">
       <Text>

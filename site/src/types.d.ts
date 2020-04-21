@@ -25,7 +25,7 @@ interface DocsSnippet extends Optional<Snippets[number], 'group'> {
 }
 
 export interface ComponentDocs {
-  category: 'Logic' | 'Layout' | 'Content' | 'Interaction' | 'Icon';
+  category: 'Logic' | 'Layout' | 'Content' | 'Icon';
   migrationGuide?: boolean;
   foundation?: boolean;
   screenshotWidths: Array<320 | 768 | 1200>;

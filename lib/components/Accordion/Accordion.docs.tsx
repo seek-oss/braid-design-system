@@ -4,7 +4,7 @@ import { Accordion, AccordionItem, Stack, Text, TextLink } from '../';
 import { AccordionItem as PlayroomAccordionItem } from '../../playroom/components';
 
 const docs: ComponentDocs = {
-  category: 'Interaction',
+  category: 'Content',
   screenshotWidths: [320],
   description: (
     <Stack space="large">
