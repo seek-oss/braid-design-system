@@ -12,7 +12,7 @@ import {
 } from '..';
 
 const docs: ComponentDocs = {
-  category: 'Interaction',
+  category: 'Content',
   screenshotWidths: [],
   description: (
     <Stack space="large">

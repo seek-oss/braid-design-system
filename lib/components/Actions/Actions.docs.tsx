@@ -12,7 +12,7 @@ import {
 import { background as boxBackgrounds } from '../Box/useBoxStyles.treat';
 
 const docs: ComponentDocs = {
-  category: 'Interaction',
+  category: 'Content',
   migrationGuide: true,
   screenshotWidths: [320, 768],
   examples: [

@@ -90,7 +90,7 @@ export const SubNavigation = ({ onSelect }: SubNavigationProps) => {
         }))}
       />
 
-      {['Layout', 'Content', 'Interaction', 'Logic'].map((category) => (
+      {['Layout', 'Content', 'Logic'].map((category) => (
         <SubNavigationGroup
           key={category}
           title={category}
