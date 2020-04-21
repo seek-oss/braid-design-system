@@ -322,6 +322,7 @@ export function Autosuggest<Value>({
         return {
           ...state,
           isOpen: hasSuggestions,
+          inputChangedSinceFocus: false,
         };
       }
 
@@ -329,7 +330,6 @@ export function Autosuggest<Value>({
         return {
           ...state,
           isOpen: false,
-          inputChangedSinceFocus: false,
           previewValue: null,
           highlightedIndex: null,
         };
