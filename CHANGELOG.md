@@ -1,5 +1,13 @@
 # braid-design-system
 
+## 25.4.0
+
+### Minor Changes
+
+- Text: Add data attribute support ([#596](https://github.com/seek-oss/braid-design-system/pull/596))
+
+- Heading: Add data attribute support ([#596](https://github.com/seek-oss/braid-design-system/pull/596))
+
 ## 25.3.0
 
 ### Minor Changes
