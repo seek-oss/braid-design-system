@@ -16,7 +16,7 @@ export type AccordionItemBaseProps = {
 };
 
 export type AccordionItemStateProps = AllOrNone<{
-  expanded: boolean;
+  expanded?: boolean;
   onToggle: (expanded: boolean) => void;
 }>;
 
@@ -38,9 +38,7 @@ export const AccordionItem = ({
 
   const styles = useStyles(styleRefs);
   const [expandedFallback, setExpandedFallback] = useState(false);
-
   const expanded = expandedProp ?? expandedFallback;
-  const setExpanded = onToggle ?? setExpandedFallback;
 
   return (
     <Box>
@@ -54,7 +52,17 @@ export const AccordionItem = ({
           textAlign="left"
           aria-controls={id}
           aria-expanded={expanded}
-          onClick={() => setExpanded(!expanded)}
+          onClick={() => {
+            const newValue = !expanded;
+
+            if (expandedProp === undefined) {
+              setExpandedFallback(newValue);
+            }
+
+            if (typeof onToggle === 'function') {
+              onToggle(newValue);
+            }
+          }}
         >
           <Columns space={accordionSpace}>
             <Column>
