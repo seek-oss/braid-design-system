@@ -636,7 +636,9 @@ Object {
         | "center"
         | "flexEnd"
         | "flexStart"
+        | "spaceAround"
         | "spaceBetween"
+        | "spaceEvenly"
     >
     keyParams?: string
     keyType?: string
@@ -1343,7 +1345,9 @@ Object {
         | "center"
         | "flexEnd"
         | "flexStart"
+        | "spaceAround"
         | "spaceBetween"
+        | "spaceEvenly"
     >
     left?: 0
     margin?: ResponsiveProp<

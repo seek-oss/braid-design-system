@@ -181,6 +181,8 @@ const justifyContentRules = {
   center: 'center',
   flexEnd: 'flex-end',
   spaceBetween: 'space-between',
+  spaceAround: 'space-around',
+  spaceEvenly: 'space-evenly',
 };
 export const justifyContent = styleMap(
   mapToStyleProperty(justifyContentRules, 'justifyContent'),
