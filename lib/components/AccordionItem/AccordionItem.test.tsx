@@ -34,6 +34,28 @@ describe('AccordionItem', () => {
     expect(button.getAttribute('aria-expanded')).toEqual('false');
   });
 
+  it('should support listening to toggle events while uncontrolled', () => {
+    const toggleHander = jest.fn();
+
+    const { getByRole } = render(
+      <BraidTestProvider>
+        <AccordionItem id="content" label="Label" onToggle={toggleHander}>
+          Content
+        </AccordionItem>
+      </BraidTestProvider>,
+    );
+
+    const button = getByRole('button');
+
+    button.click();
+    expect(toggleHander).toHaveBeenCalledWith(true);
+
+    button.click();
+    expect(toggleHander).toHaveBeenCalledWith(false);
+
+    expect(toggleHander).toHaveBeenCalledTimes(2);
+  });
+
   it('should support controlled state', () => {
     const TestCase = () => {
       const [expanded, setExpanded] = useState(true);
