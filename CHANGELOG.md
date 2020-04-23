@@ -1,5 +1,23 @@
 # braid-design-system
 
+## 25.5.0
+
+### Minor Changes
+
+- AccordionItem: Support `onToggle` prop without `expanded` to allow tracking in uncontrolled mode ([#605](https://github.com/seek-oss/braid-design-system/pull/605))
+
+  For example:
+
+  ```jsx
+  <AccordionItem
+    id="id"
+    label="Label"
+    onToggle={expanded => trackSomething(expanded)}
+  >
+    ...
+  </AccordionItem>
+  ```
+
 ## 25.4.1
 
 ### Patch Changes
