@@ -1,5 +1,11 @@
 # braid-design-system
 
+## 25.5.1
+
+### Patch Changes
+
+- Autosuggest: Don't select suggestions onBlur when using automaticSelection and suggestions are closed ([#609](https://github.com/seek-oss/braid-design-system/pull/609))
+
 ## 25.5.0
 
 ### Minor Changes
