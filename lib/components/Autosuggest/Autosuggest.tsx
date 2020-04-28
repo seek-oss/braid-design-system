@@ -454,6 +454,7 @@ export function Autosuggest<Value>({
       if (previewValue) {
         fireChange(previewValue);
       } else if (
+        isOpen &&
         automaticSelection &&
         inputChangedSinceFocus &&
         value.text.length > 0 &&
