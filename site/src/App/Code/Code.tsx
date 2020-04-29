@@ -58,6 +58,7 @@ const CodeButton = ({
       paddingY="xxsmall"
       paddingX="xsmall"
       position="relative"
+      outline="none"
       className={[styles.button, className]}
       {...restProps}
     >

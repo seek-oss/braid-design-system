@@ -3,7 +3,7 @@ import { ComponentDocs } from '../../../site/src/types';
 import { Box, OverflowMenu, MenuItem } from '../';
 
 const docs: ComponentDocs = {
-  category: 'Interaction',
+  category: 'Content',
   screenshotWidths: [320],
   examples: [
     {

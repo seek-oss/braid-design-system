@@ -69,6 +69,7 @@ type Action =
 interface AutosuggestState<Value> {
   highlightedIndex: number | null;
   isOpen: boolean;
+  inputChangedSinceFocus: boolean;
   previewValue: AutosuggestValue<Value> | null;
 }
 
@@ -308,6 +309,7 @@ export function Autosuggest<Value>({
         return {
           ...state,
           isOpen: true,
+          inputChangedSinceFocus: true,
           previewValue: null,
           highlightedIndex:
             hasSuggestions && automaticSelection && value.text.length > 0
@@ -320,6 +322,7 @@ export function Autosuggest<Value>({
         return {
           ...state,
           isOpen: hasSuggestions,
+          inputChangedSinceFocus: false,
         };
       }
 
@@ -393,14 +396,15 @@ export function Autosuggest<Value>({
     }
   };
 
-  const [{ isOpen, previewValue, highlightedIndex }, dispatch] = useReducer(
-    reducer,
-    {
-      isOpen: false,
-      previewValue: null,
-      highlightedIndex: null,
-    },
-  );
+  const [
+    { isOpen, inputChangedSinceFocus, previewValue, highlightedIndex },
+    dispatch,
+  ] = useReducer(reducer, {
+    isOpen: false,
+    inputChangedSinceFocus: false,
+    previewValue: null,
+    highlightedIndex: null,
+  });
 
   const highlightedItem =
     typeof highlightedIndex === 'number'
@@ -450,7 +454,9 @@ export function Autosuggest<Value>({
       if (previewValue) {
         fireChange(previewValue);
       } else if (
+        isOpen &&
         automaticSelection &&
+        inputChangedSinceFocus &&
         value.text.length > 0 &&
         normalisedSuggestions.length > 0
       ) {

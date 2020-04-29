@@ -1,37 +1,29 @@
-import React from 'react';
-
-import { Text, Box, MenuItem, MenuRenderer, IconChevron } from '../../../..';
+import React, { Fragment } from 'react';
+import { Text, TextDropdown } from '../../../..';
 import * as themes from '../../../../lib/themes';
-
-import { useThemeSettings, ThemeKey } from './ThemeSettingContext';
+import { useThemeSettings } from './ThemeSettingContext';
 
 export function ThemeToggle() {
   const { theme, setTheme, ready } = useThemeSettings();
 
   return (
-    <MenuRenderer
-      offsetSpace="small"
-      trigger={(triggerProps, { open }) => (
-        <Box component="button" cursor="pointer" {...triggerProps}>
-          {ready ? (
-            <Text>
-              {themes[theme].displayName}{' '}
-              <IconChevron
-                alignY="lowercase"
-                direction={open ? 'up' : 'down'}
-              />
-            </Text>
-          ) : (
-            <Text>&nbsp;</Text>
+    <Text>
+      {ready ? (
+        <TextDropdown
+          id="theme"
+          label="Theme"
+          value={theme}
+          onChange={setTheme}
+          options={Object.entries(themes).map(
+            ([themeKey, { displayName }]) => ({
+              text: displayName,
+              value: themeKey as keyof typeof themes,
+            }),
           )}
-        </Box>
+        />
+      ) : (
+        <Fragment>&nbsp;</Fragment>
       )}
-    >
-      {Object.entries(themes).map(([themeKey, { displayName }]) => (
-        <MenuItem key={themeKey} onClick={() => setTheme(themeKey as ThemeKey)}>
-          {displayName}
-        </MenuItem>
-      ))}
-    </MenuRenderer>
+    </Text>
   );
 }

@@ -1,6 +1,6 @@
 {
   "name": "braid-design-system",
-  "version": "25.1.0",
+  "version": "25.5.1",
   "description": "Themeable design system for the SEEK Group",
   "main": "lib/components/index.ts",
   "sideEffects": [
@@ -9,21 +9,21 @@
     "reset/**/*"
   ],
   "scripts": {
-    "test": "sku test",
-    "start": "concurrently -n \"docs-site,playroom\" -c \"magenta,greenBright\" \"sku start\" \"OPEN_TAB=false sku playroom\"",
-    "lint": "sku lint && yarn lint-absolute-imports",
+    "test": "SKU_TELEMETRY=false sku test",
+    "start": "SKU_TELEMETRY=false concurrently -n \"docs-site,playroom\" -c \"magenta,greenBright\" \"sku start\" \"OPEN_TAB=false sku playroom\"",
+    "lint": "SKU_TELEMETRY=false sku lint && yarn lint-absolute-imports",
     "lint-absolute-imports": "! grep -R \" from 'lib/\" lib/*",
-    "format": "sku format",
+    "format": "SKU_TELEMETRY=false sku format",
     "generate-component-docs": "ts-node generate-component-docs",
     "generate-icons": "node scripts/generateIcons.js",
-    "setup": "sku configure && concurrently -n \"component-docs,icons\" -c \"blueBright,yellowBright\" \"yarn generate-component-docs\" \"yarn generate-icons\"",
+    "setup": "SKU_TELEMETRY=false sku configure && concurrently -n \"component-docs,icons\" -c \"blueBright,yellowBright\" \"yarn generate-component-docs\" \"yarn generate-icons\"",
     "prelint": "yarn setup",
     "prestart": "yarn setup",
     "prebuild": "yarn setup",
-    "build": "concurrently -n \"docs-site,playroom\" -c \"magenta,greenBright\" \"sku build\" \"sku build-playroom\"",
-    "playroom": "sku playroom",
-    "storybook": "sku storybook",
-    "chromatic": "sku chromatic",
+    "build": "SKU_TELEMETRY=false concurrently -n \"docs-site,playroom\" -c \"magenta,greenBright\" \"sku build\" \"sku build-playroom\"",
+    "playroom": "SKU_TELEMETRY=false sku playroom",
+    "storybook": "SKU_TELEMETRY=false sku storybook",
+    "chromatic": "SKU_TELEMETRY=false sku chromatic",
     "deploy": "node scripts/deploy.js",
     "deploy-preview": "surge -p ./site/dist",
     "post-commit-status": "node scripts/postCommitStatus.js",
@@ -31,7 +31,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "sku pre-commit"
+      "pre-commit": "SKU_TELEMETRY=false sku pre-commit"
     }
   },
   "repository": {
@@ -88,7 +88,6 @@
     "concurrently": "^4.1.0",
     "copy-to-clipboard": "^3.2.0",
     "didyoumean2": "^3.1.2",
-    "focus-visible": "^4.1.5",
     "fs-extra": "^8.1.0",
     "gh-pages": "^2.0.1",
     "globby": "^10.0.1",
@@ -104,13 +103,13 @@
     "react-use": "^13.27.0",
     "renovate-config-seek": "0.4.0",
     "sanitize-html": "^1.22.1",
-    "sku": "10.0.2",
+    "sku": "10.1.2",
     "surge": "^0.20.1",
     "ts-node": "^8.2.0",
     "uuid": "^3.3.3"
   },
   "resolutions": {
-    "playroom": "0.16.1"
+    "playroom": "0.16.2"
   },
   "volta": {
     "node": "12.14.1",

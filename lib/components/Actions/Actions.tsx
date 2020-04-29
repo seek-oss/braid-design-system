@@ -1,23 +1,15 @@
-import React, { Children, ReactNode } from 'react';
+import React from 'react';
 import ActionsContext from './ActionsContext';
-import { Box } from '../Box/Box';
+import { Inline, InlineProps } from '../Inline/Inline';
 
 export interface ActionsProps {
-  children: ReactNode;
+  children: InlineProps['children'];
 }
 
 export const Actions = ({ children }: ActionsProps) => (
   <ActionsContext.Provider value={true}>
-    <Box display="flex" flexDirection={['column', 'row']}>
-      {Children.map(children, (child, index) =>
-        index === 0 ? (
-          <div>{child}</div>
-        ) : (
-          <Box paddingLeft={['none', 'xsmall']} paddingTop={['xsmall', 'none']}>
-            {child}
-          </Box>
-        ),
-      )}
-    </Box>
+    <Inline collapseBelow="tablet" space="xsmall">
+      {children}
+    </Inline>
   </ActionsContext.Provider>
 );

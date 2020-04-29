@@ -512,6 +512,125 @@ describe('Autosuggest', () => {
       expect(changeHandler).not.toHaveBeenCalled();
     });
 
+    it("shouldn't select anything on blur if the field is populated and the user hasn't typed anything", () => {
+      const { input, changeHandler, getInputValue } = renderAutosuggest({
+        automaticSelection: true,
+        value: { text: 'I already typed something' },
+        suggestions: [
+          {
+            text: 'Apples',
+            value: 'apples',
+            highlights: [{ start: 0, end: 4 }],
+          },
+          {
+            text: 'Bananas',
+            value: 'bananas',
+            highlights: [{ start: 0, end: 4 }],
+          },
+          {
+            text: 'Carrots',
+            value: 'carrots',
+            highlights: [{ start: 0, end: 4 }],
+          },
+        ],
+      });
+
+      userEvent.click(input);
+      fireEvent.blur(input);
+      expect(getInputValue()).toBe('I already typed something');
+      expect(changeHandler).not.toHaveBeenCalled();
+    });
+
+    it("shouldn't select anything on blur if the suggestions are hidden", async () => {
+      const {
+        input,
+        changeHandler,
+        getInputValue,
+        queryByLabelText,
+      } = renderAutosuggest({
+        automaticSelection: true,
+        value: { text: '' },
+        suggestions: [
+          {
+            text: 'Apples',
+            value: 'apples',
+            highlights: [{ start: 0, end: 4 }],
+          },
+          {
+            text: 'Bananas',
+            value: 'bananas',
+            highlights: [{ start: 0, end: 4 }],
+          },
+          {
+            text: 'Carrots',
+            value: 'carrots',
+            highlights: [{ start: 0, end: 4 }],
+          },
+        ],
+      });
+
+      expect(getInputValue()).toBe('');
+
+      userEvent.click(input);
+
+      userEvent.type(input, 'B');
+      expect(changeHandler).toHaveBeenNthCalledWith(1, {
+        text: 'B',
+      });
+
+      fireEvent.keyDown(input, { key: 'ArrowDown' });
+      expect(getInputValue()).toBe('Bananas');
+
+      fireEvent.keyDown(input, { key: 'Enter' });
+      expect(getInputValue()).toBe('Bananas');
+      expect(changeHandler).toHaveBeenNthCalledWith(2, {
+        text: 'Bananas',
+        value: 'bananas',
+      });
+
+      // Wait a bit because we ignore blurs that happens too quickly
+      // after pressing arrow down (to fix a bug in Chrome + VoiceOver)
+      await new Promise((resolve) => setTimeout(resolve, 300));
+
+      // Ensure suggestions are hidden
+      expect(queryByLabelText('Apples')).toBe(null);
+
+      fireEvent.blur(input);
+
+      // Ensure value hasn't changed
+      expect(getInputValue()).toBe('Bananas');
+      expect(changeHandler).toHaveBeenCalledTimes(2);
+    });
+
+    it("shouldn't select anything on blur if the user clears the field", () => {
+      const { input, changeHandler, getInputValue } = renderAutosuggest({
+        automaticSelection: true,
+        value: { text: 'abc' },
+        suggestions: [
+          {
+            text: 'Apples',
+            value: 'apples',
+            highlights: [{ start: 0, end: 4 }],
+          },
+          {
+            text: 'Bananas',
+            value: 'bananas',
+            highlights: [{ start: 0, end: 4 }],
+          },
+          {
+            text: 'Carrots',
+            value: 'carrots',
+            highlights: [{ start: 0, end: 4 }],
+          },
+        ],
+      });
+
+      fireEvent.input(input, { target: { value: '' } });
+      fireEvent.blur(input);
+      expect(getInputValue()).toBe('');
+      expect(changeHandler).toHaveBeenCalledWith({ text: '' });
+    });
+
     it('should select the first suggestion on enter after typing something', async () => {
       const { input, changeHandler, getInputValue } = renderAutosuggest({
         automaticSelection: true,

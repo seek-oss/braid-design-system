@@ -1,10 +1,32 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Actions 1`] = `
+exports[`Accordion 1`] = `
+Object {
+  exportType: component,
+  props: {
+    children: ReactNodeNoStrings
+},
+}
+`;
+
+exports[`AccordionItem 1`] = `
 Object {
   exportType: component,
   props: {
     children: ReactNode
+    expanded?: boolean
+    id: string
+    label: string
+    onToggle?: (expanded: boolean) => void
+},
+}
+`;
+
+exports[`Actions 1`] = `
+Object {
+  exportType: component,
+  props: {
+    children: ReactNodeNoStrings
 },
 }
 `;
@@ -884,6 +906,7 @@ Object {
     onWheelCapture?: (event: WheelEvent<HTMLElement>) => void
     open?: boolean
     optimum?: number
+    outline?: "none"
     overflow?: 
         | "auto"
         | "hidden"
@@ -1401,6 +1424,7 @@ Object {
         | "xxsmall"
     >
     minWidth?: 0
+    outline?: "none"
     overflow?: 
         | "auto"
         | "hidden"
@@ -1545,6 +1569,7 @@ Object {
         | ComponentClass<LinkComponentProps, any>
         | FunctionComponent<LinkComponentProps>
     themeName?: 
+        | "catho"
         | "jobStreet"
         | "jobStreetClassic"
         | "jobsDb"
@@ -2100,6 +2125,11 @@ exports[`Columns 1`] = `
 Object {
   exportType: component,
   props: {
+    align?: ResponsiveProp<
+        | "center"
+        | "left"
+        | "right"
+    >
     alignY?: ResponsiveProp<
         | "bottom"
         | "center"
@@ -2413,6 +2443,7 @@ Object {
         | "webview"
         | ComponentClass<any, any>
         | FunctionComponent<any>
+    data?: Record<string, string | number>
     id?: string
     level: 
         | "1"
@@ -4470,6 +4501,10 @@ Object {
         | "top"
     >
     children: ReactNodeNoStrings
+    collapseBelow?: 
+        | "desktop"
+        | "tablet"
+    reverse?: boolean
     space: ResponsiveProp<
         | "gutter"
         | "large"
@@ -5302,6 +5337,7 @@ Object {
         | "webview"
         | ComponentClass<any, any>
         | FunctionComponent<any>
+    data?: Record<string, string | number>
     id?: string
     size?: 
         | "large"
@@ -5323,6 +5359,19 @@ Object {
         | "medium"
         | "regular"
         | "strong"
+},
+}
+`;
+
+exports[`TextDropdown 1`] = `
+Object {
+  exportType: component,
+  props: {
+    id: string
+    label: string
+    onChange: (value: Value) => void
+    options: TextDropdownValue<Value>[]
+    value: NonNullable<Value>
 },
 }
 `;
