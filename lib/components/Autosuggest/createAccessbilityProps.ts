@@ -43,17 +43,21 @@ export const createAccessbilityProps = ({
     getItemProps: ({
       index,
       label,
+      description,
       groupHeading,
     }: {
       index: number;
       label: string;
+      description?: string;
       groupHeading?: string;
     }) =>
       ({
         id: getItemId(id, index),
         role: 'option',
         'aria-selected': index === highlightedIndex,
-        'aria-label': `${label}${groupHeading ? ` (${groupHeading})` : ''}`,
+        'aria-label': `${label}${description ? ` - ${description}` : ''}${
+          groupHeading ? ` (${groupHeading})` : ''
+        }`,
       } as const),
   };
 };

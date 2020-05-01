@@ -209,6 +209,98 @@ describe('Autosuggest', () => {
     expect(changeHandler).not.toHaveBeenCalled();
   });
 
+  describe('ARIA labels', () => {
+    it('should support standard suggestions', () => {
+      const { input, queryByLabelText } = renderAutosuggest({
+        value: { text: '' },
+        suggestions: [
+          {
+            text: 'Apples',
+            value: 'apples',
+          },
+        ],
+      });
+
+      userEvent.click(input);
+
+      expect(queryByLabelText('Apples')).toBeInTheDocument();
+    });
+
+    it('should support grouped suggestions', () => {
+      const { input, queryByLabelText } = renderAutosuggest({
+        value: { text: '' },
+        suggestions: [
+          {
+            label: 'Fruit',
+            suggestions: [
+              {
+                text: 'Apples',
+                value: 'apples',
+              },
+            ],
+          },
+          {
+            label: 'Vegetables',
+            suggestions: [
+              {
+                text: 'Carrots',
+                value: 'carrots',
+              },
+            ],
+          },
+        ],
+      });
+
+      userEvent.click(input);
+
+      expect(queryByLabelText('Apples (Fruit)')).toBeInTheDocument();
+      expect(queryByLabelText('Carrots (Vegetables)')).toBeInTheDocument();
+    });
+
+    it('should support suggestions with descriptions', () => {
+      const { input, queryByLabelText } = renderAutosuggest({
+        value: { text: '' },
+        suggestions: [
+          {
+            text: 'Apples',
+            description: 'Juicy and delicious',
+            value: 'apples',
+          },
+        ],
+      });
+
+      userEvent.click(input);
+
+      expect(
+        queryByLabelText('Apples - Juicy and delicious'),
+      ).toBeInTheDocument();
+    });
+
+    it('should support grouped suggestions with descriptions', () => {
+      const { input, queryByLabelText } = renderAutosuggest({
+        value: { text: '' },
+        suggestions: [
+          {
+            label: 'Fruit',
+            suggestions: [
+              {
+                text: 'Apples',
+                description: 'Juicy and delicious',
+                value: 'apples',
+              },
+            ],
+          },
+        ],
+      });
+
+      userEvent.click(input);
+
+      expect(
+        queryByLabelText('Apples - Juicy and delicious (Fruit)'),
+      ).toBeInTheDocument();
+    });
+  });
+
   describe('keyboard access', () => {
     it("shouldn't select anything and close the list on enter if the user hasn't navigated the list", () => {
       const {
@@ -247,16 +339,19 @@ describe('Autosuggest', () => {
         suggestions: [
           {
             text: 'Apples',
+            description: 'Juicy and delicious',
             value: 'apples',
             highlights: [{ start: 0, end: 4 }],
           },
           {
             text: 'Bananas',
+            description: 'High in potassium',
             value: 'bananas',
             highlights: [{ start: 0, end: 4 }],
           },
           {
             text: 'Carrots',
+            description: 'Orange and crunchy',
             value: 'carrots',
             highlights: [{ start: 0, end: 4 }],
           },

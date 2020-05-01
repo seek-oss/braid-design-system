@@ -8,14 +8,20 @@ const Container = ({ children }: { children: ReactNode }) => (
 );
 
 const makeSuggestions = (
-  labels: string[],
+  suggestions: Array<string | { text: string; description?: string }>,
   inputValue: string,
   initialValue = 0,
 ) =>
-  labels
-    .filter((text) => !inputValue || matchHighlights(text, inputValue).length)
-    .map((text, i) => ({
+  suggestions
+    .map((suggestion) =>
+      typeof suggestion === 'string' ? { text: suggestion } : suggestion,
+    )
+    .filter(
+      ({ text }) => !inputValue || matchHighlights(text, inputValue).length,
+    )
+    .map(({ text, description }, i) => ({
       text,
+      description,
       value: i + initialValue,
       // @ts-ignore
       highlights: matchHighlights(text, inputValue).map(([start, end]) => ({
@@ -115,6 +121,88 @@ const docs: ComponentDocs = {
                 label: 'Vegetables',
                 suggestions: makeSuggestions(
                   ['Broccoli', 'Carrots'],
+                  value.text,
+                  2,
+                ),
+              },
+            ]}
+          />
+        );
+      },
+    },
+    {
+      label: 'Standard suggestions with descriptions',
+      storybook: false,
+      Container,
+      Example: ({ id }) => {
+        const [value, setValue] = useState<Value>({ text: '' });
+        const [showRecent, setShowRecent] = useState(true);
+
+        return (
+          <Autosuggest
+            label="I like to eat"
+            id={id}
+            value={value}
+            onChange={setValue}
+            onClear={() => setValue({ text: '' })}
+            suggestions={[
+              ...(showRecent && value.text === ''
+                ? [
+                    {
+                      text: 'Apples',
+                      description: 'Juicy and delicious',
+                      onClear: () => setShowRecent(false),
+                    },
+                  ]
+                : []),
+              ...makeSuggestions(
+                [
+                  ...(value.text !== ''
+                    ? [{ text: 'Apples', description: 'Juicy and delicious' }]
+                    : []),
+                  { text: 'Bananas', description: 'High in potassium' },
+                  { text: 'Broccoli', description: 'Looks like a tree' },
+                  { text: 'Carrots', description: 'Orange and crunchy' },
+                ],
+                value.text,
+              ),
+            ]}
+          />
+        );
+      },
+    },
+    {
+      label: 'Grouped suggestions with descriptions',
+      storybook: false,
+      Container,
+      Example: ({ id }) => {
+        const [value, setValue] = useState<Value>({ text: '' });
+
+        return (
+          <Autosuggest
+            label="I like to eat"
+            id={id}
+            value={value}
+            onChange={setValue}
+            onClear={() => setValue({ text: '' })}
+            suggestions={[
+              {
+                label: 'Fruit',
+                suggestions: makeSuggestions(
+                  [
+                    { text: 'Apples', description: 'Juicy and delicious' },
+                    { text: 'Bananas', description: 'High in potassium' },
+                  ],
+                  value.text,
+                ),
+              },
+              {
+                label: 'Vegetables',
+                suggestions: makeSuggestions(
+                  [
+                    { text: 'Broccoli', description: 'Looks like a tree' },
+                    { text: 'Carrots', description: 'Orange and crunchy' },
+                  ],
                   value.text,
                   2,
                 ),
