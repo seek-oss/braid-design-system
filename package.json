@@ -109,7 +109,7 @@
     "uuid": "^3.3.3"
   },
   "resolutions": {
-    "playroom": "0.17.2"
+    "playroom": "0.17.3"
   },
   "volta": {
     "node": "12.14.1",
