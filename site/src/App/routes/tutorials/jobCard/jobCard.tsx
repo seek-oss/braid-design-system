@@ -24,7 +24,6 @@ import { Placeholder } from '../../../../../../lib/playroom/components';
 import Code from '../../../Code/Code';
 import { ReactNodeNoStrings } from '../../../../../../lib/components/private/ReactNodeNoStrings';
 import { Preview } from '../../../Preview/Preview';
-import { PlayIcon } from '../../../Code/PlayIcon';
 
 interface StepProps {
   heading?: string;
@@ -32,10 +31,10 @@ interface StepProps {
   children: ReactChild;
 }
 const Step = ({ heading, detail, children }: StepProps) => (
-  <Stack space="medium">
+  <Stack space="large">
     {heading ? <Heading level="3">{heading}</Heading> : null}
     {detail}
-    <Code collapse>{children}</Code>
+    <Code collapse={false}>{children}</Code>
   </Stack>
 );
 
@@ -45,16 +44,10 @@ const page: Page = {
     <TextStack>
       <Heading level="2">Job Card</Heading>
 
-      <Text size="large">
-        In this tutorial will build out a basic Job Card, taking the concepts
-        and ideas discussed in the guides & foundation documentation and putting
-        them into practice.
-      </Text>
-
-      <Text size="large">
-        At any stage you can click the &ldquo;
-        <PlayIcon /> Open in Playroom&rdquo; button under the examples to view
-        the design across themes and viewports.
+      <Text>
+        This tutorial will show you how to use build out a job card, starting
+        from a basic card layout and iterating our way to something that looks
+        like this:
       </Text>
 
       <Preview>
@@ -97,51 +90,23 @@ const page: Page = {
         </Card>
       </Preview>
 
+      <Text tone="secondary">
+        At any stage you can click the &ldquo;Open in Playroom&rdquo; button
+        under the examples to view the design across themes and viewports.
+      </Text>
+
       <Divider />
 
       <Stack space="xxlarge">
         <Step
-          heading="1. Create the container"
+          heading="1. Create card with basic content"
           detail={
             <Text>
-              To get started, we will first add a `Card` that will be the
-              container for our job details.
-            </Text>
-          }
-        >
-          <Card>
-            <Placeholder label="Job details placeholder" height={50} />
-          </Card>
-        </Step>
-
-        <Step
-          heading="2. Adding the content"
-          detail={
-            <Text>
-              Adding the information up-front is a useful exercise. This allows
-              us to consider the hierarchy of information, critical for purposes
-              like SEO or assistive technologies such as screen readers.
-            </Text>
-          }
-        >
-          <Card>
-            <h1>Product Designer</h1>
-            <div>Braid Design Pty Ltd</div>
-            <div>Melbourne</div>
-            <div>Information Technology</div>
-            <div>150k+</div>
-            <div>
-              Long description of card details providing more information.
-            </div>
-            <div>2d ago</div>
-          </Card>
-        </Step>
-
-        <Step
-          heading="3. Formatting the copy"
-          detail={
-            <Text>
-              Let&rsquo;s now apply some basic formatting to our copy using{' '}
+              Adding the basic content up front is a great place to start,
+              allowing us to consider the hierarchy of information as we
+              iterate. We&rsquo;ll nest this content inside a{' '}
+              <TextLink href="/components/Card">Card</TextLink> and apply some
+              basic formatting using{' '}
               <TextLink href="/components/Heading">Heading</TextLink> and{' '}
               <TextLink href="/components/Text">Text</TextLink>.
             </Text>
@@ -161,15 +126,15 @@ const page: Page = {
         </Step>
 
         <Step
-          heading="4. Laying out the content"
+          heading="2. Space out the content"
           detail={
             <Text>
-              Next step is to describe how &ldquo;tight&rdquo; or
-              &ldquo;loose&rdquo; we want the content to be. A{' '}
-              <TextLink href="/components/Stack">Stack</TextLink> is used to
-              describe the amount of space that should be between each of
-              it&rsquo;s child elements—in this case, that is each piece of job
-              information.
+              You&rsquo;ll notice that there is no space between components by
+              default. This is actually a good thing! We now get to decide
+              exactly how spaced out we want the content to be. To achieve this,
+              we&rsquo;ll use a{' '}
+              <TextLink href="/components/Stack">Stack</TextLink> component
+              which applies space evenly between its child elements.
             </Text>
           }
         >
@@ -189,14 +154,16 @@ const page: Page = {
         </Step>
 
         <Step
-          heading="5. Grouping content"
+          heading="3. Group content"
           detail={
             <Text>
-              Grouping the content in sections can help provide structure to the
-              information, and in turn, make it easier to digest. Let&rsquo;s
-              divide the information into four descrete sections—the header,
-              meta data, body and footer. For this we can use another{' '}
-              <TextLink href="/components/Stack">Stack</TextLink>.
+              Grouping the content into sections can help provide structure to
+              the information, and in turn, make it easier to digest.
+              Let&rsquo;s divide the information into four descrete sections —
+              the header, metadata, body and footer. For this, we&rsquo;ll start
+              nesting new <TextLink href="/components/Stack">Stack</TextLink>{' '}
+              components within our existing Stack. (Yeah, we realise this is a
+              little mind bending at first!)
             </Text>
           }
         >
@@ -223,15 +190,15 @@ const page: Page = {
         </Step>
 
         <Step
-          heading="6. Providing focus with tone"
+          heading="4. Use size and tone to provide hierarchy"
           detail={
             <Text>
               Not all the information presented has the same priority. To
-              improve readability we can adjust the{' '}
+              improve readability, we can adjust the{' '}
               <TextLink href="/foundations/tones">tone</TextLink> and/or the
-              size of some information. In this case, pushing some details back
-              to &ldquo;secondary&rdquo; and/or reducing their
-              &ldquo;size&rdquo; can help focus the user&rsquo;s attention.
+              size of the information. In this case, pushing some details back
+              to &ldquo;secondary&rdquo; and/or reducing their size can help
+              focus the user&rsquo;s attention.
             </Text>
           }
         >
@@ -266,13 +233,13 @@ const page: Page = {
         </Step>
 
         <Step
-          heading="7. Use of icons"
+          heading="5. Add icons"
           detail={
             <Text>
               <TextLink href="/foundations/iconography">Icons</TextLink> can be
               used to serve as visual cues to complement data and introduce some
-              more visual interest. Let&rsquo;s add icons next to each of the
-              pieces of meta data.
+              more visual interest. Let&rsquo;s add icons to our list of
+              metadata.
             </Text>
           }
         >
@@ -307,14 +274,13 @@ const page: Page = {
         </Step>
 
         <Step
-          heading="8. Adding additional content"
+          heading="6. Add a splash of colour"
           detail={
             <Text>
-              Adding or changing the information presented in a UI is a very
-              common task. Let&rsquo;s look at adding a visual cue to indicate
-              that this job is new. To do this, we will add a{' '}
-              <TextLink href="/components/Badge">Badge</TextLink> in the header
-              section of the card.
+              Let&rsquo;s look at adding a visual cue to indicate that this job
+              is new. To do this, we&rsquo;ll add a{' '}
+              <TextLink href="/components/Badge">Badge</TextLink> component to
+              the top of our card.
             </Text>
           }
         >
@@ -402,171 +368,70 @@ const page: Page = {
         </Step>
 
         <Step
-          heading="9. Changing the layout"
+          heading="7. Add an action to the corner of the card"
           detail={
-            <Text>
-              Sometimes adding new features can necessitate changing the layout.
-              Let&rsquo;s add a save action to the top right corner of the card.
-              First add a 2 column layout to the top of the card.
-            </Text>
+            <Stack space="large">
+              <Text>
+                Sometimes adding new features can necessitate changing the
+                layout. First, we&rsquo;ll use a{' '}
+                <TextLink href="/components/columns">Columns</TextLink>{' '}
+                component to break up our card into two columns.
+              </Text>
+              <Text tone="secondary" size="small">
+                To make it easier to follow, we&rsquo;ve temporarily replaced
+                the job content with a Placeholder component.
+              </Text>
+            </Stack>
           }
         >
           <Card>
-            <Stack space="gutter">
-              <Columns space="gutter">
-                <Column>
-                  <Placeholder height={50} />
-                </Column>
-                <Column>
-                  <Placeholder height={50} />
-                </Column>
-              </Columns>
-
-              <Stack space="small">
-                <Badge tone="positive">New</Badge>
-                <Heading level="3">Product Designer</Heading>
-                <Inline space="small">
-                  <Text tone="secondary">Braid Design Pty Ltd</Text>
-                  <Rating rating={4.5} />
-                </Inline>
-              </Stack>
-
-              <Stack space="small">
-                <Text tone="secondary" size="small">
-                  <IconLocation /> Melbourne
-                </Text>
-                <Text tone="secondary" size="small">
-                  <IconTag /> Information Technology
-                </Text>
-                <Text tone="secondary" size="small">
-                  <IconMoney /> 150k+
-                </Text>
-              </Stack>
-
-              <Text>
-                Long description of card details providing more information.
-              </Text>
-
-              <Text tone="secondary" size="xsmall">
-                2d ago
-              </Text>
-            </Stack>
+            <Columns space="gutter">
+              <Column>
+                <Placeholder label="Job content" height={80} />
+              </Column>
+              <Column>
+                <Placeholder label="Save action" height={80} />
+              </Column>
+            </Columns>
           </Card>
         </Step>
 
         <Step
           detail={
             <Text>
-              Now we can move the header section of the job into the first
-              column of the layout.
-            </Text>
-          }
-        >
-          <Card>
-            <Stack space="gutter">
-              <Columns space="gutter">
-                <Column>
-                  <Stack space="small">
-                    <Badge tone="positive">New</Badge>
-                    <Heading level="3">Product Designer</Heading>
-                    <Inline space="small">
-                      <Text tone="secondary">Braid Design Pty Ltd</Text>
-                      <Rating rating={4.5} />
-                    </Inline>
-                  </Stack>
-                </Column>
-                <Column>
-                  <Placeholder height={50} />
-                </Column>
-              </Columns>
-
-              <Stack space="small">
-                <Text tone="secondary" size="small">
-                  <IconLocation /> Melbourne
-                </Text>
-                <Text tone="secondary" size="small">
-                  <IconTag /> Information Technology
-                </Text>
-                <Text tone="secondary" size="small">
-                  <IconMoney /> 150k+
-                </Text>
-              </Stack>
-
-              <Text>
-                Long description of card details providing more information.
-              </Text>
-
-              <Text tone="secondary" size="xsmall">
-                2d ago
-              </Text>
-            </Stack>
-          </Card>
-        </Step>
-
-        <Step
-          detail={
-            <Text>
-              In the second column we will use the{' '}
+              In the second column we&rsquo;ll use the{' '}
               <TextLink href="/components/IconBookmark">IconBookmark</TextLink>{' '}
-              as the save action.
+              as the save action. By default, `Columns` are of equal width. In
+              this design however, the second column should only we as wide as
+              the save action itself. This can be controlled by setting the
+              `Column` to have a &ldquo;width&rdquo; of &ldquo;content&rdquo;.
             </Text>
           }
         >
           <Card>
-            <Stack space="gutter">
-              <Columns space="gutter">
-                <Column>
-                  <Stack space="small">
-                    <Badge tone="positive">New</Badge>
-                    <Heading level="3">Product Designer</Heading>
-                    <Inline space="small">
-                      <Text tone="secondary">Braid Design Pty Ltd</Text>
-                      <Rating rating={4.5} />
-                    </Inline>
-                  </Stack>
-                </Column>
-                <Column>
-                  <IconBookmark />
-                </Column>
-              </Columns>
-
-              <Stack space="small">
-                <Text tone="secondary" size="small">
-                  <IconLocation /> Melbourne
-                </Text>
-                <Text tone="secondary" size="small">
-                  <IconTag /> Information Technology
-                </Text>
-                <Text tone="secondary" size="small">
-                  <IconMoney /> 150k+
-                </Text>
-              </Stack>
-
-              <Text>
-                Long description of card details providing more information.
-              </Text>
-
-              <Text tone="secondary" size="xsmall">
-                2d ago
-              </Text>
-            </Stack>
+            <Columns space="gutter">
+              <Column>
+                <Placeholder label="Job content" height={80} />
+              </Column>
+              <Column width="content">
+                <IconBookmark />
+              </Column>
+            </Columns>
           </Card>
         </Step>
 
         <Step
           detail={
             <Text>
-              By default, `Columns` are of equal width. In this design however,
-              the second column should only we as wide as the save action
-              itself. This can be controlled by setting the `Column` to have a
-              &ldquo;width&rdquo; of &ldquo;content&rdquo;.
+              Now that we&rsquo;ve adjusted the layout, let&rsquo;s reinstate
+              our content in the main column.
             </Text>
           }
         >
           <Card>
-            <Stack space="gutter">
-              <Columns space="gutter">
-                <Column>
+            <Columns space="gutter">
+              <Column>
+                <Stack space="gutter">
                   <Stack space="small">
                     <Badge tone="positive">New</Badge>
                     <Heading level="3">Product Designer</Heading>
@@ -575,37 +440,37 @@ const page: Page = {
                       <Rating rating={4.5} />
                     </Inline>
                   </Stack>
-                </Column>
-                <Column width="content">
-                  <IconBookmark />
-                </Column>
-              </Columns>
 
-              <Stack space="small">
-                <Text tone="secondary" size="small">
-                  <IconLocation /> Melbourne
-                </Text>
-                <Text tone="secondary" size="small">
-                  <IconTag /> Information Technology
-                </Text>
-                <Text tone="secondary" size="small">
-                  <IconMoney /> 150k+
-                </Text>
-              </Stack>
+                  <Stack space="small">
+                    <Text tone="secondary" size="small">
+                      <IconLocation /> Melbourne
+                    </Text>
+                    <Text tone="secondary" size="small">
+                      <IconTag /> Information Technology
+                    </Text>
+                    <Text tone="secondary" size="small">
+                      <IconMoney /> 150k+
+                    </Text>
+                  </Stack>
 
-              <Text>
-                Long description of card details providing more information.
-              </Text>
+                  <Text>
+                    Long description of card details providing more information.
+                  </Text>
 
-              <Text tone="secondary" size="xsmall">
-                2d ago
-              </Text>
-            </Stack>
+                  <Text tone="secondary" size="xsmall">
+                    2d ago
+                  </Text>
+                </Stack>
+              </Column>
+              <Column width="content">
+                <IconBookmark />
+              </Column>
+            </Columns>
           </Card>
         </Step>
 
         <Step
-          heading="10. Polish!"
+          heading="8. Polish!"
           detail={
             <Stack space="large">
               <Text>
@@ -614,50 +479,48 @@ const page: Page = {
                 responsively, to achieve the desired goal.
               </Text>
               <Text>
-                In this case, we might tighten up the meta data section by
-                reducing the &ldquo;space&rdquo; to &ldquo;xsmall&rdquo;.
+                In this case, we might tighten up the metadata section by
+                reducing the space to &ldquo;xsmall&rdquo;.
               </Text>
             </Stack>
           }
         >
           <Card>
-            <Stack space="gutter">
-              <Columns space="gutter">
-                <Column>
-                  <Stack space="small">
-                    <Badge tone="positive">New</Badge>
-                    <Heading level="3">Product Designer</Heading>
-                    <Inline space="small">
-                      <Text tone="secondary">Braid Design Pty Ltd</Text>
-                      <Rating rating={4.5} />
-                    </Inline>
+            <Columns space="gutter">
+              <Column>
+                <Stack space="small">
+                  <Badge tone="positive">New</Badge>
+                  <Heading level="3">Product Designer</Heading>
+                  <Inline space="small">
+                    <Text tone="secondary">Braid Design Pty Ltd</Text>
+                    <Rating rating={4.5} />
+                  </Inline>
+
+                  <Stack space="xsmall">
+                    <Text tone="secondary" size="small">
+                      <IconLocation /> Melbourne
+                    </Text>
+                    <Text tone="secondary" size="small">
+                      <IconTag /> Information Technology
+                    </Text>
+                    <Text tone="secondary" size="small">
+                      <IconMoney /> 150k+
+                    </Text>
                   </Stack>
-                </Column>
-                <Column width="content">
-                  <IconBookmark />
-                </Column>
-              </Columns>
 
-              <Stack space="xsmall">
-                <Text tone="secondary" size="small">
-                  <IconLocation /> Melbourne
-                </Text>
-                <Text tone="secondary" size="small">
-                  <IconTag /> Information Technology
-                </Text>
-                <Text tone="secondary" size="small">
-                  <IconMoney /> 150k+
-                </Text>
-              </Stack>
+                  <Text>
+                    Long description of card details providing more information.
+                  </Text>
 
-              <Text>
-                Long description of card details providing more information.
-              </Text>
-
-              <Text tone="secondary" size="xsmall">
-                2d ago
-              </Text>
-            </Stack>
+                  <Text tone="secondary" size="xsmall">
+                    2d ago
+                  </Text>
+                </Stack>
+              </Column>
+              <Column width="content">
+                <IconBookmark />
+              </Column>
+            </Columns>
           </Card>
         </Step>
       </Stack>
