@@ -2281,6 +2281,13 @@
   resolved "https://registry.yarnpkg.com/@types/classnames/-/classnames-2.2.10.tgz#cc658ca319b6355399efc1f5b9e818f1a24bf999"
   integrity sha512-1UzDldn9GfYYEsWWnn/P4wkTlkZDH7lDb0wBMGbtIQc9zXEQq7FlKBdZUn6OBqD8sKZZ2RQO2mAjGpXiDGoRmQ==
 
+"@types/codemirror@^0.0.84":
+  version "0.0.84"
+  resolved "https://registry.yarnpkg.com/@types/codemirror/-/codemirror-0.0.84.tgz#b0cfca79ccdfd45ffe1f737668276a31b3149ebd"
+  integrity sha512-W78ZhfHPGYoYGCpAcEa268QUU3CVMA8BwcybxUMhEs2v5Rj58/7lGeRh3P7tauWRnSg3Pyn5ymw2lt65AyrVUw==
+  dependencies:
+    "@types/tern" "*"
+
 "@types/color-name@^1.1.1":
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/@types/color-name/-/color-name-1.1.1.tgz#1c1261bbeaa10a8055bbc5d8ab84b7b2afc846a0"
@@ -2307,6 +2314,11 @@
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@types/eslint-visitor-keys/-/eslint-visitor-keys-1.0.0.tgz#1ee30d79544ca84d68d4b3cdb0af4f205663dd2d"
   integrity sha512-OCutwjDZ4aFS6PB1UZ988C4YgwlBHJd6wCeQqaLdmadZ/7e+w79+hbMUFC1QXDNCmdyoRfAFdm0RypzwR+Qpag==
+
+"@types/estree@*":
+  version "0.0.44"
+  resolved "https://registry.yarnpkg.com/@types/estree/-/estree-0.0.44.tgz#980cc5a29a3ef3bea6ff1f7d021047d7ea575e21"
+  integrity sha512-iaIVzr+w2ZJ5HkidlZ3EJM8VTZb2MJLCjw3V+505yVts0gRC4UMvjw0d1HPtGqI/HQC/KdsYtayfzl+AXY2R8g==
 
 "@types/events@*":
   version "3.0.0"
@@ -2540,6 +2552,13 @@
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/@types/tapable/-/tapable-1.0.5.tgz#9adbc12950582aa65ead76bffdf39fe0c27a3c02"
   integrity sha512-/gG2M/Imw7cQFp8PGvz/SwocNrmKFjFsm5Pb8HdbHkZ1K8pmuPzOX4VeVoiEecFCVf4CsN1r3/BRvx+6sNqwtQ==
+
+"@types/tern@*":
+  version "0.23.3"
+  resolved "https://registry.yarnpkg.com/@types/tern/-/tern-0.23.3.tgz#4b54538f04a88c9ff79de1f6f94f575a7f339460"
+  integrity sha512-imDtS4TAoTcXk0g7u4kkWqedB3E4qpjXzCpD2LU5M5NAXHzCDsypyvXSaG7mM8DKYkCRa7tFp4tS/lp/Wo7Q3w==
+  dependencies:
+    "@types/estree" "*"
 
 "@types/testing-library__dom@*":
   version "7.0.1"
@@ -11510,10 +11529,10 @@ pkginfo@0.x.x:
   resolved "https://registry.yarnpkg.com/pkginfo/-/pkginfo-0.4.1.tgz#b5418ef0439de5425fc4995042dced14fb2a84ff"
   integrity sha1-tUGO8EOd5UJfxJlQQtztFPsqhP8=
 
-playroom@0.16.2, playroom@^0.15.0:
-  version "0.16.2"
-  resolved "https://registry.yarnpkg.com/playroom/-/playroom-0.16.2.tgz#0ae7e77fc68cd097fe7729c7f16d60979ec2d127"
-  integrity sha512-CitXFxMgOWOVEpNcxfJZCKH7RG0v47wP2tw/MVhSmvsDD2FACkmBf4aBm7gWLfMbXaMU98A64xq3gORzGDmxVw==
+playroom@0.17.1, playroom@^0.15.0:
+  version "0.17.1"
+  resolved "https://registry.yarnpkg.com/playroom/-/playroom-0.17.1.tgz#c4c3a1bc72d2543149239dbfe812d02463c0f786"
+  integrity sha512-4HoMJzWhzZw7eYGGxk0G/3mZfpnFXCoQHNq3dxPHvi3yzDZ8XHdeZtlIOfw+z0ZHhbsYQKtMhQl9KOxAOj0y2Q==
   dependencies:
     "@babel/cli" "^7.8.3"
     "@babel/core" "^7.8.3"
@@ -11526,9 +11545,11 @@ playroom@0.16.2, playroom@^0.15.0:
     "@babel/standalone" "^7.8.7"
     "@types/base64-url" "^2.2.0"
     "@types/classnames" "^2.2.9"
+    "@types/codemirror" "^0.0.84"
     "@types/dedent" "^0.7.0"
     "@types/lodash" "^4.14.149"
     "@types/lz-string" "^1.3.33"
+    "@types/prettier" "^1.19.0"
     "@types/react" "^16.9.19"
     "@types/react-dom" "^16.9.5"
     autoprefixer "^9.7.4"
