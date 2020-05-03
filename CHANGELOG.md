@@ -1,5 +1,26 @@
 # braid-design-system
 
+## 25.6.0
+
+### Minor Changes
+
+- Autosuggest: Support suggestion descriptions ([#613](https://github.com/seek-oss/braid-design-system/pull/613))
+
+  You can now provide a `description` as part of each suggestion item, e.g.:
+
+  ```jsx
+  <Autosuggest
+    suggestions={[
+      {
+        text: 'Apples',
+        value: 123,
+        description: 'Juicy and delicious',
+      },
+    ]}
+    {...rest}
+  />
+  ```
+
 ## 25.5.1
 
 ### Patch Changes
