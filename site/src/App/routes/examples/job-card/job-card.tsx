@@ -33,7 +33,7 @@ const Step = ({ heading, detail, children }: StepProps) => (
   <Stack space="large">
     {heading ? <Heading level="3">{heading}</Heading> : null}
     {detail}
-    <Code collapse={false}>{children}</Code>
+    <Code>{children}</Code>
   </Stack>
 );
 
@@ -48,7 +48,7 @@ const page: Page = {
         </Heading>
       </Stack>
 
-      <Code collapse>
+      <Code collapsedByDefault>
         <Card>
           <Stack space="gutter">
             <Columns space="gutter">
@@ -92,7 +92,7 @@ const page: Page = {
 
       <Text>
         Designs like this are rarely built top-to-bottom in a single pass.
-        Instead, they usually start very simple, with further details and
+        Instead, they typically start very simple, with further details and
         refinements added in layers.
       </Text>
       <Text>

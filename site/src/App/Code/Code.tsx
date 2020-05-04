@@ -1,4 +1,4 @@
-import React, { ReactChild, useState } from 'react';
+import React, { useState, ReactChild } from 'react';
 import { useStyles } from 'react-treat';
 import copy from 'copy-to-clipboard';
 import memoize from 'lodash/memoize';
@@ -88,12 +88,16 @@ const CodeButton = ({
 
 interface CodeProps {
   playroom?: boolean;
+  collapsedByDefault?: boolean;
   children: ReactChild;
-  collapse?: boolean;
 }
-export default ({ playroom = true, children, collapse = false }: CodeProps) => {
+export default ({
+  playroom = true,
+  collapsedByDefault = false,
+  children,
+}: CodeProps) => {
   const styles = useStyles(styleRefs);
-  const [hideCode, setHideCode] = useState(collapse);
+  const [hideCode, setHideCode] = useState(collapsedByDefault);
   const { playroomUrl } = useConfig();
 
   const snippet = formatSnippet(
@@ -143,7 +147,7 @@ export default ({ playroom = true, children, collapse = false }: CodeProps) => {
           >
             <Columns space="xxsmall" alignY="center">
               <Column width="content">
-                {collapse ? (
+                {collapsedByDefault ? (
                   <CodeButton onClick={() => setHideCode(!hideCode)}>
                     <IconChevron direction={hideCode ? 'down' : 'up'} />
                     <Hidden inline below="tablet">

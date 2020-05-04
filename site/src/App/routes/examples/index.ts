@@ -1,4 +1,4 @@
-import jobCard from './jobCard/jobCard';
+import jobCard from './job-card/job-card';
 
 export default {
   '/examples/job-card': jobCard,
