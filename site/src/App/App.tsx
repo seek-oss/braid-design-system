@@ -14,7 +14,7 @@ import { Navigation } from './Navigation/Navigation';
 import home from './routes/home';
 import guides from './routes/guides';
 import foundations from './routes/foundations';
-import tutorials from './routes/tutorials';
+import examples from './routes/examples';
 import components from './routes/components';
 
 const CustomLink: LinkComponent = ({ href, rel, onClick, ...restProps }) =>
@@ -49,7 +49,7 @@ export const App = () => (
                   ...home,
                   ...guides,
                   ...foundations,
-                  ...tutorials,
+                  ...examples,
                   ...components,
                 },
                 (routeProps, path) => (

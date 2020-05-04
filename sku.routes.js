@@ -29,13 +29,13 @@ const iconNames = getExports('lib/components/icons/index.ts');
 
 const guideRoutes = getPages('site/src/App/routes/guides/index.ts');
 const foundationRoutes = getPages('site/src/App/routes/foundations/index.ts');
-const tutorialRoutes = getPages('site/src/App/routes/tutorials/index.ts');
+const exampleRoutes = getPages('site/src/App/routes/examples/index.ts');
 
 module.exports = [
   { route: '/', name: 'home' },
   ...guideRoutes.map((route) => ({ route })),
   ...foundationRoutes.map((route) => ({ route })),
-  ...tutorialRoutes.map((route) => ({ route })),
+  ...exampleRoutes.map((route) => ({ route })),
   { route: '/components', name: 'components' }, // Pre-rendering this route for url backwards compatibility.
   ...componentNames.map((name) => ({ route: `/components/${name}`, name })),
   ...iconNames.map((name) => ({ route: `/components/${name}`, name })),

@@ -2,7 +2,7 @@ import React from 'react';
 import map from 'lodash/map';
 import guides from '../routes/guides';
 import foundations from '../routes/foundations';
-import tutorials from '../routes/tutorials';
+import examples from '../routes/examples';
 import { Text, TextLink, Box, Stack } from '../../../../lib/components';
 import { ThemeToggle } from '../ThemeSetting';
 import {
@@ -90,9 +90,9 @@ export const SubNavigation = ({ onSelect }: SubNavigationProps) => {
       />
 
       <SubNavigationGroup
-        title="Tutorials"
-        items={map(tutorials, (tutorial, path) => ({
-          name: tutorial.title,
+        title="Examples"
+        items={map(examples, (example, path) => ({
+          name: example.title,
           path,
           onClick: onSelect,
         }))}

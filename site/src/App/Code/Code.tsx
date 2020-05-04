@@ -16,6 +16,7 @@ import {
   Columns,
   Column,
   IconChevron,
+  Hidden,
 } from '../../../../lib/components';
 import { BoxProps } from '../../../../lib/components/Box/Box';
 import { FieldOverlay } from '../../../../lib/components/private/FieldOverlay/FieldOverlay';
@@ -141,10 +142,17 @@ export default ({ playroom = true, children, collapse = false }: CodeProps) => {
             className={hideCode ? undefined : styles.toolbar}
           >
             <Columns space="xxsmall" alignY="center">
-              <Column>
+              <Column width="content">
                 {collapse ? (
                   <CodeButton onClick={() => setHideCode(!hideCode)}>
                     <IconChevron direction={hideCode ? 'down' : 'up'} />
+                    <Hidden inline below="tablet">
+                      {hideCode ? ' Show code' : ' Hide code'}
+                    </Hidden>
+                    <Hidden inline above="mobile">
+                      {' '}
+                      Code
+                    </Hidden>
                   </CodeButton>
                 ) : null}
               </Column>
@@ -167,7 +175,11 @@ export default ({ playroom = true, children, collapse = false }: CodeProps) => {
                       })}
                       title="Open in Playroom"
                     >
-                      <PlayIcon /> Open in Playroom
+                      <PlayIcon />{' '}
+                      <Hidden inline below="tablet">
+                        Open in{' '}
+                      </Hidden>
+                      Playroom
                     </CodeButton>
                   )}
                 </Inline>

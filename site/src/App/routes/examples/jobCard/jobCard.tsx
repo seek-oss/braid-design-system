@@ -23,7 +23,6 @@ import { TextStack } from '../../../TextStack/TextStack';
 import { Placeholder } from '../../../../../../lib/playroom/components';
 import Code from '../../../Code/Code';
 import { ReactNodeNoStrings } from '../../../../../../lib/components/private/ReactNodeNoStrings';
-import { Preview } from '../../../Preview/Preview';
 
 interface StepProps {
   heading?: string;
@@ -42,15 +41,14 @@ const page: Page = {
   title: 'Job Card',
   component: () => (
     <TextStack>
-      <Heading level="2">Job Card</Heading>
+      <Stack space="medium">
+        <Heading level="2">Example</Heading>
+        <Heading level="3" weight="weak">
+          Job Card
+        </Heading>
+      </Stack>
 
-      <Text>
-        This tutorial will show you how to use build out a job card, starting
-        from a basic card layout and iterating our way to something that looks
-        like this:
-      </Text>
-
-      <Preview>
+      <Code collapse>
         <Card>
           <Stack space="gutter">
             <Columns space="gutter">
@@ -88,7 +86,20 @@ const page: Page = {
             </Text>
           </Stack>
         </Card>
-      </Preview>
+      </Code>
+
+      <Heading level="3">How do I build this example for myself?</Heading>
+
+      <Text>
+        Designs like this are rarely built top-to-bottom in a single pass.
+        Instead, they usually start very simple, with further details and
+        refinements added in layers.
+      </Text>
+      <Text>
+        To give you a sense of what this looks like, the following tutorial will
+        guide you through the design process that you might go through when
+        using <TextLink href="/playroom">Playroom</TextLink>.
+      </Text>
 
       <Text tone="secondary">
         At any stage you can click the &ldquo;Open in Playroom&rdquo; button
@@ -326,7 +337,7 @@ const page: Page = {
                 of the screen we want it to wrap below. For this we can use the{' '}
                 <TextLink href="/components/Inline">Inline</TextLink> component.
               </Text>
-              <Text size="small" tone="secondary">
+              <Text tone="secondary">
                 NOTE: Click through to the Playroom to see how this behaves
                 across screen sizes.
               </Text>
@@ -377,9 +388,9 @@ const page: Page = {
                 <TextLink href="/components/columns">Columns</TextLink>{' '}
                 component to break up our card into two columns.
               </Text>
-              <Text tone="secondary" size="small">
-                To make it easier to follow, we&rsquo;ve temporarily replaced
-                the job content with a Placeholder component.
+              <Text tone="secondary">
+                NOTE: To make this easier to follow, we&rsquo;ve replaced the
+                job content with a Placeholder.
               </Text>
             </Stack>
           }
@@ -424,7 +435,7 @@ const page: Page = {
           detail={
             <Text>
               Now that we&rsquo;ve adjusted the layout, let&rsquo;s reinstate
-              our content in the main column.
+              our job content in the main column.
             </Text>
           }
         >
@@ -486,41 +497,41 @@ const page: Page = {
           }
         >
           <Card>
-            <Columns space="gutter">
-              <Column>
-                <Stack space="small">
-                  <Badge tone="positive">New</Badge>
-                  <Heading level="3">Product Designer</Heading>
-                  <Inline space="small">
-                    <Text tone="secondary">Braid Design Pty Ltd</Text>
-                    <Rating rating={4.5} />
-                  </Inline>
-
-                  <Stack space="xsmall">
-                    <Text tone="secondary" size="small">
-                      <IconLocation /> Melbourne
-                    </Text>
-                    <Text tone="secondary" size="small">
-                      <IconTag /> Information Technology
-                    </Text>
-                    <Text tone="secondary" size="small">
-                      <IconMoney /> 150k+
-                    </Text>
+            <Stack space="gutter">
+              <Columns space="gutter">
+                <Column>
+                  <Stack space="small">
+                    <Badge tone="positive">New</Badge>
+                    <Heading level="3">Product Designer</Heading>
+                    <Inline space="small">
+                      <Text tone="secondary">Braid Design Pty Ltd</Text>
+                      <Rating rating={4.5} />
+                    </Inline>
                   </Stack>
+                </Column>
+                <Column width="content">
+                  <IconBookmark />
+                </Column>
+              </Columns>
 
-                  <Text>
-                    Long description of card details providing more information.
-                  </Text>
-
-                  <Text tone="secondary" size="xsmall">
-                    2d ago
-                  </Text>
-                </Stack>
-              </Column>
-              <Column width="content">
-                <IconBookmark />
-              </Column>
-            </Columns>
+              <Stack space="xsmall">
+                <Text size="small" tone="secondary">
+                  <IconLocation /> Melbourne
+                </Text>
+                <Text size="small" tone="secondary">
+                  <IconTag /> Information Technology
+                </Text>
+                <Text size="small" tone="secondary">
+                  <IconMoney /> 150k+
+                </Text>
+              </Stack>
+              <Text>
+                Long description of card details providing more information.
+              </Text>
+              <Text tone="secondary" size="xsmall">
+                2d ago
+              </Text>
+            </Stack>
           </Card>
         </Step>
       </Stack>
@@ -546,7 +557,10 @@ const page: Page = {
               Specifying different spacing responsively using{' '}
               <TextLink href="/foundations/layout#Stack">Stack</TextLink>,
             </Bullet>
-            <Bullet>Add a company logo.</Bullet>
+            <Bullet>
+              Adding a company logo. You can use Placeholder component if you
+              don&rsquo;t have hosted imagery to work with.
+            </Bullet>
           </BulletList>
         </Stack>
       </TextStack>
