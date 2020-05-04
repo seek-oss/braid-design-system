@@ -211,32 +211,8 @@ const DesignWorkflow = () => {
 
       <Heading level="3">How do I add a new component to Braid?</Heading>
       <Text>
-        Don’t get too hung up on adding new components to Braid. If you think a
-        pattern is worth sharing outside of your team, let us know in{' '}
-        {braidDesignSupportLink}, but don’t let this get in the way of shipping
-        real value to your users.
-      </Text>
-      <Text>
-        Braid components have a very high bar of quality due to accessibility
-        requirements and their widespread usage across different products and
-        brands. As a result, it’s likely that your existing work will need to be
-        revisited once we start standardising it.
-      </Text>
-
-      <Heading level="3">What if I need a new component right away?</Heading>
-      <Text>
-        Generally speaking, you should never be blocked waiting for Braid.
-      </Text>
-      <Text>
-        Our job is to standardise existing patterns, not to hold back new ones.
-        Your team should be perfectly capable of writing new components and
-        custom styling within your project, and you should always err on the
-        side of delivery. Your users are ultimately the number one priority.
-      </Text>
-      <Text>
-        When you inevitably create something new, it’s a good idea to let us
-        know in {braidDesignSupportLink} so that we can keep an eye out for
-        emerging patterns and work towards standardised solutions.
+        Read our{' '}
+        <TextLink href="/guides/contribution">contribution guide</TextLink>.
       </Text>
 
       <Divider />
