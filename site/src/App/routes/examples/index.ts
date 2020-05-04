@@ -1,5 +1,5 @@
-import jobCard from './job-card/job-card';
+import jobSummary from './job-summary/job-summary';
 
 export default {
-  '/examples/job-card': jobCard,
+  '/examples/job-summary': jobSummary,
 };

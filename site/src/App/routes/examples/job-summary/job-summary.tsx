@@ -38,13 +38,13 @@ const Step = ({ heading, detail, children }: StepProps) => (
 );
 
 const page: Page = {
-  title: 'Job Card',
+  title: 'Job Summary',
   component: () => (
     <TextStack>
       <Stack space="medium">
         <Heading level="2">Example</Heading>
         <Heading level="3" weight="weak">
-          Job Card
+          Job Summary
         </Heading>
       </Stack>
 

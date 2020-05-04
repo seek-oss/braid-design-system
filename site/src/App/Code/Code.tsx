@@ -21,7 +21,6 @@ import {
 import { BoxProps } from '../../../../lib/components/Box/Box';
 import { FieldOverlay } from '../../../../lib/components/private/FieldOverlay/FieldOverlay';
 import { useBoxStyles } from '../../../../lib/components/Box/useBoxStyles';
-import { Preview } from '../Preview/Preview';
 import { CopyIcon } from './CopyIcon';
 import { PlayIcon } from './PlayIcon';
 import * as styleRefs from './Code.treat';
@@ -120,9 +119,13 @@ export default ({
     >
       <Stack space="xsmall">
         {typeof children !== 'string' && (
-          <Preview>
+          <Box
+            padding="small"
+            background="neutralLight"
+            borderRadius="standard"
+          >
             <ThemedExample>{children}</ThemedExample>
-          </Preview>
+          </Box>
         )}
         <Box>
           {hideCode ? null : (
