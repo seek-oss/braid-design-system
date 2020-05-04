@@ -28,6 +28,7 @@ type SuggestionMatch = Array<{ start: number; end: number }>;
 
 interface AutosuggestValue<Value = any> {
   text: string;
+  description?: string;
   value?: Value;
 }
 
@@ -127,6 +128,11 @@ function SuggestionItem({
               ),
             )}
           </Text>
+          {suggestion.description ? (
+            <Text size="small" tone="secondary" baseline={false}>
+              {suggestion.description}
+            </Text>
+          ) : null}
         </Box>
         {typeof onClear === 'function' ? (
           <Box
@@ -620,6 +626,7 @@ export function Autosuggest<Value>({
                               {...a11y.getItemProps({
                                 index,
                                 label: suggestion.text,
+                                description: suggestion.description,
                                 groupHeading: groupHeadingForSuggestion.get(
                                   suggestion,
                                 ),
