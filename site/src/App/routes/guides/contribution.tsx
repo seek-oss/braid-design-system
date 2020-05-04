@@ -35,11 +35,9 @@ const Contribution = () => (
       <TextLink href="https://seekchat.slack.com/channels/braid-design-support">
         let us know
       </TextLink>{' '}
-      so that we can offer support, but your team should still build it
-      themselves in the meantime. If you talk to us early enough in your{' '}
-      <TextLink href="/guides/design-workflow">design process</TextLink>, we
-      might be able to provide something for you in a timely fashion — but don’t
-      wait up. Shipping value to users is the priority.
+      so that we can offer support and keep an eye on emerging trends, but your
+      team should still build it locally in the meantime. Shipping value to
+      users is the ultimate priority.
     </Text>
     <Divider />
     <Heading level="3">Fixing a bug?</Heading>
