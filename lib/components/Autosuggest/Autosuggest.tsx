@@ -18,6 +18,7 @@ import { ClearButton } from '../iconButtons/ClearButton/ClearButton';
 import { useTouchableSpace, useText } from '../../hooks/typography';
 import { getNextIndex } from '../private/getNextIndex';
 import { normalizeKey } from '../private/normalizeKey';
+import { ClearField } from '../private/Field/ClearField';
 import { smoothScroll } from './smoothScroll';
 import { useScrollIntoView } from './useScrollIntoView';
 import { useIsolatedScroll } from './useIsolatedScroll';
@@ -238,6 +239,7 @@ export interface AutosuggestProps<Value>
   scrollToTopOnMobile?: boolean;
   onBlur?: () => void;
   onFocus?: () => void;
+  onClear?: () => void;
   placeholder?: string;
   type?: 'text' | 'search';
 }
@@ -253,6 +255,7 @@ export function Autosuggest<Value>({
   onBlur = noop,
   placeholder,
   type = 'text',
+  onClear,
   ...restProps
 }: AutosuggestProps<Value>) {
   const styles = useStyles(styleRefs);
@@ -526,6 +529,24 @@ export function Autosuggest<Value>({
     highlightedIndex,
   });
 
+  const clearHandler = useCallback(() => {
+    if (typeof onClear !== 'function') {
+      return;
+    }
+
+    onClear();
+
+    if (inputRef && typeof inputRef === 'object' && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [onClear, inputRef]);
+
+  const clearable = Boolean(
+    typeof onClear !== 'undefined' &&
+      typeof value !== 'undefined' &&
+      value.text.length > 0,
+  );
+
   return (
     <Fragment>
       <Box ref={mobileDetectionRef} display={['block', 'none']} />
@@ -557,7 +578,11 @@ export function Autosuggest<Value>({
             id={id}
             labelId={a11y.labelProps.id}
             value={value.text}
-            ref={inputRef}
+            actionButton={
+              onClear ? (
+                <ClearField hide={!clearable} onMouseDown={clearHandler} />
+              ) : null
+            }
           >
             {(
               overlays,
@@ -568,8 +593,7 @@ export function Autosuggest<Value>({
                 className,
                 ...restFieldProps
               },
-              fieldRef,
-              cancelButton,
+              actionButton,
               icon,
             ) => (
               <Box {...a11y.rootProps}>
@@ -582,7 +606,7 @@ export function Autosuggest<Value>({
                   {...inputProps}
                   position="relative"
                   className={className}
-                  ref={fieldRef}
+                  ref={inputRef}
                 />
                 {icon}
                 <Box
@@ -638,11 +662,7 @@ export function Autosuggest<Value>({
                     : null}
                 </Box>
                 {overlays}
-                {cancelButton ? (
-                  <Box position="absolute" top={0} right={0}>
-                    {cancelButton}
-                  </Box>
-                ) : null}
+                {actionButton}
               </Box>
             )}
           </Field>

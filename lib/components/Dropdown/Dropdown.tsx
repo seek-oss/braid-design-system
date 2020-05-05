@@ -1,9 +1,7 @@
 import React, { Fragment, AllHTMLAttributes, forwardRef } from 'react';
-import { useStyles } from 'sku/react-treat';
 import { Box } from '../Box/Box';
 import { Field, FieldProps } from '../private/Field/Field';
 import { IconChevron } from '../icons';
-import * as styleRefs from './Dropdown.treat';
 import { Text } from '../Text/Text';
 
 type ValidDropdownChildren = AllHTMLAttributes<
@@ -11,7 +9,7 @@ type ValidDropdownChildren = AllHTMLAttributes<
 >;
 type SelectProps = AllHTMLAttributes<HTMLSelectElement>;
 export interface DropdownProps
-  extends Omit<FieldProps, 'labelId' | 'secondaryMessage' | 'onClear'> {
+  extends Omit<FieldProps, 'labelId' | 'secondaryMessage'> {
   children: ValidDropdownChildren[] | ValidDropdownChildren;
   value: NonNullable<SelectProps['value']>;
   onChange: NonNullable<SelectProps['onChange']>;
@@ -21,75 +19,46 @@ export interface DropdownProps
 }
 
 const NamedDropdown = forwardRef<HTMLSelectElement, DropdownProps>(
-  (props: DropdownProps, ref) => {
-    const {
-      children,
-      value,
-      onChange,
-      onBlur,
-      onFocus,
-      placeholder,
-      ...restProps
-    } = props;
-
-    const styles = useStyles(styleRefs);
-
-    return (
-      <Field
-        {...restProps}
-        ref={ref}
-        labelId={undefined}
-        secondaryMessage={null}
-        value={value}
-      >
-        {(
-          overlays,
-          { className, paddingX, ...fieldProps },
-          fieldRef,
-          _,
-          icon,
-        ) => (
-          <Fragment>
-            {icon}
-            <Box
-              component="select"
-              paddingLeft={paddingX}
-              value={value}
-              defaultValue={typeof value === 'undefined' ? '' : undefined}
-              onChange={onChange}
-              onBlur={onBlur}
-              onFocus={onFocus}
-              placeholder={placeholder}
-              className={[styles.field, className]}
-              {...fieldProps}
-              ref={fieldRef}
-            >
-              <option value="" disabled={true}>
-                {placeholder}
-              </option>
-              <Fragment>{children}</Fragment>
-            </Box>
-            {overlays}
-            <Box
-              position="absolute"
-              display="flex"
-              alignItems="center"
-              justifyContent="center"
-              pointerEvents="none"
-              height="touchable"
-              width="touchable"
-              top={0}
-              right={0}
-            >
-              <Text baseline={false}>
-                <IconChevron />
-              </Text>
-            </Box>
-          </Fragment>
-        )}
-      </Field>
-    );
-  },
+  (
+    { children, value, onChange, onBlur, onFocus, placeholder, ...restProps },
+    ref,
+  ) => (
+    <Field
+      {...restProps}
+      labelId={undefined}
+      secondaryMessage={null}
+      value={value}
+      actionButton={
+        <Text baseline={false}>
+          <IconChevron />
+        </Text>
+      }
+    >
+      {(overlays, fieldProps, actionButton, icon) => (
+        <Fragment>
+          {icon}
+          <Box
+            component="select"
+            value={value}
+            defaultValue={typeof value === 'undefined' ? '' : undefined}
+            onChange={onChange}
+            onBlur={onBlur}
+            onFocus={onFocus}
+            placeholder={placeholder}
+            {...fieldProps}
+            ref={ref}
+          >
+            <option value="" disabled={true}>
+              {placeholder}
+            </option>
+            <Fragment>{children}</Fragment>
+          </Box>
+          {overlays}
+          <Box pointerEvents="none">{actionButton}</Box>
+        </Fragment>
+      )}
+    </Field>
+  ),
 );
 
 NamedDropdown.displayName = 'Dropdown';

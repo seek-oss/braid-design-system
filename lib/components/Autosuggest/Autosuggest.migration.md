@@ -8,10 +8,6 @@
 - `onSuggestionsFetchRequested` has been deprecated. Instead, use the `onChange` and `onFocus` events.
 - `onSuggestionsClearRequested` has been deprecated. It's up to your application to decide if and when suggestions are cleared.
 
-## Todo List
-
-- `onClear={() => {...}}`
-
 ## Previous Implementations
 
 - [SEEK Style Guide](https://seek-oss.github.io/seek-style-guide/autosuggest)
