@@ -27,7 +27,6 @@ export interface MonthPickerProps
     | 'name'
     | 'autoComplete'
     | 'secondaryMessage'
-    | 'onClear'
     | 'autoFocus'
     | 'icon'
   > {
@@ -180,7 +179,7 @@ const MonthPicker = ({
       autoComplete={undefined}
       secondaryMessage={null}
     >
-      {(overlays, { className, ...fieldProps }, fieldRef) => (
+      {(overlays, { className, ...fieldProps }) => (
         <Fragment>
           <Box
             component="input"
@@ -191,7 +190,6 @@ const MonthPicker = ({
             onFocus={onFocus}
             {...fieldProps}
             className={[className, styles.nativeInput]}
-            ref={fieldRef}
           />
           {overlays}
         </Fragment>
