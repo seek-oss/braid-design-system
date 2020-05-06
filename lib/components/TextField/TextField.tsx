@@ -1,10 +1,4 @@
-import React, {
-  forwardRef,
-  Fragment,
-  AllHTMLAttributes,
-  useCallback,
-  useRef,
-} from 'react';
+import React, { forwardRef, Fragment, AllHTMLAttributes, useRef } from 'react';
 import { Box } from '../Box/Box';
 import { Field, FieldProps } from '../private/Field/Field';
 import { ClearField } from '../private/Field/ClearField';
@@ -50,18 +44,6 @@ const NamedTextField = forwardRef<HTMLInputElement, TextFieldProps>(
     const defaultRef = useRef<HTMLInputElement | null>(null);
     const inputRef = forwardedRef || defaultRef;
 
-    const clearHandler = useCallback(() => {
-      if (typeof onClear !== 'function') {
-        return;
-      }
-
-      onClear();
-
-      if (inputRef && typeof inputRef === 'object' && inputRef.current) {
-        inputRef.current.focus();
-      }
-    }, [onClear, inputRef]);
-
     const clearable = Boolean(
       typeof onClear !== 'undefined' &&
         typeof value === 'string' &&
@@ -76,7 +58,11 @@ const NamedTextField = forwardRef<HTMLInputElement, TextFieldProps>(
         secondaryMessage={null}
         secondaryIcon={
           onClear ? (
-            <ClearField hide={!clearable} onMouseDown={clearHandler} />
+            <ClearField
+              hide={!clearable}
+              onClear={onClear}
+              inputRef={inputRef}
+            />
           ) : null
         }
       >

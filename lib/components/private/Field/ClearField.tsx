@@ -1,15 +1,28 @@
-import React from 'react';
+import React, { Ref, useCallback } from 'react';
 import { useStyles } from 'sku/react-treat';
 import { Box } from '../../Box/Box';
 import { ClearButton } from '../../iconButtons/ClearButton/ClearButton';
 import * as styleRefs from './ClearField.treat';
 
 interface Props {
-  onMouseDown: () => void;
+  inputRef: Ref<HTMLInputElement>;
+  onClear?: () => void;
   hide?: boolean;
 }
-export const ClearField = ({ hide = false, onMouseDown }: Props) => {
+export const ClearField = ({ hide = false, onClear, inputRef }: Props) => {
   const styles = useStyles(styleRefs);
+
+  const clearHandler = useCallback(() => {
+    if (typeof onClear !== 'function') {
+      return;
+    }
+
+    onClear();
+
+    if (inputRef && typeof inputRef === 'object' && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [onClear, inputRef]);
 
   return (
     <Box
@@ -24,7 +37,7 @@ export const ClearField = ({ hide = false, onMouseDown }: Props) => {
     >
       <ClearButton
         label="Clear"
-        onMouseDown={onMouseDown}
+        onMouseDown={clearHandler}
         keyboardAccessible={false}
       />
     </Box>

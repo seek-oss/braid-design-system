@@ -529,18 +529,6 @@ export function Autosuggest<Value>({
     highlightedIndex,
   });
 
-  const clearHandler = useCallback(() => {
-    if (typeof onClear !== 'function') {
-      return;
-    }
-
-    onClear();
-
-    if (inputRef && typeof inputRef === 'object' && inputRef.current) {
-      inputRef.current.focus();
-    }
-  }, [onClear, inputRef]);
-
   const clearable = Boolean(
     typeof onClear !== 'undefined' &&
       typeof value !== 'undefined' &&
@@ -580,7 +568,11 @@ export function Autosuggest<Value>({
             value={value.text}
             secondaryIcon={
               onClear ? (
-                <ClearField hide={!clearable} onMouseDown={clearHandler} />
+                <ClearField
+                  hide={!clearable}
+                  onClear={onClear}
+                  inputRef={inputRef}
+                />
               ) : null
             }
           >
