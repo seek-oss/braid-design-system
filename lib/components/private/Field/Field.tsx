@@ -59,12 +59,12 @@ interface FieldRenderProps extends Pick<FieldProps, PassthroughProps> {
 }
 
 interface InternalFieldProps extends FieldProps {
-  actionButton?: ReactNode;
+  secondaryIcon?: ReactNode;
   children(
     overlays: ReactNode,
     props: FieldRenderProps,
-    cancelButton: ReactNode,
     icon: ReactNode,
+    secondaryIcon: ReactNode,
   ): ReactNode;
 }
 
@@ -86,7 +86,7 @@ export const Field = ({
   tone,
   'aria-describedby': ariaDescribedBy,
   data,
-  actionButton,
+  secondaryIcon,
   autoFocus,
   icon,
   required,
@@ -154,24 +154,10 @@ export const Field = ({
                   baseline: false,
                 }),
                 useTouchableSpace('standard'),
-                actionButton ? styles.actionButtonSpace : null,
+                secondaryIcon ? styles.secondaryIconSpace : null,
                 icon ? styles.iconSpace : null,
               ),
             },
-            actionButton ? (
-              <Box
-                position="absolute"
-                width="touchable"
-                height="touchable"
-                display="flex"
-                alignItems="center"
-                justifyContent="center"
-                top={0}
-                right={0}
-              >
-                {actionButton}
-              </Box>
-            ) : null,
             icon ? (
               <Box
                 display="flex"
@@ -185,6 +171,20 @@ export const Field = ({
                 left={0}
               >
                 <Text baseline={false}>{icon}</Text>
+              </Box>
+            ) : null,
+            secondaryIcon ? (
+              <Box
+                position="absolute"
+                width="touchable"
+                height="touchable"
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+                top={0}
+                right={0}
+              >
+                {secondaryIcon}
               </Box>
             ) : null,
           )}

@@ -36,13 +36,13 @@ const NamedDropdown = forwardRef<HTMLSelectElement, DropdownProps>(
         labelId={undefined}
         secondaryMessage={null}
         value={value}
-        actionButton={
+        secondaryIcon={
           <Text baseline={false}>
             <IconChevron />
           </Text>
         }
       >
-        {(overlays, fieldProps, actionButton, icon) => (
+        {(overlays, fieldProps, icon, secondaryIcon) => (
           <Fragment>
             {icon}
             <Box
@@ -62,7 +62,7 @@ const NamedDropdown = forwardRef<HTMLSelectElement, DropdownProps>(
               {children}
             </Box>
             {overlays}
-            <Box pointerEvents="none">{actionButton}</Box>
+            <Box pointerEvents="none">{secondaryIcon}</Box>
           </Fragment>
         )}
       </Field>

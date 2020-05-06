@@ -74,13 +74,13 @@ const NamedTextField = forwardRef<HTMLInputElement, TextFieldProps>(
         value={value}
         labelId={undefined}
         secondaryMessage={null}
-        actionButton={
+        secondaryIcon={
           onClear ? (
             <ClearField hide={!clearable} onMouseDown={clearHandler} />
           ) : null
         }
       >
-        {(overlays, fieldProps, actionButton, icon) => (
+        {(overlays, fieldProps, icon, secondaryIcon) => (
           <Fragment>
             {icon}
             <Box
@@ -95,7 +95,7 @@ const NamedTextField = forwardRef<HTMLInputElement, TextFieldProps>(
               ref={inputRef}
             />
             {overlays}
-            {actionButton}
+            {secondaryIcon}
           </Fragment>
         )}
       </Field>

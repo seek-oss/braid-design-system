@@ -8,7 +8,7 @@ export const placeholderColor = style((theme) => ({
   },
 }));
 
-export const actionButtonSpace = style((theme) => ({
+export const secondaryIconSpace = style((theme) => ({
   paddingRight: theme.grid * theme.touchableSize,
 }));
 

@@ -578,7 +578,7 @@ export function Autosuggest<Value>({
             id={id}
             labelId={a11y.labelProps.id}
             value={value.text}
-            actionButton={
+            secondaryIcon={
               onClear ? (
                 <ClearField hide={!clearable} onMouseDown={clearHandler} />
               ) : null
@@ -593,8 +593,8 @@ export function Autosuggest<Value>({
                 className,
                 ...restFieldProps
               },
-              actionButton,
               icon,
+              secondaryIcon,
             ) => (
               <Box {...a11y.rootProps}>
                 <Box
@@ -662,7 +662,7 @@ export function Autosuggest<Value>({
                     : null}
                 </Box>
                 {overlays}
-                {actionButton}
+                {secondaryIcon}
               </Box>
             )}
           </Field>
