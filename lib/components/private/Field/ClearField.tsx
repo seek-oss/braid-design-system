@@ -26,8 +26,8 @@ export const ClearField = ({ hide = false, onClear, inputRef }: Props) => {
 
   return (
     <Box
-      height="full"
-      width="full"
+      height="touchable"
+      width="touchable"
       display="flex"
       alignItems="center"
       justifyContent="center"
