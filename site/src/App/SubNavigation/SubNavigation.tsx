@@ -2,6 +2,7 @@ import React from 'react';
 import map from 'lodash/map';
 import guides from '../routes/guides';
 import foundations from '../routes/foundations';
+import examples from '../routes/examples';
 import { Text, TextLink, Box, Stack } from '../../../../lib/components';
 import { ThemeToggle } from '../ThemeSetting';
 import {
@@ -75,7 +76,6 @@ export const SubNavigation = ({ onSelect }: SubNavigationProps) => {
         items={map(guides, (guide, path) => ({
           name: guide.title,
           path,
-          external: false,
           onClick: onSelect,
         }))}
       />
@@ -85,7 +85,15 @@ export const SubNavigation = ({ onSelect }: SubNavigationProps) => {
         items={map(foundations, (foundation, path) => ({
           name: foundation.title,
           path,
-          external: false,
+          onClick: onSelect,
+        }))}
+      />
+
+      <SubNavigationGroup
+        title="Examples"
+        items={map(examples, (example, path) => ({
+          name: example.title,
+          path,
           onClick: onSelect,
         }))}
       />
@@ -97,7 +105,6 @@ export const SubNavigation = ({ onSelect }: SubNavigationProps) => {
           items={categorisedComponents[category].map(({ name }) => ({
             name,
             path: `/components/${name}`,
-            external: false,
             onClick: onSelect,
           }))}
         />
@@ -108,7 +115,6 @@ export const SubNavigation = ({ onSelect }: SubNavigationProps) => {
         items={documentedComponents.map((componentName) => ({
           name: componentName,
           path: `/components/${componentName}`,
-          external: false,
           onClick: onSelect,
         }))}
       />
