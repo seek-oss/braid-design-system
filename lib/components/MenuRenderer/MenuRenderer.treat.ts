@@ -18,7 +18,6 @@ export const backdrop = style({
 
 export const menuIsClosed = style((theme) => ({
   transform: `translateY(-${theme.grid * 2}px)`,
-  opacity: 0,
   visibility: 'hidden',
 }));
 

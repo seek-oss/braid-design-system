@@ -904,6 +904,7 @@ Object {
     onWaitingCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void
     onWheel?: (event: WheelEvent<HTMLElement>) => void
     onWheelCapture?: (event: WheelEvent<HTMLElement>) => void
+    opacity?: 0
     open?: boolean
     optimum?: number
     outline?: "none"
@@ -1424,6 +1425,7 @@ Object {
         | "xxsmall"
     >
     minWidth?: 0
+    opacity?: 0
     outline?: "none"
     overflow?: 
         | "auto"

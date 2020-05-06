@@ -2,7 +2,6 @@ import { style } from 'sku/treat';
 import { virtualTouchableRules } from '../private/touchable/virtualTouchableRules';
 
 export const select = style({
-  opacity: 0,
   ...virtualTouchableRules,
 });
 

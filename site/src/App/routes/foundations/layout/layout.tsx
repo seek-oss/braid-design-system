@@ -44,7 +44,12 @@ const LinkableHeading = ({ children, level = '3' }: LinkableHeadingProps) => {
       <Box id={slug} position="absolute" className={styles.hashAnchor} />
       <Heading level={level}>
         {children}{' '}
-        <Box component="span" transition="fast" className={styles.hashLink}>
+        <Box
+          component="span"
+          transition="fast"
+          opacity={0}
+          className={styles.hashLink}
+        >
           <TextLink href={`#${slug}`}>#</TextLink>
         </Box>
       </Heading>

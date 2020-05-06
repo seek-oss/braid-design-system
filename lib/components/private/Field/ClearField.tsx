@@ -1,8 +1,6 @@
 import React, { Ref, useCallback } from 'react';
-import { useStyles } from 'sku/react-treat';
 import { Box } from '../../Box/Box';
 import { ClearButton } from '../../iconButtons/ClearButton/ClearButton';
-import * as styleRefs from './ClearField.treat';
 
 interface Props {
   inputRef: Ref<HTMLInputElement>;
@@ -10,8 +8,6 @@ interface Props {
   hide?: boolean;
 }
 export const ClearField = ({ hide = false, onClear, inputRef }: Props) => {
-  const styles = useStyles(styleRefs);
-
   const clearHandler = useCallback(() => {
     if (typeof onClear !== 'function') {
       return;
@@ -33,7 +29,7 @@ export const ClearField = ({ hide = false, onClear, inputRef }: Props) => {
       justifyContent="center"
       transition="fast"
       pointerEvents={hide ? 'none' : undefined}
-      className={hide ? styles.hideClear : undefined}
+      opacity={hide ? 0 : undefined}
     >
       <ClearButton
         label="Clear"

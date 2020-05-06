@@ -11,7 +11,7 @@ export function ThemedExample({ children }: ThemedExampleProps) {
   const { theme, ready } = useThemeSettings();
 
   return (
-    <Box style={{ opacity: ready ? 1 : 0 }} transition="fast">
+    <Box opacity={!ready ? 0 : undefined} transition="fast">
       <BraidProvider styleBody={false} theme={themes[theme]}>
         {children}
       </BraidProvider>
