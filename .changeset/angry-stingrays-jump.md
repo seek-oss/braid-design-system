@@ -2,7 +2,7 @@
 'braid-design-system': patch
 ---
 
-Use [`assert`](https://www.npmjs.com/package/assert) for runtime assertions
+Use [`assert`](https://www.npmjs.com/package/assert) for runtime assertions during develpment
 
 Please upgrade to sku v10.3.0 or higher so that these assertions are [removed in production.](https://seek-oss.github.io/sku/#/./docs/extra-features?id=assertion-removal).
 
