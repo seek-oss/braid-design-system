@@ -1,5 +1,23 @@
 # braid-design-system
 
+## 25.7.0
+
+### Minor Changes
+
+- Add zero opacity to Box ([#621](https://github.com/seek-oss/braid-design-system/pull/621))
+
+  Provide zero opacity on `Box` as an optimisation.
+
+  Example usage:
+
+  ```tsx
+  <Box opacity={0}>...</Box>
+  ```
+
+- Add PasswordField component ([#620](https://github.com/seek-oss/braid-design-system/pull/620))
+
+  Provides a password field complete with visibility toggle to switch between a masked and unmasked field value.
+
 ## 25.6.0
 
 ### Minor Changes
