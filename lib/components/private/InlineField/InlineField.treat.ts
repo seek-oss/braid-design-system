@@ -13,15 +13,11 @@ export const root = style({
 });
 
 const realFieldBase = style({
-  opacity: 0,
   zIndex: 1,
   width: hitArea,
   height: hitArea,
   selectors: {
     ...debugTouchable(),
-    [`&:not(:disabled)`]: {
-      cursor: 'pointer',
-    },
   },
 });
 

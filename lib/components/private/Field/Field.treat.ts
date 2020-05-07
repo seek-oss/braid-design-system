@@ -1,4 +1,4 @@
-import { style, styleMap } from 'sku/treat';
+import { style } from 'sku/treat';
 
 export const field = style({});
 
@@ -8,7 +8,7 @@ export const placeholderColor = style((theme) => ({
   },
 }));
 
-export const clearButtonSpace = style((theme) => ({
+export const secondaryIconSpace = style((theme) => ({
   paddingRight: theme.grid * theme.touchableSize,
 }));
 
@@ -19,11 +19,6 @@ const textLeftOffset = 2;
 export const iconSpace = style((theme) => ({
   paddingLeft: theme.grid * theme.touchableSize - textLeftOffset,
 }));
-
-export const clearButtonVisibility = styleMap({
-  hidden: { opacity: 0 },
-  visible: { opacity: 100 },
-});
 
 export const focusOverlay = style({
   selectors: {

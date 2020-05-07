@@ -10,6 +10,7 @@ export { FieldLabel } from '../components/FieldLabel/FieldLabel.playroom';
 export { FieldMessage } from '../components/FieldMessage/FieldMessage.playroom';
 export { Link } from '../components/Link/Link.playroom';
 export { MonthPicker } from '../components/MonthPicker/MonthPicker.playroom';
+export { PasswordField } from '../components/PasswordField/PasswordField.playroom';
 export { Radio } from '../components/Radio/Radio.playroom';
 export { Textarea } from '../components/Textarea/Textarea.playroom';
 export { TextDropdown } from '../components/TextDropdown/TextDropdown.playroom';

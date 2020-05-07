@@ -48,6 +48,8 @@ export const Toggle = ({
         checked={on}
         onChange={handleChange(onChange)}
         position="absolute"
+        cursor="pointer"
+        opacity={0}
         className={[styles.realField, styles.fieldSize]}
       />
       <Box
@@ -104,6 +106,7 @@ export const Toggle = ({
         paddingRight={align === 'right' ? 'xsmall' : undefined}
         flexGrow={align === 'justify' ? 1 : undefined}
         userSelect="none"
+        cursor="pointer"
         className={[styles.label, useVirtualTouchable()]}
       >
         <Text baseline={false} weight={on ? 'strong' : undefined}>

@@ -77,6 +77,7 @@ export function TextDropdown<Value>({
         right={0}
         bottom={0}
         width="full"
+        opacity={0}
         className={styles.select}
         aria-label={label}
         title={label}
