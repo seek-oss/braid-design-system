@@ -378,3 +378,7 @@ export const userSelect = styleMap({
 export const outline = styleMap({
   none: { outline: 'none' },
 });
+
+export const opacity = styleMap({
+  0: { opacity: 0 },
+});

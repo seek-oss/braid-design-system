@@ -546,9 +546,10 @@ export function Autosuggest<Value>({
           pointerEvents={isOpen ? undefined : 'none'}
           top={0}
           left={0}
+          opacity={!isOpen ? 0 : undefined}
           className={[
             styles.backdrop,
-            styles.backdropVisibility[isOpen ? 'visible' : 'hidden'],
+            isOpen ? styles.backdropVisible : undefined,
           ]}
         />
       ) : null}

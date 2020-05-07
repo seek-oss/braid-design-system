@@ -16,14 +16,10 @@ export const root = style({
 });
 
 const realFieldBase = style({
-  opacity: 0,
   height: hitArea,
   zIndex: 1,
   selectors: {
     ...debugTouchable(),
-    [`&:not(:disabled)`]: {
-      cursor: 'pointer',
-    },
   },
 });
 
@@ -37,24 +33,15 @@ const realFieldPosition = style((theme) => {
 
 export const realField = [realFieldBase, realFieldPosition];
 
-export const label = [
-  style({
-    selectors: {
-      [`${realFieldBase}:not(:disabled) ~ &`]: {
-        cursor: 'pointer',
-      },
-    },
-  }),
-  style((theme) => {
-    const size = getSize(theme);
-    const lineHeight = theme.grid * theme.typography.text.standard.mobile.rows;
-    const padding = (size - lineHeight) / 2;
-    return {
-      paddingTop: padding,
-      paddingBottom: padding,
-    };
-  }),
-];
+export const label = style((theme) => {
+  const size = getSize(theme);
+  const lineHeight = theme.grid * theme.typography.text.standard.mobile.rows;
+  const padding = (size - lineHeight) / 2;
+  return {
+    paddingTop: padding,
+    paddingBottom: padding,
+  };
+});
 
 export const fieldSize = style((theme) => ({
   width: getSize(theme) * toggleWidthRatio,

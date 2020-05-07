@@ -255,6 +255,7 @@ export const MenuRenderer = ({
           marginTop={offsetSpace}
           transition="fast"
           right={align === 'right' ? 0 : undefined}
+          opacity={!open ? 0 : undefined}
           className={[styles.menu, !open && styles.menuIsClosed]}
         >
           <Box paddingY="xxsmall">

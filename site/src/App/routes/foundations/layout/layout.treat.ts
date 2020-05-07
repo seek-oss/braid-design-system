@@ -6,7 +6,6 @@ export const hashAnchor = style({
 
 export const linkableHeading = style({});
 export const hashLink = style({
-  opacity: 0,
   selectors: {
     [`${linkableHeading}:hover &`]: {
       opacity: 1,

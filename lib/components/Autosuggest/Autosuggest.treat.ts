@@ -1,4 +1,4 @@
-import { style, styleMap } from 'sku/treat';
+import { style } from 'sku/treat';
 import * as zIndex from '../private/zIndex';
 
 export const zIndexContainer = style({
@@ -12,9 +12,8 @@ export const backdrop = style({
   background: 'black',
 });
 
-export const backdropVisibility = styleMap({
-  hidden: { opacity: 0 },
-  visible: { opacity: 0.7 },
+export const backdropVisible = style({
+  opacity: 0.7,
 });
 
 const menuBase = style({

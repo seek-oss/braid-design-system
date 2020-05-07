@@ -57,6 +57,7 @@ const NamedBox = forwardRef<HTMLElement, BoxProps>(
       left,
       userSelect,
       outline,
+      opacity,
       className,
       ...restProps
     },
@@ -104,6 +105,7 @@ const NamedBox = forwardRef<HTMLElement, BoxProps>(
       left,
       userSelect,
       outline,
+      opacity,
       className,
     });
 
