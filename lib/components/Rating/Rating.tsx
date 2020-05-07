@@ -1,5 +1,6 @@
 import React from 'react';
 import { useStyles } from 'sku/react-treat';
+import assert from 'assert';
 import { useBackground } from '../Box/BackgroundContext';
 import useIcon, { UseIconProps } from '../../hooks/useIcon';
 import { Box } from '../Box/Box';
@@ -58,13 +59,10 @@ export const Rating = ({
 }: Rating) => {
   const styles = useStyles(styleRefs);
 
-  if (process.env.NODE_ENV !== 'production') {
-    if (typeof rating !== 'undefined' && (rating < 0 || rating > 5)) {
-      throw new Error(
-        `Rating must be number between 0 and 5. Received ${rating}`,
-      );
-    }
-  }
+  assert(
+    !rating || (rating >= 0 && rating <= 5),
+    'Rating must be between 0 and 5',
+  );
 
   return (
     <Text size={size}>

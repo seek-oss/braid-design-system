@@ -1,4 +1,5 @@
 import React, { ReactNode, useContext, useMemo } from 'react';
+import assert from 'assert';
 import TextContext from './TextContext';
 import { Box, BoxProps } from '../Box/Box';
 import buildDataAttributes, {
@@ -32,6 +33,11 @@ export const Text = ({
   data,
   children,
 }: TextProps) => {
+  assert(
+    !useContext(TextContext),
+    'Text components should not be nested within each other',
+  );
+
   const textStyles = useText({ weight, size, baseline, tone, _LEGACY_SPACE_ });
   const truncateStyles = useTruncate();
 
@@ -45,18 +51,6 @@ export const Text = ({
     }),
     [tone, size, weight, baseline],
   );
-
-  if (process.env.NODE_ENV !== 'production') {
-    // NODE_ENV is static so hook call is not conditional
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const inText = useContext(TextContext);
-
-    if (inText) {
-      throw new Error(
-        'Text components should not be nested within each other.',
-      );
-    }
-  }
 
   const content = truncate ? (
     <Box

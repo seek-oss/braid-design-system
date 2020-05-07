@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { useStyles } from 'sku/react-treat';
+import assert from 'assert';
 import classnames from 'classnames';
 
 import { OptionalTitle } from '../../components/icons/SVGTypes';
@@ -64,21 +65,17 @@ export default (
     size !== 'fill' ? size : 'standard',
   );
 
-  if (process.env.NODE_ENV !== 'production') {
-    if (isInline && size) {
-      throw new Error(
-        `Specifying a custom \`size\` for an \`Icon\` inside the context of a \`<${
-          textContext ? 'Text' : 'Heading'
-        }>\` component is invalid. See the documentation for correct usage: https://seek-oss.github.io/braid-design-system/components/`,
-      );
-    }
+  assert(
+    !(size && isInline),
+    `Specifying a custom \`size\` for an \`Icon\` inside the context of a \`<${
+      textContext ? 'Text' : 'Heading'
+    }>\` component is invalid. See the documentation for correct usage: https://seek-oss.github.io/braid-design-system/components/`,
+  );
 
-    if (!isInline && alignY) {
-      throw new Error(
-        `Specifying \`alignY\` for an \`Icon\` outside of a text component is invalid.`,
-      );
-    }
-  }
+  assert(
+    !(alignY && !isInline),
+    `Specifying \`alignY\` for an \`Icon\` outside of a text component is invalid.`,
+  );
 
   if (size === 'fill') {
     return {

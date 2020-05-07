@@ -7,6 +7,7 @@ import React, {
   MouseEvent,
 } from 'react';
 import { useStyles } from 'sku/react-treat';
+import assert from 'assert';
 import { Box } from '../Box/Box';
 import { useTouchableSpace } from '../../hooks/typography';
 import { normalizeKey } from '../private/normalizeKey';
@@ -39,14 +40,13 @@ export const MenuItem = ({ children, onClick, data }: MenuItemProps) => {
   const styles = useStyles(styleRefs);
   const menuContext = useContext(MenuContext);
 
-  if (!menuContext) {
-    if (process.env.NODE_ENV !== 'production') {
-      throw new Error(
-        'A MenuItem must be rendered as an immediate child of an Menu. See the documentation for correct usage: https://seek-oss.github.io/braid-design-system/components/MenuRenderer',
-      );
-    } else {
-      throw new Error('MenuItem rendered outside menu context');
-    }
+  assert(
+    menuContext !== null,
+    'A MenuItem must be rendered as an immediate child of a Menu. See the documentation for correct usage: https://seek-oss.github.io/braid-design-system/components/MenuRenderer',
+  );
+
+  if (menuContext === null) {
+    throw new Error();
   }
 
   const { isHighlighted, index, dispatch, focusTrigger } = menuContext;

@@ -50,6 +50,7 @@
     "@types/dedent": "^0.7.0",
     "@types/lodash": "^4.14.132",
     "@types/react": "^16.8.8",
+    "assert": "^2.0.0",
     "autosuggest-highlight": "^3.1.1",
     "basekick": "^3.1.1",
     "classnames": "^2.2.6",
@@ -64,7 +65,7 @@
   },
   "peerDependencies": {
     "react": "^16.8.0",
-    "sku": ">=8.7.1"
+    "sku": ">=10.3.0"
   },
   "devDependencies": {
     "@changesets/cli": "^2.5.2",
@@ -103,7 +104,7 @@
     "react-use": "^13.27.0",
     "renovate-config-seek": "0.4.0",
     "sanitize-html": "^1.22.1",
-    "sku": "10.2.0",
+    "sku": "10.3.0",
     "surge": "^0.20.1",
     "ts-node": "^8.2.0",
     "uuid": "^3.3.3"

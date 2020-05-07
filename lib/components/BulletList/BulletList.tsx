@@ -1,4 +1,5 @@
 import React, { ReactNode, createContext, useMemo } from 'react';
+import assert from 'assert';
 import { Box } from '../Box/Box';
 import { UseTextProps } from '../../hooks/typography';
 import { UseStackProps } from '../Stack/Stack';
@@ -32,6 +33,8 @@ export const BulletList = ({
   space = defaultSpace,
   tone = defaultTone,
 }: BulletListProps) => {
+  assert(validTones.includes(tone), `Invalid tone: ${tone}`);
+
   const bulletListContextValue = useMemo(
     () => ({
       size,
@@ -40,12 +43,6 @@ export const BulletList = ({
     }),
     [size, space, tone],
   );
-
-  if (process.env.NODE_ENV !== 'production') {
-    if (!validTones.includes(tone)) {
-      throw new Error(`Invalid tone: ${tone}`);
-    }
-  }
 
   return (
     <BulletListContext.Provider value={bulletListContextValue}>

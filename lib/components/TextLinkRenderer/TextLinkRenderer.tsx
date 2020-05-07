@@ -1,5 +1,6 @@
 import React, { CSSProperties, useContext, ReactElement } from 'react';
 import { useStyles } from 'sku/react-treat';
+import assert from 'assert';
 import classnames from 'classnames';
 import TextLinkRendererContext from './TextLinkRendererContext';
 import TextContext from '../Text/TextContext';
@@ -32,19 +33,17 @@ export interface TextLinkRendererProps {
 export const TextLinkRenderer = (props: TextLinkRendererProps) => {
   const inActions = useContext(ActionsContext);
 
-  if (process.env.NODE_ENV !== 'production') {
-    // NODE_ENV is static so hook call is not conditional
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const inText = useContext(TextContext);
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const inHeading = useContext(HeadingContext);
+  assert(
+    (() => {
+      // eslint-disable-next-line react-hooks/rules-of-hooks
+      const inText = useContext(TextContext);
+      // eslint-disable-next-line react-hooks/rules-of-hooks
+      const inHeading = useContext(HeadingContext);
 
-    if (!inText && !inHeading && !inActions) {
-      throw new Error(
-        'TextLink components must be rendered within a Text or Heading component.',
-      );
-    }
-  }
+      return inText || inHeading || inActions;
+    })(),
+    'TextLink components must be rendered within a Text or Heading component.',
+  );
 
   if (inActions) {
     return <ButtonLink {...props} />;
@@ -110,13 +109,10 @@ function ButtonLink({
     baseline: false,
   } as const;
 
-  if (process.env.NODE_ENV !== 'production') {
-    if (typeof hitArea === 'string') {
-      throw new Error(
-        'TextLink components should not set "hitArea" within Actions',
-      );
-    }
-  }
+  assert(
+    !hitArea,
+    'TextLink components should not set "hitArea" within Actions',
+  );
 
   return (
     <Box position="relative">

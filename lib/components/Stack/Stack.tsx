@@ -1,5 +1,6 @@
 import React, { Children, Fragment } from 'react';
 import { useStyles } from 'sku/react-treat';
+import assert from 'assert';
 import { Divider, DividerProps } from '../Divider/Divider';
 import { Align, alignToFlexAlign } from '../../utils/align';
 import { ResponsiveProp, mapResponsiveProp } from '../../utils/responsiveProp';
@@ -56,12 +57,10 @@ export const Stack = ({
   align = 'left',
   dividers = false,
 }: StackProps) => {
-  if (
-    process.env.NODE_ENV === 'development' &&
-    !validStackComponents.includes(component)
-  ) {
-    throw new Error(`Invalid Stack component: ${component}`);
-  }
+  assert(
+    validStackComponents.includes(component),
+    `Invalid Stack component: ${component}`,
+  );
 
   const stackClasses = useStackItem({ component, space, align });
   const stackItems = Children.toArray(children);
