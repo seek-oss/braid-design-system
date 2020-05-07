@@ -3696,6 +3696,11 @@ babel-plugin-treat@^1.1.0:
   resolved "https://registry.yarnpkg.com/babel-plugin-treat/-/babel-plugin-treat-1.1.0.tgz#82fc26c9dc46cc075e13116e738456bc63ee0edc"
   integrity sha512-7T5q8BD1P88E0pN803/Me/Hix19kmfJcR5vFEeXwQEoT1aQ3kmKsH95NCB4B3BvZr7gqlofDbGOhgNWYhPWAyw==
 
+babel-plugin-unassert@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/babel-plugin-unassert/-/babel-plugin-unassert-3.0.1.tgz#cba17c38249a0bb26a72eb3793e0b24e29fcb7cd"
+  integrity sha512-dJvXKECYExv+GGieSm6jNe1H+HRa6hH/qPZWOoUfAN+cO6GbnC9fCbwHeJs0XZ2UqcEtJLpJCMs8q0pUEMI0fw==
+
 babel-preset-jest@^25.2.6:
   version "25.2.6"
   resolved "https://registry.yarnpkg.com/babel-preset-jest/-/babel-preset-jest-25.2.6.tgz#5d3f7c99e2a8508d61775c9d68506d143b7f71b5"
@@ -7650,6 +7655,11 @@ hastscript@^5.0.0:
     property-information "^5.0.0"
     space-separated-tokens "^1.0.0"
 
+he@1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/he/-/he-1.1.1.tgz#93410fd21b009735151f8868c2f271f3427e23fd"
+  integrity sha1-k0EP0hsAlzUVH4howvJx80J+I/0=
+
 he@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/he/-/he-1.2.0.tgz#84ae65fa7eafb165fddb61566ae14baf05664f0f"
@@ -10692,6 +10702,13 @@ node-forge@0.9.0:
   resolved "https://registry.yarnpkg.com/node-forge/-/node-forge-0.9.0.tgz#d624050edbb44874adca12bb9a52ec63cb782579"
   integrity sha512-7ASaDa3pD+lJ3WvXFsxekJQelBKRpne+GOVbLbtHYdd7pFspyeuJHnWfLplGf3SwKGbfs/aYl5V/JCIaHVUKKQ==
 
+node-html-parser@^1.2.16:
+  version "1.2.16"
+  resolved "https://registry.yarnpkg.com/node-html-parser/-/node-html-parser-1.2.16.tgz#009ffb38915a8aed01693bec2e39933aeb7f6aba"
+  integrity sha512-TrLpGov7J9hBdWWREudBreragmRPq2Q5b19Ly66XoZVUZbb8JXkIqHkPbTHKicuVC8jNnkP4bRnNVik4mkPahw==
+  dependencies:
+    he "1.1.1"
+
 node-int64@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/node-int64/-/node-int64-0.4.0.tgz#87a9065cdb355d3182d8f94ce11188b825c68a3b"
@@ -13672,10 +13689,10 @@ sisteransi@^1.0.4:
   resolved "https://registry.yarnpkg.com/sisteransi/-/sisteransi-1.0.5.tgz#134d681297756437cc05ca01370d3a7a571075ed"
   integrity sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==
 
-sku@10.2.0:
-  version "10.2.0"
-  resolved "https://registry.yarnpkg.com/sku/-/sku-10.2.0.tgz#b374912d896a5cfab5fad932a1302723b07cfd40"
-  integrity sha512-5RNs0TsQna+8P64U6D9AD4MVkGEebzDPUdfhO2SibxHeocG/2A9ewJBeKMTv3z3Mnq9XooVot73nbGo2jZ6lnw==
+sku@10.3.0:
+  version "10.3.0"
+  resolved "https://registry.yarnpkg.com/sku/-/sku-10.3.0.tgz#d10199ad204eaca24f8e18925ab4b581d206f06c"
+  integrity sha512-HMvojtG3OODMb7UqmbwZZ8Jnkv3XC1RFe9nWYuVHT5a1wZHjbNDnP/Y/3oJz1SwG9ivhrzyoD9OtvhK504PP7g==
   dependencies:
     "@babel/core" "^7.9.0"
     "@babel/plugin-proposal-class-properties" "^7.8.3"
@@ -13711,6 +13728,7 @@ sku@10.2.0:
     babel-plugin-syntax-dynamic-import "^6.18.0"
     babel-plugin-transform-react-remove-prop-types "^0.4.24"
     babel-plugin-treat "^1.1.0"
+    babel-plugin-unassert "^3.0.1"
     bent "^7.0.0"
     browserslist "^4.6.6"
     browserslist-config-seek "^2.0.0"
@@ -13754,6 +13772,7 @@ sku@10.2.0:
     memoizee "^0.4.14"
     mini-css-extract-plugin "^0.8.0"
     node-emoji "^1.10.0"
+    node-html-parser "^1.2.16"
     open "^7.0.0"
     path-to-regexp "^6.0.0"
     playroom "^0.15.0"
