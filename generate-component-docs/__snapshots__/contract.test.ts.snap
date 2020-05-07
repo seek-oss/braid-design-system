@@ -5042,6 +5042,45 @@ Object {
 }
 `;
 
+exports[`PasswordField 1`] = `
+Object {
+  exportType: component,
+  props: {
+    aria-describedby?: string
+    autoComplete?: string
+    autoFocus?: boolean
+    data?: Record<string, string | number>
+    description?: ReactNode
+    disabled?: boolean
+    id: string
+    label?: ReactNode
+    message?: ReactNode
+    name?: string
+    onBlur?: (event: FocusEvent<HTMLInputElement>) => void
+    onChange: (event: FormEvent<HTMLInputElement>) => void
+    onFocus?: (event: FocusEvent<HTMLInputElement>) => void
+    onVisibilityToggle?: (visible: boolean) => void
+    placeholder?: string
+    ref?: 
+        | (instance: HTMLInputElement | null) => void
+        | RefObject<HTMLInputElement>
+    required?: boolean
+    reserveMessageSpace?: boolean
+    secondaryLabel?: ReactNode
+    tertiaryLabel?: ReactNode
+    tone?: 
+        | "critical"
+        | "neutral"
+        | "positive"
+    value: 
+        | number
+        | string
+        | string[]
+    visibilityToggleLabel?: string
+},
+}
+`;
+
 exports[`Radio 1`] = `
 Object {
   exportType: component,
