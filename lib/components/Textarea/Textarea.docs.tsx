@@ -1,7 +1,7 @@
 import React, { ReactNode, useState } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import { Textarea, TextLink } from '../';
-import { Textarea as PlayroomTextarea } from '../../playroom/components';
+import { Textarea as PlayroomTextarea, Box } from '../../playroom/components';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <div style={{ maxWidth: '300px' }}>{children}</div>
@@ -164,6 +164,24 @@ const docs: ComponentDocs = {
             description="Characters 9-22 are invalid"
             highlightRanges={[{ start: 9, end: 22 }]}
           />
+        );
+      },
+    },
+    {
+      label: 'Textarea on Brand Background',
+      Container,
+      Example: ({ id }) => {
+        const [value, setValue] = useState('');
+
+        return (
+          <Box background="brand" padding="small">
+            <Textarea
+              label="Do you like Braid?"
+              id={id}
+              onChange={(e) => setValue(e.currentTarget.value)}
+              value={value}
+            />
+          </Box>
         );
       },
     },
