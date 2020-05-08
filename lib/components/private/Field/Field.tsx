@@ -125,11 +125,12 @@ export const Field = ({
         />
       ) : null}
 
-      <Box
-        position="relative"
-        className={secondaryIcon ? styles.secondaryIconSpace : null}
-      >
-        <BackgroundProvider value={fieldBackground}>
+      <BackgroundProvider value={fieldBackground}>
+        <Box
+          position="relative"
+          background={secondaryIcon ? fieldBackground : undefined}
+          className={secondaryIcon ? styles.secondaryIconSpace : undefined}
+        >
           {children(
             overlays,
             {
@@ -192,8 +193,8 @@ export const Field = ({
               </Box>
             ) : null,
           )}
-        </BackgroundProvider>
-      </Box>
+        </Box>
+      </BackgroundProvider>
 
       {message || secondaryMessage || reserveMessageSpace ? (
         <FieldMessage
