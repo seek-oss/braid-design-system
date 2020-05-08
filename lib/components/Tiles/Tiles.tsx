@@ -1,4 +1,5 @@
 import React, { Children } from 'react';
+import flattenChildren from 'react-keyed-flatten-children';
 import { useStyles } from 'sku/react-treat';
 import { Box } from '../Box/Box';
 import { Divider, DividerProps } from '../Divider/Divider';
@@ -44,7 +45,7 @@ export const Tiles = ({
   return (
     <Box className={negativeMarginTop}>
       <Box display="flex" flexWrap="wrap" className={negativeMarginLeft}>
-        {Children.map(children, (child, i) => (
+        {Children.map(flattenChildren(children), (child, i) => (
           <Box
             minWidth={0}
             className={resolveResponsiveProp(
