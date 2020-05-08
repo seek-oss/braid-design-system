@@ -4,7 +4,7 @@
 
 Improved support for field buttons with browser extensions.
 
-Change to how internal padding is handled to better support a more browser extenstions.
+The implementation of internal spacing within fields has been adjusted to better support browser extensions for password managers.
 
 Affects the following components:
 
