@@ -128,7 +128,8 @@ export const Field = ({
       <BackgroundProvider value={fieldBackground}>
         <Box
           position="relative"
-          background={secondaryIcon ? fieldBackground : undefined}
+          background={fieldBackground}
+          borderRadius="standard"
           className={secondaryIcon ? styles.secondaryIconSpace : undefined}
         >
           {children(
