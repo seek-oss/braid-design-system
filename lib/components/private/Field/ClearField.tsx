@@ -1,4 +1,4 @@
-import React, { Ref, useCallback } from 'react';
+import React, { Ref, useCallback, MouseEvent } from 'react';
 import { Box } from '../../Box/Box';
 import { ClearButton } from '../../iconButtons/ClearButton/ClearButton';
 
@@ -8,17 +8,20 @@ interface Props {
   hide?: boolean;
 }
 export const ClearField = ({ hide = false, onClear, inputRef }: Props) => {
-  const clearHandler = useCallback(() => {
-    if (typeof onClear !== 'function') {
-      return;
-    }
+  const clearHandler = useCallback(
+    (event: MouseEvent<HTMLButtonElement>) => {
+      if (typeof onClear !== 'function' || event.button !== 0) {
+        return;
+      }
 
-    onClear();
+      onClear();
 
-    if (inputRef && typeof inputRef === 'object' && inputRef.current) {
-      inputRef.current.focus();
-    }
-  }, [onClear, inputRef]);
+      if (inputRef && typeof inputRef === 'object' && inputRef.current) {
+        inputRef.current.focus();
+      }
+    },
+    [onClear, inputRef],
+  );
 
   return (
     <Box

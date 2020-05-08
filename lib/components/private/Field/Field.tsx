@@ -51,7 +51,8 @@ interface FieldRenderProps extends Pick<FieldProps, PassthroughProps> {
   background: BoxProps['background'];
   borderRadius: BoxProps['borderRadius'];
   width: BoxProps['width'];
-  paddingX: BoxProps['paddingX'];
+  paddingLeft: BoxProps['paddingLeft'];
+  paddingRight: BoxProps['paddingRight'];
   outline: BoxProps['outline'];
   'aria-describedby'?: string;
   'aria-required'?: boolean;
@@ -124,7 +125,10 @@ export const Field = ({
         />
       ) : null}
 
-      <Box position="relative">
+      <Box
+        position="relative"
+        className={secondaryIcon ? styles.secondaryIconSpace : null}
+      >
         <BackgroundProvider value={fieldBackground}>
           {children(
             overlays,
@@ -133,7 +137,8 @@ export const Field = ({
               name,
               background: fieldBackground,
               width: 'full',
-              paddingX: 'small',
+              paddingLeft: 'small',
+              paddingRight: secondaryIcon ? undefined : 'small',
               borderRadius: 'standard',
               outline: 'none',
               ...((message || ariaDescribedBy) && {
@@ -154,7 +159,6 @@ export const Field = ({
                   baseline: false,
                 }),
                 useTouchableSpace('standard'),
-                secondaryIcon ? styles.secondaryIconSpace : null,
                 icon ? styles.iconSpace : null,
               ),
             },
