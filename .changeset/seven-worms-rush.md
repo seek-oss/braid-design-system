@@ -27,7 +27,7 @@ The following patterns should now work as you might have previously expected:
 ```
 
 ```jsx
-<Tiles space="small">
+<Tiles space="small" columns={3}>
   <React.Fragment>
     <Card>...</Card>
     <Card>...</Card>
