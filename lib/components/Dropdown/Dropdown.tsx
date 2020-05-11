@@ -1,7 +1,9 @@
 import React, { Fragment, AllHTMLAttributes, forwardRef } from 'react';
+import { useStyles } from 'sku/react-treat';
 import { Box } from '../Box/Box';
 import { Field, FieldProps } from '../private/Field/Field';
 import { IconChevron } from '../icons';
+import * as styleRefs from './Dropdown.treat';
 import { Text } from '../Text/Text';
 
 type ValidDropdownChildren = AllHTMLAttributes<
@@ -30,19 +32,15 @@ const NamedDropdown = forwardRef<HTMLSelectElement, DropdownProps>(
       ...restProps
     } = props;
 
+    const styles = useStyles(styleRefs);
     return (
       <Field
         {...restProps}
         labelId={undefined}
         secondaryMessage={null}
         value={value}
-        secondaryIcon={
-          <Text baseline={false}>
-            <IconChevron />
-          </Text>
-        }
       >
-        {(overlays, fieldProps, icon, secondaryIcon) => (
+        {(overlays, { className, paddingRight, ...fieldProps }, icon) => (
           <Fragment>
             {icon}
             <Box
@@ -53,6 +51,7 @@ const NamedDropdown = forwardRef<HTMLSelectElement, DropdownProps>(
               onBlur={onBlur}
               onFocus={onFocus}
               placeholder={placeholder}
+              className={[styles.field, className]}
               {...fieldProps}
               ref={ref}
             >
@@ -62,7 +61,21 @@ const NamedDropdown = forwardRef<HTMLSelectElement, DropdownProps>(
               {children}
             </Box>
             {overlays}
-            <Box pointerEvents="none">{secondaryIcon}</Box>
+            <Box
+              position="absolute"
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+              pointerEvents="none"
+              height="touchable"
+              width="touchable"
+              top={0}
+              right={0}
+            >
+              <Text baseline={false}>
+                <IconChevron />
+              </Text>
+            </Box>
           </Fragment>
         )}
       </Field>
