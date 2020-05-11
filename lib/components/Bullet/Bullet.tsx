@@ -3,7 +3,7 @@ import { useStyles } from 'sku/react-treat';
 import { Box } from '../Box/Box';
 import { useText } from '../../hooks/typography';
 import { BulletListContext } from '../BulletList/BulletList';
-import { useStackItem } from '../StackItem/StackItem';
+import { useStackItem } from '../Stack/Stack';
 import { useLineHeightContainer } from '../../hooks/useLineHeightContainer/useLineHeightContainer';
 import * as styleRefs from './Bullet.treat';
 import TextContext from '../Text/TextContext';

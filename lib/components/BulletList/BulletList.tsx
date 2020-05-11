@@ -1,7 +1,7 @@
 import React, { ReactNode, createContext, useMemo } from 'react';
 import { Box } from '../Box/Box';
 import { UseTextProps } from '../../hooks/typography';
-import { UseStackItemProps } from '../StackItem/StackItem';
+import { UseStackItemProps } from '../Stack/Stack';
 import { useNegativeMarginTop } from '../../hooks/useNegativeMargin/useNegativeMargin';
 
 const defaultSize = 'standard';
