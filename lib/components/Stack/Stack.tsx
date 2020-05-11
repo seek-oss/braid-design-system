@@ -1,19 +1,14 @@
-import React, { Children, ReactNode } from 'react';
+import React, { Children } from 'react';
 import flattenChildren from 'react-keyed-flatten-children';
-import { DividerProps } from '../Divider/Divider';
+import { Box } from '../Box/Box';
+import { useBoxStyles, UseBoxStylesProps } from '../Box/useBoxStyles';
+import { Divider, DividerProps } from '../Divider/Divider';
+import { Hidden, HiddenProps } from '../Hidden/Hidden';
 import { alignToFlexAlign, Align } from '../../utils/align';
 import { mapResponsiveProp, ResponsiveProp } from '../../utils/responsiveProp';
-import { UseBoxStylesProps } from '../Box/useBoxStyles';
-import { Box } from '../Box/Box';
-import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
+import { resolveResponsiveRangeProps } from '../../utils/responsiveRangeProps';
 import { useNegativeMarginTop } from '../../hooks/useNegativeMargin/useNegativeMargin';
-import {
-  resolveResponsiveRangeProps,
-  ResponsiveRangeProps,
-} from '../../utils/responsiveRangeProps';
-import { Hidden, HiddenProps } from '../Hidden/Hidden';
-import { Divider } from '../Divider/Divider';
-import { useBoxStyles } from '../Box/useBoxStyles';
+import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 
 export interface UseStackItemProps {
   align: ResponsiveProp<Align>;
@@ -42,73 +37,6 @@ export const useStackItem = ({ align, component, space }: UseStackItemProps) =>
         }),
   });
 
-export interface StackItemProps {
-  children: ReactNode;
-  hiddenAbove?: ResponsiveRangeProps['above'];
-  hiddenBelow?: ResponsiveRangeProps['below'];
-  component: 'div' | 'li';
-  space: UseBoxStylesProps['paddingBottom'];
-  dividers: boolean | DividerProps['weight'];
-  dividerHiddenOnMobile: boolean;
-  dividerHiddenOnTablet: boolean;
-  dividerHiddenOnDesktop: boolean;
-  align: ResponsiveProp<Align>;
-  index: number;
-}
-
-export const StackItem = ({
-  children,
-  hiddenAbove,
-  hiddenBelow,
-  index,
-  component,
-  space,
-  align,
-  dividers,
-  dividerHiddenOnMobile,
-  dividerHiddenOnTablet,
-  dividerHiddenOnDesktop,
-}: StackItemProps) => {
-  const stackClasses = useStackItem({ component, space, align });
-
-  const [
-    hiddenOnMobile,
-    hiddenOnTablet,
-    hiddenOnDesktop,
-  ] = resolveResponsiveRangeProps({ above: hiddenAbove, below: hiddenBelow });
-
-  return (
-    <Box
-      component={component}
-      className={stackClasses}
-      display={[
-        hiddenOnMobile ? 'none' : 'block',
-        hiddenOnTablet ? 'none' : 'block',
-        hiddenOnDesktop ? 'none' : 'block',
-      ]}
-    >
-      {dividers && index > 0 ? (
-        <Box
-          width="full"
-          paddingBottom={space}
-          display={[
-            dividerHiddenOnMobile ? 'none' : 'block',
-            dividerHiddenOnTablet ? 'none' : 'block',
-            dividerHiddenOnDesktop ? 'none' : 'block',
-          ]}
-        >
-          {typeof dividers === 'string' ? (
-            <Divider weight={dividers} />
-          ) : (
-            <Divider />
-          )}
-        </Box>
-      ) : null}
-      {children}
-    </Box>
-  );
-};
-
 const validStackComponents = ['div', 'ol', 'ul'] as const;
 
 export interface StackProps {
@@ -134,6 +62,7 @@ export const Stack = ({
   }
 
   const stackItems = flattenChildren(children);
+  const stackClasses = useStackItem({ component, space, align });
   const firstStackItem = stackItems[0];
   const isList = component === 'ol' || component === 'ul';
   const stackItemComponent = isList ? 'li' : 'div';
@@ -175,7 +104,7 @@ export const Stack = ({
         if (
           firstVisibleItemOnMobile !== null &&
           firstVisibleItemOnTablet !== null &&
-          firstVisibleItemOnDesktop
+          firstVisibleItemOnDesktop !== null
         ) {
           break;
         }
@@ -185,26 +114,48 @@ export const Stack = ({
 
   return (
     <Box component={component} className={negativeMarginTop}>
-      {Children.map(stackItems, (child, index) => (
-        <StackItem
-          index={index}
-          component={stackItemComponent}
-          space={space}
-          align={align}
-          dividers={dividers}
-          dividerHiddenOnMobile={index === firstVisibleItemOnMobile}
-          dividerHiddenOnTablet={index === firstVisibleItemOnTablet}
-          dividerHiddenOnDesktop={index === firstVisibleItemOnDesktop}
-          {...(typeof child === 'object' && child.type === Hidden
-            ? {
-                hiddenBelow: (child.props as HiddenProps).below,
-                hiddenAbove: (child.props as HiddenProps).above,
-              }
-            : null)}
-        >
-          {child}
-        </StackItem>
-      ))}
+      {Children.map(stackItems, (child, index) => {
+        const [hiddenOnMobile, hiddenOnTablet, hiddenOnDesktop] =
+          typeof child === 'object' && child.type === Hidden
+            ? resolveResponsiveRangeProps({
+                above: (child.props as HiddenProps).above,
+                below: (child.props as HiddenProps).below,
+              })
+            : [false, false, false];
+
+        return (
+          <Box
+            component={stackItemComponent}
+            className={stackClasses}
+            display={[
+              hiddenOnMobile ? 'none' : 'block',
+              hiddenOnTablet ? 'none' : 'block',
+              hiddenOnDesktop ? 'none' : 'block',
+            ]}
+          >
+            {dividers && index > 0 ? (
+              <Box
+                width="full"
+                paddingBottom={space}
+                display={[
+                  index === firstVisibleItemOnMobile ? 'none' : 'block',
+                  index === firstVisibleItemOnTablet ? 'none' : 'block',
+                  index === firstVisibleItemOnDesktop ? 'none' : 'block',
+                ]}
+              >
+                {typeof dividers === 'string' ? (
+                  <Divider weight={dividers} />
+                ) : (
+                  <Divider />
+                )}
+              </Box>
+            ) : null}
+            {typeof child === 'object' && child.type === Hidden
+              ? (child.props as HiddenProps).children
+              : child}
+          </Box>
+        );
+      })}
     </Box>
   );
 };
