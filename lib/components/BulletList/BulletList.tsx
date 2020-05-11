@@ -1,7 +1,8 @@
 import React, { ReactNode, createContext, useMemo } from 'react';
 import { Box } from '../Box/Box';
 import { UseTextProps } from '../../hooks/typography';
-import { UseStackProps } from '../Stack/Stack';
+import { UseStackItemProps } from '../StackItem/StackItem';
+import { useNegativeMarginTop } from '../../hooks/useNegativeMargin/useNegativeMargin';
 
 const defaultSize = 'standard';
 const defaultSpace = 'medium';
@@ -22,7 +23,7 @@ const validTones = ['neutral', 'secondary'] as const;
 export interface BulletListProps {
   children: ReactNode;
   size?: UseTextProps['size'];
-  space?: UseStackProps['space'];
+  space?: UseStackItemProps['space'];
   tone?: typeof validTones[number];
 }
 
@@ -49,7 +50,9 @@ export const BulletList = ({
 
   return (
     <BulletListContext.Provider value={bulletListContextValue}>
-      <Box component="ul">{children}</Box>
+      <Box component="ul" className={useNegativeMarginTop(space)}>
+        {children}
+      </Box>
     </BulletListContext.Provider>
   );
 };

@@ -46,6 +46,7 @@ export { Radio } from './Radio/Radio';
 export { Rating } from './Rating/Rating';
 export { Secondary } from './Secondary/Secondary';
 export { Stack } from './Stack/Stack';
+export { StackItem } from './StackItem/StackItem';
 export { Strong } from './Strong/Strong';
 export { Tag } from './Tag/Tag';
 export { Text } from './Text/Text';

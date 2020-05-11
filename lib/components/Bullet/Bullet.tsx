@@ -3,7 +3,7 @@ import { useStyles } from 'sku/react-treat';
 import { Box } from '../Box/Box';
 import { useText } from '../../hooks/typography';
 import { BulletListContext } from '../BulletList/BulletList';
-import { useStackItem } from '../Stack/Stack';
+import { useStackItem } from '../StackItem/StackItem';
 import { useLineHeightContainer } from '../../hooks/useLineHeightContainer/useLineHeightContainer';
 import * as styleRefs from './Bullet.treat';
 import TextContext from '../Text/TextContext';
@@ -32,32 +32,33 @@ export const Bullet = ({ children }: BulletProps) => {
     <TextContext.Provider value={textContextValue}>
       <Box
         component={component}
-        className={[
-          useText({
+        className={useStackItem({
+          component,
+          space,
+          align: 'left',
+        })}
+      >
+        <Box
+          className={useText({
             size,
             baseline: true,
             tone,
-          }),
-          useStackItem({
-            component,
-            space,
-            align: 'left',
-          }),
-        ]}
-      >
-        <Box display="flex">
-          <Box
-            display="flex"
-            alignItems="center"
-            className={useLineHeightContainer(size)}
-          >
+          })}
+        >
+          <Box display="flex">
             <Box
-              borderRadius="full"
-              className={[styles.currentColor, styles.size[size]]}
-            />
-          </Box>
-          <Box paddingLeft={size === 'xsmall' ? 'xsmall' : 'small'}>
-            {children}
+              display="flex"
+              alignItems="center"
+              className={useLineHeightContainer(size)}
+            >
+              <Box
+                borderRadius="full"
+                className={[styles.currentColor, styles.size[size]]}
+              />
+            </Box>
+            <Box paddingLeft={size === 'xsmall' ? 'xsmall' : 'small'}>
+              {children}
+            </Box>
           </Box>
         </Box>
       </Box>
