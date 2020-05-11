@@ -1,9 +1,11 @@
-import React, { Children } from 'react';
+import React, { Children, ReactNode } from 'react';
+import { useStyles } from 'sku/react-treat';
 import flattenChildren from 'react-keyed-flatten-children';
 import { Box } from '../Box/Box';
 import { useBoxStyles, UseBoxStylesProps } from '../Box/useBoxStyles';
 import { Divider, DividerProps } from '../Divider/Divider';
 import { Hidden, HiddenProps } from '../Hidden/Hidden';
+import * as styleRefs from '../Hidden/Hidden.treat';
 import { alignToFlexAlign, Align } from '../../utils/align';
 import { mapResponsiveProp, ResponsiveProp } from '../../utils/responsiveProp';
 import { resolveResponsiveRangeProps } from '../../utils/responsiveRangeProps';
@@ -39,6 +41,14 @@ export const useStackItem = ({ align, component, space }: UseStackItemProps) =>
 
 const validStackComponents = ['div', 'ol', 'ul'] as const;
 
+const extractHiddenProps = (element: ReactNode) =>
+  element &&
+  typeof element === 'object' &&
+  'type' in element &&
+  element.type === Hidden
+    ? (element.props as HiddenProps)
+    : null;
+
 const resolveHiddenProps = ({ screen, above, below }: HiddenProps) =>
   screen
     ? [true, true, true]
@@ -69,6 +79,7 @@ export const Stack = ({
     throw new Error(`Invalid Stack component: ${component}`);
   }
 
+  const styles = useStyles(styleRefs);
   const stackClasses = useStackItem({ component, space, align });
   const stackItems = flattenChildren(children);
   const isList = component === 'ol' || component === 'ul';
@@ -93,10 +104,10 @@ export const Stack = ({
           );
         }
 
-        const [hiddenOnMobile, hiddenOnTablet, hiddenOnDesktop] =
-          typeof child === 'object' && child.type === Hidden
-            ? resolveHiddenProps(child.props as HiddenProps)
-            : [false, false, false];
+        const hiddenProps = extractHiddenProps(child);
+        const [hiddenOnMobile, hiddenOnTablet, hiddenOnDesktop] = hiddenProps
+          ? resolveHiddenProps(hiddenProps)
+          : [false, false, false];
 
         if (firstItemOnMobile === null && !hiddenOnMobile) {
           firstItemOnMobile = index;
@@ -113,7 +124,10 @@ export const Stack = ({
         return (
           <Box
             component={stackItemComponent}
-            className={stackClasses}
+            className={[
+              stackClasses,
+              hiddenProps && hiddenProps.print ? styles.hiddenOnPrint : null,
+            ]}
             display={[
               hiddenOnMobile ? 'none' : 'block',
               hiddenOnTablet ? 'none' : 'block',
@@ -137,7 +151,7 @@ export const Stack = ({
                 )}
               </Box>
             ) : null}
-            {child}
+            {hiddenProps ? hiddenProps.children : child}
           </Box>
         );
       })}
