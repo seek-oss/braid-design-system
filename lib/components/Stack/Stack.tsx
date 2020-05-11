@@ -139,45 +139,72 @@ export const Stack = ({
   const stackItemComponent = isList ? 'li' : 'div';
   const negativeMarginTop = useNegativeMarginTop(space);
 
-  return (
-    <Box component={component} className={negativeMarginTop}>
-      {Children.map(stackItems, (child, index) => {
-        const [
-          dividerHiddenOnMobile,
-          dividerHiddenOnTablet,
-          dividerHiddenOnDesktop,
-        ] =
-          dividers &&
-          index === 1 &&
-          typeof firstStackItem === 'object' &&
-          firstStackItem.type === Hidden
+  let firstVisibleItemOnMobile: number | null = null;
+  let firstVisibleItemOnTablet: number | null = null;
+  let firstVisibleItemOnDesktop: number | null = null;
+
+  if (dividers) {
+    if (typeof firstStackItem !== 'object' || firstStackItem.type !== Hidden) {
+      firstVisibleItemOnMobile = 0;
+      firstVisibleItemOnTablet = 0;
+      firstVisibleItemOnDesktop = 0;
+    } else {
+      for (let i = 0; i < stackItems.length; i++) {
+        const stackItem = stackItems[i];
+
+        const [hiddenOnMobile, hiddenOnTablet, hiddenOnDesktop] =
+          typeof stackItem === 'object' && stackItem.type === Hidden
             ? resolveResponsiveRangeProps({
-                above: (firstStackItem.props as HiddenProps).above,
-                below: (firstStackItem.props as HiddenProps).below,
+                above: (stackItem.props as HiddenProps).above,
+                below: (stackItem.props as HiddenProps).below,
               })
             : [false, false, false];
 
-        return (
-          <StackItem
-            index={index}
-            component={stackItemComponent}
-            space={space}
-            align={align}
-            dividers={dividers}
-            dividerHiddenOnMobile={dividerHiddenOnMobile}
-            dividerHiddenOnTablet={dividerHiddenOnTablet}
-            dividerHiddenOnDesktop={dividerHiddenOnDesktop}
-            {...(typeof child === 'object' && child.type === Hidden
-              ? {
-                  hiddenBelow: (child.props as HiddenProps).below,
-                  hiddenAbove: (child.props as HiddenProps).above,
-                }
-              : null)}
-          >
-            {child}
-          </StackItem>
-        );
-      })}
+        if (!hiddenOnMobile && firstVisibleItemOnMobile === null) {
+          firstVisibleItemOnMobile = i;
+        }
+
+        if (!hiddenOnTablet && firstVisibleItemOnTablet === null) {
+          firstVisibleItemOnTablet = i;
+        }
+
+        if (!hiddenOnDesktop && firstVisibleItemOnDesktop === null) {
+          firstVisibleItemOnDesktop = i;
+        }
+
+        if (
+          firstVisibleItemOnMobile !== null &&
+          firstVisibleItemOnTablet !== null &&
+          firstVisibleItemOnDesktop
+        ) {
+          break;
+        }
+      }
+    }
+  }
+
+  return (
+    <Box component={component} className={negativeMarginTop}>
+      {Children.map(stackItems, (child, index) => (
+        <StackItem
+          index={index}
+          component={stackItemComponent}
+          space={space}
+          align={align}
+          dividers={dividers}
+          dividerHiddenOnMobile={index === firstVisibleItemOnMobile}
+          dividerHiddenOnTablet={index === firstVisibleItemOnTablet}
+          dividerHiddenOnDesktop={index === firstVisibleItemOnDesktop}
+          {...(typeof child === 'object' && child.type === Hidden
+            ? {
+                hiddenBelow: (child.props as HiddenProps).below,
+                hiddenAbove: (child.props as HiddenProps).above,
+              }
+            : null)}
+        >
+          {child}
+        </StackItem>
+      ))}
     </Box>
   );
 };
