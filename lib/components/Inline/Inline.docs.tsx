@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { Fragment, ReactNode } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import { Placeholder } from '../private/Placeholder/Placeholder';
 import { InlineProps } from './Inline';
@@ -266,6 +266,34 @@ const docs: ComponentDocs = {
           <Placeholder width={48} height={48} label="4" />
           <Placeholder width={48} height={48} label="5" />
           <Placeholder width={48} height={48} label="6" />
+        </Inline>
+      ),
+    },
+    {
+      label:
+        'Test - Should flatten fragments (6 placeholders should be evenly spaced)',
+      docsSite: false,
+      Container,
+      Example: () => (
+        <Inline space="small">
+          <Fragment>
+            <Fragment>
+              <Placeholder width={48} height={48} />
+            </Fragment>
+            <Fragment>
+              <Placeholder width={48} height={48} />
+            </Fragment>
+          </Fragment>
+          <Fragment>
+            <Fragment>
+              <Placeholder width={48} height={48} />
+              <Placeholder width={48} height={48} />
+              <Fragment>
+                <Placeholder width={48} height={48} />
+              </Fragment>
+            </Fragment>
+          </Fragment>
+          <Placeholder width={48} height={48} />
         </Inline>
       ),
     },
