@@ -46,7 +46,7 @@ export const MenuItem = ({ children, onClick, data }: MenuItemProps) => {
   );
 
   if (menuContext === null) {
-    throw new Error();
+    throw new Error('MenuItem rendered outside menu context');
   }
 
   const { isHighlighted, index, dispatch, focusTrigger } = menuContext;
