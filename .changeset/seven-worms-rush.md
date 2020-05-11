@@ -38,7 +38,7 @@ The following patterns should now work as you might have previously expected:
 
 **BREAKING CHANGE**
 
-While _highly_ unlikely, if you were using a fragment to group unspaced sibling nodes within a stack, you'll need to replace it with a Box, for example:
+While _highly_ unlikely, if you were using a fragment to group unspaced sibling nodes within a `Stack`, `Inline` or `Tiles` element, you'll need to replace it with a `Box`, for example:
 
 ```diff
 <Stack space="small">
@@ -51,4 +51,30 @@ While _highly_ unlikely, if you were using a fragment to group unspaced sibling 
 +  </Box>
   ...
 </Stack>
+```
+
+```diff
+<Inline space="small">
+  ...
+-  <React.Fragment>
++  <Box>
+    <Box>...</Box>
+    <Box>...</Box>
+-  <React.Fragment>
++  </Box>
+  ...
+</Inline>
+```
+
+```diff
+<Tiles space="small" columns={3}>
+  ...
+-  <React.Fragment>
++  <Box>
+    <Box>...</Box>
+    <Box>...</Box>
+-  <React.Fragment>
++  </Box>
+  ...
+</Tiles>
 ```
