@@ -39,6 +39,14 @@ export const useStackItem = ({ align, component, space }: UseStackItemProps) =>
 
 const validStackComponents = ['div', 'ol', 'ul'] as const;
 
+const resolveHiddenProps = ({ screen, above, below }: HiddenProps) =>
+  screen
+    ? [true, true, true]
+    : resolveResponsiveRangeProps({
+        above,
+        below,
+      });
+
 export interface StackProps {
   component?: typeof validStackComponents[number];
   children: ReactNodeNoStrings;
@@ -77,33 +85,17 @@ export const Stack = ({
         if (
           process.env.NODE_ENV !== 'production' &&
           typeof child === 'object' &&
-          child.type === Hidden
+          child.type === Hidden &&
+          (child.props as HiddenProps).inline !== undefined
         ) {
-          const {
-            above,
-            below,
-            children: _,
-            ...restHiddenProps
-          } = child.props as HiddenProps;
-          const invalidHiddenProps = Object.keys(restHiddenProps);
-
-          if (invalidHiddenProps.length > 0) {
-            throw new Error(
-              `Invalid prop${
-                invalidHiddenProps.length > 1 ? 's' : ''
-              } on Hidden element within Stack: ${invalidHiddenProps
-                .map((key) => `"${key}"`)
-                .join(', ')}`,
-            );
-          }
+          throw new Error(
+            'The "inline" prop is invalid on Hidden elements within a Stack',
+          );
         }
 
         const [hiddenOnMobile, hiddenOnTablet, hiddenOnDesktop] =
           typeof child === 'object' && child.type === Hidden
-            ? resolveResponsiveRangeProps({
-                above: (child.props as HiddenProps).above,
-                below: (child.props as HiddenProps).below,
-              })
+            ? resolveHiddenProps(child.props as HiddenProps)
             : [false, false, false];
 
         if (firstItemOnMobile === null && !hiddenOnMobile) {
@@ -145,9 +137,7 @@ export const Stack = ({
                 )}
               </Box>
             ) : null}
-            {typeof child === 'object' && child.type === Hidden
-              ? (child.props as HiddenProps).children
-              : child}
+            {child}
           </Box>
         );
       })}
