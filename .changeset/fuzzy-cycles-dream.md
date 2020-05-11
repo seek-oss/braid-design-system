@@ -2,7 +2,7 @@
 'braid-design-system': patch
 ---
 
-Improved support for field buttons with browser extensions.
+TextField, Autosuggest, PasswordField: Improved support for field buttons with browser extensions.
 
 The implementation of internal spacing within fields has been adjusted to better support browser extensions for password managers.
 
