@@ -5,6 +5,7 @@ import React, {
   Fragment,
   useCallback,
   useRef,
+  MouseEvent,
 } from 'react';
 
 import { Field, FieldProps } from '../private/Field/Field';
@@ -43,18 +44,25 @@ const NamedPasswordField = forwardRef<HTMLInputElement, PasswordFieldProps>(
     const inputRef = forwardedRef || defaultRef;
 
     const [visible, setVisibile] = useState(false);
-    const visibilityHandler = useCallback(() => {
-      const newState = !visible;
-      setVisibile(newState);
+    const visibilityHandler = useCallback(
+      (event: MouseEvent<HTMLButtonElement>) => {
+        if (event.button !== 0) {
+          return;
+        }
 
-      if (typeof onVisibilityToggle === 'function') {
-        onVisibilityToggle(newState);
-      }
+        const newState = !visible;
+        setVisibile(newState);
 
-      if (inputRef && typeof inputRef === 'object' && inputRef.current) {
-        inputRef.current.focus();
-      }
-    }, [visible, onVisibilityToggle, inputRef]);
+        if (typeof onVisibilityToggle === 'function') {
+          onVisibilityToggle(newState);
+        }
+
+        if (inputRef && typeof inputRef === 'object' && inputRef.current) {
+          inputRef.current.focus();
+        }
+      },
+      [visible, onVisibilityToggle, inputRef],
+    );
 
     return (
       <Field
