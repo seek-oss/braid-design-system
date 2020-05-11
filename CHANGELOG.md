@@ -1,5 +1,33 @@
 # braid-design-system
 
+## 25.7.1
+
+### Patch Changes
+
+- TextField, Autosuggest, PasswordField: Improved support for field buttons with browser extensions. ([#625](https://github.com/seek-oss/braid-design-system/pull/625))
+
+  The implementation of internal spacing within fields has been adjusted to better support browser extensions for password managers.
+
+  Affects the following components:
+
+  - PasswordField: visibility toggle button
+  - TextField: clear button
+  - Autosuggest: clear button
+
+- Textarea: Fix border radius on dark backgrounds ([#625](https://github.com/seek-oss/braid-design-system/pull/625))
+
+  When rendering a `Textarea` on a background other than white, the field background extended out beyond the field's border radius.
+
+- TextField, Autosuggest, PasswordField: Prevent field buttons firing on right click ([#625](https://github.com/seek-oss/braid-design-system/pull/625))
+
+  Field buttons, such as clear and password visibility toggle, fire on mouse down to ensure focus is retained on the relevant field. We now ensure that the button only recognises left mouse button clicks.
+
+  Affects the following components:
+
+  - PasswordField: visibility toggle button
+  - TextField: clear button
+  - Autosuggest: clear button
+
 ## 25.7.0
 
 ### Minor Changes
