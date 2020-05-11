@@ -2,10 +2,7 @@ import React, { Fragment, ReactNode, AllHTMLAttributes } from 'react';
 import { useStyles } from 'sku/react-treat';
 import classnames from 'classnames';
 import { Box, BoxProps } from '../../Box/Box';
-import {
-  BackgroundProvider,
-  useBackgroundLightness,
-} from '../../Box/BackgroundContext';
+import { useBackgroundLightness } from '../../Box/BackgroundContext';
 import { FieldLabel, FieldLabelProps } from '../../FieldLabel/FieldLabel';
 import {
   FieldMessage,
@@ -51,7 +48,8 @@ interface FieldRenderProps extends Pick<FieldProps, PassthroughProps> {
   background: BoxProps['background'];
   borderRadius: BoxProps['borderRadius'];
   width: BoxProps['width'];
-  paddingX: BoxProps['paddingX'];
+  paddingLeft: BoxProps['paddingLeft'];
+  paddingRight: BoxProps['paddingRight'];
   outline: BoxProps['outline'];
   'aria-describedby'?: string;
   'aria-required'?: boolean;
@@ -124,71 +122,74 @@ export const Field = ({
         />
       ) : null}
 
-      <Box position="relative">
-        <BackgroundProvider value={fieldBackground}>
-          {children(
-            overlays,
-            {
-              id,
-              name,
-              background: fieldBackground,
-              width: 'full',
-              paddingX: 'small',
-              borderRadius: 'standard',
-              outline: 'none',
-              ...((message || ariaDescribedBy) && {
-                'aria-describedby': ariaDescribedBy || messageId,
+      <Box
+        position="relative"
+        background={fieldBackground}
+        borderRadius="standard"
+        className={secondaryIcon ? styles.secondaryIconSpace : undefined}
+      >
+        {children(
+          overlays,
+          {
+            id,
+            name,
+            background: fieldBackground,
+            width: 'full',
+            paddingLeft: 'small',
+            paddingRight: secondaryIcon ? undefined : 'small',
+            borderRadius: 'standard',
+            outline: 'none',
+            ...((message || ariaDescribedBy) && {
+              'aria-describedby': ariaDescribedBy || messageId,
+            }),
+            'aria-required': required,
+            disabled,
+            autoComplete,
+            autoFocus,
+            ...buildDataAttributes(data),
+            className: classnames(
+              styles.field,
+              styles.placeholderColor,
+              useText({
+                backgroundContext: fieldBackground,
+                tone: hasValue ? 'neutral' : 'secondary',
+                size: 'standard',
+                baseline: false,
               }),
-              'aria-required': required,
-              disabled,
-              autoComplete,
-              autoFocus,
-              ...buildDataAttributes(data),
-              className: classnames(
-                styles.field,
-                styles.placeholderColor,
-                useText({
-                  backgroundContext: fieldBackground,
-                  tone: hasValue ? 'neutral' : 'secondary',
-                  size: 'standard',
-                  baseline: false,
-                }),
-                useTouchableSpace('standard'),
-                secondaryIcon ? styles.secondaryIconSpace : null,
-                icon ? styles.iconSpace : null,
-              ),
-            },
-            icon ? (
-              <Box
-                display="flex"
-                alignItems="center"
-                justifyContent="center"
-                position="absolute"
-                height="touchable"
-                width="touchable"
-                pointerEvents="none"
-                top={0}
-                left={0}
-              >
-                <Text baseline={false}>{icon}</Text>
-              </Box>
-            ) : null,
-            secondaryIcon ? (
-              <Box
-                position="absolute"
-                width="touchable"
-                height="touchable"
-                display="flex"
-                alignItems="center"
-                justifyContent="center"
-                top={0}
-                right={0}
-              >
-                {secondaryIcon}
-              </Box>
-            ) : null,
-          )}
-        </BackgroundProvider>
+              useTouchableSpace('standard'),
+              icon ? styles.iconSpace : null,
+            ),
+          },
+          icon ? (
+            <Box
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+              position="absolute"
+              height="touchable"
+              width="touchable"
+              pointerEvents="none"
+              top={0}
+              left={0}
+            >
+              <Text baseline={false}>{icon}</Text>
+            </Box>
+          ) : null,
+          secondaryIcon ? (
+            <Box
+              position="absolute"
+              width="touchable"
+              height="touchable"
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+              top={0}
+              right={0}
+            >
+              {secondaryIcon}
+            </Box>
+          ) : null,
+        )}
       </Box>
 
       {message || secondaryMessage || reserveMessageSpace ? (

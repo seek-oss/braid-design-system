@@ -1,5 +1,114 @@
 # braid-design-system
 
+## 26.0.0
+
+### Major Changes
+
+- Stack, Inline, Tiles: Flatten fragments when provided as direct children ([#626](https://github.com/seek-oss/braid-design-system/pull/626))
+
+  The following patterns should now work as you might have previously expected:
+
+  ```jsx
+  <Stack space="small">
+    <React.Fragment>
+      <Text>...</Text>
+      <Text>...</Text>
+    </React.Fragment>
+    <Text>...</Text>
+  </Stack>
+  ```
+
+  ```jsx
+  <Inline space="small">
+    <React.Fragment>
+      <Badge>...</Badge>
+      <Badge>...</Badge>
+    </React.Fragment>
+    <Badge>...</Badge>
+  </Inline>
+  ```
+
+  ```jsx
+  <Tiles space="small" columns={3}>
+    <React.Fragment>
+      <Card>...</Card>
+      <Card>...</Card>
+    </React.Fragment>
+    <Card>...</Card>
+  </Tiles>
+  ```
+
+  **BREAKING CHANGE**
+
+  While _highly_ unlikely, if you were using a fragment to group unspaced sibling nodes within a `Stack`, `Inline` or `Tiles` element, you'll need to replace it with a `Box`, for example:
+
+  ```diff
+  <Stack space="small">
+    ...
+  -  <React.Fragment>
+  +  <Box>
+      <Box>...</Box>
+      <Box>...</Box>
+  -  <React.Fragment>
+  +  </Box>
+    ...
+  </Stack>
+  ```
+
+  ```diff
+  <Inline space="small">
+    ...
+  -  <React.Fragment>
+  +  <Box>
+      <Box>...</Box>
+      <Box>...</Box>
+  -  <React.Fragment>
+  +  </Box>
+    ...
+  </Inline>
+  ```
+
+  ```diff
+  <Tiles space="small" columns={3}>
+    ...
+  -  <React.Fragment>
+  +  <Box>
+      <Box>...</Box>
+      <Box>...</Box>
+  -  <React.Fragment>
+  +  </Box>
+    ...
+  </Tiles>
+  ```
+
+## 25.7.1
+
+### Patch Changes
+
+- TextField, Autosuggest, PasswordField: Improved support for field buttons with browser extensions. ([#625](https://github.com/seek-oss/braid-design-system/pull/625))
+
+  The implementation of internal spacing within fields has been adjusted to better support browser extensions for password managers.
+
+  Affects the following components:
+
+  - PasswordField: visibility toggle button
+  - TextField: clear button
+  - Autosuggest: clear button
+
+- Textarea: Fix border radius on dark backgrounds ([#625](https://github.com/seek-oss/braid-design-system/pull/625))
+
+  When rendering a `Textarea` on a background other than white, the field background extended out beyond the field's border radius.
+
+- TextField, Autosuggest, PasswordField: Prevent field buttons firing on right click ([#625](https://github.com/seek-oss/braid-design-system/pull/625))
+
+  Field buttons, such as clear and password visibility toggle, fire on mouse down to ensure focus is retained on the relevant field. We now ensure that the button only recognises left mouse button clicks.
+
+  Affects the following components:
+
+  - PasswordField: visibility toggle button
+  - TextField: clear button
+  - Autosuggest: clear button
+
 ## 25.7.0
 
 ### Minor Changes

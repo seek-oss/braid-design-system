@@ -124,10 +124,11 @@ const NamedTextarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           value,
         })}
       >
-        {(overlays, { className, background, ...fieldProps }) => (
+        {(overlays, { className, borderRadius, background, ...fieldProps }) => (
           <Box
             position="relative"
             background={background}
+            borderRadius={borderRadius}
             className={styles.resetZIndex}
           >
             {hasHighlights ? (
