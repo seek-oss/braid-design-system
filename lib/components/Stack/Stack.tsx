@@ -74,6 +74,30 @@ export const Stack = ({
   return (
     <Box component={component} className={negativeMarginTop}>
       {Children.map(stackItems, (child, index) => {
+        if (
+          process.env.NODE_ENV !== 'production' &&
+          typeof child === 'object' &&
+          child.type === Hidden
+        ) {
+          const {
+            above,
+            below,
+            children: _,
+            ...restHiddenProps
+          } = child.props as HiddenProps;
+          const invalidHiddenProps = Object.keys(restHiddenProps);
+
+          if (invalidHiddenProps.length > 0) {
+            throw new Error(
+              `Invalid prop${
+                invalidHiddenProps.length > 1 ? 's' : ''
+              } on Hidden element within Stack: ${invalidHiddenProps
+                .map((key) => `"${key}"`)
+                .join(', ')}`,
+            );
+          }
+        }
+
         const [hiddenOnMobile, hiddenOnTablet, hiddenOnDesktop] =
           typeof child === 'object' && child.type === Hidden
             ? resolveResponsiveRangeProps({
