@@ -63,54 +63,13 @@ export const Stack = ({
 
   const stackItems = flattenChildren(children);
   const stackClasses = useStackItem({ component, space, align });
-  const firstStackItem = stackItems[0];
   const isList = component === 'ol' || component === 'ul';
   const stackItemComponent = isList ? 'li' : 'div';
   const negativeMarginTop = useNegativeMarginTop(space);
 
-  let firstVisibleItemOnMobile: number | null = null;
-  let firstVisibleItemOnTablet: number | null = null;
-  let firstVisibleItemOnDesktop: number | null = null;
-
-  if (dividers) {
-    if (typeof firstStackItem !== 'object' || firstStackItem.type !== Hidden) {
-      firstVisibleItemOnMobile = 0;
-      firstVisibleItemOnTablet = 0;
-      firstVisibleItemOnDesktop = 0;
-    } else {
-      for (let i = 0; i < stackItems.length; i++) {
-        const stackItem = stackItems[i];
-
-        const [hiddenOnMobile, hiddenOnTablet, hiddenOnDesktop] =
-          typeof stackItem === 'object' && stackItem.type === Hidden
-            ? resolveResponsiveRangeProps({
-                above: (stackItem.props as HiddenProps).above,
-                below: (stackItem.props as HiddenProps).below,
-              })
-            : [false, false, false];
-
-        if (!hiddenOnMobile && firstVisibleItemOnMobile === null) {
-          firstVisibleItemOnMobile = i;
-        }
-
-        if (!hiddenOnTablet && firstVisibleItemOnTablet === null) {
-          firstVisibleItemOnTablet = i;
-        }
-
-        if (!hiddenOnDesktop && firstVisibleItemOnDesktop === null) {
-          firstVisibleItemOnDesktop = i;
-        }
-
-        if (
-          firstVisibleItemOnMobile !== null &&
-          firstVisibleItemOnTablet !== null &&
-          firstVisibleItemOnDesktop !== null
-        ) {
-          break;
-        }
-      }
-    }
-  }
+  let firstItemOnMobile: number | null = null;
+  let firstItemOnTablet: number | null = null;
+  let firstItemOnDesktop: number | null = null;
 
   return (
     <Box component={component} className={negativeMarginTop}>
@@ -122,6 +81,18 @@ export const Stack = ({
                 below: (child.props as HiddenProps).below,
               })
             : [false, false, false];
+
+        if (firstItemOnMobile === null && !hiddenOnMobile) {
+          firstItemOnMobile = index;
+        }
+
+        if (firstItemOnTablet === null && !hiddenOnTablet) {
+          firstItemOnTablet = index;
+        }
+
+        if (firstItemOnDesktop === null && !hiddenOnDesktop) {
+          firstItemOnDesktop = index;
+        }
 
         return (
           <Box
@@ -138,9 +109,9 @@ export const Stack = ({
                 width="full"
                 paddingBottom={space}
                 display={[
-                  index === firstVisibleItemOnMobile ? 'none' : 'block',
-                  index === firstVisibleItemOnTablet ? 'none' : 'block',
-                  index === firstVisibleItemOnDesktop ? 'none' : 'block',
+                  index === firstItemOnMobile ? 'none' : 'block',
+                  index === firstItemOnTablet ? 'none' : 'block',
+                  index === firstItemOnDesktop ? 'none' : 'block',
                 ]}
               >
                 {typeof dividers === 'string' ? (
