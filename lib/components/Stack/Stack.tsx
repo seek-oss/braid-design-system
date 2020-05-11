@@ -69,8 +69,8 @@ export const Stack = ({
     throw new Error(`Invalid Stack component: ${component}`);
   }
 
-  const stackItems = flattenChildren(children);
   const stackClasses = useStackItem({ component, space, align });
+  const stackItems = flattenChildren(children);
   const isList = component === 'ol' || component === 'ul';
   const stackItemComponent = isList ? 'li' : 'div';
   const negativeMarginTop = useNegativeMarginTop(space);
