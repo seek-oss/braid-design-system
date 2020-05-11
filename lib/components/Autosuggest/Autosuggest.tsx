@@ -579,13 +579,7 @@ export function Autosuggest<Value>({
           >
             {(
               overlays,
-              {
-                background,
-                borderRadius,
-                paddingX,
-                className,
-                ...restFieldProps
-              },
+              { background, borderRadius, className, ...restFieldProps },
               icon,
               secondaryIcon,
             ) => (
@@ -593,7 +587,6 @@ export function Autosuggest<Value>({
                 <Box
                   component="input"
                   borderRadius={borderRadius}
-                  paddingX={paddingX}
                   {...restFieldProps}
                   {...a11y.inputProps}
                   {...inputProps}

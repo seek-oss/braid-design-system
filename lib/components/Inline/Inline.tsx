@@ -1,4 +1,5 @@
 import React, { Children } from 'react';
+import flattenChildren from 'react-keyed-flatten-children';
 import { Box } from '../Box/Box';
 import { ResponsiveSpace } from '../Box/useBoxStyles';
 import {
@@ -45,7 +46,7 @@ export const Inline = ({
         flexWrap="wrap"
         {...collapsibleAlignmentProps}
       >
-        {Children.map(orderChildren(children), (child) =>
+        {Children.map(orderChildren(flattenChildren(children)), (child) =>
           child !== null && child !== undefined ? (
             <Box
               minWidth={0}

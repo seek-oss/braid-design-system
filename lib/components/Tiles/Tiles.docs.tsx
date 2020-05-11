@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import { Tiles, Box, Card, Text } from '../';
 import { Placeholder } from '../private/Placeholder/Placeholder';
@@ -56,6 +56,29 @@ const docs: ComponentDocs = {
             ))}
           </Tiles>
         </Box>
+      ),
+    },
+    {
+      label:
+        'Test - Should flatten fragments (6 tiles should be evenly spaced)',
+      docsSite: false,
+      Example: () => (
+        <Tiles space="small" columns={3}>
+          <Fragment>
+            <Placeholder height={40} />
+          </Fragment>
+          <Fragment>
+            <Placeholder height={40} />
+            <Placeholder height={40} />
+          </Fragment>
+          <Fragment>
+            <Fragment>
+              <Placeholder height={40} />
+            </Fragment>
+            <Placeholder height={40} />
+          </Fragment>
+          <Placeholder height={40} />
+        </Tiles>
       ),
     },
   ],

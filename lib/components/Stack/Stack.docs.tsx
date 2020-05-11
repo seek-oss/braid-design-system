@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { Fragment, ReactNode } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import { Box, Stack } from '../';
 import { StackProps } from './Stack';
@@ -82,6 +82,28 @@ const docs: ComponentDocs = {
       Example: () => (
         <Stack space="gutter" dividers="strong">
           <Placeholder height={40} />
+          <Placeholder height={40} />
+          <Placeholder height={40} />
+        </Stack>
+      ),
+    },
+    {
+      label:
+        'Test - Should flatten fragments (6 placeholders should be evenly spaced)',
+      docsSite: false,
+      Container,
+      Example: () => (
+        <Stack space="small">
+          <Fragment>
+            <Placeholder height={40} />
+            <Placeholder height={40} />
+            <Fragment>
+              <Placeholder height={40} />
+              <Fragment>
+                <Placeholder height={40} />
+              </Fragment>
+            </Fragment>
+          </Fragment>
           <Placeholder height={40} />
           <Placeholder height={40} />
         </Stack>

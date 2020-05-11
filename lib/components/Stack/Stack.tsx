@@ -1,5 +1,6 @@
-import React, { Children, Fragment } from 'react';
+import React, { Fragment, Children } from 'react';
 import { useStyles } from 'sku/react-treat';
+import flattenChildren from 'react-keyed-flatten-children';
 import assert from 'assert';
 import { Divider, DividerProps } from '../Divider/Divider';
 import { Align, alignToFlexAlign } from '../../utils/align';
@@ -63,7 +64,7 @@ export const Stack = ({
   );
 
   const stackClasses = useStackItem({ component, space, align });
-  const stackItems = Children.toArray(children);
+  const stackItems = flattenChildren(children);
 
   const isList = component === 'ol' || component === 'ul';
   const stackItemComponent = isList ? 'li' : 'div';
@@ -74,11 +75,10 @@ export const Stack = ({
 
   return (
     <Box component={component}>
-      {stackItems.map((child, index) => (
+      {Children.map(stackItems, (child, index) => (
         <Box
           component={stackItemComponent}
           className={dividers ? undefined : stackClasses}
-          key={index}
         >
           {dividers && index > 0 ? (
             <Box width="full" paddingY={space}>

@@ -12593,10 +12593,17 @@ react-input-autosize@^2.2.2:
   dependencies:
     prop-types "^15.5.8"
 
-react-is@^16.12.0, react-is@^16.6.0, react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.4:
+react-is@^16.12.0, react-is@^16.6.0, react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.4, react-is@^16.8.6:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
+
+react-keyed-flatten-children@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/react-keyed-flatten-children/-/react-keyed-flatten-children-1.2.0.tgz#44c741f9f5acca1a7294c3f7a11f1d31c417c1e1"
+  integrity sha512-gJoD3br3tK59+AOKlzb+7G39YtkSC4gWjQjDbWOmHjW7pxgYomnRBemKXuNBafnPYSKpjp7evOlxtGEHwiP11g==
+  dependencies:
+    react-is "^16.8.6"
 
 react-lifecycles-compat@^3.0.4:
   version "3.0.4"
