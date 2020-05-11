@@ -1,6 +1,6 @@
 import React, { Fragment, ReactNode } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import { Box, Stack } from '../';
+import { Box, Stack, Hidden } from '../';
 import { StackProps } from './Stack';
 import { Placeholder } from '../private/Placeholder/Placeholder';
 import { padding } from '../Box/useBoxStyles.treat';
@@ -106,6 +106,39 @@ const docs: ComponentDocs = {
           </Fragment>
           <Placeholder height={40} />
           <Placeholder height={40} />
+        </Stack>
+      ),
+    },
+    {
+      label: 'Responsively hiding stack items',
+      Container,
+      Example: () => (
+        <Stack space="gutter">
+          <Placeholder height={40} label="1" />
+          <Hidden below="tablet">
+            <Placeholder height={40} label="2" />
+          </Hidden>
+          <Hidden above="mobile">
+            <Placeholder height={40} label="3" />
+          </Hidden>
+          <Placeholder height={40} label="4" />
+        </Stack>
+      ),
+    },
+    {
+      label:
+        'Test - Hidden stack items with dividers (should show 3 on mobile, 2 and 3 on tablet, and 1-3 on desktop)',
+      Container,
+      docsSite: false,
+      Example: () => (
+        <Stack space="gutter" dividers>
+          <Hidden below="desktop">
+            <Placeholder height={40} label="1" />
+          </Hidden>
+          <Hidden below="tablet">
+            <Placeholder height={40} label="2" />
+          </Hidden>
+          <Placeholder height={40} label="3" />
         </Stack>
       ),
     },
