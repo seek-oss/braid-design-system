@@ -313,7 +313,7 @@ const page: Page = {
                 We can address this by wrapping the button in an{' '}
                 <TextLink href="/components/Actions">Actions</TextLink>{' '}
                 component. Now it will be full width on mobile and only as wide
-                as it&rsquo;s content larger screens.
+                as its content on larger screens.
               </Text>
             </Stack>
           }
