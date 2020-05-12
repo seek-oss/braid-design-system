@@ -132,7 +132,7 @@ const page: Page = {
         </Step>
 
         <Step
-          heading="2. Laying out the content"
+          heading="2. Lay out the content"
           detail={
             <Stack space="large">
               <Text>
