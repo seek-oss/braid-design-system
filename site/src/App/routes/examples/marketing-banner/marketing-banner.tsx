@@ -642,7 +642,7 @@ const page: Page = {
               alignment 😉.
             </Bullet>
             <Bullet>
-              Make a list of banners, alternating the directions of the{' '}
+              Making a list of banners, alternating the directions of the{' '}
               <TextLink href="/foundations/layout#Columns">Columns</TextLink>
             </Bullet>
           </BulletList>
