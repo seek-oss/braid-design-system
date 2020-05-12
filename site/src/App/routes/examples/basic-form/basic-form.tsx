@@ -306,8 +306,8 @@ const page: Page = {
             <Stack space="large">
               <Text component="p">
                 You&rsquo;ll notice the button is the full width of the card.
-                From a mobile perspective this is fine, but on a larger device
-                this is not ideal.
+                This is fine from a mobile perspective, but less that ideal on a
+                larger device.
               </Text>
               <Text component="p">
                 We can address this by wrapping the button in an{' '}
