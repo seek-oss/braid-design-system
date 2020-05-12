@@ -341,7 +341,7 @@ const page: Page = {
         </Text>
 
         <Step
-          heading="6. Adjusting the space in our `Box`"
+          heading="6. Adjust the space in our `Box`"
           detail={
             <Stack space="large">
               <Text component="p">
