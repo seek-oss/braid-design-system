@@ -303,7 +303,7 @@ const page: Page = {
         </Step>
 
         <Step
-          heading="5. Adding some colour"
+          heading="5. Add some colour"
           detail={
             <Text component="p">
               Now that we have our layout let&rsquo;s get our banner some
