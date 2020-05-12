@@ -345,7 +345,7 @@ const page: Page = {
           detail={
             <Stack space="large">
               <Text component="p">
-                Since adding the background colour we can observe that our
+                Since adding the background colour, we can observe that our
                 container is lacking some much needed breathing room around the
                 content. This is referred to as `padding`
               </Text>
