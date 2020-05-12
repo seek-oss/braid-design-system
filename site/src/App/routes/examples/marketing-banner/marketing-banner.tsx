@@ -442,7 +442,7 @@ const page: Page = {
         </Text>
 
         <Step
-          heading="10. Responsive alignment"
+          heading="10. Align content responsively"
           detail={
             <Stack space="large">
               <Text component="p">
