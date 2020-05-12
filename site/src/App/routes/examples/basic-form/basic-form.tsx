@@ -136,7 +136,7 @@ const page: Page = {
         </Step>
 
         <Step
-          heading="3. Spacing out the content"
+          heading="3. Space out the content"
           detail={
             <Text>
               You&rsquo;ll notice that there is no space between the heading and
