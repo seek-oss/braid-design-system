@@ -306,7 +306,7 @@ const page: Page = {
           heading="5. Add some colour"
           detail={
             <Text component="p">
-              Now that we have our layout let&rsquo;s get our banner some
+              Now that we have our layout, let&rsquo;s get our banner some
               attention by applying a background colour to the `Box` container.
               In this example, we&rsquo;ll set a `background` colour of
               `brandAccent`.
