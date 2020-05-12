@@ -127,6 +127,24 @@ const docs: ComponentDocs = {
     },
     {
       label:
+        'Test - Hidden stack items with alignment (should be center aligned while showing 3 on mobile, 2 and 3 on tablet, and 1-3 on desktop)',
+      Container,
+      docsSite: false,
+      Example: () => (
+        /* TODO: Fix this */
+        <Stack space="gutter" align="center">
+          <Hidden below="desktop">
+            <Placeholder height={40} label="1" />
+          </Hidden>
+          <Hidden below="tablet">
+            <Placeholder height={40} label="2" />
+          </Hidden>
+          <Placeholder height={40} label="3" />
+        </Stack>
+      ),
+    },
+    {
+      label:
         'Test - Hidden stack items with dividers (should show 3 on mobile, 2 and 3 on tablet, and 1-3 on desktop)',
       Container,
       docsSite: false,

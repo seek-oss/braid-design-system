@@ -5,7 +5,7 @@ import { Box } from '../Box/Box';
 import { useBoxStyles, UseBoxStylesProps } from '../Box/useBoxStyles';
 import { Divider, DividerProps } from '../Divider/Divider';
 import { Hidden, HiddenProps } from '../Hidden/Hidden';
-import * as styleRefs from '../Hidden/Hidden.treat';
+import * as hiddenStyleRefs from '../Hidden/Hidden.treat';
 import { alignToFlexAlign, Align } from '../../utils/align';
 import { mapResponsiveProp, ResponsiveProp } from '../../utils/responsiveProp';
 import { resolveResponsiveRangeProps } from '../../utils/responsiveRangeProps';
@@ -41,12 +41,9 @@ export const useStackItem = ({ align, component, space }: UseStackItemProps) =>
 
 const validStackComponents = ['div', 'ol', 'ul'] as const;
 
-const extractHiddenProps = (element: ReactNode) =>
-  element &&
-  typeof element === 'object' &&
-  'type' in element &&
-  element.type === Hidden
-    ? (element.props as HiddenProps)
+const extractHiddenPropsFromChild = (child: ReactNode) =>
+  child && typeof child === 'object' && 'type' in child && child.type === Hidden
+    ? (child.props as HiddenProps)
     : null;
 
 const resolveHiddenProps = ({ screen, above, below }: HiddenProps) =>
@@ -79,7 +76,7 @@ export const Stack = ({
     throw new Error(`Invalid Stack component: ${component}`);
   }
 
-  const styles = useStyles(styleRefs);
+  const hiddenStyles = useStyles(hiddenStyleRefs);
   const stackClasses = useStackItem({ component, space, align });
   const stackItems = flattenChildren(children);
   const isList = component === 'ol' || component === 'ul';
@@ -104,7 +101,7 @@ export const Stack = ({
           );
         }
 
-        const hiddenProps = extractHiddenProps(child);
+        const hiddenProps = extractHiddenPropsFromChild(child);
         const [hiddenOnMobile, hiddenOnTablet, hiddenOnDesktop] = hiddenProps
           ? resolveHiddenProps(hiddenProps)
           : [false, false, false];
@@ -126,7 +123,9 @@ export const Stack = ({
             component={stackItemComponent}
             className={[
               stackClasses,
-              hiddenProps && hiddenProps.print ? styles.hiddenOnPrint : null,
+              hiddenProps && hiddenProps.print
+                ? hiddenStyles.hiddenOnPrint
+                : null,
             ]}
             display={[
               hiddenOnMobile ? 'none' : 'block',
