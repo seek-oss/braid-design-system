@@ -8,7 +8,7 @@ You can now responsively hide stack items using the [`Hidden`](https://seek-oss.
 
 For example, if you wanted to hide an stack item on mobile:
 
-```js
+```jsx
 <Stack space="small">
   <Text>...</Text>
   <Hidden below="tablet">
