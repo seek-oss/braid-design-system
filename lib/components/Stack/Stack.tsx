@@ -130,11 +130,15 @@ export const Stack = ({
                 : null,
             ]}
             {...stackItemProps}
-            display={[
-              hiddenOnMobile ? 'none' : stackItemProps.display[0],
-              hiddenOnTablet ? 'none' : stackItemProps.display[1],
-              hiddenOnDesktop ? 'none' : stackItemProps.display[2],
-            ]}
+            {...(hiddenOnMobile || hiddenOnTablet || hiddenOnDesktop
+              ? {
+                  display: [
+                    hiddenOnMobile ? 'none' : stackItemProps.display[0],
+                    hiddenOnTablet ? 'none' : stackItemProps.display[1],
+                    hiddenOnDesktop ? 'none' : stackItemProps.display[2],
+                  ],
+                }
+              : null)}
           >
             {dividers && index > 0 ? (
               <Box
