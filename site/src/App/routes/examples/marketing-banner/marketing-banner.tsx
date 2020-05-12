@@ -586,7 +586,7 @@ const page: Page = {
             <Stack space="large">
               <Text component="p">
                 And finally, we&rsquo;ll also add a bit more space between the
-                columns when they collapse on mobile devices, by changing the
+                columns when they collapse on mobile devices by changing the
                 `space` on `Columns` to [ &ldquo;xlarge&rdquo;,
                 &ldquo;gutter&rdquo; ]
               </Text>
