@@ -398,7 +398,7 @@ const page: Page = {
         <Text component="p">We&rsquo;ll address this next.</Text>
 
         <Step
-          heading="7. Responsive layouts"
+          heading="7. Make the layout responsive"
           detail={
             <Stack space="large">
               <Text component="p">
