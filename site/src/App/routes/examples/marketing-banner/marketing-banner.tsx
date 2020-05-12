@@ -402,12 +402,11 @@ const page: Page = {
           detail={
             <Stack space="large">
               <Text component="p">
-                One of the features available when using `Columns` is the
-                ability to describe at what point the columns should collapse
-                into a single vertical column. This can be done using the
-                `collapseBelow` on `Columns` and choosing whether we want to it
-                collapse down below &ldquo;desktop&rdquo; or
-                &ldquo;tablet&rdquo;.
+                `Columns` allows us to define the device size beyond which the
+                columns should collapse into a single vertical column. This can
+                be done using the `collapseBelow` on `Columns` and choosing
+                whether we want to it collapse down below &ldquo;desktop&rdquo;
+                or &ldquo;tablet&rdquo;.
               </Text>
               <Text component="p">
                 In this case, we&rsquo;ll choose &ldquo;tablet&rdquo;.
@@ -447,9 +446,9 @@ const page: Page = {
             <Stack space="large">
               <Text component="p">
                 Alignment of both text and headings can accept responsive
-                values, which give you more fine-grained control over what alignment
-                should be used for each device size. Our system currently has 3
-                sizes: mobile, tablet, and desktop.
+                values, which give you more fine-grained control over what
+                alignment should be used for each device size. Our system
+                currently has 3 sizes: mobile, tablet, and desktop.
               </Text>
               <Text component="p">
                 Currently our heading and button are left aligned, but now we
@@ -491,12 +490,10 @@ const page: Page = {
 
         <Text component="p">
           Now if you click the &ldquo;Open in Playroom&rsquo; button on the code
-          block above, our layout is scaling up pretty well from mobile through to
-          desktop. However, you&rsquo;ll notice on large screens the content
-          spans the full width.
+          block above, our layout is scaling up pretty well from mobile through
+          to desktop. However, you&rsquo;ll notice on large screens the content
+          spans the full width. Let&rsquo;s tackle this next.
         </Text>
-
-        <Text component="p">Let&rsquo;s tackle this next.</Text>
 
         <Step
           heading="9. Constrain layout on larger screens"
@@ -551,7 +548,7 @@ const page: Page = {
               <Text component="p">
                 As an example, let&rsquo;s increase the vertical padding on the
                 `Box` to &ldquo;xxlarge&rdquo; above mobile by setting
-                `paddingY` to [ &ldquo;xlarge&rdquo;, &ldquo;xxlarge&rdquo; ]
+                `paddingY` to [&ldquo;xlarge&rdquo;, &ldquo;xxlarge&rdquo;]
               </Text>
             </Stack>
           }
@@ -587,8 +584,8 @@ const page: Page = {
               <Text component="p">
                 And finally, we&rsquo;ll also add a bit more space between the
                 columns when they collapse on mobile devices by changing the
-                `space` on `Columns` to [ &ldquo;xlarge&rdquo;,
-                &ldquo;gutter&rdquo; ]
+                `space` on `Columns` to [&ldquo;xlarge&rdquo;,
+                &ldquo;gutter&rdquo;]
               </Text>
             </Stack>
           }
