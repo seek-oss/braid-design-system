@@ -347,7 +347,7 @@ const page: Page = {
               <Text component="p">
                 Since adding the background colour, we can observe that our
                 container is lacking some much needed breathing room around the
-                content. This is referred to as `padding`
+                content. This internal spacing is referred to as `padding`.
               </Text>
               <Text component="p">
                 The <TextLink href="/components/Box">Box</TextLink> component
