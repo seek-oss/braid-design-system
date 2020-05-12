@@ -32,8 +32,7 @@ export const Bullet = ({ children }: BulletProps) => {
     <TextContext.Provider value={textContextValue}>
       <Box
         component={component}
-        className={useStackItem({
-          component,
+        {...useStackItem({
           space,
           align: 'left',
         })}

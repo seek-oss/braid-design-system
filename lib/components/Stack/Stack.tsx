@@ -1,21 +1,23 @@
 import React, { Children, ReactNode } from 'react';
 import { useStyles } from 'sku/react-treat';
 import flattenChildren from 'react-keyed-flatten-children';
-import { Box } from '../Box/Box';
-import { useBoxStyles, UseBoxStylesProps } from '../Box/useBoxStyles';
+import { Box, BoxProps } from '../Box/Box';
 import { Divider, DividerProps } from '../Divider/Divider';
 import { Hidden, HiddenProps } from '../Hidden/Hidden';
 import * as hiddenStyleRefs from '../Hidden/Hidden.treat';
 import { alignToFlexAlign, Align } from '../../utils/align';
-import { mapResponsiveProp, ResponsiveProp } from '../../utils/responsiveProp';
+import {
+  mapResponsiveProp,
+  normaliseResponsiveProp,
+  ResponsiveProp,
+} from '../../utils/responsiveProp';
 import { resolveResponsiveRangeProps } from '../../utils/responsiveRangeProps';
 import { useNegativeMarginTop } from '../../hooks/useNegativeMargin/useNegativeMargin';
 import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 
 export interface UseStackItemProps {
   align: ResponsiveProp<Align>;
-  component: UseBoxStylesProps['component'];
-  space: UseBoxStylesProps['paddingBottom'];
+  space: BoxProps['paddingTop'];
 }
 
 const alignToDisplay = {
@@ -24,20 +26,21 @@ const alignToDisplay = {
   right: 'flex',
 } as const;
 
-export const useStackItem = ({ align, component, space }: UseStackItemProps) =>
-  useBoxStyles({
-    component,
+export const useStackItem = ({ align, space }: UseStackItemProps) =>
+  ({
     paddingTop: space,
     // If we're aligned left across all screen sizes,
     // there's actually no alignment work to do.
     ...(align === 'left'
-      ? {}
-      : {
-          display: mapResponsiveProp(align, alignToDisplay),
+      ? ({ display: normaliseResponsiveProp('block') } as const)
+      : ({
+          display: normaliseResponsiveProp(
+            mapResponsiveProp(align, alignToDisplay) || 'flex',
+          ),
           flexDirection: 'column',
           alignItems: alignToFlexAlign(align),
-        }),
-  });
+        } as const)),
+  } as const);
 
 const validStackComponents = ['div', 'ol', 'ul'] as const;
 
@@ -57,7 +60,7 @@ const resolveHiddenProps = ({ screen, above, below }: HiddenProps) =>
 export interface StackProps {
   component?: typeof validStackComponents[number];
   children: ReactNodeNoStrings;
-  space: UseBoxStylesProps['padding'];
+  space: BoxProps['paddingTop'];
   align?: ResponsiveProp<Align>;
   dividers?: boolean | DividerProps['weight'];
 }
@@ -77,7 +80,7 @@ export const Stack = ({
   }
 
   const hiddenStyles = useStyles(hiddenStyleRefs);
-  const stackClasses = useStackItem({ component, space, align });
+  const stackItemProps = useStackItem({ space, align });
   const stackItems = flattenChildren(children);
   const isList = component === 'ol' || component === 'ul';
   const stackItemComponent = isList ? 'li' : 'div';
@@ -122,15 +125,15 @@ export const Stack = ({
           <Box
             component={stackItemComponent}
             className={[
-              stackClasses,
               hiddenProps && hiddenProps.print
                 ? hiddenStyles.hiddenOnPrint
                 : null,
             ]}
+            {...stackItemProps}
             display={[
-              hiddenOnMobile ? 'none' : 'block',
-              hiddenOnTablet ? 'none' : 'block',
-              hiddenOnDesktop ? 'none' : 'block',
+              hiddenOnMobile ? 'none' : stackItemProps.display[0],
+              hiddenOnTablet ? 'none' : stackItemProps.display[1],
+              hiddenOnDesktop ? 'none' : stackItemProps.display[2],
             ]}
           >
             {dividers && index > 0 ? (

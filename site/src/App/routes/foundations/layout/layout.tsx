@@ -319,7 +319,7 @@ const page: Page = {
         Individual stack items can be hidden on different screen sizes by
         wrapping them with the{' '}
         <TextLink href="/components/Hidden">Hidden</TextLink> component. For
-        example, if you wanted to hide the second element on mobile:
+        example, if you wanted to hide the second item in a stack on mobile:
       </Text>
       <Code>
         <Card>

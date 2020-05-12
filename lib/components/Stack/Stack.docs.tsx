@@ -127,19 +127,27 @@ const docs: ComponentDocs = {
     },
     {
       label:
-        'Test - Hidden stack items with alignment (should be center aligned while showing 3 on mobile, 2 and 3 on tablet, and 1-3 on desktop)',
+        'Test - Hidden stack items with responsive alignment (should be center aligned showing 3 on mobile, right aligned showing 2 and 3 on tablet, left aligned showing 1-3 on desktop)',
       Container,
       docsSite: false,
       Example: () => (
-        /* TODO: Fix this */
-        <Stack space="gutter" align="center">
+        <Stack space="gutter" align={['center', 'right', 'left']}>
           <Hidden below="desktop">
-            <Placeholder height={40} label="1" />
+            <Placeholder width={40} height={40} label="1" />
           </Hidden>
           <Hidden below="tablet">
-            <Placeholder height={40} label="2" />
+            <Placeholder width={40} height={40} label="2" />
           </Hidden>
-          <Placeholder height={40} label="3" />
+          <Hidden print>
+            <Placeholder width={40} height={40} label="3" />
+          </Hidden>
+          <Hidden screen>
+            <Placeholder
+              width={40}
+              height={40}
+              label="This should not be visible"
+            />
+          </Hidden>
         </Stack>
       ),
     },
@@ -157,6 +165,9 @@ const docs: ComponentDocs = {
             <Placeholder height={40} label="2" />
           </Hidden>
           <Placeholder height={40} label="3" />
+          <Hidden screen>
+            <Placeholder height={40} label="This should not be visible" />
+          </Hidden>
         </Stack>
       ),
     },
