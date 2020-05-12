@@ -549,7 +549,7 @@ const page: Page = {
                 responsive technique to finesse the spacing across screen sizes.
               </Text>
               <Text component="p">
-                As an example let&rsquo;s increase the vertical padding on the
+                As an example, let&rsquo;s increase the vertical padding on the
                 `Box` to &ldquo;xxlarge&rdquo; above mobile by setting
                 `paddingY` to [ &ldquo;xlarge&rdquo;, &ldquo;xxlarge&rdquo; ]
               </Text>
