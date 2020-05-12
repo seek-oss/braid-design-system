@@ -637,7 +637,7 @@ const page: Page = {
           <Text>You may want to consider:</Text>
           <BulletList>
             <Bullet>
-              Collapse the `Columns` on screens smaller than `desktop` size
+              Collapsing the `Columns` on screens smaller than `desktop` size
               rather than `tablet`. Hint: also be mindful of updating the text
               alignment 😉.
             </Bullet>
