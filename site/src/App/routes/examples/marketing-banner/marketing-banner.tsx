@@ -271,8 +271,8 @@ const page: Page = {
           detail={
             <Stack space="large">
               <Text component="p">
-                Secondly, we can control the width of the button by using with
-                one of the layout components—in this case an{' '}
+                Secondly, we can control the width of the button by using one of
+                the layout components—in this case an{' '}
                 <TextLink href="/components/Inline">Inline</TextLink>.
               </Text>
               <Text component="p" tone="secondary">
