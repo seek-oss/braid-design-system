@@ -241,7 +241,7 @@ const page: Page = {
           detail={
             <Text component="p">
               While we&rsquo;re at it, we can also add a `description` to
-              provider more context to the user—prompting them with what sort of
+              provide more context to the user—prompting them with what sort of
               information they should provide.
             </Text>
           }
