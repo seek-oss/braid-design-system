@@ -17,7 +17,7 @@ const Container = ({ children }: { children: ReactNode }) => (
 
 const docs: ComponentDocs = {
   category: 'Layout',
-  screenshotWidths: [320, 768],
+  screenshotWidths: [320, 768, 1200],
   migrationGuide: true,
   examples: [
     ...spaces.map((space) => ({
