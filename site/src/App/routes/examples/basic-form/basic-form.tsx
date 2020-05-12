@@ -201,7 +201,7 @@ const page: Page = {
         </Step>
 
         <Step
-          heading="5. Adding additional information to a field"
+          heading="5. Add additional information to a field"
           detail={
             <Stack space="large">
               <Text component="p">
