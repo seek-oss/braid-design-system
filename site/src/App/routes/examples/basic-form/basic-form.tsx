@@ -349,8 +349,8 @@ const page: Page = {
             <Stack space="large">
               <Text>
                 Now that we have all our elements in place we can polish until
-                we are happy. Adjusting white space between elements, or even
-                responsively, to achieve the desired goal.
+                we are happy. Adjusting white space between elements across
+                mobile, tablet and desktop to achieve the desired goal.
               </Text>
               <Text>
                 In this case, we might define the space around the form fields
