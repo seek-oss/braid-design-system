@@ -333,11 +333,11 @@ const page: Page = {
         </Step>
 
         <Text>
-          Worth noting, as the background colour changes the foreground colour
-          of the heading and button is automatically changed to improve the
-          visual contrast. Click the &ldquo;Open in Playroom&rdquo; button on
-          the code pane above to see how this behaves across different colours
-          in different themes.
+          It&rsquo;s worth noting that, as the background colour changes, the
+          foreground colour of the heading and button is automatically changed
+          to improve the visual contrast. Click the &ldquo;Open in
+          Playroom&rdquo; button on the code pane above to see how this behaves
+          across different colours in different themes.
         </Text>
 
         <Step
