@@ -491,7 +491,7 @@ const page: Page = {
 
         <Text component="p">
           Now if you click the &ldquo;Open in Playroom&rsquo; button on the code
-          block above, our layout scaling up pretty well from mobile through to
+          block above, our layout is scaling up pretty well from mobile through to
           desktop. However, you&rsquo;ll notice on large screens the content
           spans the full width.
         </Text>
