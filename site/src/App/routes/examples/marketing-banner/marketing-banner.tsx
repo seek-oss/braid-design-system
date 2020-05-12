@@ -462,7 +462,7 @@ const page: Page = {
                 on tablet, and right align on desktop.
               </Text>
               <Text component="p">
-                In this case we can specify [ &ldquo;center&rdquo;,
+                In this case we can specify [&ldquo;center&rdquo;,
                 &ldquo;left&rdquo;], meaning anything tablet and above will be
                 &ldquo;left&rdquo; aligned. Let&rsquo;s also apply this to the
                 `Inline` component to responsively adjust the button alignment.
