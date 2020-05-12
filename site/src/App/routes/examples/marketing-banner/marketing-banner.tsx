@@ -499,7 +499,7 @@ const page: Page = {
         <Text component="p">Let&rsquo;s tackle this next.</Text>
 
         <Step
-          heading="9. Constraining larger layouts"
+          heading="9. Constrain layout on larger screens"
           detail={
             <Stack space="large">
               <Text component="p">
