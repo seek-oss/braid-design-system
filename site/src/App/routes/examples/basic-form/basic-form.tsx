@@ -269,7 +269,7 @@ const page: Page = {
         </Step>
 
         <Step
-          heading="6. Adding the button"
+          heading="6. Add the button"
           detail={
             <Text>
               Now that we have all of our form fields in the card, we can now
