@@ -98,6 +98,15 @@ const docs: ComponentDocs = {
       },
     },
     {
+      label: 'Heading Alignment: "left" | "center" | "right"',
+      storybook: false,
+      Example: () => (
+        <Heading level="1" align="center">
+          Centered heading
+        </Heading>
+      ),
+    },
+    {
       label: 'Heading Alignment',
       docsSite: false,
       Container,
@@ -119,7 +128,6 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Heading Alignment (responsive)',
-      docsSite: false,
       Container,
       Example: () => (
         <Heading level="4" align={['right', 'center', 'left']}>
@@ -180,6 +188,14 @@ const docs: ComponentDocs = {
       name: 'Level 1 (Weak)',
       code: (
         <Heading level="1" weight="weak">
+          Heading
+        </Heading>
+      ),
+    },
+    {
+      name: 'Level 1 (centered)',
+      code: (
+        <Heading level="1" align="center">
           Heading
         </Heading>
       ),
