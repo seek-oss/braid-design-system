@@ -437,7 +437,7 @@ const page: Page = {
         <Text component="p">
           Now if you &ldquo;Open in Playroom&rdquo;, our layout is looking much
           more mobile friendly. Next we&rsquo;ll adjust the horizontal alignment
-          of our heading and button responsively, so that it is centred on
+          of our heading and button responsively so that it is centred on
           mobile.
         </Text>
 
