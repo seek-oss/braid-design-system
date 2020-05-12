@@ -447,7 +447,7 @@ const page: Page = {
             <Stack space="large">
               <Text component="p">
                 Alignment of both text and headings can accept responsive
-                values, which give you finer grain control over what alignment
+                values, which give you more fine-grained control over what alignment
                 should be used for each device size. Our system currently has 3
                 sizes: mobile, tablet, and desktop.
               </Text>
