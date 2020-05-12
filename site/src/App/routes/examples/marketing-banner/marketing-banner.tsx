@@ -241,7 +241,7 @@ const page: Page = {
         </Step>
 
         <Step
-          heading="4. Hierarchy of information"
+          heading="4. Add visual hierarchy"
           detail={
             <Text>
               In order to make the headline stand out more, the button needs to
