@@ -32,11 +32,9 @@ export const useStackItem = ({ align, space }: UseStackItemProps) =>
     // If we're aligned left across all screen sizes,
     // there's actually no alignment work to do.
     ...(align === 'left'
-      ? ({ display: normaliseResponsiveProp('block') } as const)
+      ? ({ display: 'block' } as const)
       : ({
-          display: normaliseResponsiveProp(
-            mapResponsiveProp(align, alignToDisplay) || 'flex',
-          ),
+          display: mapResponsiveProp(align, alignToDisplay) || 'flex',
           flexDirection: 'column',
           alignItems: alignToFlexAlign(align),
         } as const)),
@@ -131,13 +129,21 @@ export const Stack = ({
             ]}
             {...stackItemProps}
             {...(hiddenOnMobile || hiddenOnTablet || hiddenOnDesktop
-              ? {
-                  display: [
-                    hiddenOnMobile ? 'none' : stackItemProps.display[0],
-                    hiddenOnTablet ? 'none' : stackItemProps.display[1],
-                    hiddenOnDesktop ? 'none' : stackItemProps.display[2],
-                  ],
-                }
+              ? (() => {
+                  const [
+                    displayMobile,
+                    displayTablet,
+                    displayDesktop,
+                  ] = normaliseResponsiveProp(stackItemProps.display);
+
+                  return {
+                    display: [
+                      hiddenOnMobile ? 'none' : displayMobile,
+                      hiddenOnTablet ? 'none' : displayTablet,
+                      hiddenOnDesktop ? 'none' : displayDesktop,
+                    ],
+                  } as const;
+                })()
               : null)}
           >
             {dividers && index > 0 ? (
