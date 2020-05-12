@@ -457,7 +457,7 @@ const page: Page = {
                 alignment should be for each screen size.
               </Text>
               <Text component="p">
-                For example: [ &ldquo;center&rdquo;, &ldquo;left&rdquo;,
+                For example: [&ldquo;center&rdquo;, &ldquo;left&rdquo;,
                 &ldquo;right&rdquo;] would center the text on mobile, left align
                 on tablet, and right align on desktop.
               </Text>
