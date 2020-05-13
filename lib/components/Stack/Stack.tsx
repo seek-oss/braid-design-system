@@ -75,7 +75,7 @@ const calculateHiddenStackItemProps = (
       hiddenOnTablet ? 'none' : displayTablet,
       hiddenOnDesktop ? 'none' : displayDesktop,
     ],
-  } as const;
+  };
 };
 
 export interface StackProps {
