@@ -2,7 +2,7 @@ import { TreatTokens } from '../makeBraidTheme';
 import { rgba } from 'polished';
 
 const formAccent = '#2765cf';
-const critical = '#e60278';
+const critical = '#d0011b';
 const positive = '#138a08';
 const info = '#1e468c';
 const promote = '#9556b7';
