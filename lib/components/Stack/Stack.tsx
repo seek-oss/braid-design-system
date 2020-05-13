@@ -15,18 +15,18 @@ import { resolveResponsiveRangeProps } from '../../utils/responsiveRangeProps';
 import { useNegativeMarginTop } from '../../hooks/useNegativeMargin/useNegativeMargin';
 import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 
-export interface UseStackItemProps {
-  align: ResponsiveProp<Align>;
-  space: BoxProps['paddingTop'];
-}
-
 const alignToDisplay = {
   left: 'block',
   center: 'flex',
   right: 'flex',
 } as const;
 
-export const useStackItem = ({ align, space }: UseStackItemProps) =>
+interface UseStackItemProps {
+  align: ResponsiveProp<Align>;
+  space: BoxProps['paddingTop'];
+}
+
+const useStackItem = ({ align, space }: UseStackItemProps) =>
   ({
     paddingTop: space,
     // If we're aligned left across all screen sizes,
