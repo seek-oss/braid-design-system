@@ -31,7 +31,7 @@ const useStackItem = ({ align, space }: UseStackItemProps) => ({
   // If we're aligned left across all screen sizes,
   // there's actually no alignment work to do.
   ...(align === 'left'
-    ? {}
+    ? null
     : {
         display: mapResponsiveProp(align, alignToDisplay) || 'flex',
         flexDirection: 'column',
