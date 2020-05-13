@@ -15,7 +15,7 @@ export const Bullet = ({ children }: BulletProps) => {
   const { size, tone } = useContext(BulletListContext);
 
   return (
-    <Text size={size} tone={tone}>
+    <Text component="div" size={size} tone={tone}>
       <Box display="flex">
         <Box
           display="flex"
