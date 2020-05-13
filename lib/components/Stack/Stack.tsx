@@ -26,19 +26,18 @@ interface UseStackItemProps {
   space: BoxProps['paddingTop'];
 }
 
-const useStackItem = ({ align, space }: UseStackItemProps) =>
-  ({
-    paddingTop: space,
-    // If we're aligned left across all screen sizes,
-    // there's actually no alignment work to do.
-    ...(align === 'left'
-      ? ({} as const)
-      : ({
-          display: mapResponsiveProp(align, alignToDisplay) || 'flex',
-          flexDirection: 'column',
-          alignItems: alignToFlexAlign(align),
-        } as const)),
-  } as const);
+const useStackItem = ({ align, space }: UseStackItemProps) => ({
+  paddingTop: space,
+  // If we're aligned left across all screen sizes,
+  // there's actually no alignment work to do.
+  ...(align === 'left'
+    ? {}
+    : {
+        display: mapResponsiveProp(align, alignToDisplay) || 'flex',
+        flexDirection: 'column',
+        alignItems: alignToFlexAlign(align),
+      }),
+});
 
 const validStackComponents = ['div', 'ol', 'ul'] as const;
 
