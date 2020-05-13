@@ -1,7 +1,6 @@
 import React, { createContext, useMemo } from 'react';
 import { TextProps } from '../Text/Text';
 import { Stack, StackProps } from '../Stack/Stack';
-import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 
 const defaultSize = 'standard';
 const defaultSpace = 'medium';
@@ -18,7 +17,7 @@ export const BulletListContext = createContext<BulletListContextValue>({
 const validTones = ['neutral', 'secondary'] as const;
 
 export interface BulletListProps {
-  children: ReactNodeNoStrings;
+  children: StackProps['children'];
   size?: TextProps['size'];
   space?: StackProps['space'];
   tone?: typeof validTones[number];
