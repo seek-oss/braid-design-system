@@ -127,7 +127,7 @@ const docs: ComponentDocs = {
     },
     {
       label:
-        'Test - Hidden stack items with responsive alignment (should be center aligned showing 3 on mobile, right aligned showing 2 and 3 on tablet, left aligned showing 1-3 on desktop)',
+        'Test - Hidden stack items with responsive alignment (should be center aligned showing 3 + 4 on mobile, right aligned showing 2 + 3 + 4 on tablet, left aligned showing 1 + 2 + 3 on desktop)',
       Container,
       docsSite: false,
       Example: () => (
@@ -141,6 +141,9 @@ const docs: ComponentDocs = {
           <Hidden print>
             <Placeholder width={40} height={40} label="3" />
           </Hidden>
+          <Hidden above="tablet">
+            <Placeholder width={40} height={40} label="4" />
+          </Hidden>
           <Hidden screen>
             <Placeholder
               width={40}
@@ -153,7 +156,7 @@ const docs: ComponentDocs = {
     },
     {
       label:
-        'Test - Hidden stack items with dividers (should show 3 on mobile, 2 and 3 on tablet, and 1-3 on desktop)',
+        'Test - Hidden stack items with dividers (should show 3 + 4 on mobile, 2 + 3 + 4 on tablet, and 1 + 2 + 3 on desktop)',
       Container,
       docsSite: false,
       Example: () => (
@@ -165,6 +168,9 @@ const docs: ComponentDocs = {
             <Placeholder height={40} label="2" />
           </Hidden>
           <Placeholder height={40} label="3" />
+          <Hidden above="tablet">
+            <Placeholder height={40} label="4" />
+          </Hidden>
           <Hidden screen>
             <Placeholder height={40} label="This should not be visible" />
           </Hidden>
