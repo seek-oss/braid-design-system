@@ -32,7 +32,7 @@ const useStackItem = ({ align, space }: UseStackItemProps) =>
     // If we're aligned left across all screen sizes,
     // there's actually no alignment work to do.
     ...(align === 'left'
-      ? ({ display: 'block' } as const)
+      ? ({} as const)
       : ({
           display: mapResponsiveProp(align, alignToDisplay) || 'flex',
           flexDirection: 'column',
@@ -49,11 +49,35 @@ const extractHiddenPropsFromChild = (child: ReactNode) =>
 
 const resolveHiddenProps = ({ screen, above, below }: HiddenProps) =>
   screen
-    ? [true, true, true]
+    ? ([true, true, true] as const)
     : resolveResponsiveRangeProps({
         above,
         below,
       });
+
+const calculateHiddenStackItemProps = (
+  stackItemProps: ReturnType<typeof useStackItem>,
+  [hiddenOnMobile, hiddenOnTablet, hiddenOnDesktop]: Readonly<
+    [boolean, boolean, boolean]
+  >,
+) => {
+  const [
+    displayMobile,
+    displayTablet,
+    displayDesktop,
+  ] = normaliseResponsiveProp(
+    'display' in stackItemProps ? stackItemProps.display : 'block',
+  );
+
+  return {
+    ...stackItemProps,
+    display: [
+      hiddenOnMobile ? 'none' : displayMobile,
+      hiddenOnTablet ? 'none' : displayTablet,
+      hiddenOnDesktop ? 'none' : displayDesktop,
+    ],
+  } as const;
+};
 
 export interface StackProps {
   component?: typeof validStackComponents[number];
@@ -103,9 +127,10 @@ export const Stack = ({
         }
 
         const hiddenProps = extractHiddenPropsFromChild(child);
-        const [hiddenOnMobile, hiddenOnTablet, hiddenOnDesktop] = hiddenProps
+        const hidden = hiddenProps
           ? resolveHiddenProps(hiddenProps)
-          : [false, false, false];
+          : ([false, false, false] as const);
+        const [hiddenOnMobile, hiddenOnTablet, hiddenOnDesktop] = hidden;
 
         if (firstItemOnMobile === null && !hiddenOnMobile) {
           firstItemOnMobile = index;
@@ -127,24 +152,9 @@ export const Stack = ({
                 ? hiddenStyles.hiddenOnPrint
                 : null,
             ]}
-            {...stackItemProps}
             {...(hiddenOnMobile || hiddenOnTablet || hiddenOnDesktop
-              ? (() => {
-                  const [
-                    displayMobile,
-                    displayTablet,
-                    displayDesktop,
-                  ] = normaliseResponsiveProp(stackItemProps.display);
-
-                  return {
-                    display: [
-                      hiddenOnMobile ? 'none' : displayMobile,
-                      hiddenOnTablet ? 'none' : displayTablet,
-                      hiddenOnDesktop ? 'none' : displayDesktop,
-                    ],
-                  } as const;
-                })()
-              : null)}
+              ? calculateHiddenStackItemProps(stackItemProps, hidden)
+              : stackItemProps)}
           >
             {dividers && index > 0 ? (
               <Box
