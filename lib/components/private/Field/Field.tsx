@@ -93,13 +93,17 @@ export const Field = ({
 
   const messageId = `${id}-message`;
   const fieldBackground = disabled ? 'inputDisabled' : 'input';
-  const showFieldBorder = useBackgroundLightness() === 'light';
+  const showFieldBorder =
+    (useBackgroundLightness() === 'light' && tone !== 'critical') || disabled;
 
   const hasValue = typeof value === 'string' ? value.length > 0 : value != null;
 
   const overlays = (
     <Fragment>
-      <FieldOverlay variant="default" visible={showFieldBorder} />
+      <FieldOverlay
+        variant={disabled ? 'disabled' : 'default'}
+        visible={showFieldBorder}
+      />
       <FieldOverlay
         variant="critical"
         visible={tone === 'critical' && !disabled}

@@ -187,6 +187,7 @@ export const makeTokens = ({
       color: {
         standard: grey4,
         standardInverted: white,
+        field: grey4,
         focus,
         critical,
         info,

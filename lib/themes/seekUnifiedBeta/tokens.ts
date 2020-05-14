@@ -160,6 +160,7 @@ const tokens: TreatTokens = {
     color: {
       standard: '#d6d6d6',
       standardInverted: white,
+      field: '#898989',
       focus,
       formHover: formAccent,
       critical,

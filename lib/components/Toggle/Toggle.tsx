@@ -76,7 +76,7 @@ export const Toggle = ({
         <Box
           position="absolute"
           background="input"
-          boxShadow="borderStandard"
+          boxShadow="borderField"
           transition="fast"
           display="flex"
           alignItems="center"

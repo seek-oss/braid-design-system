@@ -11,6 +11,7 @@ import { Text } from '../../Text/Text';
 import { IconTick } from '../../icons';
 import { useVirtualTouchable } from '../touchable/useVirtualTouchable';
 import buildDataAttributes, { DataAttributeMap } from '../buildDataAttributes';
+import { useBackgroundLightness } from '../../Box/BackgroundContext';
 import * as styleRefs from './InlineField.treat';
 
 const tones = ['neutral', 'critical'] as const;
@@ -111,6 +112,8 @@ export const InlineField = forwardRef<HTMLElement, InternalInlineFieldProps>(
     const fieldBorderRadius = isCheckbox ? 'standard' : 'full';
     const accentBackground = disabled ? 'formAccentDisabled' : 'formAccent';
     const hasMessage = message || reserveMessageSpace;
+    const showFieldBorder =
+      (useBackgroundLightness() === 'light' && tone !== 'critical') || disabled;
 
     return (
       <Box position="relative" className={styles.root}>
@@ -139,12 +142,17 @@ export const InlineField = forwardRef<HTMLElement, InternalInlineFieldProps>(
             className={styles.fakeField}
             background={disabled ? 'inputDisabled' : 'input'}
             borderRadius={fieldBorderRadius}
-            boxShadow={
-              tone === 'critical' && !disabled
-                ? 'borderCritical'
-                : 'borderStandard'
-            }
           >
+            <FieldOverlay
+              variant={disabled ? 'disabled' : 'default'}
+              borderRadius={fieldBorderRadius}
+              visible={showFieldBorder}
+            />
+            <FieldOverlay
+              variant="critical"
+              borderRadius={fieldBorderRadius}
+              visible={tone === 'critical' && !disabled}
+            />
             <FieldOverlay
               variant={tone === 'critical' && isCheckbox ? tone : undefined}
               background={isCheckbox ? accentBackground : undefined}

@@ -83,6 +83,7 @@ export interface TreatTokens {
     color: {
       standard: string;
       standardInverted: string;
+      field: string;
       focus: string;
       critical: string;
       info: string;
