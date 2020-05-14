@@ -94,7 +94,7 @@ export const Field = ({
   const messageId = `${id}-message`;
   const fieldBackground = disabled ? 'inputDisabled' : 'input';
   const showFieldBorder =
-    (useBackgroundLightness() === 'light' && tone !== 'critical') || disabled;
+    useBackgroundLightness() === 'light' && (tone !== 'critical' || disabled);
 
   const hasValue = typeof value === 'string' ? value.length > 0 : value != null;
 

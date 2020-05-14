@@ -113,7 +113,7 @@ export const InlineField = forwardRef<HTMLElement, InternalInlineFieldProps>(
     const accentBackground = disabled ? 'formAccentDisabled' : 'formAccent';
     const hasMessage = message || reserveMessageSpace;
     const showFieldBorder =
-      (useBackgroundLightness() === 'light' && tone !== 'critical') || disabled;
+      useBackgroundLightness() === 'light' && (tone !== 'critical' || disabled);
 
     return (
       <Box position="relative" className={styles.root}>
