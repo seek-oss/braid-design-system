@@ -1597,7 +1597,7 @@ exports[`BulletList 1`] = `
 Object {
   exportType: component,
   props: {
-    children: ReactNode
+    children: ReactNodeNoStrings
     size?: 
         | "large"
         | "small"
