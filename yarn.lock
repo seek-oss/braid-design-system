@@ -2455,6 +2455,11 @@
   resolved "https://registry.yarnpkg.com/@types/prettier/-/prettier-1.19.1.tgz#33509849f8e679e4add158959fdb086440e9553f"
   integrity sha512-5qOlnZscTn4xxM5MeGXAMOsIOIKIbh9e85zJWfBRVPlRMEVawzoPhINYbRGkBZCI8LxvBe7tJCdWiarA99OZfQ==
 
+"@types/prettier@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@types/prettier/-/prettier-2.0.0.tgz#dc85454b953178cc6043df5208b9e949b54a3bc4"
+  integrity sha512-/rM+sWiuOZ5dvuVzV37sUuklsbg+JPOP8d+nNFlo2ZtfpzPiPvh1/gc8liWOLBqe+sR+ZM7guPaIcTt6UZTo7Q==
+
 "@types/prop-types@*":
   version "15.7.3"
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.3.tgz#2ab0d5da2e5815f94b0b9d4b95d1e5f243ab2ca7"
@@ -11546,10 +11551,10 @@ pkginfo@0.x.x:
   resolved "https://registry.yarnpkg.com/pkginfo/-/pkginfo-0.4.1.tgz#b5418ef0439de5425fc4995042dced14fb2a84ff"
   integrity sha1-tUGO8EOd5UJfxJlQQtztFPsqhP8=
 
-playroom@0.18.0, playroom@^0.15.0:
-  version "0.18.0"
-  resolved "https://registry.yarnpkg.com/playroom/-/playroom-0.18.0.tgz#53670a5e7ed9b5a15ef470740f056c41b4e4d451"
-  integrity sha512-1RC3og3wFPGP8FZBsO6WIIwZ5a3Y3wlopx9jluyU90aqfm8Jn+EXN/U7zS3TskFO/eahTKVrPD1ppWRTmWzZhg==
+playroom@0.18.1, playroom@^0.15.0:
+  version "0.18.1"
+  resolved "https://registry.yarnpkg.com/playroom/-/playroom-0.18.1.tgz#93795a0b7c34f815b40eb1afb6a5720ed27cfb13"
+  integrity sha512-kY/u8okcyTCtDtShmxh2k1CXlBCtjOXbJP3Zc1x4dVz+5NmS+IFUC4pv04lXLzI0bEumUIM6gj4kINMQZ4EhlA==
   dependencies:
     "@babel/cli" "^7.8.3"
     "@babel/core" "^7.8.3"
@@ -11566,7 +11571,7 @@ playroom@0.18.0, playroom@^0.15.0:
     "@types/dedent" "^0.7.0"
     "@types/lodash" "^4.14.149"
     "@types/lz-string" "^1.3.33"
-    "@types/prettier" "^1.19.0"
+    "@types/prettier" "^2.0.0"
     "@types/react" "^16.9.19"
     "@types/react-dom" "^16.9.5"
     autoprefixer "^9.7.4"
@@ -11596,7 +11601,7 @@ playroom@0.18.0, playroom@^0.15.0:
     open "^7.0.0"
     parse-prop-types "^0.3.0"
     postcss-loader "^3.0.0"
-    prettier "^1.19.1"
+    prettier "^2.0.5"
     prop-types "^15.7.2"
     query-string "^6.10.1"
     re-resizable "^6.1.1"
@@ -12040,7 +12045,7 @@ prettier@2.0.2:
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.0.2.tgz#1ba8f3eb92231e769b7fcd7cb73ae1b6b74ade08"
   integrity sha512-5xJQIPT8BraI7ZnaDwSbu5zLrB6vvi8hVV58yHQ+QK64qrY40dULy0HSRlQ2/2IdzeBpjhDkqdcFBnFeDEMVdg==
 
-prettier@^1.18.2, prettier@^1.19.1:
+prettier@^1.18.2:
   version "1.19.1"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.19.1.tgz#f7d7f5ff8a9cd872a7be4ca142095956a60797cb"
   integrity sha512-s7PoyDv/II1ObgQunCbB9PdLmUcBZcnWOcxDh7O0N/UwDEsHyqkW+Qh28jW+mVuCdx7gLB0BotYI1Y6uI9iyew==
@@ -12049,6 +12054,11 @@ prettier@^2.0.2, "prettier@^2.0.2 || ^1.19.1":
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.0.4.tgz#2d1bae173e355996ee355ec9830a7a1ee05457ef"
   integrity sha512-SVJIQ51spzFDvh4fIbCLvciiDMCrRhlN3mbZvv/+ycjvmF5E73bKdGfU8QDLNmjYJf+lsGnDBC4UUnvTe5OO0w==
+
+prettier@^2.0.5:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.0.5.tgz#d6d56282455243f2f92cc1716692c08aa31522d4"
+  integrity sha512-7PtVymN48hGcO4fGjybyBSIWDsLU4H4XlvOHfq91pz9kkGlonzwTfYkaIEwiRg/dAJF9YlbsduBAgtYLi+8cFg==
 
 pretty-error@^2.1.1:
   version "2.1.1"
