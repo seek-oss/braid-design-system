@@ -189,6 +189,7 @@ const MonthPicker = ({
             onBlur={onBlur}
             onFocus={onFocus}
             {...fieldProps}
+            height="touchable"
             className={[className, styles.nativeInput]}
           />
           {overlays}
