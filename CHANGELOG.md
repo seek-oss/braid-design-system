@@ -1,5 +1,13 @@
 # braid-design-system
 
+## 27.1.1
+
+### Patch Changes
+
+- MonthPicker: Preserve touchable height on iOS ([#641](https://github.com/seek-oss/braid-design-system/pull/641))
+
+  Fix for the native variant of `MonthPicker` having a reduced height on iOS when no value is provided.
+
 ## 27.1.0
 
 ### Minor Changes
