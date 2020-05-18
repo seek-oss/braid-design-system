@@ -2,6 +2,6 @@
 'braid-design-system': patch
 ---
 
-Monthpicker: Preserve touchable height on iOS
+MonthPicker: Preserve touchable height on iOS
 
-Fix for the native Monthpicker on iOS having a reduced height when no value is provided.
+Fix for the native variant of `MonthPicker` having a reduced height on iOS when no value is provided.
