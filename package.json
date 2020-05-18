@@ -104,7 +104,7 @@
     "react-use": "^13.27.0",
     "renovate-config-seek": "0.4.0",
     "sanitize-html": "^1.22.1",
-    "sku": "10.3.2",
+    "sku": "10.3.3",
     "surge": "^0.20.1",
     "ts-node": "^8.2.0",
     "uuid": "^3.3.3"
