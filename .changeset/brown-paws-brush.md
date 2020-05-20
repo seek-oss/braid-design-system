@@ -4,4 +4,4 @@
 
 Toggle: Hide border on dark backgrounds
 
-Following the pattern of other bordered elements and hiding the border when on dark backgrounds. Reduces visual noise and cleans results in cleaner lines.
+Following the pattern of other bordered elements, we now hide the border when on dark backgrounds. This reduces visual noise and results in cleaner lines.
