@@ -79,9 +79,7 @@ const docs: ComponentDocs = {
       Example: () => (
         <Text>
           The following text node is hidden below tablet:{' '}
-          <Hidden inline below="tablet">
-            Hidden below tablet.
-          </Hidden>
+          <Hidden below="tablet">Hidden below tablet.</Hidden>
         </Text>
       ),
     },
@@ -90,9 +88,7 @@ const docs: ComponentDocs = {
       Example: () => (
         <Text>
           The following text node is hidden below desktop:{' '}
-          <Hidden inline below="desktop">
-            Hidden below desktop.
-          </Hidden>
+          <Hidden below="desktop">Hidden below desktop.</Hidden>
         </Text>
       ),
     },
@@ -101,9 +97,7 @@ const docs: ComponentDocs = {
       Example: () => (
         <Text>
           The following text node is hidden above mobile:{' '}
-          <Hidden inline above="mobile">
-            Hidden above mobile.
-          </Hidden>
+          <Hidden above="mobile">Hidden above mobile.</Hidden>
         </Text>
       ),
     },
@@ -112,9 +106,7 @@ const docs: ComponentDocs = {
       Example: () => (
         <Text>
           The following text node is hidden above tablet:{' '}
-          <Hidden inline above="tablet">
-            Hidden above tablet.
-          </Hidden>
+          <Hidden above="tablet">Hidden above tablet.</Hidden>
         </Text>
       ),
     },
@@ -123,9 +115,7 @@ const docs: ComponentDocs = {
       Example: () => (
         <Text>
           The following text node is hidden on print:{' '}
-          <Hidden inline print>
-            Hidden on print.
-          </Hidden>
+          <Hidden print>Hidden on print.</Hidden>
         </Text>
       ),
     },
@@ -134,9 +124,7 @@ const docs: ComponentDocs = {
       Example: () => (
         <Text>
           The following text node is hidden on screen:{' '}
-          <Hidden inline screen>
-            Hidden on screen.
-          </Hidden>
+          <Hidden screen>Hidden on screen.</Hidden>
         </Text>
       ),
     },
