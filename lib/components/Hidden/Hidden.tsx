@@ -27,7 +27,7 @@ export const Hidden = ({
   if (process.env.NODE_ENV === 'development' && screen) {
     // eslint-disable-next-line no-console
     console.warn(
-      `You used the "screen" prop on Hidden, but this probably doesn't do what you expect. If you're trying to provide content to screen readers without rendering it to the screen, use the <HiddenVisually> component instead. The "screen" prop is likely to be deprecated in an future release.`,
+      `You used the "screen" prop on Hidden, but this probably doesn't do what you expect. If you're trying to provide content to screen readers without rendering it to the screen, use the <HiddenVisually> component instead. The "screen" prop is likely to be deprecated in a future release.`,
     );
   }
 

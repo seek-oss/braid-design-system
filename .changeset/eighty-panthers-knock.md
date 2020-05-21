@@ -2,7 +2,7 @@
 'braid-design-system': patch
 ---
 
-Hidden: Infer 'inline' prop when nested inside Text or Heading
+Hidden: Infer `inline` prop when nested inside Text or Heading
 
 Currently, if you want to hide content using the `Hidden` component in an inline context (e.g. hiding part of a sentence), you need to remember to set the `inline` boolean prop.
 
