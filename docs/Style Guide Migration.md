@@ -50,6 +50,7 @@ Since Braid is an entirely new design system, we've taken the opportunity to rev
 - `Paragraph` -> [`Text`](../lib/components/Text/Text.migration.md)
 - `Pill` -> [`Tag`](../lib/components/Tag/Tag.migration.md)
 - [`Radio`](../lib/components/Radio/Radio.migration.md)
+- `ScreenReaderOnly` -> [`HiddenVisually`](../lib/components/HiddenVisually/HiddenVisually.migration.md)
 - [`Secondary`](../lib/components/Secondary/Secondary.migration.md)
 - `SlideToggle` -> [`Toggle`](../lib/components/Toggle/Toggle.migration.md)
 - [`Strong`](../lib/components/Strong/Strong.migration.md)

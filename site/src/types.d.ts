@@ -29,6 +29,7 @@ export interface ComponentDocs {
   migrationGuide?: boolean;
   foundation?: boolean;
   screenshotWidths: Array<320 | 768 | 1200>;
+  screenshotOnlyInWireframe?: boolean;
   examples: ComponentExample[];
   snippets?: DocsSnippet[];
   description?: ReactNodeNoStrings;
