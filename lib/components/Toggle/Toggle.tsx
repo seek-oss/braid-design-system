@@ -5,6 +5,7 @@ import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
 import { Text } from '../Text/Text';
 import { IconTick } from '../icons';
 import { useVirtualTouchable } from '../private/touchable/useVirtualTouchable';
+import { useBackgroundLightness } from '../Box/BackgroundContext';
 import * as styleRefs from './Toggle.treat';
 
 type HTMLInputProps = AllHTMLAttributes<HTMLInputElement>;
@@ -33,6 +34,7 @@ export const Toggle = ({
   align = 'left',
 }: ToggleProps) => {
   const styles = useStyles(styleRefs);
+  const showBorder = useBackgroundLightness() === 'light';
 
   return (
     <Box
@@ -76,7 +78,7 @@ export const Toggle = ({
         <Box
           position="absolute"
           background="input"
-          boxShadow="borderStandard"
+          boxShadow={showBorder ? 'borderField' : undefined}
           transition="fast"
           display="flex"
           alignItems="center"

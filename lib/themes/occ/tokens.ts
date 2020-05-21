@@ -160,6 +160,7 @@ const tokens: TreatTokens = {
     color: {
       standard: '#dddddd',
       standardInverted: white,
+      field: '#dddddd',
       focus,
       critical,
       info,

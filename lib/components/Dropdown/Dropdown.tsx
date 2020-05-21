@@ -29,6 +29,7 @@ const NamedDropdown = forwardRef<HTMLSelectElement, DropdownProps>(
       onBlur,
       onFocus,
       placeholder,
+      disabled,
       ...restProps
     } = props;
 
@@ -36,6 +37,7 @@ const NamedDropdown = forwardRef<HTMLSelectElement, DropdownProps>(
     return (
       <Field
         {...restProps}
+        disabled={disabled}
         labelId={undefined}
         secondaryMessage={null}
         value={value}
@@ -73,7 +75,7 @@ const NamedDropdown = forwardRef<HTMLSelectElement, DropdownProps>(
               right={0}
             >
               <Text baseline={false}>
-                <IconChevron />
+                <IconChevron tone={disabled ? 'secondary' : undefined} />
               </Text>
             </Box>
           </Fragment>

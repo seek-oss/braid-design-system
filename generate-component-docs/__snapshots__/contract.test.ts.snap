@@ -332,6 +332,7 @@ Object {
     boxShadow?: 
         | "borderCaution"
         | "borderCritical"
+        | "borderField"
         | "borderFormAccent"
         | "borderFormAccentLarge"
         | "borderFormHover"
@@ -1123,6 +1124,7 @@ Object {
     boxShadow?: 
         | "borderCaution"
         | "borderCritical"
+        | "borderField"
         | "borderFormAccent"
         | "borderFormAccentLarge"
         | "borderFormHover"
