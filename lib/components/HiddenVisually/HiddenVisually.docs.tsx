@@ -14,7 +14,7 @@ const docs: ComponentDocs = {
   screenshotWidths: [320],
   examples: [
     {
-      label: 'Hidden below tablet',
+      label: 'Inside Text',
       Example: () => (
         <Text>
           The next sentence is only available to screen readers.
