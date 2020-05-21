@@ -4,4 +4,4 @@
 
 Toggle: Hide border on dark backgrounds
 
-Following the pattern of other bordered elements, we now hide the border when on dark backgrounds. This reduces visual noise and results in cleaner lines.
+In order to reduce visual noise, similar to other fields, we now hide the border on `Toggle` elements when rendered on dark backgrounds.

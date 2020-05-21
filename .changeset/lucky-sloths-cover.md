@@ -2,13 +2,13 @@
 'braid-design-system': minor
 ---
 
-seekAnz, seekBusiness, catho: Improve field border contrast ratio
+Improve field border contrast ratio
 
-Themes can now configure the colour of field borders separately to standard border colours. This facilitates using a higher contrast border colour on fields to further improve accessibility.
+To improve accessibility, field borders have been darkened for the following themes:
 
-Themes with updated field borders include:
+- `seekAnz`
+- `seekBusiness`
+- `seekUnifiedBeta`
+- `catho` (based on referencing Quantum)
 
-- seekAnz
-- seekBusiness
-- seekUnifiedBeta
-- catho (based on referencing Quantum)
+Since this is a noticeable visual change that may introduce inconsistincies with custom design elements, **design review is recommended.**

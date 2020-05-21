@@ -2,6 +2,6 @@
 'braid-design-system': patch
 ---
 
-Dropdown: Dim chevron in the field when disabled
+Dropdown: Lighten chevron when disabled
 
-Decreases the prominence of the chevron icon when `disabled`.
+The visual prominence of the chevron icon is now lower when `disabled` is set to `true`.

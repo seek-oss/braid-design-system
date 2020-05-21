@@ -5,8 +5,8 @@ import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
 import { Text } from '../Text/Text';
 import { IconTick } from '../icons';
 import { useVirtualTouchable } from '../private/touchable/useVirtualTouchable';
-import * as styleRefs from './Toggle.treat';
 import { useBackgroundLightness } from '../Box/BackgroundContext';
+import * as styleRefs from './Toggle.treat';
 
 type HTMLInputProps = AllHTMLAttributes<HTMLInputElement>;
 type ChangeHandler = (value: boolean) => void;

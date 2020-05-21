@@ -4,4 +4,4 @@
 
 Autosuggest: Apply darker background when disabled
 
-`Autosuggest` respected the `disabled` state while not visually darkening the background. This change brings it into line with the other form fields.
+When disabled, `Autosuggest` elements didn't have the same dark background as other disabled fields. This has now been fixed.
