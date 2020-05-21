@@ -1,5 +1,34 @@
 # braid-design-system
 
+## 27.3.0
+
+### Minor Changes
+
+- Improve field border contrast ratio ([#638](https://github.com/seek-oss/braid-design-system/pull/638))
+
+  To improve accessibility, field borders have been darkened for the following themes:
+
+  - `seekAnz`
+  - `seekBusiness`
+  - `seekUnifiedBeta`
+  - `catho` (based on referencing Quantum)
+
+  Since this is a noticeable visual change that may introduce inconsistincies with custom design elements, **design review is recommended.**
+
+### Patch Changes
+
+- Toggle: Hide border on dark backgrounds ([#638](https://github.com/seek-oss/braid-design-system/pull/638))
+
+  In order to reduce visual noise, similar to other fields, we now hide the border on `Toggle` elements when rendered on dark backgrounds.
+
+- Dropdown: Lighten chevron when disabled ([#638](https://github.com/seek-oss/braid-design-system/pull/638))
+
+  The visual prominence of the chevron icon is now lower when `disabled` is set to `true`.
+
+- Autosuggest: Apply darker background when disabled ([#638](https://github.com/seek-oss/braid-design-system/pull/638))
+
+  When disabled, `Autosuggest` elements didn't have the same dark background as other disabled fields. This has now been fixed.
+
 ## 27.2.0
 
 ### Minor Changes
