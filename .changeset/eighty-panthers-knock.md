@@ -1,5 +1,5 @@
 ---
-'braid-design-system': minor
+'braid-design-system': patch
 ---
 
 Hidden: Infer 'inline' prop when nested inside Text or Heading
