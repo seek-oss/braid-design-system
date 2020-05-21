@@ -5,6 +5,7 @@ import { Text } from '../Text/Text';
 
 const docs: ComponentDocs = {
   category: 'Layout',
+  foundation: true,
   description: (
     <Text>
       Provides content to assistive technologies while hiding it from the

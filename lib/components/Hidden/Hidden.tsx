@@ -43,7 +43,7 @@ export const Hidden = ({
     hiddenOnDesktop,
   ] = resolveResponsiveRangeProps({ above, below });
 
-  const inline = inlineProp || inText || inHeading;
+  const inline = inlineProp !== undefined ? inlineProp : inText || inHeading;
   const display = inline ? 'inline' : 'block';
 
   return (
