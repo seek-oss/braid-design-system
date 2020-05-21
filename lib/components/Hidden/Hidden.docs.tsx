@@ -131,6 +131,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Hidden on screen (inline)',
+      docsSite: false,
       Example: () => (
         <Text>
           The following text node is hidden on screen:{' '}
