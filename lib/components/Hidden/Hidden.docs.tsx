@@ -3,9 +3,18 @@ import { ComponentDocs } from '../../../site/src/types';
 import { Hidden } from './Hidden';
 import { Text } from '../Text/Text';
 import { Stack } from '../Stack/Stack';
+import { TextLink } from '../TextLink/TextLink';
 
 const docs: ComponentDocs = {
   category: 'Layout',
+  description: (
+    <Text>
+      Allows you to hide content responsively. If you’re looking to hide content
+      visually while making it available to assistive technologies, use{' '}
+      <TextLink href="/components/HiddenVisually">HiddenVisually</TextLink>{' '}
+      instead.
+    </Text>
+  ),
   screenshotWidths: [320, 768, 1200],
   examples: [
     {
@@ -65,6 +74,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Hidden on Screen',
+      docsSite: false, // Looking to deprecate this, but we'll leave it in the test suite for now
       Example: () => (
         <Stack space="small">
           <Text>The following line is hidden on screen:</Text>
