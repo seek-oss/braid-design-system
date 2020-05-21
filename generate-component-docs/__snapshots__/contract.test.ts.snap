@@ -2478,6 +2478,15 @@ Object {
 }
 `;
 
+exports[`HiddenVisually 1`] = `
+Object {
+  exportType: component,
+  props: {
+    children: ReactNode
+},
+}
+`;
+
 exports[`IconAdd 1`] = `
 Object {
   exportType: component,
