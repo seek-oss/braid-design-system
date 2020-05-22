@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import { Alert, Text } from '../';
+import { Alert, Text, Stack, Heading, TextLink, BulletList, Bullet } from '../';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -52,6 +52,25 @@ const docs: ComponentDocs = {
       Example: () => (
         <Alert tone="positive">
           <Text>This is a positive piece of information.</Text>
+        </Alert>
+      ),
+    },
+    {
+      label: 'Test: Rich content',
+      docsSite: false,
+      Example: () => (
+        <Alert tone="positive">
+          <Stack space="medium">
+            <Heading level="4">Heading</Heading>
+            <Text>
+              Text with a <TextLink href="#">TextLink</TextLink>
+            </Text>
+            <BulletList space="small">
+              <Bullet>Bullet 1</Bullet>
+              <Bullet>Bullet 2</Bullet>
+              <Bullet>Bullet 3</Bullet>
+            </BulletList>
+          </Stack>
         </Alert>
       ),
     },
