@@ -268,6 +268,9 @@ export const boxShadow = styleMap(
     outlineFocus: {
       boxShadow: `0 0 0 ${borderWidth.large}px ${color.focus}`,
     },
+    borderField: {
+      boxShadow: `inset 0 0 0 ${borderWidth.standard}px ${color.field}`,
+    },
     borderStandard: {
       boxShadow: `inset 0 0 0 ${borderWidth.standard}px ${color.standard}`,
     },

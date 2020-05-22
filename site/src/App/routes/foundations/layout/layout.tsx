@@ -20,6 +20,7 @@ import {
   MenuItem,
   TextLink,
   Button,
+  Hidden,
 } from '../../../../../../lib/components';
 import { HeadingProps } from '../../../../../../lib/components/Heading/Heading';
 import { TextStack } from '../../../TextStack/TextStack';
@@ -311,6 +312,23 @@ const page: Page = {
             <Text align="center" tone="secondary">
               Lorem ipsum dolor sit amet.
             </Text>
+          </Stack>
+        </Card>
+      </Code>
+      <Text>
+        Individual stack items can be hidden on different screen sizes by
+        wrapping them with the{' '}
+        <TextLink href="/components/Hidden">Hidden</TextLink> component. For
+        example, if you wanted to hide the second item in a stack on mobile:
+      </Text>
+      <Code>
+        <Card>
+          <Stack space="medium" align="center">
+            <Text>Item 1</Text>
+            <Hidden below="tablet">
+              <Text>Item 2</Text>
+            </Hidden>
+            <Text>Item 3</Text>
           </Stack>
         </Card>
       </Code>

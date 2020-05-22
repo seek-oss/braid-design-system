@@ -332,6 +332,7 @@ Object {
     boxShadow?: 
         | "borderCaution"
         | "borderCritical"
+        | "borderField"
         | "borderFormAccent"
         | "borderFormAccentLarge"
         | "borderFormHover"
@@ -1123,6 +1124,7 @@ Object {
     boxShadow?: 
         | "borderCaution"
         | "borderCritical"
+        | "borderField"
         | "borderFormAccent"
         | "borderFormAccentLarge"
         | "borderFormHover"
@@ -1597,7 +1599,7 @@ exports[`BulletList 1`] = `
 Object {
   exportType: component,
   props: {
-    children: ReactNode
+    children: ReactNodeNoStrings
     size?: 
         | "large"
         | "small"
@@ -2474,6 +2476,15 @@ Object {
     inline?: boolean
     print?: boolean
     screen?: boolean
+},
+}
+`;
+
+exports[`HiddenVisually 1`] = `
+Object {
+  exportType: component,
+  props: {
+    children: ReactNode
 },
 }
 `;

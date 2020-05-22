@@ -22,7 +22,7 @@ export const makeTokens = ({
   const white = '#fff';
   const focus = rgba('#1e90ff', 0.7);
   const positive = '#138a08';
-  const critical = '#e60278';
+  const critical = '#d0011b';
   const info = '#1e468c';
   const promote = '#9556b7';
   const caution = '#ffc600';
@@ -176,6 +176,7 @@ export const makeTokens = ({
       color: {
         standard: '#d6d6d6',
         standardInverted: white,
+        field: '#898989',
         focus,
         formHover: formAccent,
         critical,

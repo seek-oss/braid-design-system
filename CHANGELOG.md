@@ -1,5 +1,131 @@
 # braid-design-system
 
+## 27.3.0
+
+### Minor Changes
+
+- Improve field border contrast ratio ([#638](https://github.com/seek-oss/braid-design-system/pull/638))
+
+  To improve accessibility, field borders have been darkened for the following themes:
+
+  - `seekAnz`
+  - `seekBusiness`
+  - `seekUnifiedBeta`
+  - `catho` (based on referencing Quantum)
+
+  Since this is a noticeable visual change that may introduce inconsistincies with custom design elements, **design review is recommended.**
+
+### Patch Changes
+
+- Toggle: Hide border on dark backgrounds ([#638](https://github.com/seek-oss/braid-design-system/pull/638))
+
+  In order to reduce visual noise, similar to other fields, we now hide the border on `Toggle` elements when rendered on dark backgrounds.
+
+- Dropdown: Lighten chevron when disabled ([#638](https://github.com/seek-oss/braid-design-system/pull/638))
+
+  The visual prominence of the chevron icon is now lower when `disabled` is set to `true`.
+
+- Autosuggest: Apply darker background when disabled ([#638](https://github.com/seek-oss/braid-design-system/pull/638))
+
+  When disabled, `Autosuggest` elements didn't have the same dark background as other disabled fields. This has now been fixed.
+
+## 27.2.0
+
+### Minor Changes
+
+- Add `HiddenVisually` component ([#643](https://github.com/seek-oss/braid-design-system/pull/643))
+
+  You can now easily provide content to assistive technologies while hiding it from the screen.
+
+  ```js
+  <Text>
+    This content is available to everyone.
+    <HiddenVisually>
+      This content is only available to screen readers.
+    </HiddenVisually>
+  </Text>
+  ```
+
+### Patch Changes
+
+- Hidden: Infer `inline` prop when nested inside Text or Heading ([#643](https://github.com/seek-oss/braid-design-system/pull/643))
+
+  Currently, if you want to hide content using the `Hidden` component in an inline context (e.g. hiding part of a sentence), you need to remember to set the `inline` boolean prop.
+
+  Since most usages of this feature are within text, we now infer this for you automatically within the context of a `Text` or `Heading` component.
+
+  **MIGRATION GUIDE**
+
+  This change is not strictly required, but you can now clean up your code like this:
+
+  ```diff
+  -<Text>The end of this sentence is... <Hidden inline below="tablet">hidden on mobile.</Hidden>
+  +<Text>The end of this sentence is... <Hidden below="tablet">hidden on mobile.</Hidden>
+  ```
+
+## 27.1.1
+
+### Patch Changes
+
+- MonthPicker: Preserve touchable height on iOS ([#641](https://github.com/seek-oss/braid-design-system/pull/641))
+
+  Fix for the native variant of `MonthPicker` having a reduced height on iOS when no value is provided.
+
+## 27.1.0
+
+### Minor Changes
+
+- Stack: Add support for Hidden stack items ([#632](https://github.com/seek-oss/braid-design-system/pull/632))
+
+  You can now responsively hide stack items using the [`Hidden`](https://seek-oss.github.io/braid-design-system/components/Hidden) component while maintaining the correct spacing between all visible elements.
+
+  For example, if you wanted to hide a stack item on mobile:
+
+  ```jsx
+  <Stack space="small">
+    <Text>...</Text>
+    <Hidden below="tablet">
+      <Text>...</Text>
+    </Hidden>
+    <Text>...</Text>
+  </Stack>
+  ```
+
+## 27.0.0
+
+### Major Changes
+
+- seekAnz, seekBusiness, seekUnifiedBeta: Change critical colour to red ([#634](https://github.com/seek-oss/braid-design-system/pull/634))
+
+  As part of the colour uplift work, this updates the `critical` colour in the `seekAnz` (and subsequently `seekBusiness` and `seekUnifiedBeta`) theme from pink to red. This brings the theme into line with our colour usage guide documented under [Tones](https://seek-oss.github.io/braid-design-system/foundations/tones) on the website.
+
+  **BREAKING CHANGE**
+  While not technically a breaking change, you may want to review usage of the `critical` tone in your application, particularly in custom scenarios, for example:
+
+  #### Usage of `background` props on `Box`
+
+  ```tsx
+  <Box background="critical">...</Box>
+  ```
+
+  or
+
+  ```tsx
+  <Box background="criticalLight">...</Box>
+  ```
+
+  #### Usage of `tone` props on `Icon` or `Text`
+
+  ```tsx
+  <Icon tone="critical">...</Icon>
+  ```
+
+  or
+
+  ```tsx
+  <Text tone="critical">...</Text>
+  ```
+
 ## 26.0.0
 
 ### Major Changes

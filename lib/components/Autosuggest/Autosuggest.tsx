@@ -577,21 +577,14 @@ export function Autosuggest<Value>({
               ) : null
             }
           >
-            {(
-              overlays,
-              { background, borderRadius, className, ...restFieldProps },
-              icon,
-              secondaryIcon,
-            ) => (
+            {(overlays, fieldProps, icon, secondaryIcon) => (
               <Box {...a11y.rootProps}>
                 <Box
                   component="input"
-                  borderRadius={borderRadius}
-                  {...restFieldProps}
+                  {...fieldProps}
                   {...a11y.inputProps}
                   {...inputProps}
                   position="relative"
-                  className={className}
                   ref={inputRef}
                 />
                 {icon}

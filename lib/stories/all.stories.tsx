@@ -42,8 +42,10 @@ req.keys().forEach((filename) => {
     return;
   }
 
-  const storyThemes = values(themes).filter(
-    (theme) => theme.name !== 'wireframe',
+  const storyThemes = values(themes).filter((theme) =>
+    docs.screenshotOnlyInWireframe
+      ? theme.name === 'wireframe'
+      : theme.name !== 'wireframe',
   );
 
   storyThemes.forEach((theme) => {

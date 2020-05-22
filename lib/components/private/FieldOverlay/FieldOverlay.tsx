@@ -1,7 +1,12 @@
 import React from 'react';
 import { Overlay, OverlayProps } from '../Overlay/Overlay';
 
-type FieldOverlayVariant = 'default' | 'focus' | 'hover' | 'critical';
+type FieldOverlayVariant =
+  | 'default'
+  | 'disabled'
+  | 'focus'
+  | 'hover'
+  | 'critical';
 export interface FieldOverlayProps
   extends Pick<
     OverlayProps,
@@ -19,7 +24,8 @@ const boxShadowForVariant: Record<
   FieldOverlayVariant,
   OverlayProps['boxShadow']
 > = {
-  default: 'borderStandard',
+  default: 'borderField',
+  disabled: 'borderStandard',
   focus: 'outlineFocus',
   hover: 'borderFormHover',
   critical: 'borderCritical',
