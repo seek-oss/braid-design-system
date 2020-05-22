@@ -1,9 +1,10 @@
 import React, { ReactNode } from 'react';
 import { IconInfo, IconCritical, IconPositive, IconPromote } from '../icons';
-import { Text } from '../Text/Text';
 import { Columns } from '../Columns/Columns';
 import { Column } from '../Column/Column';
 import { Box } from '../Box/Box';
+import { useTextAlignedToIcon } from '../../hooks/useTextAlignedToIcon/useTextAlignedToIcon';
+import { DefaultTextToneContext } from '../private/DefaultTextToneContext';
 
 type Tone = 'promote' | 'info' | 'positive' | 'critical';
 
@@ -29,9 +30,11 @@ export const Notice = ({ tone = 'info', children }: NoticeProps) => {
           <Icon tone={tone} />
         </Column>
         <Column>
-          <Text tone={tone} baseline={false}>
-            {children}
-          </Text>
+          <Box className={useTextAlignedToIcon()}>
+            <DefaultTextToneContext.Provider value={tone}>
+              {children}
+            </DefaultTextToneContext.Provider>
+          </Box>
         </Column>
       </Columns>
     </Box>

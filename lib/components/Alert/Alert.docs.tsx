@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import { Alert } from '../';
+import { Alert, Text } from '../';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -10,68 +10,98 @@ const docs: ComponentDocs = {
     {
       label: 'Info Alert',
       Example: () => (
-        <Alert tone="info">This is an important piece of information.</Alert>
+        <Alert tone="info">
+          <Text>This is an important piece of information.</Text>
+        </Alert>
       ),
     },
     {
       label: 'Dismissible alert',
       Example: () => (
         <Alert onClose={() => {}} closeLabel="Close info alert">
-          This is an important piece of information.
+          <Text>This is an important piece of information.</Text>
         </Alert>
       ),
     },
     {
       label: 'Promote Alert',
       Example: () => (
-        <Alert tone="promote">This is a promoted piece of information.</Alert>
+        <Alert tone="promote">
+          <Text>This is a promoted piece of information.</Text>
+        </Alert>
       ),
     },
     {
       label: 'Caution Alert',
       Example: () => (
-        <Alert tone="caution">This is a cautionary piece of information.</Alert>
+        <Alert tone="caution">
+          <Text>This is a cautionary piece of information.</Text>
+        </Alert>
       ),
     },
     {
       label: 'Critical Alert',
       Example: () => (
-        <Alert tone="critical">This is a critical piece of information.</Alert>
+        <Alert tone="critical">
+          <Text>This is a critical piece of information.</Text>
+        </Alert>
       ),
     },
     {
       label: 'Positive Alert',
       Example: () => (
-        <Alert tone="positive">This is a positive piece of information.</Alert>
+        <Alert tone="positive">
+          <Text>This is a positive piece of information.</Text>
+        </Alert>
       ),
     },
   ],
   snippets: [
     {
       name: 'Critical',
-      code: <Alert tone="critical">Critical Alert</Alert>,
+      code: (
+        <Alert tone="critical">
+          <Text>Critical Alert</Text>
+        </Alert>
+      ),
     },
     {
       name: 'Caution',
-      code: <Alert tone="caution">Caution Alert</Alert>,
+      code: (
+        <Alert tone="caution">
+          <Text>Caution Alert</Text>
+        </Alert>
+      ),
     },
     {
       name: 'Positive',
-      code: <Alert tone="positive">Positive Alert</Alert>,
+      code: (
+        <Alert tone="positive">
+          <Text>Positive Alert</Text>
+        </Alert>
+      ),
     },
     {
       name: 'Info',
-      code: <Alert tone="info">Info Alert</Alert>,
+      code: (
+        <Alert tone="info">
+          <Text>Info Alert</Text>
+        </Alert>
+      ),
     },
     {
       name: 'Promote',
-      code: <Alert tone="promote">Promote Alert</Alert>,
+      code: (
+        <Alert tone="promote">
+          <Text>Promote Alert</Text>
+        </Alert>
+      ),
     },
     {
       name: 'Dismissible alert',
       code: (
         <Alert onClose={() => {}} closeLabel="Close">
-          Dismissible Alert
+          <Text>Dismissible Alert</Text>
         </Alert>
       ),
     },
