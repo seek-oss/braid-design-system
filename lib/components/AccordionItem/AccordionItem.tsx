@@ -1,5 +1,6 @@
 import React, { useState, ReactNode } from 'react';
 import { useStyles } from 'sku/react-treat';
+import assert from 'assert';
 import { Box, Columns, Column, Heading, IconChevron } from '../';
 import { AllOrNone } from '../private/AllOrNone';
 import { useVirtualTouchable } from '../private/touchable/useVirtualTouchable';
@@ -30,13 +31,13 @@ export const AccordionItem = ({
   onToggle,
   children,
 }: AccordionItemProps) => {
-  if (process.env.NODE_ENV !== 'production') {
-    if (label !== undefined && typeof label !== 'string') {
-      throw new Error('Label must be a string');
-    }
-  }
-
   const styles = useStyles(styleRefs);
+
+  assert(
+    typeof label === 'undefined' || typeof label === 'string',
+    'Label must be a string',
+  );
+
   const [expandedFallback, setExpandedFallback] = useState(false);
   const expanded = expandedProp ?? expandedFallback;
 

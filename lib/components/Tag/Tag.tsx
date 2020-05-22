@@ -1,5 +1,6 @@
 import React from 'react';
 import { useStyles } from 'sku/react-treat';
+import assert from 'assert';
 import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';
 import { ClearButton } from '../iconButtons/ClearButton/ClearButton';
@@ -12,13 +13,10 @@ export type TagProps = {
 } & AllOrNone<{ onClear: () => void; clearLabel: string }>;
 
 export const Tag = ({ onClear, clearLabel = 'Clear', children }: TagProps) => {
-  if (
-    process.env.NODE_ENV !== 'production' &&
-    typeof children !== 'undefined' &&
-    typeof children !== 'string'
-  ) {
-    throw new Error('Tag may only contain a `string`');
-  }
+  assert(
+    typeof children === 'undefined' || typeof children === 'string',
+    'Tag may only contain a string',
+  );
 
   const styles = useStyles(styleRefs);
 

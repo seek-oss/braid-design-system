@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { Children } from 'react';
+import assert from 'assert';
 import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';
 import * as styleRefs from './Badge.treat';
@@ -59,19 +60,17 @@ export const Badge = ({
 }: BadgeProps) => {
   const styles = useStyles(styleRefs);
 
-  if (process.env.NODE_ENV !== 'production') {
-    const invalidChildren = React.Children.toArray(children).some(
-      (child) => !['string', 'number'].includes(typeof child),
-    );
+  assert(
+    validTones.indexOf(tone) >= 0,
+    `Badge tone of "${tone}" is not valid.`,
+  );
 
-    if (invalidChildren) {
-      throw new Error('Badge may only contain strings or numbers');
-    }
-
-    if (validTones.indexOf(tone) < 0) {
-      throw new Error(`Badge tone of "${tone}" is not valid.`);
-    }
-  }
+  assert(
+    Children.toArray(children).every((child) =>
+      ['string', 'number'].includes(typeof child),
+    ),
+    'Badge may only contain strings or numbers',
+  );
 
   return (
     <Box display="flex" className={styles.outer}>

@@ -1,5 +1,6 @@
 import React, { FormEvent, useContext } from 'react';
 import { useStyles } from 'sku/react-treat';
+import assert from 'assert';
 import { Overlay } from '../private/Overlay/Overlay';
 import { Box } from '../Box/Box';
 import { IconChevron } from '../icons';
@@ -41,19 +42,17 @@ export function TextDropdown<Value>({
 }: TextDropdownProps<Value>) {
   const styles = useStyles(styleRefs);
 
-  if (process.env.NODE_ENV !== 'production') {
-    // NODE_ENV is static so hook call is not conditional
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const inText = useContext(TextContext);
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const inHeading = useContext(HeadingContext);
+  assert(
+    (() => {
+      // eslint-disable-next-line react-hooks/rules-of-hooks
+      const inText = useContext(TextContext);
+      // eslint-disable-next-line react-hooks/rules-of-hooks
+      const inHeading = useContext(HeadingContext);
 
-    if (!inText && !inHeading) {
-      throw new Error(
-        'TextDropdown components must be rendered within a Text or Heading component. See the documentation for correct usage: https://seek-oss.github.io/braid-design-system/components/TextDropdown',
-      );
-    }
-  }
+      return inText || inHeading;
+    })(),
+    'TextDropdown components must be rendered within a Text or Heading component. See the documentation for correct usage: https://seek-oss.github.io/braid-design-system/components/TextDropdown',
+  );
 
   const parsedOptions = options.map(parseSimpleToComplexOption);
   const [currentText] = parsedOptions.filter((o) => value === o.value);

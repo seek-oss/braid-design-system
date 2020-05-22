@@ -1,6 +1,7 @@
 import React, { Children, ReactNode } from 'react';
 import { useStyles } from 'sku/react-treat';
 import flattenChildren from 'react-keyed-flatten-children';
+import assert from 'assert';
 import { Box, BoxProps } from '../Box/Box';
 import { Divider, DividerProps } from '../Divider/Divider';
 import { Hidden, HiddenProps } from '../Hidden/Hidden';
@@ -93,12 +94,10 @@ export const Stack = ({
   align = 'left',
   dividers = false,
 }: StackProps) => {
-  if (
-    process.env.NODE_ENV === 'development' &&
-    !validStackComponents.includes(component)
-  ) {
-    throw new Error(`Invalid Stack component: ${component}`);
-  }
+  assert(
+    validStackComponents.includes(component),
+    `Invalid Stack component: ${component}`,
+  );
 
   const hiddenStyles = useStyles(hiddenStyleRefs);
   const stackItemProps = useStackItem({ space, align });
@@ -114,16 +113,14 @@ export const Stack = ({
   return (
     <Box component={component} className={negativeMarginTop}>
       {Children.map(stackItems, (child, index) => {
-        if (
-          process.env.NODE_ENV !== 'production' &&
-          typeof child === 'object' &&
-          child.type === Hidden &&
-          (child.props as HiddenProps).inline !== undefined
-        ) {
-          throw new Error(
-            'The "inline" prop is invalid on Hidden elements within a Stack',
-          );
-        }
+        assert(
+          !(
+            typeof child === 'object' &&
+            child.type === Hidden &&
+            (child.props as HiddenProps).inline !== undefined
+          ),
+          'The "inline" prop is invalid on Hidden elements within a Stack',
+        );
 
         const hiddenProps = extractHiddenPropsFromChild(child);
         const hidden = hiddenProps
