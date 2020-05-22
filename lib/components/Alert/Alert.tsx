@@ -81,7 +81,7 @@ export const Alert = ({
             <Icon tone={tone} />
           </Column>
           <Column>
-            <Box className={useTextAlignedToIcon()}>{children}</Box>
+            <Box className={useTextAlignedToIcon('standard')}>{children}</Box>
           </Column>
           {onClose ? (
             <Column width="content">

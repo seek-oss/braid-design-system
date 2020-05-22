@@ -30,7 +30,7 @@ export const Notice = ({ tone = 'info', children }: NoticeProps) => {
           <Icon tone={tone} />
         </Column>
         <Column>
-          <Box className={useTextAlignedToIcon()}>
+          <Box className={useTextAlignedToIcon('standard')}>
             <DefaultTextToneContext.Provider value={tone}>
               {children}
             </DefaultTextToneContext.Provider>
