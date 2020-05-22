@@ -113,16 +113,14 @@ export const Stack = ({
   return (
     <Box component={component} className={negativeMarginTop}>
       {Children.map(stackItems, (child, index) => {
-        if (
-          process.env.NODE_ENV !== 'production' &&
-          typeof child === 'object' &&
-          child.type === Hidden &&
-          (child.props as HiddenProps).inline !== undefined
-        ) {
-          throw new Error(
-            'The "inline" prop is invalid on Hidden elements within a Stack',
-          );
-        }
+        assert(
+          !(
+            typeof child === 'object' &&
+            child.type === Hidden &&
+            (child.props as HiddenProps).inline !== undefined
+          ),
+          'The "inline" prop is invalid on Hidden elements within a Stack',
+        );
 
         const hiddenProps = extractHiddenPropsFromChild(child);
         const hidden = hiddenProps
