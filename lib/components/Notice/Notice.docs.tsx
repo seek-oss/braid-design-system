@@ -1,17 +1,23 @@
 import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import {
-  Notice,
-  Text,
-  Stack,
-  Heading,
-  TextLink,
-  BulletList,
-  Bullet,
-} from '../';
+import { Notice, Text, Strong, Stack, TextLink, BulletList, Bullet } from '../';
 
 const docs: ComponentDocs = {
   category: 'Content',
+  description: (
+    <Stack space="large">
+      <Text>
+        Provides an inline notification to the user. If you’re looking for a
+        stronger visual treatment, try{' '}
+        <TextLink href="/components/Alert">Alert</TextLink> instead.
+      </Text>
+      <Text>
+        <Strong>Note:</Strong> This component has only been designed to contain
+        standard size text. Any other size of text will break the alignment with
+        the icon.
+      </Text>
+    </Stack>
+  ),
   migrationGuide: true,
   screenshotWidths: [320],
   examples: [
@@ -53,7 +59,6 @@ const docs: ComponentDocs = {
       Example: () => (
         <Notice tone="positive">
           <Stack space="medium">
-            <Heading level="4">Heading</Heading>
             <Text>
               Text with a <TextLink href="#">TextLink</TextLink>
             </Text>
