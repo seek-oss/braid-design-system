@@ -1,5 +1,6 @@
 import React from 'react';
 import { useStyles } from 'sku/react-treat';
+import { useMountedState } from 'react-use';
 import { Box } from '../../Box/Box';
 import useIcon, { UseIconProps } from '../../../hooks/useIcon';
 import { IconStarSvg } from './IconStarSvg';
@@ -13,8 +14,12 @@ export type IconStarProps = UseIconProps & {
 export const IconStar = ({ active = false, ...props }: IconStarProps) => {
   const styles = useStyles(styleRefs);
   const iconProps = useIcon(props);
+  const isMounted = useMountedState();
 
-  return (
+  return !isMounted() ? (
+    // Optimise markup size for SSR since the animation can only occur once JavaScript is running
+    <Box component={active ? IconStarActiveSvg : IconStarSvg} {...iconProps} />
+  ) : (
     <Box position="relative">
       <Box component={IconStarSvg} {...iconProps} />
       <Box
