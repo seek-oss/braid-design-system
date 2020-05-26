@@ -20,7 +20,7 @@ export const IconStar = ({ active = false, ...props }: IconStarProps) => {
     // Optimise markup size for SSR since the animation can only occur once JavaScript is running
     <Box component={active ? IconStarActiveSvg : IconStarSvg} {...iconProps} />
   ) : (
-    <Box position="relative">
+    <Box display={iconProps.display} position="relative">
       <Box component={IconStarSvg} {...iconProps} />
       <Box
         position="absolute"
