@@ -4,7 +4,7 @@ import { useStyles } from 'sku/react-treat';
 import { Box } from '../Box/Box';
 import { Column } from '../Column/Column';
 import { Columns } from '../Columns/Columns';
-import { Hidden } from '../Hidden/Hidden';
+import { HiddenVisually } from '../HiddenVisually/HiddenVisually';
 import { Dropdown } from '../Dropdown/Dropdown';
 import { FieldProps, Field } from '../private/Field/Field';
 import { FieldGroup } from '../private/FieldGroup/FieldGroup';
@@ -209,9 +209,9 @@ const MonthPicker = ({
       {(fieldGroupProps) => (
         <Columns space="medium">
           <Column>
-            <Hidden screen={true} print={true}>
+            <HiddenVisually>
               <label htmlFor={monthId}>{`${label} month`}</label>
-            </Hidden>
+            </HiddenVisually>
             <Dropdown
               id={monthId}
               value={currentValue.month || ''}
@@ -227,9 +227,9 @@ const MonthPicker = ({
             </Dropdown>
           </Column>
           <Column>
-            <Hidden screen={true} print={true}>
+            <HiddenVisually>
               <label htmlFor={yearId}>{`${label} year`}</label>
-            </Hidden>
+            </HiddenVisually>
             <Dropdown
               id={yearId}
               value={currentValue.year || ''}
