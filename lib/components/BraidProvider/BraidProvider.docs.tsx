@@ -2,6 +2,7 @@ import { ComponentDocs } from '../../../site/src/types';
 
 const docs: ComponentDocs = {
   category: 'Logic',
+  migrationGuide: true,
   screenshotWidths: [],
   examples: [
     {
