@@ -16,14 +16,14 @@
 
 ## Diff
 
-**Replacing primitive elements with [Box](https://seek-oss.github.io/braid-design-system/components/Box):**
+**Replacing primitive elements with [Box](https://seek-oss.github.io/braid-design-system/components/Box) to ensure CSS resets are still applied correctly:**
 
 ```diff
 -<input type="checkbox" className={styles.checkbox}>
 +<Box component="input" type="checkbox" className={styles.checkbox}>
 ```
 
-**Replacing the provider:**
+**Replacing the provider and wiring up [react-helmet](https://github.com/nfl/react-helmet):**
 
 ```diff
 -<StyleGuideProvider locale={locale} title={pageTitle} meta={meta} link={link}>
@@ -31,6 +31,7 @@
 -</StyleGuideProvider>;
 
 +import seekAnz from 'braid-design-system/themes/seekAnz';
++import { Helmet } from 'react-helmet';
 +
 +<BraidProvider theme={seekAnz}>
 +  <Helmet
