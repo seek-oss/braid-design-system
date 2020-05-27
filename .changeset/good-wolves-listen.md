@@ -4,7 +4,30 @@
 
 **Alert, Notice:** Support rich content
 
-**PLEASE NOTE: This is a breaking change. Please read these release notes carefully.**
+**BREAKING CHANGE**
+
+Since `Alert` and `Notice` no longer render a `Text` component for you, you'll need to ensure that you're providing an enclosing `Text` element as a direct child.
+
+Alert:
+
+```diff
+<Alert tone="positive">
+-  Success!
++  <Text>Success!</Text>
+</Alert>
+```
+
+Notice:
+
+```diff
+<Notice tone="positive">
+-  Success!
++  <Text>Success!</Text>
+</Notice>
+
+```
+
+**WHY?**
 
 The [Alert](https://seek-oss.github.io/braid-design-system/components/Alert) and [Notice](https://seek-oss.github.io/braid-design-system/components/Notice) components were originally designed to render a single paragraph of text, but in practice we've found that there's a lot of demand for richer content, e.g. multiple paragraphs, bullet lists, etc.
 
@@ -36,27 +59,4 @@ This same pattern applies to `Notice`:
     </BulletList>
   </Stack>
 </Notice>
-```
-
-**BREAKING CHANGE**
-
-Since `Alert` and `Notice` no longer render a `Text` component for you, you'll need to ensure that you're providing an enclosing `Text` element as a direct child.
-
-**Alert:**
-
-```diff
-<Alert tone="positive">
--  Success!
-+  <Text>Success!</Text>
-</Alert>
-```
-
-**Notice:**
-
-```diff
-<Notice tone="positive">
--  Success!
-+  <Text>Success!</Text>
-</Notice>
-
 ```
