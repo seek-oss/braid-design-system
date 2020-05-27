@@ -3,6 +3,7 @@
 ## API Changes
 
 - The `message` prop has been removed in favour of passing `children`.
+- Child content is no longer assumed to be a string. In order to support rich content, text wihin `Alert`/`Notice` must be nested within a `Text` component.
 - `level={'primary' | 'secondary'}` have been deprecated in favour of a single visual weight. `level="tertiary"` has been replaced by the `Notice` component.
 - No longer accepts arbitrary DOM properties, e.g. `className`. Please check that everything you need is exposed via the [public API.](https://seek-oss.github.io/braid-design-system/components/Alert)
 
@@ -25,7 +26,9 @@
 -  message="Successfully completed"
 -/>
 +>
-+  Successfully completed
++  <Text>
++   Successfully completed
++  </Text>
 +</Alert>
 ```
 
@@ -39,7 +42,9 @@
 -  message="Successfully completed"
 -/>
 +>
-+  Successfully completed
++  <Text>
++    Successfully completed
++  </Text>
 +</Notice>
 ```
 
