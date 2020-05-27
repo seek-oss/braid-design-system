@@ -10,10 +10,11 @@ export const size = {
       const lineHeight = type.rows * theme.grid;
       const lineCrop = lineHeight - capHeight;
       const padding = (lineCrop - (lineCrop % theme.grid)) / 2;
+      const nudge = -0.55; // Emulate line height centring rounding upwards
 
       return {
-        paddingTop: padding,
-        paddingBottom: padding,
+        paddingTop: padding + nudge,
+        paddingBottom: padding - nudge,
       };
     };
 
