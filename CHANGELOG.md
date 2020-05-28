@@ -1,5 +1,19 @@
 # braid-design-system
 
+## 28.1.0
+
+### Minor Changes
+
+- Inline: Add support for semantic list elements ([#654](https://github.com/seek-oss/braid-design-system/pull/654))
+
+  As already featured on `Stack`, when rendering `<Inline component="ul|ol">`, its children will be rendered as `li` elements.
+
+### Patch Changes
+
+- Hide icons from screen readers that have no title ([#656](https://github.com/seek-oss/braid-design-system/pull/656))
+
+  Icons are mostly used for decorative purposes and as such are now hidden from screen readers unless providing a `title`. In this case, an Icon is identified as an image.
+
 ## 28.0.0
 
 ### Major Changes
