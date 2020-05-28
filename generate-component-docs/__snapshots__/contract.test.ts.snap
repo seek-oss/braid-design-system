@@ -4517,6 +4517,10 @@ Object {
     collapseBelow?: 
         | "desktop"
         | "tablet"
+    component?: 
+        | "div"
+        | "ol"
+        | "ul"
     reverse?: boolean
     space: ResponsiveProp<
         | "gutter"

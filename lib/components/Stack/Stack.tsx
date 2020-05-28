@@ -96,7 +96,9 @@ export const Stack = ({
 }: StackProps) => {
   assert(
     validStackComponents.includes(component),
-    `Invalid Stack component: ${component}`,
+    `Invalid Stack component: '${component}'. Should be one of [${validStackComponents
+      .map((c) => `'${c}'`)
+      .join(', ')}]`,
   );
 
   const hiddenStyles = useStyles(hiddenStyleRefs);
