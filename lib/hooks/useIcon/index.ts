@@ -64,6 +64,9 @@ export default (
   const blockSizeStyles = useIconContainerSize(
     size !== 'fill' ? size : 'standard',
   );
+  const a11yProps = titleProps.title
+    ? { ...titleProps, role: 'img' }
+    : { 'aria-hidden': true };
 
   assert(
     !(size && isInline),
@@ -83,7 +86,7 @@ export default (
       height: 'full',
       display: 'block',
       className: resolvedTone,
-      ...titleProps,
+      ...a11yProps,
     };
   }
 
@@ -102,6 +105,6 @@ export default (
           ]
         : blockSizeStyles,
     ],
-    ...titleProps,
+    ...a11yProps,
   };
 };
