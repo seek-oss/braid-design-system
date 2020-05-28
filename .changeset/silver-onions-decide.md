@@ -4,4 +4,4 @@
 
 Hide icons from screen readers that have no title
 
-Icons used purely as decoration should be hidden from screen readers.
+Icons are mostly used for decorative purposes and as such are now hidden from screen readers unless providing a `title`. In this case, an Icon is identified as an image. 
