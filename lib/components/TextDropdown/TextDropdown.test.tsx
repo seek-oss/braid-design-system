@@ -1,9 +1,7 @@
 import '@testing-library/jest-dom/extend-expect';
 import React, { useState } from 'react';
-import { render, cleanup, fireEvent } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import { BraidTestProvider, Text, TextDropdown } from '..';
-
-afterEach(cleanup);
 
 describe('TextDropdown', () => {
   it('should support controlled state', () => {

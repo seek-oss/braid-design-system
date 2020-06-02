@@ -1,11 +1,9 @@
 import '@testing-library/jest-dom/extend-expect';
 import React, { useState, Dispatch } from 'react';
-import { render, act, cleanup, fireEvent } from '@testing-library/react';
+import { render, act, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { BraidTestProvider, Autosuggest } from '..';
 import { AutosuggestProps } from './Autosuggest';
-
-afterEach(cleanup);
 
 function renderAutosuggest<Value>({
   value: initialValue,
