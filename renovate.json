@@ -1,11 +1,15 @@
 {
-  "extends": [
-    "seek"
-  ],
+  "extends": ["seek"],
   "packageRules": [
     {
       "packageNames": ["playroom"],
       "enabled": true
+    },
+    {
+      "groupName": "@testing-library packages",
+      "packageNames": ["@testing-library"],
+      "enabled": true,
+      "schedule": ["before 9am on Monday"]
     }
   ]
 }
