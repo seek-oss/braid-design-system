@@ -20,7 +20,7 @@ import buildDataAttributes, {
 import { TabListContext } from './TabList';
 import { Overlay } from '../private/Overlay/Overlay';
 
-import * as styleRefs from './Tab.treat';
+import * as styleRefs from './Tabs.treat';
 
 export interface TabProps {
   children: ReactNode;
@@ -151,13 +151,13 @@ export const Tab = ({ children, item, data }: TabProps) => {
           : undefined
       }
       display="block"
-      width="full"
-      paddingX="gutter"
+      textAlign="left"
       borderRadius="standard"
       cursor="pointer"
-      textAlign="left"
-      position="relative"
       outline="none"
+      position="relative"
+      marginLeft={isHorizontal && tabListItemIndex !== 0 ? 'medium' : undefined}
+      paddingRight={!isHorizontal ? 'medium' : undefined}
       className={useTouchableSpace(tabTextSize)}
       {...buildDataAttributes(data)}
     >
@@ -170,6 +170,7 @@ export const Tab = ({ children, item, data }: TabProps) => {
         size={tabTextSize}
         baseline={false}
         weight={isSelected ? 'strong' : undefined}
+        tone={isSelected ? 'formAccent' : 'secondary'}
       >
         {children}
       </Text>
@@ -183,7 +184,7 @@ export const Tab = ({ children, item, data }: TabProps) => {
         pointerEvents="none"
       >
         <Box
-          background="neutral"
+          background="formAccent"
           position="absolute"
           transition="fast"
           left={isHorizontal ? 0 : undefined}
@@ -191,7 +192,7 @@ export const Tab = ({ children, item, data }: TabProps) => {
           right={0}
           bottom={0}
           style={{
-            [isHorizontal ? 'height' : 'width']: 4,
+            [isHorizontal ? 'height' : 'width']: 2,
             transform: isSelected
               ? undefined
               : `translate${isHorizontal ? 'Y' : 'X'}(100%)`,

@@ -5,6 +5,7 @@ import React, {
   createContext,
   ReactElement,
 } from 'react';
+import { useStyles } from 'sku/react-treat';
 
 import assert from 'assert';
 import { Box } from '../Box/Box';
@@ -14,6 +15,7 @@ import buildDataAttributes, {
 } from '../private/buildDataAttributes';
 import { TabsContext } from './Tabs';
 import { Tab, TabProps } from './Tab';
+import * as styleRefs from './Tabs.treat';
 
 type TabOrientation = 'horizontal' | 'vertical';
 
@@ -39,6 +41,7 @@ export const TabList = ({
   data,
 }: TabListProps) => {
   const tabsContext = useContext(TabsContext);
+  const styles = useStyles(styleRefs);
 
   assert(
     tabsContext !== null,
@@ -50,7 +53,7 @@ export const TabList = ({
   }
 
   const { dispatch } = tabsContext;
-  const tabItems = [] as string[];
+  const tabItems: string[] = [];
 
   const tabs = Children.map(children, (tab, index) => {
     assert(
@@ -78,18 +81,35 @@ export const TabList = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [...tabItems, dispatch]);
 
-  return (
-    <Box
-      role="tablist"
-      aria-orientation={orientation}
-      aria-label={label}
-      position="relative"
-      {...buildDataAttributes(data)}
-    >
+  const divider =
+    orientation === 'horizontal' ? (
       <Box
-        style={
-          orientation === 'horizontal' ? { display: 'inline-flex' } : undefined
-        }
+        position="absolute"
+        width="full"
+        background="neutral"
+        bottom={0}
+        className={styles.divider.horizontal}
+      />
+    ) : (
+      <Box
+        position="absolute"
+        height="full"
+        background="neutral"
+        right={0}
+        className={styles.divider.vertical}
+      />
+    );
+
+  return (
+    <Box position="relative">
+      {divider}
+      <Box
+        role="tablist"
+        aria-orientation={orientation}
+        aria-label={label}
+        display="flex"
+        flexDirection={orientation === 'vertical' ? 'column' : undefined}
+        {...buildDataAttributes(data)}
       >
         {tabs}
       </Box>
