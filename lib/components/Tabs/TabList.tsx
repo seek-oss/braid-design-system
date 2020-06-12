@@ -100,29 +100,24 @@ export const TabList = ({
       />
     );
 
-  const tabList = (
-    <Box position="relative">
-      {divider}
-      <Box
-        role="tablist"
-        aria-orientation={orientation}
-        aria-label={label}
-        display="flex"
-        flexDirection={orientation === 'vertical' ? 'column' : undefined}
-        {...buildDataAttributes(data)}
-      >
-        {tabs}
-      </Box>
-    </Box>
-  );
-
-  if (align === 'left') {
-    return tabList;
-  }
-
   return (
-    <Box display="flex" justifyContent="center">
-      {tabList}
+    <Box
+      display="flex"
+      justifyContent={align === 'center' ? 'center' : undefined}
+    >
+      <Box position="relative">
+        {divider}
+        <Box
+          role="tablist"
+          aria-orientation={orientation}
+          aria-label={label}
+          display="flex"
+          flexDirection={orientation === 'vertical' ? 'column' : undefined}
+          {...buildDataAttributes(data)}
+        >
+          {tabs}
+        </Box>
+      </Box>
     </Box>
   );
 };

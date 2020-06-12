@@ -156,8 +156,8 @@ export const Tab = ({ children, item, data }: TabProps) => {
       cursor="pointer"
       outline="none"
       position="relative"
-      marginLeft={isHorizontal && tabListItemIndex !== 0 ? 'medium' : undefined}
-      paddingRight={!isHorizontal ? 'medium' : undefined}
+      paddingLeft={isHorizontal ? 'small' : undefined}
+      paddingRight="small"
       className={useTouchableSpace(tabTextSize)}
       {...buildDataAttributes(data)}
     >
@@ -169,21 +169,12 @@ export const Tab = ({ children, item, data }: TabProps) => {
         id={`${item}_tabcontent`}
         size={tabTextSize}
         baseline={false}
-        weight={isSelected ? 'strong' : undefined}
+        weight="medium"
+        align="center"
         tone={isSelected ? 'formAccent' : 'secondary'}
       >
         {children}
       </Text>
-      {/* 
-        Reserving space for strong weight text, 
-        otherwise width of component will grow when selected 
-      */}
-      <Box aria-hidden style={{ height: 0, visibility: 'hidden' }}>
-        <Text size={tabTextSize} baseline={false} weight="strong">
-          {children}
-        </Text>
-      </Box>
-
       <Box
         position="absolute"
         top={0}
