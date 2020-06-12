@@ -156,25 +156,33 @@ export const Tab = ({ children, item, data }: TabProps) => {
       cursor="pointer"
       outline="none"
       position="relative"
-      paddingLeft={isHorizontal ? 'small' : undefined}
-      paddingRight="small"
-      className={useTouchableSpace(tabTextSize)}
+      paddingX="small"
+      className={[useTouchableSpace(tabTextSize), styles.tab]}
       {...buildDataAttributes(data)}
     >
-      {/*
+      {!isSelected ? (
+        <Overlay
+          background="selection"
+          borderRadius="standard"
+          className={styles.tabHover}
+        />
+      ) : undefined}
+      <Box position="relative">
+        {/*
         Rendering Text component to provide rendering context
         for both icons and text labels
       */}
-      <Text
-        id={`${item}_tabcontent`}
-        size={tabTextSize}
-        baseline={false}
-        weight="medium"
-        align="center"
-        tone={isSelected ? 'formAccent' : 'secondary'}
-      >
-        {children}
-      </Text>
+        <Text
+          id={`${item}_tabcontent`}
+          size={tabTextSize}
+          baseline={false}
+          weight="medium"
+          align={isHorizontal ? 'center' : undefined}
+          tone={isSelected ? 'formAccent' : 'secondary'}
+        >
+          {children}
+        </Text>
+      </Box>
       <Box
         position="absolute"
         top={0}
@@ -193,6 +201,7 @@ export const Tab = ({ children, item, data }: TabProps) => {
           right={0}
           bottom={0}
           style={{
+            zIndex: 2,
             [isHorizontal ? 'height' : 'width']: 2,
             transform: isSelected
               ? undefined
