@@ -23,6 +23,7 @@ export interface TabListProps {
   children: ReactElement<TabProps>[];
   label: string;
   orientation?: TabOrientation;
+  align?: 'left' | 'center';
   data?: DataAttributeMap;
 }
 
@@ -38,6 +39,7 @@ export const TabList = ({
   children,
   label,
   orientation = 'horizontal',
+  align = 'left',
   data,
 }: TabListProps) => {
   const tabsContext = useContext(TabsContext);
@@ -86,7 +88,6 @@ export const TabList = ({
       <Box
         position="absolute"
         width="full"
-        background="neutral"
         bottom={0}
         className={styles.divider.horizontal}
       />
@@ -94,13 +95,12 @@ export const TabList = ({
       <Box
         position="absolute"
         height="full"
-        background="neutral"
         right={0}
         className={styles.divider.vertical}
       />
     );
 
-  return (
+  const tabList = (
     <Box position="relative">
       {divider}
       <Box
@@ -113,6 +113,16 @@ export const TabList = ({
       >
         {tabs}
       </Box>
+    </Box>
+  );
+
+  if (align === 'left') {
+    return tabList;
+  }
+
+  return (
+    <Box display="flex" justifyContent="center">
+      {tabList}
     </Box>
   );
 };

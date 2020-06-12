@@ -17,11 +17,11 @@ export const tabPanelFocusRing = style({
 
 export const divider = styleMap((theme) => ({
   horizontal: {
-    background: theme.color.foreground.secondary,
-    height: theme.border.width.standard,
+    background: theme.border.color.standard,
+    height: theme.border.width.large,
   },
   vertical: {
-    background: theme.color.foreground.secondary,
-    width: theme.border.width.standard,
+    background: theme.border.color.standard,
+    width: theme.border.width.large,
   },
 }));
