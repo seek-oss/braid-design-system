@@ -156,17 +156,11 @@ export const Tab = ({ children, item, data }: TabProps) => {
       cursor="pointer"
       outline="none"
       position="relative"
-      paddingX="small"
+      paddingRight="small"
+      paddingLeft={isHorizontal ? 'small' : undefined}
       className={[useTouchableSpace(tabTextSize), styles.tab]}
       {...buildDataAttributes(data)}
     >
-      {!isSelected ? (
-        <Overlay
-          background="selection"
-          borderRadius="standard"
-          className={styles.tabHover}
-        />
-      ) : undefined}
       <Box position="relative">
         {/*
         Rendering Text component to provide rendering context
@@ -193,6 +187,16 @@ export const Tab = ({ children, item, data }: TabProps) => {
         pointerEvents="none"
       >
         <Box
+          background="neutral"
+          position="absolute"
+          transition="fast"
+          left={isHorizontal ? 0 : undefined}
+          top={isHorizontal ? undefined : 0}
+          right={0}
+          bottom={0}
+          className={[styles.tabHover, styles.tabUnderline[orientation]]}
+        />
+        <Box
           background="formAccent"
           position="absolute"
           transition="fast"
@@ -200,9 +204,8 @@ export const Tab = ({ children, item, data }: TabProps) => {
           top={isHorizontal ? undefined : 0}
           right={0}
           bottom={0}
+          className={styles.tabUnderline[orientation]}
           style={{
-            zIndex: 2,
-            [isHorizontal ? 'height' : 'width']: 2,
             transform: isSelected
               ? undefined
               : `translate${isHorizontal ? 'Y' : 'X'}(100%)`,

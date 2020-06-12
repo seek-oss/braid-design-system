@@ -15,6 +15,17 @@ export const tabHover = style({
   },
 });
 
+export const tabUnderline = styleMap({
+  horizontal: {
+    zIndex: 2,
+    height: 2,
+  },
+  vertical: {
+    zIndex: 2,
+    width: 2,
+  },
+});
+
 export const tabPanel = style({});
 
 export const tabPanelFocusRing = style({
