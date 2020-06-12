@@ -5208,6 +5208,9 @@ exports[`TabList 1`] = `
 Object {
   exportType: component,
   props: {
+    align?: 
+        | "center"
+        | "left"
     children: ReactElement<TabProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)>[]
     data?: Record<string, string | number>
     label: string
