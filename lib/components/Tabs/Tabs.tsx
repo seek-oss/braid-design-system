@@ -1,137 +1,150 @@
-import React, { createContext, useReducer, ReactNode } from 'react';
+import React, {
+  Children,
+  useContext,
+  useEffect,
+  createContext,
+  ReactElement,
+} from 'react';
+import { useStyles } from 'sku/react-treat';
 
-import { getNextIndex } from '../private/getNextIndex';
-import { actionTypes, Action } from './Tabs.actions';
-import { AllOrNone } from '../private/AllOrNone';
+import assert from 'assert';
+import { Box } from '../Box/Box';
+import { actionTypes } from './Tabs.actions';
+import buildDataAttributes, {
+  DataAttributeMap,
+} from '../private/buildDataAttributes';
+import { TabsContext } from './TabsProvider';
+import { Tab, TabProps } from './Tab';
+import * as styleRefs from './Tabs.treat';
 
-interface State {
-  selectedTabItem: string | null;
-  focusedTabIndex: number | null;
-  tabItems: string[];
+type TabOrientation = 'horizontal' | 'vertical';
+
+interface BaseTabsProps {
+  children: ReactElement<TabProps>[];
+  label: string;
+  data?: DataAttributeMap;
 }
 
-interface TabsContextValues extends State {
-  dispatch: (action: Action) => void;
+interface HorizontalTabsProps extends BaseTabsProps {
+  align?: 'left' | 'center';
+  scroll?: boolean;
 }
 
-export const TabsContext = createContext<TabsContextValues | null>(null);
+interface VerticalTabsProps extends BaseTabsProps {}
 
-export type TabsBaseProps = {
-  children: ReactNode;
-};
+interface TabsImplProps extends VerticalTabsProps, HorizontalTabsProps {
+  orientation: 'horizontal' | 'vertical';
+}
 
-export type TabsStateProps = AllOrNone<{
-  selectedItem?: string;
-  onChange: (selectedItem: string) => void;
-}>;
+const { TAB_LIST_UPDATED } = actionTypes;
 
-export type TabsProps = TabsBaseProps & TabsStateProps;
+interface TabListContextValues {
+  tabListItemIndex: number;
+  orientation: TabOrientation;
+}
+export const TabListContext = createContext<TabListContextValues | null>(null);
 
-const {
-  TAB_BUTTON_LEFT,
-  TAB_BUTTON_RIGHT,
-  TAB_BUTTON_DOWN,
-  TAB_BUTTON_UP,
-  TAB_BUTTON_HOME,
-  TAB_BUTTON_END,
-  TAB_BUTTON_ENTER,
-  TAB_BUTTON_SPACE,
-  TAB_BUTTON_TAB,
-  TAB_BUTTON_CLICK,
-  TAB_LIST_UPDATED,
-  TAB_LIST_FOCUSED,
-} = actionTypes;
+const TabsImpl = (props: TabsImplProps) => {
+  const tabsContext = useContext(TabsContext);
+  const styles = useStyles(styleRefs);
 
-export const Tabs = ({ children, onChange, selectedItem }: TabsProps) => {
-  const [tabsState, dispatch] = useReducer(
-    (state: State, action: Action): State => {
-      switch (action.type) {
-        case TAB_BUTTON_UP:
-        case TAB_BUTTON_LEFT: {
-          return {
-            ...state,
-            focusedTabIndex: getNextIndex(
-              -1,
-              state.focusedTabIndex,
-              state.tabItems.length,
-            ),
-          };
-        }
-        case TAB_BUTTON_DOWN:
-        case TAB_BUTTON_RIGHT: {
-          return {
-            ...state,
-            focusedTabIndex: getNextIndex(
-              1,
-              state.focusedTabIndex,
-              state.tabItems.length,
-            ),
-          };
-        }
-        case TAB_BUTTON_HOME: {
-          return {
-            ...state,
-            focusedTabIndex: 0,
-          };
-        }
-        case TAB_BUTTON_END: {
-          return {
-            ...state,
-            focusedTabIndex: state.tabItems.length - 1,
-          };
-        }
-        case TAB_BUTTON_TAB: {
-          return {
-            ...state,
-            focusedTabIndex: null,
-          };
-        }
-        case TAB_BUTTON_ENTER:
-        case TAB_BUTTON_SPACE:
-        case TAB_BUTTON_CLICK: {
-          if (typeof onChange === 'function') {
-            onChange(action.item);
-          }
+  const {
+    children,
+    label,
+    orientation,
+    data,
+    align = 'left',
+    scroll = false,
+  } = props;
 
-          return {
-            ...state,
-            focusedTabIndex: action.value,
-            selectedTabItem: action.item,
-          };
-        }
-        case TAB_LIST_FOCUSED: {
-          return {
-            ...state,
-            focusedTabIndex: action.value || 0,
-          };
-        }
-        case TAB_LIST_UPDATED: {
-          return {
-            ...state,
-            tabItems: action.tabItems,
-            selectedTabItem: selectedItem ? selectedItem : action.tabItems[0],
-          };
-        }
-        default:
-          return state;
-      }
-    },
-    {
-      selectedTabItem: null,
-      focusedTabIndex: null,
-      tabItems: [],
-    },
+  assert(
+    tabsContext !== null,
+    'Tabs must be rendered as a child of Tabs. See the documentation for correct usage: https://seek-oss.github.io/braid-design-system/components/TabsList',
   );
+
+  if (!tabsContext) {
+    throw new Error('Tabs rendered outside TabsProvider');
+  }
+
+  const { dispatch } = tabsContext;
+  const tabItems: string[] = [];
+
+  const tabs = Children.map(children, (tab, index) => {
+    assert(
+      typeof tab === 'object' && tab.type === Tab,
+      'Only Tab elements can be direct children of a Tabs',
+    );
+
+    tabItems.push(tab.props.item);
+
+    return (
+      <TabListContext.Provider
+        key={index}
+        value={{
+          tabListItemIndex: index,
+          orientation,
+        }}
+      >
+        {tab}
+      </TabListContext.Provider>
+    );
+  });
+
+  useEffect(() => {
+    dispatch({ type: TAB_LIST_UPDATED, tabItems });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [...tabItems, dispatch]);
+
+  const divider =
+    orientation === 'horizontal' ? (
+      <Box
+        position="absolute"
+        width="full"
+        bottom={0}
+        className={styles.divider.horizontal}
+      />
+    ) : (
+      <Box
+        position="absolute"
+        height="full"
+        right={0}
+        className={styles.divider.vertical}
+      />
+    );
 
   return (
-    <TabsContext.Provider
-      value={{
-        ...tabsState,
-        selectedTabItem: selectedItem ?? tabsState.selectedTabItem,
-        dispatch,
-      }}
+    <Box
+      display="flex"
+      justifyContent={align === 'center' ? 'center' : undefined}
+      overflow={scroll ? 'auto' : undefined}
+      className={scroll ? styles.nowrap : undefined}
     >
-      {children}
-    </TabsContext.Provider>
+      <Box position="relative">
+        {divider}
+        <Box
+          role="tablist"
+          aria-orientation={orientation}
+          aria-label={label}
+          display="flex"
+          flexDirection={orientation === 'vertical' ? 'column' : undefined}
+          {...buildDataAttributes(data)}
+        >
+          {tabs}
+        </Box>
+      </Box>
+    </Box>
   );
 };
+
+export const Tabs = (props: HorizontalTabsProps) => (
+  <TabsImpl {...props} orientation="horizontal" />
+);
+
+export const TabsVertical = (props: VerticalTabsProps) => (
+  <TabsImpl
+    {...props}
+    orientation="vertical"
+    align={undefined}
+    scroll={undefined}
+  />
+);

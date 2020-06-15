@@ -5196,27 +5196,11 @@ exports[`Tab 1`] = `
 Object {
   exportType: component,
   props: {
+    badge?: ReactElement<BadgeProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)>
     children: ReactNode
     data?: Record<string, string | number>
     item: string
     onClick?: () => void
-},
-}
-`;
-
-exports[`TabList 1`] = `
-Object {
-  exportType: component,
-  props: {
-    align?: 
-        | "center"
-        | "left"
-    children: ReactElement<TabProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)>[]
-    data?: Record<string, string | number>
-    label: string
-    orientation?: 
-        | "horizontal"
-        | "vertical"
 },
 }
 `;
@@ -5236,9 +5220,35 @@ exports[`Tabs 1`] = `
 Object {
   exportType: component,
   props: {
+    align?: 
+        | "center"
+        | "left"
+    children: ReactElement<TabProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)>[]
+    data?: Record<string, string | number>
+    label: string
+    scroll?: boolean
+},
+}
+`;
+
+exports[`TabsProvider 1`] = `
+Object {
+  exportType: component,
+  props: {
     children: ReactNode
     onChange?: (selectedItem: string) => void
     selectedItem?: string
+},
+}
+`;
+
+exports[`TabsVertical 1`] = `
+Object {
+  exportType: component,
+  props: {
+    children: ReactElement<TabProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)>[]
+    data?: Record<string, string | number>
+    label: string
 },
 }
 `;

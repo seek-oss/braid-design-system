@@ -5,27 +5,29 @@ import React, {
   MouseEvent,
   useEffect,
   useRef,
+  ReactElement,
 } from 'react';
 import assert from 'assert';
 import { useStyles } from 'sku/react-treat';
 import { Box } from '../Box/Box';
-import { useTouchableSpace } from '../../hooks/typography';
 import { normalizeKey } from '../private/normalizeKey';
-import { TabsContext } from './Tabs';
+import { TabsContext } from './TabsProvider';
 import { actionTypes, Action } from './Tabs.actions';
 import { Text } from '../Text/Text';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
-import { TabListContext } from './TabList';
+import { TabListContext } from './Tabs';
 import { Overlay } from '../private/Overlay/Overlay';
 
 import * as styleRefs from './Tabs.treat';
+import { BadgeProps, Badge } from '../Badge/Badge';
 
 export interface TabProps {
   children: ReactNode;
   item: string;
   onClick?: () => void;
+  badge?: ReactElement<BadgeProps>;
   data?: DataAttributeMap;
 }
 
@@ -43,7 +45,7 @@ const {
   TAB_BUTTON_CLICK,
 } = actionTypes;
 
-export const Tab = ({ children, item, data }: TabProps) => {
+export const Tab = ({ children, item, data, badge }: TabProps) => {
   const styles = useStyles(styleRefs);
   const tabsContext = useContext(TabsContext);
   const tabListContext = useContext(TabListContext);
@@ -51,15 +53,20 @@ export const Tab = ({ children, item, data }: TabProps) => {
 
   assert(
     tabListContext !== null,
-    'A Tab must be rendered as a child of TabList. See the documentation for correct usage: https://seek-oss.github.io/braid-design-system/components/Tab',
+    'A Tab must be rendered as a child of Tabs. See the documentation for correct usage: https://seek-oss.github.io/braid-design-system/components/Tab',
+  );
+
+  assert(
+    !badge || badge.type === Badge,
+    `Tab badge prop can only be an instance of Badge. e.g. <Tab badge={<Badge>New</Badge>}>`,
   );
 
   if (!tabListContext) {
-    throw new Error('Tab rendered outside TabList context');
+    throw new Error('Tab rendered outside Tabs context');
   }
 
   if (!tabsContext) {
-    throw new Error('Tab rendered outside Tabs context');
+    throw new Error('Tab rendered outside TabsProvider');
   }
 
   const { tabListItemIndex, orientation } = tabListContext;
@@ -150,7 +157,8 @@ export const Tab = ({ children, item, data }: TabProps) => {
               })
           : undefined
       }
-      display="block"
+      display="flex"
+      alignItems="center"
       textAlign="left"
       borderRadius="standard"
       cursor="pointer"
@@ -158,25 +166,25 @@ export const Tab = ({ children, item, data }: TabProps) => {
       position="relative"
       paddingRight="small"
       paddingLeft={isHorizontal ? 'small' : undefined}
-      className={[useTouchableSpace(tabTextSize), styles.tab]}
+      paddingBottom="medium"
+      paddingTop={!isHorizontal ? 'medium' : undefined}
+      className={[styles.tab]}
       {...buildDataAttributes(data)}
     >
-      <Box position="relative">
-        {/*
+      {/*
         Rendering Text component to provide rendering context
         for both icons and text labels
       */}
-        <Text
-          id={`${item}_tabcontent`}
-          size={tabTextSize}
-          baseline={false}
-          weight="medium"
-          align={isHorizontal ? 'center' : undefined}
-          tone={isSelected ? 'formAccent' : 'secondary'}
-        >
-          {children}
-        </Text>
-      </Box>
+      <Text
+        id={`${item}_tabcontent`}
+        size={tabTextSize}
+        weight="medium"
+        align={isHorizontal ? 'center' : undefined}
+        tone={isSelected ? 'formAccent' : 'secondary'}
+      >
+        {children}
+      </Text>
+      {badge ? <Box paddingLeft="xsmall">{badge}</Box> : undefined}
       <Box
         position="absolute"
         top={0}

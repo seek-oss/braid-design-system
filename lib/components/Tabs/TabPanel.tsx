@@ -6,7 +6,7 @@ import { Box } from '../Box/Box';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
-import { TabsContext } from './Tabs';
+import { TabsContext } from './TabsProvider';
 import { Overlay } from '../private/Overlay/Overlay';
 
 import * as styleRefs from './Tabs.treat';

@@ -2,6 +2,8 @@ import { style, styleMap } from 'sku/treat';
 
 export const tab = style({});
 
+export const nowrap = style({ whiteSpace: 'nowrap' });
+
 export const tabFocusRing = style({
   zIndex: 1,
 });

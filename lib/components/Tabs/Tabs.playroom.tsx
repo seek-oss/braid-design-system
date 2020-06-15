@@ -1,8 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Optional } from 'utility-types';
-import { Tabs as BraidTabs, TabsProps } from './Tabs';
+import {
+  TabsProvider as BraidTabsProvider,
+  TabsProviderProps,
+} from './TabsProvider';
 
-type PlayroomTabsProps = Optional<TabsProps, 'selectedItem' | 'onChange'>;
+type PlayroomTabsProps = Optional<
+  TabsProviderProps,
+  'selectedItem' | 'onChange'
+>;
 
 export const Tabs = ({
   selectedItem,
@@ -18,7 +24,7 @@ export const Tabs = ({
   }, [selectedItem, onChange]);
 
   return (
-    <BraidTabs
+    <BraidTabsProvider
       selectedItem={selectedItem ?? fallbackValue}
       onChange={onChange ? onChange : (item) => setFallbackValue(item)}
       {...restProps}

@@ -2,8 +2,14 @@ import '@testing-library/jest-dom/extend-expect';
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { BraidTestProvider, Tabs, TabList, Tab, TabPanel } from '..';
-import { TabListProps } from './TabList';
+import {
+  BraidTestProvider,
+  TabsProvider,
+  Tabs,
+  TabsVertical,
+  Tab,
+  TabPanel,
+} from '..';
 
 const ENTER = 13;
 const SPACE = 32;
@@ -17,22 +23,24 @@ const ARROW_DOWN = 40;
 function renderTabs({
   selectedItem,
   orientation,
-}: { selectedItem?: string; orientation?: TabListProps['orientation'] } = {}) {
+}: { selectedItem?: string; orientation?: 'horizontal' | 'vertical' } = {}) {
   const changeHandler = jest.fn();
+
+  const TabsList = orientation === 'vertical' ? TabsVertical : Tabs;
 
   const TestCase = ({ value }: { value?: string }) => (
     <BraidTestProvider>
-      <Tabs selectedItem={value} onChange={changeHandler}>
-        <TabList label="Test tabs" orientation={orientation}>
+      <TabsProvider selectedItem={value} onChange={changeHandler}>
+        <TabsList label="Test tabs">
           <Tab item="first">First</Tab>
           <Tab item="second">Second</Tab>
           <Tab item="third">Third</Tab>
-        </TabList>
+        </TabsList>
 
         <TabPanel item="first">Panel 1</TabPanel>
         <TabPanel item="second">Panel 2</TabPanel>
         <TabPanel item="third">Panel 3</TabPanel>
-      </Tabs>
+      </TabsProvider>
     </BraidTestProvider>
   );
   const { getAllByRole, getByRole, getByLabelText, rerender } = render(
