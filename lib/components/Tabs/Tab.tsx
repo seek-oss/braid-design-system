@@ -172,7 +172,7 @@ export const Tab = ({ children, item, data, badge }: TabProps) => {
         for both icons and text labels
       */}
       <Text
-        id={`${item}_tabcontent`}
+        {...a11y.tabLabelProps({ item })}
         size={tabTextSize}
         weight="medium"
         align={isHorizontal ? 'center' : undefined}

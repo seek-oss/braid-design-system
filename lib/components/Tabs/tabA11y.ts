@@ -8,10 +8,17 @@ interface TabParams {
   isSelected: boolean;
 }
 
+interface TabLabelParams {
+  item: string;
+}
+
 interface TabPanelParams {
   item: string;
   isSelected: boolean;
 }
+
+const getTabLabelId = (uniqueId: string, item: string) =>
+  `${uniqueId}_${item}_label`;
 
 const getPanelId = (uniqueId: string, item: string) =>
   `${uniqueId}_${item}_panel`;
@@ -32,9 +39,12 @@ export default ({ uniqueId }: TabA11yParams) => ({
     'aria-controls': getPanelId(uniqueId, item),
     id: `${uniqueId}_${item}`,
   }),
+  tabLabelProps: ({ item }: TabLabelParams) => ({
+    id: getTabLabelId(uniqueId, item),
+  }),
   tabPanelProps: ({ item, isSelected }: TabPanelParams) => ({
     role: 'tabpanel',
-    'aria-labelledby': `${item}_tabcontent`,
+    'aria-labelledby': getTabLabelId(uniqueId, item),
     'aria-hidden': isSelected ? undefined : true,
     id: getPanelId(uniqueId, item),
     tabIndex: isSelected ? 0 : undefined,
