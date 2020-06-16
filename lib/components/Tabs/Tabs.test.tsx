@@ -4,11 +4,11 @@ import { render, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import {
   BraidTestProvider,
-  TabsProvider,
   Tabs,
   TabsVertical,
   Tab,
   TabPanel,
+  TabsProvider,
 } from '..';
 
 const ENTER = 13;
@@ -26,16 +26,16 @@ function renderTabs({
 }: { selectedItem?: string; orientation?: 'horizontal' | 'vertical' } = {}) {
   const changeHandler = jest.fn();
 
-  const TabsList = orientation === 'vertical' ? TabsVertical : Tabs;
+  const TabList = orientation === 'vertical' ? TabsVertical : Tabs;
 
   const TestCase = ({ value }: { value?: string }) => (
     <BraidTestProvider>
       <TabsProvider selectedItem={value} onChange={changeHandler}>
-        <TabsList label="Test tabs">
+        <TabList label="Test tabs">
           <Tab item="first">First</Tab>
           <Tab item="second">Second</Tab>
           <Tab item="third">Third</Tab>
-        </TabsList>
+        </TabList>
 
         <TabPanel item="first">Panel 1</TabPanel>
         <TabPanel item="second">Panel 2</TabPanel>
@@ -58,14 +58,14 @@ function renderTabs({
   };
 }
 
-describe(`Tabs: ${name}`, () => {
+describe('Tabs', () => {
   describe('Uncontrolled state', () => {
     it('should select the first tab by default', () => {
       const { getAllByRole } = renderTabs();
       const [firstTab] = getAllByRole('tab');
 
       expect(firstTab.getAttribute('aria-selected')).toBe('true');
-      expect(firstTab.getAttribute('aria-controls')).toBe('first_panel');
+      expect(firstTab.getAttribute('aria-controls')).toBe('tabs_first_panel');
     });
 
     it('should select second tab when clicked and show second panel', () => {
@@ -77,7 +77,7 @@ describe(`Tabs: ${name}`, () => {
       const visiblePanels = getAllByRole('tabpanel');
 
       expect(secondTab.getAttribute('aria-selected')).toBe('true');
-      expect(visiblePanels[0].id).toBe('second_panel');
+      expect(visiblePanels[0].id).toBe('tabs_second_panel');
     });
 
     it('should select first tab and show first panel when toggling back from another tab', () => {
@@ -90,7 +90,7 @@ describe(`Tabs: ${name}`, () => {
       const visiblePanels = getAllByRole('tabpanel');
 
       expect(firstTab.getAttribute('aria-selected')).toBe('true');
-      expect(visiblePanels[0].id).toBe('first_panel');
+      expect(visiblePanels[0].id).toBe('tabs_first_panel');
     });
   });
 
@@ -117,7 +117,7 @@ describe(`Tabs: ${name}`, () => {
 
       expect(changeHandler).not.toHaveBeenCalled();
       expect(thirdTab.getAttribute('aria-selected')).toBe('true');
-      expect(initialVisiblePanels[0].id).toBe('third_panel');
+      expect(initialVisiblePanels[0].id).toBe('tabs_third_panel');
 
       updateSelectedItem('first');
 
@@ -126,7 +126,7 @@ describe(`Tabs: ${name}`, () => {
       const visiblePanels = getAllByRole('tabpanel');
 
       expect(firstTab.getAttribute('aria-selected')).toBe('true');
-      expect(visiblePanels[0].id).toBe('first_panel');
+      expect(visiblePanels[0].id).toBe('tabs_first_panel');
     });
   });
 
@@ -155,7 +155,7 @@ describe(`Tabs: ${name}`, () => {
 
       expect(secondTab.getAttribute('aria-selected')).toBe('true');
       expect(visiblePanels.length).toBe(1);
-      expect(visiblePanels[0].id).toBe('second_panel');
+      expect(visiblePanels[0].id).toBe('tabs_second_panel');
     });
 
     it('should focus selected tab and then the selected panel when tabbing through the component', async () => {

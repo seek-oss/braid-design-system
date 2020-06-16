@@ -5236,6 +5236,7 @@ Object {
   exportType: component,
   props: {
     children: ReactNode
+    id?: string
     onChange?: (selectedItem: string) => void
     selectedItem?: string
 },

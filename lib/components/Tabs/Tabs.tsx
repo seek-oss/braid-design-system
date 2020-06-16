@@ -66,7 +66,7 @@ const TabsImpl = (props: TabsImplProps) => {
     throw new Error('Tabs rendered outside TabsProvider');
   }
 
-  const { dispatch } = tabsContext;
+  const { dispatch, a11y } = tabsContext;
   const tabItems: string[] = [];
 
   const tabs = Children.map(children, (tab, index) => {
@@ -122,9 +122,7 @@ const TabsImpl = (props: TabsImplProps) => {
       <Box position="relative">
         {divider}
         <Box
-          role="tablist"
-          aria-orientation={orientation}
-          aria-label={label}
+          {...a11y.tabListProps({ label, orientation })}
           display="flex"
           flexDirection={orientation === 'vertical' ? 'column' : undefined}
           {...buildDataAttributes(data)}

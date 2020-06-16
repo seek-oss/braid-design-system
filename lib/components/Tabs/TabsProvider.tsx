@@ -3,6 +3,7 @@ import React, { createContext, useReducer, ReactNode } from 'react';
 import { getNextIndex } from '../private/getNextIndex';
 import { actionTypes, Action } from './Tabs.actions';
 import { AllOrNone } from '../private/AllOrNone';
+import tabA11y from './tabA11y';
 
 interface State {
   selectedTabItem: string | null;
@@ -12,12 +13,14 @@ interface State {
 
 interface TabsContextValues extends State {
   dispatch: (action: Action) => void;
+  a11y: ReturnType<typeof tabA11y>;
 }
 
 export const TabsContext = createContext<TabsContextValues | null>(null);
 
 export type TabsProviderBaseProps = {
   children: ReactNode;
+  id?: string;
 };
 
 export type TabsProviderStateProps = AllOrNone<{
@@ -45,6 +48,7 @@ const {
 export const TabsProvider = ({
   children,
   onChange,
+  id = 'tabs',
   selectedItem,
 }: TabsProviderProps) => {
   const [tabsState, dispatch] = useReducer(
@@ -133,6 +137,7 @@ export const TabsProvider = ({
         ...tabsState,
         selectedTabItem: selectedItem ?? tabsState.selectedTabItem,
         dispatch,
+        a11y: tabA11y({ uniqueId: id }),
       }}
     >
       {children}

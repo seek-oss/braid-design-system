@@ -30,23 +30,19 @@ export const TabPanel = ({ item, children, data }: TabPanelProps) => {
     throw new Error('TabPanel rendered outside Tabs context');
   }
 
-  const { selectedTabItem } = tabsContext;
-  const showPanel = selectedTabItem === item;
+  const { selectedTabItem, a11y } = tabsContext;
+  const isSelected = selectedTabItem === item;
 
   return (
     <Box
-      role="tabpanel"
-      aria-labelledby={`${item}_tabcontent`}
-      aria-hidden={showPanel ? undefined : true}
-      id={`${item}_panel`}
-      display={showPanel ? undefined : 'none'}
-      tabIndex={showPanel ? 0 : undefined}
+      {...a11y.tabPanelProps({ item, isSelected })}
+      display={isSelected ? undefined : 'none'}
       position="relative"
       outline="none"
       className={styles.tabPanel}
       {...buildDataAttributes(data)}
     >
-      {showPanel ? children : undefined}
+      {isSelected ? children : undefined}
       <Overlay
         boxShadow="outlineFocus"
         borderRadius="standard"

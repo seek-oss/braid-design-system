@@ -70,7 +70,7 @@ export const Tab = ({ children, item, data, badge }: TabProps) => {
   }
 
   const { tabListItemIndex, orientation } = tabListContext;
-  const { focusedTabIndex, selectedTabItem, dispatch } = tabsContext;
+  const { focusedTabIndex, selectedTabItem, dispatch, a11y } = tabsContext;
   const isSelected = selectedTabItem === item;
   const isFocused = focusedTabIndex === tabListItemIndex;
   const isHorizontal = orientation === 'horizontal';
@@ -135,11 +135,7 @@ export const Tab = ({ children, item, data, badge }: TabProps) => {
   return (
     <Box
       component="button"
-      role="tab"
-      tabIndex={isSelected ? undefined : -1}
-      aria-selected={isSelected}
-      aria-controls={`${item}_panel`}
-      id={item}
+      {...a11y.tabProps({ item, isSelected })}
       ref={tabRef}
       onKeyUp={onKeyUp}
       onKeyDown={onKeyDown}
