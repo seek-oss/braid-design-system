@@ -208,12 +208,10 @@ export const Tab = ({ children, item, data, badge }: TabProps) => {
           top={isHorizontal ? undefined : 0}
           right={0}
           bottom={0}
-          className={styles.tabUnderline[orientation]}
-          style={{
-            transform: isSelected
-              ? undefined
-              : `translate${isHorizontal ? 'Y' : 'X'}(100%)`,
-          }}
+          className={[
+            styles.tabUnderline[orientation],
+            !isSelected ? styles.tabUnderlineAnimation[orientation] : undefined,
+          ]}
         />
       </Box>
       <Overlay

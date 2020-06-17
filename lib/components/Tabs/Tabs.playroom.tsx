@@ -10,7 +10,7 @@ type PlayroomTabsProps = Optional<
   'selectedItem' | 'onChange'
 >;
 
-export const Tabs = ({
+export const TabsProvider = ({
   selectedItem,
   onChange,
   ...restProps

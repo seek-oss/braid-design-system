@@ -59,7 +59,7 @@ const TabsImpl = (props: TabsImplProps) => {
 
   assert(
     tabsContext !== null,
-    'Tabs must be rendered as a child of Tabs. See the documentation for correct usage: https://seek-oss.github.io/braid-design-system/components/TabsList',
+    'Tabs must be rendered as a child of TabsProvider. See the documentation for correct usage: https://seek-oss.github.io/braid-design-system/components/TabsList',
   );
 
   if (!tabsContext) {

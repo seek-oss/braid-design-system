@@ -28,6 +28,15 @@ export const tabUnderline = styleMap({
   },
 });
 
+export const tabUnderlineAnimation = styleMap({
+  horizontal: {
+    transform: 'translateY(100%)',
+  },
+  vertical: {
+    transform: 'translateX(100%)',
+  },
+});
+
 export const tabPanel = style({});
 
 export const tabPanelFocusRing = style({
