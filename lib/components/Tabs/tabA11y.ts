@@ -3,24 +3,24 @@ interface TabListParams {
 }
 
 interface TabParams {
-  item: string;
+  tabIndex: number;
   isSelected: boolean;
 }
 
 interface TabLabelParams {
-  item: string;
+  tabIndex: number;
 }
 
 interface TabPanelParams {
-  item: string;
+  panelIndex: number;
   isSelected: boolean;
 }
 
-const getTabLabelId = (uniqueId: string, item: string) =>
-  `${uniqueId}_${item}_label`;
+const getTabLabelId = (uniqueId: string, index: number) =>
+  `${uniqueId}_${index}_label`;
 
-const getPanelId = (uniqueId: string, item: string) =>
-  `${uniqueId}_${item}_panel`;
+const getPanelId = (uniqueId: string, index: number) =>
+  `${uniqueId}_${index}_panel`;
 
 interface TabA11yParams {
   uniqueId: string;
@@ -32,21 +32,21 @@ export default ({ uniqueId }: TabA11yParams) => ({
       'aria-orientation': 'horizontal',
       'aria-label': label,
     } as const),
-  tabProps: ({ item, isSelected }: TabParams) => ({
+  tabProps: ({ tabIndex, isSelected }: TabParams) => ({
     role: 'tab',
     tabIndex: isSelected ? undefined : -1,
     'aria-selected': isSelected,
-    'aria-controls': getPanelId(uniqueId, item),
-    id: `${uniqueId}_${item}`,
+    'aria-controls': getPanelId(uniqueId, tabIndex),
+    id: `${uniqueId}_${tabIndex}`,
   }),
-  tabLabelProps: ({ item }: TabLabelParams) => ({
-    id: getTabLabelId(uniqueId, item),
+  tabLabelProps: ({ tabIndex }: TabLabelParams) => ({
+    id: getTabLabelId(uniqueId, tabIndex),
   }),
-  tabPanelProps: ({ item, isSelected }: TabPanelParams) => ({
+  tabPanelProps: ({ panelIndex, isSelected }: TabPanelParams) => ({
     role: 'tabpanel',
-    'aria-labelledby': getTabLabelId(uniqueId, item),
+    'aria-labelledby': getTabLabelId(uniqueId, panelIndex),
     'aria-hidden': isSelected ? undefined : true,
-    id: getPanelId(uniqueId, item),
+    id: getPanelId(uniqueId, panelIndex),
     tabIndex: isSelected ? 0 : undefined,
   }),
 });

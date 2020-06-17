@@ -1,4 +1,4 @@
-import React, { ReactNode, useContext } from 'react';
+import React, { ReactNode, useContext, useRef, useEffect } from 'react';
 import { useStyles } from 'sku/react-treat';
 import assert from 'assert';
 
@@ -10,16 +10,17 @@ import { TabsContext } from './TabsProvider';
 import { Overlay } from '../private/Overlay/Overlay';
 
 import * as styleRefs from './Tabs.treat';
+import { TAB_REGISTER_PANEL } from './Tabs.actions';
 
 interface TabPanelProps {
   children: ReactNode;
-  item: string;
   data?: DataAttributeMap;
 }
 
-export const TabPanel = ({ item, children, data }: TabPanelProps) => {
+export const TabPanel = ({ children, data }: TabPanelProps) => {
   const styles = useStyles(styleRefs);
   const tabsContext = useContext(TabsContext);
+  const ref = useRef<HTMLElement>(null);
 
   assert(
     tabsContext !== null,
@@ -29,13 +30,27 @@ export const TabPanel = ({ item, children, data }: TabPanelProps) => {
   if (!tabsContext) {
     throw new Error('TabPanel rendered outside Tabs context');
   }
+  
+  const { a11y, dispatch, panels, selectedIndex } = tabsContext;
 
-  const { selectedTabItem, a11y } = tabsContext;
-  const isSelected = selectedTabItem === item;
+  useEffect(() => {
+    if (!ref.current) {
+      throw new Error('TabPanel ref not instantiated');
+    }
+
+    dispatch({
+      type: TAB_REGISTER_PANEL,
+      panel: ref.current,
+    });
+  }, [dispatch]);
+
+  const panelIndex = ref.current ? panels.indexOf(ref.current) : -1;
+  const isSelected = panelIndex === selectedIndex;
 
   return (
     <Box
-      {...a11y.tabPanelProps({ item, isSelected })}
+      ref={ref}
+      {...a11y.tabPanelProps({ panelIndex, isSelected })}
       display={isSelected ? undefined : 'none'}
       position="relative"
       outline="none"

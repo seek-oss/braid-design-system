@@ -9,6 +9,10 @@ import {
   Stack,
   // IconChevron,
   TextLink,
+  TabsProvider,
+  Tabs,
+  Tab,
+  TabPanel,
 } from '..';
 
 const docs: ComponentDocs = {
@@ -33,6 +37,24 @@ const docs: ComponentDocs = {
       </Text>
     </Stack>
   ),
+  snippets: [
+    {
+      name: 'Tabs (3)',
+      code: (
+        <TabsProvider>
+          <Tabs label="Test tabs">
+            <Tab>First</Tab>
+            <Tab>Second</Tab>
+            <Tab>Third</Tab>
+          </Tabs>
+
+          <TabPanel>Panel 1</TabPanel>
+          <TabPanel>Panel 2</TabPanel>
+          <TabPanel>Panel 3</TabPanel>
+        </TabsProvider>
+      ),
+    },
+  ],
   examples: [
     // {
     //   label: 'Default',

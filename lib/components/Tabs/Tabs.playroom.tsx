@@ -7,25 +7,25 @@ import {
 
 type PlayroomTabsProps = Optional<
   TabsProviderProps,
-  'selectedItem' | 'onChange'
+  'selectedIndex' | 'onChange'
 >;
 
 export const TabsProvider = ({
-  selectedItem,
+  selectedIndex,
   onChange,
   ...restProps
 }: PlayroomTabsProps) => {
-  const [fallbackValue, setFallbackValue] = useState<string | undefined>();
+  const [fallbackValue, setFallbackValue] = useState<number | undefined>();
 
   useEffect(() => {
-    if (typeof onChange !== 'function' && !selectedItem) {
+    if (typeof onChange !== 'function' && !selectedIndex) {
       setFallbackValue(undefined);
     }
-  }, [selectedItem, onChange]);
+  }, [selectedIndex, onChange]);
 
   return (
     <BraidTabsProvider
-      selectedItem={selectedItem ?? fallbackValue}
+      selectedIndex={selectedIndex ?? fallbackValue}
       onChange={onChange ? onChange : (item) => setFallbackValue(item)}
       {...restProps}
     />

@@ -36,12 +36,11 @@ import { BadgeProps, Badge } from '../Badge/Badge';
 
 export interface TabProps {
   children: ReactNode;
-  item: string;
   badge?: ReactElement<BadgeProps>;
   data?: DataAttributeMap;
 }
 
-export const Tab = ({ children, item, data, badge }: TabProps) => {
+export const Tab = ({ children, data, badge }: TabProps) => {
   const styles = useStyles(styleRefs);
   const tabsContext = useContext(TabsContext);
   const tabListContext = useContext(TabListContext);
@@ -68,12 +67,12 @@ export const Tab = ({ children, item, data, badge }: TabProps) => {
   const { tabListItemIndex } = tabListContext;
   const {
     focusedTabIndex,
-    selectedTabItem,
+    selectedIndex,
     dispatch,
     a11y,
     onChange,
   } = tabsContext;
-  const isSelected = selectedTabItem === item;
+  const isSelected = selectedIndex === tabListItemIndex;
   const isFocused = focusedTabIndex === tabListItemIndex;
 
   useEffect(() => {
@@ -90,7 +89,7 @@ export const Tab = ({ children, item, data, badge }: TabProps) => {
     }
 
     if (onChange && (targetKey === 'Enter' || targetKey === ' ')) {
-      onChange(item);
+      onChange(tabListItemIndex);
     }
 
     const action: Record<string, Action> = {
@@ -98,8 +97,8 @@ export const Tab = ({ children, item, data, badge }: TabProps) => {
       ArrowLeft: { type: TAB_BUTTON_LEFT },
       Home: { type: TAB_BUTTON_HOME },
       End: { type: TAB_BUTTON_END },
-      Enter: { type: TAB_BUTTON_ENTER, value: tabListItemIndex, item },
-      ' ': { type: TAB_BUTTON_SPACE, value: tabListItemIndex, item },
+      Enter: { type: TAB_BUTTON_ENTER, value: tabListItemIndex },
+      ' ': { type: TAB_BUTTON_SPACE, value: tabListItemIndex },
     };
 
     if (action[targetKey]) {
@@ -130,7 +129,7 @@ export const Tab = ({ children, item, data, badge }: TabProps) => {
   return (
     <Box
       component="button"
-      {...a11y.tabProps({ item, isSelected })}
+      {...a11y.tabProps({ tabIndex: tabListItemIndex, isSelected })}
       ref={tabRef}
       onKeyUp={onKeyUp}
       onKeyDown={onKeyDown}
@@ -139,10 +138,10 @@ export const Tab = ({ children, item, data, badge }: TabProps) => {
         event.preventDefault();
 
         if (onChange) {
-          onChange(item);
+          onChange(tabListItemIndex);
         }
 
-        dispatch({ type: TAB_BUTTON_CLICK, value: tabListItemIndex, item });
+        dispatch({ type: TAB_BUTTON_CLICK, value: tabListItemIndex });
       }}
       onFocus={
         isSelected
@@ -171,7 +170,7 @@ export const Tab = ({ children, item, data, badge }: TabProps) => {
         for both icons and text labels
       */}
       <Text
-        {...a11y.tabLabelProps({ item })}
+        {...a11y.tabLabelProps({ tabIndex: tabListItemIndex })}
         size={tabTextSize}
         weight="medium"
         align="center"

@@ -13,20 +13,29 @@ import {
   TAB_BUTTON_CLICK,
   TAB_LIST_UPDATED,
   TAB_LIST_FOCUSED,
+  TAB_REGISTER_PANEL,
 } from './Tabs.actions';
 import { AllOrNone } from '../private/AllOrNone';
 import tabA11y from './tabA11y';
 
+const addPanel = (panels: HTMLElement[], panel: HTMLElement) =>
+  [...panels, panel].sort((a, b) =>
+    Boolean(a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_PRECEDING)
+      ? 1
+      : -1,
+  );
+
 interface State {
-  selectedTabItem: string | null;
+  selectedIndex: number;
   focusedTabIndex: number | null;
-  tabItems: string[];
+  tabItems: number[];
+  panels: HTMLElement[];
 }
 
 interface TabsContextValues extends State {
   dispatch: (action: Action) => void;
   a11y: ReturnType<typeof tabA11y>;
-  onChange?: (selectedItem: string) => void;
+  onChange?: (selectedItem: number) => void;
 }
 
 export const TabsContext = createContext<TabsContextValues | null>(null);
@@ -37,8 +46,8 @@ export type TabsProviderBaseProps = {
 };
 
 export type TabsProviderStateProps = AllOrNone<{
-  selectedItem?: string;
-  onChange: (selectedItem: string) => void;
+  selectedIndex?: number;
+  onChange: (selectedItem: number) => void;
 }>;
 
 export type TabsProviderProps = TabsProviderBaseProps & TabsProviderStateProps;
@@ -47,7 +56,7 @@ export const TabsProvider = ({
   children,
   onChange,
   id = 'tabs',
-  selectedItem,
+  selectedIndex,
 }: TabsProviderProps) => {
   const [tabsState, dispatch] = useReducer(
     (state: State, action: Action): State => {
@@ -96,7 +105,7 @@ export const TabsProvider = ({
           return {
             ...state,
             focusedTabIndex: action.value,
-            selectedTabItem: action.item,
+            selectedIndex: action.value,
           };
         }
         case TAB_LIST_FOCUSED: {
@@ -109,7 +118,12 @@ export const TabsProvider = ({
           return {
             ...state,
             tabItems: action.tabItems,
-            selectedTabItem: selectedItem ? selectedItem : action.tabItems[0],
+          };
+        }
+        case TAB_REGISTER_PANEL: {
+          return {
+            ...state,
+            panels: addPanel(state.panels, action.panel),
           };
         }
         default:
@@ -117,9 +131,10 @@ export const TabsProvider = ({
       }
     },
     {
-      selectedTabItem: null,
+      selectedIndex: 0,
       focusedTabIndex: null,
       tabItems: [],
+      panels: [],
     },
   );
 
@@ -127,7 +142,7 @@ export const TabsProvider = ({
     <TabsContext.Provider
       value={{
         ...tabsState,
-        selectedTabItem: selectedItem ?? tabsState.selectedTabItem,
+        selectedIndex: selectedIndex ?? tabsState.selectedIndex,
         dispatch,
         a11y: tabA11y({ uniqueId: id }),
         onChange,
