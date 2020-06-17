@@ -17,10 +17,10 @@ interface TabPanelParams {
 }
 
 const getTabLabelId = (uniqueId: string, index: number) =>
-  `${uniqueId}_${index}_label`;
+  `${uniqueId}_${index + 1}_label`;
 
 const getPanelId = (uniqueId: string, index: number) =>
-  `${uniqueId}_${index}_panel`;
+  `${uniqueId}_${index + 1}_panel`;
 
 interface TabA11yParams {
   uniqueId: string;

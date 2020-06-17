@@ -46,7 +46,7 @@ export const Tabs = (props: TabsProps) => {
   }
 
   const { dispatch, a11y } = tabsContext;
-  const tabItems: number[] = [];
+  const tabItems: Array<string | number> = [];
 
   const tabs = Children.map(children, (tab, index) => {
     assert(
@@ -54,7 +54,7 @@ export const Tabs = (props: TabsProps) => {
       'Only Tab elements can be direct children of a Tabs',
     );
 
-    tabItems.push(index);
+    tabItems.push(tab.props.item ?? index);
 
     return (
       <TabListContext.Provider

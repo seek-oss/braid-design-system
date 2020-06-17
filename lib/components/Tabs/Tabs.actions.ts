@@ -20,6 +20,6 @@ export type Action =
   | { type: typeof TAB_BUTTON_ENTER; value: number }
   | { type: typeof TAB_BUTTON_SPACE; value: number }
   | { type: typeof TAB_BUTTON_CLICK; value: number }
-  | { type: typeof TAB_LIST_UPDATED; tabItems: number[] }
+  | { type: typeof TAB_LIST_UPDATED; tabItems: Array<string | number> }
   | { type: typeof TAB_LIST_FOCUSED; value: number }
   | { type: typeof TAB_REGISTER_PANEL; panel: HTMLElement };

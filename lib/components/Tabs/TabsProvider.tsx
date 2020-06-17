@@ -15,8 +15,8 @@ import {
   TAB_LIST_FOCUSED,
   TAB_REGISTER_PANEL,
 } from './Tabs.actions';
-import { AllOrNone } from '../private/AllOrNone';
 import tabA11y from './tabA11y';
+import { AllOrNone } from '../private/AllOrNone';
 
 const addPanel = (panels: HTMLElement[], panel: HTMLElement) =>
   [...panels, panel].sort((a, b) =>
@@ -28,14 +28,14 @@ const addPanel = (panels: HTMLElement[], panel: HTMLElement) =>
 interface State {
   selectedIndex: number;
   focusedTabIndex: number | null;
-  tabItems: number[];
+  tabItems: Array<string | number>;
   panels: HTMLElement[];
 }
 
 interface TabsContextValues extends State {
   dispatch: (action: Action) => void;
   a11y: ReturnType<typeof tabA11y>;
-  onChange?: (selectedItem: number) => void;
+  onChange?: (selectedIndex: number, selectedItem?: string) => void;
 }
 
 export const TabsContext = createContext<TabsContextValues | null>(null);
@@ -46,8 +46,8 @@ export type TabsProviderBaseProps = {
 };
 
 export type TabsProviderStateProps = AllOrNone<{
-  selectedIndex?: number;
-  onChange: (selectedItem: number) => void;
+  selectedItem?: string;
+  onChange: (selectedIndex: number, selectedItem?: string) => void;
 }>;
 
 export type TabsProviderProps = TabsProviderBaseProps & TabsProviderStateProps;
@@ -56,7 +56,7 @@ export const TabsProvider = ({
   children,
   onChange,
   id = 'tabs',
-  selectedIndex,
+  selectedItem,
 }: TabsProviderProps) => {
   const [tabsState, dispatch] = useReducer(
     (state: State, action: Action): State => {
@@ -138,11 +138,18 @@ export const TabsProvider = ({
     },
   );
 
+  const controlledSelectedIndex = selectedItem
+    ? tabsState.tabItems.indexOf(selectedItem)
+    : -1;
+
   return (
     <TabsContext.Provider
       value={{
         ...tabsState,
-        selectedIndex: selectedIndex ?? tabsState.selectedIndex,
+        selectedIndex:
+          controlledSelectedIndex > -1
+            ? controlledSelectedIndex
+            : tabsState.selectedIndex,
         dispatch,
         a11y: tabA11y({ uniqueId: id }),
         onChange,

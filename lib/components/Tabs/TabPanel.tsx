@@ -30,7 +30,7 @@ export const TabPanel = ({ children, data }: TabPanelProps) => {
   if (!tabsContext) {
     throw new Error('TabPanel rendered outside Tabs context');
   }
-  
+
   const { a11y, dispatch, panels, selectedIndex } = tabsContext;
 
   useEffect(() => {

@@ -36,11 +36,12 @@ import { BadgeProps, Badge } from '../Badge/Badge';
 
 export interface TabProps {
   children: ReactNode;
+  item?: string;
   badge?: ReactElement<BadgeProps>;
   data?: DataAttributeMap;
 }
 
-export const Tab = ({ children, data, badge }: TabProps) => {
+export const Tab = ({ children, data, badge, item }: TabProps) => {
   const styles = useStyles(styleRefs);
   const tabsContext = useContext(TabsContext);
   const tabListContext = useContext(TabListContext);
@@ -89,7 +90,7 @@ export const Tab = ({ children, data, badge }: TabProps) => {
     }
 
     if (onChange && (targetKey === 'Enter' || targetKey === ' ')) {
-      onChange(tabListItemIndex);
+      onChange(tabListItemIndex, item);
     }
 
     const action: Record<string, Action> = {
@@ -138,7 +139,7 @@ export const Tab = ({ children, data, badge }: TabProps) => {
         event.preventDefault();
 
         if (onChange) {
-          onChange(tabListItemIndex);
+          onChange(tabListItemIndex, item);
         }
 
         dispatch({ type: TAB_BUTTON_CLICK, value: tabListItemIndex });

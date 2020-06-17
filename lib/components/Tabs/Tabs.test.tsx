@@ -16,16 +16,16 @@ function renderTabs({ selectedItem }: { selectedItem?: string } = {}) {
 
   const TestCase = ({ value }: { value?: string }) => (
     <BraidTestProvider>
-      <TabsProvider selectedItem={value} onChange={changeHandler}>
+      <TabsProvider id="tabs" selectedItem={value} onChange={changeHandler}>
         <Tabs label="Test tabs">
           <Tab item="first">First</Tab>
           <Tab item="second">Second</Tab>
           <Tab item="third">Third</Tab>
         </Tabs>
 
-        <TabPanel item="first">Panel 1</TabPanel>
-        <TabPanel item="second">Panel 2</TabPanel>
-        <TabPanel item="third">Panel 3</TabPanel>
+        <TabPanel>Panel 1</TabPanel>
+        <TabPanel>Panel 2</TabPanel>
+        <TabPanel>Panel 3</TabPanel>
       </TabsProvider>
     </BraidTestProvider>
   );
@@ -51,7 +51,7 @@ describe('Tabs', () => {
       const [firstTab] = getAllByRole('tab');
 
       expect(firstTab.getAttribute('aria-selected')).toBe('true');
-      expect(firstTab.getAttribute('aria-controls')).toBe('tabs_first_panel');
+      expect(firstTab.getAttribute('aria-controls')).toBe('tabs_1_panel');
     });
 
     it('should select second tab when clicked and show second panel', () => {
@@ -63,7 +63,7 @@ describe('Tabs', () => {
       const visiblePanels = getAllByRole('tabpanel');
 
       expect(secondTab.getAttribute('aria-selected')).toBe('true');
-      expect(visiblePanels[0].id).toBe('tabs_second_panel');
+      expect(visiblePanels[0].id).toBe('tabs_2_panel');
     });
 
     it('should select first tab and show first panel when toggling back from another tab', () => {
@@ -76,7 +76,7 @@ describe('Tabs', () => {
       const visiblePanels = getAllByRole('tabpanel');
 
       expect(firstTab.getAttribute('aria-selected')).toBe('true');
-      expect(visiblePanels[0].id).toBe('tabs_first_panel');
+      expect(visiblePanels[0].id).toBe('tabs_1_panel');
     });
   });
 
@@ -91,7 +91,7 @@ describe('Tabs', () => {
 
       userEvent.click(secondTab);
 
-      expect(changeHandler).toHaveBeenNthCalledWith(1, 'second');
+      expect(changeHandler).toHaveBeenNthCalledWith(1, 1, 'second');
     });
 
     it('should select second tab and show second panel, when controlled value changes', () => {
@@ -103,7 +103,7 @@ describe('Tabs', () => {
 
       expect(changeHandler).not.toHaveBeenCalled();
       expect(thirdTab.getAttribute('aria-selected')).toBe('true');
-      expect(initialVisiblePanels[0].id).toBe('tabs_third_panel');
+      expect(initialVisiblePanels[0].id).toBe('tabs_3_panel');
 
       updateSelectedItem('first');
 
@@ -112,7 +112,7 @@ describe('Tabs', () => {
       const visiblePanels = getAllByRole('tabpanel');
 
       expect(firstTab.getAttribute('aria-selected')).toBe('true');
-      expect(visiblePanels[0].id).toBe('tabs_first_panel');
+      expect(visiblePanels[0].id).toBe('tabs_1_panel');
     });
   });
 
@@ -141,7 +141,7 @@ describe('Tabs', () => {
 
       expect(secondTab.getAttribute('aria-selected')).toBe('true');
       expect(visiblePanels.length).toBe(1);
-      expect(visiblePanels[0].id).toBe('tabs_second_panel');
+      expect(visiblePanels[0].id).toBe('tabs_2_panel');
     });
 
     it('should focus selected tab and then the selected panel when tabbing through the component', async () => {
