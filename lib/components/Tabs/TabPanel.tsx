@@ -10,7 +10,7 @@ import { TabsContext } from './TabsProvider';
 import { Overlay } from '../private/Overlay/Overlay';
 
 import * as styleRefs from './Tabs.treat';
-import { TAB_REGISTER_PANEL } from './Tabs.actions';
+import { TAB_REGISTER_PANEL, TAB_DEREGISTER_PANEL } from './Tabs.actions';
 
 interface TabPanelProps {
   children: ReactNode;
@@ -38,10 +38,19 @@ export const TabPanel = ({ children, data }: TabPanelProps) => {
       throw new Error('TabPanel ref not instantiated');
     }
 
+    const panel = ref.current;
+
     dispatch({
       type: TAB_REGISTER_PANEL,
-      panel: ref.current,
+      panel,
     });
+
+    return () => {
+      dispatch({
+        type: TAB_DEREGISTER_PANEL,
+        panel,
+      });
+    };
   }, [dispatch]);
 
   const panelIndex = ref.current ? panels.indexOf(ref.current) : -1;

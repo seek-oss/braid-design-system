@@ -14,12 +14,13 @@ import {
   TAB_LIST_UPDATED,
   TAB_LIST_FOCUSED,
   TAB_REGISTER_PANEL,
+  TAB_DEREGISTER_PANEL,
 } from './Tabs.actions';
 import tabA11y from './tabA11y';
 import { AllOrNone } from '../private/AllOrNone';
 
-const addPanel = (panels: HTMLElement[], panel: HTMLElement) =>
-  [...panels, panel].sort((a, b) =>
+const sortPanels = (panels: HTMLElement[]) =>
+  panels.sort((a, b) =>
     Boolean(a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_PRECEDING)
       ? 1
       : -1,
@@ -123,7 +124,17 @@ export const TabsProvider = ({
         case TAB_REGISTER_PANEL: {
           return {
             ...state,
-            panels: addPanel(state.panels, action.panel),
+            panels: sortPanels([...state.panels, action.panel]),
+          };
+        }
+        case TAB_DEREGISTER_PANEL: {
+          const filterPanels = state.panels.filter(
+            (panel) => panel !== action.panel,
+          );
+
+          return {
+            ...state,
+            panels: sortPanels(filterPanels),
           };
         }
         default:
