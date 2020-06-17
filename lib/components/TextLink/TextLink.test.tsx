@@ -1,10 +1,8 @@
 import '@testing-library/jest-dom/extend-expect';
 import React from 'react';
-import { render, cleanup } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { htmlToText } from '../../utils/htmlToText';
 import { BraidTestProvider, LinkComponent, Text, TextLink } from '..';
-
-afterEach(cleanup);
 
 describe('TextLink', () => {
   it('should render a native link by default', () => {

@@ -1,18 +1,10 @@
 import '@testing-library/jest-dom/extend-expect';
 
 import React, { ReactNode } from 'react';
-import {
-  cleanup,
-  render,
-  act,
-  wait,
-  getByTestId,
-} from '@testing-library/react';
+import { render, act, waitFor, getByTestId } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import { BraidTestProvider, ToastProvider, useToast } from '..';
-
-afterAll(cleanup);
 
 type ShowToast = ReturnType<typeof useToast>;
 
@@ -69,7 +61,7 @@ describe('useToast', () => {
 
     clearToast(allToasts[0]);
 
-    await wait(() => {
+    await waitFor(() => {
       expect(queryAllToasts()).toHaveLength(0);
     });
   });
@@ -94,7 +86,7 @@ describe('useToast', () => {
 
     clearToast(allToasts[1]);
 
-    await wait(() => {
+    await waitFor(() => {
       expect(queryAllToasts()).toHaveLength(2);
       expect(getToastByMessage('Toast 1')).toBeInTheDocument();
       expect(getToastByMessage('Toast 3')).toBeInTheDocument();
@@ -119,7 +111,7 @@ describe('useToast', () => {
 
     expect(actionClickHandler).toHaveBeenCalledTimes(1);
 
-    await wait(() => {
+    await waitFor(() => {
       // Toast should be removed after action press
       expect(queryAllToasts()).toHaveLength(0);
     });
@@ -157,7 +149,7 @@ describe('useToast', () => {
     expect(actionClickHandler1).toHaveBeenCalledTimes(0);
     expect(actionClickHandler2).toHaveBeenCalledTimes(1);
 
-    await wait(() => {
+    await waitFor(() => {
       // Toast should be removed after action press
       expect(queryAllToasts()).toHaveLength(1);
       expect(getToastByMessage('Some toast')).toBeInTheDocument();

@@ -12,7 +12,6 @@ export const IconAddSvg = ({ title, titleId, ...props }: SVGProps) => (
     fill=\\"currentColor\\"
     width={16}
     height={16}
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -39,7 +38,6 @@ export const IconBookmarkActiveSvg = ({
     fill=\\"currentColor\\"
     width={16}
     height={16}
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -62,7 +60,6 @@ export const IconBookmarkSvg = ({ title, titleId, ...props }: SVGProps) => (
     fill=\\"currentColor\\"
     width={16}
     height={16}
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -85,7 +82,6 @@ export const IconCautionSvg = ({ title, titleId, ...props }: SVGProps) => (
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -110,7 +106,6 @@ export const IconChevronSvg = ({ title, titleId, ...props }: SVGProps) => (
     fill=\\"currentColor\\"
     width={16}
     height={16}
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -133,7 +128,6 @@ export const IconClearSvg = ({ title, titleId, ...props }: SVGProps) => (
     fill=\\"currentColor\\"
     width={16}
     height={16}
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -156,7 +150,6 @@ export const IconCompanySvg = ({ title, titleId, ...props }: SVGProps) => (
     fill=\\"currentColor\\"
     width={16}
     height={16}
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -180,7 +173,6 @@ export const IconComposeSvg = ({ title, titleId, ...props }: SVGProps) => (
     fill=\\"currentColor\\"
     width={16}
     height={16}
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -204,7 +196,6 @@ export const IconCopySvg = ({ title, titleId, ...props }: SVGProps) => (
     fill=\\"currentColor\\"
     width={16}
     height={16}
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -228,7 +219,6 @@ export const IconCreditCardSvg = ({ title, titleId, ...props }: SVGProps) => (
     fill=\\"currentColor\\"
     width={16}
     height={16}
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -252,7 +242,6 @@ export const IconCriticalSvg = ({ title, titleId, ...props }: SVGProps) => (
     fill=\\"currentColor\\"
     width={16}
     height={16}
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -277,7 +266,6 @@ export const IconDateSvg = ({ title, titleId, ...props }: SVGProps) => (
     fill=\\"currentColor\\"
     width={16}
     height={16}
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -300,7 +288,6 @@ export const IconDeleteSvg = ({ title, titleId, ...props }: SVGProps) => (
     fill=\\"currentColor\\"
     width={16}
     height={16}
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -328,7 +315,6 @@ export const IconDocumentBrokenSvg = ({
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -353,7 +339,6 @@ export const IconDocumentSvg = ({ title, titleId, ...props }: SVGProps) => (
     fill=\\"currentColor\\"
     width={16}
     height={16}
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -377,7 +362,6 @@ export const IconDownloadSvg = ({ title, titleId, ...props }: SVGProps) => (
     fill=\\"currentColor\\"
     width={16}
     height={16}
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -400,7 +384,6 @@ export const IconEditSvg = ({ title, titleId, ...props }: SVGProps) => (
     fill=\\"currentColor\\"
     width={16}
     height={16}
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -423,7 +406,6 @@ export const IconEducationSvg = ({ title, titleId, ...props }: SVGProps) => (
     fill=\\"currentColor\\"
     width={16}
     height={16}
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -446,7 +428,6 @@ export const IconFilterSvg = ({ title, titleId, ...props }: SVGProps) => (
     fill=\\"currentColor\\"
     width={16}
     height={16}
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -469,7 +450,6 @@ export const IconGridSvg = ({ title, titleId, ...props }: SVGProps) => (
     fill=\\"currentColor\\"
     width={16}
     height={16}
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -492,7 +472,6 @@ export const IconHeartActiveSvg = ({ title, titleId, ...props }: SVGProps) => (
     fill=\\"currentColor\\"
     width={16}
     height={16}
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -515,7 +494,6 @@ export const IconHeartSvg = ({ title, titleId, ...props }: SVGProps) => (
     fill=\\"currentColor\\"
     width={16}
     height={16}
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -538,7 +516,6 @@ export const IconHelpSvg = ({ title, titleId, ...props }: SVGProps) => (
     fill=\\"currentColor\\"
     width={16}
     height={16}
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -562,7 +539,6 @@ export const IconHistorySvg = ({ title, titleId, ...props }: SVGProps) => (
     fill=\\"currentColor\\"
     width={16}
     height={16}
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -586,7 +562,6 @@ export const IconHomeSvg = ({ title, titleId, ...props }: SVGProps) => (
     fill=\\"currentColor\\"
     width={16}
     height={16}
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -609,7 +584,6 @@ export const IconImageSvg = ({ title, titleId, ...props }: SVGProps) => (
     fill=\\"currentColor\\"
     width={16}
     height={16}
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -633,7 +607,6 @@ export const IconInfoSvg = ({ title, titleId, ...props }: SVGProps) => (
     fill=\\"currentColor\\"
     width={16}
     height={16}
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -657,7 +630,6 @@ export const IconInvoiceSvg = ({ title, titleId, ...props }: SVGProps) => (
     fill=\\"currentColor\\"
     width={16}
     height={16}
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -681,7 +653,6 @@ export const IconLinkBrokenSvg = ({ title, titleId, ...props }: SVGProps) => (
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -705,7 +676,6 @@ export const IconLinkSvg = ({ title, titleId, ...props }: SVGProps) => (
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -729,7 +699,6 @@ export const IconListSvg = ({ title, titleId, ...props }: SVGProps) => (
     fill=\\"currentColor\\"
     width={16}
     height={16}
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -755,7 +724,6 @@ export const IconLocationSvg = ({ title, titleId, ...props }: SVGProps) => (
     fill=\\"currentColor\\"
     width={16}
     height={16}
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -779,7 +747,6 @@ export const IconMailSvg = ({ title, titleId, ...props }: SVGProps) => (
     fill=\\"currentColor\\"
     width={16}
     height={16}
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -802,7 +769,6 @@ export const IconMinusSvg = ({ title, titleId, ...props }: SVGProps) => (
     fill=\\"currentColor\\"
     width={16}
     height={16}
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -825,7 +791,6 @@ export const IconMoneySvg = ({ title, titleId, ...props }: SVGProps) => (
     fill=\\"currentColor\\"
     width={16}
     height={16}
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -848,7 +813,6 @@ export const IconNewWindowSvg = ({ title, titleId, ...props }: SVGProps) => (
     fill=\\"currentColor\\"
     width={16}
     height={16}
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -872,7 +836,6 @@ export const IconNoteSvg = ({ title, titleId, ...props }: SVGProps) => (
     fill=\\"currentColor\\"
     width={16}
     height={16}
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -896,7 +859,6 @@ export const IconOverflowSvg = ({ title, titleId, ...props }: SVGProps) => (
     fill=\\"currentColor\\"
     width={16}
     height={16}
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -921,7 +883,6 @@ export const IconPeopleSvg = ({ title, titleId, ...props }: SVGProps) => (
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -945,7 +906,6 @@ export const IconPersonAddSvg = ({ title, titleId, ...props }: SVGProps) => (
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -972,7 +932,6 @@ export const IconPersonVerifiedSvg = ({
     fill=\\"currentColor\\"
     width={16}
     height={16}
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -996,7 +955,6 @@ export const IconPhoneSvg = ({ title, titleId, ...props }: SVGProps) => (
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -1019,7 +977,6 @@ export const IconPositiveSvg = ({ title, titleId, ...props }: SVGProps) => (
     fill=\\"currentColor\\"
     width={16}
     height={16}
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -1043,7 +1000,6 @@ export const IconPrintSvg = ({ title, titleId, ...props }: SVGProps) => (
     fill=\\"currentColor\\"
     width={16}
     height={16}
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -1066,7 +1022,6 @@ export const IconProfileSvg = ({ title, titleId, ...props }: SVGProps) => (
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -1089,7 +1044,6 @@ export const IconPromoteSvg = ({ title, titleId, ...props }: SVGProps) => (
     fill=\\"currentColor\\"
     width={16}
     height={16}
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -1112,7 +1066,6 @@ export const IconRecommendedSvg = ({ title, titleId, ...props }: SVGProps) => (
     fill=\\"currentColor\\"
     width={16}
     height={16}
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -1135,7 +1088,6 @@ export const IconRefreshSvg = ({ title, titleId, ...props }: SVGProps) => (
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -1158,7 +1110,6 @@ export const IconResumeSvg = ({ title, titleId, ...props }: SVGProps) => (
     fill=\\"currentColor\\"
     width={16}
     height={16}
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -1183,7 +1134,6 @@ export const IconSearchSvg = ({ title, titleId, ...props }: SVGProps) => (
     fill=\\"currentColor\\"
     width={16}
     height={16}
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -1206,7 +1156,6 @@ export const IconSecuritySvg = ({ title, titleId, ...props }: SVGProps) => (
     fill=\\"currentColor\\"
     width={16}
     height={16}
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -1229,7 +1178,6 @@ export const IconSendSvg = ({ title, titleId, ...props }: SVGProps) => (
     fill=\\"currentColor\\"
     width={16}
     height={16}
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -1252,7 +1200,6 @@ export const IconSentSvg = ({ title, titleId, ...props }: SVGProps) => (
     fill=\\"currentColor\\"
     width={16}
     height={16}
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -1275,7 +1222,6 @@ export const IconSettingsSvg = ({ title, titleId, ...props }: SVGProps) => (
     fill=\\"currentColor\\"
     width={16}
     height={16}
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -1299,7 +1245,6 @@ export const IconShareSvg = ({ title, titleId, ...props }: SVGProps) => (
     fill=\\"currentColor\\"
     width={16}
     height={16}
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -1326,7 +1271,6 @@ export const IconSocialFacebookSvg = ({
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -1349,7 +1293,6 @@ export const IconSocialGitHubSvg = ({ title, titleId, ...props }: SVGProps) => (
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -1379,7 +1322,6 @@ export const IconSocialInstagramSvg = ({
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -1408,7 +1350,6 @@ export const IconSocialLinkedInSvg = ({
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -1431,7 +1372,6 @@ export const IconSocialMediumSvg = ({ title, titleId, ...props }: SVGProps) => (
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -1458,7 +1398,6 @@ export const IconSocialTwitterSvg = ({
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -1481,7 +1420,6 @@ export const IconStarActiveSvg = ({ title, titleId, ...props }: SVGProps) => (
     fill=\\"currentColor\\"
     width={16}
     height={16}
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -1504,7 +1442,6 @@ export const IconStarHalfSvg = ({ title, titleId, ...props }: SVGProps) => (
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -1527,7 +1464,6 @@ export const IconStarSvg = ({ title, titleId, ...props }: SVGProps) => (
     fill=\\"currentColor\\"
     width={16}
     height={16}
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -1550,7 +1486,6 @@ export const IconStatisticsSvg = ({ title, titleId, ...props }: SVGProps) => (
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -1574,7 +1509,6 @@ export const IconSubCategorySvg = ({ title, titleId, ...props }: SVGProps) => (
     fill=\\"currentColor\\"
     width={16}
     height={16}
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -1597,7 +1531,6 @@ export const IconTagSvg = ({ title, titleId, ...props }: SVGProps) => (
     fill=\\"currentColor\\"
     width={16}
     height={16}
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -1621,7 +1554,6 @@ export const IconTickSvg = ({ title, titleId, ...props }: SVGProps) => (
     fill=\\"currentColor\\"
     width={16}
     height={16}
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -1644,7 +1576,6 @@ export const IconTimeSvg = ({ title, titleId, ...props }: SVGProps) => (
     fill=\\"currentColor\\"
     width={16}
     height={16}
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -1668,7 +1599,6 @@ export const IconUploadSvg = ({ title, titleId, ...props }: SVGProps) => (
     fill=\\"currentColor\\"
     width={16}
     height={16}
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -1691,7 +1621,6 @@ export const IconVideoSvg = ({ title, titleId, ...props }: SVGProps) => (
     fill=\\"currentColor\\"
     width={16}
     height={16}
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -1718,7 +1647,6 @@ export const IconVisibilityHiddenSvg = ({
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -1745,7 +1673,6 @@ export const IconVisibilitySvg = ({ title, titleId, ...props }: SVGProps) => (
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >
@@ -1773,7 +1700,6 @@ export const IconWorkExperienceSvg = ({
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
-    role=\\"img\\"
     aria-labelledby={titleId}
     {...props}
   >

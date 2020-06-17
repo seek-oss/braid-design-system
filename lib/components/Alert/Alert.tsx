@@ -1,7 +1,6 @@
 import React, { ReactNode } from 'react';
 import { useStyles } from 'sku/react-treat';
 import { Box, BoxProps } from '../Box/Box';
-import { Text } from '../Text/Text';
 import {
   IconInfo,
   IconCritical,
@@ -15,6 +14,7 @@ import { Columns } from '../Columns/Columns';
 import { Column } from '../Column/Column';
 import { Overlay } from '../private/Overlay/Overlay';
 import { useBackground } from '../Box/BackgroundContext';
+import { useTextAlignedToIcon } from '../../hooks/useTextAlignedToIcon/useTextAlignedToIcon';
 import * as styleRefs from './Alert.treat';
 
 type Tone = 'promote' | 'info' | 'positive' | 'caution' | 'critical';
@@ -81,7 +81,7 @@ export const Alert = ({
             <Icon tone={tone} />
           </Column>
           <Column>
-            <Text baseline={false}>{children}</Text>
+            <Box className={useTextAlignedToIcon('standard')}>{children}</Box>
           </Column>
           {onClose ? (
             <Column width="content">

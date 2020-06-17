@@ -1,10 +1,8 @@
 import '@testing-library/jest-dom/extend-expect';
 import React from 'react';
-import { render, cleanup } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { BraidTestProvider, PasswordField } from '..';
 import userEvent from '@testing-library/user-event';
-
-afterEach(cleanup);
 
 describe('PasswordField', () => {
   it('should render with password hidden', () => {

@@ -1,17 +1,17 @@
 import '@testing-library/jest-dom/extend-expect';
 import React from 'react';
 import { render } from '@testing-library/react';
-import { BraidTestProvider, Stack, Text } from '..';
+import { BraidTestProvider, Inline, Text } from '..';
 
-describe('Stack', () => {
+describe('Inline', () => {
   it('should not render a list by default', () => {
     const { queryAllByRole } = render(
       <BraidTestProvider>
-        <Stack space="small">
+        <Inline space="small">
           <Text>1</Text>
           <Text>2</Text>
           <Text>3</Text>
-        </Stack>
+        </Inline>
       </BraidTestProvider>,
     );
 
@@ -22,11 +22,11 @@ describe('Stack', () => {
   it('should render a valid unordered list when "component" is "ul"', () => {
     const { getByRole } = render(
       <BraidTestProvider>
-        <Stack component="ul" space="small">
+        <Inline component="ul" space="small">
           <Text>1</Text>
           <Text>2</Text>
           <Text>3</Text>
-        </Stack>
+        </Inline>
       </BraidTestProvider>,
     );
 
@@ -41,11 +41,11 @@ describe('Stack', () => {
   it('should render a valid ordered list when "component" is "ol"', () => {
     const { getByRole } = render(
       <BraidTestProvider>
-        <Stack component="ol" space="small">
+        <Inline component="ol" space="small">
           <Text>1</Text>
           <Text>2</Text>
           <Text>3</Text>
-        </Stack>
+        </Inline>
       </BraidTestProvider>,
     );
 

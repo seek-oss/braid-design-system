@@ -46,7 +46,6 @@ const svgrConfig = {
     fill: 'currentColor',
     width: 16,
     height: 16,
-    role: 'img',
   },
   replaceAttrValues: { '#000': 'currentColor' },
   template: componentTemplate,
