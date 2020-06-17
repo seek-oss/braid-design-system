@@ -34,7 +34,7 @@ export const Tabs = (props: TabsProps) => {
   const tabsContext = useContext(TabsContext);
   const styles = useStyles(styleRefs);
 
-  const { children, label, data, align = 'left', scroll = false } = props;
+  const { children, label, data, align = 'left', scroll = true } = props;
 
   assert(
     tabsContext !== null,

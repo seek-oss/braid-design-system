@@ -37,7 +37,6 @@ import { BadgeProps, Badge } from '../Badge/Badge';
 export interface TabProps {
   children: ReactNode;
   item: string;
-  onClick?: () => void;
   badge?: ReactElement<BadgeProps>;
   data?: DataAttributeMap;
 }
