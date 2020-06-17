@@ -50,7 +50,7 @@ export { Stack } from './Stack/Stack';
 export { Strong } from './Strong/Strong';
 export { Tab } from './Tabs/Tab';
 export { TabsProvider } from './Tabs/TabsProvider';
-export { Tabs, TabsVertical } from './Tabs/Tabs';
+export { Tabs } from './Tabs/Tabs';
 export { TabPanel } from './Tabs/TabPanel';
 export { Tag } from './Tag/Tag';
 export { Text } from './Text/Text';

@@ -1,4 +1,4 @@
-import { style, styleMap } from 'sku/treat';
+import { style } from 'sku/treat';
 
 export const tab = style({});
 
@@ -17,24 +17,13 @@ export const tabHover = style({
   },
 });
 
-export const tabUnderline = styleMap({
-  horizontal: {
-    zIndex: 2,
-    height: 2,
-  },
-  vertical: {
-    zIndex: 2,
-    width: 2,
-  },
+export const tabUnderline = style({
+  zIndex: 2,
+  height: 2,
 });
 
-export const tabUnderlineAnimation = styleMap({
-  horizontal: {
-    transform: 'translateY(100%)',
-  },
-  vertical: {
-    transform: 'translateX(100%)',
-  },
+export const tabUnderlineAnimation = style({
+  transform: 'translateY(100%)',
 });
 
 export const tabPanel = style({});
@@ -48,15 +37,8 @@ export const tabPanelFocusRing = style({
   },
 });
 
-export const divider = styleMap((theme) => ({
-  horizontal: {
-    zIndex: 1,
-    background: theme.border.color.standard,
-    height: theme.border.width.standard,
-  },
-  vertical: {
-    zIndex: 1,
-    background: theme.border.color.standard,
-    width: theme.border.width.standard,
-  },
+export const divider = style((theme) => ({
+  zIndex: 1,
+  background: theme.border.color.standard,
+  height: theme.border.width.standard,
 }));

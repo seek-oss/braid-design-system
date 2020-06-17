@@ -12,7 +12,18 @@ import { useStyles } from 'sku/react-treat';
 import { Box } from '../Box/Box';
 import { normalizeKey } from '../private/normalizeKey';
 import { TabsContext } from './TabsProvider';
-import { actionTypes, Action } from './Tabs.actions';
+import {
+  Action,
+  TAB_BUTTON_LEFT,
+  TAB_BUTTON_RIGHT,
+  TAB_BUTTON_HOME,
+  TAB_BUTTON_END,
+  TAB_BUTTON_ENTER,
+  TAB_BUTTON_SPACE,
+  TAB_BUTTON_TAB,
+  TAB_LIST_FOCUSED,
+  TAB_BUTTON_CLICK,
+} from './Tabs.actions';
 import { Text } from '../Text/Text';
 import buildDataAttributes, {
   DataAttributeMap,
@@ -30,20 +41,6 @@ export interface TabProps {
   badge?: ReactElement<BadgeProps>;
   data?: DataAttributeMap;
 }
-
-const {
-  TAB_BUTTON_LEFT,
-  TAB_BUTTON_RIGHT,
-  TAB_BUTTON_DOWN,
-  TAB_BUTTON_UP,
-  TAB_BUTTON_HOME,
-  TAB_BUTTON_END,
-  TAB_BUTTON_ENTER,
-  TAB_BUTTON_SPACE,
-  TAB_BUTTON_TAB,
-  TAB_LIST_FOCUSED,
-  TAB_BUTTON_CLICK,
-} = actionTypes;
 
 export const Tab = ({ children, item, data, badge }: TabProps) => {
   const styles = useStyles(styleRefs);
@@ -69,11 +66,10 @@ export const Tab = ({ children, item, data, badge }: TabProps) => {
     throw new Error('Tab rendered outside TabsProvider');
   }
 
-  const { tabListItemIndex, orientation } = tabListContext;
+  const { tabListItemIndex } = tabListContext;
   const { focusedTabIndex, selectedTabItem, dispatch, a11y } = tabsContext;
   const isSelected = selectedTabItem === item;
   const isFocused = focusedTabIndex === tabListItemIndex;
-  const isHorizontal = orientation === 'horizontal';
 
   useEffect(() => {
     if (tabRef.current && focusedTabIndex === tabListItemIndex) {
@@ -91,8 +87,6 @@ export const Tab = ({ children, item, data, badge }: TabProps) => {
     const action: Record<string, Action> = {
       ArrowRight: { type: TAB_BUTTON_RIGHT },
       ArrowLeft: { type: TAB_BUTTON_LEFT },
-      ArrowDown: { type: TAB_BUTTON_DOWN },
-      ArrowUp: { type: TAB_BUTTON_UP },
       Home: { type: TAB_BUTTON_HOME },
       End: { type: TAB_BUTTON_END },
       Enter: { type: TAB_BUTTON_ENTER, value: tabListItemIndex, item },
@@ -100,14 +94,6 @@ export const Tab = ({ children, item, data, badge }: TabProps) => {
     };
 
     if (action[targetKey]) {
-      if (
-        /^arrow/i.test(targetKey) &&
-        ((/(left|right)$/i.test(targetKey) && orientation !== 'horizontal') ||
-          (/(up|down)$/i.test(targetKey) && orientation !== 'vertical'))
-      ) {
-        return;
-      }
-
       dispatch(action[targetKey]);
     }
   };
@@ -161,10 +147,9 @@ export const Tab = ({ children, item, data, badge }: TabProps) => {
       outline="none"
       position="relative"
       paddingRight="small"
-      paddingLeft={isHorizontal ? 'small' : undefined}
+      paddingLeft="small"
       paddingBottom="medium"
-      paddingTop={!isHorizontal ? 'medium' : undefined}
-      className={[styles.tab]}
+      className={styles.tab}
       {...buildDataAttributes(data)}
     >
       {/*
@@ -175,7 +160,7 @@ export const Tab = ({ children, item, data, badge }: TabProps) => {
         {...a11y.tabLabelProps({ item })}
         size={tabTextSize}
         weight="medium"
-        align={isHorizontal ? 'center' : undefined}
+        align="center"
         tone={isSelected ? 'formAccent' : 'secondary'}
       >
         {children}
@@ -194,23 +179,21 @@ export const Tab = ({ children, item, data, badge }: TabProps) => {
           background="neutral"
           position="absolute"
           transition="fast"
-          left={isHorizontal ? 0 : undefined}
-          top={isHorizontal ? undefined : 0}
+          left={0}
           right={0}
           bottom={0}
-          className={[styles.tabHover, styles.tabUnderline[orientation]]}
+          className={[styles.tabHover, styles.tabUnderline]}
         />
         <Box
           background="formAccent"
           position="absolute"
           transition="fast"
-          left={isHorizontal ? 0 : undefined}
-          top={isHorizontal ? undefined : 0}
+          left={0}
           right={0}
           bottom={0}
           className={[
-            styles.tabUnderline[orientation],
-            !isSelected ? styles.tabUnderlineAnimation[orientation] : undefined,
+            styles.tabUnderline,
+            !isSelected ? styles.tabUnderlineAnimation : undefined,
           ]}
         />
       </Box>

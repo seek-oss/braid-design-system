@@ -1,7 +1,19 @@
 import React, { createContext, useReducer, ReactNode } from 'react';
 
 import { getNextIndex } from '../private/getNextIndex';
-import { actionTypes, Action } from './Tabs.actions';
+import {
+  Action,
+  TAB_BUTTON_LEFT,
+  TAB_BUTTON_RIGHT,
+  TAB_BUTTON_HOME,
+  TAB_BUTTON_END,
+  TAB_BUTTON_ENTER,
+  TAB_BUTTON_SPACE,
+  TAB_BUTTON_TAB,
+  TAB_BUTTON_CLICK,
+  TAB_LIST_UPDATED,
+  TAB_LIST_FOCUSED,
+} from './Tabs.actions';
 import { AllOrNone } from '../private/AllOrNone';
 import tabA11y from './tabA11y';
 
@@ -30,21 +42,6 @@ export type TabsProviderStateProps = AllOrNone<{
 
 export type TabsProviderProps = TabsProviderBaseProps & TabsProviderStateProps;
 
-const {
-  TAB_BUTTON_LEFT,
-  TAB_BUTTON_RIGHT,
-  TAB_BUTTON_DOWN,
-  TAB_BUTTON_UP,
-  TAB_BUTTON_HOME,
-  TAB_BUTTON_END,
-  TAB_BUTTON_ENTER,
-  TAB_BUTTON_SPACE,
-  TAB_BUTTON_TAB,
-  TAB_BUTTON_CLICK,
-  TAB_LIST_UPDATED,
-  TAB_LIST_FOCUSED,
-} = actionTypes;
-
 export const TabsProvider = ({
   children,
   onChange,
@@ -54,7 +51,6 @@ export const TabsProvider = ({
   const [tabsState, dispatch] = useReducer(
     (state: State, action: Action): State => {
       switch (action.type) {
-        case TAB_BUTTON_UP:
         case TAB_BUTTON_LEFT: {
           return {
             ...state,
@@ -65,7 +61,6 @@ export const TabsProvider = ({
             ),
           };
         }
-        case TAB_BUTTON_DOWN:
         case TAB_BUTTON_RIGHT: {
           return {
             ...state,

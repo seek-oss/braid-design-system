@@ -2,40 +2,26 @@ import '@testing-library/jest-dom/extend-expect';
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import {
-  BraidTestProvider,
-  Tabs,
-  TabsVertical,
-  Tab,
-  TabPanel,
-  TabsProvider,
-} from '..';
+import { BraidTestProvider, Tabs, Tab, TabPanel, TabsProvider } from '..';
 
 const ENTER = 13;
 const SPACE = 32;
 const END = 35;
 const HOME = 36;
 const ARROW_LEFT = 37;
-const ARROW_UP = 38;
 const ARROW_RIGHT = 39;
-const ARROW_DOWN = 40;
 
-function renderTabs({
-  selectedItem,
-  orientation,
-}: { selectedItem?: string; orientation?: 'horizontal' | 'vertical' } = {}) {
+function renderTabs({ selectedItem }: { selectedItem?: string } = {}) {
   const changeHandler = jest.fn();
-
-  const TabList = orientation === 'vertical' ? TabsVertical : Tabs;
 
   const TestCase = ({ value }: { value?: string }) => (
     <BraidTestProvider>
       <TabsProvider selectedItem={value} onChange={changeHandler}>
-        <TabList label="Test tabs">
+        <Tabs label="Test tabs">
           <Tab item="first">First</Tab>
           <Tab item="second">Second</Tab>
           <Tab item="third">Third</Tab>
-        </TabList>
+        </Tabs>
 
         <TabPanel item="first">Panel 1</TabPanel>
         <TabPanel item="second">Panel 2</TabPanel>
@@ -190,44 +176,6 @@ describe('Tabs', () => {
       fireEvent.keyUp(firstTab, { keyCode: ARROW_LEFT });
       expect(thirdTab).toHaveFocus();
       fireEvent.keyUp(thirdTab, { keyCode: ARROW_LEFT });
-      expect(secondTab).toHaveFocus();
-
-      // Test vertical navigation does not
-      fireEvent.keyUp(secondTab, { keyCode: ARROW_UP });
-      expect(secondTab).toHaveFocus();
-      fireEvent.keyUp(secondTab, { keyCode: ARROW_DOWN });
-      expect(secondTab).toHaveFocus();
-    });
-
-    it('should navigate through vertical tablist with vertical arrows only', () => {
-      const { getAllByRole } = renderTabs({
-        selectedItem: 'second',
-        orientation: 'vertical',
-      });
-      const [firstTab, secondTab, thirdTab] = getAllByRole('tab');
-
-      // Focus selected tab
-      userEvent.tab();
-
-      // Test horiztonal navigation works
-      expect(secondTab).toHaveFocus();
-      fireEvent.keyUp(secondTab, { keyCode: ARROW_DOWN });
-      expect(thirdTab).toHaveFocus();
-      fireEvent.keyUp(thirdTab, { keyCode: ARROW_DOWN });
-      expect(firstTab).toHaveFocus();
-      fireEvent.keyUp(firstTab, { keyCode: ARROW_DOWN });
-      expect(secondTab).toHaveFocus();
-      fireEvent.keyUp(secondTab, { keyCode: ARROW_UP });
-      expect(firstTab).toHaveFocus();
-      fireEvent.keyUp(firstTab, { keyCode: ARROW_UP });
-      expect(thirdTab).toHaveFocus();
-      fireEvent.keyUp(thirdTab, { keyCode: ARROW_UP });
-      expect(secondTab).toHaveFocus();
-
-      // Test vertical navigation does not
-      fireEvent.keyUp(secondTab, { keyCode: ARROW_LEFT });
-      expect(secondTab).toHaveFocus();
-      fireEvent.keyUp(secondTab, { keyCode: ARROW_RIGHT });
       expect(secondTab).toHaveFocus();
     });
 

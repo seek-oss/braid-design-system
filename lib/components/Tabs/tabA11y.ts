@@ -1,5 +1,4 @@
 interface TabListParams {
-  orientation: 'horizontal' | 'vertical';
   label?: string;
 }
 
@@ -27,11 +26,12 @@ interface TabA11yParams {
   uniqueId: string;
 }
 export default ({ uniqueId }: TabA11yParams) => ({
-  tabListProps: ({ orientation, label }: TabListParams) => ({
-    role: 'tablist',
-    'aria-orientation': orientation,
-    'aria-label': label,
-  }),
+  tabListProps: ({ label }: TabListParams) =>
+    ({
+      role: 'tablist',
+      'aria-orientation': 'horizontal',
+      'aria-label': label,
+    } as const),
   tabProps: ({ item, isSelected }: TabParams) => ({
     role: 'tab',
     tabIndex: isSelected ? undefined : -1,
