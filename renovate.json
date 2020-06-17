@@ -1,5 +1,6 @@
 {
   "extends": ["seek"],
+  "commitMessagePrefix": null,
   "packageRules": [
     {
       "packageNames": ["playroom"],
