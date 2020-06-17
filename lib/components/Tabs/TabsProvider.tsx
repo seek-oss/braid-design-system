@@ -26,6 +26,7 @@ interface State {
 interface TabsContextValues extends State {
   dispatch: (action: Action) => void;
   a11y: ReturnType<typeof tabA11y>;
+  onChange?: (selectedItem: string) => void;
 }
 
 export const TabsContext = createContext<TabsContextValues | null>(null);
@@ -92,10 +93,6 @@ export const TabsProvider = ({
         case TAB_BUTTON_ENTER:
         case TAB_BUTTON_SPACE:
         case TAB_BUTTON_CLICK: {
-          if (typeof onChange === 'function') {
-            onChange(action.item);
-          }
-
           return {
             ...state,
             focusedTabIndex: action.value,
@@ -133,6 +130,7 @@ export const TabsProvider = ({
         selectedTabItem: selectedItem ?? tabsState.selectedTabItem,
         dispatch,
         a11y: tabA11y({ uniqueId: id }),
+        onChange,
       }}
     >
       {children}

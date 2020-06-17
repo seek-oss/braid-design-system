@@ -67,7 +67,13 @@ export const Tab = ({ children, item, data, badge }: TabProps) => {
   }
 
   const { tabListItemIndex } = tabListContext;
-  const { focusedTabIndex, selectedTabItem, dispatch, a11y } = tabsContext;
+  const {
+    focusedTabIndex,
+    selectedTabItem,
+    dispatch,
+    a11y,
+    onChange,
+  } = tabsContext;
   const isSelected = selectedTabItem === item;
   const isFocused = focusedTabIndex === tabListItemIndex;
 
@@ -82,6 +88,10 @@ export const Tab = ({ children, item, data, badge }: TabProps) => {
 
     if (targetKey === 'Tab') {
       return;
+    }
+
+    if (onChange && (targetKey === 'Enter' || targetKey === ' ')) {
+      onChange(item);
     }
 
     const action: Record<string, Action> = {
@@ -128,6 +138,11 @@ export const Tab = ({ children, item, data, badge }: TabProps) => {
       onClick={(event: MouseEvent) => {
         event.stopPropagation();
         event.preventDefault();
+
+        if (onChange) {
+          onChange(item);
+        }
+
         dispatch({ type: TAB_BUTTON_CLICK, value: tabListItemIndex, item });
       }}
       onFocus={
