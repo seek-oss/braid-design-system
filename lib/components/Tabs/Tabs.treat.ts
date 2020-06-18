@@ -1,6 +1,8 @@
 import { style } from 'sku/treat';
 
-export const tab = style({});
+export const tab = style({
+  zIndex: 1,
+});
 
 export const nowrap = style({ whiteSpace: 'nowrap' });
 

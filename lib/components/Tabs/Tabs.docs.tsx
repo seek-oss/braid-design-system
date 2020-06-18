@@ -2,22 +2,21 @@ import React from 'react';
 // import dedent from 'dedent';
 import { ComponentDocs } from '../../../site/src/types';
 import {
-  // Box,
-  // MenuRenderer,
-  // MenuItem,
   Text,
   Stack,
-  // IconChevron,
   TextLink,
   TabsProvider,
   Tabs,
   Tab,
   TabPanel,
+  Box,
 } from '..';
+import { Placeholder } from '../../playroom/components';
 
 const docs: ComponentDocs = {
   category: 'Content',
   screenshotWidths: [],
+  subComponents: ['TabsProvider', 'Tab', 'TabPanel'],
   description: (
     <Stack space="large">
       <Text>
@@ -39,7 +38,7 @@ const docs: ComponentDocs = {
   ),
   snippets: [
     {
-      name: 'Tabs (3)',
+      name: '3 Tabs',
       code: (
         <TabsProvider>
           <Tabs label="Test tabs">
@@ -47,7 +46,6 @@ const docs: ComponentDocs = {
             <Tab>Second</Tab>
             <Tab>Third</Tab>
           </Tabs>
-
           <TabPanel>Panel 1</TabPanel>
           <TabPanel>Panel 2</TabPanel>
           <TabPanel>Panel 3</TabPanel>
@@ -56,132 +54,84 @@ const docs: ComponentDocs = {
     },
   ],
   examples: [
-    // {
-    //   label: 'Default',
-    //   code: dedent`
-    //     <MenuRenderer
-    //       trigger={(triggerProps, { open }) => (
-    //         <Box {...triggerProps}>
-    //           <Text>
-    //             Menu{' '}
-    //             <IconChevron
-    //               direction={open ? 'up' : 'down'}
-    //               alignY="lowercase"
-    //             />
-    //           </Text>
-    //         </Box>
-    //       )}
-    //     >
-    //       <MenuItem onClick={() => {}}>First</MenuItem>
-    //       <MenuItem onClick={() => {}}>Second</MenuItem>
-    //     </MenuRenderer>
-    //   `,
-    //   Example: ({ handler }) => (
-    //     <MenuRenderer
-    //       trigger={(triggerProps, { open }) => (
-    //         <Box {...triggerProps}>
-    //           <Text>
-    //             Menu{' '}
-    //             <IconChevron
-    //               direction={open ? 'up' : 'down'}
-    //               alignY="lowercase"
-    //             />
-    //           </Text>
-    //         </Box>
-    //       )}
-    //     >
-    //       <MenuItem onClick={handler}>First</MenuItem>
-    //       <MenuItem onClick={handler}>Second</MenuItem>
-    //     </MenuRenderer>
-    //   ),
-    // },
-    // {
-    //   label: 'Right aligned menu',
-    //   Container: ({ children }) => (
-    //     <Box style={{ paddingLeft: '100px', maxWidth: '200px' }}>
-    //       {children}
-    //     </Box>
-    //   ),
-    //   code: dedent`
-    //     <MenuRenderer
-    //       align="right"
-    //       trigger={(triggerProps, { open }) => (
-    //         <Box {...triggerProps}>
-    //           <Text>
-    //             Menu{' '}
-    //             <IconChevron
-    //               direction={open ? 'up' : 'down'}
-    //               alignY="lowercase"
-    //             />
-    //           </Text>
-    //         </Box>
-    //       )}
-    //     >
-    //       <MenuItem onClick={() => {}}>First</MenuItem>
-    //       <MenuItem onClick={() => {}}>Second</MenuItem>
-    //     </MenuRenderer>
-    //   `,
-    //   Example: ({ handler }) => (
-    //     <MenuRenderer
-    //       align="right"
-    //       trigger={(triggerProps, { open }) => (
-    //         <Box {...triggerProps}>
-    //           <Text>
-    //             Menu{' '}
-    //             <IconChevron
-    //               direction={open ? 'up' : 'down'}
-    //               alignY="lowercase"
-    //             />
-    //           </Text>
-    //         </Box>
-    //       )}
-    //     >
-    //       <MenuItem onClick={handler}>First</MenuItem>
-    //       <MenuItem onClick={handler}>Second</MenuItem>
-    //     </MenuRenderer>
-    //   ),
-    // },
-    // {
-    //   label: 'Offset space for menu',
-    //   code: dedent`
-    //     <MenuRenderer
-    //       offsetSpace={['none', 'small']}
-    //       trigger={(triggerProps, { open }) => (
-    //         <Box {...triggerProps}>
-    //           <Text>
-    //             Menu{' '}
-    //             <IconChevron
-    //               direction={open ? 'up' : 'down'}
-    //               alignY="lowercase"
-    //             />
-    //           </Text>
-    //         </Box>
-    //       )}
-    //     >
-    //       <MenuItem onClick={() => {}}>First</MenuItem>
-    //       <MenuItem onClick={() => {}}>Second</MenuItem>
-    //     </MenuRenderer>
-    //   `,
-    //   Example: ({ handler }) => (
-    //     <MenuRenderer
-    //       offsetSpace={['none', 'small']}
-    //       trigger={(triggerProps, { open }) => (
-    //         <Box {...triggerProps}>
-    //           <Text>
-    //             Menu{' '}
-    //             <IconChevron
-    //               direction={open ? 'up' : 'down'}
-    //               alignY="lowercase"
-    //             />
-    //           </Text>
-    //         </Box>
-    //       )}
-    //     >
-    //       <MenuItem onClick={handler}>First</MenuItem>
-    //       <MenuItem onClick={handler}>Second</MenuItem>
-    //     </MenuRenderer>
-    //   ),
-    // },
+    {
+      label: 'Default (overflow is scrollable)',
+      Example: () => (
+        <TabsProvider>
+          <Stack space="small">
+            <Tabs label="Test tabs">
+              <Tab>The first tab</Tab>
+              <Tab>Second tab</Tab>
+              <Tab>Tab the third</Tab>
+            </Tabs>
+            <Box>
+              <TabPanel>
+                <Placeholder height={200} label="Panel 1" />
+              </TabPanel>
+              <TabPanel>
+                <Placeholder height={200} label="Panel 2" />
+              </TabPanel>
+              <TabPanel>
+                <Placeholder height={200} label="Panel 3" />
+              </TabPanel>
+            </Box>
+          </Stack>
+        </TabsProvider>
+      ),
+    },
+    {
+      label: 'Center align',
+      Example: () => (
+        <TabsProvider>
+          <Stack space="small">
+            <Tabs label="Test tabs" align="center">
+              <Tab>The first tab</Tab>
+              <Tab>Second tab</Tab>
+              <Tab>Tab the third</Tab>
+            </Tabs>
+            <Box>
+              <TabPanel>
+                <Placeholder height={200} label="Panel 1" />
+              </TabPanel>
+              <TabPanel>
+                <Placeholder height={200} label="Panel 2" />
+              </TabPanel>
+              <TabPanel>
+                <Placeholder height={200} label="Panel 3" />
+              </TabPanel>
+            </Box>
+          </Stack>
+        </TabsProvider>
+      ),
+    },
+    {
+      label: 'Force fit (no overflow)',
+      Example: () => (
+        <TabsProvider>
+          <Stack space="small">
+            <Tabs label="Test tabs" scroll={false}>
+              <Tab>The first tab</Tab>
+              <Tab>Second tab</Tab>
+              <Tab>Tab the third</Tab>
+            </Tabs>
+            <Box>
+              <TabPanel>
+                <Placeholder height={200} label="Panel 1" />
+              </TabPanel>
+              <TabPanel>
+                <Placeholder height={200} label="Panel 2" />
+              </TabPanel>
+              <TabPanel>
+                <Placeholder height={200} label="Panel 3" />
+              </TabPanel>
+            </Box>
+          </Stack>
+        </TabsProvider>
+      ),
+      Container: ({ children }) => (
+        <Box style={{ maxWidth: 300 }}>{children}</Box>
+      ),
+    },
   ],
 };
 

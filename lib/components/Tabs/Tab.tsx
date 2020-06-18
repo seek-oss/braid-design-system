@@ -33,6 +33,7 @@ import { Overlay } from '../private/Overlay/Overlay';
 
 import * as styleRefs from './Tabs.treat';
 import { BadgeProps, Badge } from '../Badge/Badge';
+import { useVirtualTouchable } from '../private/touchable/useVirtualTouchable';
 
 export interface TabProps {
   children: ReactNode;
@@ -163,7 +164,7 @@ export const Tab = ({ children, data, badge, item }: TabProps) => {
       paddingRight="small"
       paddingLeft="small"
       paddingBottom="medium"
-      className={styles.tab}
+      className={[styles.tab, useVirtualTouchable()]}
       {...buildDataAttributes(data)}
     >
       {/*
