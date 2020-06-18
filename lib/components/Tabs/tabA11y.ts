@@ -37,7 +37,7 @@ export default ({ uniqueId }: TabA11yParams) => ({
     tabIndex: isSelected ? undefined : -1,
     'aria-selected': isSelected,
     'aria-controls': getPanelId(uniqueId, tabIndex),
-    id: `${uniqueId}_${tabIndex}`,
+    id: `${uniqueId}_${tabIndex + 1}`,
   }),
   tabLabelProps: ({ tabIndex }: TabLabelParams) => ({
     id: getTabLabelId(uniqueId, tabIndex),

@@ -34,6 +34,7 @@ import { Overlay } from '../private/Overlay/Overlay';
 import * as styleRefs from './Tabs.treat';
 import { BadgeProps, Badge } from '../Badge/Badge';
 import { useVirtualTouchable } from '../private/touchable/useVirtualTouchable';
+import { useScrollIntoView } from '../../hooks/useScrollIntoView';
 
 export interface TabProps {
   children: ReactNode;
@@ -77,11 +78,13 @@ export const Tab = ({ children, data, badge, item }: TabProps) => {
   const isSelected = selectedIndex === tabListItemIndex;
   const isFocused = focusedTabIndex === tabListItemIndex;
 
+  useScrollIntoView(tabRef.current, isSelected || isFocused);
+
   useEffect(() => {
-    if (tabRef.current && focusedTabIndex === tabListItemIndex) {
+    if (tabRef.current && isFocused) {
       tabRef.current.focus();
     }
-  }, [focusedTabIndex, tabListItemIndex]);
+  }, [isFocused]);
 
   const onKeyUp = (event: KeyboardEvent<HTMLButtonElement>) => {
     const targetKey = normalizeKey(event);
