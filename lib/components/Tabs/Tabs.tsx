@@ -22,9 +22,9 @@ import * as styleRefs from './Tabs.treat';
 interface TabsProps {
   children: ReactElement<TabProps>[];
   label: string;
-  data?: DataAttributeMap;
   align?: 'left' | 'center';
   scroll?: boolean;
+  data?: DataAttributeMap;
 }
 
 interface TabListContextValues {
