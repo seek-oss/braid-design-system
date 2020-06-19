@@ -4,6 +4,8 @@ import React, {
   useEffect,
   createContext,
   ReactElement,
+  useRef,
+  useState,
 } from 'react';
 import { useStyles } from 'sku/react-treat';
 
@@ -33,6 +35,8 @@ export const TabListContext = createContext<TabListContextValues | null>(null);
 export const Tabs = (props: TabsProps) => {
   const tabsContext = useContext(TabsContext);
   const styles = useStyles(styleRefs);
+  const tabsRef = useRef<HTMLElement>(null);
+  const [hasOverflow, setHasOverflow] = useState(false);
 
   const { children, label, data, align = 'left', scroll = true } = props;
 
@@ -68,16 +72,38 @@ export const Tabs = (props: TabsProps) => {
     );
   });
 
+  // This is to prevent focus rings from being cropped by overflow properties
+  const { offsetWidth, scrollWidth } = tabsRef.current || {};
+  useEffect(() => {
+    const tabsNode = tabsRef.current;
+
+    if (tabsNode) {
+      const overflowing = tabsNode.offsetWidth !== tabsNode.scrollWidth;
+
+      if (overflowing !== hasOverflow) {
+        setHasOverflow(overflowing);
+      }
+    }
+  }, [hasOverflow, offsetWidth, scrollWidth]);
+
   useEffect(() => {
     dispatch({ type: TAB_LIST_UPDATED, tabItems });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [...tabItems, dispatch]);
 
+  const overflowStyles =
+    scroll && hasOverflow
+      ? ({ overflowX: 'auto', overflowY: 'hidden' } as const)
+      : undefined;
+
   return (
     <Box
+      ref={tabsRef}
       display="flex"
-      justifyContent={align === 'center' ? 'center' : undefined}
-      overflow={scroll ? 'auto' : undefined}
+      justifyContent={
+        align === 'center' && !(scroll && hasOverflow) ? 'center' : undefined
+      }
+      style={overflowStyles}
       className={scroll ? styles.nowrap : undefined}
     >
       <Box position="relative">
