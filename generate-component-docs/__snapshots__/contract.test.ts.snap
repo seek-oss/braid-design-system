@@ -5243,7 +5243,7 @@ Object {
   exportType: component,
   props: {
     children: ReactNode
-    id?: string
+    id: string
     onChange?: (selectedIndex: number, selectedItem?: string | undefined) => void
     selectedItem?: string
 },

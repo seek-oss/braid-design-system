@@ -113,7 +113,7 @@ export const ComponentDoc = ({
       })}
 
       {Array.isArray(propsToDocument) ? (
-        <TabsProvider>
+        <TabsProvider id="component-props">
           <Stack space="medium">
             <Tabs label="Component props">
               {propsToDocument.map((c) => (

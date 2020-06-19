@@ -5,14 +5,17 @@ import {
   Text,
   Stack,
   TextLink,
-  TabsProvider,
   Tabs,
   Tab,
   TabPanel,
   TabPanels,
   Box,
+  TabsProvider,
 } from '..';
-import { Placeholder } from '../../playroom/components';
+import {
+  Placeholder,
+  TabsProvider as PlayroomTabsProvider,
+} from '../../playroom/components';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -41,7 +44,7 @@ const docs: ComponentDocs = {
     {
       name: '3 Tabs',
       code: (
-        <TabsProvider>
+        <PlayroomTabsProvider>
           <Tabs label="Test tabs">
             <Tab>First</Tab>
             <Tab>Second</Tab>
@@ -52,7 +55,7 @@ const docs: ComponentDocs = {
             <TabPanel>Panel 2</TabPanel>
             <TabPanel>Panel 3</TabPanel>
           </TabPanels>
-        </TabsProvider>
+        </PlayroomTabsProvider>
       ),
     },
   ],
@@ -60,7 +63,7 @@ const docs: ComponentDocs = {
     {
       label: 'Default (overflow is scrollable)',
       Example: () => (
-        <TabsProvider>
+        <TabsProvider id="default">
           <Stack space="small">
             <Tabs label="Test tabs">
               <Tab>The first tab</Tab>
@@ -85,7 +88,7 @@ const docs: ComponentDocs = {
     {
       label: 'Center align',
       Example: () => (
-        <TabsProvider>
+        <TabsProvider id="center">
           <Stack space="small">
             <Tabs label="Test tabs" align="center">
               <Tab>The first tab</Tab>
@@ -110,7 +113,7 @@ const docs: ComponentDocs = {
     {
       label: 'Force fit (no overflow)',
       Example: () => (
-        <TabsProvider>
+        <TabsProvider id="force-fit">
           <Stack space="small">
             <Tabs label="Test tabs" scroll={false}>
               <Tab>The first tab</Tab>

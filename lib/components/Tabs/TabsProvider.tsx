@@ -16,7 +16,6 @@ import {
   TAB_PANELS_UPDATED,
 } from './Tabs.actions';
 import tabA11y from './tabA11y';
-import { AllOrNone } from '../private/AllOrNone';
 
 interface State {
   selectedIndex: number;
@@ -33,22 +32,17 @@ interface TabsContextValues extends State {
 
 export const TabsContext = createContext<TabsContextValues | null>(null);
 
-export type TabsProviderBaseProps = {
+export type TabsProviderProps = {
   children: ReactNode;
-  id?: string;
-};
-
-export type TabsProviderStateProps = AllOrNone<{
+  id: string;
   selectedItem?: string;
-  onChange: (selectedIndex: number, selectedItem?: string) => void;
-}>;
-
-export type TabsProviderProps = TabsProviderBaseProps & TabsProviderStateProps;
+  onChange?: (selectedIndex: number, selectedItem?: string) => void;
+};
 
 export const TabsProvider = ({
   children,
   onChange,
-  id = 'tabs',
+  id,
   selectedItem,
 }: TabsProviderProps) => {
   const [tabsState, dispatch] = useReducer(
