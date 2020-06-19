@@ -11,6 +11,7 @@ import {
   Tabs,
   Tab,
   TabPanel,
+  TabPanels,
 } from '../../../../lib/components';
 
 import { ComponentDocs } from '../../types';
@@ -121,13 +122,13 @@ export const ComponentDoc = ({
                 </Tab>
               ))}
             </Tabs>
-            <Box>
+            <TabPanels>
               {propsToDocument.map((c) => (
                 <TabPanel key={c}>
                   <ComponentProps componentName={c} />
                 </TabPanel>
               ))}
-            </Box>
+            </TabPanels>
           </Stack>
         </TabsProvider>
       ) : (

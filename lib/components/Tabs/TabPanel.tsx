@@ -1,4 +1,4 @@
-import React, { ReactNode, useContext, useRef, useEffect } from 'react';
+import React, { ReactNode, useContext } from 'react';
 import { useStyles } from 'sku/react-treat';
 import assert from 'assert';
 
@@ -10,9 +10,9 @@ import { TabsContext } from './TabsProvider';
 import { Overlay } from '../private/Overlay/Overlay';
 
 import * as styleRefs from './Tabs.treat';
-import { TAB_REGISTER_PANEL, TAB_DEREGISTER_PANEL } from './Tabs.actions';
+import { TabPanelsContext } from './TabPanels';
 
-interface TabPanelProps {
+export interface TabPanelProps {
   children: ReactNode;
   data?: DataAttributeMap;
 }
@@ -20,45 +20,28 @@ interface TabPanelProps {
 export const TabPanel = ({ children, data }: TabPanelProps) => {
   const styles = useStyles(styleRefs);
   const tabsContext = useContext(TabsContext);
-  const ref = useRef<HTMLElement>(null);
+  const tabPanelsContext = useContext(TabPanelsContext);
 
   assert(
     tabsContext !== null,
     'A TabPanel must be rendered as a child of Tabs. See the documentation for correct usage: https://seek-oss.github.io/braid-design-system/components/TabsPanel',
   );
 
-  if (!tabsContext) {
-    throw new Error('TabPanel rendered outside Tabs context');
+  if (!tabPanelsContext) {
+    throw new Error('TabPanel rendered outside TabPanels');
   }
 
-  const { a11y, dispatch, panels, selectedIndex } = tabsContext;
+  if (!tabsContext) {
+    throw new Error('TabPanel rendered outside TabsProvider');
+  }
 
-  useEffect(() => {
-    if (!ref.current) {
-      throw new Error('TabPanel ref not instantiated');
-    }
+  const { a11y, selectedIndex } = tabsContext;
+  const { panelIndex } = tabPanelsContext;
 
-    const panel = ref.current;
-
-    dispatch({
-      type: TAB_REGISTER_PANEL,
-      panel,
-    });
-
-    return () => {
-      dispatch({
-        type: TAB_DEREGISTER_PANEL,
-        panel,
-      });
-    };
-  }, [dispatch]);
-
-  const panelIndex = ref.current ? panels.indexOf(ref.current) : -1;
   const isSelected = panelIndex === selectedIndex;
 
   return (
     <Box
-      ref={ref}
       {...a11y.tabPanelProps({ panelIndex, isSelected })}
       display={isSelected ? undefined : 'none'}
       position="relative"

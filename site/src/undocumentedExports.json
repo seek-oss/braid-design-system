@@ -1,1 +1,9 @@
-["BoxRenderer", "ToastProvider", "MenuItem", "TabsProvider", "Tab", "TabPanel"]
+[
+  "BoxRenderer",
+  "ToastProvider",
+  "MenuItem",
+  "TabsProvider",
+  "Tab",
+  "TabPanel",
+  "TabPanels"
+]

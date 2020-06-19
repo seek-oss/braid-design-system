@@ -51,6 +51,7 @@ export { Strong } from './Strong/Strong';
 export { Tab } from './Tabs/Tab';
 export { TabsProvider } from './Tabs/TabsProvider';
 export { Tabs } from './Tabs/Tabs';
+export { TabPanels } from './Tabs/TabPanels';
 export { TabPanel } from './Tabs/TabPanel';
 export { Tag } from './Tag/Tag';
 export { Text } from './Text/Text';

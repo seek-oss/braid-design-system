@@ -5214,6 +5214,15 @@ Object {
 }
 `;
 
+exports[`TabPanels 1`] = `
+Object {
+  exportType: component,
+  props: {
+    children: ReactElement<TabPanelProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)>[]
+},
+}
+`;
+
 exports[`Tabs 1`] = `
 Object {
   exportType: component,

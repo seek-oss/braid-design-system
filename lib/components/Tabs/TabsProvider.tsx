@@ -13,24 +13,16 @@ import {
   TAB_BUTTON_CLICK,
   TAB_LIST_UPDATED,
   TAB_LIST_FOCUSED,
-  TAB_REGISTER_PANEL,
-  TAB_DEREGISTER_PANEL,
+  TAB_PANELS_UPDATED,
 } from './Tabs.actions';
 import tabA11y from './tabA11y';
 import { AllOrNone } from '../private/AllOrNone';
-
-const sortPanels = (panels: HTMLElement[]) =>
-  panels.sort((a, b) =>
-    Boolean(a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_PRECEDING)
-      ? 1
-      : -1,
-  );
 
 interface State {
   selectedIndex: number;
   focusedTabIndex: number | null;
   tabItems: Array<string | number>;
-  panels: HTMLElement[];
+  panels: number[];
 }
 
 interface TabsContextValues extends State {
@@ -122,22 +114,13 @@ export const TabsProvider = ({
             selectedIndex: 0,
           };
         }
-        case TAB_REGISTER_PANEL: {
+        case TAB_PANELS_UPDATED: {
           return {
             ...state,
-            panels: sortPanels([...state.panels, action.panel]),
+            panels: action.panels,
           };
         }
-        case TAB_DEREGISTER_PANEL: {
-          const filterPanels = state.panels.filter(
-            (panel) => panel !== action.panel,
-          );
 
-          return {
-            ...state,
-            panels: sortPanels(filterPanels),
-          };
-        }
         default:
           return state;
       }

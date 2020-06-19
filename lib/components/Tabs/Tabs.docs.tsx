@@ -9,6 +9,7 @@ import {
   Tabs,
   Tab,
   TabPanel,
+  TabPanels,
   Box,
 } from '..';
 import { Placeholder } from '../../playroom/components';
@@ -16,7 +17,7 @@ import { Placeholder } from '../../playroom/components';
 const docs: ComponentDocs = {
   category: 'Content',
   screenshotWidths: [],
-  subComponents: ['TabsProvider', 'Tab', 'TabPanel'],
+  subComponents: ['TabsProvider', 'Tab', 'TabPanels', 'TabPanel'],
   description: (
     <Stack space="large">
       <Text>
@@ -46,9 +47,11 @@ const docs: ComponentDocs = {
             <Tab>Second</Tab>
             <Tab>Third</Tab>
           </Tabs>
-          <TabPanel>Panel 1</TabPanel>
-          <TabPanel>Panel 2</TabPanel>
-          <TabPanel>Panel 3</TabPanel>
+          <TabPanels>
+            <TabPanel>Panel 1</TabPanel>
+            <TabPanel>Panel 2</TabPanel>
+            <TabPanel>Panel 3</TabPanel>
+          </TabPanels>
         </TabsProvider>
       ),
     },
@@ -64,7 +67,7 @@ const docs: ComponentDocs = {
               <Tab>Second tab</Tab>
               <Tab>Tab the third</Tab>
             </Tabs>
-            <Box>
+            <TabPanels>
               <TabPanel>
                 <Placeholder height={200} label="Panel 1" />
               </TabPanel>
@@ -74,7 +77,7 @@ const docs: ComponentDocs = {
               <TabPanel>
                 <Placeholder height={200} label="Panel 3" />
               </TabPanel>
-            </Box>
+            </TabPanels>
           </Stack>
         </TabsProvider>
       ),
@@ -89,7 +92,7 @@ const docs: ComponentDocs = {
               <Tab>Second tab</Tab>
               <Tab>Tab the third</Tab>
             </Tabs>
-            <Box>
+            <TabPanels>
               <TabPanel>
                 <Placeholder height={200} label="Panel 1" />
               </TabPanel>
@@ -99,7 +102,7 @@ const docs: ComponentDocs = {
               <TabPanel>
                 <Placeholder height={200} label="Panel 3" />
               </TabPanel>
-            </Box>
+            </TabPanels>
           </Stack>
         </TabsProvider>
       ),
@@ -114,7 +117,7 @@ const docs: ComponentDocs = {
               <Tab>Second tab</Tab>
               <Tab>Tab the third</Tab>
             </Tabs>
-            <Box>
+            <TabPanels>
               <TabPanel>
                 <Placeholder height={200} label="Panel 1" />
               </TabPanel>
@@ -124,7 +127,7 @@ const docs: ComponentDocs = {
               <TabPanel>
                 <Placeholder height={200} label="Panel 3" />
               </TabPanel>
-            </Box>
+            </TabPanels>
           </Stack>
         </TabsProvider>
       ),

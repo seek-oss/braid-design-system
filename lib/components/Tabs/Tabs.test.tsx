@@ -2,7 +2,14 @@ import '@testing-library/jest-dom/extend-expect';
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { BraidTestProvider, Tabs, Tab, TabPanel, TabsProvider } from '..';
+import {
+  BraidTestProvider,
+  Tabs,
+  Tab,
+  TabPanel,
+  TabsProvider,
+  TabPanels,
+} from '..';
 
 const ENTER = 13;
 const SPACE = 32;
@@ -22,10 +29,11 @@ function renderTabs({ selectedItem }: { selectedItem?: string } = {}) {
           <Tab item="second">Second</Tab>
           <Tab item="third">Third</Tab>
         </Tabs>
-
-        <TabPanel>Panel 1</TabPanel>
-        <TabPanel>Panel 2</TabPanel>
-        <TabPanel>Panel 3</TabPanel>
+        <TabPanels>
+          <TabPanel>Panel 1</TabPanel>
+          <TabPanel>Panel 2</TabPanel>
+          <TabPanel>Panel 3</TabPanel>
+        </TabPanels>
       </TabsProvider>
     </BraidTestProvider>
   );
