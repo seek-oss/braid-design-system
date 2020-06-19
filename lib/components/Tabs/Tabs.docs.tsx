@@ -11,10 +11,12 @@ import {
   TabPanels,
   Box,
   TabsProvider,
+  Badge,
 } from '..';
 import {
   Placeholder,
   TabsProvider as PlayroomTabsProvider,
+  Tabs as PlayroomTabs,
 } from '../../playroom/components';
 
 const docs: ComponentDocs = {
@@ -42,19 +44,73 @@ const docs: ComponentDocs = {
   ),
   snippets: [
     {
-      name: '3 Tabs',
+      name: '2 Tabs',
       code: (
         <PlayroomTabsProvider>
-          <Tabs label="Test tabs">
-            <Tab>First</Tab>
-            <Tab>Second</Tab>
-            <Tab>Third</Tab>
-          </Tabs>
-          <TabPanels>
-            <TabPanel>Panel 1</TabPanel>
-            <TabPanel>Panel 2</TabPanel>
-            <TabPanel>Panel 3</TabPanel>
-          </TabPanels>
+          <Stack space="medium">
+            <PlayroomTabs>
+              <Tab>First</Tab>
+              <Tab>Second</Tab>
+            </PlayroomTabs>
+            <TabPanels>
+              <TabPanel>
+                <Placeholder label="panel 1" height={200} />
+              </TabPanel>
+              <TabPanel>
+                <Placeholder label="panel 2" height={200} />
+              </TabPanel>
+            </TabPanels>
+          </Stack>
+        </PlayroomTabsProvider>
+      ),
+    },
+    {
+      name: '3 Tabs with badge',
+      code: (
+        <PlayroomTabsProvider>
+          <Stack space="medium">
+            <PlayroomTabs>
+              <Tab>First</Tab>
+              <Tab badge={<Badge>New</Badge>}>Second</Tab>
+              <Tab>Third</Tab>
+            </PlayroomTabs>
+            <TabPanels>
+              <TabPanel>
+                <Placeholder label="panel 1" height={200} />
+              </TabPanel>
+              <TabPanel>
+                <Placeholder label="panel 2" height={200} />
+              </TabPanel>
+              <TabPanel>
+                <Placeholder label="panel 3" height={200} />
+              </TabPanel>
+            </TabPanels>
+          </Stack>
+        </PlayroomTabsProvider>
+      ),
+    },
+    {
+      name: '3 Centered Tabs',
+      code: (
+        <PlayroomTabsProvider>
+          <Stack space="medium">
+            <PlayroomTabs align="center">
+              <Tab>First</Tab>
+              <Tab>Second</Tab>
+              <Tab>Third</Tab>
+            </PlayroomTabs>
+            <TabPanels>
+              <TabPanel>
+                <Placeholder label="panel 1" height={200} />
+              </TabPanel>
+              <TabPanel>
+                <Placeholder label="panel 2" height={200} />
+              </TabPanel>
+              <TabPanel>
+                <Placeholder label="panel 3" height={200} />
+              </TabPanel>
+            </TabPanels>
+          </Stack>
         </PlayroomTabsProvider>
       ),
     },

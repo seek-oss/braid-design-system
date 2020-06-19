@@ -19,7 +19,7 @@ import { TabsContext } from './TabsProvider';
 import { Tab, TabProps } from './Tab';
 import * as styleRefs from './Tabs.treat';
 
-interface TabsProps {
+export interface TabsProps {
   children: ReactElement<TabProps>[];
   label: string;
   align?: 'left' | 'center';
