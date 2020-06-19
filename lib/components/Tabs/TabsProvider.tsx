@@ -119,6 +119,7 @@ export const TabsProvider = ({
           return {
             ...state,
             tabItems: action.tabItems,
+            selectedIndex: 0,
           };
         }
         case TAB_REGISTER_PANEL: {
@@ -142,25 +143,20 @@ export const TabsProvider = ({
       }
     },
     {
-      selectedIndex: 0,
+      selectedIndex: -1,
       focusedTabIndex: null,
       tabItems: [],
       panels: [],
     },
   );
 
-  const controlledSelectedIndex = selectedItem
-    ? tabsState.tabItems.indexOf(selectedItem)
-    : -1;
-
   return (
     <TabsContext.Provider
       value={{
         ...tabsState,
-        selectedIndex:
-          controlledSelectedIndex > -1
-            ? controlledSelectedIndex
-            : tabsState.selectedIndex,
+        selectedIndex: selectedItem
+          ? tabsState.tabItems.indexOf(selectedItem)
+          : tabsState.selectedIndex,
         dispatch,
         a11y: tabA11y({ uniqueId: id }),
         onChange,

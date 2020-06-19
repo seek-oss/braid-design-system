@@ -98,6 +98,7 @@ export const Tabs = (props: TabsProps) => {
 
   return (
     <Box
+      id="tabslist_scroll_container"
       ref={tabsRef}
       display="flex"
       justifyContent={

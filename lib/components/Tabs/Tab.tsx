@@ -36,6 +36,9 @@ import { BadgeProps, Badge } from '../Badge/Badge';
 import { useVirtualTouchable } from '../private/touchable/useVirtualTouchable';
 import { useScrollIntoView } from '../../hooks/useScrollIntoView';
 
+const scrollBoundary = (parent: Element) =>
+  parent.id !== 'tabslist_scroll_container';
+
 export interface TabProps {
   children: ReactNode;
   item?: string;
@@ -78,7 +81,10 @@ export const Tab = ({ children, data, badge, item }: TabProps) => {
   const isSelected = selectedIndex === tabListItemIndex;
   const isFocused = focusedTabIndex === tabListItemIndex;
 
-  useScrollIntoView(tabRef.current, isSelected || isFocused);
+  useScrollIntoView(tabRef.current, {
+    shouldScroll: isSelected || isFocused,
+    boundary: scrollBoundary,
+  });
 
   useEffect(() => {
     if (tabRef.current && isFocused) {

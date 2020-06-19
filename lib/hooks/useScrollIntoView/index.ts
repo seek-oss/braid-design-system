@@ -1,17 +1,31 @@
 import computeScrollIntoView from 'compute-scroll-into-view';
 import { useEffect } from 'react';
 
+type ComputeScrollIntoViewOptions = Parameters<typeof computeScrollIntoView>[1];
+
+interface UseScrollIntoViewOptions extends ComputeScrollIntoViewOptions {
+  shouldScroll?: boolean;
+}
 export function useScrollIntoView(
   element: HTMLElement | null,
-  shouldScroll = true,
+  options?: UseScrollIntoViewOptions,
 ) {
+  const {
+    shouldScroll = true,
+    scrollMode = 'if-needed',
+    inline = 'nearest',
+    block = 'nearest',
+    boundary,
+  } = options || {};
+
   useEffect(() => {
     if (element && shouldScroll) {
       try {
         const actions = computeScrollIntoView(element, {
-          scrollMode: 'if-needed',
-          block: 'nearest',
-          inline: 'nearest',
+          scrollMode,
+          block,
+          inline,
+          boundary,
         });
 
         actions.forEach(({ el, top, left }) => {
@@ -22,5 +36,5 @@ export function useScrollIntoView(
         // Ignore errors
       }
     }
-  }, [element, shouldScroll]);
+  }, [element, shouldScroll, scrollMode, block, inline, boundary]);
 }
