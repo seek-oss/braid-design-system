@@ -5199,8 +5199,7 @@ Object {
     badge?: ReactElement<BadgeProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)>
     children: ReactNode
     data?: Record<string, string | number>
-    item: string
-    onClick?: () => void
+    item?: string
 },
 }
 `;
@@ -5211,7 +5210,6 @@ Object {
   props: {
     children: ReactNode
     data?: Record<string, string | number>
-    item: string
 },
 }
 `;
@@ -5237,19 +5235,8 @@ Object {
   props: {
     children: ReactNode
     id?: string
-    onChange?: (selectedItem: string) => void
+    onChange?: (selectedIndex: number, selectedItem?: string | undefined) => void
     selectedItem?: string
-},
-}
-`;
-
-exports[`TabsVertical 1`] = `
-Object {
-  exportType: component,
-  props: {
-    children: ReactElement<TabProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)>[]
-    data?: Record<string, string | number>
-    label: string
 },
 }
 `;
