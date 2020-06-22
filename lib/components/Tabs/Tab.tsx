@@ -29,7 +29,6 @@ import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
 import { TabListContext } from './Tabs';
-import { Overlay } from '../private/Overlay/Overlay';
 
 import * as styleRefs from './Tabs.treat';
 import { BadgeProps, Badge } from '../Badge/Badge';
@@ -37,7 +36,7 @@ import { useVirtualTouchable } from '../private/touchable/useVirtualTouchable';
 import { useScrollIntoView } from '../../hooks/useScrollIntoView';
 
 const scrollBoundary = (parent: Element) =>
-  parent.id !== 'tabslist_scroll_container';
+  !parent.getAttribute('data-tabs-scroll-boundary');
 
 export interface TabProps {
   children: ReactNode;
@@ -82,7 +81,7 @@ export const Tab = ({ children, data, badge, item }: TabProps) => {
   const isFocused = focusedTabIndex === tabListItemIndex;
 
   useScrollIntoView(tabRef.current, {
-    shouldScroll: isSelected || isFocused,
+    shouldScroll: isFocused,
     boundary: scrollBoundary,
   });
 
@@ -221,13 +220,6 @@ export const Tab = ({ children, data, badge, item }: TabProps) => {
           ]}
         />
       </Box>
-      <Overlay
-        boxShadow="outlineFocus"
-        borderRadius="standard"
-        className={styles.tabFocusRing}
-        visible={isFocused}
-        onlyVisibleForKeyboardNavigation
-      />
     </Box>
   );
 };

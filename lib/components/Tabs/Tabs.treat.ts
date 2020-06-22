@@ -9,7 +9,11 @@ export const tab = style({
   },
 });
 
-export const nowrap = style({ whiteSpace: 'nowrap' });
+export const scroll = style({
+  overflowX: 'auto',
+  overflowY: 'hidden',
+  whiteSpace: 'nowrap',
+});
 
 export const tabFocusRing = style({
   zIndex: 1,
