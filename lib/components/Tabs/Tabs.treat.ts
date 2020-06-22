@@ -2,6 +2,11 @@ import { style, styleMap } from 'sku/treat';
 
 export const tab = style({
   zIndex: 1,
+  selectors: {
+    '&::-moz-focus-inner': {
+      border: 0,
+    },
+  },
 });
 
 export const nowrap = style({ whiteSpace: 'nowrap' });
