@@ -206,7 +206,7 @@ export const Tab = ({ children, data, badge, item }: TabProps) => {
           left={0}
           right={0}
           bottom={0}
-          className={[styles.tabHover, styles.tabUnderline]}
+          className={[styles.tabHover, styles.tabUnderline.hover]}
         />
         <Box
           background="formAccent"
@@ -216,7 +216,7 @@ export const Tab = ({ children, data, badge, item }: TabProps) => {
           right={0}
           bottom={0}
           className={[
-            styles.tabUnderline,
+            styles.tabUnderline.selected,
             !isSelected ? styles.tabUnderlineAnimation : undefined,
           ]}
         />

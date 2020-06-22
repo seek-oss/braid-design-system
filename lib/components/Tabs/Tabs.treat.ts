@@ -1,4 +1,4 @@
-import { style } from 'sku/treat';
+import { style, styleMap } from 'sku/treat';
 
 export const tab = style({
   zIndex: 1,
@@ -19,9 +19,15 @@ export const tabHover = style({
   },
 });
 
-export const tabUnderline = style({
-  zIndex: 2,
-  height: 2,
+export const tabUnderline = styleMap({
+  selected: {
+    zIndex: 2,
+    height: 2,
+  },
+  hover: {
+    zIndex: 2,
+    height: 1,
+  },
 });
 
 export const tabUnderlineAnimation = style({
