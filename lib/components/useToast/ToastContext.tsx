@@ -12,11 +12,11 @@ import { createPortal } from 'react-dom';
 import { useTheme } from 'sku/react-treat';
 
 import { Toaster } from './Toaster';
-import { Toast } from './ToastTypes';
+import { Toast, InternalToast } from './ToastTypes';
 
 let toastCounter = 0;
 
-type AddToast = (toast: Toast) => void;
+type AddToast = (toast: InternalToast) => void;
 
 const ToastControllerContext = createContext<AddToast | null>(null);
 
@@ -24,24 +24,66 @@ const QUEUE_TOAST = 0;
 const REMOVE_TOAST = 1;
 
 type Actions =
-  | { type: typeof QUEUE_TOAST; value: Toast }
-  | { type: typeof REMOVE_TOAST; value: string };
+  | { type: typeof QUEUE_TOAST; toast: InternalToast }
+  | { type: typeof REMOVE_TOAST; dedupeKey: string };
 
 interface ToastState {
-  toasts: Toast[];
+  toasts: InternalToast[];
+  queuedToasts: {
+    [dedupeKey: string]: InternalToast | undefined;
+  };
 }
 
 function reducer(state: ToastState, action: Actions): ToastState {
   switch (action.type) {
     case QUEUE_TOAST: {
+      const { toast } = action;
+
+      const hasExistingToast = state.toasts.some(
+        (t) => t.dedupeKey === toast.dedupeKey,
+      );
+
+      if (hasExistingToast) {
+        return {
+          toasts: state.toasts.map((t) => {
+            if (t.dedupeKey === toast.dedupeKey) {
+              return {
+                ...t,
+                shouldRemove: true,
+              };
+            }
+
+            return t;
+          }),
+          queuedToasts: {
+            ...state.queuedToasts,
+            [toast.dedupeKey]: toast,
+          },
+        };
+      }
+
       return {
         ...state,
-        toasts: [...state.toasts, action.value],
+        toasts: [...state.toasts, action.toast],
       };
     }
 
     case REMOVE_TOAST: {
-      const toasts = state.toasts.filter(({ id }) => id !== action.value);
+      const toasts = state.toasts.filter(
+        ({ dedupeKey }) => dedupeKey !== action.dedupeKey,
+      );
+
+      const queuedToast = state.queuedToasts[action.dedupeKey];
+
+      if (queuedToast) {
+        return {
+          queuedToasts: {
+            ...state.queuedToasts,
+            [action.dedupeKey]: undefined,
+          },
+          toasts: [...toasts, queuedToast],
+        };
+      }
 
       return {
         ...state,
@@ -49,24 +91,25 @@ function reducer(state: ToastState, action: Actions): ToastState {
       };
     }
   }
-
-  return state;
 }
 interface ToastProviderProps {
   children: ReactNode;
 }
 const InternalToastProvider = ({ children }: ToastProviderProps) => {
-  const [{ toasts }, dispatch] = useReducer(reducer, {
+  const [state, dispatch] = useReducer(reducer, {
     toasts: [],
+    queuedToasts: {},
   });
 
+  const { toasts } = state;
+
   const addToast = useCallback(
-    (props: Toast) => dispatch({ type: QUEUE_TOAST, value: props }),
+    (toast: InternalToast) => dispatch({ type: QUEUE_TOAST, toast }),
     [],
   );
 
   const removeToast = useCallback(
-    (id: string) => dispatch({ type: REMOVE_TOAST, value: id }),
+    (dedupeKey: string) => dispatch({ type: REMOVE_TOAST, dedupeKey }),
     [],
   );
 
@@ -128,8 +171,12 @@ export const useToast = () => {
   }
 
   return useCallback(
-    (props: Omit<Toast, 'treatTheme' | 'id'>) =>
-      addToast({ ...props, treatTheme, id: `${toastCounter++}` }),
+    (toast: Toast) => {
+      const id = `${toastCounter++}`;
+      const dedupeKey = toast.key ?? id;
+
+      addToast({ ...toast, treatTheme, id, dedupeKey, shouldRemove: false });
+    },
     [treatTheme, addToast],
   );
 };

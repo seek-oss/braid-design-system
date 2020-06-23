@@ -155,4 +155,23 @@ describe('useToast', () => {
       expect(getToastByMessage('Some toast')).toBeInTheDocument();
     });
   });
+
+  it('should deduplicate toasts with the same key', async () => {
+    const { showToast, queryAllToasts } = renderTestApp();
+
+    const key = 'deduped';
+
+    expect(queryAllToasts()).toHaveLength(0);
+
+    showToast({ tone: 'critical', message: 'First toast', key });
+    showToast({ tone: 'critical', message: 'Second toast', key });
+    showToast({ tone: 'critical', message: 'Third toast', key });
+
+    await waitFor(() => {
+      const allToasts = queryAllToasts();
+
+      expect(allToasts).toHaveLength(1);
+      expect(allToasts[0]).toHaveTextContent('Third toast');
+    });
+  });
 });

@@ -5,11 +5,11 @@ import { Box } from '..';
 import * as styleRefs from './Toast.treat';
 import ToastComponent from './Toast';
 import { useFlipList } from './useFlipList';
-import { Toast } from './ToastTypes';
+import { InternalToast } from './ToastTypes';
 
 interface ToasterProps {
-  toasts: Toast[];
-  removeToast: (id: string) => void;
+  toasts: InternalToast[];
+  removeToast: (key: string) => void;
 }
 export const Toaster = ({ toasts, removeToast }: ToasterProps) => {
   const styles = useStyles(styleRefs);
@@ -17,9 +17,9 @@ export const Toaster = ({ toasts, removeToast }: ToasterProps) => {
   const { itemRef, remove } = useFlipList();
 
   const onClear = useCallback(
-    (id: string) => {
+    (dedupeKey: string, id: string) => {
       remove(id, () => {
-        removeToast(id);
+        removeToast(dedupeKey);
       });
     },
     [remove, removeToast],
