@@ -6,6 +6,9 @@ import React, {
   useRef,
   createContext,
   ReactElement,
+  useLayoutEffect,
+  useState,
+  useCallback,
 } from 'react';
 import { useStyles } from 'sku/react-treat';
 
@@ -18,6 +21,7 @@ import buildDataAttributes, {
 import { TabsContext } from './TabsProvider';
 import { Tab, TabProps } from './Tab';
 import { hideFocusRingsClassName } from '../private/hideFocusRings/hideFocusRings';
+import { useNegativeMarginTop } from '../../hooks/useNegativeMargin/useNegativeMargin';
 import * as styleRefs from './Tabs.treat';
 
 export interface TabsProps {
@@ -143,9 +147,26 @@ export const Tabs = (props: TabsProps) => {
     visible: false,
   });
 
+  const [showMask, setShowMask] = useState(true);
+  const updateMask = useCallback(() => {
+    if (!tabsRef.current) {
+      return;
+    }
+
+    setShowMask(
+      tabsRef.current.scrollWidth -
+        tabsRef.current.offsetWidth -
+        tabsRef.current.scrollLeft >
+        5,
+    );
+  }, [tabsRef, setShowMask]);
+
+  useLayoutEffect(() => {
+    updateMask();
+  }, [updateMask]);
+
   return (
     <Box
-      position="relative"
       onFocusCapture={(event) => {
         if (!tabsRef.current) {
           return;
@@ -160,56 +181,78 @@ export const Tabs = (props: TabsProps) => {
         });
       }}
       onBlurCapture={() => focusRingDispatch({ type: HIDE_FOCUS_RING })}
-      onScrollCapture={
-        !scroll
-          ? undefined
-          : () => {
-              if (!tabsRef.current) {
-                return;
-              }
-
-              focusRingDispatch({
-                type: UPDATE_FOCUS_RING,
-                value: { scrollElement: tabsRef.current },
-              });
-            }
-      }
     >
-      <Box
-        position="absolute"
-        pointerEvents="none"
-        boxShadow="outlineFocus"
-        borderRadius="standard"
-        opacity={!focusRingState.visible ? 0 : undefined}
-        transition="fast"
-        className={hideFocusRingsClassName}
-        style={{
-          top: 0,
-          left: focusRingState.left,
-          width: focusRingState.width,
-          height: focusRingState.height,
-        }}
-      />
-      <Box
-        ref={tabsRef}
-        data-tabs-scroll-boundary
-        display="flex"
-        justifyContent={align === 'center' ? 'center' : undefined}
-        className={scroll ? styles.scroll : undefined}
-      >
+      <Box className={useNegativeMarginTop('medium')}>
         <Box position="relative">
           <Box
             position="absolute"
-            width="full"
-            bottom={0}
-            className={styles.divider}
+            pointerEvents="none"
+            boxShadow="outlineFocus"
+            borderRadius="standard"
+            opacity={!focusRingState.visible ? 0 : undefined}
+            transition="fast"
+            className={hideFocusRingsClassName}
+            style={{
+              top: 0,
+              left: focusRingState.left,
+              width: focusRingState.width,
+              height: focusRingState.height,
+            }}
           />
           <Box
-            {...a11y.tabListProps({ label })}
-            display="flex"
-            {...buildDataAttributes(data)}
+            style={
+              scroll && showMask
+                ? {
+                    WebkitMaskImage:
+                      'linear-gradient(90deg, rgba(0,0,0,1) 0, rgba(0,0,0,1) calc(100% - 100px), rgba(0,0,0,0) 100%)',
+                  }
+                : undefined
+            }
           >
-            {tabs}
+            <Box
+              ref={tabsRef}
+              data-tabs-scroll-boundary
+              display="flex"
+              className={scroll ? [styles.scroll, styles.nowrap] : undefined}
+              onScroll={
+                !scroll
+                  ? undefined
+                  : () => {
+                      const scrollElement = tabsRef.current;
+
+                      if (!scrollElement) {
+                        return;
+                      }
+
+                      updateMask();
+
+                      focusRingDispatch({
+                        type: UPDATE_FOCUS_RING,
+                        value: { scrollElement },
+                      });
+                    }
+              }
+            >
+              <Box
+                position="relative"
+                display="flex"
+                className={align === 'center' ? styles.marginAuto : undefined}
+              >
+                <Box
+                  position="absolute"
+                  width="full"
+                  bottom={0}
+                  className={styles.divider}
+                />
+                <Box
+                  {...a11y.tabListProps({ label })}
+                  display="flex"
+                  {...buildDataAttributes(data)}
+                >
+                  {tabs}
+                </Box>
+              </Box>
+            </Box>
           </Box>
         </Box>
       </Box>

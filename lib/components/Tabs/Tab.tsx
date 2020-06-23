@@ -32,7 +32,6 @@ import { TabListContext } from './Tabs';
 
 import * as styleRefs from './Tabs.treat';
 import { BadgeProps, Badge } from '../Badge/Badge';
-import { useVirtualTouchable } from '../private/touchable/useVirtualTouchable';
 import { useScrollIntoView } from '../../hooks/useScrollIntoView';
 
 const scrollBoundary = (parent: Element) =>
@@ -169,10 +168,9 @@ export const Tab = ({ children, data, badge, item }: TabProps) => {
       cursor="pointer"
       outline="none"
       position="relative"
-      paddingRight="small"
-      paddingLeft="small"
-      paddingBottom="medium"
-      className={[styles.tab, useVirtualTouchable()]}
+      paddingX="small"
+      paddingY="medium"
+      className={styles.tab}
       {...buildDataAttributes(data)}
     >
       {/*

@@ -9,10 +9,26 @@ export const tab = style({
   },
 });
 
+export const nowrap = style({
+  whiteSpace: 'nowrap',
+});
+
 export const scroll = style({
   overflowX: 'auto',
   overflowY: 'hidden',
-  whiteSpace: 'nowrap',
+  scrollbarWidth: 'none',
+  msOverflowStyle: 'none',
+  selectors: {
+    '&::-webkit-scrollbar': {
+      width: 0,
+      height: 0,
+    },
+  },
+});
+
+export const marginAuto = style({
+  marginLeft: 'auto',
+  marginRight: 'auto',
 });
 
 export const tabFocusRing = style({
