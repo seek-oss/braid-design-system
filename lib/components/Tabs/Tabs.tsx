@@ -13,7 +13,7 @@ import React, {
 import { useStyles } from 'sku/react-treat';
 
 import assert from 'assert';
-import { Box } from '../Box/Box';
+import { Box, BoxProps } from '../Box/Box';
 import { TAB_LIST_UPDATED } from './Tabs.actions';
 import buildDataAttributes, {
   DataAttributeMap,
@@ -28,6 +28,7 @@ export interface TabsProps {
   children: ReactElement<TabProps>[];
   label: string;
   align?: 'left' | 'center';
+  paddingX?: BoxProps['paddingX'];
   scroll?: boolean;
   data?: DataAttributeMap;
 }
@@ -100,7 +101,14 @@ export const Tabs = (props: TabsProps) => {
   const styles = useStyles(styleRefs);
   const tabsRef = useRef<HTMLElement>(null);
 
-  const { children, label, data, align = 'left', scroll = true } = props;
+  const {
+    children,
+    label,
+    data,
+    align = 'left',
+    paddingX,
+    scroll = true,
+  } = props;
 
   assert(
     tabsContext !== null,
@@ -204,7 +212,7 @@ export const Tabs = (props: TabsProps) => {
               scroll && showMask
                 ? {
                     WebkitMaskImage:
-                      'linear-gradient(90deg, rgba(0,0,0,1) 0, rgba(0,0,0,1) calc(100% - 100px), rgba(0,0,0,0) 100%)',
+                      'linear-gradient(90deg, rgba(0,0,0,1) 0, rgba(0,0,0,1) calc(100% - 80px), rgba(0,0,0,0) 100%)',
                   }
                 : undefined
             }
@@ -237,6 +245,7 @@ export const Tabs = (props: TabsProps) => {
                 position="relative"
                 display="flex"
                 className={align === 'center' ? styles.marginAuto : undefined}
+                paddingX={paddingX}
               >
                 <Box
                   position="absolute"
