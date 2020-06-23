@@ -96,12 +96,10 @@ interface ToastProviderProps {
   children: ReactNode;
 }
 const InternalToastProvider = ({ children }: ToastProviderProps) => {
-  const [state, dispatch] = useReducer(reducer, {
+  const [{ toasts }, dispatch] = useReducer(reducer, {
     toasts: [],
     queuedToasts: {},
   });
-
-  const { toasts } = state;
 
   const addToast = useCallback(
     (toast: InternalToast) => dispatch({ type: QUEUE_TOAST, toast }),
