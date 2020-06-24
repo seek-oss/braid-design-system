@@ -5232,6 +5232,17 @@ Object {
         | "left"
     children: ReactElement<TabProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)>[]
     data?: Record<string, string | number>
+    gutter?: ResponsiveProp<
+        | "gutter"
+        | "large"
+        | "medium"
+        | "none"
+        | "small"
+        | "xlarge"
+        | "xsmall"
+        | "xxlarge"
+        | "xxsmall"
+    >
     label: string
     scroll?: boolean
 },

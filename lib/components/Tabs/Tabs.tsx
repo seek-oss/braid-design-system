@@ -28,7 +28,7 @@ export interface TabsProps {
   children: ReactElement<TabProps>[];
   label: string;
   align?: 'left' | 'center';
-  paddingX?: BoxProps['paddingX'];
+  gutter?: BoxProps['paddingX'];
   scroll?: boolean;
   data?: DataAttributeMap;
 }
@@ -106,7 +106,7 @@ export const Tabs = (props: TabsProps) => {
     label,
     data,
     align = 'left',
-    paddingX,
+    gutter,
     scroll = true,
   } = props;
 
@@ -220,8 +220,8 @@ export const Tabs = (props: TabsProps) => {
             <Box
               ref={tabsRef}
               data-tabs-scroll-boundary
-              display="flex"
               className={scroll ? [styles.scroll, styles.nowrap] : undefined}
+              display="flex"
               onScroll={
                 !scroll
                   ? undefined
@@ -245,14 +245,8 @@ export const Tabs = (props: TabsProps) => {
                 position="relative"
                 display="flex"
                 className={align === 'center' ? styles.marginAuto : undefined}
-                paddingX={paddingX}
+                paddingX={gutter}
               >
-                <Box
-                  position="absolute"
-                  width="full"
-                  bottom={0}
-                  className={styles.divider}
-                />
                 <Box
                   {...a11y.tabListProps({ label })}
                   display="flex"

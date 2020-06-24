@@ -1,4 +1,4 @@
-import { style, styleMap } from 'sku/treat';
+import { style } from 'sku/treat';
 
 export const tab = style({
   zIndex: 1,
@@ -7,6 +7,10 @@ export const tab = style({
       border: 0,
     },
   },
+});
+
+export const hairlineMarginLeft = style({
+  marginLeft: 1,
 });
 
 export const nowrap = style({
@@ -35,23 +39,17 @@ export const tabFocusRing = style({
   zIndex: 1,
 });
 
-export const tabHover = style({
+export const tabUnderline = style({
+  zIndex: 2,
+  height: 2,
+});
+
+export const tabUnderlineHover = style({
   opacity: 0,
   selectors: {
     [`${tab}:hover &`]: {
       opacity: 1,
     },
-  },
-});
-
-export const tabUnderline = styleMap({
-  selected: {
-    zIndex: 2,
-    height: 2,
-  },
-  hover: {
-    zIndex: 2,
-    height: 1,
   },
 });
 

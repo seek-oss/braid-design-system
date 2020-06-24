@@ -170,7 +170,10 @@ export const Tab = ({ children, data, badge, item }: TabProps) => {
       position="relative"
       paddingX="small"
       paddingY="medium"
-      className={styles.tab}
+      className={[
+        styles.tab,
+        tabListItemIndex > 0 ? styles.hairlineMarginLeft : null,
+      ]}
       {...buildDataAttributes(data)}
     >
       {/*
@@ -197,13 +200,20 @@ export const Tab = ({ children, data, badge, item }: TabProps) => {
         pointerEvents="none"
       >
         <Box
+          position="absolute"
+          left={0}
+          right={0}
+          bottom={0}
+          className={styles.divider}
+        />
+        <Box
           background="neutral"
           position="absolute"
           transition="fast"
           left={0}
           right={0}
           bottom={0}
-          className={[styles.tabHover, styles.tabUnderline.hover]}
+          className={[styles.tabUnderlineHover, styles.tabUnderline]}
         />
         <Box
           background="formAccent"
@@ -213,7 +223,7 @@ export const Tab = ({ children, data, badge, item }: TabProps) => {
           right={0}
           bottom={0}
           className={[
-            styles.tabUnderline.selected,
+            styles.tabUnderline,
             !isSelected ? styles.tabUnderlineAnimation : undefined,
           ]}
         />
