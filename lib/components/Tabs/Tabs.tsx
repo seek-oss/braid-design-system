@@ -145,7 +145,7 @@ export const Tabs = (props: TabsProps) => {
   useEffect(() => {
     dispatch({ type: TAB_LIST_UPDATED, tabItems });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [...tabItems, dispatch]);
+  }, [tabItems.join(), dispatch]);
 
   const [focusRingState, focusRingDispatch] = useReducer(focusRingReducer, {
     focusedElement: null,
