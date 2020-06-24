@@ -157,21 +157,29 @@ describe('useToast', () => {
   });
 
   it('should deduplicate toasts with the same key', async () => {
-    const { showToast, queryAllToasts } = renderTestApp();
+    const { showToast, queryAllToasts, getToastByMessage } = renderTestApp();
 
-    const key = 'deduped';
+    const key1 = 'deduped-1';
+    const key2 = 'deduped-2';
 
     expect(queryAllToasts()).toHaveLength(0);
 
-    showToast({ tone: 'critical', message: 'First toast', key });
-    showToast({ tone: 'critical', message: 'Second toast', key });
-    showToast({ tone: 'critical', message: 'Third toast', key });
+    showToast({ tone: 'critical', message: 'Toast 1', key: key1 });
+    showToast({ tone: 'critical', message: 'Toast 2' });
+    showToast({ tone: 'critical', message: 'Toast 3', key: key1 });
+    showToast({ tone: 'critical', message: 'Toast 4', key: key2 });
+    showToast({ tone: 'critical', message: 'Toast 5' });
+    showToast({ tone: 'critical', message: 'Toast 6', key: key2 });
+    showToast({ tone: 'critical', message: 'Toast 7', key: key1 });
 
     await waitFor(() => {
       const allToasts = queryAllToasts();
 
-      expect(allToasts).toHaveLength(1);
-      expect(allToasts[0]).toHaveTextContent('Third toast');
+      expect(allToasts).toHaveLength(4);
+      expect(getToastByMessage('Toast 2')).toBeInTheDocument();
+      expect(getToastByMessage('Toast 5')).toBeInTheDocument();
+      expect(getToastByMessage('Toast 6')).toBeInTheDocument();
+      expect(getToastByMessage('Toast 7')).toBeInTheDocument();
     });
   });
 });
