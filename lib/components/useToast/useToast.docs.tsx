@@ -113,6 +113,8 @@ const docs: ComponentDocs = {
             <Column width="content">
               <Toast
                 id={id}
+                dedupeKey={id}
+                shouldRemove={false}
                 treatTheme={theme}
                 onClear={handler}
                 {...toastProps}
@@ -141,6 +143,54 @@ const docs: ComponentDocs = {
       `,
     },
     {
+      label: 'Toast with no duplicates',
+      storybook: false,
+      playroom: false,
+      Example: ({ id, handler }) => {
+        const showToast = useToast();
+        const theme = useTheme();
+
+        const toastProps = {
+          message: 'There can only be one',
+          tone: 'positive',
+          key: 'deduped',
+        } as const;
+
+        return (
+          <Columns space="gutter" alignY="center" collapseBelow="tablet">
+            <Column width="content">
+              <Toast
+                id={id}
+                dedupeKey={id}
+                shouldRemove={false}
+                treatTheme={theme}
+                onClear={handler}
+                {...toastProps}
+              />
+            </Column>
+            <Column width="content">
+              <Box display="flex" justifyContent="center">
+                <Box>
+                  <Button onClick={() => showToast(toastProps)}>
+                    Show animation <IconPromote alignY="lowercase" />
+                  </Button>
+                </Box>
+              </Box>
+            </Column>
+          </Columns>
+        );
+      },
+      code: `
+        const showToast = useToast();
+
+        showToast({
+          message: 'There can only be one of me',
+          tone: 'positive',
+          key: 'deduped'
+        })
+      `,
+    },
+    {
       label: 'Positive Toast with description',
       storybook: false,
       playroom: false,
@@ -161,6 +211,8 @@ const docs: ComponentDocs = {
             <Column width="content">
               <Toast
                 id={id}
+                dedupeKey={id}
+                shouldRemove={false}
                 treatTheme={theme}
                 onClear={handler}
                 {...toastProps}
@@ -207,6 +259,8 @@ const docs: ComponentDocs = {
             <Column width="content">
               <Toast
                 id={id}
+                dedupeKey={id}
+                shouldRemove={false}
                 treatTheme={theme}
                 onClear={handler}
                 {...toastProps}
@@ -251,6 +305,8 @@ const docs: ComponentDocs = {
             <Column width="content">
               <Toast
                 id={id}
+                dedupeKey={id}
+                shouldRemove={false}
                 treatTheme={theme}
                 onClear={handler}
                 {...toastProps}
@@ -292,6 +348,8 @@ const docs: ComponentDocs = {
             treatTheme={treatTheme}
             onClear={() => {}}
             id="n/a"
+            dedupeKey="n/a"
+            shouldRemove={false}
           />
         );
       },
@@ -313,6 +371,8 @@ const docs: ComponentDocs = {
             treatTheme={treatTheme}
             onClear={() => {}}
             id="n/a"
+            dedupeKey="n/a"
+            shouldRemove={false}
           />
         );
       },
@@ -335,6 +395,8 @@ const docs: ComponentDocs = {
             treatTheme={treatTheme}
             onClear={() => {}}
             id="n/a"
+            dedupeKey="n/a"
+            shouldRemove={false}
           />
         );
       },
@@ -352,6 +414,8 @@ const docs: ComponentDocs = {
             treatTheme={treatTheme}
             onClear={() => {}}
             id="n/a"
+            dedupeKey="n/a"
+            shouldRemove={false}
           />
         );
       },
@@ -373,6 +437,8 @@ const docs: ComponentDocs = {
             treatTheme={treatTheme}
             onClear={() => {}}
             id="n/a"
+            dedupeKey="n/a"
+            shouldRemove={false}
           />
         );
       },
@@ -395,6 +461,8 @@ const docs: ComponentDocs = {
             treatTheme={treatTheme}
             onClear={() => {}}
             id="n/a"
+            dedupeKey="n/a"
+            shouldRemove={false}
           />
         );
       },
