@@ -6,6 +6,7 @@
   "sideEffects": [
     "lib/themes/**/*",
     "lib/reset/**/*",
+    "themes/**/*",
     "reset/**/*"
   ],
   "scripts": {
