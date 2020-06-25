@@ -83,17 +83,24 @@ export const Tab = ({ children, data, badge, item }: TabProps) => {
   useEffect(() => {
     if (tabRef.current && isFocused) {
       tabRef.current.focus();
+    }
+  }, [isFocused, scrollContainer, space, paddingX, grid]);
 
-      if (scrollContainer) {
+  const firstRenderRef = useRef(true);
+  useEffect(() => {
+    if (tabRef.current && scrollContainer) {
+      if (isSelected || isFocused) {
         smoothScroll(tabRef.current, {
           scrollContainer,
           direction: 'horizontal',
-          speed: 0.5,
           offset: space[paddingX] * grid * 3,
+          ...(firstRenderRef.current ? { duration: 1 } : { speed: 0.5 }),
         });
       }
+
+      firstRenderRef.current = false;
     }
-  }, [isFocused, scrollContainer, space, paddingX, grid]);
+  }, [isSelected, isFocused, scrollContainer, space, paddingX, grid]);
 
   const onKeyUp = (event: KeyboardEvent<HTMLButtonElement>) => {
     const targetKey = normalizeKey(event);
