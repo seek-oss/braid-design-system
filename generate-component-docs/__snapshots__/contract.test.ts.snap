@@ -5244,6 +5244,7 @@ Object {
         | "xxsmall"
     >
     label: string
+    reserveHitArea?: boolean
     scroll?: boolean
 },
 }

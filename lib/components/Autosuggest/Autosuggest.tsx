@@ -19,7 +19,7 @@ import { useTouchableSpace, useText } from '../../hooks/typography';
 import { getNextIndex } from '../private/getNextIndex';
 import { normalizeKey } from '../private/normalizeKey';
 import { ClearField } from '../private/Field/ClearField';
-import { smoothScroll } from './smoothScroll';
+import { smoothScroll } from '../private/smoothScroll';
 import { useScrollIntoView } from '../../hooks/useScrollIntoView';
 import { useIsolatedScroll } from './useIsolatedScroll';
 import { createAccessbilityProps, getItemId } from './createAccessbilityProps';

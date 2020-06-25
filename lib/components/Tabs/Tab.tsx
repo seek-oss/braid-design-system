@@ -29,13 +29,11 @@ import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
 import { TabListContext } from './Tabs';
+import { BadgeProps, Badge } from '../Badge/Badge';
+import { smoothScroll } from '../private/smoothScroll';
+import { useSpace } from '../useSpace/useSpace';
 
 import * as styleRefs from './Tabs.treat';
-import { BadgeProps, Badge } from '../Badge/Badge';
-import { useScrollIntoView } from '../../hooks/useScrollIntoView';
-
-const scrollBoundary = (parent: Element) =>
-  !parent.getAttribute('data-tabs-scroll-boundary');
 
 export interface TabProps {
   children: ReactNode;
@@ -68,7 +66,6 @@ export const Tab = ({ children, data, badge, item }: TabProps) => {
     throw new Error('Tab rendered outside TabsProvider');
   }
 
-  const { tabListItemIndex } = tabListContext;
   const {
     focusedTabIndex,
     selectedIndex,
@@ -76,19 +73,27 @@ export const Tab = ({ children, data, badge, item }: TabProps) => {
     a11y,
     onChange,
   } = tabsContext;
+  const { tabListItemIndex, scrollContainer } = tabListContext;
   const isSelected = selectedIndex === tabListItemIndex;
   const isFocused = focusedTabIndex === tabListItemIndex;
 
-  useScrollIntoView(tabRef.current, {
-    shouldScroll: isFocused,
-    boundary: scrollBoundary,
-  });
+  const paddingX = 'small';
+  const { grid, space } = useSpace();
 
   useEffect(() => {
     if (tabRef.current && isFocused) {
       tabRef.current.focus();
+
+      if (scrollContainer) {
+        smoothScroll(tabRef.current, {
+          scrollContainer,
+          direction: 'horizontal',
+          speed: 0.5,
+          offset: space[paddingX] * grid * 3,
+        });
+      }
     }
-  }, [isFocused]);
+  }, [isFocused, scrollContainer, space, paddingX, grid]);
 
   const onKeyUp = (event: KeyboardEvent<HTMLButtonElement>) => {
     const targetKey = normalizeKey(event);
@@ -168,7 +173,7 @@ export const Tab = ({ children, data, badge, item }: TabProps) => {
       cursor="pointer"
       outline="none"
       position="relative"
-      paddingX="small"
+      paddingX={paddingX}
       paddingY="medium"
       className={[
         styles.tab,

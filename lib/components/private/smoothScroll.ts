@@ -1,3 +1,5 @@
+type Direction = 'horizontal' | 'vertical';
+
 const addDelay = (delay: number, func: () => void) => {
   if (delay) {
     setTimeout(func, delay);
@@ -22,18 +24,51 @@ const getExpectedTime = (
   return duration ? duration : normalizedDuration;
 };
 
+const getScrollPosition = (
+  scrollContainer: HTMLElement,
+  direction: Direction,
+) => scrollContainer[direction === 'horizontal' ? 'scrollLeft' : 'scrollTop'];
+
+const getScrollOffset = (
+  scrollContainer: HTMLElement,
+  targetElement: HTMLElement,
+  direction: Direction,
+) => {
+  if (scrollContainer === window.document.documentElement) {
+    const scrollPosition = getScrollPosition(scrollContainer, direction);
+    const positionOnScreen = targetElement.getBoundingClientRect()[
+      direction === 'horizontal' ? 'left' : 'top'
+    ];
+
+    return positionOnScreen + scrollPosition;
+  }
+
+  // Note: For simplicity we're assuming that the offset parent is the scroll container
+  return targetElement[direction === 'horizontal' ? 'offsetLeft' : 'offsetTop'];
+};
+
+const scrollTo = (
+  scrollContainer: HTMLElement,
+  direction: Direction,
+  to: number,
+) => {
+  scrollContainer[direction === 'horizontal' ? 'scrollLeft' : 'scrollTop'] = to;
+};
+
 interface ScrollOptions {
   duration?: number | null;
   speed?: number;
   minDuration?: number;
 }
 const scroll = (
+  scrollContainer: HTMLElement,
+  direction: Direction,
   to: number,
   { duration = null, speed = 2, minDuration = 1 }: ScrollOptions,
   callback?: () => void,
 ) => {
   const startTime = Date.now();
-  const initial = window.pageYOffset;
+  const initial = getScrollPosition(scrollContainer, direction);
   const total = Math.abs(to - initial);
   const expectedTime = getExpectedTime(total, duration, speed, minDuration);
   const scrollUp = initial > to;
@@ -49,12 +84,12 @@ const scroll = (
       const isComplete = scrollUp ? newPosition <= to : newPosition >= to;
 
       if (isComplete) {
-        window.scrollTo(0, to);
+        scrollTo(scrollContainer, direction, to);
         if (callback) {
           callback();
         }
       } else {
-        window.scrollTo(0, newPosition);
+        scrollTo(scrollContainer, direction, newPosition);
         step();
       }
     });
@@ -68,17 +103,25 @@ const scroll = (
 };
 
 interface SmoothScrollOptions extends ScrollOptions {
+  scrollContainer?: HTMLElement;
+  direction?: Direction;
   offset?: number;
   delay?: number;
 }
 
 export const smoothScroll = (
-  to: HTMLElement | string,
-  { offset = 0, delay = 0, ...scrollOptions }: SmoothScrollOptions = {},
+  targetElement: HTMLElement | string,
+  {
+    scrollContainer = window.document.documentElement,
+    direction = 'vertical',
+    offset = 0,
+    delay = 0,
+    ...scrollOptions
+  }: SmoothScrollOptions = {},
 ) =>
   new Promise((resolve) => {
     addDelay(delay, () => {
-      let element = to;
+      let element = targetElement;
 
       if (typeof element === 'string') {
         const queriedElement = document.getElementById(element);
@@ -90,9 +133,15 @@ export const smoothScroll = (
         element = queriedElement;
       }
 
-      const { top } = element.getBoundingClientRect();
-      const scrollPostion = top - offset + window.pageYOffset;
+      const scrollPosition =
+        getScrollOffset(scrollContainer, element, direction) - offset;
 
-      scroll(scrollPostion, scrollOptions, resolve);
+      scroll(
+        scrollContainer,
+        direction,
+        scrollPosition,
+        scrollOptions,
+        resolve,
+      );
     });
   });

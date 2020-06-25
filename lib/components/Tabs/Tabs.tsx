@@ -4,11 +4,10 @@ import React, {
   useEffect,
   useReducer,
   useRef,
-  createContext,
-  ReactElement,
-  useLayoutEffect,
   useState,
   useCallback,
+  createContext,
+  ReactElement,
 } from 'react';
 import { useStyles } from 'sku/react-treat';
 
@@ -29,12 +28,14 @@ export interface TabsProps {
   label: string;
   align?: 'left' | 'center';
   gutter?: BoxProps['paddingX'];
+  reserveHitArea?: boolean;
   scroll?: boolean;
   data?: DataAttributeMap;
 }
 
 interface TabListContextValues {
   tabListItemIndex: number;
+  scrollContainer: HTMLElement | null;
 }
 export const TabListContext = createContext<TabListContextValues | null>(null);
 
@@ -52,7 +53,7 @@ const HIDE_FOCUS_RING = 1;
 type FocusRingAction =
   | {
       type: typeof UPDATE_FOCUS_RING;
-      value: { scrollElement: HTMLElement; focusedElement?: HTMLElement };
+      value: { scrollContainer: HTMLElement; focusedElement?: HTMLElement };
     }
   | { type: typeof HIDE_FOCUS_RING };
 
@@ -69,8 +70,8 @@ const focusRingReducer = (
         return state;
       }
 
-      const { scrollElement } = action.value;
-      const left = focusedElement.offsetLeft - scrollElement.scrollLeft;
+      const { scrollContainer } = action.value;
+      const left = focusedElement.offsetLeft - scrollContainer.scrollLeft;
       const width = focusedElement.offsetWidth;
       const height = focusedElement.offsetHeight;
 
@@ -107,6 +108,7 @@ export const Tabs = (props: TabsProps) => {
     data,
     align = 'left',
     gutter,
+    reserveHitArea = false,
     scroll = true,
   } = props;
 
@@ -135,6 +137,7 @@ export const Tabs = (props: TabsProps) => {
         key={index}
         value={{
           tabListItemIndex: index,
+          scrollContainer: tabsRef.current,
         }}
       >
         {tab}
@@ -169,9 +172,11 @@ export const Tabs = (props: TabsProps) => {
     );
   }, [tabsRef, setShowMask]);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     updateMask();
   }, [updateMask]);
+
+  const negativeMarginTop = useNegativeMarginTop('medium');
 
   return (
     <Box
@@ -184,13 +189,13 @@ export const Tabs = (props: TabsProps) => {
           type: UPDATE_FOCUS_RING,
           value: {
             focusedElement: event.target,
-            scrollElement: tabsRef.current,
+            scrollContainer: tabsRef.current,
           },
         });
       }}
       onBlurCapture={() => focusRingDispatch({ type: HIDE_FOCUS_RING })}
     >
-      <Box className={useNegativeMarginTop('medium')}>
+      <Box className={reserveHitArea ? undefined : negativeMarginTop}>
         <Box position="relative">
           <Box
             position="absolute"
@@ -219,16 +224,15 @@ export const Tabs = (props: TabsProps) => {
           >
             <Box
               ref={tabsRef}
-              data-tabs-scroll-boundary
               className={scroll ? [styles.scroll, styles.nowrap] : undefined}
               display="flex"
               onScroll={
                 !scroll
                   ? undefined
                   : () => {
-                      const scrollElement = tabsRef.current;
+                      const scrollContainer = tabsRef.current;
 
-                      if (!scrollElement) {
+                      if (!scrollContainer) {
                         return;
                       }
 
@@ -236,7 +240,7 @@ export const Tabs = (props: TabsProps) => {
 
                       focusRingDispatch({
                         type: UPDATE_FOCUS_RING,
-                        value: { scrollElement },
+                        value: { scrollContainer },
                       });
                     }
               }
