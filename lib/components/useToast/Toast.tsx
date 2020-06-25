@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 
 import * as styleRefs from './Toast.treat';
 import { useStyles, TreatProvider } from 'sku/react-treat';
@@ -15,7 +15,7 @@ import {
 import { IconPositive, IconCritical } from '../icons';
 import { ClearButton } from '../iconButtons/ClearButton/ClearButton';
 import { useTimeout } from './useTimeout';
-import { Toast as ToastType, ToastAction } from './ToastTypes';
+import { InternalToast, ToastAction } from './ToastTypes';
 
 const toneToIcon = {
   critical: IconCritical,
@@ -50,16 +50,40 @@ const Action = ({ label, onClick, removeToast }: ActionProps) => {
   );
 };
 
-interface ToastProps extends ToastType {
-  onClear: (id: string) => void;
+interface ToastProps extends InternalToast {
+  onClear: (dedupeKey: string, id: string) => void;
 }
 const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
-  ({ treatTheme, id, message, description, tone, onClear, action }, ref) => {
-    const remove = useCallback(() => onClear(id), [onClear, id]);
+  (
+    {
+      id,
+      treatTheme,
+      dedupeKey,
+      message,
+      description,
+      tone,
+      onClear,
+      action,
+      shouldRemove,
+    },
+    ref,
+  ) => {
+    const remove = useCallback(() => onClear(dedupeKey, id), [
+      onClear,
+      dedupeKey,
+      id,
+    ]);
     const { stopTimeout, startTimeout } = useTimeout({
       duration: 10000,
       onTimeout: remove,
     });
+
+    useEffect(() => {
+      if (shouldRemove) {
+        stopTimeout();
+        remove();
+      }
+    }, [shouldRemove, remove, stopTimeout]);
 
     const styles = useStyles(styleRefs);
 

@@ -6107,6 +6107,6 @@ exports[`useToast 1`] = `
 Object {
   exportType: hook,
   params: Array [],
-  returnType: (props: Pick<Toast, "tone" | "description" | "message" | "action">) => void,
+  returnType: (toast: Toast) => void,
 }
 `;
