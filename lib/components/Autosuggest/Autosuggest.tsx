@@ -20,7 +20,7 @@ import { getNextIndex } from '../private/getNextIndex';
 import { normalizeKey } from '../private/normalizeKey';
 import { ClearField } from '../private/Field/ClearField';
 import { smoothScroll } from '../private/smoothScroll';
-import { useScrollIntoView } from '../../hooks/useScrollIntoView';
+import { useScrollIntoView } from './useScrollIntoView';
 import { useIsolatedScroll } from './useIsolatedScroll';
 import { createAccessbilityProps, getItemId } from './createAccessbilityProps';
 import * as styleRefs from './Autosuggest.treat';
@@ -420,7 +420,7 @@ export function Autosuggest<Value>({
       ? document.getElementById(getItemId(id, highlightedIndex))
       : null;
 
-  useScrollIntoView(highlightedItem);
+  useScrollIntoView(highlightedItem, menuRef.current);
   useIsolatedScroll(menuRef.current);
 
   useEffect(() => {

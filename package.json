@@ -55,7 +55,6 @@
     "autosuggest-highlight": "^3.1.1",
     "basekick": "^3.1.1",
     "classnames": "^2.2.6",
-    "compute-scroll-into-view": "^1.0.14",
     "csstype": "^2.6.4",
     "dedent": "0.7.0",
     "gradient-parser": "^0.1.5",
