@@ -29,7 +29,6 @@ export interface TabsProps {
   align?: 'left' | 'center';
   gutter?: BoxProps['paddingX'];
   reserveHitArea?: boolean;
-  scroll?: boolean;
   data?: DataAttributeMap;
 }
 
@@ -109,7 +108,6 @@ export const Tabs = (props: TabsProps) => {
     align = 'left',
     gutter,
     reserveHitArea = false,
-    scroll = true,
   } = props;
 
   assert(
@@ -214,7 +212,7 @@ export const Tabs = (props: TabsProps) => {
           />
           <Box
             style={
-              scroll && showMask
+              showMask
                 ? {
                     WebkitMaskImage:
                       'linear-gradient(90deg, rgba(0,0,0,1) 0, rgba(0,0,0,1) calc(100% - 80px), rgba(0,0,0,0) 100%)',
@@ -224,26 +222,22 @@ export const Tabs = (props: TabsProps) => {
           >
             <Box
               ref={tabsRef}
-              className={scroll ? [styles.scroll, styles.nowrap] : undefined}
+              className={[styles.scroll, styles.nowrap]}
               display="flex"
-              onScroll={
-                !scroll
-                  ? undefined
-                  : () => {
-                      const scrollContainer = tabsRef.current;
+              onScroll={() => {
+                const scrollContainer = tabsRef.current;
 
-                      if (!scrollContainer) {
-                        return;
-                      }
+                if (!scrollContainer) {
+                  return;
+                }
 
-                      updateMask();
+                updateMask();
 
-                      focusRingDispatch({
-                        type: UPDATE_FOCUS_RING,
-                        value: { scrollContainer },
-                      });
-                    }
-              }
+                focusRingDispatch({
+                  type: UPDATE_FOCUS_RING,
+                  value: { scrollContainer },
+                });
+              }}
             >
               <Box
                 position="relative"

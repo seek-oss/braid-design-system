@@ -9,7 +9,6 @@ import {
   Tab,
   TabPanel,
   TabPanels,
-  Box,
   TabsProvider,
   Badge,
 } from '..';
@@ -155,34 +154,6 @@ const docs: ComponentDocs = {
             </TabPanels>
           </Stack>
         </TabsProvider>
-      ),
-    },
-    {
-      label: 'Force fit (no overflow)',
-      Example: () => (
-        <TabsProvider id="force-fit">
-          <Stack space="small">
-            <Tabs label="Test tabs" scroll={false}>
-              <Tab>The first tab</Tab>
-              <Tab>Second tab</Tab>
-              <Tab>Tab the third</Tab>
-            </Tabs>
-            <TabPanels>
-              <TabPanel>
-                <Placeholder height={200} label="Panel 1" />
-              </TabPanel>
-              <TabPanel>
-                <Placeholder height={200} label="Panel 2" />
-              </TabPanel>
-              <TabPanel>
-                <Placeholder height={200} label="Panel 3" />
-              </TabPanel>
-            </TabPanels>
-          </Stack>
-        </TabsProvider>
-      ),
-      Container: ({ children }) => (
-        <Box style={{ maxWidth: 300 }}>{children}</Box>
       ),
     },
   ],
