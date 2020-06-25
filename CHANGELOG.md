@@ -1,5 +1,13 @@
 # braid-design-system
 
+## 28.2.1
+
+### Patch Changes
+
+- Fix CSS ordering issue in production mode ([#664](https://github.com/seek-oss/braid-design-system/pull/664))
+
+  Files within the top-level `themes` directory were not correctly marked as [side effects](https://webpack.js.org/guides/tree-shaking/) which meant that, when importing from `braid-design-system/themes/*`, the CSS order could differ between development and production.
+
 ## 28.2.0
 
 ### Minor Changes
