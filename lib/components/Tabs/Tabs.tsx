@@ -116,8 +116,8 @@ export const Tabs = (props: TabsProps) => {
             style={
               showMask
                 ? {
-                    WebkitMaskImage:
-                      'linear-gradient(90deg, rgba(0,0,0,1) 0, rgba(0,0,0,1) calc(100% - 80px), rgba(0,0,0,0) 100%)',
+                    // WebkitMaskImage:
+                    //   'linear-gradient(90deg, rgba(0,0,0,1) 0, rgba(0,0,0,1) calc(100% - 80px), rgba(0,0,0,0) 100%)',
                   }
                 : undefined
             }

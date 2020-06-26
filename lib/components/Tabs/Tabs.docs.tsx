@@ -111,7 +111,7 @@ const docs: ComponentDocs = {
       Example: () => (
         <TabsProvider id="default">
           <Stack space="small">
-            <Tabs label="Test tabs" gutter="gutter">
+            <Tabs label="Test tabs">
               <Tab>The first tab</Tab>
               <Tab>The second tab</Tab>
               <Tab>The third tab</Tab>
