@@ -111,10 +111,13 @@ const docs: ComponentDocs = {
       Example: () => (
         <TabsProvider id="default">
           <Stack space="small">
-            <Tabs label="Test tabs">
+            <Tabs label="Test tabs" gutter="gutter">
               <Tab>The first tab</Tab>
-              <Tab>Second tab</Tab>
-              <Tab>Tab the third</Tab>
+              <Tab>The second tab</Tab>
+              <Tab>The third tab</Tab>
+              <Tab>The fourth tab</Tab>
+              <Tab>The fifth tab</Tab>
+              <Tab>The sixth tab</Tab>
             </Tabs>
             <TabPanels>
               <TabPanel>
@@ -125,6 +128,15 @@ const docs: ComponentDocs = {
               </TabPanel>
               <TabPanel>
                 <Placeholder height={200} label="Panel 3" />
+              </TabPanel>
+              <TabPanel>
+                <Placeholder height={200} label="Panel 4" />
+              </TabPanel>
+              <TabPanel>
+                <Placeholder height={200} label="Panel 5" />
+              </TabPanel>
+              <TabPanel>
+                <Placeholder height={200} label="Panel 6" />
               </TabPanel>
             </TabPanels>
           </Stack>

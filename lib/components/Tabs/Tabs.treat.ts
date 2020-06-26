@@ -17,15 +17,19 @@ export const nowrap = style({
   whiteSpace: 'nowrap',
 });
 
+const cropIosScrollbarOffset = 15;
 export const scroll = style({
+  WebkitOverflowScrolling: 'touch',
   overflowX: 'auto',
   overflowY: 'hidden',
   scrollbarWidth: 'none',
   msOverflowStyle: 'none',
+  paddingBottom: cropIosScrollbarOffset,
+  clipPath: `inset(0 0 ${cropIosScrollbarOffset}px 0)`,
+  marginBottom: -cropIosScrollbarOffset,
   selectors: {
     '&::-webkit-scrollbar': {
-      width: 0,
-      height: 0,
+      WebkitAppearance: 'none',
     },
   },
 });
@@ -35,9 +39,14 @@ export const marginAuto = style({
   marginRight: 'auto',
 });
 
-export const tabFocusRing = style({
-  zIndex: 1,
-});
+export const tabFocusRing = [
+  style({
+    zIndex: 1,
+  }),
+  style((theme) => ({
+    margin: theme.border.width.large,
+  })),
+];
 
 export const tabUnderline = style({
   zIndex: 2,

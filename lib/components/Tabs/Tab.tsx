@@ -29,6 +29,7 @@ import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
 import { TabListContext } from './Tabs';
+import { Overlay } from '../private/Overlay/Overlay';
 import { BadgeProps, Badge } from '../Badge/Badge';
 import { smoothScroll } from '../private/smoothScroll';
 import { useSpace } from '../useSpace/useSpace';
@@ -94,7 +95,7 @@ export const Tab = ({ children, data, badge, item }: TabProps) => {
           scrollContainer,
           direction: 'horizontal',
           offset: space[paddingX] * grid * 3,
-          ...(firstRenderRef.current ? { duration: 1 } : { speed: 0.5 }),
+          ...(firstRenderRef.current ? { duration: 1 } : { speed: 0.7 }),
         });
       }
 
@@ -240,6 +241,14 @@ export const Tab = ({ children, data, badge, item }: TabProps) => {
           ]}
         />
       </Box>
+      <Overlay
+        boxShadow="outlineFocus"
+        borderRadius="standard"
+        className={styles.tabFocusRing}
+        visible={isFocused}
+        transition="fast"
+        onlyVisibleForKeyboardNavigation
+      />
     </Box>
   );
 };
