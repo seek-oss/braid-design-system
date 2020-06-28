@@ -85,7 +85,7 @@ export const Tab = ({ children, data, badge, item }: TabProps) => {
     if (tabRef.current && isFocused) {
       tabRef.current.focus();
     }
-  }, [isFocused, scrollContainer, space, paddingX, grid]);
+  }, [isFocused]);
 
   const firstRenderRef = useRef(true);
   useEffect(() => {

@@ -17,21 +17,23 @@ export const nowrap = style({
   whiteSpace: 'nowrap',
 });
 
-const cropIosScrollbarOffset = 15;
 export const scroll = style({
   WebkitOverflowScrolling: 'touch',
   overflowX: 'auto',
   overflowY: 'hidden',
   scrollbarWidth: 'none',
   msOverflowStyle: 'none',
-  paddingBottom: cropIosScrollbarOffset,
-  clipPath: `inset(0 0 ${cropIosScrollbarOffset}px 0)`,
-  marginBottom: -cropIosScrollbarOffset,
   selectors: {
     '&::-webkit-scrollbar': {
-      WebkitAppearance: 'none',
+      width: 0,
+      height: 0,
     },
   },
+});
+
+export const mask = style({
+  maskImage:
+    'linear-gradient(90deg, rgba(0,0,0,1) 0, rgba(0,0,0,1) calc(100% - 80px), rgba(0,0,0,0) 100%)',
 });
 
 export const marginAuto = style({

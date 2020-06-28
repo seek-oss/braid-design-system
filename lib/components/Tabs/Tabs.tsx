@@ -98,7 +98,7 @@ export const Tabs = (props: TabsProps) => {
       tabsRef.current.scrollWidth -
         tabsRef.current.offsetWidth -
         tabsRef.current.scrollLeft >
-        5,
+        0,
     );
   }, [tabsRef, setShowMask]);
 
@@ -113,34 +113,29 @@ export const Tabs = (props: TabsProps) => {
       <Box className={reserveHitArea ? undefined : negativeMarginTop}>
         <Box position="relative">
           <Box
-            style={
-              showMask
-                ? {
-                    // WebkitMaskImage:
-                    //   'linear-gradient(90deg, rgba(0,0,0,1) 0, rgba(0,0,0,1) calc(100% - 80px), rgba(0,0,0,0) 100%)',
-                  }
-                : undefined
-            }
+            ref={tabsRef}
+            className={[
+              styles.scroll,
+              styles.nowrap,
+              showMask ? styles.mask : null,
+            ]}
+            display="flex"
+            onScroll={updateMask}
+            flexWrap="nowrap"
           >
             <Box
-              ref={tabsRef}
-              className={[styles.scroll, styles.nowrap]}
               display="flex"
-              onScroll={updateMask}
+              className={align === 'center' ? styles.marginAuto : undefined}
+              paddingX={gutter}
+              flexWrap="nowrap"
             >
               <Box
-                position="relative"
+                {...a11y.tabListProps({ label })}
                 display="flex"
-                className={align === 'center' ? styles.marginAuto : undefined}
-                paddingX={gutter}
+                {...buildDataAttributes(data)}
+                flexWrap="nowrap"
               >
-                <Box
-                  {...a11y.tabListProps({ label })}
-                  display="flex"
-                  {...buildDataAttributes(data)}
-                >
-                  {tabs}
-                </Box>
+                {tabs}
               </Box>
             </Box>
           </Box>
