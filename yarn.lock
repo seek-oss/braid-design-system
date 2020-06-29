@@ -11587,7 +11587,7 @@ pkginfo@0.x.x:
   resolved "https://registry.yarnpkg.com/pkginfo/-/pkginfo-0.4.1.tgz#b5418ef0439de5425fc4995042dced14fb2a84ff"
   integrity sha1-tUGO8EOd5UJfxJlQQtztFPsqhP8=
 
-playroom@0.18.1, playroom@^0.15.0:
+playroom@0.18.1, playroom@^0.21.1:
   version "0.18.1"
   resolved "https://registry.yarnpkg.com/playroom/-/playroom-0.18.1.tgz#93795a0b7c34f815b40eb1afb6a5720ed27cfb13"
   integrity sha512-kY/u8okcyTCtDtShmxh2k1CXlBCtjOXbJP3Zc1x4dVz+5NmS+IFUC4pv04lXLzI0bEumUIM6gj4kINMQZ4EhlA==
@@ -13742,10 +13742,10 @@ sisteransi@^1.0.4:
   resolved "https://registry.yarnpkg.com/sisteransi/-/sisteransi-1.0.5.tgz#134d681297756437cc05ca01370d3a7a571075ed"
   integrity sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==
 
-sku@10.3.5:
-  version "10.3.5"
-  resolved "https://registry.yarnpkg.com/sku/-/sku-10.3.5.tgz#3e608f58e819fc693af404df99498901500f9dba"
-  integrity sha512-VT3IKAN5859MWvQNu5XCV8YGRCsfgGkv1yx/yXLhgwdx1u5aFat2b1tiQOf5mWMrl4k+dkngEZwzfBQaMAIlyg==
+sku@10.3.6:
+  version "10.3.6"
+  resolved "https://registry.yarnpkg.com/sku/-/sku-10.3.6.tgz#6d4f04fcde53d30afe9c751e8867b2b8d0a2750e"
+  integrity sha512-RJA+onKVz/Ue+3/FXdHQS3vfLgEUF2t4jtidgbThVIy6KLPovMDzhQ/Qp0edNKX0lmjoZqeh4hHb7IZ3OTP6Ow==
   dependencies:
     "@babel/core" "^7.9.0"
     "@babel/plugin-proposal-class-properties" "^7.8.3"
@@ -13828,7 +13828,7 @@ sku@10.3.5:
     node-html-parser "^1.2.16"
     open "^7.0.0"
     path-to-regexp "^6.0.0"
-    playroom "^0.15.0"
+    playroom "^0.21.1"
     postcss-js "^2.0.2"
     postcss-loader "^3.0.0"
     prettier "2.0.2"
