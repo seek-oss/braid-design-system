@@ -5192,6 +5192,75 @@ Object {
 }
 `;
 
+exports[`Tab 1`] = `
+Object {
+  exportType: component,
+  props: {
+    badge?: ReactElement<BadgeProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)>
+    children: ReactNode
+    data?: Record<string, string | number>
+    item?: string
+},
+}
+`;
+
+exports[`TabPanel 1`] = `
+Object {
+  exportType: component,
+  props: {
+    children: ReactNode
+    data?: Record<string, string | number>
+},
+}
+`;
+
+exports[`TabPanels 1`] = `
+Object {
+  exportType: component,
+  props: {
+    children: ReactElement<TabPanelProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)>[]
+},
+}
+`;
+
+exports[`Tabs 1`] = `
+Object {
+  exportType: component,
+  props: {
+    align?: 
+        | "center"
+        | "left"
+    children: ReactElement<TabProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)>[]
+    data?: Record<string, string | number>
+    gutter?: ResponsiveProp<
+        | "gutter"
+        | "large"
+        | "medium"
+        | "none"
+        | "small"
+        | "xlarge"
+        | "xsmall"
+        | "xxlarge"
+        | "xxsmall"
+    >
+    label: string
+    reserveHitArea?: boolean
+},
+}
+`;
+
+exports[`TabsProvider 1`] = `
+Object {
+  exportType: component,
+  props: {
+    children: ReactNode
+    id: string
+    onChange?: (selectedIndex: number, selectedItem?: string | undefined) => void
+    selectedItem?: string
+},
+}
+`;
+
 exports[`Tag 1`] = `
 Object {
   exportType: component,
