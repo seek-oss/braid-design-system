@@ -33,7 +33,6 @@ import { Overlay } from '../private/Overlay/Overlay';
 import { BadgeProps, Badge } from '../Badge/Badge';
 import { smoothScroll } from '../private/smoothScroll';
 import { useSpace } from '../useSpace/useSpace';
-
 import * as styleRefs from './Tabs.treat';
 
 export interface TabProps {
@@ -95,7 +94,7 @@ export const Tab = ({ children, data, badge, item }: TabProps) => {
           scrollContainer,
           direction: 'horizontal',
           offset: space[paddingX] * grid * 3,
-          ...(firstRenderRef.current ? { duration: 1 } : { speed: 0.7 }),
+          ...(firstRenderRef.current ? { duration: 0 } : { speed: 0.7 }),
         });
       }
 

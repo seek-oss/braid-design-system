@@ -7,9 +7,7 @@ import React, {
   ReactElement,
 } from 'react';
 import assert from 'assert';
-
 import { TabsContext } from './TabsProvider';
-
 import { TAB_PANELS_UPDATED } from './Tabs.actions';
 import { TabPanel, TabPanelProps } from './TabPanel';
 
@@ -57,7 +55,7 @@ export const TabPanels = ({ children }: TabPanelsProps) => {
   useEffect(() => {
     dispatch({ type: TAB_PANELS_UPDATED, panels: panelItems });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [...panelItems, dispatch]);
+  }, [panelItems.join(), dispatch]);
 
   return <Fragment>{panels}</Fragment>;
 };

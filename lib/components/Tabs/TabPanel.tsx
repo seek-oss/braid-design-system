@@ -1,16 +1,14 @@
 import React, { ReactNode, useContext } from 'react';
 import { useStyles } from 'sku/react-treat';
 import assert from 'assert';
-
 import { Box } from '../Box/Box';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
-import { TabsContext } from './TabsProvider';
 import { Overlay } from '../private/Overlay/Overlay';
-
-import * as styleRefs from './Tabs.treat';
+import { TabsContext } from './TabsProvider';
 import { TabPanelsContext } from './TabPanels';
+import * as styleRefs from './Tabs.treat';
 
 export interface TabPanelProps {
   children: ReactNode;

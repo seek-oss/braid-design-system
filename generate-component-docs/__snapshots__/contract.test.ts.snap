@@ -5245,7 +5245,6 @@ Object {
     >
     label: string
     reserveHitArea?: boolean
-    scroll?: boolean
 },
 }
 `;

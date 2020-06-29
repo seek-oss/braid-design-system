@@ -21,7 +21,7 @@ const getExpectedTime = (
   const normalizedDuration =
     minDuration > calculatedDuration ? minDuration : calculatedDuration;
 
-  return duration ? duration : normalizedDuration;
+  return duration !== null ? duration : normalizedDuration;
 };
 
 const getScrollPosition = (
@@ -76,7 +76,7 @@ const scroll = (
   scrollContainer: HTMLElement,
   direction: Direction,
   to: number,
-  { duration = null, speed = 2, minDuration = 1 }: ScrollOptions,
+  { duration = null, speed = 2, minDuration = 0 }: ScrollOptions,
   callback?: () => void,
 ) => {
   const startTime = Date.now();

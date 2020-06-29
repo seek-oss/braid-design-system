@@ -9,7 +9,6 @@ import React, {
   ReactElement,
 } from 'react';
 import { useStyles } from 'sku/react-treat';
-
 import assert from 'assert';
 import { Box, BoxProps } from '../Box/Box';
 import { TAB_LIST_UPDATED } from './Tabs.actions';
@@ -104,11 +103,8 @@ export const Tabs = (props: TabsProps) => {
 
   useEffect(() => {
     updateMask();
-  }, [updateMask]);
 
-  useEffect(() => {
     window.addEventListener('resize', updateMask);
-
     return () => window.removeEventListener('resize', updateMask);
   }, [updateMask]);
 

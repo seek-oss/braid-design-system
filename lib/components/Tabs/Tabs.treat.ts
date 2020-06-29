@@ -79,7 +79,7 @@ export const tabPanel = style({});
 export const tabPanelFocusRing = style({
   zIndex: 1,
   selectors: {
-    [`${tabPanel}:focus &`]: {
+    [`${tabPanel}:focus > &`]: {
       opacity: 1,
     },
   },
