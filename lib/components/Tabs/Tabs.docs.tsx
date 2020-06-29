@@ -22,7 +22,7 @@ import {
 
 const docs: ComponentDocs = {
   category: 'Content',
-  screenshotWidths: [],
+  screenshotWidths: [320, 1200],
   subComponents: ['TabsProvider', 'Tab', 'TabPanels', 'TabPanel'],
   description: (
     <Stack space="large">
