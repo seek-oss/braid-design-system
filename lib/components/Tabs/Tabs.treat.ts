@@ -44,6 +44,12 @@ export const marginAuto = style({
 export const tabFocusRing = [
   style({
     zIndex: 1,
+    opacity: 0,
+    selectors: {
+      [`${tab}:focus &`]: {
+        opacity: 1,
+      },
+    },
   }),
   style((theme) => ({
     margin: theme.border.width.large,

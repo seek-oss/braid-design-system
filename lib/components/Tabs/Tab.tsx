@@ -245,7 +245,6 @@ export const Tab = ({ children, data, badge, item }: TabProps) => {
         boxShadow="outlineFocus"
         borderRadius="standard"
         className={styles.tabFocusRing}
-        visible={isFocused}
         transition="fast"
         onlyVisibleForKeyboardNavigation
       />

@@ -106,6 +106,12 @@ export const Tabs = (props: TabsProps) => {
     updateMask();
   }, [updateMask]);
 
+  useEffect(() => {
+    window.addEventListener('resize', updateMask);
+
+    return () => window.removeEventListener('resize', updateMask);
+  }, [updateMask]);
+
   const negativeMarginTop = useNegativeMarginTop('medium');
 
   return (
