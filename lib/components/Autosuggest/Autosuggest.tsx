@@ -80,12 +80,13 @@ interface SuggestionItemProps {
   highlighted: boolean;
   selected: boolean;
   onClick: () => void;
-  onMouseMove: () => void;
+  onHover: () => void;
 }
 function SuggestionItem({
   suggestion,
   highlighted,
   selected,
+  onHover,
   ...restProps
 }: SuggestionItemProps) {
   const { highlights = [], onClear, clearLabel } = suggestion;
@@ -103,6 +104,8 @@ function SuggestionItem({
         // Without this `onClick` will not fire due to the input blur event
         event.preventDefault();
       }}
+      onMouseMove={onHover}
+      onTouchStart={onHover}
       {...restProps}
     >
       {/*
@@ -620,7 +623,7 @@ export function Autosuggest<Value>({
                                 fireChange(suggestion);
                                 dispatch({ type: SUGGESTION_MOUSE_CLICK });
                               }}
-                              onMouseMove={() => {
+                              onHover={() => {
                                 dispatch({
                                   type: SUGGESTION_MOUSE_ENTER,
                                   value: index,
