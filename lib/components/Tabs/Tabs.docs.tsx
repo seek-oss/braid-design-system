@@ -166,7 +166,7 @@ const docs: ComponentDocs = {
       ),
     },
     {
-      // docsSite: false,
+      docsSite: false,
       label: 'Test: Selected tab should be scrolled into view on load',
       Example: ({ id }) => (
         <TabsProvider id={id} selectedItem="4">
