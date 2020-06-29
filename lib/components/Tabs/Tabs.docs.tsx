@@ -66,6 +66,16 @@ const docs: ComponentDocs = {
         <Strong>Tabs</Strong>.
       </Text>
       <Text>
+        Tabs are horizontally scrollable when they’re too wide to fit on screen.
+        If you’d like to align the tabs with content below them (e.g. when the
+        tab panels are inside a card but the tabs are outside), you can provide
+        a <Strong>gutter</Strong> prop to <Strong>Tabs</Strong> that accepts a
+        value from{' '}
+        <TextLink href="/foundations/layout#Spacing">
+          Braid’s space scale.
+        </TextLink>
+      </Text>
+      <Text>
         State is managed internally by default. If you’d like to manage tab
         state from the outside, you must pass an <Strong>item</Strong> prop to
         each <Strong>Tab</Strong> element, as well as{' '}
