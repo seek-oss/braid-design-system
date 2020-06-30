@@ -77,7 +77,11 @@ const getPossibleScroll = (
   direction: Direction,
 ) =>
   scrollContainer[direction === 'horizontal' ? 'scrollWidth' : 'scrollHeight'] -
-  scrollContainer[direction === 'horizontal' ? 'offsetWidth' : 'offsetHeight'];
+  (scrollContainer === window.document.documentElement
+    ? 0
+    : scrollContainer[
+        direction === 'horizontal' ? 'offsetWidth' : 'offsetHeight'
+      ]);
 
 const limitNumberToRange = (number: number, min: number, max: number) => {
   if (number < min) {
