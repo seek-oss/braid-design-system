@@ -18,6 +18,7 @@ import buildDataAttributes, {
 import { TabsContext } from './TabsProvider';
 import { Tab, TabProps } from './Tab';
 import { useNegativeMarginTop } from '../../hooks/useNegativeMargin/useNegativeMargin';
+import { useBraidTheme } from '../BraidProvider/BraidProvider';
 import * as styleRefs from './Tabs.treat';
 
 export interface TabsProps {
@@ -87,6 +88,9 @@ export const Tabs = (props: TabsProps) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tabItems.join(), dispatch]);
 
+  const {
+    space: { grid, space },
+  } = useBraidTheme();
   const [showMask, setShowMask] = useState(true);
   const updateMask = useCallback(() => {
     if (!tabsRef.current) {
@@ -97,9 +101,9 @@ export const Tabs = (props: TabsProps) => {
       tabsRef.current.scrollWidth -
         tabsRef.current.offsetWidth -
         tabsRef.current.scrollLeft >
-        0,
+        grid * space.small,
     );
-  }, [tabsRef, setShowMask]);
+  }, [tabsRef, setShowMask, grid, space]);
 
   useEffect(() => {
     updateMask();

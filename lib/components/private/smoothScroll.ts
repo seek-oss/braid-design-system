@@ -72,6 +72,25 @@ const scrollTo = (
   scrollContainer[direction === 'horizontal' ? 'scrollLeft' : 'scrollTop'] = to;
 };
 
+const getPossibleScroll = (
+  scrollContainer: HTMLElement,
+  direction: Direction,
+) =>
+  scrollContainer[direction === 'horizontal' ? 'scrollWidth' : 'scrollHeight'] -
+  scrollContainer[direction === 'horizontal' ? 'offsetWidth' : 'offsetHeight'];
+
+const limitNumberToRange = (number: number, min: number, max: number) => {
+  if (number < min) {
+    return min;
+  }
+
+  if (number > max) {
+    return max;
+  }
+
+  return number;
+};
+
 interface ScrollOptions {
   duration?: number | null;
   speed?: number;
@@ -86,9 +105,11 @@ const scroll = (
 ) => {
   const startTime = Date.now();
   const initial = getScrollPosition(scrollContainer, direction);
-  const total = Math.abs(to - initial);
+  const possibleScroll = getPossibleScroll(scrollContainer, direction);
+  const targetScrollPosition = limitNumberToRange(to, 0, possibleScroll);
+  const total = Math.abs(targetScrollPosition - initial);
   const expectedTime = getExpectedTime(total, duration, speed, minDuration);
-  const scrollUp = initial > to;
+  const scrollForwards = targetScrollPosition > initial;
 
   const step = () => {
     requestAnimationFrame(() => {
@@ -96,12 +117,14 @@ const scroll = (
       const progress = timePassed / expectedTime;
       const distance = easeModifier(progress) * total;
       const newPosition = Math.floor(
-        scrollUp ? initial - distance : initial + distance,
+        scrollForwards ? initial + distance : initial - distance,
       );
-      const isComplete = scrollUp ? newPosition <= to : newPosition >= to;
+      const isComplete = scrollForwards
+        ? newPosition >= targetScrollPosition
+        : newPosition <= targetScrollPosition;
 
       if (isComplete) {
-        scrollTo(scrollContainer, direction, to);
+        scrollTo(scrollContainer, direction, targetScrollPosition);
         if (callback) {
           callback();
         }
@@ -112,7 +135,7 @@ const scroll = (
     });
   };
 
-  if (to !== initial) {
+  if (targetScrollPosition !== initial) {
     step();
   } else if (callback) {
     callback();
