@@ -46,14 +46,19 @@ const getScrollOffset = (
   let totalOffset = 0;
   let currentElement = targetElement;
   const offsetKey = direction === 'horizontal' ? 'offsetLeft' : 'offsetTop';
-  while (currentElement !== scrollContainer) {
+  while (
+    scrollContainer.contains(currentElement) ||
+    currentElement === scrollContainer
+  ) {
     totalOffset += currentElement[offsetKey];
 
-    if (currentElement.parentElement === null) {
+    const { offsetParent } = currentElement;
+
+    if (!(offsetParent instanceof HTMLElement)) {
       throw new Error('Target element not inside scroll container');
     }
 
-    currentElement = currentElement.parentElement;
+    currentElement = offsetParent;
   }
 
   return totalOffset;
