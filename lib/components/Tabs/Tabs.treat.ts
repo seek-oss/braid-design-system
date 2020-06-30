@@ -44,7 +44,6 @@ export const marginAuto = style({
 export const tabFocusRing = [
   style({
     zIndex: 1,
-    opacity: 0,
     selectors: {
       [`${tab}:focus &`]: {
         opacity: 1,
@@ -62,7 +61,6 @@ export const tabUnderline = style({
 });
 
 export const tabUnderlineHover = style({
-  opacity: 0,
   selectors: {
     [`${tab}:hover &`]: {
       opacity: 1,

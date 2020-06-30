@@ -181,7 +181,6 @@ export const Tab = ({ children, data, badge, item }: TabProps) => {
       outline="none"
       position="relative"
       paddingX={paddingX}
-      paddingY="medium"
       className={styles.tab}
       {...buildDataAttributes(data)}
     >
@@ -189,15 +188,17 @@ export const Tab = ({ children, data, badge, item }: TabProps) => {
         Rendering Text component to provide rendering context
         for both icons and text labels
       */}
-      <Text
-        {...a11y.tabLabelProps({ tabIndex: tabListItemIndex })}
-        size={tabTextSize}
-        weight="medium"
-        align="center"
-        tone={isSelected ? 'formAccent' : 'secondary'}
-      >
-        {children}
-      </Text>
+      <Box paddingY="medium">
+        <Text
+          {...a11y.tabLabelProps({ tabIndex: tabListItemIndex })}
+          size={tabTextSize}
+          weight="medium"
+          align="center"
+          tone={isSelected ? 'formAccent' : 'secondary'}
+        >
+          {children}
+        </Text>
+      </Box>
       {badge ? <Box paddingLeft="xsmall">{badge}</Box> : undefined}
       <Box
         position="absolute"
@@ -222,6 +223,7 @@ export const Tab = ({ children, data, badge, item }: TabProps) => {
           left={0}
           right={0}
           bottom={0}
+          opacity={0}
           className={[
             styles.tabUnderlineHover,
             styles.tabUnderline,
@@ -246,6 +248,7 @@ export const Tab = ({ children, data, badge, item }: TabProps) => {
         boxShadow="outlineFocus"
         borderRadius="standard"
         className={styles.tabFocusRing}
+        visible={false}
         transition="fast"
         onlyVisibleForKeyboardNavigation
       />
