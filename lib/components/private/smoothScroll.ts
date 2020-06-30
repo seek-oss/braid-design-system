@@ -55,7 +55,7 @@ const getScrollOffset = (
     const { offsetParent } = currentElement;
 
     if (!(offsetParent instanceof HTMLElement)) {
-      throw new Error('Target element not inside scroll container');
+      break;
     }
 
     currentElement = offsetParent;
