@@ -250,17 +250,27 @@ const docs: ComponentDocs = {
       docsSite: false,
       label:
         'Test: Selected tab with gutter should be scrolled into view on load',
+      Container: ({ children }) => (
+        <Box style={{ background: useBraidTheme().color.background.body }}>
+          {children}
+        </Box>
+      ),
       Example: ({ id }) => (
-        <TabsProvider id={id} selectedItem="4">
+        <TabsProvider id={id} selectedItem="3">
           <Stack space="medium">
-            <Tabs label="Test tabs" align="center" gutter="gutter">
+            <Tabs
+              label="Test tabs"
+              align="center"
+              gutter="gutter"
+              reserveHitArea
+            >
               <Tab item="1">The first tab</Tab>
               <Tab item="2">The second tab</Tab>
               <Tab item="3">The third tab</Tab>
               <Tab item="4">The fourth tab</Tab>
               <Tab item="5">The fifth tab</Tab>
             </Tabs>
-            <Box paddingX="gutter">
+            <Card>
               <TabPanels>
                 <TabPanel>
                   <Placeholder height={200} label="Panel 1" />
@@ -278,7 +288,7 @@ const docs: ComponentDocs = {
                   <Placeholder height={200} label="Panel 5" />
                 </TabPanel>
               </TabPanels>
-            </Box>
+            </Card>
           </Stack>
         </TabsProvider>
       ),
