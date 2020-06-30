@@ -22,7 +22,7 @@ export const TabPanel = ({ children, data }: TabPanelProps) => {
 
   assert(
     tabsContext !== null,
-    'A TabPanel must be rendered as a child of TabsProvider. See the documentation for correct usage: https://seek-oss.github.io/braid-design-system/components/TabsPanel',
+    'A TabPanel must be rendered as a child of TabsProvider. See the documentation for correct usage: https://seek-oss.github.io/braid-design-system/components/Tabs',
   );
 
   if (!tabPanelsContext) {
