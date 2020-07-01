@@ -99,19 +99,21 @@ const PropList = ({
 
   return (
     <Stack space="large">
-      <Heading level="4" component="h4">
+      <Heading level="3" component="h4">
         {label}
       </Heading>
-      {props.map(({ propName, type }) => (
-        <Stack space="small" key={propName}>
-          <Text size="small" weight="medium">
-            {propName}
-          </Text>
-          <Text tone="secondary" size="small">
-            <PropType type={type} />
-          </Text>
-        </Stack>
-      ))}
+      <Stack space="large">
+        {props.map(({ propName, type }) => (
+          <Stack space="small" key={propName}>
+            <Text size="small" weight="medium">
+              {propName}
+            </Text>
+            <Text tone="secondary" size="small">
+              <PropType type={type} />
+            </Text>
+          </Stack>
+        ))}
+      </Stack>
     </Stack>
   );
 };

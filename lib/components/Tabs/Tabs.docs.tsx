@@ -244,7 +244,7 @@ const docs: ComponentDocs = {
       ),
     },
     {
-      // docsSite: false,
+      docsSite: false,
       label:
         'Test: Selected tab with gutter should be scrolled into view on load',
       Container: ({ children }) => (

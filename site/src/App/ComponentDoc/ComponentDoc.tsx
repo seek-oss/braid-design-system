@@ -63,54 +63,49 @@ export const ComponentDoc = ({
         {componentName}
       </Heading>
       {docs.description}
-      {docs.description ? (
-        <Fragment>
-          <Divider />
-          <Heading level="3" component="h4">
-            Example{filteredExamples.length > 1 ? 's' : ''}
-          </Heading>
-        </Fragment>
-      ) : null}
-      {filteredExamples.map((example, index) => {
-        const {
-          label,
-          Example,
-          code,
-          Container = DefaultContainer,
-          playroom,
-        } = example;
+      <Divider />
+      <Stack space="xlarge" dividers>
+        {filteredExamples.map((example, index) => {
+          const {
+            label,
+            Example,
+            code,
+            Container = DefaultContainer,
+            playroom,
+          } = example;
 
-        const codeAsString =
-          Example && !code
-            ? // eslint-disable-next-line new-cap
-              reactElementToJSXString(Example({ id: 'id', handler }), {
-                useBooleanShorthandSyntax: false,
-                showDefaultProps: false,
-                showFunctions: false,
-                filterProps: ['onChange', 'onBlur', 'onFocus'],
-              })
-            : code;
+          const codeAsString =
+            Example && !code
+              ? // eslint-disable-next-line new-cap
+                reactElementToJSXString(Example({ id: 'id', handler }), {
+                  useBooleanShorthandSyntax: false,
+                  showDefaultProps: false,
+                  showFunctions: false,
+                  filterProps: ['onChange', 'onBlur', 'onFocus'],
+                })
+              : code;
 
-        return (
-          <Box key={index} marginBottom="xlarge">
-            <Stack space="xlarge">
-              {label && filteredExamples.length > 1 ? (
-                <Heading level="4">{label}</Heading>
-              ) : null}
-              {Example ? (
-                <Container>
-                  <ThemedExample>
-                    <Example id={`${index}`} handler={handler} />
-                  </ThemedExample>
-                </Container>
-              ) : null}
-              {codeAsString ? (
-                <Code playroom={playroom}>{codeAsString}</Code>
-              ) : null}
-            </Stack>
-          </Box>
-        );
-      })}
+          return (
+            <Box key={index}>
+              <Stack space="xlarge">
+                {label && filteredExamples.length > 1 ? (
+                  <Heading level="3">{label}</Heading>
+                ) : null}
+                {Example ? (
+                  <Container>
+                    <ThemedExample>
+                      <Example id={`${index}`} handler={handler} />
+                    </ThemedExample>
+                  </Container>
+                ) : null}
+                {codeAsString ? (
+                  <Code playroom={playroom}>{codeAsString}</Code>
+                ) : null}
+              </Stack>
+            </Box>
+          );
+        })}
+      </Stack>
 
       {Array.isArray(propsToDocument) ? (
         <TabsProvider id="component-props">
