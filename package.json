@@ -1,6 +1,6 @@
 {
   "name": "braid-design-system",
-  "version": "28.2.1",
+  "version": "28.3.0",
   "description": "Themeable design system for the SEEK Group",
   "main": "lib/components/index.ts",
   "sideEffects": [
