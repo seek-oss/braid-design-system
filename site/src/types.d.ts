@@ -33,6 +33,7 @@ export interface ComponentDocs {
   examples: ComponentExample[];
   snippets?: DocsSnippet[];
   description?: ReactNodeNoStrings;
+  subComponents?: string[];
 }
 
 export interface ComponentExample {

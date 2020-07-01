@@ -81,7 +81,7 @@ export const pageContent = [
   hideOnMobileWhenOpen,
 ];
 
-export const stickyHeader = [bodyBackground];
+export const stickyHeader = [overlay, bodyBackground];
 
 globalStyle('html, body', {
   margin: 0,

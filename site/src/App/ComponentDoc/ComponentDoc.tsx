@@ -7,6 +7,11 @@ import {
   Stack,
   Text,
   TextLink,
+  TabsProvider,
+  Tabs,
+  Tab,
+  TabPanel,
+  TabPanels,
 } from '../../../../lib/components';
 
 import { ComponentDocs } from '../../types';
@@ -46,6 +51,10 @@ export const ComponentDoc = ({
   const filteredExamples = examples.filter(
     (example) => example.docsSite !== false,
   );
+
+  const propsToDocument = docs.subComponents
+    ? [componentName, ...docs.subComponents]
+    : componentName;
 
   return (
     <Stack space="xlarge">
@@ -103,7 +112,28 @@ export const ComponentDoc = ({
         );
       })}
 
-      <ComponentProps componentName={componentName} />
+      {Array.isArray(propsToDocument) ? (
+        <TabsProvider id="component-props">
+          <Stack space="medium">
+            <Tabs label="Component props">
+              {propsToDocument.map((c) => (
+                <Tab item={c} key={c}>
+                  {c}
+                </Tab>
+              ))}
+            </Tabs>
+            <TabPanels>
+              {propsToDocument.map((c) => (
+                <TabPanel key={c}>
+                  <ComponentProps componentName={c} />
+                </TabPanel>
+              ))}
+            </TabPanels>
+          </Stack>
+        </TabsProvider>
+      ) : (
+        <ComponentProps componentName={componentName} />
+      )}
 
       <Heading level="3" component="h4">
         Further References
