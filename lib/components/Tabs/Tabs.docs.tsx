@@ -127,7 +127,6 @@ const docs: ComponentDocs = {
             <Tabs label="Test tabs" align="center">
               <Tab>The first tab</Tab>
               <Tab>The second tab</Tab>
-              <Tab>The third tab</Tab>
             </Tabs>
             <TabPanels>
               <TabPanel>
@@ -135,9 +134,6 @@ const docs: ComponentDocs = {
               </TabPanel>
               <TabPanel>
                 <Placeholder height={200} label="Panel 2" />
-              </TabPanel>
-              <TabPanel>
-                <Placeholder height={200} label="Panel 3" />
               </TabPanel>
             </TabPanels>
           </Stack>
@@ -247,7 +243,7 @@ const docs: ComponentDocs = {
       ),
     },
     {
-      docsSite: false,
+      // docsSite: false,
       label:
         'Test: Selected tab with gutter should be scrolled into view on load',
       Container: ({ children }) => (
@@ -257,39 +253,32 @@ const docs: ComponentDocs = {
       ),
       Example: ({ id }) => (
         <TabsProvider id={id} selectedItem="3">
-          <Stack space="medium">
-            <Tabs
-              label="Test tabs"
-              align="center"
-              gutter="gutter"
-              reserveHitArea
-            >
-              <Tab item="1">The first tab</Tab>
-              <Tab item="2">The second tab</Tab>
-              <Tab item="3">The third tab</Tab>
-              <Tab item="4">The fourth tab</Tab>
-              <Tab item="5">The fifth tab</Tab>
-            </Tabs>
-            <Card>
-              <TabPanels>
-                <TabPanel>
-                  <Placeholder height={200} label="Panel 1" />
-                </TabPanel>
-                <TabPanel>
-                  <Placeholder height={200} label="Panel 2" />
-                </TabPanel>
-                <TabPanel>
-                  <Placeholder height={200} label="Panel 3" />
-                </TabPanel>
-                <TabPanel>
-                  <Placeholder height={200} label="Panel 4" />
-                </TabPanel>
-                <TabPanel>
-                  <Placeholder height={200} label="Panel 5" />
-                </TabPanel>
-              </TabPanels>
-            </Card>
-          </Stack>
+          <Tabs label="Test tabs" align="center" gutter="gutter" reserveHitArea>
+            <Tab item="1">The first tab</Tab>
+            <Tab item="2">The second tab</Tab>
+            <Tab item="3">The third tab</Tab>
+            <Tab item="4">The fourth tab</Tab>
+            <Tab item="5">The fifth tab</Tab>
+          </Tabs>
+          <Card>
+            <TabPanels>
+              <TabPanel>
+                <Placeholder height={200} label="Panel 1" />
+              </TabPanel>
+              <TabPanel>
+                <Placeholder height={200} label="Panel 2" />
+              </TabPanel>
+              <TabPanel>
+                <Placeholder height={200} label="Panel 3" />
+              </TabPanel>
+              <TabPanel>
+                <Placeholder height={200} label="Panel 4" />
+              </TabPanel>
+              <TabPanel>
+                <Placeholder height={200} label="Panel 5" />
+              </TabPanel>
+            </TabPanels>
+          </Card>
         </TabsProvider>
       ),
     },
