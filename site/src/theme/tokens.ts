@@ -1,6 +1,6 @@
 import { TreatTokens } from '../../../lib/themes/makeBraidTheme';
 
-const formAccent = '#404040';
+const formAccent = '#0049bd';
 const critical = '#ef3e4a';
 const positive = '#00af50';
 const info = '#2c88f7';
@@ -10,10 +10,10 @@ const brandAccent = '#111';
 const focus = 'DeepSkyBlue';
 const black = '#303030';
 const white = '#fff';
-const link = '#4c77bb';
+const link = formAccent;
 const linkVisited = 'DarkViolet';
-const secondary = '#777';
-const neutral = '#edeef1';
+const secondary = '#1c1c1ca1';
+const neutral = '#747474';
 
 const tokens: TreatTokens = {
   name: 'Braid',
@@ -156,7 +156,7 @@ const tokens: TreatTokens = {
       large: 2,
     },
     color: {
-      standard: '#777',
+      standard: '#d6d6d6',
       standardInverted: white,
       field: '#777',
       focus,
