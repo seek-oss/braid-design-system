@@ -176,7 +176,8 @@ const docs: ComponentDocs = {
     },
     {
       docsSite: false,
-      label: 'Test: Center aligned tabs should be left aligned on mobile',
+      label:
+        'Test: Center aligned tabs should be left aligned on mobile when content is too wide',
       Example: ({ id }) => (
         <TabsProvider id={id}>
           <Stack space="medium">
