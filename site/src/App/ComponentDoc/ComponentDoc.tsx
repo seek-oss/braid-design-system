@@ -132,7 +132,10 @@ export const ComponentDoc = ({
           </Stack>
         </TabsProvider>
       ) : (
-        <ComponentProps componentName={componentName} />
+        <Fragment>
+          <Divider />
+          <ComponentProps componentName={componentName} />
+        </Fragment>
       )}
 
       <Heading level="3" component="h4">
