@@ -141,14 +141,16 @@ export const ComponentDoc = ({
       <Heading level="3" component="h4">
         Further References
       </Heading>
-      <Text>
-        <TextLink href={sourceUrl}>View Source</TextLink>
-      </Text>
-      <Text>
-        {docs.migrationGuide ? (
-          <TextLink href={migrationGuideUrl}>Migration Guide</TextLink>
-        ) : null}
-      </Text>
+      <Stack space="large">
+        <Text>
+          <TextLink href={sourceUrl}>View Source</TextLink>
+        </Text>
+        <Text>
+          {docs.migrationGuide ? (
+            <TextLink href={migrationGuideUrl}>Migration Guide</TextLink>
+          ) : null}
+        </Text>
+      </Stack>
     </Stack>
   );
 };
