@@ -26,7 +26,7 @@ interface StepProps {
   children: ReactChild;
 }
 const Step = ({ heading, detail, children }: StepProps) => (
-  <Stack space="large">
+  <Stack space="xlarge">
     {heading ? <Heading level="3">{heading}</Heading> : null}
     {detail}
     <Code>{children}</Code>
@@ -94,7 +94,7 @@ const page: Page = {
 
       <Divider />
 
-      <Stack space="xxlarge">
+      <Stack space="xlarge">
         <Step
           heading="1. Create the container and basic content"
           detail={
@@ -134,7 +134,7 @@ const page: Page = {
         <Step
           heading="2. Lay out the content"
           detail={
-            <Stack space="large">
+            <Stack space="xlarge">
               <Text>
                 At a high level, we can observe that this layout is being
                 achieved using a{' '}
@@ -269,7 +269,7 @@ const page: Page = {
 
         <Step
           detail={
-            <Stack space="large">
+            <Stack space="xlarge">
               <Text component="p">
                 Secondly, we can control the width of the button by using one of
                 the layout components—in this case an{' '}
@@ -343,7 +343,7 @@ const page: Page = {
         <Step
           heading="6. Adjust the space in our `Box`"
           detail={
-            <Stack space="large">
+            <Stack space="xlarge">
               <Text component="p">
                 Since adding the background colour, we can observe that our
                 container is lacking some much needed breathing room around the
@@ -400,7 +400,7 @@ const page: Page = {
         <Step
           heading="7. Make the layout responsive"
           detail={
-            <Stack space="large">
+            <Stack space="xlarge">
               <Text component="p">
                 `Columns` allows us to define the device size beyond which the
                 columns should collapse into a single vertical column. This can
@@ -443,7 +443,7 @@ const page: Page = {
         <Step
           heading="10. Align content responsively"
           detail={
-            <Stack space="large">
+            <Stack space="xlarge">
               <Text component="p">
                 Alignment of both text and headings can accept responsive
                 values, which give you more fine-grained control over what
@@ -472,7 +472,7 @@ const page: Page = {
           <Box background="brandAccent" paddingX="small" paddingY="xlarge">
             <Columns space="gutter" alignY="center" collapseBelow="tablet">
               <Column width="3/5">
-                <Stack space="large">
+                <Stack space="xlarge">
                   <Heading level="1" align={['center', 'left']}>
                     Heard about our latest marketing campaign?
                   </Heading>
@@ -498,7 +498,7 @@ const page: Page = {
         <Step
           heading="9. Constrain layout on larger screens"
           detail={
-            <Stack space="large">
+            <Stack space="xlarge">
               <Text component="p">
                 To provide consistent structure and aid readability, most pages
                 constrain layouts to a maximum width—we achieve this by wrapping
@@ -540,7 +540,7 @@ const page: Page = {
         <Step
           heading="10. Polish!"
           detail={
-            <Stack space="large">
+            <Stack space="xlarge">
               <Text component="p">
                 Now for some final spacing polish we can also leverage the same
                 responsive technique to finesse the spacing across screen sizes.
@@ -561,7 +561,7 @@ const page: Page = {
             <ContentBlock>
               <Columns space="gutter" alignY="center" collapseBelow="tablet">
                 <Column width="3/5">
-                  <Stack space="large">
+                  <Stack space="xlarge">
                     <Heading level="1" align={['center', 'left']}>
                       Heard about our latest marketing campaign?
                     </Heading>
@@ -580,7 +580,7 @@ const page: Page = {
 
         <Step
           detail={
-            <Stack space="large">
+            <Stack space="xlarge">
               <Text component="p">
                 And finally, we&rsquo;ll also add a bit more space between the
                 columns when they collapse on mobile devices by changing the
@@ -625,7 +625,7 @@ const page: Page = {
       <TextStack>
         <Heading level="3">Next steps</Heading>
 
-        <Stack space="large">
+        <Stack space="xlarge">
           <Text>
             Now that you are familiar with the code we have just written, this
             is a good chance to head over to Playroom and continue refining this

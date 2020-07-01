@@ -30,7 +30,7 @@ interface StepProps {
   children: ReactChild;
 }
 const Step = ({ heading, detail, children }: StepProps) => (
-  <Stack space="large">
+  <Stack space="xlarge">
     {heading ? <Heading level="3">{heading}</Heading> : null}
     {detail}
     <Code>{children}</Code>
@@ -328,7 +328,7 @@ const page: Page = {
 
         <Step
           detail={
-            <Stack space="large">
+            <Stack space="xlarge">
               <Text>
                 Let&rsquo;s also add a{' '}
                 <TextLink href="/components/Rating">Rating</TextLink> alongside
@@ -381,7 +381,7 @@ const page: Page = {
         <Step
           heading="7. Add an action to the corner of the card"
           detail={
-            <Stack space="large">
+            <Stack space="xlarge">
               <Text>
                 Sometimes adding new features can necessitate changing the
                 layout. First, we&rsquo;ll use a{' '}
@@ -483,7 +483,7 @@ const page: Page = {
         <Step
           heading="8. Polish!"
           detail={
-            <Stack space="large">
+            <Stack space="xlarge">
               <Text>
                 Now that we have all our elements in place we can polish until
                 we are happy. Adjusting white space between elements, or even
@@ -541,7 +541,7 @@ const page: Page = {
       <TextStack>
         <Heading level="3">Next steps</Heading>
 
-        <Stack space="large">
+        <Stack space="xlarge">
           <Text>
             Now that you are familiar with the code we have just written, this
             is a good chance to head over to Playroom and continue refining this

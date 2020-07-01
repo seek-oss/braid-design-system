@@ -12,6 +12,7 @@ import {
   Tab,
   TabPanel,
   TabPanels,
+  Divider,
 } from '../../../../lib/components';
 
 import { ComponentDocs } from '../../types';
@@ -61,13 +62,14 @@ export const ComponentDoc = ({
       <Heading level="2" component="h3">
         {componentName}
       </Heading>
+      {docs.description}
       {docs.description ? (
-        <Box style={{ maxWidth: 700 }}>{docs.description}</Box>
-      ) : null}
-      {docs.description ? (
-        <Heading level="3" component="h4">
-          Example{filteredExamples.length > 1 ? 's' : ''}
-        </Heading>
+        <Fragment>
+          <Divider />
+          <Heading level="3" component="h4">
+            Example{filteredExamples.length > 1 ? 's' : ''}
+          </Heading>
+        </Fragment>
       ) : null}
       {filteredExamples.map((example, index) => {
         const {
@@ -91,11 +93,9 @@ export const ComponentDoc = ({
 
         return (
           <Box key={index} marginBottom="xlarge">
-            <Stack space="gutter">
+            <Stack space="xlarge">
               {label && filteredExamples.length > 1 ? (
-                <Text tone="secondary" component="h4">
-                  {label}
-                </Text>
+                <Heading level="4">{label}</Heading>
               ) : null}
               {Example ? (
                 <Container>
@@ -114,7 +114,7 @@ export const ComponentDoc = ({
 
       {Array.isArray(propsToDocument) ? (
         <TabsProvider id="component-props">
-          <Stack space="medium">
+          <Stack space="xlarge">
             <Tabs label="Component props">
               {propsToDocument.map((c) => (
                 <Tab item={c} key={c}>

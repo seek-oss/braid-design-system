@@ -15,6 +15,7 @@ import {
   Box,
   Hidden,
 } from '../../../../lib/components';
+import { useBraidTheme } from '../../../../lib/components/BraidProvider/BraidProvider';
 import { useIsolatedScroll } from '../../../../lib/components/Autosuggest/useIsolatedScroll';
 import { BoxProps } from '../../../../lib/components/Box/Box';
 import { SubNavigation } from '../SubNavigation/SubNavigation';
@@ -88,6 +89,8 @@ export const Navigation = ({ children }: NavigationProps) => {
   const menuRef = useRef<HTMLElement | null>(null);
   useIsolatedScroll(menuRef.current);
 
+  const { body: bodyBackground } = useBraidTheme().color.background;
+
   return (
     <ContentBlock width="large">
       <Box paddingRight={['none', gutterSize]}>
@@ -117,10 +120,7 @@ export const Navigation = ({ children }: NavigationProps) => {
 
         <Box
           position="relative"
-          background="card"
-          borderRadius="standard"
-          boxShadow="medium"
-          paddingY={['large', 'large', 'xlarge']}
+          paddingY={['small', 'none']}
           paddingX={['medium', 'large', 'xlarge']}
           marginBottom="xxlarge"
           transition="fast"
@@ -129,6 +129,9 @@ export const Navigation = ({ children }: NavigationProps) => {
             styles.pageContent,
             isMenuOpen ? styles.isOpen : undefined,
           ]}
+          style={{
+            background: bodyBackground,
+          }}
         >
           {children}
         </Box>

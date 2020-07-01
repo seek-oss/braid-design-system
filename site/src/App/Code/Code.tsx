@@ -135,7 +135,7 @@ export default ({
               borderRadius="standard"
               className={styles.code}
             >
-              <Text component="pre" baseline={false}>
+              <Text size="small" component="pre" baseline={false}>
                 <SyntaxHighlighter language="tsx" style={editorTheme}>
                   {snippet}
                 </SyntaxHighlighter>

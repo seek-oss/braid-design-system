@@ -8,7 +8,7 @@ const promote = '#855be5';
 const caution = '#ffc600';
 const brandAccent = '#111';
 const focus = 'DeepSkyBlue';
-const black = '#303030';
+const black = '#333';
 const white = '#fff';
 const link = formAccent;
 const linkVisited = 'DarkViolet';
@@ -19,10 +19,11 @@ const tokens: TreatTokens = {
   name: 'Braid',
   displayName: 'Braid',
   typography: {
-    fontFamily: 'Courier, monospace',
+    fontFamily:
+      '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
     webFont: null,
-    descenderHeightScale: 0.16,
-    capHeightScale: 0.502,
+    descenderHeightScale: 0.13,
+    capHeightScale: 0.7,
     fontWeight: {
       regular: 400,
       medium: 500,
@@ -36,42 +37,42 @@ const tokens: TreatTokens = {
       level: {
         '1': {
           mobile: {
-            size: 28,
-            rows: 9,
+            size: 32,
+            rows: 12,
           },
           tablet: {
-            size: 42,
-            rows: 11,
+            size: 52,
+            rows: 16,
           },
         },
         '2': {
           mobile: {
-            size: 21,
-            rows: 8,
+            size: 28,
+            rows: 11,
           },
           tablet: {
-            size: 28,
-            rows: 9,
+            size: 42,
+            rows: 16,
           },
         },
         '3': {
           mobile: {
-            size: 21,
-            rows: 7,
+            size: 22,
+            rows: 9,
           },
           tablet: {
-            size: 21,
-            rows: 7,
+            size: 22,
+            rows: 9,
           },
         },
         '4': {
           mobile: {
             size: 18,
-            rows: 7,
+            rows: 8,
           },
           tablet: {
             size: 18,
-            rows: 7,
+            rows: 8,
           },
         },
       },
@@ -79,42 +80,42 @@ const tokens: TreatTokens = {
     text: {
       xsmall: {
         mobile: {
-          size: 12,
-          rows: 5,
+          size: 14,
+          rows: 6,
         },
         tablet: {
-          size: 12,
-          rows: 5,
+          size: 14,
+          rows: 6,
         },
       },
       small: {
         mobile: {
-          size: 14,
-          rows: 5,
+          size: 16,
+          rows: 6,
         },
         tablet: {
-          size: 14,
-          rows: 5,
+          size: 16,
+          rows: 6,
         },
       },
       standard: {
         mobile: {
-          size: 16,
-          rows: 7,
+          size: 18,
+          rows: 8,
         },
         tablet: {
-          size: 16,
-          rows: 7,
+          size: 18,
+          rows: 8,
         },
       },
       large: {
         mobile: {
-          size: 18,
-          rows: 8,
+          size: 22,
+          rows: 9,
         },
         tablet: {
-          size: 18,
-          rows: 8,
+          size: 22,
+          rows: 9,
         },
       },
     },
@@ -129,7 +130,7 @@ const tokens: TreatTokens = {
     large: 1280,
   },
   grid: 4,
-  touchableSize: 11,
+  touchableSize: 12,
   space: {
     gutter: 6,
     xxsmall: 1,
@@ -195,7 +196,7 @@ const tokens: TreatTokens = {
       rating: black,
     },
     background: {
-      body: 'whitesmoke',
+      body: white,
       brand: black,
       input: white,
       inputDisabled: '#eee',

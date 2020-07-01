@@ -1,5 +1,6 @@
 import React from 'react';
 import map from 'lodash/map';
+import { useStyles } from 'sku/react-treat';
 import guides from '../routes/guides';
 import foundations from '../routes/foundations';
 import examples from '../routes/examples';
@@ -10,6 +11,7 @@ import {
   documentedComponents,
 } from '../navigationHelpers';
 import { useConfig } from '../ConfigContext';
+import * as styleRefs from './SubNavigation.treat';
 
 interface SubNavigationItem {
   name: string;
@@ -22,25 +24,31 @@ interface SubNavigationGroup {
   items: SubNavigationItem[];
 }
 
-const SubNavigationGroup = ({ title, items }: SubNavigationGroup) => (
-  <Box component="nav">
-    <Stack space="medium">
-      <Text weight="strong" component="h2">
-        {title}
-      </Text>
+const SubNavigationGroup = ({ title, items }: SubNavigationGroup) => {
+  const styles = useStyles(styleRefs);
 
-      <Stack component="ul" space="medium">
-        {items.map(({ name, path, onClick }) => (
-          <Text key={name}>
-            <TextLink href={path} onClick={onClick} hitArea="large">
-              {name}
-            </TextLink>
+  return (
+    <Box component="nav">
+      <Stack space="large">
+        <Box className={styles.uppercase}>
+          <Text size="xsmall" weight="medium" component="h2">
+            {title}
           </Text>
-        ))}
+        </Box>
+
+        <Stack component="ul" space="medium">
+          {items.map(({ name, path, onClick }) => (
+            <Text key={name}>
+              <TextLink href={path} onClick={onClick} hitArea="large">
+                {name}
+              </TextLink>
+            </Text>
+          ))}
+        </Stack>
       </Stack>
-    </Stack>
-  </Box>
-);
+    </Box>
+  );
+};
 
 interface SubNavigationProps {
   onSelect?: () => void;
@@ -50,18 +58,13 @@ export const SubNavigation = ({ onSelect }: SubNavigationProps) => {
 
   return (
     <Stack space="xlarge">
-      <Stack space="medium">
-        <Text weight="strong" component="h2">
-          Theme
-        </Text>
-        <ThemeToggle />
-      </Stack>
+      <ThemeToggle />
 
       <SubNavigationGroup
         title="Tools"
         items={[
           {
-            name: 'Source',
+            name: 'GitHub',
             path: 'https://github.com/seek-oss/braid-design-system',
           },
           {

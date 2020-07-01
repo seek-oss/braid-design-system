@@ -7,7 +7,7 @@ export function ThemeToggle() {
   const { theme, setTheme, ready } = useThemeSettings();
 
   return (
-    <Text>
+    <Text weight="strong">
       {ready ? (
         <TextDropdown
           id="theme"
