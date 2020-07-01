@@ -103,7 +103,7 @@ export const Navigation = ({ children }: NavigationProps) => {
 
         <FixedContentBlock
           ref={menuRef}
-          overflow="scroll"
+          overflow="auto"
           bottom={0}
           paddingY="small"
           paddingX={gutterSize}
