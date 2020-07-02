@@ -43,7 +43,7 @@ req.keys().forEach((filename) => {
   }
 
   const storyThemes = values(themes).filter((theme) =>
-    docs.screenshotOnlyInWireframe
+    theme.name !== 'docs' && docs.screenshotOnlyInWireframe
       ? theme.name === 'wireframe'
       : theme.name !== 'wireframe',
   );

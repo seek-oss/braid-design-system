@@ -1,4 +1,4 @@
-import tokens from '../../theme/tokens';
+import tokens from '../../../../lib/themes/docs/tokens';
 
 export const headerSpaceY = 'large';
 const headerPaddingY = tokens.grid * tokens.space[headerSpaceY];

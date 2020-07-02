@@ -1,13 +1,14 @@
-import { TreatTokens } from '../../../lib/themes/makeBraidTheme';
+import { TreatTokens } from '../makeBraidTheme';
+import { rgba } from 'polished';
 
 const formAccent = '#0049bd';
-const critical = '#ef3e4a';
+const critical = '#ef0036';
 const positive = '#00af50';
-const info = '#2c88f7';
+const info = '#0065de';
 const promote = '#855be5';
 const caution = '#ffc600';
-const brandAccent = '#111';
-const focus = 'DeepSkyBlue';
+const brandAccent = '#1a1a1a';
+const focus = rgba('#1e90ff', 0.7);
 const black = '#333';
 const white = '#fff';
 const link = formAccent;
@@ -16,8 +17,8 @@ const secondary = '#1c1c1ca1';
 const neutral = '#747474';
 
 const tokens: TreatTokens = {
-  name: 'Braid',
-  displayName: 'Braid',
+  name: 'Docs',
+  displayName: 'Docs',
   typography: {
     fontFamily:
       '-apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
@@ -38,31 +39,31 @@ const tokens: TreatTokens = {
         '1': {
           mobile: {
             size: 32,
-            rows: 12,
+            rows: 10,
           },
           tablet: {
             size: 52,
-            rows: 16,
+            rows: 15,
           },
         },
         '2': {
           mobile: {
             size: 28,
-            rows: 11,
+            rows: 9,
           },
           tablet: {
-            size: 42,
-            rows: 16,
+            size: 38,
+            rows: 13,
           },
         },
         '3': {
           mobile: {
             size: 22,
-            rows: 9,
+            rows: 8,
           },
           tablet: {
             size: 22,
-            rows: 9,
+            rows: 8,
           },
         },
         '4': {
@@ -130,7 +131,7 @@ const tokens: TreatTokens = {
     large: 1280,
   },
   grid: 4,
-  touchableSize: 12,
+  touchableSize: 13,
   space: {
     gutter: 6,
     xxsmall: 1,
@@ -159,7 +160,7 @@ const tokens: TreatTokens = {
     color: {
       standard: '#d6d6d6',
       standardInverted: white,
-      field: '#777',
+      field: '#898989',
       focus,
       critical,
       info,
@@ -203,7 +204,7 @@ const tokens: TreatTokens = {
       brandAccent,
       formAccent,
       formAccentDisabled: '#ccc',
-      selection: '#f1f7ff',
+      selection: '#f2f2f2',
       card: white,
       critical,
       caution,
