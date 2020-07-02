@@ -13,17 +13,15 @@ const Home = () => {
   const { playroomUrl } = useConfig();
   return (
     <Stack space="xlarge">
-      <Stack space="small">
-        <Heading level="2">Braid Design System</Heading>
-      </Stack>
+      <Heading level="2">Braid Design System</Heading>
       <Text>
         👋 Welcome to Braid, the themeable design system for the{' '}
-        <TextLink href="https://www.seek.com.au/about/">SEEK Group</TextLink>.
+        <TextLink href="https://www.seek.com.au/about/">SEEK Group.</TextLink>
       </Text>
       <Text>
         Braid aims to make cross-brand UI development as fast as possible while
         maintaining a high level of quality and accessibility. In order to
-        achieve this, Braid is implemented as a series of{' '}
+        achieve this, Braid provides as a set of{' '}
         <TextLink href="https://reactjs.org/">React</TextLink> components and{' '}
         <TextLink href="https://seek-oss.github.io/treat/">treat</TextLink>{' '}
         themes.

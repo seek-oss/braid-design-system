@@ -1,4 +1,4 @@
-import { makeBraidTheme } from '../../../lib/themes/makeBraidTheme';
+import { makeBraidTheme } from '../makeBraidTheme';
 import tokens from './tokens';
 
 export const theme = makeBraidTheme(tokens);

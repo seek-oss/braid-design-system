@@ -41,7 +41,6 @@ const IconTile = ({
         display={'flex'}
         flexDirection="column"
         alignItems="center"
-        paddingX="xxsmall"
         paddingY="medium"
         cursor="pointer"
         className={styles.iconContainer}
@@ -80,10 +79,10 @@ const Iconography = () => {
   const [isDisambiguated, setDisambiguated] = useState(false);
 
   return (
-    <Stack space="large">
+    <Stack space="xlarge">
       <Heading level="2">Iconography</Heading>
 
-      <Stack space="small">
+      <Stack space="medium">
         <Stack space="large">
           <TextField
             id="iconSearch"
@@ -141,7 +140,7 @@ const Iconography = () => {
           ) : null}
         </Stack>
 
-        <Inline space={['none', 'small']}>
+        <Inline space={['none', 'medium']}>
           {iconList.map((icon) => (
             <IconTile
               key={icon.name}

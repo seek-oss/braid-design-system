@@ -98,18 +98,22 @@ const PropList = ({
   }
 
   return (
-    <Stack space="gutter">
+    <Stack space="large">
       <Heading level="3" component="h4">
         {label}
       </Heading>
-      {props.map(({ propName, type }) => (
-        <Stack space="xsmall" key={propName}>
-          <Text weight="strong">{propName}</Text>
-          <Text>
-            <PropType type={type} />
-          </Text>
-        </Stack>
-      ))}
+      <Stack space="large">
+        {props.map(({ propName, type }) => (
+          <Stack space="small" key={propName}>
+            <Text size="small" weight="medium">
+              {propName}
+            </Text>
+            <Text tone="secondary" size="small">
+              <PropType type={type} />
+            </Text>
+          </Stack>
+        ))}
+      </Stack>
     </Stack>
   );
 };
@@ -132,7 +136,7 @@ export const ComponentProps = ({ componentName }: Props) => {
   );
 
   return Object.keys(doc.props).length === 0 ? null : (
-    <Stack space="large">
+    <Stack space="xlarge">
       <PropList label="Required props" props={requiredProps} />
       <PropList label="Optional props" props={optionalProps} />
     </Stack>

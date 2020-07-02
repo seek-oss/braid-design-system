@@ -12,6 +12,7 @@ import {
   Tab,
   TabPanel,
   TabPanels,
+  Divider,
 } from '../../../../lib/components';
 
 import { ComponentDocs } from '../../types';
@@ -61,60 +62,54 @@ export const ComponentDoc = ({
       <Heading level="2" component="h3">
         {componentName}
       </Heading>
-      {docs.description ? (
-        <Box style={{ maxWidth: 700 }}>{docs.description}</Box>
-      ) : null}
-      {docs.description ? (
-        <Heading level="3" component="h4">
-          Example{filteredExamples.length > 1 ? 's' : ''}
-        </Heading>
-      ) : null}
-      {filteredExamples.map((example, index) => {
-        const {
-          label,
-          Example,
-          code,
-          Container = DefaultContainer,
-          playroom,
-        } = example;
+      {docs.description}
+      <Divider />
+      <Stack space="xlarge" dividers>
+        {filteredExamples.map((example, index) => {
+          const {
+            label,
+            Example,
+            code,
+            Container = DefaultContainer,
+            playroom,
+          } = example;
 
-        const codeAsString =
-          Example && !code
-            ? // eslint-disable-next-line new-cap
-              reactElementToJSXString(Example({ id: 'id', handler }), {
-                useBooleanShorthandSyntax: false,
-                showDefaultProps: false,
-                showFunctions: false,
-                filterProps: ['onChange', 'onBlur', 'onFocus'],
-              })
-            : code;
+          const codeAsString =
+            Example && !code
+              ? // eslint-disable-next-line new-cap
+                reactElementToJSXString(Example({ id: 'id', handler }), {
+                  useBooleanShorthandSyntax: false,
+                  showDefaultProps: false,
+                  showFunctions: false,
+                  filterProps: ['onChange', 'onBlur', 'onFocus'],
+                })
+              : code;
 
-        return (
-          <Box key={index} marginBottom="xlarge">
-            <Stack space="gutter">
-              {label && filteredExamples.length > 1 ? (
-                <Text tone="secondary" component="h4">
-                  {label}
-                </Text>
-              ) : null}
-              {Example ? (
-                <Container>
-                  <ThemedExample>
-                    <Example id={`${index}`} handler={handler} />
-                  </ThemedExample>
-                </Container>
-              ) : null}
-              {codeAsString ? (
-                <Code playroom={playroom}>{codeAsString}</Code>
-              ) : null}
-            </Stack>
-          </Box>
-        );
-      })}
+          return (
+            <Box key={index}>
+              <Stack space="xlarge">
+                {label && filteredExamples.length > 1 ? (
+                  <Heading level="3">{label}</Heading>
+                ) : null}
+                {Example ? (
+                  <Container>
+                    <ThemedExample>
+                      <Example id={`${index}`} handler={handler} />
+                    </ThemedExample>
+                  </Container>
+                ) : null}
+                {codeAsString ? (
+                  <Code playroom={playroom}>{codeAsString}</Code>
+                ) : null}
+              </Stack>
+            </Box>
+          );
+        })}
+      </Stack>
 
       {Array.isArray(propsToDocument) ? (
         <TabsProvider id="component-props">
-          <Stack space="medium">
+          <Stack space="xlarge">
             <Tabs label="Component props">
               {propsToDocument.map((c) => (
                 <Tab item={c} key={c}>
@@ -132,20 +127,25 @@ export const ComponentDoc = ({
           </Stack>
         </TabsProvider>
       ) : (
-        <ComponentProps componentName={componentName} />
+        <Fragment>
+          <Divider />
+          <ComponentProps componentName={componentName} />
+        </Fragment>
       )}
 
       <Heading level="3" component="h4">
         Further References
       </Heading>
-      <Text>
-        <TextLink href={sourceUrl}>View Source</TextLink>
-      </Text>
-      <Text>
-        {docs.migrationGuide ? (
-          <TextLink href={migrationGuideUrl}>Migration Guide</TextLink>
-        ) : null}
-      </Text>
+      <Stack space="large">
+        <Text>
+          <TextLink href={sourceUrl}>View Source</TextLink>
+        </Text>
+        <Text>
+          {docs.migrationGuide ? (
+            <TextLink href={migrationGuideUrl}>Migration Guide</TextLink>
+          ) : null}
+        </Text>
+      </Stack>
     </Stack>
   );
 };

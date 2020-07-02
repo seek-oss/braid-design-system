@@ -28,7 +28,7 @@ interface StepProps {
   children: ReactChild;
 }
 const Step = ({ heading, detail, children }: StepProps) => (
-  <Stack space="large">
+  <Stack space="xlarge">
     {heading ? <Heading level="3">{heading}</Heading> : null}
     {detail}
     <Code>{children}</Code>
@@ -166,7 +166,7 @@ const page: Page = {
         <Step
           heading="4. Add some more fields"
           detail={
-            <Stack space="large">
+            <Stack space="xlarge">
               <Text component="p">
                 Now that we have described how we want to manage the space
                 within the `Card`, we can add more fields to the form by placing
@@ -203,7 +203,7 @@ const page: Page = {
         <Step
           heading="5. Add additional information to a field"
           detail={
-            <Stack space="large">
+            <Stack space="xlarge">
               <Text component="p">
                 Sometimes it is necessary to provide more information to a
                 field, either adding additional context, indicating whether a
@@ -303,7 +303,7 @@ const page: Page = {
 
         <Step
           detail={
-            <Stack space="large">
+            <Stack space="xlarge">
               <Text component="p">
                 You&rsquo;ll notice the button is the full width of the card.
                 This is fine from a mobile perspective, but less that ideal on a
@@ -346,7 +346,7 @@ const page: Page = {
         <Step
           heading="7. Polish!"
           detail={
-            <Stack space="large">
+            <Stack space="xlarge">
               <Text>
                 Now that we have all our elements in place we can polish until
                 we are happy. Adjusting white space between elements across
@@ -395,7 +395,7 @@ const page: Page = {
       <TextStack>
         <Heading level="3">Next steps</Heading>
 
-        <Stack space="large">
+        <Stack space="xlarge">
           <Text>
             Now that you are familiar with the code we have just written, this
             is a good chance to head over to Playroom and continue refining this

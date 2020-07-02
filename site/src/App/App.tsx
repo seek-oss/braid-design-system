@@ -4,7 +4,7 @@ import { Route, Switch, Redirect } from 'react-router';
 import { Link as ReactRouterLink } from 'react-router-dom';
 import map from 'lodash/map';
 import { ThemeSettingProvider } from './ThemeSetting';
-import { theme as docsSiteTheme } from '../theme/theme.treat';
+import { docs } from '../../../lib/themes';
 import {
   BraidProvider,
   ToastProvider,
@@ -40,7 +40,7 @@ const CustomLink: LinkComponent = ({ href, rel, onClick, ...restProps }) =>
 export const App = () => (
   <StrictMode>
     <ThemeSettingProvider>
-      <BraidProvider theme={docsSiteTheme} linkComponent={CustomLink}>
+      <BraidProvider theme={docs} linkComponent={CustomLink}>
         <ToastProvider>
           <Navigation>
             <Switch>

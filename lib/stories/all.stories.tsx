@@ -42,11 +42,15 @@ req.keys().forEach((filename) => {
     return;
   }
 
-  const storyThemes = values(themes).filter((theme) =>
-    docs.screenshotOnlyInWireframe
+  const storyThemes = values(themes).filter((theme) => {
+    if (theme.name === 'docs') {
+      return false;
+    }
+
+    return docs.screenshotOnlyInWireframe
       ? theme.name === 'wireframe'
-      : theme.name !== 'wireframe',
-  );
+      : theme.name !== 'wireframe';
+  });
 
   storyThemes.forEach((theme) => {
     const storyConfig = {
