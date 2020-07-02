@@ -120,7 +120,7 @@ export const Navigation = ({ children }: NavigationProps) => {
 
         <Box
           position="relative"
-          paddingY={['small', 'none']}
+          paddingY={['small', 'xxsmall']}
           paddingX={['medium', 'large', 'xlarge']}
           marginBottom="xxlarge"
           transition="fast"

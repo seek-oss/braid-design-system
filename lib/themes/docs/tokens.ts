@@ -154,13 +154,13 @@ const tokens: TreatTokens = {
       standard: '6px',
     },
     width: {
-      standard: 1,
-      large: 2,
+      standard: 2,
+      large: 3,
     },
     color: {
       standard: '#d6d6d6',
       standardInverted: white,
-      field: '#898989',
+      field: '#ababab',
       focus,
       critical,
       info,
