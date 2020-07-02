@@ -17,7 +17,7 @@ const secondary = '#1c1c1ca1';
 const neutral = '#747474';
 
 const tokens: TreatTokens = {
-  name: 'Docs',
+  name: 'docs',
   displayName: 'Docs',
   typography: {
     fontFamily:
@@ -131,7 +131,7 @@ const tokens: TreatTokens = {
     large: 1280,
   },
   grid: 4,
-  touchableSize: 13,
+  touchableSize: 12,
   space: {
     gutter: 6,
     xxsmall: 1,
@@ -160,7 +160,7 @@ const tokens: TreatTokens = {
     color: {
       standard: '#d6d6d6',
       standardInverted: white,
-      field: '#ababab',
+      field: '#bbb',
       focus,
       critical,
       info,
