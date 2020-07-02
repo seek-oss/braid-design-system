@@ -1,5 +1,17 @@
 # braid-design-system
 
+## 28.4.0
+
+### Minor Changes
+
+- Expose docs theme ([#670](https://github.com/seek-oss/braid-design-system/pull/670))
+
+  In order to support internal documentation sites that leverage Braid, we're now exposing a `docs` theme.
+
+  ```js
+  import docsTheme from 'braid-design-system/themes/docs';
+  ```
+
 ## 28.3.0
 
 ### Minor Changes
