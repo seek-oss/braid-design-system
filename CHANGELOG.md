@@ -1,5 +1,17 @@
 # braid-design-system
 
+## 28.5.0
+
+### Minor Changes
+
+- MonthPicker: Support custom month and year labels ([#672](https://github.com/seek-oss/braid-design-system/pull/672))
+
+  To support internationalisation, you can now pass the following props to `MonthPicker`:
+
+  - **monthLabel** (`string`)
+  - **yearLabel** (`string`)
+  - **monthNames** (`string[]`)
+
 ## 28.4.0
 
 ### Minor Changes
