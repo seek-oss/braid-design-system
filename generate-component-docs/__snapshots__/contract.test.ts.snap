@@ -5012,6 +5012,8 @@ Object {
     maxYear?: number
     message?: ReactNode
     minYear?: number
+    monthLabel?: string
+    monthNames?: MonthNames
     onBlur?: FocusHandler
     onChange: ChangeHandler
     onFocus?: FocusHandler
@@ -5027,6 +5029,7 @@ Object {
         month?: number
         year?: number
     }
+    yearLabel?: string
 },
 }
 `;

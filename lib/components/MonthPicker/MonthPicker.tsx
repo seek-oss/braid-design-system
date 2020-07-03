@@ -1,5 +1,6 @@
 import React, { ChangeEvent, FocusEvent, createRef, Fragment } from 'react';
 import { isMobile } from 'is-mobile';
+import assert from 'assert';
 import { useStyles } from 'sku/react-treat';
 import { Box } from '../Box/Box';
 import { Column } from '../Column/Column';
@@ -14,6 +15,35 @@ interface MonthPickerValue {
   month?: number;
   year?: number;
 }
+
+type MonthNames = [
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+];
+const defaultMonthNames = [
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr',
+  'May',
+  'Jun',
+  'Jul',
+  'Aug',
+  'Sep',
+  'Oct',
+  'Nov',
+  'Dec',
+] as MonthNames;
 
 type FocusHandler = () => void;
 type ChangeHandler = (value: MonthPickerValue) => void;
@@ -37,26 +67,15 @@ export interface MonthPickerProps
   minYear?: number;
   maxYear?: number;
   ascendingYears?: boolean;
+  monthLabel?: string;
+  yearLabel?: string;
+  monthNames?: MonthNames;
 }
 
-const months = [
-  { value: '1', label: 'Jan' },
-  { value: '2', label: 'Feb' },
-  { value: '3', label: 'Mar' },
-  { value: '4', label: 'Apr' },
-  { value: '5', label: 'May' },
-  { value: '6', label: 'Jun' },
-  { value: '7', label: 'Jul' },
-  { value: '8', label: 'Aug' },
-  { value: '9', label: 'Sep' },
-  { value: '10', label: 'Oct' },
-  { value: '11', label: 'Nov' },
-  { value: '12', label: 'Dec' },
-];
-const getMonths = () =>
-  months.map((month) => (
-    <option value={month.value} key={month.value}>
-      {month.label}
+const getMonths = (monthNames: MonthNames) =>
+  monthNames.map((monthName, i) => (
+    <option value={i + 1} key={i}>
+      {monthName}
     </option>
   ));
 
@@ -122,8 +141,13 @@ const MonthPicker = ({
   minYear = currYear - 100,
   maxYear = currYear,
   ascendingYears = false,
+  monthLabel = 'Month',
+  yearLabel = 'Year',
+  monthNames = defaultMonthNames,
   ...restProps
 }: MonthPickerProps) => {
+  assert(monthNames.length === 12, 'monthNames array must contain 12 items');
+
   const styles = useStyles(styleRefs);
   const currentValue = {
     month: value && value.month ? value.month : undefined,
@@ -210,7 +234,7 @@ const MonthPicker = ({
         <Columns space="medium">
           <Column>
             <HiddenVisually>
-              <label htmlFor={monthId}>{`${label} month`}</label>
+              <label htmlFor={monthId}>{`${label} ${monthLabel}`}</label>
             </HiddenVisually>
             <Dropdown
               id={monthId}
@@ -219,16 +243,16 @@ const MonthPicker = ({
               onBlur={blurHandler}
               onFocus={focusHandler}
               tone={tone}
-              placeholder="Month"
+              placeholder={monthLabel}
               {...fieldGroupProps}
               ref={monthRef}
             >
-              {getMonths()}
+              {getMonths(monthNames)}
             </Dropdown>
           </Column>
           <Column>
             <HiddenVisually>
-              <label htmlFor={yearId}>{`${label} year`}</label>
+              <label htmlFor={yearId}>{`${label} ${yearLabel}`}</label>
             </HiddenVisually>
             <Dropdown
               id={yearId}
@@ -237,7 +261,7 @@ const MonthPicker = ({
               onBlur={blurHandler}
               onFocus={focusHandler}
               tone={tone}
-              placeholder="Year"
+              placeholder={yearLabel}
               {...fieldGroupProps}
               ref={yearRef}
             >
