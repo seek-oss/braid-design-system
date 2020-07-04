@@ -1,6 +1,19 @@
 import { TreatTokens } from '../makeBraidTheme';
 import { rgba } from 'polished';
 
+const grey = {
+  50: '#F5F6F8',
+  100: '#E8EAEE',
+  200: '#D8DCE2',
+  300: '#B8BECA',
+  400: '#8991A5',
+  500: '#596581',
+  600: '#414A5F',
+  700: '#313848',
+  800: '#1E222B',
+  900: '#0E1014',
+} as const;
+
 const formAccent = '#2765cf';
 const critical = '#d0011b';
 const positive = '#138a08';
@@ -9,12 +22,12 @@ const promote = '#9556b7';
 const caution = '#ffc600';
 const brandAccent = '#e60278';
 const focus = rgba('#1e90ff', 0.7);
-const black = '#1c1c1c';
+const black = grey['800'];
 const white = '#fff';
 const link = '#2765cf';
 const linkVisited = '#733d90';
-const secondary = '#1c1c1ca1';
-const neutral = '#747474';
+const secondary = rgba(grey['800'], 0.63);
+const neutral = grey['500'];
 
 const tokens: TreatTokens = {
   name: 'seekUnifiedBeta',
@@ -158,9 +171,9 @@ const tokens: TreatTokens = {
       large: 2,
     },
     color: {
-      standard: '#d6d6d6',
+      standard: grey['200'],
       standardInverted: white,
-      field: '#898989',
+      field: grey['400'],
       focus,
       formHover: formAccent,
       critical,
@@ -197,13 +210,13 @@ const tokens: TreatTokens = {
       rating: '#f57c00',
     },
     background: {
-      body: '#eee',
+      body: grey['50'],
       brand: '#0d3880',
       input: white,
-      inputDisabled: '#eee',
+      inputDisabled: grey['50'],
       brandAccent,
       formAccent,
-      formAccentDisabled: '#ccc',
+      formAccentDisabled: grey['100'],
       selection: '#f1f7ff',
       card: white,
       critical,
