@@ -1573,6 +1573,7 @@ Object {
         | ComponentClass<LinkComponentProps, any>
         | FunctionComponent<LinkComponentProps>
     themeName?: 
+        | "apac"
         | "catho"
         | "docs"
         | "jobStreet"
@@ -1581,7 +1582,6 @@ Object {
         | "occ"
         | "seekAnz"
         | "seekBusiness"
-        | "seekUnifiedBeta"
         | "wireframe"
 },
 }

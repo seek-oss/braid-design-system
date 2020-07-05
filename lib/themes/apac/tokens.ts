@@ -30,8 +30,8 @@ const secondary = rgba(grey['800'], 0.63);
 const neutral = grey['500'];
 
 const tokens: TreatTokens = {
-  name: 'seekUnifiedBeta',
-  displayName: 'SEEK Unified (Beta)',
+  name: 'apac',
+  displayName: 'APAC',
   typography: {
     fontFamily:
       'Roboto, "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif',
@@ -185,12 +185,21 @@ const tokens: TreatTokens = {
     },
   },
   shadows: {
-    small:
-      '0 2px 4px 0px rgba(28,28,28,.1), 0 2px 2px -2px rgba(28,28,28,.1), 0 4px 4px -4px rgba(28,28,28,.2)',
-    medium:
-      '0 2px 4px 0px rgba(28,28,28,.1), 0 8px 8px -4px rgba(28,28,28,.1), 0 12px 12px -8px rgba(28,28,28,.2)',
-    large:
-      '0 2px 4px 0px rgba(28,28,28,.1), 0 12px 12px -4px rgba(28,28,28,.1), 0 20px 20px -12px rgba(28,28,28,.2)',
+    small: [
+      `0 2px 4px 0px ${rgba(grey['800'], 0.1)}`,
+      `0 2px 2px -2px ${rgba(grey['800'], 0.1)}`,
+      `0 4px 4px -4px ${rgba(grey['800'], 0.2)}`,
+    ].join(', '),
+    medium: [
+      `0 2px 4px 0px ${rgba(grey['800'], 0.1)}`,
+      `0 8px 8px -4px ${rgba(grey['800'], 0.1)}`,
+      `0 12px 12px -8px ${rgba(grey['800'], 0.2)}`,
+    ].join(', '),
+    large: [
+      `0 2px 4px 0px ${rgba(grey['800'], 0.1)}`,
+      `0 12px 12px -4px ${rgba(grey['800'], 0.1)}`,
+      `0 20px 20px -12px ${rgba(grey['800'], 0.2)}`,
+    ].join(', '),
   },
   color: {
     foreground: {
@@ -217,7 +226,7 @@ const tokens: TreatTokens = {
       brandAccent,
       formAccent,
       formAccentDisabled: grey['100'],
-      selection: '#f1f7ff',
+      selection: grey['100'],
       card: white,
       critical,
       caution,
