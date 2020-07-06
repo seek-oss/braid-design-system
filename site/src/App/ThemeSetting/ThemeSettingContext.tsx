@@ -31,13 +31,19 @@ export function useThemeSettings() {
   return themeSettings;
 }
 
+export const documentedThemes = (Object.keys(themes) as Array<ThemeKey>).filter(
+  (themeName) => themeName !== 'seekUnifiedBeta',
+);
 const useThemePreference = () => {
   const [theme, setTheme] = useLocalStorage<ThemeKey>(
     'theme-preference',
     defaultTheme,
   );
 
-  return [theme in themes ? theme : defaultTheme, setTheme] as const;
+  return [
+    documentedThemes.includes(theme) ? theme : defaultTheme,
+    setTheme,
+  ] as const;
 };
 
 interface ThemeSettingProviderProps {
