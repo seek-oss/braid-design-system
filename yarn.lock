@@ -13749,10 +13749,10 @@ sisteransi@^1.0.4:
   resolved "https://registry.yarnpkg.com/sisteransi/-/sisteransi-1.0.5.tgz#134d681297756437cc05ca01370d3a7a571075ed"
   integrity sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==
 
-sku@10.3.6:
-  version "10.3.6"
-  resolved "https://registry.yarnpkg.com/sku/-/sku-10.3.6.tgz#6d4f04fcde53d30afe9c751e8867b2b8d0a2750e"
-  integrity sha512-RJA+onKVz/Ue+3/FXdHQS3vfLgEUF2t4jtidgbThVIy6KLPovMDzhQ/Qp0edNKX0lmjoZqeh4hHb7IZ3OTP6Ow==
+sku@10.4.0:
+  version "10.4.0"
+  resolved "https://registry.yarnpkg.com/sku/-/sku-10.4.0.tgz#9f6fe55a92a054574de30815af8f91bdcdaf2a57"
+  integrity sha512-JFXyj3vFrwls3IhhgwA+grr8l87Qm9+5iYAckpFVAUUzHTGzaW6MoQPF9UEORLbr7yi5eGHlXzf7sjJW3u0XqQ==
   dependencies:
     "@babel/core" "^7.9.0"
     "@babel/plugin-proposal-class-properties" "^7.8.3"
@@ -13843,6 +13843,7 @@ sku@10.3.6:
     raw-loader "^4.0.0"
     react-treat "^1.0.2"
     rimraf "^3.0.0"
+    selfsigned "^1.10.7"
     semver "^7.0.0"
     serialize-javascript "^3.0.0"
     serve-handler "^6.1.2"
