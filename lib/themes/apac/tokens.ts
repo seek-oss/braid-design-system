@@ -2,16 +2,16 @@ import { TreatTokens } from '../makeBraidTheme';
 import { rgba } from 'polished';
 
 const grey = {
-  50: '#F5F6F8',
-  100: '#E8EAEE',
-  200: '#D8DCE2',
-  300: '#B8BECA',
-  400: '#8991A5',
+  50: '#f5f6f8',
+  100: '#e8eaee',
+  200: '#d8dce2',
+  300: '#b8beca',
+  400: '#8991a5',
   500: '#596581',
-  600: '#414A5F',
+  600: '#414a5f',
   700: '#313848',
-  800: '#1E222B',
-  900: '#0E1014',
+  800: '#1e222b',
+  900: '#0e1014',
 } as const;
 
 const formAccent = '#2765cf';
@@ -26,8 +26,7 @@ const black = grey['800'];
 const white = '#fff';
 const link = '#2765cf';
 const linkVisited = '#733d90';
-const secondary = rgba(grey['800'], 0.63);
-const neutral = grey['500'];
+const secondary = grey['500'];
 
 const tokens: TreatTokens = {
   name: 'apac',
@@ -231,7 +230,7 @@ const tokens: TreatTokens = {
       critical,
       caution,
       positive,
-      neutral,
+      neutral: grey['500'],
       info,
       promote,
     },
