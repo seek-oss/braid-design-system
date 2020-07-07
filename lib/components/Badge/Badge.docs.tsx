@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import { Badge, Inline } from '../';
+import { Badge, Card, Inline } from '../';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -9,74 +9,110 @@ const docs: ComponentDocs = {
   examples: [
     {
       label: 'Info Badge',
-      Example: () => <Badge tone="info">Info</Badge>,
+      Example: () => (
+        <Card>
+          <Badge tone="info">Info</Badge>
+        </Card>
+      ),
     },
     {
       label: 'Strong Info Badge',
       Example: () => (
-        <Badge tone="info" weight="strong">
-          Info
-        </Badge>
+        <Card>
+          <Badge tone="info" weight="strong">
+            Info
+          </Badge>
+        </Card>
       ),
     },
     {
       label: 'Critical Badge',
-      Example: () => <Badge tone="critical">Critical</Badge>,
+      Example: () => (
+        <Card>
+          <Badge tone="critical">Critical</Badge>
+        </Card>
+      ),
     },
     {
       label: 'Strong Critical Badge',
       Example: () => (
-        <Badge tone="critical" weight="strong">
-          Critical
-        </Badge>
+        <Card>
+          <Badge tone="critical" weight="strong">
+            Critical
+          </Badge>
+        </Card>
       ),
     },
     {
       label: 'Caution Badge',
-      Example: () => <Badge tone="caution">Caution</Badge>,
+      Example: () => (
+        <Card>
+          <Badge tone="caution">Caution</Badge>
+        </Card>
+      ),
     },
     {
       label: 'Strong Caution Badge',
       Example: () => (
-        <Badge tone="caution" weight="strong">
-          Caution
-        </Badge>
+        <Card>
+          <Badge tone="caution" weight="strong">
+            Caution
+          </Badge>
+        </Card>
       ),
     },
     {
       label: 'Positive Badge',
-      Example: () => <Badge tone="positive">Positive</Badge>,
+      Example: () => (
+        <Card>
+          <Badge tone="positive">Positive</Badge>
+        </Card>
+      ),
     },
     {
       label: 'Strong Positive Badge',
       Example: () => (
-        <Badge tone="positive" weight="strong">
-          Positive
-        </Badge>
+        <Card>
+          <Badge tone="positive" weight="strong">
+            Positive
+          </Badge>
+        </Card>
       ),
     },
     {
       label: 'Promote Badge',
-      Example: () => <Badge tone="promote">Promote</Badge>,
+      Example: () => (
+        <Card>
+          <Badge tone="promote">Promote</Badge>
+        </Card>
+      ),
     },
     {
       label: 'Strong Promote Badge',
       Example: () => (
-        <Badge tone="promote" weight="strong">
-          Promote
-        </Badge>
+        <Card>
+          <Badge tone="promote" weight="strong">
+            Promote
+          </Badge>
+        </Card>
       ),
     },
     {
       label: 'Neutral Badge',
-      Example: () => <Badge tone="neutral">Neutral</Badge>,
+      Example: () => (
+        <Card>
+          <Badge tone="neutral">Neutral</Badge>
+        </Card>
+      ),
     },
     {
       label: 'Strong Neutral Badge',
       Example: () => (
-        <Badge tone="neutral" weight="strong">
-          Neutral
-        </Badge>
+        <Card>
+          <Badge tone="neutral" weight="strong">
+            Neutral
+          </Badge>
+        </Card>
       ),
     },
   ],

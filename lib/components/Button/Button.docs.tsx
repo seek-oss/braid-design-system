@@ -44,12 +44,9 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Weak Button on Brand Background',
+      background: 'brand',
       Container,
-      Example: () => (
-        <Box background="brand" padding="medium">
-          <Button weight="weak">Submit</Button>
-        </Box>
-      ),
+      Example: () => <Button weight="weak">Submit</Button>,
     },
     {
       label: 'Loading Button',

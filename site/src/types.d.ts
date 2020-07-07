@@ -3,6 +3,7 @@ import { RouteProps } from 'react-router';
 import { Snippets } from 'sku/playroom';
 import { Optional } from 'utility-types';
 import { ReactNodeNoStrings } from './../../lib/components/private/ReactNodeNoStrings';
+import { BoxProps } from '../../lib/components/Box/Box';
 
 export interface AppConfig {
   playroomUrl: string;
@@ -40,6 +41,7 @@ export interface ComponentExample {
   label?: string;
   docsSite?: boolean;
   storybook?: boolean;
+  background?: NonNullable<BoxProps['background']>;
   Example?: (props: { id: string; handler: () => void }) => JSX.Element;
   Container?: (props: { children: ReactNode }) => JSX.Element;
   code?: string;

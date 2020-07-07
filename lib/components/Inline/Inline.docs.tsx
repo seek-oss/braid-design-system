@@ -10,9 +10,7 @@ const spaces = Object.keys(padding.top).filter(
 ) as Array<InlineProps['space']>;
 
 const Container = ({ children }: { children: ReactNode }) => (
-  <Box background="neutralLight" style={{ maxWidth: '240px' }}>
-    {children}
-  </Box>
+  <Box style={{ maxWidth: '240px' }}>{children}</Box>
 );
 
 const docs: ComponentDocs = {

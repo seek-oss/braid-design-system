@@ -1,6 +1,15 @@
 import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import { Alert, Text, Strong, Stack, TextLink, BulletList, Bullet } from '../';
+import {
+  Alert,
+  Card,
+  Text,
+  Strong,
+  Stack,
+  TextLink,
+  BulletList,
+  Bullet,
+} from '../';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -27,6 +36,16 @@ const docs: ComponentDocs = {
         <Alert tone="info">
           <Text>This is an important piece of information.</Text>
         </Alert>
+      ),
+    },
+    {
+      label: 'Info Alert Inside Card',
+      Example: () => (
+        <Card>
+          <Alert tone="info">
+            <Text>This is an important piece of information.</Text>
+          </Alert>
+        </Card>
       ),
     },
     {
@@ -64,11 +83,31 @@ const docs: ComponentDocs = {
       ),
     },
     {
+      label: 'Promote Alert Inside Card',
+      Example: () => (
+        <Card>
+          <Alert tone="promote">
+            <Text>This is a promoted piece of information.</Text>
+          </Alert>
+        </Card>
+      ),
+    },
+    {
       label: 'Caution Alert',
       Example: () => (
         <Alert tone="caution">
           <Text>This is a cautionary piece of information.</Text>
         </Alert>
+      ),
+    },
+    {
+      label: 'Caution Alert Inside Card',
+      Example: () => (
+        <Card>
+          <Alert tone="caution">
+            <Text>This is a cautionary piece of information.</Text>
+          </Alert>
+        </Card>
       ),
     },
     {
@@ -80,11 +119,31 @@ const docs: ComponentDocs = {
       ),
     },
     {
+      label: 'Critical Alert Inside Card',
+      Example: () => (
+        <Card>
+          <Alert tone="critical">
+            <Text>This is a critical piece of information.</Text>
+          </Alert>
+        </Card>
+      ),
+    },
+    {
       label: 'Positive Alert',
       Example: () => (
         <Alert tone="positive">
           <Text>This is a positive piece of information.</Text>
         </Alert>
+      ),
+    },
+    {
+      label: 'Positive Alert Inside Card',
+      Example: () => (
+        <Card>
+          <Alert tone="positive">
+            <Text>This is a positive piece of information.</Text>
+          </Alert>
+        </Card>
       ),
     },
   ],

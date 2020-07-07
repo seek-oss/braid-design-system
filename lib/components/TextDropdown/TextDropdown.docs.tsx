@@ -1,6 +1,6 @@
 import React, { ReactNode, useState } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import { Box, Heading, Stack, Strong, Text, TextLink, TextDropdown } from '..';
+import { Heading, Stack, Strong, Text, TextLink, TextDropdown } from '..';
 import { TextDropdown as PlayroomTextDropdown } from '../../playroom/components';
 
 const Container = ({ children }: { children: ReactNode }) => (
@@ -118,22 +118,21 @@ const docs: ComponentDocs = {
     },
     {
       label: 'TextDropdown on Brand Background',
+      background: 'brand',
       Container,
       Example: ({ id }) => {
         const [value, setValue] = useState('Designer');
 
         return (
-          <Box background="brand" padding="small">
-            <Text>
-              <TextDropdown
-                label="Job Title"
-                id={id}
-                onChange={setValue}
-                value={value}
-                options={['Developer', 'Designer', 'Product Manager']}
-              />
-            </Text>
-          </Box>
+          <Text>
+            <TextDropdown
+              label="Job Title"
+              id={id}
+              onChange={setValue}
+              value={value}
+              options={['Developer', 'Designer', 'Product Manager']}
+            />
+          </Text>
         );
       },
     },

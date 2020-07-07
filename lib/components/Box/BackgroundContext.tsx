@@ -3,16 +3,16 @@ import { BoxProps } from './Box';
 import { useBraidTheme } from '../BraidProvider/BraidProvider';
 
 export type BackgroundVariant =
-  | BoxProps['background']
+  | NonNullable<BoxProps['background']>
   | 'UNKNOWN_DARK'
   | 'UNKNOWN_LIGHT';
 
-const backgroundContext = createContext<BackgroundVariant | null>(null);
+const backgroundContext = createContext<BackgroundVariant>('body');
 
 export const BackgroundProvider = backgroundContext.Provider;
 
 export const renderBackgroundProvider = (
-  background: BackgroundVariant,
+  background: BackgroundVariant | undefined,
   element: ReactElement | null,
 ) =>
   background ? (

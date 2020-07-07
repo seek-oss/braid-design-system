@@ -1,7 +1,6 @@
 import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import { Tag } from './Tag';
-import { Inline } from '../Inline/Inline';
+import { Tag, Card, Inline } from '../';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -10,39 +9,49 @@ const docs: ComponentDocs = {
   examples: [
     {
       label: 'Standard Tag',
-      Example: () => <Tag>Tag</Tag>,
+      Example: () => (
+        <Card>
+          <Tag>Tag</Tag>
+        </Card>
+      ),
     },
     {
       label: 'Clearable Tag',
       Example: ({ handler }) => (
-        <Tag onClear={handler} clearLabel="Clear tag">
-          Tag
-        </Tag>
+        <Card>
+          <Tag onClear={handler} clearLabel="Clear tag">
+            Tag
+          </Tag>
+        </Card>
       ),
     },
     {
       label: 'Truncated Tag',
       docsSite: false,
       Example: ({ handler }) => (
-        <Tag onClear={handler} clearLabel="Clear tag">
-          The quick brown fox jumps over the lazy dog. The quick brown fox jumps
-          over the lazy dog. The quick brown fox jumps over the lazy dog. The
-          quick brown fox jumps over the lazy dog. The quick brown fox jumps
-          over the lazy dog. The quick brown fox jumps over the lazy dog. The
-          quick brown fox jumps over the lazy dog.
-        </Tag>
+        <Card>
+          <Tag onClear={handler} clearLabel="Clear tag">
+            The quick brown fox jumps over the lazy dog. The quick brown fox
+            jumps over the lazy dog. The quick brown fox jumps over the lazy
+            dog. The quick brown fox jumps over the lazy dog. The quick brown
+            fox jumps over the lazy dog. The quick brown fox jumps over the lazy
+            dog. The quick brown fox jumps over the lazy dog.
+          </Tag>
+        </Card>
       ),
     },
     {
       label: 'Test: Standard and clearable tags should be equal height',
       docsSite: false,
       Example: ({ handler }) => (
-        <Inline space="small">
-          <Tag>Tag</Tag>
-          <Tag onClear={handler} clearLabel="Clear tag">
-            Tag
-          </Tag>
-        </Inline>
+        <Card>
+          <Inline space="small">
+            <Tag>Tag</Tag>
+            <Tag onClear={handler} clearLabel="Clear tag">
+              Tag
+            </Tag>
+          </Inline>
+        </Card>
       ),
     },
   ],

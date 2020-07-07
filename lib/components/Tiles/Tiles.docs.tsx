@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import { Tiles, Box, Card, Text } from '../';
+import { Tiles, Card, Text } from '../';
 import { Placeholder } from '../private/Placeholder/Placeholder';
 
 const exampleRows = 3;
@@ -33,29 +33,25 @@ const docs: ComponentDocs = {
     {
       label: 'Dividers (when in a single column)',
       Example: () => (
-        <Box background="neutralLight" padding="small">
-          <Tiles space={['none', 'small']} columns={[1, 2]} dividers>
-            {[...new Array(2 * exampleRows)].map((_, i) => (
-              <Card key={i}>
-                <Text>Tile</Text>
-              </Card>
-            ))}
-          </Tiles>
-        </Box>
+        <Tiles space={['none', 'small']} columns={[1, 2]} dividers>
+          {[...new Array(2 * exampleRows)].map((_, i) => (
+            <Card key={i}>
+              <Text>Tile</Text>
+            </Card>
+          ))}
+        </Tiles>
       ),
     },
     {
       label: 'Strong dividers (when in a single column)',
       Example: () => (
-        <Box background="neutralLight" padding="small">
-          <Tiles space={['none', 'small']} columns={[1, 2]} dividers="strong">
-            {[...new Array(2 * exampleRows)].map((_, i) => (
-              <Card key={i}>
-                <Text>Tile</Text>
-              </Card>
-            ))}
-          </Tiles>
-        </Box>
+        <Tiles space={['none', 'small']} columns={[1, 2]} dividers="strong">
+          {[...new Array(2 * exampleRows)].map((_, i) => (
+            <Card key={i}>
+              <Text>Tile</Text>
+            </Card>
+          ))}
+        </Tiles>
       ),
     },
     {

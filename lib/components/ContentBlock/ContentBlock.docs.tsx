@@ -1,11 +1,7 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import { Placeholder } from '../private/Placeholder/Placeholder';
-import { ContentBlock, Box } from '../';
-
-const Container = ({ children }: { children: ReactNode }) => (
-  <Box background="neutralLight">{children}</Box>
-);
+import { ContentBlock } from '../';
 
 const docs: ComponentDocs = {
   category: 'Layout',
@@ -13,7 +9,6 @@ const docs: ComponentDocs = {
   examples: [
     {
       label: 'Default Content Block',
-      Container,
       Example: () => (
         <ContentBlock>
           <Placeholder height={100} label="Content block" />
@@ -22,7 +17,6 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Large Content Block',
-      Container,
       Example: () => (
         <ContentBlock width="large">
           <Placeholder height={100} label="Content block" />

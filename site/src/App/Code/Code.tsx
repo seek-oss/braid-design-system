@@ -13,8 +13,6 @@ import {
   Stack,
   Text,
   Inline,
-  Columns,
-  Column,
   IconChevron,
   Hidden,
 } from '../../../../lib/components';
@@ -53,7 +51,6 @@ const CodeButton = ({
     <Box
       component={component}
       cursor="pointer"
-      background="neutralLight"
       borderRadius="standard"
       paddingY="xxsmall"
       paddingX="xsmall"
@@ -67,7 +64,7 @@ const CodeButton = ({
         className={classnames(styles.focusOverlay)}
       />
       <FieldOverlay
-        background="card"
+        background="neutralLight"
         className={classnames(styles.hoverOverlay)}
       />
       <FieldOverlay className={classnames(styles.activeOverlay)} />
@@ -77,7 +74,7 @@ const CodeButton = ({
         pointerEvents="none"
         userSelect="none"
       >
-        <Text size="xsmall" baseline={false}>
+        <Text size="xsmall" baseline={false} tone="secondary">
           {children}
         </Text>
       </Box>
@@ -119,81 +116,56 @@ export default ({
     >
       <Stack space="xsmall">
         {typeof children !== 'string' && (
+          <ThemedExample background="body">{children}</ThemedExample>
+        )}
+        {hideCode ? null : (
           <Box
-            padding="small"
-            background="neutralLight"
+            position="relative"
+            padding="medium"
             borderRadius="standard"
+            className={styles.code}
           >
-            <ThemedExample>{children}</ThemedExample>
+            <Text size="small" component="pre" baseline={false}>
+              <SyntaxHighlighter language="tsx" style={editorTheme}>
+                {snippet}
+              </SyntaxHighlighter>
+            </Text>
           </Box>
         )}
-        <Box>
-          {hideCode ? null : (
-            <Box
-              position="relative"
-              padding="medium"
-              borderRadius="standard"
-              className={styles.code}
-            >
-              <Text size="small" component="pre" baseline={false}>
-                <SyntaxHighlighter language="tsx" style={editorTheme}>
-                  {snippet}
-                </SyntaxHighlighter>
-              </Text>
-            </Box>
-          )}
-          <Box
-            padding="xxsmall"
-            background="neutralLight"
-            borderRadius="standard"
-            className={hideCode ? undefined : styles.toolbar}
+        <Inline space="xxsmall" align="right">
+          {collapsedByDefault ? (
+            <CodeButton onClick={() => setHideCode(!hideCode)}>
+              <IconChevron direction={hideCode ? 'down' : 'up'} />
+              <Hidden inline below="tablet">
+                {hideCode ? ' View code' : ' Hide code'}
+              </Hidden>
+              <Hidden inline above="mobile">
+                {' '}
+                Code
+              </Hidden>
+            </CodeButton>
+          ) : null}
+          <CodeButton
+            onClick={() => copy(snippet)}
+            title="Copy code to clipboard"
           >
-            <Columns space="xxsmall" alignY="center">
-              <Column width="content">
-                {collapsedByDefault ? (
-                  <CodeButton onClick={() => setHideCode(!hideCode)}>
-                    <IconChevron direction={hideCode ? 'down' : 'up'} />
-                    <Hidden inline below="tablet">
-                      {hideCode ? ' Show code' : ' Hide code'}
-                    </Hidden>
-                    <Hidden inline above="mobile">
-                      {' '}
-                      Code
-                    </Hidden>
-                  </CodeButton>
-                ) : null}
-              </Column>
-              <Column>
-                <Inline space="xxsmall" align="right">
-                  <CodeButton
-                    onClick={() => copy(snippet)}
-                    title="Copy to clipboard"
-                  >
-                    <CopyIcon /> Copy
-                  </CodeButton>
-                  {/^import/m.test(snippet) || !playroom ? null : (
-                    <CodeButton
-                      component="a"
-                      target="_blank"
-                      href={createUrl({ baseUrl: playroomUrl, code: snippet })}
-                      className={useBoxStyles({
-                        component: 'a',
-                        display: 'block',
-                      })}
-                      title="Open in Playroom"
-                    >
-                      <PlayIcon />{' '}
-                      <Hidden inline below="tablet">
-                        Open in{' '}
-                      </Hidden>
-                      Playroom
-                    </CodeButton>
-                  )}
-                </Inline>
-              </Column>
-            </Columns>
-          </Box>
-        </Box>
+            <CopyIcon /> Copy
+          </CodeButton>
+          {/^import/m.test(snippet) || !playroom ? null : (
+            <CodeButton
+              component="a"
+              target="_blank"
+              href={createUrl({ baseUrl: playroomUrl, code: snippet })}
+              className={useBoxStyles({
+                component: 'a',
+                display: 'block',
+              })}
+              title="Open in Playroom"
+            >
+              <PlayIcon /> Playroom
+            </CodeButton>
+          )}
+        </Inline>
       </Stack>
     </Box>
   );

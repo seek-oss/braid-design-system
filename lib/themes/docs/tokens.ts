@@ -13,8 +13,8 @@ const black = '#333';
 const white = '#fff';
 const link = formAccent;
 const linkVisited = 'DarkViolet';
-const secondary = '#1c1c1ca1';
-const neutral = '#747474';
+const secondary = '#757575';
+const neutral = '#ccc';
 
 const tokens: TreatTokens = {
   name: 'docs',

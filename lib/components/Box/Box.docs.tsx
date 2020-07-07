@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { ComponentDocs, ComponentExample } from '../../../site/src/types';
 import { Box } from './Box';
 import { Placeholder } from '../private/Placeholder/Placeholder';
@@ -14,17 +14,15 @@ const docs: ComponentDocs = {
     (space): ComponentExample => ({
       label: `"${space}" space`,
       Container: ({ children }) => (
-        <Box
-          background="neutralLight"
-          style={{ overflow: 'auto', maxWidth: '300px' }}
-        >
-          {children}
-        </Box>
+        <Box style={{ overflow: 'auto', maxWidth: '300px' }}>{children}</Box>
       ),
       Example: () => (
-        <Box padding={space}>
-          <Placeholder height={100} />
-        </Box>
+        <Fragment>
+          <Box paddingBottom={space}>
+            <Placeholder height={40} />
+          </Box>
+          <Placeholder height={40} />
+        </Fragment>
       ),
     }),
   ),
