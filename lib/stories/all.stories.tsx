@@ -108,7 +108,7 @@ req.keys().forEach((filename) => {
                     >
                       {label}
                     </h4>
-                    <Box background={background}>
+                    <Box background={background} style={{ padding: 12 }}>
                       <Container>
                         <Example id="id" handler={handler} />
                       </Container>

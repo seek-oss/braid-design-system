@@ -1,17 +1,12 @@
 import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import { Text } from '../Text/Text';
-import { Box } from '../Box/Box';
-import { Heading } from '../Heading/Heading';
-import { Inline } from '../Inline/Inline';
-import { Button } from '../Button/Button';
+import { Text, Heading, Inline, Button, Stack } from '../';
 import { UseIconProps } from '../../hooks/useIcon';
 import {
   heading as headingSizes,
   text as textSizes,
   tone as tones,
 } from '../../hooks/typography/typography.treat';
-import { Stack } from '../Stack/Stack';
 
 import * as icons from './index';
 
@@ -117,19 +112,18 @@ const docs: ComponentDocs = {
     {
       label: 'Auto Tone with Background Contrast (via TextContext)',
       docsSite: false,
+      background: 'brand',
       Example: () => (
-        <Box background="brand" padding="xsmall">
-          <Stack space="medium">
-            <Text>Default:</Text>
-            <Text>
-              <Icons />
-            </Text>
-            <Text>Explicitly positive:</Text>
-            <Text>
-              <Icons tone="positive" />
-            </Text>
-          </Stack>
-        </Box>
+        <Stack space="medium">
+          <Text>Default:</Text>
+          <Text>
+            <Icons />
+          </Text>
+          <Text>Explicitly positive:</Text>
+          <Text>
+            <Icons tone="positive" />
+          </Text>
+        </Stack>
       ),
     },
     {
@@ -163,10 +157,10 @@ const docs: ComponentDocs = {
             return (
               <Inline key={icon} space="small">
                 <Button>
-                  <IconComponent /> Uppercase
+                  <IconComponent /> Upper
                 </Button>
                 <Button>
-                  Lowercase <IconComponent alignY="lowercase" />
+                  Lower <IconComponent alignY="lowercase" />
                 </Button>
               </Inline>
             );
