@@ -16,6 +16,7 @@ const docs: ComponentDocs = {
     </Text>
   ),
   screenshotWidths: [320, 768, 1200],
+  screenshotOnlyInWireframe: true,
   examples: [
     {
       label: 'Hidden below tablet',

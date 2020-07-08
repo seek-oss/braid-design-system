@@ -7,6 +7,7 @@ const docs: ComponentDocs = {
   category: 'Layout',
   migrationGuide: true,
   screenshotWidths: [320, 768, 1200],
+  screenshotOnlyInWireframe: true,
   examples: [
     {
       label: 'No space',

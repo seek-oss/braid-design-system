@@ -8,6 +8,7 @@ const exampleRows = 3;
 const docs: ComponentDocs = {
   category: 'Layout',
   screenshotWidths: [320, 768],
+  screenshotOnlyInWireframe: true,
   examples: [
     ...([1, 2, 3, 4, 5, 6] as const).map((columns) => ({
       label: `${columns} column${columns === 1 ? '' : 's'}`,

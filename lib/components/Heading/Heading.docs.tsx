@@ -77,6 +77,7 @@ const docs: ComponentDocs = {
     {
       label: 'Heading Spacing',
       docsSite: false,
+      background: 'card',
       Example: () => {
         const levels = Object.keys(headingLevels) as Array<
           keyof typeof headingLevels
@@ -138,6 +139,7 @@ const docs: ComponentDocs = {
     {
       label: 'Heading Spacing (Legacy)',
       docsSite: false,
+      background: 'card',
       Example: () => {
         const levels = Object.keys(headingLevels) as Array<
           keyof typeof headingLevels

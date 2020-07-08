@@ -78,6 +78,7 @@ const docs: ComponentDocs = {
     {
       label: 'Text Spacing',
       docsSite: false,
+      background: 'card',
       Container,
       Example: () => {
         const sizes = Object.keys(textSizes) as Array<keyof typeof textSizes>;
@@ -100,6 +101,7 @@ const docs: ComponentDocs = {
     {
       label: 'Text Spacing (Legacy)',
       docsSite: false,
+      background: 'card',
       Container,
       Example: () => {
         const sizes = Object.keys(textSizes) as Array<keyof typeof textSizes>;
