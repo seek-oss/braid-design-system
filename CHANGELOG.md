@@ -1,5 +1,19 @@
 # braid-design-system
 
+## 28.6.0
+
+### Minor Changes
+
+- Box: Add `body` background ([#677](https://github.com/seek-oss/braid-design-system/pull/677))
+
+  You can now use the theme's body background on arbitrary elements within the page.
+
+  **EXAMPLE USAGE**
+
+  ```jsx
+  <Box background="body">...</Box>
+  ```
+
 ## 28.5.0
 
 ### Minor Changes
