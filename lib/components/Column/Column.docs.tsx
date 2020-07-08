@@ -12,6 +12,7 @@ const widths = [
 const docs: ComponentDocs = {
   category: 'Layout',
   screenshotWidths: [320],
+  screenshotOnlyInWireframe: true,
   examples: [
     {
       label: 'Standard Columns',
