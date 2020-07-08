@@ -119,7 +119,9 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
         >
           <Overlay
             background={
-              !background || background === 'card' || background === 'input'
+              background === 'body' ||
+              background === 'card' ||
+              background === 'input'
                 ? 'neutralLight'
                 : 'card'
             }

@@ -2,7 +2,6 @@ import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import {
   Card,
-  Box,
   Text,
   Stack,
   Heading,
@@ -19,11 +18,6 @@ const docs: ComponentDocs = {
   examples: [
     {
       label: 'Default',
-      Container: ({ children }) => (
-        <Box padding="gutter" background="neutralLight">
-          {children}
-        </Box>
-      ),
       Example: () => (
         <Card>
           <Text>This text is inside a card.</Text>

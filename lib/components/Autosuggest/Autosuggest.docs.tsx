@@ -1,7 +1,7 @@
 import React, { useState, ReactNode } from 'react';
 import matchHighlights from 'autosuggest-highlight/match';
 import { ComponentDocs } from '../../../site/src/types';
-import { Autosuggest, Box, IconSearch, IconLocation } from '../';
+import { Autosuggest, IconSearch, IconLocation } from '../';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <div style={{ maxWidth: '300px' }}>{children}</div>
@@ -238,24 +238,23 @@ const docs: ComponentDocs = {
       label: 'Standard suggestions with brand background and mobile backdrop',
       storybook: false,
       Container,
+      background: 'brand',
       Example: ({ id }) => {
         const [value, setValue] = useState<Value>({ text: '' });
 
         return (
-          <Box background="brand" padding="small">
-            <Autosuggest
-              showMobileBackdrop
-              label="I like to eat"
-              id={id}
-              value={value}
-              onChange={setValue}
-              onClear={() => setValue({ text: '' })}
-              suggestions={makeSuggestions(
-                ['Apples', 'Bananas', 'Broccoli', 'Carrots'],
-                value.text,
-              )}
-            />
-          </Box>
+          <Autosuggest
+            showMobileBackdrop
+            label="I like to eat"
+            id={id}
+            value={value}
+            onChange={setValue}
+            onClear={() => setValue({ text: '' })}
+            suggestions={makeSuggestions(
+              ['Apples', 'Bananas', 'Broccoli', 'Carrots'],
+              value.text,
+            )}
+          />
         );
       },
     },

@@ -1,6 +1,5 @@
 import { style, styleMap } from 'sku/treat';
 import { Properties } from 'csstype';
-import omit from 'lodash/omit';
 import { mapToStyleProperty } from '../../utils';
 import { Theme } from 'treat/theme';
 
@@ -259,7 +258,7 @@ export const flexGrow = styleMap(
 ) as Record<keyof typeof flexGrowRules, string>; // Remove this when 'styleMap' supports numbers as keys and it's been released to sku consumers
 
 export const background = styleMap(({ color }) =>
-  mapToStyleProperty(omit(color.background, 'body'), 'background'),
+  mapToStyleProperty(color.background, 'background'),
 );
 
 export const boxShadow = styleMap(

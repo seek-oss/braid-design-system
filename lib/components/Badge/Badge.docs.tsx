@@ -9,6 +9,7 @@ const docs: ComponentDocs = {
   examples: [
     {
       label: 'Info Badge',
+      background: 'card',
       Example: () => <Badge tone="info">Info</Badge>,
     },
     {
@@ -21,6 +22,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Critical Badge',
+      background: 'card',
       Example: () => <Badge tone="critical">Critical</Badge>,
     },
     {
@@ -33,6 +35,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Caution Badge',
+      background: 'card',
       Example: () => <Badge tone="caution">Caution</Badge>,
     },
     {
@@ -45,6 +48,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Positive Badge',
+      background: 'card',
       Example: () => <Badge tone="positive">Positive</Badge>,
     },
     {
@@ -57,6 +61,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Promote Badge',
+      background: 'card',
       Example: () => <Badge tone="promote">Promote</Badge>,
     },
     {
@@ -69,6 +74,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Neutral Badge',
+      background: 'card',
       Example: () => <Badge tone="neutral">Neutral</Badge>,
     },
     {

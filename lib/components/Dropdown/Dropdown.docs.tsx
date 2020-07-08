@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import { Box, Dropdown, IconLocation } from '../';
+import { Dropdown, IconLocation } from '../';
 import { Dropdown as PlayroomDropdown } from '../../playroom/components';
 
 const Container = ({ children }: { children: ReactNode }) => (
@@ -93,20 +93,19 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Dropdown on Brand Background',
+      background: 'brand',
       Container,
       Example: ({ id, handler }) => (
-        <Box background="brand" padding="small">
-          <Dropdown
-            label="Job Title"
-            id={id}
-            onChange={handler}
-            value=""
-            placeholder="Please select a role title"
-          >
-            <option value="1">Developer</option>
-            <option value="2">Designer</option>
-          </Dropdown>
-        </Box>
+        <Dropdown
+          label="Job Title"
+          id={id}
+          onChange={handler}
+          value=""
+          placeholder="Please select a role title"
+        >
+          <option value="1">Developer</option>
+          <option value="2">Designer</option>
+        </Dropdown>
       ),
     },
   ],

@@ -1,6 +1,6 @@
 import React, { ReactNode, useState } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import { Box, PasswordField, TextLink } from '../';
+import { PasswordField, TextLink } from '../';
 import { PasswordField as PlayroomPasswordField } from '../../playroom/components';
 
 const Container = ({ children }: { children: ReactNode }) => (
@@ -127,18 +127,17 @@ const docs: ComponentDocs = {
     },
     {
       label: 'PasswordField on Brand Background',
+      background: 'brand',
       Container,
       Example: ({ id }) => {
         const [value, setValue] = useState('qwerty');
         return (
-          <Box background="brand" padding="small">
-            <PasswordField
-              label="Password"
-              id={id}
-              onChange={(ev) => setValue(ev.currentTarget.value)}
-              value={value}
-            />
-          </Box>
+          <PasswordField
+            label="Password"
+            id={id}
+            onChange={(ev) => setValue(ev.currentTarget.value)}
+            value={value}
+          />
         );
       },
     },

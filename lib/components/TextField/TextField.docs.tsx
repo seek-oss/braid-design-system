@@ -1,6 +1,6 @@
 import React, { useState, ReactNode } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import { Box, IconSearch, TextField, TextLink } from '../';
+import { IconSearch, TextField, TextLink } from '../';
 import { TextField as PlayroomTextField } from '../../playroom/components';
 
 const Container = ({ children }: { children: ReactNode }) => (
@@ -156,16 +156,15 @@ const docs: ComponentDocs = {
     },
     {
       label: 'TextField on Brand Background',
+      background: 'brand',
       Container,
       Example: ({ id, handler }) => (
-        <Box background="brand" padding="small">
-          <TextField
-            label="Job Title"
-            id={id}
-            onChange={handler}
-            value="Senior Developer"
-          />
-        </Box>
+        <TextField
+          label="Job Title"
+          id={id}
+          onChange={handler}
+          value="Senior Developer"
+        />
       ),
     },
   ],

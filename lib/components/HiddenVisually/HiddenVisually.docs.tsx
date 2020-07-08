@@ -16,6 +16,7 @@ const docs: ComponentDocs = {
   examples: [
     {
       label: 'Inside Text',
+      showCodeByDefault: true,
       Example: () => (
         <Text>
           The next sentence is only available to screen readers.
