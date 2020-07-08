@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { uniq, flatten, values } from 'lodash';
 import '../../reset';
 import * as themes from '../themes';
-import { BraidProvider } from '../components';
+import { BraidProvider, Box } from '../components';
 import { ComponentDocs } from '../../site/src/types';
 
 const webFontLinkTags = uniq(
@@ -83,6 +83,7 @@ req.keys().forEach((filename) => {
                   label = componentName,
                   Example,
                   Container = DefaultContainer,
+                  background = 'body',
                 },
                 i,
               ) =>
@@ -107,9 +108,11 @@ req.keys().forEach((filename) => {
                     >
                       {label}
                     </h4>
-                    <Container>
-                      <Example id="id" handler={handler} />
-                    </Container>
+                    <Box background={background} style={{ padding: 12 }}>
+                      <Container>
+                        <Example id="id" handler={handler} />
+                      </Container>
+                    </Box>
                     <div style={{ paddingTop: 18 }}>
                       <hr
                         style={{

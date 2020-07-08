@@ -54,7 +54,10 @@ export const TextLinkRenderer = (props: TextLinkRendererProps) => {
 
 function useTextLinkTone() {
   const backgroundContext = useBackground();
-  const highlightLink = backgroundContext === 'card' || !backgroundContext;
+  const highlightLink =
+    backgroundContext === 'body' ||
+    backgroundContext === 'card' ||
+    backgroundContext === 'neutralLight';
   return highlightLink ? 'link' : 'neutral';
 }
 

@@ -28,6 +28,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Disabled Checkbox',
+      background: 'card',
       Example: ({ id, handler }) => (
         <Checkbox
           id={id}

@@ -16,9 +16,11 @@ const docs: ComponentDocs = {
     </Text>
   ),
   screenshotWidths: [320, 768, 1200],
+  screenshotOnlyInWireframe: true,
   examples: [
     {
       label: 'Hidden below tablet',
+      showCodeByDefault: true,
       Example: () => (
         <Stack space="small">
           <Text>The following line is hidden below tablet:</Text>
@@ -30,6 +32,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Hidden below desktop',
+      showCodeByDefault: true,
       Example: () => (
         <Stack space="small">
           <Text>The following line is hidden below desktop:</Text>
@@ -41,6 +44,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Hidden above mobile',
+      showCodeByDefault: true,
       Example: () => (
         <Stack space="small">
           <Text>The following line is hidden above mobile:</Text>
@@ -52,6 +56,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Hidden above tablet',
+      showCodeByDefault: true,
       Example: () => (
         <Stack space="small">
           <Text>The following line is hidden above tablet:</Text>
@@ -63,6 +68,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Hidden on print',
+      showCodeByDefault: true,
       Example: () => (
         <Stack space="small">
           <Text>The following line is hidden on print:</Text>
@@ -86,6 +92,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Hidden below tablet (inline)',
+      showCodeByDefault: true,
       Example: () => (
         <Text>
           The following text node is hidden below tablet:{' '}
@@ -95,6 +102,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Hidden below desktop (inline)',
+      showCodeByDefault: true,
       Example: () => (
         <Text>
           The following text node is hidden below desktop:{' '}
@@ -104,6 +112,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Hidden above mobile (inline)',
+      showCodeByDefault: true,
       Example: () => (
         <Text>
           The following text node is hidden above mobile:{' '}
@@ -113,6 +122,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Hidden above tablet (inline)',
+      showCodeByDefault: true,
       Example: () => (
         <Text>
           The following text node is hidden above tablet:{' '}
@@ -122,6 +132,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Hidden on print (inline)',
+      showCodeByDefault: true,
       Example: () => (
         <Text>
           The following text node is hidden on print:{' '}

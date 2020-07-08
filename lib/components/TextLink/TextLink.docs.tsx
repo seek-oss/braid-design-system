@@ -175,10 +175,10 @@ const docs: ComponentDocs = {
 
         return (
           <Fragment>
-            {[undefined, ...backgrounds.sort()].map((background, i) => (
+            {backgrounds.sort().map((background, i) => (
               <Box key={i} background={background}>
                 <Text baseline={false}>
-                  {background || 'No background'}{' '}
+                  {background}{' '}
                   <TextLink href="#">
                     with link <IconNewWindow />
                   </TextLink>

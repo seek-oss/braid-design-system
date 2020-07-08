@@ -71,6 +71,8 @@ export const ComponentDoc = ({
             Example,
             code,
             Container = DefaultContainer,
+            background = 'body',
+            showCodeByDefault = false,
             playroom,
           } = example;
 
@@ -87,20 +89,31 @@ export const ComponentDoc = ({
 
           return (
             <Box key={index}>
-              <Stack space="xlarge">
+              <Stack space="large">
                 {label && filteredExamples.length > 1 ? (
                   <Heading level="3">{label}</Heading>
                 ) : null}
-                {Example ? (
-                  <Container>
-                    <ThemedExample>
-                      <Example id={`${index}`} handler={handler} />
+                <Stack space="xxsmall">
+                  {Example ? (
+                    <ThemedExample background={background}>
+                      <Container>
+                        <Example id={`${index}`} handler={handler} />
+                      </Container>
                     </ThemedExample>
-                  </Container>
-                ) : null}
-                {codeAsString ? (
-                  <Code playroom={playroom}>{codeAsString}</Code>
-                ) : null}
+                  ) : null}
+                  {codeAsString ? (
+                    <Code
+                      collapsedByDefault={
+                        !showCodeByDefault &&
+                        Example !== undefined &&
+                        docs.category !== 'Logic'
+                      }
+                      playroom={playroom}
+                    >
+                      {codeAsString}
+                    </Code>
+                  ) : null}
+                </Stack>
               </Stack>
             </Box>
           );

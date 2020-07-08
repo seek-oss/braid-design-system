@@ -1,7 +1,7 @@
 import React, { ReactNode, useState } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import { Textarea, TextLink } from '../';
-import { Textarea as PlayroomTextarea, Box } from '../../playroom/components';
+import { Textarea as PlayroomTextarea } from '../../playroom/components';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <div style={{ maxWidth: '300px' }}>{children}</div>
@@ -169,19 +169,18 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Textarea on Brand Background',
+      background: 'brand',
       Container,
       Example: ({ id }) => {
         const [value, setValue] = useState('');
 
         return (
-          <Box background="brand" padding="small">
-            <Textarea
-              label="Do you like Braid?"
-              id={id}
-              onChange={(e) => setValue(e.currentTarget.value)}
-              value={value}
-            />
-          </Box>
+          <Textarea
+            label="Do you like Braid?"
+            id={id}
+            onChange={(e) => setValue(e.currentTarget.value)}
+            value={value}
+          />
         );
       },
     },

@@ -6,21 +6,19 @@ import reactElementToJSXString from 'react-element-to-jsx-string';
 import prettier from 'prettier/standalone';
 import typescriptParser from 'prettier/parser-typescript';
 import { createUrl } from 'sku/playroom/utils';
-import classnames from 'classnames';
 import { useConfig } from '../ConfigContext';
 import {
   Box,
   Stack,
   Text,
   Inline,
-  Columns,
-  Column,
   IconChevron,
   Hidden,
 } from '../../../../lib/components';
 import { BoxProps } from '../../../../lib/components/Box/Box';
 import { FieldOverlay } from '../../../../lib/components/private/FieldOverlay/FieldOverlay';
 import { useBoxStyles } from '../../../../lib/components/Box/useBoxStyles';
+import { hideFocusRingsClassName } from '../../../../lib/components/private/hideFocusRings/hideFocusRings';
 import { CopyIcon } from './CopyIcon';
 import { PlayIcon } from './PlayIcon';
 import * as styleRefs from './Code.treat';
@@ -53,7 +51,6 @@ const CodeButton = ({
     <Box
       component={component}
       cursor="pointer"
-      background="neutralLight"
       borderRadius="standard"
       paddingY="xxsmall"
       paddingX="xsmall"
@@ -64,20 +61,17 @@ const CodeButton = ({
     >
       <FieldOverlay
         variant="focus"
-        className={classnames(styles.focusOverlay)}
+        className={[styles.focusOverlay, hideFocusRingsClassName]}
       />
-      <FieldOverlay
-        background="card"
-        className={classnames(styles.hoverOverlay)}
-      />
-      <FieldOverlay className={classnames(styles.activeOverlay)} />
+      <FieldOverlay background="neutralLight" className={styles.hoverOverlay} />
+      <FieldOverlay className={styles.activeOverlay} />
       <Box
         component="span"
         position="relative"
         pointerEvents="none"
         userSelect="none"
       >
-        <Text size="xsmall" baseline={false}>
+        <Text size="xsmall" baseline={false} tone="secondary">
           {children}
         </Text>
       </Box>
@@ -119,81 +113,64 @@ export default ({
     >
       <Stack space="xsmall">
         {typeof children !== 'string' && (
-          <Box
-            padding="small"
-            background="neutralLight"
-            borderRadius="standard"
-          >
-            <ThemedExample>{children}</ThemedExample>
-          </Box>
+          <ThemedExample background="body">{children}</ThemedExample>
         )}
-        <Box>
-          {hideCode ? null : (
-            <Box
-              position="relative"
-              padding="medium"
-              borderRadius="standard"
-              className={styles.code}
-            >
+        {hideCode ? null : (
+          <Box
+            position="relative"
+            padding="xxsmall"
+            borderRadius="standard"
+            className={styles.code}
+          >
+            <Box padding={['small', 'medium', 'large']}>
               <Text size="small" component="pre" baseline={false}>
                 <SyntaxHighlighter language="tsx" style={editorTheme}>
                   {snippet}
                 </SyntaxHighlighter>
               </Text>
             </Box>
-          )}
-          <Box
-            padding="xxsmall"
-            background="neutralLight"
-            borderRadius="standard"
-            className={hideCode ? undefined : styles.toolbar}
-          >
-            <Columns space="xxsmall" alignY="center">
-              <Column width="content">
-                {collapsedByDefault ? (
-                  <CodeButton onClick={() => setHideCode(!hideCode)}>
-                    <IconChevron direction={hideCode ? 'down' : 'up'} />
-                    <Hidden inline below="tablet">
-                      {hideCode ? ' Show code' : ' Hide code'}
-                    </Hidden>
-                    <Hidden inline above="mobile">
-                      {' '}
-                      Code
-                    </Hidden>
-                  </CodeButton>
-                ) : null}
-              </Column>
-              <Column>
-                <Inline space="xxsmall" align="right">
-                  <CodeButton
-                    onClick={() => copy(snippet)}
-                    title="Copy to clipboard"
-                  >
-                    <CopyIcon /> Copy
-                  </CodeButton>
-                  {/^import/m.test(snippet) || !playroom ? null : (
-                    <CodeButton
-                      component="a"
-                      target="_blank"
-                      href={createUrl({ baseUrl: playroomUrl, code: snippet })}
-                      className={useBoxStyles({
-                        component: 'a',
-                        display: 'block',
-                      })}
-                      title="Open in Playroom"
-                    >
-                      <PlayIcon />{' '}
-                      <Hidden inline below="tablet">
-                        Open in{' '}
-                      </Hidden>
-                      Playroom
-                    </CodeButton>
-                  )}
-                </Inline>
-              </Column>
-            </Columns>
           </Box>
-        </Box>
+        )}
+        <Inline space="xxsmall" align="right">
+          {collapsedByDefault ? (
+            <CodeButton onClick={() => setHideCode(!hideCode)}>
+              <IconChevron direction={hideCode ? 'down' : 'up'} />
+              <Hidden inline below="tablet">
+                {hideCode ? ' View code' : ' Hide code'}
+              </Hidden>
+              <Hidden inline above="mobile">
+                {' '}
+                Code
+              </Hidden>
+            </CodeButton>
+          ) : null}
+          {hideCode ? null : (
+            <CodeButton
+              onClick={() => copy(snippet)}
+              title="Copy code to clipboard"
+            >
+              <CopyIcon /> Copy
+            </CodeButton>
+          )}
+          {/^import/m.test(snippet) || !playroom ? null : (
+            <CodeButton
+              component="a"
+              target="_blank"
+              href={createUrl({ baseUrl: playroomUrl, code: snippet })}
+              className={useBoxStyles({
+                component: 'a',
+                display: 'block',
+              })}
+              title="Open in Playroom"
+            >
+              <PlayIcon />{' '}
+              <Hidden inline below="tablet">
+                Open in{' '}
+              </Hidden>
+              Playroom
+            </CodeButton>
+          )}
+        </Inline>
       </Stack>
     </Box>
   );
