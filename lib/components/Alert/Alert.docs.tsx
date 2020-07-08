@@ -1,15 +1,6 @@
 import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import {
-  Alert,
-  Card,
-  Text,
-  Strong,
-  Stack,
-  TextLink,
-  BulletList,
-  Bullet,
-} from '../';
+import { Alert, Text, Strong, Stack, TextLink, BulletList, Bullet } from '../';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -40,12 +31,11 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Info Alert Inside Card',
+      background: 'card',
       Example: () => (
-        <Card>
-          <Alert tone="info">
-            <Text>This is an important piece of information.</Text>
-          </Alert>
-        </Card>
+        <Alert tone="info">
+          <Text>This is an important piece of information.</Text>
+        </Alert>
       ),
     },
     {
@@ -84,12 +74,11 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Promote Alert Inside Card',
+      background: 'card',
       Example: () => (
-        <Card>
-          <Alert tone="promote">
-            <Text>This is a promoted piece of information.</Text>
-          </Alert>
-        </Card>
+        <Alert tone="promote">
+          <Text>This is a promoted piece of information.</Text>
+        </Alert>
       ),
     },
     {
@@ -102,12 +91,11 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Caution Alert Inside Card',
+      background: 'card',
       Example: () => (
-        <Card>
-          <Alert tone="caution">
-            <Text>This is a cautionary piece of information.</Text>
-          </Alert>
-        </Card>
+        <Alert tone="caution">
+          <Text>This is a cautionary piece of information.</Text>
+        </Alert>
       ),
     },
     {
@@ -120,12 +108,11 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Critical Alert Inside Card',
+      background: 'card',
       Example: () => (
-        <Card>
-          <Alert tone="critical">
-            <Text>This is a critical piece of information.</Text>
-          </Alert>
-        </Card>
+        <Alert tone="critical">
+          <Text>This is a critical piece of information.</Text>
+        </Alert>
       ),
     },
     {
@@ -138,12 +125,11 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Positive Alert Inside Card',
+      background: 'card',
       Example: () => (
-        <Card>
-          <Alert tone="positive">
-            <Text>This is a positive piece of information.</Text>
-          </Alert>
-        </Card>
+        <Alert tone="positive">
+          <Text>This is a positive piece of information.</Text>
+        </Alert>
       ),
     },
   ],
