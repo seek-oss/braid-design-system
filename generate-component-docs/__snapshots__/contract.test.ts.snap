@@ -301,6 +301,7 @@ Object {
     autoPlay?: boolean
     autoSave?: string
     background?: 
+        | "body"
         | "brand"
         | "brandAccent"
         | "brandAccentActive"
@@ -1093,6 +1094,7 @@ Object {
         | "flexStart"
     >
     background?: 
+        | "body"
         | "brand"
         | "brandAccent"
         | "brandAccentActive"

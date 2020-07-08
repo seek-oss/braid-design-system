@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import { OverflowMenu, MenuItem, Card, Inline } from '../';
+import { Box, OverflowMenu, MenuItem } from '../';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -8,15 +8,14 @@ const docs: ComponentDocs = {
   examples: [
     {
       label: 'Default',
+      background: 'card',
       Example: ({ handler }) => (
-        <Card>
-          <Inline space="small" align="right">
-            <OverflowMenu label="Options">
-              <MenuItem onClick={handler}>First</MenuItem>
-              <MenuItem onClick={handler}>Second</MenuItem>
-            </OverflowMenu>
-          </Inline>
-        </Card>
+        <Box style={{ paddingLeft: '100px', maxWidth: '200px' }}>
+          <OverflowMenu label="Options">
+            <MenuItem onClick={handler}>First</MenuItem>
+            <MenuItem onClick={handler}>Second</MenuItem>
+          </OverflowMenu>
+        </Box>
       ),
     },
   ],

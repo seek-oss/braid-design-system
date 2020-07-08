@@ -58,10 +58,6 @@ const LinkableHeading = ({ children, level = '3' }: LinkableHeadingProps) => {
   );
 };
 
-const HeadingLink = ({ children }: { children: string }) => (
-  <TextLink href={`#${slugify(children)}`}>{children}</TextLink>
-);
-
 type Space = 'none' | keyof typeof tokens.space;
 const spaceScale = ['none', ...Object.keys(tokens.space)] as Space[];
 
@@ -76,28 +72,6 @@ const page: Page = {
   component: () => (
     <TextStack>
       <Heading level="2">Layout</Heading>
-
-      <Divider />
-
-      <BulletList>
-        {[
-          'Spacing',
-          'Box',
-          'Card',
-          'Stack',
-          'Inline',
-          'Columns',
-          'Tiles',
-          'ContentBlock',
-        ].map((section) => (
-          <Bullet key={section}>
-            <HeadingLink>{section}</HeadingLink>
-          </Bullet>
-        ))}
-      </BulletList>
-
-      <Divider />
-
       <Text>
         The guiding principle for layout in Braid is that components should not
         provide surrounding white space. Instead, spacing between elements is

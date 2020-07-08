@@ -22,6 +22,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Disabled Radio Button',
+      background: 'card',
       Example: ({ id, handler }) => (
         <Radio
           id={id}

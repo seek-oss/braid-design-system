@@ -45,5 +45,6 @@ export interface ComponentExample {
   Example?: (props: { id: string; handler: () => void }) => JSX.Element;
   Container?: (props: { children: ReactNode }) => JSX.Element;
   code?: string;
+  showCodeByDefault?: boolean;
   playroom?: boolean;
 }

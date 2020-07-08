@@ -6,7 +6,6 @@ import reactElementToJSXString from 'react-element-to-jsx-string';
 import prettier from 'prettier/standalone';
 import typescriptParser from 'prettier/parser-typescript';
 import { createUrl } from 'sku/playroom/utils';
-import classnames from 'classnames';
 import { useConfig } from '../ConfigContext';
 import {
   Box,
@@ -19,6 +18,7 @@ import {
 import { BoxProps } from '../../../../lib/components/Box/Box';
 import { FieldOverlay } from '../../../../lib/components/private/FieldOverlay/FieldOverlay';
 import { useBoxStyles } from '../../../../lib/components/Box/useBoxStyles';
+import { hideFocusRingsClassName } from '../../../../lib/components/private/hideFocusRings/hideFocusRings';
 import { CopyIcon } from './CopyIcon';
 import { PlayIcon } from './PlayIcon';
 import * as styleRefs from './Code.treat';
@@ -61,13 +61,10 @@ const CodeButton = ({
     >
       <FieldOverlay
         variant="focus"
-        className={classnames(styles.focusOverlay)}
+        className={[styles.focusOverlay, hideFocusRingsClassName]}
       />
-      <FieldOverlay
-        background="neutralLight"
-        className={classnames(styles.hoverOverlay)}
-      />
-      <FieldOverlay className={classnames(styles.activeOverlay)} />
+      <FieldOverlay background="neutralLight" className={styles.hoverOverlay} />
+      <FieldOverlay className={styles.activeOverlay} />
       <Box
         component="span"
         position="relative"
@@ -121,15 +118,17 @@ export default ({
         {hideCode ? null : (
           <Box
             position="relative"
-            padding="medium"
+            padding="xxsmall"
             borderRadius="standard"
             className={styles.code}
           >
-            <Text size="small" component="pre" baseline={false}>
-              <SyntaxHighlighter language="tsx" style={editorTheme}>
-                {snippet}
-              </SyntaxHighlighter>
-            </Text>
+            <Box padding={['small', 'medium', 'large']}>
+              <Text size="small" component="pre" baseline={false}>
+                <SyntaxHighlighter language="tsx" style={editorTheme}>
+                  {snippet}
+                </SyntaxHighlighter>
+              </Text>
+            </Box>
           </Box>
         )}
         <Inline space="xxsmall" align="right">
@@ -145,12 +144,14 @@ export default ({
               </Hidden>
             </CodeButton>
           ) : null}
-          <CodeButton
-            onClick={() => copy(snippet)}
-            title="Copy code to clipboard"
-          >
-            <CopyIcon /> Copy
-          </CodeButton>
+          {hideCode ? null : (
+            <CodeButton
+              onClick={() => copy(snippet)}
+              title="Copy code to clipboard"
+            >
+              <CopyIcon /> Copy
+            </CodeButton>
+          )}
           {/^import/m.test(snippet) || !playroom ? null : (
             <CodeButton
               component="a"
@@ -162,7 +163,11 @@ export default ({
               })}
               title="Open in Playroom"
             >
-              <PlayIcon /> Playroom
+              <PlayIcon />{' '}
+              <Hidden inline below="tablet">
+                Open in{' '}
+              </Hidden>
+              Playroom
             </CodeButton>
           )}
         </Inline>

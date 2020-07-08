@@ -10,8 +10,6 @@ import {
   Heading,
   TextLink,
   Strong,
-  Columns,
-  Column,
   IconPromote,
 } from '..';
 import Code from '../../../site/src/App/Code/Code';
@@ -109,27 +107,21 @@ const docs: ComponentDocs = {
         } as const;
 
         return (
-          <Columns space="gutter" alignY="center" collapseBelow="tablet">
-            <Column width="content">
-              <Toast
-                id={id}
-                dedupeKey={id}
-                shouldRemove={false}
-                treatTheme={theme}
-                onClear={handler}
-                {...toastProps}
-              />
-            </Column>
-            <Column width="content">
-              <Box display="flex" justifyContent="center">
-                <Box>
-                  <Button onClick={() => showToast(toastProps)}>
-                    Show animation <IconPromote alignY="lowercase" />
-                  </Button>
-                </Box>
-              </Box>
-            </Column>
-          </Columns>
+          <Stack space="large" align="center">
+            <Toast
+              id={id}
+              dedupeKey={id}
+              shouldRemove={false}
+              treatTheme={theme}
+              onClear={handler}
+              {...toastProps}
+            />
+            <Box display="flex">
+              <Button onClick={() => showToast(toastProps)}>
+                Show animation <IconPromote alignY="lowercase" />
+              </Button>
+            </Box>
+          </Stack>
         );
       },
       code: `
@@ -157,27 +149,21 @@ const docs: ComponentDocs = {
         } as const;
 
         return (
-          <Columns space="gutter" alignY="center" collapseBelow="tablet">
-            <Column width="content">
-              <Toast
-                id={id}
-                dedupeKey={id}
-                shouldRemove={false}
-                treatTheme={theme}
-                onClear={handler}
-                {...toastProps}
-              />
-            </Column>
-            <Column width="content">
-              <Box display="flex" justifyContent="center">
-                <Box>
-                  <Button onClick={() => showToast(toastProps)}>
-                    Show animation <IconPromote alignY="lowercase" />
-                  </Button>
-                </Box>
-              </Box>
-            </Column>
-          </Columns>
+          <Stack space="large" align="center">
+            <Toast
+              id={id}
+              dedupeKey={id}
+              shouldRemove={false}
+              treatTheme={theme}
+              onClear={handler}
+              {...toastProps}
+            />
+            <Box display="flex">
+              <Button onClick={() => showToast(toastProps)}>
+                Show animation <IconPromote alignY="lowercase" />
+              </Button>
+            </Box>
+          </Stack>
         );
       },
       code: `
@@ -207,27 +193,21 @@ const docs: ComponentDocs = {
         } as const;
 
         return (
-          <Columns space="gutter" alignY="center" collapseBelow="tablet">
-            <Column width="content">
-              <Toast
-                id={id}
-                dedupeKey={id}
-                shouldRemove={false}
-                treatTheme={theme}
-                onClear={handler}
-                {...toastProps}
-              />
-            </Column>
-            <Column width="content">
-              <Box display="flex" justifyContent="center">
-                <Box>
-                  <Button onClick={() => showToast(toastProps)}>
-                    Show animation <IconPromote alignY="lowercase" />
-                  </Button>
-                </Box>
-              </Box>
-            </Column>
-          </Columns>
+          <Stack space="large" align="center">
+            <Toast
+              id={id}
+              dedupeKey={id}
+              shouldRemove={false}
+              treatTheme={theme}
+              onClear={handler}
+              {...toastProps}
+            />
+            <Box display="flex">
+              <Button onClick={() => showToast(toastProps)}>
+                Show animation <IconPromote alignY="lowercase" />
+              </Button>
+            </Box>
+          </Stack>
         );
       },
       code: `
@@ -255,27 +235,21 @@ const docs: ComponentDocs = {
         } as const;
 
         return (
-          <Columns space="gutter" alignY="center" collapseBelow="tablet">
-            <Column width="content">
-              <Toast
-                id={id}
-                dedupeKey={id}
-                shouldRemove={false}
-                treatTheme={theme}
-                onClear={handler}
-                {...toastProps}
-              />
-            </Column>
-            <Column width="content">
-              <Box display="flex" justifyContent="center">
-                <Box>
-                  <Button onClick={() => showToast(toastProps)}>
-                    Show animation <IconPromote alignY="lowercase" />
-                  </Button>
-                </Box>
-              </Box>
-            </Column>
-          </Columns>
+          <Stack space="large" align="center">
+            <Toast
+              id={id}
+              dedupeKey={id}
+              shouldRemove={false}
+              treatTheme={theme}
+              onClear={handler}
+              {...toastProps}
+            />
+            <Box display="flex">
+              <Button onClick={() => showToast(toastProps)}>
+                Show animation <IconPromote alignY="lowercase" />
+              </Button>
+            </Box>
+          </Stack>
         );
       },
       code: `
@@ -301,27 +275,21 @@ const docs: ComponentDocs = {
         } as const;
 
         return (
-          <Columns space="gutter" alignY="center" collapseBelow="tablet">
-            <Column width="content">
-              <Toast
-                id={id}
-                dedupeKey={id}
-                shouldRemove={false}
-                treatTheme={theme}
-                onClear={handler}
-                {...toastProps}
-              />
-            </Column>
-            <Column width="content">
-              <Box display="flex" justifyContent="center">
-                <Box>
-                  <Button onClick={() => showToast(toastProps)}>
-                    Show animation <IconPromote alignY="lowercase" />
-                  </Button>
-                </Box>
-              </Box>
-            </Column>
-          </Columns>
+          <Stack space="large" align="center">
+            <Toast
+              id={id}
+              dedupeKey={id}
+              shouldRemove={false}
+              treatTheme={theme}
+              onClear={handler}
+              {...toastProps}
+            />
+            <Box display="flex">
+              <Button onClick={() => showToast(toastProps)}>
+                Show animation <IconPromote alignY="lowercase" />
+              </Button>
+            </Box>
+          </Stack>
         );
       },
       code: `

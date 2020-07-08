@@ -18,13 +18,13 @@ const docs: ComponentDocs = {
       Example: () => (
         <Columns space="small">
           <Column>
-            <Placeholder height={60} label="Column" />
+            <Placeholder height={60} />
           </Column>
           <Column>
-            <Placeholder height={60} label="Column" />
+            <Placeholder height={60} />
           </Column>
           <Column>
-            <Placeholder height={60} label="Column" />
+            <Placeholder height={60} />
           </Column>
         </Columns>
       ),

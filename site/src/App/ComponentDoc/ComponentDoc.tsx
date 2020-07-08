@@ -72,6 +72,7 @@ export const ComponentDoc = ({
             code,
             Container = DefaultContainer,
             background = 'body',
+            showCodeByDefault = false,
             playroom,
           } = example;
 
@@ -101,7 +102,14 @@ export const ComponentDoc = ({
                     </ThemedExample>
                   ) : null}
                   {codeAsString ? (
-                    <Code collapsedByDefault playroom={playroom}>
+                    <Code
+                      collapsedByDefault={
+                        !showCodeByDefault &&
+                        Example !== undefined &&
+                        docs.category !== 'Logic'
+                      }
+                      playroom={playroom}
+                    >
                       {codeAsString}
                     </Code>
                   ) : null}

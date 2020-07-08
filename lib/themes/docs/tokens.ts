@@ -14,7 +14,7 @@ const white = '#fff';
 const link = formAccent;
 const linkVisited = 'DarkViolet';
 const secondary = '#757575';
-const neutral = '#ccc';
+const neutral = '#c0c0c0';
 
 const tokens: TreatTokens = {
   name: 'docs',
@@ -154,8 +154,8 @@ const tokens: TreatTokens = {
       standard: '6px',
     },
     width: {
-      standard: 2,
-      large: 3,
+      standard: 1.5,
+      large: 2.5,
     },
     color: {
       standard: '#d6d6d6',

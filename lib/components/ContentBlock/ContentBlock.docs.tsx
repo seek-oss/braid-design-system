@@ -11,7 +11,7 @@ const docs: ComponentDocs = {
       label: 'Default Content Block',
       Example: () => (
         <ContentBlock>
-          <Placeholder height={100} label="Content block" />
+          <Placeholder height={100} />
         </ContentBlock>
       ),
     },
@@ -19,7 +19,7 @@ const docs: ComponentDocs = {
       label: 'Large Content Block',
       Example: () => (
         <ContentBlock width="large">
-          <Placeholder height={100} label="Content block" />
+          <Placeholder height={100} />
         </ContentBlock>
       ),
     },
@@ -29,7 +29,7 @@ const docs: ComponentDocs = {
       name: 'Standard',
       code: (
         <ContentBlock>
-          <Placeholder height={100} label="Content block" />
+          <Placeholder height={100} />
         </ContentBlock>
       ),
     },
@@ -37,7 +37,7 @@ const docs: ComponentDocs = {
       name: 'Large',
       code: (
         <ContentBlock width="large">
-          <Placeholder height={100} label="Content block" />
+          <Placeholder height={100} />
         </ContentBlock>
       ),
     },

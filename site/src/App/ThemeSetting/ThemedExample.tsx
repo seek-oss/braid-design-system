@@ -20,11 +20,21 @@ export function ThemedExample({ background, children }: ThemedExampleProps) {
       <BraidProvider styleBody={false} theme={themes[theme]}>
         {background ? (
           <Box
-            background={background}
-            padding={['small', 'large']}
+            background={theme === 'docs' ? 'neutralLight' : 'body'}
+            padding="xsmall"
             className={styles.unthemedBorderRadius}
           >
-            {children}
+            <Box
+              background={
+                theme === 'docs' && background === 'body'
+                  ? 'neutralLight'
+                  : background
+              }
+              padding={['small', 'medium', 'large']}
+              className={styles.unthemedBorderRadius}
+            >
+              {children}
+            </Box>
           </Box>
         ) : (
           children
