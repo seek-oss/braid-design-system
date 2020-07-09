@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { Text, TextDropdown } from '../../../..';
 import * as themes from '../../../../lib/themes';
-import { useThemeSettings } from './ThemeSettingContext';
+import { documentedThemes, useThemeSettings } from './ThemeSettingContext';
 
 export function ThemeToggle() {
   const { theme, setTheme, ready } = useThemeSettings();
@@ -14,12 +14,14 @@ export function ThemeToggle() {
           label="Theme"
           value={theme}
           onChange={setTheme}
-          options={Object.entries(themes).map(
-            ([themeKey, { displayName }]) => ({
+          options={Object.entries(themes)
+            .filter(([themeKey]) =>
+              documentedThemes.includes(themeKey as keyof typeof themes),
+            )
+            .map(([themeKey, { displayName }]) => ({
               text: displayName,
               value: themeKey as keyof typeof themes,
-            }),
-          )}
+            }))}
         />
       ) : (
         <Fragment>&nbsp;</Fragment>

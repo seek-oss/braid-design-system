@@ -10,7 +10,7 @@ import { useLocalStorage } from 'react-use';
 import * as themes from '../../../../lib/themes';
 type ThemeKey = keyof typeof themes;
 
-const defaultTheme = 'seekUnifiedBeta' as const;
+const defaultTheme = 'apac' as const;
 
 interface ThemeSettingsContext {
   ready: boolean;
@@ -31,15 +31,27 @@ export function useThemeSettings() {
   return themeSettings;
 }
 
+export const documentedThemes = (Object.keys(themes) as Array<ThemeKey>).filter(
+  (themeName) => themeName !== 'seekUnifiedBeta',
+);
+const useThemePreference = () => {
+  const [theme, setTheme] = useLocalStorage<ThemeKey>(
+    'theme-preference',
+    defaultTheme,
+  );
+
+  return [
+    documentedThemes.includes(theme) ? theme : defaultTheme,
+    setTheme,
+  ] as const;
+};
+
 interface ThemeSettingProviderProps {
   children: ReactNode;
 }
 export function ThemeSettingProvider({ children }: ThemeSettingProviderProps) {
   const [ready, setReady] = useState(false);
-  const [theme, setTheme] = useLocalStorage<ThemeKey>(
-    'theme-preference',
-    defaultTheme,
-  );
+  const [theme, setTheme] = useThemePreference();
 
   useEffect(() => {
     setReady(true);
