@@ -24,6 +24,7 @@ export { IconHome } from './IconHome/IconHome';
 export { IconImage } from './IconImage/IconImage';
 export { IconInfo } from './IconInfo/IconInfo';
 export { IconInvoice } from './IconInvoice/IconInvoice';
+export { IconLanguage } from './IconLanguage/IconLanguage';
 export { IconLink } from './IconLink/IconLink';
 export { IconLinkBroken } from './IconLinkBroken/IconLinkBroken';
 export { IconList } from './IconList/IconList';
