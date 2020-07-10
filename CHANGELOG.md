@@ -1,5 +1,11 @@
 # braid-design-system
 
+## 28.8.0
+
+### Minor Changes
+
+- Add IconLanguage ([#680](https://github.com/seek-oss/braid-design-system/pull/680))
+
 ## 28.7.0
 
 ### Minor Changes
