@@ -137,6 +137,7 @@ function ButtonLink({
                 paddingX: 'small',
                 borderRadius: 'standard',
                 textAlign: 'center',
+                userSelect: 'none',
               }),
             ),
           })}

@@ -13,8 +13,8 @@ const docs: ComponentDocs = {
         `linkComponent` implementation that was provided via{' '}
         <TextLink href="/components/BraidProvider">BraidProvider</TextLink>.
       </Text>
-      <Text>
-        If you want a visually styled text link, use{' '}
+      <Text tone="secondary">
+        If you want a visually styled text link, check out{' '}
         <TextLink href="/components/TextLink">TextLink</TextLink> instead.
       </Text>
     </Stack>

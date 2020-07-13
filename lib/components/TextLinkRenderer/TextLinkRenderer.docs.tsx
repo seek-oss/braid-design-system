@@ -8,19 +8,24 @@ const docs: ComponentDocs = {
   description: (
     <Stack space="large">
       <Text>
-        Allows you to render something that looks like a{' '}
-        <TextLink href="/components/TextLink">TextLink</TextLink> but is
-        semantically something different, e.g. a button.
+        This component is mainly provided for backwards compatibility. If
+        you&rsquo;re wanting to render a button that looks like a{' '}
+        <TextLink href="/components/TextLink">TextLink</TextLink>, you should
+        use a{' '}
+        <TextLink href="/components/TextLinkButton">TextLinkButton</TextLink>{' '}
+        instead.
       </Text>
       <Text>
-        If what you&rsquo;re rendering is semantically a link, consider using a{' '}
-        <TextLink href="/components/TextLink">TextLink</TextLink> instead.
+        In fact, we&rsquo;re honestly not quite sure why you&rsquo;d need this
+        component anymore. If you think you&rsquo;ve found a legitimate use case
+        for it, please let us know so we can provide better documentation.
       </Text>
     </Stack>
   ),
   examples: [
     {
       label: 'TextLink with Custom Renderer',
+      showCodeByDefault: true,
       Example: () => (
         <Text>
           Even though it looks like a link, the last word of this sentence is

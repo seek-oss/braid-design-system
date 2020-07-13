@@ -14,15 +14,9 @@ const docs: ComponentDocs = {
   description: (
     <Stack space="large">
       <Text>Renders a standard button element.</Text>
-      <Text>
-        If you&rsquo;d like to render a link that looks like a button, you
-        should use a{' '}
-        <TextLink href="/components/ButtonLink">ButtonLink</TextLink>.
-      </Text>
-      <Text>
-        If you&rsquo;d like to render something that looks like a button but is
-        semantically something else, you should use a{' '}
-        <TextLink href="/components/ButtonRenderer">ButtonRenderer</TextLink>.
+      <Text tone="secondary">
+        If you want a link that looks like a button, check out{' '}
+        <TextLink href="/components/ButtonLink">ButtonLink.</TextLink>
       </Text>
     </Stack>
   ),

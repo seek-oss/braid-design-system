@@ -11,9 +11,8 @@ const docs: ComponentDocs = {
       <Text>
         Follows the{' '}
         <TextLink href="https://www.w3.org/TR/wai-aria-practices/#disclosure">
-          WAI-ARIA Disclosure Pattern
+          WAI-ARIA Disclosure Pattern.
         </TextLink>
-        .
       </Text>
       <Text>
         Accordion items manage their own state internally by default. If

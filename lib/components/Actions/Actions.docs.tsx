@@ -15,6 +15,19 @@ const docs: ComponentDocs = {
   category: 'Content',
   migrationGuide: true,
   screenshotWidths: [320, 768],
+  description: (
+    <Stack space="large">
+      <Text>Typically used for actions at the end of forms.</Text>
+      <Text>
+        Should only contain{' '}
+        <TextLink href="/components/Button">Button,</TextLink>{' '}
+        <TextLink href="/components/ButtonLink">ButtonLink,</TextLink>{' '}
+        <TextLink href="/components/TextLink">TextLink</TextLink> and{' '}
+        <TextLink href="/components/TextLinkButton">TextLinkButton</TextLink>{' '}
+        elements.
+      </Text>
+    </Stack>
+  ),
   examples: [
     {
       label: 'Actions with Strong Button and TextLink',

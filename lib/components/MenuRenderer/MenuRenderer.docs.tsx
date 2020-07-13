@@ -17,12 +17,14 @@ const docs: ComponentDocs = {
   description: (
     <Stack space="large">
       <Text>
-        The `MenuRenderer` component is a low level component that can be used
-        to build higher level menu components that adhere to the{' '}
+        Follows the{' '}
         <TextLink href="https://www.w3.org/TR/wai-aria-practices-1.1/#menu">
-          WAI Authoring Practices
+          WAI-ARIA Menu Pattern.
         </TextLink>
-        . For example, the{' '}
+      </Text>
+      <Text>
+        Used to build higher level menu components that adhere to our
+        accessibility standards, e.g.
         <TextLink href="/components/OverflowMenu">OverflowMenu</TextLink> uses
         this internally.
       </Text>
