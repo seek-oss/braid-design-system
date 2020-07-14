@@ -6002,7 +6002,6 @@ Object {
         | "standard"
     id?: string
     onClick?: () => void
-    showVisited?: boolean
 },
 }
 `;

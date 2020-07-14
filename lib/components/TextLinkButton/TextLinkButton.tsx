@@ -15,7 +15,7 @@ import buildDataAttributes, {
 
 type NativeSpanProps = AllHTMLAttributes<HTMLSpanElement>;
 export interface TextLinkButtonProps
-  extends Omit<TextLinkRendererProps, 'children'> {
+  extends Omit<TextLinkRendererProps, 'children' | 'showVisited'> {
   id?: NativeSpanProps['id'];
   onClick?: () => void;
   data?: DataAttributeMap;
@@ -24,7 +24,6 @@ export interface TextLinkButtonProps
 
 const noop = () => {};
 export const TextLinkButton = ({
-  showVisited,
   hitArea,
   id,
   onClick = noop,
@@ -44,7 +43,7 @@ export const TextLinkButton = ({
   );
 
   return (
-    <TextLinkRenderer showVisited={showVisited} hitArea={hitArea}>
+    <TextLinkRenderer hitArea={hitArea}>
       {(styleProps) => (
         <Box
           role="button"
