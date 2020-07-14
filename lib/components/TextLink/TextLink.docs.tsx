@@ -25,18 +25,14 @@ const docs: ComponentDocs = {
         <TextLink href="/components/BraidProvider">BraidProvider</TextLink>.
       </Text>
       <Text>
-        If you want to render something that looks like a link but isn&rsquo;t
-        semantically a link (e.g. a button), you should use{' '}
-        <TextLink href="/components/TextLinkRenderer">
-          TextLinkRenderer
-        </TextLink>{' '}
-        instead.
-      </Text>
-      <Text>
         Please note that this component must be nested within a{' '}
         <TextLink href="/components/Text">Text</TextLink>,{' '}
         <TextLink href="/components/Heading">Heading</TextLink> or{' '}
         <TextLink href="/components/Actions">Actions</TextLink> component.
+      </Text>
+      <Text tone="secondary">
+        If you want a button that looks like a link, check out{' '}
+        <TextLink href="/components/TextLinkButton">TextLinkButton.</TextLink>
       </Text>
     </Stack>
   ),

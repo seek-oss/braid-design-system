@@ -5991,6 +5991,21 @@ Object {
 }
 `;
 
+exports[`TextLinkButton 1`] = `
+Object {
+  exportType: component,
+  props: {
+    children: ReactNode
+    data?: Record<string, string | number>
+    hitArea?: 
+        | "large"
+        | "standard"
+    id?: string
+    onClick?: () => void
+},
+}
+`;
+
 exports[`TextLinkRenderer 1`] = `
 Object {
   exportType: component,

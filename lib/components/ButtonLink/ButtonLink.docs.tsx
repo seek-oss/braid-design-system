@@ -24,8 +24,12 @@ const docs: ComponentDocs = {
       </Text>
       <Text>
         Extends both the <TextLink href="/components/Button">Button</TextLink>{' '}
-        and <TextLink href="/components/Link">Link</TextLink> component APIs,
-        which means that `href` is required.
+        and <TextLink href="/components/Link">Link</TextLink> component APIs.
+      </Text>
+      <Text tone="secondary">
+        If you want a button that looks like a{' '}
+        <TextLink href="/components/TextLink">TextLink,</TextLink> check out{' '}
+        <TextLink href="/components/TextLinkButton">TextLinkButton.</TextLink>
       </Text>
     </Stack>
   ),

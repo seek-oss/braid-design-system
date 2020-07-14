@@ -29,6 +29,7 @@ const docs: ComponentDocs = {
     {
       label: 'Button with Custom Renderer',
       Container,
+      showCodeByDefault: true,
       Example: () => (
         <ButtonRenderer>
           {(ButtonChildren, buttonProps) => (
