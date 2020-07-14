@@ -1,5 +1,15 @@
 # braid-design-system
 
+## 28.9.0
+
+### Minor Changes
+
+- Add `TextLinkButton` component ([#683](https://github.com/seek-oss/braid-design-system/pull/683))
+
+  Allows you to render a semantic button that looks like a `TextLink`.
+
+  This component renders a native `span` element with an ARIA role of `button` so that, unlike a standard button element, text can wrap across multiple lines.
+
 ## 28.8.0
 
 ### Minor Changes
