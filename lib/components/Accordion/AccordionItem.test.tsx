@@ -26,8 +26,10 @@ describe('AccordionItem', () => {
     );
 
     expect(button.getAttribute('aria-expanded')).toEqual('false');
+
     button.click();
     expect(button.getAttribute('aria-expanded')).toEqual('true');
+
     button.click();
     expect(button.getAttribute('aria-expanded')).toEqual('false');
   });
@@ -86,8 +88,10 @@ describe('AccordionItem', () => {
     );
 
     expect(button.getAttribute('aria-expanded')).toEqual('true');
+
     button.click();
     expect(button.getAttribute('aria-expanded')).toEqual('false');
+
     button.click();
     expect(button.getAttribute('aria-expanded')).toEqual('true');
   });

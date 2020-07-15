@@ -15,6 +15,8 @@ export interface ButtonProps {
   children?: ReactNode;
   weight?: ButtonRendererProps['weight'];
   loading?: ButtonRendererProps['loading'];
+  'aria-controls'?: NativeButtonProps['aria-controls'];
+  'aria-expanded'?: NativeButtonProps['aria-expanded'];
   'aria-describedby'?: NativeButtonProps['aria-describedby'];
   data?: DataAttributeMap;
 }
@@ -26,6 +28,8 @@ export const Button = ({
   loading,
   type = 'button',
   id,
+  'aria-controls': ariaControls,
+  'aria-expanded': ariaExpanded,
   'aria-describedby': ariaDescribedBy,
   data,
 }: ButtonProps) => (
@@ -34,6 +38,8 @@ export const Button = ({
       <button
         id={id}
         type={type}
+        aria-controls={ariaControls}
+        aria-expanded={ariaExpanded}
         aria-describedby={ariaDescribedBy}
         onClick={onClick}
         disabled={loading}

@@ -6,6 +6,8 @@ import { AccordionItem as PlayroomAccordionItem } from '../../playroom/component
 const docs: ComponentDocs = {
   category: 'Content',
   screenshotWidths: [320],
+  subComponents: ['AccordionItem'],
+  migrationGuide: true,
   description: (
     <Stack space="large">
       <Text>
@@ -25,6 +27,10 @@ const docs: ComponentDocs = {
         elements can be rendered outside of an enclosing{' '}
         <TextLink href="/components/Accordion">Accordion</TextLink> if
         you&rsquo;d like to customise their surrounding layout.
+      </Text>
+      <Text tone="secondary">
+        If you want a lighter visual treatment for standalone accordion items,
+        check out <TextLink href="/components/Disclosure">Disclosure.</TextLink>
       </Text>
     </Stack>
   ),
@@ -83,7 +89,7 @@ const docs: ComponentDocs = {
       },
     },
     {
-      label: 'Standalone Accordion Item',
+      label: 'Standalone AccordionItem',
       Example: ({ id }) => (
         <AccordionItem label="Label" id={id}>
           <Text>Content</Text>
@@ -93,7 +99,7 @@ const docs: ComponentDocs = {
   ],
   snippets: [
     {
-      name: 'Regular',
+      name: '2 items',
       code: (
         <Accordion>
           <PlayroomAccordionItem label="Label">
@@ -101,7 +107,44 @@ const docs: ComponentDocs = {
               <Text>Content</Text>
             </Stack>
           </PlayroomAccordionItem>
+          <PlayroomAccordionItem label="Label">
+            <Stack space="large">
+              <Text>Content</Text>
+            </Stack>
+          </PlayroomAccordionItem>
         </Accordion>
+      ),
+    },
+    {
+      name: '3 items',
+      code: (
+        <Accordion>
+          <PlayroomAccordionItem label="Label">
+            <Stack space="large">
+              <Text>Content</Text>
+            </Stack>
+          </PlayroomAccordionItem>
+          <PlayroomAccordionItem label="Label">
+            <Stack space="large">
+              <Text>Content</Text>
+            </Stack>
+          </PlayroomAccordionItem>
+          <PlayroomAccordionItem label="Label">
+            <Stack space="large">
+              <Text>Content</Text>
+            </Stack>
+          </PlayroomAccordionItem>
+        </Accordion>
+      ),
+    },
+    {
+      name: 'Standalone item',
+      code: (
+        <PlayroomAccordionItem label="Label">
+          <Stack space="large">
+            <Text>Content</Text>
+          </Stack>
+        </PlayroomAccordionItem>
       ),
     },
   ],

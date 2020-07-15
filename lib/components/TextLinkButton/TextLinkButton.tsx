@@ -20,6 +20,9 @@ export interface TextLinkButtonProps
   onClick?: () => void;
   data?: DataAttributeMap;
   children: ReactNode;
+  'aria-controls'?: NativeSpanProps['aria-controls'];
+  'aria-expanded'?: NativeSpanProps['aria-expanded'];
+  'aria-describedby'?: NativeSpanProps['aria-describedby'];
 }
 
 const noop = () => {};
@@ -29,6 +32,9 @@ export const TextLinkButton = ({
   onClick = noop,
   data,
   children,
+  'aria-controls': ariaControls,
+  'aria-expanded': ariaExpanded,
+  'aria-describedby': ariaDescribedBy,
 }: TextLinkButtonProps) => {
   const handleClick = useCallback(() => onClick(), [onClick]);
 
@@ -51,6 +57,9 @@ export const TextLinkButton = ({
           component="span"
           onClick={handleClick}
           onKeyDown={handleKeyboard}
+          aria-controls={ariaControls}
+          aria-expanded={ariaExpanded}
+          aria-describedby={ariaDescribedBy}
           id={id}
           {...styleProps}
           {...buildDataAttributes(data)}

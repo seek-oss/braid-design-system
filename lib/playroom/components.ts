@@ -1,10 +1,11 @@
 import '../reset';
 export * from '../components';
 
-export { AccordionItem } from '../components/AccordionItem/AccordionItem.playroom';
+export { AccordionItem } from '../components/Accordion/AccordionItem.playroom';
 export { Autosuggest } from '../components/Autosuggest/Autosuggest.playroom';
 export { ButtonLink } from '../components/ButtonLink/ButtonLink.playroom';
 export { Checkbox } from '../components/Checkbox/Checkbox.playroom';
+export { Disclosure } from '../components/Disclosure/Disclosure.playroom';
 export { Dropdown } from '../components/Dropdown/Dropdown.playroom';
 export { FieldLabel } from '../components/FieldLabel/FieldLabel.playroom';
 export { FieldMessage } from '../components/FieldMessage/FieldMessage.playroom';

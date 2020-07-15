@@ -1631,7 +1631,13 @@ exports[`Button 1`] = `
 Object {
   exportType: component,
   props: {
+    aria-controls?: string
     aria-describedby?: string
+    aria-expanded?: 
+        | "false"
+        | "true"
+        | false
+        | true
     children?: ReactNode
     data?: Record<string, string | number>
     id?: string
@@ -2173,6 +2179,31 @@ Object {
     width?: 
         | "large"
         | "medium"
+},
+}
+`;
+
+exports[`Disclosure 1`] = `
+Object {
+  exportType: component,
+  props: {
+    children: ReactNode
+    collapseLabel: string
+    expandLabel: string
+    expanded?: boolean
+    id: string
+    onToggle?: (expanded: boolean) => void
+    space?: ResponsiveProp<
+        | "gutter"
+        | "large"
+        | "medium"
+        | "none"
+        | "small"
+        | "xlarge"
+        | "xsmall"
+        | "xxlarge"
+        | "xxsmall"
+    >
 },
 }
 `;
@@ -5995,6 +6026,13 @@ exports[`TextLinkButton 1`] = `
 Object {
   exportType: component,
   props: {
+    aria-controls?: string
+    aria-describedby?: string
+    aria-expanded?: 
+        | "false"
+        | "true"
+        | false
+        | true
     children: ReactNode
     data?: Record<string, string | number>
     hitArea?: 
