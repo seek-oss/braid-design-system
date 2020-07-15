@@ -117,7 +117,7 @@ const docs: ComponentDocs = {
   ],
   snippets: [
     {
-      name: 'Standalone',
+      name: 'Standard',
       code: (
         <PlayroomDisclosure expandLabel="Show" collapseLabel="Hide">
           <Stack space="large">

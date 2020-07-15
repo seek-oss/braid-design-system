@@ -36,6 +36,23 @@ describe('Disclosure', () => {
     expect(htmlToText(button.innerHTML)).toEqual('Expand');
   });
 
+  it('should default the value of "collapseLabel" to "expandLabel" when not provided', () => {
+    const { getByRole } = render(
+      <BraidTestProvider>
+        <Disclosure id="content" expandLabel="Details">
+          Content
+        </Disclosure>
+      </BraidTestProvider>,
+    );
+
+    const button = getByRole('button');
+
+    expect(htmlToText(button.innerHTML)).toEqual('Details');
+
+    button.click();
+    expect(htmlToText(button.innerHTML)).toEqual('Details');
+  });
+
   it('should support listening to toggle events while uncontrolled', () => {
     const toggleHander = jest.fn();
 

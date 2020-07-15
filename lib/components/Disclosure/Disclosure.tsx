@@ -6,7 +6,7 @@ import { useDisclosure, UseDisclosureProps } from './useDisclosure';
 
 export type DisclosureBaseProps = {
   expandLabel: string;
-  collapseLabel: string;
+  collapseLabel?: string;
   space?: BoxProps['paddingTop'];
   children: ReactNode;
 };
@@ -16,7 +16,7 @@ export type { DisclosureStateProps } from './useDisclosure';
 export const Disclosure = ({
   id,
   expandLabel,
-  collapseLabel,
+  collapseLabel = expandLabel,
   expanded: expandedProp,
   onToggle,
   space = 'medium',

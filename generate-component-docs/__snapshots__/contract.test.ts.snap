@@ -2188,7 +2188,7 @@ Object {
   exportType: component,
   props: {
     children: ReactNode
-    collapseLabel: string
+    collapseLabel?: string
     expandLabel: string
     expanded?: boolean
     id: string
