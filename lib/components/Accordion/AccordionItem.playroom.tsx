@@ -2,14 +2,15 @@ import React from 'react';
 import { useFallbackId } from '../../playroom/utils';
 import {
   AccordionItem as BraidAccordionItem,
+  AccordionItemProps,
   AccordionItemBaseProps,
   AccordionItemStateProps,
 } from './AccordionItem';
 
 type OptionalProps = 'id';
-type PlayroomAccordionItemProps = Omit<AccordionItemBaseProps, OptionalProps> &
-  Partial<Pick<AccordionItemBaseProps, OptionalProps>> &
-  AccordionItemStateProps;
+type PlayroomAccordionItemProps = AccordionItemBaseProps &
+  AccordionItemStateProps &
+  Partial<Pick<AccordionItemProps, OptionalProps>>;
 
 export const AccordionItem = ({
   id,

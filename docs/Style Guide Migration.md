@@ -36,6 +36,7 @@ Since Braid is an entirely new design system, we've taken the opportunity to rev
 
 > Note: Links to these migration guides are also available at the bottom of each component page on the Braid documentation site.
 
+- [`AccordionItem`](../lib/components/Accordion/Accordion.migration.md)
 - [`Alert`](../lib/components/Alert/Alert.migration.md)
 - `Alert` (tertiary) -> [`Notice`](../lib/components/Alert/Alert.migration.md)
 - `AsidedLayout` -> [`Columns`](../lib/components/Columns/Columns.migration.md#migrating-from-asidedlayout)
@@ -66,3 +67,4 @@ Since Braid is an entirely new design system, we've taken the opportunity to rev
 - [`Textarea`](../lib/components/Textarea/Textarea.migration.md)
 - [`TextField`](../lib/components/TextField/TextField.migration.md)
 - [`TextLink`](../lib/components/TextLink/TextLink.migration.md)
+- `ToggleContent` -> [`Disclosure`](../lib/components/Disclosure/Disclosure.migration.md)

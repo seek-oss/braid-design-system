@@ -1,9 +1,10 @@
 [
+  "AccordionItem",
   "BoxRenderer",
-  "ToastProvider",
   "MenuItem",
-  "TabsProvider",
   "Tab",
+  "TabsProvider",
   "TabPanel",
-  "TabPanels"
+  "TabPanels",
+  "ToastProvider"
 ]

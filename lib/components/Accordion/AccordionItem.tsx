@@ -1,8 +1,13 @@
-import React, { useState, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import { useStyles } from 'sku/react-treat';
 import assert from 'assert';
-import { Box, Columns, Column, Heading, IconChevron } from '../';
-import { AllOrNone } from '../private/AllOrNone';
+import { Box, Columns, Column, Heading, IconChevron } from '..';
+import {
+  useDisclosure,
+  UseDisclosureProps,
+  DisclosureStateProps,
+} from '../Disclosure/useDisclosure';
+
 import { useVirtualTouchable } from '../private/touchable/useVirtualTouchable';
 import { hideFocusRingsClassName } from '../private/hideFocusRings/hideFocusRings';
 import { Overlay } from '../private/Overlay/Overlay';
@@ -11,18 +16,12 @@ import * as styleRefs from './AccordionItem.treat';
 const accordionSpace = 'large';
 
 export type AccordionItemBaseProps = {
-  id: string;
   label: string;
   children: ReactNode;
 };
 
-export type AccordionItemStateProps = AllOrNone<{
-  expanded?: boolean;
-  onToggle: (expanded: boolean) => void;
-}>;
-
-export type AccordionItemProps = AccordionItemBaseProps &
-  AccordionItemStateProps;
+export type AccordionItemProps = AccordionItemBaseProps & UseDisclosureProps;
+export type AccordionItemStateProps = DisclosureStateProps;
 
 export const AccordionItem = ({
   id,
@@ -38,8 +37,10 @@ export const AccordionItem = ({
     'Label must be a string',
   );
 
-  const [expandedFallback, setExpandedFallback] = useState(false);
-  const expanded = expandedProp ?? expandedFallback;
+  const { expanded, buttonProps, contentProps } = useDisclosure({
+    id,
+    ...(onToggle ? { onToggle, expanded: expandedProp } : null),
+  });
 
   return (
     <Box>
@@ -51,19 +52,7 @@ export const AccordionItem = ({
           outline="none"
           width="full"
           textAlign="left"
-          aria-controls={id}
-          aria-expanded={expanded}
-          onClick={() => {
-            const newValue = !expanded;
-
-            if (expandedProp === undefined) {
-              setExpandedFallback(newValue);
-            }
-
-            if (typeof onToggle === 'function') {
-              onToggle(newValue);
-            }
-          }}
+          {...buttonProps}
         >
           <Columns space={accordionSpace}>
             <Column>
@@ -89,9 +78,9 @@ export const AccordionItem = ({
         />
       </Box>
       <Box
-        id={id}
         paddingTop={accordionSpace}
         display={expanded ? 'block' : 'none'}
+        {...contentProps}
       >
         {children}
       </Box>
