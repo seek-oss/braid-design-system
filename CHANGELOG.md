@@ -1,5 +1,13 @@
 # braid-design-system
 
+## 28.11.0
+
+### Minor Changes
+
+- **TextLinkButton:** Pass click event object to `onClick` handler ([#688](https://github.com/seek-oss/braid-design-system/pull/688))
+
+  The `onClick` handler was previously called without any arguments. We now pass the click event object through as expected.
+
 ## 28.10.0
 
 ### Minor Changes
