@@ -1,8 +1,9 @@
 import React, {
+  useRef,
   useCallback,
   AllHTMLAttributes,
-  KeyboardEvent,
   ReactNode,
+  KeyboardEvent,
 } from 'react';
 import { Box } from '../';
 import {
@@ -17,7 +18,7 @@ type NativeSpanProps = AllHTMLAttributes<HTMLSpanElement>;
 export interface TextLinkButtonProps
   extends Omit<TextLinkRendererProps, 'children' | 'showVisited'> {
   id?: NativeSpanProps['id'];
-  onClick?: () => void;
+  onClick?: NativeSpanProps['onClick'];
   data?: DataAttributeMap;
   children: ReactNode;
   'aria-controls'?: NativeSpanProps['aria-controls'];
@@ -36,26 +37,27 @@ export const TextLinkButton = ({
   'aria-expanded': ariaExpanded,
   'aria-describedby': ariaDescribedBy,
 }: TextLinkButtonProps) => {
-  const handleClick = useCallback(() => onClick(), [onClick]);
+  const buttonRef = useRef<HTMLSpanElement>(null);
 
   const handleKeyboard = useCallback(
     (event: KeyboardEvent<HTMLSpanElement>) => {
       if (event.key === 'Enter' || event.key === ' ') {
-        onClick();
         event.preventDefault();
+        buttonRef.current?.click();
       }
     },
-    [onClick],
+    [buttonRef],
   );
 
   return (
     <TextLinkRenderer hitArea={hitArea}>
       {(styleProps) => (
         <Box
+          ref={buttonRef}
           role="button"
           tabIndex={0}
           component="span"
-          onClick={handleClick}
+          onClick={onClick}
           onKeyDown={handleKeyboard}
           aria-controls={ariaControls}
           aria-expanded={ariaExpanded}

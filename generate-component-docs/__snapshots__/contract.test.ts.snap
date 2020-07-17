@@ -6039,7 +6039,7 @@ Object {
         | "large"
         | "standard"
     id?: string
-    onClick?: () => void
+    onClick?: (event: MouseEvent<HTMLSpanElement, MouseEvent>) => void
 },
 }
 `;
