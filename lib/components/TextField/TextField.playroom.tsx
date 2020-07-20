@@ -12,6 +12,7 @@ export const TextField = ({
   id,
   value,
   onChange,
+  onClear,
   ...restProps
 }: PlayroomTextFieldProps) => {
   const fallbackId = useFallbackId();
@@ -26,6 +27,7 @@ export const TextField = ({
           ? onChange
           : (event) => setFallbackValue(event.currentTarget.value)
       }
+      onClear={onClear ?? (() => setFallbackValue(''))}
       {...restProps}
     />
   );

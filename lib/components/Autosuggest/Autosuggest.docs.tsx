@@ -2,6 +2,7 @@ import React, { useState, ReactNode } from 'react';
 import matchHighlights from 'autosuggest-highlight/match';
 import { ComponentDocs } from '../../../site/src/types';
 import { Autosuggest, IconSearch, IconLocation } from '../';
+import { Autosuggest as PlayroomAutosuggest } from '../../playroom/components';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <div style={{ maxWidth: '300px' }}>{children}</div>
@@ -286,11 +287,9 @@ const docs: ComponentDocs = {
     {
       name: 'Standard',
       code: (
-        <Autosuggest
+        <PlayroomAutosuggest
           id="fruit"
           label="Fruit"
-          value={{ text: '' }}
-          onChange={() => {}}
           suggestions={[
             { text: 'Apples' },
             { text: 'Bananas' },
@@ -302,12 +301,9 @@ const docs: ComponentDocs = {
     {
       name: 'Grouped suggestions',
       code: (
-        <Autosuggest
+        <PlayroomAutosuggest
           label="I like to eat"
           id="grouped"
-          value={{ text: '' }}
-          onChange={() => {}}
-          onClear={() => {}}
           suggestions={[
             {
               label: 'Fruit',
@@ -332,12 +328,10 @@ const docs: ComponentDocs = {
     {
       name: 'With mobile backdrop',
       code: (
-        <Autosuggest
+        <PlayroomAutosuggest
           showMobileBackdrop
           id="mobile"
           label="Fruit"
-          value={{ text: '' }}
-          onChange={() => {}}
           suggestions={[
             { text: 'Apples' },
             { text: 'Bananas' },
@@ -349,11 +343,9 @@ const docs: ComponentDocs = {
     {
       name: 'With error',
       code: (
-        <Autosuggest
+        <PlayroomAutosuggest
           label="I like to eat"
           id="error"
-          value={{ text: '' }}
-          onChange={() => {}}
           tone="critical"
           message="You must make a selection"
           suggestions={[
@@ -367,11 +359,9 @@ const docs: ComponentDocs = {
     {
       name: 'With description',
       code: (
-        <Autosuggest
+        <PlayroomAutosuggest
           label="Fruit"
           id="error"
-          value={{ text: '' }}
-          onChange={() => {}}
           description="Select your favourite fruit to eat from the available suggestions."
           suggestions={[
             { text: 'Apples' },
@@ -384,12 +374,10 @@ const docs: ComponentDocs = {
     {
       name: 'With icon',
       code: (
-        <Autosuggest
+        <PlayroomAutosuggest
           id="location"
           icon={<IconLocation />}
           placeholder="Enter a location"
-          value={{ text: '' }}
-          onChange={() => {}}
           suggestions={[
             { text: 'Adelaide' },
             { text: 'Brisbane' },
