@@ -2,4 +2,4 @@
 'braid-design-system': patch
 ---
 
-Inline: Prevent overlapping of preceding interactive components
+**Inline:** Prevent overlapping of preceding interactive components
