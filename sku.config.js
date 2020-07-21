@@ -2,6 +2,16 @@ const routes = require('./sku.routes.js');
 
 const isGitHubPages = Boolean(process.env.IS_GITHUB_PAGES);
 
+const entries = Boolean(process.env.DEBUG_IE)
+  ? {
+      clientEntry: './site/src/IE-debug/client.tsx',
+      renderEntry: './site/src/IE-debug/render.tsx',
+    }
+  : {
+      clientEntry: './site/src/client.tsx',
+      renderEntry: './site/src/render.tsx',
+    };
+
 module.exports = {
   srcPaths: [
     'lib',
@@ -12,8 +22,7 @@ module.exports = {
     'generate-component-docs',
     'reset',
   ],
-  clientEntry: './site/src/client.tsx',
-  renderEntry: './site/src/render.tsx',
+  ...entries,
   routes,
   public: './site/src/public',
   target: './site/dist',

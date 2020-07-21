@@ -68,8 +68,8 @@ export const Inline = ({
             <Box
               component={inlineItemComponent}
               minWidth={0}
-              paddingLeft={space}
-              paddingTop={space}
+              marginLeft={space}
+              marginTop={space}
               {...collapsibleAlignmentChildProps}
             >
               {child}
