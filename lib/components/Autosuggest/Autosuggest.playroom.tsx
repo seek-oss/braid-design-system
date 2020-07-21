@@ -15,6 +15,7 @@ export function Autosuggest<Value>({
   id,
   value,
   onChange,
+  onClear,
   ...restProps
 }: PlayroomAutosuggestProps<Value>) {
   const fallbackId = useFallbackId();
@@ -25,6 +26,7 @@ export function Autosuggest<Value>({
       id={id ?? fallbackId}
       value={value ?? fallbackValue}
       onChange={onChange ?? setFallbackValue}
+      onClear={onClear ?? (() => setFallbackValue({ text: '' }))}
       {...restProps}
     />
   );
