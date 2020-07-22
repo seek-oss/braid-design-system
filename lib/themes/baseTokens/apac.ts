@@ -3,6 +3,19 @@ import { DeepPartial } from 'utility-types';
 import { rgba } from 'polished';
 import merge from 'lodash/merge';
 
+const grey = {
+  50: '#f5f6f8',
+  100: '#e8eaee',
+  200: '#d8dce2',
+  300: '#b8beca',
+  400: '#8991a5',
+  500: '#596581',
+  600: '#414a5f',
+  700: '#313848',
+  800: '#1e222b',
+  900: '#0e1014',
+} as const;
+
 interface MakeTokensOptions {
   name: string;
   displayName: string;
@@ -19,18 +32,17 @@ export const makeTokens = ({
   formAccent,
   tokenOverrides = {},
 }: MakeTokensOptions): TreatTokens => {
-  const white = '#fff';
-  const focus = rgba('#1e90ff', 0.7);
-  const positive = '#138a08';
   const critical = '#d0011b';
+  const positive = '#138a08';
   const info = '#1e468c';
   const promote = '#9556b7';
   const caution = '#ffc600';
-  const neutral = '#747474';
-  const black = '#1c1c1c';
+  const focus = rgba('#1e90ff', 0.7);
+  const black = grey['800'];
+  const white = '#fff';
   const link = '#2765cf';
   const linkVisited = '#733d90';
-  const secondary = '#1c1c1ca1';
+  const secondary = grey['500'];
 
   const tokens: TreatTokens = {
     name,
@@ -147,7 +159,7 @@ export const makeTokens = ({
       large: 1280,
     },
     grid: 4,
-    touchableSize: 12,
+    touchableSize: 11,
     space: {
       gutter: 6,
       xxsmall: 1,
@@ -167,16 +179,16 @@ export const makeTokens = ({
     },
     border: {
       radius: {
-        standard: '2px',
+        standard: '4px',
       },
       width: {
         standard: 1,
         large: 2,
       },
       color: {
-        standard: '#d6d6d6',
+        standard: grey['200'],
         standardInverted: white,
-        field: '#898989',
+        field: grey['400'],
         focus,
         formHover: formAccent,
         critical,
@@ -188,12 +200,21 @@ export const makeTokens = ({
       },
     },
     shadows: {
-      small:
-        '0 2px 4px 0px rgba(28,28,28,.1), 0 2px 2px -2px rgba(28,28,28,.1), 0 4px 4px -4px rgba(28,28,28,.2)',
-      medium:
-        '0 2px 4px 0px rgba(28,28,28,.1), 0 8px 8px -4px rgba(28,28,28,.1), 0 12px 12px -8px rgba(28,28,28,.2)',
-      large:
-        '0 2px 4px 0px rgba(28,28,28,.1), 0 12px 12px -4px rgba(28,28,28,.1), 0 20px 20px -12px rgba(28,28,28,.2)',
+      small: [
+        `0 2px 4px 0px ${rgba(grey['800'], 0.1)}`,
+        `0 2px 2px -2px ${rgba(grey['800'], 0.1)}`,
+        `0 4px 4px -4px ${rgba(grey['800'], 0.2)}`,
+      ].join(', '),
+      medium: [
+        `0 2px 4px 0px ${rgba(grey['800'], 0.1)}`,
+        `0 8px 8px -4px ${rgba(grey['800'], 0.1)}`,
+        `0 12px 12px -8px ${rgba(grey['800'], 0.2)}`,
+      ].join(', '),
+      large: [
+        `0 2px 4px 0px ${rgba(grey['800'], 0.1)}`,
+        `0 12px 12px -4px ${rgba(grey['800'], 0.1)}`,
+        `0 20px 20px -12px ${rgba(grey['800'], 0.2)}`,
+      ].join(', '),
     },
     color: {
       foreground: {
@@ -213,19 +234,19 @@ export const makeTokens = ({
         rating: '#f57c00',
       },
       background: {
-        body: '#eee',
+        body: grey['50'],
         brand,
         input: white,
-        inputDisabled: '#eee',
+        inputDisabled: grey['50'],
         brandAccent,
         formAccent,
-        formAccentDisabled: '#ccc',
-        selection: '#f1f7ff',
+        formAccentDisabled: grey['100'],
+        selection: grey['100'],
         card: white,
         critical,
         caution,
         positive,
-        neutral,
+        neutral: grey['500'],
         info,
         promote,
       },
