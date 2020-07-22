@@ -3824,11 +3824,6 @@ base@^0.11.1:
     mixin-deep "^1.2.0"
     pascalcase "^0.1.1"
 
-basekick@^3.1.1:
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/basekick/-/basekick-3.1.1.tgz#bd46180b539b84c3e030d0ae93f31977272e09af"
-  integrity sha512-F6IBL9SDlf8rJLKnNcvi1/LqnzkDALVmjTT99/+ZKBsrZyLIZ+tEbuHsrMfjkqY7R6h55vjIF1yjHJvHhZAq3w==
-
 batch-processor@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/batch-processor/-/batch-processor-1.0.0.tgz#75c95c32b748e0850d10c2b168f6bdbe9891ace8"

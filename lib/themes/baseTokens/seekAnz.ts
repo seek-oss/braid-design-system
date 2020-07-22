@@ -39,8 +39,13 @@ export const makeTokens = ({
       fontFamily:
         'Roboto, "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif',
       webFont: null,
-      descenderHeightScale: 0.165,
-      capHeightScale: 0.6,
+      fontMetrics: {
+        capHeight: 1456,
+        ascent: 1900,
+        descent: -500,
+        lineGap: 0,
+        unitsPerEm: 2048,
+      },
       fontWeight: {
         regular: 400,
         medium: 500,

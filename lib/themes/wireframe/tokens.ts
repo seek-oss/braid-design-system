@@ -21,8 +21,13 @@ const tokens: TreatTokens = {
   typography: {
     fontFamily: 'Courier, monospace',
     webFont: null,
-    descenderHeightScale: 0.16,
-    capHeightScale: 0.502,
+    fontMetrics: {
+      capHeight: 1186, // 1544 from fontkit, but should be 1186 according to fontforge
+      ascent: 1638, // 1544 from fontkit, but should be 1638 according to general metrics table
+      descent: -410, // -504 from fontkit, but should be -410 according to general metrics table
+      lineGap: 184, // 0 from fontkit, but should be 184 according to os/2 metrics table
+      unitsPerEm: 2048,
+    },
     fontWeight: {
       regular: 400,
       medium: 500,

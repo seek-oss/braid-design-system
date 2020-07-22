@@ -5,6 +5,7 @@ import mapValues from 'lodash/mapValues';
 import values from 'lodash/values';
 import { makeThemeUtils } from './themeUtils';
 import { getLightVariant, isLight } from '../utils';
+import { FontMetrics } from '../hooks/typography/capsize';
 
 export const breakpoints = ['mobile', 'tablet', 'desktop'] as const;
 type Breakpoint = typeof breakpoints[number];
@@ -26,8 +27,7 @@ export interface TreatTokens {
   typography: {
     fontFamily: string;
     webFont: string | null;
-    descenderHeightScale: number;
-    capHeightScale: number;
+    fontMetrics: FontMetrics;
     fontWeight: Record<FontWeight, number>;
     heading: {
       weight: {

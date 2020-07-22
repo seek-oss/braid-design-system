@@ -23,8 +23,13 @@ const tokens: TreatTokens = {
     fontFamily:
       '-apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
     webFont: null,
-    descenderHeightScale: 0.13,
-    capHeightScale: 0.7,
+    fontMetrics: {
+      capHeight: 1443,
+      ascent: 1950,
+      descent: -494,
+      lineGap: 0,
+      unitsPerEm: 2048,
+    },
     fontWeight: {
       regular: 400,
       medium: 500,

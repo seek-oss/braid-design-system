@@ -22,8 +22,13 @@ const tokens: TreatTokens = {
   typography: {
     fontFamily: "'Nunito Sans', sans-serif",
     webFont: 'Nunito Sans',
-    descenderHeightScale: 0.19,
-    capHeightScale: 0.66,
+    fontMetrics: {
+      capHeight: 705,
+      ascent: 1011,
+      descent: -353,
+      lineGap: 0,
+      unitsPerEm: 1000,
+    },
     fontWeight: {
       regular: 400,
       medium: 600,

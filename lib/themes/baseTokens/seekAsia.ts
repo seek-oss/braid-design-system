@@ -50,8 +50,13 @@ export const makeTokens = ({
       fontFamily:
         'Muli, -apple-system, system-ui, "Segoe UI", Roboto, "Noto Sans", Ubuntu, "Droid Sans", "Helvetica Neue", Arial, sans-serif',
       webFont: 'Muli',
-      descenderHeightScale: 0.14,
-      capHeightScale: 0.6,
+      fontMetrics: {
+        capHeight: 712,
+        ascent: 1005,
+        descent: -250,
+        lineGap: 0,
+        unitsPerEm: 1000,
+      },
       fontWeight: {
         regular: 400,
         medium: 600,

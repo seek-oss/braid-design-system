@@ -2,7 +2,7 @@ import mapValues from 'lodash/mapValues';
 import omit from 'lodash/omit';
 import { style, styleMap, ClassRef } from 'sku/treat';
 import { Theme } from 'treat/theme';
-import basekick from './basekick';
+import capsize from './capsize';
 import { getAccessibleVariant, mapToStyleProperty } from '../../utils';
 import { BackgroundVariant } from './../../components/Box/BackgroundContext';
 import { TextBreakpoint } from '../../themes/makeBraidTheme';
@@ -20,51 +20,41 @@ interface TextDefinition {
   size: number;
 }
 
-const alignTextToGrid = (
-  textDefinition: TextDefinition,
-  gridRowHeight: number,
-  descenderHeightScale: number,
-  capHeight: number,
-) =>
-  basekick({
-    baseFontSize: 1,
-    typeSizeModifier: textDefinition.size,
-    typeRowSpan: textDefinition.rows,
-    gridRowHeight,
-    descenderHeightScale,
-    capHeight,
-  });
-
 const makeTypographyRules = (
   textDefinition: Record<TextBreakpoint, TextDefinition>,
   { grid, typography, utils }: Theme,
 ) => {
-  const mobile = alignTextToGrid(
-    textDefinition.mobile,
-    grid,
-    typography.descenderHeightScale,
-    typography.capHeightScale,
-  );
+  const {
+    padding: preventCollapse,
+    '::after': mobileBaseline,
+    '::before': mobileTopCrop,
+    ...mobile
+  } = capsize({
+    fontMetrics: typography.fontMetrics,
+    fontSize: textDefinition.mobile.size,
+    leading: textDefinition.mobile.rows * grid,
+  });
 
-  const tablet = alignTextToGrid(
-    textDefinition.tablet,
-    grid,
-    typography.descenderHeightScale,
-    typography.capHeightScale,
-  );
+  const {
+    '::after': tabletBaseline,
+    '::before': tabletTopCrop,
+    padding, // omit preventCollapse
+    ...tablet
+  } = capsize({
+    fontMetrics: typography.fontMetrics,
+    fontSize: textDefinition.tablet.size,
+    leading: textDefinition.tablet.rows * grid,
+  });
 
   return {
-    base: utils.responsiveStyle({
-      mobile: mobile.base,
-      tablet: tablet.base,
-    }),
+    base: utils.responsiveStyle({ mobile, tablet }),
     baseline: utils.responsiveStyle({
-      mobile: mobile.baseline,
-      tablet: tablet.baseline,
+      mobile: { padding: preventCollapse, '::after': mobileBaseline },
+      tablet: { padding: preventCollapse, '::after': tabletBaseline },
     }),
     cropFirstLine: utils.responsiveStyle({
-      mobile: mobile.cropFirstLine,
-      tablet: tablet.cropFirstLine,
+      mobile: { '::before': mobileTopCrop },
+      tablet: { '::before': tabletTopCrop },
     }),
   };
 };
