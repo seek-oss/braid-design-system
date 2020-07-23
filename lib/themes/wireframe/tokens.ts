@@ -41,41 +41,41 @@ const tokens: TreatTokens = {
       level: {
         '1': {
           mobile: {
-            capHeight: 21,
+            capHeight: 17,
             rows: 9,
           },
           tablet: {
-            capHeight: 32,
+            capHeight: 25,
             rows: 11,
           },
         },
         '2': {
           mobile: {
-            capHeight: 16,
+            capHeight: 13,
             rows: 8,
           },
           tablet: {
-            capHeight: 21,
+            capHeight: 16,
             rows: 9,
           },
         },
         '3': {
           mobile: {
-            capHeight: 16,
+            capHeight: 13,
             rows: 7,
           },
           tablet: {
-            capHeight: 16,
+            capHeight: 13,
             rows: 7,
           },
         },
         '4': {
           mobile: {
-            capHeight: 14,
+            capHeight: 11,
             rows: 7,
           },
           tablet: {
-            capHeight: 14,
+            capHeight: 11,
             rows: 7,
           },
         },
@@ -84,41 +84,41 @@ const tokens: TreatTokens = {
     text: {
       xsmall: {
         mobile: {
-          capHeight: 9,
+          capHeight: 7,
           rows: 5,
         },
         tablet: {
-          capHeight: 9,
+          capHeight: 7,
           rows: 5,
         },
       },
       small: {
         mobile: {
-          capHeight: 11,
+          capHeight: 9,
           rows: 5,
         },
         tablet: {
-          capHeight: 11,
+          capHeight: 9,
           rows: 5,
         },
       },
       standard: {
         mobile: {
-          capHeight: 12,
+          capHeight: 10,
           rows: 7,
         },
         tablet: {
-          capHeight: 12,
+          capHeight: 10,
           rows: 7,
         },
       },
       large: {
         mobile: {
-          capHeight: 14,
+          capHeight: 11,
           rows: 8,
         },
         tablet: {
-          capHeight: 14,
+          capHeight: 11,
           rows: 8,
         },
       },

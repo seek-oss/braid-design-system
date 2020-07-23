@@ -55,11 +55,11 @@ export default makeTokens({
         },
         large: {
           mobile: {
-            capHeight: 11,
+            capHeight: 12,
             rows: 6,
           },
           tablet: {
-            capHeight: 11,
+            capHeight: 12,
             rows: 6,
           },
         },

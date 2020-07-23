@@ -63,21 +63,21 @@ const tokens: TreatTokens = {
         },
         '3': {
           mobile: {
-            capHeight: 15,
+            capHeight: 16,
             rows: 8,
           },
           tablet: {
-            capHeight: 15,
+            capHeight: 16,
             rows: 8,
           },
         },
         '4': {
           mobile: {
-            capHeight: 13,
+            capHeight: 15,
             rows: 8,
           },
           tablet: {
-            capHeight: 13,
+            capHeight: 15,
             rows: 8,
           },
         },
@@ -96,11 +96,11 @@ const tokens: TreatTokens = {
       },
       small: {
         mobile: {
-          capHeight: 11,
+          capHeight: 12,
           rows: 6,
         },
         tablet: {
-          capHeight: 11,
+          capHeight: 12,
           rows: 6,
         },
       },
