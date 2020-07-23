@@ -15,7 +15,7 @@ export type TextBreakpoint = Exclude<Breakpoint, 'desktop'>;
 type TextDefinition = Record<
   TextBreakpoint,
   {
-    size: number;
+    capHeight: number;
     rows: number;
   }
 >;

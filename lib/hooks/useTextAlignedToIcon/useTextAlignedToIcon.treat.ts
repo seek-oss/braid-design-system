@@ -6,13 +6,8 @@ export const size = {
       breakpoint: keyof typeof theme.typography.text.standard,
     ) => {
       const type = theme.typography.text.standard[breakpoint];
-      const capHeight =
-        type.size *
-        (theme.typography.fontMetrics.capHeight /
-          theme.typography.fontMetrics.unitsPerEm);
-
       const lineHeight = type.rows * theme.grid;
-      const lineCrop = lineHeight - capHeight;
+      const lineCrop = lineHeight - type.capHeight;
       const padding = lineCrop / 2;
 
       return {

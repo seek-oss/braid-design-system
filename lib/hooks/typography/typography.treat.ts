@@ -17,7 +17,7 @@ export const fontWeight = styleMap(({ typography }) =>
 
 interface TextDefinition {
   rows: number;
-  size: number;
+  capHeight: number;
 }
 
 const makeTypographyRules = (
@@ -31,7 +31,7 @@ const makeTypographyRules = (
     ...mobile
   } = capsize({
     fontMetrics: typography.fontMetrics,
-    fontSize: textDefinition.mobile.size,
+    capHeight: textDefinition.mobile.capHeight,
     leading: textDefinition.mobile.rows * grid,
   });
 
@@ -42,7 +42,7 @@ const makeTypographyRules = (
     ...tablet
   } = capsize({
     fontMetrics: typography.fontMetrics,
-    fontSize: textDefinition.tablet.size,
+    capHeight: textDefinition.tablet.capHeight,
     leading: textDefinition.tablet.rows * grid,
   });
 

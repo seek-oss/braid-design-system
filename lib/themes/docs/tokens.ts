@@ -43,41 +43,41 @@ const tokens: TreatTokens = {
       level: {
         '1': {
           mobile: {
-            size: 32,
+            capHeight: 23,
             rows: 10,
           },
           tablet: {
-            size: 52,
+            capHeight: 37,
             rows: 15,
           },
         },
         '2': {
           mobile: {
-            size: 28,
+            capHeight: 20,
             rows: 9,
           },
           tablet: {
-            size: 38,
+            capHeight: 27,
             rows: 13,
           },
         },
         '3': {
           mobile: {
-            size: 22,
+            capHeight: 15,
             rows: 8,
           },
           tablet: {
-            size: 22,
+            capHeight: 15,
             rows: 8,
           },
         },
         '4': {
           mobile: {
-            size: 18,
+            capHeight: 13,
             rows: 8,
           },
           tablet: {
-            size: 18,
+            capHeight: 13,
             rows: 8,
           },
         },
@@ -86,41 +86,41 @@ const tokens: TreatTokens = {
     text: {
       xsmall: {
         mobile: {
-          size: 14,
+          capHeight: 10,
           rows: 6,
         },
         tablet: {
-          size: 14,
+          capHeight: 10,
           rows: 6,
         },
       },
       small: {
         mobile: {
-          size: 16,
+          capHeight: 11,
           rows: 6,
         },
         tablet: {
-          size: 16,
+          capHeight: 11,
           rows: 6,
         },
       },
       standard: {
         mobile: {
-          size: 18,
+          capHeight: 13,
           rows: 8,
         },
         tablet: {
-          size: 18,
+          capHeight: 13,
           rows: 8,
         },
       },
       large: {
         mobile: {
-          size: 22,
+          capHeight: 15,
           rows: 9,
         },
         tablet: {
-          size: 22,
+          capHeight: 15,
           rows: 9,
         },
       },
