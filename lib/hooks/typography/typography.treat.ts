@@ -19,14 +19,6 @@ const getTextStyles = (
   textDefinition: TextDefinition[TextBreakpoint],
   theme: Theme,
 ): CapsizeStyles => {
-  if ('capHeight' in textDefinition) {
-    return capsize({
-      fontMetrics: theme.typography.fontMetrics,
-      capHeight: textDefinition.capHeight,
-      leading: textDefinition.rows * theme.grid,
-    });
-  }
-
   if ('fontSize' in textDefinition) {
     return capsize({
       fontMetrics: theme.typography.fontMetrics,
@@ -35,7 +27,11 @@ const getTextStyles = (
     });
   }
 
-  throw new Error('Neither `capHeight` or `fontSize` are available.');
+  return capsize({
+    fontMetrics: theme.typography.fontMetrics,
+    capHeight: textDefinition.capHeight,
+    leading: textDefinition.rows * theme.grid,
+  });
 };
 
 const makeTypographyRules = (textDefinition: TextDefinition, theme: Theme) => {
@@ -62,7 +58,7 @@ const makeTypographyRules = (textDefinition: TextDefinition, theme: Theme) => {
         lineHeight: tabletLineHeight,
       },
     }),
-    trimSpace: theme.utils.responsiveStyle({
+    leadingTrim: theme.utils.responsiveStyle({
       mobile,
       tablet,
     }),

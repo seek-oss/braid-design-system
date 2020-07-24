@@ -35,7 +35,7 @@ export function useText({
     styles.text[size].base,
     textTone,
     styles.fontWeight[weight],
-    baseline ? styles.text[size].trimSpace : null,
+    baseline ? styles.text[size].leadingTrim : null,
   );
 }
 
@@ -64,7 +64,7 @@ export function useHeading({
     styles.heading[level].base,
     textTone,
     {
-      [styles.heading[level].trimSpace]: baseline,
+      [styles.heading[level].leadingTrim]: baseline,
     },
   );
 }

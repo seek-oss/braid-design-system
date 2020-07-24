@@ -58,15 +58,11 @@ export const delay = style({
 const sizeFromTheme = (
   definition: Theme['typography']['text']['standard']['mobile'],
 ) => {
-  if ('capHeight' in definition) {
-    return definition.capHeight;
-  }
-
   if ('fontSize' in definition) {
     return definition.fontSize;
   }
 
-  throw new Error('Neither `capHeight` or `fontSize` are available.');
+  return definition.capHeight;
 };
 
 export const size = styleMap(({ utils, typography }) =>

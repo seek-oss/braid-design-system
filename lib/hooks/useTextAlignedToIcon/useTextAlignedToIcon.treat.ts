@@ -8,16 +8,6 @@ export const size = {
       const type = theme.typography.text.standard[breakpoint];
       const lineHeight = type.rows * theme.grid;
 
-      if ('capHeight' in type) {
-        const lineCrop = lineHeight - type.capHeight;
-        const padding = lineCrop / 2;
-
-        return {
-          paddingTop: padding,
-          paddingBottom: padding,
-        };
-      }
-
       if ('fontSize' in type) {
         const capHeightScale =
           theme.typography.fontMetrics.capHeight /
@@ -33,7 +23,13 @@ export const size = {
         };
       }
 
-      throw new Error('Neither `capHeight` or `fontSize` are available.');
+      const lineCrop = lineHeight - type.capHeight;
+      const padding = lineCrop / 2;
+
+      return {
+        paddingTop: padding,
+        paddingBottom: padding,
+      };
     };
 
     return theme.utils.responsiveStyle({
