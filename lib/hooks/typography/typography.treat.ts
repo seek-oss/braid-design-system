@@ -25,9 +25,8 @@ const makeTypographyRules = (
   { grid, typography, utils }: Theme,
 ) => {
   const {
-    padding: preventCollapse,
-    '::after': mobileBaseline,
-    '::before': mobileTopCrop,
+    fontSize: mobileFontSize,
+    lineHeight: mobileLineHeight,
     ...mobile
   } = capsize({
     fontMetrics: typography.fontMetrics,
@@ -36,9 +35,8 @@ const makeTypographyRules = (
   });
 
   const {
-    '::after': tabletBaseline,
-    '::before': tabletTopCrop,
-    padding, // omit preventCollapse
+    fontSize: tabletFontSize,
+    lineHeight: tabletLineHeight,
     ...tablet
   } = capsize({
     fontMetrics: typography.fontMetrics,
@@ -47,14 +45,19 @@ const makeTypographyRules = (
   });
 
   return {
-    base: utils.responsiveStyle({ mobile, tablet }),
-    baseline: utils.responsiveStyle({
-      mobile: { padding: preventCollapse, '::after': mobileBaseline },
-      tablet: { padding: preventCollapse, '::after': tabletBaseline },
+    base: utils.responsiveStyle({
+      mobile: {
+        fontSize: mobileFontSize,
+        lineHeight: mobileLineHeight,
+      },
+      tablet: {
+        fontSize: tabletFontSize,
+        lineHeight: tabletLineHeight,
+      },
     }),
-    cropFirstLine: utils.responsiveStyle({
-      mobile: { '::before': mobileTopCrop },
-      tablet: { '::before': tabletTopCrop },
+    trimSpace: utils.responsiveStyle({
+      mobile,
+      tablet,
     }),
   };
 };

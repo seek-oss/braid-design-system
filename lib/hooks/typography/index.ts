@@ -18,7 +18,6 @@ export interface UseTextProps {
   tone?: TextTone;
   baseline: boolean;
   backgroundContext?: BoxProps['background'];
-  _LEGACY_SPACE_?: boolean;
 }
 
 export function useText({
@@ -27,7 +26,6 @@ export function useText({
   tone = 'neutral',
   baseline,
   backgroundContext,
-  _LEGACY_SPACE_ = false,
 }: UseTextProps) {
   const styles = useStyles(styleRefs);
   const textTone = useTextTone({ tone, backgroundContext });
@@ -37,8 +35,7 @@ export function useText({
     styles.text[size].base,
     textTone,
     styles.fontWeight[weight],
-    baseline ? styles.text[size].baseline : null,
-    baseline && !_LEGACY_SPACE_ ? styles.text[size].cropFirstLine : null,
+    baseline ? styles.text[size].trimSpace : null,
   );
 }
 
@@ -50,7 +47,6 @@ interface UseHeadingParams {
   level: HeadingLevel;
   baseline: boolean;
   backgroundContext?: BoxProps['background'];
-  _LEGACY_SPACE_?: boolean;
 }
 
 export function useHeading({
@@ -58,7 +54,6 @@ export function useHeading({
   level,
   baseline,
   backgroundContext,
-  _LEGACY_SPACE_ = false,
 }: UseHeadingParams) {
   const styles = useStyles(styleRefs);
   const textTone = useTextTone({ tone: 'neutral', backgroundContext });
@@ -67,10 +62,9 @@ export function useHeading({
     styles.fontFamily,
     styles.headingWeight[weight],
     styles.heading[level].base,
-    _LEGACY_SPACE_ ? null : styles.heading[level].cropFirstLine,
     textTone,
     {
-      [styles.heading[level].baseline]: baseline,
+      [styles.heading[level].trimSpace]: baseline,
     },
   );
 }
