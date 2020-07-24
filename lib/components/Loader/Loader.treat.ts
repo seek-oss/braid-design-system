@@ -1,6 +1,6 @@
 import { style, styleMap } from 'sku/treat';
-import { Theme } from 'treat/theme';
 import mapValues from 'lodash/mapValues';
+import { TextDefinition, TextBreakpoint } from '../../themes/makeBraidTheme';
 
 const bounce = style({
   '@keyframes': {
@@ -55,9 +55,7 @@ export const delay = style({
   animationDelay: '0.8s',
 });
 
-const sizeFromTheme = (
-  definition: Theme['typography']['text']['standard']['mobile'],
-) => {
+const sizeFromTheme = (definition: TextDefinition[TextBreakpoint]) => {
   if ('fontSize' in definition) {
     return definition.fontSize;
   }
