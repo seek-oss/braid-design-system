@@ -70,41 +70,41 @@ export const makeTokens = ({
         level: {
           '1': {
             mobile: {
-              capHeight: 20,
+              fontSize: 28,
               rows: 9,
             },
             tablet: {
-              capHeight: 24,
+              fontSize: 34,
               rows: 11,
             },
           },
           '2': {
             mobile: {
-              capHeight: 17,
+              fontSize: 24,
               rows: 8,
             },
             tablet: {
-              capHeight: 20,
+              fontSize: 28,
               rows: 9,
             },
           },
           '3': {
             mobile: {
-              capHeight: 14,
+              fontSize: 20,
               rows: 7,
             },
             tablet: {
-              capHeight: 17,
+              fontSize: 24,
               rows: 8,
             },
           },
           '4': {
             mobile: {
-              capHeight: 13,
+              fontSize: 18,
               rows: 6,
             },
             tablet: {
-              capHeight: 13,
+              fontSize: 18,
               rows: 6,
             },
           },
@@ -113,41 +113,41 @@ export const makeTokens = ({
       text: {
         xsmall: {
           mobile: {
-            capHeight: 9,
+            fontSize: 12,
             rows: 4,
           },
           tablet: {
-            capHeight: 9,
+            fontSize: 12,
             rows: 4,
           },
         },
         small: {
           mobile: {
-            capHeight: 10,
+            fontSize: 14,
             rows: 5,
           },
           tablet: {
-            capHeight: 10,
+            fontSize: 14,
             rows: 5,
           },
         },
         standard: {
           mobile: {
-            capHeight: 12,
+            fontSize: 16,
             rows: 6,
           },
           tablet: {
-            capHeight: 12,
+            fontSize: 16,
             rows: 6,
           },
         },
         large: {
           mobile: {
-            capHeight: 13,
+            fontSize: 18,
             rows: 6,
           },
           tablet: {
-            capHeight: 13,
+            fontSize: 18,
             rows: 6,
           },
         },

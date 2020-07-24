@@ -2,10 +2,10 @@ import mapValues from 'lodash/mapValues';
 import omit from 'lodash/omit';
 import { style, styleMap, ClassRef } from 'sku/treat';
 import { Theme } from 'treat/theme';
-import capsize from './capsize';
+import capsize, { CapsizeStyles } from './capsize';
 import { getAccessibleVariant, mapToStyleProperty } from '../../utils';
 import { BackgroundVariant } from './../../components/Box/BackgroundContext';
-import { TextBreakpoint } from '../../themes/makeBraidTheme';
+import { TextBreakpoint, TextDefinition } from '../../themes/makeBraidTheme';
 
 export const fontFamily = style(({ typography }) => ({
   fontFamily: typography.fontFamily,
@@ -15,37 +15,44 @@ export const fontWeight = styleMap(({ typography }) =>
   mapToStyleProperty(typography.fontWeight, 'fontWeight'),
 );
 
-interface TextDefinition {
-  rows: number;
-  capHeight: number;
-}
+const getTextStyles = (
+  textDefinition: TextDefinition[TextBreakpoint],
+  theme: Theme,
+): CapsizeStyles => {
+  if ('capHeight' in textDefinition) {
+    return capsize({
+      fontMetrics: theme.typography.fontMetrics,
+      capHeight: textDefinition.capHeight,
+      leading: textDefinition.rows * theme.grid,
+    });
+  }
 
-const makeTypographyRules = (
-  textDefinition: Record<TextBreakpoint, TextDefinition>,
-  { grid, typography, utils }: Theme,
-) => {
+  if ('fontSize' in textDefinition) {
+    return capsize({
+      fontMetrics: theme.typography.fontMetrics,
+      fontSize: textDefinition.fontSize,
+      leading: textDefinition.rows * theme.grid,
+    });
+  }
+
+  throw new Error('Neither `capHeight` or `fontSize` are available.');
+};
+
+const makeTypographyRules = (textDefinition: TextDefinition, theme: Theme) => {
   const {
     fontSize: mobileFontSize,
     lineHeight: mobileLineHeight,
     ...mobile
-  } = capsize({
-    fontMetrics: typography.fontMetrics,
-    capHeight: textDefinition.mobile.capHeight,
-    leading: textDefinition.mobile.rows * grid,
-  });
+  } = getTextStyles(textDefinition.mobile, theme);
 
   const {
     fontSize: tabletFontSize,
     lineHeight: tabletLineHeight,
     ...tablet
-  } = capsize({
-    fontMetrics: typography.fontMetrics,
-    capHeight: textDefinition.tablet.capHeight,
-    leading: textDefinition.tablet.rows * grid,
-  });
+  } = getTextStyles(textDefinition.tablet, theme);
 
   return {
-    base: utils.responsiveStyle({
+    base: theme.utils.responsiveStyle({
       mobile: {
         fontSize: mobileFontSize,
         lineHeight: mobileLineHeight,
@@ -55,7 +62,7 @@ const makeTypographyRules = (
         lineHeight: tabletLineHeight,
       },
     }),
-    trimSpace: utils.responsiveStyle({
+    trimSpace: theme.utils.responsiveStyle({
       mobile,
       tablet,
     }),

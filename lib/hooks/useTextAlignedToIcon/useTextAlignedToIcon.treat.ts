@@ -7,13 +7,33 @@ export const size = {
     ) => {
       const type = theme.typography.text.standard[breakpoint];
       const lineHeight = type.rows * theme.grid;
-      const lineCrop = lineHeight - type.capHeight;
-      const padding = lineCrop / 2;
 
-      return {
-        paddingTop: padding,
-        paddingBottom: padding,
-      };
+      if ('capHeight' in type) {
+        const lineCrop = lineHeight - type.capHeight;
+        const padding = lineCrop / 2;
+
+        return {
+          paddingTop: padding,
+          paddingBottom: padding,
+        };
+      }
+
+      if ('fontSize' in type) {
+        const capHeightScale =
+          theme.typography.fontMetrics.capHeight /
+          theme.typography.fontMetrics.unitsPerEm;
+        const capHeight = type.fontSize * capHeightScale;
+        const lineCrop = lineHeight - capHeight;
+        const padding = (lineCrop - (lineCrop % theme.grid)) / 2;
+        const nudge = -0.55; // Emulate line height centring rounding upwards
+
+        return {
+          paddingTop: padding + nudge,
+          paddingBottom: padding - nudge,
+        };
+      }
+
+      throw new Error('Neither `capHeight` or `fontSize` are available.');
     };
 
     return theme.utils.responsiveStyle({

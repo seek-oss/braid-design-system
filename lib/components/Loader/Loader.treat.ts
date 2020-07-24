@@ -1,4 +1,5 @@
 import { style, styleMap } from 'sku/treat';
+import { Theme } from 'treat/theme';
 import mapValues from 'lodash/mapValues';
 
 const bounce = style({
@@ -54,19 +55,36 @@ export const delay = style({
   animationDelay: '0.8s',
 });
 
+const sizeFromTheme = (
+  definition: Theme['typography']['text']['standard']['mobile'],
+) => {
+  if ('capHeight' in definition) {
+    return definition.capHeight;
+  }
+
+  if ('fontSize' in definition) {
+    return definition.fontSize;
+  }
+
+  throw new Error('Neither `capHeight` or `fontSize` are available.');
+};
+
 export const size = styleMap(({ utils, typography }) =>
-  mapValues(typography.text, ({ mobile, tablet }) =>
-    utils.responsiveStyle({
+  mapValues(typography.text, ({ mobile, tablet }) => {
+    const mobileSize = sizeFromTheme(mobile);
+    const tabletSize = sizeFromTheme(tablet);
+
+    return utils.responsiveStyle({
       mobile: {
-        width: mobile.capHeight,
-        height: mobile.capHeight,
-        margin: `0 ${Math.round(mobile.capHeight * 0.15)}px`,
+        width: mobileSize,
+        height: mobileSize,
+        margin: `0 ${Math.round(mobileSize * 0.15)}px`,
       },
       tablet: {
-        width: tablet.capHeight,
-        height: tablet.capHeight,
-        margin: `0 ${Math.round(tablet.capHeight * 0.15)}px`,
+        width: tabletSize,
+        height: tabletSize,
+        margin: `0 ${Math.round(tabletSize * 0.15)}px`,
       },
-    }),
-  ),
+    });
+  }),
 );

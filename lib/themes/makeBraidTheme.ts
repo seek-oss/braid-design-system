@@ -12,12 +12,19 @@ type Breakpoint = typeof breakpoints[number];
 
 export type TextBreakpoint = Exclude<Breakpoint, 'desktop'>;
 
-type TextDefinition = Record<
+type CapHeightText = {
+  capHeight: number;
+  rows: number;
+};
+
+type FontSizeText = {
+  fontSize: number;
+  rows: number;
+};
+
+export type TextDefinition = Record<
   TextBreakpoint,
-  {
-    capHeight: number;
-    rows: number;
-  }
+  CapHeightText | FontSizeText
 >;
 type FontWeight = 'regular' | 'medium' | 'strong';
 

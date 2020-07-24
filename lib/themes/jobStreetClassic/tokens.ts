@@ -25,41 +25,41 @@ export default makeTokens({
       text: {
         xsmall: {
           mobile: {
-            capHeight: 8,
+            fontSize: 11,
             rows: 4,
           },
           tablet: {
-            capHeight: 8,
+            fontSize: 11,
             rows: 4,
           },
         },
         small: {
           mobile: {
-            capHeight: 9,
+            fontSize: 12,
             rows: 5,
           },
           tablet: {
-            capHeight: 9,
+            fontSize: 12,
             rows: 5,
           },
         },
         standard: {
           mobile: {
-            capHeight: 10,
+            fontSize: 14,
             rows: 5,
           },
           tablet: {
-            capHeight: 10,
+            fontSize: 14,
             rows: 5,
           },
         },
         large: {
           mobile: {
-            capHeight: 12,
+            fontSize: 16,
             rows: 6,
           },
           tablet: {
-            capHeight: 12,
+            fontSize: 16,
             rows: 6,
           },
         },
