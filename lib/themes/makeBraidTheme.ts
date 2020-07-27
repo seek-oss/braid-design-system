@@ -5,7 +5,7 @@ import mapValues from 'lodash/mapValues';
 import values from 'lodash/values';
 import { makeThemeUtils } from './themeUtils';
 import { getLightVariant, isLight } from '../utils';
-import { FontMetrics } from '../hooks/typography/capsize';
+import { FontMetrics } from 'capsize';
 
 export const breakpoints = ['mobile', 'tablet', 'desktop'] as const;
 type Breakpoint = typeof breakpoints[number];
