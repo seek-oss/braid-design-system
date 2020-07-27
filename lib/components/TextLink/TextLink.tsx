@@ -12,11 +12,20 @@ export interface TextLinkProps
   extends Omit<TextLinkRendererProps, 'children'>,
     Omit<LinkComponentProps, 'className' | 'style'> {}
 
-export const TextLink = ({ showVisited, hitArea, ...props }: TextLinkProps) => {
+export const TextLink = ({
+  weight,
+  showVisited,
+  hitArea,
+  ...props
+}: TextLinkProps) => {
   const LinkComponent = useLinkComponent();
 
   return (
-    <TextLinkRenderer showVisited={showVisited} hitArea={hitArea}>
+    <TextLinkRenderer
+      weight={weight}
+      showVisited={showVisited}
+      hitArea={hitArea}
+    >
       {(styleProps) => <LinkComponent {...props} {...styleProps} />}
     </TextLinkRenderer>
   );

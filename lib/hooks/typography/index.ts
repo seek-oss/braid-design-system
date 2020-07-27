@@ -117,7 +117,7 @@ export function useTextTone({
       : styles.tone[tone];
   }
 
-  if (textLinkContext && textLinkContext === 'link') {
+  if (textLinkContext && textLinkContext !== 'weak') {
     return styles.tone.link;
   }
 

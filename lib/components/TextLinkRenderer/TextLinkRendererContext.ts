@@ -1,3 +1,3 @@
 import { createContext } from 'react';
 
-export default createContext<null | 'link' | 'neutral'>(null);
+export default createContext<null | 'regular' | 'weak'>(null);
