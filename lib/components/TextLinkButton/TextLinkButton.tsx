@@ -28,6 +28,7 @@ export interface TextLinkButtonProps
 
 const noop = () => {};
 export const TextLinkButton = ({
+  weight,
   hitArea,
   id,
   onClick = noop,
@@ -50,7 +51,7 @@ export const TextLinkButton = ({
   );
 
   return (
-    <TextLinkRenderer hitArea={hitArea}>
+    <TextLinkRenderer weight={weight} hitArea={hitArea}>
       {(styleProps) => (
         <Box
           ref={buttonRef}

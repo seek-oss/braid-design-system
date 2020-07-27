@@ -49,6 +49,18 @@ const docs: ComponentDocs = {
       ),
     },
     {
+      label: 'Weak TextLinkButton inside Text',
+      showCodeByDefault: true,
+      Example: ({ handler }) => (
+        <Text>
+          The link in this sentence{' '}
+          <TextLinkButton weight="weak" onClick={handler}>
+            is actually a span with an ARIA role of button.
+          </TextLinkButton>
+        </Text>
+      ),
+    },
+    {
       label: 'TextLinkButton inside Actions',
       Example: ({ handler }) => (
         <Actions>
