@@ -8,12 +8,6 @@ Improved trimming of white space around text
 ## Breaking Changes
 Improved the mechanism used to trim the white space around text. This will have subtle white space changes throughout the UI, but will largely just be improvements on balance of space around text.
 
-In addition, some themes have migrated to a new mechanism for sizing text where the height of the capital letters is being defined rather than the total height of the line box. This fits better with our strategy of components not containing internal white space and defining their own height. The affected themes are:
-- APAC
-- seekBusiness
-- Docs
-- Wireframe
-
 As a result of adopting the new technique it is no longer feasible to maintain the `_LEGACY_SPACE_` fallback on `Heading` and `Text`.
 
 

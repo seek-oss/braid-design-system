@@ -41,41 +41,41 @@ const tokens: TreatTokens = {
       level: {
         '1': {
           mobile: {
-            capHeight: 17,
+            fontSize: 28,
             rows: 9,
           },
           tablet: {
-            capHeight: 25,
+            fontSize: 42,
             rows: 11,
           },
         },
         '2': {
           mobile: {
-            capHeight: 13,
+            fontSize: 21,
             rows: 8,
           },
           tablet: {
-            capHeight: 16,
+            fontSize: 28,
             rows: 9,
           },
         },
         '3': {
           mobile: {
-            capHeight: 13,
+            fontSize: 21,
             rows: 7,
           },
           tablet: {
-            capHeight: 13,
+            fontSize: 21,
             rows: 7,
           },
         },
         '4': {
           mobile: {
-            capHeight: 11,
+            fontSize: 18,
             rows: 7,
           },
           tablet: {
-            capHeight: 11,
+            fontSize: 18,
             rows: 7,
           },
         },
@@ -84,41 +84,41 @@ const tokens: TreatTokens = {
     text: {
       xsmall: {
         mobile: {
-          capHeight: 7,
+          fontSize: 12,
           rows: 5,
         },
         tablet: {
-          capHeight: 7,
+          fontSize: 12,
           rows: 5,
         },
       },
       small: {
         mobile: {
-          capHeight: 9,
+          fontSize: 14,
           rows: 5,
         },
         tablet: {
-          capHeight: 9,
+          fontSize: 14,
           rows: 5,
         },
       },
       standard: {
         mobile: {
-          capHeight: 10,
+          fontSize: 16,
           rows: 7,
         },
         tablet: {
-          capHeight: 10,
+          fontSize: 16,
           rows: 7,
         },
       },
       large: {
         mobile: {
-          capHeight: 11,
+          fontSize: 18,
           rows: 8,
         },
         tablet: {
-          capHeight: 11,
+          fontSize: 18,
           rows: 8,
         },
       },
