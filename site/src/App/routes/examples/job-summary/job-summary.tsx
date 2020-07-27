@@ -67,7 +67,7 @@ const page: Page = {
               </Column>
             </Columns>
 
-            <Stack space="xsmall">
+            <Stack space="small">
               <Text size="small" tone="secondary">
                 <IconLocation /> Melbourne
               </Text>
@@ -261,7 +261,7 @@ const page: Page = {
                 <Text tone="secondary">Braid Design Pty Ltd</Text>
               </Stack>
 
-              <Stack space="small">
+              <Stack space="xsmall">
                 <Text tone="secondary" size="small">
                   <IconLocation /> Melbourne
                 </Text>
@@ -303,7 +303,7 @@ const page: Page = {
                 <Text tone="secondary">Braid Design Pty Ltd</Text>
               </Stack>
 
-              <Stack space="small">
+              <Stack space="xsmall">
                 <Text tone="secondary" size="small">
                   <IconLocation /> Melbourne
                 </Text>
@@ -355,7 +355,7 @@ const page: Page = {
                 </Inline>
               </Stack>
 
-              <Stack space="small">
+              <Stack space="xsmall">
                 <Text tone="secondary" size="small">
                   <IconLocation /> Melbourne
                 </Text>
@@ -452,7 +452,7 @@ const page: Page = {
                     </Inline>
                   </Stack>
 
-                  <Stack space="small">
+                  <Stack space="xsmall">
                     <Text tone="secondary" size="small">
                       <IconLocation /> Melbourne
                     </Text>
@@ -490,8 +490,8 @@ const page: Page = {
                 responsively, to achieve the desired goal.
               </Text>
               <Text>
-                In this case, we might tighten up the metadata section by
-                reducing the space to &ldquo;xsmall&rdquo;.
+                In this case, we might loosen up the metadata section by
+                increasing the space to &ldquo;small&rdquo;.
               </Text>
             </Stack>
           }
@@ -514,7 +514,7 @@ const page: Page = {
                 </Column>
               </Columns>
 
-              <Stack space="xsmall">
+              <Stack space="small">
                 <Text size="small" tone="secondary">
                   <IconLocation /> Melbourne
                 </Text>
