@@ -6016,6 +6016,9 @@ Object {
         | "off"
         | "on"
     vocab?: string
+    weight?: 
+        | "regular"
+        | "weak"
 },
 }
 `;
@@ -6038,6 +6041,9 @@ Object {
         | "standard"
     id?: string
     onClick?: (event: MouseEvent<HTMLSpanElement, MouseEvent>) => void
+    weight?: 
+        | "regular"
+        | "weak"
 },
 }
 `;
@@ -6051,6 +6057,9 @@ Object {
         | "large"
         | "standard"
     showVisited?: boolean
+    weight?: 
+        | "regular"
+        | "weak"
 },
 }
 `;

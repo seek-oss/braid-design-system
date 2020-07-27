@@ -6,6 +6,7 @@ import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
 import { useText, UseTextProps, useTruncate } from '../../hooks/typography';
+import { DefaultTextToneContext } from '../private/DefaultTextToneContext';
 
 export interface TextProps extends Pick<BoxProps, 'component'> {
   id?: string;
@@ -23,7 +24,7 @@ export const Text = ({
   id,
   component = 'span',
   size,
-  tone,
+  tone: toneProp,
   align,
   weight,
   baseline = true,
@@ -36,6 +37,8 @@ export const Text = ({
     'Text components should not be nested within each other',
   );
 
+  const defaultTone = useContext(DefaultTextToneContext);
+  const tone = toneProp ?? defaultTone ?? undefined;
   const textStyles = useText({ weight, size, baseline, tone });
   const truncateStyles = useTruncate();
 

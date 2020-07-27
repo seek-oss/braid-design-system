@@ -24,7 +24,9 @@ interface StyleProps {
   className: string;
 }
 
+type TextLinkWeight = 'regular' | 'weak';
 export interface TextLinkRendererProps {
+  weight?: TextLinkWeight;
   showVisited?: boolean;
   hitArea?: 'standard' | 'large';
   children: (styleProps: StyleProps) => ReactElement;
@@ -52,42 +54,57 @@ export const TextLinkRenderer = (props: TextLinkRendererProps) => {
   return <InlineLink {...props} />;
 };
 
-function useTextLinkTone() {
+function useDefaultLinkWeight() {
   const backgroundContext = useBackground();
-  const highlightLink =
+  const inHeading = useContext(HeadingContext);
+  const textContext = useContext(TextContext);
+
+  const hasPlainBackground =
     backgroundContext === 'body' ||
     backgroundContext === 'card' ||
     backgroundContext === 'neutralLight';
-  return highlightLink ? 'link' : 'neutral';
+
+  const inNeutralText =
+    !textContext ||
+    textContext.tone === undefined ||
+    textContext.tone === 'neutral';
+
+  return hasPlainBackground && (inHeading || inNeutralText)
+    ? 'regular'
+    : 'weak';
 }
 
-function useLinkStyles(tone: 'link' | 'neutral', showVisited: boolean) {
+function useLinkStyles(weight: TextLinkWeight, showVisited: boolean) {
   const styles = useStyles(styleRefs);
   const inHeading = useContext(HeadingContext);
   const mediumWeight = useWeight('medium');
+  const linkTone = useTextTone({ tone: 'link' });
 
   return [
-    tone === 'link' ? styles.underlineOnHoverOnly : styles.underlineAlways,
-    useTextTone({ tone }),
-    !inHeading ? mediumWeight : null,
+    weight === 'weak'
+      ? styles.underlineAlways
+      : [linkTone, styles.underlineOnHoverOnly],
+    !inHeading && weight !== 'weak' ? mediumWeight : null,
     showVisited ? styles.visited : null,
   ];
 }
 
 function InlineLink({
+  weight: weightProp,
   showVisited = false,
   hitArea = 'standard',
   children,
 }: TextLinkRendererProps) {
   const virtualTouchableStyle = useVirtualTouchable();
-  const textLinkTone = useTextLinkTone();
+  const defaultWeight = useDefaultLinkWeight();
+  const weight = weightProp ?? defaultWeight;
 
   return (
-    <TextLinkRendererContext.Provider value={textLinkTone}>
+    <TextLinkRendererContext.Provider value={weight}>
       {children({
         style: {},
         className: classnames(
-          useLinkStyles(textLinkTone, showVisited),
+          useLinkStyles(weight, showVisited),
           useBoxStyles({
             component: 'a',
             cursor: 'pointer',
@@ -100,17 +117,21 @@ function InlineLink({
 }
 
 function ButtonLink({
+  weight,
   showVisited = false,
   hitArea,
   children,
 }: TextLinkRendererProps) {
   const styles = useStyles(styleRefs);
-  const textLinkTone = useTextLinkTone();
+  const textLinkWeight = useDefaultLinkWeight();
+  const tone = textLinkWeight === 'weak' ? 'neutral' : 'link';
   const buttonLinkTextProps = {
     size: 'standard',
-    tone: textLinkTone,
+    tone,
     baseline: false,
   } as const;
+
+  assert(!weight, 'TextLink components should not set "weight" within Actions');
 
   assert(
     !hitArea,
@@ -119,13 +140,13 @@ function ButtonLink({
 
   return (
     <Box position="relative">
-      <TextLinkRendererContext.Provider value={textLinkTone}>
+      <TextLinkRendererContext.Provider value={textLinkWeight}>
         <TextContext.Provider value={buttonLinkTextProps}>
           {children({
             style: {},
             className: classnames(
               styles.button,
-              useLinkStyles(textLinkTone, showVisited),
+              useLinkStyles(textLinkWeight, showVisited),
               useText(buttonLinkTextProps),
               useTouchableSpace(buttonLinkTextProps.size),
               useBoxStyles({

@@ -34,7 +34,10 @@ const docs: ComponentDocs = {
       Example: () => (
         <Notice tone="info">
           <Stack space="medium">
-            <Text>This is an important piece of information.</Text>
+            <Text>
+              This is an important piece of information with a{' '}
+              <TextLink href="#">TextLink.</TextLink>
+            </Text>
             <BulletList space="medium">
               <Bullet>Bullet 1</Bullet>
               <Bullet>Bullet 2</Bullet>

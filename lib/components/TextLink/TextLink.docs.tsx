@@ -16,7 +16,7 @@ import { background as boxBackgrounds } from '../Box/useBoxStyles.treat';
 const docs: ComponentDocs = {
   category: 'Content',
   migrationGuide: true,
-  screenshotWidths: [320, 768],
+  screenshotWidths: [320],
   description: (
     <Stack space="large">
       <Text>
@@ -38,111 +38,126 @@ const docs: ComponentDocs = {
   ),
   examples: [
     {
-      label: 'Text Link',
+      label: 'Regular TextLink',
       Example: () => (
         <Text>
           <TextLink href="#" hitArea="large">
-            Text link
+            TextLink
           </TextLink>
         </Text>
       ),
     },
     {
-      label: 'Text Link in a sentence',
+      label: 'Regular TextLink in a sentence',
       Example: () => (
         <Text>
-          The last word of a sentence is a{' '}
-          <TextLink href="#">text link.</TextLink>
+          This sentence contains a <TextLink href="#">TextLink.</TextLink>
         </Text>
       ),
     },
     {
-      label: 'Visited Text Link',
+      label: 'Weak TextLink in a sentence',
       Example: () => (
         <Text>
-          The last word of a sentence is a{' '}
+          This sentence contains a{' '}
+          <TextLink href="#" weight="weak">
+            weak TextLink
+          </TextLink>
+          .
+        </Text>
+      ),
+    },
+    {
+      label: 'TextLink in secondary text',
+      Example: () => (
+        <Text tone="secondary">
+          This sentence contains a <TextLink href="#">TextLink.</TextLink>
+        </Text>
+      ),
+    },
+    {
+      label: 'Visited TextLink',
+      Example: () => (
+        <Text>
+          This sentence contains a{' '}
           <TextLink href="" showVisited>
-            visited link.
+            visited TextLink.
           </TextLink>
         </Text>
       ),
     },
     {
-      label: 'Text Link inside Actions',
+      label: 'TextLink on dark background',
+      background: 'brand',
+      Example: () => (
+        <Text>
+          This sentence contains a <TextLink href="#">TextLink.</TextLink>
+        </Text>
+      ),
+    },
+    {
+      label: 'TextLink inside Actions',
       Example: () => (
         <Actions>
           <Button>Button</Button>
-          <TextLink href="#">Text Link</TextLink>
+          <TextLink href="#">TextLink</TextLink>
         </Actions>
       ),
     },
     {
-      label: 'Large Text Link',
+      label: 'TextLink inside large Text',
       Example: () => (
         <Text size="large">
-          The last word of a sentence is a{' '}
-          <TextLink href="#">text link.</TextLink>
+          This sentence contains a <TextLink href="#">TextLink.</TextLink>
         </Text>
       ),
     },
     {
-      label: 'Small Text Link',
-      Example: () => (
-        <Text size="small">
-          The last word of a sentence is a{' '}
-          <TextLink href="#">text link.</TextLink>
-        </Text>
-      ),
-    },
-    {
-      label: 'Xsmall Text Link',
-      Example: () => (
-        <Text size="xsmall">
-          The last word of a sentence is a{' '}
-          <TextLink href="#">text link.</TextLink>
-        </Text>
-      ),
-    },
-    {
-      label: 'Heading Level 1 Link',
-      Example: () => (
-        <Heading level="1">
-          The last word of this heading is a <TextLink href="#">link.</TextLink>
-        </Heading>
-      ),
-    },
-    {
-      label: 'Heading Level 2 Link',
-      Example: () => (
-        <Heading level="2">
-          The last word of this heading is a <TextLink href="#">link.</TextLink>
-        </Heading>
-      ),
-    },
-    {
-      label: 'Heading Level 3 Link',
+      label: 'TextLink inside Heading',
       Example: () => (
         <Heading level="3">
-          The last word of this heading is a <TextLink href="#">link.</TextLink>
+          This heading contains a <TextLink href="#">TextLink.</TextLink>
         </Heading>
       ),
     },
     {
-      label: 'Heading Level 4 Link',
+      label: 'TextLink inside weak Heading',
       Example: () => (
-        <Heading level="4">
-          The last word of this heading is a <TextLink href="#">link.</TextLink>
+        <Heading level="3" weight="weak">
+          This heading contains a <TextLink href="#">TextLink.</TextLink>
         </Heading>
       ),
     },
     {
-      label: 'Text Link with icon',
+      label: 'Weak TextLink inside Heading',
+      Example: () => (
+        <Heading level="3">
+          This heading contains a{' '}
+          <TextLink href="#" weight="weak">
+            weak TextLink.
+          </TextLink>
+        </Heading>
+      ),
+    },
+    {
+      label: 'Weak TextLink inside weak Heading',
+      Example: () => (
+        <Heading level="3" weight="weak">
+          This heading contains a{' '}
+          <TextLink href="#" weight="weak">
+            weak TextLink.
+          </TextLink>
+        </Heading>
+      ),
+    },
+    {
+      label: 'TextLink with icon',
       docsSite: false,
       Example: () => (
         <Text>
-          The last word of a sentence is a{' '}
+          This sentence contains a{' '}
           <TextLink href="#">
-            text link
+            TextLink
             <IconChevron direction="right" />
           </TextLink>
           .
@@ -150,13 +165,13 @@ const docs: ComponentDocs = {
       ),
     },
     {
-      label: 'Text Link inside Actions with icon',
+      label: 'TextLink inside Actions with icon',
       docsSite: false,
       Example: () => (
         <Actions>
           <Button>Button</Button>
           <TextLink href="#">
-            Text Link <IconChevron direction="right" />
+            TextLink <IconChevron direction="right" />
           </TextLink>
         </Actions>
       ),
@@ -173,12 +188,26 @@ const docs: ComponentDocs = {
           <Fragment>
             {backgrounds.sort().map((background, i) => (
               <Box key={i} background={background}>
-                <Text baseline={false}>
-                  {background}{' '}
-                  <TextLink href="#">
-                    with link <IconNewWindow />
-                  </TextLink>
-                </Text>
+                <Stack space="none">
+                  <Text baseline={false}>
+                    {background}{' '}
+                    <TextLink href="#">
+                      with default weight <IconNewWindow />
+                    </TextLink>
+                  </Text>
+                  <Text baseline={false}>
+                    {background}{' '}
+                    <TextLink href="#" weight="regular">
+                      with regular weight <IconNewWindow />
+                    </TextLink>
+                  </Text>
+                  <Text baseline={false}>
+                    {background}{' '}
+                    <TextLink href="#" weight="weak">
+                      with weak weight <IconNewWindow />
+                    </TextLink>
+                  </Text>
+                </Stack>
               </Box>
             ))}
           </Fragment>
