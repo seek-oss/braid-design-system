@@ -1,5 +1,24 @@
 # braid-design-system
 
+## 28.13.0
+
+### Minor Changes
+
+- **TextLink, TextLinkButton:** Add `weight` prop, add `weak` weight variant ([#697](https://github.com/seek-oss/braid-design-system/pull/697))
+
+  You can now render links that are underlined while inheriting the tone and weight of its surrounding text.
+
+  **EXAMPLE USAGE**
+
+  ```jsx
+  <Text>
+    This sentence contains a{' '}
+    <TextLink href="..." weight="weak">
+      weak TextLink.
+    </TextLink>
+  </Text>
+  ```
+
 ## 28.12.0
 
 ### Minor Changes
