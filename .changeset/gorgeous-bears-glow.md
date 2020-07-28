@@ -4,15 +4,13 @@
 
 Improved trimming of white space around text
 
+Migrated from our custom [Basekick](https://github.com/michaeltaranto/basekick) implementation to [🛶 Capsize](https://seek-oss.github.io/capsize/) to more accurately trim the white space around text. This will have subtle white space changes throughout the UI, but will largely just be improvements to the balance of space around text.
 
-## Breaking Changes
-Improved the mechanism used to trim the white space around text. This will have subtle white space changes throughout the UI, but will largely just be improvements on balance of space around text.
+**BREAKING CHANGES**
 
-As a result of adopting the new technique it is no longer feasible to maintain the `_LEGACY_SPACE_` fallback on `Heading` and `Text`.
+**Heading/Text: Removed _LEGACY_SPACE_**
 
-
-### Removed _LEGACY_SPACE_ from  `Heading` & `Text`
-The `_LEGACY_SPACE_` prop was provided to support consumers migrating to `v14` when the white space cropping and layout components were introduced. This has now been removed to allow us to further improve our techniques used.
+The `_LEGACY_SPACE_` prop was provided to support consumers migrating to [`v14`](https://github.com/seek-oss/braid-design-system/releases/tag/v14.0.0) when the white space cropping and layout components were originally introduced. This has now been removed to allow us to further improve on our approach.
 
 Migrating off this prop will require consumers to perform the following steps:
 - Remove the usage of `_LEGACY_SPACE_` on a component
@@ -21,8 +19,8 @@ Migrating off this prop will require consumers to perform the following steps:
 
 Any issues, please reach out to the team as we are happy to help support consumers in migrating.
 
-### Theme structure changes
-#### Text and Heading definitions
+**Theme Tokens: Text and Heading definitions**
+
 There have been strutural theme changes for `heading` and `text` definitions to support the defining of `capHeight` in the system. A definition will now have either `fontSize` or `capHeight`, eg:
 
 ```diff
@@ -42,7 +40,8 @@ There have been strutural theme changes for `heading` and `text` definitions to 
 This is likely to not affect consumers, unless using these values off the theme explicitly in custom treat files.
 
 
-#### Descender and Cap Height scales
+**Theme Tokens: Descender and Cap Height scales**
+
 Instead of the calculated values of `capHeightScale` and `decenderHeightScale`, a theme now accepts `fontMetrics`—a structure the represents the metadata from the font itself.
 
 ```diff
