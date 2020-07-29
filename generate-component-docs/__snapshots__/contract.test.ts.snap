@@ -1561,7 +1561,7 @@ Object {
         | ComponentClass<LinkComponentProps, any>
         | FunctionComponent<LinkComponentProps>
     styleBody?: boolean
-    theme: { name: string; displayName: string; background: string; webFonts: { linkTag: string; }[]; space: { grid: number; space: { gutter: number; xxsmall: number; xsmall: number; small: number; medium: number; large: number; xlarge: number; xxlarge: number; }; }; color: { ...; }; backgroundLightness: { ...; }; treatTheme: ...
+    theme: { name: string; displayName: string; background: string; webFonts: { linkTag: string; }[]; space: { grid: number; space: { gutter: number; xxsmall: number; xsmall: number; small: number; medium: number; large: number; xlarge: number; xxlarge: number; }; }; breakpoint: Record<...>; color: { ...; }; backgroundLightnes...
 },
 }
 `;
@@ -6173,6 +6173,18 @@ Object {
     on: boolean
     onChange: ChangeHandler
 },
+}
+`;
+
+exports[`useBreakpoint 1`] = `
+Object {
+  exportType: hook,
+  params: Array [],
+  returnType: 
+    | "desktop"
+    | "mobile"
+    | "tablet"
+    | "unknown",
 }
 `;
 
