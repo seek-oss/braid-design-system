@@ -59,16 +59,16 @@ export const BraidProvider = ({
         <LinkComponentContext.Provider
           value={linkComponent || linkComponentFromContext}
         >
-          <BreakpointProvider>
-            {styleBody ? (
-              <style type="text/css">{`body{margin:0;padding:0;background:${theme.background}}`}</style>
-            ) : null}
-            {alreadyInBraidProvider || inTestProvider ? (
-              children
-            ) : (
+          {styleBody ? (
+            <style type="text/css">{`body{margin:0;padding:0;background:${theme.background}}`}</style>
+          ) : null}
+          {alreadyInBraidProvider || inTestProvider ? (
+            children
+          ) : (
+            <BreakpointProvider>
               <HideFocusRingsRoot>{children}</HideFocusRingsRoot>
-            )}
-          </BreakpointProvider>
+            </BreakpointProvider>
+          )}
         </LinkComponentContext.Provider>
       </TreatProvider>
     </BraidThemeContext.Provider>
