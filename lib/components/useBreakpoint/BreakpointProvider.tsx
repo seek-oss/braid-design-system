@@ -3,7 +3,7 @@ import React, { useEffect, useState, createContext, ReactNode } from 'react';
 
 import { useBraidTheme } from '../BraidProvider/BraidProvider';
 
-type Breakpoint = 'mobile' | 'tablet' | 'desktop';
+export type Breakpoint = 'mobile' | 'tablet' | 'desktop';
 
 const minWidthQuery = (breakpoint: number) =>
   window.matchMedia(`(min-width: ${breakpoint}px)`);

@@ -1570,6 +1570,10 @@ exports[`BraidTestProvider 1`] = `
 Object {
   exportType: component,
   props: {
+    breakpoint?: 
+        | "desktop"
+        | "mobile"
+        | "tablet"
     children: ReactNode
     linkComponent?: 
         | ComponentClass<LinkComponentProps, any>
