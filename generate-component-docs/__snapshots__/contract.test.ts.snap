@@ -6184,7 +6184,7 @@ Object {
     | "desktop"
     | "mobile"
     | "tablet"
-    | "unknown",
+    | null,
 }
 `;
 
