@@ -1,4 +1,4 @@
-// Adapter version of https://github.com/streamich/react-use/blob/master/src/useMedia.ts
+// Adapted version of https://github.com/streamich/react-use/blob/master/src/useMedia.ts
 import { useEffect, useState } from 'react';
 
 import { useBraidTheme } from '../BraidProvider/BraidProvider';
