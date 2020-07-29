@@ -565,8 +565,8 @@ Object {
     defaultChecked?: boolean
     defaultValue?: 
         | number
+        | readonly string[]
         | string
-        | string[]
     defer?: boolean
     dir?: string
     disabled?: boolean
@@ -1072,8 +1072,8 @@ Object {
     userSelect?: "none"
     value?: 
         | number
+        | readonly string[]
         | string
-        | string[]
     vocab?: string
     width?: 
         | "full"
@@ -1836,8 +1836,8 @@ Object {
     defaultChecked?: boolean
     defaultValue?: 
         | number
+        | readonly string[]
         | string
-        | string[]
     dir?: string
     download?: any
     draggable?: 
@@ -2113,8 +2113,8 @@ Object {
         | "neutral"
     value?: 
         | number
+        | readonly string[]
         | string
-        | string[]
 },
 }
 `;
@@ -2258,8 +2258,8 @@ Object {
         | "positive"
     value: 
         | number
+        | readonly string[]
         | string
-        | string[]
 },
 }
 `;
@@ -4783,8 +4783,8 @@ Object {
     defaultChecked?: boolean
     defaultValue?: 
         | number
+        | readonly string[]
         | string
-        | string[]
     dir?: string
     download?: any
     draggable?: 
@@ -5160,8 +5160,8 @@ Object {
         | "positive"
     value: 
         | number
+        | readonly string[]
         | string
-        | string[]
     visibilityToggleLabel?: string
 },
 }
@@ -5187,8 +5187,8 @@ Object {
         | "neutral"
     value?: 
         | number
+        | readonly string[]
         | string
-        | string[]
 },
 }
 `;
@@ -5613,8 +5613,8 @@ Object {
         | "url"
     value: 
         | number
+        | readonly string[]
         | string
-        | string[]
 },
 }
 `;
@@ -5796,8 +5796,8 @@ Object {
     defaultChecked?: boolean
     defaultValue?: 
         | number
+        | readonly string[]
         | string
-        | string[]
     dir?: string
     download?: any
     draggable?: 
@@ -6107,8 +6107,8 @@ Object {
         | "positive"
     value: 
         | number
+        | readonly string[]
         | string
-        | string[]
 },
 }
 `;
