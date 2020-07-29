@@ -3,10 +3,12 @@ import { NormalisedPropType } from './generate';
 
 export const typeSerializer = {
   print: (
-    type: NormalisedPropType,
+    t: unknown,
     serializer: (value: any) => string,
     indent: (value: string) => string,
   ) => {
+    const type = t as NormalisedPropType;
+
     if (typeof type === 'string') {
       return type;
     } else if (type.type === 'union') {
