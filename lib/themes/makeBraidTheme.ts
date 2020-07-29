@@ -143,8 +143,57 @@ export interface TreatTokens {
   };
 }
 
+const calcCapHeight = (size: number, fontMetrics: FontMetrics) =>
+  size * (fontMetrics.capHeight / fontMetrics.unitsPerEm);
+
+const fontSizeToCapHeight = (
+  definition: TextDefinition,
+  fontMetrics: FontMetrics,
+) => {
+  const { mobile, tablet } = definition;
+
+  return {
+    mobile: {
+      capHeight:
+        'fontSize' in mobile
+          ? calcCapHeight(mobile.fontSize, fontMetrics)
+          : mobile.capHeight,
+      rows: mobile.rows,
+    },
+    tablet: {
+      capHeight:
+        'fontSize' in tablet
+          ? calcCapHeight(tablet.fontSize, fontMetrics)
+          : tablet.capHeight,
+      rows: tablet.rows,
+    },
+  };
+};
+
+const normaliseSizingToCapHeight = (typography: TreatTokens['typography']) => {
+  const { heading, text, fontMetrics } = typography;
+
+  return {
+    ...typography,
+    heading: {
+      ...heading,
+      level: {
+        ...mapValues(heading.level, (definition) =>
+          fontSizeToCapHeight(definition, fontMetrics),
+        ),
+      },
+    },
+    text: {
+      ...text,
+      ...mapValues(text, (definition) =>
+        fontSizeToCapHeight(definition, fontMetrics),
+      ),
+    },
+  };
+};
+
 const decorateTokens = (treatTokens: TreatTokens) => {
-  const { color, ...restTokens } = treatTokens;
+  const { color, typography, ...restTokens } = treatTokens;
 
   const getActiveColor = (x: string) =>
     isLight(x) ? darken(0.1, x) : darken(0.05, x);
@@ -169,6 +218,7 @@ const decorateTokens = (treatTokens: TreatTokens) => {
         neutralLight: getLightVariant(color.background.neutral),
       },
     },
+    typography: normaliseSizingToCapHeight(typography),
     ...restTokens,
   };
 

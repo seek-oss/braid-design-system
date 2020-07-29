@@ -1,6 +1,5 @@
 import { style, styleMap } from 'sku/treat';
 import mapValues from 'lodash/mapValues';
-import { TextDefinition, TextBreakpoint } from '../../themes/makeBraidTheme';
 
 const bounce = style({
   '@keyframes': {
@@ -55,30 +54,19 @@ export const delay = style({
   animationDelay: '0.8s',
 });
 
-const sizeFromTheme = (definition: TextDefinition[TextBreakpoint]) => {
-  if ('fontSize' in definition) {
-    return definition.fontSize;
-  }
-
-  return definition.capHeight;
-};
-
 export const size = styleMap(({ utils, typography }) =>
-  mapValues(typography.text, ({ mobile, tablet }) => {
-    const mobileSize = sizeFromTheme(mobile);
-    const tabletSize = sizeFromTheme(tablet);
-
-    return utils.responsiveStyle({
+  mapValues(typography.text, ({ mobile, tablet }) =>
+    utils.responsiveStyle({
       mobile: {
-        width: mobileSize,
-        height: mobileSize,
-        margin: `0 ${Math.round(mobileSize * 0.15)}px`,
+        width: mobile.capHeight,
+        height: mobile.capHeight,
+        margin: `0 ${Math.round(mobile.capHeight * 0.15)}px`,
       },
       tablet: {
-        width: tabletSize,
-        height: tabletSize,
-        margin: `0 ${Math.round(tabletSize * 0.15)}px`,
+        width: tablet.capHeight,
+        height: tablet.capHeight,
+        margin: `0 ${Math.round(tablet.capHeight * 0.15)}px`,
       },
-    });
-  }),
+    }),
+  ),
 );

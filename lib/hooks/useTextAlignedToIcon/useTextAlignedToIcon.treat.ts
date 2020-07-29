@@ -7,21 +7,6 @@ export const size = {
     ) => {
       const type = theme.typography.text.standard[breakpoint];
       const lineHeight = type.rows * theme.grid;
-
-      if ('fontSize' in type) {
-        const capHeightScale =
-          theme.typography.fontMetrics.capHeight /
-          theme.typography.fontMetrics.unitsPerEm;
-        const capHeight = type.fontSize * capHeightScale;
-        const lineCrop = lineHeight - capHeight;
-        const padding = (lineCrop - (lineCrop % theme.grid)) / 2;
-
-        return {
-          paddingTop: padding,
-          paddingBottom: padding,
-        };
-      }
-
       const lineCrop = lineHeight - type.capHeight;
       const padding = lineCrop / 2;
 

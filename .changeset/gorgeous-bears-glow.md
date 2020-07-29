@@ -21,7 +21,9 @@ Any issues, please reach out to the team as we are happy to help support consume
 
 **Theme Tokens: Text and Heading definitions**
 
-There have been strutural theme changes for `heading` and `text` definitions to support the defining of `capHeight` in the system. A definition will now have either `fontSize` or `capHeight`, eg:
+There have been strutural theme changes for `heading` and `text` definitions to support the defining of `capHeight` in the system. Previously a definition contained `size` that was the specified font size inclusive of surrounding white space.
+
+A definition now has `capHeight` which is representative of the visual height, supporting improved alignment with other elements like, icons etc.
 
 ```diff
 {
@@ -29,7 +31,7 @@ There have been strutural theme changes for `heading` and `text` definitions to 
     standard: {
       mobile: {
 -        size: 16,
-+        fontSize: 16, // or `capHeight` if using the new technique.
++        capHeight: 16,
         rows: 6
       }
     }
@@ -37,7 +39,7 @@ There have been strutural theme changes for `heading` and `text` definitions to 
 }
 ```
 
-This is likely to not affect consumers, unless using these values off the theme explicitly in custom treat files.
+This is not likely to affect consumers, unless using these theme values explicitly in custom treat files.
 
 
 **Theme Tokens: Descender and Cap Height scales**
