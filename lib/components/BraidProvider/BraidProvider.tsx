@@ -9,6 +9,7 @@ import { TreatProvider } from 'sku/react-treat';
 import { ensureResetImported } from '../../reset/resetTracker';
 import { HideFocusRingsRoot } from '../private/hideFocusRings/hideFocusRings';
 import { BraidTestProviderContext } from '../BraidTestProvider/BraidTestProviderContext';
+import { BreakpointProvider } from '../useBreakpoint/BreakpointProvider';
 import { BraidTheme } from '../../themes/BraidTheme.d';
 
 if (process.env.NODE_ENV === 'development') {
@@ -58,14 +59,16 @@ export const BraidProvider = ({
         <LinkComponentContext.Provider
           value={linkComponent || linkComponentFromContext}
         >
-          {styleBody ? (
-            <style type="text/css">{`body{margin:0;padding:0;background:${theme.background}}`}</style>
-          ) : null}
-          {alreadyInBraidProvider || inTestProvider ? (
-            children
-          ) : (
-            <HideFocusRingsRoot>{children}</HideFocusRingsRoot>
-          )}
+          <BreakpointProvider>
+            {styleBody ? (
+              <style type="text/css">{`body{margin:0;padding:0;background:${theme.background}}`}</style>
+            ) : null}
+            {alreadyInBraidProvider || inTestProvider ? (
+              children
+            ) : (
+              <HideFocusRingsRoot>{children}</HideFocusRingsRoot>
+            )}
+          </BreakpointProvider>
         </LinkComponentContext.Provider>
       </TreatProvider>
     </BraidThemeContext.Provider>
