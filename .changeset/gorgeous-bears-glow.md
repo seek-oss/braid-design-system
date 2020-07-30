@@ -31,7 +31,7 @@ A definition now has `capHeight` which is representative of the visual height, s
     standard: {
       mobile: {
 -        size: 16,
-+        capHeight: 16,
++        capHeight: 11.43,
         rows: 6
       }
     }
