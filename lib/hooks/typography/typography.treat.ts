@@ -20,10 +20,16 @@ type TypographicDefinition =
   | TextDefinition[keyof TextDefinition]
   | HeadingDefinition[keyof HeadingDefinition];
 
-const roundFontSize = (size: ReturnType<typeof capsize>['fontSize']) => {
+const roundMarginalFontSize = (
+  size: ReturnType<typeof capsize>['fontSize'],
+) => {
   const fontSize = parseFloat(size.replace('px', ''));
 
-  return `${fontSize % 1 > 0 ? Math.round(fontSize) : fontSize}px`;
+  return `${
+    fontSize % 1 <= 0.01 || fontSize % 1 >= 0.99
+      ? Math.round(fontSize)
+      : fontSize
+  }px`;
 };
 
 const makeTypographyRules = (
@@ -53,11 +59,11 @@ const makeTypographyRules = (
   return {
     base: theme.utils.responsiveStyle({
       mobile: {
-        fontSize: roundFontSize(mobileFontSize),
+        fontSize: roundMarginalFontSize(mobileFontSize),
         lineHeight: mobileLineHeight,
       },
       tablet: {
-        fontSize: roundFontSize(tabletFontSize),
+        fontSize: roundMarginalFontSize(tabletFontSize),
         lineHeight: tabletLineHeight,
       },
     }),
