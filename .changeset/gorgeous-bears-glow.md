@@ -44,7 +44,7 @@ This is not likely to affect consumers, unless using these theme values explicit
 
 **Theme Tokens: Descender and Cap Height scales**
 
-Instead of the calculated values of `capHeightScale` and `decenderHeightScale`, a theme now accepts `fontMetrics`—a structure the represents the metadata from the font itself.
+Instead of the calculated values of `capHeightScale` and `decenderHeightScale`, a theme now accepts `fontMetrics`—a structure that represents the metadata from the font itself.
 
 ```diff
 -const capHeight = 24 * theme.typography.capHeightScale;
@@ -55,4 +55,3 @@ Instead of the calculated values of `capHeightScale` and `decenderHeightScale`, 
 -const descender = 24 * theme.typography.decenderHeightScale;
 +const descender = 24 * (Math.abs(theme.typography.fontMetrics.descent) / theme.typography.fontMetrics.unitsPerEm);
 ```
-
