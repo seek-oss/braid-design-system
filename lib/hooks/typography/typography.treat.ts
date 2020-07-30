@@ -20,6 +20,12 @@ type TypographicDefinition =
   | TextDefinition[keyof TextDefinition]
   | HeadingDefinition[keyof HeadingDefinition];
 
+const roundFontSize = (size: ReturnType<typeof capsize>['fontSize']) => {
+  const fontSize = parseFloat(size.replace('px', '')).toFixed(2);
+
+  return `${fontSize.replace('.00', '')}px`;
+};
+
 const makeTypographyRules = (
   textDefinition: TypographicDefinition,
   theme: Theme,
@@ -47,11 +53,11 @@ const makeTypographyRules = (
   return {
     base: theme.utils.responsiveStyle({
       mobile: {
-        fontSize: mobileFontSize,
+        fontSize: roundFontSize(mobileFontSize),
         lineHeight: mobileLineHeight,
       },
       tablet: {
-        fontSize: tabletFontSize,
+        fontSize: roundFontSize(tabletFontSize),
         lineHeight: tabletLineHeight,
       },
     }),
