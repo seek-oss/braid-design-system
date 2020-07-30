@@ -39,7 +39,7 @@ A definition now has `capHeight` which is representative of the visual height, s
 }
 ```
 
-This is not likely to affect consumers, unless using these theme values explicitly in custom treat files.
+This is not likely to affect consumers, unless these theme values are used explicitly in custom treat files.
 
 
 **Theme Tokens: Descender and Cap Height scales**
