@@ -21,9 +21,9 @@ type TypographicDefinition =
   | HeadingDefinition[keyof HeadingDefinition];
 
 const roundFontSize = (size: ReturnType<typeof capsize>['fontSize']) => {
-  const fontSize = parseFloat(size.replace('px', '')).toFixed(2);
+  const fontSize = parseFloat(size.replace('px', ''));
 
-  return `${fontSize.replace('.00', '')}px`;
+  return `${fontSize % 1 > 0 ? Math.round(fontSize) : fontSize}px`;
 };
 
 const makeTypographyRules = (

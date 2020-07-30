@@ -5,7 +5,7 @@ import mapValues from 'lodash/mapValues';
 import values from 'lodash/values';
 import { makeThemeUtils } from './themeUtils';
 import { getLightVariant, isLight } from '../utils';
-import { FontMetrics } from 'capsize';
+import { FontMetrics, getCapHeight } from 'capsize';
 
 export const breakpoints = ['mobile', 'tablet', 'desktop'] as const;
 type Breakpoint = typeof breakpoints[number];
@@ -143,9 +143,6 @@ export interface TreatTokens {
   };
 }
 
-const calcCapHeight = (size: number, fontMetrics: FontMetrics) =>
-  size * (fontMetrics.capHeight / fontMetrics.unitsPerEm);
-
 const fontSizeToCapHeight = (
   definition: TextDefinition,
   fontMetrics: FontMetrics,
@@ -156,14 +153,14 @@ const fontSizeToCapHeight = (
     mobile: {
       capHeight:
         'fontSize' in mobile
-          ? calcCapHeight(mobile.fontSize, fontMetrics)
+          ? getCapHeight({ fontSize: mobile.fontSize, fontMetrics })
           : mobile.capHeight,
       rows: mobile.rows,
     },
     tablet: {
       capHeight:
         'fontSize' in tablet
-          ? calcCapHeight(tablet.fontSize, fontMetrics)
+          ? getCapHeight({ fontSize: tablet.fontSize, fontMetrics })
           : tablet.capHeight,
       rows: tablet.rows,
     },
