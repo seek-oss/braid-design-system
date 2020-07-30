@@ -46,6 +46,21 @@ const docs: ComponentDocs = {
         });
       `,
     },
+    {
+      label: 'Specifying a breakpoint',
+      code: `
+        import { BraidTestProvider } from 'braid-design-system';
+        import { render } from 'react-testing-library';
+
+        it('should do something', () => {
+          render(
+            <BraidTestProvider breakpoint="tablet">
+              ...
+            </BraidTestProvider>
+          );
+        });
+      `,
+    },
   ],
 };
 

@@ -251,6 +251,7 @@ const makeRuntimeTokens = (tokens: TreatTheme) => ({
     grid: tokens.grid,
     space: tokens.space,
   },
+  breakpoint: tokens.breakpoint,
   color: tokens.color,
   backgroundLightness: mapValues(
     tokens.color.background,
