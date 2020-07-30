@@ -4,7 +4,6 @@ import { Alert } from '../Alert/Alert';
 import { Strong } from '../Strong/Strong';
 import { Stack } from '../Stack/Stack';
 import { Text } from '../Text/Text';
-import { TextLink } from '../TextLink/TextLink';
 
 import { useBreakpoint } from './useBreakpoint';
 
@@ -20,11 +19,8 @@ const docs: ComponentDocs = {
       </Text>
       <Alert tone="caution">
         <Text>
-          Avoid use of this hook where possible.{' '}
-          <TextLink href="/guides/development-workflow#Need-responsive%20styles?">
-            Responsive properties
-          </TextLink>{' '}
-          and media queries are a better option in most cases.
+          Avoid use of this hook where possible. Responsive properties and media
+          queries are a better option in most cases.
         </Text>
       </Alert>
     </Stack>
