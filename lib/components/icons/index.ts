@@ -34,6 +34,7 @@ export { IconMinus } from './IconMinus/IconMinus';
 export { IconMoney } from './IconMoney/IconMoney';
 export { IconNewWindow } from './IconNewWindow/IconNewWindow';
 export { IconNote } from './IconNote/IconNote';
+export { IconNotification } from './IconNotification/IconNotification';
 export { IconOverflow } from './IconOverflow/IconOverflow';
 export { IconPeople } from './IconPeople/IconPeople';
 export { IconPersonAdd } from './IconPersonAdd/IconPersonAdd';
