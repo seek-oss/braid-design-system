@@ -28,7 +28,7 @@ jobs:
         run: yarn --frozen-lockfile
 
       - name: Create Release Pull Request or Publish to npm
-        uses: changesets/action@65b9570
+        uses: changesets/action@bfeb9e0
         with:
           publish: yarn release
         env:
