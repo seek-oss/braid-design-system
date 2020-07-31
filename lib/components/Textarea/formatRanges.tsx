@@ -22,7 +22,10 @@ export const formatRanges = (
         }
 
         // handle overlapping ranges
-        const adjustedRange = [];
+        const adjustedRange: Array<{
+          start: number;
+          end: number | undefined;
+        }> = [];
         if (resolvedEnd > lastEnd) {
           adjustedRange.push({
             // if overlapping, start from end of last range otherwise start from specified range
