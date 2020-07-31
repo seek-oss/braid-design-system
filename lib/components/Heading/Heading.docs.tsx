@@ -137,30 +137,6 @@ const docs: ComponentDocs = {
       ),
     },
     {
-      label: 'Heading Spacing (Legacy)',
-      docsSite: false,
-      background: 'card',
-      Example: () => {
-        const levels = Object.keys(headingLevels) as Array<
-          keyof typeof headingLevels
-        >;
-
-        return (
-          <Stack space="medium">
-            {levels.sort().map((level) => (
-              <Box key={level} background="neutralLight">
-                <Heading level={level} _LEGACY_SPACE_>
-                  Level {level} Heading (Line 1)
-                  <br />
-                  Level {level} Heading (Line 2)
-                </Heading>
-              </Box>
-            ))}
-          </Stack>
-        );
-      },
-    },
-    {
       label: 'Heading Contrast',
       docsSite: false,
       Container,

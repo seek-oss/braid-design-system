@@ -2301,7 +2301,6 @@ exports[`Heading 1`] = `
 Object {
   exportType: component,
   props: {
-    _LEGACY_SPACE_?: boolean
     align?: ResponsiveProp<
         | "center"
         | "left"
@@ -5376,7 +5375,6 @@ exports[`Text 1`] = `
 Object {
   exportType: component,
   props: {
-    _LEGACY_SPACE_?: boolean
     align?: ResponsiveProp<
         | "center"
         | "left"

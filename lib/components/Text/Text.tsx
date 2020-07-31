@@ -17,7 +17,6 @@ export interface TextProps extends Pick<BoxProps, 'component'> {
   baseline?: UseTextProps['baseline'];
   align?: BoxProps['textAlign'];
   truncate?: boolean;
-  _LEGACY_SPACE_?: boolean;
   data?: DataAttributeMap;
 }
 
@@ -30,7 +29,6 @@ export const Text = ({
   weight,
   baseline = true,
   truncate = false,
-  _LEGACY_SPACE_ = false,
   data,
   children,
 }: TextProps) => {
@@ -41,7 +39,7 @@ export const Text = ({
 
   const defaultTone = useContext(DefaultTextToneContext);
   const tone = toneProp ?? defaultTone ?? undefined;
-  const textStyles = useText({ weight, size, baseline, tone, _LEGACY_SPACE_ });
+  const textStyles = useText({ weight, size, baseline, tone });
   const truncateStyles = useTruncate();
 
   // Prevent re-renders when context values haven't changed

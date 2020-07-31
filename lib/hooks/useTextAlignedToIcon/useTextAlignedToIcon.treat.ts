@@ -6,15 +6,13 @@ export const size = {
       breakpoint: keyof typeof theme.typography.text.standard,
     ) => {
       const type = theme.typography.text.standard[breakpoint];
-      const capHeight = type.size * theme.typography.capHeightScale;
       const lineHeight = type.rows * theme.grid;
-      const lineCrop = lineHeight - capHeight;
-      const padding = (lineCrop - (lineCrop % theme.grid)) / 2;
-      const nudge = -0.55; // Emulate line height centring rounding upwards
+      const lineCrop = lineHeight - type.capHeight;
+      const padding = lineCrop / 2;
 
       return {
-        paddingTop: padding + nudge,
-        paddingBottom: padding - nudge,
+        paddingTop: padding,
+        paddingBottom: padding,
       };
     };
 

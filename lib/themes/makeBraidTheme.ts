@@ -5,18 +5,26 @@ import mapValues from 'lodash/mapValues';
 import values from 'lodash/values';
 import { makeThemeUtils } from './themeUtils';
 import { getLightVariant, isLight } from '../utils';
+import { FontMetrics, getCapHeight } from 'capsize';
 
 export const breakpoints = ['mobile', 'tablet', 'desktop'] as const;
 type Breakpoint = typeof breakpoints[number];
 
 export type TextBreakpoint = Exclude<Breakpoint, 'desktop'>;
 
-type TextDefinition = Record<
+type CapHeightText = {
+  capHeight: number;
+  rows: number;
+};
+
+type FontSizeText = {
+  fontSize: number;
+  rows: number;
+};
+
+export type TextDefinition = Record<
   TextBreakpoint,
-  {
-    size: number;
-    rows: number;
-  }
+  CapHeightText | FontSizeText
 >;
 type FontWeight = 'regular' | 'medium' | 'strong';
 
@@ -26,8 +34,7 @@ export interface TreatTokens {
   typography: {
     fontFamily: string;
     webFont: string | null;
-    descenderHeightScale: number;
-    capHeightScale: number;
+    fontMetrics: FontMetrics;
     fontWeight: Record<FontWeight, number>;
     heading: {
       weight: {
@@ -136,8 +143,54 @@ export interface TreatTokens {
   };
 }
 
+const fontSizeToCapHeight = (
+  definition: TextDefinition,
+  fontMetrics: FontMetrics,
+) => {
+  const { mobile, tablet } = definition;
+
+  return {
+    mobile: {
+      capHeight:
+        'fontSize' in mobile
+          ? getCapHeight({ fontSize: mobile.fontSize, fontMetrics })
+          : mobile.capHeight,
+      rows: mobile.rows,
+    },
+    tablet: {
+      capHeight:
+        'fontSize' in tablet
+          ? getCapHeight({ fontSize: tablet.fontSize, fontMetrics })
+          : tablet.capHeight,
+      rows: tablet.rows,
+    },
+  };
+};
+
+const normaliseSizingToCapHeight = (typography: TreatTokens['typography']) => {
+  const { heading, text, fontMetrics } = typography;
+
+  return {
+    ...typography,
+    heading: {
+      ...heading,
+      level: {
+        ...mapValues(heading.level, (definition) =>
+          fontSizeToCapHeight(definition, fontMetrics),
+        ),
+      },
+    },
+    text: {
+      ...text,
+      ...mapValues(text, (definition) =>
+        fontSizeToCapHeight(definition, fontMetrics),
+      ),
+    },
+  };
+};
+
 const decorateTokens = (treatTokens: TreatTokens) => {
-  const { color, ...restTokens } = treatTokens;
+  const { color, typography, ...restTokens } = treatTokens;
 
   const getActiveColor = (x: string) =>
     isLight(x) ? darken(0.1, x) : darken(0.05, x);
@@ -162,6 +215,7 @@ const decorateTokens = (treatTokens: TreatTokens) => {
         neutralLight: getLightVariant(color.background.neutral),
       },
     },
+    typography: normaliseSizingToCapHeight(typography),
     ...restTokens,
   };
 

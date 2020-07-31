@@ -23,8 +23,13 @@ const tokens: TreatTokens = {
     fontFamily:
       '-apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
     webFont: null,
-    descenderHeightScale: 0.13,
-    capHeightScale: 0.7,
+    fontMetrics: {
+      capHeight: 1443,
+      ascent: 1950,
+      descent: -494,
+      lineGap: 0,
+      unitsPerEm: 2048,
+    },
     fontWeight: {
       regular: 400,
       medium: 500,
@@ -38,41 +43,41 @@ const tokens: TreatTokens = {
       level: {
         '1': {
           mobile: {
-            size: 32,
+            fontSize: 32,
             rows: 10,
           },
           tablet: {
-            size: 52,
+            fontSize: 52,
             rows: 15,
           },
         },
         '2': {
           mobile: {
-            size: 28,
+            fontSize: 28,
             rows: 9,
           },
           tablet: {
-            size: 38,
+            fontSize: 38,
             rows: 13,
           },
         },
         '3': {
           mobile: {
-            size: 22,
+            fontSize: 22,
             rows: 8,
           },
           tablet: {
-            size: 22,
+            fontSize: 22,
             rows: 8,
           },
         },
         '4': {
           mobile: {
-            size: 18,
+            fontSize: 18,
             rows: 8,
           },
           tablet: {
-            size: 18,
+            fontSize: 18,
             rows: 8,
           },
         },
@@ -81,41 +86,41 @@ const tokens: TreatTokens = {
     text: {
       xsmall: {
         mobile: {
-          size: 14,
+          fontSize: 14,
           rows: 6,
         },
         tablet: {
-          size: 14,
+          fontSize: 14,
           rows: 6,
         },
       },
       small: {
         mobile: {
-          size: 16,
+          fontSize: 16,
           rows: 6,
         },
         tablet: {
-          size: 16,
+          fontSize: 16,
           rows: 6,
         },
       },
       standard: {
         mobile: {
-          size: 18,
+          fontSize: 18,
           rows: 8,
         },
         tablet: {
-          size: 18,
+          fontSize: 18,
           rows: 8,
         },
       },
       large: {
         mobile: {
-          size: 22,
+          fontSize: 22,
           rows: 9,
         },
         tablet: {
-          size: 22,
+          fontSize: 22,
           rows: 9,
         },
       },

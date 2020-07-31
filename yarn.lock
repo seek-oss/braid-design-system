@@ -3884,11 +3884,6 @@ base@^0.11.1:
     mixin-deep "^1.2.0"
     pascalcase "^0.1.1"
 
-basekick@^3.1.1:
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/basekick/-/basekick-3.1.1.tgz#bd46180b539b84c3e030d0ae93f31977272e09af"
-  integrity sha512-F6IBL9SDlf8rJLKnNcvi1/LqnzkDALVmjTT99/+ZKBsrZyLIZ+tEbuHsrMfjkqY7R6h55vjIF1yjHJvHhZAq3w==
-
 batch-processor@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/batch-processor/-/batch-processor-1.0.0.tgz#75c95c32b748e0850d10c2b168f6bdbe9891ace8"
@@ -4435,6 +4430,13 @@ caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000989, caniuse-lite@^1.0.30001093, can
   version "1.0.30001107"
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001107.tgz#809360df7a5b3458f627aa46b0f6ed6d5239da9a"
   integrity sha512-86rCH+G8onCmdN4VZzJet5uPELII59cUzDphko3thQFgAQG1RNa+sVLDoALIhRYmflo5iSIzWY3vu1XTWtNMQQ==
+
+capsize@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/capsize/-/capsize-1.1.0.tgz#d70f918b5ecadc2390b2a3b3b672ced639907ed6"
+  integrity sha512-tV0weOXxQ9hsbqewiWfGQBXsGzSN/i/w9IGuH+JVySzGOhscTAzeK3N9ZAM3Kf89bWgYot80Za5fSXKi6ZynvA==
+  dependencies:
+    round-to "^4.1.0"
 
 capture-exit@^2.0.0:
   version "2.0.0"
@@ -13423,6 +13425,11 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
   dependencies:
     hash-base "^3.0.0"
     inherits "^2.0.1"
+
+round-to@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/round-to/-/round-to-4.1.0.tgz#148d768d18b2f127f78e6648cb8b0a5943c416bf"
+  integrity sha512-H/4z+4QdWS82iMZ23+5St302Mv2jJws0hUvEogrD6gC8NN6Z5TalDtbg51owCrVy4V/4c8ePvwVLNtlhEfPo5g==
 
 rsvp@^4.8.4:
   version "4.8.5"

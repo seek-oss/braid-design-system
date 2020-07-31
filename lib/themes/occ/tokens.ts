@@ -23,8 +23,13 @@ const tokens: TreatTokens = {
   typography: {
     fontFamily: "'Open Sans', sans-serif",
     webFont: 'Open Sans',
-    descenderHeightScale: 0.11,
-    capHeightScale: 0.71,
+    fontMetrics: {
+      capHeight: 1462,
+      ascent: 2189,
+      descent: -600,
+      lineGap: 0,
+      unitsPerEm: 2048,
+    },
     fontWeight: {
       regular: 400,
       medium: 600, // Not implemented rolling up to strong for consistency.
@@ -38,41 +43,41 @@ const tokens: TreatTokens = {
       level: {
         '1': {
           mobile: {
-            size: 28,
+            fontSize: 28,
             rows: 8,
           },
           tablet: {
-            size: 57,
+            fontSize: 57,
             rows: 18,
           },
         },
         '2': {
           mobile: {
-            size: 28,
+            fontSize: 28,
             rows: 8,
           },
           tablet: {
-            size: 36,
+            fontSize: 36,
             rows: 12,
           },
         },
         '3': {
           mobile: {
-            size: 22,
+            fontSize: 22,
             rows: 8,
           },
           tablet: {
-            size: 22,
+            fontSize: 22,
             rows: 8,
           },
         },
         '4': {
           mobile: {
-            size: 16,
+            fontSize: 16,
             rows: 6,
           },
           tablet: {
-            size: 16,
+            fontSize: 16,
             rows: 6,
           },
         },
@@ -81,41 +86,41 @@ const tokens: TreatTokens = {
     text: {
       xsmall: {
         mobile: {
-          size: 10,
+          fontSize: 10,
           rows: 4,
         },
         tablet: {
-          size: 10,
+          fontSize: 10,
           rows: 4,
         },
       },
       small: {
         mobile: {
-          size: 12,
+          fontSize: 12,
           rows: 4,
         },
         tablet: {
-          size: 12,
+          fontSize: 12,
           rows: 4,
         },
       },
       standard: {
         mobile: {
-          size: 14,
+          fontSize: 14,
           rows: 6,
         },
         tablet: {
-          size: 14,
+          fontSize: 14,
           rows: 6,
         },
       },
       large: {
         mobile: {
-          size: 16,
+          fontSize: 16,
           rows: 6,
         },
         tablet: {
-          size: 16,
+          fontSize: 16,
           rows: 6,
         },
       },
