@@ -1,3 +1,4 @@
+import assert from 'assert';
 import React, {
   createContext,
   useContext,
@@ -52,6 +53,11 @@ export const BraidProvider = ({
   const alreadyInBraidProvider = Boolean(useContext(BraidThemeContext));
   const inTestProvider = useContext(BraidTestProviderContext);
   const linkComponentFromContext = useLinkComponent();
+
+  assert(
+    typeof window.matchMedia === 'function' || inTestProvider,
+    `Rendering 'BraidProvider' in jest is not suported as it expects a browser environment. Please switch to 'BraidTestProvider'. See the docs for more info https://seek-oss.github.io/braid-design-system/components/BraidTestProvider`,
+  );
 
   return (
     <BraidThemeContext.Provider value={theme}>
