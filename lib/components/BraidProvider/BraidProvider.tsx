@@ -56,7 +56,7 @@ export const BraidProvider = ({
 
   assert(
     typeof window.matchMedia === 'function' || inTestProvider,
-    `Rendering 'BraidProvider' in jest is not suported as it expects a browser environment. Please switch to 'BraidTestProvider'. See the docs for more info https://seek-oss.github.io/braid-design-system/components/BraidTestProvider`,
+    `Rendering 'BraidProvider' in Jest is not supported as it expects a browser environment. Please switch to 'BraidTestProvider'. See the docs for more info: https://seek-oss.github.io/braid-design-system/components/BraidTestProvider`,
   );
 
   return (
