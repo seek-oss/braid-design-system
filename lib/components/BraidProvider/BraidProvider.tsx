@@ -55,7 +55,9 @@ export const BraidProvider = ({
   const linkComponentFromContext = useLinkComponent();
 
   assert(
-    typeof window.matchMedia === 'function' || inTestProvider,
+    typeof navigator !== 'object' ||
+      navigator.userAgent.indexOf('jsdom') === -1 ||
+      inTestProvider,
     `Rendering 'BraidProvider' in Jest is not supported as it expects a browser environment. Please switch to 'BraidTestProvider'. See the docs for more info: https://seek-oss.github.io/braid-design-system/components/BraidTestProvider`,
   );
 
