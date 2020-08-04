@@ -1,19 +1,50 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import map from 'lodash/map';
 import { useStyles } from 'sku/react-treat';
 import guides from '../routes/guides';
 import foundations from '../routes/foundations';
 import examples from '../routes/examples';
-import { Text, TextLink, Box, Stack } from '../../../../lib/components';
+import {
+  Text,
+  TextLink,
+  Box,
+  Stack,
+  Inline,
+  Badge,
+} from '../../../../lib/components';
 import { ThemeToggle } from '../ThemeSetting';
 import {
   categorisedComponents,
   documentedComponents,
 } from '../navigationHelpers';
 import { useConfig } from '../ConfigContext';
+import { ComponentDocs } from '../../types';
 import * as styleRefs from './SubNavigation.treat';
 
+interface FloatProps {
+  children: ReactNode;
+}
+const Float = ({ children }: FloatProps) => (
+  <Box position="relative" height="full">
+    <Box
+      position="absolute"
+      style={{ top: '50%', transform: 'translateY(-50%)' }}
+    >
+      {children}
+    </Box>
+  </Box>
+);
+
+const toneForBadge = (badge: NonNullable<ComponentDocs['badge']>) => {
+  const toneMap = {
+    Deprecated: 'caution',
+  } as const;
+
+  return toneMap[badge];
+};
+
 interface SubNavigationItem {
+  badge?: ComponentDocs['badge'];
   name: string;
   path: string;
   onClick?: () => void;
@@ -37,12 +68,19 @@ const SubNavigationGroup = ({ title, items }: SubNavigationGroup) => {
         </Box>
 
         <Stack component="ul" space="medium">
-          {items.map(({ name, path, onClick }) => (
-            <Text key={name}>
-              <TextLink href={path} onClick={onClick} hitArea="large">
-                {name}
-              </TextLink>
-            </Text>
+          {items.map(({ name, badge, path, onClick }) => (
+            <Inline space="small" key={name}>
+              <Text>
+                <TextLink href={path} onClick={onClick} hitArea="large">
+                  {name}
+                </TextLink>
+              </Text>
+              {badge ? (
+                <Float>
+                  <Badge tone={toneForBadge(badge)}>{badge}</Badge>
+                </Float>
+              ) : null}
+            </Inline>
           ))}
         </Stack>
       </Stack>
@@ -105,8 +143,9 @@ export const SubNavigation = ({ onSelect }: SubNavigationProps) => {
         <SubNavigationGroup
           key={category}
           title={category}
-          items={categorisedComponents[category].map(({ name }) => ({
+          items={categorisedComponents[category].map(({ name, badge }) => ({
             name,
+            badge,
             path: `/components/${name}`,
             onClick: onSelect,
           }))}

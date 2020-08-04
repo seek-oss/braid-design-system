@@ -4,8 +4,7 @@ import {
   Heading,
   Text,
   Divider,
-  BulletList,
-  Bullet,
+  List,
   Box,
   Stack,
   Columns,
@@ -129,15 +128,15 @@ const page: Page = {
         options which can be used to create container elements with internal
         spacing.
       </Text>
-      <BulletList>
-        <Bullet>padding</Bullet>
-        <Bullet>paddingX</Bullet>
-        <Bullet>paddingY</Bullet>
-        <Bullet>paddingTop</Bullet>
-        <Bullet>paddingBottom</Bullet>
-        <Bullet>paddingLeft</Bullet>
-        <Bullet>paddingRight</Bullet>
-      </BulletList>
+      <List>
+        <Text>padding</Text>
+        <Text>paddingX</Text>
+        <Text>paddingY</Text>
+        <Text>paddingTop</Text>
+        <Text>paddingBottom</Text>
+        <Text>paddingLeft</Text>
+        <Text>paddingRight</Text>
+      </List>
       <Text>These options accept a value from our white space scale.</Text>
       <Text>
         For example, if you wanted to create a container element with small

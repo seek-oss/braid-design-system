@@ -7,8 +7,7 @@ import {
   Card,
   Stack,
   TextLink,
-  Bullet,
-  BulletList,
+  List,
   Button,
   Actions,
 } from '../../../../../../lib/components';
@@ -402,20 +401,20 @@ const page: Page = {
             design.
           </Text>
           <Text>You may want to consider:</Text>
-          <BulletList>
-            <Bullet>
+          <List>
+            <Text>
               Specifying different spacing responsively using{' '}
               <TextLink href="/foundations/layout#Stack">Stack</TextLink>,
-            </Bullet>
-            <Bullet>
+            </Text>
+            <Text>
               Add a <TextLink href="/components/Dropdown">Dropdown</TextLink>{' '}
               field labelled &ldquo;Work type&rdquo; with a list of options.
-            </Bullet>
-            <Bullet>
+            </Text>
+            <Text>
               Constrain the width of card on larger devices using{' '}
               <TextLink href="/foundations/layout#Columns">Columns</TextLink>.
-            </Bullet>
-          </BulletList>
+            </Text>
+          </List>
         </Stack>
       </TextStack>
     </TextStack>

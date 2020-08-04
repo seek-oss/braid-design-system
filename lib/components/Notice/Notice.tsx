@@ -4,7 +4,7 @@ import { Columns } from '../Columns/Columns';
 import { Column } from '../Column/Column';
 import { Box } from '../Box/Box';
 import { useTextAlignedToIcon } from '../../hooks/useTextAlignedToIcon/useTextAlignedToIcon';
-import { DefaultTextToneContext } from '../private/DefaultTextToneContext';
+import { DefaultTextPropsProvider } from '../private/defaultTextProps';
 
 type Tone = 'promote' | 'info' | 'positive' | 'critical';
 
@@ -31,9 +31,9 @@ export const Notice = ({ tone = 'info', children }: NoticeProps) => {
         </Column>
         <Column>
           <Box className={useTextAlignedToIcon('standard')}>
-            <DefaultTextToneContext.Provider value={tone}>
+            <DefaultTextPropsProvider tone={tone}>
               {children}
-            </DefaultTextToneContext.Provider>
+            </DefaultTextPropsProvider>
           </Box>
         </Column>
       </Columns>
