@@ -22,8 +22,13 @@ const tokens: TreatTokens = {
   typography: {
     fontFamily: "'Nunito Sans', sans-serif",
     webFont: 'Nunito Sans',
-    descenderHeightScale: 0.19,
-    capHeightScale: 0.66,
+    fontMetrics: {
+      capHeight: 705,
+      ascent: 1011,
+      descent: -353,
+      lineGap: 0,
+      unitsPerEm: 1000,
+    },
     fontWeight: {
       regular: 400,
       medium: 600,
@@ -37,41 +42,41 @@ const tokens: TreatTokens = {
       level: {
         '1': {
           mobile: {
-            size: 36,
+            fontSize: 36,
             rows: 12,
           },
           tablet: {
-            size: 36,
+            fontSize: 36,
             rows: 12,
           },
         },
         '2': {
           mobile: {
-            size: 28,
+            fontSize: 28,
             rows: 10,
           },
           tablet: {
-            size: 28,
+            fontSize: 28,
             rows: 10,
           },
         },
         '3': {
           mobile: {
-            size: 24,
+            fontSize: 24,
             rows: 9,
           },
           tablet: {
-            size: 24,
+            fontSize: 24,
             rows: 9,
           },
         },
         '4': {
           mobile: {
-            size: 20,
+            fontSize: 20,
             rows: 7,
           },
           tablet: {
-            size: 20,
+            fontSize: 20,
             rows: 7,
           },
         },
@@ -80,41 +85,41 @@ const tokens: TreatTokens = {
     text: {
       xsmall: {
         mobile: {
-          size: 12,
+          fontSize: 12,
           rows: 4,
         },
         tablet: {
-          size: 12,
+          fontSize: 12,
           rows: 4,
         },
       },
       small: {
         mobile: {
-          size: 14,
+          fontSize: 14,
           rows: 4,
         },
         tablet: {
-          size: 14,
+          fontSize: 14,
           rows: 4,
         },
       },
       standard: {
         mobile: {
-          size: 16,
+          fontSize: 16,
           rows: 6,
         },
         tablet: {
-          size: 16,
+          fontSize: 16,
           rows: 6,
         },
       },
       large: {
         mobile: {
-          size: 18,
+          fontSize: 18,
           rows: 6,
         },
         tablet: {
-          size: 18,
+          fontSize: 18,
           rows: 6,
         },
       },

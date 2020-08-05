@@ -50,8 +50,13 @@ export const makeTokens = ({
       fontFamily:
         'Muli, -apple-system, system-ui, "Segoe UI", Roboto, "Noto Sans", Ubuntu, "Droid Sans", "Helvetica Neue", Arial, sans-serif',
       webFont: 'Muli',
-      descenderHeightScale: 0.14,
-      capHeightScale: 0.6,
+      fontMetrics: {
+        capHeight: 712,
+        ascent: 1005,
+        descent: -250,
+        lineGap: 0,
+        unitsPerEm: 1000,
+      },
       fontWeight: {
         regular: 400,
         medium: 600,
@@ -65,41 +70,41 @@ export const makeTokens = ({
         level: {
           '1': {
             mobile: {
-              size: 28,
+              fontSize: 28,
               rows: 9,
             },
             tablet: {
-              size: 34,
+              fontSize: 34,
               rows: 11,
             },
           },
           '2': {
             mobile: {
-              size: 24,
+              fontSize: 24,
               rows: 8,
             },
             tablet: {
-              size: 28,
+              fontSize: 28,
               rows: 9,
             },
           },
           '3': {
             mobile: {
-              size: 20,
+              fontSize: 20,
               rows: 7,
             },
             tablet: {
-              size: 24,
+              fontSize: 24,
               rows: 8,
             },
           },
           '4': {
             mobile: {
-              size: 18,
+              fontSize: 18,
               rows: 6,
             },
             tablet: {
-              size: 18,
+              fontSize: 18,
               rows: 6,
             },
           },
@@ -108,41 +113,41 @@ export const makeTokens = ({
       text: {
         xsmall: {
           mobile: {
-            size: 12,
+            fontSize: 12,
             rows: 4,
           },
           tablet: {
-            size: 12,
+            fontSize: 12,
             rows: 4,
           },
         },
         small: {
           mobile: {
-            size: 14,
+            fontSize: 14,
             rows: 5,
           },
           tablet: {
-            size: 14,
+            fontSize: 14,
             rows: 5,
           },
         },
         standard: {
           mobile: {
-            size: 16,
+            fontSize: 16,
             rows: 6,
           },
           tablet: {
-            size: 16,
+            fontSize: 16,
             rows: 6,
           },
         },
         large: {
           mobile: {
-            size: 18,
+            fontSize: 18,
             rows: 6,
           },
           tablet: {
-            size: 18,
+            fontSize: 18,
             rows: 6,
           },
         },

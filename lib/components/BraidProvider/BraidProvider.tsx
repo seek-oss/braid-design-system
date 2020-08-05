@@ -1,3 +1,4 @@
+import assert from 'assert';
 import React, {
   createContext,
   useContext,
@@ -9,6 +10,7 @@ import { TreatProvider } from 'sku/react-treat';
 import { ensureResetImported } from '../../reset/resetTracker';
 import { HideFocusRingsRoot } from '../private/hideFocusRings/hideFocusRings';
 import { BraidTestProviderContext } from '../BraidTestProvider/BraidTestProviderContext';
+import { BreakpointProvider } from '../useBreakpoint/BreakpointProvider';
 import { BraidTheme } from '../../themes/BraidTheme.d';
 
 if (process.env.NODE_ENV === 'development') {
@@ -52,6 +54,13 @@ export const BraidProvider = ({
   const inTestProvider = useContext(BraidTestProviderContext);
   const linkComponentFromContext = useLinkComponent();
 
+  assert(
+    typeof navigator !== 'object' ||
+      navigator.userAgent.indexOf('jsdom') === -1 ||
+      inTestProvider,
+    `Rendering 'BraidProvider' in Jest is not supported as it expects a browser environment. Please switch to 'BraidTestProvider'. See the docs for more info: https://seek-oss.github.io/braid-design-system/components/BraidTestProvider`,
+  );
+
   return (
     <BraidThemeContext.Provider value={theme}>
       <TreatProvider theme={theme.treatTheme}>
@@ -64,7 +73,9 @@ export const BraidProvider = ({
           {alreadyInBraidProvider || inTestProvider ? (
             children
           ) : (
-            <HideFocusRingsRoot>{children}</HideFocusRingsRoot>
+            <BreakpointProvider>
+              <HideFocusRingsRoot>{children}</HideFocusRingsRoot>
+            </BreakpointProvider>
           )}
         </LinkComponentContext.Provider>
       </TreatProvider>

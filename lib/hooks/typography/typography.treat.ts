@@ -2,10 +2,9 @@ import mapValues from 'lodash/mapValues';
 import omit from 'lodash/omit';
 import { style, styleMap, ClassRef } from 'sku/treat';
 import { Theme } from 'treat/theme';
-import basekick from './basekick';
+import capsize from 'capsize';
 import { getAccessibleVariant, mapToStyleProperty } from '../../utils';
 import { BackgroundVariant } from './../../components/Box/BackgroundContext';
-import { TextBreakpoint } from '../../themes/makeBraidTheme';
 
 export const fontFamily = style(({ typography }) => ({
   fontFamily: typography.fontFamily,
@@ -15,56 +14,62 @@ export const fontWeight = styleMap(({ typography }) =>
   mapToStyleProperty(typography.fontWeight, 'fontWeight'),
 );
 
-interface TextDefinition {
-  rows: number;
-  size: number;
-}
+type TextDefinition = Theme['typography']['text'];
+type HeadingDefinition = Theme['typography']['heading']['level'];
+type TypographicDefinition =
+  | TextDefinition[keyof TextDefinition]
+  | HeadingDefinition[keyof HeadingDefinition];
 
-const alignTextToGrid = (
-  textDefinition: TextDefinition,
-  gridRowHeight: number,
-  descenderHeightScale: number,
-  capHeight: number,
-) =>
-  basekick({
-    baseFontSize: 1,
-    typeSizeModifier: textDefinition.size,
-    typeRowSpan: textDefinition.rows,
-    gridRowHeight,
-    descenderHeightScale,
-    capHeight,
-  });
+const roundMarginalFontSize = (
+  size: ReturnType<typeof capsize>['fontSize'],
+) => {
+  const fontSize = parseFloat(size.replace('px', ''));
+
+  return `${
+    fontSize % 1 <= 0.01 || fontSize % 1 >= 0.99
+      ? Math.round(fontSize)
+      : fontSize
+  }px`;
+};
 
 const makeTypographyRules = (
-  textDefinition: Record<TextBreakpoint, TextDefinition>,
-  { grid, typography, utils }: Theme,
+  textDefinition: TypographicDefinition,
+  theme: Theme,
 ) => {
-  const mobile = alignTextToGrid(
-    textDefinition.mobile,
-    grid,
-    typography.descenderHeightScale,
-    typography.capHeightScale,
-  );
+  const {
+    fontSize: mobileFontSize,
+    lineHeight: mobileLineHeight,
+    ...mobile
+  } = capsize({
+    fontMetrics: theme.typography.fontMetrics,
+    capHeight: textDefinition.mobile.capHeight,
+    leading: textDefinition.mobile.rows * theme.grid,
+  });
 
-  const tablet = alignTextToGrid(
-    textDefinition.tablet,
-    grid,
-    typography.descenderHeightScale,
-    typography.capHeightScale,
-  );
+  const {
+    fontSize: tabletFontSize,
+    lineHeight: tabletLineHeight,
+    ...tablet
+  } = capsize({
+    fontMetrics: theme.typography.fontMetrics,
+    capHeight: textDefinition.tablet.capHeight,
+    leading: textDefinition.tablet.rows * theme.grid,
+  });
 
   return {
-    base: utils.responsiveStyle({
-      mobile: mobile.base,
-      tablet: tablet.base,
+    base: theme.utils.responsiveStyle({
+      mobile: {
+        fontSize: roundMarginalFontSize(mobileFontSize),
+        lineHeight: mobileLineHeight,
+      },
+      tablet: {
+        fontSize: roundMarginalFontSize(tabletFontSize),
+        lineHeight: tabletLineHeight,
+      },
     }),
-    baseline: utils.responsiveStyle({
-      mobile: mobile.baseline,
-      tablet: tablet.baseline,
-    }),
-    cropFirstLine: utils.responsiveStyle({
-      mobile: mobile.cropFirstLine,
-      tablet: tablet.cropFirstLine,
+    leadingTrim: theme.utils.responsiveStyle({
+      mobile,
+      tablet,
     }),
   };
 };

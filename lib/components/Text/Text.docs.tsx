@@ -99,29 +99,6 @@ const docs: ComponentDocs = {
       },
     },
     {
-      label: 'Text Spacing (Legacy)',
-      docsSite: false,
-      background: 'card',
-      Container,
-      Example: () => {
-        const sizes = Object.keys(textSizes) as Array<keyof typeof textSizes>;
-
-        return (
-          <Stack space="medium">
-            {sizes.sort().map((size) => (
-              <Box key={size} background="neutralLight">
-                <Text size={size} _LEGACY_SPACE_>
-                  {titleCase(size)} Text (Line 1)
-                  <br />
-                  {titleCase(size)} Text (Line 2)
-                </Text>
-              </Box>
-            ))}
-          </Stack>
-        );
-      },
-    },
-    {
       label: 'Text Contrast',
       docsSite: false,
       Container,

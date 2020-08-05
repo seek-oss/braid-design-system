@@ -27,21 +27,8 @@ export interface HeadingProps {
   component?: BoxProps['component'];
   id?: string;
   truncate?: boolean;
-  _LEGACY_SPACE_?: boolean;
   data?: DataAttributeMap;
 }
-
-const resolvePaddingForLevel = (level: HeadingLevel) => {
-  if (level === '1') {
-    return 'small';
-  }
-
-  if (level === '4') {
-    return 'xxsmall';
-  }
-
-  return 'xsmall';
-};
 
 export const Heading = ({
   level,
@@ -51,7 +38,6 @@ export const Heading = ({
   align,
   id,
   truncate = false,
-  _LEGACY_SPACE_ = false,
   data,
 }: HeadingProps) => {
   const truncateStyles = useTruncate();
@@ -73,16 +59,8 @@ export const Heading = ({
       <Box
         id={id}
         component={component || resolveDefaultComponent[level]}
-        paddingBottom={
-          _LEGACY_SPACE_ ? resolvePaddingForLevel(level) : undefined
-        }
         textAlign={align}
-        className={useHeading({
-          weight,
-          level,
-          baseline: true,
-          _LEGACY_SPACE_,
-        })}
+        className={useHeading({ weight, level, baseline: true })}
         {...(data ? buildDataAttributes(data) : undefined)}
       >
         {content}

@@ -8,6 +8,7 @@ export { ThemeNameConsumer } from './ThemeNameConsumer/ThemeNameConsumer';
 export { useThemeName } from './useThemeName/useThemeName';
 export { useSpace } from './useSpace/useSpace';
 export { useColor } from './useColor/useColor';
+export { useBreakpoint } from './useBreakpoint/useBreakpoint';
 export { Accordion } from './Accordion/Accordion';
 export { AccordionItem } from './Accordion/AccordionItem';
 export { Actions } from './Actions/Actions';

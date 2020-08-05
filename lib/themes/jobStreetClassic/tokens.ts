@@ -15,46 +15,51 @@ export default makeTokens({
       fontFamily:
         '"Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif',
       webFont: null,
-      descenderHeightScale: 0.12,
-      capHeightScale: 0.6,
+      fontMetrics: {
+        capHeight: 714,
+        ascent: 952,
+        descent: -213,
+        lineGap: 28,
+        unitsPerEm: 1000,
+      },
       text: {
         xsmall: {
           mobile: {
-            size: 11,
+            fontSize: 11,
             rows: 4,
           },
           tablet: {
-            size: 11,
+            fontSize: 11,
             rows: 4,
           },
         },
         small: {
           mobile: {
-            size: 12,
+            fontSize: 12,
             rows: 5,
           },
           tablet: {
-            size: 12,
+            fontSize: 12,
             rows: 5,
           },
         },
         standard: {
           mobile: {
-            size: 14,
+            fontSize: 14,
             rows: 5,
           },
           tablet: {
-            size: 14,
+            fontSize: 14,
             rows: 5,
           },
         },
         large: {
           mobile: {
-            size: 16,
+            fontSize: 16,
             rows: 6,
           },
           tablet: {
-            size: 16,
+            fontSize: 16,
             rows: 6,
           },
         },

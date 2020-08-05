@@ -565,8 +565,8 @@ Object {
     defaultChecked?: boolean
     defaultValue?: 
         | number
+        | readonly string[]
         | string
-        | string[]
     defer?: boolean
     dir?: string
     disabled?: boolean
@@ -1072,8 +1072,8 @@ Object {
     userSelect?: "none"
     value?: 
         | number
+        | readonly string[]
         | string
-        | string[]
     vocab?: string
     width?: 
         | "full"
@@ -1561,7 +1561,7 @@ Object {
         | ComponentClass<LinkComponentProps, any>
         | FunctionComponent<LinkComponentProps>
     styleBody?: boolean
-    theme: { name: string; displayName: string; background: string; webFonts: { linkTag: string; }[]; space: { grid: number; space: { gutter: number; xxsmall: number; xsmall: number; small: number; medium: number; large: number; xlarge: number; xxlarge: number; }; }; color: { ...; }; backgroundLightness: { ...; }; treatTheme: ...
+    theme: { name: string; displayName: string; background: string; webFonts: { linkTag: string; }[]; space: { grid: number; space: { gutter: number; xxsmall: number; xsmall: number; small: number; medium: number; large: number; xlarge: number; xxlarge: number; }; }; breakpoint: Record<...>; color: { ...; }; backgroundLightnes...
 },
 }
 `;
@@ -1570,6 +1570,10 @@ exports[`BraidTestProvider 1`] = `
 Object {
   exportType: component,
   props: {
+    breakpoint?: 
+        | "desktop"
+        | "mobile"
+        | "tablet"
     children: ReactNode
     linkComponent?: 
         | ComponentClass<LinkComponentProps, any>
@@ -1832,8 +1836,8 @@ Object {
     defaultChecked?: boolean
     defaultValue?: 
         | number
+        | readonly string[]
         | string
-        | string[]
     dir?: string
     download?: any
     draggable?: 
@@ -2109,8 +2113,8 @@ Object {
         | "neutral"
     value?: 
         | number
+        | readonly string[]
         | string
-        | string[]
 },
 }
 `;
@@ -2254,8 +2258,8 @@ Object {
         | "positive"
     value: 
         | number
+        | readonly string[]
         | string
-        | string[]
 },
 }
 `;
@@ -2297,7 +2301,6 @@ exports[`Heading 1`] = `
 Object {
   exportType: component,
   props: {
-    _LEGACY_SPACE_?: boolean
     align?: ResponsiveProp<
         | "center"
         | "left"
@@ -3575,6 +3578,35 @@ Object {
 }
 `;
 
+exports[`IconNotification 1`] = `
+Object {
+  exportType: component,
+  props: {
+    alignY?: 
+        | "lowercase"
+        | "uppercase"
+    size?: 
+        | "fill"
+        | "large"
+        | "small"
+        | "standard"
+        | "xsmall"
+    title?: string
+    titleId?: string
+    tone?: 
+        | "caution"
+        | "critical"
+        | "formAccent"
+        | "info"
+        | "link"
+        | "neutral"
+        | "positive"
+        | "promote"
+        | "secondary"
+},
+}
+`;
+
 exports[`IconOverflow 1`] = `
 Object {
   exportType: component,
@@ -4779,8 +4811,8 @@ Object {
     defaultChecked?: boolean
     defaultValue?: 
         | number
+        | readonly string[]
         | string
-        | string[]
     dir?: string
     download?: any
     draggable?: 
@@ -5196,8 +5228,8 @@ Object {
         | "positive"
     value: 
         | number
+        | readonly string[]
         | string
-        | string[]
     visibilityToggleLabel?: string
 },
 }
@@ -5223,8 +5255,8 @@ Object {
         | "neutral"
     value?: 
         | number
+        | readonly string[]
         | string
-        | string[]
 },
 }
 `;
@@ -5383,7 +5415,6 @@ exports[`Text 1`] = `
 Object {
   exportType: component,
   props: {
-    _LEGACY_SPACE_?: boolean
     align?: ResponsiveProp<
         | "center"
         | "left"
@@ -5649,8 +5680,8 @@ Object {
         | "url"
     value: 
         | number
+        | readonly string[]
         | string
-        | string[]
 },
 }
 `;
@@ -5832,8 +5863,8 @@ Object {
     defaultChecked?: boolean
     defaultValue?: 
         | number
+        | readonly string[]
         | string
-        | string[]
     dir?: string
     download?: any
     draggable?: 
@@ -6143,8 +6174,8 @@ Object {
         | "positive"
     value: 
         | number
+        | readonly string[]
         | string
-        | string[]
 },
 }
 `;
@@ -6213,6 +6244,18 @@ Object {
     on: boolean
     onChange: ChangeHandler
 },
+}
+`;
+
+exports[`useBreakpoint 1`] = `
+Object {
+  exportType: hook,
+  params: Array [],
+  returnType: 
+    | "desktop"
+    | "mobile"
+    | "tablet"
+    | null,
 }
 `;
 
