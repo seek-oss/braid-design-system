@@ -1,14 +1,14 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import { Bullet, BulletList, TextLink } from '..';
+import { Bullet, BulletList, Text, TextLink } from '..';
 
 const docs: ComponentDocs = {
   category: 'Content',
   deprecationWarning: (
-    <Fragment>
+    <Text weight="medium">
       This component has been deprecated. Use{' '}
       <TextLink href="/components/List">List</TextLink> instead.
-    </Fragment>
+    </Text>
   ),
   migrationGuide: true,
   screenshotWidths: [320],

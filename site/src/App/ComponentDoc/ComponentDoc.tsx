@@ -64,9 +64,7 @@ export const ComponentDoc = ({
         {componentName}
       </Heading>
       {docs.deprecationWarning ? (
-        <Alert tone="caution">
-          <Text weight="medium">{docs.deprecationWarning}</Text>
-        </Alert>
+        <Alert tone="caution">{docs.deprecationWarning}</Alert>
       ) : null}
       {docs.description}
       <Divider />

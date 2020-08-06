@@ -81,7 +81,7 @@ export function useWeight(weight: keyof typeof styleRefs.fontWeight) {
 }
 
 export function useTextTone({
-  tone: toneProp = 'neutral',
+  tone: toneProp,
   backgroundContext: backgroundContextOverride,
 }: {
   tone: TextTone;
