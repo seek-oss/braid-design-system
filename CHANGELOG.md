@@ -1,5 +1,11 @@
 # braid-design-system
 
+## 29.0.1
+
+### Patch Changes
+
+- Throw meaningful error when using 'BraidProvider' in unit tests ([#707](https://github.com/seek-oss/braid-design-system/pull/707))
+
 ## 29.0.0
 
 ### Major Changes
