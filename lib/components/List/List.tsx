@@ -1,4 +1,4 @@
-import React, { Children, Fragment } from 'react';
+import React, { Children } from 'react';
 import { useStyles } from 'sku/react-treat';
 import { Text, TextProps } from '../Text/Text';
 import { Stack, StackProps } from '../Stack/Stack';
@@ -25,6 +25,28 @@ function numberToAlpha(inputNumber: number) {
   return s;
 }
 
+interface CharacterBulletProps {
+  length?: number;
+  children: string | number;
+}
+
+const CharacterBullet = ({ length = 1, children }: CharacterBulletProps) => {
+  const styles = useStyles(styleRefs);
+
+  return (
+    <Box
+      display="inlineBlock"
+      className={[
+        styles.minCharacterWidth[length - 1] ??
+          styles.minCharacterWidth[styles.minCharacterWidth.length - 1],
+        styles.trimGutter,
+      ]}
+    >
+      {children}.
+    </Box>
+  );
+};
+
 export interface ListProps {
   children: StackProps['children'];
   size?: TextProps['size'];
@@ -49,6 +71,8 @@ export const List = ({
   });
   const listItems = flattenChildren(children) as ReactNodeNoStrings[];
   const lineHeightContainerStyles = useLineHeightContainer(size);
+  const lastNumberLength =
+    type === 'number' ? (listItems.length + (start - 1)).toString().length : -1;
 
   return (
     <DefaultTextPropsProvider size={size} tone={tone}>
@@ -71,18 +95,17 @@ export const List = ({
                   {(() => {
                     if (type === 'number') {
                       return (
-                        <Fragment>
-                          {resolvedIndex + 1}.
-                          {listItems.length > 9 && resolvedIndex < 9
-                            ? '\u2007'
-                            : ''}
-                        </Fragment>
+                        <CharacterBullet length={lastNumberLength}>
+                          {resolvedIndex + 1}
+                        </CharacterBullet>
                       );
                     }
 
                     if (type === 'alpha') {
                       return (
-                        <Fragment>{numberToAlpha(resolvedIndex + 1)}.</Fragment>
+                        <CharacterBullet>
+                          {numberToAlpha(resolvedIndex + 1)}
+                        </CharacterBullet>
                       );
                     }
 
