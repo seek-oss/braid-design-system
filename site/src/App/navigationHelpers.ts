@@ -23,7 +23,7 @@ export const getComponentDocs = ({
   return componentDocsContext(normalizedComponentRoute).default;
 };
 
-export const documentedComponents = Object.keys(components)
+const documentedComponentNames = Object.keys(components)
   .filter((name) => {
     if (name.startsWith('Icon')) {
       return false;
@@ -33,14 +33,16 @@ export const documentedComponents = Object.keys(components)
   })
   .sort();
 
-export const categorisedComponents = groupBy(
-  documentedComponents.map((name) => {
-    const docs: ComponentDocs = getComponentDocs({
-      componentName: name,
-      isIcon: false,
-    });
+export const documentedComponents = documentedComponentNames.map((name) => {
+  const docs: ComponentDocs = getComponentDocs({
+    componentName: name,
+    isIcon: false,
+  });
 
-    return { name, ...docs };
-  }),
+  return { name, ...docs };
+});
+
+export const categorisedComponents = groupBy(
+  documentedComponents,
   (component) => component.category,
 );

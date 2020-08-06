@@ -1,44 +1,90 @@
-import React, { createContext, useMemo } from 'react';
+import React, { createContext, useContext, ReactNode } from 'react';
 import assert from 'assert';
-import { TextProps } from '../Text/Text';
-import { Stack, StackProps } from '../Stack/Stack';
+import dedent from 'dedent';
+import { List, ListProps } from '../List/List';
+import { Text } from '../Text/Text';
 
-const defaultSize = 'standard';
-const defaultSpace = 'medium';
-const defaultTone = 'neutral';
-interface BulletListContextValue {
-  size: NonNullable<BulletListProps['size']>;
-  tone: NonNullable<BulletListProps['tone']>;
-}
-export const BulletListContext = createContext<BulletListContextValue>({
-  size: defaultSize,
-  tone: defaultTone,
-});
+const BulletListContext = createContext(false);
 
 const validTones = ['neutral', 'secondary'] as const;
 
 export interface BulletListProps {
-  children: StackProps['children'];
-  size?: TextProps['size'];
-  space?: StackProps['space'];
+  space?: ListProps['space'];
+  size?: ListProps['size'];
   tone?: typeof validTones[number];
+  children: ListProps['children'];
 }
 
 export const BulletList = ({
+  space,
+  size,
+  tone,
   children,
-  size = defaultSize,
-  space = defaultSpace,
-  tone = defaultTone,
 }: BulletListProps) => {
-  assert(validTones.includes(tone), `Invalid tone: ${tone}`);
+  assert(!tone || validTones.includes(tone), `Invalid tone: ${tone}`);
 
-  const bulletListContextValue = useMemo(() => ({ size, tone }), [size, tone]);
+  if (process.env.NODE_ENV !== 'production') {
+    // eslint-disable-next-line no-console
+    console.warn(
+      dedent`
+      The "BulletList" and "Bullet" components have been deprecated and will be removed in a future version. Use "List" instead.
+      %c
+      - <BulletList>
+      -   <Bullet>...</Bullet>
+      -   <Bullet>...</Bullet>
+      -   <Bullet>...</Bullet>
+      - </BulletList>
+      %c
+      + <List>
+      +   <Text>...</Text>
+      +   <Text>...</Text>
+      +   <Text>...</Text>
+      + </List>
+    `,
+      'color: red',
+      'color: green',
+    );
+  }
 
   return (
-    <BulletListContext.Provider value={bulletListContextValue}>
-      <Stack component="ul" space={space}>
+    <BulletListContext.Provider value={true}>
+      <List space={space} size={size} tone={tone}>
         {children}
-      </Stack>
+      </List>
     </BulletListContext.Provider>
   );
+};
+
+export interface BulletProps {
+  children: ReactNode;
+}
+
+export const Bullet = ({ children }: BulletProps) => {
+  if (process.env.NODE_ENV !== 'production') {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    if (!useContext(BulletListContext)) {
+      // eslint-disable-next-line no-console
+      console.warn(
+        dedent`
+        The "BulletList" and "Bullet" components have been deprecated and will be removed in a future version. Use "List" instead.
+        %c
+        - <BulletList>
+        -   <Bullet>...</Bullet>
+        -   <Bullet>...</Bullet>
+        -   <Bullet>...</Bullet>
+        - </BulletList>
+        %c
+        + <List>
+        +   <Text>...</Text>
+        +   <Text>...</Text>
+        +   <Text>...</Text>
+        + </List>
+      `,
+        'color: red',
+        'color: green',
+      );
+    }
+  }
+
+  return <Text>{children}</Text>;
 };

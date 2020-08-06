@@ -5043,6 +5043,46 @@ exports[`LinkComponent 1`] = `
 }
 `;
 
+exports[`List 1`] = `
+Object {
+  exportType: component,
+  props: {
+    children: ReactNodeNoStrings
+    size?: 
+        | "large"
+        | "small"
+        | "standard"
+        | "xsmall"
+    space?: ResponsiveProp<
+        | "gutter"
+        | "large"
+        | "medium"
+        | "none"
+        | "small"
+        | "xlarge"
+        | "xsmall"
+        | "xxlarge"
+        | "xxsmall"
+    >
+    start?: number
+    tone?: 
+        | "caution"
+        | "critical"
+        | "formAccent"
+        | "info"
+        | "link"
+        | "neutral"
+        | "positive"
+        | "promote"
+        | "secondary"
+    type?: 
+        | "alpha"
+        | "bullet"
+        | "number"
+},
+}
+`;
+
 exports[`Loader 1`] = `
 Object {
   exportType: component,

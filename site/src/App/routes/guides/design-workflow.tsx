@@ -4,8 +4,7 @@ import {
   Text,
   TextLink,
   Divider,
-  BulletList,
-  Bullet,
+  List,
 } from '../../../../../lib/components';
 import { TextStack } from '../../TextStack/TextStack';
 import { useConfig } from '../../ConfigContext';
@@ -65,15 +64,15 @@ const DesignWorkflow = () => {
         Braid also provides many features that are simply not supported by
         traditional design tools, including:
       </Text>
-      <BulletList>
-        <Bullet>Cross-brand theming.</Bullet>
-        <Bullet>Spacing and layout components.</Bullet>
-        <Bullet>Responsive design.</Bullet>
-        <Bullet>Context-based colour switching.</Bullet>
-        <Bullet>Dynamic content.</Bullet>
-        <Bullet>Accessibility.</Bullet>
-        <Bullet>Standardised interactions.</Bullet>
-      </BulletList>
+      <List>
+        <Text>Cross-brand theming.</Text>
+        <Text>Spacing and layout components.</Text>
+        <Text>Responsive design.</Text>
+        <Text>Context-based colour switching.</Text>
+        <Text>Dynamic content.</Text>
+        <Text>Accessibility.</Text>
+        <Text>Standardised interactions.</Text>
+      </List>
 
       <Heading level="3">How do I leverage Braid in my design process?</Heading>
       <Text>

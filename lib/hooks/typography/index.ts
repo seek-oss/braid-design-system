@@ -6,7 +6,7 @@ import {
   useBackgroundLightness,
 } from '../../components/Box/BackgroundContext';
 import { BoxProps } from '../../components/Box/Box';
-import { DefaultTextToneContext } from '../../components/private/DefaultTextToneContext';
+import { useDefaultTextProps } from '../../components/private/defaultTextProps';
 import TextLinkRendererContext from '../../components/TextLinkRenderer/TextLinkRendererContext';
 import * as styleRefs from './typography.treat';
 
@@ -81,7 +81,7 @@ export function useWeight(weight: keyof typeof styleRefs.fontWeight) {
 }
 
 export function useTextTone({
-  tone = 'neutral',
+  tone: toneProp,
   backgroundContext: backgroundContextOverride,
 }: {
   tone: TextTone;
@@ -92,7 +92,7 @@ export function useTextTone({
   const backgroundContext = useBackground();
   const background = backgroundContextOverride || backgroundContext;
   const backgroundLightness = useBackgroundLightness(background);
-  const defaultTextToneContext = useContext(DefaultTextToneContext);
+  const { tone } = useDefaultTextProps({ tone: toneProp });
 
   const toneOverrides = styles.toneOverridesForBackground[background!];
   if (toneOverrides) {
@@ -113,10 +113,6 @@ export function useTextTone({
 
   if (textLinkContext && textLinkContext !== 'weak') {
     return styles.tone.link;
-  }
-
-  if (defaultTextToneContext) {
-    return styles.tone[defaultTextToneContext];
   }
 
   return styles.invertableTone.neutral[backgroundLightness];
