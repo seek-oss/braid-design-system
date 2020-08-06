@@ -13,6 +13,7 @@ import {
   TabPanel,
   TabPanels,
   Divider,
+  Alert,
 } from '../../../../lib/components';
 
 import { ComponentDocs } from '../../types';
@@ -62,6 +63,9 @@ export const ComponentDoc = ({
       <Heading level="2" component="h3">
         {componentName}
       </Heading>
+      {docs.deprecationWarning ? (
+        <Alert tone="caution">{docs.deprecationWarning}</Alert>
+      ) : null}
       {docs.description}
       <Divider />
       <Stack space="xlarge" dividers>

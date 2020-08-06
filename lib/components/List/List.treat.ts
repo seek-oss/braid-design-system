@@ -13,3 +13,12 @@ export const size = {
   small: standard,
   xsmall,
 };
+
+const dotWidth = 0.4;
+export const minCharacterWidth = [
+  style({ minWidth: `${1 + dotWidth}ch` }),
+  style({ minWidth: `${2 + dotWidth}ch` }),
+];
+export const trimGutter = style({
+  marginRight: `${-dotWidth}ch`,
+});

@@ -5,6 +5,7 @@ import { Text } from '../Text/Text';
 
 const docs: ComponentDocs = {
   category: 'Layout',
+  added: new Date('21 May 2020'),
   description: (
     <Text>
       Provides content to assistive technologies while hiding it from the

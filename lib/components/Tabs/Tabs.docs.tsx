@@ -11,8 +11,7 @@ import {
   TabsProvider,
   Badge,
   Strong,
-  BulletList,
-  Bullet,
+  List,
   Card,
   Box,
 } from '..';
@@ -25,6 +24,7 @@ import { useBraidTheme } from '../BraidProvider/BraidProvider';
 
 const docs: ComponentDocs = {
   category: 'Content',
+  added: new Date('1 July 2020'),
   screenshotWidths: [320, 1200],
   subComponents: ['TabsProvider', 'Tab', 'TabPanels', 'TabPanel'],
   description: (
@@ -42,16 +42,16 @@ const docs: ComponentDocs = {
       <Text>
         Somewhere within <Strong>TabsProvider</Strong> you must:
       </Text>
-      <BulletList>
-        <Bullet>
+      <List>
+        <Text>
           Provide a <Strong>Tabs</Strong> component containing multiple{' '}
           <Strong>Tab</Strong> components.
-        </Bullet>
-        <Bullet>
+        </Text>
+        <Text>
           Provide a <Strong>TabsPanels</Strong> component containing multiple{' '}
           <Strong>TabPanel</Strong> components.
-        </Bullet>
-      </BulletList>
+        </Text>
+      </List>
       <Text>
         The <Strong>Tabs</Strong> and <Strong>TabPanels</Strong> components can
         be positioned wherever you like, e.g. the tab panels can be nested

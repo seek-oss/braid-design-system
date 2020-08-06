@@ -7,8 +7,7 @@ import {
   Divider,
   Text,
   TextLink,
-  BulletList,
-  Bullet,
+  List,
   Strong,
 } from '../../../../../lib/components';
 import Code from '../../Code/Code';
@@ -105,24 +104,24 @@ const page: Page = {
         We feel this approach to unit testing is more appropriate to Braid
         consumers for a few reasons:
       </Text>
-      <BulletList>
-        <Bullet>
+      <List>
+        <Text>
           Your tests will execute Braid code rather than mocking or hiding it
           behind shallow rendering. This is important if you want to catch
           issues with the integration between your codebase and Braid.
-        </Bullet>
-        <Bullet>
+        </Text>
+        <Text>
           It more clearly catches issues with Braid itself. Don&rsquo;t forget
           that we make mistakes too. If we break something, your tests should
           break too.
-        </Bullet>
-        <Bullet>
+        </Text>
+        <Text>
           As we iterate on Braid&rsquo;s internals, you won&rsquo;t have
           snapshot tests that constantly break because of implementation
           details. Ideally, your test should only break if something is actually
           broken.
-        </Bullet>
-      </BulletList>
+        </Text>
+      </List>
 
       <Heading level="3">
         How do I query for elements rendered by Braid?
@@ -157,19 +156,19 @@ const page: Page = {
         For more information on this style of unit testing, check out the
         following resources:
       </Text>
-      <BulletList>
-        <Bullet>
+      <List>
+        <Text>
           <TextLink href="https://testing-library.com/docs/react-testing-library/intro">
             React Testing Library documentation
           </TextLink>
-        </Bullet>
-        <Bullet>
+        </Text>
+        <Text>
           <TextLink href="https://kentcdodds.com/blog/testing-implementation-details">
             Testing Implementation Details
           </TextLink>{' '}
           by Kent C. Dodds.
-        </Bullet>
-      </BulletList>
+        </Text>
+      </List>
 
       <Heading level="3">What about component snapshot testing?</Heading>
 
@@ -224,31 +223,31 @@ const page: Page = {
         to consider:
       </Text>
 
-      <BulletList>
-        <Bullet>
+      <List>
+        <Text>
           <TextLink href="https://www.cypress.io/">Cypress</TextLink>
-        </Bullet>
-        <Bullet>
+        </Text>
+        <Text>
           <TextLink href="https://testing-library.com/docs/cypress-testing-library/intro">
             Cypress Testing Library
           </TextLink>
-        </Bullet>
-        <Bullet>
+        </Text>
+        <Text>
           <TextLink href="https://github.com/puppeteer/puppeteer">
             Puppeteer
           </TextLink>
-        </Bullet>
-        <Bullet>
+        </Text>
+        <Text>
           <TextLink href="https://github.com/smooth-code/jest-puppeteer">
             jest-puppeteer
           </TextLink>
-        </Bullet>
-        <Bullet>
+        </Text>
+        <Text>
           <TextLink href="https://testing-library.com/docs/pptr-testing-library/intro">
             Puppeteer Testing Library
           </TextLink>
-        </Bullet>
-      </BulletList>
+        </Text>
+      </List>
     </TextStack>
   ),
 };

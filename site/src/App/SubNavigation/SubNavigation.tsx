@@ -4,7 +4,14 @@ import { useStyles } from 'sku/react-treat';
 import guides from '../routes/guides';
 import foundations from '../routes/foundations';
 import examples from '../routes/examples';
-import { Text, TextLink, Box, Stack } from '../../../../lib/components';
+import {
+  Text,
+  TextLink,
+  Box,
+  Stack,
+  Inline,
+  Badge,
+} from '../../../../lib/components';
 import { ThemeToggle } from '../ThemeSetting';
 import {
   categorisedComponents,
@@ -12,8 +19,35 @@ import {
 } from '../navigationHelpers';
 import { useConfig } from '../ConfigContext';
 import * as styleRefs from './SubNavigation.treat';
+import { ComponentDocs } from '../../types';
+
+type BadgeLabel = 'New' | 'Deprecated';
+
+const getBadge = (
+  docs: ComponentDocs,
+  renderDate: number,
+): BadgeLabel | undefined => {
+  if (docs.deprecationWarning) {
+    return 'Deprecated';
+  }
+
+  const month = 1000 * 60 * 60 * 24 * 31;
+  if (docs.added && renderDate - docs.added.getTime() < month * 2) {
+    return 'New';
+  }
+};
+
+const toneForBadge = (badgeLabel: BadgeLabel) => {
+  const toneMap = {
+    Deprecated: 'caution',
+    New: 'positive',
+  } as const;
+
+  return toneMap[badgeLabel];
+};
 
 interface SubNavigationItem {
+  badge?: BadgeLabel;
   name: string;
   path: string;
   onClick?: () => void;
@@ -37,12 +71,21 @@ const SubNavigationGroup = ({ title, items }: SubNavigationGroup) => {
         </Box>
 
         <Stack component="ul" space="medium">
-          {items.map(({ name, path, onClick }) => (
-            <Text key={name}>
-              <TextLink href={path} onClick={onClick} hitArea="large">
-                {name}
-              </TextLink>
-            </Text>
+          {items.map(({ name, badge, path, onClick }) => (
+            <Inline space="xsmall" key={name}>
+              <Text>
+                <TextLink href={path} onClick={onClick} hitArea="large">
+                  {name}
+                </TextLink>
+              </Text>
+              {badge ? (
+                <Box position="relative" height="full">
+                  <Box position="absolute" className={styles.badge}>
+                    <Badge tone={toneForBadge(badge)}>{badge}</Badge>
+                  </Box>
+                </Box>
+              ) : null}
+            </Inline>
           ))}
         </Stack>
       </Stack>
@@ -54,7 +97,7 @@ interface SubNavigationProps {
   onSelect?: () => void;
 }
 export const SubNavigation = ({ onSelect }: SubNavigationProps) => {
-  const { playroomUrl } = useConfig();
+  const { playroomUrl, renderDate } = useConfig();
 
   return (
     <Stack space="xlarge">
@@ -105,9 +148,10 @@ export const SubNavigation = ({ onSelect }: SubNavigationProps) => {
         <SubNavigationGroup
           key={category}
           title={category}
-          items={categorisedComponents[category].map(({ name }) => ({
-            name,
-            path: `/components/${name}`,
+          items={categorisedComponents[category].map((docs) => ({
+            name: docs.name,
+            badge: getBadge(docs, renderDate),
+            path: `/components/${docs.name}`,
             onClick: onSelect,
           }))}
         />
@@ -115,9 +159,10 @@ export const SubNavigation = ({ onSelect }: SubNavigationProps) => {
 
       <SubNavigationGroup
         title="All Components"
-        items={documentedComponents.map((componentName) => ({
-          name: componentName,
-          path: `/components/${componentName}`,
+        items={documentedComponents.map((docs) => ({
+          name: docs.name,
+          badge: getBadge(docs, renderDate),
+          path: `/components/${docs.name}`,
           onClick: onSelect,
         }))}
       />

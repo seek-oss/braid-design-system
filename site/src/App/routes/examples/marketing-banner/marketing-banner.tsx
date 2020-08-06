@@ -9,8 +9,7 @@ import {
   Column,
   Inline,
   TextLink,
-  Bullet,
-  BulletList,
+  List,
   Box,
   ContentBlock,
   Button,
@@ -141,15 +140,15 @@ const page: Page = {
                 <TextLink href="/foundations/layout#Columns">Columns</TextLink>{' '}
                 layout. Some key attributes to note:
               </Text>
-              <BulletList>
-                <Bullet>Number of columns—in this case 2,</Bullet>
-                <Bullet>
+              <List>
+                <Text>Number of columns—in this case 2,</Text>
+                <Text>
                   Space between the columns—in this case &ldquo;gutter&rdquo;
-                </Bullet>
-                <Bullet>
+                </Text>
+                <Text>
                   First column is wider—in this case &ldquo;3/5&rdquo;
-                </Bullet>
-              </BulletList>
+                </Text>
+              </List>
             </Stack>
           }
         >
@@ -353,15 +352,15 @@ const page: Page = {
                 The <TextLink href="/components/Box">Box</TextLink> component
                 allows you to control the padding using either:
               </Text>
-              <BulletList>
-                <Bullet>`padding`: all sides equally,</Bullet>
-                <Bullet>`paddingX`: left and right equally,</Bullet>
-                <Bullet>`paddingY`: top and bottom equally, or</Bullet>
-                <Bullet>
+              <List>
+                <Text>`padding`: all sides equally,</Text>
+                <Text>`paddingX`: left and right equally,</Text>
+                <Text>`paddingY`: top and bottom equally, or</Text>
+                <Text>
                   `paddingLeft`/`paddingRight`/`paddingTop`/`paddingBottom`:
                   only.
-                </Bullet>
-              </BulletList>
+                </Text>
+              </List>
               <Text component="p">
                 You can mix and match! So in our banner we will apply
                 &ldquo;small&rdquo; spacing horizontally and
@@ -632,17 +631,17 @@ const page: Page = {
             design.
           </Text>
           <Text>You may want to consider:</Text>
-          <BulletList>
-            <Bullet>
+          <List>
+            <Text>
               Collapsing the `Columns` on screens smaller than `desktop` size
               rather than `tablet`. Hint: also be mindful of updating the text
               alignment 😉.
-            </Bullet>
-            <Bullet>
+            </Text>
+            <Text>
               Making a list of banners, alternating the directions of the{' '}
               <TextLink href="/foundations/layout#Columns">Columns</TextLink>
-            </Bullet>
-          </BulletList>
+            </Text>
+          </List>
         </Stack>
       </TextStack>
     </TextStack>

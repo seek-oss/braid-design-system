@@ -16,8 +16,7 @@ import {
   IconMoney,
   IconBookmark,
   TextLink,
-  Bullet,
-  BulletList,
+  List,
 } from '../../../../../../lib/components';
 import { TextStack } from '../../../TextStack/TextStack';
 import { Placeholder } from '../../../../../../lib/playroom/components';
@@ -548,20 +547,20 @@ const page: Page = {
             design.
           </Text>
           <Text>You may want to consider:</Text>
-          <BulletList>
-            <Bullet>
+          <List>
+            <Text>
               Using <TextLink href="/components/Hidden">Hidden</TextLink> to
               reduce the amount of data shown on mobile,
-            </Bullet>
-            <Bullet>
+            </Text>
+            <Text>
               Specifying different spacing responsively using{' '}
               <TextLink href="/foundations/layout#Stack">Stack</TextLink>,
-            </Bullet>
-            <Bullet>
+            </Text>
+            <Text>
               Adding a company logo. You can use Placeholder component if you
               don&rsquo;t have hosted imagery to work with.
-            </Bullet>
-          </BulletList>
+            </Text>
+          </List>
         </Stack>
       </TextStack>
     </TextStack>

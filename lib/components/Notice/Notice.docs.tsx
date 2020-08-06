@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import { Notice, Text, Strong, Stack, TextLink, BulletList, Bullet } from '../';
+import { Notice, Text, Strong, Stack, TextLink, List } from '../';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -38,11 +38,11 @@ const docs: ComponentDocs = {
               This is an important piece of information with a{' '}
               <TextLink href="#">TextLink.</TextLink>
             </Text>
-            <BulletList space="medium">
-              <Bullet>Bullet 1</Bullet>
-              <Bullet>Bullet 2</Bullet>
-              <Bullet>Bullet 3</Bullet>
-            </BulletList>
+            <List space="medium">
+              <Text>Bullet 1</Text>
+              <Text>Bullet 2</Text>
+              <Text>Bullet 3</Text>
+            </List>
           </Stack>
         </Notice>
       ),
