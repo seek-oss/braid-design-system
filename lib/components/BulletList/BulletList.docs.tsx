@@ -91,12 +91,6 @@ const docs: ComponentDocs = {
           <Bullet>
             This is a text <TextLink href="#">link</TextLink>.
           </Bullet>
-          <Bullet>
-            This is a secondary <TextLink href="#">link</TextLink>.
-          </Bullet>
-          <Bullet>
-            This is a secondary <TextLink href="#">link</TextLink>.
-          </Bullet>
         </BulletList>
       ),
     },
