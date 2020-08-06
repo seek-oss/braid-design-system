@@ -9,6 +9,7 @@ const Container = ({ children }: { children: ReactNode }) => (
 
 const docs: ComponentDocs = {
   category: 'Content',
+  added: new Date('7 May 2020'),
   migrationGuide: true,
   screenshotWidths: [320],
   examples: [

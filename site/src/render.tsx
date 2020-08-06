@@ -26,6 +26,7 @@ const skuRender: Render<RenderContext> = {
     const appConfig = {
       playroomUrl,
       sourceUrlPrefix,
+      renderDate: new Date().getTime(),
     };
 
     const config = {

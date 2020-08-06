@@ -23,13 +23,16 @@ import { ComponentDocs } from '../../types';
 
 type BadgeLabel = 'New' | 'Deprecated';
 
-const getBadge = (docs: ComponentDocs): BadgeLabel | undefined => {
+const getBadge = (
+  docs: ComponentDocs,
+  renderDate: number,
+): BadgeLabel | undefined => {
   if (docs.deprecationWarning) {
     return 'Deprecated';
   }
 
-  const month = 1000 * 60 * 60 * 24 * 30;
-  if (docs.added && new Date().getTime() - docs.added.getTime() < month * 2) {
+  const month = 1000 * 60 * 60 * 24 * 31;
+  if (docs.added && renderDate - docs.added.getTime() < month * 3) {
     return 'New';
   }
 };
@@ -94,7 +97,7 @@ interface SubNavigationProps {
   onSelect?: () => void;
 }
 export const SubNavigation = ({ onSelect }: SubNavigationProps) => {
-  const { playroomUrl } = useConfig();
+  const { playroomUrl, renderDate } = useConfig();
 
   return (
     <Stack space="xlarge">
@@ -147,7 +150,7 @@ export const SubNavigation = ({ onSelect }: SubNavigationProps) => {
           title={category}
           items={categorisedComponents[category].map((docs) => ({
             name: docs.name,
-            badge: getBadge(docs),
+            badge: getBadge(docs, renderDate),
             path: `/components/${docs.name}`,
             onClick: onSelect,
           }))}
@@ -158,7 +161,7 @@ export const SubNavigation = ({ onSelect }: SubNavigationProps) => {
         title="All Components"
         items={documentedComponents.map((docs) => ({
           name: docs.name,
-          badge: getBadge(docs),
+          badge: getBadge(docs, renderDate),
           path: `/components/${docs.name}`,
           onClick: onSelect,
         }))}

@@ -8,6 +8,7 @@ import { BoxProps } from '../../lib/components/Box/Box';
 export interface AppConfig {
   playroomUrl: string;
   sourceUrlPrefix: string;
+  renderDate: number;
 }
 
 export interface RenderContext {
