@@ -95,48 +95,6 @@ const docs: ComponentDocs = {
       ),
     },
   ],
-  snippets: [
-    {
-      name: 'XSmall Space',
-      code: (
-        <BulletList space="xsmall">
-          <Bullet>Bullet</Bullet>
-          <Bullet>Bullet</Bullet>
-          <Bullet>Bullet</Bullet>
-        </BulletList>
-      ),
-    },
-    {
-      name: 'Small Space',
-      code: (
-        <BulletList space="small">
-          <Bullet>Bullet</Bullet>
-          <Bullet>Bullet</Bullet>
-          <Bullet>Bullet</Bullet>
-        </BulletList>
-      ),
-    },
-    {
-      name: 'Medium Space',
-      code: (
-        <BulletList space="medium">
-          <Bullet>Bullet</Bullet>
-          <Bullet>Bullet</Bullet>
-          <Bullet>Bullet</Bullet>
-        </BulletList>
-      ),
-    },
-    {
-      name: 'Secondary',
-      code: (
-        <BulletList space="medium" tone="secondary">
-          <Bullet>Bullet</Bullet>
-          <Bullet>Bullet</Bullet>
-          <Bullet>Bullet</Bullet>
-        </BulletList>
-      ),
-    },
-  ],
 };
 
 export default docs;

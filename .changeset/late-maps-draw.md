@@ -10,11 +10,11 @@ Add `List` component
 - Support for custom start positions in number/alpha lists
 - Rich content support, e.g. list items with multiple paragraphs, nested lists, etc.
 
-_Note: The `BulletList` and `Bullet` components have been marked as deprecated and will be removed in an upcoming major release. However, there is no immediate need to migrate._
+_Note: The `BulletList` and `Bullet` components have been marked as deprecated and will be removed in an upcoming major release._
 
 **MIGRATION GUIDE**
 
-This isn't mandatory yet, but if you want to migrate from `BulletList` to `List`, you can simply replace `BulletList` with `List`, and `Bullet` with `Text`:
+If you want to migrate from `BulletList` to `List`, you can simply replace `BulletList` with `List`, and `Bullet` with `Text`:
 
 ```diff
 -<BulletList>

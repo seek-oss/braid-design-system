@@ -166,6 +166,24 @@ const docs: ComponentDocs = {
         </List>
       ),
     },
+    {
+      label: 'Test: Flattens fragments',
+      docsSite: false,
+      Example: () => (
+        <List>
+          <Text>List item.</Text>
+          <>
+            <Text>List item.</Text>
+          </>
+          <>
+            <>
+              <Text>List item.</Text>
+              <Text>List item.</Text>
+            </>
+          </>
+        </List>
+      ),
+    },
   ],
   snippets: [
     {
