@@ -32,7 +32,7 @@ const getBadge = (
   }
 
   const month = 1000 * 60 * 60 * 24 * 31;
-  if (docs.added && renderDate - docs.added.getTime() < month * 3) {
+  if (docs.added && renderDate - docs.added.getTime() < month * 2) {
     return 'New';
   }
 };
