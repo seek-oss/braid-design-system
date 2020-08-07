@@ -62,6 +62,7 @@
     "isolated-scroll": "^0.1.0",
     "lodash": "^4.17.15",
     "polished": "^3.0.3",
+    "react-focus-lock": "^2.4.1",
     "react-keyed-flatten-children": "^1.2.0",
     "utility-types": "^3.7.0"
   },
