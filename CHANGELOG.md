@@ -1,5 +1,56 @@
 # braid-design-system
 
+## 29.1.0
+
+### Minor Changes
+
+- Add `List` component ([#710](https://github.com/seek-oss/braid-design-system/pull/710))
+
+  `List` serves as a replacement for the `BulletList` and `Bullet` components which adds the following improvements:
+
+  - Support for numbers and alpha characters as bullets
+  - Support for custom start positions in number/alpha lists
+  - Rich content support, e.g. list items with multiple paragraphs, nested lists, etc.
+
+  _Note: The `BulletList` and `Bullet` components have been marked as deprecated and will be removed in an upcoming major release._
+
+  **MIGRATION GUIDE**
+
+  If you want to migrate from `BulletList` to `List`, you can simply replace `BulletList` with `List`, and `Bullet` with `Text`:
+
+  ```diff
+  -<BulletList>
+  -  <Bullet>...</Bullet>
+  -  <Bullet>...</Bullet>
+  -  <Bullet>...</Bullet>
+  -</BulletList>
+
+  +<List>
+  +  <Text>...</Text>
+  +  <Text>...</Text>
+  +  <Text>...</Text>
+  +</List>
+  ```
+
+- **TextLink, TextLinkButton, TextLinkRenderer:** Default `weight` prop to `"regular"` when nested inside secondary text ([#714](https://github.com/seek-oss/braid-design-system/pull/714))
+
+  As of [v28.13.0](https://github.com/seek-oss/braid-design-system/releases/tag/braid-design-system%4028.13.0), `TextLink` components that were nested inside secondary text would be `"weak"` by default, i.e. the same tone as the surrounding text and underlined. In practice, this turned out to be somewhat unpredictable behaviour for consumers. We've now reverted this to the previous behaviour of being `"regular"` weight by default, i.e. blue and medium font weight.
+
+  Note that, if needed, you can still use the weaker link treatment within secondary text via an explicit prop override:
+
+  ```jsx
+  <Text tone="secondary">
+    The TextLink in this sentence is{' '}
+    <TextLink href="..." weight="weak">
+      weak.
+    </TextLink>
+  </Text>
+  ```
+
+### Patch Changes
+
+- **AccordionItem:** Prevent Safari from clipping label text ([#712](https://github.com/seek-oss/braid-design-system/pull/712))
+
 ## 29.0.1
 
 ### Patch Changes
