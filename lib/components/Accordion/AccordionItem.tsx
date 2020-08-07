@@ -54,21 +54,28 @@ export const AccordionItem = ({
           textAlign="left"
           {...buttonProps}
         >
-          <Columns space={accordionSpace}>
-            <Column>
-              <Heading component="div" level="4">
-                {label}
-              </Heading>
-            </Column>
-            <Column width="content">
-              <Heading component="div" level="4">
-                <IconChevron
-                  tone="secondary"
-                  direction={expanded ? 'up' : 'down'}
-                />
-              </Heading>
-            </Column>
-          </Columns>
+          {/*
+            This seemingly pointless use of Box makes button overflow visible in Safari.
+            If we don't add this, the bottom of the text node is visibly cropped.
+            https://stackoverflow.com/questions/41100273/overflowing-button-text-is-being-clipped-in-safari
+          */}
+          <Box position="relative">
+            <Columns space={accordionSpace}>
+              <Column>
+                <Heading component="div" level="4">
+                  {label}
+                </Heading>
+              </Column>
+              <Column width="content">
+                <Heading component="div" level="4">
+                  <IconChevron
+                    tone="secondary"
+                    direction={expanded ? 'up' : 'down'}
+                  />
+                </Heading>
+              </Column>
+            </Columns>
+          </Box>
         </Box>
         <Overlay
           boxShadow="outlineFocus"
