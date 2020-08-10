@@ -118,7 +118,10 @@ export const List = ({
                   })()}
                 </Box>
               </Text>
-              <Box paddingLeft={size === 'xsmall' ? 'xsmall' : 'small'}>
+              <Box
+                minWidth={0}
+                paddingLeft={size === 'xsmall' ? 'xsmall' : 'small'}
+              >
                 {listItem}
               </Box>
             </Box>
