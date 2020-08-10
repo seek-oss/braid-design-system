@@ -1,5 +1,11 @@
 # braid-design-system
 
+## 29.1.1
+
+### Patch Changes
+
+- **List, BulletList:** Limit width to 100% of parent ([#715](https://github.com/seek-oss/braid-design-system/pull/715))
+
 ## 29.1.0
 
 ### Minor Changes
