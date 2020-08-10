@@ -64,14 +64,13 @@ function useDefaultLinkWeight() {
     backgroundContext === 'card' ||
     backgroundContext === 'neutralLight';
 
-  const inNeutralText =
+  const inPlainText =
     !textContext ||
     textContext.tone === undefined ||
-    textContext.tone === 'neutral';
+    textContext.tone === 'neutral' ||
+    textContext.tone === 'secondary';
 
-  return hasPlainBackground && (inHeading || inNeutralText)
-    ? 'regular'
-    : 'weak';
+  return hasPlainBackground && (inHeading || inPlainText) ? 'regular' : 'weak';
 }
 
 function useLinkStyles(weight: TextLinkWeight, showVisited: boolean) {
