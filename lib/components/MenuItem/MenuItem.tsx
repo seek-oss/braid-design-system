@@ -15,14 +15,26 @@ import { MenuContext } from '../MenuRenderer/MenuRenderer';
 import { actionTypes, Action } from '../MenuRenderer/MenuRenderer.actions';
 import * as styleRefs from './MenuItem.treat';
 import { Text } from '../Text/Text';
+import { Link, LinkProps } from '../Link/Link';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
 
-interface MenuItemProps {
+interface MenuItemBaseProps {
   children: ReactNode;
   onClick?: () => void;
   data?: DataAttributeMap;
+}
+
+interface MenuItemLinkProps
+  extends Pick<LinkProps, 'href' | 'target' | 'rel'>,
+    MenuItemBaseProps {}
+
+interface InternalMenuItemLinkProps extends MenuItemLinkProps {
+  type: 'link';
+}
+interface InternalMenuItemButtonProps extends MenuItemBaseProps {
+  type: 'button';
 }
 
 const {
@@ -36,23 +48,39 @@ const {
   MENU_ITEM_HOVER,
 } = actionTypes;
 
-export const MenuItem = ({ children, onClick, data }: MenuItemProps) => {
+type MenuItemElement = HTMLButtonElement | HTMLAnchorElement;
+
+const InternalMenuItem = (
+  props: InternalMenuItemLinkProps | InternalMenuItemButtonProps,
+) => {
+  const { children, onClick, data, type } = props;
   const styles = useStyles(styleRefs);
   const menuContext = useContext(MenuContext);
+  const isButton = type === 'button';
+
+  assert(
+    isButton === !('href' in props || 'target' in props || 'rel' in props),
+    'A MenuItem does not accept link properties, please use a `MenuItemLink`, https://............????..................',
+  );
 
   assert(
     menuContext !== null,
-    'A MenuItem must be rendered as an immediate child of a Menu. See the documentation for correct usage: https://seek-oss.github.io/braid-design-system/components/MenuRenderer',
+    `A ${
+      isButton ? 'MenuItem' : 'MenuItemLink'
+    } must be rendered as an immediate child of a Menu. See the documentation for correct usage: https://seek-oss.github.io/braid-design-system/components/MenuRenderer`,
   );
 
   if (menuContext === null) {
-    throw new Error('MenuItem rendered outside menu context');
+    throw new Error(
+      `${isButton ? 'MenuItem' : 'MenuItemLink'} rendered outside menu context`,
+    );
   }
 
   const { isHighlighted, index, dispatch, focusTrigger } = menuContext;
-  const menuItemRef = useRef<HTMLButtonElement>(null);
+  const menuItemRef = useRef<MenuItemElement | null>(null);
 
   useEffect(() => {
+    console.log('FOCUS PLEASE', menuItemRef.current);
     if (menuItemRef.current && isHighlighted) {
       menuItemRef.current.focus();
     }
@@ -64,7 +92,8 @@ export const MenuItem = ({ children, onClick, data }: MenuItemProps) => {
     }
   };
 
-  const onKeyUp = (event: KeyboardEvent<HTMLButtonElement>) => {
+  const onKeyUp = (event: KeyboardEvent<MenuItemElement>) => {
+    console.log('KEYUP');
     const targetKey = normalizeKey(event);
     const closeActionKeys = ['Enter', ' ', 'Escape'];
 
@@ -89,7 +118,8 @@ export const MenuItem = ({ children, onClick, data }: MenuItemProps) => {
     }
   };
 
-  const onKeyDown = (event: KeyboardEvent<HTMLButtonElement>) => {
+  const onKeyDown = (event: KeyboardEvent<MenuItemElement>) => {
+    console.log('KEYDOWN');
     const targetKey = normalizeKey(event);
 
     if (targetKey === 'Tab') {
@@ -101,7 +131,7 @@ export const MenuItem = ({ children, onClick, data }: MenuItemProps) => {
     // Prevent enter or space press from triggering the click handler
     const isActionKeyPress = targetKey === 'Enter' || targetKey === ' ';
 
-    if (isArrowPress || isActionKeyPress) {
+    if (isArrowPress || (isButton && isActionKeyPress)) {
       event.preventDefault();
     }
   };
@@ -110,16 +140,21 @@ export const MenuItem = ({ children, onClick, data }: MenuItemProps) => {
 
   return (
     <Box
-      component="button"
+      component={isButton ? 'button' : Link}
       role="menuitem"
       tabIndex={-1}
       ref={menuItemRef}
+      href={'href' in props ? props.href : undefined}
+      target={'target' in props ? props.target : undefined}
+      rel={'rel' in props ? props.rel : undefined}
       onKeyUp={onKeyUp}
       onKeyDown={onKeyDown}
       onMouseEnter={() => dispatch({ type: MENU_ITEM_HOVER, value: index })}
       onClick={(event: MouseEvent) => {
-        event.stopPropagation();
-        event.preventDefault();
+        if (isButton) {
+          event.stopPropagation();
+          event.preventDefault();
+        }
         dispatch({ type: MENU_ITEM_CLICK });
         clickHandler();
       }}
@@ -143,3 +178,11 @@ export const MenuItem = ({ children, onClick, data }: MenuItemProps) => {
     </Box>
   );
 };
+
+export const MenuItem = (props: MenuItemBaseProps) => (
+  <InternalMenuItem {...props} type="button" />
+);
+
+export const MenuItemLink = (props: MenuItemLinkProps) => (
+  <InternalMenuItem {...props} type="link" />
+);

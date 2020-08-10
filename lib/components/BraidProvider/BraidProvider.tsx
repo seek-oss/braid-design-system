@@ -3,8 +3,10 @@ import React, {
   createContext,
   useContext,
   ReactNode,
-  ComponentType,
   AnchorHTMLAttributes,
+  forwardRef,
+  ForwardRefExoticComponent,
+  RefAttributes,
 } from 'react';
 import { TreatProvider } from 'sku/react-treat';
 import { ensureResetImported } from '../../reset/resetTracker';
@@ -32,8 +34,14 @@ export interface LinkComponentProps
   extends AnchorHTMLAttributes<HTMLAnchorElement> {
   href: string;
 }
-export type LinkComponent = ComponentType<LinkComponentProps>;
-const DefaultLinkComponent = (props: LinkComponentProps) => <a {...props} />;
+export type LinkComponent = ForwardRefExoticComponent<
+  LinkComponentProps & RefAttributes<HTMLAnchorElement>
+>;
+
+const DefaultLinkComponent = forwardRef<HTMLAnchorElement, LinkComponentProps>(
+  (props, ref) => <a {...props} ref={ref} />,
+);
+
 const LinkComponentContext = createContext<LinkComponent>(DefaultLinkComponent);
 export const useLinkComponent = () => useContext(LinkComponentContext);
 

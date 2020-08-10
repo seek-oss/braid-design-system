@@ -20,18 +20,22 @@ const docs: ComponentDocs = {
     {
       label: 'Custom link implementation',
       code: `
-        import React from 'react';
+        import React, { forwardRef, ComponentProps } from 'react';
         import { Link as ReactRouterLink } from 'react-router-dom';
-        import { BraidProvider, LinkComponent } from 'braid-design-system';
+        import { BraidProvider } from 'braid-design-system';
         import wireframe from 'braid-design-system/themes/wireframe';
 
         // First create the custom link implementation:
-        const CustomLink: LinkComponent = ({ href, ...restProps }) =>
+        const CustomLink = forwardRef<
+          HTMLAnchorElement,
+          Omit<ComponentProps<ReactRouterLink>, 'to'> & { href: string }
+        >(({ href, ...restProps }, ref) =>
           href[0] === '/' ? (
-            <ReactRouterLink to={href} {...restProps} />
+            <ReactRouterLink to={href} ref={ref} {...restProps} />
           ) : (
-            <a href={href} {...restProps} />
-          );
+            <a href={href} ref={ref} {...restProps} />
+          )
+        );
 
         // Then pass it to BraidProvider:
         export const App = () => (

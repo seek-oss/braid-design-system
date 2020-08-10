@@ -5,6 +5,7 @@ import {
   Box,
   MenuRenderer,
   MenuItem,
+  MenuItemLink,
   Text,
   Stack,
   IconChevron,
@@ -24,7 +25,7 @@ const docs: ComponentDocs = {
       </Text>
       <Text>
         Used to build higher level menu components that adhere to our
-        accessibility standards, e.g.
+        accessibility standards, e.g.{' '}
         <TextLink href="/components/OverflowMenu">OverflowMenu</TextLink> uses
         this internally.
       </Text>
@@ -70,8 +71,22 @@ const docs: ComponentDocs = {
             </Box>
           )}
         >
-          <MenuItem onClick={handler}>First</MenuItem>
+          {/* <MenuItem onClick={handler}>First</MenuItem> */}
           <MenuItem onClick={handler}>Second</MenuItem>
+          <MenuItemLink
+            onClick={() => console.log('hi')}
+            href="https://www.google.com"
+            target="_blank"
+          >
+            Link
+          </MenuItemLink>
+          <MenuItemLink
+            onClick={() => console.log('hi')}
+            href="https://www.google.com"
+            target="_blank"
+          >
+            Link
+          </MenuItemLink>
         </MenuRenderer>
       ),
     },

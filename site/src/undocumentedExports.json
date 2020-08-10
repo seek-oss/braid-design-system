@@ -3,6 +3,7 @@
   "Bullet",
   "BoxRenderer",
   "MenuItem",
+  "MenuItemLink",
   "Tab",
   "TabsProvider",
   "TabPanel",

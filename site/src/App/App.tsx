@@ -1,5 +1,5 @@
 import '../../../lib/reset';
-import React, { StrictMode } from 'react';
+import React, { StrictMode, forwardRef, ComponentProps } from 'react';
 import { Route, Switch, Redirect } from 'react-router';
 import { Link as ReactRouterLink } from 'react-router-dom';
 import map from 'lodash/map';
@@ -17,25 +17,34 @@ import foundations from './routes/foundations';
 import examples from './routes/examples';
 import components from './routes/components';
 
-const CustomLink: LinkComponent = ({ href, rel, onClick, ...restProps }) =>
-  href[0] === '/' && !/\/playroom\/?($|#)/.test(href) ? (
-    <ReactRouterLink to={href} rel={rel} onClick={onClick} {...restProps} />
-  ) : (
-    <a
-      href={href}
-      rel={rel || 'noreferrer noopener'}
-      {...restProps}
-      onClick={(event) => {
-        if (href === '' || href === '#') {
-          event.preventDefault();
-        }
+const CustomLink = forwardRef<HTMLAnchorElement, ComponentProps<LinkComponent>>(
+  ({ href, rel, onClick, ...restProps }, ref) =>
+    href[0] === '/' && !/\/playroom\/?($|#)/.test(href) ? (
+      <ReactRouterLink
+        {...restProps}
+        to={href}
+        rel={rel}
+        onClick={onClick}
+        ref={ref}
+      />
+    ) : (
+      <a
+        {...restProps}
+        href={href}
+        rel={rel || 'noreferrer noopener'}
+        ref={ref}
+        onClick={(event) => {
+          if (href === '' || href === '#') {
+            event.preventDefault();
+          }
 
-        if (typeof onClick === 'function') {
-          onClick(event);
-        }
-      }}
-    />
-  );
+          if (typeof onClick === 'function') {
+            onClick(event);
+          }
+        }}
+      />
+    ),
+);
 
 export const App = () => (
   <StrictMode>
