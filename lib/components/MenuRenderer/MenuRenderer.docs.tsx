@@ -53,8 +53,8 @@ const docs: ComponentDocs = {
             </Box>
           )}
         >
-          <MenuItem onClick={() => {}}>First</MenuItem>
-          <MenuItem onClick={() => {}}>Second</MenuItem>
+          <MenuItem onClick={() => {}}>Button</MenuItem>
+          <MenuItemLink href="#">Link</MenuItemLink>
         </MenuRenderer>
       `,
       Example: ({ handler }) => (
@@ -71,22 +71,8 @@ const docs: ComponentDocs = {
             </Box>
           )}
         >
-          {/* <MenuItem onClick={handler}>First</MenuItem> */}
-          <MenuItem onClick={handler}>Second</MenuItem>
-          <MenuItemLink
-            onClick={() => console.log('hi')}
-            href="https://www.google.com"
-            target="_blank"
-          >
-            Link
-          </MenuItemLink>
-          <MenuItemLink
-            onClick={() => console.log('hi')}
-            href="https://www.google.com"
-            target="_blank"
-          >
-            Link
-          </MenuItemLink>
+          <MenuItem onClick={handler}>Button</MenuItem>
+          <MenuItemLink href="#">Link</MenuItemLink>
         </MenuRenderer>
       ),
     },
@@ -112,8 +98,8 @@ const docs: ComponentDocs = {
             </Box>
           )}
         >
-          <MenuItem onClick={() => {}}>First</MenuItem>
-          <MenuItem onClick={() => {}}>Second</MenuItem>
+          <MenuItem onClick={() => {}}>Button</MenuItem>
+          <MenuItemLink href="#">Link</MenuItemLink>
         </MenuRenderer>
       `,
       Example: ({ handler }) => (
@@ -131,8 +117,8 @@ const docs: ComponentDocs = {
             </Box>
           )}
         >
-          <MenuItem onClick={handler}>First</MenuItem>
-          <MenuItem onClick={handler}>Second</MenuItem>
+          <MenuItem onClick={handler}>Button</MenuItem>
+          <MenuItemLink href="#">Link</MenuItemLink>
         </MenuRenderer>
       ),
     },
@@ -153,8 +139,8 @@ const docs: ComponentDocs = {
             </Box>
           )}
         >
-          <MenuItem onClick={() => {}}>First</MenuItem>
-          <MenuItem onClick={() => {}}>Second</MenuItem>
+          <MenuItem onClick={() => {}}>Button</MenuItem>
+          <MenuItemLink href="#">Link</MenuItemLink>
         </MenuRenderer>
       `,
       Example: ({ handler }) => (
@@ -172,8 +158,8 @@ const docs: ComponentDocs = {
             </Box>
           )}
         >
-          <MenuItem onClick={handler}>First</MenuItem>
-          <MenuItem onClick={handler}>Second</MenuItem>
+          <MenuItem onClick={handler}>Button</MenuItem>
+          <MenuItemLink href="#">Link</MenuItemLink>
         </MenuRenderer>
       ),
     },

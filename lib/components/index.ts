@@ -1,4 +1,7 @@
-export { BraidProvider } from './BraidProvider/BraidProvider';
+export {
+  BraidProvider,
+  makeLinkComponent,
+} from './BraidProvider/BraidProvider';
 import { LinkComponent as _LinkComponent } from './BraidProvider/BraidProvider';
 export type LinkComponent = _LinkComponent;
 

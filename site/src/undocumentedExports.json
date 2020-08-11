@@ -2,6 +2,7 @@
   "AccordionItem",
   "Bullet",
   "BoxRenderer",
+  "makeLinkComponent",
   "MenuItem",
   "MenuItemLink",
   "Tab",

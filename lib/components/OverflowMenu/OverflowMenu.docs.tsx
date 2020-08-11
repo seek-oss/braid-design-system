@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import { Box, OverflowMenu, MenuItem } from '../';
+import { Box, OverflowMenu, MenuItem, MenuItemLink } from '../';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -12,8 +12,10 @@ const docs: ComponentDocs = {
       Example: ({ handler }) => (
         <Box style={{ paddingLeft: '100px', maxWidth: '200px' }}>
           <OverflowMenu label="Options">
-            <MenuItem onClick={handler}>First</MenuItem>
-            <MenuItem onClick={handler}>Second</MenuItem>
+            <MenuItem onClick={handler}>Button</MenuItem>
+            <MenuItemLink href="#" onClick={handler}>
+              Link
+            </MenuItemLink>
           </OverflowMenu>
         </Box>
       ),

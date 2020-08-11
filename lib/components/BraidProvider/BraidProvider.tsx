@@ -1,12 +1,14 @@
 import assert from 'assert';
+import dedent from 'dedent';
 import React, {
   createContext,
   useContext,
   ReactNode,
   AnchorHTMLAttributes,
   forwardRef,
-  ForwardRefExoticComponent,
-  RefAttributes,
+  ForwardRefRenderFunction,
+  ComponentType,
+  Ref,
 } from 'react';
 import { TreatProvider } from 'sku/react-treat';
 import { ensureResetImported } from '../../reset/resetTracker';
@@ -34,16 +36,49 @@ export interface LinkComponentProps
   extends AnchorHTMLAttributes<HTMLAnchorElement> {
   href: string;
 }
-export type LinkComponent = ForwardRefExoticComponent<
-  LinkComponentProps & RefAttributes<HTMLAnchorElement>
->;
 
-const DefaultLinkComponent = forwardRef<HTMLAnchorElement, LinkComponentProps>(
-  (props, ref) => <a {...props} ref={ref} />,
-);
+export const makeLinkComponent = (
+  render: ForwardRefRenderFunction<HTMLAnchorElement, LinkComponentProps>,
+) => ({ __forwardRef__: forwardRef(render) } as const);
+
+export type LinkComponent =
+  | ReturnType<typeof makeLinkComponent>
+  | ComponentType<LinkComponentProps>;
+
+const DefaultLinkComponent = makeLinkComponent((props, ref) => (
+  <a ref={ref} {...props} />
+));
 
 const LinkComponentContext = createContext<LinkComponent>(DefaultLinkComponent);
-export const useLinkComponent = () => useContext(LinkComponentContext);
+
+export const useLinkComponentWithoutRefSupport = () => {
+  const linkComponent = useContext(LinkComponentContext);
+
+  return '__forwardRef__' in linkComponent
+    ? linkComponent.__forwardRef__
+    : linkComponent;
+};
+
+export const useLinkComponentWithRefSupport = (ref: Ref<HTMLAnchorElement>) => {
+  const linkComponent = useContext(LinkComponentContext);
+
+  assert(
+    !ref || '__forwardRef__' in linkComponent,
+    dedent`
+      You're passing a ref to a Braid link, but your app is providing a custom link component to 'BraidProvider' that doesn't appear to support refs.
+
+      To fix this, you need to use Braid's 'makeLinkComponent' helper function when creating your custom link component. This ensures that refs are forwarded correctly, and allows us to silence this error message.
+
+      For more information and an example implementation, check out the documentation for 'BraidProvider': https://seek-oss.github.io/braid-design-system/components/BraidProvider
+    `,
+  );
+
+  if ('__forwardRef__' in linkComponent) {
+    return linkComponent.__forwardRef__;
+  }
+
+  return linkComponent;
+};
 
 export interface BraidProviderProps {
   theme: BraidTheme;
@@ -60,7 +95,7 @@ export const BraidProvider = ({
 }: BraidProviderProps) => {
   const alreadyInBraidProvider = Boolean(useContext(BraidThemeContext));
   const inTestProvider = useContext(BraidTestProviderContext);
-  const linkComponentFromContext = useLinkComponent();
+  const linkComponentFromContext = useContext(LinkComponentContext);
 
   assert(
     typeof navigator !== 'object' ||

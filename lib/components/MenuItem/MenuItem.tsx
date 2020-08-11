@@ -80,7 +80,6 @@ const InternalMenuItem = (
   const menuItemRef = useRef<MenuItemElement | null>(null);
 
   useEffect(() => {
-    console.log('FOCUS PLEASE', menuItemRef.current);
     if (menuItemRef.current && isHighlighted) {
       menuItemRef.current.focus();
     }
@@ -93,7 +92,6 @@ const InternalMenuItem = (
   };
 
   const onKeyUp = (event: KeyboardEvent<MenuItemElement>) => {
-    console.log('KEYUP');
     const targetKey = normalizeKey(event);
     const closeActionKeys = ['Enter', ' ', 'Escape'];
 
@@ -119,7 +117,6 @@ const InternalMenuItem = (
   };
 
   const onKeyDown = (event: KeyboardEvent<MenuItemElement>) => {
-    console.log('KEYDOWN');
     const targetKey = normalizeKey(event);
 
     if (targetKey === 'Tab') {
