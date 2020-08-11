@@ -1,5 +1,11 @@
 # braid-design-system
 
+## 29.1.2
+
+### Patch Changes
+
+- Change SEEK Business formAccent token to match Seek ANZ ([#718](https://github.com/seek-oss/braid-design-system/pull/718))
+
 ## 29.1.1
 
 ### Patch Changes
