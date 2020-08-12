@@ -10,6 +10,7 @@ import {
   Stack,
   IconChevron,
   TextLink,
+  Strong,
 } from '..';
 
 const docs: ComponentDocs = {
@@ -30,9 +31,15 @@ const docs: ComponentDocs = {
         this internally.
       </Text>
       <Text>
-        Implementations of this component must provide a `trigger` that can
-        accept DOM properties, in particular event handlers and aria properties
-        used to manage the interactions.
+        Implementations of this component must provide a{' '}
+        <Strong>trigger</Strong> element that can accept DOM properties
+        including event handlers and aria properties used to manage the
+        interactions.
+      </Text>
+      <Text>
+        Child nodes must be{' '}
+        <TextLink href="/components/MenuItem">MenuItem/MenuItemLink</TextLink>{' '}
+        elements.
       </Text>
     </Stack>
   ),

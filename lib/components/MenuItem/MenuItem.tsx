@@ -1,24 +1,22 @@
+import assert from 'assert';
 import React, {
   KeyboardEvent,
   useContext,
   useRef,
   useEffect,
   ReactNode,
-  MouseEvent,
 } from 'react';
 import { useStyles } from 'sku/react-treat';
-import assert from 'assert';
-import { Box } from '../Box/Box';
+import { Box, Text, Link } from '../';
+import { LinkProps } from '../Link/Link';
 import { useTouchableSpace } from '../../hooks/typography';
 import { normalizeKey } from '../private/normalizeKey';
 import { MenuContext } from '../MenuRenderer/MenuRenderer';
 import { actionTypes, Action } from '../MenuRenderer/MenuRenderer.actions';
-import * as styleRefs from './MenuItem.treat';
-import { Text } from '../Text/Text';
-import { Link, LinkProps } from '../Link/Link';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
+import * as styleRefs from './MenuItem.treat';
 
 interface MenuItemBaseProps {
   children: ReactNode;
@@ -60,14 +58,14 @@ const InternalMenuItem = (
 
   assert(
     isButton === !('href' in props || 'target' in props || 'rel' in props),
-    'A MenuItem does not accept link properties, please use a `MenuItemLink`, https://............????..................',
+    'A MenuItem does not accept link properties. Please use a `MenuItemLink` instead: https://seek-oss.github.io/braid-design-system/components/MenuItem',
   );
 
   assert(
     menuContext !== null,
     `A ${
       isButton ? 'MenuItem' : 'MenuItemLink'
-    } must be rendered as an immediate child of a Menu. See the documentation for correct usage: https://seek-oss.github.io/braid-design-system/components/MenuRenderer`,
+    } must be rendered as an immediate child of a menu. See the documentation for correct usage: https://seek-oss.github.io/braid-design-system/components/MenuRenderer`,
   );
 
   if (menuContext === null) {
@@ -77,17 +75,38 @@ const InternalMenuItem = (
   }
 
   const { isHighlighted, index, dispatch, focusTrigger } = menuContext;
-  const menuItemRef = useRef<MenuItemElement | null>(null);
+  const menuItemRef = useRef<MenuItemElement>(null);
 
   useEffect(() => {
-    if (menuItemRef.current && isHighlighted) {
-      menuItemRef.current.focus();
+    if (isHighlighted) {
+      menuItemRef.current?.focus();
     }
   }, [isHighlighted]);
 
   const clickHandler = () => {
     if (typeof onClick === 'function') {
       onClick();
+    }
+  };
+
+  const onKeyDown = (event: KeyboardEvent<MenuItemElement>) => {
+    const targetKey = normalizeKey(event);
+
+    if (targetKey === 'Tab') {
+      dispatch({ type: MENU_ITEM_TAB });
+    }
+
+    const isArrowPress = targetKey.indexOf('Arrow') === 0;
+    const isActionKeyPress = targetKey === 'Enter' || targetKey === ' ';
+
+    // This prevents spacebar from scrolling the document,
+    // but also prevents the click event from firing so we
+    // can programmatically trigger a click event in the
+    // 'onKeyUp' handler. This is to normalise behaviour
+    // between buttons and links, e.g. to make spacebar
+    // activate links, which is not standard behaviour.
+    if (isArrowPress || isActionKeyPress) {
+      event.preventDefault();
     }
   };
 
@@ -107,29 +126,14 @@ const InternalMenuItem = (
       dispatch(action[targetKey]);
     }
 
+    // Because we call 'preventDefault()' on enter/spacebar in
+    // the 'onKeyDown' handler, we manually trigger a click here.
     if (targetKey === 'Enter' || targetKey === ' ') {
-      clickHandler();
+      menuItemRef.current?.click();
     }
 
     if (closeActionKeys.indexOf(targetKey) > -1) {
       focusTrigger();
-    }
-  };
-
-  const onKeyDown = (event: KeyboardEvent<MenuItemElement>) => {
-    const targetKey = normalizeKey(event);
-
-    if (targetKey === 'Tab') {
-      dispatch({ type: MENU_ITEM_TAB });
-    }
-
-    // Prevent arrow keys scrolling the document while navigating the menu
-    const isArrowPress = targetKey.indexOf('Arrow') === 0;
-    // Prevent enter or space press from triggering the click handler
-    const isActionKeyPress = targetKey === 'Enter' || targetKey === ' ';
-
-    if (isArrowPress || (isButton && isActionKeyPress)) {
-      event.preventDefault();
     }
   };
 
@@ -138,6 +142,7 @@ const InternalMenuItem = (
   return (
     <Box
       component={isButton ? 'button' : Link}
+      type={isButton ? 'button' : undefined}
       role="menuitem"
       tabIndex={-1}
       ref={menuItemRef}
@@ -147,11 +152,7 @@ const InternalMenuItem = (
       onKeyUp={onKeyUp}
       onKeyDown={onKeyDown}
       onMouseEnter={() => dispatch({ type: MENU_ITEM_HOVER, value: index })}
-      onClick={(event: MouseEvent) => {
-        if (isButton) {
-          event.stopPropagation();
-          event.preventDefault();
-        }
+      onClick={() => {
         dispatch({ type: MENU_ITEM_CLICK });
         clickHandler();
       }}

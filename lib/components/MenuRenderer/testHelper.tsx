@@ -8,7 +8,7 @@ import {
   act,
 } from '@testing-library/react';
 import genericUserEvent from '@testing-library/user-event';
-import { BraidTestProvider, MenuItem } from '..';
+import { BraidTestProvider, MenuItem, MenuItemLink } from '..';
 import { MenuRendererProps } from './MenuRenderer';
 
 // The generic `user-event` library currently doesn't have knowledge
@@ -50,7 +50,9 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
         <Component onOpen={openHandler} onClose={closeHandler}>
           <MenuItem onClick={() => menuItemHandler('first')}>First</MenuItem>
           <MenuItem onClick={() => menuItemHandler('second')}>Second</MenuItem>
-          <MenuItem onClick={() => menuItemHandler('third')}>Third</MenuItem>
+          <MenuItemLink href="#" onClick={() => menuItemHandler('third')}>
+            Third
+          </MenuItemLink>
         </Component>
       </BraidTestProvider>,
     );
@@ -325,7 +327,7 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
         expect(lastMenuItemAgain).toHaveFocus();
       });
 
-      it('should trigger the click handler when selecting a menu item with enter', () => {
+      it('should trigger the click handler on MenuItem when selecting it with enter', () => {
         const { getAllByRole, closeHandler, menuItemHandler } = renderMenu();
 
         const { menu, menuButton } = getElements({ getAllByRole });
@@ -346,6 +348,80 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
         expect(isVisible(menu)).toBe(false);
         expect(closeHandler).toHaveBeenCalledTimes(1);
         expect(menuItemHandler).toHaveBeenNthCalledWith(1, 'second');
+        expect(menuButton).toHaveFocus();
+      });
+
+      it('should trigger the click handler on MenuItem when selecting it with space', () => {
+        const { getAllByRole, closeHandler, menuItemHandler } = renderMenu();
+
+        const { menu, menuButton } = getElements({ getAllByRole });
+
+        // Open menu
+        fireEvent.keyUp(menuButton, { keyCode: ENTER });
+        const firstDown = getElements({ getAllByRole });
+        const firstMenuItem = firstDown.menuItems[0];
+
+        // Navigate down one item
+        fireEvent.keyUp(firstMenuItem, { keyCode: ARROW_DOWN });
+        const secondDown = getElements({ getAllByRole });
+        const secondMenuItem = secondDown.menuItems[1];
+
+        // Action the item
+        fireEvent.keyUp(secondMenuItem, { keyCode: SPACE });
+
+        expect(isVisible(menu)).toBe(false);
+        expect(closeHandler).toHaveBeenCalledTimes(1);
+        expect(menuItemHandler).toHaveBeenNthCalledWith(1, 'second');
+        expect(menuButton).toHaveFocus();
+      });
+
+      it('should trigger the click handler on MenuItemLink when selecting it with enter', () => {
+        const { getAllByRole, closeHandler, menuItemHandler } = renderMenu();
+
+        const { menu, menuButton } = getElements({ getAllByRole });
+
+        // Open menu
+        fireEvent.keyUp(menuButton, { keyCode: ENTER });
+        const firstDown = getElements({ getAllByRole });
+        const firstMenuItem = firstDown.menuItems[0];
+
+        // Navigate down two items
+        fireEvent.keyUp(firstMenuItem, { keyCode: ARROW_DOWN });
+        fireEvent.keyUp(firstMenuItem, { keyCode: ARROW_DOWN });
+        const thirdDown = getElements({ getAllByRole });
+        const thirdMenuItem = thirdDown.menuItems[2];
+
+        // Action the item
+        fireEvent.keyUp(thirdMenuItem, { keyCode: ENTER });
+
+        expect(isVisible(menu)).toBe(false);
+        expect(closeHandler).toHaveBeenCalledTimes(1);
+        expect(menuItemHandler).toHaveBeenNthCalledWith(1, 'third');
+        expect(menuButton).toHaveFocus();
+      });
+
+      it('should trigger the click handler on MenuItemLink when selecting it with space', () => {
+        const { getAllByRole, closeHandler, menuItemHandler } = renderMenu();
+
+        const { menu, menuButton } = getElements({ getAllByRole });
+
+        // Open menu
+        fireEvent.keyUp(menuButton, { keyCode: ENTER });
+        const firstDown = getElements({ getAllByRole });
+        const firstMenuItem = firstDown.menuItems[0];
+
+        // Navigate down two items
+        fireEvent.keyUp(firstMenuItem, { keyCode: ARROW_DOWN });
+        fireEvent.keyUp(firstMenuItem, { keyCode: ARROW_DOWN });
+        const thirdDown = getElements({ getAllByRole });
+        const thirdMenuItem = thirdDown.menuItems[2];
+
+        // Action the item
+        fireEvent.keyUp(thirdMenuItem, { keyCode: SPACE });
+
+        expect(isVisible(menu)).toBe(false);
+        expect(closeHandler).toHaveBeenCalledTimes(1);
+        expect(menuItemHandler).toHaveBeenNthCalledWith(1, 'third');
         expect(menuButton).toHaveFocus();
       });
     });

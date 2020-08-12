@@ -28,7 +28,8 @@ const docs: ComponentDocs = {
             rendering of Braid links (e.g.{' '}
             <TextLink href="/components/Link">Link</TextLink>,{' '}
             <TextLink href="/components/TextLink">TextLink</TextLink>,{' '}
-            <TextLink href="/components/ButtonLink">ButtonLink</TextLink>)
+            <TextLink href="/components/ButtonLink">ButtonLink</TextLink>,{' '}
+            <TextLink href="/components/MenuItem">MenuItemLink</TextLink>)
             across an entire application. This is useful for conditionally
             rendering React Router links, handling analytics, etc.
           </Text>
