@@ -38,6 +38,7 @@ export interface ComponentDocs {
   snippets?: DocsSnippet[];
   description?: ReactNodeNoStrings;
   subComponents?: string[];
+  screenshotDelay?: number;
 }
 
 export interface ComponentExample {

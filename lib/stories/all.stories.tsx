@@ -56,6 +56,7 @@ req.keys().forEach((filename) => {
     const storyConfig = {
       chromatic: {
         viewports: docs.screenshotWidths,
+        delay: docs.screenshotDelay,
       },
     };
 
