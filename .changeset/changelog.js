@@ -42,6 +42,14 @@ const changelogFunctions = {
       .map((l) => l.trimRight());
 
     if (data) {
+      for (const key of Object.keys(data)) {
+        if (!['add', 'update'].includes(key)) {
+          throw new Error(
+            `${changeset}: Incorect update meta data. Unknown key: ${key}`,
+          );
+        }
+      }
+
       await fs.writeJSON(path.join(__dirname, `${changeset.id}-data.json`), {
         ...data,
         summary,
