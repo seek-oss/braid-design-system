@@ -24,7 +24,6 @@ import { useBraidTheme } from '../BraidProvider/BraidProvider';
 
 const docs: ComponentDocs = {
   category: 'Content',
-  added: new Date('1 July 2020'),
   screenshotWidths: [320, 1200],
   subComponents: ['TabsProvider', 'Tab', 'TabPanels', 'TabPanel'],
   description: (

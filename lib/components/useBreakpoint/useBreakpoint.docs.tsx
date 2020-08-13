@@ -8,7 +8,6 @@ import { Text } from '../Text/Text';
 import { useBreakpoint } from './useBreakpoint';
 
 const docs: ComponentDocs = {
-  added: new Date('31 July 2020'),
   category: 'Logic',
   description: (
     <Stack space="large">

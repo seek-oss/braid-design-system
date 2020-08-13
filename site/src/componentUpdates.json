@@ -9,6 +9,15 @@
     ]
   },
   {
+    "version": "v29.1.0",
+    "updates": [
+      {
+        "new": ["List"],
+        "summary": "Add `List` component\n\n    `List` serves as a replacement for the `BulletList` and `Bullet` components which adds the following improvements:\n\n    -   Support for numbers and alpha characters as bullets\n    -   Support for custom start positions in number/alpha lists\n    -   Rich content support, e.g. list items with multiple paragraphs, nested lists, etc.\n\n    _Note: The `BulletList` and `Bullet` components have been marked as deprecated and will be removed in an upcoming major release._\n\n    **MIGRATION GUIDE**\n\n    If you want to migrate from `BulletList` to `List`, you can simply replace `BulletList` with `List`, and `Bullet` with `Text`:\n\n    ```diff\n    -<BulletList>\n    -  <Bullet>...</Bullet>\n    -  <Bullet>...</Bullet>\n    -  <Bullet>...</Bullet>\n    -</BulletList>\n\n    +<List>\n    +  <Text>...</Text>\n    +  <Text>...</Text>\n    +  <Text>...</Text>\n    +</List>\n    ```"
+      }
+    ]
+  },
+  {
     "version": "28.14.0",
     "updates": [
       {
@@ -18,6 +27,78 @@
       {
         "new": ["IconNotification"],
         "summary": "Add Notification icon"
+      }
+    ]
+  },
+  {
+    "version": "28.10.0",
+    "updates": [
+      {
+        "new": ["Disclosure"],
+        "summary": "Add `Disclosure` component\n\n    This component serves as a replacement for `ToggleContent` from [SEEK Style Guide.](https://github.com/seek-oss/seek-style-guide)\n\n    **SEEK STYLE GUIDE MIGRATION GUIDE**\n\n    -   `ToggleContent` has been renamed to `Disclosure`.\n    -   The `onShowMore` prop has been renamed to `onToggle`.\n    -   The spacing around the button has changed to follow [Braid's layout guidelines.](https://seek-oss.github.io/braid-design-system/foundations/layout) Design review is recommeded.\n\n    ```diff\n    -<ToggleContent onShowMore={(expanded) => { ... }} {...rest}>\n    +<Disclosure onToggle={(expanded) => { ... }} {...rest}>\n    ```"
+      }
+    ]
+  },
+  {
+    "version": "28.9.0",
+    "updates": [
+      {
+        "new": ["TextLinkButton"],
+        "summary": "Add `TextLinkButton` component\n\nAllows you to render a semantic button that looks like a `TextLink`.\n\nThis component renders a native `span` element with an ARIA role of `button` so that, unlike a standard button element, text can wrap across multiple lines."
+      }
+    ]
+  },
+  {
+    "version": "28.3.0",
+    "updates": [
+      {
+        "new": ["Tabs", "TabsProvider", "TabPanels", "Tab", "TabPanel"],
+        "summary": "Add Tabs component\n\n    Follows the [WAI Aria Tabs Pattern.](https://www.w3.org/TR/wai-aria-practices-1.2/#tabpanel)\n\n    **EXAMPLE USAGE:**\n\n    ```jsx\n    <TabsProvider id=\"id\">\n      <Stack space=\"medium\">\n        <Tabs label=\"Label\">\n          <Tab>The first tab</Tab>\n          <Tab>The second tab</Tab>\n          <Tab badge={<Badge tone=\"positive\">New</Badge>}>The third tab</Tab>\n        </Tabs>\n        <TabPanels>\n          <TabPanel>...</TabPanel>\n          <TabPanel>...</TabPanel>\n          <TabPanel>...</TabPanel>\n        </TabPanels>\n      </Stack>\n    </TabsProvider>\n    ```"
+      }
+    ]
+  },
+  {
+    "version": "27.2.0",
+    "updates": [
+      {
+        "new": ["HiddenVisually"],
+        "summary": "Add `HiddenVisually` component\n\n    You can now easily provide content to assistive technologies while hiding it from the screen.\n\n    ```js\n    <Text>\n      This content is available to everyone.\n      <HiddenVisually>\n        This content is only available to screen readers.\n      </HiddenVisually>\n    </Text>\n    ```"
+      }
+    ]
+  },
+  {
+    "version": "25.7.0",
+    "updates": [
+      {
+        "new": ["PasswordField"],
+        "summary": "Add PasswordField component\n\n    Provides a password field complete with visibility toggle to switch between a masked and unmasked field value."
+      }
+    ]
+  },
+  {
+    "version": "25.3.0",
+    "updates": [
+      {
+        "new": ["TextDropdown"],
+        "summary": "Add TextDropdown component\n\n    An inline dropdown that can be used as part of a sentence or as an\n    alternative to `Dropdown`, outside of a more structured form.\n\n    Inherits its styling from the parent typographic component, and as such\n    must be used nested within either a `Text` or `Heading` component.\n\n    Example usage:\n\n    ```tsx\n    const [jobTitle, setJobTitle] = useState('Developer');\n\n    <Text>\n      <TextDropdown\n        id=\"jobTitle\"\n        label=\"Job Title\"\n        value={jobTitle}\n        onChange={setJobTitle}\n        options={['Developer', 'Designer', 'Product Manager']}\n      />\n    </Text>;\n    ```"
+      }
+    ]
+  },
+  {
+    "version": "25.2.0",
+    "updates": [
+      {
+        "new": ["Accordion", "AccordionItem"],
+        "summary": "Add `Accordion` and `AccordionItem` components\n\n    Example usage:\n\n    ```jsx\n    <Accordion>\n      <AccordionItem id=\"item_1\" label=\"Accordion item 1\">\n        <Text>Accordion item content</Text>\n      </AccordionItem>\n      <AccordionItem id=\"item_2\" label=\"Accordion item 2\">\n        <Text>Accordion item content</Text>\n      </AccordionItem>\n      <AccordionItem id=\"item_3\" label=\"Accordion item 3\">\n        <Text>Accordion item content</Text>\n      </AccordionItem>\n    </Accordion>\n    ```\n\n    Accordions manage their own state internally by default. If you'd like to take control of them yourself, you can pass an `expanded` prop to `AccordionItem` as well as an `onToggle` callback.\n\n    ```jsx\n    const [expanded, setExpanded] = useState(false);\n\n    <AccordionItem\n      id=\"id\"\n      label=\"Accordion item\"\n      expanded={expanded}\n      onToggle={setExpanded}\n    >\n      <Text>Accordion item content</Text>\n    </AccordionItem>;\n    ```"
+      }
+    ]
+  },
+  {
+    "version": "25.1.0",
+    "updates": [
+      {
+        "new": ["ButtonLink"],
+        "summary": "Add ButtonLink component\n\n    You can now easily render semantic links that look like [Button](https://seek-oss.github.io/braid-design-system/components/Button) elements without needing to use the lower level [ButtonRenderer](https://seek-oss.github.io/braid-design-system/components/ButtonRenderer).\n\n    This component renders a native `a` element by default, but this can be customised via the `linkComponent` prop on [BraidProvider](https://seek-oss.github.io/braid-design-system/components/BraidProvider).\n\n    Example usage:\n\n    ```jsx\n    <ButtonLink href=\"#\" weight=\"strong\">\n      Submit\n    </ButtonLink>\n    ```\n"
       }
     ]
   }

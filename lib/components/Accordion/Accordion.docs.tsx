@@ -5,7 +5,6 @@ import { AccordionItem as PlayroomAccordionItem } from '../../playroom/component
 
 const docs: ComponentDocs = {
   category: 'Content',
-  added: new Date('9 April 2020'),
   screenshotWidths: [320],
   subComponents: ['AccordionItem'],
   migrationGuide: true,
