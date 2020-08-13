@@ -5522,6 +5522,11 @@ date-fns@^1.30.1:
   resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-1.30.1.tgz#2e71bf0b119153dbb4cc4e88d9ea5acfb50dc05c"
   integrity sha512-hBSVCvSmWC+QypYObzwGOd9wqdDpOt+0wl0KbU+R+uuZBS1jN8VsD1ss3irQDknRj5NvxiTF6oj/nDRnN/UQNw==
 
+date-fns@^2.15.0:
+  version "2.15.0"
+  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.15.0.tgz#424de6b3778e4e69d3ff27046ec136af58ae5d5f"
+  integrity sha512-ZCPzAMJZn3rNUvvQIMlXhDr4A+Ar07eLeGsGREoWU19a3Pqf5oYa+ccd+B3F6XVtQY6HANMFdOQ8A+ipFnvJdQ==
+
 death@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/death/-/death-1.1.0.tgz#01aa9c401edd92750514470b8266390c66c67318"
@@ -13901,10 +13906,10 @@ sisteransi@^1.0.4:
   resolved "https://registry.yarnpkg.com/sisteransi/-/sisteransi-1.0.5.tgz#134d681297756437cc05ca01370d3a7a571075ed"
   integrity sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==
 
-sku@10.5.0:
-  version "10.5.0"
-  resolved "https://registry.yarnpkg.com/sku/-/sku-10.5.0.tgz#dc202eebb21881f3df2dc3d4eb2e43a2f77697e9"
-  integrity sha512-g0KqNrLpwZ5R2ILZx7TaLKMVWG+5OkTfsZNV1DbZ4TBl56xcs2v95CU8mgBa7pbWmKZYM2BqbKEQ6q8A6a10sQ==
+sku@^10.5.1:
+  version "10.5.1"
+  resolved "https://registry.yarnpkg.com/sku/-/sku-10.5.1.tgz#29206281704b5744fe7358eba6e11789c3169acc"
+  integrity sha512-Wtv+DagGIuFs3kyzz/0Sgg3I9+TJSMiGjp3QDCZncTpLAK+lsPGPIaBcjnB9wBie+q4CnDY+bBXA9SX3J3lNtg==
   dependencies:
     "@babel/core" "^7.9.0"
     "@babel/plugin-proposal-class-properties" "^7.8.3"

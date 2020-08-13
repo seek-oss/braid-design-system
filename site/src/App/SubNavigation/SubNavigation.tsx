@@ -19,23 +19,9 @@ import {
 } from '../navigationHelpers';
 import { useConfig } from '../ConfigContext';
 import * as styleRefs from './SubNavigation.treat';
-import { ComponentDocs } from '../../types';
+import { useUpdates } from '../UpdateProvider';
 
 type BadgeLabel = 'New' | 'Deprecated';
-
-const getBadge = (
-  docs: ComponentDocs,
-  renderDate: number,
-): BadgeLabel | undefined => {
-  if (docs.deprecationWarning) {
-    return 'Deprecated';
-  }
-
-  const month = 1000 * 60 * 60 * 24 * 31;
-  if (docs.added && renderDate - docs.added.getTime() < month * 2) {
-    return 'New';
-  }
-};
 
 const toneForBadge = (badgeLabel: BadgeLabel) => {
   const toneMap = {
@@ -97,7 +83,18 @@ interface SubNavigationProps {
   onSelect?: () => void;
 }
 export const SubNavigation = ({ onSelect }: SubNavigationProps) => {
-  const { playroomUrl, renderDate } = useConfig();
+  const { playroomUrl } = useConfig();
+  const updates = useUpdates();
+
+  const getBadge = (docs: any): BadgeLabel | undefined => {
+    if (docs.deprecationWarning) {
+      return 'Deprecated';
+    }
+
+    if (updates.isNew(docs.name)) {
+      return 'New';
+    }
+  };
 
   return (
     <Stack space="xlarge">
@@ -150,7 +147,7 @@ export const SubNavigation = ({ onSelect }: SubNavigationProps) => {
           title={category}
           items={categorisedComponents[category].map((docs) => ({
             name: docs.name,
-            badge: getBadge(docs, renderDate),
+            badge: getBadge(docs),
             path: `/components/${docs.name}`,
             onClick: onSelect,
           }))}
@@ -161,7 +158,7 @@ export const SubNavigation = ({ onSelect }: SubNavigationProps) => {
         title="All Components"
         items={documentedComponents.map((docs) => ({
           name: docs.name,
-          badge: getBadge(docs, renderDate),
+          badge: getBadge(docs),
           path: `/components/${docs.name}`,
           onClick: onSelect,
         }))}

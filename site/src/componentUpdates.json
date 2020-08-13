@@ -1,1 +1,24 @@
-[]
+[
+  {
+    "version": "29.1.1",
+    "updates": [
+      {
+        "updated": ["List", "BulletList"],
+        "summary": "List, BulletList: Limit width to 100% of parent"
+      }
+    ]
+  },
+  {
+    "version": "28.14.0",
+    "updates": [
+      {
+        "new": ["useBreakpoint"],
+        "summary": "Add useBreakpoint\n\n`useBreakpoint` will return the breakpoint the browser viewport currently falls within (mobile, tablet or desktop). As this can only be calculated in the browser, the value may also be null. Window resizing is supported.\n\n**Note:** Avoid use of this hook where possible. Responsive properties and media queries are a better option in most cases."
+      },
+      {
+        "new": ["IconNotification"],
+        "summary": "Add Notification icon"
+      }
+    ]
+  }
+]

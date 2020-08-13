@@ -91,6 +91,7 @@
     "cheerio": "^1.0.0-rc.3",
     "concurrently": "^4.1.0",
     "copy-to-clipboard": "^3.2.0",
+    "date-fns": "^2.15.0",
     "didyoumean2": "^3.1.2",
     "fast-glob": "^3.2.4",
     "fs-extra": "^8.1.0",
@@ -110,7 +111,7 @@
     "react-use": "^13.27.0",
     "renovate-config-seek": "0.4.0",
     "sanitize-html": "^1.22.1",
-    "sku": "10.5.0",
+    "sku": "^10.5.1",
     "surge": "^0.20.1",
     "ts-node": "^8.2.0",
     "uuid": "^3.3.3"

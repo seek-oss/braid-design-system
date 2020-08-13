@@ -9,6 +9,7 @@ import { RenderContext } from './types';
 import { ConfigProvider } from './App/ConfigContext';
 import * as themes from '../../lib/themes';
 import { braidVersionToDate } from './getVersionDetails';
+import { UpdateProvider, makeUpdateManager } from './App/UpdateProvider';
 
 const skuRender: Render<RenderContext> = {
   renderApp: async ({ route }) => {
@@ -25,10 +26,11 @@ const skuRender: Render<RenderContext> = {
     const playroomUrl = !CI
       ? 'http://127.0.0.1:8082'
       : `${routerBasename ? `/${routerBasename}` : ''}/playroom`;
+    const today = new Date();
     const appConfig = {
       playroomUrl,
       sourceUrlPrefix,
-      renderDate: new Date().getTime(),
+      renderDate: today.getTime(),
       versionMap,
     };
 
@@ -37,10 +39,14 @@ const skuRender: Render<RenderContext> = {
       appConfig,
     };
 
+    const updateManager = makeUpdateManager(today, versionMap);
+
     const html = renderToString(
       <StaticRouter context={{}} location={route} basename={routerBasename}>
         <ConfigProvider value={appConfig}>
-          <App />
+          <UpdateProvider updateManager={updateManager}>
+            <App />
+          </UpdateProvider>
         </ConfigProvider>
       </StaticRouter>,
     );
