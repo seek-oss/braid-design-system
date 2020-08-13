@@ -1,40 +1,60 @@
-// Slightly modified version of
+// Modified version of
 // https://github.com/atlassian/changesets/blob/master/packages/changelog-github/src/index.ts
 // changing the release line formatting
 const { getInfo } = require('@changesets/get-github-info');
+const yaml = require('js-yaml');
+const fs = require('fs-extra');
+const path = require('path');
 
 const repo = 'seek-oss/braid-design-system';
 
+const parseSummary = (summary) => {
+  const mdRegex = /\s*---([^]*?)\n\s*---\n([^]*)/;
+
+  const execResult = mdRegex.exec(summary);
+  if (!execResult) {
+    // No frontmatter found
+    return {
+      summary: summary.trim(),
+    };
+  }
+
+  const [, frontmatter, roughSummary] = execResult;
+
+  const data = yaml.safeLoad(frontmatter);
+
+  return {
+    summary: roughSummary.trim(),
+    data,
+  };
+};
+
 const changelogFunctions = {
-  getDependencyReleaseLine: async (changesets, dependenciesUpdated) => {
-    if (dependenciesUpdated.length === 0) return '';
-
-    const changesetLink = `- Updated dependencies [${(
-      await Promise.all(
-        changesets.map(async (cs) => {
-          if (cs.commit) {
-            let { links } = await getInfo({
-              repo,
-              commit: cs.commit,
-            });
-            return links.commit;
-          }
-        }),
-      )
-    )
-      .filter((_) => _)
-      .join(', ')}]:`;
-
-    const updatedDepenenciesList = dependenciesUpdated.map(
-      (dependency) => `  - ${dependency.name}@${dependency.newVersion}`,
-    );
-
-    return [changesetLink, ...updatedDepenenciesList].join('\n');
+  getDependencyReleaseLine: async () => {
+    // Not implemented as Braid is not a monorepo
+    return '';
   },
   getReleaseLine: async (changeset) => {
-    const [firstLine, ...futureLines] = changeset.summary
+    const { data, summary } = parseSummary(changeset.summary);
+
+    const [firstLine, ...futureLines] = summary
       .split('\n')
       .map((l) => l.trimRight());
+
+    if (data) {
+      for (const key of Object.keys(data)) {
+        if (!['new', 'updated'].includes(key)) {
+          throw new Error(
+            `${changeset}: Incorect update meta data. Unknown key: ${key}`,
+          );
+        }
+      }
+
+      await fs.writeJSON(path.join(__dirname, `${changeset.id}-data.json`), {
+        ...data,
+        summary,
+      });
+    }
 
     if (changeset.commit) {
       let { links } = await getInfo({
