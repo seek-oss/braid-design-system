@@ -14,9 +14,9 @@ e.g.
 
 <!-- Optional braid frontmatter -->
 ---
-add:
+new:
   - ComponentName
-update:
+updated:
   - OtherComponent
 ---
 
