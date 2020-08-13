@@ -4800,7 +4800,7 @@ Object {
     autoCorrect?: string
     autoSave?: string
     children?: ReactNode
-    className?: string
+    className?: string | number | boolean | ClassDictionary | ClassArray
     color?: string
     contentEditable?: 
         | "false"

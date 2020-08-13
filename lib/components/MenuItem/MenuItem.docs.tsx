@@ -48,7 +48,7 @@ const docs: ComponentDocs = {
         <Box paddingLeft="xxlarge">
           <OverflowMenu label="Options">
             <MenuItem onClick={handler}>Button</MenuItem>
-            <MenuItemLink onClick={handler} href="/">
+            <MenuItemLink onClick={handler} href="#">
               Link
             </MenuItemLink>
           </OverflowMenu>

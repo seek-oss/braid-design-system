@@ -17,23 +17,7 @@ import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
 import * as styleRefs from './MenuItem.treat';
-
-interface MenuItemBaseProps {
-  children: ReactNode;
-  onClick?: () => void;
-  data?: DataAttributeMap;
-}
-
-interface MenuItemLinkProps
-  extends Pick<LinkProps, 'href' | 'target' | 'rel'>,
-    MenuItemBaseProps {}
-
-interface InternalMenuItemLinkProps extends MenuItemLinkProps {
-  type: 'link';
-}
-interface InternalMenuItemButtonProps extends MenuItemBaseProps {
-  type: 'button';
-}
+import { useBoxStyles } from '../Box/useBoxStyles';
 
 const {
   MENU_ITEM_UP,
@@ -46,32 +30,28 @@ const {
   MENU_ITEM_HOVER,
 } = actionTypes;
 
-type MenuItemElement = HTMLButtonElement | HTMLAnchorElement;
+const menuItemChildrenSize = 'standard';
 
-const InternalMenuItem = (
-  props: InternalMenuItemLinkProps | InternalMenuItemButtonProps,
-) => {
-  const { children, onClick, data, type } = props;
+interface UseMenuItemProps {
+  onClick?: () => void;
+  data?: DataAttributeMap;
+  displayName?: string;
+}
+function useMenuItem<MenuItemElement extends HTMLElement>({
+  displayName = 'MenuItem',
+  onClick,
+  data,
+}: UseMenuItemProps) {
   const styles = useStyles(styleRefs);
   const menuContext = useContext(MenuContext);
-  const isButton = type === 'button';
-
-  assert(
-    isButton === !('href' in props || 'target' in props || 'rel' in props),
-    'A MenuItem does not accept link properties. Please use a `MenuItemLink` instead: https://seek-oss.github.io/braid-design-system/components/MenuItem',
-  );
 
   assert(
     menuContext !== null,
-    `A ${
-      isButton ? 'MenuItem' : 'MenuItemLink'
-    } must be rendered as an immediate child of a menu. See the documentation for correct usage: https://seek-oss.github.io/braid-design-system/components/MenuRenderer`,
+    `${displayName} must be rendered as immediate children of a menu. See the documentation for correct usage: https://seek-oss.github.io/braid-design-system/components/MenuItem`,
   );
 
   if (menuContext === null) {
-    throw new Error(
-      `${isButton ? 'MenuItem' : 'MenuItemLink'} rendered outside menu context`,
-    );
+    throw new Error(`${displayName} element rendered outside menu context`);
   }
 
   const { isHighlighted, index, dispatch, focusTrigger } = menuContext;
@@ -82,12 +62,6 @@ const InternalMenuItem = (
       menuItemRef.current?.focus();
     }
   }, [isHighlighted]);
-
-  const clickHandler = () => {
-    if (typeof onClick === 'function') {
-      onClick();
-    }
-  };
 
   const onKeyDown = (event: KeyboardEvent<MenuItemElement>) => {
     const targetKey = normalizeKey(event);
@@ -137,50 +111,81 @@ const InternalMenuItem = (
     }
   };
 
-  const menuItemTextSize = 'standard';
+  return {
+    role: 'menuitem',
+    tabIndex: -1,
+    ref: menuItemRef,
+    onKeyUp,
+    onKeyDown,
+    onMouseEnter: () => dispatch({ type: MENU_ITEM_HOVER, value: index }),
+    onClick: () => {
+      dispatch({ type: MENU_ITEM_CLICK });
 
-  return (
-    <Box
-      component={isButton ? 'button' : Link}
-      type={isButton ? 'button' : undefined}
-      role="menuitem"
-      tabIndex={-1}
-      ref={menuItemRef}
-      href={'href' in props ? props.href : undefined}
-      target={'target' in props ? props.target : undefined}
-      rel={'rel' in props ? props.rel : undefined}
-      onKeyUp={onKeyUp}
-      onKeyDown={onKeyDown}
-      onMouseEnter={() => dispatch({ type: MENU_ITEM_HOVER, value: index })}
-      onClick={() => {
-        dispatch({ type: MENU_ITEM_CLICK });
-        clickHandler();
-      }}
-      display="block"
-      width="full"
-      paddingX="small"
-      background={isHighlighted ? 'selection' : undefined}
-      cursor="pointer"
-      textAlign="left"
-      outline="none"
-      className={[useTouchableSpace(menuItemTextSize), styles.menuItem]}
-      {...buildDataAttributes(data)}
-    >
-      {/*
-        Rendering Text component to provide rendering context
-        for both icons and text labels
-      */}
-      <Text size={menuItemTextSize} baseline={false}>
-        {children}
-      </Text>
-    </Box>
-  );
-};
+      if (typeof onClick === 'function') {
+        onClick();
+      }
+    },
+    className: [
+      styles.menuItem,
+      useTouchableSpace(menuItemChildrenSize),
+      useBoxStyles({
+        component: null,
+        display: 'block',
+        width: 'full',
+        paddingX: 'small',
+        background: isHighlighted ? 'selection' : undefined,
+        cursor: 'pointer',
+        textAlign: 'left',
+        outline: 'none',
+      }),
+    ],
+    ...buildDataAttributes(data),
+  } as const;
+}
 
-export const MenuItem = (props: MenuItemBaseProps) => (
-  <InternalMenuItem {...props} type="button" />
+interface MenuItemChildrenProps {
+  children: ReactNode;
+}
+const MenuItemChildren = ({ children }: MenuItemChildrenProps) => (
+  <Text size={menuItemChildrenSize} baseline={false}>
+    {children}
+  </Text>
 );
 
-export const MenuItemLink = (props: MenuItemLinkProps) => (
-  <InternalMenuItem {...props} type="link" />
+interface MenuItemProps extends Omit<UseMenuItemProps, 'displayName'> {
+  children: ReactNode;
+}
+export const MenuItem = ({ children, onClick, data }: MenuItemProps) => (
+  <Box
+    {...useMenuItem<HTMLButtonElement>({ onClick, data })}
+    component="button"
+    type="button"
+  >
+    <MenuItemChildren>{children}</MenuItemChildren>
+  </Box>
+);
+
+interface MenuItemLinkProps
+  extends MenuItemProps,
+    Pick<LinkProps, 'href' | 'target' | 'rel'> {}
+export const MenuItemLink = ({
+  href,
+  target,
+  rel,
+  onClick,
+  data,
+  children,
+}: MenuItemLinkProps) => (
+  <Link
+    {...useMenuItem<HTMLAnchorElement>({
+      displayName: 'MenuItemLink',
+      onClick,
+      data,
+    })}
+    href={href}
+    target={target}
+    rel={rel}
+  >
+    <MenuItemChildren>{children}</MenuItemChildren>
+  </Link>
 );
