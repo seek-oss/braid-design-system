@@ -6,12 +6,13 @@
 updated:
   - BraidProvider
   - BraidTestProvider
+  - BraidLoadableProvider
   - Link
 ---
 
-Support ref forwarding on [Link](https://seek-oss.github.io/braid-design-system/components/Link)
+Added support for refs on [Link](https://seek-oss.github.io/braid-design-system/components/Link)
 
-Forwarding refs is necessary for certain accessibility patterns, but the `Link` component wasn't doing this correctly.
+Forwarding refs is necessary for certain accessibility patterns (e.g. managing focus states), but the `Link` component wasn't doing this correctly.
 
 Please note that, if you're passing a custom `linkComponent` implementation to [BraidProvider](https://seek-oss.github.io/braid-design-system/components/BraidProvider), you'll need to ensure that you're using the new `makeLinkComponent` helper function to forward refs, otherwise any attempt to pass a ref to `Link` will throw an error.
 

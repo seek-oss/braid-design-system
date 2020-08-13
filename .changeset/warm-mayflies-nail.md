@@ -7,7 +7,7 @@ new:
   - MenuItemLink
 ---
 
-Add **MenuItemLink** component
+Added **MenuItemLink** component
 
 You can now render semantic links within menu components, e.g. [OverflowMenu](https://seek-oss.github.io/braid-design-system/components/OverflowMenu), [MenuRenderer](https://seek-oss.github.io/braid-design-system/components/MenuRenderer)
 
