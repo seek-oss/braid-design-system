@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom/extend-expect';
-import React from 'react';
+import React, { useState, Fragment } from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import {
@@ -18,7 +18,26 @@ const HOME = 36;
 const ARROW_LEFT = 37;
 const ARROW_RIGHT = 39;
 
-function renderTabs({ selectedItem }: { selectedItem?: string } = {}) {
+const TestPanel = ({ children }: { children: string }) => {
+  const [checked, setChecked] = useState(false);
+
+  return (
+    <Fragment>
+      <input
+        type="checkbox"
+        data-testid={`${children}-checkbox`}
+        checked={checked}
+        onChange={() => setChecked(!checked)}
+      />
+      {children}
+    </Fragment>
+  );
+};
+
+function renderTabs({
+  selectedItem,
+  renderInactivePanels,
+}: { selectedItem?: string; renderInactivePanels?: boolean } = {}) {
   const changeHandler = jest.fn();
 
   const TestCase = ({ value }: { value?: string }) => (
@@ -29,17 +48,27 @@ function renderTabs({ selectedItem }: { selectedItem?: string } = {}) {
           <Tab item="second">Second</Tab>
           <Tab item="third">Third</Tab>
         </Tabs>
-        <TabPanels>
-          <TabPanel>Panel 1</TabPanel>
-          <TabPanel>Panel 2</TabPanel>
-          <TabPanel>Panel 3</TabPanel>
+        <TabPanels renderInactivePanels={renderInactivePanels}>
+          <TabPanel>
+            <TestPanel>panel-1</TestPanel>
+          </TabPanel>
+          <TabPanel>
+            <TestPanel>panel-2</TestPanel>
+          </TabPanel>
+          <TabPanel>
+            <TestPanel>panel-3</TestPanel>
+          </TabPanel>
         </TabPanels>
       </TabsProvider>
     </BraidTestProvider>
   );
-  const { getAllByRole, getByRole, getByLabelText, rerender } = render(
-    <TestCase value={selectedItem} />,
-  );
+  const {
+    getAllByRole,
+    getByRole,
+    getByLabelText,
+    rerender,
+    getByTestId,
+  } = render(<TestCase value={selectedItem} />);
 
   return {
     getAllByRole,
@@ -49,6 +78,7 @@ function renderTabs({ selectedItem }: { selectedItem?: string } = {}) {
       rerender(<TestCase value={item} />);
     },
     changeHandler,
+    getByTestId,
   };
 }
 
@@ -85,6 +115,26 @@ describe('Tabs', () => {
 
       expect(firstTab.getAttribute('aria-selected')).toBe('true');
       expect(visiblePanels[0].id).toBe('tabs_1_panel');
+    });
+
+    it('should persist state between tab changes when renderInactivePanels is set', () => {
+      const { getAllByRole, getByTestId } = renderTabs({
+        renderInactivePanels: true,
+      });
+      const [firstTab, secondTab] = getAllByRole('tab');
+
+      let checkbox = getByTestId('panel-1-checkbox');
+
+      userEvent.click(checkbox);
+
+      expect(checkbox).toBeChecked();
+
+      userEvent.click(secondTab);
+      userEvent.click(firstTab);
+
+      checkbox = getByTestId('panel-1-checkbox');
+
+      expect(checkbox).toBeChecked();
     });
   });
 

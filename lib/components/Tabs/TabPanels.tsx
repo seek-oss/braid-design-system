@@ -12,6 +12,7 @@ import { TAB_PANELS_UPDATED } from './Tabs.actions';
 import { TabPanel, TabPanelProps } from './TabPanel';
 
 interface TabPanelsContextValues {
+  renderInactive: boolean;
   panelIndex: number;
 }
 export const TabPanelsContext = createContext<TabPanelsContextValues | null>(
@@ -19,10 +20,14 @@ export const TabPanelsContext = createContext<TabPanelsContextValues | null>(
 );
 
 interface TabPanelsProps {
+  renderInactivePanels?: boolean;
   children: ReactElement<TabPanelProps>[];
 }
 
-export const TabPanels = ({ children }: TabPanelsProps) => {
+export const TabPanels = ({
+  renderInactivePanels = false,
+  children,
+}: TabPanelsProps) => {
   const tabsContext = useContext(TabsContext);
 
   if (!tabsContext) {
@@ -44,6 +49,7 @@ export const TabPanels = ({ children }: TabPanelsProps) => {
       <TabPanelsContext.Provider
         key={index}
         value={{
+          renderInactive: renderInactivePanels,
           panelIndex: index,
         }}
       >
