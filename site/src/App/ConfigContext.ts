@@ -5,6 +5,7 @@ const defaultConfig: AppConfig = {
   playroomUrl: '/',
   sourceUrlPrefix: '',
   renderDate: new Date().getTime(),
+  versionMap: {},
 };
 
 const context = createContext(defaultConfig);

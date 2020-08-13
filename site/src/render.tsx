@@ -8,15 +8,17 @@ import { App } from './App/App';
 import { RenderContext } from './types';
 import { ConfigProvider } from './App/ConfigContext';
 import * as themes from '../../lib/themes';
+import { braidVersionToDate } from './getVersionDetails';
 
 const skuRender: Render<RenderContext> = {
-  renderApp: ({ route }) => {
+  renderApp: async ({ route }) => {
     const {
       IS_GITHUB_PAGES: isGithubPages,
       GITHUB_SHA: prSha,
       CI,
     } = process.env;
     const githubUrl = 'https://github.com/seek-oss/braid-design-system/tree/';
+    const versionMap = await braidVersionToDate();
 
     const sourceUrlPrefix = `${githubUrl}${prSha || 'master'}`;
     const routerBasename = isGithubPages ? 'braid-design-system' : '';
@@ -27,6 +29,7 @@ const skuRender: Render<RenderContext> = {
       playroomUrl,
       sourceUrlPrefix,
       renderDate: new Date().getTime(),
+      versionMap,
     };
 
     const config = {

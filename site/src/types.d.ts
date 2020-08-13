@@ -9,6 +9,7 @@ export interface AppConfig {
   playroomUrl: string;
   sourceUrlPrefix: string;
   renderDate: number;
+  versionMap: { [version: string]: string };
 }
 
 export interface RenderContext {
