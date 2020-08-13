@@ -1,8 +1,26 @@
 import React, { createContext, ReactNode, useContext } from 'react';
+import flatten from 'lodash/flatten';
 
 import { differenceInMonths } from 'date-fns';
 
-import allUpdates from '../componentUpdates.json';
+import releases from '../componentUpdates.json';
+
+interface New {
+  summary: string;
+  new: Array<string>;
+}
+
+interface Updated {
+  summary: string;
+  updated: Array<string>;
+}
+type Update = Updated | New;
+interface Release {
+  version: string;
+  updates: Array<Update>;
+}
+
+const allReleases = releases as Array<Release>;
 
 export const makeUpdateManager = (
   renderDate: Date,
@@ -10,26 +28,38 @@ export const makeUpdateManager = (
 ) => {
   const newThings = new Set();
   const updatedThings = new Set();
+  const componentReleases = new Map();
 
-  for (const update of allUpdates) {
-    const { version, updates } = update;
+  for (const release of allReleases) {
+    const { version, updates } = release;
     const versionReleaseDate = new Date(versionMap[version]);
 
-    if (
+    const isRecentRelease =
       versionMap[version] &&
-      differenceInMonths(versionReleaseDate, renderDate) < 2
-    ) {
-      for (const releaseUpdate of updates) {
-        if ('new' in releaseUpdate) {
-          for (const name of releaseUpdate.new) {
+      differenceInMonths(versionReleaseDate, renderDate) < 2;
+
+    for (const releaseUpdate of updates) {
+      if ('new' in releaseUpdate) {
+        for (const name of releaseUpdate.new) {
+          if (isRecentRelease) {
             newThings.add(name);
           }
-        }
 
-        if ('updated' in releaseUpdate) {
-          for (const name of releaseUpdate.updated) {
+          const c = componentReleases.get(name) ?? new Set();
+          c.add(version);
+          componentReleases.set(name, c);
+        }
+      }
+
+      if ('updated' in releaseUpdate) {
+        for (const name of releaseUpdate.updated) {
+          if (isRecentRelease) {
             updatedThings.add(name);
           }
+
+          const c = componentReleases.get(name) ?? new Set();
+          c.add(version);
+          componentReleases.set(name, c);
         }
       }
     }
@@ -38,6 +68,27 @@ export const makeUpdateManager = (
   return {
     isNew: (name: string) => newThings.has(name),
     isUpdated: (name: string) => updatedThings.has(name),
+    getHistory: (name: string) => {
+      const releventReleases = componentReleases.get(name);
+
+      return flatten(
+        allReleases
+          .filter(({ version }) => releventReleases.has(version))
+          .map(({ version, updates }) =>
+            updates
+              .filter((update) =>
+                'new' in update
+                  ? update.new.includes(name)
+                  : update.updated.includes(name),
+              )
+              .map((update) => ({
+                version,
+                type: 'new' in update ? 'added' : 'updated',
+                summary: update.summary,
+              })),
+          ),
+      );
+    },
   };
 };
 

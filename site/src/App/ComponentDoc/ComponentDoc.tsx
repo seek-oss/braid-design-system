@@ -20,6 +20,7 @@ import { ComponentDocs } from '../../types';
 import Code from '../Code/Code';
 import { ThemedExample } from '../ThemeSetting';
 import { useConfig } from '../ConfigContext';
+import { useUpdates } from '../UpdateProvider';
 
 const handler = () => {
   /* No-op for docs examples */
@@ -41,6 +42,7 @@ export const ComponentDoc = ({
   docs,
 }: ComponentDocProps) => {
   const { sourceUrlPrefix } = useConfig();
+  const { getHistory } = useUpdates();
 
   const componentFolder = `lib/components/${
     subfolder ? `${subfolder}/` : ''
@@ -58,11 +60,14 @@ export const ComponentDoc = ({
     ? [componentName, ...docs.subComponents]
     : componentName;
 
+  const a = getHistory(componentName);
+
   return (
     <Stack space="xlarge">
       <Heading level="2" component="h3">
         {componentName}
       </Heading>
+      <pre>{JSON.stringify(a, null, 2)}</pre>
       {docs.deprecationWarning ? (
         <Alert tone="caution">{docs.deprecationWarning}</Alert>
       ) : null}
