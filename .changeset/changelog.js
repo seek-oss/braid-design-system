@@ -43,7 +43,7 @@ const changelogFunctions = {
 
     if (data) {
       for (const key of Object.keys(data)) {
-        if (!['add', 'update'].includes(key)) {
+        if (!['new', 'updated'].includes(key)) {
           throw new Error(
             `${changeset}: Incorect update meta data. Unknown key: ${key}`,
           );
