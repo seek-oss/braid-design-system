@@ -47,7 +47,7 @@ function useMenuItem<MenuItemElement extends HTMLElement>({
 
   assert(
     menuContext !== null,
-    `${displayName} must be rendered as immediate children of a menu. See the documentation for correct usage: https://seek-oss.github.io/braid-design-system/components/MenuItem`,
+    `${displayName} must be rendered as an immediate child of a menu. See the documentation for correct usage: https://seek-oss.github.io/braid-design-system/components/MenuItem`,
   );
 
   if (menuContext === null) {

@@ -148,7 +148,7 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
         expect(mouseOutMenuItems[2]).not.toHaveFocus();
       });
 
-      it('should trigger the click handler when selecting a menu item', () => {
+      it('should trigger the click handler on a MenuItem', () => {
         const {
           getAllByRole,
           openHandler,
@@ -170,6 +170,31 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
         expect(openHandler).not.toHaveBeenCalled();
         expect(closeHandler).toHaveBeenCalledTimes(1);
         expect(menuItemHandler).toHaveBeenNthCalledWith(1, 'second');
+        expect(menuButton).toHaveFocus();
+      });
+
+      it('should trigger the click handler on a MenuItemLink', () => {
+        const {
+          getAllByRole,
+          openHandler,
+          closeHandler,
+          menuItemHandler,
+        } = renderMenu();
+
+        const { menu, menuButton, menuItems } = getElements({ getAllByRole });
+
+        userEvent.click(menuButton);
+        openHandler.mockClear(); // Clear initial open invocation, to allow later negative assertion
+
+        expect(isVisible(menu)).toBe(true);
+        // `userEvent` is clashing with state update from the `onMouseEnter` handler
+        // on menu item. Need to use `fireEvent`.
+        fireEvent.click(menuItems[2]);
+
+        expect(isVisible(menu)).toBe(false);
+        expect(openHandler).not.toHaveBeenCalled();
+        expect(closeHandler).toHaveBeenCalledTimes(1);
+        expect(menuItemHandler).toHaveBeenNthCalledWith(1, 'third');
         expect(menuButton).toHaveFocus();
       });
     });
