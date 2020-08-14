@@ -245,6 +245,7 @@ export const MenuRenderer = ({
         <Box
           role="menu"
           position="absolute"
+          zIndex="dropdown"
           onMouseLeave={() => {
             dispatch({ type: MENU_MOUSE_LEAVE });
             focusTrigger();
@@ -256,7 +257,7 @@ export const MenuRenderer = ({
           transition="fast"
           right={align === 'right' ? 0 : undefined}
           opacity={!open ? 0 : undefined}
-          className={[styles.menu, !open && styles.menuIsClosed]}
+          className={!open && styles.menuIsClosed}
         >
           <Box paddingY="xxsmall">
             {items.map((item, index) => (
@@ -289,6 +290,7 @@ export const MenuRenderer = ({
             dispatch({ type: BACKDROP_CLICK });
           }}
           position="fixed"
+          zIndex="dropdownBackdrop"
           top={0}
           left={0}
           className={styles.backdrop}

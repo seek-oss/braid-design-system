@@ -39,6 +39,7 @@ export const Toggle = ({
   return (
     <Box
       position="relative"
+      zIndex={0}
       display="flex"
       flexDirection={align === 'left' ? undefined : 'rowReverse'}
       className={styles.root}
@@ -50,6 +51,7 @@ export const Toggle = ({
         checked={on}
         onChange={handleChange(onChange)}
         position="absolute"
+        zIndex={1}
         cursor="pointer"
         opacity={0}
         className={[styles.realField, styles.fieldSize]}

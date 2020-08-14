@@ -116,7 +116,7 @@ export const InlineField = forwardRef<HTMLElement, InternalInlineFieldProps>(
       useBackgroundLightness() === 'light' && (tone !== 'critical' || disabled);
 
     return (
-      <Box position="relative" className={styles.root}>
+      <Box position="relative" zIndex={0} className={styles.root}>
         <Box
           component="input"
           type={type}
@@ -126,6 +126,7 @@ export const InlineField = forwardRef<HTMLElement, InternalInlineFieldProps>(
           value={value}
           checked={checked}
           position="absolute"
+          zIndex={1}
           className={styles.realField}
           cursor={!disabled ? 'pointer' : undefined}
           opacity={0}

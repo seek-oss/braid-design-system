@@ -1080,6 +1080,16 @@ Object {
         | "touchable"
     wmode?: string
     wrap?: string
+    zIndex?: 
+        | "dropdown"
+        | "dropdownBackdrop"
+        | "modal"
+        | "modalBackdrop"
+        | "notification"
+        | "sticky"
+        | 0
+        | 1
+        | 2
 },
 }
 `;
@@ -1533,6 +1543,16 @@ Object {
     width?: 
         | "full"
         | "touchable"
+    zIndex?: 
+        | "dropdown"
+        | "dropdownBackdrop"
+        | "modal"
+        | "modalBackdrop"
+        | "notification"
+        | "sticky"
+        | 0
+        | 1
+        | 2
 },
 }
 `;
