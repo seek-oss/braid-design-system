@@ -16,7 +16,7 @@ For example:
 ```jsx
 <OverflowMenu label="Options">
   <MenuItem onClick={() => {}}>Button</MenuItem>
-  <MenuItemLink href="...">Link</MenuItem>
+  <MenuItemLink href="...">Link</MenuItemLink>
 </OverflowMenu>
 ```
 
