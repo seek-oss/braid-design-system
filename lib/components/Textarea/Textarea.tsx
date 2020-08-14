@@ -127,9 +127,9 @@ const NamedTextarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
         {(overlays, { className, borderRadius, background, ...fieldProps }) => (
           <Box
             position="relative"
+            zIndex={0}
             background={background}
             borderRadius={borderRadius}
-            className={styles.resetZIndex}
           >
             {hasHighlights ? (
               <Box
@@ -151,6 +151,7 @@ const NamedTextarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
             <Box
               component="textarea"
               position="relative"
+              zIndex={1}
               rows={rows}
               value={value}
               onChange={(e: FormEvent<HTMLTextAreaElement>) => {

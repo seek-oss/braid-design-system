@@ -7,6 +7,7 @@ export interface OverlayProps
     Pick<
       BoxProps,
       | 'children'
+      | 'zIndex'
       | 'background'
       | 'borderRadius'
       | 'boxShadow'
@@ -19,6 +20,7 @@ export interface OverlayProps
 }
 
 export const Overlay = ({
+  zIndex,
   background,
   borderRadius,
   boxShadow,
@@ -30,6 +32,7 @@ export const Overlay = ({
 }: OverlayProps) => (
   <Box
     position="absolute"
+    zIndex={zIndex}
     pointerEvents="none"
     background={background}
     borderRadius={borderRadius}

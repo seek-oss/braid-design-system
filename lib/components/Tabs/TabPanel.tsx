@@ -49,6 +49,7 @@ export const TabPanel = ({ children, data }: TabPanelProps) => {
     >
       {isSelected || renderInactive ? children : undefined}
       <Overlay
+        zIndex={1}
         boxShadow="outlineFocus"
         borderRadius="standard"
         className={styles.tabPanelFocusRing}

@@ -96,6 +96,7 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
         cursor="pointer"
         outline="none"
         className={[styles.button, useVirtualTouchable()]}
+        zIndex={0}
         aria-label={label}
         aria-haspopup={ariaHasPopUp}
         aria-expanded={ariaExpanded}

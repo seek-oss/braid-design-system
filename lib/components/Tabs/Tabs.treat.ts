@@ -1,7 +1,6 @@
 import { style } from 'sku/treat';
 
 export const tab = style({
-  zIndex: 1,
   selectors: {
     '&::-moz-focus-inner': {
       border: 0,
@@ -43,7 +42,6 @@ export const marginAuto = style({
 
 export const tabFocusRing = [
   style({
-    zIndex: 1,
     selectors: {
       [`${tab}:focus &`]: {
         opacity: 1,
@@ -56,7 +54,6 @@ export const tabFocusRing = [
 ];
 
 export const tabUnderline = style({
-  zIndex: 2,
   height: 2,
 });
 
@@ -75,7 +72,6 @@ export const tabUnderlineAnimation = style({
 export const tabPanel = style({});
 
 export const tabPanelFocusRing = style({
-  zIndex: 1,
   selectors: {
     [`${tabPanel}:focus > &`]: {
       opacity: 1,
@@ -84,7 +80,6 @@ export const tabPanelFocusRing = style({
 });
 
 export const divider = style((theme) => ({
-  zIndex: 1,
   background: theme.border.color.standard,
   height: theme.border.width.standard,
 }));
