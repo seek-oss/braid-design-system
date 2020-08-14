@@ -78,7 +78,7 @@ export const circleSize = styleMap(({ utils, typography }) =>
       tablet: {
         width: Math.floor(tablet.capHeight),
         height: Math.floor(tablet.capHeight),
-        margin: `0 ${Math.round(mobile.capHeight * 0.15)}px`,
+        margin: `0 ${Math.round(tablet.capHeight * 0.15)}px`,
       },
     }),
   ),
