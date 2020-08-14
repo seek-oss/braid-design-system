@@ -6,12 +6,12 @@ import ScrollMemory from 'react-router-scroll-memory';
 import { App } from './App/App';
 import { RenderContext } from './types';
 import { ConfigProvider } from './App/ConfigContext';
-import { UpdateProvider, makeUpdateManager } from './App/UpdateProvider';
+import { UpdateProvider, makeUpdateManager } from './App/Updates';
 
 export default (app: RenderContext) => {
   const updateManager = makeUpdateManager(
-    new Date(app.appConfig.renderDate),
-    app.appConfig.versionMap,
+    new Date(app.renderDate),
+    app.versionMap,
   );
 
   hydrate(

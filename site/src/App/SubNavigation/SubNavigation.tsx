@@ -19,7 +19,7 @@ import {
 } from '../navigationHelpers';
 import { useConfig } from '../ConfigContext';
 import * as styleRefs from './SubNavigation.treat';
-import { useUpdates } from '../UpdateProvider';
+import { useUpdates } from '../Updates';
 
 type BadgeLabel = 'New' | 'Deprecated';
 

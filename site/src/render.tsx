@@ -9,7 +9,7 @@ import { RenderContext } from './types';
 import { ConfigProvider } from './App/ConfigContext';
 import * as themes from '../../lib/themes';
 import { braidVersionToDate } from './getVersionDetails';
-import { UpdateProvider, makeUpdateManager } from './App/UpdateProvider';
+import { UpdateProvider, makeUpdateManager } from './App/Updates';
 
 const skuRender: Render<RenderContext> = {
   renderApp: async ({ route }) => {
@@ -26,17 +26,18 @@ const skuRender: Render<RenderContext> = {
     const playroomUrl = !CI
       ? 'http://127.0.0.1:8082'
       : `${routerBasename ? `/${routerBasename}` : ''}/playroom`;
-    const today = new Date();
     const appConfig = {
       playroomUrl,
       sourceUrlPrefix,
-      renderDate: today.getTime(),
-      versionMap,
     };
+
+    const today = new Date();
 
     const config = {
       routerBasename,
       appConfig,
+      renderDate: today.getTime(),
+      versionMap,
     };
 
     const updateManager = makeUpdateManager(today, versionMap);
@@ -60,9 +61,13 @@ const skuRender: Render<RenderContext> = {
     };
   },
 
-  provideClientContext: ({ app: { routerBasename, appConfig } }) => ({
+  provideClientContext: ({
+    app: { routerBasename, appConfig, renderDate, versionMap },
+  }) => ({
     routerBasename,
     appConfig,
+    renderDate,
+    versionMap,
   }),
 
   renderDocument: ({ headTags, bodyTags, app: { html, publicPath } }) => {

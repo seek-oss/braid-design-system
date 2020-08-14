@@ -3,7 +3,7 @@ import flatten from 'lodash/flatten';
 
 import { differenceInMonths } from 'date-fns';
 
-import releases from '../componentUpdates.json';
+import releases from '../../componentUpdates.json';
 
 interface New {
   summary: string;
@@ -15,7 +15,8 @@ interface Updated {
   updated: Array<string>;
 }
 type Update = Updated | New;
-interface Release {
+
+export interface Release {
   version: string;
   updates: Array<Update>;
 }

@@ -8,8 +8,6 @@ import { BoxProps } from '../../lib/components/Box/Box';
 export interface AppConfig {
   playroomUrl: string;
   sourceUrlPrefix: string;
-  renderDate: number;
-  versionMap: { [version: string]: string };
 }
 
 export interface RenderContext {
@@ -17,6 +15,8 @@ export interface RenderContext {
   publicPath: string;
   routerBasename: string;
   appConfig: AppConfig;
+  renderDate: number;
+  versionMap: { [version: string]: string };
 }
 
 export interface Page extends RouteProps {

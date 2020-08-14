@@ -20,7 +20,8 @@ import { ComponentDocs } from '../../types';
 import Code from '../Code/Code';
 import { ThemedExample } from '../ThemeSetting';
 import { useConfig } from '../ConfigContext';
-import { useUpdates } from '../UpdateProvider';
+import { useUpdates } from '../Updates';
+import { Markdown } from '../Markdown/Markdown';
 
 const handler = () => {
   /* No-op for docs examples */
@@ -60,14 +61,21 @@ export const ComponentDoc = ({
     ? [componentName, ...docs.subComponents]
     : componentName;
 
-  const a = getHistory(componentName);
+  const history = getHistory(componentName);
 
   return (
     <Stack space="xlarge">
       <Heading level="2" component="h3">
         {componentName}
       </Heading>
-      <pre>{JSON.stringify(a, null, 2)}</pre>
+      <Stack space="large">
+        {history.map((item, index) => (
+          <Stack space="medium" key={index}>
+            <Heading level="3">{item.version}</Heading>
+            <Markdown>{item.summary}</Markdown>
+          </Stack>
+        ))}
+      </Stack>
       {docs.deprecationWarning ? (
         <Alert tone="caution">{docs.deprecationWarning}</Alert>
       ) : null}
