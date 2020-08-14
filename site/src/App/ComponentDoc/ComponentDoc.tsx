@@ -105,6 +105,7 @@ export const ComponentDoc = ({
                     background = 'body',
                     showCodeByDefault = false,
                     playroom,
+                    description,
                   } = example;
 
                   const codeAsString =
@@ -126,6 +127,7 @@ export const ComponentDoc = ({
                         {label && filteredExamples.length > 1 ? (
                           <Heading level="3">{label}</Heading>
                         ) : null}
+                        {description ?? null}
                         <Stack space="xxsmall">
                           {Example ? (
                             <ThemedExample background={background}>
