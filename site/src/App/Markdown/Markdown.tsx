@@ -9,6 +9,8 @@ import {
   List,
   Strong,
   Box,
+  TextLink,
+  Alert,
 } from '../../../../lib/components';
 
 const Code = ({ language, value }: { language: string; value: string }) => (
@@ -37,6 +39,8 @@ const renderers = {
     </Box>
   ),
   code: Code,
+  link: TextLink,
+  blockquote: ({ children }: any) => <Alert>{children}</Alert>,
 };
 
 interface MarkdownProps {

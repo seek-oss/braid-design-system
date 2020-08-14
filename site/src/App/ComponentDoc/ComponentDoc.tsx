@@ -76,12 +76,12 @@ export const ComponentDoc = ({
         <Alert tone="caution">{docs.deprecationWarning}</Alert>
       ) : null}
       <TabsProvider id="component-details">
-        <Stack space="xlarge">
+        <Stack space="large">
           <Tabs label="Component details">
             <Tab>Details</Tab>
             <Tab
               badge={
-                hasNewUpdates ? <Badge tone="positive">New</Badge> : undefined
+                hasNewUpdates ? <Badge tone="promote">New</Badge> : undefined
               }
             >
               Updates
@@ -148,37 +148,36 @@ export const ComponentDoc = ({
                   );
                 })}
               </Stack>
-
-              {Array.isArray(propsToDocument) ? (
-                <TabsProvider id="component-props">
-                  <Stack space="xlarge">
-                    <Tabs label="Component props">
-                      {propsToDocument.map((c) => (
-                        <Tab item={c} key={c}>
-                          {c}
-                        </Tab>
-                      ))}
-                    </Tabs>
-                    <TabPanels>
-                      {propsToDocument.map((c) => (
-                        <TabPanel key={c}>
-                          <ComponentProps componentName={c} />
-                        </TabPanel>
-                      ))}
-                    </TabPanels>
-                  </Stack>
-                </TabsProvider>
-              ) : (
-                <Fragment>
-                  <Divider />
-                  <ComponentProps componentName={componentName} />
-                </Fragment>
-              )}
-
-              <Heading level="3" component="h4">
-                Further References
-              </Heading>
               <Stack space="large">
+                {Array.isArray(propsToDocument) ? (
+                  <TabsProvider id="component-props">
+                    <Stack space="xlarge">
+                      <Tabs label="Component props">
+                        {propsToDocument.map((c) => (
+                          <Tab item={c} key={c}>
+                            {c}
+                          </Tab>
+                        ))}
+                      </Tabs>
+                      <TabPanels>
+                        {propsToDocument.map((c) => (
+                          <TabPanel key={c}>
+                            <ComponentProps componentName={c} />
+                          </TabPanel>
+                        ))}
+                      </TabPanels>
+                    </Stack>
+                  </TabsProvider>
+                ) : (
+                  <Fragment>
+                    <Divider />
+                    <ComponentProps componentName={componentName} />
+                  </Fragment>
+                )}
+
+                <Heading level="3" component="h4">
+                  Further References
+                </Heading>
                 <Text>
                   <TextLink href={sourceUrl}>View Source</TextLink>
                 </Text>

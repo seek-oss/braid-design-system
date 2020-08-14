@@ -37,7 +37,7 @@ export const makeUpdateManager = (
 
     const isRecentRelease =
       versionMap[version] &&
-      differenceInMonths(versionReleaseDate, renderDate) < 2;
+      differenceInMonths(renderDate, versionReleaseDate) < 2;
 
     for (const releaseUpdate of updates) {
       if ('new' in releaseUpdate) {
@@ -100,7 +100,7 @@ export const makeUpdateManager = (
                   summary: update.summary,
                   isRecent: Boolean(
                     versionReleaseDate &&
-                      differenceInMonths(versionReleaseDate, renderDate) < 2,
+                      differenceInMonths(renderDate, versionReleaseDate) < 2,
                   ),
                 };
               }),
