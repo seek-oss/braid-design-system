@@ -1,6 +1,19 @@
 import { style, styleMap } from 'sku/treat';
 import mapValues from 'lodash/mapValues';
 
+export const rootSize = styleMap(({ utils, typography }) =>
+  mapValues(typography.text, ({ mobile, tablet }) =>
+    utils.responsiveStyle({
+      mobile: {
+        height: mobile.capHeight,
+      },
+      tablet: {
+        height: tablet.capHeight,
+      },
+    }),
+  ),
+);
+
 const bounce = style({
   '@keyframes': {
     '33%': {
@@ -18,7 +31,7 @@ const bounce = style({
 });
 
 const animationDelay = 0.07;
-export const indicator = [
+export const circle = [
   bounce,
   style({
     backgroundColor: 'currentColor',
@@ -54,18 +67,18 @@ export const delay = style({
   animationDelay: '0.8s',
 });
 
-export const size = styleMap(({ utils, typography }) =>
+export const circleSize = styleMap(({ utils, typography }) =>
   mapValues(typography.text, ({ mobile, tablet }) =>
     utils.responsiveStyle({
       mobile: {
-        width: mobile.capHeight,
-        height: mobile.capHeight,
+        width: Math.floor(mobile.capHeight),
+        height: Math.floor(mobile.capHeight),
         margin: `0 ${Math.round(mobile.capHeight * 0.15)}px`,
       },
       tablet: {
-        width: tablet.capHeight,
-        height: tablet.capHeight,
-        margin: `0 ${Math.round(tablet.capHeight * 0.15)}px`,
+        width: Math.floor(tablet.capHeight),
+        height: Math.floor(tablet.capHeight),
+        margin: `0 ${Math.round(mobile.capHeight * 0.15)}px`,
       },
     }),
   ),
