@@ -21,12 +21,13 @@ import { useConfig } from '../ConfigContext';
 import * as styleRefs from './SubNavigation.treat';
 import { useUpdates } from '../Updates';
 
-type BadgeLabel = 'New' | 'Deprecated';
+type BadgeLabel = 'New' | 'Deprecated' | 'Updated';
 
 const toneForBadge = (badgeLabel: BadgeLabel) => {
   const toneMap = {
     Deprecated: 'caution',
     New: 'positive',
+    Updated: 'promote',
   } as const;
 
   return toneMap[badgeLabel];
@@ -93,6 +94,10 @@ export const SubNavigation = ({ onSelect }: SubNavigationProps) => {
 
     if (updates.isNew(docs.name)) {
       return 'New';
+    }
+
+    if (updates.isUpdated(docs.name)) {
+      return 'Updated';
     }
   };
 

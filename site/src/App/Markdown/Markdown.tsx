@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
-import SyntaxHighlighter from 'react-syntax-highlighter';
 
-import editorTheme from '../Code/editorTheme';
+import { CodeBlock } from '../Code/Code';
 import {
   Text,
   Heading,
@@ -12,13 +11,9 @@ import {
   Box,
 } from '../../../../lib/components';
 
-const Code = ({ children }: { children: string }) => {
-  return (
-    <SyntaxHighlighter language="tsx" style={editorTheme}>
-      {children}
-    </SyntaxHighlighter>
-  );
-};
+const Code = ({ language, value }: { language: string; value: string }) => (
+  <CodeBlock language={language}>{value}</CodeBlock>
+);
 
 const renderers = {
   root: ({ children }: any) => <Stack space="large">{children}</Stack>,
@@ -31,18 +26,22 @@ const renderers = {
   strong: Strong,
   emphasis: Strong,
   inlineCode: ({ children }: any) => (
-    <Box component="code" display="inline">
+    <Box
+      component="code"
+      display="inline"
+      background="neutralLight"
+      borderRadius="standard"
+      padding="xxsmall"
+    >
       {children}
     </Box>
   ),
-  // code: Code,
+  code: Code,
 };
 
 interface MarkdownProps {
   children: string;
 }
 export function Markdown({ children }: MarkdownProps) {
-  console.log(children);
-
   return <ReactMarkdown renderers={renderers}>{children}</ReactMarkdown>;
 }

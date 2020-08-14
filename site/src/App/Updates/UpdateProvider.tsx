@@ -1,7 +1,7 @@
 import React, { createContext, ReactNode, useContext } from 'react';
 import flatten from 'lodash/flatten';
 
-import { differenceInMonths } from 'date-fns';
+import { differenceInMonths, format } from 'date-fns';
 
 import releases from '../../componentUpdates.json';
 
@@ -72,6 +72,10 @@ export const makeUpdateManager = (
     getHistory: (name: string) => {
       const releventReleases = componentReleases.get(name);
 
+      if (!releventReleases) {
+        return [];
+      }
+
       return flatten(
         allReleases
           .filter(({ version }) => releventReleases.has(version))
@@ -82,11 +86,24 @@ export const makeUpdateManager = (
                   ? update.new.includes(name)
                   : update.updated.includes(name),
               )
-              .map((update) => ({
-                version,
-                type: 'new' in update ? 'added' : 'updated',
-                summary: update.summary,
-              })),
+              .map((update) => {
+                const versionReleaseDate = versionMap[version]
+                  ? new Date(versionMap[version])
+                  : undefined;
+
+                return {
+                  version,
+                  time: versionReleaseDate
+                    ? format(versionReleaseDate, 'PP')
+                    : undefined,
+                  type: 'new' in update ? 'added' : 'updated',
+                  summary: update.summary,
+                  isRecent: Boolean(
+                    versionReleaseDate &&
+                      differenceInMonths(versionReleaseDate, renderDate) < 2,
+                  ),
+                };
+              }),
           ),
       );
     },

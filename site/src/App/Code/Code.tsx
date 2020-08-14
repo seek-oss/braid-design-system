@@ -79,6 +79,33 @@ const CodeButton = ({
   );
 };
 
+export const CodeBlock = ({
+  children,
+  language = 'tsx',
+}: {
+  children: string;
+  language?: string;
+}) => {
+  const styles = useStyles(styleRefs);
+
+  return (
+    <Box
+      position="relative"
+      padding="xxsmall"
+      borderRadius="standard"
+      className={styles.code}
+    >
+      <Box padding={['small', 'medium', 'large']}>
+        <Text size="small" component="pre" baseline={false}>
+          <SyntaxHighlighter language={language} style={editorTheme}>
+            {children}
+          </SyntaxHighlighter>
+        </Text>
+      </Box>
+    </Box>
+  );
+};
+
 interface CodeProps {
   playroom?: boolean;
   collapsedByDefault?: boolean;
@@ -89,7 +116,6 @@ export default ({
   collapsedByDefault = false,
   children,
 }: CodeProps) => {
-  const styles = useStyles(styleRefs);
   const [hideCode, setHideCode] = useState(collapsedByDefault);
   const { playroomUrl } = useConfig();
 
@@ -115,22 +141,7 @@ export default ({
         {typeof children !== 'string' && (
           <ThemedExample background="body">{children}</ThemedExample>
         )}
-        {hideCode ? null : (
-          <Box
-            position="relative"
-            padding="xxsmall"
-            borderRadius="standard"
-            className={styles.code}
-          >
-            <Box padding={['small', 'medium', 'large']}>
-              <Text size="small" component="pre" baseline={false}>
-                <SyntaxHighlighter language="tsx" style={editorTheme}>
-                  {snippet}
-                </SyntaxHighlighter>
-              </Text>
-            </Box>
-          </Box>
-        )}
+        {hideCode ? null : <CodeBlock>{snippet}</CodeBlock>}
         <Inline space="xxsmall" align="right">
           {collapsedByDefault ? (
             <CodeButton onClick={() => setHideCode(!hideCode)}>
