@@ -180,6 +180,7 @@ export const Tab = ({ children, data, badge, item }: TabProps) => {
       cursor="pointer"
       outline="none"
       position="relative"
+      zIndex={1}
       paddingX={paddingX}
       className={styles.tab}
       {...buildDataAttributes(data)}
@@ -211,6 +212,7 @@ export const Tab = ({ children, data, badge, item }: TabProps) => {
       >
         <Box
           position="absolute"
+          zIndex={1}
           left={0}
           right={0}
           bottom={0}
@@ -219,6 +221,7 @@ export const Tab = ({ children, data, badge, item }: TabProps) => {
         <Box
           background="neutral"
           position="absolute"
+          zIndex={2}
           transition="fast"
           left={0}
           right={0}
@@ -233,6 +236,7 @@ export const Tab = ({ children, data, badge, item }: TabProps) => {
         <Box
           background="formAccent"
           position="absolute"
+          zIndex={2}
           transition="fast"
           left={0}
           right={0}
@@ -245,6 +249,7 @@ export const Tab = ({ children, data, badge, item }: TabProps) => {
         />
       </Box>
       <Overlay
+        zIndex={1}
         boxShadow="outlineFocus"
         borderRadius="standard"
         className={styles.tabFocusRing}

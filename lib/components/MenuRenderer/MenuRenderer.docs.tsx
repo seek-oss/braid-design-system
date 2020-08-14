@@ -5,10 +5,12 @@ import {
   Box,
   MenuRenderer,
   MenuItem,
+  MenuItemLink,
   Text,
   Stack,
   IconChevron,
   TextLink,
+  Strong,
 } from '..';
 
 const docs: ComponentDocs = {
@@ -24,14 +26,20 @@ const docs: ComponentDocs = {
       </Text>
       <Text>
         Used to build higher level menu components that adhere to our
-        accessibility standards, e.g.
+        accessibility standards, e.g.{' '}
         <TextLink href="/components/OverflowMenu">OverflowMenu</TextLink> uses
         this internally.
       </Text>
       <Text>
-        Implementations of this component must provide a `trigger` that can
-        accept DOM properties, in particular event handlers and aria properties
-        used to manage the interactions.
+        Implementations of this component must provide a{' '}
+        <Strong>trigger</Strong> element that can accept DOM properties
+        including event handlers and aria properties used to manage the
+        interactions.
+      </Text>
+      <Text>
+        Child nodes must be{' '}
+        <TextLink href="/components/MenuItem">MenuItem/MenuItemLink</TextLink>{' '}
+        elements.
       </Text>
     </Stack>
   ),
@@ -52,8 +60,8 @@ const docs: ComponentDocs = {
             </Box>
           )}
         >
-          <MenuItem onClick={() => {}}>First</MenuItem>
-          <MenuItem onClick={() => {}}>Second</MenuItem>
+          <MenuItem onClick={() => {}}>Button</MenuItem>
+          <MenuItemLink href="#">Link</MenuItemLink>
         </MenuRenderer>
       `,
       Example: ({ handler }) => (
@@ -70,8 +78,8 @@ const docs: ComponentDocs = {
             </Box>
           )}
         >
-          <MenuItem onClick={handler}>First</MenuItem>
-          <MenuItem onClick={handler}>Second</MenuItem>
+          <MenuItem onClick={handler}>Button</MenuItem>
+          <MenuItemLink href="#">Link</MenuItemLink>
         </MenuRenderer>
       ),
     },
@@ -97,8 +105,8 @@ const docs: ComponentDocs = {
             </Box>
           )}
         >
-          <MenuItem onClick={() => {}}>First</MenuItem>
-          <MenuItem onClick={() => {}}>Second</MenuItem>
+          <MenuItem onClick={() => {}}>Button</MenuItem>
+          <MenuItemLink href="#">Link</MenuItemLink>
         </MenuRenderer>
       `,
       Example: ({ handler }) => (
@@ -116,8 +124,8 @@ const docs: ComponentDocs = {
             </Box>
           )}
         >
-          <MenuItem onClick={handler}>First</MenuItem>
-          <MenuItem onClick={handler}>Second</MenuItem>
+          <MenuItem onClick={handler}>Button</MenuItem>
+          <MenuItemLink href="#">Link</MenuItemLink>
         </MenuRenderer>
       ),
     },
@@ -138,8 +146,8 @@ const docs: ComponentDocs = {
             </Box>
           )}
         >
-          <MenuItem onClick={() => {}}>First</MenuItem>
-          <MenuItem onClick={() => {}}>Second</MenuItem>
+          <MenuItem onClick={() => {}}>Button</MenuItem>
+          <MenuItemLink href="#">Link</MenuItemLink>
         </MenuRenderer>
       `,
       Example: ({ handler }) => (
@@ -157,8 +165,8 @@ const docs: ComponentDocs = {
             </Box>
           )}
         >
-          <MenuItem onClick={handler}>First</MenuItem>
-          <MenuItem onClick={handler}>Second</MenuItem>
+          <MenuItem onClick={handler}>Button</MenuItem>
+          <MenuItemLink href="#">Link</MenuItemLink>
         </MenuRenderer>
       ),
     },

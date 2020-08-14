@@ -61,16 +61,17 @@ If you'd like to customise the technical implementation of all `Link` and `TextL
 ```tsx
 import React from 'react';
 import { Link as ReactRouterLink } from 'react-router-dom';
-import { BraidProvider, LinkComponent } from 'braid-design-system';
+import { BraidProvider, makeLinkComponent } from 'braid-design-system';
 import wireframe from 'braid-design-system/themes/wireframe';
 
 // First create the custom link implementation:
-const CustomLink: LinkComponent = ({ href, ...restProps }) =>
+const CustomLink = makeLinkComponent(({ href, ...restProps }, ref) =>
   href[0] === '/' ? (
-    <ReactRouterLink to={href} {...restProps} />
+    <ReactRouterLink ref={ref} to={href} {...restProps} />
   ) : (
-    <a href={href} {...restProps} />
-  );
+    <a ref={ref} href={href} {...restProps} />
+  ),
+);
 
 // Then pass it to BraidProvider:
 export const App = () => (

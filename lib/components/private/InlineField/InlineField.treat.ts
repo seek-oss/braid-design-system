@@ -6,14 +6,12 @@ import { debugTouchable } from '../touchable/debugTouchable';
 // Reset the z-index at the parent level to scope
 // overrides internally.
 export const root = style({
-  zIndex: 0,
   ':hover': {
     zIndex: 1,
   },
 });
 
 const realFieldBase = style({
-  zIndex: 1,
   width: hitArea,
   height: hitArea,
   selectors: {

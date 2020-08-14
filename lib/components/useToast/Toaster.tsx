@@ -1,8 +1,6 @@
 import React, { useCallback } from 'react';
-import { useStyles } from 'sku/react-treat';
 
 import { Box } from '..';
-import * as styleRefs from './Toast.treat';
 import ToastComponent from './Toast';
 import { useFlipList } from './useFlipList';
 import { InternalToast } from './ToastTypes';
@@ -12,8 +10,6 @@ interface ToasterProps {
   removeToast: (key: string) => void;
 }
 export const Toaster = ({ toasts, removeToast }: ToasterProps) => {
-  const styles = useStyles(styleRefs);
-
   const { itemRef, remove } = useFlipList();
 
   const onClear = useCallback(
@@ -28,11 +24,11 @@ export const Toaster = ({ toasts, removeToast }: ToasterProps) => {
   return (
     <Box
       position="fixed"
+      zIndex="notification"
       width="full"
       pointerEvents="none"
       paddingX="gutter"
       bottom={0}
-      className={styles.toaster}
     >
       {toasts.map(({ id, ...rest }) => (
         <Box key={id} paddingBottom="small">
