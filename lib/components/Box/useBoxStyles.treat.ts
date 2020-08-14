@@ -384,3 +384,18 @@ export const outline = styleMap({
 export const opacity = styleMap({
   0: { opacity: 0 },
 });
+
+const zIndexRules = {
+  0: 0,
+  1: 1,
+  2: 2,
+  dropdownBackdrop: 90,
+  dropdown: 100,
+  sticky: 200,
+  modalBackdrop: 290,
+  modal: 300,
+  notification: 400,
+} as const;
+export const zIndex = styleMap(
+  mapToStyleProperty(zIndexRules, 'zIndex'),
+) as Record<keyof typeof zIndexRules, string>; // Remove this when 'styleMap' supports numbers as keys and it's been released to sku consumers;

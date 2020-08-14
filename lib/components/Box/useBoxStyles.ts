@@ -55,6 +55,7 @@ export interface UseBoxStylesProps {
   userSelect?: keyof typeof styleRefs.userSelect;
   outline?: keyof typeof styleRefs.outline;
   opacity?: keyof typeof styleRefs.opacity;
+  zIndex?: keyof typeof styleRefs.zIndex;
   className?: Parameters<typeof classnames>[0];
 }
 
@@ -101,6 +102,7 @@ export const useBoxStyles = ({
   userSelect,
   outline,
   opacity,
+  zIndex,
   className,
 }: UseBoxStylesProps) => {
   const resetStyles = useStyles(resetStyleRefs);
@@ -233,6 +235,7 @@ export const useBoxStyles = ({
     styles.userSelect[userSelect!],
     styles.outline[outline!],
     styles.opacity[opacity!],
+    styles.zIndex[zIndex!],
     className,
   );
 };

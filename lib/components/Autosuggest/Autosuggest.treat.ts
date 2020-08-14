@@ -1,14 +1,8 @@
 import { style } from 'sku/treat';
-import * as zIndex from '../private/zIndex';
-
-export const zIndexContainer = style({
-  zIndex: zIndex.pageOverlay,
-});
 
 export const backdrop = style({
   width: '100vw',
   height: '100vh',
-  zIndex: zIndex.backdrop,
   background: 'black',
 });
 
@@ -18,7 +12,6 @@ export const backdropVisible = style({
 
 const menuBase = style({
   overflowY: 'auto',
-  zIndex: zIndex.pageOverlay,
 });
 const menuHeight = style(({ utils, grid, touchableSize, space }) => {
   const calcMenuHeight = (numSuggestions: number) =>
