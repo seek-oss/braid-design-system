@@ -42,6 +42,7 @@ export interface ComponentDocs {
 
 export interface ComponentExample {
   label?: string;
+  description?: ReactNodeNoStrings;
   docsSite?: boolean;
   storybook?: boolean;
   background?: NonNullable<BoxProps['background']>;
