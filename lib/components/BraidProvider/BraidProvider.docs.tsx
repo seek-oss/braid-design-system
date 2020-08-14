@@ -1,3 +1,5 @@
+import React, { Fragment } from 'react';
+import { Text, TextLink, Strong } from '../';
 import { ComponentDocs } from '../../../site/src/types';
 
 const docs: ComponentDocs = {
@@ -18,20 +20,46 @@ const docs: ComponentDocs = {
       `,
     },
     {
-      label: 'Custom link implementation',
+      label: 'Providing a custom link component',
+      description: (
+        <Fragment>
+          <Text>
+            The <Strong>linkComponent</Strong> prop allows you to customise the
+            rendering of Braid links (e.g.{' '}
+            <TextLink href="/components/Link">Link</TextLink>,{' '}
+            <TextLink href="/components/TextLink">TextLink</TextLink>,{' '}
+            <TextLink href="/components/ButtonLink">ButtonLink</TextLink>,{' '}
+            <TextLink href="/components/MenuItem">MenuItemLink</TextLink>)
+            across an entire application. This is useful for conditionally
+            rendering React Router links, handling analytics, etc.
+          </Text>
+          <Text>
+            When defining a custom link component, ensure you’re using the{' '}
+            <Strong>makeLinkComponent</Strong> helper function and forwarding
+            the <Strong>ref</Strong> argument, otherwise certain link usages
+            will be unable to function correctly.
+          </Text>
+          <Text>
+            If you want to make use of this mechanism within your own
+            components, use <TextLink href="/components/Link">Link</TextLink>{' '}
+            which simply forwards your custom link component internally.
+          </Text>
+        </Fragment>
+      ),
       code: `
         import React from 'react';
         import { Link as ReactRouterLink } from 'react-router-dom';
-        import { BraidProvider, LinkComponent } from 'braid-design-system';
+        import { BraidProvider, makeLinkComponent } from 'braid-design-system';
         import wireframe from 'braid-design-system/themes/wireframe';
 
         // First create the custom link implementation:
-        const CustomLink: LinkComponent = ({ href, ...restProps }) =>
+        const CustomLink = makeLinkComponent(({ href, ...restProps }, ref) =>
           href[0] === '/' ? (
-            <ReactRouterLink to={href} {...restProps} />
+            <ReactRouterLink ref={ref} to={href} {...restProps} />
           ) : (
-            <a href={href} {...restProps} />
-          );
+            <a ref={ref} href={href} {...restProps} />
+          )
+        );
 
         // Then pass it to BraidProvider:
         export const App = () => (

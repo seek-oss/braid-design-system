@@ -1,12 +1,7 @@
 import { globalStyle, style } from 'sku/treat';
-import { pageOverlay } from '../../../../lib/components/private/zIndex';
 import { menuWidth, headerHeight, gutterSize } from './navigationSizes';
 
 export const isOpen = style({});
-
-const bodyBackground = style(({ color }) => ({
-  background: color.background.body,
-}));
 
 const headerOffset = style(({ utils, grid, space }) =>
   utils.responsiveStyle({
@@ -26,10 +21,6 @@ const fixedWidthAboveMobile = style(({ utils, space, grid }) =>
     },
   }),
 );
-
-const overlay = style({
-  zIndex: pageOverlay,
-});
 
 const hideOnMobileWhenOpen = style(({ breakpoint }) => ({
   '@media': {
@@ -63,14 +54,8 @@ const subNavOffsetAboveMobile = style(({ utils }) =>
   }),
 );
 
-export const hide = style({
-  opacity: 0,
-});
-
 export const subNavigationContainer = [
   headerOffset,
-  bodyBackground,
-  overlay,
   fixedWidthAboveMobile,
   hideOnMobileWhenClosed,
 ];
@@ -80,8 +65,6 @@ export const pageContent = [
   subNavOffsetAboveMobile,
   hideOnMobileWhenOpen,
 ];
-
-export const stickyHeader = [overlay, bodyBackground];
 
 globalStyle('html, body', {
   margin: 0,

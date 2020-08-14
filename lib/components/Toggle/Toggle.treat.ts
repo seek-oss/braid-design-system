@@ -9,7 +9,6 @@ const anticipationRatio = 0.12;
 // Reset the z-index at the parent level to scope
 // overrides internally.
 export const root = style({
-  zIndex: 0,
   ':hover': {
     zIndex: 1,
   },
@@ -17,7 +16,6 @@ export const root = style({
 
 const realFieldBase = style({
   height: hitArea,
-  zIndex: 1,
   selectors: {
     ...debugTouchable(),
   },
