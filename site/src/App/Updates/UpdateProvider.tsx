@@ -1,7 +1,7 @@
 import React, { createContext, ReactNode, useContext } from 'react';
 import flatten from 'lodash/flatten';
 
-import { differenceInMonths, format } from 'date-fns';
+import { differenceInMonths, format, formatDistance } from 'date-fns';
 
 import releases from '../../componentUpdates.json';
 
@@ -26,6 +26,7 @@ const allReleases = releases as Array<Release>;
 export const makeUpdateManager = (
   renderDate: Date,
   versionMap: { [version: string]: string },
+  currentVersion: string,
 ) => {
   const newThings = new Set();
   const updatedThings = new Set();
@@ -67,6 +68,10 @@ export const makeUpdateManager = (
   }
 
   return {
+    getCurrentVersionInfo: () => ({
+      version: currentVersion,
+      date: versionMap[currentVersion],
+    }),
     isNew: (name: string) => newThings.has(name),
     isUpdated: (name: string) => updatedThings.has(name),
     getHistory: (name: string) => {
@@ -102,6 +107,11 @@ export const makeUpdateManager = (
                     versionReleaseDate &&
                       differenceInMonths(renderDate, versionReleaseDate) < 2,
                   ),
+                  recency:
+                    versionReleaseDate &&
+                    formatDistance(versionReleaseDate, renderDate, {
+                      addSuffix: true,
+                    }),
                 };
               }),
           ),

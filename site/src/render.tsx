@@ -10,6 +10,7 @@ import { ConfigProvider } from './App/ConfigContext';
 import * as themes from '../../lib/themes';
 import { braidVersionToDate } from './getVersionDetails';
 import { UpdateProvider, makeUpdateManager } from './App/Updates';
+import { version } from '../../package.json';
 
 const skuRender: Render<RenderContext> = {
   renderApp: async ({ route }) => {
@@ -38,9 +39,10 @@ const skuRender: Render<RenderContext> = {
       appConfig,
       renderDate: today.getTime(),
       versionMap,
+      currentVersion: version,
     };
 
-    const updateManager = makeUpdateManager(today, versionMap);
+    const updateManager = makeUpdateManager(today, versionMap, version);
 
     const html = renderToString(
       <StaticRouter context={{}} location={route} basename={routerBasename}>
@@ -62,12 +64,13 @@ const skuRender: Render<RenderContext> = {
   },
 
   provideClientContext: ({
-    app: { routerBasename, appConfig, renderDate, versionMap },
+    app: { routerBasename, appConfig, renderDate, versionMap, currentVersion },
   }) => ({
     routerBasename,
     appConfig,
     renderDate,
     versionMap,
+    currentVersion,
   }),
 
   renderDocument: ({ headTags, bodyTags, app: { html, publicPath } }) => {

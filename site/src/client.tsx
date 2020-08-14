@@ -12,6 +12,7 @@ export default (app: RenderContext) => {
   const updateManager = makeUpdateManager(
     new Date(app.renderDate),
     app.versionMap,
+    app.currentVersion,
   );
 
   hydrate(

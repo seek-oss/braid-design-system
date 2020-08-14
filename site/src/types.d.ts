@@ -17,6 +17,7 @@ export interface RenderContext {
   appConfig: AppConfig;
   renderDate: number;
   versionMap: { [version: string]: string };
+  currentVersion: string;
 }
 
 export interface Page extends RouteProps {

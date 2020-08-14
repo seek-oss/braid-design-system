@@ -197,7 +197,9 @@ export const ComponentDoc = ({
                     <Inline space="small" alignY="bottom">
                       <Heading level="3">v{item.version}</Heading>
                       <Text>{item.time}</Text>
-                      {item.isRecent ? <Badge tone="promote">New</Badge> : null}
+                      {item.isRecent && item.recency ? (
+                        <Badge tone="promote">{item.recency}</Badge>
+                      ) : null}
                     </Inline>
                     <Markdown>{item.summary}</Markdown>
                   </Stack>

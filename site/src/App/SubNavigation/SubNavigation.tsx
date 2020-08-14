@@ -103,6 +103,8 @@ export const SubNavigation = ({ onSelect }: SubNavigationProps) => {
 
   return (
     <Stack space="xlarge">
+      <Text weight="strong">v{updates.getCurrentVersionInfo().version}</Text>
+
       <ThemeToggle />
 
       <SubNavigationGroup
