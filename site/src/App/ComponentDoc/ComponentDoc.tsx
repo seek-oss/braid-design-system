@@ -63,9 +63,13 @@ export const ComponentDoc = ({
     ? [componentName, ...docs.subComponents]
     : componentName;
 
-  const history = getHistory(componentName);
+  const relevantNames = docs.subComponents
+    ? [componentName, ...docs.subComponents]
+    : [componentName];
 
-  const hasNewUpdates = isNew(componentName) || isUpdated(componentName);
+  const history = getHistory(...relevantNames);
+
+  const hasNewUpdates = isNew(...relevantNames) || isUpdated(...relevantNames);
 
   return (
     <Stack space="xlarge">

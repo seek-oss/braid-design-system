@@ -5,6 +5,9 @@ import { differenceInMonths, format, formatDistance } from 'date-fns';
 
 import releases from '../../componentUpdates.json';
 
+const hasIntersection = (a: Array<string>, b: Array<string>) =>
+  a.filter((value) => b.includes(value)).length > 0;
+
 interface New {
   summary: string;
   new: Array<string>;
@@ -28,9 +31,9 @@ export const makeUpdateManager = (
   versionMap: { [version: string]: string },
   currentVersion: string,
 ) => {
-  const newThings = new Set();
-  const updatedThings = new Set();
-  const componentReleases = new Map();
+  const newThings = new Set<string>();
+  const updatedThings = new Set<string>();
+  const componentReleases = new Map<string, Set<string>>();
 
   for (const release of allReleases) {
     const { version, updates } = release;
@@ -72,10 +75,19 @@ export const makeUpdateManager = (
       version: currentVersion,
       date: versionMap[currentVersion],
     }),
-    isNew: (name: string) => newThings.has(name),
-    isUpdated: (name: string) => updatedThings.has(name),
-    getHistory: (name: string) => {
-      const releventReleases = componentReleases.get(name);
+    isNew: (...names: Array<string>) =>
+      hasIntersection(names, Array.from(newThings.values())),
+    isUpdated: (...names: Array<string>) =>
+      hasIntersection(names, Array.from(updatedThings.values())),
+    getHistory: (...names: Array<string>) => {
+      let releventReleases = new Set<string>();
+
+      for (const name of names) {
+        releventReleases = new Set([
+          ...Array.from(releventReleases),
+          ...Array.from(componentReleases.get(name) ?? []),
+        ]);
+      }
 
       if (!releventReleases) {
         return [];
@@ -88,8 +100,8 @@ export const makeUpdateManager = (
             updates
               .filter((update) =>
                 'new' in update
-                  ? update.new.includes(name)
-                  : update.updated.includes(name),
+                  ? hasIntersection(update.new, names)
+                  : hasIntersection(update.updated, names),
               )
               .map((update) => {
                 const versionReleaseDate = versionMap[version]
