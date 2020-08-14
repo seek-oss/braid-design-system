@@ -1,5 +1,11 @@
 # braid-design-system
 
+## 29.2.1
+
+### Patch Changes
+
+- **Loader:** Fix rendering issues due to browser rounding errors ([#728](https://github.com/seek-oss/braid-design-system/pull/728))
+
 ## 29.2.0
 
 ### Minor Changes
