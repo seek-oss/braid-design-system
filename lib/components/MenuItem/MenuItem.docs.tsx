@@ -15,6 +15,7 @@ import {
 const docs: ComponentDocs = {
   category: 'Content',
   subComponents: ['MenuItemLink'],
+  added: new Date('14 August 2020'),
   screenshotWidths: [],
   migrationGuide: true,
   description: (
