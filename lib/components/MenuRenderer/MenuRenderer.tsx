@@ -1,7 +1,7 @@
+import assert from 'assert';
 import React, {
   KeyboardEvent,
   createContext,
-  Children,
   useRef,
   useReducer,
   useEffect,
@@ -10,7 +10,9 @@ import React, {
   Ref,
 } from 'react';
 import { useStyles } from 'sku/react-treat';
-import { Box, BoxProps } from '../Box/Box';
+import flattenChildren from 'react-keyed-flatten-children';
+import { MenuItem, MenuItemLink, Box } from '../';
+import { BoxProps } from '../Box/Box';
 import { normalizeKey } from '../private/normalizeKey';
 import { getNextIndex } from '../private/getNextIndex';
 import { Overlay } from '../private/Overlay/Overlay';
@@ -92,7 +94,17 @@ export const MenuRenderer = ({
   const styles = useStyles(styleRefs);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const hasOpened = useRef<boolean>(false);
-  const items = Children.toArray(children);
+  const items = flattenChildren(children);
+
+  assert(
+    items.every(
+      (item) =>
+        typeof item === 'object' &&
+        'type' in item &&
+        (item.type === MenuItem || item.type === MenuItemLink),
+    ),
+    'All child nodes within a menu component must be a MenuItem or MenuItemLink: https://seek-oss.github.io/braid-design-system/components/MenuItem',
+  );
 
   const [{ open, highlightIndex }, dispatch] = useReducer(
     (state: State, action: Action): State => {

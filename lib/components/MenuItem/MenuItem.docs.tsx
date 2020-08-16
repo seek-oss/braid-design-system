@@ -21,6 +21,12 @@ const docs: ComponentDocs = {
   description: (
     <Stack space="large">
       <Text>
+        Follows the{' '}
+        <TextLink href="https://www.w3.org/TR/wai-aria-practices-1.1/#menu">
+          WAI-ARIA Menu Pattern.
+        </TextLink>
+      </Text>
+      <Text>
         For use within menu components, e.g.{' '}
         <TextLink href="/components/OverflowMenu">OverflowMenu</TextLink>,{' '}
         <TextLink href="/components/MenuRenderer">MenuRenderer</TextLink>.
