@@ -4,7 +4,7 @@ import {
   TextLinkRendererProps,
 } from '../TextLinkRenderer/TextLinkRenderer';
 import {
-  useLinkComponent,
+  useLinkComponentWithoutRefSupport,
   LinkComponentProps,
 } from '../BraidProvider/BraidProvider';
 
@@ -18,7 +18,7 @@ export const TextLink = ({
   hitArea,
   ...props
 }: TextLinkProps) => {
-  const LinkComponent = useLinkComponent();
+  const LinkComponent = useLinkComponentWithoutRefSupport();
 
   return (
     <TextLinkRenderer

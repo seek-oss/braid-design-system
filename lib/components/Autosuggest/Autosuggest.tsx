@@ -544,6 +544,7 @@ export function Autosuggest<Value>({
       {showMobileBackdrop ? (
         <Box
           position="fixed"
+          zIndex="dropdownBackdrop"
           transition="fast"
           display={['block', 'none']}
           pointerEvents={isOpen ? undefined : 'none'}
@@ -560,7 +561,7 @@ export function Autosuggest<Value>({
         {...(showMobileBackdrop && isOpen
           ? {
               position: 'relative',
-              className: styles.zIndexContainer,
+              zIndex: 'dropdown',
             }
           : null)}
       >
@@ -595,6 +596,7 @@ export function Autosuggest<Value>({
                   component="ul"
                   display={isOpen && hasSuggestions ? 'block' : 'none'}
                   position="absolute"
+                  zIndex="dropdown"
                   background="card"
                   borderRadius="standard"
                   boxShadow="medium"

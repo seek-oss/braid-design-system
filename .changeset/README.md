@@ -2,6 +2,28 @@
 
 [changesets](https://github.com/atlassian/changesets)
 
+### Braid specific frontmatter
+
+Each changeset can pass extra metadata about the release.
+
+e.g.
+```
+---
+'braid-design-system': patch
+---
+
+<!-- Optional braid frontmatter -->
+---
+new:
+  - ComponentName
+updated:
+  - OtherComponent
+---
+
+
+My summary of the change
+```
+
 ### Submit a PR
 
 Add a changeset as part of a PR if the changes impact the consumer. A changeset is basically a markdown file which also describes the size of the change (patch, minor or major).

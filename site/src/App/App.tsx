@@ -8,7 +8,7 @@ import { docs } from '../../../lib/themes';
 import {
   BraidProvider,
   ToastProvider,
-  LinkComponent,
+  makeLinkComponent,
 } from '../../../lib/components';
 import { Navigation } from './Navigation/Navigation';
 import home from './routes/home';
@@ -17,25 +17,34 @@ import foundations from './routes/foundations';
 import examples from './routes/examples';
 import components from './routes/components';
 
-const CustomLink: LinkComponent = ({ href, rel, onClick, ...restProps }) =>
-  href[0] === '/' && !/\/playroom\/?($|#)/.test(href) ? (
-    <ReactRouterLink to={href} rel={rel} onClick={onClick} {...restProps} />
-  ) : (
-    <a
-      href={href}
-      rel={rel || 'noreferrer noopener'}
-      {...restProps}
-      onClick={(event) => {
-        if (href === '' || href === '#') {
-          event.preventDefault();
-        }
+const CustomLink = makeLinkComponent(
+  ({ href, rel, onClick, ...restProps }, ref) =>
+    href[0] === '/' && !/\/playroom\/?($|#)/.test(href) ? (
+      <ReactRouterLink
+        ref={ref}
+        {...restProps}
+        to={href}
+        rel={rel}
+        onClick={onClick}
+      />
+    ) : (
+      <a
+        ref={ref}
+        {...restProps}
+        href={href}
+        rel={rel || 'noreferrer noopener'}
+        onClick={(event) => {
+          if (href === '' || href === '#') {
+            event.preventDefault();
+          }
 
-        if (typeof onClick === 'function') {
-          onClick(event);
-        }
-      }}
-    />
-  );
+          if (typeof onClick === 'function') {
+            onClick(event);
+          }
+        }}
+      />
+    ),
+);
 
 export const App = () => (
   <StrictMode>

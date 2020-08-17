@@ -4,7 +4,7 @@ import {
   ButtonRendererProps,
 } from '../ButtonRenderer/ButtonRenderer';
 import {
-  useLinkComponent,
+  useLinkComponentWithoutRefSupport,
   LinkComponentProps,
 } from '../BraidProvider/BraidProvider';
 
@@ -20,7 +20,7 @@ export const ButtonLink = ({
   loading,
   ...restProps
 }: ButtonLinkProps) => {
-  const LinkComponent = useLinkComponent();
+  const LinkComponent = useLinkComponentWithoutRefSupport();
 
   return (
     <ButtonRenderer weight={weight} loading={loading}>

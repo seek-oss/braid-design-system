@@ -1,5 +1,151 @@
 # braid-design-system
 
+## 29.2.2
+
+### Patch Changes
+
+- **OverflowMenu, MenuRenderer:** Assert that all child nodes are valid menu items ([#731](https://github.com/seek-oss/braid-design-system/pull/731))
+
+  In order to maintain accessibility, we now throw assertion errors in development if any child node within an [OverflowMenu](https://seek-oss.github.io/braid-design-system/components/OverflowMenu) or [MenuRenderer](https://seek-oss.github.io/braid-design-system/components/MenuRenderer) component is not a [MenuItem/MenuItemLink](https://seek-oss.github.io/braid-design-system/components/MenuItem).
+
+## 29.2.1
+
+### Patch Changes
+
+- **Loader:** Fix rendering issues due to browser rounding errors ([#728](https://github.com/seek-oss/braid-design-system/pull/728))
+
+## 29.2.0
+
+### Minor Changes
+
+- **Box:** Added `zIndex` prop ([#726](https://github.com/seek-oss/braid-design-system/pull/726))
+
+  The following z-index palette is now available on `Box`:
+
+  **Local stacking**
+
+  - `0`
+  - `1`
+  - `2`
+
+  **Global stacking**
+
+  - `"dropdownBackdrop"`
+  - `"dropdown"`
+  - `"sticky"`
+  - `"modalBackdrop"`
+  - `"modal"`
+  - `"notification"`
+
+  **EXAMPLE USAGE**
+
+  ```jsx
+  <Box position="fixed" zIndex="sticky">
+    ...
+  </Box>
+  ```
+
+- TabPanels: Add `renderInactivePanels` prop ([#722](https://github.com/seek-oss/braid-design-system/pull/722))
+
+  By default, the children of `TabPanel` components are only rendered when they are selected. However, in cases where you want to preserve local component state when switching tabs, this behaviour is undesirable. Setting `renderInactivePanels` will cause the `TabPanel` children to be rendered even when visually hidden.
+
+  **Note:** This is not a visual change, the panels will still be hidden from the user.
+
+  e.g.
+
+  ```js
+  <TabsProvider selectedItem={0}>
+    <Tabs>
+      <Tab>First</Tab>
+      <Tab>Second</Tab>
+    </Tabs>
+    <TabPanels renderInactivePanels>
+      <TabPanel>
+        <Text>Tab 1</Text>
+      </TabPanel>
+      <TabPanel>
+        {/* This TabPanel is hidden but still in the DOM */}
+        <Text>Tab 2</Text>
+      </TabPanel>
+    </TabPanels>
+  </TabsProvider>
+  ```
+
+- Added support for refs on [Link](https://seek-oss.github.io/braid-design-system/components/Link) ([#725](https://github.com/seek-oss/braid-design-system/pull/725))
+
+  Forwarding refs is necessary for certain accessibility patterns (e.g. managing focus states), but the `Link` component wasn't doing this correctly.
+
+  Please note that, if you're passing a custom `linkComponent` implementation to [BraidProvider](https://seek-oss.github.io/braid-design-system/components/BraidProvider), you'll need to ensure that you're using the new `makeLinkComponent` helper function to forward refs, otherwise any attempt to pass a ref to `Link` will throw an error.
+
+  **MIGRATION GUIDE**
+
+  ```diff
+  -import { BraidProvider, LinkComponent } from 'braid-design-system';
+  +import { BraidProvider, makeLinkComponent } from 'braid-design-system';
+
+  -const CustomLink: LinkComponent = ({ href, ...restProps }) =>
+  +const CustomLink = makeLinkComponent({ href, ...restProps }, ref) =>
+    href[0] === '/' ? (
+  -    <ReactRouterLink to={href} {...restProps} />
+  +    <ReactRouterLink to={href} {...restProps} ref={ref} />
+    ) : (
+  -    <a href={href} {...restProps} />
+  +    <a href={href} {...restProps} ref={ref} />
+    );
+
+  export const App = () => (
+    <BraidProvider linkComponent={CustomLink} {...rest}>
+      ...
+    </BraidProvider>
+  );
+  ```
+
+- **Link:** Fixed types for `className` prop to support the full [classnames](https://www.npmjs.com/package/classnames) API ([#725](https://github.com/seek-oss/braid-design-system/pull/725))
+
+  You can now pass arrays and objects to the `className` prop on `Link` without type errors.
+
+  For example:
+
+  ```jsx
+  <Link
+    href="#"
+    className={[
+      'someClass',
+      ['anotherClass', 'yetAnotherClass'],
+      { someConditionalClass: someBoolean },
+    ]}
+  >
+    ...
+  </Link>
+  ```
+
+- Added **MenuItemLink** component ([#725](https://github.com/seek-oss/braid-design-system/pull/725))
+
+  You can now render semantic links within menu components, e.g. [OverflowMenu](https://seek-oss.github.io/braid-design-system/components/OverflowMenu), [MenuRenderer](https://seek-oss.github.io/braid-design-system/components/MenuRenderer)
+
+  For example:
+
+  ```jsx
+  <OverflowMenu label="Options">
+    <MenuItem onClick={() => {}}>Button</MenuItem>
+    <MenuItemLink href="...">Link</MenuItemLink>
+  </OverflowMenu>
+  ```
+
+  Note that links are rendered internally using [Link](https://seek-oss.github.io/braid-design-system/components/Link). If you want to customise the rendering of these links, you need to provide a custom `linkComponent` implementation to [BraidProvider](https://seek-oss.github.io/braid-design-system/components/BraidProvider).
+
+## 29.1.2
+
+### Patch Changes
+
+- Change SEEK Business formAccent token to match Seek ANZ ([#718](https://github.com/seek-oss/braid-design-system/pull/718))
+
+## 29.1.1
+
+### Patch Changes
+
+- **List, BulletList:** Limit width to 100% of parent ([#715](https://github.com/seek-oss/braid-design-system/pull/715))
+
 ## 29.1.0
 
 ### Minor Changes

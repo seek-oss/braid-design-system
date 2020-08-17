@@ -1080,6 +1080,16 @@ Object {
         | "touchable"
     wmode?: string
     wrap?: string
+    zIndex?: 
+        | "dropdown"
+        | "dropdownBackdrop"
+        | "modal"
+        | "modalBackdrop"
+        | "notification"
+        | "sticky"
+        | 0
+        | 1
+        | 2
 },
 }
 `;
@@ -1533,6 +1543,16 @@ Object {
     width?: 
         | "full"
         | "touchable"
+    zIndex?: 
+        | "dropdown"
+        | "dropdownBackdrop"
+        | "modal"
+        | "modalBackdrop"
+        | "notification"
+        | "sticky"
+        | 0
+        | 1
+        | 2
 },
 }
 `;
@@ -1546,6 +1566,7 @@ Object {
     linkComponent?: 
         | ComponentClass<LinkComponentProps, any>
         | FunctionComponent<LinkComponentProps>
+        | { readonly __forwardRef__: ForwardRefExoticComponent<LinkComponentProps & RefAttributes<HTMLAnchorElement>>; }
     styleBody?: boolean
     themeName: string
 },
@@ -1560,6 +1581,7 @@ Object {
     linkComponent?: 
         | ComponentClass<LinkComponentProps, any>
         | FunctionComponent<LinkComponentProps>
+        | { readonly __forwardRef__: ForwardRefExoticComponent<LinkComponentProps & RefAttributes<HTMLAnchorElement>>; }
     styleBody?: boolean
     theme: { name: string; displayName: string; background: string; webFonts: { linkTag: string; }[]; space: { grid: number; space: { gutter: number; xxsmall: number; xsmall: number; small: number; medium: number; large: number; xlarge: number; xxlarge: number; }; }; breakpoint: Record<...>; color: { ...; }; backgroundLightnes...
 },
@@ -1578,6 +1600,7 @@ Object {
     linkComponent?: 
         | ComponentClass<LinkComponentProps, any>
         | FunctionComponent<LinkComponentProps>
+        | { readonly __forwardRef__: ForwardRefExoticComponent<LinkComponentProps & RefAttributes<HTMLAnchorElement>>; }
     themeName?: 
         | "apac"
         | "catho"
@@ -4810,7 +4833,7 @@ Object {
     autoCorrect?: string
     autoSave?: string
     children?: ReactNode
-    className?: string
+    className?: string | number | boolean | ClassDictionary | ClassArray
     color?: string
     contentEditable?: 
         | "false"
@@ -5020,6 +5043,9 @@ Object {
     prefix?: string
     property?: string
     radioGroup?: string
+    ref?: 
+        | (instance: HTMLAnchorElement | null) => void
+        | RefObject<HTMLAnchorElement>
     referrerPolicy?: string
     rel?: string
     resource?: string
@@ -5117,6 +5143,20 @@ Object {
     children: ReactNode
     data?: Record<string, string | number>
     onClick?: () => void
+},
+}
+`;
+
+exports[`MenuItemLink 1`] = `
+Object {
+  exportType: component,
+  props: {
+    children: ReactNode
+    data?: Record<string, string | number>
+    href: string
+    onClick?: () => void
+    rel?: string
+    target?: string
 },
 }
 `;
@@ -5371,6 +5411,7 @@ Object {
   exportType: component,
   props: {
     children: ReactElement<TabPanelProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)>[]
+    renderInactivePanels?: boolean
 },
 }
 `;
@@ -6256,6 +6297,17 @@ Object {
     label: ReactNode
     on: boolean
     onChange: ChangeHandler
+},
+}
+`;
+
+exports[`makeLinkComponent 1`] = `
+Object {
+  exportType: component,
+  props: {
+    defaultProps?: never
+    displayName?: string
+    propTypes?: never
 },
 }
 `;

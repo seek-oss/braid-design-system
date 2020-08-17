@@ -34,7 +34,7 @@ export const TabPanel = ({ children, data }: TabPanelProps) => {
   }
 
   const { a11y, selectedIndex } = tabsContext;
-  const { panelIndex } = tabPanelsContext;
+  const { panelIndex, renderInactive } = tabPanelsContext;
 
   const isSelected = panelIndex === selectedIndex;
 
@@ -47,8 +47,9 @@ export const TabPanel = ({ children, data }: TabPanelProps) => {
       className={styles.tabPanel}
       {...buildDataAttributes(data)}
     >
-      {isSelected ? children : undefined}
+      {isSelected || renderInactive ? children : undefined}
       <Overlay
+        zIndex={1}
         boxShadow="outlineFocus"
         borderRadius="standard"
         className={styles.tabPanelFocusRing}

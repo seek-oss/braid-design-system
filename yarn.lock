@@ -6873,7 +6873,7 @@ fast-glob@^2.0.2:
     merge2 "^1.2.3"
     micromatch "^3.1.10"
 
-fast-glob@^3.0.3, fast-glob@^3.0.4, fast-glob@^3.1.1:
+fast-glob@^3.0.3, fast-glob@^3.0.4, fast-glob@^3.1.1, fast-glob@^3.2.4:
   version "3.2.4"
   resolved "https://registry.yarnpkg.com/fast-glob/-/fast-glob-3.2.4.tgz#d20aefbf99579383e7f3cc66529158c9b98554d3"
   integrity sha512-kr/Oo6PX51265qeuCYsyGypiO5uJFgBS0jksyG7FUeCyQzNwYnzrNIMR1NXfkZXsMYXYLRAHgISHBz8gQcxKHQ==
@@ -9514,7 +9514,7 @@ js-tokens@^3.0.2:
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-3.0.2.tgz#9866df395102130e38f7f996bceb65443209c25b"
   integrity sha1-mGbfOVECEw449/mWvOtlRDIJwls=
 
-js-yaml@^3.13.0, js-yaml@^3.13.1, js-yaml@^3.6.1:
+js-yaml@^3.13.0, js-yaml@^3.13.1, js-yaml@^3.14.0, js-yaml@^3.6.1:
   version "3.14.0"
   resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-3.14.0.tgz#a7a34170f26a21bb162424d8adacb4113a69e482"
   integrity sha512-/4IbIeHcD9VMHFqDR/gQ7EdZdLimOvW2DdcxFjdyyZ9NsbS+ccrXqVWDtab/lRl5AlUqmpBx8EhPaWR+OtY17A==
@@ -11708,10 +11708,10 @@ pkginfo@0.x.x:
   resolved "https://registry.yarnpkg.com/pkginfo/-/pkginfo-0.4.1.tgz#b5418ef0439de5425fc4995042dced14fb2a84ff"
   integrity sha1-tUGO8EOd5UJfxJlQQtztFPsqhP8=
 
-playroom@0.21.2, playroom@^0.21.1:
-  version "0.21.2"
-  resolved "https://registry.yarnpkg.com/playroom/-/playroom-0.21.2.tgz#e898630599c8fcbce8a3084a053d7d22662e74a1"
-  integrity sha512-i93r8AVQovR2jJMNC/3hPW6n235btU6eB/EgoJWdSWKggIu7Zw/ZxGsvpmhFIDcE/GZTyKRM04yG03Ki1fViFw==
+playroom@0.21.3, playroom@^0.21.1:
+  version "0.21.3"
+  resolved "https://registry.yarnpkg.com/playroom/-/playroom-0.21.3.tgz#d4e532cc6fd0cf9f31bf557830d9e2db16679487"
+  integrity sha512-NHYGEk+I/3TIMxzkda51u98F05TwvDBmp4IePAt+n+ToKVeiPta9IhIwZCd4DjXQAtZjmfoIaU8b4elqVRGB4A==
   dependencies:
     "@babel/cli" "^7.8.3"
     "@babel/core" "^7.8.3"
@@ -13866,10 +13866,10 @@ sisteransi@^1.0.4:
   resolved "https://registry.yarnpkg.com/sisteransi/-/sisteransi-1.0.5.tgz#134d681297756437cc05ca01370d3a7a571075ed"
   integrity sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==
 
-sku@10.5.0:
-  version "10.5.0"
-  resolved "https://registry.yarnpkg.com/sku/-/sku-10.5.0.tgz#dc202eebb21881f3df2dc3d4eb2e43a2f77697e9"
-  integrity sha512-g0KqNrLpwZ5R2ILZx7TaLKMVWG+5OkTfsZNV1DbZ4TBl56xcs2v95CU8mgBa7pbWmKZYM2BqbKEQ6q8A6a10sQ==
+sku@10.5.1:
+  version "10.5.1"
+  resolved "https://registry.yarnpkg.com/sku/-/sku-10.5.1.tgz#29206281704b5744fe7358eba6e11789c3169acc"
+  integrity sha512-Wtv+DagGIuFs3kyzz/0Sgg3I9+TJSMiGjp3QDCZncTpLAK+lsPGPIaBcjnB9wBie+q4CnDY+bBXA9SX3J3lNtg==
   dependencies:
     "@babel/core" "^7.9.0"
     "@babel/plugin-proposal-class-properties" "^7.8.3"

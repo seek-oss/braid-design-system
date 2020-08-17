@@ -1,4 +1,7 @@
-export { BraidProvider } from './BraidProvider/BraidProvider';
+export {
+  BraidProvider,
+  makeLinkComponent,
+} from './BraidProvider/BraidProvider';
 import { LinkComponent as _LinkComponent } from './BraidProvider/BraidProvider';
 export type LinkComponent = _LinkComponent;
 
@@ -42,7 +45,7 @@ export { Link } from './Link/Link';
 export { List } from './List/List';
 export { Loader } from './Loader/Loader';
 export { MenuRenderer } from './MenuRenderer/MenuRenderer';
-export { MenuItem } from './MenuItem/MenuItem';
+export { MenuItem, MenuItemLink } from './MenuItem/MenuItem';
 export { OverflowMenu } from './OverflowMenu/OverflowMenu';
 export { MonthPicker } from './MonthPicker/MonthPicker';
 export { Notice } from './Notice/Notice';
