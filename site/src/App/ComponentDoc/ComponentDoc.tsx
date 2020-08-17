@@ -79,7 +79,7 @@ export const ComponentDoc = ({
         <Alert tone="caution">{docs.deprecationWarning}</Alert>
       ) : null}
       <TabsProvider id="component-details">
-        <Stack space="large">
+        <Stack space="xlarge">
           <Tabs label="Component details">
             <Tab>Details</Tab>
             <Tab
