@@ -71,6 +71,8 @@
     "sku": ">=10.3.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.10.5",
+    "@babel/preset-typescript": "^7.10.4",
     "@changesets/cli": "^2.5.2",
     "@changesets/get-github-info": "^0.4.1",
     "@octokit/rest": "^15.16.1",
