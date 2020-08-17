@@ -1,22 +1,11 @@
 import '@testing-library/jest-dom/extend-expect';
-import React, { useState, Fragment } from 'react';
-import {
-  render,
-  fireEvent,
-  cleanup,
-  screen,
-  waitForElementToBeRemoved,
-} from '@testing-library/react';
+import React, { useState } from 'react';
+import { render, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { BraidTestProvider, Dialog } from '..';
 import { Button } from '../Button/Button';
 
-const TAB = 9;
-const ENTER = 13;
 const ESCAPE = 27;
-const SPACE = 32;
-const ARROW_UP = 38;
-const ARROW_DOWN = 40;
 const CLOSE_BUTTON_LABEL = 'Close dialog please';
 
 const TestCase = ({ close }: { close: () => void }) => {
