@@ -4,21 +4,30 @@ import React, {
   useEffect,
   useRef,
   useCallback,
+  createContext,
+  useContext,
+  Fragment,
 } from 'react';
+import { createPortal } from 'react-dom';
 import FocusLock, { AutoFocusInside } from 'react-focus-lock';
+import { hideOthers } from 'aria-hidden';
+import assert from 'assert';
 import { Box } from '../Box/Box';
 import { ClearButton } from '../iconButtons/ClearButton/ClearButton';
 import { normalizeKey } from '../private/normalizeKey';
 import { headerOverlay } from '../private/zIndex';
-import { createPortal } from 'react-dom';
+import { useBoxStyles } from '../Box/useBoxStyles';
+import { PageOverlay } from './PageOverlay';
+import { Heading } from '../Heading/Heading';
+import { Stack } from '../Stack/Stack';
 
-type AriaLabel = {
-  'aria-label': string;
+type LabelByTitle = {
+  title: string;
 };
-type AriaLabelledBy = {
+type LabelByElementId = {
   'aria-labelledby': string;
 };
-type Label = AriaLabelledBy | AriaLabel;
+type Label = LabelByTitle | LabelByElementId;
 
 type DialogProps = Label & {
   children: ReactNode;
@@ -28,11 +37,16 @@ type DialogProps = Label & {
   'aria-describedby'?: string;
 };
 
+const DialogContext = createContext(false);
+
 interface DialogPortalProps {
   children: ReactNode;
 }
 const DialogPortal = ({ children }: DialogPortalProps) => {
   const [dialogElement, setElement] = useState<HTMLElement | null>(null);
+  const dialogContext = useContext(DialogContext);
+
+  // assert(!dialogContext, 'Nested Dialogs are not supported.');
 
   useEffect(() => {
     const dialogContainerId = 'braid-dialog-container';
@@ -53,7 +67,10 @@ const DialogPortal = ({ children }: DialogPortalProps) => {
     return null;
   }
 
-  return createPortal(children, dialogElement);
+  return createPortal(
+    <DialogContext.Provider value={true}>{children}</DialogContext.Provider>,
+    dialogElement,
+  );
 };
 
 export const Dialog = ({
@@ -64,46 +81,69 @@ export const Dialog = ({
   closeLabel = 'Close',
   ...props
 }: DialogProps) => {
-  const [active, setActive] = useState(open);
-  const [closing, setClosing] = useState(false);
-  const transitionRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [internalOpen, setInternalOpen] = useState(open);
+  const dialogContainerRef = useRef<HTMLElement>(null);
+  const hideOthersRef = useRef<ReturnType<typeof hideOthers> | null>(null);
+  const scrollLockStyles = useBoxStyles({
+    component: null,
+    overflow: 'hidden',
+  });
 
   const close = useCallback(() => {
-    setClosing(true);
+    onDismiss(false);
+  }, [onDismiss]);
 
-    transitionRef.current = setTimeout(() => setClosing(false), 300);
-
-    onDismiss(!active);
-  }, [active, onDismiss]);
+  const handleEscape = useCallback(
+    (event) => {
+      const targetKey = normalizeKey(event);
+      if (targetKey === 'Escape') {
+        close();
+      }
+    },
+    [close],
+  );
 
   useEffect(() => {
-    if (active !== open) {
-      if (!open) {
-        setClosing(true);
+    if (open) {
+      setInternalOpen(open);
+
+      document.body.classList.add(scrollLockStyles);
+      document.addEventListener('keydown', handleEscape);
+
+      if (dialogContainerRef.current) {
+        hideOthersRef.current = hideOthers(dialogContainerRef.current);
       }
-
-      setActive(open);
     }
 
-    if (open && transitionRef.current !== null) {
-      setClosing(false);
-      clearTimeout(transitionRef.current);
-      transitionRef.current = null;
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [open]);
+    return () => {
+      setInternalOpen(false);
+
+      document.body.classList.remove(scrollLockStyles);
+      document.removeEventListener('keydown', handleEscape);
+
+      if (hideOthersRef.current) {
+        hideOthersRef.current();
+        hideOthersRef.current = null;
+      }
+    };
+  }, [open, scrollLockStyles, handleEscape]);
 
   return (
     <DialogPortal>
-      <FocusLock disabled={!active} returnFocus>
+      <FocusLock
+        disabled={!internalOpen}
+        returnFocus
+        noFocusGuards={!internalOpen}
+        ref={dialogContainerRef}
+      >
         <Box
           position="fixed"
           top={0}
           bottom={0}
           left={0}
           right={0}
-          pointerEvents={!active ? 'none' : undefined}
-          opacity={!active ? 0 : undefined}
+          pointerEvents={!internalOpen ? 'none' : undefined}
+          opacity={!internalOpen ? 0 : undefined}
           transition="fast"
           style={{
             zIndex: headerOverlay,
@@ -114,69 +154,79 @@ export const Dialog = ({
           alignItems="center"
           justifyContent="center"
           padding={['small', 'gutter', 'xlarge']}
-          aria-hidden={!active}
-          onKeyUp={(event) => {
-            const targetKey = normalizeKey(event);
-
-            if (targetKey === 'Escape') {
-              close();
-            }
-          }}
+          aria-hidden={!internalOpen}
         >
-          <Box
-            position="absolute"
-            onClick={close}
-            opacity={0}
-            transition="fast"
-            style={{
-              height: '100vh',
-              width: '100vw',
-              background: 'black',
-              opacity: active ? 0.7 : undefined,
-            }}
-          />
-          <Box
-            role="dialog"
-            aria-label={'aria-label' in props ? props['aria-label'] : undefined}
-            aria-labelledby={
-              'aria-labelledby' in props ? props['aria-labelledby'] : undefined
-            }
-            aria-describedby={ariaDescribedBy}
-            aria-modal="true"
-            position="relative"
-            background="card"
-            borderRadius="standard"
-            boxShadow="large"
-            style={{ maxHeight: '100%' }}
-            overflow="auto"
-          >
-            {(active || closing) && (
-              <Box
-                aria-hidden
-                position="absolute"
-                top={0}
-                right={0}
-                background="card"
-                borderRadius="standard"
-                padding="gutter"
-              >
-                <ClearButton
-                  tone="neutral"
-                  label={closeLabel}
-                  onClick={close}
-                />
-              </Box>
-            )}
+          <PageOverlay onClick={close} active={internalOpen} modal={true} />
 
-            {(active || closing) && (
+          {internalOpen && (
+            <Box
+              role="dialog"
+              aria-label={'title' in props ? props.title : undefined}
+              aria-labelledby={
+                'aria-labelledby' in props
+                  ? props['aria-labelledby']
+                  : undefined
+              }
+              aria-describedby={ariaDescribedBy}
+              aria-modal="true"
+              position="relative"
+              background="card"
+              borderRadius="standard"
+              boxShadow="large"
+              style={{ maxHeight: '100%' }}
+              overflow="auto"
+            >
               <Box
                 paddingX={['gutter', 'large', 'xlarge']}
                 paddingY={['large', 'xlarge', 'xlarge']}
               >
-                <AutoFocusInside>{children}</AutoFocusInside>
+                {'title' in props ? (
+                  <Stack space="large">
+                    <Box paddingRight="xlarge">
+                      <Heading level="3">
+                        <Box tabIndex={-1}>{props.title}</Box>
+                      </Heading>
+                      <Box
+                        aria-hidden
+                        position="absolute"
+                        top={0}
+                        right={0}
+                        background="card"
+                        borderRadius="standard"
+                        padding="gutter"
+                      >
+                        <ClearButton
+                          tone="neutral"
+                          label={closeLabel}
+                          onClick={close}
+                        />
+                      </Box>
+                    </Box>
+                    <AutoFocusInside>{children}</AutoFocusInside>
+                  </Stack>
+                ) : (
+                  <Fragment>
+                    <Box
+                      aria-hidden
+                      position="absolute"
+                      top={0}
+                      right={0}
+                      background="card"
+                      borderRadius="standard"
+                      padding="gutter"
+                    >
+                      <ClearButton
+                        tone="neutral"
+                        label={closeLabel}
+                        onClick={close}
+                      />
+                    </Box>
+                    <AutoFocusInside>{children}</AutoFocusInside>
+                  </Fragment>
+                )}
               </Box>
-            )}
-          </Box>
+            </Box>
+          )}
         </Box>
       </FocusLock>
     </DialogPortal>

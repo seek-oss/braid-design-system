@@ -1,3 +1,4 @@
+export const status = 600;
 export const headerOverlay = 500;
 export const header = 400;
 export const pageOverlay = 300;

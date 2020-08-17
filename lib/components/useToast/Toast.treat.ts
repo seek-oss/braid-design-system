@@ -1,5 +1,5 @@
 import { style } from 'sku/treat';
-import { pageOverlay } from '../private/zIndex';
+import { status } from '../private/zIndex';
 
 export const toast = style({
   pointerEvents: 'all',
@@ -7,5 +7,5 @@ export const toast = style({
 });
 
 export const toaster = style({
-  zIndex: pageOverlay,
+  zIndex: status,
 });

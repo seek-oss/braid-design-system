@@ -2187,6 +2187,19 @@ Object {
 }
 `;
 
+exports[`Dialog 1`] = `
+Object {
+  exportType: component,
+  props: {
+    aria-describedby?: string
+    children: ReactNode
+    closeLabel?: string
+    onDismiss: (open: boolean) => void
+    open: boolean
+},
+}
+`;
+
 exports[`Disclosure 1`] = `
 Object {
   exportType: component,
