@@ -22,7 +22,7 @@ import { ComponentDocs } from '../../types';
 import Code from '../Code/Code';
 import { ThemedExample } from '../ThemeSetting';
 import { useConfig } from '../ConfigContext';
-import { useUpdates } from '../Updates';
+import { getHistory, isNew, isUpdated } from '../Updates';
 import { Markdown } from '../Markdown/Markdown';
 
 const handler = () => {
@@ -45,7 +45,6 @@ export const ComponentDoc = ({
   docs,
 }: ComponentDocProps) => {
   const { sourceUrlPrefix } = useConfig();
-  const { getHistory, isNew, isUpdated } = useUpdates();
 
   const componentFolder = `lib/components/${
     subfolder ? `${subfolder}/` : ''

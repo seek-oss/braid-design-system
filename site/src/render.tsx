@@ -9,7 +9,7 @@ import { RenderContext } from './types';
 import { ConfigProvider } from './App/ConfigContext';
 import * as themes from '../../lib/themes';
 import { braidVersionToDate } from './getVersionDetails';
-import { UpdateProvider, makeUpdateManager } from './App/Updates';
+import { initUpdates } from './App/Updates';
 import { version } from '../../package.json';
 
 const skuRender: Render<RenderContext> = {
@@ -42,14 +42,12 @@ const skuRender: Render<RenderContext> = {
       currentVersion: version,
     };
 
-    const updateManager = makeUpdateManager(today, versionMap, version);
+    initUpdates(today, versionMap, version);
 
     const html = renderToString(
       <StaticRouter context={{}} location={route} basename={routerBasename}>
         <ConfigProvider value={appConfig}>
-          <UpdateProvider updateManager={updateManager}>
-            <App />
-          </UpdateProvider>
+          <App />
         </ConfigProvider>
       </StaticRouter>,
     );

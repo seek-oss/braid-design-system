@@ -19,7 +19,7 @@ import {
 } from '../navigationHelpers';
 import { useConfig } from '../ConfigContext';
 import * as styleRefs from './SubNavigation.treat';
-import { useUpdates } from '../Updates';
+import { getCurrentVersionInfo, isNew, isUpdated } from '../Updates';
 
 type BadgeLabel = 'New' | 'Deprecated' | 'Updated';
 
@@ -85,25 +85,24 @@ interface SubNavigationProps {
 }
 export const SubNavigation = ({ onSelect }: SubNavigationProps) => {
   const { playroomUrl } = useConfig();
-  const updates = useUpdates();
 
   const getBadge = (docs: any): BadgeLabel | undefined => {
     if (docs.deprecationWarning) {
       return 'Deprecated';
     }
 
-    if (updates.isNew(docs.name)) {
+    if (isNew(docs.name)) {
       return 'New';
     }
 
-    if (updates.isUpdated(docs.name)) {
+    if (isUpdated(docs.name)) {
       return 'Updated';
     }
   };
 
   return (
     <Stack space="xlarge">
-      <Text weight="strong">v{updates.getCurrentVersionInfo().version}</Text>
+      <Text weight="strong">v{getCurrentVersionInfo().version}</Text>
 
       <ThemeToggle />
 
