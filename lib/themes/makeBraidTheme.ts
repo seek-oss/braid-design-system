@@ -57,6 +57,8 @@ export interface TreatTokens {
   };
   breakpoint: Record<Breakpoint, number>;
   contentWidth: {
+    xsmall: number;
+    small: number;
     medium: number;
     large: number;
   };

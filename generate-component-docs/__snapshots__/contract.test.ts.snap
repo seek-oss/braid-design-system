@@ -2206,6 +2206,8 @@ Object {
     width?: 
         | "large"
         | "medium"
+        | "small"
+        | "xsmall"
 },
 }
 `;

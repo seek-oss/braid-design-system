@@ -1,20 +1,14 @@
 const fs = require('fs');
 const path = require('path');
+
+const extractExports = require('./extractExports');
 const undocumentedExports = require('./site/src/undocumentedExports.json');
 
 const getExports = (relativePath) => {
   const sourcePath = path.join(__dirname, relativePath);
-  const source = fs.readFileSync(sourcePath, 'utf-8'); // eslint-disable-line no-sync
+  const source = extractExports(sourcePath);
 
-  return source
-    .match(/export { [A-Za-z, ]+/g)
-    .flatMap((x) => {
-      const namedExports = x.replace('export { ', '');
-
-      return namedExports.split(',').map((e) => e.trim());
-    })
-    .filter((x) => !undocumentedExports.includes(x))
-    .sort();
+  return source.filter((x) => !undocumentedExports.includes(x)).sort();
 };
 
 const getPages = (relativePath) => {
