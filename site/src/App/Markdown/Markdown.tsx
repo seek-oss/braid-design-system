@@ -20,6 +20,7 @@ const Code = ({ language, value }: { language: string; value: string }) => (
 );
 
 const paragraph = ({ children }: any) => <Text component="p">{children}</Text>;
+paragraph.isParagraph = true;
 
 const renderers = {
   root: ({ children }: any) => <Stack space="large">{children}</Stack>,
@@ -34,7 +35,7 @@ const renderers = {
     const childList = React.Children.toArray(children);
 
     // @ts-expect-error
-    if (childList[0]?.type?.name === 'paragraph') {
+    if (childList[0]?.type?.isParagraph) {
       return <Stack space="medium">{children}</Stack>;
     }
 
