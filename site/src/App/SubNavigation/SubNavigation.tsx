@@ -19,7 +19,7 @@ import {
 } from '../navigationHelpers';
 import { useConfig } from '../ConfigContext';
 import * as styleRefs from './SubNavigation.treat';
-import { getCurrentVersionInfo, isNew } from '../Updates';
+import { isNew } from '../Updates';
 
 type BadgeLabel = 'New' | 'Deprecated';
 
@@ -97,9 +97,13 @@ export const SubNavigation = ({ onSelect }: SubNavigationProps) => {
 
   return (
     <Stack space="xlarge">
-      <Text weight="strong">v{getCurrentVersionInfo().version}</Text>
-
       <ThemeToggle />
+
+      <Text>
+        <TextLink href="/changelog" hitArea="large">
+          Changelog
+        </TextLink>
+      </Text>
 
       <SubNavigationGroup
         title="Tools"

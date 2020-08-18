@@ -14,7 +14,9 @@ import {
 } from '../../../../lib/components';
 
 const Code = ({ language, value }: { language: string; value: string }) => (
-  <CodeBlock language={language}>{value}</CodeBlock>
+  <Box paddingBottom="large">
+    <CodeBlock language={language}>{value}</CodeBlock>
+  </Box>
 );
 
 const paragraph = ({ children }: any) => <Text component="p">{children}</Text>;
@@ -22,20 +24,18 @@ const paragraph = ({ children }: any) => <Text component="p">{children}</Text>;
 const renderers = {
   root: ({ children }: any) => <Stack space="large">{children}</Stack>,
   heading: ({ level, children }: any) => (
-    <Heading level={level}>{children}</Heading>
+    <Box paddingTop={level <= 2 ? 'medium' : undefined}>
+      <Heading level={level}>{children}</Heading>
+    </Box>
   ),
   paragraph,
   list: List,
   listItem: ({ children }: { children: any }) => {
     const childList = React.Children.toArray(children);
 
-    if (childList.length > 1) {
-      return <Stack space="medium">{children}</Stack>;
-    }
-
     // @ts-expect-error
     if (childList[0]?.type?.name === 'paragraph') {
-      return children;
+      return <Stack space="medium">{children}</Stack>;
     }
 
     return <Text>{children}</Text>;

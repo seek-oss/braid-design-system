@@ -27,6 +27,7 @@ const exampleRoutes = getPages('site/src/App/routes/examples/index.ts');
 
 module.exports = [
   { route: '/', name: 'home' },
+  { route: '/changelog', name: 'changelog' },
   ...guideRoutes.map((route) => ({ route })),
   ...foundationRoutes.map((route) => ({ route })),
   ...exampleRoutes.map((route) => ({ route })),
