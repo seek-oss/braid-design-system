@@ -132,6 +132,8 @@ const tokens: TreatTokens = {
     desktop: 992,
   },
   contentWidth: {
+    xsmall: 400,
+    small: 660,
     medium: 984,
     large: 1164,
   },
