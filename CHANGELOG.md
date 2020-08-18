@@ -53,7 +53,7 @@
 
   e.g.
 
-  ```js
+  ```jsx
   <TabsProvider selectedItem={0}>
     <Tabs>
       <Tab>First</Tab>
