@@ -30,6 +30,8 @@ jobs:
         run: yarn test
 
       - name: Chromatic
-        run: yarn chromatic
+        run: |
+          yarn build-storybook
+          yarn chromatic --storybook-build-dir dist-storybook --exit-zero-on-changes --auto-accept-changes master
         env:
-          CHROMATIC_APP_CODE: ${{ secrets.CHROMATIC_APP_CODE }}
+          CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_APP_CODE }}
