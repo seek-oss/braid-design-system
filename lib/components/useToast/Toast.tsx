@@ -8,6 +8,7 @@ import {
   Inline,
   Columns,
   Column,
+  ContentBlock,
   Box,
   Text,
   TextLinkRenderer,
@@ -127,51 +128,53 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
           onMouseLeave={startTimeout}
         >
           <Box boxShadow="large">
-            <Box
-              background="card"
-              position="relative"
-              boxShadow="borderStandard"
-              borderRadius="standard"
-              paddingY="medium"
-              paddingLeft="medium"
-              overflow="hidden"
-              className={styles.toast}
-            >
-              <Columns space="none">
-                <Column width="content">
-                  <Box paddingRight="small">
-                    <Icon tone={tone} />
-                  </Box>
-                </Column>
-                <Column>{content}</Column>
-                <Column width="content">
-                  <Box
-                    width="touchable"
-                    display="flex"
-                    justifyContent="center"
-                    aria-hidden
-                  >
-                    <ClearButton
-                      onClick={remove}
-                      label="Clear"
-                      data={
-                        process.env.NODE_ENV !== 'production'
-                          ? { testid: 'clearToast' }
-                          : {}
-                      }
-                    />
-                  </Box>
-                </Column>
-              </Columns>
+            <ContentBlock width="xsmall">
               <Box
-                background={tone}
-                paddingLeft="xxsmall"
-                position="absolute"
-                left={0}
-                top={0}
-                bottom={0}
-              />
-            </Box>
+                background="card"
+                position="relative"
+                boxShadow="borderStandard"
+                borderRadius="standard"
+                paddingY="medium"
+                paddingLeft="medium"
+                overflow="hidden"
+                className={styles.toast}
+              >
+                <Columns space="none">
+                  <Column width="content">
+                    <Box paddingRight="small">
+                      <Icon tone={tone} />
+                    </Box>
+                  </Column>
+                  <Column>{content}</Column>
+                  <Column width="content">
+                    <Box
+                      width="touchable"
+                      display="flex"
+                      justifyContent="center"
+                      aria-hidden
+                    >
+                      <ClearButton
+                        onClick={remove}
+                        label="Clear"
+                        data={
+                          process.env.NODE_ENV !== 'production'
+                            ? { testid: 'clearToast' }
+                            : {}
+                        }
+                      />
+                    </Box>
+                  </Column>
+                </Columns>
+                <Box
+                  background={tone}
+                  paddingLeft="xxsmall"
+                  position="absolute"
+                  left={0}
+                  top={0}
+                  bottom={0}
+                />
+              </Box>
+            </ContentBlock>
           </Box>
         </Box>
       </TreatProvider>

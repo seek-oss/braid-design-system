@@ -159,6 +159,8 @@ export const makeTokens = ({
       desktop: 992,
     },
     contentWidth: {
+      xsmall: 400,
+      small: 660,
       medium: 940,
       large: 1280,
     },
