@@ -8,23 +8,21 @@ import { Button } from '../Button/Button';
 const ESCAPE = 27;
 const CLOSE_BUTTON_LABEL = 'Close dialog please';
 
-const TestCase = ({ close }: { close: () => void }) => {
+const TestCase = ({ close }: { close: (newOpenState: boolean) => void }) => {
   const [open, setOpen] = useState(false);
   return (
     <div>
       <Button data={{ testid: 'buttonBefore' }} onClick={() => setOpen(true)}>
         Before
       </Button>
-      <div>
-        <input type="text" />
-      </div>
+      <input type="text" />
       <Dialog
         title="Test Dialog"
         closeLabel={CLOSE_BUTTON_LABEL}
         open={open}
-        onDismiss={() => {
-          setOpen(false);
-          close();
+        onClose={(newOpenState) => {
+          setOpen(newOpenState);
+          close(newOpenState);
         }}
       >
         <Button data={{ testid: 'buttonInside' }}>Inside</Button>
@@ -40,15 +38,15 @@ const TestCase = ({ close }: { close: () => void }) => {
 };
 
 function renderDialog() {
-  const dismissHandler = jest.fn();
+  const closeHandler = jest.fn();
 
   return {
     ...render(
       <BraidTestProvider>
-        <TestCase close={dismissHandler} />
+        <TestCase close={closeHandler} />
       </BraidTestProvider>,
     ),
-    dismissHandler,
+    closeHandler,
   };
 }
 
@@ -124,16 +122,16 @@ describe('Dialog', () => {
   });
 
   it('should close when hitting escape', () => {
-    const { getByTestId, queryByRole } = renderDialog();
+    const { getByTestId, queryByRole, getByRole } = renderDialog();
 
     const dialogOpenButton = getByTestId('buttonBefore');
     userEvent.click(dialogOpenButton);
-    fireEvent.keyDown(document, { keyCode: ESCAPE });
+    fireEvent.keyDown(getByRole('dialog'), { keyCode: ESCAPE });
 
     expect(queryByRole('dialog')).not.toBeInTheDocument();
   });
 
-  it('should hide document content outside of dialog from screen readers', async () => {
+  it('should hide document content outside of dialog from screen readers when open', async () => {
     const { getByTestId, queryAllByRole } = renderDialog();
 
     expect(queryAllByRole('textbox').length).toBe(2);
@@ -142,5 +140,19 @@ describe('Dialog', () => {
     userEvent.click(dialogOpenButton);
 
     expect(queryAllByRole('textbox').length).toBe(0);
+  });
+
+  it('should call dismiss handler once on close', async () => {
+    const { getByTestId, getByLabelText, closeHandler } = renderDialog();
+
+    expect(closeHandler).not.toHaveBeenCalled();
+
+    const dialogOpenButton = getByTestId('buttonBefore');
+    userEvent.click(dialogOpenButton);
+    const closeButton = getByLabelText(CLOSE_BUTTON_LABEL);
+    userEvent.click(closeButton);
+
+    expect(closeHandler).toHaveBeenCalledTimes(1);
+    expect(closeHandler).toHaveBeenCalledWith(false);
   });
 });

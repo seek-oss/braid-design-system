@@ -6,7 +6,6 @@ import { Inline } from '../Inline/Inline';
 import { TextField } from '../TextField/TextField';
 import { Text } from '../Text/Text';
 import { Stack } from '../Stack/Stack';
-import { Heading } from '../Heading/Heading';
 import { useToast, ToastProvider } from '../useToast/ToastContext';
 import { TextLink } from '../TextLink/TextLink';
 import { Placeholder } from '../../playroom/components';
@@ -48,11 +47,7 @@ const docs: ComponentDocs = {
               <Button onClick={() => setOpen(true)}>Open dialog</Button>
             </Inline>
 
-            <Dialog
-              title="Braid Dialog Example"
-              open={open}
-              onDismiss={setOpen}
-            >
+            <Dialog title="Braid Dialog Example" open={open} onClose={setOpen}>
               <Stack space="large">
                 <TextField
                   id="1"
@@ -101,16 +96,8 @@ const docs: ComponentDocs = {
             </Inline>
 
             <Dialog
-              aria-labelledby="dialogHeading"
-              aria-describedby="dialogDescription"
-              open={open}
-              onDismiss={setOpen}
-            >
-              <Stack space="large">
-                <Heading level="3" id="dialogHeading">
-                  My important announcement
-                </Heading>
-
+              title="My important announcement"
+              description={
                 <Text id="dialogDescription">
                   This dialog box implements the aria spec for dialogs. Does not
                   support non-modals. This dialog box implements the aria spec
@@ -127,11 +114,15 @@ const docs: ComponentDocs = {
                   implements the aria spec for dialogs. Does not support
                   non-modals.
                 </Text>
-
+              }
+              open={open}
+              onClose={setOpen}
+            >
+              <Stack space="large">
                 <Dialog
                   title="Braid Dialog Example"
                   open={open2}
-                  onDismiss={setOpen2}
+                  onClose={setOpen2}
                 >
                   <Text>Test</Text>
                 </Dialog>
@@ -152,7 +143,7 @@ const docs: ComponentDocs = {
     {
       name: 'Standard',
       code: (
-        <Dialog title="Dialog Heading" open={true} onDismiss={() => {}}>
+        <Dialog title="Dialog Heading" open={true} onClose={() => {}}>
           <Stack space="large">
             <Placeholder width={250} height={100} />
           </Stack>

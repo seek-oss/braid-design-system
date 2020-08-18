@@ -5,37 +5,39 @@ import React, {
   useRef,
   useCallback,
   createContext,
-  useContext,
-  Fragment,
+  forwardRef,
+  // useContext,
 } from 'react';
 import { createPortal } from 'react-dom';
 import FocusLock, { AutoFocusInside } from 'react-focus-lock';
+import { useStyles } from 'sku/react-treat';
 import { hideOthers } from 'aria-hidden';
-import assert from 'assert';
+// import assert from 'assert';
 import { Box } from '../Box/Box';
 import { ClearButton } from '../iconButtons/ClearButton/ClearButton';
 import { normalizeKey } from '../private/normalizeKey';
-import { headerOverlay } from '../private/zIndex';
 import { useBoxStyles } from '../Box/useBoxStyles';
 import { PageOverlay } from './PageOverlay';
 import { Heading } from '../Heading/Heading';
 import { Stack } from '../Stack/Stack';
+import { Columns } from '../Columns/Columns';
+import { Column } from '../Column/Column';
+import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
+import { Overlay } from '../private/Overlay/Overlay';
+import { HideFocusRingsRoot } from '../private/hideFocusRings/hideFocusRings';
+import { ContentBlock, ContentBlockProps } from '../ContentBlock/ContentBlock';
+import * as styleRefs from './Dialog.treat';
 
-type LabelByTitle = {
+interface DialogProps {
   title: string;
-};
-type LabelByElementId = {
-  'aria-labelledby': string;
-};
-type Label = LabelByTitle | LabelByElementId;
-
-type DialogProps = Label & {
   children: ReactNode;
   open: boolean;
-  onDismiss: (open: boolean) => void;
+  onClose: (open: boolean) => void;
   closeLabel?: string;
-  'aria-describedby'?: string;
-};
+  width?: ContentBlockProps['width'];
+  description?: ReactNodeNoStrings;
+  illustration?: ReactNodeNoStrings;
+}
 
 const DialogContext = createContext(false);
 
@@ -44,7 +46,7 @@ interface DialogPortalProps {
 }
 const DialogPortal = ({ children }: DialogPortalProps) => {
   const [dialogElement, setElement] = useState<HTMLElement | null>(null);
-  const dialogContext = useContext(DialogContext);
+  // const dialogContext = useContext(DialogContext);
 
   // assert(!dialogContext, 'Nested Dialogs are not supported.');
 
@@ -68,33 +70,105 @@ const DialogPortal = ({ children }: DialogPortalProps) => {
   }
 
   return createPortal(
-    <DialogContext.Provider value={true}>{children}</DialogContext.Provider>,
+    <DialogContext.Provider value={true}>
+      <HideFocusRingsRoot>{children}</HideFocusRingsRoot>
+    </DialogContext.Provider>,
     dialogElement,
   );
 };
 
+const CloseButton = ({
+  label = 'Close',
+  onClick,
+}: {
+  label?: string;
+  onClick: () => void;
+}) => (
+  <Box
+    aria-hidden
+    position="absolute"
+    top={0}
+    right={0}
+    background="card"
+    borderRadius="standard"
+    paddingRight={['gutter', 'large']}
+    paddingTop={['gutter', 'large']}
+    paddingLeft="small"
+    paddingBottom="small"
+    overflow="hidden"
+  >
+    <Box style={{ marginTop: '-7px', marginRight: '-6px' }}>
+      <ClearButton tone="neutral" label={label} onClick={onClick} />
+    </Box>
+  </Box>
+);
+
+const getId = (description: string) => {
+  const words = description.substring(0, 30).match(/([a-z])+/gi);
+  if (words) {
+    return words.join('-').toLowerCase();
+  }
+};
+
+interface HeaderProps extends Pick<DialogProps, 'title' | 'description'> {
+  center?: boolean;
+}
+const Header = forwardRef<HTMLElement, HeaderProps>(
+  ({ title, description, center }, ref) => {
+    const styles = useStyles(styleRefs);
+
+    return (
+      <Stack space="medium">
+        <Heading level="3" align={center ? 'center' : undefined}>
+          <Box
+            ref={ref}
+            component="span"
+            tabIndex={-1}
+            outline="none"
+            position="relative"
+            className={styles.heading}
+          >
+            {title}
+            <Overlay
+              boxShadow="outlineFocus"
+              borderRadius="standard"
+              transition="fast"
+              className={styles.heading}
+              onlyVisibleForKeyboardNavigation
+            />
+          </Box>
+        </Heading>
+        {description ? <Box id={getId(title)}>{description}</Box> : null}
+      </Stack>
+    );
+  },
+);
+
 export const Dialog = ({
-  'aria-describedby': ariaDescribedBy,
   open,
   children,
-  onDismiss,
-  closeLabel = 'Close',
-  ...props
+  description,
+  onClose,
+  width,
+  closeLabel,
+  illustration,
+  title,
 }: DialogProps) => {
+  const styles = useStyles(styleRefs);
   const [internalOpen, setInternalOpen] = useState(open);
   const dialogContainerRef = useRef<HTMLElement>(null);
   const hideOthersRef = useRef<ReturnType<typeof hideOthers> | null>(null);
+  const headingRef = useRef<HTMLElement>(null);
   const scrollLockStyles = useBoxStyles({
     component: null,
     overflow: 'hidden',
   });
 
-  const close = useCallback(() => {
-    onDismiss(false);
-  }, [onDismiss]);
+  const close = useCallback(() => onClose(false), [onClose]);
 
   const handleEscape = useCallback(
     (event) => {
+      event.stopPropagation();
       const targetKey = normalizeKey(event);
       if (targetKey === 'Escape') {
         close();
@@ -108,7 +182,6 @@ export const Dialog = ({
       setInternalOpen(open);
 
       document.body.classList.add(scrollLockStyles);
-      document.addEventListener('keydown', handleEscape);
 
       if (dialogContainerRef.current) {
         hideOthersRef.current = hideOthers(dialogContainerRef.current);
@@ -119,7 +192,6 @@ export const Dialog = ({
       setInternalOpen(false);
 
       document.body.classList.remove(scrollLockStyles);
-      document.removeEventListener('keydown', handleEscape);
 
       if (hideOthersRef.current) {
         hideOthersRef.current();
@@ -128,10 +200,17 @@ export const Dialog = ({
     };
   }, [open, scrollLockStyles, handleEscape]);
 
+  useEffect(() => {
+    if (internalOpen && headingRef.current) {
+      headingRef.current.focus();
+    }
+  }, [internalOpen]);
+
   return (
     <DialogPortal>
       <FocusLock
         disabled={!internalOpen}
+        // disabled={true}
         returnFocus
         noFocusGuards={!internalOpen}
         ref={dialogContainerRef}
@@ -145,86 +224,65 @@ export const Dialog = ({
           pointerEvents={!internalOpen ? 'none' : undefined}
           opacity={!internalOpen ? 0 : undefined}
           transition="fast"
-          style={{
-            zIndex: headerOverlay,
-            maxHeight: '100vh',
-            maxWidth: '100vw',
-          }}
+          zIndex="modal"
           display="flex"
           alignItems="center"
           justifyContent="center"
-          padding={['small', 'gutter', 'xlarge']}
-          aria-hidden={!internalOpen}
+          padding={['xxsmall', 'gutter', 'xlarge']}
+          className={styles.dialogContainer}
+          onKeyDown={handleEscape}
         >
           <PageOverlay onClick={close} active={internalOpen} modal={true} />
 
           {internalOpen && (
             <Box
               role="dialog"
-              aria-label={'title' in props ? props.title : undefined}
-              aria-labelledby={
-                'aria-labelledby' in props
-                  ? props['aria-labelledby']
-                  : undefined
-              }
-              aria-describedby={ariaDescribedBy}
+              aria-label={title}
+              aria-describedby={description ? getId(title) : undefined}
               aria-modal="true"
-              position="relative"
-              background="card"
-              borderRadius="standard"
-              boxShadow="large"
-              style={{ maxHeight: '100%' }}
+              width="full"
               overflow="auto"
+              className={styles.dialog}
             >
-              <Box
-                paddingX={['gutter', 'large', 'xlarge']}
-                paddingY={['large', 'xlarge', 'xlarge']}
-              >
-                {'title' in props ? (
+              <ContentBlock width={width}>
+                <Box
+                  background="card"
+                  borderRadius="standard"
+                  position="relative"
+                  boxShadow="large"
+                  padding={['gutter', 'large']}
+                >
+                  <CloseButton label={closeLabel} onClick={close} />
                   <Stack space="large">
-                    <Box paddingRight="xlarge">
-                      <Heading level="3">
-                        <Box tabIndex={-1}>{props.title}</Box>
-                      </Heading>
-                      <Box
-                        aria-hidden
-                        position="absolute"
-                        top={0}
-                        right={0}
-                        background="card"
-                        borderRadius="standard"
-                        padding="gutter"
-                      >
-                        <ClearButton
-                          tone="neutral"
-                          label={closeLabel}
-                          onClick={close}
+                    {illustration ? (
+                      <Stack space="medium" align="center">
+                        <Box paddingX="gutter">{illustration}</Box>
+                        <Header
+                          title={title}
+                          description={description}
+                          center={Boolean(illustration)}
+                          ref={headingRef}
                         />
-                      </Box>
-                    </Box>
+                      </Stack>
+                    ) : (
+                      <Columns space={['gutter', 'large']}>
+                        <Column>
+                          <Header
+                            title={title}
+                            description={description}
+                            center={Boolean(illustration)}
+                            ref={headingRef}
+                          />
+                        </Column>
+                        <Column width="content">
+                          <Box style={{ width: '10px' }} />
+                        </Column>
+                      </Columns>
+                    )}
                     <AutoFocusInside>{children}</AutoFocusInside>
                   </Stack>
-                ) : (
-                  <Fragment>
-                    <Box
-                      aria-hidden
-                      position="absolute"
-                      top={0}
-                      right={0}
-                      background="card"
-                      borderRadius="standard"
-                      padding="gutter"
-                    >
-                      <ClearButton
-                        tone="neutral"
-                        label={closeLabel}
-                        onClick={close}
-                      />
-                    </Box>
-                    <AutoFocusInside>{children}</AutoFocusInside>
-                  </Fragment>
-                )}
-              </Box>
+                </Box>
+              </ContentBlock>
             </Box>
           )}
         </Box>
