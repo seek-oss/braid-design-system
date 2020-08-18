@@ -120,7 +120,7 @@ export const TabsProvider = ({
       }
     },
     {
-      selectedIndex: 0,
+      selectedIndex: -1,
       focusedTabIndex: null,
       tabItems: [],
       panels: [],

@@ -24,11 +24,14 @@ paragraph.isParagraph = true;
 
 const renderers = {
   root: ({ children }: any) => <Stack space="large">{children}</Stack>,
-  heading: ({ level, children }: any) => (
-    <Box paddingTop={level <= 2 ? 'medium' : undefined}>
-      <Heading level={level}>{children}</Heading>
-    </Box>
-  ),
+  heading: ({ level, children }: any) =>
+    level <= 3 ? (
+      <Box paddingTop={level <= 2 ? 'medium' : undefined}>
+        <Heading level={level + 1}>{children}</Heading>
+      </Box>
+    ) : (
+      <Text size="large">{children}</Text>
+    ),
   paragraph,
   list: List,
   listItem: ({ children }: { children: any }) => {
