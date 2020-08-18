@@ -1,6 +1,6 @@
 {
   "name": "braid-design-system",
-  "version": "29.2.0",
+  "version": "29.2.2",
   "description": "Themeable design system for the SEEK Group",
   "main": "lib/components/index.ts",
   "sideEffects": [
@@ -24,7 +24,7 @@
     "build": "SKU_TELEMETRY=false concurrently -n \"docs-site,playroom\" -c \"magenta,greenBright\" \"sku build\" \"sku build-playroom\"",
     "playroom": "SKU_TELEMETRY=false sku playroom",
     "storybook": "SKU_TELEMETRY=false sku storybook",
-    "chromatic": "SKU_TELEMETRY=false sku chromatic",
+    "build-storybook": "SKU_TELEMETRY=false sku build-storybook",
     "deploy": "node scripts/deploy.js",
     "deploy-preview": "surge -p ./site/dist",
     "post-commit-status": "node scripts/postCommitStatus.js",
@@ -71,6 +71,8 @@
     "sku": ">=10.3.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.10.5",
+    "@babel/preset-typescript": "^7.10.4",
     "@changesets/cli": "^2.5.2",
     "@changesets/get-github-info": "^0.4.1",
     "@octokit/rest": "^15.16.1",
@@ -89,6 +91,7 @@
     "@types/webpack-env": "^1.14.0",
     "change-case": "^3.1.0",
     "cheerio": "^1.0.0-rc.3",
+    "chromatic": "^5.1.0",
     "concurrently": "^4.1.0",
     "copy-to-clipboard": "^3.2.0",
     "date-fns": "^2.15.0",
@@ -118,7 +121,7 @@
     "uuid": "^3.3.3"
   },
   "resolutions": {
-    "playroom": "0.21.2"
+    "playroom": "0.21.3"
   },
   "volta": {
     "node": "12.14.1",
