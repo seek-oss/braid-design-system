@@ -245,7 +245,7 @@ export const ComponentDoc = ({
           </Stack>
         </Route>
         <Route path={`/components/${componentName}/props`}>
-          <Stack space="large">
+          <Stack space="xlarge" dividers>
             {Array.isArray(propsToDocument) ? (
               <TabsProvider id="component-props">
                 <Stack space="xlarge">
@@ -269,33 +269,59 @@ export const ComponentDoc = ({
               <ComponentProps componentName={componentName} />
             )}
 
-            <Heading level="3" component="h4">
-              Further References
-            </Heading>
-            <Text>
-              <TextLink href={sourceUrl}>View Source</TextLink>
-            </Text>
-            <Text>
-              {docs.migrationGuide ? (
-                <TextLink href={migrationGuideUrl}>Migration Guide</TextLink>
-              ) : null}
-            </Text>
+            <Stack space="large">
+              <Heading level="3" component="h4">
+                Further References
+              </Heading>
+              <Text>
+                <TextLink href={sourceUrl}>View Source</TextLink>
+              </Text>
+              <Text>
+                {docs.migrationGuide ? (
+                  <TextLink href={migrationGuideUrl}>Migration Guide</TextLink>
+                ) : null}
+              </Text>
+            </Stack>
           </Stack>
         </Route>
         <Route path={`/components/${componentName}/release-notes`}>
-          <Stack space="xlarge" dividers>
-            {history.map((item, index) => (
-              <Stack space="large" key={index}>
-                <Inline space="small" alignY="bottom">
-                  <Heading level="3">v{item.version}</Heading>
-                  <Text>{item.time}</Text>
-                  {item.isRecent && item.recency ? (
-                    <Badge tone="promote">{item.recency}</Badge>
-                  ) : null}
-                </Inline>
-                <Markdown>{item.summary}</Markdown>
+          <Stack space="large" dividers>
+            {history.length > 0 ? (
+              history.map((item, index) => (
+                <Box key={index} paddingTop={index > 0 ? 'medium' : undefined}>
+                  <Stack space="large">
+                    <Inline space="small" alignY="center">
+                      <Heading level="3">v{item.version}</Heading>
+                      <Text tone="secondary">{item.time}</Text>
+                      {item.isRecent && item.recency ? (
+                        <Box position="relative">
+                          <Box
+                            position="absolute"
+                            style={{
+                              top: '50%',
+                              transform: 'translateY(-50%)',
+                            }}
+                          >
+                            <Badge tone="promote">{item.recency}</Badge>
+                          </Box>
+                        </Box>
+                      ) : null}
+                    </Inline>
+                    <Markdown>{item.summary}</Markdown>
+                  </Stack>
+                </Box>
+              ))
+            ) : (
+              <Stack space="large">
+                <Heading level="3">No release notes available</Heading>
+                <Text>
+                  This component hasn’t had any releases since we introduced{' '}
+                  <TextLink href="https://github.com/atlassian/changesets">
+                    a proper release notes system.
+                  </TextLink>
+                </Text>
               </Stack>
-            ))}
+            )}
           </Stack>
         </Route>
       </Switch>
