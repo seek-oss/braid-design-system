@@ -2,7 +2,7 @@
 'braid-design-system': minor
 ---
 ---
-updates:
+updated:
   - TabPanel
 ---
 
