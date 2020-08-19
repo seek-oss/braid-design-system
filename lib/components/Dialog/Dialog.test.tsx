@@ -7,6 +7,7 @@ import { Button } from '../Button/Button';
 
 const ESCAPE = 27;
 const CLOSE_BUTTON_LABEL = 'Close dialog please';
+const DIALOG_TITLE = 'Test Dialog';
 
 const TestCase = ({ close }: { close: (newOpenState: boolean) => void }) => {
   const [open, setOpen] = useState(false);
@@ -17,7 +18,7 @@ const TestCase = ({ close }: { close: (newOpenState: boolean) => void }) => {
       </Button>
       <input type="text" />
       <Dialog
-        title="Test Dialog"
+        title={DIALOG_TITLE}
         closeLabel={CLOSE_BUTTON_LABEL}
         open={open}
         onClose={(newOpenState) => {
@@ -76,7 +77,7 @@ describe('Dialog', () => {
   });
 
   it('should have the correct aria properties when open', () => {
-    const { getByTestId, queryByRole } = renderDialog();
+    const { getByTestId, queryByRole, getByLabelText } = renderDialog();
 
     expect(queryByRole('dialog')).not.toBeInTheDocument();
 
@@ -84,19 +85,24 @@ describe('Dialog', () => {
 
     const dialog = queryByRole('dialog');
     expect(dialog?.getAttribute('aria-modal')).toBe('true');
-    expect(dialog?.getAttribute('aria-label')).toBe('Test Dialog');
+    expect(getByLabelText(DIALOG_TITLE)).toBe(dialog);
   });
 
-  it('should focus the first focusable element', () => {
-    const { getByTestId } = renderDialog();
+  it('should focus the title element', () => {
+    const { getByTestId, getByText } = renderDialog();
 
     userEvent.click(getByTestId('buttonBefore'));
 
-    expect(getByTestId('buttonInside')).toHaveFocus();
+    expect(getByText(DIALOG_TITLE)).toHaveFocus();
   });
 
   it('should trap focus in the dialog', () => {
-    const { getByTestId, getByRole, getByLabelText } = renderDialog();
+    const {
+      getByTestId,
+      getByRole,
+      getByText,
+      getByLabelText,
+    } = renderDialog();
 
     const dialogOpenButton = getByTestId('buttonBefore');
     userEvent.tab();
@@ -105,7 +111,11 @@ describe('Dialog', () => {
     userEvent.click(dialogOpenButton);
     const buttonInside = getByTestId('buttonInside');
     const closeButton = getByLabelText(CLOSE_BUTTON_LABEL);
+    const dialogTitle = getByText(DIALOG_TITLE);
 
+    expect(dialogTitle).toHaveFocus();
+
+    userEvent.tab({ focusTrap: getByRole('dialog') });
     expect(buttonInside).toHaveFocus();
 
     userEvent.tab({ focusTrap: getByRole('dialog') });

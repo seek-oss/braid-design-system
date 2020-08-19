@@ -6,13 +6,14 @@ import React, {
   useCallback,
   createContext,
   forwardRef,
-  // useContext,
+  Fragment,
+  useContext,
 } from 'react';
 import { createPortal } from 'react-dom';
-import FocusLock, { AutoFocusInside } from 'react-focus-lock';
+import FocusLock from 'react-focus-lock';
 import { useStyles } from 'sku/react-treat';
 import { hideOthers } from 'aria-hidden';
-// import assert from 'assert';
+import assert from 'assert';
 import { Box } from '../Box/Box';
 import { ClearButton } from '../iconButtons/ClearButton/ClearButton';
 import { normalizeKey } from '../private/normalizeKey';
@@ -34,7 +35,7 @@ interface DialogProps {
   open: boolean;
   onClose: (open: boolean) => void;
   closeLabel?: string;
-  width?: ContentBlockProps['width'];
+  width?: ContentBlockProps['width'] | 'content';
   description?: ReactNodeNoStrings;
   illustration?: ReactNodeNoStrings;
 }
@@ -46,9 +47,9 @@ interface DialogPortalProps {
 }
 const DialogPortal = ({ children }: DialogPortalProps) => {
   const [dialogElement, setElement] = useState<HTMLElement | null>(null);
-  // const dialogContext = useContext(DialogContext);
+  const dialogContext = useContext(DialogContext);
 
-  // assert(!dialogContext, 'Nested Dialogs are not supported.');
+  assert(!dialogContext, 'Nested Dialogs are not supported.');
 
   useEffect(() => {
     const dialogContainerId = 'braid-dialog-container';
@@ -77,36 +78,39 @@ const DialogPortal = ({ children }: DialogPortalProps) => {
   );
 };
 
+const dialogPadding = ['gutter', 'large'] as const;
+
 const CloseButton = ({
   label = 'Close',
   onClick,
 }: {
   label?: string;
   onClick: () => void;
-}) => (
-  <Box
-    aria-hidden
-    position="absolute"
-    top={0}
-    right={0}
-    background="card"
-    borderRadius="standard"
-    paddingRight={['gutter', 'large']}
-    paddingTop={['gutter', 'large']}
-    paddingLeft="small"
-    paddingBottom="small"
-    overflow="hidden"
-  >
-    <Box style={{ marginTop: '-7px', marginRight: '-6px' }}>
-      <ClearButton tone="neutral" label={label} onClick={onClick} />
+}) => {
+  const styles = useStyles(styleRefs);
+  return (
+    <Box
+      aria-hidden
+      position="absolute"
+      top={0}
+      right={0}
+      paddingRight={dialogPadding}
+      paddingTop={dialogPadding}
+      paddingLeft="small"
+      paddingBottom="small"
+      overflow="hidden"
+    >
+      <Box className={styles.closeOffset}>
+        <ClearButton tone="neutral" label={label} onClick={onClick} />
+      </Box>
     </Box>
-  </Box>
-);
+  );
+};
 
-const getId = (description: string) => {
+const getId = (description: string, suffix: 'label' | 'desc') => {
   const words = description.substring(0, 30).match(/([a-z])+/gi);
   if (words) {
-    return words.join('-').toLowerCase();
+    return [...words, suffix].join('-').toLowerCase();
   }
 };
 
@@ -119,7 +123,11 @@ const Header = forwardRef<HTMLElement, HeaderProps>(
 
     return (
       <Stack space="medium">
-        <Heading level="3" align={center ? 'center' : undefined}>
+        <Heading
+          level="3"
+          id={getId(title, 'label')}
+          align={center ? 'center' : undefined}
+        >
           <Box
             ref={ref}
             component="span"
@@ -138,39 +146,60 @@ const Header = forwardRef<HTMLElement, HeaderProps>(
             />
           </Box>
         </Heading>
-        {description ? <Box id={getId(title)}>{description}</Box> : null}
+        {description ? (
+          <Box id={getId(title, 'desc')}>{description}</Box>
+        ) : null}
       </Stack>
     );
   },
 );
+
+const Container = ({
+  children,
+  width,
+}: {
+  children: ReactNode;
+  width: DialogProps['width'];
+}) =>
+  width !== 'content' ? (
+    <ContentBlock width={width}>{children}</ContentBlock>
+  ) : (
+    <Fragment>{children}</Fragment>
+  );
 
 export const Dialog = ({
   open,
   children,
   description,
   onClose,
-  width,
+  width = 'small',
   closeLabel,
   illustration,
   title,
 }: DialogProps) => {
   const styles = useStyles(styleRefs);
+  const [trapActive, setTrapActive] = useState(open);
   const [internalOpen, setInternalOpen] = useState(open);
   const dialogContainerRef = useRef<HTMLElement>(null);
   const hideOthersRef = useRef<ReturnType<typeof hideOthers> | null>(null);
   const headingRef = useRef<HTMLElement>(null);
+
   const scrollLockStyles = useBoxStyles({
     component: null,
     overflow: 'hidden',
   });
 
-  const close = useCallback(() => onClose(false), [onClose]);
+  const close = useCallback(() => {
+    if (typeof onClose === 'function') {
+      onClose(false);
+    }
+  }, [onClose]);
 
   const handleEscape = useCallback(
     (event) => {
-      event.stopPropagation();
       const targetKey = normalizeKey(event);
       if (targetKey === 'Escape') {
+        event.stopPropagation();
         close();
       }
     },
@@ -180,6 +209,7 @@ export const Dialog = ({
   useEffect(() => {
     if (open) {
       setInternalOpen(open);
+      setTrapActive(open);
 
       document.body.classList.add(scrollLockStyles);
 
@@ -189,6 +219,7 @@ export const Dialog = ({
     }
 
     return () => {
+      setTrapActive(false);
       setInternalOpen(false);
 
       document.body.classList.remove(scrollLockStyles);
@@ -206,11 +237,31 @@ export const Dialog = ({
     }
   }, [internalOpen]);
 
+  const handleWindowFocus = useCallback(() => {
+    setTrapActive(true);
+  }, [setTrapActive]);
+
+  const handleWindowBlur = useCallback(() => {
+    setTrapActive(false);
+  }, [setTrapActive]);
+
+  useEffect(() => {
+    if (trapActive) {
+      window.addEventListener('blur', handleWindowBlur);
+    } else {
+      window.addEventListener('focus', handleWindowFocus);
+    }
+
+    return () => {
+      window.removeEventListener('blur', handleWindowBlur);
+      window.removeEventListener('focus', handleWindowFocus);
+    };
+  }, [handleWindowBlur, handleWindowFocus, trapActive]);
+
   return (
     <DialogPortal>
       <FocusLock
-        disabled={!internalOpen}
-        // disabled={true}
+        disabled={!trapActive}
         returnFocus
         noFocusGuards={!internalOpen}
         ref={dialogContainerRef}
@@ -237,22 +288,22 @@ export const Dialog = ({
           {internalOpen && (
             <Box
               role="dialog"
-              aria-label={title}
-              aria-describedby={description ? getId(title) : undefined}
+              aria-labelledby={getId(title, 'label')}
+              aria-describedby={description ? getId(title, 'desc') : undefined}
               aria-modal="true"
-              width="full"
               overflow="auto"
+              width={width !== 'content' ? 'full' : undefined}
               className={styles.dialog}
             >
-              <ContentBlock width={width}>
+              <Container width={width}>
                 <Box
                   background="card"
                   borderRadius="standard"
                   position="relative"
                   boxShadow="large"
-                  padding={['gutter', 'large']}
+                  width={width !== 'content' ? 'full' : undefined}
+                  padding={dialogPadding}
                 >
-                  <CloseButton label={closeLabel} onClick={close} />
                   <Stack space="large">
                     {illustration ? (
                       <Stack space="medium" align="center">
@@ -265,7 +316,7 @@ export const Dialog = ({
                         />
                       </Stack>
                     ) : (
-                      <Columns space={['gutter', 'large']}>
+                      <Columns space={dialogPadding}>
                         <Column>
                           <Header
                             title={title}
@@ -275,14 +326,15 @@ export const Dialog = ({
                           />
                         </Column>
                         <Column width="content">
-                          <Box style={{ width: '10px' }} />
+                          <Box className={styles.closePlaceholder} />
                         </Column>
                       </Columns>
                     )}
-                    <AutoFocusInside>{children}</AutoFocusInside>
+                    <Fragment>{children}</Fragment>
                   </Stack>
+                  <CloseButton label={closeLabel} onClick={close} />
                 </Box>
-              </ContentBlock>
+              </Container>
             </Box>
           )}
         </Box>

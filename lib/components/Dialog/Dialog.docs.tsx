@@ -57,6 +57,7 @@ const docs: ComponentDocs = {
                   }
                   label="First field"
                   placeholder="I should auto focus"
+                  autoFocus
                 />
                 <TextField
                   id="2"
@@ -98,19 +99,8 @@ const docs: ComponentDocs = {
             <Dialog
               title="My important announcement"
               description={
-                <Text id="dialogDescription">
-                  This dialog box implements the aria spec for dialogs. Does not
-                  support non-modals. This dialog box implements the aria spec
-                  for dialogs. Does not support non-modals. This dialog box
-                  implements the aria spec for dialogs. Does not support
-                  non-modals. This dialog box implements the aria spec for
-                  dialogs. Does not support non-modals. This dialog box
-                  implements the aria spec for dialogs. Does not support
-                  non-modals. This dialog box implements the aria spec for
-                  dialogs. Does not support non-modals. This dialog box
-                  implements the aria spec for dialogs. Does not support
-                  non-modals. This dialog box implements the aria spec for
-                  dialogs. Does not support non-modals. This dialog box
+                <Text>
+                  This describes the panel in more detail. This dialog box
                   implements the aria spec for dialogs. Does not support
                   non-modals.
                 </Text>
