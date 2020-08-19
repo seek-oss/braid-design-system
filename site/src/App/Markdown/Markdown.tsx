@@ -23,15 +23,30 @@ const paragraph = ({ children }: any) => <Text component="p">{children}</Text>;
 paragraph.isParagraph = true;
 
 const renderers = {
-  root: ({ children }: any) => <Stack space="large">{children}</Stack>,
-  heading: ({ level, children }: any) =>
-    level <= 3 ? (
-      <Box paddingTop={level <= 2 ? 'medium' : undefined}>
-        <Heading level={level + 1}>{children}</Heading>
+  root: ({ children }: any) => <Stack space="medium">{children}</Stack>,
+  heading: ({ level, children }: any) => {
+    const resolvedLevel = String(level + 1) as '2' | '3' | '4' | '5';
+    const paddingTopForLevel = {
+      '3': 'large',
+      '4': 'medium',
+    } as const;
+
+    return (
+      <Box
+        paddingTop={
+          resolvedLevel in paddingTopForLevel
+            ? paddingTopForLevel[
+                resolvedLevel as keyof typeof paddingTopForLevel
+              ]
+            : undefined
+        }
+      >
+        <Heading level={resolvedLevel === '5' ? '4' : resolvedLevel}>
+          {children}
+        </Heading>
       </Box>
-    ) : (
-      <Text size="large">{children}</Text>
-    ),
+    );
+  },
   paragraph,
   list: List,
   listItem: ({ children }: { children: any }) => {
@@ -39,7 +54,7 @@ const renderers = {
 
     // @ts-expect-error
     if (childList[0]?.type?.isParagraph) {
-      return <Stack space="medium">{children}</Stack>;
+      return <Stack space="large">{children}</Stack>;
     }
 
     return <Text>{children}</Text>;

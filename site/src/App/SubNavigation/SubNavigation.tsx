@@ -99,12 +99,6 @@ export const SubNavigation = ({ onSelect }: SubNavigationProps) => {
     <Stack space="xlarge">
       <ThemeToggle />
 
-      <Text>
-        <TextLink href="/changelog" hitArea="large">
-          Changelog
-        </TextLink>
-      </Text>
-
       <SubNavigationGroup
         title="Tools"
         items={[
@@ -115,6 +109,10 @@ export const SubNavigation = ({ onSelect }: SubNavigationProps) => {
           {
             name: 'Playroom',
             path: playroomUrl,
+          },
+          {
+            name: 'Release Notes',
+            path: '/release-notes',
           },
         ]}
       />

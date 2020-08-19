@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const flatten = require('lodash/flatten');
 
 const extractExports = require('./extractExports');
 const undocumentedExports = require('./site/src/undocumentedExports.json');
@@ -27,11 +28,17 @@ const exampleRoutes = getPages('site/src/App/routes/examples/index.ts');
 
 module.exports = [
   { route: '/', name: 'home' },
-  { route: '/changelog', name: 'changelog' },
+  { route: '/release-notes', name: 'release-notes' },
   ...guideRoutes.map((route) => ({ route })),
   ...foundationRoutes.map((route) => ({ route })),
   ...exampleRoutes.map((route) => ({ route })),
   { route: '/components', name: 'components' }, // Pre-rendering this route for url backwards compatibility.
-  ...componentNames.map((name) => ({ route: `/components/${name}`, name })),
+  ...flatten(
+    componentNames.map((name) => [
+      { route: `/components/${name}` },
+      { route: `/components/${name}/props` },
+      { route: `/components/${name}/release-notes` },
+    ]),
+  ),
   ...iconNames.map((name) => ({ route: `/components/${name}`, name })),
 ];

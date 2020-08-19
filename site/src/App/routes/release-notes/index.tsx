@@ -6,14 +6,18 @@ import changelogContent from '!!raw-loader!../../../../../CHANGELOG.md';
 import { Page } from '../../../types';
 import { Markdown } from '../../Markdown/Markdown';
 
-const Changelog = () => <Markdown>{changelogContent}</Markdown>;
+const Changelog = () => (
+  <Markdown>
+    {changelogContent.replace('# braid-design-system', '# Release Notes')}
+  </Markdown>
+);
 
 const page: Page = {
-  title: 'Changelog',
+  title: 'Release Notes',
   exact: true,
   component: Changelog,
 };
 
 export default {
-  '/changelog': page,
+  '/release-notes': page,
 };
