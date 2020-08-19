@@ -20,12 +20,15 @@ For controlled Tabs using the `selectedItem` prop, you now need to pass the `ite
     <Tab item="third">The third tab</Tab>
   </Tabs>
   <TabPanels>
+-    <TabPanel>
 +    <TabPanel item="first">
       <Placeholder height={200} label="Panel 1" />
     </TabPanel>
+-    <TabPanel>
 +    <TabPanel item="second">
       <Placeholder height={200} label="Panel 2" />
     </TabPanel>
+-    <TabPanel>
 +    <TabPanel item="third">
       <Placeholder height={200} label="Panel 3" />
     </TabPanel>
