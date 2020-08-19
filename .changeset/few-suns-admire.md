@@ -10,7 +10,7 @@ Improved server rendering of Tabs
 
 Previously, `Tab` and `TabPanel` components only showed their content and active states after the first render, which meant server rendering was not ideal. Active Tabs and TabPanel content can now be server rendered. Uncontrolled usages of Tabs should just work.
 
-For controlled Tabs use through the `selectedItem` prop, you now need to pass the `item` prop (already on `Tab`) to `TabPanel` as well.
+For controlled Tabs using the `selectedItem` prop, you now need to pass the `item` prop (already on `Tab`) to `TabPanel` as well.
 
 ```diff
 <TabsProvider id="id" selectedItem="second">
