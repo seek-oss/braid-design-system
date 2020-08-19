@@ -25,6 +25,7 @@ interface State {
 }
 
 interface TabsContextValues extends State {
+  selectedItem?: string;
   dispatch: (action: Action) => void;
   a11y: ReturnType<typeof tabA11y>;
   onChange?: (selectedIndex: number, selectedItem?: string) => void;
@@ -120,7 +121,7 @@ export const TabsProvider = ({
       }
     },
     {
-      selectedIndex: -1,
+      selectedIndex: 0,
       focusedTabIndex: null,
       tabItems: [],
       panels: [],
@@ -134,6 +135,7 @@ export const TabsProvider = ({
         selectedIndex: selectedItem
           ? tabsState.tabItems.indexOf(selectedItem)
           : tabsState.selectedIndex,
+        selectedItem,
         dispatch,
         a11y: tabA11y({ uniqueId: id }),
         onChange,
