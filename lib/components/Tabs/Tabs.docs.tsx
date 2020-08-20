@@ -81,8 +81,8 @@ const docs: ComponentDocs = {
       <Text>
         State is managed internally by default. If you’d like to manage tab
         state from the outside, you must pass an <Strong>item</Strong> prop to
-        each <Strong>Tab</Strong> element, as well as{' '}
-        <Strong>selectedItem</Strong> and <Strong>onChange</Strong> props to{' '}
+        each <Strong>Tab</Strong> and <Strong>TabPanel</Strong> element, as well
+        as <Strong>selectedItem</Strong> and <Strong>onChange</Strong> props to{' '}
         <Strong>TabsProvider.</Strong>
       </Text>
     </Stack>
