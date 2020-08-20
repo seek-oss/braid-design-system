@@ -40,7 +40,7 @@ interface SubNavigationItem {
 }
 
 interface SubNavigationGroup {
-  title: string;
+  title?: string;
   items: SubNavigationItem[];
 }
 
@@ -50,11 +50,13 @@ const SubNavigationGroup = ({ title, items }: SubNavigationGroup) => {
   return (
     <Box component="nav">
       <Stack space="large">
-        <Box className={styles.uppercase}>
-          <Text size="xsmall" weight="medium" component="h2">
-            {title}
-          </Text>
-        </Box>
+        {title ? (
+          <Box className={styles.uppercase}>
+            <Text size="xsmall" weight="medium" component="h2">
+              {title}
+            </Text>
+          </Box>
+        ) : null}
 
         <Stack component="ul" space="medium">
           {items.map(({ name, badge, path, onClick }) => (
@@ -100,19 +102,19 @@ export const SubNavigation = ({ onSelect }: SubNavigationProps) => {
       <ThemeToggle />
 
       <SubNavigationGroup
-        title="Tools"
         items={[
           {
-            name: 'GitHub',
-            path: 'https://github.com/seek-oss/braid-design-system',
+            name: 'Releases',
+            path: '/releases',
+            badge: 'New',
           },
           {
             name: 'Playroom',
             path: playroomUrl,
           },
           {
-            name: 'Release Notes',
-            path: '/release-notes',
+            name: 'GitHub',
+            path: 'https://github.com/seek-oss/braid-design-system',
           },
         ]}
       />

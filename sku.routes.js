@@ -28,7 +28,7 @@ const exampleRoutes = getPages('site/src/App/routes/examples/index.ts');
 
 module.exports = [
   { route: '/', name: 'home' },
-  { route: '/release-notes', name: 'release-notes' },
+  { route: '/releases', name: 'releases' },
   ...guideRoutes.map((route) => ({ route })),
   ...foundationRoutes.map((route) => ({ route })),
   ...exampleRoutes.map((route) => ({ route })),
@@ -37,7 +37,7 @@ module.exports = [
     componentNames.map((name) => [
       { route: `/components/${name}` },
       { route: `/components/${name}/props` },
-      { route: `/components/${name}/release-notes` },
+      { route: `/components/${name}/releases` },
     ]),
   ),
   ...iconNames.map((name) => ({ route: `/components/${name}`, name })),

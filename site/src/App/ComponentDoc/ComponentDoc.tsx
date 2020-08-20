@@ -16,16 +16,24 @@ import {
   Inline,
   Badge,
   Link,
+  Divider,
 } from '../../../../lib/components';
 
 import { ComponentDocs } from '../../types';
 import Code from '../Code/Code';
 import { ThemedExample } from '../ThemeSetting';
 import { useConfig } from '../ConfigContext';
-import { getHistory, isNew, isUpdated } from '../Updates';
+import { getHistory, isNew, isUpdated, getNew, getUpdated } from '../Updates';
 import { Markdown } from '../Markdown/Markdown';
 import { Route, Switch, useRouteMatch } from 'react-router';
 import { BadgeProps } from '../../../../lib/components/Badge/Badge';
+import {
+  useNegativeMarginLeft,
+  useNegativeMarginTop,
+} from '../../../../lib/hooks/useNegativeMargin/useNegativeMargin';
+
+const navItemPaddingX = ['xsmall', 'medium'] as const;
+const navItemPaddingY = ['small', 'medium'] as const;
 
 interface NavigationProps {
   title: string;
@@ -35,12 +43,16 @@ const Navigation = ({ title, children }: NavigationProps) => (
   <Box
     component="nav"
     aria-label={title}
-    style={{ background: '#F5F6F8' }}
-    borderRadius="standard"
-    paddingX="small"
+    className={[
+      useNegativeMarginTop(navItemPaddingY),
+      useNegativeMarginLeft(navItemPaddingX),
+    ]}
   >
-    <Box component="ul" display="flex">
+    <Box component="ul" display="flex" alignItems="center">
       {children}
+    </Box>
+    <Box paddingLeft={navItemPaddingX}>
+      <Divider />
     </Box>
   </Box>
 );
@@ -49,6 +61,7 @@ interface NavigationItemProps {
   active?: boolean;
   href: string;
   badge?: ReactElement<BadgeProps>;
+  badgeTitle?: string;
   children: ReactNode;
 }
 const NavigationItem = ({
@@ -58,8 +71,10 @@ const NavigationItem = ({
   children,
 }: NavigationItemProps) => {
   const [hovered, setHovered] = useState(false);
-  const inactiveTone = hovered ? 'neutral' : 'secondary';
-  const tone = active ? 'formAccent' : inactiveTone;
+
+  const badgeElement = badge ? (
+    <Box paddingLeft="xsmall">{badge}</Box>
+  ) : undefined;
 
   return (
     <Box component="li">
@@ -69,18 +84,43 @@ const NavigationItem = ({
         onMouseLeave={() => setHovered(false)}
         aria-current={active ? 'page' : undefined}
       >
-        <Box
-          display="flex"
-          alignItems="center"
-          paddingX="small"
-          paddingY="small"
-        >
-          <Box paddingY="small">
-            <Text weight="medium" tone={tone}>
-              {children}
-            </Text>
+        <Box display="flex" alignItems="center" paddingX={navItemPaddingX}>
+          <Box position="relative">
+            <Box
+              display="flex"
+              alignItems="center"
+              opacity={active ? undefined : 0}
+            >
+              <Box paddingY={navItemPaddingY}>
+                <Text size="standard" weight="strong">
+                  {children}
+                </Text>
+              </Box>
+              {badgeElement}
+            </Box>
+            <Box
+              aria-hidden
+              display="flex"
+              alignItems="center"
+              position="absolute"
+              top={0}
+              {...(children === 'Details'
+                ? { left: 0 }
+                : { style: { left: '50%', transform: 'translateX(-50%)' } })}
+              opacity={active ? 0 : undefined}
+            >
+              <Box paddingY={navItemPaddingY}>
+                <Text
+                  size="standard"
+                  weight="medium"
+                  tone={hovered ? 'neutral' : 'secondary'}
+                >
+                  {children}
+                </Text>
+              </Box>
+              {badgeElement}
+            </Box>
           </Box>
-          {badge ? <Box paddingLeft="xsmall">{badge}</Box> : undefined}
         </Box>
       </Link>
     </Box>
@@ -129,8 +169,7 @@ export const ComponentDoc = ({
     : [componentName];
 
   const history = getHistory(...relevantNames);
-
-  const hasNewUpdates = isNew(...relevantNames) || isUpdated(...relevantNames);
+  const updateCounter = history.filter((item) => item.isRecent).length;
 
   return (
     <Stack space="xlarge">
@@ -164,16 +203,26 @@ export const ComponentDoc = ({
           <NavigationItem
             active={
               useRouteMatch({
-                path: `/components/${componentName}/release-notes`,
+                path: `/components/${componentName}/releases`,
                 exact: true,
               }) !== null
             }
-            href={`/components/${componentName}/release-notes`}
+            href={`/components/${componentName}/releases`}
             badge={
-              hasNewUpdates ? <Badge tone="promote">Updated</Badge> : undefined
+              updateCounter > 0 ? (
+                <Badge
+                  tone="promote"
+                  weight="strong"
+                  title={`${updateCounter} release${
+                    updateCounter === 1 ? '' : 's'
+                  } in the last two months`}
+                >
+                  {String(updateCounter)}
+                </Badge>
+              ) : undefined
             }
           >
-            Release Notes
+            Releases
           </NavigationItem>
         </Navigation>
         {docs.deprecationWarning ? (
@@ -182,7 +231,7 @@ export const ComponentDoc = ({
       </Stack>
       <Switch>
         <Route exact path={`/components/${componentName}`}>
-          <Stack space="xlarge" dividers>
+          <Stack space="xxlarge">
             {docs.description}
 
             {filteredExamples.map((example, index) => {
@@ -245,26 +294,14 @@ export const ComponentDoc = ({
           </Stack>
         </Route>
         <Route path={`/components/${componentName}/props`}>
-          <Stack space="xlarge" dividers>
+          <Stack space="xxlarge">
             {Array.isArray(propsToDocument) ? (
-              <TabsProvider id="component-props">
-                <Stack space="xlarge">
-                  <Tabs label="Component props">
-                    {propsToDocument.map((c) => (
-                      <Tab item={c} key={c}>
-                        {c}
-                      </Tab>
-                    ))}
-                  </Tabs>
-                  <TabPanels>
-                    {propsToDocument.map((c) => (
-                      <TabPanel key={c}>
-                        <ComponentProps componentName={c} />
-                      </TabPanel>
-                    ))}
-                  </TabPanels>
+              propsToDocument.map((c) => (
+                <Stack space="large" key={c}>
+                  <Heading level="3">{c}</Heading>
+                  <ComponentProps componentName={c} />
                 </Stack>
-              </TabsProvider>
+              ))
             ) : (
               <ComponentProps componentName={componentName} />
             )}
@@ -284,28 +321,29 @@ export const ComponentDoc = ({
             </Stack>
           </Stack>
         </Route>
-        <Route path={`/components/${componentName}/release-notes`}>
-          <Stack space="large" dividers>
+        <Route path={`/components/${componentName}/releases`}>
+          <Stack space="xlarge">
             {history.length > 0 ? (
               history.map((item, index) => (
                 <Box key={index} paddingTop={index > 0 ? 'medium' : undefined}>
                   <Stack space="large">
                     <Inline space="small" alignY="center">
                       <Heading level="3">v{item.version}</Heading>
-                      <Text tone="secondary">{item.time}</Text>
-                      {item.isRecent && item.recency ? (
-                        <Box position="relative">
-                          <Box
-                            position="absolute"
-                            style={{
-                              top: '50%',
-                              transform: 'translateY(-50%)',
-                            }}
-                          >
-                            <Badge tone="promote">{item.recency}</Badge>
-                          </Box>
+                      <Box position="relative">
+                        <Box
+                          position="absolute"
+                          style={{
+                            top: '50%',
+                            transform: 'translateY(-50%)',
+                          }}
+                        >
+                          {item.time ? (
+                            <Badge tone={item.isRecent ? 'promote' : 'neutral'}>
+                              {item.time}
+                            </Badge>
+                          ) : null}
                         </Box>
-                      ) : null}
+                      </Box>
                     </Inline>
                     <Markdown>{item.summary}</Markdown>
                   </Stack>

@@ -76,9 +76,8 @@ const renderers = {
     <Box
       component="code"
       display="inline"
-      background="neutralLight"
-      borderRadius="standard"
-      padding="xxsmall"
+      paddingX="xxsmall"
+      style={{ fontFamily: 'monospace', fontWeight: 'bold' }}
     >
       {children}
     </Box>

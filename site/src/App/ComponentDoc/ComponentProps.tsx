@@ -6,6 +6,9 @@ import {
   Secondary,
   Heading,
   Stack,
+  Badge,
+  Inline,
+  Strong,
 } from '../../../../lib/components';
 import componentDocs from '../../../../generate-component-docs/componentDocs.json';
 import {
@@ -92,31 +95,21 @@ const PropList = ({
 }: {
   label: string;
   props: Array<{ propName: string; type: NormalisedPropType }>;
-}) => {
-  if (props.length === 0) {
-    return null;
-  }
-
-  return (
-    <Stack space="large">
-      <Heading level="3" component="h4">
-        {label}
-      </Heading>
-      <Stack space="large">
-        {props.map(({ propName, type }) => (
-          <Stack space="small" key={propName}>
-            <Text size="small" weight="medium">
-              {propName}
-            </Text>
-            <Text tone="secondary" size="small">
-              <PropType type={type} />
-            </Text>
-          </Stack>
-        ))}
+}) => (
+  <Stack space="large">
+    {props.map(({ propName, type }) => (
+      <Stack space="small" key={propName}>
+        <Text size="small" weight="strong">
+          {propName}
+          {label === 'Required props' ? ' (Required)' : null}
+        </Text>
+        <Text tone="secondary" size="small">
+          <PropType type={type} />
+        </Text>
       </Stack>
-    </Stack>
-  );
-};
+    ))}
+  </Stack>
+);
 
 export const ComponentProps = ({ componentName }: Props) => {
   if (!isValidComponentName(componentName)) {
@@ -136,9 +129,13 @@ export const ComponentProps = ({ componentName }: Props) => {
   );
 
   return Object.keys(doc.props).length === 0 ? null : (
-    <Stack space="xlarge">
-      <PropList label="Required props" props={requiredProps} />
-      <PropList label="Optional props" props={optionalProps} />
+    <Stack space="large">
+      {requiredProps.length > 0 ? (
+        <PropList label="Required props" props={requiredProps} />
+      ) : null}
+      {optionalProps.length > 0 ? (
+        <PropList label="Optional props" props={optionalProps} />
+      ) : null}
     </Stack>
   );
 };

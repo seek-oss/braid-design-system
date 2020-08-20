@@ -16,7 +16,7 @@ import guides from './routes/guides';
 import foundations from './routes/foundations';
 import examples from './routes/examples';
 import components from './routes/components';
-import releaseNotes from './routes/release-notes';
+import releaseNotes from './routes/releases';
 
 const CustomLink = makeLinkComponent(
   ({ href, rel, onClick, ...restProps }, ref) =>

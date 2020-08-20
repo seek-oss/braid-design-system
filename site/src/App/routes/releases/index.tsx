@@ -8,16 +8,16 @@ import { Markdown } from '../../Markdown/Markdown';
 
 const Changelog = () => (
   <Markdown>
-    {changelogContent.replace('# braid-design-system', '# Release Notes')}
+    {changelogContent.replace('# braid-design-system', '# Releases')}
   </Markdown>
 );
 
 const page: Page = {
-  title: 'Release Notes',
+  title: 'Releases',
   exact: true,
   component: Changelog,
 };
 
 export default {
-  '/release-notes': page,
+  '/releases': page,
 };

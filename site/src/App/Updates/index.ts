@@ -1,4 +1,5 @@
 import flatten from 'lodash/flatten';
+import intersection from 'lodash/intersection';
 
 import { differenceInMonths, format, formatDistance } from 'date-fns';
 
@@ -108,12 +109,20 @@ export const getCurrentVersionInfo = () => ({
   date: versionMap[currentVersion],
 });
 
-export const isNew = memo((...names: Array<string>) =>
-  hasIntersection(names, Array.from(newThings.values())),
+export const getNew = memo((...names: Array<string>) =>
+  intersection(names, Array.from(newThings.values())),
 );
 
-export const isUpdated = memo((...names: Array<string>) =>
-  hasIntersection(names, Array.from(updatedThings.values())),
+export const isNew = memo(
+  (...names: Array<string>) => getNew(...names).length > 0,
+);
+
+export const getUpdated = memo((...names: Array<string>) =>
+  intersection(names, Array.from(updatedThings.values())),
+);
+
+export const isUpdated = memo(
+  (...names: Array<string>) => getUpdated(...names).length > 0,
 );
 
 export const getHistory = memo((...names: Array<string>) => {
