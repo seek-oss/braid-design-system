@@ -43,6 +43,7 @@ const docs: ComponentDocs = {
   examples: [
     {
       label: 'Default',
+      playroom: false,
       Example: ({ id }) => {
         const [open, setOpen] = useState(false);
 
@@ -66,6 +67,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'With illustration/logo',
+      playroom: false,
       Example: ({ id }) => {
         const [open, setOpen] = useState(false);
 
@@ -104,6 +106,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Sized to content',
+      playroom: false,
       Example: ({ id }) => {
         const [open, setOpen] = useState(false);
 
@@ -130,6 +133,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Xsmall width',
+      playroom: false,
       Example: ({ id }) => {
         const [open, setOpen] = useState(false);
 
@@ -165,6 +169,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Small width',
+      playroom: false,
       Example: ({ id }) => {
         const [open, setOpen] = useState(false);
 
@@ -200,6 +205,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Medium width',
+      playroom: false,
       Example: ({ id }) => {
         const [open, setOpen] = useState(false);
 
@@ -235,6 +241,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Large width',
+      playroom: false,
       Example: ({ id }) => {
         const [open, setOpen] = useState(false);
 
@@ -270,6 +277,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'With additional description',
+      playroom: false,
       Example: ({ id }) => {
         const [open, setOpen] = useState(false);
 
