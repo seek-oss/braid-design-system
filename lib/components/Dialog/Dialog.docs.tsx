@@ -1,14 +1,20 @@
 import React, { useState, Fragment } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import { Dialog } from '../';
-import { Button } from '../Button/Button';
-import { Inline } from '../Inline/Inline';
-import { TextField } from '../TextField/TextField';
-import { Text } from '../Text/Text';
-import { Stack } from '../Stack/Stack';
-import { useToast, ToastProvider } from '../useToast/ToastContext';
-import { TextLink } from '../TextLink/TextLink';
-import { Placeholder } from '../../playroom/components';
+import {
+  Dialog,
+  Button,
+  Inline,
+  Text,
+  Stack,
+  TextLink,
+  IconMail,
+  Box,
+  Strong,
+} from '../';
+import {
+  Placeholder,
+  Dialog as PlayroomDialog,
+} from '../../playroom/components';
 
 const docs: ComponentDocs = {
   category: 'Layout',
@@ -23,52 +29,72 @@ const docs: ComponentDocs = {
         </TextLink>
       </Text>
       <Text>
-        When opened focus will be placed on this first focusable element inside
-        the container, tabbing will then cycle through all focusable elements
-        internally. When the Dialog is closed, focus will be returned to the
-        element last focused before the Dialog was opened.
+        The Dialog component provides a way to focus the users attention on a
+        specific subtask or flow within the context of another experience. In
+        order to keep experiences simple, Dialogs{' '}
+        <Strong>cannot be nested</Strong> inside one another.
       </Text>
-      <Text tone="secondary">
-        At this stage nested dialogs are not supported.
+      <Text>
+        Dialogs should only be used as a last resort when other in-flow
+        alternatives are not suitable.
       </Text>
     </Stack>
   ),
   examples: [
     {
       label: 'Default',
-      Example: () => {
+      Example: ({ id }) => {
         const [open, setOpen] = useState(false);
-        const [value, setValue] = useState('');
-        const [value2, setValue2] = useState('');
 
         return (
           <Fragment>
             <Inline space="large" alignY="center">
-              <Button onClick={() => setOpen(true)}>Open dialog</Button>
+              <Button onClick={() => setOpen(true)}>Open default dialog</Button>
             </Inline>
 
-            <Dialog title="Braid Dialog Example" open={open} onClose={setOpen}>
-              <Stack space="large">
-                <TextField
-                  id="1"
-                  value={value}
-                  onChange={({ currentTarget }) =>
-                    setValue(currentTarget.value)
-                  }
-                  label="First field"
-                  placeholder="I should auto focus"
-                  autoFocus
-                />
-                <TextField
-                  id="2"
-                  value={value2}
-                  onChange={({ currentTarget }) =>
-                    setValue2(currentTarget.value)
-                  }
-                  label="Second field"
-                />
-                <Inline space="none">
+            <Dialog
+              id={id}
+              title="Default Dialog Example"
+              open={open}
+              onClose={setOpen}
+            >
+              <Placeholder height={100} width="100%" />
+            </Dialog>
+          </Fragment>
+        );
+      },
+    },
+    {
+      label: 'With illustration/logo',
+      Example: ({ id }) => {
+        const [open, setOpen] = useState(false);
+
+        return (
+          <Fragment>
+            <Inline space="large" alignY="center">
+              <Button onClick={() => setOpen(true)}>
+                Open illustrated dialog
+              </Button>
+            </Inline>
+
+            <Dialog
+              id={id}
+              title="Illustrated Example"
+              illustration={
+                <Box style={{ height: 100, width: 100 }}>
+                  <IconMail size="fill" />
+                </Box>
+              }
+              open={open}
+              onClose={setOpen}
+            >
+              <Stack space="xlarge" align="center">
+                <Placeholder width="100%" height={100} />
+                <Inline space="small">
                   <Button onClick={() => setOpen(false)}>Got it</Button>
+                  <Button weight="weak" onClick={() => setOpen(false)}>
+                    Cancel
+                  </Button>
                 </Inline>
               </Stack>
             </Dialog>
@@ -77,54 +103,198 @@ const docs: ComponentDocs = {
       },
     },
     {
-      label: 'Labelled by heading within content',
-      Example: () => {
+      label: 'Sized to content',
+      Example: ({ id }) => {
         const [open, setOpen] = useState(false);
-        const [open2, setOpen2] = useState(false);
-        const showToast = useToast();
-
-        const notify = () => {
-          showToast({
-            tone: 'positive',
-            message: 'Toast up!',
-          });
-        };
 
         return (
-          <ToastProvider>
+          <Fragment>
             <Inline space="large" alignY="center">
-              <Button onClick={() => setOpen(true)}>Open dialog</Button>
+              <Button onClick={() => setOpen(true)}>
+                Open content-sized dialog
+              </Button>
             </Inline>
 
             <Dialog
-              title="My important announcement"
+              id={id}
+              title="Content-sized"
+              width="content"
+              open={open}
+              onClose={setOpen}
+            >
+              <Placeholder height={100} width={200} label="200px wide" />
+            </Dialog>
+          </Fragment>
+        );
+      },
+    },
+    {
+      label: 'Xsmall width',
+      Example: ({ id }) => {
+        const [open, setOpen] = useState(false);
+
+        return (
+          <Fragment>
+            <Inline space="large" alignY="center">
+              <Button onClick={() => setOpen(true)}>Open xsmall dialog</Button>
+            </Inline>
+
+            <Dialog
+              id={id}
+              title="Xsmall Dialog"
+              width="xsmall"
+              open={open}
+              onClose={setOpen}
+            >
+              <Placeholder
+                height={100}
+                width="100%"
+                label={
+                  <Fragment>
+                    Uses a xsmall{' '}
+                    <TextLink href="/components/ContentBlock">
+                      ContentBlock
+                    </TextLink>
+                  </Fragment>
+                }
+              />
+            </Dialog>
+          </Fragment>
+        );
+      },
+    },
+    {
+      label: 'Small width',
+      Example: ({ id }) => {
+        const [open, setOpen] = useState(false);
+
+        return (
+          <Fragment>
+            <Inline space="large" alignY="center">
+              <Button onClick={() => setOpen(true)}>Open small dialog</Button>
+            </Inline>
+
+            <Dialog
+              id={id}
+              title="Small Dialog"
+              width="small"
+              open={open}
+              onClose={setOpen}
+            >
+              <Placeholder
+                height={100}
+                width="100%"
+                label={
+                  <Fragment>
+                    Uses a small{' '}
+                    <TextLink href="/components/ContentBlock">
+                      ContentBlock
+                    </TextLink>
+                  </Fragment>
+                }
+              />
+            </Dialog>
+          </Fragment>
+        );
+      },
+    },
+    {
+      label: 'Medium width',
+      Example: ({ id }) => {
+        const [open, setOpen] = useState(false);
+
+        return (
+          <Fragment>
+            <Inline space="large" alignY="center">
+              <Button onClick={() => setOpen(true)}>Open Medium dialog</Button>
+            </Inline>
+
+            <Dialog
+              id={id}
+              title="Medium Dialog"
+              width="medium"
+              open={open}
+              onClose={setOpen}
+            >
+              <Placeholder
+                height={100}
+                width="100%"
+                label={
+                  <Fragment>
+                    Uses a medium{' '}
+                    <TextLink href="/components/ContentBlock">
+                      ContentBlock
+                    </TextLink>
+                  </Fragment>
+                }
+              />
+            </Dialog>
+          </Fragment>
+        );
+      },
+    },
+    {
+      label: 'Large width',
+      Example: ({ id }) => {
+        const [open, setOpen] = useState(false);
+
+        return (
+          <Fragment>
+            <Inline space="large" alignY="center">
+              <Button onClick={() => setOpen(true)}>Open Large dialog</Button>
+            </Inline>
+
+            <Dialog
+              id={id}
+              title="Large Dialog"
+              width="large"
+              open={open}
+              onClose={setOpen}
+            >
+              <Placeholder
+                height={100}
+                width="100%"
+                label={
+                  <Fragment>
+                    Uses a large{' '}
+                    <TextLink href="/components/ContentBlock">
+                      ContentBlock
+                    </TextLink>
+                  </Fragment>
+                }
+              />
+            </Dialog>
+          </Fragment>
+        );
+      },
+    },
+    {
+      label: 'With additional description',
+      Example: ({ id }) => {
+        const [open, setOpen] = useState(false);
+
+        return (
+          <Fragment>
+            <Inline space="large" alignY="center">
+              <Button onClick={() => setOpen(true)}>
+                Open dialog with description
+              </Button>
+            </Inline>
+
+            <Dialog
+              id={id}
+              title="Dialog with description"
               description={
-                <Text>
-                  This describes the panel in more detail. This dialog box
-                  implements the aria spec for dialogs. Does not support
-                  non-modals.
+                <Text tone="secondary">
+                  More context to describe this task.
                 </Text>
               }
               open={open}
               onClose={setOpen}
             >
-              <Stack space="large">
-                <Dialog
-                  title="Braid Dialog Example"
-                  open={open2}
-                  onClose={setOpen2}
-                >
-                  <Text>Test</Text>
-                </Dialog>
-
-                <Inline space="medium">
-                  <Button onClick={() => setOpen2(true)}>🍾</Button>
-                  <Button onClick={notify}>🍞</Button>
-                  <Button onClick={() => setOpen(false)}>👋</Button>
-                </Inline>
-              </Stack>
+              <Placeholder height={100} width="100%" />
             </Dialog>
-          </ToastProvider>
+          </Fragment>
         );
       },
     },
@@ -133,11 +303,11 @@ const docs: ComponentDocs = {
     {
       name: 'Standard',
       code: (
-        <Dialog title="Dialog Heading" open={true} onClose={() => {}}>
+        <PlayroomDialog title="Dialog Heading" open={true} onClose={() => {}}>
           <Stack space="large">
             <Placeholder width={250} height={100} />
           </Stack>
-        </Dialog>
+        </PlayroomDialog>
       ),
     },
   ],

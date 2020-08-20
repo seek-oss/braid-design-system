@@ -29,7 +29,8 @@ import { HideFocusRingsRoot } from '../private/hideFocusRings/hideFocusRings';
 import { ContentBlock, ContentBlockProps } from '../ContentBlock/ContentBlock';
 import * as styleRefs from './Dialog.treat';
 
-interface DialogProps {
+export interface DialogProps {
+  id: string;
   title: string;
   children: ReactNode;
   open: boolean;
@@ -107,27 +108,19 @@ const CloseButton = ({
   );
 };
 
-const getId = (description: string, suffix: 'label' | 'desc') => {
-  const words = description.substring(0, 30).match(/([a-z])+/gi);
-  if (words) {
-    return [...words, suffix].join('-').toLowerCase();
-  }
-};
-
-interface HeaderProps extends Pick<DialogProps, 'title' | 'description'> {
+interface HeaderProps extends Pick<DialogProps, 'description'> {
+  title: string;
+  titleId: string;
+  descriptionId: string;
   center?: boolean;
 }
 const Header = forwardRef<HTMLElement, HeaderProps>(
-  ({ title, description, center }, ref) => {
+  ({ title, titleId, description, descriptionId, center }, ref) => {
     const styles = useStyles(styleRefs);
 
     return (
       <Stack space="medium">
-        <Heading
-          level="3"
-          id={getId(title, 'label')}
-          align={center ? 'center' : undefined}
-        >
+        <Heading level="3" id={titleId} align={center ? 'center' : undefined}>
           <Box
             ref={ref}
             component="span"
@@ -146,9 +139,7 @@ const Header = forwardRef<HTMLElement, HeaderProps>(
             />
           </Box>
         </Heading>
-        {description ? (
-          <Box id={getId(title, 'desc')}>{description}</Box>
-        ) : null}
+        {description ? <Box id={descriptionId}>{description}</Box> : null}
       </Stack>
     );
   },
@@ -168,6 +159,7 @@ const Container = ({
   );
 
 export const Dialog = ({
+  id,
   open,
   children,
   description,
@@ -183,6 +175,8 @@ export const Dialog = ({
   const dialogContainerRef = useRef<HTMLElement>(null);
   const hideOthersRef = useRef<ReturnType<typeof hideOthers> | null>(null);
   const headingRef = useRef<HTMLElement>(null);
+  const labelId = `${id}_label`;
+  const descriptionId = `${id}_desc`;
 
   const scrollLockStyles = useBoxStyles({
     component: null,
@@ -288,8 +282,8 @@ export const Dialog = ({
           {internalOpen && (
             <Box
               role="dialog"
-              aria-labelledby={getId(title, 'label')}
-              aria-describedby={description ? getId(title, 'desc') : undefined}
+              aria-labelledby={labelId}
+              aria-describedby={description ? descriptionId : undefined}
               aria-modal="true"
               overflow="auto"
               width={width !== 'content' ? 'full' : undefined}
@@ -310,7 +304,9 @@ export const Dialog = ({
                         <Box paddingX="gutter">{illustration}</Box>
                         <Header
                           title={title}
+                          titleId={labelId}
                           description={description}
+                          descriptionId={descriptionId}
                           center={Boolean(illustration)}
                           ref={headingRef}
                         />
@@ -320,7 +316,9 @@ export const Dialog = ({
                         <Column>
                           <Header
                             title={title}
+                            titleId={labelId}
                             description={description}
+                            descriptionId={descriptionId}
                             center={Boolean(illustration)}
                             ref={headingRef}
                           />

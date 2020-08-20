@@ -18,6 +18,7 @@ const TestCase = ({ close }: { close: (newOpenState: boolean) => void }) => {
       </Button>
       <input type="text" />
       <Dialog
+        id="testDialog"
         title={DIALOG_TITLE}
         closeLabel={CLOSE_BUTTON_LABEL}
         open={open}
