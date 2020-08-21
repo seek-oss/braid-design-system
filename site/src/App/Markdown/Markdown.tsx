@@ -10,8 +10,8 @@ import {
   Strong,
   Box,
   TextLink,
-  Alert,
 } from '../../../../lib/components';
+import { DefaultTextPropsProvider } from '../../../../lib/components/private/defaultTextProps';
 
 const Code = ({ language, value }: { language: string; value: string }) => (
   <Box paddingBottom="medium">
@@ -84,7 +84,19 @@ const renderers = {
   ),
   code: Code,
   link: TextLink,
-  blockquote: ({ children }: any) => <Alert>{children}</Alert>,
+  blockquote: ({ children }: any) => (
+    <Box
+      paddingX="gutter"
+      paddingY="small"
+      background="selection" // Should be 'neutralLight' once it can be explicitly defined in the theme tokens
+    >
+      <Box paddingTop="small">
+        <DefaultTextPropsProvider tone="secondary">
+          {children}
+        </DefaultTextPropsProvider>
+      </Box>
+    </Box>
+  ),
 };
 
 interface MarkdownProps {
