@@ -1,7 +1,6 @@
 import flatten from 'lodash/flatten';
-import intersection from 'lodash/intersection';
 
-import { differenceInMonths, format, formatDistance } from 'date-fns';
+import { differenceInMonths, format } from 'date-fns';
 
 import releases from '../../componentUpdates.json';
 
@@ -51,8 +50,10 @@ let newThings: Set<string>;
 let updatedThings: Set<string>;
 let componentReleases: Map<string, Set<string>>;
 
+const intersection = (a: Array<string>, b: Array<string>) =>
+  a.filter((value) => b.includes(value));
 const hasIntersection = (a: Array<string>, b: Array<string>) =>
-  a.some((value) => b.includes(value));
+  intersection(a, b).length > 0;
 
 const allReleases = releases as Array<Release>;
 
@@ -162,11 +163,6 @@ export const getHistory = memo((...names: Array<string>) => {
                 versionReleaseDate &&
                   differenceInMonths(renderDate, versionReleaseDate) < 2,
               ),
-              recency:
-                versionReleaseDate &&
-                formatDistance(versionReleaseDate, renderDate, {
-                  addSuffix: true,
-                }),
             };
           }),
       ),

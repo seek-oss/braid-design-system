@@ -107,6 +107,7 @@ Object {
   props: {
     children: string
     id?: string
+    title?: string
     tone?: 
         | "caution"
         | "critical"
@@ -2206,6 +2207,8 @@ Object {
     width?: 
         | "large"
         | "medium"
+        | "small"
+        | "xsmall"
 },
 }
 `;
@@ -5389,6 +5392,7 @@ Object {
   props: {
     children: ReactNode
     data?: Record<string, string | number>
+    item?: string
 },
 }
 `;

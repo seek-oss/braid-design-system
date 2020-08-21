@@ -95,7 +95,7 @@ export const CodeBlock = ({
       borderRadius="standard"
       className={styles.code}
     >
-      <Box padding={['small', 'medium', 'large']}>
+      <Box padding={['medium', 'medium', 'large']}>
         <Text size="small" component="pre" baseline={false}>
           <SyntaxHighlighter language={language} style={editorTheme}>
             {children}

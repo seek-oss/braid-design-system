@@ -16,6 +16,22 @@ const docs: ComponentDocs = {
       ),
     },
     {
+      label: 'Xsmall Content Block',
+      Example: () => (
+        <ContentBlock width="xsmall">
+          <Placeholder height={100} />
+        </ContentBlock>
+      ),
+    },
+    {
+      label: 'Small Content Block',
+      Example: () => (
+        <ContentBlock width="small">
+          <Placeholder height={100} />
+        </ContentBlock>
+      ),
+    },
+    {
       label: 'Large Content Block',
       Example: () => (
         <ContentBlock width="large">
@@ -29,6 +45,22 @@ const docs: ComponentDocs = {
       name: 'Standard',
       code: (
         <ContentBlock>
+          <Placeholder height={100} />
+        </ContentBlock>
+      ),
+    },
+    {
+      name: 'Xsmall',
+      code: (
+        <ContentBlock width="xsmall">
+          <Placeholder height={100} />
+        </ContentBlock>
+      ),
+    },
+    {
+      name: 'Small',
+      code: (
+        <ContentBlock width="small">
           <Placeholder height={100} />
         </ContentBlock>
       ),

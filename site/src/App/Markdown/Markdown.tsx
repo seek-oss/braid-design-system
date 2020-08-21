@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
+import { useStyles } from 'sku/react-treat';
 
 import { CodeBlock } from '../Code/Code';
 import {
@@ -10,8 +11,9 @@ import {
   Strong,
   Box,
   TextLink,
-  Alert,
 } from '../../../../lib/components';
+import { DefaultTextPropsProvider } from '../../../../lib/components/private/defaultTextProps';
+import * as styleRefs from './Markdown.treat';
 
 const Code = ({ language, value }: { language: string; value: string }) => (
   <Box paddingBottom="medium">
@@ -72,19 +74,35 @@ const renderers = {
   },
   strong: Strong,
   emphasis: Strong,
-  inlineCode: ({ children }: any) => (
-    <Box
-      component="code"
-      display="inline"
-      paddingX="xxsmall"
-      style={{ fontFamily: 'monospace', fontWeight: 'bold' }}
-    >
-      {children}
-    </Box>
-  ),
+  inlineCode: function InlineCode({ children }: any) {
+    const styles = useStyles(styleRefs);
+
+    return (
+      <Box
+        component="code"
+        display="inline"
+        paddingX="xxsmall"
+        className={styles.inlineCode}
+      >
+        {children}
+      </Box>
+    );
+  },
   code: Code,
   link: TextLink,
-  blockquote: ({ children }: any) => <Alert>{children}</Alert>,
+  blockquote: ({ children }: any) => (
+    <Box
+      paddingX="gutter"
+      paddingY="small"
+      background="selection" // Should be 'neutralLight' once it can be explicitly defined in the theme tokens
+    >
+      <Box paddingTop="small">
+        <DefaultTextPropsProvider tone="secondary">
+          {children}
+        </DefaultTextPropsProvider>
+      </Box>
+    </Box>
+  ),
 };
 
 interface MarkdownProps {

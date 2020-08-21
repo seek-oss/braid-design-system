@@ -1,10 +1,8 @@
 import { style } from 'sku/treat';
 
 export const activeUnderline = [
-  style({
-    bottom: -1,
-  }),
   style((theme) => ({
+    bottom: -theme.border.width.standard,
     height: theme.border.width.large,
     background: theme.color.foreground.neutral,
   })),

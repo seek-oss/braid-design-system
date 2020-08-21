@@ -1,6 +1,7 @@
 import React, { ReactNode, Fragment } from 'react';
 import reactElementToJSXString from 'react-element-to-jsx-string';
 import { Route, Switch, useRouteMatch } from 'react-router';
+import { useStyles } from 'sku/react-treat';
 import { ComponentProps } from './ComponentProps';
 import {
   Box,
@@ -21,6 +22,7 @@ import { getHistory } from '../Updates';
 import { Markdown } from '../Markdown/Markdown';
 import { Navigation, NavigationItem } from './Navigation/Navigation';
 import { PageTitle } from '../Seo/PageTitle';
+import * as styleRefs from './ComponentDoc.treat';
 
 const handler = () => {
   /* No-op for docs examples */
@@ -41,6 +43,7 @@ export const ComponentDoc = ({
   subfolder = '',
   docs,
 }: ComponentDocProps) => {
+  const styles = useStyles(styleRefs);
   const { sourceUrlPrefix } = useConfig();
 
   const componentFolder = `lib/components/${
@@ -64,7 +67,7 @@ export const ComponentDoc = ({
     : [componentName];
 
   const history = getHistory(...relevantNames);
-  const updateCounter = history.filter((item) => item.isRecent).length;
+  const updateCount = history.filter((item) => item.isRecent).length;
 
   const propsRouteActive =
     useRouteMatch({
@@ -107,15 +110,15 @@ export const ComponentDoc = ({
             }
             href={`/components/${componentName}/releases`}
             badge={
-              updateCounter > 0 ? (
+              updateCount > 0 ? (
                 <Badge
                   tone="promote"
                   weight="strong"
-                  title={`${updateCounter} release${
-                    updateCounter === 1 ? '' : 's'
+                  title={`${updateCount} release${
+                    updateCount === 1 ? '' : 's'
                   } in the last two months`}
                 >
-                  {String(updateCounter)}
+                  {String(updateCount)}
                 </Badge>
               ) : undefined
             }
@@ -235,10 +238,7 @@ export const ComponentDoc = ({
                       <Box position="relative">
                         <Box
                           position="absolute"
-                          style={{
-                            top: '50%',
-                            transform: 'translateY(-50%)',
-                          }}
+                          className={styles.centerVertically}
                         >
                           {item.time ? (
                             <Badge tone={item.isRecent ? 'promote' : 'neutral'}>
