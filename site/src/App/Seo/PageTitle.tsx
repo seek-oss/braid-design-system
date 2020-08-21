@@ -1,19 +1,19 @@
 import React, { Fragment } from 'react';
 import { Title, Meta } from 'react-head';
 
+const defaultTitle = 'Braid Design System';
+
 interface PageTitleProps {
   title?: string;
 }
 export function PageTitle({ title }: PageTitleProps) {
-  const normalizedTitle = (title ? [title] : [])
-    .concat(['Braid Design System'])
-    .join(' — ');
+  const normalisedTitle = title ? `${title} — ${defaultTitle}` : defaultTitle;
 
   return (
     <Fragment>
-      <Title>{normalizedTitle}</Title>
-      <Meta property="og:title" content={normalizedTitle} />
-      <Meta property="twitter:title" content={normalizedTitle} />
+      <Title>{normalisedTitle}</Title>
+      <Meta property="og:title" content={normalisedTitle} />
+      <Meta property="twitter:title" content={normalisedTitle} />
     </Fragment>
   );
 }
