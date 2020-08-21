@@ -69,12 +69,16 @@ export const Tab = ({ children, data, badge, item }: TabProps) => {
   const {
     focusedTabIndex,
     selectedIndex,
+    selectedItem,
     dispatch,
     a11y,
     onChange,
   } = tabsContext;
   const { tabListItemIndex, scrollContainer } = tabListContext;
-  const isSelected = selectedIndex === tabListItemIndex;
+  const isSelected =
+    selectedIndex > -1
+      ? selectedIndex === tabListItemIndex
+      : selectedItem === item;
   const isFocused = focusedTabIndex === tabListItemIndex;
 
   const paddingX = 'small';
