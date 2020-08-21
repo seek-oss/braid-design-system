@@ -24,7 +24,6 @@ module.exports = {
   ],
   ...entries,
   routes,
-  public: './site/src/public',
   target: './site/dist',
   publicPath: isGitHubPages ? '/braid-design-system/' : '/',
   setupTests: './setupTests.ts',
