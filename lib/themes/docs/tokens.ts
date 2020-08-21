@@ -144,8 +144,8 @@ const tokens: TreatTokens = {
     small: 3,
     medium: 5,
     large: 8,
-    xlarge: 12,
-    xxlarge: 20,
+    xlarge: 11,
+    xxlarge: 15,
   },
   transforms: {
     touchable: 'scale(0.97)',

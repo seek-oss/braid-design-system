@@ -34,11 +34,13 @@ module.exports = [
   ...exampleRoutes.map((route) => ({ route })),
   { route: '/components', name: 'components' }, // Pre-rendering this route for url backwards compatibility.
   ...flatten(
-    componentNames.map((name) => [
-      { route: `/components/${name}` },
-      { route: `/components/${name}/props` },
-      { route: `/components/${name}/releases` },
-    ]),
+    componentNames.map((name) =>
+      [
+        { route: `/components/${name}` },
+        { route: `/components/${name}/releases` },
+        !name.startsWith('use') ? { route: `/components/${name}/props` } : null,
+      ].filter(Boolean),
+    ),
   ),
   ...iconNames.map((name) => ({ route: `/components/${name}`, name })),
 ];

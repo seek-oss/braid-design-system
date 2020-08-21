@@ -109,21 +109,18 @@ export const getCurrentVersionInfo = () => ({
   date: versionMap[currentVersion],
 });
 
-export const getNew = memo((...names: Array<string>) =>
+const getNew = memo((...names: Array<string>) =>
   intersection(names, Array.from(newThings.values())),
 );
 
-export const isNew = memo(
-  (...names: Array<string>) => getNew(...names).length > 0,
-);
+export const isNew = (...names: Array<string>) => getNew(...names).length > 0;
 
-export const getUpdated = memo((...names: Array<string>) =>
+const getUpdated = memo((...names: Array<string>) =>
   intersection(names, Array.from(updatedThings.values())),
 );
 
-export const isUpdated = memo(
-  (...names: Array<string>) => getUpdated(...names).length > 0,
-);
+export const isUpdated = (...names: Array<string>) =>
+  getUpdated(...names).length > 0;
 
 export const getHistory = memo((...names: Array<string>) => {
   let releventReleases = new Set<string>();

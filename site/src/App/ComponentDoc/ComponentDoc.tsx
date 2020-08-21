@@ -1,5 +1,6 @@
-import React, { ReactNode, Fragment, useState, ReactElement } from 'react';
+import React, { ReactNode, Fragment } from 'react';
 import reactElementToJSXString from 'react-element-to-jsx-string';
+import { Route, Switch, useRouteMatch } from 'react-router';
 import { ComponentProps } from './ComponentProps';
 import {
   Box,
@@ -7,125 +8,18 @@ import {
   Stack,
   Text,
   TextLink,
-  TabsProvider,
-  Tabs,
-  Tab,
-  TabPanel,
-  TabPanels,
   Alert,
   Inline,
   Badge,
-  Link,
-  Divider,
 } from '../../../../lib/components';
 
 import { ComponentDocs } from '../../types';
 import Code from '../Code/Code';
 import { ThemedExample } from '../ThemeSetting';
 import { useConfig } from '../ConfigContext';
-import { getHistory, isNew, isUpdated, getNew, getUpdated } from '../Updates';
+import { getHistory } from '../Updates';
 import { Markdown } from '../Markdown/Markdown';
-import { Route, Switch, useRouteMatch } from 'react-router';
-import { BadgeProps } from '../../../../lib/components/Badge/Badge';
-import {
-  useNegativeMarginLeft,
-  useNegativeMarginTop,
-} from '../../../../lib/hooks/useNegativeMargin/useNegativeMargin';
-
-const navItemPaddingX = ['xsmall', 'medium'] as const;
-const navItemPaddingY = ['small', 'medium'] as const;
-
-interface NavigationProps {
-  title: string;
-  children: ReactNode;
-}
-const Navigation = ({ title, children }: NavigationProps) => (
-  <Box
-    component="nav"
-    aria-label={title}
-    className={[
-      useNegativeMarginTop(navItemPaddingY),
-      useNegativeMarginLeft(navItemPaddingX),
-    ]}
-  >
-    <Box component="ul" display="flex" alignItems="center">
-      {children}
-    </Box>
-    <Box paddingLeft={navItemPaddingX}>
-      <Divider />
-    </Box>
-  </Box>
-);
-
-interface NavigationItemProps {
-  active?: boolean;
-  href: string;
-  badge?: ReactElement<BadgeProps>;
-  badgeTitle?: string;
-  children: ReactNode;
-}
-const NavigationItem = ({
-  active = false,
-  href,
-  badge,
-  children,
-}: NavigationItemProps) => {
-  const [hovered, setHovered] = useState(false);
-
-  const badgeElement = badge ? (
-    <Box paddingLeft="xsmall">{badge}</Box>
-  ) : undefined;
-
-  return (
-    <Box component="li">
-      <Link
-        href={href}
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
-        aria-current={active ? 'page' : undefined}
-      >
-        <Box display="flex" alignItems="center" paddingX={navItemPaddingX}>
-          <Box position="relative">
-            <Box
-              display="flex"
-              alignItems="center"
-              opacity={active ? undefined : 0}
-            >
-              <Box paddingY={navItemPaddingY}>
-                <Text size="standard" weight="strong">
-                  {children}
-                </Text>
-              </Box>
-              {badgeElement}
-            </Box>
-            <Box
-              aria-hidden
-              display="flex"
-              alignItems="center"
-              position="absolute"
-              top={0}
-              {...(children === 'Details'
-                ? { left: 0 }
-                : { style: { left: '50%', transform: 'translateX(-50%)' } })}
-              opacity={active ? 0 : undefined}
-            >
-              <Box paddingY={navItemPaddingY}>
-                <Text
-                  size="standard"
-                  weight="medium"
-                  tone={hovered ? 'neutral' : 'secondary'}
-                >
-                  {children}
-                </Text>
-              </Box>
-              {badgeElement}
-            </Box>
-          </Box>
-        </Box>
-      </Link>
-    </Box>
-  );
-};
+import { Navigation, NavigationItem } from './Navigation/Navigation';
 
 const handler = () => {
   /* No-op for docs examples */
@@ -171,9 +65,15 @@ export const ComponentDoc = ({
   const history = getHistory(...relevantNames);
   const updateCounter = history.filter((item) => item.isRecent).length;
 
+  const propsRouteActive =
+    useRouteMatch({
+      path: `/components/${componentName}/props`,
+      exact: true,
+    }) !== null;
+
   return (
-    <Stack space="xlarge">
-      <Stack space="large">
+    <Stack space={['xlarge', 'xxlarge']}>
+      <Stack space={['large', 'xlarge']}>
         <Heading level="2" component="h3">
           {componentName}
         </Heading>
@@ -189,17 +89,14 @@ export const ComponentDoc = ({
           >
             Details
           </NavigationItem>
-          <NavigationItem
-            active={
-              useRouteMatch({
-                path: `/components/${componentName}/props`,
-                exact: true,
-              }) !== null
-            }
-            href={`/components/${componentName}/props`}
-          >
-            Props
-          </NavigationItem>
+          {componentName.indexOf('use') !== 0 ? (
+            <NavigationItem
+              active={propsRouteActive}
+              href={`/components/${componentName}/props`}
+            >
+              Props
+            </NavigationItem>
+          ) : null}
           <NavigationItem
             active={
               useRouteMatch({

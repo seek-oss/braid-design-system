@@ -107,6 +107,7 @@ export const SubNavigation = ({ onSelect }: SubNavigationProps) => {
             name: 'Releases',
             path: '/releases',
             badge: 'New',
+            onClick: onSelect,
           },
           {
             name: 'Playroom',

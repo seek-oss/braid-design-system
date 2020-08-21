@@ -1,15 +1,6 @@
 import React, { Fragment } from 'react';
 import partition from 'lodash/partition';
-import {
-  Box,
-  Text,
-  Secondary,
-  Heading,
-  Stack,
-  Badge,
-  Inline,
-  Strong,
-} from '../../../../lib/components';
+import { Box, Text, Secondary, Stack } from '../../../../lib/components';
 import componentDocs from '../../../../generate-component-docs/componentDocs.json';
 import {
   NormalisedPropType,
@@ -90,18 +81,20 @@ const PropType = ({ type }: { type: NormalisedPropType }) => {
 };
 
 const PropList = ({
-  label,
   props,
 }: {
-  label: string;
-  props: Array<{ propName: string; type: NormalisedPropType }>;
+  props: Array<{
+    propName: string;
+    required: boolean;
+    type: NormalisedPropType;
+  }>;
 }) => (
   <Stack space="large">
-    {props.map(({ propName, type }) => (
+    {props.map(({ propName, type, required }) => (
       <Stack space="small" key={propName}>
         <Text size="small" weight="strong">
           {propName}
-          {label === 'Required props' ? ' (Required)' : null}
+          {required ? ' (Required)' : null}
         </Text>
         <Text tone="secondary" size="small">
           <PropType type={type} />
@@ -130,12 +123,8 @@ export const ComponentProps = ({ componentName }: Props) => {
 
   return Object.keys(doc.props).length === 0 ? null : (
     <Stack space="large">
-      {requiredProps.length > 0 ? (
-        <PropList label="Required props" props={requiredProps} />
-      ) : null}
-      {optionalProps.length > 0 ? (
-        <PropList label="Optional props" props={optionalProps} />
-      ) : null}
+      {requiredProps.length > 0 ? <PropList props={requiredProps} /> : null}
+      {optionalProps.length > 0 ? <PropList props={optionalProps} /> : null}
     </Stack>
   );
 };
