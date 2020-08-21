@@ -12,7 +12,7 @@ export function AppMeta() {
       <Meta name="author" content="SEEK Group" />
       <Meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <Meta property="og:type" content="website" />
-      <Meta name="twitter:card" content="summary_card" />
+      <Meta name="twitter:card" content="summary" />
       <Link
         rel="icon"
         type="image/png"
