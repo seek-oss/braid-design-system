@@ -12,8 +12,8 @@ export function PageTitle({ title }: PageTitleProps) {
   return (
     <Fragment>
       <Title>{normalizedTitle}</Title>
-      <Meta name="og:title" content={normalizedTitle} />
-      <Meta name="twitter:title" content={normalizedTitle} />
+      <Meta property="og:title" content={normalizedTitle} />
+      <Meta property="twitter:title" content={normalizedTitle} />
     </Fragment>
   );
 }
