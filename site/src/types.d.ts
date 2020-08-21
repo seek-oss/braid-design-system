@@ -12,12 +12,12 @@ export interface AppConfig {
 
 export interface RenderContext {
   html: string;
-  publicPath: string;
   routerBasename: string;
   appConfig: AppConfig;
   renderDate: number;
   versionMap: { [version: string]: string };
   currentVersion: string;
+  metaTags: React.ReactElement[];
 }
 
 export interface Page extends RouteProps {

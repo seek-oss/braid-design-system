@@ -2,6 +2,7 @@ import { Render } from 'sku';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router';
+import { HeadProvider } from 'react-head';
 import dedent from 'dedent';
 import { uniq, flatten, values } from 'lodash';
 import { App } from './App/App';
@@ -33,6 +34,7 @@ const skuRender: Render<RenderContext> = {
     };
 
     const today = new Date();
+    const metaTags: React.ReactElement[] = [];
 
     const config = {
       routerBasename,
@@ -40,23 +42,23 @@ const skuRender: Render<RenderContext> = {
       renderDate: today.getTime(),
       versionMap,
       currentVersion: version,
+      metaTags,
     };
 
     initUpdates(today, versionMap, version);
 
     const html = renderToString(
-      <StaticRouter context={{}} location={route} basename={routerBasename}>
-        <ConfigProvider value={appConfig}>
-          <App />
-        </ConfigProvider>
-      </StaticRouter>,
+      <HeadProvider headTags={metaTags}>
+        <StaticRouter context={{}} location={route} basename={routerBasename}>
+          <ConfigProvider value={appConfig}>
+            <App />
+          </ConfigProvider>
+        </StaticRouter>
+      </HeadProvider>,
     );
-
-    const publicPath = isGithubPages ? '/braid-design-system/' : '/';
 
     return {
       html,
-      publicPath,
       ...config,
     };
   },
@@ -71,7 +73,7 @@ const skuRender: Render<RenderContext> = {
     currentVersion,
   }),
 
-  renderDocument: ({ headTags, bodyTags, app: { html, publicPath } }) => {
+  renderDocument: ({ headTags, bodyTags, app: { html, metaTags } }) => {
     const webFontLinkTags = uniq(
       flatten(values(themes).map((theme) => theme.webFonts)).map(
         (font) => font.linkTag,
@@ -82,16 +84,13 @@ const skuRender: Render<RenderContext> = {
       <!doctype html>
       <html lang="en">
         <head>
-          <title>BRAID</title>
-          <meta charset="utf-8">
-          <meta name="author" content="SEEK Group">
-          <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <meta name="robots" content="noindex">
+          ${
+            // @ts-expect-error
+            // renderToString claims it doesn't support arrays, I beg to differ
+            renderToString(metaTags)
+          }
           ${webFontLinkTags}
           ${headTags}
-          <link rel="icon" type="image/png" sizes="16x16" href="${publicPath}favicon-16x16.png" />
-          <link rel="icon" type="image/png" sizes="32x32" href="${publicPath}favicon-32x32.png" />
-          <link rel="icon" type="image/png" sizes="96x96" href="${publicPath}favicon-96x96.png" />
         </head>
         <body><div id="app">{{ html }}</div></body>
         ${bodyTags}

@@ -21,6 +21,7 @@ import { useConfig } from '../ConfigContext';
 import { getHistory } from '../Updates';
 import { Markdown } from '../Markdown/Markdown';
 import { Navigation, NavigationItem } from './Navigation/Navigation';
+import { PageTitle } from '../Seo/PageTitle';
 import * as styleRefs from './ComponentDoc.treat';
 
 const handler = () => {
@@ -131,6 +132,7 @@ export const ComponentDoc = ({
       </Stack>
       <Switch>
         <Route exact path={`/components/${componentName}`}>
+          <PageTitle title={componentName} />
           <Stack space="xxlarge">
             {docs.description}
 
@@ -194,6 +196,8 @@ export const ComponentDoc = ({
           </Stack>
         </Route>
         <Route path={`/components/${componentName}/props`}>
+          <PageTitle title={`${componentName} Props`} />
+
           <Stack space="xxlarge">
             {Array.isArray(propsToDocument) ? (
               propsToDocument.map((c) => (
@@ -222,6 +226,8 @@ export const ComponentDoc = ({
           </Stack>
         </Route>
         <Route path={`/components/${componentName}/releases`}>
+          <PageTitle title={`${componentName} Releases`} />
+
           <Stack space="xlarge">
             {history.length > 0 ? (
               history.map((item, index) => (
