@@ -7,7 +7,7 @@ interface PageTitleProps {
 export function PageTitle({ title }: PageTitleProps) {
   const normalizedTitle = (title ? [title] : [])
     .concat(['Braid Design System'])
-    .join(' • ');
+    .join(' — ');
 
   return (
     <Fragment>
