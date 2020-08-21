@@ -1,12 +1,6 @@
 import React, { Fragment } from 'react';
-import partition from 'lodash/partition';
-import {
-  Box,
-  Text,
-  Secondary,
-  Heading,
-  Stack,
-} from '../../../../lib/components';
+import sortBy from 'lodash/sortBy';
+import { Box, Text, Stack } from '../../../../lib/components';
 import componentDocs from '../../../../generate-component-docs/componentDocs.json';
 import {
   NormalisedPropType,
@@ -78,43 +72,11 @@ const PropType = ({ type }: { type: NormalisedPropType }) => {
     <Fragment>
       {type.types.map((unionType, index) => (
         <Fragment key={index}>
-          {index > 0 && <Secondary> | </Secondary>}
+          {index > 0 && ' | '}
           <PropType type={unionType} />
         </Fragment>
       ))}
     </Fragment>
-  );
-};
-
-const PropList = ({
-  label,
-  props,
-}: {
-  label: string;
-  props: Array<{ propName: string; type: NormalisedPropType }>;
-}) => {
-  if (props.length === 0) {
-    return null;
-  }
-
-  return (
-    <Stack space="large">
-      <Heading level="3" component="h4">
-        {label}
-      </Heading>
-      <Stack space="large">
-        {props.map(({ propName, type }) => (
-          <Stack space="small" key={propName}>
-            <Text size="small" weight="medium">
-              {propName}
-            </Text>
-            <Text tone="secondary" size="small">
-              <PropType type={type} />
-            </Text>
-          </Stack>
-        ))}
-      </Stack>
-    </Stack>
   );
 };
 
@@ -129,16 +91,24 @@ export const ComponentProps = ({ componentName }: Props) => {
     return null;
   }
 
-  // @ts-ignore
-  const [requiredProps, optionalProps] = partition(
+  const propList = sortBy(
     doc.props.props,
-    (prop) => prop.required,
-  );
+    ({ required }) => required,
+  ).reverse();
 
   return Object.keys(doc.props).length === 0 ? null : (
-    <Stack space="xlarge">
-      <PropList label="Required props" props={requiredProps} />
-      <PropList label="Optional props" props={optionalProps} />
+    <Stack space="large">
+      {propList.map(({ propName, type, required }) => (
+        <Stack space="small" key={propName}>
+          <Text size="small" weight="strong">
+            {propName}
+            {required ? ' (Required)' : null}
+          </Text>
+          <Text size="small" tone="secondary">
+            <PropType type={type} />
+          </Text>
+        </Stack>
+      ))}
     </Stack>
   );
 };

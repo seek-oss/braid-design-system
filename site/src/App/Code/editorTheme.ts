@@ -2,9 +2,11 @@ const tag = '#99cfff';
 const attribute = '#d1eaff';
 const value = '#ffcfe2';
 const punctuation = '#d1eaff';
-const plainText = '#7bb0b3';
+const plainText = '#7b93b7';
 const meta = '#aaa';
 const other = '#ffdbed';
+const inserted = '#96ecc9';
+const deleted = '#ff99ab';
 
 export default {
   'code[class*="language-"]': {
@@ -93,9 +95,9 @@ export default {
     fontStyle: 'italic',
   },
   inserted: {
-    color: 'green',
+    color: inserted,
   },
   deleted: {
-    color: 'red',
+    color: deleted,
   },
 };

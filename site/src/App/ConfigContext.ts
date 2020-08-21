@@ -4,7 +4,6 @@ import { AppConfig } from '../types';
 const defaultConfig: AppConfig = {
   playroomUrl: '/',
   sourceUrlPrefix: '',
-  renderDate: new Date().getTime(),
 };
 
 const context = createContext(defaultConfig);

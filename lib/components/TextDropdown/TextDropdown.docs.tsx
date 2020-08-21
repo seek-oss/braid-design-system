@@ -9,7 +9,6 @@ const Container = ({ children }: { children: ReactNode }) => (
 
 const docs: ComponentDocs = {
   category: 'Content',
-  added: new Date('17 April 2020'),
   description: (
     <Stack space="large">
       <Text>

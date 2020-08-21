@@ -8,15 +8,19 @@ import { App } from './App/App';
 import { RenderContext } from './types';
 import { ConfigProvider } from './App/ConfigContext';
 import * as themes from '../../lib/themes';
+import { braidVersionToDate } from './getVersionDetails';
+import { initUpdates } from './App/Updates';
+import { version } from '../../package.json';
 
 const skuRender: Render<RenderContext> = {
-  renderApp: ({ route }) => {
+  renderApp: async ({ route }) => {
     const {
       IS_GITHUB_PAGES: isGithubPages,
       GITHUB_SHA: prSha,
       CI,
     } = process.env;
     const githubUrl = 'https://github.com/seek-oss/braid-design-system/tree/';
+    const versionMap = await braidVersionToDate();
 
     const sourceUrlPrefix = `${githubUrl}${prSha || 'master'}`;
     const routerBasename = isGithubPages ? 'braid-design-system' : '';
@@ -26,13 +30,19 @@ const skuRender: Render<RenderContext> = {
     const appConfig = {
       playroomUrl,
       sourceUrlPrefix,
-      renderDate: new Date().getTime(),
     };
+
+    const today = new Date();
 
     const config = {
       routerBasename,
       appConfig,
+      renderDate: today.getTime(),
+      versionMap,
+      currentVersion: version,
     };
+
+    initUpdates(today, versionMap, version);
 
     const html = renderToString(
       <StaticRouter context={{}} location={route} basename={routerBasename}>
@@ -51,9 +61,14 @@ const skuRender: Render<RenderContext> = {
     };
   },
 
-  provideClientContext: ({ app: { routerBasename, appConfig } }) => ({
+  provideClientContext: ({
+    app: { routerBasename, appConfig, renderDate, versionMap, currentVersion },
+  }) => ({
     routerBasename,
     appConfig,
+    renderDate,
+    versionMap,
+    currentVersion,
   }),
 
   renderDocument: ({ headTags, bodyTags, app: { html, publicPath } }) => {

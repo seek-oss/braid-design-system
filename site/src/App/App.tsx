@@ -16,6 +16,7 @@ import guides from './routes/guides';
 import foundations from './routes/foundations';
 import examples from './routes/examples';
 import components from './routes/components';
+import releaseNotes from './routes/releases';
 
 const CustomLink = makeLinkComponent(
   ({ href, rel, onClick, ...restProps }, ref) =>
@@ -60,6 +61,7 @@ export const App = () => (
                   ...foundations,
                   ...examples,
                   ...components,
+                  ...releaseNotes,
                 },
                 (routeProps, path) => (
                   <Route key={path} {...routeProps} path={path} />
