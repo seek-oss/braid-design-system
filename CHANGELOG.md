@@ -682,7 +682,7 @@
 
   You can now easily provide content to assistive technologies while hiding it from the screen.
 
-  ```js
+  ```jsx
   <Text>
     This content is available to everyone.
     <HiddenVisually>
@@ -967,7 +967,7 @@
 
   For example, if you want items to stack vertically below tablet:
 
-  ```js
+  ```jsx
   <Inline space="small" collapseBelow="tablet">
     ...
   </Inline>
@@ -977,7 +977,7 @@
 
   For example, if you're rendering buttons and you want your primary action on the right on desktop, but at the top on mobile:
 
-  ```js
+  ```jsx
   <Inline space="small" collapseBelow="tablet" align="right" reverse>
     <Button>Primary action</Button>
     <Button weight="weak">Secondary action</Button>
@@ -990,7 +990,7 @@
 
   For example, if you want your columns to be horizontally centred on mobile:
 
-  ```js
+  ```jsx
   <Columns space="small" collapseBelow="tablet" align="center">
     <Column>...<Column>
     <Column>...<Column>
@@ -1002,7 +1002,7 @@
 
   For example:
 
-  ```js
+  ```jsx
   <Columns space="small" align="center">
     <Column width="1/3">...<Column>
     <Column width="1/3">...<Column>

@@ -13,6 +13,10 @@ export function AppMeta() {
       <Meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <Meta property="og:type" content="website" />
       <Meta name="twitter:card" content="summary" />
+      <Meta
+        name="twitter:image"
+        content="https://seek-oss.github.io/braid-design-system/og-icon.png"
+      />
       <Link
         rel="icon"
         type="image/png"
