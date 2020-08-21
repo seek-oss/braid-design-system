@@ -28,7 +28,7 @@
     "deploy": "node scripts/deploy.js",
     "deploy-preview": "surge -p ./site/dist",
     "post-commit-status": "node scripts/postCommitStatus.js",
-    "release": "changeset publish && yarn build && yarn deploy",
+    "release": "yarn setup && changeset publish && yarn build && yarn deploy",
     "version": "changeset version && ts-node scripts/versionComponentUpdates"
   },
   "husky": {

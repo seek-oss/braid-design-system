@@ -1,5 +1,5 @@
 import { Render } from 'sku';
-import React, { Fragment } from 'react';
+import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router';
 import { HeadProvider } from 'react-head';
@@ -84,7 +84,11 @@ const skuRender: Render<RenderContext> = {
       <!doctype html>
       <html lang="en">
         <head>
-          ${renderToString(<Fragment>{metaTags}</Fragment>)}
+          ${
+            // @ts-expect-error
+            // renderToString claims it doesn't support arrays, I beg to differ
+            renderToString(metaTags)
+          }
           ${webFontLinkTags}
           ${headTags}
         </head>
