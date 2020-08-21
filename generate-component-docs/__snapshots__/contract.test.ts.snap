@@ -107,6 +107,7 @@ Object {
   props: {
     children: string
     id?: string
+    title?: string
     tone?: 
         | "caution"
         | "critical"
