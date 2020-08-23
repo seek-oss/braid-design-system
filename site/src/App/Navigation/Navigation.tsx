@@ -121,6 +121,7 @@ export const Navigation = ({ children }: NavigationProps) => {
         </FixedContentBlock>
 
         <Box
+          background="card"
           position="relative"
           paddingY={['small', 'xxsmall']}
           paddingX={['medium', 'large', 'xlarge']}

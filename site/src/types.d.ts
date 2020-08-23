@@ -8,14 +8,16 @@ import { BoxProps } from '../../lib/components/Box/Box';
 export interface AppConfig {
   playroomUrl: string;
   sourceUrlPrefix: string;
-  renderDate: number;
 }
 
 export interface RenderContext {
   html: string;
-  publicPath: string;
   routerBasename: string;
   appConfig: AppConfig;
+  renderDate: number;
+  versionMap: { [version: string]: string };
+  currentVersion: string;
+  metaTags: React.ReactElement[];
 }
 
 export interface Page extends RouteProps {
@@ -28,7 +30,6 @@ interface DocsSnippet extends Optional<Snippets[number], 'group'> {
 
 export interface ComponentDocs {
   category: 'Logic' | 'Layout' | 'Content' | 'Icon';
-  added?: Date;
   deprecationWarning?: ReactNodeNoStrings;
   migrationGuide?: boolean;
   foundation?: boolean;

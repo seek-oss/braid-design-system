@@ -16,6 +16,8 @@ import guides from './routes/guides';
 import foundations from './routes/foundations';
 import examples from './routes/examples';
 import components from './routes/components';
+import releaseNotes from './routes/releases';
+import { AppMeta } from './Seo/AppMeta';
 
 const CustomLink = makeLinkComponent(
   ({ href, rel, onClick, ...restProps }, ref) =>
@@ -51,6 +53,7 @@ export const App = () => (
     <ThemeSettingProvider>
       <BraidProvider theme={docs} linkComponent={CustomLink}>
         <ToastProvider>
+          <AppMeta />
           <Navigation>
             <Switch>
               {map(
@@ -60,6 +63,7 @@ export const App = () => (
                   ...foundations,
                   ...examples,
                   ...components,
+                  ...releaseNotes,
                 },
                 (routeProps, path) => (
                   <Route key={path} {...routeProps} path={path} />

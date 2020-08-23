@@ -19,23 +19,9 @@ import {
 } from '../navigationHelpers';
 import { useConfig } from '../ConfigContext';
 import * as styleRefs from './SubNavigation.treat';
-import { ComponentDocs } from '../../types';
+import { isNew } from '../Updates';
 
 type BadgeLabel = 'New' | 'Deprecated';
-
-const getBadge = (
-  docs: ComponentDocs,
-  renderDate: number,
-): BadgeLabel | undefined => {
-  if (docs.deprecationWarning) {
-    return 'Deprecated';
-  }
-
-  const month = 1000 * 60 * 60 * 24 * 31;
-  if (docs.added && renderDate - docs.added.getTime() < month * 2) {
-    return 'New';
-  }
-};
 
 const toneForBadge = (badgeLabel: BadgeLabel) => {
   const toneMap = {
@@ -54,7 +40,7 @@ interface SubNavigationItem {
 }
 
 interface SubNavigationGroup {
-  title: string;
+  title?: string;
   items: SubNavigationItem[];
 }
 
@@ -64,11 +50,13 @@ const SubNavigationGroup = ({ title, items }: SubNavigationGroup) => {
   return (
     <Box component="nav">
       <Stack space="large">
-        <Box className={styles.uppercase}>
-          <Text size="xsmall" weight="medium" component="h2">
-            {title}
-          </Text>
-        </Box>
+        {title ? (
+          <Box className={styles.uppercase}>
+            <Text size="xsmall" weight="medium" component="h2">
+              {title}
+            </Text>
+          </Box>
+        ) : null}
 
         <Stack component="ul" space="medium">
           {items.map(({ name, badge, path, onClick }) => (
@@ -97,22 +85,37 @@ interface SubNavigationProps {
   onSelect?: () => void;
 }
 export const SubNavigation = ({ onSelect }: SubNavigationProps) => {
-  const { playroomUrl, renderDate } = useConfig();
+  const { playroomUrl } = useConfig();
+
+  const getBadge = (docs: any): BadgeLabel | undefined => {
+    if (docs.deprecationWarning) {
+      return 'Deprecated';
+    }
+
+    if (isNew(docs.name)) {
+      return 'New';
+    }
+  };
 
   return (
     <Stack space="xlarge">
       <ThemeToggle />
 
       <SubNavigationGroup
-        title="Tools"
         items={[
           {
-            name: 'GitHub',
-            path: 'https://github.com/seek-oss/braid-design-system',
+            name: 'Releases',
+            path: '/releases',
+            badge: 'New',
+            onClick: onSelect,
           },
           {
             name: 'Playroom',
             path: playroomUrl,
+          },
+          {
+            name: 'GitHub',
+            path: 'https://github.com/seek-oss/braid-design-system',
           },
         ]}
       />
@@ -150,7 +153,7 @@ export const SubNavigation = ({ onSelect }: SubNavigationProps) => {
           title={category}
           items={categorisedComponents[category].map((docs) => ({
             name: docs.name,
-            badge: getBadge(docs, renderDate),
+            badge: getBadge(docs),
             path: `/components/${docs.name}`,
             onClick: onSelect,
           }))}
@@ -161,7 +164,7 @@ export const SubNavigation = ({ onSelect }: SubNavigationProps) => {
         title="All Components"
         items={documentedComponents.map((docs) => ({
           name: docs.name,
-          badge: getBadge(docs, renderDate),
+          badge: getBadge(docs),
           path: `/components/${docs.name}`,
           onClick: onSelect,
         }))}

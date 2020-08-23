@@ -1,5 +1,57 @@
 # braid-design-system
 
+## 29.3.0
+
+### Minor Changes
+
+- **Badge:** Allow custom title text ([#738](https://github.com/seek-oss/braid-design-system/pull/738))
+
+  **EXAMPLE USAGE**
+
+  ```jsx
+  <Badge tone="positive" title="3 new jobs">
+    3
+  </Badge>
+  ```
+
+- Improved server rendering of Tabs ([#737](https://github.com/seek-oss/braid-design-system/pull/737))
+
+  Previously, `Tab` and `TabPanel` components only showed their content and active states after the first render, which meant server rendering was not ideal. Active Tabs and TabPanel content can now be server rendered. Uncontrolled usages of Tabs should just work.
+
+  For controlled Tabs using the `selectedItem` prop, you now need to pass the `item` prop (already on `Tab`) to `TabPanel` as well.
+
+  ```diff
+  <TabsProvider id="id" selectedItem="second">
+    <Tabs label="Test tabs">
+      <Tab item="first">The first tab</Tab>
+      <Tab item="second">The second tab</Tab>
+      <Tab item="third">The third tab</Tab>
+    </Tabs>
+    <TabPanels>
+  -    <TabPanel>
+  +    <TabPanel item="first">
+        <Placeholder height={200} label="Panel 1" />
+      </TabPanel>
+  -    <TabPanel>
+  +    <TabPanel item="second">
+        <Placeholder height={200} label="Panel 2" />
+      </TabPanel>
+  -    <TabPanel>
+  +    <TabPanel item="third">
+        <Placeholder height={200} label="Panel 3" />
+      </TabPanel>
+    </TabPanels>
+  </TabsProvider>
+  ```
+
+- **ContentBlock:** Add support for xsmall & small widths ([#735](https://github.com/seek-oss/braid-design-system/pull/735))
+
+  **EXAMPLE USAGE**
+
+  ```jsx
+  <ContentBlock width="small">...</ContentBlock>
+  ```
+
 ## 29.2.2
 
 ### Patch Changes
@@ -53,7 +105,7 @@
 
   e.g.
 
-  ```js
+  ```jsx
   <TabsProvider selectedItem={0}>
     <Tabs>
       <Tab>First</Tab>
@@ -630,7 +682,7 @@
 
   You can now easily provide content to assistive technologies while hiding it from the screen.
 
-  ```js
+  ```jsx
   <Text>
     This content is available to everyone.
     <HiddenVisually>
@@ -915,7 +967,7 @@
 
   For example, if you want items to stack vertically below tablet:
 
-  ```js
+  ```jsx
   <Inline space="small" collapseBelow="tablet">
     ...
   </Inline>
@@ -925,7 +977,7 @@
 
   For example, if you're rendering buttons and you want your primary action on the right on desktop, but at the top on mobile:
 
-  ```js
+  ```jsx
   <Inline space="small" collapseBelow="tablet" align="right" reverse>
     <Button>Primary action</Button>
     <Button weight="weak">Secondary action</Button>
@@ -938,7 +990,7 @@
 
   For example, if you want your columns to be horizontally centred on mobile:
 
-  ```js
+  ```jsx
   <Columns space="small" collapseBelow="tablet" align="center">
     <Column>...<Column>
     <Column>...<Column>
@@ -950,7 +1002,7 @@
 
   For example:
 
-  ```js
+  ```jsx
   <Columns space="small" align="center">
     <Column width="1/3">...<Column>
     <Column width="1/3">...<Column>

@@ -4,7 +4,6 @@ import { List, Text, TextLink, Stack } from '..';
 
 const docs: ComponentDocs = {
   category: 'Content',
-  added: new Date('6 August 2020'),
   migrationGuide: true,
   screenshotWidths: [320],
   description: (

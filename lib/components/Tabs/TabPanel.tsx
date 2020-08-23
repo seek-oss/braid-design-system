@@ -12,10 +12,11 @@ import * as styleRefs from './Tabs.treat';
 
 export interface TabPanelProps {
   children: ReactNode;
+  item?: string;
   data?: DataAttributeMap;
 }
 
-export const TabPanel = ({ children, data }: TabPanelProps) => {
+export const TabPanel = ({ children, data, item }: TabPanelProps) => {
   const styles = useStyles(styleRefs);
   const tabsContext = useContext(TabsContext);
   const tabPanelsContext = useContext(TabPanelsContext);
@@ -33,10 +34,11 @@ export const TabPanel = ({ children, data }: TabPanelProps) => {
     throw new Error('TabPanel rendered outside TabsProvider');
   }
 
-  const { a11y, selectedIndex } = tabsContext;
+  const { a11y, selectedIndex, selectedItem } = tabsContext;
   const { panelIndex, renderInactive } = tabPanelsContext;
 
-  const isSelected = panelIndex === selectedIndex;
+  const isSelected =
+    selectedIndex > -1 ? panelIndex === selectedIndex : selectedItem === item;
 
   return (
     <Box

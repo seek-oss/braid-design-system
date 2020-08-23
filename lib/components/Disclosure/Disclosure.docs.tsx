@@ -6,7 +6,6 @@ import { Disclosure as PlayroomDisclosure } from '../../playroom/components';
 
 const docs: ComponentDocs = {
   category: 'Content',
-  added: new Date('16 July 2020'),
   screenshotWidths: [320],
   migrationGuide: true,
   description: (
