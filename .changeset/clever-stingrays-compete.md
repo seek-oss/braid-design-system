@@ -16,7 +16,7 @@ For example, we can align a badge to a [Heading](https://seek-oss.github.io/brai
 ```jsx
 <Inline alignY="center" space="xsmall">
   <Heading level="4">Heading</Heading>
-  <Badge bleedY={true} tone="positive">
+  <Badge bleedY tone="positive">
     New
   </Badge>
 </Inline>
