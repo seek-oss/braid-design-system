@@ -105,6 +105,7 @@ exports[`Badge 1`] = `
 Object {
   exportType: component,
   props: {
+    bleedY?: boolean
     children: string
     id?: string
     title?: string

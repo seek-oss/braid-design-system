@@ -1,10 +1,11 @@
 import React, {
-  KeyboardEvent,
+  useRef,
   useContext,
+  useEffect,
+  cloneElement,
+  KeyboardEvent,
   ReactNode,
   MouseEvent,
-  useEffect,
-  useRef,
   ReactElement,
 } from 'react';
 import assert from 'assert';
@@ -56,6 +57,11 @@ export const Tab = ({ children, data, badge, item }: TabProps) => {
   assert(
     !badge || badge.type === Badge,
     `Tab badge prop can only be an instance of Badge. e.g. <Tab badge={<Badge>New</Badge>}>`,
+  );
+
+  assert(
+    !badge || badge.props.bleedY === undefined,
+    "Badge elements cannot set the 'bleedY' prop when passed to a Tab component",
   );
 
   if (!tabListContext) {
@@ -186,6 +192,7 @@ export const Tab = ({ children, data, badge, item }: TabProps) => {
       position="relative"
       zIndex={1}
       paddingX={paddingX}
+      paddingY="medium"
       className={styles.tab}
       {...buildDataAttributes(data)}
     >
@@ -193,18 +200,19 @@ export const Tab = ({ children, data, badge, item }: TabProps) => {
         Rendering Text component to provide rendering context
         for both icons and text labels
       */}
-      <Box paddingY="medium">
-        <Text
-          {...a11y.tabLabelProps({ tabIndex: tabListItemIndex })}
-          size={tabTextSize}
-          weight="medium"
-          align="center"
-          tone={isSelected ? 'formAccent' : 'secondary'}
-        >
-          {children}
-        </Text>
-      </Box>
-      {badge ? <Box paddingLeft="xsmall">{badge}</Box> : undefined}
+      <Text
+        {...a11y.tabLabelProps({ tabIndex: tabListItemIndex })}
+        size={tabTextSize}
+        weight="medium"
+        align="center"
+        tone={isSelected ? 'formAccent' : 'secondary'}
+      >
+        {children}
+      </Text>
+      {badge ? (
+        <Box paddingLeft="xsmall">{cloneElement(badge, { bleedY: true })}</Box>
+      ) : null}
+
       <Box
         position="absolute"
         top={0}

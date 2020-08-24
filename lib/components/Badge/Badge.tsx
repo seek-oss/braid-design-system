@@ -18,6 +18,7 @@ type BadgeWeight = 'strong' | 'regular';
 export interface BadgeProps {
   tone?: Tone;
   weight?: BadgeWeight;
+  bleedY?: boolean;
   title?: string;
   children: string;
   id?: string;
@@ -56,6 +57,7 @@ const backgroundForTone = (tone: Tone, weight: BadgeWeight) => {
 export const Badge = ({
   tone = 'info',
   weight = 'regular',
+  bleedY = false,
   title,
   children,
   id,
@@ -75,7 +77,10 @@ export const Badge = ({
   );
 
   return (
-    <Box display="flex" className={styles.outer}>
+    <Box
+      display="flex"
+      className={[styles.outer, bleedY ? styles.bleedY : null]}
+    >
       <Box
         id={id}
         title={title ?? children}
