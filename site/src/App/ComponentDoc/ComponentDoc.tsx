@@ -1,7 +1,6 @@
 import React, { ReactNode, Fragment } from 'react';
 import reactElementToJSXString from 'react-element-to-jsx-string';
 import { Route, Switch, useRouteMatch } from 'react-router';
-import { useStyles } from 'sku/react-treat';
 import { ComponentProps } from './ComponentProps';
 import {
   Box,
@@ -22,7 +21,6 @@ import { getHistory } from '../Updates';
 import { Markdown } from '../Markdown/Markdown';
 import { Navigation, NavigationItem } from './Navigation/Navigation';
 import { PageTitle } from '../Seo/PageTitle';
-import * as styleRefs from './ComponentDoc.treat';
 
 const handler = () => {
   /* No-op for docs examples */
@@ -43,7 +41,6 @@ export const ComponentDoc = ({
   subfolder = '',
   docs,
 }: ComponentDocProps) => {
-  const styles = useStyles(styleRefs);
   const { sourceUrlPrefix } = useConfig();
 
   const componentFolder = `lib/components/${
@@ -235,18 +232,14 @@ export const ComponentDoc = ({
                   <Stack space="large">
                     <Inline space="small" alignY="center">
                       <Heading level="3">v{item.version}</Heading>
-                      <Box position="relative">
-                        <Box
-                          position="absolute"
-                          className={styles.centerVertically}
+                      {item.time ? (
+                        <Badge
+                          bleedY
+                          tone={item.isRecent ? 'promote' : 'neutral'}
                         >
-                          {item.time ? (
-                            <Badge tone={item.isRecent ? 'promote' : 'neutral'}>
-                              {item.time}
-                            </Badge>
-                          ) : null}
-                        </Box>
-                      </Box>
+                          {item.time}
+                        </Badge>
+                      ) : null}
                     </Inline>
                     <Markdown>{item.summary}</Markdown>
                   </Stack>

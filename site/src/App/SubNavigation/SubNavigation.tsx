@@ -67,11 +67,9 @@ const SubNavigationGroup = ({ title, items }: SubNavigationGroup) => {
                 </TextLink>
               </Text>
               {badge ? (
-                <Box position="relative" height="full">
-                  <Box position="absolute" className={styles.badge}>
-                    <Badge tone={toneForBadge(badge)}>{badge}</Badge>
-                  </Box>
-                </Box>
+                <Badge bleedY tone={toneForBadge(badge)}>
+                  {badge}
+                </Badge>
               ) : null}
             </Inline>
           ))}
