@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import { Badge, Inline, Heading, Text, TextLink } from '../';
-import { Strong } from '../Strong/Strong';
+import { Badge, Inline, Heading, Text, TextLink, Strong } from '../';
 
 const docs: ComponentDocs = {
   category: 'Content',
