@@ -1,6 +1,7 @@
 import assert from 'assert';
 import React, {
   useState,
+  cloneElement,
   Children,
   ReactNode,
   ReactElement,
@@ -74,13 +75,18 @@ export const NavigationItem = ({
   badge,
   children,
 }: NavigationItemProps) => {
+  assert(
+    !badge || badge.props.bleedY === undefined,
+    "Badge elements cannot set the 'bleedY' prop when passed to a NavigationItem component",
+  );
+
   const styles = useStyles(styleRefs);
 
   const index = useContext(NavigationItemIndexContext);
   const [hovered, setHovered] = useState(false);
 
   const badgeElement = badge ? (
-    <Box paddingLeft="xsmall">{badge}</Box>
+    <Box paddingLeft="xsmall">{cloneElement(badge, { bleedY: true })}</Box>
   ) : undefined;
 
   return (
@@ -98,6 +104,7 @@ export const NavigationItem = ({
               position="relative"
               alignItems="center"
               opacity={active ? undefined : 0}
+              paddingY={navItemPaddingY}
             >
               <Box
                 position="absolute"
@@ -105,11 +112,9 @@ export const NavigationItem = ({
                 zIndex={1}
                 className={styles.activeUnderline}
               />
-              <Box paddingY={navItemPaddingY}>
-                <Text size="standard" weight="strong">
-                  {children}
-                </Text>
-              </Box>
+              <Text size="standard" weight="strong">
+                {children}
+              </Text>
               {badgeElement}
             </Box>
             <Box
@@ -118,20 +123,19 @@ export const NavigationItem = ({
               alignItems="center"
               position="absolute"
               top={0}
+              paddingY={navItemPaddingY}
               opacity={active ? 0 : undefined}
               {...(index === 0
                 ? { left: 0 }
                 : { className: styles.centerHorizontally })}
             >
-              <Box paddingY={navItemPaddingY}>
-                <Text
-                  size="standard"
-                  weight="medium"
-                  tone={hovered ? 'neutral' : 'secondary'}
-                >
-                  {children}
-                </Text>
-              </Box>
+              <Text
+                size="standard"
+                weight="medium"
+                tone={hovered ? 'neutral' : 'secondary'}
+              >
+                {children}
+              </Text>
               {badgeElement}
             </Box>
           </Box>
