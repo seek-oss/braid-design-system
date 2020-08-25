@@ -16,7 +16,7 @@ import {
   Hidden,
 } from '../../../../lib/components';
 import { useBraidTheme } from '../../../../lib/components/BraidProvider/BraidProvider';
-import { useIsolatedScroll } from '../../../../lib/components/Autosuggest/useIsolatedScroll';
+import { useIsolatedScroll } from '../../../../lib/hooks/useIsolatedScroll/useIsolatedScroll';
 import { BoxProps } from '../../../../lib/components/Box/Box';
 import { SubNavigation } from '../SubNavigation/SubNavigation';
 import { useScrollLock } from '../useScrollLock/useScrollLock';

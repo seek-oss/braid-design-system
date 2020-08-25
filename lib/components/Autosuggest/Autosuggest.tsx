@@ -21,7 +21,7 @@ import { normalizeKey } from '../private/normalizeKey';
 import { ClearField } from '../private/Field/ClearField';
 import { smoothScroll } from '../private/smoothScroll';
 import { useScrollIntoView } from './useScrollIntoView';
-import { useIsolatedScroll } from './useIsolatedScroll';
+import { useIsolatedScroll } from '../../hooks/useIsolatedScroll/useIsolatedScroll';
 import { createAccessbilityProps, getItemId } from './createAccessbilityProps';
 import * as styleRefs from './Autosuggest.treat';
 

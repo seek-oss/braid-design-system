@@ -12,21 +12,20 @@ import React, {
 import { createPortal } from 'react-dom';
 import FocusLock from 'react-focus-lock';
 import { useStyles } from 'sku/react-treat';
-import { hideOthers } from 'aria-hidden';
+import { hideOthers as ariaHideOthers } from 'aria-hidden';
 import assert from 'assert';
 import { Box } from '../Box/Box';
 import { ClearButton } from '../iconButtons/ClearButton/ClearButton';
 import { normalizeKey } from '../private/normalizeKey';
-import { useBoxStyles } from '../Box/useBoxStyles';
-import { PageOverlay } from './PageOverlay';
 import { Heading } from '../Heading/Heading';
 import { Stack } from '../Stack/Stack';
 import { Columns } from '../Columns/Columns';
 import { Column } from '../Column/Column';
-import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
-import { Overlay } from '../private/Overlay/Overlay';
-import { HideFocusRingsRoot } from '../private/hideFocusRings/hideFocusRings';
 import { ContentBlock, ContentBlockProps } from '../ContentBlock/ContentBlock';
+import { Overlay } from '../private/Overlay/Overlay';
+import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
+import { HideFocusRingsRoot } from '../private/hideFocusRings/hideFocusRings';
+import { useIsolatedScroll } from '../../hooks/useIsolatedScroll/useIsolatedScroll';
 import * as styleRefs from './Dialog.treat';
 
 export interface DialogProps {
@@ -81,40 +80,13 @@ const DialogPortal = ({ children }: DialogPortalProps) => {
 
 const dialogPadding = ['gutter', 'large'] as const;
 
-const CloseButton = ({
-  label = 'Close',
-  onClick,
-}: {
-  label?: string;
-  onClick: () => void;
-}) => {
-  const styles = useStyles(styleRefs);
-  return (
-    <Box
-      aria-hidden
-      position="absolute"
-      top={0}
-      right={0}
-      paddingRight={dialogPadding}
-      paddingTop={dialogPadding}
-      paddingLeft="small"
-      paddingBottom="small"
-      overflow="hidden"
-    >
-      <Box className={styles.closeOffset}>
-        <ClearButton tone="neutral" label={label} onClick={onClick} />
-      </Box>
-    </Box>
-  );
-};
-
 interface HeaderProps extends Pick<DialogProps, 'description'> {
   title: string;
   titleId: string;
   descriptionId: string;
   center?: boolean;
 }
-const Header = forwardRef<HTMLElement, HeaderProps>(
+const DialogHeader = forwardRef<HTMLElement, HeaderProps>(
   ({ title, titleId, description, descriptionId, center }, ref) => {
     const styles = useStyles(styleRefs);
 
@@ -158,6 +130,7 @@ const Container = ({
     <Fragment>{children}</Fragment>
   );
 
+const CLOSE_ANIMATION_DURATION = 200;
 export const Dialog = ({
   id,
   open,
@@ -165,81 +138,85 @@ export const Dialog = ({
   description,
   onClose,
   width = 'small',
-  closeLabel,
+  closeLabel = 'Close',
   illustration,
   title,
 }: DialogProps) => {
   const styles = useStyles(styleRefs);
-  const [trapActive, setTrapActive] = useState(open);
-  const [internalOpen, setInternalOpen] = useState(open);
-  const dialogContainerRef = useRef<HTMLElement>(null);
-  const hideOthersRef = useRef<ReturnType<typeof hideOthers> | null>(null);
+  const [trapActive, setTrapActive] = useState(true);
+  const [visible, setVisible] = useState<boolean | null>(null);
+  const [internalOpen, setInternalOpen] = useState<boolean | null>(null);
+
+  const dialogRef = useRef<HTMLElement>(null);
   const headingRef = useRef<HTMLElement>(null);
+  const backdropRef = useRef<HTMLElement>(null);
+  const closeHandlerRef = useRef<DialogProps['onClose']>(onClose);
+  const hideTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
   const labelId = `${id}_label`;
   const descriptionId = `${id}_desc`;
 
-  const scrollLockStyles = useBoxStyles({
-    component: null,
-    overflow: 'hidden',
-  });
+  useIsolatedScroll(dialogRef.current, visible === true);
+  useIsolatedScroll(backdropRef.current, visible === true);
 
-  const close = useCallback(() => {
+  const initiateClose = () => setVisible(false);
+  const cancelExitTimer = () => {
+    if (hideTimeoutRef.current) {
+      clearTimeout(hideTimeoutRef.current);
+      hideTimeoutRef.current = null;
+    }
+  };
+
+  const handleEscape = useCallback((event) => {
+    const targetKey = normalizeKey(event);
+    if (targetKey === 'Escape') {
+      event.stopPropagation();
+      initiateClose();
+    }
+  }, []);
+
+  useEffect(() => {
     if (typeof onClose === 'function') {
-      onClose(false);
+      closeHandlerRef.current = onClose;
     }
   }, [onClose]);
 
-  const handleEscape = useCallback(
-    (event) => {
-      const targetKey = normalizeKey(event);
-      if (targetKey === 'Escape') {
-        event.stopPropagation();
-        close();
-      }
-    },
-    [close],
-  );
+  useEffect(() => cancelExitTimer, []);
 
   useEffect(() => {
     if (open) {
-      setInternalOpen(open);
-      setTrapActive(open);
-
-      document.body.classList.add(scrollLockStyles);
-
-      if (dialogContainerRef.current) {
-        hideOthersRef.current = hideOthers(dialogContainerRef.current);
-      }
+      setInternalOpen(true);
+    } else {
+      initiateClose();
     }
-
-    return () => {
-      setTrapActive(false);
-      setInternalOpen(false);
-
-      document.body.classList.remove(scrollLockStyles);
-
-      if (hideOthersRef.current) {
-        hideOthersRef.current();
-        hideOthersRef.current = null;
-      }
-    };
-  }, [open, scrollLockStyles, handleEscape]);
+  }, [open]);
 
   useEffect(() => {
-    if (internalOpen && headingRef.current) {
-      headingRef.current.focus();
+    if (internalOpen) {
+      cancelExitTimer();
+
+      if (dialogRef.current) {
+        return ariaHideOthers(dialogRef.current);
+      }
+    } else if (internalOpen === false) {
+      closeHandlerRef.current(false);
     }
   }, [internalOpen]);
 
-  const handleWindowFocus = useCallback(() => {
-    setTrapActive(true);
-  }, [setTrapActive]);
-
-  const handleWindowBlur = useCallback(() => {
-    setTrapActive(false);
-  }, [setTrapActive]);
+  useEffect(() => {
+    if (visible === false) {
+      hideTimeoutRef.current = setTimeout(() => {
+        setInternalOpen(false);
+        hideTimeoutRef.current = null;
+      }, CLOSE_ANIMATION_DURATION);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [visible]);
 
   useEffect(() => {
+    const handleWindowFocus = () => setTrapActive(true);
+    const handleWindowBlur = () => setTrapActive(false);
+
     if (trapActive) {
       window.addEventListener('blur', handleWindowBlur);
     } else {
@@ -250,59 +227,85 @@ export const Dialog = ({
       window.removeEventListener('blur', handleWindowBlur);
       window.removeEventListener('focus', handleWindowFocus);
     };
-  }, [handleWindowBlur, handleWindowFocus, trapActive]);
+  }, [trapActive]);
 
   return (
     <DialogPortal>
-      <FocusLock
-        disabled={!trapActive}
-        returnFocus
-        noFocusGuards={!internalOpen}
-        ref={dialogContainerRef}
-      >
-        <Box
-          position="fixed"
-          top={0}
-          bottom={0}
-          left={0}
-          right={0}
-          pointerEvents={!internalOpen ? 'none' : undefined}
-          opacity={!internalOpen ? 0 : undefined}
-          transition="fast"
-          zIndex="modal"
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-          padding={['xxsmall', 'gutter', 'xlarge']}
-          className={styles.dialogContainer}
-          onKeyDown={handleEscape}
+      {internalOpen && (
+        <FocusLock
+          disabled={!trapActive}
+          onActivation={() => {
+            if (headingRef.current) {
+              headingRef.current.focus();
+            }
+            setVisible(true);
+          }}
+          returnFocus
         >
-          <PageOverlay onClick={close} active={internalOpen} modal={true} />
+          <Box
+            ref={backdropRef}
+            onClick={initiateClose}
+            position="fixed"
+            top={0}
+            bottom={0}
+            left={0}
+            right={0}
+            zIndex="modalBackdrop"
+            transition="fast"
+            opacity={!visible ? 0 : undefined}
+            className={styles.backdrop}
+          />
 
-          {internalOpen && (
-            <Box
-              role="dialog"
-              aria-labelledby={labelId}
-              aria-describedby={description ? descriptionId : undefined}
-              aria-modal="true"
-              overflow="auto"
-              width={width !== 'content' ? 'full' : undefined}
-              className={styles.dialog}
-            >
-              <Container width={width}>
-                <Box
-                  background="card"
-                  borderRadius="standard"
-                  position="relative"
-                  boxShadow="large"
-                  width={width !== 'content' ? 'full' : undefined}
-                  padding={dialogPadding}
-                >
-                  <Stack space="large">
-                    {illustration ? (
-                      <Stack space="medium" align="center">
-                        <Box paddingX="gutter">{illustration}</Box>
-                        <Header
+          <Box
+            position="fixed"
+            top={0}
+            bottom={0}
+            left={0}
+            right={0}
+            zIndex="modal"
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            pointerEvents="none"
+            overflow="auto"
+            transition="fast"
+            opacity={!visible ? 0 : undefined}
+            padding={['xxsmall', 'gutter', 'xlarge']}
+            className={!visible && styles.closed}
+          >
+            <Container width={width}>
+              <Box
+                ref={dialogRef}
+                role="dialog"
+                aria-labelledby={labelId}
+                aria-describedby={description ? descriptionId : undefined}
+                aria-modal="true"
+                onKeyDown={handleEscape}
+                background="card"
+                borderRadius="standard"
+                position="relative"
+                boxShadow="large"
+                width={width !== 'content' ? 'full' : undefined}
+                padding={dialogPadding}
+                className={styles.dialogContent}
+              >
+                <Stack space="large">
+                  {illustration ? (
+                    <Stack space="medium" align="center">
+                      <Box paddingX="gutter">{illustration}</Box>
+                      <DialogHeader
+                        title={title}
+                        titleId={labelId}
+                        description={description}
+                        descriptionId={descriptionId}
+                        center={Boolean(illustration)}
+                        ref={headingRef}
+                      />
+                    </Stack>
+                  ) : (
+                    <Columns space={dialogPadding}>
+                      <Column>
+                        <DialogHeader
                           title={title}
                           titleId={labelId}
                           description={description}
@@ -310,33 +313,35 @@ export const Dialog = ({
                           center={Boolean(illustration)}
                           ref={headingRef}
                         />
-                      </Stack>
-                    ) : (
-                      <Columns space={dialogPadding}>
-                        <Column>
-                          <Header
-                            title={title}
-                            titleId={labelId}
-                            description={description}
-                            descriptionId={descriptionId}
-                            center={Boolean(illustration)}
-                            ref={headingRef}
-                          />
-                        </Column>
-                        <Column width="content">
-                          <Box className={styles.closePlaceholder} />
-                        </Column>
-                      </Columns>
-                    )}
-                    <Fragment>{children}</Fragment>
-                  </Stack>
-                  <CloseButton label={closeLabel} onClick={close} />
+                      </Column>
+                      <Column width="content">
+                        <Box className={styles.closePlaceholder} />
+                      </Column>
+                    </Columns>
+                  )}
+                  <Fragment>{children}</Fragment>
+                </Stack>
+
+                <Box
+                  position="absolute"
+                  top={0}
+                  right={0}
+                  paddingTop={dialogPadding}
+                  paddingRight={dialogPadding}
+                >
+                  <Box className={styles.closeOffset}>
+                    <ClearButton
+                      tone="neutral"
+                      label={closeLabel}
+                      onClick={initiateClose}
+                    />
+                  </Box>
                 </Box>
-              </Container>
-            </Box>
-          )}
-        </Box>
-      </FocusLock>
+              </Box>
+            </Container>
+          </Box>
+        </FocusLock>
+      )}
     </DialogPortal>
   );
 };

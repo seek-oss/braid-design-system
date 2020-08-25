@@ -18,7 +18,6 @@ import {
 
 const docs: ComponentDocs = {
   category: 'Layout',
-  added: new Date('11 August 2020'),
   screenshotWidths: [320],
   description: (
     <Stack space="large">

@@ -1,6 +1,10 @@
 import '@testing-library/jest-dom/extend-expect';
 import React, { useState } from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import {
+  render,
+  fireEvent,
+  waitForElementToBeRemoved,
+} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { BraidTestProvider, Dialog } from '..';
 import { Button } from '../Button/Button';
@@ -132,17 +136,19 @@ describe('Dialog', () => {
     expect(buttonInside).toHaveFocus();
   });
 
-  it('should close when hitting escape', () => {
+  it('should close when hitting escape', async () => {
     const { getByTestId, queryByRole, getByRole } = renderDialog();
 
     const dialogOpenButton = getByTestId('buttonBefore');
     userEvent.click(dialogOpenButton);
     fireEvent.keyDown(getByRole('dialog'), { keyCode: ESCAPE });
 
-    expect(queryByRole('dialog')).not.toBeInTheDocument();
+    const dialog = queryByRole('dialog');
+    await waitForElementToBeRemoved(dialog);
+    expect(dialog).not.toBeInTheDocument();
   });
 
-  it('should hide document content outside of dialog from screen readers when open', async () => {
+  it('should hide document content outside of dialog from screen readers when open', () => {
     const { getByTestId, queryAllByRole } = renderDialog();
 
     expect(queryAllByRole('textbox').length).toBe(2);
@@ -154,7 +160,12 @@ describe('Dialog', () => {
   });
 
   it('should call dismiss handler once on close', async () => {
-    const { getByTestId, getByLabelText, closeHandler } = renderDialog();
+    const {
+      getByTestId,
+      getByLabelText,
+      closeHandler,
+      queryByRole,
+    } = renderDialog();
 
     expect(closeHandler).not.toHaveBeenCalled();
 
@@ -163,6 +174,8 @@ describe('Dialog', () => {
     const closeButton = getByLabelText(CLOSE_BUTTON_LABEL);
     userEvent.click(closeButton);
 
+    const dialog = queryByRole('dialog');
+    await waitForElementToBeRemoved(dialog);
     expect(closeHandler).toHaveBeenCalledTimes(1);
     expect(closeHandler).toHaveBeenCalledWith(false);
   });
