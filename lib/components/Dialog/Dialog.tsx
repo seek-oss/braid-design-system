@@ -8,6 +8,8 @@ import React, {
   forwardRef,
   Fragment,
   useContext,
+  Reducer,
+  useReducer,
 } from 'react';
 import { createPortal } from 'react-dom';
 import FocusLock from 'react-focus-lock';
@@ -41,6 +43,8 @@ export interface DialogProps {
 }
 
 const DialogContext = createContext(false);
+
+export const AllowCloseContext = createContext(true);
 
 interface DialogPortalProps {
   children: ReactNode;
@@ -128,6 +132,56 @@ const Container = ({
     <Fragment>{children}</Fragment>
   );
 
+type Action = 'OPEN' | 'CLOSE' | 'ANIMATION_COMPLETE';
+interface State {
+  state: 'INITIAL' | 'OPEN' | 'OPENING' | 'CLOSED' | 'CLOSING';
+}
+
+const reducer: Reducer<State, Action> = (prevState, action) => {
+  switch (action) {
+    case 'OPEN': {
+      switch (prevState.state) {
+        case 'INITIAL':
+        case 'CLOSING':
+        case 'CLOSED': {
+          return {
+            state: 'OPENING',
+          };
+        }
+      }
+    }
+
+    case 'CLOSE': {
+      switch (prevState.state) {
+        case 'OPEN':
+        case 'OPENING': {
+          return {
+            state: 'CLOSING',
+          };
+        }
+      }
+    }
+
+    case 'ANIMATION_COMPLETE': {
+      switch (prevState.state) {
+        case 'CLOSING': {
+          return {
+            state: 'CLOSED',
+          };
+        }
+
+        case 'OPENING': {
+          return {
+            state: 'OPEN',
+          };
+        }
+      }
+    }
+  }
+
+  return prevState;
+};
+
 const CLOSE_ANIMATION_DURATION = 200;
 export const Dialog = ({
   id,
@@ -142,14 +196,17 @@ export const Dialog = ({
 }: DialogProps) => {
   const styles = useStyles(styleRefs);
   const [trapActive, setTrapActive] = useState(true);
-  const [visible, setVisible] = useState<boolean | null>(null);
-  const [internalOpen, setInternalOpen] = useState<boolean | null>(null);
+  const [{ state }, dispatch] = useReducer(reducer, { state: 'INITIAL' });
+
+  const allowClose = useContext(AllowCloseContext);
+  const shouldFocus =
+    document && typeof document.hasFocus === 'function' && document.hasFocus();
 
   const dialogRef = useRef<HTMLElement>(null);
   const headingRef = useRef<HTMLElement>(null);
   const backdropRef = useRef<HTMLElement>(null);
   const closeHandlerRef = useRef<DialogProps['onClose']>(onClose);
-  const hideTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const openRef = useRef<boolean>(open);
 
   const labelId = `${id}_label`;
   const descriptionId = `${id}_desc`;
@@ -157,11 +214,9 @@ export const Dialog = ({
   useIsolatedScroll(dialogRef.current);
   useIsolatedScroll(backdropRef.current);
 
-  const initiateClose = () => setVisible(false);
-  const cancelExitTimer = () => {
-    if (hideTimeoutRef.current) {
-      clearTimeout(hideTimeoutRef.current);
-      hideTimeoutRef.current = null;
+  const initiateClose = () => {
+    if (allowClose) {
+      dispatch('CLOSE');
     }
   };
 
@@ -169,9 +224,32 @@ export const Dialog = ({
     const targetKey = normalizeKey(event);
     if (targetKey === 'Escape') {
       event.stopPropagation();
-      initiateClose();
+      dispatch('CLOSE');
     }
   }, []);
+
+  useEffect(() => {
+    openRef.current = open;
+    dispatch(open ? 'OPEN' : 'CLOSE');
+  }, [open]);
+
+  useEffect(() => {
+    if (state === 'CLOSING' || state === 'OPENING') {
+      const timer = setTimeout(() => {
+        dispatch('ANIMATION_COMPLETE');
+      }, CLOSE_ANIMATION_DURATION);
+
+      return () => clearTimeout(timer);
+    }
+
+    if (state === 'OPEN' && dialogRef.current) {
+      return ariaHideOthers(dialogRef.current);
+    }
+
+    if (state === 'CLOSED' && openRef.current) {
+      closeHandlerRef.current(false);
+    }
+  }, [state]);
 
   useEffect(() => {
     if (typeof onClose === 'function') {
@@ -179,64 +257,27 @@ export const Dialog = ({
     }
   }, [onClose]);
 
-  useEffect(() => cancelExitTimer, []);
-
   useEffect(() => {
-    if (open) {
-      setInternalOpen(true);
-    } else {
-      initiateClose();
-    }
-  }, [open]);
+    const event = trapActive ? 'blur' : 'focus';
+    const handleEvent = () => setTrapActive(!trapActive);
 
-  useEffect(() => {
-    if (internalOpen) {
-      cancelExitTimer();
-
-      if (dialogRef.current) {
-        return ariaHideOthers(dialogRef.current);
-      }
-    } else if (internalOpen === false) {
-      closeHandlerRef.current(false);
-    }
-  }, [internalOpen]);
-
-  useEffect(() => {
-    if (visible === false) {
-      hideTimeoutRef.current = setTimeout(() => {
-        setInternalOpen(false);
-        hideTimeoutRef.current = null;
-      }, CLOSE_ANIMATION_DURATION);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [visible]);
-
-  useEffect(() => {
-    const handleWindowFocus = () => setTrapActive(true);
-    const handleWindowBlur = () => setTrapActive(false);
-
-    if (trapActive) {
-      window.addEventListener('blur', handleWindowBlur);
-    } else {
-      window.addEventListener('focus', handleWindowFocus);
-    }
+    window.addEventListener(event, handleEvent);
 
     return () => {
-      window.removeEventListener('blur', handleWindowBlur);
-      window.removeEventListener('focus', handleWindowFocus);
+      window.removeEventListener(event, handleEvent);
     };
   }, [trapActive]);
 
   return (
     <DialogPortal>
-      {internalOpen && (
+      {state === 'OPENING' || state === 'OPEN' || state === 'CLOSING' ? (
         <FocusLock
           disabled={!trapActive}
+          autoFocus={shouldFocus}
           onActivation={() => {
-            if (headingRef.current) {
+            if (headingRef.current && shouldFocus) {
               headingRef.current.focus();
             }
-            setVisible(true);
           }}
           returnFocus
         >
@@ -251,7 +292,7 @@ export const Dialog = ({
               right={0}
               zIndex="modalBackdrop"
               transition="fast"
-              opacity={!visible ? 0 : undefined}
+              opacity={state !== 'OPEN' ? 0 : undefined}
               className={styles.backdrop}
             />
 
@@ -267,9 +308,12 @@ export const Dialog = ({
               justifyContent="center"
               pointerEvents="none"
               transition="fast"
-              opacity={!visible ? 0 : undefined}
+              opacity={state !== 'OPEN' ? 0 : undefined}
               padding={['xxsmall', 'gutter', 'xlarge']}
-              className={[styles.dialogContainer, !visible && styles.closed]}
+              className={[
+                styles.dialogContainer,
+                state !== 'OPEN' && styles.closed,
+              ]}
             >
               <Container width={width}>
                 <Box
@@ -341,7 +385,7 @@ export const Dialog = ({
             </Box>
           </HideFocusRingsRoot>
         </FocusLock>
-      )}
+      ) : null}
     </DialogPortal>
   );
 };

@@ -311,10 +311,61 @@ const docs: ComponentDocs = {
     {
       name: 'Standard',
       code: (
-        <PlayroomDialog title="Dialog Heading" open={true} onClose={() => {}}>
-          <Stack space="large">
-            <Placeholder width={250} height={100} />
+        <PlayroomDialog title="Dialog Heading">
+          <Placeholder width={250} height={100} />
+        </PlayroomDialog>
+      ),
+    },
+    {
+      name: 'With illustration',
+      code: (
+        <PlayroomDialog
+          title="Illustrated Dialog"
+          illustration={
+            <Box style={{ height: 100, width: 100 }}>
+              <IconMail size="fill" />
+            </Box>
+          }
+        >
+          <Stack space="xlarge" align="center">
+            <Placeholder width="100%" height={100} />
+            <Inline space="small">
+              <Button>Got it</Button>
+              <Button weight="weak">Cancel</Button>
+            </Inline>
           </Stack>
+        </PlayroomDialog>
+      ),
+    },
+    {
+      name: 'Xsmall',
+      code: (
+        <PlayroomDialog title="Dialog Heading" width="xsmall">
+          <Placeholder width="100%" height={100} />
+        </PlayroomDialog>
+      ),
+    },
+    {
+      name: 'Small',
+      code: (
+        <PlayroomDialog title="Dialog Heading" width="small">
+          <Placeholder width="100%" height={100} />
+        </PlayroomDialog>
+      ),
+    },
+    {
+      name: 'Medium',
+      code: (
+        <PlayroomDialog title="Dialog Heading" width="medium">
+          <Placeholder width="100%" height={100} />
+        </PlayroomDialog>
+      ),
+    },
+    {
+      name: 'Large',
+      code: (
+        <PlayroomDialog title="Dialog Heading" width="large">
+          <Placeholder width="100%" height={100} />
         </PlayroomDialog>
       ),
     },

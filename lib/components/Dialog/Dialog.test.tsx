@@ -4,6 +4,7 @@ import {
   render,
   fireEvent,
   waitForElementToBeRemoved,
+  waitFor,
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { BraidTestProvider, Dialog } from '..';
@@ -148,13 +149,15 @@ describe('Dialog', () => {
     expect(dialog).not.toBeInTheDocument();
   });
 
-  it('should hide document content outside of dialog from screen readers when open', () => {
-    const { getByTestId, queryAllByRole } = renderDialog();
+  it('should hide document content outside of dialog from screen readers when open', async () => {
+    const { getByTestId, queryAllByRole, queryByRole } = renderDialog();
 
     expect(queryAllByRole('textbox').length).toBe(2);
 
     const dialogOpenButton = getByTestId('buttonBefore');
     userEvent.click(dialogOpenButton);
+
+    await waitFor(() => queryByRole('dialog'));
 
     expect(queryAllByRole('textbox').length).toBe(0);
   });
