@@ -21,9 +21,9 @@ import { normalizeKey } from '../private/normalizeKey';
 import { ClearField } from '../private/Field/ClearField';
 import { smoothScroll } from '../private/smoothScroll';
 import { useScrollIntoView } from './useScrollIntoView';
-import { useIsolatedScroll } from '../../hooks/useIsolatedScroll/useIsolatedScroll';
 import { createAccessbilityProps, getItemId } from './createAccessbilityProps';
 import * as styleRefs from './Autosuggest.treat';
+import { RemoveScroll } from 'react-remove-scroll';
 
 type SuggestionMatch = Array<{ start: number; end: number }>;
 
@@ -424,7 +424,6 @@ export function Autosuggest<Value>({
       : null;
 
   useScrollIntoView(highlightedItem, menuRef.current);
-  useIsolatedScroll(menuRef.current);
 
   useEffect(() => {
     dispatch({
@@ -592,59 +591,61 @@ export function Autosuggest<Value>({
                   ref={inputRef}
                 />
                 {icon}
-                <Box
-                  component="ul"
-                  display={isOpen && hasSuggestions ? 'block' : 'none'}
-                  position="absolute"
-                  zIndex="dropdown"
-                  background="card"
-                  borderRadius="standard"
-                  boxShadow="medium"
-                  width="full"
-                  marginTop="xxsmall"
-                  paddingY="xxsmall"
-                  className={styles.menu}
-                  ref={menuRef}
-                  {...a11y.menuProps}
-                >
-                  {isOpen
-                    ? normalisedSuggestions.map((suggestion, index) => {
-                        const { text } = suggestion;
-                        const groupHeading = groupHeadingIndexes.get(index);
+                <RemoveScroll enabled={isOpen}>
+                  <Box
+                    component="ul"
+                    display={isOpen && hasSuggestions ? 'block' : 'none'}
+                    position="absolute"
+                    zIndex="dropdown"
+                    background="card"
+                    borderRadius="standard"
+                    boxShadow="medium"
+                    width="full"
+                    marginTop="xxsmall"
+                    paddingY="xxsmall"
+                    className={styles.menu}
+                    ref={menuRef}
+                    {...a11y.menuProps}
+                  >
+                    {isOpen
+                      ? normalisedSuggestions.map((suggestion, index) => {
+                          const { text } = suggestion;
+                          const groupHeading = groupHeadingIndexes.get(index);
 
-                        return (
-                          <Fragment key={index + text}>
-                            {groupHeading ? (
-                              <GroupHeading>{groupHeading}</GroupHeading>
-                            ) : null}
-                            <SuggestionItem
-                              suggestion={suggestion}
-                              highlighted={highlightedIndex === index}
-                              selected={value === suggestion}
-                              onClick={() => {
-                                fireChange(suggestion);
-                                dispatch({ type: SUGGESTION_MOUSE_CLICK });
-                              }}
-                              onHover={() => {
-                                dispatch({
-                                  type: SUGGESTION_MOUSE_ENTER,
-                                  value: index,
-                                });
-                              }}
-                              {...a11y.getItemProps({
-                                index,
-                                label: suggestion.text,
-                                description: suggestion.description,
-                                groupHeading: groupHeadingForSuggestion.get(
-                                  suggestion,
-                                ),
-                              })}
-                            />
-                          </Fragment>
-                        );
-                      })
-                    : null}
-                </Box>
+                          return (
+                            <Fragment key={index + text}>
+                              {groupHeading ? (
+                                <GroupHeading>{groupHeading}</GroupHeading>
+                              ) : null}
+                              <SuggestionItem
+                                suggestion={suggestion}
+                                highlighted={highlightedIndex === index}
+                                selected={value === suggestion}
+                                onClick={() => {
+                                  fireChange(suggestion);
+                                  dispatch({ type: SUGGESTION_MOUSE_CLICK });
+                                }}
+                                onHover={() => {
+                                  dispatch({
+                                    type: SUGGESTION_MOUSE_ENTER,
+                                    value: index,
+                                  });
+                                }}
+                                {...a11y.getItemProps({
+                                  index,
+                                  label: suggestion.text,
+                                  description: suggestion.description,
+                                  groupHeading: groupHeadingForSuggestion.get(
+                                    suggestion,
+                                  ),
+                                })}
+                              />
+                            </Fragment>
+                          );
+                        })
+                      : null}
+                  </Box>
+                </RemoveScroll>
                 {overlays}
                 {secondaryIcon}
               </Box>
