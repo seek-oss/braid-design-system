@@ -21,9 +21,9 @@ import { normalizeKey } from '../private/normalizeKey';
 import { ClearField } from '../private/Field/ClearField';
 import { smoothScroll } from '../private/smoothScroll';
 import { useScrollIntoView } from './useScrollIntoView';
+import { RemoveScroll } from 'react-remove-scroll';
 import { createAccessbilityProps, getItemId } from './createAccessbilityProps';
 import * as styleRefs from './Autosuggest.treat';
-import { RemoveScroll } from 'react-remove-scroll';
 
 type SuggestionMatch = Array<{ start: number; end: number }>;
 
