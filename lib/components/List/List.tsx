@@ -120,6 +120,7 @@ export const List = ({
               </Text>
               <Box
                 minWidth={0}
+                width="full"
                 paddingLeft={size === 'xsmall' ? 'xsmall' : 'small'}
               >
                 {listItem}
