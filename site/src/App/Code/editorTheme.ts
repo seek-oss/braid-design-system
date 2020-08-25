@@ -94,10 +94,10 @@ export default {
   italic: {
     fontStyle: 'italic',
   },
-  inserted: {
+  'inserted-sign': {
     color: inserted,
   },
-  deleted: {
+  'deleted-sign': {
     color: deleted,
   },
 };

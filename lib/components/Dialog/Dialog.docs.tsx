@@ -1,6 +1,7 @@
 import React, { useState, Fragment } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import {
+  Actions,
   Dialog,
   Button,
   Inline,
@@ -48,9 +49,9 @@ const docs: ComponentDocs = {
 
         return (
           <Fragment>
-            <Inline space="large" alignY="center">
+            <Actions>
               <Button onClick={() => setOpen(true)}>Open default dialog</Button>
-            </Inline>
+            </Actions>
 
             <Dialog
               id={id}
@@ -72,11 +73,11 @@ const docs: ComponentDocs = {
 
         return (
           <Fragment>
-            <Inline space="large" alignY="center">
+            <Actions>
               <Button onClick={() => setOpen(true)}>
                 Open illustrated dialog
               </Button>
-            </Inline>
+            </Actions>
 
             <Dialog
               id={id}
@@ -111,11 +112,11 @@ const docs: ComponentDocs = {
 
         return (
           <Fragment>
-            <Inline space="large" alignY="center">
+            <Actions>
               <Button onClick={() => setOpen(true)}>
                 Open content-sized dialog
               </Button>
-            </Inline>
+            </Actions>
 
             <Dialog
               id={id}
@@ -138,9 +139,9 @@ const docs: ComponentDocs = {
 
         return (
           <Fragment>
-            <Inline space="large" alignY="center">
+            <Actions>
               <Button onClick={() => setOpen(true)}>Open xsmall dialog</Button>
-            </Inline>
+            </Actions>
 
             <Dialog
               id={id}
@@ -174,9 +175,9 @@ const docs: ComponentDocs = {
 
         return (
           <Fragment>
-            <Inline space="large" alignY="center">
+            <Actions>
               <Button onClick={() => setOpen(true)}>Open small dialog</Button>
-            </Inline>
+            </Actions>
 
             <Dialog
               id={id}
@@ -210,9 +211,9 @@ const docs: ComponentDocs = {
 
         return (
           <Fragment>
-            <Inline space="large" alignY="center">
-              <Button onClick={() => setOpen(true)}>Open Medium dialog</Button>
-            </Inline>
+            <Actions>
+              <Button onClick={() => setOpen(true)}>Open medium dialog</Button>
+            </Actions>
 
             <Dialog
               id={id}
@@ -246,9 +247,9 @@ const docs: ComponentDocs = {
 
         return (
           <Fragment>
-            <Inline space="large" alignY="center">
-              <Button onClick={() => setOpen(true)}>Open Large dialog</Button>
-            </Inline>
+            <Actions>
+              <Button onClick={() => setOpen(true)}>Open large dialog</Button>
+            </Actions>
 
             <Dialog
               id={id}
@@ -282,11 +283,11 @@ const docs: ComponentDocs = {
 
         return (
           <Fragment>
-            <Inline space="large" alignY="center">
+            <Actions>
               <Button onClick={() => setOpen(true)}>
                 Open dialog with description
               </Button>
-            </Inline>
+            </Actions>
 
             <Dialog
               id={id}

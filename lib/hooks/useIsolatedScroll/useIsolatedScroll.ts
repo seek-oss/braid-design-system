@@ -4,17 +4,10 @@ import { useEffect } from 'react';
 
 const isolatedScroll: (el: Element) => () => void = untypedIsolatedScroll;
 
-export function useIsolatedScroll(
-  element: HTMLElement | null,
-  active: boolean = true,
-) {
+export function useIsolatedScroll(element: HTMLElement | null) {
   useEffect(() => {
-    if (!active) {
-      return;
-    }
-
     if (element) {
       return isolatedScroll(element);
     }
-  }, [active, element]);
+  }, [element]);
 }

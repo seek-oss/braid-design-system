@@ -8,9 +8,19 @@ export const closed = style({
   transform: 'scale(.8)',
 });
 
-export const dialogContent = style({
-  pointerEvents: 'auto',
+const maxSize = style({
+  maxHeight: '100vh',
+  maxWidth: '100vw',
 });
+
+export const dialogContainer = [maxSize];
+
+export const dialogContent = [
+  style({
+    pointerEvents: 'auto',
+  }),
+  maxSize,
+];
 
 export const heading = style({
   selectors: {

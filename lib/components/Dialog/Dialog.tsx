@@ -71,9 +71,7 @@ const DialogPortal = ({ children }: DialogPortalProps) => {
   }
 
   return createPortal(
-    <DialogContext.Provider value={true}>
-      <HideFocusRingsRoot>{children}</HideFocusRingsRoot>
-    </DialogContext.Provider>,
+    <DialogContext.Provider value={true}>{children}</DialogContext.Provider>,
     dialogElement,
   );
 };
@@ -156,8 +154,8 @@ export const Dialog = ({
   const labelId = `${id}_label`;
   const descriptionId = `${id}_desc`;
 
-  useIsolatedScroll(dialogRef.current, visible === true);
-  useIsolatedScroll(backdropRef.current, visible === true);
+  useIsolatedScroll(dialogRef.current);
+  useIsolatedScroll(backdropRef.current);
 
   const initiateClose = () => setVisible(false);
   const cancelExitTimer = () => {
@@ -242,69 +240,58 @@ export const Dialog = ({
           }}
           returnFocus
         >
-          <Box
-            ref={backdropRef}
-            onClick={initiateClose}
-            position="fixed"
-            top={0}
-            bottom={0}
-            left={0}
-            right={0}
-            zIndex="modalBackdrop"
-            transition="fast"
-            opacity={!visible ? 0 : undefined}
-            className={styles.backdrop}
-          />
+          <HideFocusRingsRoot>
+            <Box
+              ref={backdropRef}
+              onClick={initiateClose}
+              position="fixed"
+              top={0}
+              bottom={0}
+              left={0}
+              right={0}
+              zIndex="modalBackdrop"
+              transition="fast"
+              opacity={!visible ? 0 : undefined}
+              className={styles.backdrop}
+            />
 
-          <Box
-            position="fixed"
-            top={0}
-            bottom={0}
-            left={0}
-            right={0}
-            zIndex="modal"
-            display="flex"
-            alignItems="center"
-            justifyContent="center"
-            pointerEvents="none"
-            overflow="auto"
-            transition="fast"
-            opacity={!visible ? 0 : undefined}
-            padding={['xxsmall', 'gutter', 'xlarge']}
-            className={!visible && styles.closed}
-          >
-            <Container width={width}>
-              <Box
-                ref={dialogRef}
-                role="dialog"
-                aria-labelledby={labelId}
-                aria-describedby={description ? descriptionId : undefined}
-                aria-modal="true"
-                onKeyDown={handleEscape}
-                background="card"
-                borderRadius="standard"
-                position="relative"
-                boxShadow="large"
-                width={width !== 'content' ? 'full' : undefined}
-                padding={dialogPadding}
-                className={styles.dialogContent}
-              >
-                <Stack space="large">
-                  {illustration ? (
-                    <Stack space="medium" align="center">
-                      <Box paddingX="gutter">{illustration}</Box>
-                      <DialogHeader
-                        title={title}
-                        titleId={labelId}
-                        description={description}
-                        descriptionId={descriptionId}
-                        center={Boolean(illustration)}
-                        ref={headingRef}
-                      />
-                    </Stack>
-                  ) : (
-                    <Columns space={dialogPadding}>
-                      <Column>
+            <Box
+              position="fixed"
+              top={0}
+              bottom={0}
+              left={0}
+              right={0}
+              zIndex="modal"
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+              pointerEvents="none"
+              transition="fast"
+              opacity={!visible ? 0 : undefined}
+              padding={['xxsmall', 'gutter', 'xlarge']}
+              className={[styles.dialogContainer, !visible && styles.closed]}
+            >
+              <Container width={width}>
+                <Box
+                  ref={dialogRef}
+                  role="dialog"
+                  aria-labelledby={labelId}
+                  aria-describedby={description ? descriptionId : undefined}
+                  aria-modal="true"
+                  onKeyDown={handleEscape}
+                  background="card"
+                  borderRadius="standard"
+                  overflow="auto"
+                  position="relative"
+                  boxShadow="large"
+                  width={width !== 'content' ? 'full' : undefined}
+                  padding={dialogPadding}
+                  className={styles.dialogContent}
+                >
+                  <Stack space="large">
+                    {illustration ? (
+                      <Stack space="medium" align="center">
+                        <Box paddingX="gutter">{illustration}</Box>
                         <DialogHeader
                           title={title}
                           titleId={labelId}
@@ -313,33 +300,46 @@ export const Dialog = ({
                           center={Boolean(illustration)}
                           ref={headingRef}
                         />
-                      </Column>
-                      <Column width="content">
-                        <Box className={styles.closePlaceholder} />
-                      </Column>
-                    </Columns>
-                  )}
-                  <Fragment>{children}</Fragment>
-                </Stack>
+                      </Stack>
+                    ) : (
+                      <Columns space={dialogPadding}>
+                        <Column>
+                          <DialogHeader
+                            title={title}
+                            titleId={labelId}
+                            description={description}
+                            descriptionId={descriptionId}
+                            center={Boolean(illustration)}
+                            ref={headingRef}
+                          />
+                        </Column>
+                        <Column width="content">
+                          <Box className={styles.closePlaceholder} />
+                        </Column>
+                      </Columns>
+                    )}
+                    <Fragment>{children}</Fragment>
+                  </Stack>
 
-                <Box
-                  position="absolute"
-                  top={0}
-                  right={0}
-                  paddingTop={dialogPadding}
-                  paddingRight={dialogPadding}
-                >
-                  <Box className={styles.closeOffset}>
-                    <ClearButton
-                      tone="neutral"
-                      label={closeLabel}
-                      onClick={initiateClose}
-                    />
+                  <Box
+                    position="absolute"
+                    top={0}
+                    right={0}
+                    paddingTop={dialogPadding}
+                    paddingRight={dialogPadding}
+                  >
+                    <Box className={styles.closeOffset}>
+                      <ClearButton
+                        tone="neutral"
+                        label={closeLabel}
+                        onClick={initiateClose}
+                      />
+                    </Box>
                   </Box>
                 </Box>
-              </Box>
-            </Container>
-          </Box>
+              </Container>
+            </Box>
+          </HideFocusRingsRoot>
         </FocusLock>
       )}
     </DialogPortal>
