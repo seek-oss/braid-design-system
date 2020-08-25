@@ -200,7 +200,9 @@ export const Dialog = ({
 
   const allowClose = useContext(AllowCloseContext);
   const shouldFocus =
-    document && typeof document.hasFocus === 'function' && document.hasFocus();
+    typeof document !== 'undefined' &&
+    typeof document.hasFocus === 'function' &&
+    document.hasFocus();
 
   const dialogRef = useRef<HTMLElement>(null);
   const headingRef = useRef<HTMLElement>(null);
