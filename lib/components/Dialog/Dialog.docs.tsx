@@ -44,7 +44,7 @@ const docs: ComponentDocs = {
     {
       label: 'Default',
       playroom: false,
-      Example: ({ id }) => {
+      Example: () => {
         const [open, setOpen] = useState(false);
 
         return (
@@ -54,7 +54,7 @@ const docs: ComponentDocs = {
             </Actions>
 
             <Dialog
-              id={id}
+              id="default"
               title="Default Dialog Example"
               open={open}
               onClose={setOpen}
@@ -68,7 +68,7 @@ const docs: ComponentDocs = {
     {
       label: 'With illustration/logo',
       playroom: false,
-      Example: ({ id }) => {
+      Example: () => {
         const [open, setOpen] = useState(false);
 
         return (
@@ -80,7 +80,7 @@ const docs: ComponentDocs = {
             </Actions>
 
             <Dialog
-              id={id}
+              id="illustrated"
               title="Illustrated Example"
               illustration={
                 <Box style={{ height: 100, width: 100 }}>
@@ -107,7 +107,7 @@ const docs: ComponentDocs = {
     {
       label: 'Sized to content',
       playroom: false,
-      Example: ({ id }) => {
+      Example: () => {
         const [open, setOpen] = useState(false);
 
         return (
@@ -119,7 +119,7 @@ const docs: ComponentDocs = {
             </Actions>
 
             <Dialog
-              id={id}
+              id="content"
               title="Content-sized"
               width="content"
               open={open}
@@ -134,7 +134,7 @@ const docs: ComponentDocs = {
     {
       label: 'Xsmall width',
       playroom: false,
-      Example: ({ id }) => {
+      Example: () => {
         const [open, setOpen] = useState(false);
 
         return (
@@ -144,7 +144,7 @@ const docs: ComponentDocs = {
             </Actions>
 
             <Dialog
-              id={id}
+              id="xsmall"
               title="Xsmall Dialog"
               width="xsmall"
               open={open}
@@ -170,7 +170,7 @@ const docs: ComponentDocs = {
     {
       label: 'Small width',
       playroom: false,
-      Example: ({ id }) => {
+      Example: () => {
         const [open, setOpen] = useState(false);
 
         return (
@@ -180,7 +180,7 @@ const docs: ComponentDocs = {
             </Actions>
 
             <Dialog
-              id={id}
+              id="small"
               title="Small Dialog"
               width="small"
               open={open}
@@ -206,7 +206,7 @@ const docs: ComponentDocs = {
     {
       label: 'Medium width',
       playroom: false,
-      Example: ({ id }) => {
+      Example: () => {
         const [open, setOpen] = useState(false);
 
         return (
@@ -216,7 +216,7 @@ const docs: ComponentDocs = {
             </Actions>
 
             <Dialog
-              id={id}
+              id="medium"
               title="Medium Dialog"
               width="medium"
               open={open}
@@ -242,7 +242,7 @@ const docs: ComponentDocs = {
     {
       label: 'Large width',
       playroom: false,
-      Example: ({ id }) => {
+      Example: () => {
         const [open, setOpen] = useState(false);
 
         return (
@@ -252,7 +252,7 @@ const docs: ComponentDocs = {
             </Actions>
 
             <Dialog
-              id={id}
+              id="large"
               title="Large Dialog"
               width="large"
               open={open}
@@ -278,7 +278,7 @@ const docs: ComponentDocs = {
     {
       label: 'With additional description',
       playroom: false,
-      Example: ({ id }) => {
+      Example: () => {
         const [open, setOpen] = useState(false);
 
         return (
@@ -290,7 +290,7 @@ const docs: ComponentDocs = {
             </Actions>
 
             <Dialog
-              id={id}
+              id="description"
               title="Dialog with description"
               description={
                 <Text tone="secondary">

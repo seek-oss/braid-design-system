@@ -12,7 +12,7 @@ import React, {
 } from 'react';
 import { TreatProvider } from 'sku/react-treat';
 import { ensureResetImported } from '../../reset/resetTracker';
-import { HideFocusRingsRoot } from '../private/hideFocusRings/hideFocusRings';
+import { useHideFocusRings } from '../private/hideFocusRings/useHideFocusRings';
 import { BraidTestProviderContext } from '../BraidTestProvider/BraidTestProviderContext';
 import { BreakpointProvider } from '../useBreakpoint/BreakpointProvider';
 import { BraidTheme } from '../../themes/BraidTheme.d';
@@ -97,6 +97,8 @@ export const BraidProvider = ({
   const inTestProvider = useContext(BraidTestProviderContext);
   const linkComponentFromContext = useContext(LinkComponentContext);
 
+  useHideFocusRings(!(alreadyInBraidProvider || inTestProvider));
+
   assert(
     typeof navigator !== 'object' ||
       navigator.userAgent.indexOf('jsdom') === -1 ||
@@ -116,9 +118,7 @@ export const BraidProvider = ({
           {alreadyInBraidProvider || inTestProvider ? (
             children
           ) : (
-            <BreakpointProvider>
-              <HideFocusRingsRoot>{children}</HideFocusRingsRoot>
-            </BreakpointProvider>
+            <BreakpointProvider>{children}</BreakpointProvider>
           )}
         </LinkComponentContext.Provider>
       </TreatProvider>
