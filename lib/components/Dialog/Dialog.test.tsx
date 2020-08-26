@@ -1,6 +1,11 @@
 import '@testing-library/jest-dom/extend-expect';
 import React, { useState } from 'react';
-import { render, fireEvent, waitFor } from '@testing-library/react';
+import {
+  render,
+  fireEvent,
+  waitForElementToBeRemoved,
+  waitFor,
+} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { BraidTestProvider, Dialog } from '..';
 import { Button } from '../Button/Button';
@@ -172,10 +177,7 @@ describe('Dialog', () => {
     const closeButton = getByLabelText(CLOSE_BUTTON_LABEL);
     userEvent.click(closeButton);
 
-    await waitFor(() => {
-      expect(queryByRole('dialog')).not.toBeInTheDocument();
-    });
-
+    await waitForElementToBeRemoved(() => queryByRole('dialog'));
     expect(closeHandler).toHaveBeenCalledTimes(1);
     expect(closeHandler).toHaveBeenCalledWith(false);
   });
