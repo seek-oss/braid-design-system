@@ -591,7 +591,7 @@ export function Autosuggest<Value>({
                   ref={inputRef}
                 />
                 {icon}
-                <RemoveScroll enabled={isOpen}>
+                <RemoveScroll enabled={isOpen} forwardProps>
                   <Box
                     component="ul"
                     display={isOpen && hasSuggestions ? 'block' : 'none'}

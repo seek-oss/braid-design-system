@@ -302,7 +302,7 @@ export const Dialog = ({
             ]}
           >
             <Container width={width}>
-              <RemoveScroll>
+              <RemoveScroll forwardProps>
                 <Box
                   ref={dialogRef}
                   role="dialog"
