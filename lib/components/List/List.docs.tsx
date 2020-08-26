@@ -1,6 +1,7 @@
 import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import { List, Text, TextLink, Stack } from '..';
+import { Placeholder } from '../../playroom/components';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -180,6 +181,15 @@ const docs: ComponentDocs = {
               <Text>List item.</Text>
             </>
           </>
+        </List>
+      ),
+    },
+    {
+      label: 'Test: List items should be full width',
+      docsSite: false,
+      Example: () => (
+        <List>
+          <Placeholder height={60} />
         </List>
       ),
     },
