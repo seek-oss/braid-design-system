@@ -228,16 +228,14 @@ export const Dialog = ({
       return () => clearTimeout(timer);
     }
 
+    if (state === 'OPEN' && dialogRef.current) {
+      return ariaHideOthers(dialogRef.current);
+    }
+
     if (state === 'CLOSED' && openRef.current) {
       closeHandlerRef.current(false);
     }
   }, [state]);
-
-  // useEffect(() => {
-  //   if (state === 'OPEN' && dialogRef.current) {
-  //     return ariaHideOthers(dialogRef.current);
-  //   }
-  // }, [state]);
 
   useEffect(() => {
     if (typeof onClose === 'function') {
