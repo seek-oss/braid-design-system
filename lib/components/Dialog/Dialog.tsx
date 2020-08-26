@@ -302,9 +302,8 @@ export const Dialog = ({
             ]}
           >
             <Container width={width}>
-              <RemoveScroll forwardProps>
+              <RemoveScroll ref={dialogRef} forwardProps>
                 <Box
-                  ref={dialogRef}
                   role="dialog"
                   aria-label={title} // Using aria-labelledby would announce the heading after the dialog content.
                   aria-describedby={description ? descriptionId : undefined}
