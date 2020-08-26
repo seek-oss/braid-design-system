@@ -1,11 +1,6 @@
 import '@testing-library/jest-dom/extend-expect';
 import React, { useState } from 'react';
-import {
-  render,
-  fireEvent,
-  waitForElementToBeRemoved,
-  waitFor,
-} from '@testing-library/react';
+import { render, fireEvent, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { BraidTestProvider, Dialog } from '..';
 import { Button } from '../Button/Button';
@@ -144,9 +139,9 @@ describe('Dialog', () => {
     userEvent.click(dialogOpenButton);
     fireEvent.keyDown(getByRole('dialog'), { keyCode: ESCAPE });
 
-    const dialog = queryByRole('dialog');
-    await waitForElementToBeRemoved(dialog);
-    expect(dialog).not.toBeInTheDocument();
+    await waitFor(() => {
+      expect(queryByRole('dialog')).not.toBeInTheDocument();
+    });
   });
 
   it('should hide document content outside of dialog from screen readers when open', async () => {
@@ -177,8 +172,10 @@ describe('Dialog', () => {
     const closeButton = getByLabelText(CLOSE_BUTTON_LABEL);
     userEvent.click(closeButton);
 
-    const dialog = queryByRole('dialog');
-    await waitForElementToBeRemoved(dialog);
+    await waitFor(() => {
+      expect(queryByRole('dialog')).not.toBeInTheDocument();
+    });
+
     expect(closeHandler).toHaveBeenCalledTimes(1);
     expect(closeHandler).toHaveBeenCalledWith(false);
   });
