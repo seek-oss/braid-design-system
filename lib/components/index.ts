@@ -44,12 +44,10 @@ export { Link } from './Link/Link';
 export { List } from './List/List';
 export { Loader } from './Loader/Loader';
 export { MenuRenderer } from './MenuRenderer/MenuRenderer';
-export {
-  MenuItem,
-  MenuItemCheckbox,
-  MenuItemDivider,
-  MenuItemLink,
-} from './MenuItem/MenuItem';
+export { MenuItem } from './MenuItem/MenuItem';
+export { MenuItemCheckbox } from './MenuItem/MenuItemCheckbox';
+export { MenuItemDivider } from './MenuItem/MenuItemDivider';
+export { MenuItemLink } from './MenuItem/MenuItemLink';
 export { OverflowMenu } from './OverflowMenu/OverflowMenu';
 export { MonthPicker } from './MonthPicker/MonthPicker';
 export { Notice } from './Notice/Notice';

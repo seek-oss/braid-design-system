@@ -1,14 +1,5 @@
 import { style } from 'sku/treat';
 
-export const menuItem = style({
-  whiteSpace: 'nowrap',
-  selectors: {
-    [`&::-moz-focus-inner`]: {
-      border: 0,
-    },
-  },
-});
-
 export const checkboxRoot = style((theme) => {
   const standardText = theme.typography.text.standard;
 
