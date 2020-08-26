@@ -3,6 +3,8 @@
   "Bullet",
   "BoxRenderer",
   "makeLinkComponent",
+  "MenuItemCheckbox",
+  "MenuItemDivider",
   "MenuItemLink",
   "Tab",
   "TabsProvider",

@@ -11,7 +11,13 @@ import React, {
 } from 'react';
 import { useStyles } from 'sku/react-treat';
 import flattenChildren from 'react-keyed-flatten-children';
-import { MenuItem, MenuItemLink, Box } from '../';
+import {
+  MenuItem,
+  MenuItemCheckbox,
+  MenuItemLink,
+  MenuItemDivider,
+  Box,
+} from '../';
 import { BoxProps } from '../Box/Box';
 import { normalizeKey } from '../private/normalizeKey';
 import { getNextIndex } from '../private/getNextIndex';
@@ -101,7 +107,10 @@ export const MenuRenderer = ({
       (item) =>
         typeof item === 'object' &&
         'type' in item &&
-        (item.type === MenuItem || item.type === MenuItemLink),
+        (item.type === MenuItem ||
+          item.type === MenuItemCheckbox ||
+          item.type === MenuItemLink ||
+          item.type === MenuItemDivider),
     ),
     'All child nodes within a menu component must be a MenuItem or MenuItemLink: https://seek-oss.github.io/braid-design-system/components/MenuItem',
   );
@@ -137,7 +146,12 @@ export const MenuRenderer = ({
         case MENU_ITEM_ENTER:
         case MENU_ITEM_SPACE:
         case MENU_ITEM_CLICK: {
-          return { ...state, open: false, highlightIndex: CLOSED_INDEX };
+          return {
+            ...state,
+            ...('formElement' in action && action.formElement
+              ? null
+              : { open: false, highlightIndex: CLOSED_INDEX }),
+          };
         }
         case MENU_ITEM_HOVER: {
           return { ...state, highlightIndex: action.value };
@@ -249,6 +263,8 @@ export const MenuRenderer = ({
     },
   };
 
+  let dividerCount = 0;
+
   return (
     <Box className={styles.root} {...buildDataAttributes(data)}>
       <Box display="inlineBlock" position="relative">
@@ -271,20 +287,28 @@ export const MenuRenderer = ({
           opacity={!open ? 0 : undefined}
           className={!open && styles.menuIsClosed}
         >
-          <Box paddingY="xxsmall">
-            {items.map((item, index) => (
-              <MenuContext.Provider
-                key={index}
-                value={{
-                  isHighlighted: index === highlightIndex,
-                  index,
-                  dispatch,
-                  focusTrigger,
-                }}
-              >
-                {item}
-              </MenuContext.Provider>
-            ))}
+          <Box padding="xxsmall">
+            {items.map((item, i) => {
+              if (typeof item === 'object' && item.type === MenuItemDivider) {
+                dividerCount++;
+                return item;
+              }
+
+              const index = i - dividerCount;
+              return (
+                <MenuContext.Provider
+                  key={index}
+                  value={{
+                    isHighlighted: index === highlightIndex,
+                    index,
+                    dispatch,
+                    focusTrigger,
+                  }}
+                >
+                  {item}
+                </MenuContext.Provider>
+              );
+            })}
           </Box>
           <Overlay
             boxShadow="borderStandard"

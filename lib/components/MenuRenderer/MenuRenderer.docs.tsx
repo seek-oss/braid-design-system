@@ -38,7 +38,9 @@ const docs: ComponentDocs = {
       </Text>
       <Text>
         Child nodes must be{' '}
-        <TextLink href="/components/MenuItem">MenuItem/MenuItemLink</TextLink>{' '}
+        <TextLink href="/components/MenuItem">
+          MenuItem, MenuItemLink, or MenuItemCheckbox
+        </TextLink>{' '}
         elements.
       </Text>
     </Stack>
@@ -49,7 +51,7 @@ const docs: ComponentDocs = {
       code: dedent`
         <MenuRenderer
           trigger={(triggerProps, { open }) => (
-            <Box {...triggerProps}>
+            <Box userSelect="none" cursor="pointer" {...triggerProps}>
               <Text>
                 Menu{' '}
                 <IconChevron
@@ -67,7 +69,7 @@ const docs: ComponentDocs = {
       Example: ({ handler }) => (
         <MenuRenderer
           trigger={(triggerProps, { open }) => (
-            <Box {...triggerProps}>
+            <Box userSelect="none" cursor="pointer" {...triggerProps}>
               <Text>
                 Menu{' '}
                 <IconChevron
@@ -94,7 +96,7 @@ const docs: ComponentDocs = {
         <MenuRenderer
           align="right"
           trigger={(triggerProps, { open }) => (
-            <Box {...triggerProps}>
+            <Box userSelect="none" cursor="pointer" {...triggerProps}>
               <Text>
                 Menu{' '}
                 <IconChevron
@@ -113,7 +115,7 @@ const docs: ComponentDocs = {
         <MenuRenderer
           align="right"
           trigger={(triggerProps, { open }) => (
-            <Box {...triggerProps}>
+            <Box userSelect="none" cursor="pointer" {...triggerProps}>
               <Text>
                 Menu{' '}
                 <IconChevron
@@ -135,7 +137,7 @@ const docs: ComponentDocs = {
         <MenuRenderer
           offsetSpace={['none', 'small']}
           trigger={(triggerProps, { open }) => (
-            <Box {...triggerProps}>
+            <Box userSelect="none" cursor="pointer" {...triggerProps}>
               <Text>
                 Menu{' '}
                 <IconChevron
@@ -154,7 +156,7 @@ const docs: ComponentDocs = {
         <MenuRenderer
           offsetSpace={['none', 'small']}
           trigger={(triggerProps, { open }) => (
-            <Box {...triggerProps}>
+            <Box userSelect="none" cursor="pointer" {...triggerProps}>
               <Text>
                 Menu{' '}
                 <IconChevron

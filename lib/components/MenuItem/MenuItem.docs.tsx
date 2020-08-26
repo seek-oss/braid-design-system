@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import {
   OverflowMenu,
   MenuItem,
   MenuItemLink,
+  MenuItemCheckbox,
+  MenuItemDivider,
   Stack,
   Text,
   TextLink,
@@ -30,7 +32,7 @@ const docs: ComponentDocs = {
         <TextLink href="/components/OverflowMenu">OverflowMenu</TextLink>,{' '}
         <TextLink href="/components/MenuRenderer">MenuRenderer</TextLink>.
       </Text>
-      <Text>Two semantic variants are provided:</Text>
+      <Text>Three semantic variants are provided:</Text>
       <List>
         <Text>
           <Strong>MenuItem</Strong> which renders a button.
@@ -39,6 +41,9 @@ const docs: ComponentDocs = {
           <Strong>MenuItemLink</Strong> which renders a link using the{' '}
           <Strong>linkComponent</Strong> implementation from{' '}
           <TextLink href="/components/BraidProvider">BraidProvider</TextLink>.
+        </Text>
+        <Text>
+          <Strong>MenuItemCheckbox</Strong>.
         </Text>
       </List>
       <Text>
@@ -50,16 +55,37 @@ const docs: ComponentDocs = {
     {
       label: 'Standard usage',
       background: 'card',
-      Example: ({ handler }) => (
-        <Box paddingLeft="xxlarge">
-          <OverflowMenu label="Options">
-            <MenuItem onClick={handler}>Button</MenuItem>
-            <MenuItemLink onClick={handler} href="#">
-              Link
-            </MenuItemLink>
-          </OverflowMenu>
-        </Box>
-      ),
+      Example: ({ handler }) => {
+        const [checked1, setChecked1] = useState(false);
+        const [checked2, setChecked2] = useState(false);
+        const [checked3, setChecked3] = useState(false);
+
+        return (
+          <Box style={{ paddingLeft: 200 }}>
+            <OverflowMenu label="Options">
+              <MenuItem onClick={handler}>Button</MenuItem>
+              <MenuItemLink onClick={handler} href="#">
+                Link
+              </MenuItemLink>
+              <MenuItemDivider />
+              <MenuItemCheckbox checked={checked1} onChange={setChecked1}>
+                Checkbox
+              </MenuItemCheckbox>
+              <MenuItemCheckbox checked={checked2} onChange={setChecked2}>
+                Checkbox
+              </MenuItemCheckbox>
+              <MenuItemCheckbox checked={checked3} onChange={setChecked3}>
+                Checkbox
+              </MenuItemCheckbox>
+              <MenuItemDivider />
+              <MenuItem onClick={handler}>Button</MenuItem>
+              <MenuItemLink onClick={handler} href="#">
+                Link
+              </MenuItemLink>
+            </OverflowMenu>
+          </Box>
+        );
+      },
     },
   ],
 };

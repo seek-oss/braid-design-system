@@ -23,7 +23,9 @@ const docs: ComponentDocs = {
       </Text>
       <Text>
         Child nodes must be{' '}
-        <TextLink href="/components/MenuItem">MenuItem/MenuItemLink</TextLink>{' '}
+        <TextLink href="/components/MenuItem">
+          MenuItem, MenuItemLink, or MenuItemCheckbox
+        </TextLink>{' '}
         elements.
       </Text>
     </Stack>
