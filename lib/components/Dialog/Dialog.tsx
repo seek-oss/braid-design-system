@@ -273,9 +273,9 @@ export const Dialog = ({
           disabled={!trapActive}
           autoFocus={shouldFocus}
           onActivation={() => {
-              if (headingRef.current && shouldFocus) {
-                headingRef.current.focus();
-              }
+            if (headingRef.current && shouldFocus) {
+              headingRef.current.focus();
+            }
           }}
           returnFocus
         >
