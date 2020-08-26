@@ -27,6 +27,7 @@ import { Column } from '../Column/Column';
 import { ContentBlock, ContentBlockProps } from '../ContentBlock/ContentBlock';
 import { Overlay } from '../private/Overlay/Overlay';
 import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
+import { externalGutter } from './DialogExternalGutter';
 import * as styleRefs from './Dialog.treat';
 
 export interface DialogProps {
@@ -294,7 +295,7 @@ export const Dialog = ({
             pointerEvents="none"
             transition="fast"
             opacity={state !== 'OPEN' ? 0 : undefined}
-            padding={['xxsmall', 'gutter', 'xlarge']}
+            padding={externalGutter}
             className={[
               styles.dialogContainer,
               state !== 'OPEN' && styles.closed,

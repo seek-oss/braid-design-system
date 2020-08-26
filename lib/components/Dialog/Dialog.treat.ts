@@ -1,4 +1,5 @@
 import { style } from 'sku/treat';
+import { externalGutter } from './DialogExternalGutter';
 
 export const backdrop = style({
   background: 'rgba(0, 0, 0, .7)',
@@ -8,18 +9,31 @@ export const closed = style({
   transform: 'scale(.8)',
 });
 
-const maxSize = style({
+export const dialogContainer = style({
   maxHeight: '100vh',
   maxWidth: '100vw',
 });
-
-export const dialogContainer = [maxSize];
 
 export const dialogContent = [
   style({
     pointerEvents: 'auto',
   }),
-  maxSize,
+  style(({ utils, space, grid }) =>
+    utils.responsiveStyle({
+      mobile: {
+        maxHeight: `calc(100vh - ${grid * space[externalGutter[0]] * 2}px)`,
+        maxWidth: `calc(100vw - ${grid * space[externalGutter[0]] * 2}px)`,
+      },
+      tablet: {
+        maxHeight: `calc(100vh - ${grid * space[externalGutter[1]] * 2}px)`,
+        maxWidth: `calc(100vw - ${grid * space[externalGutter[1]] * 2}px)`,
+      },
+      desktop: {
+        maxHeight: `calc(100vh - ${grid * space[externalGutter[2]] * 2}px)`,
+        maxWidth: `calc(100vw - ${grid * space[externalGutter[2]] * 2}px)`,
+      },
+    }),
+  ),
 ];
 
 export const heading = style({
