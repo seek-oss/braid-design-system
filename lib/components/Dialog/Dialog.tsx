@@ -133,47 +133,37 @@ const Container = ({
   );
 
 type Action = 'OPEN' | 'CLOSE' | 'ANIMATION_COMPLETE';
-interface State {
-  state: 'INITIAL' | 'OPEN' | 'OPENING' | 'CLOSED' | 'CLOSING';
-}
+type State = 'INITIAL' | 'OPEN' | 'OPENING' | 'CLOSED' | 'CLOSING';
 
 const reducer: Reducer<State, Action> = (prevState, action) => {
   switch (action) {
     case 'OPEN': {
-      switch (prevState.state) {
+      switch (prevState) {
         case 'INITIAL':
         case 'CLOSING':
         case 'CLOSED': {
-          return {
-            state: 'OPENING',
-          };
+          return 'OPENING';
         }
       }
     }
 
     case 'CLOSE': {
-      switch (prevState.state) {
+      switch (prevState) {
         case 'OPEN':
         case 'OPENING': {
-          return {
-            state: 'CLOSING',
-          };
+          return 'CLOSING';
         }
       }
     }
 
     case 'ANIMATION_COMPLETE': {
-      switch (prevState.state) {
+      switch (prevState) {
         case 'CLOSING': {
-          return {
-            state: 'CLOSED',
-          };
+          return 'CLOSED';
         }
 
         case 'OPENING': {
-          return {
-            state: 'OPEN',
-          };
+          return 'OPEN';
         }
       }
     }
@@ -196,7 +186,7 @@ export const Dialog = ({
 }: DialogProps) => {
   const styles = useStyles(styleRefs);
   const [trapActive, setTrapActive] = useState(true);
-  const [{ state }, dispatch] = useReducer(reducer, { state: 'INITIAL' });
+  const [state, dispatch] = useReducer(reducer, 'INITIAL');
 
   const allowClose = useContext(AllowCloseContext);
   const shouldFocus =
@@ -232,7 +222,7 @@ export const Dialog = ({
   }, [open]);
 
   useEffect(() => {
-    if (state === 'CLOSING' || state === 'OPENING') {
+    if (state === 'CLOSING') {
       const timer = setTimeout(() => {
         dispatch('ANIMATION_COMPLETE');
       }, CLOSE_ANIMATION_DURATION);
@@ -276,12 +266,14 @@ export const Dialog = ({
             if (headingRef.current && shouldFocus) {
               headingRef.current.focus();
             }
+
+            dispatch('ANIMATION_COMPLETE');
           }}
           returnFocus
         >
           <HideFocusRingsRoot>
             <Box
-              onClick={initiateClose}
+              onClick={state === 'OPEN' ? initiateClose : undefined}
               position="fixed"
               top={0}
               bottom={0}
