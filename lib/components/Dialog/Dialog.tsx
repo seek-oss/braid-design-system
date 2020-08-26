@@ -233,11 +233,11 @@ export const Dialog = ({
     }
   }, [state]);
 
-  useEffect(() => {
-    if (state === 'OPEN' && dialogRef.current) {
-      return ariaHideOthers(dialogRef.current);
-    }
-  }, [state]);
+  // useEffect(() => {
+  //   if (state === 'OPEN' && dialogRef.current) {
+  //     return ariaHideOthers(dialogRef.current);
+  //   }
+  // }, [state]);
 
   useEffect(() => {
     if (typeof onClose === 'function') {
