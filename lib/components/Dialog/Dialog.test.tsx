@@ -144,9 +144,9 @@ describe('Dialog', () => {
     userEvent.click(dialogOpenButton);
     fireEvent.keyDown(getByRole('dialog'), { keyCode: ESCAPE });
 
-    await waitForElementToBeRemoved(() => queryByRole('dialog'), {
-      timeout: 3000,
-    });
+    await waitForElementToBeRemoved(() =>
+      queryByRole('dialog'),
+    ).catch(async () => waitForElementToBeRemoved(() => queryByRole('dialog')));
     expect(queryByRole('dialog')).not.toBeInTheDocument();
   });
 
@@ -158,7 +158,7 @@ describe('Dialog', () => {
     const dialogOpenButton = getByTestId('buttonBefore');
     userEvent.click(dialogOpenButton);
 
-    await waitFor(() => queryByRole('dialog'), { timeout: 3000 });
+    await waitFor(() => queryByRole('dialog'));
 
     expect(queryAllByRole('textbox').length).toBe(0);
   });
@@ -178,9 +178,9 @@ describe('Dialog', () => {
     const closeButton = getByLabelText(CLOSE_BUTTON_LABEL);
     userEvent.click(closeButton);
 
-    await waitForElementToBeRemoved(() => queryByRole('dialog'), {
-      timeout: 3000,
-    });
+    await waitForElementToBeRemoved(() =>
+      queryByRole('dialog'),
+    ).catch(async () => waitForElementToBeRemoved(() => queryByRole('dialog')));
     expect(closeHandler).toHaveBeenCalledTimes(1);
     expect(closeHandler).toHaveBeenCalledWith(false);
   });
