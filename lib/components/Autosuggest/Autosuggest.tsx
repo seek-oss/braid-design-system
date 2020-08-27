@@ -591,7 +591,8 @@ export function Autosuggest<Value>({
                   ref={inputRef}
                 />
                 {icon}
-                <RemoveScroll enabled={isOpen} forwardProps>
+                {/* MenuRef gets forwarded down to UL by RemoveScroll by `forwardProps`. */}
+                <RemoveScroll ref={menuRef} enabled={isOpen} forwardProps>
                   <Box
                     component="ul"
                     display={isOpen && hasSuggestions ? 'block' : 'none'}
@@ -604,7 +605,6 @@ export function Autosuggest<Value>({
                     marginTop="xxsmall"
                     paddingY="xxsmall"
                     className={styles.menu}
-                    ref={menuRef}
                     {...a11y.menuProps}
                   >
                     {isOpen

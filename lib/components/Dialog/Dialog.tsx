@@ -321,6 +321,7 @@ export const Dialog = ({
             ]}
           >
             <Container width={width}>
+              {/* DialogRef gets forwarded down to UL by RemoveScroll by `forwardProps`. */}
               <RemoveScroll ref={dialogRef} forwardProps>
                 <Box
                   role="dialog"
