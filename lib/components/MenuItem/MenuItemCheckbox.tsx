@@ -3,8 +3,8 @@ import { useStyles } from 'sku/react-treat';
 import { Box, IconTick } from '../';
 import { BackgroundProvider } from '../Box/BackgroundContext';
 import { MenuItemProps } from './MenuItem';
-import * as styleRefs from './MenuItemCheckbox.treat';
 import { useMenuItem } from './useMenuItem';
+import * as styleRefs from './MenuItemCheckbox.treat';
 
 interface MenuItemCheckboxProps extends Omit<MenuItemProps, 'onClick'> {
   children: ReactNode;
@@ -34,10 +34,10 @@ export const MenuItemCheckbox = ({
       display="flex"
     >
       <Box
+        height="full"
         paddingRight="xsmall"
         display="flex"
         alignItems="center"
-        className={styles.checkboxRoot}
       >
         <Box
           borderRadius="standard"

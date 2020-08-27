@@ -1,22 +1,15 @@
 import { style } from 'sku/treat';
 
-export const checkboxRoot = style((theme) => {
-  const standardText = theme.typography.text.standard;
-
-  return theme.utils.responsiveStyle({
-    mobile: { height: standardText.mobile.rows * theme.grid },
-    tablet: { height: standardText.tablet.rows * theme.grid },
-  });
-});
-
 export const checkboxBorder = style((theme) => {
   const standardText = theme.typography.text.standard;
 
-  const mobileSize = Math.round(standardText.mobile.capHeight * 1.8);
-  const tabletSize = Math.round(standardText.tablet.capHeight * 1.8);
+  const calculateSize = (capHeight: number) => {
+    const scaled = capHeight * 1.8;
+    return scaled - (scaled % 2);
+  };
 
-  // const mobileSize = standardText.mobile.rows * theme.grid;
-  // const tabletSize = standardText.tablet.rows * theme.grid;
+  const mobileSize = calculateSize(standardText.mobile.capHeight);
+  const tabletSize = calculateSize(standardText.tablet.capHeight);
 
   return theme.utils.responsiveStyle({
     mobile: {

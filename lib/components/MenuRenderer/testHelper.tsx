@@ -8,7 +8,13 @@ import {
   act,
 } from '@testing-library/react';
 import genericUserEvent from '@testing-library/user-event';
-import { BraidTestProvider, MenuItem, MenuItemLink } from '..';
+import {
+  BraidTestProvider,
+  MenuItem,
+  MenuItemLink,
+  MenuItemCheckbox,
+  MenuItemDivider,
+} from '..';
 import { MenuRendererProps } from './MenuRenderer';
 
 // The generic `user-event` library currently doesn't have knowledge
@@ -45,17 +51,28 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
     const closeHandler = jest.fn();
     const menuItemHandler = jest.fn();
 
-    const { getAllByRole } = render(
+    const TestCase = () => (
       <BraidTestProvider>
         <Component onOpen={openHandler} onClose={closeHandler}>
-          <MenuItem onClick={() => menuItemHandler('first')}>First</MenuItem>
-          <MenuItem onClick={() => menuItemHandler('second')}>Second</MenuItem>
-          <MenuItemLink href="#" onClick={() => menuItemHandler('third')}>
-            Third
+          <MenuItem onClick={() => menuItemHandler('MenuItem')}>
+            MenuItem
+          </MenuItem>
+          <MenuItemDivider />
+          <MenuItemLink
+            href="#"
+            onClick={() => menuItemHandler('MenuItemLink')}
+          >
+            MenuItemLink
           </MenuItemLink>
+          <MenuItemDivider />
+          <MenuItemCheckbox checked={false} onChange={() => {}}>
+            MenuItemCheckbox
+          </MenuItemCheckbox>
         </Component>
-      </BraidTestProvider>,
+      </BraidTestProvider>
     );
+
+    const { getAllByRole } = render(<TestCase />);
 
     return {
       getAllByRole,
@@ -75,7 +92,7 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
         Boolean(el.getAttribute('aria-haspopup')),
       )[0],
       menu: getAllByRole('menu', { hidden: true })[0],
-      menuItems: getAllByRole('menuitem', { hidden: true }),
+      menuItems: getAllByRole(/menuitem|menuitemcheckbox/, { hidden: true }),
     };
   }
 
@@ -164,12 +181,12 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
         expect(isVisible(menu)).toBe(true);
         // `userEvent` is clashing with state update from the `onMouseEnter` handler
         // on menu item. Need to use `fireEvent`.
-        fireEvent.click(menuItems[1]);
+        fireEvent.click(menuItems[0]);
 
         expect(isVisible(menu)).toBe(false);
         expect(openHandler).not.toHaveBeenCalled();
         expect(closeHandler).toHaveBeenCalledTimes(1);
-        expect(menuItemHandler).toHaveBeenNthCalledWith(1, 'second');
+        expect(menuItemHandler).toHaveBeenNthCalledWith(1, 'MenuItem');
         expect(menuButton).toHaveFocus();
       });
 
@@ -189,12 +206,12 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
         expect(isVisible(menu)).toBe(true);
         // `userEvent` is clashing with state update from the `onMouseEnter` handler
         // on menu item. Need to use `fireEvent`.
-        fireEvent.click(menuItems[2]);
+        fireEvent.click(menuItems[1]);
 
         expect(isVisible(menu)).toBe(false);
         expect(openHandler).not.toHaveBeenCalled();
         expect(closeHandler).toHaveBeenCalledTimes(1);
-        expect(menuItemHandler).toHaveBeenNthCalledWith(1, 'third');
+        expect(menuItemHandler).toHaveBeenNthCalledWith(1, 'MenuItemLink');
         expect(menuButton).toHaveFocus();
       });
     });
@@ -362,17 +379,12 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
         const firstDown = getElements({ getAllByRole });
         const firstMenuItem = firstDown.menuItems[0];
 
-        // Navigate down one item
-        fireEvent.keyUp(firstMenuItem, { keyCode: ARROW_DOWN });
-        const secondDown = getElements({ getAllByRole });
-        const secondMenuItem = secondDown.menuItems[1];
-
         // Action the item
-        fireEvent.keyUp(secondMenuItem, { keyCode: ENTER });
+        fireEvent.keyUp(firstMenuItem, { keyCode: ENTER });
 
         expect(isVisible(menu)).toBe(false);
         expect(closeHandler).toHaveBeenCalledTimes(1);
-        expect(menuItemHandler).toHaveBeenNthCalledWith(1, 'second');
+        expect(menuItemHandler).toHaveBeenNthCalledWith(1, 'MenuItem');
         expect(menuButton).toHaveFocus();
       });
 
@@ -386,17 +398,12 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
         const firstDown = getElements({ getAllByRole });
         const firstMenuItem = firstDown.menuItems[0];
 
-        // Navigate down one item
-        fireEvent.keyUp(firstMenuItem, { keyCode: ARROW_DOWN });
-        const secondDown = getElements({ getAllByRole });
-        const secondMenuItem = secondDown.menuItems[1];
-
         // Action the item
-        fireEvent.keyUp(secondMenuItem, { keyCode: SPACE });
+        fireEvent.keyUp(firstMenuItem, { keyCode: SPACE });
 
         expect(isVisible(menu)).toBe(false);
         expect(closeHandler).toHaveBeenCalledTimes(1);
-        expect(menuItemHandler).toHaveBeenNthCalledWith(1, 'second');
+        expect(menuItemHandler).toHaveBeenNthCalledWith(1, 'MenuItem');
         expect(menuButton).toHaveFocus();
       });
 
@@ -410,18 +417,17 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
         const firstDown = getElements({ getAllByRole });
         const firstMenuItem = firstDown.menuItems[0];
 
-        // Navigate down two items
+        // Navigate down
         fireEvent.keyUp(firstMenuItem, { keyCode: ARROW_DOWN });
-        fireEvent.keyUp(firstMenuItem, { keyCode: ARROW_DOWN });
-        const thirdDown = getElements({ getAllByRole });
-        const thirdMenuItem = thirdDown.menuItems[2];
+        const secondDown = getElements({ getAllByRole });
+        const secondMenuItem = secondDown.menuItems[1];
 
         // Action the item
-        fireEvent.keyUp(thirdMenuItem, { keyCode: ENTER });
+        fireEvent.keyUp(secondMenuItem, { keyCode: ENTER });
 
         expect(isVisible(menu)).toBe(false);
         expect(closeHandler).toHaveBeenCalledTimes(1);
-        expect(menuItemHandler).toHaveBeenNthCalledWith(1, 'third');
+        expect(menuItemHandler).toHaveBeenNthCalledWith(1, 'MenuItemLink');
         expect(menuButton).toHaveFocus();
       });
 
@@ -435,18 +441,17 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
         const firstDown = getElements({ getAllByRole });
         const firstMenuItem = firstDown.menuItems[0];
 
-        // Navigate down two items
+        // Navigate down
         fireEvent.keyUp(firstMenuItem, { keyCode: ARROW_DOWN });
-        fireEvent.keyUp(firstMenuItem, { keyCode: ARROW_DOWN });
-        const thirdDown = getElements({ getAllByRole });
-        const thirdMenuItem = thirdDown.menuItems[2];
+        const secondDown = getElements({ getAllByRole });
+        const secondMenuItem = secondDown.menuItems[1];
 
         // Action the item
-        fireEvent.keyUp(thirdMenuItem, { keyCode: SPACE });
+        fireEvent.keyUp(secondMenuItem, { keyCode: SPACE });
 
         expect(isVisible(menu)).toBe(false);
         expect(closeHandler).toHaveBeenCalledTimes(1);
-        expect(menuItemHandler).toHaveBeenNthCalledWith(1, 'third');
+        expect(menuItemHandler).toHaveBeenNthCalledWith(1, 'MenuItemLink');
         expect(menuButton).toHaveFocus();
       });
     });

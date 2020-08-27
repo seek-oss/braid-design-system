@@ -116,6 +116,7 @@ export function useMenuItem<MenuItemElement extends HTMLElement>({
   };
 
   return {
+    MenuItemChildren,
     menuItemProps: {
       role: 'menuitem',
       tabIndex: -1,
@@ -135,7 +136,8 @@ export function useMenuItem<MenuItemElement extends HTMLElement>({
         useTouchableSpace(menuItemChildrenSize),
         useBoxStyles({
           component: null,
-          display: 'block',
+          display: 'flex',
+          alignItems: 'center',
           width: 'full',
           paddingX: 'small',
           background: isHighlighted ? 'selection' : undefined,
@@ -147,7 +149,6 @@ export function useMenuItem<MenuItemElement extends HTMLElement>({
       ],
       ...buildDataAttributes(data),
     } as const,
-    MenuItemChildren,
   } as const;
 }
 

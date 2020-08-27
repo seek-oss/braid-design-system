@@ -88,6 +88,13 @@ const initialState: State = {
   open: false,
   highlightIndex: CLOSED_INDEX,
 };
+
+const isDivider = (node: ReactNode) =>
+  typeof node === 'object' &&
+  node !== null &&
+  'type' in node &&
+  node.type === MenuItemDivider;
+
 export const MenuRenderer = ({
   onOpen,
   onClose,
@@ -101,6 +108,7 @@ export const MenuRenderer = ({
   const buttonRef = useRef<HTMLButtonElement>(null);
   const hasOpened = useRef<boolean>(false);
   const items = flattenChildren(children);
+  const itemCount = items.filter((item) => !isDivider(item)).length;
 
   assert(
     items.every(
@@ -112,7 +120,7 @@ export const MenuRenderer = ({
           item.type === MenuItemLink ||
           item.type === MenuItemDivider),
     ),
-    'All child nodes within a menu component must be a MenuItem or MenuItemLink: https://seek-oss.github.io/braid-design-system/components/MenuItem',
+    'All child nodes within a menu component must be a MenuItem, MenuItemLink, MenuItemCheckbox or MenuItemDivider: https://seek-oss.github.io/braid-design-system/components/MenuItem',
   );
 
   const [{ open, highlightIndex }, dispatch] = useReducer(
@@ -123,11 +131,7 @@ export const MenuRenderer = ({
           return {
             ...state,
             open: true,
-            highlightIndex: getNextIndex(
-              -1,
-              state.highlightIndex,
-              items.length,
-            ),
+            highlightIndex: getNextIndex(-1, state.highlightIndex, itemCount),
           };
         }
         case MENU_TRIGGER_DOWN:
@@ -135,7 +139,7 @@ export const MenuRenderer = ({
           return {
             ...state,
             open: true,
-            highlightIndex: getNextIndex(1, state.highlightIndex, items.length),
+            highlightIndex: getNextIndex(1, state.highlightIndex, itemCount),
           };
         }
         case BACKDROP_CLICK:
@@ -289,18 +293,19 @@ export const MenuRenderer = ({
         >
           <Box padding="xxsmall">
             {items.map((item, i) => {
-              if (typeof item === 'object' && item.type === MenuItemDivider) {
+              if (isDivider(item)) {
                 dividerCount++;
                 return item;
               }
 
-              const index = i - dividerCount;
+              const menuItemIndex = i - dividerCount;
+
               return (
                 <MenuContext.Provider
-                  key={index}
+                  key={menuItemIndex}
                   value={{
-                    isHighlighted: index === highlightIndex,
-                    index,
+                    isHighlighted: menuItemIndex === highlightIndex,
+                    index: menuItemIndex,
                     dispatch,
                     focusTrigger,
                   }}
