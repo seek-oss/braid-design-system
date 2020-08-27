@@ -18,7 +18,7 @@ import { Column } from '../Column/Column';
 import { ContentBlock, ContentBlockProps } from '../ContentBlock/ContentBlock';
 import { Overlay } from '../private/Overlay/Overlay';
 import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
-import * as styleRefs from './DialogCard.treat';
+import * as styleRefs from './Dialog.treat';
 
 export interface DialogCardProps {
   id: string;
