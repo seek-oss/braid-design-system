@@ -2223,7 +2223,7 @@ Object {
     description?: ReactNodeNoStrings
     id: string
     illustration?: ReactNodeNoStrings
-    onClose: (open: boolean) => void
+    onClose: (openState: false) => void
     open: boolean
     title: string
     width?: 
