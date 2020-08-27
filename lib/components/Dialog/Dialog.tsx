@@ -130,39 +130,58 @@ const Container = ({
   ) : (
     <Fragment>{children}</Fragment>
   );
+// Actions
+const OPEN_DIALOG = 1;
+const CLOSE_DIALOG = 2;
+const ANIMATION_COMPLETE = 3;
 
-type Action = 'OPEN' | 'CLOSE' | 'ANIMATION_COMPLETE';
-type State = 'INITIAL' | 'OPEN' | 'OPENING' | 'CLOSED' | 'CLOSING';
+// States
+const INITIAL = 1;
+const OPEN = 2;
+const OPENING = 3;
+const CLOSED = 4;
+const CLOSING = 5;
+
+type Action =
+  | typeof OPEN_DIALOG
+  | typeof CLOSE_DIALOG
+  | typeof ANIMATION_COMPLETE;
+type State =
+  | typeof INITIAL
+  | typeof OPEN
+  | typeof OPENING
+  | typeof CLOSED
+  | typeof CLOSING;
 
 const reducer: Reducer<State, Action> = (prevState, action) => {
   switch (action) {
-    case 'OPEN': {
+    case OPEN_DIALOG: {
       switch (prevState) {
-        case 'INITIAL':
-        case 'CLOSING':
-        case 'CLOSED': {
-          return 'OPENING';
+        case INITIAL:
+        case CLOSING:
+        case CLOSED: {
+          return OPENING;
         }
       }
     }
 
-    case 'CLOSE': {
+    case CLOSE_DIALOG: {
       switch (prevState) {
-        case 'OPEN':
-        case 'OPENING': {
-          return 'CLOSING';
+        case OPEN:
+        case OPENING: {
+          return CLOSING;
         }
       }
     }
 
-    case 'ANIMATION_COMPLETE': {
+    case ANIMATION_COMPLETE: {
       switch (prevState) {
-        case 'CLOSING': {
-          return 'CLOSED';
+        case CLOSING: {
+          return CLOSED;
         }
 
-        case 'OPENING': {
-          return 'OPEN';
+        case OPENING: {
+          return OPEN;
         }
       }
     }
@@ -185,7 +204,7 @@ export const Dialog = ({
 }: DialogProps) => {
   const styles = useStyles(styleRefs);
   const [trapActive, setTrapActive] = useState(true);
-  const [state, dispatch] = useReducer(reducer, 'INITIAL');
+  const [state, dispatch] = useReducer(reducer, INITIAL);
 
   const allowClose = useContext(AllowCloseContext);
   const shouldFocus =
@@ -202,7 +221,7 @@ export const Dialog = ({
 
   const initiateClose = () => {
     if (allowClose) {
-      dispatch('CLOSE');
+      dispatch(CLOSE_DIALOG);
     }
   };
 
@@ -210,29 +229,29 @@ export const Dialog = ({
     const targetKey = normalizeKey(event);
     if (targetKey === 'Escape') {
       event.stopPropagation();
-      dispatch('CLOSE');
+      dispatch(CLOSE_DIALOG);
     }
   }, []);
 
   useEffect(() => {
     openRef.current = open;
-    dispatch(open ? 'OPEN' : 'CLOSE');
+    dispatch(open ? OPEN_DIALOG : CLOSE_DIALOG);
   }, [open]);
 
   useEffect(() => {
-    if (state === 'CLOSING') {
+    if (state === CLOSING) {
       const timer = setTimeout(() => {
-        dispatch('ANIMATION_COMPLETE');
+        dispatch(ANIMATION_COMPLETE);
       }, CLOSE_ANIMATION_DURATION);
 
       return () => clearTimeout(timer);
     }
 
-    if (state === 'OPEN' && dialogRef.current) {
+    if (state === OPEN && dialogRef.current) {
       return ariaHideOthers(dialogRef.current);
     }
 
-    if (state === 'CLOSED' && openRef.current) {
+    if (state === CLOSED && openRef.current) {
       closeHandlerRef.current(false);
     }
   }, [state]);
@@ -256,7 +275,7 @@ export const Dialog = ({
 
   return (
     <DialogPortal>
-      {state === 'OPENING' || state === 'OPEN' || state === 'CLOSING' ? (
+      {state === OPENING || state === OPEN || state === CLOSING ? (
         <FocusLock
           disabled={!trapActive}
           autoFocus={false}
@@ -265,12 +284,12 @@ export const Dialog = ({
               headingRef.current.focus();
             }
 
-            dispatch('ANIMATION_COMPLETE');
+            dispatch(ANIMATION_COMPLETE);
           }}
           returnFocus
         >
           <Box
-            onClick={state === 'OPEN' ? initiateClose : undefined}
+            onClick={state === OPEN ? initiateClose : undefined}
             position="fixed"
             top={0}
             bottom={0}
@@ -278,7 +297,7 @@ export const Dialog = ({
             right={0}
             zIndex="modalBackdrop"
             transition="fast"
-            opacity={state !== 'OPEN' ? 0 : undefined}
+            opacity={state !== OPEN ? 0 : undefined}
             className={styles.backdrop}
           />
 
@@ -294,11 +313,11 @@ export const Dialog = ({
             justifyContent="center"
             pointerEvents="none"
             transition="fast"
-            opacity={state !== 'OPEN' ? 0 : undefined}
+            opacity={state !== OPEN ? 0 : undefined}
             padding={externalGutter}
             className={[
               styles.dialogContainer,
-              state === 'OPENING' && styles.entrance,
+              state === OPENING && styles.entrance,
             ]}
           >
             <Container width={width}>
