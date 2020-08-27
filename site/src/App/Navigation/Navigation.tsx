@@ -16,13 +16,13 @@ import {
   Hidden,
 } from '../../../../lib/components';
 import { useBraidTheme } from '../../../../lib/components/BraidProvider/BraidProvider';
+import { RemoveScroll } from 'react-remove-scroll';
 import { BoxProps } from '../../../../lib/components/Box/Box';
 import { SubNavigation } from '../SubNavigation/SubNavigation';
 import { useScrollLock } from '../useScrollLock/useScrollLock';
 import { MenuButton } from '../MenuButton/MenuButton';
 import { Logo } from '../Logo/Logo';
 import { gutterSize, menuButtonSize, headerSpaceY } from './navigationSizes';
-import { RemoveScroll } from 'react-remove-scroll';
 import * as styleRefs from './Navigation.treat';
 
 const Header = ({

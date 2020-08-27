@@ -29,6 +29,9 @@ export interface DialogCardProps {
   width?: ContentBlockProps['width'] | 'content';
   description?: ReactNodeNoStrings;
   illustration?: ReactNodeNoStrings;
+}
+
+interface InternalDialogProps extends DialogCardProps {
   headingRef?: Ref<HTMLElement>;
   dialogRef?: Ref<HTMLElement>;
   scrollLock?: boolean;
@@ -36,12 +39,12 @@ export interface DialogCardProps {
 
 const dialogPadding = ['gutter', 'large'] as const;
 
-interface HeaderProps extends Pick<DialogCardProps, 'description'> {
+interface DialogHeaderProps extends Pick<DialogCardProps, 'description'> {
   title: string;
   descriptionId: string;
   center?: boolean;
 }
-const DialogHeader = forwardRef<HTMLElement, HeaderProps>(
+const DialogHeader = forwardRef<HTMLElement, DialogHeaderProps>(
   ({ title, description, descriptionId, center }, ref) => {
     const styles = useStyles(styleRefs);
 
@@ -97,7 +100,7 @@ export const DialogCard = ({
   headingRef: headingRefProp,
   dialogRef: dialogRefProp,
   scrollLock = true,
-}: DialogCardProps) => {
+}: InternalDialogProps) => {
   const styles = useStyles(styleRefs);
 
   const defaultDialogRef = useRef<HTMLElement>(null);
