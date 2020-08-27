@@ -1,1 +1,1 @@
-export const externalGutter = ['xxsmall', 'gutter', 'xlarge'] as const;
+export const externalGutter = ['xsmall', 'gutter', 'xlarge'] as const;

@@ -19,7 +19,7 @@ import {
 import { DialogCard } from './DialogCard';
 
 const docs: ComponentDocs = {
-  category: 'Layout',
+  category: 'Content',
   screenshotWidths: [320, 768, 1200],
   description: (
     <Stack space="large">
