@@ -144,9 +144,8 @@ describe('Dialog', () => {
     userEvent.click(dialogOpenButton);
     fireEvent.keyDown(getByRole('dialog'), { keyCode: ESCAPE });
 
-    await waitFor(() => {
-      expect(queryByRole('dialog')).not.toBeInTheDocument();
-    });
+    await waitForElementToBeRemoved(() => queryByRole('dialog'));
+    expect(queryByRole('dialog')).not.toBeInTheDocument();
   });
 
   it('should hide document content outside of dialog from screen readers when open', async () => {
