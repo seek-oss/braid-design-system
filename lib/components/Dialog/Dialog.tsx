@@ -20,7 +20,7 @@ import * as styleRefs from './Dialog.treat';
 
 export interface DialogProps extends Omit<DialogCardProps, 'onClose'> {
   open: boolean;
-  onClose: (open: boolean) => void;
+  onClose: (openState: false) => void;
 }
 
 const DialogContext = createContext(false);
