@@ -3,43 +3,24 @@ import React, {
   useState,
   useEffect,
   useRef,
-  useCallback,
   createContext,
-  forwardRef,
-  Fragment,
   useContext,
   Reducer,
   useReducer,
 } from 'react';
 import { createPortal } from 'react-dom';
 import FocusLock from 'react-focus-lock';
-import { RemoveScroll } from 'react-remove-scroll';
 import { useStyles } from 'sku/react-treat';
 import { hideOthers as ariaHideOthers } from 'aria-hidden';
 import assert from 'assert';
 import { Box } from '../Box/Box';
-import { ClearButton } from '../iconButtons/ClearButton/ClearButton';
-import { normalizeKey } from '../private/normalizeKey';
-import { Heading } from '../Heading/Heading';
-import { Stack } from '../Stack/Stack';
-import { Columns } from '../Columns/Columns';
-import { Column } from '../Column/Column';
-import { ContentBlock, ContentBlockProps } from '../ContentBlock/ContentBlock';
-import { Overlay } from '../private/Overlay/Overlay';
-import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import { externalGutter } from './DialogExternalGutter';
+import { DialogCard, DialogCardProps } from './DialogCard';
 import * as styleRefs from './Dialog.treat';
 
-export interface DialogProps {
-  id: string;
-  title: string;
-  children: ReactNode;
+export interface DialogProps extends Omit<DialogCardProps, 'onClose'> {
   open: boolean;
   onClose: (open: boolean) => void;
-  closeLabel?: string;
-  width?: ContentBlockProps['width'] | 'content';
-  description?: ReactNodeNoStrings;
-  illustration?: ReactNodeNoStrings;
 }
 
 const DialogContext = createContext(false);
@@ -80,56 +61,6 @@ const DialogPortal = ({ children }: DialogPortalProps) => {
   );
 };
 
-const dialogPadding = ['gutter', 'large'] as const;
-
-interface HeaderProps extends Pick<DialogProps, 'description'> {
-  title: string;
-  descriptionId: string;
-  center?: boolean;
-}
-const DialogHeader = forwardRef<HTMLElement, HeaderProps>(
-  ({ title, description, descriptionId, center }, ref) => {
-    const styles = useStyles(styleRefs);
-
-    return (
-      <Stack space="medium">
-        <Heading level="3" align={center ? 'center' : undefined}>
-          <Box
-            ref={ref}
-            component="span"
-            tabIndex={-1}
-            outline="none"
-            position="relative"
-            className={styles.heading}
-          >
-            {title}
-            <Overlay
-              boxShadow="outlineFocus"
-              borderRadius="standard"
-              transition="fast"
-              className={styles.heading}
-              onlyVisibleForKeyboardNavigation
-            />
-          </Box>
-        </Heading>
-        {description ? <Box id={descriptionId}>{description}</Box> : null}
-      </Stack>
-    );
-  },
-);
-
-const Container = ({
-  children,
-  width,
-}: {
-  children: ReactNode;
-  width: DialogProps['width'];
-}) =>
-  width !== 'content' ? (
-    <ContentBlock width={width}>{children}</ContentBlock>
-  ) : (
-    <Fragment>{children}</Fragment>
-  );
 // Actions
 const OPEN_DIALOG = 1;
 const CLOSE_DIALOG = 2;
@@ -197,8 +128,8 @@ export const Dialog = ({
   children,
   description,
   onClose,
-  width = 'small',
-  closeLabel = 'Close',
+  width,
+  closeLabel,
   illustration,
   title,
 }: DialogProps) => {
@@ -217,21 +148,11 @@ export const Dialog = ({
   const headingRef = useRef<HTMLElement>(null);
   const closeHandlerRef = useRef<DialogProps['onClose']>(onClose);
 
-  const descriptionId = `${id}_desc`;
-
   const initiateClose = () => {
     if (allowClose) {
       dispatch(CLOSE_DIALOG);
     }
   };
-
-  const handleEscape = useCallback((event) => {
-    const targetKey = normalizeKey(event);
-    if (targetKey === 'Escape') {
-      event.stopPropagation();
-      dispatch(CLOSE_DIALOG);
-    }
-  }, []);
 
   useEffect(() => {
     openRef.current = open;
@@ -320,73 +241,19 @@ export const Dialog = ({
               state === OPENING && styles.entrance,
             ]}
           >
-            <Container width={width}>
-              {/* DialogRef gets forwarded down to UL by RemoveScroll by `forwardProps`. */}
-              <RemoveScroll ref={dialogRef} forwardProps>
-                <Box
-                  role="dialog"
-                  aria-label={title} // Using aria-labelledby would announce the heading after the dialog content.
-                  aria-describedby={description ? descriptionId : undefined}
-                  aria-modal="true"
-                  onKeyDown={handleEscape}
-                  background="card"
-                  borderRadius="standard"
-                  overflow="auto"
-                  position="relative"
-                  boxShadow="large"
-                  width={width !== 'content' ? 'full' : undefined}
-                  padding={dialogPadding}
-                  className={styles.dialogContent}
-                >
-                  <Stack space="large">
-                    {illustration ? (
-                      <Stack space="medium" align="center">
-                        <Box paddingX="gutter">{illustration}</Box>
-                        <DialogHeader
-                          title={title}
-                          description={description}
-                          descriptionId={descriptionId}
-                          center={Boolean(illustration)}
-                          ref={headingRef}
-                        />
-                      </Stack>
-                    ) : (
-                      <Columns space={dialogPadding}>
-                        <Column>
-                          <DialogHeader
-                            title={title}
-                            description={description}
-                            descriptionId={descriptionId}
-                            center={Boolean(illustration)}
-                            ref={headingRef}
-                          />
-                        </Column>
-                        <Column width="content">
-                          <Box className={styles.closePlaceholder} />
-                        </Column>
-                      </Columns>
-                    )}
-                    <Fragment>{children}</Fragment>
-                  </Stack>
-
-                  <Box
-                    position="absolute"
-                    top={0}
-                    right={0}
-                    paddingTop={dialogPadding}
-                    paddingRight={dialogPadding}
-                  >
-                    <Box className={styles.closeOffset}>
-                      <ClearButton
-                        tone="neutral"
-                        label={closeLabel}
-                        onClick={initiateClose}
-                      />
-                    </Box>
-                  </Box>
-                </Box>
-              </RemoveScroll>
-            </Container>
+            <DialogCard
+              id={id}
+              description={description}
+              onClose={initiateClose}
+              width={width}
+              closeLabel={closeLabel}
+              illustration={illustration}
+              title={title}
+              headingRef={headingRef}
+              dialogRef={dialogRef}
+            >
+              {children}
+            </DialogCard>
           </Box>
         </FocusLock>
       ) : null}

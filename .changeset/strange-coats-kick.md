@@ -2,6 +2,11 @@
 'braid-design-system': minor
 ---
 
+---
+new:
+  - Dialog
+---
+
 Add `Dialog` component
 
 Follows the [WAI Aria Dialog (Modal) Pattern](https://www.w3.org/TR/wai-aria-practices-1.2/#dialog_modal).
