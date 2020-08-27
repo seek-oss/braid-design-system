@@ -29,7 +29,7 @@ const docs: ComponentDocs = {
         </TextLink>
       </Text>
       <Text>
-        The Dialog component provides a way to focus the users attention on a
+        The Dialog component provides a way to focus the user's attention on a
         specific subtask or flow within the context of another experience. In
         order to keep experiences simple, Dialogs{' '}
         <Strong>cannot be nested</Strong> inside one another.
