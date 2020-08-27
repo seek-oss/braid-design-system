@@ -371,7 +371,12 @@ const docs: ComponentDocs = {
           id="illustrated"
           title="Illustration test"
           illustration={
-            <Placeholder height={100} width={300} label="Illustration" />
+            <Placeholder
+              height={150}
+              width={150}
+              shape="round"
+              label="Illustration"
+            />
           }
           onClose={() => {}}
           scrollLock={false}
