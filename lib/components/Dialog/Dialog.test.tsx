@@ -57,6 +57,8 @@ function renderDialog() {
   };
 }
 
+const EXIT_TIMEOUT = 1500;
+
 describe('Dialog', () => {
   it('should not focus content when closed', () => {
     const { getByTestId } = renderDialog();
@@ -144,7 +146,9 @@ describe('Dialog', () => {
     userEvent.click(dialogOpenButton);
     fireEvent.keyDown(getByRole('dialog'), { keyCode: ESCAPE });
 
-    await waitForElementToBeRemoved(() => queryByRole('dialog'));
+    await waitForElementToBeRemoved(() => queryByRole('dialog'), {
+      timeout: EXIT_TIMEOUT,
+    });
     expect(queryByRole('dialog')).not.toBeInTheDocument();
   });
 
@@ -176,7 +180,9 @@ describe('Dialog', () => {
     const closeButton = getByLabelText(CLOSE_BUTTON_LABEL);
     userEvent.click(closeButton);
 
-    await waitForElementToBeRemoved(() => queryByRole('dialog'));
+    await waitForElementToBeRemoved(() => queryByRole('dialog'), {
+      timeout: EXIT_TIMEOUT,
+    });
     expect(closeHandler).toHaveBeenCalledTimes(1);
     expect(closeHandler).toHaveBeenCalledWith(false);
   });
