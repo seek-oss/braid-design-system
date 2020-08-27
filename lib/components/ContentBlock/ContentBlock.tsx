@@ -14,5 +14,9 @@ export const ContentBlock = ({
 }: ContentBlockProps) => {
   const styles = useStyles(styleRefs);
 
-  return <Box className={[styles.root, styles.width[width]]}>{children}</Box>;
+  return (
+    <Box width="full" className={[styles.root, styles.width[width]]}>
+      {children}
+    </Box>
+  );
 };

@@ -412,7 +412,7 @@ describe('Autosuggest', () => {
 
       userEvent.click(input);
 
-      await userEvent.type(input, 'app', { allAtOnce: true });
+      await userEvent.paste(input, 'app');
       expect(changeHandler).toHaveBeenNthCalledWith(1, { text: 'app' });
       changeHandler.mockClear();
 

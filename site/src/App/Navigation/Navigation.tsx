@@ -16,7 +16,7 @@ import {
   Hidden,
 } from '../../../../lib/components';
 import { useBraidTheme } from '../../../../lib/components/BraidProvider/BraidProvider';
-import { useIsolatedScroll } from '../../../../lib/components/Autosuggest/useIsolatedScroll';
+import { RemoveScroll } from 'react-remove-scroll';
 import { BoxProps } from '../../../../lib/components/Box/Box';
 import { SubNavigation } from '../SubNavigation/SubNavigation';
 import { useScrollLock } from '../useScrollLock/useScrollLock';
@@ -86,9 +86,6 @@ export const Navigation = ({ children }: NavigationProps) => {
 
   useScrollLock(isMenuOpen);
 
-  const menuRef = useRef<HTMLElement | null>(null);
-  useIsolatedScroll(menuRef.current);
-
   const { body: bodyBackground } = useBraidTheme().color.background;
 
   return (
@@ -101,24 +98,25 @@ export const Navigation = ({ children }: NavigationProps) => {
           />
         </FixedContentBlock>
 
-        <FixedContentBlock
-          ref={menuRef}
-          overflow="auto"
-          bottom={0}
-          paddingY="small"
-          paddingX={gutterSize}
-          paddingBottom="xxlarge"
-          width="full"
-          display={[isMenuOpen ? 'block' : 'none', 'block']}
-          zIndex="sticky"
-          background="body"
-          className={[
-            styles.subNavigationContainer,
-            isMenuOpen ? styles.isOpen : undefined,
-          ]}
-        >
-          <SubNavigation onSelect={() => setMenuOpen(false)} />
-        </FixedContentBlock>
+        <RemoveScroll enabled={isMenuOpen} forwardProps>
+          <FixedContentBlock
+            overflow="auto"
+            bottom={0}
+            paddingY="small"
+            paddingX={gutterSize}
+            paddingBottom="xxlarge"
+            width="full"
+            display={[isMenuOpen ? 'block' : 'none', 'block']}
+            zIndex="sticky"
+            background="body"
+            className={[
+              styles.subNavigationContainer,
+              isMenuOpen ? styles.isOpen : undefined,
+            ]}
+          >
+            <SubNavigation onSelect={() => setMenuOpen(false)} />
+          </FixedContentBlock>
+        </RemoveScroll>
 
         <Box
           background="card"
