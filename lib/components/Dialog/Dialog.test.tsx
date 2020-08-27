@@ -2,6 +2,7 @@ import '@testing-library/jest-dom/extend-expect';
 import React, { useState } from 'react';
 import {
   render,
+  screen,
   fireEvent,
   waitForElementToBeRemoved,
   waitFor,
@@ -56,6 +57,8 @@ function renderDialog() {
     closeHandler,
   };
 }
+
+const EXIT_TIMEOUT = 1500;
 
 describe('Dialog', () => {
   it('should not focus content when closed', () => {
@@ -144,9 +147,9 @@ describe('Dialog', () => {
     userEvent.click(dialogOpenButton);
     fireEvent.keyDown(getByRole('dialog'), { keyCode: ESCAPE });
 
-    await waitForElementToBeRemoved(() =>
-      queryByRole('dialog'),
-    ).catch(async () => waitForElementToBeRemoved(() => queryByRole('dialog')));
+    await waitForElementToBeRemoved(() => queryByRole('dialog'), {
+      timeout: EXIT_TIMEOUT,
+    });
     expect(queryByRole('dialog')).not.toBeInTheDocument();
   });
 
@@ -178,9 +181,9 @@ describe('Dialog', () => {
     const closeButton = getByLabelText(CLOSE_BUTTON_LABEL);
     userEvent.click(closeButton);
 
-    await waitForElementToBeRemoved(() =>
-      queryByRole('dialog'),
-    ).catch(async () => waitForElementToBeRemoved(() => queryByRole('dialog')));
+    await waitForElementToBeRemoved(() => queryByRole('dialog'), {
+      timeout: EXIT_TIMEOUT,
+    });
     expect(closeHandler).toHaveBeenCalledTimes(1);
     expect(closeHandler).toHaveBeenCalledWith(false);
   });
