@@ -20,7 +20,7 @@ export const dialogContainer = style({
 
 export const dialogContent = [
   style({
-    pointerEvents: 'auto',
+    pointerEvents: 'all',
   }),
   style(({ utils, space, grid }) =>
     utils.responsiveStyle({
