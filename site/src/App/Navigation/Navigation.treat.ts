@@ -46,10 +46,10 @@ const hideOnMobileWhenClosed = style(({ breakpoint }) => ({
   },
 }));
 
-const subNavOffsetAboveMobile = style(({ utils }) =>
+const subNavOffsetAboveMobile = style(({ utils, grid, space }) =>
   utils.responsiveStyle({
     tablet: {
-      marginLeft: menuWidth,
+      marginLeft: menuWidth - grid * space[gutterSize],
     },
   }),
 );

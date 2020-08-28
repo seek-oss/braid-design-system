@@ -90,72 +90,67 @@ export const Navigation = ({ children }: NavigationProps) => {
 
   return (
     <ContentBlock width="large">
-      <Box paddingRight={['none', gutterSize]}>
-        <FixedContentBlock top={0} left={0} right={0}>
-          <Header
-            menuOpen={isMenuOpen}
-            menuClick={() => setMenuOpen(!isMenuOpen)}
-          />
-        </FixedContentBlock>
+      <Box position="fixed" top={0}>
+        <Header
+          menuOpen={isMenuOpen}
+          menuClick={() => setMenuOpen(!isMenuOpen)}
+        />
+      </Box>
 
-        <RemoveScroll enabled={isMenuOpen} forwardProps>
-          <FixedContentBlock
-            overflow="auto"
-            bottom={0}
-            paddingY="small"
-            paddingX={gutterSize}
-            paddingBottom="xxlarge"
-            width="full"
-            display={[isMenuOpen ? 'block' : 'none', 'block']}
-            zIndex="sticky"
-            background="body"
-            className={[
-              styles.subNavigationContainer,
-              isMenuOpen ? styles.isOpen : undefined,
-            ]}
-          >
-            <SubNavigation onSelect={() => setMenuOpen(false)} />
-          </FixedContentBlock>
-        </RemoveScroll>
-
-        <Box
-          background="card"
-          position="relative"
-          paddingY={['small', 'xxsmall']}
-          paddingX={['medium', 'large', 'xlarge']}
-          marginBottom="xxlarge"
-          transition="fast"
-          pointerEvents={isMenuOpen ? 'none' : undefined}
-          className={[
-            styles.pageContent,
-            isMenuOpen ? styles.isOpen : undefined,
-          ]}
-          style={{
-            background: bodyBackground,
-          }}
-        >
-          {children}
-        </Box>
-
+      <RemoveScroll enabled={isMenuOpen} forwardProps>
         <FixedContentBlock
-          top={0}
-          left={0}
-          right={0}
-          boxShadow="small"
-          display={['block', 'none']}
-          pointerEvents={showStickyHeader ? undefined : 'none'}
+          overflow="auto"
+          bottom={0}
+          paddingY="small"
+          paddingX={gutterSize}
+          paddingBottom="xxlarge"
+          width="full"
+          display={[isMenuOpen ? 'block' : 'none', 'block']}
           zIndex="sticky"
           background="body"
-          opacity={showStickyHeader ? undefined : 0}
-          tabIndex={-1}
-          aria-hidden={true}
+          className={[
+            styles.subNavigationContainer,
+            isMenuOpen ? styles.isOpen : undefined,
+          ]}
         >
-          <Header
-            menuOpen={isMenuOpen}
-            menuClick={() => setMenuOpen(!isMenuOpen)}
-          />
+          <SubNavigation onSelect={() => setMenuOpen(false)} />
         </FixedContentBlock>
+      </RemoveScroll>
+
+      <Box
+        background="card"
+        position="relative"
+        paddingY={['small', 'xxsmall']}
+        paddingX={[gutterSize, gutterSize, 'xxlarge']}
+        marginBottom="xxlarge"
+        transition="fast"
+        pointerEvents={isMenuOpen ? 'none' : undefined}
+        className={[styles.pageContent, isMenuOpen ? styles.isOpen : undefined]}
+        style={{
+          background: bodyBackground,
+        }}
+      >
+        {children}
       </Box>
+
+      <FixedContentBlock
+        top={0}
+        left={0}
+        right={0}
+        boxShadow="small"
+        display={['block', 'none']}
+        pointerEvents={showStickyHeader ? undefined : 'none'}
+        zIndex="sticky"
+        background="body"
+        opacity={showStickyHeader ? undefined : 0}
+        tabIndex={-1}
+        aria-hidden={true}
+      >
+        <Header
+          menuOpen={isMenuOpen}
+          menuClick={() => setMenuOpen(!isMenuOpen)}
+        />
+      </FixedContentBlock>
     </ContentBlock>
   );
 };
