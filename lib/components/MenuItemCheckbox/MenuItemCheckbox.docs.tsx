@@ -31,7 +31,7 @@ const docs: ComponentDocs = {
 
         return (
           <Box style={{ paddingLeft: 200 }}>
-            <OverflowMenu label="Options">
+            <OverflowMenu label="Checklist">
               <MenuItemCheckbox checked={checked1} onChange={setChecked1}>
                 Checkbox
               </MenuItemCheckbox>
