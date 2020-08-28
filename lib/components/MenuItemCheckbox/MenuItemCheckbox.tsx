@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
 import { useStyles } from 'sku/react-treat';
-import { Box, IconTick } from '..';
+import { Box } from '../Box/Box';
+import { IconTick } from '../icons/IconTick/IconTick';
 import { MenuItemProps } from '../MenuItem/MenuItem';
 import { useMenuItem } from '../MenuItem/useMenuItem';
 import * as styleRefs from './MenuItemCheckbox.treat';
