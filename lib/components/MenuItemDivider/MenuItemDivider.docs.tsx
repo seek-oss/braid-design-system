@@ -6,7 +6,6 @@ import {
   MenuItem,
   MenuItemLink,
   MenuItemCheckbox,
-  Stack,
   Text,
   TextLink,
   Box,
@@ -16,13 +15,11 @@ const docs: ComponentDocs = {
   category: 'Content',
   screenshotWidths: [],
   description: (
-    <Stack space="large">
-      <Text>
-        Used to separate groups within menu components, e.g.{' '}
-        <TextLink href="/components/OverflowMenu">OverflowMenu</TextLink>,{' '}
-        <TextLink href="/components/MenuRenderer">MenuRenderer</TextLink>.
-      </Text>
-    </Stack>
+    <Text>
+      Used to separate groups within menu components, e.g.{' '}
+      <TextLink href="/components/OverflowMenu">OverflowMenu</TextLink>,{' '}
+      <TextLink href="/components/MenuRenderer">MenuRenderer</TextLink>.
+    </Text>
   ),
   examples: [
     {

@@ -43,7 +43,7 @@ const docs: ComponentDocs = {
           MenuItemCheckbox
         </TextLink>{' '}
         or{' '}
-        <TextLink href="/components/MenuItemDivider">MenuItemDivider</TextLink>,{' '}
+        <TextLink href="/components/MenuItemDivider">MenuItemDivider</TextLink>{' '}
         elements.
       </Text>
     </Stack>

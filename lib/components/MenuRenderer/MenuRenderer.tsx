@@ -40,6 +40,8 @@ export const MenuRendererItemContext = createContext<MenuRendererItemContextValu
   null,
 );
 
+export const menuPadding = 'xxsmall';
+
 interface TriggerProps {
   'aria-haspopup': boolean;
   'aria-expanded': boolean;
@@ -295,7 +297,7 @@ export const MenuRenderer = ({
             opacity={!open ? 0 : undefined}
             className={!open && styles.menuIsClosed}
           >
-            <Box padding="xxsmall">
+            <Box padding={menuPadding}>
               {items.map((item, i) => {
                 if (isDivider(item)) {
                   dividerCount++;
