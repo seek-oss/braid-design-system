@@ -90,12 +90,12 @@ export const Navigation = ({ children }: NavigationProps) => {
 
   return (
     <ContentBlock width="large">
-      <FixedContentBlock top={0} left={0} right={0}>
+      <Box position="fixed" top={0}>
         <Header
           menuOpen={isMenuOpen}
           menuClick={() => setMenuOpen(!isMenuOpen)}
         />
-      </FixedContentBlock>
+      </Box>
 
       <RemoveScroll enabled={isMenuOpen} forwardProps>
         <FixedContentBlock
