@@ -2214,6 +2214,28 @@ Object {
 }
 `;
 
+exports[`Dialog 1`] = `
+Object {
+  exportType: component,
+  props: {
+    children: ReactNode
+    closeLabel?: string
+    description?: ReactNodeNoStrings
+    id: string
+    illustration?: ReactNodeNoStrings
+    onClose: (openState: false) => void
+    open: boolean
+    title: string
+    width?: 
+        | "content"
+        | "large"
+        | "medium"
+        | "small"
+        | "xsmall"
+},
+}
+`;
+
 exports[`Disclosure 1`] = `
 Object {
   exportType: component,

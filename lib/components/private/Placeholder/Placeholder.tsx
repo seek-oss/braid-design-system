@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { useStyles } from 'sku/react-treat';
 import { BraidProvider, Box, Text } from '../../';
 import { useBackgroundLightness } from '../../Box/BackgroundContext';
@@ -9,7 +9,7 @@ import * as styleRefs from './Placeholder.treat';
 export interface PlaceholderProps {
   height: string | number;
   width?: string | number;
-  label?: string;
+  label?: ReactNode;
   shape?: 'rectangle' | 'round';
 }
 

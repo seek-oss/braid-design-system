@@ -1,5 +1,54 @@
 # braid-design-system
 
+## 29.4.0
+
+### Minor Changes
+
+- **Badge:** Add `bleedY` prop ([#743](https://github.com/seek-oss/braid-design-system/pull/743))
+
+  You can now choose to allow the badge’s background colour to bleed out into the surrounding layout, making it easier to align with other elements.
+
+  For example, we can align a badge to a [Heading](https://seek-oss.github.io/braid-design-system/components/Heading) element using an [Inline](https://seek-oss.github.io/braid-design-system/components/Inline), even though the badge is actually taller than the heading. If we didn’t use the `bleedY` prop in this case, the badge would introduce unwanted space above and below the heading.
+
+  ```jsx
+  <Inline alignY="center" space="xsmall">
+    <Heading level="4">Heading</Heading>
+    <Badge bleedY tone="positive">
+      New
+    </Badge>
+  </Inline>
+  ```
+
+- Add `Dialog` component ([#746](https://github.com/seek-oss/braid-design-system/pull/746))
+
+  Follows the [WAI Aria Dialog (Modal) Pattern](https://www.w3.org/TR/wai-aria-practices-1.2/#dialog_modal).
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Fragment>
+    <Actions>
+      <Button onClick={() => setOpen(true)}>Open dialog</Button>
+    </Actions>
+
+    <Dialog title="Dialog Example" id={id} open={open} onClose={setOpen}>
+      <Placeholder height={100} width="100%" />
+    </Dialog>
+  </Fragment>
+  ```
+
+  See [the documentation](https://seek-oss.github.io/braid-design-system/components/Dialog) for an exhaustive list of features.
+
+### Patch Changes
+
+- **List, BulletList:** Ensure list items are full width ([#745](https://github.com/seek-oss/braid-design-system/pull/745))
+
+  Fixes an issue where list content was unable to stretch to the edge of its container. To allow this, we now set the list item container itself to be full width so that content is no longer constrained.
+
+- **ContentBlock:** Ensure block is full width ([#746](https://github.com/seek-oss/braid-design-system/pull/746))
+
+  Fixes an issue where `ContentBlock`s inside of flex containers would not grow to their defined `max-width`.
+
 ## 29.3.0
 
 ### Minor Changes

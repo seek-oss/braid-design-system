@@ -16,7 +16,7 @@ import {
   Hidden,
 } from '../../../../lib/components';
 import { useBraidTheme } from '../../../../lib/components/BraidProvider/BraidProvider';
-import { useIsolatedScroll } from '../../../../lib/components/Autosuggest/useIsolatedScroll';
+import { RemoveScroll } from 'react-remove-scroll';
 import { BoxProps } from '../../../../lib/components/Box/Box';
 import { SubNavigation } from '../SubNavigation/SubNavigation';
 import { useScrollLock } from '../useScrollLock/useScrollLock';
@@ -86,23 +86,19 @@ export const Navigation = ({ children }: NavigationProps) => {
 
   useScrollLock(isMenuOpen);
 
-  const menuRef = useRef<HTMLElement | null>(null);
-  useIsolatedScroll(menuRef.current);
-
   const { body: bodyBackground } = useBraidTheme().color.background;
 
   return (
     <ContentBlock width="large">
-      <Box paddingRight={['none', gutterSize]}>
-        <FixedContentBlock top={0} left={0} right={0}>
-          <Header
-            menuOpen={isMenuOpen}
-            menuClick={() => setMenuOpen(!isMenuOpen)}
-          />
-        </FixedContentBlock>
+      <Box position="fixed" top={0}>
+        <Header
+          menuOpen={isMenuOpen}
+          menuClick={() => setMenuOpen(!isMenuOpen)}
+        />
+      </Box>
 
+      <RemoveScroll enabled={isMenuOpen} forwardProps>
         <FixedContentBlock
-          ref={menuRef}
           overflow="auto"
           bottom={0}
           paddingY="small"
@@ -119,45 +115,42 @@ export const Navigation = ({ children }: NavigationProps) => {
         >
           <SubNavigation onSelect={() => setMenuOpen(false)} />
         </FixedContentBlock>
+      </RemoveScroll>
 
-        <Box
-          background="card"
-          position="relative"
-          paddingY={['small', 'xxsmall']}
-          paddingX={['medium', 'large', 'xlarge']}
-          marginBottom="xxlarge"
-          transition="fast"
-          pointerEvents={isMenuOpen ? 'none' : undefined}
-          className={[
-            styles.pageContent,
-            isMenuOpen ? styles.isOpen : undefined,
-          ]}
-          style={{
-            background: bodyBackground,
-          }}
-        >
-          {children}
-        </Box>
-
-        <FixedContentBlock
-          top={0}
-          left={0}
-          right={0}
-          boxShadow="small"
-          display={['block', 'none']}
-          pointerEvents={showStickyHeader ? undefined : 'none'}
-          zIndex="sticky"
-          background="body"
-          opacity={showStickyHeader ? undefined : 0}
-          tabIndex={-1}
-          aria-hidden={true}
-        >
-          <Header
-            menuOpen={isMenuOpen}
-            menuClick={() => setMenuOpen(!isMenuOpen)}
-          />
-        </FixedContentBlock>
+      <Box
+        background="card"
+        position="relative"
+        paddingY={['small', 'xxsmall']}
+        paddingX={[gutterSize, gutterSize, 'xxlarge']}
+        marginBottom="xxlarge"
+        transition="fast"
+        pointerEvents={isMenuOpen ? 'none' : undefined}
+        className={[styles.pageContent, isMenuOpen ? styles.isOpen : undefined]}
+        style={{
+          background: bodyBackground,
+        }}
+      >
+        {children}
       </Box>
+
+      <FixedContentBlock
+        top={0}
+        left={0}
+        right={0}
+        boxShadow="small"
+        display={['block', 'none']}
+        pointerEvents={showStickyHeader ? undefined : 'none'}
+        zIndex="sticky"
+        background="body"
+        opacity={showStickyHeader ? undefined : 0}
+        tabIndex={-1}
+        aria-hidden={true}
+      >
+        <Header
+          menuOpen={isMenuOpen}
+          menuClick={() => setMenuOpen(!isMenuOpen)}
+        />
+      </FixedContentBlock>
     </ContentBlock>
   );
 };

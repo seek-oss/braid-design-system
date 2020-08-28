@@ -31,6 +31,7 @@ export { Checkbox } from './Checkbox/Checkbox';
 export { Column } from './Column/Column';
 export { Columns } from './Columns/Columns';
 export { ContentBlock } from './ContentBlock/ContentBlock';
+export { Dialog } from './Dialog/Dialog';
 export { Disclosure } from './Disclosure/Disclosure';
 export { Divider } from './Divider/Divider';
 export { Dropdown } from './Dropdown/Dropdown';
