@@ -10,7 +10,7 @@ export const MenuItemDivider = () => {
   );
 
   return (
-    <Box paddingX="xxsmall" paddingY="xxsmall">
+    <Box padding="xxsmall">
       <Divider />
     </Box>
   );

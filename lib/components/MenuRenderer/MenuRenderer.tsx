@@ -28,7 +28,7 @@ import buildDataAttributes, {
 } from '../private/buildDataAttributes';
 import * as styleRefs from './MenuRenderer.treat';
 
-interface MenuItemContextValues {
+interface MenuRendererItemContextValues {
   isHighlighted: boolean;
   index: number;
   dispatch: (action: Action) => void;
@@ -36,7 +36,7 @@ interface MenuItemContextValues {
 }
 
 export const MenuRendererContext = createContext(false);
-export const MenuItemContext = createContext<MenuItemContextValues | null>(
+export const MenuRendererItemContext = createContext<MenuRendererItemContextValues | null>(
   null,
 );
 
@@ -123,7 +123,7 @@ export const MenuRenderer = ({
           item.type === MenuItemLink ||
           item.type === MenuItemDivider),
     ),
-    'All child nodes within a menu component must be a MenuItem, MenuItemLink, MenuItemCheckbox or MenuItemDivider: https://seek-oss.github.io/braid-design-system/components/MenuItem',
+    'All child nodes within a menu component must be a MenuItem, MenuItemLink, MenuItemCheckbox or MenuItemDivider: https://seek-oss.github.io/braid-design-system/components/MenuRenderer',
   );
 
   const [{ open, highlightIndex }, dispatch] = useReducer(
@@ -156,7 +156,7 @@ export const MenuRenderer = ({
           return {
             ...state,
             ...('formElement' in action && action.formElement
-              ? null
+              ? null // Don't close the menu if the user clicked a "form element" item, e.g. checkbox
               : { open: false, highlightIndex: CLOSED_INDEX }),
           };
         }
@@ -305,7 +305,7 @@ export const MenuRenderer = ({
                 const menuItemIndex = i - dividerCount;
 
                 return (
-                  <MenuItemContext.Provider
+                  <MenuRendererItemContext.Provider
                     key={menuItemIndex}
                     value={{
                       isHighlighted: menuItemIndex === highlightIndex,
@@ -315,7 +315,7 @@ export const MenuRenderer = ({
                     }}
                   >
                     {item}
-                  </MenuItemContext.Provider>
+                  </MenuRendererItemContext.Provider>
                 );
               })}
             </Box>

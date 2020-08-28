@@ -50,7 +50,7 @@ const docs: ComponentDocs = {
       label: 'Standard usage',
       background: 'card',
       Example: ({ handler }) => (
-        <Box style={{ paddingLeft: 200 }}>
+        <Box paddingLeft="xxlarge">
           <OverflowMenu label="Options">
             <MenuItem onClick={handler}>Button</MenuItem>
             <MenuItemLink onClick={handler} href="#">

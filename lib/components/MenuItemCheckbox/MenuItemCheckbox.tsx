@@ -1,7 +1,6 @@
 import React, { ReactNode } from 'react';
 import { useStyles } from 'sku/react-treat';
 import { Box, IconTick } from '..';
-import { BackgroundProvider } from '../Box/BackgroundContext';
 import { MenuItemProps } from '../MenuItem/MenuItem';
 import { useMenuItem } from '../MenuItem/useMenuItem';
 import * as styleRefs from './MenuItemCheckbox.treat';
@@ -34,45 +33,24 @@ export const MenuItemCheckbox = ({
       display="flex"
     >
       <Box
-        height="full"
-        paddingRight="xsmall"
-        display="flex"
-        alignItems="center"
+        borderRadius="standard"
+        boxShadow="borderField"
+        position="relative"
+        background="card"
+        marginRight="xsmall"
+        className={styles.checkboxBorder}
       >
         <Box
+          position="absolute"
+          width="full"
+          height="full"
+          background="formAccent"
           borderRadius="standard"
-          boxShadow="borderField"
-          position="relative"
-          background="card"
-          className={styles.checkboxBorder}
+          transition="fast"
+          opacity={checked ? undefined : 0}
+          className={styles.checkboxPadding}
         >
-          <Box
-            opacity={checked ? undefined : 0}
-            transition="fast"
-            width="full"
-            height="full"
-            display="flex"
-            alignItems="center"
-            justifyContent="center"
-            position="relative"
-            zIndex={1}
-            className={styles.checkboxPadding}
-          >
-            <BackgroundProvider value="formAccent">
-              <IconTick size="fill" />
-            </BackgroundProvider>
-          </Box>
-          <Box
-            position="absolute"
-            top={0}
-            bottom={0}
-            left={0}
-            right={0}
-            background="formAccent"
-            borderRadius="standard"
-            opacity={checked ? undefined : 0}
-            transition="fast"
-          />
+          <IconTick size="fill" />
         </Box>
       </Box>
       <MenuItemChildren>{children}</MenuItemChildren>

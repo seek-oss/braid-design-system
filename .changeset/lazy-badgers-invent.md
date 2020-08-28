@@ -2,6 +2,11 @@
 'braid-design-system': minor
 ---
 
+---
+new:
+  - MenuItemCheckbox
+---
+
 Add **MenuItemCheckbox** component
 
 You can now render checkboxes within [OverflowMenu](https://seek-oss.github.io/braid-design-system/components/OverflowMenu)/[MenuRenderer](https://seek-oss.github.io/braid-design-system/components/MenuRenderer) elements.
