@@ -1,9 +1,9 @@
 import React, { ReactNode } from 'react';
 import { useStyles } from 'sku/react-treat';
-import { Box, IconTick } from '../';
+import { Box, IconTick } from '..';
 import { BackgroundProvider } from '../Box/BackgroundContext';
-import { MenuItemProps } from './MenuItem';
-import { useMenuItem } from './useMenuItem';
+import { MenuItemProps } from '../MenuItem/MenuItem';
+import { useMenuItem } from '../MenuItem/useMenuItem';
 import * as styleRefs from './MenuItemCheckbox.treat';
 
 interface MenuItemCheckboxProps extends Omit<MenuItemProps, 'onClick'> {
@@ -43,8 +43,8 @@ export const MenuItemCheckbox = ({
           borderRadius="standard"
           boxShadow="borderField"
           position="relative"
-          className={styles.checkboxBorder}
           background="card"
+          className={styles.checkboxBorder}
         >
           <Box
             opacity={checked ? undefined : 0}
@@ -54,9 +54,9 @@ export const MenuItemCheckbox = ({
             display="flex"
             alignItems="center"
             justifyContent="center"
-            style={{ padding: 2 }}
             position="relative"
             zIndex={1}
+            className={styles.checkboxPadding}
           >
             <BackgroundProvider value="formAccent">
               <IconTick size="fill" />
@@ -75,9 +75,7 @@ export const MenuItemCheckbox = ({
           />
         </Box>
       </Box>
-      <Box paddingRight="xsmall">
-        <MenuItemChildren>{children}</MenuItemChildren>
-      </Box>
+      <MenuItemChildren>{children}</MenuItemChildren>
     </Box>
   );
 };

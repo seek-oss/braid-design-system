@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom/extend-expect';
-import React from 'react';
+import React, { useState } from 'react';
 import {
   render,
   cleanup,
@@ -51,26 +51,36 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
     const closeHandler = jest.fn();
     const menuItemHandler = jest.fn();
 
-    const TestCase = () => (
-      <BraidTestProvider>
-        <Component onOpen={openHandler} onClose={closeHandler}>
-          <MenuItem onClick={() => menuItemHandler('MenuItem')}>
-            MenuItem
-          </MenuItem>
-          <MenuItemDivider />
-          <MenuItemLink
-            href="#"
-            onClick={() => menuItemHandler('MenuItemLink')}
-          >
-            MenuItemLink
-          </MenuItemLink>
-          <MenuItemDivider />
-          <MenuItemCheckbox checked={false} onChange={() => {}}>
-            MenuItemCheckbox
-          </MenuItemCheckbox>
-        </Component>
-      </BraidTestProvider>
-    );
+    const TestCase = () => {
+      const [checked, setChecked] = useState(false);
+
+      return (
+        <BraidTestProvider>
+          <Component onOpen={openHandler} onClose={closeHandler}>
+            <MenuItem onClick={() => menuItemHandler('MenuItem')}>
+              MenuItem
+            </MenuItem>
+            <MenuItemDivider />
+            <MenuItemLink
+              href="#"
+              onClick={() => menuItemHandler('MenuItemLink')}
+            >
+              MenuItemLink
+            </MenuItemLink>
+            <MenuItemDivider />
+            <MenuItemCheckbox
+              checked={checked}
+              onChange={(value) => {
+                setChecked(value);
+                menuItemHandler('MenuItemCheckbox');
+              }}
+            >
+              MenuItemCheckbox
+            </MenuItemCheckbox>
+          </Component>
+        </BraidTestProvider>
+      );
+    };
 
     const { getAllByRole } = render(<TestCase />);
 
@@ -190,7 +200,7 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
         expect(menuButton).toHaveFocus();
       });
 
-      it('should trigger the click handler on a MenuItemLink', () => {
+      it('should toggle the state on a MenuItemCheckbox', () => {
         const {
           getAllByRole,
           openHandler,
@@ -204,15 +214,19 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
         openHandler.mockClear(); // Clear initial open invocation, to allow later negative assertion
 
         expect(isVisible(menu)).toBe(true);
-        // `userEvent` is clashing with state update from the `onMouseEnter` handler
-        // on menu item. Need to use `fireEvent`.
-        fireEvent.click(menuItems[1]);
+        const menuItemCheckbox = menuItems[2];
 
-        expect(isVisible(menu)).toBe(false);
+        expect(menuItemCheckbox.getAttribute('aria-checked')).toBe('false');
+
+        userEvent.click(menuItemCheckbox);
+
+        expect(menuItemCheckbox.getAttribute('aria-checked')).toBe('true');
+
+        expect(isVisible(menu)).toBe(true);
         expect(openHandler).not.toHaveBeenCalled();
-        expect(closeHandler).toHaveBeenCalledTimes(1);
-        expect(menuItemHandler).toHaveBeenNthCalledWith(1, 'MenuItemLink');
-        expect(menuButton).toHaveFocus();
+        expect(closeHandler).not.toHaveBeenCalled();
+        expect(menuItemHandler).toHaveBeenNthCalledWith(1, 'MenuItemCheckbox');
+        expect(menuItemCheckbox).toHaveFocus();
       });
     });
 
@@ -453,6 +467,62 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
         expect(closeHandler).toHaveBeenCalledTimes(1);
         expect(menuItemHandler).toHaveBeenNthCalledWith(1, 'MenuItemLink');
         expect(menuButton).toHaveFocus();
+      });
+
+      it('should toggle the state on MenuItemCheckbox when selecting it with enter', () => {
+        const { getAllByRole, closeHandler, menuItemHandler } = renderMenu();
+
+        const { menu, menuButton } = getElements({ getAllByRole });
+
+        // Open menu
+        fireEvent.keyUp(menuButton, { keyCode: ENTER });
+        const firstDown = getElements({ getAllByRole });
+        const firstMenuItem = firstDown.menuItems[0];
+
+        // Navigate down
+        fireEvent.keyUp(firstMenuItem, { keyCode: ARROW_DOWN });
+        fireEvent.keyUp(firstMenuItem, { keyCode: ARROW_DOWN });
+        const thirdDown = getElements({ getAllByRole });
+        const thirdMenuItem = thirdDown.menuItems[2];
+
+        expect(thirdMenuItem.getAttribute('aria-checked')).toBe('false');
+
+        // Action the item
+        fireEvent.keyUp(thirdMenuItem, { keyCode: ENTER });
+
+        expect(thirdMenuItem.getAttribute('aria-checked')).toBe('true');
+
+        expect(isVisible(menu)).toBe(true);
+        expect(closeHandler).toHaveBeenCalledTimes(0);
+        expect(menuItemHandler).toHaveBeenNthCalledWith(1, 'MenuItemCheckbox');
+      });
+
+      it('should toggle the state on MenuItemCheckbox when selecting it with space', () => {
+        const { getAllByRole, closeHandler, menuItemHandler } = renderMenu();
+
+        const { menu, menuButton } = getElements({ getAllByRole });
+
+        // Open menu
+        fireEvent.keyUp(menuButton, { keyCode: ENTER });
+        const firstDown = getElements({ getAllByRole });
+        const firstMenuItem = firstDown.menuItems[0];
+
+        // Navigate down
+        fireEvent.keyUp(firstMenuItem, { keyCode: ARROW_DOWN });
+        fireEvent.keyUp(firstMenuItem, { keyCode: ARROW_DOWN });
+        const thirdDown = getElements({ getAllByRole });
+        const thirdMenuItem = thirdDown.menuItems[2];
+
+        expect(thirdMenuItem.getAttribute('aria-checked')).toBe('false');
+
+        // Action the item
+        fireEvent.keyUp(thirdMenuItem, { keyCode: SPACE });
+
+        expect(thirdMenuItem.getAttribute('aria-checked')).toBe('true');
+
+        expect(isVisible(menu)).toBe(true);
+        expect(closeHandler).toHaveBeenCalledTimes(0);
+        expect(menuItemHandler).toHaveBeenNthCalledWith(1, 'MenuItemCheckbox');
       });
     });
   });

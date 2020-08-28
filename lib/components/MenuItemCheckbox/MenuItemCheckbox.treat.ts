@@ -1,5 +1,7 @@
 import { style } from 'sku/treat';
 
+export const checkboxPadding = style({ padding: 2 });
+
 export const checkboxBorder = style((theme) => {
   const standardText = theme.typography.text.standard;
 

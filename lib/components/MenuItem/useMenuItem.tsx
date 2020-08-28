@@ -10,7 +10,7 @@ import { useStyles } from 'sku/react-treat';
 import { Box, Text } from '../';
 import { useTouchableSpace } from '../../hooks/typography';
 import { normalizeKey } from '../private/normalizeKey';
-import { MenuContext } from '../MenuRenderer/MenuRenderer';
+import { MenuItemContext } from '../MenuRenderer/MenuRenderer';
 import { actionTypes, Action } from '../MenuRenderer/MenuRenderer.actions';
 import buildDataAttributes, {
   DataAttributeMap,
@@ -44,18 +44,18 @@ export function useMenuItem<MenuItemElement extends HTMLElement>({
   data,
 }: UseMenuItemProps) {
   const styles = useStyles(styleRefs);
-  const menuContext = useContext(MenuContext);
+  const menuItemContext = useContext(MenuItemContext);
 
   assert(
-    menuContext !== null,
+    menuItemContext !== null,
     `${displayName} must be rendered as an immediate child of a menu. See the documentation for correct usage: https://seek-oss.github.io/braid-design-system/components/MenuItem`,
   );
 
-  if (menuContext === null) {
+  if (menuItemContext === null) {
     throw new Error(`${displayName} element rendered outside menu context`);
   }
 
-  const { isHighlighted, index, dispatch, focusTrigger } = menuContext;
+  const { isHighlighted, index, dispatch, focusTrigger } = menuItemContext;
   const menuItemRef = useRef<MenuItemElement>(null);
 
   useEffect(() => {

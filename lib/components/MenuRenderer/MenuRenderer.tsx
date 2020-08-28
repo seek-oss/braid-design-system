@@ -28,14 +28,17 @@ import buildDataAttributes, {
 } from '../private/buildDataAttributes';
 import * as styleRefs from './MenuRenderer.treat';
 
-interface MenuContextValues {
+interface MenuItemContextValues {
   isHighlighted: boolean;
   index: number;
   dispatch: (action: Action) => void;
   focusTrigger: () => void;
 }
 
-export const MenuContext = createContext<MenuContextValues | null>(null);
+export const MenuRendererContext = createContext(false);
+export const MenuItemContext = createContext<MenuItemContextValues | null>(
+  null,
+);
 
 interface TriggerProps {
   'aria-haspopup': boolean;
@@ -270,73 +273,75 @@ export const MenuRenderer = ({
   let dividerCount = 0;
 
   return (
-    <Box className={styles.root} {...buildDataAttributes(data)}>
-      <Box display="inlineBlock" position="relative">
-        {trigger(triggerProps, { open })}
+    <MenuRendererContext.Provider value={true}>
+      <Box className={styles.root} {...buildDataAttributes(data)}>
+        <Box display="inlineBlock" position="relative">
+          {trigger(triggerProps, { open })}
 
-        <Box
-          role="menu"
-          position="absolute"
-          zIndex="dropdown"
-          onMouseLeave={() => {
-            dispatch({ type: MENU_MOUSE_LEAVE });
-            focusTrigger();
-          }}
-          boxShadow="medium"
-          borderRadius="standard"
-          background="card"
-          marginTop={offsetSpace}
-          transition="fast"
-          right={align === 'right' ? 0 : undefined}
-          opacity={!open ? 0 : undefined}
-          className={!open && styles.menuIsClosed}
-        >
-          <Box padding="xxsmall">
-            {items.map((item, i) => {
-              if (isDivider(item)) {
-                dividerCount++;
-                return item;
-              }
-
-              const menuItemIndex = i - dividerCount;
-
-              return (
-                <MenuContext.Provider
-                  key={menuItemIndex}
-                  value={{
-                    isHighlighted: menuItemIndex === highlightIndex,
-                    index: menuItemIndex,
-                    dispatch,
-                    focusTrigger,
-                  }}
-                >
-                  {item}
-                </MenuContext.Provider>
-              );
-            })}
-          </Box>
-          <Overlay
-            boxShadow="borderStandard"
+          <Box
+            role="menu"
+            position="absolute"
+            zIndex="dropdown"
+            onMouseLeave={() => {
+              dispatch({ type: MENU_MOUSE_LEAVE });
+              focusTrigger();
+            }}
+            boxShadow="medium"
             borderRadius="standard"
-            className={styles.showOverlay}
-          />
-        </Box>
-      </Box>
+            background="card"
+            marginTop={offsetSpace}
+            transition="fast"
+            right={align === 'right' ? 0 : undefined}
+            opacity={!open ? 0 : undefined}
+            className={!open && styles.menuIsClosed}
+          >
+            <Box padding="xxsmall">
+              {items.map((item, i) => {
+                if (isDivider(item)) {
+                  dividerCount++;
+                  return item;
+                }
 
-      {open ? (
-        <Box
-          onClick={(event) => {
-            event.stopPropagation();
-            event.preventDefault();
-            dispatch({ type: BACKDROP_CLICK });
-          }}
-          position="fixed"
-          zIndex="dropdownBackdrop"
-          top={0}
-          left={0}
-          className={styles.backdrop}
-        />
-      ) : null}
-    </Box>
+                const menuItemIndex = i - dividerCount;
+
+                return (
+                  <MenuItemContext.Provider
+                    key={menuItemIndex}
+                    value={{
+                      isHighlighted: menuItemIndex === highlightIndex,
+                      index: menuItemIndex,
+                      dispatch,
+                      focusTrigger,
+                    }}
+                  >
+                    {item}
+                  </MenuItemContext.Provider>
+                );
+              })}
+            </Box>
+            <Overlay
+              boxShadow="borderStandard"
+              borderRadius="standard"
+              className={styles.showOverlay}
+            />
+          </Box>
+        </Box>
+
+        {open ? (
+          <Box
+            onClick={(event) => {
+              event.stopPropagation();
+              event.preventDefault();
+              dispatch({ type: BACKDROP_CLICK });
+            }}
+            position="fixed"
+            zIndex="dropdownBackdrop"
+            top={0}
+            left={0}
+            className={styles.backdrop}
+          />
+        ) : null}
+      </Box>
+    </MenuRendererContext.Provider>
   );
 };
