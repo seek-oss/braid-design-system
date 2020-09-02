@@ -8,11 +8,13 @@ const indicators = [...Array(3)];
 
 interface LoaderProps {
   size?: keyof typeof styleRefs.rootSize;
+  'aria-label'?: string;
   delayVisibility?: boolean;
 }
 
 export const Loader = ({
   size = 'standard',
+  'aria-label': ariaLabel = 'Loading',
   delayVisibility = false,
 }: LoaderProps) => {
   const styles = useStyles(styleRefs);
@@ -25,9 +27,11 @@ export const Loader = ({
         styles.rootSize[size],
         delayVisibility ? styles.delay : undefined,
       ]}
+      aria-label={ariaLabel}
     >
       {indicators.map((_, index) => (
         <Box
+          aria-hidden
           key={index}
           borderRadius="full"
           background={parentBackgroundColor === 'dark' ? 'card' : 'neutral'}
