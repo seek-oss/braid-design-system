@@ -3,7 +3,7 @@ package-lock.json
 *.log
 .cache/
 .DS_Store
-.vscode/
+.vscode/*.json
 .idea/
 componentDocs.json
 lib/components/icons/*/*Svg.tsx

@@ -1,0 +1,23 @@
+{
+  "Braid changeset": {
+    "scope": "markdown",
+    "prefix": "---",
+    "body": [
+      "---",
+      "${1|new,updated|}",
+      "  - ${2:Scope} ",
+      "---",
+      "",
+      "**${2:Scope}:** ${3:Add support for}",
+      "",
+      "${4:Provides a}",
+      "",
+      "${5:**EXAMPLE USAGE:**",
+      "```jsx",
+      "$0",
+      "```}",
+      ""
+    ],
+    "description": "Standardises the shape of Braid changesets for consistent release notes experience"
+  }
+}
