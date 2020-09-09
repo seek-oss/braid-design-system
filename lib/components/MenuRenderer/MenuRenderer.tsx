@@ -155,11 +155,15 @@ export const MenuRenderer = ({
         case MENU_ITEM_ENTER:
         case MENU_ITEM_SPACE:
         case MENU_ITEM_CLICK: {
+          // Don't close the menu if the user clicked a "form element" item, e.g. checkbox
+          if ('formElement' in action && action.formElement) {
+            return state;
+          }
+
           return {
             ...state,
-            ...('formElement' in action && action.formElement
-              ? null // Don't close the menu if the user clicked a "form element" item, e.g. checkbox
-              : { open: false, highlightIndex: CLOSED_INDEX }),
+            open: false,
+            highlightIndex: CLOSED_INDEX,
           };
         }
         case MENU_ITEM_HOVER: {
