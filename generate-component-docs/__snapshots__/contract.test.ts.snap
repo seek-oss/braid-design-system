@@ -5161,6 +5161,23 @@ Object {
 }
 `;
 
+exports[`MenuItemCheckbox 1`] = `
+Object {
+  exportType: component,
+  props: {
+    checked: boolean
+    children: ReactNode
+    data?: Record<string, string | number>
+    onChange: (checked: boolean) => void
+},
+}
+`;
+
+exports[`MenuItemDivider 1`] = `
+{
+}
+`;
+
 exports[`MenuItemLink 1`] = `
 Object {
   exportType: component,
