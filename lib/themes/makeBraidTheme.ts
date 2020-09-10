@@ -237,9 +237,9 @@ const makeWebFonts = (tokens: TreatTheme) => {
   }
 
   const weights = values(tokens.typography.fontWeight);
-  const linkTag = `<link href="https://fonts.googleapis.com/css?family=${name}:${weights
-    .sort()
-    .join(',')}" rel="stylesheet" />`;
+  const linkTag = `<link href="https://fonts.googleapis.com/css?family=${encodeURIComponent(
+    `${name}:${weights.sort().join(',')}`,
+  )}" rel="stylesheet" />`;
 
   return [{ linkTag }];
 };

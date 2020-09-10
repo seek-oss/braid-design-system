@@ -14,6 +14,7 @@ import {
 import { TextStack } from '../../../TextStack/TextStack';
 import { Page } from '../../../../types';
 import { ThemedExample } from '../../../ThemeSetting';
+import { PageTitle } from '../../../Seo/PageTitle';
 import * as styleRefs from './tones.treat';
 
 const tones = [
@@ -199,7 +200,10 @@ function TonePage() {
 
   return (
     <TextStack>
-      <Heading level="2">Tones</Heading>
+      <Heading component="h1" level="2">
+        <PageTitle title="Tones Foundation" />
+        Tones
+      </Heading>
 
       <Text>
         The usage of colour in the system is designed to have a strong

@@ -20,6 +20,7 @@ import {
 } from '../../../../../../lib/playroom/components';
 import Code from '../../../Code/Code';
 import { ReactNodeNoStrings } from '../../../../../../lib/components/private/ReactNodeNoStrings';
+import { PageTitle } from '../../../Seo/PageTitle';
 
 interface StepProps {
   heading?: string;
@@ -39,8 +40,11 @@ const page: Page = {
   component: () => (
     <TextStack>
       <Stack space="medium">
-        <Heading level="2">Example</Heading>
         <Heading level="3" weight="weak">
+          <PageTitle title="Basic Form Example" />
+          Examples /
+        </Heading>
+        <Heading component="h1" level="2">
           Basic Form
         </Heading>
       </Stack>
