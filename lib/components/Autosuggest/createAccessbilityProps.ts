@@ -25,7 +25,7 @@ export const createAccessbilityProps = ({
       'aria-controls': menuId,
       'aria-expanded': isOpen,
       'aria-labelledby': labelId,
-      'aria-autocomplete': 'both',
+      'aria-autocomplete': 'list',
       'aria-activedescendant':
         typeof highlightedIndex === 'number'
           ? getItemId(id, highlightedIndex)
