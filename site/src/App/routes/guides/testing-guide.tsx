@@ -11,12 +11,16 @@ import {
   Strong,
 } from '../../../../../lib/components';
 import Code from '../../Code/Code';
+import { PageTitle } from '../../Seo/PageTitle';
 
 const page: Page = {
   title: 'Testing Guide',
   component: () => (
     <TextStack>
-      <Heading level="2">Testing Guide</Heading>
+      <Heading component="h1" level="2">
+        <PageTitle title="Testing Guide" />
+        Testing Guide
+      </Heading>
 
       <Text tone="secondary">
         This document aims to provide guidance and best practices for testing

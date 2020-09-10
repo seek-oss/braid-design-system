@@ -75,7 +75,7 @@ export const ComponentDoc = ({
   return (
     <Stack space={['xlarge', 'xxlarge']}>
       <Stack space={['large', 'xlarge']}>
-        <Heading level="2" component="h3">
+        <Heading level="2" component="h1">
           {componentName}
         </Heading>
         <Navigation title="Subnavigation">

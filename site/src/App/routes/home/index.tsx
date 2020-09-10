@@ -13,7 +13,9 @@ const Home = () => {
   const { playroomUrl } = useConfig();
   return (
     <Stack space="xlarge">
-      <Heading level="2">Braid Design System</Heading>
+      <Heading component="h1" level="2">
+        Braid Design System
+      </Heading>
       <Text>
         👋 Welcome to Braid, the themeable design system for the{' '}
         <TextLink href="https://www.seek.com.au/about/">SEEK Group.</TextLink>

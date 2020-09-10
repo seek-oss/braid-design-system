@@ -15,6 +15,7 @@ import {
 import { Overlay } from '../../../../../../lib/components/private/Overlay/Overlay';
 import { Page } from '../../../../types';
 import * as icons from '../../../../../../lib/components/icons';
+import { PageTitle } from '../../../Seo/PageTitle';
 import * as styleRefs from './iconography.treat';
 
 type IconName = keyof typeof icons;
@@ -80,7 +81,10 @@ const Iconography = () => {
 
   return (
     <Stack space="xlarge">
-      <Heading level="2">Iconography</Heading>
+      <Heading component="h1" level="2">
+        <PageTitle title="Iconography Foundation" />
+        Iconography
+      </Heading>
 
       <Stack space="medium">
         <Stack space="large">

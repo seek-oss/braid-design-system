@@ -26,8 +26,9 @@ import { TextStack } from '../../../TextStack/TextStack';
 import Code from '../../../Code/Code';
 import tokens from '../../../../../../lib/themes/wireframe/tokens';
 import { Page } from '../../../../types';
-import * as styleRefs from './layout.treat';
 import { ThemedExample } from '../../../ThemeSetting';
+import { PageTitle } from '../../../Seo/PageTitle';
+import * as styleRefs from './layout.treat';
 
 const slugify = (string: string) => string.replace(/ /, '-');
 
@@ -70,7 +71,10 @@ const page: Page = {
   title: 'Layout',
   component: () => (
     <TextStack>
-      <Heading level="2">Layout</Heading>
+      <Heading component="h1" level="2">
+        <PageTitle title="Layout Foundation" />
+        Layout
+      </Heading>
       <Text>
         The guiding principle for layout in Braid is that components should not
         provide surrounding white space. Instead, spacing between elements is

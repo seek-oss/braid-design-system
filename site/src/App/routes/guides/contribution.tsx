@@ -8,10 +8,14 @@ import {
 } from '../../../../../lib/components';
 import { TextStack } from '../../TextStack/TextStack';
 import { Page } from '../../../types';
+import { PageTitle } from '../../Seo/PageTitle';
 
 const Contribution = () => (
   <TextStack>
-    <Heading level="2">Contribution</Heading>
+    <Heading component="h1" level="2">
+      <PageTitle title="Contribution" />
+      Contribution
+    </Heading>
     <Heading level="3">Want to add something to Braid?</Heading>
     <Text>
       <Strong>We operate on a pull-based model.</Strong> Rather than trying to

@@ -16,10 +16,14 @@ import {
 import { TextStack } from '../../TextStack/TextStack';
 import Code from '../../Code/Code';
 import { Page } from '../../../types';
+import { PageTitle } from '../../Seo/PageTitle';
 
 const DevelopmentWorkflow = () => (
   <TextStack>
-    <Heading level="2">Development Workflow</Heading>
+    <Heading component="h1" level="2">
+      <PageTitle title="Development Workflow" />
+      Development Workflow
+    </Heading>
     <Text tone="secondary">
       This document aims to provide guidance for consumers on how best to build
       interfaces that properly leverage Braid.
