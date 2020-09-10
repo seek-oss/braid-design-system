@@ -4,7 +4,7 @@
     "prefix": "---",
     "body": [
       "---",
-      "${1|new,updated|}",
+      "${1|new,updated|}:",
       "  - ${2:Scope} ",
       "---",
       "",
