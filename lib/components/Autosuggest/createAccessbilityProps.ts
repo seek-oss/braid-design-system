@@ -4,41 +4,41 @@ interface AutosuggestProps {
   id: string;
   highlightedIndex: number | null;
   isOpen: boolean;
+  suggestionsLabel?: string;
 }
 export const createAccessbilityProps = ({
   id,
   highlightedIndex,
   isOpen,
+  suggestionsLabel,
 }: AutosuggestProps) => {
   const menuId = `${id}-menu`;
   const labelId = `${id}-label`;
 
   return {
-    rootProps: {
-      role: 'combobox',
-      'aria-haspopup': 'listbox',
-      'aria-expanded': isOpen,
-      'aria-owns': isOpen ? menuId : undefined,
-      'aria-labelledby': labelId,
-    } as const,
     labelProps: {
       id: labelId,
     },
     inputProps: {
       id,
-      autoComplete: 'off', // https://stackoverflow.com/questions/47775041/disable-autofill-in-chrome-63/47822599
-      spellCheck: false,
-      'aria-autocomplete': 'list',
+      role: 'combobox',
+      'aria-haspopup': 'listbox',
+      'aria-owns': isOpen ? menuId : undefined, // backwards compatibility for screenreaders implementing ARIA 1.0
       'aria-controls': menuId,
+      'aria-expanded': isOpen,
+      'aria-labelledby': labelId,
+      'aria-autocomplete': 'both',
       'aria-activedescendant':
         typeof highlightedIndex === 'number'
           ? getItemId(id, highlightedIndex)
           : undefined,
+      autoComplete: 'off', // https://stackoverflow.com/questions/47775041/disable-autofill-in-chrome-63/47822599
+      spellCheck: false,
     } as const,
     menuProps: {
       id: menuId,
       role: 'listbox',
-      'aria-labelledby': labelId,
+      'aria-label': suggestionsLabel ? suggestionsLabel : undefined,
     } as const,
     getItemProps: ({
       index,

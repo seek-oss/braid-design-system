@@ -1,7 +1,7 @@
 import React, { useState, ReactNode } from 'react';
 import matchHighlights from 'autosuggest-highlight/match';
 import { ComponentDocs } from '../../../site/src/types';
-import { Autosuggest, IconSearch, IconLocation } from '../';
+import { Autosuggest, IconSearch, IconLocation, TextLink, Text } from '../';
 import { Autosuggest as PlayroomAutosuggest } from '../../playroom/components';
 
 const Container = ({ children }: { children: ReactNode }) => (
@@ -40,6 +40,14 @@ const docs: ComponentDocs = {
   category: 'Content',
   migrationGuide: true,
   screenshotWidths: [320],
+  description: (
+    <Text>
+      Follows the{' '}
+      <TextLink href="https://www.w3.org/TR/wai-aria-1.2/#combobox">
+        WAI-ARIA Combobox Pattern.
+      </TextLink>
+    </Text>
+  ),
   examples: [
     {
       label: 'Standard suggestions',

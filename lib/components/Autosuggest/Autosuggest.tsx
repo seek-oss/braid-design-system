@@ -581,7 +581,7 @@ export function Autosuggest<Value>({
             }
           >
             {(overlays, fieldProps, icon, secondaryIcon) => (
-              <Box {...a11y.rootProps}>
+              <Box>
                 <Box
                   component="input"
                   {...fieldProps}

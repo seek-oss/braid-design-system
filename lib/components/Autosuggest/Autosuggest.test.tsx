@@ -46,7 +46,7 @@ function renderAutosuggest<Value>({
   };
 
   const { getByRole, queryByLabelText, queryByText } = render(<TestCase />);
-  const input = getByRole('textbox');
+  const input = getByRole('combobox');
   const getInputValue = () => input.getAttribute('value');
 
   return {
