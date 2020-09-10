@@ -1,5 +1,58 @@
 # braid-design-system
 
+## 29.5.0
+
+### Minor Changes
+
+- Add **MenuItemDivider** component ([#751](https://github.com/seek-oss/braid-design-system/pull/751))
+
+  You can now place visual separators between groups of menu items when using [OverflowMenu](https://seek-oss.github.io/braid-design-system/components/OverflowMenu)/[MenuRenderer](https://seek-oss.github.io/braid-design-system/components/MenuRenderer).
+
+  **EXAMPLE USAGE**
+
+  ```jsx
+  <OverflowMenu label="Options">
+    <MenuItem onClick={() => {}}>Button</MenuItem>
+    <MenuItemLink href="#">Link</MenuItemLink>
+    <MenuItemDivider />
+    <MenuItem onClick={() => {}}>Another button</MenuItem>
+  </OverflowMenu>
+  ```
+
+- Add **MenuItemCheckbox** component ([#751](https://github.com/seek-oss/braid-design-system/pull/751))
+
+  You can now render checkboxes within [OverflowMenu](https://seek-oss.github.io/braid-design-system/components/OverflowMenu)/[MenuRenderer](https://seek-oss.github.io/braid-design-system/components/MenuRenderer) elements.
+
+  **EXAMPLE USAGE**
+
+  ```jsx
+  <OverflowMenu label="Checklist">
+    <MenuItemCheckbox checked={true} onChange={() => {}}>
+      Checkbox 1
+    </MenuItemCheckbox>
+    <MenuItemCheckbox checked={false} onChange={() => {}}>
+      Checkbox 2
+    </MenuItemCheckbox>
+    <MenuItemCheckbox checked={false} onChange={() => {}}>
+      Checkbox 3
+    </MenuItemCheckbox>
+  </OverflowMenu>
+  ```
+
+- **Loader:** Add support for `aria-label` ([#752](https://github.com/seek-oss/braid-design-system/pull/752))
+
+  Provides a mechanism for consumers to better communicate to assistive technologies what is happening.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Loader aria-label="Loading search results" />
+  ```
+
+### Patch Changes
+
+- **Autosuggest**: Update to ARIA 1.2 combobox spec ([#754](https://github.com/seek-oss/braid-design-system/pull/754))
+
 ## 29.4.0
 
 ### Minor Changes
