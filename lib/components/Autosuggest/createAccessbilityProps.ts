@@ -4,13 +4,11 @@ interface AutosuggestProps {
   id: string;
   highlightedIndex: number | null;
   isOpen: boolean;
-  suggestionsLabel?: string;
 }
 export const createAccessbilityProps = ({
   id,
   highlightedIndex,
   isOpen,
-  suggestionsLabel,
 }: AutosuggestProps) => {
   const menuId = `${id}-menu`;
   const labelId = `${id}-label`;
@@ -38,7 +36,6 @@ export const createAccessbilityProps = ({
     menuProps: {
       id: menuId,
       role: 'listbox',
-      'aria-label': suggestionsLabel ? suggestionsLabel : undefined,
     } as const,
     getItemProps: ({
       index,
