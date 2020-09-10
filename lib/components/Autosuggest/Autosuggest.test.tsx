@@ -31,6 +31,7 @@ function renderAutosuggest<Value>({
       <BraidTestProvider>
         <Autosuggest
           id="fruit"
+          label="Fruit"
           automaticSelection={automaticSelection}
           value={value}
           onChange={(...args) => {
@@ -46,7 +47,7 @@ function renderAutosuggest<Value>({
   };
 
   const { getByRole, queryByLabelText, queryByText } = render(<TestCase />);
-  const input = getByRole('textbox');
+  const input = getByRole('combobox');
   const getInputValue = () => input.getAttribute('value');
 
   return {
@@ -208,6 +209,22 @@ describe('Autosuggest', () => {
   });
 
   describe('ARIA labels', () => {
+    it('should associate the field label with the input', () => {
+      const { queryByLabelText, input } = renderAutosuggest({
+        value: { text: '' },
+        suggestions: [
+          {
+            text: 'Apples',
+            value: 'apples',
+          },
+        ],
+      });
+
+      const result = queryByLabelText('Fruit');
+
+      expect(result).toBe(input);
+    });
+
     it('should support standard suggestions', () => {
       const { input, queryByLabelText } = renderAutosuggest({
         value: { text: '' },
