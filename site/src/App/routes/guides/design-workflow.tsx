@@ -9,6 +9,7 @@ import {
 import { TextStack } from '../../TextStack/TextStack';
 import { useConfig } from '../../ConfigContext';
 import { Page } from '../../../types';
+import { PageTitle } from '../../Seo/PageTitle';
 
 const braidDesignSupportLink = (
   <TextLink href="https://seekchat.slack.com/channels/braid-design-support">
@@ -22,7 +23,10 @@ const DesignWorkflow = () => {
 
   return (
     <TextStack>
-      <Heading level="2">Design Workflow</Heading>
+      <Heading component="h1" level="2">
+        <PageTitle title="Design Workflow" />
+        Design Workflow
+      </Heading>
       <Text tone="secondary">
         This guide is presented as a series of questions that you might
         reasonably ask if you’re trying to leverage Braid during a typical

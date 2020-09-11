@@ -14,6 +14,7 @@ import {
   Link,
   Box,
   Hidden,
+  HiddenVisually,
 } from '../../../../lib/components';
 import { useBraidTheme } from '../../../../lib/components/BraidProvider/BraidProvider';
 import { RemoveScroll } from 'react-remove-scroll';
@@ -42,6 +43,7 @@ const Header = ({
         </Hidden>
         <Link href="/" tabIndex={menuOpen ? -1 : undefined}>
           <Logo iconOnly height={menuButtonSize} />
+          <HiddenVisually>Braid Logo</HiddenVisually>
         </Link>
       </Box>
     </Text>

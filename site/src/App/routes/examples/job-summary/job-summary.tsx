@@ -22,6 +22,7 @@ import { TextStack } from '../../../TextStack/TextStack';
 import { Placeholder } from '../../../../../../lib/playroom/components';
 import Code from '../../../Code/Code';
 import { ReactNodeNoStrings } from '../../../../../../lib/components/private/ReactNodeNoStrings';
+import { PageTitle } from '../../../Seo/PageTitle';
 
 interface StepProps {
   heading?: string;
@@ -41,8 +42,11 @@ const page: Page = {
   component: () => (
     <TextStack>
       <Stack space="medium">
-        <Heading level="2">Example</Heading>
         <Heading level="3" weight="weak">
+          <PageTitle title="Job Summary Example" />
+          Examples /
+        </Heading>
+        <Heading component="h1" level="2">
           Job Summary
         </Heading>
       </Stack>

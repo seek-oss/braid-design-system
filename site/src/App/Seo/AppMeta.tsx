@@ -10,6 +10,10 @@ export function AppMeta() {
       <PageTitle />
       <Meta charSet="utf-8" />
       <Meta name="author" content="SEEK Group" />
+      <Meta
+        name="description"
+        content="Themeable design system for the SEEK Group"
+      />
       <Meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <Meta property="og:type" content="website" />
       <Meta name="twitter:card" content="summary" />
