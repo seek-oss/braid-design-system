@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
-import { useStyles } from 'sku/react-treat';
 
 import { CodeBlock } from '../Code/Code';
 import {
@@ -13,7 +12,7 @@ import {
   TextLink,
 } from '../../../../lib/components';
 import { DefaultTextPropsProvider } from '../../../../lib/components/private/defaultTextProps';
-import * as styleRefs from './Markdown.treat';
+import { InlineCode } from '../InlineCode/InlineCode';
 
 const Code = ({ language, value }: { language: string; value: string }) => (
   <Box paddingBottom="medium">
@@ -74,20 +73,7 @@ const renderers = {
   },
   strong: Strong,
   emphasis: Strong,
-  inlineCode: function InlineCode({ children }: any) {
-    const styles = useStyles(styleRefs);
-
-    return (
-      <Box
-        component="code"
-        display="inline"
-        paddingX="xxsmall"
-        className={styles.inlineCode}
-      >
-        {children}
-      </Box>
-    );
-  },
+  inlineCode: InlineCode,
   code: Code,
   link: TextLink,
   blockquote: ({ children }: any) => (

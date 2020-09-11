@@ -16,6 +16,7 @@ export { Accordion } from './Accordion/Accordion';
 export { AccordionItem } from './Accordion/AccordionItem';
 export { Actions } from './Actions/Actions';
 export { Alert } from './Alert/Alert';
+export { Announcement } from './Announcement/Announcement';
 export { Autosuggest } from './Autosuggest/Autosuggest';
 export { BackgroundProvider } from './BackgroundProvider/BackgroundProvider';
 export { Badge } from './Badge/Badge';

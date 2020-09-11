@@ -13,6 +13,8 @@ import parseHighlights from 'autosuggest-highlight/parse';
 import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';
 import { Strong } from '../Strong/Strong';
+import { HiddenVisually } from '../HiddenVisually/HiddenVisually';
+import { Announcement } from '../Announcement/Announcement';
 import { Field, FieldProps } from '../private/Field/Field';
 import { ClearButton } from '../iconButtons/ClearButton/ClearButton';
 import { useTouchableSpace, useText } from '../../hooks/typography';
@@ -279,7 +281,8 @@ export function Autosuggest<Value>({
     groupHeadingIndexes,
     groupHeadingForSuggestion,
   } = normaliseSuggestions(suggestions);
-  const hasSuggestions = normalisedSuggestions.length > 0;
+  const suggestionCount = normalisedSuggestions.length;
+  const hasSuggestions = suggestionCount > 0;
 
   const reducer = (state: AutosuggestState<Value>, action: Action) => {
     switch (action.type) {
@@ -288,7 +291,7 @@ export function Autosuggest<Value>({
           const nextIndex = getNextIndex(
             1,
             state.highlightedIndex,
-            normalisedSuggestions.length,
+            suggestionCount,
           );
 
           return {
@@ -305,7 +308,7 @@ export function Autosuggest<Value>({
           const nextIndex = getNextIndex(
             -1,
             state.highlightedIndex,
-            normalisedSuggestions.length,
+            suggestionCount,
           );
 
           return {
@@ -469,7 +472,7 @@ export function Autosuggest<Value>({
         automaticSelection &&
         inputChangedSinceFocus &&
         value.text.length > 0 &&
-        normalisedSuggestions.length > 0
+        suggestionCount > 0
       ) {
         fireChange(normalisedSuggestions[0]);
       }
@@ -652,6 +655,16 @@ export function Autosuggest<Value>({
             )}
           </Field>
         </Box>
+        <HiddenVisually {...a11y.assistiveDescriptionProps}>
+          Suggestions will appear below the field as you type
+        </HiddenVisually>
+        <Announcement>
+          {hasSuggestions && isOpen && highlightedIndex === null
+            ? `${suggestionCount} suggestion${
+                suggestionCount === 1 ? '' : 's'
+              } available`
+            : undefined}
+        </Announcement>
       </Box>
     </Fragment>
   );

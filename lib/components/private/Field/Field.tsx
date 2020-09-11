@@ -15,6 +15,16 @@ import { useText, useTouchableSpace } from '../../../hooks/typography';
 import { Text } from '../../Text/Text';
 import * as styleRefs from './Field.treat';
 
+const mergeIds = (...ids: Array<string | undefined>) => {
+  const validIds = ids.filter(Boolean);
+
+  if (validIds.length === 0) {
+    return undefined;
+  }
+
+  return validIds.join(' ');
+};
+
 type FormElementProps = AllHTMLAttributes<HTMLFormElement>;
 export interface FieldProps {
   id: NonNullable<FormElementProps['id']>;
@@ -143,9 +153,7 @@ export const Field = ({
             paddingRight: secondaryIcon ? undefined : 'small',
             borderRadius: 'standard',
             outline: 'none',
-            ...((message || ariaDescribedBy) && {
-              'aria-describedby': ariaDescribedBy || messageId,
-            }),
+            'aria-describedby': mergeIds(ariaDescribedBy, messageId),
             'aria-required': required,
             disabled,
             autoComplete,
