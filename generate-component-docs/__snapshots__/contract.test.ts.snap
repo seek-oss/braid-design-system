@@ -49,6 +49,15 @@ Object {
 }
 `;
 
+exports[`Announcement 1`] = `
+Object {
+  exportType: component,
+  props: {
+    children: string
+},
+}
+`;
+
 exports[`Autosuggest 1`] = `
 Object {
   exportType: component,
@@ -2572,6 +2581,7 @@ Object {
   exportType: component,
   props: {
     children: ReactNode
+    id?: string
 },
 }
 `;
