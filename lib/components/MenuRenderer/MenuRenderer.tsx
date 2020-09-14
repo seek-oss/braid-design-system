@@ -23,6 +23,7 @@ import { normalizeKey } from '../private/normalizeKey';
 import { getNextIndex } from '../private/getNextIndex';
 import { Overlay } from '../private/Overlay/Overlay';
 import { actionTypes, Action } from './MenuRenderer.actions';
+import { MenuRendererContext } from './MenuRendererContext';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
@@ -35,12 +36,9 @@ interface MenuRendererItemContextValues {
   focusTrigger: () => void;
 }
 
-export const MenuRendererContext = createContext(false);
 export const MenuRendererItemContext = createContext<MenuRendererItemContextValues | null>(
   null,
 );
-
-export const menuPadding = 'xxsmall';
 
 interface TriggerProps {
   'aria-haspopup': boolean;
@@ -301,7 +299,7 @@ export const MenuRenderer = ({
             opacity={!open ? 0 : undefined}
             className={!open && styles.menuIsClosed}
           >
-            <Box padding={menuPadding}>
+            <Box padding="xxsmall">
               {items.map((item, i) => {
                 if (isDivider(item)) {
                   dividerCount++;
