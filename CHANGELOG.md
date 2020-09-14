@@ -1,5 +1,11 @@
 # braid-design-system
 
+## 29.5.1
+
+### Patch Changes
+
+- **MenuRenderer, OverflowMenu:** Fix circular dependency issue ([#761](https://github.com/seek-oss/braid-design-system/pull/761))
+
 ## 29.5.0
 
 ### Minor Changes
