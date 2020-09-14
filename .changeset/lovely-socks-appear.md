@@ -8,4 +8,4 @@ updated:
   - OverflowMenu
 ---
 
-*MenuRenderer, OverflowMenu:* Fix circular dependency issue
+**MenuRenderer, OverflowMenu:** Fix circular dependency issue
