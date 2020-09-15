@@ -25,6 +25,8 @@ import { smoothScroll } from '../private/smoothScroll';
 import { useScrollIntoView } from './useScrollIntoView';
 import { RemoveScroll } from 'react-remove-scroll';
 import { createAccessbilityProps, getItemId } from './createAccessbilityProps';
+import { autosuggest, AutosuggestTranslations } from '../../translations/en';
+
 import * as styleRefs from './Autosuggest.treat';
 
 type SuggestionMatch = Array<{ start: number; end: number }>;
@@ -75,6 +77,7 @@ interface AutosuggestState<Value> {
   isOpen: boolean;
   inputChangedSinceFocus: boolean;
   previewValue: AutosuggestValue<Value> | null;
+  isFocused: boolean;
 }
 
 interface SuggestionItemProps {
@@ -247,6 +250,7 @@ export interface AutosuggestProps<Value>
   onClear?: () => void;
   placeholder?: string;
   type?: 'text' | 'search';
+  translations?: AutosuggestTranslations;
 }
 export function Autosuggest<Value>({
   id,
@@ -261,6 +265,7 @@ export function Autosuggest<Value>({
   placeholder,
   type = 'text',
   onClear,
+  translations = autosuggest,
   ...restProps
 }: AutosuggestProps<Value>) {
   const styles = useStyles(styleRefs);
@@ -338,6 +343,7 @@ export function Autosuggest<Value>({
           ...state,
           isOpen: hasSuggestions,
           inputChangedSinceFocus: false,
+          isFocused: true,
         };
       }
 
@@ -347,6 +353,7 @@ export function Autosuggest<Value>({
           isOpen: false,
           previewValue: null,
           highlightedIndex: null,
+          isFocused: false,
         };
       }
 
@@ -412,13 +419,20 @@ export function Autosuggest<Value>({
   };
 
   const [
-    { isOpen, inputChangedSinceFocus, previewValue, highlightedIndex },
+    {
+      isOpen,
+      inputChangedSinceFocus,
+      previewValue,
+      highlightedIndex,
+      isFocused,
+    },
     dispatch,
   ] = useReducer(reducer, {
     isOpen: false,
     inputChangedSinceFocus: false,
     previewValue: null,
     highlightedIndex: null,
+    isFocused: false,
   });
 
   const highlightedItem =
@@ -540,6 +554,30 @@ export function Autosuggest<Value>({
       value.text.length > 0,
   );
 
+  let announcement = '';
+
+  // Announce when the field is focussed and no selections have been manually highlighted
+  if (
+    isFocused &&
+    (highlightedIndex === null || (automaticSelection && previewValue === null))
+  ) {
+    if (hasSuggestions) {
+      announcement = translations.suggestionsAvailableAnnouncement(
+        suggestionCount,
+      );
+
+      if (automaticSelection) {
+        announcement = announcement.concat(
+          `. ${translations.suggestionAutoSelectedAnnouncement(
+            normalisedSuggestions[0].text,
+          )}.`,
+        );
+      }
+    } else {
+      announcement = translations.noSuggestionsAvailableAnnouncement;
+    }
+  }
+
   return (
     <Fragment>
       <Box ref={mobileDetectionRef} display={['block', 'none']} />
@@ -656,15 +694,9 @@ export function Autosuggest<Value>({
           </Field>
         </Box>
         <HiddenVisually {...a11y.assistiveDescriptionProps}>
-          Suggestions will appear below the field as you type
+          {translations.assistiveDescription}
         </HiddenVisually>
-        <Announcement>
-          {hasSuggestions && isOpen && highlightedIndex === null
-            ? `${suggestionCount} suggestion${
-                suggestionCount === 1 ? '' : 's'
-              } available`
-            : undefined}
-        </Announcement>
+        <Announcement>{announcement}</Announcement>
       </Box>
     </Fragment>
   );

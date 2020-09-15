@@ -49,15 +49,6 @@ Object {
 }
 `;
 
-exports[`Announcement 1`] = `
-Object {
-  exportType: component,
-  props: {
-    children: string
-},
-}
-`;
-
 exports[`Autosuggest 1`] = `
 Object {
   exportType: component,
@@ -90,6 +81,12 @@ Object {
         | "critical"
         | "neutral"
         | "positive"
+    translations?: {
+        assistiveDescription: string
+        noSuggestionsAvailableAnnouncement: string
+        suggestionAutoSelectedAnnouncement: (suggestion: string) => string
+        suggestionsAvailableAnnouncement: (suggestionCount: number) => string
+    }
     type?: 
         | "search"
         | "text"
