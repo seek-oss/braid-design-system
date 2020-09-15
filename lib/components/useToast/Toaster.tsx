@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 
-import { Box } from '..';
+import { Box } from '../Box/Box';
 import ToastComponent from './Toast';
 import { useFlipList } from './useFlipList';
 import { InternalToast } from './ToastTypes';

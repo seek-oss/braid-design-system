@@ -29,7 +29,7 @@ import { Text } from '../Text/Text';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
-import { TabListContext } from './Tabs';
+import { TabListContext } from './TabListContext';
 import { Overlay } from '../private/Overlay/Overlay';
 import { BadgeProps, Badge } from '../Badge/Badge';
 import { smoothScroll } from '../private/smoothScroll';

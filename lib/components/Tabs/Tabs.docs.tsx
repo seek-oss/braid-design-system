@@ -20,7 +20,7 @@ import {
   TabsProvider as PlayroomTabsProvider,
   Tabs as PlayroomTabs,
 } from '../../playroom/components';
-import { useBraidTheme } from '../BraidProvider/BraidProvider';
+import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
 
 const docs: ComponentDocs = {
   category: 'Content',

@@ -7,10 +7,11 @@ import React, {
   ReactNode,
 } from 'react';
 import { useStyles } from 'sku/react-treat';
-import { Box, Text } from '../';
+import { Box } from '../Box/Box';
+import { Text } from '../Text/Text';
 import { useTouchableSpace } from '../../hooks/typography';
 import { normalizeKey } from '../private/normalizeKey';
-import { MenuRendererItemContext } from '../MenuRenderer/MenuRenderer';
+import { MenuRendererItemContext } from '../MenuRenderer/MenuRendererItemContext';
 import { actionTypes, Action } from '../MenuRenderer/MenuRenderer.actions';
 import buildDataAttributes, {
   DataAttributeMap,

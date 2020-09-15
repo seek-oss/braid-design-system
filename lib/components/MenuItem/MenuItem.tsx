@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { Box } from '../';
+import { Box } from '../Box/Box';
 import { useMenuItem, UseMenuItemProps } from './useMenuItem';
 
 export interface MenuItemProps

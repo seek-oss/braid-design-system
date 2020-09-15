@@ -6,7 +6,7 @@ import React, {
   forwardRef,
 } from 'react';
 import { useStyles } from 'sku/react-treat';
-import { Box } from '..';
+import { Box } from '../Box/Box';
 import { Overlay } from '../private/Overlay/Overlay';
 import buildDataAttributes, {
   DataAttributeMap,

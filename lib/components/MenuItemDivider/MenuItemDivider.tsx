@@ -1,7 +1,8 @@
 import assert from 'assert';
 import React, { useContext } from 'react';
-import { Box, Divider } from '..';
-import { MenuRendererContext, menuPadding } from '../MenuRenderer/MenuRenderer';
+import { Box } from '../Box/Box';
+import { Divider } from '../Divider/Divider';
+import { MenuRendererContext } from '../MenuRenderer/MenuRendererContext';
 
 export const MenuItemDivider = () => {
   assert(
@@ -10,7 +11,7 @@ export const MenuItemDivider = () => {
   );
 
   return (
-    <Box padding={menuPadding}>
+    <Box padding="xxsmall">
       <Divider />
     </Box>
   );

@@ -1,4 +1,5 @@
 const routes = require('./sku.routes.js');
+const CircularDependencyPlugin = require('circular-dependency-plugin');
 
 const isGitHubPages = Boolean(process.env.IS_GITHUB_PAGES);
 
@@ -37,4 +38,14 @@ module.exports = {
   playroomFrameComponent: './lib/playroom/FrameComponent.tsx',
   playroomTarget: './site/dist/playroom',
   playroomWidths: [320, 768, 1024, 1400],
+  dangerouslySetWebpackConfig: (config) => {
+    config.plugins.push(
+      new CircularDependencyPlugin({
+        exclude: /node_modules/,
+        failOnError: true,
+      }),
+    );
+
+    return config;
+  },
 };
