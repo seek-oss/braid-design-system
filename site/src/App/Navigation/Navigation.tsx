@@ -16,7 +16,7 @@ import {
   Hidden,
   HiddenVisually,
 } from '../../../../lib/components';
-import { useBraidTheme } from '../../../../lib/components/BraidProvider/BraidProvider';
+import { useBraidTheme } from '../../../../lib/components/BraidProvider/BraidThemeContext';
 import { RemoveScroll } from 'react-remove-scroll';
 import { BoxProps } from '../../../../lib/components/Box/Box';
 import { SubNavigation } from '../SubNavigation/SubNavigation';

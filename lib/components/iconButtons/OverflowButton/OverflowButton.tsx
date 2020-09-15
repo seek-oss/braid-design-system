@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
 import { IconButton, IconButtonProps } from '../IconButton';
-import { IconOverflow } from '../..';
+import { IconOverflow } from '../../icons';
 
 export type OverflowButtonProps = Pick<
   IconButtonProps,

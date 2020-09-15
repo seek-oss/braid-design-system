@@ -1,7 +1,7 @@
 // Adapted version of https://github.com/streamich/react-use/blob/master/src/useMedia.ts
 import React, { useEffect, useState, createContext, ReactNode } from 'react';
 
-import { useBraidTheme } from '../BraidProvider/BraidProvider';
+import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
 
 export type Breakpoint = 'mobile' | 'tablet' | 'desktop';
 

@@ -1,6 +1,7 @@
 import assert from 'assert';
 import React, { useContext } from 'react';
-import { Box, Divider } from '..';
+import { Box } from '../Box/Box';
+import { Divider } from '../Divider/Divider';
 import { MenuRendererContext } from '../MenuRenderer/MenuRendererContext';
 
 export const MenuItemDivider = () => {

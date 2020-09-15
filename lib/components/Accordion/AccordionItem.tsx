@@ -1,7 +1,11 @@
 import React, { ReactNode } from 'react';
 import { useStyles } from 'sku/react-treat';
 import assert from 'assert';
-import { Box, Columns, Column, Heading, IconChevron } from '..';
+import { Box } from '../Box/Box';
+import { Columns } from '../Columns/Columns';
+import { Column } from '../Column/Column';
+import { Heading } from '../Heading/Heading';
+import { IconChevron } from '../icons';
 import {
   useDisclosure,
   UseDisclosureProps,

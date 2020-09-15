@@ -3,16 +3,14 @@ import React, { useCallback, useEffect } from 'react';
 import * as styleRefs from './Toast.treat';
 import { useStyles, TreatProvider } from 'sku/react-treat';
 
-import {
-  Stack,
-  Inline,
-  Columns,
-  Column,
-  ContentBlock,
-  Box,
-  Text,
-  TextLinkRenderer,
-} from '../../components';
+import { Stack } from '../Stack/Stack';
+import { Inline } from '../Inline/Inline';
+import { Columns } from '../Columns/Columns';
+import { Column } from '../Column/Column';
+import { ContentBlock } from '../ContentBlock/ContentBlock';
+import { Box } from '../Box/Box';
+import { Text } from '../Text/Text';
+import { TextLinkRenderer } from '../TextLinkRenderer/TextLinkRenderer';
 import { IconPositive, IconCritical } from '../icons';
 import { ClearButton } from '../iconButtons/ClearButton/ClearButton';
 import { useTimeout } from './useTimeout';
