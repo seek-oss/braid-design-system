@@ -556,7 +556,7 @@ export function Autosuggest<Value>({
 
   let announcement = '';
 
-  // Announce when the field is focussed and no selections have been manually highlighted
+  // Announce when the field is focused and no selections have been manually highlighted
   if (
     isFocused &&
     (highlightedIndex === null || (automaticSelection && previewValue === null))
