@@ -1,7 +1,9 @@
 import React, { ReactNode } from 'react';
 import assert from 'assert';
-import { Box, Text, TextLinkButton, IconChevron } from '..';
-import { BoxProps } from '../Box/Box';
+import { Box, BoxProps } from '../Box/Box';
+import { Text } from '../Text/Text';
+import { TextLinkButton } from '../TextLinkButton/TextLinkButton';
+import { IconChevron } from '../icons';
 import { useDisclosure, UseDisclosureProps } from './useDisclosure';
 
 export type DisclosureBaseProps = {

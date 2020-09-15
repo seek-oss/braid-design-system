@@ -7,7 +7,7 @@ import buildDataAttributes, {
 } from '../private/buildDataAttributes';
 import { Overlay } from '../private/Overlay/Overlay';
 import { TabsContext } from './TabsProvider';
-import { TabPanelsContext } from './TabPanels';
+import { TabPanelsContext } from './TabPanelsContext';
 import * as styleRefs from './Tabs.treat';
 
 export interface TabPanelProps {

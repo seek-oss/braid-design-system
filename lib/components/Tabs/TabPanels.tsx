@@ -3,21 +3,13 @@ import React, {
   useEffect,
   Fragment,
   Children,
-  createContext,
   ReactElement,
 } from 'react';
 import assert from 'assert';
 import { TabsContext } from './TabsProvider';
 import { TAB_PANELS_UPDATED } from './Tabs.actions';
 import { TabPanel, TabPanelProps } from './TabPanel';
-
-interface TabPanelsContextValues {
-  renderInactive: boolean;
-  panelIndex: number;
-}
-export const TabPanelsContext = createContext<TabPanelsContextValues | null>(
-  null,
-);
+import { TabPanelsContext } from './TabPanelsContext';
 
 interface TabPanelsProps {
   renderInactivePanels?: boolean;

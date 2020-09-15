@@ -5,7 +5,7 @@ import React, {
   ReactNode,
   KeyboardEvent,
 } from 'react';
-import { Box } from '../';
+import { Box } from '../Box/Box';
 import {
   TextLinkRenderer,
   TextLinkRendererProps,

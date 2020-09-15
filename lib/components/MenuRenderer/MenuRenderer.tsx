@@ -1,7 +1,6 @@
 import assert from 'assert';
 import React, {
   KeyboardEvent,
-  createContext,
   useRef,
   useReducer,
   useEffect,
@@ -11,34 +10,21 @@ import React, {
 } from 'react';
 import { useStyles } from 'sku/react-treat';
 import flattenChildren from 'react-keyed-flatten-children';
-import {
-  MenuItem,
-  MenuItemCheckbox,
-  MenuItemLink,
-  MenuItemDivider,
-  Box,
-} from '../';
-import { BoxProps } from '../Box/Box';
+import { Box, BoxProps } from '../Box/Box';
+import { MenuItem } from '../MenuItem/MenuItem';
+import { MenuItemCheckbox } from '../MenuItemCheckbox/MenuItemCheckbox';
+import { MenuItemLink } from '../MenuItem/MenuItemLink';
+import { MenuItemDivider } from '../MenuItemDivider/MenuItemDivider';
 import { normalizeKey } from '../private/normalizeKey';
 import { getNextIndex } from '../private/getNextIndex';
 import { Overlay } from '../private/Overlay/Overlay';
 import { actionTypes, Action } from './MenuRenderer.actions';
 import { MenuRendererContext } from './MenuRendererContext';
+import { MenuRendererItemContext } from './MenuRendererItemContext';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
 import * as styleRefs from './MenuRenderer.treat';
-
-interface MenuRendererItemContextValues {
-  isHighlighted: boolean;
-  index: number;
-  dispatch: (action: Action) => void;
-  focusTrigger: () => void;
-}
-
-export const MenuRendererItemContext = createContext<MenuRendererItemContextValues | null>(
-  null,
-);
 
 interface TriggerProps {
   'aria-haspopup': boolean;

@@ -15,22 +15,12 @@ import { ensureResetImported } from '../../reset/resetTracker';
 import { useHideFocusRings } from '../private/hideFocusRings/useHideFocusRings';
 import { BraidTestProviderContext } from '../BraidTestProvider/BraidTestProviderContext';
 import { BreakpointProvider } from '../useBreakpoint/BreakpointProvider';
+import { BraidThemeContext } from './BraidThemeContext';
 import { BraidTheme } from '../../themes/BraidTheme.d';
 
 if (process.env.NODE_ENV === 'development') {
   ensureResetImported();
 }
-
-const BraidThemeContext = createContext<BraidTheme | null>(null);
-export const useBraidTheme = () => {
-  const braidTheme = useContext(BraidThemeContext);
-
-  if (braidTheme === null) {
-    throw new Error('No Braid theme available on context');
-  }
-
-  return braidTheme;
-};
 
 export interface LinkComponentProps
   extends AnchorHTMLAttributes<HTMLAnchorElement> {

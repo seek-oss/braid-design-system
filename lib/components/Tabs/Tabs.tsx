@@ -5,7 +5,6 @@ import React, {
   useRef,
   useState,
   useCallback,
-  createContext,
   ReactElement,
 } from 'react';
 import { useStyles } from 'sku/react-treat';
@@ -18,8 +17,9 @@ import buildDataAttributes, {
 import { TabsContext } from './TabsProvider';
 import { Tab, TabProps } from './Tab';
 import { useNegativeMarginTop } from '../../hooks/useNegativeMargin/useNegativeMargin';
-import { useBraidTheme } from '../BraidProvider/BraidProvider';
+import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
 import * as styleRefs from './Tabs.treat';
+import { TabListContext } from './TabListContext';
 
 export interface TabsProps {
   children: ReactElement<TabProps>[];
@@ -29,12 +29,6 @@ export interface TabsProps {
   reserveHitArea?: boolean;
   data?: DataAttributeMap;
 }
-
-interface TabListContextValues {
-  tabListItemIndex: number;
-  scrollContainer: HTMLElement | null;
-}
-export const TabListContext = createContext<TabListContextValues | null>(null);
 
 export const Tabs = (props: TabsProps) => {
   const tabsContext = useContext(TabsContext);
