@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useStyles } from 'sku/react-treat';
 
-import { useBoxStyles } from '../Box/useBoxStyles';
-import * as styleRefs from '../HiddenVisually/HiddenVisually.treat';
+import { useBoxStyles } from '../../Box/useBoxStyles';
+import * as styleRefs from '../../HiddenVisually/HiddenVisually.treat';
 
 let announcementCounter = 0;
 

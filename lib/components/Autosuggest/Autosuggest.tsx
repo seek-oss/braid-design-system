@@ -14,7 +14,7 @@ import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';
 import { Strong } from '../Strong/Strong';
 import { HiddenVisually } from '../HiddenVisually/HiddenVisually';
-import { Announcement } from '../Announcement/Announcement';
+import { Announcement } from '../private/Announcement/Announcement';
 import { Field, FieldProps } from '../private/Field/Field';
 import { ClearButton } from '../iconButtons/ClearButton/ClearButton';
 import { useTouchableSpace, useText } from '../../hooks/typography';
