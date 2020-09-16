@@ -6,10 +6,11 @@ import HeadingContext from '../Heading/HeadingContext';
 import * as styleRefs from './HiddenVisually.treat';
 
 interface HiddenVisuallyProps {
+  id?: string;
   children: BoxProps['children'];
 }
 
-export const HiddenVisually = ({ children }: HiddenVisuallyProps) => {
+export const HiddenVisually = ({ id, children }: HiddenVisuallyProps) => {
   const styles = useStyles(styleRefs);
   const inText = Boolean(useContext(TextContext));
   const inHeading = Boolean(useContext(HeadingContext));
@@ -19,6 +20,7 @@ export const HiddenVisually = ({ children }: HiddenVisuallyProps) => {
   return (
     <Box
       component={component}
+      id={id}
       position="absolute"
       overflow="hidden"
       className={styles.root}

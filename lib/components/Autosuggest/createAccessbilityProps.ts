@@ -12,6 +12,7 @@ export const createAccessbilityProps = ({
 }: AutosuggestProps) => {
   const menuId = `${id}-menu`;
   const labelId = `${id}-label`;
+  const assistiveDescriptionId = `${id}-aria-description`;
 
   return {
     labelProps: {
@@ -30,8 +31,12 @@ export const createAccessbilityProps = ({
         typeof highlightedIndex === 'number'
           ? getItemId(id, highlightedIndex)
           : undefined,
+      'aria-describedby': assistiveDescriptionId,
       autoComplete: 'off', // https://stackoverflow.com/questions/47775041/disable-autofill-in-chrome-63/47822599
       spellCheck: false,
+    } as const,
+    assistiveDescriptionProps: {
+      id: assistiveDescriptionId,
     } as const,
     menuProps: {
       id: menuId,

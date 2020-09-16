@@ -13,6 +13,8 @@ import parseHighlights from 'autosuggest-highlight/parse';
 import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';
 import { Strong } from '../Strong/Strong';
+import { HiddenVisually } from '../HiddenVisually/HiddenVisually';
+import { Announcement } from '../private/Announcement/Announcement';
 import { Field, FieldProps } from '../private/Field/Field';
 import { ClearButton } from '../iconButtons/ClearButton/ClearButton';
 import { useTouchableSpace, useText } from '../../hooks/typography';
@@ -23,6 +25,8 @@ import { smoothScroll } from '../private/smoothScroll';
 import { useScrollIntoView } from './useScrollIntoView';
 import { RemoveScroll } from 'react-remove-scroll';
 import { createAccessbilityProps, getItemId } from './createAccessbilityProps';
+import { autosuggest, AutosuggestTranslations } from '../../translations/en';
+
 import * as styleRefs from './Autosuggest.treat';
 
 type SuggestionMatch = Array<{ start: number; end: number }>;
@@ -73,6 +77,7 @@ interface AutosuggestState<Value> {
   isOpen: boolean;
   inputChangedSinceFocus: boolean;
   previewValue: AutosuggestValue<Value> | null;
+  isFocused: boolean;
 }
 
 interface SuggestionItemProps {
@@ -245,6 +250,7 @@ export interface AutosuggestProps<Value>
   onClear?: () => void;
   placeholder?: string;
   type?: 'text' | 'search';
+  translations?: AutosuggestTranslations;
 }
 export function Autosuggest<Value>({
   id,
@@ -259,6 +265,7 @@ export function Autosuggest<Value>({
   placeholder,
   type = 'text',
   onClear,
+  translations = autosuggest,
   ...restProps
 }: AutosuggestProps<Value>) {
   const styles = useStyles(styleRefs);
@@ -279,7 +286,8 @@ export function Autosuggest<Value>({
     groupHeadingIndexes,
     groupHeadingForSuggestion,
   } = normaliseSuggestions(suggestions);
-  const hasSuggestions = normalisedSuggestions.length > 0;
+  const suggestionCount = normalisedSuggestions.length;
+  const hasSuggestions = suggestionCount > 0;
 
   const reducer = (state: AutosuggestState<Value>, action: Action) => {
     switch (action.type) {
@@ -288,7 +296,7 @@ export function Autosuggest<Value>({
           const nextIndex = getNextIndex(
             1,
             state.highlightedIndex,
-            normalisedSuggestions.length,
+            suggestionCount,
           );
 
           return {
@@ -305,7 +313,7 @@ export function Autosuggest<Value>({
           const nextIndex = getNextIndex(
             -1,
             state.highlightedIndex,
-            normalisedSuggestions.length,
+            suggestionCount,
           );
 
           return {
@@ -335,6 +343,7 @@ export function Autosuggest<Value>({
           ...state,
           isOpen: hasSuggestions,
           inputChangedSinceFocus: false,
+          isFocused: true,
         };
       }
 
@@ -344,6 +353,7 @@ export function Autosuggest<Value>({
           isOpen: false,
           previewValue: null,
           highlightedIndex: null,
+          isFocused: false,
         };
       }
 
@@ -409,13 +419,20 @@ export function Autosuggest<Value>({
   };
 
   const [
-    { isOpen, inputChangedSinceFocus, previewValue, highlightedIndex },
+    {
+      isOpen,
+      inputChangedSinceFocus,
+      previewValue,
+      highlightedIndex,
+      isFocused,
+    },
     dispatch,
   ] = useReducer(reducer, {
     isOpen: false,
     inputChangedSinceFocus: false,
     previewValue: null,
     highlightedIndex: null,
+    isFocused: false,
   });
 
   const highlightedItem =
@@ -469,7 +486,7 @@ export function Autosuggest<Value>({
         automaticSelection &&
         inputChangedSinceFocus &&
         value.text.length > 0 &&
-        normalisedSuggestions.length > 0
+        suggestionCount > 0
       ) {
         fireChange(normalisedSuggestions[0]);
       }
@@ -536,6 +553,35 @@ export function Autosuggest<Value>({
       typeof value !== 'undefined' &&
       value.text.length > 0,
   );
+
+  const announcements = [];
+  const hasAutomaticSelection =
+    automaticSelection && previewValue === null && highlightedIndex === 0;
+
+  // Announce when the field is focused and no selections have been manually highlighted
+  if (
+    isFocused &&
+    isOpen &&
+    (highlightedIndex === null || hasAutomaticSelection)
+  ) {
+    if (hasSuggestions) {
+      announcements.push(
+        translations.suggestionsAvailableAnnouncement(suggestionCount),
+      );
+
+      if (hasAutomaticSelection) {
+        announcements.push(
+          translations.suggestionAutoSelectedAnnouncement(
+            normalisedSuggestions[0].text,
+          ),
+        );
+      }
+
+      announcements.push(translations.suggestionInstructions);
+    } else {
+      announcements.push(translations.noSuggestionsAvailableAnnouncement);
+    }
+  }
 
   return (
     <Fragment>
@@ -652,6 +698,10 @@ export function Autosuggest<Value>({
             )}
           </Field>
         </Box>
+        <HiddenVisually {...a11y.assistiveDescriptionProps}>
+          {translations.assistiveDescription}
+        </HiddenVisually>
+        <Announcement>{announcements.join('. ')}</Announcement>
       </Box>
     </Fragment>
   );

@@ -81,6 +81,13 @@ Object {
         | "critical"
         | "neutral"
         | "positive"
+    translations?: {
+        assistiveDescription: string
+        noSuggestionsAvailableAnnouncement: string
+        suggestionAutoSelectedAnnouncement: (suggestion: string) => string
+        suggestionInstructions: string
+        suggestionsAvailableAnnouncement: (suggestionCount: number) => string
+    }
     type?: 
         | "search"
         | "text"
@@ -2572,6 +2579,7 @@ Object {
   exportType: component,
   props: {
     children: ReactNode
+    id?: string
 },
 }
 `;
