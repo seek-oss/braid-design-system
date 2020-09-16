@@ -554,27 +554,32 @@ export function Autosuggest<Value>({
       value.text.length > 0,
   );
 
-  let announcement = '';
+  const announcements = [];
+  const hasAutomaticSelection =
+    automaticSelection && previewValue === null && highlightedIndex === 0;
 
   // Announce when the field is focused and no selections have been manually highlighted
   if (
     isFocused &&
-    (highlightedIndex === null || (automaticSelection && previewValue === null))
+    isOpen &&
+    (highlightedIndex === null || hasAutomaticSelection)
   ) {
     if (hasSuggestions) {
-      announcement = translations.suggestionsAvailableAnnouncement(
-        suggestionCount,
+      announcements.push(
+        translations.suggestionsAvailableAnnouncement(suggestionCount),
       );
 
-      if (automaticSelection) {
-        announcement = announcement.concat(
-          `. ${translations.suggestionAutoSelectedAnnouncement(
+      if (hasAutomaticSelection) {
+        announcements.push(
+          translations.suggestionAutoSelectedAnnouncement(
             normalisedSuggestions[0].text,
-          )}.`,
+          ),
         );
       }
+
+      announcements.push(translations.suggestionInstructions);
     } else {
-      announcement = translations.noSuggestionsAvailableAnnouncement;
+      announcements.push(translations.noSuggestionsAvailableAnnouncement);
     }
   }
 
@@ -696,7 +701,7 @@ export function Autosuggest<Value>({
         <HiddenVisually {...a11y.assistiveDescriptionProps}>
           {translations.assistiveDescription}
         </HiddenVisually>
-        <Announcement>{announcement}</Announcement>
+        <Announcement>{announcements.join('. ')}</Announcement>
       </Box>
     </Fragment>
   );
