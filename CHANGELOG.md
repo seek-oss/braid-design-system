@@ -1,5 +1,31 @@
 # braid-design-system
 
+## 29.6.0
+
+### Minor Changes
+
+- **HiddenVisually:** Add support for passing IDs ([#757](https://github.com/seek-oss/braid-design-system/pull/757))
+
+  This is useful when mapping a `HiddenVisually` component to `aria-describedby`
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <HiddenVisually id="my-hidden-desciption">Hidden desciption</HiddenVisually>
+  ```
+
+- **Autosuggest:** Add translations prop to enable internationalisation ([#757](https://github.com/seek-oss/braid-design-system/pull/757))
+
+### Patch Changes
+
+- **Autosuggest:** Improve screen reader experience ([#757](https://github.com/seek-oss/braid-design-system/pull/757))
+
+  Add description informing user that suggestions will appear below field. Also, notify users about how many suggestions are available, and about automatic selections.
+
+- **TextField, PasswordField, Textarea, Dropdown:** Add support for multiple field descriptions ([#757](https://github.com/seek-oss/braid-design-system/pull/757))
+
+  Previously, if a custom `aria-describedby` prop was passed, it would take precedence over the `message` prop, which also uses `aria-describedby`. Both descriptions can now be applied at the same time.
+
 ## 29.5.1
 
 ### Patch Changes
