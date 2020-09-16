@@ -85,6 +85,7 @@ Object {
         assistiveDescription: string
         noSuggestionsAvailableAnnouncement: string
         suggestionAutoSelectedAnnouncement: (suggestion: string) => string
+        suggestionInstructions: string
         suggestionsAvailableAnnouncement: (suggestionCount: number) => string
     }
     type?: 
