@@ -7,7 +7,7 @@ updated:
   - HiddenVisually 
 ---
 
-**HiddenVisually:** Add support for passing ids
+**HiddenVisually:** Add support for passing IDs
 
 This is useful when mapping a `HiddenVisually` component to `aria-describedby`
 
