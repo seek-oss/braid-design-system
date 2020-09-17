@@ -12,6 +12,7 @@ export interface FieldLabelProps {
   secondaryLabel?: ReactNode;
   tertiaryLabel?: ReactNode;
   description?: ReactNode;
+  descriptionId?: string;
 }
 
 export const FieldLabel = ({
@@ -21,6 +22,7 @@ export const FieldLabel = ({
   secondaryLabel,
   tertiaryLabel,
   description,
+  descriptionId,
 }: FieldLabelProps) => {
   if (!label) {
     return null;
@@ -47,7 +49,9 @@ export const FieldLabel = ({
       </Box>
       {description ? (
         <Box paddingY="xxsmall">
-          <Text tone="secondary">{description}</Text>
+          <Text tone="secondary" id={descriptionId}>
+            {description}
+          </Text>
         </Box>
       ) : null}
     </Stack>

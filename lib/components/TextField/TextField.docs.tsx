@@ -127,6 +127,20 @@ const docs: ComponentDocs = {
       ),
     },
     {
+      label: 'TextField with description',
+      Container,
+      Example: ({ id, handler }) => (
+        <TextField
+          label="Title"
+          secondaryLabel="Optional"
+          description="Longer description of this field"
+          id={id}
+          value=""
+          onChange={handler}
+        />
+      ),
+    },
+    {
       label: 'TextField with error',
       Container,
       Example: ({ id, handler }) => (
