@@ -2325,6 +2325,7 @@ Object {
   exportType: component,
   props: {
     description?: ReactNode
+    descriptionId?: string
     htmlFor: 
         | false
         | string

@@ -45,6 +45,7 @@ export const FieldGroup = ({
   required,
 }: InternalFieldGroupProps) => {
   const messageId = `${id}-message`;
+  const descriptionId = description ? `${id}-description` : undefined;
 
   return (
     <Box
@@ -62,6 +63,7 @@ export const FieldGroup = ({
               secondaryLabel={secondaryLabel}
               tertiaryLabel={tertiaryLabel}
               description={description}
+              descriptionId={descriptionId}
             />
           </Box>
         ) : null}
