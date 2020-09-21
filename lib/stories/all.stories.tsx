@@ -22,115 +22,122 @@ const DefaultContainer = ({ children }: { children: ReactNode }) => (
   <Fragment>{children}</Fragment>
 );
 
-const req = require.context('../components', true, /\.docs\.tsx?$/);
-req.keys().forEach((filename) => {
+const getComponentName = (filename: string) => {
   const matches = filename.match(/([a-zA-Z]+)\.docs\.tsx?$/);
   if (!matches) {
-    return;
+    throw new Error(`Expected file name ending in .docs.tsx, got ${filename}`);
   }
 
-  const componentName = matches[1];
-  const stories = storiesOf(componentName, module);
-  const docs = req(filename).default as ComponentDocs;
+  return matches[1];
+};
 
-  if (
-    !docs.examples.some(
-      ({ Example, storybook }) =>
-        typeof Example === 'function' && storybook !== false,
-    )
-  ) {
-    return;
-  }
+const req = require.context('../components', true, /\.docs\.tsx?$/);
+req
+  .keys()
+  .sort((a, b) => getComponentName(a).localeCompare(getComponentName(b)))
+  .forEach((filename) => {
+    const componentName = getComponentName(filename);
+    const stories = storiesOf(componentName, module);
+    const docs = req(filename).default as ComponentDocs;
 
-  const storyThemes = values(themes).filter((theme) => {
-    if (theme.name === 'docs') {
-      return false;
+    if (
+      !docs.examples.some(
+        ({ Example, storybook }) =>
+          typeof Example === 'function' && storybook !== false,
+      )
+    ) {
+      return;
     }
 
-    return docs.screenshotOnlyInWireframe
-      ? theme.name === 'wireframe'
-      : theme.name !== 'wireframe';
-  });
+    const storyThemes = values(themes).filter((theme) => {
+      if (theme.name === 'docs') {
+        return false;
+      }
 
-  storyThemes.forEach((theme) => {
-    const storyConfig = {
-      chromatic: {
-        viewports: docs.screenshotWidths,
-      },
-    };
+      return docs.screenshotOnlyInWireframe
+        ? theme.name === 'wireframe'
+        : theme.name !== 'wireframe';
+    });
 
-    const renderStory = () => (
-      <BrowserRouter>
-        <BraidProvider theme={theme}>
-          <style type="text/css">
-            {`
+    storyThemes.forEach((theme) => {
+      const storyConfig = {
+        chromatic: {
+          viewports: docs.screenshotWidths,
+        },
+      };
+
+      const renderStory = () => (
+        <BrowserRouter>
+          <BraidProvider theme={theme}>
+            <style type="text/css">
+              {`
               .noAnimation * {
                 animation-delay: -0.0001s !important;
                 animation-duration: 0s !important;
                 animation-play-state: paused !important;
               }`}
-          </style>
-          <div
-            className="noAnimation"
-            style={{
-              background: 'white',
-            }}
-          >
-            {docs.examples.map(
-              (
-                {
-                  storybook = true,
-                  label = componentName,
-                  Example,
-                  Container = DefaultContainer,
-                  background = 'body',
-                },
-                i,
-              ) =>
-                Example && storybook ? (
-                  <div
-                    key={i}
-                    style={{
-                      minHeight: 300,
-                      paddingBottom: 32,
-                      overflow: 'hidden',
-                    }}
-                  >
-                    <h4
+            </style>
+            <div
+              className="noAnimation"
+              style={{
+                background: 'white',
+              }}
+            >
+              {docs.examples.map(
+                (
+                  {
+                    storybook = true,
+                    label = componentName,
+                    Example,
+                    Container = DefaultContainer,
+                    background = 'body',
+                  },
+                  i,
+                ) =>
+                  Example && storybook ? (
+                    <div
+                      key={i}
                       style={{
-                        margin: 0,
-                        marginBottom: 18,
-                        padding: 0,
-                        fontSize: 14,
-                        fontFamily: 'arial',
-                        color: '#ccc',
+                        minHeight: 300,
+                        paddingBottom: 32,
+                        overflow: 'hidden',
                       }}
                     >
-                      {label}
-                    </h4>
-                    <Box background={background} style={{ padding: 12 }}>
-                      <Container>
-                        <Example id="id" handler={handler} />
-                      </Container>
-                    </Box>
-                    <div style={{ paddingTop: 18 }}>
-                      <hr
+                      <h4
                         style={{
                           margin: 0,
-                          border: 0,
-                          height: 1,
-                          background: '#eee',
+                          marginBottom: 18,
+                          padding: 0,
+                          fontSize: 14,
+                          fontFamily: 'arial',
+                          color: '#ccc',
                         }}
-                      />
+                      >
+                        {label}
+                      </h4>
+                      <Box background={background} style={{ padding: 12 }}>
+                        <Container>
+                          <Example id="id" handler={handler} />
+                        </Container>
+                      </Box>
+                      <div style={{ paddingTop: 18 }}>
+                        <hr
+                          style={{
+                            margin: 0,
+                            border: 0,
+                            height: 1,
+                            background: '#eee',
+                          }}
+                        />
+                      </div>
                     </div>
-                  </div>
-                ) : null,
-            )}
-          </div>
-        </BraidProvider>
-      </BrowserRouter>
-    );
+                  ) : null,
+              )}
+            </div>
+          </BraidProvider>
+        </BrowserRouter>
+      );
 
-    stories.add(theme.name, renderStory, storyConfig);
+      stories.add(theme.name, renderStory, storyConfig);
+    });
   });
-});

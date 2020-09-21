@@ -1,8 +1,8 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState, Fragment, ReactNode } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import {
   Actions,
-  Dialog,
+  Drawer,
   Button,
   Inline,
   Text,
@@ -11,12 +11,20 @@ import {
   IconMail,
   Box,
   Strong,
-} from '../';
+} from '..';
 import {
   Placeholder,
-  Dialog as PlayroomDialog,
+  Drawer as PlayroomDrawer,
 } from '../../playroom/components';
-import { DialogCard } from './DialogCard';
+import { ModalPanel } from '../private/Modal/ModalPanel';
+
+const makeExampleContent = ({ label }: { label?: ReactNode } = {}) => (
+  <Stack space="large">
+    {[...new Array(20)].map((_, i) => (
+      <Placeholder key={i} height={100} width="100%" label={label} />
+    ))}
+  </Stack>
+);
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -25,18 +33,18 @@ const docs: ComponentDocs = {
     <Stack space="large">
       <Text>
         Follows the{' '}
-        <TextLink href="https://www.w3.org/TR/wai-aria-practices-1.2/#dialog_modal">
+        <TextLink href="https://www.w3.org/TR/wai-aria-practices-1.2/#drawer_modal">
           WAI-ARIA Dialog (Modal) Pattern.
         </TextLink>
       </Text>
       <Text>
-        The Dialog component provides a way to focus the user&rsquo;s attention
+        The Drawer component provides a way to focus the user&rsquo;s attention
         on a specific subtask or flow within the context of another experience.
-        In order to keep experiences simple, Dialogs{' '}
+        In order to keep experiences simple, Drawers{' '}
         <Strong>cannot be nested</Strong> inside one another.
       </Text>
       <Text>
-        Dialogs should only be used as a last resort when other in-flow
+        Drawers should only be used as a last resort when other in-flow
         alternatives are not suitable.
       </Text>
     </Stack>
@@ -52,61 +60,17 @@ const docs: ComponentDocs = {
         return (
           <Fragment>
             <Actions>
-              <Button onClick={() => setOpen(true)}>Open default dialog</Button>
+              <Button onClick={() => setOpen(true)}>Open default drawer</Button>
             </Actions>
 
-            <Dialog
+            <Drawer
               id="default"
-              title="Default Dialog Example"
+              title="Default Drawer Example"
               open={open}
               onClose={setOpen}
             >
-              <Stack space="large">
-                {[...new Array(20)].map((_, i) => (
-                  <Placeholder key={i} height={100} width="100%" />
-                ))}
-              </Stack>
-            </Dialog>
-          </Fragment>
-        );
-      },
-    },
-    {
-      label: 'With illustration/logo',
-      playroom: false,
-      storybook: false,
-      Example: () => {
-        const [open, setOpen] = useState(false);
-
-        return (
-          <Fragment>
-            <Actions>
-              <Button onClick={() => setOpen(true)}>
-                Open illustrated dialog
-              </Button>
-            </Actions>
-
-            <Dialog
-              id="illustrated"
-              title="Illustrated Example"
-              illustration={
-                <Box style={{ height: 100, width: 100 }}>
-                  <IconMail size="fill" />
-                </Box>
-              }
-              open={open}
-              onClose={setOpen}
-            >
-              <Stack space="xlarge" align="center">
-                <Placeholder width="100%" height={100} />
-                <Inline space="small">
-                  <Button onClick={() => setOpen(false)}>Got it</Button>
-                  <Button weight="weak" onClick={() => setOpen(false)}>
-                    Cancel
-                  </Button>
-                </Inline>
-              </Stack>
-            </Dialog>
+              {makeExampleContent()}
+            </Drawer>
           </Fragment>
         );
       },
@@ -122,13 +86,13 @@ const docs: ComponentDocs = {
           <Fragment>
             <Actions>
               <Button onClick={() => setOpen(true)}>
-                Open dialog with description
+                Open drawer with description
               </Button>
             </Actions>
 
-            <Dialog
+            <Drawer
               id="description"
-              title="Dialog with description"
+              title="Drawer with description"
               description={
                 <Text tone="secondary">
                   More context to describe this task.
@@ -137,8 +101,8 @@ const docs: ComponentDocs = {
               open={open}
               onClose={setOpen}
             >
-              <Placeholder height={100} width="100%" />
-            </Dialog>
+              {makeExampleContent()}
+            </Drawer>
           </Fragment>
         );
       },
@@ -154,19 +118,19 @@ const docs: ComponentDocs = {
           <Fragment>
             <Actions>
               <Button onClick={() => setOpen(true)}>
-                Open content-sized dialog
+                Open content-sized drawer
               </Button>
             </Actions>
 
-            <Dialog
+            <Drawer
               id="content"
               title="Content-sized"
               width="content"
               open={open}
               onClose={setOpen}
             >
-              <Placeholder height={100} width={200} label="200px wide" />
-            </Dialog>
+              {makeExampleContent({ label: '200px wide' })}
+            </Drawer>
           </Fragment>
         );
       },
@@ -181,29 +145,27 @@ const docs: ComponentDocs = {
         return (
           <Fragment>
             <Actions>
-              <Button onClick={() => setOpen(true)}>Open xsmall dialog</Button>
+              <Button onClick={() => setOpen(true)}>Open xsmall drawer</Button>
             </Actions>
 
-            <Dialog
+            <Drawer
               id="xsmall"
-              title="Xsmall Dialog"
+              title="Xsmall Drawer"
               width="xsmall"
               open={open}
               onClose={setOpen}
             >
-              <Placeholder
-                height={100}
-                width="100%"
-                label={
+              {makeExampleContent({
+                label: (
                   <Fragment>
                     Uses a xsmall{' '}
                     <TextLink href="/components/ContentBlock">
                       ContentBlock
                     </TextLink>
                   </Fragment>
-                }
-              />
-            </Dialog>
+                ),
+              })}
+            </Drawer>
           </Fragment>
         );
       },
@@ -218,29 +180,27 @@ const docs: ComponentDocs = {
         return (
           <Fragment>
             <Actions>
-              <Button onClick={() => setOpen(true)}>Open small dialog</Button>
+              <Button onClick={() => setOpen(true)}>Open small drawer</Button>
             </Actions>
 
-            <Dialog
+            <Drawer
               id="small"
-              title="Small Dialog"
+              title="Small Drawer"
               width="small"
               open={open}
               onClose={setOpen}
             >
-              <Placeholder
-                height={100}
-                width="100%"
-                label={
+              {makeExampleContent({
+                label: (
                   <Fragment>
                     Uses a small{' '}
                     <TextLink href="/components/ContentBlock">
                       ContentBlock
                     </TextLink>
                   </Fragment>
-                }
-              />
-            </Dialog>
+                ),
+              })}
+            </Drawer>
           </Fragment>
         );
       },
@@ -255,29 +215,27 @@ const docs: ComponentDocs = {
         return (
           <Fragment>
             <Actions>
-              <Button onClick={() => setOpen(true)}>Open medium dialog</Button>
+              <Button onClick={() => setOpen(true)}>Open medium drawer</Button>
             </Actions>
 
-            <Dialog
+            <Drawer
               id="medium"
-              title="Medium Dialog"
+              title="Medium Drawer"
               width="medium"
               open={open}
               onClose={setOpen}
             >
-              <Placeholder
-                height={100}
-                width="100%"
-                label={
+              {makeExampleContent({
+                label: (
                   <Fragment>
                     Uses a medium{' '}
                     <TextLink href="/components/ContentBlock">
                       ContentBlock
                     </TextLink>
                   </Fragment>
-                }
-              />
-            </Dialog>
+                ),
+              })}
+            </Drawer>
           </Fragment>
         );
       },
@@ -292,61 +250,27 @@ const docs: ComponentDocs = {
         return (
           <Fragment>
             <Actions>
-              <Button onClick={() => setOpen(true)}>Open large dialog</Button>
+              <Button onClick={() => setOpen(true)}>Open large drawer</Button>
             </Actions>
 
-            <Dialog
+            <Drawer
               id="large"
-              title="Large Dialog"
+              title="Large Drawer"
               width="large"
               open={open}
               onClose={setOpen}
             >
-              <Placeholder
-                height={100}
-                width="100%"
-                label={
+              {makeExampleContent({
+                label: (
                   <Fragment>
                     Uses a large{' '}
                     <TextLink href="/components/ContentBlock">
                       ContentBlock
                     </TextLink>
                   </Fragment>
-                }
-              />
-            </Dialog>
-          </Fragment>
-        );
-      },
-    },
-    {
-      label: 'With additional description',
-      playroom: false,
-      storybook: false,
-      Example: () => {
-        const [open, setOpen] = useState(false);
-
-        return (
-          <Fragment>
-            <Actions>
-              <Button onClick={() => setOpen(true)}>
-                Open dialog with description
-              </Button>
-            </Actions>
-
-            <Dialog
-              id="description"
-              title="Dialog with description"
-              description={
-                <Text tone="secondary">
-                  More context to describe this task.
-                </Text>
-              }
-              open={open}
-              onClose={setOpen}
-            >
-              <Placeholder height={100} width="100%" />
-            </Dialog>
+                ),
+              })}
+            </Drawer>
           </Fragment>
         );
       },
@@ -357,21 +281,21 @@ const docs: ComponentDocs = {
       label: 'Test: Default',
       docsSite: false,
       Example: () => (
-        <DialogCard
+        <ModalPanel
           id="default"
           title="Default test"
           onClose={() => {}}
           scrollLock={false}
         >
           <Placeholder height={100} width="100%" />
-        </DialogCard>
+        </ModalPanel>
       ),
     },
     {
       label: 'Test: With illustration/logo',
       docsSite: false,
       Example: () => (
-        <DialogCard
+        <ModalPanel
           id="illustrated"
           title="Illustration test"
           illustration={
@@ -392,14 +316,14 @@ const docs: ComponentDocs = {
               <Placeholder height={44} width={80} label="Cancel" />
             </Inline>
           </Stack>
-        </DialogCard>
+        </ModalPanel>
       ),
     },
     {
       label: 'Test: Description',
       docsSite: false,
       Example: () => (
-        <DialogCard
+        <ModalPanel
           id="description"
           title="Description test"
           description={
@@ -409,7 +333,7 @@ const docs: ComponentDocs = {
           scrollLock={false}
         >
           <Placeholder height={100} width="100%" />
-        </DialogCard>
+        </ModalPanel>
       ),
     },
     {
@@ -417,7 +341,7 @@ const docs: ComponentDocs = {
       docsSite: false,
       Example: () => (
         <Box display="flex" alignItems="center" justifyContent="center">
-          <DialogCard
+          <ModalPanel
             id="content"
             title="Content-sized"
             width="content"
@@ -425,7 +349,7 @@ const docs: ComponentDocs = {
             scrollLock={false}
           >
             <Placeholder height={100} width={200} label="200px wide" />
-          </DialogCard>
+          </ModalPanel>
         </Box>
       ),
     },
@@ -433,60 +357,60 @@ const docs: ComponentDocs = {
       label: 'Test: Xsmall width',
       docsSite: false,
       Example: () => (
-        <DialogCard
+        <ModalPanel
           id="xsmall"
           title="Xsmall"
           width="xsmall"
           onClose={() => {}}
           scrollLock={false}
         >
-          <Placeholder height={100} width="100%" label="Xsmall Dialog" />
-        </DialogCard>
+          <Placeholder height={100} width="100%" label="Xsmall Drawer" />
+        </ModalPanel>
       ),
     },
     {
       label: 'Test: Small width',
       docsSite: false,
       Example: () => (
-        <DialogCard
+        <ModalPanel
           id="small"
           title="Small"
           width="small"
           onClose={() => {}}
           scrollLock={false}
         >
-          <Placeholder height={100} width="100%" label="Small Dialog" />
-        </DialogCard>
+          <Placeholder height={100} width="100%" label="Small Drawer" />
+        </ModalPanel>
       ),
     },
     {
       label: 'Test: Medium width',
       docsSite: false,
       Example: () => (
-        <DialogCard
+        <ModalPanel
           id="medium"
           title="Medium"
           width="medium"
           onClose={() => {}}
           scrollLock={false}
         >
-          <Placeholder height={100} width="100%" label="Medium Dialog" />
-        </DialogCard>
+          <Placeholder height={100} width="100%" label="Medium Drawer" />
+        </ModalPanel>
       ),
     },
     {
       label: 'Test: Large width',
       docsSite: false,
       Example: () => (
-        <DialogCard
+        <ModalPanel
           id="large"
           title="Large"
           width="large"
           onClose={() => {}}
           scrollLock={false}
         >
-          <Placeholder height={100} width="100%" label="Large Dialog" />
-        </DialogCard>
+          <Placeholder height={100} width="100%" label="Large Drawer" />
+        </ModalPanel>
       ),
     },
   ],
@@ -494,16 +418,16 @@ const docs: ComponentDocs = {
     {
       name: 'Standard',
       code: (
-        <PlayroomDialog title="Dialog Heading">
+        <PlayroomDrawer title="Drawer Heading">
           <Placeholder width={250} height={100} />
-        </PlayroomDialog>
+        </PlayroomDrawer>
       ),
     },
     {
       name: 'With illustration',
       code: (
-        <PlayroomDialog
-          title="Illustrated Dialog"
+        <PlayroomDrawer
+          title="Illustrated Drawer"
           illustration={
             <Box style={{ height: 100, width: 100 }}>
               <IconMail size="fill" />
@@ -517,39 +441,39 @@ const docs: ComponentDocs = {
               <Button weight="weak">Cancel</Button>
             </Inline>
           </Stack>
-        </PlayroomDialog>
+        </PlayroomDrawer>
       ),
     },
     {
       name: 'Xsmall',
       code: (
-        <PlayroomDialog title="Dialog Heading" width="xsmall">
+        <PlayroomDrawer title="Drawer Heading" width="xsmall">
           <Placeholder width="100%" height={100} />
-        </PlayroomDialog>
+        </PlayroomDrawer>
       ),
     },
     {
       name: 'Small',
       code: (
-        <PlayroomDialog title="Dialog Heading" width="small">
+        <PlayroomDrawer title="Drawer Heading" width="small">
           <Placeholder width="100%" height={100} />
-        </PlayroomDialog>
+        </PlayroomDrawer>
       ),
     },
     {
       name: 'Medium',
       code: (
-        <PlayroomDialog title="Dialog Heading" width="medium">
+        <PlayroomDrawer title="Drawer Heading" width="medium">
           <Placeholder width="100%" height={100} />
-        </PlayroomDialog>
+        </PlayroomDrawer>
       ),
     },
     {
       name: 'Large',
       code: (
-        <PlayroomDialog title="Dialog Heading" width="large">
+        <PlayroomDrawer title="Drawer Heading" width="large">
           <Placeholder width="100%" height={100} />
-        </PlayroomDialog>
+        </PlayroomDrawer>
       ),
     },
   ],

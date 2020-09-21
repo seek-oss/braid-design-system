@@ -34,6 +34,7 @@ export { ContentBlock } from './ContentBlock/ContentBlock';
 export { Dialog } from './Dialog/Dialog';
 export { Disclosure } from './Disclosure/Disclosure';
 export { Divider } from './Divider/Divider';
+export { Drawer } from './Drawer/Drawer';
 export { Dropdown } from './Dropdown/Dropdown';
 export { FieldLabel } from './FieldLabel/FieldLabel';
 export { FieldMessage } from './FieldMessage/FieldMessage';

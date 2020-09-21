@@ -8,14 +8,13 @@ import React, {
 } from 'react';
 import { RemoveScroll } from 'react-remove-scroll';
 import { useStyles } from 'sku/react-treat';
-import { Box } from '../Box/Box';
+import { Box, BoxProps } from '../Box/Box';
 import { ClearButton } from '../iconButtons/ClearButton/ClearButton';
 import { normalizeKey } from '../private/normalizeKey';
 import { Heading } from '../Heading/Heading';
 import { Stack } from '../Stack/Stack';
 import { Columns } from '../Columns/Columns';
 import { Column } from '../Column/Column';
-import { ContentBlock, ContentBlockProps } from '../ContentBlock/ContentBlock';
 import { Overlay } from '../private/Overlay/Overlay';
 import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import * as styleRefs from './Dialog.treat';
@@ -26,7 +25,7 @@ export interface DialogCardProps {
   children: ReactNode;
   onClose: () => void;
   closeLabel?: string;
-  width?: ContentBlockProps['width'] | 'content';
+  width?: BoxProps['maxWidth'] | 'content';
   description?: ReactNodeNoStrings;
   illustration?: ReactNodeNoStrings;
 }
@@ -75,19 +74,6 @@ const DialogHeader = forwardRef<HTMLElement, DialogHeaderProps>(
   },
 );
 
-const Container = ({
-  children,
-  width,
-}: {
-  children: ReactNode;
-  width: DialogCardProps['width'];
-}) =>
-  width !== 'content' ? (
-    <ContentBlock width={width}>{children}</ContentBlock>
-  ) : (
-    <Fragment>{children}</Fragment>
-  );
-
 export const DialogCard = ({
   id,
   children,
@@ -119,7 +105,7 @@ export const DialogCard = ({
   };
 
   return (
-    <Container width={width}>
+    <Box maxWidth={width === 'content' ? undefined : width}>
       {/* DialogRef gets forwarded down to UL by RemoveScroll by `forwardProps`. */}
       <RemoveScroll ref={dialogRef} forwardProps enabled={scrollLock}>
         <Box
@@ -185,6 +171,6 @@ export const DialogCard = ({
           </Box>
         </Box>
       </RemoveScroll>
-    </Container>
+    </Box>
   );
 };

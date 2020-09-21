@@ -1,5 +1,5 @@
 import { style } from 'sku/treat';
-import { externalGutter } from './DialogExternalGutter';
+import { externalGutter } from './DrawerExternalGutter';
 
 export const backdrop = style({
   background: 'rgba(0, 0, 0, .4)',
@@ -8,7 +8,7 @@ export const backdrop = style({
 export const entrance = style({
   '@media': {
     'not screen and (prefers-reduced-motion)': {
-      transform: 'scale(.8)',
+      transform: 'translateX(100px)',
     },
   },
 });
@@ -22,22 +22,22 @@ export const dialogContent = [
   style({
     pointerEvents: 'all',
   }),
-  style(({ utils, space, grid }) =>
-    utils.responsiveStyle({
-      mobile: {
-        maxHeight: `calc(100vh - ${grid * space[externalGutter[0]] * 2}px)`,
-        maxWidth: `calc(100vw - ${grid * space[externalGutter[0]] * 2}px)`,
-      },
-      tablet: {
-        maxHeight: `calc(100vh - ${grid * space[externalGutter[1]] * 2}px)`,
-        maxWidth: `calc(100vw - ${grid * space[externalGutter[1]] * 2}px)`,
-      },
-      desktop: {
-        maxHeight: `calc(100vh - ${grid * space[externalGutter[2]] * 2}px)`,
-        maxWidth: `calc(100vw - ${grid * space[externalGutter[2]] * 2}px)`,
-      },
-    }),
-  ),
+  // style(({ utils, space, grid }) =>
+  //   utils.responsiveStyle({
+  //     mobile: {
+  //       maxHeight: `calc(100vh - ${grid * space[externalGutter[0]] * 2}px)`,
+  //       maxWidth: `calc(100vw - ${grid * space[externalGutter[0]] * 2}px)`,
+  //     },
+  //     tablet: {
+  //       maxHeight: `calc(100vh - ${grid * space[externalGutter[1]] * 2}px)`,
+  //       maxWidth: `calc(100vw - ${grid * space[externalGutter[1]] * 2}px)`,
+  //     },
+  //     desktop: {
+  //       maxHeight: `calc(100vh - ${grid * space[externalGutter[2]] * 2}px)`,
+  //       maxWidth: `calc(100vw - ${grid * space[externalGutter[2]] * 2}px)`,
+  //     },
+  //   }),
+  // ),
 ];
 
 export const heading = style({

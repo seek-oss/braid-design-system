@@ -48,6 +48,7 @@ export interface UseBoxStylesProps {
   pointerEvents?: keyof typeof styleRefs.pointerEvents;
   overflow?: keyof typeof styleRefs.overflow;
   minWidth?: keyof typeof styleRefs.minWidth;
+  maxWidth?: keyof typeof styleRefs.maxWidth;
   top?: keyof typeof styleRefs.relativePosition.top;
   bottom?: keyof typeof styleRefs.relativePosition.bottom;
   left?: keyof typeof styleRefs.relativePosition.left;
@@ -95,6 +96,7 @@ export const useBoxStyles = ({
   pointerEvents,
   overflow,
   minWidth,
+  maxWidth,
   top,
   bottom,
   right,
@@ -134,6 +136,7 @@ export const useBoxStyles = ({
     styles.pointerEvents[pointerEvents!],
     styles.overflow[overflow!],
     styles.minWidth[minWidth!],
+    styles.maxWidth[maxWidth!],
     styles.relativePosition.top[top!],
     styles.relativePosition.bottom[bottom!],
     styles.relativePosition.right[right!],
