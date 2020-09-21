@@ -15,10 +15,10 @@ import { hideOthers as ariaHideOthers } from 'aria-hidden';
 import assert from 'assert';
 import { Box } from '../../Box/Box';
 import { externalGutter } from './ModalExternalGutter';
-import { ModalPanel, ModalPanelProps } from './ModalPanel';
+import { ModalContent, ModalContentProps } from './ModalContent';
 import * as styleRefs from './Modal.treat';
 
-export interface ModalProps extends Omit<ModalPanelProps, 'onClose'> {
+export interface ModalProps extends Omit<ModalContentProps, 'onClose'> {
   open: boolean;
   onClose: (openState: false) => void;
 }
@@ -231,48 +231,32 @@ export const Modal = ({
             left={0}
             right={0}
             zIndex="modal"
-            display="flex"
-            alignItems="center"
-            justifyContent={
-              ({ center: 'center', right: 'flexEnd' } as const)[position]
-            }
             pointerEvents="none"
             transition="fast"
             opacity={state !== OPEN ? 0 : undefined}
             {...(position === 'right'
-              ? { paddingLeft: ['gutter', 'xxlarge'] }
+              ? { paddingLeft: ['none', 'xlarge'] }
               : { padding: externalGutter })}
             className={[
               styles.modalContainer,
               state === OPENING && styles.entrance[position],
             ]}
           >
-            <Box
-              maxWidth={width === 'content' ? undefined : width}
-              height="full"
-              width={width !== 'content' ? 'full' : undefined}
-              display="flex"
-              alignItems="center"
-              justifyContent={
-                ({ center: 'center', right: 'flexEnd' } as const)[position]
-              }
+            <ModalContent
+              id={id}
+              description={description}
+              onClose={initiateClose}
+              width={width}
+              closeLabel={closeLabel}
+              illustration={illustration}
+              title={title}
+              headingLevel={headingLevel}
+              headingRef={headingRef}
+              modalRef={modalRef}
+              position={position}
             >
-              <ModalPanel
-                id={id}
-                description={description}
-                onClose={initiateClose}
-                width={width}
-                closeLabel={closeLabel}
-                illustration={illustration}
-                title={title}
-                headingLevel={headingLevel}
-                headingRef={headingRef}
-                modalRef={modalRef}
-                position={position}
-              >
-                {children}
-              </ModalPanel>
-            </Box>
+              {children}
+            </ModalContent>
           </Box>
         </FocusLock>
       ) : null}

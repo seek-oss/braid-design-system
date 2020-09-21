@@ -4,7 +4,9 @@ import { Modal, ModalProps } from '../private/Modal/Modal';
 export { AllowCloseContext } from '../private/Modal/Modal';
 
 export interface DialogProps
-  extends Omit<ModalProps, 'position' | 'headingLevel'> {}
+  extends Omit<ModalProps, 'position' | 'headingLevel' | 'width'> {
+  width?: ModalProps['width'];
+}
 
 export const Dialog = ({ width = 'small', ...restProps }: DialogProps) => (
   <Modal width={width} {...restProps} position="center" headingLevel="3" />
