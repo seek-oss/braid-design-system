@@ -23,45 +23,6 @@ const navItemPaddingY = 'medium' as const;
 
 const NavigationItemIndexContext = createContext(-1);
 
-interface NavigationProps {
-  title: string;
-  children: ReactNode;
-}
-export const Navigation = ({ title, children }: NavigationProps) => {
-  const navigationItems = flattenChildren(children);
-
-  assert(
-    navigationItems.every(
-      (navigationItem) =>
-        typeof navigationItem === 'object' &&
-        navigationItem.type === NavigationItem,
-    ),
-    'All child nodes within a Navigation must be NavigationItem elements',
-  );
-
-  return (
-    <Box
-      component="nav"
-      aria-label={title}
-      className={[
-        useNegativeMarginTop(navItemPaddingY),
-        useNegativeMarginLeft(navItemPaddingX),
-      ]}
-    >
-      <Box component="ul" display="flex" alignItems="center">
-        {Children.map(navigationItems, (navigationItem, index) => (
-          <NavigationItemIndexContext.Provider value={index}>
-            {navigationItem}
-          </NavigationItemIndexContext.Provider>
-        ))}
-      </Box>
-      <Box paddingLeft={navItemPaddingX}>
-        <Divider />
-      </Box>
-    </Box>
-  );
-};
-
 interface NavigationItemProps {
   active?: boolean;
   href: string;
@@ -141,6 +102,45 @@ export const NavigationItem = ({
           </Box>
         </Box>
       </Link>
+    </Box>
+  );
+};
+
+interface NavigationProps {
+  title: string;
+  children: ReactNode;
+}
+export const Navigation = ({ title, children }: NavigationProps) => {
+  const navigationItems = flattenChildren(children);
+
+  assert(
+    navigationItems.every(
+      (navigationItem) =>
+        typeof navigationItem === 'object' &&
+        navigationItem.type === NavigationItem,
+    ),
+    'All child nodes within a Navigation must be NavigationItem elements',
+  );
+
+  return (
+    <Box
+      component="nav"
+      aria-label={title}
+      className={[
+        useNegativeMarginTop(navItemPaddingY),
+        useNegativeMarginLeft(navItemPaddingX),
+      ]}
+    >
+      <Box component="ul" display="flex" alignItems="center">
+        {Children.map(navigationItems, (navigationItem, index) => (
+          <NavigationItemIndexContext.Provider value={index}>
+            {navigationItem}
+          </NavigationItemIndexContext.Provider>
+        ))}
+      </Box>
+      <Box paddingLeft={navItemPaddingX}>
+        <Divider />
+      </Box>
     </Box>
   );
 };
