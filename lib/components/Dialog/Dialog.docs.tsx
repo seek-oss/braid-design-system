@@ -16,7 +16,6 @@ import {
   Placeholder,
   Dialog as PlayroomDialog,
 } from '../../playroom/components';
-import { DialogCard } from './DialogCard';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -46,7 +45,7 @@ const docs: ComponentDocs = {
       label: 'Default',
       playroom: false,
       storybook: false,
-      Example: () => {
+      Example: ({ id }) => {
         const [open, setOpen] = useState(false);
 
         return (
@@ -56,16 +55,12 @@ const docs: ComponentDocs = {
             </Actions>
 
             <Dialog
-              id="default"
+              id={id}
               title="Default Dialog Example"
               open={open}
               onClose={setOpen}
             >
-              <Stack space="large">
-                {[...new Array(20)].map((_, i) => (
-                  <Placeholder key={i} height={100} width="100%" />
-                ))}
-              </Stack>
+              <Placeholder height={100} width="100%" />
             </Dialog>
           </Fragment>
         );
@@ -75,7 +70,7 @@ const docs: ComponentDocs = {
       label: 'With illustration/logo',
       playroom: false,
       storybook: false,
-      Example: () => {
+      Example: ({ id }) => {
         const [open, setOpen] = useState(false);
 
         return (
@@ -87,7 +82,7 @@ const docs: ComponentDocs = {
             </Actions>
 
             <Dialog
-              id="illustrated"
+              id={id}
               title="Illustrated Example"
               illustration={
                 <Box style={{ height: 100, width: 100 }}>
@@ -115,7 +110,7 @@ const docs: ComponentDocs = {
       label: 'With additional description',
       playroom: false,
       storybook: false,
-      Example: () => {
+      Example: ({ id }) => {
         const [open, setOpen] = useState(false);
 
         return (
@@ -127,7 +122,7 @@ const docs: ComponentDocs = {
             </Actions>
 
             <Dialog
-              id="description"
+              id={id}
               title="Dialog with description"
               description={
                 <Text tone="secondary">
@@ -144,10 +139,41 @@ const docs: ComponentDocs = {
       },
     },
     {
+      label: 'With scrolling content',
+      playroom: false,
+      storybook: false,
+      Example: ({ id }) => {
+        const [open, setOpen] = useState(false);
+
+        return (
+          <Fragment>
+            <Actions>
+              <Button onClick={() => setOpen(true)}>
+                Open scrolling dialog
+              </Button>
+            </Actions>
+
+            <Dialog
+              id={id}
+              title="Dialog with scrolling content"
+              open={open}
+              onClose={setOpen}
+            >
+              <Stack space="large">
+                {[...new Array(20)].map((_, i) => (
+                  <Placeholder key={i} height={100} width="100%" />
+                ))}
+              </Stack>
+            </Dialog>
+          </Fragment>
+        );
+      },
+    },
+    {
       label: 'Sized to content',
       playroom: false,
       storybook: false,
-      Example: () => {
+      Example: ({ id }) => {
         const [open, setOpen] = useState(false);
 
         return (
@@ -159,7 +185,7 @@ const docs: ComponentDocs = {
             </Actions>
 
             <Dialog
-              id="content"
+              id={id}
               title="Content-sized"
               width="content"
               open={open}
@@ -175,7 +201,7 @@ const docs: ComponentDocs = {
       label: 'Xsmall width',
       playroom: false,
       storybook: false,
-      Example: () => {
+      Example: ({ id }) => {
         const [open, setOpen] = useState(false);
 
         return (
@@ -185,7 +211,7 @@ const docs: ComponentDocs = {
             </Actions>
 
             <Dialog
-              id="xsmall"
+              id={id}
               title="Xsmall Dialog"
               width="xsmall"
               open={open}
@@ -212,7 +238,7 @@ const docs: ComponentDocs = {
       label: 'Small width',
       playroom: false,
       storybook: false,
-      Example: () => {
+      Example: ({ id }) => {
         const [open, setOpen] = useState(false);
 
         return (
@@ -222,7 +248,7 @@ const docs: ComponentDocs = {
             </Actions>
 
             <Dialog
-              id="small"
+              id={id}
               title="Small Dialog"
               width="small"
               open={open}
@@ -249,7 +275,7 @@ const docs: ComponentDocs = {
       label: 'Medium width',
       playroom: false,
       storybook: false,
-      Example: () => {
+      Example: ({ id }) => {
         const [open, setOpen] = useState(false);
 
         return (
@@ -259,7 +285,7 @@ const docs: ComponentDocs = {
             </Actions>
 
             <Dialog
-              id="medium"
+              id={id}
               title="Medium Dialog"
               width="medium"
               open={open}
@@ -286,7 +312,7 @@ const docs: ComponentDocs = {
       label: 'Large width',
       playroom: false,
       storybook: false,
-      Example: () => {
+      Example: ({ id }) => {
         const [open, setOpen] = useState(false);
 
         return (
@@ -296,7 +322,7 @@ const docs: ComponentDocs = {
             </Actions>
 
             <Dialog
-              id="large"
+              id={id}
               title="Large Dialog"
               width="large"
               open={open}
@@ -318,176 +344,6 @@ const docs: ComponentDocs = {
           </Fragment>
         );
       },
-    },
-    {
-      label: 'With additional description',
-      playroom: false,
-      storybook: false,
-      Example: () => {
-        const [open, setOpen] = useState(false);
-
-        return (
-          <Fragment>
-            <Actions>
-              <Button onClick={() => setOpen(true)}>
-                Open dialog with description
-              </Button>
-            </Actions>
-
-            <Dialog
-              id="description"
-              title="Dialog with description"
-              description={
-                <Text tone="secondary">
-                  More context to describe this task.
-                </Text>
-              }
-              open={open}
-              onClose={setOpen}
-            >
-              <Placeholder height={100} width="100%" />
-            </Dialog>
-          </Fragment>
-        );
-      },
-    },
-
-    // Storybook tests
-    {
-      label: 'Test: Default',
-      docsSite: false,
-      Example: () => (
-        <DialogCard
-          id="default"
-          title="Default test"
-          onClose={() => {}}
-          scrollLock={false}
-        >
-          <Placeholder height={100} width="100%" />
-        </DialogCard>
-      ),
-    },
-    {
-      label: 'Test: With illustration/logo',
-      docsSite: false,
-      Example: () => (
-        <DialogCard
-          id="illustrated"
-          title="Illustration test"
-          illustration={
-            <Placeholder
-              height={150}
-              width={150}
-              shape="round"
-              label="Illustration"
-            />
-          }
-          onClose={() => {}}
-          scrollLock={false}
-        >
-          <Stack space="xlarge" align="center">
-            <Placeholder width="100%" height={100} />
-            <Inline space="small">
-              <Placeholder height={44} width={80} label="OK" />
-              <Placeholder height={44} width={80} label="Cancel" />
-            </Inline>
-          </Stack>
-        </DialogCard>
-      ),
-    },
-    {
-      label: 'Test: Description',
-      docsSite: false,
-      Example: () => (
-        <DialogCard
-          id="description"
-          title="Description test"
-          description={
-            <Placeholder height="auto" width="100%" label="Description" />
-          }
-          onClose={() => {}}
-          scrollLock={false}
-        >
-          <Placeholder height={100} width="100%" />
-        </DialogCard>
-      ),
-    },
-    {
-      label: 'Test: Content width',
-      docsSite: false,
-      Example: () => (
-        <Box display="flex" alignItems="center" justifyContent="center">
-          <DialogCard
-            id="content"
-            title="Content-sized"
-            width="content"
-            onClose={() => {}}
-            scrollLock={false}
-          >
-            <Placeholder height={100} width={200} label="200px wide" />
-          </DialogCard>
-        </Box>
-      ),
-    },
-    {
-      label: 'Test: Xsmall width',
-      docsSite: false,
-      Example: () => (
-        <DialogCard
-          id="xsmall"
-          title="Xsmall"
-          width="xsmall"
-          onClose={() => {}}
-          scrollLock={false}
-        >
-          <Placeholder height={100} width="100%" label="Xsmall Dialog" />
-        </DialogCard>
-      ),
-    },
-    {
-      label: 'Test: Small width',
-      docsSite: false,
-      Example: () => (
-        <DialogCard
-          id="small"
-          title="Small"
-          width="small"
-          onClose={() => {}}
-          scrollLock={false}
-        >
-          <Placeholder height={100} width="100%" label="Small Dialog" />
-        </DialogCard>
-      ),
-    },
-    {
-      label: 'Test: Medium width',
-      docsSite: false,
-      Example: () => (
-        <DialogCard
-          id="medium"
-          title="Medium"
-          width="medium"
-          onClose={() => {}}
-          scrollLock={false}
-        >
-          <Placeholder height={100} width="100%" label="Medium Dialog" />
-        </DialogCard>
-      ),
-    },
-    {
-      label: 'Test: Large width',
-      docsSite: false,
-      Example: () => (
-        <DialogCard
-          id="large"
-          title="Large"
-          width="large"
-          onClose={() => {}}
-          scrollLock={false}
-        >
-          <Placeholder height={100} width="100%" label="Large Dialog" />
-        </DialogCard>
-      ),
     },
   ],
   snippets: [

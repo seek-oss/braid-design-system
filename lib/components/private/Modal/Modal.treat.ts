@@ -1,5 +1,6 @@
 import { style, styleMap } from 'sku/treat';
 import { externalGutter } from './ModalExternalGutter';
+import { TreatTheme, TextBreakpoint } from '../../../themes/makeBraidTheme';
 
 export const backdrop = style({
   background: 'rgba(0, 0, 0, .4)',
@@ -80,16 +81,20 @@ export const closeButtonOpacity = style({
   },
 });
 
-const CLOSE_ICON_GUTTER_RATIO = 0.15;
+const CLOSE_ICON_GUTTER_RATIO = 0.3;
+
+const calculateIconSize = (
+  theme: TreatTheme,
+  level: '2' | '3',
+  breakpoint: TextBreakpoint,
+) => {
+  const capHeight = theme.typography.heading.level[level][breakpoint].capHeight;
+  return capHeight + capHeight * CLOSE_ICON_GUTTER_RATIO;
+};
 
 export const cropIconSpace = styleMap((theme) => {
-  const calculateRules = (
-    level: '2' | '3',
-    breakpoint: 'mobile' | 'tablet',
-  ) => {
-    const capHeight =
-      theme.typography.heading.level[level][breakpoint].capHeight;
-    const size = capHeight + capHeight * CLOSE_ICON_GUTTER_RATIO;
+  const calculateRules = (level: '2' | '3', breakpoint: TextBreakpoint) => {
+    const size = calculateIconSize(theme, level, breakpoint);
     const offset = (size * CLOSE_ICON_GUTTER_RATIO) / 2;
 
     return {
@@ -115,13 +120,8 @@ export const negativeMarginRightXSmall = style((theme) => ({
 }));
 
 export const closeIcon = styleMap((theme) => {
-  const calculateRules = (
-    level: '2' | '3',
-    breakpoint: 'mobile' | 'tablet',
-  ) => {
-    const capHeight =
-      theme.typography.heading.level[level][breakpoint].capHeight;
-    const size = capHeight + capHeight * CLOSE_ICON_GUTTER_RATIO;
+  const calculateRules = (level: '2' | '3', breakpoint: TextBreakpoint) => {
+    const size = calculateIconSize(theme, level, breakpoint);
 
     return {
       width: size,
