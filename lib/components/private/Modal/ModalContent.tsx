@@ -9,7 +9,6 @@ import React, {
 import { RemoveScroll } from 'react-remove-scroll';
 import { useStyles } from 'sku/react-treat';
 import { Box, BoxProps } from '../../Box/Box';
-import { ClearButton } from '../../iconButtons/ClearButton/ClearButton';
 import { normalizeKey } from '../normalizeKey';
 import { Heading } from '../../Heading/Heading';
 import { Stack } from '../../Stack/Stack';
@@ -17,6 +16,9 @@ import { Columns } from '../../Columns/Columns';
 import { Column } from '../../Column/Column';
 import { Overlay } from '../Overlay/Overlay';
 import { ReactNodeNoStrings } from '../ReactNodeNoStrings';
+import { IconClear } from '../../icons';
+import { useNegativeMarginTop } from '../../../hooks/useNegativeMargin/useNegativeMargin';
+import { useVirtualTouchable } from '../touchable/useVirtualTouchable';
 import * as styleRefs from './Modal.treat';
 
 export interface ModalContentProps {
@@ -125,13 +127,14 @@ export const ModalContent = ({
         display="flex"
         alignItems="center"
         justifyContent={justifyContent}
-        height="full"
+        height={position === 'right' ? 'full' : undefined}
         {...(width !== 'content'
           ? {
               width: 'full',
               maxWidth: width,
             }
           : null)}
+        position="relative"
       >
         {/* modalRef gets forwarded down to UL by RemoveScroll by `forwardProps` */}
         <RemoveScroll ref={modalRef} forwardProps enabled={scrollLock}>
@@ -169,7 +172,7 @@ export const ModalContent = ({
                   />
                 </Stack>
               ) : (
-                <Columns space={modalPadding}>
+                <Columns space="none">
                   <Column>
                     <ModalContentHeader
                       title={title}
@@ -181,30 +184,69 @@ export const ModalContent = ({
                     />
                   </Column>
                   <Column width="content">
-                    <Box className={styles.closePlaceholder} />
+                    <Box width="touchable" />
                   </Column>
                 </Columns>
               )}
               <Fragment>{children}</Fragment>
             </Stack>
-
+          </Box>
+        </RemoveScroll>
+        <Box
+          position="absolute"
+          zIndex="sticky"
+          top={0}
+          right={0}
+          paddingTop={modalPadding}
+          paddingRight={modalPadding}
+        >
+          <Box
+            className={[
+              useNegativeMarginTop('xsmall'),
+              styles.negativeMarginRightXSmall,
+            ]}
+          >
             <Box
-              position="absolute"
-              top={0}
-              right={0}
-              paddingTop={modalPadding}
-              paddingRight={modalPadding}
+              position="relative"
+              className={styles.cropIconSpace[headingLevel]}
             >
-              <Box className={styles.closeOffset}>
-                <ClearButton
-                  tone="neutral"
-                  label={closeLabel}
-                  onClick={onClose}
+              <Box
+                component="button"
+                borderRadius="full"
+                background="card"
+                padding="xsmall"
+                cursor="pointer"
+                position="relative"
+                onClick={onClose}
+                outline="none"
+                transition="touchable"
+                className={[
+                  styles.closeButtonRoot,
+                  styles.pointerEventsAll,
+                  useVirtualTouchable(),
+                ]}
+              >
+                <Overlay
+                  boxShadow="outlineFocus"
+                  transition="fast"
+                  onlyVisibleForKeyboardNavigation
+                  borderRadius="full"
+                  className={styles.closeButtonFocus}
                 />
+                <Box
+                  position="relative"
+                  transition="fast"
+                  className={[
+                    styles.closeButtonOpacity,
+                    styles.closeIcon[headingLevel],
+                  ]}
+                >
+                  <IconClear size="fill" aria-label={closeLabel} />
+                </Box>
               </Box>
             </Box>
           </Box>
-        </RemoveScroll>
+        </Box>
       </Box>
     </Box>
   );

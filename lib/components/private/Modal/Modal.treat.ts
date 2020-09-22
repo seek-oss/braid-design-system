@@ -59,17 +59,84 @@ export const heading = style({
   },
 });
 
-const CLOSE_ICON_SIZE = 9;
-export const closePlaceholder = style({
-  width: CLOSE_ICON_SIZE,
+export const closeButtonRoot = style({
+  ':active': {
+    transform: 'scale(0.9)',
+  },
+});
+export const closeButtonFocus = style({
+  selectors: {
+    [`${closeButtonRoot}:focus &`]: {
+      opacity: 1,
+    },
+  },
+});
+export const closeButtonOpacity = style({
+  opacity: 0.7,
+  selectors: {
+    [`${closeButtonRoot}:hover &, ${closeButtonRoot}:focus &`]: {
+      opacity: 1,
+    },
+  },
 });
 
-export const closeOffset = style((theme) => {
-  const iconSize = theme.grid * theme.typography.text.standard.mobile.rows;
-  const offset = (iconSize - CLOSE_ICON_SIZE) / 2;
+const CLOSE_ICON_GUTTER_RATIO = 0.15;
+
+export const cropIconSpace = styleMap((theme) => {
+  const calculateRules = (
+    level: '2' | '3',
+    breakpoint: 'mobile' | 'tablet',
+  ) => {
+    const capHeight =
+      theme.typography.heading.level[level][breakpoint].capHeight;
+    const size = capHeight + capHeight * CLOSE_ICON_GUTTER_RATIO;
+    const offset = (size * CLOSE_ICON_GUTTER_RATIO) / 2;
+
+    return {
+      top: -offset,
+      right: -offset,
+    };
+  };
 
   return {
-    marginTop: -offset,
-    marginRight: -offset,
+    '2': theme.utils.responsiveStyle({
+      mobile: calculateRules('2', 'mobile'),
+      tablet: calculateRules('2', 'tablet'),
+    }),
+    '3': theme.utils.responsiveStyle({
+      mobile: calculateRules('3', 'mobile'),
+      tablet: calculateRules('3', 'tablet'),
+    }),
+  };
+});
+
+export const negativeMarginRightXSmall = style((theme) => ({
+  marginRight: -theme.space.xsmall * theme.grid,
+}));
+
+export const closeIcon = styleMap((theme) => {
+  const calculateRules = (
+    level: '2' | '3',
+    breakpoint: 'mobile' | 'tablet',
+  ) => {
+    const capHeight =
+      theme.typography.heading.level[level][breakpoint].capHeight;
+    const size = capHeight + capHeight * CLOSE_ICON_GUTTER_RATIO;
+
+    return {
+      width: size,
+      height: size,
+    };
+  };
+
+  return {
+    '2': theme.utils.responsiveStyle({
+      mobile: calculateRules('2', 'mobile'),
+      tablet: calculateRules('2', 'tablet'),
+    }),
+    '3': theme.utils.responsiveStyle({
+      mobile: calculateRules('3', 'mobile'),
+      tablet: calculateRules('3', 'tablet'),
+    }),
   };
 });
