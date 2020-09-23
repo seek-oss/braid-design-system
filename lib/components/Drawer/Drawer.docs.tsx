@@ -21,19 +21,23 @@ const docs: ComponentDocs = {
     <Stack space="large">
       <Text>
         Follows the{' '}
-        <TextLink href="https://www.w3.org/TR/wai-aria-practices-1.2/#drawer_modal">
+        <TextLink href="https://www.w3.org/TR/wai-aria-practices-1.2/#dialog_modal">
           WAI-ARIA Dialog (Modal) Pattern.
         </TextLink>
       </Text>
       <Text>
-        The Drawer component provides a way to focus the user&rsquo;s attention
-        on a specific subtask or flow within the context of another experience.
-        In order to keep experiences simple, Drawers{' '}
+        The Drawer component provides a way to display a nested page within the
+        context of another experience. In order to keep experiences simple,
+        Drawers and <TextLink href="/components/Dialog">Dialogs</TextLink>{' '}
         <Strong>cannot be nested</Strong> inside one another.
       </Text>
       <Text>
         Drawers should only be used as a last resort when other in-flow
         alternatives are not suitable.
+      </Text>
+      <Text tone="secondary">
+        If you’re only displaying a small amount of content, consider using a{' '}
+        <TextLink href="/components/Dialog">Dialog.</TextLink>
       </Text>
     </Stack>
   ),

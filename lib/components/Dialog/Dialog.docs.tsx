@@ -31,12 +31,17 @@ const docs: ComponentDocs = {
       <Text>
         The Dialog component provides a way to focus the user&rsquo;s attention
         on a specific subtask or flow within the context of another experience.
-        In order to keep experiences simple, Dialogs{' '}
+        In order to keep experiences simple, Dialogs and{' '}
+        <TextLink href="/components/Drawer">Drawers</TextLink>{' '}
         <Strong>cannot be nested</Strong> inside one another.
       </Text>
       <Text>
         Dialogs should only be used as a last resort when other in-flow
         alternatives are not suitable.
+      </Text>
+      <Text tone="secondary">
+        If you’re displaying a large amount of content, consider using a{' '}
+        <TextLink href="/components/Drawer">Drawer.</TextLink>
       </Text>
     </Stack>
   ),

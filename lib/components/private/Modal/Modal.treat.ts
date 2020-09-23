@@ -89,17 +89,18 @@ const calculateIconSize = (
   breakpoint: TextBreakpoint,
 ) => {
   const capHeight = theme.typography.heading.level[level][breakpoint].capHeight;
-  return capHeight + capHeight * CLOSE_ICON_GUTTER_RATIO;
+  return capHeight * (1 + CLOSE_ICON_GUTTER_RATIO);
 };
 
 export const cropIconSpace = styleMap((theme) => {
   const calculateRules = (level: '2' | '3', breakpoint: TextBreakpoint) => {
     const size = calculateIconSize(theme, level, breakpoint);
     const offset = (size * CLOSE_ICON_GUTTER_RATIO) / 2;
+    const nudge = 1;
 
     return {
-      top: -offset,
-      right: -offset,
+      top: -offset + nudge,
+      right: -offset - nudge,
     };
   };
 
