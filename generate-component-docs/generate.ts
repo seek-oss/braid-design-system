@@ -43,6 +43,7 @@ export interface NormalisedInterface {
       propName: string;
       required: boolean;
       type: NormalisedPropType;
+      description?: string;
     };
   };
 }
@@ -123,6 +124,7 @@ export default () => {
   function normalizeInterface(
     propsType: ts.Type,
     propsObj: ts.Symbol,
+    extractComments?: boolean,
   ): NormalisedInterface {
     return {
       type: 'interface',
@@ -133,6 +135,15 @@ export default () => {
           .filter((prop) => !propBlacklist.includes(prop.getName()))
           .map((prop) => {
             const propName = prop.getName();
+
+            let description = '';
+
+            if (extractComments) {
+              description = prop
+                .getDocumentationComment(checker)
+                .map(({ text }) => text)
+                .join('\n');
+            }
 
             // Find type of prop by looking in context of the props object itself.
             const propType = checker
@@ -153,6 +164,7 @@ export default () => {
                 type: aliasWhitelist.includes(typeAlias)
                   ? typeAlias
                   : normaliseType(propType, propsObj),
+                description,
               },
             };
           }),
@@ -228,7 +240,7 @@ export default () => {
 
     return {
       exportType: 'component',
-      props: normalizeInterface(propsType, propsObj),
+      props: normalizeInterface(propsType, propsObj, true),
     };
   }
 
