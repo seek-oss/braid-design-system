@@ -117,6 +117,11 @@ export const ModalContent = ({
 
   return (
     <Box
+      role="dialog"
+      aria-label={title} // Using aria-labelledby would announce the heading after the dialog content.
+      aria-describedby={description ? descriptionId : undefined}
+      aria-modal="true"
+      onKeyDown={handleEscape}
       width="full"
       height="full"
       display="flex"
@@ -139,11 +144,6 @@ export const ModalContent = ({
         {/* modalRef gets forwarded down to UL by RemoveScroll by `forwardProps` */}
         <RemoveScroll ref={modalRef} forwardProps enabled={scrollLock}>
           <Box
-            role="dialog"
-            aria-label={title} // Using aria-labelledby would announce the heading after the dialog content.
-            aria-describedby={description ? descriptionId : undefined}
-            aria-modal="true"
-            onKeyDown={handleEscape}
             background="card"
             borderRadius={position === 'center' ? 'standard' : undefined}
             overflow="auto"
@@ -212,6 +212,7 @@ export const ModalContent = ({
             >
               <Box
                 component="button"
+                aria-label={closeLabel}
                 borderRadius="full"
                 background="card"
                 padding="xsmall"
@@ -241,7 +242,7 @@ export const ModalContent = ({
                     styles.closeIcon[headingLevel],
                   ]}
                 >
-                  <IconClear size="fill" aria-label={closeLabel} />
+                  <IconClear size="fill" aria-hidden />
                 </Box>
               </Box>
             </Box>

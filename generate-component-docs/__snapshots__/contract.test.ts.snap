@@ -742,6 +742,11 @@ Object {
         | number
         | string
     maxLength?: number
+    maxWidth?: 
+        | "large"
+        | "medium"
+        | "small"
+        | "xsmall"
     media?: string
     mediaGroup?: string
     method?: string
@@ -1447,6 +1452,11 @@ Object {
         | "xxlarge"
         | "xxsmall"
     >
+    maxWidth?: 
+        | "large"
+        | "medium"
+        | "small"
+        | "xsmall"
     minWidth?: 0
     opacity?: 0
     outline?: "none"
@@ -2275,6 +2285,25 @@ Object {
     weight?: 
         | "regular"
         | "strong"
+},
+}
+`;
+
+exports[`Drawer 1`] = `
+Object {
+  exportType: component,
+  props: {
+    children: ReactNode
+    closeLabel?: string
+    description?: ReactNodeNoStrings
+    id: string
+    onClose: (openState: false) => void
+    open: boolean
+    title: string
+    width?: 
+        | "large"
+        | "medium"
+        | "small"
 },
 }
 `;

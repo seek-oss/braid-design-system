@@ -26,8 +26,8 @@ const docs: ComponentDocs = {
         </TextLink>
       </Text>
       <Text>
-        The Drawer component provides a way to display a nested page within the
-        context of another experience. In order to keep experiences simple,
+        The Drawer component provides a way to display a nested screen within
+        the context of another experience. In order to keep experiences simple,
         Drawers and <TextLink href="/components/Dialog">Dialogs</TextLink>{' '}
         <Strong>cannot be nested</Strong> inside one another.
       </Text>

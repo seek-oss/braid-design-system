@@ -232,8 +232,8 @@ export const Modal = ({
             right={0}
             zIndex="modal"
             pointerEvents="none"
-            transition={position === 'center' ? 'fast' : undefined}
-            opacity={position === 'center' && state !== OPEN ? 0 : undefined}
+            transition="fast"
+            opacity={state !== OPEN ? 0 : undefined}
             {...(position === 'right'
               ? { paddingLeft: ['none', 'xlarge'] }
               : { padding: externalGutter })}
