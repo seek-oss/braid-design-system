@@ -232,14 +232,18 @@ export const Modal = ({
             right={0}
             zIndex="modal"
             pointerEvents="none"
-            transition="fast"
-            opacity={state !== OPEN ? 0 : undefined}
+            transition={position === 'center' ? 'fast' : undefined}
+            opacity={position === 'center' && state !== OPEN ? 0 : undefined}
             {...(position === 'right'
               ? { paddingLeft: ['none', 'xlarge'] }
               : { padding: externalGutter })}
             className={[
               styles.modalContainer,
+              position === 'right' && styles.slideTransition,
               state === OPENING && styles.entrance[position],
+              state === CLOSING &&
+                position in styles.exit &&
+                styles.exit[position as keyof typeof styles.exit],
             ]}
           >
             <ModalContent

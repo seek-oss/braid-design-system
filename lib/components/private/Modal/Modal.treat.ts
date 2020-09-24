@@ -6,7 +6,7 @@ export const backdrop = style({
   background: 'rgba(0, 0, 0, .4)',
 });
 
-export const entrance = styleMap({
+export const entrance = styleMap((theme) => ({
   center: {
     '@media': {
       'not screen and (prefers-reduced-motion)': {
@@ -14,14 +14,44 @@ export const entrance = styleMap({
       },
     },
   },
-  right: {
-    '@media': {
-      'not screen and (prefers-reduced-motion)': {
-        transform: 'translateX(50px)',
-      },
+  right: theme.utils.responsiveStyle({
+    mobile: {
+      // transform: 'translateX(100%)',
+      transform: 'scale(.8)',
+      opacity: 0,
     },
-  },
-});
+    tablet: {
+      transform: 'translateX(4%)',
+      // opacity: 0,
+    },
+  }),
+}));
+
+export const exit = styleMap((theme) => ({
+  right: theme.utils.responsiveStyle({
+    mobile: {
+      opacity: 0,
+    },
+    tablet: {
+      transform: 'translateX(4%)',
+      // opacity: 0,
+    },
+  }),
+}));
+
+export const slideTransition = style((theme) =>
+  theme.utils.responsiveStyle({
+    mobile: {
+      // transition: 'transform .6s cubic-bezier(0.4, 0, 0, 1)',
+      transition:
+        'transform .2s cubic-bezier(0.4, 0, 0, 1), opacity .2s cubic-bezier(0.4, 0, 0, 1)',
+    },
+    tablet: {
+      transition:
+        'transform .2s cubic-bezier(0.4, 0, 0, 1), opacity .2s cubic-bezier(0.4, 0, 0, 1)',
+    },
+  }),
+);
 
 export const modalContainer = style({
   maxHeight: '100vh',

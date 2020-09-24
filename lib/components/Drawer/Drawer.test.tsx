@@ -7,12 +7,12 @@ import {
   waitFor,
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { BraidTestProvider, Dialog } from '..';
+import { BraidTestProvider, Drawer } from '..';
 import { Button } from '../Button/Button';
 
 const ESCAPE = 27;
 const CLOSE_BUTTON_LABEL = 'Close dialog please';
-const DIALOG_TITLE = 'Test Dialog';
+const DRAWER_TITLE = 'Test Drawer';
 
 const TestCase = ({ close }: { close: (newOpenState: boolean) => void }) => {
   const [open, setOpen] = useState(false);
@@ -22,9 +22,9 @@ const TestCase = ({ close }: { close: (newOpenState: boolean) => void }) => {
         Before
       </Button>
       <input type="text" />
-      <Dialog
-        id="testDialog"
-        title={DIALOG_TITLE}
+      <Drawer
+        id="testDrawer"
+        title={DRAWER_TITLE}
         closeLabel={CLOSE_BUTTON_LABEL}
         open={open}
         onClose={(newOpenState) => {
@@ -33,7 +33,7 @@ const TestCase = ({ close }: { close: (newOpenState: boolean) => void }) => {
         }}
       >
         <Button data={{ testid: 'buttonInside' }}>Inside</Button>
-      </Dialog>
+      </Drawer>
       <Button data={{ testid: 'buttonAfter' }}>After</Button>
       <section>
         <article>
@@ -44,7 +44,7 @@ const TestCase = ({ close }: { close: (newOpenState: boolean) => void }) => {
   );
 };
 
-function renderDialog() {
+function renderDrawer() {
   const closeHandler = jest.fn();
 
   return {
@@ -59,9 +59,9 @@ function renderDialog() {
 
 const EXIT_TIMEOUT = 1500;
 
-describe('Dialog', () => {
+describe('Drawer', () => {
   it('should not focus content when closed', () => {
-    const { getByTestId } = renderDialog();
+    const { getByTestId } = renderDrawer();
 
     expect(document.body).toHaveFocus();
     userEvent.tab();
@@ -75,7 +75,7 @@ describe('Dialog', () => {
   });
 
   it('should not be visible until open', () => {
-    const { getByTestId, queryByRole } = renderDialog();
+    const { getByTestId, queryByRole } = renderDrawer();
 
     expect(queryByRole('dialog')).not.toBeInTheDocument();
 
@@ -85,7 +85,7 @@ describe('Dialog', () => {
   });
 
   it('should have the correct aria properties when open', () => {
-    const { getByTestId, queryByRole, getByLabelText } = renderDialog();
+    const { getByTestId, queryByRole, getByLabelText } = renderDrawer();
 
     expect(queryByRole('dialog')).not.toBeInTheDocument();
 
@@ -93,15 +93,15 @@ describe('Dialog', () => {
 
     const dialog = queryByRole('dialog');
     expect(dialog?.getAttribute('aria-modal')).toBe('true');
-    expect(getByLabelText(DIALOG_TITLE)).toBe(dialog);
+    expect(getByLabelText(DRAWER_TITLE)).toBe(dialog);
   });
 
   it('should focus the title element', () => {
-    const { getByTestId, getByText } = renderDialog();
+    const { getByTestId, getByText } = renderDrawer();
 
     userEvent.click(getByTestId('buttonBefore'));
 
-    expect(getByText(DIALOG_TITLE)).toHaveFocus();
+    expect(getByText(DRAWER_TITLE)).toHaveFocus();
   });
 
   it('should trap focus in the dialog', () => {
@@ -110,7 +110,7 @@ describe('Dialog', () => {
       getByRole,
       getByText,
       getByLabelText,
-    } = renderDialog();
+    } = renderDrawer();
 
     const dialogOpenButton = getByTestId('buttonBefore');
     userEvent.tab();
@@ -119,7 +119,7 @@ describe('Dialog', () => {
     userEvent.click(dialogOpenButton);
     const buttonInside = getByTestId('buttonInside');
     const closeButton = getByLabelText(CLOSE_BUTTON_LABEL);
-    const dialogTitle = getByText(DIALOG_TITLE);
+    const dialogTitle = getByText(DRAWER_TITLE);
 
     expect(dialogTitle).toHaveFocus();
 
@@ -140,7 +140,7 @@ describe('Dialog', () => {
   });
 
   it('should close when hitting escape', async () => {
-    const { getByTestId, queryByRole, getByRole } = renderDialog();
+    const { getByTestId, queryByRole, getByRole } = renderDrawer();
 
     const dialogOpenButton = getByTestId('buttonBefore');
     userEvent.click(dialogOpenButton);
@@ -153,7 +153,7 @@ describe('Dialog', () => {
   });
 
   it('should hide document content outside of dialog from screen readers when open', async () => {
-    const { getByTestId, queryAllByRole, queryByRole } = renderDialog();
+    const { getByTestId, queryAllByRole, queryByRole } = renderDrawer();
 
     expect(queryAllByRole('textbox').length).toBe(2);
 
@@ -171,7 +171,7 @@ describe('Dialog', () => {
       getByLabelText,
       closeHandler,
       queryByRole,
-    } = renderDialog();
+    } = renderDrawer();
 
     expect(closeHandler).not.toHaveBeenCalled();
 
