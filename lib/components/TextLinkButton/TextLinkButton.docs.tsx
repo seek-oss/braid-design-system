@@ -5,6 +5,7 @@ import { Stack, Text, TextLink, TextLinkButton, Actions, Button } from '..';
 const docs: ComponentDocs = {
   category: 'Content',
   screenshotWidths: [320],
+  gallery: false,
   description: (
     <Stack space="large">
       <Text>

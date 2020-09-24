@@ -60,6 +60,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Expanded Disclosure with custom space',
+      gallery: false,
       Example: ({ id }) => {
         const [expanded, setExpanded] = useState(true);
 
@@ -81,6 +82,7 @@ const docs: ComponentDocs = {
       label: 'Disclosure with controlled state',
       storybook: false,
       playroom: false,
+      gallery: false,
       Example: ({ id }) => {
         const [expanded, setExpanded] = React.useState(false);
 

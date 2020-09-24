@@ -32,6 +32,7 @@ const docs: ComponentDocs = {
     {
       label: 'Info Alert Inside Card',
       background: 'card',
+      gallery: false,
       Example: () => (
         <Alert tone="info">
           <Text>This is an important piece of information.</Text>
@@ -75,6 +76,7 @@ const docs: ComponentDocs = {
     {
       label: 'Promote Alert Inside Card',
       background: 'card',
+      gallery: false,
       Example: () => (
         <Alert tone="promote">
           <Text>This is a promoted piece of information.</Text>
@@ -92,6 +94,7 @@ const docs: ComponentDocs = {
     {
       label: 'Caution Alert Inside Card',
       background: 'card',
+      gallery: false,
       Example: () => (
         <Alert tone="caution">
           <Text>This is a cautionary piece of information.</Text>
@@ -109,6 +112,7 @@ const docs: ComponentDocs = {
     {
       label: 'Critical Alert Inside Card',
       background: 'card',
+      gallery: false,
       Example: () => (
         <Alert tone="critical">
           <Text>This is a critical piece of information.</Text>
@@ -126,6 +130,7 @@ const docs: ComponentDocs = {
     {
       label: 'Positive Alert Inside Card',
       background: 'card',
+      gallery: false,
       Example: () => (
         <Alert tone="positive">
           <Text>This is a positive piece of information.</Text>

@@ -88,6 +88,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'TextLink on dark background',
+      gallery: false,
       background: 'brand',
       Example: () => (
         <Text>
