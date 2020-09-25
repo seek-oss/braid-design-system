@@ -39,6 +39,11 @@ const docs: ComponentDocs = {
         It’s recommended that you connect the Drawer’s open state to your router
         so that it can be closed via the browser’s back button.
       </Text>
+      <Text>
+        To improve animation performance, the mobile entrance animation is a
+        zoom rather than a horizontal slide. This was deemed to be an acceptable
+        trade-off since the drawer fills the entire screen.
+      </Text>
       <Text tone="secondary">
         If you’re only displaying a small amount of content, consider using a{' '}
         <TextLink href="/components/Dialog">Dialog.</TextLink>
