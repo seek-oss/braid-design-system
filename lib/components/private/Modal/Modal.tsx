@@ -239,7 +239,8 @@ export const Modal = ({
               : { padding: externalGutter })}
             className={[
               styles.modalContainer,
-              position === 'right' && styles.slideTransition,
+              position in styles.transition &&
+                styles.transition[position as keyof typeof styles.transition],
               state === OPENING && styles.entrance[position],
               state === CLOSING &&
                 position in styles.exit &&

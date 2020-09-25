@@ -6,41 +6,52 @@ export const backdrop = style({
   background: 'rgba(0, 0, 0, .4)',
 });
 
-export const entrance = styleMap((theme) => ({
-  center: {
-    '@media': {
-      'not screen and (prefers-reduced-motion)': {
-        transform: 'scale(.8)',
-      },
+const reducedMotion = style({
+  '@media': {
+    'screen and (prefers-reduced-motion)': {
+      transform: 'none !important',
     },
   },
-  right: theme.utils.responsiveStyle({
-    mobile: {
-      transform: 'scale(.8)',
-      opacity: 0,
-    },
-    tablet: {
-      transform: 'translateX(30px)',
-    },
-  }),
-}));
+});
 
-export const exit = styleMap((theme) => ({
-  right: theme.utils.responsiveStyle({
-    tablet: {
-      transform: 'translateX(15px)',
-    },
-  }),
-}));
+const scaled = style({
+  transform: 'scale(.8)',
+});
 
-export const slideTransition = style((theme) =>
-  theme.utils.responsiveStyle({
-    tablet: {
-      transition:
-        'transform .2s cubic-bezier(0.2, 0, 0, 1), opacity .2s cubic-bezier(0.2, 0, 0, 1) !important',
-    },
-  }),
-);
+export const entrance = {
+  center: [reducedMotion, scaled],
+  right: [
+    reducedMotion,
+    scaled,
+    style((theme) =>
+      theme.utils.responsiveStyle({
+        tablet: { transform: 'translateX(30px)' },
+      }),
+    ),
+  ],
+};
+
+export const exit = {
+  right: [
+    reducedMotion,
+    style((theme) =>
+      theme.utils.responsiveStyle({
+        tablet: { transform: 'translateX(15px)' },
+      }),
+    ),
+  ],
+};
+
+export const transition = {
+  right: style((theme) =>
+    theme.utils.responsiveStyle({
+      tablet: {
+        transition:
+          'transform .2s cubic-bezier(0.2, 0, 0, 1), opacity .2s cubic-bezier(0.2, 0, 0, 1) !important',
+      },
+    }),
+  ),
+};
 
 export const modalContainer = style({
   maxHeight: '100vh',

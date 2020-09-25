@@ -39,6 +39,10 @@ const docs: ComponentDocs = {
         Dialogs should only be used as a last resort when other in-flow
         alternatives are not suitable.
       </Text>
+      <Text>
+        It’s recommended that you connect the Dialog’s open state to your router
+        so that it can be closed via the browser’s back button.
+      </Text>
       <Text tone="secondary">
         If you’re displaying a large amount of content, consider using a{' '}
         <TextLink href="/components/Drawer">Drawer.</TextLink>

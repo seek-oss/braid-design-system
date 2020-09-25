@@ -35,6 +35,10 @@ const docs: ComponentDocs = {
         Drawers should only be used as a last resort when other in-flow
         alternatives are not suitable.
       </Text>
+      <Text>
+        It’s recommended that you connect the Drawer’s open state to your router
+        so that it can be closed via the browser’s back button.
+      </Text>
       <Text tone="secondary">
         If you’re only displaying a small amount of content, consider using a{' '}
         <TextLink href="/components/Dialog">Dialog.</TextLink>
@@ -115,20 +119,19 @@ const docs: ComponentDocs = {
             <Drawer
               id="small"
               title="Small Drawer"
+              description={
+                <Text tone="secondary">
+                  Uses a small{' '}
+                  <TextLink href="/components/ContentBlock">
+                    ContentBlock
+                  </TextLink>
+                </Text>
+              }
               width="small"
               open={open}
               onClose={setOpen}
             >
-              {makeExampleContent({
-                label: (
-                  <Fragment>
-                    Uses a small{' '}
-                    <TextLink href="/components/ContentBlock">
-                      ContentBlock
-                    </TextLink>
-                  </Fragment>
-                ),
-              })}
+              {makeExampleContent()}
             </Drawer>
           </Fragment>
         );
@@ -150,20 +153,19 @@ const docs: ComponentDocs = {
             <Drawer
               id="medium"
               title="Medium Drawer"
+              description={
+                <Text tone="secondary">
+                  Uses a medium{' '}
+                  <TextLink href="/components/ContentBlock">
+                    ContentBlock
+                  </TextLink>
+                </Text>
+              }
               width="medium"
               open={open}
               onClose={setOpen}
             >
-              {makeExampleContent({
-                label: (
-                  <Fragment>
-                    Uses a medium{' '}
-                    <TextLink href="/components/ContentBlock">
-                      ContentBlock
-                    </TextLink>
-                  </Fragment>
-                ),
-              })}
+              {makeExampleContent()}
             </Drawer>
           </Fragment>
         );
@@ -185,20 +187,19 @@ const docs: ComponentDocs = {
             <Drawer
               id="large"
               title="Large Drawer"
+              description={
+                <Text tone="secondary">
+                  Uses a large{' '}
+                  <TextLink href="/components/ContentBlock">
+                    ContentBlock
+                  </TextLink>
+                </Text>
+              }
               width="large"
               open={open}
               onClose={setOpen}
             >
-              {makeExampleContent({
-                label: (
-                  <Fragment>
-                    Uses a large{' '}
-                    <TextLink href="/components/ContentBlock">
-                      ContentBlock
-                    </TextLink>
-                  </Fragment>
-                ),
-              })}
+              {makeExampleContent()}
             </Drawer>
           </Fragment>
         );

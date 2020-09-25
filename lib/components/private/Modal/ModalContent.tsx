@@ -129,17 +129,13 @@ export const ModalContent = ({
       justifyContent={justifyContent}
     >
       <Box
+        position="relative"
         display="flex"
         alignItems="center"
         justifyContent={justifyContent}
         height={position === 'right' ? 'full' : undefined}
-        {...(width !== 'content'
-          ? {
-              width: 'full',
-              maxWidth: width,
-            }
-          : null)}
-        position="relative"
+        width={width !== 'content' ? 'full' : undefined}
+        maxWidth={width !== 'content' ? width : undefined}
       >
         {/* modalRef gets forwarded down to UL by RemoveScroll by `forwardProps` */}
         <RemoveScroll ref={modalRef} forwardProps enabled={scrollLock}>
