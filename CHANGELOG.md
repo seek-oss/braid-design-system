@@ -1,5 +1,26 @@
 # braid-design-system
 
+## 29.7.0
+
+### Minor Changes
+
+- **FieldLabel:** Add descriptionId prop ([#766](https://github.com/seek-oss/braid-design-system/pull/766))
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <FieldLabel
+    htmlFor="id"
+    label="This is a field label"
+    description="Extra info about the field"
+    descriptionId="id-description"
+  />
+  ```
+
+### Patch Changes
+
+- **TextField, PasswordField, Textarea, Autosuggest, Dropdown, MonthPicker:** Add decription to aria-describedby ([#766](https://github.com/seek-oss/braid-design-system/pull/766))
+
 ## 29.6.0
 
 ### Minor Changes

@@ -10,6 +10,7 @@ const svgComponentPaths = globby.sync('Icon*/*Svg.tsx', {
 svgComponentPaths.forEach((svgComponentPath) => {
   const componentName = path.basename(svgComponentPath, '.tsx');
 
+  // eslint-disable-next-line jest/valid-title
   describe(componentName, () => {
     it('should match snapshot', async () => {
       const source = await fs.readFile(svgComponentPath, 'utf-8');

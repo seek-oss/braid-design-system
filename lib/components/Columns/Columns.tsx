@@ -19,7 +19,7 @@ interface ColumnsContextValue {
   mobileSpace: Space;
   tabletSpace: Space;
   desktopSpace: Space;
-  collapsibleAlignmentChildProps: CollapsibleAlignmentChildProps | {};
+  collapsibleAlignmentChildProps: CollapsibleAlignmentChildProps | null;
 }
 
 export const ColumnsContext = createContext<ColumnsContextValue>({
@@ -28,7 +28,7 @@ export const ColumnsContext = createContext<ColumnsContextValue>({
   mobileSpace: 'none',
   tabletSpace: 'none',
   desktopSpace: 'none',
-  collapsibleAlignmentChildProps: {},
+  collapsibleAlignmentChildProps: null,
 });
 
 export interface ColumnsProps extends CollapsibleAlignmentProps {

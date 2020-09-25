@@ -7,7 +7,7 @@ declare module 'react-element-to-jsx-string' {
       filterProps?: Array<string>;
       showDefaultProps?: boolean;
       showFunctions?: boolean;
-      functionValue?: (fn: Function) => string;
+      functionValue?: (fn: (v: unknown) => unknown) => string;
       tabStop?: number;
       useBooleanShorthandSyntax?: boolean;
       maxInlineAttributesLineLength?: number;

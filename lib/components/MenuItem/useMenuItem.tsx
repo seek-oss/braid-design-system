@@ -161,10 +161,12 @@ export function useMenuItem<MenuItemElement extends HTMLElement>({
 interface MenuItemChildrenProps {
   children: ReactNode;
 }
-const MenuItemChildren = ({ children }: MenuItemChildrenProps) => (
-  <Box userSelect="none">
-    <Text size={menuItemChildrenSize} baseline={false}>
-      {children}
-    </Text>
-  </Box>
-);
+function MenuItemChildren({ children }: MenuItemChildrenProps) {
+  return (
+    <Box userSelect="none">
+      <Text size={menuItemChildrenSize} baseline={false}>
+        {children}
+      </Text>
+    </Box>
+  );
+}

@@ -102,6 +102,7 @@ export const Field = ({
   const styles = useStyles(styleRefs);
 
   const messageId = `${id}-message`;
+  const descriptionId = description ? `${id}-description` : undefined;
   const fieldBackground = disabled ? 'inputDisabled' : 'input';
   const showFieldBorder =
     useBackgroundLightness() === 'light' && (tone !== 'critical' || disabled);
@@ -133,6 +134,7 @@ export const Field = ({
           secondaryLabel={secondaryLabel}
           tertiaryLabel={tertiaryLabel}
           description={description}
+          descriptionId={descriptionId}
         />
       ) : null}
 
@@ -153,7 +155,11 @@ export const Field = ({
             paddingRight: secondaryIcon ? undefined : 'small',
             borderRadius: 'standard',
             outline: 'none',
-            'aria-describedby': mergeIds(ariaDescribedBy, messageId),
+            'aria-describedby': mergeIds(
+              ariaDescribedBy,
+              messageId,
+              descriptionId,
+            ),
             'aria-required': required,
             disabled,
             autoComplete,
