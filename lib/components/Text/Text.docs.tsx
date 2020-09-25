@@ -36,6 +36,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Text on Brand Background',
+      gallery: false,
       background: 'brand',
       Container,
       Example: () => (

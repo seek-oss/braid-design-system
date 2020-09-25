@@ -127,6 +127,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'PasswordField on Brand Background',
+      gallery: false,
       background: 'brand',
       Container,
       Example: ({ id }) => {

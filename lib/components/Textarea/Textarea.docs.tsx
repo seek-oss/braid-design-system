@@ -169,6 +169,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Textarea on Brand Background',
+      gallery: false,
       background: 'brand',
       Container,
       Example: ({ id }) => {
