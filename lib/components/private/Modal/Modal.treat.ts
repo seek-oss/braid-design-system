@@ -26,7 +26,7 @@ export const entrance = {
     style((theme) =>
       theme.utils.responsiveStyle({
         mobile: { opacity: 1, transform: 'translateX(100%)' },
-        tablet: { transform: 'translateX(30px)' },
+        tablet: { opacity: 0, transform: 'translateX(30px)' },
       }),
     ),
   ],
@@ -38,7 +38,7 @@ export const exit = {
     style((theme) =>
       theme.utils.responsiveStyle({
         mobile: { opacity: 1, transform: 'translateX(100%)' },
-        tablet: { transform: 'translateX(15px)' },
+        tablet: { opacity: 0, transform: 'translateX(15px)' },
       }),
     ),
   ],
