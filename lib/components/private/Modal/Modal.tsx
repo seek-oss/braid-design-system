@@ -121,7 +121,7 @@ const reducer: Reducer<State, Action> = (prevState, action) => {
   return prevState;
 };
 
-const CLOSE_ANIMATION_DURATION = 200;
+const CLOSE_ANIMATION_DURATION = 500;
 export const Modal = ({
   id,
   open,
@@ -221,7 +221,11 @@ export const Modal = ({
             zIndex="modalBackdrop"
             transition="fast"
             opacity={state !== OPEN ? 0 : undefined}
-            className={styles.backdrop}
+            className={[
+              styles.backdrop,
+              position in styles.transition &&
+                styles.transition[position as keyof typeof styles.transition],
+            ]}
           />
 
           <Box

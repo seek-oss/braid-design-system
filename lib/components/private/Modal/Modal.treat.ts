@@ -22,9 +22,10 @@ export const entrance = {
   center: [reducedMotion, scaled],
   right: [
     reducedMotion,
-    scaled,
+    // scaled,
     style((theme) =>
       theme.utils.responsiveStyle({
+        mobile: { opacity: 1, transform: 'translateX(100%)' },
         tablet: { transform: 'translateX(30px)' },
       }),
     ),
@@ -36,6 +37,7 @@ export const exit = {
     reducedMotion,
     style((theme) =>
       theme.utils.responsiveStyle({
+        mobile: { opacity: 1, transform: 'translateX(100%)' },
         tablet: { transform: 'translateX(15px)' },
       }),
     ),
@@ -45,6 +47,10 @@ export const exit = {
 export const transition = {
   right: style((theme) =>
     theme.utils.responsiveStyle({
+      mobile: {
+        transition:
+          'transform .5s cubic-bezier(0.2, 0, 0, 1), opacity .5s cubic-bezier(0.2, 0, 0, 1) !important',
+      },
       tablet: {
         transition:
           'transform .2s cubic-bezier(0.2, 0, 0, 1), opacity .2s cubic-bezier(0.2, 0, 0, 1) !important',
