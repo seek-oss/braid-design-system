@@ -138,6 +138,7 @@ const docs: ComponentDocs = {
       label: 'Toast with no duplicates',
       storybook: false,
       playroom: false,
+      gallery: false,
       Example: ({ id, handler }) => {
         const showToast = useToast();
         const theme = useTheme();

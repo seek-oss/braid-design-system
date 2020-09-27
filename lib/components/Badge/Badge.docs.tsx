@@ -9,11 +9,13 @@ const docs: ComponentDocs = {
   examples: [
     {
       label: 'Regular Badge',
+      gallery: false,
       background: 'card',
       Example: () => <Badge tone="positive">Regular</Badge>,
     },
     {
       label: 'Strong Badge',
+      gallery: false,
       Example: () => (
         <Badge tone="positive" weight="strong">
           Strong
@@ -22,6 +24,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Badge with Vertical Bleed',
+      gallery: false,
       description: (
         <Fragment>
           <Text>

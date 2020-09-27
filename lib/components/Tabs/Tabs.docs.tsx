@@ -174,6 +174,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'With gutter and reserved hit area',
+      gallery: false,
       Example: ({ id }) => (
         <TabsProvider id={id}>
           <Tabs label="Test tabs" gutter="gutter" reserveHitArea>

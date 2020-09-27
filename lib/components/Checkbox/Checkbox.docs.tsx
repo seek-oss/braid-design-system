@@ -15,12 +15,6 @@ const docs: ComponentDocs = {
       ),
     },
     {
-      label: 'Checkbox without Message Placeholder',
-      Example: ({ id, handler }) => (
-        <Checkbox id={id} checked={false} onChange={handler} label="Label" />
-      ),
-    },
-    {
       label: 'Checked Checkbox',
       Example: ({ id, handler }) => (
         <Checkbox id={id} checked={true} onChange={handler} label="Label" />

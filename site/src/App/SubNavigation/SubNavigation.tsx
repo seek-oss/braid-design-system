@@ -37,6 +37,7 @@ interface SubNavigationItem {
   name: string;
   path: string;
   onClick?: () => void;
+  target?: string;
 }
 
 interface SubNavigationGroup {
@@ -59,10 +60,15 @@ const SubNavigationGroup = ({ title, items }: SubNavigationGroup) => {
         ) : null}
 
         <Stack component="ul" space="medium">
-          {items.map(({ name, badge, path, onClick }) => (
-            <Inline space="xsmall" key={name}>
+          {items.map(({ name, badge, path, onClick, target }) => (
+            <Inline space="xsmall" alignY="center" key={name}>
               <Text>
-                <TextLink href={path} onClick={onClick} hitArea="large">
+                <TextLink
+                  href={path}
+                  onClick={onClick}
+                  hitArea="large"
+                  target={target}
+                >
                   {name}
                 </TextLink>
               </Text>
@@ -104,8 +110,12 @@ export const SubNavigation = ({ onSelect }: SubNavigationProps) => {
           {
             name: 'Releases',
             path: '/releases',
-            badge: 'New',
             onClick: onSelect,
+          },
+          {
+            name: 'Gallery',
+            path: '/gallery',
+            badge: 'New',
           },
           {
             name: 'Playroom',

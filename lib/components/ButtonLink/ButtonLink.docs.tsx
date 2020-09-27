@@ -11,6 +11,7 @@ const docs: ComponentDocs = {
   category: 'Content',
   migrationGuide: true,
   screenshotWidths: [320],
+  gallery: false,
   description: (
     <Stack space="large">
       <Text>

@@ -54,6 +54,7 @@ const docs: ComponentDocs = {
       label: 'Default',
       playroom: false,
       storybook: false,
+      gallery: false,
       Example: ({ id }) => {
         const [open, setOpen] = useState(false);
 
@@ -79,6 +80,7 @@ const docs: ComponentDocs = {
       label: 'With illustration/logo',
       playroom: false,
       storybook: false,
+      gallery: false,
       Example: ({ id }) => {
         const [open, setOpen] = useState(false);
 
@@ -119,6 +121,7 @@ const docs: ComponentDocs = {
       label: 'With additional description',
       playroom: false,
       storybook: false,
+      gallery: false,
       Example: ({ id }) => {
         const [open, setOpen] = useState(false);
 
@@ -182,6 +185,7 @@ const docs: ComponentDocs = {
       label: 'Sized to content',
       playroom: false,
       storybook: false,
+      gallery: false,
       Example: ({ id }) => {
         const [open, setOpen] = useState(false);
 
@@ -210,6 +214,7 @@ const docs: ComponentDocs = {
       label: 'Xsmall width',
       playroom: false,
       storybook: false,
+      gallery: false,
       Example: ({ id }) => {
         const [open, setOpen] = useState(false);
 
@@ -247,6 +252,7 @@ const docs: ComponentDocs = {
       label: 'Small width',
       playroom: false,
       storybook: false,
+      gallery: false,
       Example: ({ id }) => {
         const [open, setOpen] = useState(false);
 
@@ -284,6 +290,7 @@ const docs: ComponentDocs = {
       label: 'Medium width',
       playroom: false,
       storybook: false,
+      gallery: false,
       Example: ({ id }) => {
         const [open, setOpen] = useState(false);
 
@@ -321,6 +328,7 @@ const docs: ComponentDocs = {
       label: 'Large width',
       playroom: false,
       storybook: false,
+      gallery: false,
       Example: ({ id }) => {
         const [open, setOpen] = useState(false);
 
@@ -354,6 +362,147 @@ const docs: ComponentDocs = {
         );
       },
     },
+
+    // Storybook tests
+    // {
+    //   label: 'Panel: Default',
+    //   docsSite: false,
+    //   gallery: true,
+    //   Example: () => (
+    //     <DialogCard
+    //       id="default"
+    //       title="Default test"
+    //       onClose={() => {}}
+    //       scrollLock={false}
+    //     >
+    //       <Placeholder height={100} width="100%" />
+    //     </DialogCard>
+    //   ),
+    // },
+    // {
+    //   label: 'Panel: With illustration/logo',
+    //   docsSite: false,
+    //   gallery: true,
+    //   Example: () => (
+    //     <DialogCard
+    //       id="illustrated"
+    //       title="Illustration test"
+    //       illustration={
+    //         <Placeholder
+    //           height={150}
+    //           width={150}
+    //           shape="round"
+    //           label="Illustration"
+    //         />
+    //       }
+    //       onClose={() => {}}
+    //       scrollLock={false}
+    //     >
+    //       <Stack space="xlarge" align="center">
+    //         <Placeholder width="100%" height={100} />
+    //         <Inline space="small">
+    //           <Placeholder height={44} width={80} label="OK" />
+    //           <Placeholder height={44} width={80} label="Cancel" />
+    //         </Inline>
+    //       </Stack>
+    //     </DialogCard>
+    //   ),
+    // },
+    // {
+    //   label: 'Panel: Description',
+    //   docsSite: false,
+    //   gallery: true,
+    //   Example: () => (
+    //     <DialogCard
+    //       id="description"
+    //       title="Description test"
+    //       description={
+    //         <Placeholder height="auto" width="100%" label="Description" />
+    //       }
+    //       onClose={() => {}}
+    //       scrollLock={false}
+    //     >
+    //       <Placeholder height={100} width="100%" />
+    //     </DialogCard>
+    //   ),
+    // },
+    // {
+    //   label: 'Panel: Content width',
+    //   docsSite: false,
+    //   Example: () => (
+    //     <Box display="flex" alignItems="center" justifyContent="center">
+    //       <DialogCard
+    //         id="content"
+    //         title="Content-sized"
+    //         width="content"
+    //         onClose={() => {}}
+    //         scrollLock={false}
+    //       >
+    //         <Placeholder height={100} width={200} label="200px wide" />
+    //       </DialogCard>
+    //     </Box>
+    //   ),
+    // },
+    // {
+    //   label: 'Panel: Xsmall width',
+    //   docsSite: false,
+    //   Example: () => (
+    //     <DialogCard
+    //       id="xsmall"
+    //       title="Xsmall"
+    //       width="xsmall"
+    //       onClose={() => {}}
+    //       scrollLock={false}
+    //     >
+    //       <Placeholder height={100} width="100%" label="Xsmall Dialog" />
+    //     </DialogCard>
+    //   ),
+    // },
+    // {
+    //   label: 'Panel: Small width',
+    //   docsSite: false,
+    //   Example: () => (
+    //     <DialogCard
+    //       id="small"
+    //       title="Small"
+    //       width="small"
+    //       onClose={() => {}}
+    //       scrollLock={false}
+    //     >
+    //       <Placeholder height={100} width="100%" label="Small Dialog" />
+    //     </DialogCard>
+    //   ),
+    // },
+    // {
+    //   label: 'Panel: Medium width',
+    //   docsSite: false,
+    //   Example: () => (
+    //     <DialogCard
+    //       id="medium"
+    //       title="Medium"
+    //       width="medium"
+    //       onClose={() => {}}
+    //       scrollLock={false}
+    //     >
+    //       <Placeholder height={100} width="100%" label="Medium Dialog" />
+    //     </DialogCard>
+    //   ),
+    // },
+    // {
+    //   label: 'Panel: Large width',
+    //   docsSite: false,
+    //   Example: () => (
+    //     <DialogCard
+    //       id="large"
+    //       title="Large"
+    //       width="large"
+    //       onClose={() => {}}
+    //       scrollLock={false}
+    //     >
+    //       <Placeholder height={100} width="100%" label="Large Dialog" />
+    //     </DialogCard>
+    //   ),
+    // },
   ],
   snippets: [
     {
