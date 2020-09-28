@@ -41,7 +41,6 @@ export const GalleryPanel = ({
       <Overlay
         background="card"
         borderRadius="standard"
-        transition="fast"
         className={styles.panelBackground}
         visible
       />

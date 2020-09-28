@@ -92,7 +92,7 @@ export const CodeButton = ({
       userSelect="none"
       pointerEvents="none"
     >
-      <Text size="small" baseline={false} tone="positive">
+      <Text size="xsmall" baseline={false} tone="positive">
         <IconPositive /> {successLabel}
       </Text>
     </Box>

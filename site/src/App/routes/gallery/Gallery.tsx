@@ -210,7 +210,7 @@ const GalleryItem = ({
                                   onClick={() => copy(codeAsString)}
                                   successLabel="Copied!"
                                 >
-                                  <CopyIcon /> Copy
+                                  <CopyIcon /> Copy code
                                 </CodeButton>
                               </Column>
                             ) : null}

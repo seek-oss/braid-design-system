@@ -27,9 +27,11 @@ const panelSize = style(({ touchableSize, grid }) => ({
 export const panel = [panelShadow, panelSize];
 
 export const panelBackground = style({
+  backdropFilter: 'blur(4px)',
+  transition: 'opacity .4s ease',
   selectors: {
     [`${panelShadow}:not(:hover) &`]: {
-      opacity: 0.8,
+      opacity: 0.85,
     },
   },
 });
