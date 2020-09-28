@@ -126,7 +126,7 @@ const GalleryItem = ({
   const updateCount = history.filter((item) => item.isRecent).length;
 
   return (
-    <Box padding="xxlarge" data-braid-component-name={component.name}>
+    <Box padding="xxlarge">
       <Stack space="xxlarge">
         <Stack space="large">
           <Inline space="small" alignY="top">
