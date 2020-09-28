@@ -5727,6 +5727,7 @@ Object {
   props: {
     id: string
     label: string
+    onBlur?: () => void
     onChange: (value: Value) => void
     options: TextDropdownValue<Value>[]
     value: NonNullable<Value>

@@ -10,13 +10,14 @@ import {
   IconAdd,
   IconMinus,
   Link,
+  TextDropdown,
 } from '../../../../../lib/components';
 import { Logo } from '../../Logo/Logo';
 import { useThemeSettings, ThemeToggle } from '../../ThemeSetting';
 import { IconButton } from '../../../../../lib/components/iconButtons/IconButton';
 import { SVGProps } from '../../../../../lib/components/icons/SVGTypes';
 import useIcon, { UseIconProps } from '../../../../../lib/hooks/useIcon';
-import { Gallery } from './Gallery';
+import { Gallery, galleryComponentNames } from './Gallery';
 import { GalleryPanel } from './GalleryPanel';
 import * as styleRefs from './gallery.treat';
 
@@ -48,6 +49,8 @@ const IconFitToScreen = (props: UseIconProps) => {
 };
 
 const zoomStep = 0.2;
+const jumpToPlaceholder = 'Jump to';
+const componentList = [jumpToPlaceholder].concat(galleryComponentNames);
 
 const GalleryPage = () => {
   const styles = useStyles(styleRefs);
@@ -61,6 +64,7 @@ const GalleryPage = () => {
   const zoomOutRef = useRef<HTMLButtonElement | null>(null);
   const panzoomRef = useRef<ReturnType<typeof panzoom> | null>(null);
 
+  const [jumpTo, setJumpTo] = useState(jumpToPlaceholder);
   const [zoom, setZoom] = useState(1);
   const [
     fitToScreenDimensions,
@@ -228,6 +232,56 @@ const GalleryPage = () => {
         </GalleryPanel>
 
         <GalleryPanel bottom right>
+          <Box paddingX="xsmall">
+            <Text size="small" tone="secondary">
+              <TextDropdown
+                id="search"
+                label="Jump to component"
+                options={componentList}
+                value={jumpTo}
+                onBlur={() => {
+                  setJumpTo(jumpToPlaceholder);
+                }}
+                onChange={(name) => {
+                  setJumpTo(name);
+
+                  if (panzoomRef.current && name !== jumpToPlaceholder) {
+                    const component = document.querySelector<HTMLDivElement>(
+                      `[data-braid-component-name=${name}]`,
+                    );
+                    if (component) {
+                      const viewportWidth =
+                        document.documentElement.clientWidth;
+                      const viewportHeight =
+                        document.documentElement.clientHeight;
+                      const clientRect = component.getBoundingClientRect();
+
+                      const xScale = viewportWidth / (clientRect.width / zoom);
+                      const yScale =
+                        viewportHeight / (clientRect.height / zoom);
+                      const scale = Math.min(xScale, yScale);
+
+                      const xOffset =
+                        (viewportWidth - component.offsetWidth * scale) / 2;
+                      const yOffset =
+                        (viewportHeight - component.offsetHeight * scale) / 2;
+
+                      const targetX =
+                        -(component.offsetLeft - Math.max(xOffset, 0)) * scale;
+                      const targetY =
+                        -(component.offsetTop - Math.max(yOffset, 0)) * scale;
+
+                      panzoomRef.current.moveTo(targetX, targetY);
+                      panzoomRef.current.zoomAbs(targetX, targetY, scale);
+                    }
+                  }
+                }}
+              />
+            </Text>
+          </Box>
+          <Box aria-hidden style={{ opacity: 0.3 }}>
+            <Text tone="secondary">|</Text>
+          </Box>
           <IconButton
             label="Fit to screen"
             onClick={fitToScreen}

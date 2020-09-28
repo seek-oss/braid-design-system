@@ -33,8 +33,7 @@ export const GalleryPanel = ({
       top={top ? 0 : undefined}
       display="flex"
       alignItems="center"
-      paddingY="small"
-      paddingX={['small', 'gutter']}
+      padding="small"
       zIndex="sticky"
       className={styles.panel}
     >
