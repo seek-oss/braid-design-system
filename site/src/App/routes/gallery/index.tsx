@@ -49,6 +49,7 @@ const IconFitToScreen = (props: UseIconProps) => {
 };
 
 const zoomStep = 0.2;
+const jumpToEdgeThreshold = 50;
 const jumpToPlaceholder = 'Jump to';
 const componentList = [jumpToPlaceholder].concat(galleryComponentNames);
 
@@ -166,6 +167,16 @@ const GalleryPage = () => {
     }
   };
 
+  const zoomToActualSize = () => {
+    if (panzoomRef.current) {
+      panzoomRef.current.smoothZoomAbs(
+        document.documentElement.clientWidth / 2,
+        document.documentElement.clientHeight / 2,
+        1,
+      );
+    }
+  };
+
   const fitToScreen = useCallback(() => {
     if (panzoomRef.current && fitToScreenDimensions) {
       panzoomRef.current.zoomAbs(0, 0, fitToScreenDimensions.scale);
@@ -249,30 +260,33 @@ const GalleryPage = () => {
                     const component = document.querySelector<HTMLDivElement>(
                       `[data-braid-component-name=${name}]`,
                     );
+
                     if (component) {
                       const viewportWidth =
                         document.documentElement.clientWidth;
                       const viewportHeight =
                         document.documentElement.clientHeight;
                       const clientRect = component.getBoundingClientRect();
+                      const actualWidth =
+                        clientRect.width / zoom + jumpToEdgeThreshold * 2;
+                      const actualHeight =
+                        clientRect.height / zoom + jumpToEdgeThreshold * 2;
 
-                      const xScale = viewportWidth / (clientRect.width / zoom);
-                      const yScale =
-                        viewportHeight / (clientRect.height / zoom);
-                      const scale = Math.min(xScale, yScale);
+                      const targetScale = Math.min(
+                        viewportWidth / actualWidth,
+                        viewportHeight / actualHeight,
+                      );
 
-                      const xOffset =
-                        (viewportWidth - component.offsetWidth * scale) / 2;
-                      const yOffset =
-                        (viewportHeight - component.offsetHeight * scale) / 2;
-
+                      const scaled = (n: number) => n * targetScale;
                       const targetX =
-                        -(component.offsetLeft - Math.max(xOffset, 0)) * scale;
+                        scaled(-component.offsetLeft + jumpToEdgeThreshold) +
+                        (viewportWidth - scaled(actualWidth)) / 2;
                       const targetY =
-                        -(component.offsetTop - Math.max(yOffset, 0)) * scale;
+                        scaled(-component.offsetTop + jumpToEdgeThreshold) +
+                        (viewportHeight - scaled(actualHeight)) / 2;
 
                       panzoomRef.current.moveTo(targetX, targetY);
-                      panzoomRef.current.zoomAbs(targetX, targetY, scale);
+                      panzoomRef.current.zoomAbs(targetX, targetY, targetScale);
                     }
                   }
                 }}
@@ -297,7 +311,11 @@ const GalleryPage = () => {
           >
             {(iconProps) => <IconMinus {...iconProps} />}
           </IconButton>
-          <Box userSelect="none">
+          <Box
+            component="button"
+            title="Zoom to actual size"
+            onClick={zoomToActualSize}
+          >
             <Text size="small" tone="secondary">
               {Math.round(zoom * 100)}%
             </Text>
