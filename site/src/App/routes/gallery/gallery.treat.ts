@@ -15,3 +15,21 @@ export const moveCursor = style({
 export const delayPanels = style({
   transitionDelay: '1000ms',
 });
+
+const panelShadow = style({
+  boxShadow: '0 2px 5px 1px rgba(28,28,28,.2)',
+});
+
+const panelSize = style(({ touchableSize, grid }) => ({
+  minHeight: touchableSize * grid,
+}));
+
+export const panel = [panelShadow, panelSize];
+
+export const panelBackground = style({
+  selectors: {
+    [`${panelShadow}:not(:hover) &`]: {
+      opacity: 0.8,
+    },
+  },
+});

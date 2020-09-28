@@ -22,13 +22,12 @@ import {
   TextLink,
   Columns,
   Column,
-  TextLinkButton,
-  HiddenVisually,
   Disclosure,
 } from '../../../../../lib/components';
 import { getHistory } from '../../Updates';
 import { CopyIcon } from '../../Code/CopyIcon';
-import { ComponentDocs } from '../../../types';
+import { CodeButton } from '../../Code/Code';
+import { ComponentExample } from '../../../types';
 import { ThemedExample } from '../../ThemeSetting';
 import { documentedComponents } from '../../navigationHelpers';
 import { Overlay } from '../../../../../lib/components/private/Overlay/Overlay';
@@ -68,7 +67,7 @@ const Mask = ({
   background,
 }: {
   children: ReactNode;
-  background: ComponentDocs['examples'][number]['background'];
+  background: ComponentExample['background'];
 }) => {
   const elRef = useRef<HTMLElement | null>(null);
   const [dimensions, setDimensions] = useState<{ w: number; h: number }>({
@@ -127,7 +126,7 @@ const GalleryItem = ({
   const updateCount = history.filter((item) => item.isRecent).length;
 
   return (
-    <Box padding="xxlarge">
+    <Box padding="xxlarge" data-braid-component-name={component.name}>
       <Stack space="xxlarge">
         <Stack space="large">
           <Inline space="small" alignY="top">
@@ -199,27 +198,20 @@ const GalleryItem = ({
 
                     return (
                       <Box style={{ width: '700px' }} key={`${label}_${index}`}>
-                        <Stack space="medium">
-                          <Columns space="medium">
+                        <Stack space="small">
+                          <Columns space="medium" alignY="center">
                             <Column>
                               <Text tone="secondary">{label}</Text>
                             </Column>
                             {codeAsString ? (
                               <Column width="content">
-                                <Text tone="secondary">
-                                  <TextLinkButton
-                                    hitArea="large"
-                                    aria-describedby={`copy-${label}_${index}`}
-                                    onClick={() => copy(codeAsString)}
-                                  >
-                                    <CopyIcon />
-                                    <Box id={`copy-${label}_${index}`}>
-                                      <HiddenVisually>
-                                        Copy to clipboard
-                                      </HiddenVisually>
-                                    </Box>
-                                  </TextLinkButton>
-                                </Text>
+                                <CodeButton
+                                  title="Copy code to clipboard"
+                                  onClick={() => copy(codeAsString)}
+                                  successLabel="Copied!"
+                                >
+                                  <CopyIcon /> Copy
+                                </CodeButton>
                               </Column>
                             ) : null}
                           </Columns>
