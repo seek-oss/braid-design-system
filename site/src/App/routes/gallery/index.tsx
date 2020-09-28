@@ -9,20 +9,45 @@ import {
   Box,
   IconAdd,
   IconMinus,
-  IconRefresh,
+  Link,
 } from '../../../../../lib/components';
 import { Logo } from '../../Logo/Logo';
 import { useThemeSettings, ThemeToggle } from '../../ThemeSetting';
 import { IconButton } from '../../../../../lib/components/iconButtons/IconButton';
+import { SVGProps } from '../../../../../lib/components/icons/SVGTypes';
+import useIcon, { UseIconProps } from '../../../../../lib/hooks/useIcon';
 import { Gallery } from './Gallery';
 import { GalleryPanel } from './GalleryPanel';
 import * as styleRefs from './gallery.treat';
 
-type ResetDimensions = {
+type FitToScreenDimensions = {
   x: number;
   y: number;
   scale: number;
 };
+
+const IconFitToScreenSvg = ({ title, titleId, ...props }: SVGProps) => (
+  <svg
+    width={16}
+    height={16}
+    viewBox="0 0 24 24"
+    focusable="false"
+    fill="currentColor"
+    aria-labelledby={titleId}
+    {...props}
+  >
+    {title ? <title id={titleId}>{title}</title> : null}
+    <path d="M3 5a1 1 0 00-1 1v12a1 1 0 002 0V6a1 1 0 00-1-1zm18 0a1 1 0 00-1 1v12a1 1 0 002 0V6a1 1 0 00-1-1zm-2.077 6.618a.999.999 0 00-.217-.326l-1.999-1.999a1 1 0 00-1.414 1.414l.293.293H8.414l.293-.293a1 1 0 00-1.414-1.414l-2 2a1 1 0 000 1.414l2 2a1 1 0 001.414-1.414L8.414 13h7.172l-.293.293a1 1 0 101.414 1.414l1.999-1.999a1.003 1.003 0 00.217-1.09z" />
+  </svg>
+);
+
+const IconFitToScreen = (props: UseIconProps) => {
+  const iconProps = useIcon(props);
+
+  return <Box component={IconFitToScreenSvg} {...iconProps} />;
+};
+
+const zoomStep = 0.2;
 
 const GalleryPage = () => {
   const styles = useStyles(styleRefs);
@@ -31,20 +56,20 @@ const GalleryPage = () => {
     'loading',
   );
 
-  const contentRef = useRef<HTMLElement | null>(null);
+  const contentRef = useRef<HTMLDivElement | null>(null);
   const zoomInRef = useRef<HTMLButtonElement | null>(null);
   const zoomOutRef = useRef<HTMLButtonElement | null>(null);
   const panzoomRef = useRef<ReturnType<typeof panzoom> | null>(null);
 
   const [zoom, setZoom] = useState(1);
   const [
-    resetDimensions,
-    setResetDimensions,
-  ] = useState<ResetDimensions | null>(null);
+    fitToScreenDimensions,
+    setFitToScreenDimensions,
+  ] = useState<FitToScreenDimensions | null>(null);
 
-  const calculateResetDimensions = (
-    contentEl: HTMLElement,
-  ): ResetDimensions => {
+  const calculateFitToScreenDimensions = (
+    contentEl: HTMLDivElement,
+  ): FitToScreenDimensions => {
     const screenBuffer = 0.005;
     const xScale = document.documentElement.clientWidth / contentEl.scrollWidth;
     const yScale =
@@ -64,7 +89,7 @@ const GalleryPage = () => {
   };
 
   useEffect(() => {
-    if (themeReady && resetDimensions) {
+    if (themeReady && fitToScreenDimensions) {
       setStatus('done');
 
       const keyboardZoomHandler = (e: KeyboardEvent) => {
@@ -91,9 +116,9 @@ const GalleryPage = () => {
 
       const resizeHandler = () => {
         if (contentRef.current && panzoomRef.current) {
-          const dimensions = calculateResetDimensions(contentRef.current);
+          const dimensions = calculateFitToScreenDimensions(contentRef.current);
           panzoomRef.current.setMinZoom(dimensions.scale);
-          setResetDimensions(dimensions);
+          setFitToScreenDimensions(dimensions);
         }
       };
 
@@ -105,39 +130,52 @@ const GalleryPage = () => {
         window.removeEventListener('resize', resizeHandler);
       };
     }
-  }, [themeReady, resetDimensions]);
+  }, [themeReady, fitToScreenDimensions]);
 
   const zoomOut = () => {
     if (panzoomRef.current) {
-      panzoomRef.current.smoothZoom(
+      const { scale } = panzoomRef.current.getTransform();
+      const newScale = Math.ceil(scale / zoomStep) * zoomStep - zoomStep;
+      const roundedNew = Math.round(newScale * 100) / 100;
+      const roundedOld = Math.round(scale * 100) / 100;
+
+      panzoomRef.current.smoothZoomAbs(
         document.documentElement.clientWidth / 2,
         document.documentElement.clientHeight / 2,
-        0.5,
+        roundedNew === roundedOld ? roundedNew - zoomStep : roundedNew,
       );
     }
   };
 
   const zoomIn = () => {
     if (panzoomRef.current) {
-      panzoomRef.current.smoothZoom(
+      const { scale } = panzoomRef.current.getTransform();
+      const newScale = Math.floor(scale / zoomStep) * zoomStep + zoomStep;
+      const roundedNew = Math.round(newScale * 100) / 100;
+      const roundedOld = Math.round(scale * 100) / 100;
+
+      panzoomRef.current.smoothZoomAbs(
         document.documentElement.clientWidth / 2,
         document.documentElement.clientHeight / 2,
-        1.5,
+        roundedNew === roundedOld ? roundedNew + zoomStep : roundedNew,
       );
     }
   };
 
-  const reset = useCallback(() => {
-    if (panzoomRef.current && resetDimensions) {
-      panzoomRef.current.zoomAbs(0, 0, resetDimensions.scale);
-      panzoomRef.current.moveTo(resetDimensions.x, resetDimensions.y);
+  const fitToScreen = useCallback(() => {
+    if (panzoomRef.current && fitToScreenDimensions) {
+      panzoomRef.current.zoomAbs(0, 0, fitToScreenDimensions.scale);
+      panzoomRef.current.moveTo(
+        fitToScreenDimensions.x,
+        fitToScreenDimensions.y,
+      );
     }
-  }, [resetDimensions]);
+  }, [fitToScreenDimensions]);
 
   useEffect(() => {
     if (status !== 'loading' && contentRef.current) {
       const contentEl = contentRef.current;
-      const dimensions = calculateResetDimensions(contentEl);
+      const dimensions = calculateFitToScreenDimensions(contentEl);
 
       panzoomRef.current = panzoom(contentEl, {
         maxZoom: 20,
@@ -158,7 +196,7 @@ const GalleryPage = () => {
 
       panzoomRef.current.zoomAbs(dimensions.x, dimensions.y, dimensions.scale);
 
-      setResetDimensions(dimensions);
+      setFitToScreenDimensions(dimensions);
 
       return () => {
         panzoomRef.current?.dispose();
@@ -177,13 +215,25 @@ const GalleryPage = () => {
         opacity={status === 'done' ? undefined : 0}
         className={styles.delayPanels}
       >
-        <GalleryPanel top right>
-          <ThemeToggle size="small" weight="regular" />
+        <GalleryPanel top left space="medium">
+          <Box
+            component={Link}
+            cursor="pointer"
+            title="Back to documentation"
+            href="/"
+          >
+            <Logo iconOnly height={28} width={28} />
+          </Box>
+          <ThemeToggle size="small" weight="strong" />
         </GalleryPanel>
 
         <GalleryPanel bottom right>
-          <IconButton label="Reset" onClick={reset} keyboardAccessible>
-            {(iconProps) => <IconRefresh {...iconProps} />}
+          <IconButton
+            label="Fit to screen"
+            onClick={fitToScreen}
+            keyboardAccessible
+          >
+            {(iconProps) => <IconFitToScreen {...iconProps} />}
           </IconButton>
           <IconButton
             ref={zoomOutRef}
@@ -193,9 +243,11 @@ const GalleryPage = () => {
           >
             {(iconProps) => <IconMinus {...iconProps} />}
           </IconButton>
-          <Text size="small" tone="secondary">
-            {Math.round(zoom * 100)}%
-          </Text>
+          <Box userSelect="none">
+            <Text size="small" tone="secondary">
+              {Math.round(zoom * 100)}%
+            </Text>
+          </Box>
           <IconButton
             ref={zoomInRef}
             label="Zoom In"

@@ -1,4 +1,10 @@
-import React, { useState, ReactChild } from 'react';
+import React, {
+  useState,
+  ReactChild,
+  useCallback,
+  useEffect,
+  useRef,
+} from 'react';
 import { useStyles } from 'react-treat';
 import copy from 'copy-to-clipboard';
 import memoize from 'lodash/memoize';
@@ -14,6 +20,7 @@ import {
   Inline,
   IconChevron,
   Hidden,
+  IconPositive,
 } from '../../../../lib/components';
 import { BoxProps } from '../../../../lib/components/Box/Box';
 import { FieldOverlay } from '../../../../lib/components/private/FieldOverlay/FieldOverlay';
@@ -39,15 +46,57 @@ const formatSnippet = memoize(
       .replace(/^;/, ''), // Remove leading semicolons from JSX
 );
 
-const CodeButton = ({
+interface CodeButtonProps extends BoxProps {
+  successLabel?: string;
+}
+
+export const CodeButton = ({
   component = 'button',
   children,
   className,
+  onClick,
+  successLabel,
   ...restProps
-}: BoxProps) => {
+}: CodeButtonProps) => {
   const styles = useStyles(styleRefs);
+  const [showSuccess, setShowSuccess] = useState(false);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  return (
+  const clickHandler = useCallback(
+    (e) => {
+      if (typeof onClick === 'function') {
+        onClick(e);
+
+        if (successLabel) {
+          setShowSuccess(true);
+          timerRef.current = setTimeout(() => setShowSuccess(false), 2000);
+        }
+      }
+    },
+    [onClick, successLabel],
+  );
+
+  useEffect(
+    () => () => {
+      if (timerRef.current) {
+        clearTimeout(timerRef.current);
+      }
+    },
+    [],
+  );
+
+  return showSuccess ? (
+    <Box
+      paddingY="xxsmall"
+      paddingX="xsmall"
+      userSelect="none"
+      pointerEvents="none"
+    >
+      <Text size="xsmall" baseline={false} tone="positive">
+        <IconPositive /> {successLabel}
+      </Text>
+    </Box>
+  ) : (
     <Box
       component={component}
       cursor="pointer"
@@ -57,6 +106,7 @@ const CodeButton = ({
       position="relative"
       outline="none"
       className={[styles.button, className]}
+      onClick={clickHandler}
       {...restProps}
     >
       <FieldOverlay
@@ -159,6 +209,7 @@ export default ({
             <CodeButton
               onClick={() => copy(snippet)}
               title="Copy code to clipboard"
+              successLabel="Copied!"
             >
               <CopyIcon /> Copy
             </CodeButton>
