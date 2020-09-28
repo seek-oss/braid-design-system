@@ -14,18 +14,18 @@ const reducedMotion = style({
   },
 });
 
-const scaled = style({
-  transform: 'scale(.8)',
-});
-
 export const entrance = {
-  center: [reducedMotion, scaled],
+  center: [
+    reducedMotion,
+    style({
+      transform: 'scale(.8)',
+    }),
+  ],
   right: [
     reducedMotion,
-    // scaled,
     style((theme) =>
       theme.utils.responsiveStyle({
-        mobile: { opacity: 1, transform: 'translateX(100%)' },
+        mobile: { opacity: 1, transform: 'translateX(140%)' },
         tablet: { opacity: 0, transform: 'translateX(30px)' },
       }),
     ),
@@ -37,23 +37,22 @@ export const exit = {
     reducedMotion,
     style((theme) =>
       theme.utils.responsiveStyle({
-        mobile: { opacity: 1, transform: 'translateX(100%)' },
+        mobile: { opacity: 1, transform: 'translateX(140%)' },
         tablet: { opacity: 0, transform: 'translateX(15px)' },
       }),
     ),
   ],
 };
 
+const easeOut = 'cubic-bezier(0.2, 0, 0, 1)';
 export const transition = {
   right: style((theme) =>
     theme.utils.responsiveStyle({
       mobile: {
-        transition:
-          'transform .5s cubic-bezier(0.2, 0, 0, 1), opacity .5s cubic-bezier(0.2, 0, 0, 1) !important',
+        transition: `transform .3s ${easeOut}, opacity .3s ${easeOut}`,
       },
       tablet: {
-        transition:
-          'transform .2s cubic-bezier(0.2, 0, 0, 1), opacity .2s cubic-bezier(0.2, 0, 0, 1) !important',
+        transition: `transform .2s ${easeOut}, opacity .2s ${easeOut}`,
       },
     }),
   ),

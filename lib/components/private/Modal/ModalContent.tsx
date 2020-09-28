@@ -32,12 +32,9 @@ export interface ModalContentProps {
   illustration?: ReactNodeNoStrings;
   position: 'center' | 'right';
   headingLevel: '2' | '3';
-}
-
-interface InternalModalProps extends ModalContentProps {
+  scrollLock?: boolean;
   headingRef?: Ref<HTMLElement>;
   modalRef?: Ref<HTMLElement>;
-  scrollLock?: boolean;
 }
 
 const modalPadding = ['gutter', 'large'] as const;
@@ -93,7 +90,7 @@ export const ModalContent = ({
   scrollLock = true,
   position,
   headingLevel,
-}: InternalModalProps) => {
+}: ModalContentProps) => {
   const styles = useStyles(styleRefs);
 
   const defaultModalRef = useRef<HTMLElement>(null);
@@ -122,6 +119,7 @@ export const ModalContent = ({
       aria-describedby={description ? descriptionId : undefined}
       aria-modal="true"
       onKeyDown={handleEscape}
+      position="relative"
       width="full"
       height="full"
       display="flex"

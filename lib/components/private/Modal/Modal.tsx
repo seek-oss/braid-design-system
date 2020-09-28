@@ -18,7 +18,11 @@ import { externalGutter } from './ModalExternalGutter';
 import { ModalContent, ModalContentProps } from './ModalContent';
 import * as styleRefs from './Modal.treat';
 
-export interface ModalProps extends Omit<ModalContentProps, 'onClose'> {
+export interface ModalProps
+  extends Omit<
+    ModalContentProps,
+    'onClose' | 'scrollLock' | 'headingRef' | 'modalRef'
+  > {
   open: boolean;
   onClose: (openState: false) => void;
 }
@@ -219,8 +223,9 @@ export const Modal = ({
             left={0}
             right={0}
             zIndex="modalBackdrop"
-            transition="fast"
+            transition={position === 'center' ? 'fast' : undefined}
             opacity={state !== OPEN ? 0 : undefined}
+            pointerEvents={state === CLOSING ? 'none' : undefined}
             className={[
               styles.backdrop,
               position in styles.transition &&
@@ -263,6 +268,7 @@ export const Modal = ({
               headingRef={headingRef}
               modalRef={modalRef}
               position={position}
+              scrollLock={!(state === CLOSING)}
             >
               {children}
             </ModalContent>

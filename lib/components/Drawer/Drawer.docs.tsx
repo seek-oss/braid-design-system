@@ -5,6 +5,7 @@ import {
   Placeholder,
   Drawer as PlayroomDrawer,
 } from '../../playroom/components';
+import { DrawerContent } from './Drawer';
 
 const makeExampleContent = ({ label }: { label?: ReactNode } = {}) => (
   <Stack space="large">
@@ -16,7 +17,7 @@ const makeExampleContent = ({ label }: { label?: ReactNode } = {}) => (
 
 const docs: ComponentDocs = {
   category: 'Content',
-  screenshotWidths: [320, 768, 1200],
+  screenshotWidths: [320, 1200],
   description: (
     <Stack space="large">
       <Text>
@@ -39,11 +40,6 @@ const docs: ComponentDocs = {
         It’s recommended that you connect the Drawer’s open state to your router
         so that it can be closed via the browser’s back button.
       </Text>
-      <Text>
-        To improve animation performance, the mobile entrance animation is a
-        zoom rather than a horizontal slide. This was deemed to be an acceptable
-        trade-off since the drawer fills the entire screen.
-      </Text>
       <Text tone="secondary">
         If you’re only displaying a small amount of content, consider using a{' '}
         <TextLink href="/components/Dialog">Dialog.</TextLink>
@@ -55,6 +51,7 @@ const docs: ComponentDocs = {
       label: 'Default',
       playroom: false,
       storybook: false,
+      gallery: false,
       Example: () => {
         const [open, setOpen] = useState(false);
 
@@ -80,6 +77,7 @@ const docs: ComponentDocs = {
       label: 'With additional description',
       playroom: false,
       storybook: false,
+      gallery: false,
       Example: () => {
         const [open, setOpen] = useState(false);
 
@@ -112,6 +110,7 @@ const docs: ComponentDocs = {
       label: 'Small width',
       playroom: false,
       storybook: false,
+      gallery: false,
       Example: () => {
         const [open, setOpen] = useState(false);
 
@@ -146,6 +145,7 @@ const docs: ComponentDocs = {
       label: 'Medium width',
       playroom: false,
       storybook: false,
+      gallery: false,
       Example: () => {
         const [open, setOpen] = useState(false);
 
@@ -180,6 +180,7 @@ const docs: ComponentDocs = {
       label: 'Large width',
       playroom: false,
       storybook: false,
+      gallery: false,
       Example: () => {
         const [open, setOpen] = useState(false);
 
@@ -209,6 +210,87 @@ const docs: ComponentDocs = {
           </Fragment>
         );
       },
+    },
+
+    // Screenshot tests
+    {
+      label: 'Panel: Default',
+      docsSite: false,
+      gallery: true,
+      Example: ({ id }) => (
+        <DrawerContent
+          id={id}
+          title="Default test"
+          onClose={() => {}}
+          width="medium"
+          scrollLock={false}
+        >
+          <Placeholder height={100} width="100%" />
+        </DrawerContent>
+      ),
+    },
+    {
+      label: 'Panel: Description',
+      docsSite: false,
+      gallery: true,
+      Example: ({ id }) => (
+        <DrawerContent
+          id={id}
+          title="Description test"
+          description={
+            <Placeholder height="auto" width="100%" label="Description" />
+          }
+          onClose={() => {}}
+          scrollLock={false}
+        >
+          <Placeholder height={100} width="100%" />
+        </DrawerContent>
+      ),
+    },
+    {
+      label: 'Panel: Small width',
+      docsSite: false,
+      Example: ({ id }) => (
+        <DrawerContent
+          id={id}
+          title="Small"
+          width="small"
+          onClose={() => {}}
+          scrollLock={false}
+        >
+          <Placeholder height={100} width="100%" label="Small Dialog" />
+        </DrawerContent>
+      ),
+    },
+    {
+      label: 'Panel: Medium width',
+      docsSite: false,
+      Example: ({ id }) => (
+        <DrawerContent
+          id={id}
+          title="Medium"
+          width="medium"
+          onClose={() => {}}
+          scrollLock={false}
+        >
+          <Placeholder height={100} width="100%" label="Medium Dialog" />
+        </DrawerContent>
+      ),
+    },
+    {
+      label: 'Panel: Large width',
+      docsSite: false,
+      Example: ({ id }) => (
+        <DrawerContent
+          id={id}
+          title="Large"
+          width="large"
+          onClose={() => {}}
+          scrollLock={false}
+        >
+          <Placeholder height={100} width="100%" label="Large Dialog" />
+        </DrawerContent>
+      ),
     },
   ],
   snippets: [
