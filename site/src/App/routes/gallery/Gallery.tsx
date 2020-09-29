@@ -59,6 +59,8 @@ const galleryComponents = documentedComponents
     ),
   }));
 
+export const galleryComponentNames = galleryComponents.map(({ name }) => name);
+
 const rowLength = Math.floor(Math.sqrt(galleryComponents.length));
 const rows = chunk(galleryComponents, rowLength);
 
@@ -126,7 +128,7 @@ const GalleryItem = ({
   const updateCount = history.filter((item) => item.isRecent).length;
 
   return (
-    <Box padding="xxlarge">
+    <Box padding="xxlarge" data-braid-component-name={component.name}>
       <Stack space="xxlarge">
         <Stack space="large">
           <Inline space="small" alignY="top">

@@ -8,6 +8,12 @@ export const loader = style({
   maxWidth: 'min(50vw, 50vh)',
 });
 
+export const divider = style(({ border, typography, grid }) => ({
+  borderRight: `${border.width.standard}px solid ${border.color.standard}`,
+  width: 1,
+  height: typography.text.standard.mobile.rows * grid,
+}));
+
 export const moveCursor = style({
   cursor: 'move',
 });

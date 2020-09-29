@@ -18,6 +18,7 @@ export interface TextDropdownProps<Value> {
   id: string;
   value: Value;
   onChange: (value: Value) => void;
+  onBlur?: () => void;
   options: TextDropdownValue<Value>[];
   label: string;
 }
@@ -37,6 +38,7 @@ export function TextDropdown<Value>({
   id,
   value,
   onChange,
+  onBlur,
   options,
   label,
 }: TextDropdownProps<Value>) {
@@ -90,6 +92,7 @@ export function TextDropdown<Value>({
             onChange(newValue as Value);
           }
         }}
+        onBlur={onBlur}
       >
         <optgroup label={label}>
           {parsedOptions.map((option) => (

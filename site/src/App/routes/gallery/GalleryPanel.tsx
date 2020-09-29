@@ -1,7 +1,6 @@
 import React from 'react';
 import { useStyles } from 'sku/react-treat';
-import { Box, Inline } from '../../../../../lib/components';
-import { InlineProps } from '../../../../../lib/components/Inline/Inline';
+import { Box } from '../../../../../lib/components';
 import { Overlay } from '../../../../../lib/components/private/Overlay/Overlay';
 import { ReactNodeNoStrings } from '../../../../../lib/components/private/ReactNodeNoStrings';
 import * as styleRefs from './gallery.treat';
@@ -12,14 +11,12 @@ export const GalleryPanel = ({
   left,
   right,
   top,
-  space = 'small',
 }: {
   children: ReactNodeNoStrings;
   bottom?: boolean;
   left?: boolean;
   right?: boolean;
   top?: boolean;
-  space?: InlineProps['space'];
 }) => {
   const styles = useStyles(styleRefs);
   return (
@@ -31,10 +28,7 @@ export const GalleryPanel = ({
       left={left ? 0 : undefined}
       right={right ? 0 : undefined}
       top={top ? 0 : undefined}
-      display="flex"
-      alignItems="center"
-      paddingY="small"
-      paddingX={['small', 'gutter']}
+      padding="small"
       zIndex="sticky"
       className={styles.panel}
     >
@@ -45,10 +39,8 @@ export const GalleryPanel = ({
         visible
       />
 
-      <Box position="relative">
-        <Inline space={space} alignY="center">
-          {children}
-        </Inline>
+      <Box position="relative" display="flex" alignItems="center">
+        {children}
       </Box>
     </Box>
   );
