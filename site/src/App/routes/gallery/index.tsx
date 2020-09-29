@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useStyles } from 'sku/react-treat';
 import panzoom from 'panzoom';
-import { setLightness } from 'polished';
+import { parseToHsl, setLightness } from 'polished';
 
 import { Page } from '../../../types';
 import { PageTitle } from '../../Seo/PageTitle';
@@ -32,7 +32,11 @@ const useBackgroundColor = () => {
       selectedTheme.name === 'docs' ? 'neutralLight' : 'body'
     ];
 
-  return setLightness(0.975, backgroundColor);
+  const { lightness } = parseToHsl(backgroundColor);
+
+  return lightness < 0.96
+    ? setLightness(0.96, backgroundColor)
+    : backgroundColor;
 };
 
 type FitToScreenDimensions = {
