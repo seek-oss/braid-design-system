@@ -130,7 +130,12 @@ const GalleryItem = ({
   const updateCount = markAsNew ? actualUpdateCount - 1 : actualUpdateCount;
 
   return (
-    <Box padding="xxlarge" data-braid-component-name={component.name}>
+    <Box
+      background="card"
+      borderRadius="standard"
+      padding="xxlarge"
+      data-braid-component-name={component.name}
+    >
       <Stack space="xxlarge">
         <Stack space="large">
           <Inline space="small" alignY="center">
@@ -267,7 +272,7 @@ const GalleryItem = ({
 export const Gallery = memo(() => (
   <Box>
     {rows.map((row, index) => (
-      <Columns space="xxlarge" key={index}>
+      <Columns space="none" key={index}>
         {row.map((component) => (
           <Column key={component.name} width="content">
             <Box padding="xxlarge">

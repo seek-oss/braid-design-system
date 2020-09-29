@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useStyles } from 'sku/react-treat';
 import panzoom from 'panzoom';
+import { parseToHsl, setLightness } from 'polished';
 
 import { Page } from '../../../types';
 import { PageTitle } from '../../Seo/PageTitle';
@@ -15,12 +16,28 @@ import {
 } from '../../../../../lib/components';
 import { Logo } from '../../Logo/Logo';
 import { useThemeSettings, ThemeToggle } from '../../ThemeSetting';
+import * as themes from '../../../../../lib/themes';
 import { IconButton } from '../../../../../lib/components/iconButtons/IconButton';
 import { SVGProps } from '../../../../../lib/components/icons/SVGTypes';
 import useIcon, { UseIconProps } from '../../../../../lib/hooks/useIcon';
 import { Gallery, galleryComponentNames } from './Gallery';
 import { GalleryPanel } from './GalleryPanel';
 import * as styleRefs from './gallery.treat';
+
+const useBackgroundColor = () => {
+  const { theme } = useThemeSettings();
+  const selectedTheme = themes[theme];
+  const backgroundColor =
+    selectedTheme.color.background[
+      selectedTheme.name === 'docs' ? 'neutralLight' : 'body'
+    ];
+
+  const { lightness } = parseToHsl(backgroundColor);
+
+  return lightness < 0.96
+    ? setLightness(0.96, backgroundColor)
+    : backgroundColor;
+};
 
 type FitToScreenDimensions = {
   x: number;
@@ -228,7 +245,14 @@ const GalleryPage = () => {
   useEffect(() => setStatus('measuring'), []);
 
   return (
-    <Box position="fixed" top={0} bottom={0} left={0} right={0}>
+    <Box
+      position="fixed"
+      top={0}
+      bottom={0}
+      left={0}
+      right={0}
+      style={{ backgroundColor: useBackgroundColor() }}
+    >
       <PageTitle title="Gallery" />
 
       <Box
