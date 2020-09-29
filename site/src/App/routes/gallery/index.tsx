@@ -11,6 +11,7 @@ import {
   IconMinus,
   Link,
   TextDropdown,
+  Inline,
 } from '../../../../../lib/components';
 import { Logo } from '../../Logo/Logo';
 import { useThemeSettings, ThemeToggle } from '../../ThemeSetting';
@@ -25,6 +26,11 @@ type FitToScreenDimensions = {
   x: number;
   y: number;
   scale: number;
+};
+
+const PanelDivider = () => {
+  const styles = useStyles(styleRefs);
+  return <Box aria-hidden className={styles.divider} />;
 };
 
 const IconFitToScreenSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -52,6 +58,24 @@ const zoomStep = 0.2;
 const jumpToEdgeThreshold = 50;
 const jumpToPlaceholder = 'Jump to';
 const componentList = [jumpToPlaceholder].concat(galleryComponentNames);
+const calculateFitToScreenDimensions = (
+  contentEl: HTMLDivElement,
+): FitToScreenDimensions => {
+  const screenBuffer = 0.005;
+  const xScale = document.documentElement.clientWidth / contentEl.scrollWidth;
+  const yScale = document.documentElement.clientHeight / contentEl.scrollHeight;
+  const scale = Math.min(xScale, yScale) - screenBuffer;
+
+  return {
+    x:
+      (document.documentElement.clientWidth - contentEl.scrollWidth * scale) /
+      2,
+    y:
+      (document.documentElement.clientHeight - contentEl.scrollHeight * scale) /
+      2,
+    scale,
+  };
+};
 
 const GalleryPage = () => {
   const styles = useStyles(styleRefs);
@@ -71,71 +95,6 @@ const GalleryPage = () => {
     fitToScreenDimensions,
     setFitToScreenDimensions,
   ] = useState<FitToScreenDimensions | null>(null);
-
-  const calculateFitToScreenDimensions = (
-    contentEl: HTMLDivElement,
-  ): FitToScreenDimensions => {
-    const screenBuffer = 0.005;
-    const xScale = document.documentElement.clientWidth / contentEl.scrollWidth;
-    const yScale =
-      document.documentElement.clientHeight / contentEl.scrollHeight;
-    const scale = Math.min(xScale, yScale) - screenBuffer;
-
-    return {
-      x:
-        (document.documentElement.clientWidth - contentEl.scrollWidth * scale) /
-        2,
-      y:
-        (document.documentElement.clientHeight -
-          contentEl.scrollHeight * scale) /
-        2,
-      scale,
-    };
-  };
-
-  useEffect(() => {
-    if (themeReady && fitToScreenDimensions) {
-      setStatus('done');
-
-      const keyboardZoomHandler = (e: KeyboardEvent) => {
-        const cmdOrCtrl = navigator.platform.match('Mac')
-          ? e.metaKey
-          : e.ctrlKey;
-
-        const plus = e.keyCode === 187;
-        const minus = e.keyCode === 189;
-
-        if (cmdOrCtrl && (plus || minus)) {
-          e.preventDefault();
-          e.stopPropagation();
-
-          if (plus && zoomInRef.current) {
-            zoomInRef.current.focus();
-          }
-
-          if (minus && zoomOutRef.current) {
-            zoomOutRef.current.focus();
-          }
-        }
-      };
-
-      const resizeHandler = () => {
-        if (contentRef.current && panzoomRef.current) {
-          const dimensions = calculateFitToScreenDimensions(contentRef.current);
-          panzoomRef.current.setMinZoom(dimensions.scale);
-          setFitToScreenDimensions(dimensions);
-        }
-      };
-
-      window.addEventListener('keydown', keyboardZoomHandler);
-      window.addEventListener('resize', resizeHandler);
-
-      return () => {
-        window.removeEventListener('keydown', keyboardZoomHandler);
-        window.removeEventListener('resize', resizeHandler);
-      };
-    }
-  }, [themeReady, fitToScreenDimensions]);
 
   const zoomOut = () => {
     if (panzoomRef.current) {
@@ -188,6 +147,52 @@ const GalleryPage = () => {
   }, [fitToScreenDimensions]);
 
   useEffect(() => {
+    if (themeReady && fitToScreenDimensions) {
+      setStatus('done');
+
+      const keyboardZoomHandler = (e: KeyboardEvent) => {
+        const cmdOrCtrl = navigator.platform.match('Mac')
+          ? e.metaKey
+          : e.ctrlKey;
+
+        const plus = e.keyCode === 187;
+        const minus = e.keyCode === 189;
+
+        if (cmdOrCtrl && (plus || minus)) {
+          e.preventDefault();
+          e.stopPropagation();
+
+          if (plus && zoomInRef.current) {
+            zoomInRef.current.focus();
+            zoomIn();
+          }
+
+          if (minus && zoomOutRef.current) {
+            zoomOutRef.current.focus();
+            zoomOut();
+          }
+        }
+      };
+
+      const resizeHandler = () => {
+        if (contentRef.current && panzoomRef.current) {
+          const dimensions = calculateFitToScreenDimensions(contentRef.current);
+          panzoomRef.current.setMinZoom(dimensions.scale);
+          setFitToScreenDimensions(dimensions);
+        }
+      };
+
+      window.addEventListener('keydown', keyboardZoomHandler);
+      window.addEventListener('resize', resizeHandler);
+
+      return () => {
+        window.removeEventListener('keydown', keyboardZoomHandler);
+        window.removeEventListener('resize', resizeHandler);
+      };
+    }
+  }, [themeReady, fitToScreenDimensions]);
+
+  useEffect(() => {
     if (status !== 'loading' && contentRef.current) {
       const contentEl = contentRef.current;
       const dimensions = calculateFitToScreenDimensions(contentEl);
@@ -196,6 +201,7 @@ const GalleryPage = () => {
         maxZoom: 20,
         minZoom: dimensions.scale,
         zoomDoubleClickSpeed: 1,
+        filterKey: () => true, // disables panzoom default handling of keys
         beforeMouseDown: (e) =>
           // @ts-expect-error
           /^(a|button|select)$/i.test(e.target.tagName) ||
@@ -230,104 +236,118 @@ const GalleryPage = () => {
         opacity={status === 'done' ? undefined : 0}
         className={styles.delayPanels}
       >
-        <GalleryPanel top left space="medium">
-          <Box
-            component={Link}
-            cursor="pointer"
-            title="Back to documentation"
-            href="/"
-          >
-            <Logo iconOnly height={28} width={28} />
-          </Box>
-          <ThemeToggle size="small" weight="strong" />
+        <GalleryPanel top left>
+          <Inline space="small" alignY="center">
+            <Box
+              component={Link}
+              display="block"
+              paddingX="xxsmall"
+              cursor="pointer"
+              title="Back to documentation"
+              href="/"
+            >
+              <Logo iconOnly height={28} width={28} />
+            </Box>
+            <PanelDivider />
+            <ThemeToggle size="small" weight="strong" />
+          </Inline>
         </GalleryPanel>
 
         <GalleryPanel bottom right>
-          <Box paddingX="xsmall">
-            <Text size="small" tone="secondary">
-              <TextDropdown
-                id="search"
-                label="Jump to component"
-                options={componentList}
-                value={jumpTo}
-                onBlur={() => {
-                  setJumpTo(jumpToPlaceholder);
-                }}
-                onChange={(name) => {
-                  setJumpTo(name);
+          <Inline space="small" alignY="center">
+            <Box paddingX="xsmall">
+              <Text size="small" tone="secondary">
+                <TextDropdown
+                  id="search"
+                  label="Jump to component"
+                  options={componentList}
+                  value={jumpTo}
+                  onBlur={() => {
+                    setJumpTo(jumpToPlaceholder);
+                  }}
+                  onChange={(name) => {
+                    setJumpTo(name);
 
-                  if (panzoomRef.current && name !== jumpToPlaceholder) {
-                    const component = document.querySelector<HTMLDivElement>(
-                      `[data-braid-component-name=${name}]`,
-                    );
-
-                    if (component) {
-                      const viewportWidth =
-                        document.documentElement.clientWidth;
-                      const viewportHeight =
-                        document.documentElement.clientHeight;
-                      const clientRect = component.getBoundingClientRect();
-                      const actualWidth =
-                        clientRect.width / zoom + jumpToEdgeThreshold * 2;
-                      const actualHeight =
-                        clientRect.height / zoom + jumpToEdgeThreshold * 2;
-
-                      const targetScale = Math.min(
-                        viewportWidth / actualWidth,
-                        viewportHeight / actualHeight,
+                    if (panzoomRef.current && name !== jumpToPlaceholder) {
+                      const component = document.querySelector<HTMLDivElement>(
+                        `[data-braid-component-name=${name}]`,
                       );
 
-                      const scaled = (n: number) => n * targetScale;
-                      const targetX =
-                        scaled(-component.offsetLeft + jumpToEdgeThreshold) +
-                        (viewportWidth - scaled(actualWidth)) / 2;
-                      const targetY =
-                        scaled(-component.offsetTop + jumpToEdgeThreshold) +
-                        (viewportHeight - scaled(actualHeight)) / 2;
+                      if (component) {
+                        const viewportWidth =
+                          document.documentElement.clientWidth;
+                        const viewportHeight =
+                          document.documentElement.clientHeight;
+                        const clientRect = component.getBoundingClientRect();
+                        const actualWidth =
+                          clientRect.width / zoom + jumpToEdgeThreshold * 2;
+                        const actualHeight =
+                          clientRect.height / zoom + jumpToEdgeThreshold * 2;
 
-                      panzoomRef.current.moveTo(targetX, targetY);
-                      panzoomRef.current.zoomAbs(targetX, targetY, targetScale);
+                        const targetScale = Math.min(
+                          viewportWidth / actualWidth,
+                          viewportHeight / actualHeight,
+                        );
+
+                        const scaled = (n: number) => n * targetScale;
+                        const targetX =
+                          scaled(-component.offsetLeft + jumpToEdgeThreshold) +
+                          (viewportWidth - scaled(actualWidth)) / 2;
+                        const targetY =
+                          scaled(-component.offsetTop + jumpToEdgeThreshold) +
+                          (viewportHeight - scaled(actualHeight)) / 2;
+
+                        panzoomRef.current.moveTo(targetX, targetY);
+                        panzoomRef.current.zoomAbs(
+                          targetX,
+                          targetY,
+                          targetScale,
+                        );
+                      }
                     }
-                  }
-                }}
-              />
-            </Text>
-          </Box>
-          <Box aria-hidden style={{ opacity: 0.3 }}>
-            <Text tone="secondary">|</Text>
-          </Box>
-          <IconButton
-            label="Fit to screen"
-            onClick={fitToScreen}
-            keyboardAccessible
-          >
-            {(iconProps) => <IconFitToScreen {...iconProps} />}
-          </IconButton>
-          <IconButton
-            ref={zoomOutRef}
-            label="Zoom Out"
-            onClick={zoomOut}
-            keyboardAccessible
-          >
-            {(iconProps) => <IconMinus {...iconProps} />}
-          </IconButton>
-          <Box
-            component="button"
-            title="Zoom to actual size"
-            onClick={zoomToActualSize}
-          >
-            <Text size="small" tone="secondary">
-              {Math.round(zoom * 100)}%
-            </Text>
-          </Box>
-          <IconButton
-            ref={zoomInRef}
-            label="Zoom In"
-            onClick={zoomIn}
-            keyboardAccessible
-          >
-            {(iconProps) => <IconAdd {...iconProps} />}
-          </IconButton>
+                  }}
+                />
+              </Text>
+            </Box>
+            <PanelDivider />
+            <Inline space="none">
+              <IconButton
+                label="Fit to screen"
+                onClick={fitToScreen}
+                keyboardAccessible
+              >
+                {(iconProps) => <IconFitToScreen {...iconProps} />}
+              </IconButton>
+              <IconButton
+                ref={zoomOutRef}
+                label="Zoom Out"
+                onClick={zoomOut}
+                keyboardAccessible
+              >
+                {(iconProps) => <IconMinus {...iconProps} />}
+              </IconButton>
+              <Box
+                component="button"
+                paddingX="xsmall"
+                height="full"
+                cursor="pointer"
+                title="Zoom to actual size"
+                onClick={zoomToActualSize}
+              >
+                <Text size="small" tone="secondary">
+                  {Math.round(zoom * 100)}%
+                </Text>
+              </Box>
+              <IconButton
+                ref={zoomInRef}
+                label="Zoom In"
+                onClick={zoomIn}
+                keyboardAccessible
+              >
+                {(iconProps) => <IconAdd {...iconProps} />}
+              </IconButton>
+            </Inline>
+          </Inline>
         </GalleryPanel>
       </Box>
 
