@@ -87,9 +87,10 @@ export const maxSize = styleMap(({ utils, space, grid }) => ({
   },
 }));
 
-export const heading = style({
+export const headingRoot = style({});
+export const headingFocus = style({
   selectors: {
-    ':focus &': {
+    [`${headingRoot}:focus &`]: {
       opacity: 1,
     },
   },

@@ -58,14 +58,14 @@ const ModalContentHeader = forwardRef<HTMLElement, ModalContentHeaderProps>(
             tabIndex={-1}
             outline="none"
             position="relative"
-            className={styles.heading}
+            className={styles.headingRoot}
           >
             {title}
             <Overlay
               boxShadow="outlineFocus"
               borderRadius="standard"
               transition="fast"
-              className={styles.heading}
+              className={styles.headingFocus}
               onlyVisibleForKeyboardNavigation
             />
           </Box>

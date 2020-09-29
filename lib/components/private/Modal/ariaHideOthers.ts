@@ -41,7 +41,7 @@ export const ariaHideOthers = (
     Array.prototype.forEach.call(parent.children, (node: HTMLElement) => {
       if (targets.some((target) => node.contains(target))) {
         walk(node);
-      } else if (node.nodeName !== 'SCRIPT') {
+      } else if (node.nodeName !== 'SCRIPT' && node.nodeName !== 'STYLE') {
         const attr = node.getAttribute('aria-hidden');
         const alreadyHidden = attr !== null && attr !== 'false';
         const counterValue = (counterMap.get(node) || 0) + 1;
