@@ -72,24 +72,23 @@ const IconFitToScreen = (props: UseIconProps) => {
 };
 
 const zoomStep = 0.2;
-const jumpToEdgeThreshold = 50;
+const jumpToEdgeThreshold = 80;
 const jumpToPlaceholder = 'Jump to';
 const componentList = [jumpToPlaceholder].concat(galleryComponentNames);
 const calculateFitToScreenDimensions = (
   contentEl: HTMLDivElement,
 ): FitToScreenDimensions => {
-  const screenBuffer = 0.005;
-  const xScale = document.documentElement.clientWidth / contentEl.scrollWidth;
-  const yScale = document.documentElement.clientHeight / contentEl.scrollHeight;
-  const scale = Math.min(xScale, yScale) - screenBuffer;
+  const width = contentEl.scrollWidth;
+  const height = contentEl.scrollHeight;
+  const xScale =
+    (document.documentElement.clientWidth - jumpToEdgeThreshold * 2) / width;
+  const yScale =
+    (document.documentElement.clientHeight - jumpToEdgeThreshold * 2) / height;
+  const scale = Math.min(xScale, yScale);
 
   return {
-    x:
-      (document.documentElement.clientWidth - contentEl.scrollWidth * scale) /
-      2,
-    y:
-      (document.documentElement.clientHeight - contentEl.scrollHeight * scale) /
-      2,
+    x: (document.documentElement.clientWidth - width * scale) / 2,
+    y: (document.documentElement.clientHeight - height * scale) / 2,
     scale,
   };
 };

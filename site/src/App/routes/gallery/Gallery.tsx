@@ -6,7 +6,7 @@ import React, {
   useState,
   useRef,
 } from 'react';
-import { chunk } from 'lodash';
+import { chunk, memoize } from 'lodash';
 import copy from 'copy-to-clipboard';
 import { useIntersection } from 'react-use';
 import reactElementToJSXString from 'react-element-to-jsx-string';
@@ -61,8 +61,12 @@ const galleryComponents = documentedComponents
 
 export const galleryComponentNames = galleryComponents.map(({ name }) => name);
 
-const rowLength = Math.floor(Math.sqrt(galleryComponents.length));
-const rows = chunk(galleryComponents, rowLength);
+const getRows = memoize(() => {
+  const ratio = Math.max((window.innerWidth / window.innerHeight) * 0.75, 1);
+  const rowLength = Math.floor(Math.sqrt(galleryComponents.length) * ratio);
+  const rows = chunk(galleryComponents, rowLength);
+  return rows;
+});
 
 const Mask = ({
   children,
@@ -271,7 +275,7 @@ const GalleryItem = ({
 
 export const Gallery = memo(() => (
   <Box>
-    {rows.map((row, index) => (
+    {getRows().map((row, index) => (
       <Columns space="none" key={index}>
         {row.map((component) => (
           <Column key={component.name} width="content">
