@@ -157,6 +157,7 @@ export const getHistory = memo((...names: Array<string>) => {
               time: versionReleaseDate
                 ? format(versionReleaseDate, 'PP')
                 : undefined,
+              rawTime: versionReleaseDate?.getTime(),
               type: 'new' in update ? 'added' : 'updated',
               summary: update.summary,
               isRecent: Boolean(
@@ -166,5 +167,10 @@ export const getHistory = memo((...names: Array<string>) => {
             };
           }),
       ),
-  );
+  ).sort((a, b) => {
+    if (b.rawTime && a.rawTime) {
+      return b.rawTime - a.rawTime;
+    }
+    return 0;
+  });
 });
