@@ -26,7 +26,7 @@ export const entrance = {
     style((theme) =>
       theme.utils.responsiveStyle({
         mobile: { opacity: 1, transform: 'translateX(140%)' },
-        tablet: { opacity: 0, transform: 'translateX(30px)' },
+        tablet: { opacity: 0, transform: 'translateX(40px)' },
       }),
     ),
   ],

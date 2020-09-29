@@ -11,7 +11,7 @@ import React, {
 import { createPortal } from 'react-dom';
 import FocusLock from 'react-focus-lock';
 import { useStyles } from 'sku/react-treat';
-import { hideOthers as ariaHideOthers } from 'aria-hidden';
+import { ariaHideOthers } from './ariaHideOthers';
 import assert from 'assert';
 import { Box } from '../../Box/Box';
 import { externalGutter } from './ModalExternalGutter';
@@ -125,7 +125,7 @@ const reducer: Reducer<State, Action> = (prevState, action) => {
   return prevState;
 };
 
-const CLOSE_ANIMATION_DURATION = 500;
+const ANIMATION_DURATION = 300;
 export const Modal = ({
   id,
   open,
@@ -169,19 +169,22 @@ export const Modal = ({
     if (state === CLOSING) {
       const timer = setTimeout(() => {
         dispatch(ANIMATION_COMPLETE);
-      }, CLOSE_ANIMATION_DURATION);
+      }, ANIMATION_DURATION);
 
       return () => clearTimeout(timer);
-    }
-
-    if (state === OPEN && modalRef.current) {
-      return ariaHideOthers(modalRef.current);
     }
 
     if (state === CLOSED && openRef.current) {
       closeHandlerRef.current(false);
     }
   }, [state]);
+
+  const shouldAriaHideOthers = state === OPEN || state === CLOSING;
+  useEffect(() => {
+    if (shouldAriaHideOthers && modalRef.current) {
+      return ariaHideOthers(modalRef.current, { delay: ANIMATION_DURATION });
+    }
+  }, [shouldAriaHideOthers]);
 
   useEffect(() => {
     if (typeof onClose === 'function') {

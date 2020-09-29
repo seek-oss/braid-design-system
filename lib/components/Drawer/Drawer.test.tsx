@@ -161,6 +161,7 @@ describe('Drawer', () => {
     userEvent.click(dialogOpenButton);
 
     await waitFor(() => queryByRole('dialog'));
+    await new Promise((resolve) => setTimeout(resolve, 500)); // Wait for transition
 
     expect(queryAllByRole('textbox').length).toBe(0);
   });
