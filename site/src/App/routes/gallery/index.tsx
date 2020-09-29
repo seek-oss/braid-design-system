@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useStyles } from 'sku/react-treat';
 import panzoom from 'panzoom';
+import { setLightness } from 'polished';
 
 import { Page } from '../../../types';
 import { PageTitle } from '../../Seo/PageTitle';
@@ -31,7 +32,7 @@ const useBackgroundColor = () => {
       selectedTheme.name === 'docs' ? 'neutralLight' : 'body'
     ];
 
-  return backgroundColor;
+  return setLightness(0.975, backgroundColor);
 };
 
 type FitToScreenDimensions = {
