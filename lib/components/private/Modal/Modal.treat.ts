@@ -38,13 +38,13 @@ export const exit = {
     style((theme) =>
       theme.utils.responsiveStyle({
         mobile: { opacity: 1, transform: 'translateX(140%)' },
-        tablet: { opacity: 0, transform: 'translateX(15px)' },
+        tablet: { opacity: 0, transform: 'translateX(10px)' },
       }),
     ),
   ],
 };
 
-const easeOut = 'cubic-bezier(0.2, 0, 0, 1)';
+const easeOut = 'cubic-bezier(0.4, 0, 0, 1)';
 export const transition = {
   right: style((theme) =>
     theme.utils.responsiveStyle({
@@ -52,7 +52,7 @@ export const transition = {
         transition: `transform .3s ${easeOut}, opacity .3s ${easeOut}`,
       },
       tablet: {
-        transition: `transform .2s ${easeOut}, opacity .2s ${easeOut}`,
+        transition: `transform .175s ${easeOut}, opacity .175s ${easeOut}`,
       },
     }),
   ),
