@@ -24,7 +24,7 @@ import {
   Column,
   Disclosure,
 } from '../../../../../lib/components';
-import { getHistory } from '../../Updates';
+import { getHistory, isNew } from '../../Updates';
 import { CopyIcon } from '../../Code/CopyIcon';
 import { CodeButton } from '../../Code/Code';
 import { ComponentExample } from '../../../types';
@@ -125,13 +125,15 @@ const GalleryItem = ({
     : [component.name];
 
   const history = getHistory(...relevantNames);
-  const updateCount = history.filter((item) => item.isRecent).length;
+  const markAsNew = isNew(component.name);
+  const actualUpdateCount = history.filter((item) => item.isRecent).length;
+  const updateCount = markAsNew ? actualUpdateCount - 1 : actualUpdateCount;
 
   return (
     <Box padding="xxlarge" data-braid-component-name={component.name}>
       <Stack space="xxlarge">
         <Stack space="large">
-          <Inline space="small" alignY="top">
+          <Inline space="small" alignY="center">
             <Heading level="2">
               <TextLink
                 href={`/components/${component.name}`}
@@ -140,6 +142,23 @@ const GalleryItem = ({
                 {component.name}
               </TextLink>
             </Heading>
+            {markAsNew ? (
+              <Box
+                component={Link}
+                cursor="pointer"
+                href={`/components/${component.name}/releases`}
+                target="gallery-detail"
+              >
+                <Badge
+                  tone="positive"
+                  weight="strong"
+                  title="Added in the last two months"
+                  bleedY
+                >
+                  New
+                </Badge>
+              </Box>
+            ) : null}
             {updateCount > 0 ? (
               <Box
                 component={Link}
@@ -150,12 +169,12 @@ const GalleryItem = ({
                 <Badge
                   tone="promote"
                   weight="strong"
-                  title={`${updateCount} release${
+                  title={`${updateCount} update${
                     updateCount === 1 ? '' : 's'
                   } in the last two months`}
                   bleedY
                 >
-                  {`${updateCount} new release${updateCount === 1 ? '' : 's'}`}
+                  {`${updateCount} update${updateCount === 1 ? '' : 's'}`}
                 </Badge>
               </Box>
             ) : undefined}
