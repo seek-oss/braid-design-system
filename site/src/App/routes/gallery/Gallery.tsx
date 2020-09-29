@@ -133,7 +133,7 @@ const GalleryItem = ({
     <Box padding="xxlarge" data-braid-component-name={component.name}>
       <Stack space="xxlarge">
         <Stack space="large">
-          <Inline space="small" alignY="top">
+          <Inline space="small" alignY="center">
             <Heading level="2">
               <TextLink
                 href={`/components/${component.name}`}
