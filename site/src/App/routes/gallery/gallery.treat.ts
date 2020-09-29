@@ -23,7 +23,7 @@ export const delayPanels = style({
 });
 
 const panelShadow = style({
-  boxShadow: '0 2px 5px 1px rgba(28,28,28,.2)',
+  boxShadow: '0 2px 10px 1px rgba(28,28,28,.1)',
 });
 
 const panelSize = style(({ touchableSize, grid }) => ({
