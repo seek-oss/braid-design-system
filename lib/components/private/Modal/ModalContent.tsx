@@ -190,54 +190,64 @@ export const ModalContent = ({
           position="absolute"
           zIndex="sticky"
           top={0}
+          left={0}
           right={0}
-          paddingTop={modalPadding}
-          paddingRight={modalPadding}
-          className={position === 'center' && styles.maxSize[position]}
+          display="flex"
+          justifyContent="center"
+          pointerEvents="none"
         >
           <Box
-            className={[
-              useNegativeMarginTop('xsmall'),
-              styles.negativeMarginRightXSmall,
-            ]}
+            width="full"
+            display="flex"
+            justifyContent="flexEnd"
+            paddingTop={modalPadding}
+            paddingRight={modalPadding}
+            className={position === 'center' && styles.maxSize[position]}
           >
             <Box
-              position="relative"
-              className={styles.cropIconSpace[headingLevel]}
+              className={[
+                useNegativeMarginTop('xsmall'),
+                styles.negativeMarginRightXSmall,
+              ]}
             >
               <Box
-                component="button"
-                aria-label={closeLabel}
-                borderRadius="full"
-                background="card"
-                padding="xsmall"
-                cursor="pointer"
                 position="relative"
-                onClick={onClose}
-                outline="none"
-                transition="touchable"
-                className={[
-                  styles.closeButtonRoot,
-                  styles.pointerEventsAll,
-                  useVirtualTouchable(),
-                ]}
+                className={styles.cropIconSpace[headingLevel]}
               >
-                <Overlay
-                  boxShadow="outlineFocus"
-                  transition="fast"
-                  onlyVisibleForKeyboardNavigation
-                  borderRadius="full"
-                  className={styles.closeButtonFocus}
-                />
                 <Box
+                  component="button"
+                  aria-label={closeLabel}
+                  borderRadius="full"
+                  background="card"
+                  padding="xsmall"
+                  cursor="pointer"
                   position="relative"
-                  transition="fast"
+                  onClick={onClose}
+                  outline="none"
+                  transition="touchable"
                   className={[
-                    styles.closeButtonOpacity,
-                    styles.closeIcon[headingLevel],
+                    styles.closeButtonRoot,
+                    styles.pointerEventsAll,
+                    useVirtualTouchable(),
                   ]}
                 >
-                  <IconClear size="fill" />
+                  <Overlay
+                    boxShadow="outlineFocus"
+                    transition="fast"
+                    onlyVisibleForKeyboardNavigation
+                    borderRadius="full"
+                    className={styles.closeButtonFocus}
+                  />
+                  <Box
+                    position="relative"
+                    transition="fast"
+                    className={[
+                      styles.closeButtonOpacity,
+                      styles.closeIcon[headingLevel],
+                    ]}
+                  >
+                    <IconClear size="fill" />
+                  </Box>
                 </Box>
               </Box>
             </Box>
