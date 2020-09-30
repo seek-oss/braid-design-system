@@ -193,6 +193,7 @@ export const ModalContent = ({
           right={0}
           paddingTop={modalPadding}
           paddingRight={modalPadding}
+          className={position === 'center' && styles.maxSize[position]}
         >
           <Box
             className={[

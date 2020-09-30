@@ -258,7 +258,7 @@ const docs: ComponentDocs = {
           onClose={() => {}}
           scrollLock={false}
         >
-          <Placeholder height={100} width="100%" label="Small Dialog" />
+          <Placeholder height={100} width="100%" label="Small Drawer" />
         </DrawerContent>
       ),
     },
@@ -273,7 +273,7 @@ const docs: ComponentDocs = {
           onClose={() => {}}
           scrollLock={false}
         >
-          <Placeholder height={100} width="100%" label="Medium Dialog" />
+          <Placeholder height={100} width="100%" label="Medium Drawer" />
         </DrawerContent>
       ),
     },
@@ -288,7 +288,7 @@ const docs: ComponentDocs = {
           onClose={() => {}}
           scrollLock={false}
         >
-          <Placeholder height={100} width="100%" label="Large Dialog" />
+          <Placeholder height={100} width="100%" label="Large Drawer" />
         </DrawerContent>
       ),
     },
