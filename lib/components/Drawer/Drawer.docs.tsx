@@ -295,10 +295,10 @@ const docs: ComponentDocs = {
   ],
   snippets: [
     {
-      name: 'Standard',
+      name: 'Default',
       code: (
         <PlayroomDrawer title="Drawer Heading">
-          <Placeholder width={250} height={100} />
+          <Placeholder width="100%" height={100} />
         </PlayroomDrawer>
       ),
     },
