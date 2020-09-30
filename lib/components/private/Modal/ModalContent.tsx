@@ -236,7 +236,7 @@ export const ModalContent = ({
                     styles.closeIcon[headingLevel],
                   ]}
                 >
-                  <IconClear size="fill" aria-hidden />
+                  <IconClear size="fill" />
                 </Box>
               </Box>
             </Box>

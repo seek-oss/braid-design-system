@@ -32,7 +32,7 @@ export const modalTestSuite = (
         </Button>
         <input type="text" />
         <ModalImplementation
-          id="testDialog"
+          id="testModal"
           title={TITLE}
           closeLabel={CLOSE_LABEL}
           open={open}
@@ -53,7 +53,7 @@ export const modalTestSuite = (
     );
   };
 
-  function renderDialog() {
+  function renderTestCase() {
     const closeHandler = jest.fn();
 
     return {
@@ -70,7 +70,7 @@ export const modalTestSuite = (
 
   describe(`Modal: ${name}`, () => {
     it('should not focus content when closed', () => {
-      const { getByTestId } = renderDialog();
+      const { getByTestId } = renderTestCase();
 
       expect(document.body).toHaveFocus();
       userEvent.tab();
@@ -84,7 +84,7 @@ export const modalTestSuite = (
     });
 
     it('should not be visible until open', () => {
-      const { getByTestId, queryByRole } = renderDialog();
+      const { getByTestId, queryByRole } = renderTestCase();
 
       expect(queryByRole('dialog')).not.toBeInTheDocument();
 
@@ -94,7 +94,7 @@ export const modalTestSuite = (
     });
 
     it('should have the correct aria properties when open', () => {
-      const { getByTestId, queryByRole, getByLabelText } = renderDialog();
+      const { getByTestId, queryByRole, getByLabelText } = renderTestCase();
 
       expect(queryByRole('dialog')).not.toBeInTheDocument();
 
@@ -106,7 +106,7 @@ export const modalTestSuite = (
     });
 
     it('should focus the title element', () => {
-      const { getByTestId, getByText } = renderDialog();
+      const { getByTestId, getByText } = renderTestCase();
 
       userEvent.click(getByTestId('buttonBefore'));
 
@@ -119,7 +119,7 @@ export const modalTestSuite = (
         getByRole,
         getByText,
         getByLabelText,
-      } = renderDialog();
+      } = renderTestCase();
 
       const dialogOpenButton = getByTestId('buttonBefore');
       userEvent.tab();
@@ -149,7 +149,7 @@ export const modalTestSuite = (
     });
 
     it('should close when hitting escape', async () => {
-      const { getByTestId, queryByRole, getByRole } = renderDialog();
+      const { getByTestId, queryByRole, getByRole } = renderTestCase();
 
       const dialogOpenButton = getByTestId('buttonBefore');
       userEvent.click(dialogOpenButton);
@@ -162,7 +162,7 @@ export const modalTestSuite = (
     });
 
     it('should hide document content outside of dialog from screen readers when open', async () => {
-      const { getByTestId, queryAllByRole, queryByRole } = renderDialog();
+      const { getByTestId, queryAllByRole, queryByRole } = renderTestCase();
 
       expect(queryAllByRole('textbox').length).toBe(2);
 
@@ -179,7 +179,7 @@ export const modalTestSuite = (
         getByLabelText,
         closeHandler,
         queryByRole,
-      } = renderDialog();
+      } = renderTestCase();
 
       expect(closeHandler).not.toHaveBeenCalled();
 
