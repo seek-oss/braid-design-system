@@ -161,9 +161,7 @@ describe('Dialog', () => {
     userEvent.click(dialogOpenButton);
 
     await waitFor(() => queryByRole('dialog'));
-    await new Promise((resolve) => setTimeout(resolve, 500)); // Wait for transition
-
-    expect(queryAllByRole('textbox').length).toBe(0);
+    await waitFor(() => expect(queryAllByRole('textbox').length).toBe(0))
   });
 
   it('should call dismiss handler once on close', async () => {
