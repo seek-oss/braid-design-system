@@ -145,7 +145,6 @@ export const ModalContent = ({
             boxShadow="large"
             width={width !== 'content' ? 'full' : undefined}
             height={position === 'right' ? 'full' : undefined}
-            maxWidth={width === 'content' ? undefined : width}
             padding={modalPadding}
             className={[
               styles.pointerEventsAll,

@@ -375,7 +375,6 @@ const docs: ComponentDocs = {
           id={id}
           title="Default test"
           onClose={() => {}}
-          width="medium"
           scrollLock={false}
         >
           <Placeholder height={100} width="100%" />
