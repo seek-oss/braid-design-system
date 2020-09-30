@@ -1,4 +1,6 @@
 // Adapted from https://github.com/theKashey/aria-hidden
+// Adds a 'delay' option to improve performance of animated transitions on mobile.
+// Also ensures that script and style tags aren't marked as aria-hidden.
 
 export type Cleanup = () => void;
 
