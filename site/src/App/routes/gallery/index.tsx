@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useStyles } from 'sku/react-treat';
 import panzoom from 'panzoom';
+import { parseToHsl, setLightness } from 'polished';
 
 import { Page } from '../../../types';
 import { PageTitle } from '../../Seo/PageTitle';
@@ -15,12 +16,28 @@ import {
 } from '../../../../../lib/components';
 import { Logo } from '../../Logo/Logo';
 import { useThemeSettings, ThemeToggle } from '../../ThemeSetting';
+import * as themes from '../../../../../lib/themes';
 import { IconButton } from '../../../../../lib/components/iconButtons/IconButton';
 import { SVGProps } from '../../../../../lib/components/icons/SVGTypes';
 import useIcon, { UseIconProps } from '../../../../../lib/hooks/useIcon';
 import { Gallery, galleryComponentNames } from './Gallery';
 import { GalleryPanel } from './GalleryPanel';
 import * as styleRefs from './gallery.treat';
+
+const useBackgroundColor = () => {
+  const { theme } = useThemeSettings();
+  const selectedTheme = themes[theme];
+  const backgroundColor =
+    selectedTheme.color.background[
+      selectedTheme.name === 'docs' ? 'neutralLight' : 'body'
+    ];
+
+  const { lightness } = parseToHsl(backgroundColor);
+
+  return lightness < 0.96
+    ? setLightness(0.96, backgroundColor)
+    : backgroundColor;
+};
 
 type FitToScreenDimensions = {
   x: number;
@@ -55,24 +72,23 @@ const IconFitToScreen = (props: UseIconProps) => {
 };
 
 const zoomStep = 0.2;
-const jumpToEdgeThreshold = 50;
+const jumpToEdgeThreshold = 80;
 const jumpToPlaceholder = 'Jump to';
 const componentList = [jumpToPlaceholder].concat(galleryComponentNames);
 const calculateFitToScreenDimensions = (
   contentEl: HTMLDivElement,
 ): FitToScreenDimensions => {
-  const screenBuffer = 0.005;
-  const xScale = document.documentElement.clientWidth / contentEl.scrollWidth;
-  const yScale = document.documentElement.clientHeight / contentEl.scrollHeight;
-  const scale = Math.min(xScale, yScale) - screenBuffer;
+  const width = contentEl.scrollWidth;
+  const height = contentEl.scrollHeight;
+  const xScale =
+    (document.documentElement.clientWidth - jumpToEdgeThreshold * 2) / width;
+  const yScale =
+    (document.documentElement.clientHeight - jumpToEdgeThreshold * 2) / height;
+  const scale = Math.min(xScale, yScale);
 
   return {
-    x:
-      (document.documentElement.clientWidth - contentEl.scrollWidth * scale) /
-      2,
-    y:
-      (document.documentElement.clientHeight - contentEl.scrollHeight * scale) /
-      2,
+    x: (document.documentElement.clientWidth - width * scale) / 2,
+    y: (document.documentElement.clientHeight - height * scale) / 2,
     scale,
   };
 };
@@ -228,7 +244,14 @@ const GalleryPage = () => {
   useEffect(() => setStatus('measuring'), []);
 
   return (
-    <Box position="fixed" top={0} bottom={0} left={0} right={0}>
+    <Box
+      position="fixed"
+      top={0}
+      bottom={0}
+      left={0}
+      right={0}
+      style={{ backgroundColor: useBackgroundColor() }}
+    >
       <PageTitle title="Gallery" />
 
       <Box
