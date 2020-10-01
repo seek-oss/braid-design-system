@@ -20,7 +20,7 @@ import * as themes from '../../../../../lib/themes';
 import { IconButton } from '../../../../../lib/components/iconButtons/IconButton';
 import { SVGProps } from '../../../../../lib/components/icons/SVGTypes';
 import useIcon, { UseIconProps } from '../../../../../lib/hooks/useIcon';
-import { Gallery, galleryComponentNames } from './Gallery';
+import { Gallery, galleryComponents } from './Gallery';
 import { GalleryPanel } from './GalleryPanel';
 import * as styleRefs from './gallery.treat';
 
@@ -74,6 +74,10 @@ const IconFitToScreen = (props: UseIconProps) => {
 const zoomStep = 0.2;
 const jumpToEdgeThreshold = 80;
 const jumpToPlaceholder = 'Jump to';
+const galleryComponentNames = galleryComponents
+  .map(({ name }) => name)
+  .concat(['Icons'])
+  .sort();
 const componentList = [jumpToPlaceholder].concat(galleryComponentNames);
 const calculateFitToScreenDimensions = (
   contentEl: HTMLDivElement,

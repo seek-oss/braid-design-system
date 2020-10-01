@@ -31,6 +31,7 @@ import { ComponentExample } from '../../../types';
 import { ThemedExample } from '../../ThemeSetting';
 import { documentedComponents } from '../../navigationHelpers';
 import { Overlay } from '../../../../../lib/components/private/Overlay/Overlay';
+import * as icons from '../../../../../lib/components/icons';
 
 const noop = () => {};
 const DefaultContainer = ({ children }: { children: ReactNode }) => (
@@ -39,7 +40,7 @@ const DefaultContainer = ({ children }: { children: ReactNode }) => (
 
 const COLUMN_SIZE = 4;
 
-const galleryComponents = documentedComponents
+export const galleryComponents = documentedComponents
   .filter(
     ({ category, deprecationWarning, gallery, name }) =>
       category !== 'Logic' &&
@@ -59,13 +60,48 @@ const galleryComponents = documentedComponents
     ),
   }));
 
-export const galleryComponentNames = galleryComponents.map(({ name }) => name);
+export const galleryIcons = Object.keys(icons).map((iconName) => {
+  const IconComponent = icons[iconName as keyof typeof icons];
 
-const getRows = memoize(() => {
-  const ratio = Math.max((window.innerWidth / window.innerHeight) * 0.75, 1);
-  const rowLength = Math.floor(Math.sqrt(galleryComponents.length) * ratio);
-  const rows = chunk(galleryComponents, rowLength);
-  return rows;
+  return {
+    name: iconName,
+    category: 'Icon' as const,
+    screenshotWidths: [],
+    examples: [
+      [
+        {
+          Container: ({ children }: { children: ReactNode }) => (
+            <Box
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+              paddingY="medium"
+              paddingX="xxlarge"
+            >
+              <Box flexShrink={0} style={{ height: 60, width: 60 }}>
+                {children}
+              </Box>
+            </Box>
+          ),
+          Example: () => <IconComponent size="fill" />,
+          code: `<${iconName} />`,
+        },
+      ],
+    ],
+  };
+});
+
+const getRowsFor = memoize((type: 'components' | 'icons') => {
+  const items = type === 'components' ? galleryComponents : galleryIcons;
+
+  const ratio = Math.max(
+    (window.innerWidth / window.innerHeight) *
+      (type === 'components' ? 0.65 : 0.5),
+    1,
+  );
+  const rowLength = Math.floor(Math.sqrt(items.length) * ratio);
+
+  return chunk(items, rowLength);
 });
 
 const Mask = ({
@@ -133,22 +169,24 @@ const GalleryItem = ({
   const actualUpdateCount = history.filter((item) => item.isRecent).length;
   const updateCount = markAsNew ? actualUpdateCount - 1 : actualUpdateCount;
 
+  const isAnIcon = component.category === 'Icon';
+
   return (
     <Box
       background="card"
       borderRadius="standard"
-      padding="xxlarge"
+      padding={isAnIcon ? 'large' : 'xxlarge'}
       data-braid-component-name={component.name}
     >
-      <Stack space="xxlarge">
+      <Stack space={isAnIcon ? 'small' : 'xxlarge'}>
         <Stack space="large">
           <Inline space="small" alignY="center">
-            <Heading level="2">
+            <Heading level={isAnIcon ? '3' : '2'}>
               <TextLink
                 href={`/components/${component.name}`}
                 target="gallery-detail"
               >
-                {component.name}
+                {isAnIcon ? component.name.replace('Icon', '') : component.name}
               </TextLink>
             </Heading>
             {markAsNew ? (
@@ -211,23 +249,30 @@ const GalleryItem = ({
                       Container = DefaultContainer,
                       background = 'body',
                       label,
+                      code,
                     },
                     index,
                   ) => {
-                    const codeAsString = Example
-                      ? reactElementToJSXString(
-                          Example({ id: 'id', handler: noop }), // eslint-disable-line new-cap
-                          {
-                            useBooleanShorthandSyntax: false,
-                            showDefaultProps: false,
-                            showFunctions: false,
-                            filterProps: ['onChange', 'onBlur', 'onFocus'],
-                          },
-                        )
-                      : '';
+                    const codeAsString =
+                      Example && !code
+                        ? reactElementToJSXString(
+                            Example({ id: 'id', handler: noop }), // eslint-disable-line new-cap
+                            {
+                              useBooleanShorthandSyntax: false,
+                              showDefaultProps: false,
+                              showFunctions: false,
+                              filterProps: ['onChange', 'onBlur', 'onFocus'],
+                            },
+                          )
+                        : code;
 
                     return (
-                      <Box style={{ width: '700px' }} key={`${label}_${index}`}>
+                      <Box
+                        style={{
+                          width: isAnIcon ? undefined : '700px',
+                        }}
+                        key={`${label}_${index}`}
+                      >
                         <Stack space="small">
                           <Columns space="medium" alignY="center">
                             <Column>
@@ -249,7 +294,11 @@ const GalleryItem = ({
                             <ThemedExample background={background}>
                               <Mask background={background}>
                                 <Container>
-                                  <Box style={{ cursor: 'auto' }}>
+                                  <Box
+                                    height="full"
+                                    width="full"
+                                    style={{ cursor: 'auto' }}
+                                  >
                                     <Example
                                       id={`${label}_${index}`}
                                       handler={noop}
@@ -274,17 +323,52 @@ const GalleryItem = ({
 };
 
 export const Gallery = memo(() => (
-  <Box>
-    {getRows().map((row, index) => (
-      <Columns space="none" key={index}>
-        {row.map((component) => (
-          <Column key={component.name} width="content">
-            <Box padding="xxlarge">
-              <GalleryItem component={component} />
-            </Box>
-          </Column>
-        ))}
-      </Columns>
-    ))}
+  <Box display="flex">
+    <Box>
+      <Stack space="xxlarge">
+        <Box padding="xxlarge">
+          <Heading level="1">
+            <span style={{ fontSize: '3em' }}>Components</span>
+          </Heading>
+        </Box>
+        <Box>
+          {getRowsFor('components').map((row, index) => (
+            <Columns space="none" key={index}>
+              {row.map((component) => (
+                <Column key={component.name} width="content">
+                  <Box padding="xxlarge">
+                    <GalleryItem component={component} />
+                  </Box>
+                </Column>
+              ))}
+            </Columns>
+          ))}
+        </Box>
+      </Stack>
+    </Box>
+    <Box style={{ paddingLeft: 800 }}>
+      <Box data-braid-component-name="Icons">
+        <Stack space="xxlarge">
+          <Box padding="xxlarge">
+            <Heading level="1">
+              <span style={{ fontSize: '3em' }}>Icons</span>
+            </Heading>
+          </Box>
+          <Box>
+            {getRowsFor('icons').map((row, index) => (
+              <Columns space="none" key={index}>
+                {row.map((component) => (
+                  <Column key={component.name} width="content">
+                    <Box padding="small">
+                      <GalleryItem component={component} />
+                    </Box>
+                  </Column>
+                ))}
+              </Columns>
+            ))}
+          </Box>
+        </Stack>
+      </Box>
+    </Box>
   </Box>
 ));
