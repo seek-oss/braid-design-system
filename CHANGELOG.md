@@ -1,5 +1,31 @@
 # braid-design-system
 
+## 29.8.0
+
+### Minor Changes
+
+- Add **Drawer** component ([#775](https://github.com/seek-oss/braid-design-system/pull/775))
+
+  You can now open a modal panel on the right-hand side of the screen, following the [WAI Aria Dialog (Modal) Pattern](https://www.w3.org/TR/wai-aria-practices-1.2/#dialog_modal).
+
+  See the [documentation](https://seek-oss.github.io/braid-design-system/components/Drawer) for more details and interactive examples.
+
+- **Box:** Add `maxWidth` prop ([#775](https://github.com/seek-oss/braid-design-system/pull/775))
+
+  The sizes from [ContentBlock](https://seek-oss.github.io/braid-design-system/components/ContentBlock) are now available at a lower level for more primitive-based layouts.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Box maxWidth="large">...</Box>
+  ```
+
+### Patch Changes
+
+- **Dialog:** Fix close button to the corner of the dialog when scrolling ([#775](https://github.com/seek-oss/braid-design-system/pull/775))
+
+- **Autosuggest, Dialog:** Lighten backdrop opacity from 0.7 to 0.4 ([#775](https://github.com/seek-oss/braid-design-system/pull/775))
+
 ## 29.7.0
 
 ### Minor Changes
