@@ -16,11 +16,11 @@ import {
   Placeholder,
   Dialog as PlayroomDialog,
 } from '../../playroom/components';
-import { DialogCard } from './DialogCard';
+import { DialogContent } from './Dialog';
 
 const docs: ComponentDocs = {
   category: 'Content',
-  screenshotWidths: [320, 768, 1200],
+  screenshotWidths: [320, 1200],
   description: (
     <Stack space="large">
       <Text>
@@ -32,12 +32,21 @@ const docs: ComponentDocs = {
       <Text>
         The Dialog component provides a way to focus the user&rsquo;s attention
         on a specific subtask or flow within the context of another experience.
-        In order to keep experiences simple, Dialogs{' '}
+        In order to keep experiences simple, Dialogs and{' '}
+        <TextLink href="/components/Drawer">Drawers</TextLink>{' '}
         <Strong>cannot be nested</Strong> inside one another.
       </Text>
       <Text>
         Dialogs should only be used as a last resort when other in-flow
         alternatives are not suitable.
+      </Text>
+      <Text>
+        It’s recommended that you connect the Dialog’s open state to your router
+        so that it can be closed via the browser’s back button.
+      </Text>
+      <Text tone="secondary">
+        If you’re displaying a large amount of content, consider using a{' '}
+        <TextLink href="/components/Drawer">Drawer.</TextLink>
       </Text>
     </Stack>
   ),
@@ -47,7 +56,7 @@ const docs: ComponentDocs = {
       playroom: false,
       storybook: false,
       gallery: false,
-      Example: () => {
+      Example: ({ id }) => {
         const [open, setOpen] = useState(false);
 
         return (
@@ -57,7 +66,7 @@ const docs: ComponentDocs = {
             </Actions>
 
             <Dialog
-              id="default"
+              id={id}
               title="Default Dialog Example"
               open={open}
               onClose={setOpen}
@@ -73,7 +82,7 @@ const docs: ComponentDocs = {
       playroom: false,
       storybook: false,
       gallery: false,
-      Example: () => {
+      Example: ({ id }) => {
         const [open, setOpen] = useState(false);
 
         return (
@@ -85,7 +94,7 @@ const docs: ComponentDocs = {
             </Actions>
 
             <Dialog
-              id="illustrated"
+              id={id}
               title="Illustrated Example"
               illustration={
                 <Box style={{ height: 100, width: 100 }}>
@@ -114,7 +123,7 @@ const docs: ComponentDocs = {
       playroom: false,
       storybook: false,
       gallery: false,
-      Example: () => {
+      Example: ({ id }) => {
         const [open, setOpen] = useState(false);
 
         return (
@@ -126,7 +135,7 @@ const docs: ComponentDocs = {
             </Actions>
 
             <Dialog
-              id="description"
+              id={id}
               title="Dialog with description"
               description={
                 <Text tone="secondary">
@@ -143,11 +152,43 @@ const docs: ComponentDocs = {
       },
     },
     {
+      label: 'With scrolling content',
+      playroom: false,
+      storybook: false,
+      gallery: false,
+      Example: ({ id }) => {
+        const [open, setOpen] = useState(false);
+
+        return (
+          <Fragment>
+            <Actions>
+              <Button onClick={() => setOpen(true)}>
+                Open scrolling dialog
+              </Button>
+            </Actions>
+
+            <Dialog
+              id={id}
+              title="Dialog with scrolling content"
+              open={open}
+              onClose={setOpen}
+            >
+              <Stack space="large">
+                {[...new Array(20)].map((_, i) => (
+                  <Placeholder key={i} height={100} width="100%" />
+                ))}
+              </Stack>
+            </Dialog>
+          </Fragment>
+        );
+      },
+    },
+    {
       label: 'Sized to content',
       playroom: false,
       storybook: false,
       gallery: false,
-      Example: () => {
+      Example: ({ id }) => {
         const [open, setOpen] = useState(false);
 
         return (
@@ -159,7 +200,7 @@ const docs: ComponentDocs = {
             </Actions>
 
             <Dialog
-              id="content"
+              id={id}
               title="Content-sized"
               width="content"
               open={open}
@@ -176,7 +217,7 @@ const docs: ComponentDocs = {
       playroom: false,
       storybook: false,
       gallery: false,
-      Example: () => {
+      Example: ({ id }) => {
         const [open, setOpen] = useState(false);
 
         return (
@@ -186,7 +227,7 @@ const docs: ComponentDocs = {
             </Actions>
 
             <Dialog
-              id="xsmall"
+              id={id}
               title="Xsmall Dialog"
               width="xsmall"
               open={open}
@@ -214,7 +255,7 @@ const docs: ComponentDocs = {
       playroom: false,
       storybook: false,
       gallery: false,
-      Example: () => {
+      Example: ({ id }) => {
         const [open, setOpen] = useState(false);
 
         return (
@@ -224,7 +265,7 @@ const docs: ComponentDocs = {
             </Actions>
 
             <Dialog
-              id="small"
+              id={id}
               title="Small Dialog"
               width="small"
               open={open}
@@ -252,7 +293,7 @@ const docs: ComponentDocs = {
       playroom: false,
       storybook: false,
       gallery: false,
-      Example: () => {
+      Example: ({ id }) => {
         const [open, setOpen] = useState(false);
 
         return (
@@ -262,7 +303,7 @@ const docs: ComponentDocs = {
             </Actions>
 
             <Dialog
-              id="medium"
+              id={id}
               title="Medium Dialog"
               width="medium"
               open={open}
@@ -290,7 +331,7 @@ const docs: ComponentDocs = {
       playroom: false,
       storybook: false,
       gallery: false,
-      Example: () => {
+      Example: ({ id }) => {
         const [open, setOpen] = useState(false);
 
         return (
@@ -300,7 +341,7 @@ const docs: ComponentDocs = {
             </Actions>
 
             <Dialog
-              id="large"
+              id={id}
               title="Large Dialog"
               width="large"
               open={open}
@@ -323,63 +364,30 @@ const docs: ComponentDocs = {
         );
       },
     },
-    {
-      label: 'With additional description',
-      playroom: false,
-      storybook: false,
-      gallery: false,
-      Example: () => {
-        const [open, setOpen] = useState(false);
-
-        return (
-          <Fragment>
-            <Actions>
-              <Button onClick={() => setOpen(true)}>
-                Open dialog with description
-              </Button>
-            </Actions>
-
-            <Dialog
-              id="description"
-              title="Dialog with description"
-              description={
-                <Text tone="secondary">
-                  More context to describe this task.
-                </Text>
-              }
-              open={open}
-              onClose={setOpen}
-            >
-              <Placeholder height={100} width="100%" />
-            </Dialog>
-          </Fragment>
-        );
-      },
-    },
 
     // Storybook tests
     {
       label: 'Panel: Default',
       docsSite: false,
       gallery: true,
-      Example: () => (
-        <DialogCard
-          id="default"
+      Example: ({ id }) => (
+        <DialogContent
+          id={id}
           title="Default test"
           onClose={() => {}}
           scrollLock={false}
         >
           <Placeholder height={100} width="100%" />
-        </DialogCard>
+        </DialogContent>
       ),
     },
     {
       label: 'Panel: With illustration/logo',
       docsSite: false,
       gallery: true,
-      Example: () => (
-        <DialogCard
-          id="illustrated"
+      Example: ({ id }) => (
+        <DialogContent
+          id={id}
           title="Illustration test"
           illustration={
             <Placeholder
@@ -399,16 +407,16 @@ const docs: ComponentDocs = {
               <Placeholder height={44} width={80} label="Cancel" />
             </Inline>
           </Stack>
-        </DialogCard>
+        </DialogContent>
       ),
     },
     {
       label: 'Panel: Description',
       docsSite: false,
       gallery: true,
-      Example: () => (
-        <DialogCard
-          id="description"
+      Example: ({ id }) => (
+        <DialogContent
+          id={id}
           title="Description test"
           description={
             <Placeholder height="auto" width="100%" label="Description" />
@@ -417,84 +425,84 @@ const docs: ComponentDocs = {
           scrollLock={false}
         >
           <Placeholder height={100} width="100%" />
-        </DialogCard>
+        </DialogContent>
       ),
     },
     {
       label: 'Panel: Content width',
       docsSite: false,
-      Example: () => (
+      Example: ({ id }) => (
         <Box display="flex" alignItems="center" justifyContent="center">
-          <DialogCard
-            id="content"
+          <DialogContent
+            id={id}
             title="Content-sized"
             width="content"
             onClose={() => {}}
             scrollLock={false}
           >
             <Placeholder height={100} width={200} label="200px wide" />
-          </DialogCard>
+          </DialogContent>
         </Box>
       ),
     },
     {
       label: 'Panel: Xsmall width',
       docsSite: false,
-      Example: () => (
-        <DialogCard
-          id="xsmall"
+      Example: ({ id }) => (
+        <DialogContent
+          id={id}
           title="Xsmall"
           width="xsmall"
           onClose={() => {}}
           scrollLock={false}
         >
           <Placeholder height={100} width="100%" label="Xsmall Dialog" />
-        </DialogCard>
+        </DialogContent>
       ),
     },
     {
       label: 'Panel: Small width',
       docsSite: false,
-      Example: () => (
-        <DialogCard
-          id="small"
+      Example: ({ id }) => (
+        <DialogContent
+          id={id}
           title="Small"
           width="small"
           onClose={() => {}}
           scrollLock={false}
         >
           <Placeholder height={100} width="100%" label="Small Dialog" />
-        </DialogCard>
+        </DialogContent>
       ),
     },
     {
       label: 'Panel: Medium width',
       docsSite: false,
-      Example: () => (
-        <DialogCard
-          id="medium"
+      Example: ({ id }) => (
+        <DialogContent
+          id={id}
           title="Medium"
           width="medium"
           onClose={() => {}}
           scrollLock={false}
         >
           <Placeholder height={100} width="100%" label="Medium Dialog" />
-        </DialogCard>
+        </DialogContent>
       ),
     },
     {
       label: 'Panel: Large width',
       docsSite: false,
-      Example: () => (
-        <DialogCard
-          id="large"
+      Example: ({ id }) => (
+        <DialogContent
+          id={id}
           title="Large"
           width="large"
           onClose={() => {}}
           scrollLock={false}
         >
           <Placeholder height={100} width="100%" label="Large Dialog" />
-        </DialogCard>
+        </DialogContent>
       ),
     },
   ],

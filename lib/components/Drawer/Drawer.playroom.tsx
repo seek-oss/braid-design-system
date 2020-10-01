@@ -1,23 +1,26 @@
 import React from 'react';
 import { Optional } from 'utility-types';
 import { useFallbackId } from '../../playroom/utils';
-import { AllowCloseContext } from '../private/Modal/Modal';
-import { Dialog as BraidDialog, DialogProps } from './Dialog';
+import {
+  Drawer as BraidDrawer,
+  DrawerProps,
+  AllowCloseContext,
+} from './Drawer';
 
-type PlayroomDialogProps = Optional<DialogProps, 'id' | 'onClose' | 'open'>;
+type PlayroomDrawerProps = Optional<DrawerProps, 'id' | 'onClose' | 'open'>;
 const noop = () => {};
 
-export const Dialog = ({
+export const Drawer = ({
   id,
   open,
   onClose = noop,
   ...restProps
-}: PlayroomDialogProps) => {
+}: PlayroomDrawerProps) => {
   const fallbackId = useFallbackId();
 
   return (
     <AllowCloseContext.Provider value={false}>
-      <BraidDialog
+      <BraidDrawer
         id={id ?? fallbackId}
         {...restProps}
         open={open ?? true}

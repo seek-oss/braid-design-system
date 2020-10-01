@@ -1,11 +1,11 @@
 import React, { ReactNode } from 'react';
 import { useStyles } from 'sku/react-treat';
-import { Box } from '../Box/Box';
+import { Box, BoxProps } from '../Box/Box';
 import * as styleRefs from './ContentBlock.treat';
 
 export interface ContentBlockProps {
   children: ReactNode;
-  width?: keyof typeof styleRefs.width;
+  width?: BoxProps['maxWidth'];
 }
 
 export const ContentBlock = ({
@@ -15,7 +15,7 @@ export const ContentBlock = ({
   const styles = useStyles(styleRefs);
 
   return (
-    <Box width="full" className={[styles.root, styles.width[width]]}>
+    <Box width="full" maxWidth={width} className={styles.marginAuto}>
       {children}
     </Box>
   );

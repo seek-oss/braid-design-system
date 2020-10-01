@@ -1,8 +1,3 @@
-import { style, styleMap } from 'sku/treat';
-import { mapToStyleProperty } from '../../utils';
+import { style } from 'sku/treat';
 
-export const root = style({ margin: '0 auto' });
-
-export const width = styleMap(({ contentWidth }) =>
-  mapToStyleProperty(contentWidth, 'maxWidth'),
-);
+export const marginAuto = style({ margin: '0 auto' });

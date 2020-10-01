@@ -7,6 +7,7 @@ export { ButtonLink } from '../components/ButtonLink/ButtonLink.playroom';
 export { Checkbox } from '../components/Checkbox/Checkbox.playroom';
 export { Dialog } from '../components/Dialog/Dialog.playroom';
 export { Disclosure } from '../components/Disclosure/Disclosure.playroom';
+export { Drawer } from '../components/Drawer/Drawer.playroom';
 export { Dropdown } from '../components/Dropdown/Dropdown.playroom';
 export { FieldLabel } from '../components/FieldLabel/FieldLabel.playroom';
 export { FieldMessage } from '../components/FieldMessage/FieldMessage.playroom';

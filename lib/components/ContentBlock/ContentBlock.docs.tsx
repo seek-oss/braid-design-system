@@ -32,6 +32,14 @@ const docs: ComponentDocs = {
       ),
     },
     {
+      label: 'Medium Content Block',
+      Example: () => (
+        <ContentBlock width="medium">
+          <Placeholder height={100} />
+        </ContentBlock>
+      ),
+    },
+    {
       label: 'Large Content Block',
       Example: () => (
         <ContentBlock width="large">

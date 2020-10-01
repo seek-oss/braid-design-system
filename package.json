@@ -52,7 +52,6 @@
     "@types/dedent": "^0.7.0",
     "@types/lodash": "^4.14.132",
     "@types/react": "^16.8.8",
-    "aria-hidden": "^1.1.1",
     "assert": "^2.0.0",
     "autosuggest-highlight": "^3.1.1",
     "capsize": "^1.1.0",

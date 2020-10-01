@@ -7,7 +7,7 @@ export const backdrop = style({
 });
 
 export const backdropVisible = style({
-  opacity: 0.7,
+  opacity: 0.4,
 });
 
 const menuBase = style({
