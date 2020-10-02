@@ -45,18 +45,15 @@ export const focusOverlay = style({
 
 export const loading = style({
   verticalAlign: 'top',
+  overflowX: 'hidden',
 });
 export const ellipsis = style({
-  width: 0,
-  overflowX: 'hidden',
+  transform: 'translateX(-20px)',
   animationDuration: '1s',
   animationIterationCount: 'infinite',
   '@keyframes': {
     to: {
-      width: 20,
+      transform: 'translateX(0)',
     },
   },
-});
-export const visibilityHidden = style({
-  visibility: 'hidden',
 });

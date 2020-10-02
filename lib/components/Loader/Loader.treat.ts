@@ -17,7 +17,7 @@ export const rootSize = styleMap(({ utils, typography }) =>
 const bounce = style({
   '@keyframes': {
     '33%': {
-      transform: `translateY(-50%)`,
+      transform: `translateY(-.5em)`,
     },
     '66%': {
       transform: 'translateY(0)',
@@ -73,11 +73,13 @@ export const circleSize = styleMap(({ utils, typography }) =>
       mobile: {
         width: Math.floor(mobile.capHeight),
         height: Math.floor(mobile.capHeight),
+        fontSize: Math.floor(mobile.capHeight),
         margin: `0 ${Math.round(mobile.capHeight * 0.15)}px`,
       },
       tablet: {
         width: Math.floor(tablet.capHeight),
         height: Math.floor(tablet.capHeight),
+        fontSize: Math.floor(mobile.capHeight),
         margin: `0 ${Math.round(tablet.capHeight * 0.15)}px`,
       },
     }),

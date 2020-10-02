@@ -119,24 +119,7 @@ const ButtonChildren = ({ children }: ButtonChildrenProps) => {
               textAlign="left"
               className={styles.loading}
             >
-              <Box
-                component="span"
-                display="block"
-                position="absolute"
-                className={styles.ellipsis}
-              >
-                {'\u2026'}
-              </Box>
-              {/*
-                This box ensures that the space reserved for the
-                ellipsis is relative to the theme's font size
-                and character width.
-              */}
-              <Box
-                component="span"
-                display="inline"
-                className={styles.visibilityHidden}
-              >
+              <Box component="span" display="block" className={styles.ellipsis}>
                 {'\u2026'}
               </Box>
             </Box>
