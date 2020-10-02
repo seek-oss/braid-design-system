@@ -181,14 +181,18 @@ const GalleryItem = ({
       <Stack space={isAnIcon ? 'small' : 'xxlarge'}>
         <Stack space="large">
           <Inline space="small" alignY="center">
-            <Heading level={isAnIcon ? '3' : '2'}>
-              <TextLink
-                href={`/components/${component.name}`}
-                target="gallery-detail"
-              >
-                {isAnIcon ? component.name.replace('Icon', '') : component.name}
-              </TextLink>
-            </Heading>
+            <Box position="relative">
+              <Heading level={isAnIcon ? '3' : '2'}>
+                <TextLink
+                  href={`/components/${component.name}`}
+                  target="gallery-detail"
+                >
+                  {isAnIcon
+                    ? component.name.replace('Icon', '')
+                    : component.name}
+                </TextLink>
+              </Heading>
+            </Box>
             {markAsNew ? (
               <Box
                 component={Link}
@@ -226,7 +230,7 @@ const GalleryItem = ({
               </Box>
             ) : undefined}
           </Inline>
-          {component.description ? (
+          {component.description && !isAnIcon ? (
             <Box style={{ width: '700px' }}>
               <Disclosure
                 collapseLabel="Hide description"
