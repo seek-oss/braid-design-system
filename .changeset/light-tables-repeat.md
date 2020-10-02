@@ -6,6 +6,8 @@
 updated:
   - Loader
   - Button
+  - ButtonLink
+  - ButtonRenderer
 ---
 
 **Loader, Button, ButtonLink, ButtonRenderer:** Improve performance of loading animations
