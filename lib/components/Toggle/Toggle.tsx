@@ -107,7 +107,9 @@ export const Toggle = ({
         component="label"
         htmlFor={id}
         paddingLeft={align === 'left' ? 'xsmall' : undefined}
-        paddingRight={align === 'right' ? 'xsmall' : undefined}
+        paddingRight={
+          align === 'right' || align === 'justify' ? 'xsmall' : undefined
+        }
         flexGrow={align === 'justify' ? 1 : undefined}
         userSelect="none"
         cursor="pointer"
