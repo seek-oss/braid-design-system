@@ -8,6 +8,6 @@ updated:
   - Button
 ---
 
-**Loader,Button:** Performance improvement for loading animations
+**Loader, Button, ButtonLink, ButtonRenderer:** Improve performance of loading animations
 
 Adjust animations properties and values to reduce CPU recalculation overheads.
