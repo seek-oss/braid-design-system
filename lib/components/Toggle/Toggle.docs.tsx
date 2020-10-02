@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import { Toggle } from '../';
+import { Toggle, Box } from '../';
 import { Toggle as PlayroomToggle } from '../../playroom/components';
 
 const handler = () => {
@@ -52,6 +52,26 @@ const docs: ComponentDocs = {
           id={id}
           onChange={handler}
         />
+      ),
+    },
+    {
+      label:
+        'Test: Should have space between the label and the toggle when justified in a flex container',
+      docsSite: false,
+      gallery: false,
+      Container: ({ children }) => (
+        <div style={{ maxWidth: '300px' }}>{children}</div>
+      ),
+      Example: ({ id }) => (
+        <Box display="flex">
+          <Toggle
+            on={true}
+            align="justify"
+            label="Justified"
+            id={id}
+            onChange={handler}
+          />
+        </Box>
       ),
     },
   ],
