@@ -50,30 +50,30 @@ export const loadingDot = style({
   selectors: {
     [`&:nth-child(1)`]: {
       '@keyframes': {
-        '24%': {
+        '14%': {
           opacity: 0,
         },
-        '25%,100%': {
+        '15%,100%': {
           opacity: 1,
         },
       },
     },
     [`&:nth-child(2)`]: {
       '@keyframes': {
-        '49%': {
+        '29%': {
           opacity: 0,
         },
-        '50%,100%': {
+        '30%,100%': {
           opacity: 1,
         },
       },
     },
     [`&:nth-child(3)`]: {
       '@keyframes': {
-        '74%': {
+        '44%': {
           opacity: 0,
         },
-        '75%,100%': {
+        '45%,100%': {
           opacity: 1,
         },
       },
