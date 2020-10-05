@@ -1,11 +1,20 @@
 import React, { useState, Fragment, ReactNode } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import { Actions, Drawer, Button, Text, Stack, TextLink, Strong } from '..';
+import {
+  Actions,
+  Drawer,
+  Button,
+  Inline,
+  Text,
+  Stack,
+  TextLink,
+  Strong,
+} from '..';
 import {
   Placeholder,
   Drawer as PlayroomDrawer,
 } from '../../playroom/components';
-import { DrawerContent } from './Drawer';
+import { DrawerContent, DrawerProps } from './Drawer';
 
 const makeExampleContent = ({ label }: { label?: ReactNode } = {}) => (
   <Stack space="large">
@@ -212,9 +221,9 @@ const docs: ComponentDocs = {
       },
     },
 
-    // Screenshot tests
+    // Layout examples
     {
-      label: 'Panel: Default',
+      label: 'Default layout',
       docsSite: false,
       gallery: true,
       Example: ({ id }) => (
@@ -230,7 +239,7 @@ const docs: ComponentDocs = {
       ),
     },
     {
-      label: 'Panel: Description',
+      label: 'Layout with a description',
       docsSite: false,
       gallery: true,
       Example: ({ id }) => (
@@ -248,7 +257,7 @@ const docs: ComponentDocs = {
       ),
     },
     {
-      label: 'Panel: Small width',
+      label: 'Layout: Small width',
       docsSite: false,
       Example: ({ id }) => (
         <DrawerContent
@@ -263,7 +272,7 @@ const docs: ComponentDocs = {
       ),
     },
     {
-      label: 'Panel: Medium width',
+      label: 'Layout: Medium width',
       docsSite: false,
       Example: ({ id }) => (
         <DrawerContent
@@ -278,7 +287,7 @@ const docs: ComponentDocs = {
       ),
     },
     {
-      label: 'Panel: Large width',
+      label: 'Layout: Large width',
       docsSite: false,
       Example: ({ id }) => (
         <DrawerContent
@@ -291,6 +300,44 @@ const docs: ComponentDocs = {
           <Placeholder height={100} width="100%" label="Large Drawer" />
         </DrawerContent>
       ),
+    },
+    {
+      label: 'Preview animation',
+      playroom: false,
+      storybook: false,
+      docsSite: false,
+      gallery: true,
+      Example: () => {
+        const [width, setWidth] = useState<DrawerProps['width'] | null>(null);
+
+        return (
+          <Fragment>
+            <Inline space="small" align="center">
+              <Button onClick={() => setWidth('small')}>Open small</Button>
+              <Button onClick={() => setWidth('medium')}>Open medium</Button>
+              <Button onClick={() => setWidth('large')}>Open large</Button>
+            </Inline>
+
+            <Drawer
+              id="drawer-animation-example"
+              title={`A \"${width}\" drawer`}
+              description={
+                <Text tone="secondary">
+                  Uses a {width}{' '}
+                  <TextLink href="/components/ContentBlock">
+                    ContentBlock
+                  </TextLink>
+                </Text>
+              }
+              width={width || undefined}
+              open={width !== null}
+              onClose={() => setWidth(null)}
+            >
+              {makeExampleContent()}
+            </Drawer>
+          </Fragment>
+        );
+      },
     },
   ],
   snippets: [
