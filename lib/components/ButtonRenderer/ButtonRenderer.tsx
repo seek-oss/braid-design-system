@@ -111,33 +111,15 @@ const ButtonChildren = ({ children }: ButtonChildrenProps) => {
         <Text baseline={false} weight="medium" tone={buttonVariant.textTone}>
           {children}
           {loading ? (
-            <Box
-              aria-hidden
-              component="span"
-              display="inlineBlock"
-              position="relative"
-              textAlign="left"
-              className={styles.loading}
-            >
-              <Box
-                component="span"
-                display="block"
-                position="absolute"
-                className={styles.ellipsis}
-              >
-                {'\u2026'}
+            <Box aria-hidden component="span" display="inlineBlock">
+              <Box component="span" className={styles.loadingDot}>
+                .
               </Box>
-              {/*
-                This box ensures that the space reserved for the
-                ellipsis is relative to the theme's font size
-                and character width.
-              */}
-              <Box
-                component="span"
-                display="inline"
-                className={styles.visibilityHidden}
-              >
-                {'\u2026'}
+              <Box component="span" className={styles.loadingDot}>
+                .
+              </Box>
+              <Box component="span" className={styles.loadingDot}>
+                .
               </Box>
             </Box>
           ) : null}
