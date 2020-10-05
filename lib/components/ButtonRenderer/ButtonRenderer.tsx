@@ -111,16 +111,15 @@ const ButtonChildren = ({ children }: ButtonChildrenProps) => {
         <Text baseline={false} weight="medium" tone={buttonVariant.textTone}>
           {children}
           {loading ? (
-            <Box
-              aria-hidden
-              component="span"
-              display="inlineBlock"
-              position="relative"
-              textAlign="left"
-              className={styles.loading}
-            >
-              <Box component="span" display="block" className={styles.ellipsis}>
-                {'\u2026'}
+            <Box aria-hidden component="span" display="inlineBlock">
+              <Box component="span" className={styles.loadingDot}>
+                .
+              </Box>
+              <Box component="span" className={styles.loadingDot}>
+                .
+              </Box>
+              <Box component="span" className={styles.loadingDot}>
+                .
               </Box>
             </Box>
           ) : null}

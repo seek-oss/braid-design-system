@@ -43,17 +43,40 @@ export const focusOverlay = style({
   },
 });
 
-export const loading = style({
-  verticalAlign: 'top',
-  overflowX: 'hidden',
-});
-export const ellipsis = style({
-  transform: 'translateX(-20px)',
+export const loadingDot = style({
   animationDuration: '1s',
   animationIterationCount: 'infinite',
-  '@keyframes': {
-    to: {
-      transform: 'translateX(0)',
+  opacity: 0,
+  selectors: {
+    [`&:nth-child(1)`]: {
+      '@keyframes': {
+        '24%': {
+          opacity: 0,
+        },
+        '25%,100%': {
+          opacity: 1,
+        },
+      },
+    },
+    [`&:nth-child(2)`]: {
+      '@keyframes': {
+        '49%': {
+          opacity: 0,
+        },
+        '50%,100%': {
+          opacity: 1,
+        },
+      },
+    },
+    [`&:nth-child(3)`]: {
+      '@keyframes': {
+        '74%': {
+          opacity: 0,
+        },
+        '75%,100%': {
+          opacity: 1,
+        },
+      },
     },
   },
 });
