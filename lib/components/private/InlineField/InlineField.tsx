@@ -12,8 +12,8 @@ import { IconTick } from '../../icons';
 import { useVirtualTouchable } from '../touchable/useVirtualTouchable';
 import buildDataAttributes, { DataAttributeMap } from '../buildDataAttributes';
 import { useBackgroundLightness } from '../../Box/BackgroundContext';
-import * as styleRefs from './InlineField.treat';
 import { mergeIds } from '../mergeIds';
+import * as styleRefs from './InlineField.treat';
 
 const tones = ['neutral', 'critical'] as const;
 type InlineFieldTone = typeof tones[number];
