@@ -16,7 +16,7 @@ import {
   Placeholder,
   Dialog as PlayroomDialog,
 } from '../../playroom/components';
-import { DialogContent } from './Dialog';
+import { DialogContent, DialogProps } from './Dialog';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -365,9 +365,9 @@ const docs: ComponentDocs = {
       },
     },
 
-    // Storybook tests
+    // Layout examples
     {
-      label: 'Panel: Default',
+      label: 'Default layout',
       docsSite: false,
       gallery: true,
       Example: ({ id }) => (
@@ -382,7 +382,7 @@ const docs: ComponentDocs = {
       ),
     },
     {
-      label: 'Panel: With illustration/logo',
+      label: 'Illustration layout',
       docsSite: false,
       gallery: true,
       Example: ({ id }) => (
@@ -411,7 +411,7 @@ const docs: ComponentDocs = {
       ),
     },
     {
-      label: 'Panel: Description',
+      label: 'Layout with a description',
       docsSite: false,
       gallery: true,
       Example: ({ id }) => (
@@ -429,7 +429,7 @@ const docs: ComponentDocs = {
       ),
     },
     {
-      label: 'Panel: Content width',
+      label: 'Layout: Content width',
       docsSite: false,
       Example: ({ id }) => (
         <Box display="flex" alignItems="center" justifyContent="center">
@@ -446,7 +446,7 @@ const docs: ComponentDocs = {
       ),
     },
     {
-      label: 'Panel: Xsmall width',
+      label: 'Layout: Xsmall width',
       docsSite: false,
       Example: ({ id }) => (
         <DialogContent
@@ -461,7 +461,7 @@ const docs: ComponentDocs = {
       ),
     },
     {
-      label: 'Panel: Small width',
+      label: 'Layout: Small width',
       docsSite: false,
       Example: ({ id }) => (
         <DialogContent
@@ -476,7 +476,7 @@ const docs: ComponentDocs = {
       ),
     },
     {
-      label: 'Panel: Medium width',
+      label: 'Layout: Medium width',
       docsSite: false,
       Example: ({ id }) => (
         <DialogContent
@@ -491,7 +491,7 @@ const docs: ComponentDocs = {
       ),
     },
     {
-      label: 'Panel: Large width',
+      label: 'Layout:: Large width',
       docsSite: false,
       Example: ({ id }) => (
         <DialogContent
@@ -504,6 +504,37 @@ const docs: ComponentDocs = {
           <Placeholder height={100} width="100%" label="Large Dialog" />
         </DialogContent>
       ),
+    },
+    {
+      label: 'Preview animation',
+      playroom: false,
+      storybook: false,
+      docsSite: false,
+      gallery: true,
+      Example: () => {
+        const [width, setWidth] = useState<DialogProps['width'] | null>(null);
+
+        return (
+          <Fragment>
+            <Inline space="small" align="center">
+              <Button onClick={() => setWidth('xsmall')}>Open xsmall</Button>
+              <Button onClick={() => setWidth('small')}>Open small</Button>
+              <Button onClick={() => setWidth('medium')}>Open medium</Button>
+              <Button onClick={() => setWidth('large')}>Open large</Button>
+            </Inline>
+
+            <Dialog
+              id="dialog-animation-example"
+              title={`A \"${width}\" dialog`}
+              width={width || undefined}
+              open={width !== null}
+              onClose={() => setWidth(null)}
+            >
+              <Placeholder height={200} width="100%" />
+            </Dialog>
+          </Fragment>
+        );
+      },
     },
   ],
   snippets: [

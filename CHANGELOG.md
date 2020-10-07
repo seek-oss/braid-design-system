@@ -1,5 +1,15 @@
 # braid-design-system
 
+## 29.8.1
+
+### Patch Changes
+
+- **Loader, Button, ButtonLink, ButtonRenderer:** Improve performance of loading animations ([#784](https://github.com/seek-oss/braid-design-system/pull/784))
+
+  Adjust animations properties and values to reduce CPU recalculation overheads.
+
+- **Toggle:** Ensure there is a minimum amount of space between the label and the toggle when using justified alignment ([#782](https://github.com/seek-oss/braid-design-system/pull/782))
+
 ## 29.8.0
 
 ### Minor Changes
