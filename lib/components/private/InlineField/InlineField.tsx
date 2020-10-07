@@ -1,4 +1,9 @@
-import React, { ReactNode, AllHTMLAttributes, forwardRef } from 'react';
+import React, {
+  ReactNode,
+  AllHTMLAttributes,
+  forwardRef,
+  ReactElement,
+} from 'react';
 import { useStyles } from 'sku/react-treat';
 import { Box } from '../../Box/Box';
 import { FieldLabelProps } from '../../FieldLabel/FieldLabel';
@@ -13,6 +18,8 @@ import { useVirtualTouchable } from '../touchable/useVirtualTouchable';
 import buildDataAttributes, { DataAttributeMap } from '../buildDataAttributes';
 import { useBackgroundLightness } from '../../Box/BackgroundContext';
 import { mergeIds } from '../mergeIds';
+import { BadgeProps } from '../../Badge/Badge';
+import { Inline } from '../../Inline/Inline';
 import * as styleRefs from './InlineField.treat';
 
 const tones = ['neutral', 'critical'] as const;
@@ -32,6 +39,7 @@ export interface InlineFieldProps {
   tone?: InlineFieldTone;
   children?: ReactNode;
   description?: ReactNode;
+  badge?: ReactElement<BadgeProps>;
   data?: DataAttributeMap;
   required?: boolean;
 }
@@ -96,6 +104,7 @@ export const InlineField = forwardRef<HTMLElement, InternalInlineFieldProps>(
       type,
       children,
       description,
+      badge,
       message,
       reserveMessageSpace = false,
       tone = 'neutral',
@@ -121,26 +130,26 @@ export const InlineField = forwardRef<HTMLElement, InternalInlineFieldProps>(
 
     return (
       <Box position="relative" zIndex={0} className={styles.root}>
-        <Box
-          component="input"
-          type={type}
-          id={id}
-          name={name}
-          onChange={onChange}
-          value={value}
-          checked={checked}
-          position="absolute"
-          zIndex={1}
-          className={styles.realField}
-          cursor={!disabled ? 'pointer' : undefined}
-          opacity={0}
-          aria-describedby={mergeIds(messageId, descriptionId)}
-          aria-required={required}
-          disabled={disabled}
-          ref={ref}
-          {...buildDataAttributes(data)}
-        />
         <Box display="flex">
+          <Box
+            component="input"
+            type={type}
+            id={id}
+            name={name}
+            onChange={onChange}
+            value={value}
+            checked={checked}
+            position="absolute"
+            zIndex={1}
+            className={styles.realField}
+            cursor={!disabled ? 'pointer' : undefined}
+            opacity={0}
+            aria-describedby={mergeIds(messageId, descriptionId)}
+            aria-required={required}
+            disabled={disabled}
+            ref={ref}
+            {...buildDataAttributes(data)}
+          />
           <Box
             flexShrink={0}
             position="relative"
@@ -181,20 +190,23 @@ export const InlineField = forwardRef<HTMLElement, InternalInlineFieldProps>(
             </FieldOverlay>
           </Box>
           <Box paddingLeft="small">
-            <Box
-              component="label"
-              htmlFor={id}
-              userSelect="none"
-              display="block"
-              className={[styles.label, useVirtualTouchable()]}
-            >
-              <Text
-                weight={checked ? 'strong' : undefined}
-                tone={disabled ? 'secondary' : undefined}
+            <Inline space="small">
+              <Box
+                component="label"
+                htmlFor={id}
+                userSelect="none"
+                display="block"
+                className={[styles.label, useVirtualTouchable()]}
               >
-                {label}
-              </Text>
-            </Box>
+                <Text
+                  weight={checked ? 'strong' : undefined}
+                  tone={disabled ? 'secondary' : undefined}
+                >
+                  {label}
+                </Text>
+              </Box>
+              {badge ? <Box className={styles.badgeOffset}>{badge}</Box> : null}
+            </Inline>
 
             {description ? (
               <Box paddingTop="small">

@@ -41,15 +41,25 @@ const fakeFieldSize = style((theme) => {
 
 export const fakeField = [fakeFieldSize, fakeFieldBase];
 
+export const badgeOffset = style((theme) => {
+  // Uses mobile standard text to mirror behaviour in getSize
+  const badgeHeight = theme.typography.text.xsmall.mobile.rows * theme.grid;
+  const offset = Math.round((getSize(theme) - badgeHeight) / 2);
+
+  return {
+    paddingTop: offset,
+  };
+});
+
 export const label = style((theme) => {
   // Uses mobile standard text to mirror behaviour in getSize
   const standardTextHeight = theme.typography.text.standard.mobile.capHeight;
-  const offset = Math.round(getSize(theme) - standardTextHeight) / 2;
+  const offset = Math.round((getSize(theme) - standardTextHeight) / 2);
 
   return {
     paddingTop: offset,
     selectors: {
-      [`${realFieldBase}:not(:disabled) + * > ${fakeFieldBase} + * > &`]: {
+      [`${realFieldBase}:not(:disabled) ~ * &`]: {
         cursor: 'pointer',
       },
     },
@@ -58,7 +68,7 @@ export const label = style((theme) => {
 
 export const children = style({
   selectors: {
-    [`${realFieldBase}:checked + * > * > &`]: {
+    [`${realFieldBase}:checked ~ * &`]: {
       display: 'block',
     },
   },
@@ -66,7 +76,7 @@ export const children = style({
 
 export const selected = style({
   selectors: {
-    [`${realFieldBase}:checked + * > ${fakeFieldBase} > &`]: {
+    [`${realFieldBase}:checked + ${fakeFieldBase} > &`]: {
       opacity: 1,
     },
   },
@@ -74,7 +84,7 @@ export const selected = style({
 
 export const focusOverlay = style({
   selectors: {
-    [`${realFieldBase}:focus + * > ${fakeFieldBase} > &`]: {
+    [`${realFieldBase}:focus + ${fakeFieldBase} > &`]: {
       opacity: 1,
     },
   },
@@ -82,7 +92,7 @@ export const focusOverlay = style({
 
 export const hoverOverlay = style({
   selectors: {
-    [`${realFieldBase}:hover:not(:checked):not(:disabled) + * > ${fakeFieldBase} > &`]: {
+    [`${realFieldBase}:hover:not(:checked):not(:disabled) + ${fakeFieldBase} > &`]: {
       opacity: 1,
     },
   },
@@ -99,7 +109,7 @@ export const indicator = style({
 const checkboxScale = style({
   transform: 'scale(0.85)',
   selectors: {
-    [`${realFieldBase}:active + * > ${fakeFieldBase} > * > &`]: {
+    [`${realFieldBase}:active + ${fakeFieldBase} > * > &`]: {
       transform: 'scale(0.75)',
     },
   },
@@ -110,7 +120,7 @@ export const checkboxIndicator = [indicator, checkboxScale];
 const radioScale = style({
   transform: 'scale(0.6)',
   selectors: {
-    [`${realFieldBase}:active + * > ${fakeFieldBase} > * > &`]: {
+    [`${realFieldBase}:active + ${fakeFieldBase} > * > &`]: {
       transform: 'scale(0.5)',
     },
   },

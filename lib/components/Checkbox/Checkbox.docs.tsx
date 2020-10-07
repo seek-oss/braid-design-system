@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import { Checkbox, Text } from '../';
+import { Badge, Checkbox, Text } from '../';
 import { Checkbox as PlayroomCheckbox } from '../../playroom/components';
 
 const docs: ComponentDocs = {
@@ -62,6 +62,40 @@ const docs: ComponentDocs = {
           checked={false}
           onChange={handler}
           label="Label"
+          description="Extra information about the field"
+        />
+      ),
+    },
+    {
+      label: 'Checkbox with a Badge',
+      Example: ({ id, handler }) => (
+        <Checkbox
+          id={id}
+          checked={false}
+          onChange={handler}
+          label="Label"
+          badge={
+            <Badge tone="positive" weight="strong">
+              New
+            </Badge>
+          }
+        />
+      ),
+    },
+    {
+      label: 'Checkbox with a Badge and description',
+      docsSite: false,
+      Example: ({ id, handler }) => (
+        <Checkbox
+          id={id}
+          checked={false}
+          onChange={handler}
+          label="Label"
+          badge={
+            <Badge tone="positive" weight="strong">
+              New
+            </Badge>
+          }
           description="Extra information about the field"
         />
       ),
@@ -142,6 +176,15 @@ const docs: ComponentDocs = {
     {
       name: 'With description',
       code: <PlayroomCheckbox label="Label" description="Description" />,
+    },
+    {
+      name: 'With a Badge',
+      code: (
+        <PlayroomCheckbox
+          label="Label"
+          badge={<Badge weight="strong">Badge</Badge>}
+        />
+      ),
     },
   ],
 };

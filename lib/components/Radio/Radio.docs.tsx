@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import { Radio, Text } from '../';
+import { Badge, Radio, Text } from '../';
 import { Radio as PlayroomRadio } from '../../playroom/components';
 
 const docs: ComponentDocs = {
@@ -66,6 +66,40 @@ const docs: ComponentDocs = {
       ),
     },
     {
+      label: 'Radio Button with a Badge',
+      Example: ({ id, handler }) => (
+        <Radio
+          id={id}
+          checked={false}
+          onChange={handler}
+          label="Label"
+          badge={
+            <Badge tone="positive" weight="strong">
+              New
+            </Badge>
+          }
+        />
+      ),
+    },
+    {
+      label: 'Radio Button with a Badge and description',
+      docsSite: false,
+      Example: ({ id, handler }) => (
+        <Radio
+          id={id}
+          checked={false}
+          onChange={handler}
+          label="Label"
+          badge={
+            <Badge tone="positive" weight="strong">
+              New
+            </Badge>
+          }
+          description="Extra information about the field"
+        />
+      ),
+    },
+    {
       label: 'Radio Button with nested content visible only when checked',
       Example: ({ id }) => {
         const [state, setState] = useState(true);
@@ -110,6 +144,15 @@ const docs: ComponentDocs = {
     {
       name: 'With description',
       code: <PlayroomRadio label="Label" description="Description" />,
+    },
+    {
+      name: 'With a Badge',
+      code: (
+        <PlayroomRadio
+          label="Label"
+          badge={<Badge weight="strong">Badge</Badge>}
+        />
+      ),
     },
   ],
 };
