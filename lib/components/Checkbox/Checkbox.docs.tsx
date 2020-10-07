@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import { Checkbox, Text } from '../';
 import { Checkbox as PlayroomCheckbox } from '../../playroom/components';
@@ -10,9 +10,17 @@ const docs: ComponentDocs = {
   examples: [
     {
       label: 'Standard Checkbox',
-      Example: ({ id, handler }) => (
-        <Checkbox id={id} checked={false} onChange={handler} label="Label" />
-      ),
+      Example: ({ id }) => {
+        const [state, setState] = useState(false);
+        return (
+          <Checkbox
+            id={id}
+            checked={state}
+            onChange={() => setState(!state)}
+            label="Label"
+          />
+        );
+      },
     },
     {
       label: 'Checked Checkbox',
@@ -47,10 +55,77 @@ const docs: ComponentDocs = {
       ),
     },
     {
-      label: 'Nested Checkbox',
+      label: 'Checkbox with description',
       Example: ({ id, handler }) => (
-        <Checkbox id={id} checked={true} onChange={handler} label="Label">
-          <Text>This text is visible when the checkbox is checked.</Text>
+        <Checkbox
+          id={id}
+          checked={false}
+          onChange={handler}
+          label="Label"
+          description="Extra information about the field"
+        />
+      ),
+    },
+    {
+      label: 'Checkbox with nested content visible only when checked',
+      Example: ({ id }) => {
+        const [state, setState] = useState(true);
+        return (
+          <Checkbox
+            id={id}
+            checked={state}
+            onChange={() => setState(!state)}
+            label="Label"
+          >
+            <Text>This text is visible when the checkbox is checked.</Text>
+          </Checkbox>
+        );
+      },
+    },
+    {
+      label: 'Checkbox with nested content and description',
+      docsSite: false,
+      Example: ({ id, handler }) => (
+        <Checkbox
+          id={id}
+          checked={true}
+          onChange={handler}
+          label="Label"
+          description="Extra information about the field"
+        >
+          <Text>This text is visible when the button is checked.</Text>
+        </Checkbox>
+      ),
+    },
+    {
+      label: 'Checkbox with a message and description',
+      docsSite: false,
+      Example: ({ id, handler }) => (
+        <Checkbox
+          id={id}
+          checked={false}
+          onChange={handler}
+          label="Label"
+          tone="critical"
+          message="This is a critical message"
+          description="Extra information about the field"
+        />
+      ),
+    },
+    {
+      label: 'Checkbox with nested content, a message and description',
+      docsSite: false,
+      Example: ({ id, handler }) => (
+        <Checkbox
+          id={id}
+          checked={true}
+          onChange={handler}
+          label="Label"
+          tone="critical"
+          message="This is a critical message"
+          description="Extra information about the field"
+        >
+          <Text>This text is visible when the button is checked.</Text>
         </Checkbox>
       ),
     },
@@ -63,6 +138,10 @@ const docs: ComponentDocs = {
     {
       name: 'Checked',
       code: <PlayroomCheckbox label="Label" checked={true} />,
+    },
+    {
+      name: 'With description',
+      code: <PlayroomCheckbox label="Label" description="Description" />,
     },
   ],
 };

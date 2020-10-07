@@ -13,6 +13,7 @@ import { useVirtualTouchable } from '../touchable/useVirtualTouchable';
 import buildDataAttributes, { DataAttributeMap } from '../buildDataAttributes';
 import { useBackgroundLightness } from '../../Box/BackgroundContext';
 import * as styleRefs from './InlineField.treat';
+import { mergeIds } from '../mergeIds';
 
 const tones = ['neutral', 'critical'] as const;
 type InlineFieldTone = typeof tones[number];
@@ -30,6 +31,7 @@ export interface InlineFieldProps {
   reserveMessageSpace?: FieldMessageProps['reserveMessageSpace'];
   tone?: InlineFieldTone;
   children?: ReactNode;
+  description?: ReactNode;
   data?: DataAttributeMap;
   required?: boolean;
 }
@@ -93,6 +95,7 @@ export const InlineField = forwardRef<HTMLElement, InternalInlineFieldProps>(
       label,
       type,
       children,
+      description,
       message,
       reserveMessageSpace = false,
       tone = 'neutral',
@@ -108,6 +111,7 @@ export const InlineField = forwardRef<HTMLElement, InternalInlineFieldProps>(
     }
 
     const messageId = `${id}-message`;
+    const descriptionId = `${id}-description`;
     const isCheckbox = type === 'checkbox';
     const fieldBorderRadius = isCheckbox ? 'standard' : 'full';
     const accentBackground = disabled ? 'formAccentDisabled' : 'formAccent';
@@ -130,7 +134,7 @@ export const InlineField = forwardRef<HTMLElement, InternalInlineFieldProps>(
           className={styles.realField}
           cursor={!disabled ? 'pointer' : undefined}
           opacity={0}
-          aria-describedby={hasMessage ? messageId : undefined}
+          aria-describedby={mergeIds(messageId, descriptionId)}
           aria-required={required}
           disabled={disabled}
           ref={ref}
@@ -176,35 +180,43 @@ export const InlineField = forwardRef<HTMLElement, InternalInlineFieldProps>(
               <Indicator type={type} hover={true} />
             </FieldOverlay>
           </Box>
-          <Box
-            component="label"
-            paddingLeft="small"
-            htmlFor={id}
-            userSelect="none"
-            className={[styles.label, useVirtualTouchable()]}
-          >
-            <Text
-              baseline={false}
-              weight={checked ? 'strong' : undefined}
-              tone={disabled ? 'secondary' : undefined}
+          <Box paddingLeft="small">
+            <Box
+              component="label"
+              htmlFor={id}
+              userSelect="none"
+              display="block"
+              className={[styles.label, useVirtualTouchable()]}
             >
-              {label}
-            </Text>
+              <Text
+                weight={checked ? 'strong' : undefined}
+                tone={disabled ? 'secondary' : undefined}
+              >
+                {label}
+              </Text>
+            </Box>
+
+            {description ? (
+              <Box paddingTop="small">
+                <Text tone="secondary" id={descriptionId}>
+                  {description}
+                </Text>
+              </Box>
+            ) : null}
+
+            {children ? (
+              <Box
+                display="none"
+                paddingTop="small"
+                className={styles.children}
+              >
+                {children}
+              </Box>
+            ) : null}
           </Box>
         </Box>
-        {children ? (
-          <Box
-            display="none"
-            paddingLeft="small"
-            paddingTop="xsmall"
-            paddingBottom={hasMessage ? 'xxsmall' : undefined}
-            className={styles.children}
-          >
-            {children}
-          </Box>
-        ) : null}
         {hasMessage ? (
-          <Box paddingTop="xsmall">
+          <Box paddingTop={description ? 'small' : 'xsmall'}>
             <FieldMessage
               id={messageId}
               tone={tone}

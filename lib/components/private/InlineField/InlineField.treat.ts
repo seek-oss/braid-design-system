@@ -43,31 +43,25 @@ export const fakeField = [fakeFieldSize, fakeFieldBase];
 
 export const label = style((theme) => {
   // Uses mobile standard text to mirror behaviour in getSize
-  const standardTextHeight =
-    theme.typography.text.standard.mobile.rows * theme.grid;
-  const offset = (getSize(theme) - standardTextHeight) / 2;
+  const standardTextHeight = theme.typography.text.standard.mobile.capHeight;
+  const offset = Math.round(getSize(theme) - standardTextHeight) / 2;
 
   return {
     paddingTop: offset,
     selectors: {
-      [`${realFieldBase}:not(:disabled) + * > ${fakeFieldBase} + &`]: {
+      [`${realFieldBase}:not(:disabled) + * > ${fakeFieldBase} + * > &`]: {
         cursor: 'pointer',
       },
     },
   };
 });
 
-export const children = style((theme) => {
-  const size = getSize(theme);
-
-  return {
-    marginLeft: size,
-    selectors: {
-      [`${realFieldBase}:checked ~ &`]: {
-        display: 'block',
-      },
+export const children = style({
+  selectors: {
+    [`${realFieldBase}:checked + * > * > &`]: {
+      display: 'block',
     },
-  };
+  },
 });
 
 export const selected = style({

@@ -2139,6 +2139,7 @@ Object {
     checked: boolean
     children?: ReactNode
     data?: Record<string, string | number>
+    description?: ReactNode
     disabled?: boolean
     id: string
     label: ReactNode
@@ -5364,6 +5365,7 @@ Object {
     checked: boolean
     children?: ReactNode
     data?: Record<string, string | number>
+    description?: ReactNode
     disabled?: boolean
     id: string
     label: ReactNode
