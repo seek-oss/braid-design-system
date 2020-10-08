@@ -2136,9 +2136,11 @@ exports[`Checkbox 1`] = `
 Object {
   exportType: component,
   props: {
+    badge?: ReactElement<BadgeProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)>
     checked: boolean
     children?: ReactNode
     data?: Record<string, string | number>
+    description?: ReactNode
     disabled?: boolean
     id: string
     label: ReactNode
@@ -5361,9 +5363,11 @@ exports[`Radio 1`] = `
 Object {
   exportType: component,
   props: {
+    badge?: ReactElement<BadgeProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)>
     checked: boolean
     children?: ReactNode
     data?: Record<string, string | number>
+    description?: ReactNode
     disabled?: boolean
     id: string
     label: ReactNode

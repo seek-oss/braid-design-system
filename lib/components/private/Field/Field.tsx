@@ -13,17 +13,8 @@ import { Stack } from '../../Stack/Stack';
 import buildDataAttributes, { DataAttributeMap } from '../buildDataAttributes';
 import { useText, useTouchableSpace } from '../../../hooks/typography';
 import { Text } from '../../Text/Text';
+import { mergeIds } from '../mergeIds';
 import * as styleRefs from './Field.treat';
-
-const mergeIds = (...ids: Array<string | undefined>) => {
-  const validIds = ids.filter(Boolean);
-
-  if (validIds.length === 0) {
-    return undefined;
-  }
-
-  return validIds.join(' ');
-};
 
 type FormElementProps = AllHTMLAttributes<HTMLFormElement>;
 export interface FieldProps {
