@@ -48,6 +48,7 @@ export const badgeOffset = style((theme) => {
 
   return {
     paddingTop: offset,
+    paddingBottom: offset,
   };
 });
 
