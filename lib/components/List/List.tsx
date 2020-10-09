@@ -13,16 +13,49 @@ import { useLineHeightContainer } from '../../hooks/useLineHeightContainer/useLi
 import * as styleRefs from './List.treat';
 
 function numberToAlpha(inputNumber: number) {
-  let s = '';
-  let currentNumber = inputNumber;
+  let returnValue = '';
+  let counter = inputNumber;
 
-  while (currentNumber > 0) {
-    const t = (currentNumber - 1) % 26;
-    s = String.fromCharCode(97 + t) + s;
-    currentNumber = ((currentNumber - t) / 26) | 0;
+  while (counter > 0) {
+    const t = (counter - 1) % 26;
+    returnValue = String.fromCharCode(97 + t) + returnValue;
+    counter = ((counter - t) / 26) | 0;
   }
 
-  return s;
+  return returnValue;
+}
+
+const romanNumerals = {
+  m: 1000,
+  cm: 900,
+  d: 500,
+  cd: 400,
+  c: 100,
+  xc: 90,
+  l: 50,
+  xl: 40,
+  x: 10,
+  ix: 9,
+  v: 5,
+  iv: 4,
+  i: 1,
+} as const;
+function numberToRomanNumerals(inputNumber: number) {
+  let returnValue = '';
+  let counter = inputNumber;
+
+  (Object.keys(romanNumerals) as Array<keyof typeof romanNumerals>).forEach(
+    (romanNumeral) => {
+      const value = romanNumerals[romanNumeral];
+
+      while (counter >= value) {
+        returnValue += romanNumeral;
+        counter -= value;
+      }
+    },
+  );
+
+  return returnValue;
 }
 
 interface CharacterBulletProps {
@@ -52,7 +85,7 @@ export interface ListProps {
   size?: TextProps['size'];
   space?: StackProps['space'];
   tone?: TextProps['tone'];
-  type?: 'bullet' | 'number' | 'alpha';
+  type?: 'bullet' | 'number' | 'alpha' | 'roman';
   start?: number;
 }
 
@@ -85,9 +118,7 @@ export const List = ({
               <Text component="div" size={size} tone={tone}>
                 <Box
                   display="flex"
-                  alignItems={
-                    type !== 'number' && type !== 'alpha' ? 'center' : undefined
-                  }
+                  alignItems={type === 'bullet' ? 'center' : undefined}
                   className={lineHeightContainerStyles}
                   userSelect="none"
                   aria-hidden
@@ -105,6 +136,14 @@ export const List = ({
                       return (
                         <CharacterBullet>
                           {numberToAlpha(resolvedIndex + 1)}
+                        </CharacterBullet>
+                      );
+                    }
+
+                    if (type === 'roman') {
+                      return (
+                        <CharacterBullet length={2}>
+                          {numberToRomanNumerals(resolvedIndex + 1)}
                         </CharacterBullet>
                       );
                     }
