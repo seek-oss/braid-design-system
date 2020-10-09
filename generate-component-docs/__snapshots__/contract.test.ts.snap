@@ -5171,6 +5171,7 @@ Object {
         | "alpha"
         | "bullet"
         | "number"
+        | "roman"
 },
 }
 `;

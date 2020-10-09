@@ -51,6 +51,16 @@ const docs: ComponentDocs = {
       ),
     },
     {
+      label: 'Roman List',
+      Example: () => (
+        <List type="roman">
+          <Text>This is a Roman list item.</Text>
+          <Text>This is a Roman list item.</Text>
+          <Text>This is a Roman list item.</Text>
+        </List>
+      ),
+    },
+    {
       label: 'List with paragraphs',
       Example: () => (
         <List space="large">
@@ -122,9 +132,9 @@ const docs: ComponentDocs = {
       label: 'Numbered List with custom start position',
       Example: () => (
         <List type="number" start={9}>
-          <Text>This is a large list item.</Text>
-          <Text>This is a large list item.</Text>
-          <Text>This is a large list item.</Text>
+          <Text>This is a numbered list item.</Text>
+          <Text>This is a numbered list item.</Text>
+          <Text>This is a numbered list item.</Text>
         </List>
       ),
     },
@@ -132,9 +142,19 @@ const docs: ComponentDocs = {
       label: 'Alpha List with custom start position',
       Example: () => (
         <List type="alpha" start={9}>
-          <Text>This is a large list item.</Text>
-          <Text>This is a large list item.</Text>
-          <Text>This is a large list item.</Text>
+          <Text>This is an alpha list item.</Text>
+          <Text>This is an alpha list item.</Text>
+          <Text>This is an alpha list item.</Text>
+        </List>
+      ),
+    },
+    {
+      label: 'Roman List with custom start position',
+      Example: () => (
+        <List type="roman" start={9}>
+          <Text>This is a Roman list item.</Text>
+          <Text>This is a Roman list item.</Text>
+          <Text>This is a Roman list item.</Text>
         </List>
       ),
     },
@@ -229,6 +249,36 @@ const docs: ComponentDocs = {
       name: 'Secondary',
       code: (
         <List space="medium" tone="secondary">
+          <Text>Text</Text>
+          <Text>Text</Text>
+          <Text>Text</Text>
+        </List>
+      ),
+    },
+    {
+      name: 'Numbered',
+      code: (
+        <List space="medium" type="number">
+          <Text>Text</Text>
+          <Text>Text</Text>
+          <Text>Text</Text>
+        </List>
+      ),
+    },
+    {
+      name: 'Alpha',
+      code: (
+        <List space="medium" type="alpha">
+          <Text>Text</Text>
+          <Text>Text</Text>
+          <Text>Text</Text>
+        </List>
+      ),
+    },
+    {
+      name: 'Roman',
+      code: (
+        <List space="medium" type="roman">
           <Text>Text</Text>
           <Text>Text</Text>
           <Text>Text</Text>
