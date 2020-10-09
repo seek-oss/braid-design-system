@@ -1,5 +1,21 @@
 # braid-design-system
 
+## 29.10.0
+
+### Minor Changes
+
+- **List:** Add support for Roman numerals ([#788](https://github.com/seek-oss/braid-design-system/pull/788))
+
+  **EXAMPLE USAGE**
+
+  ```jsx
+  <List type="roman">
+    <Text>This is a Roman list item.</Text>
+    <Text>This is a Roman list item.</Text>
+    <Text>This is a Roman list item.</Text>
+  </List>
+  ```
+
 ## 29.9.0
 
 ### Minor Changes
