@@ -255,6 +255,36 @@ const docs: ComponentDocs = {
         </List>
       ),
     },
+    {
+      name: 'Numbered',
+      code: (
+        <List space="medium" type="number">
+          <Text>Text</Text>
+          <Text>Text</Text>
+          <Text>Text</Text>
+        </List>
+      ),
+    },
+    {
+      name: 'Alpha',
+      code: (
+        <List space="medium" type="alpha">
+          <Text>Text</Text>
+          <Text>Text</Text>
+          <Text>Text</Text>
+        </List>
+      ),
+    },
+    {
+      name: 'Roman',
+      code: (
+        <List space="medium" type="roman">
+          <Text>Text</Text>
+          <Text>Text</Text>
+          <Text>Text</Text>
+        </List>
+      ),
+    },
   ],
 };
 
