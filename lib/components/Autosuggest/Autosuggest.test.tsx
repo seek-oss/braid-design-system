@@ -130,6 +130,47 @@ describe('Autosuggest', () => {
     });
   });
 
+  it('should keep the menu open when a selection is made if "hideSuggestionsOnSelection" is false', async () => {
+    const TestCase = () => {
+      const initialValue = 'appl';
+      const [value, setValue] = useState({ text: initialValue });
+
+      return (
+        <BraidTestProvider>
+          <Autosuggest
+            id="fruit"
+            label="Fruit"
+            value={value}
+            onChange={(newValue) => {
+              setValue(newValue.value ? { text: '' } : newValue);
+            }}
+            hideSuggestionsOnSelection={false}
+            suggestions={[
+              {
+                text: 'Apples',
+                value: 'apples',
+              },
+            ]}
+          />
+        </BraidTestProvider>
+      );
+    };
+
+    const { getByRole, queryByLabelText } = render(<TestCase />);
+    const input = getByRole('combobox');
+    const getInputValue = () => input.getAttribute('value');
+
+    userEvent.click(input);
+
+    const suggestion = queryByLabelText('Apples');
+    if (suggestion) {
+      fireEvent.click(suggestion);
+    }
+
+    expect(getInputValue()).toBe('');
+    expect(queryByLabelText('Apples')).toBeInTheDocument(); // Ensure menu is still open
+  });
+
   it('should pass through focus and blur events', () => {
     const focusHandler = jest.fn();
     const blurHandler = jest.fn();
@@ -452,7 +493,12 @@ describe('Autosuggest', () => {
     });
 
     it('should select a suggestion on enter after navigating a single suggestion', () => {
-      const { input, changeHandler, getInputValue } = renderAutosuggest({
+      const {
+        input,
+        changeHandler,
+        getInputValue,
+        queryByLabelText,
+      } = renderAutosuggest({
         value: { text: '' },
         suggestions: [
           {
@@ -475,6 +521,48 @@ describe('Autosuggest', () => {
         text: 'Apples',
         value: 'apples',
       });
+      expect(queryByLabelText('Apples')).toBe(null); // Ensure menu has closed
+    });
+
+    it('should keep the menu open on selection if "hideSuggestionsOnSelection" is false', async () => {
+      const TestCase = () => {
+        const initialValue = 'appl';
+        const [value, setValue] = useState({ text: initialValue });
+
+        return (
+          <BraidTestProvider>
+            <Autosuggest
+              id="fruit"
+              label="Fruit"
+              value={value}
+              onChange={(newValue) => {
+                setValue(newValue.value ? { text: '' } : newValue);
+              }}
+              hideSuggestionsOnSelection={false}
+              suggestions={[
+                {
+                  text: 'Apples',
+                  value: 'apples',
+                },
+              ]}
+            />
+          </BraidTestProvider>
+        );
+      };
+
+      const { getByRole, queryByLabelText } = render(<TestCase />);
+      const input = getByRole('combobox');
+      const getInputValue = () => input.getAttribute('value');
+
+      userEvent.click(input);
+
+      fireEvent.keyDown(input, { key: 'ArrowDown' });
+      expect(getInputValue()).toBe('Apples');
+
+      fireEvent.keyDown(input, { key: 'Enter' });
+
+      expect(getInputValue()).toBe('');
+      expect(queryByLabelText('Apples')).toBeInTheDocument(); // Ensure menu is still open
     });
 
     it('should select a grouped suggestion on enter after navigating the list', () => {
