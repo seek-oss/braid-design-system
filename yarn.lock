@@ -12265,10 +12265,10 @@ pkginfo@0.x.x:
   resolved "https://registry.yarnpkg.com/pkginfo/-/pkginfo-0.4.1.tgz#b5418ef0439de5425fc4995042dced14fb2a84ff"
   integrity sha1-tUGO8EOd5UJfxJlQQtztFPsqhP8=
 
-playroom@0.21.7, playroom@^0.21.1:
-  version "0.21.7"
-  resolved "https://registry.yarnpkg.com/playroom/-/playroom-0.21.7.tgz#0f585a14b8595821ac2278811c7e1ced5eac0951"
-  integrity sha512-8Fg04s3hsbkJfa2CVpJG/fvgnNg4N0a5p2FCKWugchKlx/jvai3VUiKC8FWBSUgS4vKIxAn89WWgIU4lbnTJ9Q==
+playroom@0.22.0, playroom@^0.21.1:
+  version "0.22.0"
+  resolved "https://registry.yarnpkg.com/playroom/-/playroom-0.22.0.tgz#719f34e4691b3da5c219b4ee8be692c5efa5ae1c"
+  integrity sha512-PozSTbKiu+FwsOebtOBGGhcwOuTkqubnBP/DaCXreHpunriHLXuWvQLoTlI1fpNgE4M2wYM2Mne4XZ6N17xGjg==
   dependencies:
     "@babel/cli" "^7.8.3"
     "@babel/core" "^7.8.3"
@@ -14525,10 +14525,10 @@ sisteransi@^1.0.4:
   resolved "https://registry.yarnpkg.com/sisteransi/-/sisteransi-1.0.5.tgz#134d681297756437cc05ca01370d3a7a571075ed"
   integrity sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==
 
-sku@10.5.4:
-  version "10.5.4"
-  resolved "https://registry.yarnpkg.com/sku/-/sku-10.5.4.tgz#38436f2fee10d3a3251b097056b8c21181dac9de"
-  integrity sha512-1/JGg6Mi0vAzq9cjxO5t/qPPGoQAYI1rMCM0VxxTLC+23muS3lax+9iqgQJaqcdVgdqQeAgLC13GnMVE9h59/Q==
+sku@10.6.0:
+  version "10.6.0"
+  resolved "https://registry.yarnpkg.com/sku/-/sku-10.6.0.tgz#5699017076a4a03b49fb3d926908666723a5ffda"
+  integrity sha512-wT5y3AvruxDG9E8hrTLWO1sRtB59tvaRFi1KSZej+It2jK6atl7TeD1hH5SCHBILcPkBNEXVdkgYWF60B8L06A==
   dependencies:
     "@babel/core" "^7.9.0"
     "@babel/plugin-proposal-class-properties" "^7.8.3"
