@@ -243,6 +243,7 @@ export interface AutosuggestProps<Value>
   suggestions: Array<Suggestion<Value> | GroupedSuggestion<Value>>;
   onChange: (value: AutosuggestValue<Value>) => void;
   automaticSelection?: boolean;
+  hideSuggestionsOnSelection?: boolean;
   showMobileBackdrop?: boolean;
   scrollToTopOnMobile?: boolean;
   onBlur?: () => void;
@@ -260,6 +261,7 @@ export function Autosuggest<Value>({
   automaticSelection = false,
   showMobileBackdrop = false,
   scrollToTopOnMobile = true,
+  hideSuggestionsOnSelection = true,
   onFocus = noop,
   onBlur = noop,
   placeholder,
@@ -376,11 +378,13 @@ export function Autosuggest<Value>({
         return state;
       }
 
-      case INPUT_ENTER: {
+      case INPUT_ENTER:
+      case SUGGESTION_MOUSE_CLICK: {
         return {
           ...state,
-          isOpen: false,
+          isOpen: !hideSuggestionsOnSelection,
           previewValue: null,
+          highlightedIndex: null,
         };
       }
 
@@ -388,15 +392,6 @@ export function Autosuggest<Value>({
         return {
           ...state,
           highlightedIndex: action.value,
-        };
-      }
-
-      case SUGGESTION_MOUSE_CLICK: {
-        return {
-          ...state,
-          isOpen: false,
-          previewValue: null,
-          highlightedIndex: null,
         };
       }
 

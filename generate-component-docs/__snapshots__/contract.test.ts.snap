@@ -59,6 +59,7 @@ Object {
     data?: Record<string, string | number>
     description?: ReactNode
     disabled?: boolean
+    hideSuggestionsOnSelection?: boolean
     icon?: ReactNode
     id: string
     label?: ReactNode
