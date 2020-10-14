@@ -1,6 +1,6 @@
 import '../reset';
 import React, { Fragment, ReactNode } from 'react';
-import { BraidProvider } from '../components';
+import { BraidProvider, ToastProvider } from '../components';
 import { BraidTheme } from '../themes/BraidTheme.d';
 
 interface Props {
@@ -16,7 +16,9 @@ export default ({ theme, children }: Props) => (
       }}
     />
     <BraidProvider theme={theme}>
-      <Fragment>{children}</Fragment>
+      <ToastProvider>
+        <Fragment>{children}</Fragment>
+      </ToastProvider>
     </BraidProvider>
   </Fragment>
 );
