@@ -6,6 +6,7 @@ import {
   FieldMessageProps,
 } from '../../FieldMessage/FieldMessage';
 import { Stack } from '../../Stack/Stack';
+import { mergeIds } from '../mergeIds';
 import { ReactNodeNoStrings } from '../ReactNodeNoStrings';
 
 type FormElementProps = AllHTMLAttributes<HTMLFormElement>;
@@ -70,7 +71,10 @@ export const FieldGroup = ({
 
         {children({
           disabled,
-          ...(message && { 'aria-describedby': messageId }),
+          'aria-describedby': mergeIds(
+            message ? messageId : undefined,
+            descriptionId,
+          ),
         })}
 
         {message || reserveMessageSpace ? (

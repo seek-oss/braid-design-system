@@ -148,7 +148,7 @@ export const Field = ({
             outline: 'none',
             'aria-describedby': mergeIds(
               ariaDescribedBy,
-              messageId,
+              message || secondaryMessage ? messageId : undefined,
               descriptionId,
             ),
             'aria-required': required,
