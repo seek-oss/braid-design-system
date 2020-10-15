@@ -45,6 +45,7 @@ export const FieldGroup = ({
   tone,
   required,
 }: InternalFieldGroupProps) => {
+  const labelId = `${id}-label`;
   const messageId = `${id}-message`;
   const descriptionId = description ? `${id}-description` : undefined;
 
@@ -53,11 +54,12 @@ export const FieldGroup = ({
       component="fieldset"
       disabled={disabled}
       id={id}
+      aria-labelledby={label ? labelId : undefined}
       aria-required={required}
     >
       <Stack space="xsmall">
         {label ? (
-          <Box component="legend">
+          <Box component="legend" id={labelId}>
             <FieldLabel
               htmlFor={false}
               label={label}
