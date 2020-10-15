@@ -11,7 +11,7 @@ describe('Textarea', () => {
       </BraidTestProvider>,
     );
 
-    expect(getByLabelText('My field').tagName).toBe('INPUT');
+    expect(getByLabelText('My field').tagName).toBe('TEXTAREA');
   });
 
   it('associates field with message correctly', () => {
