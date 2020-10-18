@@ -2,9 +2,9 @@ import { useState } from 'react';
 import curry from 'lodash/curry';
 
 export const usePlayroomState = () => {
-  const [store, setStore] = useState(new Map());
+  const [store, setStore] = useState(new Map<string, any>());
 
-  const getState = (key: string, defaultValue: any) =>
+  const getState = (key: string, defaultValue?: any) =>
     store.get(key) ?? defaultValue;
 
   const setState = curry((key: string, value: any) => {
