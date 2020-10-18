@@ -77,7 +77,7 @@ describe('MonthPicker (Double dropdown)', () => {
       </BraidTestProvider>,
     );
 
-    expect(getByLabelText('Start Month').tagName).toBe('SELECT');
+    expect(getByLabelText('Month').tagName).toBe('SELECT');
   });
 
   it('associates year field with label correctly', () => {
@@ -93,7 +93,7 @@ describe('MonthPicker (Double dropdown)', () => {
       </BraidTestProvider>,
     );
 
-    expect(getByLabelText('Start Year').tagName).toBe('SELECT');
+    expect(getByLabelText('Year').tagName).toBe('SELECT');
   });
 
   it('associates month field with message correctly', () => {
@@ -110,7 +110,7 @@ describe('MonthPicker (Double dropdown)', () => {
       </BraidTestProvider>,
     );
 
-    expect(getByLabelText('Start Month')).toHaveDescription('Required');
+    expect(getByLabelText('Month')).toHaveDescription('Required');
   });
 
   it('associates year field with message correctly', () => {
@@ -127,7 +127,7 @@ describe('MonthPicker (Double dropdown)', () => {
       </BraidTestProvider>,
     );
 
-    expect(getByLabelText('Start Year')).toHaveDescription('Required');
+    expect(getByLabelText('Year')).toHaveDescription('Required');
   });
 
   it('associates month field with description correctly', () => {
@@ -144,7 +144,7 @@ describe('MonthPicker (Double dropdown)', () => {
       </BraidTestProvider>,
     );
 
-    expect(getByLabelText('Start Month')).toHaveDescription(
+    expect(getByLabelText('Month')).toHaveDescription(
       'More detail about field',
     );
   });
@@ -163,9 +163,7 @@ describe('MonthPicker (Double dropdown)', () => {
       </BraidTestProvider>,
     );
 
-    expect(getByLabelText('Start Year')).toHaveDescription(
-      'More detail about field',
-    );
+    expect(getByLabelText('Year')).toHaveDescription('More detail about field');
   });
 
   it('associates month field with multiple description elements correctly', () => {
@@ -183,7 +181,7 @@ describe('MonthPicker (Double dropdown)', () => {
       </BraidTestProvider>,
     );
 
-    expect(getByLabelText('Start Month')).toHaveDescription(
+    expect(getByLabelText('Month')).toHaveDescription(
       'Required More detail about field',
     );
   });
@@ -203,7 +201,7 @@ describe('MonthPicker (Double dropdown)', () => {
       </BraidTestProvider>,
     );
 
-    expect(getByLabelText('Start Year')).toHaveDescription(
+    expect(getByLabelText('Year')).toHaveDescription(
       'Required More detail about field',
     );
   });
@@ -221,9 +219,7 @@ describe('MonthPicker (Double dropdown)', () => {
       </BraidTestProvider>,
     );
 
-    expect(
-      getByLabelText('Start Month').getAttribute('aria-describedby'),
-    ).toBeNull();
+    expect(getByLabelText('Month').getAttribute('aria-describedby')).toBeNull();
   });
 
   it('year field is not marked as having a description without a message or description', () => {
@@ -239,8 +235,6 @@ describe('MonthPicker (Double dropdown)', () => {
       </BraidTestProvider>,
     );
 
-    expect(
-      getByLabelText('Start Year').getAttribute('aria-describedby'),
-    ).toBeNull();
+    expect(getByLabelText('Year').getAttribute('aria-describedby')).toBeNull();
   });
 });

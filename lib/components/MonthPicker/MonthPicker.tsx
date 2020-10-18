@@ -234,7 +234,7 @@ const MonthPicker = ({
         <Columns space="medium">
           <Column>
             <HiddenVisually>
-              <label htmlFor={monthId}>{`${label} ${monthLabel}`}</label>
+              <label htmlFor={monthId}>{monthLabel}</label>
             </HiddenVisually>
             <Dropdown
               id={monthId}
@@ -252,7 +252,7 @@ const MonthPicker = ({
           </Column>
           <Column>
             <HiddenVisually>
-              <label htmlFor={yearId}>{`${label} ${yearLabel}`}</label>
+              <label htmlFor={yearId}>{yearLabel}</label>
             </HiddenVisually>
             <Dropdown
               id={yearId}
