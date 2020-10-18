@@ -36,6 +36,7 @@ module.exports = {
   playroomSnippets: './lib/playroom/snippets.ts',
   playroomThemes: './lib/themes/index.ts',
   playroomFrameComponent: './lib/playroom/FrameComponent.tsx',
+  playroomScope: './lib/playroom/useScope.ts',
   playroomTarget: './site/dist/playroom',
   playroomWidths: [320, 768, 1024, 1400],
   dangerouslySetWebpackConfig: (config) => {

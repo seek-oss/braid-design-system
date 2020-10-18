@@ -9,19 +9,19 @@ const noop = () => {};
 
 export const Dialog = ({
   id,
-  open,
-  onClose = noop,
+  open = false,
+  onClose,
   ...restProps
 }: PlayroomDialogProps) => {
   const fallbackId = useFallbackId();
 
   return (
-    <AllowCloseContext.Provider value={false}>
+    <AllowCloseContext.Provider value={onClose !== undefined}>
       <BraidDialog
         id={id ?? fallbackId}
         {...restProps}
-        open={open ?? true}
-        onClose={onClose}
+        open={open}
+        onClose={onClose ?? noop}
       />
     </AllowCloseContext.Provider>
   );

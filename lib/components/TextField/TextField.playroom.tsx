@@ -6,7 +6,9 @@ import { TextField as BraidTextField, TextFieldProps } from './TextField';
 type PlayroomTextFieldProps = Optional<
   TextFieldProps,
   'id' | 'value' | 'onChange'
->;
+> & {
+  onChange?: (fakeEvent: { currentTarget: { value: string } }) => void;
+};
 
 export const TextField = ({
   id,
@@ -27,7 +29,13 @@ export const TextField = ({
           ? onChange
           : (event) => setFallbackValue(event.currentTarget.value)
       }
-      onClear={onClear ?? (() => setFallbackValue(''))}
+      onClear={
+        onClear ??
+        (() =>
+          onChange
+            ? onChange({ currentTarget: { value: '' } })
+            : setFallbackValue(''))
+      }
       {...restProps}
     />
   );

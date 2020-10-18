@@ -344,7 +344,7 @@ const docs: ComponentDocs = {
     {
       name: 'Default',
       code: (
-        <PlayroomDrawer title="Drawer Heading">
+        <PlayroomDrawer title="Drawer Heading" open={true}>
           <Placeholder width="100%" height={100} />
         </PlayroomDrawer>
       ),
@@ -352,7 +352,7 @@ const docs: ComponentDocs = {
     {
       name: 'Small',
       code: (
-        <PlayroomDrawer title="Drawer Heading" width="small">
+        <PlayroomDrawer title="Drawer Heading" width="small" open={true}>
           <Placeholder width="100%" height={100} />
         </PlayroomDrawer>
       ),
@@ -360,7 +360,7 @@ const docs: ComponentDocs = {
     {
       name: 'Medium',
       code: (
-        <PlayroomDrawer title="Drawer Heading" width="medium">
+        <PlayroomDrawer title="Drawer Heading" width="medium" open={true}>
           <Placeholder width="100%" height={100} />
         </PlayroomDrawer>
       ),
@@ -368,7 +368,7 @@ const docs: ComponentDocs = {
     {
       name: 'Large',
       code: (
-        <PlayroomDrawer title="Drawer Heading" width="large">
+        <PlayroomDrawer title="Drawer Heading" width="large" open={true}>
           <Placeholder width="100%" height={100} />
         </PlayroomDrawer>
       ),
