@@ -541,7 +541,7 @@ const docs: ComponentDocs = {
     {
       name: 'Standard',
       code: (
-        <PlayroomDialog title="Dialog Heading">
+        <PlayroomDialog title="Dialog Heading" open={true}>
           <Placeholder width={250} height={100} />
         </PlayroomDialog>
       ),
@@ -551,6 +551,7 @@ const docs: ComponentDocs = {
       code: (
         <PlayroomDialog
           title="Illustrated Dialog"
+          open={true}
           illustration={
             <Box style={{ height: 100, width: 100 }}>
               <IconMail size="fill" />
@@ -570,7 +571,7 @@ const docs: ComponentDocs = {
     {
       name: 'Xsmall',
       code: (
-        <PlayroomDialog title="Dialog Heading" width="xsmall">
+        <PlayroomDialog title="Dialog Heading" width="xsmall" open={true}>
           <Placeholder width="100%" height={100} />
         </PlayroomDialog>
       ),
@@ -578,7 +579,7 @@ const docs: ComponentDocs = {
     {
       name: 'Small',
       code: (
-        <PlayroomDialog title="Dialog Heading" width="small">
+        <PlayroomDialog title="Dialog Heading" width="small" open={true}>
           <Placeholder width="100%" height={100} />
         </PlayroomDialog>
       ),
@@ -586,7 +587,7 @@ const docs: ComponentDocs = {
     {
       name: 'Medium',
       code: (
-        <PlayroomDialog title="Dialog Heading" width="medium">
+        <PlayroomDialog title="Dialog Heading" width="medium" open={true}>
           <Placeholder width="100%" height={100} />
         </PlayroomDialog>
       ),
@@ -594,7 +595,7 @@ const docs: ComponentDocs = {
     {
       name: 'Large',
       code: (
-        <PlayroomDialog title="Dialog Heading" width="large">
+        <PlayroomDialog title="Dialog Heading" width="large" open={true}>
           <Placeholder width="100%" height={100} />
         </PlayroomDialog>
       ),

@@ -26,7 +26,18 @@ export function Autosuggest<Value>({
       id={id ?? fallbackId}
       value={value ?? fallbackValue}
       onChange={onChange ?? setFallbackValue}
-      onClear={onClear ?? (() => setFallbackValue({ text: '' }))}
+      onClear={
+        onClear ??
+        (() => {
+          const blankValue = { text: '' };
+
+          if (onChange) {
+            onChange(blankValue);
+          } else {
+            setFallbackValue(blankValue);
+          }
+        })
+      }
       {...restProps}
     />
   );

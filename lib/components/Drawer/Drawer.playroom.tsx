@@ -12,19 +12,19 @@ const noop = () => {};
 
 export const Drawer = ({
   id,
-  open,
-  onClose = noop,
+  open = false,
+  onClose,
   ...restProps
 }: PlayroomDrawerProps) => {
   const fallbackId = useFallbackId();
 
   return (
-    <AllowCloseContext.Provider value={false}>
+    <AllowCloseContext.Provider value={onClose !== undefined}>
       <BraidDrawer
         id={id ?? fallbackId}
         {...restProps}
-        open={open ?? true}
-        onClose={onClose}
+        open={open}
+        onClose={onClose ?? noop}
       />
     </AllowCloseContext.Provider>
   );
