@@ -10,7 +10,7 @@ const docs: ComponentDocs = {
       <TextLink href="/components/List">List</TextLink> instead.
     </Text>
   ),
-  migrationGuide: true,
+  migrationGuide: false,
   screenshotWidths: [320],
   examples: [
     {

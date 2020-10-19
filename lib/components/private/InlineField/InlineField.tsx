@@ -144,7 +144,10 @@ export const InlineField = forwardRef<HTMLElement, InternalInlineFieldProps>(
             className={styles.realField}
             cursor={!disabled ? 'pointer' : undefined}
             opacity={0}
-            aria-describedby={mergeIds(messageId, descriptionId)}
+            aria-describedby={mergeIds(
+              message ? messageId : undefined,
+              description ? descriptionId : undefined,
+            )}
             aria-required={required}
             disabled={disabled}
             ref={ref}
