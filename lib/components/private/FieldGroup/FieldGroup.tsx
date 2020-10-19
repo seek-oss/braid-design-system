@@ -6,6 +6,7 @@ import {
   FieldMessageProps,
 } from '../../FieldMessage/FieldMessage';
 import { Stack } from '../../Stack/Stack';
+import { mergeIds } from '../mergeIds';
 import { ReactNodeNoStrings } from '../ReactNodeNoStrings';
 
 type FormElementProps = AllHTMLAttributes<HTMLFormElement>;
@@ -44,6 +45,7 @@ export const FieldGroup = ({
   tone,
   required,
 }: InternalFieldGroupProps) => {
+  const labelId = `${id}-label`;
   const messageId = `${id}-message`;
   const descriptionId = description ? `${id}-description` : undefined;
 
@@ -52,11 +54,12 @@ export const FieldGroup = ({
       component="fieldset"
       disabled={disabled}
       id={id}
+      aria-labelledby={label ? labelId : undefined}
       aria-required={required}
     >
       <Stack space="xsmall">
         {label ? (
-          <Box component="legend">
+          <Box component="legend" id={labelId}>
             <FieldLabel
               htmlFor={false}
               label={label}
@@ -70,7 +73,10 @@ export const FieldGroup = ({
 
         {children({
           disabled,
-          ...(message && { 'aria-describedby': messageId }),
+          'aria-describedby': mergeIds(
+            message ? messageId : undefined,
+            descriptionId,
+          ),
         })}
 
         {message || reserveMessageSpace ? (
