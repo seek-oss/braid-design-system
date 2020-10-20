@@ -32,6 +32,7 @@ import buildDataAttributes, {
 import { TabListContext } from './TabListContext';
 import { Overlay } from '../private/Overlay/Overlay';
 import { BadgeProps, Badge } from '../Badge/Badge';
+import { useBreakpoint } from '../useBreakpoint/useBreakpoint';
 import { smoothScroll } from '../private/smoothScroll';
 import { useSpace } from '../useSpace/useSpace';
 import * as styleRefs from './Tabs.treat';
@@ -97,20 +98,32 @@ export const Tab = ({ children, data, badge, item }: TabProps) => {
   }, [isFocused]);
 
   const firstRenderRef = useRef(true);
+  const breakpoint = useBreakpoint();
   useEffect(() => {
     if (tabRef.current && scrollContainer) {
       if (isSelected || isFocused) {
         smoothScroll(tabRef.current, {
           scrollContainer,
           direction: 'horizontal',
-          offset: space[paddingX] * grid * 3,
-          ...(firstRenderRef.current ? { duration: 0 } : { speed: 0.7 }),
+          offset: space[paddingX] * grid * (breakpoint === 'mobile' ? 3 : 12),
+          ...(firstRenderRef.current
+            ? { duration: 0 }
+            : { speed: breakpoint === 'mobile' ? 0.7 : 1.2 }),
+          offsetPosition: breakpoint === 'mobile' ? 'start' : 'end',
         });
       }
 
       firstRenderRef.current = false;
     }
-  }, [isSelected, isFocused, scrollContainer, space, paddingX, grid]);
+  }, [
+    isSelected,
+    isFocused,
+    scrollContainer,
+    space,
+    paddingX,
+    grid,
+    breakpoint,
+  ]);
 
   const onKeyUp = (event: KeyboardEvent<HTMLButtonElement>) => {
     const targetKey = normalizeKey(event);

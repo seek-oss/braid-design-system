@@ -150,6 +150,7 @@ interface SmoothScrollOptions extends ScrollOptions {
   scrollContainer?: HTMLElement;
   direction?: Direction;
   offset?: number;
+  offsetPosition?: 'start' | 'end';
   delay?: number;
 }
 
@@ -159,6 +160,7 @@ export const smoothScroll = (
     scrollContainer = window.document.documentElement,
     direction = 'vertical',
     offset = 0,
+    offsetPosition = 'start',
     delay = 0,
     ...scrollOptions
   }: SmoothScrollOptions = {},
@@ -177,8 +179,14 @@ export const smoothScroll = (
         element = queriedElement;
       }
 
+      const scrollOffset = getScrollOffset(scrollContainer, element, direction);
       const scrollPosition =
-        getScrollOffset(scrollContainer, element, direction) - offset;
+        offsetPosition === 'end'
+          ? scrollOffset -
+            scrollContainer.offsetWidth +
+            element.offsetWidth +
+            offset
+          : scrollOffset - offset;
 
       scroll(
         scrollContainer,
