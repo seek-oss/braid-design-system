@@ -15,6 +15,7 @@ export { Link } from '../components/Link/Link.playroom';
 export { MonthPicker } from '../components/MonthPicker/MonthPicker.playroom';
 export { PasswordField } from '../components/PasswordField/PasswordField.playroom';
 export { Radio } from '../components/Radio/Radio.playroom';
+export { RadioGroup } from '../components/RadioGroup/RadioGroup.playroom';
 export { TabsProvider, Tabs } from '../components/Tabs/Tabs.playroom';
 export { Textarea } from '../components/Textarea/Textarea.playroom';
 export { TextDropdown } from '../components/TextDropdown/TextDropdown.playroom';

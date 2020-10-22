@@ -4,6 +4,7 @@
   "BoxRenderer",
   "makeLinkComponent",
   "MenuItemLink",
+  "RadioItem",
   "Tab",
   "TabsProvider",
   "TabPanel",

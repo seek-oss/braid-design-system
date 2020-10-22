@@ -2137,6 +2137,7 @@ exports[`Checkbox 1`] = `
 Object {
   exportType: component,
   props: {
+    aria-describedby?: string
     badge?: ReactElement<BadgeProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)>
     checked: boolean
     children?: ReactNode
@@ -2156,6 +2157,7 @@ Object {
     tone?: 
         | "critical"
         | "neutral"
+        | "positive"
     value?: 
         | number
         | readonly string[]
@@ -5365,6 +5367,7 @@ exports[`Radio 1`] = `
 Object {
   exportType: component,
   props: {
+    aria-describedby?: string
     badge?: ReactElement<BadgeProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)>
     checked: boolean
     children?: ReactNode
@@ -5381,7 +5384,56 @@ Object {
     tone?: 
         | "critical"
         | "neutral"
+        | "positive"
     value?: 
+        | number
+        | readonly string[]
+        | string
+},
+}
+`;
+
+exports[`RadioGroup 1`] = `
+Object {
+  exportType: component,
+  props: {
+    children: ReactElement<RadioItemProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)>[]
+    description?: ReactNode
+    disabled?: boolean
+    id: string
+    label?: ReactNode
+    message?: ReactNode
+    name: string
+    onChange: (event: FormEvent<HTMLFormElement>) => void
+    required?: boolean
+    reserveMessageSpace?: boolean
+    secondaryLabel?: ReactNode
+    tertiaryLabel?: ReactNode
+    tone?: 
+        | "critical"
+        | "neutral"
+        | "positive"
+    value: 
+        | number
+        | string
+},
+}
+`;
+
+exports[`RadioItem 1`] = `
+Object {
+  exportType: component,
+  props: {
+    aria-describedby?: string
+    badge?: ReactElement<BadgeProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)>
+    children?: ReactNode
+    data?: Record<string, string | number>
+    description?: ReactNode
+    label: ReactNode
+    ref?: 
+        | (instance: HTMLInputElement | null) => void
+        | RefObject<HTMLInputElement>
+    value: 
         | number
         | readonly string[]
         | string

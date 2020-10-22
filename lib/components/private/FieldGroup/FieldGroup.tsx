@@ -5,7 +5,7 @@ import {
   FieldMessage,
   FieldMessageProps,
 } from '../../FieldMessage/FieldMessage';
-import { Stack } from '../../Stack/Stack';
+import { Stack, StackProps } from '../../Stack/Stack';
 import { mergeIds } from '../mergeIds';
 import { ReactNodeNoStrings } from '../ReactNodeNoStrings';
 
@@ -29,6 +29,8 @@ interface FieldGroupRenderProps {
 }
 
 interface InternalFieldGroupProps extends FieldGroupProps {
+  role?: FormElementProps['role'];
+  space?: StackProps['space'];
   children(props: FieldGroupRenderProps): ReactNodeNoStrings;
 }
 
@@ -44,6 +46,8 @@ export const FieldGroup = ({
   reserveMessageSpace = false,
   tone,
   required,
+  role,
+  space = 'xsmall',
 }: InternalFieldGroupProps) => {
   const labelId = `${id}-label`;
   const messageId = `${id}-message`;
@@ -54,10 +58,11 @@ export const FieldGroup = ({
       component="fieldset"
       disabled={disabled}
       id={id}
+      role={role}
       aria-labelledby={label ? labelId : undefined}
       aria-required={required}
     >
-      <Stack space="xsmall">
+      <Stack space={space}>
         {label ? (
           <Box component="legend" id={labelId}>
             <FieldLabel
