@@ -55,7 +55,7 @@ const RadioGroup = ({
             ...fieldGroupProps,
           }}
         >
-          <Stack space="medium">
+          <Stack space="small">
             {items.map((item, i) => (
               <RadioItemContext.Provider key={i} value={i}>
                 {item}

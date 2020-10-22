@@ -3,16 +3,15 @@ import { ComponentDocs } from '../../../site/src/types';
 import {
   Stack,
   Text,
-  Notice,
   TextLink,
   RadioGroup,
   RadioItem,
+  Strong,
   Badge,
 } from '..';
 import {
   Placeholder,
   RadioGroup as PlayroomRadioGroup,
-  Strong,
 } from '../../playroom/components';
 
 const docs: ComponentDocs = {
@@ -171,11 +170,7 @@ const docs: ComponentDocs = {
           >
             <RadioItem label="Less than one year" value="0" />
             <RadioItem label="1 year" value="1">
-              <Notice>
-                <Text>
-                  This text is visible when the radioList button is checked.
-                </Text>
-              </Notice>
+              <Placeholder height={50} label="Nested content" />
             </RadioItem>
             <RadioItem label="2 years" value="2" />
             <RadioItem label="3+ years " value="3" />
