@@ -52,7 +52,12 @@ const NamedRadioItem = forwardRef<HTMLInputElement, RadioItemProps>(
         name={radioListContext.name}
         checked={checked}
         onChange={radioListContext.onChange}
-        tone={radioListContext.tone}
+        tone={
+          radioListContext.tone === 'critical' ||
+          radioListContext.tone === 'neutral'
+            ? radioListContext.tone
+            : undefined
+        }
         disabled={radioListContext.disabled}
         aria-describedby={radioListContext['aria-describedby']}
         tabIndex={tababble ? 0 : -1}

@@ -22,6 +22,9 @@ import { BadgeProps } from '../../Badge/Badge';
 import { Inline } from '../../Inline/Inline';
 import * as styleRefs from './InlineField.treat';
 
+const tones = ['neutral', 'critical'] as const;
+type InlineFieldTone = typeof tones[number];
+
 type FormElementProps = AllHTMLAttributes<HTMLFormElement>;
 export interface InlineFieldProps {
   id: NonNullable<FormElementProps['id']>;
@@ -34,7 +37,7 @@ export interface InlineFieldProps {
   disabled?: FormElementProps['disabled'];
   message?: FieldMessageProps['message'];
   reserveMessageSpace?: FieldMessageProps['reserveMessageSpace'];
-  tone?: FieldMessageProps['tone'];
+  tone?: InlineFieldTone;
   children?: ReactNode;
   description?: ReactNode;
   badge?: ReactElement<BadgeProps>;
@@ -117,6 +120,10 @@ export const InlineField = forwardRef<HTMLElement, InternalInlineFieldProps>(
     ref,
   ) => {
     const styles = useStyles(styleRefs);
+
+    if (tones.indexOf(tone) === -1) {
+      throw new Error(`Invalid tone: ${tone}`);
+    }
 
     const messageId = `${id}-message`;
     const descriptionId = `${id}-description`;

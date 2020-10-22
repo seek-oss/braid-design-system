@@ -2157,7 +2157,6 @@ Object {
     tone?: 
         | "critical"
         | "neutral"
-        | "positive"
     value?: 
         | number
         | readonly string[]
@@ -5384,7 +5383,6 @@ Object {
     tone?: 
         | "critical"
         | "neutral"
-        | "positive"
     value?: 
         | number
         | readonly string[]
