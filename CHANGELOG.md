@@ -1,5 +1,15 @@
 # braid-design-system
 
+## 29.11.3
+
+### Patch Changes
+
+- **Tabs:** Only scroll tabs when necessary on large screens ([#806](https://github.com/seek-oss/braid-design-system/pull/806))
+
+  Previously, when there were enough tabs to require horizontal scrolling, we would always scroll the active tab to the left-hand side of the scroll container (with a slight offset). This was primarily designed as a mobile interaction, and in practice was found to be a bit unexpected on large screens.
+
+  Instead, when the tabs are scrollable on large screens, we now only scroll the active tab into view if it's partially off-screen or positioned too close to the edge of the scroll container. This ensures that automatic scrolling only occurs when absolutely necessary.
+
 ## 29.11.2
 
 ### Patch Changes
