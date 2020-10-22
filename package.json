@@ -12,8 +12,7 @@
   "scripts": {
     "test": "SKU_TELEMETRY=false sku test",
     "start": "SKU_TELEMETRY=false concurrently -n \"docs-site,playroom\" -c \"magenta,greenBright\" \"sku start\" \"OPEN_TAB=false sku playroom\"",
-    "lint": "SKU_TELEMETRY=false sku lint && yarn lint-absolute-imports",
-    "lint-absolute-imports": "! grep -R \" from 'lib/\" lib/*",
+    "lint": "SKU_TELEMETRY=false sku lint",
     "format": "SKU_TELEMETRY=false sku format",
     "generate-component-docs": "ts-node generate-component-docs",
     "generate-icons": "node scripts/generateIcons.js",
