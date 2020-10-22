@@ -1,6 +1,6 @@
 # RadioGroup Migration Guide
 
-A `RadioItem` must be wrapped inside of a `RadioGroup`. As part of the migration you should be hoisting the controlled state its handling to [RadioGroup.](https://seek-oss.github.io/braid-design-system/components/RadioGroup).
+A `RadioItem` must be wrapped inside of a `RadioGroup`. As part of the migration, you should be hoisting the controlled state it's handling to [RadioGroup.](https://seek-oss.github.io/braid-design-system/components/RadioGroup).
 
 ## API Changes
 
