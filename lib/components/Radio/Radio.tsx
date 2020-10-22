@@ -16,12 +16,12 @@ export interface RadioProps
 const NamedRadio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
   const radioListContext = useContext(RadioGroupContext);
 
-  if (process.env.NODE_ENV !== 'production') {
-    assert(
-      radioListContext === null,
-      'The "Radio" component has been deprecated. Use a "RadioItem" instead.',
-    );
+  assert(
+    radioListContext === null,
+    'The "Radio" component has been deprecated. Use a "RadioItem" instead.',
+  );
 
+  if (process.env.NODE_ENV !== 'production') {
     // eslint-disable-next-line no-console
     console.warn(
       dedent`
