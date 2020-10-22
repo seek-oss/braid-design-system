@@ -3,7 +3,7 @@ import { RadioGroupProps } from './RadioGroup';
 
 interface RadioGroupContextValues {
   id: RadioGroupProps['id'];
-  name: RadioGroupProps['name'];
+  name: string;
   value: RadioGroupProps['value'];
   disabled?: boolean;
   tone?: RadioGroupProps['tone'];

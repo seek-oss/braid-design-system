@@ -10,7 +10,6 @@ const TestCase = () => {
     <BraidTestProvider>
       <RadioGroup
         id="options"
-        name="options"
         value={value}
         onChange={(e) => setValue(e.currentTarget.value)}
         label="Options"
@@ -27,13 +26,7 @@ describe('RadioGroup', () => {
   it('associates the group with label correctly', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
-        <RadioGroup
-          id="options"
-          name="options"
-          value=""
-          onChange={() => {}}
-          label="Options"
-        >
+        <RadioGroup id="options" value="" onChange={() => {}} label="Options">
           <RadioItem label="Option 1" value="1" />
           <RadioItem label="Option 2" value="2" />
         </RadioGroup>
@@ -46,13 +39,7 @@ describe('RadioGroup', () => {
   it('associates radio items with their labels correctly', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
-        <RadioGroup
-          id="options"
-          name="options"
-          value=""
-          onChange={() => {}}
-          label="Options"
-        >
+        <RadioGroup id="options" value="" onChange={() => {}} label="Options">
           <RadioItem label="Option 1" value="1" />
           <RadioItem label="Option 2" value="2" />
         </RadioGroup>
@@ -70,7 +57,6 @@ describe('RadioGroup', () => {
       <BraidTestProvider>
         <RadioGroup
           id="options"
-          name="options"
           value=""
           onChange={() => {}}
           label="Options"
@@ -95,7 +81,6 @@ describe('RadioGroup', () => {
       <BraidTestProvider>
         <RadioGroup
           id="options"
-          name="options"
           value=""
           onChange={() => {}}
           label="Options"
@@ -128,7 +113,6 @@ describe('RadioGroup', () => {
       <BraidTestProvider>
         <RadioGroup
           id="options"
-          name="options"
           value=""
           onChange={() => {}}
           label="Options"
@@ -160,13 +144,7 @@ describe('RadioGroup', () => {
   it('group and items are not marked as having a description without a message or description', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
-        <RadioGroup
-          id="options"
-          name="options"
-          value=""
-          onChange={() => {}}
-          label="Options"
-        >
+        <RadioGroup id="options" value="" onChange={() => {}} label="Options">
           <RadioItem label="Option 1" value="1" />
           <RadioItem label="Option 2" value="2" />
         </RadioGroup>

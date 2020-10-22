@@ -8,9 +8,9 @@ import { RadioGroupContext, RadioItemContext } from './RadioGroupContext';
 export interface RadioGroupProps<Value = NonNullable<string | number>>
   extends FieldGroupProps {
   children: ReactElement<RadioItemProps>[];
-  name: string;
   value: Value;
   onChange: (event: FormEvent<HTMLFormElement>) => void;
+  name?: string;
 }
 
 const RadioGroup = ({
@@ -39,7 +39,7 @@ const RadioGroup = ({
           value={{
             id,
             value,
-            name,
+            name: name || id,
             onChange,
             disabled,
             tone,

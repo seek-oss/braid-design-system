@@ -5,7 +5,7 @@ import { RadioGroup as BraidRadioGroup, RadioGroupProps } from './RadioGroup';
 
 type PlayroomRadioProps = Optional<
   RadioGroupProps,
-  'id' | 'value' | 'name' | 'onChange'
+  'id' | 'value' | 'onChange'
 >;
 
 export const RadioGroup = ({
@@ -16,7 +16,6 @@ export const RadioGroup = ({
   children,
   ...restProps
 }: PlayroomRadioProps) => {
-  const fallbackName = useFallbackId();
   const fallbackId = useFallbackId();
   const [fallbackValue, setFallbackValue] = useState<RadioGroupProps['value']>(
     '',
@@ -27,7 +26,6 @@ export const RadioGroup = ({
       {...restProps}
       id={id ?? fallbackId}
       value={value ?? fallbackValue}
-      name={name ?? fallbackName}
       onChange={
         onChange ? onChange : (e) => setFallbackValue(e.currentTarget.value)
       }

@@ -45,7 +45,6 @@ const docs: ComponentDocs = {
         return (
           <RadioGroup
             id="radiolist1"
-            name="radiolist1"
             value={state}
             onChange={(e) => setState(e.currentTarget.value)}
             label="Experience"
@@ -63,7 +62,6 @@ const docs: ComponentDocs = {
       Example: ({ handler }) => (
         <RadioGroup
           id="radiolist2"
-          name="radiolist2"
           value="2"
           onChange={handler}
           label="Experience"
@@ -82,7 +80,6 @@ const docs: ComponentDocs = {
         return (
           <RadioGroup
             id="radiolist3"
-            name="radiolist3"
             value={state}
             onChange={(e) => setState(e.currentTarget.value)}
             label="Experience"
@@ -103,7 +100,6 @@ const docs: ComponentDocs = {
         return (
           <RadioGroup
             id="radiolist4"
-            name="radiolist4"
             value={state}
             onChange={(e) => setState(e.currentTarget.value)}
             label="Experience"
@@ -125,7 +121,6 @@ const docs: ComponentDocs = {
         return (
           <RadioGroup
             id="radiolist5"
-            name="radiolist5"
             value={state}
             onChange={(e) => setState(e.currentTarget.value)}
             label="Experience"
@@ -147,7 +142,6 @@ const docs: ComponentDocs = {
         return (
           <RadioGroup
             id="radiolist6"
-            name="radiolist6"
             value={state}
             onChange={(e) => setState(e.currentTarget.value)}
             label="Experience"
@@ -171,7 +165,6 @@ const docs: ComponentDocs = {
         return (
           <RadioGroup
             id="radiolist7"
-            name="radiolist7"
             value={state}
             onChange={(e) => setState(e.currentTarget.value)}
             label="Experience"

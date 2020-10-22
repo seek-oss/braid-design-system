@@ -5403,7 +5403,7 @@ Object {
     id: string
     label?: ReactNode
     message?: ReactNode
-    name: string
+    name?: string
     onChange: (event: FormEvent<HTMLFormElement>) => void
     required?: boolean
     reserveMessageSpace?: boolean
