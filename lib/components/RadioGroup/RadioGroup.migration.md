@@ -21,7 +21,7 @@ A `RadioItem` must be wrapped inside of a `RadioGroup`. As part of the migration
 - <Radio name="count" label="One" value="1" onChange={...} />
 - <Radio name="count" label="Two" value="2" onChange={...} checked />
 - <Radio name="count" label="Three" value="3" onChange={...}  />
-+ <RadioGroup name="count" value="2" onChange={...}>
++ <RadioGroup id="count" value="2" onChange={...}>
 +   <RadioItem label="One" value="1" />
 +   <RadioItem label="Two" value="2" />
 +   <RadioItem label="Three" value="3" />

@@ -16,7 +16,6 @@ The RadioGroup provides an accessible way to group and control a set of **RadioI
 ```jsx
 <RadioGroup
   id="experience"
-  name="experience"
   label="Experience"
   value=""
   onChange={() => {}}
