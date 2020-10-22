@@ -32,7 +32,8 @@ import buildDataAttributes, {
 import { TabListContext } from './TabListContext';
 import { Overlay } from '../private/Overlay/Overlay';
 import { BadgeProps, Badge } from '../Badge/Badge';
-import { smoothScroll } from '../private/smoothScroll';
+import { useBreakpoint } from '../useBreakpoint/useBreakpoint';
+import { smoothScroll, smoothScrollIntoView } from '../private/smoothScroll';
 import { useSpace } from '../useSpace/useSpace';
 import * as styleRefs from './Tabs.treat';
 
@@ -97,20 +98,40 @@ export const Tab = ({ children, data, badge, item }: TabProps) => {
   }, [isFocused]);
 
   const firstRenderRef = useRef(true);
+  const breakpoint = useBreakpoint();
   useEffect(() => {
-    if (tabRef.current && scrollContainer) {
-      if (isSelected || isFocused) {
+    if (!tabRef.current || !scrollContainer) {
+      return;
+    }
+
+    if (isSelected || isFocused) {
+      if (breakpoint === 'mobile') {
         smoothScroll(tabRef.current, {
           scrollContainer,
           direction: 'horizontal',
           offset: space[paddingX] * grid * 3,
           ...(firstRenderRef.current ? { duration: 0 } : { speed: 0.7 }),
         });
+      } else {
+        smoothScrollIntoView(tabRef.current, {
+          scrollContainer,
+          direction: 'horizontal',
+          offset: space[paddingX] * grid * 6,
+          ...(firstRenderRef.current ? { duration: 0 } : { speed: 0.7 }),
+        });
       }
-
-      firstRenderRef.current = false;
     }
-  }, [isSelected, isFocused, scrollContainer, space, paddingX, grid]);
+
+    firstRenderRef.current = false;
+  }, [
+    isSelected,
+    isFocused,
+    scrollContainer,
+    space,
+    paddingX,
+    grid,
+    breakpoint,
+  ]);
 
   const onKeyUp = (event: KeyboardEvent<HTMLButtonElement>) => {
     const targetKey = normalizeKey(event);
