@@ -1,5 +1,15 @@
 # braid-design-system
 
+## 29.11.2
+
+### Patch Changes
+
+- **Radio,Checkbox:** Apply aria-describedby only when needed ([#802](https://github.com/seek-oss/braid-design-system/pull/802))
+
+  Only apply aria-describedby when needed, e.g. either a message or description is passed.
+
+- **IconVisibility:** Simplify visibility icon ([#804](https://github.com/seek-oss/braid-design-system/pull/804))
+
 ## 29.11.1
 
 ### Patch Changes
