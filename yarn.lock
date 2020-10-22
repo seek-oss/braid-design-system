@@ -12265,10 +12265,10 @@ pkginfo@0.x.x:
   resolved "https://registry.yarnpkg.com/pkginfo/-/pkginfo-0.4.1.tgz#b5418ef0439de5425fc4995042dced14fb2a84ff"
   integrity sha1-tUGO8EOd5UJfxJlQQtztFPsqhP8=
 
-playroom@0.22.2, playroom@^0.22.0:
-  version "0.22.2"
-  resolved "https://registry.yarnpkg.com/playroom/-/playroom-0.22.2.tgz#1cbcb812cdf700b6a53f2d8787bc492415cba853"
-  integrity sha512-90CwXcnUF2rnCmUBCh6gahgZE345mBlnm+vrP7re8c68hkWMOMuFloj4c4sBKuVgK2xsa1/IrAUqMEwJEWbv4Q==
+playroom@0.22.3, playroom@^0.22.0:
+  version "0.22.3"
+  resolved "https://registry.yarnpkg.com/playroom/-/playroom-0.22.3.tgz#64b73d040b37d894f4839914f2f9fa66b4d6bc74"
+  integrity sha512-wKHEnQKckvOXzuuO2weDMKlitW/mXdngN/DhQHxlIFz58r7AGMYGfSDru49Yn72SBtktFcfcIXhuHKVPE01DeA==
   dependencies:
     "@babel/cli" "^7.8.3"
     "@babel/core" "^7.8.3"

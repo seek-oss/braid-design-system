@@ -1,5 +1,27 @@
 # braid-design-system
 
+## 29.11.2
+
+### Patch Changes
+
+- **Radio,Checkbox:** Apply aria-describedby only when needed ([#802](https://github.com/seek-oss/braid-design-system/pull/802))
+
+  Only apply aria-describedby when needed, e.g. either a message or description is passed.
+
+- **IconVisibility:** Simplify visibility icon ([#804](https://github.com/seek-oss/braid-design-system/pull/804))
+
+## 29.11.1
+
+### Patch Changes
+
+- **TextField,Dropdown,PasswordField,MonthPicker,Textarea:** Apply aria-describedby to form elements only when needed ([#798](https://github.com/seek-oss/braid-design-system/pull/798))
+
+  Only apply `aria-describedby` to form elements when needed, e.g. either a `message`, `description`, or an explicit `aria-describedby` is passed.
+
+- **MonthPicker:** Announce semantic grouping of fields and improved translation support. ([#798](https://github.com/seek-oss/braid-design-system/pull/798))
+
+  When not on a native device, the MonthPicker uses a `fieldset` containing two dropdowns. This change ensures that the grouping is announced correctly. From a translations perspective the labels for the dropdowns are no longer a concatenation of the `label` and `monthLabel`/`yearLabel`, supporting translation of the entire phrase.
+
 ## 29.11.0
 
 ### Minor Changes
