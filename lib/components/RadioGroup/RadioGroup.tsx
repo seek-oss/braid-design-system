@@ -5,6 +5,7 @@ import { FieldGroup, FieldGroupProps } from '../private/FieldGroup/FieldGroup';
 import { RadioItem, RadioItemProps } from '../RadioGroup/RadioItem';
 import { Stack } from '../Stack/Stack';
 import { RadioGroupContext, RadioItemContext } from './RadioGroupContext';
+import { Box } from '../Box/Box';
 
 export interface RadioGroupProps<Value = NonNullable<string | number>>
   extends FieldGroupProps {
@@ -55,13 +56,18 @@ const RadioGroup = ({
             ...fieldGroupProps,
           }}
         >
-          <Stack space="small">
-            {items.map((item, i) => (
-              <RadioItemContext.Provider key={i} value={i}>
-                {item}
-              </RadioItemContext.Provider>
-            ))}
-          </Stack>
+          <Box
+            paddingTop={props.description ? undefined : 'xxsmall'}
+            paddingBottom={props.message ? 'xsmall' : undefined}
+          >
+            <Stack space="medium">
+              {items.map((item, i) => (
+                <RadioItemContext.Provider key={i} value={i}>
+                  {item}
+                </RadioItemContext.Provider>
+              ))}
+            </Stack>
+          </Box>
         </RadioGroupContext.Provider>
       )}
     </FieldGroup>
