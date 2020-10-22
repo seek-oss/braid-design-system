@@ -1,7 +1,8 @@
 import React, { FormEvent, ReactElement } from 'react';
+import assert from 'assert';
 import flattenChildren from 'react-keyed-flatten-children';
 import { FieldGroup, FieldGroupProps } from '../private/FieldGroup/FieldGroup';
-import { RadioItemProps } from '../RadioGroup/RadioItem';
+import { RadioItem, RadioItemProps } from '../RadioGroup/RadioItem';
 import { Stack } from '../Stack/Stack';
 import { RadioGroupContext, RadioItemContext } from './RadioGroupContext';
 
@@ -24,6 +25,14 @@ const RadioGroup = ({
   ...props
 }: RadioGroupProps) => {
   const items = flattenChildren(children);
+
+  assert(
+    items.every(
+      (item) =>
+        typeof item === 'object' && 'type' in item && item.type === RadioItem,
+    ),
+    'All child nodes within a RadioGroup must be a RadioItem: https://seek-oss.github.io/braid-design-system/components/RadioGroup',
+  );
 
   return (
     <FieldGroup
