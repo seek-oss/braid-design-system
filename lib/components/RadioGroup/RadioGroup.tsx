@@ -57,7 +57,7 @@ const RadioGroup = ({
           }}
         >
           <Box
-            paddingTop={props.description ? undefined : 'xxsmall'}
+            paddingTop={props.description ? undefined : 'xsmall'}
             paddingBottom={props.message ? 'xsmall' : undefined}
           >
             <Stack space="medium">
