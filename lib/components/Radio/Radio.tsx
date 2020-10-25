@@ -14,10 +14,10 @@ export interface RadioProps
   > {}
 
 const NamedRadio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
-  const radioListContext = useContext(RadioGroupContext);
+  const radioGroupContext = useContext(RadioGroupContext);
 
   assert(
-    radioListContext === null,
+    radioGroupContext === null,
     'The "Radio" component has been deprecated. Use a "RadioItem" instead.',
   );
 

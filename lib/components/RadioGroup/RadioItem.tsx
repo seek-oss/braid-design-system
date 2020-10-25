@@ -27,11 +27,11 @@ export interface RadioItemProps
 
 const NamedRadioItem = forwardRef<HTMLInputElement, RadioItemProps>(
   (props, ref) => {
-    const radioListContext = useContext(RadioGroupContext);
+    const radioGroupContext = useContext(RadioGroupContext);
     const radioItemContext = useContext(RadioItemContext);
 
     assert(
-      radioListContext !== null && radioItemContext !== null,
+      radioGroupContext !== null && radioItemContext !== null,
       'All `RadioItem` buttons must be within a `RadioGroup`.',
     );
 
@@ -40,26 +40,26 @@ const NamedRadioItem = forwardRef<HTMLInputElement, RadioItemProps>(
       'All `RadioItem` buttons must have an associated `value`',
     );
 
-    const checked = radioListContext.value === props.value;
+    const checked = radioGroupContext.value === props.value;
     const isFirstRadioWithNoCheckedValueInGroup =
-      radioItemContext === 0 && !Boolean(radioListContext.value);
+      radioItemContext === 0 && !Boolean(radioGroupContext.value);
     const tababble = checked || isFirstRadioWithNoCheckedValueInGroup;
 
     return (
       <InlineField
         {...props}
-        id={`${radioListContext.id}_${props.value}`}
-        name={radioListContext.name}
+        id={`${radioGroupContext.id}_${props.value}`}
+        name={radioGroupContext.name}
         checked={checked}
-        onChange={radioListContext.onChange}
+        onChange={radioGroupContext.onChange}
         tone={
-          radioListContext.tone === 'critical' ||
-          radioListContext.tone === 'neutral'
-            ? radioListContext.tone
+          radioGroupContext.tone === 'critical' ||
+          radioGroupContext.tone === 'neutral'
+            ? radioGroupContext.tone
             : undefined
         }
-        disabled={radioListContext.disabled}
-        aria-describedby={radioListContext['aria-describedby']}
+        disabled={radioGroupContext.disabled}
+        aria-describedby={radioGroupContext['aria-describedby']}
         tabIndex={tababble ? 0 : -1}
         inList={true}
         type="radio"
