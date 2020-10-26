@@ -33,6 +33,7 @@ export interface InlineFieldProps {
   checked: NonNullable<FormElementProps['checked']>;
   value?: FormElementProps['value'];
   name?: FormElementProps['name'];
+  'aria-describedby'?: FormElementProps['aria-describedby'];
   disabled?: FormElementProps['disabled'];
   message?: FieldMessageProps['message'];
   reserveMessageSpace?: FieldMessageProps['reserveMessageSpace'];
@@ -46,6 +47,8 @@ export interface InlineFieldProps {
 
 type FieldType = 'checkbox' | 'radio';
 interface InternalInlineFieldProps extends InlineFieldProps {
+  inList?: boolean;
+  tabIndex?: number;
   type: FieldType;
 }
 
@@ -110,6 +113,9 @@ export const InlineField = forwardRef<HTMLElement, InternalInlineFieldProps>(
       tone = 'neutral',
       disabled = false,
       required,
+      inList = false,
+      tabIndex,
+      'aria-describedby': ariaDescribedBy,
     },
     ref,
   ) => {
@@ -145,12 +151,14 @@ export const InlineField = forwardRef<HTMLElement, InternalInlineFieldProps>(
             cursor={!disabled ? 'pointer' : undefined}
             opacity={0}
             aria-describedby={mergeIds(
+              ariaDescribedBy,
               message ? messageId : undefined,
               description ? descriptionId : undefined,
             )}
             aria-required={required}
             disabled={disabled}
             ref={ref}
+            tabIndex={tabIndex}
             {...buildDataAttributes(data)}
           />
           <Box
@@ -192,7 +200,7 @@ export const InlineField = forwardRef<HTMLElement, InternalInlineFieldProps>(
               <Indicator type={type} hover={true} />
             </FieldOverlay>
           </Box>
-          <Box paddingLeft="small">
+          <Box paddingLeft="small" flexGrow={1}>
             <Inline space="small">
               <Box
                 component="label"
@@ -202,7 +210,7 @@ export const InlineField = forwardRef<HTMLElement, InternalInlineFieldProps>(
                 className={[styles.label, useVirtualTouchable()]}
               >
                 <Text
-                  weight={checked ? 'strong' : undefined}
+                  weight={checked && !inList ? 'strong' : undefined}
                   tone={disabled ? 'secondary' : undefined}
                 >
                   {label}

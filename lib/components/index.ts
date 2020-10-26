@@ -55,6 +55,8 @@ export { MonthPicker } from './MonthPicker/MonthPicker';
 export { Notice } from './Notice/Notice';
 export { PasswordField } from './PasswordField/PasswordField';
 export { Radio } from './Radio/Radio';
+export { RadioGroup } from './RadioGroup/RadioGroup';
+export { RadioItem } from './RadioGroup/RadioItem';
 export { Rating } from './Rating/Rating';
 export { Secondary } from './Secondary/Secondary';
 export { Stack } from './Stack/Stack';

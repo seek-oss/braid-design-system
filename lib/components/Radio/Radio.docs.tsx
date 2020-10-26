@@ -1,11 +1,17 @@
 import React, { useState } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import { Badge, Radio, Text } from '../';
-import { Radio as PlayroomRadio } from '../../playroom/components';
+import { TextLink } from '../TextLink/TextLink';
 
 const docs: ComponentDocs = {
   category: 'Content',
-  migrationGuide: true,
+  migrationGuide: false,
+  deprecationWarning: (
+    <Text weight="medium">
+      This component has been deprecated. Use{' '}
+      <TextLink href="/components/RadioGroup">RadioGroup</TextLink> instead.
+    </Text>
+  ),
   screenshotWidths: [320],
   examples: [
     {
@@ -129,29 +135,6 @@ const docs: ComponentDocs = {
         >
           <Text>This text is visible when the radio button is checked.</Text>
         </Radio>
-      ),
-    },
-  ],
-  snippets: [
-    {
-      name: 'Standard',
-      code: <PlayroomRadio checked={false} label="Label" />,
-    },
-    {
-      name: 'Checked',
-      code: <PlayroomRadio checked={true} label="Label" />,
-    },
-    {
-      name: 'With description',
-      code: <PlayroomRadio label="Label" description="Description" />,
-    },
-    {
-      name: 'With a Badge',
-      code: (
-        <PlayroomRadio
-          label="Label"
-          badge={<Badge weight="strong">Badge</Badge>}
-        />
       ),
     },
   ],
