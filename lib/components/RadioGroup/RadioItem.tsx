@@ -48,7 +48,7 @@ const NamedRadioItem = forwardRef<HTMLInputElement, RadioItemProps>(
     return (
       <InlineField
         {...props}
-        id={`${radioGroupContext.id}_${props.value}`}
+        id={`${radioGroupContext.id}_${radioItemContext}`}
         name={radioGroupContext.name}
         checked={checked}
         onChange={radioGroupContext.onChange}
