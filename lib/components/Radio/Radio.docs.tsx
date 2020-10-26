@@ -9,8 +9,7 @@ const docs: ComponentDocs = {
   deprecationWarning: (
     <Text weight="medium">
       This component has been deprecated. Use{' '}
-      <TextLink href="/components/RadioGroup">RadioGroup</TextLink> and{' '}
-      <TextLink href="/components/RadioItem">RadioItem</TextLink> instead.
+      <TextLink href="/components/RadioGroup">RadioGroup</TextLink> instead.
     </Text>
   ),
   screenshotWidths: [320],
