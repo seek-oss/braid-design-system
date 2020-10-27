@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import { List, Text, TextLink, Stack } from '..';
-import { Placeholder } from '../../playroom/components';
+import { IconTick, Placeholder } from '../../playroom/components';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -57,6 +57,16 @@ const docs: ComponentDocs = {
           <Text>This is a Roman list item.</Text>
           <Text>This is a Roman list item.</Text>
           <Text>This is a Roman list item.</Text>
+        </List>
+      ),
+    },
+    {
+      label: 'Icon List',
+      Example: () => (
+        <List type="icon" icon={<IconTick tone="positive" />}>
+          <Text>This is a list item.</Text>
+          <Text>This is a list item.</Text>
+          <Text>This is a list item.</Text>
         </List>
       ),
     },
@@ -279,6 +289,16 @@ const docs: ComponentDocs = {
       name: 'Roman',
       code: (
         <List space="medium" type="roman">
+          <Text>Text</Text>
+          <Text>Text</Text>
+          <Text>Text</Text>
+        </List>
+      ),
+    },
+    {
+      name: 'Icon',
+      code: (
+        <List space="medium" type="icon" icon={<IconTick tone="positive" />}>
           <Text>Text</Text>
           <Text>Text</Text>
           <Text>Text</Text>

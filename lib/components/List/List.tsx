@@ -1,4 +1,4 @@
-import React, { Children } from 'react';
+import React, { Children, ReactNode } from 'react';
 import { useStyles } from 'sku/react-treat';
 import { Text, TextProps } from '../Text/Text';
 import { Stack, StackProps } from '../Stack/Stack';
@@ -80,14 +80,24 @@ const CharacterBullet = ({ length = 1, children }: CharacterBulletProps) => {
   );
 };
 
-export interface ListProps {
+type ListTypeCharacter = {
+  type?: 'bullet' | 'number' | 'alpha' | 'roman';
+};
+
+type ListTypeIcon = {
+  type: 'icon';
+  icon: ReactNode;
+};
+
+type ListType = ListTypeCharacter | ListTypeIcon;
+
+export type ListProps = ListType & {
   children: StackProps['children'];
   size?: TextProps['size'];
   space?: StackProps['space'];
   tone?: TextProps['tone'];
-  type?: 'bullet' | 'number' | 'alpha' | 'roman';
   start?: number;
-}
+};
 
 export const List = ({
   children,
@@ -96,6 +106,7 @@ export const List = ({
   space = 'medium',
   type = 'bullet',
   start = 1,
+  ...restProps
 }: ListProps) => {
   const styles = useStyles(styleRefs);
   const { size, tone } = useDefaultTextProps({
@@ -109,7 +120,10 @@ export const List = ({
 
   return (
     <DefaultTextPropsProvider size={size} tone={tone}>
-      <Stack component={type === 'bullet' ? 'ul' : 'ol'} space={space}>
+      <Stack
+        component={/^(bullet|icon)$/.test(type) ? 'ul' : 'ol'}
+        space={space}
+      >
         {Children.map(listItems, (listItem, index) => {
           const resolvedIndex = index + (start - 1);
 
@@ -118,7 +132,9 @@ export const List = ({
               <Text component="div" size={size} tone={tone}>
                 <Box
                   display="flex"
-                  alignItems={type === 'bullet' ? 'center' : undefined}
+                  alignItems={
+                    /^(bullet|icon)$/.test(type) ? 'center' : undefined
+                  }
                   className={lineHeightContainerStyles}
                   userSelect="none"
                   aria-hidden
@@ -146,6 +162,10 @@ export const List = ({
                           {numberToRomanNumerals(resolvedIndex + 1)}
                         </CharacterBullet>
                       );
+                    }
+
+                    if (type === 'icon' && 'icon' in restProps) {
+                      return restProps.icon;
                     }
 
                     return (
