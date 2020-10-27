@@ -60,7 +60,7 @@ const PlayroomPrototyping = () => (
       <Checkbox checked={true} label="Checked" />
     </Code>
     <Text>
-      Equally, we can set its <Strong>checked</Strong> state to{' '}
+      Equally, we can set its <Strong>checked</Strong> prop to{' '}
       <Strong>false:</Strong>
     </Text>
     <Code>
@@ -196,51 +196,51 @@ const PlayroomPrototyping = () => (
     </Text>
     <Code
       displayCode={`
-        <Stack space="medium">
-          <TextField
-            value={getState('firstName')}
-            onChange={setState('firstName')}
-            label="First name"
-          />
+        <Card>
+          <Stack space="large">
+            <TextField
+              value={getState('firstName')}
+              onChange={setState('firstName')}
+              label="First name"
+            />
 
-          <TextField
-            value={getState('lastName')}
-            onChange={setState('lastName')}
-            label="Last name"
-          />
+            <TextField
+              value={getState('lastName')}
+              onChange={setState('lastName')}
+              label="Last name"
+            />
 
-          <Divider />
-
-          {getState('firstName') && getState('lastName') ? (
-            <Text weight="strong">
-              👋 Hello {getState('firstName')} {getState('lastName')}!
-            </Text>
-          ) : null}
-        </Stack>
+            {getState('firstName') && getState('lastName') ? (
+              <Heading level="4">
+                👋 Hello {getState('firstName')} {getState('lastName')}!
+              </Heading>
+            ) : null}
+          </Stack>
+        </Card>
       `}
     >
       {({ getState, setState }) => (
-        <Stack space="medium">
-          <TextField
-            value={getState('firstName')}
-            onChange={setState('firstName')}
-            label="First name"
-          />
+        <Card>
+          <Stack space="large">
+            <TextField
+              value={getState('firstName')}
+              onChange={setState('firstName')}
+              label="First name"
+            />
 
-          <TextField
-            value={getState('lastName')}
-            onChange={setState('lastName')}
-            label="Last name"
-          />
+            <TextField
+              value={getState('lastName')}
+              onChange={setState('lastName')}
+              label="Last name"
+            />
 
-          <Divider />
-
-          {getState('firstName') && getState('lastName') ? (
-            <Text weight="strong">
-              👋 Hello {getState('firstName')} {getState('lastName')}!
-            </Text>
-          ) : null}
-        </Stack>
+            {getState('firstName') && getState('lastName') ? (
+              <Heading level="4">
+                👋 Hello {getState('firstName')} {getState('lastName')}!
+              </Heading>
+            ) : null}
+          </Stack>
+        </Card>
       )}
     </Code>
 
@@ -252,7 +252,7 @@ const PlayroomPrototyping = () => (
     </Text>
     <Code
       displayCode={`
-        <Box>
+        <Card>
           <Actions>
             <Button onClick={() => setState('drawer', true)}>
               Open drawer
@@ -266,11 +266,11 @@ const PlayroomPrototyping = () => (
           >
             <Placeholder height={100} />
           </Drawer>
-        </Box>
+        </Card>
       `}
     >
       {({ getState, setState }) => (
-        <Box>
+        <Card>
           <Actions>
             <Button onClick={() => setState('drawer', true)}>
               Open drawer
@@ -284,11 +284,11 @@ const PlayroomPrototyping = () => (
           >
             <Placeholder height={100} />
           </Drawer>
-        </Box>
+        </Card>
       )}
     </Code>
 
-    <Heading level="3">Multiple screens</Heading>
+    <Heading level="3">Navigating between screens</Heading>
     <Text>
       We can also leverage state to simulate having multiple screens by using a
       piece of state called <Strong>screen</Strong>.
@@ -361,7 +361,7 @@ const PlayroomPrototyping = () => (
     <Heading level="3">What’s next?</Heading>
     <Text>
       If you’ve come this far, it’s likely that you’ll still have some
-      questions. Please reach out so we can give you a hand, and feed
+      questions. Please reach out so we can give you a hand, and hopefully feed
       improvements back to the site. We’re going to keep iterating on the
       prototyping experience over time, so any feedback you have would be
       greatly appreciated!
