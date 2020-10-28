@@ -122,8 +122,9 @@ export const Navigation = ({ children }: NavigationProps) => {
       <Box
         background="card"
         position="relative"
-        paddingY={['small', 'xxsmall']}
         paddingX={[gutterSize, gutterSize, 'xxlarge']}
+        paddingY={['small', 'xxsmall']}
+        paddingBottom="xxlarge"
         marginBottom="xxlarge"
         transition="fast"
         pointerEvents={isMenuOpen ? 'none' : undefined}
