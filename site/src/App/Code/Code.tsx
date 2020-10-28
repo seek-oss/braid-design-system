@@ -34,6 +34,7 @@ import * as styleRefs from './Code.treat';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import editorTheme from './editorTheme';
 import { ThemedExample } from '../ThemeSetting';
+import usePlayroomScope from '../../../../lib/playroom/useScope';
 
 const formatSnippet = memoize(
   (snippet) =>
@@ -158,26 +159,35 @@ export const CodeBlock = ({
 
 interface CodeProps {
   playroom?: boolean;
+  displayCode?: string;
   collapsedByDefault?: boolean;
-  children: ReactChild;
+  children:
+    | ReactChild
+    | ((playroomScope: ReturnType<typeof usePlayroomScope>) => ReactChild);
 }
 export default ({
   playroom = true,
   collapsedByDefault = false,
+  displayCode,
   children,
 }: CodeProps) => {
   const [hideCode, setHideCode] = useState(collapsedByDefault);
   const { playroomUrl } = useConfig();
+  const playroomScope = usePlayroomScope();
 
   const snippet = formatSnippet(
-    typeof children === 'string'
-      ? children
-      : reactElementToJSXString(children, {
-          useBooleanShorthandSyntax: false,
-          showDefaultProps: false,
-          showFunctions: false,
-          filterProps: ['onChange', 'onBlur', 'onFocus'],
-        }),
+    displayCode ??
+      (typeof children === 'string'
+        ? children
+        : reactElementToJSXString(
+            typeof children === 'function' ? children(playroomScope) : children,
+            {
+              useBooleanShorthandSyntax: false,
+              showDefaultProps: false,
+              showFunctions: false,
+              filterProps: ['onChange', 'onBlur', 'onFocus'],
+            },
+          )),
   );
 
   return (
@@ -189,7 +199,11 @@ export default ({
     >
       <Stack space="xsmall">
         {typeof children !== 'string' && (
-          <ThemedExample background="body">{children}</ThemedExample>
+          <ThemedExample background="body">
+            {typeof children === 'function'
+              ? children(playroomScope)
+              : children}
+          </ThemedExample>
         )}
         {hideCode ? null : <CodeBlock>{snippet}</CodeBlock>}
         <Inline space="xxsmall" align="right">
