@@ -22,6 +22,7 @@ export interface RenderContext {
 
 export interface Page extends RouteProps {
   title: string;
+  badge?: 'New';
 }
 
 interface DocsSnippet extends Optional<Snippets[number], 'group'> {

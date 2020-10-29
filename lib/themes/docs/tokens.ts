@@ -135,7 +135,7 @@ const tokens: TreatTokens = {
     xsmall: 400,
     small: 660,
     medium: 940,
-    large: 1280,
+    large: 1292,
   },
   grid: 4,
   touchableSize: 12,

@@ -97,10 +97,10 @@ const PlayroomPrototyping = () => (
       )}
     </Code>
     <Text>
-      Here you can see that we’re binding the state of checkbox to a piece of
-      state called <Strong>checked</Strong>. Note that we could have called this
-      piece of state whatever we want, so you’d typically give it a name more
-      appropriate to your design, e.g.{' '}
+      Here you can see that we’re binding the state of the checkbox to a piece
+      of state called <Strong>checked</Strong>. Note that we could have called
+      this piece of state whatever we want, so you’d typically give it a name
+      more appropriate to your design, e.g.{' '}
       <Strong>{"getState('showMoreInfo')"}</Strong>.
     </Text>
     <Text>
@@ -372,6 +372,7 @@ const PlayroomPrototyping = () => (
 const page: Page = {
   title: 'Playroom Prototyping',
   component: PlayroomPrototyping,
+  badge: 'New',
 };
 
 export default page;
