@@ -1,5 +1,23 @@
 # braid-design-system
 
+## 29.13.0
+
+### Minor Changes
+
+- **List:** Add support for icons ([#810](https://github.com/seek-oss/braid-design-system/pull/810))
+
+  Provides a way to use an icon for all the items in a list. When using `type="icon"` you must also provide the `icon` prop. See example below:
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <List type="icon" icon={<IconTick tone="positive" />}>
+    <Text>This is a list item.</Text>
+    <Text>This is a list item.</Text>
+    <Text>This is a list item.</Text>
+  </List>
+  ```
+
 ## 29.12.0
 
 ### Minor Changes
