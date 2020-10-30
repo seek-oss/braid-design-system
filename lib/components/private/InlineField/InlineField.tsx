@@ -25,7 +25,7 @@ import * as styleRefs from './InlineField.treat';
 const tones = ['neutral', 'critical'] as const;
 type InlineFieldTone = typeof tones[number];
 
-type FormElementProps = AllHTMLAttributes<HTMLFormElement>;
+type FormElementProps = AllHTMLAttributes<HTMLInputElement>;
 export interface InlineFieldProps {
   id: NonNullable<FormElementProps['id']>;
   label: NonNullable<FieldLabelProps['label']>;

@@ -2148,7 +2148,7 @@ Object {
     label: ReactNode
     message?: ReactNode
     name?: string
-    onChange: (event: FormEvent<HTMLFormElement>) => void
+    onChange: (event: FormEvent<HTMLInputElement>) => void
     ref?: 
         | (instance: HTMLInputElement | null) => void
         | RefObject<HTMLInputElement>
@@ -5377,7 +5377,7 @@ Object {
     id: string
     label: ReactNode
     name?: string
-    onChange: (event: FormEvent<HTMLFormElement>) => void
+    onChange: (event: FormEvent<HTMLInputElement>) => void
     ref?: 
         | (instance: HTMLInputElement | null) => void
         | RefObject<HTMLInputElement>
@@ -5403,7 +5403,7 @@ Object {
     label?: ReactNode
     message?: ReactNode
     name?: string
-    onChange: (event: FormEvent<HTMLFormElement>) => void
+    onChange: (event: FormEvent<HTMLInputElement>) => void
     required?: boolean
     reserveMessageSpace?: boolean
     secondaryLabel?: ReactNode
