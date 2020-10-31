@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Optional } from 'utility-types';
-import { useFallbackId } from '../../playroom/utils';
+import { useFallbackId, usePrototypingState } from '../../playroom/utils';
 import { RadioGroup as BraidRadioGroup, RadioGroupProps } from './RadioGroup';
+
+const noop = () => {};
 
 type PlayroomRadioProps = Optional<
   RadioGroupProps,
@@ -17,18 +19,14 @@ export const RadioGroup = ({
   ...restProps
 }: PlayroomRadioProps) => {
   const fallbackId = useFallbackId();
-  const [fallbackValue, setFallbackValue] = useState<RadioGroupProps['value']>(
-    '',
-  );
+  const [fallbackValue, setFallbackValue] = usePrototypingState(id, '');
 
   return (
     <BraidRadioGroup
       {...restProps}
       id={id ?? fallbackId}
       value={value ?? fallbackValue}
-      onChange={
-        onChange ? onChange : (e) => setFallbackValue(e.currentTarget.value)
-      }
+      onChange={value ?? onChange ? onChange ?? noop : setFallbackValue}
     >
       {children}
     </BraidRadioGroup>

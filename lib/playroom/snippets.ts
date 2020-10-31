@@ -20,8 +20,11 @@ export default flatten(
 ).map<Snippets[number]>((snippet) => ({
   ...snippet,
   group: snippet.group,
-  code: reactElementToJsxString(snippet.code, {
-    sortProps: false,
-    useBooleanShorthandSyntax: false,
-  }),
+  code:
+    typeof snippet.code === 'string'
+      ? snippet.code
+      : reactElementToJsxString(snippet.code, {
+          sortProps: false,
+          useBooleanShorthandSyntax: false,
+        }),
 }));
