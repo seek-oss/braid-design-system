@@ -5,6 +5,9 @@ import { useFallbackId } from '../../playroom/utils';
 import { TextField as BraidTextField, TextFieldProps } from './TextField';
 
 type Callback = (...args: any[]) => void;
+type Decorated<Handler extends Callback> = (
+  ...args: Parameters<Handler>
+) => void;
 
 const noop = () => {};
 
@@ -16,7 +19,7 @@ export function useComponentState<Value extends any, Handler extends Callback>(
 ): [
   {
     value: NonNullable<Value>;
-    onChange: (...args: Parameters<Handler>) => void;
+    onChange: Decorated<Handler>;
   },
   (value: Value) => void,
 ] {
@@ -25,9 +28,7 @@ export function useComponentState<Value extends any, Handler extends Callback>(
 
   const wrapChangeHandler = (
     handler: Handler | typeof noop,
-  ): ((...args: Parameters<Handler>) => void) => (
-    ...args: Parameters<Handler>
-  ) => {
+  ): Decorated<Handler> => (...args) => {
     if (value === undefined) {
       (id ? playroomState.setState(id) : setInternalStateValue)(args[0]);
     }
