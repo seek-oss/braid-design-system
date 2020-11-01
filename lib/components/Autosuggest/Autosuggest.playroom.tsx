@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Optional } from 'utility-types';
+import { useFallbackState } from '../../playroom/playroomState';
 import { useFallbackId } from '../../playroom/utils';
 import {
   Autosuggest as BraidAutosuggest,
@@ -19,25 +20,23 @@ export function Autosuggest<Value>({
   ...restProps
 }: PlayroomAutosuggestProps<Value>) {
   const fallbackId = useFallbackId();
-  const [fallbackValue, setFallbackValue] = useState({ text: '' });
+  const blankValue = { text: '' };
+  const [state, handleChange] = useFallbackState(
+    id,
+    value,
+    onChange,
+    blankValue,
+  );
 
   return (
     <BraidAutosuggest
       id={id ?? fallbackId}
-      value={value ?? fallbackValue}
-      onChange={onChange ?? setFallbackValue}
-      onClear={
-        onClear ??
-        (() => {
-          const blankValue = { text: '' };
-
-          if (onChange) {
-            onChange(blankValue);
-          } else {
-            setFallbackValue(blankValue);
-          }
-        })
-      }
+      value={state}
+      onChange={handleChange}
+      onClear={() => {
+        handleChange(blankValue);
+        onClear?.();
+      }}
       {...restProps}
     />
   );

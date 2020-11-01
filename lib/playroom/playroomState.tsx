@@ -69,7 +69,7 @@ export const PlayroomStateProvider = ({
   );
 };
 
-export const usePlayroomState = () => {
+export const usePlayroomStore = () => {
   const storeConsumer = useContext(PlayroomStateContext);
 
   if (storeConsumer === null) {
@@ -78,3 +78,38 @@ export const usePlayroomState = () => {
 
   return storeConsumer;
 };
+
+type Callback = (...args: any[]) => void;
+
+const noop = () => {};
+
+export function useFallbackState<Value, Handler extends Callback>(
+  id: string | undefined,
+  value: Value,
+  onChange: Handler | undefined,
+  defaultValue: NonNullable<Value>,
+): [
+  value: NonNullable<Value>,
+  changeHandler: (...args: Parameters<Handler>) => void,
+] {
+  const playroomState = usePlayroomStore();
+  const [internalStateValue, setInternalStateValue] = useState(defaultValue);
+
+  const wrapChangeHandler = (
+    handler: Handler | typeof noop,
+  ): ((...args: Parameters<Handler>) => void) => (...args) => {
+    if (value === undefined) {
+      (id ? playroomState.setState(id) : setInternalStateValue)(args[0]);
+    }
+
+    (handler || noop)(...args);
+  };
+
+  const handleChange = wrapChangeHandler(onChange || noop);
+
+  const resolvedValue =
+    value ??
+    (id ? playroomState.getState(id) ?? defaultValue : internalStateValue);
+
+  return id ? [resolvedValue, handleChange] : [resolvedValue, handleChange];
+}

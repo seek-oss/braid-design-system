@@ -1,6 +1,6 @@
 import React from 'react';
 import { Optional } from 'utility-types';
-import { usePlayroomState } from '../../playroom/playroomState';
+import { usePlayroomStore } from '../../playroom/playroomState';
 import { useFallbackId } from '../../playroom/utils';
 import {
   Drawer as BraidDrawer,
@@ -21,7 +21,7 @@ export const Drawer = ({
   ...restProps
 }: PlayroomDrawerProps) => {
   const fallbackId = useFallbackId();
-  const playroomState = usePlayroomState();
+  const playroomState = usePlayroomStore();
 
   return (
     <AllowCloseContext.Provider value={onClose !== undefined || Boolean(id)}>

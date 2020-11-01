@@ -1,10 +1,10 @@
 import '../reset';
 import { useToast } from '../components';
-import { usePlayroomState } from './playroomState';
+import { usePlayroomStore } from './playroomState';
 
 export default function useScope() {
   return {
     showToast: useToast(),
-    ...usePlayroomState(),
+    ...usePlayroomStore(),
   };
 }
