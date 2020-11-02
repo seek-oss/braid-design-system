@@ -35,6 +35,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import editorTheme from './editorTheme';
 import { ThemedExample } from '../ThemeSetting';
 import usePlayroomScope from '../../../../lib/playroom/useScope';
+import { PlayroomStateProvider } from '../../../../lib/playroom/playroomState';
 
 const formatSnippet = memoize(
   (snippet) =>
@@ -165,7 +166,7 @@ interface CodeProps {
     | ReactChild
     | ((playroomScope: ReturnType<typeof usePlayroomScope>) => ReactChild);
 }
-export default ({
+const Code = ({
   playroom = true,
   collapsedByDefault = false,
   displayCode,
@@ -189,6 +190,11 @@ export default ({
             },
           )),
   );
+
+  const blockLinkStyles = useBoxStyles({
+    component: 'a',
+    display: 'block',
+  });
 
   return (
     <Box
@@ -233,10 +239,7 @@ export default ({
               component="a"
               target="_blank"
               href={createUrl({ baseUrl: playroomUrl, code: snippet })}
-              className={useBoxStyles({
-                component: 'a',
-                display: 'block',
-              })}
+              className={blockLinkStyles}
               title="Open in Playroom"
             >
               <PlayIcon />{' '}
@@ -251,3 +254,9 @@ export default ({
     </Box>
   );
 };
+
+export default (props: CodeProps) => (
+  <PlayroomStateProvider>
+    <Code {...props} />
+  </PlayroomStateProvider>
+);
