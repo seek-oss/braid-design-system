@@ -1,6 +1,7 @@
 import React from 'react';
 import { Optional } from 'utility-types';
-import { useFallbackId, usePrototypingState, noop } from '../../playroom/utils';
+import { useFallbackState } from '../../playroom/playroomState';
+import { useFallbackId } from '../../playroom/utils';
 import { Checkbox as BraidCheckbox, CheckboxProps } from './Checkbox';
 
 type PlayroomCheckboxProps = Optional<
@@ -15,14 +16,13 @@ export const Checkbox = ({
   ...restProps
 }: PlayroomCheckboxProps) => {
   const fallbackId = useFallbackId();
-  const [fallbackChecked, setFallbackChecked] = usePrototypingState(id, false);
-  const controlled = (checked ?? onChange) !== undefined;
+  const [state, handleChange] = useFallbackState(id, checked, onChange, false);
 
   return (
     <BraidCheckbox
       id={id ?? fallbackId}
-      checked={checked ?? fallbackChecked}
-      onChange={controlled ? onChange || noop : setFallbackChecked}
+      checked={state}
+      onChange={handleChange}
       {...restProps}
     />
   );

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Optional } from 'utility-types';
-import { useFallbackId, usePrototypingState, noop } from '../../playroom/utils';
+import { useFallbackState } from '../../playroom/playroomState';
+import { useFallbackId } from '../../playroom/utils';
 import { Toggle as BraidToggle, ToggleProps } from './Toggle';
 
 type PlayroomToggleProps = Optional<ToggleProps, 'id' | 'on' | 'onChange'>;
@@ -12,13 +13,13 @@ export const Toggle = ({
   ...restProps
 }: PlayroomToggleProps) => {
   const fallbackId = useFallbackId();
-  const [fallbackOn, setFallbackOn] = usePrototypingState(id, false);
+  const [state, handleChange] = useFallbackState(id, on, onChange, false);
 
   return (
     <BraidToggle
       id={id ?? fallbackId}
-      on={on ?? fallbackOn}
-      onChange={on ?? onChange ? onChange ?? noop : setFallbackOn}
+      on={state}
+      onChange={handleChange}
       {...restProps}
     />
   );

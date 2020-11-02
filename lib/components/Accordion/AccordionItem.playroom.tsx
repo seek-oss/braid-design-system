@@ -1,4 +1,5 @@
 import React from 'react';
+import { useFallbackState } from '../../playroom/playroomState';
 import { useFallbackId } from '../../playroom/utils';
 import {
   AccordionItem as BraidAccordionItem,
@@ -14,9 +15,19 @@ type PlayroomAccordionItemProps = AccordionItemBaseProps &
 
 export const AccordionItem = ({
   id,
+  expanded,
+  onToggle,
   ...restProps
 }: PlayroomAccordionItemProps) => {
   const fallbackId = useFallbackId();
+  const [state, handleChange] = useFallbackState(id, expanded, onToggle, false);
 
-  return <BraidAccordionItem id={id ?? fallbackId} {...restProps} />;
+  return (
+    <BraidAccordionItem
+      id={id ?? fallbackId}
+      expanded={state}
+      onToggle={handleChange}
+      {...restProps}
+    />
+  );
 };

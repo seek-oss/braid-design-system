@@ -87,7 +87,7 @@ export function useFallbackState<Value, Handler extends Callback>(
   id: string | undefined,
   value: Value,
   onChange: Handler | undefined,
-  defaultValue: NonNullable<Value>,
+  defaultValue?: Value,
 ): [
   value: NonNullable<Value>,
   changeHandler: (...args: Parameters<Handler>) => void,

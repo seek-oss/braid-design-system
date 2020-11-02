@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Optional } from 'utility-types';
+import { useFallbackState } from '../../playroom/playroomState';
 import { useFallbackId } from '../../playroom/utils';
 import { Dropdown as BraidDropdown, DropdownProps } from './Dropdown';
 
@@ -15,19 +16,13 @@ export const Dropdown = ({
   ...restProps
 }: PlayroomDropdownProps) => {
   const fallbackId = useFallbackId();
-  const [fallbackValue, setFallbackValue] = useState<DropdownProps['value']>(
-    '',
-  );
+  const [state, handleChange] = useFallbackState(id, value, onChange, '');
 
   return (
     <BraidDropdown
       id={id ?? fallbackId}
-      value={value === undefined ? fallbackValue : value}
-      onChange={
-        onChange
-          ? onChange
-          : (event) => setFallbackValue(event.currentTarget.value)
-      }
+      value={state}
+      onChange={handleChange}
       {...restProps}
     />
   );
