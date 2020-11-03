@@ -278,6 +278,7 @@ const PlayroomPrototyping = () => (
 const page: Page = {
   title: 'Playroom Prototyping',
   component: PlayroomPrototyping,
+  badge: 'New',
 };
 
 export default page;

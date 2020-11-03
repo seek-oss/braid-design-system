@@ -132,6 +132,7 @@ export const SubNavigation = ({ onSelect }: SubNavigationProps) => {
         title="Guides"
         items={map(guides, (guide, path) => ({
           name: guide.title,
+          badge: guide.badge,
           path,
           onClick: onSelect,
         }))}
@@ -141,6 +142,7 @@ export const SubNavigation = ({ onSelect }: SubNavigationProps) => {
         title="Foundations"
         items={map(foundations, (foundation, path) => ({
           name: foundation.title,
+          badge: foundation.badge,
           path,
           onClick: onSelect,
         }))}
@@ -150,6 +152,7 @@ export const SubNavigation = ({ onSelect }: SubNavigationProps) => {
         title="Examples"
         items={map(examples, (example, path) => ({
           name: example.title,
+          badge: example.badge,
           path,
           onClick: onSelect,
         }))}

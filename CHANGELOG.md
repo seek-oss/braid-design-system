@@ -1,5 +1,31 @@
 # braid-design-system
 
+## 29.13.1
+
+### Patch Changes
+
+- **Checkbox,RadioGroup,Radio:** Fix element type passed to onChange event ([#814](https://github.com/seek-oss/braid-design-system/pull/814))
+
+  Fixes a bug where the `onChange` event previously received the change event for a `form` element rather than an `input` element.
+
+## 29.13.0
+
+### Minor Changes
+
+- **List:** Add support for icons ([#810](https://github.com/seek-oss/braid-design-system/pull/810))
+
+  Provides a way to use an icon for all the items in a list. When using `type="icon"` you must also provide the `icon` prop. See example below:
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <List type="icon" icon={<IconTick tone="positive" />}>
+    <Text>This is a list item.</Text>
+    <Text>This is a list item.</Text>
+    <Text>This is a list item.</Text>
+  </List>
+  ```
+
 ## 29.12.0
 
 ### Minor Changes

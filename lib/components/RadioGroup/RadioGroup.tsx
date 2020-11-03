@@ -11,7 +11,7 @@ export interface RadioGroupProps<Value = NonNullable<string | number>>
   extends FieldGroupProps {
   children: ReactElement<RadioItemProps>[];
   value: Value;
-  onChange: (event: FormEvent<HTMLFormElement>) => void;
+  onChange: (event: FormEvent<HTMLInputElement>) => void;
   name?: string;
 }
 
