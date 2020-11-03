@@ -10,16 +10,17 @@ import {
 type PlayroomMonthPickerProps = Optional<
   MonthPickerProps,
   'id' | 'value' | 'onChange'
->;
+> & { name?: string };
 
 export const MonthPicker = ({
   id,
+  name,
   value,
   onChange,
   ...restProps
 }: PlayroomMonthPickerProps) => {
   const fallbackId = useFallbackId();
-  const [state, handleChange] = useFallbackState(id, value, onChange, {});
+  const [state, handleChange] = useFallbackState(name, value, onChange, {});
 
   return (
     <BraidMonthPicker

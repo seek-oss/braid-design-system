@@ -4,7 +4,7 @@ import curry from 'lodash/curry';
 
 type Store = Map<string, any>;
 
-export const extractValue = (value: any) => {
+const unwrapValue = (value: any) => {
   let actualValue = value;
 
   if (typeof value === 'object' && value !== null && 'currentTarget' in value) {
@@ -26,7 +26,7 @@ const makeStoreConsumer = (
     store.get(key) ?? defaultValue;
 
   const setState = curry((key: string, value: any) =>
-    setStore(new Map(store.set(key, extractValue(value)))),
+    setStore(new Map(store.set(key, unwrapValue(value)))),
   );
 
   const toggleState = (key: string) => setState(key, !getState(key));
@@ -99,7 +99,9 @@ export function useFallbackState<Value, Handler extends Callback>(
     handler: Handler | typeof noop,
   ): ((...args: Parameters<Handler>) => void) => (...args) => {
     if (value === undefined) {
-      (id ? playroomState.setState(id) : setInternalStateValue)(args[0]);
+      (id ? playroomState.setState(id) : setInternalStateValue)(
+        unwrapValue(args[0]),
+      );
     }
 
     (handler || noop)(...args);

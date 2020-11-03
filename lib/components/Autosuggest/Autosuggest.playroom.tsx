@@ -10,10 +10,11 @@ import {
 type PlayroomAutosuggestProps<Value> = Optional<
   AutosuggestProps<Value>,
   'id' | 'value' | 'onChange'
->;
+> & { name?: string };
 
 export function Autosuggest<Value>({
   id,
+  name,
   value,
   onChange,
   onClear,
@@ -22,7 +23,7 @@ export function Autosuggest<Value>({
   const fallbackId = useFallbackId();
   const blankValue = { text: '' };
   const [state, handleChange] = useFallbackState(
-    id,
+    name,
     value,
     onChange,
     blankValue,
@@ -31,6 +32,7 @@ export function Autosuggest<Value>({
   return (
     <BraidAutosuggest
       id={id ?? fallbackId}
+      name={name}
       value={state}
       onChange={handleChange}
       onClear={() => {

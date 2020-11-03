@@ -11,16 +11,18 @@ type PlayroomTextareaProps = Optional<
 
 export const Textarea = ({
   id,
+  name,
   value,
   onChange,
   ...restProps
 }: PlayroomTextareaProps) => {
   const fallbackId = useFallbackId();
-  const [state, handleChange] = useFallbackState(id, value, onChange, '');
+  const [state, handleChange] = useFallbackState(name, value, onChange, '');
 
   return (
     <BraidTextarea
       id={id ?? fallbackId}
+      name={name}
       value={state}
       onChange={handleChange}
       {...restProps}

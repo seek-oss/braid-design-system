@@ -11,16 +11,22 @@ import {
 type OptionalProps = 'id';
 type PlayroomAccordionItemProps = AccordionItemBaseProps &
   AccordionItemStateProps &
-  Partial<Pick<AccordionItemProps, OptionalProps>>;
+  Partial<Pick<AccordionItemProps, OptionalProps>> & { name?: string };
 
 export const AccordionItem = ({
   id,
+  name,
   expanded,
   onToggle,
   ...restProps
 }: PlayroomAccordionItemProps) => {
   const fallbackId = useFallbackId();
-  const [state, handleChange] = useFallbackState(id, expanded, onToggle, false);
+  const [state, handleChange] = useFallbackState(
+    name,
+    expanded,
+    onToggle,
+    false,
+  );
 
   return (
     <BraidAccordionItem

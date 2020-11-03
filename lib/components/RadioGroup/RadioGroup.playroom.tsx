@@ -18,12 +18,13 @@ export const RadioGroup = ({
   ...restProps
 }: PlayroomRadioProps) => {
   const fallbackId = useFallbackId();
-  const [state, handleChange] = useFallbackState(id, value, onChange);
+  const [state, handleChange] = useFallbackState(name, value, onChange);
 
   return (
     <BraidRadioGroup
       {...restProps}
       id={id ?? fallbackId}
+      name={name}
       value={state}
       onChange={handleChange}
     >

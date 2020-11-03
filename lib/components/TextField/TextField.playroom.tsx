@@ -8,19 +8,21 @@ type PlayroomTextFieldProps = Optional<
   TextFieldProps,
   'id' | 'value' | 'onChange'
 > & {
-  name?: string;
+  defaultValue?: TextFieldProps['value'];
   onChange?: (fakeEvent: { currentTarget: { value: string } }) => void;
 };
 
 export const TextField = ({
   id,
+  name,
+  defaultValue,
   value,
   onChange,
   onClear,
   ...restProps
 }: PlayroomTextFieldProps) => {
   const fallbackId = useFallbackId();
-  const [state, handleChange] = useFallbackState(id, value, onChange, '');
+  const [state, handleChange] = useFallbackState(name, value, onChange, '');
 
   return (
     <BraidTextField

@@ -48,80 +48,21 @@ const PlayroomPrototyping = () => (
       <Checkbox label="Checkbox" />
     </Code>
     <Text>
-      This might seem like an odd thing to point out—after all, how else is a
-      checkbox supposed to work? Well, typically in React we manage the state
-      from <Strong>outside</Strong> the component.
-    </Text>
-    <Text>
-      As a basic example, if we wanted our checkbox to be checked, we can set
-      its <Strong>checked</Strong> prop to <Strong>true:</Strong>
-    </Text>
-    <Code>
-      <Checkbox checked={true} label="Checked" />
-    </Code>
-    <Text>
-      Equally, we can set its <Strong>checked</Strong> prop to{' '}
-      <Strong>false:</Strong>
-    </Text>
-    <Code>
-      <Checkbox checked={false} label="Unchecked" />
-    </Code>
-    <Text>
-      Note that we are now unable to change the state of the checkbox by
-      clicking on it. Go ahead—try clicking the examples now. You’ll see that it
-      no longer has any effect. This is obviously a bit useless, so let’s fix
-      that.
-    </Text>
-    <Heading level="3">Getting and setting state</Heading>
-    <Text>
-      Within Braid’s Playroom, we’re provided with <Strong>setState</Strong> and{' '}
-      <Strong>getState</Strong> functions that allow us to manage the overall
-      state of our prototype. If we wire them up to the checkbox, it looks
-      something like this:
-    </Text>
-    <Code
-      displayCode={`
-        <Checkbox
-          checked={getState('checked')}
-          onChange={setState('checked')}
-          label="Checkbox"
-        />
-      `}
-    >
-      {({ getState, setState }) => (
-        <Checkbox
-          checked={getState('checked')}
-          onChange={setState('checked')}
-          label="Checkbox"
-        />
-      )}
-    </Code>
-    <Text>
-      Here you can see that we’re binding the state of checkbox to a piece of
-      state called <Strong>checked</Strong>. Note that we could have called this
-      piece of state whatever we want, so you’d typically give it a name more
-      appropriate to your design, e.g.{' '}
-      <Strong>{"getState('showMoreInfo')"}</Strong>.
-    </Text>
-    <Text>
-      Okay, so we’re seemingly back where we started with an interactive
-      checkbox. Why is this useful? Well, by managing the state externally,{' '}
-      <Strong>our checkbox is now able to affect other parts of the UI.</Strong>
-    </Text>
-    <Text>
-      As a minimal example, let’s make the checkbox toggle the visibility of
-      another element:
+      So the checkbox works in isolation, but what if we wanted it to control
+      other parts of the UI? Well, first we need to provide a{' '}
+      <Strong>name</Strong> to our checkbox, which then allows us to ask for its
+      state elsewhere in our prototype using the <Strong>getState</Strong>{' '}
+      function:
     </Text>
     <Code
       displayCode={`
         <Stack space="medium">
           <Checkbox
-            checked={getState('checked')}
-            onChange={setState('checked')}
+            name="myCheckbox"
             label="Checkbox"
           />
 
-          {getState('checked') && (
+          {getState('myCheckbox') && (
             <Notice tone="positive">
               <Text>Good job! You checked the checkbox!</Text>
             </Notice>
@@ -129,15 +70,11 @@ const PlayroomPrototyping = () => (
         </Stack>
       `}
     >
-      {({ getState, setState }) => (
+      {({ getState }) => (
         <Stack space="medium">
-          <Checkbox
-            checked={getState('checked')}
-            onChange={setState('checked')}
-            label="Checkbox"
-          />
+          <Checkbox label="Checkbox" name="myCheckbox" />
 
-          {getState('checked') && (
+          {getState('myCheckbox') && (
             <Notice tone="positive">
               <Text>Good job! You checked the checkbox!</Text>
             </Notice>
@@ -152,13 +89,9 @@ const PlayroomPrototyping = () => (
     <Code
       displayCode={`
         <Stack space="medium">
-          <Checkbox
-            checked={getState('checked')}
-            onChange={setState('checked')}
-            label="Checkbox"
-          />
+          <Checkbox label="Checkbox" name="myCheckbox" />
 
-          {getState('checked') ? (
+          {getState('myCheckbox') ? (
             <Notice tone="positive">
               <Text>Good job! You checked the checkbox!</Text>
             </Notice>
@@ -170,15 +103,11 @@ const PlayroomPrototyping = () => (
         </Stack>
       `}
     >
-      {({ getState, setState }) => (
+      {({ getState }) => (
         <Stack space="medium">
-          <Checkbox
-            checked={getState('checked')}
-            onChange={setState('checked')}
-            label="Checkbox"
-          />
+          <Checkbox label="Checkbox" name="myCheckbox" />
 
-          {getState('checked') ? (
+          {getState('myCheckbox') ? (
             <Notice tone="positive">
               <Text>Good job! You checked the checkbox!</Text>
             </Notice>
@@ -198,17 +127,8 @@ const PlayroomPrototyping = () => (
       displayCode={`
         <Card>
           <Stack space="large">
-            <TextField
-              value={getState('firstName')}
-              onChange={setState('firstName')}
-              label="First name"
-            />
-
-            <TextField
-              value={getState('lastName')}
-              onChange={setState('lastName')}
-              label="Last name"
-            />
+            <TextField label="First name" name="firstName" />
+            <TextField label="Last name" name="lastName" />
 
             {getState('firstName') && getState('lastName') ? (
               <Heading level="4">
@@ -219,20 +139,11 @@ const PlayroomPrototyping = () => (
         </Card>
       `}
     >
-      {({ getState, setState }) => (
+      {({ getState }) => (
         <Card>
           <Stack space="large">
-            <TextField
-              value={getState('firstName')}
-              onChange={setState('firstName')}
-              label="First name"
-            />
-
-            <TextField
-              value={getState('lastName')}
-              onChange={setState('lastName')}
-              label="Last name"
-            />
+            <TextField label="First name" name="firstName" />
+            <TextField label="Last name" name="lastName" />
 
             {getState('firstName') && getState('lastName') ? (
               <Heading level="4">
@@ -248,40 +159,34 @@ const PlayroomPrototyping = () => (
       It’s not just about form elements either. For example, we might want to
       provide a <TextLink href="/components/Button">Button</TextLink> that, via
       an <Strong>onClick</Strong> handler, toggles the <Strong>open</Strong>{' '}
-      state of a <TextLink href="/components/Drawer">Drawer</TextLink>:
+      state of a <TextLink href="/components/Drawer">Drawer</TextLink>.
     </Text>
+    <Text>
+      In this example we’re making use of the <Strong>toggleState</Strong>{' '}
+      function to set the state to <Strong>true</Strong> if the drawer is
+      hidden.
+    </Text>
+
     <Code
       displayCode={`
         <Card>
           <Actions>
-            <Button onClick={() => setState('drawer', true)}>
-              Open drawer
-            </Button>
+            <Button onClick={() => toggleState('myDrawer')}>Open drawer</Button>
           </Actions>
 
-          <Drawer
-            title="Drawer"
-            open={getState('drawer')}
-            onClose={() => setState('drawer', false)}
-          >
+          <Drawer title="Drawer" name="myDrawer">
             <Placeholder height={100} />
           </Drawer>
         </Card>
       `}
     >
-      {({ getState, setState }) => (
+      {({ toggleState }) => (
         <Card>
           <Actions>
-            <Button onClick={() => setState('drawer', true)}>
-              Open drawer
-            </Button>
+            <Button onClick={() => toggleState('myDrawer')}>Open drawer</Button>
           </Actions>
 
-          <Drawer
-            title="Drawer"
-            open={getState('drawer')}
-            onClose={() => setState('drawer', false)}
-          >
+          <Drawer title="Drawer" name="myDrawer">
             <Placeholder height={100} />
           </Drawer>
         </Card>
@@ -294,8 +199,9 @@ const PlayroomPrototyping = () => (
       piece of state called <Strong>screen</Strong>.
     </Text>
     <Text>
-      In this example we’re also making use of the <Strong>resetState</Strong>{' '}
-      function to go back to the original screen.
+      In this example we’re making use of the <Strong>setState</Strong> function
+      to choose the desired screen, and the <Strong>resetState</Strong> function
+      to go back to the original screen.
     </Text>
 
     <Code

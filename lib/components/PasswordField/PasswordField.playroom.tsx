@@ -10,20 +10,22 @@ import {
 type PlayroomPasswordFieldProps = Optional<
   PasswordFieldProps,
   'id' | 'value' | 'onChange'
->;
+> & { name?: string };
 
 export const PasswordField = ({
   id,
+  name,
   value,
   onChange,
   ...restProps
 }: PlayroomPasswordFieldProps) => {
   const fallbackId = useFallbackId();
-  const [state, handleChange] = useFallbackState(id, value, onChange, '');
+  const [state, handleChange] = useFallbackState(name, value, onChange, '');
 
   return (
     <BraidPasswordField
       id={id ?? fallbackId}
+      name={name}
       value={state}
       onChange={handleChange}
       {...restProps}
