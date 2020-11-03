@@ -1,5 +1,13 @@
 # braid-design-system
 
+## 29.13.1
+
+### Patch Changes
+
+- **Checkbox,RadioGroup,Radio:** Fix element type passed to onChange event ([#814](https://github.com/seek-oss/braid-design-system/pull/814))
+
+  Fixes a bug where the `onChange` event previously received the change event for a `form` element rather than an `input` element.
+
 ## 29.13.0
 
 ### Minor Changes
