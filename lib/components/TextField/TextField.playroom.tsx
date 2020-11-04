@@ -1,41 +1,40 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Optional } from 'utility-types';
+import { useFallbackState, StateProp } from '../../playroom/playroomState';
 import { useFallbackId } from '../../playroom/utils';
 import { TextField as BraidTextField, TextFieldProps } from './TextField';
 
-type PlayroomTextFieldProps = Optional<
-  TextFieldProps,
-  'id' | 'value' | 'onChange'
-> & {
-  onChange?: (fakeEvent: { currentTarget: { value: string } }) => void;
-};
+type PlayroomTextFieldProps = StateProp &
+  Optional<TextFieldProps, 'id' | 'value' | 'onChange'> & {
+    onChange?: (fakeEvent: { currentTarget: { value: string } }) => void;
+  };
 
 export const TextField = ({
   id,
+  stateName,
   value,
   onChange,
   onClear,
   ...restProps
 }: PlayroomTextFieldProps) => {
   const fallbackId = useFallbackId();
-  const [fallbackValue, setFallbackValue] = useState('');
+  const [state, handleChange] = useFallbackState(
+    stateName,
+    value,
+    onChange,
+    '',
+  );
 
   return (
     <BraidTextField
       id={id ?? fallbackId}
-      value={value ?? fallbackValue}
-      onChange={
-        onChange
-          ? onChange
-          : (event) => setFallbackValue(event.currentTarget.value)
-      }
-      onClear={
-        onClear ??
-        (() =>
-          onChange
-            ? onChange({ currentTarget: { value: '' } })
-            : setFallbackValue(''))
-      }
+      value={state}
+      onChange={handleChange}
+      onClear={() => {
+        handleChange({ currentTarget: { value: '' } });
+        onClear?.();
+      }}
+      autoComplete="off"
       {...restProps}
     />
   );

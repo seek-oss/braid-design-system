@@ -1,31 +1,33 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Optional } from 'utility-types';
+import { useFallbackState, StateProp } from '../../playroom/playroomState';
 import { useFallbackId } from '../../playroom/utils';
 import { Textarea as BraidTextarea, TextareaProps } from './Textarea';
 
-type PlayroomTextareaProps = Optional<
-  TextareaProps,
-  'id' | 'value' | 'onChange'
->;
+type PlayroomTextareaProps = StateProp &
+  Optional<TextareaProps, 'id' | 'value' | 'onChange'>;
 
 export const Textarea = ({
   id,
+  stateName,
   value,
   onChange,
   ...restProps
 }: PlayroomTextareaProps) => {
   const fallbackId = useFallbackId();
-  const [fallbackValue, setFallbackValue] = useState('');
+  const [state, handleChange] = useFallbackState(
+    stateName,
+    value,
+    onChange,
+    '',
+  );
 
   return (
     <BraidTextarea
       id={id ?? fallbackId}
-      value={value ?? fallbackValue}
-      onChange={
-        onChange
-          ? onChange
-          : (event) => setFallbackValue(event.currentTarget.value)
-      }
+      value={state}
+      onChange={handleChange}
+      autoComplete="off"
       {...restProps}
     />
   );

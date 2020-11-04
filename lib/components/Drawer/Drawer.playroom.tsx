@@ -1,5 +1,6 @@
 import React from 'react';
 import { Optional } from 'utility-types';
+import { useFallbackState, StateProp } from '../../playroom/playroomState';
 import { useFallbackId } from '../../playroom/utils';
 import {
   Drawer as BraidDrawer,
@@ -7,24 +8,33 @@ import {
   AllowCloseContext,
 } from './Drawer';
 
-type PlayroomDrawerProps = Optional<DrawerProps, 'id' | 'onClose' | 'open'>;
-const noop = () => {};
+type PlayroomDrawerProps = StateProp &
+  Optional<DrawerProps, 'id' | 'onClose' | 'open'>;
 
 export const Drawer = ({
   id,
-  open = false,
+  stateName,
+  open,
   onClose,
   ...restProps
 }: PlayroomDrawerProps) => {
   const fallbackId = useFallbackId();
+  const [state, handleChange] = useFallbackState(
+    stateName,
+    open,
+    onClose,
+    false,
+  );
 
   return (
-    <AllowCloseContext.Provider value={onClose !== undefined}>
+    <AllowCloseContext.Provider
+      value={onClose !== undefined || stateName !== undefined}
+    >
       <BraidDrawer
         id={id ?? fallbackId}
         {...restProps}
-        open={open}
-        onClose={onClose ?? noop}
+        open={state}
+        onClose={handleChange}
       />
     </AllowCloseContext.Provider>
   );

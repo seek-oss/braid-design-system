@@ -2,6 +2,7 @@ import '../reset';
 import React, { Fragment, ReactNode } from 'react';
 import { BraidProvider, ToastProvider } from '../components';
 import { BraidTheme } from '../themes/BraidTheme.d';
+import { PlayroomStateProvider } from './playroomState';
 
 interface Props {
   theme: BraidTheme;
@@ -15,10 +16,12 @@ export default ({ theme, children }: Props) => (
         __html: theme.webFonts.map((font) => font.linkTag).join(''),
       }}
     />
-    <BraidProvider theme={theme}>
-      <ToastProvider>
-        <Fragment>{children}</Fragment>
-      </ToastProvider>
-    </BraidProvider>
+    <PlayroomStateProvider>
+      <BraidProvider theme={theme}>
+        <ToastProvider>
+          <Fragment>{children}</Fragment>
+        </ToastProvider>
+      </BraidProvider>
+    </PlayroomStateProvider>
   </Fragment>
 );
