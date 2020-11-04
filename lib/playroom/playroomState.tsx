@@ -1,5 +1,4 @@
-import React, { useContext, ReactNode } from 'react';
-import { createContext, useState } from 'react';
+import React, { createContext, useContext, useState, ReactNode } from 'react';
 import curry from 'lodash/curry';
 
 export interface StateProp {
@@ -116,7 +115,5 @@ export function useFallbackState<Value, Handler extends Callback>(
       ? playroomState.getState(stateKey) ?? defaultValue
       : internalStateValue);
 
-  return stateKey
-    ? [resolvedValue, handleChange]
-    : [resolvedValue, handleChange];
+  return [resolvedValue, handleChange];
 }
