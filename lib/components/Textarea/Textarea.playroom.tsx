@@ -27,6 +27,7 @@ export const Textarea = ({
       id={id ?? fallbackId}
       value={state}
       onChange={handleChange}
+      autoComplete="off"
       {...restProps}
     />
   );

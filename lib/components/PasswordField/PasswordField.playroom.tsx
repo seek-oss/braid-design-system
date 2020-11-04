@@ -31,6 +31,7 @@ export const PasswordField = ({
       name={name}
       value={state}
       onChange={handleChange}
+      autoComplete="off"
       {...restProps}
     />
   );
