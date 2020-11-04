@@ -1,22 +1,26 @@
 import React from 'react';
 import { Optional } from 'utility-types';
-import { useFallbackState } from '../../playroom/playroomState';
+import { useFallbackState, StateProp } from '../../playroom/playroomState';
 import { useFallbackId } from '../../playroom/utils';
 import { Toggle as BraidToggle, ToggleProps } from './Toggle';
 
-type PlayroomToggleProps = Optional<ToggleProps, 'id' | 'on' | 'onChange'> & {
-  name?: string;
-};
+type PlayroomToggleProps = StateProp &
+  Optional<ToggleProps, 'id' | 'on' | 'onChange'>;
 
 export const Toggle = ({
   id,
-  name,
+  stateName,
   on,
   onChange,
   ...restProps
 }: PlayroomToggleProps) => {
   const fallbackId = useFallbackId();
-  const [state, handleChange] = useFallbackState(name, on, onChange, false);
+  const [state, handleChange] = useFallbackState(
+    stateName,
+    on,
+    onChange,
+    false,
+  );
 
   return (
     <BraidToggle

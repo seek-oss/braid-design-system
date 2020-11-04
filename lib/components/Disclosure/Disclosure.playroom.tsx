@@ -1,5 +1,5 @@
 import React from 'react';
-import { useFallbackState } from '../../playroom/playroomState';
+import { useFallbackState, StateProp } from '../../playroom/playroomState';
 import { useFallbackId } from '../../playroom/utils';
 import {
   Disclosure as BraidDisclosure,
@@ -9,20 +9,21 @@ import {
 } from './Disclosure';
 
 type OptionalProps = 'id';
-type PlayroomDisclosureProps = DisclosureBaseProps &
+type PlayroomDisclosureProps = StateProp &
+  DisclosureBaseProps &
   DisclosureStateProps &
-  Partial<Pick<DisclosureProps, OptionalProps>> & { name?: string };
+  Partial<Pick<DisclosureProps, OptionalProps>>;
 
 export const Disclosure = ({
   id,
-  name,
+  stateName,
   expanded,
   onToggle,
   ...restProps
 }: PlayroomDisclosureProps) => {
   const fallbackId = useFallbackId();
   const [state, handleChange] = useFallbackState(
-    name,
+    stateName,
     expanded,
     onToggle,
     false,

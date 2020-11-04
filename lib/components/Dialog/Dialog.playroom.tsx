@@ -1,31 +1,37 @@
 import React from 'react';
 import { Optional } from 'utility-types';
-import { useFallbackState } from '../../playroom/playroomState';
+import { useFallbackState, StateProp } from '../../playroom/playroomState';
 import { useFallbackId } from '../../playroom/utils';
 import { AllowCloseContext } from '../private/Modal/Modal';
 import { Dialog as BraidDialog, DialogProps } from './Dialog';
 
-type PlayroomDialogProps = Optional<DialogProps, 'id' | 'onClose' | 'open'> & {
-  name?: string;
-};
+type PlayroomDialogProps = StateProp &
+  Optional<DialogProps, 'id' | 'onClose' | 'open'>;
 
 export const Dialog = ({
   id,
-  name,
+  stateName,
   open,
   onClose,
   ...restProps
 }: PlayroomDialogProps) => {
   const fallbackId = useFallbackId();
-  const [state, handleChange] = useFallbackState(name, open, onClose, false);
+  const [state, handleChange] = useFallbackState(
+    stateName,
+    open,
+    onClose,
+    false,
+  );
 
   return (
-    <AllowCloseContext.Provider value={onClose !== undefined || Boolean(id)}>
+    <AllowCloseContext.Provider
+      value={onClose !== undefined || stateName !== undefined}
+    >
       <BraidDialog
         id={id ?? fallbackId}
-        {...restProps}
         open={state}
         onClose={handleChange}
+        {...restProps}
       />
     </AllowCloseContext.Provider>
   );

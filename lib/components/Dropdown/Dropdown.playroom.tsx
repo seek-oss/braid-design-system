@@ -1,23 +1,26 @@
 import React from 'react';
 import { Optional } from 'utility-types';
-import { useFallbackState } from '../../playroom/playroomState';
+import { useFallbackState, StateProp } from '../../playroom/playroomState';
 import { useFallbackId } from '../../playroom/utils';
 import { Dropdown as BraidDropdown, DropdownProps } from './Dropdown';
 
-type PlayroomDropdownProps = Optional<
-  DropdownProps,
-  'id' | 'value' | 'onChange'
-> & { name?: string };
+type PlayroomDropdownProps = StateProp &
+  Optional<DropdownProps, 'id' | 'value' | 'onChange'>;
 
 export const Dropdown = ({
   id,
-  name,
+  stateName,
   value,
   onChange,
   ...restProps
 }: PlayroomDropdownProps) => {
   const fallbackId = useFallbackId();
-  const [state, handleChange] = useFallbackState(name, value, onChange, '');
+  const [state, handleChange] = useFallbackState(
+    stateName,
+    value,
+    onChange,
+    '',
+  );
 
   return (
     <BraidDropdown

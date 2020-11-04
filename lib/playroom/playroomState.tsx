@@ -2,6 +2,10 @@ import React, { useContext, ReactNode } from 'react';
 import { createContext, useState } from 'react';
 import curry from 'lodash/curry';
 
+export interface StateProp {
+  stateName?: string;
+}
+
 type Store = Map<string, any>;
 
 const unwrapValue = (value: any) => {
@@ -84,14 +88,11 @@ type Callback = (...args: any[]) => void;
 const noop = () => {};
 
 export function useFallbackState<Value, Handler extends Callback>(
-  id: string | undefined,
+  stateKey: string | undefined,
   value: Value,
   onChange: Handler | undefined,
   defaultValue?: Value,
-): [
-  value: NonNullable<Value>,
-  changeHandler: (...args: Parameters<Handler>) => void,
-] {
+): [NonNullable<Value>, (...args: Parameters<Handler>) => void] {
   const playroomState = usePlayroomStore();
   const [internalStateValue, setInternalStateValue] = useState(defaultValue);
 
@@ -99,7 +100,7 @@ export function useFallbackState<Value, Handler extends Callback>(
     handler: Handler | typeof noop,
   ): ((...args: Parameters<Handler>) => void) => (...args) => {
     if (value === undefined) {
-      (id ? playroomState.setState(id) : setInternalStateValue)(
+      (stateKey ? playroomState.setState(stateKey) : setInternalStateValue)(
         unwrapValue(args[0]),
       );
     }
@@ -111,7 +112,11 @@ export function useFallbackState<Value, Handler extends Callback>(
 
   const resolvedValue =
     value ??
-    (id ? playroomState.getState(id) ?? defaultValue : internalStateValue);
+    (stateKey
+      ? playroomState.getState(stateKey) ?? defaultValue
+      : internalStateValue);
 
-  return id ? [resolvedValue, handleChange] : [resolvedValue, handleChange];
+  return stateKey
+    ? [resolvedValue, handleChange]
+    : [resolvedValue, handleChange];
 }

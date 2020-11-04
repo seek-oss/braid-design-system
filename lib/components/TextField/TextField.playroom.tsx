@@ -1,28 +1,29 @@
 import React from 'react';
 import { Optional } from 'utility-types';
-import { useFallbackState } from '../../playroom/playroomState';
+import { useFallbackState, StateProp } from '../../playroom/playroomState';
 import { useFallbackId } from '../../playroom/utils';
 import { TextField as BraidTextField, TextFieldProps } from './TextField';
 
-type PlayroomTextFieldProps = Optional<
-  TextFieldProps,
-  'id' | 'value' | 'onChange'
-> & {
-  defaultValue?: TextFieldProps['value'];
-  onChange?: (fakeEvent: { currentTarget: { value: string } }) => void;
-};
+type PlayroomTextFieldProps = StateProp &
+  Optional<TextFieldProps, 'id' | 'value' | 'onChange'> & {
+    onChange?: (fakeEvent: { currentTarget: { value: string } }) => void;
+  };
 
 export const TextField = ({
   id,
-  name,
-  defaultValue,
+  stateName,
   value,
   onChange,
   onClear,
   ...restProps
 }: PlayroomTextFieldProps) => {
   const fallbackId = useFallbackId();
-  const [state, handleChange] = useFallbackState(name, value, onChange, '');
+  const [state, handleChange] = useFallbackState(
+    stateName,
+    value,
+    onChange,
+    '',
+  );
 
   return (
     <BraidTextField

@@ -50,17 +50,14 @@ const PlayroomPrototyping = () => (
     <Text>
       So the checkbox works in isolation, but what if we wanted it to control
       other parts of the UI? Well, first we need to provide a{' '}
-      <Strong>name</Strong> to our checkbox, which then allows us to ask for its
-      state elsewhere in our prototype using the <Strong>getState</Strong>{' '}
-      function:
+      <Strong>stateName</Strong> prop to our checkbox, which then allows us to
+      ask for its state elsewhere in our prototype using the{' '}
+      <Strong>getState</Strong> function:
     </Text>
     <Code
       displayCode={`
         <Stack space="medium">
-          <Checkbox
-            name="myCheckbox"
-            label="Checkbox"
-          />
+          <Checkbox label="Checkbox" stateName="myCheckbox" />
 
           {getState('myCheckbox') && (
             <Notice tone="positive">
@@ -72,7 +69,7 @@ const PlayroomPrototyping = () => (
     >
       {({ getState }) => (
         <Stack space="medium">
-          <Checkbox label="Checkbox" name="myCheckbox" />
+          <Checkbox label="Checkbox" stateName="myCheckbox" />
 
           {getState('myCheckbox') && (
             <Notice tone="positive">
@@ -89,7 +86,7 @@ const PlayroomPrototyping = () => (
     <Code
       displayCode={`
         <Stack space="medium">
-          <Checkbox label="Checkbox" name="myCheckbox" />
+          <Checkbox label="Checkbox" stateName="myCheckbox" />
 
           {getState('myCheckbox') ? (
             <Notice tone="positive">
@@ -105,7 +102,7 @@ const PlayroomPrototyping = () => (
     >
       {({ getState }) => (
         <Stack space="medium">
-          <Checkbox label="Checkbox" name="myCheckbox" />
+          <Checkbox label="Checkbox" stateName="myCheckbox" />
 
           {getState('myCheckbox') ? (
             <Notice tone="positive">
@@ -127,8 +124,8 @@ const PlayroomPrototyping = () => (
       displayCode={`
         <Card>
           <Stack space="large">
-            <TextField label="First name" name="firstName" />
-            <TextField label="Last name" name="lastName" />
+            <TextField label="First name" stateName="firstName" />
+            <TextField label="Last name" stateName="lastName" />
 
             {getState('firstName') && getState('lastName') ? (
               <Heading level="4">
@@ -142,8 +139,8 @@ const PlayroomPrototyping = () => (
       {({ getState }) => (
         <Card>
           <Stack space="large">
-            <TextField label="First name" name="firstName" />
-            <TextField label="Last name" name="lastName" />
+            <TextField label="First name" stateName="firstName" />
+            <TextField label="Last name" stateName="lastName" />
 
             {getState('firstName') && getState('lastName') ? (
               <Heading level="4">
@@ -174,7 +171,7 @@ const PlayroomPrototyping = () => (
             <Button onClick={() => toggleState('myDrawer')}>Open drawer</Button>
           </Actions>
 
-          <Drawer title="Drawer" name="myDrawer">
+          <Drawer title="Drawer" stateName="myDrawer">
             <Placeholder height={100} />
           </Drawer>
         </Card>
@@ -186,7 +183,7 @@ const PlayroomPrototyping = () => (
             <Button onClick={() => toggleState('myDrawer')}>Open drawer</Button>
           </Actions>
 
-          <Drawer title="Drawer" name="myDrawer">
+          <Drawer title="Drawer" stateName="myDrawer">
             <Placeholder height={100} />
           </Drawer>
         </Card>

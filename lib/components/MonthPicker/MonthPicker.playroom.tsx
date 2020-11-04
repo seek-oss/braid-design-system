@@ -1,26 +1,29 @@
 import React from 'react';
 import { Optional } from 'utility-types';
-import { useFallbackState } from '../../playroom/playroomState';
+import { useFallbackState, StateProp } from '../../playroom/playroomState';
 import { useFallbackId } from '../../playroom/utils';
 import {
   MonthPicker as BraidMonthPicker,
   MonthPickerProps,
 } from './MonthPicker';
 
-type PlayroomMonthPickerProps = Optional<
-  MonthPickerProps,
-  'id' | 'value' | 'onChange'
-> & { name?: string };
+type PlayroomMonthPickerProps = StateProp &
+  Optional<MonthPickerProps, 'id' | 'value' | 'onChange'>;
 
 export const MonthPicker = ({
   id,
-  name,
+  stateName,
   value,
   onChange,
   ...restProps
 }: PlayroomMonthPickerProps) => {
   const fallbackId = useFallbackId();
-  const [state, handleChange] = useFallbackState(name, value, onChange, {});
+  const [state, handleChange] = useFallbackState(
+    stateName,
+    value,
+    onChange,
+    {},
+  );
 
   return (
     <BraidMonthPicker

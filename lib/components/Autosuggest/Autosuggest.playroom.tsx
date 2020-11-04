@@ -1,20 +1,18 @@
 import React from 'react';
 import { Optional } from 'utility-types';
-import { useFallbackState } from '../../playroom/playroomState';
+import { useFallbackState, StateProp } from '../../playroom/playroomState';
 import { useFallbackId } from '../../playroom/utils';
 import {
   Autosuggest as BraidAutosuggest,
   AutosuggestProps,
 } from './Autosuggest';
 
-type PlayroomAutosuggestProps<Value> = Optional<
-  AutosuggestProps<Value>,
-  'id' | 'value' | 'onChange'
-> & { name?: string };
+type PlayroomAutosuggestProps<Value> = StateProp &
+  Optional<AutosuggestProps<Value>, 'id' | 'value' | 'onChange'>;
 
 export function Autosuggest<Value>({
   id,
-  name,
+  stateName,
   value,
   onChange,
   onClear,
@@ -23,7 +21,7 @@ export function Autosuggest<Value>({
   const fallbackId = useFallbackId();
   const blankValue = { text: '' };
   const [state, handleChange] = useFallbackState(
-    name,
+    stateName,
     value,
     onChange,
     blankValue,
@@ -32,7 +30,6 @@ export function Autosuggest<Value>({
   return (
     <BraidAutosuggest
       id={id ?? fallbackId}
-      name={name}
       value={state}
       onChange={handleChange}
       onClear={() => {
