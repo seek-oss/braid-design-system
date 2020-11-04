@@ -52,7 +52,11 @@ const PlayroomPrototyping = () => (
       other parts of the UI? Well, first we need to provide a{' '}
       <Strong>stateName</Strong> prop to our checkbox, which then allows us to
       ask for its state elsewhere in our prototype using the{' '}
-      <Strong>getState</Strong> function:
+      <Strong>getState</Strong> function.
+    </Text>
+    <Text>
+      As a minimal example, let’s make the checkbox toggle the visibility of
+      another element:
     </Text>
     <Code
       displayCode={`
