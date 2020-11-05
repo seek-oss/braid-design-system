@@ -166,12 +166,8 @@ const docs: ComponentDocs = {
   ],
   snippets: [
     {
-      name: 'Unchecked',
-      code: <PlayroomCheckbox label="Label" checked={false} />,
-    },
-    {
-      name: 'Checked',
-      code: <PlayroomCheckbox label="Label" checked={true} />,
+      name: 'Standard',
+      code: <PlayroomCheckbox label="Label" />,
     },
     {
       name: 'With description',
