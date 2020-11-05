@@ -77,28 +77,16 @@ const docs: ComponentDocs = {
   ],
   snippets: [
     {
-      name: 'On',
-      code: <PlayroomToggle label="Toggled on" on />,
+      name: 'Standard',
+      code: <PlayroomToggle label="Toggle" />,
     },
     {
-      name: 'Off',
-      code: <PlayroomToggle label="Toggled off" on={false} />,
+      name: 'Aligned right',
+      code: <PlayroomToggle label="Toggled" align="right" />,
     },
     {
-      name: 'On, Aligned right',
-      code: <PlayroomToggle label="Toggled on" align="right" on />,
-    },
-    {
-      name: 'Off, Aligned right',
-      code: <PlayroomToggle label="Toggled off" align="right" on={false} />,
-    },
-    {
-      name: 'On, Justified',
-      code: <PlayroomToggle label="Toggled on" align="justify" on />,
-    },
-    {
-      name: 'Off, Justified',
-      code: <PlayroomToggle label="Toggled off" align="justify" on={false} />,
+      name: 'Justified',
+      code: <PlayroomToggle label="Toggled" align="justify" />,
     },
   ],
 };
