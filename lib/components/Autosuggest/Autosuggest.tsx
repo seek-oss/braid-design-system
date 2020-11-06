@@ -42,6 +42,7 @@ interface AutosuggestValue<Value = any> {
 }
 
 interface Suggestion<Value = any> extends AutosuggestValue<Value> {
+  label?: string;
   highlights?: SuggestionMatch;
   onClear?: (value: AutosuggestValue<Value>) => void;
   clearLabel?: string;
@@ -99,9 +100,10 @@ function SuggestionItem({
   ...restProps
 }: SuggestionItemProps) {
   const { highlights = [], onClear, clearLabel } = suggestion;
+  const label = suggestion.label ?? suggestion.text;
 
   const suggestionParts = parseHighlights(
-    suggestion.text,
+    label,
     highlights.map(({ start, end }) => [start, end]),
   );
 
@@ -685,7 +687,7 @@ export const Autosuggest = forwardRef(function <Value>(
                                 }}
                                 {...a11y.getItemProps({
                                   index,
-                                  label: suggestion.text,
+                                  label: suggestion.label ?? suggestion.text,
                                   description: suggestion.description,
                                   groupHeading: groupHeadingForSuggestion.get(
                                     suggestion,
