@@ -1,5 +1,11 @@
 # braid-design-system
 
+## 29.14.0
+
+### Minor Changes
+
+- **Autosuggest:** Forward `ref` prop to input element ([#819](https://github.com/seek-oss/braid-design-system/pull/819))
+
 ## 29.13.1
 
 ### Patch Changes
