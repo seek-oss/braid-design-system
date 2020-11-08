@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom/extend-expect';
-import React, { useState, Dispatch } from 'react';
+import React, { useState, useRef, useEffect, Dispatch } from 'react';
 import { render, act, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { BraidTestProvider, Autosuggest } from '..';
@@ -247,6 +247,35 @@ describe('Autosuggest', () => {
     clearHandler.mockClear();
 
     expect(changeHandler).not.toHaveBeenCalled();
+  });
+
+  it('should forward refs', () => {
+    const TestCase = () => {
+      const inputRef = useRef<HTMLInputElement>(null);
+
+      useEffect(() => {
+        if (inputRef.current) {
+          inputRef.current.setAttribute('data-foo', 'bar');
+        }
+      }, []);
+
+      return (
+        <BraidTestProvider>
+          <Autosuggest
+            id="id"
+            label="Label"
+            value={{ text: '' }}
+            onChange={() => {}}
+            suggestions={[]}
+            ref={inputRef}
+          />
+        </BraidTestProvider>
+      );
+    };
+
+    const { getByRole } = render(<TestCase />);
+    const input = getByRole('combobox');
+    expect(input.getAttribute('data-foo')).toBe('bar');
   });
 
   describe('ARIA labels', () => {

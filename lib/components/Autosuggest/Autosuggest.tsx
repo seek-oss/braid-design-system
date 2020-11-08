@@ -7,6 +7,10 @@ import React, {
   MouseEvent,
   KeyboardEvent,
   useEffect,
+  forwardRef,
+  Ref,
+  ReactElement,
+  RefAttributes,
 } from 'react';
 import { useStyles } from 'sku/react-treat';
 import parseHighlights from 'autosuggest-highlight/parse';
@@ -253,24 +257,32 @@ export interface AutosuggestProps<Value>
   type?: 'text' | 'search';
   translations?: AutosuggestTranslations;
 }
-export function Autosuggest<Value>({
-  id,
-  value = fallbackValue,
-  suggestions = fallbackSuggestions,
-  onChange = noop,
-  automaticSelection = false,
-  showMobileBackdrop = false,
-  scrollToTopOnMobile = true,
-  hideSuggestionsOnSelection = true,
-  onFocus = noop,
-  onBlur = noop,
-  placeholder,
-  type = 'text',
-  onClear,
-  translations = autosuggest,
-  ...restProps
-}: AutosuggestProps<Value>) {
+export const Autosuggest = forwardRef(function <Value>(
+  {
+    id,
+    value = fallbackValue,
+    suggestions = fallbackSuggestions,
+    onChange = noop,
+    automaticSelection = false,
+    showMobileBackdrop = false,
+    scrollToTopOnMobile = true,
+    hideSuggestionsOnSelection = true,
+    onFocus = noop,
+    onBlur = noop,
+    placeholder,
+    type = 'text',
+    onClear,
+    translations = autosuggest,
+    ...restProps
+  }: AutosuggestProps<Value>,
+  forwardedRef: Ref<HTMLInputElement>,
+) {
   const styles = useStyles(styleRefs);
+
+  // We need a ref regardless so we can imperatively
+  // focus the field when clicking the clear button
+  const defaultRef = useRef<HTMLInputElement | null>(null);
+  const inputRef = forwardedRef || defaultRef;
 
   const fireChange = useCallback(
     (suggestion: Suggestion<Value>) =>
@@ -278,7 +290,6 @@ export function Autosuggest<Value>({
     [onChange],
   );
 
-  const inputRef = useRef<HTMLInputElement>(null);
   const rootRef = useRef<HTMLDivElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
   const justPressedArrowRef = useRef(false);
@@ -700,4 +711,9 @@ export function Autosuggest<Value>({
       </Box>
     </Fragment>
   );
-}
+}) as <Value>(
+  props: AutosuggestProps<Value> & RefAttributes<HTMLInputElement>,
+) => ReactElement;
+
+// @ts-expect-error
+Autosuggest.displayName = 'Autosuggest';

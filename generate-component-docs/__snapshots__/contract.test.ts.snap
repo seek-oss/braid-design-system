@@ -70,6 +70,9 @@ Object {
     onClear?: () => void
     onFocus?: () => void
     placeholder?: string
+    ref?: 
+        | (instance: HTMLInputElement | null) => void
+        | RefObject<HTMLInputElement>
     required?: boolean
     reserveMessageSpace?: boolean
     scrollToTopOnMobile?: boolean
