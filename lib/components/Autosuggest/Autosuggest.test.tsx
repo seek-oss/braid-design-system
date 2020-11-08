@@ -130,6 +130,41 @@ describe('Autosuggest', () => {
     });
   });
 
+  it('should support custom suggestion labels', () => {
+    const {
+      input,
+      changeHandler,
+      queryByLabelText,
+      getInputValue,
+    } = renderAutosuggest({
+      value: { text: '' },
+      suggestions: [
+        {
+          text: 'Apples',
+          label: 'CUSTOM LABEL',
+          value: 'apples',
+        },
+      ],
+    });
+
+    userEvent.click(input);
+    expect(getInputValue()).toBe('');
+    expect(changeHandler).not.toHaveBeenCalled();
+
+    const suggestion = queryByLabelText('CUSTOM LABEL');
+    if (!suggestion) {
+      throw new Error('Suggestion not found');
+    }
+
+    fireEvent.click(suggestion);
+
+    expect(getInputValue()).toBe('Apples');
+    expect(changeHandler).toHaveBeenNthCalledWith(1, {
+      text: 'Apples',
+      value: 'apples',
+    });
+  });
+
   it('should keep the menu open when a selection is made if "hideSuggestionsOnSelection" is false', async () => {
     const TestCase = () => {
       const initialValue = 'appl';
