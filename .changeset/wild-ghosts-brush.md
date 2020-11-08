@@ -4,7 +4,7 @@
 
 **Autosuggest:** Support custom label text for suggestions
 
-This allows you to provide different suggestion text from the value that gets inserted into the text field.
+You can now optionally provide different suggestion text from the value that gets inserted into the text field.
 
 **EXAMPLE USAGE**
 
