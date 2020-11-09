@@ -2142,7 +2142,10 @@ Object {
   props: {
     aria-describedby?: string
     badge?: ReactElement<BadgeProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)>
-    checked: boolean
+    checked: 
+        | "mixed"
+        | false
+        | true
     children?: ReactNode
     data?: Record<string, string | number>
     description?: ReactNode

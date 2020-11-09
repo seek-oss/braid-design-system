@@ -3,6 +3,9 @@ import React, {
   AllHTMLAttributes,
   forwardRef,
   ReactElement,
+  useEffect,
+  useRef,
+  ChangeEvent,
 } from 'react';
 import { useStyles } from 'sku/react-treat';
 import { Box } from '../../Box/Box';
@@ -13,7 +16,7 @@ import {
 } from '../../FieldMessage/FieldMessage';
 import { FieldOverlay } from '../FieldOverlay/FieldOverlay';
 import { Text } from '../../Text/Text';
-import { IconTick } from '../../icons';
+import { IconMinus, IconTick } from '../../icons';
 import { useVirtualTouchable } from '../touchable/useVirtualTouchable';
 import buildDataAttributes, { DataAttributeMap } from '../buildDataAttributes';
 import { useBackgroundLightness } from '../../Box/BackgroundContext';
@@ -24,17 +27,20 @@ import * as styleRefs from './InlineField.treat';
 
 const tones = ['neutral', 'critical'] as const;
 type InlineFieldTone = typeof tones[number];
+export type CheckboxChecked =
+  | NonNullable<InputElementProps['checked']>
+  | 'mixed';
 
-type FormElementProps = AllHTMLAttributes<HTMLInputElement>;
+type InputElementProps = AllHTMLAttributes<HTMLInputElement>;
 export interface InlineFieldProps {
-  id: NonNullable<FormElementProps['id']>;
+  id: NonNullable<InputElementProps['id']>;
   label: NonNullable<FieldLabelProps['label']>;
-  onChange: NonNullable<FormElementProps['onChange']>;
-  checked: NonNullable<FormElementProps['checked']>;
-  value?: FormElementProps['value'];
-  name?: FormElementProps['name'];
-  'aria-describedby'?: FormElementProps['aria-describedby'];
-  disabled?: FormElementProps['disabled'];
+  onChange: NonNullable<InputElementProps['onChange']>;
+  checked: NonNullable<InputElementProps['checked']>;
+  value?: InputElementProps['value'];
+  name?: InputElementProps['name'];
+  'aria-describedby'?: InputElementProps['aria-describedby'];
+  disabled?: InputElementProps['disabled'];
   message?: FieldMessageProps['message'];
   reserveMessageSpace?: FieldMessageProps['reserveMessageSpace'];
   tone?: InlineFieldTone;
@@ -46,18 +52,22 @@ export interface InlineFieldProps {
 }
 
 type FieldType = 'checkbox' | 'radio';
-interface InternalInlineFieldProps extends InlineFieldProps {
+type InternalInlineFieldProps = Omit<InlineFieldProps, 'checked'> & {
   inList?: boolean;
   tabIndex?: number;
-  type: FieldType;
-}
+} & (
+    | { type: 'checkbox'; checked: CheckboxChecked }
+    | { type: 'radio'; checked: NonNullable<InputElementProps['checked']> }
+  );
 
 const Indicator = ({
   type,
+  checked,
   hover = false,
   disabled = false,
 }: {
   type: FieldType;
+  checked?: CheckboxChecked;
   hover?: boolean;
   disabled?: boolean;
 }) => {
@@ -78,9 +88,31 @@ const Indicator = ({
     <Box
       height="full" // Needed for IE11
       transition="fast"
+      position="relative"
       className={styles.checkboxIndicator}
     >
-      <IconTick size="fill" tone={iconTone} />
+      <Box
+        position="absolute"
+        top={0}
+        bottom={0}
+        left={0}
+        right={0}
+        transition="fast"
+        opacity={checked !== 'mixed' ? 0 : undefined}
+      >
+        <IconMinus size="fill" tone={iconTone} />
+      </Box>
+      <Box
+        position="absolute"
+        top={0}
+        bottom={0}
+        left={0}
+        right={0}
+        transition="fast"
+        opacity={checked !== true ? 0 : undefined}
+      >
+        <IconTick size="fill" tone={iconTone} />
+      </Box>
     </Box>
   ) : (
     <Box
@@ -94,7 +126,10 @@ const Indicator = ({
   );
 };
 
-export const InlineField = forwardRef<HTMLElement, InternalInlineFieldProps>(
+export const InlineField = forwardRef<
+  HTMLInputElement,
+  InternalInlineFieldProps
+>(
   (
     {
       id,
@@ -117,9 +152,14 @@ export const InlineField = forwardRef<HTMLElement, InternalInlineFieldProps>(
       tabIndex,
       'aria-describedby': ariaDescribedBy,
     },
-    ref,
+    forwardedRef,
   ) => {
     const styles = useStyles(styleRefs);
+    // We need a ref regardless so we can imperatively
+    // focus the field when clicking the clear button
+    const defaultRef = useRef<HTMLInputElement | null>(null);
+    const ref = forwardedRef || defaultRef;
+    const indeterminateRef = useRef(false);
 
     if (tones.indexOf(tone) === -1) {
       throw new Error(`Invalid tone: ${tone}`);
@@ -134,6 +174,15 @@ export const InlineField = forwardRef<HTMLElement, InternalInlineFieldProps>(
     const showFieldBorder =
       useBackgroundLightness() === 'light' && (tone !== 'critical' || disabled);
 
+    const isMixed = isCheckbox && checked === 'mixed';
+
+    useEffect(() => {
+      if (ref && typeof ref === 'object' && ref.current && isCheckbox) {
+        ref.current.indeterminate = isMixed;
+        indeterminateRef.current = isMixed;
+      }
+    }, [ref, isMixed, isCheckbox]);
+
     return (
       <Box position="relative" zIndex={0} className={styles.root}>
         <Box display="flex">
@@ -142,12 +191,23 @@ export const InlineField = forwardRef<HTMLElement, InternalInlineFieldProps>(
             type={type}
             id={id}
             name={name}
-            onChange={onChange}
             value={value}
-            checked={checked}
+            onChange={
+              isMixed
+                ? (e: ChangeEvent<HTMLInputElement>) => {
+                    if (ref && typeof ref === 'object' && ref.current) {
+                      ref.current.indeterminate = indeterminateRef.current;
+                    }
+                    if (typeof onChange === 'function') {
+                      onChange(e);
+                    }
+                  }
+                : onChange
+            }
+            checked={checked === 'mixed' ? false : checked}
             position="absolute"
             zIndex={1}
-            className={styles.realField}
+            className={[styles.realField, isMixed ? styles.isMixed : undefined]}
             cursor={!disabled ? 'pointer' : undefined}
             opacity={0}
             aria-describedby={mergeIds(
@@ -155,6 +215,7 @@ export const InlineField = forwardRef<HTMLElement, InternalInlineFieldProps>(
               message ? messageId : undefined,
               description ? descriptionId : undefined,
             )}
+            aria-checked={isMixed ? 'mixed' : checked}
             aria-required={required}
             disabled={disabled}
             ref={ref}
@@ -184,7 +245,7 @@ export const InlineField = forwardRef<HTMLElement, InternalInlineFieldProps>(
               borderRadius={fieldBorderRadius}
               className={styles.selected}
             >
-              <Indicator type={type} disabled={disabled} />
+              <Indicator type={type} disabled={disabled} checked={checked} />
             </FieldOverlay>
 
             <FieldOverlay
@@ -197,7 +258,7 @@ export const InlineField = forwardRef<HTMLElement, InternalInlineFieldProps>(
               borderRadius={fieldBorderRadius}
               className={styles.hoverOverlay}
             >
-              <Indicator type={type} hover={true} />
+              <Indicator type={type} hover={true} checked={true} />
             </FieldOverlay>
           </Box>
           <Box paddingLeft="small" flexGrow={1}>
