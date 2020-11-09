@@ -7,6 +7,7 @@ import React, {
 } from 'react';
 import { useStyles } from 'react-treat';
 import copy from 'copy-to-clipboard';
+import dedent from 'dedent';
 import memoize from 'lodash/memoize';
 import reactElementToJSXString from 'react-element-to-jsx-string';
 import prettier from 'prettier/standalone';
@@ -36,7 +37,6 @@ import editorTheme from './editorTheme';
 import { ThemedExample } from '../ThemeSetting';
 import usePlayroomScope from '../../../../lib/playroom/useScope';
 import { PlayroomStateProvider } from '../../../../lib/playroom/playroomState';
-import dedent from 'dedent';
 
 const formatSnippet = memoize((snippet) => {
   const formattedSnippet = prettier

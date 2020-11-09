@@ -2,8 +2,8 @@ import React, {
   createContext,
   useContext,
   useState,
-  ReactNode,
   useMemo,
+  ReactNode,
 } from 'react';
 import curry from 'lodash/curry';
 
