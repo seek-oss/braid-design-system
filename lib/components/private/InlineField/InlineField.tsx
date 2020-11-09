@@ -67,13 +67,12 @@ const Indicator = ({
   disabled = false,
 }: {
   type: FieldType;
-  checked: CheckboxChecked;
+  checked?: CheckboxChecked;
   hover?: boolean;
   disabled?: boolean;
 }) => {
   const styles = useStyles(styleRefs);
   const isCheckbox = type === 'checkbox';
-  const previousMixedRef = useRef(false);
 
   const iconTone = (() => {
     if (disabled) {
@@ -85,34 +84,33 @@ const Indicator = ({
     }
   })();
 
-  const isMixed = checked === 'mixed';
-  const wasMixedNowUnchecked = previousMixedRef.current && checked === false;
-
-  useEffect(() => {
-    if (isMixed) {
-      previousMixedRef.current = true;
-    } else if (wasMixedNowUnchecked) {
-      const timer = setTimeout(() => {
-        previousMixedRef.current = false;
-      }, 200);
-
-      return () => clearTimeout(timer);
-    } else {
-      previousMixedRef.current = false;
-    }
-  }, [isMixed, wasMixedNowUnchecked]);
-
   return isCheckbox ? (
     <Box
       height="full" // Needed for IE11
       transition="fast"
+      position="relative"
       className={styles.checkboxIndicator}
     >
-      {isMixed || wasMixedNowUnchecked ? (
+      <Box
+        position="absolute"
+        top={0}
+        bottom={0}
+        left={0}
+        right={0}
+        opacity={checked !== 'mixed' ? 0 : undefined}
+      >
         <IconMinus size="fill" tone={iconTone} />
-      ) : (
+      </Box>
+      <Box
+        position="absolute"
+        top={0}
+        bottom={0}
+        left={0}
+        right={0}
+        opacity={checked === 'mixed' ? 0 : undefined}
+      >
         <IconTick size="fill" tone={iconTone} />
-      )}
+      </Box>
     </Box>
   ) : (
     <Box
@@ -258,7 +256,7 @@ export const InlineField = forwardRef<
               borderRadius={fieldBorderRadius}
               className={styles.hoverOverlay}
             >
-              <Indicator type={type} hover={true} checked={true} />
+              <Indicator type={type} hover={true} />
             </FieldOverlay>
           </Box>
           <Box paddingLeft="small" flexGrow={1}>
