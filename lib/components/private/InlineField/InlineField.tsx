@@ -172,14 +172,14 @@ export const InlineField = forwardRef<
     const showFieldBorder =
       useBackgroundLightness() === 'light' && (tone !== 'critical' || disabled);
 
-    const isMixed = checked === 'mixed';
+    const isMixed = isCheckbox && checked === 'mixed';
 
     useEffect(() => {
-      if (ref && typeof ref === 'object' && ref.current) {
+      if (ref && typeof ref === 'object' && ref.current && isCheckbox) {
         ref.current.indeterminate = isMixed;
         indeterminateRef.current = isMixed;
       }
-    }, [ref, isMixed]);
+    }, [ref, isMixed, isCheckbox]);
 
     return (
       <Box position="relative" zIndex={0} className={styles.root}>

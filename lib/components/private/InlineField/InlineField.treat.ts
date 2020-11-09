@@ -67,19 +67,19 @@ export const label = style((theme) => {
   };
 });
 
+export const isMixed = style({});
+
 export const children = style({
   selectors: {
-    [`${realFieldBase}:checked ~ * &, ${realFieldBase}:indeterminate ~ * &`]: {
+    [`${realFieldBase}:checked ~ * &, ${realFieldBase}${isMixed} ~ * &`]: {
       display: 'block',
     },
   },
 });
 
-export const isMixed = style({});
-
 export const selected = style({
   selectors: {
-    [`${realFieldBase}:checked + ${fakeFieldBase} > &, ${realFieldBase}:indeterminate + ${fakeFieldBase} > &, ${isMixed} + ${fakeFieldBase} > &`]: {
+    [`${realFieldBase}:checked + ${fakeFieldBase} > &, ${realFieldBase}${isMixed} + ${fakeFieldBase} > &`]: {
       opacity: 1,
     },
   },
@@ -95,7 +95,7 @@ export const focusOverlay = style({
 
 export const hoverOverlay = style({
   selectors: {
-    [`${realFieldBase}:hover:not(:checked):not(:indeterminate):not(:disabled) + ${fakeFieldBase} > &`]: {
+    [`${realFieldBase}:hover:not(:checked):not(${isMixed}):not(:disabled) + ${fakeFieldBase} > &`]: {
       opacity: 1,
     },
   },
