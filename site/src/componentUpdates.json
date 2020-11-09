@@ -1,1 +1,1017 @@
-[{"version":"29.2.0","updates":[{"updated":["Box"],"summary":"**Box:** Added `zIndex` prop\n\nThe following z-index palette is now available on `Box`:\n\n**Local stacking**\n\n- `0`\n- `1`\n- `2`\n\n**Global stacking**\n\n- `\"dropdownBackdrop\"`\n- `\"dropdown\"`\n- `\"sticky\"`\n- `\"modalBackdrop\"`\n- `\"modal\"`\n- `\"notification\"`\n\n**EXAMPLE USAGE**\n\n```jsx\n<Box position=\"fixed\" zIndex=\"sticky\">\n  ...\n</Box>\n```"},{"updated":["TabPanels"],"summary":"TabPanels: Add `renderInactivePanels` prop\n\nBy default, the children of `TabPanel` components are only rendered when they are selected. However, in cases where you want to preserve local component state when switching tabs, this behaviour is undesirable. Setting `renderInactivePanels` will cause the `TabPanel` children to be rendered even when visually hidden.\n\n**Note:** This is not a visual change, the panels will still be hidden from the user. \n\ne.g.\n```jsx\n<TabsProvider selectedItem={0}>\n    <Tabs>\n      <Tab>First</Tab>\n      <Tab>Second</Tab>\n    </Tabs>\n    <TabPanels renderInactivePanels>\n      <TabPanel>\n        <Text>Tab 1</Text>\n      </TabPanel>\n      <TabPanel>\n        {/* This TabPanel is hidden but still in the DOM */}\n        <Text>Tab 2</Text>\n      </TabPanel>\n    </TabPanels>\n</TabsProvider>\n```"},{"updated":["BraidProvider","BraidTestProvider","BraidLoadableProvider","Link"],"summary":"Added support for refs on [Link](https://seek-oss.github.io/braid-design-system/components/Link)\n\nForwarding refs is necessary for certain accessibility patterns (e.g. managing focus states), but the `Link` component wasn't doing this correctly.\n\nPlease note that, if you're passing a custom `linkComponent` implementation to [BraidProvider](https://seek-oss.github.io/braid-design-system/components/BraidProvider), you'll need to ensure that you're using the new `makeLinkComponent` helper function to forward refs, otherwise any attempt to pass a ref to `Link` will throw an error.\n\n**MIGRATION GUIDE**\n\n```diff\n-import { BraidProvider, LinkComponent } from 'braid-design-system';\n+import { BraidProvider, makeLinkComponent } from 'braid-design-system';\n\n-const CustomLink: LinkComponent = ({ href, ...restProps }) =>\n+const CustomLink = makeLinkComponent({ href, ...restProps }, ref) =>\n  href[0] === '/' ? (\n-    <ReactRouterLink to={href} {...restProps} />\n+    <ReactRouterLink to={href} {...restProps} ref={ref} />\n  ) : (\n-    <a href={href} {...restProps} />\n+    <a href={href} {...restProps} ref={ref} />\n  );\n\nexport const App = () => (\n  <BraidProvider linkComponent={CustomLink} {...rest}>\n    ...\n  </BraidProvider>\n);\n```"},{"updated":["Link"],"summary":"**Link:** Fixed types for `className` prop to support the full [classnames](https://www.npmjs.com/package/classnames) API\n\nYou can now pass arrays and objects to the `className` prop on `Link` without type errors.\n\nFor example:\n\n```jsx\n<Link\n  href=\"#\"\n  className={[\n    'someClass',\n    ['anotherClass', 'yetAnotherClass'],\n    { someConditionalClass: someBoolean }\n  ]}>\n  ...\n</Link>\n```"},{"new":["MenuItemLink"],"summary":"Added **MenuItemLink** component\n\nYou can now render semantic links within menu components, e.g. [OverflowMenu](https://seek-oss.github.io/braid-design-system/components/OverflowMenu), [MenuRenderer](https://seek-oss.github.io/braid-design-system/components/MenuRenderer)\n\nFor example:\n\n```jsx\n<OverflowMenu label=\"Options\">\n  <MenuItem onClick={() => {}}>Button</MenuItem>\n  <MenuItemLink href=\"...\">Link</MenuItemLink>\n</OverflowMenu>\n```\n\nNote that links are rendered internally using [Link](https://seek-oss.github.io/braid-design-system/components/Link). If you want to customise the rendering of these links, you need to provide a custom `linkComponent` implementation to [BraidProvider](https://seek-oss.github.io/braid-design-system/components/BraidProvider)."}]},{"version":"29.1.1","updates":[{"updated":["List","BulletList"],"summary":"**List, BulletList:** Limit width to 100% of parent"}]},{"version":"29.1.0","updates":[{"new":["List"],"summary":"Add `List` component\n\n`List` serves as a replacement for the `BulletList` and `Bullet` components which adds the following improvements:\n\n-   Support for numbers and alpha characters as bullets\n-   Support for custom start positions in number/alpha lists\n-   Rich content support, e.g. list items with multiple paragraphs, nested lists, etc.\n\n_Note: The `BulletList` and `Bullet` components have been marked as deprecated and will be removed in an upcoming major release._\n\n**MIGRATION GUIDE**\n\nIf you want to migrate from `BulletList` to `List`, you can simply replace `BulletList` with `List`, and `Bullet` with `Text`:\n\n```diff\n-<BulletList>\n-  <Bullet>...</Bullet>\n-  <Bullet>...</Bullet>\n-  <Bullet>...</Bullet>\n-</BulletList>\n\n+<List>\n+  <Text>...</Text>\n+  <Text>...</Text>\n+  <Text>...</Text>\n+</List>\n```"},{"updated":["TextLink","TextLinkButton","TextLinkRenderer"],"summary":"**TextLink, TextLinkButton, TextLinkRenderer:** Default `weight` prop to `\"regular\"` when nested inside secondary text\n\nAs of [v28.13.0](https://github.com/seek-oss/braid-design-system/releases/tag/braid-design-system%4028.13.0), `TextLink` components that were nested inside secondary text would be `\"weak\"` by default, i.e. the same tone as the surrounding text and underlined. In practice, this turned out to be somewhat unpredictable behaviour for consumers. We've now reverted this to the previous behaviour of being `\"regular\"` weight by default, i.e. blue and medium font weight.\n\nNote that, if needed, you can still use the weaker link treatment within secondary text via an explicit prop override:\n\n```jsx\n<Text tone=\"secondary\">\n  The TextLink in this sentence is{' '}\n  <TextLink href=\"...\" weight=\"weak\">\n    weak.\n  </TextLink>\n</Text>\n```"},{"updated":["AccordionItem"],"summary":"**AccordionItem:** Prevent Safari from clipping label text"}]},{"version":"29.0.1","updates":[{"updated":["BraidProvider"],"summary":"Throw meaningful error when using 'BraidProvider' in unit tests"}]},{"version":"29.0.0","updates":[{"updated":["Text","Heading"],"summary":"Improved trimming of white space around text\n\nMigrated from our custom [Basekick](https://github.com/michaeltaranto/basekick) implementation to [🛶 Capsize](https://seek-oss.github.io/capsize/) to more accurately trim the white space around text. This will have subtle white space changes throughout the UI, but will largely just be improvements to the balance of space around text.\n\n**BREAKING CHANGES**\n\n**Heading/Text: Removed _LEGACY_SPACE_**\n\nThe `_LEGACY_SPACE_` prop was provided to support consumers migrating to [`v14`](https://github.com/seek-oss/braid-design-system/releases/tag/v14.0.0) when the white space cropping and layout components were originally introduced. This has now been removed to allow us to further improve on our approach.\n\nMigrating off this prop will require consumers to perform the following steps:\n\n-   Remove the usage of `_LEGACY_SPACE_` on a component\n-   Conduct a visual review of the impact (component will appear closer to neighbouring elements)\n-   Use existing layout components, e.g. `Stack`, to define/control the reintroduction of the desired space.\n\nAny issues, please reach out to the team as we are happy to help support consumers in migrating.\n\n**Theme Tokens: Text and Heading definitions**\n\nThere have been strutural theme changes for `heading` and `text` definitions to support the defining of `capHeight` in the system. Previously a definition contained `size` that was the specified font size inclusive of surrounding white space.\n\nA definition now has `capHeight` which is representative of the visual height, supporting improved alignment with other elements like, icons etc.\n\n```diff\n{\n  text: {\n    standard: {\n      mobile: {\n-        size: 16,\n+        capHeight: 11.43,\n        rows: 6\n      }\n    }\n  }\n}\n```\n\nThis is not likely to affect consumers, unless these theme values are used explicitly in custom treat files.\n\n**Theme Tokens: Descender and Cap Height scales**\n\nInstead of the calculated values of `capHeightScale` and `decenderHeightScale`, a theme now accepts `fontMetrics`—a structure that represents the metadata from the font itself.\n\n```diff\n-const capHeight = 24 * theme.typography.capHeightScale;\n+const capHeight = 24 * (theme.typography.fontMetrics.capHeight / theme.typography.fontMetrics.unitsPerEm);\n```\n\n```diff\n-const descender = 24 * theme.typography.decenderHeightScale;\n+const descender = 24 * (Math.abs(theme.typography.fontMetrics.descent) / theme.typography.fontMetrics.unitsPerEm);\n```"},{"updated":["Textarea"],"summary":"Fix type error in Textarea formatRanges"}]},{"version":"28.14.0","updates":[{"new":["IconNotification"],"summary":"Add Notification icon"},{"new":["useBreakpoint"],"summary":"Add useBreakpoint\n\n`useBreakpoint` will return the breakpoint the browser viewport currently falls within (mobile, tablet or desktop). As this can only be calculated in the browser, the value may also be null. Window resizing is supported.\n\n**Note:** Avoid use of this hook where possible. Responsive properties and media queries are a better option in most cases."}]},{"version":"28.13.0","updates":[{"updated":["TextLink","TextLinkButton"],"summary":"**TextLink, TextLinkButton:** Add `weight` prop, add `weak` weight variant\n\nYou can now render links that are underlined while inheriting the tone and weight of its surrounding text.\n\n**EXAMPLE USAGE**\n\n```jsx\n<Text>\n  This sentence contains a{' '}\n  <TextLink href=\"...\" weight=\"weak\">\n    weak TextLink.\n  </TextLink>\n</Text>\n```"}]},{"version":"28.12.0","updates":[{"updated":["Inline"],"summary":"**Inline:** Prevent overlapping of preceding interactive components"}]},{"version":"28.11.0","updates":[{"updated":["TextLinkButton"],"summary":"**TextLinkButton:** Pass click event object to `onClick` handler\n\nThe `onClick` handler was previously called without any arguments. We now pass the click event object through as expected."}]},{"version":"28.10.0","updates":[{"updated":["Button"],"summary":"**Button:** Add `aria-controls` and `aria-expanded` props"},{"new":["Disclosure"],"summary":"Add `Disclosure` component\n\nThis component serves as a replacement for `ToggleContent` from [SEEK Style Guide.](https://github.com/seek-oss/seek-style-guide)\n\n**SEEK STYLE GUIDE MIGRATION GUIDE**\n\n-   `ToggleContent` has been renamed to `Disclosure`.\n-   The `onShowMore` prop has been renamed to `onToggle`.\n-   The spacing around the button has changed to follow [Braid's layout guidelines.](https://seek-oss.github.io/braid-design-system/foundations/layout) Design review is recommeded.\n\n```diff\n-<ToggleContent onShowMore={(expanded) => { ... }} {...rest}>\n+<Disclosure onToggle={(expanded) => { ... }} {...rest}>\n```"},{"updated":["TextLinkButton"],"summary":"**TextLinkButton:** Add `aria-controls`, `aria-describedby` and `aria-expanded` props"}]},{"version":"28.9.0","updates":[{"new":["TextLinkButton"],"summary":"Add `TextLinkButton` component\n\nAllows you to render a semantic button that looks like a `TextLink`.\n\nThis component renders a native `span` element with an ARIA role of `button` so that, unlike a standard button element, text can wrap across multiple lines."}]},{"version":"28.8.0","updates":[{"new":["IconLanguage"],"summary":"Add IconLanguage"}]},{"version":"28.6.0","updates":[{"updated":["Box"],"summary":"Box: Add `body` background\n\nYou can now use the theme's body background on arbitrary elements within the page.\n\n**EXAMPLE USAGE**\n\n```jsx\n<Box background=\"body\">...</Box>\n```"}]},{"version":"28.5.0","updates":[{"updated":["MonthPicker"],"summary":"MonthPicker: Support custom month and year labels\n\nTo support internationalisation, you can now pass the following props to `MonthPicker`:\n\n-   **monthLabel** (`string`)\n-   **yearLabel** (`string`)\n-   **monthNames** (`string[]`)"}]},{"version":"28.3.0","updates":[{"new":["Tabs"],"summary":"Add Tabs component\n\nFollows the [WAI Aria Tabs Pattern.](https://www.w3.org/TR/wai-aria-practices-1.2/#tabpanel)\n\n**EXAMPLE USAGE:**\n\n```jsx\n<TabsProvider id=\"id\">\n  <Stack space=\"medium\">\n    <Tabs label=\"Label\">\n      <Tab>The first tab</Tab>\n      <Tab>The second tab</Tab>\n      <Tab badge={<Badge tone=\"positive\">New</Badge>}>The third tab</Tab>\n    </Tabs>\n    <TabPanels>\n      <TabPanel>...</TabPanel>\n      <TabPanel>...</TabPanel>\n      <TabPanel>...</TabPanel>\n    </TabPanels>\n  </Stack>\n</TabsProvider>\n```"},{"updated":["Autosuggest"],"summary":"Autosuggest: Fix suggestion double tap bug on iOS\n\nTapping a suggestion on iOS triggers the hover state rather than a selection, forcing users to tap a second time to select the suggestion.\n\nThis is due to the way that iOS simulates mouse events in a touch environment. If the document is updated during a `mouseover`, `mouseenter` or `mousemove` event, the subsequent `click` event is never fired. While it may seem counterintuitive, this ensures that touch users are able to see hover effects that make changes to the page.\n\nTo fix this, we now trigger our suggestion hover logic on `touchstart` so that the document doesn't change during mouse events, which then allows the `click` event to fire uninterrupted."}]},{"version":"28.2.0","updates":[{"updated":["useToast"],"summary":"useToast: Add deduplication of toasts\n\nPassing `key` when creating new toasts will now remove existing Toasts on screen with the same `key` before adding the new Toast. This is useful when a toast is created as part of a repeatable process that happens frequently.\n\n```ts\nconst showToast = useToast();\n\nshowToast({\n  message: 'There can only be one of me',\n  tone: 'positive',\n  key: 'deduped',\n});\n```"}]},{"version":"28.1.0","updates":[{"updated":["Inline"],"summary":"Inline: Add support for semantic list elements\n\nAs already featured on `Stack`, when rendering `<Inline component=\"ul|ol\">`, its children will be rendered as `li` elements."},{"updated":["Icon*"],"summary":"Hide icons from screen readers that have no title\n\nIcons are mostly used for decorative purposes and as such are now hidden from screen readers unless providing a `title`. In this case, an Icon is identified as an image."}]},{"version":"28.0.0","updates":[{"updated":["Alert","Notice"],"summary":"**Alert, Notice:** Support rich content\n\n**BREAKING CHANGE**\n\nSince `Alert` and `Notice` no longer render a `Text` component for you, you'll need to ensure that you're providing an enclosing `Text` element as a direct child.\n\nAlert:\n\n```diff\n<Alert tone=\"positive\">\n-  Success!\n+  <Text>Success!</Text>\n</Alert>\n```\n\nNotice:\n\n```diff\n<Notice tone=\"positive\">\n-  Success!\n+  <Text>Success!</Text>\n</Notice>\n\n```\n\n**WHY?**\n\nThe [Alert](https://seek-oss.github.io/braid-design-system/components/Alert) and [Notice](https://seek-oss.github.io/braid-design-system/components/Notice) components were originally designed to render a single paragraph of text, but in practice we've found that there's a lot of demand for richer content, e.g. multiple paragraphs, bullet lists, etc.\n\nIn order to support this level of flexibility, `Alert` and `Notice` no longer render an enclosing `Text` component for you. While this means you'll need a bit more boilerplate in simple cases, it also means you now have much more fine-grained control over the layout.\n\nFor example, if you wanted to render an `Alert` using both `Text` and `BulletList` with `\"medium\"` space between them:\n\n```jsx\n<Alert tone=\"positive\">\n  <Stack space=\"medium\">\n    <Text>The quick brown fox jumps over the lazy dog.</Text>\n    <BulletList space=\"small\">\n      <Bullet>Bullet 1</Bullet>\n      <Bullet>Bullet 2</Bullet>\n    </BulletList>\n  </Stack>\n</Alert>\n```\n\nThis same pattern applies to `Notice`:\n\n```jsx\n<Notice tone=\"positive\">\n  <Stack space=\"medium\">\n    <Text>The quick brown fox jumps over the lazy dog.</Text>\n    <BulletList space=\"small\">\n      <Bullet>Bullet 1</Bullet>\n      <Bullet>Bullet 2</Bullet>\n    </BulletList>\n  </Stack>\n</Notice>\n```"},{"updated":["MonthPicker"],"summary":"**MonthPicker:** Fix internal `<Hidden screen>` deprecation warning\n\nThe `MonthPicker` component was mistakenly using `<Hidden screen>` to provide labels to screen readers rather than the new [`HiddenVisually`](https://seek-oss.github.io/braid-design-system/components/HiddenVisually) component. As a result, deprecation warnings were being logged in the console during development."}]},{"version":"27.3.0","updates":[{"updated":["Toggle"],"summary":"Toggle: Hide border on dark backgrounds\n\nIn order to reduce visual noise, similar to other fields, we now hide the border on `Toggle` elements when rendered on dark backgrounds."},{"updated":["Dropdown"],"summary":"Dropdown: Lighten chevron when disabled\n\nThe visual prominence of the chevron icon is now lower when `disabled` is set to `true`."},{"updated":["Autosuggest"],"summary":"Autosuggest: Apply darker background when disabled\n\nWhen disabled, `Autosuggest` elements didn't have the same dark background as other disabled fields. This has now been fixed."}]},{"version":"27.2.0","updates":[{"new":["HiddenVisually"],"summary":"Add `HiddenVisually` component\n\nYou can now easily provide content to assistive technologies while hiding it from the screen.\n\n```jsx\n<Text>\n  This content is available to everyone.\n  <HiddenVisually>\n    This content is only available to screen readers.\n  </HiddenVisually>\n</Text>\n```"},{"updated":["Hidden"],"summary":"Hidden: Infer `inline` prop when nested inside Text or Heading\n\nCurrently, if you want to hide content using the `Hidden` component in an inline context (e.g. hiding part of a sentence), you need to remember to set the `inline` boolean prop.\n\nSince most usages of this feature are within text, we now infer this for you automatically within the context of a `Text` or `Heading` component.\n\n**MIGRATION GUIDE**\n\nThis change is not strictly required, but you can now clean up your code like this:\n\n```diff\n-<Text>The end of this sentence is... <Hidden inline below=\"tablet\">hidden on mobile.</Hidden>\n+<Text>The end of this sentence is... <Hidden below=\"tablet\">hidden on mobile.</Hidden>\n```"}]},{"version":"27.1.1","updates":[{"updated":["MonthPicker"],"summary":"MonthPicker: Preserve touchable height on iOS\n\nFix for the native variant of `MonthPicker` having a reduced height on iOS when no value is provided."}]},{"version":"27.1.0","updates":[{"updated":["Stack"],"summary":"Stack: Add support for Hidden stack items\n\nYou can now responsively hide stack items using the [`Hidden`](https://seek-oss.github.io/braid-design-system/components/Hidden) component while maintaining the correct spacing between all visible elements.\n\nFor example, if you wanted to hide a stack item on mobile:\n\n```jsx\n<Stack space=\"small\">\n  <Text>...</Text>\n  <Hidden below=\"tablet\">\n    <Text>...</Text>\n  </Hidden>\n  <Text>...</Text>\n</Stack>\n```"}]},{"version":"26.0.0","updates":[{"updated":["Stack","Inline","Tiles"],"summary":"Stack, Inline, Tiles: Flatten fragments when provided as direct children\n\nThe following patterns should now work as you might have previously expected:\n\n```jsx\n<Stack space=\"small\">\n  <React.Fragment>\n    <Text>...</Text>\n    <Text>...</Text>\n  </React.Fragment>\n  <Text>...</Text>\n</Stack>\n```\n\n```jsx\n<Inline space=\"small\">\n  <React.Fragment>\n    <Badge>...</Badge>\n    <Badge>...</Badge>\n  </React.Fragment>\n  <Badge>...</Badge>\n</Inline>\n```\n\n```jsx\n<Tiles space=\"small\" columns={3}>\n  <React.Fragment>\n    <Card>...</Card>\n    <Card>...</Card>\n  </React.Fragment>\n  <Card>...</Card>\n</Tiles>\n```\n\n**BREAKING CHANGE**\n\nWhile _highly_ unlikely, if you were using a fragment to group unspaced sibling nodes within a `Stack`, `Inline` or `Tiles` element, you'll need to replace it with a `Box`, for example:\n\n```diff\n<Stack space=\"small\">\n  ...\n-  <React.Fragment>\n+  <Box>\n    <Box>...</Box>\n    <Box>...</Box>\n-  <React.Fragment>\n+  </Box>\n  ...\n</Stack>\n```\n\n```diff\n<Inline space=\"small\">\n  ...\n-  <React.Fragment>\n+  <Box>\n    <Box>...</Box>\n    <Box>...</Box>\n-  <React.Fragment>\n+  </Box>\n  ...\n</Inline>\n```\n\n```diff\n<Tiles space=\"small\" columns={3}>\n  ...\n-  <React.Fragment>\n+  <Box>\n    <Box>...</Box>\n    <Box>...</Box>\n-  <React.Fragment>\n+  </Box>\n  ...\n</Tiles>\n```"}]},{"version":"25.7.1","updates":[{"updated":["TextField","Autosuggest","PasswordField"],"summary":"TextField, Autosuggest, PasswordField: Improved support for field buttons with browser extensions.\n\nThe implementation of internal spacing within fields has been adjusted to better support browser extensions for password managers.\n\nAffects the following components:\n\n-   PasswordField: visibility toggle button\n-   TextField: clear button\n-   Autosuggest: clear button"},{"updated":["Textarea"],"summary":"Textarea: Fix border radius on dark backgrounds\n\nWhen rendering a `Textarea` on a background other than white, the field background extended out beyond the field's border radius."},{"updated":["TextField","Autosuggest","PasswordField"],"summary":"TextField, Autosuggest, PasswordField: Prevent field buttons firing on right click\n\nField buttons, such as clear and password visibility toggle, fire on mouse down to ensure focus is retained on the relevant field. We now ensure that the button only recognises left mouse button clicks.\n\nAffects the following components:\n\n-   PasswordField: visibility toggle button\n-   TextField: clear button\n-   Autosuggest: clear button"}]},{"version":"25.7.0","updates":[{"updated":["Box"],"summary":"Add zero opacity to Box\n\nProvide zero opacity on `Box` as an optimisation.\n\nExample usage:\n\n```tsx\n<Box opacity={0}>...</Box>\n```"},{"new":["PasswordField"],"summary":"Add PasswordField component\n\nProvides a password field complete with visibility toggle to switch between a masked and unmasked field value."}]},{"version":"25.6.0","updates":[{"updated":["Autosuggest"],"summary":"Autosuggest: Support suggestion descriptions\n\nYou can now provide a `description` as part of each suggestion item, e.g.:\n\n```jsx\n<Autosuggest\n  suggestions={[\n    {\n      text: 'Apples',\n      value: 123,\n      description: 'Juicy and delicious',\n    },\n  ]}\n  {...rest}\n/>\n```"}]},{"version":"25.5.1","updates":[{"updated":["Autosuggest"],"summary":"Autosuggest: Don't select suggestions onBlur when using automaticSelection and suggestions are closed"}]},{"version":"25.5.0","updates":[{"updated":["AccordionItem"],"summary":"AccordionItem: Support `onToggle` prop without `expanded` to allow tracking in uncontrolled mode\n\nFor example:\n\n```jsx\n<AccordionItem\n  id=\"id\"\n  label=\"Label\"\n  onToggle={expanded => trackSomething(expanded)}\n>\n  ...\n</AccordionItem>\n```"}]},{"version":"25.4.1","updates":[{"updated":["Autosuggest"],"summary":"Autosuggest: When using the `automaticSelection` prop, we now prevent automatic selection from ocurring if the input value hasn't changed since focusing the field"}]},{"version":"25.4.0","updates":[{"updated":["Text"],"summary":"Text: Add data attribute support"},{"updated":["Heading"],"summary":"Heading: Add data attribute support"}]},{"version":"25.3.0","updates":[{"updated":["Inline"],"summary":"Inline: Add `collapseBelow` and `reverse` props.\n\nSimilar to [Columns](https://seek-oss.github.io/braid-design-system/components/Columns), you can now responsively collapse an `Inline` into a vertical stack on mobile with the `collapseBelow` prop.\n\nFor example, if you want items to stack vertically below tablet:\n\n```jsx\n<Inline space=\"small\" collapseBelow=\"tablet\">\n  ...\n</Inline>\n```\n\nAlso similar to `Columns`, you can now reverse the order of items horizontally. This is particularly useful when combined with `align=\"right\"`.\n\nFor example, if you're rendering buttons and you want your primary action on the right on desktop, but at the top on mobile:\n\n```jsx\n<Inline space=\"small\" collapseBelow=\"tablet\" align=\"right\" reverse>\n  <Button>Primary action</Button>\n  <Button weight=\"weak\">Secondary action</Button>\n</Inline>\n```"},{"updated":["Columns"],"summary":"Columns: Add `align` prop\n\nWhen collapsing columns into a vertical stack on smaller screens, you can now control the alignment.\n\nFor example, if you want your columns to be horizontally centred on mobile:\n\n```jsx\n<Columns space=\"small\" collapseBelow=\"tablet\" align=\"center\">\n  <Column>...<Column>\n  <Column>...<Column>\n  <Column>...<Column>\n</Columns>\n```\n\nAs a side effect, this also means that you can control the alignment of columns when the total width doesn't reach 100%.\n\nFor example:\n\n```jsx\n<Columns space=\"small\" align=\"center\">\n  <Column width=\"1/3\">...<Column>\n  <Column width=\"1/3\">...<Column>\n</Columns>\n```"},{"new":["TextDropdown"],"summary":"Add TextDropdown component\n\nAn inline dropdown that can be used as part of a sentence or as an\nalternative to `Dropdown`, outside of a more structured form.\n\nInherits its styling from the parent typographic component, and as such\nmust be used nested within either a `Text` or `Heading` component.\n\nExample usage:\n\n```tsx\nconst [jobTitle, setJobTitle] = useState('Developer');\n\n<Text>\n  <TextDropdown\n    id=\"jobTitle\"\n    label=\"Job Title\"\n    value={jobTitle}\n    onChange={setJobTitle}\n    options={['Developer', 'Designer', 'Product Manager']}\n  />\n</Text>;\n```"},{"updated":["Box"],"summary":"Hide native focus rings on Box elements during mouse interactions"}]},{"version":"25.2.0","updates":[{"new":["Accordion","AccordionItem"],"summary":"Add `Accordion` and `AccordionItem` components\n\nExample usage:\n\n```jsx\n<Accordion>\n  <AccordionItem id=\"item_1\" label=\"Accordion item 1\">\n    <Text>Accordion item content</Text>\n  </AccordionItem>\n  <AccordionItem id=\"item_2\" label=\"Accordion item 2\">\n    <Text>Accordion item content</Text>\n  </AccordionItem>\n  <AccordionItem id=\"item_3\" label=\"Accordion item 3\">\n    <Text>Accordion item content</Text>\n  </AccordionItem>\n</Accordion>\n```\n\nAccordions manage their own state internally by default. If you'd like to take control of them yourself, you can pass an `expanded` prop to `AccordionItem` as well as an `onToggle` callback.\n\n```jsx\nconst [expanded, setExpanded] = useState(false);\n\n<AccordionItem\n  id=\"id\"\n  label=\"Accordion item\"\n  expanded={expanded}\n  onToggle={setExpanded}\n>\n  <Text>Accordion item content</Text>\n</AccordionItem>;\n```"},{"updated":["Box"],"summary":"Box: Add support for `outline=\"none\"`"},{"updated":["MonthPicker","OverflowMenu","MenuRenderer","Button"],"summary":"Drop lodash usage to decrease bundle size.\n\nThis directly affects `MonthPicker` and any components using the `data` prop:\n\n-   All field components\n-   OverflowMenu\n-   MenuRenderer\n-   Button"}]},{"version":"25.1.0","updates":[{"new":["ButtonLink"],"summary":"Add ButtonLink component\n\nYou can now easily render semantic links that look like [Button](https://seek-oss.github.io/braid-design-system/components/Button) elements without needing to use the lower level [ButtonRenderer](https://seek-oss.github.io/braid-design-system/components/ButtonRenderer).\n\nThis component renders a native `a` element by default, but this can be customised via the `linkComponent` prop on [BraidProvider](https://seek-oss.github.io/braid-design-system/components/BraidProvider).\n\nExample usage:\n\n```jsx\n<ButtonLink href=\"#\" weight=\"strong\">\n  Submit\n</ButtonLink>\n```"}]},{"version":"25.0.0","updates":[{"updated":["BraidProvider"],"summary":"BraidProvider: Add `linkComponent` prop to customise link rendering.\n\nIf you'd like to customise the technical implementation of all `Link` and `TextLink` components from Braid, you can now pass a custom component to the `linkComponent` prop on `BraidProvider`. For example, if you wanted to ensure that all relative links are [React Router](https://reacttraining.com/react-router/) links:\n\n```tsx\nimport React from 'react';\nimport { Link as ReactRouterLink } from 'react-router-dom';\nimport { BraidProvider, LinkComponent } from 'braid-design-system';\nimport wireframe from 'braid-design-system/themes/wireframe';\n\n// First create the custom link implementation:\nconst CustomLink: LinkComponent = ({ href, ...restProps }) =>\n  href[0] === '/' ? (\n    <ReactRouterLink to={href} {...restProps} />\n  ) : (\n    <a href={href} {...restProps} />\n  );\n\n// Then pass it to BraidProvider:\nexport const App = () => (\n  <BraidProvider theme={wireframe} linkComponent={CustomLink}>\n    ...\n  </BraidProvider>\n);\n```\n\nIn order to make your custom link component available for any type of link (not just usages of `TextLink`), this release introduces a new `Link` component which renders an unstyled `a` tag by default.\n\n**BREAKING CHANGES**\n\n-   `TextLink` now requires an `href` prop. Even though this is unlikely to affect anyone (a `TextLink` without an `href` isn't terribly useful), this is still technically a breaking change.\n\n    However, if you find an instance of `TextLink` that you think _shouldn't_ have an `href`, this is a sign that it's not _actually_ a link and you should use a [`TextLinkRenderer`](https://seek-oss.github.io/braid-design-system/components/TextLinkRenderer) instead. Unfortunately, because there's no way for us to know the semantics of your usage ahead of time, we're unable to provide a migration guide, so you'll need to be mindful of how this might impact accessibility.\n\n-   The props for `TextLink` now extend React's `AnchorHTMLAttributes<HTMLAnchorElement>` type rather than `AllHTMLAttributes<HTMLAnchorElement>`. While highly unlikely, this may cause type errors if you've passed props to `TextLink` that aren't considered to be valid anchor props."}]},{"version":"24.4.1","updates":[{"updated":["Divider"],"summary":"Divider: Rename 'standard' weight to 'regular'."}]},{"version":"24.4.0","updates":[{"updated":["Divider"],"summary":"Divider: Add strong weight variant, e.g. `<Divider weight=\"strong\">`.\n\nNote that this also affects the `dividers` prop on both `Stack` and `Tiles`, e.g. `<Stack space=\"medium\" dividers=\"strong\">`. You can still pass a boolean prop if you want to render the default divider styling, e.g. `<Stack space=\"medium\" dividers>`, so this change is backwards compatible."}]},{"version":"24.2.0","updates":[{"updated":["Inline"],"summary":"Inline: Support vertical alignment\n\n**`Inline`**\n\nVertical alignment is now supported via the `alignY` prop, e.g. `<Inline space=\"small\" alignY=\"center\">`.\n\nThis also supports responsive values, e.g. `<Inline space=\"small\" alignY={['center', 'top']}>`"},{"updated":["Box"],"summary":"Box: Add `userSelect=\"none\"`.\n\n**`Box`**\n\nYou can now set `userSelect` to `\"none\"` directly on `Box`.\n\nSince the default value of `user-select` in CSS is `\"auto\"`, you can make this value dynamic by conditionally setting it to `undefined`, e.g. `<Box userSelect={selectable ? undefined : 'none'}`."}]},{"version":"24.1.3","updates":[{"updated":["Textarea"],"summary":"Textarea: Fix trailing new line highlight issue\n\n**BUG FIXES**\n\n**`Textarea`**\n\nFix for `highlightRanges`, where the highlights could get out of sync with the field value, if the value contained trailing new lines."}]},{"version":"24.1.2","updates":[{"updated":["Checkbox","Radio"],"summary":"Checkbox & Radio: Only add aria-describedby when a message is provided\n\n**BUG FIXES**\n\n**`Checkbox` & `Radio`**\n\nBoth of these inputs were previously always adding the `aria-describedby` attribute, while conditionally rendering the `message` only when provided. This meant that elements without a `message` would be indicating that they are described by an element that does not exist."}]},{"version":"24.1.1","updates":[{"updated":["Tiles"],"summary":"Tiles: Honour column width for non-breaking content.\n\n**BUG FIXES**\n\n**`Tiles`**\n\nThe column width of a tile was not being honoured when its child elements contained non-wrapping/breaking content."}]},{"version":"24.1.0","updates":[{"updated":["MenuRenderer"],"summary":"MenuRenderer: Add support for configuring the menu offset from the trigger\n\n**FEATURES**\n\n**`MenuRenderer`**\n\nConfigure the offset distance between the menu trigger and menu using the `offsetSpace` prop. As with all space values in the system, this accepts a responsive prop.\n\n```diff\n <MenuRenderer\n+  offsetSpace=\"small\"\n   trigger={(triggerProps, { open }) => (\n     <button {...triggerProps}>Menu</button>\n   )}\n >\n   <MenuItem onClick={...}>Option</MenuItem>\n </MenuRenderer>\n```"}]},{"version":"24.0.0","updates":[{"new":["MenuRenderer"],"summary":"Add customisable `MenuRenderer` component\n\n**BREAKING CHANGES**\n\n-   Rename `OverflowMenuItem` to `MenuItem`.\n-   Removed `type=\"link\"` from `OverflowMenuItem` due to an accessibility issue with the approach (based on review of consumer usage, it did not seem to be used).\n\n**FEATURES**\n\n**`MenuRenderer`**\n\nEncapsulates all the behaviours of an accessible menu button, allowing consumers to define a custom `trigger` to open the menu. The trigger function receives two arguments:\n\n1.  Props required for accessibility, including mouse/keyboard interactions\n2.  Menu state object containing the `open` state.\n\n```tsx\n<MenuRenderer\n  trigger={(triggerProps, { open }) => (\n    <button {...triggerProps}>Menu</button>\n  )}\n>\n  <MenuItem onClick={...}>Option</MenuItem>\n</MenuRenderer>\n```\n\n**MIGRATION GUIDE**\n\n**`OverflowMenuItem`**\n\nRename `OverflowMenuItem` to `MenuItem`.\n\n```diff\n <OverflowMenu label=\"Overflow\">\n-  <OverflowMenuItem onClick={...}>Option</OverflowMenuItem>\n+  <MenuItem onClick={...}>Option</MenuItem>\n </OverflowMenu>\n```\n\nChanging the `type` is no longer supported due to an accessibility issue with the previous implementation. Please get in contact via Slack if you depended on this.\n\n```diff\n <OverflowMenu label=\"Overflow\">\n-  <OverflowMenuItem type=\"link\" onClick={...}>Option</OverflowMenuItem>\n+  <MenuItem onClick={...}>Option</MenuItem>\n </OverflowMenu>\n```"},{"new":["BraidTestProvider"],"summary":"Add BraidTestProvider component.\n\nThis is an alternative to `BraidProvider` for unit test environments. Note that, as the name implies, this should _not_ be used in production code.\n\n**MIGRATION GUIDE**\n\nIn your unit tests, you can replace usage of `BraidProvider` with `BraidTestProvider`, omitting the theme.\n\n```diff\n-<BraidProvider theme={wireframe}>\n+<BraidTestProvider>\n```\n\nIf for whatever reason your tests are relying on the presence of a specific theme, you can pass the name of the desired theme.\n\n```diff\n-<BraidProvider theme={seekAnz}>\n+<BraidTestProvider themeName=\"seekAnz\">\n```"},{"updated":["Button","ButtonRenderer","OverflowMenu"],"summary":"Only show focus rings on buttons for keyboard navigation.\n\nThis impacts the following components:\n\n-   `Button`\n-   `ButtonRenderer`\n-   `OverflowMenu`\n\nBrowsers automatically show focus rings on buttons when clicking on them, even though (for our purposes, at least) they're undesirable from a visual design perspective and redudant from a UX perspective.\n\nWe now automatically hide these focus rings if the user has moved their mouse, indicating that they're not navigating via the keyboard. However, to maintain keyboard accessibility, we reinstate these focus rings whenever the keyboard is used. Most typically, this ensures that you'll see focus rings when tabbing around the UI, even if you've previously used the mouse.\n\n**MIGRATION GUIDE**\n\nNo public APIs are affected by this, but you may find that this causes unit test failues that look like this:\n\n> Warning: An update to X inside a test was not wrapped in act(...).\n\nIf this is the case, you should replace `BraidProvider` in your tests with `BraidTestProvider`.\n\n```diff\n-<BraidProvider theme={wireframe}>\n+<BraidTestProvider>\n```"}]},{"version":"23.0.2","updates":[{"updated":["TextField","Autosuggest"],"summary":"Hide webkit native clear field on search type inputs"}]},{"version":"29.3.0","updates":[{"updated":["Badge"],"summary":"**Badge:** Allow custom title text\n\n**EXAMPLE USAGE**\n\n```jsx\n<Badge tone=\"positive\" title=\"3 new jobs\">3</Badge>\n```"},{"updated":["TabPanel"],"summary":"Improved server rendering of Tabs\n\nPreviously, `Tab` and `TabPanel` components only showed their content and active states after the first render, which meant server rendering was not ideal. Active Tabs and TabPanel content can now be server rendered. Uncontrolled usages of Tabs should just work.\n\nFor controlled Tabs using the `selectedItem` prop, you now need to pass the `item` prop (already on `Tab`) to `TabPanel` as well.\n\n```diff\n<TabsProvider id=\"id\" selectedItem=\"second\">\n  <Tabs label=\"Test tabs\">\n    <Tab item=\"first\">The first tab</Tab>\n    <Tab item=\"second\">The second tab</Tab>\n    <Tab item=\"third\">The third tab</Tab>\n  </Tabs>\n  <TabPanels>\n-    <TabPanel>\n+    <TabPanel item=\"first\">\n      <Placeholder height={200} label=\"Panel 1\" />\n    </TabPanel>\n-    <TabPanel>\n+    <TabPanel item=\"second\">\n      <Placeholder height={200} label=\"Panel 2\" />\n    </TabPanel>\n-    <TabPanel>\n+    <TabPanel item=\"third\">\n      <Placeholder height={200} label=\"Panel 3\" />\n    </TabPanel>\n  </TabPanels>\n</TabsProvider>\n```"},{"updated":["ContentBlock"],"summary":"**ContentBlock:** Add support for xsmall & small widths\n\n**EXAMPLE USAGE**\n\n```jsx\n<ContentBlock width=\"small\">\n  ...\n</ContentBlock>\n```"}]},{"version":"29.4.0","updates":[{"updated":["Badge"],"summary":"**Badge:** Add `bleedY` prop\n\nYou can now choose to allow the badge’s background colour to bleed out into the surrounding layout, making it easier to align with other elements.\n\nFor example, we can align a badge to a [Heading](https://seek-oss.github.io/braid-design-system/components/Heading) element using an [Inline](https://seek-oss.github.io/braid-design-system/components/Inline), even though the badge is actually taller than the heading. If we didn’t use the `bleedY` prop in this case, the badge would introduce unwanted space above and below the heading.\n\n```jsx\n<Inline alignY=\"center\" space=\"xsmall\">\n  <Heading level=\"4\">Heading</Heading>\n  <Badge bleedY tone=\"positive\">\n    New\n  </Badge>\n</Inline>\n```"},{"updated":["List","BulletList"],"summary":"**List, BulletList:** Ensure list items are full width\n\nFixes an issue where list content was unable to stretch to the edge of its container. To allow this, we now set the list item container itself to be full width so that content is no longer constrained."},{"updated":["ContentBlock"],"summary":"**ContentBlock:** Ensure block is full width\n\nFixes an issue where `ContentBlock`s inside of flex containers would not grow to their defined `max-width`."},{"new":["Dialog"],"summary":"Add `Dialog` component\n\nFollows the [WAI Aria Dialog (Modal) Pattern](https://www.w3.org/TR/wai-aria-practices-1.2/#dialog_modal).\n\n**EXAMPLE USAGE:**\n\n```jsx\n<Fragment>\n  <Actions>\n    <Button onClick={() => setOpen(true)}>Open dialog</Button>\n  </Actions>\n\n  <Dialog\n    title=\"Dialog Example\"\n    id={id}\n    open={open}\n    onClose={setOpen}\n  >\n    <Placeholder height={100} width=\"100%\" />\n  </Dialog>\n</Fragment>\n```\n\nSee [the documentation](https://seek-oss.github.io/braid-design-system/components/Dialog) for an exhaustive list of features."}]},{"version":"29.5.0","updates":[{"updated":["Autosuggest"],"summary":"**Autosuggest**: Update to ARIA 1.2 combobox spec"},{"new":["MenuItemDivider"],"summary":"Add **MenuItemDivider** component\n\nYou can now place visual separators between groups of menu items when using [OverflowMenu](https://seek-oss.github.io/braid-design-system/components/OverflowMenu)/[MenuRenderer](https://seek-oss.github.io/braid-design-system/components/MenuRenderer).\n\n**EXAMPLE USAGE**\n\n```jsx\n<OverflowMenu label=\"Options\">\n  <MenuItem onClick={() => {}}>Button</MenuItem>\n  <MenuItemLink href=\"#\">Link</MenuItemLink>\n  <MenuItemDivider />\n  <MenuItem onClick={() => {}}>Another button</MenuItem>\n</OverflowMenu>\n```"},{"new":["MenuItemCheckbox"],"summary":"Add **MenuItemCheckbox** component\n\nYou can now render checkboxes within [OverflowMenu](https://seek-oss.github.io/braid-design-system/components/OverflowMenu)/[MenuRenderer](https://seek-oss.github.io/braid-design-system/components/MenuRenderer) elements.\n\n**EXAMPLE USAGE**\n\n```jsx\n<OverflowMenu label=\"Checklist\">\n  <MenuItemCheckbox checked={true} onChange={() => {}}>\n    Checkbox 1\n  </MenuItemCheckbox>\n  <MenuItemCheckbox checked={false} onChange={() => {}}>\n    Checkbox 2\n  </MenuItemCheckbox>\n  <MenuItemCheckbox checked={false} onChange={() => {}}>\n    Checkbox 3\n  </MenuItemCheckbox>\n</OverflowMenu>\n```"},{"updated":["Loader"],"summary":"**Loader:** Add support for `aria-label`\n\nProvides a mechanism for consumers to better communicate to assistive technologies what is happening.\n\n**EXAMPLE USAGE:**\n```jsx\n<Loader aria-label=\"Loading search results\" />\n```"}]},{"version":"29.5.1","updates":[{"updated":["MenuRenderer","OverflowMenu"],"summary":"**MenuRenderer, OverflowMenu:** Fix circular dependency issue"}]},{"version":"29.6.0","updates":[{"updated":["HiddenVisually"],"summary":"**HiddenVisually:** Add support for passing IDs\n\nThis is useful when mapping a `HiddenVisually` component to `aria-describedby`\n\n**EXAMPLE USAGE:**\n```jsx\n<HiddenVisually id=\"my-hidden-desciption\">Hidden desciption</HiddenVisually>\n```"},{"updated":["Autosuggest"],"summary":"**Autosuggest:** Add translations prop to enable internationalisation"},{"updated":["Autosuggest"],"summary":"**Autosuggest:** Improve screen reader experience\n\nAdd description informing user that suggestions will appear below field. Also, notify users about how many suggestions are available, and about automatic selections."},{"updated":["TextField","PasswordField","Textarea","Dropdown"],"summary":"**TextField, PasswordField, Textarea, Dropdown:** Add support for multiple field descriptions\n\nPreviously, if a custom `aria-describedby` prop was passed, it would take precedence over the `message` prop, which also uses `aria-describedby`. Both descriptions can now be applied at the same time."}]},{"version":"29.7.0","updates":[{"updated":["TextField","PasswordField","Textarea","Autosuggest","Dropdown","MonthPicker"],"summary":"**TextField, PasswordField, Textarea, Autosuggest, Dropdown, MonthPicker:** Add decription to aria-describedby"},{"updated":["FieldLabel"],"summary":"**FieldLabel:** Add descriptionId prop\n\n**EXAMPLE USAGE:**\n```jsx\n<FieldLabel \n    htmlFor=\"id\" \n    label=\"This is a field label\" \n    description=\"Extra info about the field\" \n    descriptionId=\"id-description\"\n/>\n```"}]},{"version":"29.8.0","updates":[{"new":["Drawer"],"summary":"Add **Drawer** component\n\nYou can now open a modal panel on the right-hand side of the screen, following the [WAI Aria Dialog (Modal) Pattern](https://www.w3.org/TR/wai-aria-practices-1.2/#dialog_modal).\n\nSee the [documentation](https://seek-oss.github.io/braid-design-system/components/Drawer) for more details and interactive examples."},{"updated":["Box"],"summary":"**Box:** Add `maxWidth` prop\n\nThe sizes from [ContentBlock](https://seek-oss.github.io/braid-design-system/components/ContentBlock) are now available at a lower level for more primitive-based layouts.\n\n**EXAMPLE USAGE:**\n\n```jsx\n<Box maxWidth=\"large\">...</Box>\n```"},{"updated":["Dialog"],"summary":"**Dialog:** Fix close button to the corner of the dialog when scrolling"},{"updated":["Autosuggest","Dialog"],"summary":"**Autosuggest, Dialog:** Lighten backdrop opacity from 0.7 to 0.4"}]},{"version":"29.8.1","updates":[{"updated":["Loader","Button","ButtonLink","ButtonRenderer"],"summary":"**Loader, Button, ButtonLink, ButtonRenderer:** Improve performance of loading animations\n\nAdjust animations properties and values to reduce CPU recalculation overheads."},{"updated":["Toggle"],"summary":"**Toggle:** Ensure there is a minimum amount of space between the label and the toggle when using justified alignment"}]},{"version":"29.9.0","updates":[{"updated":["Radio","Checkbox"],"summary":"**Radio,Checkbox:** Add description and badge support\n\nAllows a way to provide more detail about a `Radio` or `Checkbox` item using `description`, bringing these fields into line with the rest of the form fields in Braid. Also allows a `badge` to be provided to be placed alongside the `label`.\n\n**EXAMPLE USAGE:**\n```jsx\n<Radio\n  label=\"Option\"\n  description=\"This option is your favourite\"\n  badge={\n    <Badge tone=\"positive\" weight=\"strong\">\n      New\n    </Badge>\n  }\n/>\n```\n\nor\n\n```jsx\n<Checkbox\n  label=\"Option\"\n  description=\"This option is your favourite\"\n  badge={\n    <Badge tone=\"positive\" weight=\"strong\">\n      New\n    </Badge>\n  }\n/>\n```"}]},{"version":"29.10.0","updates":[{"updated":["List"],"summary":"**List:** Add support for Roman numerals\n\n**EXAMPLE USAGE**\n\n```jsx\n<List type=\"roman\">\n  <Text>This is a Roman list item.</Text>\n  <Text>This is a Roman list item.</Text>\n  <Text>This is a Roman list item.</Text>\n</List>\n```"}]},{"version":"29.11.0","updates":[{"updated":["Autosuggest"],"summary":"**Autosuggest:** Add `hideSuggestionsOnSelection` prop\n\nTypically we hide the suggestion list when a selection is made, assuming that the field is now populated with the desired value. However, if the surrounding application clears the text field when a selection is made, this clashes with the user expectation that the field has been reverted back to its initial state with suggestions visible. To cater for this, we now allow you to opt out of this behaviour via the `hideSuggestionsOnSelection` boolean prop.\n\n**EXAMPLE USAGE**\n\n```jsx\n<Autosuggest hideSuggestionsOnSelection={false} {...rest} />\n```"}]},{"version":"29.11.1","updates":[{"updated":["TextField","Dropdown","PasswordField","MonthPicker","Textarea"],"summary":"**TextField,Dropdown,PasswordField,MonthPicker,Textarea:** Apply aria-describedby to form elements only when needed\n\nOnly apply `aria-describedby` to form elements when needed, e.g. either a `message`, `description`, or an explicit `aria-describedby` is passed."},{"updated":["MonthPicker"],"summary":"**MonthPicker:** Announce semantic grouping of fields and improved translation support.\n\nWhen not on a native device, the MonthPicker uses a `fieldset` containing two dropdowns. This change ensures that the grouping is announced correctly. From a translations perspective the labels for the dropdowns are no longer a concatenation of the `label` and `monthLabel`/`yearLabel`, supporting translation of the entire phrase."}]},{"version":"29.11.2","updates":[{"updated":["Radio","Checkbox"],"summary":"**Radio,Checkbox:** Apply aria-describedby only when needed\n\nOnly apply aria-describedby when needed, e.g. either a message or description is passed."},{"updated":["IconVisibility"],"summary":"**IconVisibility:** Simplify visibility icon"}]},{"version":"29.11.3","updates":[{"updated":["Tabs"],"summary":"**Tabs:** Only scroll tabs when necessary on large screens\n\nPreviously, when there were enough tabs to require horizontal scrolling, we would always scroll the active tab to the left-hand side of the scroll container (with a slight offset). This was primarily designed as a mobile interaction, and in practice was found to be a bit unexpected on large screens.\n\nInstead, when the tabs are scrollable on large screens, we now only scroll the active tab into view if it's partially off-screen or positioned too close to the edge of the scroll container. This ensures that automatic scrolling only occurs when absolutely necessary."}]},{"version":"29.12.0","updates":[{"new":["RadioGroup","RadioItem"],"summary":"**RadioGroup,RadioItem:** Add RadioGroup & RadioItem components\n\nThe RadioGroup provides an accessible way to group and control a set of **RadioItem** components. The RadioGroup is responsible for handling the value, tone, message, and disabled state—determining the presentation and selection of the items in the list.\n\n**EXAMPLE USAGE:**\n```jsx\n<RadioGroup\n  id=\"experience\"\n  label=\"Experience\"\n  value=\"\"\n  onChange={() => {}}\n>\n  <RadioItem label=\"Less than one year\" value=\"0\" />\n  <RadioItem label=\"1 year\" value=\"1\" />\n  <RadioItem label=\"2 years\" value=\"2\" />\n  <RadioItem label=\"3+ years \" value=\"3\" />\n</RadioGroup>\n```"}]},{"version":"29.13.0","updates":[{"updated":["List"],"summary":"**List:** Add support for icons\n\nProvides a way to use an icon for all the items in a list. When using `type=\"icon\"` you must also provide the `icon` prop. See example below:\n\n**EXAMPLE USAGE:**\n```jsx\n<List type=\"icon\" icon={<IconTick tone=\"positive\" />}>\n  <Text>This is a list item.</Text>\n  <Text>This is a list item.</Text>\n  <Text>This is a list item.</Text>\n</List>\n```"}]},{"version":"29.13.1","updates":[{"updated":["Checkbox","RadioGroup","Radio"],"summary":"**Checkbox,RadioGroup,Radio:** Fix element type passed to onChange event\n\nFixes a bug where the `onChange` event previously received the change event for a `form` element rather than an `input` element."}]},{"version":"29.14.0","updates":[{"updated":["Autosuggest"],"summary":"**Autosuggest:** Forward `ref` prop to input element"}]},{"version":"29.15.0","updates":[{"updated":["Autosuggest"],"summary":"**Autosuggest:** Support custom label text for suggestions\n\nYou can now optionally provide different suggestion text from the value that gets inserted into the text field.\n\n**EXAMPLE USAGE**\n\n```tsx\n<Autosuggest\n  suggestions={[{ text: 'apples', label: 'Add \"apples\"' }]}\n  {...restProps}\n/>\n```"}]},{"version":"29.16.0","updates":[{"updated":["Checkbox"],"summary":"**Checkbox:** Add support for mixed state\n\nA checkbox can now accept a boolean or `mixed` as the `checked` property. When `mixed`, the checkbox is marked as being in an `indeterminate` state and announced as `mixed` to a screen reader.\n\n**EXAMPLE USAGE:**\n```jsx\n<Checkbox\n  checked=\"mixed\"\n  onChange={handler}\n  label=\"Label\"\n/>\n```"}]}]
+[
+  {
+    "version": "29.2.0",
+    "updates": [
+      {
+        "updated": [
+          "Box"
+        ],
+        "summary": "**Box:** Added `zIndex` prop\n\nThe following z-index palette is now available on `Box`:\n\n**Local stacking**\n\n- `0`\n- `1`\n- `2`\n\n**Global stacking**\n\n- `\"dropdownBackdrop\"`\n- `\"dropdown\"`\n- `\"sticky\"`\n- `\"modalBackdrop\"`\n- `\"modal\"`\n- `\"notification\"`\n\n**EXAMPLE USAGE**\n\n```jsx\n<Box position=\"fixed\" zIndex=\"sticky\">\n  ...\n</Box>\n```"
+      },
+      {
+        "updated": [
+          "TabPanels"
+        ],
+        "summary": "TabPanels: Add `renderInactivePanels` prop\n\nBy default, the children of `TabPanel` components are only rendered when they are selected. However, in cases where you want to preserve local component state when switching tabs, this behaviour is undesirable. Setting `renderInactivePanels` will cause the `TabPanel` children to be rendered even when visually hidden.\n\n**Note:** This is not a visual change, the panels will still be hidden from the user. \n\ne.g.\n```jsx\n<TabsProvider selectedItem={0}>\n    <Tabs>\n      <Tab>First</Tab>\n      <Tab>Second</Tab>\n    </Tabs>\n    <TabPanels renderInactivePanels>\n      <TabPanel>\n        <Text>Tab 1</Text>\n      </TabPanel>\n      <TabPanel>\n        {/* This TabPanel is hidden but still in the DOM */}\n        <Text>Tab 2</Text>\n      </TabPanel>\n    </TabPanels>\n</TabsProvider>\n```"
+      },
+      {
+        "updated": [
+          "BraidProvider",
+          "BraidTestProvider",
+          "BraidLoadableProvider",
+          "Link"
+        ],
+        "summary": "Added support for refs on [Link](https://seek-oss.github.io/braid-design-system/components/Link)\n\nForwarding refs is necessary for certain accessibility patterns (e.g. managing focus states), but the `Link` component wasn't doing this correctly.\n\nPlease note that, if you're passing a custom `linkComponent` implementation to [BraidProvider](https://seek-oss.github.io/braid-design-system/components/BraidProvider), you'll need to ensure that you're using the new `makeLinkComponent` helper function to forward refs, otherwise any attempt to pass a ref to `Link` will throw an error.\n\n**MIGRATION GUIDE**\n\n```diff\n-import { BraidProvider, LinkComponent } from 'braid-design-system';\n+import { BraidProvider, makeLinkComponent } from 'braid-design-system';\n\n-const CustomLink: LinkComponent = ({ href, ...restProps }) =>\n+const CustomLink = makeLinkComponent({ href, ...restProps }, ref) =>\n  href[0] === '/' ? (\n-    <ReactRouterLink to={href} {...restProps} />\n+    <ReactRouterLink to={href} {...restProps} ref={ref} />\n  ) : (\n-    <a href={href} {...restProps} />\n+    <a href={href} {...restProps} ref={ref} />\n  );\n\nexport const App = () => (\n  <BraidProvider linkComponent={CustomLink} {...rest}>\n    ...\n  </BraidProvider>\n);\n```"
+      },
+      {
+        "updated": [
+          "Link"
+        ],
+        "summary": "**Link:** Fixed types for `className` prop to support the full [classnames](https://www.npmjs.com/package/classnames) API\n\nYou can now pass arrays and objects to the `className` prop on `Link` without type errors.\n\nFor example:\n\n```jsx\n<Link\n  href=\"#\"\n  className={[\n    'someClass',\n    ['anotherClass', 'yetAnotherClass'],\n    { someConditionalClass: someBoolean }\n  ]}>\n  ...\n</Link>\n```"
+      },
+      {
+        "new": [
+          "MenuItemLink"
+        ],
+        "summary": "Added **MenuItemLink** component\n\nYou can now render semantic links within menu components, e.g. [OverflowMenu](https://seek-oss.github.io/braid-design-system/components/OverflowMenu), [MenuRenderer](https://seek-oss.github.io/braid-design-system/components/MenuRenderer)\n\nFor example:\n\n```jsx\n<OverflowMenu label=\"Options\">\n  <MenuItem onClick={() => {}}>Button</MenuItem>\n  <MenuItemLink href=\"...\">Link</MenuItemLink>\n</OverflowMenu>\n```\n\nNote that links are rendered internally using [Link](https://seek-oss.github.io/braid-design-system/components/Link). If you want to customise the rendering of these links, you need to provide a custom `linkComponent` implementation to [BraidProvider](https://seek-oss.github.io/braid-design-system/components/BraidProvider)."
+      }
+    ]
+  },
+  {
+    "version": "29.1.1",
+    "updates": [
+      {
+        "updated": [
+          "List",
+          "BulletList"
+        ],
+        "summary": "**List, BulletList:** Limit width to 100% of parent"
+      }
+    ]
+  },
+  {
+    "version": "29.1.0",
+    "updates": [
+      {
+        "new": [
+          "List"
+        ],
+        "summary": "Add `List` component\n\n`List` serves as a replacement for the `BulletList` and `Bullet` components which adds the following improvements:\n\n-   Support for numbers and alpha characters as bullets\n-   Support for custom start positions in number/alpha lists\n-   Rich content support, e.g. list items with multiple paragraphs, nested lists, etc.\n\n_Note: The `BulletList` and `Bullet` components have been marked as deprecated and will be removed in an upcoming major release._\n\n**MIGRATION GUIDE**\n\nIf you want to migrate from `BulletList` to `List`, you can simply replace `BulletList` with `List`, and `Bullet` with `Text`:\n\n```diff\n-<BulletList>\n-  <Bullet>...</Bullet>\n-  <Bullet>...</Bullet>\n-  <Bullet>...</Bullet>\n-</BulletList>\n\n+<List>\n+  <Text>...</Text>\n+  <Text>...</Text>\n+  <Text>...</Text>\n+</List>\n```"
+      },
+      {
+        "updated": [
+          "TextLink",
+          "TextLinkButton",
+          "TextLinkRenderer"
+        ],
+        "summary": "**TextLink, TextLinkButton, TextLinkRenderer:** Default `weight` prop to `\"regular\"` when nested inside secondary text\n\nAs of [v28.13.0](https://github.com/seek-oss/braid-design-system/releases/tag/braid-design-system%4028.13.0), `TextLink` components that were nested inside secondary text would be `\"weak\"` by default, i.e. the same tone as the surrounding text and underlined. In practice, this turned out to be somewhat unpredictable behaviour for consumers. We've now reverted this to the previous behaviour of being `\"regular\"` weight by default, i.e. blue and medium font weight.\n\nNote that, if needed, you can still use the weaker link treatment within secondary text via an explicit prop override:\n\n```jsx\n<Text tone=\"secondary\">\n  The TextLink in this sentence is{' '}\n  <TextLink href=\"...\" weight=\"weak\">\n    weak.\n  </TextLink>\n</Text>\n```"
+      },
+      {
+        "updated": [
+          "AccordionItem"
+        ],
+        "summary": "**AccordionItem:** Prevent Safari from clipping label text"
+      }
+    ]
+  },
+  {
+    "version": "29.0.1",
+    "updates": [
+      {
+        "updated": [
+          "BraidProvider"
+        ],
+        "summary": "Throw meaningful error when using 'BraidProvider' in unit tests"
+      }
+    ]
+  },
+  {
+    "version": "29.0.0",
+    "updates": [
+      {
+        "updated": [
+          "Text",
+          "Heading"
+        ],
+        "summary": "Improved trimming of white space around text\n\nMigrated from our custom [Basekick](https://github.com/michaeltaranto/basekick) implementation to [🛶 Capsize](https://seek-oss.github.io/capsize/) to more accurately trim the white space around text. This will have subtle white space changes throughout the UI, but will largely just be improvements to the balance of space around text.\n\n**BREAKING CHANGES**\n\n**Heading/Text: Removed _LEGACY_SPACE_**\n\nThe `_LEGACY_SPACE_` prop was provided to support consumers migrating to [`v14`](https://github.com/seek-oss/braid-design-system/releases/tag/v14.0.0) when the white space cropping and layout components were originally introduced. This has now been removed to allow us to further improve on our approach.\n\nMigrating off this prop will require consumers to perform the following steps:\n\n-   Remove the usage of `_LEGACY_SPACE_` on a component\n-   Conduct a visual review of the impact (component will appear closer to neighbouring elements)\n-   Use existing layout components, e.g. `Stack`, to define/control the reintroduction of the desired space.\n\nAny issues, please reach out to the team as we are happy to help support consumers in migrating.\n\n**Theme Tokens: Text and Heading definitions**\n\nThere have been strutural theme changes for `heading` and `text` definitions to support the defining of `capHeight` in the system. Previously a definition contained `size` that was the specified font size inclusive of surrounding white space.\n\nA definition now has `capHeight` which is representative of the visual height, supporting improved alignment with other elements like, icons etc.\n\n```diff\n{\n  text: {\n    standard: {\n      mobile: {\n-        size: 16,\n+        capHeight: 11.43,\n        rows: 6\n      }\n    }\n  }\n}\n```\n\nThis is not likely to affect consumers, unless these theme values are used explicitly in custom treat files.\n\n**Theme Tokens: Descender and Cap Height scales**\n\nInstead of the calculated values of `capHeightScale` and `decenderHeightScale`, a theme now accepts `fontMetrics`—a structure that represents the metadata from the font itself.\n\n```diff\n-const capHeight = 24 * theme.typography.capHeightScale;\n+const capHeight = 24 * (theme.typography.fontMetrics.capHeight / theme.typography.fontMetrics.unitsPerEm);\n```\n\n```diff\n-const descender = 24 * theme.typography.decenderHeightScale;\n+const descender = 24 * (Math.abs(theme.typography.fontMetrics.descent) / theme.typography.fontMetrics.unitsPerEm);\n```"
+      },
+      {
+        "updated": [
+          "Textarea"
+        ],
+        "summary": "Fix type error in Textarea formatRanges"
+      }
+    ]
+  },
+  {
+    "version": "28.14.0",
+    "updates": [
+      {
+        "new": [
+          "IconNotification"
+        ],
+        "summary": "Add Notification icon"
+      },
+      {
+        "new": [
+          "useBreakpoint"
+        ],
+        "summary": "Add useBreakpoint\n\n`useBreakpoint` will return the breakpoint the browser viewport currently falls within (mobile, tablet or desktop). As this can only be calculated in the browser, the value may also be null. Window resizing is supported.\n\n**Note:** Avoid use of this hook where possible. Responsive properties and media queries are a better option in most cases."
+      }
+    ]
+  },
+  {
+    "version": "28.13.0",
+    "updates": [
+      {
+        "updated": [
+          "TextLink",
+          "TextLinkButton"
+        ],
+        "summary": "**TextLink, TextLinkButton:** Add `weight` prop, add `weak` weight variant\n\nYou can now render links that are underlined while inheriting the tone and weight of its surrounding text.\n\n**EXAMPLE USAGE**\n\n```jsx\n<Text>\n  This sentence contains a{' '}\n  <TextLink href=\"...\" weight=\"weak\">\n    weak TextLink.\n  </TextLink>\n</Text>\n```"
+      }
+    ]
+  },
+  {
+    "version": "28.12.0",
+    "updates": [
+      {
+        "updated": [
+          "Inline"
+        ],
+        "summary": "**Inline:** Prevent overlapping of preceding interactive components"
+      }
+    ]
+  },
+  {
+    "version": "28.11.0",
+    "updates": [
+      {
+        "updated": [
+          "TextLinkButton"
+        ],
+        "summary": "**TextLinkButton:** Pass click event object to `onClick` handler\n\nThe `onClick` handler was previously called without any arguments. We now pass the click event object through as expected."
+      }
+    ]
+  },
+  {
+    "version": "28.10.0",
+    "updates": [
+      {
+        "updated": [
+          "Button"
+        ],
+        "summary": "**Button:** Add `aria-controls` and `aria-expanded` props"
+      },
+      {
+        "new": [
+          "Disclosure"
+        ],
+        "summary": "Add `Disclosure` component\n\nThis component serves as a replacement for `ToggleContent` from [SEEK Style Guide.](https://github.com/seek-oss/seek-style-guide)\n\n**SEEK STYLE GUIDE MIGRATION GUIDE**\n\n-   `ToggleContent` has been renamed to `Disclosure`.\n-   The `onShowMore` prop has been renamed to `onToggle`.\n-   The spacing around the button has changed to follow [Braid's layout guidelines.](https://seek-oss.github.io/braid-design-system/foundations/layout) Design review is recommeded.\n\n```diff\n-<ToggleContent onShowMore={(expanded) => { ... }} {...rest}>\n+<Disclosure onToggle={(expanded) => { ... }} {...rest}>\n```"
+      },
+      {
+        "updated": [
+          "TextLinkButton"
+        ],
+        "summary": "**TextLinkButton:** Add `aria-controls`, `aria-describedby` and `aria-expanded` props"
+      }
+    ]
+  },
+  {
+    "version": "28.9.0",
+    "updates": [
+      {
+        "new": [
+          "TextLinkButton"
+        ],
+        "summary": "Add `TextLinkButton` component\n\nAllows you to render a semantic button that looks like a `TextLink`.\n\nThis component renders a native `span` element with an ARIA role of `button` so that, unlike a standard button element, text can wrap across multiple lines."
+      }
+    ]
+  },
+  {
+    "version": "28.8.0",
+    "updates": [
+      {
+        "new": [
+          "IconLanguage"
+        ],
+        "summary": "Add IconLanguage"
+      }
+    ]
+  },
+  {
+    "version": "28.6.0",
+    "updates": [
+      {
+        "updated": [
+          "Box"
+        ],
+        "summary": "Box: Add `body` background\n\nYou can now use the theme's body background on arbitrary elements within the page.\n\n**EXAMPLE USAGE**\n\n```jsx\n<Box background=\"body\">...</Box>\n```"
+      }
+    ]
+  },
+  {
+    "version": "28.5.0",
+    "updates": [
+      {
+        "updated": [
+          "MonthPicker"
+        ],
+        "summary": "MonthPicker: Support custom month and year labels\n\nTo support internationalisation, you can now pass the following props to `MonthPicker`:\n\n-   **monthLabel** (`string`)\n-   **yearLabel** (`string`)\n-   **monthNames** (`string[]`)"
+      }
+    ]
+  },
+  {
+    "version": "28.3.0",
+    "updates": [
+      {
+        "new": [
+          "Tabs"
+        ],
+        "summary": "Add Tabs component\n\nFollows the [WAI Aria Tabs Pattern.](https://www.w3.org/TR/wai-aria-practices-1.2/#tabpanel)\n\n**EXAMPLE USAGE:**\n\n```jsx\n<TabsProvider id=\"id\">\n  <Stack space=\"medium\">\n    <Tabs label=\"Label\">\n      <Tab>The first tab</Tab>\n      <Tab>The second tab</Tab>\n      <Tab badge={<Badge tone=\"positive\">New</Badge>}>The third tab</Tab>\n    </Tabs>\n    <TabPanels>\n      <TabPanel>...</TabPanel>\n      <TabPanel>...</TabPanel>\n      <TabPanel>...</TabPanel>\n    </TabPanels>\n  </Stack>\n</TabsProvider>\n```"
+      },
+      {
+        "updated": [
+          "Autosuggest"
+        ],
+        "summary": "Autosuggest: Fix suggestion double tap bug on iOS\n\nTapping a suggestion on iOS triggers the hover state rather than a selection, forcing users to tap a second time to select the suggestion.\n\nThis is due to the way that iOS simulates mouse events in a touch environment. If the document is updated during a `mouseover`, `mouseenter` or `mousemove` event, the subsequent `click` event is never fired. While it may seem counterintuitive, this ensures that touch users are able to see hover effects that make changes to the page.\n\nTo fix this, we now trigger our suggestion hover logic on `touchstart` so that the document doesn't change during mouse events, which then allows the `click` event to fire uninterrupted."
+      }
+    ]
+  },
+  {
+    "version": "28.2.0",
+    "updates": [
+      {
+        "updated": [
+          "useToast"
+        ],
+        "summary": "useToast: Add deduplication of toasts\n\nPassing `key` when creating new toasts will now remove existing Toasts on screen with the same `key` before adding the new Toast. This is useful when a toast is created as part of a repeatable process that happens frequently.\n\n```ts\nconst showToast = useToast();\n\nshowToast({\n  message: 'There can only be one of me',\n  tone: 'positive',\n  key: 'deduped',\n});\n```"
+      }
+    ]
+  },
+  {
+    "version": "28.1.0",
+    "updates": [
+      {
+        "updated": [
+          "Inline"
+        ],
+        "summary": "Inline: Add support for semantic list elements\n\nAs already featured on `Stack`, when rendering `<Inline component=\"ul|ol\">`, its children will be rendered as `li` elements."
+      },
+      {
+        "updated": [
+          "Icon*"
+        ],
+        "summary": "Hide icons from screen readers that have no title\n\nIcons are mostly used for decorative purposes and as such are now hidden from screen readers unless providing a `title`. In this case, an Icon is identified as an image."
+      }
+    ]
+  },
+  {
+    "version": "28.0.0",
+    "updates": [
+      {
+        "updated": [
+          "Alert",
+          "Notice"
+        ],
+        "summary": "**Alert, Notice:** Support rich content\n\n**BREAKING CHANGE**\n\nSince `Alert` and `Notice` no longer render a `Text` component for you, you'll need to ensure that you're providing an enclosing `Text` element as a direct child.\n\nAlert:\n\n```diff\n<Alert tone=\"positive\">\n-  Success!\n+  <Text>Success!</Text>\n</Alert>\n```\n\nNotice:\n\n```diff\n<Notice tone=\"positive\">\n-  Success!\n+  <Text>Success!</Text>\n</Notice>\n\n```\n\n**WHY?**\n\nThe [Alert](https://seek-oss.github.io/braid-design-system/components/Alert) and [Notice](https://seek-oss.github.io/braid-design-system/components/Notice) components were originally designed to render a single paragraph of text, but in practice we've found that there's a lot of demand for richer content, e.g. multiple paragraphs, bullet lists, etc.\n\nIn order to support this level of flexibility, `Alert` and `Notice` no longer render an enclosing `Text` component for you. While this means you'll need a bit more boilerplate in simple cases, it also means you now have much more fine-grained control over the layout.\n\nFor example, if you wanted to render an `Alert` using both `Text` and `BulletList` with `\"medium\"` space between them:\n\n```jsx\n<Alert tone=\"positive\">\n  <Stack space=\"medium\">\n    <Text>The quick brown fox jumps over the lazy dog.</Text>\n    <BulletList space=\"small\">\n      <Bullet>Bullet 1</Bullet>\n      <Bullet>Bullet 2</Bullet>\n    </BulletList>\n  </Stack>\n</Alert>\n```\n\nThis same pattern applies to `Notice`:\n\n```jsx\n<Notice tone=\"positive\">\n  <Stack space=\"medium\">\n    <Text>The quick brown fox jumps over the lazy dog.</Text>\n    <BulletList space=\"small\">\n      <Bullet>Bullet 1</Bullet>\n      <Bullet>Bullet 2</Bullet>\n    </BulletList>\n  </Stack>\n</Notice>\n```"
+      },
+      {
+        "updated": [
+          "MonthPicker"
+        ],
+        "summary": "**MonthPicker:** Fix internal `<Hidden screen>` deprecation warning\n\nThe `MonthPicker` component was mistakenly using `<Hidden screen>` to provide labels to screen readers rather than the new [`HiddenVisually`](https://seek-oss.github.io/braid-design-system/components/HiddenVisually) component. As a result, deprecation warnings were being logged in the console during development."
+      }
+    ]
+  },
+  {
+    "version": "27.3.0",
+    "updates": [
+      {
+        "updated": [
+          "Toggle"
+        ],
+        "summary": "Toggle: Hide border on dark backgrounds\n\nIn order to reduce visual noise, similar to other fields, we now hide the border on `Toggle` elements when rendered on dark backgrounds."
+      },
+      {
+        "updated": [
+          "Dropdown"
+        ],
+        "summary": "Dropdown: Lighten chevron when disabled\n\nThe visual prominence of the chevron icon is now lower when `disabled` is set to `true`."
+      },
+      {
+        "updated": [
+          "Autosuggest"
+        ],
+        "summary": "Autosuggest: Apply darker background when disabled\n\nWhen disabled, `Autosuggest` elements didn't have the same dark background as other disabled fields. This has now been fixed."
+      }
+    ]
+  },
+  {
+    "version": "27.2.0",
+    "updates": [
+      {
+        "new": [
+          "HiddenVisually"
+        ],
+        "summary": "Add `HiddenVisually` component\n\nYou can now easily provide content to assistive technologies while hiding it from the screen.\n\n```jsx\n<Text>\n  This content is available to everyone.\n  <HiddenVisually>\n    This content is only available to screen readers.\n  </HiddenVisually>\n</Text>\n```"
+      },
+      {
+        "updated": [
+          "Hidden"
+        ],
+        "summary": "Hidden: Infer `inline` prop when nested inside Text or Heading\n\nCurrently, if you want to hide content using the `Hidden` component in an inline context (e.g. hiding part of a sentence), you need to remember to set the `inline` boolean prop.\n\nSince most usages of this feature are within text, we now infer this for you automatically within the context of a `Text` or `Heading` component.\n\n**MIGRATION GUIDE**\n\nThis change is not strictly required, but you can now clean up your code like this:\n\n```diff\n-<Text>The end of this sentence is... <Hidden inline below=\"tablet\">hidden on mobile.</Hidden>\n+<Text>The end of this sentence is... <Hidden below=\"tablet\">hidden on mobile.</Hidden>\n```"
+      }
+    ]
+  },
+  {
+    "version": "27.1.1",
+    "updates": [
+      {
+        "updated": [
+          "MonthPicker"
+        ],
+        "summary": "MonthPicker: Preserve touchable height on iOS\n\nFix for the native variant of `MonthPicker` having a reduced height on iOS when no value is provided."
+      }
+    ]
+  },
+  {
+    "version": "27.1.0",
+    "updates": [
+      {
+        "updated": [
+          "Stack"
+        ],
+        "summary": "Stack: Add support for Hidden stack items\n\nYou can now responsively hide stack items using the [`Hidden`](https://seek-oss.github.io/braid-design-system/components/Hidden) component while maintaining the correct spacing between all visible elements.\n\nFor example, if you wanted to hide a stack item on mobile:\n\n```jsx\n<Stack space=\"small\">\n  <Text>...</Text>\n  <Hidden below=\"tablet\">\n    <Text>...</Text>\n  </Hidden>\n  <Text>...</Text>\n</Stack>\n```"
+      }
+    ]
+  },
+  {
+    "version": "26.0.0",
+    "updates": [
+      {
+        "updated": [
+          "Stack",
+          "Inline",
+          "Tiles"
+        ],
+        "summary": "Stack, Inline, Tiles: Flatten fragments when provided as direct children\n\nThe following patterns should now work as you might have previously expected:\n\n```jsx\n<Stack space=\"small\">\n  <React.Fragment>\n    <Text>...</Text>\n    <Text>...</Text>\n  </React.Fragment>\n  <Text>...</Text>\n</Stack>\n```\n\n```jsx\n<Inline space=\"small\">\n  <React.Fragment>\n    <Badge>...</Badge>\n    <Badge>...</Badge>\n  </React.Fragment>\n  <Badge>...</Badge>\n</Inline>\n```\n\n```jsx\n<Tiles space=\"small\" columns={3}>\n  <React.Fragment>\n    <Card>...</Card>\n    <Card>...</Card>\n  </React.Fragment>\n  <Card>...</Card>\n</Tiles>\n```\n\n**BREAKING CHANGE**\n\nWhile _highly_ unlikely, if you were using a fragment to group unspaced sibling nodes within a `Stack`, `Inline` or `Tiles` element, you'll need to replace it with a `Box`, for example:\n\n```diff\n<Stack space=\"small\">\n  ...\n-  <React.Fragment>\n+  <Box>\n    <Box>...</Box>\n    <Box>...</Box>\n-  <React.Fragment>\n+  </Box>\n  ...\n</Stack>\n```\n\n```diff\n<Inline space=\"small\">\n  ...\n-  <React.Fragment>\n+  <Box>\n    <Box>...</Box>\n    <Box>...</Box>\n-  <React.Fragment>\n+  </Box>\n  ...\n</Inline>\n```\n\n```diff\n<Tiles space=\"small\" columns={3}>\n  ...\n-  <React.Fragment>\n+  <Box>\n    <Box>...</Box>\n    <Box>...</Box>\n-  <React.Fragment>\n+  </Box>\n  ...\n</Tiles>\n```"
+      }
+    ]
+  },
+  {
+    "version": "25.7.1",
+    "updates": [
+      {
+        "updated": [
+          "TextField",
+          "Autosuggest",
+          "PasswordField"
+        ],
+        "summary": "TextField, Autosuggest, PasswordField: Improved support for field buttons with browser extensions.\n\nThe implementation of internal spacing within fields has been adjusted to better support browser extensions for password managers.\n\nAffects the following components:\n\n-   PasswordField: visibility toggle button\n-   TextField: clear button\n-   Autosuggest: clear button"
+      },
+      {
+        "updated": [
+          "Textarea"
+        ],
+        "summary": "Textarea: Fix border radius on dark backgrounds\n\nWhen rendering a `Textarea` on a background other than white, the field background extended out beyond the field's border radius."
+      },
+      {
+        "updated": [
+          "TextField",
+          "Autosuggest",
+          "PasswordField"
+        ],
+        "summary": "TextField, Autosuggest, PasswordField: Prevent field buttons firing on right click\n\nField buttons, such as clear and password visibility toggle, fire on mouse down to ensure focus is retained on the relevant field. We now ensure that the button only recognises left mouse button clicks.\n\nAffects the following components:\n\n-   PasswordField: visibility toggle button\n-   TextField: clear button\n-   Autosuggest: clear button"
+      }
+    ]
+  },
+  {
+    "version": "25.7.0",
+    "updates": [
+      {
+        "updated": [
+          "Box"
+        ],
+        "summary": "Add zero opacity to Box\n\nProvide zero opacity on `Box` as an optimisation.\n\nExample usage:\n\n```tsx\n<Box opacity={0}>...</Box>\n```"
+      },
+      {
+        "new": [
+          "PasswordField"
+        ],
+        "summary": "Add PasswordField component\n\nProvides a password field complete with visibility toggle to switch between a masked and unmasked field value."
+      }
+    ]
+  },
+  {
+    "version": "25.6.0",
+    "updates": [
+      {
+        "updated": [
+          "Autosuggest"
+        ],
+        "summary": "Autosuggest: Support suggestion descriptions\n\nYou can now provide a `description` as part of each suggestion item, e.g.:\n\n```jsx\n<Autosuggest\n  suggestions={[\n    {\n      text: 'Apples',\n      value: 123,\n      description: 'Juicy and delicious',\n    },\n  ]}\n  {...rest}\n/>\n```"
+      }
+    ]
+  },
+  {
+    "version": "25.5.1",
+    "updates": [
+      {
+        "updated": [
+          "Autosuggest"
+        ],
+        "summary": "Autosuggest: Don't select suggestions onBlur when using automaticSelection and suggestions are closed"
+      }
+    ]
+  },
+  {
+    "version": "25.5.0",
+    "updates": [
+      {
+        "updated": [
+          "AccordionItem"
+        ],
+        "summary": "AccordionItem: Support `onToggle` prop without `expanded` to allow tracking in uncontrolled mode\n\nFor example:\n\n```jsx\n<AccordionItem\n  id=\"id\"\n  label=\"Label\"\n  onToggle={expanded => trackSomething(expanded)}\n>\n  ...\n</AccordionItem>\n```"
+      }
+    ]
+  },
+  {
+    "version": "25.4.1",
+    "updates": [
+      {
+        "updated": [
+          "Autosuggest"
+        ],
+        "summary": "Autosuggest: When using the `automaticSelection` prop, we now prevent automatic selection from ocurring if the input value hasn't changed since focusing the field"
+      }
+    ]
+  },
+  {
+    "version": "25.4.0",
+    "updates": [
+      {
+        "updated": [
+          "Text"
+        ],
+        "summary": "Text: Add data attribute support"
+      },
+      {
+        "updated": [
+          "Heading"
+        ],
+        "summary": "Heading: Add data attribute support"
+      }
+    ]
+  },
+  {
+    "version": "25.3.0",
+    "updates": [
+      {
+        "updated": [
+          "Inline"
+        ],
+        "summary": "Inline: Add `collapseBelow` and `reverse` props.\n\nSimilar to [Columns](https://seek-oss.github.io/braid-design-system/components/Columns), you can now responsively collapse an `Inline` into a vertical stack on mobile with the `collapseBelow` prop.\n\nFor example, if you want items to stack vertically below tablet:\n\n```jsx\n<Inline space=\"small\" collapseBelow=\"tablet\">\n  ...\n</Inline>\n```\n\nAlso similar to `Columns`, you can now reverse the order of items horizontally. This is particularly useful when combined with `align=\"right\"`.\n\nFor example, if you're rendering buttons and you want your primary action on the right on desktop, but at the top on mobile:\n\n```jsx\n<Inline space=\"small\" collapseBelow=\"tablet\" align=\"right\" reverse>\n  <Button>Primary action</Button>\n  <Button weight=\"weak\">Secondary action</Button>\n</Inline>\n```"
+      },
+      {
+        "updated": [
+          "Columns"
+        ],
+        "summary": "Columns: Add `align` prop\n\nWhen collapsing columns into a vertical stack on smaller screens, you can now control the alignment.\n\nFor example, if you want your columns to be horizontally centred on mobile:\n\n```jsx\n<Columns space=\"small\" collapseBelow=\"tablet\" align=\"center\">\n  <Column>...<Column>\n  <Column>...<Column>\n  <Column>...<Column>\n</Columns>\n```\n\nAs a side effect, this also means that you can control the alignment of columns when the total width doesn't reach 100%.\n\nFor example:\n\n```jsx\n<Columns space=\"small\" align=\"center\">\n  <Column width=\"1/3\">...<Column>\n  <Column width=\"1/3\">...<Column>\n</Columns>\n```"
+      },
+      {
+        "new": [
+          "TextDropdown"
+        ],
+        "summary": "Add TextDropdown component\n\nAn inline dropdown that can be used as part of a sentence or as an\nalternative to `Dropdown`, outside of a more structured form.\n\nInherits its styling from the parent typographic component, and as such\nmust be used nested within either a `Text` or `Heading` component.\n\nExample usage:\n\n```tsx\nconst [jobTitle, setJobTitle] = useState('Developer');\n\n<Text>\n  <TextDropdown\n    id=\"jobTitle\"\n    label=\"Job Title\"\n    value={jobTitle}\n    onChange={setJobTitle}\n    options={['Developer', 'Designer', 'Product Manager']}\n  />\n</Text>;\n```"
+      },
+      {
+        "updated": [
+          "Box"
+        ],
+        "summary": "Hide native focus rings on Box elements during mouse interactions"
+      }
+    ]
+  },
+  {
+    "version": "25.2.0",
+    "updates": [
+      {
+        "new": [
+          "Accordion",
+          "AccordionItem"
+        ],
+        "summary": "Add `Accordion` and `AccordionItem` components\n\nExample usage:\n\n```jsx\n<Accordion>\n  <AccordionItem id=\"item_1\" label=\"Accordion item 1\">\n    <Text>Accordion item content</Text>\n  </AccordionItem>\n  <AccordionItem id=\"item_2\" label=\"Accordion item 2\">\n    <Text>Accordion item content</Text>\n  </AccordionItem>\n  <AccordionItem id=\"item_3\" label=\"Accordion item 3\">\n    <Text>Accordion item content</Text>\n  </AccordionItem>\n</Accordion>\n```\n\nAccordions manage their own state internally by default. If you'd like to take control of them yourself, you can pass an `expanded` prop to `AccordionItem` as well as an `onToggle` callback.\n\n```jsx\nconst [expanded, setExpanded] = useState(false);\n\n<AccordionItem\n  id=\"id\"\n  label=\"Accordion item\"\n  expanded={expanded}\n  onToggle={setExpanded}\n>\n  <Text>Accordion item content</Text>\n</AccordionItem>;\n```"
+      },
+      {
+        "updated": [
+          "Box"
+        ],
+        "summary": "Box: Add support for `outline=\"none\"`"
+      },
+      {
+        "updated": [
+          "MonthPicker",
+          "OverflowMenu",
+          "MenuRenderer",
+          "Button"
+        ],
+        "summary": "Drop lodash usage to decrease bundle size.\n\nThis directly affects `MonthPicker` and any components using the `data` prop:\n\n-   All field components\n-   OverflowMenu\n-   MenuRenderer\n-   Button"
+      }
+    ]
+  },
+  {
+    "version": "25.1.0",
+    "updates": [
+      {
+        "new": [
+          "ButtonLink"
+        ],
+        "summary": "Add ButtonLink component\n\nYou can now easily render semantic links that look like [Button](https://seek-oss.github.io/braid-design-system/components/Button) elements without needing to use the lower level [ButtonRenderer](https://seek-oss.github.io/braid-design-system/components/ButtonRenderer).\n\nThis component renders a native `a` element by default, but this can be customised via the `linkComponent` prop on [BraidProvider](https://seek-oss.github.io/braid-design-system/components/BraidProvider).\n\nExample usage:\n\n```jsx\n<ButtonLink href=\"#\" weight=\"strong\">\n  Submit\n</ButtonLink>\n```"
+      }
+    ]
+  },
+  {
+    "version": "25.0.0",
+    "updates": [
+      {
+        "updated": [
+          "BraidProvider"
+        ],
+        "summary": "BraidProvider: Add `linkComponent` prop to customise link rendering.\n\nIf you'd like to customise the technical implementation of all `Link` and `TextLink` components from Braid, you can now pass a custom component to the `linkComponent` prop on `BraidProvider`. For example, if you wanted to ensure that all relative links are [React Router](https://reacttraining.com/react-router/) links:\n\n```tsx\nimport React from 'react';\nimport { Link as ReactRouterLink } from 'react-router-dom';\nimport { BraidProvider, LinkComponent } from 'braid-design-system';\nimport wireframe from 'braid-design-system/themes/wireframe';\n\n// First create the custom link implementation:\nconst CustomLink: LinkComponent = ({ href, ...restProps }) =>\n  href[0] === '/' ? (\n    <ReactRouterLink to={href} {...restProps} />\n  ) : (\n    <a href={href} {...restProps} />\n  );\n\n// Then pass it to BraidProvider:\nexport const App = () => (\n  <BraidProvider theme={wireframe} linkComponent={CustomLink}>\n    ...\n  </BraidProvider>\n);\n```\n\nIn order to make your custom link component available for any type of link (not just usages of `TextLink`), this release introduces a new `Link` component which renders an unstyled `a` tag by default.\n\n**BREAKING CHANGES**\n\n-   `TextLink` now requires an `href` prop. Even though this is unlikely to affect anyone (a `TextLink` without an `href` isn't terribly useful), this is still technically a breaking change.\n\n    However, if you find an instance of `TextLink` that you think _shouldn't_ have an `href`, this is a sign that it's not _actually_ a link and you should use a [`TextLinkRenderer`](https://seek-oss.github.io/braid-design-system/components/TextLinkRenderer) instead. Unfortunately, because there's no way for us to know the semantics of your usage ahead of time, we're unable to provide a migration guide, so you'll need to be mindful of how this might impact accessibility.\n\n-   The props for `TextLink` now extend React's `AnchorHTMLAttributes<HTMLAnchorElement>` type rather than `AllHTMLAttributes<HTMLAnchorElement>`. While highly unlikely, this may cause type errors if you've passed props to `TextLink` that aren't considered to be valid anchor props."
+      }
+    ]
+  },
+  {
+    "version": "24.4.1",
+    "updates": [
+      {
+        "updated": [
+          "Divider"
+        ],
+        "summary": "Divider: Rename 'standard' weight to 'regular'."
+      }
+    ]
+  },
+  {
+    "version": "24.4.0",
+    "updates": [
+      {
+        "updated": [
+          "Divider"
+        ],
+        "summary": "Divider: Add strong weight variant, e.g. `<Divider weight=\"strong\">`.\n\nNote that this also affects the `dividers` prop on both `Stack` and `Tiles`, e.g. `<Stack space=\"medium\" dividers=\"strong\">`. You can still pass a boolean prop if you want to render the default divider styling, e.g. `<Stack space=\"medium\" dividers>`, so this change is backwards compatible."
+      }
+    ]
+  },
+  {
+    "version": "24.2.0",
+    "updates": [
+      {
+        "updated": [
+          "Inline"
+        ],
+        "summary": "Inline: Support vertical alignment\n\n**`Inline`**\n\nVertical alignment is now supported via the `alignY` prop, e.g. `<Inline space=\"small\" alignY=\"center\">`.\n\nThis also supports responsive values, e.g. `<Inline space=\"small\" alignY={['center', 'top']}>`"
+      },
+      {
+        "updated": [
+          "Box"
+        ],
+        "summary": "Box: Add `userSelect=\"none\"`.\n\n**`Box`**\n\nYou can now set `userSelect` to `\"none\"` directly on `Box`.\n\nSince the default value of `user-select` in CSS is `\"auto\"`, you can make this value dynamic by conditionally setting it to `undefined`, e.g. `<Box userSelect={selectable ? undefined : 'none'}`."
+      }
+    ]
+  },
+  {
+    "version": "24.1.3",
+    "updates": [
+      {
+        "updated": [
+          "Textarea"
+        ],
+        "summary": "Textarea: Fix trailing new line highlight issue\n\n**BUG FIXES**\n\n**`Textarea`**\n\nFix for `highlightRanges`, where the highlights could get out of sync with the field value, if the value contained trailing new lines."
+      }
+    ]
+  },
+  {
+    "version": "24.1.2",
+    "updates": [
+      {
+        "updated": [
+          "Checkbox",
+          "Radio"
+        ],
+        "summary": "Checkbox & Radio: Only add aria-describedby when a message is provided\n\n**BUG FIXES**\n\n**`Checkbox` & `Radio`**\n\nBoth of these inputs were previously always adding the `aria-describedby` attribute, while conditionally rendering the `message` only when provided. This meant that elements without a `message` would be indicating that they are described by an element that does not exist."
+      }
+    ]
+  },
+  {
+    "version": "24.1.1",
+    "updates": [
+      {
+        "updated": [
+          "Tiles"
+        ],
+        "summary": "Tiles: Honour column width for non-breaking content.\n\n**BUG FIXES**\n\n**`Tiles`**\n\nThe column width of a tile was not being honoured when its child elements contained non-wrapping/breaking content."
+      }
+    ]
+  },
+  {
+    "version": "24.1.0",
+    "updates": [
+      {
+        "updated": [
+          "MenuRenderer"
+        ],
+        "summary": "MenuRenderer: Add support for configuring the menu offset from the trigger\n\n**FEATURES**\n\n**`MenuRenderer`**\n\nConfigure the offset distance between the menu trigger and menu using the `offsetSpace` prop. As with all space values in the system, this accepts a responsive prop.\n\n```diff\n <MenuRenderer\n+  offsetSpace=\"small\"\n   trigger={(triggerProps, { open }) => (\n     <button {...triggerProps}>Menu</button>\n   )}\n >\n   <MenuItem onClick={...}>Option</MenuItem>\n </MenuRenderer>\n```"
+      }
+    ]
+  },
+  {
+    "version": "24.0.0",
+    "updates": [
+      {
+        "new": [
+          "MenuRenderer"
+        ],
+        "summary": "Add customisable `MenuRenderer` component\n\n**BREAKING CHANGES**\n\n-   Rename `OverflowMenuItem` to `MenuItem`.\n-   Removed `type=\"link\"` from `OverflowMenuItem` due to an accessibility issue with the approach (based on review of consumer usage, it did not seem to be used).\n\n**FEATURES**\n\n**`MenuRenderer`**\n\nEncapsulates all the behaviours of an accessible menu button, allowing consumers to define a custom `trigger` to open the menu. The trigger function receives two arguments:\n\n1.  Props required for accessibility, including mouse/keyboard interactions\n2.  Menu state object containing the `open` state.\n\n```tsx\n<MenuRenderer\n  trigger={(triggerProps, { open }) => (\n    <button {...triggerProps}>Menu</button>\n  )}\n>\n  <MenuItem onClick={...}>Option</MenuItem>\n</MenuRenderer>\n```\n\n**MIGRATION GUIDE**\n\n**`OverflowMenuItem`**\n\nRename `OverflowMenuItem` to `MenuItem`.\n\n```diff\n <OverflowMenu label=\"Overflow\">\n-  <OverflowMenuItem onClick={...}>Option</OverflowMenuItem>\n+  <MenuItem onClick={...}>Option</MenuItem>\n </OverflowMenu>\n```\n\nChanging the `type` is no longer supported due to an accessibility issue with the previous implementation. Please get in contact via Slack if you depended on this.\n\n```diff\n <OverflowMenu label=\"Overflow\">\n-  <OverflowMenuItem type=\"link\" onClick={...}>Option</OverflowMenuItem>\n+  <MenuItem onClick={...}>Option</MenuItem>\n </OverflowMenu>\n```"
+      },
+      {
+        "new": [
+          "BraidTestProvider"
+        ],
+        "summary": "Add BraidTestProvider component.\n\nThis is an alternative to `BraidProvider` for unit test environments. Note that, as the name implies, this should _not_ be used in production code.\n\n**MIGRATION GUIDE**\n\nIn your unit tests, you can replace usage of `BraidProvider` with `BraidTestProvider`, omitting the theme.\n\n```diff\n-<BraidProvider theme={wireframe}>\n+<BraidTestProvider>\n```\n\nIf for whatever reason your tests are relying on the presence of a specific theme, you can pass the name of the desired theme.\n\n```diff\n-<BraidProvider theme={seekAnz}>\n+<BraidTestProvider themeName=\"seekAnz\">\n```"
+      },
+      {
+        "updated": [
+          "Button",
+          "ButtonRenderer",
+          "OverflowMenu"
+        ],
+        "summary": "Only show focus rings on buttons for keyboard navigation.\n\nThis impacts the following components:\n\n-   `Button`\n-   `ButtonRenderer`\n-   `OverflowMenu`\n\nBrowsers automatically show focus rings on buttons when clicking on them, even though (for our purposes, at least) they're undesirable from a visual design perspective and redudant from a UX perspective.\n\nWe now automatically hide these focus rings if the user has moved their mouse, indicating that they're not navigating via the keyboard. However, to maintain keyboard accessibility, we reinstate these focus rings whenever the keyboard is used. Most typically, this ensures that you'll see focus rings when tabbing around the UI, even if you've previously used the mouse.\n\n**MIGRATION GUIDE**\n\nNo public APIs are affected by this, but you may find that this causes unit test failues that look like this:\n\n> Warning: An update to X inside a test was not wrapped in act(...).\n\nIf this is the case, you should replace `BraidProvider` in your tests with `BraidTestProvider`.\n\n```diff\n-<BraidProvider theme={wireframe}>\n+<BraidTestProvider>\n```"
+      }
+    ]
+  },
+  {
+    "version": "23.0.2",
+    "updates": [
+      {
+        "updated": [
+          "TextField",
+          "Autosuggest"
+        ],
+        "summary": "Hide webkit native clear field on search type inputs"
+      }
+    ]
+  },
+  {
+    "version": "29.3.0",
+    "updates": [
+      {
+        "updated": [
+          "Badge"
+        ],
+        "summary": "**Badge:** Allow custom title text\n\n**EXAMPLE USAGE**\n\n```jsx\n<Badge tone=\"positive\" title=\"3 new jobs\">3</Badge>\n```"
+      },
+      {
+        "updated": [
+          "TabPanel"
+        ],
+        "summary": "Improved server rendering of Tabs\n\nPreviously, `Tab` and `TabPanel` components only showed their content and active states after the first render, which meant server rendering was not ideal. Active Tabs and TabPanel content can now be server rendered. Uncontrolled usages of Tabs should just work.\n\nFor controlled Tabs using the `selectedItem` prop, you now need to pass the `item` prop (already on `Tab`) to `TabPanel` as well.\n\n```diff\n<TabsProvider id=\"id\" selectedItem=\"second\">\n  <Tabs label=\"Test tabs\">\n    <Tab item=\"first\">The first tab</Tab>\n    <Tab item=\"second\">The second tab</Tab>\n    <Tab item=\"third\">The third tab</Tab>\n  </Tabs>\n  <TabPanels>\n-    <TabPanel>\n+    <TabPanel item=\"first\">\n      <Placeholder height={200} label=\"Panel 1\" />\n    </TabPanel>\n-    <TabPanel>\n+    <TabPanel item=\"second\">\n      <Placeholder height={200} label=\"Panel 2\" />\n    </TabPanel>\n-    <TabPanel>\n+    <TabPanel item=\"third\">\n      <Placeholder height={200} label=\"Panel 3\" />\n    </TabPanel>\n  </TabPanels>\n</TabsProvider>\n```"
+      },
+      {
+        "updated": [
+          "ContentBlock"
+        ],
+        "summary": "**ContentBlock:** Add support for xsmall & small widths\n\n**EXAMPLE USAGE**\n\n```jsx\n<ContentBlock width=\"small\">\n  ...\n</ContentBlock>\n```"
+      }
+    ]
+  },
+  {
+    "version": "29.4.0",
+    "updates": [
+      {
+        "updated": [
+          "Badge"
+        ],
+        "summary": "**Badge:** Add `bleedY` prop\n\nYou can now choose to allow the badge’s background colour to bleed out into the surrounding layout, making it easier to align with other elements.\n\nFor example, we can align a badge to a [Heading](https://seek-oss.github.io/braid-design-system/components/Heading) element using an [Inline](https://seek-oss.github.io/braid-design-system/components/Inline), even though the badge is actually taller than the heading. If we didn’t use the `bleedY` prop in this case, the badge would introduce unwanted space above and below the heading.\n\n```jsx\n<Inline alignY=\"center\" space=\"xsmall\">\n  <Heading level=\"4\">Heading</Heading>\n  <Badge bleedY tone=\"positive\">\n    New\n  </Badge>\n</Inline>\n```"
+      },
+      {
+        "updated": [
+          "List",
+          "BulletList"
+        ],
+        "summary": "**List, BulletList:** Ensure list items are full width\n\nFixes an issue where list content was unable to stretch to the edge of its container. To allow this, we now set the list item container itself to be full width so that content is no longer constrained."
+      },
+      {
+        "updated": [
+          "ContentBlock"
+        ],
+        "summary": "**ContentBlock:** Ensure block is full width\n\nFixes an issue where `ContentBlock`s inside of flex containers would not grow to their defined `max-width`."
+      },
+      {
+        "new": [
+          "Dialog"
+        ],
+        "summary": "Add `Dialog` component\n\nFollows the [WAI Aria Dialog (Modal) Pattern](https://www.w3.org/TR/wai-aria-practices-1.2/#dialog_modal).\n\n**EXAMPLE USAGE:**\n\n```jsx\n<Fragment>\n  <Actions>\n    <Button onClick={() => setOpen(true)}>Open dialog</Button>\n  </Actions>\n\n  <Dialog\n    title=\"Dialog Example\"\n    id={id}\n    open={open}\n    onClose={setOpen}\n  >\n    <Placeholder height={100} width=\"100%\" />\n  </Dialog>\n</Fragment>\n```\n\nSee [the documentation](https://seek-oss.github.io/braid-design-system/components/Dialog) for an exhaustive list of features."
+      }
+    ]
+  },
+  {
+    "version": "29.5.0",
+    "updates": [
+      {
+        "updated": [
+          "Autosuggest"
+        ],
+        "summary": "**Autosuggest**: Update to ARIA 1.2 combobox spec"
+      },
+      {
+        "new": [
+          "MenuItemDivider"
+        ],
+        "summary": "Add **MenuItemDivider** component\n\nYou can now place visual separators between groups of menu items when using [OverflowMenu](https://seek-oss.github.io/braid-design-system/components/OverflowMenu)/[MenuRenderer](https://seek-oss.github.io/braid-design-system/components/MenuRenderer).\n\n**EXAMPLE USAGE**\n\n```jsx\n<OverflowMenu label=\"Options\">\n  <MenuItem onClick={() => {}}>Button</MenuItem>\n  <MenuItemLink href=\"#\">Link</MenuItemLink>\n  <MenuItemDivider />\n  <MenuItem onClick={() => {}}>Another button</MenuItem>\n</OverflowMenu>\n```"
+      },
+      {
+        "new": [
+          "MenuItemCheckbox"
+        ],
+        "summary": "Add **MenuItemCheckbox** component\n\nYou can now render checkboxes within [OverflowMenu](https://seek-oss.github.io/braid-design-system/components/OverflowMenu)/[MenuRenderer](https://seek-oss.github.io/braid-design-system/components/MenuRenderer) elements.\n\n**EXAMPLE USAGE**\n\n```jsx\n<OverflowMenu label=\"Checklist\">\n  <MenuItemCheckbox checked={true} onChange={() => {}}>\n    Checkbox 1\n  </MenuItemCheckbox>\n  <MenuItemCheckbox checked={false} onChange={() => {}}>\n    Checkbox 2\n  </MenuItemCheckbox>\n  <MenuItemCheckbox checked={false} onChange={() => {}}>\n    Checkbox 3\n  </MenuItemCheckbox>\n</OverflowMenu>\n```"
+      },
+      {
+        "updated": [
+          "Loader"
+        ],
+        "summary": "**Loader:** Add support for `aria-label`\n\nProvides a mechanism for consumers to better communicate to assistive technologies what is happening.\n\n**EXAMPLE USAGE:**\n```jsx\n<Loader aria-label=\"Loading search results\" />\n```"
+      }
+    ]
+  },
+  {
+    "version": "29.5.1",
+    "updates": [
+      {
+        "updated": [
+          "MenuRenderer",
+          "OverflowMenu"
+        ],
+        "summary": "**MenuRenderer, OverflowMenu:** Fix circular dependency issue"
+      }
+    ]
+  },
+  {
+    "version": "29.6.0",
+    "updates": [
+      {
+        "updated": [
+          "HiddenVisually"
+        ],
+        "summary": "**HiddenVisually:** Add support for passing IDs\n\nThis is useful when mapping a `HiddenVisually` component to `aria-describedby`\n\n**EXAMPLE USAGE:**\n```jsx\n<HiddenVisually id=\"my-hidden-desciption\">Hidden desciption</HiddenVisually>\n```"
+      },
+      {
+        "updated": [
+          "Autosuggest"
+        ],
+        "summary": "**Autosuggest:** Add translations prop to enable internationalisation"
+      },
+      {
+        "updated": [
+          "Autosuggest"
+        ],
+        "summary": "**Autosuggest:** Improve screen reader experience\n\nAdd description informing user that suggestions will appear below field. Also, notify users about how many suggestions are available, and about automatic selections."
+      },
+      {
+        "updated": [
+          "TextField",
+          "PasswordField",
+          "Textarea",
+          "Dropdown"
+        ],
+        "summary": "**TextField, PasswordField, Textarea, Dropdown:** Add support for multiple field descriptions\n\nPreviously, if a custom `aria-describedby` prop was passed, it would take precedence over the `message` prop, which also uses `aria-describedby`. Both descriptions can now be applied at the same time."
+      }
+    ]
+  },
+  {
+    "version": "29.7.0",
+    "updates": [
+      {
+        "updated": [
+          "TextField",
+          "PasswordField",
+          "Textarea",
+          "Autosuggest",
+          "Dropdown",
+          "MonthPicker"
+        ],
+        "summary": "**TextField, PasswordField, Textarea, Autosuggest, Dropdown, MonthPicker:** Add decription to aria-describedby"
+      },
+      {
+        "updated": [
+          "FieldLabel"
+        ],
+        "summary": "**FieldLabel:** Add descriptionId prop\n\n**EXAMPLE USAGE:**\n```jsx\n<FieldLabel \n    htmlFor=\"id\" \n    label=\"This is a field label\" \n    description=\"Extra info about the field\" \n    descriptionId=\"id-description\"\n/>\n```"
+      }
+    ]
+  },
+  {
+    "version": "29.8.0",
+    "updates": [
+      {
+        "new": [
+          "Drawer"
+        ],
+        "summary": "Add **Drawer** component\n\nYou can now open a modal panel on the right-hand side of the screen, following the [WAI Aria Dialog (Modal) Pattern](https://www.w3.org/TR/wai-aria-practices-1.2/#dialog_modal).\n\nSee the [documentation](https://seek-oss.github.io/braid-design-system/components/Drawer) for more details and interactive examples."
+      },
+      {
+        "updated": [
+          "Box"
+        ],
+        "summary": "**Box:** Add `maxWidth` prop\n\nThe sizes from [ContentBlock](https://seek-oss.github.io/braid-design-system/components/ContentBlock) are now available at a lower level for more primitive-based layouts.\n\n**EXAMPLE USAGE:**\n\n```jsx\n<Box maxWidth=\"large\">...</Box>\n```"
+      },
+      {
+        "updated": [
+          "Dialog"
+        ],
+        "summary": "**Dialog:** Fix close button to the corner of the dialog when scrolling"
+      },
+      {
+        "updated": [
+          "Autosuggest",
+          "Dialog"
+        ],
+        "summary": "**Autosuggest, Dialog:** Lighten backdrop opacity from 0.7 to 0.4"
+      }
+    ]
+  },
+  {
+    "version": "29.8.1",
+    "updates": [
+      {
+        "updated": [
+          "Loader",
+          "Button",
+          "ButtonLink",
+          "ButtonRenderer"
+        ],
+        "summary": "**Loader, Button, ButtonLink, ButtonRenderer:** Improve performance of loading animations\n\nAdjust animations properties and values to reduce CPU recalculation overheads."
+      },
+      {
+        "updated": [
+          "Toggle"
+        ],
+        "summary": "**Toggle:** Ensure there is a minimum amount of space between the label and the toggle when using justified alignment"
+      }
+    ]
+  },
+  {
+    "version": "29.9.0",
+    "updates": [
+      {
+        "updated": [
+          "Radio",
+          "Checkbox"
+        ],
+        "summary": "**Radio,Checkbox:** Add description and badge support\n\nAllows a way to provide more detail about a `Radio` or `Checkbox` item using `description`, bringing these fields into line with the rest of the form fields in Braid. Also allows a `badge` to be provided to be placed alongside the `label`.\n\n**EXAMPLE USAGE:**\n```jsx\n<Radio\n  label=\"Option\"\n  description=\"This option is your favourite\"\n  badge={\n    <Badge tone=\"positive\" weight=\"strong\">\n      New\n    </Badge>\n  }\n/>\n```\n\nor\n\n```jsx\n<Checkbox\n  label=\"Option\"\n  description=\"This option is your favourite\"\n  badge={\n    <Badge tone=\"positive\" weight=\"strong\">\n      New\n    </Badge>\n  }\n/>\n```"
+      }
+    ]
+  },
+  {
+    "version": "29.10.0",
+    "updates": [
+      {
+        "updated": [
+          "List"
+        ],
+        "summary": "**List:** Add support for Roman numerals\n\n**EXAMPLE USAGE**\n\n```jsx\n<List type=\"roman\">\n  <Text>This is a Roman list item.</Text>\n  <Text>This is a Roman list item.</Text>\n  <Text>This is a Roman list item.</Text>\n</List>\n```"
+      }
+    ]
+  },
+  {
+    "version": "29.11.0",
+    "updates": [
+      {
+        "updated": [
+          "Autosuggest"
+        ],
+        "summary": "**Autosuggest:** Add `hideSuggestionsOnSelection` prop\n\nTypically we hide the suggestion list when a selection is made, assuming that the field is now populated with the desired value. However, if the surrounding application clears the text field when a selection is made, this clashes with the user expectation that the field has been reverted back to its initial state with suggestions visible. To cater for this, we now allow you to opt out of this behaviour via the `hideSuggestionsOnSelection` boolean prop.\n\n**EXAMPLE USAGE**\n\n```jsx\n<Autosuggest hideSuggestionsOnSelection={false} {...rest} />\n```"
+      }
+    ]
+  },
+  {
+    "version": "29.11.1",
+    "updates": [
+      {
+        "updated": [
+          "TextField",
+          "Dropdown",
+          "PasswordField",
+          "MonthPicker",
+          "Textarea"
+        ],
+        "summary": "**TextField,Dropdown,PasswordField,MonthPicker,Textarea:** Apply aria-describedby to form elements only when needed\n\nOnly apply `aria-describedby` to form elements when needed, e.g. either a `message`, `description`, or an explicit `aria-describedby` is passed."
+      },
+      {
+        "updated": [
+          "MonthPicker"
+        ],
+        "summary": "**MonthPicker:** Announce semantic grouping of fields and improved translation support.\n\nWhen not on a native device, the MonthPicker uses a `fieldset` containing two dropdowns. This change ensures that the grouping is announced correctly. From a translations perspective the labels for the dropdowns are no longer a concatenation of the `label` and `monthLabel`/`yearLabel`, supporting translation of the entire phrase."
+      }
+    ]
+  },
+  {
+    "version": "29.11.2",
+    "updates": [
+      {
+        "updated": [
+          "Radio",
+          "Checkbox"
+        ],
+        "summary": "**Radio,Checkbox:** Apply aria-describedby only when needed\n\nOnly apply aria-describedby when needed, e.g. either a message or description is passed."
+      },
+      {
+        "updated": [
+          "IconVisibility"
+        ],
+        "summary": "**IconVisibility:** Simplify visibility icon"
+      }
+    ]
+  },
+  {
+    "version": "29.11.3",
+    "updates": [
+      {
+        "updated": [
+          "Tabs"
+        ],
+        "summary": "**Tabs:** Only scroll tabs when necessary on large screens\n\nPreviously, when there were enough tabs to require horizontal scrolling, we would always scroll the active tab to the left-hand side of the scroll container (with a slight offset). This was primarily designed as a mobile interaction, and in practice was found to be a bit unexpected on large screens.\n\nInstead, when the tabs are scrollable on large screens, we now only scroll the active tab into view if it's partially off-screen or positioned too close to the edge of the scroll container. This ensures that automatic scrolling only occurs when absolutely necessary."
+      }
+    ]
+  },
+  {
+    "version": "29.12.0",
+    "updates": [
+      {
+        "new": [
+          "RadioGroup",
+          "RadioItem"
+        ],
+        "summary": "**RadioGroup,RadioItem:** Add RadioGroup & RadioItem components\n\nThe RadioGroup provides an accessible way to group and control a set of **RadioItem** components. The RadioGroup is responsible for handling the value, tone, message, and disabled state—determining the presentation and selection of the items in the list.\n\n**EXAMPLE USAGE:**\n```jsx\n<RadioGroup\n  id=\"experience\"\n  label=\"Experience\"\n  value=\"\"\n  onChange={() => {}}\n>\n  <RadioItem label=\"Less than one year\" value=\"0\" />\n  <RadioItem label=\"1 year\" value=\"1\" />\n  <RadioItem label=\"2 years\" value=\"2\" />\n  <RadioItem label=\"3+ years \" value=\"3\" />\n</RadioGroup>\n```"
+      }
+    ]
+  },
+  {
+    "version": "29.13.0",
+    "updates": [
+      {
+        "updated": [
+          "List"
+        ],
+        "summary": "**List:** Add support for icons\n\nProvides a way to use an icon for all the items in a list. When using `type=\"icon\"` you must also provide the `icon` prop. See example below:\n\n**EXAMPLE USAGE:**\n```jsx\n<List type=\"icon\" icon={<IconTick tone=\"positive\" />}>\n  <Text>This is a list item.</Text>\n  <Text>This is a list item.</Text>\n  <Text>This is a list item.</Text>\n</List>\n```"
+      }
+    ]
+  },
+  {
+    "version": "29.13.1",
+    "updates": [
+      {
+        "updated": [
+          "Checkbox",
+          "RadioGroup",
+          "Radio"
+        ],
+        "summary": "**Checkbox,RadioGroup,Radio:** Fix element type passed to onChange event\n\nFixes a bug where the `onChange` event previously received the change event for a `form` element rather than an `input` element."
+      }
+    ]
+  },
+  {
+    "version": "29.14.0",
+    "updates": [
+      {
+        "updated": [
+          "Autosuggest"
+        ],
+        "summary": "**Autosuggest:** Forward `ref` prop to input element"
+      }
+    ]
+  },
+  {
+    "version": "29.15.0",
+    "updates": [
+      {
+        "updated": [
+          "Autosuggest"
+        ],
+        "summary": "**Autosuggest:** Support custom label text for suggestions\n\nYou can now optionally provide different suggestion text from the value that gets inserted into the text field.\n\n**EXAMPLE USAGE**\n\n```tsx\n<Autosuggest\n  suggestions={[{ text: 'apples', label: 'Add \"apples\"' }]}\n  {...restProps}\n/>\n```"
+      }
+    ]
+  },
+  {
+    "version": "29.16.0",
+    "updates": [
+      {
+        "updated": [
+          "Checkbox"
+        ],
+        "summary": "**Checkbox:** Add support for mixed state\n\nA checkbox can now accept a boolean or `mixed` as the `checked` property. When `mixed`, the checkbox is marked as being in an `indeterminate` state and announced as `mixed` to a screen reader.\n\n**EXAMPLE USAGE:**\n```jsx\n<Checkbox\n  checked=\"mixed\"\n  onChange={handler}\n  label=\"Label\"\n/>\n```"
+      }
+    ]
+  }
+]
