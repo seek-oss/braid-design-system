@@ -97,6 +97,8 @@ const Indicator = ({
       }, 200);
 
       return () => clearTimeout(timer);
+    } else {
+      previousMixedRef.current = false;
     }
   }, [isMixed, wasMixedNowUnchecked]);
 
