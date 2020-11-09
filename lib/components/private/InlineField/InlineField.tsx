@@ -97,6 +97,7 @@ const Indicator = ({
         bottom={0}
         left={0}
         right={0}
+        transition="fast"
         opacity={checked !== 'mixed' ? 0 : undefined}
       >
         <IconMinus size="fill" tone={iconTone} />
@@ -107,7 +108,8 @@ const Indicator = ({
         bottom={0}
         left={0}
         right={0}
-        opacity={checked === 'mixed' ? 0 : undefined}
+        transition="fast"
+        opacity={checked !== true ? 0 : undefined}
       >
         <IconTick size="fill" tone={iconTone} />
       </Box>
@@ -256,7 +258,7 @@ export const InlineField = forwardRef<
               borderRadius={fieldBorderRadius}
               className={styles.hoverOverlay}
             >
-              <Indicator type={type} hover={true} />
+              <Indicator type={type} hover={true} checked={true} />
             </FieldOverlay>
           </Box>
           <Box paddingLeft="small" flexGrow={1}>
