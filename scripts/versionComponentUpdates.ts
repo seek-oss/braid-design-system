@@ -26,5 +26,7 @@ import { version } from '../package.json';
 
   existingComponentUpdates.push({ version, updates });
 
-  await fs.writeJSON(componentUpdatesFile, existingComponentUpdates);
+  await fs.writeJSON(componentUpdatesFile, existingComponentUpdates, {
+    spaces: 2,
+  });
 })();
