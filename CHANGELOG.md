@@ -1,5 +1,22 @@
 # braid-design-system
 
+## 29.15.0
+
+### Minor Changes
+
+- **Autosuggest:** Support custom label text for suggestions ([#821](https://github.com/seek-oss/braid-design-system/pull/821))
+
+  You can now optionally provide different suggestion text from the value that gets inserted into the text field.
+
+  **EXAMPLE USAGE**
+
+  ```tsx
+  <Autosuggest
+    suggestions={[{ text: 'apples', label: 'Add "apples"' }]}
+    {...restProps}
+  />
+  ```
+
 ## 29.14.0
 
 ### Minor Changes
