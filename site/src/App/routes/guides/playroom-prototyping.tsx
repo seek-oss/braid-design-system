@@ -9,7 +9,6 @@ import {
   Stack,
   Button,
   Actions,
-  Box,
   Card,
 } from '../../../../../lib/components';
 import {
@@ -120,6 +119,56 @@ const PlayroomPrototyping = () => (
         </Stack>
       )}
     </Code>
+
+    <Text>
+      By default, all state values are blank until the user interacts with
+      something. While this is usually fine in simple prototypes, you’re likely
+      to find scenarios where you need the state to have a default value. For
+      example, we might want our checkbox to be checked by default. To support
+      this, our Playrooom provides a <Strong>defaultState</Strong> function
+      which should be called before rendering anything to the screen:
+    </Text>
+    <Code
+      displayCode={`
+        <>
+          {defaultState('myCheckbox', true)}
+
+          <Stack space="medium">
+            <Checkbox label="Checkbox" stateName="myCheckbox" />
+
+            {getState('myCheckbox') ? (
+              <Notice tone="positive">
+                <Text>Good job! You checked the checkbox!</Text>
+              </Notice>
+            ) : (
+              <Notice tone="critical">
+                <Text>Oops! You haven’t checked the checkbox!</Text>
+              </Notice>
+            )}
+          </Stack>
+        </>
+      `}
+    >
+      {({ defaultState, getState }) => (
+        <>
+          {defaultState('myCheckbox', true)}
+
+          <Stack space="medium">
+            <Checkbox label="Checkbox" stateName="myCheckbox" />
+
+            {getState('myCheckbox') ? (
+              <Notice tone="positive">
+                <Text>Good job! You checked the checkbox!</Text>
+              </Notice>
+            ) : (
+              <Notice tone="critical">
+                <Text>Oops! You haven’t checked the checkbox!</Text>
+              </Notice>
+            )}
+          </Stack>
+        </>
+      )}
+    </Code>
     <Text>
       We can bind to more complicated state too, like text values within{' '}
       <TextLink href="/components/TextField">TextField</TextLink> components:
@@ -207,8 +256,10 @@ const PlayroomPrototyping = () => (
 
     <Code
       displayCode={`
-        <Box>
-          {!getState('screen') && (
+        <>
+          {defaultState('screen', 'Home')}
+
+          {getState('screen') === 'Home' && (
             <Card>
               <Stack space="large">
                 <Heading level="3">Home</Heading>
@@ -232,12 +283,14 @@ const PlayroomPrototyping = () => (
               </Stack>
             </Card>
           )}
-        </Box>
+        </>
       `}
     >
-      {({ getState, setState, resetState }) => (
-        <Box>
-          {!getState('screen') && (
+      {({ defaultState, getState, setState, resetState }) => (
+        <>
+          {defaultState('screen', 'Home')}
+
+          {getState('screen') === 'Home' && (
             <Card>
               <Stack space="large">
                 <Heading level="3">Home</Heading>
@@ -261,7 +314,7 @@ const PlayroomPrototyping = () => (
               </Stack>
             </Card>
           )}
-        </Box>
+        </>
       )}
     </Code>
 
