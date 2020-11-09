@@ -1,5 +1,19 @@
 # braid-design-system
 
+## 29.16.0
+
+### Minor Changes
+
+- **Checkbox:** Add support for mixed state ([#822](https://github.com/seek-oss/braid-design-system/pull/822))
+
+  A checkbox can now accept a boolean or `mixed` as the `checked` property. When `mixed`, the checkbox is marked as being in an `indeterminate` state and announced as `mixed` to a screen reader.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Checkbox checked="mixed" onChange={handler} label="Label" />
+  ```
+
 ## 29.15.0
 
 ### Minor Changes
