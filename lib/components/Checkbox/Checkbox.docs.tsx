@@ -29,6 +29,12 @@ const docs: ComponentDocs = {
       ),
     },
     {
+      label: 'Mixed state Checkbox',
+      Example: ({ id, handler }) => (
+        <Checkbox id={id} checked="mixed" onChange={handler} label="Label" />
+      ),
+    },
+    {
       label: 'Disabled Checkbox',
       background: 'card',
       Example: ({ id, handler }) => (

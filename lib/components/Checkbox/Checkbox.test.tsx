@@ -1,7 +1,8 @@
 import '@testing-library/jest-dom/extend-expect';
-import React from 'react';
+import React, { ComponentProps, useState } from 'react';
 import { render } from '@testing-library/react';
 import { BraidTestProvider, Checkbox } from '..';
+import userEvent from '@testing-library/user-event';
 
 describe('Checkbox', () => {
   it('associates field with label correctly', () => {
@@ -10,7 +11,6 @@ describe('Checkbox', () => {
         <Checkbox
           id="field"
           label="My field"
-          value=""
           onChange={() => {}}
           checked={false}
         />
@@ -27,7 +27,6 @@ describe('Checkbox', () => {
           id="field"
           label="My field"
           message="Required"
-          value=""
           onChange={() => {}}
           checked={false}
         />
@@ -44,7 +43,6 @@ describe('Checkbox', () => {
           id="field"
           label="My field"
           description="More detail about field"
-          value=""
           onChange={() => {}}
           checked={false}
         />
@@ -64,7 +62,6 @@ describe('Checkbox', () => {
           label="My field"
           message="Required"
           description="More detail about field"
-          value=""
           onChange={() => {}}
           checked={false}
         />
@@ -82,7 +79,6 @@ describe('Checkbox', () => {
         <Checkbox
           id="field"
           label="My field"
-          value=""
           onChange={() => {}}
           checked={false}
         />
@@ -92,5 +88,110 @@ describe('Checkbox', () => {
     expect(
       getByLabelText('My field').getAttribute('aria-describedby'),
     ).toBeNull();
+  });
+
+  it('should communicate the checked state to a screen reader', () => {
+    const { getByRole } = render(
+      <BraidTestProvider>
+        <Checkbox
+          id="field"
+          label="My field"
+          onChange={() => {}}
+          checked={true}
+        />
+      </BraidTestProvider>,
+    );
+
+    expect(getByRole('checkbox').getAttribute('aria-checked')).toBe('true');
+  });
+
+  it('should communicate the unchecked state to a screen reader', () => {
+    const { getByRole } = render(
+      <BraidTestProvider>
+        <Checkbox
+          id="field"
+          label="My field"
+          onChange={() => {}}
+          checked={false}
+        />
+      </BraidTestProvider>,
+    );
+
+    expect(getByRole('checkbox').getAttribute('aria-checked')).toBe('false');
+  });
+
+  it('should communicate the mixed state to a screen reader', () => {
+    const { getByRole } = render(
+      <BraidTestProvider>
+        <Checkbox
+          id="field"
+          label="My field"
+          onChange={() => {}}
+          checked="mixed"
+        />
+      </BraidTestProvider>,
+    );
+
+    expect(getByRole('checkbox').getAttribute('aria-checked')).toBe('mixed');
+  });
+
+  it('should toggle state correctly when controlled field is initialised to `mixed`', () => {
+    const TestCase = () => {
+      const [checked, setChecked] = useState<
+        ComponentProps<typeof Checkbox>['checked']
+      >('mixed');
+      return (
+        <BraidTestProvider>
+          <Checkbox
+            id="field"
+            label="My field"
+            onChange={(ev) => setChecked(ev.currentTarget.checked)}
+            checked={checked}
+          />
+        </BraidTestProvider>
+      );
+    };
+    const { getByRole } = render(<TestCase />);
+    const checkbox = getByRole('checkbox') as HTMLInputElement;
+
+    expect(checkbox.getAttribute('aria-checked')).toBe('mixed');
+    expect(checkbox.indeterminate).toBe(true);
+    expect(checkbox.checked).toBe(false);
+
+    userEvent.click(checkbox);
+
+    expect(checkbox.getAttribute('aria-checked')).toBe('true');
+    expect(checkbox.indeterminate).toBe(false);
+    expect(checkbox.checked).toBe(true);
+
+    userEvent.click(checkbox);
+
+    expect(checkbox.getAttribute('aria-checked')).toBe('false');
+    expect(checkbox.indeterminate).toBe(false);
+    expect(checkbox.checked).toBe(false);
+  });
+
+  it('should not toggle state when forced to `mixed`', () => {
+    const { getByRole } = render(
+      <BraidTestProvider>
+        <Checkbox
+          id="field"
+          label="My field"
+          onChange={() => {}}
+          checked="mixed"
+        />
+      </BraidTestProvider>,
+    );
+    const checkbox = getByRole('checkbox') as HTMLInputElement;
+
+    expect(checkbox.getAttribute('aria-checked')).toBe('mixed');
+    expect(checkbox.indeterminate).toBe(true);
+    expect(checkbox.checked).toBe(false);
+
+    userEvent.click(checkbox);
+
+    expect(checkbox.getAttribute('aria-checked')).toBe('mixed');
+    expect(checkbox.indeterminate).toBe(true);
+    expect(checkbox.checked).toBe(false);
   });
 });
