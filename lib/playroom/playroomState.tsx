@@ -56,7 +56,7 @@ const makeStoreConsumer = (
   };
 
   return {
-    defaultState: setDefaultState,
+    setDefaultState,
     getState,
     setState,
     toggleState,

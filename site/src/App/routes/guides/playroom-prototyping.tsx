@@ -125,13 +125,13 @@ const PlayroomPrototyping = () => (
       something. While this is usually fine in simple prototypes, you’re likely
       to find scenarios where you need the state to have a default value. For
       example, we might want our checkbox to be checked by default. To support
-      this, our Playrooom provides a <Strong>defaultState</Strong> function
+      this, our Playrooom provides a <Strong>setDefaultState</Strong> function
       which should be called before rendering anything to the screen:
     </Text>
     <Code
       displayCode={`
         <>
-          {defaultState('myCheckbox', true)}
+          {setDefaultState('myCheckbox', true)}
 
           <Stack space="medium">
             <Checkbox label="Checkbox" stateName="myCheckbox" />
@@ -149,9 +149,9 @@ const PlayroomPrototyping = () => (
         </>
       `}
     >
-      {({ defaultState, getState }) => (
+      {({ setDefaultState, getState }) => (
         <>
-          {defaultState('myCheckbox', true)}
+          {setDefaultState('myCheckbox', true)}
 
           <Stack space="medium">
             <Checkbox label="Checkbox" stateName="myCheckbox" />
@@ -257,7 +257,7 @@ const PlayroomPrototyping = () => (
     <Code
       displayCode={`
         <>
-          {defaultState('screen', 'Home')}
+          {setDefaultState('screen', 'Home')}
 
           {getState('screen') === 'Home' && (
             <Card>
@@ -286,9 +286,9 @@ const PlayroomPrototyping = () => (
         </>
       `}
     >
-      {({ defaultState, getState, setState, resetState }) => (
+      {({ setDefaultState, getState, setState, resetState }) => (
         <>
-          {defaultState('screen', 'Home')}
+          {setDefaultState('screen', 'Home')}
 
           {getState('screen') === 'Home' && (
             <Card>
