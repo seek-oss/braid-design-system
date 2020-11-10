@@ -7,6 +7,7 @@ import React, {
 } from 'react';
 import { useStyles } from 'react-treat';
 import copy from 'copy-to-clipboard';
+import dedent from 'dedent';
 import memoize from 'lodash/memoize';
 import reactElementToJSXString from 'react-element-to-jsx-string';
 import prettier from 'prettier/standalone';
@@ -37,16 +38,24 @@ import { ThemedExample } from '../ThemeSetting';
 import usePlayroomScope from '../../../../lib/playroom/useScope';
 import { PlayroomStateProvider } from '../../../../lib/playroom/playroomState';
 
-const formatSnippet = memoize(
-  (snippet) =>
-    prettier
-      .format(snippet, {
-        parser: 'typescript',
-        plugins: [typescriptParser],
-        semi: false,
-      })
-      .replace(/^;/, ''), // Remove leading semicolons from JSX
-);
+const formatSnippet = memoize((snippet) => {
+  const formattedSnippet = prettier
+    .format(snippet, {
+      parser: 'typescript',
+      plugins: [typescriptParser],
+      semi: false,
+    })
+    .replace(/^;/, '') // Remove leading semicolons from JSX
+    .replace(/[\r\n]+$/, ''); // Remove trailing newline
+
+  const lines = formattedSnippet.split('\n');
+
+  if (lines[0] === '<>' && lines[lines.length - 1] === '</>') {
+    return dedent(lines.slice(1, lines.length - 1).join('\n'));
+  }
+
+  return formattedSnippet;
+});
 
 interface CodeButtonProps extends BoxProps {
   successLabel?: string;
