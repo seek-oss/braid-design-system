@@ -1,4 +1,10 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useMemo,
+  ReactNode,
+} from 'react';
 import curry from 'lodash/curry';
 
 export interface StateProp {
@@ -22,11 +28,15 @@ const unwrapValue = (value: any) => {
 };
 
 const makeStoreConsumer = (
+  defaultState: Map<string, any>,
   store: Store,
   setStore: (newStore: Store) => void,
 ) => {
-  const getState = (key: string, defaultValue?: any) =>
-    store.get(key) ?? defaultValue;
+  const setDefaultState = (key: string, value: any) => {
+    defaultState.set(key, value);
+  };
+
+  const getState = (key: string) => store.get(key) ?? defaultState.get(key);
 
   const setState = curry((key: string, value: any) =>
     setStore(new Map(store.set(key, unwrapValue(value)))),
@@ -46,6 +56,7 @@ const makeStoreConsumer = (
   };
 
   return {
+    setDefaultState,
     getState,
     setState,
     toggleState,
@@ -58,12 +69,17 @@ const PlayroomStateContext = createContext<ReturnType<
 > | null>(null);
 
 export const PlayroomStateProvider = ({
+  defaultState = new Map(),
   children,
 }: {
+  defaultState?: Map<string, any>;
   children: ReactNode;
 }) => {
-  const [store, setStore] = useState(new Map<string, any>());
-  const storeConsumer = makeStoreConsumer(store, setStore);
+  const state = useState(new Map<string, any>());
+  const storeConsumer = useMemo(
+    () => makeStoreConsumer(defaultState, ...state),
+    [state, defaultState],
+  );
 
   return (
     <PlayroomStateContext.Provider value={storeConsumer}>
