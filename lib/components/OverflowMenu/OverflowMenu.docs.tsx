@@ -49,17 +49,6 @@ const docs: ComponentDocs = {
       ),
     },
   ],
-  snippets: [
-    {
-      name: 'Standard',
-      code: (
-        <OverflowMenu label="Options">
-          <MenuItem>Option</MenuItem>
-          <MenuItem>Option</MenuItem>
-        </OverflowMenu>
-      ),
-    },
-  ],
 };
 
 export default docs;

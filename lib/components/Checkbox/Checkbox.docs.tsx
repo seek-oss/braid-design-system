@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import { Badge, Checkbox, Text } from '../';
-import { Checkbox as PlayroomCheckbox } from '../../playroom/components';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -167,25 +166,6 @@ const docs: ComponentDocs = {
         >
           <Text>This text is visible when the button is checked.</Text>
         </Checkbox>
-      ),
-    },
-  ],
-  snippets: [
-    {
-      name: 'Standard',
-      code: <PlayroomCheckbox label="Label" />,
-    },
-    {
-      name: 'With description',
-      code: <PlayroomCheckbox label="Label" description="Description" />,
-    },
-    {
-      name: 'With a Badge',
-      code: (
-        <PlayroomCheckbox
-          label="Label"
-          badge={<Badge weight="strong">Badge</Badge>}
-        />
       ),
     },
   ],

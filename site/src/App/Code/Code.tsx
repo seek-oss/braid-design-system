@@ -8,7 +8,6 @@ import React, {
 import { useStyles } from 'react-treat';
 import copy from 'copy-to-clipboard';
 import memoize from 'lodash/memoize';
-import reactElementToJSXString from 'react-element-to-jsx-string';
 import prettier from 'prettier/standalone';
 import typescriptParser from 'prettier/parser-typescript';
 import { createUrl } from 'sku/playroom/utils';
@@ -26,6 +25,7 @@ import { BoxProps } from '../../../../lib/components/Box/Box';
 import { FieldOverlay } from '../../../../lib/components/private/FieldOverlay/FieldOverlay';
 import { useBoxStyles } from '../../../../lib/components/Box/useBoxStyles';
 import { hideFocusRingsClassName } from '../../../../lib/components/private/hideFocusRings/hideFocusRings';
+import { reactElementToJsxString } from '../../../../lib/utils/reactElementToJsxString';
 import { CopyIcon } from './CopyIcon';
 import { PlayIcon } from './PlayIcon';
 import * as styleRefs from './Code.treat';
@@ -180,7 +180,7 @@ const Code = ({
     displayCode ??
       (typeof children === 'string'
         ? children
-        : reactElementToJSXString(
+        : reactElementToJsxString(
             typeof children === 'function' ? children(playroomScope) : children,
             {
               useBooleanShorthandSyntax: false,

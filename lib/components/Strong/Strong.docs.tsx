@@ -15,12 +15,6 @@ const docs: ComponentDocs = {
       ),
     },
   ],
-  snippets: [
-    {
-      name: 'Standard',
-      code: <Strong>Strong text</Strong>,
-    },
-  ],
 };
 
 export default docs;

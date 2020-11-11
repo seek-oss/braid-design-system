@@ -48,40 +48,6 @@ const docs: ComponentDocs = {
       ),
     },
   ],
-  snippets: [
-    {
-      name: 'Standard',
-      code: (
-        <ContentBlock>
-          <Placeholder height={100} />
-        </ContentBlock>
-      ),
-    },
-    {
-      name: 'Xsmall',
-      code: (
-        <ContentBlock width="xsmall">
-          <Placeholder height={100} />
-        </ContentBlock>
-      ),
-    },
-    {
-      name: 'Small',
-      code: (
-        <ContentBlock width="small">
-          <Placeholder height={100} />
-        </ContentBlock>
-      ),
-    },
-    {
-      name: 'Large',
-      code: (
-        <ContentBlock width="large">
-          <Placeholder height={100} />
-        </ContentBlock>
-      ),
-    },
-  ],
 };
 
 export default docs;

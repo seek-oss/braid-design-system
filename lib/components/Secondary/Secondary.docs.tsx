@@ -15,7 +15,6 @@ const docs: ComponentDocs = {
       ),
     },
   ],
-  snippets: [{ name: 'Standard', code: <Secondary>Secondary</Secondary> }],
 };
 
 export default docs;
