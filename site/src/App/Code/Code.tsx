@@ -14,6 +14,7 @@ import prettier from 'prettier/standalone';
 import typescriptParser from 'prettier/parser-typescript';
 import { createUrl } from 'sku/playroom/utils';
 import { useConfig } from '../ConfigContext';
+import { Source } from '../../../../lib/utils/source.macro.d';
 import {
   Box,
   Stack,
@@ -167,37 +168,63 @@ export const CodeBlock = ({
   );
 };
 
+const isSource = function <Value>(input: any): input is Source<Value> {
+  return (
+    typeof input === 'object' &&
+    input !== null &&
+    'code' in input &&
+    'value' in input
+  );
+};
+
+const parseInput = (
+  input: ReactChild | Source<ReactChild>,
+): Source<ReactChild> => {
+  if (typeof input === 'string') {
+    return {
+      code: input,
+      value: input,
+    };
+  }
+
+  return isSource(input)
+    ? {
+        code: formatSnippet(input.code),
+        value: input.value,
+      }
+    : {
+        code: formatSnippet(
+          reactElementToJSXString(input, {
+            useBooleanShorthandSyntax: false,
+            showDefaultProps: false,
+            showFunctions: false,
+            filterProps: ['onChange', 'onBlur', 'onFocus'],
+          }),
+        ),
+        value: input,
+      };
+};
+
 interface CodeProps {
   playroom?: boolean;
-  displayCode?: string;
   collapsedByDefault?: boolean;
   children:
     | ReactChild
-    | ((playroomScope: ReturnType<typeof usePlayroomScope>) => ReactChild);
+    | Source<ReactChild>
+    | ((
+        playroomScope: ReturnType<typeof usePlayroomScope>,
+      ) => Source<ReactChild>);
 }
 const Code = ({
   playroom = true,
   collapsedByDefault = false,
-  displayCode,
   children,
 }: CodeProps) => {
   const [hideCode, setHideCode] = useState(collapsedByDefault);
   const { playroomUrl } = useConfig();
   const playroomScope = usePlayroomScope();
-
-  const snippet = formatSnippet(
-    displayCode ??
-      (typeof children === 'string'
-        ? children
-        : reactElementToJSXString(
-            typeof children === 'function' ? children(playroomScope) : children,
-            {
-              useBooleanShorthandSyntax: false,
-              showDefaultProps: false,
-              showFunctions: false,
-              filterProps: ['onChange', 'onBlur', 'onFocus'],
-            },
-          )),
+  const { code, value } = parseInput(
+    typeof children === 'function' ? children(playroomScope) : children,
   );
 
   const blockLinkStyles = useBoxStyles({
@@ -214,13 +241,9 @@ const Code = ({
     >
       <Stack space="xsmall">
         {typeof children !== 'string' && (
-          <ThemedExample background="body">
-            {typeof children === 'function'
-              ? children(playroomScope)
-              : children}
-          </ThemedExample>
+          <ThemedExample background="body">{value}</ThemedExample>
         )}
-        {hideCode ? null : <CodeBlock>{snippet}</CodeBlock>}
+        {hideCode ? null : <CodeBlock>{code}</CodeBlock>}
         <Inline space="xxsmall" align="right">
           {collapsedByDefault ? (
             <CodeButton onClick={() => setHideCode(!hideCode)}>
@@ -236,18 +259,18 @@ const Code = ({
           ) : null}
           {hideCode ? null : (
             <CodeButton
-              onClick={() => copy(snippet)}
+              onClick={() => copy(code)}
               title="Copy code to clipboard"
               successLabel="Copied!"
             >
               <CopyIcon /> Copy
             </CodeButton>
           )}
-          {/^import/m.test(snippet) || !playroom ? null : (
+          {/^import/m.test(code) || !playroom ? null : (
             <CodeButton
               component="a"
               target="_blank"
-              href={createUrl({ baseUrl: playroomUrl, code: snippet })}
+              href={createUrl({ baseUrl: playroomUrl, code })}
               className={blockLinkStyles}
               title="Open in Playroom"
             >
