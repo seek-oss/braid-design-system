@@ -9,13 +9,21 @@ pluginTester({
     'smoke test': {
       babelOptions: { filename: __filename },
       code: `
-      import source from './source.macro'
+        import source from './source.macro'
 
-      const result = source({
-        // comment
-        hello: () => 'world'
-      });
-    `,
+        const result = source({
+          // comment
+          hello: () => 'world'
+        });
+      `,
+    },
+    'ignores types': {
+      babelOptions: { filename: __filename },
+      code: `
+        import { Source } from './source.macro'
+
+        const foo = 'bar';
+      `,
     },
   },
 });

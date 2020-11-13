@@ -14,7 +14,7 @@ import prettier from 'prettier/standalone';
 import typescriptParser from 'prettier/parser-typescript';
 import { createUrl } from 'sku/playroom/utils';
 import { useConfig } from '../ConfigContext';
-import { Source } from '../../../../lib/utils/source.macro.d';
+import { Source } from '../../../../lib/utils/source.macro';
 import {
   Box,
   Stack,
