@@ -10,10 +10,7 @@ import {
   TextLink,
   Strong,
 } from '..';
-import {
-  Placeholder,
-  Drawer as PlayroomDrawer,
-} from '../../playroom/components';
+import { Placeholder } from '../../playroom/components';
 import { DrawerContent, DrawerProps } from './Drawer';
 
 const makeExampleContent = ({ label }: { label?: ReactNode } = {}) => (
@@ -338,40 +335,6 @@ const docs: ComponentDocs = {
           </Fragment>
         );
       },
-    },
-  ],
-  snippets: [
-    {
-      name: 'Default',
-      code: (
-        <PlayroomDrawer title="Drawer Heading" open={true}>
-          <Placeholder width="100%" height={100} />
-        </PlayroomDrawer>
-      ),
-    },
-    {
-      name: 'Small',
-      code: (
-        <PlayroomDrawer title="Drawer Heading" width="small" open={true}>
-          <Placeholder width="100%" height={100} />
-        </PlayroomDrawer>
-      ),
-    },
-    {
-      name: 'Medium',
-      code: (
-        <PlayroomDrawer title="Drawer Heading" width="medium" open={true}>
-          <Placeholder width="100%" height={100} />
-        </PlayroomDrawer>
-      ),
-    },
-    {
-      name: 'Large',
-      code: (
-        <PlayroomDrawer title="Drawer Heading" width="large" open={true}>
-          <Placeholder width="100%" height={100} />
-        </PlayroomDrawer>
-      ),
     },
   ],
 };

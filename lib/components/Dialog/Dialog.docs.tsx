@@ -12,10 +12,7 @@ import {
   Box,
   Strong,
 } from '../';
-import {
-  Placeholder,
-  Dialog as PlayroomDialog,
-} from '../../playroom/components';
+import { Placeholder } from '../../playroom/components';
 import { DialogContent, DialogProps } from './Dialog';
 
 const docs: ComponentDocs = {
@@ -535,70 +532,6 @@ const docs: ComponentDocs = {
           </Fragment>
         );
       },
-    },
-  ],
-  snippets: [
-    {
-      name: 'Standard',
-      code: (
-        <PlayroomDialog title="Dialog Heading" open={true}>
-          <Placeholder width={250} height={100} />
-        </PlayroomDialog>
-      ),
-    },
-    {
-      name: 'With illustration',
-      code: (
-        <PlayroomDialog
-          title="Illustrated Dialog"
-          open={true}
-          illustration={
-            <Box style={{ height: 100, width: 100 }}>
-              <IconMail size="fill" />
-            </Box>
-          }
-        >
-          <Stack space="xlarge" align="center">
-            <Placeholder width="100%" height={100} />
-            <Inline space="small">
-              <Button>Got it</Button>
-              <Button weight="weak">Cancel</Button>
-            </Inline>
-          </Stack>
-        </PlayroomDialog>
-      ),
-    },
-    {
-      name: 'Xsmall',
-      code: (
-        <PlayroomDialog title="Dialog Heading" width="xsmall" open={true}>
-          <Placeholder width="100%" height={100} />
-        </PlayroomDialog>
-      ),
-    },
-    {
-      name: 'Small',
-      code: (
-        <PlayroomDialog title="Dialog Heading" width="small" open={true}>
-          <Placeholder width="100%" height={100} />
-        </PlayroomDialog>
-      ),
-    },
-    {
-      name: 'Medium',
-      code: (
-        <PlayroomDialog title="Dialog Heading" width="medium" open={true}>
-          <Placeholder width="100%" height={100} />
-        </PlayroomDialog>
-      ),
-    },
-    {
-      name: 'Large',
-      code: (
-        <PlayroomDialog title="Dialog Heading" width="large" open={true}>
-          <Placeholder width="100%" height={100} />
-        </PlayroomDialog>
-      ),
     },
   ],
 };

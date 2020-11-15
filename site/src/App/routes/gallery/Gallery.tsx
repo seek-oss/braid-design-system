@@ -9,7 +9,6 @@ import React, {
 import { chunk, memoize } from 'lodash';
 import copy from 'copy-to-clipboard';
 import { useIntersection } from 'react-use';
-import reactElementToJSXString from 'react-element-to-jsx-string';
 
 import {
   Stack,
@@ -24,6 +23,7 @@ import {
   Column,
   Disclosure,
 } from '../../../../../lib/components';
+import { reactElementToJsxString } from '../../../../../lib/utils/reactElementToJsxString';
 import { getHistory, isNew } from '../../Updates';
 import { CopyIcon } from '../../Code/CopyIcon';
 import { CodeButton } from '../../Code/Code';
@@ -259,7 +259,7 @@ const GalleryItem = ({
                   ) => {
                     const codeAsString =
                       Example && !code
-                        ? reactElementToJSXString(
+                        ? reactElementToJsxString(
                             Example({ id: 'id', handler: noop }), // eslint-disable-line new-cap
                             {
                               useBooleanShorthandSyntax: false,

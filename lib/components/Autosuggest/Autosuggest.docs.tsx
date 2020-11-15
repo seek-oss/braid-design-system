@@ -1,8 +1,7 @@
 import React, { useState, ReactNode } from 'react';
 import matchHighlights from 'autosuggest-highlight/match';
 import { ComponentDocs } from '../../../site/src/types';
-import { Autosuggest, IconSearch, IconLocation, TextLink, Text } from '../';
-import { Autosuggest as PlayroomAutosuggest } from '../../playroom/components';
+import { Autosuggest, IconSearch, TextLink, Text } from '../';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <div style={{ maxWidth: '300px' }}>{children}</div>
@@ -291,114 +290,6 @@ const docs: ComponentDocs = {
           />
         );
       },
-    },
-  ],
-  snippets: [
-    {
-      name: 'Standard',
-      code: (
-        <PlayroomAutosuggest
-          id="fruit"
-          label="Fruit"
-          suggestions={[
-            { text: 'Apples' },
-            { text: 'Bananas' },
-            { text: 'Carrots' },
-          ]}
-        />
-      ),
-    },
-    {
-      name: 'Grouped suggestions',
-      code: (
-        <PlayroomAutosuggest
-          label="I like to eat"
-          id="grouped"
-          suggestions={[
-            {
-              label: 'Fruit',
-              suggestions: [
-                { text: 'Apples' },
-                { text: 'Bananas' },
-                { text: 'Carrots' },
-              ],
-            },
-            {
-              label: 'Vegetables',
-              suggestions: [
-                { text: 'Broccoli' },
-                { text: 'Carrots' },
-                { text: 'Carrots' },
-              ],
-            },
-          ]}
-        />
-      ),
-    },
-    {
-      name: 'With mobile backdrop',
-      code: (
-        <PlayroomAutosuggest
-          showMobileBackdrop
-          id="mobile"
-          label="Fruit"
-          suggestions={[
-            { text: 'Apples' },
-            { text: 'Bananas' },
-            { text: 'Carrots' },
-          ]}
-        />
-      ),
-    },
-    {
-      name: 'With error',
-      code: (
-        <PlayroomAutosuggest
-          label="I like to eat"
-          id="error"
-          tone="critical"
-          message="You must make a selection"
-          suggestions={[
-            { text: 'Apples' },
-            { text: 'Bananas' },
-            { text: 'Carrots' },
-          ]}
-        />
-      ),
-    },
-    {
-      name: 'With description',
-      code: (
-        <PlayroomAutosuggest
-          label="Fruit"
-          id="error"
-          description="Select your favourite fruit to eat from the available suggestions."
-          suggestions={[
-            { text: 'Apples' },
-            { text: 'Bananas' },
-            { text: 'Carrots' },
-          ]}
-        />
-      ),
-    },
-    {
-      name: 'With icon',
-      code: (
-        <PlayroomAutosuggest
-          id="location"
-          icon={<IconLocation />}
-          placeholder="Enter a location"
-          suggestions={[
-            { text: 'Adelaide' },
-            { text: 'Brisbane' },
-            { text: 'Darwin' },
-            { text: 'Hobart' },
-            { text: 'Melbourne' },
-            { text: 'Perth' },
-            { text: 'Sydney' },
-          ]}
-        />
-      ),
     },
   ],
 };

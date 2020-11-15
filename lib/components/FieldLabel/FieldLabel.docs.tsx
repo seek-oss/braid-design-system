@@ -1,7 +1,6 @@
 import React, { ReactNode } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import { FieldLabel, TextLink } from '../';
-import { FieldLabel as PlayroomFieldLabel } from '../../playroom/components';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <div style={{ maxWidth: '300px' }}>{children}</div>
@@ -47,26 +46,6 @@ const docs: ComponentDocs = {
         <FieldLabel
           htmlFor={id}
           label="Title"
-          secondaryLabel="Optional"
-          tertiaryLabel={<TextLink href="#">Help?</TextLink>}
-        />
-      ),
-    },
-  ],
-  snippets: [
-    {
-      name: 'Standard',
-      code: <PlayroomFieldLabel label="Label" />,
-    },
-    {
-      name: 'Standard with secondary label',
-      code: <PlayroomFieldLabel label="Label" secondaryLabel="Optional" />,
-    },
-    {
-      name: 'Standard with tertiary label',
-      code: (
-        <PlayroomFieldLabel
-          label="Label"
           secondaryLabel="Optional"
           tertiaryLabel={<TextLink href="#">Help?</TextLink>}
         />

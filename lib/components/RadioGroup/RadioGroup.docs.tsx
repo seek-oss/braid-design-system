@@ -1,18 +1,7 @@
 import React, { useState } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import {
-  Stack,
-  Text,
-  TextLink,
-  RadioGroup,
-  RadioItem,
-  Strong,
-  Badge,
-} from '..';
-import {
-  Placeholder,
-  RadioGroup as PlayroomRadioGroup,
-} from '../../playroom/components';
+import { Stack, Text, TextLink, RadioGroup, RadioItem, Strong } from '..';
+import { Placeholder } from '../../playroom/components';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -177,77 +166,6 @@ const docs: ComponentDocs = {
           </RadioGroup>
         );
       },
-    },
-  ],
-  snippets: [
-    {
-      name: 'Standard',
-      code: (
-        <PlayroomRadioGroup label="Options">
-          <RadioItem label="Option 1" value="1" />
-          <RadioItem label="Option 2" value="2" />
-        </PlayroomRadioGroup>
-      ),
-    },
-    {
-      name: 'with Description',
-      code: (
-        <PlayroomRadioGroup
-          label="Options"
-          description="More details about options"
-        >
-          <RadioItem label="Option 1" value="1" />
-          <RadioItem label="Option 2" value="2" />
-        </PlayroomRadioGroup>
-      ),
-    },
-    {
-      name: 'with an error',
-      code: (
-        <PlayroomRadioGroup label="Options" tone="critical" message="Required">
-          <RadioItem label="Option 1" value="1" />
-          <RadioItem label="Option 2" value="2" />
-        </PlayroomRadioGroup>
-      ),
-    },
-    {
-      group: 'RadioItem',
-      name: 'with Badge',
-      code: (
-        <RadioItem
-          label="With badge"
-          value="badge"
-          badge={
-            <Badge tone="promote" weight="strong">
-              Badge
-            </Badge>
-          }
-        />
-      ),
-    },
-    {
-      group: 'RadioItem',
-      name: 'with Description',
-      code: (
-        <RadioItem
-          label="With description"
-          value="description"
-          description="Extra item detail"
-        />
-      ),
-    },
-    {
-      group: 'RadioItem',
-      name: 'with nested content visible when checked',
-      code: (
-        <RadioItem
-          label="With nested content"
-          value="children"
-          description="Content visible below when checked"
-        >
-          <Placeholder height={50} width="100%" />
-        </RadioItem>
-      ),
     },
   ],
 };

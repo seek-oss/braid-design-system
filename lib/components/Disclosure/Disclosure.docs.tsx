@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import dedent from 'dedent';
 import { ComponentDocs } from '../../../site/src/types';
 import { Disclosure, Stack, Text, TextLink } from '..';
-import { Disclosure as PlayroomDisclosure } from '../../playroom/components';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -115,18 +114,6 @@ const docs: ComponentDocs = {
           );
         };
       `,
-    },
-  ],
-  snippets: [
-    {
-      name: 'Standard',
-      code: (
-        <PlayroomDisclosure expandLabel="Show" collapseLabel="Hide">
-          <Stack space="large">
-            <Text>Content</Text>
-          </Stack>
-        </PlayroomDisclosure>
-      ),
     },
   ],
 };

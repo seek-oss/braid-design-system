@@ -48,20 +48,6 @@ const docs: ComponentDocs = {
       },
     },
   ],
-  snippets: [
-    {
-      name: 'Standard',
-      code: <Rating rating={3} />,
-    },
-    {
-      name: 'Without text rating',
-      code: <Rating rating={4.2} showTextRating={false} />,
-    },
-    {
-      name: 'Large',
-      code: <Rating rating={3.7} size="large" />,
-    },
-  ],
 };
 
 export default docs;

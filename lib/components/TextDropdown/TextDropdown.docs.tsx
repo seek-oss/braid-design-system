@@ -1,7 +1,6 @@
 import React, { ReactNode, useState } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import { Heading, Stack, Strong, Text, TextLink, TextDropdown } from '..';
-import { TextDropdown as PlayroomTextDropdown } from '../../playroom/components';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <div style={{ maxWidth: '300px' }}>{children}</div>
@@ -137,34 +136,6 @@ const docs: ComponentDocs = {
           </Text>
         );
       },
-    },
-  ],
-  snippets: [
-    {
-      name: 'Standard',
-      code: (
-        <Text>
-          <PlayroomTextDropdown
-            label="Label"
-            value="Option 1"
-            options={['Option 1', 'Option 2', 'Option 3']}
-          />
-        </Text>
-      ),
-    },
-    {
-      name: 'Strong',
-      code: (
-        <Text>
-          Sort by{' '}
-          <Strong>
-            <PlayroomTextDropdown
-              label="Sort order"
-              options={['Relevance', 'Keyword']}
-            />
-          </Strong>
-        </Text>
-      ),
     },
   ],
 };

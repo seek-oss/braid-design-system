@@ -1,0 +1,112 @@
+import React from 'react';
+import { Autosuggest, IconLocation } from '../../playroom/components';
+import { Snippets } from '../private/Snippets';
+
+export const snippets: Snippets = [
+  {
+    name: 'Standard',
+    code: (
+      <Autosuggest
+        id="fruit"
+        label="Fruit"
+        suggestions={[
+          { text: 'Apples' },
+          { text: 'Bananas' },
+          { text: 'Carrots' },
+        ]}
+      />
+    ),
+  },
+  {
+    name: 'Grouped suggestions',
+    code: (
+      <Autosuggest
+        label="I like to eat"
+        id="grouped"
+        suggestions={[
+          {
+            label: 'Fruit',
+            suggestions: [
+              { text: 'Apples' },
+              { text: 'Bananas' },
+              { text: 'Carrots' },
+            ],
+          },
+          {
+            label: 'Vegetables',
+            suggestions: [
+              { text: 'Broccoli' },
+              { text: 'Carrots' },
+              { text: 'Carrots' },
+            ],
+          },
+        ]}
+      />
+    ),
+  },
+  {
+    name: 'With mobile backdrop',
+    code: (
+      <Autosuggest
+        showMobileBackdrop
+        id="mobile"
+        label="Fruit"
+        suggestions={[
+          { text: 'Apples' },
+          { text: 'Bananas' },
+          { text: 'Carrots' },
+        ]}
+      />
+    ),
+  },
+  {
+    name: 'With error',
+    code: (
+      <Autosuggest
+        label="I like to eat"
+        id="error"
+        tone="critical"
+        message="You must make a selection"
+        suggestions={[
+          { text: 'Apples' },
+          { text: 'Bananas' },
+          { text: 'Carrots' },
+        ]}
+      />
+    ),
+  },
+  {
+    name: 'With description',
+    code: (
+      <Autosuggest
+        label="Fruit"
+        id="error"
+        description="Select your favourite fruit to eat from the available suggestions."
+        suggestions={[
+          { text: 'Apples' },
+          { text: 'Bananas' },
+          { text: 'Carrots' },
+        ]}
+      />
+    ),
+  },
+  {
+    name: 'With icon',
+    code: (
+      <Autosuggest
+        id="location"
+        icon={<IconLocation />}
+        placeholder="Enter a location"
+        suggestions={[
+          { text: 'Adelaide' },
+          { text: 'Brisbane' },
+          { text: 'Darwin' },
+          { text: 'Hobart' },
+          { text: 'Melbourne' },
+          { text: 'Perth' },
+          { text: 'Sydney' },
+        ]}
+      />
+    ),
+  },
+];

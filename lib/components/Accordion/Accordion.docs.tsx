@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import { Accordion, AccordionItem, Stack, Text, TextLink } from '../';
-import { AccordionItem as PlayroomAccordionItem } from '../../playroom/components';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -95,57 +94,6 @@ const docs: ComponentDocs = {
         <AccordionItem label="Label" id={id}>
           <Text>Content</Text>
         </AccordionItem>
-      ),
-    },
-  ],
-  snippets: [
-    {
-      name: '2 items',
-      code: (
-        <Accordion>
-          <PlayroomAccordionItem label="Label">
-            <Stack space="large">
-              <Text>Content</Text>
-            </Stack>
-          </PlayroomAccordionItem>
-          <PlayroomAccordionItem label="Label">
-            <Stack space="large">
-              <Text>Content</Text>
-            </Stack>
-          </PlayroomAccordionItem>
-        </Accordion>
-      ),
-    },
-    {
-      name: '3 items',
-      code: (
-        <Accordion>
-          <PlayroomAccordionItem label="Label">
-            <Stack space="large">
-              <Text>Content</Text>
-            </Stack>
-          </PlayroomAccordionItem>
-          <PlayroomAccordionItem label="Label">
-            <Stack space="large">
-              <Text>Content</Text>
-            </Stack>
-          </PlayroomAccordionItem>
-          <PlayroomAccordionItem label="Label">
-            <Stack space="large">
-              <Text>Content</Text>
-            </Stack>
-          </PlayroomAccordionItem>
-        </Accordion>
-      ),
-    },
-    {
-      name: 'Standalone item',
-      code: (
-        <PlayroomAccordionItem label="Label">
-          <Stack space="large">
-            <Text>Content</Text>
-          </Stack>
-        </PlayroomAccordionItem>
       ),
     },
   ],
