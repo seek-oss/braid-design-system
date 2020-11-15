@@ -19,7 +19,6 @@ module.exports = {
     'themes',
     'site/src',
     'scripts',
-    '@types',
     'generate-component-docs',
     'reset',
   ],

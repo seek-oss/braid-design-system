@@ -1,7 +1,6 @@
 import React, { ReactNode } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import { Dropdown, IconLocation } from '../';
-import { Dropdown as PlayroomDropdown } from '../../playroom/components';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <div style={{ maxWidth: '300px' }}>{children}</div>
@@ -107,47 +106,6 @@ const docs: ComponentDocs = {
           <option value="1">Developer</option>
           <option value="2">Designer</option>
         </Dropdown>
-      ),
-    },
-  ],
-  snippets: [
-    {
-      name: 'Standard',
-      code: (
-        <PlayroomDropdown label="Label">
-          <option>Option</option>
-          <option>Option</option>
-          <option>Option</option>
-        </PlayroomDropdown>
-      ),
-    },
-    {
-      name: 'Grouped',
-      code: (
-        <PlayroomDropdown
-          label="Location"
-          placeholder="Please select a location"
-        >
-          <optgroup label="Major Cities">
-            <option value="3004">Melbourne</option>
-            <option value="3002">Sydney</option>
-          </optgroup>
-          <option value="3020">Wonthaggi</option>
-        </PlayroomDropdown>
-      ),
-    },
-    {
-      name: 'With error',
-      code: (
-        <PlayroomDropdown
-          tone="critical"
-          message="Required field"
-          label="Label"
-        >
-          <option>Option</option>
-          <option>Option</option>
-          <option>Option</option>
-        </PlayroomDropdown>
       ),
     },
   ],

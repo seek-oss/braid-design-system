@@ -57,7 +57,6 @@ const docs: ComponentDocs = {
       },
     },
   ],
-  snippets: [{ name: 'Standard', code: <Loader /> }],
 };
 
 export default docs;

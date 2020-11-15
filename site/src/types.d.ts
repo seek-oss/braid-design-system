@@ -1,7 +1,5 @@
 import { ReactNode } from 'react';
 import { RouteProps } from 'react-router';
-import { Snippets } from 'sku/playroom';
-import { Optional } from 'utility-types';
 import { ReactNodeNoStrings } from './../../lib/components/private/ReactNodeNoStrings';
 import { BoxProps } from '../../lib/components/Box/Box';
 
@@ -25,10 +23,6 @@ export interface Page extends RouteProps {
   badge?: 'New';
 }
 
-interface DocsSnippet extends Optional<Snippets[number], 'group'> {
-  code: ReactChild;
-}
-
 export interface ComponentDocs {
   category: 'Logic' | 'Layout' | 'Content' | 'Icon';
   deprecationWarning?: ReactNodeNoStrings;
@@ -38,7 +32,6 @@ export interface ComponentDocs {
   screenshotOnlyInWireframe?: boolean;
   examples: ComponentExample[];
   gallery?: boolean;
-  snippets?: DocsSnippet[];
   description?: ReactNodeNoStrings;
   subComponents?: string[];
 }

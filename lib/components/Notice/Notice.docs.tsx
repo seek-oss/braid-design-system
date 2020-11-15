@@ -72,40 +72,6 @@ const docs: ComponentDocs = {
       ),
     },
   ],
-  snippets: [
-    {
-      name: 'Critical',
-      code: (
-        <Notice tone="critical">
-          <Text>Critical Notice</Text>
-        </Notice>
-      ),
-    },
-    {
-      name: 'Positive',
-      code: (
-        <Notice tone="positive">
-          <Text>Positive Notice</Text>
-        </Notice>
-      ),
-    },
-    {
-      name: 'Info',
-      code: (
-        <Notice tone="info">
-          <Text>Info Notice</Text>
-        </Notice>
-      ),
-    },
-    {
-      name: 'Promote',
-      code: (
-        <Notice tone="promote">
-          <Text>Promote Notice</Text>
-        </Notice>
-      ),
-    },
-  ],
 };
 
 export default docs;

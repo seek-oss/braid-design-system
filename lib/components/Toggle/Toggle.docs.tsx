@@ -1,7 +1,6 @@
 import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import { Toggle, Box } from '../';
-import { Toggle as PlayroomToggle } from '../../playroom/components';
 
 const handler = () => {
   /* no op for docs examples */
@@ -73,20 +72,6 @@ const docs: ComponentDocs = {
           />
         </Box>
       ),
-    },
-  ],
-  snippets: [
-    {
-      name: 'Standard',
-      code: <PlayroomToggle label="Toggle" />,
-    },
-    {
-      name: 'Aligned right',
-      code: <PlayroomToggle label="Toggled" align="right" />,
-    },
-    {
-      name: 'Justified',
-      code: <PlayroomToggle label="Toggled" align="justify" />,
     },
   ],
 };

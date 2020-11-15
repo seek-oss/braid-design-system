@@ -69,20 +69,6 @@ const docs: ComponentDocs = {
       },
     },
   ],
-  snippets: [
-    {
-      name: 'Standard',
-      code: <Button>Submit</Button>,
-    },
-    {
-      name: 'Strong',
-      code: <Button weight="strong">Submit</Button>,
-    },
-    {
-      name: 'Weak',
-      code: <Button weight="weak">Submit</Button>,
-    },
-  ],
 };
 
 export default docs;

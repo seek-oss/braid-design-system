@@ -1,7 +1,6 @@
 import React, { ReactNode, useState } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import { PasswordField, TextLink } from '../';
-import { PasswordField as PlayroomPasswordField } from '../../playroom/components';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <div style={{ maxWidth: '300px' }}>{children}</div>
@@ -141,40 +140,6 @@ const docs: ComponentDocs = {
           />
         );
       },
-    },
-  ],
-  snippets: [
-    {
-      name: 'Standard',
-      code: <PlayroomPasswordField label="Password" />,
-    },
-    {
-      name: 'With error',
-      code: (
-        <PlayroomPasswordField
-          label="Password"
-          tone="critical"
-          message="Required"
-        />
-      ),
-    },
-    {
-      name: 'With description',
-      code: (
-        <PlayroomPasswordField
-          label="Password"
-          description="More detailed description of field."
-        />
-      ),
-    },
-    {
-      name: 'With forgot password link',
-      code: (
-        <PlayroomPasswordField
-          label="Password"
-          tertiaryLabel={<TextLink href="#">Forgot password?</TextLink>}
-        />
-      ),
     },
   ],
 };

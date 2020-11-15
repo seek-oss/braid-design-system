@@ -1,7 +1,7 @@
 import React, { ReactNode, Fragment } from 'react';
-import reactElementToJSXString from 'react-element-to-jsx-string';
 import { Route, Switch, useRouteMatch } from 'react-router';
 import { ComponentProps } from './ComponentProps';
+import { reactElementToJsxString } from '../../../../lib/utils/reactElementToJsxString';
 import {
   Box,
   Heading,
@@ -147,7 +147,7 @@ export const ComponentDoc = ({
 
               const codeAsString =
                 Example && !code
-                  ? reactElementToJSXString(
+                  ? reactElementToJsxString(
                       Example({ id: 'id', handler }), // eslint-disable-line new-cap
                       {
                         useBooleanShorthandSyntax: false,
