@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`source.macro ignores types: ignores types 1`] = `
+
+import { Source } from './source.macro'
+
+const foo = 'bar';
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const foo = 'bar';
+
+
+`;
+
+exports[`source.macro smoke test: smoke test 1`] = `
+
+import source from './source.macro'
+
+const result = source({
+  // comment
+  hello: () => 'world'
+});
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const result = {
+  code: "{\\n  // comment\\n  hello: () => 'world'\\n}",
+  value: {
+    // comment
+    hello: () => 'world',
+  },
+};
+
+
+`;

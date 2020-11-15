@@ -17,6 +17,7 @@ import {
   Placeholder,
   TextField,
 } from '../../../../../lib/playroom/components';
+import source from '../../../../../lib/utils/source.macro';
 import { TextStack } from '../../TextStack/TextStack';
 import { Page } from '../../../types';
 import { PageTitle } from '../../Seo/PageTitle';
@@ -57,67 +58,43 @@ const PlayroomPrototyping = () => (
       As a minimal example, let’s make the checkbox toggle the visibility of
       another element:
     </Text>
-    <Code
-      displayCode={`
-        <Stack space="medium">
-          <Checkbox label="Checkbox" stateName="myCheckbox" />
+    <Code>
+      {({ getState }) =>
+        source(
+          <Stack space="medium">
+            <Checkbox label="Checkbox" stateName="myCheckbox" />
 
-          {getState('myCheckbox') && (
-            <Notice tone="positive">
-              <Text>Good job! You checked the checkbox!</Text>
-            </Notice>
-          )}
-        </Stack>
-      `}
-    >
-      {({ getState }) => (
-        <Stack space="medium">
-          <Checkbox label="Checkbox" stateName="myCheckbox" />
-
-          {getState('myCheckbox') && (
-            <Notice tone="positive">
-              <Text>Good job! You checked the checkbox!</Text>
-            </Notice>
-          )}
-        </Stack>
-      )}
+            {getState('myCheckbox') && (
+              <Notice tone="positive">
+                <Text>Good job! You checked the checkbox!</Text>
+              </Notice>
+            )}
+          </Stack>,
+        )
+      }
     </Code>
     <Text>
       We could also use the checkbox state to toggle the visibility of two
       alternate elements:
     </Text>
-    <Code
-      displayCode={`
-        <Stack space="medium">
-          <Checkbox label="Checkbox" stateName="myCheckbox" />
+    <Code>
+      {({ getState }) =>
+        source(
+          <Stack space="medium">
+            <Checkbox label="Checkbox" stateName="myCheckbox" />
 
-          {getState('myCheckbox') ? (
-            <Notice tone="positive">
-              <Text>Good job! You checked the checkbox!</Text>
-            </Notice>
-          ) : (
-            <Notice tone="critical">
-              <Text>Oops! You haven’t checked the checkbox!</Text>
-            </Notice>
-          )}
-        </Stack>
-      `}
-    >
-      {({ getState }) => (
-        <Stack space="medium">
-          <Checkbox label="Checkbox" stateName="myCheckbox" />
-
-          {getState('myCheckbox') ? (
-            <Notice tone="positive">
-              <Text>Good job! You checked the checkbox!</Text>
-            </Notice>
-          ) : (
-            <Notice tone="critical">
-              <Text>Oops! You haven’t checked the checkbox!</Text>
-            </Notice>
-          )}
-        </Stack>
-      )}
+            {getState('myCheckbox') ? (
+              <Notice tone="positive">
+                <Text>Good job! You checked the checkbox!</Text>
+              </Notice>
+            ) : (
+              <Notice tone="critical">
+                <Text>Oops! You haven’t checked the checkbox!</Text>
+              </Notice>
+            )}
+          </Stack>,
+        )
+      }
     </Code>
 
     <Text>
@@ -128,81 +105,50 @@ const PlayroomPrototyping = () => (
       this, our Playrooom provides a <Strong>setDefaultState</Strong> function
       which should be called before rendering anything to the screen:
     </Text>
-    <Code
-      displayCode={`
-        <>
-          {setDefaultState('myCheckbox', true)}
+    <Code>
+      {({ setDefaultState, getState }) =>
+        source(
+          <>
+            {setDefaultState('myCheckbox', true)}
 
-          <Stack space="medium">
-            <Checkbox label="Checkbox" stateName="myCheckbox" />
+            <Stack space="medium">
+              <Checkbox label="Checkbox" stateName="myCheckbox" />
 
-            {getState('myCheckbox') ? (
-              <Notice tone="positive">
-                <Text>Good job! You checked the checkbox!</Text>
-              </Notice>
-            ) : (
-              <Notice tone="critical">
-                <Text>Oops! You haven’t checked the checkbox!</Text>
-              </Notice>
-            )}
-          </Stack>
-        </>
-      `}
-    >
-      {({ setDefaultState, getState }) => (
-        <>
-          {setDefaultState('myCheckbox', true)}
-
-          <Stack space="medium">
-            <Checkbox label="Checkbox" stateName="myCheckbox" />
-
-            {getState('myCheckbox') ? (
-              <Notice tone="positive">
-                <Text>Good job! You checked the checkbox!</Text>
-              </Notice>
-            ) : (
-              <Notice tone="critical">
-                <Text>Oops! You haven’t checked the checkbox!</Text>
-              </Notice>
-            )}
-          </Stack>
-        </>
-      )}
+              {getState('myCheckbox') ? (
+                <Notice tone="positive">
+                  <Text>Good job! You checked the checkbox!</Text>
+                </Notice>
+              ) : (
+                <Notice tone="critical">
+                  <Text>Oops! You haven’t checked the checkbox!</Text>
+                </Notice>
+              )}
+            </Stack>
+          </>,
+        )
+      }
     </Code>
     <Text>
       We can bind to more complicated state too, like text values within{' '}
       <TextLink href="/components/TextField">TextField</TextLink> components:
     </Text>
-    <Code
-      displayCode={`
-        <Card>
-          <Stack space="large">
-            <TextField label="First name" stateName="firstName" />
-            <TextField label="Last name" stateName="lastName" />
+    <Code>
+      {({ getState }) =>
+        source(
+          <Card>
+            <Stack space="large">
+              <TextField label="First name" stateName="firstName" />
+              <TextField label="Last name" stateName="lastName" />
 
-            {getState('firstName') && getState('lastName') ? (
-              <Heading level="4">
-                👋 Hello {getState('firstName')} {getState('lastName')}!
-              </Heading>
-            ) : null}
-          </Stack>
-        </Card>
-      `}
-    >
-      {({ getState }) => (
-        <Card>
-          <Stack space="large">
-            <TextField label="First name" stateName="firstName" />
-            <TextField label="Last name" stateName="lastName" />
-
-            {getState('firstName') && getState('lastName') ? (
-              <Heading level="4">
-                👋 Hello {getState('firstName')} {getState('lastName')}!
-              </Heading>
-            ) : null}
-          </Stack>
-        </Card>
-      )}
+              {getState('firstName') && getState('lastName') ? (
+                <Heading level="4">
+                  👋 Hello {getState('firstName')} {getState('lastName')}!
+                </Heading>
+              ) : null}
+            </Stack>
+          </Card>,
+        )
+      }
     </Code>
 
     <Text>
@@ -217,30 +163,22 @@ const PlayroomPrototyping = () => (
       hidden.
     </Text>
 
-    <Code
-      displayCode={`
-        <Card>
-          <Actions>
-            <Button onClick={() => toggleState('myDrawer')}>Open drawer</Button>
-          </Actions>
+    <Code>
+      {({ toggleState }) =>
+        source(
+          <Card>
+            <Actions>
+              <Button onClick={() => toggleState('myDrawer')}>
+                Open drawer
+              </Button>
+            </Actions>
 
-          <Drawer title="Drawer" stateName="myDrawer">
-            <Placeholder height={100} />
-          </Drawer>
-        </Card>
-      `}
-    >
-      {({ toggleState }) => (
-        <Card>
-          <Actions>
-            <Button onClick={() => toggleState('myDrawer')}>Open drawer</Button>
-          </Actions>
-
-          <Drawer title="Drawer" stateName="myDrawer">
-            <Placeholder height={100} />
-          </Drawer>
-        </Card>
-      )}
+            <Drawer title="Drawer" stateName="myDrawer">
+              <Placeholder height={100} />
+            </Drawer>
+          </Card>,
+        )
+      }
     </Code>
 
     <Heading level="3">Navigating between screens</Heading>
@@ -254,68 +192,41 @@ const PlayroomPrototyping = () => (
       to go back to the original screen.
     </Text>
 
-    <Code
-      displayCode={`
-        <>
-          {setDefaultState('screen', 'Home')}
+    <Code>
+      {({ setDefaultState, getState, setState, resetState }) =>
+        source(
+          <>
+            {setDefaultState('screen', 'Home')}
 
-          {getState('screen') === 'Home' && (
-            <Card>
-              <Stack space="large">
-                <Heading level="3">Home</Heading>
-                <Actions>
-                  <Button onClick={() => setState('screen', 'Welcome')}>
-                    Sign in
-                  </Button>
-                </Actions>
-              </Stack>
-            </Card>
-          )}
+            {getState('screen') === 'Home' && (
+              <Card>
+                <Stack space="large">
+                  <Heading level="3">Home</Heading>
+                  <Actions>
+                    <Button onClick={() => setState('screen', 'Welcome')}>
+                      Sign in
+                    </Button>
+                  </Actions>
+                </Stack>
+              </Card>
+            )}
 
-          {getState('screen') === 'Welcome' && (
-            <Card>
-              <Stack space="large">
-                <Heading level="3">👋 Welcome!</Heading>
-                <Placeholder height={100} />
-                <Actions>
-                  <Button onClick={() => resetState('screen')}>Sign out</Button>
-                </Actions>
-              </Stack>
-            </Card>
-          )}
-        </>
-      `}
-    >
-      {({ setDefaultState, getState, setState, resetState }) => (
-        <>
-          {setDefaultState('screen', 'Home')}
-
-          {getState('screen') === 'Home' && (
-            <Card>
-              <Stack space="large">
-                <Heading level="3">Home</Heading>
-                <Actions>
-                  <Button onClick={() => setState('screen', 'Welcome')}>
-                    Sign in
-                  </Button>
-                </Actions>
-              </Stack>
-            </Card>
-          )}
-
-          {getState('screen') === 'Welcome' && (
-            <Card>
-              <Stack space="large">
-                <Heading level="3">👋 Welcome!</Heading>
-                <Placeholder height={100} />
-                <Actions>
-                  <Button onClick={() => resetState('screen')}>Sign out</Button>
-                </Actions>
-              </Stack>
-            </Card>
-          )}
-        </>
-      )}
+            {getState('screen') === 'Welcome' && (
+              <Card>
+                <Stack space="large">
+                  <Heading level="3">👋 Welcome!</Heading>
+                  <Placeholder height={100} />
+                  <Actions>
+                    <Button onClick={() => resetState('screen')}>
+                      Sign out
+                    </Button>
+                  </Actions>
+                </Stack>
+              </Card>
+            )}
+          </>,
+        )
+      }
     </Code>
 
     <Heading level="3">What’s next?</Heading>
