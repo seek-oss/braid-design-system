@@ -35,23 +35,27 @@ import * as styleRefs from './Autosuggest.treat';
 
 type SuggestionMatch = Array<{ start: number; end: number }>;
 
-interface AutosuggestValue<Value = any> {
+export interface AutosuggestValue<Value = any> {
   text: string;
   description?: string;
   value?: Value;
 }
 
-interface Suggestion<Value = any> extends AutosuggestValue<Value> {
+export interface Suggestion<Value = any> extends AutosuggestValue<Value> {
   label?: string;
   highlights?: SuggestionMatch;
   onClear?: (value: AutosuggestValue<Value>) => void;
   clearLabel?: string;
 }
 
-interface GroupedSuggestion<Value> {
+export interface GroupedSuggestions<Value> {
   label: string;
   suggestions: Array<Suggestion<Value>>;
 }
+
+export type Suggestions<Value> = Array<
+  Suggestion<Value> | GroupedSuggestions<Value>
+>;
 
 // Action type IDs (allows action type names to be minified)
 const INPUT_FOCUS = 0;
@@ -199,7 +203,7 @@ function GroupHeading({ children }: GroupHeadingProps) {
 }
 
 function normaliseSuggestions<Value>(
-  suggestions: Array<GroupedSuggestion<Value> | Suggestion<Value>>,
+  suggestions: Array<GroupedSuggestions<Value> | Suggestion<Value>>,
 ) {
   let index = 0;
   const normalisedSuggestions: Array<Suggestion<Value>> = [];
@@ -246,7 +250,9 @@ const fallbackSuggestions: Suggestion[] = [];
 export interface AutosuggestProps<Value>
   extends Omit<FieldProps, 'value' | 'autoComplete' | 'labelId'> {
   value: AutosuggestValue<Value>;
-  suggestions: Array<Suggestion<Value> | GroupedSuggestion<Value>>;
+  suggestions:
+    | Suggestions<Value>
+    | ((value: AutosuggestValue<Value>) => Suggestions<Value>);
   onChange: (value: AutosuggestValue<Value>) => void;
   automaticSelection?: boolean;
   hideSuggestionsOnSelection?: boolean;
@@ -263,7 +269,7 @@ export const Autosuggest = forwardRef(function <Value>(
   {
     id,
     value = fallbackValue,
-    suggestions = fallbackSuggestions,
+    suggestions: suggestionsProp = fallbackSuggestions,
     onChange = noop,
     automaticSelection = false,
     showMobileBackdrop = false,
@@ -280,6 +286,11 @@ export const Autosuggest = forwardRef(function <Value>(
   forwardedRef: Ref<HTMLInputElement>,
 ) {
   const styles = useStyles(styleRefs);
+
+  const suggestions =
+    typeof suggestionsProp === 'function'
+      ? suggestionsProp(value)
+      : suggestionsProp;
 
   // We need a ref regardless so we can imperatively
   // focus the field when clicking the clear button

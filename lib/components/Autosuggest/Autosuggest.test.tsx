@@ -3,7 +3,7 @@ import React, { useState, useRef, useEffect, Dispatch } from 'react';
 import { render, act, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { BraidTestProvider, Autosuggest } from '..';
-import { AutosuggestProps } from './Autosuggest';
+import { AutosuggestProps, Suggestions } from './Autosuggest';
 
 function renderAutosuggest<Value>({
   value: initialValue,
@@ -15,16 +15,22 @@ function renderAutosuggest<Value>({
   AutosuggestProps<Value>,
   'value' | 'suggestions' | 'automaticSelection' | 'onFocus' | 'onBlur'
 >) {
-  type Suggestions = typeof suggestionsProp;
   const changeHandler = jest.fn();
 
-  let suggestions: Suggestions = [];
-  let setSuggestions: Dispatch<Suggestions> = () => {
+  let suggestions: Suggestions<Value> = [];
+  let setSuggestions: Dispatch<Suggestions<Value>> = () => {
     /* */
   };
 
   const TestCase = () => {
     const [value, setValue] = useState(initialValue);
+
+    if (typeof suggestionsProp === 'function') {
+      throw new Error(
+        'This test case does not support suggestions as functions',
+      );
+    }
+
     [suggestions, setSuggestions] = useState(suggestionsProp);
 
     return (
@@ -56,7 +62,7 @@ function renderAutosuggest<Value>({
     changeHandler,
     queryByLabelText,
     queryByText,
-    setSuggestions: (x: Suggestions) => act(() => setSuggestions(x)),
+    setSuggestions: (x: Suggestions<Value>) => act(() => setSuggestions(x)),
   };
 }
 

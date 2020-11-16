@@ -23,8 +23,9 @@ const makeSuggestions = (
       text,
       description,
       value: i + initialValue,
-      // @ts-ignore
-      highlights: matchHighlights(text, inputValue).map(([start, end]) => ({
+      highlights: (matchHighlights(text, inputValue) as Array<
+        [number, number]
+      >).map(([start, end]) => ({
         start,
         end,
       })),

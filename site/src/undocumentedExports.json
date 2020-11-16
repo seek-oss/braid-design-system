@@ -2,6 +2,7 @@
   "AccordionItem",
   "Bullet",
   "BoxRenderer",
+  "filterSuggestions",
   "makeLinkComponent",
   "MenuItemLink",
   "RadioItem",
