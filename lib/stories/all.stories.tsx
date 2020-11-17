@@ -4,8 +4,10 @@ import { BrowserRouter } from 'react-router-dom';
 import { uniq, flatten, values } from 'lodash';
 import '../../reset';
 import * as themes from '../themes';
+import { ComponentDocs, ComponentExample } from '../../site/src/types';
+import { PlayroomStateProvider } from '../playroom/playroomState';
+import { useSourceFromExample } from '../utils/useSourceFromExample';
 import { BraidProvider, Box } from '../components';
-import { ComponentDocs } from '../../site/src/types';
 
 const webFontLinkTags = uniq(
   flatten(values(themes).map((theme) => theme.webFonts)).map(
@@ -13,10 +15,6 @@ const webFontLinkTags = uniq(
   ),
 ).join('');
 document.head.innerHTML += webFontLinkTags;
-
-const handler = () => {
-  /* No-op for docs examples */
-};
 
 const DefaultContainer = ({ children }: { children: ReactNode }) => (
   <Fragment>{children}</Fragment>
@@ -29,6 +27,50 @@ const getComponentName = (filename: string) => {
   }
 
   return matches[1];
+};
+
+interface RenderExampleProps {
+  example: ComponentExample;
+}
+const RenderExample = ({ example }: RenderExampleProps) => {
+  const { label, Container = DefaultContainer, background = 'body' } = example;
+  const { value } = useSourceFromExample('id', example);
+
+  return (
+    <div
+      style={{
+        minHeight: 300,
+        paddingBottom: 32,
+        overflow: 'hidden',
+      }}
+    >
+      <h4
+        style={{
+          margin: 0,
+          marginBottom: 18,
+          padding: 0,
+          fontSize: 14,
+          fontFamily: 'arial',
+          color: '#ccc',
+        }}
+      >
+        {label}
+      </h4>
+      <Box background={background} style={{ padding: 12 }}>
+        <Container>{value}</Container>
+      </Box>
+      <div style={{ paddingTop: 18 }}>
+        <hr
+          style={{
+            margin: 0,
+            border: 0,
+            height: 1,
+            background: '#eee',
+          }}
+        />
+      </div>
+    </div>
+  );
 };
 
 const req = require.context('../components', true, /\.docs\.tsx?$/);
@@ -83,55 +125,17 @@ req
                 background: 'white',
               }}
             >
-              {docs.examples.map(
-                (
-                  {
-                    storybook = true,
-                    label = componentName,
-                    Example,
-                    Container = DefaultContainer,
-                    background = 'body',
-                  },
-                  i,
-                ) =>
-                  Example && storybook ? (
-                    <div
-                      key={i}
-                      style={{
-                        minHeight: 300,
-                        paddingBottom: 32,
-                        overflow: 'hidden',
+              {docs.examples.map((example, i) =>
+                example.Example && example.storybook !== false ? (
+                  <PlayroomStateProvider key={i}>
+                    <RenderExample
+                      example={{
+                        ...example,
+                        label: example.label ?? componentName,
                       }}
-                    >
-                      <h4
-                        style={{
-                          margin: 0,
-                          marginBottom: 18,
-                          padding: 0,
-                          fontSize: 14,
-                          fontFamily: 'arial',
-                          color: '#ccc',
-                        }}
-                      >
-                        {label}
-                      </h4>
-                      <Box background={background} style={{ padding: 12 }}>
-                        <Container>
-                          <Example id="id" handler={handler} />
-                        </Container>
-                      </Box>
-                      <div style={{ paddingTop: 18 }}>
-                        <hr
-                          style={{
-                            margin: 0,
-                            border: 0,
-                            height: 1,
-                            background: '#eee',
-                          }}
-                        />
-                      </div>
-                    </div>
-                  ) : null,
+                    />
+                  </PlayroomStateProvider>
+                ) : null,
               )}
             </div>
           </BraidProvider>

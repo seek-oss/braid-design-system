@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react';
+import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import {
   Actions,
@@ -13,7 +13,8 @@ import {
   Strong,
 } from '../';
 import { Placeholder } from '../../playroom/components';
-import { DialogContent, DialogProps } from './Dialog';
+import { DialogContent } from './Dialog';
+import source from '../../utils/source.macro';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -50,42 +51,37 @@ const docs: ComponentDocs = {
   examples: [
     {
       label: 'Default',
-      playroom: false,
       storybook: false,
       gallery: false,
-      Example: ({ id }) => {
-        const [open, setOpen] = useState(false);
-
-        return (
-          <Fragment>
+      Example: ({ id, getState, toggleState }) =>
+        source(
+          <>
             <Actions>
-              <Button onClick={() => setOpen(true)}>Open default dialog</Button>
+              <Button onClick={() => toggleState('dialog')}>
+                Open default dialog
+              </Button>
             </Actions>
 
             <Dialog
               id={id}
               title="Default Dialog Example"
-              open={open}
-              onClose={setOpen}
+              open={getState('dialog')}
+              onClose={() => toggleState('dialog')}
             >
               <Placeholder height={100} width="100%" />
             </Dialog>
-          </Fragment>
-        );
-      },
+          </>,
+        ),
     },
     {
       label: 'With illustration/logo',
-      playroom: false,
       storybook: false,
       gallery: false,
-      Example: ({ id }) => {
-        const [open, setOpen] = useState(false);
-
-        return (
-          <Fragment>
+      Example: ({ id, getState, toggleState }) =>
+        source(
+          <>
             <Actions>
-              <Button onClick={() => setOpen(true)}>
+              <Button onClick={() => toggleState('dialog')}>
                 Open illustrated dialog
               </Button>
             </Actions>
@@ -98,35 +94,31 @@ const docs: ComponentDocs = {
                   <IconMail size="fill" />
                 </Box>
               }
-              open={open}
-              onClose={setOpen}
+              open={getState('dialog')}
+              onClose={() => toggleState('dialog')}
             >
               <Stack space="xlarge" align="center">
                 <Placeholder width="100%" height={100} />
                 <Inline space="small">
-                  <Button onClick={() => setOpen(false)}>Got it</Button>
-                  <Button weight="weak" onClick={() => setOpen(false)}>
+                  <Button onClick={() => toggleState('dialog')}>Got it</Button>
+                  <Button weight="weak" onClick={() => toggleState('dialog')}>
                     Cancel
                   </Button>
                 </Inline>
               </Stack>
             </Dialog>
-          </Fragment>
-        );
-      },
+          </>,
+        ),
     },
     {
       label: 'With additional description',
-      playroom: false,
       storybook: false,
       gallery: false,
-      Example: ({ id }) => {
-        const [open, setOpen] = useState(false);
-
-        return (
-          <Fragment>
+      Example: ({ id, getState, toggleState }) =>
+        source(
+          <>
             <Actions>
-              <Button onClick={() => setOpen(true)}>
+              <Button onClick={() => toggleState('dialog')}>
                 Open dialog with description
               </Button>
             </Actions>
@@ -139,27 +131,23 @@ const docs: ComponentDocs = {
                   More context to describe this task.
                 </Text>
               }
-              open={open}
-              onClose={setOpen}
+              open={getState('dialog')}
+              onClose={() => toggleState('dialog')}
             >
               <Placeholder height={100} width="100%" />
             </Dialog>
-          </Fragment>
-        );
-      },
+          </>,
+        ),
     },
     {
       label: 'With scrolling content',
-      playroom: false,
       storybook: false,
       gallery: false,
-      Example: ({ id }) => {
-        const [open, setOpen] = useState(false);
-
-        return (
-          <Fragment>
+      Example: ({ id, getState, toggleState }) =>
+        source(
+          <>
             <Actions>
-              <Button onClick={() => setOpen(true)}>
+              <Button onClick={() => toggleState('dialog')}>
                 Open scrolling dialog
               </Button>
             </Actions>
@@ -167,8 +155,8 @@ const docs: ComponentDocs = {
             <Dialog
               id={id}
               title="Dialog with scrolling content"
-              open={open}
-              onClose={setOpen}
+              open={getState('dialog')}
+              onClose={() => toggleState('dialog')}
             >
               <Stack space="large">
                 {[...new Array(20)].map((_, i) => (
@@ -176,22 +164,18 @@ const docs: ComponentDocs = {
                 ))}
               </Stack>
             </Dialog>
-          </Fragment>
-        );
-      },
+          </>,
+        ),
     },
     {
       label: 'Sized to content',
-      playroom: false,
       storybook: false,
       gallery: false,
-      Example: ({ id }) => {
-        const [open, setOpen] = useState(false);
-
-        return (
-          <Fragment>
+      Example: ({ id, getState, toggleState }) =>
+        source(
+          <>
             <Actions>
-              <Button onClick={() => setOpen(true)}>
+              <Button onClick={() => toggleState('dialog')}>
                 Open content-sized dialog
               </Button>
             </Actions>
@@ -200,166 +184,157 @@ const docs: ComponentDocs = {
               id={id}
               title="Content-sized"
               width="content"
-              open={open}
-              onClose={setOpen}
+              open={getState('dialog')}
+              onClose={() => toggleState('dialog')}
             >
               <Placeholder height={100} width={200} label="200px wide" />
             </Dialog>
-          </Fragment>
-        );
-      },
+          </>,
+        ),
     },
     {
       label: 'Xsmall width',
-      playroom: false,
       storybook: false,
       gallery: false,
-      Example: ({ id }) => {
-        const [open, setOpen] = useState(false);
-
-        return (
-          <Fragment>
+      Example: ({ id, getState, toggleState }) =>
+        source(
+          <>
             <Actions>
-              <Button onClick={() => setOpen(true)}>Open xsmall dialog</Button>
+              <Button onClick={() => toggleState('dialog')}>
+                Open xsmall dialog
+              </Button>
             </Actions>
 
             <Dialog
               id={id}
               title="Xsmall Dialog"
               width="xsmall"
-              open={open}
-              onClose={setOpen}
+              open={getState('dialog')}
+              onClose={() => toggleState('dialog')}
             >
               <Placeholder
                 height={100}
                 width="100%"
                 label={
-                  <Fragment>
+                  <>
                     Uses a xsmall{' '}
                     <TextLink href="/components/ContentBlock">
                       ContentBlock
                     </TextLink>
-                  </Fragment>
+                  </>
                 }
               />
             </Dialog>
-          </Fragment>
-        );
-      },
+          </>,
+        ),
     },
     {
       label: 'Small width',
-      playroom: false,
       storybook: false,
       gallery: false,
-      Example: ({ id }) => {
-        const [open, setOpen] = useState(false);
-
-        return (
-          <Fragment>
+      Example: ({ id, getState, toggleState }) =>
+        source(
+          <>
             <Actions>
-              <Button onClick={() => setOpen(true)}>Open small dialog</Button>
+              <Button onClick={() => toggleState('dialog')}>
+                Open small dialog
+              </Button>
             </Actions>
 
             <Dialog
               id={id}
               title="Small Dialog"
               width="small"
-              open={open}
-              onClose={setOpen}
+              open={getState('dialog')}
+              onClose={() => toggleState('dialog')}
             >
               <Placeholder
                 height={100}
                 width="100%"
                 label={
-                  <Fragment>
+                  <>
                     Uses a small{' '}
                     <TextLink href="/components/ContentBlock">
                       ContentBlock
                     </TextLink>
-                  </Fragment>
+                  </>
                 }
               />
             </Dialog>
-          </Fragment>
-        );
-      },
+          </>,
+        ),
     },
     {
       label: 'Medium width',
-      playroom: false,
       storybook: false,
       gallery: false,
-      Example: ({ id }) => {
-        const [open, setOpen] = useState(false);
-
-        return (
-          <Fragment>
+      Example: ({ id, getState, toggleState }) =>
+        source(
+          <>
             <Actions>
-              <Button onClick={() => setOpen(true)}>Open medium dialog</Button>
+              <Button onClick={() => toggleState('dialog')}>
+                Open medium dialog
+              </Button>
             </Actions>
 
             <Dialog
               id={id}
               title="Medium Dialog"
               width="medium"
-              open={open}
-              onClose={setOpen}
+              open={getState('dialog')}
+              onClose={() => toggleState('dialog')}
             >
               <Placeholder
                 height={100}
                 width="100%"
                 label={
-                  <Fragment>
+                  <>
                     Uses a medium{' '}
                     <TextLink href="/components/ContentBlock">
                       ContentBlock
                     </TextLink>
-                  </Fragment>
+                  </>
                 }
               />
             </Dialog>
-          </Fragment>
-        );
-      },
+          </>,
+        ),
     },
     {
       label: 'Large width',
-      playroom: false,
       storybook: false,
       gallery: false,
-      Example: ({ id }) => {
-        const [open, setOpen] = useState(false);
-
-        return (
-          <Fragment>
+      Example: ({ id, getState, toggleState }) =>
+        source(
+          <>
             <Actions>
-              <Button onClick={() => setOpen(true)}>Open large dialog</Button>
+              <Button onClick={() => toggleState('dialog')}>
+                Open large dialog
+              </Button>
             </Actions>
 
             <Dialog
               id={id}
               title="Large Dialog"
               width="large"
-              open={open}
-              onClose={setOpen}
+              open={getState('dialog')}
+              onClose={() => toggleState('dialog')}
             >
               <Placeholder
                 height={100}
                 width="100%"
                 label={
-                  <Fragment>
+                  <>
                     Uses a large{' '}
                     <TextLink href="/components/ContentBlock">
                       ContentBlock
                     </TextLink>
-                  </Fragment>
+                  </>
                 }
               />
             </Dialog>
-          </Fragment>
-        );
-      },
+          </>,
+        ),
     },
 
     // Layout examples
@@ -504,34 +479,38 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Preview animation',
-      playroom: false,
       storybook: false,
       docsSite: false,
       gallery: true,
-      Example: () => {
-        const [width, setWidth] = useState<DialogProps['width'] | null>(null);
-
-        return (
-          <Fragment>
+      Example: ({ getState, setState, resetState }) =>
+        source(
+          <>
             <Inline space="small" align="center">
-              <Button onClick={() => setWidth('xsmall')}>Open xsmall</Button>
-              <Button onClick={() => setWidth('small')}>Open small</Button>
-              <Button onClick={() => setWidth('medium')}>Open medium</Button>
-              <Button onClick={() => setWidth('large')}>Open large</Button>
+              <Button onClick={() => setState('width', 'xsmall')}>
+                Open xsmall
+              </Button>
+              <Button onClick={() => setState('width', 'small')}>
+                Open small
+              </Button>
+              <Button onClick={() => setState('width', 'medium')}>
+                Open medium
+              </Button>
+              <Button onClick={() => setState('width', 'large')}>
+                Open large
+              </Button>
             </Inline>
 
             <Dialog
               id="dialog-animation-example"
-              title={`A \"${width}\" dialog`}
-              width={width || undefined}
-              open={width !== null}
-              onClose={() => setWidth(null)}
+              title={`A \"${getState('width')}\" dialog`}
+              width={getState('width')}
+              open={getState('width')}
+              onClose={() => resetState('width')}
             >
               <Placeholder height={200} width="100%" />
             </Dialog>
-          </Fragment>
-        );
-      },
+          </>,
+        ),
     },
   ],
 };

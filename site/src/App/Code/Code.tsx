@@ -51,7 +51,14 @@ const formatSnippet = memoize((snippet) => {
 
   const lines = formattedSnippet.split('\n');
 
-  if (lines[0] === '<>' && lines[lines.length - 1] === '</>') {
+  const firstLine = lines[0];
+  const lastLine = lines[lines.length - 1];
+
+  if (
+    (firstLine === '<>' && lastLine === '</>') ||
+    (firstLine === '<Fragment>' && lastLine === '</Fragment>') ||
+    (firstLine === '<React.Fragment>' && lastLine === '</React.Fragment>')
+  ) {
     return dedent(lines.slice(1, lines.length - 1).join('\n'));
   }
 
@@ -182,7 +189,7 @@ const parseInput = (
 ): Source<ReactChild> => {
   if (typeof input === 'string') {
     return {
-      code: input,
+      code: formatSnippet(input),
       value: input,
     };
   }
