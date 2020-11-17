@@ -3,7 +3,7 @@ import React, { useState, useRef, useEffect, Dispatch } from 'react';
 import { render, act, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { BraidTestProvider, Autosuggest } from '..';
-import { AutosuggestProps, Suggestions } from './Autosuggest';
+import { AutosuggestProps } from './Autosuggest';
 
 function renderAutosuggest<Value>({
   value: initialValue,
@@ -17,21 +17,17 @@ function renderAutosuggest<Value>({
 >) {
   const changeHandler = jest.fn();
 
-  let suggestions: Suggestions<Value> = [];
-  let setSuggestions: Dispatch<Suggestions<Value>> = () => {
+  type Suggestions = AutosuggestProps<Value>['suggestions'];
+
+  let suggestions: Suggestions = [];
+  let setSuggestions: Dispatch<Suggestions> = () => {
     /* */
   };
 
   const TestCase = () => {
     const [value, setValue] = useState(initialValue);
 
-    if (typeof suggestionsProp === 'function') {
-      throw new Error(
-        'This test case does not support suggestions as functions',
-      );
-    }
-
-    [suggestions, setSuggestions] = useState(suggestionsProp);
+    [suggestions, setSuggestions] = useState(() => suggestionsProp);
 
     return (
       <BraidTestProvider>
@@ -62,7 +58,7 @@ function renderAutosuggest<Value>({
     changeHandler,
     queryByLabelText,
     queryByText,
-    setSuggestions: (x: Suggestions<Value>) => act(() => setSuggestions(x)),
+    setSuggestions: (x: Suggestions) => act(() => setSuggestions(x)),
   };
 }
 
@@ -100,6 +96,24 @@ describe('Autosuggest', () => {
     userEvent.click(input);
 
     const highlight = queryByText('Appl');
+    expect(highlight && highlight.tagName).toBe('STRONG');
+  });
+
+  it('should support suggestions as a function', () => {
+    const { input, queryByText } = renderAutosuggest({
+      value: { text: 'Apples' },
+      suggestions: ({ text }) => [
+        {
+          text,
+          value: 'apples',
+          highlights: [{ start: 0, end: 6 }],
+        },
+      ],
+    });
+
+    userEvent.click(input);
+
+    const highlight = queryByText('Apples');
     expect(highlight && highlight.tagName).toBe('STRONG');
   });
 
