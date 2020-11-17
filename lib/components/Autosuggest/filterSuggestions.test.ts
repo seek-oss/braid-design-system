@@ -142,6 +142,57 @@ describe('filterSuggestions', () => {
     ]);
   });
 
+  it('matches from multiple grouped lists', () => {
+    expect(
+      filterSuggestions(
+        [
+          {
+            label: 'Fruit',
+            suggestions: [
+              {
+                text: 'Apples',
+              },
+              {
+                text: 'Bananas',
+              },
+            ],
+          },
+          {
+            label: 'Vegetables',
+            suggestions: [
+              {
+                text: 'Brocolli',
+              },
+              {
+                text: 'Carrot',
+              },
+            ],
+          },
+        ],
+        'b',
+      ),
+    ).toEqual([
+      {
+        label: 'Fruit',
+        suggestions: [
+          {
+            text: 'Bananas',
+            highlights: [{ start: 0, end: 1 }],
+          },
+        ],
+      },
+      {
+        label: 'Vegetables',
+        suggestions: [
+          {
+            text: 'Brocolli',
+            highlights: [{ start: 0, end: 1 }],
+          },
+        ],
+      },
+    ]);
+  });
+
   it('supports Autosuggest values', () => {
     expect(
       filterSuggestions(
@@ -161,6 +212,38 @@ describe('filterSuggestions', () => {
         highlights: [{ start: 0, end: 3 }],
       },
     ]);
+  });
+
+  it('returns an empty array when there are no matches', () => {
+    expect(
+      filterSuggestions(
+        [
+          {
+            label: 'Fruit',
+            suggestions: [
+              {
+                text: 'Apples',
+              },
+              {
+                text: 'Bananas',
+              },
+            ],
+          },
+          {
+            label: 'Vegetables',
+            suggestions: [
+              {
+                text: 'Brocolli',
+              },
+              {
+                text: 'Carrot',
+              },
+            ],
+          },
+        ],
+        'XYZ',
+      ),
+    ).toEqual([]);
   });
 
   it('supports currying', () => {

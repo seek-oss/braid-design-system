@@ -16,6 +16,8 @@ To better support this behaviour, you can now pass a function to the `suggestion
 **EXAMPLE USAGE**
 
 ```tsx
+import { Autosuggest, filterSuggestions } from 'braid-design-system';
+
 <Autosuggest
   suggestions={filterSuggestions([
     { text: 'Apples', value: 1 },
