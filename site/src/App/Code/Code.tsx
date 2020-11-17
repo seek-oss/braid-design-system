@@ -181,9 +181,11 @@ const parseInput = (
   input: ReactChild | Source<ReactChild>,
 ): Source<ReactChild> => {
   if (typeof input === 'string') {
+    const code = formatSnippet(input);
+
     return {
-      code: input,
-      value: input,
+      code,
+      value: code,
     };
   }
 
