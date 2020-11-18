@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import source from '../../utils/source.macro';
 import {
@@ -13,14 +13,6 @@ import {
 } from '..';
 import { Placeholder } from '../../playroom/components';
 import { DrawerContent } from './Drawer';
-
-const makeExampleContent = ({ label }: { label?: ReactNode } = {}) => (
-  <Stack space="large">
-    {[...new Array(20)].map((_, i) => (
-      <Placeholder key={i} height={100} width="100%" label={label} />
-    ))}
-  </Stack>
-);
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -116,7 +108,21 @@ const docs: ComponentDocs = {
               open={getState('drawer')}
               onClose={() => toggleState('drawer')}
             >
-              {makeExampleContent()}
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
             </Drawer>
           </>,
         ),
@@ -149,7 +155,21 @@ const docs: ComponentDocs = {
               open={getState('drawer')}
               onClose={() => toggleState('drawer')}
             >
-              {makeExampleContent()}
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
             </Drawer>
           </>,
         ),
@@ -182,7 +202,21 @@ const docs: ComponentDocs = {
               open={getState('drawer')}
               onClose={() => toggleState('drawer')}
             >
-              {makeExampleContent()}
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
             </Drawer>
           </>,
         ),
@@ -215,7 +249,21 @@ const docs: ComponentDocs = {
               open={getState('drawer')}
               onClose={() => toggleState('drawer')}
             >
-              {makeExampleContent()}
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
             </Drawer>
           </>,
         ),
@@ -336,7 +384,21 @@ const docs: ComponentDocs = {
               open={getState('width')}
               onClose={() => resetState('width')}
             >
-              {makeExampleContent()}
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
             </Drawer>
           </>,
         ),
