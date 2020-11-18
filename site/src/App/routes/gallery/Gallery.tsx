@@ -23,17 +23,17 @@ import {
   Column,
   Disclosure,
 } from '../../../../../lib/components';
-import { reactElementToJsxString } from '../../../../../lib/utils/reactElementToJsxString';
 import { getHistory, isNew } from '../../Updates';
 import { CopyIcon } from '../../Code/CopyIcon';
-import { CodeButton } from '../../Code/Code';
+import { CodeButton, formatSnippet } from '../../Code/Code';
 import { ComponentExample } from '../../../types';
 import { ThemedExample } from '../../ThemeSetting';
 import { documentedComponents } from '../../navigationHelpers';
 import { Overlay } from '../../../../../lib/components/private/Overlay/Overlay';
+import { PlayroomStateProvider } from '../../../../../lib/playroom/playroomState';
+import { useSourceFromExample } from '../../../../../lib/utils/useSourceFromExample';
 import * as icons from '../../../../../lib/components/icons';
 
-const noop = () => {};
 const DefaultContainer = ({ children }: { children: ReactNode }) => (
   <Fragment>{children}</Fragment>
 );
@@ -155,6 +155,47 @@ const Mask = ({
   );
 };
 
+interface RenderExampleProps {
+  id: string;
+  example: ComponentExample;
+}
+const RenderExample = ({ id, example }: RenderExampleProps) => {
+  const { label, Container = DefaultContainer, background = 'body' } = example;
+  const { code, value } = useSourceFromExample(id, example);
+
+  return (
+    <Stack space="small">
+      <Columns space="medium" alignY="center">
+        <Column>
+          <Text tone="secondary">{label}</Text>
+        </Column>
+        {code ? (
+          <Column width="content">
+            <CodeButton
+              title="Copy code to clipboard"
+              onClick={() => copy(formatSnippet(code))}
+              successLabel="Copied!"
+            >
+              <CopyIcon /> Copy code
+            </CodeButton>
+          </Column>
+        ) : null}
+      </Columns>
+      {value ? (
+        <ThemedExample background={background}>
+          <Mask background={background}>
+            <Container>
+              <Box height="full" width="full" style={{ cursor: 'auto' }}>
+                {value}
+              </Box>
+            </Container>
+          </Mask>
+        </ThemedExample>
+      ) : null}
+    </Stack>
+  );
+};
+
 const GalleryItem = ({
   component,
 }: {
@@ -246,77 +287,21 @@ const GalleryItem = ({
           {component.examples.map((exampleChunk, idx) => (
             <Column key={`${component.name}_${idx}`}>
               <Stack space="xlarge">
-                {exampleChunk.map(
-                  (
-                    {
-                      Example,
-                      Container = DefaultContainer,
-                      background = 'body',
-                      label,
-                      code,
-                    },
-                    index,
-                  ) => {
-                    const codeAsString =
-                      Example && !code
-                        ? reactElementToJsxString(
-                            Example({ id: 'id', handler: noop }), // eslint-disable-line new-cap
-                            {
-                              useBooleanShorthandSyntax: false,
-                              showDefaultProps: false,
-                              showFunctions: false,
-                              filterProps: ['onChange', 'onBlur', 'onFocus'],
-                            },
-                          )
-                        : code;
-
-                    return (
-                      <Box
-                        style={{
-                          width: isAnIcon ? undefined : '700px',
-                        }}
-                        key={`${label}_${index}`}
-                      >
-                        <Stack space="small">
-                          <Columns space="medium" alignY="center">
-                            <Column>
-                              <Text tone="secondary">{label}</Text>
-                            </Column>
-                            {codeAsString ? (
-                              <Column width="content">
-                                <CodeButton
-                                  title="Copy code to clipboard"
-                                  onClick={() => copy(codeAsString)}
-                                  successLabel="Copied!"
-                                >
-                                  <CopyIcon /> Copy code
-                                </CodeButton>
-                              </Column>
-                            ) : null}
-                          </Columns>
-                          {Example ? (
-                            <ThemedExample background={background}>
-                              <Mask background={background}>
-                                <Container>
-                                  <Box
-                                    height="full"
-                                    width="full"
-                                    style={{ cursor: 'auto' }}
-                                  >
-                                    <Example
-                                      id={`${label}_${index}`}
-                                      handler={noop}
-                                    />
-                                  </Box>
-                                </Container>
-                              </Mask>
-                            </ThemedExample>
-                          ) : null}
-                        </Stack>
-                      </Box>
-                    );
-                  },
-                )}
+                {exampleChunk.map((example, index) => (
+                  <Box
+                    style={{
+                      width: isAnIcon ? undefined : '700px',
+                    }}
+                    key={`${example.label}_${index}`}
+                  >
+                    <PlayroomStateProvider>
+                      <RenderExample
+                        id={`${example.label}_${index}`}
+                        example={example}
+                      />
+                    </PlayroomStateProvider>
+                  </Box>
+                ))}
               </Stack>
             </Column>
           ))}

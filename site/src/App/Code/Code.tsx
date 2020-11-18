@@ -39,7 +39,7 @@ import { ThemedExample } from '../ThemeSetting';
 import usePlayroomScope from '../../../../lib/playroom/useScope';
 import { PlayroomStateProvider } from '../../../../lib/playroom/playroomState';
 
-const formatSnippet = memoize((snippet) => {
+export const formatSnippet = memoize((snippet: string) => {
   const formattedSnippet = prettier
     .format(snippet, {
       parser: 'typescript',
@@ -51,7 +51,14 @@ const formatSnippet = memoize((snippet) => {
 
   const lines = formattedSnippet.split('\n');
 
-  if (lines[0] === '<>' && lines[lines.length - 1] === '</>') {
+  const firstLine = lines[0];
+  const lastLine = lines[lines.length - 1];
+
+  if (
+    (firstLine === '<>' && lastLine === '</>') ||
+    (firstLine === '<Fragment>' && lastLine === '</Fragment>') ||
+    (firstLine === '<React.Fragment>' && lastLine === '</React.Fragment>')
+  ) {
     return dedent(lines.slice(1, lines.length - 1).join('\n'));
   }
 

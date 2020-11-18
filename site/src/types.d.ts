@@ -1,7 +1,9 @@
 import { ReactNode } from 'react';
 import { RouteProps } from 'react-router';
 import { ReactNodeNoStrings } from './../../lib/components/private/ReactNodeNoStrings';
+import { Source } from '../../lib/utils/source.macro';
 import { BoxProps } from '../../lib/components/Box/Box';
+import useScope from '../../lib/playroom/useScope';
 
 export interface AppConfig {
   playroomUrl: string;
@@ -36,13 +38,18 @@ export interface ComponentDocs {
   subComponents?: string[];
 }
 
+interface ExampleProps extends ReturnType<typeof useScope> {
+  id: string;
+  handler: () => void;
+}
+
 export interface ComponentExample {
   label?: string;
   description?: ReactNodeNoStrings;
   docsSite?: boolean;
   storybook?: boolean;
   background?: NonNullable<BoxProps['background']>;
-  Example?: (props: { id: string; handler: () => void }) => JSX.Element;
+  Example?: (props: ExampleProps) => JSX.Element | Source<JSX.Element>;
   Container?: (props: { children: ReactNode }) => JSX.Element;
   code?: string;
   showCodeByDefault?: boolean;

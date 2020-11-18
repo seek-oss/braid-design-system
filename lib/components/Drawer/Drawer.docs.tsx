@@ -1,5 +1,6 @@
-import React, { useState, Fragment, ReactNode } from 'react';
+import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
+import source from '../../utils/source.macro';
 import {
   Actions,
   Drawer,
@@ -11,15 +12,7 @@ import {
   Strong,
 } from '..';
 import { Placeholder } from '../../playroom/components';
-import { DrawerContent, DrawerProps } from './Drawer';
-
-const makeExampleContent = ({ label }: { label?: ReactNode } = {}) => (
-  <Stack space="large">
-    {[...new Array(20)].map((_, i) => (
-      <Placeholder key={i} height={100} width="100%" label={label} />
-    ))}
-  </Stack>
-);
+import { DrawerContent } from './Drawer';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -55,42 +48,51 @@ const docs: ComponentDocs = {
   examples: [
     {
       label: 'Default',
-      playroom: false,
       storybook: false,
       gallery: false,
-      Example: () => {
-        const [open, setOpen] = useState(false);
-
-        return (
-          <Fragment>
+      Example: ({ getState, toggleState }) =>
+        source(
+          <>
             <Actions>
-              <Button onClick={() => setOpen(true)}>Open default drawer</Button>
+              <Button onClick={() => toggleState('drawer')}>
+                Open default drawer
+              </Button>
             </Actions>
 
             <Drawer
               id="default"
               title="Default Drawer Example"
-              open={open}
-              onClose={setOpen}
+              open={getState('drawer')}
+              onClose={() => toggleState('drawer')}
             >
-              {makeExampleContent()}
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
             </Drawer>
-          </Fragment>
-        );
-      },
+          </>,
+        ),
     },
     {
       label: 'With additional description',
-      playroom: false,
       storybook: false,
       gallery: false,
-      Example: () => {
-        const [open, setOpen] = useState(false);
-
-        return (
-          <Fragment>
+      Example: ({ getState, toggleState }) =>
+        source(
+          <>
             <Actions>
-              <Button onClick={() => setOpen(true)}>
+              <Button onClick={() => toggleState('drawer')}>
                 Open drawer with description
               </Button>
             </Actions>
@@ -103,27 +105,39 @@ const docs: ComponentDocs = {
                   More context to describe this task.
                 </Text>
               }
-              open={open}
-              onClose={setOpen}
+              open={getState('drawer')}
+              onClose={() => toggleState('drawer')}
             >
-              {makeExampleContent()}
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
             </Drawer>
-          </Fragment>
-        );
-      },
+          </>,
+        ),
     },
     {
       label: 'Small width',
-      playroom: false,
       storybook: false,
       gallery: false,
-      Example: () => {
-        const [open, setOpen] = useState(false);
-
-        return (
-          <Fragment>
+      Example: ({ getState, toggleState }) =>
+        source(
+          <>
             <Actions>
-              <Button onClick={() => setOpen(true)}>Open small drawer</Button>
+              <Button onClick={() => toggleState('drawer')}>
+                Open small drawer
+              </Button>
             </Actions>
 
             <Drawer
@@ -138,27 +152,39 @@ const docs: ComponentDocs = {
                 </Text>
               }
               width="small"
-              open={open}
-              onClose={setOpen}
+              open={getState('drawer')}
+              onClose={() => toggleState('drawer')}
             >
-              {makeExampleContent()}
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
             </Drawer>
-          </Fragment>
-        );
-      },
+          </>,
+        ),
     },
     {
       label: 'Medium width',
-      playroom: false,
       storybook: false,
       gallery: false,
-      Example: () => {
-        const [open, setOpen] = useState(false);
-
-        return (
-          <Fragment>
+      Example: ({ getState, toggleState }) =>
+        source(
+          <>
             <Actions>
-              <Button onClick={() => setOpen(true)}>Open medium drawer</Button>
+              <Button onClick={() => toggleState('drawer')}>
+                Open medium drawer
+              </Button>
             </Actions>
 
             <Drawer
@@ -173,27 +199,39 @@ const docs: ComponentDocs = {
                 </Text>
               }
               width="medium"
-              open={open}
-              onClose={setOpen}
+              open={getState('drawer')}
+              onClose={() => toggleState('drawer')}
             >
-              {makeExampleContent()}
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
             </Drawer>
-          </Fragment>
-        );
-      },
+          </>,
+        ),
     },
     {
       label: 'Large width',
-      playroom: false,
       storybook: false,
       gallery: false,
-      Example: () => {
-        const [open, setOpen] = useState(false);
-
-        return (
-          <Fragment>
+      Example: ({ getState, toggleState }) =>
+        source(
+          <>
             <Actions>
-              <Button onClick={() => setOpen(true)}>Open large drawer</Button>
+              <Button onClick={() => toggleState('drawer')}>
+                Open large drawer
+              </Button>
             </Actions>
 
             <Drawer
@@ -208,14 +246,27 @@ const docs: ComponentDocs = {
                 </Text>
               }
               width="large"
-              open={open}
-              onClose={setOpen}
+              open={getState('drawer')}
+              onClose={() => toggleState('drawer')}
             >
-              {makeExampleContent()}
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
             </Drawer>
-          </Fragment>
-        );
-      },
+          </>,
+        ),
     },
 
     // Layout examples
@@ -300,41 +351,57 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Preview animation',
-      playroom: false,
       storybook: false,
       docsSite: false,
       gallery: true,
-      Example: () => {
-        const [width, setWidth] = useState<DrawerProps['width'] | null>(null);
-
-        return (
-          <Fragment>
+      Example: ({ getState, setState, resetState }) =>
+        source(
+          <>
             <Inline space="small" align="center">
-              <Button onClick={() => setWidth('small')}>Open small</Button>
-              <Button onClick={() => setWidth('medium')}>Open medium</Button>
-              <Button onClick={() => setWidth('large')}>Open large</Button>
+              <Button onClick={() => setState('width', 'small')}>
+                Open small
+              </Button>
+              <Button onClick={() => setState('width', 'medium')}>
+                Open medium
+              </Button>
+              <Button onClick={() => setState('width', 'large')}>
+                Open large
+              </Button>
             </Inline>
 
             <Drawer
               id="drawer-animation-example"
-              title={`A \"${width}\" drawer`}
+              title={`A \"${getState('width')}\" drawer`}
               description={
                 <Text tone="secondary">
-                  Uses a {width}{' '}
+                  Uses a {getState('width')}{' '}
                   <TextLink href="/components/ContentBlock">
                     ContentBlock
                   </TextLink>
                 </Text>
               }
-              width={width || undefined}
-              open={width !== null}
-              onClose={() => setWidth(null)}
+              width={getState('width')}
+              open={getState('width')}
+              onClose={() => resetState('width')}
             >
-              {makeExampleContent()}
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
             </Drawer>
-          </Fragment>
-        );
-      },
+          </>,
+        ),
     },
   ],
 };

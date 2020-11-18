@@ -1,7 +1,8 @@
 import React, { ReactNode, Fragment } from 'react';
 import { Route, Switch, useRouteMatch } from 'react-router';
 import { ComponentProps } from './ComponentProps';
-import { reactElementToJsxString } from '../../../../lib/utils/reactElementToJsxString';
+import { PlayroomStateProvider } from '../../../../lib/playroom/playroomState';
+import { useSourceFromExample } from '../../../../lib/utils/useSourceFromExample';
 import {
   Box,
   Heading,
@@ -13,7 +14,7 @@ import {
   Badge,
 } from '../../../../lib/components';
 
-import { ComponentDocs } from '../../types';
+import { ComponentDocs, ComponentExample } from '../../types';
 import Code from '../Code/Code';
 import { ThemedExample } from '../ThemeSetting';
 import { useConfig } from '../ConfigContext';
@@ -22,13 +23,60 @@ import { Markdown } from '../Markdown/Markdown';
 import { Navigation, NavigationItem } from './Navigation/Navigation';
 import { PageTitle } from '../Seo/PageTitle';
 
-const handler = () => {
-  /* No-op for docs examples */
-};
-
 const DefaultContainer = ({ children }: { children: ReactNode }) => (
   <Fragment>{children}</Fragment>
 );
+
+interface RenderExampleProps {
+  id: string;
+  example: ComponentExample;
+  category: ComponentDocs['category'];
+  showHeading: boolean;
+}
+const RenderExample = ({
+  id,
+  category,
+  showHeading,
+  example,
+}: RenderExampleProps) => {
+  const {
+    label,
+    Example,
+    Container = DefaultContainer,
+    background = 'body',
+    showCodeByDefault = false,
+    playroom,
+    description,
+  } = example;
+
+  const { code, value } = useSourceFromExample(id, example);
+
+  return (
+    <Stack space="large">
+      {label && showHeading ? <Heading level="3">{label}</Heading> : null}
+      {description ?? null}
+      <Stack space="xxsmall">
+        {value ? (
+          <ThemedExample background={background}>
+            <Container>{value}</Container>
+          </ThemedExample>
+        ) : null}
+        {code ? (
+          <Code
+            collapsedByDefault={
+              !showCodeByDefault &&
+              Example !== undefined &&
+              category !== 'Logic'
+            }
+            playroom={playroom}
+          >
+            {code}
+          </Code>
+        ) : null}
+      </Stack>
+    </Stack>
+  );
+};
 
 interface ComponentDocProps {
   componentName: string;
@@ -133,63 +181,16 @@ export const ComponentDoc = ({
           <Stack space="xxlarge">
             {docs.description}
 
-            {filteredExamples.map((example, index) => {
-              const {
-                label,
-                Example,
-                code,
-                Container = DefaultContainer,
-                background = 'body',
-                showCodeByDefault = false,
-                playroom,
-                description,
-              } = example;
-
-              const codeAsString =
-                Example && !code
-                  ? reactElementToJsxString(
-                      Example({ id: 'id', handler }), // eslint-disable-line new-cap
-                      {
-                        useBooleanShorthandSyntax: false,
-                        showDefaultProps: false,
-                        showFunctions: false,
-                        filterProps: ['onChange', 'onBlur', 'onFocus'],
-                      },
-                    )
-                  : code;
-
-              return (
-                <Box key={index}>
-                  <Stack space="large">
-                    {label && filteredExamples.length > 1 ? (
-                      <Heading level="3">{label}</Heading>
-                    ) : null}
-                    {description ?? null}
-                    <Stack space="xxsmall">
-                      {Example ? (
-                        <ThemedExample background={background}>
-                          <Container>
-                            <Example id={`${index}`} handler={handler} />
-                          </Container>
-                        </ThemedExample>
-                      ) : null}
-                      {codeAsString ? (
-                        <Code
-                          collapsedByDefault={
-                            !showCodeByDefault &&
-                            Example !== undefined &&
-                            docs.category !== 'Logic'
-                          }
-                          playroom={playroom}
-                        >
-                          {codeAsString}
-                        </Code>
-                      ) : null}
-                    </Stack>
-                  </Stack>
-                </Box>
-              );
-            })}
+            {filteredExamples.map((example, index) => (
+              <PlayroomStateProvider key={index}>
+                <RenderExample
+                  id={String(index)}
+                  example={example}
+                  category={docs.category}
+                  showHeading={filteredExamples.length > 1}
+                />
+              </PlayroomStateProvider>
+            ))}
           </Stack>
         </Route>
         <Route path={`/components/${componentName}/props`}>
