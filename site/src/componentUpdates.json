@@ -1013,5 +1013,16 @@
         "summary": "**Checkbox:** Add support for mixed state\n\nA checkbox can now accept a boolean or `mixed` as the `checked` property. When `mixed`, the checkbox is marked as being in an `indeterminate` state and announced as `mixed` to a screen reader.\n\n**EXAMPLE USAGE:**\n```jsx\n<Checkbox\n  checked=\"mixed\"\n  onChange={handler}\n  label=\"Label\"\n/>\n```"
       }
     ]
+  },
+  {
+    "version": "29.17.0",
+    "updates": [
+      {
+        "updated": [
+          "Autosuggest"
+        ],
+        "summary": "**Autosuggest:** Add `filterSuggestions` function, allow `suggestions` prop to be a function\n\nThe logic for filtering suggestions typically lives on the server rather than the client because it’s impractical to send all possible suggestions over the network. However, when prototyping in Playroom or working with smaller datasets, you may want to perform this filtering on the client instead. For this case, we now provide a `filterSuggestions` function to make this as painless as possible.\n\nTo better support this behaviour, you can now pass a function to the `suggestions` prop. When executed, this function will be passed the current `value` of the field.\n\n**EXAMPLE USAGE**\n\n```tsx\nimport { Autosuggest, filterSuggestions } from 'braid-design-system';\n\n<Autosuggest\n  suggestions={filterSuggestions([\n    { text: 'Apples', value: 1 },\n    { text: 'Bananas', value: 2 }\n  ])}\n  {...restProps}\n  />\n```"
+      }
+    ]
   }
 ]

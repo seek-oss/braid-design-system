@@ -15,8 +15,9 @@ function renderAutosuggest<Value>({
   AutosuggestProps<Value>,
   'value' | 'suggestions' | 'automaticSelection' | 'onFocus' | 'onBlur'
 >) {
-  type Suggestions = typeof suggestionsProp;
   const changeHandler = jest.fn();
+
+  type Suggestions = AutosuggestProps<Value>['suggestions'];
 
   let suggestions: Suggestions = [];
   let setSuggestions: Dispatch<Suggestions> = () => {
@@ -25,7 +26,8 @@ function renderAutosuggest<Value>({
 
   const TestCase = () => {
     const [value, setValue] = useState(initialValue);
-    [suggestions, setSuggestions] = useState(suggestionsProp);
+
+    [suggestions, setSuggestions] = useState(() => suggestionsProp);
 
     return (
       <BraidTestProvider>
@@ -94,6 +96,24 @@ describe('Autosuggest', () => {
     userEvent.click(input);
 
     const highlight = queryByText('Appl');
+    expect(highlight && highlight.tagName).toBe('STRONG');
+  });
+
+  it('should support suggestions as a function', () => {
+    const { input, queryByText } = renderAutosuggest({
+      value: { text: 'Apples' },
+      suggestions: ({ text }) => [
+        {
+          text,
+          value: 'apples',
+          highlights: [{ start: 0, end: 6 }],
+        },
+      ],
+    });
+
+    userEvent.click(input);
+
+    const highlight = queryByText('Apples');
     expect(highlight && highlight.tagName).toBe('STRONG');
   });
 

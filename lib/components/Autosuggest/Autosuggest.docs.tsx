@@ -1,7 +1,13 @@
 import React, { useState, ReactNode } from 'react';
-import matchHighlights from 'autosuggest-highlight/match';
 import { ComponentDocs } from '../../../site/src/types';
-import { Autosuggest, IconSearch, TextLink, Text } from '../';
+import {
+  Autosuggest,
+  filterSuggestions,
+  IconSearch,
+  TextLink,
+  Text,
+  Strong,
+} from '../';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <div style={{ maxWidth: '300px' }}>{children}</div>
@@ -9,26 +15,12 @@ const Container = ({ children }: { children: ReactNode }) => (
 
 const makeSuggestions = (
   suggestions: Array<string | { text: string; description?: string }>,
-  inputValue: string,
   initialValue = 0,
 ) =>
-  suggestions
-    .map((suggestion) =>
-      typeof suggestion === 'string' ? { text: suggestion } : suggestion,
-    )
-    .filter(
-      ({ text }) => !inputValue || matchHighlights(text, inputValue).length,
-    )
-    .map(({ text, description }, i) => ({
-      text,
-      description,
-      value: i + initialValue,
-      // @ts-ignore
-      highlights: matchHighlights(text, inputValue).map(([start, end]) => ({
-        start,
-        end,
-      })),
-    }));
+  suggestions.map((suggestion, i) => ({
+    ...(typeof suggestion === 'string' ? { text: suggestion } : suggestion),
+    value: i + initialValue,
+  }));
 
 interface Value {
   text: string;
@@ -62,7 +54,7 @@ const docs: ComponentDocs = {
             value={value}
             onChange={setValue}
             onClear={() => setValue({ text: '' })}
-            suggestions={[
+            suggestions={filterSuggestions([
               ...(showRecent && value.text === ''
                 ? [
                     {
@@ -71,16 +63,13 @@ const docs: ComponentDocs = {
                     },
                   ]
                 : []),
-              ...makeSuggestions(
-                [
-                  ...(value.text !== '' ? ['Apples'] : []),
-                  'Bananas',
-                  'Broccoli',
-                  'Carrots',
-                ],
-                value.text,
-              ),
-            ]}
+              ...makeSuggestions([
+                ...(value.text !== '' ? ['Apples'] : []),
+                'Bananas',
+                'Broccoli',
+                'Carrots',
+              ]),
+            ])}
           />
         );
       },
@@ -100,9 +89,8 @@ const docs: ComponentDocs = {
             value={value}
             onChange={setValue}
             onClear={() => setValue({ text: '' })}
-            suggestions={makeSuggestions(
-              ['Apples', 'Bananas', 'Broccoli', 'Carrots'],
-              value.text,
+            suggestions={filterSuggestions(
+              makeSuggestions(['Apples', 'Bananas', 'Broccoli', 'Carrots']),
             )}
           />
         );
@@ -121,20 +109,16 @@ const docs: ComponentDocs = {
             value={value}
             onChange={setValue}
             onClear={() => setValue({ text: '' })}
-            suggestions={[
+            suggestions={filterSuggestions([
               {
                 label: 'Fruit',
-                suggestions: makeSuggestions(['Apples', 'Bananas'], value.text),
+                suggestions: makeSuggestions(['Apples', 'Bananas']),
               },
               {
                 label: 'Vegetables',
-                suggestions: makeSuggestions(
-                  ['Broccoli', 'Carrots'],
-                  value.text,
-                  2,
-                ),
+                suggestions: makeSuggestions(['Broccoli', 'Carrots'], 2),
               },
-            ]}
+            ])}
           />
         );
       },
@@ -154,7 +138,7 @@ const docs: ComponentDocs = {
             value={value}
             onChange={setValue}
             onClear={() => setValue({ text: '' })}
-            suggestions={[
+            suggestions={filterSuggestions([
               ...(showRecent && value.text === ''
                 ? [
                     {
@@ -164,18 +148,15 @@ const docs: ComponentDocs = {
                     },
                   ]
                 : []),
-              ...makeSuggestions(
-                [
-                  ...(value.text !== ''
-                    ? [{ text: 'Apples', description: 'Juicy and delicious' }]
-                    : []),
-                  { text: 'Bananas', description: 'High in potassium' },
-                  { text: 'Broccoli', description: 'Looks like a tree' },
-                  { text: 'Carrots', description: 'Orange and crunchy' },
-                ],
-                value.text,
-              ),
-            ]}
+              ...makeSuggestions([
+                ...(value.text !== ''
+                  ? [{ text: 'Apples', description: 'Juicy and delicious' }]
+                  : []),
+                { text: 'Bananas', description: 'High in potassium' },
+                { text: 'Broccoli', description: 'Looks like a tree' },
+                { text: 'Carrots', description: 'Orange and crunchy' },
+              ]),
+            ])}
           />
         );
       },
@@ -194,16 +175,13 @@ const docs: ComponentDocs = {
             value={value}
             onChange={setValue}
             onClear={() => setValue({ text: '' })}
-            suggestions={[
+            suggestions={filterSuggestions([
               {
                 label: 'Fruit',
-                suggestions: makeSuggestions(
-                  [
-                    { text: 'Apples', description: 'Juicy and delicious' },
-                    { text: 'Bananas', description: 'High in potassium' },
-                  ],
-                  value.text,
-                ),
+                suggestions: makeSuggestions([
+                  { text: 'Apples', description: 'Juicy and delicious' },
+                  { text: 'Bananas', description: 'High in potassium' },
+                ]),
               },
               {
                 label: 'Vegetables',
@@ -212,11 +190,10 @@ const docs: ComponentDocs = {
                     { text: 'Broccoli', description: 'Looks like a tree' },
                     { text: 'Carrots', description: 'Orange and crunchy' },
                   ],
-                  value.text,
                   2,
                 ),
               },
-            ]}
+            ])}
           />
         );
       },
@@ -235,9 +212,8 @@ const docs: ComponentDocs = {
             icon={<IconSearch />}
             onChange={setValue}
             onClear={() => setValue({ text: '' })}
-            suggestions={makeSuggestions(
-              ['Apples', 'Bananas', 'Broccoli', 'Carrots'],
-              value.text,
+            suggestions={filterSuggestions(
+              makeSuggestions(['Apples', 'Bananas', 'Broccoli', 'Carrots']),
             )}
           />
         );
@@ -260,9 +236,8 @@ const docs: ComponentDocs = {
             value={value}
             onChange={setValue}
             onClear={() => setValue({ text: '' })}
-            suggestions={makeSuggestions(
-              ['Apples', 'Bananas', 'Broccoli', 'Carrots'],
-              value.text,
+            suggestions={filterSuggestions(
+              makeSuggestions(['Apples', 'Bananas', 'Broccoli', 'Carrots']),
             )}
           />
         );
@@ -283,13 +258,34 @@ const docs: ComponentDocs = {
             onClear={() => setValue({ text: '' })}
             tone="critical"
             message="You must make a selection"
-            suggestions={makeSuggestions(
-              ['Apples', 'Bananas', 'Broccoli', 'Carrots'],
-              value.text,
+            suggestions={filterSuggestions(
+              makeSuggestions(['Apples', 'Bananas', 'Broccoli', 'Carrots']),
             )}
           />
         );
       },
+    },
+    {
+      label: 'Client-side filtering of suggestions',
+      description: (
+        <Text>
+          The logic for filtering suggestions typically lives on the server
+          rather than the client because it’s impractical to send all possible
+          suggestions over the network. However, when prototyping in Playroom or
+          working with smaller datasets, you may want to perform this filtering
+          on the client instead. For this case, we provide a{' '}
+          <Strong>filterSuggestions</Strong> function to make this as painless
+          as possible.
+        </Text>
+      ),
+      code: `
+        <Autosuggest
+          label="I like to eat"
+          suggestions={filterSuggestions([
+            { text: 'Apples', value: 1 },
+            { text: 'Bananas', value: 2 }
+          ])} />
+      `,
     },
   ],
 };

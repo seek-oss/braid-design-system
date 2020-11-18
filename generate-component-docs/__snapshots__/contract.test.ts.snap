@@ -79,7 +79,9 @@ Object {
     secondaryLabel?: ReactNode
     secondaryMessage?: ReactNode
     showMobileBackdrop?: boolean
-    suggestions: (Suggestion<Value> | GroupedSuggestion<Value>)[]
+    suggestions: 
+        | (value: AutosuggestValue<Value>) => Suggestions<Value>
+        | Suggestions<Value>
     tertiaryLabel?: ReactNode
     tone?: 
         | "critical"
@@ -6431,6 +6433,46 @@ Object {
     label: ReactNode
     on: boolean
     onChange: ChangeHandler
+},
+}
+`;
+
+exports[`filterSuggestions 1`] = `
+Object {
+  exportType: component,
+  props: {
+    __@iterator: () => IterableIterator<Pick<Suggestion<Value>, "value" | "text" | "label" | "description" | "onClear" | "clearLabel"> | FilterableGroupedSuggestions<Value>>
+    __@unscopables: () => { copyWithin: boolean; entries: boolean; fill: boolean; find: boolean; findIndex: boolean; keys: boolean; values: boolean; }
+    concat: { (...items: ConcatArray<Pick<Suggestion<Value>, "value" | "text" | "label" | "description" | "onClear" | "clearLabel"> | FilterableGroupedSuggestions<Value>>[]): (Pick<...> | FilterableGroupedSuggestions<...>)[]; (...items: (Pick<...> | ... 1 more ... | ConcatArray<...>)[]): (Pick<...> | FilterableGroupedSuggestion...
+    copyWithin: (target: number, start: number, end?: number | undefined) => FilterableSuggestions<Value>
+    entries: () => IterableIterator<[number, Pick<Suggestion<Value>, "value" | "text" | "label" | "description" | "onClear" | "clearLabel"> | FilterableGroupedSuggestions<Value>]>
+    every: { <S extends Pick<Suggestion<Value>, "value" | "text" | "label" | "description" | "onClear" | "clearLabel"> | FilterableGroupedSuggestions<Value>>(predicate: (value: Pick<...> | FilterableGroupedSuggestions<...>, index: number, array: (Pick<...> | FilterableGroupedSuggestions<...>)[]) => value is S, thisArg?: any): ...
+    fill: (value: Pick<Suggestion<Value>, "value" | "text" | "label" | "description" | "onClear" | "clearLabel"> | FilterableGroupedSuggestions<Value>, start?: number | undefined, end?: number | undefined) => FilterableSuggestions<...>
+    filter: { <S extends Pick<Suggestion<Value>, "value" | "text" | "label" | "description" | "onClear" | "clearLabel"> | FilterableGroupedSuggestions<Value>>(predicate: (value: Pick<...> | FilterableGroupedSuggestions<...>, index: number, array: (Pick<...> | FilterableGroupedSuggestions<...>)[]) => value is S, thisArg?: any): ...
+    find: { <S extends Pick<Suggestion<Value>, "value" | "text" | "label" | "description" | "onClear" | "clearLabel"> | FilterableGroupedSuggestions<Value>>(predicate: (this: void, value: Pick<...> | FilterableGroupedSuggestions<...>, index: number, obj: (Pick<...> | FilterableGroupedSuggestions<...>)[]) => value is S, thisAr...
+    findIndex: (predicate: (value: Pick<Suggestion<Value>, "value" | "text" | "label" | "description" | "onClear" | "clearLabel"> | FilterableGroupedSuggestions<Value>, index: number, obj: (Pick<...> | FilterableGroupedSuggestions<...>)[]) => unknown, thisArg?: any) => number
+    forEach: (callbackfn: (value: Pick<Suggestion<Value>, "value" | "text" | "label" | "description" | "onClear" | "clearLabel"> | FilterableGroupedSuggestions<Value>, index: number, array: (Pick<...> | FilterableGroupedSuggestions<...>)[]) => void, thisArg?: any) => void
+    includes: (searchElement: Pick<Suggestion<Value>, "value" | "text" | "label" | "description" | "onClear" | "clearLabel"> | FilterableGroupedSuggestions<Value>, fromIndex?: number | undefined) => boolean
+    indexOf: (searchElement: Pick<Suggestion<Value>, "value" | "text" | "label" | "description" | "onClear" | "clearLabel"> | FilterableGroupedSuggestions<Value>, fromIndex?: number | undefined) => number
+    join: (separator?: string | undefined) => string
+    keys: () => IterableIterator<number>
+    lastIndexOf: (searchElement: Pick<Suggestion<Value>, "value" | "text" | "label" | "description" | "onClear" | "clearLabel"> | FilterableGroupedSuggestions<Value>, fromIndex?: number | undefined) => number
+    length: number
+    map: <U>(callbackfn: (value: Pick<Suggestion<Value>, "value" | "text" | "label" | "description" | "onClear" | "clearLabel"> | FilterableGroupedSuggestions<Value>, index: number, array: (Pick<...> | FilterableGroupedSuggestions<...>)[]) => U, thisArg?: any) => U[]
+    pop: () => Pick<Suggestion<Value>, "value" | "text" | "label" | "description" | "onClear" | "clearLabel"> | FilterableGroupedSuggestions<Value> | undefined
+    push: (...items: (Pick<Suggestion<Value>, "value" | "text" | "label" | "description" | "onClear" | "clearLabel"> | FilterableGroupedSuggestions<Value>)[]) => number
+    reduce: { (callbackfn: (previousValue: Pick<Suggestion<Value>, "value" | "text" | "label" | "description" | "onClear" | "clearLabel"> | FilterableGroupedSuggestions<Value>, currentValue: Pick<...> | FilterableGroupedSuggestions<...>, currentIndex: number, array: (Pick<...> | FilterableGroupedSuggestions<...>)[]) => Pick<......
+    reduceRight: { (callbackfn: (previousValue: Pick<Suggestion<Value>, "value" | "text" | "label" | "description" | "onClear" | "clearLabel"> | FilterableGroupedSuggestions<Value>, currentValue: Pick<...> | FilterableGroupedSuggestions<...>, currentIndex: number, array: (Pick<...> | FilterableGroupedSuggestions<...>)[]) => Pick<......
+    reverse: () => (Pick<Suggestion<Value>, "value" | "text" | "label" | "description" | "onClear" | "clearLabel"> | FilterableGroupedSuggestions<Value>)[]
+    shift: () => Pick<Suggestion<Value>, "value" | "text" | "label" | "description" | "onClear" | "clearLabel"> | FilterableGroupedSuggestions<Value> | undefined
+    slice: (start?: number | undefined, end?: number | undefined) => (Pick<Suggestion<Value>, "value" | "text" | "label" | "description" | "onClear" | "clearLabel"> | FilterableGroupedSuggestions<...>)[]
+    some: (predicate: (value: Pick<Suggestion<Value>, "value" | "text" | "label" | "description" | "onClear" | "clearLabel"> | FilterableGroupedSuggestions<Value>, index: number, array: (Pick<...> | FilterableGroupedSuggestions<...>)[]) => unknown, thisArg?: any) => boolean
+    sort: (compareFn?: ((a: Pick<Suggestion<Value>, "value" | "text" | "label" | "description" | "onClear" | "clearLabel"> | FilterableGroupedSuggestions<Value>, b: Pick<...> | FilterableGroupedSuggestions<...>) => number) | undefined) => FilterableSuggestions<...>
+    splice: { (start: number, deleteCount?: number | undefined): (Pick<Suggestion<Value>, "value" | "text" | "label" | "description" | "onClear" | "clearLabel"> | FilterableGroupedSuggestions<...>)[]; (start: number, deleteCount: number, ...items: (Pick<...> | FilterableGroupedSuggestions<...>)[]): (Pick<...> | FilterableGroupe...
+    toLocaleString: () => string
+    toString: () => string
+    unshift: (...items: (Pick<Suggestion<Value>, "value" | "text" | "label" | "description" | "onClear" | "clearLabel"> | FilterableGroupedSuggestions<Value>)[]) => number
+    values: () => IterableIterator<Pick<Suggestion<Value>, "value" | "text" | "label" | "description" | "onClear" | "clearLabel"> | FilterableGroupedSuggestions<Value>>
 },
 }
 `;
