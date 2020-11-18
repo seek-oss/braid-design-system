@@ -7,7 +7,7 @@ import * as themes from '../themes';
 import { ComponentDocs, ComponentExample } from '../../site/src/types';
 import { PlayroomStateProvider } from '../playroom/playroomState';
 import { useSourceFromExample } from '../utils/useSourceFromExample';
-import { BraidProvider, Box } from '../components';
+import { BraidProvider, ToastProvider, Box } from '../components';
 
 const webFontLinkTags = uniq(
   flatten(values(themes).map((theme) => theme.webFonts)).map(
@@ -111,33 +111,35 @@ req
       const renderStory = () => (
         <BrowserRouter>
           <BraidProvider theme={theme}>
-            <style type="text/css">
-              {`
+            <ToastProvider>
+              <style type="text/css">
+                {`
               .noAnimation * {
                 animation-delay: -0.0001s !important;
                 animation-duration: 0s !important;
                 animation-play-state: paused !important;
               }`}
-            </style>
-            <div
-              className="noAnimation"
-              style={{
-                background: 'white',
-              }}
-            >
-              {docs.examples.map((example, i) =>
-                example.Example && example.storybook !== false ? (
-                  <PlayroomStateProvider key={i}>
-                    <RenderExample
-                      example={{
-                        ...example,
-                        label: example.label ?? componentName,
-                      }}
-                    />
-                  </PlayroomStateProvider>
-                ) : null,
-              )}
-            </div>
+              </style>
+              <div
+                className="noAnimation"
+                style={{
+                  background: 'white',
+                }}
+              >
+                {docs.examples.map((example, i) =>
+                  example.Example && example.storybook !== false ? (
+                    <PlayroomStateProvider key={i}>
+                      <RenderExample
+                        example={{
+                          ...example,
+                          label: example.label ?? componentName,
+                        }}
+                      />
+                    </PlayroomStateProvider>
+                  ) : null,
+                )}
+              </div>
+            </ToastProvider>
           </BraidProvider>
         </BrowserRouter>
       );
