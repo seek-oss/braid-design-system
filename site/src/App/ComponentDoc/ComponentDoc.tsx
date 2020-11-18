@@ -2,6 +2,7 @@ import React, { ReactNode, Fragment } from 'react';
 import { Route, Switch, useRouteMatch } from 'react-router';
 import { ComponentProps } from './ComponentProps';
 import { PlayroomStateProvider } from '../../../../lib/playroom/playroomState';
+import { useSourceFromExample } from '../../../../lib/utils/useSourceFromExample';
 import {
   Box,
   Heading,
@@ -21,7 +22,6 @@ import { getHistory } from '../Updates';
 import { Markdown } from '../Markdown/Markdown';
 import { Navigation, NavigationItem } from './Navigation/Navigation';
 import { PageTitle } from '../Seo/PageTitle';
-import { useSourceFromExample } from '../../../../lib/utils/useSourceFromExample';
 
 const DefaultContainer = ({ children }: { children: ReactNode }) => (
   <Fragment>{children}</Fragment>
