@@ -1,5 +1,6 @@
 import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
+import source from '../../utils/source.macro';
 import {
   Actions,
   Dialog,
@@ -14,7 +15,6 @@ import {
 } from '../';
 import { Placeholder } from '../../playroom/components';
 import { DialogContent } from './Dialog';
-import source from '../../utils/source.macro';
 
 const docs: ComponentDocs = {
   category: 'Content',

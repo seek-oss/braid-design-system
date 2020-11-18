@@ -39,7 +39,7 @@ import { ThemedExample } from '../ThemeSetting';
 import usePlayroomScope from '../../../../lib/playroom/useScope';
 import { PlayroomStateProvider } from '../../../../lib/playroom/playroomState';
 
-const formatSnippet = memoize((snippet) => {
+export const formatSnippet = memoize((snippet: string) => {
   const formattedSnippet = prettier
     .format(snippet, {
       parser: 'typescript',

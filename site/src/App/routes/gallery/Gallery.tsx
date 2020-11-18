@@ -25,7 +25,7 @@ import {
 } from '../../../../../lib/components';
 import { getHistory, isNew } from '../../Updates';
 import { CopyIcon } from '../../Code/CopyIcon';
-import { CodeButton } from '../../Code/Code';
+import { CodeButton, formatSnippet } from '../../Code/Code';
 import { ComponentExample } from '../../../types';
 import { ThemedExample } from '../../ThemeSetting';
 import { documentedComponents } from '../../navigationHelpers';
@@ -173,7 +173,7 @@ const RenderExample = ({ id, example }: RenderExampleProps) => {
           <Column width="content">
             <CodeButton
               title="Copy code to clipboard"
-              onClick={() => copy(code)}
+              onClick={() => copy(formatSnippet(code))}
               successLabel="Copied!"
             >
               <CopyIcon /> Copy code

@@ -69,12 +69,14 @@ const PlayroomStateContext = createContext<ReturnType<
 > | null>(null);
 
 export const PlayroomStateProvider = ({
-  defaultState = new Map(),
+  defaultState: defaultStateProp,
   children,
 }: {
   defaultState?: Map<string, any>;
   children: ReactNode;
 }) => {
+  const [fallbackDefaultState] = useState(() => new Map());
+  const defaultState = defaultStateProp ?? fallbackDefaultState;
   const state = useState(new Map<string, any>());
   const storeConsumer = useMemo(
     () => makeStoreConsumer(defaultState, ...state),
