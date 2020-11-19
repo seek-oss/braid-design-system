@@ -1,5 +1,6 @@
 import groupBy from 'lodash/groupBy';
 import * as components from '../../../lib/components';
+import { Snippet } from '../../../lib/components/private/Snippets';
 import { ComponentDocs } from '../types';
 import undocumentedExports from '../undocumentedExports.json';
 
@@ -20,8 +21,50 @@ export const getComponentDocs = ({
     ? `./icons/${componentName}/${componentName}.docs.tsx`
     : `./${componentName}/${componentName}.docs.tsx`;
 
-  return componentDocsContext(normalizedComponentRoute).default;
+  return componentDocsContext(normalizedComponentRoute)
+    .default as ComponentDocs;
 };
+
+const snippetsContext = require.context(
+  '../../../lib/components',
+  true,
+  /\.snippets\.tsx?$/,
+);
+export const getComponentSnippets = (componentName: string) => {
+  const normalizedComponentRoute = `./${componentName}/${componentName}.snippets.tsx`;
+
+  if (!snippetsContext.keys().includes(normalizedComponentRoute)) {
+    return;
+  }
+
+  const snippets = snippetsContext(normalizedComponentRoute)
+    .snippets as Snippet[];
+
+  return snippets.map((snippet) => ({
+    ...snippet,
+    group: snippet.group || componentName,
+  }));
+};
+
+export const getAllSnippets = () =>
+  snippetsContext.keys().map((filename) => {
+    const componentName = filename.match(/([a-zA-Z]+)\.snippets\.tsx?$/)?.[1];
+    const snippets = snippetsContext(filename).snippets as Snippet[];
+
+    if (!componentName) {
+      throw new Error(
+        `Could not parse component name from filename: ${filename}`,
+      );
+    }
+
+    return {
+      name: componentName,
+      examples: snippets.map((snippet) => ({
+        ...snippet,
+        group: snippet.group || componentName,
+      })),
+    };
+  });
 
 const documentedComponentNames = Object.keys(components)
   .filter((name) => {

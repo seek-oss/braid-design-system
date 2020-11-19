@@ -39,6 +39,7 @@ module.exports = [
       [
         { route: `/components/${name}` },
         { route: `/components/${name}/releases` },
+        { route: `/components/${name}/snippets` },
         !name.startsWith('use') ? { route: `/components/${name}/props` } : null,
       ].filter(Boolean),
     ),

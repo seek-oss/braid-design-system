@@ -71,6 +71,7 @@ export const NavigationItem = ({
                 position="absolute"
                 width="full"
                 zIndex={1}
+                bottom={0}
                 className={styles.activeUnderline}
               />
               <Text size="standard" weight="strong">
@@ -111,6 +112,7 @@ interface NavigationProps {
   children: ReactNode;
 }
 export const Navigation = ({ title, children }: NavigationProps) => {
+  const styles = useStyles(styleRefs);
   const navigationItems = flattenChildren(children);
 
   assert(
@@ -131,14 +133,17 @@ export const Navigation = ({ title, children }: NavigationProps) => {
         useNegativeMarginLeft(navItemPaddingX),
       ]}
     >
-      <Box component="ul" display="flex" alignItems="center">
+      <Box component="ul" display="flex" alignItems="center" overflow="auto">
         {Children.map(navigationItems, (navigationItem, index) => (
           <NavigationItemIndexContext.Provider value={index}>
             {navigationItem}
           </NavigationItemIndexContext.Provider>
         ))}
       </Box>
-      <Box paddingLeft={navItemPaddingX}>
+      <Box
+        paddingLeft={navItemPaddingX}
+        className={styles.inactiveUnderlineCorrection}
+      >
         <Divider />
       </Box>
     </Box>
