@@ -57,7 +57,6 @@ const docs: ComponentDocs = {
       label:
         'Test: Should have space between the label and the toggle when justified in a flex container',
       docsSite: false,
-      gallery: false,
       Container: ({ children }) => (
         <div style={{ maxWidth: '300px' }}>{children}</div>
       ),

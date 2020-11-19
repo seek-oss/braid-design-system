@@ -169,7 +169,6 @@ const docs: ComponentDocs = {
     },
     {
       label: 'TextField on Brand Background',
-      gallery: false,
       background: 'brand',
       Container,
       Example: ({ id, handler }) => (

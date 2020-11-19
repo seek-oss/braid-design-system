@@ -52,7 +52,6 @@ const docs: ComponentDocs = {
     {
       label: 'Default',
       storybook: false,
-      gallery: false,
       Example: ({ id, getState, toggleState }) =>
         source(
           <>
@@ -76,7 +75,6 @@ const docs: ComponentDocs = {
     {
       label: 'With illustration/logo',
       storybook: false,
-      gallery: false,
       Example: ({ id, getState, toggleState }) =>
         source(
           <>
@@ -113,7 +111,6 @@ const docs: ComponentDocs = {
     {
       label: 'With additional description',
       storybook: false,
-      gallery: false,
       Example: ({ id, getState, toggleState }) =>
         source(
           <>
@@ -142,7 +139,6 @@ const docs: ComponentDocs = {
     {
       label: 'With scrolling content',
       storybook: false,
-      gallery: false,
       Example: ({ id, getState, toggleState }) =>
         source(
           <>
@@ -170,7 +166,6 @@ const docs: ComponentDocs = {
     {
       label: 'Sized to content',
       storybook: false,
-      gallery: false,
       Example: ({ id, getState, toggleState }) =>
         source(
           <>
@@ -195,7 +190,6 @@ const docs: ComponentDocs = {
     {
       label: 'Xsmall width',
       storybook: false,
-      gallery: false,
       Example: ({ id, getState, toggleState }) =>
         source(
           <>
@@ -231,7 +225,6 @@ const docs: ComponentDocs = {
     {
       label: 'Small width',
       storybook: false,
-      gallery: false,
       Example: ({ id, getState, toggleState }) =>
         source(
           <>
@@ -267,7 +260,6 @@ const docs: ComponentDocs = {
     {
       label: 'Medium width',
       storybook: false,
-      gallery: false,
       Example: ({ id, getState, toggleState }) =>
         source(
           <>
@@ -303,7 +295,6 @@ const docs: ComponentDocs = {
     {
       label: 'Large width',
       storybook: false,
-      gallery: false,
       Example: ({ id, getState, toggleState }) =>
         source(
           <>
@@ -341,7 +332,6 @@ const docs: ComponentDocs = {
     {
       label: 'Default layout',
       docsSite: false,
-      gallery: true,
       Example: ({ id }) => (
         <DialogContent
           id={id}
@@ -356,7 +346,6 @@ const docs: ComponentDocs = {
     {
       label: 'Illustration layout',
       docsSite: false,
-      gallery: true,
       Example: ({ id }) => (
         <DialogContent
           id={id}
@@ -385,7 +374,6 @@ const docs: ComponentDocs = {
     {
       label: 'Layout with a description',
       docsSite: false,
-      gallery: true,
       Example: ({ id }) => (
         <DialogContent
           id={id}
@@ -481,7 +469,6 @@ const docs: ComponentDocs = {
       label: 'Preview animation',
       storybook: false,
       docsSite: false,
-      gallery: true,
       Example: ({ getState, setState, resetState }) =>
         source(
           <>
