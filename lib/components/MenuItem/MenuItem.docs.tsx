@@ -16,7 +16,6 @@ const docs: ComponentDocs = {
   category: 'Content',
   subComponents: ['MenuItemLink'],
   screenshotWidths: [],
-  gallery: false,
   description: (
     <Stack space="large">
       <Text>
