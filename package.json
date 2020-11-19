@@ -51,6 +51,7 @@
     "@types/dedent": "^0.7.0",
     "@types/lodash": "^4.14.132",
     "@types/react": "^16.8.8",
+    "@types/uuid": "^3.4.6",
     "assert": "^2.0.0",
     "autosuggest-highlight": "^3.1.1",
     "capsize": "^1.1.0",
@@ -65,7 +66,8 @@
     "react-focus-lock": "^2.4.1",
     "react-keyed-flatten-children": "^1.2.0",
     "react-remove-scroll": "^2.4.0",
-    "utility-types": "^3.7.0"
+    "utility-types": "^3.7.0",
+    "uuid": "^3.3.3"
   },
   "peerDependencies": {
     "react": "^16.8.0",
@@ -90,7 +92,6 @@
     "@types/react-dom": "^16.8.2",
     "@types/react-router-dom": "^5.1.0",
     "@types/sanitize-html": "^1.22.0",
-    "@types/uuid": "^3.4.6",
     "@types/webpack-env": "^1.14.0",
     "babel-plugin-macros": "^2.8.0",
     "babel-plugin-tester": "^10.0.0",
@@ -124,8 +125,7 @@
     "sanitize-html": "^1.22.1",
     "sku": "10.8.2",
     "surge": "^0.20.1",
-    "ts-node": "^8.2.0",
-    "uuid": "^3.3.3"
+    "ts-node": "^8.2.0"
   },
   "resolutions": {
     "playroom": "0.22.3"
