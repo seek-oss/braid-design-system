@@ -33,7 +33,6 @@ export interface ComponentDocs {
   screenshotWidths: Array<320 | 768 | 1200>;
   screenshotOnlyInWireframe?: boolean;
   examples: ComponentExample[];
-  gallery?: boolean;
   description?: ReactNodeNoStrings;
   subComponents?: string[];
 }
@@ -54,5 +53,4 @@ export interface ComponentExample {
   code?: string;
   showCodeByDefault?: boolean;
   playroom?: boolean;
-  gallery?: boolean;
 }

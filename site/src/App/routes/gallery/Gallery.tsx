@@ -28,7 +28,10 @@ import { CopyIcon } from '../../Code/CopyIcon';
 import { CodeButton, formatSnippet } from '../../Code/Code';
 import { ComponentExample } from '../../../types';
 import { ThemedExample } from '../../ThemeSetting';
-import { documentedComponents } from '../../navigationHelpers';
+import {
+  galleryComponents as allGalleryComponents,
+  getComponentDocs,
+} from '../../navigationHelpers';
 import { Overlay } from '../../../../../lib/components/private/Overlay/Overlay';
 import { PlayroomStateProvider } from '../../../../../lib/playroom/playroomState';
 import { useSourceFromExample } from '../../../../../lib/utils/useSourceFromExample';
@@ -40,33 +43,18 @@ const DefaultContainer = ({ children }: { children: ReactNode }) => (
 
 const COLUMN_SIZE = 4;
 
-export const galleryComponents = documentedComponents
-  .filter(
-    ({ category, deprecationWarning, gallery, name }) =>
-      category !== 'Logic' &&
-      !deprecationWarning &&
-      gallery !== false &&
-      name !== 'Box' &&
-      !/hidden/i.test(name),
-  )
-  .map(({ examples, ...rest }) => ({
+export const galleryComponents = allGalleryComponents.map(
+  ({ examples, ...rest }) => ({
     ...rest,
-    examples: chunk(
-      examples.filter(
-        ({ docsSite, gallery, Example }) =>
-          Example && (gallery || (docsSite !== false && gallery !== false)),
-      ),
-      COLUMN_SIZE,
-    ),
-  }));
+    examples: chunk(examples, COLUMN_SIZE),
+  }),
+);
 
 export const galleryIcons = Object.keys(icons).map((iconName) => {
   const IconComponent = icons[iconName as keyof typeof icons];
 
   return {
     name: iconName,
-    category: 'Icon' as const,
-    screenshotWidths: [],
     examples: [
       [
         {
@@ -196,28 +184,30 @@ const RenderExample = ({ id, example }: RenderExampleProps) => {
   );
 };
 
-const GalleryItem = ({
-  component,
-}: {
-  component: typeof galleryComponents[number];
-}) => {
-  const relevantNames = component.subComponents
-    ? [component.name, ...component.subComponents]
-    : [component.name];
+const GalleryItem = ({ item }: { item: typeof galleryComponents[number] }) => {
+  const componentDocs = getComponentDocs({
+    componentName: item.name,
+    isIcon: /^icon/i.test(item.name),
+  });
+  const relevantNames = componentDocs.subComponents
+    ? [item.name, ...componentDocs.subComponents]
+    : [item.name];
 
   const history = getHistory(...relevantNames);
-  const markAsNew = isNew(component.name);
-  const actualUpdateCount = history.filter((item) => item.isRecent).length;
+  const markAsNew = isNew(item.name);
+  const actualUpdateCount = history.filter(
+    (historyItem) => historyItem.isRecent,
+  ).length;
   const updateCount = markAsNew ? actualUpdateCount - 1 : actualUpdateCount;
 
-  const isAnIcon = component.category === 'Icon';
+  const isAnIcon = componentDocs.category === 'Icon';
 
   return (
     <Box
       background="card"
       borderRadius="standard"
       padding={isAnIcon ? 'large' : 'xxlarge'}
-      data-braid-component-name={component.name}
+      data-braid-component-name={item.name}
     >
       <Stack space={isAnIcon ? 'small' : 'xxlarge'}>
         <Stack space="large">
@@ -225,12 +215,10 @@ const GalleryItem = ({
             <Box position="relative">
               <Heading level={isAnIcon ? '3' : '2'}>
                 <TextLink
-                  href={`/components/${component.name}`}
+                  href={`/components/${item.name}`}
                   target="gallery-detail"
                 >
-                  {isAnIcon
-                    ? component.name.replace('Icon', '')
-                    : component.name}
+                  {isAnIcon ? item.name.replace('Icon', '') : item.name}
                 </TextLink>
               </Heading>
             </Box>
@@ -238,7 +226,7 @@ const GalleryItem = ({
               <Box
                 component={Link}
                 cursor="pointer"
-                href={`/components/${component.name}/releases`}
+                href={`/components/${item.name}/releases`}
                 target="gallery-detail"
               >
                 <Badge
@@ -255,7 +243,7 @@ const GalleryItem = ({
               <Box
                 component={Link}
                 cursor="pointer"
-                href={`/components/${component.name}/releases`}
+                href={`/components/${item.name}/releases`}
                 target="gallery-detail"
               >
                 <Badge
@@ -271,21 +259,21 @@ const GalleryItem = ({
               </Box>
             ) : undefined}
           </Inline>
-          {component.description && !isAnIcon ? (
+          {componentDocs.description && !isAnIcon ? (
             <Box style={{ width: '700px' }}>
               <Disclosure
                 collapseLabel="Hide description"
                 expandLabel="Show description"
                 id="id"
               >
-                {component.description}
+                {componentDocs.description}
               </Disclosure>
             </Box>
           ) : null}
         </Stack>
         <Columns space="xlarge">
-          {component.examples.map((exampleChunk, idx) => (
-            <Column key={`${component.name}_${idx}`}>
+          {item.examples.map((exampleChunk, idx) => (
+            <Column key={`${item.name}_${idx}`}>
               <Stack space="xlarge">
                 {exampleChunk.map((example, index) => (
                   <Box
@@ -323,10 +311,10 @@ export const Gallery = memo(() => (
         <Box>
           {getRowsFor('components').map((row, index) => (
             <Columns space="none" key={index}>
-              {row.map((component) => (
-                <Column key={component.name} width="content">
+              {row.map((item) => (
+                <Column key={item.name} width="content">
                   <Box padding="xxlarge">
-                    <GalleryItem component={component} />
+                    <GalleryItem item={item} />
                   </Box>
                 </Column>
               ))}
@@ -346,10 +334,10 @@ export const Gallery = memo(() => (
           <Box>
             {getRowsFor('icons').map((row, index) => (
               <Columns space="none" key={index}>
-                {row.map((component) => (
-                  <Column key={component.name} width="content">
+                {row.map((item) => (
+                  <Column key={item.name} width="content">
                     <Box padding="small">
-                      <GalleryItem component={component} />
+                      <GalleryItem item={item} />
                     </Box>
                   </Column>
                 ))}

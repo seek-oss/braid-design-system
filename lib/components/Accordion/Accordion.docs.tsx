@@ -89,7 +89,6 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Standalone AccordionItem',
-      gallery: false,
       Example: ({ id }) => (
         <AccordionItem label="Label" id={id}>
           <Text>Content</Text>

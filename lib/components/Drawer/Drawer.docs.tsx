@@ -49,7 +49,6 @@ const docs: ComponentDocs = {
     {
       label: 'Default',
       storybook: false,
-      gallery: false,
       Example: ({ getState, toggleState }) =>
         source(
           <>
@@ -87,7 +86,6 @@ const docs: ComponentDocs = {
     {
       label: 'With additional description',
       storybook: false,
-      gallery: false,
       Example: ({ getState, toggleState }) =>
         source(
           <>
@@ -130,7 +128,6 @@ const docs: ComponentDocs = {
     {
       label: 'Small width',
       storybook: false,
-      gallery: false,
       Example: ({ getState, toggleState }) =>
         source(
           <>
@@ -177,7 +174,6 @@ const docs: ComponentDocs = {
     {
       label: 'Medium width',
       storybook: false,
-      gallery: false,
       Example: ({ getState, toggleState }) =>
         source(
           <>
@@ -224,7 +220,6 @@ const docs: ComponentDocs = {
     {
       label: 'Large width',
       storybook: false,
-      gallery: false,
       Example: ({ getState, toggleState }) =>
         source(
           <>
@@ -273,7 +268,6 @@ const docs: ComponentDocs = {
     {
       label: 'Default layout',
       docsSite: false,
-      gallery: true,
       Example: ({ id }) => (
         <DrawerContent
           id={id}
@@ -289,7 +283,6 @@ const docs: ComponentDocs = {
     {
       label: 'Layout with a description',
       docsSite: false,
-      gallery: true,
       Example: ({ id }) => (
         <DrawerContent
           id={id}
@@ -353,7 +346,6 @@ const docs: ComponentDocs = {
       label: 'Preview animation',
       storybook: false,
       docsSite: false,
-      gallery: true,
       Example: ({ getState, setState, resetState }) =>
         source(
           <>

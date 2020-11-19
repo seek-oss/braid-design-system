@@ -29,7 +29,6 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Critical with long (wrapping) message',
-      gallery: false,
       Container: ({ children }) => (
         <div style={{ maxWidth: '300px' }}>{children}</div>
       ),

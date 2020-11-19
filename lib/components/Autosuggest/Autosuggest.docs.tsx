@@ -13,7 +13,7 @@ const Container = ({ children }: { children: ReactNode }) => (
   <div style={{ maxWidth: '300px' }}>{children}</div>
 );
 
-const makeSuggestions = (
+export const makeSuggestions = (
   suggestions: Array<string | { text: string; description?: string }>,
   initialValue = 0,
 ) =>
@@ -76,7 +76,6 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Standard suggestions with automatic selection',
-      gallery: false,
       Container,
       Example: ({ id }) => {
         const [value, setValue] = useState<Value>({ text: '' });
@@ -222,7 +221,6 @@ const docs: ComponentDocs = {
     {
       label: 'Standard suggestions with brand background and mobile backdrop',
       storybook: false,
-      gallery: false,
       Container,
       background: 'brand',
       Example: ({ id }) => {

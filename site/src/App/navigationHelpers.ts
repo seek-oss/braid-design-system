@@ -1,7 +1,7 @@
 import groupBy from 'lodash/groupBy';
 import * as components from '../../../lib/components';
 import { Snippet } from '../../../lib/components/private/Snippets';
-import { ComponentDocs } from '../types';
+import { ComponentDocs, ComponentExample } from '../types';
 import undocumentedExports from '../undocumentedExports.json';
 
 const componentDocsContext = require.context(
@@ -89,3 +89,24 @@ export const categorisedComponents = groupBy(
   documentedComponents,
   (component) => component.category,
 );
+
+const getComponentNameFromFilename = (filename: string) => {
+  const componentName = filename.match(/([a-zA-Z]+)\.gallery\.tsx?$/)?.[1];
+  if (!componentName) {
+    throw new Error(
+      `Expected file name ending in .gallery.tsx, got ${filename}`,
+    );
+  }
+
+  return componentName;
+};
+
+const galleryContext = require.context(
+  '../../../lib/components',
+  true,
+  /.gallery\.tsx$/,
+);
+export const galleryComponents = galleryContext.keys().map((filename) => ({
+  name: getComponentNameFromFilename(filename),
+  examples: galleryContext(filename).galleryItems as ComponentExample[],
+}));
