@@ -25,7 +25,6 @@ export const Dropdown = ({
   return (
     <BraidDropdown
       id={id ?? fallbackId}
-      name={name}
       value={state}
       onChange={handleChange}
       {...restProps}

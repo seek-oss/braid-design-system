@@ -2,11 +2,14 @@ import { style } from 'sku/treat';
 
 export const activeUnderline = [
   style((theme) => ({
-    bottom: -theme.border.width.standard,
     height: theme.border.width.large,
     background: theme.color.foreground.neutral,
   })),
 ];
+
+export const inactiveUnderlineCorrection = style((theme) => ({
+  marginTop: -theme.border.width.standard,
+}));
 
 export const centerHorizontally = style({
   left: '50%',

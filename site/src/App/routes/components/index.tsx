@@ -1,7 +1,10 @@
 import React from 'react';
 import { RouteProps } from 'react-router';
 import { ComponentDoc } from '../../ComponentDoc/ComponentDoc';
-import { getComponentDocs } from '../../navigationHelpers';
+import {
+  getComponentDocs,
+  getComponentSnippets,
+} from '../../navigationHelpers';
 
 const page: RouteProps = {
   render: ({ match }) => (
@@ -13,6 +16,7 @@ const page: RouteProps = {
         componentName: match.params.componentName,
         isIcon: /^Icon/.test(match.params.componentName),
       })}
+      snippets={getComponentSnippets(match.params.componentName)}
     />
   ),
 };

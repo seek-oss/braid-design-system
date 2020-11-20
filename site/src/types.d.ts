@@ -48,8 +48,8 @@ export interface ComponentExample {
   docsSite?: boolean;
   storybook?: boolean;
   background?: NonNullable<BoxProps['background']>;
-  Example?: (props: ExampleProps) => JSX.Element | Source<JSX.Element>;
-  Container?: (props: { children: ReactNode }) => JSX.Element;
+  Example?: (props: ExampleProps) => ReactChild | Source<ReactChild>;
+  Container?: (props: { children: ReactNode }) => ReactElement;
   code?: string;
   showCodeByDefault?: boolean;
   playroom?: boolean;

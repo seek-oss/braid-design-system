@@ -1,5 +1,6 @@
 import groupBy from 'lodash/groupBy';
 import * as components from '../../../lib/components';
+import { Snippet } from '../../../lib/components/private/Snippets';
 import { ComponentDocs, ComponentExample } from '../types';
 import undocumentedExports from '../undocumentedExports.json';
 
@@ -22,6 +23,30 @@ export const getComponentDocs = ({
 
   return componentDocsContext(normalizedComponentRoute)
     .default as ComponentDocs;
+};
+
+const snippetsContext = require.context(
+  '../../../lib/components',
+  true,
+  /\.snippets\.tsx?$/,
+);
+export const getComponentSnippets = (componentName: string) => {
+  const normalizedComponentRoute = `./${componentName}/${componentName}.snippets.tsx`;
+
+  if (
+    !snippetsContext.keys().includes(normalizedComponentRoute) ||
+    /^(drawer|dialog)$/i.test(componentName)
+  ) {
+    return;
+  }
+
+  const snippets = snippetsContext(normalizedComponentRoute)
+    .snippets as Snippet[];
+
+  return snippets.map((snippet) => ({
+    ...snippet,
+    group: snippet.group || componentName,
+  }));
 };
 
 const documentedComponentNames = Object.keys(components)

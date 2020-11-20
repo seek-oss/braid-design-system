@@ -3,6 +3,7 @@ import { Route, Switch, useRouteMatch } from 'react-router';
 import { ComponentProps } from './ComponentProps';
 import { PlayroomStateProvider } from '../../../../lib/playroom/playroomState';
 import { useSourceFromExample } from '../../../../lib/utils/useSourceFromExample';
+import { Snippet } from '../../../../lib/components/private/Snippets';
 import {
   Box,
   Heading,
@@ -29,51 +30,39 @@ const DefaultContainer = ({ children }: { children: ReactNode }) => (
 
 interface RenderExampleProps {
   id: string;
-  example: ComponentExample;
-  category: ComponentDocs['category'];
-  showHeading: boolean;
+  Example?: ComponentExample['Example'];
+  code?: ComponentExample['code'];
+  Container?: ComponentExample['Container'];
+  background?: ComponentExample['background'];
+  showCodeByDefault?: ComponentExample['showCodeByDefault'];
+  playroom?: ComponentExample['playroom'];
 }
 const RenderExample = ({
   id,
-  category,
-  showHeading,
-  example,
+  Example,
+  code,
+  Container = DefaultContainer,
+  background = 'body',
+  showCodeByDefault = false,
+  playroom,
 }: RenderExampleProps) => {
-  const {
-    label,
+  const { code: codeAsString, value } = useSourceFromExample(id, {
     Example,
-    Container = DefaultContainer,
-    background = 'body',
-    showCodeByDefault = false,
-    playroom,
-    description,
-  } = example;
-
-  const { code, value } = useSourceFromExample(id, example);
+    code,
+  });
 
   return (
-    <Stack space="large">
-      {label && showHeading ? <Heading level="3">{label}</Heading> : null}
-      {description ?? null}
-      <Stack space="xxsmall">
-        {value ? (
-          <ThemedExample background={background}>
-            <Container>{value}</Container>
-          </ThemedExample>
-        ) : null}
-        {code ? (
-          <Code
-            collapsedByDefault={
-              !showCodeByDefault &&
-              Example !== undefined &&
-              category !== 'Logic'
-            }
-            playroom={playroom}
-          >
-            {code}
-          </Code>
-        ) : null}
-      </Stack>
+    <Stack space="xxsmall">
+      {value ? (
+        <ThemedExample background={background}>
+          <Container>{value}</Container>
+        </ThemedExample>
+      ) : null}
+      {codeAsString ? (
+        <Code collapsedByDefault={!showCodeByDefault} playroom={playroom}>
+          {codeAsString}
+        </Code>
+      ) : null}
     </Stack>
   );
 };
@@ -82,12 +71,14 @@ interface ComponentDocProps {
   componentName: string;
   subfolder?: string;
   docs: ComponentDocs;
+  snippets?: Snippet[];
 }
 
 export const ComponentDoc = ({
   componentName,
   subfolder = '',
   docs,
+  snippets = [],
 }: ComponentDocProps) => {
   const { sourceUrlPrefix } = useConfig();
 
@@ -117,6 +108,12 @@ export const ComponentDoc = ({
   const propsRouteActive =
     useRouteMatch({
       path: `/components/${componentName}/props`,
+      exact: true,
+    }) !== null;
+
+  const snippetsRouteActive =
+    useRouteMatch({
+      path: `/components/${componentName}/snippets`,
       exact: true,
     }) !== null;
 
@@ -170,6 +167,14 @@ export const ComponentDoc = ({
           >
             Releases
           </NavigationItem>
+          {snippets.length > 0 ? (
+            <NavigationItem
+              active={snippetsRouteActive}
+              href={`/components/${componentName}/snippets`}
+            >
+              Snippets
+            </NavigationItem>
+          ) : null}
         </Navigation>
         {docs.deprecationWarning ? (
           <Alert tone="caution">{docs.deprecationWarning}</Alert>
@@ -182,14 +187,27 @@ export const ComponentDoc = ({
             {docs.description}
 
             {filteredExamples.map((example, index) => (
-              <PlayroomStateProvider key={index}>
-                <RenderExample
-                  id={String(index)}
-                  example={example}
-                  category={docs.category}
-                  showHeading={filteredExamples.length > 1}
-                />
-              </PlayroomStateProvider>
+              <Stack space="large" key={index}>
+                {example.label && filteredExamples.length > 1 ? (
+                  <Heading level="3">{example.label}</Heading>
+                ) : null}
+                {example.description ?? null}
+                <PlayroomStateProvider>
+                  <RenderExample
+                    id={String(index)}
+                    code={example.code}
+                    Example={example.Example}
+                    Container={example.Container}
+                    background={example.background}
+                    showCodeByDefault={
+                      example.showCodeByDefault ||
+                      example.Example === undefined ||
+                      docs.category === 'Logic'
+                    }
+                    playroom={example.playroom}
+                  />
+                </PlayroomStateProvider>
+              </Stack>
             ))}
           </Stack>
         </Route>
@@ -257,6 +275,24 @@ export const ComponentDoc = ({
                 </Text>
               </Stack>
             )}
+          </Stack>
+        </Route>
+        <Route path={`/components/${componentName}/snippets`}>
+          <PageTitle title={`${componentName} Snippets`} />
+
+          <Stack space="xxlarge">
+            {snippets.map(({ group, name, code }) => (
+              <Stack space="medium" key={`${group}_${name}`}>
+                <Text tone="secondary">{name}</Text>
+                <PlayroomStateProvider>
+                  <RenderExample
+                    id={`${group}_${name}`}
+                    Example={() => code}
+                    showCodeByDefault={false}
+                  />
+                </PlayroomStateProvider>
+              </Stack>
+            ))}
           </Stack>
         </Route>
       </Switch>
