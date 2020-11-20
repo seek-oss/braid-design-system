@@ -28,7 +28,6 @@ export const PasswordField = ({
   return (
     <BraidPasswordField
       id={id ?? fallbackId}
-      name={name}
       value={state}
       onChange={handleChange}
       autoComplete="off"

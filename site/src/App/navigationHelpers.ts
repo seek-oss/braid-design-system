@@ -46,26 +46,6 @@ export const getComponentSnippets = (componentName: string) => {
   }));
 };
 
-export const getAllSnippets = () =>
-  snippetsContext.keys().map((filename) => {
-    const componentName = filename.match(/([a-zA-Z]+)\.snippets\.tsx?$/)?.[1];
-    const snippets = snippetsContext(filename).snippets as Snippet[];
-
-    if (!componentName) {
-      throw new Error(
-        `Could not parse component name from filename: ${filename}`,
-      );
-    }
-
-    return {
-      name: componentName,
-      examples: snippets.map((snippet) => ({
-        ...snippet,
-        group: snippet.group || componentName,
-      })),
-    };
-  });
-
 const documentedComponentNames = Object.keys(components)
   .filter((name) => {
     if (name.startsWith('Icon')) {
