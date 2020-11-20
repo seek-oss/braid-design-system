@@ -33,7 +33,10 @@ const snippetsContext = require.context(
 export const getComponentSnippets = (componentName: string) => {
   const normalizedComponentRoute = `./${componentName}/${componentName}.snippets.tsx`;
 
-  if (!snippetsContext.keys().includes(normalizedComponentRoute)) {
+  if (
+    !snippetsContext.keys().includes(normalizedComponentRoute) ||
+    /^(drawer|dialog)$/i.test(componentName)
+  ) {
     return;
   }
 
