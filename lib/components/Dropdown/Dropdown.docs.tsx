@@ -9,7 +9,6 @@ const Container = ({ children }: { children: ReactNode }) => (
 const docs: ComponentDocs = {
   category: 'Content',
   migrationGuide: true,
-  screenshotWidths: [320],
   examples: [
     {
       label: 'Dropdown with placeholder',

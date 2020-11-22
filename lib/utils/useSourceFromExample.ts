@@ -5,7 +5,7 @@ import { reactElementToJsxString } from './reactElementToJsxString';
 
 export const useSourceFromExample = (
   id: string,
-  { Example, code: codeOverride }: ComponentExample,
+  { Example, code: codeOverride }: Pick<ComponentExample, 'Example' | 'code'>,
 ) => {
   let returnCode, returnValue;
   const playroomScope = useScope();

@@ -67,7 +67,6 @@ export const galleryItems: ComponentExample[] = [
   },
   {
     label: 'Heading Alignment: "left" | "center" | "right"',
-    storybook: false,
     Example: () => (
       <Heading level="1" align="center">
         Centered heading

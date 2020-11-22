@@ -5,7 +5,6 @@ import { Strong, Text } from '../';
 const docs: ComponentDocs = {
   category: 'Content',
   migrationGuide: true,
-  screenshotWidths: [320],
   examples: [
     {
       Example: () => (

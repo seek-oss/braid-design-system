@@ -1,7 +1,6 @@
-import React, { Fragment, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import { background as boxBackgrounds } from '../Box/useBoxStyles.treat';
-import { Box, Button, Stack, Text, TextLink } from '../';
+import { Button, Stack, Text, TextLink } from '../';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <div style={{ maxWidth: '300px' }}>{children}</div>
@@ -10,7 +9,6 @@ const Container = ({ children }: { children: ReactNode }) => (
 const docs: ComponentDocs = {
   category: 'Content',
   migrationGuide: true,
-  screenshotWidths: [320],
   description: (
     <Stack space="large">
       <Text>Renders a standard button element.</Text>
@@ -46,27 +44,6 @@ const docs: ComponentDocs = {
       label: 'Loading Button',
       Container,
       Example: () => <Button loading>Loading</Button>,
-      storybook: false,
-    },
-    {
-      label: 'Weak Button Contrast',
-      docsSite: false,
-      Container,
-      Example: () => {
-        const backgrounds = Object.keys(boxBackgrounds) as Array<
-          keyof typeof boxBackgrounds
-        >;
-
-        return (
-          <Fragment>
-            {backgrounds.sort().map((background) => (
-              <Box key={background} background={background} padding="medium">
-                <Button weight="weak">{background}</Button>
-              </Box>
-            ))}
-          </Fragment>
-        );
-      },
     },
   ],
 };

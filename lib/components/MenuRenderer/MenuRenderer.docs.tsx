@@ -15,7 +15,6 @@ import {
 
 const docs: ComponentDocs = {
   category: 'Content',
-  screenshotWidths: [],
   description: (
     <Stack space="large">
       <Text>

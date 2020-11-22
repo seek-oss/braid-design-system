@@ -6,7 +6,6 @@ import { Strong } from '../Strong/Strong';
 
 const docs: ComponentDocs = {
   category: 'Logic',
-  screenshotWidths: [],
   examples: [
     {
       playroom: false,

@@ -5,7 +5,6 @@ import { Badge, Inline, Heading, Text, TextLink, Strong } from '../';
 const docs: ComponentDocs = {
   category: 'Content',
   migrationGuide: true,
-  screenshotWidths: [320],
   examples: [
     {
       label: 'Regular Badge',

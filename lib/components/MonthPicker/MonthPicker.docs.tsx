@@ -2,10 +2,6 @@ import React, { ReactNode } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import { MonthPicker } from '../';
 
-const handler = () => {
-  /* No-op for docs examples */
-};
-
 const Container = ({ children }: { children: ReactNode }) => (
   <div style={{ maxWidth: '300px' }}>{children}</div>
 );
@@ -13,12 +9,11 @@ const Container = ({ children }: { children: ReactNode }) => (
 const docs: ComponentDocs = {
   category: 'Content',
   migrationGuide: true,
-  screenshotWidths: [320],
   examples: [
     {
       label: 'Default',
       Container,
-      Example: ({ id }) => (
+      Example: ({ id, handler }) => (
         <MonthPicker
           id={id}
           label="Started"
@@ -30,7 +25,7 @@ const docs: ComponentDocs = {
     {
       label: 'Selected values',
       Container,
-      Example: ({ id }) => (
+      Example: ({ id, handler }) => (
         <MonthPicker
           id={id}
           label="Started"
@@ -42,7 +37,7 @@ const docs: ComponentDocs = {
     {
       label: 'Critical message',
       Container,
-      Example: ({ id }) => (
+      Example: ({ id, handler }) => (
         <MonthPicker
           id={id}
           label="Started"
@@ -56,7 +51,7 @@ const docs: ComponentDocs = {
     {
       label: 'Custom month and year labels',
       Container,
-      Example: ({ id }) => (
+      Example: ({ id, handler }) => (
         <MonthPicker
           id={id}
           label="Started"

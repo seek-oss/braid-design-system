@@ -15,8 +15,6 @@ const docs: ComponentDocs = {
       instead.
     </Text>
   ),
-  screenshotWidths: [320, 768, 1200],
-  screenshotOnlyInWireframe: true,
   examples: [
     {
       label: 'Hidden below tablet',
@@ -79,18 +77,6 @@ const docs: ComponentDocs = {
       ),
     },
     {
-      label: 'Hidden on Screen',
-      docsSite: false, // Looking to deprecate this, but we'll leave it in the test suite for now
-      Example: () => (
-        <Stack space="small">
-          <Text>The following line is hidden on screen:</Text>
-          <Hidden screen>
-            <Text>Hidden on screen.</Text>
-          </Hidden>
-        </Stack>
-      ),
-    },
-    {
       label: 'Hidden below tablet (inline)',
       showCodeByDefault: true,
       Example: () => (
@@ -137,16 +123,6 @@ const docs: ComponentDocs = {
         <Text>
           The following text node is hidden on print:{' '}
           <Hidden print>Hidden on print.</Hidden>
-        </Text>
-      ),
-    },
-    {
-      label: 'Hidden on screen (inline)',
-      docsSite: false,
-      Example: () => (
-        <Text>
-          The following text node is hidden on screen:{' '}
-          <Hidden screen>Hidden on screen.</Hidden>
         </Text>
       ),
     },

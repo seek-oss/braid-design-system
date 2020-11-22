@@ -11,8 +11,6 @@ const docs: ComponentDocs = {
       screen.
     </Text>
   ),
-  screenshotWidths: [320],
-  screenshotOnlyInWireframe: true,
   examples: [
     {
       label: 'Inside Text',

@@ -5,7 +5,6 @@ import { useSpace } from './useSpace';
 
 const docs: ComponentDocs = {
   category: 'Logic',
-  screenshotWidths: [],
   examples: [
     {
       playroom: false,

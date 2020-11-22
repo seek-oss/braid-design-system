@@ -12,7 +12,6 @@ const docs: ComponentDocs = {
       <TextLink href="/components/RadioGroup">RadioGroup</TextLink> instead.
     </Text>
   ),
-  screenshotWidths: [320],
   examples: [
     {
       label: 'Standard Radio Button',
@@ -88,24 +87,6 @@ const docs: ComponentDocs = {
       ),
     },
     {
-      label: 'Radio Button with a Badge and description',
-      docsSite: false,
-      Example: ({ id, handler }) => (
-        <Radio
-          id={id}
-          checked={false}
-          onChange={handler}
-          label="Label"
-          badge={
-            <Badge tone="positive" weight="strong">
-              New
-            </Badge>
-          }
-          description="Extra information about the field"
-        />
-      ),
-    },
-    {
       label: 'Radio Button with nested content visible only when checked',
       Example: ({ id }) => {
         const [state, setState] = useState(true);
@@ -121,21 +102,6 @@ const docs: ComponentDocs = {
           </Radio>
         );
       },
-    },
-    {
-      label: 'Radio Button with nested content and description',
-      docsSite: false,
-      Example: ({ id, handler }) => (
-        <Radio
-          id={id}
-          checked={true}
-          onChange={handler}
-          label="Label"
-          description="Extra information about the field"
-        >
-          <Text>This text is visible when the radio button is checked.</Text>
-        </Radio>
-      ),
     },
   ],
 };

@@ -14,11 +14,9 @@ import {
   Strong,
 } from '../';
 import { Placeholder } from '../../playroom/components';
-import { DialogContent } from './Dialog';
 
 const docs: ComponentDocs = {
   category: 'Content',
-  screenshotWidths: [320, 1200],
   description: (
     <Stack space="large">
       <Text>
@@ -51,7 +49,6 @@ const docs: ComponentDocs = {
   examples: [
     {
       label: 'Default',
-      storybook: false,
       Example: ({ id, getState, toggleState }) =>
         source(
           <>
@@ -74,7 +71,6 @@ const docs: ComponentDocs = {
     },
     {
       label: 'With illustration/logo',
-      storybook: false,
       Example: ({ id, getState, toggleState }) =>
         source(
           <>
@@ -110,7 +106,6 @@ const docs: ComponentDocs = {
     },
     {
       label: 'With additional description',
-      storybook: false,
       Example: ({ id, getState, toggleState }) =>
         source(
           <>
@@ -138,7 +133,6 @@ const docs: ComponentDocs = {
     },
     {
       label: 'With scrolling content',
-      storybook: false,
       Example: ({ id, getState, toggleState }) =>
         source(
           <>
@@ -165,7 +159,6 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Sized to content',
-      storybook: false,
       Example: ({ id, getState, toggleState }) =>
         source(
           <>
@@ -189,7 +182,6 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Xsmall width',
-      storybook: false,
       Example: ({ id, getState, toggleState }) =>
         source(
           <>
@@ -224,7 +216,6 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Small width',
-      storybook: false,
       Example: ({ id, getState, toggleState }) =>
         source(
           <>
@@ -259,7 +250,6 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Medium width',
-      storybook: false,
       Example: ({ id, getState, toggleState }) =>
         source(
           <>
@@ -294,7 +284,6 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Large width',
-      storybook: false,
       Example: ({ id, getState, toggleState }) =>
         source(
           <>
@@ -323,178 +312,6 @@ const docs: ComponentDocs = {
                   </>
                 }
               />
-            </Dialog>
-          </>,
-        ),
-    },
-
-    // Layout examples
-    {
-      label: 'Default layout',
-      docsSite: false,
-      Example: ({ id }) => (
-        <DialogContent
-          id={id}
-          title="Default test"
-          onClose={() => {}}
-          scrollLock={false}
-        >
-          <Placeholder height={100} width="100%" />
-        </DialogContent>
-      ),
-    },
-    {
-      label: 'Illustration layout',
-      docsSite: false,
-      Example: ({ id }) => (
-        <DialogContent
-          id={id}
-          title="Illustration test"
-          illustration={
-            <Placeholder
-              height={150}
-              width={150}
-              shape="round"
-              label="Illustration"
-            />
-          }
-          onClose={() => {}}
-          scrollLock={false}
-        >
-          <Stack space="xlarge" align="center">
-            <Placeholder width="100%" height={100} />
-            <Inline space="small">
-              <Placeholder height={44} width={80} label="OK" />
-              <Placeholder height={44} width={80} label="Cancel" />
-            </Inline>
-          </Stack>
-        </DialogContent>
-      ),
-    },
-    {
-      label: 'Layout with a description',
-      docsSite: false,
-      Example: ({ id }) => (
-        <DialogContent
-          id={id}
-          title="Description test"
-          description={
-            <Placeholder height="auto" width="100%" label="Description" />
-          }
-          onClose={() => {}}
-          scrollLock={false}
-        >
-          <Placeholder height={100} width="100%" />
-        </DialogContent>
-      ),
-    },
-    {
-      label: 'Layout: Content width',
-      docsSite: false,
-      Example: ({ id }) => (
-        <Box display="flex" alignItems="center" justifyContent="center">
-          <DialogContent
-            id={id}
-            title="Content-sized"
-            width="content"
-            onClose={() => {}}
-            scrollLock={false}
-          >
-            <Placeholder height={100} width={200} label="200px wide" />
-          </DialogContent>
-        </Box>
-      ),
-    },
-    {
-      label: 'Layout: Xsmall width',
-      docsSite: false,
-      Example: ({ id }) => (
-        <DialogContent
-          id={id}
-          title="Xsmall"
-          width="xsmall"
-          onClose={() => {}}
-          scrollLock={false}
-        >
-          <Placeholder height={100} width="100%" label="Xsmall Dialog" />
-        </DialogContent>
-      ),
-    },
-    {
-      label: 'Layout: Small width',
-      docsSite: false,
-      Example: ({ id }) => (
-        <DialogContent
-          id={id}
-          title="Small"
-          width="small"
-          onClose={() => {}}
-          scrollLock={false}
-        >
-          <Placeholder height={100} width="100%" label="Small Dialog" />
-        </DialogContent>
-      ),
-    },
-    {
-      label: 'Layout: Medium width',
-      docsSite: false,
-      Example: ({ id }) => (
-        <DialogContent
-          id={id}
-          title="Medium"
-          width="medium"
-          onClose={() => {}}
-          scrollLock={false}
-        >
-          <Placeholder height={100} width="100%" label="Medium Dialog" />
-        </DialogContent>
-      ),
-    },
-    {
-      label: 'Layout:: Large width',
-      docsSite: false,
-      Example: ({ id }) => (
-        <DialogContent
-          id={id}
-          title="Large"
-          width="large"
-          onClose={() => {}}
-          scrollLock={false}
-        >
-          <Placeholder height={100} width="100%" label="Large Dialog" />
-        </DialogContent>
-      ),
-    },
-    {
-      label: 'Preview animation',
-      storybook: false,
-      docsSite: false,
-      Example: ({ getState, setState, resetState }) =>
-        source(
-          <>
-            <Inline space="small" align="center">
-              <Button onClick={() => setState('width', 'xsmall')}>
-                Open xsmall
-              </Button>
-              <Button onClick={() => setState('width', 'small')}>
-                Open small
-              </Button>
-              <Button onClick={() => setState('width', 'medium')}>
-                Open medium
-              </Button>
-              <Button onClick={() => setState('width', 'large')}>
-                Open large
-              </Button>
-            </Inline>
-
-            <Dialog
-              id="dialog-animation-example"
-              title={`A \"${getState('width')}\" dialog`}
-              width={getState('width')}
-              open={getState('width')}
-              onClose={() => resetState('width')}
-            >
-              <Placeholder height={200} width="100%" />
             </Dialog>
           </>,
         ),

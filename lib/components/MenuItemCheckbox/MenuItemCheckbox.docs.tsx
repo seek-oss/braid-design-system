@@ -4,7 +4,6 @@ import { OverflowMenu, MenuItemCheckbox, Stack, Text, TextLink, Box } from '..';
 
 const docs: ComponentDocs = {
   category: 'Content',
-  screenshotWidths: [],
   description: (
     <Stack space="large">
       <Text>

@@ -5,7 +5,6 @@ import { Disclosure, Stack, Text, TextLink } from '..';
 
 const docs: ComponentDocs = {
   category: 'Content',
-  screenshotWidths: [320],
   migrationGuide: true,
   description: (
     <Stack space="large">
@@ -78,7 +77,6 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Disclosure with controlled state',
-      storybook: false,
       playroom: false,
       Example: ({ id }) => {
         const [expanded, setExpanded] = React.useState(false);

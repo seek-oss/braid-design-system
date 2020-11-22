@@ -29,7 +29,6 @@ const docs: ComponentDocs = {
       </Text>
     </Stack>
   ),
-  screenshotWidths: [320],
   examples: [
     {
       label: 'Default',

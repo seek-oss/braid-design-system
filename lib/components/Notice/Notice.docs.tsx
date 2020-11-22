@@ -19,7 +19,6 @@ const docs: ComponentDocs = {
     </Stack>
   ),
   migrationGuide: true,
-  screenshotWidths: [320],
   examples: [
     {
       label: 'Info Notice',

@@ -15,7 +15,6 @@ import {
 const docs: ComponentDocs = {
   category: 'Content',
   subComponents: ['MenuItemLink'],
-  screenshotWidths: [],
   description: (
     <Stack space="large">
       <Text>

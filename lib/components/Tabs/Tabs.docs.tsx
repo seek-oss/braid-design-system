@@ -13,14 +13,11 @@ import {
   Strong,
   List,
   Card,
-  Box,
 } from '..';
 import { Placeholder } from '../../playroom/components';
-import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
 
 const docs: ComponentDocs = {
   category: 'Content',
-  screenshotWidths: [320, 1200],
   subComponents: ['TabsProvider', 'Tab', 'TabPanels', 'TabPanel'],
   description: (
     <Stack space="large">
@@ -191,115 +188,6 @@ const docs: ComponentDocs = {
               </TabPanel>
               <TabPanel>
                 <Placeholder height={200} label="Panel 4" />
-              </TabPanel>
-            </TabPanels>
-          </Card>
-        </TabsProvider>
-      ),
-    },
-    {
-      docsSite: false,
-      label:
-        'Test: Center aligned tabs should be left aligned on mobile when content is too wide',
-      Example: ({ id }) => (
-        <TabsProvider id={id}>
-          <Stack space="medium">
-            <Tabs label="Test tabs" align="center">
-              <Tab>The first tab</Tab>
-              <Tab>The second tab</Tab>
-              <Tab>The third tab</Tab>
-              <Tab>The fourth tab</Tab>
-              <Tab>The fifth tab</Tab>
-            </Tabs>
-            <TabPanels>
-              <TabPanel>
-                <Placeholder height={200} label="Panel 1" />
-              </TabPanel>
-              <TabPanel>
-                <Placeholder height={200} label="Panel 2" />
-              </TabPanel>
-              <TabPanel>
-                <Placeholder height={200} label="Panel 3" />
-              </TabPanel>
-              <TabPanel>
-                <Placeholder height={200} label="Panel 4" />
-              </TabPanel>
-              <TabPanel>
-                <Placeholder height={200} label="Panel 5" />
-              </TabPanel>
-            </TabPanels>
-          </Stack>
-        </TabsProvider>
-      ),
-    },
-    {
-      docsSite: false,
-      label: 'Test: Selected tab should be scrolled into view on load',
-      Example: ({ id }) => (
-        <TabsProvider id={id} selectedItem="4">
-          <Stack space="medium">
-            <Tabs label="Test tabs" align="center">
-              <Tab item="1">The first tab</Tab>
-              <Tab item="2">The second tab</Tab>
-              <Tab item="3">The third tab</Tab>
-              <Tab item="4">The fourth tab</Tab>
-              <Tab item="5">The fifth tab</Tab>
-            </Tabs>
-            <TabPanels>
-              <TabPanel>
-                <Placeholder height={200} label="Panel 1" />
-              </TabPanel>
-              <TabPanel>
-                <Placeholder height={200} label="Panel 2" />
-              </TabPanel>
-              <TabPanel>
-                <Placeholder height={200} label="Panel 3" />
-              </TabPanel>
-              <TabPanel>
-                <Placeholder height={200} label="Panel 4" />
-              </TabPanel>
-              <TabPanel>
-                <Placeholder height={200} label="Panel 5" />
-              </TabPanel>
-            </TabPanels>
-          </Stack>
-        </TabsProvider>
-      ),
-    },
-    {
-      docsSite: false,
-      label:
-        'Test: Selected tab with gutter should be scrolled into view on load',
-      Container: ({ children }) => (
-        <Box style={{ background: useBraidTheme().color.background.body }}>
-          {children}
-        </Box>
-      ),
-      Example: ({ id }) => (
-        <TabsProvider id={id} selectedItem="3">
-          <Tabs label="Test tabs" align="center" gutter="gutter" reserveHitArea>
-            <Tab item="1">The first tab</Tab>
-            <Tab item="2">The second tab</Tab>
-            <Tab item="3">The third tab</Tab>
-            <Tab item="4">The fourth tab</Tab>
-            <Tab item="5">The fifth tab</Tab>
-          </Tabs>
-          <Card>
-            <TabPanels>
-              <TabPanel>
-                <Placeholder height={200} label="Panel 1" />
-              </TabPanel>
-              <TabPanel>
-                <Placeholder height={200} label="Panel 2" />
-              </TabPanel>
-              <TabPanel>
-                <Placeholder height={200} label="Panel 3" />
-              </TabPanel>
-              <TabPanel>
-                <Placeholder height={200} label="Panel 4" />
-              </TabPanel>
-              <TabPanel>
-                <Placeholder height={200} label="Panel 5" />
               </TabPanel>
             </TabPanels>
           </Card>

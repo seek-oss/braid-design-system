@@ -2,7 +2,6 @@ import { ComponentDocs } from '../../../site/src/types';
 
 const docs: ComponentDocs = {
   category: 'Logic',
-  screenshotWidths: [],
   examples: [
     {
       code: `

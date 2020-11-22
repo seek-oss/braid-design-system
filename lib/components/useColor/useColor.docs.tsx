@@ -4,7 +4,6 @@ import { useColor } from './useColor';
 
 const docs: ComponentDocs = {
   category: 'Logic',
-  screenshotWidths: [],
   examples: [
     {
       playroom: false,

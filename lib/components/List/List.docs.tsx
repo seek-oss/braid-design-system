@@ -1,12 +1,11 @@
 import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import { List, Text, TextLink, Stack } from '..';
-import { IconTick, Placeholder } from '../../playroom/components';
+import { IconTick } from '../../playroom/components';
 
 const docs: ComponentDocs = {
   category: 'Content',
   migrationGuide: true,
-  screenshotWidths: [320],
   description: (
     <Stack space="large">
       <Text>
@@ -165,61 +164,6 @@ const docs: ComponentDocs = {
           <Text>This is a Roman list item.</Text>
           <Text>This is a Roman list item.</Text>
           <Text>This is a Roman list item.</Text>
-        </List>
-      ),
-    },
-    {
-      label: 'Test: Size and tone should cascade to nested lists',
-      docsSite: false,
-      Example: () => (
-        <List size="large" tone="critical">
-          <Stack space="medium">
-            <Text>Should be large and critical.</Text>
-            <List>
-              <Text>Should be large and critical.</Text>
-            </List>
-          </Stack>
-        </List>
-      ),
-    },
-    {
-      label: 'Test: Cascading size and tone should be overridable',
-      docsSite: false,
-      Example: () => (
-        <List size="large" tone="critical">
-          <Stack space="medium">
-            <Text>Should be large and critical.</Text>
-            <List size="xsmall" tone="positive">
-              <Text>Should be xsmall and positive.</Text>
-            </List>
-          </Stack>
-        </List>
-      ),
-    },
-    {
-      label: 'Test: Flattens fragments',
-      docsSite: false,
-      Example: () => (
-        <List>
-          <Text>List item.</Text>
-          <>
-            <Text>List item.</Text>
-          </>
-          <>
-            <>
-              <Text>List item.</Text>
-              <Text>List item.</Text>
-            </>
-          </>
-        </List>
-      ),
-    },
-    {
-      label: 'Test: List items should be full width',
-      docsSite: false,
-      Example: () => (
-        <List>
-          <Placeholder height={60} />
         </List>
       ),
     },

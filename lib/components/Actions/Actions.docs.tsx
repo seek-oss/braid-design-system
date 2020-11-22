@@ -1,20 +1,10 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import {
-  Actions,
-  Button,
-  TextLink,
-  Box,
-  Stack,
-  Text,
-  IconNewWindow,
-} from '../';
-import { background as boxBackgrounds } from '../Box/useBoxStyles.treat';
+import { Actions, Button, TextLink, Stack, Text } from '../';
 
 const docs: ComponentDocs = {
   category: 'Content',
   migrationGuide: true,
-  screenshotWidths: [320, 768],
   description: (
     <Stack space="large">
       <Text>Typically used for actions at the end of forms.</Text>
@@ -56,33 +46,6 @@ const docs: ComponentDocs = {
           <Button weight="regular">Regular</Button>
         </Actions>
       ),
-    },
-    {
-      label: 'Actions Contrast',
-      docsSite: false,
-      Example: () => {
-        const backgrounds = Object.keys(boxBackgrounds) as Array<
-          keyof typeof boxBackgrounds
-        >;
-
-        return (
-          <Fragment>
-            {backgrounds.sort().map((background, i) => (
-              <Box key={i} background={background} padding="xsmall">
-                <Stack space="xsmall">
-                  <Text size="small">{background}</Text>
-                  <Actions>
-                    <Button weight="strong">Strong</Button>
-                    <TextLink href="#">
-                      TextLink <IconNewWindow />
-                    </TextLink>
-                  </Actions>
-                </Stack>
-              </Box>
-            ))}
-          </Fragment>
-        );
-      },
     },
   ],
 };

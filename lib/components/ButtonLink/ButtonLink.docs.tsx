@@ -10,7 +10,6 @@ const Container = ({ children }: { children: ReactNode }) => (
 const docs: ComponentDocs = {
   category: 'Content',
   migrationGuide: true,
-  screenshotWidths: [320],
   description: (
     <Stack space="large">
       <Text>
@@ -65,7 +64,6 @@ const docs: ComponentDocs = {
           Loading
         </ButtonLink>
       ),
-      storybook: false,
     },
   ],
 };

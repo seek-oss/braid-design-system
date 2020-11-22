@@ -1,4 +1,4 @@
-import React, { Fragment, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import { Box, Stack, Hidden } from '../';
 import { StackProps } from './Stack';
@@ -15,8 +15,6 @@ const Container = ({ children }: { children: ReactNode }) => (
 
 const docs: ComponentDocs = {
   category: 'Layout',
-  screenshotWidths: [320, 768, 1200],
-  screenshotOnlyInWireframe: true,
   migrationGuide: true,
   examples: [
     ...spaces.map((space) => ({
@@ -87,28 +85,6 @@ const docs: ComponentDocs = {
       ),
     },
     {
-      label:
-        'Test - Should flatten fragments (6 placeholders should be evenly spaced)',
-      docsSite: false,
-      Container,
-      Example: () => (
-        <Stack space="small">
-          <Fragment>
-            <Placeholder height={40} />
-            <Placeholder height={40} />
-            <Fragment>
-              <Placeholder height={40} />
-              <Fragment>
-                <Placeholder height={40} />
-              </Fragment>
-            </Fragment>
-          </Fragment>
-          <Placeholder height={40} />
-          <Placeholder height={40} />
-        </Stack>
-      ),
-    },
-    {
       label: 'Responsively hiding stack items',
       Container,
       Example: () => (
@@ -121,58 +97,6 @@ const docs: ComponentDocs = {
             <Placeholder height={40} label="3" />
           </Hidden>
           <Placeholder height={40} label="4" />
-        </Stack>
-      ),
-    },
-    {
-      label:
-        'Test - Hidden stack items with responsive alignment (should be center aligned showing 3 + 4 on mobile, right aligned showing 2 + 3 + 4 on tablet, left aligned showing 1 + 2 + 3 on desktop)',
-      Container,
-      docsSite: false,
-      Example: () => (
-        <Stack space="gutter" align={['center', 'right', 'left']}>
-          <Hidden below="desktop">
-            <Placeholder width={40} height={40} label="1" />
-          </Hidden>
-          <Hidden below="tablet">
-            <Placeholder width={40} height={40} label="2" />
-          </Hidden>
-          <Hidden print>
-            <Placeholder width={40} height={40} label="3" />
-          </Hidden>
-          <Hidden above="tablet">
-            <Placeholder width={40} height={40} label="4" />
-          </Hidden>
-          <Hidden screen>
-            <Placeholder
-              width={40}
-              height={40}
-              label="This should not be visible"
-            />
-          </Hidden>
-        </Stack>
-      ),
-    },
-    {
-      label:
-        'Test - Hidden stack items with dividers (should show 3 + 4 on mobile, 2 + 3 + 4 on tablet, and 1 + 2 + 3 on desktop)',
-      Container,
-      docsSite: false,
-      Example: () => (
-        <Stack space="gutter" dividers>
-          <Hidden below="desktop">
-            <Placeholder height={40} label="1" />
-          </Hidden>
-          <Hidden below="tablet">
-            <Placeholder height={40} label="2" />
-          </Hidden>
-          <Placeholder height={40} label="3" />
-          <Hidden above="tablet">
-            <Placeholder height={40} label="4" />
-          </Hidden>
-          <Hidden screen>
-            <Placeholder height={40} label="This should not be visible" />
-          </Hidden>
         </Stack>
       ),
     },

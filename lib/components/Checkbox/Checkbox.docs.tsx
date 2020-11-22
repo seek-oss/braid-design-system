@@ -5,7 +5,6 @@ import { Badge, Checkbox, Text } from '../';
 const docs: ComponentDocs = {
   category: 'Content',
   migrationGuide: true,
-  screenshotWidths: [320],
   examples: [
     {
       label: 'Standard Checkbox',
@@ -88,24 +87,6 @@ const docs: ComponentDocs = {
       ),
     },
     {
-      label: 'Checkbox with a Badge and description',
-      docsSite: false,
-      Example: ({ id, handler }) => (
-        <Checkbox
-          id={id}
-          checked={false}
-          onChange={handler}
-          label="Label"
-          badge={
-            <Badge tone="positive" weight="strong">
-              New
-            </Badge>
-          }
-          description="Extra information about the field"
-        />
-      ),
-    },
-    {
       label: 'Checkbox with nested content visible only when checked',
       Example: ({ id }) => {
         const [state, setState] = useState(true);
@@ -120,53 +101,6 @@ const docs: ComponentDocs = {
           </Checkbox>
         );
       },
-    },
-    {
-      label: 'Checkbox with nested content and description',
-      docsSite: false,
-      Example: ({ id, handler }) => (
-        <Checkbox
-          id={id}
-          checked={true}
-          onChange={handler}
-          label="Label"
-          description="Extra information about the field"
-        >
-          <Text>This text is visible when the button is checked.</Text>
-        </Checkbox>
-      ),
-    },
-    {
-      label: 'Checkbox with a message and description',
-      docsSite: false,
-      Example: ({ id, handler }) => (
-        <Checkbox
-          id={id}
-          checked={false}
-          onChange={handler}
-          label="Label"
-          tone="critical"
-          message="This is a critical message"
-          description="Extra information about the field"
-        />
-      ),
-    },
-    {
-      label: 'Checkbox with nested content, a message and description',
-      docsSite: false,
-      Example: ({ id, handler }) => (
-        <Checkbox
-          id={id}
-          checked={true}
-          onChange={handler}
-          label="Label"
-          tone="critical"
-          message="This is a critical message"
-          description="Extra information about the field"
-        >
-          <Text>This text is visible when the button is checked.</Text>
-        </Checkbox>
-      ),
     },
   ],
 };

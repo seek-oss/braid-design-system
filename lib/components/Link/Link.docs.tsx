@@ -5,7 +5,6 @@ import { Placeholder } from '../../playroom/components';
 
 const docs: ComponentDocs = {
   category: 'Logic',
-  screenshotWidths: [],
   description: (
     <Stack space="large">
       <Text>
