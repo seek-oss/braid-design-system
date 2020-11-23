@@ -13,9 +13,11 @@ import {
   Alert,
   Inline,
   Badge,
+  List,
+  Secondary,
 } from '../../../../lib/components';
 
-import { ComponentDocs, ComponentExample } from '../../types';
+import { ComponentDetail, ComponentDocs, ComponentExample } from '../../types';
 import Code from '../Code/Code';
 import { ThemedExample } from '../ThemeSetting';
 import { useConfig } from '../ConfigContext';
@@ -70,7 +72,7 @@ const RenderExample = ({
 interface ComponentDocProps {
   componentName: string;
   subfolder?: string;
-  docs: ComponentDocs;
+  docs: ComponentDocs | ComponentDetail;
   snippets?: Snippet[];
 }
 
@@ -85,7 +87,10 @@ export const ComponentDoc = ({
   const componentFolder = `lib/components/${
     subfolder ? `${subfolder}/` : ''
   }${componentName}`;
-  const docsExamples = docs.examples || [];
+  const examples = 'examples' in docs ? docs.examples : undefined;
+  const additional = 'additional' in docs ? docs.additional : undefined;
+  const docsExamples = additional || examples || [];
+  const Example = 'Example' in docs ? docs.Example : undefined;
 
   const sourceUrl = `${sourceUrlPrefix}/${componentFolder}`;
   const migrationGuideUrl = `${sourceUrlPrefix}/${componentFolder}/${componentName}.migration.md`;
@@ -180,7 +185,39 @@ export const ComponentDoc = ({
         <Route exact path={`/components/${componentName}`}>
           <PageTitle title={componentName} />
           <Stack space="xxlarge">
-            {docs.description}
+            {'description' in docs ? docs.description : null}
+
+            {Example ? (
+              <PlayroomStateProvider>
+                <RenderExample
+                  id={`${componentName}_example`}
+                  Example={Example}
+                />
+              </PlayroomStateProvider>
+            ) : null}
+
+            {'alternatives' in docs && docs.alternatives ? (
+              <Stack space="large">
+                <Heading level="3">Alternatives</Heading>
+                <List space="large">
+                  {docs.alternatives.map((alt) => (
+                    <Text key={`${alt.name}`}>
+                      <TextLink href={`/components/${alt.name}`}>
+                        {alt.name}
+                      </TextLink>{' '}
+                      <Secondary>— {alt.description}</Secondary>
+                    </Text>
+                  ))}
+                </List>
+              </Stack>
+            ) : null}
+
+            {'accessibility' in docs ? (
+              <Stack space="large">
+                <Heading level="3">Accessibility</Heading>
+                {docs.accessibility}
+              </Stack>
+            ) : null}
 
             {docsExamples.map((example, index) => (
               <Stack space="large" key={index}>

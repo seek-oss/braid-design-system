@@ -25,6 +25,17 @@ export interface Page extends RouteProps {
   badge?: 'New';
 }
 
+export interface ComponentDetail {
+  category: 'Logic' | 'Layout' | 'Content' | 'Icon';
+  deprecationWarning?: ReactNodeNoStrings;
+  migrationGuide?: boolean;
+  subComponents?: string[];
+  Example: ExampleRenderer;
+  alternatives: { name: string; description: string }[];
+  accessibility?: ReactNodeNoStrings;
+  additional?: ComponentExample[];
+}
+
 export interface ComponentDocs {
   category: 'Logic' | 'Layout' | 'Content' | 'Icon';
   deprecationWarning?: ReactNodeNoStrings;
@@ -40,11 +51,15 @@ interface ExampleProps extends ReturnType<typeof useScope> {
   handler: () => void;
 }
 
+export type ExampleRenderer = (
+  props: ExampleProps,
+) => ReactChild | Source<ReactChild>;
+
 export interface ComponentExample {
   label?: string;
   description?: ReactNodeNoStrings;
   background?: NonNullable<BoxProps['background']>;
-  Example?: (props: ExampleProps) => ReactChild | Source<ReactChild>;
+  Example?: ExampleRenderer;
   Container?: (props: { children: ReactNode }) => ReactElement;
   code?: string;
   showCodeByDefault?: boolean;
