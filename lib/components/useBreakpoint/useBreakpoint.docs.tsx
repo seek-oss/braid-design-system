@@ -25,7 +25,6 @@ const docs: ComponentDocs = {
       </Alert>
     </Stack>
   ),
-  screenshotWidths: [],
   examples: [
     {
       playroom: false,

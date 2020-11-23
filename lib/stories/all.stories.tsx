@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { uniq, flatten, values } from 'lodash';
 import '../../reset';
 import * as themes from '../themes';
-import { ComponentDocs, ComponentExample } from '../../site/src/types';
+import { ComponentExample, ComponentScreenshot } from '../../site/src/types';
 import { PlayroomStateProvider } from '../playroom/playroomState';
 import { useSourceFromExample } from '../utils/useSourceFromExample';
 import { BraidProvider, ToastProvider, Box } from '../components';
@@ -21,9 +21,11 @@ const DefaultContainer = ({ children }: { children: ReactNode }) => (
 );
 
 const getComponentName = (filename: string) => {
-  const matches = filename.match(/([a-zA-Z]+)\.docs\.tsx?$/);
+  const matches = filename.match(/([a-zA-Z]+)(?:\.docs|\.screenshots)\.tsx?$/);
   if (!matches) {
-    throw new Error(`Expected file name ending in .docs.tsx, got ${filename}`);
+    throw new Error(
+      `Expected file name ending in .docs.tsx or .screenshots.tsx, got ${filename}`,
+    );
   }
 
   return matches[1];
@@ -73,24 +75,26 @@ const RenderExample = ({ example }: RenderExampleProps) => {
   );
 };
 
-const req = require.context('../components', true, /\.docs\.tsx?$/);
-req
-  .keys()
-  .sort((a, b) => getComponentName(a).localeCompare(getComponentName(b)))
-  .forEach((filename) => {
-    const componentName = getComponentName(filename);
+const allStories: Record<string, ComponentScreenshot> = {};
+
+/* New standalone screenshot format */
+const storiesFromScreenshots = require.context(
+  '../components',
+  true,
+  /\.screenshots\.tsx?$/,
+);
+storiesFromScreenshots.keys().forEach((filename) => {
+  const componentName = getComponentName(filename);
+
+  allStories[componentName] = storiesFromScreenshots(filename)
+    .screenshots as ComponentScreenshot;
+});
+
+Object.keys(allStories)
+  .sort((a, b) => a.localeCompare(b))
+  .forEach((componentName) => {
     const stories = storiesOf(componentName, module);
-    const docs = req(filename).default as ComponentDocs;
-
-    if (
-      !docs.examples.some(
-        ({ Example, storybook }) =>
-          typeof Example === 'function' && storybook !== false,
-      )
-    ) {
-      return;
-    }
-
+    const docs = allStories[componentName];
     const storyThemes = values(themes).filter((theme) => {
       if (theme.name === 'docs') {
         return false;
@@ -126,18 +130,16 @@ req
                   background: 'white',
                 }}
               >
-                {docs.examples.map((example, i) =>
-                  example.Example && example.storybook !== false ? (
-                    <PlayroomStateProvider key={i}>
-                      <RenderExample
-                        example={{
-                          ...example,
-                          label: example.label ?? componentName,
-                        }}
-                      />
-                    </PlayroomStateProvider>
-                  ) : null,
-                )}
+                {docs.examples.map((example, i) => (
+                  <PlayroomStateProvider key={i}>
+                    <RenderExample
+                      example={{
+                        ...example,
+                        label: example.label ?? componentName,
+                      }}
+                    />
+                  </PlayroomStateProvider>
+                ))}
               </div>
             </ToastProvider>
           </BraidProvider>

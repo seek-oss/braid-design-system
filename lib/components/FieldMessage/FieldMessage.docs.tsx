@@ -5,7 +5,6 @@ import { FieldMessage } from '../';
 const docs: ComponentDocs = {
   category: 'Content',
   migrationGuide: true,
-  screenshotWidths: [320],
   examples: [
     {
       label: 'Critical Field Message',

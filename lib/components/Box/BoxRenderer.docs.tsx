@@ -5,7 +5,6 @@ import { Text } from '../Text/Text';
 
 const docs: ComponentDocs = {
   category: 'Layout',
-  screenshotWidths: [320],
   examples: [
     {
       label: 'Standard BoxRenderer',

@@ -11,7 +11,6 @@ const docs: ComponentDocs = {
     </Text>
   ),
   migrationGuide: false,
-  screenshotWidths: [320],
   examples: [
     {
       label: 'Standard Bullets',
@@ -80,17 +79,6 @@ const docs: ComponentDocs = {
           <Bullet>This is a secondary bullet.</Bullet>
           <Bullet>This is a secondary bullet.</Bullet>
           <Bullet>This is a secondary bullet.</Bullet>
-        </BulletList>
-      ),
-    },
-    {
-      label: 'With TextLink',
-      docsSite: false,
-      Example: () => (
-        <BulletList>
-          <Bullet>
-            This is a text <TextLink href="#">link</TextLink>.
-          </Bullet>
         </BulletList>
       ),
     },

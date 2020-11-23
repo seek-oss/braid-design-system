@@ -1,22 +1,11 @@
 import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import source from '../../utils/source.macro';
-import {
-  Actions,
-  Drawer,
-  Button,
-  Inline,
-  Text,
-  Stack,
-  TextLink,
-  Strong,
-} from '..';
+import { Actions, Drawer, Button, Text, Stack, TextLink, Strong } from '..';
 import { Placeholder } from '../../playroom/components';
-import { DrawerContent } from './Drawer';
 
 const docs: ComponentDocs = {
   category: 'Content',
-  screenshotWidths: [320, 1200],
   description: (
     <Stack space="large">
       <Text>
@@ -48,7 +37,6 @@ const docs: ComponentDocs = {
   examples: [
     {
       label: 'Default',
-      storybook: false,
       Example: ({ getState, toggleState }) =>
         source(
           <>
@@ -85,7 +73,6 @@ const docs: ComponentDocs = {
     },
     {
       label: 'With additional description',
-      storybook: false,
       Example: ({ getState, toggleState }) =>
         source(
           <>
@@ -127,7 +114,6 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Small width',
-      storybook: false,
       Example: ({ getState, toggleState }) =>
         source(
           <>
@@ -173,7 +159,6 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Medium width',
-      storybook: false,
       Example: ({ getState, toggleState }) =>
         source(
           <>
@@ -219,7 +204,6 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Large width',
-      storybook: false,
       Example: ({ getState, toggleState }) =>
         source(
           <>
@@ -243,138 +227,6 @@ const docs: ComponentDocs = {
               width="large"
               open={getState('drawer')}
               onClose={() => toggleState('drawer')}
-            >
-              <Placeholder height={100} width="100%" />
-              <Placeholder height={100} width="100%" />
-              <Placeholder height={100} width="100%" />
-              <Placeholder height={100} width="100%" />
-              <Placeholder height={100} width="100%" />
-              <Placeholder height={100} width="100%" />
-              <Placeholder height={100} width="100%" />
-              <Placeholder height={100} width="100%" />
-              <Placeholder height={100} width="100%" />
-              <Placeholder height={100} width="100%" />
-              <Placeholder height={100} width="100%" />
-              <Placeholder height={100} width="100%" />
-              <Placeholder height={100} width="100%" />
-              <Placeholder height={100} width="100%" />
-              <Placeholder height={100} width="100%" />
-            </Drawer>
-          </>,
-        ),
-    },
-
-    // Layout examples
-    {
-      label: 'Default layout',
-      docsSite: false,
-      Example: ({ id }) => (
-        <DrawerContent
-          id={id}
-          title="Default test"
-          onClose={() => {}}
-          width="medium"
-          scrollLock={false}
-        >
-          <Placeholder height={100} width="100%" />
-        </DrawerContent>
-      ),
-    },
-    {
-      label: 'Layout with a description',
-      docsSite: false,
-      Example: ({ id }) => (
-        <DrawerContent
-          id={id}
-          title="Description test"
-          description={
-            <Placeholder height="auto" width="100%" label="Description" />
-          }
-          onClose={() => {}}
-          scrollLock={false}
-        >
-          <Placeholder height={100} width="100%" />
-        </DrawerContent>
-      ),
-    },
-    {
-      label: 'Layout: Small width',
-      docsSite: false,
-      Example: ({ id }) => (
-        <DrawerContent
-          id={id}
-          title="Small"
-          width="small"
-          onClose={() => {}}
-          scrollLock={false}
-        >
-          <Placeholder height={100} width="100%" label="Small Drawer" />
-        </DrawerContent>
-      ),
-    },
-    {
-      label: 'Layout: Medium width',
-      docsSite: false,
-      Example: ({ id }) => (
-        <DrawerContent
-          id={id}
-          title="Medium"
-          width="medium"
-          onClose={() => {}}
-          scrollLock={false}
-        >
-          <Placeholder height={100} width="100%" label="Medium Drawer" />
-        </DrawerContent>
-      ),
-    },
-    {
-      label: 'Layout: Large width',
-      docsSite: false,
-      Example: ({ id }) => (
-        <DrawerContent
-          id={id}
-          title="Large"
-          width="large"
-          onClose={() => {}}
-          scrollLock={false}
-        >
-          <Placeholder height={100} width="100%" label="Large Drawer" />
-        </DrawerContent>
-      ),
-    },
-    {
-      label: 'Preview animation',
-      storybook: false,
-      docsSite: false,
-      Example: ({ getState, setState, resetState }) =>
-        source(
-          <>
-            <Inline space="small" align="center">
-              <Button onClick={() => setState('width', 'small')}>
-                Open small
-              </Button>
-              <Button onClick={() => setState('width', 'medium')}>
-                Open medium
-              </Button>
-              <Button onClick={() => setState('width', 'large')}>
-                Open large
-              </Button>
-            </Inline>
-
-            <Drawer
-              id="drawer-animation-example"
-              title={`A \"${getState('width')}\" drawer`}
-              description={
-                <Text tone="secondary">
-                  Uses a {getState('width')}{' '}
-                  <TextLink href="/components/ContentBlock">
-                    ContentBlock
-                  </TextLink>
-                </Text>
-              }
-              width={getState('width')}
-              open={getState('width')}
-              onClose={() => resetState('width')}
             >
               <Placeholder height={100} width="100%" />
               <Placeholder height={100} width="100%" />

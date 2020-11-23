@@ -30,7 +30,6 @@ interface Value {
 const docs: ComponentDocs = {
   category: 'Content',
   migrationGuide: true,
-  screenshotWidths: [320],
   description: (
     <Text>
       Follows the{' '}
@@ -124,7 +123,6 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Standard suggestions with descriptions',
-      storybook: false,
       Container,
       Example: ({ id }) => {
         const [value, setValue] = useState<Value>({ text: '' });
@@ -162,7 +160,6 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Grouped suggestions with descriptions',
-      storybook: false,
       Container,
       Example: ({ id }) => {
         const [value, setValue] = useState<Value>({ text: '' });
@@ -220,7 +217,6 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Standard suggestions with brand background and mobile backdrop',
-      storybook: false,
       Container,
       background: 'brand',
       Example: ({ id }) => {

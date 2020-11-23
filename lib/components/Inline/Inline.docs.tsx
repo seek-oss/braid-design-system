@@ -1,13 +1,7 @@
-import React, { Fragment, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import { Placeholder } from '../private/Placeholder/Placeholder';
-import { InlineProps } from './Inline';
 import { Box, Inline, Stack, Text, TextLink } from '../';
-import { padding } from '../Box/useBoxStyles.treat';
-
-const spaces = Object.keys(padding.top).filter(
-  (space) => space !== 'none',
-) as Array<InlineProps['space']>;
 
 const Container = ({ children }: { children: ReactNode }) => (
   <Box style={{ maxWidth: '240px' }}>{children}</Box>
@@ -15,8 +9,6 @@ const Container = ({ children }: { children: ReactNode }) => (
 
 const docs: ComponentDocs = {
   category: 'Layout',
-  screenshotWidths: [320, 768, 1200],
-  screenshotOnlyInWireframe: true,
   description: (
     <Stack space="large">
       <Text>
@@ -30,7 +22,6 @@ const docs: ComponentDocs = {
     {
       label: 'Basic example',
       Container,
-      storybook: false,
       Example: () => (
         <Inline space="small">
           <Placeholder width={48} height={48} />
@@ -46,25 +37,6 @@ const docs: ComponentDocs = {
         </Inline>
       ),
     },
-    ...spaces.map((space) => ({
-      label: `Space: ${space}`,
-      Container,
-      docsSite: false,
-      Example: () => (
-        <Inline space={space}>
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-        </Inline>
-      ),
-    })),
     {
       label: "Responsive space, e.g. ['xxsmall', 'medium']",
       Container,
@@ -202,96 +174,6 @@ const docs: ComponentDocs = {
           <Placeholder width={48} height={48} />
           <Placeholder width={48} height={48} />
           <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-        </Inline>
-      ),
-    },
-    {
-      label:
-        'Test - collapseBelow + align: On mobile should be vertical and left aligned, on tablet should be vertical and centre aligned, on desktop should be horizontal and right aligned',
-      docsSite: false,
-      Container,
-      Example: () => (
-        <Inline
-          space="small"
-          collapseBelow="desktop"
-          align={['left', 'center', 'right']}
-        >
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-        </Inline>
-      ),
-    },
-    {
-      label:
-        'Test - collapseBelow + align + reverse: On mobile should be vertical and left aligned, on tablet should be reversed horizontally and centre aligned, on desktop should be reversed horizontally and right aligned',
-      docsSite: false,
-      Container,
-      Example: () => (
-        <Inline
-          space="small"
-          collapseBelow="tablet"
-          align={['left', 'center', 'right']}
-          reverse
-        >
-          <Placeholder width={48} height={48} label="1" />
-          <Placeholder width={48} height={48} label="2" />
-          <Placeholder width={48} height={48} label="3" />
-          <Placeholder width={48} height={48} label="4" />
-          <Placeholder width={48} height={48} label="5" />
-          <Placeholder width={48} height={48} label="6" />
-        </Inline>
-      ),
-    },
-    {
-      label:
-        'Test - collapseBelow + align + reverse: On mobile should be vertical and left aligned, on tablet should be vertical and centre aligned, on desktop should be reversed horizontally and right aligned',
-      docsSite: false,
-      Container,
-      Example: () => (
-        <Inline
-          space="small"
-          collapseBelow="desktop"
-          align={['left', 'center', 'right']}
-          reverse
-        >
-          <Placeholder width={48} height={48} label="1" />
-          <Placeholder width={48} height={48} label="2" />
-          <Placeholder width={48} height={48} label="3" />
-          <Placeholder width={48} height={48} label="4" />
-          <Placeholder width={48} height={48} label="5" />
-          <Placeholder width={48} height={48} label="6" />
-        </Inline>
-      ),
-    },
-    {
-      label:
-        'Test - Should flatten fragments (6 placeholders should be evenly spaced)',
-      docsSite: false,
-      Container,
-      Example: () => (
-        <Inline space="small">
-          <Fragment>
-            <Fragment>
-              <Placeholder width={48} height={48} />
-            </Fragment>
-            <Fragment>
-              <Placeholder width={48} height={48} />
-            </Fragment>
-          </Fragment>
-          <Fragment>
-            <Fragment>
-              <Placeholder width={48} height={48} />
-              <Placeholder width={48} height={48} />
-              <Fragment>
-                <Placeholder width={48} height={48} />
-              </Fragment>
-            </Fragment>
-          </Fragment>
           <Placeholder width={48} height={48} />
         </Inline>
       ),

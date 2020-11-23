@@ -14,7 +14,6 @@ const docs: ComponentDocs = {
       </Text>
     </Stack>
   ),
-  screenshotWidths: [],
   examples: [
     {
       label: 'Default usage',

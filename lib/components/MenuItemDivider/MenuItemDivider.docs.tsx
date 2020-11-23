@@ -13,7 +13,6 @@ import {
 
 const docs: ComponentDocs = {
   category: 'Content',
-  screenshotWidths: [],
   description: (
     <Text>
       Used to separate groups within menu components, e.g.{' '}

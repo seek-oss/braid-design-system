@@ -30,8 +30,6 @@ export interface ComponentDocs {
   deprecationWarning?: ReactNodeNoStrings;
   migrationGuide?: boolean;
   foundation?: boolean;
-  screenshotWidths: Array<320 | 768 | 1200>;
-  screenshotOnlyInWireframe?: boolean;
   examples: ComponentExample[];
   description?: ReactNodeNoStrings;
   subComponents?: string[];
@@ -45,12 +43,21 @@ interface ExampleProps extends ReturnType<typeof useScope> {
 export interface ComponentExample {
   label?: string;
   description?: ReactNodeNoStrings;
-  docsSite?: boolean;
-  storybook?: boolean;
   background?: NonNullable<BoxProps['background']>;
   Example?: (props: ExampleProps) => ReactChild | Source<ReactChild>;
   Container?: (props: { children: ReactNode }) => ReactElement;
   code?: string;
   showCodeByDefault?: boolean;
   playroom?: boolean;
+}
+
+export interface ComponentScreenshot {
+  screenshotWidths: Array<320 | 768 | 1200>;
+  screenshotOnlyInWireframe?: boolean;
+  examples: {
+    label?: string;
+    background?: NonNullable<BoxProps['background']>;
+    Example?: (props: ExampleProps) => ReactChild;
+    Container?: (props: { children: ReactNode }) => ReactElement;
+  }[];
 }

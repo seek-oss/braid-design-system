@@ -7,7 +7,6 @@ import Toast from './Toast';
 export const galleryItems: ComponentExample[] = [
   {
     label: 'Positive Toast',
-    storybook: false,
     playroom: false,
     Example: ({ id, handler }) => {
       const showToast = useToast();
@@ -49,7 +48,6 @@ export const galleryItems: ComponentExample[] = [
   },
   {
     label: 'Positive Toast with description',
-    storybook: false,
     playroom: false,
     Example: ({ id, handler }) => {
       const showToast = useToast();
@@ -93,7 +91,6 @@ export const galleryItems: ComponentExample[] = [
   },
   {
     label: 'Critical Toast',
-    storybook: false,
     playroom: false,
     Example: ({ id, handler }) => {
       const showToast = useToast();
@@ -130,7 +127,6 @@ export const galleryItems: ComponentExample[] = [
   },
   {
     label: 'Critical Toast with description',
-    storybook: false,
     playroom: false,
     Example: ({ id, handler }) => {
       const showToast = useToast();

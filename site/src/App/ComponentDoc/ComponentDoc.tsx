@@ -85,14 +85,10 @@ export const ComponentDoc = ({
   const componentFolder = `lib/components/${
     subfolder ? `${subfolder}/` : ''
   }${componentName}`;
-  const examples = docs.examples || [];
+  const docsExamples = docs.examples || [];
 
   const sourceUrl = `${sourceUrlPrefix}/${componentFolder}`;
   const migrationGuideUrl = `${sourceUrlPrefix}/${componentFolder}/${componentName}.migration.md`;
-
-  const filteredExamples = examples.filter(
-    (example) => example.docsSite !== false,
-  );
 
   const propsToDocument = docs.subComponents
     ? [componentName, ...docs.subComponents]
@@ -186,9 +182,9 @@ export const ComponentDoc = ({
           <Stack space="xxlarge">
             {docs.description}
 
-            {filteredExamples.map((example, index) => (
+            {docsExamples.map((example, index) => (
               <Stack space="large" key={index}>
-                {example.label && filteredExamples.length > 1 ? (
+                {example.label && docsExamples.length > 1 ? (
                   <Heading level="3">{example.label}</Heading>
                 ) : null}
                 {example.description ?? null}

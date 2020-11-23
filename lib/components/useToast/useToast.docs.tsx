@@ -89,12 +89,10 @@ const description = (
 
 const docs: ComponentDocs = {
   description,
-  screenshotWidths: [320, 768],
   category: 'Content',
   examples: [
     {
       label: 'Positive Toast',
-      storybook: false,
       playroom: false,
       Example: ({ id, handler }) => {
         const showToast = useToast();
@@ -136,7 +134,6 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Toast with no duplicates',
-      storybook: false,
       playroom: false,
       Example: ({ id, handler }) => {
         const showToast = useToast();
@@ -178,7 +175,6 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Positive Toast with description',
-      storybook: false,
       playroom: false,
       Example: ({ id, handler }) => {
         const showToast = useToast();
@@ -223,7 +219,6 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Critical Toast',
-      storybook: false,
       playroom: false,
       Example: ({ id, handler }) => {
         const showToast = useToast();
@@ -260,7 +255,6 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Critical Toast with description',
-      storybook: false,
       playroom: false,
       Example: ({ id, handler }) => {
         const showToast = useToast();
@@ -302,138 +296,6 @@ const docs: ComponentDocs = {
           action: { label: 'Goto error', onClick: () => {} },
         })
       `,
-    },
-    {
-      label: 'Critical toast',
-      docsSite: false,
-      Example: () => {
-        const treatTheme = useTheme();
-
-        return (
-          <Toast
-            tone="critical"
-            message="Critical toast"
-            treatTheme={treatTheme}
-            onClear={() => {}}
-            id="n/a"
-            dedupeKey="n/a"
-            shouldRemove={false}
-          />
-        );
-      },
-    },
-    {
-      label: 'Critical toast w/actions',
-      docsSite: false,
-      Example: () => {
-        const treatTheme = useTheme();
-
-        return (
-          <Toast
-            tone="critical"
-            message="Critical toast w/action"
-            action={{
-              label: 'Do the action',
-              onClick: () => {},
-            }}
-            treatTheme={treatTheme}
-            onClear={() => {}}
-            id="n/a"
-            dedupeKey="n/a"
-            shouldRemove={false}
-          />
-        );
-      },
-    },
-    {
-      label: 'Critical toast w/descriptions',
-      docsSite: false,
-      Example: () => {
-        const treatTheme = useTheme();
-
-        return (
-          <Toast
-            tone="critical"
-            message="Critical toast"
-            description="A really long description about toast stuff that is quite long and stuff"
-            action={{
-              label: 'Action',
-              onClick: () => {},
-            }}
-            treatTheme={treatTheme}
-            onClear={() => {}}
-            id="n/a"
-            dedupeKey="n/a"
-            shouldRemove={false}
-          />
-        );
-      },
-    },
-    {
-      label: 'Positive toast',
-      docsSite: false,
-      Example: () => {
-        const treatTheme = useTheme();
-
-        return (
-          <Toast
-            tone="positive"
-            message="Positive toast"
-            treatTheme={treatTheme}
-            onClear={() => {}}
-            id="n/a"
-            dedupeKey="n/a"
-            shouldRemove={false}
-          />
-        );
-      },
-    },
-    {
-      label: 'Positive toast w/actions',
-      docsSite: false,
-      Example: () => {
-        const treatTheme = useTheme();
-
-        return (
-          <Toast
-            tone="positive"
-            message="Positive toast w/actions"
-            action={{
-              label: 'Do the action',
-              onClick: () => {},
-            }}
-            treatTheme={treatTheme}
-            onClear={() => {}}
-            id="n/a"
-            dedupeKey="n/a"
-            shouldRemove={false}
-          />
-        );
-      },
-    },
-    {
-      label: 'Positive toast w/descriptions',
-      docsSite: false,
-      Example: () => {
-        const treatTheme = useTheme();
-
-        return (
-          <Toast
-            tone="positive"
-            message="Positive toast"
-            description="A really long description about toast stuff that is quite long and stuff"
-            action={{
-              label: 'Action',
-              onClick: () => {},
-            }}
-            treatTheme={treatTheme}
-            onClear={() => {}}
-            id="n/a"
-            dedupeKey="n/a"
-            shouldRemove={false}
-          />
-        );
-      },
     },
   ],
 };

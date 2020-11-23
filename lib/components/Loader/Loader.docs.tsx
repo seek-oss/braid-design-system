@@ -1,11 +1,9 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import { background as boxBackgrounds } from '../Box/useBoxStyles.treat';
-import { Box, Loader } from '../';
+import { Loader } from '../';
 
 const docs: ComponentDocs = {
   category: 'Content',
-  screenshotWidths: [320],
   examples: [
     {
       label: 'Default',
@@ -30,25 +28,6 @@ const docs: ComponentDocs = {
     {
       label: 'large',
       Example: () => <Loader size="large" />,
-    },
-    {
-      label: 'Loader Contrast',
-      docsSite: false,
-      Example: () => {
-        const backgrounds = Object.keys(boxBackgrounds) as Array<
-          keyof typeof boxBackgrounds
-        >;
-
-        return (
-          <Fragment>
-            {backgrounds.sort().map((background) => (
-              <Box key={background} background={background} padding="xsmall">
-                <Loader />
-              </Box>
-            ))}
-          </Fragment>
-        );
-      },
     },
   ],
 };

@@ -5,7 +5,6 @@ import { Card, Text } from '../';
 const docs: ComponentDocs = {
   category: 'Layout',
   migrationGuide: true,
-  screenshotWidths: [320],
   examples: [
     {
       label: 'Default',

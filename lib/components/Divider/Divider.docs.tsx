@@ -4,7 +4,6 @@ import { Divider } from '../';
 
 const docs: ComponentDocs = {
   category: 'Layout',
-  screenshotWidths: [320],
   examples: [
     {
       label: 'Divider',

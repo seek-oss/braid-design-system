@@ -168,7 +168,6 @@ const iconComponentsDir = path.join(baseDir, 'lib/components/icons');
             category: 'Icon',
             migrationGuide: true,
             foundation: true,
-            screenshotWidths: [],
             examples: [
               {
                 label: 'Default',

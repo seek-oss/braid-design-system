@@ -4,7 +4,6 @@ import { ThemeNameConsumer } from './ThemeNameConsumer';
 
 const docs: ComponentDocs = {
   category: 'Logic',
-  screenshotWidths: [],
   examples: [
     {
       Example: () => (

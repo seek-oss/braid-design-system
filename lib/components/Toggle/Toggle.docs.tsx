@@ -1,25 +1,20 @@
 import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import { Toggle, Box } from '../';
-
-const handler = () => {
-  /* no op for docs examples */
-};
+import { Toggle } from '../';
 
 const docs: ComponentDocs = {
   category: 'Content',
   migrationGuide: true,
-  screenshotWidths: [320],
   examples: [
     {
       label: 'Toggle off',
-      Example: ({ id }) => (
+      Example: ({ id, handler }) => (
         <Toggle on={false} label="Toggled off" id={id} onChange={handler} />
       ),
     },
     {
       label: 'Toggle on',
-      Example: ({ id }) => (
+      Example: ({ id, handler }) => (
         <Toggle on={true} label="Toggled on" id={id} onChange={handler} />
       ),
     },
@@ -28,7 +23,7 @@ const docs: ComponentDocs = {
       Container: ({ children }) => (
         <div style={{ maxWidth: '300px' }}>{children}</div>
       ),
-      Example: ({ id }) => (
+      Example: ({ id, handler }) => (
         <Toggle
           on={true}
           align="right"
@@ -43,7 +38,7 @@ const docs: ComponentDocs = {
       Container: ({ children }) => (
         <div style={{ maxWidth: '300px' }}>{children}</div>
       ),
-      Example: ({ id }) => (
+      Example: ({ id, handler }) => (
         <Toggle
           on={true}
           align="justify"
@@ -51,25 +46,6 @@ const docs: ComponentDocs = {
           id={id}
           onChange={handler}
         />
-      ),
-    },
-    {
-      label:
-        'Test: Should have space between the label and the toggle when justified in a flex container',
-      docsSite: false,
-      Container: ({ children }) => (
-        <div style={{ maxWidth: '300px' }}>{children}</div>
-      ),
-      Example: ({ id }) => (
-        <Box display="flex">
-          <Toggle
-            on={true}
-            align="justify"
-            label="Justified"
-            id={id}
-            onChange={handler}
-          />
-        </Box>
       ),
     },
   ],

@@ -4,7 +4,6 @@ import { Accordion, AccordionItem, Stack, Text, TextLink } from '../';
 
 const docs: ComponentDocs = {
   category: 'Content',
-  screenshotWidths: [320],
   subComponents: ['AccordionItem'],
   migrationGuide: true,
   description: (

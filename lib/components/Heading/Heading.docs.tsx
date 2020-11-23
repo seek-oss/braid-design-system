@@ -1,11 +1,6 @@
-import React, { ReactNode, Fragment } from 'react';
+import React, { ReactNode } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import {
-  background as boxBackgrounds,
-  textAlign,
-} from '../Box/useBoxStyles.treat';
-import { heading as headingLevels } from '../../hooks/typography/typography.treat';
-import { Box, Heading, Stack } from '../';
+import { Box, Heading } from '../';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <div style={{ maxWidth: '300px' }}>{children}</div>
@@ -14,7 +9,6 @@ const Container = ({ children }: { children: ReactNode }) => (
 const docs: ComponentDocs = {
   category: 'Content',
   migrationGuide: true,
-  screenshotWidths: [320, 768],
   examples: [
     {
       label: 'Level 1',
@@ -75,57 +69,12 @@ const docs: ComponentDocs = {
       ),
     },
     {
-      label: 'Heading Spacing',
-      docsSite: false,
-      background: 'card',
-      Example: () => {
-        const levels = Object.keys(headingLevels) as Array<
-          keyof typeof headingLevels
-        >;
-
-        return (
-          <Stack space="medium">
-            {levels.sort().map((level) => (
-              <Box key={level} background="neutralLight">
-                <Heading level={level}>
-                  Level {level} Heading (Line 1)
-                  <br />
-                  Level {level} Heading (Line 2)
-                </Heading>
-              </Box>
-            ))}
-          </Stack>
-        );
-      },
-    },
-    {
       label: 'Heading Alignment: "left" | "center" | "right"',
-      storybook: false,
       Example: () => (
         <Heading level="1" align="center">
           Centered heading
         </Heading>
       ),
-    },
-    {
-      label: 'Heading Alignment',
-      docsSite: false,
-      Container,
-      Example: () => {
-        const alignments = Object.keys(textAlign) as Array<
-          keyof typeof textAlign
-        >;
-
-        return (
-          <Stack space="medium">
-            {alignments.map((alignment) => (
-              <Heading level="4" align={alignment} key={alignment}>
-                {alignment}
-              </Heading>
-            ))}
-          </Stack>
-        );
-      },
     },
     {
       label: 'Heading Alignment (responsive)',
@@ -135,26 +84,6 @@ const docs: ComponentDocs = {
           Right aligned mobile, center on tablet, left on desktop
         </Heading>
       ),
-    },
-    {
-      label: 'Heading Contrast',
-      docsSite: false,
-      Container,
-      Example: () => {
-        const backgrounds = Object.keys(boxBackgrounds) as Array<
-          keyof typeof boxBackgrounds
-        >;
-
-        return (
-          <Fragment>
-            {backgrounds.sort().map((background) => (
-              <Box key={background} background={background} paddingY="xsmall">
-                <Heading level="4">{background}</Heading>
-              </Box>
-            ))}
-          </Fragment>
-        );
-      },
     },
   ],
 };

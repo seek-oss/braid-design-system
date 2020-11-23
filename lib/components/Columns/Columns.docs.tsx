@@ -6,8 +6,6 @@ import { Columns, Column } from '../';
 const docs: ComponentDocs = {
   category: 'Layout',
   migrationGuide: true,
-  screenshotWidths: [320, 768, 1200],
-  screenshotOnlyInWireframe: true,
   examples: [
     {
       label: 'No space',
@@ -49,36 +47,6 @@ const docs: ComponentDocs = {
       ),
     },
     {
-      label:
-        'Responsive space with `none` below tablet, e.g. ["none", "gutter"]',
-      docsSite: false,
-      Example: () => (
-        <Columns space={['none', 'gutter']}>
-          <Column>
-            <Placeholder height={60} />
-          </Column>
-          <Column>
-            <Placeholder height={60} />
-          </Column>
-        </Columns>
-      ),
-    },
-    {
-      label:
-        'Responsive space with `none` above mobile, e.g. ["small", "none"]',
-      docsSite: false,
-      Example: () => (
-        <Columns space={['small', 'none']}>
-          <Column>
-            <Placeholder height={60} />
-          </Column>
-          <Column>
-            <Placeholder height={60} />
-          </Column>
-        </Columns>
-      ),
-    },
-    {
       label: 'Vertically align to center',
       Example: () => (
         <Columns space="small" alignY="center">
@@ -109,20 +77,6 @@ const docs: ComponentDocs = {
         'Responsive alignment (e.g. top on mobile, center on tablet upwards)',
       Example: () => (
         <Columns space="small" alignY={['top', 'center']}>
-          <Column>
-            <Placeholder height={60} />
-          </Column>
-          <Column>
-            <Placeholder height={100} />
-          </Column>
-        </Columns>
-      ),
-    },
-    {
-      label: 'Alignment + collapse',
-      docsSite: false,
-      Example: () => (
-        <Columns space="small" collapseBelow="tablet" alignY="center">
           <Column>
             <Placeholder height={60} />
           </Column>
@@ -213,66 +167,6 @@ const docs: ComponentDocs = {
       ),
     },
     {
-      label:
-        'Collapse below tablet with responsive space and `none` below tablet, e.g. ["none", "gutter"]',
-      docsSite: false,
-      Example: () => (
-        <Columns space={['none', 'gutter']} collapseBelow="tablet">
-          <Column>
-            <Placeholder height={60} label="First" />
-          </Column>
-          <Column>
-            <Placeholder height={60} label="Second" />
-          </Column>
-        </Columns>
-      ),
-    },
-    {
-      label:
-        'Collapse below desktop with responsive space and `none` below desktop, e.g. ["none", "xsmall", gutter"]',
-      docsSite: false,
-      Example: () => (
-        <Columns space={['none', 'xsmall', 'gutter']} collapseBelow="desktop">
-          <Column>
-            <Placeholder height={60} label="First" />
-          </Column>
-          <Column>
-            <Placeholder height={60} label="Second" />
-          </Column>
-        </Columns>
-      ),
-    },
-    {
-      label:
-        'Collapse below tablet with responsive space and `none` above mobile, e.g. ["small", "none"]',
-      docsSite: false,
-      Example: () => (
-        <Columns space={['small', 'none']} collapseBelow="tablet">
-          <Column>
-            <Placeholder height={60} label="First" />
-          </Column>
-          <Column>
-            <Placeholder height={60} label="Second" />
-          </Column>
-        </Columns>
-      ),
-    },
-    {
-      label:
-        'Collapse below desktop with responsive space and `none` above tablet, e.g. ["small", "medium, "none"]',
-      docsSite: false,
-      Example: () => (
-        <Columns space={['small', 'medium', 'none']} collapseBelow="desktop">
-          <Column>
-            <Placeholder height={60} label="First" />
-          </Column>
-          <Column>
-            <Placeholder height={60} label="Second" />
-          </Column>
-        </Columns>
-      ),
-    },
-    {
       label: 'Reverse',
       Example: () => (
         <Columns space="small" reverse>
@@ -280,102 +174,6 @@ const docs: ComponentDocs = {
             <Placeholder height={60} label="First" />
           </Column>
           <Column>
-            <Placeholder height={60} label="Second" />
-          </Column>
-        </Columns>
-      ),
-    },
-    {
-      label:
-        'Test: Collapsed "content" columns should be full width when setting "alignY"',
-      docsSite: false,
-      Example: () => (
-        <Columns space="small" alignY="bottom" collapseBelow="tablet">
-          <Column>
-            <Placeholder height={60} label="No width" />
-          </Column>
-          <Column width="1/2">
-            <Placeholder height={100} label="1/2 width" />
-          </Column>
-          <Column width="content">
-            <Placeholder height={140} label="Content width" />
-          </Column>
-        </Columns>
-      ),
-    },
-    {
-      label:
-        'Test - collapseBelow + align: On mobile should be vertical and left aligned, on tablet should be horizontal and centre aligned, on desktop should be horizontal and right aligned',
-      docsSite: false,
-      Example: () => (
-        <Columns
-          space="small"
-          collapseBelow="tablet"
-          align={['left', 'center', 'right']}
-        >
-          <Column width="1/3">
-            <Placeholder height={60} label="First" />
-          </Column>
-          <Column width="1/3">
-            <Placeholder height={60} label="Second" />
-          </Column>
-        </Columns>
-      ),
-    },
-    {
-      label:
-        'Test - collapseBelow + align: On mobile should be vertical and left aligned, on tablet should be horizontal and centre aligned, on desktop should be horizontal and right aligned',
-      docsSite: false,
-      Example: () => (
-        <Columns
-          space="small"
-          collapseBelow="desktop"
-          align={['left', 'center', 'right']}
-        >
-          <Column width="1/3">
-            <Placeholder height={60} label="First" />
-          </Column>
-          <Column width="1/3">
-            <Placeholder height={60} label="Second" />
-          </Column>
-        </Columns>
-      ),
-    },
-    {
-      label:
-        'Test - collapseBelow + align + reverse: On mobile should be vertical and left aligned, on tablet should be reversed horizontally and centre aligned, on desktop should be reversed horizontally and right aligned',
-      docsSite: false,
-      Example: () => (
-        <Columns
-          space="small"
-          collapseBelow="tablet"
-          align={['left', 'center', 'right']}
-          reverse
-        >
-          <Column width="1/3">
-            <Placeholder height={60} label="First" />
-          </Column>
-          <Column width="1/3">
-            <Placeholder height={60} label="Second" />
-          </Column>
-        </Columns>
-      ),
-    },
-    {
-      label:
-        'Test - collapseBelow + align + reverse: On mobile should be vertical and left aligned, on tablet should be vertical and centre aligned, on desktop should be reversed horizontally and right aligned',
-      docsSite: false,
-      Example: () => (
-        <Columns
-          space="small"
-          collapseBelow="desktop"
-          align={['left', 'center', 'right']}
-          reverse
-        >
-          <Column width="1/3">
-            <Placeholder height={60} label="First" />
-          </Column>
-          <Column width="1/3">
             <Placeholder height={60} label="Second" />
           </Column>
         </Columns>

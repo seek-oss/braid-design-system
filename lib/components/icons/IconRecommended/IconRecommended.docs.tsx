@@ -6,7 +6,6 @@ const docs: ComponentDocs = {
   category: 'Icon',
   migrationGuide: true,
   foundation: true,
-  screenshotWidths: [],
   examples: [
     {
       label: 'Default',

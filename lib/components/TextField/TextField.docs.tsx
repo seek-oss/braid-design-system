@@ -9,7 +9,6 @@ const Container = ({ children }: { children: ReactNode }) => (
 const docs: ComponentDocs = {
   category: 'Content',
   migrationGuide: true,
-  screenshotWidths: [320],
   examples: [
     {
       label: 'TextField',
@@ -20,19 +19,6 @@ const docs: ComponentDocs = {
           id={id}
           onChange={handler}
           value="Senior Developer"
-        />
-      ),
-    },
-    {
-      docsSite: false,
-      label: 'TextField with default padding',
-      Container,
-      Example: ({ id, handler }) => (
-        <TextField
-          label="Job Title"
-          id={id}
-          onChange={handler}
-          value="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
         />
       ),
     },
@@ -70,20 +56,6 @@ const docs: ComponentDocs = {
           />
         );
       },
-    },
-    {
-      docsSite: false,
-      label: 'TextField with clear button padding',
-      Container,
-      Example: ({ id, handler }) => (
-        <TextField
-          label="Job Title"
-          id={id}
-          onChange={handler}
-          onClear={handler}
-          value="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-        />
-      ),
     },
     {
       label: 'TextField with message',
