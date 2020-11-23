@@ -65,5 +65,19 @@ export const screenshots: ComponentScreenshot = {
         </Box>
       ),
     },
+    {
+      label: 'Test: Should support long labels',
+      Container: ({ children }) => (
+        <div style={{ maxWidth: '300px' }}>{children}</div>
+      ),
+      Example: ({ id, handler }) => (
+        <Toggle
+          on={true}
+          label="The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog."
+          id={id}
+          onChange={handler}
+        />
+      ),
+    },
   ],
 };
