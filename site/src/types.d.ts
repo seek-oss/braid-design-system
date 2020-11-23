@@ -30,10 +30,14 @@ export interface ComponentDetail {
   deprecationWarning?: ReactNodeNoStrings;
   migrationGuide?: boolean;
   subComponents?: string[];
-  Example: ExampleRenderer;
-  alternatives: { name: string; description: string }[];
+  Example: (props: ExampleProps) => Source<ReactChild>;
+  alternatives: Array<{ name: string; description: string }>;
   accessibility?: ReactNodeNoStrings;
-  additional?: ComponentExample[];
+  additional?: Array<
+    Omit<ComponentExample, 'Example'> & {
+      Example?: (props: ExampleProps) => Source<ReactChild>;
+    }
+  >;
 }
 
 export interface ComponentDocs {
@@ -51,15 +55,11 @@ interface ExampleProps extends ReturnType<typeof useScope> {
   handler: () => void;
 }
 
-export type ExampleRenderer = (
-  props: ExampleProps,
-) => ReactChild | Source<ReactChild>;
-
 export interface ComponentExample {
   label?: string;
   description?: ReactNodeNoStrings;
   background?: NonNullable<BoxProps['background']>;
-  Example?: ExampleRenderer;
+  Example?: (props: ExampleProps) => ReactChild | Source<ReactChild>;
   Container?: (props: { children: ReactNode }) => ReactElement;
   code?: string;
   showCodeByDefault?: boolean;
