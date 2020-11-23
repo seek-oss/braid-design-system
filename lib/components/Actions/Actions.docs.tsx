@@ -1,17 +1,19 @@
 import React from 'react';
 import { ComponentDetail } from '../../../site/src/types';
+import source from '../../utils/source.macro';
 import { Actions, Button, TextLink } from '../';
 
 const docs: ComponentDetail = {
   category: 'Content',
   migrationGuide: true,
-  Example: () => (
-    <Actions>
-      <Button>Button</Button>
-      <Button weight="weak">Weak</Button>
-      <TextLink href="#">TextLink</TextLink>
-    </Actions>
-  ),
+  Example: () =>
+    source(
+      <Actions>
+        <Button>Button</Button>
+        <Button weight="weak">Weak</Button>
+        <TextLink href="#">TextLink</TextLink>
+      </Actions>,
+    ),
   alternatives: [
     {
       name: 'Inline',

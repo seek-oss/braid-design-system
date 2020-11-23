@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ComponentDetail } from '../../../site/src/types';
+import source from '../../utils/source.macro';
 import { Accordion, AccordionItem, Stack, Text, TextLink } from '../';
 import { Strong } from '../Strong/Strong';
 import { Box } from '../Box/Box';
@@ -8,19 +9,20 @@ const docs: ComponentDetail = {
   category: 'Content',
   subComponents: ['AccordionItem'],
   migrationGuide: true,
-  Example: ({ id }) => (
-    <Accordion>
-      <AccordionItem label="Accordion item 1" id={`${id}_1`}>
-        <Text>Accordion item content</Text>
-      </AccordionItem>
-      <AccordionItem label="Accordion item 2" id={`${id}_2`}>
-        <Text>Accordion item content</Text>
-      </AccordionItem>
-      <AccordionItem label="Accordion item 3" id={`${id}_3`}>
-        <Text>Accordion item content</Text>
-      </AccordionItem>
-    </Accordion>
-  ),
+  Example: ({ id }) =>
+    source(
+      <Accordion>
+        <AccordionItem label="Accordion item 1" id={`${id}_1`}>
+          <Text>Accordion item content</Text>
+        </AccordionItem>
+        <AccordionItem label="Accordion item 2" id={`${id}_2`}>
+          <Text>Accordion item content</Text>
+        </AccordionItem>
+        <AccordionItem label="Accordion item 3" id={`${id}_3`}>
+          <Text>Accordion item content</Text>
+        </AccordionItem>
+      </Accordion>,
+    ),
   accessibility: (
     <Text>
       Follows the{' '}
@@ -43,40 +45,41 @@ const docs: ComponentDetail = {
           AccordionItem.
         </Text>
       ),
-      Example: ({ id }) => {
-        const [expanded1, setExpanded1] = useState(true);
-        const [expanded2, setExpanded2] = useState(true);
-        const [expanded3, setExpanded3] = useState(true);
+      Example: ({ id, setDefaultState, getState, setState }) =>
+        source(
+          <>
+            {setDefaultState('expanded1', true)}
+            {setDefaultState('expanded2', true)}
+            {setDefaultState('expanded3', true)}
 
-        return (
-          <Accordion>
-            <AccordionItem
-              label="Accordion item 1"
-              id={`${id}_1`}
-              expanded={expanded1}
-              onToggle={setExpanded1}
-            >
-              <Text>Accordion item content</Text>
-            </AccordionItem>
-            <AccordionItem
-              label="Accordion item 2"
-              id={`${id}_2`}
-              expanded={expanded2}
-              onToggle={setExpanded2}
-            >
-              <Text>Accordion item content</Text>
-            </AccordionItem>
-            <AccordionItem
-              label="Accordion item 3"
-              id={`${id}_3`}
-              expanded={expanded3}
-              onToggle={setExpanded3}
-            >
-              <Text>Accordion item content</Text>
-            </AccordionItem>
-          </Accordion>
-        );
-      },
+            <Accordion>
+              <AccordionItem
+                label="Accordion item 1"
+                id={`${id}_1`}
+                expanded={getState('expanded1')}
+                onToggle={setState('expanded1')}
+              >
+                <Text>Accordion item content</Text>
+              </AccordionItem>
+              <AccordionItem
+                label="Accordion item 2"
+                id={`${id}_2`}
+                expanded={getState('expanded2')}
+                onToggle={setState('expanded2')}
+              >
+                <Text>Accordion item content</Text>
+              </AccordionItem>
+              <AccordionItem
+                label="Accordion item 3"
+                id={`${id}_3`}
+                expanded={getState('expanded3')}
+                onToggle={setState('expanded3')}
+              >
+                <Text>Accordion item content</Text>
+              </AccordionItem>
+            </Accordion>
+          </>,
+        ),
     },
     {
       label: 'Customising the layout',
@@ -102,18 +105,19 @@ const docs: ComponentDetail = {
           </Text>
         </Stack>
       ),
-      Example: () => (
-        <Box boxShadow="borderField" borderRadius="standard" padding="xlarge">
-          <Stack space="xlarge" dividers="strong">
-            <AccordionItem label="Label" id="first">
-              <Text>Content</Text>
-            </AccordionItem>
-            <AccordionItem label="Label" id="second">
-              <Text>Content</Text>
-            </AccordionItem>
-          </Stack>
-        </Box>
-      ),
+      Example: ({ id }) =>
+        source(
+          <Box boxShadow="borderField" borderRadius="standard" padding="xlarge">
+            <Stack space="xlarge" dividers="strong">
+              <AccordionItem label="Label" id={`${id}_1`}>
+                <Text>Content</Text>
+              </AccordionItem>
+              <AccordionItem label="Label" id={`${id}_2`}>
+                <Text>Content</Text>
+              </AccordionItem>
+            </Stack>
+          </Box>,
+        ),
     },
   ],
 };

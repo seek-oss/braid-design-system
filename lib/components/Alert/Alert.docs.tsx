@@ -1,30 +1,32 @@
 import React from 'react';
 import { ComponentDetail } from '../../../site/src/types';
+import source from '../../utils/source.macro';
 import { Alert, Text, Strong, Stack, TextLink, List } from '../';
 import { Card } from '../Card/Card';
 
 const docs: ComponentDetail = {
   category: 'Content',
   migrationGuide: true,
-  Example: () => (
-    <Stack space="medium">
-      <Alert tone="promote">
-        <Text>This is a promoted Alert message.</Text>
-      </Alert>
-      <Alert tone="info">
-        <Text>This is an informative Alert message.</Text>
-      </Alert>
-      <Alert tone="positive">
-        <Text>This is a positive Alert message.</Text>
-      </Alert>
-      <Alert tone="caution">
-        <Text>This is a cautionary Alert message.</Text>
-      </Alert>
-      <Alert tone="critical">
-        <Text>This is a critical Alert message.</Text>
-      </Alert>
-    </Stack>
-  ),
+  Example: () =>
+    source(
+      <Stack space="medium">
+        <Alert tone="promote">
+          <Text>This is a promoted Alert message.</Text>
+        </Alert>
+        <Alert tone="info">
+          <Text>This is an informative Alert message.</Text>
+        </Alert>
+        <Alert tone="positive">
+          <Text>This is a positive Alert message.</Text>
+        </Alert>
+        <Alert tone="caution">
+          <Text>This is a cautionary Alert message.</Text>
+        </Alert>
+        <Alert tone="critical">
+          <Text>This is a critical Alert message.</Text>
+        </Alert>
+      </Stack>,
+    ),
   accessibility: (
     <Text>
       Follows the{' '}
@@ -59,18 +61,20 @@ const docs: ComponentDetail = {
           This handler will be called when the user clicks on the cross.
         </Text>
       ),
-      Example: () => (
-        <Alert
-          tone="info"
-          onClose={() => {
-            // eslint-disable-next-line no-alert
-            alert('Dismiss this message');
-          }}
-          closeLabel="Close info alert"
-        >
-          <Text>This is an important piece of information.</Text>
-        </Alert>
-      ),
+      Example: () =>
+        /* eslint-disable no-alert */
+        source(
+          <Alert
+            tone="info"
+            onClose={() => {
+              alert('Dismiss this message');
+            }}
+            closeLabel="Close info alert"
+          >
+            <Text>This is an important piece of information.</Text>
+          </Alert>,
+        ),
+      /* eslint-enable no-alert */
     },
     {
       label: 'Content guidelines',
@@ -105,21 +109,22 @@ const docs: ComponentDetail = {
           </Text>
         </Stack>
       ),
-      Example: () => (
-        <Alert tone="info">
-          <Stack space="large">
-            <Text>
-              This is an important piece of information with a{' '}
-              <TextLink href="#">TextLink.</TextLink>
-            </Text>
-            <List space="medium">
-              <Text>Bullet 1</Text>
-              <Text>Bullet 2</Text>
-              <Text>Bullet 3</Text>
-            </List>
-          </Stack>
-        </Alert>
-      ),
+      Example: () =>
+        source(
+          <Alert tone="info">
+            <Stack space="large">
+              <Text>
+                This is an important piece of information with a{' '}
+                <TextLink href="#">TextLink.</TextLink>
+              </Text>
+              <List space="medium">
+                <Text>Bullet 1</Text>
+                <Text>Bullet 2</Text>
+                <Text>Bullet 3</Text>
+              </List>
+            </Stack>
+          </Alert>,
+        ),
     },
     {
       label: 'Contextual design',
@@ -131,27 +136,28 @@ const docs: ComponentDetail = {
           without it.
         </Text>
       ),
-      Example: () => (
-        <Card>
-          <Stack space="medium">
-            <Alert tone="promote">
-              <Text>This is a promoted Alert message.</Text>
-            </Alert>
-            <Alert tone="info">
-              <Text>This is an informative Alert message.</Text>
-            </Alert>
-            <Alert tone="positive">
-              <Text>This is a positive Alert message.</Text>
-            </Alert>
-            <Alert tone="caution">
-              <Text>This is a cautionary Alert message.</Text>
-            </Alert>
-            <Alert tone="critical">
-              <Text>This is a critical Alert message.</Text>
-            </Alert>
-          </Stack>
-        </Card>
-      ),
+      Example: () =>
+        source(
+          <Card>
+            <Stack space="medium">
+              <Alert tone="promote">
+                <Text>This is a promoted Alert message.</Text>
+              </Alert>
+              <Alert tone="info">
+                <Text>This is an informative Alert message.</Text>
+              </Alert>
+              <Alert tone="positive">
+                <Text>This is a positive Alert message.</Text>
+              </Alert>
+              <Alert tone="caution">
+                <Text>This is a cautionary Alert message.</Text>
+              </Alert>
+              <Alert tone="critical">
+                <Text>This is a critical Alert message.</Text>
+              </Alert>
+            </Stack>
+          </Card>,
+        ),
     },
   ],
 };
