@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentDetail } from '../../../site/src/types';
 import source from '../../utils/source.macro';
-import { Actions, Button, TextLink } from '../';
+import { Actions, Button, TextLink, Text } from '../';
 
 const docs: ComponentDetail = {
   category: 'Content',
@@ -9,20 +9,32 @@ const docs: ComponentDetail = {
   Example: () =>
     source(
       <Actions>
-        <Button>Button</Button>
-        <Button weight="weak">Weak</Button>
+        <Button>Regular Button</Button>
+        <Button weight="weak">Weak Button</Button>
         <TextLink href="#">TextLink</TextLink>
       </Actions>,
     ),
   alternatives: [
     {
       name: 'Inline',
-      description:
-        'For fine grain control of spacing and breakpoints. Support flowing content that wraps onto the next line if too long.',
+      description: 'For fine-grained control of spacing and alignment.',
     },
     {
       name: 'Columns',
-      description: 'For finer grain control of widths and breakpoints.',
+      description: 'For fine-grained control of widths, spacing and alignment.',
+    },
+  ],
+  additional: [
+    {
+      label: 'Contextual design',
+      description: (
+        <Text>
+          When nested inside Actions,{' '}
+          <TextLink href="/components/TextLink">TextLink</TextLink> is given a
+          more prominent treatment to visually align with{' '}
+          <TextLink href="/components/Button">Button</TextLink>.
+        </Text>
+      ),
     },
   ],
 };

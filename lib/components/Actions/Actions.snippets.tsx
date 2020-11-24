@@ -4,7 +4,7 @@ import { Snippets } from '../private/Snippets';
 
 export const snippets: Snippets = [
   {
-    name: 'Standard Button, Text Link',
+    name: 'Regular Button, TextLink',
     code: (
       <Actions>
         <Button>Submit</Button>
@@ -13,7 +13,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Strong Button, Text Link',
+    name: 'Strong Button, TextLink',
     code: (
       <Actions>
         <Button weight="strong">Submit</Button>
@@ -22,7 +22,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Weak Button, Text Link',
+    name: 'Weak Button, TextLink',
     code: (
       <Actions>
         <Button weight="weak">Submit</Button>

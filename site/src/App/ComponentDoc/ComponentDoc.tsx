@@ -221,7 +221,9 @@ export const ComponentDoc = ({
 
             {docsExamples.map((example, index) => (
               <Stack space="large" key={index}>
-                {example.label && docsExamples.length > 1 ? (
+                {example.label &&
+                (docsExamples.length > 1 ||
+                  (additional && additional.length > 0)) ? (
                   <Heading level="3">{example.label}</Heading>
                 ) : null}
                 {example.description ?? null}
