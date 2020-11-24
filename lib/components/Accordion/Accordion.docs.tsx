@@ -3,7 +3,6 @@ import { ComponentDetail } from '../../../site/src/types';
 import source from '../../utils/source.macro';
 import { Accordion, AccordionItem, Stack, Text, TextLink } from '../';
 import { Strong } from '../Strong/Strong';
-import { Box } from '../Box/Box';
 
 const docs: ComponentDetail = {
   category: 'Content',
@@ -39,10 +38,10 @@ const docs: ComponentDetail = {
       label: 'Managing state',
       description: (
         <Text>
-          Accordion items manage their own state internally by default. If
-          you&rsquo;d like to take control of the state yourself, you can pass
-          &ldquo;expanded&rdquo; and &ldquo;onToggle&rdquo; props to
-          AccordionItem.
+          An <Strong>AccordionItem</Strong>, by default, manages its own state
+          internally. If you&rsquo;d like to take control of the state, you can
+          do so using the &ldquo;expanded&rdquo; and &ldquo;onToggle&rdquo;
+          props.
         </Text>
       ),
       Example: ({ id, setDefaultState, getState, setState }) =>
@@ -84,39 +83,26 @@ const docs: ComponentDetail = {
     {
       label: 'Customising the layout',
       description: (
-        <Stack space="large">
-          <Text>
-            <Strong>AccordionItem</Strong> elements can be rendered outside of
-            an enclosing <Strong>Accordion</Strong> if you&rsquo;d like to
-            customise their surrounding layout.
-          </Text>
-          <Text>
-            By default, an <Strong>AccordionItem</Strong> does not allow
-            consumers to control the use of white space or its dividers. If
-            there is a need to diverge from the standard design, an{' '}
-            <Strong>AccordionItem</Strong> may be used outside of an{' '}
-            <Strong>Accordion</Strong>.
-          </Text>
-          <Text>
-            Worth noting, as the label is a heading for the expandable section,
-            it uses level 4{' '}
-            <TextLink href="/components/Heading">Heading</TextLink> styles and
-            cannot be customised.
-          </Text>
-        </Stack>
+        <Text>
+          By default, an <Strong>AccordionItem</Strong> does not allow consumers
+          to control the use of white space or its dividers. If there is a need
+          to diverge from the standard design, an <Strong>AccordionItem</Strong>{' '}
+          may be used outside of an <Strong>Accordion</Strong>.
+        </Text>
       ),
       Example: ({ id }) =>
         source(
-          <Box boxShadow="borderField" borderRadius="standard" padding="xlarge">
-            <Stack space="xlarge" dividers="strong">
-              <AccordionItem label="Label" id={`${id}_1`}>
-                <Text>Content</Text>
-              </AccordionItem>
-              <AccordionItem label="Label" id={`${id}_2`}>
-                <Text>Content</Text>
-              </AccordionItem>
-            </Stack>
-          </Box>,
+          <Stack space="xlarge">
+            <AccordionItem label="Label" id={`${id}_1`}>
+              <Text>Content</Text>
+            </AccordionItem>
+            <AccordionItem label="Label" id={`${id}_2`}>
+              <Text>Content</Text>
+            </AccordionItem>
+            <AccordionItem label="Label" id={`${id}_3`}>
+              <Text>Content</Text>
+            </AccordionItem>
+          </Stack>,
         ),
     },
   ],
