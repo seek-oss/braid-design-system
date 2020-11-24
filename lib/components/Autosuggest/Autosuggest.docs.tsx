@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { ComponentDetail } from '../../../site/src/types';
 import source from '../../utils/source.macro';
 import {
@@ -10,10 +10,6 @@ import {
   Box,
   Alert,
 } from '../';
-
-const Container = ({ children }: { children: ReactNode }) => (
-  <div style={{ maxWidth: '300px' }}>{children}</div>
-);
 
 export const makeSuggestions = (
   suggestions: Array<string | { text: string; description?: string }>,
@@ -128,7 +124,6 @@ const docs: ComponentDetail = {
       description: (
         <Text>Suggestion items can optionally be nested into groups.</Text>
       ),
-      Container,
       Example: ({ id, setDefaultState, getState, setState, resetState }) =>
         source(
           <>
@@ -177,7 +172,6 @@ const docs: ComponentDetail = {
       description: (
         <Text>Suggestion items can optionally contain a description.</Text>
       ),
-      Container,
       Example: ({ id, setDefaultState, getState, setState, resetState }) =>
         source(
           <>
@@ -225,7 +219,6 @@ const docs: ComponentDetail = {
           entries.
         </Text>
       ),
-      Container,
       Example: ({
         id,
         setDefaultState,
@@ -287,7 +280,6 @@ const docs: ComponentDetail = {
           </Text>
         </>
       ),
-      Container,
       background: 'brand',
       Example: ({ id, setDefaultState, getState, setState, resetState }) =>
         source(
