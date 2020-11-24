@@ -17,14 +17,28 @@ export default flatten(
       group: snippet.group || matches[1],
     }));
   }),
-).map<Snippet>((snippet) => ({
-  ...snippet,
-  group: snippet.group,
-  code:
-    typeof snippet.code === 'string'
-      ? snippet.code
-      : reactElementToJsxString(snippet.code, {
-          sortProps: false,
-          useBooleanShorthandSyntax: false,
-        }),
-}));
+).map<Snippet>((snippet) => {
+  let code = '';
+
+  if (typeof snippet.code === 'string') {
+    code = snippet.code;
+  } else if (
+    typeof snippet.code === 'object' &&
+    snippet.code !== null &&
+    'value' in snippet.code &&
+    'code' in snippet.code
+  ) {
+    code = snippet.code.code;
+  } else {
+    code = reactElementToJsxString(snippet.code, {
+      sortProps: false,
+      useBooleanShorthandSyntax: false,
+    });
+  }
+
+  return {
+    ...snippet,
+    group: snippet.group,
+    code,
+  };
+});

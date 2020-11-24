@@ -1,5 +1,6 @@
 import React from 'react';
 import { Alert, Text } from '../../playroom/components';
+import source from '../../utils/source.macro';
 import { Snippets } from '../private/Snippets';
 
 export const snippets: Snippets = [
@@ -45,10 +46,10 @@ export const snippets: Snippets = [
   },
   {
     name: 'Dismissible alert',
-    code: (
+    code: source(
       <Alert onClose={() => {}} closeLabel="Close">
         <Text>Dismissible Alert</Text>
-      </Alert>
+      </Alert>,
     ),
   },
 ];
