@@ -1,5 +1,4 @@
 import React from 'react';
-import { useStyles } from 'sku/react-treat';
 import {
   Heading,
   Text,
@@ -21,42 +20,13 @@ import {
   Button,
   Hidden,
 } from '../../../../../../lib/components';
-import { HeadingProps } from '../../../../../../lib/components/Heading/Heading';
 import { TextStack } from '../../../TextStack/TextStack';
 import Code from '../../../Code/Code';
 import tokens from '../../../../../../lib/themes/wireframe/tokens';
 import { Page } from '../../../../types';
 import { ThemedExample } from '../../../ThemeSetting';
 import { PageTitle } from '../../../Seo/PageTitle';
-import * as styleRefs from './layout.treat';
-
-const slugify = (string: string) => string.replace(/ /, '-');
-
-interface LinkableHeadingProps {
-  level?: HeadingProps['level'];
-  children: string;
-}
-const LinkableHeading = ({ children, level = '3' }: LinkableHeadingProps) => {
-  const styles = useStyles(styleRefs);
-  const slug = slugify(children);
-
-  return (
-    <Box className={styles.linkableHeading}>
-      <Box id={slug} position="absolute" className={styles.hashAnchor} />
-      <Heading level={level}>
-        {children}{' '}
-        <Box
-          component="span"
-          transition="fast"
-          opacity={0}
-          className={styles.hashLink}
-        >
-          <TextLink href={`#${slug}`}>#</TextLink>
-        </Box>
-      </Heading>
-    </Box>
-  );
-};
+import { LinkableHeading } from '../../../LinkableHeading/LinkableHeading';
 
 type Space = 'none' | keyof typeof tokens.space;
 const spaceScale = ['none', ...Object.keys(tokens.space)] as Space[];

@@ -25,6 +25,7 @@ import { getHistory } from '../Updates';
 import { Markdown } from '../Markdown/Markdown';
 import { Navigation, NavigationItem } from './Navigation/Navigation';
 import { PageTitle } from '../Seo/PageTitle';
+import { LinkableHeading } from '../LinkableHeading/LinkableHeading';
 
 const DefaultContainer = ({ children }: { children: ReactNode }) => (
   <Fragment>{children}</Fragment>
@@ -198,7 +199,7 @@ export const ComponentDoc = ({
 
             {'alternatives' in docs && docs.alternatives.length > 0 ? (
               <Stack space="large">
-                <Heading level="3">Alternatives</Heading>
+                <LinkableHeading level="3">Alternatives</LinkableHeading>
                 <List space="large">
                   {docs.alternatives.map((alt) => (
                     <Text key={`${alt.name}`}>
@@ -214,7 +215,7 @@ export const ComponentDoc = ({
 
             {'accessibility' in docs ? (
               <Stack space="large">
-                <Heading level="3">Accessibility</Heading>
+                <LinkableHeading level="3">Accessibility</LinkableHeading>
                 {docs.accessibility}
               </Stack>
             ) : null}
@@ -224,7 +225,7 @@ export const ComponentDoc = ({
                 {example.label &&
                 (docsExamples.length > 1 ||
                   (additional && additional.length > 0)) ? (
-                  <Heading level="3">{example.label}</Heading>
+                  <LinkableHeading level="3">{example.label}</LinkableHeading>
                 ) : null}
                 {example.description ?? null}
                 <PlayroomStateProvider>
