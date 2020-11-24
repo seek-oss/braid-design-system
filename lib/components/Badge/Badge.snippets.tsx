@@ -1,88 +1,89 @@
 import React from 'react';
+import source from '../../utils/source.macro';
 import { Snippets } from '../private/Snippets';
 import { Badge, Inline } from '../../playroom/components';
 
 export const snippets: Snippets = [
   {
     name: 'Info',
-    code: <Badge tone="info">Badge</Badge>,
+    code: source(<Badge tone="info">Badge</Badge>),
   },
   {
     name: 'Info (strong)',
-    code: (
+    code: source(
       <Badge tone="info" weight="strong">
         Badge
-      </Badge>
+      </Badge>,
     ),
   },
   {
     name: 'Promote',
-    code: <Badge tone="promote">Badge</Badge>,
+    code: source(<Badge tone="promote">Badge</Badge>),
   },
   {
     name: 'Promote (strong)',
-    code: (
+    code: source(
       <Badge tone="promote" weight="strong">
         Badge
-      </Badge>
+      </Badge>,
     ),
   },
   {
     name: 'Positive',
-    code: <Badge tone="positive">Badge</Badge>,
+    code: source(<Badge tone="positive">Badge</Badge>),
   },
   {
     name: 'Positive (strong)',
-    code: (
+    code: source(
       <Badge tone="positive" weight="strong">
         Badge
-      </Badge>
+      </Badge>,
     ),
   },
   {
     name: 'Caution',
-    code: <Badge tone="caution">Badge</Badge>,
+    code: source(<Badge tone="caution">Badge</Badge>),
   },
   {
     name: 'Caution (strong)',
-    code: (
+    code: source(
       <Badge tone="caution" weight="strong">
         Badge
-      </Badge>
+      </Badge>,
     ),
   },
   {
     name: 'Critical',
-    code: <Badge tone="critical">Badge</Badge>,
+    code: source(<Badge tone="critical">Badge</Badge>),
   },
   {
     name: 'Critical (strong)',
-    code: (
+    code: source(
       <Badge tone="critical" weight="strong">
         Badge
-      </Badge>
+      </Badge>,
     ),
   },
   {
     name: 'Neutral',
-    code: <Badge tone="neutral">Badge</Badge>,
+    code: source(<Badge tone="neutral">Badge</Badge>),
   },
   {
     name: 'Neutral (strong)',
-    code: (
+    code: source(
       <Badge tone="neutral" weight="strong">
         Badge
-      </Badge>
+      </Badge>,
     ),
   },
   {
     name: 'Multiple',
-    code: (
+    code: source(
       <Inline space="small">
         <Badge tone="info">Badge</Badge>
         <Badge tone="positive">Badge</Badge>
         <Badge tone="promote">Badge</Badge>
-      </Inline>
+      </Inline>,
     ),
   },
 ];
