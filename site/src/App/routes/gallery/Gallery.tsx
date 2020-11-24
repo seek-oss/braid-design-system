@@ -318,10 +318,8 @@ const GalleryItem = ({ item }: { item: typeof galleryComponents[number] }) => {
               >
                 {componentDocs.alternatives.map((alt) => (
                   <Stack space="medium" key={alt.name}>
-                    <Text size="xsmall" tone="secondary">
-                      <TextLink href="" weight="weak">
-                        {alt.name}
-                      </TextLink>
+                    <Text size="xsmall" weight="strong">
+                      {alt.name}
                     </Text>
                     <Text size="xsmall" tone="secondary">
                       {alt.description}
