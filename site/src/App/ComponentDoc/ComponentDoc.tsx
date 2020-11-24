@@ -196,7 +196,7 @@ export const ComponentDoc = ({
               </PlayroomStateProvider>
             ) : null}
 
-            {'alternatives' in docs && docs.alternatives ? (
+            {'alternatives' in docs && docs.alternatives.length > 0 ? (
               <Stack space="large">
                 <Heading level="3">Alternatives</Heading>
                 <List space="large">
