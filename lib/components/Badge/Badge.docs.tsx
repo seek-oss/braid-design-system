@@ -1,18 +1,7 @@
 import React, { Fragment } from 'react';
 import { ComponentDetail } from '../../../site/src/types';
 import source from '../../utils/source.macro';
-import {
-  Badge,
-  Card,
-  Columns,
-  Column,
-  Stack,
-  Inline,
-  Heading,
-  Text,
-  TextLink,
-  Strong,
-} from '../';
+import { Badge, Card, Inline, Heading, Text, TextLink, Strong } from '../';
 
 const docs: ComponentDetail = {
   category: 'Content',
@@ -20,40 +9,36 @@ const docs: ComponentDetail = {
   Example: () =>
     source(
       <Card>
-        <Columns space="large">
-          <Column width="content">
-            <Stack space="medium">
-              <Badge tone="positive">Positive</Badge>
-              <Badge tone="promote">Promote</Badge>
-              <Badge tone="info">Info</Badge>
-              <Badge tone="neutral">Neutral</Badge>
-              <Badge tone="caution">Caution</Badge>
-              <Badge tone="critical">Critical</Badge>
-            </Stack>
-          </Column>
-          <Column width="content">
-            <Stack space="medium">
-              <Badge weight="strong" tone="positive">
-                Positive
-              </Badge>
-              <Badge weight="strong" tone="promote">
-                Promote
-              </Badge>
-              <Badge weight="strong" tone="info">
-                Info
-              </Badge>
-              <Badge weight="strong" tone="neutral">
-                Neutral
-              </Badge>
-              <Badge weight="strong" tone="caution">
-                Caution
-              </Badge>
-              <Badge weight="strong" tone="critical">
-                Critical
-              </Badge>
-            </Stack>
-          </Column>
-        </Columns>
+        <Inline space="medium" align="center">
+          <Inline space="medium" collapseBelow="desktop" align="center">
+            <Badge tone="positive">Positive</Badge>
+            <Badge tone="promote">Promote</Badge>
+            <Badge tone="info">Info</Badge>
+            <Badge tone="neutral">Neutral</Badge>
+            <Badge tone="caution">Caution</Badge>
+            <Badge tone="critical">Critical</Badge>
+          </Inline>
+          <Inline space="medium" collapseBelow="desktop" align="center">
+            <Badge weight="strong" tone="positive">
+              Positive
+            </Badge>
+            <Badge weight="strong" tone="promote">
+              Promote
+            </Badge>
+            <Badge weight="strong" tone="info">
+              Info
+            </Badge>
+            <Badge weight="strong" tone="neutral">
+              Neutral
+            </Badge>
+            <Badge weight="strong" tone="caution">
+              Caution
+            </Badge>
+            <Badge weight="strong" tone="critical">
+              Critical
+            </Badge>
+          </Inline>
+        </Inline>
       </Card>,
     ),
   alternatives: [
@@ -63,6 +48,39 @@ const docs: ComponentDetail = {
     },
   ],
   additional: [
+    {
+      label: 'Visual Weight',
+      description: (
+        <Text>
+          For greater contrast, you can set the <Strong>weight</Strong> prop to{' '}
+          <Strong>strong</Strong>.
+        </Text>
+      ),
+      background: 'card',
+      Example: () =>
+        source(
+          <Inline space="medium" align="center">
+            <Badge weight="strong" tone="positive">
+              Positive
+            </Badge>
+            <Badge weight="strong" tone="promote">
+              Promote
+            </Badge>
+            <Badge weight="strong" tone="info">
+              Info
+            </Badge>
+            <Badge weight="strong" tone="neutral">
+              Neutral
+            </Badge>
+            <Badge weight="strong" tone="caution">
+              Caution
+            </Badge>
+            <Badge weight="strong" tone="critical">
+              Critical
+            </Badge>
+          </Inline>,
+        ),
+    },
     {
       label: 'Vertical bleed',
       description: (
