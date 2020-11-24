@@ -1,7 +1,7 @@
 import groupBy from 'lodash/groupBy';
 import * as components from '../../../lib/components';
 import { Snippet } from '../../../lib/components/private/Snippets';
-import { ComponentDocs, ComponentExample } from '../types';
+import { ComponentDetail, ComponentDocs, ComponentExample } from '../types';
 import undocumentedExports from '../undocumentedExports.json';
 
 const componentDocsContext = require.context(
@@ -21,8 +21,9 @@ export const getComponentDocs = ({
     ? `./icons/${componentName}/${componentName}.docs.tsx`
     : `./${componentName}/${componentName}.docs.tsx`;
 
-  return componentDocsContext(normalizedComponentRoute)
-    .default as ComponentDocs;
+  return componentDocsContext(normalizedComponentRoute).default as
+    | ComponentDocs
+    | ComponentDetail;
 };
 
 const snippetsContext = require.context(
@@ -60,7 +61,7 @@ const documentedComponentNames = Object.keys(components)
   .sort();
 
 export const documentedComponents = documentedComponentNames.map((name) => {
-  const docs: ComponentDocs = getComponentDocs({
+  const docs = getComponentDocs({
     componentName: name,
     isIcon: false,
   });

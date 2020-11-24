@@ -5,6 +5,7 @@ import React, {
   useEffect,
   useState,
   useRef,
+  ComponentProps,
 } from 'react';
 import { chunk, memoize } from 'lodash';
 import copy from 'copy-to-clipboard';
@@ -22,6 +23,8 @@ import {
   Columns,
   Column,
   Disclosure,
+  Divider,
+  Tiles,
 } from '../../../../../lib/components';
 import { getHistory, isNew } from '../../Updates';
 import { CopyIcon } from '../../Code/CopyIcon';
@@ -259,7 +262,9 @@ const GalleryItem = ({ item }: { item: typeof galleryComponents[number] }) => {
               </Box>
             ) : undefined}
           </Inline>
-          {componentDocs.description && !isAnIcon ? (
+          {'description' in componentDocs &&
+          componentDocs.description &&
+          !isAnIcon ? (
             <Box style={{ width: '700px' }}>
               <Disclosure
                 collapseLabel="Hide description"
@@ -271,6 +276,7 @@ const GalleryItem = ({ item }: { item: typeof galleryComponents[number] }) => {
             </Box>
           ) : null}
         </Stack>
+
         <Columns space="xlarge">
           {item.examples.map((exampleChunk, idx) => (
             <Column key={`${item.name}_${idx}`}>
@@ -294,6 +300,38 @@ const GalleryItem = ({ item }: { item: typeof galleryComponents[number] }) => {
             </Column>
           ))}
         </Columns>
+
+        {'alternatives' in componentDocs ? (
+          <Stack space="large">
+            <Divider />
+            <Stack space="medium">
+              <Text size="small" weight="strong" tone="secondary">
+                Alternatives
+              </Text>
+              <Tiles
+                space="xxlarge"
+                columns={
+                  Math.min(item.examples.length * 2, 6) as ComponentProps<
+                    typeof Tiles
+                  >['columns']
+                }
+              >
+                {componentDocs.alternatives.map((alt) => (
+                  <Stack space="medium" key={alt.name}>
+                    <Text size="xsmall" tone="secondary">
+                      <TextLink href="" weight="weak">
+                        {alt.name}
+                      </TextLink>
+                    </Text>
+                    <Text size="xsmall" tone="secondary">
+                      {alt.description}
+                    </Text>
+                  </Stack>
+                ))}
+              </Tiles>
+            </Stack>
+          </Stack>
+        ) : null}
       </Stack>
     </Box>
   );
