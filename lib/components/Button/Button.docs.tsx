@@ -1,49 +1,64 @@
-import React, { ReactNode } from 'react';
-import { ComponentDocs } from '../../../site/src/types';
-import { Button, Stack, Text, TextLink } from '../';
+import React from 'react';
+import { ComponentDetail } from '../../../site/src/types';
+import { Button, Box, Text, TextLink, Inline, Strong } from '../';
+import source from '../../utils/source.macro';
 
-const Container = ({ children }: { children: ReactNode }) => (
-  <div style={{ maxWidth: '300px' }}>{children}</div>
-);
-
-const docs: ComponentDocs = {
+const docs: ComponentDetail = {
   category: 'Content',
   migrationGuide: true,
-  description: (
-    <Stack space="large">
-      <Text>Renders a standard button element.</Text>
-      <Text tone="secondary">
-        If you want a link that looks like a button, check out{' '}
-        <TextLink href="/components/ButtonLink">ButtonLink.</TextLink>
-      </Text>
-    </Stack>
-  ),
-  examples: [
+  Example: () =>
+    source(
+      <Inline space="small" collapseBelow="desktop">
+        <Button weight="strong">Strong Button</Button>
+        <Button>Regular Button</Button>
+        <Button weight="weak">Weak Button</Button>
+      </Inline>,
+    ),
+  alternatives: [
     {
-      label: 'Default Button',
-      Container,
-      Example: () => <Button>Submit</Button>,
+      name: 'ButtonLink',
+      description: 'For a semantic link that looks like a button.',
     },
-    {
-      label: 'Strong Button',
-      Container,
-      Example: () => <Button weight="strong">Submit</Button>,
-    },
-    {
-      label: 'Weak Button',
-      Container,
-      Example: () => <Button weight="weak">Submit</Button>,
-    },
-    {
-      label: 'Weak Button on Brand Background',
-      background: 'brand',
-      Container,
-      Example: () => <Button weight="weak">Submit</Button>,
-    },
+  ],
+  additional: [
     {
       label: 'Loading Button',
-      Container,
-      Example: () => <Button loading>Loading</Button>,
+      description: (
+        <>
+          <Text>
+            You can indicate a loading state inline with the{' '}
+            <Strong>loading</Strong> prop, which also ensures that the button is
+            disabled.
+          </Text>
+        </>
+      ),
+      Example: () =>
+        source(
+          <Inline space="small">
+            <Button loading>Loading Button</Button>
+          </Inline>,
+        ),
+    },
+    {
+      label: 'Contextual design',
+      description: (
+        <Text>
+          Weak Button elements are inverted when rendered on a dark background
+          via <TextLink href="/components/Box">Box</TextLink> or{' '}
+          <TextLink href="/components/BackgroundProvider">
+            BackgroundProvider
+          </TextLink>
+          .
+        </Text>
+      ),
+      Example: () =>
+        source(
+          <Box background="brand" padding="large" borderRadius="standard">
+            <Inline space="small">
+              <Button weight="weak">Weak Button</Button>
+            </Inline>
+          </Box>,
+        ),
     },
   ],
 };
