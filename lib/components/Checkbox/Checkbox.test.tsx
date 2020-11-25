@@ -3,7 +3,6 @@ import React, { ComponentProps, useState } from 'react';
 import { render } from '@testing-library/react';
 import { BraidTestProvider, Checkbox } from '..';
 import userEvent from '@testing-library/user-event';
-import { resolveCheckedGroup } from './Checkbox';
 
 describe('Checkbox', () => {
   it('associates field with label correctly', () => {
@@ -195,26 +194,76 @@ describe('Checkbox', () => {
     expect(checkbox.indeterminate).toBe(true);
     expect(checkbox.checked).toBe(false);
   });
-});
 
-describe('resolveCheckedGroup', () => {
-  it('returns `mixed` when different values are provided and the last is `false`', () => {
-    expect(resolveCheckedGroup([false, true, false])).toEqual('mixed');
+  it('should resolve to `mixed` when mixed checked values are provided and the last is `false`', () => {
+    const { getByRole } = render(
+      <BraidTestProvider>
+        <Checkbox
+          id="field"
+          label="My field"
+          onChange={() => {}}
+          checked={[false, true, false]}
+        />
+      </BraidTestProvider>,
+    );
+    const checkbox = getByRole('checkbox') as HTMLInputElement;
+
+    expect(checkbox.getAttribute('aria-checked')).toBe('mixed');
+    expect(checkbox.indeterminate).toBe(true);
+    expect(checkbox.checked).toBe(false);
   });
 
-  it('returns `mixed` when different values are provided and the last is `true`', () => {
-    expect(resolveCheckedGroup([false, true, true])).toEqual('mixed');
+  it('should resolve to `mixed` when mixed checked values are provided and the last is `true`', () => {
+    const { getByRole } = render(
+      <BraidTestProvider>
+        <Checkbox
+          id="field"
+          label="My field"
+          onChange={() => {}}
+          checked={[false, true, true]}
+        />
+      </BraidTestProvider>,
+    );
+    const checkbox = getByRole('checkbox') as HTMLInputElement;
+
+    expect(checkbox.getAttribute('aria-checked')).toBe('mixed');
+    expect(checkbox.indeterminate).toBe(true);
+    expect(checkbox.checked).toBe(false);
   });
 
-  it('returns `true` when all values provided are `true`', () => {
-    expect(resolveCheckedGroup([true, true, true])).toEqual(true);
+  it('should resolve to checked when all values provided are `true`', () => {
+    const { getByRole } = render(
+      <BraidTestProvider>
+        <Checkbox
+          id="field"
+          label="My field"
+          onChange={() => {}}
+          checked={[true, true, true]}
+        />
+      </BraidTestProvider>,
+    );
+    const checkbox = getByRole('checkbox') as HTMLInputElement;
+
+    expect(checkbox.getAttribute('aria-checked')).toBe('true');
+    expect(checkbox.indeterminate).toBe(false);
+    expect(checkbox.checked).toBe(true);
   });
 
-  it('returns `false` when all values provided are `false`', () => {
-    expect(resolveCheckedGroup([false, false, false])).toEqual(false);
-  });
+  it('should resolve to unchecked when all values provided are `false`', () => {
+    const { getByRole } = render(
+      <BraidTestProvider>
+        <Checkbox
+          id="field"
+          label="My field"
+          onChange={() => {}}
+          checked={[false, false, false]}
+        />
+      </BraidTestProvider>,
+    );
+    const checkbox = getByRole('checkbox') as HTMLInputElement;
 
-  it('returns `false` when no values are provided', () => {
-    expect(resolveCheckedGroup([])).toBe(false);
+    expect(checkbox.getAttribute('aria-checked')).toBe('false');
+    expect(checkbox.indeterminate).toBe(false);
+    expect(checkbox.checked).toBe(false);
   });
 });

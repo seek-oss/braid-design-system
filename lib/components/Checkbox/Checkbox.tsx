@@ -5,7 +5,7 @@ import {
   InlineFieldProps,
 } from '../private/InlineField/InlineField';
 
-export const resolveCheckedGroup = (values: Array<CheckboxChecked>) =>
+const resolveCheckedGroup = (values: Array<CheckboxChecked>) =>
   values.reduce((acc, val, index) => {
     if (acc === 'mixed') {
       return 'mixed';

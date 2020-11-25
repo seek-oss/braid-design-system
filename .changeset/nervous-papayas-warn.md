@@ -13,9 +13,8 @@ To simplify the use of tri-state checkboxes, the **checked** prop now supports r
 
 **EXAMPLE USAGE:**
 ```jsx
-// Will resolve to "mixed" based on the array of values provided
  <Checkbox
   label="Select all"
-  checked={[ true, false, false ]}
+  checked={[ true, false, false ]} // Will resolve to "mixed"
 />
 ```
