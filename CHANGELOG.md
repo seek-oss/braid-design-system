@@ -1,5 +1,17 @@
 # braid-design-system
 
+## 29.17.2
+
+### Patch Changes
+
+- Fix type definitions for Stack and scroll components ([#841](https://github.com/seek-oss/braid-design-system/pull/841))
+
+## 29.17.1
+
+### Patch Changes
+
+- **Toggle:** Fix layout issue when label text wraps to multiple lines ([#838](https://github.com/seek-oss/braid-design-system/pull/838))
+
 ## 29.17.0
 
 ### Minor Changes

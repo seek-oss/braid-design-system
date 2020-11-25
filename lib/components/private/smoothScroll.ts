@@ -155,7 +155,7 @@ export const smoothScroll = (
     ...scrollOptions
   }: SmoothScrollOptions = {},
 ) =>
-  new Promise((resolve) => {
+  new Promise<void>((resolve) => {
     const scrollOffset = getScrollOffset(scrollContainer, element, direction);
     const scrollPosition =
       position === 'end'

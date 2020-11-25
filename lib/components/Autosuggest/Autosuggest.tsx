@@ -27,6 +27,7 @@ import { normalizeKey } from '../private/normalizeKey';
 import { ClearField } from '../private/Field/ClearField';
 import { smoothScroll } from '../private/smoothScroll';
 import { useScrollIntoView } from './useScrollIntoView';
+import { useBreakpoint } from '../useBreakpoint/useBreakpoint';
 import { RemoveScroll } from 'react-remove-scroll';
 import { createAccessbilityProps, getItemId } from './createAccessbilityProps';
 import { autosuggest, AutosuggestTranslations } from '../../translations/en';
@@ -306,7 +307,6 @@ export const Autosuggest = forwardRef(function <Value>(
   const rootRef = useRef<HTMLDivElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
   const justPressedArrowRef = useRef(false);
-  const mobileDetectionRef = useRef<HTMLDivElement>(null);
   const {
     normalisedSuggestions,
     groupHeadingIndexes,
@@ -467,6 +467,8 @@ export const Autosuggest = forwardRef(function <Value>(
     });
   }, [hasSuggestions]);
 
+  const breakpoint = useBreakpoint();
+
   const inputProps = {
     value: previewValue ? previewValue.text : value.text,
     type: type === 'search' ? type : 'text',
@@ -478,16 +480,8 @@ export const Autosuggest = forwardRef(function <Value>(
       fireChange({ text: inputValue });
     },
     onFocus: () => {
-      // Only scroll the autosuggest to the top of the viewport
-      // if we're on mobile. This is a bit of a hack because we
-      // don't currently have runtime access to the theme's
-      // responsive breakpoint.
-      const isMobile =
-        mobileDetectionRef.current &&
-        getComputedStyle(mobileDetectionRef.current).display === 'block';
-
-      if (rootRef.current && isMobile && scrollToTopOnMobile) {
-        smoothScroll(rootRef.current); // tslint:disable-line no-floating-promises
+      if (rootRef.current && scrollToTopOnMobile && breakpoint === 'mobile') {
+        smoothScroll(rootRef.current);
       }
 
       dispatch({ type: INPUT_FOCUS });
@@ -604,7 +598,6 @@ export const Autosuggest = forwardRef(function <Value>(
 
   return (
     <Fragment>
-      <Box ref={mobileDetectionRef} display={['block', 'none']} />
       {showMobileBackdrop ? (
         <Box
           position="fixed"

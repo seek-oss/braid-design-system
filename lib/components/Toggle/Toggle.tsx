@@ -60,6 +60,7 @@ export const Toggle = ({
         position="relative"
         display="flex"
         alignItems="center"
+        flexShrink={0}
         className={[styles.slideContainer, styles.fieldSize]}
       >
         <Box
