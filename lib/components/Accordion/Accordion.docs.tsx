@@ -32,6 +32,14 @@ const docs: ComponentDetail = {
   ),
   alternatives: [
     { name: 'Disclosure', description: 'For a lighter visual treatment.' },
+    {
+      name: 'Dialog',
+      description: 'For exposing a smaller amount of content in a modal.',
+    },
+    {
+      name: 'Drawer',
+      description: 'For exposing a larger amount of content in a modal.',
+    },
   ],
   additional: [
     {

@@ -8,33 +8,35 @@ import { DrawerContent } from './Drawer';
 export const galleryItems: ComponentExample[] = [
   {
     label: 'Default layout',
-    Example: ({ id }) => (
-      <DrawerContent
-        id={id}
-        title="Default test"
-        onClose={() => {}}
-        width="medium"
-        scrollLock={false}
-      >
-        <Placeholder height={100} width="100%" />
-      </DrawerContent>
-    ),
+    Example: ({ id }) =>
+      source(
+        <DrawerContent
+          id={id}
+          title="Default test"
+          onClose={() => {}}
+          width="medium"
+          scrollLock={false}
+        >
+          <Placeholder height={100} width="100%" />
+        </DrawerContent>,
+      ),
   },
   {
     label: 'Layout with a description',
-    Example: ({ id }) => (
-      <DrawerContent
-        id={id}
-        title="Description test"
-        description={
-          <Placeholder height="auto" width="100%" label="Description" />
-        }
-        onClose={() => {}}
-        scrollLock={false}
-      >
-        <Placeholder height={100} width="100%" />
-      </DrawerContent>
-    ),
+    Example: ({ id }) =>
+      source(
+        <DrawerContent
+          id={id}
+          title="Description test"
+          description={
+            <Placeholder height="auto" width="100%" label="Description" />
+          }
+          onClose={() => {}}
+          scrollLock={false}
+        >
+          <Placeholder height={100} width="100%" />
+        </DrawerContent>,
+      ),
   },
   {
     label: 'Preview animation',

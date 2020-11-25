@@ -228,21 +228,23 @@ export const ComponentDoc = ({
                   <LinkableHeading level="3">{example.label}</LinkableHeading>
                 ) : null}
                 {example.description ?? null}
-                <PlayroomStateProvider>
-                  <RenderExample
-                    id={String(index)}
-                    code={example.code}
-                    Example={example.Example}
-                    Container={example.Container}
-                    background={example.background}
-                    showCodeByDefault={
-                      example.showCodeByDefault ||
-                      example.Example === undefined ||
-                      docs.category === 'Logic'
-                    }
-                    playroom={example.playroom}
-                  />
-                </PlayroomStateProvider>
+                {example.code || example.Example ? (
+                  <PlayroomStateProvider>
+                    <RenderExample
+                      id={String(index)}
+                      code={example.code}
+                      Example={example.Example}
+                      Container={example.Container}
+                      background={example.background}
+                      showCodeByDefault={
+                        example.showCodeByDefault ||
+                        example.Example === undefined ||
+                        docs.category === 'Logic'
+                      }
+                      playroom={example.playroom}
+                    />
+                  </PlayroomStateProvider>
+                ) : null}
               </Stack>
             ))}
           </Stack>
