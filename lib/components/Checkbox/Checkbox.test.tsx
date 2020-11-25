@@ -3,6 +3,7 @@ import React, { ComponentProps, useState } from 'react';
 import { render } from '@testing-library/react';
 import { BraidTestProvider, Checkbox } from '..';
 import userEvent from '@testing-library/user-event';
+import { resolveCheckedGroup } from './Checkbox';
 
 describe('Checkbox', () => {
   it('associates field with label correctly', () => {
@@ -193,5 +194,27 @@ describe('Checkbox', () => {
     expect(checkbox.getAttribute('aria-checked')).toBe('mixed');
     expect(checkbox.indeterminate).toBe(true);
     expect(checkbox.checked).toBe(false);
+  });
+});
+
+describe('resolveCheckedGroup', () => {
+  it('returns `mixed` when different values are provided and the last is `false`', () => {
+    expect(resolveCheckedGroup([false, true, false])).toEqual('mixed');
+  });
+
+  it('returns `mixed` when different values are provided and the last is `true`', () => {
+    expect(resolveCheckedGroup([false, true, true])).toEqual('mixed');
+  });
+
+  it('returns `true` when all values provided are `true`', () => {
+    expect(resolveCheckedGroup([true, true, true])).toEqual(true);
+  });
+
+  it('returns `false` when all values provided are `false`', () => {
+    expect(resolveCheckedGroup([false, false, false])).toEqual(false);
+  });
+
+  it('returns `false` when no values are provided', () => {
+    expect(resolveCheckedGroup([])).toBe(false);
   });
 });
