@@ -2146,6 +2146,7 @@ Object {
     badge?: ReactElement<BadgeProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)>
     checked: 
         | "mixed"
+        | boolean[]
         | false
         | true
     children?: ReactNode

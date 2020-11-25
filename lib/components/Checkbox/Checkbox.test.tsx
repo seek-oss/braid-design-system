@@ -194,4 +194,94 @@ describe('Checkbox', () => {
     expect(checkbox.indeterminate).toBe(true);
     expect(checkbox.checked).toBe(false);
   });
+
+  it('should resolve to `mixed` when mixed checked values are provided and the last is `false`', () => {
+    const { getByRole } = render(
+      <BraidTestProvider>
+        <Checkbox
+          id="field"
+          label="My field"
+          onChange={() => {}}
+          checked={[false, true, false]}
+        />
+      </BraidTestProvider>,
+    );
+    const checkbox = getByRole('checkbox') as HTMLInputElement;
+
+    expect(checkbox.getAttribute('aria-checked')).toBe('mixed');
+    expect(checkbox.indeterminate).toBe(true);
+    expect(checkbox.checked).toBe(false);
+  });
+
+  it('should resolve to `mixed` when mixed checked values are provided and the last is `true`', () => {
+    const { getByRole } = render(
+      <BraidTestProvider>
+        <Checkbox
+          id="field"
+          label="My field"
+          onChange={() => {}}
+          checked={[false, true, true]}
+        />
+      </BraidTestProvider>,
+    );
+    const checkbox = getByRole('checkbox') as HTMLInputElement;
+
+    expect(checkbox.getAttribute('aria-checked')).toBe('mixed');
+    expect(checkbox.indeterminate).toBe(true);
+    expect(checkbox.checked).toBe(false);
+  });
+
+  it('should resolve to checked when all values provided are `true`', () => {
+    const { getByRole } = render(
+      <BraidTestProvider>
+        <Checkbox
+          id="field"
+          label="My field"
+          onChange={() => {}}
+          checked={[true, true, true]}
+        />
+      </BraidTestProvider>,
+    );
+    const checkbox = getByRole('checkbox') as HTMLInputElement;
+
+    expect(checkbox.getAttribute('aria-checked')).toBe('true');
+    expect(checkbox.indeterminate).toBe(false);
+    expect(checkbox.checked).toBe(true);
+  });
+
+  it('should resolve to unchecked when all values provided are `false`', () => {
+    const { getByRole } = render(
+      <BraidTestProvider>
+        <Checkbox
+          id="field"
+          label="My field"
+          onChange={() => {}}
+          checked={[false, false, false]}
+        />
+      </BraidTestProvider>,
+    );
+    const checkbox = getByRole('checkbox') as HTMLInputElement;
+
+    expect(checkbox.getAttribute('aria-checked')).toBe('false');
+    expect(checkbox.indeterminate).toBe(false);
+    expect(checkbox.checked).toBe(false);
+  });
+
+  it('should resolve to unchecked when an empty array is provided', () => {
+    const { getByRole } = render(
+      <BraidTestProvider>
+        <Checkbox
+          id="field"
+          label="My field"
+          onChange={() => {}}
+          checked={[]}
+        />
+      </BraidTestProvider>,
+    );
+    const checkbox = getByRole('checkbox') as HTMLInputElement;
+
+    expect(checkbox.getAttribute('aria-checked')).toBe('false');
+    expect(checkbox.indeterminate).toBe(false);
+    expect(checkbox.checked).toBe(false);
+  });
 });
