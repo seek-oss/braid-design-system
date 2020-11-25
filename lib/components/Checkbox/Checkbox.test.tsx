@@ -266,4 +266,22 @@ describe('Checkbox', () => {
     expect(checkbox.indeterminate).toBe(false);
     expect(checkbox.checked).toBe(false);
   });
+
+  it('should resolve to unchecked when an empty array is provided', () => {
+    const { getByRole } = render(
+      <BraidTestProvider>
+        <Checkbox
+          id="field"
+          label="My field"
+          onChange={() => {}}
+          checked={[]}
+        />
+      </BraidTestProvider>,
+    );
+    const checkbox = getByRole('checkbox') as HTMLInputElement;
+
+    expect(checkbox.getAttribute('aria-checked')).toBe('false');
+    expect(checkbox.indeterminate).toBe(false);
+    expect(checkbox.checked).toBe(false);
+  });
 });
