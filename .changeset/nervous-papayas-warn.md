@@ -16,10 +16,6 @@ To simplify the use of tri-state checkboxes, the **checked** prop now supports r
 // Will resolve to "mixed" based on the array of values provided
  <Checkbox
   label="Select all"
-  checked={[
-    getState('one'),
-    getState('two'),
-    getState('three')
-  ]}
+  checked={[ true, false, false ]}
 />
 ```
