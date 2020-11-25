@@ -9,7 +9,7 @@ updated:
 
 **Checkbox:** Support inferring of tri-state checked value
 
-To simplify the use of tri-state checkboxes, the **checked** prop now supports resolving the tri-state value from a array of checked values.
+To simplify the use of tri-state checkboxes, the **checked** prop now supports resolving the tri-state value from an array of checked values.
 
 **EXAMPLE USAGE:**
 ```jsx
