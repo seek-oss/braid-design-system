@@ -35,7 +35,7 @@ const useStackItem = ({ align, space }: UseStackItemProps) => ({
     ? null
     : {
         display: mapResponsiveProp(align, alignToDisplay) || 'flex',
-        flexDirection: 'column',
+        flexDirection: 'column' as const,
         alignItems: alignToFlexAlign(align),
       }),
 });
@@ -75,7 +75,7 @@ const calculateHiddenStackItemProps = (
       hiddenOnMobile ? 'none' : displayMobile,
       hiddenOnTablet ? 'none' : displayTablet,
       hiddenOnDesktop ? 'none' : displayDesktop,
-    ],
+    ] as const,
   };
 };
 
@@ -158,11 +158,13 @@ export const Stack = ({
               <Box
                 width="full"
                 paddingBottom={space}
-                display={[
-                  index === firstItemOnMobile ? 'none' : 'block',
-                  index === firstItemOnTablet ? 'none' : 'block',
-                  index === firstItemOnDesktop ? 'none' : 'block',
-                ]}
+                display={
+                  [
+                    index === firstItemOnMobile ? 'none' : 'block',
+                    index === firstItemOnTablet ? 'none' : 'block',
+                    index === firstItemOnDesktop ? 'none' : 'block',
+                  ] as const
+                }
               >
                 {typeof dividers === 'string' ? (
                   <Divider weight={dividers} />

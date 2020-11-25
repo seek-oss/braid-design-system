@@ -959,7 +959,7 @@ describe('Autosuggest', () => {
       changeHandler.mockClear();
 
       // Simulate suggestions coming back from an API
-      await new Promise((resolve) => {
+      await new Promise<void>((resolve) => {
         setTimeout(() => {
           setSuggestions([
             {
