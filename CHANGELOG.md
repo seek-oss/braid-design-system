@@ -1,5 +1,11 @@
 # braid-design-system
 
+## 29.17.2
+
+### Patch Changes
+
+- Fix type definitions for Stack and scroll components ([#841](https://github.com/seek-oss/braid-design-system/pull/841))
+
 ## 29.17.1
 
 ### Patch Changes
