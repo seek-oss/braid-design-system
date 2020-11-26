@@ -1,49 +1,68 @@
-import React, { useState } from 'react';
-import { ComponentDocs } from '../../../site/src/types';
-import { OverflowMenu, MenuItemCheckbox, Stack, Text, TextLink, Box } from '..';
+import React from 'react';
+import source from '../../utils/source.macro';
+import { ComponentDetail } from '../../../site/src/types';
+import { OverflowMenu, MenuItemCheckbox, Text, TextLink, List, Box } from '..';
 
-const docs: ComponentDocs = {
+const docs: ComponentDetail = {
   category: 'Content',
+  Example: ({ getState, setState }) =>
+    source(
+      <Box style={{ paddingLeft: 200 }}>
+        <OverflowMenu label="Checklist">
+          <MenuItemCheckbox
+            checked={getState('checked1')}
+            onChange={setState('checked1')}
+          >
+            Checkbox
+          </MenuItemCheckbox>
+          <MenuItemCheckbox
+            checked={getState('checked2')}
+            onChange={setState('checked2')}
+          >
+            Checkbox
+          </MenuItemCheckbox>
+          <MenuItemCheckbox
+            checked={getState('checked3')}
+            onChange={setState('checked3')}
+          >
+            Checkbox
+          </MenuItemCheckbox>
+        </OverflowMenu>
+      </Box>,
+    ),
   description: (
-    <Stack space="large">
-      <Text>
-        Follows the{' '}
-        <TextLink href="https://www.w3.org/TR/wai-aria-practices-1.1/#menu">
-          WAI-ARIA Menu Pattern.
-        </TextLink>
-      </Text>
-      <Text>
-        For use within menu components, e.g.{' '}
-        <TextLink href="/components/OverflowMenu">OverflowMenu</TextLink>,{' '}
-        <TextLink href="/components/MenuRenderer">MenuRenderer</TextLink>.
-      </Text>
-    </Stack>
+    <Text>
+      For use within menu components, e.g.{' '}
+      <TextLink href="/components/OverflowMenu">OverflowMenu</TextLink>,{' '}
+      <TextLink href="/components/MenuRenderer">MenuRenderer</TextLink>.
+    </Text>
   ),
-  examples: [
+  accessibility: (
+    <Text>
+      Follows the{' '}
+      <TextLink href="https://www.w3.org/TR/wai-aria-practices-1.1/#menu">
+        WAI-ARIA Menu Pattern.
+      </TextLink>
+    </Text>
+  ),
+  alternatives: [],
+  additional: [
     {
-      label: 'Standard usage',
-      background: 'card',
-      Example: () => {
-        const [checked1, setChecked1] = useState(false);
-        const [checked2, setChecked2] = useState(false);
-        const [checked3, setChecked3] = useState(false);
-
-        return (
-          <Box style={{ paddingLeft: 200 }}>
-            <OverflowMenu label="Checklist">
-              <MenuItemCheckbox checked={checked1} onChange={setChecked1}>
-                Checkbox
-              </MenuItemCheckbox>
-              <MenuItemCheckbox checked={checked2} onChange={setChecked2}>
-                Checkbox
-              </MenuItemCheckbox>
-              <MenuItemCheckbox checked={checked3} onChange={setChecked3}>
-                Checkbox
-              </MenuItemCheckbox>
-            </OverflowMenu>
-          </Box>
-        );
-      },
+      label: 'See also',
+      description: (
+        <List space="large">
+          <Text tone="secondary">
+            <TextLink href="/components/MenuItem">MenuItem</TextLink> &mdash;
+            For displaying buttons and links within a menu.
+          </Text>
+          <Text tone="secondary">
+            <TextLink href="/components/MenuItemDivider">
+              MenuItemDivider
+            </TextLink>{' '}
+            &mdash; For creating groups within a menu.
+          </Text>
+        </List>
+      ),
     },
   ],
 };
