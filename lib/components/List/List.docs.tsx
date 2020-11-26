@@ -1,171 +1,178 @@
 import React from 'react';
-import { ComponentDocs } from '../../../site/src/types';
-import { List, Text, TextLink, Stack } from '..';
+import source from '../../utils/source.macro';
+import { ComponentDetail } from '../../../site/src/types';
+import { List, Text, TextLink, Stack, Column, Columns } from '..';
 import { IconTick } from '../../playroom/components';
 
-const docs: ComponentDocs = {
+const docs: ComponentDetail = {
   category: 'Content',
   migrationGuide: true,
-  description: (
-    <Stack space="large">
-      <Text>
-        Provides a wrapper element that converts each child element into a list
-        item.
-      </Text>
-      <Text>
-        When setting a size or tone, these values will cascade to nested List
-        and <TextLink href="/components/Text">Text</TextLink> elements.
-      </Text>
-    </Stack>
-  ),
-  examples: [
+  Example: () =>
+    source(
+      <Columns space="large" collapseBelow="desktop">
+        <Column>
+          <List>
+            <Text>Bullet</Text>
+            <Text>Bullet</Text>
+            <Text>Bullet</Text>
+          </List>
+        </Column>
+        <Column>
+          <List type="number">
+            <Text>Number</Text>
+            <Text>Number</Text>
+            <Text>Number</Text>
+          </List>
+        </Column>
+        <Column>
+          <List type="alpha">
+            <Text>Alpha</Text>
+            <Text>Alpha</Text>
+            <Text>Alpha</Text>
+          </List>
+        </Column>
+        <Column>
+          <List type="roman">
+            <Text>Roman</Text>
+            <Text>Roman</Text>
+            <Text>Roman</Text>
+          </List>
+        </Column>
+        <Column>
+          <List type="icon" icon={<IconTick />}>
+            <Text>Icon</Text>
+            <Text>Icon</Text>
+            <Text>Icon</Text>
+          </List>
+        </Column>
+      </Columns>,
+    ),
+  accessibility: <Text>List semantics are handled for you automatically.</Text>,
+  alternatives: [],
+  additional: [
     {
-      label: 'Standard List',
-      Example: () => (
-        <List>
-          <Text>This is a list item.</Text>
-          <Text>This is a list item.</Text>
-          <Text>This is a list item.</Text>
-        </List>
+      label: 'Rich content',
+      description: (
+        <Text>
+          You can use a <TextLink href="/components/Stack">Stack</TextLink> as a
+          list item to display multiple lines of text.
+        </Text>
       ),
+      Example: () =>
+        source(
+          <List space="large">
+            <Stack space="medium">
+              <Text weight="strong">This is a paragraph.</Text>
+              <Text>This is another paragraph.</Text>
+            </Stack>
+            <Stack space="medium">
+              <Text weight="strong">This is a paragraph.</Text>
+              <Text>This is another paragraph.</Text>
+            </Stack>
+          </List>,
+        ),
     },
     {
-      label: 'Numbered List',
-      Example: () => (
-        <List type="number">
-          <Text>This is a numbered list item.</Text>
-          <Text>This is a numbered list item.</Text>
-          <Text>This is a numbered list item.</Text>
-        </List>
+      label: 'Nested lists',
+      description: (
+        <Text>Lists of varying types can be nested within each other.</Text>
       ),
+      Example: () =>
+        source(
+          <List space="large" type="number">
+            <Stack space="medium">
+              <Text>Number list</Text>
+              <List type="alpha">
+                <Text>Alpha list</Text>
+                <Text>Alpha list</Text>
+                <Text>Alpha list</Text>
+              </List>
+            </Stack>
+            <Stack space="medium">
+              <Text>Number list</Text>
+              <List type="alpha">
+                <Text>Alpha list</Text>
+                <Text>Alpha list</Text>
+                <Text>Alpha list</Text>
+              </List>
+            </Stack>
+          </List>,
+        ),
     },
     {
-      label: 'Alpha List',
-      Example: () => (
-        <List type="alpha">
-          <Text>This is an alpha list item.</Text>
-          <Text>This is an alpha list item.</Text>
-          <Text>This is an alpha list item.</Text>
-        </List>
+      label: 'Tone, size and space',
+      description: (
+        <Text>
+          Lists support the same sizes and tones as{' '}
+          <TextLink href="/components/Text">Text</TextLink>, and the same
+          spacing as <TextLink href="/components/Stack">Stack</TextLink>.
+        </Text>
       ),
+      Example: () =>
+        source(
+          <Columns space="large" collapseBelow="desktop">
+            <Column>
+              <List tone="secondary" size="large" space="gutter">
+                <Text>Large</Text>
+                <Text>Large</Text>
+                <Text>Large</Text>
+              </List>
+            </Column>
+            <Column>
+              <List tone="secondary" size="standard" space="medium">
+                <Text>Standard</Text>
+                <Text>Standard</Text>
+                <Text>Standard</Text>
+              </List>
+            </Column>
+            <Column>
+              <List tone="secondary" size="small" space="small">
+                <Text>Small</Text>
+                <Text>Small</Text>
+                <Text>Small</Text>
+              </List>
+            </Column>
+            <Column>
+              <List tone="secondary" size="xsmall" space="small">
+                <Text>Xsmall</Text>
+                <Text>Xsmall</Text>
+                <Text>Xsmall</Text>
+              </List>
+            </Column>
+          </Columns>,
+        ),
     },
     {
-      label: 'Roman List',
-      Example: () => (
-        <List type="roman">
-          <Text>This is a Roman list item.</Text>
-          <Text>This is a Roman list item.</Text>
-          <Text>This is a Roman list item.</Text>
-        </List>
+      label: 'Custom start position',
+      description: (
+        <Text>Lists can be started from a higher number if needed.</Text>
       ),
-    },
-    {
-      label: 'Icon List',
-      Example: () => (
-        <List type="icon" icon={<IconTick tone="positive" />}>
-          <Text>This is a list item.</Text>
-          <Text>This is a list item.</Text>
-          <Text>This is a list item.</Text>
-        </List>
-      ),
-    },
-    {
-      label: 'List with paragraphs',
-      Example: () => (
-        <List space="large">
-          <Stack space="medium">
-            <Text>This is a paragraph.</Text>
-            <Text>This is another paragraph.</Text>
-          </Stack>
-          <Stack space="medium">
-            <Text>This is a paragraph.</Text>
-            <Text>This is another paragraph.</Text>
-          </Stack>
-        </List>
-      ),
-    },
-    {
-      label: 'Nested Lists',
-      Example: () => (
-        <List space="large" type="number">
-          <Stack space="medium">
-            <Text>This has a nested list.</Text>
-            <List type="alpha">
-              <Text>This is a nested list item.</Text>
-              <Text>This is a nested list item.</Text>
-              <Text>This is a nested list item.</Text>
-            </List>
-          </Stack>
-          <Stack space="medium">
-            <Text>This has a nested list.</Text>
-            <List type="alpha">
-              <Text>This is a nested list item.</Text>
-              <Text>This is a nested list item.</Text>
-              <Text>This is a nested list item.</Text>
-            </List>
-          </Stack>
-        </List>
-      ),
-    },
-    {
-      label: 'List with custom text size',
-      Example: () => (
-        <List size="large">
-          <Text>This is a large list item.</Text>
-          <Text>This is a large list item.</Text>
-          <Text>This is a large list item.</Text>
-        </List>
-      ),
-    },
-    {
-      label: 'List with custom space between items',
-      Example: () => (
-        <List space="large">
-          <Text>List item with large space.</Text>
-          <Text>List item with large space.</Text>
-          <Text>List item with large space.</Text>
-        </List>
-      ),
-    },
-    {
-      label: 'List with custom tone',
-      Example: () => (
-        <List tone="secondary">
-          <Text>List item with secondary tone.</Text>
-          <Text>List item with secondary tone.</Text>
-          <Text>List item with secondary tone.</Text>
-        </List>
-      ),
-    },
-    {
-      label: 'Numbered List with custom start position',
-      Example: () => (
-        <List type="number" start={9}>
-          <Text>This is a numbered list item.</Text>
-          <Text>This is a numbered list item.</Text>
-          <Text>This is a numbered list item.</Text>
-        </List>
-      ),
-    },
-    {
-      label: 'Alpha List with custom start position',
-      Example: () => (
-        <List type="alpha" start={9}>
-          <Text>This is an alpha list item.</Text>
-          <Text>This is an alpha list item.</Text>
-          <Text>This is an alpha list item.</Text>
-        </List>
-      ),
-    },
-    {
-      label: 'Roman List with custom start position',
-      Example: () => (
-        <List type="roman" start={9}>
-          <Text>This is a Roman list item.</Text>
-          <Text>This is a Roman list item.</Text>
-          <Text>This is a Roman list item.</Text>
-        </List>
-      ),
+      Example: () =>
+        source(
+          <Columns space="large" collapseBelow="desktop">
+            <Column>
+              <List type="number" start={9}>
+                <Text>Number</Text>
+                <Text>Number</Text>
+                <Text>Number</Text>
+              </List>
+            </Column>
+            <Column>
+              <List type="alpha" start={9}>
+                <Text>Alpha</Text>
+                <Text>Alpha</Text>
+                <Text>Alpha</Text>
+              </List>
+            </Column>
+            <Column>
+              <List type="roman" start={9}>
+                <Text>Roman</Text>
+                <Text>Roman</Text>
+                <Text>Roman</Text>
+              </List>
+            </Column>
+          </Columns>,
+        ),
     },
   ],
 };
