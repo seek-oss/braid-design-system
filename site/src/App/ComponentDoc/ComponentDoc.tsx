@@ -195,7 +195,9 @@ export const ComponentDoc = ({
               </PlayroomStateProvider>
             ) : null}
 
-            {'description' in docs ? docs.description : null}
+            {'description' in docs ? (
+              <Stack space="large">{docs.description}</Stack>
+            ) : null}
 
             {'alternatives' in docs && docs.alternatives.length > 0 ? (
               <Stack space="large">

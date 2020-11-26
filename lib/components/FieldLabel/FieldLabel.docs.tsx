@@ -59,7 +59,7 @@ const docs: ComponentDetail = {
     {
       label: 'See also',
       description: (
-        <List>
+        <List space="large">
           <Text tone="secondary">
             <TextLink href="/components/FieldMessage">FieldMessage</TextLink>{' '}
             &mdash; For displaying messages below a custom field.

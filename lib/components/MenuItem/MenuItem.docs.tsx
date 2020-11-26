@@ -1,10 +1,10 @@
 import React from 'react';
-import { ComponentDocs } from '../../../site/src/types';
+import source from '../../utils/source.macro';
+import { ComponentDetail } from '../../../site/src/types';
 import {
   OverflowMenu,
   MenuItem,
   MenuItemLink,
-  Stack,
   Text,
   TextLink,
   Strong,
@@ -12,51 +12,82 @@ import {
   Box,
 } from '..';
 
-const docs: ComponentDocs = {
+const docs: ComponentDetail = {
   category: 'Content',
   subComponents: ['MenuItemLink'],
+  Example: () =>
+    source(
+      <Box paddingLeft="xxlarge">
+        <OverflowMenu label="Options">
+          <MenuItem onClick={() => {}}>Button</MenuItem>
+          <MenuItemLink onClick={() => {}} href="#">
+            Link
+          </MenuItemLink>
+        </OverflowMenu>
+      </Box>,
+    ),
   description: (
-    <Stack space="large">
-      <Text>
-        Follows the{' '}
-        <TextLink href="https://www.w3.org/TR/wai-aria-practices-1.1/#menu">
-          WAI-ARIA Menu Pattern.
-        </TextLink>
-      </Text>
-      <Text>
-        For use within menu components, e.g.{' '}
-        <TextLink href="/components/OverflowMenu">OverflowMenu</TextLink>,{' '}
-        <TextLink href="/components/MenuRenderer">MenuRenderer</TextLink>.
-      </Text>
-      <Text>Two semantic variants are provided:</Text>
-      <List>
-        <Text>
-          <Strong>MenuItem</Strong> which renders a button.
-        </Text>
-        <Text>
-          <Strong>MenuItemLink</Strong> which renders a link using the{' '}
-          <Strong>linkComponent</Strong> implementation from{' '}
-          <TextLink href="/components/BraidProvider">BraidProvider</TextLink>.
-        </Text>
-      </List>
-      <Text>
-        All semantic variants can be used interchangeably within a single menu.
-      </Text>
-    </Stack>
+    <Text>
+      For use within menu components, e.g.{' '}
+      <TextLink href="/components/OverflowMenu">OverflowMenu</TextLink>,{' '}
+      <TextLink href="/components/MenuRenderer">MenuRenderer</TextLink>.
+    </Text>
   ),
-  examples: [
+  alternatives: [],
+  accessibility: (
+    <Text>
+      Follows the{' '}
+      <TextLink href="https://www.w3.org/TR/wai-aria-practices-1.1/#menu">
+        WAI-ARIA Menu Pattern.
+      </TextLink>
+    </Text>
+  ),
+  additional: [
     {
-      label: 'Standard usage',
-      background: 'card',
-      Example: ({ handler }) => (
-        <Box paddingLeft="xxlarge">
-          <OverflowMenu label="Options">
-            <MenuItem onClick={handler}>Button</MenuItem>
-            <MenuItemLink onClick={handler} href="#">
-              Link
-            </MenuItemLink>
-          </OverflowMenu>
-        </Box>
+      label: 'Semantic variants',
+      description: (
+        <>
+          <Text>
+            You can choose between semantic links and buttons via the following
+            components:
+          </Text>
+          <List>
+            <Text>
+              <Strong>MenuItem</Strong> which renders a button.
+            </Text>
+            <Text>
+              <Strong>MenuItemLink</Strong> which renders a link, using the{' '}
+              <Strong>linkComponent</Strong> implementation from{' '}
+              <TextLink href="/components/BraidProvider">
+                BraidProvider
+              </TextLink>
+              .
+            </Text>
+          </List>
+          <Text>
+            All semantic variants can be used interchangeably within a single
+            menu.
+          </Text>
+        </>
+      ),
+    },
+    {
+      label: 'See also',
+      description: (
+        <List space="large">
+          <Text tone="secondary">
+            <TextLink href="/components/MenuItemCheckbox">
+              MenuItemCheckbox
+            </TextLink>{' '}
+            &mdash; For displaying checkboxes within a menu.
+          </Text>
+          <Text tone="secondary">
+            <TextLink href="/components/MenuItemDivider">
+              MenuItemDivider
+            </TextLink>{' '}
+            &mdash; For creating groups within a menu.
+          </Text>
+        </List>
       ),
     },
   ],

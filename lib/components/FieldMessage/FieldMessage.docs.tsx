@@ -64,7 +64,7 @@ const docs: ComponentDetail = {
     {
       label: 'See also',
       description: (
-        <List>
+        <List space="large">
           <Text tone="secondary">
             <TextLink href="/components/FieldLabel">FieldLabel</TextLink>{' '}
             &mdash; For displaying labels above a custom field.
