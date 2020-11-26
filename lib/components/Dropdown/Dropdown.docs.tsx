@@ -40,8 +40,7 @@ const docs: ComponentDetail = {
       label: 'Option groups',
       description: (
         <Text>
-          Option grouping is supported by using the native{' '}
-          <Strong>optgroup</Strong> elements.
+          Grouping is supported via native <Strong>optgroup</Strong> elements.
         </Text>
       ),
       Example: ({ id, getState, setState }) =>
@@ -76,14 +75,14 @@ const docs: ComponentDetail = {
           </Text>
           <List>
             <Text>
-              <Strong>label</Strong>— primary title of the field,
+              <Strong>label</Strong> — primary title of the field,
             </Text>
             <Text>
-              <Strong>secondaryLabel</Strong>— additional context, typically
+              <Strong>secondaryLabel</Strong> — additional context, typically
               used to indicate optionality of a field,
             </Text>
             <Text>
-              <Strong>tertiaryLabel</Strong>- further context, typically used
+              <Strong>tertiaryLabel</Strong> — further context, typically used
               for providing assistance with a field.
             </Text>
           </List>
