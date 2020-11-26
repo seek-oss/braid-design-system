@@ -186,8 +186,6 @@ export const ComponentDoc = ({
         <Route exact path={`/components/${componentName}`}>
           <PageTitle title={componentName} />
           <Stack space="xxlarge">
-            {'description' in docs ? docs.description : null}
-
             {Example ? (
               <PlayroomStateProvider>
                 <RenderExample
@@ -196,6 +194,8 @@ export const ComponentDoc = ({
                 />
               </PlayroomStateProvider>
             ) : null}
+
+            {'description' in docs ? docs.description : null}
 
             {'alternatives' in docs && docs.alternatives.length > 0 ? (
               <Stack space="large">

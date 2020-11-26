@@ -29,6 +29,7 @@ export interface ComponentDetail {
   category: 'Logic' | 'Layout' | 'Content' | 'Icon';
   deprecationWarning?: ReactNodeNoStrings;
   migrationGuide?: boolean;
+  description?: ReactNodeNoStrings;
   subComponents?: string[];
   Example: (props: ExampleProps) => Source<ReactChild>;
   alternatives: Array<{ name: string; description: string }>;
