@@ -51,9 +51,8 @@ const docs: ComponentDetail = {
           </Text>
           <Text>
             If the Checkbox is not part of a list then a{' '}
-            <Strong>message</Strong> should be also provided. When navigating
-            with a screen reader, the message will be announced on focus of the
-            field.
+            <Strong>message</Strong> should also be provided. When navigating
+            with a screen reader, this will be announced on focus of the field.
           </Text>
         </>
       ),

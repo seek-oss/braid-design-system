@@ -1,38 +1,77 @@
 import React from 'react';
 import { Snippets } from '../private/Snippets';
-import { Dropdown } from '../../playroom/components';
+import { Dropdown, IconLocation } from '../../playroom/components';
+import source from '../../utils/source.macro';
 
 export const snippets: Snippets = [
   {
     name: 'Standard',
-    code: (
-      <Dropdown label="Label">
-        <option>Option</option>
-        <option>Option</option>
-        <option>Option</option>
-      </Dropdown>
+    code: source(
+      <Dropdown label="Label" placeholder="Please select">
+        <option>Option 1</option>
+        <option>Option 2</option>
+        <option>Option 3</option>
+      </Dropdown>,
     ),
   },
   {
-    name: 'Grouped',
-    code: (
-      <Dropdown label="Location" placeholder="Please select a location">
-        <optgroup label="Major Cities">
-          <option value="3004">Melbourne</option>
-          <option value="3002">Sydney</option>
+    name: 'With option groups',
+    code: source(
+      <Dropdown label="Label" placeholder="Please select">
+        <optgroup label="Group 1">
+          <option>Option 1</option>
+          <option>Option 2</option>
+          <option>Option 3</option>
         </optgroup>
-        <option value="3020">Wonthaggi</option>
-      </Dropdown>
+        <optgroup label="Group 2">
+          <option>Option A</option>
+          <option>Option B</option>
+          <option>Option C</option>
+        </optgroup>
+      </Dropdown>,
     ),
   },
   {
-    name: 'With error',
-    code: (
-      <Dropdown tone="critical" message="Required field" label="Label">
-        <option>Option</option>
-        <option>Option</option>
-        <option>Option</option>
-      </Dropdown>
+    name: 'With an error',
+    code: source(
+      <Dropdown
+        label="Label"
+        placeholder="Please select"
+        tone="critical"
+        message="Required field"
+      >
+        <option>Option 1</option>
+        <option>Option 2</option>
+        <option>Option 3</option>
+      </Dropdown>,
+    ),
+  },
+  {
+    name: 'With a description',
+    code: source(
+      <Dropdown
+        label="Label"
+        placeholder="Please select"
+        description="Extra information about the field"
+      >
+        <option>Option 1</option>
+        <option>Option 2</option>
+        <option>Option 3</option>
+      </Dropdown>,
+    ),
+  },
+  {
+    name: 'With an icon',
+    code: source(
+      <Dropdown
+        label="Label"
+        placeholder="Please select"
+        icon={<IconLocation />}
+      >
+        <option>Option 1</option>
+        <option>Option 2</option>
+        <option>Option 3</option>
+      </Dropdown>,
     ),
   },
 ];
