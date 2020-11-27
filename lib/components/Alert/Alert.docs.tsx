@@ -11,19 +11,19 @@ const docs: ComponentDetail = {
     source(
       <Stack space="medium">
         <Alert tone="promote">
-          <Text>This is a promoted Alert message.</Text>
+          <Text>This is a promoted message.</Text>
         </Alert>
         <Alert tone="info">
-          <Text>This is an informative Alert message.</Text>
+          <Text>This is an informative message.</Text>
         </Alert>
         <Alert tone="positive">
-          <Text>This is a positive Alert message.</Text>
+          <Text>This is a positive message.</Text>
         </Alert>
         <Alert tone="caution">
-          <Text>This is a cautionary Alert message.</Text>
+          <Text>This is a cautionary message.</Text>
         </Alert>
         <Alert tone="critical">
-          <Text>This is a critical Alert message.</Text>
+          <Text>This is a critical message.</Text>
         </Alert>
       </Stack>,
     ),
@@ -65,7 +65,7 @@ const docs: ComponentDetail = {
             <TextLink href="/components/List">List</TextLink>. We do not
             recommend using{' '}
             <TextLink href="/components/Button">Button</TextLink> elements
-            inside of Alert.
+            inside of message.
           </Text>
           <Text>
             This component has only been designed to use standard size text. Any
@@ -125,19 +125,19 @@ const docs: ComponentDetail = {
           <Card>
             <Stack space="medium">
               <Alert tone="promote">
-                <Text>This is a promoted Alert message.</Text>
+                <Text>This is a promoted message.</Text>
               </Alert>
               <Alert tone="info">
-                <Text>This is an informative Alert message.</Text>
+                <Text>This is an informative message.</Text>
               </Alert>
               <Alert tone="positive">
-                <Text>This is a positive Alert message.</Text>
+                <Text>This is a positive message.</Text>
               </Alert>
               <Alert tone="caution">
-                <Text>This is a cautionary Alert message.</Text>
+                <Text>This is a cautionary message.</Text>
               </Alert>
               <Alert tone="critical">
-                <Text>This is a critical Alert message.</Text>
+                <Text>This is a critical message.</Text>
               </Alert>
             </Stack>
           </Card>,
