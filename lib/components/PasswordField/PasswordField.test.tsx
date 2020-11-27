@@ -187,4 +187,20 @@ describe('PasswordField', () => {
       getByLabelText('My field').getAttribute('aria-describedby'),
     ).toBeNull();
   });
+
+  it('field should be marked as disabled when disabled', () => {
+    const { getByLabelText } = render(
+      <BraidTestProvider>
+        <PasswordField
+          id="field"
+          label="My field"
+          value=""
+          onChange={() => {}}
+          disabled={true}
+        />
+      </BraidTestProvider>,
+    );
+
+    expect(getByLabelText('My field')).toHaveAttribute('disabled');
+  });
 });
