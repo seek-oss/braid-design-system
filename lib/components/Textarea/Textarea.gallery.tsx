@@ -1,165 +1,150 @@
-import React, { ReactNode, useState } from 'react';
+import React from 'react';
 import { ComponentExample } from '../../../site/src/types';
-import { Textarea, TextLink } from '../';
-
-const Container = ({ children }: { children: ReactNode }) => (
-  <div style={{ maxWidth: '300px' }}>{children}</div>
-);
+import { Textarea, TextLink, IconHelp } from '../';
+import source from '../../utils/source.macro';
 
 export const galleryItems: ComponentExample[] = [
   {
-    label: 'Textarea',
-    Container,
-    Example: ({ id, handler }) => (
-      <Textarea
-        id={id}
-        value="Senior Developer"
-        onChange={handler}
-        label="Job Title"
-      />
-    ),
-  },
-  {
-    label: 'Textarea with message',
-    Container,
-    Example: ({ id, handler }) => (
-      <Textarea
-        id={id}
-        value=""
-        onChange={handler}
-        label="Job Title"
-        message="e.g. Senior Developer"
-      />
-    ),
-  },
-  {
-    label: 'Textarea with secondary label',
-    Container,
-    Example: ({ id, handler }) => (
-      <Textarea
-        id={id}
-        value=""
-        onChange={handler}
-        label="Title"
-        secondaryLabel="Optional"
-      />
-    ),
-  },
-  {
-    label: 'Textarea with tertiary label',
-    Container,
-    Example: ({ id, handler }) => (
-      <Textarea
-        id={id}
-        value=""
-        onChange={handler}
-        label="Title"
-        secondaryLabel="Optional"
-        tertiaryLabel={<TextLink href="#">Help?</TextLink>}
-      />
-    ),
-  },
-  {
-    label: 'Textarea with error',
-    Container,
-    Example: ({ id, handler }) => (
-      <Textarea
-        id={id}
-        value="No"
-        onChange={handler}
-        label="Do you like Braid?"
-        message="Answer is incorrect"
-        tone="critical"
-      />
-    ),
-  },
-  {
-    label: 'Textarea with positive message',
-    Container,
-    Example: ({ id, handler }) => (
-      <Textarea
-        id={id}
-        value="Yes"
-        onChange={handler}
-        label="Do you like Braid?"
-        message="Nice one!"
-        tone="positive"
-      />
-    ),
-  },
-  {
-    label: 'Textarea grow field with typing, limited to 6 lines',
-    Container,
-    Example: ({ id }) => {
-      const [value, setValue] = useState('');
-
-      return (
+    label: 'Standard',
+    Example: ({ id, getState, setState }) =>
+      source(
         <Textarea
           id={id}
-          value={value}
-          onChange={(e) => setValue(e.currentTarget.value)}
-          label="Do you like Braid?"
-          lineLimit={6}
-        />
-      );
-    },
+          label="Label"
+          value={getState('textarea')}
+          onChange={setState('textarea')}
+        />,
+      ),
   },
   {
-    label: 'Textarea nearing character limit, eg. 50 characters',
-    Container,
-    Example: ({ id }) => {
-      const [value, setValue] = useState(
-        'The text is nearing the 50 character limit',
-      );
-
-      return (
+    label: 'With additional labels',
+    Example: ({ id, getState, setState }) =>
+      source(
         <Textarea
           id={id}
-          value={value}
-          onChange={(e) => setValue(e.currentTarget.value)}
-          label="Do you like Braid?"
-          characterLimit={50}
-        />
-      );
-    },
+          label="Label"
+          onChange={setState('textarea')}
+          value={getState('textarea')}
+          secondaryLabel="optional"
+          tertiaryLabel={
+            <TextLink href="#">
+              <IconHelp /> Help
+            </TextLink>
+          }
+        />,
+      ),
   },
   {
-    label: 'Textarea exceeding character limit, eg. > 50 characters',
-    Container,
-    Example: ({ id }) => {
-      const [value, setValue] = useState(
-        'The long piece of text exceeding the specified 50 character limit',
-      );
-
-      return (
+    label: 'With a description',
+    Example: ({ id, getState, setState }) =>
+      source(
         <Textarea
           id={id}
-          value={value}
-          onChange={(e) => setValue(e.currentTarget.value)}
-          label="Do you like Braid?"
-          characterLimit={50}
-        />
-      );
-    },
+          label="Label"
+          onChange={setState('textarea')}
+          value={getState('textarea')}
+          description="Longer description of this field"
+        />,
+      ),
   },
   {
-    label: 'Textarea highlighting a range',
-    Container,
-    Example: ({ id }) => {
-      const [value, setValue] = useState(
-        'The long piece of text highlighting a range',
-      );
-
-      return (
+    label: 'With a critical message',
+    Example: ({ id, getState, setState }) =>
+      source(
         <Textarea
           id={id}
-          value={value}
-          onChange={(e) => setValue(e.currentTarget.value)}
-          label="Do you like Braid?"
-          description="Characters 9-22 are invalid"
-          highlightRanges={[{ start: 9, end: 22 }]}
-        />
-      );
-    },
+          label="Label"
+          onChange={setState('textarea')}
+          value={getState('textarea')}
+          tone="critical"
+          message="Critical message"
+        />,
+      ),
+  },
+  {
+    label: 'With a positive message',
+    Example: ({ id, getState, setState }) =>
+      source(
+        <Textarea
+          id={id}
+          label="Label"
+          onChange={setState('textarea')}
+          value={getState('textarea')}
+          tone="positive"
+          message="Positive message"
+        />,
+      ),
+  },
+  {
+    label: 'With a neutral message',
+    Example: ({ id, getState, setState }) =>
+      source(
+        <Textarea
+          id={id}
+          label="Label"
+          onChange={setState('textarea')}
+          value={getState('textarea')}
+          tone="neutral"
+          message="Neutral message"
+        />,
+      ),
+  },
+  {
+    label: 'Disabled field',
+    background: 'card',
+    Example: ({ id, getState, setState }) =>
+      source(
+        <Textarea
+          id={id}
+          label="Label"
+          onChange={setState('textarea')}
+          value={getState('textarea')}
+          disabled={true}
+        />,
+      ),
+  },
+  {
+    label: 'Limiting the number of characters',
+    Example: ({ id, getState, setState, setDefaultState }) =>
+      source(
+        <>
+          {setDefaultState(
+            'textarea',
+            'A long piece of text exceeding the specified character limit of 50',
+          )}
+
+          <Textarea
+            label="Label"
+            id={id}
+            onChange={setState('textarea')}
+            value={getState('textarea')}
+            description="Chactacter limit of 50"
+            characterLimit={50}
+          />
+        </>,
+      ),
+  },
+  {
+    label: 'Highlighting ranges',
+    Example: ({ id, getState, setState, setDefaultState }) =>
+      source(
+        <>
+          {setDefaultState(
+            'textarea',
+            'A long piece of text with a highlighted range',
+          )}
+
+          <Textarea
+            label="Label"
+            id={id}
+            onChange={setState('textarea')}
+            value={getState('textarea')}
+            tone="critical"
+            message="Critical message"
+            description="Characters 7-20 are highlighted"
+            highlightRanges={[{ start: 7, end: 20 }]}
+          />
+        </>,
+      ),
   },
 ];

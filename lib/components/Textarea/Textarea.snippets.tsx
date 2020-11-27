@@ -1,43 +1,82 @@
 import React from 'react';
 import { Snippets } from '../private/Snippets';
-import { Textarea } from '../../playroom/components';
+import { IconHelp, TextLink, Textarea } from '../../playroom/components';
+import source from '../../utils/source.macro';
 
 export const snippets: Snippets = [
   {
     name: 'Standard',
-    code: <Textarea label="Textarea" />,
+    code: source(<Textarea label="Label" />),
   },
   {
-    name: 'With character limit',
-    code: (
+    name: 'With additional labels',
+    code: source(
       <Textarea
-        label="Textarea"
-        secondaryLabel="Max 100 characters"
-        characterLimit={100}
-      />
+        label="Label"
+        secondaryLabel="optional"
+        tertiaryLabel={
+          <TextLink href="#">
+            <IconHelp /> Help
+          </TextLink>
+        }
+      />,
     ),
   },
   {
-    name: 'Fixed height, 5 lines',
-    code: <Textarea label="Textarea" lines={5} grow={false} />,
-  },
-  {
-    name: 'Grow with typing, limit to 7 lines',
-    code: <Textarea label="Textarea" lineLimit={7} />,
-  },
-  {
-    name: 'With error',
-    code: <Textarea label="Textarea" tone="critical" message="Required" />,
-  },
-  {
-    name: 'With highlighting',
-    code: (
+    name: 'With a description',
+    code: source(
       <Textarea
-        label="Textarea"
+        label="Label"
+        description="More detailed description of field."
+      />,
+    ),
+  },
+  {
+    name: 'With a critical message',
+    code: source(
+      <Textarea label="Label" tone="critical" message="Critical message" />,
+    ),
+  },
+  {
+    name: 'With a positive message',
+    code: source(
+      <Textarea label="Label" tone="positive" message="Positive message" />,
+    ),
+  },
+  {
+    name: 'With a neutral message',
+    code: source(
+      <Textarea label="Label" tone="neutral" message="Neutral message" />,
+    ),
+  },
+  {
+    name: 'With fixed height of 5 lines',
+    code: source(<Textarea label="Label" grow={false} lines={5} />),
+  },
+  {
+    name: 'With dynamic height, limited to 7 lines',
+    code: source(<Textarea label="Label" grow={true} lineLimit={7} />),
+  },
+  {
+    name: 'With character limit',
+    code: source(
+      <Textarea
+        label="Label"
+        description="Character limit of 100"
+        characterLimit={100}
+      />,
+    ),
+  },
+  {
+    name: 'With a highlighted range',
+    code: source(
+      <Textarea
+        label="Label"
+        description="Characters 11-20 are highlighted"
         tone="critical"
-        description="Characters 11-20 are invalid"
+        message="Critical message"
         highlightRanges={[{ start: 11, end: 20 }]}
-      />
+      />,
     ),
   },
 ];

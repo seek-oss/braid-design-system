@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { ComponentExample } from '../../../site/src/types';
-import { IconSearch, TextField, TextLink } from '../';
+import { IconSearch, IconHelp, TextField, TextLink } from '../';
 import source from '../../utils/source.macro';
-import { IconHelp } from '../icons';
 
 export const galleryItems: ComponentExample[] = [
   {
@@ -87,7 +86,7 @@ export const galleryItems: ComponentExample[] = [
       source(
         <TextField
           label="Label"
-          id={`${id}_1`}
+          id={id}
           onChange={setState('textfield')}
           value={getState('textfield')}
           tone="positive"
@@ -101,7 +100,7 @@ export const galleryItems: ComponentExample[] = [
       source(
         <TextField
           label="Label"
-          id={`${id}_1`}
+          id={id}
           onChange={setState('textfield')}
           value={getState('textfield')}
           tone="neutral"
@@ -116,7 +115,7 @@ export const galleryItems: ComponentExample[] = [
       source(
         <TextField
           label="Label"
-          id={`${id}_1`}
+          id={id}
           onChange={setState('textfield')}
           value={getState('textfield')}
           disabled={true}
