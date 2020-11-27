@@ -70,6 +70,7 @@ const NamedPasswordField = forwardRef<HTMLInputElement, PasswordFieldProps>(
         value={value}
         icon={undefined}
         labelId={undefined}
+        disabled={disabled}
         secondaryMessage={null}
         secondaryIcon={
           disabled ? null : (
