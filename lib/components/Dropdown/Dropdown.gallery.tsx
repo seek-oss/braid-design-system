@@ -45,7 +45,7 @@ export const galleryItems: ComponentExample[] = [
       ),
   },
   {
-    label: 'With an error',
+    label: 'With additional labels',
     Example: ({ id, getState, setState }) =>
       source(
         <Dropdown
@@ -54,8 +54,12 @@ export const galleryItems: ComponentExample[] = [
           onChange={setState('dropdown')}
           value={getState('dropdown')}
           placeholder="Please select"
-          tone="critical"
-          message="Required"
+          secondaryLabel="optional"
+          tertiaryLabel={
+            <TextLink href="#">
+              <IconHelp /> Help
+            </TextLink>
+          }
         >
           <option>Option 1</option>
           <option>Option 2</option>
@@ -97,7 +101,7 @@ export const galleryItems: ComponentExample[] = [
       ),
   },
   {
-    label: 'With additional labels',
+    label: 'With a critical message',
     Example: ({ id, getState, setState }) =>
       source(
         <Dropdown
@@ -106,12 +110,26 @@ export const galleryItems: ComponentExample[] = [
           onChange={setState('dropdown')}
           value={getState('dropdown')}
           placeholder="Please select"
-          secondaryLabel="optional"
-          tertiaryLabel={
-            <TextLink href="#">
-              <IconHelp /> Help
-            </TextLink>
-          }
+          tone="critical"
+          message="Critical message"
+        >
+          <option>Option 1</option>
+          <option>Option 2</option>
+        </Dropdown>,
+      ),
+  },
+  {
+    label: 'With a positive message',
+    Example: ({ id, getState, setState }) =>
+      source(
+        <Dropdown
+          label="Label"
+          id={id}
+          onChange={setState('dropdown')}
+          value={getState('dropdown')}
+          placeholder="Please select"
+          tone="positive"
+          message="Positive message"
         >
           <option>Option 1</option>
           <option>Option 2</option>

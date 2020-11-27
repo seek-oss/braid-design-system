@@ -9,8 +9,10 @@ export const snippets: Snippets = [
     code: source(<Checkbox label="Label" />),
   },
   {
-    name: 'With an error',
-    code: source(<Checkbox label="Label" tone="critical" message="Required" />),
+    name: 'With a critical message',
+    code: source(
+      <Checkbox label="Label" tone="critical" message="Critical message" />,
+    ),
   },
   {
     name: 'With a description',

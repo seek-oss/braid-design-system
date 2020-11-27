@@ -41,31 +41,42 @@ const docs: ComponentDetail = {
   ],
   additional: [
     {
-      label: 'Error messages',
+      label: 'Message and tone',
       description: (
         <>
           <Text>
-            An error state is communicated by setting the <Strong>tone</Strong>{' '}
-            to <Strong>{'"critical"'}</Strong>. Read more about{' '}
-            <TextLink href="/foundations/tones">tones</TextLink>.
+            A <Strong>message</Strong> is typically used to communicate the
+            status of a field, such as an error message. This will be announced
+            on focus of the field and can be combined with a{' '}
+            <TextLink href="/foundations/tones">tone</TextLink> to illustrate
+            its purpose.
           </Text>
           <Text>
-            If the Checkbox is not part of a list then a{' '}
-            <Strong>message</Strong> should also be provided. When navigating
-            with a screen reader, this will be announced on focus of the field.
+            The supported tones are: <Strong>{'"critical"'}</Strong> and{' '}
+            <Strong>{'"neutral"'}</Strong>.
           </Text>
         </>
       ),
-      Example: ({ id, handler }) =>
+      Example: ({ id, getState, setState }) =>
         source(
-          <Checkbox
-            id={id}
-            checked={false}
-            onChange={handler}
-            label="Label"
-            tone="critical"
-            message="This is a critical message"
-          />,
+          <Stack space="large">
+            <Checkbox
+              id={id}
+              onChange={setState('checkbox')}
+              checked={getState('checkbox')}
+              label="Label"
+              tone="critical"
+              message="Critical message"
+            />
+            <Checkbox
+              id={id}
+              onChange={setState('checkbox2')}
+              checked={getState('checkbox2')}
+              label="Label"
+              tone="neutral"
+              message="Neutral message"
+            />
+          </Stack>,
         ),
     },
     {

@@ -8,6 +8,7 @@ import {
   Text,
   TextLink,
   IconLocation,
+  Stack,
 } from '../';
 import source from '../../utils/source.macro';
 
@@ -70,7 +71,7 @@ const docs: ComponentDetail = {
       description: (
         <>
           <Text>
-            Dropdown supports all three levels of{' '}
+            Supports all three levels of{' '}
             <TextLink href="/components/FieldLabel">FieldLabel</TextLink>:
           </Text>
           <List>
@@ -109,35 +110,62 @@ const docs: ComponentDetail = {
         ),
     },
     {
-      label: 'Error messages',
+      label: 'Message and tone',
       description: (
         <>
           <Text>
-            An error state is communicated by setting the <Strong>tone</Strong>{' '}
-            to <Strong>{'"critical"'}</Strong>. Read more about{' '}
-            <TextLink href="/foundations/tones">tones</TextLink>.
+            A <Strong>message</Strong> is typically used to communicate the
+            status of a field, such as an error message. This will be announced
+            on focus of the field and can be combined with a{' '}
+            <TextLink href="/foundations/tones">tone</TextLink> to illustrate
+            its purpose.
           </Text>
           <Text>
-            A <Strong>message</Strong> should be provided for additional
-            context. When navigating with a screen reader, this will be
-            announced on focus of the field.
+            The supported tones are: <Strong>{'"critical"'}</Strong>,
+            <Strong>{'"positive"'}</Strong>, and <Strong>{'"neutral"'}</Strong>.
           </Text>
         </>
       ),
       Example: ({ id, getState, setState }) =>
         source(
-          <Dropdown
-            label="Label"
-            id={id}
-            onChange={setState('dropdown')}
-            value={getState('dropdown')}
-            tone="critical"
-            message="Required"
-            placeholder="Please select"
-          >
-            <option>Option 1</option>
-            <option>Option 2</option>
-          </Dropdown>,
+          <Stack space="large">
+            <Dropdown
+              label="Label"
+              id={`${id}_1`}
+              onChange={setState('dropdown')}
+              value={getState('dropdown')}
+              tone="critical"
+              message="Critical message"
+              placeholder="Please select"
+            >
+              <option>Option 1</option>
+              <option>Option 2</option>
+            </Dropdown>
+            <Dropdown
+              label="Label"
+              id={`${id}_2`}
+              onChange={setState('dropdown2')}
+              value={getState('dropdown2')}
+              tone="positive"
+              message="Positive message"
+              placeholder="Please select"
+            >
+              <option>Option 1</option>
+              <option>Option 2</option>
+            </Dropdown>
+            <Dropdown
+              label="Label"
+              id={`${id}_3`}
+              onChange={setState('dropdown3')}
+              value={getState('dropdown3')}
+              tone="neutral"
+              message="Neutral message"
+              placeholder="Please select"
+            >
+              <option>Option 1</option>
+              <option>Option 2</option>
+            </Dropdown>
+          </Stack>,
         ),
     },
     {
@@ -168,8 +196,8 @@ const docs: ComponentDetail = {
       label: 'Disabled field',
       description: (
         <Text>
-          A Dropdown can be marked as disabled by passing <Strong>true</Strong>{' '}
-          to the <Strong>disabled</Strong> prop.
+          Mark the field as disabled by passing <Strong>true</Strong> to the{' '}
+          <Strong>disabled</Strong> prop.
         </Text>
       ),
       background: 'card',

@@ -1,44 +1,57 @@
-import React, { useState, ReactNode } from 'react';
+import React, { useState } from 'react';
 import { ComponentExample } from '../../../site/src/types';
 import { IconSearch, TextField, TextLink } from '../';
-
-const Container = ({ children }: { children: ReactNode }) => (
-  <div style={{ maxWidth: '300px' }}>{children}</div>
-);
+import source from '../../utils/source.macro';
+import { IconHelp } from '../icons';
 
 export const galleryItems: ComponentExample[] = [
   {
-    label: 'TextField',
-    Container,
-    Example: ({ id, handler }) => (
-      <TextField
-        label="Job Title"
-        id={id}
-        onChange={handler}
-        value="Senior Developer"
-      />
-    ),
+    label: 'Standard',
+    Example: ({ id, getState, setState }) =>
+      source(
+        <TextField
+          label="Label"
+          id={id}
+          onChange={setState('textfield')}
+          value={getState('textfield')}
+          onClear={() => setState('textfield', '')}
+        />,
+      ),
   },
   {
-    label: 'TextField with clear button',
-    Container,
-    Example: ({ id }) => {
-      const [value, setValue] = useState('Clear me');
-
-      return (
+    label: 'With additional labels',
+    Example: ({ id, getState, setState }) =>
+      source(
         <TextField
-          label="Job Title"
+          label="Label"
           id={id}
-          onChange={(e) => setValue(e.currentTarget.value)}
-          onClear={() => setValue('')}
-          value={value}
-        />
-      );
-    },
+          onChange={setState('textfield')}
+          value={getState('textfield')}
+          secondaryLabel="optional"
+          tertiaryLabel={
+            <TextLink href="#">
+              <IconHelp /> Help
+            </TextLink>
+          }
+        />,
+      ),
+  },
+  {
+    label: 'With a description',
+    Example: ({ id, getState, setState }) =>
+      source(
+        <TextField
+          label="Label"
+          id={id}
+          onChange={setState('textfield')}
+          value={getState('textfield')}
+          onClear={() => setState('textfield', '')}
+          description="Longer description of this field"
+        />,
+      ),
   },
   {
     label: 'TextField with icon',
-    Container,
     Example: ({ id }) => {
       const [value, setValue] = useState('');
 
@@ -55,85 +68,59 @@ export const galleryItems: ComponentExample[] = [
     },
   },
   {
-    label: 'TextField with message',
-    Container,
-    Example: ({ id, handler }) => (
-      <TextField
-        label="Job Title"
-        id={id}
-        value=""
-        message="e.g. Senior Developer"
-        onChange={handler}
-      />
-    ),
+    label: 'With a critical message',
+    Example: ({ id, getState, setState }) =>
+      source(
+        <TextField
+          label="Label"
+          id={`${id}_1`}
+          onChange={setState('textfield')}
+          value={getState('textfield')}
+          tone="critical"
+          message="Critical message"
+        />,
+      ),
   },
   {
-    label: 'TextField with secondary label',
-    Container,
-    Example: ({ id, handler }) => (
-      <TextField
-        label="Title"
-        secondaryLabel="Optional"
-        id={id}
-        value=""
-        onChange={handler}
-      />
-    ),
+    label: 'With a positive message',
+    Example: ({ id, getState, setState }) =>
+      source(
+        <TextField
+          label="Label"
+          id={`${id}_1`}
+          onChange={setState('textfield')}
+          value={getState('textfield')}
+          tone="positive"
+          message="Positive message"
+        />,
+      ),
   },
   {
-    label: 'TextField with tertiary label',
-    Container,
-    Example: ({ id, handler }) => (
-      <TextField
-        label="Title"
-        secondaryLabel="Optional"
-        tertiaryLabel={<TextLink href="#">Help?</TextLink>}
-        id={id}
-        value=""
-        onChange={handler}
-      />
-    ),
+    label: 'With a neutral message',
+    Example: ({ id, getState, setState }) =>
+      source(
+        <TextField
+          label="Label"
+          id={`${id}_1`}
+          onChange={setState('textfield')}
+          value={getState('textfield')}
+          tone="neutral"
+          message="Neutral message"
+        />,
+      ),
   },
   {
-    label: 'TextField with description',
-    Container,
-    Example: ({ id, handler }) => (
-      <TextField
-        label="Title"
-        secondaryLabel="Optional"
-        description="Longer description of this field"
-        id={id}
-        value=""
-        onChange={handler}
-      />
-    ),
-  },
-  {
-    label: 'TextField with error',
-    Container,
-    Example: ({ id, handler }) => (
-      <TextField
-        label="Do you like Braid?"
-        tone="critical"
-        id={id}
-        value="No"
-        message="Answer is incorrect"
-        onChange={handler}
-      />
-    ),
-  },
-  {
-    label: 'TextField with postive message',
-    Container,
-    Example: ({ id, handler }) => (
-      <TextField
-        label="Do you like Braid?"
-        id={id}
-        value="Yes"
-        message="Nice one!"
-        tone="positive"
-        onChange={handler}
-      />
-    ),
+    label: 'Disabled field',
+    background: 'card',
+    Example: ({ id, getState, setState }) =>
+      source(
+        <TextField
+          label="Label"
+          id={`${id}_1`}
+          onChange={setState('textfield')}
+          value={getState('textfield')}
+          disabled={true}
+        />,
+      ),
   },
 ];

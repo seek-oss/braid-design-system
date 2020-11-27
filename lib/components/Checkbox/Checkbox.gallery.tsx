@@ -23,7 +23,7 @@ export const galleryItems: ComponentExample[] = [
       ),
   },
   {
-    label: 'With an error',
+    label: 'With a critical message',
     Example: ({ id, getState, toggleState }) =>
       source(
         <Checkbox
@@ -31,7 +31,7 @@ export const galleryItems: ComponentExample[] = [
           checked={getState('checked')}
           onChange={() => toggleState('checked')}
           label="Label"
-          message="This is a critical message"
+          message="Critical message"
           tone="critical"
         />,
       ),
