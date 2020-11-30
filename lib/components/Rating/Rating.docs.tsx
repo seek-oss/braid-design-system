@@ -1,30 +1,41 @@
 import React from 'react';
-import { ComponentDocs } from '../../../site/src/types';
-import { Rating } from '../';
+import source from '../../utils/source.macro';
+import { ComponentDetail } from '../../../site/src/types';
+import { Rating, Stack, Text, Strong, TextLink } from '../';
 
-const docs: ComponentDocs = {
+const docs: ComponentDetail = {
   category: 'Content',
   migrationGuide: true,
-  examples: [
+  Example: () =>
+    source(
+      <Stack space="gutter">
+        <Rating size="large" rating={3} />
+        <Rating size="standard" rating={3} />
+        <Rating size="small" rating={3} />
+        <Rating size="xsmall" rating={3} />
+      </Stack>,
+    ),
+  alternatives: [],
+  additional: [
     {
-      label: 'Default',
-      Example: () => <Rating rating={3} />,
+      label: 'Design considerations',
+      description: (
+        <Text>
+          Follows the same sizing rules as the{' '}
+          <TextLink href="/components/Text">Text</TextLink> component.
+        </Text>
+      ),
     },
     {
-      label: 'Hide the text rating',
-      Example: () => <Rating rating={4.2} showTextRating={false} />,
-    },
-    {
-      label: 'large',
-      Example: () => <Rating rating={3} size="large" />,
-    },
-    {
-      label: 'small',
-      Example: () => <Rating rating={2} size="small" />,
-    },
-    {
-      label: 'xsmall',
-      Example: () => <Rating rating={1.5} size="xsmall" />,
+      label: 'Hiding the text rating',
+      description: (
+        <Text>
+          The text rating can be hidden by setting{' '}
+          <Strong>showTextRating</Strong> to <Strong>false</Strong>.
+        </Text>
+      ),
+      Example: () =>
+        source(<Rating size="large" rating={4.2} showTextRating={false} />),
     },
   ],
 };
