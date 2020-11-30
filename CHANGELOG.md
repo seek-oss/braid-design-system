@@ -1,5 +1,28 @@
 # braid-design-system
 
+## 29.17.3
+
+### Patch Changes
+
+- **Checkbox:** Support inferring of tri-state checked value ([#843](https://github.com/seek-oss/braid-design-system/pull/843))
+
+  To simplify the use of tri-state checkboxes, the **checked** prop now supports resolving the tri-state value from an array of checked values.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Checkbox
+    label="Select all"
+    checked={[true, false, false]} // Will resolve to "mixed"
+  />
+  ```
+
+- **Dropdown:** Only show a blank option in the list when the `value` prop is blank and a placeholder isn't present ([#846](https://github.com/seek-oss/braid-design-system/pull/846))
+
+- **PasswordField:** Ensure disabled is handled correctly ([#845](https://github.com/seek-oss/braid-design-system/pull/845))
+
+  Fixes a bug where the **disabled** prop was hiding the visibility toggle but leaving the field enabled.
+
 ## 29.17.2
 
 ### Patch Changes
