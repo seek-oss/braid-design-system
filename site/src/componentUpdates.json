@@ -1039,5 +1039,28 @@
   {
     "version": "29.17.2",
     "updates": []
+  },
+  {
+    "version": "29.17.3",
+    "updates": [
+      {
+        "updated": [
+          "Checkbox"
+        ],
+        "summary": "**Checkbox:** Support inferring of tri-state checked value\n\nTo simplify the use of tri-state checkboxes, the **checked** prop now supports resolving the tri-state value from an array of checked values.\n\n**EXAMPLE USAGE:**\n```jsx\n <Checkbox\n  label=\"Select all\"\n  checked={[ true, false, false ]} // Will resolve to \"mixed\"\n/>\n```"
+      },
+      {
+        "updated": [
+          "Dropdown"
+        ],
+        "summary": "**Dropdown:** Only show a blank option in the list when the `value` prop is blank and a placeholder isn't present"
+      },
+      {
+        "updated": [
+          "PasswordField"
+        ],
+        "summary": "**PasswordField:** Ensure disabled is handled correctly\n\nFixes a bug where the **disabled** prop was hiding the visibility toggle but leaving the field enabled."
+      }
+    ]
   }
 ]

@@ -57,9 +57,11 @@ const NamedDropdown = forwardRef<HTMLSelectElement, DropdownProps>(
               {...fieldProps}
               ref={ref}
             >
-              <option value="" disabled={true}>
-                {placeholder}
-              </option>
+              {!value || placeholder ? (
+                <option value="" disabled={true}>
+                  {placeholder}
+                </option>
+              ) : null}
               {children}
             </Box>
             {overlays}

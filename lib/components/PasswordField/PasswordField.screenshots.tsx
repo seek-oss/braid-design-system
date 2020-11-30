@@ -123,6 +123,22 @@ export const screenshots: ComponentScreenshot = {
       },
     },
     {
+      label: 'PasswordField disabled',
+      Container,
+      Example: ({ id }) => {
+        const [value, setValue] = useState('qwerty');
+        return (
+          <PasswordField
+            label="Password"
+            id={id}
+            value={value}
+            onChange={(ev) => setValue(ev.currentTarget.value)}
+            disabled={true}
+          />
+        );
+      },
+    },
+    {
       label: 'PasswordField on Brand Background',
       background: 'brand',
       Container,
