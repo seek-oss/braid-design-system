@@ -30,6 +30,10 @@ const docs: ComponentDetail = {
       description: 'For a more prominent visual treatment.',
     },
     {
+      name: 'Tabs',
+      description: 'For a horizontal selection of multiple content panels.',
+    },
+    {
       name: 'Dialog',
       description: 'For exposing a smaller amount of content in a modal.',
     },

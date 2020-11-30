@@ -31,7 +31,14 @@ const docs: ComponentDetail = {
     </Text>
   ),
   alternatives: [
-    { name: 'Disclosure', description: 'For a lighter visual treatment.' },
+    {
+      name: 'Disclosure',
+      description: 'For a lighter visual treatment.',
+    },
+    {
+      name: 'Tabs',
+      description: 'For a horizontal selection of multiple content panels.',
+    },
     {
       name: 'Dialog',
       description: 'For exposing a smaller amount of content in a modal.',
