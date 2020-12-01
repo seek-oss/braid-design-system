@@ -177,41 +177,41 @@ const docs: ComponentDetail = {
       label: 'State management',
       description: (
         <Text>
-          State is managed internally by default. If you’d like to manage tab
-          state from the outside, you must pass an <Strong>item</Strong> prop to
-          each <Strong>Tab</Strong> and <Strong>TabPanel</Strong> element, as
-          well as <Strong>selectedItem</Strong> and <Strong>onChange</Strong>{' '}
-          props to <Strong>TabsProvider.</Strong>
+          Tabs manage their own state by default. If you’d like to manage the
+          state yourself, you must pass an <Strong>item</Strong> prop to each{' '}
+          <Strong>Tab</Strong> and <Strong>TabPanel</Strong> element, as well as{' '}
+          <Strong>selectedItem</Strong> and <Strong>onChange</Strong> props to{' '}
+          <Strong>TabsProvider.</Strong>
         </Text>
       ),
       Example: ({ id, getState, setState, setDefaultState }) =>
         source(
           <>
-            {setDefaultState('tab', '2')}
+            {setDefaultState('tab', 'second')}
 
             <TabsProvider
               id={id}
               selectedItem={getState('tab')}
-              onChange={setState('tab')}
+              onChange={(index, item) => setState('tab', item)}
             >
               <Tabs label="Test tabs" gutter="gutter" reserveHitArea>
-                <Tab item="1">The first tab</Tab>
-                <Tab item="2">The second tab</Tab>
-                <Tab item="3">The third tab</Tab>
-                <Tab item="4">The fourth tab</Tab>
+                <Tab item="first">The first tab</Tab>
+                <Tab item="second">The second tab</Tab>
+                <Tab item="third">The third tab</Tab>
+                <Tab item="fourth">The fourth tab</Tab>
               </Tabs>
               <Card>
                 <TabPanels>
-                  <TabPanel>
+                  <TabPanel item="first">
                     <Placeholder height={200} label="Panel 1" />
                   </TabPanel>
-                  <TabPanel>
+                  <TabPanel item="second">
                     <Placeholder height={200} label="Panel 2" />
                   </TabPanel>
-                  <TabPanel>
+                  <TabPanel item="third">
                     <Placeholder height={200} label="Panel 3" />
                   </TabPanel>
-                  <TabPanel>
+                  <TabPanel item="fourth">
                     <Placeholder height={200} label="Panel 4" />
                   </TabPanel>
                 </TabPanels>
