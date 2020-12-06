@@ -1,123 +1,102 @@
-import React, { ReactNode, useState } from 'react';
+import React from 'react';
 import { ComponentExample } from '../../../site/src/types';
 import { PasswordField, TextLink } from '../';
-
-const Container = ({ children }: { children: ReactNode }) => (
-  <div style={{ maxWidth: '300px' }}>{children}</div>
-);
+import source from '../../utils/source.macro';
 
 export const galleryItems: ComponentExample[] = [
   {
-    label: 'PasswordField',
-    Container,
-    Example: ({ id }) => {
-      const [value, setValue] = useState('qwerty');
-      return (
+    label: 'Standard',
+    Example: ({ id, getState, setState }) =>
+      source(
         <PasswordField
-          label="Password"
-          id={id}
-          value={value}
-          onChange={(ev) => setValue(ev.currentTarget.value)}
-        />
-      );
-    },
+          label="Label"
+          id={`${id}_password`}
+          onChange={setState('passwordfield')}
+          value={getState('passwordfield')}
+        />,
+      ),
   },
   {
-    label: 'PasswordField with message',
-    Container,
-    Example: ({ id }) => {
-      const [value, setValue] = useState('qwerty');
-      return (
+    label: 'With additional labels',
+    Example: ({ id, getState, setState }) =>
+      source(
         <PasswordField
-          label="Password"
-          id={id}
-          value={value}
-          message={`e.g. Cannot be "password"`}
-          onChange={(ev) => setValue(ev.currentTarget.value)}
-        />
-      );
-    },
+          label="Label"
+          id={`${id}_password`}
+          onChange={setState('passwordfield')}
+          value={getState('passwordfield')}
+          secondaryLabel="optional"
+          tertiaryLabel={<TextLink href="#">Forgot password?</TextLink>}
+        />,
+      ),
   },
   {
-    label: 'PasswordField with secondary label',
-    Container,
-    Example: ({ id }) => {
-      const [value, setValue] = useState('qwerty');
-      return (
+    label: 'With a description',
+    Example: ({ id, getState, setState }) =>
+      source(
         <PasswordField
-          label="Password"
-          secondaryLabel="required"
-          id={id}
-          value={value}
-          onChange={(ev) => setValue(ev.currentTarget.value)}
-        />
-      );
-    },
+          label="Label"
+          id={`${id}_password`}
+          onChange={setState('passwordfield')}
+          value={getState('passwordfield')}
+          description="Longer description of this field"
+        />,
+      ),
   },
   {
-    label: 'PasswordField with tertiary label',
-    Container,
-    Example: ({ id }) => {
-      const [value, setValue] = useState('qwerty');
-      return (
+    label: 'With a critical message',
+    Example: ({ id, getState, setState }) =>
+      source(
         <PasswordField
-          label="Password"
-          tertiaryLabel={<TextLink href="#">Forgot Password?</TextLink>}
-          id={id}
-          value={value}
-          onChange={(ev) => setValue(ev.currentTarget.value)}
-        />
-      );
-    },
-  },
-  {
-    label: 'PasswordField with description',
-    Container,
-    Example: ({ id }) => {
-      const [value, setValue] = useState('qwerty');
-      return (
-        <PasswordField
-          label="Password"
-          id={id}
-          value={value}
-          onChange={(ev) => setValue(ev.currentTarget.value)}
-          description="Must be 8 characters long and include a capital letter, a number and a symbol"
-        />
-      );
-    },
-  },
-  {
-    label: 'PasswordField with critical message',
-    Container,
-    Example: ({ id }) => {
-      const [value, setValue] = useState('qwerty');
-      return (
-        <PasswordField
-          label="Password"
+          label="Label"
+          id={`${id}_1`}
+          onChange={setState('passwordfield')}
+          value={getState('passwordfield')}
           tone="critical"
-          id={id}
-          value={value}
-          onChange={(ev) => setValue(ev.currentTarget.value)}
-          message="Not strong enough"
-        />
-      );
-    },
+          message="Critical message"
+        />,
+      ),
   },
   {
-    label: 'PasswordField with positive message',
-    Container,
-    Example: ({ id }) => {
-      const [value, setValue] = useState('qwerty');
-      return (
+    label: 'With a positive message',
+    Example: ({ id, getState, setState }) =>
+      source(
         <PasswordField
-          label="Password"
-          id={id}
-          value={value}
-          onChange={(ev) => setValue(ev.currentTarget.value)}
-          message="Strong!"
+          label="Label"
+          id={`${id}_password`}
+          onChange={setState('passwordfield')}
+          value={getState('passwordfield')}
           tone="positive"
-        />
-      );
-    },
+          message="Positive message"
+        />,
+      ),
+  },
+  {
+    label: 'With a neutral message',
+    Example: ({ id, getState, setState }) =>
+      source(
+        <PasswordField
+          label="Label"
+          id={`${id}_password`}
+          onChange={setState('passwordfield')}
+          value={getState('passwordfield')}
+          tone="neutral"
+          message="Neutral message"
+        />,
+      ),
+  },
+  {
+    label: 'Disabled field',
+    background: 'card',
+    Example: ({ id, getState, setState }) =>
+      source(
+        <PasswordField
+          label="Label"
+          id={`${id}_password`}
+          onChange={setState('passwordfield')}
+          value={getState('passwordfield')}
+          disabled={true}
+        />,
+      ),
   },
 ];
