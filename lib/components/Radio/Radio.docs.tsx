@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { ComponentDocs } from '../../../site/src/types';
-import { Badge, Radio, Text } from '../';
-import { TextLink } from '../TextLink/TextLink';
+import React from 'react';
+import { ComponentDetail } from '../../../site/src/types';
+import { Stack, Radio, Text, TextLink } from '../';
+import source from '../../utils/source.macro';
 
-const docs: ComponentDocs = {
+const docs: ComponentDetail = {
   category: 'Content',
   migrationGuide: false,
   deprecationWarning: (
@@ -12,98 +12,30 @@ const docs: ComponentDocs = {
       <TextLink href="/components/RadioGroup">RadioGroup</TextLink> instead.
     </Text>
   ),
-  examples: [
-    {
-      label: 'Standard Radio Button',
-      Example: ({ id }) => {
-        const [state, setState] = useState(false);
-        return (
-          <Radio
-            id={id}
-            checked={state}
-            onChange={() => setState(!state)}
-            label="Label"
-          />
-        );
-      },
-    },
-    {
-      label: 'Checked Radio Button',
-      Example: ({ id, handler }) => (
-        <Radio id={id} checked={true} onChange={handler} label="Label" />
-      ),
-    },
-    {
-      label: 'Disabled Radio Button',
-      background: 'card',
-      Example: ({ id, handler }) => (
+  Example: ({ id, getState, setState }) =>
+    source(
+      <Stack space="small">
         <Radio
-          id={id}
-          disabled={true}
-          checked={false}
-          onChange={handler}
-          label="Label"
+          id={`${id}_1`}
+          checked={getState('value') === 1}
+          onChange={() => setState('value', 1)}
+          label="One"
         />
-      ),
-    },
-    {
-      label: 'Critical Radio Button',
-      Example: ({ id, handler }) => (
         <Radio
-          id={id}
-          checked={false}
-          onChange={handler}
-          label="Label"
-          tone="critical"
+          id={`${id}_2`}
+          checked={getState('value') === 2}
+          onChange={() => setState('value', 2)}
+          label="Two"
         />
-      ),
-    },
-    {
-      label: 'Radio Button with description',
-      Example: ({ id, handler }) => (
         <Radio
-          id={id}
-          checked={false}
-          onChange={handler}
-          label="Label"
-          description="Extra information about the field"
+          id={`${id}_3`}
+          checked={getState('value') === 3}
+          onChange={() => setState('value', 3)}
+          label="Three"
         />
-      ),
-    },
-    {
-      label: 'Radio Button with a Badge',
-      Example: ({ id, handler }) => (
-        <Radio
-          id={id}
-          checked={false}
-          onChange={handler}
-          label="Label"
-          badge={
-            <Badge tone="positive" weight="strong">
-              New
-            </Badge>
-          }
-        />
-      ),
-    },
-    {
-      label: 'Radio Button with nested content visible only when checked',
-      Example: ({ id }) => {
-        const [state, setState] = useState(true);
-
-        return (
-          <Radio
-            id={id}
-            checked={state}
-            onChange={() => setState(!state)}
-            label="Label"
-          >
-            <Text>This text is visible when the radio button is checked.</Text>
-          </Radio>
-        );
-      },
-    },
-  ],
+      </Stack>,
+    ),
+  alternatives: [],
 };
 
 export default docs;

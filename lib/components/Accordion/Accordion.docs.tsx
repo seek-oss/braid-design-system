@@ -3,6 +3,7 @@ import { ComponentDetail } from '../../../site/src/types';
 import source from '../../utils/source.macro';
 import { Accordion, AccordionItem, Stack, Text, TextLink } from '../';
 import { Strong } from '../Strong/Strong';
+import { Placeholder } from '../../playroom/components';
 
 const docs: ComponentDetail = {
   category: 'Content',
@@ -12,13 +13,13 @@ const docs: ComponentDetail = {
     source(
       <Accordion>
         <AccordionItem label="Accordion item 1" id={`${id}_1`}>
-          <Text>Accordion item content</Text>
+          <Placeholder height={80} />
         </AccordionItem>
         <AccordionItem label="Accordion item 2" id={`${id}_2`}>
-          <Text>Accordion item content</Text>
+          <Placeholder height={80} />
         </AccordionItem>
         <AccordionItem label="Accordion item 3" id={`${id}_3`}>
-          <Text>Accordion item content</Text>
+          <Placeholder height={80} />
         </AccordionItem>
       </Accordion>,
     ),
@@ -73,7 +74,7 @@ const docs: ComponentDetail = {
                 expanded={getState('expanded1')}
                 onToggle={setState('expanded1')}
               >
-                <Text>Accordion item content</Text>
+                <Placeholder height={80} />
               </AccordionItem>
               <AccordionItem
                 label="Accordion item 2"
@@ -81,7 +82,7 @@ const docs: ComponentDetail = {
                 expanded={getState('expanded2')}
                 onToggle={setState('expanded2')}
               >
-                <Text>Accordion item content</Text>
+                <Placeholder height={80} />
               </AccordionItem>
               <AccordionItem
                 label="Accordion item 3"
@@ -89,7 +90,7 @@ const docs: ComponentDetail = {
                 expanded={getState('expanded3')}
                 onToggle={setState('expanded3')}
               >
-                <Text>Accordion item content</Text>
+                <Placeholder height={80} />
               </AccordionItem>
             </Accordion>
           </>,
@@ -109,13 +110,13 @@ const docs: ComponentDetail = {
         source(
           <Stack space="xlarge">
             <AccordionItem label="Label" id={`${id}_1`}>
-              <Text>Content</Text>
+              <Placeholder height={80} />
             </AccordionItem>
             <AccordionItem label="Label" id={`${id}_2`}>
-              <Text>Content</Text>
+              <Placeholder height={80} />
             </AccordionItem>
             <AccordionItem label="Label" id={`${id}_3`}>
-              <Text>Content</Text>
+              <Placeholder height={80} />
             </AccordionItem>
           </Stack>,
         ),
