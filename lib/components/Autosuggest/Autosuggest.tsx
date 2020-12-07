@@ -252,8 +252,11 @@ export interface AutosuggestProps<Value>
   extends Omit<FieldProps, 'value' | 'autoComplete' | 'labelId'> {
   value: AutosuggestValue<Value>;
   suggestions:
+    | { message: string }
     | Suggestions<Value>
-    | ((value: AutosuggestValue<Value>) => Suggestions<Value>);
+    | ((
+        value: AutosuggestValue<Value>,
+      ) => Suggestions<Value> | { message: string });
   onChange: (value: AutosuggestValue<Value>) => void;
   automaticSelection?: boolean;
   hideSuggestionsOnSelection?: boolean;
@@ -288,10 +291,19 @@ export const Autosuggest = forwardRef(function <Value>(
 ) {
   const styles = useStyles(styleRefs);
 
-  const suggestions =
+  const suggestionsPropValue =
     typeof suggestionsProp === 'function'
       ? suggestionsProp(value)
       : suggestionsProp;
+
+  const suggestions = Array.isArray(suggestionsPropValue)
+    ? suggestionsPropValue
+    : [];
+  const message =
+    'message' in suggestionsPropValue
+      ? suggestionsPropValue.message
+      : undefined;
+  const hasItems = suggestions.length > 0 || Boolean(message);
 
   // We need a ref regardless so we can imperatively
   // focus the field when clicking the clear button
@@ -367,7 +379,7 @@ export const Autosuggest = forwardRef(function <Value>(
       case INPUT_FOCUS: {
         return {
           ...state,
-          isOpen: hasSuggestions,
+          isOpen: hasItems,
           inputChangedSinceFocus: false,
           isFocused: true,
         };
@@ -391,7 +403,7 @@ export const Autosuggest = forwardRef(function <Value>(
             previewValue: null,
             highlightedIndex: null,
           };
-        } else if (hasSuggestions) {
+        } else if (hasItems) {
           return {
             ...state,
             isOpen: !state.isOpen,
@@ -577,6 +589,9 @@ export const Autosuggest = forwardRef(function <Value>(
     isOpen &&
     (highlightedIndex === null || hasAutomaticSelection)
   ) {
+    if (message) {
+      announcements.push(message);
+    }
     if (hasSuggestions) {
       announcements.push(
         translations.suggestionsAvailableAnnouncement(suggestionCount),
@@ -595,6 +610,8 @@ export const Autosuggest = forwardRef(function <Value>(
       announcements.push(translations.noSuggestionsAvailableAnnouncement);
     }
   }
+
+  const standardTouchableSpace = useTouchableSpace('standard');
 
   return (
     <Fragment>
@@ -653,7 +670,7 @@ export const Autosuggest = forwardRef(function <Value>(
                 <RemoveScroll ref={menuRef} enabled={isOpen} forwardProps>
                   <Box
                     component="ul"
-                    display={isOpen && hasSuggestions ? 'block' : 'none'}
+                    display={isOpen && hasItems ? 'block' : 'none'}
                     position="absolute"
                     zIndex="dropdown"
                     background="card"
@@ -665,7 +682,18 @@ export const Autosuggest = forwardRef(function <Value>(
                     className={styles.menu}
                     {...a11y.menuProps}
                   >
-                    {isOpen
+                    {isOpen && message ? (
+                      <Box
+                        component="li"
+                        paddingX="small"
+                        className={standardTouchableSpace}
+                      >
+                        <Text tone="secondary" baseline={false}>
+                          {message}
+                        </Text>
+                      </Box>
+                    ) : null}
+                    {isOpen && suggestions.length
                       ? normalisedSuggestions.map((suggestion, index) => {
                           const { text } = suggestion;
                           const groupHeading = groupHeadingIndexes.get(index);
