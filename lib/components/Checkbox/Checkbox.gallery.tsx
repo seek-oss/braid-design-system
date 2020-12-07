@@ -67,7 +67,7 @@ export const galleryItems: ComponentExample[] = [
       ),
   },
   {
-    label: 'With nested content visible only when checked',
+    label: 'Toggling nested content',
     Example: ({ id, getState, toggleState, setDefaultState }) =>
       source(
         <>

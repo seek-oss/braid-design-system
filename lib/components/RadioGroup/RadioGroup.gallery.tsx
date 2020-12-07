@@ -1,125 +1,135 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ComponentExample } from '../../../site/src/types';
 import { RadioGroup, RadioItem } from '..';
-import { Placeholder } from '../../playroom/components';
+import { Badge, Placeholder } from '../../playroom/components';
+import source from '../../utils/source.macro';
 
 export const galleryItems: ComponentExample[] = [
   {
-    label: 'Default',
-    Example: () => {
-      const [state, setState] = useState('');
-      return (
+    label: 'Standard',
+    Example: ({ id, getState, setState }) =>
+      source(
         <RadioGroup
-          id="radiolist1"
-          value={state}
-          onChange={(e) => setState(e.currentTarget.value)}
-          label="Experience"
+          id={id}
+          value={getState('radio')}
+          onChange={({ currentTarget: { value } }) => setState('radio', value)}
+          label="Label"
         >
-          <RadioItem label="Less than one year" value="0" />
-          <RadioItem label="1 year" value="1" />
-          <RadioItem label="2 years" value="2" />
-          <RadioItem label="3+ years " value="3" />
-        </RadioGroup>
-      );
-    },
+          <RadioItem label="One" value="1" />
+          <RadioItem label="Two" value="2" />
+          <RadioItem label="Three" value="3" />
+        </RadioGroup>,
+      ),
   },
   {
-    label: 'With selected item',
-    Example: ({ handler }) => (
-      <RadioGroup
-        id="radiolist2"
-        value="2"
-        onChange={handler}
-        label="Experience"
-      >
-        <RadioItem label="Less than one year" value="0" />
-        <RadioItem label="1 year" value="1" />
-        <RadioItem label="2 years" value="2" />
-        <RadioItem label="3+ years " value="3" />
-      </RadioGroup>
-    ),
-  },
-  {
-    label: 'With description',
-    Example: () => {
-      const [state, setState] = useState('');
-      return (
+    label: 'With a critical message',
+    Example: ({ id, getState, setState }) =>
+      source(
         <RadioGroup
-          id="radiolist3"
-          value={state}
-          onChange={(e) => setState(e.currentTarget.value)}
-          label="Experience"
-          description="How many years have you been in this role?"
-        >
-          <RadioItem label="Less than one year" value="0" />
-          <RadioItem label="1 year" value="1" />
-          <RadioItem label="2 years" value="2" />
-          <RadioItem label="3+ years " value="3" />
-        </RadioGroup>
-      );
-    },
-  },
-  {
-    label: 'With critical message',
-    Example: () => {
-      const [state, setState] = useState('');
-      return (
-        <RadioGroup
-          id="radiolist4"
-          value={state}
-          onChange={(e) => setState(e.currentTarget.value)}
-          label="Experience"
+          id={id}
+          value={getState('radio')}
+          onChange={({ currentTarget: { value } }) => setState('radio', value)}
+          label="Label"
+          message="Critical message"
           tone="critical"
-          message="Required field"
         >
-          <RadioItem label="Less than one year" value="0" />
-          <RadioItem label="1 year" value="1" />
-          <RadioItem label="2 years" value="2" />
-          <RadioItem label="3+ years " value="3" />
-        </RadioGroup>
-      );
-    },
+          <RadioItem label="One" value="1" />
+          <RadioItem label="Two" value="2" />
+          <RadioItem label="Three" value="3" />
+        </RadioGroup>,
+      ),
   },
   {
-    label: 'When disabled',
-    Example: () => {
-      const [state, setState] = useState('');
-      return (
+    label: 'With a description',
+    Example: ({ id, getState, setState }) =>
+      source(
         <RadioGroup
-          id="radiolist5"
-          value={state}
-          onChange={(e) => setState(e.currentTarget.value)}
-          label="Experience"
-          disabled
+          id={id}
+          value={getState('radio')}
+          onChange={({ currentTarget: { value } }) => setState('radio', value)}
+          label="Label"
+          description="Extra information about the field"
         >
-          <RadioItem label="Less than one year" value="0" />
-          <RadioItem label="1 year" value="1" />
-          <RadioItem label="2 years" value="2" />
-          <RadioItem label="3+ years " value="3" />
-        </RadioGroup>
-      );
-    },
+          <RadioItem label="One" value="1" />
+          <RadioItem label="Two" value="2" />
+          <RadioItem label="Three" value="3" />
+        </RadioGroup>,
+      ),
   },
   {
-    label: 'With nested content visible only when checked',
-    Example: () => {
-      const [state, setState] = useState('1');
+    label: 'With item-level descriptions',
+    Example: ({ id, getState, setState }) =>
+      source(
+        <RadioGroup
+          id={id}
+          value={getState('radio')}
+          onChange={({ currentTarget: { value } }) => setState('radio', value)}
+          label="Label"
+        >
+          <RadioItem
+            label="One"
+            value="1"
+            description="Description for item 1"
+          />
+          <RadioItem
+            label="Two"
+            value="2"
+            description="Description for item 2"
+          />
+          <RadioItem
+            label="Three"
+            value="3"
+            description="Description for item 3"
+          />
+        </RadioGroup>,
+      ),
+  },
+  {
+    label: 'With a Badge',
+    Example: ({ id, getState, setState }) =>
+      source(
+        <RadioGroup
+          id={id}
+          value={getState('radio')}
+          onChange={({ currentTarget: { value } }) => setState('radio', value)}
+          label="Label"
+        >
+          <RadioItem label="One" value="1" />
+          <RadioItem label="Two" value="2" />
+          <RadioItem
+            label="Three"
+            value="3"
+            badge={
+              <Badge tone="positive" weight="strong">
+                Badge
+              </Badge>
+            }
+          />
+        </RadioGroup>,
+      ),
+  },
+  {
+    label: 'Toggling nested content',
+    Example: ({ id, getState, setState, setDefaultState }) =>
+      source(
+        <>
+          {setDefaultState('radio', '2')}
 
-      return (
-        <RadioGroup
-          id="radiolist7"
-          value={state}
-          onChange={(e) => setState(e.currentTarget.value)}
-          label="Experience"
-        >
-          <RadioItem label="Less than one year" value="0" />
-          <RadioItem label="1 year" value="1">
-            <Placeholder height={50} label="Nested content" />
-          </RadioItem>
-          <RadioItem label="2 years" value="2" />
-          <RadioItem label="3+ years " value="3" />
-        </RadioGroup>
-      );
-    },
+          <RadioGroup
+            id={id}
+            value={getState('radio')}
+            onChange={({ currentTarget: { value } }) =>
+              setState('radio', value)
+            }
+            label="Label"
+          >
+            <RadioItem label="One" value="1" />
+            <RadioItem label="Two" value="2">
+              <Placeholder height={100} />
+            </RadioItem>
+            <RadioItem label="Three" value="3" />
+          </RadioGroup>
+        </>,
+      ),
   },
 ];

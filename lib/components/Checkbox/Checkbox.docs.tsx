@@ -1,11 +1,7 @@
 import React from 'react';
 import { ComponentDetail } from '../../../site/src/types';
-import { Badge, Checkbox, Text } from '../';
+import { Badge, Checkbox, List, Stack, Strong, Text, TextLink } from '../';
 import source from '../../utils/source.macro';
-import { TextLink } from '../TextLink/TextLink';
-import { Strong } from '../Strong/Strong';
-import { Stack } from '../Stack/Stack';
-import { List } from '../List/List';
 import { Placeholder } from '../../playroom/components';
 
 const docs: ComponentDetail = {
@@ -37,6 +33,10 @@ const docs: ComponentDetail = {
     {
       name: 'Toggle',
       description: 'For settings that do not require a form submission.',
+    },
+    {
+      name: 'RadioGroup',
+      description: 'For single select.',
     },
   ],
   additional: [
@@ -136,7 +136,7 @@ const docs: ComponentDetail = {
             label="Label"
             badge={
               <Badge tone="positive" weight="strong">
-                New
+                Positive
               </Badge>
             }
           />,

@@ -10,7 +10,7 @@ export const galleryItems: ComponentExample[] = [
       source(
         <TextField
           label="Label"
-          id={id}
+          id={`${id}_textfield`}
           onChange={setState('textfield')}
           value={getState('textfield')}
           onClear={() => setState('textfield', '')}
@@ -23,7 +23,7 @@ export const galleryItems: ComponentExample[] = [
       source(
         <TextField
           label="Label"
-          id={id}
+          id={`${id}_textfield`}
           onChange={setState('textfield')}
           value={getState('textfield')}
           secondaryLabel="optional"
@@ -41,7 +41,7 @@ export const galleryItems: ComponentExample[] = [
       source(
         <TextField
           label="Label"
-          id={id}
+          id={`${id}_textfield`}
           onChange={setState('textfield')}
           value={getState('textfield')}
           onClear={() => setState('textfield', '')}
@@ -57,7 +57,7 @@ export const galleryItems: ComponentExample[] = [
       return (
         <TextField
           label="Job Title"
-          id={id}
+          id={`${id}_textfield`}
           icon={<IconSearch />}
           placeholder="Enter a job title"
           onChange={(e) => setValue(e.currentTarget.value)}
@@ -86,7 +86,7 @@ export const galleryItems: ComponentExample[] = [
       source(
         <TextField
           label="Label"
-          id={id}
+          id={`${id}_textfield`}
           onChange={setState('textfield')}
           value={getState('textfield')}
           tone="positive"
@@ -100,7 +100,7 @@ export const galleryItems: ComponentExample[] = [
       source(
         <TextField
           label="Label"
-          id={id}
+          id={`${id}_textfield`}
           onChange={setState('textfield')}
           value={getState('textfield')}
           tone="neutral"
@@ -115,7 +115,7 @@ export const galleryItems: ComponentExample[] = [
       source(
         <TextField
           label="Label"
-          id={id}
+          id={`${id}_textfield`}
           onChange={setState('textfield')}
           value={getState('textfield')}
           disabled={true}
