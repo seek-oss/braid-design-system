@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ComponentExample } from '../../../site/src/types';
 import { IconSearch, IconHelp, TextField, TextLink } from '../';
 import source from '../../utils/source.macro';
@@ -50,23 +50,6 @@ export const galleryItems: ComponentExample[] = [
       ),
   },
   {
-    label: 'TextField with icon',
-    Example: ({ id }) => {
-      const [value, setValue] = useState('');
-
-      return (
-        <TextField
-          label="Job Title"
-          id={`${id}_textfield`}
-          icon={<IconSearch />}
-          placeholder="Enter a job title"
-          onChange={(e) => setValue(e.currentTarget.value)}
-          value={value}
-        />
-      );
-    },
-  },
-  {
     label: 'With a critical message',
     Example: ({ id, getState, setState }) =>
       source(
@@ -105,6 +88,20 @@ export const galleryItems: ComponentExample[] = [
           value={getState('textfield')}
           tone="neutral"
           message="Neutral message"
+        />,
+      ),
+  },
+  {
+    label: 'With an icon',
+    Example: ({ id, getState, setState }) =>
+      source(
+        <TextField
+          label="Job Title"
+          id={`${id}_textfield`}
+          onChange={setState('textfield')}
+          value={getState('textfield')}
+          icon={<IconSearch />}
+          placeholder="Enter a job title"
         />,
       ),
   },
