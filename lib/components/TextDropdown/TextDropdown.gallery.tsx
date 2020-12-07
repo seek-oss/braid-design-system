@@ -1,71 +1,68 @@
-import React, { ReactNode, useState } from 'react';
+import React from 'react';
 import { ComponentExample } from '../../../site/src/types';
 import { Heading, Strong, Text, TextDropdown } from '..';
-
-const Container = ({ children }: { children: ReactNode }) => (
-  <div style={{ maxWidth: '300px' }}>{children}</div>
-);
+import source from '../../utils/source.macro';
 
 export const galleryItems: ComponentExample[] = [
   {
-    label: 'Default',
-    Container,
-    Example: ({ id }) => {
-      const [value, setValue] = useState('Developer');
+    label: 'Standard',
+    Example: ({ id, setState, getState, setDefaultState }) =>
+      source(
+        <>
+          {setDefaultState('textdropdown', 'Option 1')}
 
-      return (
-        <Text>
-          <TextDropdown
-            label="Job Title"
-            id={id}
-            onChange={setValue}
-            value={value}
-            options={['Developer', 'Designer', 'Product Manager']}
-          />
-        </Text>
-      );
-    },
+          <Text>
+            <TextDropdown
+              label="Options"
+              id={id}
+              value={getState('textdropdown')}
+              onChange={setState('textdropdown')}
+              options={['Option 1', 'Option 2', 'Option 3']}
+            />
+          </Text>
+        </>,
+      ),
   },
   {
-    label: 'Within strong text',
-    Container,
-    Example: ({ id }) => {
-      const [value, setValue] = useState('Relevance');
+    label: 'Emphasised within a sentence',
+    Example: ({ id, setState, getState, setDefaultState }) =>
+      source(
+        <>
+          {setDefaultState('sortby', 'Relevance')}
 
-      return (
-        <Text>
-          Sort by{' '}
-          <Strong>
-            <TextDropdown
-              label="Sort order"
-              id={id}
-              onChange={setValue}
-              value={value}
-              options={['Relevance', 'Keyword']}
-            />
-          </Strong>
-        </Text>
-      );
-    },
+          <Text>
+            Sort by{' '}
+            <Strong>
+              <TextDropdown
+                label="Sort by"
+                id={id}
+                value={getState('sortby')}
+                onChange={setState('sortby')}
+                options={['Relevance', 'Date', 'Keyword']}
+              />
+            </Strong>
+          </Text>
+        </>,
+      ),
   },
   {
     label: 'Within a heading',
-    Container,
-    Example: ({ id }) => {
-      const [value, setValue] = useState('Sydney');
+    Example: ({ id, setState, getState, setDefaultState }) =>
+      source(
+        <>
+          {setDefaultState('textdropdown', 'Option 1')}
 
-      return (
-        <Heading level="2">
-          Jobs in{' '}
-          <TextDropdown
-            label="Location"
-            id={id}
-            onChange={setValue}
-            value={value}
-            options={['Melbourne', 'Sydney', 'Brisbane']}
-          />
-        </Heading>
-      );
-    },
+          <Heading level="2">
+            Heading with{' '}
+            <TextDropdown
+              label="Options"
+              id={id}
+              value={getState('textdropdown')}
+              onChange={setState('textdropdown')}
+              options={['Option 1', 'Option 2', 'Option 3']}
+            />
+          </Heading>
+        </>,
+      ),
   },
 ];
