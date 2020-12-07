@@ -1,52 +1,63 @@
 import React from 'react';
-import { ComponentDocs } from '../../../site/src/types';
+import { ComponentDetail } from '../../../site/src/types';
 import { Toggle } from '../';
+import { Text } from '../Text/Text';
+import { Strong } from '../Strong/Strong';
+import source from '../../utils/source.macro';
+import { Stack } from '../Stack/Stack';
 
-const docs: ComponentDocs = {
+const docs: ComponentDetail = {
   category: 'Content',
   migrationGuide: true,
-  examples: [
+  Example: ({ id, getState, toggleState }) =>
+    source(
+      <Toggle
+        label="Label"
+        id={id}
+        on={getState('toggle')}
+        onChange={() => toggleState('toggle')}
+      />,
+    ),
+  alternatives: [
     {
-      label: 'Toggle off',
-      Example: ({ id, handler }) => (
-        <Toggle on={false} label="Toggled off" id={id} onChange={handler} />
-      ),
+      name: 'Checkbox',
+      description: 'For selections part of a form submission.',
     },
+  ],
+  additional: [
     {
-      label: 'Toggle on',
-      Example: ({ id, handler }) => (
-        <Toggle on={true} label="Toggled on" id={id} onChange={handler} />
+      label: 'Alignment',
+      description: (
+        <Text>
+          Toggles can be aligned via the <Strong>align</Strong> prop.
+        </Text>
       ),
-    },
-    {
-      label: 'Right aligned',
-      Container: ({ children }) => (
-        <div style={{ maxWidth: '300px' }}>{children}</div>
-      ),
-      Example: ({ id, handler }) => (
-        <Toggle
-          on={true}
-          align="right"
-          label="Aligned right"
-          id={id}
-          onChange={handler}
-        />
-      ),
-    },
-    {
-      label: 'Justified',
-      Container: ({ children }) => (
-        <div style={{ maxWidth: '300px' }}>{children}</div>
-      ),
-      Example: ({ id, handler }) => (
-        <Toggle
-          on={true}
-          align="justify"
-          label="Justified"
-          id={id}
-          onChange={handler}
-        />
-      ),
+      Example: ({ id, getState, toggleState }) =>
+        source(
+          <Stack space="large" dividers>
+            <Toggle
+              label="Left"
+              id={`${id}_1`}
+              on={getState('toggle1')}
+              onChange={() => toggleState('toggle1')}
+              align="left"
+            />
+            <Toggle
+              label="Justify"
+              id={`${id}_2`}
+              on={getState('toggle2')}
+              onChange={() => toggleState('toggle2')}
+              align="justify"
+            />
+            <Toggle
+              label="Right"
+              id={`${id}_3`}
+              on={getState('toggle3')}
+              onChange={() => toggleState('toggle3')}
+              align="right"
+            />
+          </Stack>,
+        ),
     },
   ],
 };
