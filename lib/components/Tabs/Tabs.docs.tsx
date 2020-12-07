@@ -54,7 +54,7 @@ const docs: ComponentDetail = {
   accessibility: (
     <Text>
       Follows the{' '}
-      <TextLink href="https://www.w3.org/TR/wai-aria-practices-1.2/#tabpanel">
+      <TextLink href="https://www.w3.org/TR/wai-aria-practices/#tabpanel">
         WAI ARIA Tabs Pattern.
       </TextLink>
     </Text>
@@ -171,6 +171,46 @@ const docs: ComponentDetail = {
               </TabPanels>
             </Card>
           </TabsProvider>,
+        ),
+    },
+    {
+      label: 'Badge support',
+      description: (
+        <Text>
+          Add a <TextLink href="/components/Badge">Badge</TextLink> alongside
+          the <Strong>Tab</Strong> by using the <Strong>badge</Strong> prop.
+        </Text>
+      ),
+      Example: ({ id }) =>
+        source(
+          <Card>
+            <TabsProvider id={id}>
+              <Stack space="medium">
+                <Tabs label="Test tabs">
+                  <Tab>The first tab</Tab>
+                  <Tab badge={<Badge tone="positive">Positive</Badge>}>
+                    The second tab
+                  </Tab>
+                  <Tab>The third tab</Tab>
+                  <Tab>The fourth tab</Tab>
+                </Tabs>
+                <TabPanels>
+                  <TabPanel>
+                    <Placeholder height={200} label="Panel 1" />
+                  </TabPanel>
+                  <TabPanel>
+                    <Placeholder height={200} label="Panel 2" />
+                  </TabPanel>
+                  <TabPanel>
+                    <Placeholder height={200} label="Panel 3" />
+                  </TabPanel>
+                  <TabPanel>
+                    <Placeholder height={200} label="Panel 4" />
+                  </TabPanel>
+                </TabPanels>
+              </Stack>
+            </TabsProvider>
+          </Card>,
         ),
     },
     {

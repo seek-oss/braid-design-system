@@ -98,4 +98,37 @@ export const galleryItems: ComponentExample[] = [
       </TabsProvider>
     ),
   },
+  {
+    label: 'With a Badge',
+    Example: ({ id }) => (
+      <Card>
+        <TabsProvider id={id}>
+          <Stack space="medium">
+            <Tabs label="Test tabs">
+              <Tab>The first tab</Tab>
+              <Tab badge={<Badge tone="positive">Positive</Badge>}>
+                The second tab
+              </Tab>
+              <Tab>The third tab</Tab>
+              <Tab>The fourth tab</Tab>
+            </Tabs>
+            <TabPanels>
+              <TabPanel>
+                <Placeholder height={200} label="Panel 1" />
+              </TabPanel>
+              <TabPanel>
+                <Placeholder height={200} label="Panel 2" />
+              </TabPanel>
+              <TabPanel>
+                <Placeholder height={200} label="Panel 3" />
+              </TabPanel>
+              <TabPanel>
+                <Placeholder height={200} label="Panel 4" />
+              </TabPanel>
+            </TabPanels>
+          </Stack>
+        </TabsProvider>
+      </Card>
+    ),
+  },
 ];
