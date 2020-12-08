@@ -32,6 +32,10 @@ const toneForBadge = (badgeLabel: BadgeLabel) => {
   return toneMap[badgeLabel];
 };
 
+const componentsList = documentedComponents.filter(
+  ({ category }) => category !== 'Logic',
+);
+
 interface SubNavigationItem {
   badge?: BadgeLabel;
   name: string;
@@ -115,7 +119,6 @@ export const SubNavigation = ({ onSelect }: SubNavigationProps) => {
           {
             name: 'Gallery',
             path: '/gallery',
-            badge: 'New',
           },
           {
             name: 'Playroom',
@@ -158,22 +161,19 @@ export const SubNavigation = ({ onSelect }: SubNavigationProps) => {
         }))}
       />
 
-      {['Layout', 'Content', 'Logic'].map((category) => (
-        <SubNavigationGroup
-          key={category}
-          title={category}
-          items={categorisedComponents[category].map((docs) => ({
-            name: docs.name,
-            badge: getBadge(docs),
-            path: `/components/${docs.name}`,
-            onClick: onSelect,
-          }))}
-        />
-      ))}
+      <SubNavigationGroup
+        title="Components"
+        items={componentsList.map((docs) => ({
+          name: docs.name,
+          badge: getBadge(docs),
+          path: `/components/${docs.name}`,
+          onClick: onSelect,
+        }))}
+      />
 
       <SubNavigationGroup
-        title="All Components"
-        items={documentedComponents.map((docs) => ({
+        title="Logic"
+        items={categorisedComponents.Logic.map((docs) => ({
           name: docs.name,
           badge: getBadge(docs),
           path: `/components/${docs.name}`,
