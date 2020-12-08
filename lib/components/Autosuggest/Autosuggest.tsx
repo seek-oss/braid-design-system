@@ -366,7 +366,7 @@ export const Autosuggest = forwardRef(function <Value>(
       case INPUT_CHANGE: {
         return {
           ...state,
-          isOpen: true,
+          isOpen: hasItems,
           inputChangedSinceFocus: true,
           previewValue: null,
           highlightedIndex:
@@ -670,7 +670,7 @@ export const Autosuggest = forwardRef(function <Value>(
                 <RemoveScroll ref={menuRef} enabled={isOpen} forwardProps>
                   <Box
                     component="ul"
-                    display={isOpen && hasItems ? 'block' : 'none'}
+                    display={isOpen ? 'block' : 'none'}
                     position="absolute"
                     zIndex="dropdown"
                     background="card"
@@ -693,7 +693,7 @@ export const Autosuggest = forwardRef(function <Value>(
                         </Text>
                       </Box>
                     ) : null}
-                    {isOpen && suggestions.length
+                    {isOpen && hasSuggestions
                       ? normalisedSuggestions.map((suggestion, index) => {
                           const { text } = suggestion;
                           const groupHeading = groupHeadingIndexes.get(index);
