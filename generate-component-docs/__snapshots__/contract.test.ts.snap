@@ -80,8 +80,9 @@ Object {
     secondaryMessage?: ReactNode
     showMobileBackdrop?: boolean
     suggestions: 
-        | (value: AutosuggestValue<Value>) => Suggestions<Value>
+        | (value: AutosuggestValue<Value>) => Suggestions<Value> | { message: string; }
         | Suggestions<Value>
+        | { message: string; }
     tertiaryLabel?: ReactNode
     tone?: 
         | "critical"

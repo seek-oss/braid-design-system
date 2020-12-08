@@ -736,6 +736,31 @@ describe('Autosuggest', () => {
     });
   });
 
+  it('should support messages', () => {
+    const TestCase = () => (
+      <BraidTestProvider>
+        <Autosuggest
+          id="fruit"
+          label="Fruit"
+          value={{ text: '' }}
+          onChange={() => {}}
+          hideSuggestionsOnSelection={false}
+          suggestions={{ message: 'No suggestions' }}
+        />
+      </BraidTestProvider>
+    );
+
+    const { getByRole, queryByText } = render(<TestCase />);
+    expect(queryByText('No suggestions')).not.toBeInTheDocument();
+
+    const input = getByRole('combobox');
+    userEvent.click(input);
+    expect(queryByText('No suggestions')).toBeInTheDocument();
+
+    fireEvent.blur(input);
+    expect(queryByText('No suggestions')).not.toBeInTheDocument();
+  });
+
   describe('automaticSelection', () => {
     it("shouldn't select anything on enter if the user hasn't typed anything", () => {
       const { input, changeHandler, getInputValue } = renderAutosuggest({
