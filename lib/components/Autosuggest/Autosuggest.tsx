@@ -58,10 +58,6 @@ export type Suggestions<Value> = Array<
   Suggestion<Value> | GroupedSuggestions<Value>
 >;
 
-interface Message {
-  message: string;
-}
-
 // Action type IDs (allows action type names to be minified)
 const INPUT_FOCUS = 0;
 const INPUT_BLUR = 1;
@@ -257,8 +253,10 @@ export interface AutosuggestProps<Value>
   value: AutosuggestValue<Value>;
   suggestions:
     | Suggestions<Value>
-    | Message
-    | ((value: AutosuggestValue<Value>) => Suggestions<Value> | Message);
+    | { message: string }
+    | ((
+        value: AutosuggestValue<Value>,
+      ) => Suggestions<Value> | { message: string });
   onChange: (value: AutosuggestValue<Value>) => void;
   automaticSelection?: boolean;
   hideSuggestionsOnSelection?: boolean;
