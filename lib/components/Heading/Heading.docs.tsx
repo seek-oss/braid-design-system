@@ -2,6 +2,7 @@ import React from 'react';
 import source from '../../utils/source.macro';
 import { ComponentDetail } from '../../../site/src/types';
 import { Box, Heading, Stack, Text, Strong } from '../';
+import { TextLink } from '../TextLink/TextLink';
 
 const docs: ComponentDetail = {
   category: 'Content',
@@ -112,6 +113,32 @@ const docs: ComponentDetail = {
               Really long text that won’t fit in the layout
             </Heading>
           </Box>,
+        ),
+    },
+    {
+      label: 'Contrast',
+      description: (
+        <>
+          <Text>
+            To ensure headings have sufficient contrast, when on a system-based
+            dark background the foreground colour is inverted.
+          </Text>
+          <Text>
+            When using custom backgrounds or images, this behaviour can be
+            applied using the{' '}
+            <TextLink href="/components/BackgroundProvider">
+              BackgroundProvider
+            </TextLink>{' '}
+            and specifying whether the background is dark or light.
+          </Text>
+        </>
+      ),
+      background: 'brand',
+      Example: () =>
+        source(
+          <Heading level="2">
+            This Heading is inverted to improve contrast.
+          </Heading>,
         ),
     },
   ],

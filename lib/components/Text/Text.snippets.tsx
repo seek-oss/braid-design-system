@@ -8,12 +8,16 @@ export const snippets: Snippets = [
     code: <Text>Standard text</Text>,
   },
   {
+    name: 'Large',
+    code: <Text size="large">Large text</Text>,
+  },
+  {
     name: 'Small',
     code: <Text size="small">Small text</Text>,
   },
   {
-    name: 'Large',
-    code: <Text size="large">Large text</Text>,
+    name: 'Xsmall',
+    code: <Text size="xsmall">Xsmall text</Text>,
   },
   {
     name: 'Tone (critical)',
