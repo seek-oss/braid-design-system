@@ -24,6 +24,12 @@ const docs: ComponentDetail = {
       />,
     ),
   alternatives: [],
+  accessibility: (
+    <Text>
+      Uses native <Strong>fieldset</Strong> and <Strong>legend</Strong> elements
+      to group and describe both fields as a single form field.
+    </Text>
+  ),
   additional: [
     {
       label: 'Changing the months',
