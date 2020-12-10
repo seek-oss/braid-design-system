@@ -5,12 +5,12 @@ import { Badge } from '../';
 
 export const galleryItems: ComponentExample[] = [
   {
-    label: 'Positive Badge',
+    label: 'Positive',
     background: 'card',
     Example: () => source(<Badge tone="positive">Positive</Badge>),
   },
   {
-    label: 'Strong Positive Badge',
+    label: 'Strong Positive',
     Example: () =>
       source(
         <Badge tone="positive" weight="strong">
@@ -19,12 +19,12 @@ export const galleryItems: ComponentExample[] = [
       ),
   },
   {
-    label: 'Critical Badge',
+    label: 'Critical',
     background: 'card',
     Example: () => source(<Badge tone="critical">Critical</Badge>),
   },
   {
-    label: 'Strong Critical Badge',
+    label: 'Strong Critical',
     Example: () =>
       source(
         <Badge tone="critical" weight="strong">
@@ -33,12 +33,12 @@ export const galleryItems: ComponentExample[] = [
       ),
   },
   {
-    label: 'Caution Badge',
+    label: 'Caution',
     background: 'card',
     Example: () => source(<Badge tone="caution">Caution</Badge>),
   },
   {
-    label: 'Strong Caution Badge',
+    label: 'Strong Caution',
     Example: () =>
       source(
         <Badge tone="caution" weight="strong">
@@ -47,12 +47,12 @@ export const galleryItems: ComponentExample[] = [
       ),
   },
   {
-    label: 'Info Badge',
+    label: 'Info',
     background: 'card',
     Example: () => source(<Badge tone="info">Info</Badge>),
   },
   {
-    label: 'Strong Info Badge',
+    label: 'Strong Info',
     Example: () =>
       source(
         <Badge tone="info" weight="strong">
@@ -61,12 +61,12 @@ export const galleryItems: ComponentExample[] = [
       ),
   },
   {
-    label: 'Promote Badge',
+    label: 'Promote',
     background: 'card',
     Example: () => source(<Badge tone="promote">Promote</Badge>),
   },
   {
-    label: 'Strong Promote Badge',
+    label: 'Strong Promote',
     Example: () =>
       source(
         <Badge tone="promote" weight="strong">
@@ -75,12 +75,12 @@ export const galleryItems: ComponentExample[] = [
       ),
   },
   {
-    label: 'Neutral Badge',
+    label: 'Neutral',
     background: 'card',
     Example: () => source(<Badge tone="neutral">Neutral</Badge>),
   },
   {
-    label: 'Strong Neutral Badge',
+    label: 'Strong Neutral',
     Example: () =>
       source(
         <Badge tone="neutral" weight="strong">

@@ -169,7 +169,7 @@ export const galleryItems: ComponentExample[] = [
     },
   },
   {
-    label: 'Autosuggest with error',
+    label: 'With a critical message',
     Container,
     Example: ({ id }) => {
       const [value, setValue] = useState<Value>({ text: '' });

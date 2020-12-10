@@ -10,7 +10,6 @@ import { ComponentExample } from '../../../site/src/types';
 
 export const galleryItems: ComponentExample[] = [
   {
-    label: 'Standard',
     Example: () =>
       source(
         <Accordion>

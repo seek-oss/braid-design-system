@@ -1,51 +1,45 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { ComponentExample } from '../../../site/src/types';
 import { FieldLabel, TextLink } from '../';
-
-const Container = ({ children }: { children: ReactNode }) => (
-  <div style={{ maxWidth: '300px' }}>{children}</div>
-);
+import source from '../../utils/source.macro';
 
 export const galleryItems: ComponentExample[] = [
   {
-    label: 'Standard Field Label',
-    Container,
-    Example: ({ id }) => (
-      <FieldLabel htmlFor={id} label="This is a field label" />
-    ),
+    label: 'Standard',
+    Example: ({ id }) => source(<FieldLabel htmlFor={id} label="Label" />),
   },
   {
-    label: 'Field Label with secondary',
-    Container,
-    Example: ({ id }) => (
-      <FieldLabel
-        htmlFor={id}
-        label="Username"
-        secondaryLabel="Max 30 characters"
-      />
-    ),
+    label: 'With secondary label',
+    Example: ({ id }) =>
+      source(
+        <FieldLabel
+          htmlFor={id}
+          label="Label"
+          secondaryLabel="Secondary label"
+        />,
+      ),
   },
   {
-    label: 'Field Label with tertiary label',
-    Container,
-    Example: ({ id }) => (
-      <FieldLabel
-        htmlFor={id}
-        label="Password"
-        tertiaryLabel={<TextLink href="#">Forgot password?</TextLink>}
-      />
-    ),
+    label: 'With tertiary label',
+    Example: ({ id }) =>
+      source(
+        <FieldLabel
+          htmlFor={id}
+          label="Label"
+          tertiaryLabel={<TextLink href="#">Tertiary label</TextLink>}
+        />,
+      ),
   },
   {
-    label: 'Field Label with all types',
-    Container,
-    Example: ({ id }) => (
-      <FieldLabel
-        htmlFor={id}
-        label="Title"
-        secondaryLabel="Optional"
-        tertiaryLabel={<TextLink href="#">Help?</TextLink>}
-      />
-    ),
+    label: 'With all types',
+    Example: ({ id }) =>
+      source(
+        <FieldLabel
+          htmlFor={id}
+          label="Label"
+          secondaryLabel="Secondary label"
+          tertiaryLabel={<TextLink href="#">Tertiary label</TextLink>}
+        />,
+      ),
   },
 ];

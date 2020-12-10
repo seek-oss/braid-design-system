@@ -5,33 +5,23 @@ import { Actions, Button, TextLink } from '../';
 
 export const galleryItems: ComponentExample[] = [
   {
-    label: 'Actions with Strong Button and TextLink',
+    label: 'With strong Button and TextLink',
     Example: () =>
       source(
         <Actions>
-          <Button weight="strong">Strong</Button>
+          <Button weight="strong">Strong Button</Button>
           <TextLink href="#">TextLink</TextLink>
         </Actions>,
       ),
   },
   {
-    label: 'Actions with Regular Button and Weak Button',
+    label: 'With multiple buttons and a TextLink',
     Example: () =>
       source(
         <Actions>
-          <Button weight="regular">Regular</Button>
-          <Button weight="weak">Weak</Button>
-        </Actions>,
-      ),
-  },
-  {
-    label: 'Actions with Weak Buttons and Regular Button',
-    Example: () =>
-      source(
-        <Actions>
-          <Button weight="weak">Weak</Button>
-          <Button weight="weak">Weak</Button>
-          <Button weight="regular">Regular</Button>
+          <Button>Regular Button</Button>
+          <Button weight="weak">Weak Button</Button>
+          <TextLink href="#">TextLink</TextLink>
         </Actions>,
       ),
   },

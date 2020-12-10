@@ -9,28 +9,28 @@ const Container = ({ children }: { children: ReactNode }) => (
 
 export const galleryItems: ComponentExample[] = [
   {
-    label: 'Default Button',
+    label: 'Regular weight',
     Container,
     Example: () => source(<Button>Submit</Button>),
   },
   {
-    label: 'Strong Button',
+    label: 'Strong weight',
     Container,
     Example: () => source(<Button weight="strong">Submit</Button>),
   },
   {
-    label: 'Weak Button',
+    label: 'Weak weight',
     Container,
     Example: () => source(<Button weight="weak">Submit</Button>),
   },
   {
-    label: 'Weak Button on Brand Background',
+    label: 'Weak weight on &ldquo;brand&rdquo; background',
     background: 'brand',
     Container,
     Example: () => source(<Button weight="weak">Submit</Button>),
   },
   {
-    label: 'Loading Button',
+    label: 'Loading state',
     Container,
     Example: () => source(<Button loading>Loading</Button>),
   },

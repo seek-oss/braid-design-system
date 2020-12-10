@@ -78,7 +78,7 @@ const docs: ComponentDetail = {
           <Alert tone="info">
             <Stack space="large">
               <Text>
-                This is an important piece of information with a{' '}
+                This is an informative message with a{' '}
                 <TextLink href="#">TextLink.</TextLink>
               </Text>
               <List space="medium">
@@ -106,7 +106,7 @@ const docs: ComponentDetail = {
             onClose={() => alert('Dismiss this message')}
             closeLabel="Close info alert"
           >
-            <Text>This is an important piece of information.</Text>
+            <Text>This is an informative message.</Text>
           </Alert>,
         ),
       /* eslint-enable no-alert */

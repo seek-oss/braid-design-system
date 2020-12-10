@@ -11,7 +11,6 @@ import {
 
 export const galleryItems: ComponentExample[] = [
   {
-    label: 'Standard usage',
     background: 'card',
     Example: ({ handler }) => {
       const [checked1, setChecked1] = useState(false);

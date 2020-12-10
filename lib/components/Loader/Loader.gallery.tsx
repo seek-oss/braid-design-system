@@ -4,7 +4,6 @@ import { Loader } from '../';
 
 export const galleryItems: ComponentExample[] = [
   {
-    label: 'Default',
     Example: () => <Loader />,
   },
 ];

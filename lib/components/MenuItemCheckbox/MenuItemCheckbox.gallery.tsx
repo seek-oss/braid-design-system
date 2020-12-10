@@ -4,7 +4,6 @@ import { OverflowMenu, MenuItemCheckbox, Box } from '..';
 
 export const galleryItems: ComponentExample[] = [
   {
-    label: 'Standard usage',
     background: 'card',
     Example: () => {
       const [checked1, setChecked1] = useState(false);

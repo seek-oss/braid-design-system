@@ -4,7 +4,6 @@ import { Box, OverflowMenu, MenuItem, MenuItemLink } from '../';
 
 export const galleryItems: ComponentExample[] = [
   {
-    label: 'Default',
     background: 'card',
     Example: ({ handler }) => (
       <Box style={{ paddingLeft: '100px', maxWidth: '200px' }}>

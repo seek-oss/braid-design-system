@@ -11,7 +11,7 @@ const widths = [
 
 export const galleryItems: ComponentExample[] = [
   {
-    label: 'Standard Columns',
+    label: 'Equal widths (default)',
     Example: () => (
       <Columns space="small">
         <Column>

@@ -29,16 +29,16 @@ export const galleryItems: ComponentExample[] = [
             </Tabs>
             <TabPanels>
               <TabPanel>
-                <Placeholder height={200} label="Panel 1" />
+                <Placeholder height={100} label="Panel 1" />
               </TabPanel>
               <TabPanel>
-                <Placeholder height={200} label="Panel 2" />
+                <Placeholder height={100} label="Panel 2" />
               </TabPanel>
               <TabPanel>
-                <Placeholder height={200} label="Panel 3" />
+                <Placeholder height={100} label="Panel 3" />
               </TabPanel>
               <TabPanel>
-                <Placeholder height={200} label="Panel 4" />
+                <Placeholder height={100} label="Panel 4" />
               </TabPanel>
             </TabPanels>
           </Stack>
@@ -58,10 +58,10 @@ export const galleryItems: ComponentExample[] = [
             </Tabs>
             <TabPanels>
               <TabPanel>
-                <Placeholder height={200} label="Panel 1" />
+                <Placeholder height={100} label="Panel 1" />
               </TabPanel>
               <TabPanel>
-                <Placeholder height={200} label="Panel 2" />
+                <Placeholder height={100} label="Panel 2" />
               </TabPanel>
             </TabPanels>
           </Stack>
@@ -82,16 +82,16 @@ export const galleryItems: ComponentExample[] = [
         <Card>
           <TabPanels>
             <TabPanel>
-              <Placeholder height={200} label="Panel 1" />
+              <Placeholder height={100} label="Panel 1" />
             </TabPanel>
             <TabPanel>
-              <Placeholder height={200} label="Panel 2" />
+              <Placeholder height={100} label="Panel 2" />
             </TabPanel>
             <TabPanel>
-              <Placeholder height={200} label="Panel 3" />
+              <Placeholder height={100} label="Panel 3" />
             </TabPanel>
             <TabPanel>
-              <Placeholder height={200} label="Panel 4" />
+              <Placeholder height={100} label="Panel 4" />
             </TabPanel>
           </TabPanels>
         </Card>
@@ -114,16 +114,16 @@ export const galleryItems: ComponentExample[] = [
             </Tabs>
             <TabPanels>
               <TabPanel>
-                <Placeholder height={200} label="Panel 1" />
+                <Placeholder height={100} label="Panel 1" />
               </TabPanel>
               <TabPanel>
-                <Placeholder height={200} label="Panel 2" />
+                <Placeholder height={100} label="Panel 2" />
               </TabPanel>
               <TabPanel>
-                <Placeholder height={200} label="Panel 3" />
+                <Placeholder height={100} label="Panel 3" />
               </TabPanel>
               <TabPanel>
-                <Placeholder height={200} label="Panel 4" />
+                <Placeholder height={100} label="Panel 4" />
               </TabPanel>
             </TabPanels>
           </Stack>

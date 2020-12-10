@@ -1,36 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ComponentExample } from '../../../site/src/types';
-import { Disclosure, Text } from '..';
+import { Disclosure } from '..';
+import source from '../../utils/source.macro';
+import { Placeholder } from '../../playroom/components';
 
 export const galleryItems: ComponentExample[] = [
   {
-    label: 'Collapsed Disclosure',
-    Example: ({ id }) => (
-      <Disclosure
-        id={id}
-        expandLabel="Show content"
-        collapseLabel="Hide content"
-      >
-        <Text>Content</Text>
-      </Disclosure>
-    ),
-  },
-  {
-    label: 'Expanded Disclosure',
-    Example: ({ id }) => {
-      const [expanded, setExpanded] = useState(true);
-
-      return (
+    Example: ({ id }) =>
+      source(
         <Disclosure
           id={id}
           expandLabel="Show content"
           collapseLabel="Hide content"
-          expanded={expanded}
-          onToggle={setExpanded}
         >
-          <Text>Content</Text>
-        </Disclosure>
-      );
-    },
+          <Placeholder height={100} />
+        </Disclosure>,
+      ),
   },
 ];

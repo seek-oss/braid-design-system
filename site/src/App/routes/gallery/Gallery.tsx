@@ -46,12 +46,12 @@ const DefaultContainer = ({ children }: { children: ReactNode }) => (
 
 const COLUMN_SIZE = 4;
 
-export const galleryComponents = allGalleryComponents
-  .filter(({ name }) => name === 'useToast')
-  .map(({ examples, ...rest }) => ({
+export const galleryComponents = allGalleryComponents.map(
+  ({ examples, ...rest }) => ({
     ...rest,
     examples: chunk(examples, COLUMN_SIZE),
-  }));
+  }),
+);
 
 export const galleryIcons = Object.keys(icons).map((iconName) => {
   const IconComponent = icons[iconName as keyof typeof icons];
