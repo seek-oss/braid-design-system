@@ -1,14 +1,30 @@
-import React, { ReactNode } from 'react';
-import { ComponentDocs } from '../../../site/src/types';
+import React from 'react';
+import { ComponentDetail } from '../../../site/src/types';
 import { Link } from 'react-router-dom';
-import { ButtonRenderer, Stack, Text, TextLink } from '../';
+import { ButtonRenderer, Stack, Inline, Text, TextLink } from '../';
+import source from '../../utils/source.macro';
 
-const Container = ({ children }: { children: ReactNode }) => (
-  <div style={{ maxWidth: '300px' }}>{children}</div>
-);
-
-const docs: ComponentDocs = {
+const docs: ComponentDetail = {
   category: 'Content',
+  deprecationWarning: (
+    <Text weight="medium">
+      This component has been deprecated. Use{' '}
+      <TextLink href="/components/Button">Button</TextLink> or{' '}
+      <TextLink href="/components/ButtonLink">ButtonLink</TextLink> instead.
+    </Text>
+  ),
+  Example: () =>
+    source(
+      <Inline space="small" collapseBelow="desktop">
+        <ButtonRenderer>
+          {(ButtonChildren, buttonProps) => (
+            <Link to="#" {...buttonProps}>
+              <ButtonChildren>Custom button element</ButtonChildren>
+            </Link>
+          )}
+        </ButtonRenderer>
+      </Inline>,
+    ),
   description: (
     <Stack space="large">
       <Text>
@@ -18,43 +34,11 @@ const docs: ComponentDocs = {
         <TextLink href="/components/ButtonLink">ButtonLink</TextLink> instead.
       </Text>
       <Text>
-        In fact, we&rsquo;re honestly not quite sure why you&rsquo;d need this
-        component anymore. If you think you&rsquo;ve found a legitimate use case
-        for it, please let us know so we can provide better documentation.
+        If you think you have a legitimate use case for it, please let us know.
       </Text>
     </Stack>
   ),
-  examples: [
-    {
-      label: 'Button with Custom Renderer',
-      Container,
-      showCodeByDefault: true,
-      Example: () => (
-        <ButtonRenderer>
-          {(ButtonChildren, buttonProps) => (
-            <Link to="#" {...buttonProps}>
-              <ButtonChildren>Link button</ButtonChildren>
-            </Link>
-          )}
-        </ButtonRenderer>
-      ),
-      code: `
-        import React from 'react';
-        import { Link } from 'react-router-dom';
-        import { ButtonRenderer } from 'braid-design-system';
-
-        export default () => (
-          <ButtonRenderer>
-            {(ButtonChildren, buttonProps) => (
-              <Link to="#" {...buttonProps}>
-                <ButtonChildren>Link button</ButtonChildren>
-              </Link>
-            )}
-          </ButtonRenderer>
-        );
-      `,
-    },
-  ],
+  alternatives: [],
 };
 
 export default docs;

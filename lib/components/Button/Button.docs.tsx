@@ -19,6 +19,10 @@ const docs: ComponentDetail = {
       name: 'ButtonLink',
       description: 'For a semantic link that looks like a button.',
     },
+    {
+      name: 'TextLinkButton',
+      description: 'For a semantic button that looks like a link.',
+    },
   ],
   additional: [
     {

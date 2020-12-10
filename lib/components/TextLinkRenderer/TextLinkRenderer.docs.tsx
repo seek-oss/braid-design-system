@@ -1,9 +1,31 @@
 import React from 'react';
-import { ComponentDocs } from '../../../site/src/types';
+import { ComponentDetail } from '../../../site/src/types';
 import { TextLinkRenderer, Stack, Text, TextLink, Box } from '../';
+import source from '../../utils/source.macro';
 
-const docs: ComponentDocs = {
+const docs: ComponentDetail = {
   category: 'Content',
+  deprecationWarning: (
+    <Text weight="medium">
+      This component has been deprecated. Use{' '}
+      <TextLink href="/components/TextLink">TextLink</TextLink> or{' '}
+      <TextLink href="/components/TextLinkButton">TextLinkButton</TextLink>{' '}
+      instead.
+    </Text>
+  ),
+  Example: () =>
+    source(
+      <Text>
+        <TextLinkRenderer>
+          {(textLinkProps) => (
+            <Box component="button" {...textLinkProps}>
+              Visually a link
+            </Box>
+          )}
+        </TextLinkRenderer>
+        , rendered as a button.
+      </Text>,
+    ),
   description: (
     <Stack space="large">
       <Text>
@@ -15,49 +37,11 @@ const docs: ComponentDocs = {
         instead.
       </Text>
       <Text>
-        In fact, we&rsquo;re honestly not quite sure why you&rsquo;d need this
-        component anymore. If you think you&rsquo;ve found a legitimate use case
-        for it, please let us know so we can provide better documentation.
+        If you think you have a legitimate use case for it, please let us know.
       </Text>
     </Stack>
   ),
-  examples: [
-    {
-      label: 'TextLink with Custom Renderer',
-      showCodeByDefault: true,
-      Example: () => (
-        <Text>
-          Even though it looks like a link, the last word of this sentence is
-          actually a{' '}
-          <TextLinkRenderer>
-            {(textLinkProps) => (
-              <Box component="button" {...textLinkProps}>
-                button.
-              </Box>
-            )}
-          </TextLinkRenderer>
-        </Text>
-      ),
-      code: `
-        import React from 'react';
-        import { TextLinkRenderer, Text, Box } from 'braid-design-system';
-
-        export default () => (
-          <Text>
-            Even though it looks like a link, the last word of this sentence
-            is actually a{' '}
-            <TextLinkRenderer>
-              {(textLinkProps) => (
-                <Box component="button" {...textLinkProps}>
-                  button.
-                </Box>
-              )}
-            </TextLinkRenderer>
-          </Text>
-        );
-      `,
-    },
-  ],
+  alternatives: [],
 };
 
 export default docs;

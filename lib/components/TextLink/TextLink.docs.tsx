@@ -1,142 +1,205 @@
 import React from 'react';
-import { ComponentDocs } from '../../../site/src/types';
-import { Actions, Button, Heading, Stack, Text, TextLink } from '../';
+import { ComponentDetail } from '../../../site/src/types';
+import {
+  Actions,
+  Box,
+  Button,
+  Inline,
+  Stack,
+  Strong,
+  Text,
+  TextLink,
+} from '../';
+import source from '../../utils/source.macro';
 
-const docs: ComponentDocs = {
+const docs: ComponentDetail = {
   category: 'Content',
   migrationGuide: true,
-  description: (
-    <Stack space="large">
+  Example: () =>
+    source(
       <Text>
-        This component renders a native `a` element by default, but this can be
-        customised via the `linkComponent` prop on{' '}
-        <TextLink href="/components/BraidProvider">BraidProvider</TextLink>.
-      </Text>
-      <Text>
-        Please note that this component must be nested within a{' '}
-        <TextLink href="/components/Text">Text</TextLink>,{' '}
-        <TextLink href="/components/Heading">Heading</TextLink> or{' '}
-        <TextLink href="/components/Actions">Actions</TextLink> component.
-      </Text>
-      <Text tone="secondary">
-        If you want a button that looks like a link, check out{' '}
-        <TextLink href="/components/TextLinkButton">TextLinkButton.</TextLink>
-      </Text>
-    </Stack>
-  ),
-  examples: [
+        <TextLink href="#" hitArea="large">
+          TextLink
+        </TextLink>
+      </Text>,
+    ),
+  alternatives: [
     {
-      label: 'Regular TextLink',
-      Example: () => (
+      name: 'TextLinkButton',
+      description: 'For a semantic button that looks like a link.',
+    },
+    {
+      name: 'ButtonLink',
+      description: 'For a semantic link that looks like a button.',
+    },
+  ],
+  additional: [
+    {
+      label: 'Note',
+      description: (
         <Text>
-          <TextLink href="#" hitArea="large">
-            TextLink
-          </TextLink>
+          This component must be nested within a{' '}
+          <TextLink href="/components/Text">Text</TextLink> or{' '}
+          <TextLink href="/components/Heading">Heading</TextLink> or{' '}
+          <TextLink href="/components/Actions">Actions</TextLink> component.
         </Text>
       ),
     },
     {
-      label: 'Regular TextLink in a sentence',
-      Example: () => (
+      label: 'Visited links',
+      description: (
         <Text>
-          This sentence contains a <TextLink href="#">TextLink.</TextLink>
+          To communicate a link as being already visited, set the{' '}
+          <Strong>showVisited</Strong> prop.
         </Text>
       ),
+      Example: () =>
+        source(
+          <Text>
+            This sentence contains a{' '}
+            <TextLink href="" showVisited>
+              visited TextLink.
+            </TextLink>
+          </Text>,
+        ),
     },
     {
-      label: 'Weak TextLink in a sentence',
-      Example: () => (
+      label: 'Design considerations',
+      description: (
         <Text>
-          This sentence contains a{' '}
-          <TextLink href="#" weight="weak">
-            weak TextLink
-          </TextLink>
-          .
+          By default, a TextLink uses colour and underline on hover to create
+          affordance. Optionally you can decrease their visual weight by setting{' '}
+          <Strong>weight</Strong> to <Strong>weak</Strong>.
         </Text>
       ),
+      Example: () =>
+        source(
+          <Text>
+            This sentence contains a{' '}
+            <TextLink href="#" weight="weak">
+              weak TextLink
+            </TextLink>
+            .
+          </Text>,
+        ),
     },
     {
-      label: 'TextLink in secondary text',
-      Example: () => (
-        <Text tone="secondary">
-          This sentence contains a <TextLink href="#">TextLink.</TextLink>
-        </Text>
+      label: 'Development considerations',
+      description: (
+        <>
+          <Text>
+            By default renders a native <Strong>a</Strong> element, but this can
+            be customised via the <Strong>linkComponent</Strong> prop on{' '}
+            <TextLink href="/components/BraidProvider">BraidProvider</TextLink>.
+          </Text>
+          <Text>
+            In addition, when inside of an{' '}
+            <TextLink href="/components/Actions">Actions</TextLink> component a
+            TextLink uses a different layout and focus style to better align
+            with the other <TextLink href="/components/Button">Button</TextLink>{' '}
+            and <TextLink href="/components/TextLink">TextLink</TextLink>{' '}
+            elements in the container.
+          </Text>
+        </>
       ),
+      Example: () =>
+        source(
+          <Actions>
+            <Button>Button</Button>
+            <TextLink href="#">TextLink</TextLink>
+          </Actions>,
+        ),
     },
     {
-      label: 'Visited TextLink',
-      Example: () => (
-        <Text>
-          This sentence contains a{' '}
-          <TextLink href="" showVisited>
-            visited TextLink.
-          </TextLink>
-        </Text>
+      label: 'Contextual design',
+      description: (
+        <>
+          <Text>
+            To avoid clashing colours, when on a system-based background
+            TextLink will default its <Strong>weight</Strong> to{' '}
+            <Strong>weak</Strong>. In addition, if it is a dark background it
+            may be inverted along with the rest of the parent Text element as
+            documented{' '}
+            <TextLink href="/components/Text#contrast">here</TextLink>.
+          </Text>
+          <Text>
+            This behaviour can be overidden by specifying a{' '}
+            <Strong>weight</Strong> of <Strong>regular</Strong>.
+          </Text>
+        </>
       ),
-    },
-    {
-      label: 'TextLink on dark background',
-      background: 'brand',
-      Example: () => (
-        <Text>
-          This sentence contains a <TextLink href="#">TextLink.</TextLink>
-        </Text>
-      ),
-    },
-    {
-      label: 'TextLink inside Actions',
-      Example: () => (
-        <Actions>
-          <Button>Button</Button>
-          <TextLink href="#">TextLink</TextLink>
-        </Actions>
-      ),
-    },
-    {
-      label: 'TextLink inside large Text',
-      Example: () => (
-        <Text size="large">
-          This sentence contains a <TextLink href="#">TextLink.</TextLink>
-        </Text>
-      ),
-    },
-    {
-      label: 'TextLink inside Heading',
-      Example: () => (
-        <Heading level="3">
-          This heading contains a <TextLink href="#">TextLink.</TextLink>
-        </Heading>
-      ),
-    },
-    {
-      label: 'TextLink inside weak Heading',
-      Example: () => (
-        <Heading level="3" weight="weak">
-          This heading contains a <TextLink href="#">TextLink.</TextLink>
-        </Heading>
-      ),
-    },
-    {
-      label: 'Weak TextLink inside Heading',
-      Example: () => (
-        <Heading level="3">
-          This heading contains a{' '}
-          <TextLink href="#" weight="weak">
-            weak TextLink.
-          </TextLink>
-        </Heading>
-      ),
-    },
-    {
-      label: 'Weak TextLink inside weak Heading',
-      Example: () => (
-        <Heading level="3" weight="weak">
-          This heading contains a{' '}
-          <TextLink href="#" weight="weak">
-            weak TextLink.
-          </TextLink>
-        </Heading>
-      ),
+      background: 'card',
+      Example: () =>
+        source(
+          <Stack space="large">
+            <Inline space="xsmall" alignY="center">
+              <Text>Defaults to weak on light backgrounds such as</Text>
+              <Box background="promoteLight" padding="xsmall">
+                <Text>
+                  <TextLink href="#">promoteLight</TextLink>
+                </Text>
+              </Box>
+              <Text>,</Text>
+              <Box background="infoLight" padding="xsmall">
+                <Text>
+                  <TextLink href="#">infoLight</TextLink>
+                </Text>
+              </Box>
+              <Text>,</Text>
+              <Box background="positiveLight" padding="xsmall">
+                <Text>
+                  <TextLink href="#">positiveLight</TextLink>
+                </Text>
+              </Box>
+              <Text>,</Text>
+              <Box background="cautionLight" padding="xsmall">
+                <Text>
+                  <TextLink href="#">cautionLight</TextLink>
+                </Text>
+              </Box>
+              <Text>, or </Text>
+              <Box background="criticalLight" padding="xsmall">
+                <Text>
+                  <TextLink href="#">criticalLight</TextLink>
+                </Text>
+              </Box>
+              <Text>.</Text>
+            </Inline>
+            <Inline space="xsmall" alignY="center">
+              <Text>Also inverts on darker backgrounds such as</Text>
+              <Box background="promote" padding="xsmall">
+                <Text>
+                  <TextLink href="#">promote</TextLink>
+                </Text>
+              </Box>
+              <Text>,</Text>
+              <Box background="info" padding="xsmall">
+                <Text>
+                  <TextLink href="#">info</TextLink>
+                </Text>
+              </Box>
+              <Text>,</Text>
+              <Box background="positive" padding="xsmall">
+                <Text>
+                  <TextLink href="#">positive</TextLink>
+                </Text>
+              </Box>
+              <Text>,</Text>
+              <Box background="caution" padding="xsmall">
+                <Text>
+                  <TextLink href="#">caution</TextLink>
+                </Text>
+              </Box>
+              <Text>,</Text>
+              <Box background="critical" padding="xsmall">
+                <Text>
+                  <TextLink href="#">critical</TextLink>
+                </Text>
+              </Box>
+              <Text>.</Text>
+            </Inline>
+          </Stack>,
+        ),
     },
   ],
 };

@@ -1,34 +1,35 @@
 import React from 'react';
 import { Snippets } from '../private/Snippets';
 import { TextLink, Text } from '../../playroom/components';
+import source from '../../utils/source.macro';
 
 export const snippets: Snippets = [
   {
     name: 'Inline link',
-    code: (
+    code: source(
       <Text>
         <TextLink href="#">Link text</TextLink>
-      </Text>
+      </Text>,
     ),
   },
   {
     name: 'Large hit area',
-    code: (
+    code: source(
       <Text>
         <TextLink href="#" hitArea="large">
           Large hit area
         </TextLink>
-      </Text>
+      </Text>,
     ),
   },
   {
     name: 'Visited',
-    code: (
+    code: source(
       <Text>
-        <TextLink href="#" showVisited>
+        <TextLink href="" showVisited>
           Visited link
         </TextLink>
-      </Text>
+      </Text>,
     ),
   },
 ];
