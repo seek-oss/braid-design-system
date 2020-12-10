@@ -116,14 +116,15 @@ const docs: ComponentDetail = {
         <>
           <Text>
             To avoid clashing colours, when on a background other than{' '}
-            <Strong>&ldquo;card&ldquo;</Strong> TextLink will default its{' '}
-            <Strong>weight</Strong> to <Strong>weak</Strong>. In addition, if it
-            is a dark background it may be inverted based on the{' '}
-            <TextLink href="/components/Text#contrast">contrast rules</TextLink>{' '}
-            of Text.
+            <Strong>card</Strong>, TextLink will default its{' '}
+            <Strong>weight</Strong> to <Strong>weak</Strong>. In addition, when
+            placed on a dark background, it may be inverted based on the{' '}
+            <TextLink href="/components/Text#contrast">
+              contrast rules of Text.
+            </TextLink>
           </Text>
           <Text>
-            This behaviour can be overidden by specifying a{' '}
+            This behaviour can be overridden by specifying a{' '}
             <Strong>weight</Strong> of <Strong>regular</Strong>.
           </Text>
         </>
@@ -133,70 +134,58 @@ const docs: ComponentDetail = {
         source(
           <Stack space="large">
             <Inline space="xsmall" alignY="center">
-              <Text>Defaults to weak on light backgrounds such as</Text>
               <Box background="promoteLight" padding="xsmall">
                 <Text>
                   <TextLink href="#">promoteLight</TextLink>
                 </Text>
               </Box>
-              <Text>,</Text>
               <Box background="infoLight" padding="xsmall">
                 <Text>
                   <TextLink href="#">infoLight</TextLink>
                 </Text>
               </Box>
-              <Text>,</Text>
               <Box background="positiveLight" padding="xsmall">
                 <Text>
                   <TextLink href="#">positiveLight</TextLink>
                 </Text>
               </Box>
-              <Text>,</Text>
               <Box background="cautionLight" padding="xsmall">
                 <Text>
                   <TextLink href="#">cautionLight</TextLink>
                 </Text>
               </Box>
-              <Text>, or </Text>
               <Box background="criticalLight" padding="xsmall">
                 <Text>
                   <TextLink href="#">criticalLight</TextLink>
                 </Text>
               </Box>
-              <Text>.</Text>
             </Inline>
             <Inline space="xsmall" alignY="center">
-              <Text>Also inverts on darker backgrounds such as</Text>
               <Box background="promote" padding="xsmall">
                 <Text>
                   <TextLink href="#">promote</TextLink>
                 </Text>
               </Box>
-              <Text>,</Text>
               <Box background="info" padding="xsmall">
                 <Text>
                   <TextLink href="#">info</TextLink>
                 </Text>
               </Box>
-              <Text>,</Text>
               <Box background="positive" padding="xsmall">
                 <Text>
                   <TextLink href="#">positive</TextLink>
                 </Text>
               </Box>
-              <Text>,</Text>
               <Box background="caution" padding="xsmall">
                 <Text>
                   <TextLink href="#">caution</TextLink>
                 </Text>
               </Box>
-              <Text>,</Text>
               <Box background="critical" padding="xsmall">
                 <Text>
                   <TextLink href="#">critical</TextLink>
                 </Text>
               </Box>
-              <Text>.</Text>
             </Inline>
           </Stack>,
         ),

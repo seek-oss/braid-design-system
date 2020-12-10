@@ -21,14 +21,22 @@ const docs: ComponentDetail = {
     },
   ],
   accessibility: (
-    <Text>
-      Even thought is looks like a{' '}
-      <TextLink href="/component/TextLink">TextLink</TextLink>, this is actually
-      a semantic button following the{' '}
-      <TextLink href="https://www.w3.org/TR/wai-aria-practices/#button">
-        WAI-ARIA Button Pattern.
-      </TextLink>
-    </Text>
+    <>
+      <Text>
+        Even thought is looks like a{' '}
+        <TextLink href="/component/TextLink">TextLink</TextLink>, this is
+        actually a semantic button following the{' '}
+        <TextLink href="https://www.w3.org/TR/wai-aria-practices/#button">
+          WAI-ARIA Button Pattern.
+        </TextLink>
+      </Text>
+
+      <Text>
+        Rather than rendering a native <Strong>button</Strong> element, we
+        render a <Strong>span</Strong> element with an ARIA role of{' '}
+        <Strong>button</Strong> so that text can wrap across multiple lines.
+      </Text>
+    </>
   ),
   additional: [
     {
@@ -39,16 +47,6 @@ const docs: ComponentDetail = {
           <TextLink href="/components/Text">Text</TextLink>,{' '}
           <TextLink href="/components/Heading">Heading</TextLink> or{' '}
           <TextLink href="/components/Actions">Actions</TextLink> component.
-        </Text>
-      ),
-    },
-    {
-      label: 'Developer considerations',
-      description: (
-        <Text>
-          This component renders a native <Strong>span</Strong> element with an
-          ARIA role of “button” so that, unlike a standard button element, text
-          can wrap across multiple lines.
         </Text>
       ),
     },

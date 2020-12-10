@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentDetail } from '../../../site/src/types';
-import { Stack, Strong, Text, TextLink, TextDropdown } from '..';
+import { Stack, Strong, Text, TextLink, TextDropdown, Notice } from '..';
 import source from '../../utils/source.macro';
 
 const docs: ComponentDetail = {
@@ -33,21 +33,15 @@ const docs: ComponentDetail = {
       label: 'Design considerations',
       description: (
         <>
+          <Notice tone="info">
+            <Text>This component is not designed for usage within forms.</Text>
+          </Notice>
           <Text>
-            An inline dropdown that can be used as part of a sentence or as an
-            alternative to{' '}
-            <TextLink href="/components/Dropdown">Dropdown</TextLink>, outside
-            of a more structured form.
-          </Text>
-          <Text>
-            The styling is inherited from the parent typographic component,
-            meaning that a `TextDropdown` <Strong>must</Strong> be within either
-            a <TextLink href="/components/Text">Text</TextLink> or{' '}
-            <TextLink href="/components/Heading">Heading</TextLink>.
-          </Text>
-          <Text>
-            This provides consumers with the flexibility to change the weight or
-            size to suit the surrounding experience.
+            Text styles are inherited from the parent typographic component,
+            meaning that it <Strong>must</Strong> be within either a{' '}
+            <TextLink href="/components/Text">Text</TextLink> or{' '}
+            <TextLink href="/components/Heading">Heading</TextLink>. This also
+            allows you to change the weight, size and tone of the dropdown.
           </Text>
         </>
       ),
@@ -75,10 +69,10 @@ const docs: ComponentDetail = {
       label: 'Development considerations',
       description: (
         <Text>
-          The <Strong>options</Strong> prop also supports complex values—where
-          the display text differs from the field value. In this case each
-          option is an object containing keys for both <Strong>text</Strong> and{' '}
-          <Strong>value</Strong>.
+          The <Strong>options</Strong> prop also supports complex values where
+          the display text differs from the field value. In this case, each
+          option is an object containing both <Strong>text</Strong> and{' '}
+          <Strong>value</Strong> properties.
         </Text>
       ),
       Example: ({ id, setState, getState, setDefaultState }) =>
