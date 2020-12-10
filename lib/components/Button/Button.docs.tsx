@@ -46,14 +46,20 @@ const docs: ComponentDetail = {
     {
       label: 'Contextual design',
       description: (
-        <Text>
-          Weak Button elements are inverted when rendered on a dark background
-          via <TextLink href="/components/Box">Box</TextLink> or{' '}
-          <TextLink href="/components/BackgroundProvider">
-            BackgroundProvider
-          </TextLink>
-          .
-        </Text>
+        <>
+          <Text>
+            Weak Button elements are inverted when rendered on a dark
+            background.
+          </Text>
+          <Text>
+            When using custom backgrounds or images, this behaviour can be
+            applied using the{' '}
+            <TextLink href="/components/BackgroundProvider">
+              BackgroundProvider
+            </TextLink>{' '}
+            and specifying whether the background is dark or light.
+          </Text>
+        </>
       ),
       Example: () =>
         source(

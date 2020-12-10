@@ -213,8 +213,8 @@ const docs: ComponentDetail = {
       description: (
         <>
           <Text>
-            To ensure text has sufficient contrast, when on a system-based dark
-            background the foreground colour is inverted.
+            To ensure text has sufficient contrast, when on a dark background
+            the foreground colour is inverted.
           </Text>
           <Text>
             When using custom backgrounds or images, this behaviour can be

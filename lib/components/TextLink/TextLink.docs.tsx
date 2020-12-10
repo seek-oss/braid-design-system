@@ -115,12 +115,12 @@ const docs: ComponentDetail = {
       description: (
         <>
           <Text>
-            To avoid clashing colours, when on a system-based background
-            TextLink will default its <Strong>weight</Strong> to{' '}
-            <Strong>weak</Strong>. In addition, if it is a dark background it
-            may be inverted along with the rest of the parent Text element as
-            documented{' '}
-            <TextLink href="/components/Text#contrast">here</TextLink>.
+            To avoid clashing colours, when on a background other than{' '}
+            <Strong>&ldquo;card&ldquo;</Strong> TextLink will default its{' '}
+            <Strong>weight</Strong> to <Strong>weak</Strong>. In addition, if it
+            is a dark background it may be inverted based on the{' '}
+            <TextLink href="/components/Text#contrast">contrast rules</TextLink>{' '}
+            of Text.
           </Text>
           <Text>
             This behaviour can be overidden by specifying a{' '}

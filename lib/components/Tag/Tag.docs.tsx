@@ -28,13 +28,20 @@ const docs: ComponentDetail = {
         </Text>
       ),
       background: 'card',
-      Example: ({ getState, setState }) =>
+      Example: ({ getState, setState, toggleState }) =>
         source(
           <Inline space="small" alignY="center">
-            <Tag>One</Tag>
+            {!getState('clearOne') ? (
+              <Tag
+                onClear={() => toggleState('clearOne')}
+                clearLabel={'Clear "One"'}
+              >
+                One
+              </Tag>
+            ) : null}
             {!getState('clearTwo') ? (
               <Tag
-                onClear={() => setState('clearTwo', true)}
+                onClear={() => toggleState('clearTwo')}
                 clearLabel={'Clear "Two"'}
               >
                 Two
@@ -42,7 +49,7 @@ const docs: ComponentDetail = {
             ) : null}
             {!getState('clearThree') ? (
               <Tag
-                onClear={() => setState('clearThree', true)}
+                onClear={() => toggleState('clearThree')}
                 clearLabel={'Clear "Three"'}
               >
                 Three
@@ -53,6 +60,7 @@ const docs: ComponentDetail = {
                 weight="weak"
                 hitArea="large"
                 onClick={() => {
+                  setState('clearOne', false);
                   setState('clearTwo', false);
                   setState('clearThree', false);
                 }}
