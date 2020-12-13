@@ -1,19 +1,53 @@
 import React from 'react';
-import { ComponentDocs } from '../../../../site/src/types';
-import { IconStar } from './IconStar';
+import { ComponentDetail } from '../../../../site/src/types';
+import source from '../../../utils/source.macro';
+import { IconStar, Button, Heading, Inline, Stack, Strong, Text } from '../../';
 
-const docs: ComponentDocs = {
+const docs: ComponentDetail = {
   category: 'Icon',
   migrationGuide: true,
-  foundation: true,
-  examples: [
+  Example: () =>
+    source(
+      <Inline space={['large', 'xlarge']} align="center">
+        <Stack space="medium" align="center">
+          <Heading component="div" level="1">
+            <IconStar />
+          </Heading>
+          <Text tone="secondary" size="small" align="center">
+            INACTIVE
+          </Text>
+        </Stack>
+        <Stack space="medium" align="center">
+          <Heading component="div" level="1">
+            <IconStar active />
+          </Heading>
+          <Text tone="secondary" size="small" align="center">
+            ACTIVE
+          </Text>
+        </Stack>
+      </Inline>,
+    ),
+  alternatives: [],
+  additional: [
     {
-      label: 'Default',
-      Example: () => <IconStar />,
-    },
-    {
-      label: 'Active',
-      Example: () => <IconStar active={true} />,
+      label: 'Toggling active state',
+      description: (
+        <Text>
+          The star can be marked as active using the <Strong>active</Strong>{' '}
+          prop.
+        </Text>
+      ),
+      Example: ({ getState, toggleState }) =>
+        source(
+          <Stack space="large" dividers>
+            <IconStar active={getState('active')} />
+            <Inline space="small">
+              <Button onClick={() => toggleState('active')}>
+                {getState('active') ? 'inactive' : 'active'}
+              </Button>
+            </Inline>
+          </Stack>,
+        ),
     },
   ],
 };

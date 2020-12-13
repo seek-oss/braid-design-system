@@ -1,17 +1,20 @@
 import React from 'react';
-import { ComponentDocs } from '../../../../site/src/types';
-import { IconCritical } from './IconCritical';
+import { ComponentDetail } from '../../../../site/src/types';
+import source from '../../../utils/source.macro';
+import { IconCritical, Heading, Stack } from '../../';
 
-const docs: ComponentDocs = {
+const docs: ComponentDetail = {
   category: 'Icon',
   migrationGuide: true,
-  foundation: true,
-  examples: [
-    {
-      label: 'Default',
-      Example: () => <IconCritical />,
-    },
-  ],
+  Example: () =>
+    source(
+      <Stack space="none" align="center">
+        <Heading component="div" level="1">
+          <IconCritical />
+        </Heading>
+      </Stack>,
+    ),
+  alternatives: [],
 };
 
 export default docs;

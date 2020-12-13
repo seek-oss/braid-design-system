@@ -1,17 +1,20 @@
 import React from 'react';
-import { ComponentDocs } from '../../../../site/src/types';
-import { IconPeople } from './IconPeople';
+import { ComponentDetail } from '../../../../site/src/types';
+import source from '../../../utils/source.macro';
+import { IconPeople, Heading, Stack } from '../../';
 
-const docs: ComponentDocs = {
+const docs: ComponentDetail = {
   category: 'Icon',
   migrationGuide: true,
-  foundation: true,
-  examples: [
-    {
-      label: 'Default',
-      Example: () => <IconPeople />,
-    },
-  ],
+  Example: () =>
+    source(
+      <Stack space="none" align="center">
+        <Heading component="div" level="1">
+          <IconPeople />
+        </Heading>
+      </Stack>,
+    ),
+  alternatives: [],
 };
 
 export default docs;
