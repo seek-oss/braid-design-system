@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentExample } from '../../../site/src/types';
-import { Box, Heading } from '../';
+import { Heading } from '../';
 import source from '../../utils/source.macro';
 
 export const galleryItems: ComponentExample[] = [
@@ -53,35 +53,6 @@ export const galleryItems: ComponentExample[] = [
       source(
         <Heading level="4" weight="weak">
           Heading Level 4 Weak
-        </Heading>,
-      ),
-  },
-  {
-    label: 'Truncate a long heading',
-    Example: () =>
-      source(
-        <Box style={{ width: 160 }}>
-          <Heading level="2" truncate>
-            Really long heading
-          </Heading>
-        </Box>,
-      ),
-  },
-  {
-    label: 'Heading Alignment: "left" | "center" | "right"',
-    Example: () =>
-      source(
-        <Heading level="1" align="center">
-          Centered heading
-        </Heading>,
-      ),
-  },
-  {
-    label: 'Heading Alignment (responsive)',
-    Example: () =>
-      source(
-        <Heading level="4" align={['right', 'center', 'left']}>
-          Right aligned mobile, center on tablet, left on desktop
         </Heading>,
       ),
   },

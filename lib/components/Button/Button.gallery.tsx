@@ -1,37 +1,54 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { ComponentExample } from '../../../site/src/types';
 import source from '../../utils/source.macro';
-import { Button } from '../';
-
-const Container = ({ children }: { children: ReactNode }) => (
-  <div style={{ maxWidth: '300px' }}>{children}</div>
-);
+import { Button, Box, Inline } from '../';
 
 export const galleryItems: ComponentExample[] = [
   {
     label: 'Regular weight',
-    Container,
-    Example: () => source(<Button>Submit</Button>),
+    Example: () =>
+      source(
+        <Inline space="small">
+          <Button>Submit</Button>
+        </Inline>,
+      ),
   },
   {
     label: 'Strong weight',
-    Container,
-    Example: () => source(<Button weight="strong">Submit</Button>),
+    Example: () =>
+      source(
+        <Inline space="small">
+          <Button weight="strong">Submit</Button>
+        </Inline>,
+      ),
   },
   {
     label: 'Weak weight',
-    Container,
-    Example: () => source(<Button weight="weak">Submit</Button>),
+    Example: () =>
+      source(
+        <Inline space="small">
+          <Button weight="weak">Submit</Button>
+        </Inline>,
+      ),
   },
   {
-    label: 'Weak weight on &ldquo;brand&rdquo; background',
-    background: 'brand',
-    Container,
-    Example: () => source(<Button weight="weak">Submit</Button>),
+    label: 'Weak weight on dark background',
+    Example: () =>
+      source(
+        <Box background="brand" padding="large" borderRadius="standard">
+          <Inline space="small">
+            <Button weight="weak">Weak Button</Button>
+          </Inline>
+        </Box>,
+      ),
   },
   {
     label: 'Loading state',
-    Container,
-    Example: () => source(<Button loading>Loading</Button>),
+    Example: () =>
+      source(
+        <Inline space="small">
+          <Button loading>Loading</Button>
+        </Inline>,
+      ),
   },
 ];

@@ -8,7 +8,7 @@ export const galleryItems: ComponentExample[] = [
     Example: () => <Rating rating={3} />,
   },
   {
-    label: 'Hide the text rating',
+    label: 'Hidden text rating',
     Example: () => <Rating rating={4.2} showTextRating={false} />,
   },
   {
