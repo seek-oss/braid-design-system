@@ -5,7 +5,6 @@ import React, {
   useEffect,
   useState,
   useRef,
-  ComponentProps,
 } from 'react';
 import { chunk, memoize } from 'lodash';
 import copy from 'copy-to-clipboard';
@@ -24,8 +23,6 @@ import {
   Columns,
   Column,
   Disclosure,
-  Divider,
-  Tiles,
 } from '../../../../../lib/components';
 import docsTheme from '../../../../../lib/themes/docs';
 import { getHistory, isNew } from '../../Updates';
@@ -309,7 +306,7 @@ const GalleryItem = ({ item }: { item: typeof galleryComponents[number] }) => {
           ))}
         </Columns>
 
-        {'alternatives' in componentDocs ? (
+        {/* {'alternatives' in componentDocs ? (
           <Stack space="large">
             <Divider />
             <Stack space="medium">
@@ -337,7 +334,7 @@ const GalleryItem = ({ item }: { item: typeof galleryComponents[number] }) => {
               </Tiles>
             </Stack>
           </Stack>
-        ) : null}
+        ) : null} */}
       </Stack>
     </Box>
   );
@@ -367,7 +364,7 @@ export const Gallery = memo(() => (
         </Box>
       </Stack>
     </Box>
-    {/* <Box style={{ paddingLeft: 800 }}>
+    <Box style={{ paddingLeft: 800 }}>
       <Box data-braid-component-name="Icons">
         <Stack space="xxlarge">
           <Box padding="xxlarge">
@@ -390,6 +387,6 @@ export const Gallery = memo(() => (
           </Box>
         </Stack>
       </Box>
-    </Box> */}
+    </Box>
   </Box>
 ));
