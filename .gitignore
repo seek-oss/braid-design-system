@@ -11,7 +11,6 @@ lib/components/icons/*/*Svg.tsx
 # managed by sku
 .eslintrc
 .prettierrc
-.ssl
 coverage/
 dist-storybook/
 report/
