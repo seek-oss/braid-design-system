@@ -1,67 +1,56 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { ComponentExample } from '../../../site/src/types';
-import { Box, Stack, Hidden } from '../';
-import { StackProps } from './Stack';
+import { Stack, Hidden } from '../';
 import { Placeholder } from '../private/Placeholder/Placeholder';
-import { padding } from '../Box/useBoxStyles.treat';
-
-const spaces = Object.keys(padding.top).filter(
-  (space) => space !== 'none',
-) as Array<StackProps['space']>;
-
-const Container = ({ children }: { children: ReactNode }) => (
-  <Box style={{ maxWidth: '300px' }}>{children}</Box>
-);
+import source from '../../utils/source.macro';
 
 export const galleryItems: ComponentExample[] = [
-  ...spaces.map((space) => ({
-    label: `Space: ${space}`,
-    Container,
-    Example: () => (
-      <Stack space={space}>
-        <Placeholder height={40} />
-        <Placeholder height={40} />
-        <Placeholder height={40} />
-      </Stack>
-    ),
-  })),
   {
-    label: 'Align to center',
-    Container,
-    Example: () => (
-      <Stack space="gutter" align="center">
-        <Placeholder height={40} width={40} />
-        <Placeholder height={40} width={60} />
-        <Placeholder height={40} width={80} />
-      </Stack>
-    ),
+    label: 'Spacing',
+    Example: () =>
+      source(
+        <Stack space="small">
+          <Placeholder height={48} />
+          <Placeholder height={48} />
+          <Placeholder height={48} />
+        </Stack>,
+      ),
   },
   {
-    label: 'Align to right',
-    Container,
-    Example: () => (
-      <Stack space="gutter" align="right">
-        <Placeholder height={40} width={40} />
-        <Placeholder height={40} width={60} />
-        <Placeholder height={40} width={80} />
-      </Stack>
-    ),
+    label: 'Horizontal align left',
+    Example: () =>
+      source(
+        <Stack space="small" align="left">
+          <Placeholder width={80} height={40} label="left" />
+          <Placeholder width={80} height={40} />
+          <Placeholder width={80} height={40} />
+        </Stack>,
+      ),
   },
   {
-    label:
-      'Responsive alignment (e.g. center on mobile, left from tablet upwards)',
-    Container,
-    Example: () => (
-      <Stack space="gutter" align={['center', 'left']}>
-        <Placeholder height={40} width={40} />
-        <Placeholder height={40} width={60} />
-        <Placeholder height={40} width={80} />
-      </Stack>
-    ),
+    label: 'Horizontal align center',
+    Example: () =>
+      source(
+        <Stack space="small" align="center">
+          <Placeholder width={80} height={40} />
+          <Placeholder width={80} height={40} label="center" />
+          <Placeholder width={80} height={40} />
+        </Stack>,
+      ),
+  },
+  {
+    label: 'Horizontal align right',
+    Example: () =>
+      source(
+        <Stack space="small" align="right">
+          <Placeholder width={80} height={40} />
+          <Placeholder width={80} height={40} />
+          <Placeholder width={80} height={40} label="right" />
+        </Stack>,
+      ),
   },
   {
     label: 'Dividers',
-    Container,
     Example: () => (
       <Stack space="gutter" dividers>
         <Placeholder height={40} />
@@ -72,7 +61,6 @@ export const galleryItems: ComponentExample[] = [
   },
   {
     label: 'Strong dividers',
-    Container,
     Example: () => (
       <Stack space="gutter" dividers="strong">
         <Placeholder height={40} />
@@ -83,7 +71,6 @@ export const galleryItems: ComponentExample[] = [
   },
   {
     label: 'Responsively hiding stack items',
-    Container,
     Example: () => (
       <Stack space="gutter">
         <Placeholder height={40} label="1" />

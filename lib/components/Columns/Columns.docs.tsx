@@ -32,6 +32,10 @@ const docs: ComponentDetail = {
       name: 'Tiles',
       description: 'For laying out content over many columns and rows.',
     },
+    {
+      name: 'Box',
+      description: 'For custom layouts.',
+    },
   ],
   additional: [
     {

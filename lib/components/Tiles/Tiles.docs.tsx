@@ -30,6 +30,10 @@ const docs: ComponentDetail = {
       name: 'Inline',
       description: 'For fine-grained control of spacing and alignment.',
     },
+    {
+      name: 'Box',
+      description: 'For custom layouts.',
+    },
   ],
   additional: [
     {

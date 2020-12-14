@@ -13,13 +13,10 @@ const docs: ComponentDetail = {
         <Placeholder label="This content is inside a card" height={60} />
       </Card>,
     ),
-  description: (
-    <Text>Renders a white container element with standard padding.</Text>
-  ),
   alternatives: [
     {
       name: 'Box',
-      description: 'For custom layout elements.',
+      description: 'For custom layouts.',
     },
   ],
   additional: [
