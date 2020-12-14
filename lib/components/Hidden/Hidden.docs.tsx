@@ -1,130 +1,83 @@
 import React from 'react';
-import { ComponentDocs } from '../../../site/src/types';
+import source from '../../utils/source.macro';
+import { ComponentDetail } from '../../../site/src/types';
 import { Hidden } from './Hidden';
 import { Text } from '../Text/Text';
 import { Stack } from '../Stack/Stack';
-import { TextLink } from '../TextLink/TextLink';
+import { Strong } from '../Strong/Strong';
+import { Placeholder } from '../../playroom/components';
 
-const docs: ComponentDocs = {
+const docs: ComponentDetail = {
   category: 'Layout',
-  description: (
-    <Text>
-      Allows you to hide content responsively. If you’re looking to hide content
-      visually while making it available to assistive technologies, use{' '}
-      <TextLink href="/components/HiddenVisually">HiddenVisually</TextLink>{' '}
-      instead.
-    </Text>
-  ),
-  examples: [
+  Example: () =>
+    source(
+      <Stack space="small">
+        <Hidden below="desktop">
+          <Placeholder label="1. Hidden below desktop" height={60} />
+        </Hidden>
+        <Hidden below="tablet">
+          <Placeholder label="2. Hidden below tablet" height={60} />
+        </Hidden>
+        <Hidden above="mobile">
+          <Placeholder label="3. Hidden above mobile" height={60} />
+        </Hidden>
+        <Hidden above="tablet">
+          <Placeholder label="4. Hidden above tablet" height={60} />
+        </Hidden>
+        <Hidden print>
+          <Placeholder label="5. Hidden on print" height={60} />
+        </Hidden>
+      </Stack>,
+    ),
+  alternatives: [
     {
-      label: 'Hidden below tablet',
-      showCodeByDefault: true,
-      Example: () => (
-        <Stack space="small">
-          <Text>The following line is hidden below tablet:</Text>
-          <Hidden below="tablet">
-            <Text>Hidden below tablet.</Text>
-          </Hidden>
-        </Stack>
+      name: 'HiddenVisually',
+      description: 'For making content available to screen readers.',
+    },
+  ],
+  additional: [
+    {
+      label: 'Hiding responsively',
+      description: (
+        <Text>
+          You can hide content responsively via the <Strong>above</Strong> and{' '}
+          <Strong>below</Strong> props which accept a breakpoint name, i.e.{' '}
+          <Strong>mobile</Strong>, <Strong>tablet</Strong> or{' '}
+          <Strong>desktop</Strong>.
+        </Text>
       ),
+      Example: () =>
+        source(
+          <Stack space="small">
+            <Hidden below="desktop">
+              <Placeholder label="1. Hidden below desktop" height={60} />
+            </Hidden>
+            <Hidden below="tablet">
+              <Placeholder label="2. Hidden below tablet" height={60} />
+            </Hidden>
+            <Hidden above="mobile">
+              <Placeholder label="3. Hidden above mobile" height={60} />
+            </Hidden>
+            <Hidden above="tablet">
+              <Placeholder label="4. Hidden above tablet" height={60} />
+            </Hidden>
+          </Stack>,
+        ),
     },
     {
-      label: 'Hidden below desktop',
-      showCodeByDefault: true,
-      Example: () => (
-        <Stack space="small">
-          <Text>The following line is hidden below desktop:</Text>
-          <Hidden below="desktop">
-            <Text>Hidden below desktop.</Text>
-          </Hidden>
-        </Stack>
+      label: 'Hiding on print',
+      description: (
+        <Text>
+          You can hide content on print via the <Strong>print</Strong> boolean
+          prop.
+        </Text>
       ),
-    },
-    {
-      label: 'Hidden above mobile',
-      showCodeByDefault: true,
-      Example: () => (
-        <Stack space="small">
-          <Text>The following line is hidden above mobile:</Text>
-          <Hidden above="mobile">
-            <Text>Hidden above mobile.</Text>
-          </Hidden>
-        </Stack>
-      ),
-    },
-    {
-      label: 'Hidden above tablet',
-      showCodeByDefault: true,
-      Example: () => (
-        <Stack space="small">
-          <Text>The following line is hidden above tablet:</Text>
-          <Hidden above="tablet">
-            <Text>Hidden above tablet.</Text>
-          </Hidden>
-        </Stack>
-      ),
-    },
-    {
-      label: 'Hidden on print',
-      showCodeByDefault: true,
-      Example: () => (
-        <Stack space="small">
-          <Text>The following line is hidden on print:</Text>
+      Example: () =>
+        source(
           <Hidden print>
-            <Text>Hidden on print.</Text>
-          </Hidden>
-        </Stack>
-      ),
-    },
-    {
-      label: 'Hidden below tablet (inline)',
-      showCodeByDefault: true,
-      Example: () => (
-        <Text>
-          The following text node is hidden below tablet:{' '}
-          <Hidden below="tablet">Hidden below tablet.</Hidden>
-        </Text>
-      ),
-    },
-    {
-      label: 'Hidden below desktop (inline)',
-      showCodeByDefault: true,
-      Example: () => (
-        <Text>
-          The following text node is hidden below desktop:{' '}
-          <Hidden below="desktop">Hidden below desktop.</Hidden>
-        </Text>
-      ),
-    },
-    {
-      label: 'Hidden above mobile (inline)',
-      showCodeByDefault: true,
-      Example: () => (
-        <Text>
-          The following text node is hidden above mobile:{' '}
-          <Hidden above="mobile">Hidden above mobile.</Hidden>
-        </Text>
-      ),
-    },
-    {
-      label: 'Hidden above tablet (inline)',
-      showCodeByDefault: true,
-      Example: () => (
-        <Text>
-          The following text node is hidden above tablet:{' '}
-          <Hidden above="tablet">Hidden above tablet.</Hidden>
-        </Text>
-      ),
-    },
-    {
-      label: 'Hidden on print (inline)',
-      showCodeByDefault: true,
-      Example: () => (
-        <Text>
-          The following text node is hidden on print:{' '}
-          <Hidden print>Hidden on print.</Hidden>
-        </Text>
-      ),
+            <Placeholder label="Hidden on print" height={60} />
+          </Hidden>,
+        ),
     },
   ],
 };

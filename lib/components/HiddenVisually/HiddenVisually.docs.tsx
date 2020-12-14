@@ -1,28 +1,27 @@
 import React from 'react';
-import { ComponentDocs } from '../../../site/src/types';
+import source from '../../utils/source.macro';
+import { ComponentDetail } from '../../../site/src/types';
 import { HiddenVisually } from './HiddenVisually';
 import { Text } from '../Text/Text';
 
-const docs: ComponentDocs = {
+const docs: ComponentDetail = {
   category: 'Layout',
-  description: (
+  Example: () =>
+    source(
+      <Text>
+        The next sentence is only available to screen readers.
+        <HiddenVisually> Hello world.</HiddenVisually>
+      </Text>,
+    ),
+  alternatives: [
+    { name: 'Hidden', description: 'For hiding content responsively.' },
+  ],
+  accessibility: (
     <Text>
       Provides content to assistive technologies while hiding it from the
       screen.
     </Text>
   ),
-  examples: [
-    {
-      label: 'Inside Text',
-      showCodeByDefault: true,
-      Example: () => (
-        <Text>
-          The next sentence is only available to screen readers.
-          <HiddenVisually> Hello world.</HiddenVisually>
-        </Text>
-      ),
-    },
-  ],
 };
 
 export default docs;
