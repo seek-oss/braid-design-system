@@ -1,86 +1,87 @@
 import React from 'react';
 import { Snippets } from '../private/Snippets';
 import { List, Text, IconTick } from '../../playroom/components';
+import source from '../../utils/source.macro';
 
 export const snippets: Snippets = [
   {
     name: 'XSmall Space',
-    code: (
+    code: source(
       <List space="xsmall">
         <Text>Text</Text>
         <Text>Text</Text>
         <Text>Text</Text>
-      </List>
+      </List>,
     ),
   },
   {
     name: 'Small Space',
-    code: (
+    code: source(
       <List space="small">
         <Text>Text</Text>
         <Text>Text</Text>
         <Text>Text</Text>
-      </List>
+      </List>,
     ),
   },
   {
     name: 'Medium Space',
-    code: (
+    code: source(
       <List space="medium">
         <Text>Text</Text>
         <Text>Text</Text>
         <Text>Text</Text>
-      </List>
+      </List>,
     ),
   },
   {
     name: 'Secondary',
-    code: (
+    code: source(
       <List space="medium" tone="secondary">
         <Text>Text</Text>
         <Text>Text</Text>
         <Text>Text</Text>
-      </List>
+      </List>,
     ),
   },
   {
     name: 'Numbered',
-    code: (
+    code: source(
       <List space="medium" type="number">
         <Text>Text</Text>
         <Text>Text</Text>
         <Text>Text</Text>
-      </List>
+      </List>,
     ),
   },
   {
     name: 'Alpha',
-    code: (
+    code: source(
       <List space="medium" type="alpha">
         <Text>Text</Text>
         <Text>Text</Text>
         <Text>Text</Text>
-      </List>
+      </List>,
     ),
   },
   {
     name: 'Roman',
-    code: (
+    code: source(
       <List space="medium" type="roman">
         <Text>Text</Text>
         <Text>Text</Text>
         <Text>Text</Text>
-      </List>
+      </List>,
     ),
   },
   {
     name: 'Icon',
-    code: (
+    code: source(
       <List space="medium" type="icon" icon={<IconTick tone="positive" />}>
         <Text>Text</Text>
         <Text>Text</Text>
         <Text>Text</Text>
-      </List>
+      </List>,
     ),
   },
 ];

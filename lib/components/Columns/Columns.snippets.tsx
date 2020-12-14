@@ -1,11 +1,12 @@
 import React from 'react';
 import { Snippets } from '../private/Snippets';
 import { Columns, Column, Stack, Placeholder } from '../../playroom/components';
+import source from '../../utils/source.macro';
 
 export const snippets: Snippets = [
   {
     name: '2 Columns',
-    code: (
+    code: source(
       <Columns space="gutter">
         <Column>
           <Stack space="small">
@@ -17,12 +18,12 @@ export const snippets: Snippets = [
             <Placeholder height={60} label="Column" />
           </Stack>
         </Column>
-      </Columns>
+      </Columns>,
     ),
   },
   {
     name: '2 Columns (Collapse Below Tablet)',
-    code: (
+    code: source(
       <Columns space="gutter" collapseBelow="tablet">
         <Column>
           <Stack space="small">
@@ -34,12 +35,12 @@ export const snippets: Snippets = [
             <Placeholder height={60} label="Column" />
           </Stack>
         </Column>
-      </Columns>
+      </Columns>,
     ),
   },
   {
     name: '3 Columns',
-    code: (
+    code: source(
       <Columns space="gutter">
         <Column>
           <Stack space="small">
@@ -56,12 +57,12 @@ export const snippets: Snippets = [
             <Placeholder height={60} label="Column" />
           </Stack>
         </Column>
-      </Columns>
+      </Columns>,
     ),
   },
   {
     name: '3 Columns (Collapse Below Tablet)',
-    code: (
+    code: source(
       <Columns space="gutter" collapseBelow="tablet">
         <Column>
           <Stack space="small">
@@ -78,12 +79,12 @@ export const snippets: Snippets = [
             <Placeholder height={60} label="Column" />
           </Stack>
         </Column>
-      </Columns>
+      </Columns>,
     ),
   },
   {
     name: 'Main Content With Sidebar',
-    code: (
+    code: source(
       <Columns space="gutter" collapseBelow="tablet">
         <Column width="2/3">
           <Stack space="small">
@@ -95,7 +96,7 @@ export const snippets: Snippets = [
             <Placeholder height={100} label="Sidebar" />
           </Stack>
         </Column>
-      </Columns>
+      </Columns>,
     ),
   },
 ];

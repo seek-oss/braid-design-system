@@ -1,6 +1,5 @@
 import { flatten } from 'lodash';
-import { Snippet } from '../components/private/Snippets';
-import { reactElementToJsxString } from '../utils/reactElementToJsxString';
+import { BraidSnippet } from '../components/private/Snippets';
 
 const req = require.context('../components', true, /\.snippets\.tsx?$/);
 export default flatten(
@@ -10,35 +9,12 @@ export default flatten(
       return [];
     }
 
-    const snippets = req(filename).snippets as Snippet[];
+    const snippets = req(filename).snippets as BraidSnippet[];
 
     return snippets.map((snippet) => ({
       ...snippet,
       group: snippet.group || matches[1],
+      code: snippet.code.code,
     }));
   }),
-).map<Snippet>((snippet) => {
-  let code = '';
-
-  if (typeof snippet.code === 'string') {
-    code = snippet.code;
-  } else if (
-    typeof snippet.code === 'object' &&
-    snippet.code !== null &&
-    'value' in snippet.code &&
-    'code' in snippet.code
-  ) {
-    code = snippet.code.code;
-  } else {
-    code = reactElementToJsxString(snippet.code, {
-      sortProps: false,
-      useBooleanShorthandSyntax: false,
-    });
-  }
-
-  return {
-    ...snippet,
-    group: snippet.group,
-    code,
-  };
-});
+);

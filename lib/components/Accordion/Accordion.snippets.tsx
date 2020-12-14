@@ -4,12 +4,13 @@ import {
   Accordion,
   Placeholder,
 } from '../../playroom/components';
+import source from '../../utils/source.macro';
 import { Snippets } from '../private/Snippets';
 
 export const snippets: Snippets = [
   {
     name: 'Standard',
-    code: (
+    code: source(
       <Accordion>
         <AccordionItem label="Item 1">
           <Placeholder height={100} />
@@ -20,15 +21,15 @@ export const snippets: Snippets = [
         <AccordionItem label="Item 3">
           <Placeholder height={100} />
         </AccordionItem>
-      </Accordion>
+      </Accordion>,
     ),
   },
   {
     name: 'Standalone item',
-    code: (
+    code: source(
       <AccordionItem label="Label">
         <Placeholder height={100} />
-      </AccordionItem>
+      </AccordionItem>,
     ),
   },
 ];

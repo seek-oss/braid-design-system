@@ -1,24 +1,25 @@
 import React from 'react';
 import { Snippets } from '../private/Snippets';
 import { FieldLabel, TextLink } from '../../playroom/components';
+import source from '../../utils/source.macro';
 
 export const snippets: Snippets = [
   {
     name: 'Standard',
-    code: <FieldLabel label="Label" />,
+    code: source(<FieldLabel label="Label" />),
   },
   {
     name: 'Standard with secondary label',
-    code: <FieldLabel label="Label" secondaryLabel="Optional" />,
+    code: source(<FieldLabel label="Label" secondaryLabel="Optional" />),
   },
   {
     name: 'Standard with tertiary label',
-    code: (
+    code: source(
       <FieldLabel
         label="Label"
         secondaryLabel="Optional"
         tertiaryLabel={<TextLink href="#">Help?</TextLink>}
-      />
+      />,
     ),
   },
 ];

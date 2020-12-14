@@ -1,38 +1,39 @@
 import React from 'react';
 import { Snippets } from '../private/Snippets';
 import { Notice, Text } from '../../playroom/components';
+import source from '../../utils/source.macro';
 
 export const snippets: Snippets = [
   {
     name: 'Critical',
-    code: (
+    code: source(
       <Notice tone="critical">
         <Text>Critical Notice</Text>
-      </Notice>
+      </Notice>,
     ),
   },
   {
     name: 'Positive',
-    code: (
+    code: source(
       <Notice tone="positive">
         <Text>Positive Notice</Text>
-      </Notice>
+      </Notice>,
     ),
   },
   {
     name: 'Info',
-    code: (
+    code: source(
       <Notice tone="info">
         <Text>Info Notice</Text>
-      </Notice>
+      </Notice>,
     ),
   },
   {
     name: 'Promote',
-    code: (
+    code: source(
       <Notice tone="promote">
         <Text>Promote Notice</Text>
-      </Notice>
+      </Notice>,
     ),
   },
 ];

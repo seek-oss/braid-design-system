@@ -1,6 +1,6 @@
 import groupBy from 'lodash/groupBy';
 import * as components from '../../../lib/components';
-import { Snippet } from '../../../lib/components/private/Snippets';
+import { BraidSnippet } from '../../../lib/components/private/Snippets';
 import { ComponentDetail, ComponentDocs, ComponentExample } from '../types';
 import undocumentedExports from '../undocumentedExports.json';
 
@@ -42,7 +42,7 @@ export const getComponentSnippets = (componentName: string) => {
   }
 
   const snippets = snippetsContext(normalizedComponentRoute)
-    .snippets as Snippet[];
+    .snippets as BraidSnippet[];
 
   return snippets.map((snippet) => ({
     ...snippet,

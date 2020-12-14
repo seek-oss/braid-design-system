@@ -4,7 +4,7 @@ import { ComponentProps } from './ComponentProps';
 import docsTheme from '../../../../lib/themes/docs';
 import { PlayroomStateProvider } from '../../../../lib/playroom/playroomState';
 import { useSourceFromExample } from '../../../../lib/utils/useSourceFromExample';
-import { Snippet } from '../../../../lib/components/private/Snippets';
+import { BraidSnippet } from '../../../../lib/components/private/Snippets';
 import {
   BraidProvider,
   Box,
@@ -78,7 +78,7 @@ interface ComponentDocProps {
   componentName: string;
   subfolder?: string;
   docs: ComponentDocs | ComponentDetail;
-  snippets?: Snippet[];
+  snippets?: BraidSnippet[];
 }
 
 export const ComponentDoc = ({
