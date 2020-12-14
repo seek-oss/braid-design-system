@@ -3,6 +3,7 @@ import { ComponentDetail } from '../../../site/src/types';
 import { Placeholder } from '../private/Placeholder/Placeholder';
 import { Columns, Column, Strong, Text, Stack } from '../';
 import source from '../../utils/source.macro';
+import { TextLink } from '../TextLink/TextLink';
 
 const docs: ComponentDetail = {
   category: 'Layout',
@@ -32,14 +33,14 @@ const docs: ComponentDetail = {
       description: 'For laying out content over many columns and rows.',
     },
   ],
-
   additional: [
     {
       label: 'Spacing',
       description: (
         <Text>
-          The space between columns can be adjusted using the{' '}
-          <Strong>space</Strong> prop. Responsive values are supported, e.g.{' '}
+          The <TextLink href="/foundations/layout#Spacing">spacing</TextLink>{' '}
+          between columns can be adjusted using the <Strong>space</Strong> prop.
+          Responsive values are supported, e.g.{' '}
           <Strong>[ &ldquo;small&rdquo;, &ldquo;large&rdquo; ]</Strong>.
         </Text>
       ),
@@ -163,7 +164,7 @@ const docs: ComponentDetail = {
       description: (
         <Text>
           Columns with content of varying height can be vertically aligned using
-          the <Strong>alignY</Strong> prop. Responsive values are supported,
+          the <Strong>alignY</Strong> prop. Responsive values are supported.
         </Text>
       ),
       Example: () =>
@@ -244,7 +245,6 @@ const docs: ComponentDetail = {
           </Stack>,
         ),
     },
-
     {
       label: 'Collapsing across breakpoints',
       description: (
