@@ -1,8 +1,7 @@
 import React from 'react';
 import { ComponentDetail } from '../../../site/src/types';
 import source from '../../utils/source.macro';
-import { Accordion, AccordionItem, Stack, Text, TextLink } from '../';
-import { Strong } from '../Strong/Strong';
+import { Accordion, AccordionItem, Stack, Text, TextLink, Strong } from '../';
 import { Placeholder } from '../../playroom/components';
 
 const docs: ComponentDetail = {
@@ -60,19 +59,19 @@ const docs: ComponentDetail = {
           props.
         </Text>
       ),
-      Example: ({ id, setDefaultState, getState, setState }) =>
+      Example: ({ id, setDefaultState, getState, toggleState }) =>
         source(
           <>
-            {setDefaultState('expanded1', true)}
+            {setDefaultState('expanded1', false)}
             {setDefaultState('expanded2', true)}
-            {setDefaultState('expanded3', true)}
+            {setDefaultState('expanded3', false)}
 
             <Accordion>
               <AccordionItem
                 label="Accordion item 1"
                 id={`${id}_1`}
                 expanded={getState('expanded1')}
-                onToggle={setState('expanded1')}
+                onToggle={() => toggleState('expanded1')}
               >
                 <Placeholder height={80} />
               </AccordionItem>
@@ -80,7 +79,7 @@ const docs: ComponentDetail = {
                 label="Accordion item 2"
                 id={`${id}_2`}
                 expanded={getState('expanded2')}
-                onToggle={setState('expanded2')}
+                onToggle={() => toggleState('expanded2')}
               >
                 <Placeholder height={80} />
               </AccordionItem>
@@ -88,7 +87,7 @@ const docs: ComponentDetail = {
                 label="Accordion item 3"
                 id={`${id}_3`}
                 expanded={getState('expanded3')}
-                onToggle={setState('expanded3')}
+                onToggle={() => toggleState('expanded3')}
               >
                 <Placeholder height={80} />
               </AccordionItem>
