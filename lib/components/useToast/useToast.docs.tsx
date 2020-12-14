@@ -1,301 +1,361 @@
 import React from 'react';
-import { useTheme } from 'sku/react-treat';
-import { ComponentDocs } from '../../../site/src/types';
+import { ComponentDetail } from '../../../site/src/types';
 import {
-  Box,
   Button,
   Text,
   Stack,
-  useToast,
-  Heading,
+  Inline,
   TextLink,
   Strong,
   IconPromote,
+  Notice,
 } from '..';
+import { useThemeSettings } from '../../../site/src/App/ThemeSetting';
 import Code from '../../../site/src/App/Code/Code';
 import Toast from './Toast';
+import source from '../../utils/source.macro';
+import { useToast } from './ToastContext';
 
-const description = (
-  <Stack space="large">
-    <Text>
-      The Toast component is a good way to communicate out of flow messages, and
-      optionally provide some helpful actions to respond with. However, as these
-      actions can <Strong>NOT</Strong> be communicated to a screen reader, they
-      should only ever be treated as a helpful enhancement of the experience. If
-      the user should take a specific action as a result of a Toast being
-      displayed, this should be communicated through the description property as
-      well.
-    </Text>
-    <Heading level="3">Setup</Heading>
-    <Text>
-      Unlike other Braid components, Toast is exposed via a hook and rendered
-      automatically at the bottom of the viewport using a{' '}
-      <TextLink href="https://reactjs.org/docs/portals.html">
-        React portal
-      </TextLink>
-      . This is managed by the ToastProvider component. The useToast hook
-      won&apos;t work unless it is nested within a ToastProvider. Most apps
-      should just render this within their top level BraidProvider component.
-    </Text>
-    <Text weight="strong">
-      Warning: Only a render a single ToastProvider, not one per useToast usage.
-    </Text>
-    <Code playroom={false}>
-      {`
-        import { BraidProvider, ToastProvider } from 'braid-design-system';
-
-        export const App = () => (
-          <BraidProvider>
-            <ToastProvider>
-              <AppContent />
-            </ToastProvider>
-          </BraidProvider>
-        )
-      `}
-    </Code>
-    <Heading level="3">Usage</Heading>
-    <Code playroom={false}>
-      {`
-        import { useToast } from 'braid-design-system';
-
-        export const App = () => {
-          const showToast = useToast();
-
-          const onError = () => {
-            showToast({
-              tone: 'critical',
-              message: 'Some error occured',
-              description: 'Longer description of error and how to resolve it',
-              action: {
-                label: 'Retry',
-                onClick: retryFn
-              },
-            });
-          };
-
-          const onSuccess = () => {
-            showToast({
-              tone: 'positive',
-              message: 'Message sent'
-            });
-          };
-
-          return <YourComponent onError={onError} onSuccess={onSuccess} />;
-        }
-      `}
-    </Code>
-  </Stack>
-);
-
-const docs: ComponentDocs = {
-  description,
+const docs: ComponentDetail = {
   category: 'Content',
-  examples: [
+  Example: ({ id, handler }) => {
+    const { theme } = useThemeSettings();
+    const showToast = useToast();
+
+    const { code, value } = source(
+      <Inline space="large" align="center">
+        <Button
+          onClick={() =>
+            showToast({
+              message: 'Positive toast',
+              tone: 'positive',
+            })
+          }
+        >
+          Show animation <IconPromote alignY="lowercase" />
+        </Button>
+      </Inline>,
+    );
+
+    return {
+      code,
+      value: (
+        <Stack space="large" align="center">
+          <Toast
+            id={id}
+            dedupeKey={id}
+            shouldRemove={false}
+            treatTheme={theme.treatTheme}
+            onClear={handler}
+            message="Positive toast"
+            tone="positive"
+          />
+          {value}
+        </Stack>
+      ),
+    };
+  },
+  accessibility: (
+    <Text>
+      Follows the{' '}
+      <TextLink href="https://www.w3.org/TR/wai-aria-practices/#alert">
+        WAI-ARIA Alert Pattern.
+      </TextLink>
+    </Text>
+  ),
+  alternatives: [
     {
-      label: 'Positive Toast',
-      playroom: false,
-      Example: ({ id, handler }) => {
-        const showToast = useToast();
-        const theme = useTheme();
-
-        const toastProps = {
-          message: 'Positive toast',
-          tone: 'positive',
-          action: { label: 'View', onClick: () => {} },
-        } as const;
-
-        return (
-          <Stack space="large" align="center">
-            <Toast
-              id={id}
-              dedupeKey={id}
-              shouldRemove={false}
-              treatTheme={theme}
-              onClear={handler}
-              {...toastProps}
-            />
-            <Box display="flex">
-              <Button onClick={() => showToast(toastProps)}>
-                Show animation <IconPromote alignY="lowercase" />
-              </Button>
-            </Box>
-          </Stack>
-        );
-      },
-      code: `
-        const showToast = useToast();
-
-        showToast({
-          message: 'Positive toast',
-          tone: 'positive',
-          action: { label: 'View', onClick: () => {} },
-        })
-      `,
+      name: 'Alert',
+      description: 'For in-flow messaging.',
     },
     {
-      label: 'Toast with no duplicates',
-      playroom: false,
-      Example: ({ id, handler }) => {
-        const showToast = useToast();
-        const theme = useTheme();
-
-        const toastProps = {
-          message: 'There can only be one',
-          tone: 'positive',
-          key: 'deduped',
-        } as const;
-
-        return (
-          <Stack space="large" align="center">
-            <Toast
-              id={id}
-              dedupeKey={id}
-              shouldRemove={false}
-              treatTheme={theme}
-              onClear={handler}
-              {...toastProps}
-            />
-            <Box display="flex">
-              <Button onClick={() => showToast(toastProps)}>
-                Show animation <IconPromote alignY="lowercase" />
-              </Button>
-            </Box>
-          </Stack>
-        );
-      },
-      code: `
-        const showToast = useToast();
-
-        showToast({
-          message: 'There can only be one of me',
-          tone: 'positive',
-          key: 'deduped'
-        })
-      `,
+      name: 'Notice',
+      description: 'For lighter in-flow messaging.',
+    },
+  ],
+  additional: [
+    {
+      label: 'Prototyping',
+      description: (
+        <Text>
+          The <Strong>showToast</Strong> function used in these examples is
+          automatically available in Playroom.
+        </Text>
+      ),
     },
     {
-      label: 'Positive Toast with description',
-      playroom: false,
-      Example: ({ id, handler }) => {
-        const showToast = useToast();
-        const theme = useTheme();
+      label: 'Development considerations',
+      description: (
+        <>
+          <Text>
+            To get access to the <Strong>showToast</Strong> function in your
+            application code, call the <Strong>useToast</Strong> Hook.
+          </Text>
+          <Code playroom={false}>
+            {`
+          import { useToast } from 'braid-design-system';
 
-        const toastProps = {
-          message: 'Positive toast',
-          tone: 'positive',
-          description:
-            'With a longer piece of text describing what has occured.',
-          action: { label: 'View', onClick: () => {} },
-        } as const;
+          export default () => {
+            const showToast = useToast();
 
-        return (
-          <Stack space="large" align="center">
-            <Toast
-              id={id}
-              dedupeKey={id}
-              shouldRemove={false}
-              treatTheme={theme}
-              onClear={handler}
-              {...toastProps}
-            />
-            <Box display="flex">
-              <Button onClick={() => showToast(toastProps)}>
-                Show animation <IconPromote alignY="lowercase" />
-              </Button>
-            </Box>
-          </Stack>
-        );
-      },
-      code: `
-        const showToast = useToast();
+            // etc...
+          }
+        `}
+          </Code>
+          <Text>
+            To enable this Hook, wrap your app in a{' '}
+            <Strong>ToastProvider</Strong>—typically where you render{' '}
+            <TextLink href="/components/BraidProvider">BraidProvider</TextLink>.
+          </Text>
+          <Code playroom={false}>
+            {`
+          import { BraidProvider, ToastProvider } from 'braid-design-system';
 
-        showToast({
-          message: 'Positive toast',
-          tone: 'positive',
-          description: 'With a longer piece of text describing what has occured.',
-          action: { label: 'View', onClick: () => {} },
-        })
-      `,
+          export const App = () => (
+            <BraidProvider>
+              <ToastProvider>
+                {/* App code... */}
+              </ToastProvider>
+            </BraidProvider>
+          )
+        `}
+          </Code>
+        </>
+      ),
     },
     {
-      label: 'Critical Toast',
-      playroom: false,
-      Example: ({ id, handler }) => {
-        const showToast = useToast();
-        const theme = useTheme();
+      label: 'Tones',
+      description: (
+        <Text>
+          Toasts support <Strong>positive</Strong> and <Strong>critical</Strong>{' '}
+          tones.
+        </Text>
+      ),
+      Example: ({ id, showToast, handler }) => {
+        const { theme } = useThemeSettings();
 
-        const toastProps = {
-          message: 'Critical toast',
-          tone: 'critical',
-        } as const;
+        const { code } = source(
+          <Stack space="small">
+            <Inline space="small" align="center">
+              <Button
+                onClick={() =>
+                  showToast({
+                    tone: 'positive',
+                    message: 'Positive message',
+                  })
+                }
+              >
+                Show positive toast <IconPromote alignY="lowercase" />
+              </Button>
+            </Inline>
 
-        return (
+            <Inline space="small" align="center">
+              <Button
+                onClick={() =>
+                  showToast({
+                    tone: 'critical',
+                    message: 'Critical message',
+                  })
+                }
+              >
+                Show critical toast <IconPromote alignY="lowercase" />
+              </Button>
+            </Inline>
+          </Stack>,
+        );
+
+        const { value } = source(
           <Stack space="large" align="center">
             <Toast
-              id={id}
-              dedupeKey={id}
+              id={`${id}_1`}
+              dedupeKey={`${id}_1`}
               shouldRemove={false}
-              treatTheme={theme}
+              treatTheme={theme.treatTheme}
               onClear={handler}
-              {...toastProps}
+              message="Positive message"
+              tone="positive"
             />
-            <Box display="flex">
-              <Button onClick={() => showToast(toastProps)}>
-                Show animation <IconPromote alignY="lowercase" />
-              </Button>
-            </Box>
-          </Stack>
+            <Toast
+              id={`${id}_2`}
+              dedupeKey={`${id}_2`}
+              shouldRemove={false}
+              treatTheme={theme.treatTheme}
+              onClear={handler}
+              message="Critical message"
+              tone="critical"
+            />
+          </Stack>,
         );
-      },
-      code: `
-        const showToast = useToast();
 
-        showToast({ message: 'Critical toast', tone: 'critical' })
-        `,
+        return {
+          code,
+          value,
+        };
+      },
     },
     {
-      label: 'Critical Toast with description',
-      playroom: false,
-      Example: ({ id, handler }) => {
-        const showToast = useToast();
-        const theme = useTheme();
+      label: 'Descriptions',
+      description: (
+        <Text>
+          If you need to provide more context to the user, you can also provide
+          a description.
+        </Text>
+      ),
+      Example: ({ id, showToast, handler }) => {
+        const { theme } = useThemeSettings();
 
-        const toastProps = {
-          message: 'Critical toast',
-          tone: 'critical',
-          description:
-            'With a longer piece of text describing what went wrong.',
-          action: { label: 'Goto error', onClick: () => {} },
-        } as const;
+        const { code } = source(
+          <Inline space="small" align="center">
+            <Button
+              onClick={() =>
+                showToast({
+                  tone: 'positive',
+                  message: 'Positive message',
+                  description:
+                    'Longer description providing more context for the user.',
+                })
+              }
+            >
+              Show animation <IconPromote alignY="lowercase" />
+            </Button>
+          </Inline>,
+        );
 
-        return (
+        const { value } = source(
           <Stack space="large" align="center">
             <Toast
               id={id}
               dedupeKey={id}
               shouldRemove={false}
-              treatTheme={theme}
+              treatTheme={theme.treatTheme}
               onClear={handler}
-              {...toastProps}
+              message="Positive message"
+              tone="positive"
+              description="Longer description providing more context for the user."
             />
-            <Box display="flex">
-              <Button onClick={() => showToast(toastProps)}>
-                Show animation <IconPromote alignY="lowercase" />
-              </Button>
-            </Box>
-          </Stack>
+          </Stack>,
         );
-      },
-      code: `
-        const showToast = useToast();
 
-        showToast({
-          message: 'Critical toast',
-          tone: 'critical',
-          description: 'With a longer piece of text describing what went wrong.',
-          action: { label: 'Goto error', onClick: () => {} },
-        })
-      `,
+        return {
+          code,
+          value,
+        };
+      },
+    },
+    {
+      label: 'Actions',
+      description: (
+        <>
+          <Text>
+            You can allow users to perform a single associated action via the{' '}
+            <Strong>action</Strong> prop. When the action is performed, the
+            toast is automatically removed from the screen.
+          </Text>
+          <Notice tone="info">
+            <Text>
+              Toast actions are not available to screen readers. To maintain
+              accessibility, please ensure that these actions are either
+              non-essential or available elsewhere in your application.
+            </Text>
+          </Notice>
+        </>
+      ),
+      Example: ({ id, showToast, handler }) => {
+        const { theme } = useThemeSettings();
+
+        /* eslint-disable no-alert */
+        const { code } = source(
+          <Inline space="small" align="center">
+            <Button
+              onClick={() =>
+                showToast({
+                  tone: 'positive',
+                  message: 'Positive message',
+                  action: {
+                    label: 'Undo',
+                    onClick: () => alert('Undo!'),
+                  },
+                })
+              }
+            >
+              Show animation <IconPromote alignY="lowercase" />
+            </Button>
+          </Inline>,
+        );
+
+        const { value } = source(
+          <Stack space="large" align="center">
+            <Toast
+              id={id}
+              dedupeKey={id}
+              shouldRemove={false}
+              treatTheme={theme.treatTheme}
+              onClear={handler}
+              message="Positive message"
+              tone="positive"
+              action={{
+                label: 'Undo',
+                onClick: () => alert('Undo!'),
+              }}
+            />
+          </Stack>,
+        );
+        /* eslint-enable no-alert */
+
+        return {
+          code,
+          value,
+        };
+      },
+    },
+    {
+      label: 'Deduping',
+      description: (
+        <Text>
+          You can assign a <Strong>key</Strong> to each toast which is used to
+          guarantee that only a single toast with a given key is visible at
+          once. This is particularly useful for reducing visual noise when your
+          application has the potential to generate a lot of toasts.
+        </Text>
+      ),
+      Example: ({ showToast }) =>
+        source(
+          <Inline space="small" align="center">
+            <Button
+              onClick={() =>
+                showToast({
+                  key: '1',
+                  tone: 'positive',
+                  message: 'Toast 1',
+                })
+              }
+            >
+              Toast 1
+            </Button>
+            <Button
+              onClick={() =>
+                showToast({
+                  key: '2',
+                  tone: 'positive',
+                  message: 'Toast 2',
+                })
+              }
+            >
+              Toast 2
+            </Button>
+            <Button
+              onClick={() =>
+                showToast({
+                  key: '3',
+                  tone: 'positive',
+                  message: 'Toast 3',
+                })
+              }
+            >
+              Toast 3
+            </Button>
+          </Inline>,
+        ),
     },
   ],
 };

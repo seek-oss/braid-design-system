@@ -1,10 +1,12 @@
 import React, { ReactNode, Fragment } from 'react';
 import { Route, Switch, useRouteMatch } from 'react-router';
 import { ComponentProps } from './ComponentProps';
+import docsTheme from '../../../../lib/themes/docs';
 import { PlayroomStateProvider } from '../../../../lib/playroom/playroomState';
 import { useSourceFromExample } from '../../../../lib/utils/useSourceFromExample';
 import { Snippet } from '../../../../lib/components/private/Snippets';
 import {
+  BraidProvider,
   Box,
   Heading,
   Stack,
@@ -19,7 +21,7 @@ import {
 
 import { ComponentDetail, ComponentDocs, ComponentExample } from '../../types';
 import Code from '../Code/Code';
-import { ThemedExample } from '../ThemeSetting';
+import { ThemedExample, useThemeSettings } from '../ThemeSetting';
 import { useConfig } from '../ConfigContext';
 import { getHistory } from '../Updates';
 import { Markdown } from '../Markdown/Markdown';
@@ -55,18 +57,20 @@ const RenderExample = ({
   });
 
   return (
-    <Stack space="xxsmall">
-      {value ? (
-        <ThemedExample background={background}>
-          <Container>{value}</Container>
-        </ThemedExample>
-      ) : null}
-      {codeAsString ? (
-        <Code collapsedByDefault={!showCodeByDefault} playroom={playroom}>
-          {codeAsString}
-        </Code>
-      ) : null}
-    </Stack>
+    <BraidProvider styleBody={false} theme={docsTheme}>
+      <Stack space="xxsmall">
+        {value ? (
+          <ThemedExample background={background}>
+            <Container>{value}</Container>
+          </ThemedExample>
+        ) : null}
+        {codeAsString ? (
+          <Code collapsedByDefault={!showCodeByDefault} playroom={playroom}>
+            {codeAsString}
+          </Code>
+        ) : null}
+      </Stack>
+    </BraidProvider>
   );
 };
 
@@ -83,6 +87,7 @@ export const ComponentDoc = ({
   docs,
   snippets = [],
 }: ComponentDocProps) => {
+  const { theme } = useThemeSettings();
   const { sourceUrlPrefix } = useConfig();
 
   const componentFolder = `lib/components/${
@@ -187,12 +192,14 @@ export const ComponentDoc = ({
           <PageTitle title={componentName} />
           <Stack space="xxlarge">
             {Example ? (
-              <PlayroomStateProvider>
-                <RenderExample
-                  id={`${componentName}_example`}
-                  Example={Example}
-                />
-              </PlayroomStateProvider>
+              <BraidProvider styleBody={false} theme={theme}>
+                <PlayroomStateProvider>
+                  <RenderExample
+                    id={`${componentName}_example`}
+                    Example={Example}
+                  />
+                </PlayroomStateProvider>
+              </BraidProvider>
             ) : null}
 
             {'description' in docs ? (
@@ -231,21 +238,23 @@ export const ComponentDoc = ({
                 ) : null}
                 {example.description ?? null}
                 {example.code || example.Example ? (
-                  <PlayroomStateProvider>
-                    <RenderExample
-                      id={String(index)}
-                      code={example.code}
-                      Example={example.Example}
-                      Container={example.Container}
-                      background={example.background}
-                      showCodeByDefault={
-                        example.showCodeByDefault ||
-                        example.Example === undefined ||
-                        docs.category === 'Logic'
-                      }
-                      playroom={example.playroom}
-                    />
-                  </PlayroomStateProvider>
+                  <BraidProvider styleBody={false} theme={theme}>
+                    <PlayroomStateProvider>
+                      <RenderExample
+                        id={String(index)}
+                        code={example.code}
+                        Example={example.Example}
+                        Container={example.Container}
+                        background={example.background}
+                        showCodeByDefault={
+                          example.showCodeByDefault ||
+                          example.Example === undefined ||
+                          docs.category === 'Logic'
+                        }
+                        playroom={example.playroom}
+                      />
+                    </PlayroomStateProvider>
+                  </BraidProvider>
                 ) : null}
               </Stack>
             ))}
@@ -324,13 +333,15 @@ export const ComponentDoc = ({
             {snippets.map(({ group, name, code }) => (
               <Stack space="medium" key={`${group}_${name}`}>
                 <Text tone="secondary">{name}</Text>
-                <PlayroomStateProvider>
-                  <RenderExample
-                    id={`${group}_${name}`}
-                    Example={() => code}
-                    showCodeByDefault={false}
-                  />
-                </PlayroomStateProvider>
+                <BraidProvider styleBody={false} theme={theme}>
+                  <PlayroomStateProvider>
+                    <RenderExample
+                      id={`${group}_${name}`}
+                      Example={() => code}
+                      showCodeByDefault={false}
+                    />
+                  </PlayroomStateProvider>
+                </BraidProvider>
               </Stack>
             ))}
           </Stack>

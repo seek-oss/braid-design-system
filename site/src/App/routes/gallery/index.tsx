@@ -16,7 +16,6 @@ import {
 } from '../../../../../lib/components';
 import { Logo } from '../../Logo/Logo';
 import { useThemeSettings, ThemeToggle } from '../../ThemeSetting';
-import * as themes from '../../../../../lib/themes';
 import { IconButton } from '../../../../../lib/components/iconButtons/IconButton';
 import { SVGProps } from '../../../../../lib/components/icons/SVGTypes';
 import useIcon, { UseIconProps } from '../../../../../lib/hooks/useIcon';
@@ -26,11 +25,8 @@ import * as styleRefs from './gallery.treat';
 
 const useBackgroundColor = () => {
   const { theme } = useThemeSettings();
-  const selectedTheme = themes[theme];
   const backgroundColor =
-    selectedTheme.color.background[
-      selectedTheme.name === 'docs' ? 'neutralLight' : 'body'
-    ];
+    theme.color.background[theme.name === 'docs' ? 'neutralLight' : 'body'];
 
   const { lightness } = parseToHsl(backgroundColor);
 

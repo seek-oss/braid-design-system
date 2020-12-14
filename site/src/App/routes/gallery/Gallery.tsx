@@ -12,6 +12,7 @@ import copy from 'copy-to-clipboard';
 import { useIntersection } from 'react-use';
 
 import {
+  BraidProvider,
   Stack,
   Text,
   Heading,
@@ -26,11 +27,12 @@ import {
   Divider,
   Tiles,
 } from '../../../../../lib/components';
+import docsTheme from '../../../../../lib/themes/docs';
 import { getHistory, isNew } from '../../Updates';
 import { CopyIcon } from '../../Code/CopyIcon';
 import { CodeButton, formatSnippet } from '../../Code/Code';
 import { ComponentExample } from '../../../types';
-import { ThemedExample } from '../../ThemeSetting';
+import { ThemedExample, useThemeSettings } from '../../ThemeSetting';
 import {
   galleryComponents as allGalleryComponents,
   getComponentDocs,
@@ -155,39 +157,43 @@ const RenderExample = ({ id, example }: RenderExampleProps) => {
   const { code, value } = useSourceFromExample(id, example);
 
   return (
-    <Stack space="small">
-      <Columns space="medium" alignY="center">
-        <Column>
-          <Text tone="secondary">{label}</Text>
-        </Column>
-        {code ? (
-          <Column width="content">
-            <CodeButton
-              title="Copy code to clipboard"
-              onClick={() => copy(formatSnippet(code))}
-              successLabel="Copied!"
-            >
-              <CopyIcon /> Copy code
-            </CodeButton>
+    <BraidProvider styleBody={false} theme={docsTheme}>
+      <Stack space="small">
+        <Columns space="medium" alignY="center">
+          <Column>
+            <Text tone="secondary">{label}</Text>
           </Column>
+          {code ? (
+            <Column width="content">
+              <CodeButton
+                title="Copy code to clipboard"
+                onClick={() => copy(formatSnippet(code))}
+                successLabel="Copied!"
+              >
+                <CopyIcon /> Copy code
+              </CodeButton>
+            </Column>
+          ) : null}
+        </Columns>
+        {value ? (
+          <ThemedExample background={background}>
+            <Mask background={background}>
+              <Container>
+                <Box height="full" width="full" style={{ cursor: 'auto' }}>
+                  {value}
+                </Box>
+              </Container>
+            </Mask>
+          </ThemedExample>
         ) : null}
-      </Columns>
-      {value ? (
-        <ThemedExample background={background}>
-          <Mask background={background}>
-            <Container>
-              <Box height="full" width="full" style={{ cursor: 'auto' }}>
-                {value}
-              </Box>
-            </Container>
-          </Mask>
-        </ThemedExample>
-      ) : null}
-    </Stack>
+      </Stack>
+    </BraidProvider>
   );
 };
 
 const GalleryItem = ({ item }: { item: typeof galleryComponents[number] }) => {
+  const { theme } = useThemeSettings();
+
   const componentDocs = getComponentDocs({
     componentName: item.name,
     isIcon: /^icon/i.test(item.name),
@@ -288,12 +294,14 @@ const GalleryItem = ({ item }: { item: typeof galleryComponents[number] }) => {
                     }}
                     key={`${example.label}_${index}`}
                   >
-                    <PlayroomStateProvider>
-                      <RenderExample
-                        id={`${example.label}_${index}`}
-                        example={example}
-                      />
-                    </PlayroomStateProvider>
+                    <BraidProvider styleBody={false} theme={theme}>
+                      <PlayroomStateProvider>
+                        <RenderExample
+                          id={`${example.label}_${index}`}
+                          example={example}
+                        />
+                      </PlayroomStateProvider>
+                    </BraidProvider>
                   </Box>
                 ))}
               </Stack>
