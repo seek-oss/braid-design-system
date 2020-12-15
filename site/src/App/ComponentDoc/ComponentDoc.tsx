@@ -19,7 +19,7 @@ import {
   Secondary,
 } from '../../../../lib/components';
 
-import { ComponentDetails, ComponentDocs, ComponentExample } from '../../types';
+import { ComponentDetails, ComponentExample } from '../../types';
 import Code from '../Code/Code';
 import { ThemedExample, useThemeSettings } from '../ThemeSetting';
 import { useConfig } from '../ConfigContext';
@@ -77,14 +77,14 @@ const RenderExample = ({
 interface ComponentDocProps {
   componentName: string;
   subfolder?: string;
-  docs: ComponentDocs | ComponentDetails;
+  details: ComponentDetails;
   snippets?: BraidSnippet[];
 }
 
 export const ComponentDoc = ({
   componentName,
   subfolder = '',
-  docs,
+  details,
   snippets = [],
 }: ComponentDocProps) => {
   const { theme } = useThemeSettings();
@@ -93,20 +93,15 @@ export const ComponentDoc = ({
   const componentFolder = `lib/components/${
     subfolder ? `${subfolder}/` : ''
   }${componentName}`;
-  const examples = 'examples' in docs ? docs.examples : undefined;
-  const additional = 'additional' in docs ? docs.additional : undefined;
-  const docsExamples = additional || examples || [];
-  const Example = 'Example' in docs ? docs.Example : undefined;
-
   const sourceUrl = `${sourceUrlPrefix}/${componentFolder}`;
   const migrationGuideUrl = `${sourceUrlPrefix}/${componentFolder}/${componentName}.migration.md`;
 
-  const propsToDocument = docs.subComponents
-    ? [componentName, ...docs.subComponents]
+  const propsToDocument = details.subComponents
+    ? [componentName, ...details.subComponents]
     : componentName;
 
-  const relevantNames = docs.subComponents
-    ? [componentName, ...docs.subComponents]
+  const relevantNames = details.subComponents
+    ? [componentName, ...details.subComponents]
     : [componentName];
 
   const history = getHistory(...relevantNames);
@@ -183,34 +178,34 @@ export const ComponentDoc = ({
             </NavigationItem>
           ) : null}
         </Navigation>
-        {docs.deprecationWarning ? (
-          <Alert tone="caution">{docs.deprecationWarning}</Alert>
+        {details.deprecationWarning ? (
+          <Alert tone="caution">{details.deprecationWarning}</Alert>
         ) : null}
       </Stack>
       <Switch>
         <Route exact path={`/components/${componentName}`}>
           <PageTitle title={componentName} />
           <Stack space="xxlarge">
-            {Example ? (
+            {details.Example ? (
               <BraidProvider styleBody={false} theme={theme}>
                 <PlayroomStateProvider>
                   <RenderExample
                     id={`${componentName}_example`}
-                    Example={Example}
+                    Example={details.Example}
                   />
                 </PlayroomStateProvider>
               </BraidProvider>
             ) : null}
 
-            {'description' in docs ? (
-              <Stack space="large">{docs.description}</Stack>
+            {details.description ? (
+              <Stack space="large">{details.description}</Stack>
             ) : null}
 
-            {'alternatives' in docs && docs.alternatives.length > 0 ? (
+            {details.alternatives.length > 0 ? (
               <Stack space="large">
                 <LinkableHeading level="3">Alternatives</LinkableHeading>
                 <List space="large">
-                  {docs.alternatives.map((alt) => (
+                  {details.alternatives.map((alt) => (
                     <Text key={`${alt.name}`}>
                       <TextLink href={`/components/${alt.name}`}>
                         {alt.name}
@@ -222,18 +217,16 @@ export const ComponentDoc = ({
               </Stack>
             ) : null}
 
-            {'accessibility' in docs ? (
+            {details.accessibility ? (
               <Stack space="large">
                 <LinkableHeading level="3">Accessibility</LinkableHeading>
-                {docs.accessibility}
+                {details.accessibility}
               </Stack>
             ) : null}
 
-            {docsExamples.map((example, index) => (
+            {(details.additional || []).map((example, index) => (
               <Stack space="large" key={index}>
-                {example.label &&
-                (docsExamples.length > 1 ||
-                  (additional && additional.length > 0)) ? (
+                {example.label ? (
                   <LinkableHeading level="3">{example.label}</LinkableHeading>
                 ) : null}
                 {example.description ?? null}
@@ -282,7 +275,7 @@ export const ComponentDoc = ({
                 <TextLink href={sourceUrl}>View Source</TextLink>
               </Text>
               <Text>
-                {docs.migrationGuide ? (
+                {details.migrationGuide ? (
                   <TextLink href={migrationGuideUrl}>Migration Guide</TextLink>
                 ) : null}
               </Text>

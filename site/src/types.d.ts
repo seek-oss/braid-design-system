@@ -41,16 +41,6 @@ export interface ComponentDetails {
   >;
 }
 
-export interface ComponentDocs {
-  category: 'Logic' | 'Layout' | 'Content' | 'Icon';
-  deprecationWarning?: ReactNodeNoStrings;
-  migrationGuide?: boolean;
-  foundation?: boolean;
-  examples: ComponentExample[];
-  description?: ReactNodeNoStrings;
-  subComponents?: string[];
-}
-
 interface ExampleProps extends ReturnType<typeof useScope> {
   id: string;
   handler: () => void;

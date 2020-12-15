@@ -1,7 +1,7 @@
 import groupBy from 'lodash/groupBy';
 import * as components from '../../../lib/components';
 import { BraidSnippet } from '../../../lib/components/private/Snippets';
-import { ComponentDetails, ComponentDocs, ComponentExample } from '../types';
+import { ComponentDetails, ComponentExample } from '../types';
 import undocumentedExports from '../undocumentedExports.json';
 
 const componentDocsContext = require.context(
@@ -10,20 +10,13 @@ const componentDocsContext = require.context(
   /.docs\.tsx$/,
 );
 
-export const getComponentDocs = ({
-  componentName,
-  isIcon,
-}: {
-  componentName: string;
-  isIcon: boolean;
-}) => {
-  const normalizedComponentRoute = isIcon
+export const getComponentDetails = (componentName: string) => {
+  const normalizedComponentRoute = /^icon/i.test(componentName)
     ? `./icons/${componentName}/${componentName}.docs.tsx`
     : `./${componentName}/${componentName}.docs.tsx`;
 
-  return componentDocsContext(normalizedComponentRoute).default as
-    | ComponentDocs
-    | ComponentDetails;
+  return componentDocsContext(normalizedComponentRoute)
+    .default as ComponentDetails;
 };
 
 const snippetsContext = require.context(
@@ -61,10 +54,7 @@ const documentedComponentNames = Object.keys(components)
   .sort();
 
 export const documentedComponents = documentedComponentNames.map((name) => {
-  const docs = getComponentDocs({
-    componentName: name,
-    isIcon: false,
-  });
+  const docs = getComponentDetails(name);
 
   return { name, ...docs };
 });
