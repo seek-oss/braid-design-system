@@ -1,25 +1,31 @@
 import React from 'react';
-import { ComponentDocs } from '../../../site/src/types';
-import { useColor } from './useColor';
+import { ComponentDetail } from '../../../site/src/types';
+import source from '../../utils/source.macro';
+import { useColor, Text } from '../../../';
 
-const docs: ComponentDocs = {
+const docs: ComponentDetail = {
   category: 'Logic',
-  examples: [
+  Example: () =>
+    source(
+      <div
+        style={{
+          height: 50,
+          width: 50,
+          background: useColor().background.brandAccent,
+        }}
+      />,
+    ),
+  alternatives: [{ name: 'Box', description: 'For custom layouts.' }],
+  additional: [
     {
+      label: 'Development considerations',
       playroom: false,
-      Example: () => {
-        const { background } = useColor();
-
-        return (
-          <div
-            style={{
-              width: 50,
-              height: 50,
-              backgroundColor: background.brand,
-            }}
-          />
-        );
-      },
+      description: (
+        <Text>
+          Retrieves the semantic colour palette of the current theme from
+          context.
+        </Text>
+      ),
       code: `
         const { background } = useColor();
 
@@ -28,7 +34,7 @@ const docs: ComponentDocs = {
             style={{
               width: 50,
               height: 50,
-              backgroundColor: background.brand,
+              backgroundColor: background.brandAccent,
             }}
           />
         );
