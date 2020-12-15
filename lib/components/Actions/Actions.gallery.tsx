@@ -1,7 +1,7 @@
 import React from 'react';
 import source from '../../utils/source.macro';
 import { ComponentExample } from '../../../site/src/types';
-import { Actions, Button, TextLink } from '../';
+import { Actions, Button, TextLink, IconDelete } from '../';
 
 export const galleryItems: ComponentExample[] = [
   {
@@ -22,6 +22,18 @@ export const galleryItems: ComponentExample[] = [
           <Button>Regular Button</Button>
           <Button weight="weak">Weak Button</Button>
           <TextLink href="#">TextLink</TextLink>
+        </Actions>,
+      ),
+  },
+  {
+    label: 'With destructive action',
+    Example: () =>
+      source(
+        <Actions>
+          <Button tone="critical">
+            <IconDelete /> Delete
+          </Button>
+          <TextLink href="#">Cancel</TextLink>
         </Actions>,
       ),
   },

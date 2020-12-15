@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentDetail } from '../../../site/src/types';
 import source from '../../utils/source.macro';
-import { Actions, Button, TextLink, Text } from '../';
+import { Actions, Button, TextLink, Text, Strong, IconDelete } from '../';
 
 const docs: ComponentDetail = {
   category: 'Content',
@@ -25,6 +25,25 @@ const docs: ComponentDetail = {
     },
   ],
   additional: [
+    {
+      label: 'Destructive actions',
+      description: (
+        <Text>
+          For destructive actions like “Delete” you can set the{' '}
+          <TextLink href="/components/Button">Button</TextLink> element’s{' '}
+          <Strong>tone</Strong> to <Strong>critical.</Strong>
+        </Text>
+      ),
+      Example: () =>
+        source(
+          <Actions>
+            <Button tone="critical">
+              <IconDelete /> Delete
+            </Button>
+            <TextLink href="#">Cancel</TextLink>
+          </Actions>,
+        ),
+    },
     {
       label: 'Contextual design',
       description: (

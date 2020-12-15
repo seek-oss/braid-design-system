@@ -16,4 +16,16 @@ export const snippets: Snippets = [
     name: 'Weak',
     code: source(<Button weight="weak">Submit</Button>),
   },
+  {
+    name: 'Critical',
+    code: source(<Button tone="critical">Button</Button>),
+  },
+  {
+    name: 'Critical Weak',
+    code: source(
+      <Button weight="weak" tone="critical">
+        Button
+      </Button>,
+    ),
+  },
 ];

@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentDetail } from '../../../site/src/types';
-import { Button, Box, Text, TextLink, Inline, Strong } from '../';
+import { Button, Box, Text, TextLink, Inline, Strong, IconDelete } from '../';
 import source from '../../utils/source.macro';
 
 const docs: ComponentDetail = {
@@ -40,6 +40,26 @@ const docs: ComponentDetail = {
         source(
           <Inline space="small">
             <Button loading>Loading Button</Button>
+          </Inline>,
+        ),
+    },
+    {
+      label: 'Destructive actions',
+      description: (
+        <Text>
+          For destructive actions like “Delete” you can set the button’s{' '}
+          <Strong>tone</Strong> to <Strong>critical.</Strong>
+        </Text>
+      ),
+      Example: () =>
+        source(
+          <Inline space="small">
+            <Button tone="critical">
+              <IconDelete /> Delete
+            </Button>
+            <Button tone="critical" weight="weak">
+              <IconDelete /> Delete
+            </Button>
           </Inline>,
         ),
     },

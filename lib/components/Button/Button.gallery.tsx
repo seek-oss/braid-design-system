@@ -32,6 +32,26 @@ export const galleryItems: ComponentExample[] = [
       ),
   },
   {
+    label: 'Critical Button',
+    Example: () =>
+      source(
+        <Inline space="small">
+          <Button tone="critical">Delete</Button>
+        </Inline>,
+      ),
+  },
+  {
+    label: 'Weak Critical Button',
+    Example: () =>
+      source(
+        <Inline space="small">
+          <Button weight="weak" tone="critical">
+            Delete
+          </Button>
+        </Inline>,
+      ),
+  },
+  {
     label: 'Weak weight on dark background',
     Example: () =>
       source(

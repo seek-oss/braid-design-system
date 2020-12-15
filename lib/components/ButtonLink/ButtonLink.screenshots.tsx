@@ -32,5 +32,32 @@ export const screenshots: ComponentScreenshot = {
         </ButtonLink>
       ),
     },
+    {
+      label: 'Default Critical Button Link',
+      Container,
+      Example: () => (
+        <ButtonLink href="#" tone="critical">
+          Delete
+        </ButtonLink>
+      ),
+    },
+    {
+      label: 'Strong Critical Button Link',
+      Container,
+      Example: () => (
+        <ButtonLink href="#" weight="strong" tone="critical">
+          Delete
+        </ButtonLink>
+      ),
+    },
+    {
+      label: 'Weak Critical Button Link',
+      Container,
+      Example: () => (
+        <ButtonLink href="#" weight="weak" tone="critical">
+          Delete
+        </ButtonLink>
+      ),
+    },
   ],
 };
