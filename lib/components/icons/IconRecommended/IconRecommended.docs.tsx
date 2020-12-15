@@ -1,9 +1,9 @@
 import React from 'react';
-import { ComponentDetails } from '../../../../site/src/types';
+import { ComponentDocs } from '../../../../site/src/types';
 import source from '../../../utils/source.macro';
 import { IconRecommended, Heading, Stack } from '../../';
 
-const docs: ComponentDetails = {
+const docs: ComponentDocs = {
   category: 'Icon',
   migrationGuide: true,
   Example: () =>

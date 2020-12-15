@@ -1,10 +1,10 @@
 import React from 'react';
 import source from '../../utils/source.macro';
-import { ComponentDetails } from '../../../site/src/types';
+import { ComponentDocs } from '../../../site/src/types';
 import { HiddenVisually } from './HiddenVisually';
 import { Text } from '../Text/Text';
 
-const docs: ComponentDetails = {
+const docs: ComponentDocs = {
   category: 'Layout',
   Example: () =>
     source(

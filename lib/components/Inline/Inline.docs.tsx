@@ -1,10 +1,10 @@
 import React from 'react';
-import { ComponentDetails } from '../../../site/src/types';
+import { ComponentDocs } from '../../../site/src/types';
 import { Placeholder } from '../private/Placeholder/Placeholder';
 import { Inline, Stack, Strong, Text, TextLink } from '../';
 import source from '../../utils/source.macro';
 
-const docs: ComponentDetails = {
+const docs: ComponentDocs = {
   category: 'Layout',
   Example: () =>
     source(

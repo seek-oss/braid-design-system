@@ -1,9 +1,9 @@
 import React from 'react';
-import { ComponentDetails } from '../../../site/src/types';
+import { ComponentDocs } from '../../../site/src/types';
 import source from '../../utils/source.macro';
 import { ThemeNameConsumer, Text, TextLink, Strong } from '../../../';
 
-const docs: ComponentDetails = {
+const docs: ComponentDocs = {
   category: 'Logic',
   Example: () =>
     source(

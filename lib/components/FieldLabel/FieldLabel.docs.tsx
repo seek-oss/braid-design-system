@@ -1,6 +1,6 @@
 import React from 'react';
 import source from '../../utils/source.macro';
-import { ComponentDetails } from '../../../site/src/types';
+import { ComponentDocs } from '../../../site/src/types';
 import {
   FieldLabel,
   Stack,
@@ -14,7 +14,7 @@ import {
 } from '../';
 import { Placeholder } from '../../playroom/components';
 
-const docs: ComponentDetails = {
+const docs: ComponentDocs = {
   category: 'Content',
   Example: () =>
     source(

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentDetails } from '../../../site/src/types';
+import { ComponentDocs } from '../../../site/src/types';
 import source from '../../utils/source.macro';
 import {
   Autosuggest,
@@ -20,7 +20,7 @@ export const makeSuggestions = (
     value: i + initialValue,
   }));
 
-const docs: ComponentDetails = {
+const docs: ComponentDocs = {
   category: 'Content',
   migrationGuide: true,
   Example: ({ id, setDefaultState, getState, setState, resetState }) =>

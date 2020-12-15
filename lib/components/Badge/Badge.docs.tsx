@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react';
-import { ComponentDetails } from '../../../site/src/types';
+import { ComponentDocs } from '../../../site/src/types';
 import source from '../../utils/source.macro';
 import { Badge, Card, Inline, Heading, Text, TextLink, Strong } from '../';
 
-const docs: ComponentDetails = {
+const docs: ComponentDocs = {
   category: 'Content',
   migrationGuide: true,
   Example: () =>

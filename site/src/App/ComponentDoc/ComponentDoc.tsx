@@ -19,7 +19,7 @@ import {
   Secondary,
 } from '../../../../lib/components';
 
-import { ComponentDetails, ComponentExample } from '../../types';
+import { ComponentDocs, ComponentExample } from '../../types';
 import Code from '../Code/Code';
 import { ThemedExample, useThemeSettings } from '../ThemeSetting';
 import { useConfig } from '../ConfigContext';
@@ -77,14 +77,14 @@ const RenderExample = ({
 interface ComponentDocProps {
   componentName: string;
   subfolder?: string;
-  details: ComponentDetails;
+  docs: ComponentDocs;
   snippets?: BraidSnippet[];
 }
 
 export const ComponentDoc = ({
   componentName,
   subfolder = '',
-  details,
+  docs,
   snippets = [],
 }: ComponentDocProps) => {
   const { theme } = useThemeSettings();
@@ -96,12 +96,12 @@ export const ComponentDoc = ({
   const sourceUrl = `${sourceUrlPrefix}/${componentFolder}`;
   const migrationGuideUrl = `${sourceUrlPrefix}/${componentFolder}/${componentName}.migration.md`;
 
-  const propsToDocument = details.subComponents
-    ? [componentName, ...details.subComponents]
+  const propsToDocument = docs.subComponents
+    ? [componentName, ...docs.subComponents]
     : componentName;
 
-  const relevantNames = details.subComponents
-    ? [componentName, ...details.subComponents]
+  const relevantNames = docs.subComponents
+    ? [componentName, ...docs.subComponents]
     : [componentName];
 
   const history = getHistory(...relevantNames);
@@ -178,34 +178,34 @@ export const ComponentDoc = ({
             </NavigationItem>
           ) : null}
         </Navigation>
-        {details.deprecationWarning ? (
-          <Alert tone="caution">{details.deprecationWarning}</Alert>
+        {docs.deprecationWarning ? (
+          <Alert tone="caution">{docs.deprecationWarning}</Alert>
         ) : null}
       </Stack>
       <Switch>
         <Route exact path={`/components/${componentName}`}>
           <PageTitle title={componentName} />
           <Stack space="xxlarge">
-            {details.Example ? (
+            {docs.Example ? (
               <BraidProvider styleBody={false} theme={theme}>
                 <PlayroomStateProvider>
                   <RenderExample
                     id={`${componentName}_example`}
-                    Example={details.Example}
+                    Example={docs.Example}
                   />
                 </PlayroomStateProvider>
               </BraidProvider>
             ) : null}
 
-            {details.description ? (
-              <Stack space="large">{details.description}</Stack>
+            {docs.description ? (
+              <Stack space="large">{docs.description}</Stack>
             ) : null}
 
-            {details.alternatives.length > 0 ? (
+            {docs.alternatives.length > 0 ? (
               <Stack space="large">
                 <LinkableHeading level="3">Alternatives</LinkableHeading>
                 <List space="large">
-                  {details.alternatives.map((alt) => (
+                  {docs.alternatives.map((alt) => (
                     <Text key={`${alt.name}`}>
                       <TextLink href={`/components/${alt.name}`}>
                         {alt.name}
@@ -217,14 +217,14 @@ export const ComponentDoc = ({
               </Stack>
             ) : null}
 
-            {details.accessibility ? (
+            {docs.accessibility ? (
               <Stack space="large">
                 <LinkableHeading level="3">Accessibility</LinkableHeading>
-                {details.accessibility}
+                {docs.accessibility}
               </Stack>
             ) : null}
 
-            {(details.additional || []).map((example, index) => (
+            {(docs.additional || []).map((example, index) => (
               <Stack space="large" key={index}>
                 {example.label ? (
                   <LinkableHeading level="3">{example.label}</LinkableHeading>
@@ -275,7 +275,7 @@ export const ComponentDoc = ({
                 <TextLink href={sourceUrl}>View Source</TextLink>
               </Text>
               <Text>
-                {details.migrationGuide ? (
+                {docs.migrationGuide ? (
                   <TextLink href={migrationGuideUrl}>Migration Guide</TextLink>
                 ) : null}
               </Text>

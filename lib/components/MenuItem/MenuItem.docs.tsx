@@ -1,6 +1,6 @@
 import React from 'react';
 import source from '../../utils/source.macro';
-import { ComponentDetails } from '../../../site/src/types';
+import { ComponentDocs } from '../../../site/src/types';
 import {
   OverflowMenu,
   MenuItem,
@@ -12,7 +12,7 @@ import {
   Box,
 } from '..';
 
-const docs: ComponentDetails = {
+const docs: ComponentDocs = {
   category: 'Content',
   subComponents: ['MenuItemLink'],
   Example: () =>

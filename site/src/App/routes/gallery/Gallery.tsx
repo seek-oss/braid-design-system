@@ -32,7 +32,7 @@ import { ComponentExample } from '../../../types';
 import { ThemedExample, useThemeSettings } from '../../ThemeSetting';
 import {
   galleryComponents as allGalleryComponents,
-  getComponentDetails,
+  getComponentDocs,
 } from '../../navigationHelpers';
 import { Overlay } from '../../../../../lib/components/private/Overlay/Overlay';
 import { PlayroomStateProvider } from '../../../../../lib/playroom/playroomState';
@@ -191,9 +191,9 @@ const RenderExample = ({ id, example }: RenderExampleProps) => {
 const GalleryItem = ({ item }: { item: typeof galleryComponents[number] }) => {
   const { theme } = useThemeSettings();
 
-  const componentDetails = getComponentDetails(item.name);
-  const relevantNames = componentDetails.subComponents
-    ? [item.name, ...componentDetails.subComponents]
+  const componentDocs = getComponentDocs(item.name);
+  const relevantNames = componentDocs.subComponents
+    ? [item.name, ...componentDocs.subComponents]
     : [item.name];
 
   const history = getHistory(...relevantNames);
@@ -203,7 +203,7 @@ const GalleryItem = ({ item }: { item: typeof galleryComponents[number] }) => {
   ).length;
   const updateCount = markAsNew ? actualUpdateCount - 1 : actualUpdateCount;
 
-  const isAnIcon = componentDetails.category === 'Icon';
+  const isAnIcon = componentDocs.category === 'Icon';
 
   return (
     <Box
@@ -262,14 +262,14 @@ const GalleryItem = ({ item }: { item: typeof galleryComponents[number] }) => {
               </Box>
             ) : undefined}
           </Inline>
-          {componentDetails.description && !isAnIcon ? (
+          {componentDocs.description && !isAnIcon ? (
             <Box style={{ width: '700px' }}>
               <Disclosure
                 collapseLabel="Hide description"
                 expandLabel="Show description"
                 id="id"
               >
-                {componentDetails.description}
+                {componentDocs.description}
               </Disclosure>
             </Box>
           ) : null}
@@ -301,7 +301,7 @@ const GalleryItem = ({ item }: { item: typeof galleryComponents[number] }) => {
           ))}
         </Columns>
 
-        {/* {componentDetails.alternatives.length > 0 ? (
+        {/* {componentDocs.alternatives.length > 0 ? (
           <Stack space="large">
             <Divider />
             <Stack space="medium">
@@ -316,7 +316,7 @@ const GalleryItem = ({ item }: { item: typeof galleryComponents[number] }) => {
                   >['columns']
                 }
               >
-                {componentDetails.alternatives.map((alt) => (
+                {componentDocs.alternatives.map((alt) => (
                   <Stack space="medium" key={alt.name}>
                     <Text size="xsmall" weight="strong">
                       {alt.name}

@@ -1,10 +1,10 @@
 import React from 'react';
-import { ComponentDetails } from '../../../site/src/types';
+import { ComponentDocs } from '../../../site/src/types';
 import source from '../../utils/source.macro';
 import { Drawer, Button, Inline, Text, TextLink, Box, Strong } from '../';
 import { Placeholder } from '../../playroom/components';
 
-const docs: ComponentDetails = {
+const docs: ComponentDocs = {
   category: 'Content',
   Example: ({ id, getState, toggleState }) =>
     source(

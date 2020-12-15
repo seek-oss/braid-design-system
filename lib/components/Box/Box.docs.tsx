@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { ComponentDetails, ComponentExample } from '../../../site/src/types';
+import { ComponentDocs, ComponentExample } from '../../../site/src/types';
 import { Box } from './Box';
 import { Placeholder } from '../private/Placeholder/Placeholder';
 import tokens from '../../themes/wireframe/tokens';
@@ -7,7 +7,7 @@ import tokens from '../../themes/wireframe/tokens';
 type Space = keyof typeof tokens.space;
 const spaceScale = Object.keys(tokens.space) as Space[];
 
-const docs: ComponentDetails = {
+const docs: ComponentDocs = {
   category: 'Layout',
   alternatives: [],
   additional: spaceScale.map(

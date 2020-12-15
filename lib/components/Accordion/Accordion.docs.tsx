@@ -1,10 +1,10 @@
 import React from 'react';
-import { ComponentDetails } from '../../../site/src/types';
+import { ComponentDocs } from '../../../site/src/types';
 import source from '../../utils/source.macro';
 import { Accordion, AccordionItem, Stack, Text, TextLink, Strong } from '../';
 import { Placeholder } from '../../playroom/components';
 
-const docs: ComponentDetails = {
+const docs: ComponentDocs = {
   category: 'Content',
   subComponents: ['AccordionItem'],
   migrationGuide: true,

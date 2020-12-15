@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
 import { Text, TextLink, Strong } from '../';
-import { ComponentDetails } from '../../../site/src/types';
+import { ComponentDocs } from '../../../site/src/types';
 
-const docs: ComponentDetails = {
+const docs: ComponentDocs = {
   category: 'Logic',
   migrationGuide: true,
   description: (

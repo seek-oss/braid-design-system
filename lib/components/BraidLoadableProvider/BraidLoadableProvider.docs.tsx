@@ -1,9 +1,9 @@
 import React from 'react';
-import { ComponentDetails } from '../../../site/src/types';
+import { ComponentDocs } from '../../../site/src/types';
 import { Text, TextLink } from '..';
 import { Strong } from '../Strong/Strong';
 
-const docs: ComponentDetails = {
+const docs: ComponentDocs = {
   category: 'Logic',
   description: (
     <Text>
