@@ -64,7 +64,7 @@ const docs: ComponentDocs = {
             its purpose.
           </Text>
           <Text>
-            The supported tones are: <Strong>{'"critical"'}</Strong>,
+            The supported tones are: <Strong>{'"critical"'}</Strong>,{' '}
             <Strong>{'"positive"'}</Strong>, and <Strong>{'"neutral"'}</Strong>.
           </Text>
         </>

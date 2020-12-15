@@ -14,7 +14,7 @@ const docs: ComponentDocs = {
   category: 'Logic',
   Example: () =>
     source(
-      <Box padding="medium" style={{ backgroundColor: 'purple' }}>
+      <Box padding="medium" style={{ backgroundColor: '#3d0080' }}>
         <BackgroundProvider type="dark">
           <Text>Text on custom dark background</Text>
         </BackgroundProvider>
@@ -44,12 +44,12 @@ const docs: ComponentDocs = {
       Example: () =>
         source(
           <Stack space="large">
-            <Box padding="medium" style={{ backgroundColor: 'purple' }}>
+            <Box padding="medium" style={{ backgroundColor: '#3d0080' }}>
               <BackgroundProvider type="dark">
                 <Text>Text on custom dark background</Text>
               </BackgroundProvider>
             </Box>
-            <Box padding="medium" style={{ backgroundColor: 'paleturquoise' }}>
+            <Box padding="medium" style={{ backgroundColor: '#c8cfff' }}>
               <BackgroundProvider type="light">
                 <Text>Text on custom light background</Text>
               </BackgroundProvider>

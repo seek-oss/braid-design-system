@@ -14,8 +14,9 @@ const docs: ComponentDocs = {
   description: (
     <Alert tone="caution">
       <Text weight="medium">
-        Avoid use of this hook where possible. Responsive properties and media
-        queries are a better option in most cases.
+        This Hook returns <Strong>null</Strong> when rendering server-side or
+        statically rendering, so you should avoid this Hook where possible.
+        Responsive props and media queries are preferable in most cases.
       </Text>
     </Alert>
   ),
@@ -27,10 +28,11 @@ const docs: ComponentDocs = {
       showCodeByDefault: true,
       description: (
         <Text>
-          This hook will return the breakpoint the browser viewport currently
+          This Hook will return the breakpoint the browser viewport currently
           falls within (<Strong>mobile</Strong>, <Strong>tablet</Strong> or{' '}
           <Strong>desktop</Strong>). As this can only be calculated in the
-          browser, the value may also be null. Window resizing is supported.
+          browser, the value will also be <Strong>null</Strong> when rendering
+          server-side or statically rendering. Window resizing is supported.
         </Text>
       ),
       code: `

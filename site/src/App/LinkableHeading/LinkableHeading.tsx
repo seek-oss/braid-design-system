@@ -19,22 +19,24 @@ export const LinkableHeading = ({
   const slug = slugify(children);
 
   return (
-    <Box className={styles.linkableHeading}>
-      <Box id={slug} position="absolute" />
-      <Link href={`#${slug}`}>
-        <Heading level={level}>
-          {children}{' '}
-          <Box
-            component="span"
-            transition="fast"
-            marginLeft="xxsmall"
-            opacity={0}
-            className={styles.hashLink}
-          >
-            <IconLink />
-          </Box>
-        </Heading>
-      </Link>
+    <Box display="flex">
+      <Box className={styles.linkableHeading} display="inlineBlock">
+        <Box id={slug} position="absolute" />
+        <Link href={`#${slug}`}>
+          <Heading level={level}>
+            {children}{' '}
+            <Box
+              component="span"
+              transition="fast"
+              marginLeft="xxsmall"
+              opacity={0}
+              className={styles.hashLink}
+            >
+              <IconLink />
+            </Box>
+          </Heading>
+        </Link>
+      </Box>
     </Box>
   );
 };

@@ -91,7 +91,7 @@ const docs: ComponentDocs = {
         <Text>
           When in a single column, dividers can be placed between each tile
           using the <Strong>dividers</Strong> prop. Supports both{' '}
-          <Strong>regular</Strong> and <Strong>strong</Strong> variants
+          <Strong>regular</Strong> and <Strong>strong</Strong> variants.
         </Text>
       ),
       Example: () =>

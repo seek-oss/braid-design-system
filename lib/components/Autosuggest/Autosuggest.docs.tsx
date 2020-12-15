@@ -318,6 +318,62 @@ const docs: ComponentDocs = {
           </>,
         ),
     },
+    {
+      label: 'Messaging when no suggestions are available',
+      description: (
+        <>
+          <Text>
+            If no suggestions are available and you’d like to provide messaging
+            to the user, you can provide an object with a{' '}
+            <Strong>message</Strong> property to the{' '}
+            <Strong>suggestions</Strong> prop.
+          </Text>
+        </>
+      ),
+      Example: ({ id, setDefaultState, getState, setState, resetState }) =>
+        source(
+          <>
+            {setDefaultState('value', { text: '' })}
+
+            <Autosuggest
+              showMobileBackdrop
+              scrollToTopOnMobile
+              label="I like to eat"
+              id={id}
+              value={getState('value')}
+              onChange={setState('value')}
+              onClear={() => resetState('value')}
+              suggestions={(value) => {
+                const filteredSuggestions = filterSuggestions(
+                  [
+                    {
+                      text: 'Apples',
+                      value: 1,
+                    },
+                    {
+                      text: 'Bananas',
+                      value: 2,
+                    },
+                    {
+                      text: 'Broccoli',
+                      value: 3,
+                    },
+                    {
+                      text: 'Carrots',
+                      value: 4,
+                    },
+                  ],
+                  value,
+                );
+
+                return filteredSuggestions.length > 0
+                  ? filteredSuggestions
+                  : { message: 'No results found.' };
+              }}
+            />
+          </>,
+        ),
+    },
   ],
 };
 

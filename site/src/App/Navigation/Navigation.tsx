@@ -133,7 +133,9 @@ export const Navigation = ({ children }: NavigationProps) => {
           background: bodyBackground,
         }}
       >
-        {children}
+        <Box paddingBottom="xxlarge" marginBottom="xxlarge">
+          {children}
+        </Box>
       </Box>
 
       <FixedContentBlock

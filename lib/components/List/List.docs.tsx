@@ -47,7 +47,12 @@ const docs: ComponentDocs = {
         </Column>
       </Columns>,
     ),
-  accessibility: <Text>List semantics are handled for you automatically.</Text>,
+  accessibility: (
+    <Text>
+      List semantics are handled for you automatically, including the use of
+      ordered lists where appropriate.
+    </Text>
+  ),
   alternatives: [],
   additional: [
     {

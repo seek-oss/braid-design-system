@@ -1,27 +1,29 @@
 import React from 'react';
 import source from '../../utils/source.macro';
 import { ComponentDocs } from '../../../site/src/types';
-import { Notice, Text, Strong, Stack, TextLink, List } from '../';
+import { Notice, Card, Text, Strong, Stack, TextLink, List } from '../';
 
 const docs: ComponentDocs = {
   category: 'Content',
   migrationGuide: true,
   Example: () =>
     source(
-      <Stack space="medium">
-        <Notice tone="promote">
-          <Text>This is a promoted message.</Text>
-        </Notice>
-        <Notice tone="info">
-          <Text>This is an informative message.</Text>
-        </Notice>
-        <Notice tone="positive">
-          <Text>This is a positive message.</Text>
-        </Notice>
-        <Notice tone="critical">
-          <Text>This is a critical message.</Text>
-        </Notice>
-      </Stack>,
+      <Card>
+        <Stack space="medium">
+          <Notice tone="promote">
+            <Text>This is a promoted message.</Text>
+          </Notice>
+          <Notice tone="info">
+            <Text>This is an informative message.</Text>
+          </Notice>
+          <Notice tone="positive">
+            <Text>This is a positive message.</Text>
+          </Notice>
+          <Notice tone="critical">
+            <Text>This is a critical message.</Text>
+          </Notice>
+        </Stack>
+      </Card>,
     ),
   accessibility: (
     <>
@@ -79,19 +81,21 @@ const docs: ComponentDocs = {
       ),
       Example: () =>
         source(
-          <Notice tone="info">
-            <Stack space="large">
-              <Text>
-                This is an important piece of information with a{' '}
-                <TextLink href="#">TextLink.</TextLink>
-              </Text>
-              <List space="medium">
-                <Text>Bullet 1</Text>
-                <Text>Bullet 2</Text>
-                <Text>Bullet 3</Text>
-              </List>
-            </Stack>
-          </Notice>,
+          <Card>
+            <Notice tone="info">
+              <Stack space="large">
+                <Text>
+                  This is an important piece of information with a{' '}
+                  <TextLink href="#">TextLink.</TextLink>
+                </Text>
+                <List space="medium">
+                  <Text>Bullet 1</Text>
+                  <Text>Bullet 2</Text>
+                  <Text>Bullet 3</Text>
+                </List>
+              </Stack>
+            </Notice>
+          </Card>,
         ),
     },
   ],

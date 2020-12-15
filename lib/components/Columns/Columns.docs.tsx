@@ -41,12 +41,17 @@ const docs: ComponentDocs = {
     {
       label: 'Spacing',
       description: (
-        <Text>
-          The <TextLink href="/foundations/layout#spacing">spacing</TextLink>{' '}
-          between columns can be adjusted using the <Strong>space</Strong> prop.
-          Responsive values are supported, e.g.{' '}
-          <Strong>[ &ldquo;small&rdquo;, &ldquo;large&rdquo; ]</Strong>.
-        </Text>
+        <>
+          <Text>
+            The <TextLink href="/foundations/layout#spacing">spacing</TextLink>{' '}
+            between columns can be adjusted using the <Strong>space</Strong>{' '}
+            prop.
+          </Text>
+          <Text>
+            Responsive values are supported, e.g.{' '}
+            <Strong>{"['small', 'large']"}</Strong>.
+          </Text>
+        </>
       ),
       Example: () =>
         source(
@@ -216,7 +221,7 @@ const docs: ComponentDocs = {
         <Text>
           When the total width of all the columns is less than the width of the
           parent container, the columns can be aligned horiontally using the{' '}
-          <Strong>align</Strong> prop. Responsive values are supported,
+          <Strong>align</Strong> prop. Responsive values are supported.
         </Text>
       ),
       Example: () =>

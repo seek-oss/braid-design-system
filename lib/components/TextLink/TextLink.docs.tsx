@@ -133,55 +133,84 @@ const docs: ComponentDocs = {
       Example: () =>
         source(
           <Stack space="large">
-            <Inline space="xsmall" alignY="center">
-              <Box background="promoteLight" padding="xsmall">
+            <Inline space="small" align="center" alignY="center">
+              <Box
+                background="promoteLight"
+                padding="small"
+                borderRadius="standard"
+              >
                 <Text>
                   <TextLink href="#">promoteLight</TextLink>
                 </Text>
               </Box>
-              <Box background="infoLight" padding="xsmall">
+              <Box
+                background="infoLight"
+                padding="small"
+                borderRadius="standard"
+              >
                 <Text>
                   <TextLink href="#">infoLight</TextLink>
                 </Text>
               </Box>
-              <Box background="positiveLight" padding="xsmall">
+              <Box
+                background="positiveLight"
+                padding="small"
+                borderRadius="standard"
+              >
                 <Text>
                   <TextLink href="#">positiveLight</TextLink>
                 </Text>
               </Box>
-              <Box background="cautionLight" padding="xsmall">
+              <Box
+                background="cautionLight"
+                padding="small"
+                borderRadius="standard"
+              >
                 <Text>
                   <TextLink href="#">cautionLight</TextLink>
                 </Text>
               </Box>
-              <Box background="criticalLight" padding="xsmall">
+              <Box
+                background="criticalLight"
+                padding="small"
+                borderRadius="standard"
+              >
                 <Text>
                   <TextLink href="#">criticalLight</TextLink>
                 </Text>
               </Box>
             </Inline>
-            <Inline space="xsmall" alignY="center">
-              <Box background="promote" padding="xsmall">
+
+            <Inline space="small" align="center" alignY="center">
+              <Box background="promote" padding="small" borderRadius="standard">
                 <Text>
                   <TextLink href="#">promote</TextLink>
                 </Text>
               </Box>
-              <Box background="info" padding="xsmall">
+              <Box background="info" padding="small" borderRadius="standard">
                 <Text>
                   <TextLink href="#">info</TextLink>
                 </Text>
               </Box>
-              <Box background="positive" padding="xsmall">
+              <Box
+                background="positive"
+                padding="small"
+                borderRadius="standard"
+              >
                 <Text>
                   <TextLink href="#">positive</TextLink>
                 </Text>
               </Box>
-              <Box background="caution" padding="xsmall">
+              <Box background="caution" padding="small" borderRadius="standard">
                 <Text>
                   <TextLink href="#">caution</TextLink>
                 </Text>
               </Box>
-              <Box background="critical" padding="xsmall">
+              <Box
+                background="critical"
+                padding="small"
+                borderRadius="standard"
+              >
                 <Text>
                   <TextLink href="#">critical</TextLink>
                 </Text>

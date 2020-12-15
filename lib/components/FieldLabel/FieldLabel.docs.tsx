@@ -51,7 +51,8 @@ const docs: ComponentDocs = {
   accessibility: (
     <Text>
       The <Strong>htmlFor</Strong> prop is mandatory, which accepts the ID of
-      the field being labelled.
+      the field being labelled. This ensures that screen readers are able to
+      associate the label with its associated field.
     </Text>
   ),
   alternatives: [],

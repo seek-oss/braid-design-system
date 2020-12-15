@@ -55,8 +55,8 @@ const docs: ComponentDocs = {
         <Text>
           An <Strong>AccordionItem</Strong>, by default, manages its own state
           internally. If you&rsquo;d like to take control of the state, you can
-          do so using the &ldquo;expanded&rdquo; and &ldquo;onToggle&rdquo;
-          props.
+          do so using the <Strong>expanded</Strong> and{' '}
+          <Strong>onToggle</Strong> props.
         </Text>
       ),
       Example: ({ id, setDefaultState, getState, toggleState }) =>

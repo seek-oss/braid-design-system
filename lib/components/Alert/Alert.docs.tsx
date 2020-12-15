@@ -60,7 +60,7 @@ const docs: ComponentDocs = {
             <TextLink href="/components/Stack">Stack</TextLink> and{' '}
             <TextLink href="/components/Inline">Inline</TextLink>, as well as
             typographic components such as{' '}
-            <TextLink href="/components/Text">Text</TextLink>,
+            <TextLink href="/components/Text">Text</TextLink>,{' '}
             <TextLink href="/components/TextLink">TextLink</TextLink> and{' '}
             <TextLink href="/components/List">List</TextLink>. We do not
             recommend using{' '}
