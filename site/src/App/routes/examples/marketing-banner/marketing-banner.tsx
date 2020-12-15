@@ -141,8 +141,8 @@ const page: Page = {
               <Text>
                 At a high level, we can observe that this layout is being
                 achieved using a{' '}
-                <TextLink href="/foundations/layout#Columns">Columns</TextLink>{' '}
-                layout. Some key attributes to note:
+                <TextLink href="/components/Columns">Columns</TextLink> layout.
+                Some key attributes to note:
               </Text>
               <List>
                 <Text>Number of columns—in this case 2,</Text>
@@ -643,7 +643,7 @@ const page: Page = {
             </Text>
             <Text>
               Making a list of banners, alternating the directions of the{' '}
-              <TextLink href="/foundations/layout#Columns">Columns</TextLink>
+              <TextLink href="/components/Columns">Columns</TextLink>
             </Text>
           </List>
         </Stack>

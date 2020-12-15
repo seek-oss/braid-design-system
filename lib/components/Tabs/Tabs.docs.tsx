@@ -140,7 +140,7 @@ const docs: ComponentDocs = {
           when the tab panels are inside a card but the tabs are outside), you
           can provide a <Strong>gutter</Strong> prop to <Strong>Tabs</Strong>{' '}
           that accepts a value from{' '}
-          <TextLink href="/foundations/layout#Spacing">
+          <TextLink href="/foundations/layout#spacing">
             Braid’s space scale.
           </TextLink>
         </Text>

@@ -9,7 +9,7 @@ interface LinkableHeadingProps {
   children: string;
 }
 
-const slugify = (string: string) => string.replace(/ /, '-').toLowerCase();
+const slugify = (string: string) => string.replace(/ /g, '-').toLowerCase();
 
 export const LinkableHeading = ({
   children,

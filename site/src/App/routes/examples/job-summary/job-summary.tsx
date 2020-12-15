@@ -558,7 +558,7 @@ const page: Page = {
             </Text>
             <Text>
               Specifying different spacing responsively using{' '}
-              <TextLink href="/foundations/layout#Stack">Stack</TextLink>,
+              <TextLink href="/components/Stack">Stack</TextLink>,
             </Text>
             <Text>
               Adding a company logo. You can use Placeholder component if you

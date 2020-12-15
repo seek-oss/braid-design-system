@@ -2,7 +2,7 @@
 
 ## API Changes
 
-- All child nodes must be wrapped in a [`Column`](https://seek-oss.github.io/braid-design-system/components/Column) component.
+- All child nodes must be wrapped in a `Column` component.
 - `collapse={boolean}` allows columns to collapse into a stack on mobile. **This is `false` by default now**.
 - `tight={boolean}` has been deprecated in favour of setting the `gutter` prop, e.g. `gutter="small"`.
 - `reverse={boolean}` no longer reverses content on mobile when the content is stacked (i.e. when `collapse={true}`). The columns will be reversed on desktop, however the document flow on mobile and screen readers is still correct.

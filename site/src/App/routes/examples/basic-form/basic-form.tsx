@@ -408,7 +408,7 @@ const page: Page = {
           <List>
             <Text>
               Specifying different spacing responsively using{' '}
-              <TextLink href="/foundations/layout#Stack">Stack</TextLink>,
+              <TextLink href="/components/Stack">Stack</TextLink>,
             </Text>
             <Text>
               Add a <TextLink href="/components/Dropdown">Dropdown</TextLink>{' '}
@@ -416,7 +416,7 @@ const page: Page = {
             </Text>
             <Text>
               Constrain the width of card on larger devices using{' '}
-              <TextLink href="/foundations/layout#Columns">Columns</TextLink>.
+              <TextLink href="/components/Columns">Columns</TextLink>.
             </Text>
           </List>
         </Stack>

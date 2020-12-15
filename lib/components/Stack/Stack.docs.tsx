@@ -26,7 +26,7 @@ const docs: ComponentDocs = {
       label: 'Spacing',
       description: (
         <Text>
-          The <TextLink href="/foundations/layout#Spacing">spacing</TextLink>{' '}
+          The <TextLink href="/foundations/layout#spacing">spacing</TextLink>{' '}
           between children can be adjusted using the <Strong>space</Strong>{' '}
           prop. Responsive values are supported, e.g.{' '}
           <Strong>[ &ldquo;small&rdquo;, &ldquo;large&rdquo; ]</Strong>.
