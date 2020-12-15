@@ -326,6 +326,8 @@ Object {
         | "caution"
         | "cautionLight"
         | "critical"
+        | "criticalActive"
+        | "criticalHover"
         | "criticalLight"
         | "formAccent"
         | "formAccentActive"
@@ -349,6 +351,7 @@ Object {
     boxShadow?: 
         | "borderCaution"
         | "borderCritical"
+        | "borderCriticalLarge"
         | "borderField"
         | "borderFormAccent"
         | "borderFormAccentLarge"
@@ -1134,6 +1137,8 @@ Object {
         | "caution"
         | "cautionLight"
         | "critical"
+        | "criticalActive"
+        | "criticalHover"
         | "criticalLight"
         | "formAccent"
         | "formAccentActive"
@@ -1157,6 +1162,7 @@ Object {
     boxShadow?: 
         | "borderCaution"
         | "borderCritical"
+        | "borderCriticalLarge"
         | "borderField"
         | "borderFormAccent"
         | "borderFormAccentLarge"
@@ -1696,6 +1702,7 @@ Object {
     id?: string
     loading?: boolean
     onClick?: (event: MouseEvent<HTMLButtonElement, MouseEvent>) => void
+    tone?: "critical"
     type?: 
         | "button"
         | "reset"
@@ -2099,6 +2106,7 @@ Object {
     tabIndex?: number
     target?: string
     title?: string
+    tone?: "critical"
     translate?: 
         | "no"
         | "yes"
@@ -2122,6 +2130,7 @@ Object {
   props: {
     children: (ButtonChildren: ComponentType<ButtonChildrenProps>, styleProps: { style: CSSProperties; className: string; }) => ReactNode
     loading?: boolean
+    tone?: "critical"
     weight?: 
         | "regular"
         | "strong"
@@ -6506,7 +6515,7 @@ exports[`useColor 1`] = `
 Object {
   exportType: hook,
   params: Array [],
-  returnType: { background: { formAccentActive: string; formAccentHover: string; brandAccentActive: string; brandAccentHover: string; infoLight: string; promoteLight: string; criticalLight: string; positiveLight: string; ... 16 more ...; neutral: string; }; foreground: { ...; }; },
+  returnType: { background: { formAccentActive: string; formAccentHover: string; brandAccentActive: string; brandAccentHover: string; criticalActive: string; criticalHover: string; infoLight: string; promoteLight: string; ... 18 more ...; neutral: string; }; foreground: { ...; }; },
 }
 `;
 

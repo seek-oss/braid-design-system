@@ -209,6 +209,8 @@ const decorateTokens = (treatTokens: TreatTokens) => {
         formAccentHover: getHoverColor(color.background.formAccent),
         brandAccentActive: getActiveColor(color.background.brandAccent),
         brandAccentHover: getHoverColor(color.background.brandAccent),
+        criticalActive: getActiveColor(color.background.critical),
+        criticalHover: getHoverColor(color.background.critical),
         infoLight: getLightVariant(color.background.info),
         promoteLight: getLightVariant(color.background.promote),
         criticalLight: getLightVariant(color.background.critical),

@@ -13,6 +13,7 @@ export interface ButtonProps {
   onClick?: NativeButtonProps['onClick'];
   type?: 'button' | 'submit' | 'reset';
   children?: ReactNode;
+  tone?: ButtonRendererProps['tone'];
   weight?: ButtonRendererProps['weight'];
   loading?: ButtonRendererProps['loading'];
   'aria-controls'?: NativeButtonProps['aria-controls'];
@@ -24,6 +25,7 @@ export interface ButtonProps {
 export const Button = ({
   onClick,
   children,
+  tone,
   weight,
   loading,
   type = 'button',
@@ -33,7 +35,7 @@ export const Button = ({
   'aria-describedby': ariaDescribedBy,
   data,
 }: ButtonProps) => (
-  <ButtonRenderer weight={weight} loading={loading}>
+  <ButtonRenderer tone={tone} weight={weight} loading={loading}>
     {(ButtonChildren, buttonProps) => (
       <button
         id={id}

@@ -16,6 +16,7 @@ export interface ButtonLinkProps
 
 export const ButtonLink = ({
   children,
+  tone,
   weight,
   loading,
   ...restProps
@@ -23,7 +24,7 @@ export const ButtonLink = ({
   const LinkComponent = useLinkComponentWithoutRefSupport();
 
   return (
-    <ButtonRenderer weight={weight} loading={loading}>
+    <ButtonRenderer tone={tone} weight={weight} loading={loading}>
       {(ButtonChildren, buttonProps) => (
         <LinkComponent {...restProps} {...buttonProps}>
           <ButtonChildren>{children}</ButtonChildren>
