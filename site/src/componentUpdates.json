@@ -1073,5 +1073,30 @@
         "summary": "**Autosuggest:** Add support for custom messages when no suggestions are present\n\nIf no suggestions are available and you'd like to provide an explanation to the user, you can now pass an object with a `messages` property to the `suggestions` prop.\n\n**EXAMPLE USAGE**\n\n```tsx\n<Autosuggest\n  suggestions={{ message: 'No suggestions available.' }}\n  {...restProps}\n/>\n```"
       }
     ]
+  },
+  {
+    "version": "29.19.0",
+    "updates": [
+      {
+        "updated": [
+          "Box"
+        ],
+        "summary": "**Box:** Add `\"criticalActive\"` and `\"criticalHover\"` to `background` prop"
+      },
+      {
+        "updated": [
+          "Button",
+          "ButtonLink",
+          "ButtonRenderer"
+        ],
+        "summary": "**Button, ButtonLink, ButtonRenderer:** Add support for `critical` tone\n\nFor destructive actions (e.g. \"Delete\") you can now provide a `tone` prop with a value of `\"critical\"`.\n\n**EXAMPLE USAGE**\n\n```tsx\n<Button tone=\"critical\">\n  <IconDelete /> Delete\n</Button>\n```"
+      },
+      {
+        "updated": [
+          "Box"
+        ],
+        "summary": "**Box:** Add `\"borderCriticalLarge\"` to `boxShadow` prop"
+      }
+    ]
   }
 ]
