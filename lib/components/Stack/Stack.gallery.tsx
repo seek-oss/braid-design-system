@@ -51,37 +51,40 @@ export const galleryItems: ComponentExample[] = [
   },
   {
     label: 'Dividers',
-    Example: () => (
-      <Stack space="gutter" dividers>
-        <Placeholder height={40} />
-        <Placeholder height={40} />
-        <Placeholder height={40} />
-      </Stack>
-    ),
+    Example: () =>
+      source(
+        <Stack space="gutter" dividers>
+          <Placeholder height={40} />
+          <Placeholder height={40} />
+          <Placeholder height={40} />
+        </Stack>,
+      ),
   },
   {
     label: 'Strong dividers',
-    Example: () => (
-      <Stack space="gutter" dividers="strong">
-        <Placeholder height={40} />
-        <Placeholder height={40} />
-        <Placeholder height={40} />
-      </Stack>
-    ),
+    Example: () =>
+      source(
+        <Stack space="gutter" dividers="strong">
+          <Placeholder height={40} />
+          <Placeholder height={40} />
+          <Placeholder height={40} />
+        </Stack>,
+      ),
   },
   {
     label: 'Responsively hiding stack items',
-    Example: () => (
-      <Stack space="gutter">
-        <Placeholder height={40} label="1" />
-        <Hidden below="tablet">
-          <Placeholder height={40} label="2" />
-        </Hidden>
-        <Hidden above="mobile">
-          <Placeholder height={40} label="3" />
-        </Hidden>
-        <Placeholder height={40} label="4" />
-      </Stack>
-    ),
+    Example: () =>
+      source(
+        <Stack space="gutter">
+          <Placeholder height={40} label="1" />
+          <Hidden below="tablet">
+            <Placeholder height={40} label="2" />
+          </Hidden>
+          <Hidden above="mobile">
+            <Placeholder height={40} label="3" />
+          </Hidden>
+          <Placeholder height={40} label="4" />
+        </Stack>,
+      ),
   },
 ];

@@ -34,11 +34,7 @@ export interface ComponentDocs {
   Example?: (props: ExampleProps) => Source<ReactChild>;
   alternatives: Array<{ name: string; description: string }>;
   accessibility?: ReactNodeNoStrings;
-  additional?: Array<
-    Omit<ComponentExample, 'Example'> & {
-      Example?: (props: ExampleProps) => Source<ReactChild>;
-    }
-  >;
+  additional?: ComponentExample[];
 }
 
 interface ExampleProps extends ReturnType<typeof useScope> {
@@ -50,7 +46,7 @@ export interface ComponentExample {
   label?: string;
   description?: ReactNodeNoStrings;
   background?: NonNullable<BoxProps['background']>;
-  Example?: (props: ExampleProps) => ReactChild | Source<ReactChild>;
+  Example?: (props: ExampleProps) => Source<ReactChild>;
   Container?: (props: { children: ReactNode }) => ReactElement;
   code?: string;
   showCodeByDefault?: boolean;

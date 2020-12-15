@@ -38,6 +38,7 @@ import { Overlay } from '../../../../../lib/components/private/Overlay/Overlay';
 import { PlayroomStateProvider } from '../../../../../lib/playroom/playroomState';
 import { useSourceFromExample } from '../../../../../lib/utils/useSourceFromExample';
 import * as icons from '../../../../../lib/components/icons';
+import source from '../../../../../lib/utils/source.macro';
 
 const DefaultContainer = ({ children }: { children: ReactNode }) => (
   <Fragment>{children}</Fragment>
@@ -73,7 +74,7 @@ export const galleryIcons = Object.keys(icons).map((iconName) => {
               </Box>
             </Box>
           ),
-          Example: () => <IconComponent size="fill" />,
+          Example: () => source(<IconComponent size="fill" />),
           code: `<${iconName} />`,
         },
       ],

@@ -129,89 +129,90 @@ export const galleryItems: ComponentExample[] = [
   },
   {
     label: 'Column widths',
-    Example: () => (
-      <Stack space="medium">
-        <Columns space="xsmall">
-          <Column width="content">
-            <Placeholder height={30} label="content" />
-          </Column>
-          <Column>
-            <Placeholder height={30} label="fluid" />
-          </Column>
-        </Columns>
-        <Columns space="xsmall">
-          <Column width="1/5">
-            <Placeholder height={30} label="1/5" />
-          </Column>
-          <Column>
-            <Placeholder height={30} label="fluid" />
-          </Column>
-        </Columns>
-        <Columns space="xsmall">
-          <Column width="1/4">
-            <Placeholder height={30} label="1/4" />
-          </Column>
-          <Column>
-            <Placeholder height={30} label="fluid" />
-          </Column>
-        </Columns>
-        <Columns space="xsmall">
-          <Column width="1/3">
-            <Placeholder height={30} label="1/3" />
-          </Column>
-          <Column>
-            <Placeholder height={30} label="fluid" />
-          </Column>
-        </Columns>
-        <Columns space="xsmall">
-          <Column width="2/5">
-            <Placeholder height={30} label="2/5" />
-          </Column>
-          <Column>
-            <Placeholder height={30} label="fluid" />
-          </Column>
-        </Columns>
-        <Columns space="xsmall">
-          <Column width="1/2">
-            <Placeholder height={30} label="1/2" />
-          </Column>
-          <Column>
-            <Placeholder height={30} label="fluid" />
-          </Column>
-        </Columns>
-        <Columns space="xsmall">
-          <Column width="3/5">
-            <Placeholder height={30} label="3/5" />
-          </Column>
-          <Column>
-            <Placeholder height={30} label="fluid" />
-          </Column>
-        </Columns>
-        <Columns space="xsmall">
-          <Column width="2/3">
-            <Placeholder height={30} label="2/3" />
-          </Column>
-          <Column>
-            <Placeholder height={30} label="fluid" />
-          </Column>
-        </Columns>
-        <Columns space="xsmall">
-          <Column width="3/4">
-            <Placeholder height={30} label="3/4" />
-          </Column>
-          <Column>
-            <Placeholder height={30} label="fluid" />
-          </Column>
-        </Columns>
-        <Columns space="xsmall">
-          <Column width="4/5">
-            <Placeholder height={30} label="4/5" />
-          </Column>
-          <Column>
-            <Placeholder height={30} label="fluid" />
-          </Column>
-        </Columns>
-      </Stack>
-    ),
+    Example: () =>
+      source(
+        <Stack space="medium">
+          <Columns space="xsmall">
+            <Column width="content">
+              <Placeholder height={30} label="content" />
+            </Column>
+            <Column>
+              <Placeholder height={30} label="fluid" />
+            </Column>
+          </Columns>
+          <Columns space="xsmall">
+            <Column width="1/5">
+              <Placeholder height={30} label="1/5" />
+            </Column>
+            <Column>
+              <Placeholder height={30} label="fluid" />
+            </Column>
+          </Columns>
+          <Columns space="xsmall">
+            <Column width="1/4">
+              <Placeholder height={30} label="1/4" />
+            </Column>
+            <Column>
+              <Placeholder height={30} label="fluid" />
+            </Column>
+          </Columns>
+          <Columns space="xsmall">
+            <Column width="1/3">
+              <Placeholder height={30} label="1/3" />
+            </Column>
+            <Column>
+              <Placeholder height={30} label="fluid" />
+            </Column>
+          </Columns>
+          <Columns space="xsmall">
+            <Column width="2/5">
+              <Placeholder height={30} label="2/5" />
+            </Column>
+            <Column>
+              <Placeholder height={30} label="fluid" />
+            </Column>
+          </Columns>
+          <Columns space="xsmall">
+            <Column width="1/2">
+              <Placeholder height={30} label="1/2" />
+            </Column>
+            <Column>
+              <Placeholder height={30} label="fluid" />
+            </Column>
+          </Columns>
+          <Columns space="xsmall">
+            <Column width="3/5">
+              <Placeholder height={30} label="3/5" />
+            </Column>
+            <Column>
+              <Placeholder height={30} label="fluid" />
+            </Column>
+          </Columns>
+          <Columns space="xsmall">
+            <Column width="2/3">
+              <Placeholder height={30} label="2/3" />
+            </Column>
+            <Column>
+              <Placeholder height={30} label="fluid" />
+            </Column>
+          </Columns>
+          <Columns space="xsmall">
+            <Column width="3/4">
+              <Placeholder height={30} label="3/4" />
+            </Column>
+            <Column>
+              <Placeholder height={30} label="fluid" />
+            </Column>
+          </Columns>
+          <Columns space="xsmall">
+            <Column width="4/5">
+              <Placeholder height={30} label="4/5" />
+            </Column>
+            <Column>
+              <Placeholder height={30} label="fluid" />
+            </Column>
+          </Columns>
+        </Stack>,
+      ),
   },
 ];
