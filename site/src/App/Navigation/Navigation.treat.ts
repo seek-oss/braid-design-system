@@ -8,7 +8,7 @@ const headerOffset = style(({ utils, grid, space }) =>
     mobile: {
       top: headerHeight,
     },
-    tablet: {
+    desktop: {
       top: headerHeight + grid * space[gutterSize],
     },
   }),
@@ -16,7 +16,7 @@ const headerOffset = style(({ utils, grid, space }) =>
 
 const fixedWidthAboveMobile = style(({ utils, space, grid }) =>
   utils.responsiveStyle({
-    tablet: {
+    desktop: {
       width: menuWidth - grid * space[gutterSize],
     },
   }),
@@ -24,7 +24,7 @@ const fixedWidthAboveMobile = style(({ utils, space, grid }) =>
 
 const hideOnMobileWhenOpen = style(({ breakpoint }) => ({
   '@media': {
-    [`screen and (max-width: ${breakpoint.tablet - 1}px)`]: {
+    [`screen and (max-width: ${breakpoint.desktop - 1}px)`]: {
       selectors: {
         [`&${isOpen}`]: {
           opacity: 0,
@@ -36,7 +36,7 @@ const hideOnMobileWhenOpen = style(({ breakpoint }) => ({
 
 const hideOnMobileWhenClosed = style(({ breakpoint }) => ({
   '@media': {
-    [`screen and (max-width: ${breakpoint.tablet - 1}px)`]: {
+    [`screen and (max-width: ${breakpoint.desktop - 1}px)`]: {
       selectors: {
         [`&:not(${isOpen})`]: {
           opacity: 0,
@@ -48,7 +48,7 @@ const hideOnMobileWhenClosed = style(({ breakpoint }) => ({
 
 const subNavOffsetAboveMobile = style(({ utils, grid, space }) =>
   utils.responsiveStyle({
-    tablet: {
+    desktop: {
       marginLeft: menuWidth - grid * space[gutterSize],
     },
   }),
