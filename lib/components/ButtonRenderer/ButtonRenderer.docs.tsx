@@ -1,10 +1,10 @@
 import React from 'react';
-import { ComponentDetail } from '../../../site/src/types';
+import { ComponentDetails } from '../../../site/src/types';
 import { Link } from 'react-router-dom';
 import { ButtonRenderer, Stack, Inline, Text, TextLink } from '../';
 import source from '../../utils/source.macro';
 
-const docs: ComponentDetail = {
+const docs: ComponentDetails = {
   category: 'Content',
   deprecationWarning: (
     <Text weight="medium">

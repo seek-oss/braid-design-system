@@ -1,6 +1,6 @@
 import React from 'react';
 import source from '../../utils/source.macro';
-import { ComponentDetail } from '../../../site/src/types';
+import { ComponentDetails } from '../../../site/src/types';
 import {
   Text,
   Stack,
@@ -17,7 +17,7 @@ import {
 } from '..';
 import { Placeholder } from '../../playroom/components';
 
-const docs: ComponentDetail = {
+const docs: ComponentDetails = {
   category: 'Content',
   subComponents: ['TabsProvider', 'Tab', 'TabPanels', 'TabPanel'],
   Example: ({ id }) =>

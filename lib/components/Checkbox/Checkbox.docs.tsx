@@ -1,10 +1,10 @@
 import React from 'react';
-import { ComponentDetail } from '../../../site/src/types';
+import { ComponentDetails } from '../../../site/src/types';
 import { Badge, Checkbox, List, Stack, Strong, Text, TextLink } from '../';
 import source from '../../utils/source.macro';
 import { Placeholder } from '../../playroom/components';
 
-const docs: ComponentDetail = {
+const docs: ComponentDetails = {
   category: 'Content',
   migrationGuide: true,
   Example: ({ id, setDefaultState, getState, toggleState }) =>

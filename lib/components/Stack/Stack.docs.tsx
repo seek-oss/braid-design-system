@@ -1,10 +1,10 @@
 import React from 'react';
-import { ComponentDetail } from '../../../site/src/types';
+import { ComponentDetails } from '../../../site/src/types';
 import { Stack, Hidden, Text, TextLink, Strong } from '../';
 import { Placeholder } from '../private/Placeholder/Placeholder';
 import source from '../../utils/source.macro';
 
-const docs: ComponentDetail = {
+const docs: ComponentDetails = {
   category: 'Layout',
   migrationGuide: true,
   Example: () =>

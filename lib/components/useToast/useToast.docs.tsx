@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentDetail } from '../../../site/src/types';
+import { ComponentDetails } from '../../../site/src/types';
 import {
   Button,
   Text,
@@ -16,7 +16,7 @@ import Toast from './Toast';
 import source from '../../utils/source.macro';
 import { useToast } from './ToastContext';
 
-const docs: ComponentDetail = {
+const docs: ComponentDetails = {
   category: 'Content',
   Example: ({ id, handler }) => {
     const { theme } = useThemeSettings();

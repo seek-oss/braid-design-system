@@ -1,9 +1,9 @@
 import React from 'react';
-import { ComponentDetail } from '../../../site/src/types';
+import { ComponentDetails } from '../../../site/src/types';
 import { Textarea, TextLink, IconHelp, List, Text, Strong, Stack } from '../';
 import source from '../../utils/source.macro';
 
-const docs: ComponentDetail = {
+const docs: ComponentDetails = {
   category: 'Content',
   migrationGuide: true,
   Example: ({ id, getState, setState }) =>

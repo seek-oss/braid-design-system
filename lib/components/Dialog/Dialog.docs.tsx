@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentDetail } from '../../../site/src/types';
+import { ComponentDetails } from '../../../site/src/types';
 import source from '../../utils/source.macro';
 import {
   Dialog,
@@ -14,7 +14,7 @@ import {
 } from '../';
 import { Placeholder } from '../../playroom/components';
 
-const docs: ComponentDetail = {
+const docs: ComponentDetails = {
   category: 'Content',
   Example: ({ id, getState, toggleState }) =>
     source(

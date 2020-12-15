@@ -25,7 +25,7 @@ export interface Page extends RouteProps {
   badge?: 'New';
 }
 
-export interface ComponentDetail {
+export interface ComponentDetails {
   category: 'Logic' | 'Layout' | 'Content' | 'Icon';
   deprecationWarning?: ReactNodeNoStrings;
   migrationGuide?: boolean;

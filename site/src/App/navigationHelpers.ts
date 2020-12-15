@@ -1,7 +1,7 @@
 import groupBy from 'lodash/groupBy';
 import * as components from '../../../lib/components';
 import { BraidSnippet } from '../../../lib/components/private/Snippets';
-import { ComponentDetail, ComponentDocs, ComponentExample } from '../types';
+import { ComponentDetails, ComponentDocs, ComponentExample } from '../types';
 import undocumentedExports from '../undocumentedExports.json';
 
 const componentDocsContext = require.context(
@@ -23,7 +23,7 @@ export const getComponentDocs = ({
 
   return componentDocsContext(normalizedComponentRoute).default as
     | ComponentDocs
-    | ComponentDetail;
+    | ComponentDetails;
 };
 
 const snippetsContext = require.context(

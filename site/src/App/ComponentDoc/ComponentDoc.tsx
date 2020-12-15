@@ -19,7 +19,7 @@ import {
   Secondary,
 } from '../../../../lib/components';
 
-import { ComponentDetail, ComponentDocs, ComponentExample } from '../../types';
+import { ComponentDetails, ComponentDocs, ComponentExample } from '../../types';
 import Code from '../Code/Code';
 import { ThemedExample, useThemeSettings } from '../ThemeSetting';
 import { useConfig } from '../ConfigContext';
@@ -77,7 +77,7 @@ const RenderExample = ({
 interface ComponentDocProps {
   componentName: string;
   subfolder?: string;
-  docs: ComponentDocs | ComponentDetail;
+  docs: ComponentDocs | ComponentDetails;
   snippets?: BraidSnippet[];
 }
 

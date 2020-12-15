@@ -1,10 +1,10 @@
 import React from 'react';
-import { ComponentDetail } from '../../../site/src/types';
+import { ComponentDetails } from '../../../site/src/types';
 import { Link, Text, TextLink } from '..';
 import { Placeholder } from '../../playroom/components';
 import source from '../../utils/source.macro';
 
-const docs: ComponentDetail = {
+const docs: ComponentDetails = {
   category: 'Logic',
   Example: () =>
     source(

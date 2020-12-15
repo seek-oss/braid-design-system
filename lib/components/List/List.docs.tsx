@@ -1,10 +1,10 @@
 import React from 'react';
 import source from '../../utils/source.macro';
-import { ComponentDetail } from '../../../site/src/types';
+import { ComponentDetails } from '../../../site/src/types';
 import { List, Text, TextLink, Stack, Column, Columns } from '..';
 import { IconTick } from '../../playroom/components';
 
-const docs: ComponentDetail = {
+const docs: ComponentDetails = {
   category: 'Content',
   migrationGuide: true,
   Example: () =>

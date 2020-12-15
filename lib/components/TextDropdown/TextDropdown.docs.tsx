@@ -1,9 +1,9 @@
 import React from 'react';
-import { ComponentDetail } from '../../../site/src/types';
+import { ComponentDetails } from '../../../site/src/types';
 import { Stack, Strong, Text, TextLink, TextDropdown, Notice } from '..';
 import source from '../../utils/source.macro';
 
-const docs: ComponentDetail = {
+const docs: ComponentDetails = {
   category: 'Content',
   Example: ({ id, setState, getState, setDefaultState }) =>
     source(

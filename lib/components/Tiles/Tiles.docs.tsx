@@ -1,11 +1,11 @@
 import React from 'react';
-import { ComponentDetail } from '../../../site/src/types';
+import { ComponentDetails } from '../../../site/src/types';
 import { Tiles, Text } from '../';
 import { Placeholder } from '../private/Placeholder/Placeholder';
 import source from '../../utils/source.macro';
 import { Strong } from '../Strong/Strong';
 
-const docs: ComponentDetail = {
+const docs: ComponentDetails = {
   category: 'Layout',
   Example: () =>
     source(

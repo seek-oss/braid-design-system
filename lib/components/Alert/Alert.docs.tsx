@@ -1,10 +1,10 @@
 import React from 'react';
-import { ComponentDetail } from '../../../site/src/types';
+import { ComponentDetails } from '../../../site/src/types';
 import source from '../../utils/source.macro';
 import { Alert, Text, Strong, Stack, TextLink, List } from '../';
 import { Card } from '../Card/Card';
 
-const docs: ComponentDetail = {
+const docs: ComponentDetails = {
   category: 'Content',
   migrationGuide: true,
   Example: () =>

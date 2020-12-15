@@ -1,12 +1,12 @@
 import React from 'react';
-import { ComponentDetail } from '../../../site/src/types';
+import { ComponentDetails } from '../../../site/src/types';
 import { Toggle } from '../';
 import { Text } from '../Text/Text';
 import { Strong } from '../Strong/Strong';
 import source from '../../utils/source.macro';
 import { Stack } from '../Stack/Stack';
 
-const docs: ComponentDetail = {
+const docs: ComponentDetails = {
   category: 'Content',
   migrationGuide: true,
   Example: ({ id, getState, toggleState }) =>

@@ -1,9 +1,9 @@
 import React from 'react';
 import source from '../../utils/source.macro';
-import { ComponentDetail } from '../../../site/src/types';
+import { ComponentDetails } from '../../../site/src/types';
 import { OverflowMenu, MenuItemCheckbox, Text, TextLink, List, Box } from '..';
 
-const docs: ComponentDetail = {
+const docs: ComponentDetails = {
   category: 'Content',
   Example: ({ getState, setState }) =>
     source(

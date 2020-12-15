@@ -1,11 +1,11 @@
 import React from 'react';
-import { ComponentDetail } from '../../../site/src/types';
+import { ComponentDetails } from '../../../site/src/types';
 import { Placeholder } from '../private/Placeholder/Placeholder';
 import { Columns, Column, Strong, Text, Stack } from '../';
 import source from '../../utils/source.macro';
 import { TextLink } from '../TextLink/TextLink';
 
-const docs: ComponentDetail = {
+const docs: ComponentDetails = {
   category: 'Layout',
   migrationGuide: true,
   subComponents: ['Column'],

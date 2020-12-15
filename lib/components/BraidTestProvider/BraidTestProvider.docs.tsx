@@ -1,9 +1,9 @@
 import React from 'react';
 import { seekAnz } from '../../themes';
-import { ComponentDetail } from '../../../site/src/types';
+import { ComponentDetails } from '../../../site/src/types';
 import { Stack, Text, Strong, TextLink, Alert } from '..';
 
-const docs: ComponentDetail = {
+const docs: ComponentDetails = {
   category: 'Logic',
   description: (
     <Stack space="large">

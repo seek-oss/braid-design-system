@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentDetail } from '../../../site/src/types';
+import { ComponentDetails } from '../../../site/src/types';
 import {
   Loader,
   Columns,
@@ -14,7 +14,7 @@ import {
 import source from '../../utils/source.macro';
 import { animationDelayValue } from './Loader.treat';
 
-const docs: ComponentDetail = {
+const docs: ComponentDetails = {
   category: 'Content',
   Example: () => source(<Loader />),
   alternatives: [],

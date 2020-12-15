@@ -1,12 +1,12 @@
 import React from 'react';
-import { ComponentDetail } from '../../../site/src/types';
+import { ComponentDetails } from '../../../site/src/types';
 import { Placeholder } from '../private/Placeholder/Placeholder';
 import { ContentBlock } from '../';
 import source from '../../utils/source.macro';
 import { Strong } from '../Strong/Strong';
 import { Text } from '../Text/Text';
 
-const docs: ComponentDetail = {
+const docs: ComponentDetails = {
   category: 'Layout',
   migrationGuide: true,
   Example: () =>

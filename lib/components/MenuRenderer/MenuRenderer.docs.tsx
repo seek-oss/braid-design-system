@@ -1,6 +1,6 @@
 import React from 'react';
 import source from '../../utils/source.macro';
-import { ComponentDetail } from '../../../site/src/types';
+import { ComponentDetails } from '../../../site/src/types';
 import {
   Box,
   MenuRenderer,
@@ -13,7 +13,7 @@ import {
   Strong,
 } from '..';
 
-const docs: ComponentDetail = {
+const docs: ComponentDetails = {
   category: 'Content',
   Example: () =>
     source(
