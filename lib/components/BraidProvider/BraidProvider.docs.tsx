@@ -1,13 +1,32 @@
 import React, { Fragment } from 'react';
 import { Text, TextLink, Strong } from '../';
-import { ComponentDocs } from '../../../site/src/types';
+import { ComponentDetail } from '../../../site/src/types';
 
-const docs: ComponentDocs = {
+const docs: ComponentDetail = {
   category: 'Logic',
   migrationGuide: true,
-  examples: [
+  description: (
+    <Text>Provides the necessary theming context for all components.</Text>
+  ),
+  alternatives: [
+    {
+      name: 'BraidLoadableProvider',
+      description: 'For production apps with multiple themes.',
+    },
+    {
+      name: 'BraidTestProvider',
+      description: 'For test environments.',
+    },
+  ],
+  additional: [
     {
       label: 'Selecting a theme',
+      description: (
+        <Text>
+          Themes should be imported from the <Strong>themes</Strong> folder and
+          passed into BraidProvider using the <Strong>theme</Strong> prop.
+        </Text>
+      ),
       code: `
         import wireframe from 'braid-design-system/themes/wireframe';
 

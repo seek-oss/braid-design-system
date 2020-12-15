@@ -24,6 +24,7 @@ const docs: ComponentDetail = {
     {
       label: 'Development considerations',
       playroom: false,
+      showCodeByDefault: true,
       description: (
         <Text>
           This hook will return the breakpoint the browser viewport currently

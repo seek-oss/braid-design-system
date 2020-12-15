@@ -31,7 +31,7 @@ export interface ComponentDetail {
   migrationGuide?: boolean;
   description?: ReactNodeNoStrings;
   subComponents?: string[];
-  Example: (props: ExampleProps) => Source<ReactChild>;
+  Example?: (props: ExampleProps) => Source<ReactChild>;
   alternatives: Array<{ name: string; description: string }>;
   accessibility?: ReactNodeNoStrings;
   additional?: Array<

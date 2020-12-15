@@ -20,6 +20,7 @@ const docs: ComponentDetail = {
     {
       label: 'Development considerations',
       playroom: false,
+      showCodeByDefault: true,
       description: (
         <Text>
           Retrieves the semantic colour palette of the current theme from

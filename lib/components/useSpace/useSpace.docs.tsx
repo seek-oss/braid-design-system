@@ -21,6 +21,7 @@ const docs: ComponentDetail = {
     {
       label: 'Development considerations',
       playroom: false,
+      showCodeByDefault: true,
       description: (
         <Text>
           Retrieves the space and grid definitions of the current theme from

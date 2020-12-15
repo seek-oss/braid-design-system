@@ -248,8 +248,7 @@ export const ComponentDoc = ({
                         background={example.background}
                         showCodeByDefault={
                           example.showCodeByDefault ||
-                          example.Example === undefined ||
-                          docs.category === 'Logic'
+                          example.Example === undefined
                         }
                         playroom={example.playroom}
                       />

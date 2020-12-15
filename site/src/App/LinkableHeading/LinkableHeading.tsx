@@ -1,6 +1,6 @@
 import React from 'react';
 import { useStyles } from 'sku/react-treat';
-import { Heading, Box, TextLink } from '../../../../lib/components';
+import { Heading, Box, IconLink, Link } from '../../../../lib/components';
 import { HeadingProps } from '../../../../lib/components/Heading/Heading';
 import * as styleRefs from './LinkableHeading.treat';
 
@@ -21,17 +21,20 @@ export const LinkableHeading = ({
   return (
     <Box className={styles.linkableHeading}>
       <Box id={slug} position="absolute" />
-      <Heading level={level}>
-        {children}{' '}
-        <Box
-          component="span"
-          transition="fast"
-          opacity={0}
-          className={styles.hashLink}
-        >
-          <TextLink href={`#${slug}`}>#</TextLink>
-        </Box>
-      </Heading>
+      <Link href={`#${slug}`}>
+        <Heading level={level}>
+          {children}{' '}
+          <Box
+            component="span"
+            transition="fast"
+            marginLeft="xxsmall"
+            opacity={0}
+            className={styles.hashLink}
+          >
+            <IconLink />
+          </Box>
+        </Heading>
+      </Link>
     </Box>
   );
 };

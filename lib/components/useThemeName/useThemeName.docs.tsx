@@ -18,6 +18,7 @@ const docs: ComponentDetail = {
     {
       label: 'Development considerations',
       playroom: false,
+      showCodeByDefault: true,
       description: (
         <Text>
           Retrieves the display name of the current theme from context.
