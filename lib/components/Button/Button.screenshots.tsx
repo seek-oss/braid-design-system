@@ -26,10 +26,27 @@ export const screenshots: ComponentScreenshot = {
       Example: () => <Button weight="weak">Submit</Button>,
     },
     {
-      label: 'Weak Button on Brand Background',
-      background: 'brand',
+      label: 'Default Critical Button',
       Container,
-      Example: () => <Button weight="weak">Submit</Button>,
+      Example: () => <Button tone="critical">Delete</Button>,
+    },
+    {
+      label: 'Strong Critical Button',
+      Container,
+      Example: () => (
+        <Button weight="strong" tone="critical">
+          Delete
+        </Button>
+      ),
+    },
+    {
+      label: 'Weak Critical Button',
+      Container,
+      Example: () => (
+        <Button weight="weak" tone="critical">
+          Delete
+        </Button>
+      ),
     },
     {
       label: 'Weak Button Contrast',
@@ -44,6 +61,27 @@ export const screenshots: ComponentScreenshot = {
             {backgrounds.sort().map((background) => (
               <Box key={background} background={background} padding="medium">
                 <Button weight="weak">{background}</Button>
+              </Box>
+            ))}
+          </Fragment>
+        );
+      },
+    },
+    {
+      label: 'Weak Critical Button Contrast',
+      Container,
+      Example: () => {
+        const backgrounds = Object.keys(boxBackgrounds) as Array<
+          keyof typeof boxBackgrounds
+        >;
+
+        return (
+          <Fragment>
+            {backgrounds.sort().map((background) => (
+              <Box key={background} background={background} padding="medium">
+                <Button weight="weak" tone="critical">
+                  {background}
+                </Button>
               </Box>
             ))}
           </Fragment>

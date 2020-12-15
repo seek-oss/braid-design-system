@@ -23,6 +23,20 @@ export const galleryItems: ComponentExample[] = [
     Example: () => <Button weight="weak">Submit</Button>,
   },
   {
+    label: 'Critical Button',
+    Container,
+    Example: () => <Button tone="critical">Delete</Button>,
+  },
+  {
+    label: 'Weak Critical Button',
+    Container,
+    Example: () => (
+      <Button weight="weak" tone="critical">
+        Delete
+      </Button>
+    ),
+  },
+  {
     label: 'Weak Button on Brand Background',
     background: 'brand',
     Container,

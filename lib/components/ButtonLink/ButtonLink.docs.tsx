@@ -57,6 +57,24 @@ const docs: ComponentDocs = {
       ),
     },
     {
+      label: 'Critical Button Link',
+      Container,
+      Example: () => (
+        <ButtonLink href="#" tone="critical">
+          Delete
+        </ButtonLink>
+      ),
+    },
+    {
+      label: 'Weak Critical Button Link',
+      Container,
+      Example: () => (
+        <ButtonLink href="#" weight="weak" tone="critical">
+          Delete
+        </ButtonLink>
+      ),
+    },
+    {
       label: 'Loading Button Link',
       Container,
       Example: () => (
