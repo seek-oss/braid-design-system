@@ -1,5 +1,25 @@
 # braid-design-system
 
+## 29.19.0
+
+### Minor Changes
+
+- **Box:** Add `"criticalActive"` and `"criticalHover"` to `background` prop ([#851](https://github.com/seek-oss/braid-design-system/pull/851))
+
+- **Button, ButtonLink, ButtonRenderer:** Add support for `critical` tone ([#851](https://github.com/seek-oss/braid-design-system/pull/851))
+
+  For destructive actions (e.g. "Delete") you can now provide a `tone` prop with a value of `"critical"`.
+
+  **EXAMPLE USAGE**
+
+  ```tsx
+  <Button tone="critical">
+    <IconDelete /> Delete
+  </Button>
+  ```
+
+- **Box:** Add `"borderCriticalLarge"` to `boxShadow` prop ([#851](https://github.com/seek-oss/braid-design-system/pull/851))
+
 ## 29.18.0
 
 ### Minor Changes
