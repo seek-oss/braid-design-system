@@ -10,7 +10,7 @@ export const galleryItems: ComponentExample[] = [
       source(
         <TextField
           label="Label"
-          id={`${id}_textfield`}
+          id={id}
           onChange={setState('textfield')}
           value={getState('textfield')}
           onClear={() => setState('textfield', '')}
@@ -23,7 +23,7 @@ export const galleryItems: ComponentExample[] = [
       source(
         <TextField
           label="Label"
-          id={`${id}_textfield`}
+          id={id}
           onChange={setState('textfield')}
           value={getState('textfield')}
           secondaryLabel="optional"
@@ -41,7 +41,7 @@ export const galleryItems: ComponentExample[] = [
       source(
         <TextField
           label="Label"
-          id={`${id}_textfield`}
+          id={id}
           onChange={setState('textfield')}
           value={getState('textfield')}
           onClear={() => setState('textfield', '')}
@@ -55,7 +55,7 @@ export const galleryItems: ComponentExample[] = [
       source(
         <TextField
           label="Label"
-          id={`${id}_1`}
+          id={id}
           onChange={setState('textfield')}
           value={getState('textfield')}
           tone="critical"
@@ -69,7 +69,7 @@ export const galleryItems: ComponentExample[] = [
       source(
         <TextField
           label="Label"
-          id={`${id}_textfield`}
+          id={id}
           onChange={setState('textfield')}
           value={getState('textfield')}
           tone="positive"
@@ -83,7 +83,7 @@ export const galleryItems: ComponentExample[] = [
       source(
         <TextField
           label="Label"
-          id={`${id}_textfield`}
+          id={id}
           onChange={setState('textfield')}
           value={getState('textfield')}
           tone="neutral"
@@ -97,7 +97,7 @@ export const galleryItems: ComponentExample[] = [
       source(
         <TextField
           label="Job Title"
-          id={`${id}_textfield`}
+          id={id}
           onChange={setState('textfield')}
           value={getState('textfield')}
           icon={<IconSearch />}
@@ -112,7 +112,7 @@ export const galleryItems: ComponentExample[] = [
       source(
         <TextField
           label="Label"
-          id={`${id}_textfield`}
+          id={id}
           onChange={setState('textfield')}
           value={getState('textfield')}
           disabled={true}

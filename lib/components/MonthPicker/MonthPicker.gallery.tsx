@@ -10,7 +10,7 @@ export const galleryItems: ComponentExample[] = [
       source(
         <MonthPicker
           label="Label"
-          id={`${id}_monthpicker`}
+          id={id}
           onChange={setState('monthpicker')}
           value={getState('monthpicker')}
         />,
@@ -22,7 +22,7 @@ export const galleryItems: ComponentExample[] = [
       source(
         <MonthPicker
           label="Label"
-          id={`${id}_monthpicker`}
+          id={id}
           onChange={setState('monthpicker')}
           value={getState('monthpicker')}
           secondaryLabel="optional"
@@ -40,7 +40,7 @@ export const galleryItems: ComponentExample[] = [
       source(
         <MonthPicker
           label="Label"
-          id={`${id}_monthpicker`}
+          id={id}
           onChange={setState('monthpicker')}
           value={getState('monthpicker')}
           description="Longer description of this field"
@@ -53,7 +53,7 @@ export const galleryItems: ComponentExample[] = [
       source(
         <MonthPicker
           label="Label"
-          id={`${id}_1`}
+          id={id}
           onChange={setState('monthpicker')}
           value={getState('monthpicker')}
           tone="critical"
@@ -67,7 +67,7 @@ export const galleryItems: ComponentExample[] = [
       source(
         <MonthPicker
           label="Label"
-          id={`${id}_monthpicker`}
+          id={id}
           onChange={setState('monthpicker')}
           value={getState('monthpicker')}
           tone="positive"
@@ -81,7 +81,7 @@ export const galleryItems: ComponentExample[] = [
       source(
         <MonthPicker
           label="Label"
-          id={`${id}_monthpicker`}
+          id={id}
           onChange={setState('monthpicker')}
           value={getState('monthpicker')}
           tone="neutral"
@@ -96,7 +96,7 @@ export const galleryItems: ComponentExample[] = [
       source(
         <MonthPicker
           label="Label"
-          id={`${id}_monthpicker`}
+          id={id}
           onChange={setState('monthpicker')}
           value={getState('monthpicker')}
           disabled={true}
@@ -108,7 +108,7 @@ export const galleryItems: ComponentExample[] = [
     Example: ({ id, getState, setState }) =>
       source(
         <MonthPicker
-          id={`${id}_monthpicker`}
+          id={id}
           label="Started"
           onChange={setState('monthpicker')}
           value={getState('monthpicker')}
