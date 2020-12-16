@@ -1098,5 +1098,25 @@
         "summary": "**Box:** Add `\"borderCriticalLarge\"` to `boxShadow` prop"
       }
     ]
+  },
+  {
+    "version": "29.20.0",
+    "updates": [
+      {
+        "updated": [
+          "MenuItem",
+          "MenuItemLink"
+        ],
+        "summary": "**MenuItem, MenuItemLink:** Add support for `critical` tone\n\nFor destructive actions (e.g. \"Delete\") you can now provide a `tone` prop with a value of `\"critical\"`.\n\n**EXAMPLE USAGE**\n\n```tsx\n<OverflowMenu label=\"Options\">\n  <MenuItem tone=\"critical\" onClick={() => {}}>\n    Delete\n  </MenuItem>\n</OverflowMenu>\n```"
+      },
+      {
+        "updated": [
+          "OverflowMenu",
+          "MenuRenderer",
+          "MenuItemDivider"
+        ],
+        "summary": "**OverflowMenu, MenuRenderer, MenuItemDivider:** Remove horizontal padding"
+      }
+    ]
   }
 ]
