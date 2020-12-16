@@ -1,5 +1,27 @@
 # braid-design-system
 
+## 29.20.0
+
+### Minor Changes
+
+- **MenuItem, MenuItemLink:** Add support for `critical` tone ([#855](https://github.com/seek-oss/braid-design-system/pull/855))
+
+  For destructive actions (e.g. "Delete") you can now provide a `tone` prop with a value of `"critical"`.
+
+  **EXAMPLE USAGE**
+
+  ```tsx
+  <OverflowMenu label="Options">
+    <MenuItem tone="critical" onClick={() => {}}>
+      Delete
+    </MenuItem>
+  </OverflowMenu>
+  ```
+
+### Patch Changes
+
+- **OverflowMenu, MenuRenderer, MenuItemDivider:** Remove horizontal padding ([#855](https://github.com/seek-oss/braid-design-system/pull/855))
+
 ## 29.19.0
 
 ### Minor Changes
