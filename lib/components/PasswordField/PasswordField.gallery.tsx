@@ -10,7 +10,7 @@ export const galleryItems: ComponentExample[] = [
       source(
         <PasswordField
           label="Label"
-          id={`${id}_password`}
+          id={id}
           onChange={setState('passwordfield')}
           value={getState('passwordfield')}
         />,
@@ -22,7 +22,7 @@ export const galleryItems: ComponentExample[] = [
       source(
         <PasswordField
           label="Label"
-          id={`${id}_password`}
+          id={id}
           onChange={setState('passwordfield')}
           value={getState('passwordfield')}
           secondaryLabel="optional"
@@ -36,7 +36,7 @@ export const galleryItems: ComponentExample[] = [
       source(
         <PasswordField
           label="Label"
-          id={`${id}_password`}
+          id={id}
           onChange={setState('passwordfield')}
           value={getState('passwordfield')}
           description="Longer description of this field"
@@ -49,7 +49,7 @@ export const galleryItems: ComponentExample[] = [
       source(
         <PasswordField
           label="Label"
-          id={`${id}_1`}
+          id={id}
           onChange={setState('passwordfield')}
           value={getState('passwordfield')}
           tone="critical"
@@ -63,7 +63,7 @@ export const galleryItems: ComponentExample[] = [
       source(
         <PasswordField
           label="Label"
-          id={`${id}_password`}
+          id={id}
           onChange={setState('passwordfield')}
           value={getState('passwordfield')}
           tone="positive"
@@ -77,7 +77,7 @@ export const galleryItems: ComponentExample[] = [
       source(
         <PasswordField
           label="Label"
-          id={`${id}_password`}
+          id={id}
           onChange={setState('passwordfield')}
           value={getState('passwordfield')}
           tone="neutral"
@@ -92,7 +92,7 @@ export const galleryItems: ComponentExample[] = [
       source(
         <PasswordField
           label="Label"
-          id={`${id}_password`}
+          id={id}
           onChange={setState('passwordfield')}
           value={getState('passwordfield')}
           disabled={true}

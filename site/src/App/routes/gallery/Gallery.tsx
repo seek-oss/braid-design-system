@@ -290,7 +290,9 @@ const GalleryItem = ({ item }: { item: typeof galleryComponents[number] }) => {
                     <BraidProvider styleBody={false} theme={theme}>
                       <PlayroomStateProvider>
                         <RenderExample
-                          id={`${example.label}_${index}`}
+                          id={`${item.name.toLowerCase()}_${
+                            index + 1 + idx * COLUMN_SIZE
+                          }`}
                           example={example}
                         />
                       </PlayroomStateProvider>
