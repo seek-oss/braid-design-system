@@ -175,13 +175,13 @@ const RenderExample = ({ id, example }: RenderExampleProps) => {
         </Columns>
         {value ? (
           <ThemedExample background={background}>
-            <Mask background={background}>
-              <Container>
-                <Box height="full" width="full" style={{ cursor: 'auto' }}>
-                  {value}
-                </Box>
-              </Container>
-            </Mask>
+            {/* <Mask background={background}> */}
+            <Container>
+              <Box height="full" width="full" style={{ cursor: 'auto' }}>
+                {value}
+              </Box>
+            </Container>
+            {/* </Mask> */}
           </ThemedExample>
         ) : null}
       </Stack>

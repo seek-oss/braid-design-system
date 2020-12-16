@@ -213,30 +213,138 @@ const GalleryPage = () => {
       const contentEl = contentRef.current;
       const dimensions = calculateFitToScreenDimensions(contentEl);
 
-      panzoomRef.current = panzoom(contentEl, {
-        maxZoom: 20,
-        minZoom: dimensions.scale,
-        zoomDoubleClickSpeed: 1,
-        filterKey: () => true, // disables panzoom default handling of keys
-        beforeMouseDown: (e) =>
-          // @ts-expect-error
-          /^(a|button|select)$/i.test(e.target.tagName) ||
-          // @ts-expect-error
-          e.target.getAttribute('role') === 'button',
-      });
+      // panzoomRef.current = panzoom(contentEl, {
+      //   maxZoom: 20,
+      //   minZoom: dimensions.scale,
+      //   zoomDoubleClickSpeed: 1,
+      //   filterKey: () => true, // disables panzoom default handling of keys
+      //   beforeMouseDown: (e) =>
+      //     // @ts-expect-error
+      //     /^(a|button|select)$/i.test(e.target.tagName) ||
+      //     // @ts-expect-error
+      //     e.target.getAttribute('role') === 'button',
+      // });
 
-      panzoomRef.current.on('zoom', () => {
-        if (panzoomRef.current) {
-          setZoom(panzoomRef.current.getTransform().scale);
+      // panzoomRef.current.on('zoom', () => {
+      //   if (panzoomRef.current) {
+      //     setZoom(panzoomRef.current.getTransform().scale);
+      //   }
+      // });
+
+      // panzoomRef.current.zoomAbs(dimensions.x, dimensions.y, dimensions.scale);
+
+      contentEl.style.transformOrigin = `0px 0px`;
+      const minZoom = dimensions.scale;
+      const maxZoom = 20;
+      let x = 0;
+      let y = 0;
+      let z = 1;
+
+      const moveTo = (targetX: number, targetY: number, targetZ: number) => {
+        x = targetX;
+        y = targetY;
+        z = targetZ;
+
+        contentEl.style.transform = `matrix(${targetZ}, 0, 0, ${targetZ}, ${targetX}, ${targetY})`;
+      };
+
+      const getOffsetXY = (e: MouseEvent | WheelEvent) =>
+        // const ownerRect = contentEl.getBoundingClientRect();
+        ({
+          x: e.clientX, // - ownerRect.left,
+          y: e.clientY, // - ownerRect.top
+        });
+
+      moveTo(dimensions.x, dimensions.y, dimensions.scale);
+
+      const onWheel = function (e: WheelEvent) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const delta = e.deltaMode > 0 ? e.deltaY * 100 : e.deltaY;
+        const sign = Math.sign(delta);
+        const deltaAdjustedSpeed = Math.min(0.25, Math.abs(delta / 128));
+        const scaleMultiplier = 1 - sign * deltaAdjustedSpeed;
+
+        const offset = getOffsetXY(e);
+
+        if (scaleMultiplier !== 1) {
+          let ratio = scaleMultiplier;
+
+          const newScale = z * ratio;
+
+          if (newScale < minZoom) {
+            if (z === minZoom) {
+              return;
+            }
+
+            ratio = minZoom / z;
+          }
+          if (newScale > maxZoom) {
+            if (z === maxZoom) {
+              return;
+            }
+
+            ratio = maxZoom / z;
+          }
+
+          moveTo(
+            offset.x - ratio * (offset.x - x),
+            offset.y - ratio * (offset.y - y),
+            z * ratio,
+          );
         }
-      });
+      };
 
-      panzoomRef.current.zoomAbs(dimensions.x, dimensions.y, dimensions.scale);
+      let mouseX = 0;
+      let mouseY = 0;
+
+      const onMouseMove = (e: MouseEvent) => {
+        const offset = getOffsetXY(e);
+
+        const dx = offset.x - mouseX;
+        const dy = offset.y - mouseY;
+
+        mouseX = offset.x;
+        mouseY = offset.y;
+
+        moveTo(x + dx, y + dy, z);
+      };
+
+      const onMouseUp = () => {
+        document.removeEventListener('mousemove', onMouseMove);
+        document.removeEventListener('mouseup', onMouseUp);
+      };
+
+      const onMouseDown = (e: MouseEvent) => {
+        // for IE, left click == 1
+        // for Firefox, left click == 0
+        const isLeftButton =
+          (e.button === 1 && window.event !== null) || e.button === 0;
+        if (!isLeftButton) {
+          return;
+        }
+
+        const offset = getOffsetXY(e);
+
+        mouseX = offset.x;
+        mouseY = offset.y;
+        document.addEventListener('mousemove', onMouseMove, { passive: false });
+        document.addEventListener('mouseup', onMouseUp, { passive: false });
+      };
+
+      contentEl.addEventListener('wheel', onWheel, { passive: false });
+      contentEl.addEventListener('mousedown', onMouseDown, { passive: false });
+
+      // matrix(scaleX, skewY, skewX, scaleY, translateX, translateY)
 
       setFitToScreenDimensions(dimensions);
 
       return () => {
-        panzoomRef.current?.dispose();
+        contentEl.removeEventListener('wheel', onWheel);
+        contentEl.removeEventListener('mousedown', onMouseDown);
+        document.removeEventListener('mousemove', onMouseMove);
+        document.removeEventListener('mouseup', onMouseUp);
       };
     }
   }, [status]);
@@ -250,6 +358,7 @@ const GalleryPage = () => {
       bottom={0}
       left={0}
       right={0}
+      // overflow="auto"
       style={{ backgroundColor: useBackgroundColor() }}
     >
       <PageTitle title="Gallery" />
