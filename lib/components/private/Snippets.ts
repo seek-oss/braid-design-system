@@ -1,10 +1,11 @@
 import { ReactChild } from 'react';
 import { Snippets as PlayroomSnippets } from 'sku/playroom';
 import { Optional } from 'utility-types';
+import { Source } from '../../utils/source.macro';
 
-export interface Snippet
+export interface BraidSnippet
   extends Omit<Optional<PlayroomSnippets[number], 'group'>, 'code'> {
-  code: ReactChild;
+  code: Source<ReactChild>;
 }
 
-export type Snippets = Array<Snippet>;
+export type Snippets = Array<BraidSnippet>;

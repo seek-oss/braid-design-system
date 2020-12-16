@@ -49,6 +49,7 @@ export const circle = [
   }),
 ];
 
+export const animationDelayValue = 0.8;
 export const delay = style({
   opacity: 0,
   '@keyframes': {
@@ -64,7 +65,7 @@ export const delay = style({
   animationFillMode: 'forwards',
   animationTimingFunction: 'ease-in',
   animationDuration: '0.25s',
-  animationDelay: '0.8s',
+  animationDelay: `${animationDelayValue}s`,
 });
 
 export const circleSize = styleMap(({ utils, typography }) =>

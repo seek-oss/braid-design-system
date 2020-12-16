@@ -2,6 +2,7 @@
   "AccordionItem",
   "Bullet",
   "BoxRenderer",
+  "Column",
   "filterSuggestions",
   "makeLinkComponent",
   "MenuItemLink",

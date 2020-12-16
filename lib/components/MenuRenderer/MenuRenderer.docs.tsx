@@ -1,5 +1,5 @@
 import React from 'react';
-import dedent from 'dedent';
+import source from '../../utils/source.macro';
 import { ComponentDocs } from '../../../site/src/types';
 import {
   Box,
@@ -15,163 +15,135 @@ import {
 
 const docs: ComponentDocs = {
   category: 'Content',
+  Example: () =>
+    source(
+      <MenuRenderer
+        offsetSpace="small"
+        trigger={(triggerProps, { open }) => (
+          <Box userSelect="none" cursor="pointer" {...triggerProps}>
+            <Text>
+              Menu{' '}
+              <IconChevron
+                direction={open ? 'up' : 'down'}
+                alignY="lowercase"
+              />
+            </Text>
+          </Box>
+        )}
+      >
+        <MenuItem onClick={() => {}}>Button</MenuItem>
+        <MenuItemLink href="#">Link</MenuItemLink>
+      </MenuRenderer>,
+    ),
   description: (
     <Stack space="large">
       <Text>
-        Follows the{' '}
-        <TextLink href="https://www.w3.org/TR/wai-aria-practices-1.1/#menu">
-          WAI-ARIA Menu Pattern.
-        </TextLink>
-      </Text>
-      <Text>
-        Used to build higher level menu components that adhere to our
-        accessibility standards, e.g.{' '}
+        This component allows you to attach standard menu interactions to a
+        custom trigger element, e.g.{' '}
         <TextLink href="/components/OverflowMenu">OverflowMenu</TextLink> uses
-        this internally.
-      </Text>
-      <Text>
-        Implementations of this component must provide a{' '}
-        <Strong>trigger</Strong> element that can accept DOM properties
-        including event handlers and aria properties used to manage the
-        interactions.
-      </Text>
-      <Text>
-        Child nodes must be{' '}
-        <TextLink href="/components/MenuItem">MenuItem</TextLink>,{' '}
-        <TextLink href="/components/MenuItemCheckbox">
-          MenuItemCheckbox
-        </TextLink>{' '}
-        or{' '}
-        <TextLink href="/components/MenuItemDivider">MenuItemDivider</TextLink>{' '}
-        elements.
+        this internally. This should only be used if standard alternatives
+        aren’t suitable.
       </Text>
     </Stack>
   ),
-  examples: [
+  accessibility: (
+    <Text>
+      Follows the{' '}
+      <TextLink href="https://www.w3.org/TR/wai-aria-practices-1.1/#menu">
+        WAI-ARIA Menu Pattern.
+      </TextLink>
+    </Text>
+  ),
+  alternatives: [
     {
-      label: 'Default',
-      code: dedent`
-        <MenuRenderer
-          trigger={(triggerProps, { open }) => (
-            <Box userSelect="none" cursor="pointer" {...triggerProps}>
-              <Text>
-                Menu{' '}
-                <IconChevron
-                  direction={open ? 'up' : 'down'}
-                  alignY="lowercase"
-                />
-              </Text>
-            </Box>
-          )}
-        >
-          <MenuItem onClick={() => {}}>Button</MenuItem>
-          <MenuItemLink href="#">Link</MenuItemLink>
-        </MenuRenderer>
-      `,
-      Example: ({ handler }) => (
-        <MenuRenderer
-          trigger={(triggerProps, { open }) => (
-            <Box userSelect="none" cursor="pointer" {...triggerProps}>
-              <Text>
-                Menu{' '}
-                <IconChevron
-                  direction={open ? 'up' : 'down'}
-                  alignY="lowercase"
-                />
-              </Text>
-            </Box>
-          )}
-        >
-          <MenuItem onClick={handler}>Button</MenuItem>
-          <MenuItemLink href="#">Link</MenuItemLink>
-        </MenuRenderer>
+      name: 'OverflowMenu',
+      description: 'For displaying a list of secondary actions.',
+    },
+  ],
+  additional: [
+    {
+      label: 'Alignment',
+      description: (
+        <Text>
+          The menu is left-aligned by default, but this can be customised via
+          the <Strong>align</Strong> prop.
+        </Text>
       ),
+      Example: () =>
+        source(
+          <Box style={{ paddingLeft: '40px', maxWidth: '220px' }}>
+            <MenuRenderer
+              align="right"
+              offsetSpace="small"
+              trigger={(triggerProps, { open }) => (
+                <Box userSelect="none" cursor="pointer" {...triggerProps}>
+                  <Text>
+                    Right aligned{' '}
+                    <IconChevron
+                      direction={open ? 'up' : 'down'}
+                      alignY="lowercase"
+                    />
+                  </Text>
+                </Box>
+              )}
+            >
+              <MenuItem onClick={() => {}}>Button</MenuItem>
+              <MenuItemLink href="#">Link</MenuItemLink>
+            </MenuRenderer>
+          </Box>,
+        ),
     },
     {
-      label: 'Right aligned menu',
-      Container: ({ children }) => (
-        <Box style={{ paddingLeft: '100px', maxWidth: '200px' }}>
-          {children}
-        </Box>
+      label: 'Spacing',
+      description: (
+        <Text>
+          The space between the menu and the trigger element can be customised
+          via the <Strong>offsetSpace</Strong> prop, which also accepts an array
+          of responsive values.
+        </Text>
       ),
-      code: dedent`
-        <MenuRenderer
-          align="right"
-          trigger={(triggerProps, { open }) => (
-            <Box userSelect="none" cursor="pointer" {...triggerProps}>
-              <Text>
-                Menu{' '}
-                <IconChevron
-                  direction={open ? 'up' : 'down'}
-                  alignY="lowercase"
-                />
-              </Text>
-            </Box>
-          )}
-        >
-          <MenuItem onClick={() => {}}>Button</MenuItem>
-          <MenuItemLink href="#">Link</MenuItemLink>
-        </MenuRenderer>
-      `,
-      Example: ({ handler }) => (
-        <MenuRenderer
-          align="right"
-          trigger={(triggerProps, { open }) => (
-            <Box userSelect="none" cursor="pointer" {...triggerProps}>
-              <Text>
-                Menu{' '}
-                <IconChevron
-                  direction={open ? 'up' : 'down'}
-                  alignY="lowercase"
-                />
-              </Text>
-            </Box>
-          )}
-        >
-          <MenuItem onClick={handler}>Button</MenuItem>
-          <MenuItemLink href="#">Link</MenuItemLink>
-        </MenuRenderer>
-      ),
+      Example: () =>
+        source(
+          <MenuRenderer
+            offsetSpace={['xsmall', 'small']}
+            trigger={(triggerProps, { open }) => (
+              <Box userSelect="none" cursor="pointer" {...triggerProps}>
+                <Text>
+                  Custom space{' '}
+                  <IconChevron
+                    direction={open ? 'up' : 'down'}
+                    alignY="lowercase"
+                  />
+                </Text>
+              </Box>
+            )}
+          >
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItemLink href="#">Link</MenuItemLink>
+          </MenuRenderer>,
+        ),
     },
     {
-      label: 'Offset space for menu',
-      code: dedent`
-        <MenuRenderer
-          offsetSpace={['none', 'small']}
-          trigger={(triggerProps, { open }) => (
-            <Box userSelect="none" cursor="pointer" {...triggerProps}>
-              <Text>
-                Menu{' '}
-                <IconChevron
-                  direction={open ? 'up' : 'down'}
-                  alignY="lowercase"
-                />
-              </Text>
-            </Box>
-          )}
-        >
-          <MenuItem onClick={() => {}}>Button</MenuItem>
-          <MenuItemLink href="#">Link</MenuItemLink>
-        </MenuRenderer>
-      `,
-      Example: ({ handler }) => (
-        <MenuRenderer
-          offsetSpace={['none', 'small']}
-          trigger={(triggerProps, { open }) => (
-            <Box userSelect="none" cursor="pointer" {...triggerProps}>
-              <Text>
-                Menu{' '}
-                <IconChevron
-                  direction={open ? 'up' : 'down'}
-                  alignY="lowercase"
-                />
-              </Text>
-            </Box>
-          )}
-        >
-          <MenuItem onClick={handler}>Button</MenuItem>
-          <MenuItemLink href="#">Link</MenuItemLink>
-        </MenuRenderer>
+      label: 'Development considerations',
+      description: (
+        <>
+          <Text>
+            The <Strong>trigger</Strong> element must accept generic DOM
+            properties including event handlers and aria properties.
+          </Text>
+          <Text>
+            Child nodes must be{' '}
+            <TextLink href="/components/MenuItem">MenuItem</TextLink>,{' '}
+            <TextLink href="/components/MenuItemCheckbox">
+              MenuItemCheckbox
+            </TextLink>{' '}
+            or{' '}
+            <TextLink href="/components/MenuItemDivider">
+              MenuItemDivider
+            </TextLink>{' '}
+            elements.
+          </Text>
+        </>
       ),
     },
   ],

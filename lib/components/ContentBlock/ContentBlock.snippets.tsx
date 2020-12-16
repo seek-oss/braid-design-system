@@ -1,38 +1,39 @@
 import React from 'react';
 import { Snippets } from '../private/Snippets';
 import { ContentBlock, Placeholder } from '../../playroom/components';
+import source from '../../utils/source.macro';
 
 export const snippets: Snippets = [
   {
     name: 'Standard',
-    code: (
+    code: source(
       <ContentBlock>
         <Placeholder height={100} />
-      </ContentBlock>
+      </ContentBlock>,
     ),
   },
   {
     name: 'Xsmall',
-    code: (
+    code: source(
       <ContentBlock width="xsmall">
         <Placeholder height={100} />
-      </ContentBlock>
+      </ContentBlock>,
     ),
   },
   {
     name: 'Small',
-    code: (
+    code: source(
       <ContentBlock width="small">
         <Placeholder height={100} />
-      </ContentBlock>
+      </ContentBlock>,
     ),
   },
   {
     name: 'Large',
-    code: (
+    code: source(
       <ContentBlock width="large">
         <Placeholder height={100} />
-      </ContentBlock>
+      </ContentBlock>,
     ),
   },
 ];

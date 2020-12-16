@@ -1,33 +1,34 @@
 import React from 'react';
 import { Actions, Button, TextLink } from '../../playroom/components';
+import source from '../../utils/source.macro';
 import { Snippets } from '../private/Snippets';
 
 export const snippets: Snippets = [
   {
-    name: 'Standard Button, Text Link',
-    code: (
+    name: 'Regular Button, TextLink',
+    code: source(
       <Actions>
         <Button>Submit</Button>
         <TextLink href="#">Cancel</TextLink>
-      </Actions>
+      </Actions>,
     ),
   },
   {
-    name: 'Strong Button, Text Link',
-    code: (
+    name: 'Strong Button, TextLink',
+    code: source(
       <Actions>
         <Button weight="strong">Submit</Button>
         <TextLink href="#">Cancel</TextLink>
-      </Actions>
+      </Actions>,
     ),
   },
   {
-    name: 'Weak Button, Text Link',
-    code: (
+    name: 'Weak Button, TextLink',
+    code: source(
       <Actions>
         <Button weight="weak">Submit</Button>
         <TextLink href="#">Cancel</TextLink>
-      </Actions>
+      </Actions>,
     ),
   },
 ];

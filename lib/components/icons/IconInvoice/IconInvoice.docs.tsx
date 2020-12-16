@@ -1,17 +1,20 @@
 import React from 'react';
 import { ComponentDocs } from '../../../../site/src/types';
-import { IconInvoice } from './IconInvoice';
+import source from '../../../utils/source.macro';
+import { IconInvoice, Heading, Stack } from '../../';
 
 const docs: ComponentDocs = {
   category: 'Icon',
   migrationGuide: true,
-  foundation: true,
-  examples: [
-    {
-      label: 'Default',
-      Example: () => <IconInvoice />,
-    },
-  ],
+  Example: () =>
+    source(
+      <Stack space="none" align="center">
+        <Heading component="div" level="1">
+          <IconInvoice />
+        </Heading>
+      </Stack>,
+    ),
+  alternatives: [],
 };
 
 export default docs;

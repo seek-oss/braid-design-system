@@ -1,147 +1,238 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import { Stack, Text, TextLink, RadioGroup, RadioItem, Strong } from '..';
+import { Badge, Text, TextLink, RadioGroup, RadioItem, Strong } from '..';
 import { Placeholder } from '../../playroom/components';
+import source from '../../utils/source.macro';
 
 const docs: ComponentDocs = {
   category: 'Content',
-  description: (
-    <Stack space="large">
-      <Text>
-        Follows the{' '}
-        <TextLink href="https://www.w3.org/TR/wai-aria-practices-1.2/#radiobutton">
-          WAI-ARIA Radio Group Pattern
-        </TextLink>{' '}
-        for radio groups not contained in a toolbar.
-      </Text>
-      <Text>
-        The RadioGroup provides an accessible way to group and control a set of{' '}
-        <Strong>RadioItem</Strong> components. The RadioGroup is responsible for
-        handling the value, tone, message, and disabled state—determining the
-        presentation and selection of the items in the list.
-      </Text>
-    </Stack>
-  ),
   migrationGuide: true,
   subComponents: ['RadioItem'],
-  examples: [
+  Example: ({ id, getState, setState }) =>
+    source(
+      <RadioGroup
+        id={id}
+        value={getState('radio')}
+        onChange={({ currentTarget: { value } }) => setState('radio', value)}
+        label="Label"
+      >
+        <RadioItem label="One" value="1" />
+        <RadioItem label="Two" value="2" />
+        <RadioItem label="Three" value="3" />
+      </RadioGroup>,
+    ),
+  description: (
+    <Text>
+      The RadioGroup provides an accessible way to group and control a set of{' '}
+      <Strong>RadioItem</Strong> components. The RadioGroup is responsible for
+      handling the value, tone, message, and disabled state—determining the
+      presentation and selection of the items in the list.
+    </Text>
+  ),
+  accessibility: (
+    <Text>
+      Follows the{' '}
+      <TextLink href="https://www.w3.org/TR/wai-aria-practices/#radiobutton">
+        WAI-ARIA Radio Group Pattern
+      </TextLink>{' '}
+      for radio groups not contained in a toolbar.
+    </Text>
+  ),
+  alternatives: [
     {
-      label: 'Default',
-      Example: () => {
-        const [state, setState] = useState('');
-        return (
-          <RadioGroup
-            id="radiolist1"
-            value={state}
-            onChange={(e) => setState(e.currentTarget.value)}
-            label="Experience"
-          >
-            <RadioItem label="Less than one year" value="0" />
-            <RadioItem label="1 year" value="1" />
-            <RadioItem label="2 years" value="2" />
-            <RadioItem label="3+ years " value="3" />
-          </RadioGroup>
-        );
-      },
+      name: 'Checkbox',
+      description: 'For multi-select.',
     },
+  ],
+  additional: [
     {
-      label: 'With selected item',
-      Example: ({ handler }) => (
-        <RadioGroup
-          id="radiolist2"
-          value="2"
-          onChange={handler}
-          label="Experience"
-        >
-          <RadioItem label="Less than one year" value="0" />
-          <RadioItem label="1 year" value="1" />
-          <RadioItem label="2 years" value="2" />
-          <RadioItem label="3+ years " value="3" />
-        </RadioGroup>
+      label: 'Message and tone',
+      description: (
+        <>
+          <Text>
+            A <Strong>message</Strong> is typically used to communicate the
+            status of a field, such as an error message. This will be announced
+            on focus of the field and can be combined with a{' '}
+            <TextLink href="/foundations/tones">tone</TextLink> to illustrate
+            its purpose.
+          </Text>
+          <Text>
+            The supported tones are: <Strong>{'"critical"'}</Strong> and{' '}
+            <Strong>{'"neutral"'}</Strong>.
+          </Text>
+        </>
       ),
-    },
-    {
-      label: 'With description',
-      Example: () => {
-        const [state, setState] = useState('');
-        return (
+      Example: ({ id, getState, setState }) =>
+        source(
           <RadioGroup
-            id="radiolist3"
-            value={state}
-            onChange={(e) => setState(e.currentTarget.value)}
-            label="Experience"
-            description="How many years have you been in this role?"
-          >
-            <RadioItem label="Less than one year" value="0" />
-            <RadioItem label="1 year" value="1" />
-            <RadioItem label="2 years" value="2" />
-            <RadioItem label="3+ years " value="3" />
-          </RadioGroup>
-        );
-      },
-    },
-    {
-      label: 'With critical message',
-      Example: () => {
-        const [state, setState] = useState('');
-        return (
-          <RadioGroup
-            id="radiolist4"
-            value={state}
-            onChange={(e) => setState(e.currentTarget.value)}
-            label="Experience"
+            id={id}
+            value={getState('radio')}
+            onChange={({ currentTarget: { value } }) =>
+              setState('radio', value)
+            }
+            label="Label"
             tone="critical"
-            message="Required field"
+            message="Critical message"
           >
-            <RadioItem label="Less than one year" value="0" />
-            <RadioItem label="1 year" value="1" />
-            <RadioItem label="2 years" value="2" />
-            <RadioItem label="3+ years " value="3" />
-          </RadioGroup>
-        );
-      },
+            <RadioItem label="One" value="1" />
+            <RadioItem label="Two" value="2" />
+            <RadioItem label="Three" value="3" />
+          </RadioGroup>,
+        ),
     },
     {
-      label: 'When disabled',
-      Example: () => {
-        const [state, setState] = useState('');
-        return (
+      label: 'Field description',
+      description: (
+        <Text>
+          Additional context can be provided with a <Strong>description</Strong>
+          . This will display below the field label and also be announced by a
+          screen reader when the field is focused.
+        </Text>
+      ),
+      Example: ({ id, getState, setState }) =>
+        source(
           <RadioGroup
-            id="radiolist5"
-            value={state}
-            onChange={(e) => setState(e.currentTarget.value)}
-            label="Experience"
-            disabled
+            id={id}
+            value={getState('radio')}
+            onChange={({ currentTarget: { value } }) =>
+              setState('radio', value)
+            }
+            label="Label"
+            description="Extra information about the field"
           >
-            <RadioItem label="Less than one year" value="0" />
-            <RadioItem label="1 year" value="1" />
-            <RadioItem label="2 years" value="2" />
-            <RadioItem label="3+ years " value="3" />
-          </RadioGroup>
-        );
-      },
+            <RadioItem label="One" value="1" />
+            <RadioItem label="Two" value="2" />
+            <RadioItem label="Three" value="3" />
+          </RadioGroup>,
+        ),
     },
     {
-      label: 'With nested content visible only when checked',
-      Example: () => {
-        const [state, setState] = useState('1');
+      label: 'Disabled field',
+      description: (
+        <Text>
+          Mark the field as disabled by passing <Strong>true</Strong> to the{' '}
+          <Strong>disabled</Strong> prop.
+        </Text>
+      ),
+      background: 'card',
+      Example: ({ id, getState, setState }) =>
+        source(
+          <RadioGroup
+            id={id}
+            value={getState('radio')}
+            onChange={({ currentTarget: { value } }) =>
+              setState('radio', value)
+            }
+            label="Label"
+            disabled={true}
+          >
+            <RadioItem label="One" value="1" />
+            <RadioItem label="Two" value="2" />
+            <RadioItem label="Three" value="3" />
+          </RadioGroup>,
+        ),
+    },
+    {
+      label: 'Item-level descriptions',
+      description: (
+        <Text>
+          Additional context can also be provided at an item level with a{' '}
+          <Strong>description</Strong>. This will display below the{' '}
+          <Strong>RadioItem</Strong> label and also be announced by a screen
+          reader when the item is focused.
+        </Text>
+      ),
+      Example: ({ id, getState, setState }) =>
+        source(
+          <RadioGroup
+            id={id}
+            value={getState('radio')}
+            onChange={({ currentTarget: { value } }) =>
+              setState('radio', value)
+            }
+            label="Label"
+          >
+            <RadioItem
+              label="One"
+              value="1"
+              description="Description for item 1"
+            />
+            <RadioItem
+              label="Two"
+              value="2"
+              description="Description for item 2"
+            />
+            <RadioItem
+              label="Three"
+              value="3"
+              description="Description for item 3"
+            />
+          </RadioGroup>,
+        ),
+    },
+    {
+      label: 'Badge support',
+      description: (
+        <Text>
+          Add a <TextLink href="/components/Badge">Badge</TextLink> alongside
+          the <Strong>RadioItem</Strong> label using the <Strong>badge</Strong>{' '}
+          prop.
+        </Text>
+      ),
+      Example: ({ id, getState, setState }) =>
+        source(
+          <RadioGroup
+            id={id}
+            value={getState('radio')}
+            onChange={({ currentTarget: { value } }) =>
+              setState('radio', value)
+            }
+            label="Label"
+          >
+            <RadioItem label="One" value="1" />
+            <RadioItem label="Two" value="2" />
+            <RadioItem
+              label="Three"
+              value="3"
+              badge={
+                <Badge tone="positive" weight="strong">
+                  Positive
+                </Badge>
+              }
+            />
+          </RadioGroup>,
+        ),
+    },
+    {
+      label: 'Toggling nested content',
+      description: (
+        <Text>
+          Nesting content inside of a <Strong>RadioItem</Strong> will both align
+          the content with the item label, and toggle it&rsquo;s visibility
+          based on the value state.
+        </Text>
+      ),
+      Example: ({ id, getState, setState, setDefaultState }) =>
+        source(
+          <>
+            {setDefaultState('radio', '2')}
 
-        return (
-          <RadioGroup
-            id="radiolist7"
-            value={state}
-            onChange={(e) => setState(e.currentTarget.value)}
-            label="Experience"
-          >
-            <RadioItem label="Less than one year" value="0" />
-            <RadioItem label="1 year" value="1">
-              <Placeholder height={50} label="Nested content" />
-            </RadioItem>
-            <RadioItem label="2 years" value="2" />
-            <RadioItem label="3+ years " value="3" />
-          </RadioGroup>
-        );
-      },
+            <RadioGroup
+              id={id}
+              value={getState('radio')}
+              onChange={({ currentTarget: { value } }) =>
+                setState('radio', value)
+              }
+              label="Label"
+            >
+              <RadioItem label="One" value="1" />
+              <RadioItem label="Two" value="2">
+                <Placeholder height={100} label="Nested content" />
+              </RadioItem>
+              <RadioItem label="Three" value="3" />
+            </RadioGroup>
+          </>,
+        ),
     },
   ],
 };

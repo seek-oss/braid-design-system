@@ -11,7 +11,7 @@ export function ThemeToggle({
   size?: TextProps['size'];
   weight?: TextProps['weight'];
 }) {
-  const { theme, setTheme, ready } = useThemeSettings();
+  const { themeKey, setThemeKey, ready } = useThemeSettings();
 
   return (
     <Text weight={weight} size={size}>
@@ -19,15 +19,15 @@ export function ThemeToggle({
         <TextDropdown
           id="theme"
           label="Theme"
-          value={theme}
-          onChange={setTheme}
+          value={themeKey}
+          onChange={setThemeKey}
           options={Object.entries(themes)
-            .filter(([themeKey]) =>
-              documentedThemes.includes(themeKey as keyof typeof themes),
+            .filter(([key]) =>
+              documentedThemes.includes(key as keyof typeof themes),
             )
-            .map(([themeKey, { displayName }]) => ({
+            .map(([key, { displayName }]) => ({
               text: displayName,
-              value: themeKey as keyof typeof themes,
+              value: key as keyof typeof themes,
             }))}
         />
       ) : (

@@ -40,8 +40,12 @@ import usePlayroomScope from '../../../../lib/playroom/useScope';
 import { PlayroomStateProvider } from '../../../../lib/playroom/playroomState';
 
 export const formatSnippet = memoize((snippet: string) => {
+  const cleanedSnippet = snippet
+    .replace(/id={id}/g, '')
+    .replace(/id={`\${id}_[0-9]`}/g, '');
+
   const formattedSnippet = prettier
-    .format(snippet, {
+    .format(cleanedSnippet, {
       parser: 'typescript',
       plugins: [typescriptParser],
       semi: false,

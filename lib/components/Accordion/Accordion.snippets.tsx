@@ -2,59 +2,34 @@ import React from 'react';
 import {
   AccordionItem,
   Accordion,
-  Stack,
-  Text,
+  Placeholder,
 } from '../../playroom/components';
+import source from '../../utils/source.macro';
 import { Snippets } from '../private/Snippets';
 
 export const snippets: Snippets = [
   {
-    name: '2 items',
-    code: (
+    name: 'Standard',
+    code: source(
       <Accordion>
-        <AccordionItem label="Label">
-          <Stack space="large">
-            <Text>Content</Text>
-          </Stack>
+        <AccordionItem label="Item 1">
+          <Placeholder height={100} />
         </AccordionItem>
-        <AccordionItem label="Label">
-          <Stack space="large">
-            <Text>Content</Text>
-          </Stack>
+        <AccordionItem label="Item 2">
+          <Placeholder height={100} />
         </AccordionItem>
-      </Accordion>
-    ),
-  },
-  {
-    name: '3 items',
-    code: (
-      <Accordion>
-        <AccordionItem label="Label">
-          <Stack space="large">
-            <Text>Content</Text>
-          </Stack>
+        <AccordionItem label="Item 3">
+          <Placeholder height={100} />
         </AccordionItem>
-        <AccordionItem label="Label">
-          <Stack space="large">
-            <Text>Content</Text>
-          </Stack>
-        </AccordionItem>
-        <AccordionItem label="Label">
-          <Stack space="large">
-            <Text>Content</Text>
-          </Stack>
-        </AccordionItem>
-      </Accordion>
+      </Accordion>,
     ),
   },
   {
     name: 'Standalone item',
-    code: (
+    code: source(
       <AccordionItem label="Label">
-        <Stack space="large">
-          <Text>Content</Text>
-        </Stack>
-      </AccordionItem>
+        <Placeholder height={100} />
+      </AccordionItem>,
     ),
   },
 ];

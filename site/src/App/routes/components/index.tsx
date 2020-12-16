@@ -12,10 +12,7 @@ const page: RouteProps = {
       key={match.params.componentName} // Force remount per page to fix hooks errors when generating code snippets
       subfolder={/^Icon/.test(match.params.componentName) ? 'icons' : undefined}
       componentName={match.params.componentName}
-      docs={getComponentDocs({
-        componentName: match.params.componentName,
-        isIcon: /^Icon/.test(match.params.componentName),
-      })}
+      docs={getComponentDocs(match.params.componentName)}
       snippets={getComponentSnippets(match.params.componentName)}
     />
   ),

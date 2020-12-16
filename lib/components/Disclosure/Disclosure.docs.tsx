@@ -1,115 +1,99 @@
-import React, { useState } from 'react';
-import dedent from 'dedent';
+import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import { Disclosure, Stack, Text, TextLink } from '..';
+import { Disclosure, Text, TextLink, Strong } from '..';
+import source from '../../utils/source.macro';
 
 const docs: ComponentDocs = {
   category: 'Content',
   migrationGuide: true,
-  description: (
-    <Stack space="large">
-      <Text>
-        Follows the{' '}
-        <TextLink href="https://www.w3.org/TR/wai-aria-practices/#disclosure">
-          WAI-ARIA Disclosure Pattern.
-        </TextLink>
-      </Text>
-      <Text>
-        Disclosures manage their own state internally by default. If you&rsquo;d
-        like to take control of the state yourself, you can pass
-        &ldquo;expanded&rdquo; and &ldquo;onToggle&rdquo; props.
-      </Text>
-      <Text tone="secondary">
-        If you want a more prominent visual treatment, check out{' '}
-        <TextLink href="/components/Accordion">Accordion.</TextLink>
-      </Text>
-    </Stack>
+  Example: ({ id }) =>
+    source(
+      <Disclosure
+        id={id}
+        expandLabel="Show content"
+        collapseLabel="Hide content"
+      >
+        <Text>Content</Text>
+      </Disclosure>,
+    ),
+  accessibility: (
+    <Text>
+      Follows the{' '}
+      <TextLink href="https://www.w3.org/TR/wai-aria-practices/#disclosure">
+        WAI-ARIA Disclosure Pattern.
+      </TextLink>
+    </Text>
   ),
-  examples: [
+  alternatives: [
     {
-      label: 'Collapsed Disclosure',
-      Example: ({ id }) => (
-        <Disclosure
-          id={id}
-          expandLabel="Show content"
-          collapseLabel="Hide content"
-        >
-          <Text>Content</Text>
-        </Disclosure>
+      name: 'Accordion',
+      description: 'For a more prominent visual treatment.',
+    },
+    {
+      name: 'Tabs',
+      description: 'For a horizontal selection of multiple content panels.',
+    },
+    {
+      name: 'Dialog',
+      description: 'For exposing a smaller amount of content in a modal.',
+    },
+    {
+      name: 'Drawer',
+      description: 'For exposing a larger amount of content in a modal.',
+    },
+  ],
+  additional: [
+    {
+      label: 'Managing state',
+      description: (
+        <Text>
+          Disclosures manage their own state internally by default. If
+          you&rsquo;d like to take control of the state yourself, you can pass{' '}
+          <Strong>expanded</Strong> and <Strong>onToggle</Strong> props.
+        </Text>
       ),
-    },
-    {
-      label: 'Expanded Disclosure',
-      Example: ({ id }) => {
-        const [expanded, setExpanded] = useState(true);
+      Example: ({ id, setDefaultState, getState, setState }) =>
+        source(
+          <>
+            {setDefaultState('expanded', true)}
 
-        return (
-          <Disclosure
-            id={id}
-            expandLabel="Show content"
-            collapseLabel="Hide content"
-            expanded={expanded}
-            onToggle={setExpanded}
-          >
-            <Text>Content</Text>
-          </Disclosure>
-        );
-      },
-    },
-    {
-      label: 'Expanded Disclosure with custom space',
-      Example: ({ id }) => {
-        const [expanded, setExpanded] = useState(true);
-
-        return (
-          <Disclosure
-            id={id}
-            expandLabel="Show content"
-            collapseLabel="Hide content"
-            space="small"
-            expanded={expanded}
-            onToggle={setExpanded}
-          >
-            <Text>Content</Text>
-          </Disclosure>
-        );
-      },
-    },
-    {
-      label: 'Disclosure with controlled state',
-      playroom: false,
-      Example: ({ id }) => {
-        const [expanded, setExpanded] = React.useState(false);
-
-        return (
-          <Disclosure
-            id={id}
-            expandLabel="Show content"
-            collapseLabel="Hide content"
-            expanded={expanded}
-            onToggle={setExpanded}
-          >
-            <Text>Content</Text>
-          </Disclosure>
-        );
-      },
-      code: dedent`
-        const Example = () => {
-          const [expanded, setExpanded] = useState(false);
-
-          return (
             <Disclosure
-              id="id"
+              id={id}
               expandLabel="Show content"
               collapseLabel="Hide content"
-              expanded={expanded}
-              onToggle={setExpanded}
+              expanded={getState('expanded')}
+              onToggle={setState('expanded')}
             >
               <Text>Content</Text>
             </Disclosure>
-          );
-        };
-      `,
+          </>,
+        ),
+    },
+    {
+      label: 'Custom space',
+      description: (
+        <Text>
+          The space between the disclosure label and content can be customised
+          via the <Strong>space</Strong> prop.
+        </Text>
+      ),
+      Example: ({ id, setDefaultState, getState, setState }) =>
+        source(
+          <>
+            {setDefaultState('expanded', true)}
+
+            <Disclosure
+              id={id}
+              expandLabel="Show content"
+              collapseLabel="Hide content"
+              expanded={getState('expanded')}
+              onToggle={setState('expanded')}
+              space="small"
+            >
+              <Text>Content</Text>
+            </Disclosure>
+          </>,
+        ),
     },
   ],
 };

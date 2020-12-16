@@ -1,33 +1,61 @@
 import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import { BackgroundProvider } from './BackgroundProvider';
-import { Text } from '../Text/Text';
-import { Box } from '../Box/Box';
+import {
+  BackgroundProvider,
+  Text,
+  Box,
+  TextLink,
+  Strong,
+  Stack,
+} from '../../../';
+import source from '../../utils/source.macro';
 
 const docs: ComponentDocs = {
   category: 'Logic',
-  examples: [
+  Example: () =>
+    source(
+      <Box padding="medium" style={{ backgroundColor: '#3d0080' }}>
+        <BackgroundProvider type="dark">
+          <Text>Text on custom dark background</Text>
+        </BackgroundProvider>
+      </Box>,
+    ),
+  alternatives: [],
+  additional: [
     {
-      label: 'Custom dark background',
-      Example: () => (
-        <Box padding="medium" style={{ backgroundColor: 'purple' }}>
-          <BackgroundProvider type="dark">
-            <Text>Should be white text</Text>
-          </BackgroundProvider>
-        </Box>
+      label: 'Development considerations',
+      description: (
+        <>
+          <Text>
+            When <TextLink href="/components/Text">Text</TextLink> placed on a
+            dark background, it may be inverted based on the{' '}
+            <TextLink href="/components/Text#contrast">
+              contrast rules of Text.
+            </TextLink>
+          </Text>
+          <Text>
+            If using custom backgrounds or images, the behaviour no longer
+            works. This can be reinstated by wrapping the content with a{' '}
+            <Strong>BackgroundProvider</Strong> and specifying whether it is{' '}
+            <Strong>dark</Strong> or <Strong>light</Strong>.
+          </Text>
+        </>
       ),
-    },
-    {
-      label: 'Custom light background',
-      Example: () => (
-        <Box background="brand" padding="medium">
-          <Box padding="medium" style={{ backgroundColor: 'snow' }}>
-            <BackgroundProvider type="light">
-              <Text>Should be black text</Text>
-            </BackgroundProvider>
-          </Box>
-        </Box>
-      ),
+      Example: () =>
+        source(
+          <Stack space="large">
+            <Box padding="medium" style={{ backgroundColor: '#3d0080' }}>
+              <BackgroundProvider type="dark">
+                <Text>Text on custom dark background</Text>
+              </BackgroundProvider>
+            </Box>
+            <Box padding="medium" style={{ backgroundColor: '#c8cfff' }}>
+              <BackgroundProvider type="light">
+                <Text>Text on custom light background</Text>
+              </BackgroundProvider>
+            </Box>
+          </Stack>,
+        ),
     },
   ],
 };

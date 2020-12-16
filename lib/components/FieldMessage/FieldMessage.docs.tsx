@@ -1,47 +1,76 @@
 import React from 'react';
+import source from '../../utils/source.macro';
 import { ComponentDocs } from '../../../site/src/types';
-import { FieldMessage } from '../';
+import {
+  FieldMessage,
+  Alert,
+  Text,
+  Strong,
+  List,
+  TextLink,
+  Stack,
+  Box,
+} from '../';
+import { Placeholder } from '../../playroom/components';
 
 const docs: ComponentDocs = {
   category: 'Content',
   migrationGuide: true,
-  examples: [
+  Example: () =>
+    source(
+      <Box style={{ maxWidth: 400 }}>
+        <Stack space="large">
+          <Stack space="small">
+            <Box aria-describedby="message1">
+              <Placeholder height={40} />
+            </Box>
+            <FieldMessage
+              id="message1"
+              tone="critical"
+              message="This is a critical message."
+            />
+          </Stack>
+
+          <Stack space="small">
+            <Box aria-describedby="message2">
+              <Placeholder height={40} />
+            </Box>
+            <FieldMessage
+              id="message2"
+              tone="positive"
+              message="This is a positive message."
+            />
+          </Stack>
+        </Stack>
+      </Box>,
+    ),
+  description: (
+    <Alert tone="info">
+      <Text weight="medium">
+        This component is only required when building a custom field that isn’t
+        provided by Braid.
+      </Text>
+    </Alert>
+  ),
+  accessibility: (
+    <Text>
+      The <Strong>id</Strong> prop is required, but you should also ensure that
+      the associated field has a matching <Strong>aria-describedby</Strong>{' '}
+      prop.
+    </Text>
+  ),
+  alternatives: [],
+  additional: [
     {
-      label: 'Critical Field Message',
-      Example: ({ id }) => (
-        <FieldMessage
-          id={id}
-          tone="critical"
-          message="This is a critical message."
-        />
+      label: 'See also',
+      description: (
+        <List space="large">
+          <Text tone="secondary">
+            <TextLink href="/components/FieldLabel">FieldLabel</TextLink>{' '}
+            &mdash; For displaying labels above a custom field.
+          </Text>
+        </List>
       ),
-    },
-    {
-      label: 'Positive Field Message',
-      Example: ({ id }) => (
-        <FieldMessage
-          id={id}
-          tone="positive"
-          message="This is a positive message."
-        />
-      ),
-    },
-    {
-      label: 'Critical with long (wrapping) message',
-      Container: ({ children }) => (
-        <div style={{ maxWidth: '300px' }}>{children}</div>
-      ),
-      Example: ({ id }) => (
-        <FieldMessage
-          id={id}
-          tone="critical"
-          message="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sodales hendrerit nulla."
-        />
-      ),
-    },
-    {
-      label: "No message, i.e. don't reserve white space",
-      code: `<FieldMessage reserveMessageSpace={false} />`,
     },
   ],
 };

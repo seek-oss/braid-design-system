@@ -1,37 +1,43 @@
 import React from 'react';
 import { seekAnz } from '../../themes';
 import { ComponentDocs } from '../../../site/src/types';
-import { Stack, Text, Strong } from '..';
+import { Stack, Text, Strong, TextLink, Alert } from '..';
 
 const docs: ComponentDocs = {
   category: 'Logic',
   description: (
     <Stack space="large">
       <Text>
-        Alternative to `BraidProvider` for unit test environments. Note that, as
-        the name implies, this should <Strong>not</Strong> be used in production
-        code.
+        Alternative to{' '}
+        <TextLink href="/components/BraidProvider">BraidProvider</TextLink> for
+        unit test environments.
       </Text>
+      <Alert>
+        <Text weight="medium">
+          This provider should <Strong>not</Strong> be used in production code.
+        </Text>
+      </Alert>
     </Stack>
   ),
-  examples: [
+  alternatives: [
     {
-      label: 'Default usage',
-      code: `
-        import { BraidTestProvider } from 'braid-design-system';
-        import { render } from 'react-testing-library';
-
-        it('should do something', () => {
-          render(
-            <BraidTestProvider>
-              ...
-            </BraidTestProvider>
-          );
-        });
-      `,
+      name: 'BraidProvider',
+      description: 'For production apps with a single theme.',
     },
     {
+      name: 'BraidLoadableProvider',
+      description: 'For production apps with multiple themes.',
+    },
+  ],
+  additional: [
+    {
       label: 'Specifying a theme',
+      description: (
+        <Text>
+          Providing <Strong>themeName</Strong> allows you to hardcode a specific
+          theme for a given test context.
+        </Text>
+      ),
       code: `
         import { BraidTestProvider } from 'braid-design-system';
         import { render } from 'react-testing-library';
@@ -47,6 +53,12 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Specifying a breakpoint',
+      description: (
+        <Text>
+          Providing <Strong>breakpoint</Strong> allows you to hardcode a
+          specific breakpoint for a given test context.
+        </Text>
+      ),
       code: `
         import { BraidTestProvider } from 'braid-design-system';
         import { render } from 'react-testing-library';

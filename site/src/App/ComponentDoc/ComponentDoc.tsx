@@ -1,10 +1,12 @@
 import React, { ReactNode, Fragment } from 'react';
 import { Route, Switch, useRouteMatch } from 'react-router';
 import { ComponentProps } from './ComponentProps';
+import docsTheme from '../../../../lib/themes/docs';
 import { PlayroomStateProvider } from '../../../../lib/playroom/playroomState';
 import { useSourceFromExample } from '../../../../lib/utils/useSourceFromExample';
-import { Snippet } from '../../../../lib/components/private/Snippets';
+import { BraidSnippet } from '../../../../lib/components/private/Snippets';
 import {
+  BraidProvider,
   Box,
   Heading,
   Stack,
@@ -13,16 +15,19 @@ import {
   Alert,
   Inline,
   Badge,
+  List,
+  Secondary,
 } from '../../../../lib/components';
 
 import { ComponentDocs, ComponentExample } from '../../types';
 import Code from '../Code/Code';
-import { ThemedExample } from '../ThemeSetting';
+import { ThemedExample, useThemeSettings } from '../ThemeSetting';
 import { useConfig } from '../ConfigContext';
 import { getHistory } from '../Updates';
 import { Markdown } from '../Markdown/Markdown';
 import { Navigation, NavigationItem } from './Navigation/Navigation';
 import { PageTitle } from '../Seo/PageTitle';
+import { LinkableHeading } from '../LinkableHeading/LinkableHeading';
 
 const DefaultContainer = ({ children }: { children: ReactNode }) => (
   <Fragment>{children}</Fragment>
@@ -52,18 +57,20 @@ const RenderExample = ({
   });
 
   return (
-    <Stack space="xxsmall">
-      {value ? (
-        <ThemedExample background={background}>
-          <Container>{value}</Container>
-        </ThemedExample>
-      ) : null}
-      {codeAsString ? (
-        <Code collapsedByDefault={!showCodeByDefault} playroom={playroom}>
-          {codeAsString}
-        </Code>
-      ) : null}
-    </Stack>
+    <BraidProvider styleBody={false} theme={docsTheme}>
+      <Stack space="xxsmall">
+        {value ? (
+          <ThemedExample background={background}>
+            <Container>{value}</Container>
+          </ThemedExample>
+        ) : null}
+        {codeAsString ? (
+          <Code collapsedByDefault={!showCodeByDefault} playroom={playroom}>
+            {codeAsString}
+          </Code>
+        ) : null}
+      </Stack>
+    </BraidProvider>
   );
 };
 
@@ -71,7 +78,7 @@ interface ComponentDocProps {
   componentName: string;
   subfolder?: string;
   docs: ComponentDocs;
-  snippets?: Snippet[];
+  snippets?: BraidSnippet[];
 }
 
 export const ComponentDoc = ({
@@ -80,13 +87,12 @@ export const ComponentDoc = ({
   docs,
   snippets = [],
 }: ComponentDocProps) => {
+  const { theme } = useThemeSettings();
   const { sourceUrlPrefix } = useConfig();
 
   const componentFolder = `lib/components/${
     subfolder ? `${subfolder}/` : ''
   }${componentName}`;
-  const docsExamples = docs.examples || [];
-
   const sourceUrl = `${sourceUrlPrefix}/${componentFolder}`;
   const migrationGuideUrl = `${sourceUrlPrefix}/${componentFolder}/${componentName}.migration.md`;
 
@@ -180,29 +186,68 @@ export const ComponentDoc = ({
         <Route exact path={`/components/${componentName}`}>
           <PageTitle title={componentName} />
           <Stack space="xxlarge">
-            {docs.description}
-
-            {docsExamples.map((example, index) => (
-              <Stack space="large" key={index}>
-                {example.label && docsExamples.length > 1 ? (
-                  <Heading level="3">{example.label}</Heading>
-                ) : null}
-                {example.description ?? null}
+            {docs.Example ? (
+              <BraidProvider styleBody={false} theme={theme}>
                 <PlayroomStateProvider>
                   <RenderExample
-                    id={String(index)}
-                    code={example.code}
-                    Example={example.Example}
-                    Container={example.Container}
-                    background={example.background}
-                    showCodeByDefault={
-                      example.showCodeByDefault ||
-                      example.Example === undefined ||
-                      docs.category === 'Logic'
-                    }
-                    playroom={example.playroom}
+                    id={`${componentName}_example`}
+                    Example={docs.Example}
                   />
                 </PlayroomStateProvider>
+              </BraidProvider>
+            ) : null}
+
+            {docs.description ? (
+              <Stack space="large">{docs.description}</Stack>
+            ) : null}
+
+            {docs.alternatives.length > 0 ? (
+              <Stack space="large">
+                <LinkableHeading level="3">Alternatives</LinkableHeading>
+                <List space="large">
+                  {docs.alternatives.map((alt) => (
+                    <Text key={`${alt.name}`}>
+                      <TextLink href={`/components/${alt.name}`}>
+                        {alt.name}
+                      </TextLink>{' '}
+                      <Secondary>— {alt.description}</Secondary>
+                    </Text>
+                  ))}
+                </List>
+              </Stack>
+            ) : null}
+
+            {docs.accessibility ? (
+              <Stack space="large">
+                <LinkableHeading level="3">Accessibility</LinkableHeading>
+                {docs.accessibility}
+              </Stack>
+            ) : null}
+
+            {(docs.additional || []).map((example, index) => (
+              <Stack space="large" key={index}>
+                {example.label ? (
+                  <LinkableHeading level="3">{example.label}</LinkableHeading>
+                ) : null}
+                {example.description ?? null}
+                {example.code || example.Example ? (
+                  <BraidProvider styleBody={false} theme={theme}>
+                    <PlayroomStateProvider>
+                      <RenderExample
+                        id={String(index)}
+                        code={example.code}
+                        Example={example.Example}
+                        Container={example.Container}
+                        background={example.background}
+                        showCodeByDefault={
+                          example.showCodeByDefault ||
+                          example.Example === undefined
+                        }
+                        playroom={example.playroom}
+                      />
+                    </PlayroomStateProvider>
+                  </BraidProvider>
+                ) : null}
               </Stack>
             ))}
           </Stack>
@@ -280,13 +325,15 @@ export const ComponentDoc = ({
             {snippets.map(({ group, name, code }) => (
               <Stack space="medium" key={`${group}_${name}`}>
                 <Text tone="secondary">{name}</Text>
-                <PlayroomStateProvider>
-                  <RenderExample
-                    id={`${group}_${name}`}
-                    Example={() => code}
-                    showCodeByDefault={false}
-                  />
-                </PlayroomStateProvider>
+                <BraidProvider styleBody={false} theme={theme}>
+                  <PlayroomStateProvider>
+                    <RenderExample
+                      id={`${group}_${name}`}
+                      Example={() => code}
+                      showCodeByDefault={false}
+                    />
+                  </PlayroomStateProvider>
+                </BraidProvider>
               </Stack>
             ))}
           </Stack>

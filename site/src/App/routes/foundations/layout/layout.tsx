@@ -1,5 +1,4 @@
 import React from 'react';
-import { useStyles } from 'sku/react-treat';
 import {
   Heading,
   Text,
@@ -20,43 +19,15 @@ import {
   TextLink,
   Button,
   Hidden,
+  Strong,
 } from '../../../../../../lib/components';
-import { HeadingProps } from '../../../../../../lib/components/Heading/Heading';
 import { TextStack } from '../../../TextStack/TextStack';
 import Code from '../../../Code/Code';
 import tokens from '../../../../../../lib/themes/wireframe/tokens';
 import { Page } from '../../../../types';
 import { ThemedExample } from '../../../ThemeSetting';
 import { PageTitle } from '../../../Seo/PageTitle';
-import * as styleRefs from './layout.treat';
-
-const slugify = (string: string) => string.replace(/ /, '-');
-
-interface LinkableHeadingProps {
-  level?: HeadingProps['level'];
-  children: string;
-}
-const LinkableHeading = ({ children, level = '3' }: LinkableHeadingProps) => {
-  const styles = useStyles(styleRefs);
-  const slug = slugify(children);
-
-  return (
-    <Box className={styles.linkableHeading}>
-      <Box id={slug} position="absolute" className={styles.hashAnchor} />
-      <Heading level={level}>
-        {children}{' '}
-        <Box
-          component="span"
-          transition="fast"
-          opacity={0}
-          className={styles.hashLink}
-        >
-          <TextLink href={`#${slug}`}>#</TextLink>
-        </Box>
-      </Heading>
-    </Box>
-  );
-};
+import { LinkableHeading } from '../../../LinkableHeading/LinkableHeading';
 
 type Space = 'none' | keyof typeof tokens.space;
 const spaceScale = ['none', ...Object.keys(tokens.space)] as Space[];
@@ -88,6 +59,30 @@ const page: Page = {
         grasp of these components is an essential part of working effectively
         with Braid.
       </Text>
+
+      <List>
+        <Text>
+          <TextLink href="#box">Box</TextLink>
+        </Text>
+        <Text>
+          <TextLink href="#card">Card</TextLink>
+        </Text>
+        <Text>
+          <TextLink href="#stack">Stack</TextLink>
+        </Text>
+        <Text>
+          <TextLink href="#inline">Inline</TextLink>
+        </Text>
+        <Text>
+          <TextLink href="#columns">Columns</TextLink>
+        </Text>
+        <Text>
+          <TextLink href="#tiles">Tiles</TextLink>
+        </Text>
+        <Text>
+          <TextLink href="#contentblock">ContentBlock</TextLink>
+        </Text>
+      </List>
 
       <Divider />
 
@@ -124,11 +119,12 @@ const page: Page = {
 
       <LinkableHeading>Box</LinkableHeading>
       <Text>
-        ‘Box’ is the most low-level layout component provided by Braid. Its job
-        is to render an individual element on the screen.
+        <TextLink href="/components/Box">Box</TextLink> is the most low-level
+        layout component provided by Braid. Its job is to render an individual
+        element on the screen.
       </Text>
       <Text>
-        In terms of page layout, ‘Box’ most notably provides a set of padding
+        In terms of page layout, Box most notably provides a set of padding
         options which can be used to create container elements with internal
         spacing.
       </Text>
@@ -182,8 +178,10 @@ const page: Page = {
 
       <LinkableHeading>Card</LinkableHeading>
       <Text>
-        Rather than nesting content in arbitrary ‘Box’ elements, you may prefer
-        to use standard ‘Card’ elements instead.
+        Rather than nesting content in arbitrary{' '}
+        <TextLink href="#box">Box</TextLink> elements, you may prefer to use
+        standard <TextLink href="/components/Card">Card</TextLink> elements
+        instead.
       </Text>
       <Code>
         <Card>
@@ -196,12 +194,15 @@ const page: Page = {
       <LinkableHeading>Stack</LinkableHeading>
       <Text>
         The most common white space on screen is between elements stacked
-        vertically. For this use case, Braid provides a ‘Stack’ component that
+        vertically. For this use case, Braid provides a{' '}
+        <TextLink href="/components/Stack">Stack</TextLink> component that
         accepts a ‘space’ prop.
       </Text>
       <Text>
-        For example, if you wanted to render a stack of ‘Heading’ and ‘Text’
-        elements with large spacing between them:
+        For example, if you wanted to render a stack of{' '}
+        <TextLink href="/components/Heading">Heading</TextLink> and{' '}
+        <TextLink href="/components/Text">Text</TextLink> elements with large
+        spacing between them:
       </Text>
       <Code>
         <Card>
@@ -213,8 +214,8 @@ const page: Page = {
         </Card>
       </Code>
       <Text>
-        Just like ‘Box’, you can also specify different spacing values for
-        different screen sizes:
+        Just like <TextLink href="#box">Box</TextLink>, you can also specify
+        different spacing values for different screen sizes:
       </Text>
       <Code>
         <Card>
@@ -227,7 +228,9 @@ const page: Page = {
       </Code>
       <Text>
         To visually break up content, you can insert dividers between all stack
-        elements by setting the ‘dividers’ prop on Stack:
+        elements by setting the{' '}
+        <TextLink href="/components/Stack#dividers">dividers</TextLink> prop on
+        Stack:
       </Text>
       <Code>
         <Card>
@@ -240,7 +243,8 @@ const page: Page = {
       </Code>
       <Text>
         If you’d prefer to take control over the placement of dividers, you can
-        use the ‘Divider’ component directly:
+        use the <TextLink href="/components/Divider">Divider</TextLink>{' '}
+        component directly:
       </Text>
       <Code>
         <Card>
@@ -253,9 +257,10 @@ const page: Page = {
         </Card>
       </Code>
       <Text>
-        Multiple ‘Stack’ components can be nested to create more complex white
-        space rules. For example, if you wanted to create multiple grouped
-        blocks of text like you might see on a job summary card:
+        Multiple <TextLink href="/components/Stack">Stack</TextLink> components
+        can be nested to create more complex white space rules. For example, if
+        you wanted to create multiple grouped blocks of text like you might see
+        on a job summary card:
       </Text>
       <Code>
         <Card>
@@ -275,8 +280,9 @@ const page: Page = {
         </Card>
       </Code>
       <Text>
-        ‘Stack’ also supports horizontal alignment. For example, if you wanted
-        to centre align all content within a card:
+        <TextLink href="/components/Stack">Stack</TextLink> also supports
+        horizontal alignment. For example, if you wanted to centre align all
+        content within a card:
       </Text>
       <Code>
         <Card>
@@ -316,7 +322,7 @@ const page: Page = {
       <Text>
         If you’d like to render a set of components in a row with equal spacing
         around them, wrapping onto multiple lines when necessary, Braid provides
-        an ‘Inline’ component:
+        an <TextLink href="/components/Inline">Inline</TextLink> component:
       </Text>
 
       <Code>
@@ -336,8 +342,9 @@ const page: Page = {
       </Code>
 
       <Text>
-        Similar to ‘Stack’, ‘Inline’ also supports horizontal alignment of its
-        children:
+        Similar to <TextLink href="#stack">Stack</TextLink>,{' '}
+        <TextLink href="/components/Inline">Inline</TextLink> also supports
+        horizontal alignment of its children:
       </Text>
 
       <Code>
@@ -352,7 +359,11 @@ const page: Page = {
 
       <Text>
         If you’d like the columns to stack vertically on smaller screens, you
-        can provide the ‘collapseBelow’ prop.
+        can provide the{' '}
+        <TextLink href="/components/Inline#collapsing-across-breakpoints">
+          collapseBelow
+        </TextLink>{' '}
+        prop.
       </Text>
       <Text>
         For example, if you wanted buttons to be rendered vertically on mobile
@@ -371,8 +382,9 @@ const page: Page = {
 
       <LinkableHeading>Columns</LinkableHeading>
       <Text>
-        If you need to lay out content horizontally, Braid provides the
-        ‘Columns’ and ‘Column’ components:
+        If you need to lay out content horizontally, Braid provides the{' '}
+        <TextLink href="/components/Columns">Columns</TextLink> and{' '}
+        <Strong>Column</Strong> components:
       </Text>
       <Code>
         <Columns space="small">
@@ -389,8 +401,12 @@ const page: Page = {
         </Columns>
       </Code>
       <Text>
-        Similar to ‘Inline’, if you’d like the columns to stack vertically on
-        smaller screens, you can provide the ‘collapseBelow’ prop.
+        Similar to <TextLink href="#inline">Inline</TextLink>, if you’d like the
+        columns to stack vertically on smaller screens, you can provide the{' '}
+        <TextLink href="/components/Columns#collapsing-across-breakpoints">
+          collapseBelow
+        </TextLink>{' '}
+        prop.
       </Text>
       <Text>
         For example, if you wanted cards to be rendered vertically on mobile but
@@ -412,7 +428,8 @@ const page: Page = {
       </Code>
       <Text>
         All columns are of equal width by default, but you can also customise
-        the width of each column individually.
+        the <TextLink href="/components/Columns#column-widths">width</TextLink>{' '}
+        of each column individually.
       </Text>
       <Text>
         For example, if you wanted to render a main content area and a sidebar,
@@ -434,12 +451,14 @@ const page: Page = {
       </Code>
       <Text>
         If you want a column to be as small as possible, you can also set its
-        width to ‘content’ which ensures that it’s only as wide as the content
-        within it.
+        width to <Strong>content</Strong> which ensures that it’s only as wide
+        as the content within it.
       </Text>
       <Text>
-        For example, if you wanted a card with a left-aligned ‘Heading’ and a
-        right-aligned ‘OverflowMenu’:
+        For example, if you wanted a card with a left-aligned{' '}
+        <TextLink href="/components/Heading">Heading</TextLink> and a
+        right-aligned{' '}
+        <TextLink href="/components/OverflowMenu">OverflowMenu</TextLink>:
       </Text>
       <Code>
         <Card>
@@ -474,7 +493,11 @@ const page: Page = {
       <Text>
         By default, columns are rendered in document order, which also doubles
         as the screen reader order. If you need the columns to be visually
-        reversed on larger screens, you can provide the ‘reverse’ option:
+        reversed on larger screens, you can provide the{' '}
+        <TextLink href="/components/Columns#reversing-the-column-order">
+          reverse
+        </TextLink>{' '}
+        option:
       </Text>
       <Code>
         <Columns space="small" collapseBelow="tablet" reverse>
@@ -491,8 +514,12 @@ const page: Page = {
         </Columns>
       </Code>
       <Text>
-        If you have ‘Column’ elements that are of varying height, you can center
-        them vertically with the ‘alignY’ prop:
+        If you have <Strong>Column</Strong> elements that are of varying height,
+        you can center them vertically with the{' '}
+        <TextLink href="/components/Columns#vertical-alignment">
+          alignY
+        </TextLink>{' '}
+        prop:
       </Text>
       <Code>
         <Columns space="small" alignY="center">
@@ -530,7 +557,8 @@ const page: Page = {
       <LinkableHeading>Tiles</LinkableHeading>
       <Text>
         If you’d like to render a grid of components with equal spacing between
-        them, Braid provides a ‘Tiles’ component:
+        them, Braid provides a{' '}
+        <TextLink href="/components/Tiles">Tiles</TextLink> component:
       </Text>
 
       <Code>
@@ -567,8 +595,10 @@ const page: Page = {
 
       <Text>
         If you need to customise the spacing and number of columns per screen
-        size, the ‘columns’ prop is responsive. For example, if you wanted a
-        single column on mobile and three columns from tablet upwards:
+        size, the{' '}
+        <TextLink href="/components/Tiles#number-of-columns">columns</TextLink>{' '}
+        prop is responsive. For example, if you wanted a single column on mobile
+        and three columns from tablet upwards:
       </Text>
 
       <Code>
@@ -605,7 +635,8 @@ const page: Page = {
 
       <Text>
         When the tiles are collapsed to a single column, you can optionally show
-        dividers between them with the ‘dividers’ prop:
+        dividers between them with the{' '}
+        <TextLink href="/components/Tiles#dividers">dividers</TextLink> prop:
       </Text>
 
       <Code>
@@ -646,8 +677,9 @@ const page: Page = {
       <Text>
         By default, all layout components will render full width. However, most
         applications will want to limit the width of content on the screen. In
-        order to address this, Braid provides the ‘ContentBlock’ component that
-        sets a maximum width and centres content horizontally.
+        order to address this, Braid provides the{' '}
+        <TextLink href="/components/ContentBlock">ContentBlock</TextLink>{' '}
+        component that sets a maximum width and centres content horizontally.
       </Text>
       <Code>
         <ContentBlock>
@@ -657,8 +689,9 @@ const page: Page = {
         </ContentBlock>
       </Code>
       <Text>
-        If you’d like a larger content block, you can optionally provide the
-        ‘width’ prop:
+        If you’d like a larger content block, you can optionally provide the{' '}
+        <TextLink href="/components/ContentBlock#maximum-width">width</TextLink>{' '}
+        prop:
       </Text>
       <Code>
         <ContentBlock width="large">

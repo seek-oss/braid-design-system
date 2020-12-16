@@ -1,11 +1,12 @@
 import React from 'react';
 import { Autosuggest, IconLocation } from '../../playroom/components';
 import { Snippets } from '../private/Snippets';
+import source from '../../utils/source.macro';
 
 export const snippets: Snippets = [
   {
     name: 'Standard',
-    code: (
+    code: source(
       <Autosuggest
         id="fruit"
         label="Fruit"
@@ -14,12 +15,12 @@ export const snippets: Snippets = [
           { text: 'Bananas' },
           { text: 'Carrots' },
         ]}
-      />
+      />,
     ),
   },
   {
     name: 'Grouped suggestions',
-    code: (
+    code: source(
       <Autosuggest
         label="I like to eat"
         id="grouped"
@@ -41,12 +42,12 @@ export const snippets: Snippets = [
             ],
           },
         ]}
-      />
+      />,
     ),
   },
   {
     name: 'With mobile backdrop',
-    code: (
+    code: source(
       <Autosuggest
         showMobileBackdrop
         id="mobile"
@@ -56,12 +57,12 @@ export const snippets: Snippets = [
           { text: 'Bananas' },
           { text: 'Carrots' },
         ]}
-      />
+      />,
     ),
   },
   {
     name: 'With error',
-    code: (
+    code: source(
       <Autosuggest
         label="I like to eat"
         id="error"
@@ -72,12 +73,12 @@ export const snippets: Snippets = [
           { text: 'Bananas' },
           { text: 'Carrots' },
         ]}
-      />
+      />,
     ),
   },
   {
     name: 'With description',
-    code: (
+    code: source(
       <Autosuggest
         label="Fruit"
         id="error"
@@ -87,12 +88,12 @@ export const snippets: Snippets = [
           { text: 'Bananas' },
           { text: 'Carrots' },
         ]}
-      />
+      />,
     ),
   },
   {
     name: 'With icon',
-    code: (
+    code: source(
       <Autosuggest
         id="location"
         icon={<IconLocation />}
@@ -106,7 +107,7 @@ export const snippets: Snippets = [
           { text: 'Perth' },
           { text: 'Sydney' },
         ]}
-      />
+      />,
     ),
   },
 ];

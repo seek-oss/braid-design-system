@@ -1,17 +1,20 @@
 import React from 'react';
 import { ComponentDocs } from '../../../../site/src/types';
-import { IconSocialTwitter } from './IconSocialTwitter';
+import source from '../../../utils/source.macro';
+import { IconSocialTwitter, Heading, Stack } from '../../';
 
 const docs: ComponentDocs = {
   category: 'Icon',
   migrationGuide: true,
-  foundation: true,
-  examples: [
-    {
-      label: 'Default',
-      Example: () => <IconSocialTwitter />,
-    },
-  ],
+  Example: () =>
+    source(
+      <Stack space="none" align="center">
+        <Heading component="div" level="1">
+          <IconSocialTwitter />
+        </Heading>
+      </Stack>,
+    ),
+  alternatives: [],
 };
 
 export default docs;

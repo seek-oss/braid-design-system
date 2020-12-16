@@ -1,15 +1,28 @@
 import React from 'react';
+import source from '../../utils/source.macro';
 import { ComponentDocs } from '../../../site/src/types';
-import { Strong, Text } from '../';
+import { Strong, Text, TextLink } from '../';
 
 const docs: ComponentDocs = {
   category: 'Content',
   migrationGuide: true,
-  examples: [
+  Example: () =>
+    source(
+      <Text size="large">
+        The last word of this sentence is <Strong>strong.</Strong>
+      </Text>,
+    ),
+  alternatives: [
+    { name: 'Secondary', description: 'For a lighter text treatment.' },
+  ],
+  additional: [
     {
-      Example: () => (
+      label: 'Note',
+      description: (
         <Text>
-          The last word of this sentence is <Strong>strong.</Strong>
+          This component must be nested within a{' '}
+          <TextLink href="/components/Text">Text</TextLink> or{' '}
+          <TextLink href="/components/Heading">Heading</TextLink> component.
         </Text>
       ),
     },

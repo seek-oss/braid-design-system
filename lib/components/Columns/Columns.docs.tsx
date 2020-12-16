@@ -1,183 +1,304 @@
 import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import { Placeholder } from '../private/Placeholder/Placeholder';
-import { Columns, Column } from '../';
+import { Columns, Column, Strong, Text, Stack } from '../';
+import source from '../../utils/source.macro';
+import { TextLink } from '../TextLink/TextLink';
 
 const docs: ComponentDocs = {
   category: 'Layout',
   migrationGuide: true,
-  examples: [
+  subComponents: ['Column'],
+  Example: () =>
+    source(
+      <Columns space="none">
+        <Column>
+          <Placeholder height={60} />
+        </Column>
+        <Column>
+          <Placeholder height={60} />
+        </Column>
+        <Column>
+          <Placeholder height={60} />
+        </Column>
+      </Columns>,
+    ),
+  alternatives: [
     {
-      label: 'No space',
-      Example: () => (
-        <Columns space="none">
-          <Column>
-            <Placeholder height={60} />
-          </Column>
-          <Column>
-            <Placeholder height={60} />
-          </Column>
-        </Columns>
-      ),
+      name: 'Inline',
+      description: 'For fine-grained control of spacing and alignment.',
     },
     {
-      label: 'Custom space, e.g. small',
-      Example: () => (
-        <Columns space="small">
-          <Column>
-            <Placeholder height={60} />
-          </Column>
-          <Column>
-            <Placeholder height={60} />
-          </Column>
-        </Columns>
-      ),
+      name: 'Tiles',
+      description: 'For laying out content over many columns and rows.',
     },
     {
-      label: 'Responsive space, e.g. ["small", "large"]',
-      Example: () => (
-        <Columns space={['small', 'large']}>
-          <Column>
-            <Placeholder height={60} />
-          </Column>
-          <Column>
-            <Placeholder height={60} />
-          </Column>
-        </Columns>
+      name: 'Box',
+      description: 'For custom layouts.',
+    },
+  ],
+  additional: [
+    {
+      label: 'Spacing',
+      description: (
+        <>
+          <Text>
+            The <TextLink href="/foundations/layout#spacing">spacing</TextLink>{' '}
+            between columns can be adjusted using the <Strong>space</Strong>{' '}
+            prop.
+          </Text>
+          <Text>
+            Responsive values are supported, e.g.{' '}
+            <Strong>{"['small', 'large']"}</Strong>.
+          </Text>
+        </>
       ),
+      Example: () =>
+        source(
+          <Columns space="large">
+            <Column>
+              <Placeholder height={60} />
+            </Column>
+            <Column>
+              <Placeholder height={60} />
+            </Column>
+          </Columns>,
+        ),
     },
     {
-      label: 'Vertically align to center',
-      Example: () => (
-        <Columns space="small" alignY="center">
-          <Column>
-            <Placeholder height={60} />
-          </Column>
-          <Column>
-            <Placeholder height={100} />
-          </Column>
-        </Columns>
+      label: 'Column widths',
+      description: (
+        <>
+          <Text>
+            All columns are of equal width by default, but you can also
+            customise the width of each column individually.{' '}
+            <Strong>Column</Strong> supports widths fractional widths down to{' '}
+            <Strong>1/5</Strong>.
+          </Text>
+          <Text>
+            If you want a column to be as small as possible, you can also set
+            its <Strong>width</Strong> to <Strong>content</Strong> which ensures
+            that it’s only as wide as the content within it.
+          </Text>
+        </>
       ),
+      Example: () =>
+        source(
+          <Stack space="medium">
+            <Columns space="xsmall">
+              <Column width="content">
+                <Placeholder height={30} label="content" />
+              </Column>
+              <Column>
+                <Placeholder height={30} label="fluid" />
+              </Column>
+            </Columns>
+            <Columns space="xsmall">
+              <Column width="1/5">
+                <Placeholder height={30} label="1/5" />
+              </Column>
+              <Column>
+                <Placeholder height={30} label="fluid" />
+              </Column>
+            </Columns>
+            <Columns space="xsmall">
+              <Column width="1/4">
+                <Placeholder height={30} label="1/4" />
+              </Column>
+              <Column>
+                <Placeholder height={30} label="fluid" />
+              </Column>
+            </Columns>
+            <Columns space="xsmall">
+              <Column width="1/3">
+                <Placeholder height={30} label="1/3" />
+              </Column>
+              <Column>
+                <Placeholder height={30} label="fluid" />
+              </Column>
+            </Columns>
+            <Columns space="xsmall">
+              <Column width="2/5">
+                <Placeholder height={30} label="2/5" />
+              </Column>
+              <Column>
+                <Placeholder height={30} label="fluid" />
+              </Column>
+            </Columns>
+            <Columns space="xsmall">
+              <Column width="1/2">
+                <Placeholder height={30} label="1/2" />
+              </Column>
+              <Column>
+                <Placeholder height={30} label="fluid" />
+              </Column>
+            </Columns>
+            <Columns space="xsmall">
+              <Column width="3/5">
+                <Placeholder height={30} label="3/5" />
+              </Column>
+              <Column>
+                <Placeholder height={30} label="fluid" />
+              </Column>
+            </Columns>
+            <Columns space="xsmall">
+              <Column width="2/3">
+                <Placeholder height={30} label="2/3" />
+              </Column>
+              <Column>
+                <Placeholder height={30} label="fluid" />
+              </Column>
+            </Columns>
+            <Columns space="xsmall">
+              <Column width="3/4">
+                <Placeholder height={30} label="3/4" />
+              </Column>
+              <Column>
+                <Placeholder height={30} label="fluid" />
+              </Column>
+            </Columns>
+            <Columns space="xsmall">
+              <Column width="4/5">
+                <Placeholder height={30} label="4/5" />
+              </Column>
+              <Column>
+                <Placeholder height={30} label="fluid" />
+              </Column>
+            </Columns>
+          </Stack>,
+        ),
     },
     {
-      label: 'Vertically align to bottom',
-      Example: () => (
-        <Columns space="small" alignY="bottom">
-          <Column>
-            <Placeholder height={60} />
-          </Column>
-          <Column>
-            <Placeholder height={100} />
-          </Column>
-        </Columns>
+      label: 'Vertical alignment',
+      description: (
+        <Text>
+          Columns with content of varying height can be vertically aligned using
+          the <Strong>alignY</Strong> prop. Responsive values are supported.
+        </Text>
       ),
+      Example: () =>
+        source(
+          <Stack space="large" dividers>
+            <Columns space="small" alignY="top">
+              <Column>
+                <Placeholder height={20} />
+              </Column>
+              <Column>
+                <Placeholder height={80} label="top" />
+              </Column>
+              <Column>
+                <Placeholder height={20} />
+              </Column>
+            </Columns>
+            <Columns space="small" alignY="center">
+              <Column>
+                <Placeholder height={20} />
+              </Column>
+              <Column>
+                <Placeholder height={80} label="center" />
+              </Column>
+              <Column>
+                <Placeholder height={20} />
+              </Column>
+            </Columns>
+            <Columns space="small" alignY="bottom">
+              <Column>
+                <Placeholder height={20} />
+              </Column>
+              <Column>
+                <Placeholder height={80} label="bottom" />
+              </Column>
+              <Column>
+                <Placeholder height={20} />
+              </Column>
+            </Columns>
+          </Stack>,
+        ),
     },
     {
-      label:
-        'Responsive alignment (e.g. top on mobile, center on tablet upwards)',
-      Example: () => (
-        <Columns space="small" alignY={['top', 'center']}>
-          <Column>
-            <Placeholder height={60} />
-          </Column>
-          <Column>
-            <Placeholder height={100} />
-          </Column>
-        </Columns>
+      label: 'Horizontal alignment',
+      description: (
+        <Text>
+          When the total width of all the columns is less than the width of the
+          parent container, the columns can be aligned horiontally using the{' '}
+          <Strong>align</Strong> prop. Responsive values are supported.
+        </Text>
       ),
+      Example: () =>
+        source(
+          <Stack space="large" dividers>
+            <Columns space="small" align="left">
+              <Column width="1/5">
+                <Placeholder height={20} label="left" />
+              </Column>
+              <Column width="1/5">
+                <Placeholder height={20} />
+              </Column>
+            </Columns>
+            <Columns space="small" align="center">
+              <Column width="1/5">
+                <Placeholder height={20} />
+              </Column>
+              <Column width="1/5">
+                <Placeholder height={20} label="center" />
+              </Column>
+            </Columns>
+            <Columns space="small" align="right">
+              <Column width="1/5">
+                <Placeholder height={20} />
+              </Column>
+              <Column width="1/5">
+                <Placeholder height={20} label="right" />
+              </Column>
+            </Columns>
+          </Stack>,
+        ),
     },
     {
-      label: 'Collapse below tablet',
-      Example: () => (
-        <Columns space="small" collapseBelow="tablet">
-          <Column>
-            <Placeholder height={60} label="First" />
-          </Column>
-          <Column>
-            <Placeholder height={60} label="Second" />
-          </Column>
-        </Columns>
+      label: 'Collapsing across breakpoints',
+      description: (
+        <Text>
+          Columns can be collapsed into a single vertical stack responsively
+          using the <Strong>collapseBelow</Strong> prop. The following results
+          in three columns from the <Strong>tablet</Strong> breakpoint upwards,
+          but collapse into a vertical stack on <Strong>mobile</Strong>.
+        </Text>
       ),
+      Example: () =>
+        source(
+          <Columns space="small" collapseBelow="tablet">
+            <Column>
+              <Placeholder height={60} />
+            </Column>
+            <Column>
+              <Placeholder height={60} />
+            </Column>
+            <Column>
+              <Placeholder height={60} />
+            </Column>
+          </Columns>,
+        ),
     },
     {
-      label: 'Collapse below desktop',
-      Example: () => (
-        <Columns space="small" collapseBelow="desktop">
-          <Column>
-            <Placeholder height={60} label="First" />
-          </Column>
-          <Column>
-            <Placeholder height={60} label="Second" />
-          </Column>
-        </Columns>
+      label: 'Reversing the column order',
+      description: (
+        <Text>
+          By default, columns are rendered in document order, which also doubles
+          as the screen reader order. If you need the columns to be visually
+          reversed, you can provide the <Strong>reverse</Strong> prop.
+        </Text>
       ),
-    },
-    {
-      label: 'Collapse below tablet with custom space, e.g. "small"',
-      Example: () => (
-        <Columns space="small" collapseBelow="tablet">
-          <Column>
-            <Placeholder height={60} label="First" />
-          </Column>
-          <Column>
-            <Placeholder height={60} label="Second" />
-          </Column>
-        </Columns>
-      ),
-    },
-    {
-      label: 'Collapse below desktop with custom space, e.g. "small"',
-      Example: () => (
-        <Columns space="small" collapseBelow="desktop">
-          <Column>
-            <Placeholder height={60} label="First" />
-          </Column>
-          <Column>
-            <Placeholder height={60} label="Second" />
-          </Column>
-        </Columns>
-      ),
-    },
-    {
-      label:
-        'Collapse below tablet with responsive space, e.g. ["small", "large"]',
-      Example: () => (
-        <Columns space={['small', 'large']} collapseBelow="tablet">
-          <Column>
-            <Placeholder height={60} label="First" />
-          </Column>
-          <Column>
-            <Placeholder height={60} label="Second" />
-          </Column>
-        </Columns>
-      ),
-    },
-    {
-      label:
-        'Collapse below desktop with responsive space, e.g. ["small", "medium", "xlarge"]',
-      Example: () => (
-        <Columns space={['small', 'medium', 'xlarge']} collapseBelow="desktop">
-          <Column>
-            <Placeholder height={60} label="First" />
-          </Column>
-          <Column>
-            <Placeholder height={60} label="Second" />
-          </Column>
-        </Columns>
-      ),
-    },
-    {
-      label: 'Reverse',
-      Example: () => (
-        <Columns space="small" reverse>
-          <Column>
-            <Placeholder height={60} label="First" />
-          </Column>
-          <Column>
-            <Placeholder height={60} label="Second" />
-          </Column>
-        </Columns>
-      ),
+      Example: () =>
+        source(
+          <Columns space="small" reverse>
+            <Column width="1/5">
+              <Placeholder height={60} label="First" />
+            </Column>
+            <Column>
+              <Placeholder height={60} label="Second" />
+            </Column>
+          </Columns>,
+        ),
     },
   ],
 };

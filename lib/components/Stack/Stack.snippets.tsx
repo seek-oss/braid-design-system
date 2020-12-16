@@ -1,76 +1,77 @@
 import React from 'react';
 import { Snippets } from '../private/Snippets';
 import { Stack, Placeholder } from '../../playroom/components';
+import source from '../../utils/source.macro';
 
 export const snippets: Snippets = [
   {
     name: 'XXSmall Space',
-    code: (
+    code: source(
       <Stack space="xxsmall">
         <Placeholder height={40} />
         <Placeholder height={40} />
         <Placeholder height={40} />
-      </Stack>
+      </Stack>,
     ),
   },
   {
     name: 'XSmall Space',
-    code: (
+    code: source(
       <Stack space="xsmall">
         <Placeholder height={40} />
         <Placeholder height={40} />
         <Placeholder height={40} />
-      </Stack>
+      </Stack>,
     ),
   },
   {
     name: 'Small Space',
-    code: (
+    code: source(
       <Stack space="small">
         <Placeholder height={40} />
         <Placeholder height={40} />
         <Placeholder height={40} />
-      </Stack>
+      </Stack>,
     ),
   },
   {
     name: 'Medium Space',
-    code: (
+    code: source(
       <Stack space="medium">
         <Placeholder height={40} />
         <Placeholder height={40} />
         <Placeholder height={40} />
-      </Stack>
+      </Stack>,
     ),
   },
   {
     name: 'Gutter Space',
-    code: (
+    code: source(
       <Stack space="gutter">
         <Placeholder height={40} />
         <Placeholder height={40} />
         <Placeholder height={40} />
-      </Stack>
+      </Stack>,
     ),
   },
   {
     name: 'Large Space',
-    code: (
+    code: source(
       <Stack space="large">
         <Placeholder height={40} />
         <Placeholder height={40} />
         <Placeholder height={40} />
-      </Stack>
+      </Stack>,
     ),
   },
   {
     name: 'Responsive Space',
-    code: (
+    code: source(
       <Stack space={['small', 'large', 'none']}>
         <Placeholder height={40} />
         <Placeholder height={40} />
         <Placeholder height={40} />
-      </Stack>
+      </Stack>,
     ),
   },
 ];

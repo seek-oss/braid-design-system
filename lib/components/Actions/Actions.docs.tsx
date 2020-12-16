@@ -1,50 +1,58 @@
 import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import { Actions, Button, TextLink, Stack, Text } from '../';
+import source from '../../utils/source.macro';
+import { Actions, Button, TextLink, Text, Strong, IconDelete } from '../';
 
 const docs: ComponentDocs = {
   category: 'Content',
   migrationGuide: true,
-  description: (
-    <Stack space="large">
-      <Text>Typically used for actions at the end of forms.</Text>
-      <Text>
-        Should only contain{' '}
-        <TextLink href="/components/Button">Button,</TextLink>{' '}
-        <TextLink href="/components/ButtonLink">ButtonLink,</TextLink>{' '}
-        <TextLink href="/components/TextLink">TextLink</TextLink> and{' '}
-        <TextLink href="/components/TextLinkButton">TextLinkButton</TextLink>{' '}
-        elements.
-      </Text>
-    </Stack>
-  ),
-  examples: [
+  Example: () =>
+    source(
+      <Actions>
+        <Button>Regular Button</Button>
+        <Button weight="weak">Weak Button</Button>
+        <TextLink href="#">TextLink</TextLink>
+      </Actions>,
+    ),
+  alternatives: [
     {
-      label: 'Actions with Strong Button and TextLink',
-      Example: () => (
-        <Actions>
-          <Button weight="strong">Strong</Button>
-          <TextLink href="#">TextLink</TextLink>
-        </Actions>
-      ),
+      name: 'Inline',
+      description: 'For fine-grained control of spacing and alignment.',
     },
     {
-      label: 'Actions with Regular Button and Weak Button',
-      Example: () => (
-        <Actions>
-          <Button weight="regular">Regular</Button>
-          <Button weight="weak">Weak</Button>
-        </Actions>
+      name: 'Columns',
+      description: 'For fine-grained control of widths, spacing and alignment.',
+    },
+  ],
+  additional: [
+    {
+      label: 'Destructive actions',
+      description: (
+        <Text>
+          For destructive actions like “Delete” you can set the{' '}
+          <TextLink href="/components/Button">Button</TextLink> element’s{' '}
+          <Strong>tone</Strong> to <Strong>critical.</Strong>
+        </Text>
       ),
+      Example: () =>
+        source(
+          <Actions>
+            <Button tone="critical">
+              <IconDelete /> Delete
+            </Button>
+            <TextLink href="#">Cancel</TextLink>
+          </Actions>,
+        ),
     },
     {
-      label: 'Actions with Weak Buttons and Regular Button',
-      Example: () => (
-        <Actions>
-          <Button weight="weak">Weak</Button>
-          <Button weight="weak">Weak</Button>
-          <Button weight="regular">Regular</Button>
-        </Actions>
+      label: 'Contextual design',
+      description: (
+        <Text>
+          When nested inside Actions,{' '}
+          <TextLink href="/components/TextLink">TextLink</TextLink> is given a
+          more prominent treatment to visually align with{' '}
+          <TextLink href="/components/Button">Button</TextLink>.
+        </Text>
       ),
     },
   ],

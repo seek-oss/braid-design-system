@@ -1,170 +1,87 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { ComponentExample } from '../../../site/src/types';
 import { Placeholder } from '../private/Placeholder/Placeholder';
-import { Box, Inline } from '../';
-
-const Container = ({ children }: { children: ReactNode }) => (
-  <Box style={{ maxWidth: '240px' }}>{children}</Box>
-);
+import { Inline } from '../';
+import source from '../../utils/source.macro';
 
 export const galleryItems: ComponentExample[] = [
   {
-    label: 'Basic example',
-    Container,
-    Example: () => (
-      <Inline space="small">
-        <Placeholder width={48} height={48} />
-        <Placeholder width={48} height={48} />
-        <Placeholder width={48} height={48} />
-        <Placeholder width={48} height={48} />
-        <Placeholder width={48} height={48} />
-        <Placeholder width={48} height={48} />
-        <Placeholder width={48} height={48} />
-        <Placeholder width={48} height={48} />
-        <Placeholder width={48} height={48} />
-        <Placeholder width={48} height={48} />
-      </Inline>
-    ),
+    label: 'Spacing',
+    Example: () =>
+      source(
+        <Inline space="large">
+          <Placeholder width={48} height={48} />
+          <Placeholder width={48} height={48} />
+          <Placeholder width={48} height={48} />
+          <Placeholder width={48} height={48} />
+          <Placeholder width={48} height={48} />
+        </Inline>,
+      ),
   },
   {
-    label: "Responsive space, e.g. ['xxsmall', 'medium']",
-    Container,
-    Example: () => (
-      <Inline space={['xxsmall', 'medium']}>
-        <Placeholder width={48} height={48} />
-        <Placeholder width={48} height={48} />
-        <Placeholder width={48} height={48} />
-        <Placeholder width={48} height={48} />
-        <Placeholder width={48} height={48} />
-        <Placeholder width={48} height={48} />
-        <Placeholder width={48} height={48} />
-        <Placeholder width={48} height={48} />
-        <Placeholder width={48} height={48} />
-        <Placeholder width={48} height={48} />
-      </Inline>
-    ),
+    label: 'Vertical align top',
+    Example: () =>
+      source(
+        <Inline space="small" alignY="top">
+          <Placeholder width={60} height={20} />
+          <Placeholder width={80} height={60} label="top" />
+          <Placeholder width={60} height={20} />
+        </Inline>,
+      ),
   },
   {
-    label: 'Align horizontally to center',
-    Container,
-    Example: () => (
-      <Inline space="small" align="center">
-        <Placeholder width={48} height={48} />
-        <Placeholder width={48} height={48} />
-        <Placeholder width={48} height={48} />
-        <Placeholder width={48} height={48} />
-        <Placeholder width={48} height={48} />
-        <Placeholder width={48} height={48} />
-        <Placeholder width={48} height={48} />
-        <Placeholder width={48} height={48} />
-        <Placeholder width={48} height={48} />
-        <Placeholder width={48} height={48} />
-      </Inline>
-    ),
+    label: 'Vertical align center',
+    Example: () =>
+      source(
+        <Inline space="small" alignY="center">
+          <Placeholder width={60} height={20} />
+          <Placeholder width={80} height={60} label="center" />
+          <Placeholder width={60} height={20} />
+        </Inline>,
+      ),
   },
   {
-    label: 'Align horizontally to right',
-    Container,
-    Example: () => (
-      <Inline space="small" align="right">
-        <Placeholder width={48} height={48} />
-        <Placeholder width={48} height={48} />
-        <Placeholder width={48} height={48} />
-        <Placeholder width={48} height={48} />
-        <Placeholder width={48} height={48} />
-        <Placeholder width={48} height={48} />
-        <Placeholder width={48} height={48} />
-        <Placeholder width={48} height={48} />
-        <Placeholder width={48} height={48} />
-        <Placeholder width={48} height={48} />
-      </Inline>
-    ),
+    label: 'Vertical align bottom',
+    Example: () =>
+      source(
+        <Inline space="small" alignY="bottom">
+          <Placeholder width={60} height={20} />
+          <Placeholder width={80} height={60} label="bottom" />
+          <Placeholder width={60} height={20} />
+        </Inline>,
+      ),
   },
   {
-    label:
-      'Responsive alignment (e.g. center on mobile, left from tablet upwards)',
-    Container,
-    Example: () => (
-      <Inline space="small" align={['center', 'left']}>
-        <Placeholder width={48} height={48} />
-        <Placeholder width={48} height={48} />
-        <Placeholder width={48} height={48} />
-        <Placeholder width={48} height={48} />
-        <Placeholder width={48} height={48} />
-        <Placeholder width={48} height={48} />
-        <Placeholder width={48} height={48} />
-        <Placeholder width={48} height={48} />
-        <Placeholder width={48} height={48} />
-        <Placeholder width={48} height={48} />
-      </Inline>
-    ),
+    label: 'Horizontal align left',
+    Example: () =>
+      source(
+        <Inline space="small" align="left">
+          <Placeholder width={80} height={60} label="left" />
+          <Placeholder width={80} height={60} />
+          <Placeholder width={80} height={60} />
+        </Inline>,
+      ),
   },
   {
-    label: 'Align vertically',
-    Container,
-    Example: () => (
-      <Inline space="small" alignY="center">
-        <Placeholder width={48} height={40} />
-        <Placeholder width={48} height={100} />
-        <Placeholder width={48} height={60} />
-      </Inline>
-    ),
+    label: 'Horizontal align center',
+    Example: () =>
+      source(
+        <Inline space="small" align="center">
+          <Placeholder width={80} height={60} />
+          <Placeholder width={80} height={60} label="center" />
+          <Placeholder width={80} height={60} />
+        </Inline>,
+      ),
   },
   {
-    label: 'Collapse below tablet',
-    Container,
-    Example: () => (
-      <Inline space="small" collapseBelow="tablet">
-        <Placeholder width={48} height={48} />
-        <Placeholder width={48} height={48} />
-        <Placeholder width={48} height={48} />
-        <Placeholder width={48} height={48} />
-        <Placeholder width={48} height={48} />
-        <Placeholder width={48} height={48} />
-      </Inline>
-    ),
-  },
-  {
-    label: 'Collapse below desktop',
-    Container,
-    Example: () => (
-      <Inline space="small" collapseBelow="desktop">
-        <Placeholder width={48} height={48} />
-        <Placeholder width={48} height={48} />
-        <Placeholder width={48} height={48} />
-        <Placeholder width={48} height={48} />
-        <Placeholder width={48} height={48} />
-        <Placeholder width={48} height={48} />
-      </Inline>
-    ),
-  },
-  {
-    label:
-      'Collapse below desktop with responsive space (e.g. "xxsmall" on mobile, "small" on tablet, "large" on desktop)',
-    Container,
-    Example: () => (
-      <Inline space={['xxsmall', 'medium', 'large']} collapseBelow="desktop">
-        <Placeholder width={48} height={48} />
-        <Placeholder width={48} height={48} />
-        <Placeholder width={48} height={48} />
-        <Placeholder width={48} height={48} />
-        <Placeholder width={48} height={48} />
-        <Placeholder width={48} height={48} />
-      </Inline>
-    ),
-  },
-  {
-    label: 'Collapse below desktop with alignment (e.g. "center")',
-    Container,
-    Example: () => (
-      <Inline space="small" collapseBelow="desktop" align="center">
-        <Placeholder width={48} height={48} />
-        <Placeholder width={48} height={48} />
-        <Placeholder width={48} height={48} />
-        <Placeholder width={48} height={48} />
-        <Placeholder width={48} height={48} />
-        <Placeholder width={48} height={48} />
-      </Inline>
-    ),
+    label: 'Horizontal align right',
+    Example: () =>
+      source(
+        <Inline space="small" align="right">
+          <Placeholder width={80} height={60} />
+          <Placeholder width={80} height={60} />
+          <Placeholder width={80} height={60} label="right" />
+        </Inline>,
+      ),
   },
 ];

@@ -1,17 +1,20 @@
 import React from 'react';
 import { ComponentDocs } from '../../../../site/src/types';
-import { IconCreditCard } from './IconCreditCard';
+import source from '../../../utils/source.macro';
+import { IconCreditCard, Heading, Stack } from '../../';
 
 const docs: ComponentDocs = {
   category: 'Icon',
   migrationGuide: true,
-  foundation: true,
-  examples: [
-    {
-      label: 'Default',
-      Example: () => <IconCreditCard />,
-    },
-  ],
+  Example: () =>
+    source(
+      <Stack space="none" align="center">
+        <Heading component="div" level="1">
+          <IconCreditCard />
+        </Heading>
+      </Stack>,
+    ),
+  alternatives: [],
 };
 
 export default docs;

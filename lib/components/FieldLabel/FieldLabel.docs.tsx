@@ -1,53 +1,71 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
+import source from '../../utils/source.macro';
 import { ComponentDocs } from '../../../site/src/types';
-import { FieldLabel, TextLink } from '../';
-
-const Container = ({ children }: { children: ReactNode }) => (
-  <div style={{ maxWidth: '300px' }}>{children}</div>
-);
+import {
+  FieldLabel,
+  Stack,
+  Text,
+  TextLink,
+  Strong,
+  Box,
+  Hidden,
+  Alert,
+  List,
+} from '../';
+import { Placeholder } from '../../playroom/components';
 
 const docs: ComponentDocs = {
   category: 'Content',
-  examples: [
+  Example: () =>
+    source(
+      <Box style={{ maxWidth: 400 }}>
+        <Stack space="small">
+          <FieldLabel
+            htmlFor="field"
+            label="Label"
+            secondaryLabel={
+              <>
+                Secondary<Hidden below="tablet"> label</Hidden>
+              </>
+            }
+            tertiaryLabel={
+              <TextLink href="#">
+                Tertiary<Hidden below="tablet"> label</Hidden>
+              </TextLink>
+            }
+          />
+          <Box id="field">
+            <Placeholder height={40} />
+          </Box>
+        </Stack>
+      </Box>,
+    ),
+  description: (
+    <Alert tone="info">
+      <Text weight="medium">
+        This component is only required when building a custom field that isn’t
+        provided by Braid.
+      </Text>
+    </Alert>
+  ),
+  accessibility: (
+    <Text>
+      The <Strong>htmlFor</Strong> prop is mandatory, which accepts the ID of
+      the field being labelled. This ensures that screen readers are able to
+      associate the label with its associated field.
+    </Text>
+  ),
+  alternatives: [],
+  additional: [
     {
-      label: 'Standard Field Label',
-      Container,
-      Example: ({ id }) => (
-        <FieldLabel htmlFor={id} label="This is a field label" />
-      ),
-    },
-    {
-      label: 'Field Label with secondary',
-      Container,
-      Example: ({ id }) => (
-        <FieldLabel
-          htmlFor={id}
-          label="Username"
-          secondaryLabel="Max 30 characters"
-        />
-      ),
-    },
-    {
-      label: 'Field Label with tertiary label',
-      Container,
-      Example: ({ id }) => (
-        <FieldLabel
-          htmlFor={id}
-          label="Password"
-          tertiaryLabel={<TextLink href="#">Forgot password?</TextLink>}
-        />
-      ),
-    },
-    {
-      label: 'Field Label with all types',
-      Container,
-      Example: ({ id }) => (
-        <FieldLabel
-          htmlFor={id}
-          label="Title"
-          secondaryLabel="Optional"
-          tertiaryLabel={<TextLink href="#">Help?</TextLink>}
-        />
+      label: 'See also',
+      description: (
+        <List space="large">
+          <Text tone="secondary">
+            <TextLink href="/components/FieldMessage">FieldMessage</TextLink>{' '}
+            &mdash; For displaying messages below a custom field.
+          </Text>
+        </List>
       ),
     },
   ],

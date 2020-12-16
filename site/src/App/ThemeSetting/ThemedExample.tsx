@@ -3,7 +3,6 @@ import { useStyles } from 'sku/react-treat';
 import { useThemeSettings } from './ThemeSettingContext';
 import { BraidProvider, Box } from '../../../../lib/components';
 import { BoxProps } from '../../../../lib/components/Box/Box';
-import * as themes from '../../../../lib/themes';
 import * as styleRefs from './ThemedExample.treat';
 
 interface ThemedExampleProps {
@@ -17,16 +16,16 @@ export function ThemedExample({ background, children }: ThemedExampleProps) {
 
   return (
     <Box opacity={!ready ? 0 : undefined} transition="fast">
-      <BraidProvider styleBody={false} theme={themes[theme]}>
+      <BraidProvider styleBody={false} theme={theme}>
         {background ? (
           <Box
-            background={theme === 'docs' ? 'neutralLight' : 'body'}
+            background={theme.name === 'docs' ? 'neutralLight' : 'body'}
             padding="xsmall"
             className={styles.unthemedBorderRadius}
           >
             <Box
               background={
-                theme === 'docs' && background === 'body'
+                theme.name === 'docs' && background === 'body'
                   ? 'neutralLight'
                   : background
               }

@@ -1,4 +1,5 @@
 import React from 'react';
+import source from '../../utils/source.macro';
 import { Snippets } from '../private/Snippets';
 import {
   Dialog,
@@ -13,15 +14,15 @@ import {
 export const snippets: Snippets = [
   {
     name: 'Standard',
-    code: (
+    code: source(
       <Dialog title="Dialog Heading" open={true}>
         <Placeholder width={250} height={100} />
-      </Dialog>
+      </Dialog>,
     ),
   },
   {
     name: 'With illustration',
-    code: (
+    code: source(
       <Dialog
         title="Illustrated Dialog"
         open={true}
@@ -38,39 +39,39 @@ export const snippets: Snippets = [
             <Button weight="weak">Cancel</Button>
           </Inline>
         </Stack>
-      </Dialog>
+      </Dialog>,
     ),
   },
   {
     name: 'Xsmall',
-    code: (
+    code: source(
       <Dialog title="Dialog Heading" width="xsmall" open={true}>
         <Placeholder width="100%" height={100} />
-      </Dialog>
+      </Dialog>,
     ),
   },
   {
     name: 'Small',
-    code: (
+    code: source(
       <Dialog title="Dialog Heading" width="small" open={true}>
         <Placeholder width="100%" height={100} />
-      </Dialog>
+      </Dialog>,
     ),
   },
   {
     name: 'Medium',
-    code: (
+    code: source(
       <Dialog title="Dialog Heading" width="medium" open={true}>
         <Placeholder width="100%" height={100} />
-      </Dialog>
+      </Dialog>,
     ),
   },
   {
     name: 'Large',
-    code: (
+    code: source(
       <Dialog title="Dialog Heading" width="large" open={true}>
         <Placeholder width="100%" height={100} />
-      </Dialog>
+      </Dialog>,
     ),
   },
 ];

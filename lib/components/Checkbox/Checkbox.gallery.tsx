@@ -1,102 +1,120 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ComponentExample } from '../../../site/src/types';
-import { Badge, Checkbox, Text } from '../';
+import { Badge, Checkbox } from '../';
+import source from '../../utils/source.macro';
+import { Placeholder, Stack } from '../../playroom/components';
 
 export const galleryItems: ComponentExample[] = [
   {
-    label: 'Standard Checkbox',
-    Example: ({ id }) => {
-      const [state, setState] = useState(false);
-      return (
+    label: 'Standard',
+    Example: ({ id, getState, toggleState }) =>
+      source(
         <Checkbox
           id={id}
-          checked={state}
-          onChange={() => setState(!state)}
+          checked={getState('checked')}
+          onChange={() => toggleState('checked')}
           label="Label"
-        />
-      );
-    },
+          badge={
+            <Badge tone="positive" weight="strong">
+              New
+            </Badge>
+          }
+        />,
+      ),
   },
   {
-    label: 'Checked Checkbox',
-    Example: ({ id, handler }) => (
-      <Checkbox id={id} checked={true} onChange={handler} label="Label" />
-    ),
+    label: 'With a critical message',
+    Example: ({ id, getState, toggleState }) =>
+      source(
+        <Checkbox
+          id={id}
+          checked={getState('checked')}
+          onChange={() => toggleState('checked')}
+          label="Label"
+          message="Critical message"
+          tone="critical"
+        />,
+      ),
   },
   {
-    label: 'Mixed state Checkbox',
-    Example: ({ id, handler }) => (
-      <Checkbox id={id} checked="mixed" onChange={handler} label="Label" />
-    ),
+    label: 'With a description',
+    Example: ({ id, getState, toggleState }) =>
+      source(
+        <Checkbox
+          id={id}
+          checked={getState('checked')}
+          onChange={() => toggleState('checked')}
+          label="Label"
+          description="Extra information about the field"
+        />,
+      ),
   },
   {
-    label: 'Disabled Checkbox',
+    label: 'With a Badge',
+    Example: ({ id, getState, toggleState }) =>
+      source(
+        <Checkbox
+          id={id}
+          checked={getState('checked')}
+          onChange={() => toggleState('checked')}
+          label="Label"
+          badge={
+            <Badge tone="positive" weight="strong">
+              Badge
+            </Badge>
+          }
+        />,
+      ),
+  },
+  {
+    label: 'Toggling nested content',
+    Example: ({ id, getState, toggleState, setDefaultState }) =>
+      source(
+        <>
+          {setDefaultState('checked', true)}
+          <Checkbox
+            id={id}
+            checked={getState('checked')}
+            onChange={() => toggleState('checked')}
+            label="Label"
+          >
+            <Placeholder height={100} />
+          </Checkbox>
+        </>,
+      ),
+  },
+  {
+    label: 'States',
     background: 'card',
-    Example: ({ id, handler }) => (
-      <Checkbox
-        id={id}
-        disabled={true}
-        checked={false}
-        onChange={handler}
-        label="Label"
-      />
-    ),
-  },
-  {
-    label: 'Critical Checkbox',
-    Example: ({ id, handler }) => (
-      <Checkbox
-        id={id}
-        checked={false}
-        onChange={handler}
-        label="Label"
-        message="This is a critical message"
-        tone="critical"
-      />
-    ),
-  },
-  {
-    label: 'Checkbox with description',
-    Example: ({ id, handler }) => (
-      <Checkbox
-        id={id}
-        checked={false}
-        onChange={handler}
-        label="Label"
-        description="Extra information about the field"
-      />
-    ),
-  },
-  {
-    label: 'Checkbox with a Badge',
-    Example: ({ id, handler }) => (
-      <Checkbox
-        id={id}
-        checked={false}
-        onChange={handler}
-        label="Label"
-        badge={
-          <Badge tone="positive" weight="strong">
-            New
-          </Badge>
-        }
-      />
-    ),
-  },
-  {
-    label: 'Checkbox with nested content visible only when checked',
-    Example: ({ id }) => {
-      const [state, setState] = useState(true);
-      return (
-        <Checkbox
-          id={id}
-          checked={state}
-          onChange={() => setState(!state)}
-          label="Label"
-        >
-          <Text>This text is visible when the checkbox is checked.</Text>
-        </Checkbox>
-      );
-    },
+    Example: ({ id, handler }) =>
+      source(
+        <Stack space="medium">
+          <Checkbox
+            id={`chk_states_${id}_1`}
+            checked={false}
+            label="Unchecked"
+            onChange={handler}
+          />
+          <Checkbox
+            id={`chk_states_${id}_2`}
+            checked={true}
+            label="Checked"
+            onChange={handler}
+          />
+          <Checkbox
+            id={`chk_states_${id}_3`}
+            checked="mixed"
+            label="Mixed"
+            onChange={handler}
+          />
+          <Checkbox
+            id={`chk_states_${id}_4`}
+            disabled={true}
+            checked={false}
+            onChange={handler}
+            label="Disabled"
+          />
+        </Stack>,
+      ),
   },
 ];

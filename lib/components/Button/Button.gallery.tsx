@@ -1,50 +1,74 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { ComponentExample } from '../../../site/src/types';
-import { Button } from '../';
-
-const Container = ({ children }: { children: ReactNode }) => (
-  <div style={{ maxWidth: '300px' }}>{children}</div>
-);
+import source from '../../utils/source.macro';
+import { Button, Box, Inline } from '../';
 
 export const galleryItems: ComponentExample[] = [
   {
-    label: 'Default Button',
-    Container,
-    Example: () => <Button>Submit</Button>,
+    label: 'Regular weight',
+    Example: () =>
+      source(
+        <Inline space="small">
+          <Button>Submit</Button>
+        </Inline>,
+      ),
   },
   {
-    label: 'Strong Button',
-    Container,
-    Example: () => <Button weight="strong">Submit</Button>,
+    label: 'Strong weight',
+    Example: () =>
+      source(
+        <Inline space="small">
+          <Button weight="strong">Submit</Button>
+        </Inline>,
+      ),
   },
   {
-    label: 'Weak Button',
-    Container,
-    Example: () => <Button weight="weak">Submit</Button>,
+    label: 'Weak weight',
+    Example: () =>
+      source(
+        <Inline space="small">
+          <Button weight="weak">Submit</Button>
+        </Inline>,
+      ),
   },
   {
     label: 'Critical Button',
-    Container,
-    Example: () => <Button tone="critical">Delete</Button>,
+    Example: () =>
+      source(
+        <Inline space="small">
+          <Button tone="critical">Delete</Button>
+        </Inline>,
+      ),
   },
   {
     label: 'Weak Critical Button',
-    Container,
-    Example: () => (
-      <Button weight="weak" tone="critical">
-        Delete
-      </Button>
-    ),
+    Example: () =>
+      source(
+        <Inline space="small">
+          <Button weight="weak" tone="critical">
+            Delete
+          </Button>
+        </Inline>,
+      ),
   },
   {
-    label: 'Weak Button on Brand Background',
-    background: 'brand',
-    Container,
-    Example: () => <Button weight="weak">Submit</Button>,
+    label: 'Weak weight on dark background',
+    Example: () =>
+      source(
+        <Box background="brand" padding="large" borderRadius="standard">
+          <Inline space="small">
+            <Button weight="weak">Weak Button</Button>
+          </Inline>
+        </Box>,
+      ),
   },
   {
-    label: 'Loading Button',
-    Container,
-    Example: () => <Button loading>Loading</Button>,
+    label: 'Loading state',
+    Example: () =>
+      source(
+        <Inline space="small">
+          <Button loading>Loading</Button>
+        </Inline>,
+      ),
   },
 ];

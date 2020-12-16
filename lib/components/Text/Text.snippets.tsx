@@ -1,38 +1,43 @@
 import React from 'react';
 import { Snippets } from '../private/Snippets';
 import { Text } from '../../playroom/components';
+import source from '../../utils/source.macro';
 
 export const snippets: Snippets = [
   {
     name: 'Standard',
-    code: <Text>Standard text</Text>,
-  },
-  {
-    name: 'Small',
-    code: <Text size="small">Small text</Text>,
+    code: source(<Text>Standard text</Text>),
   },
   {
     name: 'Large',
-    code: <Text size="large">Large text</Text>,
+    code: source(<Text size="large">Large text</Text>),
+  },
+  {
+    name: 'Small',
+    code: source(<Text size="small">Small text</Text>),
+  },
+  {
+    name: 'Xsmall',
+    code: source(<Text size="xsmall">Xsmall text</Text>),
   },
   {
     name: 'Tone (critical)',
-    code: <Text tone="critical">Critical text</Text>,
+    code: source(<Text tone="critical">Critical text</Text>),
   },
   {
     name: 'Tone (positive)',
-    code: <Text tone="positive">Positive text</Text>,
+    code: source(<Text tone="positive">Positive text</Text>),
   },
   {
     name: 'Tone (secondary)',
-    code: <Text tone="secondary">Secondary text</Text>,
+    code: source(<Text tone="secondary">Secondary text</Text>),
   },
   {
     name: 'Weight (strong)',
-    code: <Text weight="strong">Strong text</Text>,
+    code: source(<Text weight="strong">Strong text</Text>),
   },
   {
     name: 'Weight (medium)',
-    code: <Text weight="medium">Medium text</Text>,
+    code: source(<Text weight="medium">Medium text</Text>),
   },
 ];

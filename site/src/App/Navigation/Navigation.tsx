@@ -36,7 +36,7 @@ const Header = ({
   <Box paddingY={headerSpaceY} paddingX={gutterSize}>
     <Text component="div" baseline={false}>
       <Box display="flex" alignItems="center">
-        <Hidden print above="mobile">
+        <Hidden print above="tablet">
           <Box paddingRight="medium" display="flex" alignItems="center">
             <MenuButton open={menuOpen} onClick={menuClick} />
           </Box>
@@ -133,7 +133,9 @@ export const Navigation = ({ children }: NavigationProps) => {
           background: bodyBackground,
         }}
       >
-        {children}
+        <Box paddingBottom="xxlarge" marginBottom="xxlarge">
+          {children}
+        </Box>
       </Box>
 
       <FixedContentBlock

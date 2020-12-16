@@ -10,11 +10,12 @@ import {
   Stack,
   Placeholder,
 } from '../../playroom/components';
+import source from '../../utils/source.macro';
 
 export const snippets: Snippets = [
   {
     name: '2 Tabs',
-    code: (
+    code: source(
       <TabsProvider>
         <Stack space="medium">
           <Tabs>
@@ -30,12 +31,12 @@ export const snippets: Snippets = [
             </TabPanel>
           </TabPanels>
         </Stack>
-      </TabsProvider>
+      </TabsProvider>,
     ),
   },
   {
     name: '2 Tabs with Badge',
-    code: (
+    code: source(
       <TabsProvider>
         <Stack space="medium">
           <Tabs>
@@ -51,12 +52,12 @@ export const snippets: Snippets = [
             </TabPanel>
           </TabPanels>
         </Stack>
-      </TabsProvider>
+      </TabsProvider>,
     ),
   },
   {
     name: '2 Tabs (Centred)',
-    code: (
+    code: source(
       <TabsProvider>
         <Stack space="medium">
           <Tabs align="center">
@@ -72,12 +73,12 @@ export const snippets: Snippets = [
             </TabPanel>
           </TabPanels>
         </Stack>
-      </TabsProvider>
+      </TabsProvider>,
     ),
   },
   {
     name: '3 Tabs',
-    code: (
+    code: source(
       <TabsProvider>
         <Stack space="medium">
           <Tabs>
@@ -97,12 +98,12 @@ export const snippets: Snippets = [
             </TabPanel>
           </TabPanels>
         </Stack>
-      </TabsProvider>
+      </TabsProvider>,
     ),
   },
   {
     name: '3 Tabs with Badge',
-    code: (
+    code: source(
       <TabsProvider>
         <Stack space="medium">
           <Tabs>
@@ -122,12 +123,12 @@ export const snippets: Snippets = [
             </TabPanel>
           </TabPanels>
         </Stack>
-      </TabsProvider>
+      </TabsProvider>,
     ),
   },
   {
     name: '3 Tabs (Centred)',
-    code: (
+    code: source(
       <TabsProvider>
         <Stack space="medium">
           <Tabs align="center">
@@ -147,7 +148,7 @@ export const snippets: Snippets = [
             </TabPanel>
           </TabPanels>
         </Stack>
-      </TabsProvider>
+      </TabsProvider>,
     ),
   },
 ];

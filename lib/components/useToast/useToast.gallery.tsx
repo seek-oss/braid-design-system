@@ -1,171 +1,224 @@
 import React from 'react';
 import { useTheme } from 'sku/react-treat';
 import { ComponentExample } from '../../../site/src/types';
-import { Box, Button, Stack, useToast, IconPromote } from '..';
+import { Button, IconPromote, Inline } from '..';
 import Toast from './Toast';
+import source from '../../utils/source.macro';
 
 export const galleryItems: ComponentExample[] = [
   {
-    label: 'Positive Toast',
-    playroom: false,
-    Example: ({ id, handler }) => {
-      const showToast = useToast();
+    label: 'With a positive message',
+    Example: ({ id, handler, showToast }) => {
       const theme = useTheme();
 
-      const toastProps = {
-        message: 'Positive toast',
-        tone: 'positive',
-        action: { label: 'View', onClick: () => {} },
-      } as const;
-
-      return (
-        <Stack space="large" align="center">
-          <Toast
-            id={id}
-            dedupeKey={id}
-            shouldRemove={false}
-            treatTheme={theme}
-            onClear={handler}
-            {...toastProps}
-          />
-          <Box display="flex">
-            <Button onClick={() => showToast(toastProps)}>
-              Show animation <IconPromote alignY="lowercase" />
-            </Button>
-          </Box>
-        </Stack>
+      const { code } = source(
+        <Inline space="small">
+          <Button
+            onClick={() =>
+              showToast({
+                message: 'Positive message',
+                tone: 'positive',
+              })
+            }
+          >
+            Show Toast
+          </Button>
+        </Inline>,
       );
-    },
-    code: `
-        const showToast = useToast();
 
-        showToast({
-          message: 'Positive toast',
-          tone: 'positive',
-          action: { label: 'View', onClick: () => {} },
-        })
-      `,
+      return {
+        code,
+        value: (
+          <Inline space="gutter" align="center">
+            <Toast
+              id={id}
+              dedupeKey={id}
+              shouldRemove={false}
+              treatTheme={theme}
+              onClear={handler}
+              message="Positive message"
+              tone="positive"
+            />
+          </Inline>
+        ),
+      };
+    },
   },
   {
-    label: 'Positive Toast with description',
-    playroom: false,
-    Example: ({ id, handler }) => {
-      const showToast = useToast();
+    label: 'With a critical message',
+    Example: ({ id, handler, showToast }) => {
       const theme = useTheme();
 
-      const toastProps = {
-        message: 'Positive toast',
-        tone: 'positive',
-        description: 'With a longer piece of text describing what has occured.',
-        action: { label: 'View', onClick: () => {} },
-      } as const;
-
-      return (
-        <Stack space="large" align="center">
-          <Toast
-            id={id}
-            dedupeKey={id}
-            shouldRemove={false}
-            treatTheme={theme}
-            onClear={handler}
-            {...toastProps}
-          />
-          <Box display="flex">
-            <Button onClick={() => showToast(toastProps)}>
-              Show animation <IconPromote alignY="lowercase" />
-            </Button>
-          </Box>
-        </Stack>
+      const { code } = source(
+        <Inline space="small">
+          <Button
+            onClick={() =>
+              showToast({
+                message: 'Critical message',
+                tone: 'critical',
+              })
+            }
+          >
+            Show Toast
+          </Button>
+        </Inline>,
       );
-    },
-    code: `
-        const showToast = useToast();
 
-        showToast({
-          message: 'Positive toast',
-          tone: 'positive',
-          description: 'With a longer piece of text describing what has occured.',
-          action: { label: 'View', onClick: () => {} },
-        })
-      `,
+      return {
+        code,
+        value: (
+          <Inline space="gutter" align="center">
+            <Toast
+              id={id}
+              dedupeKey={id}
+              shouldRemove={false}
+              treatTheme={theme}
+              onClear={handler}
+              message="Critical message"
+              tone="critical"
+            />
+          </Inline>
+        ),
+      };
+    },
   },
   {
-    label: 'Critical Toast',
-    playroom: false,
-    Example: ({ id, handler }) => {
-      const showToast = useToast();
+    label: 'With a description',
+    Example: ({ id, handler, showToast }) => {
       const theme = useTheme();
 
-      const toastProps = {
-        message: 'Critical toast',
-        tone: 'critical',
-      } as const;
+      const { code } = source(
+        <Inline space="small">
+          <Button
+            onClick={() =>
+              showToast({
+                message: 'Toast message',
+                tone: 'positive',
+                description:
+                  'With a longer piece of text describing what has occured.',
+              })
+            }
+          >
+            Show Toast
+          </Button>
+        </Inline>,
+      );
 
-      return (
-        <Stack space="large" align="center">
+      return {
+        code,
+        value: (
           <Toast
             id={id}
             dedupeKey={id}
             shouldRemove={false}
             treatTheme={theme}
             onClear={handler}
-            {...toastProps}
+            message="Toast message"
+            tone="positive"
+            description="With a longer piece of text describing what has occured."
           />
-          <Box display="flex">
-            <Button onClick={() => showToast(toastProps)}>
-              Show animation <IconPromote alignY="lowercase" />
-            </Button>
-          </Box>
-        </Stack>
-      );
+        ),
+      };
     },
-    code: `
-        const showToast = useToast();
-
-        showToast({ message: 'Critical toast', tone: 'critical' })
-        `,
   },
   {
-    label: 'Critical Toast with description',
-    playroom: false,
-    Example: ({ id, handler }) => {
-      const showToast = useToast();
+    label: 'With an action',
+    Example: ({ id, handler, showToast }) => {
       const theme = useTheme();
 
-      const toastProps = {
-        message: 'Critical toast',
-        tone: 'critical',
-        description: 'With a longer piece of text describing what went wrong.',
-        action: { label: 'Goto error', onClick: () => {} },
-      } as const;
+      const { code } = source(
+        <Inline space="small">
+          <Button
+            onClick={() =>
+              showToast({
+                message: 'Toast message',
+                tone: 'critical',
+                action: { label: 'Action', onClick: () => {} },
+              })
+            }
+          >
+            Show Toast
+          </Button>
+        </Inline>,
+      );
 
-      return (
-        <Stack space="large" align="center">
+      return {
+        code,
+        value: (
           <Toast
             id={id}
             dedupeKey={id}
             shouldRemove={false}
             treatTheme={theme}
             onClear={handler}
-            {...toastProps}
+            message="Toast message"
+            tone="critical"
+            action={{ label: 'Action', onClick: handler }}
           />
-          <Box display="flex">
-            <Button onClick={() => showToast(toastProps)}>
-              Show animation <IconPromote alignY="lowercase" />
-            </Button>
-          </Box>
-        </Stack>
-      );
+        ),
+      };
     },
-    code: `
-        const showToast = useToast();
+  },
+  {
+    label: 'With an action and description',
+    Example: ({ id, handler, showToast }) => {
+      const theme = useTheme();
 
-        showToast({
-          message: 'Critical toast',
-          tone: 'critical',
-          description: 'With a longer piece of text describing what went wrong.',
-          action: { label: 'Goto error', onClick: () => {} },
-        })
-      `,
+      const { code } = source(
+        <Inline space="small">
+          <Button
+            onClick={() =>
+              showToast({
+                message: 'Toast message',
+                tone: 'positive',
+                description:
+                  'With a longer piece of text describing what has occured.',
+                action: { label: 'Action', onClick: () => {} },
+              })
+            }
+          >
+            Show Toast
+          </Button>
+        </Inline>,
+      );
+
+      return {
+        code,
+        value: (
+          <Toast
+            id={id}
+            dedupeKey={id}
+            shouldRemove={false}
+            treatTheme={theme}
+            onClear={handler}
+            message="Toast message"
+            tone="positive"
+            description="With a longer piece of text describing what has occured."
+            action={{ label: 'Action', onClick: handler }}
+          />
+        ),
+      };
+    },
+  },
+  {
+    label: 'Preview animation',
+    Example: ({ showToast }) =>
+      source(
+        <Inline space="small" align="center">
+          <Button
+            onClick={() =>
+              showToast({
+                message: 'Toast message',
+                tone: 'critical',
+                description:
+                  'With a longer piece of text describing what has occured.',
+                action: { label: 'Action', onClick: () => {} },
+              })
+            }
+          >
+            Show animation <IconPromote alignY="lowercase" />
+          </Button>
+        </Inline>,
+      ),
   },
 ];

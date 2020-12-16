@@ -1,30 +1,31 @@
 import React from 'react';
+import source from '../../utils/source.macro';
 import { Snippets } from '../private/Snippets';
 import { Button } from '../../playroom/components';
 
 export const snippets: Snippets = [
   {
     name: 'Standard',
-    code: <Button>Button</Button>,
+    code: source(<Button>Submit</Button>),
   },
   {
     name: 'Strong',
-    code: <Button weight="strong">Button</Button>,
+    code: source(<Button weight="strong">Submit</Button>),
   },
   {
     name: 'Weak',
-    code: <Button weight="weak">Button</Button>,
+    code: source(<Button weight="weak">Submit</Button>),
   },
   {
     name: 'Critical',
-    code: <Button tone="critical">Button</Button>,
+    code: source(<Button tone="critical">Button</Button>),
   },
   {
     name: 'Critical Weak',
-    code: (
+    code: source(
       <Button weight="weak" tone="critical">
         Button
-      </Button>
+      </Button>,
     ),
   },
 ];

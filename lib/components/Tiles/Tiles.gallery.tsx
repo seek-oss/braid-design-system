@@ -1,53 +1,71 @@
 import React from 'react';
 import { ComponentExample } from '../../../site/src/types';
-import { Tiles, Card, Text } from '../';
+import { Tiles } from '../';
 import { Placeholder } from '../private/Placeholder/Placeholder';
-
-const exampleRows = 3;
+import source from '../../utils/source.macro';
 
 export const galleryItems: ComponentExample[] = [
   {
     label: '3 columns',
-    Example: () => (
-      <Tiles space="small" columns={3}>
-        {[...new Array(3 * exampleRows)].map((_, i) => (
-          <Placeholder key={i} height={40} />
-        ))}
-      </Tiles>
-    ),
+    Example: () =>
+      source(
+        <Tiles columns={3} space="small">
+          <Placeholder height={40} />
+          <Placeholder height={40} />
+          <Placeholder height={40} />
+          <Placeholder height={40} />
+          <Placeholder height={40} />
+          <Placeholder height={40} />
+          <Placeholder height={40} />
+          <Placeholder height={40} />
+          <Placeholder height={40} />
+        </Tiles>,
+      ),
   },
   {
-    label: 'Responsive columns (e.g. 1 on mobile, 4 from tablet upwards',
-    Example: () => (
-      <Tiles space="xsmall" columns={[1, 4]}>
-        {[...new Array(4 * exampleRows)].map((_, i) => (
-          <Placeholder key={i} height={40} />
-        ))}
-      </Tiles>
-    ),
+    label: 'Responsive columns (e.g. 2 on mobile, 4 from tablet upwards)',
+    Example: () =>
+      source(
+        <Tiles space="small" columns={[2, 4]}>
+          <Placeholder height={40} />
+          <Placeholder height={40} />
+          <Placeholder height={40} />
+          <Placeholder height={40} />
+          <Placeholder height={40} />
+          <Placeholder height={40} />
+          <Placeholder height={40} />
+          <Placeholder height={40} />
+          <Placeholder height={40} />
+          <Placeholder height={40} />
+        </Tiles>,
+      ),
   },
   {
-    label: 'Dividers (when in a single column)',
-    Example: () => (
-      <Tiles space={['none', 'small']} columns={[1, 2]} dividers>
-        {[...new Array(2 * exampleRows)].map((_, i) => (
-          <Card key={i}>
-            <Text>Tile</Text>
-          </Card>
-        ))}
-      </Tiles>
-    ),
+    label: 'Space between tiles',
+    Example: () =>
+      source(
+        <Tiles space="large" columns={3}>
+          <Placeholder height={40} />
+          <Placeholder height={40} />
+          <Placeholder height={40} />
+          <Placeholder height={40} />
+          <Placeholder height={40} />
+          <Placeholder height={40} />
+          <Placeholder height={40} />
+          <Placeholder height={40} />
+          <Placeholder height={40} />
+        </Tiles>,
+      ),
   },
   {
-    label: 'Strong dividers (when in a single column)',
-    Example: () => (
-      <Tiles space={['none', 'small']} columns={[1, 2]} dividers="strong">
-        {[...new Array(2 * exampleRows)].map((_, i) => (
-          <Card key={i}>
-            <Text>Tile</Text>
-          </Card>
-        ))}
-      </Tiles>
-    ),
+    label: 'Dividers (when in single column)',
+    Example: () =>
+      source(
+        <Tiles space="medium" columns={1} dividers>
+          <Placeholder height={80} />
+          <Placeholder height={80} />
+          <Placeholder height={80} />
+        </Tiles>,
+      ),
   },
 ];

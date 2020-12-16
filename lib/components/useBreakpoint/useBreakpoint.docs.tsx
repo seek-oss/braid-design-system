@@ -1,38 +1,40 @@
 import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import { Alert } from '../Alert/Alert';
-import { Strong } from '../Strong/Strong';
-import { Stack } from '../Stack/Stack';
-import { Text } from '../Text/Text';
-
-import { useBreakpoint } from './useBreakpoint';
+import { useBreakpoint, Alert, Strong, Text } from '../../../';
+import source from '../../utils/source.macro';
 
 const docs: ComponentDocs = {
   category: 'Logic',
-  description: (
-    <Stack space="large">
+  Example: () =>
+    source(
       <Text>
-        This hook will return the breakpoint the browser viewport currently
-        falls within (<Strong>mobile</Strong>, <Strong>tablet</Strong> or{' '}
-        <Strong>desktop</Strong>). As this can only be calculated in the
-        browser, the value may also be null. Window resizing is supported.
+        Current breakpoint: <Strong>{useBreakpoint()}</Strong>
+      </Text>,
+    ),
+  description: (
+    <Alert tone="caution">
+      <Text weight="medium">
+        This Hook returns <Strong>null</Strong> when rendering server-side or
+        statically rendering, so you should avoid this Hook where possible.
+        Responsive props and media queries are preferable in most cases.
       </Text>
-      <Alert tone="caution">
-        <Text>
-          Avoid use of this hook where possible. Responsive properties and media
-          queries are a better option in most cases.
-        </Text>
-      </Alert>
-    </Stack>
+    </Alert>
   ),
-  examples: [
+  alternatives: [{ name: 'Box', description: 'For custom layouts.' }],
+  additional: [
     {
+      label: 'Development considerations',
       playroom: false,
-      Example: () => {
-        const breakpoint = useBreakpoint();
-
-        return <Text>Current breakpoint: {breakpoint}</Text>;
-      },
+      showCodeByDefault: true,
+      description: (
+        <Text>
+          This Hook will return the breakpoint the browser viewport currently
+          falls within (<Strong>mobile</Strong>, <Strong>tablet</Strong> or{' '}
+          <Strong>desktop</Strong>). As this can only be calculated in the
+          browser, the value will also be <Strong>null</Strong> when rendering
+          server-side or statically rendering. Window resizing is supported.
+        </Text>
+      ),
       code: `
         const breakpoint = useBreakpoint();
 
