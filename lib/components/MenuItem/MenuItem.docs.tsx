@@ -7,9 +7,15 @@ import {
   MenuItemLink,
   Text,
   TextLink,
+  TextLinkButton,
   Strong,
   List,
   Box,
+  Dialog,
+  Stack,
+  Actions,
+  Button,
+  IconDelete,
 } from '..';
 
 const docs: ComponentDocs = {
@@ -70,6 +76,63 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
+    },
+    {
+      label: 'Destructive actions',
+      description: (
+        <Text>
+          For destructive actions like “Delete” you can set the menu item’s{' '}
+          <Strong>tone</Strong> to <Strong>critical.</Strong> When using this
+          feature, you may want to consider providing a confirmation via a{' '}
+          <TextLink href="/components/Dialog">Dialog.</TextLink>
+        </Text>
+      ),
+      Example: ({ id, getState, toggleState, showToast }) =>
+        source(
+          <>
+            <Box paddingLeft="xxlarge">
+              <OverflowMenu label="Options">
+                <MenuItem
+                  onClick={() => toggleState('confirm')}
+                  tone="critical"
+                >
+                  Delete
+                </MenuItem>
+              </OverflowMenu>
+            </Box>
+            <Dialog
+              id={id}
+              width="content"
+              title="Delete item?"
+              open={getState('confirm')}
+              onClose={() => toggleState('confirm')}
+            >
+              <Stack space="large">
+                <Text tone="secondary">
+                  Are you sure you want to delete this item?
+                </Text>
+                <Actions>
+                  <Button
+                    tone="critical"
+                    onClick={() => {
+                      toggleState('confirm');
+                      showToast({
+                        tone: 'positive',
+                        message: 'Item successfully deleted',
+                        key: 'itemDeleted',
+                      });
+                    }}
+                  >
+                    <IconDelete /> Delete
+                  </Button>
+                  <TextLinkButton onClick={() => toggleState('confirm')}>
+                    Cancel
+                  </TextLinkButton>
+                </Actions>
+              </Stack>
+            </Dialog>
+          </>,
+        ),
     },
     {
       label: 'See also',

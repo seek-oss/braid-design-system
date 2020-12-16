@@ -285,7 +285,7 @@ export const MenuRenderer = ({
             opacity={!open ? 0 : undefined}
             className={!open && styles.menuIsClosed}
           >
-            <Box padding="xxsmall">
+            <Box paddingY="xxsmall">
               {items.map((item, i) => {
                 if (isDivider(item)) {
                   dividerCount++;

@@ -12,18 +12,20 @@ export const MenuItemLink = ({
   target,
   rel,
   onClick,
+  tone,
   data,
   children,
 }: MenuItemLinkProps) => {
   const { menuItemProps, MenuItemChildren } = useMenuItem<HTMLAnchorElement>({
     displayName: 'MenuItemLink',
     onClick,
+    tone,
     data,
   });
 
   return (
     <Link {...menuItemProps} href={href} target={target} rel={rel}>
-      <MenuItemChildren>{children}</MenuItemChildren>
+      <MenuItemChildren tone={tone}>{children}</MenuItemChildren>
     </Link>
   );
 };

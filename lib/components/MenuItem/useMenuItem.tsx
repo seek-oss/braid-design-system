@@ -32,15 +32,19 @@ const {
 
 const menuItemChildrenSize = 'standard';
 
+type MenuItemTone = 'critical' | undefined;
+
 export interface UseMenuItemProps {
   onClick?: () => void;
   formElement?: boolean;
   data?: DataAttributeMap;
   displayName?: string;
+  tone?: MenuItemTone;
 }
 export function useMenuItem<MenuItemElement extends HTMLElement>({
   displayName = 'MenuItem',
   formElement = false,
+  tone,
   onClick,
   data,
 }: UseMenuItemProps) {
@@ -121,6 +125,8 @@ export function useMenuItem<MenuItemElement extends HTMLElement>({
     }
   };
 
+  const hoverBackground = tone === 'critical' ? 'criticalLight' : 'selection';
+
   return {
     MenuItemChildren,
     menuItemProps: {
@@ -146,8 +152,7 @@ export function useMenuItem<MenuItemElement extends HTMLElement>({
           alignItems: 'center',
           width: 'full',
           paddingX: 'small',
-          background: isHighlighted ? 'selection' : undefined,
-          borderRadius: 'standard',
+          background: isHighlighted ? hoverBackground : undefined,
           cursor: 'pointer',
           textAlign: 'left',
           outline: 'none',
@@ -160,11 +165,16 @@ export function useMenuItem<MenuItemElement extends HTMLElement>({
 
 interface MenuItemChildrenProps {
   children: ReactNode;
+  tone: MenuItemTone;
 }
-function MenuItemChildren({ children }: MenuItemChildrenProps) {
+function MenuItemChildren({ tone, children }: MenuItemChildrenProps) {
   return (
     <Box userSelect="none">
-      <Text size={menuItemChildrenSize} baseline={false}>
+      <Text
+        size={menuItemChildrenSize}
+        baseline={false}
+        tone={tone === 'critical' ? tone : undefined}
+      >
         {children}
       </Text>
     </Box>
