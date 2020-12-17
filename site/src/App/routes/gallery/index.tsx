@@ -225,22 +225,24 @@ const GalleryPage = () => {
       //     e.target.getAttribute('role') === 'button',
       // });
 
-      // panzoomRef.current.on('zoom', () => {
-      //   if (panzoomRef.current) {
-      //     setZoom(panzoomRef.current.getTransform().scale);
-      //   }
-      // });
-
-      // panzoomRef.current.zoomAbs(dimensions.x, dimensions.y, dimensions.scale);
-
       contentEl.style.transformOrigin = `0px 0px`;
       const minZoom = dimensions.scale;
       const maxZoom = 20;
+      const speed = 1.75;
+      const pinchSpeed = 1;
       let x = 0;
       let y = 0;
       let z = 1;
 
-      const moveTo = (targetX: number, targetY: number, targetZ: number) => {
+      const moveTo = (
+        targetX: number,
+        targetY: number,
+        targetZ: number = z,
+      ) => {
+        // if (targetZ !== z) {
+        //   setZoom(targetZ);
+        // }
+
         x = targetX;
         y = targetY;
         z = targetZ;
@@ -248,14 +250,14 @@ const GalleryPage = () => {
         contentEl.style.transform = `matrix(${targetZ}, 0, 0, ${targetZ}, ${targetX}, ${targetY})`;
       };
 
-      const getOffsetXY = (e: MouseEvent | WheelEvent) =>
+      const getOffsetXY = (
+        e: MouseEvent | WheelEvent | TouchEvent['touches'][number],
+      ) =>
         // const ownerRect = contentEl.getBoundingClientRect();
         ({
           x: e.clientX, // - ownerRect.left,
           y: e.clientY, // - ownerRect.top
         });
-
-      moveTo(dimensions.x, dimensions.y, dimensions.scale);
 
       const onWheel = function (e: WheelEvent) {
         e.preventDefault();
@@ -263,7 +265,10 @@ const GalleryPage = () => {
 
         const delta = e.deltaMode > 0 ? e.deltaY * 100 : e.deltaY;
         const sign = Math.sign(delta);
-        const deltaAdjustedSpeed = Math.min(0.25, Math.abs(delta / 128));
+        const deltaAdjustedSpeed = Math.min(
+          0.25,
+          Math.abs((speed * delta) / 128),
+        );
         const scaleMultiplier = 1 - sign * deltaAdjustedSpeed;
 
         const offset = getOffsetXY(e);
@@ -298,8 +303,14 @@ const GalleryPage = () => {
 
       let mouseX = 0;
       let mouseY = 0;
+      let touchInProgress = false;
+      let pinchZoomLength = 0;
 
       const onMouseMove = (e: MouseEvent) => {
+        if (touchInProgress) {
+          return;
+        }
+
         const offset = getOffsetXY(e);
 
         const dx = offset.x - mouseX;
@@ -308,7 +319,7 @@ const GalleryPage = () => {
         mouseX = offset.x;
         mouseY = offset.y;
 
-        moveTo(x + dx, y + dy, z);
+        moveTo(x + dx, y + dy);
       };
 
       const onMouseUp = () => {
@@ -317,6 +328,13 @@ const GalleryPage = () => {
       };
 
       const onMouseDown = (e: MouseEvent) => {
+        if (touchInProgress) {
+          // modern browsers will fire mousedown for touch events too
+          // we do not want this: touch is handled separately.
+          e.stopPropagation();
+          return false;
+        }
+
         // for IE, left click == 1
         // for Firefox, left click == 0
         const isLeftButton =
@@ -333,18 +351,135 @@ const GalleryPage = () => {
         document.addEventListener('mouseup', onMouseUp, { passive: false });
       };
 
+      const getPinchZoomLength = (
+        finger1: TouchEvent['touches'][number],
+        finger2: TouchEvent['touches'][number],
+      ) => {
+        const dx = finger1.clientX - finger2.clientX;
+        const dy = finger1.clientY - finger2.clientY;
+        return Math.sqrt(dx * dx + dy * dy);
+      };
+
+      const onTouchMove = (e: TouchEvent) => {
+        if (e.touches.length === 1) {
+          e.stopPropagation();
+
+          const touch = e.touches[0];
+          const offset = getOffsetXY(touch);
+
+          const dx = offset.x - mouseX;
+          const dy = offset.y - mouseY;
+
+          mouseX = offset.x;
+          mouseY = offset.y;
+
+          moveTo(x + dx, y + dy);
+        } else if (e.touches.length === 2) {
+          const t1 = e.touches[0];
+          const t2 = e.touches[1];
+          const currentPinchLength = getPinchZoomLength(t1, t2);
+
+          // since the zoom speed is always based on distance from 1, we need to apply
+          // pinch speed only on that distance from 1:
+          const scaleMultiplier =
+            1 + (currentPinchLength / pinchZoomLength - 1) * pinchSpeed;
+
+          const firstTouchPoint = getOffsetXY(t1);
+          const secondTouchPoint = getOffsetXY(t2);
+
+          mouseX = (firstTouchPoint.x + secondTouchPoint.x) / 2;
+          mouseY = (firstTouchPoint.y + secondTouchPoint.y) / 2;
+
+          let ratio = scaleMultiplier;
+
+          const newScale = z * ratio;
+
+          if (newScale < minZoom) {
+            if (z === minZoom) {
+              return;
+            }
+
+            ratio = minZoom / z;
+          }
+          if (newScale > maxZoom) {
+            if (z === maxZoom) {
+              return;
+            }
+
+            ratio = maxZoom / z;
+          }
+
+          moveTo(
+            mouseX - ratio * (mouseX - x),
+            mouseY - ratio * (mouseY - y),
+            z * ratio,
+          );
+
+          pinchZoomLength = currentPinchLength;
+          e.stopPropagation();
+          e.preventDefault();
+        }
+      };
+
+      const onTouchEnd = (e: TouchEvent) => {
+        if (e.touches.length > 0) {
+          const offset = getOffsetXY(e.touches[0]);
+          mouseX = offset.x;
+          mouseY = offset.y;
+        } else {
+          // moveTo(lastSingleFingerOffset.x, lastSingleFingerOffset.y);
+
+          document.removeEventListener('touchmove', onTouchMove);
+          document.removeEventListener('touchend', onTouchEnd);
+          document.removeEventListener('touchcancel', onTouchEnd);
+          touchInProgress = false;
+        }
+      };
+
+      const onTouchStart = (e: TouchEvent) => {
+        e.stopPropagation();
+        e.preventDefault();
+
+        if (e.touches.length === 1) {
+          const touch = e.touches[0];
+          const offset = getOffsetXY(touch);
+
+          mouseX = offset.x;
+          mouseY = offset.y;
+        } else if (e.touches.length === 2) {
+          pinchZoomLength = getPinchZoomLength(e.touches[0], e.touches[1]);
+        }
+
+        if (touchInProgress) {
+          // no need to do anything, as we already listen to events;
+          return;
+        }
+
+        touchInProgress = true;
+        document.addEventListener('touchmove', onTouchMove);
+        document.addEventListener('touchend', onTouchEnd);
+        document.addEventListener('touchcancel', onTouchEnd);
+      };
+
       contentEl.addEventListener('wheel', onWheel, { passive: false });
+      contentEl.addEventListener('touchstart', onTouchStart, {
+        passive: false,
+      });
       contentEl.addEventListener('mousedown', onMouseDown, { passive: false });
 
-      // matrix(scaleX, skewY, skewX, scaleY, translateX, translateY)
-
+      moveTo(dimensions.x, dimensions.y, dimensions.scale);
+      setFitToScreenDimensions(dimensions);
       setFitToScreenDimensions(dimensions);
 
       return () => {
         contentEl.removeEventListener('wheel', onWheel);
+        contentEl.removeEventListener('touchstart', onTouchStart);
         contentEl.removeEventListener('mousedown', onMouseDown);
         document.removeEventListener('mousemove', onMouseMove);
         document.removeEventListener('mouseup', onMouseUp);
+        document.removeEventListener('touchmove', onTouchMove);
+        document.removeEventListener('touchend', onTouchEnd);
+        document.removeEventListener('touchcancel', onTouchEnd);
       };
     }
   }, [status]);
