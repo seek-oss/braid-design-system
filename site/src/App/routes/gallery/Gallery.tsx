@@ -2,13 +2,13 @@ import React, {
   Fragment,
   ReactNode,
   memo,
-  useEffect,
-  useState,
-  useRef,
+  // useEffect,
+  // useState,
+  // useRef,
 } from 'react';
 import { chunk, memoize } from 'lodash';
 import copy from 'copy-to-clipboard';
-import { useIntersection } from 'react-use';
+// import { useIntersection } from 'react-use';
 
 import {
   BraidProvider,
@@ -34,7 +34,7 @@ import {
   galleryComponents as allGalleryComponents,
   getComponentDocs,
 } from '../../navigationHelpers';
-import { Overlay } from '../../../../../lib/components/private/Overlay/Overlay';
+// import { Overlay } from '../../../../../lib/components/private/Overlay/Overlay';
 import { PlayroomStateProvider } from '../../../../../lib/playroom/playroomState';
 import { useSourceFromExample } from '../../../../../lib/utils/useSourceFromExample';
 import * as icons from '../../../../../lib/components/icons';
@@ -95,56 +95,56 @@ const getRowsFor = memoize((type: 'components' | 'icons') => {
   return chunk(items, rowLength);
 });
 
-const Mask = ({
-  children,
-  background,
-}: {
-  children: ReactNode;
-  background: ComponentExample['background'];
-}) => {
-  const elRef = useRef<HTMLElement | null>(null);
-  const [dimensions, setDimensions] = useState<{ w: number; h: number }>({
-    w: 0,
-    h: 0,
-  });
-  const intersection = useIntersection(elRef, {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0,
-  });
+// const Mask = ({
+//   children,
+//   background,
+// }: {
+//   children: ReactNode;
+//   background: ComponentExample['background'];
+// }) => {
+//   const elRef = useRef<HTMLElement | null>(null);
+//   const [dimensions, setDimensions] = useState<{ w: number; h: number }>({
+//     w: 0,
+//     h: 0,
+//   });
+//   const intersection = useIntersection(elRef, {
+//     root: null,
+//     rootMargin: '0px',
+//     threshold: 0,
+//   });
 
-  useEffect(() => {
-    if (elRef.current) {
-      setDimensions({
-        w: elRef.current.offsetWidth,
-        h: elRef.current.offsetHeight,
-      });
-    }
-  }, []);
+//   useEffect(() => {
+//     if (elRef.current) {
+//       setDimensions({
+//         w: elRef.current.offsetWidth,
+//         h: elRef.current.offsetHeight,
+//       });
+//     }
+//   }, []);
 
-  const masked = Boolean(intersection && intersection.intersectionRatio === 0);
+//   const masked = Boolean(intersection && intersection.intersectionRatio === 0);
 
-  return (
-    <Box
-      ref={elRef}
-      position="relative"
-      style={{
-        minHeight: dimensions.h > 0 ? dimensions.h : undefined,
-        minWidth: dimensions.w > 0 ? dimensions.w : undefined,
-      }}
-    >
-      <Box width="full" height="full">
-        {masked ? null : children}
-      </Box>
-      <Overlay
-        background={background}
-        borderRadius="standard"
-        transition="fast"
-        visible={masked}
-      />
-    </Box>
-  );
-};
+//   return (
+//     <Box
+//       ref={elRef}
+//       position="relative"
+//       style={{
+//         minHeight: dimensions.h > 0 ? dimensions.h : undefined,
+//         minWidth: dimensions.w > 0 ? dimensions.w : undefined,
+//       }}
+//     >
+//       <Box width="full" height="full">
+//         {masked ? null : children}
+//       </Box>
+//       <Overlay
+//         background={background}
+//         borderRadius="standard"
+//         transition="fast"
+//         visible={masked}
+//       />
+//     </Box>
+//   );
+// };
 
 interface RenderExampleProps {
   id: string;

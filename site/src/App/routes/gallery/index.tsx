@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useStyles } from 'sku/react-treat';
-import panzoom from 'panzoom';
+// import panzoom from 'panzoom';
 import { parseToHsl, setLightness } from 'polished';
 
 import { Page } from '../../../types';
@@ -21,6 +21,7 @@ import { SVGProps } from '../../../../../lib/components/icons/SVGTypes';
 import useIcon, { UseIconProps } from '../../../../../lib/hooks/useIcon';
 import { Gallery, galleryComponents } from './Gallery';
 import { GalleryPanel } from './GalleryPanel';
+import galleryController from './galleryController';
 import * as styleRefs from './gallery.treat';
 
 const useBackgroundColor = () => {
@@ -67,7 +68,7 @@ const IconFitToScreen = (props: UseIconProps) => {
   return <Box component={IconFitToScreenSvg} {...iconProps} />;
 };
 
-const zoomStep = 0.2;
+// const zoomStep = 0.2;
 const jumpToEdgeThreshold = 80;
 const jumpToPlaceholder = 'Jump to';
 const galleryComponentNames = galleryComponents
@@ -103,108 +104,137 @@ const GalleryPage = () => {
   const contentRef = useRef<HTMLDivElement | null>(null);
   const zoomInRef = useRef<HTMLButtonElement | null>(null);
   const zoomOutRef = useRef<HTMLButtonElement | null>(null);
-  const panzoomRef = useRef<ReturnType<typeof panzoom> | null>(null);
+  const controllerRef = useRef<ReturnType<typeof galleryController> | null>(
+    null,
+  );
 
   const [jumpTo, setJumpTo] = useState(jumpToPlaceholder);
-  const [zoom, setZoom] = useState(1);
+  const [zoom /* , setZoom*/] = useState(1);
   const [
     fitToScreenDimensions,
     setFitToScreenDimensions,
   ] = useState<FitToScreenDimensions | null>(null);
 
   const zoomOut = () => {
-    if (panzoomRef.current) {
-      const { scale } = panzoomRef.current.getTransform();
-      const newScale = Math.ceil(scale / zoomStep) * zoomStep - zoomStep;
-      const roundedNew = Math.round(newScale * 100) / 100;
-      const roundedOld = Math.round(scale * 100) / 100;
-
-      panzoomRef.current.smoothZoomAbs(
-        document.documentElement.clientWidth / 2,
-        document.documentElement.clientHeight / 2,
-        roundedNew === roundedOld ? roundedNew - zoomStep : roundedNew,
-      );
-    }
+    // if (panzoomRef.current) {
+    //   const { scale } = panzoomRef.current.getTransform();
+    //   const newScale = Math.ceil(scale / zoomStep) * zoomStep - zoomStep;
+    //   const roundedNew = Math.round(newScale * 100) / 100;
+    //   const roundedOld = Math.round(scale * 100) / 100;
+    //   panzoomRef.current.smoothZoomAbs(
+    //     document.documentElement.clientWidth / 2,
+    //     document.documentElement.clientHeight / 2,
+    //     roundedNew === roundedOld ? roundedNew - zoomStep : roundedNew,
+    //   );
+    // }
   };
 
   const zoomIn = () => {
-    if (panzoomRef.current) {
-      const { scale } = panzoomRef.current.getTransform();
-      const newScale = Math.floor(scale / zoomStep) * zoomStep + zoomStep;
-      const roundedNew = Math.round(newScale * 100) / 100;
-      const roundedOld = Math.round(scale * 100) / 100;
-
-      panzoomRef.current.smoothZoomAbs(
-        document.documentElement.clientWidth / 2,
-        document.documentElement.clientHeight / 2,
-        roundedNew === roundedOld ? roundedNew + zoomStep : roundedNew,
-      );
-    }
+    // if (panzoomRef.current) {
+    //   const { scale } = panzoomRef.current.getTransform();
+    //   const newScale = Math.floor(scale / zoomStep) * zoomStep + zoomStep;
+    //   const roundedNew = Math.round(newScale * 100) / 100;
+    //   const roundedOld = Math.round(scale * 100) / 100;
+    //   panzoomRef.current.smoothZoomAbs(
+    //     document.documentElement.clientWidth / 2,
+    //     document.documentElement.clientHeight / 2,
+    //     roundedNew === roundedOld ? roundedNew + zoomStep : roundedNew,
+    //   );
+    // }
   };
 
   const zoomToActualSize = () => {
-    if (panzoomRef.current) {
-      panzoomRef.current.smoothZoomAbs(
-        document.documentElement.clientWidth / 2,
-        document.documentElement.clientHeight / 2,
-        1,
-      );
+    if (controllerRef.current) {
+      controllerRef.current.zoomTo({
+        x: document.documentElement.clientWidth / 2,
+        y: document.documentElement.clientHeight / 2,
+        scale: 1,
+      });
     }
   };
 
   const fitToScreen = useCallback(() => {
-    if (panzoomRef.current && fitToScreenDimensions) {
-      panzoomRef.current.zoomAbs(0, 0, fitToScreenDimensions.scale);
-      panzoomRef.current.moveTo(
-        fitToScreenDimensions.x,
-        fitToScreenDimensions.y,
-      );
+    if (controllerRef.current && fitToScreenDimensions) {
+      controllerRef.current.moveTo(fitToScreenDimensions);
     }
   }, [fitToScreenDimensions]);
+
+  const jumpToItem = (name: string) => {
+    const component = document.querySelector<HTMLDivElement>(
+      `[data-braid-component-name=${name}]`,
+    );
+
+    if (controllerRef.current && component) {
+      const viewportWidth = document.documentElement.clientWidth;
+      const viewportHeight = document.documentElement.clientHeight;
+      const clientRect = component.getBoundingClientRect();
+      const actualWidth = clientRect.width / zoom + jumpToEdgeThreshold * 2;
+      const actualHeight = clientRect.height / zoom + jumpToEdgeThreshold * 2;
+
+      const targetScale = Math.min(
+        viewportWidth / actualWidth,
+        viewportHeight / actualHeight,
+      );
+
+      const scaled = (n: number) => n * targetScale;
+      const targetX =
+        scaled(-component.offsetLeft + jumpToEdgeThreshold) +
+        (viewportWidth - scaled(actualWidth)) / 2;
+      const targetY =
+        scaled(-component.offsetTop + jumpToEdgeThreshold) +
+        (viewportHeight - scaled(actualHeight)) / 2;
+
+      controllerRef.current.moveTo({
+        x: targetX,
+        y: targetY,
+        scale: targetScale,
+      });
+    }
+  };
 
   useEffect(() => {
     if (themeReady && fitToScreenDimensions) {
       setStatus('done');
 
-      const keyboardZoomHandler = (e: KeyboardEvent) => {
-        const cmdOrCtrl = navigator.platform.match('Mac')
-          ? e.metaKey
-          : e.ctrlKey;
+      // const keyboardZoomHandler = (e: KeyboardEvent) => {
+      //   const cmdOrCtrl = navigator.platform.match('Mac')
+      //     ? e.metaKey
+      //     : e.ctrlKey;
 
-        const plus = e.keyCode === 187;
-        const minus = e.keyCode === 189;
+      //   const plus = e.keyCode === 187;
+      //   const minus = e.keyCode === 189;
 
-        if (cmdOrCtrl && (plus || minus)) {
-          e.preventDefault();
-          e.stopPropagation();
+      //   if (cmdOrCtrl && (plus || minus)) {
+      //     e.preventDefault();
+      //     e.stopPropagation();
 
-          if (plus && zoomInRef.current) {
-            zoomInRef.current.focus();
-            zoomIn();
-          }
+      //     if (plus && zoomInRef.current) {
+      //       zoomInRef.current.focus();
+      //       zoomIn();
+      //     }
 
-          if (minus && zoomOutRef.current) {
-            zoomOutRef.current.focus();
-            zoomOut();
-          }
-        }
-      };
+      //     if (minus && zoomOutRef.current) {
+      //       zoomOutRef.current.focus();
+      //       zoomOut();
+      //     }
+      //   }
+      // };
 
-      const resizeHandler = () => {
-        if (contentRef.current && panzoomRef.current) {
-          const dimensions = calculateFitToScreenDimensions(contentRef.current);
-          panzoomRef.current.setMinZoom(dimensions.scale);
-          setFitToScreenDimensions(dimensions);
-        }
-      };
+      // const resizeHandler = () => {
+      //   if (contentRef.current && panzoomRef.current) {
+      //     const dimensions = calculateFitToScreenDimensions(contentRef.current);
+      //     panzoomRef.current.setMinZoom(dimensions.scale);
+      //     setFitToScreenDimensions(dimensions);
+      //   }
+      // };
 
-      window.addEventListener('keydown', keyboardZoomHandler);
-      window.addEventListener('resize', resizeHandler);
+      // window.addEventListener('keydown', keyboardZoomHandler);
+      // window.addEventListener('resize', resizeHandler);
 
-      return () => {
-        window.removeEventListener('keydown', keyboardZoomHandler);
-        window.removeEventListener('resize', resizeHandler);
-      };
+      // return () => {
+      //   window.removeEventListener('keydown', keyboardZoomHandler);
+      //   window.removeEventListener('resize', resizeHandler);
+      // };
     }
   }, [themeReady, fitToScreenDimensions]);
 
@@ -213,237 +243,17 @@ const GalleryPage = () => {
       const contentEl = contentRef.current;
       const dimensions = calculateFitToScreenDimensions(contentEl);
 
-      const minZoom = dimensions.scale;
-      const maxZoom = 20;
-      const speed = 1.75;
-      const pinchSpeed = 1;
-      let x = 0;
-      let y = 0;
-      let z = 1;
+      controllerRef.current = galleryController(contentEl, {
+        minZoom: dimensions.scale,
+        initialX: dimensions.x,
+        initialY: dimensions.y,
+        initialScale: dimensions.scale,
+      });
 
-      const moveTo = (
-        targetX: number,
-        targetY: number,
-        targetZ: number = z,
-      ) => {
-        // if (targetZ !== z) {
-        //   setZoom(targetZ);
-        // }
-
-        x = targetX;
-        y = targetY;
-        z = targetZ;
-
-        contentEl.style.transform = `matrix(${targetZ}, 0, 0, ${targetZ}, ${targetX}, ${targetY})`;
-      };
-
-      const moveByRatio = (
-        posX: number,
-        posY: number,
-        scaleMultiplier: number,
-      ) => {
-        let ratio = scaleMultiplier;
-
-        const newScale = z * ratio;
-
-        if (newScale < minZoom) {
-          if (z === minZoom) {
-            return;
-          }
-
-          ratio = minZoom / z;
-        }
-
-        if (newScale > maxZoom) {
-          if (z === maxZoom) {
-            return;
-          }
-
-          ratio = maxZoom / z;
-        }
-
-        moveTo(posX - ratio * (posX - x), posY - ratio * (posY - y), z * ratio);
-      };
-
-      const onWheel = function (e: WheelEvent) {
-        e.preventDefault();
-        e.stopPropagation();
-
-        const delta = e.deltaMode > 0 ? e.deltaY * 100 : e.deltaY;
-        const sign = Math.sign(delta);
-        const deltaAdjustedSpeed = Math.min(
-          0.25,
-          Math.abs((speed * delta) / 128),
-        );
-        const scaleMultiplier = 1 - sign * deltaAdjustedSpeed;
-
-        if (scaleMultiplier !== 1) {
-          moveByRatio(e.clientX, e.clientY, scaleMultiplier);
-        }
-      };
-
-      let mouseX = 0;
-      let mouseY = 0;
-      let touchInProgress = false;
-      let pinchZoomLength = 0;
-
-      const onMouseMove = (e: MouseEvent) => {
-        if (touchInProgress) {
-          return;
-        }
-
-        const dx = e.clientX - mouseX;
-        const dy = e.clientY - mouseY;
-
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-
-        moveTo(x + dx, y + dy);
-      };
-
-      const onMouseUp = () => {
-        document.removeEventListener('mousemove', onMouseMove);
-        document.removeEventListener('mouseup', onMouseUp);
-      };
-
-      const onMouseDown = (e: MouseEvent) => {
-        if (
-          // @ts-expect-error
-          /^(a|button|select)$/i.test(e.target.tagName) ||
-          // @ts-expect-error
-          e.target.getAttribute('role') === 'button'
-        ) {
-          return;
-        }
-
-        if (touchInProgress) {
-          e.stopPropagation();
-          return;
-        }
-
-        // for IE, left click == 1
-        // for Firefox, left click == 0
-        const isLeftButton =
-          (e.button === 1 && window.event !== null) || e.button === 0;
-        if (!isLeftButton) {
-          return;
-        }
-
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-
-        document.addEventListener('mousemove', onMouseMove, { passive: false });
-        document.addEventListener('mouseup', onMouseUp, { passive: false });
-      };
-
-      const getPinchZoomLength = (
-        finger1: TouchEvent['touches'][number],
-        finger2: TouchEvent['touches'][number],
-      ) => {
-        const dx = finger1.clientX - finger2.clientX;
-        const dy = finger1.clientY - finger2.clientY;
-        return Math.sqrt(dx * dx + dy * dy);
-      };
-
-      const onTouchMove = (e: TouchEvent) => {
-        e.stopPropagation();
-
-        if (e.touches.length === 1) {
-          const touch = e.touches[0];
-          const dx = touch.clientX - mouseX;
-          const dy = touch.clientY - mouseY;
-
-          mouseX = touch.clientX;
-          mouseY = touch.clientY;
-
-          moveTo(x + dx, y + dy);
-        } else if (e.touches.length === 2) {
-          e.preventDefault();
-
-          const t1 = e.touches[0];
-          const t2 = e.touches[1];
-          const currentPinchLength = getPinchZoomLength(t1, t2);
-          const scaleMultiplier =
-            1 + (currentPinchLength / pinchZoomLength - 1) * pinchSpeed;
-
-          mouseX = (t1.clientX + t2.clientX) / 2;
-          mouseY = (t1.clientY + t2.clientY) / 2;
-
-          moveByRatio(mouseX, mouseY, scaleMultiplier);
-
-          pinchZoomLength = currentPinchLength;
-        }
-      };
-
-      const onTouchEnd = (e: TouchEvent) => {
-        if (e.touches.length > 0) {
-          mouseX = e.touches[0].clientX;
-          mouseY = e.touches[0].clientY;
-        } else {
-          document.removeEventListener('touchmove', onTouchMove);
-          document.removeEventListener('touchend', onTouchEnd);
-          document.removeEventListener('touchcancel', onTouchEnd);
-          touchInProgress = false;
-        }
-      };
-
-      const onTouchStart = (e: TouchEvent) => {
-        if (e.touches.length === 1) {
-          mouseX = e.touches[0].clientX;
-          mouseY = e.touches[0].clientY;
-        } else if (e.touches.length === 2) {
-          e.preventDefault();
-          pinchZoomLength = getPinchZoomLength(e.touches[0], e.touches[1]);
-        }
-
-        if (touchInProgress) {
-          return;
-        }
-
-        touchInProgress = true;
-        document.addEventListener('touchmove', onTouchMove);
-        document.addEventListener('touchend', onTouchEnd);
-        document.addEventListener('touchcancel', onTouchEnd);
-      };
-
-      if (contentEl && contentEl.parentElement) {
-        contentEl.parentElement.addEventListener('wheel', onWheel, {
-          passive: false,
-        });
-        contentEl.parentElement.addEventListener('touchstart', onTouchStart, {
-          passive: false,
-        });
-        contentEl.parentElement.addEventListener('mousedown', onMouseDown, {
-          passive: false,
-        });
-      }
-
-      const stopBounce = (e: UIEvent) => {
-        e.preventDefault();
-        e.stopPropagation();
-      };
-      window.addEventListener('wheel', stopBounce, { passive: false });
-      window.addEventListener('touchmove', stopBounce, { passive: false });
-
-      moveTo(dimensions.x, dimensions.y, dimensions.scale);
       setFitToScreenDimensions(dimensions);
 
       return () => {
-        if (contentEl && contentEl.parentElement) {
-          contentEl.parentElement.removeEventListener('wheel', onWheel);
-          contentEl.parentElement.removeEventListener(
-            'touchstart',
-            onTouchStart,
-          );
-          contentEl.parentElement.removeEventListener('mousedown', onMouseDown);
-        }
-        document.removeEventListener('mousemove', onMouseMove);
-        document.removeEventListener('mouseup', onMouseUp);
-        document.removeEventListener('touchmove', onTouchMove);
-        document.removeEventListener('touchend', onTouchEnd);
-        document.removeEventListener('touchcancel', onTouchEnd);
-        window.removeEventListener('wheel', stopBounce);
-        window.removeEventListener('touchmove', stopBounce);
+        controllerRef.current?.dispose();
       };
     }
   }, [status]);
@@ -457,7 +267,6 @@ const GalleryPage = () => {
       bottom={0}
       left={0}
       right={0}
-      // overflow="auto"
       style={{ backgroundColor: useBackgroundColor() }}
     >
       <PageTitle title="Gallery" />
@@ -499,42 +308,8 @@ const GalleryPage = () => {
                   onChange={(name) => {
                     setJumpTo(name);
 
-                    if (panzoomRef.current && name !== jumpToPlaceholder) {
-                      const component = document.querySelector<HTMLDivElement>(
-                        `[data-braid-component-name=${name}]`,
-                      );
-
-                      if (component) {
-                        const viewportWidth =
-                          document.documentElement.clientWidth;
-                        const viewportHeight =
-                          document.documentElement.clientHeight;
-                        const clientRect = component.getBoundingClientRect();
-                        const actualWidth =
-                          clientRect.width / zoom + jumpToEdgeThreshold * 2;
-                        const actualHeight =
-                          clientRect.height / zoom + jumpToEdgeThreshold * 2;
-
-                        const targetScale = Math.min(
-                          viewportWidth / actualWidth,
-                          viewportHeight / actualHeight,
-                        );
-
-                        const scaled = (n: number) => n * targetScale;
-                        const targetX =
-                          scaled(-component.offsetLeft + jumpToEdgeThreshold) +
-                          (viewportWidth - scaled(actualWidth)) / 2;
-                        const targetY =
-                          scaled(-component.offsetTop + jumpToEdgeThreshold) +
-                          (viewportHeight - scaled(actualHeight)) / 2;
-
-                        panzoomRef.current.moveTo(targetX, targetY);
-                        panzoomRef.current.zoomAbs(
-                          targetX,
-                          targetY,
-                          targetScale,
-                        );
-                      }
+                    if (name !== jumpToPlaceholder) {
+                      jumpToItem(name);
                     }
                   }}
                 />
