@@ -433,9 +433,6 @@ const GalleryPage = () => {
       };
 
       const onTouchStart = (e: TouchEvent) => {
-        e.stopPropagation();
-        e.preventDefault();
-
         if (e.touches.length === 1) {
           const touch = e.touches[0];
           const offset = getOffsetXY(touch);
@@ -443,6 +440,7 @@ const GalleryPage = () => {
           mouseX = offset.x;
           mouseY = offset.y;
         } else if (e.touches.length === 2) {
+          e.preventDefault();
           pinchZoomLength = getPinchZoomLength(e.touches[0], e.touches[1]);
         }
 
@@ -476,7 +474,6 @@ const GalleryPage = () => {
       window.addEventListener('touchmove', stopBounce, { passive: false });
 
       moveTo(dimensions.x, dimensions.y, dimensions.scale);
-      setFitToScreenDimensions(dimensions);
       setFitToScreenDimensions(dimensions);
 
       return () => {
