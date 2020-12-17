@@ -271,8 +271,6 @@ const GalleryPage = () => {
         );
         const scaleMultiplier = 1 - sign * deltaAdjustedSpeed;
 
-        const offset = getOffsetXY(e);
-
         if (scaleMultiplier !== 1) {
           let ratio = scaleMultiplier;
 
@@ -285,6 +283,7 @@ const GalleryPage = () => {
 
             ratio = minZoom / z;
           }
+
           if (newScale > maxZoom) {
             if (z === maxZoom) {
               return;
@@ -292,6 +291,8 @@ const GalleryPage = () => {
 
             ratio = maxZoom / z;
           }
+
+          const offset = getOffsetXY(e);
 
           moveTo(
             offset.x - ratio * (offset.x - x),
@@ -378,9 +379,6 @@ const GalleryPage = () => {
           const t1 = e.touches[0];
           const t2 = e.touches[1];
           const currentPinchLength = getPinchZoomLength(t1, t2);
-
-          // since the zoom speed is always based on distance from 1, we need to apply
-          // pinch speed only on that distance from 1:
           const scaleMultiplier =
             1 + (currentPinchLength / pinchZoomLength - 1) * pinchSpeed;
 
@@ -427,8 +425,6 @@ const GalleryPage = () => {
           mouseX = offset.x;
           mouseY = offset.y;
         } else {
-          // moveTo(lastSingleFingerOffset.x, lastSingleFingerOffset.y);
-
           document.removeEventListener('touchmove', onTouchMove);
           document.removeEventListener('touchend', onTouchEnd);
           document.removeEventListener('touchcancel', onTouchEnd);
@@ -451,7 +447,6 @@ const GalleryPage = () => {
         }
 
         if (touchInProgress) {
-          // no need to do anything, as we already listen to events;
           return;
         }
 
@@ -461,25 +456,45 @@ const GalleryPage = () => {
         document.addEventListener('touchcancel', onTouchEnd);
       };
 
-      contentEl.addEventListener('wheel', onWheel, { passive: false });
-      contentEl.addEventListener('touchstart', onTouchStart, {
-        passive: false,
-      });
-      contentEl.addEventListener('mousedown', onMouseDown, { passive: false });
+      if (contentEl && contentEl.parentElement) {
+        contentEl.parentElement.addEventListener('wheel', onWheel, {
+          passive: false,
+        });
+        contentEl.parentElement.addEventListener('touchstart', onTouchStart, {
+          passive: false,
+        });
+        contentEl.parentElement.addEventListener('mousedown', onMouseDown, {
+          passive: false,
+        });
+      }
+
+      const stopBounce = (e: UIEvent) => {
+        e.preventDefault();
+        e.stopPropagation();
+      };
+      window.addEventListener('wheel', stopBounce, { passive: false });
+      window.addEventListener('touchmove', stopBounce, { passive: false });
 
       moveTo(dimensions.x, dimensions.y, dimensions.scale);
       setFitToScreenDimensions(dimensions);
       setFitToScreenDimensions(dimensions);
 
       return () => {
-        contentEl.removeEventListener('wheel', onWheel);
-        contentEl.removeEventListener('touchstart', onTouchStart);
-        contentEl.removeEventListener('mousedown', onMouseDown);
+        if (contentEl && contentEl.parentElement) {
+          contentEl.parentElement.removeEventListener('wheel', onWheel);
+          contentEl.parentElement.removeEventListener(
+            'touchstart',
+            onTouchStart,
+          );
+          contentEl.parentElement.removeEventListener('mousedown', onMouseDown);
+        }
         document.removeEventListener('mousemove', onMouseMove);
         document.removeEventListener('mouseup', onMouseUp);
         document.removeEventListener('touchmove', onTouchMove);
         document.removeEventListener('touchend', onTouchEnd);
         document.removeEventListener('touchcancel', onTouchEnd);
+        window.removeEventListener('wheel', stopBounce);
+        window.removeEventListener('touchmove', stopBounce);
       };
     }
   }, [status]);
