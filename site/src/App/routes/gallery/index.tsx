@@ -213,19 +213,6 @@ const GalleryPage = () => {
       const contentEl = contentRef.current;
       const dimensions = calculateFitToScreenDimensions(contentEl);
 
-      // panzoomRef.current = panzoom(contentEl, {
-      //   maxZoom: 20,
-      //   minZoom: dimensions.scale,
-      //   zoomDoubleClickSpeed: 1,
-      //   filterKey: () => true, // disables panzoom default handling of keys
-      //   beforeMouseDown: (e) =>
-      //     // @ts-expect-error
-      //     /^(a|button|select)$/i.test(e.target.tagName) ||
-      //     // @ts-expect-error
-      //     e.target.getAttribute('role') === 'button',
-      // });
-
-      contentEl.style.transformOrigin = `0px 0px`;
       const minZoom = dimensions.scale;
       const maxZoom = 20;
       const speed = 1.75;
@@ -250,14 +237,33 @@ const GalleryPage = () => {
         contentEl.style.transform = `matrix(${targetZ}, 0, 0, ${targetZ}, ${targetX}, ${targetY})`;
       };
 
-      const getOffsetXY = (
-        e: MouseEvent | WheelEvent | TouchEvent['touches'][number],
-      ) =>
-        // const ownerRect = contentEl.getBoundingClientRect();
-        ({
-          x: e.clientX, // - ownerRect.left,
-          y: e.clientY, // - ownerRect.top
-        });
+      const moveByRatio = (
+        posX: number,
+        posY: number,
+        scaleMultiplier: number,
+      ) => {
+        let ratio = scaleMultiplier;
+
+        const newScale = z * ratio;
+
+        if (newScale < minZoom) {
+          if (z === minZoom) {
+            return;
+          }
+
+          ratio = minZoom / z;
+        }
+
+        if (newScale > maxZoom) {
+          if (z === maxZoom) {
+            return;
+          }
+
+          ratio = maxZoom / z;
+        }
+
+        moveTo(posX - ratio * (posX - x), posY - ratio * (posY - y), z * ratio);
+      };
 
       const onWheel = function (e: WheelEvent) {
         e.preventDefault();
@@ -272,33 +278,7 @@ const GalleryPage = () => {
         const scaleMultiplier = 1 - sign * deltaAdjustedSpeed;
 
         if (scaleMultiplier !== 1) {
-          let ratio = scaleMultiplier;
-
-          const newScale = z * ratio;
-
-          if (newScale < minZoom) {
-            if (z === minZoom) {
-              return;
-            }
-
-            ratio = minZoom / z;
-          }
-
-          if (newScale > maxZoom) {
-            if (z === maxZoom) {
-              return;
-            }
-
-            ratio = maxZoom / z;
-          }
-
-          const offset = getOffsetXY(e);
-
-          moveTo(
-            offset.x - ratio * (offset.x - x),
-            offset.y - ratio * (offset.y - y),
-            z * ratio,
-          );
+          moveByRatio(e.clientX, e.clientY, scaleMultiplier);
         }
       };
 
@@ -312,13 +292,11 @@ const GalleryPage = () => {
           return;
         }
 
-        const offset = getOffsetXY(e);
+        const dx = e.clientX - mouseX;
+        const dy = e.clientY - mouseY;
 
-        const dx = offset.x - mouseX;
-        const dy = offset.y - mouseY;
-
-        mouseX = offset.x;
-        mouseY = offset.y;
+        mouseX = e.clientX;
+        mouseY = e.clientY;
 
         moveTo(x + dx, y + dy);
       };
@@ -329,11 +307,18 @@ const GalleryPage = () => {
       };
 
       const onMouseDown = (e: MouseEvent) => {
+        if (
+          // @ts-expect-error
+          /^(a|button|select)$/i.test(e.target.tagName) ||
+          // @ts-expect-error
+          e.target.getAttribute('role') === 'button'
+        ) {
+          return;
+        }
+
         if (touchInProgress) {
-          // modern browsers will fire mousedown for touch events too
-          // we do not want this: touch is handled separately.
           e.stopPropagation();
-          return false;
+          return;
         }
 
         // for IE, left click == 1
@@ -344,10 +329,9 @@ const GalleryPage = () => {
           return;
         }
 
-        const offset = getOffsetXY(e);
+        mouseX = e.clientX;
+        mouseY = e.clientY;
 
-        mouseX = offset.x;
-        mouseY = offset.y;
         document.addEventListener('mousemove', onMouseMove, { passive: false });
         document.addEventListener('mouseup', onMouseUp, { passive: false });
       };
@@ -362,68 +346,39 @@ const GalleryPage = () => {
       };
 
       const onTouchMove = (e: TouchEvent) => {
+        e.stopPropagation();
+
         if (e.touches.length === 1) {
-          e.stopPropagation();
-
           const touch = e.touches[0];
-          const offset = getOffsetXY(touch);
+          const dx = touch.clientX - mouseX;
+          const dy = touch.clientY - mouseY;
 
-          const dx = offset.x - mouseX;
-          const dy = offset.y - mouseY;
-
-          mouseX = offset.x;
-          mouseY = offset.y;
+          mouseX = touch.clientX;
+          mouseY = touch.clientY;
 
           moveTo(x + dx, y + dy);
         } else if (e.touches.length === 2) {
+          e.preventDefault();
+
           const t1 = e.touches[0];
           const t2 = e.touches[1];
           const currentPinchLength = getPinchZoomLength(t1, t2);
           const scaleMultiplier =
             1 + (currentPinchLength / pinchZoomLength - 1) * pinchSpeed;
 
-          const firstTouchPoint = getOffsetXY(t1);
-          const secondTouchPoint = getOffsetXY(t2);
+          mouseX = (t1.clientX + t2.clientX) / 2;
+          mouseY = (t1.clientY + t2.clientY) / 2;
 
-          mouseX = (firstTouchPoint.x + secondTouchPoint.x) / 2;
-          mouseY = (firstTouchPoint.y + secondTouchPoint.y) / 2;
-
-          let ratio = scaleMultiplier;
-
-          const newScale = z * ratio;
-
-          if (newScale < minZoom) {
-            if (z === minZoom) {
-              return;
-            }
-
-            ratio = minZoom / z;
-          }
-          if (newScale > maxZoom) {
-            if (z === maxZoom) {
-              return;
-            }
-
-            ratio = maxZoom / z;
-          }
-
-          moveTo(
-            mouseX - ratio * (mouseX - x),
-            mouseY - ratio * (mouseY - y),
-            z * ratio,
-          );
+          moveByRatio(mouseX, mouseY, scaleMultiplier);
 
           pinchZoomLength = currentPinchLength;
-          e.stopPropagation();
-          e.preventDefault();
         }
       };
 
       const onTouchEnd = (e: TouchEvent) => {
         if (e.touches.length > 0) {
-          const offset = getOffsetXY(e.touches[0]);
-          mouseX = offset.x;
-          mouseY = offset.y;
+          mouseX = e.touches[0].clientX;
+          mouseY = e.touches[0].clientY;
         } else {
           document.removeEventListener('touchmove', onTouchMove);
           document.removeEventListener('touchend', onTouchEnd);
@@ -434,11 +389,8 @@ const GalleryPage = () => {
 
       const onTouchStart = (e: TouchEvent) => {
         if (e.touches.length === 1) {
-          const touch = e.touches[0];
-          const offset = getOffsetXY(touch);
-
-          mouseX = offset.x;
-          mouseY = offset.y;
+          mouseX = e.touches[0].clientX;
+          mouseY = e.touches[0].clientY;
         } else if (e.touches.length === 2) {
           e.preventDefault();
           pinchZoomLength = getPinchZoomLength(e.touches[0], e.touches[1]);
@@ -638,7 +590,11 @@ const GalleryPage = () => {
           opacity={status === 'done' ? undefined : 0}
           className={styles.moveCursor}
         >
-          <Box ref={contentRef} userSelect="none">
+          <Box
+            ref={contentRef}
+            userSelect="none"
+            style={{ transformOrigin: '0px 0px' }}
+          >
             <Gallery />
           </Box>
         </Box>
