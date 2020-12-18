@@ -429,7 +429,6 @@ const docs: ComponentDocs = {
           </Alert>
         </>
       ),
-      background: 'card',
       Example: () => {
         const { code, value } = source(
           <Tiles space="large" columns={[1, 1, 2]}>
@@ -468,14 +467,12 @@ const docs: ComponentDocs = {
                 neutralLight: 'Used for lighter “neutral” elements.',
               }),
             ).map(([background, description]) => (
-              <Columns key={background} space="medium">
+              <Columns key={background} space="medium" alignY="center">
                 <Column width="content">
                   <Box
-                    background={
-                      ['card', 'input'].includes(background) ? 'body' : 'card'
-                    }
+                    background="card"
                     borderRadius="standard"
-                    padding="xsmall"
+                    padding="gutter"
                   >
                     <Box
                       background={background as keyof BackgroundDocs}
@@ -485,9 +482,13 @@ const docs: ComponentDocs = {
                   </Box>
                 </Column>
                 <Column>
-                  <Box paddingTop="medium" paddingRight="medium">
+                  <Box paddingRight="medium">
                     <Stack space="small">
-                      <Text weight="medium">{background}</Text>
+                      <Text weight="medium">
+                        <Box style={{ wordBreak: 'break-all' }}>
+                          {background}
+                        </Box>
+                      </Text>
                       <Text tone="secondary">{description}</Text>
                     </Stack>
                   </Box>
@@ -530,7 +531,6 @@ const docs: ComponentDocs = {
           </Alert>
         </>
       ),
-      background: 'card',
       Example: () => {
         const { code, value } = source(
           <Tiles space="large" columns={[1, 1, 2]}>
@@ -561,14 +561,14 @@ const docs: ComponentDocs = {
                 borderPromote: 'Used for borders around “promote” elements.',
               }),
             ).map(([boxShadow, description]) => (
-              <Columns key={boxShadow} space="medium">
+              <Columns key={boxShadow} space="medium" alignY="center">
                 <Column width="content">
                   <Box
                     background={
                       boxShadow.includes('Inverted') ? 'brand' : 'card'
                     }
                     borderRadius="standard"
-                    padding="small"
+                    padding="gutter"
                   >
                     <Box
                       boxShadow={boxShadow as keyof BoxShadowDocs}
@@ -578,7 +578,7 @@ const docs: ComponentDocs = {
                   </Box>
                 </Column>
                 <Column>
-                  <Box paddingTop="medium" paddingRight="medium">
+                  <Box paddingRight="medium">
                     <Stack space="small">
                       <Text weight="medium">
                         <Box style={{ wordBreak: 'break-all' }}>
