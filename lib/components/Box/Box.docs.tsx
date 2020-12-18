@@ -476,6 +476,11 @@ const docs: ComponentDocs = {
                   >
                     <Box
                       background={background as keyof BackgroundDocs}
+                      boxShadow={
+                        ['card', 'input'].includes(background)
+                          ? 'borderStandard'
+                          : undefined
+                      }
                       borderRadius="standard"
                       padding="gutter"
                     />
