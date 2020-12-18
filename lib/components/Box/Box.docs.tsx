@@ -429,6 +429,7 @@ const docs: ComponentDocs = {
           </Alert>
         </>
       ),
+      background: 'card',
       Example: () => {
         const { code, value } = source(
           <Tiles space="large" columns={[1, 1, 2]}>
@@ -457,12 +458,12 @@ const docs: ComponentDocs = {
                 criticalLight: 'Used for lighter “critical” elements.',
                 criticalHover: 'Hover colour for “critical” elements.',
                 criticalActive: 'Hover colour for “critical” elements.',
+                caution: 'Used for heavier “caution” elements.',
+                cautionLight: 'Used for lighter “caution” elements.',
                 info: 'Used for heavier “info” elements.',
                 infoLight: 'Used for lighter “info” elements.',
                 promote: 'Used for heavier “promote” elements.',
                 promoteLight: 'Used for lighter “promote” elements.',
-                caution: 'Used for heavier “caution” elements.',
-                cautionLight: 'Used for lighter “caution” elements.',
                 neutral: 'Used for heavier “neutral” elements.',
                 neutralLight: 'Used for lighter “neutral” elements.',
               }),
@@ -470,14 +471,16 @@ const docs: ComponentDocs = {
               <Columns key={background} space="medium">
                 <Column width="content">
                   <Box
-                    background="card"
+                    background={
+                      ['card', 'input'].includes(background) ? 'body' : 'card'
+                    }
                     borderRadius="standard"
-                    padding="xxsmall"
+                    padding="xsmall"
                   >
                     <Box
                       background={background as keyof BackgroundDocs}
                       borderRadius="standard"
-                      padding="large"
+                      padding="gutter"
                     />
                   </Box>
                 </Column>
