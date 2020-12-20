@@ -9,7 +9,6 @@ import {
   Tiles,
   Columns,
   Column,
-  Divider,
   Strong,
   Alert,
 } from '../';
@@ -108,10 +107,10 @@ const docs: ComponentDocs = {
       description: (
         <>
           <Text>
-            Padding and margins can be applied in all directions using our{' '}
+            Padding can be applied in all directions using our{' '}
             <TextLink href="/foundations/layout#spacing">space scale.</TextLink>{' '}
-            In most cases, padding is recommended over margin to avoid issues
-            with{' '}
+            Margin is also supported with the same syntax, but padding is
+            recommended over margin in most cases to avoid issues with{' '}
             <TextLink href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Mastering_margin_collapsing">
               collapsing margins.
             </TextLink>
@@ -129,235 +128,113 @@ const docs: ComponentDocs = {
       ),
       Example: () =>
         source(
-          <Stack space="large" align="center">
-            <Stack space="gutter" align="center">
+          <Stack space="gutter" align="center">
+            <Inline space="gutter" align="center" alignY="center">
+              <Box
+                background="formAccentHover"
+                borderRadius="standard"
+                padding="medium"
+              >
+                <Box
+                  background="formAccent"
+                  borderRadius="standard"
+                  padding="medium"
+                >
+                  <Text>padding</Text>
+                </Box>
+              </Box>
               <Inline space="gutter" align="center" alignY="center">
                 <Box
                   background="formAccentHover"
                   borderRadius="standard"
-                  padding="medium"
+                  paddingX="medium"
                 >
                   <Box
                     background="formAccent"
                     borderRadius="standard"
                     padding="medium"
                   >
-                    <Text>padding</Text>
+                    <Text>paddingX</Text>
                   </Box>
                 </Box>
-                <Inline space="gutter" align="center" alignY="center">
-                  <Box
-                    background="formAccentHover"
-                    borderRadius="standard"
-                    paddingX="medium"
-                  >
-                    <Box
-                      background="formAccent"
-                      borderRadius="standard"
-                      padding="medium"
-                    >
-                      <Text>paddingX</Text>
-                    </Box>
-                  </Box>
-                  <Box
-                    background="formAccentHover"
-                    borderRadius="standard"
-                    paddingY="medium"
-                  >
-                    <Box
-                      background="formAccent"
-                      borderRadius="standard"
-                      padding="medium"
-                    >
-                      <Text>paddingY</Text>
-                    </Box>
-                  </Box>
-                </Inline>
-              </Inline>
-              <Inline
-                space="gutter"
-                collapseBelow="desktop"
-                align="center"
-                alignY="center"
-              >
-                <Inline space="gutter" align="center" alignY="center">
-                  <Box
-                    background="formAccentHover"
-                    borderRadius="standard"
-                    paddingTop="medium"
-                  >
-                    <Box
-                      background="formAccent"
-                      borderRadius="standard"
-                      padding="medium"
-                    >
-                      <Text>paddingTop</Text>
-                    </Box>
-                  </Box>
-                  <Box
-                    background="formAccentHover"
-                    borderRadius="standard"
-                    paddingRight="medium"
-                  >
-                    <Box
-                      background="formAccent"
-                      borderRadius="standard"
-                      padding="medium"
-                    >
-                      <Text>paddingRight</Text>
-                    </Box>
-                  </Box>
-                </Inline>
-                <Inline space="gutter" align="center" alignY="center">
-                  <Box
-                    background="formAccentHover"
-                    borderRadius="standard"
-                    paddingBottom="medium"
-                  >
-                    <Box
-                      background="formAccent"
-                      borderRadius="standard"
-                      padding="medium"
-                    >
-                      <Text>paddingBottom</Text>
-                    </Box>
-                  </Box>
-                  <Box
-                    background="formAccentHover"
-                    borderRadius="standard"
-                    paddingLeft="medium"
-                  >
-                    <Box
-                      background="formAccent"
-                      borderRadius="standard"
-                      padding="medium"
-                    >
-                      <Text>paddingLeft</Text>
-                    </Box>
-                  </Box>
-                </Inline>
-              </Inline>
-            </Stack>
-
-            <Box width="full">
-              <Divider />
-            </Box>
-
-            <Stack space="gutter" align="center">
-              <Inline space="gutter" align="center" alignY="center">
                 <Box
-                  display="flex"
-                  background="brandAccentHover"
+                  background="formAccentHover"
                   borderRadius="standard"
+                  paddingY="medium"
                 >
                   <Box
-                    background="brandAccent"
+                    background="formAccent"
                     borderRadius="standard"
                     padding="medium"
-                    margin="medium"
                   >
-                    <Text>margin</Text>
+                    <Text>paddingY</Text>
                   </Box>
                 </Box>
-                <Inline space="gutter" align="center" alignY="center">
-                  <Box
-                    display="flex"
-                    background="brandAccentHover"
-                    borderRadius="standard"
-                  >
-                    <Box
-                      background="brandAccent"
-                      borderRadius="standard"
-                      padding="medium"
-                      marginX="medium"
-                    >
-                      <Text>marginX</Text>
-                    </Box>
-                  </Box>
-                  <Box
-                    display="flex"
-                    background="brandAccentHover"
-                    borderRadius="standard"
-                  >
-                    <Box
-                      background="brandAccent"
-                      borderRadius="standard"
-                      padding="medium"
-                      marginY="medium"
-                    >
-                      <Text>marginY</Text>
-                    </Box>
-                  </Box>
-                </Inline>
               </Inline>
-              <Inline
-                space="gutter"
-                collapseBelow="desktop"
-                align="center"
-                alignY="center"
-              >
-                <Inline space="gutter" align="center" alignY="center">
+            </Inline>
+            <Inline
+              space="gutter"
+              collapseBelow="desktop"
+              align="center"
+              alignY="center"
+            >
+              <Inline space="gutter" align="center" alignY="center">
+                <Box
+                  background="formAccentHover"
+                  borderRadius="standard"
+                  paddingTop="medium"
+                >
                   <Box
-                    display="flex"
-                    background="brandAccentHover"
+                    background="formAccent"
                     borderRadius="standard"
+                    padding="medium"
                   >
-                    <Box
-                      background="brandAccent"
-                      borderRadius="standard"
-                      padding="medium"
-                      marginTop="medium"
-                    >
-                      <Text>marginTop</Text>
-                    </Box>
+                    <Text>paddingTop</Text>
                   </Box>
+                </Box>
+                <Box
+                  background="formAccentHover"
+                  borderRadius="standard"
+                  paddingRight="medium"
+                >
                   <Box
-                    display="flex"
-                    background="brandAccentHover"
+                    background="formAccent"
                     borderRadius="standard"
+                    padding="medium"
                   >
-                    <Box
-                      background="brandAccent"
-                      borderRadius="standard"
-                      padding="medium"
-                      marginRight="medium"
-                    >
-                      <Text>marginRight</Text>
-                    </Box>
+                    <Text>paddingRight</Text>
                   </Box>
-                </Inline>
-                <Inline space="gutter" align="center" alignY="center">
-                  <Box
-                    display="flex"
-                    background="brandAccentHover"
-                    borderRadius="standard"
-                  >
-                    <Box
-                      background="brandAccent"
-                      borderRadius="standard"
-                      padding="medium"
-                      marginBottom="medium"
-                    >
-                      <Text>marginBottom</Text>
-                    </Box>
-                  </Box>
-                  <Box
-                    display="flex"
-                    background="brandAccentHover"
-                    borderRadius="standard"
-                  >
-                    <Box
-                      background="brandAccent"
-                      borderRadius="standard"
-                      padding="medium"
-                      marginLeft="medium"
-                    >
-                      <Text>marginLeft</Text>
-                    </Box>
-                  </Box>
-                </Inline>
+                </Box>
               </Inline>
-            </Stack>
+              <Inline space="gutter" align="center" alignY="center">
+                <Box
+                  background="formAccentHover"
+                  borderRadius="standard"
+                  paddingBottom="medium"
+                >
+                  <Box
+                    background="formAccent"
+                    borderRadius="standard"
+                    padding="medium"
+                  >
+                    <Text>paddingBottom</Text>
+                  </Box>
+                </Box>
+                <Box
+                  background="formAccentHover"
+                  borderRadius="standard"
+                  paddingLeft="medium"
+                >
+                  <Box
+                    background="formAccent"
+                    borderRadius="standard"
+                    padding="medium"
+                  >
+                    <Text>paddingLeft</Text>
+                  </Box>
+                </Box>
+              </Inline>
+            </Inline>
           </Stack>,
         ),
     },
@@ -372,7 +249,7 @@ const docs: ComponentDocs = {
       ),
       Example: () =>
         source(
-          <Inline space="gutter" align="center">
+          <Inline space="medium" align="center">
             <Box
               background="formAccentHover"
               borderRadius="standard"
@@ -384,21 +261,6 @@ const docs: ComponentDocs = {
                 padding="medium"
               >
                 <Text>Responsive padding</Text>
-              </Box>
-            </Box>
-
-            <Box
-              display="flex"
-              background="brandAccentHover"
-              borderRadius="standard"
-            >
-              <Box
-                background="brandAccent"
-                borderRadius="standard"
-                padding="medium"
-                margin={['small', 'medium', 'large']}
-              >
-                <Text>Responsive margin</Text>
               </Box>
             </Box>
           </Inline>,
@@ -456,7 +318,7 @@ const docs: ComponentDocs = {
                 critical: 'Used for heavier “critical” elements.',
                 criticalLight: 'Used for lighter “critical” elements.',
                 criticalHover: 'Hover colour for “critical” elements.',
-                criticalActive: 'Hover colour for “critical” elements.',
+                criticalActive: 'Active colour for “critical” elements.',
                 caution: 'Used for heavier “caution” elements.',
                 cautionLight: 'Used for lighter “caution” elements.',
                 info: 'Used for heavier “info” elements.',
