@@ -15,6 +15,8 @@ import {
 import source from '../../utils/source.macro';
 import Code from '../../../site/src/App/Code/Code';
 import { BoxProps } from './Box';
+import { UseBoxStylesProps } from './useBoxStyles';
+import * as styleRefs from './useBoxStyles.treat';
 
 type BackgroundDocs = Required<
   Record<NonNullable<BoxProps['background']>, string>
@@ -99,6 +101,112 @@ const docs: ComponentDocs = {
               ).code;
             })()}
           </Code>
+        </>
+      ),
+    },
+    {
+      label: 'CSS utilities',
+      description: (
+        <>
+          <Text>
+            Box provides a suite of common CSS utility props. Styles that
+            commonly differ across screen sizes can also be expressed as
+            responsive props, e.g.{' '}
+            <Strong>{"justifyContent={['center', 'flexStart']}"}</Strong>
+          </Text>
+          <Text>
+            These utilities are recommended where possible to reduce the amount
+            of custom CSS in your application.
+          </Text>
+          <Code playroom={false}>
+            {
+              source(
+                <Box
+                  display="flex"
+                  justifyContent={['center', 'flexStart']}
+                  position="absolute"
+                  top={0}
+                  left={0}
+                  width="full"
+                  height="full"
+                >
+                  ...
+                </Box>,
+              ).code
+            }
+          </Code>
+          <Box paddingBottom="large">
+            <Tiles space="xlarge" columns={[1, 2]}>
+              {(() => {
+                type UtilName = keyof Omit<
+                  UseBoxStylesProps,
+                  | 'background'
+                  | 'boxShadow'
+                  | 'className'
+                  | 'component'
+                  | 'margin'
+                  | 'marginX'
+                  | 'marginY'
+                  | 'marginTop'
+                  | 'marginBottom'
+                  | 'marginLeft'
+                  | 'marginRight'
+                  | 'padding'
+                  | 'paddingX'
+                  | 'paddingY'
+                  | 'paddingTop'
+                  | 'paddingBottom'
+                  | 'paddingLeft'
+                  | 'paddingRight'
+                >;
+
+                const utils: Record<UtilName, true> = {
+                  alignItems: true,
+                  bottom: true,
+                  borderRadius: true,
+                  cursor: true,
+                  display: true,
+                  flexDirection: true,
+                  flexGrow: true,
+                  flexShrink: true,
+                  flexWrap: true,
+                  height: true,
+                  justifyContent: true,
+                  left: true,
+                  maxWidth: true,
+                  minWidth: true,
+                  opacity: true,
+                  outline: true,
+                  overflow: true,
+                  pointerEvents: true,
+                  position: true,
+                  right: true,
+                  textAlign: true,
+                  top: true,
+                  transform: true,
+                  transition: true,
+                  userSelect: true,
+                  width: true,
+                  zIndex: true,
+                };
+
+                return (Object.keys(utils) as Array<UtilName>).map((prop) => (
+                  <Stack key={prop} space="medium">
+                    <Text weight="strong">
+                      {prop}
+                      {`${prop}Desktop` in styleRefs ? ' (Responsive)' : ''}
+                    </Text>
+                    <Text tone="secondary">
+                      {Object.keys(styleRefs[prop])
+                        .sort()
+                        .map((key) => (!/[0-9]/.test(key) ? `"${key}"` : key))
+                        .join(', ')}
+                    </Text>
+                  </Stack>
+                ));
+              })()}
+            </Tiles>
+          </Box>
         </>
       ),
     },
