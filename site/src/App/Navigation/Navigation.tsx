@@ -107,7 +107,12 @@ export const Navigation = ({ children }: NavigationProps) => {
           paddingX={gutterSize}
           paddingBottom="xxlarge"
           width="full"
-          display={[isMenuOpen ? 'block' : 'none', 'block']}
+          display={[
+            ...(isMenuOpen
+              ? (['block', 'block'] as const)
+              : (['none', 'none'] as const)),
+            'block',
+          ]}
           zIndex="sticky"
           background="body"
           className={[
