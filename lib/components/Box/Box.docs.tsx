@@ -110,7 +110,7 @@ const docs: ComponentDocs = {
         <>
           <Text>
             Box provides a suite of common CSS utility props. Styles that
-            commonly differ across screen sizes can also be expressed as
+            regularly differ across screen sizes can also be expressed as
             responsive props, e.g.{' '}
             <Strong>{"justifyContent={['center', 'flexStart']}"}</Strong>
           </Text>
