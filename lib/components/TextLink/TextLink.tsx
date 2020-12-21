@@ -1,7 +1,7 @@
 import React from 'react';
 import {
-  TextLinkRenderer,
-  TextLinkRendererProps,
+  PrivateTextLinkRenderer,
+  PrivateTextLinkRendererProps,
 } from '../TextLinkRenderer/TextLinkRenderer';
 import {
   useLinkComponentWithoutRefSupport,
@@ -9,7 +9,7 @@ import {
 } from '../BraidProvider/BraidProvider';
 
 export interface TextLinkProps
-  extends Omit<TextLinkRendererProps, 'children'>,
+  extends Omit<PrivateTextLinkRendererProps, 'children'>,
     Omit<LinkComponentProps, 'className' | 'style'> {}
 
 export const TextLink = ({
@@ -21,12 +21,12 @@ export const TextLink = ({
   const LinkComponent = useLinkComponentWithoutRefSupport();
 
   return (
-    <TextLinkRenderer
+    <PrivateTextLinkRenderer
       weight={weight}
       showVisited={showVisited}
       hitArea={hitArea}
     >
       {(styleProps) => <LinkComponent {...props} {...styleProps} />}
-    </TextLinkRenderer>
+    </PrivateTextLinkRenderer>
   );
 };
