@@ -129,7 +129,7 @@ const tokens: TreatTokens = {
   breakpoint: {
     mobile: 0,
     tablet: 768,
-    desktop: 992,
+    desktop: 1136,
   },
   contentWidth: {
     xsmall: 400,
