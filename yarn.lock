@@ -2943,37 +2943,38 @@
     "@typescript-eslint/types" "4.1.1"
     eslint-visitor-keys "^2.0.0"
 
-"@vocab/core@^0.0.6":
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/@vocab/core/-/core-0.0.6.tgz#16930d0ce3cbad993e14d2a51723ce1c9989a5d0"
-  integrity sha512-cJeK7bMV9JFLh4oHJRk4gYztJ3JJy+flKynyNmWRuudtQDLqho4+4VbfhlqYyECIqZIh810fB2/gd1isjqxcxg==
+"@vocab/core@^0.0.8":
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/@vocab/core/-/core-0.0.8.tgz#4f2abfa2ea48337551979de3547eee3cc2c40bee"
+  integrity sha512-R8Obv6d0qS5KY9T2gNVMbFREROMOJ6ZB6+wLhe/RHXbOMHGp7Hkx9sLX1MIsd//hDbNaKNxfDgZ/qVWwryESlw==
   dependencies:
-    "@vocab/types" "^0.0.6"
+    "@vocab/types" "^0.0.8"
     chalk "^4.1.0"
     chokidar "^3.4.3"
     debug "^4.3.1"
     fast-glob "^3.2.4"
     fastest-validator "^1.9.0"
     find-up "^5.0.0"
+    intl-messageformat "^9.3.18"
     intl-messageformat-parser "^6.0.16"
     prettier "^2.1.2"
 
-"@vocab/phrase@^0.0.6":
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/@vocab/phrase/-/phrase-0.0.6.tgz#0701aae79046c76b19df6d1e18b17df6fc6536d8"
-  integrity sha512-+qGx6ca4bQA7nRGwXsrfoBclMoUAYJNF+Al44sAl8TFbo+sIRxtIR8W76SYMXOn5dOFW4APAEsXRiBnjgLJr/Q==
+"@vocab/phrase@^0.0.8":
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/@vocab/phrase/-/phrase-0.0.8.tgz#2a877f1cc239a714e750539d002028d4dac18e97"
+  integrity sha512-E8IRC9SXvTLHtnjV58OESxT1OC1USpp1bukQtKtV3FbynK5+Pq+oWafAqSrYEAjzAzUC5X5vmIiSk4W+5GZSBA==
   dependencies:
-    "@vocab/core" "^0.0.6"
-    "@vocab/types" "^0.0.6"
+    "@vocab/core" "^0.0.8"
+    "@vocab/types" "^0.0.8"
     chalk "^4.1.0"
     debug "^4.3.1"
     form-data "^3.0.0"
     node-fetch "^2.6.1"
 
-"@vocab/types@^0.0.6":
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/@vocab/types/-/types-0.0.6.tgz#f49f6643d335e722f4b581ab8662d7d0206b74bd"
-  integrity sha512-PbxsMjrd3aw8TP9d8yuYT58XpDOeiixWAgaysX3B9HIfV2umjyVs+ExMjplUhLk2y5YsBN084enTatqlKFsA1A==
+"@vocab/types@^0.0.8":
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/@vocab/types/-/types-0.0.8.tgz#853f9cedcd0dc4148bed59de0f8b579e32f6b4c5"
+  integrity sha512-DBsuQc0ztcZKHg7LoKjEE2+2CNuruu+vkIa1Gn8zt7oGlP/3Fv+ttje8IyyC9C27SEIYopjmsY54suUMr3DQ0Q==
   dependencies:
     intl-messageformat "^9.3.18"
 
@@ -2984,17 +2985,16 @@
   dependencies:
     loader-utils "^2.0.0"
 
-"@vocab/webpack@^0.0.14":
-  version "0.0.14"
-  resolved "https://registry.yarnpkg.com/@vocab/webpack/-/webpack-0.0.14.tgz#9c4c6619bbe197b2456a4b4a7fa5b2e8c9ef244c"
-  integrity sha512-q8GeT60neZX8rSr4sUizW40jMNsfmYEN6+PkWFUsP2v55D1IM1KeoXAxpH0bwPEgtt1hTb3jTCwClK66JK5hHA==
+"@vocab/webpack@^0.0.16":
+  version "0.0.16"
+  resolved "https://registry.yarnpkg.com/@vocab/webpack/-/webpack-0.0.16.tgz#c4961619c9975635084050f39cb4e5e8874f81e6"
+  integrity sha512-LitOigWTre2FwBbjaDWF4yN9W7qlWzbuY60BQcyeTpMvG9L2e7JZCxuidpSvHN6CjOnAn0veiIo7tjtIPY5Yhg==
   dependencies:
-    "@vocab/core" "^0.0.6"
-    "@vocab/types" "^0.0.6"
+    "@vocab/core" "^0.0.8"
+    "@vocab/types" "^0.0.8"
     "@vocab/unloader" "^0.0.1"
     chalk "^4.1.0"
     debug "^4.3.1"
-    intl-messageformat "^9.3.18"
     json-loader "^0.5.7"
     loader-utils "^2.0.0"
 
@@ -14726,10 +14726,10 @@ sisteransi@^1.0.4:
   resolved "https://registry.yarnpkg.com/sisteransi/-/sisteransi-1.0.5.tgz#134d681297756437cc05ca01370d3a7a571075ed"
   integrity sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==
 
-sku@10.9.0:
-  version "10.9.0"
-  resolved "https://registry.yarnpkg.com/sku/-/sku-10.9.0.tgz#030421d7148ff33c7a1b8999925487a54ba5d81f"
-  integrity sha512-zTSuwCuzwTquy5uku3jOp1Y3dfuSDqN0W+GViVuxv2QsvkhEkDFVJchdxzs9VaUcoo/V63TM27/7IahrquGLzw==
+sku@10.9.1:
+  version "10.9.1"
+  resolved "https://registry.yarnpkg.com/sku/-/sku-10.9.1.tgz#f0881811ffd1623e7eb797b1f0104c88053568cc"
+  integrity sha512-7flBGHtLy3/A++UZiGuJjkuoN4w6e1DvvVKn6EJIpS7xYKqUfon4Uh68OF4ehUeekN/d8xHYlRAlyhZQI0ZLSg==
   dependencies:
     "@babel/core" "^7.9.0"
     "@babel/plugin-proposal-class-properties" "^7.8.3"
@@ -14754,9 +14754,9 @@ sku@10.9.0:
     "@types/jest" "^25.1.0"
     "@types/loadable__component" "^5.10.0"
     "@types/webpack" "^4.32.1"
-    "@vocab/core" "^0.0.6"
-    "@vocab/phrase" "^0.0.6"
-    "@vocab/webpack" "^0.0.14"
+    "@vocab/core" "^0.0.8"
+    "@vocab/phrase" "^0.0.8"
+    "@vocab/webpack" "^0.0.16"
     autoprefixer "^9.6.1"
     babel-jest "^25.1.0"
     babel-loader "^8.0.6"
