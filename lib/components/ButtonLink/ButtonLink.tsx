@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import {
-  ButtonRenderer,
-  ButtonRendererProps,
+  PrivateButtonRenderer,
+  PrivateButtonRendererProps,
 } from '../ButtonRenderer/ButtonRenderer';
 import {
   useLinkComponentWithoutRefSupport,
@@ -9,7 +9,7 @@ import {
 } from '../BraidProvider/BraidProvider';
 
 export interface ButtonLinkProps
-  extends Omit<ButtonRendererProps, 'children'>,
+  extends Omit<PrivateButtonRendererProps, 'children'>,
     Omit<LinkComponentProps, 'className' | 'style'> {
   children?: ReactNode;
 }
@@ -24,12 +24,12 @@ export const ButtonLink = ({
   const LinkComponent = useLinkComponentWithoutRefSupport();
 
   return (
-    <ButtonRenderer tone={tone} weight={weight} loading={loading}>
+    <PrivateButtonRenderer tone={tone} weight={weight} loading={loading}>
       {(ButtonChildren, buttonProps) => (
         <LinkComponent {...restProps} {...buttonProps}>
           <ButtonChildren>{children}</ButtonChildren>
         </LinkComponent>
       )}
-    </ButtonRenderer>
+    </PrivateButtonRenderer>
   );
 };

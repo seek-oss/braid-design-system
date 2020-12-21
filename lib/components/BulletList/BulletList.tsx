@@ -15,6 +15,7 @@ export interface BulletListProps {
   children: ListProps['children'];
 }
 
+/** @deprecated `BulletList` has been deprecated. Use [List](https://seek-oss.github.io/braid-design-system/components/List) instead. */
 export const BulletList = ({
   space,
   size,
@@ -59,6 +60,7 @@ export interface BulletProps {
   children: ReactNode;
 }
 
+/** @deprecated `Bullet` has been deprecated. Use [List](https://seek-oss.github.io/braid-design-system/components/List) instead. */
 export const Bullet = ({ children }: BulletProps) => {
   if (process.env.NODE_ENV !== 'production') {
     // eslint-disable-next-line react-hooks/rules-of-hooks

@@ -25,14 +25,16 @@ interface StyleProps {
 }
 
 type TextLinkWeight = 'regular' | 'weak';
-export interface TextLinkRendererProps {
+export interface PrivateTextLinkRendererProps {
   weight?: TextLinkWeight;
   showVisited?: boolean;
   hitArea?: 'standard' | 'large';
   children: (styleProps: StyleProps) => ReactElement;
 }
 
-export const TextLinkRenderer = (props: TextLinkRendererProps) => {
+export const PrivateTextLinkRenderer = (
+  props: PrivateTextLinkRendererProps,
+) => {
   const inActions = useContext(ActionsContext);
 
   assert(
@@ -53,6 +55,9 @@ export const TextLinkRenderer = (props: TextLinkRendererProps) => {
 
   return <InlineLink {...props} />;
 };
+
+/** @deprecated `TextLinkRenderer` has been deprecated. Use [TextLink](https://seek-oss.github.io/braid-design-system/components/TextLink) or [TextLinkButton](https://seek-oss.github.io/braid-design-system/components/TextLinkButton) instead.  If your usage of `TextLinkRenderer` is not covered by either of these, please let us know. */
+export const TextLinkRenderer = PrivateTextLinkRenderer;
 
 function useDefaultLinkWeight() {
   const backgroundContext = useBackground();
@@ -93,7 +98,7 @@ function InlineLink({
   showVisited = false,
   hitArea = 'standard',
   children,
-}: TextLinkRendererProps) {
+}: PrivateTextLinkRendererProps) {
   const virtualTouchableStyle = useVirtualTouchable();
   const defaultWeight = useDefaultLinkWeight();
   const weight = weightProp ?? defaultWeight;
@@ -120,7 +125,7 @@ function ButtonLink({
   showVisited = false,
   hitArea,
   children,
-}: TextLinkRendererProps) {
+}: PrivateTextLinkRendererProps) {
   const styles = useStyles(styleRefs);
   const textLinkWeight = useDefaultLinkWeight();
   const tone = textLinkWeight === 'weak' ? 'neutral' : 'link';

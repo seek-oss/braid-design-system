@@ -173,7 +173,7 @@ const ButtonChildren = ({ children }: ButtonChildrenProps) => {
   );
 };
 
-export interface ButtonRendererProps {
+export interface PrivateButtonRendererProps {
   tone?: ButtonTone;
   weight?: ButtonWeight;
   loading?: boolean;
@@ -186,12 +186,12 @@ export interface ButtonRendererProps {
   ) => ReactNode;
 }
 
-export const ButtonRenderer = ({
+export const PrivateButtonRenderer = ({
   tone,
   weight = 'regular',
   loading = false,
   children,
-}: ButtonRendererProps) => {
+}: PrivateButtonRendererProps) => {
   const styles = useStyles(styleRefs);
   const isWeak = weight === 'weak';
   const { background, boxShadow } = useButtonVariant(weight, tone);
@@ -237,3 +237,6 @@ export const ButtonRenderer = ({
     button
   );
 };
+
+/** @deprecated `ButtonRenderer` has been deprecated. Use [Button](https://seek-oss.github.io/braid-design-system/components/Button) or [ButtonLink](https://seek-oss.github.io/braid-design-system/components/ButtonLink) instead. If your usage of `ButtonRenderer` is not covered by either of these, please let us know. */
+export const ButtonRenderer = PrivateButtonRenderer;
