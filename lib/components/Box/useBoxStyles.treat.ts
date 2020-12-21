@@ -363,6 +363,7 @@ export const maxWidth = styleMap(({ contentWidth }) =>
 const relativePositionRules = {
   0: 0,
 };
+// Remove this when 'styleMap' supports numbers as keys and it's been released to sku consumers,
 type PositionRulesType = Record<keyof typeof relativePositionRules, string>;
 export const top = styleMap(
   mapToStyleProperty(relativePositionRules, 'top'),
