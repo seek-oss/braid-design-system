@@ -1,7 +1,7 @@
 import React, { ReactNode, AllHTMLAttributes } from 'react';
 import {
-  ButtonRenderer,
-  ButtonRendererProps,
+  PrivateButtonRenderer,
+  PrivateButtonRendererProps,
 } from '../ButtonRenderer/ButtonRenderer';
 import buildDataAttributes, {
   DataAttributeMap,
@@ -13,9 +13,9 @@ export interface ButtonProps {
   onClick?: NativeButtonProps['onClick'];
   type?: 'button' | 'submit' | 'reset';
   children?: ReactNode;
-  tone?: ButtonRendererProps['tone'];
-  weight?: ButtonRendererProps['weight'];
-  loading?: ButtonRendererProps['loading'];
+  tone?: PrivateButtonRendererProps['tone'];
+  weight?: PrivateButtonRendererProps['weight'];
+  loading?: PrivateButtonRendererProps['loading'];
   'aria-controls'?: NativeButtonProps['aria-controls'];
   'aria-expanded'?: NativeButtonProps['aria-expanded'];
   'aria-describedby'?: NativeButtonProps['aria-describedby'];
@@ -35,7 +35,7 @@ export const Button = ({
   'aria-describedby': ariaDescribedBy,
   data,
 }: ButtonProps) => (
-  <ButtonRenderer tone={tone} weight={weight} loading={loading}>
+  <PrivateButtonRenderer tone={tone} weight={weight} loading={loading}>
     {(ButtonChildren, buttonProps) => (
       <button
         id={id}
@@ -51,5 +51,5 @@ export const Button = ({
         <ButtonChildren>{children}</ButtonChildren>
       </button>
     )}
-  </ButtonRenderer>
+  </PrivateButtonRenderer>
 );

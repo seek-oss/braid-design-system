@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import sortBy from 'lodash/sortBy';
+import partition from 'lodash/partition';
 import { Box, Text, Stack } from '../../../../lib/components';
 import componentDocs from '../../../../generate-component-docs/componentDocs.json';
 import type {
@@ -91,27 +91,29 @@ export const ComponentProps = ({ componentName }: Props) => {
     return null;
   }
 
-  const propList = sortBy(
+  const [requiredProps, optionalProps] = partition(
     doc.props.props,
     ({ required }) => required,
-  ).reverse();
+  );
 
   return Object.keys(doc.props).length === 0 ? null : (
     <Stack space="xlarge">
-      {propList.map(({ propName, type, required, description }) => (
-        <Stack space="medium" key={propName}>
-          <Stack space="small">
-            <Text weight="strong">
-              {propName}
-              {required ? ' (Required)' : null}
+      {[...requiredProps, ...optionalProps].map(
+        ({ propName, type, required, description }) => (
+          <Stack space="medium" key={propName}>
+            <Stack space="small">
+              <Text weight="strong">
+                {propName}
+                {required ? ' (Required)' : null}
+              </Text>
+              {description ? <Text size="small">{description}</Text> : null}
+            </Stack>
+            <Text size="small" tone="secondary">
+              <PropType type={type} />
             </Text>
-            {description ? <Text size="small">{description}</Text> : null}
           </Stack>
-          <Text size="small" tone="secondary">
-            <PropType type={type} />
-          </Text>
-        </Stack>
-      ))}
+        ),
+      )}
     </Stack>
   );
 };

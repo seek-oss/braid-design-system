@@ -49,10 +49,10 @@ export interface UseBoxStylesProps {
   overflow?: keyof typeof styleRefs.overflow;
   minWidth?: keyof typeof styleRefs.minWidth;
   maxWidth?: keyof typeof styleRefs.maxWidth;
-  top?: keyof typeof styleRefs.relativePosition.top;
-  bottom?: keyof typeof styleRefs.relativePosition.bottom;
-  left?: keyof typeof styleRefs.relativePosition.left;
-  right?: keyof typeof styleRefs.relativePosition.right;
+  top?: keyof typeof styleRefs.top;
+  bottom?: keyof typeof styleRefs.bottom;
+  left?: keyof typeof styleRefs.left;
+  right?: keyof typeof styleRefs.right;
   userSelect?: keyof typeof styleRefs.userSelect;
   outline?: keyof typeof styleRefs.outline;
   opacity?: keyof typeof styleRefs.opacity;
@@ -137,10 +137,10 @@ export const useBoxStyles = ({
     styles.overflow[overflow!],
     styles.minWidth[minWidth!],
     styles.maxWidth[maxWidth!],
-    styles.relativePosition.top[top!],
-    styles.relativePosition.bottom[bottom!],
-    styles.relativePosition.right[right!],
-    styles.relativePosition.left[left!],
+    styles.top[top!],
+    styles.bottom[bottom!],
+    styles.right[right!],
+    styles.left[left!],
     resolvedMarginTop !== undefined &&
       resolveResponsiveProp(
         resolvedMarginTop,

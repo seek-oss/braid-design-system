@@ -13,7 +13,8 @@ export interface RadioProps
     'message' | 'reserveMessageSpace' | 'required'
   > {}
 
-const NamedRadio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
+/** @deprecated Individual `Radio` elements have been deprecated. Use [RadioGroup](https://seek-oss.github.io/braid-design-system/components/RadioGroup) instead. */
+export const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
   const radioGroupContext = useContext(RadioGroupContext);
 
   assert(
@@ -55,6 +56,4 @@ const NamedRadio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
   );
 });
 
-NamedRadio.displayName = 'Radio';
-
-export const Radio = NamedRadio;
+Radio.displayName = 'Radio';
