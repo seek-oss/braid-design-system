@@ -6,6 +6,7 @@ interface Config {
   initialX?: number;
   initialY?: number;
   initialScale?: number;
+  onChange?: (state: State) => void;
 }
 
 interface State {
@@ -55,6 +56,12 @@ export default (domElement: HTMLElement, config: Config = defaultConfig) => {
     state.scale = scale;
 
     domElement.style.transform = `matrix(${scale}, 0, 0, ${scale}, ${x}, ${y})`;
+
+    // domElement.style.transform = `matrix3d(${scale}, 0, 0, 0, 0, ${scale}, 0, 0, 0, 0, 1, 0, ${x}, ${y}, 1, 0)`;
+
+    if (typeof resolvedConfig.onChange === 'function') {
+      resolvedConfig.onChange(state);
+    }
   };
 
   moveTo(state);
@@ -83,7 +90,7 @@ export default (domElement: HTMLElement, config: Config = defaultConfig) => {
     moveTo({
       x: targetX - targetScale * (targetX - state.x),
       y: targetY - targetScale * (targetY - state.y),
-      scale: state.scale * targetScale,
+      scale: targetScale === 1 ? targetScale : state.scale * targetScale,
     });
   };
 
@@ -131,6 +138,7 @@ export default (domElement: HTMLElement, config: Config = defaultConfig) => {
   };
 
   const onMouseUp = () => {
+    domElement.style.transition = '';
     document.removeEventListener('mousemove', onMouseMove);
     document.removeEventListener('mouseup', onMouseUp);
   };
@@ -161,7 +169,8 @@ export default (domElement: HTMLElement, config: Config = defaultConfig) => {
     mouseX = e.clientX;
     mouseY = e.clientY;
 
-    document.addEventListener('mousemove', onMouseMove, { passive: false });
+    domElement.style.transition = 'transform 100ms ease-in-out';
+    document.addEventListener('mousemove', onMouseMove);
     document.addEventListener('mouseup', onMouseUp, { passive: false });
   };
 
