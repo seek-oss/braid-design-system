@@ -3,12 +3,12 @@ import { RecoilRoot } from 'recoil';
 import { useStyles } from 'sku/react-treat';
 import { parseToHsl, setLightness } from 'polished';
 
+import { Page } from '../../../types';
 import { PageTitle } from '../../Seo/PageTitle';
 import { Box } from '../../../../../lib/components';
 import { Logo } from '../../Logo/Logo';
 import { useThemeSettings } from '../../ThemeSetting';
 import { Gallery } from './Gallery';
-import { Page } from '../../../types';
 import * as styleRefs from './gallery.treat';
 
 const useBackgroundColor = () => {

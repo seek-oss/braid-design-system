@@ -2,16 +2,16 @@ import React, {
   Fragment,
   ReactNode,
   memo,
-  ComponentProps,
-  useRef,
-  useState,
-  useCallback,
   useEffect,
+  useState,
+  useRef,
+  ComponentProps,
+  useCallback,
 } from 'react';
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 import { chunk, memoize } from 'lodash';
-import panzoom from 'panzoom';
 import copy from 'copy-to-clipboard';
+import panzoom from 'panzoom';
 import { useStyles } from 'sku/react-treat';
 
 import {
@@ -36,13 +36,14 @@ import {
 } from '../../../../../lib/components';
 import docsTheme from '../../../../../lib/themes/docs';
 import { getHistory, isNew } from '../../Updates';
+import source from '../../../../../lib/utils/source.macro';
 import { CopyIcon } from '../../Code/CopyIcon';
 import { CodeButton, formatSnippet } from '../../Code/Code';
 import { ComponentExample } from '../../../types';
 import {
-  ThemedExample,
-  ThemeToggle,
   useThemeSettings,
+  ThemedExample,
+  // ThemeToggle,
 } from '../../ThemeSetting';
 import {
   galleryComponents as allGalleryComponents,
@@ -51,7 +52,6 @@ import {
 import { PlayroomStateProvider } from '../../../../../lib/playroom/playroomState';
 import { useSourceFromExample } from '../../../../../lib/utils/useSourceFromExample';
 import * as icons from '../../../../../lib/components/icons';
-import source from '../../../../../lib/utils/source.macro';
 import {
   zoom as zoomState,
   fitToScreenDimensions,
@@ -608,8 +608,8 @@ export const Gallery = () => {
             >
               <Logo iconOnly height={28} width={28} />
             </Box>
-            <PanelDivider />
-            <ThemeToggle size="small" weight="strong" />
+            {/* <PanelDivider />
+            <ThemeToggle size="small" weight="strong" /> */}
           </Inline>
         </GalleryPanel>
 
