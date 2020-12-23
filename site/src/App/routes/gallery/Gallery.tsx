@@ -8,7 +8,12 @@ import React, {
   ComponentProps,
   useCallback,
 } from 'react';
-import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
+import {
+  RecoilRoot,
+  useRecoilState,
+  useRecoilValue,
+  useSetRecoilState,
+} from 'recoil';
 import { chunk, memoize } from 'lodash';
 import copy from 'copy-to-clipboard';
 import panzoom from 'panzoom';
@@ -43,7 +48,7 @@ import { ComponentExample } from '../../../types';
 import {
   useThemeSettings,
   ThemedExample,
-  // ThemeToggle,
+  ThemeToggle,
 } from '../../ThemeSetting';
 import {
   galleryComponents as allGalleryComponents,
@@ -394,7 +399,7 @@ const calculateFitToScreenDimensions = (
 };
 
 const zoomStep = 0.4;
-export const Gallery = () => {
+const GalleryInternal = () => {
   const styles = useStyles(styleRefs);
   const { ready: themeReady } = useThemeSettings();
   const [ready, setReady] = useState(false);
@@ -608,8 +613,8 @@ export const Gallery = () => {
             >
               <Logo iconOnly height={28} width={28} />
             </Box>
-            {/* <PanelDivider />
-            <ThemeToggle size="small" weight="strong" /> */}
+            <PanelDivider />
+            <ThemeToggle size="small" weight="strong" />
           </Inline>
         </GalleryPanel>
 
@@ -680,6 +685,12 @@ export const Gallery = () => {
     </>
   );
 };
+
+export const Gallery = () => (
+  <RecoilRoot>
+    <GalleryInternal />
+  </RecoilRoot>
+);
 
 const CurrentZoom = () => {
   const currentZoom = useRecoilValue(zoomState);

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { RecoilRoot } from 'recoil';
 import { useStyles } from 'sku/react-treat';
 import { parseToHsl, setLightness } from 'polished';
 
@@ -71,11 +70,7 @@ const GalleryPage = () => {
 const page: Page = {
   title: 'Gallery',
   exact: true,
-  component: () => (
-    <RecoilRoot>
-      <GalleryPage />
-    </RecoilRoot>
-  ),
+  component: GalleryPage,
 };
 
 export default {
