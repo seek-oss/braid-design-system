@@ -28,7 +28,7 @@ const GalleryPage = () => {
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    setTimeout(() => setReady(true), 200);
+    setTimeout(() => setReady(true), 100);
   }, []);
 
   return (
