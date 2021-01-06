@@ -84,7 +84,7 @@ type Action =
 
 interface AutosuggestState<Value> {
   highlightedIndex: number | null;
-  isOpen: boolean;
+  showSuggestionsIfAvailable: boolean;
   inputChangedSinceFocus: boolean;
   previewValue: AutosuggestValue<Value> | null;
   isFocused: boolean;
@@ -339,7 +339,7 @@ export const Autosuggest = forwardRef(function <Value>(
 
           return {
             ...state,
-            isOpen: true,
+            showSuggestionsIfAvailable: true,
             previewValue: normalisedSuggestions[nextIndex],
             highlightedIndex: nextIndex,
           };
@@ -356,7 +356,7 @@ export const Autosuggest = forwardRef(function <Value>(
 
           return {
             ...state,
-            isOpen: true,
+            showSuggestionsIfAvailable: true,
             previewValue: normalisedSuggestions[nextIndex],
             highlightedIndex: nextIndex,
           };
@@ -366,7 +366,7 @@ export const Autosuggest = forwardRef(function <Value>(
       case INPUT_CHANGE: {
         return {
           ...state,
-          isOpen: hasItems,
+          showSuggestionsIfAvailable: true,
           inputChangedSinceFocus: true,
           previewValue: null,
           highlightedIndex:
@@ -379,7 +379,7 @@ export const Autosuggest = forwardRef(function <Value>(
       case INPUT_FOCUS: {
         return {
           ...state,
-          isOpen: hasItems,
+          showSuggestionsIfAvailable: true,
           inputChangedSinceFocus: false,
           isFocused: true,
         };
@@ -388,7 +388,7 @@ export const Autosuggest = forwardRef(function <Value>(
       case INPUT_BLUR: {
         return {
           ...state,
-          isOpen: false,
+          showSuggestionsIfAvailable: false,
           previewValue: null,
           highlightedIndex: null,
           isFocused: false,
@@ -399,14 +399,14 @@ export const Autosuggest = forwardRef(function <Value>(
         if (value.text) {
           return {
             ...state,
-            isOpen: false,
+            showSuggestionsIfAvailable: false,
             previewValue: null,
             highlightedIndex: null,
           };
         } else if (hasItems) {
           return {
             ...state,
-            isOpen: !state.isOpen,
+            showSuggestionsIfAvailable: !state.showSuggestionsIfAvailable,
             previewValue: null,
           };
         }
@@ -418,7 +418,7 @@ export const Autosuggest = forwardRef(function <Value>(
       case SUGGESTION_MOUSE_CLICK: {
         return {
           ...state,
-          isOpen: !hideSuggestionsOnSelection,
+          showSuggestionsIfAvailable: !hideSuggestionsOnSelection,
           previewValue: null,
           highlightedIndex: null,
         };
@@ -451,7 +451,7 @@ export const Autosuggest = forwardRef(function <Value>(
 
   const [
     {
-      isOpen,
+      showSuggestionsIfAvailable,
       inputChangedSinceFocus,
       previewValue,
       highlightedIndex,
@@ -459,12 +459,14 @@ export const Autosuggest = forwardRef(function <Value>(
     },
     dispatch,
   ] = useReducer(reducer, {
-    isOpen: false,
+    showSuggestionsIfAvailable: false,
     inputChangedSinceFocus: false,
     previewValue: null,
     highlightedIndex: null,
     isFocused: false,
   });
+
+  const isOpen = showSuggestionsIfAvailable && hasItems;
 
   const highlightedItem =
     typeof highlightedIndex === 'number'
