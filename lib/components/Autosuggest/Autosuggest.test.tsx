@@ -971,6 +971,7 @@ describe('Autosuggest', () => {
         changeHandler,
         getInputValue,
         setSuggestions,
+        queryByLabelText,
       } = renderAutosuggest({
         automaticSelection: true,
         value: { text: '' },
@@ -998,7 +999,12 @@ describe('Autosuggest', () => {
         }, 100);
       });
 
+      expect(queryByLabelText('Apples')).toBeInTheDocument(); // Ensure menu has opened
+
       fireEvent.keyDown(input, { key: 'Enter' });
+
+      expect(queryByLabelText('Apples')).not.toBeInTheDocument(); // Ensure menu has closed
+
       expect(getInputValue()).toBe('Apples');
       expect(changeHandler).toHaveBeenNthCalledWith(1, {
         text: 'Apples',
