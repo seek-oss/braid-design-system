@@ -1,5 +1,17 @@
 # braid-design-system
 
+## 29.20.1
+
+### Patch Changes
+
+- Use JSDoc comments to flag deprecated components ([#860](https://github.com/seek-oss/braid-design-system/pull/860))
+
+  You will now receive in-editor warnings and migration guidance when using deprecated components.
+
+- **Autosuggest:** Fix bug where async suggestions may not be visible ([#862](https://github.com/seek-oss/braid-design-system/pull/862))
+
+  This fixes a bug where suggestions wouldn't become visible if the `suggestions` prop was initially empty and then populated asynchronously, only becoming visible on the next user interaction, e.g. typing in the field.
+
 ## 29.20.0
 
 ### Minor Changes
