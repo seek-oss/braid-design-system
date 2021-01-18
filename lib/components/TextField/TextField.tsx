@@ -66,9 +66,10 @@ const NamedTextField = forwardRef<HTMLInputElement, TextFieldProps>(
           ) : null
         }
       >
-        {(overlays, fieldProps, icon, secondaryIcon) => (
+        {(overlays, fieldProps, icon, secondaryIcon, prefix) => (
           <Fragment>
             {icon}
+            {prefix}
             <Box
               component="input"
               type={validTypes[type]}

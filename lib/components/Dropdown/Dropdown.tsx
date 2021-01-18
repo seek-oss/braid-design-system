@@ -11,7 +11,7 @@ type ValidDropdownChildren = AllHTMLAttributes<
 >;
 type SelectProps = AllHTMLAttributes<HTMLSelectElement>;
 export interface DropdownProps
-  extends Omit<FieldProps, 'labelId' | 'secondaryMessage'> {
+  extends Omit<FieldProps, 'labelId' | 'secondaryMessage' | 'prefix'> {
   children: ValidDropdownChildren[] | ValidDropdownChildren;
   value: NonNullable<SelectProps['value']>;
   onChange: NonNullable<SelectProps['onChange']>;
@@ -39,6 +39,7 @@ const NamedDropdown = forwardRef<HTMLSelectElement, DropdownProps>(
         {...restProps}
         disabled={disabled}
         labelId={undefined}
+        prefix={undefined}
         secondaryMessage={null}
         value={value}
       >
