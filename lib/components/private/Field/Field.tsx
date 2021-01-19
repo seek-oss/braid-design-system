@@ -193,7 +193,9 @@ export const Field = ({
               top={0}
               left={0}
             >
-              <Text baseline={false}>{icon}</Text>
+              <Text baseline={false} tone={prefix ? 'secondary' : undefined}>
+                {icon}
+              </Text>
             </Box>
           ) : null,
           secondaryIcon ? (
