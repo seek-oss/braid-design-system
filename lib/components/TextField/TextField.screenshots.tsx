@@ -181,7 +181,7 @@ export const screenshots: ComponentScreenshot = {
       Container,
       Example: ({ id, handler }) => (
         <TextField
-          label="Phone number"
+          label="Amount"
           id={id}
           onChange={handler}
           prefix="AUD $"
