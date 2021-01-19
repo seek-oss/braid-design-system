@@ -129,6 +129,7 @@ const NamedTextarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
         {(overlays, { className, borderRadius, background, ...fieldProps }) => (
           <Box
             position="relative"
+            width="full"
             zIndex={0}
             background={background}
             borderRadius={borderRadius}
