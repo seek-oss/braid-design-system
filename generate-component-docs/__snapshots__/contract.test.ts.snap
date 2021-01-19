@@ -2991,6 +2991,35 @@ Object {
 }
 `;
 
+exports[`IconDesktop 1`] = `
+Object {
+  exportType: component,
+  props: {
+    alignY?: 
+        | "lowercase"
+        | "uppercase"
+    size?: 
+        | "fill"
+        | "large"
+        | "small"
+        | "standard"
+        | "xsmall"
+    title?: string
+    titleId?: string
+    tone?: 
+        | "caution"
+        | "critical"
+        | "formAccent"
+        | "info"
+        | "link"
+        | "neutral"
+        | "positive"
+        | "promote"
+        | "secondary"
+},
+}
+`;
+
 exports[`IconDocument 1`] = `
 Object {
   exportType: component,
@@ -3573,6 +3602,35 @@ Object {
 `;
 
 exports[`IconMinus 1`] = `
+Object {
+  exportType: component,
+  props: {
+    alignY?: 
+        | "lowercase"
+        | "uppercase"
+    size?: 
+        | "fill"
+        | "large"
+        | "small"
+        | "standard"
+        | "xsmall"
+    title?: string
+    titleId?: string
+    tone?: 
+        | "caution"
+        | "critical"
+        | "formAccent"
+        | "info"
+        | "link"
+        | "neutral"
+        | "positive"
+        | "promote"
+        | "secondary"
+},
+}
+`;
+
+exports[`IconMobile 1`] = `
 Object {
   exportType: component,
   props: {
