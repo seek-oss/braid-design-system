@@ -59,6 +59,7 @@ export interface MonthPickerProps
     | 'secondaryMessage'
     | 'autoFocus'
     | 'icon'
+    | 'prefix'
   > {
   value: MonthPickerValue;
   onChange: ChangeHandler;
@@ -197,6 +198,8 @@ const MonthPicker = ({
       label={label}
       value={customValueToString(currentValue)}
       {...restProps}
+      icon={undefined}
+      prefix={undefined}
       labelId={undefined}
       data={undefined}
       name={undefined}

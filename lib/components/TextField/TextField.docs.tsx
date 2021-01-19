@@ -225,6 +225,26 @@ const docs: ComponentDocs = {
           />,
         ),
     },
+    {
+      label: 'Adding a prefix',
+      description: (
+        <Text>
+          The <Strong>prefix</Strong> prop allows you to prepend read-only
+          content on the left-hand side of the field. This is typically used for
+          currency symbols, country codes, etc.
+        </Text>
+      ),
+      Example: ({ id, getState, setState }) =>
+        source(
+          <TextField
+            id={id}
+            label="Phone number"
+            onChange={setState('textfield')}
+            value={getState('textfield')}
+            prefix="+61"
+          />,
+        ),
+    },
   ],
 };
 

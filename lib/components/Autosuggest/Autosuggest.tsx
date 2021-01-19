@@ -249,7 +249,7 @@ const fallbackValue = { text: '' };
 const fallbackSuggestions: Suggestion[] = [];
 
 export interface AutosuggestProps<Value>
-  extends Omit<FieldProps, 'value' | 'autoComplete' | 'labelId'> {
+  extends Omit<FieldProps, 'value' | 'autoComplete' | 'labelId' | 'prefix'> {
   value: AutosuggestValue<Value>;
   suggestions:
     | Suggestions<Value>
@@ -647,6 +647,7 @@ export const Autosuggest = forwardRef(function <Value>(
             id={id}
             labelId={a11y.labelProps.id}
             value={value.text}
+            prefix={undefined}
             secondaryIcon={
               onClear ? (
                 <ClearField

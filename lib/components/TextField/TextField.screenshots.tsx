@@ -1,6 +1,6 @@
 import React, { useState, ReactNode } from 'react';
 import { ComponentScreenshot } from '../../../site/src/types';
-import { IconSearch, TextField, TextLink } from '../';
+import { IconSearch, IconPhone, TextField, TextLink } from '../';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <div style={{ maxWidth: '300px' }}>{children}</div>
@@ -173,6 +173,33 @@ export const screenshots: ComponentScreenshot = {
           id={id}
           onChange={handler}
           value="Senior Developer"
+        />
+      ),
+    },
+    {
+      label: 'TextField with prefix',
+      Container,
+      Example: ({ id, handler }) => (
+        <TextField
+          label="Amount"
+          id={id}
+          onChange={handler}
+          prefix="AUD $"
+          value="1000"
+        />
+      ),
+    },
+    {
+      label: 'TextField with icon and prefix',
+      Container,
+      Example: ({ id, handler }) => (
+        <TextField
+          label="Phone number"
+          id={id}
+          onChange={handler}
+          icon={<IconPhone />}
+          prefix="+61"
+          value="411 111 111"
         />
       ),
     },

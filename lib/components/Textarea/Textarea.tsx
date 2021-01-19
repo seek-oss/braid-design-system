@@ -17,7 +17,7 @@ import * as styleRefs from './Textarea.treat';
 
 type NativeTextareaProps = AllHTMLAttributes<HTMLTextAreaElement>;
 export interface TextareaProps
-  extends Omit<FieldProps, 'labelId' | 'secondaryMessage' | 'icon'> {
+  extends Omit<FieldProps, 'labelId' | 'secondaryMessage' | 'icon' | 'prefix'> {
   value: NonNullable<NativeTextareaProps['value']>;
   onChange: NonNullable<NativeTextareaProps['onChange']>;
   onBlur?: NativeTextareaProps['onBlur'];
@@ -118,6 +118,8 @@ const NamedTextarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
       <Field
         {...restProps}
         value={value}
+        icon={undefined}
+        prefix={undefined}
         labelId={undefined}
         secondaryMessage={renderCount({
           characterLimit,
@@ -127,6 +129,7 @@ const NamedTextarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
         {(overlays, { className, borderRadius, background, ...fieldProps }) => (
           <Box
             position="relative"
+            width="full"
             zIndex={0}
             background={background}
             borderRadius={borderRadius}

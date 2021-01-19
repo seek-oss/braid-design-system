@@ -5920,6 +5920,7 @@ Object {
     onClear?: () => void
     onFocus?: (event: FocusEvent<HTMLInputElement>) => void
     placeholder?: string
+    prefix?: string
     ref?: 
         | (instance: HTMLInputElement | null) => void
         | RefObject<HTMLInputElement>

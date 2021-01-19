@@ -1,3 +1,4 @@
+import assert from 'assert';
 import React, { Fragment, ReactNode, AllHTMLAttributes } from 'react';
 import { useStyles } from 'sku/react-treat';
 import classnames from 'classnames';
@@ -36,6 +37,7 @@ export interface FieldProps {
   data?: DataAttributeMap;
   autoFocus?: boolean;
   icon?: ReactNode;
+  prefix?: string;
   required?: boolean;
 }
 
@@ -64,6 +66,7 @@ interface InternalFieldProps extends FieldProps {
     props: FieldRenderProps,
     icon: ReactNode,
     secondaryIcon: ReactNode,
+    prefix: ReactNode,
   ): ReactNode;
 }
 
@@ -88,8 +91,14 @@ export const Field = ({
   secondaryIcon,
   autoFocus,
   icon,
+  prefix,
   required,
 }: InternalFieldProps) => {
+  assert(
+    prefix === undefined || typeof prefix === 'string',
+    'Prefix must be a string',
+  );
+
   const styles = useStyles(styleRefs);
 
   const messageId = `${id}-message`;
@@ -115,6 +124,8 @@ export const Field = ({
     </Fragment>
   );
 
+  const fieldPadding = 'small';
+
   return (
     <Stack space="xsmall">
       {label ? (
@@ -133,6 +144,7 @@ export const Field = ({
         position="relative"
         background={fieldBackground}
         borderRadius="standard"
+        display="flex"
         className={secondaryIcon ? styles.secondaryIconSpace : undefined}
       >
         {children(
@@ -142,8 +154,8 @@ export const Field = ({
             name,
             background: fieldBackground,
             width: 'full',
-            paddingLeft: 'small',
-            paddingRight: secondaryIcon ? undefined : 'small',
+            paddingLeft: fieldPadding,
+            paddingRight: secondaryIcon ? undefined : fieldPadding,
             borderRadius: 'standard',
             outline: 'none',
             'aria-describedby': mergeIds(
@@ -166,7 +178,7 @@ export const Field = ({
                 baseline: false,
               }),
               useTouchableSpace('standard'),
-              icon ? styles.iconSpace : null,
+              icon && !prefix ? styles.iconSpace : null,
             ),
           },
           icon ? (
@@ -181,7 +193,9 @@ export const Field = ({
               top={0}
               left={0}
             >
-              <Text baseline={false}>{icon}</Text>
+              <Text baseline={false} tone={prefix ? 'secondary' : undefined}>
+                {icon}
+              </Text>
             </Box>
           ) : null,
           secondaryIcon ? (
@@ -196,6 +210,25 @@ export const Field = ({
               right={0}
             >
               {secondaryIcon}
+            </Box>
+          ) : null,
+          prefix ? (
+            <Box
+              component="label"
+              htmlFor={id}
+              display="flex"
+              alignItems="center"
+              paddingLeft={icon ? undefined : fieldPadding}
+              height="touchable"
+              flexShrink={0}
+              className={icon ? styles.iconSpace : null}
+            >
+              <Text tone="secondary" baseline={false}>
+                {prefix}
+              </Text>
+              <Box padding={fieldPadding} paddingRight="none" height="full">
+                <Box height="full" className={styles.verticalDivider} />
+              </Box>
             </Box>
           ) : null,
         )}

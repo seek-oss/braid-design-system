@@ -106,6 +106,19 @@ export const galleryItems: ComponentExample[] = [
       ),
   },
   {
+    label: 'With a prefix',
+    Example: ({ id, getState, setState }) =>
+      source(
+        <TextField
+          label="Phone number"
+          id={id}
+          onChange={setState('textfield')}
+          value={getState('textfield')}
+          prefix="+61"
+        />,
+      ),
+  },
+  {
     label: 'Disabled field',
     background: 'card',
     Example: ({ id, getState, setState }) =>

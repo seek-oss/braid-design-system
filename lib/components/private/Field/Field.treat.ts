@@ -35,3 +35,8 @@ export const hoverOverlay = style({
     },
   },
 });
+
+export const verticalDivider = style((theme) => ({
+  width: theme.border.width.standard,
+  background: theme.border.color.standard,
+}));
