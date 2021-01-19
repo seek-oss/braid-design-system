@@ -14,5 +14,5 @@ The `prefix` prop allows you to prepend read-only content on the left-hand side 
 **EXAMPLE USAGE**
 
 ```jsx
-<TextField prefix="+61" {...rest}>
+<TextField prefix="+61" {...rest} />
 ```
