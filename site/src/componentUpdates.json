@@ -1129,5 +1129,23 @@
         "summary": "**Autosuggest:** Fix bug where async suggestions may not be visible\n\nThis fixes a bug where suggestions wouldn't become visible if the `suggestions` prop was initially empty and then populated asynchronously, only becoming visible on the next user interaction, e.g. typing in the field."
       }
     ]
+  },
+  {
+    "version": "29.21.0",
+    "updates": [
+      {
+        "new": [
+          "IconMobile",
+          "IconDesktop"
+        ],
+        "summary": "Add IconMobile and IconDesktop icons."
+      },
+      {
+        "updated": [
+          "TextField"
+        ],
+        "summary": "**TextField:** Add `prefix` prop\n\nThe `prefix` prop allows you to prepend read-only content on the left-hand side of the field. This is typically used for currency symbols, country codes, etc.\n\n**EXAMPLE USAGE**\n\n```jsx\n<TextField prefix=\"+61\" {...rest} />\n```"
+      }
+    ]
   }
 ]
