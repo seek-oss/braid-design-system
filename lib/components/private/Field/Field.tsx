@@ -215,16 +215,15 @@ export const Field = ({
               component="label"
               htmlFor={id}
               display="flex"
+              alignItems="center"
               paddingLeft={icon ? undefined : fieldPadding}
               height="touchable"
               flexShrink={0}
               className={icon ? styles.iconSpace : null}
             >
-              <Box display="flex" alignItems="center" justifyContent="center">
-                <Text tone="secondary" baseline={false}>
-                  {prefix}
-                </Text>
-              </Box>
+              <Text tone="secondary" baseline={false}>
+                {prefix}
+              </Text>
               <Box padding={fieldPadding} paddingRight="none" height="full">
                 <Box height="full" className={styles.verticalDivider} />
               </Box>
