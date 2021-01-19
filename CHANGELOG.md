@@ -1,5 +1,21 @@
 # braid-design-system
 
+## 29.21.0
+
+### Minor Changes
+
+- Add IconMobile and IconDesktop icons. ([#867](https://github.com/seek-oss/braid-design-system/pull/867))
+
+- **TextField:** Add `prefix` prop ([#866](https://github.com/seek-oss/braid-design-system/pull/866))
+
+  The `prefix` prop allows you to prepend read-only content on the left-hand side of the field. This is typically used for currency symbols, country codes, etc.
+
+  **EXAMPLE USAGE**
+
+  ```jsx
+  <TextField prefix="+61" {...rest} />
+  ```
+
 ## 29.20.1
 
 ### Patch Changes
