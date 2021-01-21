@@ -57,8 +57,8 @@ export const screenshots: ComponentScreenshot = {
           <TabsProvider id={id}>
             <Stack space="medium">
               <Tabs label="Test tabs" align="center">
-                <Tab>The first tab</Tab>
-                <Tab>The second tab</Tab>
+                <Tab>Tab 1</Tab>
+                <Tab>Tab 2</Tab>
               </Tabs>
               <TabPanels>
                 <TabPanel>
@@ -231,6 +231,73 @@ export const screenshots: ComponentScreenshot = {
               </TabPanel>
               <TabPanel>
                 <Placeholder height={200} label="Panel 5" />
+              </TabPanel>
+            </TabPanels>
+          </Card>
+        </TabsProvider>
+      ),
+    },
+    {
+      label: 'Full width divider',
+      Example: ({ id }) => (
+        <Card>
+          <TabsProvider id={id}>
+            <Stack space="medium">
+              <Tabs label="Test tabs" divider="full">
+                <Tab>Tab 1</Tab>
+                <Tab>Tab 2</Tab>
+              </Tabs>
+              <TabPanels>
+                <TabPanel>
+                  <Placeholder height={200} label="Panel 1" />
+                </TabPanel>
+                <TabPanel>
+                  <Placeholder height={200} label="Panel 2" />
+                </TabPanel>
+              </TabPanels>
+            </Stack>
+          </TabsProvider>
+        </Card>
+      ),
+    },
+    {
+      label: 'Full width divider while center aligned',
+      Example: ({ id }) => (
+        <Card>
+          <TabsProvider id={id}>
+            <Stack space="medium">
+              <Tabs label="Test tabs" align="center" divider="full">
+                <Tab>Tab 1</Tab>
+                <Tab>Tab 2</Tab>
+              </Tabs>
+              <TabPanels>
+                <TabPanel>
+                  <Placeholder height={200} label="Panel 1" />
+                </TabPanel>
+                <TabPanel>
+                  <Placeholder height={200} label="Panel 2" />
+                </TabPanel>
+              </TabPanels>
+            </Stack>
+          </TabsProvider>
+        </Card>
+      ),
+    },
+    {
+      label: 'Full width divider with gutter',
+      Example: ({ id }) => (
+        <TabsProvider id={id}>
+          <Tabs label="Test tabs" gutter="gutter" reserveHitArea divider="full">
+            <Tab>Tab 1</Tab>
+            <Tab>Tab 2</Tab>
+          </Tabs>
+          <Card>
+            <TabPanels>
+              <TabPanel>
+                <Placeholder height={200} label="Panel 1" />
+              </TabPanel>
+              <TabPanel>
+                <Placeholder height={200} label="Panel 2" />
               </TabPanel>
             </TabPanels>
           </Card>

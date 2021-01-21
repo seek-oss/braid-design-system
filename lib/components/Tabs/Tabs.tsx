@@ -19,7 +19,7 @@ import { Tab, TabProps } from './Tab';
 import { useNegativeMarginTop } from '../../hooks/useNegativeMargin/useNegativeMargin';
 import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
 import * as styleRefs from './Tabs.treat';
-import { TabListContext } from './TabListContext';
+import { TabListContext, TabListContextValues } from './TabListContext';
 
 export interface TabsProps {
   children: ReactElement<TabProps>[];
@@ -28,6 +28,7 @@ export interface TabsProps {
   gutter?: BoxProps['paddingX'];
   reserveHitArea?: boolean;
   data?: DataAttributeMap;
+  divider?: TabListContextValues['divider'];
 }
 
 export const Tabs = (props: TabsProps) => {
@@ -42,6 +43,7 @@ export const Tabs = (props: TabsProps) => {
     align = 'left',
     gutter,
     reserveHitArea = false,
+    divider = 'minimal',
   } = props;
 
   assert(
@@ -70,6 +72,7 @@ export const Tabs = (props: TabsProps) => {
         value={{
           tabListItemIndex: index,
           scrollContainer: tabsRef.current,
+          divider,
         }}
       >
         {tab}
@@ -138,6 +141,15 @@ export const Tabs = (props: TabsProps) => {
                 {tabs}
               </Box>
             </Box>
+            {divider === 'full' ? (
+              <Box
+                position="absolute"
+                bottom={0}
+                left={0}
+                right={0}
+                className={styles.divider}
+              />
+            ) : null}
           </Box>
         </Box>
       </Box>

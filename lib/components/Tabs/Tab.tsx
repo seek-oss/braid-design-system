@@ -81,7 +81,7 @@ export const Tab = ({ children, data, badge, item }: TabProps) => {
     a11y,
     onChange,
   } = tabsContext;
-  const { tabListItemIndex, scrollContainer } = tabListContext;
+  const { tabListItemIndex, scrollContainer, divider } = tabListContext;
   const isSelected =
     selectedIndex > -1
       ? selectedIndex === tabListItemIndex
@@ -243,14 +243,16 @@ export const Tab = ({ children, data, badge, item }: TabProps) => {
         overflow="hidden"
         pointerEvents="none"
       >
-        <Box
-          position="absolute"
-          zIndex={1}
-          left={0}
-          right={0}
-          bottom={0}
-          className={styles.divider}
-        />
+        {divider === 'minimal' ? (
+          <Box
+            position="absolute"
+            zIndex={1}
+            left={0}
+            right={0}
+            bottom={0}
+            className={styles.divider}
+          />
+        ) : null}
         <Box
           background="neutral"
           position="absolute"
