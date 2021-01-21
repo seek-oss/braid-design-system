@@ -1,8 +1,9 @@
 import { createContext } from 'react';
 
-interface TabListContextValues {
+export interface TabListContextValues {
   tabListItemIndex: number;
   scrollContainer: HTMLElement | null;
+  divider: 'full' | 'minimal' | 'none';
 }
 
 export const TabListContext = createContext<TabListContextValues | null>(null);

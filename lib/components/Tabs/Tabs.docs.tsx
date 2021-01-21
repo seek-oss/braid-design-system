@@ -132,6 +132,76 @@ const docs: ComponentDocs = {
         ),
     },
     {
+      label: 'Increasing the divider width',
+      description: (
+        <Text>
+          In cases where you only have a couple of tabs, you may find that the{' '}
+          tab strip lacks visual affordance. To address this, you can set the{' '}
+          <Strong>divider</Strong> prop to <Strong>“full”</Strong> on the{' '}
+          <Strong>Tabs</Strong> component.
+        </Text>
+      ),
+      Example: ({ id }) =>
+        source(
+          <Card>
+            <TabsProvider id={`${id}_1`}>
+              <Stack space="medium">
+                <Tabs label="Test tabs" divider="full">
+                  <Tab>The first tab</Tab>
+                  <Tab>The second tab</Tab>
+                </Tabs>
+                <TabPanels>
+                  <TabPanel>
+                    <Placeholder height={200} label="Panel 1" />
+                  </TabPanel>
+                  <TabPanel>
+                    <Placeholder height={200} label="Panel 2" />
+                  </TabPanel>
+                </TabPanels>
+              </Stack>
+            </TabsProvider>
+          </Card>,
+        ),
+    },
+    {
+      label: 'Hiding the divider',
+      description: (
+        <Text>
+          If you’ve placed the tab strip and tab content on different
+          backgrounds, the divider line is likely to be redundant visual noise.
+          To hide it, you can set the <Strong>divider</Strong> prop to{' '}
+          <Strong>“none”</Strong> on the <Strong>Tabs</Strong> component.
+        </Text>
+      ),
+      Example: ({ id }) =>
+        source(
+          <TabsProvider id={`${id}_2`}>
+            <Tabs label="Test tabs" divider="none">
+              <Tab>The first tab</Tab>
+              <Tab>The second tab</Tab>
+              <Tab>The third tab</Tab>
+              <Tab>The fourth tab</Tab>
+            </Tabs>
+            <Card>
+              <TabPanels>
+                <TabPanel>
+                  <Placeholder height={200} label="Panel 1" />
+                </TabPanel>
+                <TabPanel>
+                  <Placeholder height={200} label="Panel 2" />
+                </TabPanel>
+                <TabPanel>
+                  <Placeholder height={200} label="Panel 3" />
+                </TabPanel>
+                <TabPanel>
+                  <Placeholder height={200} label="Panel 4" />
+                </TabPanel>
+              </TabPanels>
+            </Card>
+          </TabsProvider>,
+        ),
+    },
+    {
       label: 'Gutters',
       description: (
         <Text>

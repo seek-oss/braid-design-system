@@ -237,5 +237,72 @@ export const screenshots: ComponentScreenshot = {
         </TabsProvider>
       ),
     },
+    {
+      label: 'Full width divider',
+      Example: ({ id }) => (
+        <Card>
+          <TabsProvider id={id}>
+            <Stack space="medium">
+              <Tabs label="Test tabs" divider="full">
+                <Tab>The first tab</Tab>
+                <Tab>The second tab</Tab>
+              </Tabs>
+              <TabPanels>
+                <TabPanel>
+                  <Placeholder height={200} label="Panel 1" />
+                </TabPanel>
+                <TabPanel>
+                  <Placeholder height={200} label="Panel 2" />
+                </TabPanel>
+              </TabPanels>
+            </Stack>
+          </TabsProvider>
+        </Card>
+      ),
+    },
+    {
+      label: 'Full width divider while center aligned',
+      Example: ({ id }) => (
+        <Card>
+          <TabsProvider id={id}>
+            <Stack space="medium">
+              <Tabs label="Test tabs" align="center" divider="full">
+                <Tab>The first tab</Tab>
+                <Tab>The second tab</Tab>
+              </Tabs>
+              <TabPanels>
+                <TabPanel>
+                  <Placeholder height={200} label="Panel 1" />
+                </TabPanel>
+                <TabPanel>
+                  <Placeholder height={200} label="Panel 2" />
+                </TabPanel>
+              </TabPanels>
+            </Stack>
+          </TabsProvider>
+        </Card>
+      ),
+    },
+    {
+      label: 'Full width divider with gutter',
+      Example: ({ id }) => (
+        <TabsProvider id={id}>
+          <Tabs label="Test tabs" gutter="gutter" reserveHitArea divider="full">
+            <Tab>The first tab</Tab>
+            <Tab>The second tab</Tab>
+          </Tabs>
+          <Card>
+            <TabPanels>
+              <TabPanel>
+                <Placeholder height={200} label="Panel 1" />
+              </TabPanel>
+              <TabPanel>
+                <Placeholder height={200} label="Panel 2" />
+              </TabPanel>
+            </TabPanels>
+          </Card>
+        </TabsProvider>
+      ),
+    },
   ],
 };
