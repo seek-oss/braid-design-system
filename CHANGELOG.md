@@ -1,5 +1,11 @@
 # braid-design-system
 
+## 29.21.1
+
+### Patch Changes
+
+- **Autosuggest:** Ensure input occupies the full width of its container ([#872](https://github.com/seek-oss/braid-design-system/pull/872))
+
 ## 29.21.0
 
 ### Minor Changes
