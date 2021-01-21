@@ -1,5 +1,28 @@
 # braid-design-system
 
+## 29.22.0
+
+### Minor Changes
+
+- **Tabs:** Add `divider` prop, support `full` and `none` ([#875](https://github.com/seek-oss/braid-design-system/pull/875))
+
+  You can now customise the width of the divider line underneath the tab strip. The default value is `minimal`, but you can now set it to `full` or `none`.
+
+  **EXAMPLE USAGE**
+
+  ```jsx
+  <TabsProvider id="id">
+    <Tabs label="Label" divider="full">
+      <Tab>The first tab</Tab>
+      <Tab>The second tab</Tab>
+    </Tabs>
+    <TabPanels>
+      <TabPanel>...</TabPanel>
+      <TabPanel>...</TabPanel>
+    </TabPanels>
+  </TabsProvider>
+  ```
+
 ## 29.21.1
 
 ### Patch Changes
