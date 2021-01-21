@@ -12449,10 +12449,10 @@ pkginfo@0.x.x:
   resolved "https://registry.yarnpkg.com/pkginfo/-/pkginfo-0.4.1.tgz#b5418ef0439de5425fc4995042dced14fb2a84ff"
   integrity sha1-tUGO8EOd5UJfxJlQQtztFPsqhP8=
 
-playroom@0.22.6, playroom@^0.22.0:
-  version "0.22.6"
-  resolved "https://registry.yarnpkg.com/playroom/-/playroom-0.22.6.tgz#7a03bf9afb3c114a5edb2f3720bfc0e979cfe586"
-  integrity sha512-TC4+Uh1sJJJWR7riON5U1VnhIxA9TFUldPxKM4Sb2iBJ/9GX+CvOthwEi0sJjLqFZcxKjehCO+9vfRy99lyJQA==
+playroom@0.23.0, playroom@^0.22.0:
+  version "0.23.0"
+  resolved "https://registry.yarnpkg.com/playroom/-/playroom-0.23.0.tgz#53c13ffc9797d7133a123d97db1a9694b09d6345"
+  integrity sha512-uS1Ry7zmZUpl2+XFAesHiSEz0y9a0BdR+QlTJ7X8GdLixYarwz8BkTsSp7F21wMiwxxm+3pW9Tens4EvIGS0qw==
   dependencies:
     "@babel/cli" "^7.8.3"
     "@babel/core" "^7.8.3"
@@ -12500,6 +12500,7 @@ playroom@0.22.6, playroom@^0.22.0:
     mini-css-extract-plugin "^0.9.0"
     open "^7.0.0"
     parse-prop-types "^0.3.0"
+    portfinder "^1.0.26"
     postcss-loader "^3.0.0"
     prettier "^2.0.5"
     prop-types "^15.7.2"
