@@ -57,8 +57,8 @@ export const screenshots: ComponentScreenshot = {
           <TabsProvider id={id}>
             <Stack space="medium">
               <Tabs label="Test tabs" align="center">
-                <Tab>The first tab</Tab>
-                <Tab>The second tab</Tab>
+                <Tab>Tab 1</Tab>
+                <Tab>Tab 2</Tab>
               </Tabs>
               <TabPanels>
                 <TabPanel>
@@ -244,8 +244,8 @@ export const screenshots: ComponentScreenshot = {
           <TabsProvider id={id}>
             <Stack space="medium">
               <Tabs label="Test tabs" divider="full">
-                <Tab>The first tab</Tab>
-                <Tab>The second tab</Tab>
+                <Tab>Tab 1</Tab>
+                <Tab>Tab 2</Tab>
               </Tabs>
               <TabPanels>
                 <TabPanel>
@@ -267,8 +267,8 @@ export const screenshots: ComponentScreenshot = {
           <TabsProvider id={id}>
             <Stack space="medium">
               <Tabs label="Test tabs" align="center" divider="full">
-                <Tab>The first tab</Tab>
-                <Tab>The second tab</Tab>
+                <Tab>Tab 1</Tab>
+                <Tab>Tab 2</Tab>
               </Tabs>
               <TabPanels>
                 <TabPanel>
@@ -288,8 +288,8 @@ export const screenshots: ComponentScreenshot = {
       Example: ({ id }) => (
         <TabsProvider id={id}>
           <Tabs label="Test tabs" gutter="gutter" reserveHitArea divider="full">
-            <Tab>The first tab</Tab>
-            <Tab>The second tab</Tab>
+            <Tab>Tab 1</Tab>
+            <Tab>Tab 2</Tab>
           </Tabs>
           <Card>
             <TabPanels>
