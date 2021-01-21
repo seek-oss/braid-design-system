@@ -659,7 +659,7 @@ export const Autosuggest = forwardRef(function <Value>(
             }
           >
             {(overlays, fieldProps, icon, secondaryIcon) => (
-              <Box>
+              <Box width="full">
                 <Box
                   component="input"
                   {...fieldProps}
