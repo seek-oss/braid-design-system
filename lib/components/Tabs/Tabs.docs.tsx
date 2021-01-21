@@ -218,7 +218,7 @@ const docs: ComponentDocs = {
       Example: ({ id }) =>
         source(
           <TabsProvider id={id}>
-            <Tabs label="Test tabs" gutter="gutter">
+            <Tabs label="Test tabs" divider="none" gutter="gutter">
               <Tab>The first tab</Tab>
               <Tab>The second tab</Tab>
               <Tab>The third tab</Tab>
@@ -304,7 +304,12 @@ const docs: ComponentDocs = {
               selectedItem={getState('tab')}
               onChange={(index, item) => setState('tab', item)}
             >
-              <Tabs label="Test tabs" gutter="gutter" reserveHitArea>
+              <Tabs
+                label="Test tabs"
+                gutter="gutter"
+                divider="none"
+                reserveHitArea
+              >
                 <Tab item="first">The first tab</Tab>
                 <Tab item="second">The second tab</Tab>
                 <Tab item="third">The third tab</Tab>

@@ -73,7 +73,7 @@ export const galleryItems: ComponentExample[] = [
     Example: ({ id }) =>
       source(
         <TabsProvider id={id}>
-          <Tabs label="Test tabs" gutter="gutter">
+          <Tabs label="Test tabs" gutter="gutter" divider="none">
             <Tab>The first tab</Tab>
             <Tab>The second tab</Tab>
             <Tab>The third tab</Tab>
