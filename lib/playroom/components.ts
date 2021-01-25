@@ -14,6 +14,7 @@ export { FieldMessage } from '../components/FieldMessage/FieldMessage.playroom';
 export { Link } from '../components/Link/Link.playroom';
 export { List } from '../components/List/List.playroom';
 export { MonthPicker } from '../components/MonthPicker/MonthPicker.playroom';
+export { Pagination } from '../components/Pagination/Pagination.playroom';
 export { PasswordField } from '../components/PasswordField/PasswordField.playroom';
 export { Radio } from '../components/Radio/Radio.playroom';
 export { RadioGroup } from '../components/RadioGroup/RadioGroup.playroom';

@@ -1,7 +1,6 @@
 import React from 'react';
 import { ComponentExample } from '../../../site/src/types';
-import { List, Text, Stack } from '..';
-import { IconTick } from '../../playroom/components';
+import { List, IconTick, Text, Stack } from '..';
 import source from '../../utils/source.macro';
 
 export const galleryItems: ComponentExample[] = [

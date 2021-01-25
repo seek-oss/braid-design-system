@@ -5403,6 +5403,21 @@ Object {
 }
 `;
 
+exports[`Pagination 1`] = `
+Object {
+  exportType: component,
+  props: {
+    label: string
+    linkProps: (page: number) => LinkProps
+    nextLabel?: string
+    page: number
+    pageLabel?: (page: number) => string
+    previousLabel?: string
+    total: number
+},
+}
+`;
+
 exports[`PasswordField 1`] = `
 Object {
   exportType: component,
