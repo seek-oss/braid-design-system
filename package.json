@@ -128,7 +128,7 @@
     "ts-node": "^8.2.0"
   },
   "resolutions": {
-    "playroom": "0.22.6"
+    "playroom": "0.23.0"
   },
   "volta": {
     "node": "12.14.1",
