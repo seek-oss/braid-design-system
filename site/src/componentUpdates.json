@@ -1147,5 +1147,27 @@
         "summary": "**TextField:** Add `prefix` prop\n\nThe `prefix` prop allows you to prepend read-only content on the left-hand side of the field. This is typically used for currency symbols, country codes, etc.\n\n**EXAMPLE USAGE**\n\n```jsx\n<TextField prefix=\"+61\" {...rest} />\n```"
       }
     ]
+  },
+  {
+    "version": "29.21.1",
+    "updates": [
+      {
+        "updated": [
+          "Autosuggest"
+        ],
+        "summary": "**Autosuggest:** Ensure input occupies the full width of its container"
+      }
+    ]
+  },
+  {
+    "version": "29.22.0",
+    "updates": [
+      {
+        "updated": [
+          "Tabs"
+        ],
+        "summary": "**Tabs:** Add `divider` prop, support `full` and `none`\n\nYou can now customise the width of the divider line underneath the tab strip. The default value is `minimal`, but you can now set it to `full` or `none`.\n\n**EXAMPLE USAGE**\n\n```jsx\n<TabsProvider id=\"id\">\n  <Tabs label=\"Label\" divider=\"full\">\n    <Tab>The first tab</Tab>\n    <Tab>The second tab</Tab>\n  </Tabs>\n  <TabPanels>\n    <TabPanel>\n      ...\n    </TabPanel>\n    <TabPanel>\n      ...\n    </TabPanel>\n  </TabPanels>\n</TabsProvider>\n```"
+      }
+    ]
   }
 ]
