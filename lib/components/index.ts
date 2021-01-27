@@ -78,5 +78,6 @@ export { TextLinkRenderer } from './TextLinkRenderer/TextLinkRenderer';
 export { Tiles } from './Tiles/Tiles';
 export { Toggle } from './Toggle/Toggle';
 export { ToastProvider, useToast } from './useToast/ToastContext';
+export { TooltipRenderer } from './TooltipRenderer/TooltipRenderer';
 
 export * from './icons';
