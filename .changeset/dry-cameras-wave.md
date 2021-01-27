@@ -10,7 +10,7 @@ updated:
   - Actions
 ---
 
-**Button, ButtonLink, ButtonRenderer, Actions:** Add `suze` prop, support `small` size
+**Button, ButtonLink, ButtonRenderer, Actions:** Add `size` prop, support `small` size
 
 You can now render smaller variants of button/action elements by setting the `size` prop to `small`.
 
