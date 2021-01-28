@@ -37,4 +37,15 @@ export const galleryItems: ComponentExample[] = [
         </Actions>,
       ),
   },
+  {
+    label: 'Small size',
+    Example: () =>
+      source(
+        <Actions size="small">
+          <Button>Regular Button</Button>
+          <Button weight="weak">Weak Button</Button>
+          <TextLink href="#">TextLink</TextLink>
+        </Actions>,
+      ),
+  },
 ];

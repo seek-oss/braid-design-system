@@ -1,6 +1,17 @@
 import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import { Button, Box, Text, TextLink, Inline, Strong, IconDelete } from '../';
+import {
+  Button,
+  Card,
+  Stack,
+  Box,
+  Text,
+  TextLink,
+  Inline,
+  Strong,
+  IconSend,
+  IconDelete,
+} from '../';
 import source from '../../utils/source.macro';
 
 const docs: ComponentDocs = {
@@ -8,11 +19,24 @@ const docs: ComponentDocs = {
   migrationGuide: true,
   Example: () =>
     source(
-      <Inline space="small" collapseBelow="desktop">
-        <Button weight="strong">Strong Button</Button>
-        <Button>Regular Button</Button>
-        <Button weight="weak">Weak Button</Button>
-      </Inline>,
+      <Card>
+        <Stack space="medium">
+          <Inline space="small" collapseBelow="desktop">
+            <Button weight="strong">Strong</Button>
+            <Button>Regular</Button>
+            <Button weight="weak">Weak</Button>
+          </Inline>
+          <Inline space="small" collapseBelow="desktop">
+            <Button weight="strong" size="small">
+              Strong
+            </Button>
+            <Button size="small">Regular</Button>
+            <Button weight="weak" size="small">
+              Weak
+            </Button>
+          </Inline>
+        </Stack>
+      </Card>,
     ),
   alternatives: [
     {
@@ -25,6 +49,76 @@ const docs: ComponentDocs = {
     },
   ],
   additional: [
+    {
+      label: 'Sizes',
+      description: (
+        <Text>
+          You can customise the size of the button via the <Strong>size</Strong>{' '}
+          prop, which accepts either <Strong>standard</Strong> or{' '}
+          <Strong>small.</Strong>
+        </Text>
+      ),
+      Example: () =>
+        source(
+          <Stack space="large">
+            <Stack space="small">
+              <Text tone="secondary" weight="strong">
+                Standard size
+              </Text>
+              <Inline space="small" collapseBelow="desktop">
+                <Button weight="strong">Strong</Button>
+                <Button>Regular</Button>
+                <Button weight="weak">Weak</Button>
+              </Inline>
+            </Stack>
+            <Stack space="small">
+              <Text tone="secondary" weight="strong">
+                Small size
+              </Text>
+              <Inline space="small" collapseBelow="desktop">
+                <Button weight="strong" size="small">
+                  Strong
+                </Button>
+                <Button size="small">Regular</Button>
+                <Button weight="weak" size="small">
+                  Weak
+                </Button>
+              </Inline>
+            </Stack>
+          </Stack>,
+        ),
+    },
+    {
+      label: 'Icons',
+      description: (
+        <Text>
+          You can add an icon to the button by nesting an icon element inside.
+          The size of the icon will adjust automatically based on the size on
+          the button.
+        </Text>
+      ),
+      Example: () =>
+        source(
+          <Inline space="small" alignY="center">
+            <Stack space="small" align="center">
+              <Text tone="secondary" weight="strong">
+                Standard size
+              </Text>
+              <Button>
+                <IconSend /> Send
+              </Button>
+            </Stack>
+            <Stack space="small" align="center">
+              <Text tone="secondary" weight="strong">
+                Small size
+              </Text>
+              <Button size="small">
+                <IconSend /> Send
+              </Button>
+            </Stack>
+          </Inline>,
+        ),
+    },
     {
       label: 'Loading Button',
       description: (
@@ -81,9 +175,10 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
+      background: 'brand',
       Example: () =>
         source(
-          <Box background="brand" padding="large" borderRadius="standard">
+          <Box background="brand">
             <Inline space="small">
               <Button weight="weak">Weak Button</Button>
             </Inline>
