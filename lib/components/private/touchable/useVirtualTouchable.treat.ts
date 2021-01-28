@@ -15,3 +15,10 @@ export const virtualTouchable = style({
     ...debugTouchable({ after: true }),
   },
 });
+
+export const yAxisOnly = style({
+  ':after': {
+    left: '0 !important',
+    right: '0 !important',
+  },
+});

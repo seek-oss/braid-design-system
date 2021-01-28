@@ -11,7 +11,7 @@ export const screenshots: ComponentScreenshot = {
   screenshotWidths: [320],
   examples: [
     {
-      label: 'Default Button',
+      label: 'Standard Button',
       Container,
       Example: () => <Button>Submit</Button>,
     },
@@ -26,7 +26,7 @@ export const screenshots: ComponentScreenshot = {
       Example: () => <Button weight="weak">Submit</Button>,
     },
     {
-      label: 'Default Critical Button',
+      label: 'Standard Critical Button',
       Container,
       Example: () => <Button tone="critical">Delete</Button>,
     },
@@ -45,6 +45,29 @@ export const screenshots: ComponentScreenshot = {
       Example: () => (
         <Button weight="weak" tone="critical">
           Delete
+        </Button>
+      ),
+    },
+    {
+      label: 'Small Standard Button',
+      Container,
+      Example: () => <Button size="small">Submit</Button>,
+    },
+    {
+      label: 'Small Strong Button',
+      Container,
+      Example: () => (
+        <Button weight="strong" size="small">
+          Submit
+        </Button>
+      ),
+    },
+    {
+      label: 'Small Weak Button',
+      Container,
+      Example: () => (
+        <Button weight="weak" size="small">
+          Submit
         </Button>
       ),
     },

@@ -18,6 +18,7 @@ import {
 import * as styleRefs from './TextLinkRenderer.treat';
 import { useBackground } from '../Box/BackgroundContext';
 import { useVirtualTouchable } from '../private/touchable/useVirtualTouchable';
+import { PrivateButtonRendererProps } from '../ButtonRenderer/ButtonRenderer';
 
 interface StyleProps {
   style: CSSProperties;
@@ -35,7 +36,7 @@ export interface PrivateTextLinkRendererProps {
 export const PrivateTextLinkRenderer = (
   props: PrivateTextLinkRendererProps,
 ) => {
-  const inActions = useContext(ActionsContext);
+  const actionsContext = useContext(ActionsContext);
 
   assert(
     (() => {
@@ -44,13 +45,15 @@ export const PrivateTextLinkRenderer = (
       // eslint-disable-next-line react-hooks/rules-of-hooks
       const inHeading = useContext(HeadingContext);
 
+      const inActions = actionsContext !== null;
+
       return inText || inHeading || inActions;
     })(),
     'TextLink components must be rendered within a Text or Heading component.',
   );
 
-  if (inActions) {
-    return <ButtonLink {...props} />;
+  if (actionsContext !== null) {
+    return <ButtonLink size={actionsContext.size} {...props} />;
   }
 
   return <InlineLink {...props} />;
@@ -120,17 +123,22 @@ function InlineLink({
   );
 }
 
+interface ButtonLinkProps extends PrivateTextLinkRendererProps {
+  size?: PrivateButtonRendererProps['size'];
+}
 function ButtonLink({
+  size = 'standard',
   weight,
   showVisited = false,
   hitArea,
   children,
-}: PrivateTextLinkRendererProps) {
+}: ButtonLinkProps) {
   const styles = useStyles(styleRefs);
   const textLinkWeight = useDefaultLinkWeight();
   const tone = textLinkWeight === 'weak' ? 'neutral' : 'link';
+  const standardTouchableSpaceStyles = useTouchableSpace('standard');
   const buttonLinkTextProps = {
-    size: 'standard',
+    size,
     tone,
     baseline: false,
   } as const;
@@ -152,14 +160,15 @@ function ButtonLink({
               styles.button,
               useLinkStyles(textLinkWeight, showVisited),
               useText(buttonLinkTextProps),
-              useTouchableSpace(buttonLinkTextProps.size),
+              size === 'standard' ? standardTouchableSpaceStyles : null,
               useBoxStyles({
                 component: 'a',
                 cursor: 'pointer',
                 outline: 'none',
                 display: 'block',
                 width: 'full',
-                paddingX: 'small',
+                paddingX: size === 'small' ? 'xsmall' : 'small',
+                paddingY: size === 'small' ? 'xsmall' : undefined,
                 borderRadius: 'standard',
                 textAlign: 'center',
                 userSelect: 'none',
