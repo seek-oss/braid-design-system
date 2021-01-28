@@ -99,7 +99,7 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
   }) {
     return {
       menuButton: getAllByRole((_, el) =>
-        Boolean(el.getAttribute('aria-haspopup')),
+        Boolean(el?.getAttribute('aria-haspopup')),
       )[0],
       menu: getAllByRole('menu', { hidden: true })[0],
       menuItems: getAllByRole(/menuitem|menuitemcheckbox/, { hidden: true }),
