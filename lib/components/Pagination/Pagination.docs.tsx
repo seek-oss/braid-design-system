@@ -12,7 +12,7 @@ const docs: ComponentDocs = {
   Example: ({ setDefaultState, getState, setState }) =>
     source(
       <>
-        {setDefaultState('page', 5)}
+        {setDefaultState('page', 1)}
 
         <Card>
           <Pagination
@@ -62,24 +62,17 @@ const docs: ComponentDocs = {
       description: (
         <>
           <Text>
-            The page and navigation links are generated based on the provided{' '}
-            <Strong>page</Strong> and <Strong>total</Strong> props.
-          </Text>
-          <Text>
-            To configure how these links behave, it is a requirement that you
-            provide a <Strong>linkProps</Strong> function. This function is used
-            to transform the page number into props that will be passed to the
-            underlying <TextLink href="/components/Link">Link</TextLink>{' '}
-            component as configured by the{' '}
+            It is a requirement that you have set up{' '}
+            <Strong>linkComponent</Strong> on your{' '}
             <TextLink href="/components/BraidProvider/#providing-a-custom-link-component">
               BraidProvider
             </TextLink>
             .
           </Text>
           <Text>
-            As a result, if the pagination links are not handled by the router,
-            an <Strong>onClick</Strong> handler can be provided to intercept and
-            handle the click.
+            You must also provide a <Strong>linkProps</Strong> function to
+            transform the page number into{' '}
+            <TextLink href="/components/Link">Link</TextLink> props.
           </Text>
         </>
       ),

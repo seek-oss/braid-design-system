@@ -7,7 +7,8 @@ import { Pagination as BraidPagination, PaginationProps } from './Pagination';
 type PlayroomPaginationProps = StateProp &
   Optional<PaginationProps, 'label' | 'linkProps' | 'page' | 'total'>;
 
-const defaultPage = 5;
+const defaultPage = 1;
+const defaultTotal = 10;
 
 const resolveFallbackPage = (
   page: PlayroomPaginationProps['page'],
@@ -32,7 +33,7 @@ const resolveFallbackTotal = (
     return total;
   }
 
-  return resolvedPage > maxPages ? resolvedPage * 2 : defaultPage * 2;
+  return resolvedPage > maxPages ? resolvedPage * 2 : defaultTotal;
 };
 
 export const Pagination = ({
