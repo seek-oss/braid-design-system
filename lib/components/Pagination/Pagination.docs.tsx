@@ -57,7 +57,7 @@ const docs: ComponentDocs = {
       ),
     },
     {
-      label: 'Developer considerations',
+      label: 'Development considerations',
       background: 'card',
       description: (
         <>
