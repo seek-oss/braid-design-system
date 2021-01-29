@@ -1169,5 +1169,27 @@
         "summary": "**Tabs:** Add `divider` prop, support `full` and `none`\n\nYou can now customise the width of the divider line underneath the tab strip. The default value is `minimal`, but you can now set it to `full` or `none`.\n\n**EXAMPLE USAGE**\n\n```jsx\n<TabsProvider id=\"id\">\n  <Tabs label=\"Label\" divider=\"full\">\n    <Tab>The first tab</Tab>\n    <Tab>The second tab</Tab>\n  </Tabs>\n  <TabPanels>\n    <TabPanel>\n      ...\n    </TabPanel>\n    <TabPanel>\n      ...\n    </TabPanel>\n  </TabPanels>\n</TabsProvider>\n```"
       }
     ]
+  },
+  {
+    "version": "29.23.0",
+    "updates": [
+      {
+        "updated": [
+          "Button",
+          "ButtonLink",
+          "ButtonRenderer",
+          "Actions"
+        ],
+        "summary": "**Button, ButtonLink, ButtonRenderer, Actions:** Add `size` prop, support `small` size\n\nYou can now render smaller variants of button/action elements by setting the `size` prop to `small`.\n\n**EXAMPLE USAGE**\n\n**Small Button**\n\n```jsx\n<Button size=\"small\">Small Button</Button>\n```\n\n**Small Actions**\n\n```jsx\n<Actions size=\"small\">\n  <Button>Regular Button</Button>\n  <Button weight=\"weak\">Weak Button</Button>\n  <TextLink href=\"#\">TextLink</TextLink>\n</Actions>\n```"
+      },
+      {
+        "updated": [
+          "Button",
+          "ButtonLink",
+          "ButtonRenderer"
+        ],
+        "summary": "**Button, ButtonLink, ButtonRenderer:** Reduce horizontal padding of `standard` size from `gutter` to `medium`"
+      }
+    ]
   }
 ]
