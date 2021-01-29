@@ -31,18 +31,26 @@ const docs: ComponentDocs = {
       </>,
     ),
   accessibility: (
-    <Text>
-      Renders a semantic <Strong>nav</Strong> element to encapsulate the
-      pagination links. Given this is a{' '}
-      <TextLink href="https://www.w3.org/TR/wai-aria-practices-1.2/#aria_landmark">
-        Landmark Region
-      </TextLink>
-      , in order to comply with the{' '}
-      <TextLink href="https://www.w3.org/TR/wai-aria-practices-1.2/#general-principles-of-landmark-design">
-        General Principles of Landmark Design
-      </TextLink>{' '}
-      it is neccessary to provide a <Strong>label</Strong>.
-    </Text>
+    <>
+      <Text>
+        Renders a semantic <Strong>nav</Strong> element to encapsulate the
+        pagination links. Given this is a{' '}
+        <TextLink href="https://www.w3.org/TR/wai-aria-practices-1.2/#aria_landmark">
+          Landmark Region
+        </TextLink>
+        , in order to comply with the{' '}
+        <TextLink href="https://www.w3.org/TR/wai-aria-practices-1.2/#general-principles-of-landmark-design">
+          General Principles of Landmark Design
+        </TextLink>{' '}
+        it is neccessary to provide a <Strong>label</Strong>.
+      </Text>
+      <Text>
+        Given <Strong>Pagination</Strong> is presented semantically as a list of
+        links, the <Strong>Next</Strong> and <Strong>Previous</Strong> links
+        have defined their relationship to the current page by providing the{' '}
+        <Strong>rel</Strong> attribute with their respective values.
+      </Text>
+    </>
   ),
   alternatives: [],
   additional: [
