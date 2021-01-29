@@ -18,7 +18,7 @@ const docs: ComponentDocs = {
           <Pagination
             page={getState('page')}
             total={10}
-            linkProps={(page) => ({
+            linkProps={({ page }) => ({
               href: `#`,
               onClick: (e) => {
                 e.preventDefault();
@@ -92,8 +92,8 @@ const docs: ComponentDocs = {
               page={getState('page')}
               total={10}
               label="Pagination of results"
-              linkProps={(page) => ({
-                href: `/results?page=${page}`,
+              linkProps={({ page }) => ({
+                href: `#${page}`,
                 onClick: (e) => {
                   e.preventDefault();
                   setState('page', page);

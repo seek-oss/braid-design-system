@@ -15,7 +15,7 @@ import * as styleRefs from './Pagination.treat';
 export interface PaginationProps {
   page: number;
   total: number;
-  linkProps: (page: number) => LinkProps;
+  linkProps: ({ page }: { page: number }) => LinkProps;
   label: string;
   pageLabel?: (page: number) => string;
   nextLabel?: string;
@@ -103,7 +103,7 @@ const Page = ({ number, current }: { number: number; current: boolean }) => {
   );
 };
 
-const shouldHideOnTablet = (number: number, page: number, total: number) => {
+const shouldHideBelowTablet = (number: number, page: number, total: number) => {
   if (page === 1) {
     return number > page + 2;
   }
@@ -142,7 +142,7 @@ export const Pagination = ({
               transition="fast"
             >
               <Link
-                {...linkProps(page - 1)}
+                {...linkProps({ page: page - 1 })}
                 rel="prev"
                 aria-label={previousLabel}
                 aria-hidden={!showPrevious}
@@ -163,7 +163,7 @@ export const Pagination = ({
                 return (
                   <Hidden
                     below={
-                      shouldHideOnTablet(pageNumber, page, total)
+                      shouldHideBelowTablet(pageNumber, page, total)
                         ? 'tablet'
                         : undefined
                     }
@@ -171,7 +171,7 @@ export const Pagination = ({
                   >
                     <Box component="li">
                       <Link
-                        {...linkProps(pageNumber)}
+                        {...linkProps({ page: pageNumber })}
                         aria-label={pageLabel(pageNumber)}
                         aria-current={current ? 'page' : undefined}
                         title={pageLabel(pageNumber)}
@@ -194,7 +194,7 @@ export const Pagination = ({
               transition="fast"
             >
               <Link
-                {...linkProps(page + 1)}
+                {...linkProps({ page: page + 1 })}
                 rel="next"
                 aria-label={nextLabel}
                 aria-hidden={!showNext}

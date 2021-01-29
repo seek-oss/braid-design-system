@@ -2,10 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Optional } from 'utility-types';
 import { StateProp } from '../../playroom/playroomState';
 import { maxPages } from './paginate';
-import {
-  Pagination as BraidPaginationField,
-  PaginationProps,
-} from './Pagination';
+import { Pagination as BraidPagination, PaginationProps } from './Pagination';
 
 type PlayroomPaginationProps = StateProp &
   Optional<PaginationProps, 'label' | 'linkProps' | 'page' | 'total'>;
@@ -49,7 +46,9 @@ export const Pagination = ({
   const fallbackTotal = resolveFallbackTotal(total, fallbackPage);
   const [currentPage, setCurrentPage] = useState(fallbackPage);
 
-  const fallbackLinkProps: PaginationProps['linkProps'] = (newPage) => ({
+  const fallbackLinkProps: PaginationProps['linkProps'] = ({
+    page: newPage,
+  }) => ({
     href: '#',
     onClick: (e) => {
       e.preventDefault();
@@ -62,7 +61,7 @@ export const Pagination = ({
   }, [page, total]);
 
   return (
-    <BraidPaginationField
+    <BraidPagination
       page={currentPage}
       total={total || fallbackTotal}
       label={label || `Page ${currentPage} of results`}
