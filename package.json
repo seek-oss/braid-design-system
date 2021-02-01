@@ -120,7 +120,7 @@
     "react-router-dom": "^5.2.0",
     "react-router-scroll-memory": "^2.0.7",
     "react-syntax-highlighter": "^15.4.3",
-    "react-use": "^15.3.8",
+    "react-use": "^17.0.1",
     "renovate-config-seek": "0.4.0",
     "sanitize-html": "^2.3.2",
     "sku": "10.9.4",
