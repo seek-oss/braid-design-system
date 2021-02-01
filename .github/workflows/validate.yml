@@ -35,4 +35,4 @@ jobs:
           yarn chromatic --storybook-build-dir dist-storybook --exit-zero-on-changes --auto-accept-changes master
         env:
           CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_APP_CODE }}
-          CHROMATIC_STORYBOOK_VERSION: 5
+          CHROMATIC_STORYBOOK_VERSION: react@5.6.1
