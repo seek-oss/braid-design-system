@@ -1,6 +1,6 @@
 import React, { useContext, ReactNode } from 'react';
 import { useStyles } from 'sku/react-treat';
-import { Box } from '../Box/Box';
+import { Box, BoxProps } from '../Box/Box';
 import TextContext from '../Text/TextContext';
 import HeadingContext from '../Heading/HeadingContext';
 import {
@@ -11,6 +11,7 @@ import * as styleRefs from './Hidden.treat';
 
 export interface HiddenProps extends ResponsiveRangeProps {
   children: ReactNode;
+  component?: BoxProps['component'];
   screen?: boolean;
   print?: boolean;
   inline?: boolean;
@@ -18,6 +19,7 @@ export interface HiddenProps extends ResponsiveRangeProps {
 
 export const Hidden = ({
   children,
+  component,
   above,
   below,
   screen,
@@ -58,7 +60,7 @@ export const Hidden = ({
             ]
       }
       className={hiddenOnPrint ? styles.hiddenOnPrint : undefined}
-      component={inline ? 'span' : 'div'}
+      component={component || (inline ? 'span' : 'div')}
     >
       {children}
     </Box>

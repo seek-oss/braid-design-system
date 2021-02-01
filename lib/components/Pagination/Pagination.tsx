@@ -1,8 +1,6 @@
 import React from 'react';
 import { useStyles } from 'sku/react-treat';
 import { Box } from '../Box/Box';
-import { Column } from '../Column/Column';
-import { Columns } from '../Columns/Columns';
 import { IconChevron } from '../icons';
 import { Link, LinkProps } from '../Link/Link';
 import { Overlay } from '../private/Overlay/Overlay';
@@ -50,7 +48,7 @@ const PageNav = ({
         className={styles.background}
       />
       <Box component="span" zIndex={1} userSelect="none">
-        <Text component="span">
+        <Text>
           {isPrevious ? <IconChevron direction="left" /> : null}
           <Box
             display={isPrevious ? ['none', 'inline'] : undefined}
@@ -90,7 +88,6 @@ const Page = ({ number, current }: { number: number; current: boolean }) => {
       />
       <Box component="span" zIndex={1} userSelect="none">
         <Text
-          component="span"
           baseline={false}
           align="center"
           weight={current ? 'medium' : undefined}
@@ -130,83 +127,57 @@ export const Pagination = ({
 
   return (
     <Box component="nav" aria-label={label}>
-      <Box component="ul">
-        <Columns space={['none', 'xsmall']} align="center">
-          <Column>
-            <Box
-              display="flex"
-              justifyContent="flexEnd"
+      <Box component="ul" display="flex" justifyContent="center">
+        {showPrevious ? (
+          <Box component="li">
+            <Link
+              {...linkProps({ page: page - 1 })}
+              rel="prev"
+              aria-label={previousLabel}
+              title={previousLabel}
+            >
+              <PageNav label={previousLabel} direction="prev" />
+            </Link>
+          </Box>
+        ) : null}
+
+        {pages.map((pageNumber) => {
+          const current = page === pageNumber;
+
+          return (
+            <Hidden
               component="li"
-              opacity={showPrevious ? undefined : 0}
-              pointerEvents={showPrevious ? undefined : 'none'}
-              transition="fast"
+              below={
+                shouldHideBelowTablet(pageNumber, page, total)
+                  ? 'tablet'
+                  : undefined
+              }
+              key={pageNumber}
             >
               <Link
-                {...linkProps({ page: page - 1 })}
-                rel="prev"
-                aria-label={previousLabel}
-                aria-hidden={!showPrevious}
-                aria-disabled={!showPrevious}
-                tabIndex={showPrevious ? undefined : -1}
-                title={previousLabel}
+                {...linkProps({ page: pageNumber })}
+                aria-label={pageLabel(pageNumber)}
+                aria-current={current ? 'page' : undefined}
+                title={pageLabel(pageNumber)}
               >
-                <PageNav label={previousLabel} direction="prev" />
+                <Page number={pageNumber} current={current} />
               </Link>
-            </Box>
-          </Column>
+            </Hidden>
+          );
+        })}
 
-          <Column width="content">
-            <Box display="flex">
-              {pages.map((pageNumber) => {
-                const current = page === pageNumber;
-
-                return (
-                  <Hidden
-                    below={
-                      shouldHideBelowTablet(pageNumber, page, total)
-                        ? 'tablet'
-                        : undefined
-                    }
-                    key={pageNumber}
-                  >
-                    <Box component="li">
-                      <Link
-                        {...linkProps({ page: pageNumber })}
-                        aria-label={pageLabel(pageNumber)}
-                        aria-current={current ? 'page' : undefined}
-                        title={pageLabel(pageNumber)}
-                      >
-                        <Page number={pageNumber} current={current} />
-                      </Link>
-                    </Box>
-                  </Hidden>
-                );
-              })}
-            </Box>
-          </Column>
-
-          <Column>
-            <Box
-              display="flex"
-              component="li"
-              opacity={showNext ? undefined : 0}
-              pointerEvents={showNext ? undefined : 'none'}
-              transition="fast"
+        {showNext ? (
+          <Box component="li">
+            <Link
+              {...linkProps({ page: page + 1 })}
+              rel="next"
+              aria-label={nextLabel}
+              title={nextLabel}
             >
-              <Link
-                {...linkProps({ page: page + 1 })}
-                rel="next"
-                aria-label={nextLabel}
-                aria-hidden={!showNext}
-                aria-disabled={!showNext}
-                tabIndex={showNext ? undefined : -1}
-                title={nextLabel}
-              >
-                <PageNav label={nextLabel} direction="next" />
-              </Link>
-            </Box>
-          </Column>
-        </Columns>
+              <PageNav label={nextLabel} direction="next" />
+            </Link>
+          </Box>
+        ) : null}
       </Box>
     </Box>
   );
