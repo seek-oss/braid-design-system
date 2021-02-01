@@ -1,4 +1,4 @@
 import { useRef } from 'react';
-import uuid from 'uuid/v4';
+import { v4 as uuid } from 'uuid';
 
 export const useFallbackId = () => useRef(`fallbackId-${uuid()}`).current;

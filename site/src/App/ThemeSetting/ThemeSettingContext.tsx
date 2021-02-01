@@ -43,7 +43,9 @@ const useThemePreference = () => {
   );
 
   return [
-    documentedThemes.includes(theme) ? theme : defaultTheme,
+    theme !== undefined && documentedThemes.includes(theme)
+      ? theme
+      : defaultTheme,
     setTheme,
   ] as const;
 };
