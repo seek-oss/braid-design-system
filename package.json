@@ -97,7 +97,7 @@
     "babel-plugin-tester": "^10.0.0",
     "change-case": "^4.1.2",
     "cheerio": "1.0.0-rc.5",
-    "chromatic": "^5.1.0",
+    "chromatic": "^5.6.1",
     "circular-dependency-plugin": "^5.2.2",
     "concurrently": "^5.3.0",
     "copy-to-clipboard": "^3.3.1",
