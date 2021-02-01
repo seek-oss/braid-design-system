@@ -13,6 +13,7 @@ export interface ButtonProps {
   onClick?: NativeButtonProps['onClick'];
   type?: 'button' | 'submit' | 'reset';
   children?: ReactNode;
+  size?: PrivateButtonRendererProps['size'];
   tone?: PrivateButtonRendererProps['tone'];
   weight?: PrivateButtonRendererProps['weight'];
   loading?: PrivateButtonRendererProps['loading'];
@@ -25,6 +26,7 @@ export interface ButtonProps {
 export const Button = ({
   onClick,
   children,
+  size,
   tone,
   weight,
   loading,
@@ -35,7 +37,12 @@ export const Button = ({
   'aria-describedby': ariaDescribedBy,
   data,
 }: ButtonProps) => (
-  <PrivateButtonRenderer tone={tone} weight={weight} loading={loading}>
+  <PrivateButtonRenderer
+    size={size}
+    tone={tone}
+    weight={weight}
+    loading={loading}
+  >
     {(ButtonChildren, buttonProps) => (
       <button
         id={id}

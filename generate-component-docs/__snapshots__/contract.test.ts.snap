@@ -27,6 +27,9 @@ Object {
   exportType: component,
   props: {
     children: ReactNodeNoStrings
+    size?: 
+        | "small"
+        | "standard"
 },
 }
 `;
@@ -1702,6 +1705,9 @@ Object {
     id?: string
     loading?: boolean
     onClick?: (event: MouseEvent<HTMLButtonElement, MouseEvent>) => void
+    size?: 
+        | "small"
+        | "standard"
     tone?: "critical"
     type?: 
         | "button"
@@ -2095,6 +2101,9 @@ Object {
     results?: number
     role?: string
     security?: string
+    size?: 
+        | "small"
+        | "standard"
     slot?: string
     spellCheck?: 
         | "false"
@@ -2130,6 +2139,9 @@ Object {
   props: {
     children: (ButtonChildren: ComponentType<ButtonChildrenProps>, styleProps: { style: CSSProperties; className: string; }) => ReactNode
     loading?: boolean
+    size?: 
+        | "small"
+        | "standard"
     tone?: "critical"
     weight?: 
         | "regular"

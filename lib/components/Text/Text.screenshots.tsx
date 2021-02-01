@@ -1,5 +1,5 @@
 import React, { Fragment, ReactNode } from 'react';
-import { titleCase } from 'change-case';
+import { titleCase } from 'title-case';
 import { ComponentScreenshot } from '../../../site/src/types';
 import { Box, Text, Stack, Column, Columns, IconPositive } from '../';
 import {

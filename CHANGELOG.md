@@ -1,5 +1,35 @@
 # braid-design-system
 
+## 29.23.0
+
+### Minor Changes
+
+- **Button, ButtonLink, ButtonRenderer, Actions:** Add `size` prop, support `small` size ([#879](https://github.com/seek-oss/braid-design-system/pull/879))
+
+  You can now render smaller variants of button/action elements by setting the `size` prop to `small`.
+
+  **EXAMPLE USAGE**
+
+  **Small Button**
+
+  ```jsx
+  <Button size="small">Small Button</Button>
+  ```
+
+  **Small Actions**
+
+  ```jsx
+  <Actions size="small">
+    <Button>Regular Button</Button>
+    <Button weight="weak">Weak Button</Button>
+    <TextLink href="#">TextLink</TextLink>
+  </Actions>
+  ```
+
+### Patch Changes
+
+- **Button, ButtonLink, ButtonRenderer:** Reduce horizontal padding of `standard` size from `gutter` to `medium` ([#879](https://github.com/seek-oss/braid-design-system/pull/879))
+
 ## 29.22.0
 
 ### Minor Changes
