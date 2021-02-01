@@ -5408,7 +5408,7 @@ Object {
   exportType: component,
   props: {
     label: string
-    linkProps: (page: number) => LinkProps
+    linkProps: ({ page }: { page: number; }) => LinkProps
     nextLabel?: string
     page: number
     pageLabel?: (page: number) => string
