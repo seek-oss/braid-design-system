@@ -13,7 +13,13 @@ import * as styleRefs from './Pagination.treat';
 export interface PaginationProps {
   page: number;
   total: number;
-  linkProps: ({ page }: { page: number }) => LinkProps;
+  linkProps: ({
+    page,
+    type,
+  }: {
+    page: number;
+    type: 'next' | 'previous' | 'pageNumber';
+  }) => LinkProps;
   label: string;
   pageLabel?: (page: number) => string;
   nextLabel?: string;
@@ -100,18 +106,6 @@ const Page = ({ number, current }: { number: number; current: boolean }) => {
   );
 };
 
-const shouldHideBelowTablet = (number: number, page: number, total: number) => {
-  if (page === 1) {
-    return number > page + 2;
-  }
-
-  if (page === total) {
-    return number < page - 2;
-  }
-
-  return page < number - 1 || page > number + 1;
-};
-
 export const Pagination = ({
   page,
   total,
@@ -129,9 +123,9 @@ export const Pagination = ({
     <Box component="nav" aria-label={label}>
       <Box component="ul" display="flex" justifyContent="center">
         {showPrevious ? (
-          <Box component="li">
+          <Box component="li" paddingRight={['medium', 'none']}>
             <Link
-              {...linkProps({ page: page - 1 })}
+              {...linkProps({ page: page - 1, type: 'previous' })}
               rel="prev"
               aria-label={previousLabel}
               title={previousLabel}
@@ -147,15 +141,11 @@ export const Pagination = ({
           return (
             <Hidden
               component="li"
-              below={
-                shouldHideBelowTablet(pageNumber, page, total)
-                  ? 'tablet'
-                  : undefined
-              }
+              below={!current ? 'tablet' : undefined}
               key={pageNumber}
             >
               <Link
-                {...linkProps({ page: pageNumber })}
+                {...linkProps({ page: pageNumber, type: 'pageNumber' })}
                 aria-label={pageLabel(pageNumber)}
                 aria-current={current ? 'page' : undefined}
                 title={pageLabel(pageNumber)}
@@ -167,9 +157,9 @@ export const Pagination = ({
         })}
 
         {showNext ? (
-          <Box component="li">
+          <Box component="li" paddingLeft={['medium', 'none']}>
             <Link
-              {...linkProps({ page: page + 1 })}
+              {...linkProps({ page: page + 1, type: 'next' })}
               rel="next"
               aria-label={nextLabel}
               title={nextLabel}

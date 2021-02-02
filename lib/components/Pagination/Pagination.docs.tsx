@@ -60,7 +60,8 @@ const docs: ComponentDocs = {
         <Text>
           To keep the design simple, a maximum of {maxPages} pages are displayed
           above <Strong>tablet</Strong> screen sizes. On <Strong>mobile</Strong>{' '}
-          this number is reduced to 3.
+          only the current page along with the next and previous links are
+          displayed.
         </Text>
       ),
     },
