@@ -9,16 +9,16 @@ const docs: ComponentDocs = {
     source(
       <TooltipRenderer
         id={id}
-        // interactive
-        content={
+        interactive
+        content={({ close }) => (
           <Stack space="small">
             <Text>Tooltip!</Text>
-            <Button>Yo!</Button>
+            <Button onClick={() => close()}>Yo!</Button>
           </Stack>
-        }
+        )}
       >
-        {(tooltipProps) => (
-          <Box component="button" display="inlineBlock" {...tooltipProps}>
+        {({ triggerProps }) => (
+          <Box component="button" display="inlineBlock" {...triggerProps}>
             <Text>Yo!</Text>
           </Box>
         )}
