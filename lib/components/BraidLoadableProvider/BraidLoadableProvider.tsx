@@ -6,8 +6,9 @@ import {
 } from '../BraidProvider/BraidProvider';
 
 // @ts-ignore loadable can not currently type dynamic props
-const BraidLoadable = loadable.lib((props: { themeName: string }) =>
-  import(`../../../themes/${props.themeName}`),
+const BraidLoadable = loadable.lib(
+  (props: { themeName: string }) =>
+    import(`../../../themes/${props.themeName}`),
 );
 
 interface BraidLoadableProviderProps extends Omit<BraidProviderProps, 'theme'> {
