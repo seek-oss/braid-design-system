@@ -5598,7 +5598,7 @@ Object {
   exportType: component,
   props: {
     label: string
-    linkProps: ({ page }: { page: number; }) => LinkProps
+    linkProps: ({ page, type, }: { page: number; type: "next" | "previous" | "pageNumber"; }) => LinkProps
     nextLabel?: string
     page: number
     pageLabel?: (page: number) => string
