@@ -4,6 +4,7 @@ import path from 'path';
 import ts from 'typescript';
 import isEqual from 'lodash/isEqual';
 
+const MAX_DEPTH = 10;
 const aliasWhitelist = ['ResponsiveProp'];
 const propBlacklist = ['key'];
 
@@ -24,7 +25,7 @@ const reactNodeTypes = [
   'false',
   'true',
   '{}',
-  'ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>',
+  'ReactElement<any, string | ((props: any) => ReactElement<any, any> | null) | (new (props: any) => Component<any, any, any>)>',
   'ReactNodeArray',
   'ReactPortal',
 ];
@@ -32,7 +33,7 @@ const reactNodeTypes = [
 const reactNodeNoStringsTypes = [
   'false',
   'true',
-  'ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>',
+  'ReactElement<any, string | ((props: any) => ReactElement<any, any> | null) | (new (props: any) => Component<any, any, any>)>',
   'ReactNodeArray',
 ];
 
@@ -124,6 +125,7 @@ export default () => {
   function normalizeInterface(
     propsType: ts.Type,
     propsObj: ts.Symbol,
+    depth: number,
     extractComments?: boolean,
   ): NormalisedInterface {
     return {
@@ -163,7 +165,7 @@ export default () => {
                 required: !isOptional,
                 type: aliasWhitelist.includes(typeAlias)
                   ? typeAlias
-                  : normaliseType(propType, propsObj),
+                  : normaliseType(propType, propsObj, depth + 1),
                 description,
               },
             };
@@ -175,11 +177,19 @@ export default () => {
   function normaliseType(
     type: ts.Type,
     propsObj: ts.Symbol,
+    depth: number,
   ): NormalisedPropType {
     const typeString = checker.typeToString(type);
 
     if (stringAliases[typeString]) {
       return stringAliases[typeString];
+    }
+
+    if (depth > MAX_DEPTH) {
+      console.warn(
+        'Max depth reached normalising type. Return builtin string representation',
+      );
+      return typeString;
     }
 
     if (type.aliasSymbol) {
@@ -189,7 +199,7 @@ export default () => {
         return {
           params: type.aliasTypeArguments
             ? type.aliasTypeArguments.map((aliasArg) =>
-                normaliseType(aliasArg, propsObj),
+                normaliseType(aliasArg, propsObj, depth + 1),
               )
             : [],
           alias,
@@ -214,13 +224,13 @@ export default () => {
       return {
         type: 'union',
         types: type.types.map((unionItem) =>
-          normaliseType(unionItem, propsObj),
+          normaliseType(unionItem, propsObj, depth + 1),
         ),
       };
     }
 
     if (type.isClassOrInterface()) {
-      return normalizeInterface(type, propsObj);
+      return normalizeInterface(type, propsObj, depth + 1);
     }
 
     return typeString;
@@ -240,7 +250,7 @@ export default () => {
 
     return {
       exportType: 'component',
-      props: normalizeInterface(propsType, propsObj, true),
+      props: normalizeInterface(propsType, propsObj, 0, true),
     };
   }
 
@@ -260,9 +270,9 @@ export default () => {
           exp.valueDeclaration,
         );
 
-        return normaliseType(paramType, exp);
+        return normaliseType(paramType, exp, 0);
       }),
-      returnType: normaliseType(callSignature.getReturnType(), exp),
+      returnType: normaliseType(callSignature.getReturnType(), exp, 0),
     };
   }
 
@@ -276,13 +286,23 @@ export default () => {
       if (moduleSymbol) {
         return Object.assign(
           {},
-          ...checker.getExportsOfModule(moduleSymbol).map((moduleExport) => ({
-            [moduleExport.escapedName as string]: moduleExport
-              .getName()
-              .startsWith('use')
-              ? getHookDocs(moduleExport)
-              : getComponentDocs(moduleExport),
-          })),
+          ...checker.getExportsOfModule(moduleSymbol).map((moduleExport) => {
+            try {
+              const exportType = moduleExport.getName().startsWith('use')
+                ? getHookDocs(moduleExport)
+                : getComponentDocs(moduleExport);
+
+              return {
+                [moduleExport.escapedName as string]: exportType,
+              };
+            } catch (e) {
+              console.log(
+                'Failed to extract type from',
+                moduleExport.escapedName,
+              );
+              console.error(e);
+            }
+          }),
         );
       }
     }
