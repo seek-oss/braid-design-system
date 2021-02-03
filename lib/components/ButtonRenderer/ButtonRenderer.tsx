@@ -1,3 +1,4 @@
+import assert from 'assert';
 import React, {
   createContext,
   useContext,
@@ -17,8 +18,11 @@ import { Box } from '../Box/Box';
 import { Text, TextProps } from '../Text/Text';
 import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
 import { useTouchableSpace } from '../../hooks/typography';
+import { useVirtualTouchable } from '../private/touchable/useVirtualTouchable';
+import ActionsContext from '../Actions/ActionsContext';
 import * as styleRefs from './ButtonRenderer.treat';
 
+type ButtonSize = 'standard' | 'small';
 type ButtonTone = 'critical';
 type ButtonWeight = 'weak' | 'regular' | 'strong';
 type ButtonVariant = 'strong' | 'regular' | 'weak' | 'weakInverted';
@@ -114,10 +118,16 @@ const useButtonVariant = (weight: ButtonWeight, tone?: ButtonTone) => {
 };
 
 const ButtonChildrenContext = createContext<{
+  size: ButtonSize;
   tone: ButtonTone | undefined;
   weight: ButtonWeight;
   loading: boolean;
-}>({ weight: 'regular', tone: undefined, loading: false });
+}>({
+  size: 'standard',
+  weight: 'regular',
+  tone: undefined,
+  loading: false,
+});
 
 interface ButtonChildrenProps {
   children: ReactNode;
@@ -125,8 +135,9 @@ interface ButtonChildrenProps {
 
 const ButtonChildren = ({ children }: ButtonChildrenProps) => {
   const styles = useStyles(styleRefs);
-  const { weight, tone, loading } = useContext(ButtonChildrenContext);
+  const { size, weight, tone, loading } = useContext(ButtonChildrenContext);
   const buttonVariant = useButtonVariant(weight, tone);
+  const standardTouchableSpaceStyles = useTouchableSpace('standard');
 
   return (
     <Fragment>
@@ -145,14 +156,22 @@ const ButtonChildren = ({ children }: ButtonChildrenProps) => {
       />
       <Box
         position="relative"
-        paddingX="gutter"
+        paddingX={size === 'small' ? 'small' : 'medium'}
+        paddingY={size === 'small' ? 'xsmall' : undefined}
         pointerEvents="none"
         textAlign="center"
         overflow="hidden"
         userSelect="none"
-        className={useTouchableSpace('standard')}
+        className={
+          size === 'standard' ? standardTouchableSpaceStyles : undefined
+        }
       >
-        <Text baseline={false} weight="medium" tone={buttonVariant.textTone}>
+        <Text
+          baseline={false}
+          weight="medium"
+          tone={buttonVariant.textTone}
+          size={size === 'small' ? 'small' : undefined}
+        >
           {children}
           {loading ? (
             <Box aria-hidden component="span" display="inlineBlock">
@@ -174,6 +193,7 @@ const ButtonChildren = ({ children }: ButtonChildrenProps) => {
 };
 
 export interface PrivateButtonRendererProps {
+  size?: ButtonSize;
   tone?: ButtonTone;
   weight?: ButtonWeight;
   loading?: boolean;
@@ -187,14 +207,23 @@ export interface PrivateButtonRendererProps {
 }
 
 export const PrivateButtonRenderer = ({
+  size: sizeProp,
   tone,
   weight = 'regular',
   loading = false,
   children,
 }: PrivateButtonRendererProps) => {
+  const actionsContext = useContext(ActionsContext);
+
+  assert(
+    !(actionsContext && sizeProp),
+    'You shouldn\'t set a "size" prop on Button elements nested inside Actions. Instead, set the size on the Actions element, e.g. <Actions size="small"><Button>...</Button></Actions>',
+  );
+
   const styles = useStyles(styleRefs);
-  const isWeak = weight === 'weak';
+  const size = sizeProp ?? actionsContext?.size ?? 'standard';
   const { background, boxShadow } = useButtonVariant(weight, tone);
+  const virtualTouchableStyles = useVirtualTouchable({ xAxis: false });
 
   const buttonStyles = useBoxStyles({
     component: 'button',
@@ -210,14 +239,15 @@ export const PrivateButtonRenderer = ({
     outline: 'none',
     className: [
       styles.root,
-      isWeak ? styles.weak : null,
+      weight === 'weak' ? styles.weak : null,
       useBackgroundLightness() === 'dark' ? styles.inverted : null,
+      size === 'small' ? virtualTouchableStyles : null,
     ],
   });
 
   const buttonChildrenContextValue = useMemo(
-    () => ({ tone, weight, loading }),
-    [tone, weight, loading],
+    () => ({ size, tone, weight, loading }),
+    [size, tone, weight, loading],
   );
 
   const buttonProps = {

@@ -11,14 +11,12 @@
       );
     }
 
-    const octokit = require('@octokit/rest')();
-
-    octokit.authenticate({
-      type: 'token',
-      token: GITHUB_TOKEN,
+    const { Octokit } = require('@octokit/rest');
+    const octokit = new Octokit({
+      auth: GITHUB_TOKEN,
     });
 
-    await octokit.repos.createStatus({
+    await octokit.repos.createCommitStatus({
       owner: 'seek-oss',
       repo: 'braid-design-system',
       sha: GITHUB_SHA,

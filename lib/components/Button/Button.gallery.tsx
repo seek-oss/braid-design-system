@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentExample } from '../../../site/src/types';
 import source from '../../utils/source.macro';
-import { Button, Box, Inline } from '../';
+import { Button, Box, Inline, IconSend } from '../';
 
 export const galleryItems: ComponentExample[] = [
   {
@@ -63,11 +63,31 @@ export const galleryItems: ComponentExample[] = [
       ),
   },
   {
+    label: 'With icon',
+    Example: () =>
+      source(
+        <Inline space="small">
+          <Button>
+            <IconSend /> Send
+          </Button>
+        </Inline>,
+      ),
+  },
+  {
     label: 'Loading state',
     Example: () =>
       source(
         <Inline space="small">
           <Button loading>Loading</Button>
+        </Inline>,
+      ),
+  },
+  {
+    label: 'Small Button',
+    Example: () =>
+      source(
+        <Inline space="small">
+          <Button size="small">Submit</Button>
         </Inline>,
       ),
   },

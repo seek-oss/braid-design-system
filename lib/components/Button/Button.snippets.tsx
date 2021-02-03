@@ -5,7 +5,7 @@ import { Button } from '../../playroom/components';
 
 export const snippets: Snippets = [
   {
-    name: 'Standard',
+    name: 'Regular',
     code: source(<Button>Submit</Button>),
   },
   {
@@ -25,6 +25,26 @@ export const snippets: Snippets = [
     code: source(
       <Button weight="weak" tone="critical">
         Button
+      </Button>,
+    ),
+  },
+  {
+    name: 'Regular (Small)',
+    code: source(<Button size="small">Submit</Button>),
+  },
+  {
+    name: 'Strong (Small)',
+    code: source(
+      <Button size="small" weight="strong">
+        Submit
+      </Button>,
+    ),
+  },
+  {
+    name: 'Weak (Small)',
+    code: source(
+      <Button size="small" weight="weak">
+        Submit
       </Button>,
     ),
   },
