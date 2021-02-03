@@ -1191,5 +1191,22 @@
         "summary": "**Button, ButtonLink, ButtonRenderer:** Reduce horizontal padding of `standard` size from `gutter` to `medium`"
       }
     ]
+  },
+  {
+    "version": "29.24.0",
+    "updates": [
+      {
+        "updated": [
+          "Hidden"
+        ],
+        "summary": "**Hidden:** Add `component` support\n\nYou can now customise the DOM element rendered when using `Hidden`. If no `component` is specified, it will fall back to the current behaviour — a `div` by default, or a `span` when setting `inline` to `true`.\n\n**EXAMPLE USAGE:**\n```jsx\n<Hidden component=\"li\">\n  ...\n</Hidden>\n```"
+      },
+      {
+        "new": [
+          "Pagination"
+        ],
+        "summary": "**Pagination:** Add component\n\n**EXAMPLE USAGE:**\n```jsx\n<Pagination\n  label=\"Search results pagination\"\n  page={1}\n  total={20}\n  linkProps={({ page }) => ({\n    href: `/results?page=${page}`\n  })}\n/>\n```"
+      }
+    ]
   }
 ]
