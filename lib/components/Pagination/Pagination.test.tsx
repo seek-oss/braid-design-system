@@ -5,7 +5,6 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { BraidTestProvider, Pagination } from '..';
-import { maxPages } from './paginate';
 
 describe('Pagination', () => {
   it('should render valid html structure', () => {
@@ -110,44 +109,5 @@ describe('Pagination', () => {
     userEvent.tab({ shift: true });
     userEvent.tab({ shift: true });
     expect(getByLabelText('Pg 7')).toHaveFocus();
-  });
-
-  it(`should not show the Next or Previous buttons with ${maxPages} or fewer pages`, () => {
-    const { getByLabelText, queryByLabelText } = render(
-      <BraidTestProvider>
-        <Pagination
-          page={1}
-          total={maxPages}
-          linkProps={() => ({ href: `#` })}
-          label="Pagination Example"
-          previousLabel="Prev"
-          nextLabel="Next"
-          pageLabel={(page) => `Pg ${page}`}
-        />
-      </BraidTestProvider>,
-    );
-
-    expect(queryByLabelText('Prev')).not.toBeInTheDocument();
-    expect(queryByLabelText('Next')).not.toBeInTheDocument();
-    expect(document.body).toHaveFocus();
-    userEvent.tab();
-    expect(getByLabelText('Pg 1')).toHaveFocus();
-    userEvent.tab();
-    expect(getByLabelText('Pg 2')).toHaveFocus();
-    userEvent.tab();
-    expect(getByLabelText('Pg 3')).toHaveFocus();
-    userEvent.tab();
-    expect(getByLabelText('Pg 4')).toHaveFocus();
-    userEvent.tab();
-    expect(getByLabelText('Pg 5')).toHaveFocus();
-    userEvent.tab();
-    expect(getByLabelText('Pg 6')).toHaveFocus();
-    userEvent.tab();
-    expect(getByLabelText('Pg 7')).toHaveFocus();
-    userEvent.tab();
-    expect(document.body).toHaveFocus();
-    userEvent.tab({ shift: true });
-    userEvent.tab({ shift: true });
-    expect(getByLabelText('Pg 6')).toHaveFocus();
   });
 });

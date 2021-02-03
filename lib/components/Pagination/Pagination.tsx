@@ -116,8 +116,8 @@ export const Pagination = ({
   previousLabel = 'Previous',
 }: PaginationProps) => {
   const pages = paginate({ page, total });
-  const showPrevious = total > pages.length && page > 1;
-  const showNext = total > pages.length && page < total;
+  const showPrevious = page > 1;
+  const showNext = page < total;
 
   return (
     <Box component="nav" aria-label={label}>
