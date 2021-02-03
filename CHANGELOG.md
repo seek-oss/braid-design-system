@@ -1,5 +1,38 @@
 # braid-design-system
 
+## 29.24.0
+
+### Minor Changes
+
+- **Hidden:** Add `component` support ([#880](https://github.com/seek-oss/braid-design-system/pull/880))
+
+  You can now customise the DOM element rendered when using `Hidden`. If no `component` is specified, it will fall back to the current behaviour — a `div` by default, or a `span` when setting `inline` to `true`.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Hidden component="li">...</Hidden>
+  ```
+
+- **Pagination:** Add component ([#880](https://github.com/seek-oss/braid-design-system/pull/880))
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Pagination
+    label="Search results pagination"
+    page={1}
+    total={20}
+    linkProps={({ page }) => ({
+      href: `/results?page=${page}`,
+    })}
+  />
+  ```
+
+### Patch Changes
+
+- Update dependencies ([#883](https://github.com/seek-oss/braid-design-system/pull/883))
+
 ## 29.23.0
 
 ### Minor Changes
