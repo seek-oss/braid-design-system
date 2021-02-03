@@ -110,7 +110,7 @@ exports[`BackgroundProvider 1`] = `
 Object {
   exportType: component,
   props: {
-    children: ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>
+    children: ReactElement<any, string | ((props: any) => ReactElement<any, any> | null) | (new (props: any) => Component<any, any, any>)>
     type: 
         | "dark"
         | "light"
@@ -282,10 +282,15 @@ Object {
         | false
         | true
     aria-relevant?: 
+        | "additions removals"
         | "additions text"
         | "additions"
         | "all"
+        | "removals additions"
+        | "removals text"
         | "removals"
+        | "text additions"
+        | "text removals"
         | "text"
     aria-required?: 
         | "false"
@@ -1180,7 +1185,7 @@ Object {
         | "medium"
         | "outlineFocus"
         | "small"
-    children: (className: string) => ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)> | null
+    children: (className: string) => ReactElement<any, string | ((props: any) => ReactElement<any, any> | null) | (new (props: any) => Component<any, any, any>)> | null
     className?: string | number | boolean | ClassDictionary | ClassArray
     component: 
         | "a"
@@ -1852,10 +1857,15 @@ Object {
         | false
         | true
     aria-relevant?: 
+        | "additions removals"
         | "additions text"
         | "additions"
         | "all"
+        | "removals additions"
+        | "removals text"
         | "removals"
+        | "text additions"
+        | "text removals"
         | "text"
     aria-required?: 
         | "false"
@@ -2095,7 +2105,16 @@ Object {
     prefix?: string
     property?: string
     radioGroup?: string
-    referrerPolicy?: string
+    referrerPolicy?: 
+        | ""
+        | "no-referrer"
+        | "no-referrer-when-downgrade"
+        | "origin"
+        | "origin-when-cross-origin"
+        | "same-origin"
+        | "strict-origin"
+        | "strict-origin-when-cross-origin"
+        | "unsafe-url"
     rel?: string
     resource?: string
     results?: number
@@ -2165,7 +2184,7 @@ Object {
   exportType: component,
   props: {
     aria-describedby?: string
-    badge?: ReactElement<BadgeProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)>
+    badge?: ReactElement<BadgeProps, string | ((props: any) => ReactElement<any, any> | null) | (new (props: any) => Component<any, any, any>)>
     checked: 
         | "mixed"
         | boolean[]
@@ -2231,8 +2250,8 @@ Object {
         | "top"
     >
     children: 
-        | (ReactElement<ColumnProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)> | null)[]
-        | ReactElement<ColumnProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)>
+        | (ReactElement<ColumnProps, string | ((props: any) => ReactElement<any, any> | null) | (new (props: any) => Component<any, any, any>)> | null)[]
+        | ReactElement<ColumnProps, string | ((props: any) => ReactElement<any, any> | null) | (new (props: any) => Component<any, any, any>)>
     collapseBelow?: 
         | "desktop"
         | "tablet"
@@ -4944,10 +4963,15 @@ Object {
         | false
         | true
     aria-relevant?: 
+        | "additions removals"
         | "additions text"
         | "additions"
         | "all"
+        | "removals additions"
+        | "removals text"
         | "removals"
+        | "text additions"
+        | "text removals"
         | "text"
     aria-required?: 
         | "false"
@@ -5190,7 +5214,16 @@ Object {
     ref?: 
         | (instance: HTMLAnchorElement | null) => void
         | RefObject<HTMLAnchorElement>
-    referrerPolicy?: string
+    referrerPolicy?: 
+        | ""
+        | "no-referrer"
+        | "no-referrer-when-downgrade"
+        | "origin"
+        | "origin-when-cross-origin"
+        | "same-origin"
+        | "strict-origin"
+        | "strict-origin-when-cross-origin"
+        | "unsafe-url"
     rel?: string
     resource?: string
     results?: number
@@ -5459,7 +5492,7 @@ Object {
   exportType: component,
   props: {
     aria-describedby?: string
-    badge?: ReactElement<BadgeProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)>
+    badge?: ReactElement<BadgeProps, string | ((props: any) => ReactElement<any, any> | null) | (new (props: any) => Component<any, any, any>)>
     checked: boolean
     children?: ReactNode
     data?: Record<string, string | number>
@@ -5487,7 +5520,7 @@ exports[`RadioGroup 1`] = `
 Object {
   exportType: component,
   props: {
-    children: ReactElement<RadioItemProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)>[]
+    children: ReactElement<RadioItemProps, string | ((props: any) => ReactElement<any, any> | null) | (new (props: any) => Component<any, any, any>)>[]
     description?: ReactNode
     disabled?: boolean
     id: string
@@ -5515,7 +5548,7 @@ Object {
   exportType: component,
   props: {
     aria-describedby?: string
-    badge?: ReactElement<BadgeProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)>
+    badge?: ReactElement<BadgeProps, string | ((props: any) => ReactElement<any, any> | null) | (new (props: any) => Component<any, any, any>)>
     children?: ReactNode
     data?: Record<string, string | number>
     description?: ReactNode
@@ -5605,7 +5638,7 @@ exports[`Tab 1`] = `
 Object {
   exportType: component,
   props: {
-    badge?: ReactElement<BadgeProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)>
+    badge?: ReactElement<BadgeProps, string | ((props: any) => ReactElement<any, any> | null) | (new (props: any) => Component<any, any, any>)>
     children: ReactNode
     data?: Record<string, string | number>
     item?: string
@@ -5628,7 +5661,7 @@ exports[`TabPanels 1`] = `
 Object {
   exportType: component,
   props: {
-    children: ReactElement<TabPanelProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)>[]
+    children: ReactElement<TabPanelProps, string | ((props: any) => ReactElement<any, any> | null) | (new (props: any) => Component<any, any, any>)>[]
     renderInactivePanels?: boolean
 },
 }
@@ -5641,7 +5674,7 @@ Object {
     align?: 
         | "center"
         | "left"
-    children: ReactElement<TabProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)>[]
+    children: ReactElement<TabProps, string | ((props: any) => ReactElement<any, any> | null) | (new (props: any) => Component<any, any, any>)>[]
     data?: Record<string, string | number>
     divider?: 
         | "full"
@@ -6095,10 +6128,15 @@ Object {
         | false
         | true
     aria-relevant?: 
+        | "additions removals"
         | "additions text"
         | "additions"
         | "all"
+        | "removals additions"
+        | "removals text"
         | "removals"
+        | "text additions"
+        | "text removals"
         | "text"
     aria-required?: 
         | "false"
@@ -6340,7 +6378,16 @@ Object {
     prefix?: string
     property?: string
     radioGroup?: string
-    referrerPolicy?: string
+    referrerPolicy?: 
+        | ""
+        | "no-referrer"
+        | "no-referrer-when-downgrade"
+        | "origin"
+        | "origin-when-cross-origin"
+        | "same-origin"
+        | "strict-origin"
+        | "strict-origin-when-cross-origin"
+        | "unsafe-url"
     rel?: string
     resource?: string
     results?: number
@@ -6403,7 +6450,7 @@ exports[`TextLinkRenderer 1`] = `
 Object {
   exportType: component,
   props: {
-    children: (styleProps: StyleProps) => ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)>
+    children: (styleProps: StyleProps) => ReactElement<any, string | ((props: any) => ReactElement<any, any> | null) | (new (props: any) => Component<any, any, any>)>
     hitArea?: 
         | "large"
         | "standard"
@@ -6462,7 +6509,7 @@ exports[`ThemeNameConsumer 1`] = `
 Object {
   exportType: component,
   props: {
-    children: (name: string) => ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)>
+    children: (name: string) => ReactElement<any, string | ((props: any) => ReactElement<any, any> | null) | (new (props: any) => Component<any, any, any>)>
 },
 }
 `;
