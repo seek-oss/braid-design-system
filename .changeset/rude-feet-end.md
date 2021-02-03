@@ -9,7 +9,7 @@ updated:
 
 **Hidden:** Add `component` support
 
-Provide a way to customise the DOM element rendered when using `Hidden`. If no `component` is specified it will fallback to the current behaviour — a `span` when setting `inline` to `true`, or otherwise a `div`.
+You can now customise the DOM element rendered when using `Hidden`. If no `component` is specified, it will fall back to the current behaviour — a `div` by default, or a `span` when setting `inline` to `true`.
 
 **EXAMPLE USAGE:**
 ```jsx
