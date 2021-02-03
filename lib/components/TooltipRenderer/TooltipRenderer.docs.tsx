@@ -13,6 +13,8 @@ const docs: ComponentDocs = {
         content={({ close }) => (
           <Stack space="small">
             <Text>Tooltip!</Text>
+            <Text>More text!</Text>
+            <Text>Even more!</Text>
             <Button onClick={() => close()}>Yo!</Button>
           </Stack>
         )}

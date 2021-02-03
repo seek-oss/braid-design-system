@@ -35,13 +35,14 @@ export const TooltipRenderer = ({
   children,
 }: TooltipRendererProps) => {
   const styles = useStyles(styleRefs);
-  const contentRef = useRef<HTMLDivElement>(null);
+  const firstChildRef = useRef<HTMLDivElement>(null);
   const [controlledVisible, setControlledVisible] = useState(false);
 
   const {
     getTooltipProps,
     setTooltipRef,
     setTriggerRef,
+    tooltipRef,
     triggerRef,
     visible,
   } = usePopperTooltip({
@@ -53,7 +54,7 @@ export const TooltipRenderer = ({
 
       if (interactive) {
         if (state) {
-          contentRef.current?.focus();
+          firstChildRef.current?.parentElement?.focus();
         }
       }
     },
@@ -77,66 +78,104 @@ export const TooltipRenderer = ({
         document.removeEventListener('keydown', handleKeyDown);
       };
     }
-  }, [visible, interactive, triggerRef]);
+  }, [interactive, visible, triggerRef]);
+
+  useEffect(() => {
+    if (visible && triggerRef && tooltipRef) {
+      const handleFocusIn = ({ target }: FocusEvent) => {
+        if (
+          target instanceof Element &&
+          target !== triggerRef &&
+          target !== tooltipRef &&
+          !triggerRef.contains(target) &&
+          !tooltipRef.contains(target)
+        ) {
+          setControlledVisible(false);
+        }
+      };
+
+      document.addEventListener('focusin', handleFocusIn);
+
+      return () => {
+        document.removeEventListener('focusin', handleFocusIn);
+      };
+    }
+  }, [visible, triggerRef, tooltipRef]);
 
   return (
     <>
       {children({
-        triggerProps: { tabIndex: 0, ref: setTriggerRef },
+        triggerProps: {
+          tabIndex: 0,
+          ref: setTriggerRef,
+          ...(interactive
+            ? {
+                'aria-controls': id,
+                'aria-expanded': visible ? 'true' : 'false',
+                'aria-haspopup': 'dialog',
+              }
+            : {
+                'aria-describedby': id,
+              }),
+        },
       })}
 
       {visible &&
         createPortal(
-          <Box
-            ref={setTooltipRef}
-            zIndex="notification"
-            {...(getTooltipProps() as any)}
-          >
-            <Box padding="xxsmall">
-              <Box padding="xsmall">
-                {interactive ? (
-                  <Box
-                    tabIndex={0}
-                    onFocus={() => {
-                      setControlledVisible(false);
-                      triggerRef?.focus();
-                    }}
-                  />
-                ) : null}
+          <>
+            <Box padding="xsmall">
+              {interactive ? (
                 <Box
-                  ref={contentRef}
-                  tabIndex={interactive ? -1 : undefined}
-                  background="card"
-                  padding="small"
-                  boxShadow="large"
-                  borderRadius="standard"
-                >
-                  {typeof content === 'function'
-                    ? content({
-                        close: () => {
-                          setControlledVisible(false);
-                          triggerRef?.focus();
-                        },
-                      })
-                    : content}
-                </Box>
-                {interactive ? (
+                  tabIndex={0}
+                  onFocus={() => {
+                    setControlledVisible(false);
+                    triggerRef?.focus();
+                  }}
+                />
+              ) : null}
+              <Box
+                ref={setTooltipRef}
+                zIndex="notification"
+                id={id}
+                role={interactive ? 'dialog' : 'tooltip'}
+                // aria-label="This is the aria label"
+                tabIndex={interactive ? -1 : undefined}
+                {...(getTooltipProps() as any)}
+              >
+                <Box ref={firstChildRef} padding="xxsmall">
                   <Box
-                    tabIndex={0}
-                    onFocus={() => {
-                      if (triggerRef) {
-                        setControlledVisible(false);
-                        const tabbableElements = tabbable(document.body);
-                        tabbableElements[
-                          tabbableElements.indexOf(triggerRef) + 1
-                        ]?.focus();
-                      }
-                    }}
-                  />
-                ) : null}
+                    background="card"
+                    padding="small"
+                    boxShadow="large"
+                    borderRadius="standard"
+                  >
+                    {typeof content === 'function'
+                      ? content({
+                          close: () => {
+                            setControlledVisible(false);
+                            triggerRef?.focus();
+                          },
+                        })
+                      : content}
+                  </Box>
+                </Box>
               </Box>
             </Box>
-          </Box>,
+            {interactive ? (
+              <Box
+                tabIndex={0}
+                onFocus={() => {
+                  if (triggerRef) {
+                    setControlledVisible(false);
+                    const tabbableElements = tabbable(document.body);
+                    tabbableElements[
+                      tabbableElements.indexOf(triggerRef) + 1
+                    ]?.focus();
+                  }
+                }}
+              />
+            ) : null}
+          </>,
           document.body,
         )}
     </>
