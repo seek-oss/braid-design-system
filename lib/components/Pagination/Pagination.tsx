@@ -1,4 +1,5 @@
 import React from 'react';
+import assert from 'assert';
 import { useStyles } from 'sku/react-treat';
 import { Box } from '../Box/Box';
 import { IconChevron } from '../icons';
@@ -115,6 +116,9 @@ export const Pagination = ({
   nextLabel = 'Next',
   previousLabel = 'Previous',
 }: PaginationProps) => {
+  assert(total >= 1, `\`total\` must be at least 1`);
+  assert(page >= 1 && page <= total, `\`page\` must be between 1 and ${total}`);
+
   const pages = paginate({ page, total });
   const showPrevious = page > 1;
   const showNext = page < total;

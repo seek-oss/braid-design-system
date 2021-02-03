@@ -5,10 +5,6 @@ describe('paginate', () => {
     expect(paginate({ page: 1, total: 4 })).toEqual([1, 2, 3, 4]);
   });
 
-  it(`should return the first ${maxPages} pages when 'page' < '1'`, () => {
-    expect(paginate({ page: 0, total: 20 })).toEqual([1, 2, 3, 4, 5, 6, 7]);
-  });
-
   it(`should return the first ${maxPages} pages when 'page' is '1'`, () => {
     expect(paginate({ page: 1, total: 20 })).toEqual([1, 2, 3, 4, 5, 6, 7]);
   });
@@ -27,18 +23,6 @@ describe('paginate', () => {
 
   it(`should return the last ${maxPages} pages when 'page' is the 'total'`, () => {
     expect(paginate({ page: 20, total: 20 })).toEqual([
-      14,
-      15,
-      16,
-      17,
-      18,
-      19,
-      20,
-    ]);
-  });
-
-  it(`should return the last ${maxPages} pages when 'page' > 'total'`, () => {
-    expect(paginate({ page: 21, total: 20 })).toEqual([
       14,
       15,
       16,
