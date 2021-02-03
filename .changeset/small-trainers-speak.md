@@ -15,7 +15,7 @@ new:
   label="Search results pagination"
   page={1}
   total={20}
-  linkProps={(page) => ({
+  linkProps={({ page }) => ({
     href: `/results?page=${page}`
   })}
 />
