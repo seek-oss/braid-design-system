@@ -6,6 +6,7 @@ export interface OverlayProps
   extends Partial<
     Pick<
       BoxProps,
+      | 'component'
       | 'children'
       | 'zIndex'
       | 'background'
@@ -20,6 +21,7 @@ export interface OverlayProps
 }
 
 export const Overlay = ({
+  component,
   zIndex,
   background,
   borderRadius,
@@ -31,6 +33,7 @@ export const Overlay = ({
   children,
 }: OverlayProps) => (
   <Box
+    component={component}
     position="absolute"
     zIndex={zIndex}
     pointerEvents="none"
