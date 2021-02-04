@@ -6,7 +6,6 @@ import { IconChevron } from '../icons';
 import { Link, LinkProps } from '../Link/Link';
 import { Overlay } from '../private/Overlay/Overlay';
 import { Text } from '../Text/Text';
-import { Hidden } from '../Hidden/Hidden';
 import { paginate } from './paginate';
 
 import * as styleRefs from './Pagination.treat';
@@ -72,6 +71,8 @@ const PageNav = ({
   );
 };
 
+const tabletButtonSpacing = 'xxsmall';
+
 const Page = ({ number, current }: { number: number; current: boolean }) => {
   const styles = useStyles(styleRefs);
 
@@ -127,7 +128,7 @@ export const Pagination = ({
     <Box component="nav" aria-label={label}>
       <Box component="ul" display="flex" justifyContent="center">
         {showPrevious ? (
-          <Box component="li" paddingRight={['medium', 'none']}>
+          <Box component="li" paddingRight={['medium', tabletButtonSpacing]}>
             <Link
               {...linkProps({ page: page - 1, type: 'previous' })}
               rel="prev"
@@ -139,13 +140,17 @@ export const Pagination = ({
           </Box>
         ) : null}
 
-        {pages.map((pageNumber) => {
+        {pages.map((pageNumber, index) => {
           const current = page === pageNumber;
 
           return (
-            <Hidden
+            <Box
               component="li"
-              below={!current ? 'tablet' : undefined}
+              display={!current ? ['none', 'block'] : undefined}
+              paddingRight={[
+                'none',
+                pages.length - 1 === index ? 'none' : tabletButtonSpacing,
+              ]}
               key={pageNumber}
             >
               <Link
@@ -156,12 +161,12 @@ export const Pagination = ({
               >
                 <Page number={pageNumber} current={current} />
               </Link>
-            </Hidden>
+            </Box>
           );
         })}
 
         {showNext ? (
-          <Box component="li" paddingLeft={['medium', 'none']}>
+          <Box component="li" paddingLeft={['medium', tabletButtonSpacing]}>
             <Link
               {...linkProps({ page: page + 1, type: 'next' })}
               rel="next"
