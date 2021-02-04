@@ -1,5 +1,15 @@
 # braid-design-system
 
+## 29.25.0
+
+### Minor Changes
+
+- **Tabs:** Support fragments and `null`/`undefined` as children in `Tabs` and `TabPanels` ([#889](https://github.com/seek-oss/braid-design-system/pull/889))
+
+### Patch Changes
+
+- Add space between page and navigation controls above mobile to improve affordance between the current page and the hover state of surrounding buttons. ([#888](https://github.com/seek-oss/braid-design-system/pull/888))
+
 ## 29.24.0
 
 ### Minor Changes
