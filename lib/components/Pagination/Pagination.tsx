@@ -6,7 +6,6 @@ import { IconChevron } from '../icons';
 import { Link, LinkProps } from '../Link/Link';
 import { Overlay } from '../private/Overlay/Overlay';
 import { Text } from '../Text/Text';
-import { Hidden } from '../Hidden/Hidden';
 import { paginate } from './paginate';
 
 import * as styleRefs from './Pagination.treat';
@@ -74,15 +73,7 @@ const PageNav = ({
 
 const tabletButtonSpacing = 'xxsmall';
 
-const Page = ({
-  number,
-  current,
-  isLast,
-}: {
-  number: number;
-  current: boolean;
-  isLast: boolean;
-}) => {
+const Page = ({ number, current }: { number: number; current: boolean }) => {
   const styles = useStyles(styleRefs);
 
   return (
@@ -94,7 +85,6 @@ const Page = ({
       height="touchable"
       width="touchable"
       position="relative"
-      marginRight={['none', isLast ? 'none' : tabletButtonSpacing]}
       className={styles.hover}
     >
       <Overlay
@@ -154,9 +144,13 @@ export const Pagination = ({
           const current = page === pageNumber;
 
           return (
-            <Hidden
+            <Box
               component="li"
-              below={!current ? 'tablet' : undefined}
+              display={!current ? ['none', 'block'] : undefined}
+              paddingRight={[
+                'none',
+                pages.length - 1 === index ? 'none' : tabletButtonSpacing,
+              ]}
               key={pageNumber}
             >
               <Link
@@ -165,13 +159,9 @@ export const Pagination = ({
                 aria-current={current ? 'page' : undefined}
                 title={pageLabel(pageNumber)}
               >
-                <Page
-                  number={pageNumber}
-                  current={current}
-                  isLast={pages.length - 1 === index}
-                />
+                <Page number={pageNumber} current={current} />
               </Link>
-            </Hidden>
+            </Box>
           );
         })}
 
