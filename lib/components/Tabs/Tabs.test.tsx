@@ -41,23 +41,33 @@ function renderTabs({
   const changeHandler = jest.fn();
 
   const TestCase = ({ value }: { value?: string }) => (
+    // Note: This test case also ensures that null/undefined
+    // and fragments are handled correctly.
     <BraidTestProvider>
       <TabsProvider id="tabs" selectedItem={value} onChange={changeHandler}>
         <Tabs label="Test tabs">
           <Tab item="first">First</Tab>
-          <Tab item="second">Second</Tab>
-          <Tab item="third">Third</Tab>
+          {null}
+          {undefined}
+          <>
+            <Tab item="second">Second</Tab>
+            <Tab item="third">Third</Tab>
+          </>
         </Tabs>
         <TabPanels renderInactivePanels={renderInactivePanels}>
           <TabPanel>
             <TestPanel>panel-1</TestPanel>
           </TabPanel>
-          <TabPanel>
-            <TestPanel>panel-2</TestPanel>
-          </TabPanel>
-          <TabPanel>
-            <TestPanel>panel-3</TestPanel>
-          </TabPanel>
+          {null}
+          {undefined}
+          <>
+            <TabPanel>
+              <TestPanel>panel-2</TestPanel>
+            </TabPanel>
+            <TabPanel>
+              <TestPanel>panel-3</TestPanel>
+            </TabPanel>
+          </>
         </TabPanels>
       </TabsProvider>
     </BraidTestProvider>
