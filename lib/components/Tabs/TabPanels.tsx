@@ -1,19 +1,15 @@
-import React, {
-  useContext,
-  useEffect,
-  Fragment,
-  Children,
-  ReactElement,
-} from 'react';
+import React, { useContext, useEffect, Fragment, Children } from 'react';
 import assert from 'assert';
+import flattenChildren from 'react-keyed-flatten-children';
 import { TabsContext } from './TabsProvider';
 import { TAB_PANELS_UPDATED } from './Tabs.actions';
-import { TabPanel, TabPanelProps } from './TabPanel';
+import { TabPanel } from './TabPanel';
 import { TabPanelsContext } from './TabPanelsContext';
+import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 
 interface TabPanelsProps {
   renderInactivePanels?: boolean;
-  children: ReactElement<TabPanelProps>[];
+  children: ReactNodeNoStrings;
 }
 
 export const TabPanels = ({
@@ -29,7 +25,7 @@ export const TabPanels = ({
   const { dispatch } = tabsContext;
   const panelItems: Array<number> = [];
 
-  const panels = Children.map(children, (panel, index) => {
+  const panels = Children.map(flattenChildren(children), (panel, index) => {
     assert(
       typeof panel === 'object' && panel.type === TabPanel,
       'Only TabPanel elements can be direct children of a TabPanels',

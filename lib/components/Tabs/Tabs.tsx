@@ -5,24 +5,25 @@ import React, {
   useRef,
   useState,
   useCallback,
-  ReactElement,
 } from 'react';
 import { useStyles } from 'sku/react-treat';
 import assert from 'assert';
+import flattenChildren from 'react-keyed-flatten-children';
 import { Box, BoxProps } from '../Box/Box';
 import { TAB_LIST_UPDATED } from './Tabs.actions';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
 import { TabsContext } from './TabsProvider';
-import { Tab, TabProps } from './Tab';
+import { Tab } from './Tab';
 import { useNegativeMarginTop } from '../../hooks/useNegativeMargin/useNegativeMargin';
+import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
 import * as styleRefs from './Tabs.treat';
 import { TabListContext, TabListContextValues } from './TabListContext';
 
 export interface TabsProps {
-  children: ReactElement<TabProps>[];
+  children: ReactNodeNoStrings;
   label: string;
   align?: 'left' | 'center';
   gutter?: BoxProps['paddingX'];
@@ -58,7 +59,7 @@ export const Tabs = (props: TabsProps) => {
   const { dispatch, a11y } = tabsContext;
   const tabItems: Array<string | number> = [];
 
-  const tabs = Children.map(children, (tab, index) => {
+  const tabs = Children.map(flattenChildren(children), (tab, index) => {
     assert(
       typeof tab === 'object' && tab.type === Tab,
       'Only Tab elements can be direct children of a Tabs',
