@@ -110,7 +110,7 @@ exports[`BackgroundProvider 1`] = `
 Object {
   exportType: component,
   props: {
-    children: ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>
+    children: ReactElement<any, string | ((props: any) => ReactElement<any, any> | null) | (new (props: any) => Component<any, any, any>)>
     type: 
         | "dark"
         | "light"
@@ -282,10 +282,15 @@ Object {
         | false
         | true
     aria-relevant?: 
+        | "additions removals"
         | "additions text"
         | "additions"
         | "all"
+        | "removals additions"
+        | "removals text"
         | "removals"
+        | "text additions"
+        | "text removals"
         | "text"
     aria-required?: 
         | "false"
@@ -1180,7 +1185,7 @@ Object {
         | "medium"
         | "outlineFocus"
         | "small"
-    children: (className: string) => ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)> | null
+    children: (className: string) => ReactElement<any, string | ((props: any) => ReactElement<any, any> | null) | (new (props: any) => Component<any, any, any>)> | null
     className?: string | number | boolean | ClassDictionary | ClassArray
     component: 
         | "a"
@@ -1852,10 +1857,15 @@ Object {
         | false
         | true
     aria-relevant?: 
+        | "additions removals"
         | "additions text"
         | "additions"
         | "all"
+        | "removals additions"
+        | "removals text"
         | "removals"
+        | "text additions"
+        | "text removals"
         | "text"
     aria-required?: 
         | "false"
@@ -2095,7 +2105,16 @@ Object {
     prefix?: string
     property?: string
     radioGroup?: string
-    referrerPolicy?: string
+    referrerPolicy?: 
+        | ""
+        | "no-referrer"
+        | "no-referrer-when-downgrade"
+        | "origin"
+        | "origin-when-cross-origin"
+        | "same-origin"
+        | "strict-origin"
+        | "strict-origin-when-cross-origin"
+        | "unsafe-url"
     rel?: string
     resource?: string
     results?: number
@@ -2165,7 +2184,7 @@ Object {
   exportType: component,
   props: {
     aria-describedby?: string
-    badge?: ReactElement<BadgeProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)>
+    badge?: ReactElement<BadgeProps, string | ((props: any) => ReactElement<any, any> | null) | (new (props: any) => Component<any, any, any>)>
     checked: 
         | "mixed"
         | boolean[]
@@ -2231,8 +2250,8 @@ Object {
         | "top"
     >
     children: 
-        | (ReactElement<ColumnProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)> | null)[]
-        | ReactElement<ColumnProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)>
+        | (ReactElement<ColumnProps, string | ((props: any) => ReactElement<any, any> | null) | (new (props: any) => Component<any, any, any>)> | null)[]
+        | ReactElement<ColumnProps, string | ((props: any) => ReactElement<any, any> | null) | (new (props: any) => Component<any, any, any>)>
     collapseBelow?: 
         | "desktop"
         | "tablet"
@@ -2632,6 +2651,184 @@ Object {
         | "desktop"
         | "tablet"
     children: ReactNode
+    component?: 
+        | "a"
+        | "abbr"
+        | "address"
+        | "animate"
+        | "animateMotion"
+        | "animateTransform"
+        | "area"
+        | "article"
+        | "aside"
+        | "audio"
+        | "b"
+        | "base"
+        | "bdi"
+        | "bdo"
+        | "big"
+        | "blockquote"
+        | "body"
+        | "br"
+        | "button"
+        | "canvas"
+        | "caption"
+        | "circle"
+        | "cite"
+        | "clipPath"
+        | "code"
+        | "col"
+        | "colgroup"
+        | "data"
+        | "datalist"
+        | "dd"
+        | "defs"
+        | "del"
+        | "desc"
+        | "details"
+        | "dfn"
+        | "dialog"
+        | "div"
+        | "dl"
+        | "dt"
+        | "ellipse"
+        | "em"
+        | "embed"
+        | "feBlend"
+        | "feColorMatrix"
+        | "feComponentTransfer"
+        | "feComposite"
+        | "feConvolveMatrix"
+        | "feDiffuseLighting"
+        | "feDisplacementMap"
+        | "feDistantLight"
+        | "feDropShadow"
+        | "feFlood"
+        | "feFuncA"
+        | "feFuncB"
+        | "feFuncG"
+        | "feFuncR"
+        | "feGaussianBlur"
+        | "feImage"
+        | "feMerge"
+        | "feMergeNode"
+        | "feMorphology"
+        | "feOffset"
+        | "fePointLight"
+        | "feSpecularLighting"
+        | "feSpotLight"
+        | "feTile"
+        | "feTurbulence"
+        | "fieldset"
+        | "figcaption"
+        | "figure"
+        | "filter"
+        | "footer"
+        | "foreignObject"
+        | "form"
+        | "g"
+        | "h1"
+        | "h2"
+        | "h3"
+        | "h4"
+        | "h5"
+        | "h6"
+        | "head"
+        | "header"
+        | "hgroup"
+        | "hr"
+        | "html"
+        | "i"
+        | "iframe"
+        | "image"
+        | "img"
+        | "input"
+        | "ins"
+        | "kbd"
+        | "keygen"
+        | "label"
+        | "legend"
+        | "li"
+        | "line"
+        | "linearGradient"
+        | "link"
+        | "main"
+        | "map"
+        | "mark"
+        | "marker"
+        | "mask"
+        | "menu"
+        | "menuitem"
+        | "meta"
+        | "metadata"
+        | "meter"
+        | "mpath"
+        | "nav"
+        | "noindex"
+        | "noscript"
+        | "object"
+        | "ol"
+        | "optgroup"
+        | "option"
+        | "output"
+        | "p"
+        | "param"
+        | "path"
+        | "pattern"
+        | "picture"
+        | "polygon"
+        | "polyline"
+        | "pre"
+        | "progress"
+        | "q"
+        | "radialGradient"
+        | "rect"
+        | "rp"
+        | "rt"
+        | "ruby"
+        | "s"
+        | "samp"
+        | "script"
+        | "section"
+        | "select"
+        | "slot"
+        | "small"
+        | "source"
+        | "span"
+        | "stop"
+        | "strong"
+        | "style"
+        | "sub"
+        | "summary"
+        | "sup"
+        | "svg"
+        | "switch"
+        | "symbol"
+        | "table"
+        | "tbody"
+        | "td"
+        | "template"
+        | "text"
+        | "textPath"
+        | "textarea"
+        | "tfoot"
+        | "th"
+        | "thead"
+        | "time"
+        | "title"
+        | "tr"
+        | "track"
+        | "tspan"
+        | "u"
+        | "ul"
+        | "use"
+        | "var"
+        | "video"
+        | "view"
+        | "wbr"
+        | "webview"
+        | ComponentClass<any, any>
+        | FunctionComponent<any>
     inline?: boolean
     print?: boolean
     screen?: boolean
@@ -4944,10 +5141,15 @@ Object {
         | false
         | true
     aria-relevant?: 
+        | "additions removals"
         | "additions text"
         | "additions"
         | "all"
+        | "removals additions"
+        | "removals text"
         | "removals"
+        | "text additions"
+        | "text removals"
         | "text"
     aria-required?: 
         | "false"
@@ -5190,7 +5392,16 @@ Object {
     ref?: 
         | (instance: HTMLAnchorElement | null) => void
         | RefObject<HTMLAnchorElement>
-    referrerPolicy?: string
+    referrerPolicy?: 
+        | ""
+        | "no-referrer"
+        | "no-referrer-when-downgrade"
+        | "origin"
+        | "origin-when-cross-origin"
+        | "same-origin"
+        | "strict-origin"
+        | "strict-origin-when-cross-origin"
+        | "unsafe-url"
     rel?: string
     resource?: string
     results?: number
@@ -5415,6 +5626,21 @@ Object {
 }
 `;
 
+exports[`Pagination 1`] = `
+Object {
+  exportType: component,
+  props: {
+    label: string
+    linkProps: ({ page, type, }: { page: number; type: "next" | "previous" | "pageNumber"; }) => LinkProps
+    nextLabel?: string
+    page: number
+    pageLabel?: (page: number) => string
+    previousLabel?: string
+    total: number
+},
+}
+`;
+
 exports[`PasswordField 1`] = `
 Object {
   exportType: component,
@@ -5459,7 +5685,7 @@ Object {
   exportType: component,
   props: {
     aria-describedby?: string
-    badge?: ReactElement<BadgeProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)>
+    badge?: ReactElement<BadgeProps, string | ((props: any) => ReactElement<any, any> | null) | (new (props: any) => Component<any, any, any>)>
     checked: boolean
     children?: ReactNode
     data?: Record<string, string | number>
@@ -5487,7 +5713,7 @@ exports[`RadioGroup 1`] = `
 Object {
   exportType: component,
   props: {
-    children: ReactElement<RadioItemProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)>[]
+    children: ReactElement<RadioItemProps, string | ((props: any) => ReactElement<any, any> | null) | (new (props: any) => Component<any, any, any>)>[]
     description?: ReactNode
     disabled?: boolean
     id: string
@@ -5515,7 +5741,7 @@ Object {
   exportType: component,
   props: {
     aria-describedby?: string
-    badge?: ReactElement<BadgeProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)>
+    badge?: ReactElement<BadgeProps, string | ((props: any) => ReactElement<any, any> | null) | (new (props: any) => Component<any, any, any>)>
     children?: ReactNode
     data?: Record<string, string | number>
     description?: ReactNode
@@ -5605,7 +5831,7 @@ exports[`Tab 1`] = `
 Object {
   exportType: component,
   props: {
-    badge?: ReactElement<BadgeProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)>
+    badge?: ReactElement<BadgeProps, string | ((props: any) => ReactElement<any, any> | null) | (new (props: any) => Component<any, any, any>)>
     children: ReactNode
     data?: Record<string, string | number>
     item?: string
@@ -5628,7 +5854,7 @@ exports[`TabPanels 1`] = `
 Object {
   exportType: component,
   props: {
-    children: ReactElement<TabPanelProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)>[]
+    children: ReactNodeNoStrings
     renderInactivePanels?: boolean
 },
 }
@@ -5641,7 +5867,7 @@ Object {
     align?: 
         | "center"
         | "left"
-    children: ReactElement<TabProps, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)>[]
+    children: ReactNodeNoStrings
     data?: Record<string, string | number>
     divider?: 
         | "full"
@@ -6095,10 +6321,15 @@ Object {
         | false
         | true
     aria-relevant?: 
+        | "additions removals"
         | "additions text"
         | "additions"
         | "all"
+        | "removals additions"
+        | "removals text"
         | "removals"
+        | "text additions"
+        | "text removals"
         | "text"
     aria-required?: 
         | "false"
@@ -6340,7 +6571,16 @@ Object {
     prefix?: string
     property?: string
     radioGroup?: string
-    referrerPolicy?: string
+    referrerPolicy?: 
+        | ""
+        | "no-referrer"
+        | "no-referrer-when-downgrade"
+        | "origin"
+        | "origin-when-cross-origin"
+        | "same-origin"
+        | "strict-origin"
+        | "strict-origin-when-cross-origin"
+        | "unsafe-url"
     rel?: string
     resource?: string
     results?: number
@@ -6403,7 +6643,7 @@ exports[`TextLinkRenderer 1`] = `
 Object {
   exportType: component,
   props: {
-    children: (styleProps: StyleProps) => ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)>
+    children: (styleProps: StyleProps) => ReactElement<any, string | ((props: any) => ReactElement<any, any> | null) | (new (props: any) => Component<any, any, any>)>
     hitArea?: 
         | "large"
         | "standard"
@@ -6462,7 +6702,7 @@ exports[`ThemeNameConsumer 1`] = `
 Object {
   exportType: component,
   props: {
-    children: (name: string) => ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>)>
+    children: (name: string) => ReactElement<any, string | ((props: any) => ReactElement<any, any> | null) | (new (props: any) => Component<any, any, any>)>
 },
 }
 `;

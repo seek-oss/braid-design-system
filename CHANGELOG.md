@@ -1,5 +1,48 @@
 # braid-design-system
 
+## 29.25.0
+
+### Minor Changes
+
+- **Tabs:** Support fragments and `null`/`undefined` as children in `Tabs` and `TabPanels` ([#889](https://github.com/seek-oss/braid-design-system/pull/889))
+
+### Patch Changes
+
+- Add space between page and navigation controls above mobile to improve affordance between the current page and the hover state of surrounding buttons. ([#888](https://github.com/seek-oss/braid-design-system/pull/888))
+
+## 29.24.0
+
+### Minor Changes
+
+- **Hidden:** Add `component` support ([#880](https://github.com/seek-oss/braid-design-system/pull/880))
+
+  You can now customise the DOM element rendered when using `Hidden`. If no `component` is specified, it will fall back to the current behaviour — a `div` by default, or a `span` when setting `inline` to `true`.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Hidden component="li">...</Hidden>
+  ```
+
+- **Pagination:** Add component ([#880](https://github.com/seek-oss/braid-design-system/pull/880))
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Pagination
+    label="Search results pagination"
+    page={1}
+    total={20}
+    linkProps={({ page }) => ({
+      href: `/results?page=${page}`,
+    })}
+  />
+  ```
+
+### Patch Changes
+
+- Update dependencies ([#883](https://github.com/seek-oss/braid-design-system/pull/883))
+
 ## 29.23.0
 
 ### Minor Changes
