@@ -10,7 +10,7 @@ updated:
 
 **Button,ButtonLink:** Add variant to Button and deprecate weight
 
-Introduces a new `variant` prop to `Button`/`ButtonLink` giving consumers a single prop to use for selecting the visual style of the button. Choose from `solid` (default), `ghost`, `soft` or `transparent`. The colour of the button is now consistently controlled via the `tone` prop, with supported values being `brandAccent`, `critical` or `undefined`.
+Introduces a new `variant` prop to `Button`/`ButtonLink` giving consumers a single prop to use for selecting the visual style of the button. Choose from `solid` (default), `ghost`, `soft` or `transparent`. The colour of the button is now consistently controlled via the `tone` prop, with supported values being `"brandAccent"`, `"critical"` or `undefined`.
 
 As a result the `weight` prop is now deprecated. See the migration guide below.
 
@@ -55,5 +55,4 @@ Can be replicated with a `variant` of `ghost`.
 -<Button weight="weak">...</Button>
 +<Button variant="ghost">...</Button>
 ```
-
 
