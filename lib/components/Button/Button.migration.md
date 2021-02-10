@@ -2,7 +2,7 @@
 
 ## API Changes
 
-- The `color`, `ghost` and `transparent`/`hyperlink` props have been removed in favour of `variant={'standard' | 'ghost' | 'soft' | 'transparent'}` and `tone={'brandAccent' | 'critical'}`.
+- The `color`, `ghost` and `transparent`/`hyperlink` props have been removed in favour of `variant={'solid' | 'ghost' | 'soft' | 'transparent'}` and `tone={'brandAccent' | 'critical'}`.
 - The `compact` prop has been removed in favour of `size="small"`.
 - No longer accepts arbitrary DOM properties, e.g. `className`. Please check that everything you need is exposed via the [public API.](https://seek-oss.github.io/braid-design-system/components/Button)
 

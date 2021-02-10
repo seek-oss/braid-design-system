@@ -16,7 +16,7 @@ export const screenshots: ComponentScreenshot = {
       Container,
       Example: () => (
         <Inline space="small" collapseBelow="desktop">
-          <Button>Standard</Button>
+          <Button>Solid</Button>
           <Button variant="ghost">Ghost</Button>
           <Button variant="soft">Soft</Button>
           <Button variant="transparent">Transparent</Button>
@@ -28,7 +28,7 @@ export const screenshots: ComponentScreenshot = {
       Container,
       Example: () => (
         <Inline space="small" collapseBelow="desktop">
-          <Button tone="critical">Standard</Button>
+          <Button tone="critical">Solid</Button>
           <Button tone="critical" variant="ghost">
             Ghost
           </Button>
@@ -46,7 +46,7 @@ export const screenshots: ComponentScreenshot = {
       Container,
       Example: () => (
         <Inline space="small" collapseBelow="desktop">
-          <Button tone="brandAccent">Standard</Button>
+          <Button tone="brandAccent">Solid</Button>
           <Button tone="brandAccent" variant="ghost">
             Ghost
           </Button>
@@ -64,7 +64,7 @@ export const screenshots: ComponentScreenshot = {
       Container,
       Example: () => (
         <Inline space="small" collapseBelow="desktop">
-          <Button size="small">Standard</Button>
+          <Button size="small">Solid</Button>
           <Button size="small" variant="ghost">
             Ghost
           </Button>
@@ -101,7 +101,7 @@ export const screenshots: ComponentScreenshot = {
             {backgrounds.sort().map((background) => (
               <Box key={background} background={background} padding="medium">
                 <Inline space="small" collapseBelow="desktop">
-                  <Button>Standard</Button>
+                  <Button>Solid</Button>
                   <Button variant="ghost">Ghost</Button>
                   <Button variant="soft">Soft</Button>
                   <Button variant="transparent">Transparent</Button>
@@ -125,7 +125,7 @@ export const screenshots: ComponentScreenshot = {
             {backgrounds.sort().map((background) => (
               <Box key={background} background={background} padding="medium">
                 <Inline space="small" collapseBelow="desktop">
-                  <Button tone="critical">Standard</Button>
+                  <Button tone="critical">Solid</Button>
                   <Button tone="critical" variant="ghost">
                     Ghost
                   </Button>
@@ -155,7 +155,7 @@ export const screenshots: ComponentScreenshot = {
             {backgrounds.sort().map((background) => (
               <Box key={background} background={background} padding="medium">
                 <Inline space="small" collapseBelow="desktop">
-                  <Button tone="brandAccent">Standard</Button>
+                  <Button tone="brandAccent">Solid</Button>
                   <Button tone="brandAccent" variant="ghost">
                     Ghost
                   </Button>

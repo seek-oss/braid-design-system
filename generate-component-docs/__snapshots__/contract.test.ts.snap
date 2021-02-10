@@ -1725,7 +1725,7 @@ Object {
     variant?: 
         | "ghost"
         | "soft"
-        | "standard"
+        | "solid"
         | "transparent"
     weight?: 
         | "regular"
@@ -2157,7 +2157,7 @@ Object {
     variant?: 
         | "ghost"
         | "soft"
-        | "standard"
+        | "solid"
         | "transparent"
     vocab?: string
     weight?: 
@@ -2183,7 +2183,7 @@ Object {
     variant?: 
         | "ghost"
         | "soft"
-        | "standard"
+        | "solid"
         | "transparent"
     weight?: 
         | "regular"

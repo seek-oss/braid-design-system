@@ -60,7 +60,7 @@ export const galleryItems: ComponentExample[] = [
     background: 'brand',
     Example: () =>
       source(
-        <Box background="brand" padding="small" borderRadius="standard">
+        <Box background="brand" padding="small">
           <Inline space="small">
             <Button variant="ghost">Ghost</Button>
             <Button variant="soft">Soft</Button>

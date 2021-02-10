@@ -15,7 +15,7 @@ export const screenshots: ComponentScreenshot = {
       Container,
       Example: () => (
         <Inline space="small" collapseBelow="desktop">
-          <ButtonLink href="#">Standard</ButtonLink>
+          <ButtonLink href="#">Solid</ButtonLink>
           <ButtonLink href="#" variant="ghost">
             Ghost
           </ButtonLink>
@@ -34,7 +34,7 @@ export const screenshots: ComponentScreenshot = {
       Example: () => (
         <Inline space="small" collapseBelow="desktop">
           <ButtonLink href="#" tone="critical">
-            Standard
+            Solid
           </ButtonLink>
           <ButtonLink href="#" tone="critical" variant="ghost">
             Ghost
@@ -54,7 +54,7 @@ export const screenshots: ComponentScreenshot = {
       Example: () => (
         <Inline space="small" collapseBelow="desktop">
           <ButtonLink href="#" tone="brandAccent">
-            Standard
+            Solid
           </ButtonLink>
           <ButtonLink href="#" tone="brandAccent" variant="ghost">
             Ghost

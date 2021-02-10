@@ -21,7 +21,7 @@ const docs: ComponentDocs = {
     source(
       <Card>
         <Inline space="small" collapseBelow="desktop">
-          <Button>Standard</Button>
+          <Button>Solid</Button>
           <Button variant="ghost">Ghost</Button>
           <Button variant="soft">Soft</Button>
           <Button variant="transparent">Transparent</Button>
@@ -46,14 +46,14 @@ const docs: ComponentDocs = {
         <Text>
           You can customise the appearance of the button via the{' '}
           <Strong>variant</Strong> prop, which accepts either{' '}
-          <Strong>standard</Strong>, <Strong>ghost</Strong>,{' '}
-          <Strong>soft</Strong> or <Strong>transparent</Strong>.
+          <Strong>solid</Strong>, <Strong>ghost</Strong>, <Strong>soft</Strong>{' '}
+          or <Strong>transparent</Strong>.
         </Text>
       ),
       Example: () =>
         source(
           <Inline space="small" collapseBelow="desktop">
-            <Button>Standard</Button>
+            <Button variant="solid">Solid</Button>
             <Button variant="ghost">Ghost</Button>
             <Button variant="soft">Soft</Button>
             <Button variant="transparent">Transparent</Button>
@@ -78,7 +78,7 @@ const docs: ComponentDocs = {
                 Standard size
               </Text>
               <Inline space="small" collapseBelow="desktop">
-                <Button>Standard</Button>
+                <Button>Solid</Button>
                 <Button variant="ghost">Ghost</Button>
                 <Button variant="soft">Soft</Button>
                 <Button variant="transparent">Transparent</Button>
@@ -89,7 +89,7 @@ const docs: ComponentDocs = {
                 Small size
               </Text>
               <Inline space="small" collapseBelow="desktop">
-                <Button size="small">Standard</Button>
+                <Button size="small">Solid</Button>
                 <Button variant="ghost" size="small">
                   Ghost
                 </Button>

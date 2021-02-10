@@ -25,7 +25,7 @@ import * as styleRefs from './ButtonRenderer.treat';
 type ButtonSize = 'standard' | 'small';
 type ButtonTone = 'brandAccent' | 'critical';
 type ButtonWeight = 'weak' | 'regular' | 'strong';
-type ButtonVariant = 'standard' | 'ghost' | 'soft' | 'transparent';
+type ButtonVariant = 'solid' | 'ghost' | 'soft' | 'transparent';
 type ButtonStyles = {
   textTone: TextProps['tone'];
   background: UseBoxStylesProps['background'];
@@ -38,7 +38,7 @@ const buttonVariants: Record<
   ButtonVariant,
   Record<'default' | ButtonTone, ButtonStyles>
 > = {
-  standard: {
+  solid: {
     default: {
       textTone: undefined,
       background: 'formAccent',
@@ -133,7 +133,7 @@ const buttonVariants: Record<
 };
 
 const useButtonVariant = (variant: ButtonVariant, tone?: ButtonTone) => {
-  if (useBackgroundLightness() === 'dark' && !tone && variant !== 'standard') {
+  if (useBackgroundLightness() === 'dark' && !tone && variant !== 'solid') {
     return {
       textTone: undefined,
       background: variant === 'soft' ? 'card' : undefined,
@@ -157,7 +157,7 @@ const ButtonChildrenContext = createContext<{
   loading: boolean;
 }>({
   size: 'standard',
-  variant: 'standard',
+  variant: 'solid',
   tone: undefined,
   loading: false,
 });
@@ -256,19 +256,19 @@ type PropMapper = {
 const resolveToneAndVariant = ({
   weight,
   tone,
-  variant = 'standard',
+  variant = 'solid',
 }: PropMapper): { variant: ButtonVariant; tone?: ButtonTone } => {
   if (weight === 'strong') {
     return {
       tone: tone || 'brandAccent',
-      variant: 'standard',
+      variant: 'solid',
     };
   }
 
   if (weight === 'regular') {
     return {
       tone,
-      variant: 'standard',
+      variant: 'solid',
     };
   }
 
@@ -330,7 +330,7 @@ export const PrivateButtonRenderer = ({
     className: [
       styles.root,
       variant === 'soft' ? styles.lightBg : null,
-      variant !== 'standard' ? styles.lightHoverBg : null,
+      variant !== 'solid' ? styles.lightHoverBg : null,
       useBackgroundLightness() === 'dark' ? styles.inverted : null,
       size === 'small' ? virtualTouchableStyles : null,
     ],
