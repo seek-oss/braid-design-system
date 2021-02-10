@@ -236,7 +236,7 @@ export interface PrivateButtonRendererProps {
   size?: ButtonSize;
   tone?: ButtonTone;
   variant?: ButtonVariant;
-  /** @deprecated `weight` has been deprecated. Please choose a [variant](https://seek-oss.github.io/braid-design-system/components/Button) instead. */
+  /** @deprecated `weight` has been deprecated. Please choose a [variant](https://seek-oss.github.io/braid-design-system/components/Button#variants) instead. */
   weight?: ButtonWeight;
   loading?: boolean;
   children: (
