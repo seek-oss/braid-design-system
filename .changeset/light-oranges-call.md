@@ -80,11 +80,10 @@ updated:
   - IconWorkExperience
 ---
 
-**Text:** Add brandAccent tone to Text and Icons
+**Text, Icons:** Add brandAccent tone to Text and Icons
 
 **EXAMPLE USAGE:**
 ```jsx
 <Text tone="brandAccent">...</Text>
 ```
-
 
