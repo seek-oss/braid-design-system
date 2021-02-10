@@ -15,10 +15,9 @@ Usage of `TextLink` or `TextLinkButton` inside of an `Actions` container should 
 Previously when a `TextLink` or `TextLinkButton` was placed inside of an `Actions` container, it would be given a custom layout to align with the `Button` elements. We are deprecating this behaviour.
 
 **MIGRATION GUIDE:**
-Going forward `Actions` should only contain `Button` elements. To migrate towards this, both `TextLink` and `TextLinkButton` should now use either a `ButtonLink` or `Button` respectively, with a `variant` of `transparent`.
+Going forward `Actions` should only contain `Button` elements. To migrate towards this, both `TextLink` and `TextLinkButton` should now use either a `ButtonLink` or `Button` respectively, with a `variant` or `transparent`.
 
 #### TextLink
-Can be replicated with a `variant` of `standard` (default).
 ```diff
 <Actions>
   <Button>...</Button>
