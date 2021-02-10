@@ -1,63 +1,57 @@
-import React, {
-  useState,
-  useEffect,
-  useRef,
-  ReactNode,
-  SyntheticEvent,
-} from 'react';
-import { createPortal } from 'react-dom';
+import React, { useState, useEffect, ReactNode } from 'react';
 import { useStyles } from 'sku/react-treat';
+import { createPortal } from 'react-dom';
 import { usePopperTooltip } from 'react-popper-tooltip';
+import isMobile from 'is-mobile';
+import assert from 'assert';
 import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
+import { BackgroundProvider } from '../Box/BackgroundContext';
+import { useBoxStyles } from '../Box/useBoxStyles';
+import { DefaultTextPropsProvider } from '../private/defaultTextProps';
+import { useSpace } from '../useSpace/useSpace';
 import { Box } from '../Box/Box';
 import * as styleRefs from './TooltipRenderer.treat';
-import { tabbable } from 'tabbable';
+
+// @ts-expect-error
+import untyped_IsIOS from 'is-ios';
+assert(typeof untyped_IsIOS === 'boolean');
+const isIOS: boolean = untyped_IsIOS;
 
 interface TriggerProps {
-  ref: any;
+  ref: ReturnType<typeof usePopperTooltip>['setTooltipRef'];
   tabIndex: 0;
   'aria-describedby': string;
 }
 
 export interface TooltipRendererProps {
   id: string;
-  interactive?: boolean;
-  content:
-    | ReactNodeNoStrings
-    | ((contentRenderProps: { close: () => void }) => ReactNodeNoStrings);
+  tooltip: ReactNodeNoStrings;
   children: (renderProps: { triggerProps: TriggerProps }) => ReactNode;
 }
 
 export const TooltipRenderer = ({
   id,
-  content,
-  interactive = false,
+  tooltip,
   children,
 }: TooltipRendererProps) => {
   const styles = useStyles(styleRefs);
-  const firstChildRef = useRef<HTMLDivElement>(null);
   const [controlledVisible, setControlledVisible] = useState(false);
+  const [opacity, setOpacity] = useState<0 | 100>(0);
+  const { grid, space } = useSpace();
 
   const {
+    visible,
     getTooltipProps,
     setTooltipRef,
-    setTriggerRef,
     tooltipRef,
+    setTriggerRef,
     triggerRef,
-    visible,
   } = usePopperTooltip({
     placement: 'bottom',
-    trigger: interactive ? 'click' : ['click', 'hover', 'focus'],
+    trigger: [isIOS ? 'click' : 'hover', 'focus'],
     visible: controlledVisible,
-    onVisibleChange: (state) => {
-      setControlledVisible(state);
-
-      if (interactive) {
-        if (state) {
-          firstChildRef.current?.parentElement?.focus();
-        }
-      }
-    },
+    onVisibleChange: setControlledVisible,
+    offset: [0, space.xsmall * grid],
   });
 
   useEffect(() => {
@@ -65,10 +59,6 @@ export const TooltipRenderer = ({
       const handleKeyDown = ({ key }: KeyboardEvent) => {
         if (key === 'Escape') {
           setControlledVisible(false);
-
-          if (interactive) {
-            triggerRef?.focus();
-          }
         }
       };
 
@@ -78,18 +68,16 @@ export const TooltipRenderer = ({
         document.removeEventListener('keydown', handleKeyDown);
       };
     }
-  }, [interactive, visible, triggerRef]);
+  }, [visible]);
 
   useEffect(() => {
-    if (visible && triggerRef && tooltipRef) {
-      const handleFocusIn = ({ target }: FocusEvent) => {
-        if (
-          target instanceof Element &&
-          target !== triggerRef &&
-          target !== tooltipRef &&
-          !triggerRef.contains(target) &&
-          !tooltipRef.contains(target)
-        ) {
+    if (!triggerRef) {
+      return;
+    }
+
+    if (visible) {
+      const handleFocusIn = (event: FocusEvent) => {
+        if (event.currentTarget !== triggerRef) {
           setControlledVisible(false);
         }
       };
@@ -100,7 +88,36 @@ export const TooltipRenderer = ({
         document.removeEventListener('focusin', handleFocusIn);
       };
     }
-  }, [visible, triggerRef, tooltipRef]);
+  }, [triggerRef, visible]);
+
+  assert(
+    useEffect(() => {
+      if (tooltipRef) {
+        assert(
+          tooltipRef.querySelectorAll('button, input, select, textarea, a')
+            .length === 0,
+          'For accessibility reasons, tooltips must not contain interactive elements',
+        );
+      }
+    }, [tooltipRef]) === undefined,
+  );
+
+  useEffect(() => {
+    if (!tooltipRef || !visible) {
+      return setOpacity(0);
+    }
+
+    const timeout = setTimeout(() => setOpacity(100), isMobile() ? 0 : 250);
+
+    return () => clearTimeout(timeout);
+  }, [tooltipRef, visible]);
+
+  const tooltipStyles = useBoxStyles({
+    component: 'div',
+    zIndex: 'notification',
+    paddingX: 'xsmall',
+    display: triggerRef && visible ? undefined : 'none',
+  });
 
   return (
     <>
@@ -108,159 +125,52 @@ export const TooltipRenderer = ({
         triggerProps: {
           tabIndex: 0,
           ref: setTriggerRef,
-          ...(interactive
-            ? {
-                'aria-controls': id,
-                'aria-expanded': visible ? 'true' : 'false',
-                'aria-haspopup': 'dialog',
-              }
-            : {
-                'aria-describedby': id,
-              }),
+          'aria-describedby': id,
         },
       })}
 
-      {visible &&
+      {triggerRef &&
         createPortal(
-          <>
-            <Box padding="xsmall">
-              {interactive ? (
-                <Box
-                  tabIndex={0}
-                  onFocus={() => {
-                    setControlledVisible(false);
-                    triggerRef?.focus();
-                  }}
-                />
-              ) : null}
-              <Box
-                ref={setTooltipRef}
-                zIndex="notification"
-                id={id}
-                role={interactive ? 'dialog' : 'tooltip'}
-                // aria-label="This is the aria label"
-                tabIndex={interactive ? -1 : undefined}
-                {...(getTooltipProps() as any)}
-              >
-                <Box ref={firstChildRef} padding="xxsmall">
-                  <Box
-                    background="card"
-                    padding="small"
-                    boxShadow="large"
-                    borderRadius="standard"
-                  >
-                    {typeof content === 'function'
-                      ? content({
-                          close: () => {
-                            setControlledVisible(false);
-                            triggerRef?.focus();
-                          },
-                        })
-                      : content}
-                  </Box>
-                </Box>
-              </Box>
-            </Box>
-            {interactive ? (
-              <Box
-                tabIndex={0}
-                onFocus={() => {
-                  if (triggerRef) {
-                    setControlledVisible(false);
-                    const tabbableElements = tabbable(document.body);
-                    tabbableElements[
-                      tabbableElements.indexOf(triggerRef) + 1
-                    ]?.focus();
-                  }
-                }}
-              />
-            ) : null}
-          </>,
-          document.body,
-        )}
-    </>
-  );
-
-  return (
-    <TooltipTrigger
-      placement="top"
-      trigger={interactive ? 'click' : ['click', 'hover', 'focus']}
-      onVisibilityChange={(visible) => {
-        if (interactive) {
-          if (visible) {
-            contentRef.current?.focus();
-          } else if (rootRef && 'current' in rootRef) {
-            rootRef.current?.focus();
-          }
-        }
-      }}
-      tooltip={({
-        arrowRef,
-        tooltipRef,
-        getArrowProps,
-        getTooltipProps,
-        placement,
-      }) => (
-        <Box
-          id={id}
-          role="tooltip"
-          {...getTooltipProps({
-            ref: tooltipRef,
-          })}
-        >
-          <Box padding="xxsmall">
+          <div
+            id={id}
+            role="tooltip"
+            hidden={!visible ? true : undefined}
+            className={tooltipStyles}
+            {...(visible
+              ? getTooltipProps({
+                  ref: setTooltipRef,
+                })
+              : null)}
+          >
             <Box
-              display="none"
-              {...getArrowProps({
-                ref: arrowRef,
-                className: styles.arrow,
-                'data-placement': placement,
-              })}
-            />
-            <Box padding="xsmall">
+              transition="fast"
+              opacity={opacity === 0 ? 0 : undefined}
+              className={
+                opacity === 0
+                  ? styles.verticalOffsetBeforeEntrance
+                  : styles.translateZ0
+              }
+            >
               <Box
-                ref={contentRef}
-                tabIndex={interactive ? 0 : undefined}
-                background="card"
                 padding="small"
                 boxShadow="large"
                 borderRadius="standard"
+                className={[
+                  styles.background,
+                  styles.maxWidth,
+                  styles.translateZ0,
+                ]}
               >
-                {content}
+                <BackgroundProvider value="UNKNOWN_DARK">
+                  <DefaultTextPropsProvider size="small" weight="medium">
+                    {tooltip}
+                  </DefaultTextPropsProvider>
+                </BackgroundProvider>
               </Box>
             </Box>
-          </Box>
-        </Box>
-      )}
-    >
-      {({ getTriggerProps, triggerRef }) => {
-        const {
-          onTouchEnd,
-          onClick,
-          onMouseEnter,
-          onMouseLeave,
-          onMouseMove,
-          onFocus,
-          onBlur,
-        } = getTriggerProps({
-          ref: triggerRef,
-        });
-
-        rootRef = triggerRef;
-
-        return children({
-          ref: triggerRef,
-          tabIndex: 0,
-          'aria-describedby': id,
-          onTouchEnd,
-          onClick,
-          onMouseEnter,
-          onMouseLeave,
-          onMouseMove,
-          onFocus,
-          onBlur,
-        });
-      }}
-    </TooltipTrigger>
+          </div>,
+          document.body,
+        )}
+    </>
   );
 };
