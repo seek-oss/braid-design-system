@@ -5,59 +5,66 @@ import { Button, Box, Inline, IconSend } from '../';
 
 export const galleryItems: ComponentExample[] = [
   {
-    label: 'Regular weight',
+    label: 'Default',
+    background: 'card',
     Example: () =>
       source(
         <Inline space="small">
           <Button>Submit</Button>
+          <Button variant="ghost">Submit</Button>
+          <Button variant="soft">Submit</Button>
+          <Button variant="transparent">Submit</Button>
         </Inline>,
       ),
   },
   {
-    label: 'Strong weight',
-    Example: () =>
-      source(
-        <Inline space="small">
-          <Button weight="strong">Submit</Button>
-        </Inline>,
-      ),
-  },
-  {
-    label: 'Weak weight',
-    Example: () =>
-      source(
-        <Inline space="small">
-          <Button weight="weak">Submit</Button>
-        </Inline>,
-      ),
-  },
-  {
-    label: 'Critical Button',
+    label: 'Critical',
+    background: 'card',
     Example: () =>
       source(
         <Inline space="small">
           <Button tone="critical">Delete</Button>
-        </Inline>,
-      ),
-  },
-  {
-    label: 'Weak Critical Button',
-    Example: () =>
-      source(
-        <Inline space="small">
-          <Button weight="weak" tone="critical">
+          <Button tone="critical" variant="ghost">
+            Delete
+          </Button>
+          <Button tone="critical" variant="soft">
+            Delete
+          </Button>
+          <Button tone="critical" variant="transparent">
             Delete
           </Button>
         </Inline>,
       ),
   },
   {
-    label: 'Weak weight on dark background',
+    label: 'BrandAccent',
+    background: 'card',
     Example: () =>
       source(
-        <Box background="brand" padding="large" borderRadius="standard">
+        <Inline space="small">
+          <Button tone="brandAccent">Search</Button>
+          <Button tone="brandAccent" variant="ghost">
+            Search
+          </Button>
+          <Button tone="brandAccent" variant="soft">
+            Search
+          </Button>
+          <Button tone="brandAccent" variant="transparent">
+            Search
+          </Button>
+        </Inline>,
+      ),
+  },
+  {
+    label: 'Inverted on dark backgrounds',
+    background: 'brand',
+    Example: () =>
+      source(
+        <Box background="brand" padding="small" borderRadius="standard">
           <Inline space="small">
-            <Button weight="weak">Weak Button</Button>
+            <Button variant="ghost">Ghost</Button>
+            <Button variant="soft">Soft</Button>
+            <Button variant="transparent">Transparent</Button>
           </Inline>
         </Box>,
       ),
@@ -83,7 +90,7 @@ export const galleryItems: ComponentExample[] = [
       ),
   },
   {
-    label: 'Small Button',
+    label: 'Small size',
     Example: () =>
       source(
         <Inline space="small">

@@ -20,22 +20,12 @@ const docs: ComponentDocs = {
   Example: () =>
     source(
       <Card>
-        <Stack space="medium">
-          <Inline space="small" collapseBelow="desktop">
-            <Button weight="strong">Strong</Button>
-            <Button>Regular</Button>
-            <Button weight="weak">Weak</Button>
-          </Inline>
-          <Inline space="small" collapseBelow="desktop">
-            <Button weight="strong" size="small">
-              Strong
-            </Button>
-            <Button size="small">Regular</Button>
-            <Button weight="weak" size="small">
-              Weak
-            </Button>
-          </Inline>
-        </Stack>
+        <Inline space="small" collapseBelow="desktop">
+          <Button>Standard</Button>
+          <Button variant="ghost">Ghost</Button>
+          <Button variant="soft">Soft</Button>
+          <Button variant="transparent">Transparent</Button>
+        </Inline>
       </Card>,
     ),
   alternatives: [
@@ -50,7 +40,29 @@ const docs: ComponentDocs = {
   ],
   additional: [
     {
+      label: 'Variants',
+      background: 'card',
+      description: (
+        <Text>
+          You can customise the appearance of the button via the{' '}
+          <Strong>variant</Strong> prop, which accepts either{' '}
+          <Strong>standard</Strong>, <Strong>ghost</Strong>,{' '}
+          <Strong>soft</Strong> or <Strong>transparent</Strong>.
+        </Text>
+      ),
+      Example: () =>
+        source(
+          <Inline space="small" collapseBelow="desktop">
+            <Button>Standard</Button>
+            <Button variant="ghost">Ghost</Button>
+            <Button variant="soft">Soft</Button>
+            <Button variant="transparent">Transparent</Button>
+          </Inline>,
+        ),
+    },
+    {
       label: 'Sizes',
+      background: 'card',
       description: (
         <Text>
           You can customise the size of the button via the <Strong>size</Strong>{' '}
@@ -66,9 +78,10 @@ const docs: ComponentDocs = {
                 Standard size
               </Text>
               <Inline space="small" collapseBelow="desktop">
-                <Button weight="strong">Strong</Button>
-                <Button>Regular</Button>
-                <Button weight="weak">Weak</Button>
+                <Button>Standard</Button>
+                <Button variant="ghost">Ghost</Button>
+                <Button variant="soft">Soft</Button>
+                <Button variant="transparent">Transparent</Button>
               </Inline>
             </Stack>
             <Stack space="small">
@@ -76,12 +89,15 @@ const docs: ComponentDocs = {
                 Small size
               </Text>
               <Inline space="small" collapseBelow="desktop">
-                <Button weight="strong" size="small">
-                  Strong
+                <Button size="small">Standard</Button>
+                <Button variant="ghost" size="small">
+                  Ghost
                 </Button>
-                <Button size="small">Regular</Button>
-                <Button weight="weak" size="small">
-                  Weak
+                <Button variant="soft" size="small">
+                  Soft
+                </Button>
+                <Button variant="transparent" size="small">
+                  Transparent
                 </Button>
               </Inline>
             </Stack>
@@ -90,6 +106,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Icons',
+      background: 'card',
       description: (
         <Text>
           You can add an icon to the button by nesting an icon element inside.
@@ -99,7 +116,7 @@ const docs: ComponentDocs = {
       ),
       Example: () =>
         source(
-          <Inline space="small" alignY="center">
+          <Inline space="gutter" alignY="center">
             <Stack space="small" align="center">
               <Text tone="secondary" weight="strong">
                 Standard size
@@ -121,6 +138,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Loading Button',
+      background: 'card',
       description: (
         <>
           <Text>
@@ -138,7 +156,33 @@ const docs: ComponentDocs = {
         ),
     },
     {
+      label: 'Branding',
+      background: 'card',
+      description: (
+        <Text>
+          For hero actions that want to leverage the brand colour, you can set
+          the button’s <Strong>tone</Strong> to <Strong>brandAccent.</Strong>
+        </Text>
+      ),
+      Example: () =>
+        source(
+          <Inline space="small">
+            <Button tone="brandAccent">Search</Button>
+            <Button tone="brandAccent" variant="ghost">
+              Search
+            </Button>
+            <Button tone="brandAccent" variant="soft">
+              Search
+            </Button>
+            <Button tone="brandAccent" variant="transparent">
+              Search
+            </Button>
+          </Inline>,
+        ),
+    },
+    {
       label: 'Destructive actions',
+      background: 'card',
       description: (
         <Text>
           For destructive actions like “Delete” you can set the button’s{' '}
@@ -151,7 +195,13 @@ const docs: ComponentDocs = {
             <Button tone="critical">
               <IconDelete /> Delete
             </Button>
-            <Button tone="critical" weight="weak">
+            <Button tone="critical" variant="ghost">
+              <IconDelete /> Delete
+            </Button>
+            <Button tone="critical" variant="soft">
+              <IconDelete /> Delete
+            </Button>
+            <Button tone="critical" variant="transparent">
               <IconDelete /> Delete
             </Button>
           </Inline>,
@@ -162,8 +212,9 @@ const docs: ComponentDocs = {
       description: (
         <>
           <Text>
-            Weak Button elements are inverted when rendered on a dark
-            background.
+            The <Strong>ghost</Strong>, <Strong>soft</Strong>, and{' '}
+            <Strong>transparent</Strong> variants are inverted when rendered on
+            a dark background.
           </Text>
           <Text>
             When using custom backgrounds or images, this behaviour can be
@@ -180,7 +231,9 @@ const docs: ComponentDocs = {
         source(
           <Box background="brand">
             <Inline space="small">
-              <Button weight="weak">Weak Button</Button>
+              <Button variant="ghost">Ghost</Button>
+              <Button variant="soft">Soft</Button>
+              <Button variant="transparent">Transparent</Button>
             </Inline>
           </Box>,
         ),

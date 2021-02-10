@@ -169,7 +169,10 @@ const docs: ComponentDocs = {
                     <Button onClick={() => toggleState('dialog')}>
                       Got it
                     </Button>
-                    <Button weight="weak" onClick={() => toggleState('dialog')}>
+                    <Button
+                      variant="transparent"
+                      onClick={() => toggleState('dialog')}
+                    >
                       Cancel
                     </Button>
                   </Inline>

@@ -65,7 +65,7 @@ const page: Page = {
                     Heard about our latest marketing campaign?
                   </Heading>
                   <Inline space="none" align={['center', 'left']}>
-                    <Button weight="weak">Show me</Button>
+                    <Button variant="ghost">Show me</Button>
                   </Inline>
                 </Stack>
               </Column>
@@ -260,7 +260,7 @@ const page: Page = {
                   <Heading level="1">
                     Heard about our latest marketing campaign?
                   </Heading>
-                  <Button weight="weak">Show me</Button>
+                  <Button variant="ghost">Show me</Button>
                 </Stack>
               </Column>
               <Column>
@@ -294,7 +294,7 @@ const page: Page = {
                     Heard about our latest marketing campaign?
                   </Heading>
                   <Inline space="none">
-                    <Button weight="weak">Show me</Button>
+                    <Button variant="ghost">Show me</Button>
                   </Inline>
                 </Stack>
               </Column>
@@ -324,7 +324,7 @@ const page: Page = {
                     Heard about our latest marketing campaign?
                   </Heading>
                   <Inline space="none">
-                    <Button weight="weak">Show me</Button>
+                    <Button variant="ghost">Show me</Button>
                   </Inline>
                 </Stack>
               </Column>
@@ -381,7 +381,7 @@ const page: Page = {
                     Heard about our latest marketing campaign?
                   </Heading>
                   <Inline space="none">
-                    <Button weight="weak">Show me</Button>
+                    <Button variant="ghost">Show me</Button>
                   </Inline>
                 </Stack>
               </Column>
@@ -425,7 +425,7 @@ const page: Page = {
                     Heard about our latest marketing campaign?
                   </Heading>
                   <Inline space="none">
-                    <Button weight="weak">Show me</Button>
+                    <Button variant="ghost">Show me</Button>
                   </Inline>
                 </Stack>
               </Column>
@@ -480,7 +480,7 @@ const page: Page = {
                     Heard about our latest marketing campaign?
                   </Heading>
                   <Inline space="none" align={['center', 'left']}>
-                    <Button weight="weak">Show me</Button>
+                    <Button variant="ghost">Show me</Button>
                   </Inline>
                 </Stack>
               </Column>
@@ -528,7 +528,7 @@ const page: Page = {
                       Heard about our latest marketing campaign?
                     </Heading>
                     <Inline space="none">
-                      <Button weight="weak">Show me</Button>
+                      <Button variant="ghost">Show me</Button>
                     </Inline>
                   </Stack>
                 </Column>
@@ -569,7 +569,7 @@ const page: Page = {
                       Heard about our latest marketing campaign?
                     </Heading>
                     <Inline space="none" align={['center', 'left']}>
-                      <Button weight="weak">Show me</Button>
+                      <Button variant="ghost">Show me</Button>
                     </Inline>
                   </Stack>
                 </Column>
@@ -610,7 +610,7 @@ const page: Page = {
                       Heard about our latest marketing campaign?
                     </Heading>
                     <Inline space="none" align={['center', 'left']}>
-                      <Button weight="weak">Show me</Button>
+                      <Button variant="ghost">Show me</Button>
                     </Inline>
                   </Stack>
                 </Column>

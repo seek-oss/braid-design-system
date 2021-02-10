@@ -373,7 +373,7 @@ const page: Page = {
         <Card>
           <Inline space="small" collapseBelow="tablet">
             <Button>Submit</Button>
-            <Button weight="weak">Cancel</Button>
+            <Button variant="ghost">Cancel</Button>
           </Inline>
         </Card>
       </Code>
