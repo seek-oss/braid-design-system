@@ -1225,5 +1225,116 @@
         "summary": "**Tabs:** Support fragments and `null`/`undefined` as children in `Tabs` and `TabPanels`"
       }
     ]
+  },
+  {
+    "version": "29.26.0",
+    "updates": [
+      {
+        "updated": [
+          "Box"
+        ],
+        "summary": "**Box:** Add `borderBrandAccentLarge` to `boxShadow` prop"
+      },
+      {
+        "updated": [
+          "Text",
+          "IconAdd",
+          "IconBookmark",
+          "IconCaution",
+          "IconChevron",
+          "IconClear",
+          "IconCompany",
+          "IconCompose",
+          "IconCopy",
+          "IconCreditCard",
+          "IconCritical",
+          "IconDate",
+          "IconDelete",
+          "IconDesktop",
+          "IconDocument",
+          "IconDocumentBroken",
+          "IconDownload",
+          "IconEdit",
+          "IconEducation",
+          "IconFilter",
+          "IconGrid",
+          "IconHeart",
+          "IconHelp",
+          "IconHistory",
+          "IconHome",
+          "IconImage",
+          "IconInfo",
+          "IconInvoice",
+          "IconLanguage",
+          "IconLink",
+          "IconLinkBroken",
+          "IconList",
+          "IconLocation",
+          "IconMail",
+          "IconMinus",
+          "IconMobile",
+          "IconMoney",
+          "IconNewWindow",
+          "IconNote",
+          "IconNotification",
+          "IconOverflow",
+          "IconPeople",
+          "IconPersonAdd",
+          "IconPersonVerified",
+          "IconPhone",
+          "IconPositive",
+          "IconPrint",
+          "IconProfile",
+          "IconPromote",
+          "IconRecommended",
+          "IconRefresh",
+          "IconResume",
+          "IconSearch",
+          "IconSecurity",
+          "IconSend",
+          "IconSent",
+          "IconSettings",
+          "IconShare",
+          "IconSocialFacebook",
+          "IconSocialGitHub",
+          "IconSocialInstagram",
+          "IconSocialLinkedIn",
+          "IconSocialMedium",
+          "IconSocialTwitter",
+          "IconStar",
+          "IconStatistics",
+          "IconSubCategory",
+          "IconTag",
+          "IconTick",
+          "IconTime",
+          "IconUpload",
+          "IconVideo",
+          "IconVisibility",
+          "IconWorkExperience"
+        ],
+        "summary": "**Text, Icons:** Add brandAccent tone to Text and Icons\n\n**EXAMPLE USAGE:**\n```jsx\n<Text tone=\"brandAccent\">...</Text>\n```"
+      },
+      {
+        "updated": [
+          "TextLink",
+          "TextLinkButton"
+        ],
+        "summary": "**TextLink,TextLinkButton:** Deprecate inside of Actions in favour of transparent Button\n\nUsage of `TextLink` or `TextLinkButton` inside of an `Actions` container should now use a `Button` with a `variant` of `transparent`.\n\nPreviously when a `TextLink` or `TextLinkButton` was placed inside of an `Actions` container, it would be given a custom layout to align with the `Button` elements. We are deprecating this behaviour.\n\n**MIGRATION GUIDE:**\nGoing forward `Actions` should only contain `Button` elements. To migrate towards this, both `TextLink` and `TextLinkButton` should now use either a `ButtonLink` or `Button` respectively, with a `variant` or `transparent`.\n\n#### TextLink\n```diff\n<Actions>\n  <Button>...</Button>\n- <TextLink href=\"...\">...</TextLink>\n+ <ButtonLink href=\"...\" variant=\"transparent\">...</ButtonLink>\n</Actions>\n```\n\n#### TextLinkButton\n```diff\n<Actions>\n  <Button>...</Button>\n- <TextLinkButton onClick={...}>...</TextLinkButton>\n+ <Button onClick={...} variant=\"transparent\">...</Button>\n</Actions>\n```"
+      },
+      {
+        "updated": [
+          "Button",
+          "ButtonLink"
+        ],
+        "summary": "**Button,ButtonLink:** Add variant to Button and deprecate weight\n\nIntroduces a new `variant` prop to `Button`/`ButtonLink` giving consumers a single prop to use for selecting the visual style of the button. Choose from `solid` (default), `ghost`, `soft` or `transparent`. The colour of the button is now consistently controlled via the `tone` prop, with supported values being `\"brandAccent\"`, `\"critical\"` or `undefined`.\n\nAs a result the `weight` prop is now deprecated. See the migration guide below.\n\n**EXAMPLE USAGE:**\n```jsx\n<Inline space=\"small\" collapseBelow=\"desktop\">\n  <Button>Solid</Button>\n  <Button variant=\"ghost\">Ghost</Button>\n  <Button variant=\"soft\">Soft</Button>\n  <Button variant=\"transparent\">Transparent</Button>\n</Inline>\n```\n\n**MIGRATION GUIDE:**\nThe `weight` prop is now deprecated. If you are not specifying a `weight` there is no change required.\n\nIf you are, each weight can be migrated as follows:\n\n#### Regular\nCan be replicated with a `variant` of `solid` (default).\n```diff\n-<Button weight=\"regular\">...</Button>\n+<Button variant=\"solid\">...</Button>\n```\n\nGiven it is the default `variant`, you could also choose to simply remove the `weight` prop.\n```diff\n-<Button weight=\"regular\">...</Button>\n+<Button>...</Button>\n```\n\n#### Strong\nCan be replicated with a `variant` of `solid` (default), with a `tone` of `brandAccent`.\n```diff\n-<Button weight=\"strong\">...</Button>\n+<Button tone=\"brandAccent\">...</Button>\n```\n\n#### Weak\nCan be replicated with a `variant` of `ghost`.\n```diff\n-<Button weight=\"weak\">...</Button>\n+<Button variant=\"ghost\">...</Button>\n```"
+      },
+      {
+        "updated": [
+          "Button",
+          "ButtonLink"
+        ],
+        "summary": "**Button, ButtonLink:** Remove all interactive styles when loading\n\nNo longer applies hover and cursor pointer styles when a `Button` is set to `loading`."
+      }
+    ]
   }
 ]
