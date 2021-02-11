@@ -101,6 +101,7 @@ export interface TreatTokens {
       caution: string;
       formHover: string;
       formAccent: string;
+      brandAccent: string;
     };
   };
   shadows: {
@@ -116,6 +117,7 @@ export interface TreatTokens {
       neutral: string;
       neutralInverted: string;
       formAccent: string;
+      brandAccent: string;
       critical: string;
       info: string;
       promote: string;

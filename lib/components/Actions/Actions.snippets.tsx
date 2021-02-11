@@ -1,33 +1,45 @@
 import React from 'react';
-import { Actions, Button, TextLink } from '../../playroom/components';
+import { Actions, Button, IconDelete } from '../../playroom/components';
 import source from '../../utils/source.macro';
 import { Snippets } from '../private/Snippets';
 
 export const snippets: Snippets = [
   {
-    name: 'Regular Button, TextLink',
+    name: 'With multiple buttons',
     code: source(
       <Actions>
         <Button>Submit</Button>
-        <TextLink href="#">Cancel</TextLink>
+        <Button variant="transparent">Cancel</Button>
       </Actions>,
     ),
   },
   {
-    name: 'Strong Button, TextLink',
+    name: 'With a branded action',
     code: source(
       <Actions>
-        <Button weight="strong">Submit</Button>
-        <TextLink href="#">Cancel</TextLink>
+        <Button tone="brandAccent">Submit</Button>
+        <Button variant="transparent">Cancel</Button>
       </Actions>,
     ),
   },
   {
-    name: 'Weak Button, TextLink',
+    name: 'With a destructive action',
     code: source(
       <Actions>
-        <Button weight="weak">Submit</Button>
-        <TextLink href="#">Cancel</TextLink>
+        <Button tone="critical">
+          <IconDelete /> Delete
+        </Button>
+        <Button variant="transparent">Cancel</Button>
+      </Actions>,
+    ),
+  },
+  {
+    name: 'Small size',
+    code: source(
+      <Actions size="small">
+        <Button>Button 1</Button>
+        <Button>Button 2</Button>
+        <Button variant="transparent">Button 3</Button>
       </Actions>,
     ),
   },

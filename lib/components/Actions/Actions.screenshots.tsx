@@ -1,15 +1,9 @@
 import React, { Fragment } from 'react';
 import { ComponentScreenshot } from '../../../site/src/types';
-import {
-  Box,
-  Button,
-  IconNewWindow,
-  Stack,
-  TextLink,
-  Text,
-} from '../../components';
+import { Box, Button, IconNewWindow, Stack, Text } from '../../components';
 import { Actions } from './Actions';
 import { background as boxBackgrounds } from '../Box/useBoxStyles.treat';
+import { TextLink } from '../TextLink/TextLink';
 
 export const screenshots: ComponentScreenshot = {
   screenshotWidths: [320, 768],
@@ -18,9 +12,9 @@ export const screenshots: ComponentScreenshot = {
       label: 'Standard Actions',
       Example: () => (
         <Actions>
-          <Button weight="regular">Regular</Button>
-          <Button weight="weak">Weak</Button>
-          <TextLink href="#">TextLink</TextLink>
+          <Button>Button 1</Button>
+          <Button>Button 2</Button>
+          <Button variant="transparent">Button 3</Button>
         </Actions>
       ),
     },
@@ -28,14 +22,34 @@ export const screenshots: ComponentScreenshot = {
       label: 'Small Actions',
       Example: () => (
         <Actions size="small">
-          <Button weight="regular">Regular</Button>
-          <Button weight="weak">Weak</Button>
+          <Button>Button 1</Button>
+          <Button>Button 2</Button>
+          <Button variant="transparent">Button 3</Button>
+        </Actions>
+      ),
+    },
+    {
+      label: 'Standard with TextLink (Deprecated)',
+      Example: () => (
+        <Actions size="small">
+          <Button>Button 1</Button>
+          <Button>Button 2</Button>
           <TextLink href="#">TextLink</TextLink>
         </Actions>
       ),
     },
     {
-      label: 'Actions Contrast',
+      label: 'Small with TextLink (Deprecated)',
+      Example: () => (
+        <Actions size="small">
+          <Button>Button 1</Button>
+          <Button>Button 2</Button>
+          <TextLink href="#">TextLink</TextLink>
+        </Actions>
+      ),
+    },
+    {
+      label: 'Actions Contrast (Deprecated)',
       Example: () => {
         const backgrounds = Object.keys(boxBackgrounds) as Array<
           keyof typeof boxBackgrounds
@@ -48,9 +62,9 @@ export const screenshots: ComponentScreenshot = {
                 <Stack space="xsmall">
                   <Text size="small">{background}</Text>
                   <Actions>
-                    <Button weight="strong">Strong</Button>
+                    <Button tone="brandAccent">Solid</Button>
                     <TextLink href="#">
-                      TextLink <IconNewWindow />
+                      Transparent <IconNewWindow />
                     </TextLink>
                   </Actions>
                 </Stack>

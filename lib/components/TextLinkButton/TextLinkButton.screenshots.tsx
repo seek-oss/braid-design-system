@@ -28,7 +28,7 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
-      label: 'TextLinkButton inside Actions',
+      label: 'TextLinkButton inside Actions (Deprecated)',
       Example: ({ handler }) => (
         <Actions>
           <Button>Button</Button>

@@ -19,6 +19,7 @@ export const ButtonLink = ({
   size,
   tone,
   weight,
+  variant,
   loading,
   ...restProps
 }: ButtonLinkProps) => {
@@ -29,6 +30,7 @@ export const ButtonLink = ({
       size={size}
       tone={tone}
       weight={weight}
+      variant={variant}
       loading={loading}
     >
       {(ButtonChildren, buttonProps) => (

@@ -357,6 +357,7 @@ Object {
         | "standard"
     bottom?: 0
     boxShadow?: 
+        | "borderBrandAccentLarge"
         | "borderCaution"
         | "borderCritical"
         | "borderCriticalLarge"
@@ -1168,6 +1169,7 @@ Object {
         | "standard"
     bottom?: 0
     boxShadow?: 
+        | "borderBrandAccentLarge"
         | "borderCaution"
         | "borderCritical"
         | "borderCriticalLarge"
@@ -1713,11 +1715,18 @@ Object {
     size?: 
         | "small"
         | "standard"
-    tone?: "critical"
+    tone?: 
+        | "brandAccent"
+        | "critical"
     type?: 
         | "button"
         | "reset"
         | "submit"
+    variant?: 
+        | "ghost"
+        | "soft"
+        | "solid"
+        | "transparent"
     weight?: 
         | "regular"
         | "strong"
@@ -2134,7 +2143,9 @@ Object {
     tabIndex?: number
     target?: string
     title?: string
-    tone?: "critical"
+    tone?: 
+        | "brandAccent"
+        | "critical"
     translate?: 
         | "no"
         | "yes"
@@ -2143,6 +2154,11 @@ Object {
     unselectable?: 
         | "off"
         | "on"
+    variant?: 
+        | "ghost"
+        | "soft"
+        | "solid"
+        | "transparent"
     vocab?: string
     weight?: 
         | "regular"
@@ -2161,7 +2177,14 @@ Object {
     size?: 
         | "small"
         | "standard"
-    tone?: "critical"
+    tone?: 
+        | "brandAccent"
+        | "critical"
+    variant?: 
+        | "ghost"
+        | "soft"
+        | "solid"
+        | "transparent"
     weight?: 
         | "regular"
         | "strong"
@@ -2862,6 +2885,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -2892,6 +2916,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -2921,6 +2946,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -2955,6 +2981,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -2984,6 +3011,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -3013,6 +3041,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -3042,6 +3071,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -3071,6 +3101,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -3100,6 +3131,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -3129,6 +3161,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -3158,6 +3191,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -3187,6 +3221,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -3216,6 +3251,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -3245,6 +3281,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -3274,6 +3311,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -3303,6 +3341,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -3332,6 +3371,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -3361,6 +3401,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -3390,6 +3431,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -3419,6 +3461,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -3449,6 +3492,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -3478,6 +3522,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -3507,6 +3552,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -3536,6 +3582,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -3565,6 +3612,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -3594,6 +3642,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -3623,6 +3672,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -3652,6 +3702,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -3681,6 +3732,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -3710,6 +3762,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -3739,6 +3792,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -3768,6 +3822,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -3797,6 +3852,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -3826,6 +3882,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -3855,6 +3912,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -3884,6 +3942,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -3913,6 +3972,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -3942,6 +4002,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -3971,6 +4032,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -4000,6 +4062,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -4029,6 +4092,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -4058,6 +4122,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -4087,6 +4152,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -4116,6 +4182,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -4145,6 +4212,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -4174,6 +4242,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -4203,6 +4272,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -4232,6 +4302,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -4261,6 +4332,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -4290,6 +4362,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -4319,6 +4392,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -4348,6 +4422,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -4377,6 +4452,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -4406,6 +4482,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -4435,6 +4512,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -4464,6 +4542,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -4493,6 +4572,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -4522,6 +4602,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -4551,6 +4632,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -4580,6 +4662,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -4609,6 +4692,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -4638,6 +4722,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -4667,6 +4752,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -4697,6 +4783,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -4726,6 +4813,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -4755,6 +4843,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -4784,6 +4873,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -4813,6 +4903,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -4842,6 +4933,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -4871,6 +4963,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -4900,6 +4993,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -4930,6 +5024,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -4959,6 +5054,7 @@ Object {
     title?: string
     titleId?: string
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -5460,6 +5556,7 @@ Object {
     >
     start?: number
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"
@@ -6110,6 +6207,7 @@ Object {
         | "standard"
         | "xsmall"
     tone?: 
+        | "brandAccent"
         | "caution"
         | "critical"
         | "formAccent"

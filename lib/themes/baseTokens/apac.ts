@@ -204,6 +204,7 @@ export const makeTokens = ({
         positive,
         caution,
         formAccent,
+        brandAccent,
       },
     },
     shadows: {
@@ -231,6 +232,7 @@ export const makeTokens = ({
         neutral: black,
         neutralInverted: white,
         formAccent,
+        brandAccent,
         critical,
         caution,
         positive,

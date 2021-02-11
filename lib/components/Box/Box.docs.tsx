@@ -407,7 +407,7 @@ const docs: ComponentDocs = {
                 body:
                   'Used for elements that need to match the body background.',
                 brand: 'Used for branding larger areas of the screen.',
-                brandAccent: 'Used for branding smaller areas of the screen.',
+                brandAccent: 'Used for hero elements on the screen.',
                 brandAccentHover: 'Hover colour for “brandAccent” elements.',
                 brandAccentActive: 'Hover colour for “brandAccent” elements.',
                 formAccent:
@@ -527,6 +527,8 @@ const docs: ComponentDocs = {
                   'Used for borders around prominent interactive elements.',
                 borderFormAccentLarge:
                   'Used for large borders around prominent interactive elements.',
+                borderBrandAccentLarge:
+                  'Used for large borders around branded elements.',
                 borderPositive: 'Used for borders around “positive” elements.',
                 borderCritical: 'Used for borders around “critical” elements.',
                 borderCriticalLarge:
