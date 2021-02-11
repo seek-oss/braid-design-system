@@ -29,13 +29,13 @@ export const activeOverlay = style({
 
 export const hoverOverlay = style({
   selectors: {
-    [`${root}:hover:not(:active) &`]: {
+    [`${root}:hover:not(:disabled):not(:active) &`]: {
       opacity: 1,
     },
-    [`${lightHoverBg}:hover:not(:active) &`]: {
+    [`${lightHoverBg}:hover:not(:disabled):not(:active) &`]: {
       opacity: 0.075,
     },
-    [`${lightHoverBg}${inverted}:hover:not(:active) &`]: {
+    [`${lightHoverBg}${inverted}:hover:not(:disabled):not(:active) &`]: {
       opacity: 0.15,
     },
   },
