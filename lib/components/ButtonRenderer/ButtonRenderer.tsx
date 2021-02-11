@@ -1,4 +1,5 @@
 import assert from 'assert';
+import dedent from 'dedent';
 import React, {
   createContext,
   useContext,
@@ -236,7 +237,7 @@ export interface PrivateButtonRendererProps {
   size?: ButtonSize;
   tone?: ButtonTone;
   variant?: ButtonVariant;
-  /** @deprecated `weight` has been deprecated. Please choose a [variant](https://seek-oss.github.io/braid-design-system/components/Button#variants) instead. */
+  /** @deprecated The `weight` prop has been deprecated. Please choose a [variant](https://seek-oss.github.io/braid-design-system/components/Button#variants) instead. */
   weight?: ButtonWeight;
   loading?: boolean;
   children: (
@@ -248,16 +249,15 @@ export interface PrivateButtonRendererProps {
   ) => ReactNode;
 }
 
-type PropMapper = {
-  weight?: ButtonWeight;
-  tone?: ButtonTone;
-  variant?: ButtonVariant;
-};
 const resolveToneAndVariant = ({
   weight,
   tone,
   variant = 'solid',
-}: PropMapper): { variant: ButtonVariant; tone?: ButtonTone } => {
+}: {
+  weight?: ButtonWeight;
+  tone?: ButtonTone;
+  variant?: ButtonVariant;
+}): { variant: ButtonVariant; tone?: ButtonTone } => {
   if (weight === 'strong') {
     return {
       tone: tone || 'brandAccent',
@@ -310,6 +310,32 @@ export const PrivateButtonRenderer = ({
     tone: toneProp,
     variant: variantProp,
   });
+
+  if (process.env.NODE_ENV !== 'production') {
+    if (weight && /^(strong|regular|weak)$/.test(weight)) {
+      const needsTone = Boolean(tone);
+      const needsVariant = variant && variant !== 'solid';
+
+      // eslint-disable-next-line no-console
+      console.warn(
+        dedent`
+          The \`weight\` prop has been deprecated.${
+            needsVariant || needsTone
+              ? ` Please migrate to${needsVariant ? ` \`variant\`` : ''}${
+                  needsTone ? `${needsVariant ? ' and' : ''} \`tone\`` : ''
+                }.`
+              : ` You can migrate by removing the \`weight="${weight}"\` prop.`
+          }
+          %c  -<Button weight="${weight}">...</Button>
+          %c  +<Button${needsTone ? ` tone="${tone}"` : ''}${
+          needsVariant ? ` variant="${variant}"` : ''
+        }>...</Button>
+        `,
+        'color: red',
+        'color: green',
+      );
+    }
+  }
 
   const styles = useStyles(styleRefs);
   const size = sizeProp ?? actionsContext?.size ?? 'standard';
