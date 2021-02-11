@@ -1,5 +1,110 @@
 # braid-design-system
 
+## 29.26.0
+
+### Minor Changes
+
+- **Box:** Add `borderBrandAccentLarge` to `boxShadow` prop ([#893](https://github.com/seek-oss/braid-design-system/pull/893))
+
+- **Text, Icons:** Add brandAccent tone to Text and Icons ([#893](https://github.com/seek-oss/braid-design-system/pull/893))
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Text tone="brandAccent">...</Text>
+  ```
+
+- **Button,ButtonLink:** Add variant to Button and deprecate weight ([#893](https://github.com/seek-oss/braid-design-system/pull/893))
+
+  Introduces a new `variant` prop to `Button`/`ButtonLink` giving consumers a single prop to use for selecting the visual style of the button. Choose from `solid` (default), `ghost`, `soft` or `transparent`. The colour of the button is now consistently controlled via the `tone` prop, with supported values being `"brandAccent"`, `"critical"` or `undefined`.
+
+  As a result the `weight` prop is now deprecated. See the migration guide below.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Inline space="small" collapseBelow="desktop">
+    <Button>Solid</Button>
+    <Button variant="ghost">Ghost</Button>
+    <Button variant="soft">Soft</Button>
+    <Button variant="transparent">Transparent</Button>
+  </Inline>
+  ```
+
+  **MIGRATION GUIDE:**
+  The `weight` prop is now deprecated. If you are not specifying a `weight` there is no change required.
+
+  If you are, each weight can be migrated as follows:
+
+  #### Regular
+
+  Can be replicated with a `variant` of `solid` (default).
+
+  ```diff
+  -<Button weight="regular">...</Button>
+  +<Button variant="solid">...</Button>
+  ```
+
+  Given it is the default `variant`, you could also choose to simply remove the `weight` prop.
+
+  ```diff
+  -<Button weight="regular">...</Button>
+  +<Button>...</Button>
+  ```
+
+  #### Strong
+
+  Can be replicated with a `variant` of `solid` (default), with a `tone` of `brandAccent`.
+
+  ```diff
+  -<Button weight="strong">...</Button>
+  +<Button tone="brandAccent">...</Button>
+  ```
+
+  #### Weak
+
+  Can be replicated with a `variant` of `ghost`.
+
+  ```diff
+  -<Button weight="weak">...</Button>
+  +<Button variant="ghost">...</Button>
+  ```
+
+### Patch Changes
+
+- **TextLink,TextLinkButton:** Deprecate inside of Actions in favour of transparent Button ([#893](https://github.com/seek-oss/braid-design-system/pull/893))
+
+  Usage of `TextLink` or `TextLinkButton` inside of an `Actions` container should now use a `Button` with a `variant` of `transparent`.
+
+  Previously when a `TextLink` or `TextLinkButton` was placed inside of an `Actions` container, it would be given a custom layout to align with the `Button` elements. We are deprecating this behaviour.
+
+  **MIGRATION GUIDE:**
+  Going forward `Actions` should only contain `Button` elements. To migrate towards this, both `TextLink` and `TextLinkButton` should now use either a `ButtonLink` or `Button` respectively, with a `variant` or `transparent`.
+
+  #### TextLink
+
+  ```diff
+  <Actions>
+    <Button>...</Button>
+  - <TextLink href="...">...</TextLink>
+  + <ButtonLink href="..." variant="transparent">...</ButtonLink>
+  </Actions>
+  ```
+
+  #### TextLinkButton
+
+  ```diff
+  <Actions>
+    <Button>...</Button>
+  - <TextLinkButton onClick={...}>...</TextLinkButton>
+  + <Button onClick={...} variant="transparent">...</Button>
+  </Actions>
+  ```
+
+- **Button, ButtonLink:** Remove all interactive styles when loading ([#895](https://github.com/seek-oss/braid-design-system/pull/895))
+
+  No longer applies hover and cursor pointer styles when a `Button` is set to `loading`.
+
 ## 29.25.0
 
 ### Minor Changes

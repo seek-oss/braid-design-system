@@ -344,7 +344,7 @@ export const PrivateButtonRenderer = ({
 
   const buttonStyles = useBoxStyles({
     component: 'button',
-    cursor: 'pointer',
+    cursor: !loading ? 'pointer' : undefined,
     width: 'full',
     position: 'relative',
     display: 'block',
