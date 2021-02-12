@@ -1,7 +1,13 @@
 import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import { Card, Text, TextLink, Strong } from '../';
-import { Placeholder } from '../../playroom/components';
+import {
+  Box,
+  Column,
+  Columns,
+  Placeholder,
+  Stack,
+} from '../../playroom/components';
 import source from '../../utils/source.macro';
 
 const docs: ComponentDocs = {
@@ -20,6 +26,68 @@ const docs: ComponentDocs = {
     },
   ],
   additional: [
+    {
+      label: 'Tones',
+      description: (
+        <Text>
+          A Card can have a <Strong>tone</Strong> which will provide a keyline
+          down the left hand side of the container. The supported tones are{' '}
+          <Strong>info</Strong> and <Strong>promote</Strong>.
+        </Text>
+      ),
+      Example: () =>
+        source(
+          <Columns space="gutter" collapseBelow="tablet">
+            <Column>
+              <Stack space="small">
+                <Text size="xsmall" tone="secondary">
+                  INFO
+                </Text>
+                <Card tone="info">
+                  <Box style={{ height: 100 }} width="full" />
+                </Card>
+              </Stack>
+            </Column>
+            <Column>
+              <Stack space="small">
+                <Text size="xsmall" tone="secondary">
+                  PROMOTE
+                </Text>
+                <Card tone="promote">
+                  <Box style={{ height: 100 }} width="full" />
+                </Card>
+              </Stack>
+            </Column>
+          </Columns>,
+        ),
+    },
+    {
+      label: 'Interactivity',
+      description: (
+        <>
+          <Text>
+            To support interactivity a Card can be marked as{' '}
+            <Strong>clickable</Strong>. This provides affordance to a user that
+            the entire Card is a clickable target for an action.
+          </Text>
+        </>
+      ),
+      Example: () =>
+        source(
+          <Columns space="gutter" collapseBelow="tablet">
+            <Column>
+              <Card clickable>
+                <Box style={{ height: 100 }} width="full" />
+              </Card>
+            </Column>
+            <Column>
+              <Card clickable>
+                <Box style={{ height: 100 }} width="full" />
+              </Card>
+            </Column>
+          </Columns>,
+        ),
+    },
     {
       label: 'Development considerations',
       description: (
