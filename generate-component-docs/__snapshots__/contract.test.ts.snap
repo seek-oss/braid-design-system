@@ -6863,6 +6863,17 @@ Object {
 }
 `;
 
+exports[`TooltipRenderer 1`] = `
+Object {
+  exportType: component,
+  props: {
+    children: (renderProps: { triggerProps: TriggerProps; }) => ReactNode
+    id: string
+    tooltip: ReactNodeNoStrings
+},
+}
+`;
+
 exports[`filterSuggestions 1`] = `
 Object {
   exportType: component,
