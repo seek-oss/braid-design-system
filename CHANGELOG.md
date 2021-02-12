@@ -1,5 +1,29 @@
 # braid-design-system
 
+## 29.27.0
+
+### Minor Changes
+
+- Add **TooltipRenderer** component ([#897](https://github.com/seek-oss/braid-design-system/pull/897))
+
+  Tooltips appear on mouse hover, tap and keyboard focus, and are hidden when scrolling and clicking/tapping/focusing on other elements.
+
+  Tooltips cannot contain interactive elements like links, buttons or form elements.
+
+  Note: The trigger element must support `ref`, `tabIndex` and `aria-describedby` props.
+
+  **EXAMPLE USAGE**
+
+  ```tsx
+  <TooltipRenderer id={id} tooltip={<Text>This is a tooltip!</Text>}>
+    {({ triggerProps }) => (
+      <Box aria-label="Help" {...triggerProps}>
+        <IconHelp />
+      </Box>
+    )}
+  </TooltipRenderer>
+  ```
+
 ## 29.26.0
 
 ### Minor Changes

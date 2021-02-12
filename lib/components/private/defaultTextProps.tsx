@@ -4,11 +4,13 @@ import { UseTextProps } from '../../hooks/typography';
 
 interface DefaultTextProps {
   tone?: NonNullable<UseTextProps['tone']>;
+  weight?: NonNullable<UseTextProps['weight']>;
   size?: NonNullable<UseTextProps['size']>;
 }
 
 const DefaultTextPropsContext = createContext<DefaultTextProps>({
   tone: undefined,
+  weight: undefined,
   size: undefined,
 });
 
@@ -18,10 +20,18 @@ interface DefaultTextPropsProviderProps extends DefaultTextProps {
 
 export const DefaultTextPropsProvider = ({
   size,
+  weight,
   tone,
   children,
 }: DefaultTextPropsProviderProps) => {
-  const defaultTextProps = useMemo(() => ({ size, tone }), [size, tone]);
+  const defaultTextProps = useMemo(
+    () => ({
+      size,
+      weight,
+      tone,
+    }),
+    [size, weight, tone],
+  );
 
   return (
     <DefaultTextPropsContext.Provider value={defaultTextProps}>
@@ -32,12 +42,14 @@ export const DefaultTextPropsProvider = ({
 
 export const useDefaultTextProps = ({
   size: sizeProp,
+  weight: weightProp,
   tone: toneProp,
 }: DefaultTextProps) => {
-  const { size, tone } = useContext(DefaultTextPropsContext);
+  const { size, weight, tone } = useContext(DefaultTextPropsContext);
 
   return {
     size: sizeProp ?? size ?? 'standard',
+    weight: weightProp ?? weight ?? 'regular',
     tone: toneProp ?? tone ?? 'neutral',
   };
 };

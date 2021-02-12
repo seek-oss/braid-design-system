@@ -26,7 +26,7 @@ export const Text = ({
   size: sizeProp,
   tone: toneProp,
   align,
-  weight,
+  weight: weightProp,
   baseline = true,
   truncate = false,
   data,
@@ -37,8 +37,9 @@ export const Text = ({
     'Text components should not be nested within each other',
   );
 
-  const { size, tone } = useDefaultTextProps({
+  const { size, weight, tone } = useDefaultTextProps({
     size: sizeProp,
+    weight: weightProp,
     tone: toneProp,
   });
   const textStyles = useText({ weight, size, baseline, tone });
