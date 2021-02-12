@@ -1336,5 +1336,16 @@
         "summary": "**Button, ButtonLink:** Remove all interactive styles when loading\n\nNo longer applies hover and cursor pointer styles when a `Button` is set to `loading`."
       }
     ]
+  },
+  {
+    "version": "29.27.0",
+    "updates": [
+      {
+        "new": [
+          "TooltipRenderer"
+        ],
+        "summary": "Add **TooltipRenderer** component\n\nTooltips appear on mouse hover, tap and keyboard focus, and are hidden when scrolling and clicking/tapping/focusing on other elements.\n\nTooltips cannot contain interactive elements like links, buttons or form elements.\n\nNote: The trigger element must support `ref`, `tabIndex` and `aria-describedby` props.\n\n**EXAMPLE USAGE**\n\n```tsx\n<TooltipRenderer\n  id={id}\n  tooltip={\n    <Text>\n      This is a tooltip!\n    </Text>\n  }\n>\n  {({ triggerProps }) => (\n    <Box aria-label=\"Help\" {...triggerProps}>\n      <IconHelp />\n    </Box>\n  )}\n</TooltipRenderer>\n```"
+      }
+    ]
   }
 ]
