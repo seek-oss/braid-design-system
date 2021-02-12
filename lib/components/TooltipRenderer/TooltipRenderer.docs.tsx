@@ -11,6 +11,7 @@ import {
   TextLink,
   Strong,
 } from '..';
+import { TooltipContent } from './TooltipRenderer';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -55,12 +56,57 @@ const docs: ComponentDocs = {
   ),
   additional: [
     {
+      label: 'Custom formatting',
+      description: (
+        <Text>
+          You can use multiple text elements and layout components to create
+          more custom layouts.
+        </Text>
+      ),
+      Example: ({ id }) => ({
+        code: source(
+          <Inline space="small">
+            <TooltipRenderer
+              id={id}
+              tooltip={
+                <Stack space="medium">
+                  <Text weight="strong">Strong text</Text>
+                  <Text>
+                    The quick brown fox jumps over the lazy dog. The quick brown
+                    fox jumps over the lazy dog. The quick brown fox jumps over
+                    the lazy dog.
+                  </Text>
+                </Stack>
+              }
+            >
+              {({ triggerProps }) => (
+                <Box aria-label="Help" {...triggerProps}>
+                  <IconHelp />
+                </Box>
+              )}
+            </TooltipRenderer>
+          </Inline>,
+        ).code,
+        value: (
+          <TooltipContent opacity={100}>
+            <Stack space="medium">
+              <Text weight="strong">Strong text</Text>
+              <Text>
+                The quick brown fox jumps over the lazy dog. The quick brown fox
+                jumps over the lazy dog. The quick brown fox jumps over the lazy
+                dog.
+              </Text>
+            </Stack>
+          </TooltipContent>
+        ),
+      }),
+    },
+    {
       label: 'Development considerations',
       description: (
         <Text>
-          The <Strong>triggerProps</Strong> object provides low level props that
-          are currently only supported on{' '}
-          <TextLink href="/components/Box">Box.</TextLink>
+          The trigger element must support <Strong>ref</Strong>,{' '}
+          <Strong>tabIndex</Strong> and <Strong>aria-describedby</Strong> props.
         </Text>
       ),
     },
