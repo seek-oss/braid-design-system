@@ -108,18 +108,23 @@ describe('TooltipRenderer', () => {
     expect(tooltip.hidden).toBe(true);
 
     const trigger = getByLabelText('Trigger');
+
+    expect(document.body).toHaveFocus();
+
     await act(async () => {
-      fireEvent.focus(trigger);
+      userEvent.tab();
       await tick();
     });
 
+    expect(trigger).toHaveFocus();
     expect(tooltip.hidden).toBe(false);
 
     await act(async () => {
-      fireEvent.blur(trigger);
+      userEvent.tab({ shift: true });
       await tick();
     });
 
+    expect(document.body).toHaveFocus();
     expect(tooltip.hidden).toBe(true);
   });
 });
