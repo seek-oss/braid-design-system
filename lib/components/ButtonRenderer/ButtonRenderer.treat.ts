@@ -4,18 +4,24 @@ export const root = style({
   textDecoration: 'none',
 });
 
-export const weak = style({
-  backgroundColor: 'transparent',
-});
-
 export const inverted = style({});
+export const lightBg = style({});
+export const lightHoverBg = style({});
+
+export const backgroundOverlay = style({
+  selectors: {
+    [`${lightBg} &`]: {
+      opacity: 0.075,
+    },
+  },
+});
 
 export const activeOverlay = style({
   selectors: {
     [`${root}:active &`]: {
       opacity: 1,
     },
-    [`${weak}:active &`]: {
+    [`${lightHoverBg}:active &`]: {
       opacity: 0.1,
     },
   },
@@ -23,13 +29,13 @@ export const activeOverlay = style({
 
 export const hoverOverlay = style({
   selectors: {
-    [`${root}:hover:not(:active) &`]: {
+    [`${root}:hover:not(:disabled):not(:active) &`]: {
       opacity: 1,
     },
-    [`${weak}:hover:not(:active) &`]: {
+    [`${lightHoverBg}:hover:not(:disabled):not(:active) &`]: {
       opacity: 0.075,
     },
-    [`${weak}${inverted}:hover:not(:active) &`]: {
+    [`${lightHoverBg}${inverted}:hover:not(:disabled):not(:active) &`]: {
       opacity: 0.15,
     },
   },

@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
 import { ComponentScreenshot } from '../../../site/src/types';
 import { ButtonLink } from '../';
+import { Inline } from '../Inline/Inline';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <div style={{ maxWidth: '300px' }}>{children}</div>
@@ -10,53 +11,61 @@ export const screenshots: ComponentScreenshot = {
   screenshotWidths: [320],
   examples: [
     {
-      label: 'Default Button Link',
-      Container,
-      Example: () => <ButtonLink href="#">Submit</ButtonLink>,
-    },
-    {
-      label: 'Strong Button Link',
+      label: 'Default',
       Container,
       Example: () => (
-        <ButtonLink href="#" weight="strong">
-          Submit
-        </ButtonLink>
+        <Inline space="small" collapseBelow="desktop">
+          <ButtonLink href="#">Solid</ButtonLink>
+          <ButtonLink href="#" variant="ghost">
+            Ghost
+          </ButtonLink>
+          <ButtonLink href="#" variant="soft">
+            Soft
+          </ButtonLink>
+          <ButtonLink href="#" variant="transparent">
+            Transparent
+          </ButtonLink>
+        </Inline>
       ),
     },
     {
-      label: 'Weak Button Link',
+      label: 'Critical',
       Container,
       Example: () => (
-        <ButtonLink href="#" weight="weak">
-          Submit
-        </ButtonLink>
+        <Inline space="small" collapseBelow="desktop">
+          <ButtonLink href="#" tone="critical">
+            Solid
+          </ButtonLink>
+          <ButtonLink href="#" tone="critical" variant="ghost">
+            Ghost
+          </ButtonLink>
+          <ButtonLink href="#" tone="critical" variant="soft">
+            Soft
+          </ButtonLink>
+          <ButtonLink href="#" tone="critical" variant="transparent">
+            Transparent
+          </ButtonLink>
+        </Inline>
       ),
     },
     {
-      label: 'Default Critical Button Link',
+      label: 'BrandAccent',
       Container,
       Example: () => (
-        <ButtonLink href="#" tone="critical">
-          Delete
-        </ButtonLink>
-      ),
-    },
-    {
-      label: 'Strong Critical Button Link',
-      Container,
-      Example: () => (
-        <ButtonLink href="#" weight="strong" tone="critical">
-          Delete
-        </ButtonLink>
-      ),
-    },
-    {
-      label: 'Weak Critical Button Link',
-      Container,
-      Example: () => (
-        <ButtonLink href="#" weight="weak" tone="critical">
-          Delete
-        </ButtonLink>
+        <Inline space="small" collapseBelow="desktop">
+          <ButtonLink href="#" tone="brandAccent">
+            Solid
+          </ButtonLink>
+          <ButtonLink href="#" tone="brandAccent" variant="ghost">
+            Ghost
+          </ButtonLink>
+          <ButtonLink href="#" tone="brandAccent" variant="soft">
+            Soft
+          </ButtonLink>
+          <ButtonLink href="#" tone="brandAccent" variant="transparent">
+            Transparent
+          </ButtonLink>
+        </Inline>
       ),
     },
   ],

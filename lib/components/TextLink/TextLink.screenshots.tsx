@@ -75,7 +75,7 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
-      label: 'TextLink inside Actions',
+      label: 'TextLink inside Actions (Deprecated)',
       Example: () => (
         <Actions>
           <Button>Button</Button>
@@ -143,7 +143,7 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
-      label: 'TextLink inside Actions with icon',
+      label: 'TextLink inside Actions with icon (Deprecated)',
       Example: () => (
         <Actions>
           <Button>Button</Button>

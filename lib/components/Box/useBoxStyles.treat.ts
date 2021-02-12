@@ -303,6 +303,9 @@ export const boxShadow = styleMap(
     borderFormAccentLarge: {
       boxShadow: `inset 0 0 0 ${borderWidth.large}px ${color.formAccent}`,
     },
+    borderBrandAccentLarge: {
+      boxShadow: `inset 0 0 0 ${borderWidth.large}px ${color.brandAccent}`,
+    },
     borderStandardInvertedLarge: {
       boxShadow: `inset 0 0 0 ${borderWidth.large}px ${color.standardInverted}`,
     },

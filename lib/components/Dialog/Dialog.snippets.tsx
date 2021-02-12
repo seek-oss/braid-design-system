@@ -36,7 +36,7 @@ export const snippets: Snippets = [
           <Placeholder width="100%" height={100} />
           <Inline space="small">
             <Button>Got it</Button>
-            <Button weight="weak">Cancel</Button>
+            <Button variant="transparent">Cancel</Button>
           </Inline>
         </Stack>
       </Dialog>,

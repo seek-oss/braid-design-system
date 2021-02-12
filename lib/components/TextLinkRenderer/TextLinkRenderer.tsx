@@ -1,5 +1,6 @@
 import React, { CSSProperties, useContext, ReactElement } from 'react';
 import { useStyles } from 'sku/react-treat';
+import dedent from 'dedent';
 import assert from 'assert';
 import classnames from 'classnames';
 import TextLinkRendererContext from './TextLinkRendererContext';
@@ -37,6 +38,23 @@ export const PrivateTextLinkRenderer = (
   props: PrivateTextLinkRendererProps,
 ) => {
   const actionsContext = useContext(ActionsContext);
+
+  if (process.env.NODE_ENV !== 'production') {
+    // eslint-disable-next-line no-console
+    console.warn(
+      dedent`
+      The "TextLink" and "TextLinkButton" components have been deprecated inside of "Actions". Use "ButtonLink" or "Button" with a "variant" of "transparent" instead.
+        <Actions>
+          <Button>...</Button>
+      %c-   <TextLink href="...">...</TextLink>
+      %c+   <ButtonLink href="..." variant="transparent">...</ButtonLink>
+      %c  </Actions>
+    `,
+      'color: red',
+      'color: green',
+      'color: inherit',
+    );
+  }
 
   assert(
     (() => {

@@ -44,9 +44,8 @@ const docs: ComponentDocs = {
       description: (
         <Text>
           This component must be nested within a{' '}
-          <TextLink href="/components/Text">Text</TextLink>,{' '}
-          <TextLink href="/components/Heading">Heading</TextLink> or{' '}
-          <TextLink href="/components/Actions">Actions</TextLink> component.
+          <TextLink href="/components/Text">Text</TextLink> or{' '}
+          <TextLink href="/components/Heading">Heading</TextLink> component.
         </Text>
       ),
     },

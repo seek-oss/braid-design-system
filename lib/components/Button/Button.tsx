@@ -8,15 +8,12 @@ import buildDataAttributes, {
 } from '../private/buildDataAttributes';
 
 type NativeButtonProps = AllHTMLAttributes<HTMLButtonElement>;
-export interface ButtonProps {
+export interface ButtonProps
+  extends Omit<PrivateButtonRendererProps, 'children'> {
   id?: NativeButtonProps['id'];
   onClick?: NativeButtonProps['onClick'];
   type?: 'button' | 'submit' | 'reset';
   children?: ReactNode;
-  size?: PrivateButtonRendererProps['size'];
-  tone?: PrivateButtonRendererProps['tone'];
-  weight?: PrivateButtonRendererProps['weight'];
-  loading?: PrivateButtonRendererProps['loading'];
   'aria-controls'?: NativeButtonProps['aria-controls'];
   'aria-expanded'?: NativeButtonProps['aria-expanded'];
   'aria-describedby'?: NativeButtonProps['aria-describedby'];
@@ -29,6 +26,7 @@ export const Button = ({
   size,
   tone,
   weight,
+  variant,
   loading,
   type = 'button',
   id,
@@ -42,6 +40,7 @@ export const Button = ({
     tone={tone}
     weight={weight}
     loading={loading}
+    variant={variant}
   >
     {(ButtonChildren, buttonProps) => (
       <button

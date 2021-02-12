@@ -176,6 +176,7 @@ const tokens: TreatTokens = {
       positive,
       caution,
       formAccent,
+      brandAccent,
     },
   },
   shadows: {
@@ -194,6 +195,7 @@ const tokens: TreatTokens = {
       neutral: black,
       neutralInverted: white,
       formAccent,
+      brandAccent,
       critical,
       caution,
       positive,

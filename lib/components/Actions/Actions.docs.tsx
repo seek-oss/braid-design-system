@@ -20,9 +20,9 @@ const docs: ComponentDocs = {
     source(
       <Card>
         <Actions>
-          <Button>Regular Button</Button>
-          <Button weight="weak">Weak Button</Button>
-          <TextLink href="#">TextLink</TextLink>
+          <Button>Button 1</Button>
+          <Button>Button 2</Button>
+          <Button variant="transparent">Button 3</Button>
         </Actions>
       </Card>,
     ),
@@ -54,9 +54,8 @@ const docs: ComponentDocs = {
                 Standard size
               </Text>
               <Actions>
-                <Button>Regular Button</Button>
-                <Button weight="weak">Weak Button</Button>
-                <TextLink href="#">TextLink</TextLink>
+                <Button>Button 1</Button>
+                <Button variant="transparent">Button 2</Button>
               </Actions>
             </Stack>
             <Stack space="small">
@@ -64,9 +63,8 @@ const docs: ComponentDocs = {
                 Small size
               </Text>
               <Actions size="small">
-                <Button>Regular Button</Button>
-                <Button weight="weak">Weak Button</Button>
-                <TextLink href="#">TextLink</TextLink>
+                <Button>Button 1</Button>
+                <Button variant="transparent">Button 2</Button>
               </Actions>
             </Stack>
           </Stack>,
@@ -77,10 +75,9 @@ const docs: ComponentDocs = {
       description: (
         <Text>
           You can add icons to{' '}
-          <TextLink href="/components/Button">Button</TextLink> and{' '}
-          <TextLink href="/components/TextLink">TextLink</TextLink> elements by
-          nesting icon elements inside. The size of the icon will adjust
-          automatically based on its surrounding context.
+          <TextLink href="/components/Button">Button</TextLink> elements by
+          nesting icons inside. The size of the icon will adjust automatically
+          based on its surrounding context.
         </Text>
       ),
       Example: () =>
@@ -94,7 +91,7 @@ const docs: ComponentDocs = {
                 <Button>
                   <IconSend /> Send
                 </Button>
-                <TextLink href="#">Cancel</TextLink>
+                <Button variant="transparent">Cancel</Button>
               </Actions>
             </Stack>
             <Stack space="small">
@@ -105,7 +102,7 @@ const docs: ComponentDocs = {
                 <Button>
                   <IconSend /> Send
                 </Button>
-                <TextLink href="#">Cancel</TextLink>
+                <Button variant="transparent">Cancel</Button>
               </Actions>
             </Stack>
           </Stack>,
@@ -126,20 +123,9 @@ const docs: ComponentDocs = {
             <Button tone="critical">
               <IconDelete /> Delete
             </Button>
-            <TextLink href="#">Cancel</TextLink>
+            <Button variant="transparent">Cancel</Button>
           </Actions>,
         ),
-    },
-    {
-      label: 'Contextual design',
-      description: (
-        <Text>
-          When nested inside Actions,{' '}
-          <TextLink href="/components/TextLink">TextLink</TextLink> is given a
-          more prominent treatment to visually align with{' '}
-          <TextLink href="/components/Button">Button</TextLink>.
-        </Text>
-      ),
     },
   ],
 };

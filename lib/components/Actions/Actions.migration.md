@@ -3,7 +3,6 @@
 ## API Changes
 
 - Renamed from `ButtonGroup` to `Actions`.
-- Accepts `TextLink` components as children, not just `Button` components.
 - No longer accepts arbitrary DOM properties, e.g. `className`. Please check that everything you need is exposed via the [public API.](https://seek-oss.github.io/braid-design-system/components/Actions)
 
 ## SEEK Style Guide
@@ -21,8 +20,8 @@
 
 ```jsx
 <Actions>
-  <Button weight="strong">Create a Profile</Button>
-  <TextLink href="...">Cancel</TextLink>
+  <Button tone="brandAccent">Create a Profile</Button>
+  <Button variant="transparent">Cancel</Button>
 </Actions>
 ```
 
@@ -41,8 +40,8 @@
 
 ```jsx
 <Actions>
-  <Button weight="strong">Create a Profile</Button>
-  <TextLink href="...">Cancel</TextLink>
+  <Button tone="brandAccent">Create a Profile</Button>
+  <Button variant="transparent">Cancel</Button>
 </Actions>
 ```
 

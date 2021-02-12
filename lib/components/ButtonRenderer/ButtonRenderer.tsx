@@ -1,4 +1,5 @@
 import assert from 'assert';
+import dedent from 'dedent';
 import React, {
   createContext,
   useContext,
@@ -23,24 +24,30 @@ import ActionsContext from '../Actions/ActionsContext';
 import * as styleRefs from './ButtonRenderer.treat';
 
 type ButtonSize = 'standard' | 'small';
-type ButtonTone = 'critical';
+type ButtonTone = 'brandAccent' | 'critical';
 type ButtonWeight = 'weak' | 'regular' | 'strong';
-type ButtonVariant = 'strong' | 'regular' | 'weak' | 'weakInverted';
+type ButtonVariant = 'solid' | 'ghost' | 'soft' | 'transparent';
+type ButtonStyles = {
+  textTone: TextProps['tone'];
+  background: UseBoxStylesProps['background'];
+  backgroundHover: UseBoxStylesProps['background'];
+  backgroundActive: UseBoxStylesProps['background'];
+  boxShadow: UseBoxStylesProps['boxShadow'];
+};
+
 const buttonVariants: Record<
   ButtonVariant,
-  Record<
-    'default' | ButtonTone,
-    {
-      textTone: TextProps['tone'];
-      background: UseBoxStylesProps['background'];
-      backgroundHover: UseBoxStylesProps['background'];
-      backgroundActive: UseBoxStylesProps['background'];
-      boxShadow: UseBoxStylesProps['boxShadow'];
-    }
-  >
+  Record<'default' | ButtonTone, ButtonStyles>
 > = {
-  strong: {
+  solid: {
     default: {
+      textTone: undefined,
+      background: 'formAccent',
+      backgroundHover: 'formAccentHover',
+      backgroundActive: 'formAccentActive',
+      boxShadow: undefined,
+    },
+    brandAccent: {
       textTone: undefined,
       background: 'brandAccent',
       backgroundHover: 'brandAccentHover',
@@ -55,29 +62,20 @@ const buttonVariants: Record<
       boxShadow: undefined,
     },
   },
-  regular: {
-    default: {
-      textTone: undefined,
-      background: 'formAccent',
-      backgroundHover: 'formAccentHover',
-      backgroundActive: 'formAccentActive',
-      boxShadow: undefined,
-    },
-    critical: {
-      textTone: undefined,
-      background: 'critical',
-      backgroundHover: 'criticalHover',
-      backgroundActive: 'criticalActive',
-      boxShadow: undefined,
-    },
-  },
-  weak: {
+  ghost: {
     default: {
       textTone: 'formAccent',
       background: undefined,
       backgroundHover: 'formAccentHover',
       backgroundActive: 'formAccentActive',
       boxShadow: 'borderFormAccentLarge',
+    },
+    brandAccent: {
+      textTone: 'brandAccent',
+      background: undefined,
+      backgroundHover: 'brandAccentHover',
+      backgroundActive: 'brandAccentActive',
+      boxShadow: 'borderBrandAccentLarge',
     },
     critical: {
       textTone: 'critical',
@@ -87,44 +85,80 @@ const buttonVariants: Record<
       boxShadow: 'borderCriticalLarge',
     },
   },
-  weakInverted: {
+  soft: {
     default: {
-      textTone: undefined,
-      background: undefined,
-      backgroundHover: 'card',
-      backgroundActive: 'card',
-      boxShadow: 'borderStandardInvertedLarge',
+      textTone: 'formAccent',
+      background: 'formAccent',
+      backgroundHover: 'formAccentHover',
+      backgroundActive: 'formAccentActive',
+      boxShadow: undefined,
+    },
+    brandAccent: {
+      textTone: 'brandAccent',
+      background: 'brandAccent',
+      backgroundHover: 'brandAccentHover',
+      backgroundActive: 'brandAccentActive',
+      boxShadow: undefined,
     },
     critical: {
-      textTone: undefined,
+      textTone: 'critical',
+      background: 'critical',
+      backgroundHover: 'criticalHover',
+      backgroundActive: 'criticalActive',
+      boxShadow: undefined,
+    },
+  },
+  transparent: {
+    default: {
+      textTone: 'formAccent',
       background: undefined,
-      backgroundHover: 'card',
-      backgroundActive: 'card',
-      boxShadow: 'borderStandardInvertedLarge',
+      backgroundHover: 'formAccentHover',
+      backgroundActive: 'formAccentActive',
+      boxShadow: undefined,
+    },
+    brandAccent: {
+      textTone: 'brandAccent',
+      background: undefined,
+      backgroundHover: 'brandAccentHover',
+      backgroundActive: 'brandAccentActive',
+      boxShadow: undefined,
+    },
+    critical: {
+      textTone: 'critical',
+      background: undefined,
+      backgroundHover: 'criticalHover',
+      backgroundActive: 'criticalActive',
+      boxShadow: undefined,
     },
   },
 };
 
-const useButtonVariant = (weight: ButtonWeight, tone?: ButtonTone) => {
-  const variantName =
-    useBackgroundLightness() === 'dark' && weight === 'weak'
-      ? 'weakInverted'
-      : weight;
+const useButtonVariant = (variant: ButtonVariant, tone?: ButtonTone) => {
+  if (useBackgroundLightness() === 'dark' && !tone && variant !== 'solid') {
+    return {
+      textTone: undefined,
+      background: variant === 'soft' ? 'card' : undefined,
+      backgroundHover: 'card',
+      backgroundActive: 'card',
+      boxShadow:
+        variant === 'ghost' ? 'borderStandardInvertedLarge' : undefined,
+    } as ButtonStyles;
+  }
 
   return (
-    buttonVariants[variantName][tone ?? 'default'] ??
-    buttonVariants[variantName].default
+    buttonVariants[variant][tone ?? 'default'] ??
+    buttonVariants[variant].default
   );
 };
 
 const ButtonChildrenContext = createContext<{
   size: ButtonSize;
   tone: ButtonTone | undefined;
-  weight: ButtonWeight;
+  variant: ButtonVariant;
   loading: boolean;
 }>({
   size: 'standard',
-  weight: 'regular',
+  variant: 'solid',
   tone: undefined,
   loading: false,
 });
@@ -135,12 +169,17 @@ interface ButtonChildrenProps {
 
 const ButtonChildren = ({ children }: ButtonChildrenProps) => {
   const styles = useStyles(styleRefs);
-  const { size, weight, tone, loading } = useContext(ButtonChildrenContext);
-  const buttonVariant = useButtonVariant(weight, tone);
+  const { size, variant, tone, loading } = useContext(ButtonChildrenContext);
+  const buttonVariant = useButtonVariant(variant, tone);
   const standardTouchableSpaceStyles = useTouchableSpace('standard');
 
   return (
     <Fragment>
+      <FieldOverlay
+        background={buttonVariant.background}
+        className={styles.backgroundOverlay}
+        visible={Boolean(buttonVariant.background)}
+      />
       <FieldOverlay
         variant="focus"
         onlyVisibleForKeyboardNavigation
@@ -156,7 +195,9 @@ const ButtonChildren = ({ children }: ButtonChildrenProps) => {
       />
       <Box
         position="relative"
-        paddingX={size === 'small' ? 'small' : 'medium'}
+        paddingX={
+          size === 'small' || variant === 'transparent' ? 'small' : 'medium'
+        }
         paddingY={size === 'small' ? 'xsmall' : undefined}
         pointerEvents="none"
         textAlign="center"
@@ -195,6 +236,8 @@ const ButtonChildren = ({ children }: ButtonChildrenProps) => {
 export interface PrivateButtonRendererProps {
   size?: ButtonSize;
   tone?: ButtonTone;
+  variant?: ButtonVariant;
+  /** @deprecated The `weight` prop has been deprecated. Please choose a [variant](https://seek-oss.github.io/braid-design-system/components/Button#variants) instead. */
   weight?: ButtonWeight;
   loading?: boolean;
   children: (
@@ -206,10 +249,47 @@ export interface PrivateButtonRendererProps {
   ) => ReactNode;
 }
 
+const resolveToneAndVariant = ({
+  weight,
+  tone,
+  variant = 'solid',
+}: {
+  weight?: ButtonWeight;
+  tone?: ButtonTone;
+  variant?: ButtonVariant;
+}): { variant: ButtonVariant; tone?: ButtonTone } => {
+  if (weight === 'strong') {
+    return {
+      tone: tone || 'brandAccent',
+      variant: 'solid',
+    };
+  }
+
+  if (weight === 'regular') {
+    return {
+      tone,
+      variant: 'solid',
+    };
+  }
+
+  if (weight === 'weak') {
+    return {
+      tone,
+      variant: 'ghost',
+    };
+  }
+
+  return {
+    tone,
+    variant,
+  };
+};
+
 export const PrivateButtonRenderer = ({
   size: sizeProp,
-  tone,
-  weight = 'regular',
+  tone: toneProp,
+  variant: variantProp,
+  weight,
   loading = false,
   children,
 }: PrivateButtonRendererProps) => {
@@ -220,34 +300,71 @@ export const PrivateButtonRenderer = ({
     'You shouldn\'t set a "size" prop on Button elements nested inside Actions. Instead, set the size on the Actions element, e.g. <Actions size="small"><Button>...</Button></Actions>',
   );
 
+  assert(
+    !(weight && variantProp),
+    'You shouldn\'t set a "weight" and "variant" prop together. Please migrate from "weight" to "variant".',
+  );
+
+  const { tone, variant } = resolveToneAndVariant({
+    weight,
+    tone: toneProp,
+    variant: variantProp,
+  });
+
+  if (process.env.NODE_ENV !== 'production') {
+    if (weight && /^(strong|regular|weak)$/.test(weight)) {
+      const needsTone = Boolean(tone);
+      const needsVariant = variant && variant !== 'solid';
+
+      // eslint-disable-next-line no-console
+      console.warn(
+        dedent`
+          The \`weight\` prop has been deprecated.${
+            needsVariant || needsTone
+              ? ` Please migrate to${needsVariant ? ` \`variant\`` : ''}${
+                  needsTone ? `${needsVariant ? ' and' : ''} \`tone\`` : ''
+                }.`
+              : ` You can migrate by removing the \`weight="${weight}"\` prop.`
+          }
+          %c  -<Button weight="${weight}">...</Button>
+          %c  +<Button${needsTone ? ` tone="${tone}"` : ''}${
+          needsVariant ? ` variant="${variant}"` : ''
+        }>...</Button>
+        `,
+        'color: red',
+        'color: green',
+      );
+    }
+  }
+
   const styles = useStyles(styleRefs);
   const size = sizeProp ?? actionsContext?.size ?? 'standard';
-  const { background, boxShadow } = useButtonVariant(weight, tone);
+  const { background, boxShadow } = useButtonVariant(variant, tone);
   const virtualTouchableStyles = useVirtualTouchable({ xAxis: false });
 
   const buttonStyles = useBoxStyles({
     component: 'button',
-    cursor: 'pointer',
+    cursor: !loading ? 'pointer' : undefined,
     width: 'full',
     position: 'relative',
     display: 'block',
     borderRadius: 'standard',
     boxShadow,
-    background,
     transform: 'touchable',
     transition: 'touchable',
     outline: 'none',
     className: [
       styles.root,
-      weight === 'weak' ? styles.weak : null,
+      variant === 'soft' ? styles.lightBg : null,
+      variant !== 'solid' ? styles.lightHoverBg : null,
       useBackgroundLightness() === 'dark' ? styles.inverted : null,
       size === 'small' ? virtualTouchableStyles : null,
     ],
   });
 
   const buttonChildrenContextValue = useMemo(
-    () => ({ size, tone, weight, loading }),
-    [size, tone, weight, loading],
+    () => ({ size, tone, variant, loading }),
+    [size, tone, variant, loading],
   );
 
   const buttonProps = {
@@ -261,7 +378,7 @@ export const PrivateButtonRenderer = ({
     </ButtonChildrenContext.Provider>
   );
 
-  return background ? (
+  return background && variant !== 'soft' ? (
     <BackgroundProvider value={background}>{button}</BackgroundProvider>
   ) : (
     button

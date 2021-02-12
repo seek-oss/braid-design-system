@@ -7,7 +7,6 @@ import {
   MenuItemLink,
   Text,
   TextLink,
-  TextLinkButton,
   Strong,
   Box,
   Dialog,
@@ -90,9 +89,12 @@ const docs: ComponentDocs = {
                   >
                     <IconDelete /> Delete
                   </Button>
-                  <TextLinkButton onClick={() => toggleState('confirm')}>
+                  <Button
+                    variant="transparent"
+                    onClick={() => toggleState('confirm')}
+                  >
                     Cancel
-                  </TextLinkButton>
+                  </Button>
                 </Actions>
               </Stack>
             </Dialog>
