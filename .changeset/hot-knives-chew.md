@@ -13,7 +13,7 @@ Tooltips appear on mouse hover, tap and keyboard focus, and are hidden when scro
 
 Tooltips cannot contain interactive elements like links, buttons or form elements.
 
-Note: The **triggerProps** object provides low level props that are currently only supported on [Box.](https://seek-oss.github.io/braid-design-system/components/Box)
+Note: The trigger element must support `ref`, `tabIndex` and `aria-describedby` props.
 
 **EXAMPLE USAGE**
 
