@@ -5,14 +5,14 @@ export const background = style((theme) => ({
 }));
 
 export const maxWidth = style({
-  maxWidth: 240,
+  maxWidth: 260,
 });
 
 export const verticalOffsetBeforeEntrance = style({
-  transform: 'translateZ(0) translateY(4px)',
+  transform: 'translateZ(0) translateY(-4px)',
   selectors: {
     '[data-popper-placement*=top] &': {
-      transform: 'translateZ(0) translateY(-4px)',
+      transform: 'translateZ(0) translateY(4px)',
     },
   },
 });
@@ -21,3 +21,8 @@ export const verticalOffsetBeforeEntrance = style({
 export const translateZ0 = style({
   transform: 'translateZ(0)',
 });
+
+// Our space scale didn't have enough fidelity here :(
+export const padding = style((theme) => ({
+  padding: theme.grid * (theme.space.small + 1),
+}));

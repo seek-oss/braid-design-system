@@ -59,6 +59,38 @@ describe('TooltipRenderer', () => {
     expect(tooltip.hidden).toBe(true);
   });
 
+  it('should hide on scroll', async () => {
+    const { getByRole, getByLabelText, container } = render(
+      <BraidTestProvider themeName="wireframe">
+        <TooltipRenderer id="TEST_ID" tooltip={<Text>Tooltip text.</Text>}>
+          {({ triggerProps }) => (
+            <Box aria-label="Trigger" {...triggerProps}>
+              <Text>Trigger</Text>
+            </Box>
+          )}
+        </TooltipRenderer>
+      </BraidTestProvider>,
+    );
+
+    const tooltip = getByRole('tooltip', { hidden: true });
+    expect(tooltip.hidden).toBe(true);
+
+    const trigger = getByLabelText('Trigger');
+    await act(async () => {
+      userEvent.hover(trigger);
+      await tick();
+    });
+
+    expect(tooltip.hidden).toBe(false);
+
+    await act(async () => {
+      fireEvent.scroll(container);
+      await tick();
+    });
+
+    expect(tooltip.hidden).toBe(true);
+  });
+
   it('should handle keyboard focus', async () => {
     const { getByRole, getByLabelText } = render(
       <BraidTestProvider themeName="wireframe">

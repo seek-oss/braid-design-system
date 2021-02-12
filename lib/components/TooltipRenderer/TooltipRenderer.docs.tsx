@@ -22,7 +22,7 @@ const docs: ComponentDocs = {
           tooltip={
             <Text>
               This is a tooltip! If you provide enough content, the text will
-              wrap.
+              wrap onto multiple lines.
             </Text>
           }
         >
@@ -35,15 +35,6 @@ const docs: ComponentDocs = {
       </Inline>,
     ),
   alternatives: [],
-  description: (
-    <Stack space="large">
-      <Text>
-        This component allows you to attach standard tooltips to a custom
-        trigger element. The tooltip appears on mouse hover, tap and keyboard
-        focus.
-      </Text>
-    </Stack>
-  ),
   accessibility: (
     <Stack space="large">
       <Text>
@@ -51,6 +42,10 @@ const docs: ComponentDocs = {
         <TextLink href="https://www.w3.org/TR/wai-aria-practices/#tooltip">
           WAI-ARIA Tooltip Pattern.
         </TextLink>
+      </Text>
+      <Text>
+        Tooltips appear on mouse hover, tap and keyboard focus, and are hidden
+        when scrolling and clicking/tapping/focusing on other elements.
       </Text>
       <Text>
         Tooltips cannot contain interactive elements like links, buttons or form

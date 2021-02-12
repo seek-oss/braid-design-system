@@ -4,6 +4,7 @@ import { createPortal } from 'react-dom';
 import { usePopperTooltip } from 'react-popper-tooltip';
 import isMobile from 'is-mobile';
 import assert from 'assert';
+import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
 import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import { BackgroundProvider } from '../Box/BackgroundContext';
 import { useBoxStyles } from '../Box/useBoxStyles';
@@ -12,16 +13,53 @@ import { useSpace } from '../useSpace/useSpace';
 import { Box } from '../Box/Box';
 import * as styleRefs from './TooltipRenderer.treat';
 
-// @ts-expect-error
-import untyped_IsIOS from 'is-ios';
-assert(typeof untyped_IsIOS === 'boolean');
-const isIOS: boolean = untyped_IsIOS;
-
 interface TriggerProps {
   ref: ReturnType<typeof usePopperTooltip>['setTooltipRef'];
   tabIndex: 0;
   'aria-describedby': string;
 }
+
+export const TooltipContent = ({
+  children,
+  opacity,
+}: {
+  children: ReactNodeNoStrings;
+  opacity: 0 | 100;
+}) => {
+  const styles = useStyles(styleRefs);
+  const { name: themeName } = useBraidTheme();
+
+  return (
+    <Box
+      display="flex"
+      transition="fast"
+      opacity={opacity === 0 ? 0 : undefined}
+      className={
+        opacity === 0 ? styles.verticalOffsetBeforeEntrance : styles.translateZ0
+      }
+    >
+      <Box
+        boxShadow="large"
+        borderRadius="standard"
+        className={[
+          styles.background,
+          styles.maxWidth,
+          styles.translateZ0,
+          styles.padding,
+        ]}
+      >
+        <BackgroundProvider value="UNKNOWN_DARK">
+          <DefaultTextPropsProvider
+            size={themeName === 'docs' ? 'small' : undefined}
+            weight="medium"
+          >
+            {children}
+          </DefaultTextPropsProvider>
+        </BackgroundProvider>
+      </Box>
+    </Box>
+  );
+};
 
 export interface TooltipRendererProps {
   id: string;
@@ -34,7 +72,6 @@ export const TooltipRenderer = ({
   tooltip,
   children,
 }: TooltipRendererProps) => {
-  const styles = useStyles(styleRefs);
   const [controlledVisible, setControlledVisible] = useState(false);
   const [opacity, setOpacity] = useState<0 | 100>(0);
   const { grid, space } = useSpace();
@@ -48,7 +85,7 @@ export const TooltipRenderer = ({
     triggerRef,
   } = usePopperTooltip({
     placement: 'bottom',
-    trigger: [isIOS ? 'click' : 'hover', 'focus'],
+    trigger: [isMobile() ? 'click' : 'hover', 'focus'],
     visible: controlledVisible,
     onVisibleChange: setControlledVisible,
     offset: [0, space.xsmall * grid],
@@ -62,10 +99,25 @@ export const TooltipRenderer = ({
         }
       };
 
+      const handleScroll = () => {
+        setControlledVisible(false);
+      };
+
+      const scrollHandlerOptions = {
+        capture: true,
+        passive: true,
+      };
+
       document.addEventListener('keydown', handleKeyDown);
+      document.addEventListener('scroll', handleScroll, scrollHandlerOptions);
 
       return () => {
         document.removeEventListener('keydown', handleKeyDown);
+        document.removeEventListener(
+          'scroll',
+          handleScroll,
+          scrollHandlerOptions,
+        );
       };
     }
   }, [visible]);
@@ -142,32 +194,7 @@ export const TooltipRenderer = ({
                 })
               : null)}
           >
-            <Box
-              transition="fast"
-              opacity={opacity === 0 ? 0 : undefined}
-              className={
-                opacity === 0
-                  ? styles.verticalOffsetBeforeEntrance
-                  : styles.translateZ0
-              }
-            >
-              <Box
-                padding="small"
-                boxShadow="large"
-                borderRadius="standard"
-                className={[
-                  styles.background,
-                  styles.maxWidth,
-                  styles.translateZ0,
-                ]}
-              >
-                <BackgroundProvider value="UNKNOWN_DARK">
-                  <DefaultTextPropsProvider size="small" weight="medium">
-                    {tooltip}
-                  </DefaultTextPropsProvider>
-                </BackgroundProvider>
-              </Box>
-            </Box>
+            <TooltipContent opacity={opacity}>{tooltip}</TooltipContent>
           </div>,
           document.body,
         )}

@@ -59,7 +59,6 @@
     "csstype": "^3.0.6",
     "dedent": "0.7.0",
     "gradient-parser": "^1.0.0",
-    "is-ios": "^2.0.1",
     "is-mobile": "^2.2.2",
     "lodash": "^4.17.20",
     "polished": "^4.1.0",
