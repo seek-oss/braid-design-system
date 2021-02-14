@@ -1,6 +1,7 @@
 import assert from 'assert';
 import dedent from 'dedent';
 import React, {
+  forwardRef,
   createContext,
   useContext,
   useMemo,
@@ -285,40 +286,47 @@ const resolveToneAndVariant = ({
   };
 };
 
-export const PrivateButtonRenderer = ({
-  size: sizeProp,
-  tone: toneProp,
-  variant: variantProp,
-  weight,
-  loading = false,
-  children,
-}: PrivateButtonRendererProps) => {
-  const actionsContext = useContext(ActionsContext);
+export const PrivateButtonRenderer = forwardRef<
+  HTMLButtonElement,
+  PrivateButtonRendererProps
+>(
+  (
+    {
+      size: sizeProp,
+      tone: toneProp,
+      variant: variantProp,
+      weight,
+      loading = false,
+      children,
+    },
+    ref,
+  ) => {
+    const actionsContext = useContext(ActionsContext);
 
-  assert(
-    !(actionsContext && sizeProp),
-    'You shouldn\'t set a "size" prop on Button elements nested inside Actions. Instead, set the size on the Actions element, e.g. <Actions size="small"><Button>...</Button></Actions>',
-  );
+    assert(
+      !(actionsContext && sizeProp),
+      'You shouldn\'t set a "size" prop on Button elements nested inside Actions. Instead, set the size on the Actions element, e.g. <Actions size="small"><Button>...</Button></Actions>',
+    );
 
-  assert(
-    !(weight && variantProp),
-    'You shouldn\'t set a "weight" and "variant" prop together. Please migrate from "weight" to "variant".',
-  );
+    assert(
+      !(weight && variantProp),
+      'You shouldn\'t set a "weight" and "variant" prop together. Please migrate from "weight" to "variant".',
+    );
 
-  const { tone, variant } = resolveToneAndVariant({
-    weight,
-    tone: toneProp,
-    variant: variantProp,
-  });
+    const { tone, variant } = resolveToneAndVariant({
+      weight,
+      tone: toneProp,
+      variant: variantProp,
+    });
 
-  if (process.env.NODE_ENV !== 'production') {
-    if (weight && /^(strong|regular|weak)$/.test(weight)) {
-      const needsTone = Boolean(tone);
-      const needsVariant = variant && variant !== 'solid';
+    if (process.env.NODE_ENV !== 'production') {
+      if (weight && /^(strong|regular|weak)$/.test(weight)) {
+        const needsTone = Boolean(tone);
+        const needsVariant = variant && variant !== 'solid';
 
-      // eslint-disable-next-line no-console
-      console.warn(
-        dedent`
+        // eslint-disable-next-line no-console
+        console.warn(
+          dedent`
           The \`weight\` prop has been deprecated.${
             needsVariant || needsTone
               ? ` Please migrate to${needsVariant ? ` \`variant\`` : ''}${
@@ -328,62 +336,63 @@ export const PrivateButtonRenderer = ({
           }
           %c  -<Button weight="${weight}">...</Button>
           %c  +<Button${needsTone ? ` tone="${tone}"` : ''}${
-          needsVariant ? ` variant="${variant}"` : ''
-        }>...</Button>
+            needsVariant ? ` variant="${variant}"` : ''
+          }>...</Button>
         `,
-        'color: red',
-        'color: green',
-      );
+          'color: red',
+          'color: green',
+        );
+      }
     }
-  }
 
-  const styles = useStyles(styleRefs);
-  const size = sizeProp ?? actionsContext?.size ?? 'standard';
-  const { background, boxShadow } = useButtonVariant(variant, tone);
-  const virtualTouchableStyles = useVirtualTouchable({ xAxis: false });
+    const styles = useStyles(styleRefs);
+    const size = sizeProp ?? actionsContext?.size ?? 'standard';
+    const { background, boxShadow } = useButtonVariant(variant, tone);
+    const virtualTouchableStyles = useVirtualTouchable({ xAxis: false });
 
-  const buttonStyles = useBoxStyles({
-    component: 'button',
-    cursor: !loading ? 'pointer' : undefined,
-    width: 'full',
-    position: 'relative',
-    display: 'block',
-    borderRadius: 'standard',
-    boxShadow,
-    transform: 'touchable',
-    transition: 'touchable',
-    outline: 'none',
-    className: [
-      styles.root,
-      variant === 'soft' ? styles.lightBg : null,
-      variant !== 'solid' ? styles.lightHoverBg : null,
-      useBackgroundLightness() === 'dark' ? styles.inverted : null,
-      size === 'small' ? virtualTouchableStyles : null,
-    ],
-  });
+    const buttonStyles = useBoxStyles({
+      component: 'button',
+      cursor: !loading ? 'pointer' : undefined,
+      width: 'full',
+      position: 'relative',
+      display: 'block',
+      borderRadius: 'standard',
+      boxShadow,
+      transform: 'touchable',
+      transition: 'touchable',
+      outline: 'none',
+      className: [
+        styles.root,
+        variant === 'soft' ? styles.lightBg : null,
+        variant !== 'solid' ? styles.lightHoverBg : null,
+        useBackgroundLightness() === 'dark' ? styles.inverted : null,
+        size === 'small' ? virtualTouchableStyles : null,
+      ],
+    });
 
-  const buttonChildrenContextValue = useMemo(
-    () => ({ size, tone, variant, loading }),
-    [size, tone, variant, loading],
-  );
+    const buttonChildrenContextValue = useMemo(
+      () => ({ size, tone, variant, loading }),
+      [size, tone, variant, loading],
+    );
 
-  const buttonProps = {
-    style: {},
-    className: buttonStyles,
-  };
+    const buttonProps = {
+      style: {},
+      className: buttonStyles,
+    };
 
-  const button = (
-    <ButtonChildrenContext.Provider value={buttonChildrenContextValue}>
-      {children(ButtonChildren, buttonProps)}
-    </ButtonChildrenContext.Provider>
-  );
+    const button = (
+      <ButtonChildrenContext.Provider value={buttonChildrenContextValue}>
+        {children(ButtonChildren, buttonProps, ref)}
+      </ButtonChildrenContext.Provider>
+    );
 
-  return background && variant !== 'soft' ? (
-    <BackgroundProvider value={background}>{button}</BackgroundProvider>
-  ) : (
-    button
-  );
-};
+    return background && variant !== 'soft' ? (
+      <BackgroundProvider value={background}>{button}</BackgroundProvider>
+    ) : (
+      button
+    );
+  },
+);
 
 /** @deprecated `ButtonRenderer` has been deprecated. Use [Button](https://seek-oss.github.io/braid-design-system/components/Button) or [ButtonLink](https://seek-oss.github.io/braid-design-system/components/ButtonLink) instead. If your usage of `ButtonRenderer` is not covered by either of these, please let us know. */
 export const ButtonRenderer = PrivateButtonRenderer;

@@ -10,6 +10,7 @@ import {
   IconHelp,
   TextLink,
   Strong,
+  Badge,
 } from '..';
 import { TooltipContent } from './TooltipRenderer';
 
@@ -55,6 +56,24 @@ const docs: ComponentDocs = {
     </Stack>
   ),
   additional: [
+    {
+      label: 'Element support',
+      description: (
+        <Text>
+          Tooltips can be attached to{' '}
+          <TextLink href="/components/Box">Box</TextLink> and{' '}
+          <TextLink href="/components/Badge">Badge.</TextLink>
+        </Text>
+      ),
+      Example: ({ id }) =>
+        source(
+          <Inline space="medium">
+            <TooltipRenderer id={`${id}_1`} tooltip={<Text>Tooltip!</Text>}>
+              {({ triggerProps }) => <Badge {...triggerProps}>Badge</Badge>}
+            </TooltipRenderer>
+          </Inline>,
+        ),
+    },
     {
       label: 'Custom formatting',
       description: (
