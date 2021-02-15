@@ -1711,6 +1711,7 @@ Object {
         | "true"
         | false
         | true
+    bleedY?: boolean
     children?: ReactNode
     data?: Record<string, string | number>
     id?: string
@@ -1907,6 +1908,7 @@ Object {
     autoCapitalize?: string
     autoCorrect?: string
     autoSave?: string
+    bleedY?: boolean
     children?: ReactNode
     color?: string
     contentEditable?: 
@@ -2176,6 +2178,7 @@ exports[`ButtonRenderer 1`] = `
 Object {
   exportType: component,
   props: {
+    bleedY?: boolean
     children: (ButtonChildren: ComponentType<ButtonChildrenProps>, styleProps: { style: CSSProperties; className: string; }) => ReactNode
     loading?: boolean
     size?: 

@@ -5,6 +5,7 @@ import {
   Card,
   Stack,
   Box,
+  Heading,
   Text,
   TextLink,
   Inline,
@@ -236,6 +237,67 @@ const docs: ComponentDocs = {
               <Button variant="transparent">Transparent</Button>
             </Inline>
           </Box>,
+        ),
+    },
+    {
+      label: 'Vertical bleed',
+      description: (
+        <>
+          <Text>
+            With the <Strong>bleedY</Strong> prop, you can allow the background
+            colour to bleed out into the surrounding layout.
+          </Text>
+          <Text>
+            For example, we can align a button to a{' '}
+            <TextLink href="/components/Heading">Heading</TextLink> element
+            using an <TextLink href="/components/Inline">Inline</TextLink>, even
+            though the button is actually taller than the heading. If we didn’t
+            use the <Strong>bleedY</Strong> prop in this case, the button would
+            introduce unwanted space above and below the heading.
+          </Text>
+        </>
+      ),
+      background: 'card',
+      Example: () =>
+        source(
+          <Stack space="large">
+            <Stack space="small">
+              <Text tone="secondary" weight="strong">
+                Standard size
+              </Text>
+              <Box
+                background="neutralLight"
+                borderRadius="standard"
+                padding="gutter"
+              >
+                <Box background="card">
+                  <Inline space="xsmall" alignY="center">
+                    <Heading level="2">Heading</Heading>
+                    <Button bleedY>Button</Button>
+                  </Inline>
+                </Box>
+              </Box>
+            </Stack>
+            <Stack space="small">
+              <Text tone="secondary" weight="strong">
+                Small size
+              </Text>
+              <Box
+                background="neutralLight"
+                borderRadius="standard"
+                padding="gutter"
+              >
+                <Box background="card">
+                  <Inline space="xsmall" alignY="center">
+                    <Heading level="2">Heading</Heading>
+                    <Button bleedY size="small">
+                      Button
+                    </Button>
+                  </Inline>
+                </Box>
+              </Box>
+            </Stack>
+          </Stack>,
         ),
     },
   ],
