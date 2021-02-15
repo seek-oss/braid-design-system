@@ -1,18 +1,22 @@
 import { style } from 'sku/treat';
 
+export const constants = {
+  maxWidth: 260,
+};
+
 export const background = style((theme) => ({
   background: theme.color.foreground.neutral,
 }));
 
 export const maxWidth = style({
-  maxWidth: 260,
+  maxWidth: constants.maxWidth,
 });
 
 export const verticalOffsetBeforeEntrance = style({
-  transform: 'translateZ(0) translateY(-4px)',
+  transform: 'translateZ(0) translateY(4px)',
   selectors: {
-    '[data-popper-placement*=top] &': {
-      transform: 'translateZ(0) translateY(4px)',
+    '[data-popper-placement*=bottom] &': {
+      transform: 'translateZ(0) translateY(-4px)',
     },
   },
 });
