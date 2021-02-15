@@ -103,7 +103,7 @@ const docs: ComponentDocs = {
         <>
           <Text>
             To ensure readability, tooltips have a maximum width of{' '}
-            {constants.maxWidth}px. which means that text will wrap onto
+            {constants.maxWidth}px, which means that text will wrap onto
             multiple lines if you provide enough content.
           </Text>
           <Text>
