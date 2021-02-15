@@ -1,7 +1,7 @@
 import { style } from 'sku/treat';
 
 export const constants = {
-  smallButtonPaddingSize: 'small' as const,
+  smallButtonPaddingSize: 'xsmall' as const,
 };
 
 export const root = style({
