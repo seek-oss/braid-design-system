@@ -44,6 +44,8 @@ export interface NormalisedInterface {
       propName: string;
       required: boolean;
       type: NormalisedPropType;
+      deprecated: boolean;
+      tags: Array<{ name: string; text: string }>;
       description?: string;
     };
   };
@@ -139,6 +141,12 @@ export default () => {
             const propName = prop.getName();
 
             let description = '';
+            const tags = prop
+              .getJsDocTags()
+              .filter(({ name }) => name !== 'see');
+            const deprecated = tags.some(({ name }) =>
+              /^deprecated$/i.test(name),
+            );
 
             if (extractComments) {
               description = prop
@@ -166,6 +174,8 @@ export default () => {
                 type: aliasWhitelist.includes(typeAlias)
                   ? typeAlias
                   : normaliseType(propType, propsObj, depth + 1),
+                deprecated,
+                tags,
                 description,
               },
             };

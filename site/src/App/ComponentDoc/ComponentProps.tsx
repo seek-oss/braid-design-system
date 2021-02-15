@@ -1,10 +1,11 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useMemo } from 'react';
 import partition from 'lodash/partition';
-import { Box, Text, Stack } from '../../../../lib/components';
+import { Box, Text, Stack, Inline, Badge } from '../../../../lib/components';
 import componentDocs from '../../../../generate-component-docs/componentDocs.json';
 import type {
   NormalisedPropType,
   ExportDoc,
+  NormalisedInterface,
 } from '../../../../generate-component-docs/generate';
 
 type ComponentName = keyof typeof componentDocs;
@@ -91,29 +92,70 @@ export const ComponentProps = ({ componentName }: Props) => {
     return null;
   }
 
-  const [requiredProps, optionalProps] = partition(
-    doc.props.props,
-    ({ required }) => required,
-  );
-
   return Object.keys(doc.props).length === 0 ? null : (
+    <PropList props={doc.props.props} />
+  );
+};
+
+const PropList = ({ props }: { props: NormalisedInterface['props'] }) => {
+  const propList = useMemo(() => {
+    const [requiredProps, notRequiredProps] = partition(
+      props,
+      ({ required }) => required,
+    );
+
+    const [deprecatedProps, optionalProps] = partition(
+      notRequiredProps,
+      ({ deprecated }) => deprecated,
+    );
+
+    return [...requiredProps, ...optionalProps, ...deprecatedProps];
+  }, [props]);
+
+  return (
     <Stack space="xlarge">
-      {[...requiredProps, ...optionalProps].map(
-        ({ propName, type, required, description }) => (
+      {propList.map(({ propName, type, required, description, tags }) => {
+        const deprecatedMessage = tags
+          .filter(({ name }) => name === 'deprecated')
+          .map(({ text }) => {
+            const linkMatch = text.match(/\[(?<linkText>.*)\]\((.*)\)/);
+
+            if (linkMatch && linkMatch.groups) {
+              const [before, after] = text.split(linkMatch[0]);
+
+              return [before, linkMatch.groups.linkText, after]
+                .filter((t) => t)
+                .join(' ');
+            }
+
+            return text;
+          })
+          .join('\n');
+
+        return (
           <Stack space="medium" key={propName}>
             <Stack space="small">
-              <Text weight="strong">
-                {propName}
-                {required ? ' (Required)' : null}
-              </Text>
+              <Inline space="small" alignY="center">
+                <Text weight="strong">{propName}</Text>
+                {required ? (
+                  <Badge tone="neutral" bleedY>
+                    Required
+                  </Badge>
+                ) : null}
+                {deprecatedMessage.length > 0 ? (
+                  <Badge tone="caution" title={deprecatedMessage} bleedY>
+                    Deprecated
+                  </Badge>
+                ) : null}
+              </Inline>
               {description ? <Text size="small">{description}</Text> : null}
             </Stack>
             <Text size="small" tone="secondary">
               <PropType type={type} />
             </Text>
           </Stack>
-        ),
-      )}
+        );
+      })}
     </Stack>
   );
 };
