@@ -68,7 +68,7 @@ const docs: ComponentDocs = {
               {({ triggerProps }) => (
                 <Box
                   cursor="default"
-                  background="neutral"
+                  background="infoLight"
                   padding="xsmall"
                   borderRadius="standard"
                   {...triggerProps}
@@ -85,7 +85,7 @@ const docs: ComponentDocs = {
               {({ triggerProps }) => (
                 <Box
                   cursor="default"
-                  background="neutral"
+                  background="infoLight"
                   padding="xsmall"
                   borderRadius="standard"
                   {...triggerProps}
