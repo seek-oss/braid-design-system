@@ -5,10 +5,12 @@ import {
   Box,
   Column,
   Columns,
+  Heading,
   Placeholder,
   Stack,
 } from '../../playroom/components';
 import source from '../../utils/source.macro';
+import { validCardComponents } from './Card';
 
 const docs: ComponentDocs = {
   category: 'Layout',
@@ -86,6 +88,41 @@ const docs: ComponentDocs = {
               </Card>
             </Column>
           </Columns>,
+        ),
+    },
+    {
+      label: 'Custom semantics',
+      description: (
+        <Text>
+          The HTML tag can be customised to ensure the underlying document
+          semantics are meaningful. This can be done using the{' '}
+          <Strong>component</Strong> prop and supports{' '}
+          {validCardComponents.map((c, i) => {
+            const notLastTwo = validCardComponents.length - 2;
+            const joiningLastElements = i === notLastTwo ? ' and ' : '.';
+
+            return (
+              <>
+                <Strong key={c}>{c}</Strong>
+                {c === 'div' ? ' (default)' : ''}
+                {i < notLastTwo ? ', ' : joiningLastElements}
+              </>
+            );
+          })}
+        </Text>
+      ),
+      Example: () =>
+        source(
+          <Card component="article">
+            <Stack space="gutter">
+              <Heading level="3">Uses an &lt;article&gt; element</Heading>
+              <Text tone="secondary">
+                Provides <Strong>article</Strong> semantics to indicate that
+                this is a self-contained piece of content that could be used
+                elsewhere as a standalone unit, e.g. a job.
+              </Text>
+            </Stack>
+          </Card>,
         ),
     },
     {

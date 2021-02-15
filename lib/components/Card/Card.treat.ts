@@ -5,16 +5,28 @@ export const toneKeyline = style({
   borderBottomRightRadius: '0 !important',
 });
 
-export const clickable = style(({ grid }) => ({
+export const root = style({});
+
+export const content = style(({ grid }) => ({
   transform: `translateZ(0)`,
-  ':hover': {
-    transform: `translateY(-${grid / 2}px) translateZ(0)`,
+  selectors: {
+    [`${root}:hover:not(:active) &`]: {
+      transform: `translateY(-${Math.round(grid / 2)}px) translateZ(0)`,
+    },
   },
 }));
 
-export const hover = style({
+export const focusOverlay = style({
   selectors: {
-    [`${clickable}:hover &`]: {
+    [`${root}:focus &`]: {
+      opacity: 1,
+    },
+  },
+});
+
+export const hoverOverlay = style({
+  selectors: {
+    [`${root}:hover:not(:active) &`]: {
       opacity: 0.5,
     },
   },
