@@ -79,16 +79,33 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
-      label: 'With vertical bleed',
+      label: 'With vertical bleed (standard)',
       background: 'card',
       Example: () => (
-        <Inline space="small" alignY="center">
-          <Heading level="4">Heading</Heading>
-          <Button bleedY>Button</Button>
-          <Button bleedY size="small">
-            Button
-          </Button>
-        </Inline>
+        <Box background="neutralLight" borderRadius="standard" padding="gutter">
+          <Box background="card">
+            <Inline space="xsmall" alignY="center">
+              <Heading level="2">Heading</Heading>
+              <Button bleedY>Button</Button>
+            </Inline>
+          </Box>
+        </Box>
+      ),
+    },
+    {
+      label: 'With vertical bleed (small)',
+      background: 'card',
+      Example: () => (
+        <Box background="neutralLight" borderRadius="standard" padding="gutter">
+          <Box background="card">
+            <Inline space="xsmall" alignY="center">
+              <Heading level="2">Heading</Heading>
+              <Button bleedY size="small">
+                Button
+              </Button>
+            </Inline>
+          </Box>
+        </Box>
       ),
     },
     {

@@ -24,10 +24,17 @@ import ActionsContext from '../Actions/ActionsContext';
 import buttonSmallPaddingSize from './buttonSmallPaddingSize';
 import * as styleRefs from './ButtonRenderer.treat';
 
+export const buttonVariants = [
+  'solid',
+  'ghost',
+  'soft',
+  'transparent',
+] as const;
+
 type ButtonSize = 'standard' | 'small';
 type ButtonTone = 'brandAccent' | 'critical';
 type ButtonWeight = 'weak' | 'regular' | 'strong';
-type ButtonVariant = 'solid' | 'ghost' | 'soft' | 'transparent';
+type ButtonVariant = typeof buttonVariants[number];
 type ButtonStyles = {
   textTone: TextProps['tone'];
   background: UseBoxStylesProps['background'];
@@ -36,7 +43,7 @@ type ButtonStyles = {
   boxShadow: UseBoxStylesProps['boxShadow'];
 };
 
-const buttonVariants: Record<
+const buttonVariantStyles: Record<
   ButtonVariant,
   Record<'default' | ButtonTone, ButtonStyles>
 > = {
@@ -147,8 +154,8 @@ const useButtonVariant = (variant: ButtonVariant, tone?: ButtonTone) => {
   }
 
   return (
-    buttonVariants[variant][tone ?? 'default'] ??
-    buttonVariants[variant].default
+    buttonVariantStyles[variant][tone ?? 'default'] ??
+    buttonVariantStyles[variant].default
   );
 };
 

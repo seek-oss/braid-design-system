@@ -260,13 +260,44 @@ const docs: ComponentDocs = {
       background: 'card',
       Example: () =>
         source(
-          <Inline space="small" alignY="center">
-            <Heading level="4">Heading</Heading>
-            <Button bleedY>Button</Button>
-            <Button bleedY size="small">
-              Button
-            </Button>
-          </Inline>,
+          <Stack space="large">
+            <Stack space="small">
+              <Text tone="secondary" weight="strong">
+                Standard size
+              </Text>
+              <Box
+                background="neutralLight"
+                borderRadius="standard"
+                padding="gutter"
+              >
+                <Box background="card">
+                  <Inline space="xsmall" alignY="center">
+                    <Heading level="2">Heading</Heading>
+                    <Button bleedY>Button</Button>
+                  </Inline>
+                </Box>
+              </Box>
+            </Stack>
+            <Stack space="small">
+              <Text tone="secondary" weight="strong">
+                Small size
+              </Text>
+              <Box
+                background="neutralLight"
+                borderRadius="standard"
+                padding="gutter"
+              >
+                <Box background="card">
+                  <Inline space="xsmall" alignY="center">
+                    <Heading level="2">Heading</Heading>
+                    <Button bleedY size="small">
+                      Button
+                    </Button>
+                  </Inline>
+                </Box>
+              </Box>
+            </Stack>
+          </Stack>,
         ),
     },
   ],
