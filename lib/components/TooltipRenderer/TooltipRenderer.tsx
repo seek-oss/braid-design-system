@@ -197,7 +197,6 @@ export const TooltipRenderer = ({
   const tooltipStyles = useBoxStyles({
     component: 'div',
     zIndex: 'notification',
-    paddingX: 'xsmall',
     display: triggerRef && visible ? undefined : 'none',
   });
 
