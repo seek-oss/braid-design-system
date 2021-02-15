@@ -23,10 +23,17 @@ import { useVirtualTouchable } from '../private/touchable/useVirtualTouchable';
 import ActionsContext from '../Actions/ActionsContext';
 import * as styleRefs from './ButtonRenderer.treat';
 
+export const buttonVariants = [
+  'solid',
+  'ghost',
+  'soft',
+  'transparent',
+] as const;
+
 type ButtonSize = 'standard' | 'small';
 type ButtonTone = 'brandAccent' | 'critical';
 type ButtonWeight = 'weak' | 'regular' | 'strong';
-type ButtonVariant = 'solid' | 'ghost' | 'soft' | 'transparent';
+type ButtonVariant = typeof buttonVariants[number];
 type ButtonStyles = {
   textTone: TextProps['tone'];
   background: UseBoxStylesProps['background'];
@@ -35,7 +42,7 @@ type ButtonStyles = {
   boxShadow: UseBoxStylesProps['boxShadow'];
 };
 
-const buttonVariants: Record<
+const buttonVariantStyles: Record<
   ButtonVariant,
   Record<'default' | ButtonTone, ButtonStyles>
 > = {
@@ -146,8 +153,8 @@ const useButtonVariant = (variant: ButtonVariant, tone?: ButtonTone) => {
   }
 
   return (
-    buttonVariants[variant][tone ?? 'default'] ??
-    buttonVariants[variant].default
+    buttonVariantStyles[variant][tone ?? 'default'] ??
+    buttonVariantStyles[variant].default
   );
 };
 
@@ -198,7 +205,9 @@ const ButtonChildren = ({ children }: ButtonChildrenProps) => {
         paddingX={
           size === 'small' || variant === 'transparent' ? 'small' : 'medium'
         }
-        paddingY={size === 'small' ? 'xsmall' : undefined}
+        paddingY={
+          size === 'small' ? styles.constants.smallButtonPaddingSize : undefined
+        }
         pointerEvents="none"
         textAlign="center"
         overflow="hidden"
@@ -237,6 +246,7 @@ export interface PrivateButtonRendererProps {
   size?: ButtonSize;
   tone?: ButtonTone;
   variant?: ButtonVariant;
+  bleedY?: boolean;
   /** @deprecated The `weight` prop has been deprecated. Please choose a [variant](https://seek-oss.github.io/braid-design-system/components/Button#variants) instead. */
   weight?: ButtonWeight;
   loading?: boolean;
@@ -289,6 +299,7 @@ export const PrivateButtonRenderer = ({
   size: sizeProp,
   tone: toneProp,
   variant: variantProp,
+  bleedY,
   weight,
   loading = false,
   children,
@@ -359,6 +370,8 @@ export const PrivateButtonRenderer = ({
       variant !== 'solid' ? styles.lightHoverBg : null,
       useBackgroundLightness() === 'dark' ? styles.inverted : null,
       size === 'small' ? virtualTouchableStyles : null,
+      size === 'standard' ? styles.standard : styles.small,
+      bleedY ? styles.bleedY : null,
     ],
   });
 

@@ -12,21 +12,14 @@ import {
   Strong,
 } from '..';
 import { TooltipContent } from './TooltipRenderer';
+import { constants } from './TooltipRenderer.treat';
 
 const docs: ComponentDocs = {
   category: 'Content',
   Example: ({ id }) =>
     source(
       <Inline space="small">
-        <TooltipRenderer
-          id={id}
-          tooltip={
-            <Text>
-              This is a tooltip! If you provide enough content, the text will
-              wrap onto multiple lines.
-            </Text>
-          }
-        >
+        <TooltipRenderer id={id} tooltip={<Text>This is a tooltip!</Text>}>
           {({ triggerProps }) => (
             <Box aria-label="Help" {...triggerProps}>
               <IconHelp />
@@ -56,12 +49,83 @@ const docs: ComponentDocs = {
   ),
   additional: [
     {
-      label: 'Custom formatting',
+      label: 'Development considerations',
       description: (
         <Text>
-          You can use multiple text elements and layout components to create
-          more custom layouts.
+          The trigger element must support <Strong>ref</Strong>,{' '}
+          <Strong>tabIndex</Strong> and <Strong>aria-describedby</Strong> props.
         </Text>
+      ),
+    },
+    {
+      label: 'Placement',
+      description: (
+        <>
+          <Text>
+            Tooltips are positioned above the trigger element by default, but
+            you can configure this via the <Strong>placement</Strong> prop which
+            accepts either <Strong>top</Strong> or <Strong>bottom</Strong>.
+          </Text>
+          <Text>
+            Whichever direction you choose, the tooltip will be centred against
+            the trigger element.
+          </Text>
+        </>
+      ),
+      Example: ({ id }) =>
+        source(
+          <Inline space="small">
+            <TooltipRenderer
+              id={`${id}_1`}
+              placement="top"
+              tooltip={<Text>The placement is “top”</Text>}
+            >
+              {({ triggerProps }) => (
+                <Box
+                  cursor="default"
+                  background="infoLight"
+                  padding="xsmall"
+                  borderRadius="standard"
+                  {...triggerProps}
+                >
+                  <Text weight="strong">Top</Text>
+                </Box>
+              )}
+            </TooltipRenderer>
+            <TooltipRenderer
+              id={`${id}_2`}
+              placement="bottom"
+              tooltip={<Text>The placement is “bottom”</Text>}
+            >
+              {({ triggerProps }) => (
+                <Box
+                  cursor="default"
+                  background="infoLight"
+                  padding="xsmall"
+                  borderRadius="standard"
+                  {...triggerProps}
+                >
+                  <Text weight="strong">Bottom</Text>
+                </Box>
+              )}
+            </TooltipRenderer>
+          </Inline>,
+        ),
+    },
+    {
+      label: 'Formatting',
+      description: (
+        <>
+          <Text>
+            To ensure readability, tooltips have a maximum width of{' '}
+            {constants.maxWidth}px, which means that text will wrap onto
+            multiple lines if you provide enough content.
+          </Text>
+          <Text>
+            You can also use multiple text elements and layout components to
+            create more custom layouts.
+          </Text>
+        </>
       ),
       Example: ({ id }) => ({
         code: source(
@@ -100,15 +164,6 @@ const docs: ComponentDocs = {
           </TooltipContent>
         ),
       }),
-    },
-    {
-      label: 'Development considerations',
-      description: (
-        <Text>
-          The trigger element must support <Strong>ref</Strong>,{' '}
-          <Strong>tabIndex</Strong> and <Strong>aria-describedby</Strong> props.
-        </Text>
-      ),
     },
   ],
 };

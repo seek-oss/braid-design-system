@@ -3,6 +3,7 @@ export * from '../components';
 
 export { AccordionItem } from '../components/Accordion/AccordionItem.playroom';
 export { Autosuggest } from '../components/Autosuggest/Autosuggest.playroom';
+export { Button } from '../components/Button/Button.playroom';
 export { ButtonLink } from '../components/ButtonLink/ButtonLink.playroom';
 export { Checkbox } from '../components/Checkbox/Checkbox.playroom';
 export { Dialog } from '../components/Dialog/Dialog.playroom';

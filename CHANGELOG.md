@@ -1,5 +1,53 @@
 # braid-design-system
 
+## 29.28.0
+
+### Minor Changes
+
+- **Box:** Support value of `default` on `cursor` prop ([#901](https://github.com/seek-oss/braid-design-system/pull/901))
+
+  **EXAMPLE USAGE**
+
+  ```tsx
+  <Box cursor="default">...</Box>
+  ```
+
+- **TooltipRenderer:** Add `placement` prop, support `top` and `bottom`. Set default placement to `top`. ([#901](https://github.com/seek-oss/braid-design-system/pull/901))
+
+  **EXAMPLE USAGE**
+
+  ```tsx
+  <TooltipRenderer
+    id={id}
+    tooltip={<Text>This is a tooltip!</Text>}
+    placement="bottom"
+  >
+    {({ triggerProps }) => (
+      <Box aria-label="Help" {...triggerProps}>
+        <IconHelp />
+      </Box>
+    )}
+  </TooltipRenderer>
+  ```
+
+- **Button, ButtonLink, ButtonRenderer:** Add `bleedY` prop ([#900](https://github.com/seek-oss/braid-design-system/pull/900))
+
+  You can now choose to allow the button’s background colour to bleed out into the surrounding layout, making it easier to align with other elements.
+
+  For example, we can align a button to a Heading element using an Inline, even though the button is actually taller than the heading. If we didn’t use the **bleedY** prop in this case, the button would introduce unwanted space above and below the heading.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Inline space="small" alignY="center">
+    <Heading level="4">Heading</Heading>
+    <Button bleedY>Button</Button>
+    <Button bleedY size="small">
+      Button
+    </Button>
+  </Inline>
+  ```
+
 ## 29.27.0
 
 ### Minor Changes

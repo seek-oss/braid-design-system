@@ -313,6 +313,7 @@ export const boxShadow = styleMap(
 );
 
 export const cursor = styleMap({
+  default: { cursor: 'default' },
   pointer: { cursor: 'pointer' },
 });
 

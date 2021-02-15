@@ -1347,5 +1347,30 @@
         "summary": "Add **TooltipRenderer** component\n\nTooltips appear on mouse hover, tap and keyboard focus, and are hidden when scrolling and clicking/tapping/focusing on other elements.\n\nTooltips cannot contain interactive elements like links, buttons or form elements.\n\nNote: The trigger element must support `ref`, `tabIndex` and `aria-describedby` props.\n\n**EXAMPLE USAGE**\n\n```tsx\n<TooltipRenderer\n  id={id}\n  tooltip={\n    <Text>\n      This is a tooltip!\n    </Text>\n  }\n>\n  {({ triggerProps }) => (\n    <Box aria-label=\"Help\" {...triggerProps}>\n      <IconHelp />\n    </Box>\n  )}\n</TooltipRenderer>\n```"
       }
     ]
+  },
+  {
+    "version": "29.28.0",
+    "updates": [
+      {
+        "updated": [
+          "Box"
+        ],
+        "summary": "**Box:** Support value of `default` on `cursor` prop\n\n**EXAMPLE USAGE**\n\n```tsx\n<Box cursor=\"default\">...</Box>\n```"
+      },
+      {
+        "updated": [
+          "TooltipRenderer"
+        ],
+        "summary": "**TooltipRenderer:** Add `placement` prop, support `top` and `bottom`. Set default placement to `top`.\n\n**EXAMPLE USAGE**\n\n```tsx\n<TooltipRenderer\n  id={id}\n  tooltip={<Text>This is a tooltip!</Text>}\n  placement=\"bottom\"\n>\n  {({ triggerProps }) => (\n    <Box aria-label=\"Help\" {...triggerProps}>\n      <IconHelp />\n    </Box>\n  )}\n</TooltipRenderer>\n```"
+      },
+      {
+        "updated": [
+          "Button",
+          "ButtonLink",
+          "ButtonRenderer"
+        ],
+        "summary": "**Button, ButtonLink, ButtonRenderer:** Add `bleedY` prop\n\nYou can now choose to allow the button’s background colour to bleed out into the surrounding layout, making it easier to align with other elements.\n\nFor example, we can align a button to a Heading element using an Inline, even though the button is actually taller than the heading. If we didn’t use the **bleedY** prop in this case, the button would introduce unwanted space above and below the heading.\n\n**EXAMPLE USAGE:**\n```jsx\n<Inline space=\"small\" alignY=\"center\">\n  <Heading level=\"4\">Heading</Heading>\n  <Button bleedY>Button</Button>\n  <Button bleedY size=\"small\">\n    Button\n  </Button>\n</Inline>\n```"
+      }
+    ]
   }
 ]
