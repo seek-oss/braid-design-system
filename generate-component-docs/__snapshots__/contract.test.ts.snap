@@ -584,7 +584,9 @@ Object {
     controls?: boolean
     coords?: string
     crossOrigin?: string
-    cursor?: "pointer"
+    cursor?: 
+        | "default"
+        | "pointer"
     dangerouslySetInnerHTML?: { __html: string; }
     data?: string
     datatype?: string
@@ -1367,7 +1369,9 @@ Object {
         | "webview"
         | ComponentClass<any, any>
         | FunctionComponent<any>
-    cursor?: "pointer"
+    cursor?: 
+        | "default"
+        | "pointer"
     display?: ResponsiveProp<
         | "block"
         | "flex"
@@ -6872,6 +6876,9 @@ Object {
   props: {
     children: (renderProps: { triggerProps: TriggerProps; }) => ReactNode
     id: string
+    placement?: 
+        | "bottom"
+        | "top"
     tooltip: ReactNodeNoStrings
 },
 }
