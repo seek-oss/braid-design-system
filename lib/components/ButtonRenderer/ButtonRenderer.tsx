@@ -21,7 +21,6 @@ import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
 import { useTouchableSpace } from '../../hooks/typography';
 import { useVirtualTouchable } from '../private/touchable/useVirtualTouchable';
 import ActionsContext from '../Actions/ActionsContext';
-import buttonSmallPaddingSize from './buttonSmallPaddingSize';
 import * as styleRefs from './ButtonRenderer.treat';
 
 export const buttonVariants = [
@@ -206,7 +205,9 @@ const ButtonChildren = ({ children }: ButtonChildrenProps) => {
         paddingX={
           size === 'small' || variant === 'transparent' ? 'small' : 'medium'
         }
-        paddingY={size === 'small' ? buttonSmallPaddingSize : undefined}
+        paddingY={
+          size === 'small' ? styles.constants.smallButtonPaddingSize : undefined
+        }
         pointerEvents="none"
         textAlign="center"
         overflow="hidden"

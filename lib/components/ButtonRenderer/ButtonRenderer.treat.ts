@@ -1,5 +1,8 @@
 import { style } from 'sku/treat';
-import buttonSmallPaddingSize from './buttonSmallPaddingSize';
+
+export const constants = {
+  smallButtonPaddingSize: 'small' as const,
+};
 
 export const root = style({
   textDecoration: 'none',
@@ -63,7 +66,7 @@ export const bleedY = style(
       const { capHeight } = typography.text[size][breakpoint];
       const height =
         size === 'small'
-          ? space[buttonSmallPaddingSize] * grid * 2 +
+          ? space[constants.smallButtonPaddingSize] * grid * 2 +
             typography.text.small[breakpoint].rows * grid
           : touchableSize * grid;
 
