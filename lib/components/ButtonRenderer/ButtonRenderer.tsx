@@ -21,6 +21,7 @@ import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
 import { useTouchableSpace } from '../../hooks/typography';
 import { useVirtualTouchable } from '../private/touchable/useVirtualTouchable';
 import ActionsContext from '../Actions/ActionsContext';
+import buttonSmallPaddingSize from './buttonSmallPaddingSize';
 import * as styleRefs from './ButtonRenderer.treat';
 
 type ButtonSize = 'standard' | 'small';
@@ -198,7 +199,7 @@ const ButtonChildren = ({ children }: ButtonChildrenProps) => {
         paddingX={
           size === 'small' || variant === 'transparent' ? 'small' : 'medium'
         }
-        paddingY={size === 'small' ? 'xsmall' : undefined}
+        paddingY={size === 'small' ? buttonSmallPaddingSize : undefined}
         pointerEvents="none"
         textAlign="center"
         overflow="hidden"
@@ -237,6 +238,7 @@ export interface PrivateButtonRendererProps {
   size?: ButtonSize;
   tone?: ButtonTone;
   variant?: ButtonVariant;
+  bleedY?: boolean;
   /** @deprecated The `weight` prop has been deprecated. Please choose a [variant](https://seek-oss.github.io/braid-design-system/components/Button#variants) instead. */
   weight?: ButtonWeight;
   loading?: boolean;
@@ -289,6 +291,7 @@ export const PrivateButtonRenderer = ({
   size: sizeProp,
   tone: toneProp,
   variant: variantProp,
+  bleedY,
   weight,
   loading = false,
   children,
@@ -359,6 +362,8 @@ export const PrivateButtonRenderer = ({
       variant !== 'solid' ? styles.lightHoverBg : null,
       useBackgroundLightness() === 'dark' ? styles.inverted : null,
       size === 'small' ? virtualTouchableStyles : null,
+      size === 'standard' ? styles.standard : styles.small,
+      bleedY ? styles.bleedY : null,
     ],
   });
 

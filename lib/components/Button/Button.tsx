@@ -26,6 +26,7 @@ export const Button = ({
   size,
   tone,
   weight,
+  bleedY,
   variant,
   loading,
   type = 'button',
@@ -41,6 +42,7 @@ export const Button = ({
     weight={weight}
     loading={loading}
     variant={variant}
+    bleedY={bleedY}
   >
     {(ButtonChildren, buttonProps) => (
       <button

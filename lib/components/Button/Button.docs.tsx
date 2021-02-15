@@ -5,6 +5,7 @@ import {
   Card,
   Stack,
   Box,
+  Heading,
   Text,
   TextLink,
   Inline,
@@ -236,6 +237,36 @@ const docs: ComponentDocs = {
               <Button variant="transparent">Transparent</Button>
             </Inline>
           </Box>,
+        ),
+    },
+    {
+      label: 'Vertical bleed',
+      description: (
+        <>
+          <Text>
+            With the <Strong>bleedY</Strong> prop, you can allow the background
+            colour to bleed out into the surrounding layout.
+          </Text>
+          <Text>
+            For example, we can align a button to a{' '}
+            <TextLink href="/components/Heading">Heading</TextLink> element
+            using an <TextLink href="/components/Inline">Inline</TextLink>, even
+            though the button is actually taller than the heading. If we didn’t
+            use the <Strong>bleedY</Strong> prop in this case, the button would
+            introduce unwanted space above and below the heading.
+          </Text>
+        </>
+      ),
+      background: 'card',
+      Example: () =>
+        source(
+          <Inline space="small" alignY="center">
+            <Heading level="4">Heading</Heading>
+            <Button bleedY>Button</Button>
+            <Button bleedY size="small">
+              Button
+            </Button>
+          </Inline>,
         ),
     },
   ],
