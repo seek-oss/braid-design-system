@@ -584,7 +584,9 @@ Object {
     controls?: boolean
     coords?: string
     crossOrigin?: string
-    cursor?: "pointer"
+    cursor?: 
+        | "default"
+        | "pointer"
     dangerouslySetInnerHTML?: { __html: string; }
     data?: string
     datatype?: string
@@ -1367,7 +1369,9 @@ Object {
         | "webview"
         | ComponentClass<any, any>
         | FunctionComponent<any>
-    cursor?: "pointer"
+    cursor?: 
+        | "default"
+        | "pointer"
     display?: ResponsiveProp<
         | "block"
         | "flex"
@@ -1707,6 +1711,7 @@ Object {
         | "true"
         | false
         | true
+    bleedY?: boolean
     children?: ReactNode
     data?: Record<string, string | number>
     id?: string
@@ -1903,6 +1908,7 @@ Object {
     autoCapitalize?: string
     autoCorrect?: string
     autoSave?: string
+    bleedY?: boolean
     children?: ReactNode
     color?: string
     contentEditable?: 
@@ -2172,6 +2178,7 @@ exports[`ButtonRenderer 1`] = `
 Object {
   exportType: component,
   props: {
+    bleedY?: boolean
     children: (ButtonChildren: ComponentType<ButtonChildrenProps>, styleProps: { style: CSSProperties; className: string; }) => ReactNode
     loading?: boolean
     size?: 
@@ -6869,6 +6876,9 @@ Object {
   props: {
     children: (renderProps: { triggerProps: TriggerProps; }) => ReactNode
     id: string
+    placement?: 
+        | "bottom"
+        | "top"
     tooltip: ReactNodeNoStrings
 },
 }

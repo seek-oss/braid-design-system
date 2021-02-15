@@ -61,17 +61,30 @@ export const TooltipContent = ({
   );
 };
 
+const validPlacements = ['top', 'bottom'] as const;
+
+type Placement = typeof validPlacements[number];
+
 export interface TooltipRendererProps {
   id: string;
   tooltip: ReactNodeNoStrings;
+  placement?: Placement;
   children: (renderProps: { triggerProps: TriggerProps }) => ReactNode;
 }
 
 export const TooltipRenderer = ({
   id,
   tooltip,
+  placement = 'top',
   children,
 }: TooltipRendererProps) => {
+  assert(
+    validPlacements.includes(placement),
+    `The 'placement' prop must be one of the following: ${validPlacements.join(
+      ', ',
+    )}`,
+  );
+
   const [controlledVisible, setControlledVisible] = useState(false);
   const [opacity, setOpacity] = useState<0 | 100>(0);
   const { grid, space } = useSpace();
@@ -83,13 +96,30 @@ export const TooltipRenderer = ({
     tooltipRef,
     setTriggerRef,
     triggerRef,
-  } = usePopperTooltip({
-    placement: 'bottom',
-    trigger: [isMobile() ? 'click' : 'hover', 'focus'],
-    visible: controlledVisible,
-    onVisibleChange: setControlledVisible,
-    offset: [0, space.xsmall * grid],
-  });
+  } = usePopperTooltip(
+    {
+      placement,
+      trigger: [isMobile() ? 'click' : 'hover', 'focus'],
+      visible: controlledVisible,
+      onVisibleChange: setControlledVisible,
+    },
+    {
+      modifiers: [
+        {
+          name: 'preventOverflow',
+          options: {
+            padding: space.xsmall * grid,
+          },
+        },
+        {
+          name: 'offset',
+          options: {
+            offset: [0, space.xsmall * grid],
+          },
+        },
+      ],
+    },
+  );
 
   useEffect(() => {
     if (visible) {
@@ -167,7 +197,6 @@ export const TooltipRenderer = ({
   const tooltipStyles = useBoxStyles({
     component: 'div',
     zIndex: 'notification',
-    paddingX: 'xsmall',
     display: triggerRef && visible ? undefined : 'none',
   });
 

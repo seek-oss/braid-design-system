@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentExample } from '../../../site/src/types';
 import source from '../../utils/source.macro';
-import { Button, Box, Inline, IconSend } from '../';
+import { Button, Box, Heading, Inline, IconSend } from '../';
 
 export const galleryItems: ComponentExample[] = [
   {
@@ -95,6 +95,19 @@ export const galleryItems: ComponentExample[] = [
       source(
         <Inline space="small">
           <Button size="small">Submit</Button>
+        </Inline>,
+      ),
+  },
+  {
+    label: 'With vertical bleed',
+    Example: () =>
+      source(
+        <Inline space="small" alignY="center">
+          <Heading level="4">Heading</Heading>
+          <Button bleedY>Button</Button>
+          <Button bleedY size="small">
+            Button
+          </Button>
         </Inline>,
       ),
   },

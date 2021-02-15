@@ -3,6 +3,7 @@ import { ComponentScreenshot } from '../../../site/src/types';
 import { background as boxBackgrounds } from '../Box/useBoxStyles.treat';
 import { Box, Button } from '../';
 import { Inline } from '../Inline/Inline';
+import { Heading } from '../Heading/Heading';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <div style={{ maxWidth: '300px' }}>{children}</div>
@@ -75,6 +76,36 @@ export const screenshots: ComponentScreenshot = {
             Transparent
           </Button>
         </Inline>
+      ),
+    },
+    {
+      label: 'With vertical bleed (standard)',
+      background: 'card',
+      Example: () => (
+        <Box background="neutralLight" borderRadius="standard" padding="gutter">
+          <Box background="card">
+            <Inline space="xsmall" alignY="center">
+              <Heading level="2">Heading</Heading>
+              <Button bleedY>Button</Button>
+            </Inline>
+          </Box>
+        </Box>
+      ),
+    },
+    {
+      label: 'With vertical bleed (small)',
+      background: 'card',
+      Example: () => (
+        <Box background="neutralLight" borderRadius="standard" padding="gutter">
+          <Box background="card">
+            <Inline space="xsmall" alignY="center">
+              <Heading level="2">Heading</Heading>
+              <Button bleedY size="small">
+                Button
+              </Button>
+            </Inline>
+          </Box>
+        </Box>
       ),
     },
     {

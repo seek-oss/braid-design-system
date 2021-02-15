@@ -20,6 +20,7 @@ export const ButtonLink = ({
   tone,
   weight,
   variant,
+  bleedY,
   loading,
   ...restProps
 }: ButtonLinkProps) => {
@@ -32,6 +33,7 @@ export const ButtonLink = ({
       weight={weight}
       variant={variant}
       loading={loading}
+      bleedY={bleedY}
     >
       {(ButtonChildren, buttonProps) => (
         <LinkComponent {...restProps} {...buttonProps}>
