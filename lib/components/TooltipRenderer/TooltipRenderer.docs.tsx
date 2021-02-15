@@ -49,6 +49,15 @@ const docs: ComponentDocs = {
   ),
   additional: [
     {
+      label: 'Development considerations',
+      description: (
+        <Text>
+          The trigger element must support <Strong>ref</Strong>,{' '}
+          <Strong>tabIndex</Strong> and <Strong>aria-describedby</Strong> props.
+        </Text>
+      ),
+    },
+    {
       label: 'Placement',
       description: (
         <Text>
@@ -149,15 +158,6 @@ const docs: ComponentDocs = {
           </TooltipContent>
         ),
       }),
-    },
-    {
-      label: 'Development considerations',
-      description: (
-        <Text>
-          The trigger element must support <Strong>ref</Strong>,{' '}
-          <Strong>tabIndex</Strong> and <Strong>aria-describedby</Strong> props.
-        </Text>
-      ),
     },
   ],
 };
