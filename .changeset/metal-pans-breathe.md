@@ -15,7 +15,7 @@ updated:
 <TooltipRenderer
   id={id}
   tooltip={<Text>This is a tooltip!</Text>}
-  placement="top"
+  placement="bottom"
 >
   {({ triggerProps }) => (
     <Box aria-label="Help" {...triggerProps}>
