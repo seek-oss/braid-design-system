@@ -40,9 +40,10 @@ export const PrivateTextLinkRenderer = (
   const actionsContext = useContext(ActionsContext);
 
   if (process.env.NODE_ENV !== 'production') {
-    // eslint-disable-next-line no-console
-    console.warn(
-      dedent`
+    if (actionsContext !== null) {
+      // eslint-disable-next-line no-console
+      console.warn(
+        dedent`
       The "TextLink" and "TextLinkButton" components have been deprecated inside of "Actions". Use "ButtonLink" or "Button" with a "variant" of "transparent" instead.
         <Actions>
           <Button>...</Button>
@@ -50,10 +51,11 @@ export const PrivateTextLinkRenderer = (
       %c+   <ButtonLink href="..." variant="transparent">...</ButtonLink>
       %c  </Actions>
     `,
-      'color: red',
-      'color: green',
-      'color: inherit',
-    );
+        'color: red',
+        'color: green',
+        'color: inherit',
+      );
+    }
   }
 
   assert(

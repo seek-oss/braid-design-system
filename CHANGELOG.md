@@ -1,5 +1,11 @@
 # braid-design-system
 
+## 29.28.1
+
+### Patch Changes
+
+- **TextLink, TextLinkButton, TextLinkRenderer:** Scope deprecation warning to only be in Actions context. ([#903](https://github.com/seek-oss/braid-design-system/pull/903))
+
 ## 29.28.0
 
 ### Minor Changes
