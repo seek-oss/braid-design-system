@@ -30,9 +30,11 @@ export const buttonVariants = [
   'transparent',
 ] as const;
 
+export const buttonWeights = ['weak', 'regular', 'strong'] as const;
+
 type ButtonSize = 'standard' | 'small';
 type ButtonTone = 'brandAccent' | 'critical';
-type ButtonWeight = 'weak' | 'regular' | 'strong';
+type ButtonWeight = typeof buttonWeights[number];
 type ButtonVariant = typeof buttonVariants[number];
 type ButtonStyles = {
   textTone: TextProps['tone'];
