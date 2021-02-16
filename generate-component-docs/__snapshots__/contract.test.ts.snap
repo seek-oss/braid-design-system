@@ -2204,7 +2204,19 @@ exports[`Card 1`] = `
 Object {
   exportType: component,
   props: {
-    children?: ReactNode
+    children: ReactNode
+    clickable?: boolean
+    component?: 
+        | "article"
+        | "aside"
+        | "details"
+        | "div"
+        | "main"
+        | "section"
+    onClick?: (event: MouseEvent<HTMLElement, MouseEvent>) => void
+    tone?: 
+        | "info"
+        | "promote"
 },
 }
 `;
