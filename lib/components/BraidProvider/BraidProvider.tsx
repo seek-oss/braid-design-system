@@ -41,15 +41,7 @@ const DefaultLinkComponent = makeLinkComponent((props, ref) => (
 
 const LinkComponentContext = createContext<LinkComponent>(DefaultLinkComponent);
 
-export const useLinkComponentWithoutRefSupport = () => {
-  const linkComponent = useContext(LinkComponentContext);
-
-  return '__forwardRef__' in linkComponent
-    ? linkComponent.__forwardRef__
-    : linkComponent;
-};
-
-export const useLinkComponentWithRefSupport = (ref: Ref<HTMLAnchorElement>) => {
+export const useLinkComponent = (ref: Ref<HTMLAnchorElement>) => {
   const linkComponent = useContext(LinkComponentContext);
 
   assert(

@@ -59,24 +59,6 @@ const docs: ComponentDocs = {
       ),
     },
     {
-      label: 'Element support',
-      description: (
-        <Text>
-          Tooltips can be attached to{' '}
-          <TextLink href="/components/Box">Box</TextLink> and{' '}
-          <TextLink href="/components/Badge">Badge.</TextLink>
-        </Text>
-      ),
-      Example: ({ id }) =>
-        source(
-          <Inline space="medium">
-            <TooltipRenderer id={`${id}_1`} tooltip={<Text>Tooltip!</Text>}>
-              {({ triggerProps }) => <Badge {...triggerProps}>Badge</Badge>}
-            </TooltipRenderer>
-          </Inline>,
-        ),
-    },
-    {
       label: 'Placement',
       description: (
         <>
@@ -91,6 +73,7 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
+      background: 'card',
       Example: ({ id }) =>
         source(
           <Inline space="small">
@@ -99,34 +82,14 @@ const docs: ComponentDocs = {
               placement="top"
               tooltip={<Text>The placement is “top”</Text>}
             >
-              {({ triggerProps }) => (
-                <Box
-                  cursor="default"
-                  background="infoLight"
-                  padding="xsmall"
-                  borderRadius="standard"
-                  {...triggerProps}
-                >
-                  <Text weight="strong">Top</Text>
-                </Box>
-              )}
+              {({ triggerProps }) => <Badge {...triggerProps}>Top</Badge>}
             </TooltipRenderer>
             <TooltipRenderer
               id={`${id}_2`}
               placement="bottom"
               tooltip={<Text>The placement is “bottom”</Text>}
             >
-              {({ triggerProps }) => (
-                <Box
-                  cursor="default"
-                  background="infoLight"
-                  padding="xsmall"
-                  borderRadius="standard"
-                  {...triggerProps}
-                >
-                  <Text weight="strong">Bottom</Text>
-                </Box>
-              )}
+              {({ triggerProps }) => <Badge {...triggerProps}>Bottom</Badge>}
             </TooltipRenderer>
           </Inline>,
         ),

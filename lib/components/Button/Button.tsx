@@ -1,4 +1,4 @@
-import React, { ReactNode, AllHTMLAttributes } from 'react';
+import React, { forwardRef, ReactNode, AllHTMLAttributes } from 'react';
 import {
   PrivateButtonRenderer,
   PrivateButtonRendererProps,
@@ -17,47 +17,56 @@ export interface ButtonProps
   'aria-controls'?: NativeButtonProps['aria-controls'];
   'aria-expanded'?: NativeButtonProps['aria-expanded'];
   'aria-describedby'?: NativeButtonProps['aria-describedby'];
+  tabIndex?: NativeButtonProps['tabIndex'];
   data?: DataAttributeMap;
 }
 
-export const Button = ({
-  onClick,
-  children,
-  size,
-  tone,
-  weight,
-  bleedY,
-  variant,
-  loading,
-  type = 'button',
-  id,
-  'aria-controls': ariaControls,
-  'aria-expanded': ariaExpanded,
-  'aria-describedby': ariaDescribedBy,
-  data,
-}: ButtonProps) => (
-  <PrivateButtonRenderer
-    size={size}
-    tone={tone}
-    weight={weight}
-    loading={loading}
-    variant={variant}
-    bleedY={bleedY}
-  >
-    {(ButtonChildren, buttonProps) => (
-      <button
-        id={id}
-        type={type}
-        aria-controls={ariaControls}
-        aria-expanded={ariaExpanded}
-        aria-describedby={ariaDescribedBy}
-        onClick={onClick}
-        disabled={loading}
-        {...buttonProps}
-        {...buildDataAttributes(data)}
-      >
-        <ButtonChildren>{children}</ButtonChildren>
-      </button>
-    )}
-  </PrivateButtonRenderer>
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  (
+    {
+      onClick,
+      children,
+      size,
+      tone,
+      weight,
+      bleedY,
+      variant,
+      loading,
+      type = 'button',
+      id,
+      tabIndex,
+      'aria-controls': ariaControls,
+      'aria-expanded': ariaExpanded,
+      'aria-describedby': ariaDescribedBy,
+      data,
+    },
+    ref,
+  ) => (
+    <PrivateButtonRenderer
+      size={size}
+      tone={tone}
+      weight={weight}
+      loading={loading}
+      variant={variant}
+      bleedY={bleedY}
+    >
+      {(ButtonChildren, buttonProps) => (
+        <button
+          ref={ref}
+          id={id}
+          type={type}
+          tabIndex={tabIndex}
+          aria-controls={ariaControls}
+          aria-expanded={ariaExpanded}
+          aria-describedby={ariaDescribedBy}
+          onClick={onClick}
+          disabled={loading}
+          {...buttonProps}
+          {...buildDataAttributes(data)}
+        >
+          <ButtonChildren>{children}</ButtonChildren>
+        </button>
+      )}
+    </PrivateButtonRenderer>
+  ),
 );
