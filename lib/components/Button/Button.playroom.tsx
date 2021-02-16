@@ -1,17 +1,24 @@
 import React, { forwardRef } from 'react';
-import { buttonVariants } from '../ButtonRenderer/ButtonRenderer';
+import {
+  buttonVariants,
+  buttonWeights,
+} from '../ButtonRenderer/ButtonRenderer';
 import { Button as BraidButton, ButtonProps } from './Button';
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ variant, ...restProps }, ref) => (
-    <BraidButton
-      ref={ref}
-      variant={
-        variant && buttonVariants.indexOf(variant) > -1 ? variant : 'solid'
-      }
-      {...restProps}
-    />
-  ),
+  ({ variant, weight, ...restProps }, ref) => {
+    const isValidWeight = weight && buttonWeights.indexOf(weight) > -1;
+    const isValidVariant = variant && buttonVariants.indexOf(variant) > -1;
+
+    return (
+      <BraidButton
+        ref={ref}
+        variant={isValidVariant ? variant : undefined}
+        weight={isValidWeight ? weight : undefined}
+        {...restProps}
+      />
+    );
+  },
 );
 
 Button.displayName = 'Button';
