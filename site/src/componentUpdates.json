@@ -1372,5 +1372,18 @@
         "summary": "**Button, ButtonLink, ButtonRenderer:** Add `bleedY` prop\n\nYou can now choose to allow the button’s background colour to bleed out into the surrounding layout, making it easier to align with other elements.\n\nFor example, we can align a button to a Heading element using an Inline, even though the button is actually taller than the heading. If we didn’t use the **bleedY** prop in this case, the button would introduce unwanted space above and below the heading.\n\n**EXAMPLE USAGE:**\n```jsx\n<Inline space=\"small\" alignY=\"center\">\n  <Heading level=\"4\">Heading</Heading>\n  <Button bleedY>Button</Button>\n  <Button bleedY size=\"small\">\n    Button\n  </Button>\n</Inline>\n```"
       }
     ]
+  },
+  {
+    "version": "29.28.1",
+    "updates": [
+      {
+        "updated": [
+          "TextLink",
+          "TextLinkButton",
+          "TextLinkRenderer"
+        ],
+        "summary": "**TextLink, TextLinkButton, TextLinkRenderer:** Scope deprecation warning to only be in Actions context."
+      }
+    ]
   }
 ]
