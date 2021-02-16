@@ -70,3 +70,5 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     </PrivateButtonRenderer>
   ),
 );
+
+Button.displayName = 'Button';
