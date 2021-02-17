@@ -2,8 +2,6 @@ import assert from 'assert';
 import React, { ReactNode } from 'react';
 import { useStyles } from 'sku/react-treat';
 import { Box, BoxProps } from '../Box/Box';
-import { Overlay } from '../private/Overlay/Overlay';
-
 import * as styleRefs from './Card.treat';
 
 export const validCardComponents = [
@@ -17,14 +15,25 @@ export const validCardComponents = [
 
 export interface CardProps {
   children: ReactNode;
-  tone?: 'info' | 'promote';
-  clickable?: boolean;
-  onClick?: BoxProps['onClick'];
+  tone?: 'info' | 'promote' | 'formAccent';
+  radius?: BoxProps['borderRadius'];
   component?: typeof validCardComponents[number];
 }
 
-const BasicCard = ({ children, component, tone }: CardProps) => {
+export const Card = ({
+  children,
+  component = 'div',
+  radius,
+  tone,
+}: CardProps) => {
   const styles = useStyles(styleRefs);
+
+  assert(
+    validCardComponents.includes(component),
+    `Invalid Card component: '${component}'. Should be one of [${validCardComponents
+      .map((c) => `'${c}'`)
+      .join(', ')}]`,
+  );
 
   return (
     <Box
@@ -32,8 +41,7 @@ const BasicCard = ({ children, component, tone }: CardProps) => {
       position={tone ? 'relative' : undefined} // Thoughts on this?
       background="card"
       padding="gutter"
-      borderRadius="standard"
-      boxShadow="small"
+      borderRadius={radius}
     >
       {tone ? (
         <Box
@@ -49,54 +57,5 @@ const BasicCard = ({ children, component, tone }: CardProps) => {
       ) : null}
       {children}
     </Box>
-  );
-};
-
-export const Card = ({
-  children,
-  onClick,
-  component = 'div',
-  clickable,
-  tone,
-}: CardProps) => {
-  const styles = useStyles(styleRefs);
-
-  assert(
-    validCardComponents.includes(component),
-    `Invalid Card component: '${component}'. Should be one of [${validCardComponents
-      .map((c) => `'${c}'`)
-      .join(', ')}]`,
-  );
-
-  return clickable ? (
-    <Box
-      component={component}
-      position="relative"
-      cursor="pointer"
-      className={styles.root}
-      tabIndex={0}
-      onClick={onClick}
-    >
-      <Box transition="fast" className={styles.content}>
-        <Overlay
-          boxShadow="outlineFocus"
-          borderRadius="standard"
-          transition="fast"
-          onlyVisibleForKeyboardNavigation
-          className={styles.focusOverlay}
-        />
-        <Overlay
-          boxShadow="medium"
-          borderRadius="standard"
-          transition="fast"
-          className={styles.hoverOverlay}
-        />
-        <BasicCard tone={tone}>{children}</BasicCard>
-      </Box>
-    </Box>
-  ) : (
-    <BasicCard component={component} tone={tone}>
-      {children}
-    </BasicCard>
   );
 };

@@ -352,9 +352,11 @@ Object {
         | "promote"
         | "promoteLight"
         | "selection"
-    borderRadius?: 
+    borderRadius?: ResponsiveProp<
         | "full"
+        | "none"
         | "standard"
+    >
     bottom?: 0
     boxShadow?: 
         | "borderBrandAccentLarge"
@@ -1166,9 +1168,11 @@ Object {
         | "promote"
         | "promoteLight"
         | "selection"
-    borderRadius?: 
+    borderRadius?: ResponsiveProp<
         | "full"
+        | "none"
         | "standard"
+    >
     bottom?: 0
     boxShadow?: 
         | "borderBrandAccentLarge"
@@ -2205,7 +2209,6 @@ Object {
   exportType: component,
   props: {
     children: ReactNode
-    clickable?: boolean
     component?: 
         | "article"
         | "aside"
@@ -2213,8 +2216,13 @@ Object {
         | "div"
         | "main"
         | "section"
-    onClick?: (event: MouseEvent<HTMLElement, MouseEvent>) => void
+    radius?: ResponsiveProp<
+        | "full"
+        | "none"
+        | "standard"
+    >
     tone?: 
+        | "formAccent"
         | "info"
         | "promote"
 },

@@ -1,14 +1,7 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import { Card, Text, TextLink, Strong } from '../';
-import {
-  Box,
-  Column,
-  Columns,
-  Heading,
-  Placeholder,
-  Stack,
-} from '../../playroom/components';
+import { Box, Heading, Stack, Card, Text, Tiles, Strong } from '../';
+import { Placeholder } from '../../playroom/components';
 import source from '../../utils/source.macro';
 import { validCardComponents } from './Card';
 
@@ -32,62 +25,91 @@ const docs: ComponentDocs = {
       label: 'Tones',
       description: (
         <Text>
-          A Card can have a <Strong>tone</Strong> which will provide a keyline
-          down the left hand side of the container. The supported tones are{' '}
-          <Strong>info</Strong> and <Strong>promote</Strong>.
+          Providing a <Strong>tone</Strong> prop will add a keyline down the
+          left hand side of the container. The supported tones are{' '}
+          <Strong>info</Strong>, <Strong>promote</Strong> and{' '}
+          <Strong>formAccent</Strong>.
         </Text>
       ),
       Example: () =>
         source(
-          <Columns space="gutter" collapseBelow="tablet">
-            <Column>
-              <Stack space="small">
-                <Text size="xsmall" tone="secondary">
-                  INFO
-                </Text>
-                <Card tone="info">
-                  <Box style={{ height: 100 }} width="full" />
-                </Card>
-              </Stack>
-            </Column>
-            <Column>
-              <Stack space="small">
-                <Text size="xsmall" tone="secondary">
-                  PROMOTE
-                </Text>
-                <Card tone="promote">
-                  <Box style={{ height: 100 }} width="full" />
-                </Card>
-              </Stack>
-            </Column>
-          </Columns>,
+          <Tiles space="large" columns={[1, 2]}>
+            <Stack space="small">
+              <Text size="xsmall" tone="secondary">
+                INFO
+              </Text>
+              <Card tone="info">
+                <Box style={{ height: 100 }} width="full" />
+              </Card>
+            </Stack>
+
+            <Stack space="small">
+              <Text size="xsmall" tone="secondary">
+                PROMOTE
+              </Text>
+              <Card tone="promote">
+                <Box style={{ height: 100 }} width="full" />
+              </Card>
+            </Stack>
+
+            <Stack space="small">
+              <Text size="xsmall" tone="secondary">
+                FORMACCENT
+              </Text>
+              <Card tone="formAccent">
+                <Box style={{ height: 100 }} width="full" />
+              </Card>
+            </Stack>
+          </Tiles>,
         ),
     },
     {
-      label: 'Interactivity',
+      label: 'Radius',
       description: (
         <>
           <Text>
-            To support interactivity a Card can be marked as{' '}
-            <Strong>clickable</Strong>. This provides affordance to a user that
-            the entire Card is a clickable target for an action.
+            A <Strong>radius</Strong> prop can be specified to round the corners
+            of the container. The supported radii are <Strong>none</Strong>{' '}
+            (default) and <Strong>standard</Strong>.
+          </Text>
+          <Text>
+            Responsive values are supported, e.g.{' '}
+            <Strong>{"['none', 'standard']"}</Strong>. This enables cards edges
+            to be softened on larger screens, but squared all should they run
+            full bleed on smaller devices.
           </Text>
         </>
       ),
       Example: () =>
         source(
-          <Columns space="gutter" collapseBelow="tablet">
-            <Column>
-              <Card clickable>
+          <Tiles space="large" columns={[1, 2]}>
+            <Stack space="small">
+              <Text size="xsmall" tone="secondary">
+                NONE
+              </Text>
+              <Card radius="none">
                 <Box style={{ height: 100 }} width="full" />
               </Card>
-            </Column>
-            <Column>
-              <Card clickable>
+            </Stack>
+
+            <Stack space="small">
+              <Text size="xsmall" tone="secondary">
+                STANDARD
+              </Text>
+              <Card radius="standard">
                 <Box style={{ height: 100 }} width="full" />
               </Card>
-            </Column>
-          </Columns>,
+            </Stack>
+
+            <Stack space="small">
+              <Text size="xsmall" tone="secondary">
+                STANDARD ABOVE MOBILE
+              </Text>
+              <Card radius={['none', 'standard']}>
+                <Box style={{ height: 100 }} width="full" />
+              </Card>
+            </Stack>
+          </Tiles>,
         ),
     },
     {
@@ -102,11 +124,11 @@ const docs: ComponentDocs = {
             const joiningLastElements = i === notLastTwo ? ' and ' : '.';
 
             return (
-              <>
-                <Strong key={c}>{c}</Strong>
+              <Fragment key={c}>
+                <Strong>{c}</Strong>
                 {c === 'div' ? ' (default)' : ''}
                 {i < notLastTwo ? ', ' : joiningLastElements}
-              </>
+              </Fragment>
             );
           })}
         </Text>
@@ -124,20 +146,6 @@ const docs: ComponentDocs = {
             </Stack>
           </Card>,
         ),
-    },
-    {
-      label: 'Development considerations',
-      description: (
-        <Text>
-          The design of this component may change in the future, so please
-          ensure that you only use it where card semantics make sense. An easy
-          way to check this is to imagine that your card has rounded corners and
-          a shadow—would the design still work correctly, or would it look
-          broken? If it’s the latter, consider using a{' '}
-          <TextLink href="/components/Box">Box</TextLink> with a{' '}
-          <Strong>background</Strong> of <Strong>{'"card"'}</Strong> instead.
-        </Text>
-      ),
     },
   ],
 };

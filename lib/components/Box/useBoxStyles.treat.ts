@@ -84,6 +84,7 @@ export const transition = styleMap(({ transitions }) =>
 
 const borderRadiusRules = {
   full: '50%',
+  none: 0,
 };
 export const borderRadius = {
   ...styleMap(
@@ -92,6 +93,52 @@ export const borderRadius = {
   ),
   ...styleMap(
     ({ border }) => mapToStyleProperty(border.radius, 'borderRadius'),
+    'borderRadius',
+  ),
+};
+export const borderRadiusTablet = {
+  ...styleMap(
+    ({ utils: { responsiveStyle } }) =>
+      mapToStyleProperty(
+        borderRadiusRules,
+        'borderRadius',
+        (value, propertyName) =>
+          responsiveStyle({
+            tablet: { [propertyName]: value },
+          }),
+      ),
+    'borderRadius',
+  ),
+  ...styleMap(
+    ({ utils: { responsiveStyle }, border }) =>
+      mapToStyleProperty(border.radius, 'borderRadius', (value, propertyName) =>
+        responsiveStyle({
+          tablet: { [propertyName]: value },
+        }),
+      ),
+    'borderRadius',
+  ),
+};
+export const borderRadiusDesktop = {
+  ...styleMap(
+    ({ utils: { responsiveStyle } }) =>
+      mapToStyleProperty(
+        borderRadiusRules,
+        'borderRadius',
+        (value, propertyName) =>
+          responsiveStyle({
+            desktop: { [propertyName]: value },
+          }),
+      ),
+    'borderRadius',
+  ),
+  ...styleMap(
+    ({ utils: { responsiveStyle }, border }) =>
+      mapToStyleProperty(border.radius, 'borderRadius', (value, propertyName) =>
+        responsiveStyle({
+          desktop: { [propertyName]: value },
+        }),
+      ),
     'borderRadius',
   ),
 };
