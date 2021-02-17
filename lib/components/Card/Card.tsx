@@ -50,7 +50,7 @@ export const Card = ({
           bottom={0}
           left={0}
           paddingLeft="xxsmall"
-          borderRadius="standard"
+          borderRadius={radius}
           background={tone}
           className={styles.toneKeyline}
         />
