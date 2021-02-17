@@ -1,6 +1,13 @@
 import React, { Fragment, useMemo } from 'react';
 import partition from 'lodash/partition';
-import { Box, Text, Stack, Inline, Badge } from '../../../../lib/components';
+import {
+  Box,
+  Text,
+  Stack,
+  Inline,
+  Badge,
+  TooltipRenderer,
+} from '../../../../lib/components';
 import componentDocs from '../../../../generate-component-docs/componentDocs.json';
 import type {
   NormalisedPropType,
@@ -143,9 +150,16 @@ const PropList = ({ props }: { props: NormalisedInterface['props'] }) => {
                   </Badge>
                 ) : null}
                 {deprecatedMessage.length > 0 ? (
-                  <Badge tone="caution" title={deprecatedMessage} bleedY>
-                    Deprecated
-                  </Badge>
+                  <TooltipRenderer
+                    id={`prop_${propName}`}
+                    tooltip={<Text>{deprecatedMessage}</Text>}
+                  >
+                    {({ triggerProps }) => (
+                      <Badge tone="caution" bleedY {...triggerProps}>
+                        Deprecated
+                      </Badge>
+                    )}
+                  </TooltipRenderer>
                 ) : null}
               </Inline>
               {description ? <Text size="small">{description}</Text> : null}

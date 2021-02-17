@@ -122,9 +122,14 @@ exports[`Badge 1`] = `
 Object {
   exportType: component,
   props: {
+    aria-describedby?: string
     bleedY?: boolean
     children: string
     id?: string
+    ref?: 
+        | (instance: HTMLDivElement | null) => void
+        | RefObject<HTMLDivElement>
+    tabIndex?: number
     title?: string
     tone?: 
         | "caution"
@@ -1717,9 +1722,13 @@ Object {
     id?: string
     loading?: boolean
     onClick?: (event: MouseEvent<HTMLButtonElement, MouseEvent>) => void
+    ref?: 
+        | (instance: HTMLButtonElement | null) => void
+        | RefObject<HTMLButtonElement>
     size?: 
         | "small"
         | "standard"
+    tabIndex?: number
     tone?: 
         | "brandAccent"
         | "critical"
@@ -2120,6 +2129,9 @@ Object {
     prefix?: string
     property?: string
     radioGroup?: string
+    ref?: 
+        | (instance: HTMLAnchorElement | null) => void
+        | RefObject<HTMLAnchorElement>
     referrerPolicy?: 
         | ""
         | "no-referrer"
@@ -6676,6 +6688,9 @@ Object {
     prefix?: string
     property?: string
     radioGroup?: string
+    ref?: 
+        | (instance: HTMLAnchorElement | null) => void
+        | RefObject<HTMLAnchorElement>
     referrerPolicy?: 
         | ""
         | "no-referrer"
