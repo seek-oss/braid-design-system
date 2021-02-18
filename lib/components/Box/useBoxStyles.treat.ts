@@ -83,12 +83,11 @@ export const transition = styleMap(({ transitions }) =>
 );
 
 const borderRadiusRules = {
-  full: '50%',
   none: 0,
 };
 export const borderRadius = {
   ...styleMap(
-    mapToStyleProperty(borderRadiusRules, 'borderRadius'),
+    mapToStyleProperty({ ...borderRadiusRules, full: '50%' }, 'borderRadius'),
     'borderRadius',
   ),
   ...styleMap(

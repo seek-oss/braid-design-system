@@ -11,6 +11,7 @@ import * as styleRefs from './useBoxStyles.treat';
 
 export type Space = keyof Theme['space'] | 'none';
 export type ResponsiveSpace = ResponsiveProp<Space>;
+type BorderRadiusFull = 'full';
 
 export interface UseBoxStylesProps {
   component: ElementType | null;
@@ -36,7 +37,11 @@ export interface UseBoxStylesProps {
   alignItems?: ResponsiveProp<keyof typeof styleRefs.alignItems>;
   justifyContent?: ResponsiveProp<keyof typeof styleRefs.justifyContent>;
   textAlign?: ResponsiveProp<keyof typeof styleRefs.textAlign>;
-  borderRadius?: ResponsiveProp<keyof typeof styleRefs.borderRadius | 'none'>;
+  borderRadius?:
+    | BorderRadiusFull
+    | ResponsiveProp<
+        Exclude<keyof typeof styleRefs.borderRadius, BorderRadiusFull>
+      >;
   background?: keyof typeof styleRefs.background;
   boxShadow?: keyof typeof styleRefs.boxShadow;
   transform?: keyof typeof styleRefs.transform;
@@ -120,18 +125,22 @@ export const useBoxStyles = ({
   const resolvedMarginLeft = marginLeft || marginX || margin;
   const resolvedMarginRight = marginRight || marginX || margin;
 
+  const resolvedBorderRadius =
+    borderRadius && borderRadius !== 'full'
+      ? resolveResponsiveProp(
+          borderRadius,
+          styles.borderRadius,
+          styles.borderRadiusTablet,
+          styles.borderRadiusDesktop,
+        )
+      : styles.borderRadius[borderRadius!];
+
   return classnames(
     component !== null && resetStyles.base,
     component !== null &&
       resetStyles.element[component as keyof typeof resetStyleRefs.element],
     styles.background[background!],
-    borderRadius !== undefined &&
-      resolveResponsiveProp(
-        borderRadius,
-        styles.borderRadius,
-        styles.borderRadiusTablet,
-        styles.borderRadiusDesktop,
-      ),
+    borderRadius !== undefined && resolvedBorderRadius,
     styles.boxShadow[boxShadow!],
     styles.transition[transition!],
     styles.transform[transform!],

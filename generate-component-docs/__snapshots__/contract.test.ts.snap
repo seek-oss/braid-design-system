@@ -352,11 +352,12 @@ Object {
         | "promote"
         | "promoteLight"
         | "selection"
-    borderRadius?: ResponsiveProp<
+    borderRadius?: 
         | "full"
         | "none"
         | "standard"
-    >
+        | readonly ["standard" | "none", "standard" | "none", "standard" | "none"]
+        | readonly ["standard" | "none", "standard" | "none"]
     bottom?: 0
     boxShadow?: 
         | "borderBrandAccentLarge"
@@ -1168,11 +1169,12 @@ Object {
         | "promote"
         | "promoteLight"
         | "selection"
-    borderRadius?: ResponsiveProp<
+    borderRadius?: 
         | "full"
         | "none"
         | "standard"
-    >
+        | readonly ["standard" | "none", "standard" | "none", "standard" | "none"]
+        | readonly ["standard" | "none", "standard" | "none"]
     bottom?: 0
     boxShadow?: 
         | "borderBrandAccentLarge"
@@ -2216,11 +2218,12 @@ Object {
         | "div"
         | "main"
         | "section"
-    radius?: ResponsiveProp<
+    radius?: 
         | "full"
         | "none"
         | "standard"
-    >
+        | readonly ["standard" | "none", "standard" | "none", "standard" | "none"]
+        | readonly ["standard" | "none", "standard" | "none"]
     tone?: 
         | "formAccent"
         | "info"

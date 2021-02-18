@@ -16,7 +16,7 @@ export const validCardComponents = [
 export interface CardProps {
   children: ReactNode;
   tone?: 'info' | 'promote' | 'formAccent';
-  radius?: BoxProps['borderRadius'];
+  radius?: Exclude<BoxProps['borderRadius'], 'full'>;
   component?: typeof validCardComponents[number];
 }
 
@@ -33,6 +33,12 @@ export const Card = ({
     `Invalid Card component: '${component}'. Should be one of [${validCardComponents
       .map((c) => `'${c}'`)
       .join(', ')}]`,
+  );
+
+  assert(
+    (Array.isArray(radius) && !radius.some((r) => r === 'full')) ||
+      (typeof radius === 'string' && !/^full$/.test(radius)),
+    'Full is not a supported `radius`.',
   );
 
   return (
