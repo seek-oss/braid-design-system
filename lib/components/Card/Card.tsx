@@ -36,9 +36,9 @@ export const Card = ({
   );
 
   assert(
-    (Array.isArray(radius) && !radius.some((r) => r === 'full')) ||
-      (typeof radius === 'string' && !/^full$/.test(radius)),
-    'Full is not a supported `radius`.',
+    // @ts-ignore typescript knows it can't be full, but this is preventing it being passed through in a javascript context.
+    typeof radius === 'undefined' || radius !== 'full',
+    'Full is not a supported `radius` on Card. See documentation https://seek-oss.github.io/braid-design-system/components/Card#radius',
   );
 
   return (
