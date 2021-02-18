@@ -2218,12 +2218,10 @@ Object {
         | "div"
         | "main"
         | "section"
-    radius?: 
-        | "full"
+    radius?: ResponsiveProp<
         | "none"
         | "standard"
-        | readonly ["standard" | "none", "standard" | "none", "standard" | "none"]
-        | readonly ["standard" | "none", "standard" | "none"]
+    >
     tone?: 
         | "formAccent"
         | "info"
