@@ -2,36 +2,36 @@ import React from 'react';
 import { ComponentExample } from '../../../site/src/types';
 import source from '../../utils/source.macro';
 import { TooltipRenderer, Inline, Stack, Text, IconHelp, Box } from '../';
-import { TooltipContent } from './TooltipRenderer';
+import { MockTooltip } from './MockTooltip';
 
 export const galleryItems: ComponentExample[] = [
   {
     label: 'Single line of text',
     Example: () =>
       source(
-        <TooltipContent opacity={100}>
+        <MockTooltip placement="top">
           <Text>Tooltip</Text>
-        </TooltipContent>,
+        </MockTooltip>,
       ),
   },
   {
     label: 'Multiple lines of text',
     Example: () =>
       source(
-        <TooltipContent opacity={100}>
+        <MockTooltip placement="top">
           <Text>
             The quick brown fox jumps over the lazy dog. The quick brown fox
             jumps over the lazy dog. The quick brown fox jumps over the lazy
             dog.
           </Text>
-        </TooltipContent>,
+        </MockTooltip>,
       ),
   },
   {
     label: 'Custom formatting',
     Example: () =>
       source(
-        <TooltipContent opacity={100}>
+        <MockTooltip placement="top">
           <Stack space="medium">
             <Text weight="strong">Strong text</Text>
             <Text>
@@ -40,7 +40,7 @@ export const galleryItems: ComponentExample[] = [
               dog.
             </Text>
           </Stack>
-        </TooltipContent>,
+        </MockTooltip>,
       ),
   },
   {

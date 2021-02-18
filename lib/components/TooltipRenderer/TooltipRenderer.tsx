@@ -13,6 +13,10 @@ import { useSpace } from '../useSpace/useSpace';
 import { Box } from '../Box/Box';
 import * as styleRefs from './TooltipRenderer.treat';
 
+export type ArrowProps = ReturnType<
+  ReturnType<typeof usePopperTooltip>['getArrowProps']
+>;
+
 interface TriggerProps {
   ref: ReturnType<typeof usePopperTooltip>['setTooltipRef'];
   tabIndex: 0;
@@ -22,16 +26,24 @@ interface TriggerProps {
 export const TooltipContent = ({
   children,
   opacity,
+  arrowProps,
 }: {
   children: ReactNodeNoStrings;
   opacity: 0 | 100;
+  arrowProps: ArrowProps;
 }) => {
   const styles = useStyles(styleRefs);
   const { name: themeName } = useBraidTheme();
 
+  const arrowStyles = useBoxStyles({
+    component: 'div',
+    className: [styles.arrow, styles.background],
+  });
+
   return (
     <Box
       display="flex"
+      position="relative"
       transition="fast"
       opacity={opacity === 0 ? 0 : undefined}
       className={
@@ -54,6 +66,7 @@ export const TooltipContent = ({
             weight="medium"
           >
             {children}
+            <div {...arrowProps} className={arrowStyles} />
           </DefaultTextPropsProvider>
         </BackgroundProvider>
       </Box>
@@ -96,6 +109,7 @@ export const TooltipRenderer = ({
     tooltipRef,
     setTriggerRef,
     triggerRef,
+    getArrowProps,
   } = usePopperTooltip(
     {
       placement,
@@ -114,7 +128,7 @@ export const TooltipRenderer = ({
         {
           name: 'offset',
           options: {
-            offset: [0, space.xsmall * grid],
+            offset: [0, space.small * grid],
           },
         },
       ],
@@ -223,7 +237,9 @@ export const TooltipRenderer = ({
                 })
               : null)}
           >
-            <TooltipContent opacity={opacity}>{tooltip}</TooltipContent>
+            <TooltipContent opacity={opacity} arrowProps={getArrowProps()}>
+              {tooltip}
+            </TooltipContent>
           </div>,
           document.body,
         )}

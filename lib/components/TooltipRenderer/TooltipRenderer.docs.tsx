@@ -10,9 +10,9 @@ import {
   IconHelp,
   TextLink,
   Strong,
-  Badge,
+  Button,
 } from '..';
-import { TooltipContent } from './TooltipRenderer';
+import { MockTooltip } from './MockTooltip';
 import { constants } from './TooltipRenderer.treat';
 
 const docs: ComponentDocs = {
@@ -82,14 +82,14 @@ const docs: ComponentDocs = {
               placement="top"
               tooltip={<Text>The placement is “top”</Text>}
             >
-              {({ triggerProps }) => <Badge {...triggerProps}>Top</Badge>}
+              {({ triggerProps }) => <Button {...triggerProps}>Top</Button>}
             </TooltipRenderer>
             <TooltipRenderer
               id={`${id}_2`}
               placement="bottom"
               tooltip={<Text>The placement is “bottom”</Text>}
             >
-              {({ triggerProps }) => <Badge {...triggerProps}>Bottom</Badge>}
+              {({ triggerProps }) => <Button {...triggerProps}>Bottom</Button>}
             </TooltipRenderer>
           </Inline>,
         ),
@@ -114,6 +114,7 @@ const docs: ComponentDocs = {
           <Inline space="small">
             <TooltipRenderer
               id={id}
+              placement="bottom"
               tooltip={
                 <Stack space="medium">
                   <Text weight="strong">Strong text</Text>
@@ -134,7 +135,7 @@ const docs: ComponentDocs = {
           </Inline>,
         ).code,
         value: (
-          <TooltipContent opacity={100}>
+          <MockTooltip placement="bottom">
             <Stack space="medium">
               <Text weight="strong">Strong text</Text>
               <Text>
@@ -143,7 +144,7 @@ const docs: ComponentDocs = {
                 dog.
               </Text>
             </Stack>
-          </TooltipContent>
+          </MockTooltip>
         ),
       }),
     },
