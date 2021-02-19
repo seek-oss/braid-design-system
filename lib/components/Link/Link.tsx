@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
 import {
-  useLinkComponentWithRefSupport,
+  useLinkComponent,
   LinkComponentProps,
 } from '../BraidProvider/BraidProvider';
 import { useBoxStyles, UseBoxStylesProps } from '../Box/useBoxStyles';
@@ -10,7 +10,7 @@ export type LinkProps = Omit<LinkComponentProps, 'className'> &
 
 export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
   ({ href, className, ...restProps }, ref) => {
-    const LinkComponent = useLinkComponentWithRefSupport(ref);
+    const LinkComponent = useLinkComponent(ref);
 
     return (
       <LinkComponent

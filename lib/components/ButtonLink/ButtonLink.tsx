@@ -1,10 +1,10 @@
-import React, { ReactNode } from 'react';
+import React, { forwardRef, ReactNode } from 'react';
 import {
   PrivateButtonRenderer,
   PrivateButtonRendererProps,
 } from '../ButtonRenderer/ButtonRenderer';
 import {
-  useLinkComponentWithoutRefSupport,
+  useLinkComponent,
   LinkComponentProps,
 } from '../BraidProvider/BraidProvider';
 
@@ -14,32 +14,30 @@ export interface ButtonLinkProps
   children?: ReactNode;
 }
 
-export const ButtonLink = ({
-  children,
-  size,
-  tone,
-  weight,
-  variant,
-  bleedY,
-  loading,
-  ...restProps
-}: ButtonLinkProps) => {
-  const LinkComponent = useLinkComponentWithoutRefSupport();
+export const ButtonLink = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
+  (
+    { children, size, tone, weight, variant, bleedY, loading, ...restProps },
+    ref,
+  ) => {
+    const LinkComponent = useLinkComponent(ref);
 
-  return (
-    <PrivateButtonRenderer
-      size={size}
-      tone={tone}
-      weight={weight}
-      variant={variant}
-      loading={loading}
-      bleedY={bleedY}
-    >
-      {(ButtonChildren, buttonProps) => (
-        <LinkComponent {...restProps} {...buttonProps}>
-          <ButtonChildren>{children}</ButtonChildren>
-        </LinkComponent>
-      )}
-    </PrivateButtonRenderer>
-  );
-};
+    return (
+      <PrivateButtonRenderer
+        size={size}
+        tone={tone}
+        weight={weight}
+        variant={variant}
+        loading={loading}
+        bleedY={bleedY}
+      >
+        {(ButtonChildren, buttonProps) => (
+          <LinkComponent ref={ref} {...restProps} {...buttonProps}>
+            <ButtonChildren>{children}</ButtonChildren>
+          </LinkComponent>
+        )}
+      </PrivateButtonRenderer>
+    );
+  },
+);
+
+ButtonLink.displayName = 'ButtonLink';

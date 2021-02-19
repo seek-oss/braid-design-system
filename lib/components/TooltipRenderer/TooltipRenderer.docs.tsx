@@ -10,6 +10,7 @@ import {
   IconHelp,
   TextLink,
   Strong,
+  Badge,
 } from '..';
 import { TooltipContent } from './TooltipRenderer';
 import { constants } from './TooltipRenderer.treat';
@@ -72,6 +73,7 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
+      background: 'card',
       Example: ({ id }) =>
         source(
           <Inline space="small">
@@ -80,34 +82,14 @@ const docs: ComponentDocs = {
               placement="top"
               tooltip={<Text>The placement is “top”</Text>}
             >
-              {({ triggerProps }) => (
-                <Box
-                  cursor="default"
-                  background="infoLight"
-                  padding="xsmall"
-                  borderRadius="standard"
-                  {...triggerProps}
-                >
-                  <Text weight="strong">Top</Text>
-                </Box>
-              )}
+              {({ triggerProps }) => <Badge {...triggerProps}>Top</Badge>}
             </TooltipRenderer>
             <TooltipRenderer
               id={`${id}_2`}
               placement="bottom"
               tooltip={<Text>The placement is “bottom”</Text>}
             >
-              {({ triggerProps }) => (
-                <Box
-                  cursor="default"
-                  background="infoLight"
-                  padding="xsmall"
-                  borderRadius="standard"
-                  {...triggerProps}
-                >
-                  <Text weight="strong">Bottom</Text>
-                </Box>
-              )}
+              {({ triggerProps }) => <Badge {...triggerProps}>Bottom</Badge>}
             </TooltipRenderer>
           </Inline>,
         ),
