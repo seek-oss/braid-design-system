@@ -75,8 +75,8 @@ const docs: ComponentDocs = {
           <Text>
             Responsive values are supported, e.g.{' '}
             <Strong>{"['none', 'standard']"}</Strong>. This enables cards edges
-            to be softened on larger screens, but squared all should they run
-            full bleed on smaller devices.
+            to be softened on larger screens, but squared off if it runs full
+            bleed on smaller devices.
           </Text>
         </>
       ),
