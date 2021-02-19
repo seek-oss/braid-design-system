@@ -11,7 +11,7 @@ updated:
 
 A `radius` prop can now be specified to round the corners of the container. The supported radii are `none` (default) and `standard`.
 
-Responsive values are supported, e.g. `['none', 'standard']`. This enables cards edges to be softened on larger screens, but squared all should they run full bleed on smaller devices.
+Responsive values are supported, e.g. `['none', 'standard']`, allowing you to add rounded corners on larger screens but omit them when they run full-bleed on smaller devices.
 
 **EXAMPLE USAGE:**
 ```jsx
