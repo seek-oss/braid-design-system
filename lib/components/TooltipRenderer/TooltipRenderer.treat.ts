@@ -2,7 +2,7 @@ import { style } from 'sku/treat';
 
 export const constants = {
   maxWidth: 260,
-  arrowSize: 10,
+  arrowSize: 12,
 };
 
 export const background = style((theme) => ({
@@ -32,9 +32,13 @@ export const padding = style((theme) => ({
   padding: theme.grid * (theme.space.small + 1),
 }));
 
-export const arrow = style(() => {
-  const { arrowSize } = constants;
-  const offset = -(arrowSize / 2);
+export const arrow = style((theme) => {
+  const maxBorderRadius = constants.arrowSize / 2;
+  const borderRadius = Math.min(
+    parseInt(theme.border.radius.standard, 10),
+    maxBorderRadius,
+  );
+  const offset = -(constants.arrowSize / 2);
 
   return {
     visibility: 'hidden',
@@ -45,10 +49,11 @@ export const arrow = style(() => {
     },
     selectors: {
       '&, &::before': {
-        width: arrowSize,
-        height: arrowSize,
+        width: constants.arrowSize + borderRadius * 2,
+        height: constants.arrowSize + borderRadius * 2,
         position: 'absolute',
         background: 'inherit',
+        borderRadius,
       },
       '[data-popper-placement^=top] &': {
         bottom: offset,

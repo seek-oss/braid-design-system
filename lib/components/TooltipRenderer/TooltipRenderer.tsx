@@ -37,6 +37,7 @@ export const TooltipContent = ({
 
   const arrowStyles = useBoxStyles({
     component: 'div',
+    borderRadius: 'standard',
     className: [styles.arrow, styles.background],
   });
 
@@ -65,7 +66,9 @@ export const TooltipContent = ({
             size={themeName === 'docs' ? 'small' : undefined}
             weight="medium"
           >
-            {children}
+            <Box position="relative" zIndex={1}>
+              {children}
+            </Box>
             <div {...arrowProps} className={arrowStyles} />
           </DefaultTextPropsProvider>
         </BackgroundProvider>
