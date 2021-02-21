@@ -132,14 +132,14 @@ export const useBoxStyles = ({
   );
 
   const resolvedBorderRadius =
-    borderRadius && Array.isArray(borderRadius) && borderRadius.length > 0
+    borderRadius && Array.isArray(borderRadius)
       ? resolveResponsiveProp(
           borderRadius,
           styles.borderRadius,
           styles.borderRadiusTablet,
           styles.borderRadiusDesktop,
         )
-      : // @ts-ignore
+      : // @ts-expect-error this shouldn't need to be here, as it cannot be an array at this point, but typescript is complaining about an array being used as in index.
         styles.borderRadius[borderRadius!];
 
   return classnames(

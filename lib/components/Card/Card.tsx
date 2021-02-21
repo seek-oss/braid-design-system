@@ -39,7 +39,7 @@ export const Card = ({
     typeof radius === 'undefined' ||
       (Array.isArray(radius) && radius.length > 0
         ? radius.indexOf('full') === -1
-        : // @ts-ignore typescript knows it can't be full, but this is preventing it being passed through in a javascript context.
+        : // @ts-expect-error typescript knows it can't be full, but this is preventing it being passed through in a javascript context.
           radius !== 'full'),
     'Full is not a supported `radius` on Card. See documentation https://seek-oss.github.io/braid-design-system/components/Card#radius',
   );
