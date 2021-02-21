@@ -1,4 +1,5 @@
 import { ElementType } from 'react';
+import assert from 'assert';
 import { useStyles } from 'sku/react-treat';
 import classnames from 'classnames';
 import { Theme } from 'treat/theme';
@@ -125,15 +126,21 @@ export const useBoxStyles = ({
   const resolvedMarginLeft = marginLeft || marginX || margin;
   const resolvedMarginRight = marginRight || marginX || margin;
 
+  assert(
+    !Array.isArray(borderRadius) || borderRadius.indexOf('full') === -1,
+    '`full` is not a supported as a responsive prop.',
+  );
+
   const resolvedBorderRadius =
-    borderRadius && borderRadius !== 'full'
+    borderRadius && Array.isArray(borderRadius) && borderRadius.length > 0
       ? resolveResponsiveProp(
           borderRadius,
           styles.borderRadius,
           styles.borderRadiusTablet,
           styles.borderRadiusDesktop,
         )
-      : styles.borderRadius[borderRadius!];
+      : // @ts-ignore
+        styles.borderRadius[borderRadius!];
 
   return classnames(
     component !== null && resetStyles.base,

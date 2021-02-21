@@ -23,7 +23,7 @@ export interface CardProps {
 export const Card = ({
   children,
   component = 'div',
-  radius,
+  radius = 'none',
   tone,
 }: CardProps) => {
   const styles = useStyles(styleRefs);
@@ -36,8 +36,11 @@ export const Card = ({
   );
 
   assert(
-    // @ts-ignore typescript knows it can't be full, but this is preventing it being passed through in a javascript context.
-    typeof radius === 'undefined' || radius !== 'full',
+    typeof radius === 'undefined' ||
+      (Array.isArray(radius) && radius.length > 0
+        ? radius.indexOf('full') === -1
+        : // @ts-ignore typescript knows it can't be full, but this is preventing it being passed through in a javascript context.
+          radius !== 'full'),
     'Full is not a supported `radius` on Card. See documentation https://seek-oss.github.io/braid-design-system/components/Card#radius',
   );
 
@@ -47,7 +50,7 @@ export const Card = ({
       position={tone ? 'relative' : undefined} // Thoughts on this?
       background="card"
       padding="gutter"
-      borderRadius={radius}
+      borderRadius={radius ?? undefined}
     >
       {tone ? (
         <Box
@@ -56,7 +59,7 @@ export const Card = ({
           bottom={0}
           left={0}
           paddingLeft="xxsmall"
-          borderRadius={radius}
+          borderRadius={radius ?? undefined}
           background={tone}
           className={styles.toneKeyline}
         />
