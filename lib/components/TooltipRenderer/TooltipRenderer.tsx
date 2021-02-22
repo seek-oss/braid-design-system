@@ -1,17 +1,55 @@
-import React, { useState, useEffect, ReactNode } from 'react';
+import React, {
+  createContext,
+  useState,
+  useEffect,
+  useContext,
+  ReactNode,
+} from 'react';
 import { useStyles } from 'sku/react-treat';
 import { createPortal } from 'react-dom';
 import { usePopperTooltip } from 'react-popper-tooltip';
 import isMobile from 'is-mobile';
 import assert from 'assert';
-import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
 import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import { BackgroundProvider } from '../Box/BackgroundContext';
 import { useBoxStyles } from '../Box/useBoxStyles';
 import { DefaultTextPropsProvider } from '../private/defaultTextProps';
 import { useSpace } from '../useSpace/useSpace';
+import { useThemeName } from '../useThemeName/useThemeName';
 import { Box } from '../Box/Box';
 import * as styleRefs from './TooltipRenderer.treat';
+
+const StaticTooltipContext = createContext(false);
+export const StaticTooltipProvider = ({
+  children,
+}: {
+  children: ReactNode;
+}) => (
+  <StaticTooltipContext.Provider value={true}>
+    {children}
+  </StaticTooltipContext.Provider>
+);
+
+export const TooltipTextDefaultsProvider = ({
+  children,
+}: {
+  children: ReactNodeNoStrings;
+}) => {
+  const themeName = useThemeName();
+
+  return (
+    <DefaultTextPropsProvider
+      size={themeName === 'docs' ? 'small' : undefined}
+      weight="medium"
+    >
+      {children}
+    </DefaultTextPropsProvider>
+  );
+};
+
+export type ArrowProps = ReturnType<
+  ReturnType<typeof usePopperTooltip>['getArrowProps']
+>;
 
 interface TriggerProps {
   ref: ReturnType<typeof usePopperTooltip>['setTooltipRef'];
@@ -22,16 +60,24 @@ interface TriggerProps {
 export const TooltipContent = ({
   children,
   opacity,
+  arrowProps,
 }: {
   children: ReactNodeNoStrings;
   opacity: 0 | 100;
+  arrowProps: ArrowProps;
 }) => {
   const styles = useStyles(styleRefs);
-  const { name: themeName } = useBraidTheme();
+
+  const arrowStyles = useBoxStyles({
+    component: 'div',
+    borderRadius: 'standard',
+    className: [styles.arrow, styles.background],
+  });
 
   return (
     <Box
       display="flex"
+      position="relative"
       transition="fast"
       opacity={opacity === 0 ? 0 : undefined}
       className={
@@ -49,12 +95,12 @@ export const TooltipContent = ({
         ]}
       >
         <BackgroundProvider value="UNKNOWN_DARK">
-          <DefaultTextPropsProvider
-            size={themeName === 'docs' ? 'small' : undefined}
-            weight="medium"
-          >
-            {children}
-          </DefaultTextPropsProvider>
+          <TooltipTextDefaultsProvider>
+            <Box position="relative" zIndex={1}>
+              {children}
+            </Box>
+            <div {...arrowProps} className={arrowStyles} />
+          </TooltipTextDefaultsProvider>
         </BackgroundProvider>
       </Box>
     </Box>
@@ -85,6 +131,7 @@ export const TooltipRenderer = ({
     )}`,
   );
 
+  const isStatic = useContext(StaticTooltipContext);
   const [controlledVisible, setControlledVisible] = useState(false);
   const [opacity, setOpacity] = useState<0 | 100>(0);
   const { grid, space } = useSpace();
@@ -96,11 +143,12 @@ export const TooltipRenderer = ({
     tooltipRef,
     setTriggerRef,
     triggerRef,
+    getArrowProps,
   } = usePopperTooltip(
     {
       placement,
       trigger: [isMobile() ? 'click' : 'hover', 'focus'],
-      visible: controlledVisible,
+      visible: isStatic || controlledVisible,
       onVisibleChange: setControlledVisible,
     },
     {
@@ -114,9 +162,19 @@ export const TooltipRenderer = ({
         {
           name: 'offset',
           options: {
-            offset: [0, space.xsmall * grid],
+            offset: [0, space.small * grid],
           },
         },
+        ...(isStatic
+          ? [
+              {
+                name: 'flip',
+                options: {
+                  fallbackPlacements: [],
+                },
+              },
+            ]
+          : []),
       ],
     },
   );
@@ -223,7 +281,9 @@ export const TooltipRenderer = ({
                 })
               : null)}
           >
-            <TooltipContent opacity={opacity}>{tooltip}</TooltipContent>
+            <TooltipContent opacity={opacity} arrowProps={getArrowProps()}>
+              {tooltip}
+            </TooltipContent>
           </div>,
           document.body,
         )}
