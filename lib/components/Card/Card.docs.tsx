@@ -58,7 +58,7 @@ const docs: ComponentDocs = {
       description: (
         <>
           <Text>
-            Card corners can be rounded by proving the <Strong>rounded</Strong>{' '}
+            Card corners can be rounded by providing the <Strong>rounded</Strong>{' '}
             prop.
           </Text>
           <Text>
