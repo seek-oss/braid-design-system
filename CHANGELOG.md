@@ -1,5 +1,71 @@
 # braid-design-system
 
+## 29.29.0
+
+### Minor Changes
+
+- **Box:** Support responsive `borderRadius` ([#910](https://github.com/seek-oss/braid-design-system/pull/910))
+
+  Adds support for responsive values to `borderRadius`.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Box borderRadius={['none', 'standard']}>...</Box>
+  ```
+
+- **Button:** Add support for `ref` and `tabIndex` props ([#905](https://github.com/seek-oss/braid-design-system/pull/905))
+
+- **Card:** Add `component` support ([#910](https://github.com/seek-oss/braid-design-system/pull/910))
+
+  The HTML tag can be customised to ensure the underlying document semantics are meaningful. This can be done using the component prop and supports `div` (default), `article`, `aside`, `details`, `main` and `section`.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Card component="article">...</Card>
+  ```
+
+- **Badge:** Add support for `ref`, `tabIndex` and `aria-describedby` props ([#905](https://github.com/seek-oss/braid-design-system/pull/905))
+
+- **Card:** Add `tone` support ([#910](https://github.com/seek-oss/braid-design-system/pull/910))
+
+  Specifying a `tone` will now add a keyline down the left hand side of the container. The supported tones are `promote` and `formAccent`.
+
+  **As a result, Cards are now position relative containers.**
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Card tone="formAccent">...</Card>
+  ```
+
+- **TextLink, ButtonLink:** Add support for `ref` prop ([#905](https://github.com/seek-oss/braid-design-system/pull/905))
+
+- **Card:** Add `rounded` and `roundedAbove` support ([#910](https://github.com/seek-oss/braid-design-system/pull/910))
+
+  Card corners can be rounded by providing the `rounded` prop.
+
+  Alternatively, rounding may be applied responsively using the `roundedAbove` prop, and providing either `mobile` or `tablet`. This enables card edges to be softened on larger screens, but squared off if it runs full bleed on smaller devices.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Card rounded>...</Card>
+  ```
+
+  or
+
+  ```jsx
+  <Card roundedAbove="mobile">...</Card>
+  ```
+
+### Patch Changes
+
+- **Badge:** Ensure `ref`, `title`, `tabIndex` and `aria-describedby` props are applied to the visual badge element, not its container element ([#908](https://github.com/seek-oss/braid-design-system/pull/908))
+
+- **TooltipRenderer:** Add arrow to tooltip ([#908](https://github.com/seek-oss/braid-design-system/pull/908))
+
 ## 29.28.1
 
 ### Patch Changes
