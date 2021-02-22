@@ -2,36 +2,62 @@ import React from 'react';
 import { ComponentExample } from '../../../site/src/types';
 import source from '../../utils/source.macro';
 import { TooltipRenderer, Inline, Stack, Text, IconHelp, Box } from '../';
-import { MockTooltip } from './MockTooltip';
+import { TooltipContent, TooltipRendererProps } from './TooltipRenderer';
+import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
+import { constants } from './TooltipRenderer.treat';
+
+const MockTooltipContent = ({
+  placement,
+  children,
+}: {
+  placement: TooltipRendererProps['placement'];
+  children: ReactNodeNoStrings;
+}) => (
+  <Box data-popper-placement={placement}>
+    <TooltipContent
+      opacity={100}
+      arrowProps={{
+        'data-popper-arrow': true,
+        style: {
+          position: 'absolute',
+          left: '50%',
+          transform: `translateX(${-constants.arrowSize / 2}px)`,
+        },
+      }}
+    >
+      {children}
+    </TooltipContent>
+  </Box>
+);
 
 export const galleryItems: ComponentExample[] = [
   {
     label: 'Single line of text',
     Example: () =>
       source(
-        <MockTooltip placement="top">
+        <MockTooltipContent placement="top">
           <Text>Tooltip</Text>
-        </MockTooltip>,
+        </MockTooltipContent>,
       ),
   },
   {
     label: 'Multiple lines of text',
     Example: () =>
       source(
-        <MockTooltip placement="top">
+        <MockTooltipContent placement="top">
           <Text>
             The quick brown fox jumps over the lazy dog. The quick brown fox
             jumps over the lazy dog. The quick brown fox jumps over the lazy
             dog.
           </Text>
-        </MockTooltip>,
+        </MockTooltipContent>,
       ),
   },
   {
     label: 'Custom formatting',
     Example: () =>
       source(
-        <MockTooltip placement="top">
+        <MockTooltipContent placement="top">
           <Stack space="medium">
             <Text weight="strong">Strong text</Text>
             <Text>
@@ -40,7 +66,7 @@ export const galleryItems: ComponentExample[] = [
               dog.
             </Text>
           </Stack>
-        </MockTooltip>,
+        </MockTooltipContent>,
       ),
   },
   {

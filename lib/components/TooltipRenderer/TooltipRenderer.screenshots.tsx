@@ -1,52 +1,102 @@
 import React from 'react';
 import { ComponentScreenshot } from '../../../site/src/types';
-import { Stack, Text } from '../';
-import { MockTooltip } from './MockTooltip';
+import { Stack, Text, Badge, Box } from '../';
+import { TooltipRenderer, StaticTooltipProvider } from './TooltipRenderer';
 
 export const screenshots: ComponentScreenshot = {
   screenshotWidths: [320],
   examples: [
     {
       label: 'Top placement',
-      Example: () => (
-        <MockTooltip placement="top">
-          <Text>Tooltip</Text>
-        </MockTooltip>
+      Example: ({ id }) => (
+        <StaticTooltipProvider>
+          <Box style={{ paddingTop: 100 }}>
+            <TooltipRenderer
+              id={id}
+              placement="top"
+              tooltip={<Text>Tooltip</Text>}
+            >
+              {({ triggerProps }) => (
+                <Badge weight="strong" {...triggerProps}>
+                  Trigger
+                </Badge>
+              )}
+            </TooltipRenderer>
+          </Box>
+        </StaticTooltipProvider>
       ),
     },
     {
       label: 'Bottom placement',
-      Example: () => (
-        <MockTooltip placement="bottom">
-          <Text>Tooltip</Text>
-        </MockTooltip>
+      Example: ({ id }) => (
+        <StaticTooltipProvider>
+          <Box style={{ paddingBottom: 100 }}>
+            <TooltipRenderer
+              id={id}
+              placement="bottom"
+              tooltip={<Text>Tooltip</Text>}
+            >
+              {({ triggerProps }) => (
+                <Badge weight="strong" {...triggerProps}>
+                  Trigger
+                </Badge>
+              )}
+            </TooltipRenderer>
+          </Box>
+        </StaticTooltipProvider>
       ),
     },
     {
       label: 'Multiple lines of text',
-      Example: () => (
-        <MockTooltip placement="bottom">
-          <Text>
-            The quick brown fox jumps over the lazy dog. The quick brown fox
-            jumps over the lazy dog. The quick brown fox jumps over the lazy
-            dog.
-          </Text>
-        </MockTooltip>
+      Example: ({ id }) => (
+        <StaticTooltipProvider>
+          <Box style={{ paddingBottom: 200 }}>
+            <TooltipRenderer
+              id={id}
+              placement="bottom"
+              tooltip={
+                <Text>
+                  The quick brown fox jumps over the lazy dog. The quick brown
+                  fox jumps over the lazy dog.
+                </Text>
+              }
+            >
+              {({ triggerProps }) => (
+                <Badge weight="strong" {...triggerProps}>
+                  Trigger
+                </Badge>
+              )}
+            </TooltipRenderer>
+          </Box>
+        </StaticTooltipProvider>
       ),
     },
     {
       label: 'Text style overrides',
-      Example: () => (
-        <MockTooltip placement="bottom">
-          <Stack space="medium">
-            <Text weight="strong">Strong text</Text>
-            <Text>
-              The quick brown fox jumps over the lazy dog. The quick brown fox
-              jumps over the lazy dog. The quick brown fox jumps over the lazy
-              dog.
-            </Text>
-          </Stack>
-        </MockTooltip>
+      Example: ({ id }) => (
+        <StaticTooltipProvider>
+          <Box style={{ paddingBottom: 200 }}>
+            <TooltipRenderer
+              id={id}
+              placement="bottom"
+              tooltip={
+                <Stack space="medium">
+                  <Text weight="strong">Strong text</Text>
+                  <Text>
+                    The quick brown fox jumps over the lazy dog. The quick brown
+                    fox jumps over the lazy dog.
+                  </Text>
+                </Stack>
+              }
+            >
+              {({ triggerProps }) => (
+                <Badge weight="strong" {...triggerProps}>
+                  Trigger
+                </Badge>
+              )}
+            </TooltipRenderer>
+          </Box>
+        </StaticTooltipProvider>
       ),
     },
   ],

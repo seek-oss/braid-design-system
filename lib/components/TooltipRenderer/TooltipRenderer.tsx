@@ -1,10 +1,16 @@
-import React, { useState, useEffect, ReactNode } from 'react';
+import React, {
+  createContext,
+  useState,
+  useEffect,
+  useContext,
+  ReactNode,
+} from 'react';
 import { useStyles } from 'sku/react-treat';
 import { createPortal } from 'react-dom';
 import { usePopperTooltip } from 'react-popper-tooltip';
 import isMobile from 'is-mobile';
 import assert from 'assert';
-import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
+import { useThemeName } from '../../playroom/components';
 import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import { BackgroundProvider } from '../Box/BackgroundContext';
 import { useBoxStyles } from '../Box/useBoxStyles';
@@ -12,6 +18,34 @@ import { DefaultTextPropsProvider } from '../private/defaultTextProps';
 import { useSpace } from '../useSpace/useSpace';
 import { Box } from '../Box/Box';
 import * as styleRefs from './TooltipRenderer.treat';
+
+const StaticTooltipContext = createContext(false);
+export const StaticTooltipProvider = ({
+  children,
+}: {
+  children: ReactNode;
+}) => (
+  <StaticTooltipContext.Provider value={true}>
+    {children}
+  </StaticTooltipContext.Provider>
+);
+
+export const TooltipTextDefaultsProvider = ({
+  children,
+}: {
+  children: ReactNodeNoStrings;
+}) => {
+  const themeName = useThemeName();
+
+  return (
+    <DefaultTextPropsProvider
+      size={themeName === 'docs' ? 'small' : undefined}
+      weight="medium"
+    >
+      {children}
+    </DefaultTextPropsProvider>
+  );
+};
 
 export type ArrowProps = ReturnType<
   ReturnType<typeof usePopperTooltip>['getArrowProps']
@@ -33,7 +67,6 @@ export const TooltipContent = ({
   arrowProps: ArrowProps;
 }) => {
   const styles = useStyles(styleRefs);
-  const { name: themeName } = useBraidTheme();
 
   const arrowStyles = useBoxStyles({
     component: 'div',
@@ -62,15 +95,12 @@ export const TooltipContent = ({
         ]}
       >
         <BackgroundProvider value="UNKNOWN_DARK">
-          <DefaultTextPropsProvider
-            size={themeName === 'docs' ? 'small' : undefined}
-            weight="medium"
-          >
+          <TooltipTextDefaultsProvider>
             <Box position="relative" zIndex={1}>
               {children}
             </Box>
             <div {...arrowProps} className={arrowStyles} />
-          </DefaultTextPropsProvider>
+          </TooltipTextDefaultsProvider>
         </BackgroundProvider>
       </Box>
     </Box>
@@ -101,6 +131,7 @@ export const TooltipRenderer = ({
     )}`,
   );
 
+  const isStatic = useContext(StaticTooltipContext);
   const [controlledVisible, setControlledVisible] = useState(false);
   const [opacity, setOpacity] = useState<0 | 100>(0);
   const { grid, space } = useSpace();
@@ -117,7 +148,7 @@ export const TooltipRenderer = ({
     {
       placement,
       trigger: [isMobile() ? 'click' : 'hover', 'focus'],
-      visible: controlledVisible,
+      visible: isStatic || controlledVisible,
       onVisibleChange: setControlledVisible,
     },
     {
@@ -134,6 +165,16 @@ export const TooltipRenderer = ({
             offset: [0, space.small * grid],
           },
         },
+        ...(isStatic
+          ? [
+              {
+                name: 'flip',
+                options: {
+                  fallbackPlacements: [],
+                },
+              },
+            ]
+          : []),
       ],
     },
   );

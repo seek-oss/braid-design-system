@@ -12,8 +12,49 @@ import {
   Strong,
   Button,
 } from '..';
-import { MockTooltip } from './MockTooltip';
+import {
+  StaticTooltipProvider,
+  TooltipTextDefaultsProvider,
+  TooltipRendererProps,
+} from './TooltipRenderer';
 import { constants } from './TooltipRenderer.treat';
+
+const StaticTooltip = ({
+  id,
+  tooltip,
+  placement,
+  children,
+}: TooltipRendererProps) => {
+  const contentPlaceholder = (
+    <Box userSelect="none" opacity={0} aria-hidden>
+      {children({ triggerProps: {} as any })}
+      <TooltipTextDefaultsProvider>
+        <Box
+          style={{
+            maxWidth: constants.maxWidth,
+            paddingTop: constants.arrowSize,
+          }}
+        >
+          <Box padding="medium">{tooltip}</Box>
+        </Box>
+      </TooltipTextDefaultsProvider>
+    </Box>
+  );
+
+  return (
+    <StaticTooltipProvider>
+      <Box position="relative">
+        {placement === 'top' ? contentPlaceholder : null}
+        <Box position="absolute" left={0} right={0}>
+          <TooltipRenderer id={id} tooltip={tooltip} placement={placement}>
+            {children}
+          </TooltipRenderer>
+        </Box>
+        {placement === 'bottom' ? contentPlaceholder : null}
+      </Box>
+    </StaticTooltipProvider>
+  );
+};
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -109,10 +150,36 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
-      Example: ({ id }) => ({
-        code: source(
-          <Inline space="small">
-            <TooltipRenderer
+      Example: ({ id }) => {
+        const { code } = source(
+          <TooltipRenderer
+            id={id}
+            placement="bottom"
+            tooltip={
+              <Stack space="medium">
+                <Text weight="strong">Strong text</Text>
+                <Text>
+                  The quick brown fox jumps over the lazy dog. The quick brown
+                  fox jumps over the lazy dog. The quick brown fox jumps over
+                  the lazy dog.
+                </Text>
+              </Stack>
+            }
+          >
+            {({ triggerProps }) => (
+              <Inline space="small" align="center">
+                <Box aria-label="Help" {...triggerProps}>
+                  <IconHelp />
+                </Box>
+              </Inline>
+            )}
+          </TooltipRenderer>,
+        );
+
+        return {
+          code,
+          value: (
+            <StaticTooltip
               id={id}
               placement="bottom"
               tooltip={
@@ -127,26 +194,16 @@ const docs: ComponentDocs = {
               }
             >
               {({ triggerProps }) => (
-                <Box aria-label="Help" {...triggerProps}>
-                  <IconHelp />
-                </Box>
+                <Inline space="small" align="center">
+                  <Box aria-label="Help" {...triggerProps}>
+                    <IconHelp />
+                  </Box>
+                </Inline>
               )}
-            </TooltipRenderer>
-          </Inline>,
-        ).code,
-        value: (
-          <MockTooltip placement="bottom">
-            <Stack space="medium">
-              <Text weight="strong">Strong text</Text>
-              <Text>
-                The quick brown fox jumps over the lazy dog. The quick brown fox
-                jumps over the lazy dog. The quick brown fox jumps over the lazy
-                dog.
-              </Text>
-            </Stack>
-          </MockTooltip>
-        ),
-      }),
+            </StaticTooltip>
+          ),
+        };
+      },
     },
   ],
 };

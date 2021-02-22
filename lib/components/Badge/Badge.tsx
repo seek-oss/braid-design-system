@@ -86,16 +86,16 @@ export const Badge = forwardRef<HTMLDivElement, BadgeProps>(
 
     return (
       <Box
-        id={id}
-        ref={ref}
-        tabIndex={tabIndex}
-        aria-describedby={ariaDescribedBy}
-        title={title ?? (!ariaDescribedBy ? children : undefined)}
         display="flex"
         cursor="default"
         className={[styles.outer, bleedY ? styles.bleedY : null]}
       >
         <Box
+          id={id}
+          ref={ref}
+          tabIndex={tabIndex}
+          aria-describedby={ariaDescribedBy}
+          title={title ?? (!ariaDescribedBy ? children : undefined)}
           background={backgroundForTone(tone, weight)}
           paddingX="xsmall"
           borderRadius="standard"
