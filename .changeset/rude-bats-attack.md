@@ -11,7 +11,7 @@ updated:
 
 Specifying a `tone` will now add a keyline down the left hand side of the container. The supported tones are `promote` and `formAccent`.
 
-**As a result, Card's are now position relative containers**
+**As a result, Cards are now position relative containers.**
 
 **EXAMPLE USAGE:**
 ```jsx
