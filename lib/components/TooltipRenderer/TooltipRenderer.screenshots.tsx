@@ -1,7 +1,9 @@
 import React from 'react';
 import { ComponentScreenshot } from '../../../site/src/types';
-import { Stack, Text, Badge, Box } from '../';
+import { Stack, Text, Box } from '../';
 import { TooltipRenderer, StaticTooltipProvider } from './TooltipRenderer';
+
+const triggerStyles = { width: 50, height: 20, background: 'pink' } as const;
 
 export const screenshots: ComponentScreenshot = {
   screenshotWidths: [320],
@@ -17,9 +19,7 @@ export const screenshots: ComponentScreenshot = {
               tooltip={<Text>Tooltip</Text>}
             >
               {({ triggerProps }) => (
-                <Badge weight="strong" {...triggerProps}>
-                  Trigger
-                </Badge>
+                <Box style={triggerStyles} {...triggerProps} />
               )}
             </TooltipRenderer>
           </Box>
@@ -37,9 +37,7 @@ export const screenshots: ComponentScreenshot = {
               tooltip={<Text>Tooltip</Text>}
             >
               {({ triggerProps }) => (
-                <Badge weight="strong" {...triggerProps}>
-                  Trigger
-                </Badge>
+                <Box style={triggerStyles} {...triggerProps} />
               )}
             </TooltipRenderer>
           </Box>
@@ -62,9 +60,7 @@ export const screenshots: ComponentScreenshot = {
               }
             >
               {({ triggerProps }) => (
-                <Badge weight="strong" {...triggerProps}>
-                  Trigger
-                </Badge>
+                <Box style={triggerStyles} {...triggerProps} />
               )}
             </TooltipRenderer>
           </Box>
@@ -90,9 +86,7 @@ export const screenshots: ComponentScreenshot = {
               }
             >
               {({ triggerProps }) => (
-                <Badge weight="strong" {...triggerProps}>
-                  Trigger
-                </Badge>
+                <Box style={triggerStyles} {...triggerProps} />
               )}
             </TooltipRenderer>
           </Box>
