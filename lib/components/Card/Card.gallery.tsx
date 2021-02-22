@@ -6,6 +6,7 @@ import { Placeholder } from '../../playroom/components';
 
 export const galleryItems: ComponentExample[] = [
   {
+    label: 'Standard',
     Example: () =>
       source(
         <Card>
@@ -39,7 +40,7 @@ export const galleryItems: ComponentExample[] = [
       ),
   },
   {
-    label: 'Rounding',
+    label: 'Rounded corners',
     Example: () =>
       source(
         <Tiles space="large" columns={[1, 2]}>

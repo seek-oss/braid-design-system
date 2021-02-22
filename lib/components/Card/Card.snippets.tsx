@@ -36,6 +36,16 @@ export const snippets: Snippets = [
     ),
   },
   {
+    name: 'With formAccent tone',
+    code: source(
+      <Card tone="formAccent">
+        <Stack space="gutter">
+          <Placeholder height={200} />
+        </Stack>
+      </Card>,
+    ),
+  },
+  {
     name: 'With rounded corners',
     code: source(
       <Card rounded>
