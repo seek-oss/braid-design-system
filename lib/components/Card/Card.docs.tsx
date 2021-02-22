@@ -93,7 +93,7 @@ const docs: ComponentDocs = {
 
             <Stack space="small">
               <Text size="xsmall" tone="secondary">
-                RESPONSIVELY ROUNDED (eg. above mobile)
+                RESPONSIVELY ROUNDED (e.g. above mobile)
               </Text>
               <Card roundedAbove="mobile">
                 <Box style={{ height: 100 }} width="full" />
