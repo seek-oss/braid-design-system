@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import { Box, Heading, Stack, Card, Text, Tiles, Strong } from '../';
+import { Box, Stack, Card, Text, Tiles, Strong } from '../';
 import { Placeholder } from '../../playroom/components';
 import source from '../../utils/source.macro';
 import { validCardComponents } from './Card';
@@ -58,8 +58,8 @@ const docs: ComponentDocs = {
       description: (
         <>
           <Text>
-            Card corners can be rounded by providing the <Strong>rounded</Strong>{' '}
-            prop.
+            Card corners can be rounded by providing the{' '}
+            <Strong>rounded</Strong> prop.
           </Text>
           <Text>
             Alternatively, rounding may be applied responsively using the{' '}
@@ -123,19 +123,6 @@ const docs: ComponentDocs = {
           })}
         </Text>
       ),
-      Example: () =>
-        source(
-          <Card component="article">
-            <Stack space="gutter">
-              <Heading level="3">Uses an &lt;article&gt; element</Heading>
-              <Text tone="secondary">
-                Provides <Strong>article</Strong> semantics to indicate that
-                this is a self-contained piece of content that could be used
-                elsewhere as a standalone unit, e.g. a job.
-              </Text>
-            </Stack>
-          </Card>,
-        ),
     },
   ],
 };
