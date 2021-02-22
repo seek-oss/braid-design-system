@@ -4,20 +4,12 @@ import { Card } from '../';
 import { Placeholder } from '../../playroom/components';
 
 export const screenshots: ComponentScreenshot = {
-  screenshotWidths: [320, 768],
+  screenshotWidths: [320, 768, 1200],
   examples: [
     {
       label: 'Default',
       Example: () => (
         <Card>
-          <Placeholder height={100} />
-        </Card>
-      ),
-    },
-    {
-      label: 'Tone - Info',
-      Example: () => (
-        <Card tone="info">
           <Placeholder height={100} />
         </Card>
       ),
@@ -39,41 +31,41 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
-      label: 'Radius - none',
+      label: 'Rounded - default',
       Example: () => (
-        <Card radius="none">
+        <Card>
           <Placeholder height={100} />
         </Card>
       ),
     },
     {
-      label: 'Radius - standard',
+      label: 'Rounded - true',
       Example: () => (
-        <Card radius="standard">
+        <Card rounded>
           <Placeholder height={100} />
         </Card>
       ),
     },
     {
-      label: 'Radius - standard above mobile',
+      label: 'RoundedAbove - mobile',
       Example: () => (
-        <Card radius={['none', 'standard']}>
+        <Card roundedAbove="mobile">
           <Placeholder height={100} />
         </Card>
       ),
     },
     {
-      label: 'Radius - standard below tablet',
+      label: 'RoundedAbove - tablet',
       Example: () => (
-        <Card radius={['standard', 'none']}>
+        <Card roundedAbove="tablet">
           <Placeholder height={100} />
         </Card>
       ),
     },
     {
-      label: 'Tone & radius',
+      label: 'Tone & rounded',
       Example: () => (
-        <Card tone="formAccent" radius="standard">
+        <Card tone="formAccent" rounded>
           <Placeholder height={100} />
         </Card>
       ),

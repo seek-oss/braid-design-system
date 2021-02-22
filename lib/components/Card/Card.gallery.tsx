@@ -20,15 +20,6 @@ export const galleryItems: ComponentExample[] = [
         <Tiles space="large" columns={[1, 2]}>
           <Stack space="small">
             <Text size="xsmall" tone="secondary">
-              INFO
-            </Text>
-            <Card tone="info">
-              <Placeholder height={100} />
-            </Card>
-          </Stack>
-
-          <Stack space="small">
-            <Text size="xsmall" tone="secondary">
               PROMOTE
             </Text>
             <Card tone="promote">
@@ -48,24 +39,24 @@ export const galleryItems: ComponentExample[] = [
       ),
   },
   {
-    label: 'Radius',
+    label: 'Rounding',
     Example: () =>
       source(
         <Tiles space="large" columns={[1, 2]}>
           <Stack space="small">
             <Text size="xsmall" tone="secondary">
-              NONE
+              DEFAULT
             </Text>
-            <Card radius="none">
+            <Card>
               <Placeholder height={100} />
             </Card>
           </Stack>
 
           <Stack space="small">
             <Text size="xsmall" tone="secondary">
-              STANDARD
+              ROUNDED
             </Text>
-            <Card radius="standard">
+            <Card rounded>
               <Placeholder height={100} />
             </Card>
           </Stack>

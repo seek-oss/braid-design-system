@@ -26,16 +26,6 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'With info tone',
-    code: source(
-      <Card tone="info">
-        <Stack space="gutter">
-          <Placeholder height={200} />
-        </Stack>
-      </Card>,
-    ),
-  },
-  {
     name: 'With promote tone',
     code: source(
       <Card tone="promote">
@@ -46,9 +36,9 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'With standard radius corners',
+    name: 'With rounded corners',
     code: source(
-      <Card radius="standard">
+      <Card rounded>
         <Stack space="gutter">
           <Placeholder height={200} />
         </Stack>

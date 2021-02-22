@@ -7,15 +7,21 @@ updated:
   - Card
 ---
 
-**Card:** Add `radius` support
+**Card:** Add `rounded` and `roundedAbove` support
 
-A `radius` prop can now be specified to round the corners of the container. The supported radii are `none` (default) and `standard`.
+Card corners can be rounded by proving the `rounded` prop.
 
-Responsive values are supported, e.g. `['none', 'standard']`, allowing you to add rounded corners on larger screens but omit them when they run full-bleed on smaller devices.
+Alternatively, rounding may be applied responsively using the `roundAbove` prop, and providing either `mobile` or `tablet`. This enables cards edges to be softened on larger screens, but squared off if it runs full bleed on smaller devices.
 
 **EXAMPLE USAGE:**
 ```jsx
-<Card radius={["none", "standard"]}>
+<Card rounded>
+  ...
+</Card>
+```
+or
+```jsx
+<Card roundedAbove="mobile">
   ...
 </Card>
 ```

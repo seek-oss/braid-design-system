@@ -1,6 +1,10 @@
 import assert from 'assert';
 import React, { ReactNode } from 'react';
 import { useStyles } from 'sku/react-treat';
+import {
+  resolveResponsiveRangeProps,
+  ResponsiveRangeProps,
+} from '../../utils/responsiveRangeProps';
 import { Box, BoxProps } from '../Box/Box';
 import * as styleRefs from './Card.treat';
 
@@ -13,18 +17,27 @@ export const validCardComponents = [
   'section',
 ] as const;
 
-export interface CardProps {
+type SimpleCardRounding = {
+  rounded?: boolean;
+  roundedAbove?: never;
+};
+
+type ResponsiveCardRounding = {
+  rounded?: never;
+  roundedAbove?: ResponsiveRangeProps['above'];
+};
+
+export type CardProps = {
   children: ReactNode;
-  tone?: 'info' | 'promote' | 'formAccent';
-  radius?: Exclude<BoxProps['borderRadius'], 'full'>;
+  tone?: 'promote' | 'formAccent';
   component?: typeof validCardComponents[number];
-}
+} & (SimpleCardRounding | ResponsiveCardRounding);
 
 export const Card = ({
   children,
   component = 'div',
-  radius = 'none',
   tone,
+  ...restProps
 }: CardProps) => {
   const styles = useStyles(styleRefs);
 
@@ -35,22 +48,31 @@ export const Card = ({
       .join(', ')}]`,
   );
 
-  assert(
-    typeof radius === 'undefined' ||
-      (Array.isArray(radius) && radius.length > 0
-        ? radius.indexOf('full') === -1
-        : // @ts-expect-error typescript knows it can't be full, but this is preventing it being passed through in a javascript context.
-          radius !== 'full'),
-    'Full is not a supported `radius` on Card. See documentation https://seek-oss.github.io/braid-design-system/components/Card#radius',
-  );
+  let resolvedRounding: BoxProps['borderRadius'];
+
+  if ('rounded' in restProps) {
+    resolvedRounding = 'standard';
+  } else if ('roundedAbove' in restProps) {
+    const [
+      roundedOnMobile,
+      roundedOnTablet,
+      roundedOnDesktop,
+    ] = resolveResponsiveRangeProps({ above: restProps.roundedAbove });
+
+    resolvedRounding = [
+      roundedOnMobile ? 'standard' : 'none',
+      roundedOnTablet ? 'standard' : 'none',
+      roundedOnDesktop ? 'standard' : 'none',
+    ];
+  }
 
   return (
     <Box
       component={component}
-      position={tone ? 'relative' : undefined} // Thoughts on this?
+      position="relative"
       background="card"
       padding="gutter"
-      borderRadius={radius ?? undefined}
+      borderRadius={resolvedRounding}
     >
       {tone ? (
         <Box
@@ -59,7 +81,7 @@ export const Card = ({
           bottom={0}
           left={0}
           paddingLeft="xxsmall"
-          borderRadius={radius ?? undefined}
+          borderRadius={resolvedRounding}
           background={tone}
           className={styles.toneKeyline}
         />

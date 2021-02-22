@@ -27,22 +27,12 @@ const docs: ComponentDocs = {
         <Text>
           Providing a <Strong>tone</Strong> prop will add a keyline down the
           left hand side of the container. The supported tones are{' '}
-          <Strong>info</Strong>, <Strong>promote</Strong> and{' '}
-          <Strong>formAccent</Strong>.
+          <Strong>promote</Strong> and <Strong>formAccent</Strong>.
         </Text>
       ),
       Example: () =>
         source(
           <Tiles space="large" columns={[1, 2]}>
-            <Stack space="small">
-              <Text size="xsmall" tone="secondary">
-                INFO
-              </Text>
-              <Card tone="info">
-                <Box style={{ height: 100 }} width="full" />
-              </Card>
-            </Stack>
-
             <Stack space="small">
               <Text size="xsmall" tone="secondary">
                 PROMOTE
@@ -64,19 +54,19 @@ const docs: ComponentDocs = {
         ),
     },
     {
-      label: 'Radius',
+      label: 'Rounded corners',
       description: (
         <>
           <Text>
-            A <Strong>radius</Strong> prop can be specified to round the corners
-            of the container. The supported radii are <Strong>none</Strong>{' '}
-            (default) and <Strong>standard</Strong>.
+            Card corners can be rounded by proving the <Strong>rounded</Strong>{' '}
+            prop.
           </Text>
           <Text>
-            Responsive values are supported, e.g.{' '}
-            <Strong>{"['none', 'standard']"}</Strong>. This enables cards edges
-            to be softened on larger screens, but squared off if it runs full
-            bleed on smaller devices.
+            Alternatively, rounding may be applied responsively using the{' '}
+            <Strong>roundAbove</Strong> prop, and providing either{' '}
+            <Strong>mobile</Strong> or <Strong>tablet</Strong>. This enables
+            cards edges to be softened on larger screens, but squared off if it
+            runs full bleed on smaller devices.
           </Text>
         </>
       ),
@@ -85,27 +75,27 @@ const docs: ComponentDocs = {
           <Tiles space="large" columns={[1, 2]}>
             <Stack space="small">
               <Text size="xsmall" tone="secondary">
-                NONE
+                DEFAULT
               </Text>
-              <Card radius="none">
+              <Card>
                 <Box style={{ height: 100 }} width="full" />
               </Card>
             </Stack>
 
             <Stack space="small">
               <Text size="xsmall" tone="secondary">
-                STANDARD
+                ROUNDED
               </Text>
-              <Card radius="standard">
+              <Card rounded>
                 <Box style={{ height: 100 }} width="full" />
               </Card>
             </Stack>
 
             <Stack space="small">
               <Text size="xsmall" tone="secondary">
-                STANDARD ABOVE MOBILE
+                RESPONSIVELY ROUNDED (eg. above mobile)
               </Text>
-              <Card radius={['none', 'standard']}>
+              <Card roundedAbove="mobile">
                 <Box style={{ height: 100 }} width="full" />
               </Card>
             </Stack>

@@ -2230,13 +2230,12 @@ Object {
         | "div"
         | "main"
         | "section"
-    radius?: ResponsiveProp<
-        | "none"
-        | "standard"
-    >
+    rounded?: boolean
+    roundedAbove?: 
+        | "mobile"
+        | "tablet"
     tone?: 
         | "formAccent"
-        | "info"
         | "promote"
 },
 }
