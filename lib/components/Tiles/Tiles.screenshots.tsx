@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { ComponentScreenshot } from '../../../site/src/types';
-import { Tiles, Card, Text } from '../';
+import { Tiles, Box, Text } from '../';
 import { Placeholder } from '../private/Placeholder/Placeholder';
 
 const exampleRows = 3;
@@ -34,9 +34,9 @@ export const screenshots: ComponentScreenshot = {
       Example: () => (
         <Tiles space={['none', 'small']} columns={[1, 2]} dividers>
           {[...new Array(2 * exampleRows)].map((_, i) => (
-            <Card key={i}>
+            <Box background="card" padding="gutter" key={i}>
               <Text>Tile</Text>
-            </Card>
+            </Box>
           ))}
         </Tiles>
       ),
@@ -46,9 +46,9 @@ export const screenshots: ComponentScreenshot = {
       Example: () => (
         <Tiles space={['none', 'small']} columns={[1, 2]} dividers="strong">
           {[...new Array(2 * exampleRows)].map((_, i) => (
-            <Card key={i}>
+            <Box background="card" padding="gutter" key={i}>
               <Text>Tile</Text>
-            </Card>
+            </Box>
           ))}
         </Tiles>
       ),
