@@ -1,4 +1,5 @@
 import { ElementType } from 'react';
+import assert from 'assert';
 import { useStyles } from 'sku/react-treat';
 import classnames from 'classnames';
 import { Theme } from 'treat/theme';
@@ -11,6 +12,7 @@ import * as styleRefs from './useBoxStyles.treat';
 
 export type Space = keyof Theme['space'] | 'none';
 export type ResponsiveSpace = ResponsiveProp<Space>;
+type BorderRadiusFull = 'full';
 
 export interface UseBoxStylesProps {
   component: ElementType | null;
@@ -36,7 +38,11 @@ export interface UseBoxStylesProps {
   alignItems?: ResponsiveProp<keyof typeof styleRefs.alignItems>;
   justifyContent?: ResponsiveProp<keyof typeof styleRefs.justifyContent>;
   textAlign?: ResponsiveProp<keyof typeof styleRefs.textAlign>;
-  borderRadius?: keyof typeof styleRefs.borderRadius;
+  borderRadius?:
+    | BorderRadiusFull
+    | ResponsiveProp<
+        Exclude<keyof typeof styleRefs.borderRadius, BorderRadiusFull>
+      >;
   background?: keyof typeof styleRefs.background;
   boxShadow?: keyof typeof styleRefs.boxShadow;
   transform?: keyof typeof styleRefs.transform;
@@ -120,12 +126,28 @@ export const useBoxStyles = ({
   const resolvedMarginLeft = marginLeft || marginX || margin;
   const resolvedMarginRight = marginRight || marginX || margin;
 
+  assert(
+    !Array.isArray(borderRadius) || borderRadius.indexOf('full') === -1,
+    '`full` is not a supported as a responsive `borderRadius` value.',
+  );
+
+  const resolvedBorderRadius =
+    borderRadius && Array.isArray(borderRadius)
+      ? resolveResponsiveProp(
+          borderRadius,
+          styles.borderRadius,
+          styles.borderRadiusTablet,
+          styles.borderRadiusDesktop,
+        )
+      : // @ts-expect-error this shouldn't need to be here, as it cannot be an array at this point, but typescript is complaining about an array being used as in index.
+        styles.borderRadius[borderRadius!];
+
   return classnames(
     component !== null && resetStyles.base,
     component !== null &&
       resetStyles.element[component as keyof typeof resetStyleRefs.element],
     styles.background[background!],
-    styles.borderRadius[borderRadius!],
+    borderRadius !== undefined && resolvedBorderRadius,
     styles.boxShadow[boxShadow!],
     styles.transition[transition!],
     styles.transform[transform!],

@@ -359,7 +359,10 @@ Object {
         | "selection"
     borderRadius?: 
         | "full"
+        | "none"
         | "standard"
+        | readonly ["standard" | "none", "standard" | "none", "standard" | "none"]
+        | readonly ["standard" | "none", "standard" | "none"]
     bottom?: 0
     boxShadow?: 
         | "borderBrandAccentLarge"
@@ -1173,7 +1176,10 @@ Object {
         | "selection"
     borderRadius?: 
         | "full"
+        | "none"
         | "standard"
+        | readonly ["standard" | "none", "standard" | "none", "standard" | "none"]
+        | readonly ["standard" | "none", "standard" | "none"]
     bottom?: 0
     boxShadow?: 
         | "borderBrandAccentLarge"
@@ -2216,7 +2222,21 @@ exports[`Card 1`] = `
 Object {
   exportType: component,
   props: {
-    children?: ReactNode
+    children: ReactNode
+    component?: 
+        | "article"
+        | "aside"
+        | "details"
+        | "div"
+        | "main"
+        | "section"
+    rounded?: boolean
+    roundedAbove?: 
+        | "mobile"
+        | "tablet"
+    tone?: 
+        | "formAccent"
+        | "promote"
 },
 }
 `;

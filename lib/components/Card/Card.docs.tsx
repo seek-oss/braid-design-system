@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import { Card, Text, TextLink, Strong } from '../';
+import { Box, Stack, Card, Text, Tiles, Strong } from '../';
 import { Placeholder } from '../../playroom/components';
 import source from '../../utils/source.macro';
+import { validCardComponents } from './Card';
 
 const docs: ComponentDocs = {
   category: 'Layout',
@@ -21,16 +22,105 @@ const docs: ComponentDocs = {
   ],
   additional: [
     {
-      label: 'Development considerations',
+      label: 'Tones',
       description: (
         <Text>
-          The design of this component may change in the future, so please
-          ensure that you only use it where card semantics make sense. An easy
-          way to check this is to imagine that your card has rounded corners and
-          a shadow—would the design still work correctly, or would it look
-          broken? If it’s the latter, consider using a{' '}
-          <TextLink href="/components/Box">Box</TextLink> with a{' '}
-          <Strong>background</Strong> of <Strong>{'"card"'}</Strong> instead.
+          Providing a <Strong>tone</Strong> prop will add a keyline down the
+          left hand side of the container. The supported tones are{' '}
+          <Strong>promote</Strong> and <Strong>formAccent</Strong>.
+        </Text>
+      ),
+      Example: () =>
+        source(
+          <Tiles space="large" columns={[1, 2]}>
+            <Stack space="small">
+              <Text size="xsmall" tone="secondary">
+                PROMOTE
+              </Text>
+              <Card tone="promote">
+                <Box style={{ height: 100 }} width="full" />
+              </Card>
+            </Stack>
+
+            <Stack space="small">
+              <Text size="xsmall" tone="secondary">
+                FORMACCENT
+              </Text>
+              <Card tone="formAccent">
+                <Box style={{ height: 100 }} width="full" />
+              </Card>
+            </Stack>
+          </Tiles>,
+        ),
+    },
+    {
+      label: 'Rounded corners',
+      description: (
+        <>
+          <Text>
+            Card corners can be rounded by providing the{' '}
+            <Strong>rounded</Strong> prop.
+          </Text>
+          <Text>
+            Alternatively, rounding may be applied responsively using the{' '}
+            <Strong>roundAbove</Strong> prop, and providing either{' '}
+            <Strong>mobile</Strong> or <Strong>tablet</Strong>. This enables
+            card edges to be softened on larger screens, but squared off if it
+            runs full bleed on smaller devices.
+          </Text>
+        </>
+      ),
+      Example: () =>
+        source(
+          <Tiles space="large" columns={[1, 2]}>
+            <Stack space="small">
+              <Text size="xsmall" tone="secondary">
+                DEFAULT
+              </Text>
+              <Card>
+                <Box style={{ height: 100 }} width="full" />
+              </Card>
+            </Stack>
+
+            <Stack space="small">
+              <Text size="xsmall" tone="secondary">
+                ROUNDED
+              </Text>
+              <Card rounded>
+                <Box style={{ height: 100 }} width="full" />
+              </Card>
+            </Stack>
+
+            <Stack space="small">
+              <Text size="xsmall" tone="secondary">
+                RESPONSIVELY ROUNDED (e.g. above mobile)
+              </Text>
+              <Card roundedAbove="mobile">
+                <Box style={{ height: 100 }} width="full" />
+              </Card>
+            </Stack>
+          </Tiles>,
+        ),
+    },
+    {
+      label: 'Custom semantics',
+      description: (
+        <Text>
+          The HTML tag can be customised to ensure the underlying document
+          semantics are meaningful. This can be done using the{' '}
+          <Strong>component</Strong> prop and supports{' '}
+          {validCardComponents.map((c, i) => {
+            const notLastTwo = validCardComponents.length - 2;
+            const joiningLastElements = i === notLastTwo ? ' and ' : '.';
+
+            return (
+              <Fragment key={c}>
+                <Strong>{c}</Strong>
+                {c === 'div' ? ' (default)' : ''}
+                {i < notLastTwo ? ', ' : joiningLastElements}
+              </Fragment>
+            );
+          })}
         </Text>
       ),
     },
