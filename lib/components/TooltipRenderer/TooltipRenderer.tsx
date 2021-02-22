@@ -10,12 +10,12 @@ import { createPortal } from 'react-dom';
 import { usePopperTooltip } from 'react-popper-tooltip';
 import isMobile from 'is-mobile';
 import assert from 'assert';
-import { useThemeName } from '../../playroom/components';
 import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import { BackgroundProvider } from '../Box/BackgroundContext';
 import { useBoxStyles } from '../Box/useBoxStyles';
 import { DefaultTextPropsProvider } from '../private/defaultTextProps';
 import { useSpace } from '../useSpace/useSpace';
+import { useThemeName } from '../useThemeName/useThemeName';
 import { Box } from '../Box/Box';
 import * as styleRefs from './TooltipRenderer.treat';
 
