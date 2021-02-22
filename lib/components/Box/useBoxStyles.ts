@@ -128,7 +128,7 @@ export const useBoxStyles = ({
 
   assert(
     !Array.isArray(borderRadius) || borderRadius.indexOf('full') === -1,
-    '`full` is not a supported as a responsive prop.',
+    '`full` is not a supported as a responsive `borderRadius` value.',
   );
 
   const resolvedBorderRadius =
