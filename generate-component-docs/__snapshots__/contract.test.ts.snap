@@ -5577,6 +5577,7 @@ Object {
   exportType: component,
   props: {
     children: ReactNodeNoStrings
+    icon?: ReactNode
     size?: 
         | "large"
         | "small"
