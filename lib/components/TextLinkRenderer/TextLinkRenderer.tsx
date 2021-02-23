@@ -4,7 +4,7 @@ import dedent from 'dedent';
 import assert from 'assert';
 import classnames from 'classnames';
 import TextLinkRendererContext from './TextLinkRendererContext';
-import TextContext from '../Text/TextContext';
+import { TextContext } from '../Text/TextContext';
 import HeadingContext from '../Heading/HeadingContext';
 import ActionsContext from '../Actions/ActionsContext';
 import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';

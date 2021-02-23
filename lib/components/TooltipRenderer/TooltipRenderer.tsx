@@ -13,6 +13,7 @@ import assert from 'assert';
 import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import { BackgroundProvider } from '../Box/BackgroundContext';
 import { useBoxStyles } from '../Box/useBoxStyles';
+import { TextContext } from '../Text/TextContext';
 import { DefaultTextPropsProvider } from '../private/defaultTextProps';
 import { useSpace } from '../useSpace/useSpace';
 import { useThemeName } from '../useThemeName/useThemeName';
@@ -270,21 +271,23 @@ export const TooltipRenderer = ({
 
       {triggerRef &&
         createPortal(
-          <div
-            id={id}
-            role="tooltip"
-            hidden={!visible ? true : undefined}
-            className={tooltipStyles}
-            {...(visible
-              ? getTooltipProps({
-                  ref: setTooltipRef,
-                })
-              : null)}
-          >
-            <TooltipContent opacity={opacity} arrowProps={getArrowProps()}>
-              {tooltip}
-            </TooltipContent>
-          </div>,
+          <TextContext.Provider value={false}>
+            <div
+              id={id}
+              role="tooltip"
+              hidden={!visible ? true : undefined}
+              className={tooltipStyles}
+              {...(visible
+                ? getTooltipProps({
+                    ref: setTooltipRef,
+                  })
+                : null)}
+            >
+              <TooltipContent opacity={opacity} arrowProps={getArrowProps()}>
+                {tooltip}
+              </TooltipContent>
+            </div>
+          </TextContext.Provider>,
           document.body,
         )}
     </>

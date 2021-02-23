@@ -5,7 +5,7 @@ import { Overlay } from '../private/Overlay/Overlay';
 import { Box } from '../Box/Box';
 import { IconChevron } from '../icons';
 import * as styleRefs from './TextDropdown.treat';
-import TextContext from '../Text/TextContext';
+import { TextContext } from '../Text/TextContext';
 import HeadingContext from '../Heading/HeadingContext';
 
 interface TextDropdownOption<Value> {
