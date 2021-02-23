@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import ReactMarkdown from 'react-markdown';
 
 import { CodeBlock } from '../Code/Code';
@@ -13,6 +13,7 @@ import {
 } from '../../../../lib/components';
 import { DefaultTextPropsProvider } from '../../../../lib/components/private/defaultTextProps';
 import { InlineCode } from '../InlineCode/InlineCode';
+import { LinkableHeading } from '../LinkableHeading/LinkableHeading';
 
 const Code = ({ language, value }: { language: string; value: string }) => (
   <Box paddingBottom="medium">
@@ -49,9 +50,19 @@ const renderers = {
             : undefined
         }
       >
-        <Heading level={resolvedLevel === '5' ? '4' : resolvedLevel}>
-          {children}
-        </Heading>
+        {resolvedLevel === '3' ? (
+          <LinkableHeading level={resolvedLevel}>
+            {Array.isArray(children)
+              ? children
+                  .map(({ props }: ReactElement) => props.children)
+                  .join(' ')
+              : children}
+          </LinkableHeading>
+        ) : (
+          <Heading level={resolvedLevel === '5' ? '4' : resolvedLevel}>
+            {children}
+          </Heading>
+        )}
       </Box>
     );
   },
