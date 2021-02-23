@@ -1,7 +1,7 @@
 import React, { useContext, ReactNode } from 'react';
 import { useStyles } from 'sku/react-treat';
 import { Box, BoxProps } from '../Box/Box';
-import TextContext from '../Text/TextContext';
+import { TextContext } from '../Text/TextContext';
 import HeadingContext from '../Heading/HeadingContext';
 import {
   resolveResponsiveRangeProps,
