@@ -1385,5 +1385,65 @@
         "summary": "**TextLink, TextLinkButton, TextLinkRenderer:** Scope deprecation warning to only be in Actions context."
       }
     ]
+  },
+  {
+    "version": "29.29.0",
+    "updates": [
+      {
+        "updated": [
+          "Box"
+        ],
+        "summary": "**Box:** Support responsive `borderRadius`\n\nAdds support for responsive values to `borderRadius`.\n\n**EXAMPLE USAGE:**\n```jsx\n<Box borderRadius={['none', 'standard']}>\n  ...\n</Box>\n```"
+      },
+      {
+        "updated": [
+          "Button"
+        ],
+        "summary": "**Button:** Add support for `ref` and `tabIndex` props"
+      },
+      {
+        "updated": [
+          "Card"
+        ],
+        "summary": "**Card:** Add `component` support\n\nThe HTML tag can be customised to ensure the underlying document semantics are meaningful. This can be done using the component prop and supports `div` (default), `article`, `aside`, `details`, `main` and `section`.\n\n**EXAMPLE USAGE:**\n```jsx\n<Card component=\"article\">\n  ...\n</Card>\n```"
+      },
+      {
+        "updated": [
+          "Badge"
+        ],
+        "summary": "**Badge:** Add support for `ref`, `tabIndex` and `aria-describedby` props"
+      },
+      {
+        "updated": [
+          "Badge"
+        ],
+        "summary": "**Badge:** Ensure `ref`, `title`, `tabIndex` and `aria-describedby` props are applied to the visual badge element, not its container element"
+      },
+      {
+        "updated": [
+          "Card"
+        ],
+        "summary": "**Card:** Add `tone` support\n\nSpecifying a `tone` will now add a keyline down the left hand side of the container. The supported tones are `promote` and `formAccent`.\n\n**As a result, Cards are now position relative containers.**\n\n**EXAMPLE USAGE:**\n```jsx\n<Card tone=\"formAccent\">\n  ...\n</Card>\n```"
+      },
+      {
+        "updated": [
+          "TextLink",
+          "ButtonLink"
+        ],
+        "summary": "**TextLink, ButtonLink:** Add support for `ref` prop"
+      },
+      {
+        "updated": [
+          "TooltipRenderer"
+        ],
+        "summary": "**TooltipRenderer:** Add arrow to tooltip"
+      },
+      {
+        "updated": [
+          "Card"
+        ],
+        "summary": "**Card:** Add `rounded` and `roundedAbove` support\n\nCard corners can be rounded by providing the `rounded` prop.\n\nAlternatively, rounding may be applied responsively using the `roundedAbove` prop, and providing either `mobile` or `tablet`. This enables card edges to be softened on larger screens, but squared off if it runs full bleed on smaller devices.\n\n**EXAMPLE USAGE:**\n```jsx\n<Card rounded>\n  ...\n</Card>\n```\nor\n```jsx\n<Card roundedAbove=\"mobile\">\n  ...\n</Card>\n```"
+      }
+    ]
   }
 ]
