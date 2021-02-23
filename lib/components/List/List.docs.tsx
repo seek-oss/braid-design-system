@@ -2,7 +2,7 @@ import React from 'react';
 import source from '../../utils/source.macro';
 import { ComponentDocs } from '../../../site/src/types';
 import { List, Text, TextLink, Stack, Column, Columns } from '..';
-import { IconTick } from '../../playroom/components';
+import { IconTick, Strong } from '../../playroom/components';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -102,6 +102,64 @@ const docs: ComponentDocs = {
               </List>
             </Stack>
           </List>,
+        ),
+    },
+    {
+      label: 'Types of lists',
+      description: (
+        <>
+          <Text>
+            A List can select a delimiter for its items by specifying the{' '}
+            <Strong>type</Strong> prop, with supported values being{' '}
+            <Strong>bullet</Strong>, <Strong>number</Strong>,{' '}
+            <Strong>alpha</Strong> and <Strong>roman</Strong> characters.
+          </Text>
+          <Text>
+            A type of <Strong>icon</Strong> may also be used, which then
+            requires an icon component be provided to the <Strong>icon</Strong>{' '}
+            prop.
+          </Text>
+        </>
+      ),
+      Example: () =>
+        source(
+          <Columns space="large" collapseBelow="desktop">
+            <Column>
+              <List>
+                <Text>Bullet</Text>
+                <Text>Bullet</Text>
+                <Text>Bullet</Text>
+              </List>
+            </Column>
+            <Column>
+              <List type="number">
+                <Text>Number</Text>
+                <Text>Number</Text>
+                <Text>Number</Text>
+              </List>
+            </Column>
+            <Column>
+              <List type="alpha">
+                <Text>Alpha</Text>
+                <Text>Alpha</Text>
+                <Text>Alpha</Text>
+              </List>
+            </Column>
+            <Column>
+              <List type="roman">
+                <Text>Roman</Text>
+                <Text>Roman</Text>
+                <Text>Roman</Text>
+              </List>
+            </Column>
+            <Column>
+              <List type="icon" icon={<IconTick tone="positive" />}>
+                <Text>Icon</Text>
+                <Text>Icon</Text>
+                <Text>Icon</Text>
+              </List>
+            </Column>
+          </Columns>,
         ),
     },
     {
