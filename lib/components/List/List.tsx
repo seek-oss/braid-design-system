@@ -82,6 +82,7 @@ const CharacterBullet = ({ length = 1, children }: CharacterBulletProps) => {
 
 type ListTypeCharacter = {
   type?: 'bullet' | 'number' | 'alpha' | 'roman';
+  icon?: never;
 };
 
 type ListTypeIcon = {
@@ -89,15 +90,13 @@ type ListTypeIcon = {
   icon: ReactNode;
 };
 
-type ListType = ListTypeCharacter | ListTypeIcon;
-
-export type ListProps = ListType & {
+export type ListProps = {
   children: StackProps['children'];
   size?: TextProps['size'];
   space?: StackProps['space'];
   tone?: TextProps['tone'];
   start?: number;
-};
+} & (ListTypeIcon | ListTypeCharacter);
 
 export const List = ({
   children,
