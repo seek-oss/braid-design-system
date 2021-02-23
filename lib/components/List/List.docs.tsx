@@ -56,55 +56,6 @@ const docs: ComponentDocs = {
   alternatives: [],
   additional: [
     {
-      label: 'Rich content',
-      description: (
-        <Text>
-          You can use a <TextLink href="/components/Stack">Stack</TextLink> as a
-          list item to display multiple lines of text.
-        </Text>
-      ),
-      Example: () =>
-        source(
-          <List space="large">
-            <Stack space="medium">
-              <Text weight="strong">This is a paragraph.</Text>
-              <Text>This is another paragraph.</Text>
-            </Stack>
-            <Stack space="medium">
-              <Text weight="strong">This is a paragraph.</Text>
-              <Text>This is another paragraph.</Text>
-            </Stack>
-          </List>,
-        ),
-    },
-    {
-      label: 'Nested lists',
-      description: (
-        <Text>Lists of varying types can be nested within each other.</Text>
-      ),
-      Example: () =>
-        source(
-          <List space="large" type="number">
-            <Stack space="medium">
-              <Text>Number list</Text>
-              <List type="alpha">
-                <Text>Alpha list</Text>
-                <Text>Alpha list</Text>
-                <Text>Alpha list</Text>
-              </List>
-            </Stack>
-            <Stack space="medium">
-              <Text>Number list</Text>
-              <List type="alpha">
-                <Text>Alpha list</Text>
-                <Text>Alpha list</Text>
-                <Text>Alpha list</Text>
-              </List>
-            </Stack>
-          </List>,
-        ),
-    },
-    {
       label: 'Types of lists',
       description: (
         <>
@@ -203,6 +154,55 @@ const docs: ComponentDocs = {
               </List>
             </Column>
           </Columns>,
+        ),
+    },
+    {
+      label: 'Rich content',
+      description: (
+        <Text>
+          You can use a <TextLink href="/components/Stack">Stack</TextLink> as a
+          list item to display multiple lines of text.
+        </Text>
+      ),
+      Example: () =>
+        source(
+          <List space="large">
+            <Stack space="medium">
+              <Text weight="strong">This is a paragraph.</Text>
+              <Text>This is another paragraph.</Text>
+            </Stack>
+            <Stack space="medium">
+              <Text weight="strong">This is a paragraph.</Text>
+              <Text>This is another paragraph.</Text>
+            </Stack>
+          </List>,
+        ),
+    },
+    {
+      label: 'Nested lists',
+      description: (
+        <Text>Lists of varying types can be nested within each other.</Text>
+      ),
+      Example: () =>
+        source(
+          <List space="large" type="number">
+            <Stack space="medium">
+              <Text>Number list</Text>
+              <List type="alpha">
+                <Text>Alpha list</Text>
+                <Text>Alpha list</Text>
+                <Text>Alpha list</Text>
+              </List>
+            </Stack>
+            <Stack space="medium">
+              <Text>Number list</Text>
+              <List type="alpha">
+                <Text>Alpha list</Text>
+                <Text>Alpha list</Text>
+                <Text>Alpha list</Text>
+              </List>
+            </Stack>
+          </List>,
         ),
     },
     {
