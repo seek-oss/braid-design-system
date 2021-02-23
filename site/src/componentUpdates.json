@@ -1445,5 +1445,16 @@
         "summary": "**Card:** Add `rounded` and `roundedAbove` support\n\nCard corners can be rounded by providing the `rounded` prop.\n\nAlternatively, rounding may be applied responsively using the `roundedAbove` prop, and providing either `mobile` or `tablet`. This enables card edges to be softened on larger screens, but squared off if it runs full bleed on smaller devices.\n\n**EXAMPLE USAGE:**\n```jsx\n<Card rounded>\n  ...\n</Card>\n```\nor\n```jsx\n<Card roundedAbove=\"mobile\">\n  ...\n</Card>\n```"
       }
     ]
+  },
+  {
+    "version": "29.29.1",
+    "updates": [
+      {
+        "updated": [
+          "TooltipRenderer"
+        ],
+        "summary": "**TooltipRenderer:** Support usage within `Text` elements"
+      }
+    ]
   }
 ]

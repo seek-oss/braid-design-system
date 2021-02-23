@@ -1,5 +1,11 @@
 # braid-design-system
 
+## 29.29.1
+
+### Patch Changes
+
+- **TooltipRenderer:** Support usage within `Text` elements ([#912](https://github.com/seek-oss/braid-design-system/pull/912))
+
 ## 29.29.0
 
 ### Minor Changes
