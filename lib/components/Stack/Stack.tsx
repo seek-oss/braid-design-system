@@ -66,7 +66,7 @@ const calculateHiddenStackItemProps = (
     displayTablet,
     displayDesktop,
   ] = normaliseResponsiveProp(
-    'display' in stackItemProps ? stackItemProps.display : 'block',
+    stackItemProps.display !== undefined ? stackItemProps.display : 'block',
   );
 
   return {

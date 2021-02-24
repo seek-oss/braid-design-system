@@ -30,9 +30,8 @@ export type AccordionItemStateProps = DisclosureStateProps;
 export const AccordionItem = ({
   id,
   label,
-  expanded: expandedProp,
-  onToggle,
   children,
+  ...restProps
 }: AccordionItemProps) => {
   const styles = useStyles(styleRefs);
 
@@ -43,7 +42,14 @@ export const AccordionItem = ({
 
   const { expanded, buttonProps, contentProps } = useDisclosure({
     id,
-    ...(onToggle ? { onToggle, expanded: expandedProp } : null),
+    ...(restProps.expanded !== undefined
+      ? {
+          onToggle: restProps.onToggle,
+          expanded: restProps.expanded,
+        }
+      : {
+          onToggle: restProps.onToggle,
+        }),
   });
 
   return (

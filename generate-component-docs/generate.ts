@@ -19,24 +19,6 @@ const stringAliases: Record<string, string> = {
     'string | number | boolean | ClassDictionary | ClassArray',
 };
 
-const reactNodeTypes = [
-  'string',
-  'number',
-  'false',
-  'true',
-  '{}',
-  'ReactElement<any, string | ((props: any) => ReactElement<any, any> | null) | (new (props: any) => Component<any, any, any>)>',
-  'ReactNodeArray',
-  'ReactPortal',
-];
-
-const reactNodeNoStringsTypes = [
-  'false',
-  'true',
-  'ReactElement<any, string | ((props: any) => ReactElement<any, any> | null) | (new (props: any) => Component<any, any, any>)>',
-  'ReactNodeArray',
-];
-
 export interface NormalisedInterface {
   type: 'interface';
   props: {
@@ -223,11 +205,27 @@ export default () => {
         checker.typeToString(unionItem),
       );
 
-      if (isEqual(types, reactNodeTypes)) {
+      if (
+        isEqual(types.slice(0, 6), [
+          'string',
+          'number',
+          'false',
+          'true',
+          '{}',
+          'ReactElement<any, string | JSXElementConstructor<any>>',
+        ])
+      ) {
         return 'ReactNode';
       }
 
-      if (isEqual(types, reactNodeNoStringsTypes)) {
+      if (
+        isEqual(types, [
+          'false',
+          'true',
+          'ReactElement<any, string | JSXElementConstructor<any>>',
+          'ReactNodeArray',
+        ])
+      ) {
         return 'ReactNodeNoStrings';
       }
 

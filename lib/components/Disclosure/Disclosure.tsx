@@ -19,10 +19,9 @@ export const Disclosure = ({
   id,
   expandLabel,
   collapseLabel = expandLabel,
-  expanded: expandedProp,
-  onToggle,
   space = 'medium',
   children,
+  ...restProps
 }: DisclosureProps) => {
   assert(
     typeof expandLabel === 'undefined' || typeof expandLabel === 'string',
@@ -36,7 +35,14 @@ export const Disclosure = ({
 
   const { expanded, buttonProps, contentProps } = useDisclosure({
     id,
-    ...(onToggle ? { onToggle, expanded: expandedProp } : null),
+    ...(restProps.expanded !== undefined
+      ? {
+          onToggle: restProps.onToggle,
+          expanded: restProps.expanded,
+        }
+      : {
+          onToggle: restProps.onToggle,
+        }),
   });
 
   return (
