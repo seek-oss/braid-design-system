@@ -10,7 +10,7 @@ export const normaliseResponsiveProp = <Keys extends string | number>(
     return [value, value, value];
   }
 
-  if ('length' in value) {
+  if (Array.isArray(value)) {
     const { length } = value;
 
     if (length === 2) {

@@ -59,7 +59,7 @@ Object {
     aria-describedby?: string
     autoFocus?: boolean
     automaticSelection?: boolean
-    data?: Record<string, string | number>
+    data?: DataAttributeMap
     description?: ReactNode
     disabled?: boolean
     hideSuggestionsOnSelection?: boolean
@@ -110,7 +110,7 @@ exports[`BackgroundProvider 1`] = `
 Object {
   exportType: component,
   props: {
-    children: ReactElement<any, string | ((props: any) => ReactElement<any, any> | null) | (new (props: any) => Component<any, any, any>)>
+    children: ReactElement<any, string | JSXElementConstructor<any>>
     type: 
         | "dark"
         | "light"
@@ -688,7 +688,7 @@ Object {
     loop?: boolean
     low?: number
     manifest?: string
-    margin?: ResponsiveProp<
+    margin?: 
         | "gutter"
         | "large"
         | "medium"
@@ -698,8 +698,9 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-    >
-    marginBottom?: ResponsiveProp<
+        | readonly [Space, Space, Space]
+        | readonly [Space, Space]
+    marginBottom?: 
         | "gutter"
         | "large"
         | "medium"
@@ -709,9 +710,10 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-    >
+        | readonly [Space, Space, Space]
+        | readonly [Space, Space]
     marginHeight?: number
-    marginLeft?: ResponsiveProp<
+    marginLeft?: 
         | "gutter"
         | "large"
         | "medium"
@@ -721,8 +723,9 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-    >
-    marginRight?: ResponsiveProp<
+        | readonly [Space, Space, Space]
+        | readonly [Space, Space]
+    marginRight?: 
         | "gutter"
         | "large"
         | "medium"
@@ -732,8 +735,9 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-    >
-    marginTop?: ResponsiveProp<
+        | readonly [Space, Space, Space]
+        | readonly [Space, Space]
+    marginTop?: 
         | "gutter"
         | "large"
         | "medium"
@@ -743,9 +747,10 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-    >
+        | readonly [Space, Space, Space]
+        | readonly [Space, Space]
     marginWidth?: number
-    marginX?: ResponsiveProp<
+    marginX?: 
         | "gutter"
         | "large"
         | "medium"
@@ -755,8 +760,9 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-    >
-    marginY?: ResponsiveProp<
+        | readonly [Space, Space, Space]
+        | readonly [Space, Space]
+    marginY?: 
         | "gutter"
         | "large"
         | "medium"
@@ -766,7 +772,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-    >
+        | readonly [Space, Space, Space]
+        | readonly [Space, Space]
     max?: 
         | number
         | string
@@ -789,166 +796,166 @@ Object {
     name?: string
     noValidate?: boolean
     nonce?: string
-    onAbort?: (event: SyntheticEvent<HTMLElement, Event>) => void
-    onAbortCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void
-    onAnimationEnd?: (event: AnimationEvent<HTMLElement>) => void
-    onAnimationEndCapture?: (event: AnimationEvent<HTMLElement>) => void
-    onAnimationIteration?: (event: AnimationEvent<HTMLElement>) => void
-    onAnimationIterationCapture?: (event: AnimationEvent<HTMLElement>) => void
-    onAnimationStart?: (event: AnimationEvent<HTMLElement>) => void
-    onAnimationStartCapture?: (event: AnimationEvent<HTMLElement>) => void
-    onAuxClick?: (event: MouseEvent<HTMLElement, MouseEvent>) => void
-    onAuxClickCapture?: (event: MouseEvent<HTMLElement, MouseEvent>) => void
-    onBeforeInput?: (event: FormEvent<HTMLElement>) => void
-    onBeforeInputCapture?: (event: FormEvent<HTMLElement>) => void
-    onBlur?: (event: FocusEvent<HTMLElement>) => void
-    onBlurCapture?: (event: FocusEvent<HTMLElement>) => void
-    onCanPlay?: (event: SyntheticEvent<HTMLElement, Event>) => void
-    onCanPlayCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void
-    onCanPlayThrough?: (event: SyntheticEvent<HTMLElement, Event>) => void
-    onCanPlayThroughCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void
-    onChange?: (event: FormEvent<HTMLElement>) => void
-    onChangeCapture?: (event: FormEvent<HTMLElement>) => void
-    onClick?: (event: MouseEvent<HTMLElement, MouseEvent>) => void
-    onClickCapture?: (event: MouseEvent<HTMLElement, MouseEvent>) => void
-    onCompositionEnd?: (event: CompositionEvent<HTMLElement>) => void
-    onCompositionEndCapture?: (event: CompositionEvent<HTMLElement>) => void
-    onCompositionStart?: (event: CompositionEvent<HTMLElement>) => void
-    onCompositionStartCapture?: (event: CompositionEvent<HTMLElement>) => void
-    onCompositionUpdate?: (event: CompositionEvent<HTMLElement>) => void
-    onCompositionUpdateCapture?: (event: CompositionEvent<HTMLElement>) => void
-    onContextMenu?: (event: MouseEvent<HTMLElement, MouseEvent>) => void
-    onContextMenuCapture?: (event: MouseEvent<HTMLElement, MouseEvent>) => void
-    onCopy?: (event: ClipboardEvent<HTMLElement>) => void
-    onCopyCapture?: (event: ClipboardEvent<HTMLElement>) => void
-    onCut?: (event: ClipboardEvent<HTMLElement>) => void
-    onCutCapture?: (event: ClipboardEvent<HTMLElement>) => void
-    onDoubleClick?: (event: MouseEvent<HTMLElement, MouseEvent>) => void
-    onDoubleClickCapture?: (event: MouseEvent<HTMLElement, MouseEvent>) => void
-    onDrag?: (event: DragEvent<HTMLElement>) => void
-    onDragCapture?: (event: DragEvent<HTMLElement>) => void
-    onDragEnd?: (event: DragEvent<HTMLElement>) => void
-    onDragEndCapture?: (event: DragEvent<HTMLElement>) => void
-    onDragEnter?: (event: DragEvent<HTMLElement>) => void
-    onDragEnterCapture?: (event: DragEvent<HTMLElement>) => void
-    onDragExit?: (event: DragEvent<HTMLElement>) => void
-    onDragExitCapture?: (event: DragEvent<HTMLElement>) => void
-    onDragLeave?: (event: DragEvent<HTMLElement>) => void
-    onDragLeaveCapture?: (event: DragEvent<HTMLElement>) => void
-    onDragOver?: (event: DragEvent<HTMLElement>) => void
-    onDragOverCapture?: (event: DragEvent<HTMLElement>) => void
-    onDragStart?: (event: DragEvent<HTMLElement>) => void
-    onDragStartCapture?: (event: DragEvent<HTMLElement>) => void
-    onDrop?: (event: DragEvent<HTMLElement>) => void
-    onDropCapture?: (event: DragEvent<HTMLElement>) => void
-    onDurationChange?: (event: SyntheticEvent<HTMLElement, Event>) => void
-    onDurationChangeCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void
-    onEmptied?: (event: SyntheticEvent<HTMLElement, Event>) => void
-    onEmptiedCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void
-    onEncrypted?: (event: SyntheticEvent<HTMLElement, Event>) => void
-    onEncryptedCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void
-    onEnded?: (event: SyntheticEvent<HTMLElement, Event>) => void
-    onEndedCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void
-    onError?: (event: SyntheticEvent<HTMLElement, Event>) => void
-    onErrorCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void
-    onFocus?: (event: FocusEvent<HTMLElement>) => void
-    onFocusCapture?: (event: FocusEvent<HTMLElement>) => void
-    onGotPointerCapture?: (event: PointerEvent<HTMLElement>) => void
-    onGotPointerCaptureCapture?: (event: PointerEvent<HTMLElement>) => void
-    onInput?: (event: FormEvent<HTMLElement>) => void
-    onInputCapture?: (event: FormEvent<HTMLElement>) => void
-    onInvalid?: (event: FormEvent<HTMLElement>) => void
-    onInvalidCapture?: (event: FormEvent<HTMLElement>) => void
-    onKeyDown?: (event: KeyboardEvent<HTMLElement>) => void
-    onKeyDownCapture?: (event: KeyboardEvent<HTMLElement>) => void
-    onKeyPress?: (event: KeyboardEvent<HTMLElement>) => void
-    onKeyPressCapture?: (event: KeyboardEvent<HTMLElement>) => void
-    onKeyUp?: (event: KeyboardEvent<HTMLElement>) => void
-    onKeyUpCapture?: (event: KeyboardEvent<HTMLElement>) => void
-    onLoad?: (event: SyntheticEvent<HTMLElement, Event>) => void
-    onLoadCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void
-    onLoadStart?: (event: SyntheticEvent<HTMLElement, Event>) => void
-    onLoadStartCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void
-    onLoadedData?: (event: SyntheticEvent<HTMLElement, Event>) => void
-    onLoadedDataCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void
-    onLoadedMetadata?: (event: SyntheticEvent<HTMLElement, Event>) => void
-    onLoadedMetadataCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void
-    onLostPointerCapture?: (event: PointerEvent<HTMLElement>) => void
-    onLostPointerCaptureCapture?: (event: PointerEvent<HTMLElement>) => void
-    onMouseDown?: (event: MouseEvent<HTMLElement, MouseEvent>) => void
-    onMouseDownCapture?: (event: MouseEvent<HTMLElement, MouseEvent>) => void
-    onMouseEnter?: (event: MouseEvent<HTMLElement, MouseEvent>) => void
-    onMouseLeave?: (event: MouseEvent<HTMLElement, MouseEvent>) => void
-    onMouseMove?: (event: MouseEvent<HTMLElement, MouseEvent>) => void
-    onMouseMoveCapture?: (event: MouseEvent<HTMLElement, MouseEvent>) => void
-    onMouseOut?: (event: MouseEvent<HTMLElement, MouseEvent>) => void
-    onMouseOutCapture?: (event: MouseEvent<HTMLElement, MouseEvent>) => void
-    onMouseOver?: (event: MouseEvent<HTMLElement, MouseEvent>) => void
-    onMouseOverCapture?: (event: MouseEvent<HTMLElement, MouseEvent>) => void
-    onMouseUp?: (event: MouseEvent<HTMLElement, MouseEvent>) => void
-    onMouseUpCapture?: (event: MouseEvent<HTMLElement, MouseEvent>) => void
-    onPaste?: (event: ClipboardEvent<HTMLElement>) => void
-    onPasteCapture?: (event: ClipboardEvent<HTMLElement>) => void
-    onPause?: (event: SyntheticEvent<HTMLElement, Event>) => void
-    onPauseCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void
-    onPlay?: (event: SyntheticEvent<HTMLElement, Event>) => void
-    onPlayCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void
-    onPlaying?: (event: SyntheticEvent<HTMLElement, Event>) => void
-    onPlayingCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void
-    onPointerCancel?: (event: PointerEvent<HTMLElement>) => void
-    onPointerCancelCapture?: (event: PointerEvent<HTMLElement>) => void
-    onPointerDown?: (event: PointerEvent<HTMLElement>) => void
-    onPointerDownCapture?: (event: PointerEvent<HTMLElement>) => void
-    onPointerEnter?: (event: PointerEvent<HTMLElement>) => void
-    onPointerEnterCapture?: (event: PointerEvent<HTMLElement>) => void
-    onPointerLeave?: (event: PointerEvent<HTMLElement>) => void
-    onPointerLeaveCapture?: (event: PointerEvent<HTMLElement>) => void
-    onPointerMove?: (event: PointerEvent<HTMLElement>) => void
-    onPointerMoveCapture?: (event: PointerEvent<HTMLElement>) => void
-    onPointerOut?: (event: PointerEvent<HTMLElement>) => void
-    onPointerOutCapture?: (event: PointerEvent<HTMLElement>) => void
-    onPointerOver?: (event: PointerEvent<HTMLElement>) => void
-    onPointerOverCapture?: (event: PointerEvent<HTMLElement>) => void
-    onPointerUp?: (event: PointerEvent<HTMLElement>) => void
-    onPointerUpCapture?: (event: PointerEvent<HTMLElement>) => void
-    onProgress?: (event: SyntheticEvent<HTMLElement, Event>) => void
-    onProgressCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void
-    onRateChange?: (event: SyntheticEvent<HTMLElement, Event>) => void
-    onRateChangeCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void
-    onReset?: (event: FormEvent<HTMLElement>) => void
-    onResetCapture?: (event: FormEvent<HTMLElement>) => void
-    onScroll?: (event: UIEvent<HTMLElement, UIEvent>) => void
-    onScrollCapture?: (event: UIEvent<HTMLElement, UIEvent>) => void
-    onSeeked?: (event: SyntheticEvent<HTMLElement, Event>) => void
-    onSeekedCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void
-    onSeeking?: (event: SyntheticEvent<HTMLElement, Event>) => void
-    onSeekingCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void
-    onSelect?: (event: SyntheticEvent<HTMLElement, Event>) => void
-    onSelectCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void
-    onStalled?: (event: SyntheticEvent<HTMLElement, Event>) => void
-    onStalledCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void
-    onSubmit?: (event: FormEvent<HTMLElement>) => void
-    onSubmitCapture?: (event: FormEvent<HTMLElement>) => void
-    onSuspend?: (event: SyntheticEvent<HTMLElement, Event>) => void
-    onSuspendCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void
-    onTimeUpdate?: (event: SyntheticEvent<HTMLElement, Event>) => void
-    onTimeUpdateCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void
-    onTouchCancel?: (event: TouchEvent<HTMLElement>) => void
-    onTouchCancelCapture?: (event: TouchEvent<HTMLElement>) => void
-    onTouchEnd?: (event: TouchEvent<HTMLElement>) => void
-    onTouchEndCapture?: (event: TouchEvent<HTMLElement>) => void
-    onTouchMove?: (event: TouchEvent<HTMLElement>) => void
-    onTouchMoveCapture?: (event: TouchEvent<HTMLElement>) => void
-    onTouchStart?: (event: TouchEvent<HTMLElement>) => void
-    onTouchStartCapture?: (event: TouchEvent<HTMLElement>) => void
-    onTransitionEnd?: (event: TransitionEvent<HTMLElement>) => void
-    onTransitionEndCapture?: (event: TransitionEvent<HTMLElement>) => void
-    onVolumeChange?: (event: SyntheticEvent<HTMLElement, Event>) => void
-    onVolumeChangeCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void
-    onWaiting?: (event: SyntheticEvent<HTMLElement, Event>) => void
-    onWaitingCapture?: (event: SyntheticEvent<HTMLElement, Event>) => void
-    onWheel?: (event: WheelEvent<HTMLElement>) => void
-    onWheelCapture?: (event: WheelEvent<HTMLElement>) => void
+    onAbort?: ReactEventHandler<HTMLElement>
+    onAbortCapture?: ReactEventHandler<HTMLElement>
+    onAnimationEnd?: AnimationEventHandler<HTMLElement>
+    onAnimationEndCapture?: AnimationEventHandler<HTMLElement>
+    onAnimationIteration?: AnimationEventHandler<HTMLElement>
+    onAnimationIterationCapture?: AnimationEventHandler<HTMLElement>
+    onAnimationStart?: AnimationEventHandler<HTMLElement>
+    onAnimationStartCapture?: AnimationEventHandler<HTMLElement>
+    onAuxClick?: MouseEventHandler<HTMLElement>
+    onAuxClickCapture?: MouseEventHandler<HTMLElement>
+    onBeforeInput?: FormEventHandler<HTMLElement>
+    onBeforeInputCapture?: FormEventHandler<HTMLElement>
+    onBlur?: FocusEventHandler<HTMLElement>
+    onBlurCapture?: FocusEventHandler<HTMLElement>
+    onCanPlay?: ReactEventHandler<HTMLElement>
+    onCanPlayCapture?: ReactEventHandler<HTMLElement>
+    onCanPlayThrough?: ReactEventHandler<HTMLElement>
+    onCanPlayThroughCapture?: ReactEventHandler<HTMLElement>
+    onChange?: FormEventHandler<HTMLElement>
+    onChangeCapture?: FormEventHandler<HTMLElement>
+    onClick?: MouseEventHandler<HTMLElement>
+    onClickCapture?: MouseEventHandler<HTMLElement>
+    onCompositionEnd?: CompositionEventHandler<HTMLElement>
+    onCompositionEndCapture?: CompositionEventHandler<HTMLElement>
+    onCompositionStart?: CompositionEventHandler<HTMLElement>
+    onCompositionStartCapture?: CompositionEventHandler<HTMLElement>
+    onCompositionUpdate?: CompositionEventHandler<HTMLElement>
+    onCompositionUpdateCapture?: CompositionEventHandler<HTMLElement>
+    onContextMenu?: MouseEventHandler<HTMLElement>
+    onContextMenuCapture?: MouseEventHandler<HTMLElement>
+    onCopy?: ClipboardEventHandler<HTMLElement>
+    onCopyCapture?: ClipboardEventHandler<HTMLElement>
+    onCut?: ClipboardEventHandler<HTMLElement>
+    onCutCapture?: ClipboardEventHandler<HTMLElement>
+    onDoubleClick?: MouseEventHandler<HTMLElement>
+    onDoubleClickCapture?: MouseEventHandler<HTMLElement>
+    onDrag?: DragEventHandler<HTMLElement>
+    onDragCapture?: DragEventHandler<HTMLElement>
+    onDragEnd?: DragEventHandler<HTMLElement>
+    onDragEndCapture?: DragEventHandler<HTMLElement>
+    onDragEnter?: DragEventHandler<HTMLElement>
+    onDragEnterCapture?: DragEventHandler<HTMLElement>
+    onDragExit?: DragEventHandler<HTMLElement>
+    onDragExitCapture?: DragEventHandler<HTMLElement>
+    onDragLeave?: DragEventHandler<HTMLElement>
+    onDragLeaveCapture?: DragEventHandler<HTMLElement>
+    onDragOver?: DragEventHandler<HTMLElement>
+    onDragOverCapture?: DragEventHandler<HTMLElement>
+    onDragStart?: DragEventHandler<HTMLElement>
+    onDragStartCapture?: DragEventHandler<HTMLElement>
+    onDrop?: DragEventHandler<HTMLElement>
+    onDropCapture?: DragEventHandler<HTMLElement>
+    onDurationChange?: ReactEventHandler<HTMLElement>
+    onDurationChangeCapture?: ReactEventHandler<HTMLElement>
+    onEmptied?: ReactEventHandler<HTMLElement>
+    onEmptiedCapture?: ReactEventHandler<HTMLElement>
+    onEncrypted?: ReactEventHandler<HTMLElement>
+    onEncryptedCapture?: ReactEventHandler<HTMLElement>
+    onEnded?: ReactEventHandler<HTMLElement>
+    onEndedCapture?: ReactEventHandler<HTMLElement>
+    onError?: ReactEventHandler<HTMLElement>
+    onErrorCapture?: ReactEventHandler<HTMLElement>
+    onFocus?: FocusEventHandler<HTMLElement>
+    onFocusCapture?: FocusEventHandler<HTMLElement>
+    onGotPointerCapture?: PointerEventHandler<HTMLElement>
+    onGotPointerCaptureCapture?: PointerEventHandler<HTMLElement>
+    onInput?: FormEventHandler<HTMLElement>
+    onInputCapture?: FormEventHandler<HTMLElement>
+    onInvalid?: FormEventHandler<HTMLElement>
+    onInvalidCapture?: FormEventHandler<HTMLElement>
+    onKeyDown?: KeyboardEventHandler<HTMLElement>
+    onKeyDownCapture?: KeyboardEventHandler<HTMLElement>
+    onKeyPress?: KeyboardEventHandler<HTMLElement>
+    onKeyPressCapture?: KeyboardEventHandler<HTMLElement>
+    onKeyUp?: KeyboardEventHandler<HTMLElement>
+    onKeyUpCapture?: KeyboardEventHandler<HTMLElement>
+    onLoad?: ReactEventHandler<HTMLElement>
+    onLoadCapture?: ReactEventHandler<HTMLElement>
+    onLoadStart?: ReactEventHandler<HTMLElement>
+    onLoadStartCapture?: ReactEventHandler<HTMLElement>
+    onLoadedData?: ReactEventHandler<HTMLElement>
+    onLoadedDataCapture?: ReactEventHandler<HTMLElement>
+    onLoadedMetadata?: ReactEventHandler<HTMLElement>
+    onLoadedMetadataCapture?: ReactEventHandler<HTMLElement>
+    onLostPointerCapture?: PointerEventHandler<HTMLElement>
+    onLostPointerCaptureCapture?: PointerEventHandler<HTMLElement>
+    onMouseDown?: MouseEventHandler<HTMLElement>
+    onMouseDownCapture?: MouseEventHandler<HTMLElement>
+    onMouseEnter?: MouseEventHandler<HTMLElement>
+    onMouseLeave?: MouseEventHandler<HTMLElement>
+    onMouseMove?: MouseEventHandler<HTMLElement>
+    onMouseMoveCapture?: MouseEventHandler<HTMLElement>
+    onMouseOut?: MouseEventHandler<HTMLElement>
+    onMouseOutCapture?: MouseEventHandler<HTMLElement>
+    onMouseOver?: MouseEventHandler<HTMLElement>
+    onMouseOverCapture?: MouseEventHandler<HTMLElement>
+    onMouseUp?: MouseEventHandler<HTMLElement>
+    onMouseUpCapture?: MouseEventHandler<HTMLElement>
+    onPaste?: ClipboardEventHandler<HTMLElement>
+    onPasteCapture?: ClipboardEventHandler<HTMLElement>
+    onPause?: ReactEventHandler<HTMLElement>
+    onPauseCapture?: ReactEventHandler<HTMLElement>
+    onPlay?: ReactEventHandler<HTMLElement>
+    onPlayCapture?: ReactEventHandler<HTMLElement>
+    onPlaying?: ReactEventHandler<HTMLElement>
+    onPlayingCapture?: ReactEventHandler<HTMLElement>
+    onPointerCancel?: PointerEventHandler<HTMLElement>
+    onPointerCancelCapture?: PointerEventHandler<HTMLElement>
+    onPointerDown?: PointerEventHandler<HTMLElement>
+    onPointerDownCapture?: PointerEventHandler<HTMLElement>
+    onPointerEnter?: PointerEventHandler<HTMLElement>
+    onPointerEnterCapture?: PointerEventHandler<HTMLElement>
+    onPointerLeave?: PointerEventHandler<HTMLElement>
+    onPointerLeaveCapture?: PointerEventHandler<HTMLElement>
+    onPointerMove?: PointerEventHandler<HTMLElement>
+    onPointerMoveCapture?: PointerEventHandler<HTMLElement>
+    onPointerOut?: PointerEventHandler<HTMLElement>
+    onPointerOutCapture?: PointerEventHandler<HTMLElement>
+    onPointerOver?: PointerEventHandler<HTMLElement>
+    onPointerOverCapture?: PointerEventHandler<HTMLElement>
+    onPointerUp?: PointerEventHandler<HTMLElement>
+    onPointerUpCapture?: PointerEventHandler<HTMLElement>
+    onProgress?: ReactEventHandler<HTMLElement>
+    onProgressCapture?: ReactEventHandler<HTMLElement>
+    onRateChange?: ReactEventHandler<HTMLElement>
+    onRateChangeCapture?: ReactEventHandler<HTMLElement>
+    onReset?: FormEventHandler<HTMLElement>
+    onResetCapture?: FormEventHandler<HTMLElement>
+    onScroll?: UIEventHandler<HTMLElement>
+    onScrollCapture?: UIEventHandler<HTMLElement>
+    onSeeked?: ReactEventHandler<HTMLElement>
+    onSeekedCapture?: ReactEventHandler<HTMLElement>
+    onSeeking?: ReactEventHandler<HTMLElement>
+    onSeekingCapture?: ReactEventHandler<HTMLElement>
+    onSelect?: ReactEventHandler<HTMLElement>
+    onSelectCapture?: ReactEventHandler<HTMLElement>
+    onStalled?: ReactEventHandler<HTMLElement>
+    onStalledCapture?: ReactEventHandler<HTMLElement>
+    onSubmit?: FormEventHandler<HTMLElement>
+    onSubmitCapture?: FormEventHandler<HTMLElement>
+    onSuspend?: ReactEventHandler<HTMLElement>
+    onSuspendCapture?: ReactEventHandler<HTMLElement>
+    onTimeUpdate?: ReactEventHandler<HTMLElement>
+    onTimeUpdateCapture?: ReactEventHandler<HTMLElement>
+    onTouchCancel?: TouchEventHandler<HTMLElement>
+    onTouchCancelCapture?: TouchEventHandler<HTMLElement>
+    onTouchEnd?: TouchEventHandler<HTMLElement>
+    onTouchEndCapture?: TouchEventHandler<HTMLElement>
+    onTouchMove?: TouchEventHandler<HTMLElement>
+    onTouchMoveCapture?: TouchEventHandler<HTMLElement>
+    onTouchStart?: TouchEventHandler<HTMLElement>
+    onTouchStartCapture?: TouchEventHandler<HTMLElement>
+    onTransitionEnd?: TransitionEventHandler<HTMLElement>
+    onTransitionEndCapture?: TransitionEventHandler<HTMLElement>
+    onVolumeChange?: ReactEventHandler<HTMLElement>
+    onVolumeChangeCapture?: ReactEventHandler<HTMLElement>
+    onWaiting?: ReactEventHandler<HTMLElement>
+    onWaitingCapture?: ReactEventHandler<HTMLElement>
+    onWheel?: WheelEventHandler<HTMLElement>
+    onWheelCapture?: WheelEventHandler<HTMLElement>
     opacity?: 0
     open?: boolean
     optimum?: number
@@ -958,7 +965,7 @@ Object {
         | "hidden"
         | "scroll"
         | "visible"
-    padding?: ResponsiveProp<
+    padding?: 
         | "gutter"
         | "large"
         | "medium"
@@ -968,8 +975,9 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-    >
-    paddingBottom?: ResponsiveProp<
+        | readonly [Space, Space, Space]
+        | readonly [Space, Space]
+    paddingBottom?: 
         | "gutter"
         | "large"
         | "medium"
@@ -979,8 +987,9 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-    >
-    paddingLeft?: ResponsiveProp<
+        | readonly [Space, Space, Space]
+        | readonly [Space, Space]
+    paddingLeft?: 
         | "gutter"
         | "large"
         | "medium"
@@ -990,8 +999,9 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-    >
-    paddingRight?: ResponsiveProp<
+        | readonly [Space, Space, Space]
+        | readonly [Space, Space]
+    paddingRight?: 
         | "gutter"
         | "large"
         | "medium"
@@ -1001,8 +1011,9 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-    >
-    paddingTop?: ResponsiveProp<
+        | readonly [Space, Space, Space]
+        | readonly [Space, Space]
+    paddingTop?: 
         | "gutter"
         | "large"
         | "medium"
@@ -1012,8 +1023,9 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-    >
-    paddingX?: ResponsiveProp<
+        | readonly [Space, Space, Space]
+        | readonly [Space, Space]
+    paddingX?: 
         | "gutter"
         | "large"
         | "medium"
@@ -1023,8 +1035,9 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-    >
-    paddingY?: ResponsiveProp<
+        | readonly [Space, Space, Space]
+        | readonly [Space, Space]
+    paddingY?: 
         | "gutter"
         | "large"
         | "medium"
@@ -1034,7 +1047,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-    >
+        | readonly [Space, Space, Space]
+        | readonly [Space, Space]
     pattern?: string
     placeholder?: string
     playsInline?: boolean
@@ -1200,7 +1214,7 @@ Object {
         | "medium"
         | "outlineFocus"
         | "small"
-    children: (className: string) => ReactElement<any, string | ((props: any) => ReactElement<any, any> | null) | (new (props: any) => Component<any, any, any>)> | null
+    children: (className: string) => ReactElement<any, string | JSXElementConstructor<any>> | null
     className?: string | number | boolean | ClassDictionary | ClassArray
     component: 
         | "a"
@@ -1413,7 +1427,7 @@ Object {
         | "spaceBetween"
     >
     left?: 0
-    margin?: ResponsiveProp<
+    margin?: 
         | "gutter"
         | "large"
         | "medium"
@@ -1423,8 +1437,9 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-    >
-    marginBottom?: ResponsiveProp<
+        | readonly [Space, Space, Space]
+        | readonly [Space, Space]
+    marginBottom?: 
         | "gutter"
         | "large"
         | "medium"
@@ -1434,8 +1449,9 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-    >
-    marginLeft?: ResponsiveProp<
+        | readonly [Space, Space, Space]
+        | readonly [Space, Space]
+    marginLeft?: 
         | "gutter"
         | "large"
         | "medium"
@@ -1445,8 +1461,9 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-    >
-    marginRight?: ResponsiveProp<
+        | readonly [Space, Space, Space]
+        | readonly [Space, Space]
+    marginRight?: 
         | "gutter"
         | "large"
         | "medium"
@@ -1456,8 +1473,9 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-    >
-    marginTop?: ResponsiveProp<
+        | readonly [Space, Space, Space]
+        | readonly [Space, Space]
+    marginTop?: 
         | "gutter"
         | "large"
         | "medium"
@@ -1467,8 +1485,9 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-    >
-    marginX?: ResponsiveProp<
+        | readonly [Space, Space, Space]
+        | readonly [Space, Space]
+    marginX?: 
         | "gutter"
         | "large"
         | "medium"
@@ -1478,8 +1497,9 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-    >
-    marginY?: ResponsiveProp<
+        | readonly [Space, Space, Space]
+        | readonly [Space, Space]
+    marginY?: 
         | "gutter"
         | "large"
         | "medium"
@@ -1489,7 +1509,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-    >
+        | readonly [Space, Space, Space]
+        | readonly [Space, Space]
     maxWidth?: 
         | "large"
         | "medium"
@@ -1503,7 +1524,7 @@ Object {
         | "hidden"
         | "scroll"
         | "visible"
-    padding?: ResponsiveProp<
+    padding?: 
         | "gutter"
         | "large"
         | "medium"
@@ -1513,8 +1534,9 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-    >
-    paddingBottom?: ResponsiveProp<
+        | readonly [Space, Space, Space]
+        | readonly [Space, Space]
+    paddingBottom?: 
         | "gutter"
         | "large"
         | "medium"
@@ -1524,8 +1546,9 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-    >
-    paddingLeft?: ResponsiveProp<
+        | readonly [Space, Space, Space]
+        | readonly [Space, Space]
+    paddingLeft?: 
         | "gutter"
         | "large"
         | "medium"
@@ -1535,8 +1558,9 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-    >
-    paddingRight?: ResponsiveProp<
+        | readonly [Space, Space, Space]
+        | readonly [Space, Space]
+    paddingRight?: 
         | "gutter"
         | "large"
         | "medium"
@@ -1546,8 +1570,9 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-    >
-    paddingTop?: ResponsiveProp<
+        | readonly [Space, Space, Space]
+        | readonly [Space, Space]
+    paddingTop?: 
         | "gutter"
         | "large"
         | "medium"
@@ -1557,8 +1582,9 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-    >
-    paddingX?: ResponsiveProp<
+        | readonly [Space, Space, Space]
+        | readonly [Space, Space]
+    paddingX?: 
         | "gutter"
         | "large"
         | "medium"
@@ -1568,8 +1594,9 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-    >
-    paddingY?: ResponsiveProp<
+        | readonly [Space, Space, Space]
+        | readonly [Space, Space]
+    paddingY?: 
         | "gutter"
         | "large"
         | "medium"
@@ -1579,7 +1606,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-    >
+        | readonly [Space, Space, Space]
+        | readonly [Space, Space]
     pointerEvents?: "none"
     position?: 
         | "absolute"
@@ -1693,7 +1721,7 @@ Object {
         | "small"
         | "standard"
         | "xsmall"
-    space?: ResponsiveProp<
+    space?: 
         | "gutter"
         | "large"
         | "medium"
@@ -1703,7 +1731,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-    >
+        | readonly [Space, Space, Space]
+        | readonly [Space, Space]
     tone?: 
         | "neutral"
         | "secondary"
@@ -1724,10 +1753,10 @@ Object {
         | true
     bleedY?: boolean
     children?: ReactNode
-    data?: Record<string, string | number>
+    data?: DataAttributeMap
     id?: string
     loading?: boolean
-    onClick?: (event: MouseEvent<HTMLButtonElement, MouseEvent>) => void
+    onClick?: MouseEventHandler<HTMLButtonElement>
     ref?: 
         | (instance: HTMLButtonElement | null) => void
         | RefObject<HTMLButtonElement>
@@ -1970,166 +1999,166 @@ Object {
     lang?: string
     loading?: boolean
     media?: string
-    onAbort?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onAbortCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onAnimationEnd?: (event: AnimationEvent<HTMLAnchorElement>) => void
-    onAnimationEndCapture?: (event: AnimationEvent<HTMLAnchorElement>) => void
-    onAnimationIteration?: (event: AnimationEvent<HTMLAnchorElement>) => void
-    onAnimationIterationCapture?: (event: AnimationEvent<HTMLAnchorElement>) => void
-    onAnimationStart?: (event: AnimationEvent<HTMLAnchorElement>) => void
-    onAnimationStartCapture?: (event: AnimationEvent<HTMLAnchorElement>) => void
-    onAuxClick?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-    onAuxClickCapture?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-    onBeforeInput?: (event: FormEvent<HTMLAnchorElement>) => void
-    onBeforeInputCapture?: (event: FormEvent<HTMLAnchorElement>) => void
-    onBlur?: (event: FocusEvent<HTMLAnchorElement>) => void
-    onBlurCapture?: (event: FocusEvent<HTMLAnchorElement>) => void
-    onCanPlay?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onCanPlayCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onCanPlayThrough?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onCanPlayThroughCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onChange?: (event: FormEvent<HTMLAnchorElement>) => void
-    onChangeCapture?: (event: FormEvent<HTMLAnchorElement>) => void
-    onClick?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-    onClickCapture?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-    onCompositionEnd?: (event: CompositionEvent<HTMLAnchorElement>) => void
-    onCompositionEndCapture?: (event: CompositionEvent<HTMLAnchorElement>) => void
-    onCompositionStart?: (event: CompositionEvent<HTMLAnchorElement>) => void
-    onCompositionStartCapture?: (event: CompositionEvent<HTMLAnchorElement>) => void
-    onCompositionUpdate?: (event: CompositionEvent<HTMLAnchorElement>) => void
-    onCompositionUpdateCapture?: (event: CompositionEvent<HTMLAnchorElement>) => void
-    onContextMenu?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-    onContextMenuCapture?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-    onCopy?: (event: ClipboardEvent<HTMLAnchorElement>) => void
-    onCopyCapture?: (event: ClipboardEvent<HTMLAnchorElement>) => void
-    onCut?: (event: ClipboardEvent<HTMLAnchorElement>) => void
-    onCutCapture?: (event: ClipboardEvent<HTMLAnchorElement>) => void
-    onDoubleClick?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-    onDoubleClickCapture?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-    onDrag?: (event: DragEvent<HTMLAnchorElement>) => void
-    onDragCapture?: (event: DragEvent<HTMLAnchorElement>) => void
-    onDragEnd?: (event: DragEvent<HTMLAnchorElement>) => void
-    onDragEndCapture?: (event: DragEvent<HTMLAnchorElement>) => void
-    onDragEnter?: (event: DragEvent<HTMLAnchorElement>) => void
-    onDragEnterCapture?: (event: DragEvent<HTMLAnchorElement>) => void
-    onDragExit?: (event: DragEvent<HTMLAnchorElement>) => void
-    onDragExitCapture?: (event: DragEvent<HTMLAnchorElement>) => void
-    onDragLeave?: (event: DragEvent<HTMLAnchorElement>) => void
-    onDragLeaveCapture?: (event: DragEvent<HTMLAnchorElement>) => void
-    onDragOver?: (event: DragEvent<HTMLAnchorElement>) => void
-    onDragOverCapture?: (event: DragEvent<HTMLAnchorElement>) => void
-    onDragStart?: (event: DragEvent<HTMLAnchorElement>) => void
-    onDragStartCapture?: (event: DragEvent<HTMLAnchorElement>) => void
-    onDrop?: (event: DragEvent<HTMLAnchorElement>) => void
-    onDropCapture?: (event: DragEvent<HTMLAnchorElement>) => void
-    onDurationChange?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onDurationChangeCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onEmptied?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onEmptiedCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onEncrypted?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onEncryptedCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onEnded?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onEndedCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onError?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onErrorCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onFocus?: (event: FocusEvent<HTMLAnchorElement>) => void
-    onFocusCapture?: (event: FocusEvent<HTMLAnchorElement>) => void
-    onGotPointerCapture?: (event: PointerEvent<HTMLAnchorElement>) => void
-    onGotPointerCaptureCapture?: (event: PointerEvent<HTMLAnchorElement>) => void
-    onInput?: (event: FormEvent<HTMLAnchorElement>) => void
-    onInputCapture?: (event: FormEvent<HTMLAnchorElement>) => void
-    onInvalid?: (event: FormEvent<HTMLAnchorElement>) => void
-    onInvalidCapture?: (event: FormEvent<HTMLAnchorElement>) => void
-    onKeyDown?: (event: KeyboardEvent<HTMLAnchorElement>) => void
-    onKeyDownCapture?: (event: KeyboardEvent<HTMLAnchorElement>) => void
-    onKeyPress?: (event: KeyboardEvent<HTMLAnchorElement>) => void
-    onKeyPressCapture?: (event: KeyboardEvent<HTMLAnchorElement>) => void
-    onKeyUp?: (event: KeyboardEvent<HTMLAnchorElement>) => void
-    onKeyUpCapture?: (event: KeyboardEvent<HTMLAnchorElement>) => void
-    onLoad?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onLoadCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onLoadStart?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onLoadStartCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onLoadedData?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onLoadedDataCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onLoadedMetadata?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onLoadedMetadataCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onLostPointerCapture?: (event: PointerEvent<HTMLAnchorElement>) => void
-    onLostPointerCaptureCapture?: (event: PointerEvent<HTMLAnchorElement>) => void
-    onMouseDown?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-    onMouseDownCapture?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-    onMouseEnter?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-    onMouseLeave?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-    onMouseMove?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-    onMouseMoveCapture?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-    onMouseOut?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-    onMouseOutCapture?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-    onMouseOver?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-    onMouseOverCapture?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-    onMouseUp?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-    onMouseUpCapture?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-    onPaste?: (event: ClipboardEvent<HTMLAnchorElement>) => void
-    onPasteCapture?: (event: ClipboardEvent<HTMLAnchorElement>) => void
-    onPause?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onPauseCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onPlay?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onPlayCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onPlaying?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onPlayingCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onPointerCancel?: (event: PointerEvent<HTMLAnchorElement>) => void
-    onPointerCancelCapture?: (event: PointerEvent<HTMLAnchorElement>) => void
-    onPointerDown?: (event: PointerEvent<HTMLAnchorElement>) => void
-    onPointerDownCapture?: (event: PointerEvent<HTMLAnchorElement>) => void
-    onPointerEnter?: (event: PointerEvent<HTMLAnchorElement>) => void
-    onPointerEnterCapture?: (event: PointerEvent<HTMLAnchorElement>) => void
-    onPointerLeave?: (event: PointerEvent<HTMLAnchorElement>) => void
-    onPointerLeaveCapture?: (event: PointerEvent<HTMLAnchorElement>) => void
-    onPointerMove?: (event: PointerEvent<HTMLAnchorElement>) => void
-    onPointerMoveCapture?: (event: PointerEvent<HTMLAnchorElement>) => void
-    onPointerOut?: (event: PointerEvent<HTMLAnchorElement>) => void
-    onPointerOutCapture?: (event: PointerEvent<HTMLAnchorElement>) => void
-    onPointerOver?: (event: PointerEvent<HTMLAnchorElement>) => void
-    onPointerOverCapture?: (event: PointerEvent<HTMLAnchorElement>) => void
-    onPointerUp?: (event: PointerEvent<HTMLAnchorElement>) => void
-    onPointerUpCapture?: (event: PointerEvent<HTMLAnchorElement>) => void
-    onProgress?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onProgressCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onRateChange?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onRateChangeCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onReset?: (event: FormEvent<HTMLAnchorElement>) => void
-    onResetCapture?: (event: FormEvent<HTMLAnchorElement>) => void
-    onScroll?: (event: UIEvent<HTMLAnchorElement, UIEvent>) => void
-    onScrollCapture?: (event: UIEvent<HTMLAnchorElement, UIEvent>) => void
-    onSeeked?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onSeekedCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onSeeking?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onSeekingCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onSelect?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onSelectCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onStalled?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onStalledCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onSubmit?: (event: FormEvent<HTMLAnchorElement>) => void
-    onSubmitCapture?: (event: FormEvent<HTMLAnchorElement>) => void
-    onSuspend?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onSuspendCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onTimeUpdate?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onTimeUpdateCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onTouchCancel?: (event: TouchEvent<HTMLAnchorElement>) => void
-    onTouchCancelCapture?: (event: TouchEvent<HTMLAnchorElement>) => void
-    onTouchEnd?: (event: TouchEvent<HTMLAnchorElement>) => void
-    onTouchEndCapture?: (event: TouchEvent<HTMLAnchorElement>) => void
-    onTouchMove?: (event: TouchEvent<HTMLAnchorElement>) => void
-    onTouchMoveCapture?: (event: TouchEvent<HTMLAnchorElement>) => void
-    onTouchStart?: (event: TouchEvent<HTMLAnchorElement>) => void
-    onTouchStartCapture?: (event: TouchEvent<HTMLAnchorElement>) => void
-    onTransitionEnd?: (event: TransitionEvent<HTMLAnchorElement>) => void
-    onTransitionEndCapture?: (event: TransitionEvent<HTMLAnchorElement>) => void
-    onVolumeChange?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onVolumeChangeCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onWaiting?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onWaitingCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onWheel?: (event: WheelEvent<HTMLAnchorElement>) => void
-    onWheelCapture?: (event: WheelEvent<HTMLAnchorElement>) => void
+    onAbort?: ReactEventHandler<HTMLAnchorElement>
+    onAbortCapture?: ReactEventHandler<HTMLAnchorElement>
+    onAnimationEnd?: AnimationEventHandler<HTMLAnchorElement>
+    onAnimationEndCapture?: AnimationEventHandler<HTMLAnchorElement>
+    onAnimationIteration?: AnimationEventHandler<HTMLAnchorElement>
+    onAnimationIterationCapture?: AnimationEventHandler<HTMLAnchorElement>
+    onAnimationStart?: AnimationEventHandler<HTMLAnchorElement>
+    onAnimationStartCapture?: AnimationEventHandler<HTMLAnchorElement>
+    onAuxClick?: MouseEventHandler<HTMLAnchorElement>
+    onAuxClickCapture?: MouseEventHandler<HTMLAnchorElement>
+    onBeforeInput?: FormEventHandler<HTMLAnchorElement>
+    onBeforeInputCapture?: FormEventHandler<HTMLAnchorElement>
+    onBlur?: FocusEventHandler<HTMLAnchorElement>
+    onBlurCapture?: FocusEventHandler<HTMLAnchorElement>
+    onCanPlay?: ReactEventHandler<HTMLAnchorElement>
+    onCanPlayCapture?: ReactEventHandler<HTMLAnchorElement>
+    onCanPlayThrough?: ReactEventHandler<HTMLAnchorElement>
+    onCanPlayThroughCapture?: ReactEventHandler<HTMLAnchorElement>
+    onChange?: FormEventHandler<HTMLAnchorElement>
+    onChangeCapture?: FormEventHandler<HTMLAnchorElement>
+    onClick?: MouseEventHandler<HTMLAnchorElement>
+    onClickCapture?: MouseEventHandler<HTMLAnchorElement>
+    onCompositionEnd?: CompositionEventHandler<HTMLAnchorElement>
+    onCompositionEndCapture?: CompositionEventHandler<HTMLAnchorElement>
+    onCompositionStart?: CompositionEventHandler<HTMLAnchorElement>
+    onCompositionStartCapture?: CompositionEventHandler<HTMLAnchorElement>
+    onCompositionUpdate?: CompositionEventHandler<HTMLAnchorElement>
+    onCompositionUpdateCapture?: CompositionEventHandler<HTMLAnchorElement>
+    onContextMenu?: MouseEventHandler<HTMLAnchorElement>
+    onContextMenuCapture?: MouseEventHandler<HTMLAnchorElement>
+    onCopy?: ClipboardEventHandler<HTMLAnchorElement>
+    onCopyCapture?: ClipboardEventHandler<HTMLAnchorElement>
+    onCut?: ClipboardEventHandler<HTMLAnchorElement>
+    onCutCapture?: ClipboardEventHandler<HTMLAnchorElement>
+    onDoubleClick?: MouseEventHandler<HTMLAnchorElement>
+    onDoubleClickCapture?: MouseEventHandler<HTMLAnchorElement>
+    onDrag?: DragEventHandler<HTMLAnchorElement>
+    onDragCapture?: DragEventHandler<HTMLAnchorElement>
+    onDragEnd?: DragEventHandler<HTMLAnchorElement>
+    onDragEndCapture?: DragEventHandler<HTMLAnchorElement>
+    onDragEnter?: DragEventHandler<HTMLAnchorElement>
+    onDragEnterCapture?: DragEventHandler<HTMLAnchorElement>
+    onDragExit?: DragEventHandler<HTMLAnchorElement>
+    onDragExitCapture?: DragEventHandler<HTMLAnchorElement>
+    onDragLeave?: DragEventHandler<HTMLAnchorElement>
+    onDragLeaveCapture?: DragEventHandler<HTMLAnchorElement>
+    onDragOver?: DragEventHandler<HTMLAnchorElement>
+    onDragOverCapture?: DragEventHandler<HTMLAnchorElement>
+    onDragStart?: DragEventHandler<HTMLAnchorElement>
+    onDragStartCapture?: DragEventHandler<HTMLAnchorElement>
+    onDrop?: DragEventHandler<HTMLAnchorElement>
+    onDropCapture?: DragEventHandler<HTMLAnchorElement>
+    onDurationChange?: ReactEventHandler<HTMLAnchorElement>
+    onDurationChangeCapture?: ReactEventHandler<HTMLAnchorElement>
+    onEmptied?: ReactEventHandler<HTMLAnchorElement>
+    onEmptiedCapture?: ReactEventHandler<HTMLAnchorElement>
+    onEncrypted?: ReactEventHandler<HTMLAnchorElement>
+    onEncryptedCapture?: ReactEventHandler<HTMLAnchorElement>
+    onEnded?: ReactEventHandler<HTMLAnchorElement>
+    onEndedCapture?: ReactEventHandler<HTMLAnchorElement>
+    onError?: ReactEventHandler<HTMLAnchorElement>
+    onErrorCapture?: ReactEventHandler<HTMLAnchorElement>
+    onFocus?: FocusEventHandler<HTMLAnchorElement>
+    onFocusCapture?: FocusEventHandler<HTMLAnchorElement>
+    onGotPointerCapture?: PointerEventHandler<HTMLAnchorElement>
+    onGotPointerCaptureCapture?: PointerEventHandler<HTMLAnchorElement>
+    onInput?: FormEventHandler<HTMLAnchorElement>
+    onInputCapture?: FormEventHandler<HTMLAnchorElement>
+    onInvalid?: FormEventHandler<HTMLAnchorElement>
+    onInvalidCapture?: FormEventHandler<HTMLAnchorElement>
+    onKeyDown?: KeyboardEventHandler<HTMLAnchorElement>
+    onKeyDownCapture?: KeyboardEventHandler<HTMLAnchorElement>
+    onKeyPress?: KeyboardEventHandler<HTMLAnchorElement>
+    onKeyPressCapture?: KeyboardEventHandler<HTMLAnchorElement>
+    onKeyUp?: KeyboardEventHandler<HTMLAnchorElement>
+    onKeyUpCapture?: KeyboardEventHandler<HTMLAnchorElement>
+    onLoad?: ReactEventHandler<HTMLAnchorElement>
+    onLoadCapture?: ReactEventHandler<HTMLAnchorElement>
+    onLoadStart?: ReactEventHandler<HTMLAnchorElement>
+    onLoadStartCapture?: ReactEventHandler<HTMLAnchorElement>
+    onLoadedData?: ReactEventHandler<HTMLAnchorElement>
+    onLoadedDataCapture?: ReactEventHandler<HTMLAnchorElement>
+    onLoadedMetadata?: ReactEventHandler<HTMLAnchorElement>
+    onLoadedMetadataCapture?: ReactEventHandler<HTMLAnchorElement>
+    onLostPointerCapture?: PointerEventHandler<HTMLAnchorElement>
+    onLostPointerCaptureCapture?: PointerEventHandler<HTMLAnchorElement>
+    onMouseDown?: MouseEventHandler<HTMLAnchorElement>
+    onMouseDownCapture?: MouseEventHandler<HTMLAnchorElement>
+    onMouseEnter?: MouseEventHandler<HTMLAnchorElement>
+    onMouseLeave?: MouseEventHandler<HTMLAnchorElement>
+    onMouseMove?: MouseEventHandler<HTMLAnchorElement>
+    onMouseMoveCapture?: MouseEventHandler<HTMLAnchorElement>
+    onMouseOut?: MouseEventHandler<HTMLAnchorElement>
+    onMouseOutCapture?: MouseEventHandler<HTMLAnchorElement>
+    onMouseOver?: MouseEventHandler<HTMLAnchorElement>
+    onMouseOverCapture?: MouseEventHandler<HTMLAnchorElement>
+    onMouseUp?: MouseEventHandler<HTMLAnchorElement>
+    onMouseUpCapture?: MouseEventHandler<HTMLAnchorElement>
+    onPaste?: ClipboardEventHandler<HTMLAnchorElement>
+    onPasteCapture?: ClipboardEventHandler<HTMLAnchorElement>
+    onPause?: ReactEventHandler<HTMLAnchorElement>
+    onPauseCapture?: ReactEventHandler<HTMLAnchorElement>
+    onPlay?: ReactEventHandler<HTMLAnchorElement>
+    onPlayCapture?: ReactEventHandler<HTMLAnchorElement>
+    onPlaying?: ReactEventHandler<HTMLAnchorElement>
+    onPlayingCapture?: ReactEventHandler<HTMLAnchorElement>
+    onPointerCancel?: PointerEventHandler<HTMLAnchorElement>
+    onPointerCancelCapture?: PointerEventHandler<HTMLAnchorElement>
+    onPointerDown?: PointerEventHandler<HTMLAnchorElement>
+    onPointerDownCapture?: PointerEventHandler<HTMLAnchorElement>
+    onPointerEnter?: PointerEventHandler<HTMLAnchorElement>
+    onPointerEnterCapture?: PointerEventHandler<HTMLAnchorElement>
+    onPointerLeave?: PointerEventHandler<HTMLAnchorElement>
+    onPointerLeaveCapture?: PointerEventHandler<HTMLAnchorElement>
+    onPointerMove?: PointerEventHandler<HTMLAnchorElement>
+    onPointerMoveCapture?: PointerEventHandler<HTMLAnchorElement>
+    onPointerOut?: PointerEventHandler<HTMLAnchorElement>
+    onPointerOutCapture?: PointerEventHandler<HTMLAnchorElement>
+    onPointerOver?: PointerEventHandler<HTMLAnchorElement>
+    onPointerOverCapture?: PointerEventHandler<HTMLAnchorElement>
+    onPointerUp?: PointerEventHandler<HTMLAnchorElement>
+    onPointerUpCapture?: PointerEventHandler<HTMLAnchorElement>
+    onProgress?: ReactEventHandler<HTMLAnchorElement>
+    onProgressCapture?: ReactEventHandler<HTMLAnchorElement>
+    onRateChange?: ReactEventHandler<HTMLAnchorElement>
+    onRateChangeCapture?: ReactEventHandler<HTMLAnchorElement>
+    onReset?: FormEventHandler<HTMLAnchorElement>
+    onResetCapture?: FormEventHandler<HTMLAnchorElement>
+    onScroll?: UIEventHandler<HTMLAnchorElement>
+    onScrollCapture?: UIEventHandler<HTMLAnchorElement>
+    onSeeked?: ReactEventHandler<HTMLAnchorElement>
+    onSeekedCapture?: ReactEventHandler<HTMLAnchorElement>
+    onSeeking?: ReactEventHandler<HTMLAnchorElement>
+    onSeekingCapture?: ReactEventHandler<HTMLAnchorElement>
+    onSelect?: ReactEventHandler<HTMLAnchorElement>
+    onSelectCapture?: ReactEventHandler<HTMLAnchorElement>
+    onStalled?: ReactEventHandler<HTMLAnchorElement>
+    onStalledCapture?: ReactEventHandler<HTMLAnchorElement>
+    onSubmit?: FormEventHandler<HTMLAnchorElement>
+    onSubmitCapture?: FormEventHandler<HTMLAnchorElement>
+    onSuspend?: ReactEventHandler<HTMLAnchorElement>
+    onSuspendCapture?: ReactEventHandler<HTMLAnchorElement>
+    onTimeUpdate?: ReactEventHandler<HTMLAnchorElement>
+    onTimeUpdateCapture?: ReactEventHandler<HTMLAnchorElement>
+    onTouchCancel?: TouchEventHandler<HTMLAnchorElement>
+    onTouchCancelCapture?: TouchEventHandler<HTMLAnchorElement>
+    onTouchEnd?: TouchEventHandler<HTMLAnchorElement>
+    onTouchEndCapture?: TouchEventHandler<HTMLAnchorElement>
+    onTouchMove?: TouchEventHandler<HTMLAnchorElement>
+    onTouchMoveCapture?: TouchEventHandler<HTMLAnchorElement>
+    onTouchStart?: TouchEventHandler<HTMLAnchorElement>
+    onTouchStartCapture?: TouchEventHandler<HTMLAnchorElement>
+    onTransitionEnd?: TransitionEventHandler<HTMLAnchorElement>
+    onTransitionEndCapture?: TransitionEventHandler<HTMLAnchorElement>
+    onVolumeChange?: ReactEventHandler<HTMLAnchorElement>
+    onVolumeChangeCapture?: ReactEventHandler<HTMLAnchorElement>
+    onWaiting?: ReactEventHandler<HTMLAnchorElement>
+    onWaitingCapture?: ReactEventHandler<HTMLAnchorElement>
+    onWheel?: WheelEventHandler<HTMLAnchorElement>
+    onWheelCapture?: WheelEventHandler<HTMLAnchorElement>
     ping?: string
     placeholder?: string
     prefix?: string
@@ -2246,21 +2275,21 @@ Object {
   exportType: component,
   props: {
     aria-describedby?: string
-    badge?: ReactElement<BadgeProps, string | ((props: any) => ReactElement<any, any> | null) | (new (props: any) => Component<any, any, any>)>
+    badge?: ReactElement<BadgeProps, string | JSXElementConstructor<any>>
     checked: 
         | "mixed"
         | boolean[]
         | false
         | true
     children?: ReactNode
-    data?: Record<string, string | number>
+    data?: DataAttributeMap
     description?: ReactNode
     disabled?: boolean
     id: string
     label: ReactNode
     message?: ReactNode
     name?: string
-    onChange: (event: FormEvent<HTMLInputElement>) => void
+    onChange: FormEventHandler<HTMLInputElement>
     ref?: 
         | (instance: HTMLInputElement | null) => void
         | RefObject<HTMLInputElement>
@@ -2312,13 +2341,13 @@ Object {
         | "top"
     >
     children: 
-        | (ReactElement<ColumnProps, string | ((props: any) => ReactElement<any, any> | null) | (new (props: any) => Component<any, any, any>)> | null)[]
-        | ReactElement<ColumnProps, string | ((props: any) => ReactElement<any, any> | null) | (new (props: any) => Component<any, any, any>)>
+        | (ReactElement<ColumnProps, string | JSXElementConstructor<any>> | null)[]
+        | ReactElement<ColumnProps, string | JSXElementConstructor<any>>
     collapseBelow?: 
         | "desktop"
         | "tablet"
     reverse?: boolean
-    space: ResponsiveProp<
+    space: 
         | "gutter"
         | "large"
         | "medium"
@@ -2328,7 +2357,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-    >
+        | readonly [Space, Space, Space]
+        | readonly [Space, Space]
 },
 }
 `;
@@ -2379,7 +2409,7 @@ Object {
     expanded?: boolean
     id: string
     onToggle?: (expanded: boolean) => void
-    space?: ResponsiveProp<
+    space?: 
         | "gutter"
         | "large"
         | "medium"
@@ -2389,7 +2419,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-    >
+        | readonly [Space, Space, Space]
+        | readonly [Space, Space]
 },
 }
 `;
@@ -2434,7 +2465,7 @@ Object {
     children: 
         | ValidDropdownChildren
         | ValidDropdownChildren[]
-    data?: Record<string, string | number>
+    data?: DataAttributeMap
     description?: ReactNode
     disabled?: boolean
     icon?: ReactNode
@@ -2442,9 +2473,9 @@ Object {
     label?: ReactNode
     message?: ReactNode
     name?: string
-    onBlur?: (event: FocusEvent<HTMLSelectElement>) => void
-    onChange: (event: FormEvent<HTMLSelectElement>) => void
-    onFocus?: (event: FocusEvent<HTMLSelectElement>) => void
+    onBlur?: FocusEventHandler<HTMLSelectElement>
+    onChange: FormEventHandler<HTMLSelectElement>
+    onFocus?: FocusEventHandler<HTMLSelectElement>
     placeholder?: string
     ref?: 
         | (instance: HTMLSelectElement | null) => void
@@ -2687,7 +2718,7 @@ Object {
         | "webview"
         | ComponentClass<any, any>
         | FunctionComponent<any>
-    data?: Record<string, string | number>
+    data?: DataAttributeMap
     id?: string
     level: 
         | "1"
@@ -5130,7 +5161,7 @@ Object {
         | "ol"
         | "ul"
     reverse?: boolean
-    space: ResponsiveProp<
+    space: 
         | "gutter"
         | "large"
         | "medium"
@@ -5140,7 +5171,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-    >
+        | readonly [Space, Space, Space]
+        | readonly [Space, Space]
 },
 }
 `;
@@ -5359,166 +5391,166 @@ Object {
     itemType?: string
     lang?: string
     media?: string
-    onAbort?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onAbortCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onAnimationEnd?: (event: AnimationEvent<HTMLAnchorElement>) => void
-    onAnimationEndCapture?: (event: AnimationEvent<HTMLAnchorElement>) => void
-    onAnimationIteration?: (event: AnimationEvent<HTMLAnchorElement>) => void
-    onAnimationIterationCapture?: (event: AnimationEvent<HTMLAnchorElement>) => void
-    onAnimationStart?: (event: AnimationEvent<HTMLAnchorElement>) => void
-    onAnimationStartCapture?: (event: AnimationEvent<HTMLAnchorElement>) => void
-    onAuxClick?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-    onAuxClickCapture?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-    onBeforeInput?: (event: FormEvent<HTMLAnchorElement>) => void
-    onBeforeInputCapture?: (event: FormEvent<HTMLAnchorElement>) => void
-    onBlur?: (event: FocusEvent<HTMLAnchorElement>) => void
-    onBlurCapture?: (event: FocusEvent<HTMLAnchorElement>) => void
-    onCanPlay?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onCanPlayCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onCanPlayThrough?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onCanPlayThroughCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onChange?: (event: FormEvent<HTMLAnchorElement>) => void
-    onChangeCapture?: (event: FormEvent<HTMLAnchorElement>) => void
-    onClick?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-    onClickCapture?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-    onCompositionEnd?: (event: CompositionEvent<HTMLAnchorElement>) => void
-    onCompositionEndCapture?: (event: CompositionEvent<HTMLAnchorElement>) => void
-    onCompositionStart?: (event: CompositionEvent<HTMLAnchorElement>) => void
-    onCompositionStartCapture?: (event: CompositionEvent<HTMLAnchorElement>) => void
-    onCompositionUpdate?: (event: CompositionEvent<HTMLAnchorElement>) => void
-    onCompositionUpdateCapture?: (event: CompositionEvent<HTMLAnchorElement>) => void
-    onContextMenu?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-    onContextMenuCapture?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-    onCopy?: (event: ClipboardEvent<HTMLAnchorElement>) => void
-    onCopyCapture?: (event: ClipboardEvent<HTMLAnchorElement>) => void
-    onCut?: (event: ClipboardEvent<HTMLAnchorElement>) => void
-    onCutCapture?: (event: ClipboardEvent<HTMLAnchorElement>) => void
-    onDoubleClick?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-    onDoubleClickCapture?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-    onDrag?: (event: DragEvent<HTMLAnchorElement>) => void
-    onDragCapture?: (event: DragEvent<HTMLAnchorElement>) => void
-    onDragEnd?: (event: DragEvent<HTMLAnchorElement>) => void
-    onDragEndCapture?: (event: DragEvent<HTMLAnchorElement>) => void
-    onDragEnter?: (event: DragEvent<HTMLAnchorElement>) => void
-    onDragEnterCapture?: (event: DragEvent<HTMLAnchorElement>) => void
-    onDragExit?: (event: DragEvent<HTMLAnchorElement>) => void
-    onDragExitCapture?: (event: DragEvent<HTMLAnchorElement>) => void
-    onDragLeave?: (event: DragEvent<HTMLAnchorElement>) => void
-    onDragLeaveCapture?: (event: DragEvent<HTMLAnchorElement>) => void
-    onDragOver?: (event: DragEvent<HTMLAnchorElement>) => void
-    onDragOverCapture?: (event: DragEvent<HTMLAnchorElement>) => void
-    onDragStart?: (event: DragEvent<HTMLAnchorElement>) => void
-    onDragStartCapture?: (event: DragEvent<HTMLAnchorElement>) => void
-    onDrop?: (event: DragEvent<HTMLAnchorElement>) => void
-    onDropCapture?: (event: DragEvent<HTMLAnchorElement>) => void
-    onDurationChange?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onDurationChangeCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onEmptied?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onEmptiedCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onEncrypted?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onEncryptedCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onEnded?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onEndedCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onError?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onErrorCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onFocus?: (event: FocusEvent<HTMLAnchorElement>) => void
-    onFocusCapture?: (event: FocusEvent<HTMLAnchorElement>) => void
-    onGotPointerCapture?: (event: PointerEvent<HTMLAnchorElement>) => void
-    onGotPointerCaptureCapture?: (event: PointerEvent<HTMLAnchorElement>) => void
-    onInput?: (event: FormEvent<HTMLAnchorElement>) => void
-    onInputCapture?: (event: FormEvent<HTMLAnchorElement>) => void
-    onInvalid?: (event: FormEvent<HTMLAnchorElement>) => void
-    onInvalidCapture?: (event: FormEvent<HTMLAnchorElement>) => void
-    onKeyDown?: (event: KeyboardEvent<HTMLAnchorElement>) => void
-    onKeyDownCapture?: (event: KeyboardEvent<HTMLAnchorElement>) => void
-    onKeyPress?: (event: KeyboardEvent<HTMLAnchorElement>) => void
-    onKeyPressCapture?: (event: KeyboardEvent<HTMLAnchorElement>) => void
-    onKeyUp?: (event: KeyboardEvent<HTMLAnchorElement>) => void
-    onKeyUpCapture?: (event: KeyboardEvent<HTMLAnchorElement>) => void
-    onLoad?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onLoadCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onLoadStart?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onLoadStartCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onLoadedData?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onLoadedDataCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onLoadedMetadata?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onLoadedMetadataCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onLostPointerCapture?: (event: PointerEvent<HTMLAnchorElement>) => void
-    onLostPointerCaptureCapture?: (event: PointerEvent<HTMLAnchorElement>) => void
-    onMouseDown?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-    onMouseDownCapture?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-    onMouseEnter?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-    onMouseLeave?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-    onMouseMove?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-    onMouseMoveCapture?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-    onMouseOut?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-    onMouseOutCapture?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-    onMouseOver?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-    onMouseOverCapture?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-    onMouseUp?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-    onMouseUpCapture?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-    onPaste?: (event: ClipboardEvent<HTMLAnchorElement>) => void
-    onPasteCapture?: (event: ClipboardEvent<HTMLAnchorElement>) => void
-    onPause?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onPauseCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onPlay?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onPlayCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onPlaying?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onPlayingCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onPointerCancel?: (event: PointerEvent<HTMLAnchorElement>) => void
-    onPointerCancelCapture?: (event: PointerEvent<HTMLAnchorElement>) => void
-    onPointerDown?: (event: PointerEvent<HTMLAnchorElement>) => void
-    onPointerDownCapture?: (event: PointerEvent<HTMLAnchorElement>) => void
-    onPointerEnter?: (event: PointerEvent<HTMLAnchorElement>) => void
-    onPointerEnterCapture?: (event: PointerEvent<HTMLAnchorElement>) => void
-    onPointerLeave?: (event: PointerEvent<HTMLAnchorElement>) => void
-    onPointerLeaveCapture?: (event: PointerEvent<HTMLAnchorElement>) => void
-    onPointerMove?: (event: PointerEvent<HTMLAnchorElement>) => void
-    onPointerMoveCapture?: (event: PointerEvent<HTMLAnchorElement>) => void
-    onPointerOut?: (event: PointerEvent<HTMLAnchorElement>) => void
-    onPointerOutCapture?: (event: PointerEvent<HTMLAnchorElement>) => void
-    onPointerOver?: (event: PointerEvent<HTMLAnchorElement>) => void
-    onPointerOverCapture?: (event: PointerEvent<HTMLAnchorElement>) => void
-    onPointerUp?: (event: PointerEvent<HTMLAnchorElement>) => void
-    onPointerUpCapture?: (event: PointerEvent<HTMLAnchorElement>) => void
-    onProgress?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onProgressCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onRateChange?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onRateChangeCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onReset?: (event: FormEvent<HTMLAnchorElement>) => void
-    onResetCapture?: (event: FormEvent<HTMLAnchorElement>) => void
-    onScroll?: (event: UIEvent<HTMLAnchorElement, UIEvent>) => void
-    onScrollCapture?: (event: UIEvent<HTMLAnchorElement, UIEvent>) => void
-    onSeeked?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onSeekedCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onSeeking?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onSeekingCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onSelect?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onSelectCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onStalled?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onStalledCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onSubmit?: (event: FormEvent<HTMLAnchorElement>) => void
-    onSubmitCapture?: (event: FormEvent<HTMLAnchorElement>) => void
-    onSuspend?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onSuspendCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onTimeUpdate?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onTimeUpdateCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onTouchCancel?: (event: TouchEvent<HTMLAnchorElement>) => void
-    onTouchCancelCapture?: (event: TouchEvent<HTMLAnchorElement>) => void
-    onTouchEnd?: (event: TouchEvent<HTMLAnchorElement>) => void
-    onTouchEndCapture?: (event: TouchEvent<HTMLAnchorElement>) => void
-    onTouchMove?: (event: TouchEvent<HTMLAnchorElement>) => void
-    onTouchMoveCapture?: (event: TouchEvent<HTMLAnchorElement>) => void
-    onTouchStart?: (event: TouchEvent<HTMLAnchorElement>) => void
-    onTouchStartCapture?: (event: TouchEvent<HTMLAnchorElement>) => void
-    onTransitionEnd?: (event: TransitionEvent<HTMLAnchorElement>) => void
-    onTransitionEndCapture?: (event: TransitionEvent<HTMLAnchorElement>) => void
-    onVolumeChange?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onVolumeChangeCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onWaiting?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onWaitingCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onWheel?: (event: WheelEvent<HTMLAnchorElement>) => void
-    onWheelCapture?: (event: WheelEvent<HTMLAnchorElement>) => void
+    onAbort?: ReactEventHandler<HTMLAnchorElement>
+    onAbortCapture?: ReactEventHandler<HTMLAnchorElement>
+    onAnimationEnd?: AnimationEventHandler<HTMLAnchorElement>
+    onAnimationEndCapture?: AnimationEventHandler<HTMLAnchorElement>
+    onAnimationIteration?: AnimationEventHandler<HTMLAnchorElement>
+    onAnimationIterationCapture?: AnimationEventHandler<HTMLAnchorElement>
+    onAnimationStart?: AnimationEventHandler<HTMLAnchorElement>
+    onAnimationStartCapture?: AnimationEventHandler<HTMLAnchorElement>
+    onAuxClick?: MouseEventHandler<HTMLAnchorElement>
+    onAuxClickCapture?: MouseEventHandler<HTMLAnchorElement>
+    onBeforeInput?: FormEventHandler<HTMLAnchorElement>
+    onBeforeInputCapture?: FormEventHandler<HTMLAnchorElement>
+    onBlur?: FocusEventHandler<HTMLAnchorElement>
+    onBlurCapture?: FocusEventHandler<HTMLAnchorElement>
+    onCanPlay?: ReactEventHandler<HTMLAnchorElement>
+    onCanPlayCapture?: ReactEventHandler<HTMLAnchorElement>
+    onCanPlayThrough?: ReactEventHandler<HTMLAnchorElement>
+    onCanPlayThroughCapture?: ReactEventHandler<HTMLAnchorElement>
+    onChange?: FormEventHandler<HTMLAnchorElement>
+    onChangeCapture?: FormEventHandler<HTMLAnchorElement>
+    onClick?: MouseEventHandler<HTMLAnchorElement>
+    onClickCapture?: MouseEventHandler<HTMLAnchorElement>
+    onCompositionEnd?: CompositionEventHandler<HTMLAnchorElement>
+    onCompositionEndCapture?: CompositionEventHandler<HTMLAnchorElement>
+    onCompositionStart?: CompositionEventHandler<HTMLAnchorElement>
+    onCompositionStartCapture?: CompositionEventHandler<HTMLAnchorElement>
+    onCompositionUpdate?: CompositionEventHandler<HTMLAnchorElement>
+    onCompositionUpdateCapture?: CompositionEventHandler<HTMLAnchorElement>
+    onContextMenu?: MouseEventHandler<HTMLAnchorElement>
+    onContextMenuCapture?: MouseEventHandler<HTMLAnchorElement>
+    onCopy?: ClipboardEventHandler<HTMLAnchorElement>
+    onCopyCapture?: ClipboardEventHandler<HTMLAnchorElement>
+    onCut?: ClipboardEventHandler<HTMLAnchorElement>
+    onCutCapture?: ClipboardEventHandler<HTMLAnchorElement>
+    onDoubleClick?: MouseEventHandler<HTMLAnchorElement>
+    onDoubleClickCapture?: MouseEventHandler<HTMLAnchorElement>
+    onDrag?: DragEventHandler<HTMLAnchorElement>
+    onDragCapture?: DragEventHandler<HTMLAnchorElement>
+    onDragEnd?: DragEventHandler<HTMLAnchorElement>
+    onDragEndCapture?: DragEventHandler<HTMLAnchorElement>
+    onDragEnter?: DragEventHandler<HTMLAnchorElement>
+    onDragEnterCapture?: DragEventHandler<HTMLAnchorElement>
+    onDragExit?: DragEventHandler<HTMLAnchorElement>
+    onDragExitCapture?: DragEventHandler<HTMLAnchorElement>
+    onDragLeave?: DragEventHandler<HTMLAnchorElement>
+    onDragLeaveCapture?: DragEventHandler<HTMLAnchorElement>
+    onDragOver?: DragEventHandler<HTMLAnchorElement>
+    onDragOverCapture?: DragEventHandler<HTMLAnchorElement>
+    onDragStart?: DragEventHandler<HTMLAnchorElement>
+    onDragStartCapture?: DragEventHandler<HTMLAnchorElement>
+    onDrop?: DragEventHandler<HTMLAnchorElement>
+    onDropCapture?: DragEventHandler<HTMLAnchorElement>
+    onDurationChange?: ReactEventHandler<HTMLAnchorElement>
+    onDurationChangeCapture?: ReactEventHandler<HTMLAnchorElement>
+    onEmptied?: ReactEventHandler<HTMLAnchorElement>
+    onEmptiedCapture?: ReactEventHandler<HTMLAnchorElement>
+    onEncrypted?: ReactEventHandler<HTMLAnchorElement>
+    onEncryptedCapture?: ReactEventHandler<HTMLAnchorElement>
+    onEnded?: ReactEventHandler<HTMLAnchorElement>
+    onEndedCapture?: ReactEventHandler<HTMLAnchorElement>
+    onError?: ReactEventHandler<HTMLAnchorElement>
+    onErrorCapture?: ReactEventHandler<HTMLAnchorElement>
+    onFocus?: FocusEventHandler<HTMLAnchorElement>
+    onFocusCapture?: FocusEventHandler<HTMLAnchorElement>
+    onGotPointerCapture?: PointerEventHandler<HTMLAnchorElement>
+    onGotPointerCaptureCapture?: PointerEventHandler<HTMLAnchorElement>
+    onInput?: FormEventHandler<HTMLAnchorElement>
+    onInputCapture?: FormEventHandler<HTMLAnchorElement>
+    onInvalid?: FormEventHandler<HTMLAnchorElement>
+    onInvalidCapture?: FormEventHandler<HTMLAnchorElement>
+    onKeyDown?: KeyboardEventHandler<HTMLAnchorElement>
+    onKeyDownCapture?: KeyboardEventHandler<HTMLAnchorElement>
+    onKeyPress?: KeyboardEventHandler<HTMLAnchorElement>
+    onKeyPressCapture?: KeyboardEventHandler<HTMLAnchorElement>
+    onKeyUp?: KeyboardEventHandler<HTMLAnchorElement>
+    onKeyUpCapture?: KeyboardEventHandler<HTMLAnchorElement>
+    onLoad?: ReactEventHandler<HTMLAnchorElement>
+    onLoadCapture?: ReactEventHandler<HTMLAnchorElement>
+    onLoadStart?: ReactEventHandler<HTMLAnchorElement>
+    onLoadStartCapture?: ReactEventHandler<HTMLAnchorElement>
+    onLoadedData?: ReactEventHandler<HTMLAnchorElement>
+    onLoadedDataCapture?: ReactEventHandler<HTMLAnchorElement>
+    onLoadedMetadata?: ReactEventHandler<HTMLAnchorElement>
+    onLoadedMetadataCapture?: ReactEventHandler<HTMLAnchorElement>
+    onLostPointerCapture?: PointerEventHandler<HTMLAnchorElement>
+    onLostPointerCaptureCapture?: PointerEventHandler<HTMLAnchorElement>
+    onMouseDown?: MouseEventHandler<HTMLAnchorElement>
+    onMouseDownCapture?: MouseEventHandler<HTMLAnchorElement>
+    onMouseEnter?: MouseEventHandler<HTMLAnchorElement>
+    onMouseLeave?: MouseEventHandler<HTMLAnchorElement>
+    onMouseMove?: MouseEventHandler<HTMLAnchorElement>
+    onMouseMoveCapture?: MouseEventHandler<HTMLAnchorElement>
+    onMouseOut?: MouseEventHandler<HTMLAnchorElement>
+    onMouseOutCapture?: MouseEventHandler<HTMLAnchorElement>
+    onMouseOver?: MouseEventHandler<HTMLAnchorElement>
+    onMouseOverCapture?: MouseEventHandler<HTMLAnchorElement>
+    onMouseUp?: MouseEventHandler<HTMLAnchorElement>
+    onMouseUpCapture?: MouseEventHandler<HTMLAnchorElement>
+    onPaste?: ClipboardEventHandler<HTMLAnchorElement>
+    onPasteCapture?: ClipboardEventHandler<HTMLAnchorElement>
+    onPause?: ReactEventHandler<HTMLAnchorElement>
+    onPauseCapture?: ReactEventHandler<HTMLAnchorElement>
+    onPlay?: ReactEventHandler<HTMLAnchorElement>
+    onPlayCapture?: ReactEventHandler<HTMLAnchorElement>
+    onPlaying?: ReactEventHandler<HTMLAnchorElement>
+    onPlayingCapture?: ReactEventHandler<HTMLAnchorElement>
+    onPointerCancel?: PointerEventHandler<HTMLAnchorElement>
+    onPointerCancelCapture?: PointerEventHandler<HTMLAnchorElement>
+    onPointerDown?: PointerEventHandler<HTMLAnchorElement>
+    onPointerDownCapture?: PointerEventHandler<HTMLAnchorElement>
+    onPointerEnter?: PointerEventHandler<HTMLAnchorElement>
+    onPointerEnterCapture?: PointerEventHandler<HTMLAnchorElement>
+    onPointerLeave?: PointerEventHandler<HTMLAnchorElement>
+    onPointerLeaveCapture?: PointerEventHandler<HTMLAnchorElement>
+    onPointerMove?: PointerEventHandler<HTMLAnchorElement>
+    onPointerMoveCapture?: PointerEventHandler<HTMLAnchorElement>
+    onPointerOut?: PointerEventHandler<HTMLAnchorElement>
+    onPointerOutCapture?: PointerEventHandler<HTMLAnchorElement>
+    onPointerOver?: PointerEventHandler<HTMLAnchorElement>
+    onPointerOverCapture?: PointerEventHandler<HTMLAnchorElement>
+    onPointerUp?: PointerEventHandler<HTMLAnchorElement>
+    onPointerUpCapture?: PointerEventHandler<HTMLAnchorElement>
+    onProgress?: ReactEventHandler<HTMLAnchorElement>
+    onProgressCapture?: ReactEventHandler<HTMLAnchorElement>
+    onRateChange?: ReactEventHandler<HTMLAnchorElement>
+    onRateChangeCapture?: ReactEventHandler<HTMLAnchorElement>
+    onReset?: FormEventHandler<HTMLAnchorElement>
+    onResetCapture?: FormEventHandler<HTMLAnchorElement>
+    onScroll?: UIEventHandler<HTMLAnchorElement>
+    onScrollCapture?: UIEventHandler<HTMLAnchorElement>
+    onSeeked?: ReactEventHandler<HTMLAnchorElement>
+    onSeekedCapture?: ReactEventHandler<HTMLAnchorElement>
+    onSeeking?: ReactEventHandler<HTMLAnchorElement>
+    onSeekingCapture?: ReactEventHandler<HTMLAnchorElement>
+    onSelect?: ReactEventHandler<HTMLAnchorElement>
+    onSelectCapture?: ReactEventHandler<HTMLAnchorElement>
+    onStalled?: ReactEventHandler<HTMLAnchorElement>
+    onStalledCapture?: ReactEventHandler<HTMLAnchorElement>
+    onSubmit?: FormEventHandler<HTMLAnchorElement>
+    onSubmitCapture?: FormEventHandler<HTMLAnchorElement>
+    onSuspend?: ReactEventHandler<HTMLAnchorElement>
+    onSuspendCapture?: ReactEventHandler<HTMLAnchorElement>
+    onTimeUpdate?: ReactEventHandler<HTMLAnchorElement>
+    onTimeUpdateCapture?: ReactEventHandler<HTMLAnchorElement>
+    onTouchCancel?: TouchEventHandler<HTMLAnchorElement>
+    onTouchCancelCapture?: TouchEventHandler<HTMLAnchorElement>
+    onTouchEnd?: TouchEventHandler<HTMLAnchorElement>
+    onTouchEndCapture?: TouchEventHandler<HTMLAnchorElement>
+    onTouchMove?: TouchEventHandler<HTMLAnchorElement>
+    onTouchMoveCapture?: TouchEventHandler<HTMLAnchorElement>
+    onTouchStart?: TouchEventHandler<HTMLAnchorElement>
+    onTouchStartCapture?: TouchEventHandler<HTMLAnchorElement>
+    onTransitionEnd?: TransitionEventHandler<HTMLAnchorElement>
+    onTransitionEndCapture?: TransitionEventHandler<HTMLAnchorElement>
+    onVolumeChange?: ReactEventHandler<HTMLAnchorElement>
+    onVolumeChangeCapture?: ReactEventHandler<HTMLAnchorElement>
+    onWaiting?: ReactEventHandler<HTMLAnchorElement>
+    onWaitingCapture?: ReactEventHandler<HTMLAnchorElement>
+    onWheel?: WheelEventHandler<HTMLAnchorElement>
+    onWheelCapture?: WheelEventHandler<HTMLAnchorElement>
     ping?: string
     placeholder?: string
     prefix?: string
@@ -5583,7 +5615,7 @@ Object {
         | "small"
         | "standard"
         | "xsmall"
-    space?: ResponsiveProp<
+    space?: 
         | "gutter"
         | "large"
         | "medium"
@@ -5593,7 +5625,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-    >
+        | readonly [Space, Space, Space]
+        | readonly [Space, Space]
     start?: number
     tone?: 
         | "brandAccent"
@@ -5636,7 +5669,7 @@ Object {
   exportType: component,
   props: {
     children: ReactNode
-    data?: Record<string, string | number>
+    data?: DataAttributeMap
     onClick?: () => void
     tone?: "critical"
 },
@@ -5649,7 +5682,7 @@ Object {
   props: {
     checked: boolean
     children: ReactNode
-    data?: Record<string, string | number>
+    data?: DataAttributeMap
     onChange: (checked: boolean) => void
 },
 }
@@ -5665,7 +5698,7 @@ Object {
   exportType: component,
   props: {
     children: ReactNode
-    data?: Record<string, string | number>
+    data?: DataAttributeMap
     href: string
     onClick?: () => void
     rel?: string
@@ -5683,8 +5716,8 @@ Object {
         | "left"
         | "right"
     children: ReactNode
-    data?: Record<string, string | number>
-    offsetSpace?: ResponsiveProp<
+    data?: DataAttributeMap
+    offsetSpace?: 
         | "gutter"
         | "large"
         | "medium"
@@ -5694,7 +5727,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-    >
+        | readonly [Space, Space, Space]
+        | readonly [Space, Space]
     onClose?: () => void
     onOpen?: () => void
     trigger: (props: TriggerProps, state: TriggerState) => ReactNode
@@ -5755,7 +5789,7 @@ Object {
   exportType: component,
   props: {
     children: ReactNode
-    data?: Record<string, string | number>
+    data?: DataAttributeMap
     label: string
     onClose?: () => void
     onOpen?: () => void
@@ -5785,16 +5819,16 @@ Object {
     aria-describedby?: string
     autoComplete?: string
     autoFocus?: boolean
-    data?: Record<string, string | number>
+    data?: DataAttributeMap
     description?: ReactNode
     disabled?: boolean
     id: string
     label?: ReactNode
     message?: ReactNode
     name?: string
-    onBlur?: (event: FocusEvent<HTMLInputElement>) => void
-    onChange: (event: FormEvent<HTMLInputElement>) => void
-    onFocus?: (event: FocusEvent<HTMLInputElement>) => void
+    onBlur?: FocusEventHandler<HTMLInputElement>
+    onChange: FormEventHandler<HTMLInputElement>
+    onFocus?: FocusEventHandler<HTMLInputElement>
     onVisibilityToggle?: (visible: boolean) => void
     placeholder?: string
     ref?: 
@@ -5822,16 +5856,16 @@ Object {
   exportType: component,
   props: {
     aria-describedby?: string
-    badge?: ReactElement<BadgeProps, string | ((props: any) => ReactElement<any, any> | null) | (new (props: any) => Component<any, any, any>)>
+    badge?: ReactElement<BadgeProps, string | JSXElementConstructor<any>>
     checked: boolean
     children?: ReactNode
-    data?: Record<string, string | number>
+    data?: DataAttributeMap
     description?: ReactNode
     disabled?: boolean
     id: string
     label: ReactNode
     name?: string
-    onChange: (event: FormEvent<HTMLInputElement>) => void
+    onChange: FormEventHandler<HTMLInputElement>
     ref?: 
         | (instance: HTMLInputElement | null) => void
         | RefObject<HTMLInputElement>
@@ -5850,7 +5884,7 @@ exports[`RadioGroup 1`] = `
 Object {
   exportType: component,
   props: {
-    children: ReactElement<RadioItemProps, string | ((props: any) => ReactElement<any, any> | null) | (new (props: any) => Component<any, any, any>)>[]
+    children: ReactElement<RadioItemProps, string | JSXElementConstructor<any>>[]
     description?: ReactNode
     disabled?: boolean
     id: string
@@ -5878,9 +5912,9 @@ Object {
   exportType: component,
   props: {
     aria-describedby?: string
-    badge?: ReactElement<BadgeProps, string | ((props: any) => ReactElement<any, any> | null) | (new (props: any) => Component<any, any, any>)>
+    badge?: ReactElement<BadgeProps, string | JSXElementConstructor<any>>
     children?: ReactNode
-    data?: Record<string, string | number>
+    data?: DataAttributeMap
     description?: ReactNode
     label: ReactNode
     ref?: 
@@ -5939,7 +5973,7 @@ Object {
         | "strong"
         | false
         | true
-    space: ResponsiveProp<
+    space: 
         | "gutter"
         | "large"
         | "medium"
@@ -5949,7 +5983,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-    >
+        | readonly [Space, Space, Space]
+        | readonly [Space, Space]
 },
 }
 `;
@@ -5968,9 +6003,9 @@ exports[`Tab 1`] = `
 Object {
   exportType: component,
   props: {
-    badge?: ReactElement<BadgeProps, string | ((props: any) => ReactElement<any, any> | null) | (new (props: any) => Component<any, any, any>)>
+    badge?: ReactElement<BadgeProps, string | JSXElementConstructor<any>>
     children: ReactNode
-    data?: Record<string, string | number>
+    data?: DataAttributeMap
     item?: string
 },
 }
@@ -5981,7 +6016,7 @@ Object {
   exportType: component,
   props: {
     children: ReactNode
-    data?: Record<string, string | number>
+    data?: DataAttributeMap
     item?: string
 },
 }
@@ -6005,12 +6040,12 @@ Object {
         | "center"
         | "left"
     children: ReactNodeNoStrings
-    data?: Record<string, string | number>
+    data?: DataAttributeMap
     divider?: 
         | "full"
         | "minimal"
         | "none"
-    gutter?: ResponsiveProp<
+    gutter?: 
         | "gutter"
         | "large"
         | "medium"
@@ -6020,7 +6055,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-    >
+        | readonly [Space, Space, Space]
+        | readonly [Space, Space]
     label: string
     reserveHitArea?: boolean
 },
@@ -6239,7 +6275,7 @@ Object {
         | "webview"
         | ComponentClass<any, any>
         | FunctionComponent<any>
-    data?: Record<string, string | number>
+    data?: DataAttributeMap
     id?: string
     size?: 
         | "large"
@@ -6287,7 +6323,7 @@ Object {
     aria-describedby?: string
     autoComplete?: string
     autoFocus?: boolean
-    data?: Record<string, string | number>
+    data?: DataAttributeMap
     description?: ReactNode
     disabled?: boolean
     icon?: ReactNode
@@ -6295,10 +6331,10 @@ Object {
     label?: ReactNode
     message?: ReactNode
     name?: string
-    onBlur?: (event: FocusEvent<HTMLInputElement>) => void
-    onChange: (event: FormEvent<HTMLInputElement>) => void
+    onBlur?: FocusEventHandler<HTMLInputElement>
+    onChange: FormEventHandler<HTMLInputElement>
     onClear?: () => void
-    onFocus?: (event: FocusEvent<HTMLInputElement>) => void
+    onFocus?: FocusEventHandler<HTMLInputElement>
     placeholder?: string
     prefix?: string
     ref?: 
@@ -6544,166 +6580,166 @@ Object {
     itemType?: string
     lang?: string
     media?: string
-    onAbort?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onAbortCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onAnimationEnd?: (event: AnimationEvent<HTMLAnchorElement>) => void
-    onAnimationEndCapture?: (event: AnimationEvent<HTMLAnchorElement>) => void
-    onAnimationIteration?: (event: AnimationEvent<HTMLAnchorElement>) => void
-    onAnimationIterationCapture?: (event: AnimationEvent<HTMLAnchorElement>) => void
-    onAnimationStart?: (event: AnimationEvent<HTMLAnchorElement>) => void
-    onAnimationStartCapture?: (event: AnimationEvent<HTMLAnchorElement>) => void
-    onAuxClick?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-    onAuxClickCapture?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-    onBeforeInput?: (event: FormEvent<HTMLAnchorElement>) => void
-    onBeforeInputCapture?: (event: FormEvent<HTMLAnchorElement>) => void
-    onBlur?: (event: FocusEvent<HTMLAnchorElement>) => void
-    onBlurCapture?: (event: FocusEvent<HTMLAnchorElement>) => void
-    onCanPlay?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onCanPlayCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onCanPlayThrough?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onCanPlayThroughCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onChange?: (event: FormEvent<HTMLAnchorElement>) => void
-    onChangeCapture?: (event: FormEvent<HTMLAnchorElement>) => void
-    onClick?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-    onClickCapture?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-    onCompositionEnd?: (event: CompositionEvent<HTMLAnchorElement>) => void
-    onCompositionEndCapture?: (event: CompositionEvent<HTMLAnchorElement>) => void
-    onCompositionStart?: (event: CompositionEvent<HTMLAnchorElement>) => void
-    onCompositionStartCapture?: (event: CompositionEvent<HTMLAnchorElement>) => void
-    onCompositionUpdate?: (event: CompositionEvent<HTMLAnchorElement>) => void
-    onCompositionUpdateCapture?: (event: CompositionEvent<HTMLAnchorElement>) => void
-    onContextMenu?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-    onContextMenuCapture?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-    onCopy?: (event: ClipboardEvent<HTMLAnchorElement>) => void
-    onCopyCapture?: (event: ClipboardEvent<HTMLAnchorElement>) => void
-    onCut?: (event: ClipboardEvent<HTMLAnchorElement>) => void
-    onCutCapture?: (event: ClipboardEvent<HTMLAnchorElement>) => void
-    onDoubleClick?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-    onDoubleClickCapture?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-    onDrag?: (event: DragEvent<HTMLAnchorElement>) => void
-    onDragCapture?: (event: DragEvent<HTMLAnchorElement>) => void
-    onDragEnd?: (event: DragEvent<HTMLAnchorElement>) => void
-    onDragEndCapture?: (event: DragEvent<HTMLAnchorElement>) => void
-    onDragEnter?: (event: DragEvent<HTMLAnchorElement>) => void
-    onDragEnterCapture?: (event: DragEvent<HTMLAnchorElement>) => void
-    onDragExit?: (event: DragEvent<HTMLAnchorElement>) => void
-    onDragExitCapture?: (event: DragEvent<HTMLAnchorElement>) => void
-    onDragLeave?: (event: DragEvent<HTMLAnchorElement>) => void
-    onDragLeaveCapture?: (event: DragEvent<HTMLAnchorElement>) => void
-    onDragOver?: (event: DragEvent<HTMLAnchorElement>) => void
-    onDragOverCapture?: (event: DragEvent<HTMLAnchorElement>) => void
-    onDragStart?: (event: DragEvent<HTMLAnchorElement>) => void
-    onDragStartCapture?: (event: DragEvent<HTMLAnchorElement>) => void
-    onDrop?: (event: DragEvent<HTMLAnchorElement>) => void
-    onDropCapture?: (event: DragEvent<HTMLAnchorElement>) => void
-    onDurationChange?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onDurationChangeCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onEmptied?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onEmptiedCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onEncrypted?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onEncryptedCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onEnded?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onEndedCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onError?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onErrorCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onFocus?: (event: FocusEvent<HTMLAnchorElement>) => void
-    onFocusCapture?: (event: FocusEvent<HTMLAnchorElement>) => void
-    onGotPointerCapture?: (event: PointerEvent<HTMLAnchorElement>) => void
-    onGotPointerCaptureCapture?: (event: PointerEvent<HTMLAnchorElement>) => void
-    onInput?: (event: FormEvent<HTMLAnchorElement>) => void
-    onInputCapture?: (event: FormEvent<HTMLAnchorElement>) => void
-    onInvalid?: (event: FormEvent<HTMLAnchorElement>) => void
-    onInvalidCapture?: (event: FormEvent<HTMLAnchorElement>) => void
-    onKeyDown?: (event: KeyboardEvent<HTMLAnchorElement>) => void
-    onKeyDownCapture?: (event: KeyboardEvent<HTMLAnchorElement>) => void
-    onKeyPress?: (event: KeyboardEvent<HTMLAnchorElement>) => void
-    onKeyPressCapture?: (event: KeyboardEvent<HTMLAnchorElement>) => void
-    onKeyUp?: (event: KeyboardEvent<HTMLAnchorElement>) => void
-    onKeyUpCapture?: (event: KeyboardEvent<HTMLAnchorElement>) => void
-    onLoad?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onLoadCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onLoadStart?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onLoadStartCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onLoadedData?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onLoadedDataCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onLoadedMetadata?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onLoadedMetadataCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onLostPointerCapture?: (event: PointerEvent<HTMLAnchorElement>) => void
-    onLostPointerCaptureCapture?: (event: PointerEvent<HTMLAnchorElement>) => void
-    onMouseDown?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-    onMouseDownCapture?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-    onMouseEnter?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-    onMouseLeave?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-    onMouseMove?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-    onMouseMoveCapture?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-    onMouseOut?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-    onMouseOutCapture?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-    onMouseOver?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-    onMouseOverCapture?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-    onMouseUp?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-    onMouseUpCapture?: (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-    onPaste?: (event: ClipboardEvent<HTMLAnchorElement>) => void
-    onPasteCapture?: (event: ClipboardEvent<HTMLAnchorElement>) => void
-    onPause?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onPauseCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onPlay?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onPlayCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onPlaying?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onPlayingCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onPointerCancel?: (event: PointerEvent<HTMLAnchorElement>) => void
-    onPointerCancelCapture?: (event: PointerEvent<HTMLAnchorElement>) => void
-    onPointerDown?: (event: PointerEvent<HTMLAnchorElement>) => void
-    onPointerDownCapture?: (event: PointerEvent<HTMLAnchorElement>) => void
-    onPointerEnter?: (event: PointerEvent<HTMLAnchorElement>) => void
-    onPointerEnterCapture?: (event: PointerEvent<HTMLAnchorElement>) => void
-    onPointerLeave?: (event: PointerEvent<HTMLAnchorElement>) => void
-    onPointerLeaveCapture?: (event: PointerEvent<HTMLAnchorElement>) => void
-    onPointerMove?: (event: PointerEvent<HTMLAnchorElement>) => void
-    onPointerMoveCapture?: (event: PointerEvent<HTMLAnchorElement>) => void
-    onPointerOut?: (event: PointerEvent<HTMLAnchorElement>) => void
-    onPointerOutCapture?: (event: PointerEvent<HTMLAnchorElement>) => void
-    onPointerOver?: (event: PointerEvent<HTMLAnchorElement>) => void
-    onPointerOverCapture?: (event: PointerEvent<HTMLAnchorElement>) => void
-    onPointerUp?: (event: PointerEvent<HTMLAnchorElement>) => void
-    onPointerUpCapture?: (event: PointerEvent<HTMLAnchorElement>) => void
-    onProgress?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onProgressCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onRateChange?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onRateChangeCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onReset?: (event: FormEvent<HTMLAnchorElement>) => void
-    onResetCapture?: (event: FormEvent<HTMLAnchorElement>) => void
-    onScroll?: (event: UIEvent<HTMLAnchorElement, UIEvent>) => void
-    onScrollCapture?: (event: UIEvent<HTMLAnchorElement, UIEvent>) => void
-    onSeeked?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onSeekedCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onSeeking?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onSeekingCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onSelect?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onSelectCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onStalled?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onStalledCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onSubmit?: (event: FormEvent<HTMLAnchorElement>) => void
-    onSubmitCapture?: (event: FormEvent<HTMLAnchorElement>) => void
-    onSuspend?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onSuspendCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onTimeUpdate?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onTimeUpdateCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onTouchCancel?: (event: TouchEvent<HTMLAnchorElement>) => void
-    onTouchCancelCapture?: (event: TouchEvent<HTMLAnchorElement>) => void
-    onTouchEnd?: (event: TouchEvent<HTMLAnchorElement>) => void
-    onTouchEndCapture?: (event: TouchEvent<HTMLAnchorElement>) => void
-    onTouchMove?: (event: TouchEvent<HTMLAnchorElement>) => void
-    onTouchMoveCapture?: (event: TouchEvent<HTMLAnchorElement>) => void
-    onTouchStart?: (event: TouchEvent<HTMLAnchorElement>) => void
-    onTouchStartCapture?: (event: TouchEvent<HTMLAnchorElement>) => void
-    onTransitionEnd?: (event: TransitionEvent<HTMLAnchorElement>) => void
-    onTransitionEndCapture?: (event: TransitionEvent<HTMLAnchorElement>) => void
-    onVolumeChange?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onVolumeChangeCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onWaiting?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onWaitingCapture?: (event: SyntheticEvent<HTMLAnchorElement, Event>) => void
-    onWheel?: (event: WheelEvent<HTMLAnchorElement>) => void
-    onWheelCapture?: (event: WheelEvent<HTMLAnchorElement>) => void
+    onAbort?: ReactEventHandler<HTMLAnchorElement>
+    onAbortCapture?: ReactEventHandler<HTMLAnchorElement>
+    onAnimationEnd?: AnimationEventHandler<HTMLAnchorElement>
+    onAnimationEndCapture?: AnimationEventHandler<HTMLAnchorElement>
+    onAnimationIteration?: AnimationEventHandler<HTMLAnchorElement>
+    onAnimationIterationCapture?: AnimationEventHandler<HTMLAnchorElement>
+    onAnimationStart?: AnimationEventHandler<HTMLAnchorElement>
+    onAnimationStartCapture?: AnimationEventHandler<HTMLAnchorElement>
+    onAuxClick?: MouseEventHandler<HTMLAnchorElement>
+    onAuxClickCapture?: MouseEventHandler<HTMLAnchorElement>
+    onBeforeInput?: FormEventHandler<HTMLAnchorElement>
+    onBeforeInputCapture?: FormEventHandler<HTMLAnchorElement>
+    onBlur?: FocusEventHandler<HTMLAnchorElement>
+    onBlurCapture?: FocusEventHandler<HTMLAnchorElement>
+    onCanPlay?: ReactEventHandler<HTMLAnchorElement>
+    onCanPlayCapture?: ReactEventHandler<HTMLAnchorElement>
+    onCanPlayThrough?: ReactEventHandler<HTMLAnchorElement>
+    onCanPlayThroughCapture?: ReactEventHandler<HTMLAnchorElement>
+    onChange?: FormEventHandler<HTMLAnchorElement>
+    onChangeCapture?: FormEventHandler<HTMLAnchorElement>
+    onClick?: MouseEventHandler<HTMLAnchorElement>
+    onClickCapture?: MouseEventHandler<HTMLAnchorElement>
+    onCompositionEnd?: CompositionEventHandler<HTMLAnchorElement>
+    onCompositionEndCapture?: CompositionEventHandler<HTMLAnchorElement>
+    onCompositionStart?: CompositionEventHandler<HTMLAnchorElement>
+    onCompositionStartCapture?: CompositionEventHandler<HTMLAnchorElement>
+    onCompositionUpdate?: CompositionEventHandler<HTMLAnchorElement>
+    onCompositionUpdateCapture?: CompositionEventHandler<HTMLAnchorElement>
+    onContextMenu?: MouseEventHandler<HTMLAnchorElement>
+    onContextMenuCapture?: MouseEventHandler<HTMLAnchorElement>
+    onCopy?: ClipboardEventHandler<HTMLAnchorElement>
+    onCopyCapture?: ClipboardEventHandler<HTMLAnchorElement>
+    onCut?: ClipboardEventHandler<HTMLAnchorElement>
+    onCutCapture?: ClipboardEventHandler<HTMLAnchorElement>
+    onDoubleClick?: MouseEventHandler<HTMLAnchorElement>
+    onDoubleClickCapture?: MouseEventHandler<HTMLAnchorElement>
+    onDrag?: DragEventHandler<HTMLAnchorElement>
+    onDragCapture?: DragEventHandler<HTMLAnchorElement>
+    onDragEnd?: DragEventHandler<HTMLAnchorElement>
+    onDragEndCapture?: DragEventHandler<HTMLAnchorElement>
+    onDragEnter?: DragEventHandler<HTMLAnchorElement>
+    onDragEnterCapture?: DragEventHandler<HTMLAnchorElement>
+    onDragExit?: DragEventHandler<HTMLAnchorElement>
+    onDragExitCapture?: DragEventHandler<HTMLAnchorElement>
+    onDragLeave?: DragEventHandler<HTMLAnchorElement>
+    onDragLeaveCapture?: DragEventHandler<HTMLAnchorElement>
+    onDragOver?: DragEventHandler<HTMLAnchorElement>
+    onDragOverCapture?: DragEventHandler<HTMLAnchorElement>
+    onDragStart?: DragEventHandler<HTMLAnchorElement>
+    onDragStartCapture?: DragEventHandler<HTMLAnchorElement>
+    onDrop?: DragEventHandler<HTMLAnchorElement>
+    onDropCapture?: DragEventHandler<HTMLAnchorElement>
+    onDurationChange?: ReactEventHandler<HTMLAnchorElement>
+    onDurationChangeCapture?: ReactEventHandler<HTMLAnchorElement>
+    onEmptied?: ReactEventHandler<HTMLAnchorElement>
+    onEmptiedCapture?: ReactEventHandler<HTMLAnchorElement>
+    onEncrypted?: ReactEventHandler<HTMLAnchorElement>
+    onEncryptedCapture?: ReactEventHandler<HTMLAnchorElement>
+    onEnded?: ReactEventHandler<HTMLAnchorElement>
+    onEndedCapture?: ReactEventHandler<HTMLAnchorElement>
+    onError?: ReactEventHandler<HTMLAnchorElement>
+    onErrorCapture?: ReactEventHandler<HTMLAnchorElement>
+    onFocus?: FocusEventHandler<HTMLAnchorElement>
+    onFocusCapture?: FocusEventHandler<HTMLAnchorElement>
+    onGotPointerCapture?: PointerEventHandler<HTMLAnchorElement>
+    onGotPointerCaptureCapture?: PointerEventHandler<HTMLAnchorElement>
+    onInput?: FormEventHandler<HTMLAnchorElement>
+    onInputCapture?: FormEventHandler<HTMLAnchorElement>
+    onInvalid?: FormEventHandler<HTMLAnchorElement>
+    onInvalidCapture?: FormEventHandler<HTMLAnchorElement>
+    onKeyDown?: KeyboardEventHandler<HTMLAnchorElement>
+    onKeyDownCapture?: KeyboardEventHandler<HTMLAnchorElement>
+    onKeyPress?: KeyboardEventHandler<HTMLAnchorElement>
+    onKeyPressCapture?: KeyboardEventHandler<HTMLAnchorElement>
+    onKeyUp?: KeyboardEventHandler<HTMLAnchorElement>
+    onKeyUpCapture?: KeyboardEventHandler<HTMLAnchorElement>
+    onLoad?: ReactEventHandler<HTMLAnchorElement>
+    onLoadCapture?: ReactEventHandler<HTMLAnchorElement>
+    onLoadStart?: ReactEventHandler<HTMLAnchorElement>
+    onLoadStartCapture?: ReactEventHandler<HTMLAnchorElement>
+    onLoadedData?: ReactEventHandler<HTMLAnchorElement>
+    onLoadedDataCapture?: ReactEventHandler<HTMLAnchorElement>
+    onLoadedMetadata?: ReactEventHandler<HTMLAnchorElement>
+    onLoadedMetadataCapture?: ReactEventHandler<HTMLAnchorElement>
+    onLostPointerCapture?: PointerEventHandler<HTMLAnchorElement>
+    onLostPointerCaptureCapture?: PointerEventHandler<HTMLAnchorElement>
+    onMouseDown?: MouseEventHandler<HTMLAnchorElement>
+    onMouseDownCapture?: MouseEventHandler<HTMLAnchorElement>
+    onMouseEnter?: MouseEventHandler<HTMLAnchorElement>
+    onMouseLeave?: MouseEventHandler<HTMLAnchorElement>
+    onMouseMove?: MouseEventHandler<HTMLAnchorElement>
+    onMouseMoveCapture?: MouseEventHandler<HTMLAnchorElement>
+    onMouseOut?: MouseEventHandler<HTMLAnchorElement>
+    onMouseOutCapture?: MouseEventHandler<HTMLAnchorElement>
+    onMouseOver?: MouseEventHandler<HTMLAnchorElement>
+    onMouseOverCapture?: MouseEventHandler<HTMLAnchorElement>
+    onMouseUp?: MouseEventHandler<HTMLAnchorElement>
+    onMouseUpCapture?: MouseEventHandler<HTMLAnchorElement>
+    onPaste?: ClipboardEventHandler<HTMLAnchorElement>
+    onPasteCapture?: ClipboardEventHandler<HTMLAnchorElement>
+    onPause?: ReactEventHandler<HTMLAnchorElement>
+    onPauseCapture?: ReactEventHandler<HTMLAnchorElement>
+    onPlay?: ReactEventHandler<HTMLAnchorElement>
+    onPlayCapture?: ReactEventHandler<HTMLAnchorElement>
+    onPlaying?: ReactEventHandler<HTMLAnchorElement>
+    onPlayingCapture?: ReactEventHandler<HTMLAnchorElement>
+    onPointerCancel?: PointerEventHandler<HTMLAnchorElement>
+    onPointerCancelCapture?: PointerEventHandler<HTMLAnchorElement>
+    onPointerDown?: PointerEventHandler<HTMLAnchorElement>
+    onPointerDownCapture?: PointerEventHandler<HTMLAnchorElement>
+    onPointerEnter?: PointerEventHandler<HTMLAnchorElement>
+    onPointerEnterCapture?: PointerEventHandler<HTMLAnchorElement>
+    onPointerLeave?: PointerEventHandler<HTMLAnchorElement>
+    onPointerLeaveCapture?: PointerEventHandler<HTMLAnchorElement>
+    onPointerMove?: PointerEventHandler<HTMLAnchorElement>
+    onPointerMoveCapture?: PointerEventHandler<HTMLAnchorElement>
+    onPointerOut?: PointerEventHandler<HTMLAnchorElement>
+    onPointerOutCapture?: PointerEventHandler<HTMLAnchorElement>
+    onPointerOver?: PointerEventHandler<HTMLAnchorElement>
+    onPointerOverCapture?: PointerEventHandler<HTMLAnchorElement>
+    onPointerUp?: PointerEventHandler<HTMLAnchorElement>
+    onPointerUpCapture?: PointerEventHandler<HTMLAnchorElement>
+    onProgress?: ReactEventHandler<HTMLAnchorElement>
+    onProgressCapture?: ReactEventHandler<HTMLAnchorElement>
+    onRateChange?: ReactEventHandler<HTMLAnchorElement>
+    onRateChangeCapture?: ReactEventHandler<HTMLAnchorElement>
+    onReset?: FormEventHandler<HTMLAnchorElement>
+    onResetCapture?: FormEventHandler<HTMLAnchorElement>
+    onScroll?: UIEventHandler<HTMLAnchorElement>
+    onScrollCapture?: UIEventHandler<HTMLAnchorElement>
+    onSeeked?: ReactEventHandler<HTMLAnchorElement>
+    onSeekedCapture?: ReactEventHandler<HTMLAnchorElement>
+    onSeeking?: ReactEventHandler<HTMLAnchorElement>
+    onSeekingCapture?: ReactEventHandler<HTMLAnchorElement>
+    onSelect?: ReactEventHandler<HTMLAnchorElement>
+    onSelectCapture?: ReactEventHandler<HTMLAnchorElement>
+    onStalled?: ReactEventHandler<HTMLAnchorElement>
+    onStalledCapture?: ReactEventHandler<HTMLAnchorElement>
+    onSubmit?: FormEventHandler<HTMLAnchorElement>
+    onSubmitCapture?: FormEventHandler<HTMLAnchorElement>
+    onSuspend?: ReactEventHandler<HTMLAnchorElement>
+    onSuspendCapture?: ReactEventHandler<HTMLAnchorElement>
+    onTimeUpdate?: ReactEventHandler<HTMLAnchorElement>
+    onTimeUpdateCapture?: ReactEventHandler<HTMLAnchorElement>
+    onTouchCancel?: TouchEventHandler<HTMLAnchorElement>
+    onTouchCancelCapture?: TouchEventHandler<HTMLAnchorElement>
+    onTouchEnd?: TouchEventHandler<HTMLAnchorElement>
+    onTouchEndCapture?: TouchEventHandler<HTMLAnchorElement>
+    onTouchMove?: TouchEventHandler<HTMLAnchorElement>
+    onTouchMoveCapture?: TouchEventHandler<HTMLAnchorElement>
+    onTouchStart?: TouchEventHandler<HTMLAnchorElement>
+    onTouchStartCapture?: TouchEventHandler<HTMLAnchorElement>
+    onTransitionEnd?: TransitionEventHandler<HTMLAnchorElement>
+    onTransitionEndCapture?: TransitionEventHandler<HTMLAnchorElement>
+    onVolumeChange?: ReactEventHandler<HTMLAnchorElement>
+    onVolumeChangeCapture?: ReactEventHandler<HTMLAnchorElement>
+    onWaiting?: ReactEventHandler<HTMLAnchorElement>
+    onWaitingCapture?: ReactEventHandler<HTMLAnchorElement>
+    onWheel?: WheelEventHandler<HTMLAnchorElement>
+    onWheelCapture?: WheelEventHandler<HTMLAnchorElement>
     ping?: string
     placeholder?: string
     prefix?: string
@@ -6767,12 +6803,12 @@ Object {
         | false
         | true
     children: ReactNode
-    data?: Record<string, string | number>
+    data?: DataAttributeMap
     hitArea?: 
         | "large"
         | "standard"
     id?: string
-    onClick?: (event: MouseEvent<HTMLSpanElement, MouseEvent>) => void
+    onClick?: MouseEventHandler<HTMLSpanElement>
     weight?: 
         | "regular"
         | "weak"
@@ -6784,7 +6820,7 @@ exports[`TextLinkRenderer 1`] = `
 Object {
   exportType: component,
   props: {
-    children: (styleProps: StyleProps) => ReactElement<any, string | ((props: any) => ReactElement<any, any> | null) | (new (props: any) => Component<any, any, any>)>
+    children: (styleProps: StyleProps) => ReactElement<any, string | JSXElementConstructor<any>>
     hitArea?: 
         | "large"
         | "standard"
@@ -6804,7 +6840,7 @@ Object {
     autoComplete?: string
     autoFocus?: boolean
     characterLimit?: number
-    data?: Record<string, string | number>
+    data?: DataAttributeMap
     description?: ReactNode
     disabled?: boolean
     grow?: boolean
@@ -6815,10 +6851,10 @@ Object {
     lines?: number
     message?: ReactNode
     name?: string
-    onBlur?: (event: FocusEvent<HTMLTextAreaElement>) => void
-    onChange: (event: FormEvent<HTMLTextAreaElement>) => void
-    onFocus?: (event: FocusEvent<HTMLTextAreaElement>) => void
-    onPaste?: (event: ClipboardEvent<HTMLTextAreaElement>) => void
+    onBlur?: FocusEventHandler<HTMLTextAreaElement>
+    onChange: FormEventHandler<HTMLTextAreaElement>
+    onFocus?: FocusEventHandler<HTMLTextAreaElement>
+    onPaste?: ClipboardEventHandler<HTMLTextAreaElement>
     placeholder?: string
     ref?: 
         | (instance: HTMLTextAreaElement | null) => void
@@ -6843,7 +6879,7 @@ exports[`ThemeNameConsumer 1`] = `
 Object {
   exportType: component,
   props: {
-    children: (name: string) => ReactElement<any, string | ((props: any) => ReactElement<any, any> | null) | (new (props: any) => Component<any, any, any>)>
+    children: (name: string) => ReactElement<any, string | JSXElementConstructor<any>>
 },
 }
 `;
@@ -6866,7 +6902,7 @@ Object {
         | "strong"
         | false
         | true
-    space: ResponsiveProp<
+    space: 
         | "gutter"
         | "large"
         | "medium"
@@ -6876,7 +6912,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-    >
+        | readonly [Space, Space, Space]
+        | readonly [Space, Space]
 },
 }
 `;
@@ -6924,38 +6961,38 @@ exports[`filterSuggestions 1`] = `
 Object {
   exportType: component,
   props: {
-    __@iterator: () => IterableIterator<Pick<Suggestion<Value>, "value" | "text" | "label" | "description" | "onClear" | "clearLabel"> | FilterableGroupedSuggestions<Value>>
+    __@iterator: () => IterableIterator<FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>>
     __@unscopables: () => { copyWithin: boolean; entries: boolean; fill: boolean; find: boolean; findIndex: boolean; keys: boolean; values: boolean; }
-    concat: { (...items: ConcatArray<Pick<Suggestion<Value>, "value" | "text" | "label" | "description" | "onClear" | "clearLabel"> | FilterableGroupedSuggestions<Value>>[]): (Pick<...> | FilterableGroupedSuggestions<...>)[]; (...items: (Pick<...> | ... 1 more ... | ConcatArray<...>)[]): (Pick<...> | FilterableGroupedSuggestion...
+    concat: { (...items: ConcatArray<FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>>[]): (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]; (...items: (FilterableSuggestion<...> | ... 1 more ... | ConcatArray<...>)[]): (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]; }
     copyWithin: (target: number, start: number, end?: number | undefined) => FilterableSuggestions<Value>
-    entries: () => IterableIterator<[number, Pick<Suggestion<Value>, "value" | "text" | "label" | "description" | "onClear" | "clearLabel"> | FilterableGroupedSuggestions<Value>]>
-    every: { <S extends Pick<Suggestion<Value>, "value" | "text" | "label" | "description" | "onClear" | "clearLabel"> | FilterableGroupedSuggestions<Value>>(predicate: (value: Pick<...> | FilterableGroupedSuggestions<...>, index: number, array: (Pick<...> | FilterableGroupedSuggestions<...>)[]) => value is S, thisArg?: any): ...
-    fill: (value: Pick<Suggestion<Value>, "value" | "text" | "label" | "description" | "onClear" | "clearLabel"> | FilterableGroupedSuggestions<Value>, start?: number | undefined, end?: number | undefined) => FilterableSuggestions<...>
-    filter: { <S extends Pick<Suggestion<Value>, "value" | "text" | "label" | "description" | "onClear" | "clearLabel"> | FilterableGroupedSuggestions<Value>>(predicate: (value: Pick<...> | FilterableGroupedSuggestions<...>, index: number, array: (Pick<...> | FilterableGroupedSuggestions<...>)[]) => value is S, thisArg?: any): ...
-    find: { <S extends Pick<Suggestion<Value>, "value" | "text" | "label" | "description" | "onClear" | "clearLabel"> | FilterableGroupedSuggestions<Value>>(predicate: (this: void, value: Pick<...> | FilterableGroupedSuggestions<...>, index: number, obj: (Pick<...> | FilterableGroupedSuggestions<...>)[]) => value is S, thisAr...
-    findIndex: (predicate: (value: Pick<Suggestion<Value>, "value" | "text" | "label" | "description" | "onClear" | "clearLabel"> | FilterableGroupedSuggestions<Value>, index: number, obj: (Pick<...> | FilterableGroupedSuggestions<...>)[]) => unknown, thisArg?: any) => number
-    forEach: (callbackfn: (value: Pick<Suggestion<Value>, "value" | "text" | "label" | "description" | "onClear" | "clearLabel"> | FilterableGroupedSuggestions<Value>, index: number, array: (Pick<...> | FilterableGroupedSuggestions<...>)[]) => void, thisArg?: any) => void
-    includes: (searchElement: Pick<Suggestion<Value>, "value" | "text" | "label" | "description" | "onClear" | "clearLabel"> | FilterableGroupedSuggestions<Value>, fromIndex?: number | undefined) => boolean
-    indexOf: (searchElement: Pick<Suggestion<Value>, "value" | "text" | "label" | "description" | "onClear" | "clearLabel"> | FilterableGroupedSuggestions<Value>, fromIndex?: number | undefined) => number
+    entries: () => IterableIterator<[number, FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>]>
+    every: { <S extends FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>>(predicate: (value: FilterableSuggestion<Value> | FilterableGroupedSuggestions<...>, index: number, array: (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]) => value is S, thisArg?: any): this is S[]; (predicate: (value: ...
+    fill: (value: FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>, start?: number | undefined, end?: number | undefined) => FilterableSuggestions<...>
+    filter: { <S extends FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>>(predicate: (value: FilterableSuggestion<Value> | FilterableGroupedSuggestions<...>, index: number, array: (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]) => value is S, thisArg?: any): S[]; (predicate: (value: Filterab...
+    find: { <S extends FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>>(predicate: (this: void, value: FilterableSuggestion<Value> | FilterableGroupedSuggestions<...>, index: number, obj: (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]) => value is S, thisArg?: any): S | undefined; (predica...
+    findIndex: (predicate: (value: FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>, index: number, obj: (FilterableSuggestion<Value> | FilterableGroupedSuggestions<...>)[]) => unknown, thisArg?: any) => number
+    forEach: (callbackfn: (value: FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>, index: number, array: (FilterableSuggestion<Value> | FilterableGroupedSuggestions<...>)[]) => void, thisArg?: any) => void
+    includes: (searchElement: FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>, fromIndex?: number | undefined) => boolean
+    indexOf: (searchElement: FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>, fromIndex?: number | undefined) => number
     join: (separator?: string | undefined) => string
     keys: () => IterableIterator<number>
-    lastIndexOf: (searchElement: Pick<Suggestion<Value>, "value" | "text" | "label" | "description" | "onClear" | "clearLabel"> | FilterableGroupedSuggestions<Value>, fromIndex?: number | undefined) => number
+    lastIndexOf: (searchElement: FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>, fromIndex?: number | undefined) => number
     length: number
-    map: <U>(callbackfn: (value: Pick<Suggestion<Value>, "value" | "text" | "label" | "description" | "onClear" | "clearLabel"> | FilterableGroupedSuggestions<Value>, index: number, array: (Pick<...> | FilterableGroupedSuggestions<...>)[]) => U, thisArg?: any) => U[]
-    pop: () => Pick<Suggestion<Value>, "value" | "text" | "label" | "description" | "onClear" | "clearLabel"> | FilterableGroupedSuggestions<Value> | undefined
-    push: (...items: (Pick<Suggestion<Value>, "value" | "text" | "label" | "description" | "onClear" | "clearLabel"> | FilterableGroupedSuggestions<Value>)[]) => number
-    reduce: { (callbackfn: (previousValue: Pick<Suggestion<Value>, "value" | "text" | "label" | "description" | "onClear" | "clearLabel"> | FilterableGroupedSuggestions<Value>, currentValue: Pick<...> | FilterableGroupedSuggestions<...>, currentIndex: number, array: (Pick<...> | FilterableGroupedSuggestions<...>)[]) => Pick<......
-    reduceRight: { (callbackfn: (previousValue: Pick<Suggestion<Value>, "value" | "text" | "label" | "description" | "onClear" | "clearLabel"> | FilterableGroupedSuggestions<Value>, currentValue: Pick<...> | FilterableGroupedSuggestions<...>, currentIndex: number, array: (Pick<...> | FilterableGroupedSuggestions<...>)[]) => Pick<......
-    reverse: () => (Pick<Suggestion<Value>, "value" | "text" | "label" | "description" | "onClear" | "clearLabel"> | FilterableGroupedSuggestions<Value>)[]
-    shift: () => Pick<Suggestion<Value>, "value" | "text" | "label" | "description" | "onClear" | "clearLabel"> | FilterableGroupedSuggestions<Value> | undefined
-    slice: (start?: number | undefined, end?: number | undefined) => (Pick<Suggestion<Value>, "value" | "text" | "label" | "description" | "onClear" | "clearLabel"> | FilterableGroupedSuggestions<...>)[]
-    some: (predicate: (value: Pick<Suggestion<Value>, "value" | "text" | "label" | "description" | "onClear" | "clearLabel"> | FilterableGroupedSuggestions<Value>, index: number, array: (Pick<...> | FilterableGroupedSuggestions<...>)[]) => unknown, thisArg?: any) => boolean
-    sort: (compareFn?: ((a: Pick<Suggestion<Value>, "value" | "text" | "label" | "description" | "onClear" | "clearLabel"> | FilterableGroupedSuggestions<Value>, b: Pick<...> | FilterableGroupedSuggestions<...>) => number) | undefined) => FilterableSuggestions<...>
-    splice: { (start: number, deleteCount?: number | undefined): (Pick<Suggestion<Value>, "value" | "text" | "label" | "description" | "onClear" | "clearLabel"> | FilterableGroupedSuggestions<...>)[]; (start: number, deleteCount: number, ...items: (Pick<...> | FilterableGroupedSuggestions<...>)[]): (Pick<...> | FilterableGroupe...
+    map: <U>(callbackfn: (value: FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>, index: number, array: (FilterableSuggestion<Value> | FilterableGroupedSuggestions<...>)[]) => U, thisArg?: any) => U[]
+    pop: () => FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value> | undefined
+    push: (...items: (FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>)[]) => number
+    reduce: { (callbackfn: (previousValue: FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>, currentValue: FilterableSuggestion<Value> | FilterableGroupedSuggestions<...>, currentIndex: number, array: (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]) => FilterableSuggestion<...> | FilterableGro...
+    reduceRight: { (callbackfn: (previousValue: FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>, currentValue: FilterableSuggestion<Value> | FilterableGroupedSuggestions<...>, currentIndex: number, array: (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]) => FilterableSuggestion<...> | FilterableGro...
+    reverse: () => (FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>)[]
+    shift: () => FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value> | undefined
+    slice: (start?: number | undefined, end?: number | undefined) => (FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>)[]
+    some: (predicate: (value: FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>, index: number, array: (FilterableSuggestion<Value> | FilterableGroupedSuggestions<...>)[]) => unknown, thisArg?: any) => boolean
+    sort: (compareFn?: ((a: FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>, b: FilterableSuggestion<Value> | FilterableGroupedSuggestions<...>) => number) | undefined) => FilterableSuggestions<...>
+    splice: { (start: number, deleteCount?: number | undefined): (FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>)[]; (start: number, deleteCount: number, ...items: (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]): (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]; }
     toLocaleString: () => string
     toString: () => string
-    unshift: (...items: (Pick<Suggestion<Value>, "value" | "text" | "label" | "description" | "onClear" | "clearLabel"> | FilterableGroupedSuggestions<Value>)[]) => number
-    values: () => IterableIterator<Pick<Suggestion<Value>, "value" | "text" | "label" | "description" | "onClear" | "clearLabel"> | FilterableGroupedSuggestions<Value>>
+    unshift: (...items: (FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>)[]) => number
+    values: () => IterableIterator<FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>>
 },
 }
 `;
