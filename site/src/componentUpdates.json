@@ -1456,5 +1456,9 @@
         "summary": "**TooltipRenderer:** Support usage within `Text` elements"
       }
     ]
+  },
+  {
+    "version": "29.29.2",
+    "updates": []
   }
 ]

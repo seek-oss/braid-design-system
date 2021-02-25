@@ -1,5 +1,11 @@
 # braid-design-system
 
+## 29.29.2
+
+### Patch Changes
+
+- Fix type errors in TypeScript v4.2.2 ([#915](https://github.com/seek-oss/braid-design-system/pull/915))
+
 ## 29.29.1
 
 ### Patch Changes
