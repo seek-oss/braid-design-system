@@ -125,7 +125,7 @@
     "react-use": "^17.0.1",
     "renovate-config-seek": "0.4.0",
     "sanitize-html": "^2.3.2",
-    "sku": "10.10.0",
+    "sku": "10.10.1",
     "surge": "^0.21.7",
     "title-case": "^3.0.3",
     "ts-node": "^9.1.1",
