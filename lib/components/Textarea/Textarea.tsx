@@ -29,6 +29,7 @@ export interface TextareaProps
     end?: number;
   }>;
   characterLimit?: number;
+  highlightExcessCharacters?: boolean;
   lines?: number;
   lineLimit?: number;
   grow?: boolean;
@@ -93,7 +94,8 @@ const NamedTextarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
       onPaste,
       placeholder,
       characterLimit,
-      highlightRanges,
+      highlightExcessCharacters = true,
+      highlightRanges: highlightRangesProp = [],
       lines = 3,
       lineLimit,
       grow = true,
@@ -112,7 +114,17 @@ const NamedTextarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
       },
       [highlightsRef],
     );
-    const hasHighlights = Boolean(highlightRanges);
+
+    const inputLength = String(value).length;
+    const excessCharactersRange =
+      characterLimit &&
+      highlightExcessCharacters &&
+      inputLength > characterLimit
+        ? [{ start: characterLimit }]
+        : [];
+
+    const highlightRanges = [...excessCharactersRange, ...highlightRangesProp];
+    const hasHighlights = highlightRanges.length > 0;
 
     return (
       <Field
