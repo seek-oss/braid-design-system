@@ -1,5 +1,6 @@
 const routes = require('./sku.routes.js');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
+const { TreatPlugin } = require('@mattsjones/css-webpack-plugin');
 
 const isGitHubPages = Boolean(process.env.IS_GITHUB_PAGES);
 
@@ -44,6 +45,14 @@ module.exports = {
       new CircularDependencyPlugin({
         exclude: /node_modules/,
         failOnError: true,
+      }),
+    );
+
+    config.plugins.push(
+      new TreatPlugin({
+        test: /\.css\.ts$/,
+        outputCss: config.target !== 'node',
+        outputLoaders: [require('mini-css-extract-plugin').loader],
       }),
     );
 

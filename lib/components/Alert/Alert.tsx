@@ -1,5 +1,4 @@
 import React, { ReactNode } from 'react';
-import { useStyles } from 'sku/react-treat';
 import { Box, BoxProps } from '../Box/Box';
 import {
   IconInfo,
@@ -15,7 +14,7 @@ import { Column } from '../Column/Column';
 import { Overlay } from '../private/Overlay/Overlay';
 import { useBackground } from '../Box/BackgroundContext';
 import { useTextAlignedToIcon } from '../../hooks/useTextAlignedToIcon/useTextAlignedToIcon';
-import * as styleRefs from './Alert.treat';
+import * as styles from './Alert.css';
 
 type Tone = 'promote' | 'info' | 'positive' | 'caution' | 'critical';
 
@@ -60,7 +59,6 @@ export const Alert = ({
   closeLabel = 'Close',
   onClose,
 }: AlertProps) => {
-  const styles = useStyles(styleRefs);
   const parentBackground = useBackground();
   const Icon = icons[tone];
 
