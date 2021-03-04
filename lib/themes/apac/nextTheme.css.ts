@@ -1,7 +1,8 @@
 import { defineVars, style } from '@mattsjones/css-core';
 import isEqual from 'lodash/isEqual';
 import omit from 'lodash/omit';
-import { rgba } from 'polished';
+import { darken, lighten, rgba } from 'polished';
+import { getLightVariant, isLight } from '../../utils';
 
 const grid = 4;
 
@@ -32,6 +33,30 @@ const secondary = grey['500'];
 const brand = '#0d3880';
 const brandAccent = '#e60278';
 const formAccent = '#2765cf';
+
+const getActiveColor = (x: string) =>
+  isLight(x) ? darken(0.1, x) : darken(0.05, x);
+
+const getHoverColor = (x: string) =>
+  isLight(x) ? darken(0.05, x) : lighten(0.05, x);
+
+const backgroundColorTokens = {
+  body: grey['50'],
+  brand,
+  input: white,
+  inputDisabled: grey['50'],
+  brandAccent,
+  formAccent,
+  formAccentDisabled: grey['100'],
+  selection: grey['100'],
+  card: white,
+  critical,
+  caution,
+  positive,
+  neutral: grey['500'],
+  info,
+  promote,
+};
 
 const tokens = {
   typography: {
@@ -205,6 +230,21 @@ const tokens = {
     ].join(', '),
   },
   color: {
+    background: {
+      ...backgroundColorTokens,
+      formAccentActive: getActiveColor(backgroundColorTokens.formAccent),
+      formAccentHover: getHoverColor(backgroundColorTokens.formAccent),
+      brandAccentActive: getActiveColor(backgroundColorTokens.brandAccent),
+      brandAccentHover: getHoverColor(backgroundColorTokens.brandAccent),
+      criticalActive: getActiveColor(backgroundColorTokens.critical),
+      criticalHover: getHoverColor(backgroundColorTokens.critical),
+      infoLight: getLightVariant(backgroundColorTokens.info),
+      promoteLight: getLightVariant(backgroundColorTokens.promote),
+      criticalLight: getLightVariant(backgroundColorTokens.critical),
+      positiveLight: getLightVariant(backgroundColorTokens.positive),
+      cautionLight: getLightVariant(backgroundColorTokens.caution),
+      neutralLight: getLightVariant(backgroundColorTokens.neutral),
+    },
     foreground: {
       link,
       linkHover: link,
@@ -221,23 +261,6 @@ const tokens = {
       secondary,
       secondaryInverted: 'hsla(0, 0%, 100%, 0.65)',
       rating: '#f57c00',
-    },
-    background: {
-      body: grey['50'],
-      brand,
-      input: white,
-      inputDisabled: grey['50'],
-      brandAccent,
-      formAccent,
-      formAccentDisabled: grey['100'],
-      selection: grey['100'],
-      card: white,
-      critical,
-      caution,
-      positive,
-      neutral: grey['500'],
-      info,
-      promote,
     },
   },
 };
