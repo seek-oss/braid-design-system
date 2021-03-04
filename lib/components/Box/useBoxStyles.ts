@@ -1,14 +1,13 @@
+import type { Theme } from './../../themes/apac/nextTheme.css';
 import { ElementType } from 'react';
 import assert from 'assert';
-import { useStyles } from 'sku/react-treat';
 import classnames from 'classnames';
-import { Theme } from 'treat/theme';
 import {
   resolveResponsiveProp,
   ResponsiveProp,
 } from '../../utils/responsiveProp';
-import * as resetStyleRefs from '../../reset/reset.treat';
-import * as styleRefs from './useBoxStyles.treat';
+import * as resetStyles from '../../reset/reset.css';
+import * as styles from './useBoxStyles.css';
 
 export type Space = keyof Theme['space'] | 'none';
 export type ResponsiveSpace = ResponsiveProp<Space>;
@@ -30,39 +29,39 @@ export interface UseBoxStylesProps {
   marginBottom?: ResponsiveSpace;
   marginLeft?: ResponsiveSpace;
   marginRight?: ResponsiveSpace;
-  display?: ResponsiveProp<keyof typeof styleRefs.display>;
-  flexDirection?: ResponsiveProp<keyof typeof styleRefs.flexDirection>;
-  flexWrap?: keyof typeof styleRefs.flexWrap;
-  flexShrink?: keyof typeof styleRefs.flexShrink;
-  flexGrow?: keyof typeof styleRefs.flexGrow;
-  alignItems?: ResponsiveProp<keyof typeof styleRefs.alignItems>;
-  justifyContent?: ResponsiveProp<keyof typeof styleRefs.justifyContent>;
-  textAlign?: ResponsiveProp<keyof typeof styleRefs.textAlign>;
+  display?: ResponsiveProp<keyof typeof styles.display>;
+  flexDirection?: ResponsiveProp<keyof typeof styles.flexDirection>;
+  flexWrap?: keyof typeof styles.flexWrap;
+  flexShrink?: keyof typeof styles.flexShrink;
+  flexGrow?: keyof typeof styles.flexGrow;
+  alignItems?: ResponsiveProp<keyof typeof styles.alignItems>;
+  justifyContent?: ResponsiveProp<keyof typeof styles.justifyContent>;
+  textAlign?: ResponsiveProp<keyof typeof styles.textAlign>;
   borderRadius?:
     | BorderRadiusFull
     | ResponsiveProp<
-        Exclude<keyof typeof styleRefs.borderRadius, BorderRadiusFull>
+        Exclude<keyof typeof styles.borderRadius, BorderRadiusFull>
       >;
-  background?: keyof typeof styleRefs.background;
-  boxShadow?: keyof typeof styleRefs.boxShadow;
-  transform?: keyof typeof styleRefs.transform;
-  transition?: keyof typeof styleRefs.transition;
-  height?: keyof typeof styleRefs.height;
-  width?: keyof typeof styleRefs.width;
-  position?: keyof typeof styleRefs.position;
-  cursor?: keyof typeof styleRefs.cursor;
-  pointerEvents?: keyof typeof styleRefs.pointerEvents;
-  overflow?: keyof typeof styleRefs.overflow;
-  minWidth?: keyof typeof styleRefs.minWidth;
-  maxWidth?: keyof typeof styleRefs.maxWidth;
-  top?: keyof typeof styleRefs.top;
-  bottom?: keyof typeof styleRefs.bottom;
-  left?: keyof typeof styleRefs.left;
-  right?: keyof typeof styleRefs.right;
-  userSelect?: keyof typeof styleRefs.userSelect;
-  outline?: keyof typeof styleRefs.outline;
-  opacity?: keyof typeof styleRefs.opacity;
-  zIndex?: keyof typeof styleRefs.zIndex;
+  background?: keyof typeof styles.background;
+  boxShadow?: keyof typeof styles.boxShadow;
+  transform?: keyof typeof styles.transform;
+  transition?: keyof typeof styles.transition;
+  height?: keyof typeof styles.height;
+  width?: keyof typeof styles.width;
+  position?: keyof typeof styles.position;
+  cursor?: keyof typeof styles.cursor;
+  pointerEvents?: keyof typeof styles.pointerEvents;
+  overflow?: keyof typeof styles.overflow;
+  minWidth?: keyof typeof styles.minWidth;
+  maxWidth?: keyof typeof styles.maxWidth;
+  top?: keyof typeof styles.top;
+  bottom?: keyof typeof styles.bottom;
+  left?: keyof typeof styles.left;
+  right?: keyof typeof styles.right;
+  userSelect?: keyof typeof styles.userSelect;
+  outline?: keyof typeof styles.outline;
+  opacity?: keyof typeof styles.opacity;
+  zIndex?: keyof typeof styles.zIndex;
   className?: Parameters<typeof classnames>[0];
 }
 
@@ -113,9 +112,6 @@ export const useBoxStyles = ({
   zIndex,
   className,
 }: UseBoxStylesProps) => {
-  const resetStyles = useStyles(resetStyleRefs);
-  const styles = useStyles(styleRefs);
-
   const resolvedPaddingTop = paddingTop || paddingY || padding;
   const resolvedPaddingBottom = paddingBottom || paddingY || padding;
   const resolvedPaddingLeft = paddingLeft || paddingX || padding;
@@ -145,7 +141,7 @@ export const useBoxStyles = ({
   return classnames(
     component !== null && resetStyles.base,
     component !== null &&
-      resetStyles.element[component as keyof typeof resetStyleRefs.element],
+      resetStyles.element[component as keyof typeof resetStyles.element],
     styles.background[background!],
     borderRadius !== undefined && resolvedBorderRadius,
     styles.boxShadow[boxShadow!],

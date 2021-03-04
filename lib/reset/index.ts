@@ -4,4 +4,4 @@ if (process.env.NODE_ENV === 'development') {
   markResetImported();
 }
 
-export * from './reset.treat';
+export * from './reset.css';
