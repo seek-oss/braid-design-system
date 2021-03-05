@@ -1,5 +1,4 @@
 import { useContext } from 'react';
-import { useStyles } from 'sku/react-treat';
 import assert from 'assert';
 import classnames from 'classnames';
 
@@ -9,28 +8,22 @@ import { TextContext } from '../../components/Text/TextContext';
 import HeadingContext from '../../components/Heading/HeadingContext';
 import { useTextSize, useTextTone, UseTextProps } from '../typography';
 import { useLineHeightContainer } from '../useLineHeightContainer/useLineHeightContainer';
-import * as styleRefs from './icon.treat';
+import * as styles from './icon.css';
 
 type IconSize = NonNullable<UseTextProps['size']> | 'fill';
 
 export interface UseIconSizeProps {
   size?: Exclude<IconSize, 'fill'>;
 }
-export const useIconSize = ({ size = 'standard' }: UseIconSizeProps = {}) => {
-  const styles = useStyles(styleRefs);
-
-  return classnames(styles.size, useTextSize(size));
-};
+export const useIconSize = ({ size = 'standard' }: UseIconSizeProps = {}) =>
+  classnames(styles.size, useTextSize(size));
 
 export interface UseIconContainerSizeProps {
   size?: Exclude<IconSize, 'fill'>;
 }
 export const useIconContainerSize = (
   size: Exclude<IconSize, 'fill'> = 'standard',
-) => {
-  const styles = useStyles(styleRefs);
-  return classnames(styles.blockWidths[size], useLineHeightContainer(size));
-};
+) => classnames(styles.blockWidths[size], useLineHeightContainer(size));
 
 export type UseIconProps = {
   size?: IconSize;
@@ -40,8 +33,8 @@ export type UseIconProps = {
 
 type PrivateIconProps = {
   verticalCorrection?: {
-    lowercase: keyof typeof styleRefs.alignY.lowercase;
-    uppercase: keyof typeof styleRefs.alignY.uppercase;
+    lowercase: keyof typeof styles.alignY.lowercase;
+    uppercase: keyof typeof styles.alignY.uppercase;
   };
 };
 
@@ -54,7 +47,6 @@ export default (
   { size, tone, alignY, ...titleProps }: UseIconProps,
   { verticalCorrection = detaultVerticalCorrection }: PrivateIconProps = {},
 ): BoxProps => {
-  const styles = useStyles(styleRefs);
   const textContext = useContext(TextContext);
   const headingContext = useContext(HeadingContext);
   const inheritedTone =

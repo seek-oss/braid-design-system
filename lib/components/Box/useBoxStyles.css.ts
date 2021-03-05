@@ -1,8 +1,11 @@
-import mapValues from 'lodash/mapValues';
 import { style } from '@mattsjones/css-core';
 import { Properties } from 'csstype';
 
-import { nextTheme, responsiveStyle } from '../../themes/apac/nextTheme.css';
+import {
+  nextTheme,
+  responsiveStyle,
+  styleMap,
+} from '../../themes/apac/nextTheme.css';
 import { mapToStyleProperty } from '../../utils';
 
 const breakpoints = {
@@ -11,7 +14,6 @@ const breakpoints = {
   desktop: 992,
 };
 
-type StyleRule = Parameters<typeof style>[0];
 const theme = nextTheme.vars;
 
 const spaceMapToCss = (
@@ -43,10 +45,6 @@ const spaceMapToCss = (
     },
   );
 };
-
-function styleMap<Key extends string | number>(styles: Record<Key, StyleRule>) {
-  return mapValues(styles, (s) => style(s));
-}
 
 export const margin = {
   top: styleMap(spaceMapToCss('marginTop', 'mobile')),

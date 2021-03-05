@@ -1,5 +1,6 @@
 import { defineVars, style } from '@mattsjones/css-core';
 import isEqual from 'lodash/isEqual';
+import mapValues from 'lodash/mapValues';
 import omit from 'lodash/omit';
 import { darken, lighten, rgba } from 'polished';
 import { getLightVariant, isLight } from '../../utils';
@@ -83,41 +84,41 @@ const tokens = {
         '1': {
           mobile: {
             fontSize: 28,
-            rows: 9,
+            leading: 9 * grid,
           },
           tablet: {
             fontSize: 42,
-            rows: 11,
+            leading: 11 * grid,
           },
         },
         '2': {
           mobile: {
             fontSize: 21,
-            rows: 8,
+            leading: 8 * grid,
           },
           tablet: {
             fontSize: 28,
-            rows: 9,
+            leading: 9 * grid,
           },
         },
         '3': {
           mobile: {
             fontSize: 21,
-            rows: 7,
+            leading: 7 * grid,
           },
           tablet: {
             fontSize: 21,
-            rows: 7,
+            leading: 7 * grid,
           },
         },
         '4': {
           mobile: {
             fontSize: 18,
-            rows: 7,
+            leading: 7 * grid,
           },
           tablet: {
             fontSize: 18,
-            rows: 7,
+            leading: 7 * grid,
           },
         },
       },
@@ -126,41 +127,41 @@ const tokens = {
       xsmall: {
         mobile: {
           fontSize: 12,
-          rows: 5,
+          leading: 5 * grid,
         },
         tablet: {
           fontSize: 12,
-          rows: 5,
+          leading: 5 * grid,
         },
       },
       small: {
         mobile: {
           fontSize: 14,
-          rows: 5,
+          leading: 5 * grid,
         },
         tablet: {
           fontSize: 14,
-          rows: 5,
+          leading: 5 * grid,
         },
       },
       standard: {
         mobile: {
           fontSize: 16,
-          rows: 6,
+          leading: 6 * grid,
         },
         tablet: {
           fontSize: 16,
-          rows: 6,
+          leading: 6 * grid,
         },
       },
       large: {
         mobile: {
           fontSize: 18,
-          rows: 7,
+          leading: 7 * grid,
         },
         tablet: {
           fontSize: 18,
-          rows: 7,
+          leading: 7 * grid,
         },
       },
     },
@@ -326,3 +327,11 @@ export const responsiveStyle = ({
       : {}),
   };
 };
+
+export function styleMap<Key extends string | number>(
+  styles: Record<Key, StyleRule>,
+) {
+  return mapValues(styles, (s) => style(s));
+}
+
+export const negate = (v: string) => `calc(-1 * ${v})`;

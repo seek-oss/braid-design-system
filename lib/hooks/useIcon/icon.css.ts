@@ -1,5 +1,11 @@
-import { style, styleMap } from 'sku/treat';
+import { style } from '@mattsjones/css-core';
 import mapValues from 'lodash/mapValues';
+
+import {
+  nextTheme,
+  responsiveStyle,
+  styleMap,
+} from '../../themes/apac/nextTheme.css';
 
 export const size = style({
   width: '1em',
@@ -26,11 +32,11 @@ export const alignY = {
   }),
 };
 
-export const blockWidths = styleMap(({ utils, grid, typography }) =>
-  mapValues(typography.text, ({ mobile, tablet }) =>
-    utils.responsiveStyle({
-      mobile: { width: grid * mobile.rows },
-      tablet: { width: grid * tablet.rows },
+export const blockWidths = styleMap(
+  mapValues(nextTheme.vars.typography.text, ({ mobile, tablet }) =>
+    responsiveStyle({
+      mobile: { width: mobile.leading },
+      tablet: { width: tablet.leading },
     }),
   ),
 );

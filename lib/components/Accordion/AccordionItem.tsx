@@ -1,5 +1,4 @@
 import React, { ReactNode } from 'react';
-import { useStyles } from 'sku/react-treat';
 import assert from 'assert';
 import { Box } from '../Box/Box';
 import { Columns } from '../Columns/Columns';
@@ -15,7 +14,7 @@ import {
 import { useVirtualTouchable } from '../private/touchable/useVirtualTouchable';
 import { hideFocusRingsClassName } from '../private/hideFocusRings/hideFocusRings';
 import { Overlay } from '../private/Overlay/Overlay';
-import * as styleRefs from './AccordionItem.treat';
+import * as styles from './AccordionItem.css';
 
 const accordionSpace = 'large';
 
@@ -33,8 +32,6 @@ export const AccordionItem = ({
   children,
   ...restProps
 }: AccordionItemProps) => {
-  const styles = useStyles(styleRefs);
-
   assert(
     typeof label === 'undefined' || typeof label === 'string',
     'Label must be a string',
