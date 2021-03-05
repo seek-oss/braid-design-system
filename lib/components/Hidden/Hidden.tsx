@@ -1,5 +1,4 @@
 import React, { useContext, ReactNode } from 'react';
-import { useStyles } from 'sku/react-treat';
 import { Box, BoxProps } from '../Box/Box';
 import { TextContext } from '../Text/TextContext';
 import HeadingContext from '../Heading/HeadingContext';
@@ -7,7 +6,7 @@ import {
   resolveResponsiveRangeProps,
   ResponsiveRangeProps,
 } from '../../utils/responsiveRangeProps';
-import * as styleRefs from './Hidden.treat';
+import * as styles from './Hidden.css';
 
 export interface HiddenProps extends ResponsiveRangeProps {
   children: ReactNode;
@@ -33,7 +32,6 @@ export const Hidden = ({
     );
   }
 
-  const styles = useStyles(styleRefs);
   const inText = Boolean(useContext(TextContext));
   const inHeading = Boolean(useContext(HeadingContext));
 

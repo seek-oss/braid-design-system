@@ -1,4 +1,7 @@
-import { style } from 'sku/treat';
+import { style } from '@mattsjones/css-core';
+import { nextTheme, responsiveStyle } from '../../themes/apac/nextTheme.css';
+
+const theme = nextTheme.vars;
 
 export const constants = {
   smallButtonPaddingSize: 'xsmall' as const,
@@ -56,40 +59,37 @@ export const focusOverlay = style({
 export const standard = style({});
 export const small = style({});
 
-export const bleedY = style(
-  ({ utils, touchableSize, space, grid, typography }) => {
-    type TextBreakpoint = keyof typeof typography.text.small;
-    const stylesForBreakpoint = (
-      breakpoint: TextBreakpoint,
-      size: 'standard' | 'small',
-    ) => {
-      const { capHeight } = typography.text[size][breakpoint];
-      const height =
-        size === 'small'
-          ? space[constants.smallButtonPaddingSize] * grid * 2 +
-            typography.text.small[breakpoint].rows * grid
-          : touchableSize * grid;
+const { touchableSize, space, typography } = theme;
+type TextBreakpoint = keyof typeof typography.text.small;
+const stylesForBreakpoint = (
+  breakpoint: TextBreakpoint,
+  size: 'standard' | 'small',
+) => {
+  const { capHeight } = typography.text[size][breakpoint];
+  const height =
+    size === 'small'
+      ? space[constants.smallButtonPaddingSize] * 2 +
+        typography.text.small[breakpoint]
+      : touchableSize;
 
-      return {
-        marginTop: `-${(height - capHeight) / 2}px`,
-        marginBottom: `-${(height - capHeight) / 2}px`,
-      };
-    };
+  return {
+    marginTop: `-${(height - capHeight) / 2}px`,
+    marginBottom: `-${(height - capHeight) / 2}px`,
+  };
+};
 
-    return {
-      selectors: {
-        [`${standard}&`]: utils.responsiveStyle({
-          mobile: stylesForBreakpoint('mobile', 'standard'),
-          tablet: stylesForBreakpoint('tablet', 'standard'),
-        }),
-        [`${small}&`]: utils.responsiveStyle({
-          mobile: stylesForBreakpoint('mobile', 'small'),
-          tablet: stylesForBreakpoint('tablet', 'small'),
-        }),
-      },
-    };
+export const bleedY = style({
+  selectors: {
+    [`${standard}&`]: responsiveStyle({
+      mobile: stylesForBreakpoint('mobile', 'standard'),
+      tablet: stylesForBreakpoint('tablet', 'standard'),
+    }),
+    [`${small}&`]: responsiveStyle({
+      mobile: stylesForBreakpoint('mobile', 'small'),
+      tablet: stylesForBreakpoint('tablet', 'small'),
+    }),
   },
-);
+});
 
 export const loadingDot = style({
   animationDuration: '1s',

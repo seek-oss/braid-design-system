@@ -1,9 +1,12 @@
 import { defineVars, style } from '@mattsjones/css-core';
+import { FontMetrics, getCapHeight } from 'capsize';
 import isEqual from 'lodash/isEqual';
 import mapValues from 'lodash/mapValues';
 import omit from 'lodash/omit';
 import { darken, lighten, rgba } from 'polished';
-import { getLightVariant, isLight } from '../../utils';
+import { computeValues } from '../../hooks/typography/capsize';
+import { getAccessibleVariant, getLightVariant, isLight } from '../../utils';
+import { TextDefinition, TreatTokens } from '../makeBraidTheme';
 
 const grid = 4;
 
@@ -59,6 +62,67 @@ const backgroundColorTokens = {
   promote,
 };
 
+const fontSizeToCapHeight = (
+  definition: TextDefinition,
+  fontMetrics: FontMetrics,
+) => {
+  const { mobile, tablet } = definition;
+  const mobileCapHeight =
+    'fontSize' in mobile
+      ? (getCapHeight({ fontSize: mobile.fontSize, fontMetrics }) as number)
+      : mobile.capHeight;
+
+  const tabletCapHeight =
+    'fontSize' in tablet
+      ? (getCapHeight({ fontSize: tablet.fontSize, fontMetrics }) as number)
+      : tablet.capHeight;
+
+  return {
+    mobile: {
+      capHeight: mobileCapHeight,
+      leading: mobile.leading,
+      capsizeValues: computeValues({
+        capHeight: mobileCapHeight,
+        leading: mobile.leading,
+        fontMetrics,
+      }),
+    },
+    tablet: {
+      capHeight: tabletCapHeight,
+      leading: tablet.leading,
+      capsizeValues: computeValues({
+        capHeight: tabletCapHeight,
+        leading: tablet.leading,
+        fontMetrics,
+      }),
+    },
+  };
+};
+
+const normaliseSizingToCapHeight = (
+  typography: Omit<TreatTokens['typography'], 'webFont'>,
+) => {
+  const { heading, text, fontMetrics } = typography;
+
+  return {
+    ...typography,
+    heading: {
+      ...heading,
+      level: {
+        ...mapValues(heading.level, (definition) =>
+          fontSizeToCapHeight(definition, fontMetrics),
+        ),
+      },
+    },
+    text: {
+      ...text,
+      ...mapValues(text, (definition) =>
+        fontSizeToCapHeight(definition, fontMetrics),
+      ),
+    },
+  };
+};
+
 const tokens = {
   typography: {
     fontFamily:
@@ -71,14 +135,14 @@ const tokens = {
       unitsPerEm: 2048,
     },
     fontWeight: {
-      regular: 400,
-      medium: 500,
-      strong: 700,
+      regular: '400',
+      medium: '500',
+      strong: '700',
     },
     heading: {
       weight: {
-        weak: 'regular',
-        regular: 'medium',
+        weak: 'regular' as const,
+        regular: 'medium' as const,
       },
       level: {
         '1': {
@@ -255,10 +319,20 @@ const tokens = {
       formAccent,
       brandAccent,
       critical,
+      critical4_51: getAccessibleVariant(critical),
+      critical3_1: getAccessibleVariant(critical, { nonText: true }),
       caution,
+      caution4_51: getAccessibleVariant(caution),
+      caution3_1: getAccessibleVariant(caution, { nonText: true }),
       positive,
+      positive4_51: getAccessibleVariant(positive),
+      positive3_1: getAccessibleVariant(positive, { nonText: true }),
       info,
+      info4_51: getAccessibleVariant(info),
+      info3_1: getAccessibleVariant(info, { nonText: true }),
       promote,
+      promote4_51: getAccessibleVariant(promote),
+      promote3_1: getAccessibleVariant(promote, { nonText: true }),
       secondary,
       secondaryInverted: 'hsla(0, 0%, 100%, 0.65)',
       rating: '#f57c00',
@@ -266,7 +340,10 @@ const tokens = {
   },
 };
 
-export const nextTheme = defineVars(tokens);
+export const nextTheme = defineVars({
+  ...tokens,
+  typography: normaliseSizingToCapHeight(tokens.typography),
+});
 
 export type Theme = typeof nextTheme.vars;
 

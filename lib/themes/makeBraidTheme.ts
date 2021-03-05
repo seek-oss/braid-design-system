@@ -14,12 +14,12 @@ export type TextBreakpoint = Exclude<Breakpoint, 'desktop'>;
 
 type CapHeightText = {
   capHeight: number;
-  rows: number;
+  leading: number;
 };
 
 type FontSizeText = {
   fontSize: number;
-  rows: number;
+  leading: number;
 };
 
 export type TextDefinition = Record<

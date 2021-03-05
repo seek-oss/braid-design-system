@@ -1,5 +1,4 @@
 import { useContext } from 'react';
-import { useStyles } from 'sku/react-treat';
 import classnames from 'classnames';
 import {
   useBackground,
@@ -8,13 +7,13 @@ import {
 import { BoxProps } from '../../components/Box/Box';
 import { useDefaultTextProps } from '../../components/private/defaultTextProps';
 import TextLinkRendererContext from '../../components/TextLinkRenderer/TextLinkRendererContext';
-import * as styleRefs from './typography.treat';
+import * as styles from './typography.css';
 
-type TextTone = keyof typeof styleRefs.tone | 'neutral';
+type TextTone = keyof typeof styles.tone | 'neutral';
 
 export interface UseTextProps {
-  weight?: keyof typeof styleRefs.fontWeight;
-  size?: keyof typeof styleRefs.text;
+  weight?: keyof typeof styles.fontWeight;
+  size?: keyof typeof styles.text;
   tone?: TextTone;
   baseline: boolean;
   backgroundContext?: BoxProps['background'];
@@ -27,7 +26,6 @@ export function useText({
   baseline,
   backgroundContext,
 }: UseTextProps) {
-  const styles = useStyles(styleRefs);
   const textTone = useTextTone({ tone, backgroundContext });
 
   return classnames(
@@ -39,7 +37,7 @@ export function useText({
   );
 }
 
-export type HeadingLevel = keyof typeof styleRefs.heading;
+export type HeadingLevel = keyof typeof styles.heading;
 export type HeadingWeight = 'regular' | 'weak';
 
 interface UseHeadingParams {
@@ -55,7 +53,6 @@ export function useHeading({
   baseline,
   backgroundContext,
 }: UseHeadingParams) {
-  const styles = useStyles(styleRefs);
   const textTone = useTextTone({ tone: 'neutral', backgroundContext });
 
   return classnames(
@@ -69,12 +66,11 @@ export function useHeading({
   );
 }
 
-export function useTextSize(size: keyof typeof styleRefs.text) {
-  return useStyles(styleRefs).text[size].base;
+export function useTextSize(size: keyof typeof styles.text) {
+  return styles.text[size].base;
 }
 
-export function useWeight(weight: keyof typeof styleRefs.fontWeight) {
-  const styles = useStyles(styleRefs);
+export function useWeight(weight: keyof typeof styles.fontWeight) {
   const inTextLinkRenderer = useContext(TextLinkRendererContext);
 
   return inTextLinkRenderer ? undefined : styles.fontWeight[weight];
@@ -87,7 +83,6 @@ export function useTextTone({
   tone: TextTone;
   backgroundContext?: BoxProps['background'];
 }) {
-  const styles = useStyles(styleRefs);
   const textLinkContext = useContext(TextLinkRendererContext);
   const backgroundContext = useBackground();
   const background = backgroundContextOverride || backgroundContext;
@@ -118,10 +113,10 @@ export function useTextTone({
   return styles.invertableTone.neutral[backgroundLightness];
 }
 
-export function useTouchableSpace(size: keyof typeof styleRefs.touchable) {
-  return useStyles(styleRefs).touchable[size];
+export function useTouchableSpace(size: keyof typeof styles.touchable) {
+  return styles.touchable[size];
 }
 
 export function useTruncate() {
-  return useStyles(styleRefs).truncate;
+  return styles.truncate;
 }
