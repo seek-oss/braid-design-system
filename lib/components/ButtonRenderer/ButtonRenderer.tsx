@@ -9,7 +9,6 @@ import React, {
   CSSProperties,
   ComponentType,
 } from 'react';
-import { useStyles } from 'sku/react-treat';
 import { useBoxStyles, UseBoxStylesProps } from '../Box/useBoxStyles';
 import {
   BackgroundProvider,
@@ -21,7 +20,7 @@ import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
 import { useTouchableSpace } from '../../hooks/typography';
 import { useVirtualTouchable } from '../private/touchable/useVirtualTouchable';
 import ActionsContext from '../Actions/ActionsContext';
-import * as styleRefs from './ButtonRenderer.treat';
+import * as styles from './ButtonRenderer.css';
 
 export const buttonVariants = [
   'solid',
@@ -177,7 +176,6 @@ interface ButtonChildrenProps {
 }
 
 const ButtonChildren = ({ children }: ButtonChildrenProps) => {
-  const styles = useStyles(styleRefs);
   const { size, variant, tone, loading } = useContext(ButtonChildrenContext);
   const buttonVariant = useButtonVariant(variant, tone);
   const standardTouchableSpaceStyles = useTouchableSpace('standard');
@@ -350,7 +348,6 @@ export const PrivateButtonRenderer = ({
     }
   }
 
-  const styles = useStyles(styleRefs);
   const size = sizeProp ?? actionsContext?.size ?? 'standard';
   const { background, boxShadow } = useButtonVariant(variant, tone);
   const virtualTouchableStyles = useVirtualTouchable({ xAxis: false });

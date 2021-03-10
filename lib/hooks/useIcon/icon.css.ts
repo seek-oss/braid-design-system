@@ -2,7 +2,7 @@ import { style } from '@mattsjones/css-core';
 import mapValues from 'lodash/mapValues';
 
 import {
-  nextTheme,
+  theme,
   responsiveStyle,
   styleMap,
 } from '../../themes/apac/nextTheme.css';
@@ -33,7 +33,7 @@ export const alignY = {
 };
 
 export const blockWidths = styleMap(
-  mapValues(nextTheme.vars.typography.text, ({ mobile, tablet }) =>
+  mapValues(theme.typography.text, ({ mobile, tablet }) =>
     responsiveStyle({
       mobile: { width: mobile.leading },
       tablet: { width: tablet.leading },

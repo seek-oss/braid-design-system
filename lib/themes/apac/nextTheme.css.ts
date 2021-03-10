@@ -1,4 +1,8 @@
-import { defineVars, style } from '@mattsjones/css-core';
+import {
+  createGlobalTheme,
+  createThemeVars,
+  style,
+} from '@mattsjones/css-core';
 import { FontMetrics, getCapHeight } from 'capsize';
 import isEqual from 'lodash/isEqual';
 import mapValues from 'lodash/mapValues';
@@ -124,7 +128,7 @@ const normaliseSizingToCapHeight = (
 };
 
 const tokens = {
-  typography: {
+  typography: normaliseSizingToCapHeight({
     fontFamily:
       'Roboto, "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif',
     fontMetrics: {
@@ -135,9 +139,9 @@ const tokens = {
       unitsPerEm: 2048,
     },
     fontWeight: {
-      regular: '400',
-      medium: '500',
-      strong: '700',
+      regular: 400,
+      medium: 500,
+      strong: 700,
     },
     heading: {
       weight: {
@@ -229,7 +233,7 @@ const tokens = {
         },
       },
     },
-  },
+  }),
   contentWidth: {
     xsmall: 400,
     small: 660,
@@ -340,12 +344,9 @@ const tokens = {
   },
 };
 
-export const nextTheme = defineVars({
-  ...tokens,
-  typography: normaliseSizingToCapHeight(tokens.typography),
-});
+export const theme = createThemeVars(tokens);
 
-export type Theme = typeof nextTheme.vars;
+createGlobalTheme(':root', theme, tokens);
 
 export const breakpoints = {
   mobile: 0,
@@ -411,4 +412,19 @@ export function styleMap<Key extends string | number>(
   return mapValues(styles, (s) => style(s));
 }
 
-export const negate = (v: string) => `calc(-1 * ${v})`;
+const subCalc = (calc: string | number) =>
+  typeof calc === 'number' ? calc : calc.replace(/calc/g, '');
+
+export const subtract = (a: string | number, b: string | number) =>
+  `calc(${subCalc(a)} - ${subCalc(b)})`;
+
+export const add = (a: string | number, b: string | number) =>
+  `calc(${subCalc(a)} + ${subCalc(b)})`;
+
+export const multiply = (a: string | number, b: string | number) =>
+  `calc(${subCalc(a)} * ${subCalc(b)})`;
+
+export const negate = (v: string | number) => multiply(v, -1);
+
+export const divide = (a: string | number, b: string | number) =>
+  `calc(${subCalc(a)} / ${subCalc(b)})`;

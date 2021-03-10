@@ -2,7 +2,7 @@ import { style } from '@mattsjones/css-core';
 import { Properties } from 'csstype';
 
 import {
-  nextTheme,
+  theme,
   responsiveStyle,
   styleMap,
 } from '../../themes/apac/nextTheme.css';
@@ -13,8 +13,6 @@ const breakpoints = {
   tablet: 740,
   desktop: 992,
 };
-
-const theme = nextTheme.vars;
 
 const spaceMapToCss = (
   cssPropertyName: keyof Properties,

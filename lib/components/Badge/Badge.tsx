@@ -2,8 +2,7 @@ import React, { forwardRef, Children } from 'react';
 import assert from 'assert';
 import { Box, BoxProps } from '../Box/Box';
 import { Text } from '../Text/Text';
-import * as styleRefs from './Badge.treat';
-import { useStyles } from 'sku/react-treat';
+import * as styles from './Badge.css';
 
 const validTones = [
   'promote',
@@ -70,8 +69,6 @@ export const Badge = forwardRef<HTMLDivElement, BadgeProps>(
     },
     ref,
   ) => {
-    const styles = useStyles(styleRefs);
-
     assert(
       validTones.indexOf(tone) >= 0,
       `Badge tone of "${tone}" is not valid.`,

@@ -1677,15 +1677,14 @@
     postcss "^8.2.7"
     postcss-js "^3.0.3"
 
-"@mattsjones/css-core@^0.0.3":
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/@mattsjones/css-core/-/css-core-0.0.3.tgz#d7ccccd094675fc5aff92de318e2b28e3be9d356"
-  integrity sha512-jrrwnLIRHKvQJsULxWQ/Uwl6i+aph/n7nALWD8puN5X4I0oMXeSJNez3RrFO9AhtenMtsxZgDGOSmLCyhWuKGQ==
+"@mattsjones/css-core@^0.0.5":
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/@mattsjones/css-core/-/css-core-0.0.5.tgz#5b7d0980407aef6fc6f52ccc2bc1ad9a828fb1e2"
+  integrity sha512-Jj6moqIxVwu8iea6hFiQQpxzN1rcr7KpBLGoEp2IK6wf1/XszhBKBBeae0KcDz174Rxe6fSPsRp/y7KzCnPNmg==
   dependencies:
     "@emotion/hash" "^0.8.0"
     csstype "^3.0.7"
     dedent "^0.7.0"
-    deepmerge "^4.2.2"
     lodash "^4.17.21"
     postcss "^8.2.7"
     postcss-js "^3.0.3"

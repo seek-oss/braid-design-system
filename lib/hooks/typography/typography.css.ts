@@ -3,15 +3,14 @@ import omit from 'lodash/omit';
 import { style } from '@mattsjones/css-core';
 
 import {
-  nextTheme,
+  theme,
   responsiveStyle,
   styleMap,
 } from '../../themes/apac/nextTheme.css';
-import capsize, { createCss } from './capsize';
+import { createCss } from './capsize';
 import { mapToStyleProperty } from '../../utils';
 import { BackgroundVariant } from './../../components/Box/BackgroundContext';
 
-const theme = nextTheme.vars;
 type Theme = typeof theme;
 type TextDefinition = Theme['typography']['text'];
 type HeadingDefinition = Theme['typography']['heading']['level'];

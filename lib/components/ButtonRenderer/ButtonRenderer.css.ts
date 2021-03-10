@@ -1,7 +1,12 @@
+import {
+  add,
+  divide,
+  multiply,
+  negate,
+  subtract,
+} from './../../themes/apac/nextTheme.css';
 import { style } from '@mattsjones/css-core';
-import { nextTheme, responsiveStyle } from '../../themes/apac/nextTheme.css';
-
-const theme = nextTheme.vars;
+import { theme, responsiveStyle } from '../../themes/apac/nextTheme.css';
 
 export const constants = {
   smallButtonPaddingSize: 'xsmall' as const,
@@ -17,7 +22,7 @@ export const lightHoverBg = style({});
 
 export const backgroundOverlay = style({
   selectors: {
-    [`${lightBg} &`]: {
+    [`.${lightBg} &`]: {
       opacity: 0.075,
     },
   },
@@ -25,10 +30,10 @@ export const backgroundOverlay = style({
 
 export const activeOverlay = style({
   selectors: {
-    [`${root}:active &`]: {
+    [`.${root}:active &`]: {
       opacity: 1,
     },
-    [`${lightHoverBg}:active &`]: {
+    [`.${lightHoverBg}:active &`]: {
       opacity: 0.1,
     },
   },
@@ -36,13 +41,13 @@ export const activeOverlay = style({
 
 export const hoverOverlay = style({
   selectors: {
-    [`${root}:hover:not(:disabled):not(:active) &`]: {
+    [`.${root}:hover:not(:disabled):not(:active) &`]: {
       opacity: 1,
     },
-    [`${lightHoverBg}:hover:not(:disabled):not(:active) &`]: {
+    [`.${lightHoverBg}:hover:not(:disabled):not(:active) &`]: {
       opacity: 0.075,
     },
-    [`${lightHoverBg}${inverted}:hover:not(:disabled):not(:active) &`]: {
+    [`.${lightHoverBg}.${inverted}:hover:not(:disabled):not(:active) &`]: {
       opacity: 0.15,
     },
   },
@@ -50,7 +55,7 @@ export const hoverOverlay = style({
 
 export const focusOverlay = style({
   selectors: {
-    [`${root}:focus &`]: {
+    [`.${root}:focus &`]: {
       opacity: 1,
     },
   },
@@ -68,23 +73,27 @@ const stylesForBreakpoint = (
   const { capHeight } = typography.text[size][breakpoint];
   const height =
     size === 'small'
-      ? space[constants.smallButtonPaddingSize] * 2 +
-        typography.text.small[breakpoint]
+      ? add(
+          multiply(space[constants.smallButtonPaddingSize], 2),
+          typography.text.small[breakpoint].leading,
+        )
       : touchableSize;
 
+  const value = negate(divide(subtract(height, capHeight), 2));
+
   return {
-    marginTop: `-${(height - capHeight) / 2}px`,
-    marginBottom: `-${(height - capHeight) / 2}px`,
+    marginTop: value,
+    marginBottom: value,
   };
 };
 
 export const bleedY = style({
   selectors: {
-    [`${standard}&`]: responsiveStyle({
+    [`.${standard}&`]: responsiveStyle({
       mobile: stylesForBreakpoint('mobile', 'standard'),
       tablet: stylesForBreakpoint('tablet', 'standard'),
     }),
-    [`${small}&`]: responsiveStyle({
+    [`.${small}&`]: responsiveStyle({
       mobile: stylesForBreakpoint('mobile', 'small'),
       tablet: stylesForBreakpoint('tablet', 'small'),
     }),
