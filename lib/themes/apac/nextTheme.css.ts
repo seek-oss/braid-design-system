@@ -14,33 +14,20 @@ import { TextDefinition, TreatTokens } from '../makeBraidTheme';
 
 const grid = 4;
 
-const grey = {
-  50: '#f5f6f8',
-  100: '#e8eaee',
-  200: '#d8dce2',
-  300: '#b8beca',
-  400: '#8991a5',
-  500: '#596581',
-  600: '#414a5f',
-  700: '#313848',
-  800: '#1e222b',
-  900: '#0e1014',
-};
-
-const critical = '#d0011b';
-const positive = '#138a08';
-const info = '#1e468c';
-const promote = '#9556b7';
+const formAccent = '#0049bd';
+const critical = '#ef0036';
+const positive = '#00af50';
+const info = '#0065de';
+const promote = '#855be5';
 const caution = '#ffc600';
+const brandAccent = '#1a1a1a';
 const focus = rgba('#1e90ff', 0.7);
-const black = grey['800'];
+const black = '#333';
 const white = '#fff';
-const link = '#2765cf';
-const linkVisited = '#733d90';
-const secondary = grey['500'];
-const brand = '#0d3880';
-const brandAccent = '#e60278';
-const formAccent = '#2765cf';
+const link = formAccent;
+const linkVisited = 'DarkViolet';
+const secondary = '#757575';
+const neutral = '#c0c0c0';
 
 const getActiveColor = (x: string) =>
   isLight(x) ? darken(0.1, x) : darken(0.05, x);
@@ -49,27 +36,32 @@ const getHoverColor = (x: string) =>
   isLight(x) ? darken(0.05, x) : lighten(0.05, x);
 
 const backgroundColorTokens = {
-  body: grey['50'],
-  brand,
+  body: white,
+  brand: black,
   input: white,
-  inputDisabled: grey['50'],
+  inputDisabled: '#eee',
   brandAccent,
   formAccent,
-  formAccentDisabled: grey['100'],
-  selection: grey['100'],
+  formAccentDisabled: '#ccc',
+  selection: '#f2f2f2',
   card: white,
   critical,
   caution,
   positive,
-  neutral: grey['500'],
+  neutral,
   info,
   promote,
 };
 
-const fontSizeToCapHeight = (
-  definition: TextDefinition,
-  fontMetrics: FontMetrics,
-) => {
+const fontMetrics = {
+  capHeight: 1443,
+  ascent: 1950,
+  descent: -494,
+  lineGap: 0,
+  unitsPerEm: 2048,
+} as FontMetrics;
+
+const fontSizeToCapHeight = (definition: TextDefinition) => {
   const { mobile, tablet } = definition;
   const mobileCapHeight =
     'fontSize' in mobile
@@ -104,9 +96,9 @@ const fontSizeToCapHeight = (
 };
 
 const normaliseSizingToCapHeight = (
-  typography: Omit<TreatTokens['typography'], 'webFont'>,
+  typography: Omit<TreatTokens['typography'], 'webFont' | 'fontMetrics'>,
 ) => {
-  const { heading, text, fontMetrics } = typography;
+  const { heading, text } = typography;
 
   return {
     ...typography,
@@ -114,34 +106,31 @@ const normaliseSizingToCapHeight = (
       ...heading,
       level: {
         ...mapValues(heading.level, (definition) =>
-          fontSizeToCapHeight(definition, fontMetrics),
+          fontSizeToCapHeight(definition),
         ),
       },
     },
     text: {
       ...text,
-      ...mapValues(text, (definition) =>
-        fontSizeToCapHeight(definition, fontMetrics),
-      ),
+      ...mapValues(text, (definition) => fontSizeToCapHeight(definition)),
     },
   };
 };
 
+const fontWeightPalette = createThemeVars({
+  regular: '400',
+  medium: '500',
+  strong: '700',
+});
+
 const tokens = {
   typography: normaliseSizingToCapHeight({
     fontFamily:
-      'Roboto, "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif',
-    fontMetrics: {
-      capHeight: 1456,
-      ascent: 1900,
-      descent: -500,
-      lineGap: 0,
-      unitsPerEm: 2048,
-    },
+      '-apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
     fontWeight: {
-      regular: 400,
-      medium: 500,
-      strong: 700,
+      regular: '400',
+      medium: '500',
+      strong: '700',
     },
     heading: {
       weight: {
@@ -151,42 +140,42 @@ const tokens = {
       level: {
         '1': {
           mobile: {
-            fontSize: 28,
-            leading: 9 * grid,
+            fontSize: 32,
+            leading: 10 * grid,
           },
           tablet: {
-            fontSize: 42,
-            leading: 11 * grid,
+            fontSize: 52,
+            leading: 15 * grid,
           },
         },
         '2': {
           mobile: {
-            fontSize: 21,
-            leading: 8 * grid,
-          },
-          tablet: {
             fontSize: 28,
             leading: 9 * grid,
+          },
+          tablet: {
+            fontSize: 38,
+            leading: 13 * grid,
           },
         },
         '3': {
           mobile: {
-            fontSize: 21,
-            leading: 7 * grid,
+            fontSize: 22,
+            leading: 8 * grid,
           },
           tablet: {
-            fontSize: 21,
-            leading: 7 * grid,
+            fontSize: 22,
+            leading: 8 * grid,
           },
         },
         '4': {
           mobile: {
             fontSize: 18,
-            leading: 7 * grid,
+            leading: 8 * grid,
           },
           tablet: {
             fontSize: 18,
-            leading: 7 * grid,
+            leading: 8 * grid,
           },
         },
       },
@@ -194,42 +183,42 @@ const tokens = {
     text: {
       xsmall: {
         mobile: {
-          fontSize: 12,
-          leading: 5 * grid,
+          fontSize: 14,
+          leading: 6 * grid,
         },
         tablet: {
-          fontSize: 12,
-          leading: 5 * grid,
+          fontSize: 14,
+          leading: 6 * grid,
         },
       },
       small: {
         mobile: {
-          fontSize: 14,
-          leading: 5 * grid,
+          fontSize: 16,
+          leading: 6 * grid,
         },
         tablet: {
-          fontSize: 14,
-          leading: 5 * grid,
+          fontSize: 16,
+          leading: 6 * grid,
         },
       },
       standard: {
         mobile: {
-          fontSize: 16,
-          leading: 6 * grid,
+          fontSize: 18,
+          leading: 8 * grid,
         },
         tablet: {
-          fontSize: 16,
-          leading: 6 * grid,
+          fontSize: 18,
+          leading: 8 * grid,
         },
       },
       large: {
         mobile: {
-          fontSize: 18,
-          leading: 7 * grid,
+          fontSize: 22,
+          leading: 9 * grid,
         },
         tablet: {
-          fontSize: 18,
-          leading: 7 * grid,
+          fontSize: 22,
+          leading: 9 * grid,
         },
       },
     },
@@ -240,7 +229,7 @@ const tokens = {
     medium: 940,
     large: 1280,
   },
-  touchableSize: 11 * grid,
+  touchableSize: 12 * grid,
   space: {
     gutter: 6 * grid,
     xxsmall: grid,
@@ -248,11 +237,11 @@ const tokens = {
     small: 3 * grid,
     medium: 5 * grid,
     large: 8 * grid,
-    xlarge: 12 * grid,
-    xxlarge: 24 * grid,
+    xlarge: 11 * grid,
+    xxlarge: 15 * grid,
   },
   transforms: {
-    touchable: 'scale(0.95)',
+    touchable: 'scale(0.97)',
   },
   transitions: {
     fast: 'transform .125s ease, opacity .125s ease',
@@ -260,16 +249,16 @@ const tokens = {
   },
   border: {
     radius: {
-      standard: '4px',
+      standard: '8px',
     },
     width: {
       standard: 1,
       large: 2,
     },
     color: {
-      standard: grey['200'],
+      standard: '#d6d6d6',
       standardInverted: white,
-      field: grey['400'],
+      field: '#bbb',
       focus,
       formHover: formAccent,
       critical,
@@ -283,19 +272,19 @@ const tokens = {
   },
   shadows: {
     small: [
-      `0 2px 4px 0px ${rgba(grey['800'], 0.1)}`,
-      `0 2px 2px -2px ${rgba(grey['800'], 0.1)}`,
-      `0 4px 4px -4px ${rgba(grey['800'], 0.2)}`,
+      `0 2px 4px 0px rgba(28,28,28,.1)`,
+      `0 2px 2px -2px rgba(28,28,28,.1)`,
+      `0 4px 4px -4px rgba(28,28,28,.1)`,
     ].join(', '),
     medium: [
-      `0 2px 4px 0px ${rgba(grey['800'], 0.1)}`,
-      `0 8px 8px -4px ${rgba(grey['800'], 0.1)}`,
-      `0 12px 12px -8px ${rgba(grey['800'], 0.2)}`,
+      `0 2px 4px 0px rgba(28,28,28,.1)`,
+      `0 8px 8px -4px rgba(28,28,28,.1)`,
+      `0 12px 12px -8px rgba(28,28,28,.1)`,
     ].join(', '),
     large: [
-      `0 2px 4px 0px ${rgba(grey['800'], 0.1)}`,
-      `0 12px 12px -4px ${rgba(grey['800'], 0.1)}`,
-      `0 20px 20px -12px ${rgba(grey['800'], 0.2)}`,
+      `0 2px 4px 0px rgba(28,28,28,.1)`,
+      `0 12px 12px -4px rgba(28,28,28,.1)`,
+      `0 20px 20px -12px rgba(28,28,28,.1)`,
     ].join(', '),
   },
   color: {
@@ -339,7 +328,7 @@ const tokens = {
       promote3_1: getAccessibleVariant(promote, { nonText: true }),
       secondary,
       secondaryInverted: 'hsla(0, 0%, 100%, 0.65)',
-      rating: '#f57c00',
+      rating: 'black',
     },
   },
 };

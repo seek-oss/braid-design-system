@@ -35,7 +35,7 @@ export interface TreatTokens {
     fontFamily: string;
     webFont: string | null;
     fontMetrics: FontMetrics;
-    fontWeight: Record<FontWeight, number>;
+    fontWeight: Record<FontWeight, string | number>;
     heading: {
       weight: {
         weak: FontWeight;
