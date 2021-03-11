@@ -10,6 +10,7 @@ import {
   List,
   Button,
   Actions,
+  filterSuggestions,
 } from '../../../../../../lib/components';
 import { TextStack } from '../../../TextStack/TextStack';
 import {
@@ -56,11 +57,11 @@ const page: Page = {
             <Stack space="medium">
               <Autosuggest
                 label="Job title"
-                suggestions={[
+                suggestions={filterSuggestions([
                   { text: 'Developer' },
                   { text: 'Designer' },
                   { text: 'Product Manager' },
-                ]}
+                ])}
               />
               <TextField label="Company name" />
               <MonthPicker label="Started" />
@@ -129,11 +130,11 @@ const page: Page = {
             <Heading level="3">Add role</Heading>
             <Autosuggest
               label="Job title"
-              suggestions={[
+              suggestions={filterSuggestions([
                 { text: 'Developer' },
                 { text: 'Designer' },
                 { text: 'Product Manager' },
-              ]}
+              ])}
             />
           </Card>
         </Step>
@@ -156,11 +157,11 @@ const page: Page = {
               <Heading level="3">Add role</Heading>
               <Autosuggest
                 label="Job title"
-                suggestions={[
+                suggestions={filterSuggestions([
                   { text: 'Developer' },
                   { text: 'Designer' },
                   { text: 'Product Manager' },
-                ]}
+                ])}
               />
             </Stack>
           </Card>
@@ -190,11 +191,11 @@ const page: Page = {
               <Heading level="3">Add role</Heading>
               <Autosuggest
                 label="Job title"
-                suggestions={[
+                suggestions={filterSuggestions([
                   { text: 'Developer' },
                   { text: 'Designer' },
                   { text: 'Product Manager' },
-                ]}
+                ])}
               />
               <TextField label="Company name" />
               <MonthPicker label="Started" />
@@ -227,11 +228,11 @@ const page: Page = {
               <Heading level="3">Add role</Heading>
               <Autosuggest
                 label="Job title"
-                suggestions={[
+                suggestions={filterSuggestions([
                   { text: 'Developer' },
                   { text: 'Designer' },
                   { text: 'Product Manager' },
-                ]}
+                ])}
               />
               <TextField label="Company name" />
               <MonthPicker label="Started" />
@@ -254,11 +255,11 @@ const page: Page = {
               <Heading level="3">Add role</Heading>
               <Autosuggest
                 label="Job title"
-                suggestions={[
+                suggestions={filterSuggestions([
                   { text: 'Developer' },
                   { text: 'Designer' },
                   { text: 'Product Manager' },
-                ]}
+                ])}
               />
               <TextField label="Company name" />
               <MonthPicker label="Started" />
@@ -286,11 +287,11 @@ const page: Page = {
               <Heading level="3">Add role</Heading>
               <Autosuggest
                 label="Job title"
-                suggestions={[
+                suggestions={filterSuggestions([
                   { text: 'Developer' },
                   { text: 'Designer' },
                   { text: 'Product Manager' },
-                ]}
+                ])}
               />
               <TextField label="Company name" />
               <MonthPicker label="Started" />
@@ -326,11 +327,11 @@ const page: Page = {
               <Heading level="3">Add role</Heading>
               <Autosuggest
                 label="Job title"
-                suggestions={[
+                suggestions={filterSuggestions([
                   { text: 'Developer' },
                   { text: 'Designer' },
                   { text: 'Product Manager' },
-                ]}
+                ])}
               />
               <TextField label="Company name" />
               <MonthPicker label="Started" />
@@ -371,11 +372,11 @@ const page: Page = {
               <Stack space="large">
                 <Autosuggest
                   label="Job title"
-                  suggestions={[
+                  suggestions={filterSuggestions([
                     { text: 'Developer' },
                     { text: 'Designer' },
                     { text: 'Product Manager' },
-                  ]}
+                  ])}
                 />
                 <TextField label="Company name" />
                 <MonthPicker label="Started" />
