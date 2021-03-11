@@ -196,15 +196,10 @@ const docs: ComponentDocs = {
         <>
           <Text>
             Specifying a <Strong>characterLimit</Strong> will communicate when
-            the input text exceeds the limit. To reduce visual noise, the
-            character count is only displayed when the user is approaching or
-            exceeding the specified limit.
-          </Text>
-          <Text>
-            All characters entered beyond the specified limit will be visually
-            highlighted. You can optionally disable this behaviour by setting
-            the <Strong>highlightExcessCharacters</Strong> prop to{' '}
-            <Strong>false.</Strong>
+            the input text exceeds the limit. All characters entered beyond the
+            specified limit will be visually highlighted. To reduce visual
+            noise, the character count is only displayed when the user is
+            approaching or exceeding the specified limit.
           </Text>
           <Text>
             To prevent loss of information, exceeding the limit is permitted,

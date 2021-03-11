@@ -6844,7 +6844,6 @@ Object {
     description?: ReactNode
     disabled?: boolean
     grow?: boolean
-    highlightExcessCharacters?: boolean
     highlightRanges?: { start: number; end?: number | undefined; }[]
     id: string
     label?: ReactNode
