@@ -18,6 +18,8 @@ export const Disclosure = ({
   id,
   stateName,
   expanded,
+  expandLabel,
+  collapseLabel,
   onToggle,
   ...restProps
 }: PlayroomDisclosureProps) => {
@@ -34,6 +36,8 @@ export const Disclosure = ({
       id={id ?? fallbackId}
       expanded={state}
       onToggle={handleChange}
+      expandLabel={typeof expandLabel !== 'boolean' ? expandLabel : ''}
+      collapseLabel={typeof collapseLabel !== 'boolean' ? collapseLabel : ''}
       {...restProps}
     />
   );

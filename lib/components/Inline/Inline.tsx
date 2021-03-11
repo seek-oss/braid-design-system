@@ -14,7 +14,7 @@ import {
   CollapsibleAlignmentProps,
 } from '../../utils/collapsibleAlignmentProps';
 
-const validInlineComponents = ['div', 'ol', 'ul'] as const;
+export const validInlineComponents = ['div', 'ol', 'ul'] as const;
 
 export interface InlineProps extends CollapsibleAlignmentProps {
   space: ResponsiveSpace;

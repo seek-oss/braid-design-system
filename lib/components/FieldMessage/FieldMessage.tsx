@@ -3,7 +3,7 @@ import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';
 import { IconCritical, IconPositive } from '../icons';
 
-const tones = ['neutral', 'critical', 'positive'] as const;
+export const tones = ['neutral', 'critical', 'positive'] as const;
 type FieldTone = typeof tones[number];
 
 export interface FieldMessageProps {

@@ -40,7 +40,7 @@ const useStackItem = ({ align, space }: UseStackItemProps) => ({
       }),
 });
 
-const validStackComponents = ['div', 'ol', 'ul'] as const;
+export const validStackComponents = ['div', 'ol', 'ul'] as const;
 
 const extractHiddenPropsFromChild = (child: ReactNode) =>
   child && typeof child === 'object' && 'type' in child && child.type === Hidden

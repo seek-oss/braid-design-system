@@ -44,7 +44,7 @@ const RatingStar = ({ percent, ...restProps }: RatingStar) => {
 };
 
 const ratingArr = [...Array(5)];
-export interface Rating {
+export interface RatingProps {
   rating: number;
   size?: TextProps['size'];
   showTextRating?: boolean;
@@ -56,7 +56,7 @@ export const Rating = ({
   size = 'standard',
   showTextRating = true,
   'aria-label': ariaLabel,
-}: Rating) => {
+}: RatingProps) => {
   const styles = useStyles(styleRefs);
 
   assert(
