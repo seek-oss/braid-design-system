@@ -117,12 +117,6 @@ const normaliseSizingToCapHeight = (
   };
 };
 
-const fontWeightPalette = createThemeVars({
-  regular: '400',
-  medium: '500',
-  strong: '700',
-});
-
 const tokens = {
   typography: normaliseSizingToCapHeight({
     fontFamily:
