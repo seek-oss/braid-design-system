@@ -5,8 +5,8 @@ import { Box, Text, Stack, Column, Columns, IconPositive } from '../';
 import {
   background as boxBackgrounds,
   textAlign,
-} from '../Box/useBoxStyles.treat';
-import { text as textSizes } from '../../hooks/typography/typography.treat';
+} from '../Box/useBoxStyles.css';
+import { text as textSizes } from '../../hooks/typography/typography.css';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <div style={{ maxWidth: '300px' }}>{children}</div>

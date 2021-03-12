@@ -3,8 +3,8 @@ import { ComponentScreenshot } from '../../../site/src/types';
 import {
   background as boxBackgrounds,
   textAlign,
-} from '../Box/useBoxStyles.treat';
-import { heading as headingLevels } from '../../hooks/typography/typography.treat';
+} from '../Box/useBoxStyles.css';
+import { heading as headingLevels } from '../../hooks/typography/typography.css';
 import { Box, Heading, Stack } from '../';
 
 const Container = ({ children }: { children: ReactNode }) => (

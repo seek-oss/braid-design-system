@@ -1,6 +1,7 @@
 import { style, styleMap } from 'sku/treat';
 import { externalGutter } from './ModalExternalGutter';
-import { TreatTheme, TextBreakpoint } from '../../../themes/makeBraidTheme';
+import { TreatTheme } from '../../../themes/makeBraidTheme';
+import { TextBreakpoint } from './../../../themes/tokenType';
 
 export const backdrop = style({
   background: 'rgba(0, 0, 0, .4)',

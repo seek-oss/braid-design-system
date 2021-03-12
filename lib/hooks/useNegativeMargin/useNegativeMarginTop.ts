@@ -1,20 +1,18 @@
-import { useStyles } from 'sku/react-treat';
 import classnames from 'classnames';
 import {
   resolveResponsiveProp,
   ResponsiveProp,
 } from '../../utils/responsiveProp';
-import * as styleRefs from './useNegativeMarginTop.treat';
+import * as styles from './useNegativeMarginTop.css';
 
 type NegativeMarginTop = Extract<
-  Extract<keyof typeof styleRefs.mobile, keyof typeof styleRefs.tablet>,
-  Extract<keyof typeof styleRefs.mobile, keyof typeof styleRefs.desktop>
+  Extract<keyof typeof styles.mobile, keyof typeof styles.tablet>,
+  Extract<keyof typeof styles.mobile, keyof typeof styles.desktop>
 >;
 
 export const useNegativeMarginTop = (
   space: ResponsiveProp<NegativeMarginTop>,
 ) => {
-  const styles = useStyles(styleRefs);
   const negativeMarginTop = resolveResponsiveProp(
     space,
     styles.mobile,

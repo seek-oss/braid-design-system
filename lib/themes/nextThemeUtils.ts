@@ -1,5 +1,6 @@
 import { isEqual, omit, mapValues } from 'lodash';
-import { StyleRule, style } from '@mattsjones/css-core';
+import { style, StyleRule } from '@mattsjones/css-core';
+import { Properties, SimplePseudos } from 'csstype';
 
 export const breakpoints = {
   mobile: 0,
@@ -8,7 +9,7 @@ export const breakpoints = {
 };
 
 const makeMediaQuery = (breakpoint: keyof typeof breakpoints) => (
-  styles: StyleWithoutMediaQueries,
+  styles: Properties<string | number>,
 ) =>
   !styles || Object.keys(styles).length === 0
     ? {}
@@ -21,15 +22,13 @@ const mediaQuery = {
   desktop: makeMediaQuery('desktop'),
 };
 
-type StyleWithoutMediaQueries = Omit<
-  StyleRule,
-  '@media' | 'selectors' | '@supports'
->;
+type CSSProps = Properties<string | number> &
+  { [P in SimplePseudos]?: Properties<string | number> };
 
 interface ResponsiveStyle {
-  mobile?: StyleWithoutMediaQueries;
-  tablet?: StyleWithoutMediaQueries;
-  desktop?: StyleWithoutMediaQueries;
+  mobile?: CSSProps;
+  tablet?: CSSProps;
+  desktop?: CSSProps;
 }
 
 export const responsiveStyle = ({
@@ -61,7 +60,7 @@ export const responsiveStyle = ({
 };
 
 export function styleMap<Key extends string | number>(
-  styles: Record<Key, StyleRule>,
+  styles: Record<Key, CSSProps>,
 ) {
   return mapValues(styles, (s) => style(s));
 }

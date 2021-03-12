@@ -6,7 +6,7 @@ import {
   heading as headingSizes,
   text as textSizes,
   tone as tones,
-} from '../../hooks/typography/typography.treat';
+} from '../../hooks/typography/typography.css';
 
 import * as icons from './index';
 

@@ -1,15 +1,20 @@
-import { StyleRule } from '@mattsjones/css-core';
+import { Properties, SimplePseudos } from 'csstype';
 import mapValues from 'lodash/mapValues';
-import { Style } from 'sku/treat';
+
+type CSSProperties = Properties<string | number> &
+  { [P in SimplePseudos]?: Properties<string | number> };
 
 export const mapToStyleProperty = <
-  Key extends string | number,
-  Value extends string | number
+  MapOfValues extends { [key: string]: string | number }
 >(
-  map: Record<Key, Value>,
-  propertyName: keyof StyleRule,
-  mapper?: (value: Value, propertyName: keyof StyleRule) => Style,
-) =>
-  mapValues(map, (value: Value) =>
+  map: MapOfValues,
+  propertyName: keyof Properties<string | number>,
+  mapper?: (
+    value: MapOfValues[string],
+    propertyName: keyof Properties<string | number>,
+  ) => CSSProperties,
+): { [P in keyof MapOfValues]: CSSProperties } =>
+  // @ts-expect-error
+  mapValues(map, (value: MapOfValues[string]) =>
     mapper ? mapper(value, propertyName) : { [propertyName]: value },
   );

@@ -16,7 +16,7 @@ import source from '../../utils/source.macro';
 import Code from '../../../site/src/App/Code/Code';
 import { BoxProps } from './Box';
 import { UseBoxStylesProps } from './useBoxStyles';
-import * as styleRefs from './useBoxStyles.treat';
+import * as styleRefs from './useBoxStyles.css';
 
 type BackgroundDocs = Required<
   Record<NonNullable<BoxProps['background']>, string>

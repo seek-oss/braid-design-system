@@ -1,6 +1,6 @@
 import React, { Fragment, ReactNode } from 'react';
 import { ComponentScreenshot } from '../../../site/src/types';
-import { background as boxBackgrounds } from '../Box/useBoxStyles.treat';
+import { background as boxBackgrounds } from '../Box/useBoxStyles.css';
 import { Box, Button } from '../';
 import { Inline } from '../Inline/Inline';
 import { Heading } from '../Heading/Heading';

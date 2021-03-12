@@ -11,7 +11,7 @@ import {
   Text,
   TextLink,
 } from '../';
-import { background as boxBackgrounds } from '../Box/useBoxStyles.treat';
+import { background as boxBackgrounds } from '../Box/useBoxStyles.css';
 
 export const screenshots: ComponentScreenshot = {
   screenshotWidths: [320],

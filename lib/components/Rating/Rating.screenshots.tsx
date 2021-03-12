@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { ComponentScreenshot } from '../../../site/src/types';
 import { Box, Rating } from '../';
-import { background as boxBackgrounds } from '../Box/useBoxStyles.treat';
+import { background as boxBackgrounds } from '../Box/useBoxStyles.css';
 
 export const screenshots: ComponentScreenshot = {
   screenshotWidths: [320],
