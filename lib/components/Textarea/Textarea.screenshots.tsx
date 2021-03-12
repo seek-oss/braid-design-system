@@ -130,7 +130,7 @@ export const screenshots: ComponentScreenshot = {
       Container,
       Example: ({ id }) => {
         const [value, setValue] = useState(
-          'The long piece of text exceeding the specified 50 character limit',
+          '12345678910 The character limit is 9 so the highlighting should start from "10"',
         );
 
         return (
@@ -139,7 +139,7 @@ export const screenshots: ComponentScreenshot = {
             value={value}
             onChange={(e) => setValue(e.currentTarget.value)}
             label="Do you like Braid?"
-            characterLimit={50}
+            characterLimit={9}
           />
         );
       },
