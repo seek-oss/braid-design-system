@@ -1,5 +1,11 @@
 # braid-design-system
 
+## 29.29.3
+
+### Patch Changes
+
+- **Textarea:** Highlight excess characters when `characterLimit` is provided ([#919](https://github.com/seek-oss/braid-design-system/pull/919))
+
 ## 29.29.2
 
 ### Patch Changes
