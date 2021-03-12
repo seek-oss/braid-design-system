@@ -1460,5 +1460,16 @@
   {
     "version": "29.29.2",
     "updates": []
+  },
+  {
+    "version": "29.29.3",
+    "updates": [
+      {
+        "updated": [
+          "Textarea"
+        ],
+        "summary": "**Textarea:** Highlight excess characters when `characterLimit` is provided"
+      }
+    ]
   }
 ]
