@@ -1,5 +1,5 @@
+import { StyleRule } from '@mattsjones/css-core';
 import mapValues from 'lodash/mapValues';
-import { Properties } from 'csstype';
 import { Style } from 'sku/treat';
 
 export const mapToStyleProperty = <
@@ -7,8 +7,8 @@ export const mapToStyleProperty = <
   Value extends string | number
 >(
   map: Record<Key, Value>,
-  propertyName: keyof Properties,
-  mapper?: (value: Value, propertyName: keyof Properties) => Style,
+  propertyName: keyof StyleRule,
+  mapper?: (value: Value, propertyName: keyof StyleRule) => Style,
 ) =>
   mapValues(map, (value: Value) =>
     mapper ? mapper(value, propertyName) : { [propertyName]: value },

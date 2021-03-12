@@ -1,9 +1,9 @@
 import isEqual from 'lodash/isEqual';
 import { Style } from 'sku/treat';
 import omit from 'lodash/omit';
-import { TreatTokens } from './makeBraidTheme';
+import { BraidTokens } from './tokenType';
 
-type RequiredTokens = Pick<TreatTokens, 'breakpoint'>;
+type RequiredTokens = Pick<BraidTokens, 'breakpoint'>;
 type StyleWithoutMediaQueries = Exclude<Style['@media'], undefined>[string];
 
 export const makeThemeUtils = (tokens: RequiredTokens) => {

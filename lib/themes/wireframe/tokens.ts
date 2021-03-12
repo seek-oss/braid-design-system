@@ -1,4 +1,4 @@
-import { TreatTokens } from '../makeBraidTheme';
+import { BraidTokens } from '../tokenType';
 
 const formAccent = '#404040';
 const critical = '#ef3e4a';
@@ -15,7 +15,7 @@ const linkVisited = 'DarkViolet';
 const secondary = '#777';
 const neutral = '#edeef1';
 
-const tokens: TreatTokens = {
+const tokens: BraidTokens = {
   name: 'wireframe',
   displayName: 'Wireframe',
   typography: {

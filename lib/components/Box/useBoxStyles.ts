@@ -1,4 +1,3 @@
-import type { Theme } from './../../themes/apac/nextTheme.css';
 import { ElementType } from 'react';
 import assert from 'assert';
 import classnames from 'classnames';
@@ -9,7 +8,7 @@ import {
 import * as resetStyles from '../../reset/reset.css';
 import * as styles from './useBoxStyles.css';
 
-export type Space = keyof Theme['space'] | 'none';
+export type Space = keyof typeof styles['padding']['bottom'];
 export type ResponsiveSpace = ResponsiveProp<Space>;
 type BorderRadiusFull = 'full';
 

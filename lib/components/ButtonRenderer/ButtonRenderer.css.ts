@@ -4,9 +4,10 @@ import {
   multiply,
   negate,
   subtract,
-} from './../../themes/apac/nextTheme.css';
+} from './../../themes/nextThemeUtils';
 import { style } from '@mattsjones/css-core';
-import { theme, responsiveStyle } from '../../themes/apac/nextTheme.css';
+import { responsiveStyle } from '../../themes/nextThemeUtils';
+import { themeVars } from '../../themes/themeVars.css';
 
 export const constants = {
   smallButtonPaddingSize: 'xsmall' as const,
@@ -22,7 +23,7 @@ export const lightHoverBg = style({});
 
 export const backgroundOverlay = style({
   selectors: {
-    [`.${lightBg} &`]: {
+    [`${lightBg} &`]: {
       opacity: 0.075,
     },
   },
@@ -30,10 +31,10 @@ export const backgroundOverlay = style({
 
 export const activeOverlay = style({
   selectors: {
-    [`.${root}:active &`]: {
+    [`${root}:active &`]: {
       opacity: 1,
     },
-    [`.${lightHoverBg}:active &`]: {
+    [`${lightHoverBg}:active &`]: {
       opacity: 0.1,
     },
   },
@@ -41,13 +42,13 @@ export const activeOverlay = style({
 
 export const hoverOverlay = style({
   selectors: {
-    [`.${root}:hover:not(:disabled):not(:active) &`]: {
+    [`${root}:hover:not(:disabled):not(:active) &`]: {
       opacity: 1,
     },
-    [`.${lightHoverBg}:hover:not(:disabled):not(:active) &`]: {
+    [`${lightHoverBg}:hover:not(:disabled):not(:active) &`]: {
       opacity: 0.075,
     },
-    [`.${lightHoverBg}.${inverted}:hover:not(:disabled):not(:active) &`]: {
+    [`${lightHoverBg}${inverted}:hover:not(:disabled):not(:active) &`]: {
       opacity: 0.15,
     },
   },
@@ -55,7 +56,7 @@ export const hoverOverlay = style({
 
 export const focusOverlay = style({
   selectors: {
-    [`.${root}:focus &`]: {
+    [`${root}:focus &`]: {
       opacity: 1,
     },
   },
@@ -64,7 +65,7 @@ export const focusOverlay = style({
 export const standard = style({});
 export const small = style({});
 
-const { touchableSize, space, typography } = theme;
+const { touchableSize, space, typography } = themeVars;
 type TextBreakpoint = keyof typeof typography.text.small;
 const stylesForBreakpoint = (
   breakpoint: TextBreakpoint,
@@ -89,11 +90,11 @@ const stylesForBreakpoint = (
 
 export const bleedY = style({
   selectors: {
-    [`.${standard}&`]: responsiveStyle({
+    [`${standard}&`]: responsiveStyle({
       mobile: stylesForBreakpoint('mobile', 'standard'),
       tablet: stylesForBreakpoint('tablet', 'standard'),
     }),
-    [`.${small}&`]: responsiveStyle({
+    [`${small}&`]: responsiveStyle({
       mobile: stylesForBreakpoint('mobile', 'small'),
       tablet: stylesForBreakpoint('tablet', 'small'),
     }),

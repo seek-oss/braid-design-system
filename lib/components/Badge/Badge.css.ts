@@ -4,20 +4,20 @@ import {
   negate,
   responsiveStyle,
   subtract,
-  theme,
-} from '../../themes/apac/nextTheme.css';
+} from '../../themes/nextThemeUtils';
+import { themeVars } from '../../themes/themeVars.css';
 
 export const outer = style(
   responsiveStyle({
-    mobile: { height: theme.typography.text.xsmall.mobile.leading },
-    tablet: { height: theme.typography.text.xsmall.tablet.leading },
+    mobile: { height: themeVars.typography.text.xsmall.mobile.leading },
+    tablet: { height: themeVars.typography.text.xsmall.tablet.leading },
   }),
 );
 
-type TextBreakpoint = keyof typeof theme.typography.text.small;
+type TextBreakpoint = keyof typeof themeVars.typography.text.small;
 
 const stylesForBreakpoint = (breakpoint: TextBreakpoint) => {
-  const { leading, capHeight } = theme.typography.text.small[breakpoint];
+  const { leading, capHeight } = themeVars.typography.text.small[breakpoint];
   const padding = subtract(leading, capHeight);
 
   return { margin: `${negate(divide(padding, 2))} 0` };

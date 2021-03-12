@@ -1,4 +1,4 @@
-import { TreatTokens } from '../makeBraidTheme';
+import { BraidTokens } from '../tokenType';
 import { DeepPartial } from 'utility-types';
 import { rgba } from 'polished';
 import merge from 'lodash/merge';
@@ -22,7 +22,7 @@ interface MakeTokensOptions {
   brand: string;
   brandAccent: string;
   formAccent: string;
-  tokenOverrides?: DeepPartial<TreatTokens>;
+  tokenOverrides?: DeepPartial<BraidTokens>;
 }
 export const makeTokens = ({
   name,
@@ -31,7 +31,7 @@ export const makeTokens = ({
   brandAccent,
   formAccent,
   tokenOverrides = {},
-}: MakeTokensOptions): TreatTokens => {
+}: MakeTokensOptions): BraidTokens => {
   const critical = '#d0011b';
   const positive = '#138a08';
   const info = '#1e468c';
@@ -44,7 +44,7 @@ export const makeTokens = ({
   const linkVisited = '#733d90';
   const secondary = grey['500'];
 
-  const tokens: TreatTokens = {
+  const tokens: BraidTokens = {
     name,
     displayName,
     typography: {

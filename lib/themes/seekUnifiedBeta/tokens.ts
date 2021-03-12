@@ -1,4 +1,4 @@
-import { TreatTokens } from '../makeBraidTheme';
+import { BraidTokens } from '../tokenType';
 import { rgba } from 'polished';
 
 const formAccent = '#2765cf';
@@ -16,7 +16,7 @@ const linkVisited = '#733d90';
 const secondary = '#1c1c1ca1';
 const neutral = '#747474';
 
-const tokens: TreatTokens = {
+const tokens: BraidTokens = {
   name: 'seekUnifiedBeta',
   displayName: 'SEEK Unified (Beta)',
   typography: {

@@ -1,6 +1,6 @@
 import { styleMap } from 'sku/treat';
 import mapValues from 'lodash/mapValues';
-import { TreatTokens } from '../../themes/makeBraidTheme';
+import { BraidTokens } from '../../themes/tokenType';
 
 const columnsWidths = {
   1: '100%',
@@ -13,7 +13,7 @@ const columnsWidths = {
 
 // Remove this when 'styleMap' supports numbers as keys and it's been released to sku consumers,
 type ColumnWidths = Record<keyof typeof columnsWidths, string>;
-const makeColumnsAtoms = (breakpoint: keyof TreatTokens['breakpoint']) =>
+const makeColumnsAtoms = (breakpoint: keyof BraidTokens['breakpoint']) =>
   styleMap(
     (theme) =>
       mapValues(columnsWidths, (width) =>

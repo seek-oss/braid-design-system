@@ -1,5 +1,6 @@
-import { TreatTokens } from '../makeBraidTheme';
 import { rgba } from 'polished';
+
+import { BraidTokens } from '../tokenType';
 
 const formAccent = '#0049bd';
 const critical = '#ef0036';
@@ -16,7 +17,7 @@ const linkVisited = 'DarkViolet';
 const secondary = '#757575';
 const neutral = '#c0c0c0';
 
-const tokens: TreatTokens = {
+const tokens: BraidTokens = {
   name: 'docs',
   displayName: 'Docs',
   typography: {

@@ -1,11 +1,8 @@
 import { style } from '@mattsjones/css-core';
 import { Properties } from 'csstype';
 
-import {
-  theme,
-  responsiveStyle,
-  styleMap,
-} from '../../themes/apac/nextTheme.css';
+import { responsiveStyle, styleMap } from '../../themes/nextThemeUtils';
+import { themeVars } from '../../themes/themeVars.css';
 import { mapToStyleProperty } from '../../utils';
 
 const breakpoints = {
@@ -15,11 +12,11 @@ const breakpoints = {
 };
 
 const spaceMapToCss = (
-  cssPropertyName: keyof Properties,
+  cssPropertyName: keyof Properties<string | number>,
   breakpoint: keyof typeof breakpoints,
 ) => {
   const spaceWithNone = {
-    ...theme.space,
+    ...themeVars.space,
     none: 0,
   };
 
@@ -84,18 +81,18 @@ export const paddingDesktop = {
 
 export const transform = {
   touchable: style({
-    ':active': { transform: theme.transforms.touchable },
+    ':active': { transform: themeVars.transforms.touchable },
   }),
 };
 
 export const transition = styleMap(
-  mapToStyleProperty(theme.transitions, 'transition'),
+  mapToStyleProperty(themeVars.transitions, 'transition'),
 );
 
 const borderRadiusRules = {
-  none: 0,
+  none: '0px',
   full: '50%',
-  ...theme.border.radius,
+  ...themeVars.border.radius,
 };
 export const borderRadius = styleMap(
   mapToStyleProperty(borderRadiusRules, 'borderRadius'),
@@ -117,13 +114,13 @@ export const borderRadiusDesktop = styleMap(
 
 const widthRules = {
   full: '100%',
-  touchable: theme.touchableSize,
+  touchable: themeVars.touchableSize,
 };
 export const width = styleMap(mapToStyleProperty(widthRules, 'width'));
 
 const heightRules = {
   full: '100%',
-  touchable: theme.touchableSize,
+  touchable: themeVars.touchableSize,
 };
 export const height = styleMap(mapToStyleProperty(heightRules, 'height'));
 
@@ -260,12 +257,12 @@ const flexGrowRules = {
 export const flexGrow = styleMap(mapToStyleProperty(flexGrowRules, 'flexGrow'));
 
 export const background = styleMap(
-  mapToStyleProperty(theme.color.background, 'background'),
+  mapToStyleProperty(themeVars.color.background, 'background'),
 );
 
-const { width: borderWidth, color } = theme.border;
+const { width: borderWidth, color } = themeVars.border;
 export const boxShadow = styleMap({
-  ...mapToStyleProperty(theme.shadows, 'boxShadow'),
+  ...mapToStyleProperty(themeVars.shadows, 'boxShadow'),
   outlineFocus: {
     boxShadow: `0 0 0 ${borderWidth.large} ${color.focus}`,
   },
@@ -360,7 +357,7 @@ const minWidthRules = {
 export const minWidth = styleMap(mapToStyleProperty(minWidthRules, 'minWidth'));
 
 export const maxWidth = styleMap(
-  mapToStyleProperty(theme.contentWidth, 'maxWidth'),
+  mapToStyleProperty(themeVars.contentWidth, 'maxWidth'),
 );
 
 const relativePositionRules = {

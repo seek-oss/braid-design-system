@@ -1,5 +1,4 @@
 import React, { Children, ReactNode } from 'react';
-import { useStyles } from 'sku/react-treat';
 import flattenChildren from 'react-keyed-flatten-children';
 import assert from 'assert';
 import { Box, BoxProps } from '../Box/Box';

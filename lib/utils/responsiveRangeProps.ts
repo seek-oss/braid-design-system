@@ -1,5 +1,5 @@
-import { breakpoints, TreatTokens } from '../themes/makeBraidTheme';
-type Breakpoint = keyof TreatTokens['breakpoint'];
+import { breakpoints, BraidTokens } from '../themes/tokenType';
+type Breakpoint = keyof BraidTokens['breakpoint'];
 
 export interface ResponsiveRangeProps {
   above?: Exclude<Breakpoint, 'desktop'>;

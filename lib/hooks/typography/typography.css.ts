@@ -2,16 +2,13 @@ import mapValues from 'lodash/mapValues';
 import omit from 'lodash/omit';
 import { style } from '@mattsjones/css-core';
 
-import {
-  theme,
-  responsiveStyle,
-  styleMap,
-} from '../../themes/apac/nextTheme.css';
+import { themeVars } from './../../themes/themeVars.css';
+import { responsiveStyle, styleMap } from '../../themes/nextThemeUtils';
 import { createCss } from './capsize';
 import { mapToStyleProperty } from '../../utils';
 import { BackgroundVariant } from './../../components/Box/BackgroundContext';
 
-type Theme = typeof theme;
+type Theme = typeof themeVars;
 type TextDefinition = Theme['typography']['text'];
 type HeadingDefinition = Theme['typography']['heading']['level'];
 type TypographicDefinition =
@@ -19,11 +16,11 @@ type TypographicDefinition =
   | HeadingDefinition[keyof HeadingDefinition];
 
 export const fontFamily = style({
-  fontFamily: theme.typography.fontFamily,
+  fontFamily: themeVars.typography.fontFamily,
 });
 
 export const fontWeight = styleMap(
-  mapToStyleProperty(theme.typography.fontWeight, 'fontWeight'),
+  mapToStyleProperty(themeVars.typography.fontWeight, 'fontWeight'),
 );
 
 // const roundMarginalFontSize = (
@@ -70,29 +67,27 @@ const makeTypographyRules = (textDefinition: TypographicDefinition) => {
 };
 
 export const text = {
-  xsmall: styleMap(makeTypographyRules(theme.typography.text.xsmall)),
-  small: styleMap(makeTypographyRules(theme.typography.text.small)),
-  standard: styleMap(makeTypographyRules(theme.typography.text.standard)),
-  large: styleMap(makeTypographyRules(theme.typography.text.large)),
+  xsmall: styleMap(makeTypographyRules(themeVars.typography.text.xsmall)),
+  small: styleMap(makeTypographyRules(themeVars.typography.text.small)),
+  standard: styleMap(makeTypographyRules(themeVars.typography.text.standard)),
+  large: styleMap(makeTypographyRules(themeVars.typography.text.large)),
 };
 
 export const headingWeight = styleMap(
-  mapValues(theme.typography.heading.weight, (weight) => ({
-    fontWeight: theme.typography.fontWeight[weight],
-  })),
+  mapToStyleProperty(themeVars.typography.heading.weight, 'fontWeight'),
 );
 
 export const heading = {
-  '1': styleMap(makeTypographyRules(theme.typography.heading.level['1'])),
-  '2': styleMap(makeTypographyRules(theme.typography.heading.level['2'])),
-  '3': styleMap(makeTypographyRules(theme.typography.heading.level['3'])),
-  '4': styleMap(makeTypographyRules(theme.typography.heading.level['4'])),
+  '1': styleMap(makeTypographyRules(themeVars.typography.heading.level['1'])),
+  '2': styleMap(makeTypographyRules(themeVars.typography.heading.level['2'])),
+  '3': styleMap(makeTypographyRules(themeVars.typography.heading.level['3'])),
+  '4': styleMap(makeTypographyRules(themeVars.typography.heading.level['4'])),
 };
 
 export const tone = {
   ...styleMap(
     mapToStyleProperty(
-      omit(theme.color.foreground, [
+      omit(themeVars.color.foreground, [
         'linkHover',
         'linkVisited',
         'neutral',
@@ -104,11 +99,11 @@ export const tone = {
     ),
   ),
   link: style({
-    color: theme.color.foreground.link,
-    ...(theme.color.foreground.link !== theme.color.foreground.linkHover
+    color: themeVars.color.foreground.link,
+    ...(themeVars.color.foreground.link !== themeVars.color.foreground.linkHover
       ? {
-          ':hover': { color: theme.color.foreground.linkHover },
-          ':focus': { color: theme.color.foreground.linkHover },
+          ':hover': { color: themeVars.color.foreground.linkHover },
+          ':focus': { color: themeVars.color.foreground.linkHover },
         }
       : {}),
   }),
@@ -117,18 +112,18 @@ export const tone = {
 export const invertableTone = {
   neutral: styleMap({
     light: {
-      color: theme.color.foreground.neutral,
+      color: themeVars.color.foreground.neutral,
     },
     dark: {
-      color: theme.color.foreground.neutralInverted,
+      color: themeVars.color.foreground.neutralInverted,
     },
   }),
   secondary: styleMap({
     light: {
-      color: theme.color.foreground.secondary,
+      color: themeVars.color.foreground.secondary,
     },
     dark: {
-      color: theme.color.foreground.secondaryInverted,
+      color: themeVars.color.foreground.secondaryInverted,
     },
   }),
 };
@@ -143,90 +138,90 @@ type ToneOverridesForBackground = {
 export const toneOverridesForBackground: ToneOverridesForBackground = {
   criticalLight: {
     neutral: style({
-      color: theme.color.foreground.critical4_51,
+      color: themeVars.color.foreground.critical4_51,
       selectors: {
         ['svg&']: {
-          color: theme.color.foreground.critical3_1,
+          color: themeVars.color.foreground.critical3_1,
         },
       },
     }),
     critical: style({
-      color: theme.color.foreground.critical4_51,
+      color: themeVars.color.foreground.critical4_51,
       selectors: {
         ['svg&']: {
-          color: theme.color.foreground.critical3_1,
+          color: themeVars.color.foreground.critical3_1,
         },
       },
     }),
   },
   cautionLight: {
     neutral: style({
-      color: theme.color.foreground.caution4_51,
+      color: themeVars.color.foreground.caution4_51,
       selectors: {
         ['svg&']: {
-          color: theme.color.foreground.caution3_1,
+          color: themeVars.color.foreground.caution3_1,
         },
       },
     }),
     caution: style({
-      color: theme.color.foreground.caution4_51,
+      color: themeVars.color.foreground.caution4_51,
       selectors: {
         ['svg&']: {
-          color: theme.color.foreground.caution3_1,
+          color: themeVars.color.foreground.caution3_1,
         },
       },
     }),
   },
   positiveLight: {
     neutral: style({
-      color: theme.color.foreground.positive4_51,
+      color: themeVars.color.foreground.positive4_51,
       selectors: {
         ['svg&']: {
-          color: theme.color.foreground.positive3_1,
+          color: themeVars.color.foreground.positive3_1,
         },
       },
     }),
     positive: style({
-      color: theme.color.foreground.positive4_51,
+      color: themeVars.color.foreground.positive4_51,
       selectors: {
         ['svg&']: {
-          color: theme.color.foreground.positive3_1,
+          color: themeVars.color.foreground.positive3_1,
         },
       },
     }),
   },
   infoLight: {
     neutral: style({
-      color: theme.color.foreground.info4_51,
+      color: themeVars.color.foreground.info4_51,
       selectors: {
         ['svg&']: {
-          color: theme.color.foreground.info3_1,
+          color: themeVars.color.foreground.info3_1,
         },
       },
     }),
     info: style({
-      color: theme.color.foreground.info4_51,
+      color: themeVars.color.foreground.info4_51,
       selectors: {
         ['svg&']: {
-          color: theme.color.foreground.info3_1,
+          color: themeVars.color.foreground.info3_1,
         },
       },
     }),
   },
   promoteLight: {
     neutral: style({
-      color: theme.color.foreground.promote4_51,
+      color: themeVars.color.foreground.promote4_51,
       selectors: {
         ['svg&']: {
-          color: theme.color.foreground.promote3_1,
+          color: themeVars.color.foreground.promote3_1,
         },
       },
     }),
     promote: style({
-      color: theme.color.foreground.promote4_51,
+      color: themeVars.color.foreground.promote4_51,
       selectors: {
         ['svg&']: {
-          color: theme.color.foreground.promote3_1,
+          color: themeVars.color.foreground.promote3_1,
         },
       },
     }),
@@ -243,14 +238,14 @@ const makeTouchableSpacing = (touchableHeight: string, textHeight: string) => {
 };
 
 export const touchable = styleMap(
-  mapValues(theme.typography.text, (textDefinition) =>
+  mapValues(themeVars.typography.text, (textDefinition) =>
     responsiveStyle({
       mobile: makeTouchableSpacing(
-        theme.touchableSize,
+        themeVars.touchableSize,
         textDefinition.mobile.leading,
       ),
       tablet: makeTouchableSpacing(
-        theme.touchableSize,
+        themeVars.touchableSize,
         textDefinition.tablet.leading,
       ),
     }),
