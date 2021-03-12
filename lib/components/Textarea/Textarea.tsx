@@ -93,7 +93,7 @@ const NamedTextarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
       onPaste,
       placeholder,
       characterLimit,
-      highlightRanges,
+      highlightRanges: highlightRangesProp = [],
       lines = 3,
       lineLimit,
       grow = true,
@@ -112,7 +112,15 @@ const NamedTextarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
       },
       [highlightsRef],
     );
-    const hasHighlights = Boolean(highlightRanges);
+
+    const inputLength = String(value).length;
+    const excessCharactersRange =
+      characterLimit && inputLength > characterLimit
+        ? [{ start: characterLimit }]
+        : [];
+
+    const highlightRanges = [...excessCharactersRange, ...highlightRangesProp];
+    const hasHighlights = highlightRanges.length > 0;
 
     return (
       <Field
