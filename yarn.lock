@@ -1657,45 +1657,33 @@
     globby "^11.0.0"
     read-yaml-file "^1.1.0"
 
-"@mattsjones/css-babel-plugin@^0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@mattsjones/css-babel-plugin/-/css-babel-plugin-0.0.1.tgz#3bba1853116d13e5b7c1247a0b149641e62b950a"
-  integrity sha512-o2Bbwjojkjjr3K2zGTqYSbcjIU+sSEeG/Te62j/7osDn5X6YNQ1Bv76U94NtCX6NnChunb1+vTF7wDrYcUXhmA==
+"@mattsjones/css-babel-plugin@^0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@mattsjones/css-babel-plugin/-/css-babel-plugin-0.0.2.tgz#7174435447ecb7451a4a5418cf7de3183e1c800d"
+  integrity sha512-bmumO2MN7KbwcwqSfzVATSWMIBmFrYhYLKDu5AJx9RV8BhZN75fpp7nP7d5wgxofRoOzdWoVnzo3c4Zjq3B+QQ==
   dependencies:
     "@babel/core" "^7.12.10"
 
-"@mattsjones/css-core@^0.0.2":
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/@mattsjones/css-core/-/css-core-0.0.2.tgz#cf84e306c03a1e7b345395f5ca28a0b16b62973f"
-  integrity sha512-aaYQKHA9mQmIge4P3yFUuDMJFGBiChyavzcjDjoNfSpk5J0sIK8vlLqMKwtOOi/AyGLUcyqh49GVVUDasBMRrg==
+"@mattsjones/css-core@^0.0.7":
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/@mattsjones/css-core/-/css-core-0.0.7.tgz#8bbc9df507cc96a2986da99bfd77b502c96d8c24"
+  integrity sha512-HpjY9LeWphiJ5rnP0A2Ln8//ZW76mB87Qvwe3E48BMXoBjSDaELZeZEErIiYsVvUW/SQmwiW7t8Vz3OtX+mxNA==
   dependencies:
     "@emotion/hash" "^0.8.0"
-    csstype "^3.0.7"
-    dedent "^0.7.0"
-    deepmerge "^4.2.2"
-    lodash "^4.17.21"
-    postcss "^8.2.7"
-    postcss-js "^3.0.3"
-
-"@mattsjones/css-core@^0.0.5":
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/@mattsjones/css-core/-/css-core-0.0.5.tgz#5b7d0980407aef6fc6f52ccc2bc1ad9a828fb1e2"
-  integrity sha512-Jj6moqIxVwu8iea6hFiQQpxzN1rcr7KpBLGoEp2IK6wf1/XszhBKBBeae0KcDz174Rxe6fSPsRp/y7KzCnPNmg==
-  dependencies:
-    "@emotion/hash" "^0.8.0"
+    css-selector-parser "^1.4.1"
     csstype "^3.0.7"
     dedent "^0.7.0"
     lodash "^4.17.21"
     postcss "^8.2.7"
     postcss-js "^3.0.3"
 
-"@mattsjones/css-webpack-plugin@^0.0.2":
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/@mattsjones/css-webpack-plugin/-/css-webpack-plugin-0.0.2.tgz#ac1d87e4016a54c56dbdaf2e0feb6535950c9a50"
-  integrity sha512-+4pagFODF4JRGmZrsXUewAMR0q/r5UyJR9zbPyzKlFU08gu+FuE9ilyVuFvqQAQTLky8teDSkofaJcvu4cTMrA==
+"@mattsjones/css-webpack-plugin@^0.0.4":
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/@mattsjones/css-webpack-plugin/-/css-webpack-plugin-0.0.4.tgz#41930b8213362341dbde57bbb486cdb60c38b343"
+  integrity sha512-ru6bEC3lZ+RwSKWY/gX+dUYtLS1bN8lSwsfy4nSvyI0+T1/OcOSvw8zYcTUN/NvOmyN2CmO+XHeETffgNHnNpw==
   dependencies:
-    "@mattsjones/css-babel-plugin" "^0.0.1"
-    "@mattsjones/css-core" "^0.0.2"
+    "@mattsjones/css-babel-plugin" "^0.0.2"
+    "@mattsjones/css-core" "^0.0.7"
     babel-loader "^8.2.2"
     chalk "^4.1.0"
     css-loader "^5.1.1"
@@ -5816,7 +5804,7 @@ css-select@^3.1.2:
     domutils "^2.4.3"
     nth-check "^2.0.0"
 
-css-selector-parser@^1.3.0:
+css-selector-parser@^1.3.0, css-selector-parser@^1.4.1:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/css-selector-parser/-/css-selector-parser-1.4.1.tgz#03f9cb8a81c3e5ab2c51684557d5aaf6d2569759"
   integrity sha512-HYPSb7y/Z7BNDCOrakL4raGO2zltZkbeXyAd6Tg9obzix6QhzxCotdBl6VT0Dv4vZfJGVz3WL/xaEI9Ly3ul0g==
