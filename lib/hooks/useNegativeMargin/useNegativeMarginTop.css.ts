@@ -9,12 +9,12 @@ import {
 } from '../../themes/nextThemeUtils';
 import { themeVars } from '../../themes/themeVars.css';
 
-const preventCollapse = 1;
+const preventCollapse = '1px';
 
 const { space } = themeVars;
 
 const negativeMarginTop = (spaceValue: string | number) => ({
-  ':before': { marginTop: negate(subtract(spaceValue, preventCollapse)) },
+  ':before': { marginTop: subtract(negate(spaceValue), preventCollapse) },
 });
 
 export const base = style({
