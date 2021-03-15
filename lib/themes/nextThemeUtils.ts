@@ -60,7 +60,7 @@ export const responsiveStyle = ({
 };
 
 export function styleMap<Key extends string | number>(
-  styles: Record<Key, CSSProps>,
+  styles: Record<Key, StyleRule>,
 ) {
   return mapValues(styles, (s) => style(s));
 }

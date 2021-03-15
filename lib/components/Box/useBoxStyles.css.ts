@@ -212,7 +212,7 @@ const flexDirectionRules = {
   rowReverse: 'row-reverse',
   column: 'column',
   columnReverse: 'column-reverse',
-};
+} as const;
 export const flexDirection = styleMap(
   mapToStyleProperty(flexDirectionRules, 'flexDirection'),
 );
@@ -323,7 +323,7 @@ const textAlignRules = {
   left: 'left',
   center: 'center',
   right: 'right',
-};
+} as const;
 
 export const textAlign = styleMap(
   mapToStyleProperty(textAlignRules, 'textAlign'),
