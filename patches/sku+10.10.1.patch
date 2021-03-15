@@ -1,0 +1,12 @@
+diff --git a/node_modules/sku/config/babel/babelConfig.js b/node_modules/sku/config/babel/babelConfig.js
+index f61c7c2..46975ee 100644
+--- a/node_modules/sku/config/babel/babelConfig.js
++++ b/node_modules/sku/config/babel/babelConfig.js
+@@ -45,6 +45,7 @@ module.exports = ({
+     require.resolve('babel-plugin-macros'),
+     require.resolve('@loadable/babel-plugin'),
+     [require.resolve('babel-plugin-treat'), { alias: 'sku/treat' }],
++    require.resolve('@mattsjones/css-babel-plugin')
+   ];
+ 
+   if (hot && isBrowser) {
