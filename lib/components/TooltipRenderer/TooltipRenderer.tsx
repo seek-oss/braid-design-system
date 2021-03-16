@@ -5,20 +5,18 @@ import React, {
   useContext,
   ReactNode,
 } from 'react';
-import { useStyles } from 'sku/react-treat';
-import { createPortal } from 'react-dom';
 import { usePopperTooltip } from 'react-popper-tooltip';
 import isMobile from 'is-mobile';
 import assert from 'assert';
+import { BraidPortal } from '../BraidPortal/BraidPortal';
 import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import { BackgroundProvider } from '../Box/BackgroundContext';
 import { useBoxStyles } from '../Box/useBoxStyles';
-import { TextContext } from '../Text/TextContext';
 import { DefaultTextPropsProvider } from '../private/defaultTextProps';
 import { useSpace } from '../useSpace/useSpace';
 import { useThemeName } from '../useThemeName/useThemeName';
 import { Box } from '../Box/Box';
-import * as styleRefs from './TooltipRenderer.treat';
+import * as styles from './TooltipRenderer.css';
 
 const StaticTooltipContext = createContext(false);
 export const StaticTooltipProvider = ({
@@ -67,8 +65,6 @@ export const TooltipContent = ({
   opacity: 0 | 100;
   arrowProps: ArrowProps;
 }) => {
-  const styles = useStyles(styleRefs);
-
   const arrowStyles = useBoxStyles({
     component: 'div',
     borderRadius: 'standard',
@@ -269,27 +265,25 @@ export const TooltipRenderer = ({
         },
       })}
 
-      {triggerRef &&
-        createPortal(
-          <TextContext.Provider value={false}>
-            <div
-              id={id}
-              role="tooltip"
-              hidden={!visible ? true : undefined}
-              className={tooltipStyles}
-              {...(visible
-                ? getTooltipProps({
-                    ref: setTooltipRef,
-                  })
-                : null)}
-            >
-              <TooltipContent opacity={opacity} arrowProps={getArrowProps()}>
-                {tooltip}
-              </TooltipContent>
-            </div>
-          </TextContext.Provider>,
-          document.body,
-        )}
+      {triggerRef && (
+        <BraidPortal>
+          <div
+            id={id}
+            role="tooltip"
+            hidden={!visible ? true : undefined}
+            className={tooltipStyles}
+            {...(visible
+              ? getTooltipProps({
+                  ref: setTooltipRef,
+                })
+              : null)}
+          >
+            <TooltipContent opacity={opacity} arrowProps={getArrowProps()}>
+              {tooltip}
+            </TooltipContent>
+          </div>
+        </BraidPortal>
+      )}
     </>
   );
 };

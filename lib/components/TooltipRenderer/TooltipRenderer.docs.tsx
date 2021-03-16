@@ -17,7 +17,7 @@ import {
   TooltipTextDefaultsProvider,
   TooltipRendererProps,
 } from './TooltipRenderer';
-import { constants } from './TooltipRenderer.treat';
+import { constants } from './TooltipRenderer.css';
 
 const StaticTooltip = ({
   id,

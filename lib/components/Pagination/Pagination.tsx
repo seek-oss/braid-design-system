@@ -1,6 +1,5 @@
 import React from 'react';
 import assert from 'assert';
-import { useStyles } from 'sku/react-treat';
 import { Box } from '../Box/Box';
 import { IconChevron } from '../icons';
 import { Link, LinkProps } from '../Link/Link';
@@ -8,7 +7,7 @@ import { Overlay } from '../private/Overlay/Overlay';
 import { Text } from '../Text/Text';
 import { paginate } from './paginate';
 
-import * as styleRefs from './Pagination.treat';
+import * as styles from './Pagination.css';
 
 export interface PaginationProps {
   page: number;
@@ -33,7 +32,6 @@ const PageNav = ({
   label: string;
   direction: 'next' | 'prev';
 }) => {
-  const styles = useStyles(styleRefs);
   const isPrevious = direction === 'prev';
 
   return (
@@ -73,40 +71,36 @@ const PageNav = ({
 
 const tabletButtonSpacing = 'xxsmall';
 
-const Page = ({ number, current }: { number: number; current: boolean }) => {
-  const styles = useStyles(styleRefs);
-
-  return (
-    <Box
+const Page = ({ number, current }: { number: number; current: boolean }) => (
+  <Box
+    component="span"
+    display="flex"
+    alignItems="center"
+    justifyContent="center"
+    height="touchable"
+    width="touchable"
+    position="relative"
+    className={styles.hover}
+  >
+    <Overlay
       component="span"
-      display="flex"
-      alignItems="center"
-      justifyContent="center"
-      height="touchable"
-      width="touchable"
-      position="relative"
-      className={styles.hover}
-    >
-      <Overlay
-        component="span"
-        background={current ? 'formAccent' : 'selection'}
-        transition={current ? undefined : 'fast'}
-        borderRadius="standard"
-        className={[styles.background, current ? styles.current : undefined]}
-      />
-      <Box component="span" zIndex={1} userSelect="none">
-        <Text
-          baseline={false}
-          align="center"
-          weight={current ? 'medium' : undefined}
-          tone={current ? 'formAccent' : undefined}
-        >
-          {number}
-        </Text>
-      </Box>
+      background={current ? 'formAccent' : 'selection'}
+      transition={current ? undefined : 'fast'}
+      borderRadius="standard"
+      className={[styles.background, current ? styles.current : undefined]}
+    />
+    <Box component="span" zIndex={1} userSelect="none">
+      <Text
+        baseline={false}
+        align="center"
+        weight={current ? 'medium' : undefined}
+        tone={current ? 'formAccent' : undefined}
+      >
+        {number}
+      </Text>
     </Box>
-  );
-};
+  </Box>
+);
 
 export const Pagination = ({
   page,

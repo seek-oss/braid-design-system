@@ -7,7 +7,6 @@ import React, {
   Ref,
 } from 'react';
 import { RemoveScroll } from 'react-remove-scroll';
-import { useStyles } from 'sku/react-treat';
 import { Box, BoxProps } from '../../Box/Box';
 import { normalizeKey } from '../normalizeKey';
 import { Heading } from '../../Heading/Heading';
@@ -19,7 +18,7 @@ import { ReactNodeNoStrings } from '../ReactNodeNoStrings';
 import { IconClear } from '../../icons';
 import { useNegativeMarginTop } from '../../../hooks/useNegativeMargin/useNegativeMargin';
 import { useVirtualTouchable } from '../touchable/useVirtualTouchable';
-import * as styleRefs from './Modal.treat';
+import * as styles from './Modal.css';
 
 export interface ModalContentProps {
   id: string;
@@ -46,34 +45,30 @@ interface ModalContentHeaderProps
   center?: boolean;
 }
 const ModalContentHeader = forwardRef<HTMLElement, ModalContentHeaderProps>(
-  ({ title, headingLevel, description, descriptionId, center }, ref) => {
-    const styles = useStyles(styleRefs);
-
-    return (
-      <Stack space="medium">
-        <Heading level={headingLevel} align={center ? 'center' : undefined}>
-          <Box
-            ref={ref}
-            component="span"
-            tabIndex={-1}
-            outline="none"
-            position="relative"
-            className={styles.headingRoot}
-          >
-            {title}
-            <Overlay
-              boxShadow="outlineFocus"
-              borderRadius="standard"
-              transition="fast"
-              className={styles.headingFocus}
-              onlyVisibleForKeyboardNavigation
-            />
-          </Box>
-        </Heading>
-        {description ? <Box id={descriptionId}>{description}</Box> : null}
-      </Stack>
-    );
-  },
+  ({ title, headingLevel, description, descriptionId, center }, ref) => (
+    <Stack space="medium">
+      <Heading level={headingLevel} align={center ? 'center' : undefined}>
+        <Box
+          ref={ref}
+          component="span"
+          tabIndex={-1}
+          outline="none"
+          position="relative"
+          className={styles.headingRoot}
+        >
+          {title}
+          <Overlay
+            boxShadow="outlineFocus"
+            borderRadius="standard"
+            transition="fast"
+            className={styles.headingFocus}
+            onlyVisibleForKeyboardNavigation
+          />
+        </Box>
+      </Heading>
+      {description ? <Box id={descriptionId}>{description}</Box> : null}
+    </Stack>
+  ),
 );
 
 export const ModalContent = ({
@@ -91,8 +86,6 @@ export const ModalContent = ({
   position,
   headingLevel,
 }: ModalContentProps) => {
-  const styles = useStyles(styleRefs);
-
   const defaultModalRef = useRef<HTMLElement>(null);
   const modalRef = modalRefProp || defaultModalRef;
   const defaultHeadingRef = useRef<HTMLElement>(null);

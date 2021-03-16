@@ -4,7 +4,7 @@ import source from '../../utils/source.macro';
 import { TooltipRenderer, Inline, Stack, Text, IconHelp, Box } from '../';
 import { TooltipContent, TooltipRendererProps } from './TooltipRenderer';
 import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
-import { constants } from './TooltipRenderer.treat';
+import { constants } from './TooltipRenderer.css';
 
 const MockTooltipContent = ({
   placement,
