@@ -322,9 +322,9 @@
   integrity sha512-N3UxG+uuF4CMYoNj8AhnbAcJF0PiuJ9KHuy1lQmkYsxTer/MAH9UBNHsBoAX/4s6NvlDD047No8mYVGGzLL4hg==
 
 "@babel/parser@^7.12.13":
-  version "7.13.10"
-  resolved "https://registry.yarnpkg.com/@babel/parser/-/parser-7.13.10.tgz#8f8f9bf7b3afa3eabd061f7a5bcdf4fec3c48409"
-  integrity sha512-0s7Mlrw9uTWkYua7xWr99Wpk2bnGa0ANleKfksYAES8LpWH4gW1OUr42vqKNf0us5UQNfru2wPqMqRITzq/SIQ==
+  version "7.13.11"
+  resolved "https://registry.yarnpkg.com/@babel/parser/-/parser-7.13.11.tgz#f93ebfc99d21c1772afbbaa153f47e7ce2f50b88"
+  integrity sha512-PhuoqeHoO9fc4ffMEVk4qb/w/s2iOSWohvbHxLtxui0eBg3Lg5gN1U8wp1V1u61hOWkPQJJyJzGH6Y+grwkq8Q==
 
 "@babel/plugin-proposal-async-generator-functions@^7.12.1":
   version "7.12.12"
@@ -1696,18 +1696,18 @@
     globby "^11.0.0"
     read-yaml-file "^1.1.0"
 
-"@mattsjones/css-babel-plugin@^0.0.4":
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/@mattsjones/css-babel-plugin/-/css-babel-plugin-0.0.4.tgz#f7b043740ae7e9e32ac5ac532573985f7a7604ba"
-  integrity sha512-JpgymTxnxgaL8nnvMT7GgrcXQWvdvyk16s9ERd7uKnUzMCIr63deQ7MzEWGy0Uf51LJ2ACPvBVSdc0lR0l8cTg==
+"@mattsjones/css-babel-plugin@^0.0.5":
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/@mattsjones/css-babel-plugin/-/css-babel-plugin-0.0.5.tgz#6a67b129846d81b8d47c011c313ab73113472242"
+  integrity sha512-r7Ejs1NM6XQBqMIUcnno/y2Bx9jwys8q1lU5SoXaGpIfgxvku11RqHru6uVviqoqNh0TaoAFS1npZYGKc8dZ8w==
   dependencies:
     "@babel/core" "^7.12.10"
     "@babel/template" "^7.12.13"
 
-"@mattsjones/css-core@^0.0.9":
-  version "0.0.9"
-  resolved "https://registry.yarnpkg.com/@mattsjones/css-core/-/css-core-0.0.9.tgz#0c462edd1a8d01b2ebbfcfcad09f9989642416c2"
-  integrity sha512-XHBQH3aW84Gdp63Bb9VcCN0we7efwG3YbL0KI+mrCrJrO10ow2G0o7hSmMoIpPE9BtSZYkITCm4A3+Bp56Pa7Q==
+"@mattsjones/css-core@^0.0.10":
+  version "0.0.10"
+  resolved "https://registry.yarnpkg.com/@mattsjones/css-core/-/css-core-0.0.10.tgz#e488a89f5a82461beeced903e8fe1958b6e14211"
+  integrity sha512-uoACB3BVLEL1iGAPnTaUPHSz9AJ5T2zsOXSOH6hJYVX2DQQnj3OIIGpJNekN+zE5f907stHx9gEcbpOEn9Ttag==
   dependencies:
     "@emotion/hash" "^0.8.0"
     css-selector-parser "^1.4.1"
@@ -1722,12 +1722,12 @@
   resolved "https://registry.yarnpkg.com/@mattsjones/css-utils/-/css-utils-0.0.1.tgz#e5aa05fb279f8c6ca3ba8c8a3e106407da9dfb4b"
   integrity sha512-PW9Dg7b68qvz/fsP3DQU0JdMTME3i5lIJE33YmBi+jLHo4xA4yRQMY2W9Ah3C+3JIrSi8f8IquOvcsZaB8imIg==
 
-"@mattsjones/css-webpack-plugin@^0.0.6":
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/@mattsjones/css-webpack-plugin/-/css-webpack-plugin-0.0.6.tgz#559ebe5a6b95f3d180468cb555a81263cd1eef73"
-  integrity sha512-7vLe8tGQomEa4PyQQxnlAcGk1kkepj66rLCpZsg1zIzSpyVeDQIloUFIk7nOil7BQUgoIYOkT0k+uoASH9XHJA==
+"@mattsjones/css-webpack-plugin@^0.0.7":
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/@mattsjones/css-webpack-plugin/-/css-webpack-plugin-0.0.7.tgz#d132a4ec49fd6524e636711038bc1192d45d7893"
+  integrity sha512-wRv62KNyq+m+3x3uh0Wj74F8x7CUAE2ezCDvBJywU0g9k8ysU9RFYR4KCAIkSguKKzG4J+wumpp6NrOQ1/2Gkw==
   dependencies:
-    "@mattsjones/css-core" "^0.0.9"
+    "@mattsjones/css-core" "^0.0.10"
     babel-loader "^8.2.2"
     chalk "^4.1.0"
     css-loader "^5.1.1"
@@ -5342,12 +5342,7 @@ color@^3.0.0:
     color-convert "^1.9.1"
     color-string "^1.5.4"
 
-colorette@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/colorette/-/colorette-1.2.1.tgz#4d0b921325c14faf92633086a536db6e89564b1b"
-  integrity sha512-puCDz0CzydiSYOrnXpz/PKd69zRrribezjtE9yd4zvytoRc8+RY/KJPvtPFKZS3E3wP6neGyMe0vOTlHO5L3Pw==
-
-colorette@^1.2.2:
+colorette@^1.2.1, colorette@^1.2.2:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/colorette/-/colorette-1.2.2.tgz#cbcc79d5e99caea2dbf10eb3a26fd8b3e6acfa94"
   integrity sha512-MKGMzyfeuutC/ZJ1cba9NqcNpfeqMUcYmyF1ZFY6/Cn7CNSAKx6a+s48sqLqyAiZuaP2TcqMhoo+dlwFnVxT9w==
@@ -10964,12 +10959,12 @@ lodash.uniq@^4.5.0:
   resolved "https://registry.yarnpkg.com/lodash.uniq/-/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
   integrity sha1-0CJTc662Uq3BvILklFM5qEJ1R3M=
 
-lodash@^4.0.1, lodash@^4.17.11, lodash@^4.17.12, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.2, lodash@^4.17.20, lodash@^4.17.4:
+lodash@^4.0.1, lodash@^4.17.11, lodash@^4.17.12, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.2, lodash@^4.17.20, lodash@^4.17.4:
   version "4.17.20"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.20.tgz#b44a9b6297bcb698f1c51a3545a2b3b368d59c52"
   integrity sha512-PlhdFcillOINfeV7Ni6oF1TAEayyZBoZ8bcshTHqOYJYlrqzRK5hagpagky5o4HfCzzd1TRkXPMFq6cKk9rGmA==
 
-lodash@^4.17.21, lodash@^4.3.0:
+lodash@^4.17.19, lodash@^4.17.21, lodash@^4.3.0:
   version "4.17.21"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
@@ -11690,9 +11685,9 @@ nano-css@^5.2.1, nano-css@^5.3.1:
     stylis "^4.0.6"
 
 nanoid@^3.1.20:
-  version "3.1.20"
-  resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.1.20.tgz#badc263c6b1dcf14b71efaa85f6ab4c1d6cfc788"
-  integrity sha512-a1cQNyczgKbLX9jwbS/+d7W8fX/RfgYR7lVWwWOGIPNgK2m0MWvrGF6/m4kk6U3QcFMnZf3RIhL0v2Jgh/0Uxw==
+  version "3.1.22"
+  resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.1.22.tgz#b35f8fb7d151990a8aebd5aa5015c03cf726f844"
+  integrity sha512-/2ZUaJX2ANuLtTvqTlgqBQNJoQO398KyJgZloL0PZkC0dpysjncRUPsFe3DUPzz/y3h+u7C46np8RMuvF3jsSQ==
 
 nanomatch@^1.2.9:
   version "1.2.13"
@@ -13333,7 +13328,7 @@ postcss@^7.0.0, postcss@^7.0.1, postcss@^7.0.14, postcss@^7.0.18, postcss@^7.0.2
     source-map "^0.6.1"
     supports-color "^6.1.0"
 
-postcss@^8.0.2, postcss@^8.1.4, postcss@^8.1.6:
+postcss@^8.0.2, postcss@^8.1.4:
   version "8.2.4"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.2.4.tgz#20a98a39cf303d15129c2865a9ec37eda0031d04"
   integrity sha512-kRFftRoExRVXZlwUuay9iC824qmXPcQQVzAjbCCgjpXnkdMCJYBu2gTwAaFBzv8ewND6O8xFb3aELmEkh9zTzg==
@@ -13342,7 +13337,16 @@ postcss@^8.0.2, postcss@^8.1.4, postcss@^8.1.6:
     nanoid "^3.1.20"
     source-map "^0.6.1"
 
-postcss@^8.2.6, postcss@^8.2.7:
+postcss@^8.1.6, postcss@^8.2.7:
+  version "8.2.8"
+  resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.2.8.tgz#0b90f9382efda424c4f0f69a2ead6f6830d08ece"
+  integrity sha512-1F0Xb2T21xET7oQV9eKuctbM9S7BC0fetoHCc4H13z0PT6haiRLP4T0ZY4XWh7iLP0usgqykT6p9B2RtOf4FPw==
+  dependencies:
+    colorette "^1.2.2"
+    nanoid "^3.1.20"
+    source-map "^0.6.1"
+
+postcss@^8.2.6:
   version "8.2.7"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.2.7.tgz#48ed8d88b4de10afa0dfd1c3f840aa57b55c4d47"
   integrity sha512-DsVLH3xJzut+VT+rYr0mtvOtpTjSyqDwPf5EZWXcb0uAKfitGpTY9Ec+afi2+TgdN8rWS9Cs88UDYehKo/RvOw==

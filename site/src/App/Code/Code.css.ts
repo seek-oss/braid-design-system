@@ -1,4 +1,4 @@
-import { style } from 'sku/treat';
+import { style } from '@mattsjones/css-core';
 
 export const code = style({
   background: '#0f1b2d',

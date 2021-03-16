@@ -1,5 +1,5 @@
-import { styleMap } from 'sku/treat';
-import mapValues from 'lodash/mapValues';
+import { mapToStyles } from '@mattsjones/css-core';
+import { responsiveStyle } from '../../themes/nextThemeUtils';
 import { BraidTokens } from '../../themes/tokenType';
 
 const columnsWidths = {
@@ -11,16 +11,12 @@ const columnsWidths = {
   6: `${100 / 6}%`,
 } as const;
 
-// Remove this when 'styleMap' supports numbers as keys and it's been released to sku consumers,
-type ColumnWidths = Record<keyof typeof columnsWidths, string>;
 const makeColumnsAtoms = (breakpoint: keyof BraidTokens['breakpoint']) =>
-  styleMap(
-    (theme) =>
-      mapValues(columnsWidths, (width) =>
-        theme.utils.responsiveStyle({ [breakpoint]: { flex: `0 0 ${width}` } }),
-      ),
+  mapToStyles(
+    columnsWidths,
+    (width) => responsiveStyle({ [breakpoint]: { flex: `0 0 ${width}` } }),
     `columns_${breakpoint}`,
-  ) as ColumnWidths;
+  );
 
 export const columnsMobile = makeColumnsAtoms('mobile');
 export const columnsTablet = makeColumnsAtoms('tablet');

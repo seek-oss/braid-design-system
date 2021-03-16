@@ -9,7 +9,6 @@ import React, {
   ReactElement,
 } from 'react';
 import assert from 'assert';
-import { useStyles } from 'sku/react-treat';
 import { Box } from '../Box/Box';
 import { normalizeKey } from '../private/normalizeKey';
 import { TabsContext } from './TabsProvider';
@@ -35,7 +34,7 @@ import { BadgeProps, Badge } from '../Badge/Badge';
 import { useBreakpoint } from '../useBreakpoint/useBreakpoint';
 import { smoothScroll, smoothScrollIntoView } from '../private/smoothScroll';
 import { useSpace } from '../useSpace/useSpace';
-import * as styleRefs from './Tabs.treat';
+import * as styles from './Tabs.css';
 
 export interface TabProps {
   children: ReactNode;
@@ -45,7 +44,6 @@ export interface TabProps {
 }
 
 export const Tab = ({ children, data, badge, item }: TabProps) => {
-  const styles = useStyles(styleRefs);
   const tabsContext = useContext(TabsContext);
   const tabListContext = useContext(TabListContext);
   const tabRef = useRef<HTMLButtonElement>(null);

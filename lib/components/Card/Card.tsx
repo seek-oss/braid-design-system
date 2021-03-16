@@ -1,12 +1,11 @@
 import assert from 'assert';
 import React, { ReactNode } from 'react';
-import { useStyles } from 'sku/react-treat';
 import {
   resolveResponsiveRangeProps,
   ResponsiveRangeProps,
 } from '../../utils/responsiveRangeProps';
 import { Box, BoxProps } from '../Box/Box';
-import * as styleRefs from './Card.treat';
+import * as styles from './Card.css';
 
 export const validCardComponents = [
   'div',
@@ -39,8 +38,6 @@ export const Card = ({
   tone,
   ...restProps
 }: CardProps) => {
-  const styles = useStyles(styleRefs);
-
   assert(
     validCardComponents.includes(component),
     `Invalid Card component: '${component}'. Should be one of [${validCardComponents

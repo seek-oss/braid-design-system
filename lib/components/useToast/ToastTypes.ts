@@ -7,6 +7,7 @@ export interface InternalToast {
   id: string;
   dedupeKey: string;
   treatTheme: string;
+  nextTheme: string;
   tone: 'positive' | 'critical';
   message: string;
   shouldRemove: boolean;

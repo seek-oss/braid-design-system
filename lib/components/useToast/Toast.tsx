@@ -1,8 +1,5 @@
 import React, { useCallback, useEffect } from 'react';
-
-import * as styleRefs from './Toast.treat';
-import { useStyles, TreatProvider } from 'sku/react-treat';
-
+import { TreatProvider } from 'sku/react-treat';
 import { Stack } from '../Stack/Stack';
 import { Inline } from '../Inline/Inline';
 import { Columns } from '../Columns/Columns';
@@ -15,6 +12,7 @@ import { IconPositive, IconCritical } from '../icons';
 import { ClearButton } from '../iconButtons/ClearButton/ClearButton';
 import { useTimeout } from './useTimeout';
 import { InternalToast, ToastAction } from './ToastTypes';
+import * as styles from './Toast.css';
 
 const toneToIcon = {
   critical: IconCritical,
@@ -57,6 +55,7 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
     {
       id,
       treatTheme,
+      nextTheme,
       dedupeKey,
       message,
       description,
@@ -83,8 +82,6 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
         remove();
       }
     }, [shouldRemove, remove, stopTimeout]);
-
-    const styles = useStyles(styleRefs);
 
     const Icon = toneToIcon[tone];
 
@@ -124,6 +121,7 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
           ref={ref}
           onMouseEnter={stopTimeout}
           onMouseLeave={startTimeout}
+          className={nextTheme}
         >
           <Box boxShadow="large">
             <ContentBlock width="xsmall">

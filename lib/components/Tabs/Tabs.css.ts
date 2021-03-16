@@ -1,4 +1,5 @@
-import { style } from 'sku/treat';
+import { style } from '@mattsjones/css-core';
+import { themeVars } from '../../themes/themeVars.css';
 
 export const tab = style({
   selectors: {
@@ -40,18 +41,14 @@ export const marginAuto = style({
   marginRight: 'auto',
 });
 
-export const tabFocusRing = [
-  style({
-    selectors: {
-      [`${tab}:focus &`]: {
-        opacity: 1,
-      },
+export const tabFocusRing = style({
+  margin: themeVars.border.width.large,
+  selectors: {
+    [`${tab}:focus &`]: {
+      opacity: 1,
     },
-  }),
-  style((theme) => ({
-    margin: theme.border.width.large,
-  })),
-];
+  },
+});
 
 export const tabUnderline = style({
   height: 2,
@@ -79,7 +76,7 @@ export const tabPanelFocusRing = style({
   },
 });
 
-export const divider = style((theme) => ({
-  background: theme.border.color.standard,
-  height: theme.border.width.standard,
-}));
+export const divider = style({
+  background: themeVars.border.color.standard,
+  height: themeVars.border.width.standard,
+});

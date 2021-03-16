@@ -1,6 +1,5 @@
 import React, { Children } from 'react';
 import flattenChildren from 'react-keyed-flatten-children';
-import { useStyles } from 'sku/react-treat';
 import { Box } from '../Box/Box';
 import { Divider, DividerProps } from '../Divider/Divider';
 import { ResponsiveSpace } from '../Box/useBoxStyles';
@@ -13,7 +12,7 @@ import {
   resolveResponsiveProp,
   ResponsiveProp,
 } from '../../utils/responsiveProp';
-import * as styleRefs from './Tiles.treat';
+import * as styles from './Tiles.css';
 import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 
 export interface TilesProps {
@@ -29,8 +28,6 @@ export const Tiles = ({
   columns = 1,
   dividers = false,
 }: TilesProps) => {
-  const styles = useStyles(styleRefs);
-
   const responsiveSpace = normaliseResponsiveProp(space);
 
   const [

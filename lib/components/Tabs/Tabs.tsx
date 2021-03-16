@@ -6,7 +6,6 @@ import React, {
   useState,
   useCallback,
 } from 'react';
-import { useStyles } from 'sku/react-treat';
 import assert from 'assert';
 import flattenChildren from 'react-keyed-flatten-children';
 import { Box, BoxProps } from '../Box/Box';
@@ -19,8 +18,8 @@ import { Tab } from './Tab';
 import { useNegativeMarginTop } from '../../hooks/useNegativeMargin/useNegativeMargin';
 import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
-import * as styleRefs from './Tabs.treat';
 import { TabListContext, TabListContextValues } from './TabListContext';
+import * as styles from './Tabs.css';
 
 export interface TabsProps {
   children: ReactNodeNoStrings;
@@ -34,7 +33,6 @@ export interface TabsProps {
 
 export const Tabs = (props: TabsProps) => {
   const tabsContext = useContext(TabsContext);
-  const styles = useStyles(styleRefs);
   const tabsRef = useRef<HTMLElement>(null);
 
   const {

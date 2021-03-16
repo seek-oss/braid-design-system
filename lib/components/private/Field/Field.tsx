@@ -1,6 +1,5 @@
 import assert from 'assert';
 import React, { Fragment, ReactNode, AllHTMLAttributes } from 'react';
-import { useStyles } from 'sku/react-treat';
 import classnames from 'classnames';
 import { Box, BoxProps } from '../../Box/Box';
 import { useBackgroundLightness } from '../../Box/BackgroundContext';
@@ -15,7 +14,7 @@ import buildDataAttributes, { DataAttributeMap } from '../buildDataAttributes';
 import { useText, useTouchableSpace } from '../../../hooks/typography';
 import { Text } from '../../Text/Text';
 import { mergeIds } from '../mergeIds';
-import * as styleRefs from './Field.treat';
+import * as styles from './Field.css';
 
 type FormElementProps = AllHTMLAttributes<HTMLFormElement>;
 export interface FieldProps {
@@ -98,8 +97,6 @@ export const Field = ({
     prefix === undefined || typeof prefix === 'string',
     'Prefix must be a string',
   );
-
-  const styles = useStyles(styleRefs);
 
   const messageId = `${id}-message`;
   const descriptionId = description ? `${id}-description` : undefined;

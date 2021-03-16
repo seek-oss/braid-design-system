@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTheme } from 'sku/react-treat';
 import { ComponentExample } from '../../../site/src/types';
+import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
 import { Button, IconPromote, Inline } from '..';
 import Toast from './Toast';
 import source from '../../utils/source.macro';
@@ -10,6 +11,7 @@ export const galleryItems: ComponentExample[] = [
     label: 'With a positive message',
     Example: ({ id, handler, showToast }) => {
       const theme = useTheme();
+      const { nextTheme } = useBraidTheme();
 
       const { code } = source(
         <Inline space="small">
@@ -35,6 +37,7 @@ export const galleryItems: ComponentExample[] = [
               dedupeKey={id}
               shouldRemove={false}
               treatTheme={theme}
+              nextTheme={nextTheme}
               onClear={handler}
               message="Positive message"
               tone="positive"
@@ -48,6 +51,7 @@ export const galleryItems: ComponentExample[] = [
     label: 'With a critical message',
     Example: ({ id, handler, showToast }) => {
       const theme = useTheme();
+      const { nextTheme } = useBraidTheme();
 
       const { code } = source(
         <Inline space="small">
@@ -73,6 +77,7 @@ export const galleryItems: ComponentExample[] = [
               dedupeKey={id}
               shouldRemove={false}
               treatTheme={theme}
+              nextTheme={nextTheme}
               onClear={handler}
               message="Critical message"
               tone="critical"
@@ -86,6 +91,7 @@ export const galleryItems: ComponentExample[] = [
     label: 'With a description',
     Example: ({ id, handler, showToast }) => {
       const theme = useTheme();
+      const { nextTheme } = useBraidTheme();
 
       const { code } = source(
         <Inline space="small">
@@ -112,6 +118,7 @@ export const galleryItems: ComponentExample[] = [
             dedupeKey={id}
             shouldRemove={false}
             treatTheme={theme}
+            nextTheme={nextTheme}
             onClear={handler}
             message="Toast message"
             tone="positive"
@@ -125,6 +132,7 @@ export const galleryItems: ComponentExample[] = [
     label: 'With an action',
     Example: ({ id, handler, showToast }) => {
       const theme = useTheme();
+      const { nextTheme } = useBraidTheme();
 
       const { code } = source(
         <Inline space="small">
@@ -150,6 +158,7 @@ export const galleryItems: ComponentExample[] = [
             dedupeKey={id}
             shouldRemove={false}
             treatTheme={theme}
+            nextTheme={nextTheme}
             onClear={handler}
             message="Toast message"
             tone="critical"
@@ -163,6 +172,7 @@ export const galleryItems: ComponentExample[] = [
     label: 'With an action and description',
     Example: ({ id, handler, showToast }) => {
       const theme = useTheme();
+      const { nextTheme } = useBraidTheme();
 
       const { code } = source(
         <Inline space="small">
@@ -190,6 +200,7 @@ export const galleryItems: ComponentExample[] = [
             dedupeKey={id}
             shouldRemove={false}
             treatTheme={theme}
+            nextTheme={nextTheme}
             onClear={handler}
             message="Toast message"
             tone="positive"

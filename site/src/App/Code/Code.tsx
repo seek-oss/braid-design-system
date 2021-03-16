@@ -5,7 +5,6 @@ import React, {
   useEffect,
   useRef,
 } from 'react';
-import { useStyles } from 'react-treat';
 import copy from 'copy-to-clipboard';
 import dedent from 'dedent';
 import memoize from 'lodash/memoize';
@@ -30,7 +29,7 @@ import { useBoxStyles } from '../../../../lib/components/Box/useBoxStyles';
 import { hideFocusRingsClassName } from '../../../../lib/components/private/hideFocusRings/hideFocusRings';
 import { CopyIcon } from './CopyIcon';
 import { PlayIcon } from './PlayIcon';
-import * as styleRefs from './Code.treat';
+import * as styles from './Code.css';
 
 // @ts-ignore
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
@@ -81,7 +80,6 @@ export const CodeButton = ({
   successLabel,
   ...restProps
 }: CodeButtonProps) => {
-  const styles = useStyles(styleRefs);
   const [showSuccess, setShowSuccess] = useState(false);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -158,26 +156,22 @@ export const CodeBlock = ({
 }: {
   children: string;
   language?: string;
-}) => {
-  const styles = useStyles(styleRefs);
-
-  return (
-    <Box
-      position="relative"
-      padding="xxsmall"
-      borderRadius="standard"
-      className={styles.code}
-    >
-      <Box padding={['medium', 'medium', 'large']}>
-        <Text size="small" component="pre" baseline={false}>
-          <SyntaxHighlighter language={language} style={editorTheme}>
-            {children}
-          </SyntaxHighlighter>
-        </Text>
-      </Box>
+}) => (
+  <Box
+    position="relative"
+    padding="xxsmall"
+    borderRadius="standard"
+    className={styles.code}
+  >
+    <Box padding={['medium', 'medium', 'large']}>
+      <Text size="small" component="pre" baseline={false}>
+        <SyntaxHighlighter language={language} style={editorTheme}>
+          {children}
+        </SyntaxHighlighter>
+      </Text>
     </Box>
-  );
-};
+  </Box>
+);
 
 const isSource = function <Value>(input: any): input is Source<Value> {
   return (

@@ -1,10 +1,9 @@
 import React from 'react';
-import { useStyles } from 'sku/react-treat';
 import assert from 'assert';
 import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';
 import { ClearButton } from '../iconButtons/ClearButton/ClearButton';
-import * as styleRefs from './Tag.treat';
+import * as styles from './Tag.css';
 
 type AllOrNone<T> = T | { [K in keyof T]?: never };
 
@@ -17,8 +16,6 @@ export const Tag = ({ onClear, clearLabel = 'Clear', children }: TagProps) => {
     typeof children === 'undefined' || typeof children === 'string',
     'Tag may only contain a string',
   );
-
-  const styles = useStyles(styleRefs);
 
   return (
     <Box display="flex">
