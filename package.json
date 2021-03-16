@@ -54,7 +54,7 @@
     "@types/uuid": "^8.3.0",
     "assert": "^2.0.0",
     "autosuggest-highlight": "^3.1.1",
-    "capsize": "^1.1.0",
+    "capsize": "^2.0.0",
     "classnames": "^2.2.6",
     "csstype": "^3.0.6",
     "dedent": "0.7.0",
