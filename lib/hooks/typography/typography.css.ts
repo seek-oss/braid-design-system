@@ -1,11 +1,10 @@
-import mapValues from 'lodash/mapValues';
 import omit from 'lodash/omit';
-import { style } from '@mattsjones/css-core';
+import { style, mapToStyles } from '@mattsjones/css-core';
 
 import { themeVars } from './../../themes/themeVars.css';
-import { responsiveStyle, styleMap } from '../../themes/nextThemeUtils';
+import { responsiveStyle } from '../../themes/nextThemeUtils';
 import { createCss } from './capsize';
-import { mapToStyleProperty } from '../../utils';
+import { mapToProperty } from '../../utils';
 import { BackgroundVariant } from './../../components/Box/BackgroundContext';
 
 type Theme = typeof themeVars;
@@ -19,8 +18,9 @@ export const fontFamily = style({
   fontFamily: themeVars.typography.fontFamily,
 });
 
-export const fontWeight = styleMap(
-  mapToStyleProperty(themeVars.typography.fontWeight, 'fontWeight'),
+export const fontWeight = mapToStyles(
+  themeVars.typography.fontWeight,
+  mapToProperty('fontWeight'),
 );
 
 // const roundMarginalFontSize = (
@@ -67,36 +67,45 @@ const makeTypographyRules = (textDefinition: TypographicDefinition) => {
 };
 
 export const text = {
-  xsmall: styleMap(makeTypographyRules(themeVars.typography.text.xsmall)),
-  small: styleMap(makeTypographyRules(themeVars.typography.text.small)),
-  standard: styleMap(makeTypographyRules(themeVars.typography.text.standard)),
-  large: styleMap(makeTypographyRules(themeVars.typography.text.large)),
+  xsmall: mapToStyles(makeTypographyRules(themeVars.typography.text.xsmall)),
+  small: mapToStyles(makeTypographyRules(themeVars.typography.text.small)),
+  standard: mapToStyles(
+    makeTypographyRules(themeVars.typography.text.standard),
+  ),
+  large: mapToStyles(makeTypographyRules(themeVars.typography.text.large)),
 };
 
-export const headingWeight = styleMap(
-  mapToStyleProperty(themeVars.typography.heading.weight, 'fontWeight'),
+export const headingWeight = mapToStyles(
+  themeVars.typography.heading.weight,
+  mapToProperty('fontWeight'),
 );
 
 export const heading = {
-  '1': styleMap(makeTypographyRules(themeVars.typography.heading.level['1'])),
-  '2': styleMap(makeTypographyRules(themeVars.typography.heading.level['2'])),
-  '3': styleMap(makeTypographyRules(themeVars.typography.heading.level['3'])),
-  '4': styleMap(makeTypographyRules(themeVars.typography.heading.level['4'])),
+  '1': mapToStyles(
+    makeTypographyRules(themeVars.typography.heading.level['1']),
+  ),
+  '2': mapToStyles(
+    makeTypographyRules(themeVars.typography.heading.level['2']),
+  ),
+  '3': mapToStyles(
+    makeTypographyRules(themeVars.typography.heading.level['3']),
+  ),
+  '4': mapToStyles(
+    makeTypographyRules(themeVars.typography.heading.level['4']),
+  ),
 };
 
 export const tone = {
-  ...styleMap(
-    mapToStyleProperty(
-      omit(themeVars.color.foreground, [
-        'linkHover',
-        'linkVisited',
-        'neutral',
-        'neutralInverted',
-        'secondaryInverted',
-        'rating',
-      ]),
-      'color',
-    ),
+  ...mapToStyles(
+    omit(themeVars.color.foreground, [
+      'linkHover',
+      'linkVisited',
+      'neutral',
+      'neutralInverted',
+      'secondaryInverted',
+      'rating',
+    ]),
+    mapToProperty('color'),
   ),
   link: style({
     color: themeVars.color.foreground.link,
@@ -110,7 +119,7 @@ export const tone = {
 };
 
 export const invertableTone = {
-  neutral: styleMap({
+  neutral: mapToStyles({
     light: {
       color: themeVars.color.foreground.neutral,
     },
@@ -118,7 +127,7 @@ export const invertableTone = {
       color: themeVars.color.foreground.neutralInverted,
     },
   }),
-  secondary: styleMap({
+  secondary: mapToStyles({
     light: {
       color: themeVars.color.foreground.secondary,
     },
@@ -237,8 +246,9 @@ const makeTouchableSpacing = (touchableHeight: string, textHeight: string) => {
   };
 };
 
-export const touchable = styleMap(
-  mapValues(themeVars.typography.text, (textDefinition) =>
+export const touchable = mapToStyles(
+  themeVars.typography.text,
+  (textDefinition) =>
     responsiveStyle({
       mobile: makeTouchableSpacing(
         themeVars.touchableSize,
@@ -249,7 +259,6 @@ export const touchable = styleMap(
         textDefinition.tablet.leading,
       ),
     }),
-  ),
 );
 
 export const truncate = style({

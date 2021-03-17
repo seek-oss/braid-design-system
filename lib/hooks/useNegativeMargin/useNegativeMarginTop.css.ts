@@ -1,12 +1,6 @@
-import { style } from '@mattsjones/css-core';
-import { mapValues } from 'lodash';
-
-import {
-  styleMap,
-  subtract,
-  negate,
-  responsiveStyle,
-} from '../../themes/nextThemeUtils';
+import { style, mapToStyles } from '@mattsjones/css-core';
+import { negate, subtract } from '@mattsjones/css-utils';
+import { responsiveStyle } from '../../themes/nextThemeUtils';
 import { themeVars } from '../../themes/themeVars.css';
 
 const preventCollapse = '1px';
@@ -22,22 +16,18 @@ export const base = style({
   ':before': { content: '""', display: 'block' },
 });
 
-export const mobile = styleMap(
-  mapValues({ none: 0, ...space }, (value) => negativeMarginTop(value)),
+export const mobile = mapToStyles({ none: 0, ...space }, (value) =>
+  negativeMarginTop(value),
 );
 
-export const tablet = styleMap(
-  mapValues({ none: 0, ...space }, (value) =>
-    responsiveStyle({
-      tablet: negativeMarginTop(value),
-    }),
-  ),
+export const tablet = mapToStyles({ none: 0, ...space }, (value) =>
+  responsiveStyle({
+    tablet: negativeMarginTop(value),
+  }),
 );
 
-export const desktop = styleMap(
-  mapValues({ none: 0, ...space }, (value) =>
-    responsiveStyle({
-      desktop: negativeMarginTop(value),
-    }),
-  ),
+export const desktop = mapToStyles({ none: 0, ...space }, (value) =>
+  responsiveStyle({
+    desktop: negativeMarginTop(value),
+  }),
 );

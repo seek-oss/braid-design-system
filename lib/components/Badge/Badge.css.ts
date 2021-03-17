@@ -1,10 +1,6 @@
 import { style } from '@mattsjones/css-core';
-import {
-  divide,
-  negate,
-  responsiveStyle,
-  subtract,
-} from '../../themes/nextThemeUtils';
+import { divide, negate, subtract } from '@mattsjones/css-utils';
+import { responsiveStyle } from '../../themes/nextThemeUtils';
 import { themeVars } from '../../themes/themeVars.css';
 
 export const outer = style(

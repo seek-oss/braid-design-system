@@ -1,11 +1,5 @@
-import {
-  add,
-  divide,
-  multiply,
-  negate,
-  subtract,
-} from './../../themes/nextThemeUtils';
 import { style } from '@mattsjones/css-core';
+import { add, divide, multiply, negate, subtract } from '@mattsjones/css-utils';
 import { responsiveStyle } from '../../themes/nextThemeUtils';
 import { themeVars } from '../../themes/themeVars.css';
 

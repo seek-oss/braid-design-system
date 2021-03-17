@@ -1,5 +1,5 @@
-import { isEqual, omit, mapValues } from 'lodash';
-import { style, StyleRule } from '@mattsjones/css-core';
+import { isEqual, omit } from 'lodash';
+import { StyleRule } from '@mattsjones/css-core';
 import { Properties, SimplePseudos } from 'csstype';
 
 export const breakpoints = {
@@ -7,6 +7,8 @@ export const breakpoints = {
   tablet: 740,
   desktop: 992,
 };
+
+export type Breakpoint = keyof typeof breakpoints;
 
 const makeMediaQuery = (breakpoint: keyof typeof breakpoints) => (
   styles: Properties<string | number>,
@@ -58,26 +60,3 @@ export const responsiveStyle = ({
       : {}),
   };
 };
-
-export function styleMap<Key extends string | number>(
-  styles: Record<Key, StyleRule>,
-) {
-  return mapValues(styles, (s) => style(s));
-}
-
-const subCalc = (calc: string | number) =>
-  typeof calc === 'number' ? calc : calc.replace(/calc/g, '');
-
-export const subtract = (a: string | number, b: string | number) =>
-  `calc(${subCalc(a)} - ${subCalc(b)})`;
-
-export const add = (a: string | number, b: string | number) =>
-  `calc(${subCalc(a)} + ${subCalc(b)})`;
-
-export const multiply = (a: string | number, b: string | number) =>
-  `calc(${subCalc(a)} * ${subCalc(b)})`;
-
-export const negate = (v: string | number) => multiply(v, -1);
-
-export const divide = (a: string | number, b: string | number) =>
-  `calc(${subCalc(a)} / ${subCalc(b)})`;
