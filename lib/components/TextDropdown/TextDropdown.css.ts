@@ -1,5 +1,5 @@
 import { style } from '@mattsjones/css-core';
-import { negate } from '../../themes/nextThemeUtils';
+import { negate } from '@mattsjones/css-utils';
 import { themeVars } from '../../themes/themeVars.css';
 import { virtualTouchableRules } from '../private/touchable/virtualTouchableRules';
 

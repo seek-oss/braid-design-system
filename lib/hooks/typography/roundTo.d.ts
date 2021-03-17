@@ -1,5 +1,5 @@
 declare const roundTo: {
-	/**
+  /**
 	Round the decimals with [`Math.round`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round).
 
 	Numbers are rounded to a specific number of fractional digits. Specifying a negative `precision` will round to any number of places to the left of the decimal.
@@ -18,9 +18,9 @@ declare const roundTo: {
 	//=> 1200
 	```
 	*/
-	(number: number, precision: number): number;
+  (number: number, precision: number): number;
 
-	/**
+  /**
 	Round up the decimals with [`Math.ceil`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/ceil).
 
 	@param number - Number to adjust.
@@ -34,9 +34,9 @@ declare const roundTo: {
 	//=> 1.24
 	```
 	*/
-	up(number: number, precision: number): number;
+  up(number: number, precision: number): number;
 
-	/**
+  /**
 	Round down the decimals with [`Math.floor`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/floor).
 
 	@param number - Number to adjust.
@@ -50,7 +50,7 @@ declare const roundTo: {
 	//=> 1.23
 	```
 	*/
-	down(number: number, precision: number): number;
+  down(number: number, precision: number): number;
 };
 
 export = roundTo;
