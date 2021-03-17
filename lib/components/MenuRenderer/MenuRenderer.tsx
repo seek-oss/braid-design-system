@@ -8,7 +8,6 @@ import React, {
   ReactNode,
   Ref,
 } from 'react';
-import { useStyles } from 'sku/react-treat';
 import flattenChildren from 'react-keyed-flatten-children';
 import { Box, BoxProps } from '../Box/Box';
 import { MenuItem } from '../MenuItem/MenuItem';
@@ -24,7 +23,7 @@ import { MenuRendererItemContext } from './MenuRendererItemContext';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
-import * as styleRefs from './MenuRenderer.treat';
+import * as styles from './MenuRenderer.css';
 
 interface TriggerProps {
   'aria-haspopup': boolean;
@@ -93,7 +92,6 @@ export const MenuRenderer = ({
   children,
   data,
 }: MenuRendererProps) => {
-  const styles = useStyles(styleRefs);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const hasOpened = useRef<boolean>(false);
   const items = flattenChildren(children);
@@ -312,7 +310,7 @@ export const MenuRenderer = ({
             <Overlay
               boxShadow="borderStandard"
               borderRadius="standard"
-              className={styles.showOverlay}
+              visible
             />
           </Box>
         </Box>

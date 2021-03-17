@@ -6,7 +6,6 @@ import React, {
   useEffect,
   ReactNode,
 } from 'react';
-import { useStyles } from 'sku/react-treat';
 import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';
 import { useTouchableSpace } from '../../hooks/typography';
@@ -17,7 +16,7 @@ import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
 import { useBoxStyles } from '../Box/useBoxStyles';
-import * as styleRefs from './useMenuItem.treat';
+import * as styles from './useMenuItem.css';
 
 const {
   MENU_ITEM_UP,
@@ -48,7 +47,6 @@ export function useMenuItem<MenuItemElement extends HTMLElement>({
   onClick,
   data,
 }: UseMenuItemProps) {
-  const styles = useStyles(styleRefs);
   const menuRendererItemContext = useContext(MenuRendererItemContext);
 
   assert(
