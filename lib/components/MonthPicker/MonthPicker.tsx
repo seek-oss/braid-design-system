@@ -1,7 +1,6 @@
 import React, { ChangeEvent, FocusEvent, createRef, Fragment } from 'react';
 import { isMobile } from 'is-mobile';
 import assert from 'assert';
-import { useStyles } from 'sku/react-treat';
 import { Box } from '../Box/Box';
 import { Column } from '../Column/Column';
 import { Columns } from '../Columns/Columns';
@@ -9,7 +8,7 @@ import { HiddenVisually } from '../HiddenVisually/HiddenVisually';
 import { Dropdown } from '../Dropdown/Dropdown';
 import { FieldProps, Field } from '../private/Field/Field';
 import { FieldGroup } from '../private/FieldGroup/FieldGroup';
-import * as styleRefs from './MonthPicker.treat';
+import * as styles from './MonthPicker.css';
 
 interface MonthPickerValue {
   month?: number;
@@ -149,7 +148,6 @@ const MonthPicker = ({
 }: MonthPickerProps) => {
   assert(monthNames.length === 12, 'monthNames array must contain 12 items');
 
-  const styles = useStyles(styleRefs);
   const currentValue = {
     month: value && value.month ? value.month : undefined,
     year: value && value.year ? value.year : undefined,
