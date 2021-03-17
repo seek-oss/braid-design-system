@@ -1,12 +1,11 @@
 import React, { FormEvent, useContext } from 'react';
-import { useStyles } from 'sku/react-treat';
 import assert from 'assert';
 import { Overlay } from '../private/Overlay/Overlay';
 import { Box } from '../Box/Box';
 import { IconChevron } from '../icons';
-import * as styleRefs from './TextDropdown.treat';
 import { TextContext } from '../Text/TextContext';
 import HeadingContext from '../Heading/HeadingContext';
+import * as styles from './TextDropdown.css';
 
 interface TextDropdownOption<Value> {
   text: string;
@@ -42,8 +41,6 @@ export function TextDropdown<Value>({
   options,
   label,
 }: TextDropdownProps<Value>) {
-  const styles = useStyles(styleRefs);
-
   assert(
     (() => {
       // eslint-disable-next-line react-hooks/rules-of-hooks

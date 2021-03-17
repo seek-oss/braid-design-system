@@ -8,12 +8,11 @@ import React, {
   useCallback,
   FormEvent,
 } from 'react';
-import { useStyles } from 'sku/react-treat';
 import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';
 import { formatRanges } from './formatRanges';
 import { Field, FieldProps } from '../private/Field/Field';
-import * as styleRefs from './Textarea.treat';
+import * as styles from './Textarea.css';
 
 type NativeTextareaProps = AllHTMLAttributes<HTMLTextAreaElement>;
 export interface TextareaProps
@@ -101,7 +100,6 @@ const NamedTextarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
     },
     ref,
   ) => {
-    const styles = useStyles(styleRefs);
     const [rows, setRows] = useState(lines);
     const highlightsRef = useRef<HTMLDivElement>(null);
     const updateScroll = useCallback(

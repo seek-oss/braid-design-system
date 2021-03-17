@@ -8,7 +8,6 @@ import React, {
   createContext,
   useContext,
 } from 'react';
-import { useStyles } from 'sku/react-treat';
 import flattenChildren from 'react-keyed-flatten-children';
 import {
   useNegativeMarginTop,
@@ -16,7 +15,7 @@ import {
 } from '../../../../../lib/hooks/useNegativeMargin/useNegativeMargin';
 import { BadgeProps } from '../../../../../lib/components/Badge/Badge';
 import { Box, Divider, Link, Text } from '../../../../../lib/components';
-import * as styleRefs from './Navigation.treat';
+import * as styles from './Navigation.css';
 
 const navItemPaddingX = ['small', 'medium'] as const;
 const navItemPaddingY = 'medium' as const;
@@ -40,8 +39,6 @@ export const NavigationItem = ({
     !badge || badge.props.bleedY === undefined,
     "Badge elements cannot set the 'bleedY' prop when passed to a NavigationItem component",
   );
-
-  const styles = useStyles(styleRefs);
 
   const index = useContext(NavigationItemIndexContext);
   const [hovered, setHovered] = useState(false);
@@ -112,7 +109,6 @@ interface NavigationProps {
   children: ReactNode;
 }
 export const Navigation = ({ title, children }: NavigationProps) => {
-  const styles = useStyles(styleRefs);
   const navigationItems = flattenChildren(children);
 
   assert(

@@ -1,4 +1,5 @@
-import { style } from 'sku/treat';
+import { style } from '@mattsjones/css-core';
+import { themeVars } from '../../../../../lib/themes/themeVars.css';
 
 export const loader = style({
   color: '#f2f2f2',
@@ -8,11 +9,12 @@ export const loader = style({
   maxWidth: 'min(50vw, 50vh)',
 });
 
-export const divider = style(({ border, typography, grid }) => ({
+const { border, typography } = themeVars;
+export const divider = style({
   borderRight: `${border.width.standard}px solid ${border.color.standard}`,
   width: 1,
-  height: typography.text.standard.mobile.rows * grid,
-}));
+  height: typography.text.standard.mobile.leading,
+});
 
 export const moveCursor = style({
   cursor: 'move',
@@ -22,21 +24,16 @@ export const delayPanels = style({
   transitionDelay: '1000ms',
 });
 
-const panelShadow = style({
+export const panel = style({
   boxShadow: '0 2px 10px 1px rgba(28,28,28,.1)',
+  minHeight: themeVars.touchableSize,
 });
-
-const panelSize = style(({ touchableSize, grid }) => ({
-  minHeight: touchableSize * grid,
-}));
-
-export const panel = [panelShadow, panelSize];
 
 export const panelBackground = style({
   backdropFilter: 'blur(4px)',
   transition: 'opacity .4s ease',
   selectors: {
-    [`${panelShadow}:not(:hover) &`]: {
+    [`${panel}:not(:hover) &`]: {
       opacity: 0.85,
     },
   },

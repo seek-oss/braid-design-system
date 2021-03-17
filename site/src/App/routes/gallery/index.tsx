@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { useStyles } from 'sku/react-treat';
 import panzoom from 'panzoom';
 import { parseToHsl, setLightness } from 'polished';
 
@@ -21,7 +20,7 @@ import { SVGProps } from '../../../../../lib/components/icons/SVGTypes';
 import useIcon, { UseIconProps } from '../../../../../lib/hooks/useIcon';
 import { Gallery, galleryComponents } from './Gallery';
 import { GalleryPanel } from './GalleryPanel';
-import * as styleRefs from './gallery.treat';
+import * as styles from './gallery.css';
 
 const useBackgroundColor = () => {
   const { theme } = useThemeSettings();
@@ -41,10 +40,7 @@ type FitToScreenDimensions = {
   scale: number;
 };
 
-const PanelDivider = () => {
-  const styles = useStyles(styleRefs);
-  return <Box aria-hidden className={styles.divider} />;
-};
+const PanelDivider = () => <Box aria-hidden className={styles.divider} />;
 
 const IconFitToScreenSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
@@ -94,7 +90,6 @@ const calculateFitToScreenDimensions = (
 };
 
 const GalleryPage = () => {
-  const styles = useStyles(styleRefs);
   const { ready: themeReady } = useThemeSettings();
   const [status, setStatus] = useState<'loading' | 'measuring' | 'done'>(
     'loading',

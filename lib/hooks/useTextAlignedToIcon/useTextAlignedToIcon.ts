@@ -1,5 +1,4 @@
-import { useStyles } from 'sku/react-treat';
-import * as styleRefs from './useTextAlignedToIcon.treat';
+import * as styles from './useTextAlignedToIcon.css';
 
-export const useTextAlignedToIcon = (size: keyof typeof styleRefs.size) =>
-  useStyles(styleRefs).size[size];
+export const useTextAlignedToIcon = (size: keyof typeof styles.size) =>
+  styles.size[size];
