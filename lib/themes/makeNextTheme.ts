@@ -31,6 +31,7 @@ const fontSizeToCapHeight = (
   return {
     mobile: {
       capHeight: mobileCapHeight,
+      capHeightFloored: Math.floor(mobileCapHeight),
       leading: mobile.rows * grid,
       capsizeValues: computeValues({
         capHeight: mobileCapHeight,
@@ -40,6 +41,7 @@ const fontSizeToCapHeight = (
     },
     tablet: {
       capHeight: tabletCapHeight,
+      capHeightFloored: Math.floor(tabletCapHeight),
       leading: tablet.rows * grid,
       capsizeValues: computeValues({
         capHeight: tabletCapHeight,

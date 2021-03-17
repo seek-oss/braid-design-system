@@ -1,9 +1,11 @@
-import { style, styleMap } from 'sku/treat';
-import mapValues from 'lodash/mapValues';
+import { style, mapToStyles } from '@mattsjones/css-core';
+import { responsiveStyle } from '../../themes/nextThemeUtils';
+import { themeVars } from '../../themes/themeVars.css';
 
-export const rootSize = styleMap(({ utils, typography }) =>
-  mapValues(typography.text, ({ mobile, tablet }) =>
-    utils.responsiveStyle({
+export const rootSize = mapToStyles(
+  themeVars.typography.text,
+  ({ mobile, tablet }) =>
+    responsiveStyle({
       mobile: {
         height: mobile.capHeight,
       },
@@ -11,7 +13,6 @@ export const rootSize = styleMap(({ utils, typography }) =>
         height: tablet.capHeight,
       },
     }),
-  ),
 );
 
 const bounce = style({
@@ -34,7 +35,6 @@ const animationDelay = 0.07;
 export const circle = [
   bounce,
   style({
-    backgroundColor: 'currentColor',
     selectors: {
       [`&:nth-child(1)`]: {
         animationDelay: `${animationDelay * 2}s`,
@@ -68,21 +68,17 @@ export const delay = style({
   animationDelay: `${animationDelayValue}s`,
 });
 
-export const circleSize = styleMap(({ utils, typography }) =>
-  mapValues(typography.text, ({ mobile, tablet }) =>
-    utils.responsiveStyle({
+export const circleSize = mapToStyles(
+  themeVars.typography.text,
+  ({ mobile, tablet }) =>
+    responsiveStyle({
       mobile: {
-        width: Math.floor(mobile.capHeight),
-        height: Math.floor(mobile.capHeight),
-        fontSize: Math.floor(mobile.capHeight),
-        margin: `0 ${Math.round(mobile.capHeight * 0.15)}px`,
+        width: mobile.capHeightFloored,
+        height: mobile.capHeightFloored,
       },
       tablet: {
-        width: Math.floor(tablet.capHeight),
-        height: Math.floor(tablet.capHeight),
-        fontSize: Math.floor(mobile.capHeight),
-        margin: `0 ${Math.round(tablet.capHeight * 0.15)}px`,
+        width: tablet.capHeightFloored,
+        height: tablet.capHeightFloored,
       },
     }),
-  ),
 );

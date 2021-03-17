@@ -12,7 +12,7 @@ import {
   Button,
 } from '../';
 import source from '../../utils/source.macro';
-import { animationDelayValue } from './Loader.treat';
+import { animationDelayValue } from './Loader.css';
 
 const docs: ComponentDocs = {
   category: 'Content',
