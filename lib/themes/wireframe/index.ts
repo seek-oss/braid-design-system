@@ -1,5 +1,5 @@
 import { theme as treatTheme } from './theme.treat';
-import nextTheme from './nextTheme.css';
+import nextTheme from './wireframeTheme.css';
 
 export default {
   ...treatTheme,

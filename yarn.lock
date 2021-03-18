@@ -1704,13 +1704,14 @@
     "@babel/core" "^7.12.10"
     "@babel/template" "^7.12.13"
 
-"@mattsjones/css-core@^0.0.10":
-  version "0.0.10"
-  resolved "https://registry.yarnpkg.com/@mattsjones/css-core/-/css-core-0.0.10.tgz#e488a89f5a82461beeced903e8fe1958b6e14211"
-  integrity sha512-uoACB3BVLEL1iGAPnTaUPHSz9AJ5T2zsOXSOH6hJYVX2DQQnj3OIIGpJNekN+zE5f907stHx9gEcbpOEn9Ttag==
+"@mattsjones/css-core@^0.0.12":
+  version "0.0.12"
+  resolved "https://registry.yarnpkg.com/@mattsjones/css-core/-/css-core-0.0.12.tgz#5179a1a1c350332b7d91aae313c579f1edd5c772"
+  integrity sha512-8qRKZw5wJVE28g1V6FoWYssvsGHGMckWquB0KEW2NtZcfcO/yZjHpFdl9+xr2uny1fcs6NJp6D7t7jb4JvR+AA==
   dependencies:
     "@emotion/hash" "^0.8.0"
     css-selector-parser "^1.4.1"
+    cssesc "^3.0.0"
     csstype "^3.0.7"
     dedent "^0.7.0"
     lodash "^4.17.21"
@@ -1722,12 +1723,12 @@
   resolved "https://registry.yarnpkg.com/@mattsjones/css-utils/-/css-utils-0.0.1.tgz#e5aa05fb279f8c6ca3ba8c8a3e106407da9dfb4b"
   integrity sha512-PW9Dg7b68qvz/fsP3DQU0JdMTME3i5lIJE33YmBi+jLHo4xA4yRQMY2W9Ah3C+3JIrSi8f8IquOvcsZaB8imIg==
 
-"@mattsjones/css-webpack-plugin@^0.0.7":
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/@mattsjones/css-webpack-plugin/-/css-webpack-plugin-0.0.7.tgz#d132a4ec49fd6524e636711038bc1192d45d7893"
-  integrity sha512-wRv62KNyq+m+3x3uh0Wj74F8x7CUAE2ezCDvBJywU0g9k8ysU9RFYR4KCAIkSguKKzG4J+wumpp6NrOQ1/2Gkw==
+"@mattsjones/css-webpack-plugin@^0.0.9":
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/@mattsjones/css-webpack-plugin/-/css-webpack-plugin-0.0.9.tgz#97bc41fb008a81bb8c4a5e5316e5676cfdf439bc"
+  integrity sha512-QTJsjhBDkM0z2UIKn6Wg+h5f600mrWcIHdcxdzHwTDmkM1xwwAI/Ajn7ortVw3ks1/4IpA1An1x3qwgq7nB0yg==
   dependencies:
-    "@mattsjones/css-core" "^0.0.10"
+    "@mattsjones/css-core" "^0.0.12"
     babel-loader "^8.2.2"
     chalk "^4.1.0"
     css-loader "^5.1.1"
