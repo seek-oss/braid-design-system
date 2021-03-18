@@ -107,7 +107,7 @@ export const screenshots: ComponentScreenshot = {
       },
     },
     {
-      label: 'Textarea nearing character limit, eg. 50 characters',
+      label: 'Textarea nearing character limit',
       Container,
       Example: ({ id }) => {
         const [value, setValue] = useState(
@@ -126,11 +126,11 @@ export const screenshots: ComponentScreenshot = {
       },
     },
     {
-      label: 'Textarea exceeding character limit, eg. > 50 characters',
+      label: 'Textarea exceeding character limit',
       Container,
       Example: ({ id }) => {
         const [value, setValue] = useState(
-          'The long piece of text exceeding the specified 50 character limit',
+          '12345678910 The character limit is 9 so the highlighting should start from "10"',
         );
 
         return (
@@ -139,7 +139,7 @@ export const screenshots: ComponentScreenshot = {
             value={value}
             onChange={(e) => setValue(e.currentTarget.value)}
             label="Do you like Braid?"
-            characterLimit={50}
+            characterLimit={9}
           />
         );
       },
@@ -159,6 +159,27 @@ export const screenshots: ComponentScreenshot = {
             onChange={(e) => setValue(e.currentTarget.value)}
             label="Do you like Braid?"
             description="Characters 9-22 are invalid"
+            highlightRanges={[{ start: 9, end: 22 }]}
+          />
+        );
+      },
+    },
+    {
+      label: 'Textarea highlighting a while range exceeding character limit',
+      Container,
+      Example: ({ id }) => {
+        const [value, setValue] = useState(
+          'The long piece of text exceeding the specified 50 character limit',
+        );
+
+        return (
+          <Textarea
+            id={id}
+            value={value}
+            onChange={(e) => setValue(e.currentTarget.value)}
+            label="Do you like Braid?"
+            description="Characters 9-22 are invalid"
+            characterLimit={50}
             highlightRanges={[{ start: 9, end: 22 }]}
           />
         );

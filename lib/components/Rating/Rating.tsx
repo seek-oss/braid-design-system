@@ -42,7 +42,7 @@ const RatingStar = ({ percent, ...restProps }: RatingStar) => {
 };
 
 const ratingArr = [...Array(5)];
-export interface Rating {
+export interface RatingProps {
   rating: number;
   size?: TextProps['size'];
   showTextRating?: boolean;
@@ -54,7 +54,7 @@ export const Rating = ({
   size = 'standard',
   showTextRating = true,
   'aria-label': ariaLabel,
-}: Rating) => {
+}: RatingProps) => {
   assert(
     !rating || (rating >= 0 && rating <= 5),
     'Rating must be between 0 and 5',
