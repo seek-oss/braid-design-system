@@ -39,13 +39,13 @@ const makeTypographyRules = (textDefinition: TypographicDefinition) => {
   const {
     fontSize: mobileFontSize,
     lineHeight: mobileLineHeight,
-    ...mobile
+    ...mobileTrims
   } = createCss(textDefinition.mobile.capsizeValues);
 
   const {
     fontSize: tabletFontSize,
     lineHeight: tabletLineHeight,
-    ...tablet
+    ...tabletTrims
   } = createCss(textDefinition.tablet.capsizeValues);
 
   return {
@@ -60,8 +60,8 @@ const makeTypographyRules = (textDefinition: TypographicDefinition) => {
       },
     }),
     leadingTrim: responsiveStyle({
-      mobile,
-      tablet,
+      mobile: mobileTrims,
+      tablet: tabletTrims,
     }),
   };
 };

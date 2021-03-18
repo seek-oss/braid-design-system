@@ -1,13 +1,26 @@
-import roundTo from './roundTo';
+// adapted from https://github.com/sindresorhus/round-to
+function roundTo(number: number, precision: number) {
+  if (typeof number !== 'number') {
+    throw new TypeError('Expected value to be a number');
+  }
 
-/*
-   Rounding all values to a precision of `4` based on discovering that browser
-   implementations of layout units fall between 1/60th and 1/64th of a pixel.
+  if (precision === Infinity) {
+    return number;
+  }
 
-   Reference: https://trac.webkit.org/wiki/LayoutUnit
-   (above wiki also mentions Mozilla - https://trac.webkit.org/wiki/LayoutUnit#Notes)
-*/
-const PRECISION = 4;
+  if (!Number.isInteger(precision)) {
+    throw new TypeError('Expected precision to be an integer');
+  }
+
+  const isNegative = number < 0;
+  const inputNumber = isNegative ? Math.abs(number) : number;
+
+  const power = 10 ** precision;
+  const result =
+    Math.round(Number((inputNumber * power).toPrecision(15))) / power;
+
+  return isNegative ? -result : result;
+}
 
 export interface FontMetrics {
   ascent: number;
@@ -20,18 +33,15 @@ export interface FontMetrics {
 export interface CapsizeStyles {
   fontSize: string;
   lineHeight: string;
-  padding: string;
   '::before': {
-    content: string;
-    marginTop: string;
-    display: string;
-    height: number;
-  };
-  '::after': {
     content: string;
     marginBottom: string;
     display: string;
-    height: number;
+  };
+  '::after': {
+    content: string;
+    marginTop: string;
+    display: string;
   };
 }
 
@@ -59,13 +69,20 @@ type FontSizeWithLineGap = {
   fontMetrics: FontMetrics;
 };
 
-const preventCollapse = 0.05;
-
 export type CapsizeOptions =
   | CapHeightWithLineGap
   | CapHeightWithLeading
   | FontSizeWithLineGap
   | FontSizeWithLeading;
+
+/*
+   Rounding all values to a precision of `4` based on discovering that browser
+   implementations of layout units fall between 1/60th and 1/64th of a pixel.
+
+   Reference: https://trac.webkit.org/wiki/LayoutUnit
+   (above wiki also mentions Mozilla - https://trac.webkit.org/wiki/LayoutUnit#Notes)
+*/
+const PRECISION = 4;
 
 function normaliseOptions(options: CapsizeOptions) {
   if ('leading' in options && 'lineGap' in options) {
@@ -138,7 +155,7 @@ function _computeValues(options: CapsizeOptions) {
     : 0;
 
   const leadingTrim = (value: number) =>
-    value - toScale(specifiedLineHeightOffset) + toScale(preventCollapse);
+    value - toScale(specifiedLineHeightOffset);
 
   return {
     fontSize: `${roundTo(fontSize, PRECISION)}px`,
@@ -180,18 +197,15 @@ export function createCss({
   return {
     fontSize,
     lineHeight,
-    padding: `${preventCollapse}px 0`,
     '::before': {
       content: "''",
-      marginTop: capHeightTrim,
-      display: 'block',
-      height: 0,
+      marginBottom: capHeightTrim,
+      display: 'table',
     },
     '::after': {
       content: "''",
-      marginBottom: baselineTrim,
-      display: 'block',
-      height: 0,
+      marginTop: baselineTrim,
+      display: 'table',
     },
   };
 }
