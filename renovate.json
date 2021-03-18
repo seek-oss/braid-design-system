@@ -3,7 +3,7 @@
   "commitMessagePrefix": null,
   "packageRules": [
     {
-      "packageNames": ["playroom"],
+      "packageNames": ["playroom", "capsize"],
       "enabled": true
     },
     {

@@ -4772,12 +4772,10 @@ capital-case@^1.0.4:
     tslib "^2.0.3"
     upper-case-first "^2.0.2"
 
-capsize@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/capsize/-/capsize-1.1.0.tgz#d70f918b5ecadc2390b2a3b3b672ced639907ed6"
-  integrity sha512-tV0weOXxQ9hsbqewiWfGQBXsGzSN/i/w9IGuH+JVySzGOhscTAzeK3N9ZAM3Kf89bWgYot80Za5fSXKi6ZynvA==
-  dependencies:
-    round-to "^4.1.0"
+capsize@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/capsize/-/capsize-2.0.0.tgz#09c440000d6c6c9da2c22b419b6ced1b74a1b29d"
+  integrity sha512-/xluZJe+SnuByQjws/B6QkrMzo9OqE9sd+k6paTxYoVVZLrwZoPdsCRasPiCIUQMy8UD11xgo5QZ/gtcNMlGlQ==
 
 capture-exit@^2.0.0:
   version "2.0.0"
@@ -14494,11 +14492,6 @@ rmfr@^2.0.0:
     graceful-fs "^4.1.11"
     inspect-with-kind "^1.0.4"
     rimraf "^2.6.2"
-
-round-to@^4.1.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/round-to/-/round-to-4.1.0.tgz#148d768d18b2f127f78e6648cb8b0a5943c416bf"
-  integrity sha512-H/4z+4QdWS82iMZ23+5St302Mv2jJws0hUvEogrD6gC8NN6Z5TalDtbg51owCrVy4V/4c8ePvwVLNtlhEfPo5g==
 
 rsvp@^4.8.4:
   version "4.8.5"
