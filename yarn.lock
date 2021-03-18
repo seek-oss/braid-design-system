@@ -1704,10 +1704,10 @@
     "@babel/core" "^7.12.10"
     "@babel/template" "^7.12.13"
 
-"@mattsjones/css-core@^0.0.12":
-  version "0.0.12"
-  resolved "https://registry.yarnpkg.com/@mattsjones/css-core/-/css-core-0.0.12.tgz#5179a1a1c350332b7d91aae313c579f1edd5c772"
-  integrity sha512-8qRKZw5wJVE28g1V6FoWYssvsGHGMckWquB0KEW2NtZcfcO/yZjHpFdl9+xr2uny1fcs6NJp6D7t7jb4JvR+AA==
+"@mattsjones/css-core@^0.0.13":
+  version "0.0.13"
+  resolved "https://registry.yarnpkg.com/@mattsjones/css-core/-/css-core-0.0.13.tgz#b6f4300e4f4fcd3c9ea2348f07cd25907564aad6"
+  integrity sha512-LPuHaNApcyo+vyV1HPyUbmCp34CCCnk8RvcRk6UxKjppqXvt8zNfq4LOqhTeq5WhWFMDllvs5DMyUx1o+Neb9w==
   dependencies:
     "@emotion/hash" "^0.8.0"
     css-selector-parser "^1.4.1"
@@ -1718,17 +1718,17 @@
     postcss "^8.2.7"
     postcss-js "^3.0.3"
 
-"@mattsjones/css-utils@^0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@mattsjones/css-utils/-/css-utils-0.0.1.tgz#e5aa05fb279f8c6ca3ba8c8a3e106407da9dfb4b"
-  integrity sha512-PW9Dg7b68qvz/fsP3DQU0JdMTME3i5lIJE33YmBi+jLHo4xA4yRQMY2W9Ah3C+3JIrSi8f8IquOvcsZaB8imIg==
+"@mattsjones/css-utils@^0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@mattsjones/css-utils/-/css-utils-0.0.2.tgz#2756fe51cce1501f9705d7f444dd94f71eb5c068"
+  integrity sha512-UvBAyc8bivYosE1rIEdgiKkLvXvX5o394BeiQ44Kd5xvryaKfxpM6lRGvRC4qIqfX8fIfwNA/D0IedWOb0wsFA==
 
-"@mattsjones/css-webpack-plugin@^0.0.9":
-  version "0.0.9"
-  resolved "https://registry.yarnpkg.com/@mattsjones/css-webpack-plugin/-/css-webpack-plugin-0.0.9.tgz#97bc41fb008a81bb8c4a5e5316e5676cfdf439bc"
-  integrity sha512-QTJsjhBDkM0z2UIKn6Wg+h5f600mrWcIHdcxdzHwTDmkM1xwwAI/Ajn7ortVw3ks1/4IpA1An1x3qwgq7nB0yg==
+"@mattsjones/css-webpack-plugin@^0.0.10":
+  version "0.0.10"
+  resolved "https://registry.yarnpkg.com/@mattsjones/css-webpack-plugin/-/css-webpack-plugin-0.0.10.tgz#d0668adab4f75c7be451094e3a0a60b331b40919"
+  integrity sha512-w36+QzW1In0nYJE+6u4L3+5TVlha7/1KJ7rhDP/U5SWqU7ebgax2DFf9agu/ztcEdhsPN/cmVK3MOAjVD6qOvg==
   dependencies:
-    "@mattsjones/css-core" "^0.0.12"
+    "@mattsjones/css-core" "^0.0.13"
     babel-loader "^8.2.2"
     chalk "^4.1.0"
     css-loader "^5.1.1"
