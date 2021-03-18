@@ -7,7 +7,6 @@ import React, {
 } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useWindowScroll, useInterval } from 'react-use';
-import { useStyles } from 'sku/react-treat';
 import {
   ContentBlock,
   Text,
@@ -24,7 +23,7 @@ import { useScrollLock } from '../useScrollLock/useScrollLock';
 import { MenuButton } from '../MenuButton/MenuButton';
 import { Logo } from '../Logo/Logo';
 import { gutterSize, menuButtonSize, headerSpaceY } from './navigationSizes';
-import * as styleRefs from './Navigation.treat';
+import * as styles from './Navigation.css';
 
 const Header = ({
   menuOpen,
@@ -63,7 +62,6 @@ interface NavigationProps {
 }
 
 export const Navigation = ({ children }: NavigationProps) => {
-  const styles = useStyles(styleRefs);
   const lastScrollTop = useRef(0);
   const { y: scrollTop } = useWindowScroll();
   const [isMenuOpen, setMenuOpen] = useState(false);

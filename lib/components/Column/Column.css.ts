@@ -1,4 +1,4 @@
-import { style, styleMap } from 'sku/treat';
+import { style, mapToStyles } from '@mattsjones/css-core';
 
 export const column = style({});
 
@@ -14,7 +14,7 @@ const getSizeStyle = (scale: number) => ({
   flex: `0 0 ${scale * 100}%`,
 });
 
-export const width = styleMap({
+export const width = mapToStyles({
   '1/2': getSizeStyle(1 / 2),
   '1/3': getSizeStyle(1 / 3),
   '2/3': getSizeStyle(2 / 3),

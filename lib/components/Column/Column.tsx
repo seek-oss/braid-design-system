@@ -1,16 +1,14 @@
 import React, { ReactNode, useContext } from 'react';
-import { useStyles } from 'sku/react-treat';
 import { Box } from '../Box/Box';
 import { ColumnsContext } from '../Columns/Columns';
-import * as styleRefs from './Column.treat';
+import * as styles from './Column.css';
 
 export interface ColumnProps {
   children: ReactNode;
-  width?: keyof typeof styleRefs.width | 'content';
+  width?: keyof typeof styles.width | 'content';
 }
 
 export const Column = ({ children, width }: ColumnProps) => {
-  const styles = useStyles(styleRefs);
   const {
     collapseMobile,
     collapseTablet,
