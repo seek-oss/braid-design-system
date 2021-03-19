@@ -7,7 +7,6 @@ import React, {
   useRef,
   ChangeEvent,
 } from 'react';
-import { useStyles } from 'sku/react-treat';
 import { Box } from '../../Box/Box';
 import { FieldLabelProps } from '../../FieldLabel/FieldLabel';
 import {
@@ -23,7 +22,7 @@ import { useBackgroundLightness } from '../../Box/BackgroundContext';
 import { mergeIds } from '../mergeIds';
 import { BadgeProps } from '../../Badge/Badge';
 import { Inline } from '../../Inline/Inline';
-import * as styleRefs from './InlineField.treat';
+import * as styles from './InlineField.css';
 
 const tones = ['neutral', 'critical'] as const;
 type InlineFieldTone = typeof tones[number];
@@ -71,7 +70,6 @@ const Indicator = ({
   hover?: boolean;
   disabled?: boolean;
 }) => {
-  const styles = useStyles(styleRefs);
   const isCheckbox = type === 'checkbox';
 
   const iconTone = (() => {
@@ -154,7 +152,6 @@ export const InlineField = forwardRef<
     },
     forwardedRef,
   ) => {
-    const styles = useStyles(styleRefs);
     // We need a ref regardless so we can imperatively
     // focus the field when clicking the clear button
     const defaultRef = useRef<HTMLInputElement | null>(null);
