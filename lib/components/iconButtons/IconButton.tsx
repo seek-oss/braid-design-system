@@ -5,7 +5,6 @@ import React, {
   MouseEvent,
   forwardRef,
 } from 'react';
-import { useStyles } from 'sku/react-treat';
 import { Box } from '../Box/Box';
 import { Overlay } from '../private/Overlay/Overlay';
 import buildDataAttributes, {
@@ -21,7 +20,7 @@ import {
   useBackground,
   useBackgroundLightness,
 } from '../Box/BackgroundContext';
-import * as styleRefs from './IconButton.treat';
+import * as styles from './IconButton.css';
 
 type NativeButtonProps = AllHTMLAttributes<HTMLButtonElement>;
 export interface IconButtonProps {
@@ -57,7 +56,6 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
     },
     forwardedRef,
   ) => {
-    const styles = useStyles(styleRefs);
     const iconContainerStyles = useIconContainerSize();
     const iconStyles = useIconSize();
     const background = useBackground();
