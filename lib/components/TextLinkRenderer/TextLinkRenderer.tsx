@@ -1,5 +1,4 @@
 import React, { CSSProperties, useContext, ReactElement } from 'react';
-import { useStyles } from 'sku/react-treat';
 import dedent from 'dedent';
 import assert from 'assert';
 import classnames from 'classnames';
@@ -16,10 +15,10 @@ import {
   useTouchableSpace,
   useText,
 } from '../../hooks/typography';
-import * as styleRefs from './TextLinkRenderer.treat';
 import { useBackground } from '../Box/BackgroundContext';
 import { useVirtualTouchable } from '../private/touchable/useVirtualTouchable';
 import { PrivateButtonRendererProps } from '../ButtonRenderer/ButtonRenderer';
+import * as styles from './TextLinkRenderer.css';
 
 interface StyleProps {
   style: CSSProperties;
@@ -102,7 +101,6 @@ function useDefaultLinkWeight() {
 }
 
 function useLinkStyles(weight: TextLinkWeight, showVisited: boolean) {
-  const styles = useStyles(styleRefs);
   const inHeading = useContext(HeadingContext);
   const mediumWeight = useWeight('medium');
   const linkTone = useTextTone({ tone: 'link' });
@@ -153,7 +151,6 @@ function ButtonLink({
   hitArea,
   children,
 }: ButtonLinkProps) {
-  const styles = useStyles(styleRefs);
   const textLinkWeight = useDefaultLinkWeight();
   const tone = textLinkWeight === 'weak' ? 'neutral' : 'link';
   const standardTouchableSpaceStyles = useTouchableSpace('standard');

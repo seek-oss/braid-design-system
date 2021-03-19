@@ -1,4 +1,5 @@
-import { style } from 'sku/treat';
+import { style } from '@mattsjones/css-core';
+import { themeVars } from '../../themes/themeVars.css';
 
 export const underlineAlways = style({
   textDecoration: 'underline',
@@ -11,11 +12,11 @@ export const underlineOnHoverOnly = style({
   },
 });
 
-export const visited = style((theme) => ({
+export const visited = style({
   ':visited': {
-    color: theme.color.foreground.linkVisited,
+    color: themeVars.color.foreground.linkVisited,
   },
-}));
+});
 
 export const button = style({});
 export const focusOverlay = style({
