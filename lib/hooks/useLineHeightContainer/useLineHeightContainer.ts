@@ -1,7 +1,4 @@
-import { useStyles } from 'sku/react-treat';
-import * as styleRefs from './useLineHeightContainer.treat';
+import * as styles from './useLineHeightContainer.css';
 
-export const useLineHeightContainer = (size: keyof typeof styleRefs.size) => {
-  const styles = useStyles(styleRefs);
-  return styles.size[size];
-};
+export const useLineHeightContainer = (size: keyof typeof styles.size) =>
+  styles.size[size];

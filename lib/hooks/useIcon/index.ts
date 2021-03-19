@@ -87,9 +87,9 @@ export default (
     position: isInline ? 'relative' : undefined,
     className: [
       resolvedTone,
-      styles.size,
       isInline
         ? [
+            styles.size,
             styles.inline,
             styles.alignY[alignY || 'uppercase'][
               verticalCorrection[alignY || 'uppercase']
