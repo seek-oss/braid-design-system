@@ -1,4 +1,5 @@
-import { style } from 'sku/treat';
+import { style } from '@mattsjones/css-core';
+
 import { debugTouchable } from './debugTouchable';
 import { virtualTouchableRules } from './virtualTouchableRules';
 
