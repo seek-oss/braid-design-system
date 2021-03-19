@@ -1,12 +1,11 @@
 import React, { AllHTMLAttributes, ChangeEvent, ReactNode } from 'react';
-import { useStyles } from 'sku/react-treat';
 import { Box } from '../Box/Box';
 import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
 import { Text } from '../Text/Text';
 import { IconTick } from '../icons';
 import { useVirtualTouchable } from '../private/touchable/useVirtualTouchable';
 import { useBackgroundLightness } from '../Box/BackgroundContext';
-import * as styleRefs from './Toggle.treat';
+import * as styles from './Toggle.css';
 
 type HTMLInputProps = AllHTMLAttributes<HTMLInputElement>;
 type ChangeHandler = (value: boolean) => void;
@@ -33,7 +32,6 @@ export const Toggle = ({
   label,
   align = 'left',
 }: ToggleProps) => {
-  const styles = useStyles(styleRefs);
   const showBorder = useBackgroundLightness() === 'light';
 
   return (

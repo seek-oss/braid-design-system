@@ -56,6 +56,11 @@ export default (braidTokens: BraidTokens) => {
   const { name, displayName, ...tokens } = braidTokens;
   const { fontMetrics, webFont, ...typography } = tokens.typography;
 
+  const inlineFieldScale =
+    (typography.text.standard.mobile.rows * tokens.grid) / 42;
+  const inlineFieldSize =
+    tokens.grid * Math.round(tokens.touchableSize * inlineFieldScale);
+
   const resolvedTokens = {
     ...tokens,
     typography: {
@@ -82,6 +87,7 @@ export default (braidTokens: BraidTokens) => {
     },
     space: mapValues(tokens.space, (sp) => sp * tokens.grid),
     touchableSize: tokens.touchableSize * tokens.grid,
+    inlineFieldSize,
     color: {
       background: {
         ...tokens.color.background,
