@@ -1,5 +1,5 @@
 import { style } from '@mattsjones/css-core';
-import { subtract } from '@mattsjones/css-utils';
+import { calc } from '@mattsjones/css-utils';
 import { themeVars } from '../../../themes/themeVars.css';
 
 export const field = style({});
@@ -19,7 +19,7 @@ export const secondaryIconSpace = style({
 // the white space does not look imbalanced.
 const textLeftOffset = '2px';
 export const iconSpace = style({
-  paddingLeft: subtract(themeVars.touchableSize, textLeftOffset),
+  paddingLeft: calc.subtract(themeVars.touchableSize, textLeftOffset),
 });
 
 export const focusOverlay = style({

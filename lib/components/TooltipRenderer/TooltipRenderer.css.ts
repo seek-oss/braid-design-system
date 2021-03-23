@@ -1,5 +1,5 @@
 import { style } from '@mattsjones/css-core';
-import { add, multiply, negate, divide } from '@mattsjones/css-utils';
+import { calc } from '@mattsjones/css-utils';
 import { themeVars } from '../../themes/themeVars.css';
 
 export const constants = {
@@ -31,11 +31,11 @@ export const translateZ0 = style({
 
 // Our space scale didn't have enough fidelity here :(
 export const padding = style({
-  padding: add(themeVars.space.small, '1px'),
+  padding: calc.add(themeVars.space.small, '1px'),
 });
 
 const borderRadius = themeVars.border.radius.standard;
-const offset = negate(divide(constants.arrowSize, 2));
+const offset = calc(constants.arrowSize).divide(2).negate().toString();
 export const arrow = style({
   visibility: 'hidden',
   ':before': {
@@ -45,8 +45,8 @@ export const arrow = style({
   },
   selectors: {
     '&, &::before': {
-      width: add(constants.arrowSize, multiply(borderRadius, 2)),
-      height: add(constants.arrowSize, multiply(borderRadius, 2)),
+      width: calc.add(constants.arrowSize, calc.multiply(borderRadius, 2)),
+      height: calc.add(constants.arrowSize, calc.multiply(borderRadius, 2)),
       position: 'absolute',
       background: 'inherit',
       borderRadius,

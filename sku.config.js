@@ -52,7 +52,6 @@ module.exports = {
       new TreatPlugin({
         test: /\.css\.ts$/,
         outputCss: config.target !== 'node',
-        outputLoaders: [require('mini-css-extract-plugin').loader],
       }),
     );
 

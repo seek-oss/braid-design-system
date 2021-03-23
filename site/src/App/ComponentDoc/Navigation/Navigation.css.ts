@@ -1,5 +1,5 @@
 import { style } from '@mattsjones/css-core';
-import { negate } from '@mattsjones/css-utils';
+import { calc } from '@mattsjones/css-utils';
 import { themeVars } from '../../../../../lib/themes/themeVars.css';
 
 export const activeUnderline = style({
@@ -8,7 +8,7 @@ export const activeUnderline = style({
 });
 
 export const inactiveUnderlineCorrection = style({
-  marginTop: negate(themeVars.border.width.standard),
+  marginTop: calc.negate(themeVars.border.width.standard),
 });
 
 export const centerHorizontally = style({

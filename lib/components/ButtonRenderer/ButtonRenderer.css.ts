@@ -1,5 +1,5 @@
-import { style } from '@mattsjones/css-core';
-import { add, divide, multiply, negate, subtract } from '@mattsjones/css-utils';
+import { keyframes, style } from '@mattsjones/css-core';
+import { calc } from '@mattsjones/css-utils';
 import { responsiveStyle } from '../../themes/nextThemeUtils';
 import { themeVars } from '../../themes/themeVars.css';
 
@@ -68,13 +68,13 @@ const stylesForBreakpoint = (
   const { capHeight } = typography.text[size][breakpoint];
   const height =
     size === 'small'
-      ? add(
-          multiply(space[constants.smallButtonPaddingSize], 2),
+      ? calc.add(
+          calc.multiply(space[constants.smallButtonPaddingSize], 2),
           typography.text.small[breakpoint].leading,
         )
       : touchableSize;
 
-  const value = negate(divide(subtract(height, capHeight), 2));
+  const value = calc(height).subtract(capHeight).divide(2).negate().toString();
 
   return {
     marginTop: value,
@@ -95,40 +95,46 @@ export const bleedY = style({
   },
 });
 
+const dot1 = keyframes({
+  '14%': {
+    opacity: 0,
+  },
+  '15%,100%': {
+    opacity: 1,
+  },
+});
+
+const dot2 = keyframes({
+  '29%': {
+    opacity: 0,
+  },
+  '30%,100%': {
+    opacity: 1,
+  },
+});
+
+const dot3 = keyframes({
+  '44%': {
+    opacity: 0,
+  },
+  '45%,100%': {
+    opacity: 1,
+  },
+});
+
 export const loadingDot = style({
   animationDuration: '1s',
   animationIterationCount: 'infinite',
   opacity: 0,
   selectors: {
     [`&:nth-child(1)`]: {
-      '@keyframes': {
-        '14%': {
-          opacity: 0,
-        },
-        '15%,100%': {
-          opacity: 1,
-        },
-      },
+      animationName: dot1,
     },
     [`&:nth-child(2)`]: {
-      '@keyframes': {
-        '29%': {
-          opacity: 0,
-        },
-        '30%,100%': {
-          opacity: 1,
-        },
-      },
+      animationName: dot2,
     },
     [`&:nth-child(3)`]: {
-      '@keyframes': {
-        '44%': {
-          opacity: 0,
-        },
-        '45%,100%': {
-          opacity: 1,
-        },
-      },
+      animationName: dot3,
     },
   },
 });

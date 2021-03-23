@@ -1,5 +1,5 @@
 import { style } from '@mattsjones/css-core';
-import { add, divide, multiply, negate, subtract } from '@mattsjones/css-utils';
+import { calc } from '@mattsjones/css-utils';
 import { externalGutter } from './ModalExternalGutter';
 import { TextBreakpoint } from '../../../themes/tokenType';
 import { responsiveStyle } from '../../../themes/nextThemeUtils';
@@ -74,33 +74,33 @@ export const maxSize = {
   center: style(
     responsiveStyle({
       mobile: {
-        maxHeight: subtract(
+        maxHeight: calc.subtract(
           '100vh',
-          multiply(themeVars.space[externalGutter[0]], 2),
+          calc.multiply(themeVars.space[externalGutter[0]], 2),
         ),
-        maxWidth: subtract(
+        maxWidth: calc.subtract(
           '100vw',
-          multiply(themeVars.space[externalGutter[0]], 2),
+          calc.multiply(themeVars.space[externalGutter[0]], 2),
         ),
       },
       tablet: {
-        maxHeight: subtract(
+        maxHeight: calc.subtract(
           '100vh',
-          multiply(themeVars.space[externalGutter[1]], 2),
+          calc.multiply(themeVars.space[externalGutter[1]], 2),
         ),
-        maxWidth: subtract(
+        maxWidth: calc.subtract(
           '100vw',
-          multiply(themeVars.space[externalGutter[1]], 2),
+          calc.multiply(themeVars.space[externalGutter[1]], 2),
         ),
       },
       desktop: {
-        maxHeight: subtract(
+        maxHeight: calc.subtract(
           '100vh',
-          multiply(themeVars.space[externalGutter[2]], 2),
+          calc.multiply(themeVars.space[externalGutter[2]], 2),
         ),
-        maxWidth: subtract(
+        maxWidth: calc.subtract(
           '100vw',
-          multiply(themeVars.space[externalGutter[2]], 2),
+          calc.multiply(themeVars.space[externalGutter[2]], 2),
         ),
       },
     }),
@@ -145,13 +145,13 @@ const CLOSE_ICON_GUTTER_RATIO = 0.3;
 const calculateIconCrop = (level: '2' | '3', breakpoint: TextBreakpoint) => {
   const capHeight =
     themeVars.typography.heading.level[level][breakpoint].capHeight;
-  const size = multiply(capHeight, add(1, CLOSE_ICON_GUTTER_RATIO));
-  const offset = divide(multiply(size, CLOSE_ICON_GUTTER_RATIO), 2);
+  const size = calc.multiply(capHeight, calc.add(1, CLOSE_ICON_GUTTER_RATIO));
+  const offset = calc.divide(calc.multiply(size, CLOSE_ICON_GUTTER_RATIO), 2);
   const nudge = 1;
 
   return {
-    top: add(negate(offset), nudge),
-    right: subtract(negate(offset), nudge),
+    top: calc.add(calc.negate(offset), nudge),
+    right: calc.subtract(calc.negate(offset), nudge),
   };
 };
 
@@ -171,7 +171,7 @@ export const cropIconSpace = {
 };
 
 export const negativeMarginRightXSmall = style({
-  marginRight: negate(themeVars.space.xsmall),
+  marginRight: calc.negate(themeVars.space.xsmall),
 });
 
 const calculateCloseIconSize = (
@@ -180,7 +180,7 @@ const calculateCloseIconSize = (
 ) => {
   const capHeight =
     themeVars.typography.heading.level[level][breakpoint].capHeight;
-  const size = multiply(capHeight, add(1, CLOSE_ICON_GUTTER_RATIO));
+  const size = calc.multiply(capHeight, calc.add(1, CLOSE_ICON_GUTTER_RATIO));
 
   return {
     width: size,

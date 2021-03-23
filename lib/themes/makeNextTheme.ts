@@ -6,6 +6,8 @@ import { getAccessibleVariant, getLightVariant, isLight } from '../utils';
 import { FontMetrics } from '../hooks/typography/capsize';
 import { BraidTokens, TextDefinition } from './tokenType';
 
+const px = (v: string | number) => `${v}px`;
+
 const getActiveColor = (x: string) =>
   isLight(x) ? darken(0.1, x) : darken(0.05, x);
 
@@ -58,8 +60,9 @@ export default (braidTokens: BraidTokens) => {
 
   const inlineFieldScale =
     (typography.text.standard.mobile.rows * tokens.grid) / 42;
-  const inlineFieldSize =
-    tokens.grid * Math.round(tokens.touchableSize * inlineFieldScale);
+  const inlineFieldSize = px(
+    tokens.grid * Math.round(tokens.touchableSize * inlineFieldScale),
+  );
 
   const resolvedTokens = {
     ...tokens,
@@ -85,9 +88,14 @@ export default (braidTokens: BraidTokens) => {
         },
       },
     },
-    space: mapValues(tokens.space, (sp) => sp * tokens.grid),
-    touchableSize: tokens.touchableSize * tokens.grid,
+    space: mapValues(tokens.space, (sp) => px(sp * tokens.grid)),
+    touchableSize: px(tokens.touchableSize * tokens.grid),
     inlineFieldSize,
+    border: {
+      ...tokens.border,
+      width: mapValues(tokens.border.width, px),
+    },
+    contentWidth: mapValues(tokens.contentWidth, px),
     color: {
       background: {
         ...tokens.color.background,

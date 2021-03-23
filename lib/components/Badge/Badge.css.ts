@@ -1,5 +1,5 @@
 import { style } from '@mattsjones/css-core';
-import { divide, negate, subtract } from '@mattsjones/css-utils';
+import { calc } from '@mattsjones/css-utils';
 import { responsiveStyle } from '../../themes/nextThemeUtils';
 import { themeVars } from '../../themes/themeVars.css';
 
@@ -14,9 +14,9 @@ type TextBreakpoint = keyof typeof themeVars.typography.text.small;
 
 const stylesForBreakpoint = (breakpoint: TextBreakpoint) => {
   const { leading, capHeight } = themeVars.typography.text.small[breakpoint];
-  const padding = subtract(leading, capHeight);
+  const padding = calc.subtract(leading, capHeight);
 
-  return { margin: `${negate(divide(padding, 2))} 0` };
+  return { margin: `${calc(padding).divide(2).negate()} 0` };
 };
 
 export const bleedY = style(

@@ -1,5 +1,5 @@
 import { style } from '@mattsjones/css-core';
-import { add, subtract } from '@mattsjones/css-utils';
+import { calc } from '@mattsjones/css-utils';
 import {
   breakpoints,
   responsiveStyle,
@@ -15,7 +15,7 @@ const headerOffset = style(
       top: headerHeight,
     },
     desktop: {
-      top: add(headerHeight, themeVars.space[gutterSize]),
+      top: calc.add(headerHeight, themeVars.space[gutterSize]),
     },
   }),
 );
@@ -23,7 +23,7 @@ const headerOffset = style(
 const fixedWidthAboveMobile = style(
   responsiveStyle({
     desktop: {
-      width: subtract(menuWidth, themeVars.space[gutterSize]),
+      width: calc.subtract(menuWidth, themeVars.space[gutterSize]),
     },
   }),
 );
@@ -55,7 +55,7 @@ const hideOnMobileWhenClosed = style({
 const subNavOffsetAboveMobile = style(
   responsiveStyle({
     desktop: {
-      marginLeft: subtract(menuWidth, themeVars.space[gutterSize]),
+      marginLeft: calc.subtract(menuWidth, themeVars.space[gutterSize]),
     },
   }),
 );

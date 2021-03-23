@@ -1,5 +1,5 @@
 import { style } from '@mattsjones/css-core';
-import { add, multiply } from '@mattsjones/css-utils';
+import { calc } from '@mattsjones/css-utils';
 import { responsiveStyle } from '../../themes/nextThemeUtils';
 import { themeVars } from '../../themes/themeVars.css';
 
@@ -14,10 +14,10 @@ export const backdropVisible = style({
 });
 
 const calcMenuHeight = (numSuggestions: number) =>
-  add(
-    multiply(themeVars.touchableSize, numSuggestions),
-    themeVars.space.xxsmall,
-  );
+  calc(themeVars.touchableSize)
+    .multiply(numSuggestions)
+    .add(themeVars.space.xxsmall)
+    .toString();
 
 export const menu = style(
   responsiveStyle({

@@ -1,12 +1,12 @@
 import { mapToStyles } from '@mattsjones/css-core';
-import { negate } from '@mattsjones/css-utils';
+import { calc } from '@mattsjones/css-utils';
 import { responsiveStyle } from '../../themes/nextThemeUtils';
 import { themeVars } from '../../themes/themeVars.css';
 
 const { space } = themeVars;
 
 const negativeMarginLeft = (spaceValue: string | number) => ({
-  marginLeft: negate(spaceValue),
+  marginLeft: calc.negate(spaceValue),
 });
 
 export const mobile = mapToStyles({ none: 0, ...space }, (value) =>

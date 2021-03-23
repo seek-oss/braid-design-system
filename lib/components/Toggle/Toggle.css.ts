@@ -1,12 +1,5 @@
 import { style } from '@mattsjones/css-core';
-import {
-  calc,
-  add,
-  subtract,
-  multiply,
-  divide,
-  negate,
-} from '@mattsjones/css-utils';
+import { calc } from '@mattsjones/css-utils';
 import { themeVars } from '../../themes/themeVars.css';
 import { hitArea } from '../private/touchable/hitArea';
 import { debugTouchable } from '../private/touchable/debugTouchable';
@@ -44,21 +37,21 @@ export const label = style({
 });
 
 export const fieldSize = style({
-  width: multiply(themeVars.inlineFieldSize, toggleWidthRatio),
+  width: calc.multiply(themeVars.inlineFieldSize, toggleWidthRatio),
 });
 
 export const slideContainer = style({
   height: themeVars.inlineFieldSize,
 });
 
-const slideTrackHeightCalc = subtract(
+const slideTrackHeightCalc = calc.subtract(
   themeVars.inlineFieldSize,
   themeVars.grid,
 );
 
 export const slideTrack = style({
   height: slideTrackHeightCalc,
-  borderRadius: divide(slideTrackHeightCalc, 2),
+  borderRadius: calc.divide(slideTrackHeightCalc, 2),
   backgroundColor: themeVars.border.color.standard,
   // Fix for Safari border-radius, overflow hidden, transform bug:
   // https://gist.github.com/ayamflow/b602ab436ac9f05660d9c15190f4fd7b
@@ -68,7 +61,7 @@ export const slideTrack = style({
 export const slideTrackSelected = style({
   selectors: {
     [`${realField}:not(:checked) + ${slideContainer} &`]: {
-      transform: `translateX(${negate(themeVars.touchableSize)})`,
+      transform: `translateX(${calc.negate(themeVars.touchableSize)})`,
     },
   },
 });
@@ -79,20 +72,23 @@ const slideDistanceCalc = calc(themeVars.inlineFieldSize)
   .toString();
 
 const anticipationRatio = 0.12;
-const anticipationCalc = multiply(themeVars.inlineFieldSize, anticipationRatio);
+const anticipationCalc = calc.multiply(
+  themeVars.inlineFieldSize,
+  anticipationRatio,
+);
 
 export const slider = style({
   height: themeVars.inlineFieldSize,
   width: themeVars.inlineFieldSize,
   selectors: {
     [`${realField}:active + ${slideContainer} &`]: {
-      transform: `translateX(${negate(anticipationCalc)})`,
+      transform: `translateX(${calc.negate(anticipationCalc)})`,
     },
     [`${realField}:checked + ${slideContainer} &`]: {
       transform: `translateX(${slideDistanceCalc})`,
     },
     [`${realField}:active:checked + ${slideContainer} &`]: {
-      transform: `translateX(${add(slideDistanceCalc, anticipationCalc)})`,
+      transform: `translateX(${calc.add(slideDistanceCalc, anticipationCalc)})`,
     },
   },
 });

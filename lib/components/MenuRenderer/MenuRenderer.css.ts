@@ -1,5 +1,5 @@
 import { style } from '@mattsjones/css-core';
-import { multiply, negate } from '@mattsjones/css-utils';
+import { calc } from '@mattsjones/css-utils';
 import { themeVars } from '../../themes/themeVars.css';
 
 export const root = style({
@@ -13,6 +13,6 @@ export const backdrop = style({
 });
 
 export const menuIsClosed = style({
-  transform: `translateY(${multiply(negate(themeVars.grid), 2)})`,
+  transform: `translateY(${calc(themeVars.grid).negate().multiply(2)})`,
   visibility: 'hidden',
 });
