@@ -32,9 +32,9 @@ const fontSizeToCapHeight = (
 
   return {
     mobile: {
-      capHeight: mobileCapHeight,
+      capHeight: px(mobileCapHeight),
       capHeightFloored: Math.floor(mobileCapHeight),
-      leading: mobile.rows * grid,
+      leading: px(mobile.rows * grid),
       capsizeValues: computeValues({
         capHeight: mobileCapHeight,
         leading: mobile.rows * grid,
@@ -42,9 +42,9 @@ const fontSizeToCapHeight = (
       }),
     },
     tablet: {
-      capHeight: tabletCapHeight,
+      capHeight: px(tabletCapHeight),
       capHeightFloored: Math.floor(tabletCapHeight),
-      leading: tablet.rows * grid,
+      leading: px(tablet.rows * grid),
       capsizeValues: computeValues({
         capHeight: tabletCapHeight,
         leading: tablet.rows * grid,

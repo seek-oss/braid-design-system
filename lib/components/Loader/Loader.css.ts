@@ -1,4 +1,4 @@
-import { style, mapToStyles } from '@mattsjones/css-core';
+import { keyframes, style, mapToStyles } from '@mattsjones/css-core';
 import { responsiveStyle } from '../../themes/nextThemeUtils';
 import { themeVars } from '../../themes/themeVars.css';
 
@@ -15,16 +15,17 @@ export const rootSize = mapToStyles(
     }),
 );
 
-const bounce = style({
-  '@keyframes': {
-    '33%': {
-      transform: `translateY(-.5em)`,
-    },
-    '66%': {
-      transform: 'translateY(0)',
-    },
+const bounce = keyframes({
+  '33%': {
+    transform: `translateY(-.5em)`,
   },
+  '66%': {
+    transform: 'translateY(0)',
+  },
+});
 
+const bounceAnimation = style({
+  animationName: bounce,
   animationFillMode: 'both',
   animationIterationCount: 'infinite',
   animationTimingFunction: 'ease-in-out',
@@ -33,7 +34,7 @@ const bounce = style({
 
 const animationDelay = 0.07;
 export const circle = [
-  bounce,
+  bounceAnimation,
   style({
     selectors: {
       [`&:nth-child(1)`]: {
@@ -50,17 +51,18 @@ export const circle = [
 ];
 
 export const animationDelayValue = 0.8;
+
+const fade = keyframes({
+  from: {
+    opacity: 0,
+  },
+  to: {
+    opacity: 1,
+  },
+});
 export const delay = style({
   opacity: 0,
-  '@keyframes': {
-    from: {
-      opacity: 0,
-    },
-    to: {
-      opacity: 1,
-    },
-  },
-
+  animationName: fade,
   animationIterationCount: '1',
   animationFillMode: 'forwards',
   animationTimingFunction: 'ease-in',
