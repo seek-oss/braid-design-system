@@ -91,13 +91,13 @@ export const BraidProvider = ({
   return (
     <BraidThemeContext.Provider value={theme}>
       <TreatProvider theme={theme.treatTheme}>
+        {styleBody ? (
+          <style type="text/css">{`body{margin:0;padding:0;background:${theme.background}}`}</style>
+        ) : null}
         <div className={theme.nextTheme}>
           <LinkComponentContext.Provider
             value={linkComponent || linkComponentFromContext}
           >
-            {styleBody ? (
-              <style type="text/css">{`body{margin:0;padding:0;background:${theme.background}}`}</style>
-            ) : null}
             {alreadyInBraidProvider || inTestProvider ? (
               children
             ) : (
