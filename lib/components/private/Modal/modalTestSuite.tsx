@@ -7,7 +7,8 @@ import {
   waitFor,
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { BraidTestProvider, Button } from '../..';
+import { Button } from '../../Button/Button';
+import { BraidTestProvider } from '../../BraidTestProvider/BraidTestProvider';
 import { ModalProps } from './Modal';
 
 export const modalTestSuite = (

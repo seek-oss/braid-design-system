@@ -11,3 +11,5 @@ global.console.error = (message: any, ...restArgs: any[]) => {
     ...(typeof message === 'string' ? [format(message, ...restArgs)] : allArgs),
   );
 };
+
+jest.setTimeout(30000);

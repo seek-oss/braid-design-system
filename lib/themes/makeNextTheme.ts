@@ -33,7 +33,7 @@ const fontSizeToCapHeight = (
   return {
     mobile: {
       capHeight: px(mobileCapHeight),
-      capHeightFloored: Math.floor(mobileCapHeight),
+      capHeightFloored: px(Math.floor(mobileCapHeight)),
       leading: px(mobile.rows * grid),
       capsizeValues: computeValues({
         capHeight: mobileCapHeight,
@@ -43,7 +43,7 @@ const fontSizeToCapHeight = (
     },
     tablet: {
       capHeight: px(tabletCapHeight),
-      capHeightFloored: Math.floor(tabletCapHeight),
+      capHeightFloored: px(Math.floor(tabletCapHeight)),
       leading: px(tablet.rows * grid),
       capsizeValues: computeValues({
         capHeight: tabletCapHeight,
@@ -55,7 +55,7 @@ const fontSizeToCapHeight = (
 };
 
 export default (braidTokens: BraidTokens) => {
-  const { name, displayName, ...tokens } = braidTokens;
+  const { name, displayName, breakpoint, ...tokens } = braidTokens;
   const { fontMetrics, webFont, ...typography } = tokens.typography;
 
   const inlineFieldScale =
@@ -77,19 +77,20 @@ export default (braidTokens: BraidTokens) => {
           fontSizeToCapHeight(tokens.grid, definition, fontMetrics),
         ),
         weight: {
-          weak: `${
-            tokens.typography.fontWeight[tokens.typography.heading.weight.weak]
-          }`,
-          regular: `${
+          weak: String(
+            tokens.typography.fontWeight[tokens.typography.heading.weight.weak],
+          ),
+          regular: String(
             tokens.typography.fontWeight[
               tokens.typography.heading.weight.regular
-            ]
-          }`,
+            ],
+          ),
         },
       },
     },
     space: mapValues(tokens.space, (sp) => px(sp * tokens.grid)),
     touchableSize: px(tokens.touchableSize * tokens.grid),
+    grid: px(tokens.grid),
     inlineFieldSize,
     border: {
       ...tokens.border,

@@ -32,12 +32,6 @@ const SPACE = 32;
 const ARROW_UP = 38;
 const ARROW_DOWN = 40;
 
-function isVisible(menu: HTMLElement) {
-  return !Array.from(menu.classList).some((cls) =>
-    cls.startsWith('menuIsClosed'),
-  );
-}
-
 interface MenuTestSuiteParams {
   name: string;
   Component: React.FunctionComponent<
@@ -115,11 +109,11 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
 
         const { menu, menuButton } = getElements({ getAllByRole });
 
-        expect(isVisible(menu)).toBe(false);
+        expect(menu).not.toBeVisible();
 
         userEvent.click(menuButton);
 
-        expect(isVisible(menu)).toBe(true);
+        expect(menu).toBeVisible();
         expect(menuButton).toHaveFocus();
         expect(openHandler).toHaveBeenCalledTimes(1);
         expect(closeHandler).not.toHaveBeenCalled();
@@ -133,7 +127,7 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
         userEvent.click(menuButton);
         userEvent.click(menuButton);
 
-        expect(isVisible(menu)).toBe(false);
+        expect(menu).not.toBeVisible();
         expect(menuButton).toHaveFocus();
         expect(closeHandler).toHaveBeenCalledTimes(1);
       });
@@ -188,12 +182,12 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
         userEvent.click(menuButton);
         openHandler.mockClear(); // Clear initial open invocation, to allow later negative assertion
 
-        expect(isVisible(menu)).toBe(true);
+        expect(menu).toBeVisible();
         // `userEvent` is clashing with state update from the `onMouseEnter` handler
         // on menu item. Need to use `fireEvent`.
         fireEvent.click(menuItems[0]);
 
-        expect(isVisible(menu)).toBe(false);
+        expect(menu).not.toBeVisible();
         expect(openHandler).not.toHaveBeenCalled();
         expect(closeHandler).toHaveBeenCalledTimes(1);
         expect(menuItemHandler).toHaveBeenNthCalledWith(1, 'MenuItem');
@@ -213,7 +207,7 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
         userEvent.click(menuButton);
         openHandler.mockClear(); // Clear initial open invocation, to allow later negative assertion
 
-        expect(isVisible(menu)).toBe(true);
+        expect(menu).toBeVisible();
         const menuItemCheckbox = menuItems[2];
 
         expect(menuItemCheckbox.getAttribute('aria-checked')).toBe('false');
@@ -222,7 +216,7 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
 
         expect(menuItemCheckbox.getAttribute('aria-checked')).toBe('true');
 
-        expect(isVisible(menu)).toBe(true);
+        expect(menu).toBeVisible();
         expect(openHandler).not.toHaveBeenCalled();
         expect(closeHandler).not.toHaveBeenCalled();
         expect(menuItemHandler).toHaveBeenNthCalledWith(1, 'MenuItemCheckbox');
@@ -237,12 +231,12 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
         const { getAllByRole, openHandler, closeHandler } = renderMenu();
 
         const { menu, menuButton } = getElements({ getAllByRole });
-        expect(isVisible(menu)).toBe(false);
+        expect(menu).not.toBeVisible();
 
         fireEvent.keyUp(menuButton, { keyCode: ENTER });
         const { menuItems } = getElements({ getAllByRole });
 
-        expect(isVisible(menu)).toBe(true);
+        expect(menu).toBeVisible();
         expect(menuItems[0]).toHaveFocus();
         expect(openHandler).toHaveBeenCalledTimes(1);
         expect(closeHandler).not.toHaveBeenCalled();
@@ -252,12 +246,12 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
         const { getAllByRole, openHandler, closeHandler } = renderMenu();
 
         const { menu, menuButton } = getElements({ getAllByRole });
-        expect(isVisible(menu)).toBe(false);
+        expect(menu).not.toBeVisible();
 
         fireEvent.keyUp(menuButton, { keyCode: SPACE });
         const { menuItems } = getElements({ getAllByRole });
 
-        expect(isVisible(menu)).toBe(true);
+        expect(menu).toBeVisible();
         expect(menuItems[0]).toHaveFocus();
         expect(openHandler).toHaveBeenCalledTimes(1);
         expect(closeHandler).not.toHaveBeenCalled();
@@ -267,12 +261,12 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
         const { getAllByRole, openHandler, closeHandler } = renderMenu();
 
         const { menu, menuButton } = getElements({ getAllByRole });
-        expect(isVisible(menu)).toBe(false);
+        expect(menu).not.toBeVisible();
 
         fireEvent.keyUp(menuButton, { keyCode: ARROW_DOWN });
         const { menuItems } = getElements({ getAllByRole });
 
-        expect(isVisible(menu)).toBe(true);
+        expect(menu).toBeVisible();
         expect(menuItems[0]).toHaveFocus();
         expect(openHandler).toHaveBeenCalledTimes(1);
         expect(closeHandler).not.toHaveBeenCalled();
@@ -282,12 +276,12 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
         const { getAllByRole, openHandler, closeHandler } = renderMenu();
 
         const { menu, menuButton } = getElements({ getAllByRole });
-        expect(isVisible(menu)).toBe(false);
+        expect(menu).not.toBeVisible();
 
         fireEvent.keyUp(menuButton, { keyCode: ARROW_UP });
         const { menuItems } = getElements({ getAllByRole });
 
-        expect(isVisible(menu)).toBe(true);
+        expect(menu).toBeVisible();
         expect(menuItems[2]).toHaveFocus();
         expect(openHandler).toHaveBeenCalledTimes(1);
         expect(closeHandler).not.toHaveBeenCalled();
@@ -305,7 +299,7 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
 
         fireEvent.keyUp(menuItems[0], { keyCode: ESCAPE });
 
-        expect(isVisible(menu)).toBe(false);
+        expect(menu).not.toBeVisible();
         expect(menuButton).toHaveFocus();
         expect(openHandler).not.toHaveBeenCalled();
         expect(closeHandler).toHaveBeenCalledTimes(1);
@@ -323,7 +317,7 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
 
         fireEvent.keyDown(menuItems[0], { keyCode: TAB });
 
-        expect(isVisible(menu)).toBe(false);
+        expect(menu).not.toBeVisible();
         expect(menuButton).toHaveFocus();
         expect(openHandler).not.toHaveBeenCalled();
         expect(closeHandler).toHaveBeenCalledTimes(1);
@@ -333,7 +327,7 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
         const { getAllByRole } = renderMenu();
 
         const { menu, menuButton } = getElements({ getAllByRole });
-        expect(isVisible(menu)).toBe(false);
+        expect(menu).not.toBeVisible();
 
         fireEvent.keyUp(menuButton, { keyCode: ARROW_DOWN });
         const firstDown = getElements({ getAllByRole });
@@ -360,7 +354,7 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
         const { getAllByRole } = renderMenu();
 
         const { menu, menuButton } = getElements({ getAllByRole });
-        expect(isVisible(menu)).toBe(false);
+        expect(menu).not.toBeVisible();
 
         fireEvent.keyUp(menuButton, { keyCode: ARROW_UP });
         const firstUp = getElements({ getAllByRole });
@@ -396,7 +390,7 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
         // Action the item
         fireEvent.keyUp(firstMenuItem, { keyCode: ENTER });
 
-        expect(isVisible(menu)).toBe(false);
+        expect(menu).not.toBeVisible();
         expect(closeHandler).toHaveBeenCalledTimes(1);
         expect(menuItemHandler).toHaveBeenNthCalledWith(1, 'MenuItem');
         expect(menuButton).toHaveFocus();
@@ -415,7 +409,7 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
         // Action the item
         fireEvent.keyUp(firstMenuItem, { keyCode: SPACE });
 
-        expect(isVisible(menu)).toBe(false);
+        expect(menu).not.toBeVisible();
         expect(closeHandler).toHaveBeenCalledTimes(1);
         expect(menuItemHandler).toHaveBeenNthCalledWith(1, 'MenuItem');
         expect(menuButton).toHaveFocus();
@@ -439,7 +433,7 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
         // Action the item
         fireEvent.keyUp(secondMenuItem, { keyCode: ENTER });
 
-        expect(isVisible(menu)).toBe(false);
+        expect(menu).not.toBeVisible();
         expect(closeHandler).toHaveBeenCalledTimes(1);
         expect(menuItemHandler).toHaveBeenNthCalledWith(1, 'MenuItemLink');
         expect(menuButton).toHaveFocus();
@@ -463,7 +457,7 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
         // Action the item
         fireEvent.keyUp(secondMenuItem, { keyCode: SPACE });
 
-        expect(isVisible(menu)).toBe(false);
+        expect(menu).not.toBeVisible();
         expect(closeHandler).toHaveBeenCalledTimes(1);
         expect(menuItemHandler).toHaveBeenNthCalledWith(1, 'MenuItemLink');
         expect(menuButton).toHaveFocus();
@@ -492,7 +486,7 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
 
         expect(thirdMenuItem.getAttribute('aria-checked')).toBe('true');
 
-        expect(isVisible(menu)).toBe(true);
+        expect(menu).toBeVisible();
         expect(closeHandler).toHaveBeenCalledTimes(0);
         expect(menuItemHandler).toHaveBeenNthCalledWith(1, 'MenuItemCheckbox');
       });
@@ -520,7 +514,7 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
 
         expect(thirdMenuItem.getAttribute('aria-checked')).toBe('true');
 
-        expect(isVisible(menu)).toBe(true);
+        expect(menu).toBeVisible();
         expect(closeHandler).toHaveBeenCalledTimes(0);
         expect(menuItemHandler).toHaveBeenNthCalledWith(1, 'MenuItemCheckbox');
       });
