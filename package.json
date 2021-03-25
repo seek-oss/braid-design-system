@@ -7,7 +7,8 @@
     "lib/themes/**/*",
     "lib/reset/**/*",
     "themes/**/*",
-    "reset/**/*"
+    "reset/**/*",
+    "*.css.ts"
   ],
   "scripts": {
     "test": "SKU_TELEMETRY=false sku test",
