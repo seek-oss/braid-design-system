@@ -1,5 +1,5 @@
 import omit from 'lodash/omit';
-import { style, mapToStyles } from '@mattsjones/css-core';
+import { style, mapToStyles } from '@vanilla-extract/css';
 
 import { themeVars } from './../../themes/themeVars.css';
 import { responsiveStyle } from '../../themes/nextThemeUtils';

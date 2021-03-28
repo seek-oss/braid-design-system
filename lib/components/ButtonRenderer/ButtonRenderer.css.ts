@@ -1,5 +1,5 @@
-import { keyframes, style } from '@mattsjones/css-core';
-import { calc } from '@mattsjones/css-utils';
+import { keyframes, style } from '@vanilla-extract/css';
+import { calc } from '@vanilla-extract/css-utils';
 import { responsiveStyle } from '../../themes/nextThemeUtils';
 import { themeVars } from '../../themes/themeVars.css';
 

@@ -1,4 +1,4 @@
-import { style } from '@mattsjones/css-core';
+import { style } from '@vanilla-extract/css';
 import { hideFocusRingsDataAttribute } from '../components/private/hideFocusRings/hideFocusRingsDataAttribute';
 
 export const base = style({

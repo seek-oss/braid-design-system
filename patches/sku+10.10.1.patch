@@ -6,7 +6,7 @@ index f61c7c2..46975ee 100644
      require.resolve('babel-plugin-macros'),
      require.resolve('@loadable/babel-plugin'),
      [require.resolve('babel-plugin-treat'), { alias: 'sku/treat' }],
-+    require.resolve('@mattsjones/css-babel-plugin')
++    require.resolve('@vanilla-extract/babel-plugin')
    ];
  
    if (hot && isBrowser) {
@@ -27,7 +27,7 @@ index 559e25a..42e33a7 100644
          oneOf: [
            {
 -            compiler: 'treat-webpack-loader',
-+            compiler: /^treat-webpack/,
++            compiler: /^vanilla-extract/,
              use: makeJsLoaders({
                target: 'node',
                lang: 'ts',

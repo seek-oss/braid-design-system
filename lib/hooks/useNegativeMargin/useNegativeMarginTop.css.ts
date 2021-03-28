@@ -1,5 +1,5 @@
-import { style, mapToStyles } from '@mattsjones/css-core';
-import { calc } from '@mattsjones/css-utils';
+import { style, mapToStyles } from '@vanilla-extract/css';
+import { calc } from '@vanilla-extract/css-utils';
 import { responsiveStyle } from '../../themes/nextThemeUtils';
 import { themeVars } from '../../themes/themeVars.css';
 

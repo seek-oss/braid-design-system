@@ -1,5 +1,5 @@
-import { calc } from '@mattsjones/css-utils';
-import { style } from '@mattsjones/css-core';
+import { calc } from '@vanilla-extract/css-utils';
+import { style } from '@vanilla-extract/css';
 import { themeVars } from '../../themes/themeVars.css';
 
 export const field = style({

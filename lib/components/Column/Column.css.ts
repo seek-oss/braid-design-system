@@ -1,4 +1,4 @@
-import { style, mapToStyles } from '@mattsjones/css-core';
+import { style, mapToStyles } from '@vanilla-extract/css';
 
 export const column = style({});
 

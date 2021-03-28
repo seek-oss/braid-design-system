@@ -1,5 +1,5 @@
 import { isEqual, omit } from 'lodash';
-import { StyleRule } from '@mattsjones/css-core';
+import { StyleRule } from '@vanilla-extract/css';
 import { Properties, SimplePseudos } from 'csstype';
 
 export const breakpoints = {

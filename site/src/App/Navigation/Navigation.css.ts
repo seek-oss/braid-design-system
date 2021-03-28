@@ -1,5 +1,5 @@
-import { style } from '@mattsjones/css-core';
-import { calc } from '@mattsjones/css-utils';
+import { style } from '@vanilla-extract/css';
+import { calc } from '@vanilla-extract/css-utils';
 import {
   breakpoints,
   responsiveStyle,

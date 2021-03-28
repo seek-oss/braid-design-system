@@ -1,4 +1,4 @@
-import { style } from '@mattsjones/css-core';
+import { style } from '@vanilla-extract/css';
 
 import { debugTouchable } from './debugTouchable';
 import { virtualTouchableRules } from './virtualTouchableRules';

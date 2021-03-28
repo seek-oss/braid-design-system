@@ -1,4 +1,4 @@
-import { createTheme, style } from '@mattsjones/css-core';
+import { createTheme, style } from '@vanilla-extract/css';
 
 export const [lightTheme, themeVars] = createTheme({
   background: 'hsla(0, 0%, 20%, 0.08)',

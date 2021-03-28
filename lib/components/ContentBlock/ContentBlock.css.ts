@@ -1,3 +1,3 @@
-import { style } from '@mattsjones/css-core';
+import { style } from '@vanilla-extract/css';
 
 export const marginAuto = style({ margin: '0 auto' });

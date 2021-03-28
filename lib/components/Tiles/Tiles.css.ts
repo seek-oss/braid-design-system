@@ -1,4 +1,4 @@
-import { mapToStyles } from '@mattsjones/css-core';
+import { mapToStyles } from '@vanilla-extract/css';
 import { responsiveStyle } from '../../themes/nextThemeUtils';
 import { BraidTokens } from '../../themes/tokenType';
 

@@ -1860,45 +1860,6 @@
     globby "^11.0.0"
     read-yaml-file "^1.1.0"
 
-"@mattsjones/css-babel-plugin@^0.0.7":
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/@mattsjones/css-babel-plugin/-/css-babel-plugin-0.0.7.tgz#b4163a4d695a2672af1bb70099dfe6ab14046f77"
-  integrity sha512-akf87dE2RXb4z80sQUDAx00gYAS78EZbzphuth2JfI8kckKhOPbwLqBFbX92m0XzE4SwTuqEaj4FiWlxOZk03w==
-  dependencies:
-    "@babel/core" "^7.13.10"
-    "@babel/template" "^7.12.13"
-
-"@mattsjones/css-core@^0.0.16":
-  version "0.0.16"
-  resolved "https://registry.yarnpkg.com/@mattsjones/css-core/-/css-core-0.0.16.tgz#19561c8d2943e34fbccd1466e7a575e1e63cb086"
-  integrity sha512-KBm1/+qjluBnH73dxSDjFUIgph1etmZ3Y6rg4G3Q19JUGI23ibCqCflVDZhhypAcWfowgTnP1zYZN+S3N6bs4w==
-  dependencies:
-    "@emotion/hash" "^0.8.0"
-    css-selector-parser "^1.4.1"
-    cssesc "^3.0.0"
-    csstype "^3.0.7"
-    dedent "^0.7.0"
-
-"@mattsjones/css-utils@^0.0.5":
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/@mattsjones/css-utils/-/css-utils-0.0.5.tgz#85b14e69de7eceda688ef029573381db8b6157b1"
-  integrity sha512-EHGUYJCj7BArI34hhDzIVsbv4SqrGJMTyEDs6R4QxfcCVGApEz5wFsqceXpeKnRTH4vCItRd7J13fm3Q6JD6cA==
-
-"@mattsjones/css-webpack-plugin@^0.0.15":
-  version "0.0.15"
-  resolved "https://registry.yarnpkg.com/@mattsjones/css-webpack-plugin/-/css-webpack-plugin-0.0.15.tgz#518283a59e59a22d3e245cb9ac43223436826608"
-  integrity sha512-ti6vHA3Bcf7Fq/MgUzoDZfrbWMWVJ7RsIxW7j3s5z9JYtojZwU2H7PAzACKIeLQL97eJh0MSNj8LsPBmgdfyzQ==
-  dependencies:
-    "@mattsjones/css-core" "^0.0.16"
-    chalk "^4.1.0"
-    debug "^4.3.1"
-    dedent "^0.7.0"
-    eval "^0.1.6"
-    javascript-stringify "^2.0.1"
-    loader-utils "^2.0.0"
-    lodash "^4.17.21"
-    virtual-resource-loader "^1.0.0"
-
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/@mrmlnc/readdir-enhanced/-/readdir-enhanced-2.2.1.tgz#524af240d1a360527b730475ecfa1344aa540dde"
@@ -3199,6 +3160,45 @@
   dependencies:
     "@typescript-eslint/types" "4.14.2"
     eslint-visitor-keys "^2.0.0"
+
+"@vanilla-extract/babel-plugin@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@vanilla-extract/babel-plugin/-/babel-plugin-0.1.0.tgz#5e9047471a7b8c91d6100caecc33a8b73e2cc86a"
+  integrity sha512-9rLg2it3D3BpsCmrbFz7HxV7QsAG2aAXvyo/gSSmAAXUWhUuVUV1lhLH6w73/YXxgov+ADyahMbuTQVqabquiQ==
+  dependencies:
+    "@babel/core" "^7.13.10"
+    "@babel/template" "^7.12.13"
+
+"@vanilla-extract/css-utils@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@vanilla-extract/css-utils/-/css-utils-0.1.0.tgz#1bc2c69aa9791fbcb1432be4dd560d26e292db91"
+  integrity sha512-7ukJueCazh9PQRZXQOO2NrlnUy0DNEoYWEBR5Yeu9KKYY5FRdB1TAIRFhBeFP9Mczl5ApT+tAUKOGBf+XVh/xA==
+
+"@vanilla-extract/css@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@vanilla-extract/css/-/css-0.1.0.tgz#79315b9772137d81554b766879375e96dd9767bc"
+  integrity sha512-Peix9Io21G2uN6L39rf3FGK9hH6NXZbOu0dneH/yJSoDiFeqcxNNN3tp+rP4+jvZ2RNL8n2wRDwS2xUXKlh8vw==
+  dependencies:
+    "@emotion/hash" "^0.8.0"
+    css-selector-parser "^1.4.1"
+    cssesc "^3.0.0"
+    csstype "^3.0.7"
+    dedent "^0.7.0"
+
+"@vanilla-extract/webpack-plugin@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@vanilla-extract/webpack-plugin/-/webpack-plugin-0.1.0.tgz#d0d09db7c32fa4024ee5067d62cec2460c408f45"
+  integrity sha512-D3Iyy3WKdzTQ+HYkbxd6weFuHsiLMO+A2KBkq5vu9bOz0wOI4jK7USl7GDNCTNeVs+fwO1KE5bW5E+LdPwml3Q==
+  dependencies:
+    "@vanilla-extract/css" "^0.1.0"
+    chalk "^4.1.0"
+    debug "^4.3.1"
+    dedent "^0.7.0"
+    eval "^0.1.6"
+    javascript-stringify "^2.0.1"
+    loader-utils "^2.0.0"
+    lodash "^4.17.21"
+    virtual-resource-loader "^1.0.0"
 
 "@vocab/core@^1.0.0", "@vocab/core@^1.0.1":
   version "1.0.1"

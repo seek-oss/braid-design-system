@@ -1,4 +1,4 @@
-import { style } from '@mattsjones/css-core';
+import { style } from '@vanilla-extract/css';
 import { themeVars } from '../../../../../lib/themes/themeVars.css';
 
 export const loader = style({

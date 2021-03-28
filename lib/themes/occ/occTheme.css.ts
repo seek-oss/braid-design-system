@@ -1,4 +1,4 @@
-import { createTheme } from '@mattsjones/css-core';
+import { createTheme } from '@vanilla-extract/css';
 import { themeVars } from '../themeVars.css';
 import makeNextTheme from '../makeNextTheme';
 

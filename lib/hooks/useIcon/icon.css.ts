@@ -1,4 +1,4 @@
-import { style, mapToStyles } from '@mattsjones/css-core';
+import { style, mapToStyles } from '@vanilla-extract/css';
 import { responsiveStyle } from '../../themes/nextThemeUtils';
 import { themeVars } from '../../themes/themeVars.css';
 

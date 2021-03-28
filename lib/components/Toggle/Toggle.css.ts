@@ -1,5 +1,5 @@
-import { style } from '@mattsjones/css-core';
-import { calc } from '@mattsjones/css-utils';
+import { style } from '@vanilla-extract/css';
+import { calc } from '@vanilla-extract/css-utils';
 import { themeVars } from '../../themes/themeVars.css';
 import { hitArea } from '../private/touchable/hitArea';
 import { debugTouchable } from '../private/touchable/debugTouchable';

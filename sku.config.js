@@ -1,6 +1,6 @@
 const routes = require('./sku.routes.js');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
-const { TreatPlugin } = require('@mattsjones/css-webpack-plugin');
+const { VanillaExtractPlugin } = require('@vanilla-extract/webpack-plugin');
 
 const isGitHubPages = Boolean(process.env.IS_GITHUB_PAGES);
 
@@ -49,7 +49,7 @@ module.exports = {
     );
 
     config.plugins.push(
-      new TreatPlugin({
+      new VanillaExtractPlugin({
         test: /\.css\.ts$/,
         outputCss: config.target !== 'node',
       }),
