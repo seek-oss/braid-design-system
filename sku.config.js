@@ -1,6 +1,5 @@
 const routes = require('./sku.routes.js');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
-const { VanillaExtractPlugin } = require('@vanilla-extract/webpack-plugin');
 
 const isGitHubPages = Boolean(process.env.IS_GITHUB_PAGES);
 
@@ -45,13 +44,6 @@ module.exports = {
       new CircularDependencyPlugin({
         exclude: /node_modules/,
         failOnError: true,
-      }),
-    );
-
-    config.plugins.push(
-      new VanillaExtractPlugin({
-        test: /\.css\.ts$/,
-        outputCss: config.target !== 'node',
       }),
     );
 
