@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { ComponentScreenshot } from '../../../site/src/types';
 import { Box, Button, IconNewWindow, Stack, Text } from '../../components';
 import { Actions } from './Actions';
-import { background as boxBackgrounds } from '../Box/useBoxStyles.css';
+import { background as boxBackgrounds } from '../Box/boxStyles.css';
 import { TextLink } from '../TextLink/TextLink';
 
 export const screenshots: ComponentScreenshot = {

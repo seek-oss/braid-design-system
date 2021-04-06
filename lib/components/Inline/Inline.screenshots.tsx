@@ -3,7 +3,7 @@ import { ComponentScreenshot } from '../../../site/src/types';
 import { Placeholder } from '../private/Placeholder/Placeholder';
 import { InlineProps } from './Inline';
 import { Box, Inline } from '../';
-import { padding } from '../Box/useBoxStyles.css';
+import { padding } from '../Box/boxStyles.css';
 
 const spaces = Object.keys(padding.top).filter(
   (space) => space !== 'none',

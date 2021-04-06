@@ -1,9 +1,6 @@
 import React, { ReactNode, Fragment } from 'react';
 import { ComponentScreenshot } from '../../../site/src/types';
-import {
-  background as boxBackgrounds,
-  textAlign,
-} from '../Box/useBoxStyles.css';
+import { background as boxBackgrounds, textAlign } from '../Box/boxStyles.css';
 import { heading as headingLevels } from '../../hooks/typography/typography.css';
 import { Box, Heading, Stack } from '../';
 

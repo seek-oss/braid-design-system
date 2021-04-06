@@ -2,10 +2,7 @@ import React, { Fragment, ReactNode } from 'react';
 import { titleCase } from 'title-case';
 import { ComponentScreenshot } from '../../../site/src/types';
 import { Box, Text, Stack, Column, Columns, IconPositive } from '../';
-import {
-  background as boxBackgrounds,
-  textAlign,
-} from '../Box/useBoxStyles.css';
+import { background as boxBackgrounds, textAlign } from '../Box/boxStyles.css';
 import { text as textSizes } from '../../hooks/typography/typography.css';
 
 const Container = ({ children }: { children: ReactNode }) => (

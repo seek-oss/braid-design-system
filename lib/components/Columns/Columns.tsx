@@ -1,7 +1,7 @@
 import React, { createContext, ReactElement } from 'react';
 import { Box } from '../Box/Box';
 import { ColumnProps } from '../Column/Column';
-import { Space, ResponsiveSpace } from '../Box/useBoxStyles';
+import { Space, ResponsiveSpace } from '../Box/boxStyles';
 import { useNegativeMarginLeft } from '../../hooks/useNegativeMargin/useNegativeMargin';
 import { normaliseResponsiveProp } from '../../utils/responsiveProp';
 import {
