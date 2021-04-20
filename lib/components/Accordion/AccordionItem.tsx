@@ -22,7 +22,7 @@ import {
 } from './AccordionContext';
 import * as styleRefs from './AccordionItem.treat';
 
-const accordionSpaceForSize = {
+const itemSpaceForSize = {
   xsmall: 'small',
   small: 'medium',
   standard: 'medium',
@@ -70,7 +70,7 @@ export const AccordionItem = ({
   const size = accordionContext?.size ?? sizeProp ?? 'large';
   const tone = accordionContext?.tone ?? toneProp ?? 'neutral';
   const weight = 'medium';
-  const accordionSpace = accordionSpaceForSize[size] ?? 'none';
+  const itemSpace = itemSpaceForSize[size] ?? 'none';
 
   assert(
     typeof label === 'undefined' || typeof label === 'string',
@@ -107,7 +107,7 @@ export const AccordionItem = ({
             https://stackoverflow.com/questions/41100273/overflowing-button-text-is-being-clipped-in-safari
           */}
           <Box position="relative">
-            <Columns space={accordionSpace}>
+            <Columns space={itemSpace}>
               <Column>
                 <Text size={size} weight={weight} tone={tone} component="div">
                   {label}
@@ -134,7 +134,7 @@ export const AccordionItem = ({
         />
       </Box>
       <Box
-        paddingTop={accordionSpace}
+        paddingTop={itemSpace}
         display={expanded ? 'block' : 'none'}
         {...contentProps}
       >
