@@ -1,8 +1,9 @@
 import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import source from '../../utils/source.macro';
-import { Accordion, AccordionItem, Stack, Text, TextLink, Strong } from '../';
+import { Accordion, AccordionItem, Card, Text, TextLink, Strong } from '../';
 import { Placeholder } from '../../playroom/components';
+import { validSpaceValues } from './Accordion';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -50,6 +51,75 @@ const docs: ComponentDocs = {
   ],
   additional: [
     {
+      label: 'Customising the appearance',
+      description: (
+        <>
+          <Text>
+            You can customise the <Strong>size</Strong> and{' '}
+            <Strong>tone</Strong> props, and optionally set the{' '}
+            <Strong>dividers</Strong> prop to <Strong>false.</Strong>
+          </Text>
+          <Text>
+            While we aim to provide sensible defaults, you can also provide a
+            custom <Strong>space</Strong> value to adjust the spacing between
+            items. Note that, to ensure adequate space for touch targets, the{' '}
+            <Strong>space</Strong> prop only accepts values of{' '}
+            {validSpaceValues.map((value, i) => (
+              <React.Fragment key={value}>
+                {i === validSpaceValues.length - 1 ? ' and ' : ''}
+                {i !== validSpaceValues.length - 1 && i !== 0 ? ', ' : ''}
+                <Strong>“{value}”</Strong>
+              </React.Fragment>
+            ))}
+            .
+          </Text>
+        </>
+      ),
+      Example: ({ id }) =>
+        source(
+          <Card>
+            <Accordion
+              size="standard"
+              tone="secondary"
+              space="xlarge"
+              dividers={false}
+            >
+              <AccordionItem label="Accordion item 1" id={`${id}_1`}>
+                <Placeholder height={80} />
+              </AccordionItem>
+              <AccordionItem label="Accordion item 2" id={`${id}_2`}>
+                <Placeholder height={80} />
+              </AccordionItem>
+              <AccordionItem label="Accordion item 3" id={`${id}_3`}>
+                <Placeholder height={80} />
+              </AccordionItem>
+            </Accordion>
+          </Card>,
+        ),
+    },
+    {
+      label: 'Standalone items',
+      description: (
+        <Text>
+          To allow further layout customisation, individual items can be
+          rendered outside of an Accordion.
+        </Text>
+      ),
+      Example: ({ id }) =>
+        source(
+          <Card>
+            <AccordionItem
+              label="Standalone item"
+              size="standard"
+              tone="secondary"
+              id={`${id}_1`}
+            >
+              <Placeholder height={80} />
+            </AccordionItem>
+          </Card>,
+        ),
+    },
+    {
       label: 'Managing state',
       description: (
         <Text>
@@ -93,31 +163,6 @@ const docs: ComponentDocs = {
               </AccordionItem>
             </Accordion>
           </>,
-        ),
-    },
-    {
-      label: 'Customising the layout',
-      description: (
-        <Text>
-          By default, an <Strong>AccordionItem</Strong> does not allow consumers
-          to control the use of white space or its dividers. If there is a need
-          to diverge from the standard design, an <Strong>AccordionItem</Strong>{' '}
-          may be used outside of an <Strong>Accordion</Strong>.
-        </Text>
-      ),
-      Example: ({ id }) =>
-        source(
-          <Stack space="xlarge">
-            <AccordionItem label="Label" id={`${id}_1`}>
-              <Placeholder height={80} />
-            </AccordionItem>
-            <AccordionItem label="Label" id={`${id}_2`}>
-              <Placeholder height={80} />
-            </AccordionItem>
-            <AccordionItem label="Label" id={`${id}_3`}>
-              <Placeholder height={80} />
-            </AccordionItem>
-          </Stack>,
         ),
     },
   ],
