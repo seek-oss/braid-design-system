@@ -15,7 +15,11 @@ import {
 import { useVirtualTouchable } from '../private/touchable/useVirtualTouchable';
 import { hideFocusRingsClassName } from '../private/hideFocusRings/hideFocusRings';
 import { Overlay } from '../private/Overlay/Overlay';
-import { AccordionContext } from './AccordionContext';
+import {
+  AccordionContext,
+  AccordionContextValue,
+  validTones,
+} from './AccordionContext';
 import * as styleRefs from './AccordionItem.treat';
 
 const accordionSpaceForSize = {
@@ -29,7 +33,7 @@ export type AccordionItemBaseProps = {
   label: string;
   children: ReactNode;
   size?: TextProps['size'];
-  tone?: TextProps['tone'];
+  tone?: AccordionContextValue['tone'];
 };
 
 export type AccordionItemProps = AccordionItemBaseProps & UseDisclosureProps;
@@ -54,6 +58,13 @@ export const AccordionItem = ({
   assert(
     !(accordionContext && toneProp),
     'Tone cannot be set on AccordionItem when inside Accordion. Tone should be set on Accordion instead.',
+  );
+
+  assert(
+    toneProp === undefined || validTones.includes(toneProp),
+    `The 'tone' prop should be one of the following: ${validTones
+      .map((x) => `"${x}"`)
+      .join(', ')}`,
   );
 
   const size = accordionContext?.size ?? sizeProp ?? 'large';
@@ -103,11 +114,13 @@ export const AccordionItem = ({
                 </Text>
               </Column>
               <Column width="content">
-                <Text size={size} weight={weight} tone={tone} component="div">
-                  <IconChevron
-                    tone="secondary"
-                    direction={expanded ? 'up' : 'down'}
-                  />
+                <Text
+                  size={size}
+                  weight={weight}
+                  tone={tone === 'neutral' ? 'secondary' : tone}
+                  component="div"
+                >
+                  <IconChevron direction={expanded ? 'up' : 'down'} />
                 </Text>
               </Column>
             </Columns>

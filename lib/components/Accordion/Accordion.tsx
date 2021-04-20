@@ -4,7 +4,11 @@ import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import { Box } from '../Box/Box';
 import { Stack } from '../Stack/Stack';
 import { Divider } from '../Divider/Divider';
-import { AccordionContext, AccordionContextValue } from './AccordionContext';
+import {
+  AccordionContext,
+  AccordionContextValue,
+  validTones,
+} from './AccordionContext';
 import {
   normaliseResponsiveProp,
   ResponsiveProp,
@@ -48,6 +52,13 @@ export const Accordion = ({
         validSpaceValues.includes(value),
       ),
     `To ensure adequate space for touch targets, 'space' prop values must be one of the following: ${validSpaceValues
+      .map((x) => `"${x}"`)
+      .join(', ')}`,
+  );
+
+  assert(
+    tone === undefined || validTones.includes(tone),
+    `The 'tone' prop should be one of the following: ${validTones
       .map((x) => `"${x}"`)
       .join(', ')}`,
   );
