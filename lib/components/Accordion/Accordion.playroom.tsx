@@ -29,8 +29,15 @@ const filterSpace = (space: NonNullable<AccordionProps['space']>) => {
   return filteredSpace as Readonly<typeof filteredSpace>;
 };
 
-export const Accordion = ({ space, ...restProps }: AccordionProps) => (
+export const Accordion = ({
+  space,
+  size,
+  tone,
+  ...restProps
+}: AccordionProps) => (
   <BraidAccordion
+    size={typeof size === 'boolean' ? undefined : size}
+    tone={typeof tone === 'boolean' ? undefined : tone}
     space={
       typeof space === 'string' || Array.isArray(space)
         ? filterSpace(space)
