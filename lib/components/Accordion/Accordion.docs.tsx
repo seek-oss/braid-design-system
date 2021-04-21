@@ -98,28 +98,6 @@ const docs: ComponentDocs = {
         ),
     },
     {
-      label: 'Standalone items',
-      description: (
-        <Text>
-          To allow further layout customisation, individual items can be
-          rendered outside of an Accordion.
-        </Text>
-      ),
-      Example: ({ id }) =>
-        source(
-          <Card>
-            <AccordionItem
-              label="Standalone item"
-              size="standard"
-              tone="secondary"
-              id={`${id}_1`}
-            >
-              <Placeholder height={80} />
-            </AccordionItem>
-          </Card>,
-        ),
-    },
-    {
       label: 'Managing state',
       description: (
         <Text>
