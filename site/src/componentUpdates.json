@@ -1471,5 +1471,16 @@
         "summary": "**Textarea:** Highlight excess characters when `characterLimit` is provided"
       }
     ]
+  },
+  {
+    "version": "29.30.0",
+    "updates": [
+      {
+        "updated": [
+          "Accordion"
+        ],
+        "summary": "**Accordion, AccordionItem:** Allow customisation of size, tone, space and dividers.\n\nNote that, to ensure adequate space for touch targets, the `space` prop only accepts values of `\"medium\"`, `\"large\"` and `\"xlarge\"`.\n\n**EXAMPLE USAGE**\n\n```tsx\n<Accordion size=\"standard\" tone=\"secondary\" space=\"xlarge\" dividers={false}>\n  <AccordionItem label=\"Accordion item 1\">...</AccordionItem>\n  <AccordionItem label=\"Accordion item 2\">...</AccordionItem>\n  <AccordionItem label=\"Accordion item 3\">...</AccordionItem>\n</Accordion>\n```"
+      }
+    ]
   }
 ]

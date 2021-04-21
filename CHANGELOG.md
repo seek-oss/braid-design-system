@@ -1,5 +1,27 @@
 # braid-design-system
 
+## 29.30.0
+
+### Minor Changes
+
+- **Accordion, AccordionItem:** Allow customisation of size, tone, space and dividers. ([#925](https://github.com/seek-oss/braid-design-system/pull/925))
+
+  Note that, to ensure adequate space for touch targets, the `space` prop only accepts values of `"medium"`, `"large"` and `"xlarge"`.
+
+  **EXAMPLE USAGE**
+
+  ```tsx
+  <Accordion size="standard" tone="secondary" space="xlarge" dividers={false}>
+    <AccordionItem label="Accordion item 1">...</AccordionItem>
+    <AccordionItem label="Accordion item 2">...</AccordionItem>
+    <AccordionItem label="Accordion item 3">...</AccordionItem>
+  </Accordion>
+  ```
+
+### Patch Changes
+
+- Update capsize dependency ([#921](https://github.com/seek-oss/braid-design-system/pull/921))
+
 ## 29.29.3
 
 ### Patch Changes
