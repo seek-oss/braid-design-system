@@ -1,10 +1,10 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useContext } from 'react';
 import { useStyles } from 'sku/react-treat';
 import assert from 'assert';
 import { Box } from '../Box/Box';
+import { Text, TextProps } from '../Text/Text';
 import { Columns } from '../Columns/Columns';
 import { Column } from '../Column/Column';
-import { Heading } from '../Heading/Heading';
 import { IconChevron } from '../icons';
 import {
   useDisclosure,
@@ -15,13 +15,25 @@ import {
 import { useVirtualTouchable } from '../private/touchable/useVirtualTouchable';
 import { hideFocusRingsClassName } from '../private/hideFocusRings/hideFocusRings';
 import { Overlay } from '../private/Overlay/Overlay';
+import {
+  AccordionContext,
+  AccordionContextValue,
+  validTones,
+} from './AccordionContext';
 import * as styleRefs from './AccordionItem.treat';
 
-const accordionSpace = 'large';
+const itemSpaceForSize = {
+  xsmall: 'small',
+  small: 'medium',
+  standard: 'medium',
+  large: 'large',
+} as const;
 
 export type AccordionItemBaseProps = {
   label: string;
   children: ReactNode;
+  size?: TextProps['size'];
+  tone?: AccordionContextValue['tone'];
 };
 
 export type AccordionItemProps = AccordionItemBaseProps & UseDisclosureProps;
@@ -31,9 +43,34 @@ export const AccordionItem = ({
   id,
   label,
   children,
+  size: sizeProp,
+  tone: toneProp,
   ...restProps
 }: AccordionItemProps) => {
   const styles = useStyles(styleRefs);
+
+  const accordionContext = useContext(AccordionContext);
+
+  assert(
+    !(accordionContext && sizeProp),
+    'Size cannot be set on AccordionItem when inside Accordion. Size should be set on Accordion instead.',
+  );
+  assert(
+    !(accordionContext && toneProp),
+    'Tone cannot be set on AccordionItem when inside Accordion. Tone should be set on Accordion instead.',
+  );
+
+  assert(
+    toneProp === undefined || validTones.includes(toneProp),
+    `The 'tone' prop should be one of the following: ${validTones
+      .map((x) => `"${x}"`)
+      .join(', ')}`,
+  );
+
+  const size = accordionContext?.size ?? sizeProp ?? 'large';
+  const tone = accordionContext?.tone ?? toneProp ?? 'neutral';
+  const weight = 'medium';
+  const itemSpace = itemSpaceForSize[size] ?? 'none';
 
   assert(
     typeof label === 'undefined' || typeof label === 'string',
@@ -70,19 +107,21 @@ export const AccordionItem = ({
             https://stackoverflow.com/questions/41100273/overflowing-button-text-is-being-clipped-in-safari
           */}
           <Box position="relative">
-            <Columns space={accordionSpace}>
+            <Columns space={itemSpace}>
               <Column>
-                <Heading component="div" level="4">
+                <Text size={size} weight={weight} tone={tone} component="div">
                   {label}
-                </Heading>
+                </Text>
               </Column>
               <Column width="content">
-                <Heading component="div" level="4">
-                  <IconChevron
-                    tone="secondary"
-                    direction={expanded ? 'up' : 'down'}
-                  />
-                </Heading>
+                <Text
+                  size={size}
+                  weight={weight}
+                  tone={tone === 'neutral' ? 'secondary' : tone}
+                  component="div"
+                >
+                  <IconChevron direction={expanded ? 'up' : 'down'} />
+                </Text>
               </Column>
             </Columns>
           </Box>
@@ -95,7 +134,7 @@ export const AccordionItem = ({
         />
       </Box>
       <Box
-        paddingTop={accordionSpace}
+        paddingTop={itemSpace}
         display={expanded ? 'block' : 'none'}
         {...contentProps}
       >
