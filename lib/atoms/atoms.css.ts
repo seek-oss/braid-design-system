@@ -33,16 +33,20 @@ const boxShadow = {
   borderStandardInvertedLarge: `inset 0 0 0 ${borderWidth.large} ${color.standardInverted}`,
 };
 
+export const pseudoAtomicStyles = createAtomicStyles({
+  defaultCondition: false,
+  conditions: {
+    active: {
+      selector: '&:active',
+    },
+  },
+  properties: {
+    transform: themeVars.transforms,
+  },
+});
+
 export const unresponsiveAtomicStyles = createAtomicStyles({
   properties: {
-    // Custom styles can't be done currently
-    //     touchable: style({
-    //       ':active': { transform: themeVars.transforms.touchable },
-    //     }),
-    //   };
-    transform: {
-      touchable: 'none',
-    },
     background: themeVars.color.background,
     overflow: ['hidden', 'scroll', 'visible', 'auto'],
     userSelect: ['none'],
