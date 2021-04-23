@@ -81,7 +81,7 @@
     "@babel/preset-typescript": "^7.12.7",
     "@changesets/cli": "^2.14.0",
     "@changesets/get-github-info": "^0.4.5",
-    "@vanilla-extract/css": "^0.1.0",
+    "@vanilla-extract/css": "^0.3.0",
     "@vanilla-extract/css-utils": "^0.1.0",
     "@octokit/rest": "^18.0.15",
     "@svgr/core": "^5.5.0",

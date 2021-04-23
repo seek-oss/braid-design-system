@@ -1,4 +1,4 @@
-import { style, mapToStyles } from '@vanilla-extract/css';
+import { style, styleVariants } from '@vanilla-extract/css';
 import { responsiveStyle } from '../../themes/nextThemeUtils';
 import { themeVars } from '../../themes/themeVars.css';
 
@@ -15,19 +15,19 @@ const uppercaseNudge = -0.105;
 const lowercaseNudge = uppercaseNudge + 0.04;
 const verticalCorrection = 0.06;
 export const alignY = {
-  uppercase: mapToStyles({
+  uppercase: styleVariants({
     none: { top: `${uppercaseNudge}em` },
     up: { top: `${uppercaseNudge - verticalCorrection}em` },
     down: { top: `${uppercaseNudge + verticalCorrection}em` },
   }),
-  lowercase: mapToStyles({
+  lowercase: styleVariants({
     none: { top: `${lowercaseNudge}em` },
     up: { top: `${lowercaseNudge - verticalCorrection}em` },
     down: { top: `${lowercaseNudge + verticalCorrection}em` },
   }),
 };
 
-export const blockWidths = mapToStyles(
+export const blockWidths = styleVariants(
   themeVars.typography.text,
   ({ mobile, tablet }) =>
     responsiveStyle({

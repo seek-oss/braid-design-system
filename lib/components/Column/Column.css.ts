@@ -1,4 +1,4 @@
-import { style, mapToStyles } from '@vanilla-extract/css';
+import { style, styleVariants } from '@vanilla-extract/css';
 
 export const column = style({});
 
@@ -14,7 +14,7 @@ const getSizeStyle = (scale: number) => ({
   flex: `0 0 ${scale * 100}%`,
 });
 
-export const width = mapToStyles({
+export const width = styleVariants({
   '1/2': getSizeStyle(1 / 2),
   '1/3': getSizeStyle(1 / 3),
   '2/3': getSizeStyle(2 / 3),

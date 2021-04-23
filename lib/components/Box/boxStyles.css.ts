@@ -1,4 +1,4 @@
-import { style, mapToStyles } from '@vanilla-extract/css';
+import { style, styleVariants } from '@vanilla-extract/css';
 import { themeVars } from '../../themes/themeVars.css';
 import { mapToProperty } from '../../utils';
 
@@ -8,41 +8,41 @@ const space = {
 } as const;
 
 export const margin = {
-  top: mapToStyles(space, mapToProperty('marginTop', 'mobile')),
-  bottom: mapToStyles(space, mapToProperty('marginBottom', 'mobile')),
-  left: mapToStyles(space, mapToProperty('marginLeft', 'mobile')),
-  right: mapToStyles(space, mapToProperty('marginRight', 'mobile')),
+  top: styleVariants(space, mapToProperty('marginTop', 'mobile')),
+  bottom: styleVariants(space, mapToProperty('marginBottom', 'mobile')),
+  left: styleVariants(space, mapToProperty('marginLeft', 'mobile')),
+  right: styleVariants(space, mapToProperty('marginRight', 'mobile')),
 };
 export const marginTablet = {
-  top: mapToStyles(space, mapToProperty('marginTop', 'tablet')),
-  bottom: mapToStyles(space, mapToProperty('marginBottom', 'tablet')),
-  left: mapToStyles(space, mapToProperty('marginLeft', 'tablet')),
-  right: mapToStyles(space, mapToProperty('marginRight', 'tablet')),
+  top: styleVariants(space, mapToProperty('marginTop', 'tablet')),
+  bottom: styleVariants(space, mapToProperty('marginBottom', 'tablet')),
+  left: styleVariants(space, mapToProperty('marginLeft', 'tablet')),
+  right: styleVariants(space, mapToProperty('marginRight', 'tablet')),
 };
 export const marginDesktop = {
-  top: mapToStyles(space, mapToProperty('marginTop', 'desktop')),
-  bottom: mapToStyles(space, mapToProperty('marginBottom', 'desktop')),
-  left: mapToStyles(space, mapToProperty('marginLeft', 'desktop')),
-  right: mapToStyles(space, mapToProperty('marginRight', 'desktop')),
+  top: styleVariants(space, mapToProperty('marginTop', 'desktop')),
+  bottom: styleVariants(space, mapToProperty('marginBottom', 'desktop')),
+  left: styleVariants(space, mapToProperty('marginLeft', 'desktop')),
+  right: styleVariants(space, mapToProperty('marginRight', 'desktop')),
 };
 
 export const padding = {
-  top: mapToStyles(space, mapToProperty('paddingTop', 'mobile')),
-  bottom: mapToStyles(space, mapToProperty('paddingBottom', 'mobile')),
-  left: mapToStyles(space, mapToProperty('paddingLeft', 'mobile')),
-  right: mapToStyles(space, mapToProperty('paddingRight', 'mobile')),
+  top: styleVariants(space, mapToProperty('paddingTop', 'mobile')),
+  bottom: styleVariants(space, mapToProperty('paddingBottom', 'mobile')),
+  left: styleVariants(space, mapToProperty('paddingLeft', 'mobile')),
+  right: styleVariants(space, mapToProperty('paddingRight', 'mobile')),
 };
 export const paddingTablet = {
-  top: mapToStyles(space, mapToProperty('paddingTop', 'tablet')),
-  bottom: mapToStyles(space, mapToProperty('paddingBottom', 'tablet')),
-  left: mapToStyles(space, mapToProperty('paddingLeft', 'tablet')),
-  right: mapToStyles(space, mapToProperty('paddingRight', 'tablet')),
+  top: styleVariants(space, mapToProperty('paddingTop', 'tablet')),
+  bottom: styleVariants(space, mapToProperty('paddingBottom', 'tablet')),
+  left: styleVariants(space, mapToProperty('paddingLeft', 'tablet')),
+  right: styleVariants(space, mapToProperty('paddingRight', 'tablet')),
 };
 export const paddingDesktop = {
-  top: mapToStyles(space, mapToProperty('paddingTop', 'desktop')),
-  bottom: mapToStyles(space, mapToProperty('paddingBottom', 'desktop')),
-  left: mapToStyles(space, mapToProperty('paddingLeft', 'desktop')),
-  right: mapToStyles(space, mapToProperty('paddingRight', 'desktop')),
+  top: styleVariants(space, mapToProperty('paddingTop', 'desktop')),
+  bottom: styleVariants(space, mapToProperty('paddingBottom', 'desktop')),
+  left: styleVariants(space, mapToProperty('paddingLeft', 'desktop')),
+  right: styleVariants(space, mapToProperty('paddingRight', 'desktop')),
 };
 
 export const transform = {
@@ -51,7 +51,7 @@ export const transform = {
   }),
 };
 
-export const transition = mapToStyles(
+export const transition = styleVariants(
   themeVars.transitions,
   mapToProperty('transition'),
 );
@@ -61,15 +61,15 @@ const borderRadiusRules = {
   full: '50%',
   ...themeVars.border.radius,
 } as const;
-export const borderRadius = mapToStyles(
+export const borderRadius = styleVariants(
   borderRadiusRules,
   mapToProperty('borderRadius'),
 );
-export const borderRadiusTablet = mapToStyles(
+export const borderRadiusTablet = styleVariants(
   borderRadiusRules,
   mapToProperty('borderRadius', 'tablet'),
 );
-export const borderRadiusDesktop = mapToStyles(
+export const borderRadiusDesktop = styleVariants(
   borderRadiusRules,
   mapToProperty('borderRadius', 'desktop'),
 );
@@ -78,20 +78,20 @@ const widthRules = {
   full: '100%',
   touchable: themeVars.touchableSize,
 } as const;
-export const width = mapToStyles(widthRules, mapToProperty('width'));
+export const width = styleVariants(widthRules, mapToProperty('width'));
 
 const heightRules = {
   full: '100%',
   touchable: themeVars.touchableSize,
 } as const;
-export const height = mapToStyles(heightRules, mapToProperty('height'));
+export const height = styleVariants(heightRules, mapToProperty('height'));
 
 const positionRules = {
   absolute: 'absolute',
   relative: 'relative',
   fixed: 'fixed',
 } as const;
-export const position = mapToStyles(positionRules, mapToProperty('position'));
+export const position = styleVariants(positionRules, mapToProperty('position'));
 
 const displayRules = {
   block: 'block',
@@ -100,12 +100,12 @@ const displayRules = {
   inlineBlock: 'inline-block',
   flex: 'flex',
 } as const;
-export const display = mapToStyles(displayRules, mapToProperty('display'));
-export const displayTablet = mapToStyles(
+export const display = styleVariants(displayRules, mapToProperty('display'));
+export const displayTablet = styleVariants(
   displayRules,
   mapToProperty('display', 'tablet'),
 );
-export const displayDesktop = mapToStyles(
+export const displayDesktop = styleVariants(
   displayRules,
   mapToProperty('display', 'desktop'),
 );
@@ -115,15 +115,15 @@ const alignItemsRules = {
   center: 'center',
   flexEnd: 'flex-end',
 } as const;
-export const alignItems = mapToStyles(
+export const alignItems = styleVariants(
   alignItemsRules,
   mapToProperty('alignItems'),
 );
-export const alignItemsTablet = mapToStyles(
+export const alignItemsTablet = styleVariants(
   alignItemsRules,
   mapToProperty('alignItems', 'tablet'),
 );
-export const alignItemsDesktop = mapToStyles(
+export const alignItemsDesktop = styleVariants(
   alignItemsRules,
   mapToProperty('alignItems', 'desktop'),
 );
@@ -134,15 +134,15 @@ const justifyContentRules = {
   flexEnd: 'flex-end',
   spaceBetween: 'space-between',
 } as const;
-export const justifyContent = mapToStyles(
+export const justifyContent = styleVariants(
   justifyContentRules,
   mapToProperty('justifyContent'),
 );
-export const justifyContentTablet = mapToStyles(
+export const justifyContentTablet = styleVariants(
   justifyContentRules,
   mapToProperty('justifyContent', 'tablet'),
 );
-export const justifyContentDesktop = mapToStyles(
+export const justifyContentDesktop = styleVariants(
   justifyContentRules,
   mapToProperty('justifyContent', 'desktop'),
 );
@@ -153,15 +153,15 @@ const flexDirectionRules = {
   column: 'column',
   columnReverse: 'column-reverse',
 } as const;
-export const flexDirection = mapToStyles(
+export const flexDirection = styleVariants(
   flexDirectionRules,
   mapToProperty('flexDirection'),
 );
-export const flexDirectionTablet = mapToStyles(
+export const flexDirectionTablet = styleVariants(
   flexDirectionRules,
   mapToProperty('flexDirection', 'tablet'),
 );
-export const flexDirectionDesktop = mapToStyles(
+export const flexDirectionDesktop = styleVariants(
   flexDirectionRules,
   mapToProperty('flexDirection', 'desktop'),
 );
@@ -170,12 +170,12 @@ const flexWrapRules = {
   wrap: 'wrap',
   nowrap: 'nowrap',
 } as const;
-export const flexWrap = mapToStyles(flexWrapRules, mapToProperty('flexWrap'));
+export const flexWrap = styleVariants(flexWrapRules, mapToProperty('flexWrap'));
 
 const flexShrinkRules = {
   0: 0,
 } as const;
-export const flexShrink = mapToStyles(
+export const flexShrink = styleVariants(
   flexShrinkRules,
   mapToProperty('flexShrink'),
 );
@@ -184,15 +184,15 @@ const flexGrowRules = {
   0: 0,
   1: 1,
 } as const;
-export const flexGrow = mapToStyles(flexGrowRules, mapToProperty('flexGrow'));
+export const flexGrow = styleVariants(flexGrowRules, mapToProperty('flexGrow'));
 
-export const background = mapToStyles(
+export const background = styleVariants(
   themeVars.color.background,
   mapToProperty('background'),
 );
 
 const { width: borderWidth, color } = themeVars.border;
-export const boxShadow = mapToStyles(
+export const boxShadow = styleVariants(
   {
     ...themeVars.shadows,
     outlineFocus: `0 0 0 ${borderWidth.large} ${color.focus}`,
@@ -214,12 +214,12 @@ export const boxShadow = mapToStyles(
   mapToProperty('boxShadow'),
 );
 
-export const cursor = mapToStyles({
+export const cursor = styleVariants({
   default: { cursor: 'default' },
   pointer: { cursor: 'pointer' },
 });
 
-export const pointerEvents = mapToStyles({
+export const pointerEvents = styleVariants({
   none: { pointerEvents: 'none' },
 });
 
@@ -229,15 +229,15 @@ const textAlignRules = {
   right: 'right',
 } as const;
 
-export const textAlign = mapToStyles(
+export const textAlign = styleVariants(
   textAlignRules,
   mapToProperty('textAlign'),
 );
-export const textAlignTablet = mapToStyles(
+export const textAlignTablet = styleVariants(
   textAlignRules,
   mapToProperty('textAlign', 'tablet'),
 );
-export const textAlignDesktop = mapToStyles(
+export const textAlignDesktop = styleVariants(
   textAlignRules,
   mapToProperty('textAlign', 'desktop'),
 );
@@ -248,14 +248,14 @@ const overflowRules = {
   visible: 'visible',
   auto: 'auto',
 } as const;
-export const overflow = mapToStyles(overflowRules, mapToProperty('overflow'));
+export const overflow = styleVariants(overflowRules, mapToProperty('overflow'));
 
 const minWidthRules = {
   0: '0%', // We use a percentage here so it supports IE11: https://css-tricks.com/flexbox-truncated-text/#comment-1611744
 } as const;
-export const minWidth = mapToStyles(minWidthRules, mapToProperty('minWidth'));
+export const minWidth = styleVariants(minWidthRules, mapToProperty('minWidth'));
 
-export const maxWidth = mapToStyles(
+export const maxWidth = styleVariants(
   themeVars.contentWidth,
   mapToProperty('maxWidth'),
 );
@@ -264,23 +264,26 @@ const relativePositionRules = {
   0: 0,
 } as const;
 
-export const top = mapToStyles(relativePositionRules, mapToProperty('top'));
-export const bottom = mapToStyles(
+export const top = styleVariants(relativePositionRules, mapToProperty('top'));
+export const bottom = styleVariants(
   relativePositionRules,
   mapToProperty('bottom'),
 );
-export const left = mapToStyles(relativePositionRules, mapToProperty('left'));
-export const right = mapToStyles(relativePositionRules, mapToProperty('right'));
+export const left = styleVariants(relativePositionRules, mapToProperty('left'));
+export const right = styleVariants(
+  relativePositionRules,
+  mapToProperty('right'),
+);
 
-export const userSelect = mapToStyles({
+export const userSelect = styleVariants({
   none: { userSelect: 'none' },
 });
 
-export const outline = mapToStyles({
+export const outline = styleVariants({
   none: { outline: 'none' },
 });
 
-export const opacity = mapToStyles({
+export const opacity = styleVariants({
   0: { opacity: 0 },
 });
 
@@ -295,4 +298,4 @@ const zIndexRules = {
   modal: 300,
   notification: 400,
 } as const;
-export const zIndex = mapToStyles(zIndexRules, mapToProperty('zIndex'));
+export const zIndex = styleVariants(zIndexRules, mapToProperty('zIndex'));

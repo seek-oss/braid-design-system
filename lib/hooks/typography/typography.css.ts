@@ -1,5 +1,5 @@
 import omit from 'lodash/omit';
-import { style, mapToStyles } from '@vanilla-extract/css';
+import { style, styleVariants } from '@vanilla-extract/css';
 
 import { themeVars } from './../../themes/themeVars.css';
 import { responsiveStyle } from '../../themes/nextThemeUtils';
@@ -18,7 +18,7 @@ export const fontFamily = style({
   fontFamily: themeVars.typography.fontFamily,
 });
 
-export const fontWeight = mapToStyles(
+export const fontWeight = styleVariants(
   themeVars.typography.fontWeight,
   mapToProperty('fontWeight'),
 );
@@ -67,36 +67,36 @@ const makeTypographyRules = (textDefinition: TypographicDefinition) => {
 };
 
 export const text = {
-  xsmall: mapToStyles(makeTypographyRules(themeVars.typography.text.xsmall)),
-  small: mapToStyles(makeTypographyRules(themeVars.typography.text.small)),
-  standard: mapToStyles(
+  xsmall: styleVariants(makeTypographyRules(themeVars.typography.text.xsmall)),
+  small: styleVariants(makeTypographyRules(themeVars.typography.text.small)),
+  standard: styleVariants(
     makeTypographyRules(themeVars.typography.text.standard),
   ),
-  large: mapToStyles(makeTypographyRules(themeVars.typography.text.large)),
+  large: styleVariants(makeTypographyRules(themeVars.typography.text.large)),
 };
 
-export const headingWeight = mapToStyles(
+export const headingWeight = styleVariants(
   themeVars.typography.heading.weight,
   mapToProperty('fontWeight'),
 );
 
 export const heading = {
-  '1': mapToStyles(
+  '1': styleVariants(
     makeTypographyRules(themeVars.typography.heading.level['1']),
   ),
-  '2': mapToStyles(
+  '2': styleVariants(
     makeTypographyRules(themeVars.typography.heading.level['2']),
   ),
-  '3': mapToStyles(
+  '3': styleVariants(
     makeTypographyRules(themeVars.typography.heading.level['3']),
   ),
-  '4': mapToStyles(
+  '4': styleVariants(
     makeTypographyRules(themeVars.typography.heading.level['4']),
   ),
 };
 
 export const tone = {
-  ...mapToStyles(
+  ...styleVariants(
     omit(themeVars.color.foreground, [
       'linkHover',
       'linkVisited',
@@ -119,7 +119,7 @@ export const tone = {
 };
 
 export const invertableTone = {
-  neutral: mapToStyles({
+  neutral: styleVariants({
     light: {
       color: themeVars.color.foreground.neutral,
     },
@@ -127,7 +127,7 @@ export const invertableTone = {
       color: themeVars.color.foreground.neutralInverted,
     },
   }),
-  secondary: mapToStyles({
+  secondary: styleVariants({
     light: {
       color: themeVars.color.foreground.secondary,
     },
@@ -246,7 +246,7 @@ const makeTouchableSpacing = (touchableHeight: string, textHeight: string) => {
   };
 };
 
-export const touchable = mapToStyles(
+export const touchable = styleVariants(
   themeVars.typography.text,
   (textDefinition) =>
     responsiveStyle({

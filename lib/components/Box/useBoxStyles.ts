@@ -1,16 +1,22 @@
-import { boxStyles, BoxStylesProps } from './boxStyles';
+import classNames from 'classnames';
 import { ElementType } from 'react';
 import * as resetStyles from '../../reset/reset.css';
+import { atoms } from './../../atoms/atomsFn';
 
-export interface UseBoxStylesProps extends BoxStylesProps {
+type AtomProps = Parameters<typeof atoms>[0];
+
+export interface UseBoxStylesProps extends AtomProps {
   component: ElementType | null;
+  className?: string;
 }
 
-export const useBoxStyles = ({ component, ...rest }: UseBoxStylesProps) =>
-  boxStyles({
-    ...rest,
-    className: [
-      resetStyles.element[component as keyof typeof resetStyles.element],
-      rest.className,
-    ],
-  });
+export const useBoxStyles = ({
+  component,
+  className,
+  ...rest
+}: UseBoxStylesProps) =>
+  classNames(
+    atoms(rest),
+    resetStyles.element[component as keyof typeof resetStyles.element],
+    className,
+  );

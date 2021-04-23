@@ -1,4 +1,4 @@
-import { mapToStyles } from '@vanilla-extract/css';
+import { styleVariants } from '@vanilla-extract/css';
 import { responsiveStyle } from '../../themes/nextThemeUtils';
 import { BraidTokens } from '../../themes/tokenType';
 
@@ -12,7 +12,7 @@ const columnsWidths = {
 } as const;
 
 const makeColumnsAtoms = (breakpoint: keyof BraidTokens['breakpoint']) =>
-  mapToStyles(
+  styleVariants(
     columnsWidths,
     (width) => responsiveStyle({ [breakpoint]: { flex: `0 0 ${width}` } }),
     `columns_${breakpoint}`,

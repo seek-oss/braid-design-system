@@ -1,8 +1,8 @@
-import { keyframes, style, mapToStyles } from '@vanilla-extract/css';
+import { keyframes, style, styleVariants } from '@vanilla-extract/css';
 import { responsiveStyle } from '../../themes/nextThemeUtils';
 import { themeVars } from '../../themes/themeVars.css';
 
-export const rootSize = mapToStyles(
+export const rootSize = styleVariants(
   themeVars.typography.text,
   ({ mobile, tablet }) =>
     responsiveStyle({
@@ -70,7 +70,7 @@ export const delay = style({
   animationDelay: `${animationDelayValue}s`,
 });
 
-export const circleSize = mapToStyles(
+export const circleSize = styleVariants(
   themeVars.typography.text,
   ({ mobile, tablet }) =>
     responsiveStyle({
