@@ -7,7 +7,7 @@ type AtomProps = Parameters<typeof atoms>[0];
 
 export interface UseBoxStylesProps extends AtomProps {
   component: ElementType | null;
-  className?: string;
+  className?: Parameters<typeof classNames>[0];
 }
 
 export const useBoxStyles = ({
@@ -17,6 +17,7 @@ export const useBoxStyles = ({
 }: UseBoxStylesProps) =>
   classNames(
     atoms(rest),
+    resetStyles.base,
     resetStyles.element[component as keyof typeof resetStyles.element],
     className,
   );
