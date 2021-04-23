@@ -171,7 +171,7 @@ export function createAtomicStyles<Properties extends AtomicProperties>(
   options: UnconditionalAtomicOptions<Properties>,
 ): UnconditionalAtomicStyles<Properties>;
 export function createAtomicStyles(options: any): any {
-  let styles: any =
+  const styles: any =
     'shorthands' in options
       ? Object.fromEntries(
           Object.entries(options.shorthands).map(([prop, mappings]) => [
@@ -191,7 +191,10 @@ export function createAtomicStyles(options: any): any {
       styles[key].responsiveArray = options.responsiveArray;
     }
 
-    const processValue = (valueName: keyof typeof property, value: string) => {
+    const processValue = (
+      valueName: keyof typeof property,
+      value: string | number,
+    ) => {
       if ('conditions' in options) {
         styles[key].values[valueName] = {
           conditions: {},
