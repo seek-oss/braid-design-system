@@ -4,6 +4,7 @@ import {
   AllHTMLAttributes,
   ElementType,
 } from 'react';
+import dedent from 'dedent';
 import { useBoxStyles, UseBoxStylesProps } from './useBoxStyles';
 import { renderBackgroundProvider } from './BackgroundContext';
 
@@ -65,6 +66,25 @@ const NamedBox = forwardRef<HTMLElement, BoxProps>(
     },
     ref,
   ) => {
+    let resolvedTransform = transform;
+    if (typeof transform === 'string' && transform === 'touchable') {
+      if (process.env.NODE_ENV !== 'production') {
+        // eslint-disable-next-line no-console
+        console.warn(
+          dedent`
+            The \`touchable\` value has been deprecated as a standalone value for \`transform\`. The atom is now explicitly scoped to the \`active\` selector:
+            %c  -<Box transform="touchable">...</Box>
+            %c  +<Box transform="{{ active: 'touchable' }}">...</Box>
+          `,
+          'color: red',
+          'color: green',
+        );
+      }
+      resolvedTransform = {
+        active: 'touchable',
+      };
+    }
+
     const boxStyles = useBoxStyles({
       component,
       padding,
@@ -93,7 +113,7 @@ const NamedBox = forwardRef<HTMLElement, BoxProps>(
       background,
       boxShadow,
       transition,
-      transform,
+      transform: resolvedTransform,
       height,
       width,
       position,

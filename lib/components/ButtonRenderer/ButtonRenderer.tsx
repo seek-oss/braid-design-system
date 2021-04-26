@@ -360,7 +360,7 @@ export const PrivateButtonRenderer = ({
     display: 'block',
     borderRadius: 'standard',
     boxShadow,
-    transform: 'touchable',
+    transform: { active: 'touchable' },
     transition: 'touchable',
     outline: 'none',
     className: [

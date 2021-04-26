@@ -103,7 +103,7 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
         onKeyUp={onKeyUp}
         onKeyDown={onKeyDown}
         onMouseDown={handleMouseDown}
-        transform="touchable"
+        transform={{ active: 'touchable' }}
         transition="touchable"
         tabIndex={!keyboardAccessible ? -1 : undefined}
         {...buildDataAttributes(data)}
