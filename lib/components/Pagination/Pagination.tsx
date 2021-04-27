@@ -98,7 +98,6 @@ const Page = ({ number, current }: { number: number; current: boolean }) => {
       />
       <Overlay
         component="span"
-        transition={current ? undefined : 'fast'}
         borderRadius="standard"
         boxShadow="borderFormAccent"
         className={
