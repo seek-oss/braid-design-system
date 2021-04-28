@@ -1482,5 +1482,24 @@
         "summary": "**Accordion, AccordionItem:** Allow customisation of size, tone, space and dividers.\n\nNote that, to ensure adequate space for touch targets, the `space` prop only accepts values of `\"medium\"`, `\"large\"` and `\"xlarge\"`.\n\n**EXAMPLE USAGE**\n\n```tsx\n<Accordion size=\"standard\" tone=\"secondary\" space=\"xlarge\" dividers={false}>\n  <AccordionItem label=\"Accordion item 1\">...</AccordionItem>\n  <AccordionItem label=\"Accordion item 2\">...</AccordionItem>\n  <AccordionItem label=\"Accordion item 3\">...</AccordionItem>\n</Accordion>\n```"
       }
     ]
+  },
+  {
+    "version": "29.31.0",
+    "updates": [
+      {
+        "updated": [
+          "Pagination"
+        ],
+        "summary": "**Pagination:** Add keyline to improve active page indicator contrast\n\nImproves the contrast of the active page indicator by adding a keyline when `Pagination` is used outside of a `Card`."
+      },
+      {
+        "updated": [
+          "Checkbox",
+          "RadioGroup",
+          "Toggle"
+        ],
+        "summary": "**Checkbox,RadioGroup,Toggle:** Add `size` support to Checkbox, RadioGroup & Toggle\n\nAdds support for adjusting the `size` of a `Checkbox`, the RadioItems within a `RadioGroup` or a `Toggle`. Setting the size adjusts both the visual control and the text size of the label.\n\n**EXAMPLE USAGE:**\n```jsx\n  <Checkbox size=\"small\" label=\"Label\" />\n```\n\n```jsx\n  <RadioGroup size=\"small\" label=\"Label\">\n    ...\n  </RadioGroup>\n```\n\n```jsx\n  <Toggle size=\"small\" label=\"Label\" />\n```"
+      }
+    ]
   }
 ]
