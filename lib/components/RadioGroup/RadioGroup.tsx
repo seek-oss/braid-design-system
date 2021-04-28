@@ -18,10 +18,8 @@ export interface RadioGroupProps<Value = NonNullable<string | number>>
 }
 
 const stackSpaceForSize = {
-  xsmall: 'small',
   small: 'small',
   standard: 'medium',
-  large: 'medium',
 } as Record<NonNullable<RadioGroupProps['size']>, StackProps['space']>;
 
 const RadioGroup = ({
