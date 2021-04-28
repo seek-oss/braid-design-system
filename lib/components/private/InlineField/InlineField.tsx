@@ -49,6 +49,7 @@ export interface InlineFieldProps {
   badge?: ReactElement<BadgeProps>;
   data?: DataAttributeMap;
   required?: boolean;
+  size?: keyof typeof styleRefs.fakeFieldSize;
 }
 
 type FieldType = 'checkbox' | 'radio';
@@ -150,6 +151,7 @@ export const InlineField = forwardRef<
       required,
       inList = false,
       tabIndex,
+      size = 'standard',
       'aria-describedby': ariaDescribedBy,
     },
     forwardedRef,
@@ -225,7 +227,7 @@ export const InlineField = forwardRef<
           <Box
             flexShrink={0}
             position="relative"
-            className={styles.fakeField}
+            className={[styles.fakeFieldBase, styles.fakeFieldSize[size!]]}
             background={disabled ? 'inputDisabled' : 'input'}
             borderRadius={fieldBorderRadius}
           >
@@ -268,21 +270,24 @@ export const InlineField = forwardRef<
                 htmlFor={id}
                 userSelect="none"
                 display="block"
-                className={[styles.label, useVirtualTouchable()]}
+                className={[styles.label[size], useVirtualTouchable()]}
               >
                 <Text
                   weight={checked && !inList ? 'strong' : undefined}
                   tone={disabled ? 'secondary' : undefined}
+                  size={size}
                 >
                   {label}
                 </Text>
               </Box>
-              {badge ? <Box className={styles.badgeOffset}>{badge}</Box> : null}
+              {badge ? (
+                <Box className={styles.badgeOffset[size]}>{badge}</Box>
+              ) : null}
             </Inline>
 
             {description ? (
               <Box paddingTop="small">
-                <Text tone="secondary" id={descriptionId}>
+                <Text tone="secondary" size={size} id={descriptionId}>
                   {description}
                 </Text>
               </Box>

@@ -3,9 +3,10 @@ import assert from 'assert';
 import flattenChildren from 'react-keyed-flatten-children';
 import { FieldGroup, FieldGroupProps } from '../private/FieldGroup/FieldGroup';
 import { RadioItem, RadioItemProps } from '../RadioGroup/RadioItem';
-import { Stack } from '../Stack/Stack';
+import { Stack, StackProps } from '../Stack/Stack';
 import { RadioGroupContext, RadioItemContext } from './RadioGroupContext';
 import { Box } from '../Box/Box';
+import { InlineFieldProps } from '../private/InlineField/InlineField';
 
 export interface RadioGroupProps<Value = NonNullable<string | number>>
   extends FieldGroupProps {
@@ -13,7 +14,13 @@ export interface RadioGroupProps<Value = NonNullable<string | number>>
   value: Value;
   onChange: (event: FormEvent<HTMLInputElement>) => void;
   name?: string;
+  size?: InlineFieldProps['size'];
 }
+
+const stackSpaceForSize = {
+  small: 'small',
+  standard: 'medium',
+} as Record<NonNullable<RadioGroupProps['size']>, StackProps['space']>;
 
 const RadioGroup = ({
   children,
@@ -23,6 +30,7 @@ const RadioGroup = ({
   onChange,
   disabled,
   tone,
+  size,
   ...props
 }: RadioGroupProps) => {
   const items = flattenChildren(children);
@@ -53,6 +61,7 @@ const RadioGroup = ({
             onChange,
             disabled,
             tone,
+            size,
             ...fieldGroupProps,
           }}
         >
@@ -60,7 +69,7 @@ const RadioGroup = ({
             paddingTop={props.description ? 'xxsmall' : 'xsmall'}
             paddingBottom={props.message ? 'xsmall' : undefined}
           >
-            <Stack space="medium">
+            <Stack space={stackSpaceForSize[size || 'standard']}>
               {items.map((item, i) => (
                 <RadioItemContext.Provider key={i} value={i}>
                   {item}

@@ -16,6 +16,7 @@ export interface ToggleProps {
   on: boolean;
   onChange: ChangeHandler;
   align?: 'left' | 'right' | 'justify';
+  size?: keyof typeof styleRefs.fieldSize;
 }
 
 const handleChange = (onChange: ChangeHandler) => (
@@ -32,6 +33,7 @@ export const Toggle = ({
   onChange,
   label,
   align = 'left',
+  size = 'standard',
 }: ToggleProps) => {
   const styles = useStyles(styleRefs);
   const showBorder = useBackgroundLightness() === 'light';
@@ -54,20 +56,28 @@ export const Toggle = ({
         zIndex={1}
         cursor="pointer"
         opacity={0}
-        className={[styles.realField, styles.fieldSize]}
+        className={[
+          styles.realFieldBase,
+          styles.realFieldPosition[size],
+          styles.fieldSize[size],
+        ]}
       />
       <Box
         position="relative"
         display="flex"
         alignItems="center"
         flexShrink={0}
-        className={[styles.slideContainer, styles.fieldSize]}
+        className={[
+          styles.slideContainerBase,
+          styles.slideContainerHeight[size],
+          styles.fieldSize[size],
+        ]}
       >
         <Box
           position="absolute"
           width="full"
           overflow="hidden"
-          className={styles.slideTrack}
+          className={[styles.slideTrack[size], styles.slideTrackBackground]}
         >
           <Box
             position="absolute"
@@ -87,7 +97,7 @@ export const Toggle = ({
           alignItems="center"
           justifyContent="center"
           borderRadius="full"
-          className={styles.slider}
+          className={styles.slider[size]}
         >
           <FieldOverlay className={styles.icon}>
             <IconTick tone="formAccent" size="fill" />
@@ -114,9 +124,9 @@ export const Toggle = ({
         flexGrow={align === 'justify' ? 1 : undefined}
         userSelect="none"
         cursor="pointer"
-        className={[styles.label, useVirtualTouchable()]}
+        className={[styles.label[size], useVirtualTouchable()]}
       >
-        <Text baseline={false} weight={on ? 'strong' : undefined}>
+        <Text baseline={false} weight={on ? 'strong' : undefined} size={size}>
           {label}
         </Text>
       </Box>

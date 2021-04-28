@@ -109,6 +109,23 @@ export const galleryItems: ComponentExample[] = [
       ),
   },
   {
+    label: 'Small',
+    Example: ({ id, getState, setState }) =>
+      source(
+        <RadioGroup
+          id={id}
+          value={getState('radio')}
+          onChange={({ currentTarget: { value } }) => setState('radio', value)}
+          label="Label"
+          size="small"
+        >
+          <RadioItem label="One" value="1" />
+          <RadioItem label="Two" value="2" />
+          <RadioItem label="Three" value="3" />
+        </RadioGroup>,
+      ),
+  },
+  {
     label: 'Toggling nested content',
     Example: ({ id, getState, setState, setDefaultState }) =>
       source(
