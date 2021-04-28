@@ -14,20 +14,18 @@ const docs: ComponentDocs = {
       <>
         {setDefaultState('page', 1)}
 
-        <Card>
-          <Pagination
-            page={getState('page')}
-            total={10}
-            linkProps={({ page }) => ({
-              href: `#`,
-              onClick: (e) => {
-                e.preventDefault();
-                setState('page', page);
-              },
-            })}
-            label="Pagination Example"
-          />
-        </Card>
+        <Pagination
+          page={getState('page')}
+          total={10}
+          linkProps={({ page }) => ({
+            href: `#`,
+            onClick: (e) => {
+              e.preventDefault();
+              setState('page', page);
+            },
+          })}
+          label="Pagination Example"
+        />
       </>,
     ),
   accessibility: (
@@ -67,7 +65,6 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Development considerations',
-      background: 'card',
       description: (
         <>
           <Text>
@@ -105,6 +102,37 @@ const docs: ComponentDocs = {
           </>,
         ),
       showCodeByDefault: true,
+    },
+    {
+      label: 'Contextual design',
+      description: (
+        <Text>
+          When inside a <TextLink href="/components/Card">Card</TextLink>, the
+          outline of the Pagination&rsquo;s active page is omitted since the
+          background has sufficient contrast without it.
+        </Text>
+      ),
+      Example: ({ setDefaultState, getState, setState }) =>
+        source(
+          <>
+            {setDefaultState('page', 1)}
+
+            <Card>
+              <Pagination
+                page={getState('page')}
+                total={10}
+                linkProps={({ page }) => ({
+                  href: `#`,
+                  onClick: (e) => {
+                    e.preventDefault();
+                    setState('page', page);
+                  },
+                })}
+                label="Pagination Example"
+              />
+            </Card>
+          </>,
+        ),
     },
   ],
 };
