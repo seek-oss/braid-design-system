@@ -10,7 +10,7 @@ import dedent from 'dedent';
 export interface RadioProps
   extends Omit<
     InlineFieldProps,
-    'message' | 'reserveMessageSpace' | 'required'
+    'message' | 'reserveMessageSpace' | 'required' | 'size'
   > {}
 
 /** @deprecated Individual `Radio` elements have been deprecated. Use [RadioGroup](https://seek-oss.github.io/braid-design-system/components/RadioGroup) instead. */
@@ -51,6 +51,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
       message={null}
       reserveMessageSpace={false}
       required={undefined}
+      size={undefined}
       ref={ref}
     />
   );

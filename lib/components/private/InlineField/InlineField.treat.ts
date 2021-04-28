@@ -1,4 +1,5 @@
-import { style } from 'sku/treat';
+import { Theme } from 'treat/theme';
+import { style, styleMap } from 'sku/treat';
 import getSize from './getSize';
 import { hitArea } from '../touchable/hitArea';
 import { debugTouchable } from '../touchable/debugTouchable';
@@ -20,7 +21,7 @@ const realFieldBase = style({
 });
 
 export const realFieldPosition = style((theme) => {
-  const size = getSize(theme);
+  const size = getSize('standard', theme);
   const centerOffset = -(hitArea - size) / 2;
 
   return { top: centerOffset, left: centerOffset };
@@ -28,34 +29,51 @@ export const realFieldPosition = style((theme) => {
 
 export const realField = [realFieldBase, realFieldPosition];
 
-const fakeFieldBase = style({});
+export const fakeFieldBase = style({});
 
-const fakeFieldSize = style((theme) => {
-  const size = getSize(theme);
+const resolveFakeFieldSize = (
+  textSize: keyof Theme['typography']['text'],
+  theme: Theme,
+) => {
+  const size = getSize(textSize, theme);
 
   return {
     height: size,
     width: size,
   };
-});
+};
 
-export const fakeField = [fakeFieldSize, fakeFieldBase];
+export const fakeFieldSize = styleMap((theme) => ({
+  small: resolveFakeFieldSize('small', theme),
+  standard: resolveFakeFieldSize('standard', theme),
+}));
 
-export const badgeOffset = style((theme) => {
-  // Uses mobile standard text to mirror behaviour in getSize
+const resolveBadgeOffset = (
+  textSize: keyof Theme['typography']['text'],
+  theme: Theme,
+) => {
   const badgeHeight = theme.typography.text.xsmall.mobile.rows * theme.grid;
-  const offset = Math.round((getSize(theme) - badgeHeight) / 2);
+  const offset = Math.round((getSize(textSize, theme) - badgeHeight) / 2);
 
   return {
     paddingTop: offset,
     paddingBottom: offset,
   };
-});
+};
 
-export const label = style((theme) => {
-  // Uses mobile standard text to mirror behaviour in getSize
-  const standardTextHeight = theme.typography.text.standard.mobile.capHeight;
-  const offset = Math.round((getSize(theme) - standardTextHeight) / 2);
+export const badgeOffset = styleMap((theme) => ({
+  small: resolveBadgeOffset('small', theme),
+  standard: resolveBadgeOffset('standard', theme),
+}));
+
+const resolveLabelOffset = (
+  textSize: keyof Theme['typography']['text'],
+  theme: Theme,
+) => {
+  const standardTextHeight = theme.typography.text[textSize].mobile.capHeight;
+  const offset = Math.round(
+    (getSize(textSize, theme) - standardTextHeight) / 2,
+  );
 
   return {
     paddingTop: offset,
@@ -65,7 +83,12 @@ export const label = style((theme) => {
       },
     },
   };
-});
+};
+
+export const label = styleMap((theme) => ({
+  small: resolveLabelOffset('small', theme),
+  standard: resolveLabelOffset('standard', theme),
+}));
 
 export const isMixed = style({});
 

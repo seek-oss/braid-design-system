@@ -1,4 +1,5 @@
-import { style } from 'sku/treat';
+import { Theme } from 'treat/theme';
+import { style, styleMap } from 'sku/treat';
 import getSize from '../private/InlineField/getSize';
 import { hitArea } from '../private/touchable/hitArea';
 import { debugTouchable } from '../private/touchable/debugTouchable';
@@ -14,58 +15,97 @@ export const root = style({
   },
 });
 
-const realFieldBase = style({
+export const realFieldBase = style({
   height: hitArea,
   selectors: {
     ...debugTouchable(),
   },
 });
 
-const realFieldPosition = style((theme) => {
-  const centerOffset = -(hitArea - getSize(theme)) / 2;
+const resolveRealFieldPosition = (
+  textSize: keyof Theme['typography']['text'],
+  theme: Theme,
+) => {
+  const centerOffset = -(hitArea - getSize(textSize, theme)) / 2;
 
   return {
     top: centerOffset,
   };
-});
+};
 
-export const realField = [realFieldBase, realFieldPosition];
+export const realFieldPosition = styleMap((theme) => ({
+  small: resolveRealFieldPosition('small', theme),
+  standard: resolveRealFieldPosition('standard', theme),
+}));
 
-export const label = style((theme) => {
-  const size = getSize(theme);
-  const lineHeight = theme.grid * theme.typography.text.standard.mobile.rows;
+const resolveLabelOffset = (
+  textSize: keyof Theme['typography']['text'],
+  theme: Theme,
+) => {
+  const size = getSize(textSize, theme);
+  const lineHeight = theme.grid * theme.typography.text[textSize].mobile.rows;
   const padding = (size - lineHeight) / 2;
   return {
     paddingTop: padding,
     paddingBottom: padding,
   };
+};
+
+export const label = styleMap((theme) => ({
+  small: resolveLabelOffset('small', theme),
+  standard: resolveLabelOffset('standard', theme),
+}));
+
+const resolveFieldSize = (
+  textSize: keyof Theme['typography']['text'],
+  theme: Theme,
+) => ({
+  width: getSize(textSize, theme) * toggleWidthRatio,
 });
 
-export const fieldSize = style((theme) => ({
-  width: getSize(theme) * toggleWidthRatio,
+export const fieldSize = styleMap((theme) => ({
+  small: resolveFieldSize('small', theme),
+  standard: resolveFieldSize('standard', theme),
 }));
 
-const slideContainerBase = style({});
+export const slideContainerBase = style({});
 
-const slideContainerHeight = style((theme) => ({
-  height: getSize(theme),
+const resolveSlideContainerHeight = (
+  textSize: keyof Theme['typography']['text'],
+  theme: Theme,
+) => ({
+  height: getSize(textSize, theme),
+});
+
+export const slideContainerHeight = styleMap((theme) => ({
+  small: resolveSlideContainerHeight('small', theme),
+  standard: resolveSlideContainerHeight('standard', theme),
 }));
 
-export const slideContainer = [slideContainerBase, slideContainerHeight];
-
-export const slideTrack = style((theme) => {
-  const size = getSize(theme);
+const resolveSlideTrack = (
+  textSize: keyof Theme['typography']['text'],
+  theme: Theme,
+) => {
+  const size = getSize(textSize, theme);
   const height = size - theme.grid;
 
   return {
     height,
     borderRadius: height / 2,
-    backgroundColor: theme.border.color.standard,
-    // Fix for Safari border-radius, overflow hidden, transform bug:
-    // https://gist.github.com/ayamflow/b602ab436ac9f05660d9c15190f4fd7b
-    '-webkit-mask-image': '-webkit-radial-gradient(white, black)',
   };
-});
+};
+
+export const slideTrack = styleMap((theme) => ({
+  small: resolveSlideTrack('small', theme),
+  standard: resolveSlideTrack('standard', theme),
+}));
+
+export const slideTrackBackground = style((theme) => ({
+  backgroundColor: theme.border.color.standard,
+  // Fix for Safari border-radius, overflow hidden, transform bug:
+  // https://gist.github.com/ayamflow/b602ab436ac9f05660d9c15190f4fd7b
+  '-webkit-mask-image': '-webkit-radial-gradient(white, black)',
+}));
 
 export const slideTrackSelected = style((theme) => {
   const trackWidth = theme.grid * theme.touchableSize;
@@ -79,8 +119,11 @@ export const slideTrackSelected = style((theme) => {
   };
 });
 
-export const slider = style((theme) => {
-  const size = getSize(theme);
+const resolveSlider = (
+  textSize: keyof Theme['typography']['text'],
+  theme: Theme,
+) => {
+  const size = getSize(textSize, theme);
   const trackWidth = size * toggleWidthRatio;
   const anticipation = size * anticipationRatio;
   const slideDistance = trackWidth - size;
@@ -100,7 +143,12 @@ export const slider = style((theme) => {
       },
     },
   };
-});
+};
+
+export const slider = styleMap((theme) => ({
+  small: resolveSlider('small', theme),
+  standard: resolveSlider('standard', theme),
+}));
 
 export const icon = style({
   transform: 'scale(.75)',

@@ -2317,6 +2317,9 @@ Object {
         | RefObject<HTMLInputElement>
     required?: boolean
     reserveMessageSpace?: boolean
+    size?: 
+        | "small"
+        | "standard"
     tone?: 
         | "critical"
         | "neutral"
@@ -5917,6 +5920,9 @@ Object {
     required?: boolean
     reserveMessageSpace?: boolean
     secondaryLabel?: ReactNode
+    size?: 
+        | "small"
+        | "standard"
     tertiaryLabel?: ReactNode
     tone?: 
         | "critical"
@@ -6961,6 +6967,9 @@ Object {
     label: ReactNode
     on: boolean
     onChange: ChangeHandler
+    size?: 
+        | "small"
+        | "standard"
 },
 }
 `;

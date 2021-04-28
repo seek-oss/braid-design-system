@@ -146,5 +146,25 @@ export const screenshots: ComponentScreenshot = {
         );
       },
     },
+    {
+      label: 'Small',
+      Example: () => {
+        const [state, setState] = useState('');
+        return (
+          <RadioGroup
+            id="radiolistsmall"
+            value={state}
+            onChange={(e) => setState(e.currentTarget.value)}
+            label="Experience"
+            size="small"
+          >
+            <RadioItem label="Less than one year" value="0" />
+            <RadioItem label="1 year" value="1" />
+            <RadioItem label="2 years" value="2" />
+            <RadioItem label="3+ years " value="3" />
+          </RadioGroup>
+        );
+      },
+    },
   ],
 };
