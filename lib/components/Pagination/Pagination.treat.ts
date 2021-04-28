@@ -2,6 +2,9 @@ import { style } from 'sku/treat';
 
 export const hover = style({});
 
+export const currentKeyline = style({
+  opacity: 0.3,
+});
 export const current = style({
   opacity: 0.075,
 });
