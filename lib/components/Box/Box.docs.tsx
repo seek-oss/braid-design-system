@@ -392,9 +392,9 @@ const docs: ComponentDocs = {
               These background colours are likely to change over time, so it’s
               important that you only use them within the semantic context they
               were designed for, e.g. only using the “selection” colour for
-              actual user selections. If you choose colours based solely on their
-              appearance, your application’s colours may change in unexpected
-              ways when upgrading Braid.
+              actual user selections. If you choose colours based solely on
+              their appearance, your application’s colours may change in
+              unexpected ways when upgrading Braid.
             </Text>
           </Alert>
         </>
