@@ -392,7 +392,7 @@ const docs: ComponentDocs = {
               These background colours are likely to change over time, so it’s
               important that you only use them within the semantic context they
               were designed for, e.g. only using the “selection” colour for
-              actual user selections. If you choose colours based soley on their
+              actual user selections. If you choose colours based solely on their
               appearance, your application’s colours may change in unexpected
               ways when upgrading Braid.
             </Text>
@@ -499,7 +499,7 @@ const docs: ComponentDocs = {
               These box shadows are likely to change over time, so it’s
               important that you only use them within the semantic context they
               were designed for, e.g. only using “borderField” for actual field
-              borders. If you choose semantic box shadows based soley on their
+              borders. If you choose semantic box shadows based solely on their
               appearance, your application’s colours may change in unexpected
               ways when upgrading Braid.
             </Text>
