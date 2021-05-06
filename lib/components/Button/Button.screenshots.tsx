@@ -1,13 +1,9 @@
 import React, { Fragment, ReactNode } from 'react';
 import { ComponentScreenshot } from '../../../site/src/types';
-import { themeVars } from '../../themes/themeVars.css';
 import { Box, Button } from '../';
 import { Inline } from '../Inline/Inline';
 import { Heading } from '../Heading/Heading';
-
-const backgrounds = Object.keys(themeVars.color.background).sort() as Array<
-  keyof typeof themeVars.color.background
->;
+import { backgrounds } from '../../utils/docsHelpers';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <div style={{ maxWidth: '300px' }}>{children}</div>

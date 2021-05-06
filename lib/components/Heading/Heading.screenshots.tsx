@@ -1,8 +1,8 @@
 import React, { ReactNode, Fragment } from 'react';
 import { ComponentScreenshot } from '../../../site/src/types';
-import { background as boxBackgrounds, textAlign } from '../Box/boxStyles.css';
 import { heading as headingLevels } from '../../hooks/typography/typography.css';
 import { Box, Heading, Stack } from '../';
+import { backgrounds, textAlignments } from '../../utils/docsHelpers';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <div style={{ maxWidth: '300px' }}>{children}</div>
@@ -95,21 +95,15 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Heading Alignment',
       Container,
-      Example: () => {
-        const alignments = Object.keys(textAlign) as Array<
-          keyof typeof textAlign
-        >;
-
-        return (
-          <Stack space="medium">
-            {alignments.map((alignment) => (
-              <Heading level="4" align={alignment} key={alignment}>
-                {alignment}
-              </Heading>
-            ))}
-          </Stack>
-        );
-      },
+      Example: () => (
+        <Stack space="medium">
+          {textAlignments.map((alignment) => (
+            <Heading level="4" align={alignment} key={alignment}>
+              {alignment}
+            </Heading>
+          ))}
+        </Stack>
+      ),
     },
     {
       label: 'Heading Alignment (responsive)',
@@ -123,21 +117,15 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Heading Contrast',
       Container,
-      Example: () => {
-        const backgrounds = Object.keys(boxBackgrounds) as Array<
-          keyof typeof boxBackgrounds
-        >;
-
-        return (
-          <Fragment>
-            {backgrounds.sort().map((background) => (
-              <Box key={background} background={background} paddingY="xsmall">
-                <Heading level="4">{background}</Heading>
-              </Box>
-            ))}
-          </Fragment>
-        );
-      },
+      Example: () => (
+        <Fragment>
+          {backgrounds.map((background) => (
+            <Box key={background} background={background} paddingY="xsmall">
+              <Heading level="4">{background}</Heading>
+            </Box>
+          ))}
+        </Fragment>
+      ),
     },
   ],
 };

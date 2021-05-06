@@ -2,7 +2,7 @@ import React, { Children } from 'react';
 import flattenChildren from 'react-keyed-flatten-children';
 import { Box } from '../Box/Box';
 import { Divider, DividerProps } from '../Divider/Divider';
-import { ResponsiveSpace } from '../Box/boxStyles';
+import { ResponsiveSpace } from '../Box/useBoxStyles';
 import {
   useNegativeMarginTop,
   useNegativeMarginLeft,

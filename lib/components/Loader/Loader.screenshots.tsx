@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { ComponentScreenshot } from '../../../site/src/types';
-import { background as boxBackgrounds } from '../Box/boxStyles.css';
 import { Box, Loader } from '../';
+import { backgrounds } from '../../utils/docsHelpers';
 
 export const screenshots: ComponentScreenshot = {
   screenshotWidths: [320],
@@ -32,21 +32,15 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Loader Contrast',
-      Example: () => {
-        const backgrounds = Object.keys(boxBackgrounds) as Array<
-          keyof typeof boxBackgrounds
-        >;
-
-        return (
-          <Fragment>
-            {backgrounds.sort().map((background) => (
-              <Box key={background} background={background} padding="xsmall">
-                <Loader />
-              </Box>
-            ))}
-          </Fragment>
-        );
-      },
+      Example: () => (
+        <Fragment>
+          {backgrounds.map((background) => (
+            <Box key={background} background={background} padding="xsmall">
+              <Loader />
+            </Box>
+          ))}
+        </Fragment>
+      ),
     },
   ],
 };

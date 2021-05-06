@@ -1,9 +1,13 @@
 import classNames from 'classnames';
 import { ElementType } from 'react';
 import * as resetStyles from '../../reset/reset.css';
+import { themeVars } from '../../themes/themeVars.css';
 import { atoms } from './../../atoms/atoms.css';
 
 type AtomProps = Parameters<typeof atoms>[0];
+
+export type Space = keyof typeof themeVars.space | 'none';
+export type ResponsiveSpace = Parameters<typeof atoms>[0]['padding'];
 
 export interface UseBoxStylesProps extends AtomProps {
   component: ElementType | null;
