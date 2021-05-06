@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { ElementType } from 'react';
 import * as resetStyles from '../../reset/reset.css';
-import { atoms } from './../../atoms/atomsFn';
+import { atoms } from './../../atoms/atoms.css';
 
 type AtomProps = Parameters<typeof atoms>[0];
 

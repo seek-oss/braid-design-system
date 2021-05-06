@@ -15,8 +15,14 @@ import {
 import source from '../../utils/source.macro';
 import Code from '../../../site/src/App/Code/Code';
 import { BoxProps } from './Box';
-import { UseBoxStylesProps } from './useBoxStyles';
-import * as styleRefs from './boxStyles.css';
+import {
+  responsiveProperties,
+  unresponsiveProperties,
+  pseudoProperties,
+  UnresponsiveProperties,
+  ResponsiveProperties,
+  PseudoProperties,
+} from '../../atoms/atomicProperties';
 
 type BackgroundDocs = Required<
   Record<NonNullable<BoxProps['background']>, string>
@@ -27,6 +33,28 @@ type BoxShadowDocs = Required<
   Record<NonNullable<BoxProps['boxShadow']>, string>
 >;
 const validateBoxShadows = (boxShadows: BoxShadowDocs) => boxShadows;
+
+interface AtomicPropertyProps {
+  name: string;
+  modifier?: string;
+  values: Array<string>;
+}
+function AtomicProperty({ name, modifier, values }: AtomicPropertyProps) {
+  return (
+    <Stack space="medium">
+      <Text weight="strong">
+        {name}
+        {modifier ? ` (${modifier})` : ''}
+      </Text>
+      <Text tone="secondary">
+        {values
+          .sort()
+          .map((key) => (!/[0-9]/.test(key) ? `"${key}"` : key))
+          .join(', ')}
+      </Text>
+    </Stack>
+  );
+}
 
 const docs: ComponentDocs = {
   category: 'Layout',
@@ -137,74 +165,35 @@ const docs: ComponentDocs = {
           </Code>
           <Box paddingBottom="large">
             <Tiles space="xlarge" columns={[1, 2]}>
-              {(() => {
-                type UtilName = keyof Omit<
-                  UseBoxStylesProps,
-                  | 'background'
-                  | 'boxShadow'
-                  | 'className'
-                  | 'component'
-                  | 'margin'
-                  | 'marginX'
-                  | 'marginY'
-                  | 'marginTop'
-                  | 'marginBottom'
-                  | 'marginLeft'
-                  | 'marginRight'
-                  | 'padding'
-                  | 'paddingX'
-                  | 'paddingY'
-                  | 'paddingTop'
-                  | 'paddingBottom'
-                  | 'paddingLeft'
-                  | 'paddingRight'
-                >;
-
-                const utils: Record<UtilName, true> = {
-                  alignItems: true,
-                  bottom: true,
-                  borderRadius: true,
-                  cursor: true,
-                  display: true,
-                  flexDirection: true,
-                  flexGrow: true,
-                  flexShrink: true,
-                  flexWrap: true,
-                  height: true,
-                  justifyContent: true,
-                  left: true,
-                  maxWidth: true,
-                  minWidth: true,
-                  opacity: true,
-                  outline: true,
-                  overflow: true,
-                  pointerEvents: true,
-                  position: true,
-                  right: true,
-                  textAlign: true,
-                  top: true,
-                  transform: true,
-                  transition: true,
-                  userSelect: true,
-                  width: true,
-                  zIndex: true,
-                };
-
-                return (Object.keys(utils) as Array<UtilName>).map((prop) => (
-                  <Stack key={prop} space="medium">
-                    <Text weight="strong">
-                      {prop}
-                      {`${prop}Desktop` in styleRefs ? ' (Responsive)' : ''}
-                    </Text>
-                    <Text tone="secondary">
-                      {Object.keys(styleRefs[prop])
-                        .sort()
-                        .map((key) => (!/[0-9]/.test(key) ? `"${key}"` : key))
-                        .join(', ')}
-                    </Text>
-                  </Stack>
-                ));
-              })()}
+              {(Object.keys(
+                responsiveProperties,
+              ) as Array<ResponsiveProperties>).map((prop) => (
+                <AtomicProperty
+                  key={prop}
+                  modifier="Responsive"
+                  name={prop}
+                  values={Object.keys(responsiveProperties[prop])}
+                />
+              ))}
+              {(Object.keys(pseudoProperties) as Array<PseudoProperties>).map(
+                (prop) => (
+                  <AtomicProperty
+                    key={prop}
+                    modifier="Pseudo"
+                    name={prop}
+                    values={Object.keys(pseudoProperties[prop])}
+                  />
+                ),
+              )}
+              {(Object.keys(
+                unresponsiveProperties,
+              ) as Array<UnresponsiveProperties>).map((prop) => (
+                <AtomicProperty
+                  key={prop}
+                  name={prop}
+                  values={Object.keys(unresponsiveProperties[prop])}
+                />
+              ))}
             </Tiles>
           </Box>
         </>

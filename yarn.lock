@@ -3048,10 +3048,34 @@
     csstype "^3.0.7"
     dedent "^0.7.0"
 
+"@vanilla-extract/css@^0.4.3":
+  version "0.4.3"
+  resolved "https://registry.yarnpkg.com/@vanilla-extract/css/-/css-0.4.3.tgz#01d6a7a106471d739cea885b940e007ba34a1766"
+  integrity sha512-EuZZbt+BW+WTRbhFOqbY6FY5X4/lS8D8kGdTchZYCUUKFms4N2RRcqmOAiE1yEZHwE3HJpePF2wKC4qnXumFKQ==
+  dependencies:
+    "@emotion/hash" "^0.8.0"
+    "@vanilla-extract/private" "^0.1.2"
+    chalk "^4.1.1"
+    css-selector-parser "^1.4.1"
+    cssesc "^3.0.0"
+    csstype "^3.0.7"
+    dedent "^0.7.0"
+    deep-object-diff "^1.1.0"
+
 "@vanilla-extract/private@^0.1.0":
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/@vanilla-extract/private/-/private-0.1.0.tgz#f725cd43977ff8adb80c9bec3ce1e7bcd24d2401"
   integrity sha512-it5HWDWsjHBWZhEcBwl8Fvcp5qG1NiUK8uKsPV9j/+F6NZ/2ZcgIqwOEjZqmsj0NtJOa+sJZwkZT/5yYDU02rA==
+
+"@vanilla-extract/private@^0.1.2":
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/@vanilla-extract/private/-/private-0.1.2.tgz#79cb16243764c5f51b99e0a7ed137e6c5e06223e"
+  integrity sha512-LuaCxlU4BlsSlK53QQABxo53TqWFiQyjXwDCz+5tpaChhMHrmJ5/XVFQVH3zD03HATfAJcmv8WqAQOZnF0FmGg==
+
+"@vanilla-extract/sprinkles@^0.2.2":
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/@vanilla-extract/sprinkles/-/sprinkles-0.2.2.tgz#214130dae6497293efb54a31d3a5d55d92a95b72"
+  integrity sha512-ODUiEZE2lcYQwJh+04jlb7HHU7Vvt0jhh/x20AmuYu6UEqQe/cdQOyY7t/sXHWp1MBqZ76Sf1Es1Qeutqzzt5A==
 
 "@vanilla-extract/webpack-plugin@*":
   version "0.2.1"
@@ -4966,7 +4990,7 @@ chalk@^3.0.0:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
 
-chalk@^4.0.0, chalk@^4.1.0:
+chalk@^4.0.0, chalk@^4.1.0, chalk@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/chalk/-/chalk-4.1.1.tgz#c80b3fab28bf6371e6863325eee67e618b77e6ad"
   integrity sha512-diHzdDKxcU+bAsUboHLPEDQiw0qEe0qd7SYUn3HgcFlWgbDcfLGswOHYeGrHKzG9z6UYf01d9VFMfZxPM1xZSg==
