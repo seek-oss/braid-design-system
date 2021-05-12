@@ -10,7 +10,10 @@ import { renderBackgroundProvider } from './BackgroundContext';
 
 export interface BoxProps
   extends Omit<UseBoxStylesProps, 'component'>,
-    Omit<AllHTMLAttributes<HTMLElement>, 'width' | 'height' | 'className'> {
+    Omit<
+      AllHTMLAttributes<HTMLElement>,
+      'width' | 'height' | 'className' | 'color' | 'content' | 'translate'
+    > {
   component?: ElementType;
 }
 

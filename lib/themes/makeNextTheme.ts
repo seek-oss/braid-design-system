@@ -1,7 +1,7 @@
 import { darken, lighten } from 'polished';
 import mapValues from 'lodash/mapValues';
 
-import { computeValues, getCapHeight } from '../hooks/typography/capsize';
+import { computeValues } from '../hooks/typography/capsize';
 import { getAccessibleVariant, getLightVariant, isLight } from '../utils';
 import { FontMetrics } from '../hooks/typography/capsize';
 import { BraidTokens, TextDefinition } from './tokenType';
@@ -14,49 +14,72 @@ const getActiveColor = (x: string) =>
 const getHoverColor = (x: string) =>
   isLight(x) ? darken(0.05, x) : lighten(0.05, x);
 
+const unpx = (value: string) => parseInt(value.replace('px', ''), 10);
+
 const fontSizeToCapHeight = (
   grid: number,
   definition: TextDefinition,
   fontMetrics: FontMetrics,
 ) => {
   const { mobile, tablet } = definition;
+  const mobileLeading = mobile.rows * grid;
+  const tabletLeading = tablet.rows * grid;
+
   const mobileCapHeight =
     'fontSize' in mobile
-      ? (getCapHeight({ fontSize: mobile.fontSize, fontMetrics }) as number)
-      : mobile.capHeight;
+      ? computeValues({
+          fontSize: mobile.fontSize,
+          leading: mobileLeading,
+          fontMetrics,
+        }).capHeight
+      : px(mobile.capHeight);
+
+  const mobileFontSize =
+    'capHeight' in mobile
+      ? computeValues({
+          capHeight: mobile.capHeight,
+          leading: mobileLeading,
+          fontMetrics,
+        }).fontSize
+      : px(mobile.fontSize);
 
   const tabletCapHeight =
     'fontSize' in tablet
-      ? (getCapHeight({ fontSize: tablet.fontSize, fontMetrics }) as number)
-      : tablet.capHeight;
+      ? computeValues({
+          fontSize: tablet.fontSize,
+          leading: tabletLeading,
+          fontMetrics,
+        }).capHeight
+      : px(tablet.capHeight);
+
+  const tabletFontSize =
+    'capHeight' in tablet
+      ? computeValues({
+          capHeight: tablet.capHeight,
+          leading: tabletLeading,
+          fontMetrics,
+        }).fontSize
+      : px(tablet.fontSize);
 
   return {
     mobile: {
-      capHeight: px(mobileCapHeight),
-      capHeightFloored: px(Math.floor(mobileCapHeight)),
-      leading: px(mobile.rows * grid),
-      capsizeValues: computeValues({
-        capHeight: mobileCapHeight,
-        leading: mobile.rows * grid,
-        fontMetrics,
-      }),
+      fontSize: unpx(mobileFontSize),
+      leading: mobileLeading,
+      capHeight: unpx(mobileCapHeight),
+      capHeightFloored: px(Math.floor(unpx(mobileCapHeight))),
     },
     tablet: {
-      capHeight: px(tabletCapHeight),
-      capHeightFloored: px(Math.floor(tabletCapHeight)),
-      leading: px(tablet.rows * grid),
-      capsizeValues: computeValues({
-        capHeight: tabletCapHeight,
-        leading: tablet.rows * grid,
-        fontMetrics,
-      }),
+      fontSize: unpx(tabletFontSize),
+      leading: tabletLeading,
+      capHeight: unpx(tabletCapHeight),
+      capHeightFloored: px(Math.floor(unpx(tabletCapHeight))),
     },
   };
 };
 
 export default (braidTokens: BraidTokens) => {
   const { name, displayName, breakpoint, ...tokens } = braidTokens;
-  const { fontMetrics, webFont, ...typography } = tokens.typography;
+  const { webFont, ...typography } = tokens.typography;
 
   const inlineFieldScale =
     (typography.text.standard.mobile.rows * tokens.grid) / 42;
@@ -68,13 +91,14 @@ export default (braidTokens: BraidTokens) => {
     ...tokens,
     typography: {
       ...typography,
+      fontMetrics: mapValues(typography.fontMetrics, (metric) => `${metric}`),
       fontWeight: mapValues(typography.fontWeight, (weight) => `${weight}`),
       text: mapValues(tokens.typography.text, (definition) =>
-        fontSizeToCapHeight(tokens.grid, definition, fontMetrics),
+        fontSizeToCapHeight(tokens.grid, definition, typography.fontMetrics),
       ),
       heading: {
         level: mapValues(tokens.typography.heading.level, (definition) =>
-          fontSizeToCapHeight(tokens.grid, definition, fontMetrics),
+          fontSizeToCapHeight(tokens.grid, definition, typography.fontMetrics),
         ),
         weight: {
           weak: String(

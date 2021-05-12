@@ -30,10 +30,9 @@ export function useText({
 
   return classnames(
     styles.fontFamily,
-    styles.text[size].base,
     textTone,
     styles.fontWeight[weight],
-    baseline ? styles.text[size].leadingTrim : null,
+    baseline ? styles.text[size].trimmed : styles.text[size].raw,
   );
 }
 
@@ -58,16 +57,13 @@ export function useHeading({
   return classnames(
     styles.fontFamily,
     styles.headingWeight[weight],
-    styles.heading[level].base,
+    baseline ? styles.heading[level].trimmed : styles.heading[level].raw,
     textTone,
-    {
-      [styles.heading[level].leadingTrim]: baseline,
-    },
   );
 }
 
 export function useTextSize(size: keyof typeof styles.text) {
-  return styles.text[size].base;
+  return styles.text[size].raw;
 }
 
 export function useWeight(weight: keyof typeof styles.fontWeight) {

@@ -16,7 +16,7 @@ const stylesForBreakpoint = (breakpoint: TextBreakpoint) => {
   const { leading, capHeight } = themeVars.typography.text.small[breakpoint];
   const padding = calc.subtract(leading, capHeight);
 
-  return { margin: `${calc(padding).divide(2).negate()} 0` };
+  return { margin: `${calc(padding).divide(2).negate().multiply('1px')} 0` };
 };
 
 export const bleedY = style(

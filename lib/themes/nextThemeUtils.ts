@@ -1,6 +1,5 @@
 import { isEqual, omit } from 'lodash';
 import { StyleRule } from '@vanilla-extract/css';
-import { Properties, SimplePseudos } from 'csstype';
 
 export const breakpoints = {
   mobile: 0,
@@ -9,9 +8,10 @@ export const breakpoints = {
 };
 
 export type Breakpoint = keyof typeof breakpoints;
+type CSSProps = Omit<StyleRule, '@media' | '@supports'>;
 
 const makeMediaQuery = (breakpoint: keyof typeof breakpoints) => (
-  styles: Properties<string | number>,
+  styles: CSSProps,
 ) =>
   !styles || Object.keys(styles).length === 0
     ? {}
@@ -23,9 +23,6 @@ const mediaQuery = {
   tablet: makeMediaQuery('tablet'),
   desktop: makeMediaQuery('desktop'),
 };
-
-type CSSProps = Properties<string | number> &
-  { [P in SimplePseudos]?: Properties<string | number> };
 
 interface ResponsiveStyle {
   mobile?: CSSProps;

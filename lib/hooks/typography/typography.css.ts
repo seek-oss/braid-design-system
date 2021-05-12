@@ -1,11 +1,21 @@
 import omit from 'lodash/omit';
-import { style, styleVariants } from '@vanilla-extract/css';
+import { composeStyles, style, styleVariants } from '@vanilla-extract/css';
 
 import { themeVars } from './../../themes/themeVars.css';
 import { responsiveStyle } from '../../themes/nextThemeUtils';
-import { createCss } from './capsize';
 import { mapToProperty } from '../../utils';
 import { BackgroundVariant } from './../../components/Box/BackgroundContext';
+import {
+  fontSize,
+  capsize,
+  leading,
+  metricsAscent,
+  metricsCapHeight,
+  metricsDescent,
+  metricsLineGap,
+  metricsUnitsPerEm,
+} from './capsize.css';
+import { calc } from '@vanilla-extract/css-utils';
 
 type Theme = typeof themeVars;
 type TextDefinition = Theme['typography']['text'];
@@ -16,6 +26,13 @@ type TypographicDefinition =
 
 export const fontFamily = style({
   fontFamily: themeVars.typography.fontFamily,
+  vars: {
+    [metricsAscent]: themeVars.typography.fontMetrics.ascent,
+    [metricsDescent]: themeVars.typography.fontMetrics.descent,
+    [metricsCapHeight]: themeVars.typography.fontMetrics.capHeight,
+    [metricsLineGap]: themeVars.typography.fontMetrics.lineGap,
+    [metricsUnitsPerEm]: themeVars.typography.fontMetrics.unitsPerEm,
+  },
 });
 
 export const fontWeight = styleVariants(
@@ -35,44 +52,62 @@ export const fontWeight = styleVariants(
 //   }px`;
 // };
 
-const makeTypographyRules = (textDefinition: TypographicDefinition) => {
+const px = (v: string | number) => `${v}px`;
+const makeTypographyRules = (
+  textDefinition: TypographicDefinition,
+  debug?: string,
+) => {
   const {
     fontSize: mobileFontSize,
-    lineHeight: mobileLineHeight,
-    ...mobileTrims
-  } = createCss(textDefinition.mobile.capsizeValues);
+    leading: mobileLeading,
+  } = textDefinition.mobile;
 
   const {
     fontSize: tabletFontSize,
-    lineHeight: tabletLineHeight,
-    ...tabletTrims
-  } = createCss(textDefinition.tablet.capsizeValues);
+    leading: tabletLeading,
+  } = textDefinition.tablet;
 
   return {
-    base: responsiveStyle({
-      mobile: {
-        fontSize: mobileFontSize,
-        lineHeight: mobileLineHeight,
-      },
-      tablet: {
-        fontSize: tabletFontSize,
-        lineHeight: tabletLineHeight,
-      },
-    }),
-    leadingTrim: responsiveStyle({
-      mobile: mobileTrims,
-      tablet: tabletTrims,
-    }),
+    raw: style(
+      responsiveStyle({
+        mobile: {
+          fontSize: calc(mobileFontSize).multiply('1px').toString(),
+          lineHeight: calc(mobileLeading).multiply('1px').toString(),
+        },
+        tablet: {
+          fontSize: calc(tabletFontSize).multiply('1px').toString(),
+          lineHeight: calc(tabletLeading).multiply('1px').toString(),
+        },
+      }),
+    ),
+    trimmed: composeStyles(
+      capsize,
+      style(
+        responsiveStyle({
+          mobile: {
+            vars: {
+              [fontSize]: mobileFontSize,
+              [leading]: mobileLeading,
+            },
+          },
+          tablet: {
+            vars: {
+              [fontSize]: tabletFontSize,
+              [leading]: tabletLeading,
+            },
+          },
+        }),
+        debug,
+      ),
+    ),
   };
 };
 
 export const text = {
-  xsmall: styleVariants(makeTypographyRules(themeVars.typography.text.xsmall)),
-  small: styleVariants(makeTypographyRules(themeVars.typography.text.small)),
-  standard: styleVariants(
-    makeTypographyRules(themeVars.typography.text.standard),
-  ),
-  large: styleVariants(makeTypographyRules(themeVars.typography.text.large)),
+  xsmall: makeTypographyRules(themeVars.typography.text.xsmall, 'xsmall'),
+  small: makeTypographyRules(themeVars.typography.text.small, 'small'),
+  standard: makeTypographyRules(themeVars.typography.text.standard, 'standard'),
+  large: makeTypographyRules(themeVars.typography.text.large, 'large'),
 };
 
 export const headingWeight = styleVariants(
@@ -81,18 +116,10 @@ export const headingWeight = styleVariants(
 );
 
 export const heading = {
-  '1': styleVariants(
-    makeTypographyRules(themeVars.typography.heading.level['1']),
-  ),
-  '2': styleVariants(
-    makeTypographyRules(themeVars.typography.heading.level['2']),
-  ),
-  '3': styleVariants(
-    makeTypographyRules(themeVars.typography.heading.level['3']),
-  ),
-  '4': styleVariants(
-    makeTypographyRules(themeVars.typography.heading.level['4']),
-  ),
+  '1': makeTypographyRules(themeVars.typography.heading.level['1'], 'heading1'),
+  '2': makeTypographyRules(themeVars.typography.heading.level['2'], 'heading2'),
+  '3': makeTypographyRules(themeVars.typography.heading.level['3'], 'heading3'),
+  '4': makeTypographyRules(themeVars.typography.heading.level['4'], 'heading4'),
 };
 
 export const tone = {
