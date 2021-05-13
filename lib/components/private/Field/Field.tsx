@@ -92,6 +92,8 @@ export const Field = ({
   icon,
   prefix,
   required,
+  min,
+  max,
 }: InternalFieldProps) => {
   assert(
     prefix === undefined || typeof prefix === 'string',
@@ -147,6 +149,8 @@ export const Field = ({
         {children(
           overlays,
           {
+            min,
+            max,
             id,
             name,
             background: fieldBackground,

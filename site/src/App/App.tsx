@@ -1,85 +1,168 @@
 import '../../../lib/reset';
-import React, { StrictMode } from 'react';
-import { Route, Switch, Redirect } from 'react-router';
-import { Link as ReactRouterLink } from 'react-router-dom';
-import map from 'lodash/map';
-import { ThemeSettingProvider } from './ThemeSetting';
-import { docs } from '../../../lib/themes';
+import React, { StrictMode, useEffect, useRef, useState } from 'react';
 import {
+  Box,
   BraidProvider,
-  ToastProvider,
-  makeLinkComponent,
+  Column,
+  Columns,
+  ContentBlock,
+  Stack,
+  TextField,
 } from '../../../lib/components';
-import { Navigation } from './Navigation/Navigation';
-import home from './routes/home';
-import guides from './routes/guides';
-import foundations from './routes/foundations';
-import examples from './routes/examples';
-import components from './routes/components';
-import releaseNotes from './routes/releases';
-import gallery from './routes/gallery';
-import { AppMeta } from './Seo/AppMeta';
+import {
+  highlightCapHeight,
+  highlightLeading,
+  highlightLineGap,
+  roboto,
+} from './App.css';
+import { docs } from '../../../lib/themes';
+import { ThemeSettingProvider } from './ThemeSetting';
+import {
+  fontSize as fontSizeVar,
+  capHeight as capHeightVar,
+  lineGap as lineGapVar,
+  leading as leadingVar,
+  capsize,
+} from '../../../lib/hooks/typography/capsize.css';
+import { setElementVar } from '@vanilla-extract/dynamic';
 
-const CustomLink = makeLinkComponent(
-  ({ href, rel, onClick, ...restProps }, ref) =>
-    href[0] === '/' && !/\/playroom\/?($|#)/.test(href) ? (
-      <ReactRouterLink
-        ref={ref}
-        {...restProps}
-        to={href}
-        rel={rel}
-        onClick={onClick}
-      />
-    ) : (
-      <a
-        ref={ref}
-        {...restProps}
-        href={href}
-        rel={rel || 'noreferrer noopener'}
-        onClick={(event) => {
-          if (href === '' || href === '#') {
-            event.preventDefault();
-          }
+export const App = () => {
+  const [fontSize, setFontSize] = useState('');
+  const [capHeight, setCapHeight] = useState('');
+  const [leading, setLeading] = useState('');
+  const [lineGap, setLineGap] = useState('');
+  const [focusedField, setFocusedField] = useState<
+    'fontSize' | 'capHeight' | 'lineGap' | 'leading' | null
+  >(null);
+  const headingRef = useRef<HTMLHeadingElement | null>(null);
 
-          if (typeof onClick === 'function') {
-            onClick(event);
-          }
-        }}
-      />
-    ),
-);
+  useEffect(() => {
+    if (headingRef.current) {
+      setElementVar(headingRef.current, fontSizeVar, fontSize);
+    }
+  }, [fontSize]);
+  useEffect(() => {
+    if (headingRef.current) {
+      setElementVar(headingRef.current, capHeightVar, capHeight);
+    }
+  }, [capHeight]);
+  useEffect(() => {
+    if (headingRef.current) {
+      setElementVar(headingRef.current, lineGapVar, lineGap);
+    }
+  }, [lineGap]);
+  useEffect(() => {
+    if (headingRef.current) {
+      setElementVar(headingRef.current, leadingVar, leading);
+    }
+  }, [leading]);
 
-const galleryPath = '/gallery';
+  useEffect(() => {
+    if (headingRef.current) {
+      setElementVar(headingRef.current, lineGapVar, '10');
+      setElementVar(headingRef.current, capHeightVar, '20');
+    }
+  }, []);
 
-export const App = () => (
-  <StrictMode>
-    <ThemeSettingProvider>
-      <BraidProvider theme={docs} linkComponent={CustomLink}>
-        <ToastProvider>
-          <AppMeta />
-          <Switch>
-            <Route {...gallery[galleryPath]} path={galleryPath} />
-            <Navigation>
-              <Switch>
-                {map(
-                  {
-                    ...home,
-                    ...guides,
-                    ...foundations,
-                    ...examples,
-                    ...components,
-                    ...releaseNotes,
-                  },
-                  (routeProps, path) => (
-                    <Route key={path} {...routeProps} path={path} />
-                  ),
-                )}
-                <Redirect path="/components" exact to="/" />
-              </Switch>
-            </Navigation>
-          </Switch>
-        </ToastProvider>
-      </BraidProvider>
-    </ThemeSettingProvider>
-  </StrictMode>
-);
+  return (
+    <StrictMode>
+      <ThemeSettingProvider>
+        <BraidProvider theme={docs}>
+          <Box
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            flexDirection="column"
+            style={{ height: '100vh', width: '100vw' }}
+          >
+            <Columns space="large">
+              <Column>
+                <Stack space="large">
+                  <TextField
+                    label="Font Size"
+                    id="fontSize"
+                    type="range"
+                    min="10"
+                    max="200"
+                    onChange={(e) => {
+                      setFontSize(e.currentTarget.value);
+                      setCapHeight('');
+                    }}
+                    onFocus={() => setFocusedField('fontSize')}
+                    value={fontSize}
+                  />
+                  <TextField
+                    label="Cap Height"
+                    id="capHeight"
+                    type="range"
+                    min="10"
+                    max="200"
+                    onChange={(e) => {
+                      setCapHeight(e.currentTarget.value);
+                      setFontSize('');
+                    }}
+                    onFocus={() => setFocusedField('capHeight')}
+                    value={capHeight}
+                  />
+                </Stack>
+              </Column>
+              <Column>
+                <Stack space="large">
+                  <TextField
+                    label="Leading"
+                    id="lineHeight"
+                    type="range"
+                    min={capHeight || fontSize}
+                    max="400"
+                    onChange={(e) => {
+                      setLeading(e.currentTarget.value);
+                      setLineGap('');
+                    }}
+                    onFocus={() => setFocusedField('leading')}
+                    value={leading}
+                  />
+                  <TextField
+                    label="Line Gap"
+                    id="lineGap"
+                    type="range"
+                    min="0"
+                    max="400"
+                    onChange={(e) => {
+                      setLineGap(e.currentTarget.value);
+                      setLeading('');
+                    }}
+                    onFocus={() => setFocusedField('lineGap')}
+                    value={lineGap}
+                  />
+                </Stack>
+              </Column>
+            </Columns>
+            <Box
+              background="infoLight"
+              borderRadius="standard"
+              padding="large"
+              marginTop="xlarge"
+            >
+              <ContentBlock width="small">
+                <Box
+                  component="h2"
+                  ref={headingRef}
+                  className={[
+                    capsize,
+                    roboto,
+                    focusedField === 'lineGap' && highlightLineGap,
+                    focusedField === 'leading' && highlightLeading,
+                    focusedField === 'capHeight' && highlightCapHeight,
+                    // focusedField === 'fontSize' && highlightFontSize,
+                  ]}
+                >
+                  Hello from vanilla-extract and Sprinkles
+                </Box>
+              </ContentBlock>
+            </Box>
+          </Box>
+        </BraidProvider>
+      </ThemeSettingProvider>
+    </StrictMode>
+  );
+};

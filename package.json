@@ -53,6 +53,7 @@
     "@types/lodash": "^4.14.168",
     "@types/react": "^16.8.8",
     "@types/uuid": "^8.3.0",
+    "@vanilla-extract/dynamic": "^0.1.0",
     "assert": "^2.0.0",
     "autosuggest-highlight": "^3.1.1",
     "capsize": "^2.0.0",
@@ -81,8 +82,6 @@
     "@babel/preset-typescript": "^7.12.7",
     "@changesets/cli": "^2.14.0",
     "@changesets/get-github-info": "^0.4.5",
-    "@vanilla-extract/css": "^0.3.0",
-    "@vanilla-extract/css-utils": "^0.1.0",
     "@octokit/rest": "^18.0.15",
     "@svgr/core": "^5.5.0",
     "@svgr/plugin-jsx": "^5.5.0",
@@ -97,6 +96,8 @@
     "@types/react-router-dom": "^5.1.7",
     "@types/sanitize-html": "^1.27.1",
     "@types/webpack-env": "^1.16.0",
+    "@vanilla-extract/css": "^0.4.4",
+    "@vanilla-extract/css-utils": "^0.1.1",
     "babel-plugin-macros": "^3.0.1",
     "babel-plugin-tester": "^10.0.0",
     "change-case": "^4.1.2",
@@ -137,6 +138,7 @@
     "typescript": "^4.2.2"
   },
   "resolutions": {
+    "@vanilla-extract/css": "0.4.4",
     "playroom": "0.23.0",
     "csstype": "3.0.6"
   },

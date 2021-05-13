@@ -3031,27 +3031,41 @@
     "@babel/template" "^7.12.13"
     find-up "^5.0.0"
 
-"@vanilla-extract/css-utils@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@vanilla-extract/css-utils/-/css-utils-0.1.0.tgz#1bc2c69aa9791fbcb1432be4dd560d26e292db91"
-  integrity sha512-7ukJueCazh9PQRZXQOO2NrlnUy0DNEoYWEBR5Yeu9KKYY5FRdB1TAIRFhBeFP9Mczl5ApT+tAUKOGBf+XVh/xA==
+"@vanilla-extract/css-utils@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@vanilla-extract/css-utils/-/css-utils-0.1.1.tgz#f4f58f85347d8a841ef74c60db111ec264011860"
+  integrity sha512-9fDV8IhSfzgDd9Z+64jVcS38S2dVc6c1eOd+hgO8zPMRba6rEB8kEjg5+AQ3xPCdzl1m8olqFHnfQRNOn1OXuA==
 
-"@vanilla-extract/css@^0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@vanilla-extract/css/-/css-0.3.0.tgz#3458a7ae872b7b52b134036081fdad92a951f0ec"
-  integrity sha512-pTzZdJJSD8BwF/kOyTLEGx7bqPUJtSK8n9jY15Ploo6iD3+b3Q1dWytyMpn/uXi8CbUJf7GS+GqmBE+HZlpfUw==
+"@vanilla-extract/css@0.4.4", "@vanilla-extract/css@^0.3.0", "@vanilla-extract/css@^0.4.4":
+  version "0.4.4"
+  resolved "https://registry.yarnpkg.com/@vanilla-extract/css/-/css-0.4.4.tgz#5804160f2f9e9a8b23216819594ee6af037cd301"
+  integrity sha512-udCPcZgUFlt3ZMGBSkCR+5s6rEx2zmwHYo3Cw/q8ZxC2nSOnD8UrQY3N4EuVYC0dP30OacFcWluB2mIohyodjw==
   dependencies:
     "@emotion/hash" "^0.8.0"
-    "@vanilla-extract/private" "^0.1.0"
+    "@vanilla-extract/private" "^0.1.2"
+    chalk "^4.1.1"
     css-selector-parser "^1.4.1"
     cssesc "^3.0.0"
     csstype "^3.0.7"
     dedent "^0.7.0"
+    deep-object-diff "^1.1.0"
+
+"@vanilla-extract/dynamic@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@vanilla-extract/dynamic/-/dynamic-0.1.0.tgz#588d2f9d31eb85374304250b3196b0e6f0beb59e"
+  integrity sha512-4oBUis7ApD4A1k1VnZGTfpVk7gtUTe38qSD7stmYJK5Si9/x8h8xbTEN48Aoul/lZswBctSc6AieZ8IjrMjrjQ==
+  dependencies:
+    "@vanilla-extract/private" "^0.1.0"
 
 "@vanilla-extract/private@^0.1.0":
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/@vanilla-extract/private/-/private-0.1.0.tgz#f725cd43977ff8adb80c9bec3ce1e7bcd24d2401"
   integrity sha512-it5HWDWsjHBWZhEcBwl8Fvcp5qG1NiUK8uKsPV9j/+F6NZ/2ZcgIqwOEjZqmsj0NtJOa+sJZwkZT/5yYDU02rA==
+
+"@vanilla-extract/private@^0.1.2":
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/@vanilla-extract/private/-/private-0.1.2.tgz#79cb16243764c5f51b99e0a7ed137e6c5e06223e"
+  integrity sha512-LuaCxlU4BlsSlK53QQABxo53TqWFiQyjXwDCz+5tpaChhMHrmJ5/XVFQVH3zD03HATfAJcmv8WqAQOZnF0FmGg==
 
 "@vanilla-extract/webpack-plugin@*":
   version "0.2.1"
@@ -4966,7 +4980,7 @@ chalk@^3.0.0:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
 
-chalk@^4.0.0, chalk@^4.1.0:
+chalk@^4.0.0, chalk@^4.1.0, chalk@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/chalk/-/chalk-4.1.1.tgz#c80b3fab28bf6371e6863325eee67e618b77e6ad"
   integrity sha512-diHzdDKxcU+bAsUboHLPEDQiw0qEe0qd7SYUn3HgcFlWgbDcfLGswOHYeGrHKzG9z6UYf01d9VFMfZxPM1xZSg==

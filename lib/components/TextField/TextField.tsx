@@ -11,6 +11,7 @@ const validTypes = {
   number: 'number',
   tel: 'tel',
   url: 'url',
+  range: 'range',
 };
 
 type InputProps = AllHTMLAttributes<HTMLInputElement>;
