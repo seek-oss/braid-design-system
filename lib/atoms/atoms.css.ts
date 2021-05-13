@@ -1,4 +1,9 @@
-import { createAtomicStyles, createAtomsFn } from '@vanilla-extract/sprinkles';
+import {
+  ConditionalValue,
+  createAtomicStyles,
+  createAtomsFn,
+  createUtils,
+} from '@vanilla-extract/sprinkles';
 
 import { breakpoints } from '../themes/nextThemeUtils';
 import {
@@ -49,3 +54,9 @@ export const atoms = createAtomsFn(
   reponsiveAtomicStyles,
   pseudoAtomicStyles,
 );
+
+export const responsiveValue = createUtils(reponsiveAtomicStyles);
+export type ResponsiveValue<Value> = ConditionalValue<
+  typeof reponsiveAtomicStyles,
+  Value
+>;

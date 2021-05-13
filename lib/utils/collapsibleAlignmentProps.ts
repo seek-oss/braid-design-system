@@ -3,8 +3,8 @@ import {
   ResponsiveRangeProps,
   resolveResponsiveRangeProps,
 } from './responsiveRangeProps';
-import { ResponsiveProp, normaliseResponsiveProp } from './responsiveProp';
 import { Align, alignToFlexAlign, alignYToFlexAlign, AlignY } from './align';
+import { ResponsiveValue, responsiveValue } from '../atoms/atoms.css';
 
 function invertAlignment<Alignment extends string>(alignment: Alignment) {
   if (alignment === 'flexStart') {
@@ -20,8 +20,8 @@ function invertAlignment<Alignment extends string>(alignment: Alignment) {
 
 export interface CollapsibleAlignmentProps {
   collapseBelow?: ResponsiveRangeProps['below'];
-  align?: ResponsiveProp<Align>;
-  alignY?: ResponsiveProp<AlignY>;
+  align?: ResponsiveValue<Align>;
+  alignY?: ResponsiveValue<AlignY>;
   reverse?: boolean;
 }
 
@@ -38,11 +38,14 @@ export function resolveCollapsibleAlignmentProps({
   const rowReverseTablet = collapseMobile && reverse;
   const rowReverseDesktop = (collapseMobile || collapseTablet) && reverse;
 
-  const [
-    justifyContentMobile,
-    justifyContentTablet,
-    justifyContentDesktop,
-  ] = normaliseResponsiveProp(alignToFlexAlign(align) || 'flexStart');
+  const normalizedAlign = responsiveValue.normalize(
+    alignToFlexAlign(align) || 'flexStart',
+  );
+  const {
+    mobile: justifyContentMobile = 'flexStart',
+    tablet: justifyContentTablet = justifyContentMobile,
+    desktop: justifyContentDesktop = justifyContentTablet,
+  } = normalizedAlign;
 
   return {
     collapseMobile,
@@ -66,15 +69,15 @@ export function resolveCollapsibleAlignmentProps({
         rowReverseDesktop ? 'rowReverse' : 'row',
       ],
       justifyContent: align
-        ? ([
-            justifyContentMobile,
-            rowReverseTablet
+        ? {
+            mobile: justifyContentMobile,
+            tablet: rowReverseTablet
               ? invertAlignment(justifyContentTablet)
               : justifyContentTablet,
-            rowReverseDesktop
+            desktop: rowReverseDesktop
               ? invertAlignment(justifyContentDesktop)
               : justifyContentDesktop,
-          ] as const)
+          }
         : undefined,
       alignItems: alignY ? alignYToFlexAlign(alignY) : undefined,
     },

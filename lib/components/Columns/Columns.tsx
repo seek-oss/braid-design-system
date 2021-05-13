@@ -1,13 +1,13 @@
 import React, { createContext, ReactElement } from 'react';
 import { Box } from '../Box/Box';
 import { ColumnProps } from '../Column/Column';
-import { Space, ResponsiveSpace } from '../Box/useBoxStyles';
+import { Space } from '../Box/useBoxStyles';
 import { useNegativeMarginLeft } from '../../hooks/useNegativeMargin/useNegativeMargin';
-import { normaliseResponsiveProp } from '../../utils/responsiveProp';
 import {
   resolveCollapsibleAlignmentProps,
   CollapsibleAlignmentProps,
 } from '../../utils/collapsibleAlignmentProps';
+import { responsiveValue, ResponsiveValue } from '../../atoms/atoms.css';
 
 type CollapsibleAlignmentChildProps = ReturnType<
   typeof resolveCollapsibleAlignmentProps
@@ -32,7 +32,7 @@ export const ColumnsContext = createContext<ColumnsContextValue>({
 });
 
 export interface ColumnsProps extends CollapsibleAlignmentProps {
-  space: ResponsiveSpace;
+  space: ResponsiveValue<Space>;
   children:
     | Array<ReactElement<ColumnProps> | null>
     | ReactElement<ColumnProps>
@@ -47,9 +47,12 @@ export const Columns = ({
   align,
   alignY,
 }: ColumnsProps) => {
-  const [mobileSpace, tabletSpace, desktopSpace] = normaliseResponsiveProp(
-    space,
-  );
+  const normalizedSpace = responsiveValue.normalize(space);
+  const {
+    mobile: mobileSpace = 'none',
+    tablet: tabletSpace = mobileSpace,
+    desktop: desktopSpace = tabletSpace,
+  } = normalizedSpace;
 
   const {
     collapsibleAlignmentProps,
@@ -64,11 +67,11 @@ export const Columns = ({
     reverse,
   });
 
-  const negativeMarginLeft = useNegativeMarginLeft([
-    collapseMobile ? 'none' : mobileSpace,
-    collapseTablet ? 'none' : tabletSpace,
-    desktopSpace,
-  ]);
+  const negativeMarginLeft = useNegativeMarginLeft({
+    mobile: collapseMobile ? 'none' : mobileSpace,
+    tablet: collapseTablet ? 'none' : tabletSpace,
+    desktop: desktopSpace,
+  });
 
   return (
     <Box {...collapsibleAlignmentProps} className={negativeMarginLeft}>

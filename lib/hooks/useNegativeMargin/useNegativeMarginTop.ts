@@ -1,8 +1,6 @@
 import classnames from 'classnames';
-import {
-  resolveResponsiveProp,
-  ResponsiveProp,
-} from '../../utils/responsiveProp';
+import { ResponsiveValue } from '../../atoms/atoms.css';
+import { resolveResponsiveProp } from '../../utils/responsiveProp';
 import * as styles from './useNegativeMarginTop.css';
 
 type NegativeMarginTop = Extract<
@@ -11,7 +9,7 @@ type NegativeMarginTop = Extract<
 >;
 
 export const useNegativeMarginTop = (
-  space: ResponsiveProp<NegativeMarginTop>,
+  space: ResponsiveValue<NegativeMarginTop>,
 ) => {
   const negativeMarginTop = resolveResponsiveProp(
     space,

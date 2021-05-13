@@ -6,14 +6,10 @@ import { Divider, DividerProps } from '../Divider/Divider';
 import { Hidden, HiddenProps } from '../Hidden/Hidden';
 import * as hiddenStyles from '../Hidden/Hidden.css';
 import { alignToFlexAlign, Align } from '../../utils/align';
-import {
-  mapResponsiveProp,
-  normaliseResponsiveProp,
-  ResponsiveProp,
-} from '../../utils/responsiveProp';
 import { resolveResponsiveRangeProps } from '../../utils/responsiveRangeProps';
 import { useNegativeMarginTop } from '../../hooks/useNegativeMargin/useNegativeMargin';
 import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
+import { ResponsiveValue, responsiveValue } from '../../atoms/atoms.css';
 
 const alignToDisplay = {
   left: 'block',
@@ -22,7 +18,7 @@ const alignToDisplay = {
 } as const;
 
 interface UseStackItemProps {
-  align: ResponsiveProp<Align>;
+  align: ResponsiveValue<Align>;
   space: BoxProps['paddingTop'];
 }
 
@@ -33,7 +29,7 @@ const useStackItem = ({ align, space }: UseStackItemProps) => ({
   ...(align === 'left'
     ? null
     : {
-        display: mapResponsiveProp(align, alignToDisplay) || 'flex',
+        display: responsiveValue.map(align, (value) => alignToDisplay[value]),
         flexDirection: 'column' as const,
         alignItems: alignToFlexAlign(align),
       }),
@@ -60,21 +56,21 @@ const calculateHiddenStackItemProps = (
     [boolean, boolean, boolean]
   >,
 ) => {
-  const [
-    displayMobile,
-    displayTablet,
-    displayDesktop,
-  ] = normaliseResponsiveProp(
+  const {
+    mobile: displayMobile,
+    tablet: displayTablet,
+    desktop: displayDesktop,
+  } = responsiveValue.normalize(
     stackItemProps.display !== undefined ? stackItemProps.display : 'block',
   );
 
   return {
     ...stackItemProps,
-    display: [
-      hiddenOnMobile ? 'none' : displayMobile,
-      hiddenOnTablet ? 'none' : displayTablet,
-      hiddenOnDesktop ? 'none' : displayDesktop,
-    ] as const,
+    display: {
+      mobile: hiddenOnMobile ? 'none' : displayMobile,
+      tablet: hiddenOnTablet ? 'none' : displayTablet,
+      deskptop: hiddenOnDesktop ? 'none' : displayDesktop,
+    } as const,
   };
 };
 
@@ -82,7 +78,7 @@ export interface StackProps {
   component?: typeof validStackComponents[number];
   children: ReactNodeNoStrings;
   space: BoxProps['paddingTop'];
-  align?: ResponsiveProp<Align>;
+  align?: ResponsiveValue<Align>;
   dividers?: boolean | DividerProps['weight'];
 }
 

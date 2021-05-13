@@ -2,23 +2,20 @@ import React, { Children } from 'react';
 import flattenChildren from 'react-keyed-flatten-children';
 import { Box } from '../Box/Box';
 import { Divider, DividerProps } from '../Divider/Divider';
-import { ResponsiveSpace } from '../Box/useBoxStyles';
+import { Space } from '../Box/useBoxStyles';
 import {
   useNegativeMarginTop,
   useNegativeMarginLeft,
 } from '../../hooks/useNegativeMargin/useNegativeMargin';
-import {
-  normaliseResponsiveProp,
-  resolveResponsiveProp,
-  ResponsiveProp,
-} from '../../utils/responsiveProp';
+import { resolveResponsiveProp } from '../../utils/responsiveProp';
 import * as styles from './Tiles.css';
 import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
+import { responsiveValue, ResponsiveValue } from '../../atoms/atoms.css';
 
 export interface TilesProps {
   children: ReactNodeNoStrings;
-  space: ResponsiveSpace;
-  columns: ResponsiveProp<1 | 2 | 3 | 4 | 5 | 6>;
+  space: ResponsiveValue<Space>;
+  columns: ResponsiveValue<1 | 2 | 3 | 4 | 5 | 6>;
   dividers?: boolean | DividerProps['weight'];
 }
 
@@ -28,13 +25,13 @@ export const Tiles = ({
   columns = 1,
   dividers = false,
 }: TilesProps) => {
-  const responsiveSpace = normaliseResponsiveProp(space);
+  const responsiveSpace = responsiveValue.normalize(space);
 
-  const [
-    mobileColumns,
-    tabletColumns,
-    desktopColumns,
-  ] = normaliseResponsiveProp(columns);
+  const {
+    mobile: mobileColumns,
+    tablet: tabletColumns,
+    desktop: desktopColumns,
+  } = responsiveValue.normalize(columns);
 
   const negativeMarginTop = useNegativeMarginTop(responsiveSpace);
   const negativeMarginLeft = useNegativeMarginLeft(responsiveSpace);
