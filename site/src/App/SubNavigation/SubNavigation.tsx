@@ -107,6 +107,12 @@ export const SubNavigation = ({ onSelect }: SubNavigationProps) => {
       <SubNavigationGroup
         items={[
           {
+            name: 'Capsize Playground',
+            path: '/capsize-playground',
+            badge: 'New',
+            onClick: onSelect,
+          },
+          {
             name: 'Releases',
             path: '/releases',
             onClick: onSelect,

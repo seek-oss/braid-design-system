@@ -1,21 +1,13 @@
 import omit from 'lodash/omit';
 import { composeStyles, style, styleVariants } from '@vanilla-extract/css';
+import { createTheme } from '@vanilla-extract/css';
+import { calc } from '@vanilla-extract/css-utils';
 
 import { themeVars } from './../../themes/themeVars.css';
 import { responsiveStyle } from '../../themes/nextThemeUtils';
 import { mapToProperty } from '../../utils';
 import { BackgroundVariant } from './../../components/Box/BackgroundContext';
-import {
-  fontSize,
-  capsize,
-  leading,
-  metricsAscent,
-  metricsCapHeight,
-  metricsDescent,
-  metricsLineGap,
-  metricsUnitsPerEm,
-} from './capsize.css';
-import { calc } from '@vanilla-extract/css-utils';
+import { fontSize, capsize, leading, font } from './capsize.css';
 
 type Theme = typeof themeVars;
 type TextDefinition = Theme['typography']['text'];
@@ -24,16 +16,18 @@ type TypographicDefinition =
   | TextDefinition[keyof TextDefinition]
   | HeadingDefinition[keyof HeadingDefinition];
 
-export const fontFamily = style({
-  fontFamily: themeVars.typography.fontFamily,
-  vars: {
-    [metricsAscent]: themeVars.typography.fontMetrics.ascent,
-    [metricsDescent]: themeVars.typography.fontMetrics.descent,
-    [metricsCapHeight]: themeVars.typography.fontMetrics.capHeight,
-    [metricsLineGap]: themeVars.typography.fontMetrics.lineGap,
-    [metricsUnitsPerEm]: themeVars.typography.fontMetrics.unitsPerEm,
-  },
-});
+export const fontFamily = composeStyles(
+  style({
+    fontFamily: themeVars.typography.fontFamily,
+  }),
+  createTheme(font, {
+    capHeight: themeVars.typography.fontMetrics.ascent,
+    ascent: themeVars.typography.fontMetrics.descent,
+    descent: themeVars.typography.fontMetrics.capHeight,
+    lineGap: themeVars.typography.fontMetrics.lineGap,
+    unitsPerEm: themeVars.typography.fontMetrics.unitsPerEm,
+  }),
+);
 
 export const fontWeight = styleVariants(
   themeVars.typography.fontWeight,
@@ -52,7 +46,6 @@ export const fontWeight = styleVariants(
 //   }px`;
 // };
 
-const px = (v: string | number) => `${v}px`;
 const makeTypographyRules = (
   textDefinition: TypographicDefinition,
   debug?: string,

@@ -11,16 +11,13 @@ import {
   fontSize,
   leading,
   lineGap,
-  metricVars,
-} from '../../../lib/hooks/typography/capsize.css';
+  font,
+} from '../../../../../lib/hooks/typography/capsize.css';
 
 const highlight = 'rgba(0,0,0,0.5)';
 const textRhythm = fallbackVar(
   capHeight,
-  calc(fontSize)
-    .multiply(metricVars.capHeight)
-    .divide(metricVars.unitsPerEm)
-    .toString(),
+  calc(fontSize).multiply(font.capHeight).divide(font.unitsPerEm).toString(),
 );
 
 const firstColor = createVar();
@@ -83,7 +80,7 @@ export const roboto = composeStyles(
   style({
     fontFamily: 'Roboto',
   }),
-  createTheme(metricVars, {
+  createTheme(font, {
     capHeight: '1456',
     ascent: '1900',
     descent: '-500',

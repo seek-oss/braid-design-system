@@ -6,7 +6,7 @@ import {
 } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
 
-export const metricVars = createThemeContract({
+export const font = createThemeContract({
   ascent: null,
   descent: null,
   unitsPerEm: null,
@@ -19,17 +19,13 @@ export const capHeight = createVar();
 export const leading = createVar();
 export const lineGap = createVar();
 
-const absoluteDescent = calc.negate(metricVars.descent);
-const capHeightScale = calc.divide(metricVars.capHeight, metricVars.unitsPerEm);
-const descentScale = calc.divide(absoluteDescent, metricVars.unitsPerEm);
-const ascentScale = calc.divide(metricVars.ascent, metricVars.unitsPerEm);
-const lineGapScale = calc.divide(metricVars.lineGap, metricVars.unitsPerEm);
-const contentArea = calc.add(
-  metricVars.ascent,
-  metricVars.lineGap,
-  absoluteDescent,
-);
-const lineHeightScale = calc.divide(contentArea, metricVars.unitsPerEm);
+const absoluteDescent = calc.negate(font.descent);
+const capHeightScale = calc.divide(font.capHeight, font.unitsPerEm);
+const descentScale = calc.divide(absoluteDescent, font.unitsPerEm);
+const ascentScale = calc.divide(font.ascent, font.unitsPerEm);
+const lineGapScale = calc.divide(font.lineGap, font.unitsPerEm);
+const contentArea = calc.add(font.ascent, font.lineGap, absoluteDescent);
+const lineHeightScale = calc.divide(contentArea, font.unitsPerEm);
 
 const resolvedFontSize = fallbackVar(
   fontSize,
