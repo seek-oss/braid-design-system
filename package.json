@@ -60,7 +60,7 @@
     "dedent": "0.7.0",
     "gradient-parser": "^1.0.0",
     "is-mobile": "^2.2.2",
-    "lodash": "^4.17.20",
+    "lodash": "^4.17.21",
     "polished": "^4.1.0",
     "react-element-to-jsx-string": "^14.3.2",
     "react-focus-lock": "^2.5.0",
