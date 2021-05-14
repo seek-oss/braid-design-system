@@ -13,12 +13,16 @@ import {
   resolveCollapsibleAlignmentProps,
   CollapsibleAlignmentProps,
 } from '../../utils/collapsibleAlignmentProps';
+import buildDataAttributes, {
+  DataAttributeMap,
+} from '../private/buildDataAttributes';
 
 export const validInlineComponents = ['div', 'ol', 'ul'] as const;
 
 export interface InlineProps extends CollapsibleAlignmentProps {
   space: ResponsiveSpace;
   component?: typeof validInlineComponents[number];
+  data?: DataAttributeMap;
   children: ReactNodeNoStrings;
 }
 
@@ -29,6 +33,7 @@ export const Inline = ({
   collapseBelow,
   reverse,
   component = 'div',
+  data,
   children,
 }: InlineProps) => {
   assert(
@@ -56,7 +61,10 @@ export const Inline = ({
   });
 
   return (
-    <Box className={negativeMarginTop}>
+    <Box
+      className={negativeMarginTop}
+      {...(data ? buildDataAttributes(data) : undefined)}
+    >
       <Box
         component={component}
         className={negativeMarginLeft}

@@ -96,6 +96,7 @@ export type ListProps = {
   space?: StackProps['space'];
   tone?: TextProps['tone'];
   start?: number;
+  data?: StackProps['data'];
 } & (ListTypeIcon | ListTypeCharacter);
 
 export const List = ({
@@ -105,6 +106,7 @@ export const List = ({
   space = 'medium',
   type = 'bullet',
   start = 1,
+  data,
   ...restProps
 }: ListProps) => {
   const styles = useStyles(styleRefs);
@@ -122,6 +124,7 @@ export const List = ({
       <Stack
         component={/^(bullet|icon)$/.test(type) ? 'ul' : 'ol'}
         space={space}
+        data={data}
       >
         {Children.map(listItems, (listItem, index) => {
           const resolvedIndex = index + (start - 1);

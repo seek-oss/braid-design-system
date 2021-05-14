@@ -8,6 +8,9 @@ import { Link, LinkProps } from '../Link/Link';
 import { Overlay } from '../private/Overlay/Overlay';
 import { Text } from '../Text/Text';
 import { paginate } from './paginate';
+import buildDataAttributes, {
+  DataAttributeMap,
+} from '../private/buildDataAttributes';
 
 import * as styleRefs from './Pagination.treat';
 
@@ -25,6 +28,7 @@ export interface PaginationProps {
   pageLabel?: (page: number) => string;
   nextLabel?: string;
   previousLabel?: string;
+  data?: DataAttributeMap;
 }
 
 const PageNav = ({
@@ -128,6 +132,7 @@ export const Pagination = ({
   pageLabel = (p: number) => `Go to page ${p}`,
   nextLabel = 'Next',
   previousLabel = 'Previous',
+  data,
 }: PaginationProps) => {
   assert(total >= 1, `\`total\` must be at least 1`);
   assert(page >= 1 && page <= total, `\`page\` must be between 1 and ${total}`);
@@ -137,7 +142,11 @@ export const Pagination = ({
   const showNext = page < total;
 
   return (
-    <Box component="nav" aria-label={label}>
+    <Box
+      component="nav"
+      aria-label={label}
+      {...(data ? buildDataAttributes(data) : undefined)}
+    >
       <Box component="ul" display="flex" justifyContent="center">
         {showPrevious ? (
           <Box component="li" paddingRight={['medium', tabletButtonSpacing]}>

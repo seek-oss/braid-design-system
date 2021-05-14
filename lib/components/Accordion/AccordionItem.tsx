@@ -20,6 +20,9 @@ import {
   AccordionContextValue,
   validTones,
 } from './AccordionContext';
+import buildDataAttributes, {
+  DataAttributeMap,
+} from '../private/buildDataAttributes';
 import * as styleRefs from './AccordionItem.treat';
 
 const itemSpaceForSize = {
@@ -34,6 +37,7 @@ export type AccordionItemBaseProps = {
   children: ReactNode;
   size?: TextProps['size'];
   tone?: AccordionContextValue['tone'];
+  data?: DataAttributeMap;
 };
 
 export type AccordionItemProps = AccordionItemBaseProps & UseDisclosureProps;
@@ -45,6 +49,7 @@ export const AccordionItem = ({
   children,
   size: sizeProp,
   tone: toneProp,
+  data,
   ...restProps
 }: AccordionItemProps) => {
   const styles = useStyles(styleRefs);
@@ -90,7 +95,7 @@ export const AccordionItem = ({
   });
 
   return (
-    <Box>
+    <Box {...(data ? buildDataAttributes(data) : undefined)}>
       <Box position="relative" display="flex">
         <Box
           component="button"

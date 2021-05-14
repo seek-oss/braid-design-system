@@ -3,6 +3,9 @@ import { useStyles } from 'sku/react-treat';
 import { Box } from '../Box/Box';
 import { useBackgroundLightness } from '../Box/BackgroundContext';
 import * as styleRefs from './Loader.treat';
+import buildDataAttributes, {
+  DataAttributeMap,
+} from '../private/buildDataAttributes';
 
 const indicators = [...Array(3)];
 
@@ -10,12 +13,14 @@ interface LoaderProps {
   size?: keyof typeof styleRefs.rootSize;
   'aria-label'?: string;
   delayVisibility?: boolean;
+  data?: DataAttributeMap;
 }
 
 export const Loader = ({
   size = 'standard',
   'aria-label': ariaLabel = 'Loading',
   delayVisibility = false,
+  data,
 }: LoaderProps) => {
   const styles = useStyles(styleRefs);
   const parentBackgroundColor = useBackgroundLightness();
@@ -28,6 +33,7 @@ export const Loader = ({
         delayVisibility ? styles.delay : undefined,
       ]}
       aria-label={ariaLabel}
+      {...(data ? buildDataAttributes(data) : undefined)}
     >
       {indicators.map((_, index) => (
         <Box
