@@ -10,7 +10,7 @@ import {
 import {
   normalizeResponsiveValue,
   ResponsiveValue,
-} from '../../atoms/atoms.css';
+} from '../../sprinkles/sprinkles.css';
 
 type CollapsibleAlignmentChildProps = ReturnType<
   typeof resolveCollapsibleAlignmentProps

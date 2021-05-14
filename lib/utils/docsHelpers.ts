@@ -1,4 +1,4 @@
-import { responsiveProperties } from './../atoms/atomicProperties';
+import { responsiveProperties } from '../sprinkles/atomicProperties';
 import { themeVars } from '../themes/themeVars.css';
 
 export const backgrounds = Object.keys(

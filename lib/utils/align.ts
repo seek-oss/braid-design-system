@@ -1,4 +1,7 @@
-import { ResponsiveValue, mapResponsiveValue } from './../atoms/atoms.css';
+import {
+  ResponsiveValue,
+  mapResponsiveValue,
+} from '../sprinkles/sprinkles.css';
 
 export type Align = 'left' | 'center' | 'right';
 export type AlignY = 'top' | 'center' | 'bottom';

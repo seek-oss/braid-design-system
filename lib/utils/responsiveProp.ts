@@ -1,4 +1,7 @@
-import { ResponsiveValue, normalizeResponsiveValue } from '../atoms/atoms.css';
+import {
+  ResponsiveValue,
+  normalizeResponsiveValue,
+} from '../sprinkles/sprinkles.css';
 
 export type ResponsiveProp<AtomName> =
   | AtomName

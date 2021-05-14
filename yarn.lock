@@ -3077,7 +3077,7 @@
   resolved "https://registry.yarnpkg.com/@vanilla-extract/css-utils/-/css-utils-0.1.1.tgz#f4f58f85347d8a841ef74c60db111ec264011860"
   integrity sha512-9fDV8IhSfzgDd9Z+64jVcS38S2dVc6c1eOd+hgO8zPMRba6rEB8kEjg5+AQ3xPCdzl1m8olqFHnfQRNOn1OXuA==
 
-"@vanilla-extract/css@0.5.0", "@vanilla-extract/css@^0.4.0", "@vanilla-extract/css@^0.5.0":
+"@vanilla-extract/css@0.5.0", "@vanilla-extract/css@^0.5.0":
   version "0.5.0"
   resolved "https://registry.yarnpkg.com/@vanilla-extract/css/-/css-0.5.0.tgz#b8c74c13c39d008d977a7baaa7af2ad72bc05857"
   integrity sha512-gvJlmzG+6ezv8B1KiTC6R6JBCzgViACjqVc1vsogVBv8vvB6X/trmd/0h7frAqC3KSqhbfXyJApQzbeP3SZ57w==
@@ -3091,10 +3091,10 @@
     dedent "^0.7.0"
     deep-object-diff "^1.1.0"
 
-"@vanilla-extract/integration@^0.1.2":
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/@vanilla-extract/integration/-/integration-0.1.2.tgz#08998393c509bc802c486d4ebd7476c3a0813beb"
-  integrity sha512-4FKAAEmeTiLYKV3jGSzicIQxZ+E0r837EbgHg0zWnkEGCeVk30roXOH/SX5JlOmbUbavLPnlmX29Q/3WbSn1Uw==
+"@vanilla-extract/integration@^0.1.0", "@vanilla-extract/integration@^0.1.2":
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/@vanilla-extract/integration/-/integration-0.1.3.tgz#7b035d48d0821c3df3c9ade58a2a8d82604f9c93"
+  integrity sha512-0wvZn/77Xi8bulJqMYFp1N5MquHljlAT7tX83YzOOtf8kNonQsJ43429gydbQeQhD/Bmo5RCgHv2SSPI2rLhtg==
   dependencies:
     "@vanilla-extract/css" "^0.5.0"
     chalk "^4.1.1"
@@ -3110,22 +3110,19 @@
   resolved "https://registry.yarnpkg.com/@vanilla-extract/private/-/private-0.1.2.tgz#79cb16243764c5f51b99e0a7ed137e6c5e06223e"
   integrity sha512-LuaCxlU4BlsSlK53QQABxo53TqWFiQyjXwDCz+5tpaChhMHrmJ5/XVFQVH3zD03HATfAJcmv8WqAQOZnF0FmGg==
 
-"@vanilla-extract/sprinkles@^0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@vanilla-extract/sprinkles/-/sprinkles-0.3.0.tgz#7f3436f040bddb16ad994935a9688e1a5e2b70a5"
-  integrity sha512-hNhLizBzX47G9sddps4tY9lfni36KG+doPn5sCIAH5rlYeB/j7Pn9nuQ23VbGqgIT9tkPMYAvm1dJDw98Cpa3g==
+"@vanilla-extract/sprinkles@^0.3.1":
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/@vanilla-extract/sprinkles/-/sprinkles-0.3.1.tgz#411b2aaea71064d9a3b5e9fe6b78a5904d029fad"
+  integrity sha512-dG7F4B+VwR3jDP8Qh5kIHAX9pwF7Vg5iTU88tkKcBsKz9nVn62qTcn0OoXqOzkvzszNgIQpVUe0OX6Y1t6owOA==
 
-"@vanilla-extract/webpack-plugin@*":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@vanilla-extract/webpack-plugin/-/webpack-plugin-0.3.0.tgz#0bf8dc74ed62f3ac44dd04f5a8d79884deb4c846"
-  integrity sha512-znDK85C5wE6TUwMkG8ZUBehZUGA0AKRRulNGynfqx86W7OQCvEV2nr0Vq8uhR4aDwQX1d647exDd26FBpl7YLQ==
+"@vanilla-extract/webpack-plugin@*", "@vanilla-extract/webpack-plugin@0.3.1":
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/@vanilla-extract/webpack-plugin/-/webpack-plugin-0.3.1.tgz#f6fe865c1fb16a7a036cc7366ba372c7bd111511"
+  integrity sha512-2p6Lt8wgKYi0Wni/Ir3Bj22OmT6OrD/oEtKQBKWDMyf9hE0fuJuwT9x1BDhruuQfQYAf+hwzEjHeHf4RW8wOQw==
   dependencies:
-    "@vanilla-extract/css" "^0.4.0"
-    chalk "^4.1.0"
+    "@vanilla-extract/integration" "^0.1.0"
+    chalk "^4.1.1"
     debug "^4.3.1"
-    dedent "^0.7.0"
-    eval "^0.1.6"
-    javascript-stringify "^2.0.1"
     loader-utils "^2.0.0"
     lodash "^4.17.21"
     virtual-resource-loader "^1.0.0"

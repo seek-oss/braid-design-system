@@ -13,7 +13,7 @@ import {
   ResponsiveValue,
   mapResponsiveValue,
   normalizeResponsiveValue,
-} from '../../atoms/atoms.css';
+} from '../../sprinkles/sprinkles.css';
 
 const alignToDisplay = {
   left: 'block',
@@ -73,7 +73,7 @@ const calculateHiddenStackItemProps = (
     display: {
       mobile: hiddenOnMobile ? 'none' : displayMobile,
       tablet: hiddenOnTablet ? 'none' : displayTablet,
-      deskptop: hiddenOnDesktop ? 'none' : displayDesktop,
+      desktop: hiddenOnDesktop ? 'none' : displayDesktop,
     } as const,
   };
 };

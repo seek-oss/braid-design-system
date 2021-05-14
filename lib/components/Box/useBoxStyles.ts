@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import { ElementType } from 'react';
 import * as resetStyles from '../../reset/reset.css';
 import { themeVars } from '../../themes/themeVars.css';
-import { atoms } from './../../atoms/atoms.css';
+import { atoms } from '../../sprinkles/sprinkles.css';
 
 type AtomProps = Parameters<typeof atoms>[0];
 

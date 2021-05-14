@@ -13,7 +13,7 @@ import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import {
   normalizeResponsiveValue,
   ResponsiveValue,
-} from '../../atoms/atoms.css';
+} from '../../sprinkles/sprinkles.css';
 
 export interface TilesProps {
   children: ReactNodeNoStrings;
