@@ -5,11 +5,15 @@ import { Column } from '../Column/Column';
 import { Box } from '../Box/Box';
 import { useTextAlignedToIcon } from '../../hooks/useTextAlignedToIcon/useTextAlignedToIcon';
 import { DefaultTextPropsProvider } from '../private/defaultTextProps';
+import buildDataAttributes, {
+  DataAttributeMap,
+} from '../private/buildDataAttributes';
 
 type Tone = 'promote' | 'info' | 'positive' | 'critical';
 
 export type NoticeProps = {
   tone?: Tone;
+  data?: DataAttributeMap;
   children: ReactNode;
 };
 
@@ -20,11 +24,15 @@ const icons = {
   critical: IconCritical,
 };
 
-export const Notice = ({ tone = 'info', children }: NoticeProps) => {
+export const Notice = ({ tone = 'info', data, children }: NoticeProps) => {
   const Icon = icons[tone];
 
   return (
-    <Box role="alert" aria-live="polite">
+    <Box
+      role="alert"
+      aria-live="polite"
+      {...(data ? buildDataAttributes(data) : undefined)}
+    >
       <Columns space="xsmall">
         <Column width="content">
           <Icon tone={tone} />

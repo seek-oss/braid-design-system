@@ -6,6 +6,9 @@ import {
   ResponsiveRangeProps,
 } from '../../utils/responsiveRangeProps';
 import { Box, BoxProps } from '../Box/Box';
+import buildDataAttributes, {
+  DataAttributeMap,
+} from '../private/buildDataAttributes';
 import * as styleRefs from './Card.treat';
 
 export const validCardComponents = [
@@ -31,12 +34,14 @@ export type CardProps = {
   children: ReactNode;
   tone?: 'promote' | 'formAccent';
   component?: typeof validCardComponents[number];
+  data?: DataAttributeMap;
 } & (SimpleCardRounding | ResponsiveCardRounding);
 
 export const Card = ({
   children,
   component = 'div',
   tone,
+  data,
   ...restProps
 }: CardProps) => {
   const styles = useStyles(styleRefs);
@@ -73,6 +78,7 @@ export const Card = ({
       background="card"
       padding="gutter"
       borderRadius={resolvedRounding}
+      {...(data ? buildDataAttributes(data) : undefined)}
     >
       {tone ? (
         <Box

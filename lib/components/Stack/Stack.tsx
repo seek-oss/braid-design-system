@@ -15,6 +15,9 @@ import {
 import { resolveResponsiveRangeProps } from '../../utils/responsiveRangeProps';
 import { useNegativeMarginTop } from '../../hooks/useNegativeMargin/useNegativeMargin';
 import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
+import buildDataAttributes, {
+  DataAttributeMap,
+} from '../private/buildDataAttributes';
 
 const alignToDisplay = {
   left: 'block',
@@ -85,6 +88,7 @@ export interface StackProps {
   space: BoxProps['paddingTop'];
   align?: ResponsiveProp<Align>;
   dividers?: boolean | DividerProps['weight'];
+  data?: DataAttributeMap;
 }
 
 export const Stack = ({
@@ -93,6 +97,7 @@ export const Stack = ({
   space = 'none',
   align = 'left',
   dividers = false,
+  data,
 }: StackProps) => {
   assert(
     validStackComponents.includes(component),
@@ -113,7 +118,11 @@ export const Stack = ({
   let firstItemOnDesktop: number | null = null;
 
   return (
-    <Box component={component} className={negativeMarginTop}>
+    <Box
+      component={component}
+      className={negativeMarginTop}
+      {...(data ? buildDataAttributes(data) : undefined)}
+    >
       {Children.map(stackItems, (child, index) => {
         assert(
           !(

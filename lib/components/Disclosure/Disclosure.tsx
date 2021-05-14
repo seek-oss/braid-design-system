@@ -5,11 +5,15 @@ import { Text } from '../Text/Text';
 import { TextLinkButton } from '../TextLinkButton/TextLinkButton';
 import { IconChevron } from '../icons';
 import { useDisclosure, UseDisclosureProps } from './useDisclosure';
+import buildDataAttributes, {
+  DataAttributeMap,
+} from '../private/buildDataAttributes';
 
 export type DisclosureBaseProps = {
   expandLabel: string;
   collapseLabel?: string;
   space?: BoxProps['paddingTop'];
+  data?: DataAttributeMap;
   children: ReactNode;
 };
 export type DisclosureProps = DisclosureBaseProps & UseDisclosureProps;
@@ -21,6 +25,7 @@ export const Disclosure = ({
   collapseLabel = expandLabel,
   space = 'medium',
   children,
+  data,
   ...restProps
 }: DisclosureProps) => {
   assert(
@@ -46,7 +51,7 @@ export const Disclosure = ({
   });
 
   return (
-    <Box>
+    <Box {...(data ? buildDataAttributes(data) : undefined)}>
       <Box userSelect="none">
         <Text>
           <TextLinkButton hitArea="large" {...buttonProps}>

@@ -8,6 +8,9 @@ import {
   resolveCollapsibleAlignmentProps,
   CollapsibleAlignmentProps,
 } from '../../utils/collapsibleAlignmentProps';
+import buildDataAttributes, {
+  DataAttributeMap,
+} from '../private/buildDataAttributes';
 
 type CollapsibleAlignmentChildProps = ReturnType<
   typeof resolveCollapsibleAlignmentProps
@@ -37,6 +40,7 @@ export interface ColumnsProps extends CollapsibleAlignmentProps {
     | Array<ReactElement<ColumnProps> | null>
     | ReactElement<ColumnProps>
     | null;
+  data?: DataAttributeMap;
 }
 
 export const Columns = ({
@@ -46,6 +50,7 @@ export const Columns = ({
   space = 'none',
   align,
   alignY,
+  data,
 }: ColumnsProps) => {
   const [mobileSpace, tabletSpace, desktopSpace] = normaliseResponsiveProp(
     space,
@@ -71,7 +76,11 @@ export const Columns = ({
   ]);
 
   return (
-    <Box {...collapsibleAlignmentProps} className={negativeMarginLeft}>
+    <Box
+      {...collapsibleAlignmentProps}
+      className={negativeMarginLeft}
+      {...(data ? buildDataAttributes(data) : undefined)}
+    >
       <ColumnsContext.Provider
         value={{
           collapseMobile,

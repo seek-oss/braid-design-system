@@ -13,6 +13,9 @@ import {
   normaliseResponsiveProp,
   ResponsiveProp,
 } from '../../utils/responsiveProp';
+import buildDataAttributes, {
+  DataAttributeMap,
+} from '../private/buildDataAttributes';
 
 export const validSpaceValues = ['medium', 'large', 'xlarge'] as const;
 
@@ -22,6 +25,7 @@ export interface AccordionProps {
   size?: AccordionContextValue['size'];
   tone?: AccordionContextValue['tone'];
   space?: ResponsiveProp<typeof validSpaceValues[number]>;
+  data?: DataAttributeMap;
 }
 
 const defaultSpaceForSize = {
@@ -45,6 +49,7 @@ export const Accordion = ({
   tone,
   space: spaceProp,
   dividers = true,
+  data,
 }: AccordionProps) => {
   assert(
     spaceProp === undefined ||
@@ -71,9 +76,11 @@ export const Accordion = ({
   return (
     <AccordionContext.Provider value={contextValue}>
       {!dividers ? (
-        <Stack space={space}>{children}</Stack>
+        <Stack space={space} data={data}>
+          {children}
+        </Stack>
       ) : (
-        <Box>
+        <Box {...(data ? buildDataAttributes(data) : undefined)}>
           <Divider />
           <Box paddingY={space}>
             <Stack space={space} dividers>

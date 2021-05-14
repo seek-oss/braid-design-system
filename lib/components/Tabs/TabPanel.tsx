@@ -47,7 +47,7 @@ export const TabPanel = ({ children, data, item }: TabPanelProps) => {
       position="relative"
       outline="none"
       className={styles.tabPanel}
-      {...buildDataAttributes(data)}
+      {...(data ? buildDataAttributes(data) : undefined)}
     >
       {isSelected || renderInactive ? children : undefined}
       <Overlay

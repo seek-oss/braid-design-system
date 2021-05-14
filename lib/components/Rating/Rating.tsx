@@ -49,6 +49,7 @@ export interface RatingProps {
   size?: TextProps['size'];
   showTextRating?: boolean;
   'aria-label'?: string;
+  data?: TextProps['data'];
 }
 
 export const Rating = ({
@@ -56,6 +57,7 @@ export const Rating = ({
   size = 'standard',
   showTextRating = true,
   'aria-label': ariaLabel,
+  data,
 }: RatingProps) => {
   const styles = useStyles(styleRefs);
 
@@ -65,7 +67,7 @@ export const Rating = ({
   );
 
   return (
-    <Text size={size}>
+    <Text size={size} data={data}>
       <Box
         display="inlineBlock"
         aria-label={

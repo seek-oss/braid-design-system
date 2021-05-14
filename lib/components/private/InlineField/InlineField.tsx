@@ -222,7 +222,7 @@ export const InlineField = forwardRef<
             disabled={disabled}
             ref={ref}
             tabIndex={tabIndex}
-            {...buildDataAttributes(data)}
+            {...(data ? buildDataAttributes(data) : undefined)}
           />
           <Box
             flexShrink={0}

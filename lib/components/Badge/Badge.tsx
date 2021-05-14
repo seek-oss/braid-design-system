@@ -4,6 +4,9 @@ import { Box, BoxProps } from '../Box/Box';
 import { Text } from '../Text/Text';
 import * as styleRefs from './Badge.treat';
 import { useStyles } from 'sku/react-treat';
+import buildDataAttributes, {
+  DataAttributeMap,
+} from '../private/buildDataAttributes';
 
 const validTones = [
   'promote',
@@ -22,6 +25,7 @@ export interface BadgeProps {
   title?: string;
   children: string;
   id?: string;
+  data?: DataAttributeMap;
   tabIndex?: BoxProps['tabIndex'];
   'aria-describedby'?: string;
 }
@@ -65,6 +69,7 @@ export const Badge = forwardRef<HTMLDivElement, BadgeProps>(
       title,
       children,
       id,
+      data,
       tabIndex,
       'aria-describedby': ariaDescribedBy,
     },
@@ -89,6 +94,7 @@ export const Badge = forwardRef<HTMLDivElement, BadgeProps>(
         display="flex"
         cursor="default"
         className={[styles.outer, bleedY ? styles.bleedY : null]}
+        {...(data ? buildDataAttributes(data) : undefined)}
       >
         <Box
           id={id}

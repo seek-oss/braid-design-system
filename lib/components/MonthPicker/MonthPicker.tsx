@@ -53,7 +53,6 @@ export interface MonthPickerProps
     | 'value'
     | 'labelId'
     | 'aria-describedby'
-    | 'data'
     | 'name'
     | 'autoComplete'
     | 'secondaryMessage'
@@ -201,7 +200,6 @@ const MonthPicker = ({
       icon={undefined}
       prefix={undefined}
       labelId={undefined}
-      data={undefined}
       name={undefined}
       autoComplete={undefined}
       secondaryMessage={null}

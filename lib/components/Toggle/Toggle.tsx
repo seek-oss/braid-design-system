@@ -6,6 +6,9 @@ import { Text } from '../Text/Text';
 import { IconTick } from '../icons';
 import { useVirtualTouchable } from '../private/touchable/useVirtualTouchable';
 import { useBackgroundLightness } from '../Box/BackgroundContext';
+import buildDataAttributes, {
+  DataAttributeMap,
+} from '../private/buildDataAttributes';
 import * as styleRefs from './Toggle.treat';
 
 type HTMLInputProps = AllHTMLAttributes<HTMLInputElement>;
@@ -17,6 +20,7 @@ export interface ToggleProps {
   onChange: ChangeHandler;
   align?: 'left' | 'right' | 'justify';
   size?: keyof typeof styleRefs.fieldSize;
+  data?: DataAttributeMap;
 }
 
 const handleChange = (onChange: ChangeHandler) => (
@@ -34,6 +38,7 @@ export const Toggle = ({
   label,
   align = 'left',
   size = 'standard',
+  data,
 }: ToggleProps) => {
   const styles = useStyles(styleRefs);
   const showBorder = useBackgroundLightness() === 'light';
@@ -45,6 +50,7 @@ export const Toggle = ({
       display="flex"
       flexDirection={align === 'left' ? undefined : 'rowReverse'}
       className={styles.root}
+      {...(data ? buildDataAttributes(data) : undefined)}
     >
       <Box
         component="input"

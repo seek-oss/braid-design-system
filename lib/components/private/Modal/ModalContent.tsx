@@ -19,6 +19,7 @@ import { ReactNodeNoStrings } from '../ReactNodeNoStrings';
 import { IconClear } from '../../icons';
 import { useNegativeMarginTop } from '../../../hooks/useNegativeMargin/useNegativeMargin';
 import { useVirtualTouchable } from '../touchable/useVirtualTouchable';
+import buildDataAttributes, { DataAttributeMap } from '../buildDataAttributes';
 import * as styleRefs from './Modal.treat';
 
 export interface ModalContentProps {
@@ -35,6 +36,7 @@ export interface ModalContentProps {
   scrollLock?: boolean;
   headingRef?: Ref<HTMLElement>;
   modalRef?: Ref<HTMLElement>;
+  data?: DataAttributeMap;
 }
 
 const modalPadding = ['gutter', 'large'] as const;
@@ -90,6 +92,7 @@ export const ModalContent = ({
   scrollLock = true,
   position,
   headingLevel,
+  data,
 }: ModalContentProps) => {
   const styles = useStyles(styleRefs);
 
@@ -150,6 +153,7 @@ export const ModalContent = ({
               styles.pointerEventsAll,
               position === 'center' && styles.maxSize[position],
             ]}
+            {...(data ? buildDataAttributes(data) : undefined)}
           >
             <Stack space="large">
               {illustration ? (

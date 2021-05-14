@@ -62,7 +62,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           onClick={onClick}
           disabled={loading}
           {...buttonProps}
-          {...buildDataAttributes(data)}
+          {...(data ? buildDataAttributes(data) : undefined)}
         >
           <ButtonChildren>{children}</ButtonChildren>
         </button>
