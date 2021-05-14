@@ -1,4 +1,4 @@
-import { ResponsiveValue, responsiveValue } from '../atoms/atoms.css';
+import { ResponsiveValue, normalizeResponsiveValue } from '../atoms/atoms.css';
 
 export type ResponsiveProp<AtomName> =
   | AtomName
@@ -68,7 +68,7 @@ export const resolveResponsiveProp = <Keys extends string | number>(
     return mobileAtoms[value!];
   }
 
-  const { mobile, tablet, desktop } = responsiveValue.normalize(value);
+  const { mobile, tablet, desktop } = normalizeResponsiveValue(value);
 
   return `${mobileAtoms[mobile!]}${
     tablet !== mobile ? ` ${tabletAtoms[tablet!]}` : ''

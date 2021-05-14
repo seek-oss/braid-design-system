@@ -4,7 +4,7 @@ import {
   resolveResponsiveRangeProps,
 } from './responsiveRangeProps';
 import { Align, alignToFlexAlign, alignYToFlexAlign, AlignY } from './align';
-import { ResponsiveValue, responsiveValue } from '../atoms/atoms.css';
+import { ResponsiveValue, normalizeResponsiveValue } from '../atoms/atoms.css';
 
 function invertAlignment<Alignment extends string>(alignment: Alignment) {
   if (alignment === 'flexStart') {
@@ -38,7 +38,7 @@ export function resolveCollapsibleAlignmentProps({
   const rowReverseTablet = collapseMobile && reverse;
   const rowReverseDesktop = (collapseMobile || collapseTablet) && reverse;
 
-  const normalizedAlign = responsiveValue.normalize(
+  const normalizedAlign = normalizeResponsiveValue(
     alignToFlexAlign(align) || 'flexStart',
   );
   const {

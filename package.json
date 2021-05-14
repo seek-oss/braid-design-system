@@ -53,7 +53,7 @@
     "@types/lodash": "^4.14.168",
     "@types/react": "^16.8.8",
     "@types/uuid": "^8.3.0",
-    "@vanilla-extract/sprinkles": "^0.2.2",
+    "@vanilla-extract/sprinkles": "^0.3.0",
     "assert": "^2.0.0",
     "autosuggest-highlight": "^3.1.1",
     "capsize": "^2.0.0",
@@ -96,8 +96,8 @@
     "@types/react-router-dom": "^5.1.7",
     "@types/sanitize-html": "^1.27.1",
     "@types/webpack-env": "^1.16.0",
-    "@vanilla-extract/css": "^0.4.3",
-    "@vanilla-extract/css-utils": "^0.1.0",
+    "@vanilla-extract/css": "^0.5.0",
+    "@vanilla-extract/css-utils": "^0.1.1",
     "babel-plugin-macros": "^3.0.1",
     "babel-plugin-tester": "^10.0.0",
     "change-case": "^4.1.2",
@@ -139,7 +139,8 @@
   },
   "resolutions": {
     "playroom": "0.23.0",
-    "csstype": "3.0.6"
+    "csstype": "3.0.6",
+    "@vanilla-extract/css": "0.5.0"
   },
   "volta": {
     "node": "12.14.1",

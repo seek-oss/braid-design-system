@@ -2,7 +2,8 @@ import {
   ConditionalValue,
   createAtomicStyles,
   createAtomsFn,
-  createUtils,
+  createMapValueFn,
+  createNormalizeValueFn,
 } from '@vanilla-extract/sprinkles';
 
 import { breakpoints } from '../themes/nextThemeUtils';
@@ -55,8 +56,11 @@ export const atoms = createAtomsFn(
   pseudoAtomicStyles,
 );
 
-export const responsiveValue = createUtils(reponsiveAtomicStyles);
-export type ResponsiveValue<Value> = ConditionalValue<
+export type ResponsiveValue<Value extends string | number> = ConditionalValue<
   typeof reponsiveAtomicStyles,
   Value
 >;
+export const normalizeResponsiveValue = createNormalizeValueFn(
+  reponsiveAtomicStyles,
+);
+export const mapResponsiveValue = createMapValueFn(reponsiveAtomicStyles);

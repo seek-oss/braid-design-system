@@ -7,7 +7,10 @@ import {
   resolveCollapsibleAlignmentProps,
   CollapsibleAlignmentProps,
 } from '../../utils/collapsibleAlignmentProps';
-import { responsiveValue, ResponsiveValue } from '../../atoms/atoms.css';
+import {
+  normalizeResponsiveValue,
+  ResponsiveValue,
+} from '../../atoms/atoms.css';
 
 type CollapsibleAlignmentChildProps = ReturnType<
   typeof resolveCollapsibleAlignmentProps
@@ -47,7 +50,7 @@ export const Columns = ({
   align,
   alignY,
 }: ColumnsProps) => {
-  const normalizedSpace = responsiveValue.normalize(space);
+  const normalizedSpace = normalizeResponsiveValue(space);
   const {
     mobile: mobileSpace = 'none',
     tablet: tabletSpace = mobileSpace,

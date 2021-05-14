@@ -10,7 +10,10 @@ import {
 import { resolveResponsiveProp } from '../../utils/responsiveProp';
 import * as styles from './Tiles.css';
 import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
-import { responsiveValue, ResponsiveValue } from '../../atoms/atoms.css';
+import {
+  normalizeResponsiveValue,
+  ResponsiveValue,
+} from '../../atoms/atoms.css';
 
 export interface TilesProps {
   children: ReactNodeNoStrings;
@@ -25,13 +28,13 @@ export const Tiles = ({
   columns = 1,
   dividers = false,
 }: TilesProps) => {
-  const responsiveSpace = responsiveValue.normalize(space);
+  const responsiveSpace = normalizeResponsiveValue(space);
 
   const {
     mobile: mobileColumns,
     tablet: tabletColumns,
     desktop: desktopColumns,
-  } = responsiveValue.normalize(columns);
+  } = normalizeResponsiveValue(columns);
 
   const negativeMarginTop = useNegativeMarginTop(responsiveSpace);
   const negativeMarginLeft = useNegativeMarginLeft(responsiveSpace);

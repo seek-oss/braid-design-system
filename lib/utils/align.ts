@@ -1,4 +1,4 @@
-import { ResponsiveValue, responsiveValue } from './../atoms/atoms.css';
+import { ResponsiveValue, mapResponsiveValue } from './../atoms/atoms.css';
 
 export type Align = 'left' | 'center' | 'right';
 export type AlignY = 'top' | 'center' | 'bottom';
@@ -11,7 +11,7 @@ const alignToFlexAlignLookup = {
 
 export const alignToFlexAlign = (align: ResponsiveValue<Align> | undefined) =>
   align
-    ? responsiveValue.map(align, (value) => alignToFlexAlignLookup[value])
+    ? mapResponsiveValue(align, (value) => alignToFlexAlignLookup[value])
     : undefined;
 
 const alignYToFlexAlignLookup = {
@@ -24,5 +24,5 @@ export const alignYToFlexAlign = (
   alignY: ResponsiveValue<AlignY> | undefined,
 ) =>
   alignY
-    ? responsiveValue.map(alignY, (value) => alignYToFlexAlignLookup[value])
+    ? mapResponsiveValue(alignY, (value) => alignYToFlexAlignLookup[value])
     : undefined;

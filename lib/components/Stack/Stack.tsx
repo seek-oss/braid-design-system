@@ -9,7 +9,11 @@ import { alignToFlexAlign, Align } from '../../utils/align';
 import { resolveResponsiveRangeProps } from '../../utils/responsiveRangeProps';
 import { useNegativeMarginTop } from '../../hooks/useNegativeMargin/useNegativeMargin';
 import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
-import { ResponsiveValue, responsiveValue } from '../../atoms/atoms.css';
+import {
+  ResponsiveValue,
+  mapResponsiveValue,
+  normalizeResponsiveValue,
+} from '../../atoms/atoms.css';
 
 const alignToDisplay = {
   left: 'block',
@@ -29,7 +33,7 @@ const useStackItem = ({ align, space }: UseStackItemProps) => ({
   ...(align === 'left'
     ? null
     : {
-        display: responsiveValue.map(align, (value) => alignToDisplay[value]),
+        display: mapResponsiveValue(align, (value) => alignToDisplay[value]),
         flexDirection: 'column' as const,
         alignItems: alignToFlexAlign(align),
       }),
@@ -60,7 +64,7 @@ const calculateHiddenStackItemProps = (
     mobile: displayMobile,
     tablet: displayTablet,
     desktop: displayDesktop,
-  } = responsiveValue.normalize(
+  } = normalizeResponsiveValue(
     stackItemProps.display !== undefined ? stackItemProps.display : 'block',
   );
 
