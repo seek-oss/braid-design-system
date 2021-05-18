@@ -4,7 +4,8 @@ import {
   StyledInput,
   StyledInputProps,
 } from '../private/InlineField/StyledInput';
-import { CheckboxProps, resolveCheckedGroup } from './Checkbox';
+import { CheckboxProps } from './Checkbox';
+import { resolveCheckedGroup } from './resolveCheckedGroup';
 
 type LabelStyle =
   | { 'aria-labelledby': NonNullable<string> }
