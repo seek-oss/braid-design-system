@@ -1,11 +1,11 @@
 import React, { forwardRef } from 'react';
 import {
-  CheckboxChecked,
   InlineField,
   InlineFieldProps,
 } from '../private/InlineField/InlineField';
+import { CheckboxChecked } from '../private/InlineField/StyledInput';
 
-const resolveCheckedGroup = (values: Array<CheckboxChecked>) =>
+export const resolveCheckedGroup = (values: Array<CheckboxChecked>) =>
   values.some((value) => value !== values[0]) ? 'mixed' : values[0] ?? false;
 
 export interface CheckboxProps extends Omit<InlineFieldProps, 'checked'> {

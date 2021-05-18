@@ -1,6 +1,16 @@
 import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import { Badge, Checkbox, List, Stack, Strong, Text, TextLink } from '../';
+import {
+  CheckboxStandalone,
+  Badge,
+  Checkbox,
+  List,
+  Stack,
+  Strong,
+  Text,
+  TextLink,
+  Alert,
+} from '../';
 import source from '../../utils/source.macro';
 import { Placeholder } from '../../playroom/components';
 
@@ -61,7 +71,7 @@ const docs: ComponentDocs = {
         source(
           <Stack space="large">
             <Checkbox
-              id={id}
+              id={`${id}_1`}
               onChange={setState('checkbox')}
               checked={getState('checkbox')}
               label="Label"
@@ -69,7 +79,7 @@ const docs: ComponentDocs = {
               message="Critical message"
             />
             <Checkbox
-              id={id}
+              id={`${id}_2`}
               onChange={setState('checkbox2')}
               checked={getState('checkbox2')}
               label="Label"
@@ -257,6 +267,51 @@ const docs: ComponentDocs = {
               />
             </Stack>
           </Stack>,
+        ),
+    },
+    {
+      label: 'Standalone',
+      description: (
+        <>
+          <Text>
+            For cases where a Checkbox needs to be used without a form field
+            style label, you can use the <Strong>CheckboxStandalone</Strong>{' '}
+            component.
+          </Text>
+          <Text>
+            To maintain accessibility, it is required to provide either a{' '}
+            <Strong>aria-label</Strong> or <Strong>aria-labelledby</Strong>{' '}
+            property, to describe the field&rsquo;s intent.
+          </Text>
+          <Alert tone="info">
+            <Stack space="medium">
+              <Text>
+                Given there is no visual label, the following features cannot be
+                supported:
+              </Text>
+
+              <List space="small">
+                <Text>description</Text>
+                <Text>message</Text>
+                <Text>badge</Text>
+                <Text>children (nested content)</Text>
+              </List>
+            </Stack>
+          </Alert>
+        </>
+      ),
+      Example: ({ id, setDefaultState, getState, toggleState }) =>
+        source(
+          <>
+            {setDefaultState('checked', true)}
+
+            <CheckboxStandalone
+              id={id}
+              checked={getState('checked')}
+              onChange={() => toggleState('checked')}
+              aria-label="Standalone checkbox example"
+            />
+          </>,
         ),
     },
   ],
