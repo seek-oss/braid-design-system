@@ -3,7 +3,7 @@
 ---
 
 ---
-updated:
+new:
   - CheckboxStandalone
 ---
 
@@ -28,4 +28,3 @@ Given there is no visual label, the following features from a standard Checkbox 
   aria-label="Label"
 />
 ```
-
