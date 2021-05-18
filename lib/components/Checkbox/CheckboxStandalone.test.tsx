@@ -4,7 +4,7 @@ import { render } from '@testing-library/react';
 import { BraidTestProvider, CheckboxStandalone } from '..';
 import userEvent from '@testing-library/user-event';
 
-describe('Checkbox', () => {
+describe('CheckboxStandalone', () => {
   it('associates field with label correctly', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
