@@ -1,7 +1,7 @@
 import React, { createContext, ReactElement } from 'react';
 import { Box } from '../Box/Box';
 import { ColumnProps } from '../Column/Column';
-import { Space } from '../Box/useBoxStyles';
+import { Space } from '../Box/boxStyles';
 import { useNegativeMarginLeft } from '../../hooks/useNegativeMargin/useNegativeMargin';
 import {
   resolveCollapsibleAlignmentProps,

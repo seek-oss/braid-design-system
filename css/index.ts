@@ -1,5 +1,5 @@
 export { themeVars as vars } from '../lib/themes/themeVars.css';
-export { boxStyles } from './../lib/components/Box/boxStyles';
+export { boxStyles } from '../lib/components/Box/boxStyles';
 export {
   breakpoints,
   Breakpoint,

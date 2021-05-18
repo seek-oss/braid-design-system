@@ -9,16 +9,12 @@ type AtomProps = Parameters<typeof atoms>[0];
 export type Space = keyof typeof themeVars.space | 'none';
 export type ResponsiveSpace = Parameters<typeof atoms>[0]['padding'];
 
-export interface UseBoxStylesProps extends AtomProps {
+export interface BoxStylesProps extends AtomProps {
   component: ElementType | null;
   className?: Parameters<typeof classNames>[0];
 }
 
-export const useBoxStyles = ({
-  component,
-  className,
-  ...rest
-}: UseBoxStylesProps) =>
+export const boxStyles = ({ component, className, ...rest }: BoxStylesProps) =>
   classNames(
     atoms(rest),
     resetStyles.base,

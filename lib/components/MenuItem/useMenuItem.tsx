@@ -15,7 +15,7 @@ import { actionTypes, Action } from '../MenuRenderer/MenuRenderer.actions';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
-import { useBoxStyles } from '../Box/useBoxStyles';
+import { boxStyles } from '../Box/boxStyles';
 import * as styles from './useMenuItem.css';
 
 const {
@@ -144,7 +144,7 @@ export function useMenuItem<MenuItemElement extends HTMLElement>({
       className: [
         styles.menuItem,
         useTouchableSpace(menuItemChildrenSize),
-        useBoxStyles({
+        boxStyles({
           component: null,
           display: 'flex',
           alignItems: 'center',
