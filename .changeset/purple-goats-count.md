@@ -2,4 +2,4 @@
 'braid-design-system': patch
 ---
 
-Update capsize dependency
+Sku dependencies update

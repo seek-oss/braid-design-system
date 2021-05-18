@@ -14,25 +14,6 @@ export const galleryItems: ComponentExample[] = [
           checked={getState('checked')}
           onChange={() => toggleState('checked')}
           label="Label"
-          badge={
-            <Badge tone="positive" weight="strong">
-              New
-            </Badge>
-          }
-        />,
-      ),
-  },
-  {
-    label: 'With a critical message',
-    Example: ({ id, getState, toggleState }) =>
-      source(
-        <Checkbox
-          id={id}
-          checked={getState('checked')}
-          onChange={() => toggleState('checked')}
-          label="Label"
-          message="Critical message"
-          tone="critical"
         />,
       ),
   },
@@ -115,6 +96,19 @@ export const galleryItems: ComponentExample[] = [
             label="Disabled"
           />
         </Stack>,
+      ),
+  },
+  {
+    label: 'Small',
+    Example: ({ id, getState, toggleState }) =>
+      source(
+        <Checkbox
+          id={id}
+          checked={getState('checked')}
+          onChange={() => toggleState('checked')}
+          label="Label"
+          size="small"
+        />,
       ),
   },
 ];

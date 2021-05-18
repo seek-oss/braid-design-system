@@ -14,6 +14,9 @@ import {
   mapResponsiveValue,
   normalizeResponsiveValue,
 } from '../../sprinkles/sprinkles.css';
+import buildDataAttributes, {
+  DataAttributeMap,
+} from '../private/buildDataAttributes';
 
 const alignToDisplay = {
   left: 'block',
@@ -84,6 +87,7 @@ export interface StackProps {
   space: BoxProps['paddingTop'];
   align?: ResponsiveValue<Align>;
   dividers?: boolean | DividerProps['weight'];
+  data?: DataAttributeMap;
 }
 
 export const Stack = ({
@@ -92,6 +96,7 @@ export const Stack = ({
   space = 'none',
   align = 'left',
   dividers = false,
+  data,
 }: StackProps) => {
   assert(
     validStackComponents.includes(component),
@@ -111,7 +116,11 @@ export const Stack = ({
   let firstItemOnDesktop: number | null = null;
 
   return (
-    <Box component={component} className={negativeMarginTop}>
+    <Box
+      component={component}
+      className={negativeMarginTop}
+      {...(data ? buildDataAttributes(data) : undefined)}
+    >
       {Children.map(stackItems, (child, index) => {
         assert(
           !(

@@ -213,7 +213,7 @@ export const Tab = ({ children, data, badge, item }: TabProps) => {
       paddingX={paddingX}
       paddingY="medium"
       className={styles.tab}
-      {...buildDataAttributes(data)}
+      {...(data ? buildDataAttributes(data) : undefined)}
     >
       {/*
         Rendering Text component to provide rendering context

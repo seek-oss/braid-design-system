@@ -23,6 +23,7 @@ import { mergeIds } from '../mergeIds';
 import { BadgeProps } from '../../Badge/Badge';
 import { Inline } from '../../Inline/Inline';
 import * as styles from './InlineField.css';
+import type { Size } from './InlineField.css';
 
 const tones = ['neutral', 'critical'] as const;
 type InlineFieldTone = typeof tones[number];
@@ -48,6 +49,7 @@ export interface InlineFieldProps {
   badge?: ReactElement<BadgeProps>;
   data?: DataAttributeMap;
   required?: boolean;
+  size?: Size;
 }
 
 type FieldType = 'checkbox' | 'radio';
@@ -148,6 +150,7 @@ export const InlineField = forwardRef<
       required,
       inList = false,
       tabIndex,
+      size = 'standard',
       'aria-describedby': ariaDescribedBy,
     },
     forwardedRef,
@@ -204,7 +207,11 @@ export const InlineField = forwardRef<
             checked={checked === 'mixed' ? false : checked}
             position="absolute"
             zIndex={1}
-            className={[styles.realField, isMixed ? styles.isMixed : undefined]}
+            className={[
+              styles.realField,
+              styles.realFieldPosition[size],
+              isMixed ? styles.isMixed : undefined,
+            ]}
             cursor={!disabled ? 'pointer' : undefined}
             opacity={0}
             aria-describedby={mergeIds(
@@ -217,12 +224,12 @@ export const InlineField = forwardRef<
             disabled={disabled}
             ref={ref}
             tabIndex={tabIndex}
-            {...buildDataAttributes(data)}
+            {...(data ? buildDataAttributes(data) : undefined)}
           />
           <Box
             flexShrink={0}
             position="relative"
-            className={styles.fakeField}
+            className={[styles.fakeFieldBase, styles.fakeFieldSize[size]]}
             background={disabled ? 'inputDisabled' : 'input'}
             borderRadius={fieldBorderRadius}
           >
@@ -265,21 +272,28 @@ export const InlineField = forwardRef<
                 htmlFor={id}
                 userSelect="none"
                 display="block"
-                className={[styles.label, useVirtualTouchable()]}
+                className={[
+                  styles.labelBase,
+                  styles.labelOffset[size],
+                  useVirtualTouchable(),
+                ]}
               >
                 <Text
                   weight={checked && !inList ? 'strong' : undefined}
                   tone={disabled ? 'secondary' : undefined}
+                  size={size}
                 >
                   {label}
                 </Text>
               </Box>
-              {badge ? <Box className={styles.badgeOffset}>{badge}</Box> : null}
+              {badge ? (
+                <Box className={styles.badgeOffset[size]}>{badge}</Box>
+              ) : null}
             </Inline>
 
             {description ? (
               <Box paddingTop="small">
-                <Text tone="secondary" id={descriptionId}>
+                <Text tone="secondary" size={size} id={descriptionId}>
                   {description}
                 </Text>
               </Box>

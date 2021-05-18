@@ -100,6 +100,35 @@ const docs: ComponentDocs = {
         ),
     },
     {
+      label: 'Sizes',
+      description: (
+        <Text>
+          You can customise the size of the checkbox via the{' '}
+          <Strong>size</Strong> prop, which accepts either{' '}
+          <Strong>standard</Strong> or <Strong>small.</Strong>
+        </Text>
+      ),
+      Example: ({ id, getState, toggleState }) =>
+        source(
+          <Stack space="medium">
+            <Checkbox
+              id={`${id}_standard`}
+              label="Standard"
+              checked={getState('two')}
+              onChange={() => toggleState('two')}
+              size="standard"
+            />
+            <Checkbox
+              id={`${id}_small`}
+              label="Small"
+              checked={getState('one')}
+              onChange={() => toggleState('one')}
+              size="small"
+            />
+          </Stack>,
+        ),
+    },
+    {
       label: 'Disabled field',
       description: (
         <Text>

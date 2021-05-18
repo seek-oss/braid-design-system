@@ -14,12 +14,16 @@ import {
   normalizeResponsiveValue,
   ResponsiveValue,
 } from '../../sprinkles/sprinkles.css';
+import buildDataAttributes, {
+  DataAttributeMap,
+} from '../private/buildDataAttributes';
 
 export interface TilesProps {
   children: ReactNodeNoStrings;
   space: ResponsiveValue<Space>;
   columns: ResponsiveValue<1 | 2 | 3 | 4 | 5 | 6>;
   dividers?: boolean | DividerProps['weight'];
+  data?: DataAttributeMap;
 }
 
 export const Tiles = ({
@@ -27,6 +31,7 @@ export const Tiles = ({
   space = 'none',
   columns = 1,
   dividers = false,
+  data,
 }: TilesProps) => {
   const responsiveSpace = normalizeResponsiveValue(space);
 
@@ -40,7 +45,10 @@ export const Tiles = ({
   const negativeMarginLeft = useNegativeMarginLeft(responsiveSpace);
 
   return (
-    <Box className={negativeMarginTop}>
+    <Box
+      className={negativeMarginTop}
+      {...(data ? buildDataAttributes(data) : undefined)}
+    >
       <Box display="flex" flexWrap="wrap" className={negativeMarginLeft}>
         {Children.map(flattenChildren(children), (child, i) => (
           <Box

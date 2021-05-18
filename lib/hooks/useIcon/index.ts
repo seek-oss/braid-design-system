@@ -8,6 +8,9 @@ import { TextContext } from '../../components/Text/TextContext';
 import HeadingContext from '../../components/Heading/HeadingContext';
 import { useTextSize, useTextTone, UseTextProps } from '../typography';
 import { useLineHeightContainer } from '../useLineHeightContainer/useLineHeightContainer';
+import buildDataAttributes, {
+  DataAttributeMap,
+} from '../../components/private/buildDataAttributes';
 import * as styles from './icon.css';
 
 type IconSize = NonNullable<UseTextProps['size']> | 'fill';
@@ -29,6 +32,7 @@ export type UseIconProps = {
   size?: IconSize;
   tone?: UseTextProps['tone'];
   alignY?: 'uppercase' | 'lowercase';
+  data?: DataAttributeMap;
 } & OptionalTitle;
 
 type PrivateIconProps = {
@@ -44,7 +48,7 @@ const detaultVerticalCorrection = {
 } as const;
 
 export default (
-  { size, tone, alignY, ...titleProps }: UseIconProps,
+  { size, tone, alignY, data, ...titleProps }: UseIconProps,
   { verticalCorrection = detaultVerticalCorrection }: PrivateIconProps = {},
 ): BoxProps => {
   const textContext = useContext(TextContext);
@@ -78,6 +82,7 @@ export default (
       height: 'full',
       display: 'block',
       className: resolvedTone,
+      ...(data ? buildDataAttributes(data) : undefined),
       ...a11yProps,
     };
   }
@@ -97,6 +102,7 @@ export default (
           ]
         : blockSizeStyles,
     ],
+    ...(data ? buildDataAttributes(data) : undefined),
     ...a11yProps,
   };
 };

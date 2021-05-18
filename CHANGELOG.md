@@ -1,5 +1,57 @@
 # braid-design-system
 
+## 29.31.0
+
+### Minor Changes
+
+- **Checkbox,RadioGroup,Toggle:** Add `size` support to Checkbox, RadioGroup & Toggle ([#928](https://github.com/seek-oss/braid-design-system/pull/928))
+
+  Adds support for adjusting the `size` of a `Checkbox`, the RadioItems within a `RadioGroup` or a `Toggle`. Setting the size adjusts both the visual control and the text size of the label.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Checkbox size="small" label="Label" />
+  ```
+
+  ```jsx
+  <RadioGroup size="small" label="Label">
+    ...
+  </RadioGroup>
+  ```
+
+  ```jsx
+  <Toggle size="small" label="Label" />
+  ```
+
+### Patch Changes
+
+- **Pagination:** Add keyline to improve active page indicator contrast ([#926](https://github.com/seek-oss/braid-design-system/pull/926))
+
+  Improves the contrast of the active page indicator by adding a keyline when `Pagination` is used outside of a `Card`.
+
+## 29.30.0
+
+### Minor Changes
+
+- **Accordion, AccordionItem:** Allow customisation of size, tone, space and dividers. ([#925](https://github.com/seek-oss/braid-design-system/pull/925))
+
+  Note that, to ensure adequate space for touch targets, the `space` prop only accepts values of `"medium"`, `"large"` and `"xlarge"`.
+
+  **EXAMPLE USAGE**
+
+  ```tsx
+  <Accordion size="standard" tone="secondary" space="xlarge" dividers={false}>
+    <AccordionItem label="Accordion item 1">...</AccordionItem>
+    <AccordionItem label="Accordion item 2">...</AccordionItem>
+    <AccordionItem label="Accordion item 3">...</AccordionItem>
+  </Accordion>
+  ```
+
+### Patch Changes
+
+- Update capsize dependency ([#921](https://github.com/seek-oss/braid-design-system/pull/921))
+
 ## 29.29.3
 
 ### Patch Changes

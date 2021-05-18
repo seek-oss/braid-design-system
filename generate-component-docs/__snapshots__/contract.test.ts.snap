@@ -5,6 +5,21 @@ Object {
   exportType: component,
   props: {
     children: ReactNodeNoStrings
+    data?: DataAttributeMap
+    dividers?: boolean
+    size?: 
+        | "large"
+        | "small"
+        | "standard"
+        | "xsmall"
+    space?: ResponsiveProp<
+        | "large"
+        | "medium"
+        | "xlarge"
+    >
+    tone?: 
+        | "neutral"
+        | "secondary"
 },
 }
 `;
@@ -14,10 +29,19 @@ Object {
   exportType: component,
   props: {
     children: ReactNode
+    data?: DataAttributeMap
     expanded?: boolean
     id: string
     label: string
     onToggle?: (expanded: boolean) => void
+    size?: 
+        | "large"
+        | "small"
+        | "standard"
+        | "xsmall"
+    tone?: 
+        | "neutral"
+        | "secondary"
 },
 }
 `;
@@ -27,6 +51,7 @@ Object {
   exportType: component,
   props: {
     children: ReactNodeNoStrings
+    data?: DataAttributeMap
     size?: 
         | "small"
         | "standard"
@@ -40,6 +65,7 @@ Object {
   props: {
     children: ReactNode
     closeLabel?: string
+    data?: DataAttributeMap
     id?: string
     onClose?: () => void
     tone?: 
@@ -125,6 +151,7 @@ Object {
     aria-describedby?: string
     bleedY?: boolean
     children: string
+    data?: DataAttributeMap
     id?: string
     ref?: 
         | (instance: HTMLDivElement | null) => void
@@ -1984,6 +2011,7 @@ Object {
         | true
     contextMenu?: string
     dangerouslySetInnerHTML?: { __html: string; }
+    data?: DataAttributeMap
     datatype?: string
     defaultChecked?: boolean
     defaultValue?: 
@@ -2280,6 +2308,7 @@ Object {
         | "div"
         | "main"
         | "section"
+    data?: DataAttributeMap
     rounded?: boolean
     roundedAbove?: 
         | "mobile"
@@ -2316,6 +2345,9 @@ Object {
         | RefObject<HTMLInputElement>
     required?: boolean
     reserveMessageSpace?: boolean
+    size?: 
+        | "small"
+        | "standard"
     tone?: 
         | "critical"
         | "neutral"
@@ -2332,6 +2364,7 @@ Object {
   exportType: component,
   props: {
     children: ReactNode
+    data?: DataAttributeMap
     width?: 
         | "1/2"
         | "1/3"
@@ -2367,6 +2400,7 @@ Object {
     collapseBelow?: 
         | "desktop"
         | "tablet"
+    data?: DataAttributeMap
     reverse?: boolean
     space: 
         | "gutter"
@@ -2389,6 +2423,7 @@ Object {
   exportType: component,
   props: {
     children: ReactNode
+    data?: DataAttributeMap
     width?: 
         | "large"
         | "medium"
@@ -2404,6 +2439,7 @@ Object {
   props: {
     children: ReactNode
     closeLabel?: string
+    data?: DataAttributeMap
     description?: ReactNodeNoStrings
     id: string
     illustration?: ReactNodeNoStrings
@@ -2426,6 +2462,7 @@ Object {
   props: {
     children: ReactNode
     collapseLabel?: string
+    data?: DataAttributeMap
     expandLabel: string
     expanded?: boolean
     id: string
@@ -2463,6 +2500,7 @@ Object {
   props: {
     children: ReactNode
     closeLabel?: string
+    data?: DataAttributeMap
     description?: ReactNodeNoStrings
     id: string
     onClose: (openState: false) => void
@@ -2521,6 +2559,7 @@ exports[`FieldLabel 1`] = `
 Object {
   exportType: component,
   props: {
+    data?: DataAttributeMap
     description?: ReactNode
     descriptionId?: string
     htmlFor: 
@@ -2538,6 +2577,7 @@ exports[`FieldMessage 1`] = `
 Object {
   exportType: component,
   props: {
+    data?: DataAttributeMap
     disabled?: boolean
     id: string
     message: ReactNode
@@ -2943,6 +2983,7 @@ Object {
         | "webview"
         | ComponentClass<any, any>
         | FunctionComponent<any>
+    data?: DataAttributeMap
     inline?: boolean
     print?: boolean
     screen?: boolean
@@ -2955,6 +2996,7 @@ Object {
   exportType: component,
   props: {
     children: ReactNode
+    data?: DataAttributeMap
     id?: string
 },
 }
@@ -2967,6 +3009,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -3008,6 +3051,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -3048,6 +3092,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -3088,6 +3133,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     direction?: 
         | "down"
         | "left"
@@ -3133,6 +3179,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -3173,6 +3220,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -3213,6 +3261,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -3253,6 +3302,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -3293,6 +3343,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -3333,6 +3384,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -3373,6 +3425,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -3413,6 +3466,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -3453,6 +3507,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -3493,6 +3548,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -3533,6 +3589,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -3573,6 +3630,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -3613,6 +3671,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -3653,6 +3712,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -3693,6 +3753,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -3733,6 +3794,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -3774,6 +3836,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -3814,6 +3877,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -3854,6 +3918,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -3894,6 +3959,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -3934,6 +4000,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -3974,6 +4041,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -4014,6 +4082,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -4054,6 +4123,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -4094,6 +4164,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -4134,6 +4205,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -4174,6 +4246,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -4214,6 +4287,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -4254,6 +4328,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -4294,6 +4369,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -4334,6 +4410,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -4374,6 +4451,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -4414,6 +4492,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -4454,6 +4533,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -4494,6 +4574,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -4534,6 +4615,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -4574,6 +4656,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -4614,6 +4697,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -4654,6 +4738,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -4694,6 +4779,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -4734,6 +4820,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -4774,6 +4861,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -4814,6 +4902,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -4854,6 +4943,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -4894,6 +4984,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -4934,6 +5025,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -4974,6 +5066,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -5014,6 +5107,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -5054,6 +5148,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -5094,6 +5189,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -5134,6 +5230,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -5174,6 +5271,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -5214,6 +5312,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -5254,6 +5353,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -5294,6 +5394,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -5334,6 +5435,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -5374,6 +5476,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -5414,6 +5517,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -5454,6 +5558,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -5495,6 +5600,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -5535,6 +5641,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -5575,6 +5682,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -5615,6 +5723,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -5655,6 +5764,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -5695,6 +5805,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -5735,6 +5846,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -5775,6 +5887,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -5815,6 +5928,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     hidden?: boolean
     size?: 
         | "fill"
@@ -5856,6 +5970,7 @@ Object {
     alignY?: 
         | "lowercase"
         | "uppercase"
+    data?: DataAttributeMap
     size?: 
         | "fill"
         | "large"
@@ -5911,6 +6026,7 @@ Object {
         | "div"
         | "ol"
         | "ul"
+    data?: DataAttributeMap
     reverse?: boolean
     space: 
         | "gutter"
@@ -6360,6 +6476,7 @@ Object {
   exportType: component,
   props: {
     children: ReactNodeNoStrings
+    data?: DataAttributeMap
     icon?: ReactNode
     size?: 
         | "large"
@@ -6415,6 +6532,7 @@ Object {
   exportType: component,
   props: {
     aria-label?: string
+    data?: DataAttributeMap
     delayVisibility?: boolean
     size?: 
         | "large"
@@ -6502,6 +6620,7 @@ Object {
   exportType: component,
   props: {
     ascendingYears?: boolean
+    data?: DataAttributeMap
     description?: ReactNode
     disabled?: boolean
     id: string
@@ -6536,6 +6655,7 @@ Object {
   exportType: component,
   props: {
     children: ReactNode
+    data?: DataAttributeMap
     tone?: 
         | "critical"
         | "info"
@@ -6562,6 +6682,7 @@ exports[`Pagination 1`] = `
 Object {
   exportType: component,
   props: {
+    data?: DataAttributeMap
     label: string
     linkProps: ({ page, type, }: { page: number; type: "next" | "previous" | "pageNumber"; }) => LinkProps
     nextLabel?: string
@@ -6646,6 +6767,7 @@ Object {
   exportType: component,
   props: {
     children: ReactElement<RadioItemProps, string | JSXElementConstructor<any>>[]
+    data?: DataAttributeMap
     description?: ReactNode
     disabled?: boolean
     id: string
@@ -6656,6 +6778,9 @@ Object {
     required?: boolean
     reserveMessageSpace?: boolean
     secondaryLabel?: ReactNode
+    size?: 
+        | "small"
+        | "standard"
     tertiaryLabel?: ReactNode
     tone?: 
         | "critical"
@@ -6694,6 +6819,7 @@ Object {
   exportType: component,
   props: {
     aria-label?: string
+    data?: DataAttributeMap
     rating: number
     showTextRating?: boolean
     size?: 
@@ -6710,6 +6836,7 @@ Object {
   exportType: component,
   props: {
     children: ReactNode
+    data?: DataAttributeMap
     id?: string
 },
 }
@@ -6729,6 +6856,7 @@ Object {
         | "div"
         | "ol"
         | "ul"
+    data?: DataAttributeMap
     dividers?: 
         | "regular"
         | "strong"
@@ -6755,6 +6883,7 @@ Object {
   exportType: component,
   props: {
     children: ReactNode
+    data?: DataAttributeMap
     id?: string
 },
 }
@@ -6842,6 +6971,7 @@ Object {
   props: {
     children: string
     clearLabel?: string
+    data?: DataAttributeMap
     onClear?: () => void
 },
 }
@@ -7077,6 +7207,7 @@ exports[`TextDropdown 1`] = `
 Object {
   exportType: component,
   props: {
+    data?: DataAttributeMap
     id: string
     label: string
     onBlur?: () => void
@@ -7313,6 +7444,7 @@ Object {
         | true
     contextMenu?: string
     dangerouslySetInnerHTML?: { __html: string; }
+    data?: DataAttributeMap
     datatype?: string
     defaultChecked?: boolean
     defaultValue?: 
@@ -7668,6 +7800,7 @@ Object {
         | 5
         | 6
     >
+    data?: DataAttributeMap
     dividers?: 
         | "regular"
         | "strong"
@@ -7706,10 +7839,14 @@ Object {
         | "justify"
         | "left"
         | "right"
+    data?: DataAttributeMap
     id: string
     label: ReactNode
     on: boolean
     onChange: ChangeHandler
+    size?: 
+        | "small"
+        | "standard"
 },
 }
 `;

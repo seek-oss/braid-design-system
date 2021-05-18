@@ -134,7 +134,7 @@ export const Tabs = (props: TabsProps) => {
               <Box
                 {...a11y.tabListProps({ label })}
                 display="flex"
-                {...buildDataAttributes(data)}
+                {...(data ? buildDataAttributes(data) : undefined)}
                 flexWrap="nowrap"
               >
                 {tabs}

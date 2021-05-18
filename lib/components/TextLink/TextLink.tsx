@@ -7,13 +7,18 @@ import {
   useLinkComponent,
   LinkComponentProps,
 } from '../BraidProvider/BraidProvider';
+import buildDataAttributes, {
+  DataAttributeMap,
+} from '../private/buildDataAttributes';
 
 export interface TextLinkProps
   extends Omit<PrivateTextLinkRendererProps, 'children'>,
-    Omit<LinkComponentProps, 'className' | 'style'> {}
+    Omit<LinkComponentProps, 'className' | 'style'> {
+  data?: DataAttributeMap;
+}
 
 export const TextLink = forwardRef<HTMLAnchorElement, TextLinkProps>(
-  ({ weight, showVisited, hitArea, ...props }, ref) => {
+  ({ weight, showVisited, hitArea, data, ...props }, ref) => {
     const LinkComponent = useLinkComponent(ref);
 
     return (
@@ -22,7 +27,14 @@ export const TextLink = forwardRef<HTMLAnchorElement, TextLinkProps>(
         showVisited={showVisited}
         hitArea={hitArea}
       >
-        {(styleProps) => <LinkComponent ref={ref} {...props} {...styleProps} />}
+        {(styleProps) => (
+          <LinkComponent
+            ref={ref}
+            {...props}
+            {...styleProps}
+            {...(data ? buildDataAttributes(data) : undefined)}
+          />
+        )}
       </PrivateTextLinkRenderer>
     );
   },
