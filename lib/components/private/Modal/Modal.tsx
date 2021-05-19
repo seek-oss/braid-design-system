@@ -138,6 +138,7 @@ export const Modal = ({
   title,
   headingLevel,
   position,
+  data,
 }: ModalProps) => {
   const styles = useStyles(styleRefs);
   const [trapActive, setTrapActive] = useState(true);
@@ -272,6 +273,7 @@ export const Modal = ({
               modalRef={modalRef}
               position={position}
               scrollLock={!(state === CLOSING)}
+              data={data}
             >
               {children}
             </ModalContent>

@@ -15,6 +15,9 @@ import { Column } from '../Column/Column';
 import { Overlay } from '../private/Overlay/Overlay';
 import { useBackground } from '../Box/BackgroundContext';
 import { useTextAlignedToIcon } from '../../hooks/useTextAlignedToIcon/useTextAlignedToIcon';
+import buildDataAttributes, {
+  DataAttributeMap,
+} from '../private/buildDataAttributes';
 import * as styleRefs from './Alert.treat';
 
 type Tone = 'promote' | 'info' | 'positive' | 'caution' | 'critical';
@@ -24,6 +27,7 @@ type CloseProps = AllOrNone<{ onClose: () => void; closeLabel: string }>;
 export type AlertProps = {
   tone?: Tone;
   children: ReactNode;
+  data?: DataAttributeMap;
   id?: string;
 } & CloseProps;
 
@@ -58,6 +62,7 @@ export const Alert = ({
   children,
   id,
   closeLabel = 'Close',
+  data,
   onClose,
 }: AlertProps) => {
   const styles = useStyles(styleRefs);
@@ -74,6 +79,7 @@ export const Alert = ({
       overflow="hidden"
       role="alert"
       aria-live="polite"
+      {...(data ? buildDataAttributes(data) : undefined)}
     >
       <Box paddingLeft={highlightBarSize}>
         <Columns space="small">

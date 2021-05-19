@@ -7,6 +7,9 @@ import {
   resolveResponsiveRangeProps,
   ResponsiveRangeProps,
 } from '../../utils/responsiveRangeProps';
+import buildDataAttributes, {
+  DataAttributeMap,
+} from '../private/buildDataAttributes';
 import * as styleRefs from './Hidden.treat';
 
 export interface HiddenProps extends ResponsiveRangeProps {
@@ -15,6 +18,7 @@ export interface HiddenProps extends ResponsiveRangeProps {
   screen?: boolean;
   print?: boolean;
   inline?: boolean;
+  data?: DataAttributeMap;
 }
 
 export const Hidden = ({
@@ -25,6 +29,7 @@ export const Hidden = ({
   screen,
   print,
   inline: inlineProp,
+  data,
 }: HiddenProps) => {
   if (process.env.NODE_ENV === 'development' && screen) {
     // eslint-disable-next-line no-console
@@ -61,6 +66,7 @@ export const Hidden = ({
       }
       className={hiddenOnPrint ? styles.hiddenOnPrint : undefined}
       component={component || (inline ? 'span' : 'div')}
+      {...(data ? buildDataAttributes(data) : undefined)}
     >
       {children}
     </Box>

@@ -4,6 +4,7 @@ import { Secondary } from '../Secondary/Secondary';
 import { Strong } from '../Strong/Strong';
 import { Text } from '../Text/Text';
 import { Stack } from '../Stack/Stack';
+import { DataAttributeMap } from '../private/buildDataAttributes';
 
 export interface FieldLabelProps {
   id?: string;
@@ -13,6 +14,7 @@ export interface FieldLabelProps {
   tertiaryLabel?: ReactNode;
   description?: ReactNode;
   descriptionId?: string;
+  data?: DataAttributeMap;
 }
 
 export const FieldLabel = ({
@@ -23,6 +25,7 @@ export const FieldLabel = ({
   tertiaryLabel,
   description,
   descriptionId,
+  data,
 }: FieldLabelProps) => {
   if (!label) {
     return null;
@@ -36,7 +39,7 @@ export const FieldLabel = ({
   );
 
   return (
-    <Stack space="xsmall">
+    <Stack space="xsmall" data={data}>
       <Box component="span" display="flex" justifyContent="spaceBetween">
         {htmlFor === false ? (
           labelEl

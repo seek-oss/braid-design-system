@@ -65,7 +65,7 @@ export const TextLinkButton = ({
           aria-describedby={ariaDescribedBy}
           id={id}
           {...styleProps}
-          {...buildDataAttributes(data)}
+          {...(data ? buildDataAttributes(data) : undefined)}
         >
           {children}
         </Box>
