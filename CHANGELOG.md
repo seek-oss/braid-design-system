@@ -1,5 +1,51 @@
 # braid-design-system
 
+## 29.32.0
+
+### Minor Changes
+
+- **CheckboxStandalone:**: Add component ([#935](https://github.com/seek-oss/braid-design-system/pull/935))
+
+  Adds support for cases where a Checkbox needs to be used without a form field style label.
+
+  To maintain accessibility, it is required to provide either a **aria-label** or **aria-labelledby** property, to describe the field's intent.
+
+  Given there is no visual label, the following features from a standard Checkbox cannot be supported:
+
+  - description
+  - message
+  - badge
+  - children (nested content)
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <CheckboxStandalone
+    id={...}
+    checked={...}
+    onChange={...}
+    aria-label="Label"
+  />
+  ```
+
+- Add support for data attribute maps on all components. ([#934](https://github.com/seek-oss/braid-design-system/pull/934))
+
+  **EXAMPLE USAGE:**
+
+  ```tsx
+  <Alert
+    data={{
+      testId: 'message',
+    }}
+  />
+
+  // => <div data-testId="message" />
+  ```
+
+### Patch Changes
+
+- Sku dependencies update ([#924](https://github.com/seek-oss/braid-design-system/pull/924))
+
 ## 29.31.0
 
 ### Minor Changes
