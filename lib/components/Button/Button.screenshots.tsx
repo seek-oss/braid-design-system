@@ -1,9 +1,9 @@
 import React, { Fragment, ReactNode } from 'react';
 import { ComponentScreenshot } from '../../../site/src/types';
-import { background as boxBackgrounds } from '../Box/boxStyles.css';
 import { Box, Button } from '../';
 import { Inline } from '../Inline/Inline';
 import { Heading } from '../Heading/Heading';
+import { backgrounds } from '../../utils/docsHelpers';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <div style={{ maxWidth: '300px' }}>{children}</div>
@@ -122,86 +122,68 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Contrast',
       Container,
-      Example: () => {
-        const backgrounds = Object.keys(boxBackgrounds) as Array<
-          keyof typeof boxBackgrounds
-        >;
-
-        return (
-          <Fragment>
-            {backgrounds.sort().map((background) => (
-              <Box key={background} background={background} padding="medium">
-                <Inline space="small" collapseBelow="desktop">
-                  <Button>Solid</Button>
-                  <Button variant="ghost">Ghost</Button>
-                  <Button variant="soft">Soft</Button>
-                  <Button variant="transparent">Transparent</Button>
-                </Inline>
-              </Box>
-            ))}
-          </Fragment>
-        );
-      },
+      Example: () => (
+        <Fragment>
+          {backgrounds.map((background) => (
+            <Box key={background} background={background} padding="medium">
+              <Inline space="small" collapseBelow="desktop">
+                <Button>Solid</Button>
+                <Button variant="ghost">Ghost</Button>
+                <Button variant="soft">Soft</Button>
+                <Button variant="transparent">Transparent</Button>
+              </Inline>
+            </Box>
+          ))}
+        </Fragment>
+      ),
     },
     {
       label: 'Contrast - critical',
       Container,
-      Example: () => {
-        const backgrounds = Object.keys(boxBackgrounds) as Array<
-          keyof typeof boxBackgrounds
-        >;
-
-        return (
-          <Fragment>
-            {backgrounds.sort().map((background) => (
-              <Box key={background} background={background} padding="medium">
-                <Inline space="small" collapseBelow="desktop">
-                  <Button tone="critical">Solid</Button>
-                  <Button tone="critical" variant="ghost">
-                    Ghost
-                  </Button>
-                  <Button tone="critical" variant="soft">
-                    Soft
-                  </Button>
-                  <Button tone="critical" variant="transparent">
-                    Transparent
-                  </Button>
-                </Inline>
-              </Box>
-            ))}
-          </Fragment>
-        );
-      },
+      Example: () => (
+        <Fragment>
+          {backgrounds.map((background) => (
+            <Box key={background} background={background} padding="medium">
+              <Inline space="small" collapseBelow="desktop">
+                <Button tone="critical">Solid</Button>
+                <Button tone="critical" variant="ghost">
+                  Ghost
+                </Button>
+                <Button tone="critical" variant="soft">
+                  Soft
+                </Button>
+                <Button tone="critical" variant="transparent">
+                  Transparent
+                </Button>
+              </Inline>
+            </Box>
+          ))}
+        </Fragment>
+      ),
     },
     {
       label: 'Contrast - brandAccent',
       Container,
-      Example: () => {
-        const backgrounds = Object.keys(boxBackgrounds) as Array<
-          keyof typeof boxBackgrounds
-        >;
-
-        return (
-          <Fragment>
-            {backgrounds.sort().map((background) => (
-              <Box key={background} background={background} padding="medium">
-                <Inline space="small" collapseBelow="desktop">
-                  <Button tone="brandAccent">Solid</Button>
-                  <Button tone="brandAccent" variant="ghost">
-                    Ghost
-                  </Button>
-                  <Button tone="brandAccent" variant="soft">
-                    Soft
-                  </Button>
-                  <Button tone="brandAccent" variant="transparent">
-                    Transparent
-                  </Button>
-                </Inline>
-              </Box>
-            ))}
-          </Fragment>
-        );
-      },
+      Example: () => (
+        <Fragment>
+          {backgrounds.map((background) => (
+            <Box key={background} background={background} padding="medium">
+              <Inline space="small" collapseBelow="desktop">
+                <Button tone="brandAccent">Solid</Button>
+                <Button tone="brandAccent" variant="ghost">
+                  Ghost
+                </Button>
+                <Button tone="brandAccent" variant="soft">
+                  Soft
+                </Button>
+                <Button tone="brandAccent" variant="transparent">
+                  Transparent
+                </Button>
+              </Inline>
+            </Box>
+          ))}
+        </Fragment>
+      ),
     },
   ],
 };

@@ -11,7 +11,7 @@ import assert from 'assert';
 import { BraidPortal } from '../BraidPortal/BraidPortal';
 import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import { BackgroundProvider } from '../Box/BackgroundContext';
-import { useBoxStyles } from '../Box/useBoxStyles';
+import { boxStyles } from '../Box/boxStyles';
 import { DefaultTextPropsProvider } from '../private/defaultTextProps';
 import { useSpace } from '../useSpace/useSpace';
 import { useThemeName } from '../useThemeName/useThemeName';
@@ -65,7 +65,7 @@ export const TooltipContent = ({
   opacity: 0 | 100;
   arrowProps: ArrowProps;
 }) => {
-  const arrowStyles = useBoxStyles({
+  const arrowStyles = boxStyles({
     component: 'div',
     borderRadius: 'standard',
     className: [styles.arrow, styles.background],
@@ -249,7 +249,7 @@ export const TooltipRenderer = ({
     return () => clearTimeout(timeout);
   }, [tooltipRef, visible]);
 
-  const tooltipStyles = useBoxStyles({
+  const tooltipStyles = boxStyles({
     component: 'div',
     zIndex: 'notification',
     display: triggerRef && visible ? undefined : 'none',

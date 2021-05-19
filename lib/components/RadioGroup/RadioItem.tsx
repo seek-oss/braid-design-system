@@ -17,10 +17,10 @@ export interface RadioItemProps
     | 'reserveMessageSpace'
     | 'required'
     | 'onChange'
-    | 'checked'
     | 'id'
     | 'disabled'
     | 'tone'
+    | 'size'
   > {
   value: NonNullable<InlineFieldProps['value']>;
 }
@@ -58,6 +58,7 @@ const NamedRadioItem = forwardRef<HTMLInputElement, RadioItemProps>(
             ? radioGroupContext.tone
             : undefined
         }
+        size={radioGroupContext.size}
         disabled={radioGroupContext.disabled}
         aria-describedby={radioGroupContext['aria-describedby']}
         tabIndex={tababble ? 0 : -1}

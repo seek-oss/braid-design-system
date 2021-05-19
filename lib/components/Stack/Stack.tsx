@@ -6,14 +6,17 @@ import { Divider, DividerProps } from '../Divider/Divider';
 import { Hidden, HiddenProps } from '../Hidden/Hidden';
 import * as hiddenStyles from '../Hidden/Hidden.css';
 import { alignToFlexAlign, Align } from '../../utils/align';
-import {
-  mapResponsiveProp,
-  normaliseResponsiveProp,
-  ResponsiveProp,
-} from '../../utils/responsiveProp';
 import { resolveResponsiveRangeProps } from '../../utils/responsiveRangeProps';
 import { useNegativeMarginTop } from '../../hooks/useNegativeMargin/useNegativeMargin';
 import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
+import {
+  ResponsiveValue,
+  mapResponsiveValue,
+  normalizeResponsiveValue,
+} from '../../sprinkles/sprinkles.css';
+import buildDataAttributes, {
+  DataAttributeMap,
+} from '../private/buildDataAttributes';
 
 const alignToDisplay = {
   left: 'block',
@@ -22,7 +25,7 @@ const alignToDisplay = {
 } as const;
 
 interface UseStackItemProps {
-  align: ResponsiveProp<Align>;
+  align: ResponsiveValue<Align>;
   space: BoxProps['paddingTop'];
 }
 
@@ -33,7 +36,7 @@ const useStackItem = ({ align, space }: UseStackItemProps) => ({
   ...(align === 'left'
     ? null
     : {
-        display: mapResponsiveProp(align, alignToDisplay) || 'flex',
+        display: mapResponsiveValue(align, (value) => alignToDisplay[value]),
         flexDirection: 'column' as const,
         alignItems: alignToFlexAlign(align),
       }),
@@ -60,21 +63,21 @@ const calculateHiddenStackItemProps = (
     [boolean, boolean, boolean]
   >,
 ) => {
-  const [
-    displayMobile,
-    displayTablet,
-    displayDesktop,
-  ] = normaliseResponsiveProp(
+  const {
+    mobile: displayMobile,
+    tablet: displayTablet,
+    desktop: displayDesktop,
+  } = normalizeResponsiveValue(
     stackItemProps.display !== undefined ? stackItemProps.display : 'block',
   );
 
   return {
     ...stackItemProps,
-    display: [
-      hiddenOnMobile ? 'none' : displayMobile,
-      hiddenOnTablet ? 'none' : displayTablet,
-      hiddenOnDesktop ? 'none' : displayDesktop,
-    ] as const,
+    display: {
+      mobile: hiddenOnMobile ? 'none' : displayMobile,
+      tablet: hiddenOnTablet ? 'none' : displayTablet,
+      desktop: hiddenOnDesktop ? 'none' : displayDesktop,
+    } as const,
   };
 };
 
@@ -82,8 +85,9 @@ export interface StackProps {
   component?: typeof validStackComponents[number];
   children: ReactNodeNoStrings;
   space: BoxProps['paddingTop'];
-  align?: ResponsiveProp<Align>;
+  align?: ResponsiveValue<Align>;
   dividers?: boolean | DividerProps['weight'];
+  data?: DataAttributeMap;
 }
 
 export const Stack = ({
@@ -92,6 +96,7 @@ export const Stack = ({
   space = 'none',
   align = 'left',
   dividers = false,
+  data,
 }: StackProps) => {
   assert(
     validStackComponents.includes(component),
@@ -111,7 +116,11 @@ export const Stack = ({
   let firstItemOnDesktop: number | null = null;
 
   return (
-    <Box component={component} className={negativeMarginTop}>
+    <Box
+      component={component}
+      className={negativeMarginTop}
+      {...(data ? buildDataAttributes(data) : undefined)}
+    >
       {Children.map(stackItems, (child, index) => {
         assert(
           !(

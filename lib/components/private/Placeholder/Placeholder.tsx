@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import { Box, Text } from '../../';
 import { useBackgroundLightness } from '../../Box/BackgroundContext';
-import { useBoxStyles } from '../../Box/useBoxStyles';
+import { boxStyles } from '../../Box/boxStyles';
 import wireframe from '../../../themes/wireframe';
 import * as styles from './Placeholder.css';
 
@@ -24,7 +24,7 @@ export const Placeholder = ({
   const theme =
     useBackgroundLightness() === 'light' ? styles.lightTheme : styles.darkTheme;
 
-  const svgStyles = useBoxStyles({
+  const svgStyles = boxStyles({
     component: 'svg',
     position: 'absolute',
     width: 'full',

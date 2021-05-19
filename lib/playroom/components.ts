@@ -1,6 +1,7 @@
 import '../reset';
 export * from '../components';
 
+export { Accordion } from '../components/Accordion/Accordion.playroom';
 export { AccordionItem } from '../components/Accordion/AccordionItem.playroom';
 export { Alert } from '../components/Alert/Alert.playroom';
 export { Autosuggest } from '../components/Autosuggest/Autosuggest.playroom';
@@ -9,6 +10,7 @@ export { Button } from '../components/Button/Button.playroom';
 export { ButtonLink } from '../components/ButtonLink/ButtonLink.playroom';
 export { Card } from '../components/Card/Card.playroom';
 export { Checkbox } from '../components/Checkbox/Checkbox.playroom';
+export { CheckboxStandalone } from '../components/Checkbox/CheckboxStandalone.playroom';
 export { Columns } from '../components/Columns/Columns.playroom';
 export { Dialog } from '../components/Dialog/Dialog.playroom';
 export { Disclosure } from '../components/Disclosure/Disclosure.playroom';
@@ -18,6 +20,7 @@ export { FieldLabel } from '../components/FieldLabel/FieldLabel.playroom';
 export { FieldMessage } from '../components/FieldMessage/FieldMessage.playroom';
 export { Heading } from '../components/Heading/Heading.playroom';
 export { Inline } from '../components/Inline/Inline.playroom';
+export { StyledInput } from '../components/private/InlineField/StyledInput';
 export { Link } from '../components/Link/Link.playroom';
 export { List } from '../components/List/List.playroom';
 export { MonthPicker } from '../components/MonthPicker/MonthPicker.playroom';

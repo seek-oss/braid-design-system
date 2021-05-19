@@ -1,3 +1,8 @@
+import {
+  ResponsiveValue,
+  normalizeResponsiveValue,
+} from '../sprinkles/sprinkles.css';
+
 export type ResponsiveProp<AtomName> =
   | AtomName
   | Readonly<[AtomName, AtomName]>
@@ -57,7 +62,7 @@ export const mapResponsiveProp = <
 };
 
 export const resolveResponsiveProp = <Keys extends string | number>(
-  value: ResponsiveProp<Keys>,
+  value: ResponsiveValue<Keys>,
   mobileAtoms: Record<Keys, string>,
   tabletAtoms: Record<Keys, string>,
   desktopAtoms: Record<Keys, string>,
@@ -66,11 +71,13 @@ export const resolveResponsiveProp = <Keys extends string | number>(
     return mobileAtoms[value!];
   }
 
-  const [mobileValue, tabletValue, desktopValue] = normaliseResponsiveProp(
-    value,
-  );
+  const { mobile, tablet, desktop } = normalizeResponsiveValue(value);
 
-  return `${mobileAtoms[mobileValue!]}${
-    tabletValue !== mobileValue ? ` ${tabletAtoms[tabletValue!]}` : ''
-  }${desktopValue !== tabletValue ? ` ${desktopAtoms[desktopValue!]}` : ''}`;
+  return `${mobileAtoms[mobile!]}${
+    tablet !== undefined && tablet !== mobile ? ` ${tabletAtoms[tablet!]}` : ''
+  }${
+    desktop !== undefined && desktop !== tablet
+      ? ` ${desktopAtoms[desktop!]}`
+      : ''
+  }`;
 };

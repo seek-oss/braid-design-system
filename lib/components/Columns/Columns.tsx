@@ -1,13 +1,19 @@
 import React, { createContext, ReactElement } from 'react';
 import { Box } from '../Box/Box';
 import { ColumnProps } from '../Column/Column';
-import { Space, ResponsiveSpace } from '../Box/boxStyles';
+import { Space } from '../Box/boxStyles';
 import { useNegativeMarginLeft } from '../../hooks/useNegativeMargin/useNegativeMargin';
-import { normaliseResponsiveProp } from '../../utils/responsiveProp';
 import {
   resolveCollapsibleAlignmentProps,
   CollapsibleAlignmentProps,
 } from '../../utils/collapsibleAlignmentProps';
+import {
+  normalizeResponsiveValue,
+  ResponsiveValue,
+} from '../../sprinkles/sprinkles.css';
+import buildDataAttributes, {
+  DataAttributeMap,
+} from '../private/buildDataAttributes';
 
 type CollapsibleAlignmentChildProps = ReturnType<
   typeof resolveCollapsibleAlignmentProps
@@ -32,11 +38,12 @@ export const ColumnsContext = createContext<ColumnsContextValue>({
 });
 
 export interface ColumnsProps extends CollapsibleAlignmentProps {
-  space: ResponsiveSpace;
+  space: ResponsiveValue<Space>;
   children:
     | Array<ReactElement<ColumnProps> | null>
     | ReactElement<ColumnProps>
     | null;
+  data?: DataAttributeMap;
 }
 
 export const Columns = ({
@@ -46,10 +53,14 @@ export const Columns = ({
   space = 'none',
   align,
   alignY,
+  data,
 }: ColumnsProps) => {
-  const [mobileSpace, tabletSpace, desktopSpace] = normaliseResponsiveProp(
-    space,
-  );
+  const normalizedSpace = normalizeResponsiveValue(space);
+  const {
+    mobile: mobileSpace = 'none',
+    tablet: tabletSpace = mobileSpace,
+    desktop: desktopSpace = tabletSpace,
+  } = normalizedSpace;
 
   const {
     collapsibleAlignmentProps,
@@ -64,14 +75,18 @@ export const Columns = ({
     reverse,
   });
 
-  const negativeMarginLeft = useNegativeMarginLeft([
-    collapseMobile ? 'none' : mobileSpace,
-    collapseTablet ? 'none' : tabletSpace,
-    desktopSpace,
-  ]);
+  const negativeMarginLeft = useNegativeMarginLeft({
+    mobile: collapseMobile ? 'none' : mobileSpace,
+    tablet: collapseTablet ? 'none' : tabletSpace,
+    desktop: desktopSpace,
+  });
 
   return (
-    <Box {...collapsibleAlignmentProps} className={negativeMarginLeft}>
+    <Box
+      {...collapsibleAlignmentProps}
+      className={negativeMarginLeft}
+      {...(data ? buildDataAttributes(data) : undefined)}
+    >
       <ColumnsContext.Provider
         value={{
           collapseMobile,

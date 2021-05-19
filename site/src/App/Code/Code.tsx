@@ -25,7 +25,7 @@ import {
 } from '../../../../lib/components';
 import { BoxProps } from '../../../../lib/components/Box/Box';
 import { FieldOverlay } from '../../../../lib/components/private/FieldOverlay/FieldOverlay';
-import { useBoxStyles } from '../../../../lib/components/Box/useBoxStyles';
+import { boxStyles } from '../../../../lib/components/Box/boxStyles';
 import { hideFocusRingsClassName } from '../../../../lib/components/private/hideFocusRings/hideFocusRings';
 import { CopyIcon } from './CopyIcon';
 import { PlayIcon } from './PlayIcon';
@@ -234,7 +234,7 @@ const Code = ({
     typeof children === 'function' ? children(playroomScope) : children,
   );
 
-  const blockLinkStyles = useBoxStyles({
+  const blockLinkStyles = boxStyles({
     component: 'a',
     display: 'block',
   });

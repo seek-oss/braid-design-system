@@ -2,8 +2,8 @@ import React, { Fragment, ReactNode } from 'react';
 import { titleCase } from 'title-case';
 import { ComponentScreenshot } from '../../../site/src/types';
 import { Box, Text, Stack, Column, Columns, IconPositive } from '../';
-import { background as boxBackgrounds, textAlign } from '../Box/boxStyles.css';
 import { text as textSizes } from '../../hooks/typography/typography.css';
+import { backgrounds, textAlignments } from '../../utils/docsHelpers';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <div style={{ maxWidth: '300px' }}>{children}</div>
@@ -43,21 +43,15 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Text Alignment',
       Container,
-      Example: () => {
-        const alignments = Object.keys(textAlign) as Array<
-          keyof typeof textAlign
-        >;
-
-        return (
-          <Stack space="medium">
-            {alignments.map((alignment) => (
-              <Text align={alignment} key={alignment}>
-                {titleCase(alignment)}
-              </Text>
-            ))}
-          </Stack>
-        );
-      },
+      Example: () => (
+        <Stack space="medium">
+          {textAlignments.map((alignment) => (
+            <Text align={alignment} key={alignment}>
+              {titleCase(alignment)}
+            </Text>
+          ))}
+        </Stack>
+      ),
     },
     {
       label: 'Text Alignment (responsive)',
@@ -93,32 +87,26 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Text Contrast',
       Container,
-      Example: () => {
-        const backgrounds = Object.keys(boxBackgrounds) as Array<
-          keyof typeof boxBackgrounds
-        >;
-
-        return (
-          <Fragment>
-            {backgrounds.sort().map((background) => (
-              <Box key={background} background={background} padding="xsmall">
-                <Columns space="medium">
-                  <Column>
-                    <Text size="small">
-                      {background} <IconPositive />
-                    </Text>
-                  </Column>
-                  <Column width="content">
-                    <Text size="small" tone="secondary">
-                      Secondary <IconPositive />
-                    </Text>
-                  </Column>
-                </Columns>
-              </Box>
-            ))}
-          </Fragment>
-        );
-      },
+      Example: () => (
+        <Fragment>
+          {backgrounds.map((background) => (
+            <Box key={background} background={background} padding="xsmall">
+              <Columns space="medium">
+                <Column>
+                  <Text size="small">
+                    {background} <IconPositive />
+                  </Text>
+                </Column>
+                <Column width="content">
+                  <Text size="small" tone="secondary">
+                    Secondary <IconPositive />
+                  </Text>
+                </Column>
+              </Columns>
+            </Box>
+          ))}
+        </Fragment>
+      ),
     },
   ],
 };

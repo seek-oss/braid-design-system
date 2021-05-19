@@ -106,7 +106,7 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
         transform={{ active: 'touchable' }}
         transition="touchable"
         tabIndex={!keyboardAccessible ? -1 : undefined}
-        {...buildDataAttributes(data)}
+        {...(data ? buildDataAttributes(data) : undefined)}
       >
         <Box
           position="relative"

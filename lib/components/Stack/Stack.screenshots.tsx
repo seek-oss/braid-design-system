@@ -1,13 +1,8 @@
 import React, { Fragment, ReactNode } from 'react';
 import { ComponentScreenshot } from '../../../site/src/types';
 import { Box, Stack, Hidden } from '../';
-import { StackProps } from './Stack';
 import { Placeholder } from '../private/Placeholder/Placeholder';
-import { padding } from '../Box/boxStyles.css';
-
-const spaces = Object.keys(padding.top).filter(
-  (space) => space !== 'none',
-) as Array<StackProps['space']>;
+import { spaces } from '../../utils/docsHelpers';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <Box style={{ maxWidth: '300px' }}>{children}</Box>

@@ -63,6 +63,15 @@ export const snippets: Snippets = [
     ),
   },
   {
+    name: 'Small',
+    code: source(
+      <RadioGroup label="Label" size="small">
+        <RadioItem label="One" value="1" />
+        <RadioItem label="Two" value="2" />
+      </RadioGroup>,
+    ),
+  },
+  {
     name: 'With nested content',
     code: source(
       <RadioGroup label="Label">

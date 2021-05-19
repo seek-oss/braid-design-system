@@ -5,15 +5,12 @@ import {
   ElementType,
 } from 'react';
 import dedent from 'dedent';
-import { useBoxStyles, UseBoxStylesProps } from './useBoxStyles';
+import { boxStyles, BoxStylesProps } from './boxStyles';
 import { renderBackgroundProvider } from './BackgroundContext';
 
 export interface BoxProps
-  extends Omit<UseBoxStylesProps, 'component'>,
-    Omit<
-      AllHTMLAttributes<HTMLElement>,
-      'width' | 'height' | 'className' | 'color' | 'content' | 'translate'
-    > {
+  extends Omit<BoxStylesProps, 'component'>,
+    Omit<AllHTMLAttributes<HTMLElement>, 'width' | 'height' | 'className'> {
   component?: ElementType;
 }
 
@@ -88,56 +85,54 @@ const NamedBox = forwardRef<HTMLElement, BoxProps>(
       };
     }
 
-    const boxStyles = useBoxStyles({
-      component,
-      padding,
-      paddingX,
-      paddingY,
-      paddingTop,
-      paddingBottom,
-      paddingLeft,
-      paddingRight,
-      margin,
-      marginX,
-      marginY,
-      marginTop,
-      marginBottom,
-      marginLeft,
-      marginRight,
-      display,
-      flexDirection,
-      flexWrap,
-      flexShrink,
-      flexGrow,
-      alignItems,
-      justifyContent,
-      textAlign,
-      borderRadius,
-      background,
-      boxShadow,
-      transition,
-      transform: resolvedTransform,
-      height,
-      width,
-      position,
-      cursor,
-      pointerEvents,
-      overflow,
-      minWidth,
-      maxWidth,
-      top,
-      bottom,
-      right,
-      left,
-      userSelect,
-      outline,
-      opacity,
-      zIndex,
-      className,
-    });
-
     const element = createElement(component, {
-      className: boxStyles,
+      className: boxStyles({
+        component,
+        padding,
+        paddingX,
+        paddingY,
+        paddingTop,
+        paddingBottom,
+        paddingLeft,
+        paddingRight,
+        margin,
+        marginX,
+        marginY,
+        marginTop,
+        marginBottom,
+        marginLeft,
+        marginRight,
+        display,
+        flexDirection,
+        flexWrap,
+        flexShrink,
+        flexGrow,
+        alignItems,
+        justifyContent,
+        textAlign,
+        borderRadius,
+        background,
+        boxShadow,
+        transition,
+        transform: resolvedTransform,
+        height,
+        width,
+        position,
+        cursor,
+        pointerEvents,
+        overflow,
+        minWidth,
+        maxWidth,
+        top,
+        bottom,
+        right,
+        left,
+        userSelect,
+        outline,
+        opacity,
+        zIndex,
+        className,
+      }),
       ...restProps,
       ref,
     });

@@ -9,6 +9,10 @@ export const snippets: Snippets = [
     code: source(<Toggle label="Label" />),
   },
   {
+    name: 'Small',
+    code: source(<Toggle label="Label" size="small" />),
+  },
+  {
     name: 'Right aligned',
     code: source(<Toggle label="Label" align="right" />),
   },

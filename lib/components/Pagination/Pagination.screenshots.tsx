@@ -11,7 +11,6 @@ export const screenshots: ComponentScreenshot = {
   examples: [
     {
       label: `First page, where total < ${maxPages}`,
-      background: 'card',
       Example: () => (
         <Pagination
           label="Label"
@@ -23,7 +22,6 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: `First page, where total = ${maxPages}`,
-      background: 'card',
       Example: () => (
         <Pagination
           label="Label"
@@ -35,7 +33,6 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: `First page, where total > ${maxPages}`,
-      background: 'card',
       Example: () => (
         <Pagination
           label="Label"
@@ -47,7 +44,6 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: `Center page, where total < ${maxPages}`,
-      background: 'card',
       Example: () => (
         <Pagination
           label="Label"
@@ -59,7 +55,6 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: `Center page, where total = ${maxPages}`,
-      background: 'card',
       Example: () => (
         <Pagination
           label="Label"
@@ -71,7 +66,6 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: `Center page, where total > ${maxPages}`,
-      background: 'card',
       Example: () => (
         <Pagination
           label="Label"
@@ -83,7 +77,6 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: `Last page, where total < ${maxPages}`,
-      background: 'card',
       Example: () => (
         <Pagination
           label="Label"
@@ -95,7 +88,6 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: `Last page, where total = ${maxPages}`,
-      background: 'card',
       Example: () => (
         <Pagination
           label="Label"
@@ -107,7 +99,6 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: `Last page, where total > ${maxPages}`,
-      background: 'card',
       Example: () => (
         <Pagination
           label="Label"
@@ -119,7 +110,6 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: `Second page, where total > ${maxPages}`,
-      background: 'card',
       Example: () => (
         <Pagination
           label="Label"
@@ -131,12 +121,23 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: `Second last page, where total > ${maxPages}`,
-      background: 'card',
       Example: () => (
         <Pagination
           label="Label"
           page={maxPages + 3 - 1}
           total={maxPages + 3}
+          linkProps={linkProps}
+        />
+      ),
+    },
+    {
+      label: 'On a card background',
+      background: 'card',
+      Example: () => (
+        <Pagination
+          label="Label"
+          page={1}
+          total={maxPages - 3}
           linkProps={linkProps}
         />
       ),

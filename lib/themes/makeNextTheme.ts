@@ -81,11 +81,10 @@ export default (braidTokens: BraidTokens) => {
   const { name, displayName, breakpoint, ...tokens } = braidTokens;
   const { webFont, ...typography } = tokens.typography;
 
-  const inlineFieldScale =
-    (typography.text.standard.mobile.rows * tokens.grid) / 42;
-  const inlineFieldSize = px(
-    tokens.grid * Math.round(tokens.touchableSize * inlineFieldScale),
-  );
+  const getInlineFieldSize = (size: 'standard' | 'small') => {
+    const scale = (typography.text[size].mobile.rows * tokens.grid) / 42;
+    return px(tokens.grid * Math.round(tokens.touchableSize * scale));
+  };
 
   const resolvedTokens = {
     ...tokens,
@@ -115,7 +114,10 @@ export default (braidTokens: BraidTokens) => {
     space: mapValues(tokens.space, (sp) => px(sp * tokens.grid)),
     touchableSize: px(tokens.touchableSize * tokens.grid),
     grid: px(tokens.grid),
-    inlineFieldSize,
+    inlineFieldSize: {
+      standard: getInlineFieldSize('standard'),
+      small: getInlineFieldSize('small'),
+    },
     border: {
       ...tokens.border,
       width: mapValues(tokens.border.width, px),

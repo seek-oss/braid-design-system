@@ -3,10 +3,10 @@ import {
   useLinkComponent,
   LinkComponentProps,
 } from '../BraidProvider/BraidProvider';
-import { useBoxStyles, UseBoxStylesProps } from '../Box/useBoxStyles';
+import { boxStyles, BoxStylesProps } from '../Box/boxStyles';
 
 export type LinkProps = Omit<LinkComponentProps, 'className'> &
-  Pick<UseBoxStylesProps, 'className'>;
+  Pick<BoxStylesProps, 'className'>;
 
 export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
   ({ href, className, ...restProps }, ref) => {
@@ -16,7 +16,7 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
       <LinkComponent
         ref={ref}
         href={href}
-        className={useBoxStyles({ component: 'a', className })}
+        className={boxStyles({ component: 'a', className })}
         {...restProps}
       />
     );

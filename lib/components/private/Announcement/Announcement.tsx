@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 
-import { useBoxStyles } from '../../Box/useBoxStyles';
+import { boxStyles } from '../../Box/boxStyles';
 import * as styles from '../../HiddenVisually/HiddenVisually.css';
 
 let announcementCounter = 0;
@@ -12,7 +12,7 @@ interface AnnouncementProps {
 
 export const Announcement = ({ children }: AnnouncementProps) => {
   const [announcementElement, setElement] = useState<HTMLElement | null>(null);
-  const className = useBoxStyles({
+  const className = boxStyles({
     component: 'div',
     position: 'absolute',
     overflow: 'hidden',

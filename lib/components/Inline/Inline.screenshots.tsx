@@ -1,13 +1,8 @@
 import React, { Fragment, ReactNode } from 'react';
 import { ComponentScreenshot } from '../../../site/src/types';
 import { Placeholder } from '../private/Placeholder/Placeholder';
-import { InlineProps } from './Inline';
 import { Box, Inline } from '../';
-import { padding } from '../Box/boxStyles.css';
-
-const spaces = Object.keys(padding.top).filter(
-  (space) => space !== 'none',
-) as Array<InlineProps['space']>;
+import { spaces } from '../../utils/docsHelpers';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <Box style={{ maxWidth: '240px' }}>{children}</Box>

@@ -5,6 +5,9 @@ import { Box } from '../Box/Box';
 import { IconChevron } from '../icons';
 import { TextContext } from '../Text/TextContext';
 import HeadingContext from '../Heading/HeadingContext';
+import buildDataAttributes, {
+  DataAttributeMap,
+} from '../private/buildDataAttributes';
 import * as styles from './TextDropdown.css';
 
 interface TextDropdownOption<Value> {
@@ -20,6 +23,7 @@ export interface TextDropdownProps<Value> {
   onBlur?: () => void;
   options: TextDropdownValue<Value>[];
   label: string;
+  data?: DataAttributeMap;
 }
 
 export function parseSimpleToComplexOption<Value>(
@@ -40,6 +44,7 @@ export function TextDropdown<Value>({
   onBlur,
   options,
   label,
+  data,
 }: TextDropdownProps<Value>) {
   assert(
     (() => {
@@ -63,7 +68,11 @@ export function TextDropdown<Value>({
   }
 
   return (
-    <Box display="inlineBlock" position="relative">
+    <Box
+      display="inlineBlock"
+      position="relative"
+      {...(data ? buildDataAttributes(data) : undefined)}
+    >
       <Box pointerEvents="none" userSelect="none">
         {currentText.text} <IconChevron alignY="lowercase" />
       </Box>

@@ -1,12 +1,15 @@
 import React from 'react';
 import assert from 'assert';
 import { Box } from '../Box/Box';
+import { useBackground } from '../Box/BackgroundContext';
 import { IconChevron } from '../icons';
 import { Link, LinkProps } from '../Link/Link';
 import { Overlay } from '../private/Overlay/Overlay';
 import { Text } from '../Text/Text';
 import { paginate } from './paginate';
-
+import buildDataAttributes, {
+  DataAttributeMap,
+} from '../private/buildDataAttributes';
 import * as styles from './Pagination.css';
 
 export interface PaginationProps {
@@ -23,6 +26,7 @@ export interface PaginationProps {
   pageLabel?: (page: number) => string;
   nextLabel?: string;
   previousLabel?: string;
+  data?: DataAttributeMap;
 }
 
 const PageNav = ({
@@ -71,36 +75,50 @@ const PageNav = ({
 
 const tabletButtonSpacing = 'xxsmall';
 
-const Page = ({ number, current }: { number: number; current: boolean }) => (
-  <Box
-    component="span"
-    display="flex"
-    alignItems="center"
-    justifyContent="center"
-    height="touchable"
-    width="touchable"
-    position="relative"
-    className={styles.hover}
-  >
-    <Overlay
+const Page = ({ number, current }: { number: number; current: boolean }) => {
+  const parentBackground = useBackground();
+
+  return (
+    <Box
       component="span"
-      background={current ? 'formAccent' : 'selection'}
-      transition={current ? undefined : 'fast'}
-      borderRadius="standard"
-      className={[styles.background, current ? styles.current : undefined]}
-    />
-    <Box component="span" zIndex={1} userSelect="none">
-      <Text
-        baseline={false}
-        align="center"
-        weight={current ? 'medium' : undefined}
-        tone={current ? 'formAccent' : undefined}
-      >
-        {number}
-      </Text>
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
+      height="touchable"
+      width="touchable"
+      position="relative"
+      className={styles.hover}
+    >
+      <Overlay
+        component="span"
+        background={current ? 'formAccent' : 'selection'}
+        transition={current ? undefined : 'fast'}
+        borderRadius="standard"
+        className={[styles.background, current ? styles.current : undefined]}
+      />
+      <Overlay
+        component="span"
+        borderRadius="standard"
+        boxShadow="borderFormAccent"
+        className={
+          parentBackground !== 'card' && current
+            ? styles.currentKeyline
+            : undefined
+        }
+      />
+      <Box component="span" zIndex={1} userSelect="none">
+        <Text
+          baseline={false}
+          align="center"
+          weight={current ? 'medium' : undefined}
+          tone={current ? 'formAccent' : undefined}
+        >
+          {number}
+        </Text>
+      </Box>
     </Box>
-  </Box>
-);
+  );
+};
 
 export const Pagination = ({
   page,
@@ -110,6 +128,7 @@ export const Pagination = ({
   pageLabel = (p: number) => `Go to page ${p}`,
   nextLabel = 'Next',
   previousLabel = 'Previous',
+  data,
 }: PaginationProps) => {
   assert(total >= 1, `\`total\` must be at least 1`);
   assert(page >= 1 && page <= total, `\`page\` must be between 1 and ${total}`);
@@ -119,7 +138,11 @@ export const Pagination = ({
   const showNext = page < total;
 
   return (
-    <Box component="nav" aria-label={label}>
+    <Box
+      component="nav"
+      aria-label={label}
+      {...(data ? buildDataAttributes(data) : undefined)}
+    >
       <Box component="ul" display="flex" justifyContent="center">
         {showPrevious ? (
           <Box component="li" paddingRight={['medium', tabletButtonSpacing]}>

@@ -11,7 +11,7 @@ import {
   Text,
   TextLink,
 } from '../';
-import { background as boxBackgrounds } from '../Box/boxStyles.css';
+import { backgrounds } from '../../utils/docsHelpers';
 
 export const screenshots: ComponentScreenshot = {
   screenshotWidths: [320],
@@ -155,40 +155,34 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'TextLink Contrast',
-      Example: () => {
-        const backgrounds = Object.keys(boxBackgrounds) as Array<
-          keyof typeof boxBackgrounds
-        >;
-
-        return (
-          <Fragment>
-            {backgrounds.sort().map((background, i) => (
-              <Box key={i} background={background}>
-                <Stack space="none">
-                  <Text baseline={false}>
-                    {background}{' '}
-                    <TextLink href="#">
-                      with default weight <IconNewWindow />
-                    </TextLink>
-                  </Text>
-                  <Text baseline={false}>
-                    {background}{' '}
-                    <TextLink href="#" weight="regular">
-                      with regular weight <IconNewWindow />
-                    </TextLink>
-                  </Text>
-                  <Text baseline={false}>
-                    {background}{' '}
-                    <TextLink href="#" weight="weak">
-                      with weak weight <IconNewWindow />
-                    </TextLink>
-                  </Text>
-                </Stack>
-              </Box>
-            ))}
-          </Fragment>
-        );
-      },
+      Example: () => (
+        <Fragment>
+          {backgrounds.map((background, i) => (
+            <Box key={i} background={background}>
+              <Stack space="none">
+                <Text baseline={false}>
+                  {background}{' '}
+                  <TextLink href="#">
+                    with default weight <IconNewWindow />
+                  </TextLink>
+                </Text>
+                <Text baseline={false}>
+                  {background}{' '}
+                  <TextLink href="#" weight="regular">
+                    with regular weight <IconNewWindow />
+                  </TextLink>
+                </Text>
+                <Text baseline={false}>
+                  {background}{' '}
+                  <TextLink href="#" weight="weak">
+                    with weak weight <IconNewWindow />
+                  </TextLink>
+                </Text>
+              </Stack>
+            </Box>
+          ))}
+        </Fragment>
+      ),
     },
   ],
 };

@@ -1,14 +1,13 @@
 import { ReactElement } from 'react';
 import { renderBackgroundProvider } from './BackgroundContext';
-import { useBoxStyles, UseBoxStylesProps } from './useBoxStyles';
+import { boxStyles, BoxStylesProps } from './boxStyles';
 
-export interface BoxRendererProps extends UseBoxStylesProps {
+export interface BoxRendererProps extends BoxStylesProps {
   children: (className: string) => ReactElement | null;
 }
 
 export const BoxRenderer = ({ children, ...props }: BoxRendererProps) => {
-  const boxStyles = useBoxStyles(props);
-  const element = children(boxStyles);
+  const element = children(boxStyles(props));
 
   return renderBackgroundProvider(props.background, element);
 };

@@ -2,24 +2,28 @@ import React, { Children } from 'react';
 import flattenChildren from 'react-keyed-flatten-children';
 import { Box } from '../Box/Box';
 import { Divider, DividerProps } from '../Divider/Divider';
-import { ResponsiveSpace } from '../Box/boxStyles';
+import { Space } from '../Box/boxStyles';
 import {
   useNegativeMarginTop,
   useNegativeMarginLeft,
 } from '../../hooks/useNegativeMargin/useNegativeMargin';
-import {
-  normaliseResponsiveProp,
-  resolveResponsiveProp,
-  ResponsiveProp,
-} from '../../utils/responsiveProp';
+import { resolveResponsiveProp } from '../../utils/responsiveProp';
 import * as styles from './Tiles.css';
 import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
+import {
+  normalizeResponsiveValue,
+  ResponsiveValue,
+} from '../../sprinkles/sprinkles.css';
+import buildDataAttributes, {
+  DataAttributeMap,
+} from '../private/buildDataAttributes';
 
 export interface TilesProps {
   children: ReactNodeNoStrings;
-  space: ResponsiveSpace;
-  columns: ResponsiveProp<1 | 2 | 3 | 4 | 5 | 6>;
+  space: ResponsiveValue<Space>;
+  columns: ResponsiveValue<1 | 2 | 3 | 4 | 5 | 6>;
   dividers?: boolean | DividerProps['weight'];
+  data?: DataAttributeMap;
 }
 
 export const Tiles = ({
@@ -27,20 +31,24 @@ export const Tiles = ({
   space = 'none',
   columns = 1,
   dividers = false,
+  data,
 }: TilesProps) => {
-  const responsiveSpace = normaliseResponsiveProp(space);
+  const responsiveSpace = normalizeResponsiveValue(space);
 
-  const [
-    mobileColumns,
-    tabletColumns,
-    desktopColumns,
-  ] = normaliseResponsiveProp(columns);
+  const {
+    mobile: mobileColumns,
+    tablet: tabletColumns,
+    desktop: desktopColumns,
+  } = normalizeResponsiveValue(columns);
 
   const negativeMarginTop = useNegativeMarginTop(responsiveSpace);
   const negativeMarginLeft = useNegativeMarginLeft(responsiveSpace);
 
   return (
-    <Box className={negativeMarginTop}>
+    <Box
+      className={negativeMarginTop}
+      {...(data ? buildDataAttributes(data) : undefined)}
+    >
       <Box display="flex" flexWrap="wrap" className={negativeMarginLeft}>
         {Children.map(flattenChildren(children), (child, i) => (
           <Box

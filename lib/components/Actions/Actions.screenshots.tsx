@@ -2,8 +2,8 @@ import React, { Fragment } from 'react';
 import { ComponentScreenshot } from '../../../site/src/types';
 import { Box, Button, IconNewWindow, Stack, Text } from '../../components';
 import { Actions } from './Actions';
-import { background as boxBackgrounds } from '../Box/boxStyles.css';
 import { TextLink } from '../TextLink/TextLink';
+import { backgrounds } from '../../utils/docsHelpers';
 
 export const screenshots: ComponentScreenshot = {
   screenshotWidths: [320, 768],
@@ -50,29 +50,23 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Actions Contrast (Deprecated)',
-      Example: () => {
-        const backgrounds = Object.keys(boxBackgrounds) as Array<
-          keyof typeof boxBackgrounds
-        >;
-
-        return (
-          <Fragment>
-            {backgrounds.sort().map((background, i) => (
-              <Box key={i} background={background} padding="xsmall">
-                <Stack space="xsmall">
-                  <Text size="small">{background}</Text>
-                  <Actions>
-                    <Button tone="brandAccent">Solid</Button>
-                    <TextLink href="#">
-                      Transparent <IconNewWindow />
-                    </TextLink>
-                  </Actions>
-                </Stack>
-              </Box>
-            ))}
-          </Fragment>
-        );
-      },
+      Example: () => (
+        <Fragment>
+          {backgrounds.sort().map((background, i) => (
+            <Box key={i} background={background} padding="xsmall">
+              <Stack space="xsmall">
+                <Text size="small">{background}</Text>
+                <Actions>
+                  <Button tone="brandAccent">Solid</Button>
+                  <TextLink href="#">
+                    Transparent <IconNewWindow />
+                  </TextLink>
+                </Actions>
+              </Stack>
+            </Box>
+          ))}
+        </Fragment>
+      ),
     },
   ],
 };

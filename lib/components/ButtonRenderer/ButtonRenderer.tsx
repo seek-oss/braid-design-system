@@ -9,7 +9,7 @@ import React, {
   CSSProperties,
   ComponentType,
 } from 'react';
-import { useBoxStyles, UseBoxStylesProps } from '../Box/useBoxStyles';
+import { boxStyles, BoxStylesProps } from '../Box/boxStyles';
 import {
   BackgroundProvider,
   useBackgroundLightness,
@@ -37,10 +37,10 @@ type ButtonWeight = typeof buttonWeights[number];
 type ButtonVariant = typeof buttonVariants[number];
 type ButtonStyles = {
   textTone: TextProps['tone'];
-  background: UseBoxStylesProps['background'];
-  backgroundHover: UseBoxStylesProps['background'];
-  backgroundActive: UseBoxStylesProps['background'];
-  boxShadow: UseBoxStylesProps['boxShadow'];
+  background: BoxStylesProps['background'];
+  backgroundHover: BoxStylesProps['background'];
+  backgroundActive: BoxStylesProps['background'];
+  boxShadow: BoxStylesProps['boxShadow'];
 };
 
 const buttonVariantStyles: Record<
@@ -352,7 +352,7 @@ export const PrivateButtonRenderer = ({
   const { background, boxShadow } = useButtonVariant(variant, tone);
   const virtualTouchableStyles = useVirtualTouchable({ xAxis: false });
 
-  const buttonStyles = useBoxStyles({
+  const buttonStyles = boxStyles({
     component: 'button',
     cursor: !loading ? 'pointer' : undefined,
     width: 'full',

@@ -262,7 +262,10 @@ export const MenuRenderer = ({
 
   return (
     <MenuRendererContext.Provider value={true}>
-      <Box className={styles.root} {...buildDataAttributes(data)}>
+      <Box
+        className={styles.root}
+        {...(data ? buildDataAttributes(data) : undefined)}
+      >
         <Box display="inlineBlock" position="relative">
           {trigger(triggerProps, { open })}
 

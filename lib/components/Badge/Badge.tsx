@@ -2,6 +2,9 @@ import React, { forwardRef, Children } from 'react';
 import assert from 'assert';
 import { Box, BoxProps } from '../Box/Box';
 import { Text } from '../Text/Text';
+import buildDataAttributes, {
+  DataAttributeMap,
+} from '../private/buildDataAttributes';
 import * as styles from './Badge.css';
 
 const validTones = [
@@ -21,6 +24,7 @@ export interface BadgeProps {
   title?: string;
   children: string;
   id?: string;
+  data?: DataAttributeMap;
   tabIndex?: BoxProps['tabIndex'];
   'aria-describedby'?: string;
 }
@@ -64,6 +68,7 @@ export const Badge = forwardRef<HTMLDivElement, BadgeProps>(
       title,
       children,
       id,
+      data,
       tabIndex,
       'aria-describedby': ariaDescribedBy,
     },
@@ -86,6 +91,7 @@ export const Badge = forwardRef<HTMLDivElement, BadgeProps>(
         display="flex"
         cursor="default"
         className={[styles.outer, bleedY ? styles.bleedY : null]}
+        {...(data ? buildDataAttributes(data) : undefined)}
       >
         <Box
           id={id}

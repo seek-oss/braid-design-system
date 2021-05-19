@@ -1,14 +1,18 @@
 import React, { ReactNode, useContext } from 'react';
 import { Box } from '../Box/Box';
 import { ColumnsContext } from '../Columns/Columns';
+import buildDataAttributes, {
+  DataAttributeMap,
+} from '../private/buildDataAttributes';
 import * as styles from './Column.css';
 
 export interface ColumnProps {
   children: ReactNode;
   width?: keyof typeof styles.width | 'content';
+  data?: DataAttributeMap;
 }
 
-export const Column = ({ children, width }: ColumnProps) => {
+export const Column = ({ children, data, width }: ColumnProps) => {
   const {
     collapseMobile,
     collapseTablet,
@@ -27,6 +31,7 @@ export const Column = ({ children, width }: ColumnProps) => {
         styles.column,
         width !== 'content' ? styles.width[width!] : null,
       ]}
+      {...(data ? buildDataAttributes(data) : undefined)}
     >
       <Box
         paddingLeft={[
