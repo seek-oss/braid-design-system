@@ -3,6 +3,7 @@
   "Bullet",
   "BoxRenderer",
   "Column",
+  "CheckboxStandalone",
   "filterSuggestions",
   "makeLinkComponent",
   "MenuItemLink",

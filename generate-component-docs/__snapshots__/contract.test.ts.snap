@@ -2359,6 +2359,41 @@ Object {
 }
 `;
 
+exports[`CheckboxStandalone 1`] = `
+Object {
+  exportType: component,
+  props: {
+    aria-describedby?: string
+    aria-label?: string
+    aria-labelledby?: string
+    checked: 
+        | "mixed"
+        | boolean[]
+        | false
+        | true
+    data?: DataAttributeMap
+    disabled?: boolean
+    id: string
+    name?: string
+    onChange: FormEventHandler<HTMLInputElement>
+    ref?: 
+        | (instance: HTMLInputElement | null) => void
+        | RefObject<HTMLInputElement>
+    required?: boolean
+    size?: 
+        | "small"
+        | "standard"
+    tone?: 
+        | "critical"
+        | "neutral"
+    value?: 
+        | number
+        | readonly string[]
+        | string
+},
+}
+`;
+
 exports[`Column 1`] = `
 Object {
   exportType: component,

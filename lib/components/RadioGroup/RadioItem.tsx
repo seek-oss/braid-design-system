@@ -17,7 +17,6 @@ export interface RadioItemProps
     | 'reserveMessageSpace'
     | 'required'
     | 'onChange'
-    | 'checked'
     | 'id'
     | 'disabled'
     | 'tone'
