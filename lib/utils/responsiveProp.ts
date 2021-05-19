@@ -74,6 +74,10 @@ export const resolveResponsiveProp = <Keys extends string | number>(
   const { mobile, tablet, desktop } = normalizeResponsiveValue(value);
 
   return `${mobileAtoms[mobile!]}${
-    tablet !== mobile ? ` ${tabletAtoms[tablet!]}` : ''
-  }${desktop !== tablet ? ` ${desktopAtoms[desktop!]}` : ''}`;
+    tablet !== undefined && tablet !== mobile ? ` ${tabletAtoms[tablet!]}` : ''
+  }${
+    desktop !== undefined && desktop !== tablet
+      ? ` ${desktopAtoms[desktop!]}`
+      : ''
+  }`;
 };
