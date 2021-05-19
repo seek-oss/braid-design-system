@@ -181,11 +181,12 @@ Object {
     acceptCharset?: string
     accessKey?: string
     action?: string
-    alignItems?: ResponsiveProp<
+    alignItems?: 
         | "center"
         | "flexEnd"
         | "flexStart"
-    >
+        | Tuple<1 | 3 | 2, "center" | "flexStart" | "flexEnd" | null>
+        | { mobile?: "center" | "flexStart" | "flexEnd" | undefined; tablet?: "center" | "flexStart" | "flexEnd" | undefined; desktop?: "center" | "flexStart" | "flexEnd" | undefined; }
     allowFullScreen?: boolean
     allowTransparency?: boolean
     alt?: string
@@ -388,8 +389,8 @@ Object {
         | "full"
         | "none"
         | "standard"
-        | readonly ["standard" | "none", "standard" | "none", "standard" | "none"]
-        | readonly ["standard" | "none", "standard" | "none"]
+        | Tuple<1 | 3 | 2, "standard" | "none" | "full" | null>
+        | { mobile?: "standard" | "none" | "full" | undefined; tablet?: "standard" | "none" | "full" | undefined; desktop?: "standard" | "none" | "full" | undefined; }
     bottom?: 0
     boxShadow?: 
         | "borderBrandAccentLarge"
@@ -635,13 +636,14 @@ Object {
     defer?: boolean
     dir?: string
     disabled?: boolean
-    display?: ResponsiveProp<
+    display?: 
         | "block"
         | "flex"
         | "inline"
         | "inlineBlock"
         | "none"
-    >
+        | Tuple<1 | 3 | 2, "none" | "flex" | "block" | "inline" | "inlineBlock" | null>
+        | { mobile?: "none" | "flex" | "block" | "inline" | "inlineBlock" | undefined; tablet?: "none" | "flex" | "block" | "inline" | "inlineBlock" | undefined; desktop?: "none" | "flex" | "block" | "inline" | "inlineBlock" | undefined; }
     download?: any
     draggable?: 
         | "false"
@@ -649,19 +651,27 @@ Object {
         | false
         | true
     encType?: string
-    flexDirection?: ResponsiveProp<
+    flexDirection?: 
         | "column"
         | "columnReverse"
         | "row"
         | "rowReverse"
-    >
+        | Tuple<1 | 3 | 2, "row" | "column" | "rowReverse" | "columnReverse" | null>
+        | { mobile?: "row" | "column" | "rowReverse" | "columnReverse" | undefined; tablet?: "row" | "column" | "rowReverse" | "columnReverse" | undefined; desktop?: "row" | "column" | "rowReverse" | "columnReverse" | undefined; }
     flexGrow?: 
         | 0
         | 1
-    flexShrink?: 0
+        | Tuple<1 | 3 | 2, 0 | 1 | null>
+        | { mobile?: 0 | 1 | undefined; tablet?: 0 | 1 | undefined; desktop?: 0 | 1 | undefined; }
+    flexShrink?: 
+        | 0
+        | Tuple<1 | 3 | 2, 0 | null>
+        | { mobile?: 0 | undefined; tablet?: 0 | undefined; desktop?: 0 | undefined; }
     flexWrap?: 
         | "nowrap"
         | "wrap"
+        | Tuple<1 | 3 | 2, "wrap" | "nowrap" | null>
+        | { mobile?: "wrap" | "nowrap" | undefined; tablet?: "wrap" | "nowrap" | undefined; desktop?: "wrap" | "nowrap" | undefined; }
     form?: string
     formAction?: string
     formEncType?: string
@@ -699,12 +709,13 @@ Object {
     itemRef?: string
     itemScope?: boolean
     itemType?: string
-    justifyContent?: ResponsiveProp<
+    justifyContent?: 
         | "center"
         | "flexEnd"
         | "flexStart"
         | "spaceBetween"
-    >
+        | Tuple<1 | 3 | 2, "center" | "flexStart" | "flexEnd" | "spaceBetween" | null>
+        | { mobile?: "center" | "flexStart" | "flexEnd" | "spaceBetween" | undefined; tablet?: "center" | "flexStart" | "flexEnd" | "spaceBetween" | undefined; desktop?: "center" | "flexStart" | "flexEnd" | "spaceBetween" | undefined; }
     keyParams?: string
     keyType?: string
     kind?: string
@@ -725,8 +736,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | ... 7 more ... | "none"]
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none"]
+        | Tuple<1 | 3 | 2, "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
+        | { mobile?: "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "medium" | "xsmall" | "small" | "large" | "gutter" | ... 4 more ... | undefined; desktop?: "medium" | ... 8 more ... | undefined; }
     marginBottom?: 
         | "gutter"
         | "large"
@@ -737,8 +748,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | ... 7 more ... | "none"]
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none"]
+        | Tuple<1 | 3 | 2, "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
+        | { mobile?: "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "medium" | "xsmall" | "small" | "large" | "gutter" | ... 4 more ... | undefined; desktop?: "medium" | ... 8 more ... | undefined; }
     marginHeight?: number
     marginLeft?: 
         | "gutter"
@@ -750,8 +761,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | ... 7 more ... | "none"]
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none"]
+        | Tuple<1 | 3 | 2, "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
+        | { mobile?: "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "medium" | "xsmall" | "small" | "large" | "gutter" | ... 4 more ... | undefined; desktop?: "medium" | ... 8 more ... | undefined; }
     marginRight?: 
         | "gutter"
         | "large"
@@ -762,8 +773,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | ... 7 more ... | "none"]
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none"]
+        | Tuple<1 | 3 | 2, "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
+        | { mobile?: "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "medium" | "xsmall" | "small" | "large" | "gutter" | ... 4 more ... | undefined; desktop?: "medium" | ... 8 more ... | undefined; }
     marginTop?: 
         | "gutter"
         | "large"
@@ -774,8 +785,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | ... 7 more ... | "none"]
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none"]
+        | Tuple<1 | 3 | 2, "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
+        | { mobile?: "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "medium" | "xsmall" | "small" | "large" | "gutter" | ... 4 more ... | undefined; desktop?: "medium" | ... 8 more ... | undefined; }
     marginWidth?: number
     marginX?: 
         | "gutter"
@@ -787,8 +798,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | ... 7 more ... | "none"]
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none"]
+        | Tuple<1 | 3 | 2, "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
+        | { mobile?: "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "medium" | "xsmall" | "small" | "large" | "gutter" | ... 4 more ... | undefined; desktop?: "medium" | ... 8 more ... | undefined; }
     marginY?: 
         | "gutter"
         | "large"
@@ -799,8 +810,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | ... 7 more ... | "none"]
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none"]
+        | Tuple<1 | 3 | 2, "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
+        | { mobile?: "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "medium" | "xsmall" | "small" | "large" | "gutter" | ... 4 more ... | undefined; desktop?: "medium" | ... 8 more ... | undefined; }
     max?: 
         | number
         | string
@@ -1002,8 +1013,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | ... 7 more ... | "none"]
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none"]
+        | Tuple<1 | 3 | 2, "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
+        | { mobile?: "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "medium" | "xsmall" | "small" | "large" | "gutter" | ... 4 more ... | undefined; desktop?: "medium" | ... 8 more ... | undefined; }
     paddingBottom?: 
         | "gutter"
         | "large"
@@ -1014,8 +1025,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | ... 7 more ... | "none"]
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none"]
+        | Tuple<1 | 3 | 2, "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
+        | { mobile?: "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "medium" | "xsmall" | "small" | "large" | "gutter" | ... 4 more ... | undefined; desktop?: "medium" | ... 8 more ... | undefined; }
     paddingLeft?: 
         | "gutter"
         | "large"
@@ -1026,8 +1037,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | ... 7 more ... | "none"]
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none"]
+        | Tuple<1 | 3 | 2, "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
+        | { mobile?: "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "medium" | "xsmall" | "small" | "large" | "gutter" | ... 4 more ... | undefined; desktop?: "medium" | ... 8 more ... | undefined; }
     paddingRight?: 
         | "gutter"
         | "large"
@@ -1038,8 +1049,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | ... 7 more ... | "none"]
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none"]
+        | Tuple<1 | 3 | 2, "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
+        | { mobile?: "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "medium" | "xsmall" | "small" | "large" | "gutter" | ... 4 more ... | undefined; desktop?: "medium" | ... 8 more ... | undefined; }
     paddingTop?: 
         | "gutter"
         | "large"
@@ -1050,8 +1061,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | ... 7 more ... | "none"]
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none"]
+        | Tuple<1 | 3 | 2, "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
+        | { mobile?: "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "medium" | "xsmall" | "small" | "large" | "gutter" | ... 4 more ... | undefined; desktop?: "medium" | ... 8 more ... | undefined; }
     paddingX?: 
         | "gutter"
         | "large"
@@ -1062,8 +1073,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | ... 7 more ... | "none"]
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none"]
+        | Tuple<1 | 3 | 2, "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
+        | { mobile?: "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "medium" | "xsmall" | "small" | "large" | "gutter" | ... 4 more ... | undefined; desktop?: "medium" | ... 8 more ... | undefined; }
     paddingY?: 
         | "gutter"
         | "large"
@@ -1074,8 +1085,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | ... 7 more ... | "none"]
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none"]
+        | Tuple<1 | 3 | 2, "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
+        | { mobile?: "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "medium" | "xsmall" | "small" | "large" | "gutter" | ... 4 more ... | undefined; desktop?: "medium" | ... 8 more ... | undefined; }
     pattern?: string
     placeholder?: string
     playsInline?: boolean
@@ -1084,6 +1095,8 @@ Object {
         | "absolute"
         | "fixed"
         | "relative"
+        | Tuple<1 | 3 | 2, "fixed" | "relative" | "absolute" | null>
+        | { mobile?: "fixed" | "relative" | "absolute" | undefined; tablet?: "fixed" | "relative" | "absolute" | undefined; desktop?: "fixed" | "relative" | "absolute" | undefined; }
     poster?: string
     prefix?: string
     preload?: string
@@ -1133,14 +1146,15 @@ Object {
     suppressHydrationWarning?: boolean
     tabIndex?: number
     target?: string
-    textAlign?: ResponsiveProp<
+    textAlign?: 
         | "center"
         | "left"
         | "right"
-    >
+        | Tuple<1 | 3 | 2, "left" | "right" | "center" | null>
+        | { mobile?: "left" | "right" | "center" | undefined; tablet?: "left" | "right" | "center" | undefined; desktop?: "left" | "right" | "center" | undefined; }
     title?: string
     top?: 0
-    transform?: "touchable"
+    transform?: { active?: "touchable" | undefined; }
     transition?: 
         | "fast"
         | "touchable"
@@ -1182,11 +1196,12 @@ exports[`BoxRenderer 1`] = `
 Object {
   exportType: component,
   props: {
-    alignItems?: ResponsiveProp<
+    alignItems?: 
         | "center"
         | "flexEnd"
         | "flexStart"
-    >
+        | Tuple<1 | 3 | 2, "center" | "flexStart" | "flexEnd" | null>
+        | { mobile?: "center" | "flexStart" | "flexEnd" | undefined; tablet?: "center" | "flexStart" | "flexEnd" | undefined; desktop?: "center" | "flexStart" | "flexEnd" | undefined; }
     background?: 
         | "body"
         | "brand"
@@ -1219,8 +1234,8 @@ Object {
         | "full"
         | "none"
         | "standard"
-        | readonly ["standard" | "none", "standard" | "none", "standard" | "none"]
-        | readonly ["standard" | "none", "standard" | "none"]
+        | Tuple<1 | 3 | 2, "standard" | "none" | "full" | null>
+        | { mobile?: "standard" | "none" | "full" | undefined; tablet?: "standard" | "none" | "full" | undefined; desktop?: "standard" | "none" | "full" | undefined; }
     bottom?: 0
     boxShadow?: 
         | "borderBrandAccentLarge"
@@ -1424,35 +1439,45 @@ Object {
     cursor?: 
         | "default"
         | "pointer"
-    display?: ResponsiveProp<
+    display?: 
         | "block"
         | "flex"
         | "inline"
         | "inlineBlock"
         | "none"
-    >
-    flexDirection?: ResponsiveProp<
+        | Tuple<1 | 3 | 2, "none" | "flex" | "block" | "inline" | "inlineBlock" | null>
+        | { mobile?: "none" | "flex" | "block" | "inline" | "inlineBlock" | undefined; tablet?: "none" | "flex" | "block" | "inline" | "inlineBlock" | undefined; desktop?: "none" | "flex" | "block" | "inline" | "inlineBlock" | undefined; }
+    flexDirection?: 
         | "column"
         | "columnReverse"
         | "row"
         | "rowReverse"
-    >
+        | Tuple<1 | 3 | 2, "row" | "column" | "rowReverse" | "columnReverse" | null>
+        | { mobile?: "row" | "column" | "rowReverse" | "columnReverse" | undefined; tablet?: "row" | "column" | "rowReverse" | "columnReverse" | undefined; desktop?: "row" | "column" | "rowReverse" | "columnReverse" | undefined; }
     flexGrow?: 
         | 0
         | 1
-    flexShrink?: 0
+        | Tuple<1 | 3 | 2, 0 | 1 | null>
+        | { mobile?: 0 | 1 | undefined; tablet?: 0 | 1 | undefined; desktop?: 0 | 1 | undefined; }
+    flexShrink?: 
+        | 0
+        | Tuple<1 | 3 | 2, 0 | null>
+        | { mobile?: 0 | undefined; tablet?: 0 | undefined; desktop?: 0 | undefined; }
     flexWrap?: 
         | "nowrap"
         | "wrap"
+        | Tuple<1 | 3 | 2, "wrap" | "nowrap" | null>
+        | { mobile?: "wrap" | "nowrap" | undefined; tablet?: "wrap" | "nowrap" | undefined; desktop?: "wrap" | "nowrap" | undefined; }
     height?: 
         | "full"
         | "touchable"
-    justifyContent?: ResponsiveProp<
+    justifyContent?: 
         | "center"
         | "flexEnd"
         | "flexStart"
         | "spaceBetween"
-    >
+        | Tuple<1 | 3 | 2, "center" | "flexStart" | "flexEnd" | "spaceBetween" | null>
+        | { mobile?: "center" | "flexStart" | "flexEnd" | "spaceBetween" | undefined; tablet?: "center" | "flexStart" | "flexEnd" | "spaceBetween" | undefined; desktop?: "center" | "flexStart" | "flexEnd" | "spaceBetween" | undefined; }
     left?: 0
     margin?: 
         | "gutter"
@@ -1464,8 +1489,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | ... 7 more ... | "none"]
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none"]
+        | Tuple<1 | 3 | 2, "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
+        | { mobile?: "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "medium" | "xsmall" | "small" | "large" | "gutter" | ... 4 more ... | undefined; desktop?: "medium" | ... 8 more ... | undefined; }
     marginBottom?: 
         | "gutter"
         | "large"
@@ -1476,8 +1501,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | ... 7 more ... | "none"]
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none"]
+        | Tuple<1 | 3 | 2, "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
+        | { mobile?: "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "medium" | "xsmall" | "small" | "large" | "gutter" | ... 4 more ... | undefined; desktop?: "medium" | ... 8 more ... | undefined; }
     marginLeft?: 
         | "gutter"
         | "large"
@@ -1488,8 +1513,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | ... 7 more ... | "none"]
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none"]
+        | Tuple<1 | 3 | 2, "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
+        | { mobile?: "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "medium" | "xsmall" | "small" | "large" | "gutter" | ... 4 more ... | undefined; desktop?: "medium" | ... 8 more ... | undefined; }
     marginRight?: 
         | "gutter"
         | "large"
@@ -1500,8 +1525,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | ... 7 more ... | "none"]
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none"]
+        | Tuple<1 | 3 | 2, "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
+        | { mobile?: "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "medium" | "xsmall" | "small" | "large" | "gutter" | ... 4 more ... | undefined; desktop?: "medium" | ... 8 more ... | undefined; }
     marginTop?: 
         | "gutter"
         | "large"
@@ -1512,8 +1537,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | ... 7 more ... | "none"]
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none"]
+        | Tuple<1 | 3 | 2, "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
+        | { mobile?: "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "medium" | "xsmall" | "small" | "large" | "gutter" | ... 4 more ... | undefined; desktop?: "medium" | ... 8 more ... | undefined; }
     marginX?: 
         | "gutter"
         | "large"
@@ -1524,8 +1549,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | ... 7 more ... | "none"]
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none"]
+        | Tuple<1 | 3 | 2, "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
+        | { mobile?: "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "medium" | "xsmall" | "small" | "large" | "gutter" | ... 4 more ... | undefined; desktop?: "medium" | ... 8 more ... | undefined; }
     marginY?: 
         | "gutter"
         | "large"
@@ -1536,8 +1561,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | ... 7 more ... | "none"]
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none"]
+        | Tuple<1 | 3 | 2, "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
+        | { mobile?: "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "medium" | "xsmall" | "small" | "large" | "gutter" | ... 4 more ... | undefined; desktop?: "medium" | ... 8 more ... | undefined; }
     maxWidth?: 
         | "large"
         | "medium"
@@ -1561,8 +1586,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | ... 7 more ... | "none"]
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none"]
+        | Tuple<1 | 3 | 2, "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
+        | { mobile?: "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "medium" | "xsmall" | "small" | "large" | "gutter" | ... 4 more ... | undefined; desktop?: "medium" | ... 8 more ... | undefined; }
     paddingBottom?: 
         | "gutter"
         | "large"
@@ -1573,8 +1598,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | ... 7 more ... | "none"]
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none"]
+        | Tuple<1 | 3 | 2, "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
+        | { mobile?: "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "medium" | "xsmall" | "small" | "large" | "gutter" | ... 4 more ... | undefined; desktop?: "medium" | ... 8 more ... | undefined; }
     paddingLeft?: 
         | "gutter"
         | "large"
@@ -1585,8 +1610,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | ... 7 more ... | "none"]
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none"]
+        | Tuple<1 | 3 | 2, "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
+        | { mobile?: "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "medium" | "xsmall" | "small" | "large" | "gutter" | ... 4 more ... | undefined; desktop?: "medium" | ... 8 more ... | undefined; }
     paddingRight?: 
         | "gutter"
         | "large"
@@ -1597,8 +1622,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | ... 7 more ... | "none"]
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none"]
+        | Tuple<1 | 3 | 2, "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
+        | { mobile?: "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "medium" | "xsmall" | "small" | "large" | "gutter" | ... 4 more ... | undefined; desktop?: "medium" | ... 8 more ... | undefined; }
     paddingTop?: 
         | "gutter"
         | "large"
@@ -1609,8 +1634,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | ... 7 more ... | "none"]
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none"]
+        | Tuple<1 | 3 | 2, "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
+        | { mobile?: "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "medium" | "xsmall" | "small" | "large" | "gutter" | ... 4 more ... | undefined; desktop?: "medium" | ... 8 more ... | undefined; }
     paddingX?: 
         | "gutter"
         | "large"
@@ -1621,8 +1646,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | ... 7 more ... | "none"]
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none"]
+        | Tuple<1 | 3 | 2, "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
+        | { mobile?: "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "medium" | "xsmall" | "small" | "large" | "gutter" | ... 4 more ... | undefined; desktop?: "medium" | ... 8 more ... | undefined; }
     paddingY?: 
         | "gutter"
         | "large"
@@ -1633,21 +1658,24 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | ... 7 more ... | "none"]
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none"]
+        | Tuple<1 | 3 | 2, "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
+        | { mobile?: "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "medium" | "xsmall" | "small" | "large" | "gutter" | ... 4 more ... | undefined; desktop?: "medium" | ... 8 more ... | undefined; }
     pointerEvents?: "none"
     position?: 
         | "absolute"
         | "fixed"
         | "relative"
+        | Tuple<1 | 3 | 2, "fixed" | "relative" | "absolute" | null>
+        | { mobile?: "fixed" | "relative" | "absolute" | undefined; tablet?: "fixed" | "relative" | "absolute" | undefined; desktop?: "fixed" | "relative" | "absolute" | undefined; }
     right?: 0
-    textAlign?: ResponsiveProp<
+    textAlign?: 
         | "center"
         | "left"
         | "right"
-    >
+        | Tuple<1 | 3 | 2, "left" | "right" | "center" | null>
+        | { mobile?: "left" | "right" | "center" | undefined; tablet?: "left" | "right" | "center" | undefined; desktop?: "left" | "right" | "center" | undefined; }
     top?: 0
-    transform?: "touchable"
+    transform?: { active?: "touchable" | undefined; }
     transition?: 
         | "fast"
         | "touchable"
@@ -1779,8 +1807,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | ... 7 more ... | "none"]
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none"]
+        | Tuple<1 | 3 | 2, "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
+        | { mobile?: "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "medium" | "xsmall" | "small" | "large" | "gutter" | ... 4 more ... | undefined; desktop?: "medium" | ... 8 more ... | undefined; }
     tone?: 
         | "neutral"
         | "secondary"
@@ -2419,16 +2447,18 @@ exports[`Columns 1`] = `
 Object {
   exportType: component,
   props: {
-    align?: ResponsiveProp<
+    align?: 
         | "center"
         | "left"
         | "right"
-    >
-    alignY?: ResponsiveProp<
+        | Partial<Record<"mobile" | "tablet" | "desktop", Align>>
+        | Tuple<1 | 3 | 2, Align | null>
+    alignY?: 
         | "bottom"
         | "center"
         | "top"
-    >
+        | Partial<Record<"mobile" | "tablet" | "desktop", AlignY>>
+        | Tuple<1 | 3 | 2, AlignY | null>
     children: 
         | (ReactElement<ColumnProps, string | JSXElementConstructor<any>> | null)[]
         | ReactElement<ColumnProps, string | JSXElementConstructor<any>>
@@ -2447,8 +2477,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | ... 7 more ... | "none"]
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none"]
+        | Partial<Record<"mobile" | "tablet" | "desktop", Space>>
+        | Tuple<1 | 3 | 2, Space | null>
 },
 }
 `;
@@ -2512,8 +2542,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | ... 7 more ... | "none"]
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none"]
+        | Tuple<1 | 3 | 2, "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
+        | { mobile?: "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "medium" | "xsmall" | "small" | "large" | "gutter" | ... 4 more ... | undefined; desktop?: "medium" | ... 8 more ... | undefined; }
 },
 }
 `;
@@ -2630,11 +2660,12 @@ exports[`Heading 1`] = `
 Object {
   exportType: component,
   props: {
-    align?: ResponsiveProp<
+    align?: 
         | "center"
         | "left"
         | "right"
-    >
+        | Tuple<1 | 3 | 2, "left" | "right" | "center" | null>
+        | { mobile?: "left" | "right" | "center" | undefined; tablet?: "left" | "right" | "center" | undefined; desktop?: "left" | "right" | "center" | undefined; }
     children: ReactNode
     component?: 
         | "a"
@@ -6043,16 +6074,18 @@ exports[`Inline 1`] = `
 Object {
   exportType: component,
   props: {
-    align?: ResponsiveProp<
+    align?: 
         | "center"
         | "left"
         | "right"
-    >
-    alignY?: ResponsiveProp<
+        | Partial<Record<"mobile" | "tablet" | "desktop", Align>>
+        | Tuple<1 | 3 | 2, Align | null>
+    alignY?: 
         | "bottom"
         | "center"
         | "top"
-    >
+        | Partial<Record<"mobile" | "tablet" | "desktop", AlignY>>
+        | Tuple<1 | 3 | 2, AlignY | null>
     children: ReactNodeNoStrings
     collapseBelow?: 
         | "desktop"
@@ -6073,8 +6106,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | ... 7 more ... | "none"]
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none"]
+        | Tuple<1 | 3 | 2, "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
+        | { mobile?: "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "medium" | "xsmall" | "small" | "large" | "gutter" | ... 4 more ... | undefined; desktop?: "medium" | ... 8 more ... | undefined; }
 },
 }
 `;
@@ -6528,8 +6561,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | ... 7 more ... | "none"]
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none"]
+        | Tuple<1 | 3 | 2, "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
+        | { mobile?: "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "medium" | "xsmall" | "small" | "large" | "gutter" | ... 4 more ... | undefined; desktop?: "medium" | ... 8 more ... | undefined; }
     start?: number
     tone?: 
         | "brandAccent"
@@ -6641,8 +6674,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | ... 7 more ... | "none"]
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none"]
+        | Tuple<1 | 3 | 2, "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
+        | { mobile?: "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "medium" | "xsmall" | "small" | "large" | "gutter" | ... 4 more ... | undefined; desktop?: "medium" | ... 8 more ... | undefined; }
     onClose?: () => void
     onOpen?: () => void
     trigger: (props: TriggerProps, state: TriggerState) => ReactNode
@@ -6881,11 +6914,12 @@ exports[`Stack 1`] = `
 Object {
   exportType: component,
   props: {
-    align?: ResponsiveProp<
+    align?: 
         | "center"
         | "left"
         | "right"
-    >
+        | Partial<Record<"mobile" | "tablet" | "desktop", Align>>
+        | Tuple<1 | 3 | 2, Align | null>
     children: ReactNodeNoStrings
     component?: 
         | "div"
@@ -6907,8 +6941,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | ... 7 more ... | "none"]
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none"]
+        | Tuple<1 | 3 | 2, "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
+        | { mobile?: "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "medium" | "xsmall" | "small" | "large" | "gutter" | ... 4 more ... | undefined; desktop?: "medium" | ... 8 more ... | undefined; }
 },
 }
 `;
@@ -6980,8 +7014,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | ... 7 more ... | "none"]
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none"]
+        | Tuple<1 | 3 | 2, "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
+        | { mobile?: "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "medium" | "xsmall" | "small" | "large" | "gutter" | ... 4 more ... | undefined; desktop?: "medium" | ... 8 more ... | undefined; }
     label: string
     reserveHitArea?: boolean
 },
@@ -7016,11 +7050,12 @@ exports[`Text 1`] = `
 Object {
   exportType: component,
   props: {
-    align?: ResponsiveProp<
+    align?: 
         | "center"
         | "left"
         | "right"
-    >
+        | Tuple<1 | 3 | 2, "left" | "right" | "center" | null>
+        | { mobile?: "left" | "right" | "center" | undefined; tablet?: "left" | "right" | "center" | undefined; desktop?: "left" | "right" | "center" | undefined; }
     baseline?: boolean
     children?: ReactNode
     component?: 
@@ -7827,14 +7862,15 @@ Object {
   exportType: component,
   props: {
     children: ReactNodeNoStrings
-    columns: ResponsiveProp<
+    columns: 
         | 1
         | 2
         | 3
         | 4
         | 5
         | 6
-    >
+        | Partial<Record<"mobile" | "tablet" | "desktop", 1 | 3 | 4 | 2 | 5 | 6>>
+        | Tuple<1 | 3 | 2, 1 | 3 | 4 | 2 | 5 | 6 | null>
     data?: DataAttributeMap
     dividers?: 
         | "regular"
@@ -7851,8 +7887,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | ... 7 more ... | "none"]
-        | readonly ["medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none", "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none"]
+        | Partial<Record<"mobile" | "tablet" | "desktop", Space>>
+        | Tuple<1 | 3 | 2, Space | null>
 },
 }
 `;

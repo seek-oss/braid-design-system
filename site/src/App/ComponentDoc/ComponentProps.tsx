@@ -42,7 +42,7 @@ const PropType = ({ type }: { type: NormalisedPropType }) => {
       );
     }
 
-    return <Fragment>{type}</Fragment>;
+    return <Fragment>{type.replace('<1 | 3 | 2,', '<1 | 2 | 3,')}</Fragment>;
   }
 
   if (type.type === 'alias') {
