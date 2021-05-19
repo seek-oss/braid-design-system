@@ -29,6 +29,7 @@ export { ButtonLink } from './ButtonLink/ButtonLink';
 export { ButtonRenderer } from './ButtonRenderer/ButtonRenderer';
 export { Card } from './Card/Card';
 export { Checkbox } from './Checkbox/Checkbox';
+export { CheckboxStandalone } from './Checkbox/CheckboxStandalone';
 export { Column } from './Column/Column';
 export { Columns } from './Columns/Columns';
 export { ContentBlock } from './ContentBlock/ContentBlock';

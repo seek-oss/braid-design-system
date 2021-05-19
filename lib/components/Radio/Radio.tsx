@@ -1,4 +1,4 @@
-import React, { forwardRef, useContext } from 'react';
+import React, { AllHTMLAttributes, forwardRef, useContext } from 'react';
 import assert from 'assert';
 import {
   InlineField,
@@ -7,11 +7,14 @@ import {
 import { RadioGroupContext } from '../RadioGroup/RadioGroupContext';
 import dedent from 'dedent';
 
+type InputElementProps = AllHTMLAttributes<HTMLInputElement>;
 export interface RadioProps
   extends Omit<
     InlineFieldProps,
     'message' | 'reserveMessageSpace' | 'required' | 'size'
-  > {}
+  > {
+  checked: NonNullable<InputElementProps['checked']>;
+}
 
 /** @deprecated Individual `Radio` elements have been deprecated. Use [RadioGroup](https://seek-oss.github.io/braid-design-system/components/RadioGroup) instead. */
 export const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
