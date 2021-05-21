@@ -139,7 +139,6 @@
     "typescript": "^4.2.2"
   },
   "resolutions": {
-    "@vanilla-extract/css": "0.4.4",
     "playroom": "0.23.0",
     "csstype": "3.0.6",
     "@vanilla-extract/css": "0.5.1",
