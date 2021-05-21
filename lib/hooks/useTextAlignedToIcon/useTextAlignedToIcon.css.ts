@@ -10,6 +10,7 @@ const calculateForBreakpoint = (
   const padding = calc(type.leading)
     .subtract(type.capHeight)
     .divide(2)
+    .multiply('1px')
     .toString();
 
   return {

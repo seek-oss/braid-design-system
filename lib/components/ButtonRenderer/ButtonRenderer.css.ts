@@ -70,11 +70,15 @@ const stylesForBreakpoint = (
     size === 'small'
       ? calc.add(
           calc.multiply(space[constants.smallButtonPaddingSize], 2),
-          typography.text.small[breakpoint].leading,
+          calc.multiply(typography.text.small[breakpoint].leading, '1px'),
         )
       : touchableSize;
 
-  const value = calc(height).subtract(capHeight).divide(2).negate().toString();
+  const value = calc(height)
+    .subtract(calc.multiply(capHeight, '1px'))
+    .divide(2)
+    .negate()
+    .toString();
 
   return {
     marginTop: value,

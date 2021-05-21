@@ -7,7 +7,8 @@ export const checkboxPadding = style({ padding: 2 });
 
 const standardText = themeVars.typography.text.standard;
 
-const calculateSize = (capHeight: string) => calc.multiply(capHeight, 1.8);
+const calculateSize = (capHeight: string) =>
+  calc.multiply(capHeight, 1.8, '1px');
 
 const mobileSize = calculateSize(standardText.mobile.capHeight);
 const tabletSize = calculateSize(standardText.tablet.capHeight);

@@ -180,7 +180,11 @@ const calculateCloseIconSize = (
 ) => {
   const capHeight =
     themeVars.typography.heading.level[level][breakpoint].capHeight;
-  const size = calc.multiply(capHeight, calc.add(1, CLOSE_ICON_GUTTER_RATIO));
+  const size = calc.multiply(
+    capHeight,
+    calc.add(1, CLOSE_ICON_GUTTER_RATIO),
+    '1px',
+  );
 
   return {
     width: size,

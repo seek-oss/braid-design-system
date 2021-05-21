@@ -250,7 +250,10 @@ export const toneOverridesForBackground: ToneOverridesForBackground = {
 };
 
 const makeTouchableSpacing = (touchableHeight: string, textHeight: string) => {
-  const space = `calc((${touchableHeight} - ${textHeight}) / 2)`;
+  const space = calc(touchableHeight)
+    .subtract(calc.multiply(textHeight, '1px'))
+    .divide(2)
+    .toString();
 
   return {
     paddingTop: space,
