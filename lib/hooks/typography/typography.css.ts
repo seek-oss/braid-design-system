@@ -21,9 +21,9 @@ export const fontFamily = composeStyles(
     fontFamily: themeVars.typography.fontFamily,
   }),
   createTheme(font, {
-    capHeight: themeVars.typography.fontMetrics.ascent,
-    ascent: themeVars.typography.fontMetrics.descent,
-    descent: themeVars.typography.fontMetrics.capHeight,
+    capHeight: themeVars.typography.fontMetrics.capHeight,
+    ascent: themeVars.typography.fontMetrics.ascent,
+    descent: themeVars.typography.fontMetrics.descent,
     lineGap: themeVars.typography.fontMetrics.lineGap,
     unitsPerEm: themeVars.typography.fontMetrics.unitsPerEm,
   }),
@@ -33,18 +33,6 @@ export const fontWeight = styleVariants(
   themeVars.typography.fontWeight,
   mapToProperty('fontWeight'),
 );
-
-// const roundMarginalFontSize = (
-//   size: ReturnType<typeof capsize>['fontSize'],
-// ) => {
-//   const fontSize = parseFloat(size.replace('px', ''));
-
-//   return `${
-//     fontSize % 1 <= 0.01 || fontSize % 1 >= 0.99
-//       ? Math.round(fontSize)
-//       : fontSize
-//   }px`;
-// };
 
 const makeTypographyRules = (
   textDefinition: TypographicDefinition,
@@ -64,12 +52,12 @@ const makeTypographyRules = (
     raw: style(
       responsiveStyle({
         mobile: {
-          fontSize: calc(mobileFontSize).multiply('1px').toString(),
-          lineHeight: calc(mobileLeading).multiply('1px').toString(),
+          fontSize: calc.multiply(mobileFontSize, '1px'),
+          lineHeight: calc.multiply(mobileLeading, '1px'),
         },
         tablet: {
-          fontSize: calc(tabletFontSize).multiply('1px').toString(),
-          lineHeight: calc(tabletLeading).multiply('1px').toString(),
+          fontSize: calc.multiply(tabletFontSize, '1px'),
+          lineHeight: calc.multiply(tabletLeading, '1px'),
         },
       }),
     ),

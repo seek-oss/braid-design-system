@@ -17,17 +17,11 @@ const fontSizeToCapHeight = (
 
   return {
     mobile: {
-      capHeight:
-        'fontSize' in mobile
-          ? getCapHeight({ fontSize: mobile.fontSize, fontMetrics })
-          : mobile.capHeight,
+      capHeight: getCapHeight({ fontSize: mobile.fontSize, fontMetrics }),
       rows: mobile.rows,
     },
     tablet: {
-      capHeight:
-        'fontSize' in tablet
-          ? getCapHeight({ fontSize: tablet.fontSize, fontMetrics })
-          : tablet.capHeight,
+      capHeight: getCapHeight({ fontSize: tablet.fontSize, fontMetrics }),
       rows: tablet.rows,
     },
   };

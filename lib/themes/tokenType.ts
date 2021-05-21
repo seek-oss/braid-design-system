@@ -5,20 +5,12 @@ type Breakpoint = typeof breakpoints[number];
 
 export type TextBreakpoint = Exclude<Breakpoint, 'desktop'>;
 
-type CapHeightText = {
-  capHeight: number;
-  rows: number;
-};
-
 type FontSizeText = {
   fontSize: number;
   rows: number;
 };
 
-export type TextDefinition = Record<
-  TextBreakpoint,
-  CapHeightText | FontSizeText
->;
+export type TextDefinition = Record<TextBreakpoint, FontSizeText>;
 type FontWeight = 'regular' | 'medium' | 'strong';
 
 export interface BraidTokens {

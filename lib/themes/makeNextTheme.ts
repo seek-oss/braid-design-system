@@ -1,9 +1,8 @@
 import { darken, lighten } from 'polished';
 import mapValues from 'lodash/mapValues';
+import { FontMetrics, getCapHeight } from 'capsize';
 
-import { computeValues } from '../hooks/typography/capsize';
 import { getAccessibleVariant, getLightVariant, isLight } from '../utils';
-import { FontMetrics } from '../hooks/typography/capsize';
 import { BraidTokens, TextDefinition } from './tokenType';
 
 const px = (v: string | number) => `${v}px`;
@@ -14,8 +13,6 @@ const getActiveColor = (x: string) =>
 const getHoverColor = (x: string) =>
   isLight(x) ? darken(0.05, x) : lighten(0.05, x);
 
-const unpx = (value: string) => parseInt(value.replace('px', ''), 10);
-
 const fontSizeToCapHeight = (
   grid: number,
   definition: TextDefinition,
@@ -25,54 +22,28 @@ const fontSizeToCapHeight = (
   const mobileLeading = mobile.rows * grid;
   const tabletLeading = tablet.rows * grid;
 
-  const mobileCapHeight =
-    'fontSize' in mobile
-      ? computeValues({
-          fontSize: mobile.fontSize,
-          leading: mobileLeading,
-          fontMetrics,
-        }).capHeight
-      : px(mobile.capHeight);
+  const mobileCapHeight = getCapHeight({
+    fontSize: mobile.fontSize,
+    fontMetrics,
+  });
 
-  const mobileFontSize =
-    'capHeight' in mobile
-      ? computeValues({
-          capHeight: mobile.capHeight,
-          leading: mobileLeading,
-          fontMetrics,
-        }).fontSize
-      : px(mobile.fontSize);
-
-  const tabletCapHeight =
-    'fontSize' in tablet
-      ? computeValues({
-          fontSize: tablet.fontSize,
-          leading: tabletLeading,
-          fontMetrics,
-        }).capHeight
-      : px(tablet.capHeight);
-
-  const tabletFontSize =
-    'capHeight' in tablet
-      ? computeValues({
-          capHeight: tablet.capHeight,
-          leading: tabletLeading,
-          fontMetrics,
-        }).fontSize
-      : px(tablet.fontSize);
+  const tabletCapHeight = getCapHeight({
+    fontSize: tablet.fontSize,
+    fontMetrics,
+  });
 
   return {
     mobile: {
-      fontSize: unpx(mobileFontSize),
-      leading: mobileLeading,
-      capHeight: unpx(mobileCapHeight),
-      capHeightFloored: px(Math.floor(unpx(mobileCapHeight))),
+      fontSize: String(mobile.fontSize),
+      leading: String(mobileLeading),
+      capHeight: String(mobileCapHeight),
+      capHeightFloored: String(Math.floor(mobileCapHeight)),
     },
     tablet: {
-      fontSize: unpx(tabletFontSize),
-      leading: tabletLeading,
-      capHeight: unpx(tabletCapHeight),
-      capHeightFloored: px(Math.floor(unpx(tabletCapHeight))),
+      fontSize: String(tablet.fontSize),
+      leading: String(tabletLeading),
+      capHeight: String(tabletCapHeight),
+      capHeightFloored: String(Math.floor(tabletCapHeight)),
     },
   };
 };
@@ -90,8 +61,8 @@ export default (braidTokens: BraidTokens) => {
     ...tokens,
     typography: {
       ...typography,
-      fontMetrics: mapValues(typography.fontMetrics, (metric) => `${metric}`),
-      fontWeight: mapValues(typography.fontWeight, (weight) => `${weight}`),
+      fontMetrics: mapValues(typography.fontMetrics, String),
+      fontWeight: mapValues(typography.fontWeight, String),
       text: mapValues(tokens.typography.text, (definition) =>
         fontSizeToCapHeight(tokens.grid, definition, typography.fontMetrics),
       ),

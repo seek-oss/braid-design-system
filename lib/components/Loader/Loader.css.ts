@@ -1,4 +1,5 @@
 import { keyframes, style, styleVariants } from '@vanilla-extract/css';
+import { calc } from '@vanilla-extract/css-utils';
 import { responsiveStyle } from '../../themes/nextThemeUtils';
 import { themeVars } from '../../themes/themeVars.css';
 
@@ -75,12 +76,12 @@ export const circleSize = styleVariants(
   ({ mobile, tablet }) =>
     responsiveStyle({
       mobile: {
-        width: mobile.capHeightFloored,
-        height: mobile.capHeightFloored,
+        width: calc.multiply(mobile.capHeightFloored, '1px'),
+        height: calc.multiply(mobile.capHeightFloored, '1px'),
       },
       tablet: {
-        width: tablet.capHeightFloored,
-        height: tablet.capHeightFloored,
+        width: calc.multiply(tablet.capHeightFloored, '1px'),
+        height: calc.multiply(tablet.capHeightFloored, '1px'),
       },
     }),
 );

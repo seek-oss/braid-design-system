@@ -37,7 +37,7 @@ const resolvedCapHeight = fallbackVar(
 );
 const resolvedLineHeight = fallbackVar(
   leading,
-  calc.add(resolvedCapHeight, lineGap).toString(),
+  calc.add(resolvedCapHeight, lineGap),
 );
 
 const lineHeightNormal = calc.multiply(lineHeightScale, resolvedFontSize);
@@ -51,13 +51,13 @@ const specifiedLineHeightOffset = calc(lineHeightNormal)
 
 const capHeightTrim = calc(ascentScale)
   .subtract(capHeightScale)
-  .add(calc(lineGapScale).divide(2).toString())
+  .add(calc.divide(lineGapScale, 2))
   .subtract(specifiedLineHeightOffset)
   .multiply('-1em')
   .toString();
 
 const baselineTrim = calc(descentScale)
-  .add(calc(lineGapScale).divide(2).toString())
+  .add(calc.divide(lineGapScale, 2))
   .subtract(specifiedLineHeightOffset)
   .multiply('-1em')
   .toString();
@@ -73,6 +73,6 @@ export const capsize = style({
     marginTop: baselineTrim,
     display: 'table',
   },
-  fontSize: calc(resolvedFontSize).multiply('1px').toString(),
-  lineHeight: calc(resolvedLineHeight).multiply('1px').toString(),
+  fontSize: calc.multiply(resolvedFontSize, '1px'),
+  lineHeight: calc.multiply(resolvedLineHeight, '1px'),
 });

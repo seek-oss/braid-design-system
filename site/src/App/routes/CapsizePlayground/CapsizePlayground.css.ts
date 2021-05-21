@@ -14,7 +14,7 @@ import {
   font,
 } from '../../../../../lib/hooks/typography/capsize.css';
 
-const highlight = 'rgba(0,0,0,0.5)';
+const highlight = 'rgba(240, 85, 243, .3)';
 const textRhythm = fallbackVar(
   capHeight,
   calc(fontSize).multiply(font.capHeight).divide(font.unitsPerEm).toString(),
@@ -26,11 +26,11 @@ const step1 = createVar();
 const step2 = createVar();
 const highlightGradient = style({
   backgroundImage: `linear-gradient(180deg,
-    ${firstColor} ${calc(step1).multiply('1px')},
-    ${secondColor} ${calc(step1).multiply('1px')},
-    ${secondColor} ${calc(step2).multiply('1px')}
+    ${firstColor} ${calc.multiply(step1, '1px')},
+    ${secondColor} ${calc.multiply(step1, '1px')},
+    ${secondColor} ${calc.multiply(step2, '1px')}
   )`,
-  backgroundSize: `100% ${calc(step2).multiply('1px')}`,
+  backgroundSize: `100% ${calc.multiply(step2, '1px')}`,
 });
 
 export const highlightLeading = composeStyles(
@@ -38,7 +38,7 @@ export const highlightLeading = composeStyles(
   style({
     vars: {
       [step1]: leading,
-      [step2]: calc.multiply(leading, 2).toString(),
+      [step2]: calc.multiply(leading, 2),
       [firstColor]: 'transparent',
       [secondColor]: highlight,
     },
@@ -55,7 +55,7 @@ export const highlightLineGap = composeStyles(
   style({
     vars: {
       [step1]: textRhythm,
-      [step2]: calc(textRhythm).add(lineGap).toString(),
+      [step2]: calc.add(textRhythm, lineGap),
       [firstColor]: 'transparent',
       [secondColor]: highlight,
     },
@@ -67,9 +67,10 @@ export const highlightCapHeight = composeStyles(
   style({
     vars: {
       [step1]: capHeight,
-      [step2]: calc(capHeight)
-        .add(fallbackVar(lineGap, calc(leading).subtract(capHeight).toString()))
-        .toString(),
+      [step2]: calc.add(
+        capHeight,
+        fallbackVar(lineGap, calc.subtract(leading, capHeight)),
+      ),
       [firstColor]: highlight,
       [secondColor]: 'transparent',
     },
