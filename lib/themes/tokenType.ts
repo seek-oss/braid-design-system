@@ -1,4 +1,4 @@
-import { FontMetrics } from './../hooks/typography/capsize';
+import { FontMetrics } from 'capsize';
 
 export const breakpoints = ['mobile', 'tablet', 'desktop'] as const;
 type Breakpoint = typeof breakpoints[number];

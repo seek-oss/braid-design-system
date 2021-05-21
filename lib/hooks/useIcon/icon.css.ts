@@ -1,4 +1,5 @@
 import { style, styleVariants } from '@vanilla-extract/css';
+import { calc } from '@vanilla-extract/css-utils';
 import { responsiveStyle } from '../../themes/nextThemeUtils';
 import { themeVars } from '../../themes/themeVars.css';
 
@@ -31,7 +32,7 @@ export const blockWidths = styleVariants(
   themeVars.typography.text,
   ({ mobile, tablet }) =>
     responsiveStyle({
-      mobile: { width: mobile.leading },
-      tablet: { width: tablet.leading },
+      mobile: { width: calc.multiply(mobile.leading, '1px') },
+      tablet: { width: calc.multiply(tablet.leading, '1px') },
     }),
 );
