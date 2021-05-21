@@ -3244,10 +3244,10 @@
   resolved "https://registry.yarnpkg.com/@vanilla-extract/private/-/private-0.1.2.tgz#79cb16243764c5f51b99e0a7ed137e6c5e06223e"
   integrity sha512-LuaCxlU4BlsSlK53QQABxo53TqWFiQyjXwDCz+5tpaChhMHrmJ5/XVFQVH3zD03HATfAJcmv8WqAQOZnF0FmGg==
 
-"@vanilla-extract/sprinkles@^0.3.1":
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/@vanilla-extract/sprinkles/-/sprinkles-0.3.1.tgz#411b2aaea71064d9a3b5e9fe6b78a5904d029fad"
-  integrity sha512-dG7F4B+VwR3jDP8Qh5kIHAX9pwF7Vg5iTU88tkKcBsKz9nVn62qTcn0OoXqOzkvzszNgIQpVUe0OX6Y1t6owOA==
+"@vanilla-extract/sprinkles@^0.3.2":
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/@vanilla-extract/sprinkles/-/sprinkles-0.3.2.tgz#e5dee724bd5f45934b7990649dce2cd040cfa0f4"
+  integrity sha512-1YHzywDleikS/Hb5o1doNh/UC9kHC4Fl13UMAXV9TGPGJr0OcCCra9aFtGcaDsPFXOjRcDpzMU3ZDuycnefyVQ==
 
 "@vanilla-extract/webpack-plugin@*", "@vanilla-extract/webpack-plugin@0.3.1":
   version "0.3.1"
@@ -15530,10 +15530,10 @@ sisteransi@^1.0.5:
   resolved "https://registry.yarnpkg.com/sisteransi/-/sisteransi-1.0.5.tgz#134d681297756437cc05ca01370d3a7a571075ed"
   integrity sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==
 
-sku@10.12.0:
-  version "10.12.0"
-  resolved "https://registry.yarnpkg.com/sku/-/sku-10.12.0.tgz#055db58cce6015b1a2487e84bbd8000b009b0207"
-  integrity sha512-iZKUfGmQIWLl/LZzP72fE59koPxTty66+BTMaPmdyn463MPrGS17ou2LGYRlzU1sI5bnEs+H8HnIWnRMeCoh6Q==
+sku@10.12.1:
+  version "10.12.1"
+  resolved "https://registry.yarnpkg.com/sku/-/sku-10.12.1.tgz#2b7ee6362bf1fcfb0c4821a8285f8333401d0fb0"
+  integrity sha512-C4xstkOq8nvLimf9DAmzqrP5OTzpEZvXDFf/xulqrIbE+YDOi9KgWLBUzxG9AJ1J3lPR4krzZE4mugBsU0HzmQ==
   dependencies:
     "@babel/core" "^7.12.10"
     "@babel/plugin-proposal-class-properties" "^7.12.1"
