@@ -197,7 +197,11 @@ function GroupHeading({ children }: GroupHeadingProps) {
           tone: 'formAccent',
         }),
       ]}
-      data-testid={`group-heading-${children}`}
+      data-testid={
+        process.env.NODE_ENV !== 'production'
+          ? `group-heading-${children}`
+          : undefined
+      }
     >
       {children}
     </Box>
