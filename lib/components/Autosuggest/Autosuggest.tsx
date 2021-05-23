@@ -197,6 +197,7 @@ function GroupHeading({ children }: GroupHeadingProps) {
           tone: 'formAccent',
         }),
       ]}
+      data-testid={`group-heading-${children}`}
     >
       {children}
     </Box>
@@ -217,9 +218,9 @@ function normaliseSuggestions<Value>(
       item.suggestions.forEach((suggestion) => {
         groupHeadingForSuggestion.set(suggestion, item.label);
       });
-      index += normalisedSuggestions.push(...item.suggestions);
+      index = normalisedSuggestions.push(...item.suggestions);
     } else {
-      index += normalisedSuggestions.push(item);
+      index = normalisedSuggestions.push(item);
     }
   }
 
