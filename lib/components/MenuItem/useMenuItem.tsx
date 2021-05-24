@@ -5,6 +5,7 @@ import React, {
   useRef,
   useEffect,
   ReactNode,
+  MouseEvent,
 } from 'react';
 import { useStyles } from 'sku/react-treat';
 import { Box } from '../Box/Box';
@@ -136,7 +137,9 @@ export function useMenuItem<MenuItemElement extends HTMLElement>({
       onKeyUp,
       onKeyDown,
       onMouseEnter: () => dispatch({ type: MENU_ITEM_HOVER, value: index }),
-      onClick: () => {
+      onClick: (event: MouseEvent) => {
+        event.stopPropagation();
+
         dispatch({ type: MENU_ITEM_CLICK, formElement });
 
         if (typeof onClick === 'function') {

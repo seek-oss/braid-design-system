@@ -50,34 +50,37 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
     const openHandler = jest.fn();
     const closeHandler = jest.fn();
     const menuItemHandler = jest.fn();
+    const parentHandler = jest.fn();
 
     const TestCase = () => {
       const [checked, setChecked] = useState(false);
 
       return (
         <BraidTestProvider>
-          <Component onOpen={openHandler} onClose={closeHandler}>
-            <MenuItem onClick={() => menuItemHandler('MenuItem')}>
-              MenuItem
-            </MenuItem>
-            <MenuItemDivider />
-            <MenuItemLink
-              href="#"
-              onClick={() => menuItemHandler('MenuItemLink')}
-            >
-              MenuItemLink
-            </MenuItemLink>
-            <MenuItemDivider />
-            <MenuItemCheckbox
-              checked={checked}
-              onChange={(value) => {
-                setChecked(value);
-                menuItemHandler('MenuItemCheckbox');
-              }}
-            >
-              MenuItemCheckbox
-            </MenuItemCheckbox>
-          </Component>
+          <div onClick={parentHandler}>
+            <Component onOpen={openHandler} onClose={closeHandler}>
+              <MenuItem onClick={() => menuItemHandler('MenuItem')}>
+                MenuItem
+              </MenuItem>
+              <MenuItemDivider />
+              <MenuItemLink
+                href="#"
+                onClick={() => menuItemHandler('MenuItemLink')}
+              >
+                MenuItemLink
+              </MenuItemLink>
+              <MenuItemDivider />
+              <MenuItemCheckbox
+                checked={checked}
+                onChange={(value) => {
+                  setChecked(value);
+                  menuItemHandler('MenuItemCheckbox');
+                }}
+              >
+                MenuItemCheckbox
+              </MenuItemCheckbox>
+            </Component>
+          </div>
         </BraidTestProvider>
       );
     };
@@ -89,6 +92,7 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
       openHandler,
       closeHandler,
       menuItemHandler,
+      parentHandler,
     };
   }
 
@@ -181,6 +185,7 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
           openHandler,
           closeHandler,
           menuItemHandler,
+          parentHandler,
         } = renderMenu();
 
         const { menu, menuButton, menuItems } = getElements({ getAllByRole });
@@ -198,6 +203,9 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
         expect(closeHandler).toHaveBeenCalledTimes(1);
         expect(menuItemHandler).toHaveBeenNthCalledWith(1, 'MenuItem');
         expect(menuButton).toHaveFocus();
+
+        // Should not bubble
+        expect(parentHandler).not.toHaveBeenCalled();
       });
 
       it('should toggle the state on a MenuItemCheckbox', () => {
