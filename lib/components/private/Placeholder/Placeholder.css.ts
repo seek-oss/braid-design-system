@@ -1,11 +1,14 @@
 import { createTheme, style } from '@vanilla-extract/css';
 
-export const [lightTheme, themeVars] = createTheme({
-  background: 'hsla(0, 0%, 20%, 0.08)',
-  borderColor: 'hsla(0, 0%, 20%, 0.3)',
-  labelColor: 'hsla(0, 0%, 20%, 0.4)',
-  lineColor: 'hsla(0, 0%, 20%, 0.1)',
-});
+export const [lightTheme, themeVars] = createTheme(
+  {
+    background: 'hsla(0, 0%, 20%, 0.08)',
+    borderColor: 'hsla(0, 0%, 20%, 0.3)',
+    labelColor: 'hsla(0, 0%, 20%, 0.4)',
+    lineColor: 'hsla(0, 0%, 20%, 0.1)',
+  },
+  'lightTheme',
+);
 
 export const darkTheme = createTheme(themeVars, {
   background: 'hsla(0, 0%, 100%, 0.35)',

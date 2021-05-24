@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import React, { Children } from 'react';
 import flattenChildren from 'react-keyed-flatten-children';
 import { Box } from '../Box/Box';
@@ -36,7 +37,7 @@ export const Tiles = ({
   const responsiveSpace = normalizeResponsiveValue(space);
 
   const {
-    mobile: mobileColumns,
+    mobile: mobileColumns = 1,
     tablet: tabletColumns,
     desktop: desktopColumns,
   } = normalizeResponsiveValue(columns);
@@ -69,11 +70,23 @@ export const Tiles = ({
               {dividers && i > 0 ? (
                 <Box
                   paddingBottom={responsiveSpace}
-                  display={[
-                    mobileColumns === 1 ? 'block' : 'none',
-                    tabletColumns === 1 ? 'block' : 'none',
-                    desktopColumns === 1 ? 'block' : 'none',
-                  ]}
+                  display={{
+                    mobile: mobileColumns
+                      ? mobileColumns === 1
+                        ? 'block'
+                        : 'none'
+                      : undefined,
+                    tablet: tabletColumns
+                      ? tabletColumns === 1
+                        ? 'block'
+                        : 'none'
+                      : undefined,
+                    desktop: desktopColumns
+                      ? desktopColumns === 1
+                        ? 'block'
+                        : 'none'
+                      : undefined,
+                  }}
                 >
                   {typeof dividers === 'string' ? (
                     <Divider weight={dividers} />
