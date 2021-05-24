@@ -1621,5 +1621,22 @@
         "summary": "Add support for data attribute maps on all components.\n\n**EXAMPLE USAGE:**\n```tsx\n<Alert\n  data={{\n    testId: 'message'\n  }}\n/>\n\n// => <div data-testId=\"message\" />\n```"
       }
     ]
+  },
+  {
+    "version": "29.32.1",
+    "updates": [
+      {
+        "updated": [
+          "MenuItem"
+        ],
+        "summary": "**MenuItem:** Prevent click events from bubbling"
+      },
+      {
+        "updated": [
+          "Autosuggest"
+        ],
+        "summary": "**Autosuggest:** Fix missing/invalid group headings in some cases"
+      }
+    ]
   }
 ]

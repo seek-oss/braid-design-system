@@ -1,5 +1,13 @@
 # braid-design-system
 
+## 29.32.1
+
+### Patch Changes
+
+- **MenuItem:** Prevent click events from bubbling ([#939](https://github.com/seek-oss/braid-design-system/pull/939))
+
+- **Autosuggest:** Fix missing/invalid group headings in some cases ([#937](https://github.com/seek-oss/braid-design-system/pull/937))
+
 ## 29.32.0
 
 ### Minor Changes
