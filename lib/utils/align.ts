@@ -1,5 +1,5 @@
 import {
-  ResponsiveValue,
+  OptionalResponsiveValue,
   mapResponsiveValue,
 } from '../sprinkles/sprinkles.css';
 
@@ -12,7 +12,9 @@ const alignToFlexAlignLookup = {
   right: 'flexEnd',
 } as const;
 
-export const alignToFlexAlign = (align: ResponsiveValue<Align> | undefined) =>
+export const alignToFlexAlign = (
+  align: OptionalResponsiveValue<Align> | undefined,
+) =>
   align
     ? mapResponsiveValue(align, (value) => alignToFlexAlignLookup[value])
     : undefined;
@@ -24,7 +26,7 @@ const alignYToFlexAlignLookup = {
 } as const;
 
 export const alignYToFlexAlign = (
-  alignY: ResponsiveValue<AlignY> | undefined,
+  alignY: OptionalResponsiveValue<AlignY> | undefined,
 ) =>
   alignY
     ? mapResponsiveValue(alignY, (value) => alignYToFlexAlignLookup[value])

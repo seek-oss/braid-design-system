@@ -8,7 +8,8 @@ import React, {
 } from 'react';
 import assert from 'assert';
 import flattenChildren from 'react-keyed-flatten-children';
-import { Box, BoxProps } from '../Box/Box';
+import { Box } from '../Box/Box';
+import type { ResponsiveSpace } from '../Box/boxStyles';
 import { TAB_LIST_UPDATED } from './Tabs.actions';
 import buildDataAttributes, {
   DataAttributeMap,
@@ -25,7 +26,7 @@ export interface TabsProps {
   children: ReactNodeNoStrings;
   label: string;
   align?: 'left' | 'center';
-  gutter?: BoxProps['paddingX'];
+  gutter?: ResponsiveSpace;
   reserveHitArea?: boolean;
   data?: DataAttributeMap;
   divider?: TabListContextValues['divider'];

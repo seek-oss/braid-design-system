@@ -1,5 +1,5 @@
 import {
-  ResponsiveValue,
+  OptionalResponsiveValue,
   normalizeResponsiveValue,
 } from '../sprinkles/sprinkles.css';
 
@@ -62,7 +62,7 @@ export const mapResponsiveProp = <
 };
 
 export const resolveResponsiveProp = <Keys extends string | number>(
-  value: ResponsiveValue<Keys>,
+  value: OptionalResponsiveValue<Keys>,
   mobileAtoms: Record<Keys, string>,
   tabletAtoms: Record<Keys, string>,
   desktopAtoms: Record<Keys, string>,

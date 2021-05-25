@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
 import assert from 'assert';
-import { Box, BoxProps } from '../Box/Box';
+import { Box } from '../Box/Box';
+import type { ResponsiveSpace } from '../Box/boxStyles';
 import { Text } from '../Text/Text';
 import { TextLinkButton } from '../TextLinkButton/TextLinkButton';
 import { IconChevron } from '../icons';
@@ -12,7 +13,7 @@ import buildDataAttributes, {
 export type DisclosureBaseProps = {
   expandLabel: string;
   collapseLabel?: string;
-  space?: BoxProps['paddingTop'];
+  space?: ResponsiveSpace;
   data?: DataAttributeMap;
   children: ReactNode;
 };

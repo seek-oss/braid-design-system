@@ -1,16 +1,13 @@
 import React, { createContext, ReactElement } from 'react';
 import { Box } from '../Box/Box';
 import { ColumnProps } from '../Column/Column';
-import { Space } from '../Box/boxStyles';
+import { Space, ResponsiveSpace } from '../Box/boxStyles';
 import { useNegativeMarginLeft } from '../../hooks/useNegativeMargin/useNegativeMargin';
 import {
   resolveCollapsibleAlignmentProps,
   CollapsibleAlignmentProps,
 } from '../../utils/collapsibleAlignmentProps';
-import {
-  normalizeResponsiveValue,
-  ResponsiveValue,
-} from '../../sprinkles/sprinkles.css';
+import { normalizeResponsiveValue } from '../../sprinkles/sprinkles.css';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
@@ -38,7 +35,7 @@ export const ColumnsContext = createContext<ColumnsContextValue>({
 });
 
 export interface ColumnsProps extends CollapsibleAlignmentProps {
-  space: ResponsiveValue<Space>;
+  space: ResponsiveSpace;
   children:
     | Array<ReactElement<ColumnProps> | null>
     | ReactElement<ColumnProps>
@@ -57,7 +54,7 @@ export const Columns = ({
 }: ColumnsProps) => {
   const normalizedSpace = normalizeResponsiveValue(space);
   const {
-    mobile: mobileSpace = 'none',
+    mobile: mobileSpace,
     tablet: tabletSpace = mobileSpace,
     desktop: desktopSpace = tabletSpace,
   } = normalizedSpace;

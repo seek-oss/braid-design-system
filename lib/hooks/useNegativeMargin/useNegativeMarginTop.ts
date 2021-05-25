@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import { ResponsiveValue } from '../../sprinkles/sprinkles.css';
+import { RequiredResponsiveValue } from '../../sprinkles/sprinkles.css';
 import { resolveResponsiveProp } from '../../utils/responsiveProp';
 import * as styles from './useNegativeMarginTop.css';
 
@@ -9,7 +9,7 @@ type NegativeMarginTop = Extract<
 >;
 
 export const useNegativeMarginTop = (
-  space: ResponsiveValue<NegativeMarginTop>,
+  space: RequiredResponsiveValue<NegativeMarginTop>,
 ) => {
   const negativeMarginTop = resolveResponsiveProp(
     space,

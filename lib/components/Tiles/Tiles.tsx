@@ -12,8 +12,8 @@ import { resolveResponsiveProp } from '../../utils/responsiveProp';
 import * as styles from './Tiles.css';
 import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import {
-  normalizeResponsiveValue,
-  ResponsiveValue,
+  mapResponsiveValue,
+  RequiredResponsiveValue,
 } from '../../sprinkles/sprinkles.css';
 import buildDataAttributes, {
   DataAttributeMap,
@@ -21,8 +21,8 @@ import buildDataAttributes, {
 
 export interface TilesProps {
   children: ReactNodeNoStrings;
-  space: ResponsiveValue<Space>;
-  columns: ResponsiveValue<1 | 2 | 3 | 4 | 5 | 6>;
+  space: RequiredResponsiveValue<Space>;
+  columns: RequiredResponsiveValue<1 | 2 | 3 | 4 | 5 | 6>;
   dividers?: boolean | DividerProps['weight'];
   data?: DataAttributeMap;
 }
@@ -34,16 +34,8 @@ export const Tiles = ({
   dividers = false,
   data,
 }: TilesProps) => {
-  const responsiveSpace = normalizeResponsiveValue(space);
-
-  const {
-    mobile: mobileColumns = 1,
-    tablet: tabletColumns,
-    desktop: desktopColumns,
-  } = normalizeResponsiveValue(columns);
-
-  const negativeMarginTop = useNegativeMarginTop(responsiveSpace);
-  const negativeMarginLeft = useNegativeMarginLeft(responsiveSpace);
+  const negativeMarginTop = useNegativeMarginTop(space);
+  const negativeMarginLeft = useNegativeMarginLeft(space);
 
   return (
     <Box
@@ -64,29 +56,15 @@ export const Tiles = ({
             <Box
               height="full"
               // This needs to be a separate element to support IE11.
-              paddingTop={responsiveSpace}
-              paddingLeft={responsiveSpace}
+              paddingTop={space}
+              paddingLeft={space}
             >
               {dividers && i > 0 ? (
                 <Box
-                  paddingBottom={responsiveSpace}
-                  display={{
-                    mobile: mobileColumns
-                      ? mobileColumns === 1
-                        ? 'block'
-                        : 'none'
-                      : undefined,
-                    tablet: tabletColumns
-                      ? tabletColumns === 1
-                        ? 'block'
-                        : 'none'
-                      : undefined,
-                    desktop: desktopColumns
-                      ? desktopColumns === 1
-                        ? 'block'
-                        : 'none'
-                      : undefined,
-                  }}
+                  paddingBottom={space}
+                  display={mapResponsiveValue(columns, (column) =>
+                    column === 1 ? 'block' : 'none',
+                  )}
                 >
                   {typeof dividers === 'string' ? (
                     <Divider weight={dividers} />

@@ -1,7 +1,8 @@
 import React, { Children, ReactNode } from 'react';
 import flattenChildren from 'react-keyed-flatten-children';
 import assert from 'assert';
-import { Box, BoxProps } from '../Box/Box';
+import { Box } from '../Box/Box';
+import type { ResponsiveSpace } from '../Box/boxStyles';
 import { Divider, DividerProps } from '../Divider/Divider';
 import { Hidden, HiddenProps } from '../Hidden/Hidden';
 import * as hiddenStyles from '../Hidden/Hidden.css';
@@ -10,7 +11,7 @@ import { resolveResponsiveRangeProps } from '../../utils/responsiveRangeProps';
 import { useNegativeMarginTop } from '../../hooks/useNegativeMargin/useNegativeMargin';
 import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import {
-  ResponsiveValue,
+  OptionalResponsiveValue,
   mapResponsiveValue,
   normalizeResponsiveValue,
 } from '../../sprinkles/sprinkles.css';
@@ -25,8 +26,8 @@ const alignToDisplay = {
 } as const;
 
 interface UseStackItemProps {
-  align: ResponsiveValue<Align>;
-  space: BoxProps['paddingTop'];
+  align: OptionalResponsiveValue<Align>;
+  space: ResponsiveSpace;
 }
 
 const useStackItem = ({ align, space }: UseStackItemProps) => ({
@@ -84,8 +85,8 @@ const calculateHiddenStackItemProps = (
 export interface StackProps {
   component?: typeof validStackComponents[number];
   children: ReactNodeNoStrings;
-  space: BoxProps['paddingTop'];
-  align?: ResponsiveValue<Align>;
+  space: ResponsiveSpace;
+  align?: OptionalResponsiveValue<Align>;
   dividers?: boolean | DividerProps['weight'];
   data?: DataAttributeMap;
 }

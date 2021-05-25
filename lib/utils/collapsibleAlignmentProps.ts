@@ -5,7 +5,7 @@ import {
 } from './responsiveRangeProps';
 import { Align, alignToFlexAlign, alignYToFlexAlign, AlignY } from './align';
 import {
-  ResponsiveValue,
+  OptionalResponsiveValue,
   normalizeResponsiveValue,
 } from '../sprinkles/sprinkles.css';
 
@@ -23,8 +23,8 @@ function invertAlignment<Alignment extends string>(alignment: Alignment) {
 
 export interface CollapsibleAlignmentProps {
   collapseBelow?: ResponsiveRangeProps['below'];
-  align?: ResponsiveValue<Align>;
-  alignY?: ResponsiveValue<AlignY>;
+  align?: OptionalResponsiveValue<Align>;
+  alignY?: OptionalResponsiveValue<AlignY>;
   reverse?: boolean;
 }
 

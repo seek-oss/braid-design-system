@@ -1,5 +1,6 @@
 import {
   ConditionalValue,
+  RequiredConditionalValue,
   createAtomicStyles,
   createAtomsFn,
   createMapValueFn,
@@ -56,10 +57,13 @@ export const atoms = createAtomsFn(
   pseudoAtomicStyles,
 );
 
-export type ResponsiveValue<Value extends string | number> = ConditionalValue<
-  typeof reponsiveAtomicStyles,
-  Value
->;
+export type OptionalResponsiveValue<
+  Value extends string | number
+> = ConditionalValue<typeof reponsiveAtomicStyles, Value>;
+export type RequiredResponsiveValue<
+  Value extends string | number
+> = RequiredConditionalValue<typeof reponsiveAtomicStyles, Value>;
+
 export const normalizeResponsiveValue = createNormalizeValueFn(
   reponsiveAtomicStyles,
 );

@@ -9,7 +9,8 @@ import React, {
   Ref,
 } from 'react';
 import flattenChildren from 'react-keyed-flatten-children';
-import { Box, BoxProps } from '../Box/Box';
+import { Box } from '../Box/Box';
+import type { ResponsiveSpace } from '../Box/boxStyles';
 import { MenuItem } from '../MenuItem/MenuItem';
 import { MenuItemCheckbox } from '../MenuItemCheckbox/MenuItemCheckbox';
 import { MenuItemLink } from '../MenuItem/MenuItemLink';
@@ -39,7 +40,7 @@ interface TriggerState {
 export interface MenuRendererProps {
   trigger: (props: TriggerProps, state: TriggerState) => ReactNode;
   align?: 'left' | 'right';
-  offsetSpace?: BoxProps['marginTop'];
+  offsetSpace?: ResponsiveSpace;
   onOpen?: () => void;
   onClose?: () => void;
   data?: DataAttributeMap;
