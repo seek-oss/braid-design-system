@@ -3,19 +3,16 @@ import { calc } from '@vanilla-extract/css-utils';
 import { responsiveStyle } from '../../themes/nextThemeUtils';
 import { themeVars } from '../../themes/themeVars.css';
 
-const preventCollapse = '1px';
-
 const { space } = themeVars;
 
 const negativeMarginTop = (spaceValue: string | number) => ({
   ':before': {
-    marginTop: calc.subtract(calc.negate(spaceValue), preventCollapse),
+    marginBottom: spaceValue ? calc.negate(spaceValue) : 0,
   },
 });
 
 export const base = style({
-  paddingTop: preventCollapse,
-  ':before': { content: '""', display: 'block' },
+  ':before': { content: '""', display: 'table' },
 });
 
 export const mobile = styleVariants({ none: 0, ...space }, (value) =>

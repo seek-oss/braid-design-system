@@ -6,7 +6,7 @@ import { themeVars } from '../../themes/themeVars.css';
 const { space } = themeVars;
 
 const negativeMarginLeft = (spaceValue: string | number) => ({
-  marginLeft: calc.negate(spaceValue),
+  marginLeft: spaceValue ? calc.negate(spaceValue) : 0,
 });
 
 export const mobile = styleVariants({ none: 0, ...space }, (value) =>
