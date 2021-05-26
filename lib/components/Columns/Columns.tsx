@@ -54,7 +54,7 @@ export const Columns = ({
 }: ColumnsProps) => {
   const normalizedSpace = normalizeResponsiveValue(space);
   const {
-    mobile: mobileSpace,
+    mobile: mobileSpace = 'none',
     tablet: tabletSpace = mobileSpace,
     desktop: desktopSpace = tabletSpace,
   } = normalizedSpace;
