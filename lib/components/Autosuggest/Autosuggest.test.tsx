@@ -48,7 +48,9 @@ function renderAutosuggest<Value>({
     );
   };
 
-  const { getByRole, queryByLabelText, queryByText } = render(<TestCase />);
+  const { getByRole, queryByLabelText, queryByText, getByTestId } = render(
+    <TestCase />,
+  );
   const input = getByRole('combobox');
   const getInputValue = () => input.getAttribute('value');
 
@@ -58,6 +60,7 @@ function renderAutosuggest<Value>({
     changeHandler,
     queryByLabelText,
     queryByText,
+    getByTestId,
     setSuggestions: (x: Suggestions) => act(() => setSuggestions(x)),
   };
 }
@@ -367,7 +370,7 @@ describe('Autosuggest', () => {
     });
 
     it('should support grouped suggestions', () => {
-      const { input, queryByLabelText } = renderAutosuggest({
+      const { input, queryByLabelText, getByTestId } = renderAutosuggest({
         value: { text: '' },
         suggestions: [
           {
@@ -376,6 +379,14 @@ describe('Autosuggest', () => {
               {
                 text: 'Apples',
                 value: 'apples',
+              },
+              {
+                text: 'Bananas',
+                value: 'bananas',
+              },
+              {
+                text: 'Oranges',
+                value: 'oranges',
               },
             ],
           },
@@ -386,6 +397,19 @@ describe('Autosuggest', () => {
                 text: 'Carrots',
                 value: 'carrots',
               },
+              {
+                text: 'Broccoli',
+                value: 'broccoli',
+              },
+            ],
+          },
+          {
+            label: 'Dessert',
+            suggestions: [
+              {
+                text: 'Ice cream',
+                value: 'ice-cream',
+              },
             ],
           },
         ],
@@ -395,6 +419,11 @@ describe('Autosuggest', () => {
 
       expect(queryByLabelText('Apples (Fruit)')).toBeInTheDocument();
       expect(queryByLabelText('Carrots (Vegetables)')).toBeInTheDocument();
+      expect(queryByLabelText('Ice cream (Dessert)')).toBeInTheDocument();
+
+      expect(getByTestId('group-heading-Fruit')).toBeInTheDocument();
+      expect(getByTestId('group-heading-Vegetables')).toBeInTheDocument();
+      expect(getByTestId('group-heading-Dessert')).toBeInTheDocument();
     });
 
     it('should support suggestions with descriptions', () => {
