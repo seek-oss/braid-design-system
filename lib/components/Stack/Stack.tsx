@@ -64,13 +64,15 @@ const calculateHiddenStackItemProps = (
     [boolean, boolean, boolean]
   >,
 ) => {
-  const {
-    mobile: displayMobile,
-    tablet: displayTablet,
-    desktop: displayDesktop,
-  } = normalizeResponsiveValue(
+  const normalizedValue = normalizeResponsiveValue(
     stackItemProps.display !== undefined ? stackItemProps.display : 'block',
   );
+
+  const {
+    mobile: displayMobile = 'block',
+    tablet: displayTablet = displayMobile,
+    desktop: displayDesktop = displayTablet,
+  } = normalizedValue;
 
   return {
     ...stackItemProps,
