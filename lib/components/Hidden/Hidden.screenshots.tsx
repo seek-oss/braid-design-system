@@ -12,11 +12,11 @@ export const screenshots: ComponentScreenshot = {
       label: 'Hidden below tablet',
       Example: () => (
         <>
-          <Box paddingBottom="small">
-            <Text>The following line is hidden below tablet:</Text>
-          </Box>
+          <Text>The following line is hidden below tablet:</Text>
           <Hidden below="tablet">
-            <Text>Hidden below tablet.</Text>
+            <Box paddingTop="small">
+              <Text>Hidden below tablet.</Text>
+            </Box>
           </Hidden>
         </>
       ),
@@ -25,11 +25,11 @@ export const screenshots: ComponentScreenshot = {
       label: 'Hidden below desktop',
       Example: () => (
         <>
-          <Box paddingBottom="small">
-            <Text>The following line is hidden below desktop:</Text>
-          </Box>
+          <Text>The following line is hidden below desktop:</Text>
           <Hidden below="desktop">
-            <Text>Hidden below desktop.</Text>
+            <Box paddingTop="small">
+              <Text>Hidden below desktop.</Text>
+            </Box>
           </Hidden>
         </>
       ),
@@ -38,11 +38,11 @@ export const screenshots: ComponentScreenshot = {
       label: 'Hidden above mobile',
       Example: () => (
         <>
-          <Box paddingBottom="small">
-            <Text>The following line is hidden above mobile:</Text>
-          </Box>
+          <Text>The following line is hidden above mobile:</Text>
           <Hidden above="mobile">
-            <Text>Hidden above mobile.</Text>
+            <Box paddingTop="small">
+              <Text>Hidden above mobile.</Text>
+            </Box>
           </Hidden>
         </>
       ),
@@ -51,11 +51,11 @@ export const screenshots: ComponentScreenshot = {
       label: 'Hidden above tablet',
       Example: () => (
         <>
-          <Box paddingBottom="small">
-            <Text>The following line is hidden above tablet:</Text>
-          </Box>
+          <Text>The following line is hidden above tablet:</Text>
           <Hidden above="tablet">
-            <Text>Hidden above tablet.</Text>
+            <Box paddingTop="small">
+              <Text>Hidden above tablet.</Text>
+            </Box>
           </Hidden>
         </>
       ),
@@ -64,11 +64,11 @@ export const screenshots: ComponentScreenshot = {
       label: 'Hidden on print',
       Example: () => (
         <>
-          <Box paddingBottom="small">
-            <Text>The following line is hidden on print:</Text>
-          </Box>
+          <Text>The following line is hidden on print:</Text>
           <Hidden print>
-            <Text>Hidden on print.</Text>
+            <Box paddingTop="small">
+              <Text>Hidden on print.</Text>
+            </Box>
           </Hidden>
         </>
       ),
@@ -77,11 +77,11 @@ export const screenshots: ComponentScreenshot = {
       label: 'Hidden on Screen',
       Example: () => (
         <>
-          <Box paddingBottom="small">
-            <Text>The following line is hidden on screen:</Text>
-          </Box>
+          <Text>The following line is hidden on screen:</Text>
           <Hidden screen>
-            <Text>Hidden on screen.</Text>
+            <Box paddingTop="small">
+              <Text>Hidden on screen.</Text>
+            </Box>
           </Hidden>
         </>
       ),
