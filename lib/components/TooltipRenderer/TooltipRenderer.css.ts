@@ -3,8 +3,8 @@ import { calc } from '@vanilla-extract/css-utils';
 import { themeVars } from '../../themes/themeVars.css';
 
 export const constants = {
-  maxWidth: 260,
-  arrowSize: 12,
+  maxWidth: '260px',
+  arrowSize: '12px',
 };
 
 export const background = style({
@@ -31,7 +31,7 @@ export const translateZ0 = style({
 
 // Our space scale didn't have enough fidelity here :(
 export const padding = style({
-  padding: calc.add(themeVars.space.small, '1px'),
+  padding: calc.add(themeVars.space.small, themeVars.grid),
 });
 
 const borderRadius = themeVars.border.radius.standard;
