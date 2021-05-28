@@ -118,7 +118,6 @@ export const tone = {
       critical: foreground.critical,
       formAccent: foreground.formAccent,
       info: foreground.info,
-      neutral: foreground.neutral,
       positive: foreground.positive,
       promote: foreground.promote,
       secondary: foreground.secondary,
