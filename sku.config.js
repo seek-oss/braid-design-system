@@ -50,4 +50,5 @@ module.exports = {
 
     return config;
   },
+  skipPackageCompatibilityCompilation: ['lodash', 'prettier'],
 };
