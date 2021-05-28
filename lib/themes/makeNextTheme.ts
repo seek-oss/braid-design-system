@@ -59,6 +59,30 @@ export default (braidTokens: BraidTokens) => {
 
   const resolvedTokens = {
     ...tokens,
+    private: {
+      accessibleForegroundColors: {
+        critical4_51: getAccessibleVariant(tokens.color.foreground.critical),
+        critical3_1: getAccessibleVariant(tokens.color.foreground.critical, {
+          nonText: true,
+        }),
+        caution4_51: getAccessibleVariant(tokens.color.foreground.caution),
+        caution3_1: getAccessibleVariant(tokens.color.foreground.caution, {
+          nonText: true,
+        }),
+        positive4_51: getAccessibleVariant(tokens.color.foreground.positive),
+        positive3_1: getAccessibleVariant(tokens.color.foreground.positive, {
+          nonText: true,
+        }),
+        info4_51: getAccessibleVariant(tokens.color.foreground.info),
+        info3_1: getAccessibleVariant(tokens.color.foreground.info, {
+          nonText: true,
+        }),
+        promote4_51: getAccessibleVariant(tokens.color.foreground.promote),
+        promote3_1: getAccessibleVariant(tokens.color.foreground.promote, {
+          nonText: true,
+        }),
+      },
+    },
     typography: {
       ...typography,
       fontMetrics: mapValues(typography.fontMetrics, String),
@@ -95,6 +119,7 @@ export default (braidTokens: BraidTokens) => {
     },
     contentWidth: mapValues(tokens.contentWidth, px),
     color: {
+      ...tokens.color,
       background: {
         ...tokens.color.background,
         formAccentActive: getActiveColor(tokens.color.background.formAccent),
@@ -109,29 +134,6 @@ export default (braidTokens: BraidTokens) => {
         positiveLight: getLightVariant(tokens.color.background.positive),
         cautionLight: getLightVariant(tokens.color.background.caution),
         neutralLight: getLightVariant(tokens.color.background.neutral),
-      },
-      foreground: {
-        ...tokens.color.foreground,
-        critical4_51: getAccessibleVariant(tokens.color.foreground.critical),
-        critical3_1: getAccessibleVariant(tokens.color.foreground.critical, {
-          nonText: true,
-        }),
-        caution4_51: getAccessibleVariant(tokens.color.foreground.caution),
-        caution3_1: getAccessibleVariant(tokens.color.foreground.caution, {
-          nonText: true,
-        }),
-        positive4_51: getAccessibleVariant(tokens.color.foreground.positive),
-        positive3_1: getAccessibleVariant(tokens.color.foreground.positive, {
-          nonText: true,
-        }),
-        info4_51: getAccessibleVariant(tokens.color.foreground.info),
-        info3_1: getAccessibleVariant(tokens.color.foreground.info, {
-          nonText: true,
-        }),
-        promote4_51: getAccessibleVariant(tokens.color.foreground.promote),
-        promote3_1: getAccessibleVariant(tokens.color.foreground.promote, {
-          nonText: true,
-        }),
       },
     },
   } as const;

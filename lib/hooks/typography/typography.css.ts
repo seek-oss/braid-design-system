@@ -14,6 +14,7 @@ import { BackgroundVariant } from './../../components/Box/BackgroundContext';
 
 const { typography, touchableSize } = themeVars;
 const { foreground } = themeVars.color;
+const { accessibleForegroundColors } = themeVars.private;
 
 type Theme = typeof themeVars;
 type TextDefinition = Theme['typography']['text'];
@@ -164,90 +165,90 @@ type ToneOverridesForBackground = {
 export const toneOverridesForBackground: ToneOverridesForBackground = {
   criticalLight: {
     neutral: style({
-      color: foreground.critical4_51,
+      color: accessibleForegroundColors.critical4_51,
       selectors: {
         ['svg&']: {
-          color: foreground.critical3_1,
+          color: accessibleForegroundColors.critical3_1,
         },
       },
     }),
     critical: style({
-      color: foreground.critical4_51,
+      color: accessibleForegroundColors.critical4_51,
       selectors: {
         ['svg&']: {
-          color: foreground.critical3_1,
+          color: accessibleForegroundColors.critical3_1,
         },
       },
     }),
   },
   cautionLight: {
     neutral: style({
-      color: foreground.caution4_51,
+      color: accessibleForegroundColors.caution4_51,
       selectors: {
         ['svg&']: {
-          color: foreground.caution3_1,
+          color: accessibleForegroundColors.caution3_1,
         },
       },
     }),
     caution: style({
-      color: foreground.caution4_51,
+      color: accessibleForegroundColors.caution4_51,
       selectors: {
         ['svg&']: {
-          color: foreground.caution3_1,
+          color: accessibleForegroundColors.caution3_1,
         },
       },
     }),
   },
   positiveLight: {
     neutral: style({
-      color: foreground.positive4_51,
+      color: accessibleForegroundColors.positive4_51,
       selectors: {
         ['svg&']: {
-          color: foreground.positive3_1,
+          color: accessibleForegroundColors.positive3_1,
         },
       },
     }),
     positive: style({
-      color: foreground.positive4_51,
+      color: accessibleForegroundColors.positive4_51,
       selectors: {
         ['svg&']: {
-          color: foreground.positive3_1,
+          color: accessibleForegroundColors.positive3_1,
         },
       },
     }),
   },
   infoLight: {
     neutral: style({
-      color: foreground.info4_51,
+      color: accessibleForegroundColors.info4_51,
       selectors: {
         ['svg&']: {
-          color: foreground.info3_1,
+          color: accessibleForegroundColors.info3_1,
         },
       },
     }),
     info: style({
-      color: foreground.info4_51,
+      color: accessibleForegroundColors.info4_51,
       selectors: {
         ['svg&']: {
-          color: foreground.info3_1,
+          color: accessibleForegroundColors.info3_1,
         },
       },
     }),
   },
   promoteLight: {
     neutral: style({
-      color: foreground.promote4_51,
+      color: accessibleForegroundColors.promote4_51,
       selectors: {
         ['svg&']: {
-          color: foreground.promote3_1,
+          color: accessibleForegroundColors.promote3_1,
         },
       },
     }),
     promote: style({
-      color: foreground.promote4_51,
+      color: accessibleForegroundColors.promote4_51,
       selectors: {
         ['svg&']: {
-          color: foreground.promote3_1,
+          color: accessibleForegroundColors.promote3_1,
         },
       },
     }),
