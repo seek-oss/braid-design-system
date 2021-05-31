@@ -132,7 +132,7 @@
     "typescript": "^4.2.2"
   },
   "resolutions": {
-    "playroom": "0.24.0"
+    "playroom": "0.25.0"
   },
   "volta": {
     "node": "12.14.1",
