@@ -3185,27 +3185,27 @@
     "@typescript-eslint/types" "4.23.0"
     eslint-visitor-keys "^2.0.0"
 
-"@vanilla-extract/babel-plugin@*":
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/@vanilla-extract/babel-plugin/-/babel-plugin-0.4.1.tgz#bd8c156f69f25dde992fb6c61a979bcc26a0e747"
-  integrity sha512-82A5OOKLs1jKwYUr3k5ubibi8nY9dbvZfiCpZc5+ek/OgYVhdhw5aetDNZpigTjWzTftOhmzAlrl4tYTEVfw9w==
+"@vanilla-extract/babel-plugin@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@vanilla-extract/babel-plugin/-/babel-plugin-1.0.0.tgz#bdf8e13f40f761680d47001e61856869b1143b90"
+  integrity sha512-UBbycdnKDvpWVOv1j6F8Iod+FhOW2W4Fv+GVT3D/Woq2SleO2JSv/OEDoyerkN1mcCkJCVPuXnVYEdeRdxZgeQ==
   dependencies:
     "@babel/core" "^7.13.10"
     "@babel/template" "^7.12.13"
-    "@vanilla-extract/integration" "^0.1.0"
+    "@vanilla-extract/integration" "^1.0.0"
 
 "@vanilla-extract/css-utils@^0.1.1":
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/@vanilla-extract/css-utils/-/css-utils-0.1.1.tgz#f4f58f85347d8a841ef74c60db111ec264011860"
   integrity sha512-9fDV8IhSfzgDd9Z+64jVcS38S2dVc6c1eOd+hgO8zPMRba6rEB8kEjg5+AQ3xPCdzl1m8olqFHnfQRNOn1OXuA==
 
-"@vanilla-extract/css@0.5.2", "@vanilla-extract/css@^0.5.0":
-  version "0.5.2"
-  resolved "https://registry.yarnpkg.com/@vanilla-extract/css/-/css-0.5.2.tgz#c97c84977d269ea62bd57b5e43d6a203de908b7a"
-  integrity sha512-o7+kRckGS6s6GmX5wtB3xc0gF3dIg6wPZBeghsAbS4E7wf/ekrNVH8h1WsCHHe9wSvElqfwhKKyLKgBHMYWr0Q==
+"@vanilla-extract/css@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@vanilla-extract/css/-/css-1.0.0.tgz#6cedddd6243aa7e99d6b6920553a086b19dcd84a"
+  integrity sha512-o52t6Bj1LeEDfdVW6ZIzmHHTQSiq/D7py3yJgZZNzbUIQBNfyByK6W73ITDR5RhhywZLkX8/GVy0V++B+bOZ3A==
   dependencies:
     "@emotion/hash" "^0.8.0"
-    "@vanilla-extract/private" "^0.1.2"
+    "@vanilla-extract/private" "^1.0.0"
     chalk "^4.1.1"
     css-selector-parser "^1.4.1"
     cssesc "^3.0.0"
@@ -3220,12 +3220,12 @@
   dependencies:
     "@vanilla-extract/private" "^0.1.0"
 
-"@vanilla-extract/integration@0.1.3", "@vanilla-extract/integration@^0.1.0":
-  version "0.1.3"
-  resolved "https://registry.yarnpkg.com/@vanilla-extract/integration/-/integration-0.1.3.tgz#7b035d48d0821c3df3c9ade58a2a8d82604f9c93"
-  integrity sha512-0wvZn/77Xi8bulJqMYFp1N5MquHljlAT7tX83YzOOtf8kNonQsJ43429gydbQeQhD/Bmo5RCgHv2SSPI2rLhtg==
+"@vanilla-extract/integration@^1.0.0":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@vanilla-extract/integration/-/integration-1.0.1.tgz#48ebe910f29b0da88e9876286f4d0b658a6f27ae"
+  integrity sha512-dm1dLFewXCVXuXe+3BPb1iK/EFubxkzevLOepMY8z+wUIUv0xS8PdccY3n7vXPTsSNg5f3Bm3IkaL2ynj+LcJA==
   dependencies:
-    "@vanilla-extract/css" "^0.5.0"
+    "@vanilla-extract/css" "^1.0.0"
     chalk "^4.1.1"
     dedent "^0.7.0"
     esbuild "^0.11.16"
@@ -3239,22 +3239,22 @@
   resolved "https://registry.yarnpkg.com/@vanilla-extract/private/-/private-0.1.0.tgz#f725cd43977ff8adb80c9bec3ce1e7bcd24d2401"
   integrity sha512-it5HWDWsjHBWZhEcBwl8Fvcp5qG1NiUK8uKsPV9j/+F6NZ/2ZcgIqwOEjZqmsj0NtJOa+sJZwkZT/5yYDU02rA==
 
-"@vanilla-extract/private@^0.1.2":
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/@vanilla-extract/private/-/private-0.1.2.tgz#79cb16243764c5f51b99e0a7ed137e6c5e06223e"
-  integrity sha512-LuaCxlU4BlsSlK53QQABxo53TqWFiQyjXwDCz+5tpaChhMHrmJ5/XVFQVH3zD03HATfAJcmv8WqAQOZnF0FmGg==
+"@vanilla-extract/private@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@vanilla-extract/private/-/private-1.0.0.tgz#10711c4481decd2f9a2f19cb85dcee60eff3f75c"
+  integrity sha512-NS/Dqenj1Fd9fX1qWz4nFP6hefbTJIpQYLgKQsJBQonJ/E0QYiYtTJ1oeUh7vpoW0ojVuuRdA1URbKb7MCJ4JA==
 
 "@vanilla-extract/sprinkles@^0.4.1":
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/@vanilla-extract/sprinkles/-/sprinkles-0.4.1.tgz#19034a878e395ece37d55282209efdeca75c655c"
   integrity sha512-LucQK8QnPheXqbzPcy4FlWMDH6Rg+eume/tvDOMyatgu47IvAmMqqiazO30HyfzXHfbzCBpM0QdTVhAC9nJhqw==
 
-"@vanilla-extract/webpack-plugin@*", "@vanilla-extract/webpack-plugin@0.3.1":
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/@vanilla-extract/webpack-plugin/-/webpack-plugin-0.3.1.tgz#f6fe865c1fb16a7a036cc7366ba372c7bd111511"
-  integrity sha512-2p6Lt8wgKYi0Wni/Ir3Bj22OmT6OrD/oEtKQBKWDMyf9hE0fuJuwT9x1BDhruuQfQYAf+hwzEjHeHf4RW8wOQw==
+"@vanilla-extract/webpack-plugin@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@vanilla-extract/webpack-plugin/-/webpack-plugin-1.0.0.tgz#c809447ac526c6b964be6ccd9fb133939e447cca"
+  integrity sha512-KUanRvmFzzfAUey8jyUH3FFSRCmxmbT9GJxjT8M5InTxj7Jprkm1xl+hTpSx1r69J4rI94zYXYRvWHcWl/L2ow==
   dependencies:
-    "@vanilla-extract/integration" "^0.1.0"
+    "@vanilla-extract/integration" "^1.0.0"
     chalk "^4.1.1"
     debug "^4.3.1"
     loader-utils "^2.0.0"
@@ -15530,10 +15530,10 @@ sisteransi@^1.0.5:
   resolved "https://registry.yarnpkg.com/sisteransi/-/sisteransi-1.0.5.tgz#134d681297756437cc05ca01370d3a7a571075ed"
   integrity sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==
 
-sku@10.13.0:
-  version "10.13.0"
-  resolved "https://registry.yarnpkg.com/sku/-/sku-10.13.0.tgz#d8a7152e7c111126dc49f2bbc3824fba7cddd6b6"
-  integrity sha512-hB5f36CPCcUbBUTQC/3M2aRfLpvcbVufJuGzlIO4baiQK3k3uu6Now8p4RZt5waNp1oqPpnRS+ERhLROffy87g==
+sku@10.13.1:
+  version "10.13.1"
+  resolved "https://registry.yarnpkg.com/sku/-/sku-10.13.1.tgz#9139220d5bae505dcd1b83477b25dcbd02fa77f4"
+  integrity sha512-UDwDhK09o+n5shVvZgUyZ1EhktVi+dNmfi+24jjXn/BPgPmj7vgt4IkMDBvZEvhzhdJ2KTbFgjtvxIXenlmmug==
   dependencies:
     "@babel/core" "^7.12.10"
     "@babel/plugin-proposal-class-properties" "^7.12.1"
@@ -15558,8 +15558,8 @@ sku@10.13.0:
     "@types/jest" "^26.0.20"
     "@types/loadable__component" "^5.13.1"
     "@types/webpack" "^4.32.1"
-    "@vanilla-extract/babel-plugin" "*"
-    "@vanilla-extract/webpack-plugin" "*"
+    "@vanilla-extract/babel-plugin" "^1.0.0"
+    "@vanilla-extract/webpack-plugin" "^1.0.0"
     "@vocab/core" "^1.0.1"
     "@vocab/phrase" "^1.0.0"
     "@vocab/webpack" "^1.0.0"
