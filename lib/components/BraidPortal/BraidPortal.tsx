@@ -9,11 +9,11 @@ export interface BraidPortalProps {
 }
 
 export const BraidPortal = ({ children, container }: BraidPortalProps) => {
-  const { nextTheme } = useBraidTheme();
+  const { vanillaTheme } = useBraidTheme();
 
   return createPortal(
     <TextContext.Provider value={false}>
-      <div className={nextTheme}>{children}</div>
+      <div className={vanillaTheme}>{children}</div>
     </TextContext.Provider>,
     container ?? document.body,
   );

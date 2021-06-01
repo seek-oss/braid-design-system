@@ -94,7 +94,7 @@ export const BraidProvider = ({
         {styleBody ? (
           <style type="text/css">{`body{margin:0;padding:0;background:${theme.background}}`}</style>
         ) : null}
-        <div className={theme.nextTheme}>
+        <div className={theme.vanillaTheme}>
           <LinkComponentContext.Provider
             value={linkComponent || linkComponentFromContext}
           >

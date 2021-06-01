@@ -7,7 +7,7 @@ import {
 import { calc } from '@vanilla-extract/css-utils';
 
 import { themeVars } from './../../themes/themeVars.css';
-import { responsiveStyle } from '../../themes/nextThemeUtils';
+import { responsiveStyle } from '../../themes/vanillaUtils';
 import { fontSize, capsize, leading, font } from './capsize.css';
 import { mapToProperty } from '../../utils';
 import { BackgroundVariant } from './../../components/Box/BackgroundContext';

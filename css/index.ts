@@ -8,4 +8,4 @@ export {
   breakpoints,
   Breakpoint,
   responsiveStyle,
-} from '../lib/themes/nextThemeUtils';
+} from '../lib/themes/vanillaUtils';

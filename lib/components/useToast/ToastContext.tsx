@@ -162,7 +162,7 @@ const ToastPortal = ({ children }: ToastPortalProps) => {
 
 export const useToast = () => {
   const treatTheme = useTheme();
-  const { nextTheme } = useBraidTheme();
+  const { vanillaTheme } = useBraidTheme();
   const addToast = useContext(ToastControllerContext);
 
   if (addToast === null) {
@@ -177,12 +177,12 @@ export const useToast = () => {
       addToast({
         ...toast,
         treatTheme,
-        nextTheme,
+        vanillaTheme,
         id,
         dedupeKey,
         shouldRemove: false,
       });
     },
-    [treatTheme, nextTheme, addToast],
+    [treatTheme, vanillaTheme, addToast],
   );
 };

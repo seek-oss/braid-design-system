@@ -3,7 +3,7 @@ import { calc } from '@vanilla-extract/css-utils';
 import {
   breakpoints,
   responsiveStyle,
-} from '../../../../lib/themes/nextThemeUtils';
+} from '../../../../lib/themes/vanillaUtils';
 import { themeVars } from '../../../../lib/themes/themeVars.css';
 import { menuWidth, headerHeight, gutterSize } from './navigationSizes';
 

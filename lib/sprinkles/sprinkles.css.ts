@@ -7,7 +7,7 @@ import {
   createNormalizeValueFn,
 } from '@vanilla-extract/sprinkles';
 
-import { breakpoints } from '../themes/nextThemeUtils';
+import { breakpoints } from '../themes/vanillaUtils';
 import {
   responsiveProperties,
   unresponsiveProperties,

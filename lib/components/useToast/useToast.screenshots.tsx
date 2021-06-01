@@ -11,14 +11,14 @@ export const screenshots: ComponentScreenshot = {
       label: 'Critical toast',
       Example: () => {
         const treatTheme = useTheme();
-        const { nextTheme } = useBraidTheme();
+        const { vanillaTheme } = useBraidTheme();
 
         return (
           <Toast
             tone="critical"
             message="Critical toast"
             treatTheme={treatTheme}
-            nextTheme={nextTheme}
+            vanillaTheme={vanillaTheme}
             onClear={() => {}}
             id="n/a"
             dedupeKey="n/a"
@@ -31,7 +31,7 @@ export const screenshots: ComponentScreenshot = {
       label: 'Critical toast w/actions',
       Example: () => {
         const treatTheme = useTheme();
-        const { nextTheme } = useBraidTheme();
+        const { vanillaTheme } = useBraidTheme();
 
         return (
           <Toast
@@ -42,7 +42,7 @@ export const screenshots: ComponentScreenshot = {
               onClick: () => {},
             }}
             treatTheme={treatTheme}
-            nextTheme={nextTheme}
+            vanillaTheme={vanillaTheme}
             onClear={() => {}}
             id="n/a"
             dedupeKey="n/a"
@@ -55,7 +55,7 @@ export const screenshots: ComponentScreenshot = {
       label: 'Critical toast w/descriptions',
       Example: () => {
         const treatTheme = useTheme();
-        const { nextTheme } = useBraidTheme();
+        const { vanillaTheme } = useBraidTheme();
 
         return (
           <Toast
@@ -67,7 +67,7 @@ export const screenshots: ComponentScreenshot = {
               onClick: () => {},
             }}
             treatTheme={treatTheme}
-            nextTheme={nextTheme}
+            vanillaTheme={vanillaTheme}
             onClear={() => {}}
             id="n/a"
             dedupeKey="n/a"
@@ -80,14 +80,14 @@ export const screenshots: ComponentScreenshot = {
       label: 'Positive toast',
       Example: () => {
         const treatTheme = useTheme();
-        const { nextTheme } = useBraidTheme();
+        const { vanillaTheme } = useBraidTheme();
 
         return (
           <Toast
             tone="positive"
             message="Positive toast"
             treatTheme={treatTheme}
-            nextTheme={nextTheme}
+            vanillaTheme={vanillaTheme}
             onClear={() => {}}
             id="n/a"
             dedupeKey="n/a"
@@ -100,7 +100,7 @@ export const screenshots: ComponentScreenshot = {
       label: 'Positive toast w/actions',
       Example: () => {
         const treatTheme = useTheme();
-        const { nextTheme } = useBraidTheme();
+        const { vanillaTheme } = useBraidTheme();
 
         return (
           <Toast
@@ -111,7 +111,7 @@ export const screenshots: ComponentScreenshot = {
               onClick: () => {},
             }}
             treatTheme={treatTheme}
-            nextTheme={nextTheme}
+            vanillaTheme={vanillaTheme}
             onClear={() => {}}
             id="n/a"
             dedupeKey="n/a"
@@ -124,7 +124,7 @@ export const screenshots: ComponentScreenshot = {
       label: 'Positive toast w/descriptions',
       Example: () => {
         const treatTheme = useTheme();
-        const { nextTheme } = useBraidTheme();
+        const { vanillaTheme } = useBraidTheme();
 
         return (
           <Toast
@@ -136,7 +136,7 @@ export const screenshots: ComponentScreenshot = {
               onClick: () => {},
             }}
             treatTheme={treatTheme}
-            nextTheme={nextTheme}
+            vanillaTheme={vanillaTheme}
             onClear={() => {}}
             id="n/a"
             dedupeKey="n/a"

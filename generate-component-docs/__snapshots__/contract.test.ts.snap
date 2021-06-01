@@ -1740,9 +1740,9 @@ Object {
         color: { background: { formAccentActive: string; formAccentHover: string; brandAccentActive: string; brandAccentHover: string; criticalActive: string; criticalHover: string; infoLight: string; promoteLight: string; ... 18 more ...; neutral: string; }; foreground: { ...; }; }
         displayName: string
         name: string
-        nextTheme: string
         space: { grid: number; space: { gutter: number; xxsmall: number; xsmall: number; small: number; medium: number; large: number; xlarge: number; xxlarge: number; }; }
         treatTheme: string
+        vanillaTheme: string
         webFonts: { linkTag: string; }[]
     }
 },

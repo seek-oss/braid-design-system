@@ -1,7 +1,7 @@
 import { theme as treatTheme } from './theme.treat';
-import nextTheme from './seekUnificationBetaTheme.css';
+import vanillaTheme from './seekUnificationBetaTheme.css';
 
 export default {
   ...treatTheme,
-  nextTheme,
+  vanillaTheme,
 };

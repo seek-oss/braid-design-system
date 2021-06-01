@@ -2,7 +2,7 @@ import { style } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
 import { externalGutter } from './ModalExternalGutter';
 import { TextBreakpoint } from '../../../themes/tokenType';
-import { responsiveStyle } from '../../../themes/nextThemeUtils';
+import { responsiveStyle } from '../../../themes/vanillaUtils';
 import { themeVars } from '../../../themes/themeVars.css';
 
 export const backdrop = style({

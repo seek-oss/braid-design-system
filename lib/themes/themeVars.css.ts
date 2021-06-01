@@ -1,8 +1,8 @@
 import { createThemeContract } from '@vanilla-extract/css';
 
-import makeNextTheme from './makeNextTheme';
+import makeVanillaTheme from './makeVanillaTheme';
 import tokens from './docs/tokens';
 
-export const themeVars = createThemeContract(makeNextTheme(tokens));
+export const themeVars = createThemeContract(makeVanillaTheme(tokens));
 
 export type ThemeVars = typeof themeVars;

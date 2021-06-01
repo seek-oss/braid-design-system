@@ -1,5 +1,5 @@
 import { Properties } from 'csstype';
-import { responsiveStyle, Breakpoint } from '../themes/nextThemeUtils';
+import { responsiveStyle, Breakpoint } from '../themes/vanillaUtils';
 
 export const mapToProperty = <
   Property extends keyof Properties<string | number>

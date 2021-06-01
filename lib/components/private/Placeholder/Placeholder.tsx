@@ -39,7 +39,7 @@ export const Placeholder = ({
       alignItems="center"
       justifyContent="center"
       borderRadius={shape === 'round' ? 'full' : undefined}
-      className={[wireframe.nextTheme, theme, styles.box]}
+      className={[wireframe.vanillaTheme, theme, styles.box]}
       style={{
         width: resolveToPxIfUnitless(width),
         height: resolveToPxIfUnitless(height),

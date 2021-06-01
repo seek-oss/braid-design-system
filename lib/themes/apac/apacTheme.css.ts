@@ -1,7 +1,7 @@
 import { createTheme } from '@vanilla-extract/css';
 import { themeVars } from '../themeVars.css';
-import makeNextTheme from '../makeNextTheme';
+import makeVanillaTheme from '../makeVanillaTheme';
 
 import tokens from './tokens';
 
-export default createTheme(themeVars, makeNextTheme(tokens));
+export default createTheme(themeVars, makeVanillaTheme(tokens));

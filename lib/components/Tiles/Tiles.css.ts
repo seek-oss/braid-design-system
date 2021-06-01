@@ -1,5 +1,5 @@
 import { styleVariants } from '@vanilla-extract/css';
-import { responsiveStyle } from '../../themes/nextThemeUtils';
+import { responsiveStyle } from '../../themes/vanillaUtils';
 import { BraidTokens } from '../../themes/tokenType';
 
 const columnsWidths = {

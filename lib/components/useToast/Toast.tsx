@@ -55,7 +55,7 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
     {
       id,
       treatTheme,
-      nextTheme,
+      vanillaTheme,
       dedupeKey,
       message,
       description,
@@ -121,7 +121,7 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
           ref={ref}
           onMouseEnter={stopTimeout}
           onMouseLeave={startTimeout}
-          className={nextTheme}
+          className={vanillaTheme}
         >
           <Box boxShadow="large">
             <ContentBlock width="xsmall">

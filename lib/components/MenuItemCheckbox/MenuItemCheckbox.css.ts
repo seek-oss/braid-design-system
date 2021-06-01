@@ -1,6 +1,6 @@
 import { style } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
-import { responsiveStyle } from '../../themes/nextThemeUtils';
+import { responsiveStyle } from '../../themes/vanillaUtils';
 import { themeVars } from '../../themes/themeVars.css';
 
 export const checkboxPadding = style({ padding: 2 });
