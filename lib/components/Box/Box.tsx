@@ -6,6 +6,7 @@ import {
   ElementType,
 } from 'react';
 import dedent from 'dedent';
+import { base as baseReset } from '../../reset/reset.css';
 import { atoms, Atoms } from '../../atoms/atoms';
 import { renderBackgroundProvider } from './BackgroundContext';
 
@@ -87,6 +88,20 @@ const NamedBox = forwardRef<HTMLElement, BoxProps>(
       };
     }
 
+    const classes = classNames(className);
+
+    if (process.env.NODE_ENV !== 'production') {
+      if (classes.split(' ').includes(baseReset)) {
+        throw new Error(dedent`
+            Reset class has been applied more than once. This is normally caused when asking for an explicit reset on the \`atoms\` function. This can be removed as Box automatically adds reset classes.
+
+            atoms({
+              reset: '...' // <-- Remove this
+            })
+        `);
+      }
+    }
+
     const element = createElement(component, {
       className: classNames(
         atoms({
@@ -135,7 +150,7 @@ const NamedBox = forwardRef<HTMLElement, BoxProps>(
           opacity,
           zIndex,
         }),
-        className,
+        classes,
       ),
       ...restProps,
       ref,

@@ -25,7 +25,6 @@ import {
 } from '../../../../lib/components';
 import { BoxProps } from '../../../../lib/components/Box/Box';
 import { FieldOverlay } from '../../../../lib/components/private/FieldOverlay/FieldOverlay';
-import { atoms } from '../../../../lib/atoms/atoms';
 import { hideFocusRingsClassName } from '../../../../lib/components/private/hideFocusRings/hideFocusRings';
 import { CopyIcon } from './CopyIcon';
 import { PlayIcon } from './PlayIcon';
@@ -120,6 +119,7 @@ export const CodeButton = ({
   ) : (
     <Box
       component={component}
+      display="block"
       cursor="pointer"
       borderRadius="standard"
       paddingY="xxsmall"
@@ -273,10 +273,6 @@ const Code = ({
               component="a"
               target="_blank"
               href={createUrl({ baseUrl: playroomUrl, code })}
-              className={atoms({
-                reset: 'a',
-                display: 'block',
-              })}
               title="Open in Playroom"
             >
               <PlayIcon />{' '}
