@@ -10,34 +10,33 @@ const space = {
   none: 0,
 } as const;
 
-const { width: borderWidth, color } = themeVars.border;
 const boxShadow = {
-  ...themeVars.shadows,
-  outlineFocus: `0 0 0 ${borderWidth.large} ${color.focus}`,
-  borderField: `inset 0 0 0 ${borderWidth.standard} ${color.field}`,
-  borderStandard: `inset 0 0 0 ${borderWidth.standard} ${color.standard}`,
-  borderStandardInverted: `inset 0 0 0 ${borderWidth.standard} ${color.standardInverted}`,
-  borderCritical: `inset 0 0 0 ${borderWidth.standard} ${color.critical}`,
-  borderCriticalLarge: `inset 0 0 0 ${borderWidth.large} ${color.critical}`,
-  borderCaution: `inset 0 0 0 ${borderWidth.standard} ${color.caution}`,
-  borderPositive: `inset 0 0 0 ${borderWidth.standard} ${color.positive}`,
-  borderInfo: `inset 0 0 0 ${borderWidth.standard} ${color.info}`,
-  borderPromote: `inset 0 0 0 ${borderWidth.standard} ${color.promote}`,
-  borderFormHover: `inset 0 0 0 ${borderWidth.standard} ${color.formHover}`,
-  borderFormAccent: `inset 0 0 0 ${borderWidth.standard} ${color.formAccent}`,
-  borderFormAccentLarge: `inset 0 0 0 ${borderWidth.large} ${color.formAccent}`,
-  borderBrandAccentLarge: `inset 0 0 0 ${borderWidth.large} ${color.brandAccent}`,
-  borderStandardInvertedLarge: `inset 0 0 0 ${borderWidth.large} ${color.standardInverted}`,
+  ...themeVars.private.shadow,
+  outlineFocus: `0 0 0 ${themeVars.borderWidth.large} ${themeVars.borderColor.focus}`,
+  borderField: `inset 0 0 0 ${themeVars.borderWidth.standard} ${themeVars.borderColor.field}`,
+  borderStandard: `inset 0 0 0 ${themeVars.borderWidth.standard} ${themeVars.borderColor.standard}`,
+  borderStandardInverted: `inset 0 0 0 ${themeVars.borderWidth.standard} ${themeVars.borderColor.standardInverted}`,
+  borderCritical: `inset 0 0 0 ${themeVars.borderWidth.standard} ${themeVars.borderColor.critical}`,
+  borderCriticalLarge: `inset 0 0 0 ${themeVars.borderWidth.large} ${themeVars.borderColor.critical}`,
+  borderCaution: `inset 0 0 0 ${themeVars.borderWidth.standard} ${themeVars.borderColor.caution}`,
+  borderPositive: `inset 0 0 0 ${themeVars.borderWidth.standard} ${themeVars.borderColor.positive}`,
+  borderInfo: `inset 0 0 0 ${themeVars.borderWidth.standard} ${themeVars.borderColor.info}`,
+  borderPromote: `inset 0 0 0 ${themeVars.borderWidth.standard} ${themeVars.borderColor.promote}`,
+  borderFormHover: `inset 0 0 0 ${themeVars.borderWidth.standard} ${themeVars.borderColor.formHover}`,
+  borderFormAccent: `inset 0 0 0 ${themeVars.borderWidth.standard} ${themeVars.borderColor.formAccent}`,
+  borderFormAccentLarge: `inset 0 0 0 ${themeVars.borderWidth.large} ${themeVars.borderColor.formAccent}`,
+  borderBrandAccentLarge: `inset 0 0 0 ${themeVars.borderWidth.large} ${themeVars.borderColor.brandAccent}`,
+  borderStandardInvertedLarge: `inset 0 0 0 ${themeVars.borderWidth.large} ${themeVars.borderColor.standardInverted}`,
 };
 
 export const pseudoProperties = {
-  transform: themeVars.transforms,
+  transform: themeVars.private.transform,
 } as const;
 
 export type PseudoProperties = keyof typeof pseudoProperties;
 
 export const unresponsiveProperties = {
-  background: themeVars.color.background,
+  background: themeVars.backgroundColor,
   overflow: ['hidden', 'scroll', 'visible', 'auto'],
   userSelect: ['none'],
   outline: ['none'],
@@ -66,7 +65,7 @@ export const unresponsiveProperties = {
     0: '0%',
   },
   maxWidth: themeVars.contentWidth,
-  transition: themeVars.transitions,
+  transition: themeVars.private.transition,
 } as const;
 
 export type UnresponsiveProperties = keyof typeof unresponsiveProperties;
@@ -83,7 +82,7 @@ export const responsiveProperties = {
   borderRadius: {
     none: '0px',
     full: '50%',
-    ...themeVars.border.radius,
+    ...themeVars.borderRadius,
   },
   paddingTop: space,
   paddingBottom: space,

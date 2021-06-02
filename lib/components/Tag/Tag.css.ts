@@ -9,7 +9,7 @@ export const constants = {
 
 const calculateBorderRadius = () => {
   const textHeight = calc.multiply(
-    themeVars.typography.text[constants.textSize].mobile.leading,
+    themeVars.private.textSize[constants.textSize].mobile.leading,
     '1px',
   );
   const paddingHeight = calc.multiply(themeVars.space[constants.paddingY], 2);

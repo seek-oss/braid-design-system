@@ -2,7 +2,7 @@ import { style } from '@vanilla-extract/css';
 import { themeVars } from '../../themes/themeVars.css';
 
 export const starColor = style({
-  color: themeVars.color.foreground.rating,
+  color: themeVars.foregroundColor.rating,
 });
 
 export const starSpacing = style({

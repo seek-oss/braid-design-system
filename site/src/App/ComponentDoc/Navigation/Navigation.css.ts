@@ -3,12 +3,12 @@ import { calc } from '@vanilla-extract/css-utils';
 import { themeVars } from '../../../../../lib/themes/themeVars.css';
 
 export const activeUnderline = style({
-  height: themeVars.border.width.large,
-  background: themeVars.color.foreground.neutral,
+  height: themeVars.borderWidth.large,
+  background: themeVars.foregroundColor.neutral,
 });
 
 export const inactiveUnderlineCorrection = style({
-  marginTop: calc.negate(themeVars.border.width.standard),
+  marginTop: calc.negate(themeVars.borderWidth.standard),
 });
 
 export const centerHorizontally = style({

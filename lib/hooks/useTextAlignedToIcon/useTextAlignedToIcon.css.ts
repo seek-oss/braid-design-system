@@ -4,9 +4,9 @@ import { responsiveStyle } from '../../themes/vanillaUtils';
 import { themeVars } from '../../themes/themeVars.css';
 
 const calculateForBreakpoint = (
-  breakpoint: keyof typeof themeVars.typography.text.standard,
+  breakpoint: keyof typeof themeVars.private.textSize.standard,
 ) => {
-  const type = themeVars.typography.text.standard[breakpoint];
+  const type = themeVars.private.textSize.standard[breakpoint];
   const padding = calc(type.leading)
     .subtract(type.capHeight)
     .divide(2)

@@ -58,8 +58,56 @@ export default (braidTokens: BraidTokens) => {
   };
 
   const resolvedTokens = {
-    ...tokens,
+    space: mapValues(tokens.space, (sp) => px(sp * tokens.grid)),
+    touchableSize: px(tokens.touchableSize * tokens.grid),
+    grid: px(tokens.grid),
+    borderRadius: tokens.border.radius,
+    borderColor: tokens.border.color,
+    borderWidth: mapValues(tokens.border.width, px),
+    contentWidth: mapValues(tokens.contentWidth, px),
+    foregroundColor: tokens.color.foreground,
+    backgroundColor: {
+      ...tokens.color.background,
+      formAccentActive: getActiveColor(tokens.color.background.formAccent),
+      formAccentHover: getHoverColor(tokens.color.background.formAccent),
+      brandAccentActive: getActiveColor(tokens.color.background.brandAccent),
+      brandAccentHover: getHoverColor(tokens.color.background.brandAccent),
+      criticalActive: getActiveColor(tokens.color.background.critical),
+      criticalHover: getHoverColor(tokens.color.background.critical),
+      infoLight: getLightVariant(tokens.color.background.info),
+      promoteLight: getLightVariant(tokens.color.background.promote),
+      criticalLight: getLightVariant(tokens.color.background.critical),
+      positiveLight: getLightVariant(tokens.color.background.positive),
+      cautionLight: getLightVariant(tokens.color.background.caution),
+      neutralLight: getLightVariant(tokens.color.background.neutral),
+    },
     private: {
+      fontFamily: typography.fontFamily,
+      fontMetrics: mapValues(typography.fontMetrics, String),
+      textSize: mapValues(tokens.typography.text, (definition) =>
+        fontSizeToCapHeight(tokens.grid, definition, typography.fontMetrics),
+      ),
+      textWeight: mapValues(typography.fontWeight, String),
+      headingLevel: mapValues(tokens.typography.heading.level, (definition) =>
+        fontSizeToCapHeight(tokens.grid, definition, typography.fontMetrics),
+      ),
+      headingWeight: {
+        weak: String(
+          tokens.typography.fontWeight[tokens.typography.heading.weight.weak],
+        ),
+        regular: String(
+          tokens.typography.fontWeight[
+            tokens.typography.heading.weight.regular
+          ],
+        ),
+      },
+      inlineFieldSize: {
+        standard: getInlineFieldSize('standard'),
+        small: getInlineFieldSize('small'),
+      },
+      transition: tokens.transitions,
+      transform: tokens.transforms,
+      shadow: tokens.shadows,
       accessibleForegroundColors: {
         critical4_51: getAccessibleVariant(tokens.color.foreground.critical),
         critical3_1: getAccessibleVariant(tokens.color.foreground.critical, {
@@ -81,59 +129,6 @@ export default (braidTokens: BraidTokens) => {
         promote3_1: getAccessibleVariant(tokens.color.foreground.promote, {
           nonText: true,
         }),
-      },
-    },
-    typography: {
-      ...typography,
-      fontMetrics: mapValues(typography.fontMetrics, String),
-      fontWeight: mapValues(typography.fontWeight, String),
-      text: mapValues(tokens.typography.text, (definition) =>
-        fontSizeToCapHeight(tokens.grid, definition, typography.fontMetrics),
-      ),
-      heading: {
-        level: mapValues(tokens.typography.heading.level, (definition) =>
-          fontSizeToCapHeight(tokens.grid, definition, typography.fontMetrics),
-        ),
-        weight: {
-          weak: String(
-            tokens.typography.fontWeight[tokens.typography.heading.weight.weak],
-          ),
-          regular: String(
-            tokens.typography.fontWeight[
-              tokens.typography.heading.weight.regular
-            ],
-          ),
-        },
-      },
-    },
-    space: mapValues(tokens.space, (sp) => px(sp * tokens.grid)),
-    touchableSize: px(tokens.touchableSize * tokens.grid),
-    grid: px(tokens.grid),
-    inlineFieldSize: {
-      standard: getInlineFieldSize('standard'),
-      small: getInlineFieldSize('small'),
-    },
-    border: {
-      ...tokens.border,
-      width: mapValues(tokens.border.width, px),
-    },
-    contentWidth: mapValues(tokens.contentWidth, px),
-    color: {
-      ...tokens.color,
-      background: {
-        ...tokens.color.background,
-        formAccentActive: getActiveColor(tokens.color.background.formAccent),
-        formAccentHover: getHoverColor(tokens.color.background.formAccent),
-        brandAccentActive: getActiveColor(tokens.color.background.brandAccent),
-        brandAccentHover: getHoverColor(tokens.color.background.brandAccent),
-        criticalActive: getActiveColor(tokens.color.background.critical),
-        criticalHover: getHoverColor(tokens.color.background.critical),
-        infoLight: getLightVariant(tokens.color.background.info),
-        promoteLight: getLightVariant(tokens.color.background.promote),
-        criticalLight: getLightVariant(tokens.color.background.critical),
-        positiveLight: getLightVariant(tokens.color.background.positive),
-        cautionLight: getLightVariant(tokens.color.background.caution),
-        neutralLight: getLightVariant(tokens.color.background.neutral),
       },
     },
   } as const;

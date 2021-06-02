@@ -29,7 +29,7 @@ export const alignY = {
 };
 
 export const blockWidths = styleVariants(
-  themeVars.typography.text,
+  themeVars.private.textSize,
   ({ mobile, tablet }) =>
     responsiveStyle({
       mobile: { width: calc.multiply(mobile.leading, '1px') },

@@ -4,7 +4,7 @@ import { responsiveStyle } from '../../themes/vanillaUtils';
 import { themeVars } from '../../themes/themeVars.css';
 
 export const rootSize = styleVariants(
-  themeVars.typography.text,
+  themeVars.private.textSize,
   ({ mobile, tablet }) =>
     responsiveStyle({
       mobile: {
@@ -72,7 +72,7 @@ export const delay = style({
 });
 
 export const circleSize = styleVariants(
-  themeVars.typography.text,
+  themeVars.private.textSize,
   ({ mobile, tablet }) =>
     responsiveStyle({
       mobile: {

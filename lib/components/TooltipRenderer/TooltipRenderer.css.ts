@@ -8,7 +8,7 @@ export const constants = {
 };
 
 export const background = style({
-  background: themeVars.color.foreground.neutral,
+  background: themeVars.foregroundColor.neutral,
 });
 
 export const maxWidth = style({
@@ -34,7 +34,7 @@ export const padding = style({
   padding: calc.add(themeVars.space.small, themeVars.grid),
 });
 
-const borderRadius = themeVars.border.radius.standard;
+const borderRadius = themeVars.borderRadius.standard;
 const offset = calc(constants.arrowSize).divide(2).negate().toString();
 export const arrow = style({
   visibility: 'hidden',

@@ -5,7 +5,7 @@ import { themeVars } from '../../themes/themeVars.css';
 
 export const checkboxPadding = style({ padding: 2 });
 
-const standardText = themeVars.typography.text.standard;
+const standardText = themeVars.private.textSize.standard;
 
 const calculateSize = (capHeight: string) =>
   calc.multiply(capHeight, 1.8, '1px');

@@ -5,15 +5,15 @@ import { themeVars } from '../../themes/themeVars.css';
 
 export const outer = style(
   responsiveStyle({
-    mobile: { height: themeVars.typography.text.xsmall.mobile.leading },
-    tablet: { height: themeVars.typography.text.xsmall.tablet.leading },
+    mobile: { height: themeVars.private.textSize.xsmall.mobile.leading },
+    tablet: { height: themeVars.private.textSize.xsmall.tablet.leading },
   }),
 );
 
-type TextBreakpoint = keyof typeof themeVars.typography.text.small;
+type TextBreakpoint = keyof typeof themeVars.private.textSize.small;
 
 const stylesForBreakpoint = (breakpoint: TextBreakpoint) => {
-  const { leading, capHeight } = themeVars.typography.text.small[breakpoint];
+  const { leading, capHeight } = themeVars.private.textSize.small[breakpoint];
   const padding = calc.subtract(leading, capHeight);
 
   return { margin: `${calc(padding).divide(2).negate().multiply('1px')} 0` };

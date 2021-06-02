@@ -144,7 +144,7 @@ const CLOSE_ICON_GUTTER_RATIO = 0.3;
 
 const calculateIconCrop = (level: '2' | '3', breakpoint: TextBreakpoint) => {
   const capHeight = calc.multiply(
-    themeVars.typography.heading.level[level][breakpoint].capHeight,
+    themeVars.private.headingLevel[level][breakpoint].capHeight,
     '1px',
   );
   const size = calc.multiply(capHeight, calc.add(1, CLOSE_ICON_GUTTER_RATIO));
@@ -181,7 +181,7 @@ const calculateCloseIconSize = (
   breakpoint: TextBreakpoint,
 ) => {
   const capHeight = calc.multiply(
-    themeVars.typography.heading.level[level][breakpoint].capHeight,
+    themeVars.private.headingLevel[level][breakpoint].capHeight,
     '1px',
   );
   const size = calc.multiply(capHeight, calc.add(1, CLOSE_ICON_GUTTER_RATIO));

@@ -42,7 +42,7 @@ export const marginAuto = style({
 });
 
 export const tabFocusRing = style({
-  margin: themeVars.border.width.large,
+  margin: themeVars.borderWidth.large,
   selectors: {
     [`${tab}:focus &`]: {
       opacity: 1,
@@ -77,6 +77,6 @@ export const tabPanelFocusRing = style({
 });
 
 export const divider = style({
-  background: themeVars.border.color.standard,
-  height: themeVars.border.width.standard,
+  background: themeVars.borderColor.standard,
+  height: themeVars.borderWidth.standard,
 });

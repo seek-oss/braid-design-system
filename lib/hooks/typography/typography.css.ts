@@ -12,32 +12,28 @@ import { fontSize, capsize, leading, font } from './capsize.css';
 import { mapToProperty } from '../../utils';
 import { BackgroundVariant } from './../../components/Box/BackgroundContext';
 
-const { typography, touchableSize } = themeVars;
-const { foreground } = themeVars.color;
-const { accessibleForegroundColors } = themeVars.private;
-
 type Theme = typeof themeVars;
-type TextDefinition = Theme['typography']['text'];
-type HeadingDefinition = Theme['typography']['heading']['level'];
+type TextDefinition = Theme['private']['textSize'];
+type HeadingDefinition = Theme['private']['headingLevel'];
 type TypographicDefinition =
   | TextDefinition[keyof TextDefinition]
   | HeadingDefinition[keyof HeadingDefinition];
 
 export const fontFamily = composeStyles(
   style({
-    fontFamily: typography.fontFamily,
+    fontFamily: themeVars.private.fontFamily,
   }),
   createTheme(font, {
-    capHeight: typography.fontMetrics.capHeight,
-    ascent: typography.fontMetrics.ascent,
-    descent: typography.fontMetrics.descent,
-    lineGap: typography.fontMetrics.lineGap,
-    unitsPerEm: typography.fontMetrics.unitsPerEm,
+    capHeight: themeVars.private.fontMetrics.capHeight,
+    ascent: themeVars.private.fontMetrics.ascent,
+    descent: themeVars.private.fontMetrics.descent,
+    lineGap: themeVars.private.fontMetrics.lineGap,
+    unitsPerEm: themeVars.private.fontMetrics.unitsPerEm,
   }),
 );
 
 export const fontWeight = styleVariants(
-  typography.fontWeight,
+  themeVars.private.textWeight,
   mapToProperty('fontWeight'),
 );
 
@@ -92,44 +88,47 @@ const makeTypographyRules = (
 };
 
 export const text = {
-  xsmall: makeTypographyRules(typography.text.xsmall, 'xsmall'),
-  small: makeTypographyRules(typography.text.small, 'small'),
-  standard: makeTypographyRules(typography.text.standard, 'standard'),
-  large: makeTypographyRules(typography.text.large, 'large'),
+  xsmall: makeTypographyRules(themeVars.private.textSize.xsmall, 'xsmall'),
+  small: makeTypographyRules(themeVars.private.textSize.small, 'small'),
+  standard: makeTypographyRules(
+    themeVars.private.textSize.standard,
+    'standard',
+  ),
+  large: makeTypographyRules(themeVars.private.textSize.large, 'large'),
 };
 
 export const headingWeight = styleVariants(
-  typography.heading.weight,
+  themeVars.private.headingWeight,
   mapToProperty('fontWeight'),
 );
 
 export const heading = {
-  '1': makeTypographyRules(typography.heading.level['1'], 'heading1'),
-  '2': makeTypographyRules(typography.heading.level['2'], 'heading2'),
-  '3': makeTypographyRules(typography.heading.level['3'], 'heading3'),
-  '4': makeTypographyRules(typography.heading.level['4'], 'heading4'),
+  '1': makeTypographyRules(themeVars.private.headingLevel['1'], 'heading1'),
+  '2': makeTypographyRules(themeVars.private.headingLevel['2'], 'heading2'),
+  '3': makeTypographyRules(themeVars.private.headingLevel['3'], 'heading3'),
+  '4': makeTypographyRules(themeVars.private.headingLevel['4'], 'heading4'),
 };
 
 export const tone = {
   ...styleVariants(
     {
-      brandAccent: foreground.brandAccent,
-      caution: foreground.caution,
-      critical: foreground.critical,
-      formAccent: foreground.formAccent,
-      info: foreground.info,
-      positive: foreground.positive,
-      promote: foreground.promote,
-      secondary: foreground.secondary,
+      brandAccent: themeVars.foregroundColor.brandAccent,
+      caution: themeVars.foregroundColor.caution,
+      critical: themeVars.foregroundColor.critical,
+      formAccent: themeVars.foregroundColor.formAccent,
+      info: themeVars.foregroundColor.info,
+      positive: themeVars.foregroundColor.positive,
+      promote: themeVars.foregroundColor.promote,
+      secondary: themeVars.foregroundColor.secondary,
     },
     mapToProperty('color'),
   ),
   link: style({
-    color: foreground.link,
-    ...(foreground.link !== foreground.linkHover
+    color: themeVars.foregroundColor.link,
+    ...(themeVars.foregroundColor.link !== themeVars.foregroundColor.linkHover
       ? {
-          ':hover': { color: foreground.linkHover },
-          ':focus': { color: foreground.linkHover },
+          ':hover': { color: themeVars.foregroundColor.linkHover },
+          ':focus': { color: themeVars.foregroundColor.linkHover },
         }
       : {}),
   }),
@@ -138,18 +137,18 @@ export const tone = {
 export const invertableTone = {
   neutral: styleVariants({
     light: {
-      color: foreground.neutral,
+      color: themeVars.foregroundColor.neutral,
     },
     dark: {
-      color: foreground.neutralInverted,
+      color: themeVars.foregroundColor.neutralInverted,
     },
   }),
   secondary: styleVariants({
     light: {
-      color: foreground.secondary,
+      color: themeVars.foregroundColor.secondary,
     },
     dark: {
-      color: foreground.secondaryInverted,
+      color: themeVars.foregroundColor.secondaryInverted,
     },
   }),
 };
@@ -164,90 +163,90 @@ type ToneOverridesForBackground = {
 export const toneOverridesForBackground: ToneOverridesForBackground = {
   criticalLight: {
     neutral: style({
-      color: accessibleForegroundColors.critical4_51,
+      color: themeVars.private.accessibleForegroundColors.critical4_51,
       selectors: {
         ['svg&']: {
-          color: accessibleForegroundColors.critical3_1,
+          color: themeVars.private.accessibleForegroundColors.critical3_1,
         },
       },
     }),
     critical: style({
-      color: accessibleForegroundColors.critical4_51,
+      color: themeVars.private.accessibleForegroundColors.critical4_51,
       selectors: {
         ['svg&']: {
-          color: accessibleForegroundColors.critical3_1,
+          color: themeVars.private.accessibleForegroundColors.critical3_1,
         },
       },
     }),
   },
   cautionLight: {
     neutral: style({
-      color: accessibleForegroundColors.caution4_51,
+      color: themeVars.private.accessibleForegroundColors.caution4_51,
       selectors: {
         ['svg&']: {
-          color: accessibleForegroundColors.caution3_1,
+          color: themeVars.private.accessibleForegroundColors.caution3_1,
         },
       },
     }),
     caution: style({
-      color: accessibleForegroundColors.caution4_51,
+      color: themeVars.private.accessibleForegroundColors.caution4_51,
       selectors: {
         ['svg&']: {
-          color: accessibleForegroundColors.caution3_1,
+          color: themeVars.private.accessibleForegroundColors.caution3_1,
         },
       },
     }),
   },
   positiveLight: {
     neutral: style({
-      color: accessibleForegroundColors.positive4_51,
+      color: themeVars.private.accessibleForegroundColors.positive4_51,
       selectors: {
         ['svg&']: {
-          color: accessibleForegroundColors.positive3_1,
+          color: themeVars.private.accessibleForegroundColors.positive3_1,
         },
       },
     }),
     positive: style({
-      color: accessibleForegroundColors.positive4_51,
+      color: themeVars.private.accessibleForegroundColors.positive4_51,
       selectors: {
         ['svg&']: {
-          color: accessibleForegroundColors.positive3_1,
+          color: themeVars.private.accessibleForegroundColors.positive3_1,
         },
       },
     }),
   },
   infoLight: {
     neutral: style({
-      color: accessibleForegroundColors.info4_51,
+      color: themeVars.private.accessibleForegroundColors.info4_51,
       selectors: {
         ['svg&']: {
-          color: accessibleForegroundColors.info3_1,
+          color: themeVars.private.accessibleForegroundColors.info3_1,
         },
       },
     }),
     info: style({
-      color: accessibleForegroundColors.info4_51,
+      color: themeVars.private.accessibleForegroundColors.info4_51,
       selectors: {
         ['svg&']: {
-          color: accessibleForegroundColors.info3_1,
+          color: themeVars.private.accessibleForegroundColors.info3_1,
         },
       },
     }),
   },
   promoteLight: {
     neutral: style({
-      color: accessibleForegroundColors.promote4_51,
+      color: themeVars.private.accessibleForegroundColors.promote4_51,
       selectors: {
         ['svg&']: {
-          color: accessibleForegroundColors.promote3_1,
+          color: themeVars.private.accessibleForegroundColors.promote3_1,
         },
       },
     }),
     promote: style({
-      color: accessibleForegroundColors.promote4_51,
+      color: themeVars.private.accessibleForegroundColors.promote4_51,
       selectors: {
         ['svg&']: {
-          color: accessibleForegroundColors.promote3_1,
+          color: themeVars.private.accessibleForegroundColors.promote3_1,
         },
       },
     }),
@@ -266,11 +265,19 @@ const makeTouchableSpacing = (touchableHeight: string, textHeight: string) => {
   };
 };
 
-export const touchable = styleVariants(typography.text, (textDefinition) =>
-  responsiveStyle({
-    mobile: makeTouchableSpacing(touchableSize, textDefinition.mobile.leading),
-    tablet: makeTouchableSpacing(touchableSize, textDefinition.tablet.leading),
-  }),
+export const touchable = styleVariants(
+  themeVars.private.textSize,
+  (textDefinition) =>
+    responsiveStyle({
+      mobile: makeTouchableSpacing(
+        themeVars.touchableSize,
+        textDefinition.mobile.leading,
+      ),
+      tablet: makeTouchableSpacing(
+        themeVars.touchableSize,
+        textDefinition.tablet.leading,
+      ),
+    }),
 );
 
 export const truncate = style({

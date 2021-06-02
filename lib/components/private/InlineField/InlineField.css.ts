@@ -29,7 +29,7 @@ export const realField = style({
 
 export const realFieldPosition = styleVariants(sizes, (size: Size) => {
   const offset = calc(hitArea)
-    .subtract(themeVars.inlineFieldSize[size])
+    .subtract(themeVars.private.inlineFieldSize[size])
     .divide(2)
     .negate()
     .toString();
@@ -42,14 +42,14 @@ export const realFieldPosition = styleVariants(sizes, (size: Size) => {
 
 export const fakeFieldBase = style({});
 export const fakeFieldSize = styleVariants(sizes, (size) => ({
-  height: themeVars.inlineFieldSize[size],
-  width: themeVars.inlineFieldSize[size],
+  height: themeVars.private.inlineFieldSize[size],
+  width: themeVars.private.inlineFieldSize[size],
 }));
 
 export const badgeOffset = styleVariants(sizes, (size: Size) => {
-  const offset = calc(themeVars.inlineFieldSize[size])
+  const offset = calc(themeVars.private.inlineFieldSize[size])
     .subtract(
-      calc.multiply(themeVars.typography.text.xsmall.mobile.leading, '1px'),
+      calc.multiply(themeVars.private.textSize.xsmall.mobile.leading, '1px'),
     )
     .divide(2)
     .toString();
@@ -68,9 +68,9 @@ export const labelBase = style({
   },
 });
 export const labelOffset = styleVariants(sizes, (size: Size) => ({
-  paddingTop: calc(themeVars.inlineFieldSize[size])
+  paddingTop: calc(themeVars.private.inlineFieldSize[size])
     .subtract(
-      calc.multiply(themeVars.typography.text[size].mobile.capHeight, '1px'),
+      calc.multiply(themeVars.private.textSize[size].mobile.capHeight, '1px'),
     )
     .divide(2)
     .toString(),

@@ -59,20 +59,22 @@ export const focusOverlay = style({
 export const standard = style({});
 export const small = style({});
 
-const { touchableSize, space, typography } = themeVars;
-type TextBreakpoint = keyof typeof typography.text.small;
+type TextBreakpoint = keyof typeof themeVars.private.textSize.small;
 const stylesForBreakpoint = (
   breakpoint: TextBreakpoint,
   size: 'standard' | 'small',
 ) => {
-  const { capHeight } = typography.text[size][breakpoint];
+  const { capHeight } = themeVars.private.textSize[size][breakpoint];
   const height =
     size === 'small'
       ? calc.add(
-          calc.multiply(space[constants.smallButtonPaddingSize], 2),
-          calc.multiply(typography.text.small[breakpoint].leading, '1px'),
+          calc.multiply(themeVars.space[constants.smallButtonPaddingSize], 2),
+          calc.multiply(
+            themeVars.private.textSize.small[breakpoint].leading,
+            '1px',
+          ),
         )
-      : touchableSize;
+      : themeVars.touchableSize;
 
   const value = calc(height)
     .subtract(calc.multiply(capHeight, '1px'))

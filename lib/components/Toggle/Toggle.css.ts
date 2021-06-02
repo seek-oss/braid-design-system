@@ -30,16 +30,16 @@ export const realField = style({
 
 export const realFieldPosition = styleVariants(sizes, (size) => ({
   top: calc(hitArea)
-    .subtract(themeVars.inlineFieldSize[size])
+    .subtract(themeVars.private.inlineFieldSize[size])
     .divide(2)
     .negate()
     .toString(),
 }));
 
 export const label = styleVariants(sizes, (size) => {
-  const padding = calc(themeVars.inlineFieldSize[size])
+  const padding = calc(themeVars.private.inlineFieldSize[size])
     .subtract(
-      calc.multiply(themeVars.typography.text.standard.mobile.leading, '1px'),
+      calc.multiply(themeVars.private.textSize.standard.mobile.leading, '1px'),
     )
     .divide(2)
     .toString();
@@ -51,16 +51,22 @@ export const label = styleVariants(sizes, (size) => {
 });
 
 export const fieldSize = styleVariants(sizes, (size) => ({
-  width: calc.multiply(themeVars.inlineFieldSize[size], toggleWidthRatio),
+  width: calc.multiply(
+    themeVars.private.inlineFieldSize[size],
+    toggleWidthRatio,
+  ),
 }));
 
 export const slideContainerBase = style({});
 export const slideContainerSize = styleVariants(sizes, (size) => ({
-  height: themeVars.inlineFieldSize[size],
+  height: themeVars.private.inlineFieldSize[size],
 }));
 
 export const slideTrack = styleVariants(sizes, (size) => {
-  const height = calc.subtract(themeVars.inlineFieldSize[size], themeVars.grid);
+  const height = calc.subtract(
+    themeVars.private.inlineFieldSize[size],
+    themeVars.grid,
+  );
 
   return {
     height,
@@ -69,7 +75,7 @@ export const slideTrack = styleVariants(sizes, (size) => {
 });
 
 export const slideTrackBackground = style({
-  backgroundColor: themeVars.border.color.standard,
+  backgroundColor: themeVars.borderColor.standard,
   // Fix for Safari border-radius, overflow hidden, transform bug:
   // https://gist.github.com/ayamflow/b602ab436ac9f05660d9c15190f4fd7b
   WebkitMaskImage: '-webkit-radial-gradient(white, black)',
@@ -84,20 +90,20 @@ export const slideTrackSelected = style({
 });
 
 export const slider = styleVariants(sizes, (size) => {
-  const slideDistance = calc(themeVars.inlineFieldSize[size])
+  const slideDistance = calc(themeVars.private.inlineFieldSize[size])
     .multiply(toggleWidthRatio)
-    .subtract(themeVars.inlineFieldSize[size])
+    .subtract(themeVars.private.inlineFieldSize[size])
     .toString();
 
   const anticipationRatio = 0.12;
   const anticipation = calc.multiply(
-    themeVars.inlineFieldSize[size],
+    themeVars.private.inlineFieldSize[size],
     anticipationRatio,
   );
 
   return {
-    height: themeVars.inlineFieldSize[size],
-    width: themeVars.inlineFieldSize[size],
+    height: themeVars.private.inlineFieldSize[size],
+    width: themeVars.private.inlineFieldSize[size],
     selectors: {
       [`${realField}:active + ${slideContainerBase} &`]: {
         transform: `translateX(${calc.negate(anticipation)})`,

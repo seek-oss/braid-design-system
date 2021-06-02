@@ -6,7 +6,7 @@ export const field = style({});
 
 export const placeholderColor = style({
   '::placeholder': {
-    color: themeVars.color.foreground.secondary,
+    color: themeVars.foregroundColor.secondary,
   },
 });
 
@@ -39,6 +39,6 @@ export const hoverOverlay = style({
 });
 
 export const verticalDivider = style({
-  width: themeVars.border.width.standard,
-  background: themeVars.border.color.standard,
+  width: themeVars.borderWidth.standard,
+  background: themeVars.borderColor.standard,
 });

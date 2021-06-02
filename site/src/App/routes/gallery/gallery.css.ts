@@ -9,11 +9,10 @@ export const loader = style({
   maxWidth: 'min(50vw, 50vh)',
 });
 
-const { border, typography } = themeVars;
 export const divider = style({
-  borderRight: `${border.width.standard}px solid ${border.color.standard}`,
+  borderRight: `${themeVars.borderWidth.standard}px solid ${themeVars.borderColor.standard}`,
   width: 1,
-  height: typography.text.standard.mobile.leading,
+  height: themeVars.private.textSize.standard.mobile.leading,
 });
 
 export const moveCursor = style({

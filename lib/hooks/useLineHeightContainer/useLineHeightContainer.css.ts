@@ -4,7 +4,7 @@ import { responsiveStyle } from '../../themes/vanillaUtils';
 import { themeVars } from '../../themes/themeVars.css';
 
 export const size = styleVariants(
-  themeVars.typography.text,
+  themeVars.private.textSize,
   ({ mobile, tablet }) =>
     responsiveStyle({
       mobile: { height: calc.multiply(mobile.leading, '1px') },
