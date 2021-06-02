@@ -1,9 +1,9 @@
 import { responsiveProperties } from '../sprinkles/atomicProperties';
-import { themeVars } from '../themes/themeVars.css';
+import { vars } from '../themes/vars.css';
 
-export const backgrounds = Object.keys(
-  themeVars.backgroundColor,
-).sort() as Array<keyof typeof themeVars.backgroundColor>;
+export const backgrounds = Object.keys(vars.backgroundColor).sort() as Array<
+  keyof typeof vars.backgroundColor
+>;
 
 export const textAlignments = responsiveProperties.textAlign;
 

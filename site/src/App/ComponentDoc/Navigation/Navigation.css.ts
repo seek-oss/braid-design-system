@@ -1,14 +1,14 @@
 import { style } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
-import { themeVars } from '../../../../../lib/themes/themeVars.css';
+import { vars } from '../../../../../lib/themes/vars.css';
 
 export const activeUnderline = style({
-  height: themeVars.borderWidth.large,
-  background: themeVars.foregroundColor.neutral,
+  height: vars.borderWidth.large,
+  background: vars.foregroundColor.neutral,
 });
 
 export const inactiveUnderlineCorrection = style({
-  marginTop: calc.negate(themeVars.borderWidth.standard),
+  marginTop: calc.negate(vars.borderWidth.standard),
 });
 
 export const centerHorizontally = style({

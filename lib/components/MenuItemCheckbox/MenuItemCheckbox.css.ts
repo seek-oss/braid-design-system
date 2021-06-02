@@ -1,11 +1,11 @@
 import { style } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
 import { responsiveStyle } from '../../themes/vanillaUtils';
-import { themeVars } from '../../themes/themeVars.css';
+import { vars } from '../../themes/vars.css';
 
 export const checkboxPadding = style({ padding: 2 });
 
-const standardText = themeVars.private.textSize.standard;
+const standardText = vars.textSize.standard;
 
 const calculateSize = (capHeight: string) =>
   calc.multiply(capHeight, 1.8, '1px');

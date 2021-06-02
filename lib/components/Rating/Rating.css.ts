@@ -1,8 +1,8 @@
 import { style } from '@vanilla-extract/css';
-import { themeVars } from '../../themes/themeVars.css';
+import { vars } from '../../themes/vars.css';
 
 export const starColor = style({
-  color: themeVars.foregroundColor.rating,
+  color: vars.foregroundColor.rating,
 });
 
 export const starSpacing = style({

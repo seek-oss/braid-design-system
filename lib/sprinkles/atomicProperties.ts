@@ -1,42 +1,42 @@
-import { themeVars } from '../themes/themeVars.css';
+import { vars } from '../themes/vars.css';
 
 const sizes = {
   full: '100%',
-  touchable: themeVars.touchableSize,
+  touchable: vars.touchableSize,
 };
 
 const space = {
-  ...themeVars.space,
+  ...vars.space,
   none: 0,
 } as const;
 
 const boxShadow = {
-  ...themeVars.private.shadow,
-  outlineFocus: `0 0 0 ${themeVars.borderWidth.large} ${themeVars.borderColor.focus}`,
-  borderField: `inset 0 0 0 ${themeVars.borderWidth.standard} ${themeVars.borderColor.field}`,
-  borderStandard: `inset 0 0 0 ${themeVars.borderWidth.standard} ${themeVars.borderColor.standard}`,
-  borderStandardInverted: `inset 0 0 0 ${themeVars.borderWidth.standard} ${themeVars.borderColor.standardInverted}`,
-  borderCritical: `inset 0 0 0 ${themeVars.borderWidth.standard} ${themeVars.borderColor.critical}`,
-  borderCriticalLarge: `inset 0 0 0 ${themeVars.borderWidth.large} ${themeVars.borderColor.critical}`,
-  borderCaution: `inset 0 0 0 ${themeVars.borderWidth.standard} ${themeVars.borderColor.caution}`,
-  borderPositive: `inset 0 0 0 ${themeVars.borderWidth.standard} ${themeVars.borderColor.positive}`,
-  borderInfo: `inset 0 0 0 ${themeVars.borderWidth.standard} ${themeVars.borderColor.info}`,
-  borderPromote: `inset 0 0 0 ${themeVars.borderWidth.standard} ${themeVars.borderColor.promote}`,
-  borderFormHover: `inset 0 0 0 ${themeVars.borderWidth.standard} ${themeVars.borderColor.formHover}`,
-  borderFormAccent: `inset 0 0 0 ${themeVars.borderWidth.standard} ${themeVars.borderColor.formAccent}`,
-  borderFormAccentLarge: `inset 0 0 0 ${themeVars.borderWidth.large} ${themeVars.borderColor.formAccent}`,
-  borderBrandAccentLarge: `inset 0 0 0 ${themeVars.borderWidth.large} ${themeVars.borderColor.brandAccent}`,
-  borderStandardInvertedLarge: `inset 0 0 0 ${themeVars.borderWidth.large} ${themeVars.borderColor.standardInverted}`,
+  ...vars.shadow,
+  outlineFocus: `0 0 0 ${vars.borderWidth.large} ${vars.borderColor.focus}`,
+  borderField: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.field}`,
+  borderStandard: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.standard}`,
+  borderStandardInverted: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.standardInverted}`,
+  borderCritical: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.critical}`,
+  borderCriticalLarge: `inset 0 0 0 ${vars.borderWidth.large} ${vars.borderColor.critical}`,
+  borderCaution: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.caution}`,
+  borderPositive: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.positive}`,
+  borderInfo: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.info}`,
+  borderPromote: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.promote}`,
+  borderFormHover: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.formHover}`,
+  borderFormAccent: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.formAccent}`,
+  borderFormAccentLarge: `inset 0 0 0 ${vars.borderWidth.large} ${vars.borderColor.formAccent}`,
+  borderBrandAccentLarge: `inset 0 0 0 ${vars.borderWidth.large} ${vars.borderColor.brandAccent}`,
+  borderStandardInvertedLarge: `inset 0 0 0 ${vars.borderWidth.large} ${vars.borderColor.standardInverted}`,
 };
 
 export const pseudoProperties = {
-  transform: themeVars.private.transform,
+  transform: vars.transform,
 } as const;
 
 export type PseudoProperties = keyof typeof pseudoProperties;
 
 export const unresponsiveProperties = {
-  background: themeVars.backgroundColor,
+  background: vars.backgroundColor,
   overflow: ['hidden', 'scroll', 'visible', 'auto'],
   userSelect: ['none'],
   outline: ['none'],
@@ -64,8 +64,8 @@ export const unresponsiveProperties = {
   minWidth: {
     0: '0%',
   },
-  maxWidth: themeVars.contentWidth,
-  transition: themeVars.private.transition,
+  maxWidth: vars.contentWidth,
+  transition: vars.transition,
 } as const;
 
 export type UnresponsiveProperties = keyof typeof unresponsiveProperties;
@@ -82,7 +82,7 @@ export const responsiveProperties = {
   borderRadius: {
     none: '0px',
     full: '50%',
-    ...themeVars.borderRadius,
+    ...vars.borderRadius,
   },
   paddingTop: space,
   paddingBottom: space,

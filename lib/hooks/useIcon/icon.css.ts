@@ -1,7 +1,7 @@
 import { style, styleVariants } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
 import { responsiveStyle } from '../../themes/vanillaUtils';
-import { themeVars } from '../../themes/themeVars.css';
+import { vars } from '../../themes/vars.css';
 
 export const size = style({
   width: '1em',
@@ -28,11 +28,9 @@ export const alignY = {
   }),
 };
 
-export const blockWidths = styleVariants(
-  themeVars.private.textSize,
-  ({ mobile, tablet }) =>
-    responsiveStyle({
-      mobile: { width: calc.multiply(mobile.leading, '1px') },
-      tablet: { width: calc.multiply(tablet.leading, '1px') },
-    }),
+export const blockWidths = styleVariants(vars.textSize, ({ mobile, tablet }) =>
+  responsiveStyle({
+    mobile: { width: calc.multiply(mobile.leading, '1px') },
+    tablet: { width: calc.multiply(tablet.leading, '1px') },
+  }),
 );

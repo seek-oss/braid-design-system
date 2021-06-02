@@ -1,9 +1,7 @@
 import { style, styleVariants } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
 import { responsiveStyle } from '../../themes/vanillaUtils';
-import { themeVars } from '../../themes/themeVars.css';
-
-const { space } = themeVars;
+import { vars } from '../../themes/vars.css';
 
 const negativeMarginTop = (spaceValue: string | number) => ({
   ':before': {
@@ -15,17 +13,17 @@ export const base = style({
   ':before': { content: '""', display: 'table' },
 });
 
-export const mobile = styleVariants({ none: 0, ...space }, (value) =>
+export const mobile = styleVariants({ none: 0, ...vars.space }, (value) =>
   negativeMarginTop(value),
 );
 
-export const tablet = styleVariants({ none: 0, ...space }, (value) =>
+export const tablet = styleVariants({ none: 0, ...vars.space }, (value) =>
   responsiveStyle({
     tablet: negativeMarginTop(value),
   }),
 );
 
-export const desktop = styleVariants({ none: 0, ...space }, (value) =>
+export const desktop = styleVariants({ none: 0, ...vars.space }, (value) =>
   responsiveStyle({
     desktop: negativeMarginTop(value),
   }),

@@ -1,6 +1,6 @@
 import { style } from '@vanilla-extract/css';
-import { themeVars } from '../../themes/themeVars.css';
+import { vars } from '../../themes/vars.css';
 
 export const field = style({
-  paddingRight: themeVars.touchableSize,
+  paddingRight: vars.touchableSize,
 });

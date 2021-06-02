@@ -1,6 +1,6 @@
 import { style, styleVariants } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
-import { themeVars } from '../../themes/themeVars.css';
+import { vars } from '../../themes/vars.css';
 import { hitArea } from '../private/touchable/hitArea';
 import { debugTouchable } from '../private/touchable/debugTouchable';
 
@@ -30,17 +30,15 @@ export const realField = style({
 
 export const realFieldPosition = styleVariants(sizes, (size) => ({
   top: calc(hitArea)
-    .subtract(themeVars.private.inlineFieldSize[size])
+    .subtract(vars.inlineFieldSize[size])
     .divide(2)
     .negate()
     .toString(),
 }));
 
 export const label = styleVariants(sizes, (size) => {
-  const padding = calc(themeVars.private.inlineFieldSize[size])
-    .subtract(
-      calc.multiply(themeVars.private.textSize.standard.mobile.leading, '1px'),
-    )
+  const padding = calc(vars.inlineFieldSize[size])
+    .subtract(calc.multiply(vars.textSize.standard.mobile.leading, '1px'))
     .divide(2)
     .toString();
 
@@ -51,22 +49,16 @@ export const label = styleVariants(sizes, (size) => {
 });
 
 export const fieldSize = styleVariants(sizes, (size) => ({
-  width: calc.multiply(
-    themeVars.private.inlineFieldSize[size],
-    toggleWidthRatio,
-  ),
+  width: calc.multiply(vars.inlineFieldSize[size], toggleWidthRatio),
 }));
 
 export const slideContainerBase = style({});
 export const slideContainerSize = styleVariants(sizes, (size) => ({
-  height: themeVars.private.inlineFieldSize[size],
+  height: vars.inlineFieldSize[size],
 }));
 
 export const slideTrack = styleVariants(sizes, (size) => {
-  const height = calc.subtract(
-    themeVars.private.inlineFieldSize[size],
-    themeVars.grid,
-  );
+  const height = calc.subtract(vars.inlineFieldSize[size], vars.grid);
 
   return {
     height,
@@ -75,7 +67,7 @@ export const slideTrack = styleVariants(sizes, (size) => {
 });
 
 export const slideTrackBackground = style({
-  backgroundColor: themeVars.borderColor.standard,
+  backgroundColor: vars.borderColor.standard,
   // Fix for Safari border-radius, overflow hidden, transform bug:
   // https://gist.github.com/ayamflow/b602ab436ac9f05660d9c15190f4fd7b
   WebkitMaskImage: '-webkit-radial-gradient(white, black)',
@@ -84,26 +76,26 @@ export const slideTrackBackground = style({
 export const slideTrackSelected = style({
   selectors: {
     [`${realField}:not(:checked) + ${slideContainerBase} &`]: {
-      transform: `translateX(${calc.negate(themeVars.touchableSize)})`,
+      transform: `translateX(${calc.negate(vars.touchableSize)})`,
     },
   },
 });
 
 export const slider = styleVariants(sizes, (size) => {
-  const slideDistance = calc(themeVars.private.inlineFieldSize[size])
+  const slideDistance = calc(vars.inlineFieldSize[size])
     .multiply(toggleWidthRatio)
-    .subtract(themeVars.private.inlineFieldSize[size])
+    .subtract(vars.inlineFieldSize[size])
     .toString();
 
   const anticipationRatio = 0.12;
   const anticipation = calc.multiply(
-    themeVars.private.inlineFieldSize[size],
+    vars.inlineFieldSize[size],
     anticipationRatio,
   );
 
   return {
-    height: themeVars.private.inlineFieldSize[size],
-    width: themeVars.private.inlineFieldSize[size],
+    height: vars.inlineFieldSize[size],
+    width: vars.inlineFieldSize[size],
     selectors: {
       [`${realField}:active + ${slideContainerBase} &`]: {
         transform: `translateX(${calc.negate(anticipation)})`,

@@ -4,7 +4,7 @@ import {
   breakpoints,
   responsiveStyle,
 } from '../../../../lib/themes/vanillaUtils';
-import { themeVars } from '../../../../lib/themes/themeVars.css';
+import { vars } from '../../../../lib/themes/vars.css';
 import { menuWidth, headerHeight, gutterSize } from './navigationSizes';
 
 export const isOpen = style({});
@@ -15,7 +15,7 @@ const headerOffset = style(
       top: headerHeight,
     },
     desktop: {
-      top: calc.add(headerHeight, themeVars.space[gutterSize]),
+      top: calc.add(headerHeight, vars.space[gutterSize]),
     },
   }),
 );
@@ -23,7 +23,7 @@ const headerOffset = style(
 const fixedWidthAboveMobile = style(
   responsiveStyle({
     desktop: {
-      width: calc.subtract(menuWidth, themeVars.space[gutterSize]),
+      width: calc.subtract(menuWidth, vars.space[gutterSize]),
     },
   }),
 );
@@ -55,7 +55,7 @@ const hideOnMobileWhenClosed = style({
 const subNavOffsetAboveMobile = style(
   responsiveStyle({
     desktop: {
-      marginLeft: calc.subtract(menuWidth, themeVars.space[gutterSize]),
+      marginLeft: calc.subtract(menuWidth, vars.space[gutterSize]),
     },
   }),
 );

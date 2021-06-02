@@ -1,6 +1,6 @@
 import { style } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
-import { themeVars } from '../../themes/themeVars.css';
+import { vars } from '../../themes/vars.css';
 
 export const constants = {
   maxWidth: '260px',
@@ -8,7 +8,7 @@ export const constants = {
 };
 
 export const background = style({
-  background: themeVars.foregroundColor.neutral,
+  background: vars.foregroundColor.neutral,
 });
 
 export const maxWidth = style({
@@ -31,10 +31,10 @@ export const translateZ0 = style({
 
 // Our space scale didn't have enough fidelity here :(
 export const padding = style({
-  padding: calc.add(themeVars.space.small, themeVars.grid),
+  padding: calc.add(vars.space.small, vars.grid),
 });
 
-const borderRadius = themeVars.borderRadius.standard;
+const borderRadius = vars.borderRadius.standard;
 const offset = calc(constants.arrowSize).divide(2).negate().toString();
 export const arrow = style({
   visibility: 'hidden',

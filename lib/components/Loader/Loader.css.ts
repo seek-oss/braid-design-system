@@ -1,19 +1,17 @@
 import { keyframes, style, styleVariants } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
 import { responsiveStyle } from '../../themes/vanillaUtils';
-import { themeVars } from '../../themes/themeVars.css';
+import { vars } from '../../themes/vars.css';
 
-export const rootSize = styleVariants(
-  themeVars.private.textSize,
-  ({ mobile, tablet }) =>
-    responsiveStyle({
-      mobile: {
-        height: mobile.capHeight,
-      },
-      tablet: {
-        height: tablet.capHeight,
-      },
-    }),
+export const rootSize = styleVariants(vars.textSize, ({ mobile, tablet }) =>
+  responsiveStyle({
+    mobile: {
+      height: mobile.capHeight,
+    },
+    tablet: {
+      height: tablet.capHeight,
+    },
+  }),
 );
 
 const bounce = keyframes({
@@ -71,17 +69,15 @@ export const delay = style({
   animationDelay: `${animationDelayValue}s`,
 });
 
-export const circleSize = styleVariants(
-  themeVars.private.textSize,
-  ({ mobile, tablet }) =>
-    responsiveStyle({
-      mobile: {
-        width: calc.multiply(mobile.capHeightFloored, '1px'),
-        height: calc.multiply(mobile.capHeightFloored, '1px'),
-      },
-      tablet: {
-        width: calc.multiply(tablet.capHeightFloored, '1px'),
-        height: calc.multiply(tablet.capHeightFloored, '1px'),
-      },
-    }),
+export const circleSize = styleVariants(vars.textSize, ({ mobile, tablet }) =>
+  responsiveStyle({
+    mobile: {
+      width: calc.multiply(mobile.capHeightFloored, '1px'),
+      height: calc.multiply(mobile.capHeightFloored, '1px'),
+    },
+    tablet: {
+      width: calc.multiply(tablet.capHeightFloored, '1px'),
+      height: calc.multiply(tablet.capHeightFloored, '1px'),
+    },
+  }),
 );

@@ -1,7 +1,7 @@
 import { keyframes, style } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
 import { responsiveStyle } from '../../themes/vanillaUtils';
-import { themeVars } from '../../themes/themeVars.css';
+import { vars } from '../../themes/vars.css';
 
 export const constants = {
   smallButtonPaddingSize: 'xsmall' as const,
@@ -59,25 +59,21 @@ export const focusOverlay = style({
 export const standard = style({});
 export const small = style({});
 
-type TextBreakpoint = keyof typeof themeVars.private.textSize.small;
+type TextBreakpoint = keyof typeof vars.textSize.small;
 const stylesForBreakpoint = (
   breakpoint: TextBreakpoint,
   size: 'standard' | 'small',
 ) => {
-  const { capHeight } = themeVars.private.textSize[size][breakpoint];
   const height =
     size === 'small'
       ? calc.add(
-          calc.multiply(themeVars.space[constants.smallButtonPaddingSize], 2),
-          calc.multiply(
-            themeVars.private.textSize.small[breakpoint].leading,
-            '1px',
-          ),
+          calc.multiply(vars.space[constants.smallButtonPaddingSize], 2),
+          calc.multiply(vars.textSize.small[breakpoint].leading, '1px'),
         )
-      : themeVars.touchableSize;
+      : vars.touchableSize;
 
   const value = calc(height)
-    .subtract(calc.multiply(capHeight, '1px'))
+    .subtract(calc.multiply(vars.textSize[size][breakpoint].capHeight, '1px'))
     .divide(2)
     .negate()
     .toString();

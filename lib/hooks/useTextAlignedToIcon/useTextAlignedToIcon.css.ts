@@ -1,12 +1,12 @@
 import { style } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
 import { responsiveStyle } from '../../themes/vanillaUtils';
-import { themeVars } from '../../themes/themeVars.css';
+import { vars } from '../../themes/vars.css';
 
 const calculateForBreakpoint = (
-  breakpoint: keyof typeof themeVars.private.textSize.standard,
+  breakpoint: keyof typeof vars.textSize.standard,
 ) => {
-  const type = themeVars.private.textSize.standard[breakpoint];
+  const type = vars.textSize.standard[breakpoint];
   const padding = calc(type.leading)
     .subtract(type.capHeight)
     .divide(2)

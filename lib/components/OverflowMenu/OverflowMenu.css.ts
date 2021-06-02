@@ -1,14 +1,11 @@
 import { style } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
-import { themeVars } from '../../themes/themeVars.css';
+import { vars } from '../../themes/vars.css';
 
 const OVERFLOW_ICON_WIDTH = '4px';
 const OVERFLOW_ICON_HEIGHT = '14px';
 
-const circleSize = calc.multiply(
-  themeVars.private.textSize.standard.mobile.leading,
-  '1px',
-);
+const circleSize = calc.multiply(vars.textSize.standard.mobile.leading, '1px');
 const offsetX = calc(circleSize)
   .subtract(OVERFLOW_ICON_WIDTH)
   .divide(2)

@@ -1,17 +1,17 @@
 import { style } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
-import { themeVars } from '../../../themes/themeVars.css';
+import { vars } from '../../../themes/vars.css';
 
 export const field = style({});
 
 export const placeholderColor = style({
   '::placeholder': {
-    color: themeVars.foregroundColor.secondary,
+    color: vars.foregroundColor.secondary,
   },
 });
 
 export const secondaryIconSpace = style({
-  paddingRight: themeVars.touchableSize,
+  paddingRight: vars.touchableSize,
 });
 
 // This offset is to account for the extra few pixels that the text
@@ -19,7 +19,7 @@ export const secondaryIconSpace = style({
 // the white space does not look imbalanced.
 const textLeftOffset = '2px';
 export const iconSpace = style({
-  paddingLeft: calc.subtract(themeVars.touchableSize, textLeftOffset),
+  paddingLeft: calc.subtract(vars.touchableSize, textLeftOffset),
 });
 
 export const focusOverlay = style({
@@ -39,6 +39,6 @@ export const hoverOverlay = style({
 });
 
 export const verticalDivider = style({
-  width: themeVars.borderWidth.standard,
-  background: themeVars.borderColor.standard,
+  width: vars.borderWidth.standard,
+  background: vars.borderColor.standard,
 });

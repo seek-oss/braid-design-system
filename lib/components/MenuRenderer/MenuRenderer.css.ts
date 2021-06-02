@@ -1,6 +1,6 @@
 import { style } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
-import { themeVars } from '../../themes/themeVars.css';
+import { vars } from '../../themes/vars.css';
 
 export const root = style({
   padding: '0.05px',
@@ -13,6 +13,6 @@ export const backdrop = style({
 });
 
 export const menuIsClosed = style({
-  transform: `translateY(${calc(themeVars.grid).negate().multiply(2)})`,
+  transform: `translateY(${calc(vars.grid).negate().multiply(2)})`,
   visibility: 'hidden',
 });

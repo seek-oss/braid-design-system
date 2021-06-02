@@ -1,5 +1,5 @@
 import { style } from '@vanilla-extract/css';
-import { themeVars } from '../../themes/themeVars.css';
+import { vars } from '../../themes/vars.css';
 
 export const tab = style({
   selectors: {
@@ -42,7 +42,7 @@ export const marginAuto = style({
 });
 
 export const tabFocusRing = style({
-  margin: themeVars.borderWidth.large,
+  margin: vars.borderWidth.large,
   selectors: {
     [`${tab}:focus &`]: {
       opacity: 1,
@@ -77,6 +77,6 @@ export const tabPanelFocusRing = style({
 });
 
 export const divider = style({
-  background: themeVars.borderColor.standard,
-  height: themeVars.borderWidth.standard,
+  background: vars.borderColor.standard,
+  height: vars.borderWidth.standard,
 });

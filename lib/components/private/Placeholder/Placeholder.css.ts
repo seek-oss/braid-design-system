@@ -1,6 +1,6 @@
 import { createTheme, style } from '@vanilla-extract/css';
 
-export const [lightTheme, themeVars] = createTheme(
+export const [lightTheme, vars] = createTheme(
   {
     background: 'hsla(0, 0%, 20%, 0.08)',
     borderColor: 'hsla(0, 0%, 20%, 0.3)',
@@ -10,7 +10,7 @@ export const [lightTheme, themeVars] = createTheme(
   'lightTheme',
 );
 
-export const darkTheme = createTheme(themeVars, {
+export const darkTheme = createTheme(vars, {
   background: 'hsla(0, 0%, 100%, 0.35)',
   borderColor: 'hsla(0, 0%, 100%, 0.8)',
   labelColor: 'hsla(0, 0%, 100%, 0.8)',
@@ -20,13 +20,13 @@ export const darkTheme = createTheme(themeVars, {
 const borderWidth = '2px';
 
 export const box = style({
-  background: themeVars.background,
-  border: `${borderWidth} solid ${themeVars.borderColor}`,
+  background: vars.background,
+  border: `${borderWidth} solid ${vars.borderColor}`,
 });
 
-export const label = style({ color: themeVars.labelColor });
+export const label = style({ color: vars.labelColor });
 
 export const line = style({
   strokeWidth: borderWidth,
-  stroke: themeVars.lineColor,
+  stroke: vars.lineColor,
 });

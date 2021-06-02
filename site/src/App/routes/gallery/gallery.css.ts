@@ -1,5 +1,5 @@
 import { style } from '@vanilla-extract/css';
-import { themeVars } from '../../../../../lib/themes/themeVars.css';
+import { vars } from '../../../../../lib/themes/vars.css';
 
 export const loader = style({
   color: '#f2f2f2',
@@ -10,9 +10,9 @@ export const loader = style({
 });
 
 export const divider = style({
-  borderRight: `${themeVars.borderWidth.standard}px solid ${themeVars.borderColor.standard}`,
+  borderRight: `${vars.borderWidth.standard}px solid ${vars.borderColor.standard}`,
   width: 1,
-  height: themeVars.private.textSize.standard.mobile.leading,
+  height: vars.textSize.standard.mobile.leading,
 });
 
 export const moveCursor = style({
@@ -25,7 +25,7 @@ export const delayPanels = style({
 
 export const panel = style({
   boxShadow: '0 2px 10px 1px rgba(28,28,28,.1)',
-  minHeight: themeVars.touchableSize,
+  minHeight: vars.touchableSize,
 });
 
 export const panelBackground = style({

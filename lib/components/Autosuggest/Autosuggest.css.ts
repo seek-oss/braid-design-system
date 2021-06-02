@@ -1,7 +1,7 @@
 import { style } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
 import { responsiveStyle } from '../../themes/vanillaUtils';
-import { themeVars } from '../../themes/themeVars.css';
+import { vars } from '../../themes/vars.css';
 
 export const backdrop = style({
   width: '100vw',
@@ -14,9 +14,9 @@ export const backdropVisible = style({
 });
 
 const calcMenuHeight = (numSuggestions: number) =>
-  calc(themeVars.touchableSize)
+  calc(vars.touchableSize)
     .multiply(numSuggestions)
-    .add(themeVars.space.xxsmall)
+    .add(vars.space.xxsmall)
     .toString();
 
 export const menu = style(

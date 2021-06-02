@@ -1,12 +1,12 @@
 import classNames from 'classnames';
 import { ElementType } from 'react';
 import * as resetStyles from '../../reset/reset.css';
-import { themeVars } from '../../themes/themeVars.css';
+import { vars } from '../../themes/vars.css';
 import { atoms, RequiredResponsiveValue } from '../../sprinkles/sprinkles.css';
 
 type AtomProps = Parameters<typeof atoms>[0];
 
-export type Space = keyof typeof themeVars.space | 'none';
+export type Space = keyof typeof vars.space | 'none';
 export type ResponsiveSpace = RequiredResponsiveValue<Space>;
 
 export interface BoxStylesProps extends AtomProps {

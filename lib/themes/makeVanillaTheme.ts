@@ -81,55 +81,51 @@ export default (braidTokens: BraidTokens) => {
       cautionLight: getLightVariant(tokens.color.background.caution),
       neutralLight: getLightVariant(tokens.color.background.neutral),
     },
-    private: {
-      fontFamily: typography.fontFamily,
-      fontMetrics: mapValues(typography.fontMetrics, String),
-      textSize: mapValues(tokens.typography.text, (definition) =>
-        fontSizeToCapHeight(tokens.grid, definition, typography.fontMetrics),
+    fontFamily: typography.fontFamily,
+    fontMetrics: mapValues(typography.fontMetrics, String),
+    textSize: mapValues(tokens.typography.text, (definition) =>
+      fontSizeToCapHeight(tokens.grid, definition, typography.fontMetrics),
+    ),
+    textWeight: mapValues(typography.fontWeight, String),
+    headingLevel: mapValues(tokens.typography.heading.level, (definition) =>
+      fontSizeToCapHeight(tokens.grid, definition, typography.fontMetrics),
+    ),
+    headingWeight: {
+      weak: String(
+        tokens.typography.fontWeight[tokens.typography.heading.weight.weak],
       ),
-      textWeight: mapValues(typography.fontWeight, String),
-      headingLevel: mapValues(tokens.typography.heading.level, (definition) =>
-        fontSizeToCapHeight(tokens.grid, definition, typography.fontMetrics),
+      regular: String(
+        tokens.typography.fontWeight[tokens.typography.heading.weight.regular],
       ),
-      headingWeight: {
-        weak: String(
-          tokens.typography.fontWeight[tokens.typography.heading.weight.weak],
-        ),
-        regular: String(
-          tokens.typography.fontWeight[
-            tokens.typography.heading.weight.regular
-          ],
-        ),
-      },
-      inlineFieldSize: {
-        standard: getInlineFieldSize('standard'),
-        small: getInlineFieldSize('small'),
-      },
-      transition: tokens.transitions,
-      transform: tokens.transforms,
-      shadow: tokens.shadows,
-      accessibleForegroundColors: {
-        critical4_51: getAccessibleVariant(tokens.color.foreground.critical),
-        critical3_1: getAccessibleVariant(tokens.color.foreground.critical, {
-          nonText: true,
-        }),
-        caution4_51: getAccessibleVariant(tokens.color.foreground.caution),
-        caution3_1: getAccessibleVariant(tokens.color.foreground.caution, {
-          nonText: true,
-        }),
-        positive4_51: getAccessibleVariant(tokens.color.foreground.positive),
-        positive3_1: getAccessibleVariant(tokens.color.foreground.positive, {
-          nonText: true,
-        }),
-        info4_51: getAccessibleVariant(tokens.color.foreground.info),
-        info3_1: getAccessibleVariant(tokens.color.foreground.info, {
-          nonText: true,
-        }),
-        promote4_51: getAccessibleVariant(tokens.color.foreground.promote),
-        promote3_1: getAccessibleVariant(tokens.color.foreground.promote, {
-          nonText: true,
-        }),
-      },
+    },
+    inlineFieldSize: {
+      standard: getInlineFieldSize('standard'),
+      small: getInlineFieldSize('small'),
+    },
+    transition: tokens.transitions,
+    transform: tokens.transforms,
+    shadow: tokens.shadows,
+    accessibleForegroundColors: {
+      critical4_51: getAccessibleVariant(tokens.color.foreground.critical),
+      critical3_1: getAccessibleVariant(tokens.color.foreground.critical, {
+        nonText: true,
+      }),
+      caution4_51: getAccessibleVariant(tokens.color.foreground.caution),
+      caution3_1: getAccessibleVariant(tokens.color.foreground.caution, {
+        nonText: true,
+      }),
+      positive4_51: getAccessibleVariant(tokens.color.foreground.positive),
+      positive3_1: getAccessibleVariant(tokens.color.foreground.positive, {
+        nonText: true,
+      }),
+      info4_51: getAccessibleVariant(tokens.color.foreground.info),
+      info3_1: getAccessibleVariant(tokens.color.foreground.info, {
+        nonText: true,
+      }),
+      promote4_51: getAccessibleVariant(tokens.color.foreground.promote),
+      promote3_1: getAccessibleVariant(tokens.color.foreground.promote, {
+        nonText: true,
+      }),
     },
   } as const;
 

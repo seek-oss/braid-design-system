@@ -1,5 +1,5 @@
 import { style } from '@vanilla-extract/css';
-import { themeVars } from '../../themes/themeVars.css';
+import { vars } from '../../themes/vars.css';
 
 export const underlineAlways = style({
   textDecoration: 'underline',
@@ -14,7 +14,7 @@ export const underlineOnHoverOnly = style({
 
 export const visited = style({
   ':visited': {
-    color: themeVars.foregroundColor.linkVisited,
+    color: vars.foregroundColor.linkVisited,
   },
 });
 
