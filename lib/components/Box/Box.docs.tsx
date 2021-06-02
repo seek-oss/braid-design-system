@@ -22,7 +22,7 @@ import {
   UnresponsiveProperties,
   ResponsiveProperties,
   PseudoProperties,
-} from '../../sprinkles/atomicProperties';
+} from '../../atoms/atomicProperties';
 
 type BackgroundDocs = Required<
   Record<NonNullable<BoxProps['background']>, string>

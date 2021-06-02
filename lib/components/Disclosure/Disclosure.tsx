@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import assert from 'assert';
 import { Box } from '../Box/Box';
-import type { ResponsiveSpace } from '../Box/boxStyles';
+import type { ResponsiveSpace } from '../../atoms/atoms';
 import { Text } from '../Text/Text';
 import { TextLinkButton } from '../TextLinkButton/TextLinkButton';
 import { IconChevron } from '../icons';

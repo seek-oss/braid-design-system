@@ -25,7 +25,7 @@ import {
 } from '../../../../lib/components';
 import { BoxProps } from '../../../../lib/components/Box/Box';
 import { FieldOverlay } from '../../../../lib/components/private/FieldOverlay/FieldOverlay';
-import { boxStyles } from '../../../../lib/components/Box/boxStyles';
+import { atoms } from '../../../../lib/atoms/atoms';
 import { hideFocusRingsClassName } from '../../../../lib/components/private/hideFocusRings/hideFocusRings';
 import { CopyIcon } from './CopyIcon';
 import { PlayIcon } from './PlayIcon';
@@ -234,11 +234,6 @@ const Code = ({
     typeof children === 'function' ? children(playroomScope) : children,
   );
 
-  const blockLinkStyles = boxStyles({
-    component: 'a',
-    display: 'block',
-  });
-
   return (
     <Box
       position="relative"
@@ -278,7 +273,10 @@ const Code = ({
               component="a"
               target="_blank"
               href={createUrl({ baseUrl: playroomUrl, code })}
-              className={blockLinkStyles}
+              className={atoms({
+                reset: 'a',
+                display: 'block',
+              })}
               title="Open in Playroom"
             >
               <PlayIcon />{' '}

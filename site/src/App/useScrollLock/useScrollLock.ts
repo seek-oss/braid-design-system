@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
-import { boxStyles } from '../../../../lib/components/Box/boxStyles';
+import { atoms } from '../../../../lib/atoms/atoms';
 
 export function useScrollLock(lock: boolean) {
-  const overflowHidden = boxStyles({
-    component: 'div',
+  const overflowHidden = atoms({
+    reset: 'div',
     overflow: 'hidden',
   }).split(' ');
 

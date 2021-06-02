@@ -9,7 +9,7 @@ import React, {
 import assert from 'assert';
 import flattenChildren from 'react-keyed-flatten-children';
 import { Box } from '../Box/Box';
-import type { ResponsiveSpace } from '../Box/boxStyles';
+import type { ResponsiveSpace } from '../../atoms/atoms';
 import { TAB_LIST_UPDATED } from './Tabs.actions';
 import buildDataAttributes, {
   DataAttributeMap,

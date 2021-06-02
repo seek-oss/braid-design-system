@@ -1,7 +1,7 @@
 import {
   OptionalResponsiveValue,
   normalizeResponsiveValue,
-} from '../sprinkles/sprinkles.css';
+} from '../atoms/sprinkles.css';
 
 export type ResponsiveProp<AtomName> =
   | AtomName

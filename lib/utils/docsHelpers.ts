@@ -1,4 +1,4 @@
-import { responsiveProperties } from '../sprinkles/atomicProperties';
+import { responsiveProperties } from '../atoms/atomicProperties';
 import { vars } from '../themes/vars.css';
 
 export const backgrounds = Object.keys(vars.backgroundColor).sort() as Array<

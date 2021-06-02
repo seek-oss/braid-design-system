@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import { Box, Text } from '../../';
 import { useBackgroundLightness } from '../../Box/BackgroundContext';
-import { boxStyles } from '../../Box/boxStyles';
+import { atoms } from '../../../atoms/atoms';
 import wireframe from '../../../themes/wireframe';
 import * as styles from './Placeholder.css';
 
@@ -24,13 +24,6 @@ export const Placeholder = ({
   const theme =
     useBackgroundLightness() === 'light' ? styles.lightTheme : styles.darkTheme;
 
-  const svgStyles = boxStyles({
-    component: 'svg',
-    position: 'absolute',
-    width: 'full',
-    height: 'full',
-  });
-
   return (
     <Box
       position="relative"
@@ -52,7 +45,15 @@ export const Placeholder = ({
           </Text>
         </Box>
       ) : (
-        <svg xmlns="http://www.w3.org/2000/svg" className={svgStyles}>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className={atoms({
+            reset: 'svg',
+            position: 'absolute',
+            width: 'full',
+            height: 'full',
+          })}
+        >
           <line className={styles.line} x1={0} y1={0} x2="100%" y2="100%" />
           <line className={styles.line} x1="100%" y1={0} x2={0} y2="100%" />
         </svg>

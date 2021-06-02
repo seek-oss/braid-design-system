@@ -1,13 +1,13 @@
 import React, { createContext, ReactElement } from 'react';
 import { Box } from '../Box/Box';
 import { ColumnProps } from '../Column/Column';
-import { Space, ResponsiveSpace } from '../Box/boxStyles';
+import { Space, ResponsiveSpace } from '../../atoms/atoms';
 import { useNegativeMarginLeft } from '../../hooks/useNegativeMargin/useNegativeMargin';
 import {
   resolveCollapsibleAlignmentProps,
   CollapsibleAlignmentProps,
 } from '../../utils/collapsibleAlignmentProps';
-import { normalizeResponsiveValue } from '../../sprinkles/sprinkles.css';
+import { normalizeResponsiveValue } from '../../atoms/sprinkles.css';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';

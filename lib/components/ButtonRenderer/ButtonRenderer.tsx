@@ -1,4 +1,5 @@
 import assert from 'assert';
+import classNames from 'classnames';
 import dedent from 'dedent';
 import React, {
   createContext,
@@ -9,7 +10,7 @@ import React, {
   CSSProperties,
   ComponentType,
 } from 'react';
-import { boxStyles, BoxStylesProps } from '../Box/boxStyles';
+import { Atoms, atoms } from '../../atoms/atoms';
 import {
   BackgroundProvider,
   useBackgroundLightness,
@@ -37,10 +38,10 @@ type ButtonWeight = typeof buttonWeights[number];
 type ButtonVariant = typeof buttonVariants[number];
 type ButtonStyles = {
   textTone: TextProps['tone'];
-  background: BoxStylesProps['background'];
-  backgroundHover: BoxStylesProps['background'];
-  backgroundActive: BoxStylesProps['background'];
-  boxShadow: BoxStylesProps['boxShadow'];
+  background: Atoms['background'];
+  backgroundHover: Atoms['background'];
+  backgroundActive: Atoms['background'];
+  boxShadow: Atoms['boxShadow'];
 };
 
 const buttonVariantStyles: Record<
@@ -352,27 +353,27 @@ export const PrivateButtonRenderer = ({
   const { background, boxShadow } = useButtonVariant(variant, tone);
   const virtualTouchableStyles = useVirtualTouchable({ xAxis: false });
 
-  const buttonStyles = boxStyles({
-    component: 'button',
-    cursor: !loading ? 'pointer' : undefined,
-    width: 'full',
-    position: 'relative',
-    display: 'block',
-    borderRadius: 'standard',
-    boxShadow,
-    transform: { active: 'touchable' },
-    transition: 'touchable',
-    outline: 'none',
-    className: [
-      styles.root,
-      variant === 'soft' ? styles.lightBg : null,
-      variant !== 'solid' ? styles.lightHoverBg : null,
-      useBackgroundLightness() === 'dark' ? styles.inverted : null,
-      size === 'small' ? virtualTouchableStyles : null,
-      size === 'standard' ? styles.standard : styles.small,
-      bleedY ? styles.bleedY : null,
-    ],
-  });
+  const buttonStyles = classNames(
+    atoms({
+      reset: 'button',
+      cursor: !loading ? 'pointer' : undefined,
+      width: 'full',
+      position: 'relative',
+      display: 'block',
+      borderRadius: 'standard',
+      boxShadow,
+      transform: { active: 'touchable' },
+      transition: 'touchable',
+      outline: 'none',
+    }),
+    styles.root,
+    variant === 'soft' ? styles.lightBg : null,
+    variant !== 'solid' ? styles.lightHoverBg : null,
+    useBackgroundLightness() === 'dark' ? styles.inverted : null,
+    size === 'small' ? virtualTouchableStyles : null,
+    size === 'standard' ? styles.standard : styles.small,
+    bleedY ? styles.bleedY : null,
+  );
 
   const buttonChildrenContextValue = useMemo(
     () => ({ size, tone, variant, loading }),

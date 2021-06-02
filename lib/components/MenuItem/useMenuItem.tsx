@@ -16,7 +16,7 @@ import { actionTypes, Action } from '../MenuRenderer/MenuRenderer.actions';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
-import { boxStyles } from '../Box/boxStyles';
+import { atoms } from '../../atoms/atoms';
 import * as styles from './useMenuItem.css';
 
 const {
@@ -147,8 +147,7 @@ export function useMenuItem<MenuItemElement extends HTMLElement>({
       className: [
         styles.menuItem,
         useTouchableSpace(menuItemChildrenSize),
-        boxStyles({
-          component: null,
+        atoms({
           display: 'flex',
           alignItems: 'center',
           width: 'full',

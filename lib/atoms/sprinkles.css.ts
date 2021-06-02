@@ -51,7 +51,7 @@ const reponsiveAtomicStyles = createAtomicStyles({
   },
 });
 
-export const atoms = createAtomsFn(
+export const sprinkles = createAtomsFn(
   unresponsiveAtomicStyles,
   reponsiveAtomicStyles,
   pseudoAtomicStyles,

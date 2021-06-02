@@ -2,7 +2,7 @@ import React, { Children, ReactNode } from 'react';
 import flattenChildren from 'react-keyed-flatten-children';
 import assert from 'assert';
 import { Box } from '../Box/Box';
-import type { ResponsiveSpace } from '../Box/boxStyles';
+import type { ResponsiveSpace } from '../../atoms/atoms';
 import { Divider, DividerProps } from '../Divider/Divider';
 import { Hidden, HiddenProps } from '../Hidden/Hidden';
 import * as hiddenStyles from '../Hidden/Hidden.css';
@@ -14,7 +14,7 @@ import {
   OptionalResponsiveValue,
   mapResponsiveValue,
   normalizeResponsiveValue,
-} from '../../sprinkles/sprinkles.css';
+} from '../../atoms/sprinkles.css';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';

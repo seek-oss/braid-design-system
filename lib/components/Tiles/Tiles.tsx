@@ -3,7 +3,7 @@ import React, { Children } from 'react';
 import flattenChildren from 'react-keyed-flatten-children';
 import { Box } from '../Box/Box';
 import { Divider, DividerProps } from '../Divider/Divider';
-import { Space } from '../Box/boxStyles';
+import { Space } from '../../atoms/atoms';
 import {
   useNegativeMarginTop,
   useNegativeMarginLeft,
@@ -14,7 +14,7 @@ import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import {
   mapResponsiveValue,
   RequiredResponsiveValue,
-} from '../../sprinkles/sprinkles.css';
+} from '../../atoms/sprinkles.css';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';

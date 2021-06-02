@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 
-import { boxStyles } from '../../Box/boxStyles';
+import { atoms } from '../../../atoms/atoms';
 import * as styles from '../../HiddenVisually/HiddenVisually.css';
 
 let announcementCounter = 0;
@@ -12,12 +12,14 @@ interface AnnouncementProps {
 
 export const Announcement = ({ children }: AnnouncementProps) => {
   const [announcementElement, setElement] = useState<HTMLElement | null>(null);
-  const className = boxStyles({
-    component: 'div',
-    position: 'absolute',
-    overflow: 'hidden',
-    className: styles.root,
-  });
+  const className = [
+    atoms({
+      reset: 'div',
+      position: 'absolute',
+      overflow: 'hidden',
+    }),
+    styles.root,
+  ].join(' ');
 
   useEffect(() => {
     const announcementContainerId = `braid-announcement-container-${announcementCounter++}`;

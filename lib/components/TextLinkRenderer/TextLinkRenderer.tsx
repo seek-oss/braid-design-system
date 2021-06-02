@@ -7,7 +7,7 @@ import { TextContext } from '../Text/TextContext';
 import HeadingContext from '../Heading/HeadingContext';
 import ActionsContext from '../Actions/ActionsContext';
 import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
-import { boxStyles } from '../Box/boxStyles';
+import { atoms } from '../../atoms/atoms';
 import { Box } from '../Box/Box';
 import {
   useTextTone,
@@ -130,8 +130,8 @@ function InlineLink({
         style: {},
         className: classnames(
           useLinkStyles(weight, showVisited),
-          boxStyles({
-            component: 'a',
+          atoms({
+            reset: 'a',
             cursor: 'pointer',
           }),
           hitArea === 'large' && virtualTouchableStyle,
@@ -178,8 +178,8 @@ function ButtonLink({
               useLinkStyles(textLinkWeight, showVisited),
               useText(buttonLinkTextProps),
               size === 'standard' ? standardTouchableSpaceStyles : null,
-              boxStyles({
-                component: 'a',
+              atoms({
+                reset: 'a',
                 cursor: 'pointer',
                 outline: 'none',
                 display: 'block',

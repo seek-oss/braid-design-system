@@ -10,7 +10,7 @@ import React, {
 } from 'react';
 import flattenChildren from 'react-keyed-flatten-children';
 import { Box } from '../Box/Box';
-import type { ResponsiveSpace } from '../Box/boxStyles';
+import type { ResponsiveSpace } from '../../atoms/atoms';
 import { MenuItem } from '../MenuItem/MenuItem';
 import { MenuItemCheckbox } from '../MenuItemCheckbox/MenuItemCheckbox';
 import { MenuItemLink } from '../MenuItem/MenuItemLink';

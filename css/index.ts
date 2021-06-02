@@ -24,7 +24,7 @@ export const vars = {
   borderWidth,
 };
 
-export { boxStyles } from '../lib/components/Box/boxStyles';
+export { atoms } from '../lib/atoms/atoms';
 export {
   breakpoints,
   Breakpoint,

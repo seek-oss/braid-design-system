@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import {
   createElement,
   forwardRef,
@@ -5,13 +6,14 @@ import {
   ElementType,
 } from 'react';
 import dedent from 'dedent';
-import { boxStyles, BoxStylesProps } from './boxStyles';
+import { atoms, Atoms } from '../../atoms/atoms';
 import { renderBackgroundProvider } from './BackgroundContext';
 
 export interface BoxProps
-  extends Omit<BoxStylesProps, 'component'>,
+  extends Omit<Atoms, 'reset'>,
     Omit<AllHTMLAttributes<HTMLElement>, 'width' | 'height' | 'className'> {
   component?: ElementType;
+  className?: Parameters<typeof classNames>[0];
 }
 
 const NamedBox = forwardRef<HTMLElement, BoxProps>(
@@ -86,53 +88,55 @@ const NamedBox = forwardRef<HTMLElement, BoxProps>(
     }
 
     const element = createElement(component, {
-      className: boxStyles({
-        component,
-        padding,
-        paddingX,
-        paddingY,
-        paddingTop,
-        paddingBottom,
-        paddingLeft,
-        paddingRight,
-        margin,
-        marginX,
-        marginY,
-        marginTop,
-        marginBottom,
-        marginLeft,
-        marginRight,
-        display,
-        flexDirection,
-        flexWrap,
-        flexShrink,
-        flexGrow,
-        alignItems,
-        justifyContent,
-        textAlign,
-        borderRadius,
-        background,
-        boxShadow,
-        transition,
-        transform: resolvedTransform,
-        height,
-        width,
-        position,
-        cursor,
-        pointerEvents,
-        overflow,
-        minWidth,
-        maxWidth,
-        top,
-        bottom,
-        right,
-        left,
-        userSelect,
-        outline,
-        opacity,
-        zIndex,
+      className: classNames(
+        atoms({
+          reset: typeof component === 'string' ? component : 'div',
+          padding,
+          paddingX,
+          paddingY,
+          paddingTop,
+          paddingBottom,
+          paddingLeft,
+          paddingRight,
+          margin,
+          marginX,
+          marginY,
+          marginTop,
+          marginBottom,
+          marginLeft,
+          marginRight,
+          display,
+          flexDirection,
+          flexWrap,
+          flexShrink,
+          flexGrow,
+          alignItems,
+          justifyContent,
+          textAlign,
+          borderRadius,
+          background,
+          boxShadow,
+          transition,
+          transform: resolvedTransform,
+          height,
+          width,
+          position,
+          cursor,
+          pointerEvents,
+          overflow,
+          minWidth,
+          maxWidth,
+          top,
+          bottom,
+          right,
+          left,
+          userSelect,
+          outline,
+          opacity,
+          zIndex,
+        }),
         className,
-      }),
+      ),
       ...restProps,
       ref,
     });

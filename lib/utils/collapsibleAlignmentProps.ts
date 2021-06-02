@@ -7,7 +7,7 @@ import { Align, alignToFlexAlign, alignYToFlexAlign, AlignY } from './align';
 import {
   OptionalResponsiveValue,
   normalizeResponsiveValue,
-} from '../sprinkles/sprinkles.css';
+} from '../atoms/sprinkles.css';
 
 function invertAlignment<Alignment extends string>(alignment: Alignment) {
   if (alignment === 'flexStart') {

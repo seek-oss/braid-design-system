@@ -1,7 +1,7 @@
 import {
   OptionalResponsiveValue,
   mapResponsiveValue,
-} from '../sprinkles/sprinkles.css';
+} from '../atoms/sprinkles.css';
 
 export type Align = 'left' | 'center' | 'right';
 export type AlignY = 'top' | 'center' | 'bottom';
