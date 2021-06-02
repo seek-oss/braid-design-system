@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import {
   createElement,
   forwardRef,
+  useContext,
   AllHTMLAttributes,
   ElementType,
 } from 'react';
@@ -9,6 +10,7 @@ import dedent from 'dedent';
 import { base as baseReset } from '../../reset/reset.css';
 import { atoms, Atoms } from '../../atoms/atoms';
 import { renderBackgroundProvider } from './BackgroundContext';
+import TextLinkRendererContext from '../TextLinkRenderer/TextLinkRendererContext';
 
 export interface BoxProps
   extends Omit<Atoms, 'reset'>,
@@ -91,14 +93,19 @@ const NamedBox = forwardRef<HTMLElement, BoxProps>(
     const classes = classNames(className);
 
     if (process.env.NODE_ENV !== 'production') {
-      if (classes.split(' ').includes(baseReset)) {
-        throw new Error(dedent`
+      // eslint-disable-next-line react-hooks/rules-of-hooks
+      const inTextLinkRenderer = useContext(TextLinkRendererContext);
+
+      if (classes.split(' ').includes(baseReset) && !inTextLinkRenderer) {
+        throw new Error(
+          dedent`
             Reset class has been applied more than once. This is normally caused when asking for an explicit reset on the \`atoms\` function. This can be removed as Box automatically adds reset classes.
 
             atoms({
               reset: '...' // <-- Remove this
             })
-        `);
+          `,
+        );
       }
     }
 

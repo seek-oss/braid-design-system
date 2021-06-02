@@ -7,7 +7,7 @@ import { Column } from '../Column/Column';
 import { ContentBlock } from '../ContentBlock/ContentBlock';
 import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';
-import { TextLinkRenderer } from '../TextLinkRenderer/TextLinkRenderer';
+import { TextLinkButton } from '../TextLinkButton/TextLinkButton';
 import { IconPositive, IconCritical } from '../icons';
 import { ClearButton } from '../iconButtons/ClearButton/ClearButton';
 import { useTimeout } from './useTimeout';
@@ -30,19 +30,11 @@ const Action = ({ label, onClick, removeToast }: ActionProps) => {
 
   return (
     <Text baseline={false}>
-      <TextLinkRenderer reset={false} hitArea="large">
-        {(textLinkProps) => (
-          <Box
-            component="button"
-            paddingRight="xsmall"
-            onClick={handleClick}
-            {...textLinkProps}
-            aria-hidden
-          >
-            {label}
-          </Box>
-        )}
-      </TextLinkRenderer>
+      <Box component="span" paddingRight="xsmall" aria-hidden>
+        <TextLinkButton onClick={handleClick} hitArea="large">
+          {label}
+        </TextLinkButton>
+      </Box>
     </Text>
   );
 };

@@ -23,7 +23,6 @@ export const TextLink = forwardRef<HTMLAnchorElement, TextLinkProps>(
 
     return (
       <PrivateTextLinkRenderer
-        reset={false}
         weight={weight}
         showVisited={showVisited}
         hitArea={hitArea}
