@@ -232,15 +232,16 @@ const DevelopmentWorkflow = () => (
     <Heading level="3">Still need custom CSS?</Heading>
     <Text>
       Braid is built on top of{' '}
-      <TextLink href="https://seek-oss.github.io/treat">treat</TextLink>{' '}
-      (imported via ‘sku/treat’ which satisfies our requirements for themeable,
-      statically extracted CSS. Custom styles on top of Braid should use treat
-      in order to gain access to the underlying theme variables.
+      <TextLink href="https://vanilla-extract.style/">vanilla-extract</TextLink>{' '}
+      which satisfies our requirements for statically extracted CSS, leveraging
+      CSS variables for theming. Custom styles on top of Braid can access the
+      theme variables by importing them from Braids ‘css’ export:
     </Text>
+    <Code>{`import { vars } from 'braid-design-system/css';`}</Code>
     <Text weight="strong">
-      Before writing a treat file, we highly recommend that you read the{' '}
-      <TextLink href="https://seek-oss.github.io/treat">
-        treat documentation.
+      Before writing a custom styles, we highly recommend that you read the{' '}
+      <TextLink href="https://vanilla-extract.style/documentation/">
+        vanilla-extract documentation.
       </TextLink>
     </Text>
     <Text>
@@ -255,37 +256,40 @@ const DevelopmentWorkflow = () => (
       For example, if you wanted to render an element as ‘display: flex’, but
       with a custom, responsive ‘flex-basis’ value:
     </Text>
-    <Code>{dedent`
-          // myComponent.treat.ts
-          import { style } from 'sku/treat';
+    <Code>
+      {dedent`
+        // myComponent.css.ts
+        import { style } from '@vanilla-extract/css';
+        import { responsiveStyle, vars } from 'braid-design-system/css';
 
-          export const root = style(theme =>
-            theme.utils.responsiveStyle({
-              mobile: { flexBasis: theme.grid * 3 },
-              tablet: { flexBasis: theme.grid * 5 },
-              desktop: { flexBasis: theme.grid * 8 },
-            }),
-          );
-        `}</Code>
+        export const root = style(
+          responsiveStyle({
+            mobile: { flexBasis: vars.grid * 3 },
+            tablet: { flexBasis: vars.grid * 5 },
+            desktop: { flexBasis: vars.grid * 8 },
+          }),
+        );
+      `}
+    </Code>
     <Text>
-      Because treat files are written in TypeScript, the ‘theme’ object will be
-      available for autocompletion and type checking within your editor.
+      Because vanilla-extract stylesheets are written in TypeScript (note the
+      ‘.css.ts’ extension), the ‘vars’ object will be available for
+      autocompletion and type checking within your editor.
     </Text>
-    <Code>{dedent`
-          // myComponent.ts
-          import { useStyles } from 'sku/react-treat';
-          import * as styleRefs from './myComponent.treat.ts';
+    <Code>
+      {dedent`
+        // myComponent.ts
+        import * as styles from './myComponent.css';
 
-          export default () => {
-            const styles = useStyles(styleRefs);
-
-            return (
-              <Box display="flex" className={styles.root}>
-                <Text>My first Braid component</Text>
-              </Box>
-            );
-          };
-        `}</Code>
+        export default () => {
+          return (
+            <Box display="flex" className={styles.root}>
+              <Text>My first Braid component</Text>
+            </Box>
+          );
+        };
+      `}
+    </Code>
 
     <Divider />
 
