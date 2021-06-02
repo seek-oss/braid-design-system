@@ -16,7 +16,7 @@ const docs: ComponentDocs = {
   Example: () =>
     source(
       <Text>
-        <TextLinkRenderer>
+        <TextLinkRenderer reset={false}>
           {(textLinkProps) => (
             <Box component="button" {...textLinkProps}>
               Visually a link

@@ -7,7 +7,7 @@ import { TextContext } from '../Text/TextContext';
 import HeadingContext from '../Heading/HeadingContext';
 import ActionsContext from '../Actions/ActionsContext';
 import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
-import { atoms } from '../../atoms/atoms';
+import { atoms, Atoms } from '../../atoms/atoms';
 import { Box } from '../Box/Box';
 import {
   useTextTone,
@@ -27,6 +27,7 @@ interface StyleProps {
 
 type TextLinkWeight = 'regular' | 'weak';
 export interface PrivateTextLinkRendererProps {
+  reset?: Atoms['reset'] | false;
   weight?: TextLinkWeight;
   showVisited?: boolean;
   hitArea?: 'standard' | 'large';
@@ -115,6 +116,7 @@ function useLinkStyles(weight: TextLinkWeight, showVisited: boolean) {
 }
 
 function InlineLink({
+  reset = 'a',
   weight: weightProp,
   showVisited = false,
   hitArea = 'standard',
@@ -130,8 +132,12 @@ function InlineLink({
         style: {},
         className: classnames(
           useLinkStyles(weight, showVisited),
+          reset !== false
+            ? atoms({
+                reset: typeof reset === 'string' ? reset : 'a',
+              })
+            : null,
           atoms({
-            reset: 'a',
             cursor: 'pointer',
           }),
           hitArea === 'large' && virtualTouchableStyle,
@@ -145,6 +151,7 @@ interface ButtonLinkProps extends PrivateTextLinkRendererProps {
   size?: PrivateButtonRendererProps['size'];
 }
 function ButtonLink({
+  reset = 'a',
   size = 'standard',
   weight,
   showVisited = false,
@@ -178,8 +185,12 @@ function ButtonLink({
               useLinkStyles(textLinkWeight, showVisited),
               useText(buttonLinkTextProps),
               size === 'standard' ? standardTouchableSpaceStyles : null,
+              reset !== false
+                ? atoms({
+                    reset: typeof reset === 'string' ? reset : 'a',
+                  })
+                : null,
               atoms({
-                reset: 'a',
                 cursor: 'pointer',
                 outline: 'none',
                 display: 'block',

@@ -30,7 +30,7 @@ const Action = ({ label, onClick, removeToast }: ActionProps) => {
 
   return (
     <Text baseline={false}>
-      <TextLinkRenderer hitArea="large">
+      <TextLinkRenderer reset={false} hitArea="large">
         {(textLinkProps) => (
           <Box
             component="button"

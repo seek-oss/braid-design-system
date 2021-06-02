@@ -11,7 +11,7 @@ export const screenshots: ComponentScreenshot = {
         <Text>
           Even though it looks like a link, the last word of this sentence is
           actually a{' '}
-          <TextLinkRenderer>
+          <TextLinkRenderer reset={false}>
             {(textLinkProps) => (
               <Box component="button" {...textLinkProps}>
                 button.
