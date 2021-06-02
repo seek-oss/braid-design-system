@@ -235,7 +235,7 @@ const DevelopmentWorkflow = () => (
       <TextLink href="https://vanilla-extract.style/">vanilla-extract</TextLink>{' '}
       which satisfies our requirements for statically extracted CSS, leveraging
       CSS variables for theming. Custom styles on top of Braid can access the
-      theme variables by importing them from Braids ‘css’ export:
+      theme variables by importing them from Braid’s ‘css’ export:
     </Text>
     <Code>{`import { vars } from 'braid-design-system/css';`}</Code>
     <Text weight="strong">
@@ -260,13 +260,13 @@ const DevelopmentWorkflow = () => (
       {dedent`
         // myComponent.css.ts
         import { style } from '@vanilla-extract/css';
-        import { responsiveStyle, vars } from 'braid-design-system/css';
+        import { vars, responsiveStyle } from 'braid-design-system/css';
 
         export const root = style(
           responsiveStyle({
-            mobile: { flexBasis: vars.grid * 3 },
-            tablet: { flexBasis: vars.grid * 5 },
-            desktop: { flexBasis: vars.grid * 8 },
+            mobile: { flexBasis: vars.space.small },
+            tablet: { flexBasis: vars.space.medium },
+            desktop: { flexBasis: vars.space.large },
           }),
         );
       `}
