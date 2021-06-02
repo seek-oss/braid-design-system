@@ -1258,7 +1258,7 @@ Object {
         | "small"
     children: (className: string) => ReactElement<any, string | JSXElementConstructor<any>> | null
     className?: string | number | boolean | ClassDictionary | ClassArray
-    component: 
+    component?: 
         | "a"
         | "abbr"
         | "address"
@@ -1434,8 +1434,6 @@ Object {
         | "view"
         | "wbr"
         | "webview"
-        | ComponentClass<any, any>
-        | FunctionComponent<any>
     cursor?: 
         | "default"
         | "pointer"
