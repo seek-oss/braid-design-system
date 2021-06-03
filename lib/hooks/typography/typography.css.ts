@@ -1,14 +1,15 @@
 import {
-  createTheme,
   composeStyles,
   style,
   styleVariants,
+  assignVars,
 } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
 
 import { vars } from '../../themes/vars.css';
 import { responsiveStyle } from '../../themes/vanillaUtils';
-import { fontSize, capsize, leading, font } from './capsize.css';
+import { className, vars as capsizeVars } from './capsize/prebuilt';
+
 import { mapToProperty } from '../../utils';
 import { BackgroundVariant } from './../../components/Box/BackgroundContext';
 
@@ -19,18 +20,9 @@ type TypographicDefinition =
   | TextDefinition[keyof TextDefinition]
   | HeadingDefinition[keyof HeadingDefinition];
 
-export const fontFamily = composeStyles(
-  style({
-    fontFamily: vars.fontFamily,
-  }),
-  createTheme(font, {
-    capHeight: vars.fontMetrics.capHeight,
-    ascent: vars.fontMetrics.ascent,
-    descent: vars.fontMetrics.descent,
-    lineGap: vars.fontMetrics.lineGap,
-    unitsPerEm: vars.fontMetrics.unitsPerEm,
-  }),
-);
+export const fontFamily = style({
+  fontFamily: vars.fontFamily,
+});
 
 export const fontWeight = styleVariants(
   vars.textWeight,
@@ -44,11 +36,13 @@ const makeTypographyRules = (
   const {
     fontSize: mobileFontSize,
     leading: mobileLeading,
+    capsize: mobileCapsizeValues,
   } = textDefinition.mobile;
 
   const {
     fontSize: tabletFontSize,
     leading: tabletLeading,
+    capsize: tabletCapsizeValues,
   } = textDefinition.tablet;
 
   return {
@@ -65,20 +59,14 @@ const makeTypographyRules = (
       }),
     ),
     trimmed: composeStyles(
-      capsize,
+      className,
       style(
         responsiveStyle({
           mobile: {
-            vars: {
-              [fontSize]: mobileFontSize,
-              [leading]: mobileLeading,
-            },
+            vars: assignVars(capsizeVars, mobileCapsizeValues),
           },
           tablet: {
-            vars: {
-              [fontSize]: tabletFontSize,
-              [leading]: tabletLeading,
-            },
+            vars: assignVars(capsizeVars, tabletCapsizeValues),
           },
         }),
         debug,

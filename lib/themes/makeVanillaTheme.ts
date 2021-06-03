@@ -4,6 +4,7 @@ import { FontMetrics, getCapHeight } from 'capsize';
 
 import { getAccessibleVariant, getLightVariant, isLight } from '../utils';
 import { BraidTokens, TextDefinition } from './tokenType';
+import { buildValues } from '../hooks/typography/capsize/prebuilt';
 
 const px = (v: string | number) => `${v}px`;
 
@@ -32,18 +33,32 @@ const fontSizeToCapHeight = (
     fontMetrics,
   });
 
+  const mobileCapsizeValues = buildValues({
+    fontSize: mobile.fontSize,
+    leading: mobileLeading,
+    fontMetrics,
+  });
+
+  const tabletCapsizeValues = buildValues({
+    fontSize: tablet.fontSize,
+    leading: tabletLeading,
+    fontMetrics,
+  });
+
   return {
     mobile: {
       fontSize: String(mobile.fontSize),
       leading: String(mobileLeading),
       capHeight: String(mobileCapHeight),
       capHeightFloored: String(Math.floor(mobileCapHeight)),
+      capsize: mobileCapsizeValues,
     },
     tablet: {
       fontSize: String(tablet.fontSize),
       leading: String(tabletLeading),
       capHeight: String(tabletCapHeight),
       capHeightFloored: String(Math.floor(tabletCapHeight)),
+      capsize: tabletCapsizeValues,
     },
   };
 };
