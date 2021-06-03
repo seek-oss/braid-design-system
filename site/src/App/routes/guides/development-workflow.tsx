@@ -17,6 +17,7 @@ import { TextStack } from '../../TextStack/TextStack';
 import Code from '../../Code/Code';
 import { Page } from '../../../types';
 import { PageTitle } from '../../Seo/PageTitle';
+import source from '../../../../../lib/utils/source.macro';
 
 const DevelopmentWorkflow = () => (
   <TextStack>
@@ -68,11 +69,13 @@ const DevelopmentWorkflow = () => (
       An example of composing a simple view leveraging some of these could be:
     </Text>
     <Code>
-      <Card>
-        <Heading level="4">Title</Heading>
-        <Text>My first Braid component</Text>
-        <Button>Click me</Button>
-      </Card>
+      {source(
+        <Card>
+          <Heading level="4">Title</Heading>
+          <Text>My first Braid component</Text>
+          <Button>Click me</Button>
+        </Card>,
+      )}
     </Code>
     <Text>
       You’ll notice that each of these components don’t provide any surrounding
@@ -88,13 +91,15 @@ const DevelopmentWorkflow = () => (
       <TextLink href="/components/Stack">Stack</TextLink>:
     </Text>
     <Code>
-      <Card>
-        <Stack space="small">
-          <Heading level="4">Title</Heading>
-          <Text>My first Braid component</Text>
-          <Button>Click me</Button>
-        </Stack>
-      </Card>
+      {source(
+        <Card>
+          <Stack space="small">
+            <Heading level="4">Title</Heading>
+            <Text>My first Braid component</Text>
+            <Button>Click me</Button>
+          </Stack>
+        </Card>,
+      )}
     </Code>
     <Text>
       The ‘space’ property is a responsive prop, which means that it can also
@@ -102,13 +107,15 @@ const DevelopmentWorkflow = () => (
       you wanted ‘small’ space on mobile and ‘medium’ space on desktop:
     </Text>
     <Code>
-      <Card>
-        <Stack space={['small', 'medium']}>
-          <Heading level="4">Title</Heading>
-          <Text>My first Braid component</Text>
-          <Button>Click me</Button>
-        </Stack>
-      </Card>
+      {source(
+        <Card>
+          <Stack space={{ mobile: 'small', tablet: 'medium' }}>
+            <Heading level="4">Title</Heading>
+            <Text>My first Braid component</Text>
+            <Button>Click me</Button>
+          </Stack>
+        </Card>,
+      )}
     </Code>
     <Text>
       For horizontal layouts,{' '}
@@ -117,24 +124,26 @@ const DevelopmentWorkflow = () => (
       render a two-column layout that collapses to a single column on mobile:
     </Text>
     <Code>
-      <Columns space="gutter" collapseBelow="tablet">
-        <Column>
-          <Card>
-            <Stack space="small">
-              <Heading level="4">Column 1</Heading>
-              <Text>My first Braid component</Text>
-            </Stack>
-          </Card>
-        </Column>
-        <Column>
-          <Card>
-            <Stack space="small">
-              <Heading level="4">Column 2</Heading>
-              <Text>My second Braid component</Text>
-            </Stack>
-          </Card>
-        </Column>
-      </Columns>
+      {source(
+        <Columns space="gutter" collapseBelow="tablet">
+          <Column>
+            <Card>
+              <Stack space="small">
+                <Heading level="4">Column 1</Heading>
+                <Text>My first Braid component</Text>
+              </Stack>
+            </Card>
+          </Column>
+          <Column>
+            <Card>
+              <Stack space="small">
+                <Heading level="4">Column 2</Heading>
+                <Text>My second Braid component</Text>
+              </Stack>
+            </Card>
+          </Column>
+        </Columns>,
+      )}
     </Code>
     <Text>
       This ‘space’ property is also responsive, supporting an array of values
@@ -142,24 +151,29 @@ const DevelopmentWorkflow = () => (
       and ‘gutter’ space on desktop:
     </Text>
     <Code>
-      <Columns space={['xxsmall', 'gutter']} collapseBelow="tablet">
-        <Column>
-          <Card>
-            <Stack space="small">
-              <Heading level="4">Column 1</Heading>
-              <Text>My first Braid component</Text>
-            </Stack>
-          </Card>
-        </Column>
-        <Column>
-          <Card>
-            <Stack space="small">
-              <Heading level="4">Column 2</Heading>
-              <Text>My second Braid component</Text>
-            </Stack>
-          </Card>
-        </Column>
-      </Columns>
+      {source(
+        <Columns
+          space={{ mobile: 'xxsmall', tablet: 'gutter' }}
+          collapseBelow="tablet"
+        >
+          <Column>
+            <Card>
+              <Stack space="small">
+                <Heading level="4">Column 1</Heading>
+                <Text>My first Braid component</Text>
+              </Stack>
+            </Card>
+          </Column>
+          <Column>
+            <Card>
+              <Stack space="small">
+                <Heading level="4">Column 2</Heading>
+                <Text>My second Braid component</Text>
+              </Stack>
+            </Card>
+          </Column>
+        </Columns>,
+      )}
     </Code>
 
     <Heading level="3">Need a custom component?</Heading>
@@ -179,9 +193,11 @@ const DevelopmentWorkflow = () => (
       allowing the corresponding CSS rules to be computed across themes.
     </Text>
     <Code>
-      <Box background="brand" boxShadow="large" padding="large">
-        <Text>My first Braid component</Text>
-      </Box>
+      {source(
+        <Box background="brand" boxShadow="large" padding="large">
+          <Text>My first Braid component</Text>
+        </Box>,
+      )}
     </Code>
     <Text>
       For more details, view the complete{' '}
@@ -203,10 +219,12 @@ const DevelopmentWorkflow = () => (
       For example, if we wanted to change the value for ‘display’ responsively:
     </Text>
     <Code>
-      <Box display={['flex', 'block']}>
-        <Heading level="2">Flex on small screen</Heading>
-        <Heading level="2">Block on large screen</Heading>
-      </Box>
+      {source(
+        <Box display={{ mobile: 'flex', tablet: 'block' }}>
+          <Heading level="2">Flex on small screen</Heading>
+          <Heading level="2">Block on large screen</Heading>
+        </Box>,
+      )}
     </Code>
     <Text>
       For a list of low-level responsive props, check out the{' '}
@@ -224,9 +242,11 @@ const DevelopmentWorkflow = () => (
       native browser styles:
     </Text>
     <Code>
-      <Box component="fieldset">
-        <legend>Reset Fieldset</legend>
-      </Box>
+      {source(
+        <Box component="fieldset">
+          <legend>Reset Fieldset</legend>
+        </Box>,
+      )}
     </Code>
 
     <Heading level="3">Still need custom CSS?</Heading>

@@ -19,6 +19,7 @@ import { Placeholder } from '../../../../../../lib/playroom/components';
 import Code from '../../../Code/Code';
 import { ReactNodeNoStrings } from '../../../../../../lib/components/private/ReactNodeNoStrings';
 import { PageTitle } from '../../../Seo/PageTitle';
+import source from '../../../../../../lib/utils/source.macro';
 
 interface StepProps {
   heading?: string;
@@ -48,33 +49,41 @@ const page: Page = {
       </Stack>
 
       <Code collapsedByDefault>
-        <Box
-          background="brandAccent"
-          paddingX="small"
-          paddingY={['xlarge', 'xxlarge']}
-        >
-          <ContentBlock>
-            <Columns
-              space={['xlarge', 'gutter']}
-              collapseBelow="tablet"
-              alignY="center"
-            >
-              <Column width="3/5">
-                <Stack space="large">
-                  <Heading level="1" align={['center', 'left']}>
-                    Heard about our latest marketing campaign?
-                  </Heading>
-                  <Inline space="none" align={['center', 'left']}>
-                    <Button variant="ghost">Show me</Button>
-                  </Inline>
-                </Stack>
-              </Column>
-              <Column>
-                <Placeholder height={300} label="Marketing illustration" />
-              </Column>
-            </Columns>
-          </ContentBlock>
-        </Box>
+        {source(
+          <Box
+            background="brandAccent"
+            paddingX="small"
+            paddingY={{ mobile: 'xlarge', tablet: 'xxlarge' }}
+          >
+            <ContentBlock>
+              <Columns
+                space={{ mobile: 'xlarge', tablet: 'gutter' }}
+                collapseBelow="tablet"
+                alignY="center"
+              >
+                <Column width="3/5">
+                  <Stack space="large">
+                    <Heading
+                      level="1"
+                      align={{ mobile: 'center', tablet: 'left' }}
+                    >
+                      Heard about our latest marketing campaign?
+                    </Heading>
+                    <Inline
+                      space="none"
+                      align={{ mobile: 'center', tablet: 'left' }}
+                    >
+                      <Button variant="ghost">Show me</Button>
+                    </Inline>
+                  </Stack>
+                </Column>
+                <Column>
+                  <Placeholder height={300} label="Marketing illustration" />
+                </Column>
+              </Columns>
+            </ContentBlock>
+          </Box>,
+        )}
       </Code>
 
       <Heading level="3">How do I build this example for myself?</Heading>
@@ -476,10 +485,16 @@ const page: Page = {
             <Columns space="gutter" alignY="center" collapseBelow="tablet">
               <Column width="3/5">
                 <Stack space="xlarge">
-                  <Heading level="1" align={['center', 'left']}>
+                  <Heading
+                    level="1"
+                    align={{ mobile: 'center', tablet: 'left' }}
+                  >
                     Heard about our latest marketing campaign?
                   </Heading>
-                  <Inline space="none" align={['center', 'left']}>
+                  <Inline
+                    space="none"
+                    align={{ mobile: 'center', tablet: 'left' }}
+                  >
                     <Button variant="ghost">Show me</Button>
                   </Inline>
                 </Stack>
@@ -559,16 +574,22 @@ const page: Page = {
           <Box
             background="brandAccent"
             paddingX="small"
-            paddingY={['xlarge', 'xxlarge']}
+            paddingY={{ mobile: 'xlarge', tablet: 'xxlarge' }}
           >
             <ContentBlock>
               <Columns space="gutter" alignY="center" collapseBelow="tablet">
                 <Column width="3/5">
                   <Stack space="xlarge">
-                    <Heading level="1" align={['center', 'left']}>
+                    <Heading
+                      level="1"
+                      align={{ mobile: 'center', tablet: 'left' }}
+                    >
                       Heard about our latest marketing campaign?
                     </Heading>
-                    <Inline space="none" align={['center', 'left']}>
+                    <Inline
+                      space="none"
+                      align={{ mobile: 'center', tablet: 'left' }}
+                    >
                       <Button variant="ghost">Show me</Button>
                     </Inline>
                   </Stack>
@@ -596,20 +617,26 @@ const page: Page = {
           <Box
             background="brandAccent"
             paddingX="small"
-            paddingY={['xlarge', 'xxlarge']}
+            paddingY={{ mobile: 'xlarge', tablet: 'xxlarge' }}
           >
             <ContentBlock>
               <Columns
-                space={['xlarge', 'gutter']}
+                space={{ mobile: 'xlarge', tablet: 'gutter' }}
                 alignY="center"
                 collapseBelow="tablet"
               >
                 <Column width="3/5">
                   <Stack space="large">
-                    <Heading level="1" align={['center', 'left']}>
+                    <Heading
+                      level="1"
+                      align={{ mobile: 'center', tablet: 'left' }}
+                    >
                       Heard about our latest marketing campaign?
                     </Heading>
-                    <Inline space="none" align={['center', 'left']}>
+                    <Inline
+                      space="none"
+                      align={{ mobile: 'center', tablet: 'left' }}
+                    >
                       <Button variant="ghost">Show me</Button>
                     </Inline>
                   </Stack>
