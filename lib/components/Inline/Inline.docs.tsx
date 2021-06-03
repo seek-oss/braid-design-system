@@ -55,7 +55,7 @@ const docs: ComponentDocs = {
       ),
       Example: () =>
         source(
-          <Inline space={['small', 'large']}>
+          <Inline space={{ mobile: 'small', tablet: 'large' }}>
             <Placeholder width={48} height={48} />
             <Placeholder width={48} height={48} />
             <Placeholder width={48} height={48} />

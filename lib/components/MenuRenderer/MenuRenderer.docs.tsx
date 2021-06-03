@@ -109,7 +109,7 @@ const docs: ComponentDocs = {
       Example: () =>
         source(
           <MenuRenderer
-            offsetSpace={['xsmall', 'small']}
+            offsetSpace={{ mobile: 'xsmall', tablet: 'small' }}
             trigger={(triggerProps, { open }) => (
               <Box userSelect="none" cursor="pointer" {...triggerProps}>
                 <Text>

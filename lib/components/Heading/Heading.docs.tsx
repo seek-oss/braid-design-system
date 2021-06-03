@@ -91,7 +91,7 @@ const docs: ComponentDocs = {
             <Heading level="2" align="right">
               Right
             </Heading>
-            <Heading level="2" align={['center', 'left']}>
+            <Heading level="2" align={{ mobile: 'center', tablet: 'left' }}>
               Center on mobile
             </Heading>
           </Stack>,

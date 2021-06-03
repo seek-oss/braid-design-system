@@ -47,7 +47,7 @@ const docs: ComponentDocs = {
       ),
       Example: () =>
         source(
-          <Tiles space="small" columns={[2, 4]}>
+          <Tiles space="small" columns={{ mobile: 2, tablet: 4 }}>
             <Placeholder height={40} />
             <Placeholder height={40} />
             <Placeholder height={40} />

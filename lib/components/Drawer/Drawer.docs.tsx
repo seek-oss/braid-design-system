@@ -10,7 +10,7 @@ const docs: ComponentDocs = {
     source(
       <>
         <Box padding="medium">
-          <Inline space="small" align={['center', 'left']}>
+          <Inline space="small" align={{ mobile: 'center', tablet: 'left' }}>
             <Button onClick={() => toggleState('drawer')}>Open drawer</Button>
           </Inline>
         </Box>

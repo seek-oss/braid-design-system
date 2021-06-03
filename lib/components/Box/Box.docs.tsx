@@ -140,7 +140,9 @@ const docs: ComponentDocs = {
             Box provides a suite of common CSS utility props. Styles that
             regularly differ across screen sizes can also be expressed as
             responsive props, e.g.{' '}
-            <Strong>{"justifyContent={['center', 'flexStart']}"}</Strong>
+            <Strong>
+              {"justifyContent={{ mobile: 'center', tablet: 'flexStart' }}"}
+            </Strong>
           </Text>
           <Text>
             These utilities are recommended where possible to reduce the amount
@@ -151,7 +153,7 @@ const docs: ComponentDocs = {
               source(
                 <Box
                   display="flex"
-                  justifyContent={['center', 'flexStart']}
+                  justifyContent={{ mobile: 'center', tablet: 'flexStart' }}
                   position="absolute"
                   top={0}
                   left={0}
@@ -164,7 +166,7 @@ const docs: ComponentDocs = {
             }
           </Code>
           <Box paddingBottom="large">
-            <Tiles space="xlarge" columns={[1, 2]}>
+            <Tiles space="xlarge" columns={{ mobile: 1, tablet: 2 }}>
               {(Object.keys(
                 responsiveProperties,
               ) as Array<ResponsiveProperties>).map((prop) => (
@@ -350,7 +352,7 @@ const docs: ComponentDocs = {
             <Box
               background="formAccentHover"
               borderRadius="standard"
-              padding={['small', 'medium', 'large']}
+              padding={{ mobile: 'small', tablet: 'medium', desktop: 'large' }}
             >
               <Box
                 background="formAccent"
@@ -390,7 +392,7 @@ const docs: ComponentDocs = {
       ),
       Example: () => {
         const { code, value } = source(
-          <Tiles space="large" columns={[1, 1, 2]}>
+          <Tiles space="large" columns={{ mobile: 1, desktop: 2 }}>
             {Object.entries(
               validateBackgrounds({
                 body:
@@ -497,7 +499,7 @@ const docs: ComponentDocs = {
       ),
       Example: () => {
         const { code, value } = source(
-          <Tiles space="large" columns={[1, 1, 2]}>
+          <Tiles space="large" columns={{ mobile: 1, desktop: 2 }}>
             {Object.entries(
               validateBoxShadows({
                 small: 'Used for small shadows.',
