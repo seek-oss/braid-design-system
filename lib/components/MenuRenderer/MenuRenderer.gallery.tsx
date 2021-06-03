@@ -61,7 +61,7 @@ export const galleryItems: ComponentExample[] = [
     Example: () =>
       source(
         <MenuRenderer
-          offsetSpace={['none', 'small']}
+          offsetSpace={{ mobile: 'none', tablet: 'small' }}
           trigger={(triggerProps, { open }) => (
             <Box userSelect="none" cursor="pointer" {...triggerProps}>
               <Text>

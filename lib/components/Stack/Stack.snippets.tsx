@@ -67,7 +67,7 @@ export const snippets: Snippets = [
   {
     name: 'Responsive Space',
     code: source(
-      <Stack space={['small', 'large', 'none']}>
+      <Stack space={{ mobile: 'small', tablet: 'large', desktop: 'none' }}>
         <Placeholder height={40} />
         <Placeholder height={40} />
         <Placeholder height={40} />
