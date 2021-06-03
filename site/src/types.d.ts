@@ -39,6 +39,7 @@ export interface ComponentDocs {
 
 export interface CssDoc {
   description?: ReactNodeNoStrings;
+  additional?: ComponentExample[];
 }
 
 interface ExampleProps extends ReturnType<typeof useScope> {

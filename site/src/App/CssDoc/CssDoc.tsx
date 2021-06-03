@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment, ReactNode } from 'react';
 import { Route, Switch, useRouteMatch } from 'react-router';
 import {
   Stack,
@@ -8,15 +8,67 @@ import {
   Text,
   Box,
   Inline,
+  BraidProvider,
 } from '../../../../lib/components';
-import { CssDoc as CssDocType } from '../../types';
+import { PlayroomStateProvider } from '../../../../lib/playroom/playroomState';
+import { useSourceFromExample } from '../../../../lib/utils/useSourceFromExample';
+import { ComponentExample, CssDoc as CssDocType } from '../../types';
 import {
   Navigation,
   NavigationItem,
 } from '../ComponentDoc/Navigation/Navigation';
+import { LinkableHeading } from '../LinkableHeading/LinkableHeading';
 import { Markdown } from '../Markdown/Markdown';
 import { PageTitle } from '../Seo/PageTitle';
+import { ThemedExample, useThemeSettings } from '../ThemeSetting';
 import { getHistory } from '../Updates';
+import docsTheme from '../../../../lib/themes/docs';
+import Code from '../Code/Code';
+
+const DefaultContainer = ({ children }: { children: ReactNode }) => (
+  <Fragment>{children}</Fragment>
+);
+
+interface RenderExampleProps {
+  id: string;
+  Example?: ComponentExample['Example'];
+  code?: ComponentExample['code'];
+  Container?: ComponentExample['Container'];
+  background?: ComponentExample['background'];
+  showCodeByDefault?: ComponentExample['showCodeByDefault'];
+  playroom?: ComponentExample['playroom'];
+}
+const RenderExample = ({
+  id,
+  Example,
+  code,
+  Container = DefaultContainer,
+  background = 'body',
+  showCodeByDefault = false,
+  playroom,
+}: RenderExampleProps) => {
+  const { code: codeAsString, value } = useSourceFromExample(id, {
+    Example,
+    code,
+  });
+
+  return (
+    <BraidProvider styleBody={false} theme={docsTheme}>
+      <Stack space="xxsmall">
+        {value ? (
+          <ThemedExample background={background}>
+            <Container>{value}</Container>
+          </ThemedExample>
+        ) : null}
+        {codeAsString ? (
+          <Code collapsedByDefault={!showCodeByDefault} playroom={playroom}>
+            {codeAsString}
+          </Code>
+        ) : null}
+      </Stack>
+    </BraidProvider>
+  );
+};
 
 interface Props {
   name: string;
@@ -26,6 +78,7 @@ interface Props {
 export const CssDoc = ({ name, docs }: Props) => {
   const history = getHistory(name);
   const updateCount = history.filter((item) => item.isRecent).length;
+  const { theme } = useThemeSettings();
 
   return (
     <Stack space={['xlarge', 'xxlarge']}>
@@ -78,6 +131,32 @@ export const CssDoc = ({ name, docs }: Props) => {
             {docs.description ? (
               <Stack space="large">{docs.description}</Stack>
             ) : null}
+            {(docs.additional || []).map((example, index) => (
+              <Stack space="large" key={index}>
+                {example.label ? (
+                  <LinkableHeading level="3">{example.label}</LinkableHeading>
+                ) : null}
+                {example.description ?? null}
+                {example.code || example.Example ? (
+                  <BraidProvider styleBody={false} theme={theme}>
+                    <PlayroomStateProvider>
+                      <RenderExample
+                        id={String(index)}
+                        code={example.code}
+                        Example={example.Example}
+                        Container={example.Container}
+                        background={example.background}
+                        showCodeByDefault={
+                          example.showCodeByDefault ||
+                          example.Example === undefined
+                        }
+                        playroom={example.playroom}
+                      />
+                    </PlayroomStateProvider>
+                  </BraidProvider>
+                ) : null}
+              </Stack>
+            ))}
           </Stack>
         </Route>
         <Route path={`/css/${name}/releases`}>

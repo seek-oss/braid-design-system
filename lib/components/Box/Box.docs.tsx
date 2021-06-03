@@ -343,7 +343,9 @@ const docs: ComponentDocs = {
         <Text>
           Padding and margins can also differ across screen sizes by providing
           an array of responsive values, e.g.{' '}
-          <Strong>{"['small', 'medium', 'large']"}</Strong>
+          <Strong>
+            {"{ mobile: 'small', tablet: 'medium', desktop: 'large' }"}
+          </Strong>
         </Text>
       ),
       Example: () =>
