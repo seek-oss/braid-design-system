@@ -20,7 +20,6 @@ import css from './routes/css';
 import releaseNotes from './routes/releases';
 import gallery from './routes/gallery';
 import { AppMeta } from './Seo/AppMeta';
-import { CapsizePlayground } from './routes/CapsizePlayground/CapsizePlayground';
 
 const CustomLink = makeLinkComponent(
   ({ href, rel, onClick, ...restProps }, ref) =>
@@ -61,7 +60,6 @@ export const App = () => (
           <AppMeta />
           <Switch>
             <Route {...gallery[galleryPath]} path={galleryPath} />
-            <Route path="/capsize-playground" component={CapsizePlayground} />
             <Navigation>
               <Switch>
                 {map(
