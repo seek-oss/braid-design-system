@@ -1,5 +1,10 @@
 import { vars as internalVars } from '../lib/themes/vars.css';
 import { atoms as internalAtoms, Atoms } from '../lib/atoms/atoms';
+import {
+  breakpoints,
+  Breakpoint,
+  responsiveStyle,
+} from '../lib/themes/vanillaUtils';
 
 const {
   grid,
@@ -13,7 +18,7 @@ const {
   borderWidth,
 } = internalVars;
 
-export const vars = {
+const vars = {
   grid,
   space,
   touchableSize,
@@ -25,7 +30,7 @@ export const vars = {
   borderWidth,
 };
 
-export function atoms(props: Omit<Atoms, 'background'>) {
+function atoms(props: Omit<Atoms, 'background'>) {
   if (process.env.NODE_ENV !== 'production') {
     if ('background' in props) {
       throw new Error(
@@ -37,8 +42,4 @@ export function atoms(props: Omit<Atoms, 'background'>) {
   return internalAtoms(props);
 }
 
-export {
-  breakpoints,
-  Breakpoint,
-  responsiveStyle,
-} from '../lib/themes/vanillaUtils';
+export { vars, atoms, breakpoints, Breakpoint, responsiveStyle };
