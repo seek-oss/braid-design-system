@@ -15,6 +15,7 @@ import { ThemeToggle } from '../ThemeSetting';
 import {
   categorisedComponents,
   documentedComponents,
+  documentedCss,
 } from '../navigationHelpers';
 import { useConfig } from '../ConfigContext';
 import { isNew } from '../Updates';
@@ -168,6 +169,16 @@ export const SubNavigation = ({ onSelect }: SubNavigationProps) => {
           name: docs.name,
           badge: getBadge(docs),
           path: `/components/${docs.name}`,
+          onClick: onSelect,
+        }))}
+      />
+
+      <SubNavigationGroup
+        title="CSS"
+        items={documentedCss.map((doc) => ({
+          name: doc.name,
+          badge: getBadge(doc),
+          path: `/css/${doc.name}`,
           onClick: onSelect,
         }))}
       />
