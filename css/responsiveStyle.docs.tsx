@@ -1,7 +1,8 @@
 import dedent from 'dedent';
 import React from 'react';
+import { responsiveStyle, vars, breakpoints } from '.';
 import { Notice, Strong, Text, TextLink } from '../lib/components';
-import { breakpoints } from '../lib/themes/vanillaUtils';
+import source from '../lib/utils/source.macro';
 import Code from '../site/src/App/Code/Code';
 import { CssDoc } from '../site/src/types';
 
@@ -58,11 +59,15 @@ const docs: CssDoc = {
               import { vars, responsiveStyle } from 'braid-design-system/css';
 
               export const root = style(
-                responsiveStyle({
-                  mobile: { flexBasis: vars.space.small },
-                  tablet: { flexBasis: vars.space.medium },
-                  desktop: { flexBasis: vars.space.large },
-                }),
+                ${
+                  source(
+                    responsiveStyle({
+                      mobile: { flexBasis: vars.space.small },
+                      tablet: { flexBasis: vars.space.medium },
+                      desktop: { flexBasis: vars.space.large },
+                    }),
+                  ).code
+                }
               );
             `}
           </Code>
@@ -84,14 +89,18 @@ const docs: CssDoc = {
               import { style } from '@vanilla-extract/css';
               import { vars, responsiveStyle } from 'braid-design-system/css';
 
-              export const root = style({
-                top: '100px',
-                ...responsiveStyle({
-                  mobile: { left: vars.space.gutter },
-                  tablet: { left: vars.space.xlarge },
-                  desktop: { left: '10vw' },
-                }),
-              });
+              export const root = style(
+                ${
+                  source({
+                    top: '100px',
+                    ...responsiveStyle({
+                      mobile: { left: vars.space.gutter },
+                      tablet: { left: vars.space.xlarge },
+                      desktop: { left: '10vw' },
+                    }),
+                  }).code
+                }
+              );
             `}
           </Code>
         </>
