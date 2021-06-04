@@ -128,9 +128,10 @@ export const CssDoc = ({ name, docs }: Props) => {
         <Route exact path={`/css/${name}`}>
           <PageTitle title={name} />
           <Stack space="xxlarge">
-            {docs.description ? (
-              <Stack space="large">{docs.description}</Stack>
-            ) : null}
+            <Stack space="large">
+              {docs.usage}
+              {docs.description || null}
+            </Stack>
             {(docs.additional || []).map((example, index) => (
               <Stack space="large" key={index}>
                 {example.label ? (

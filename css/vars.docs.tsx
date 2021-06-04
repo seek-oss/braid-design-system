@@ -201,9 +201,9 @@ const varDocs: Record<keyof typeof vars, ReactNodeNoStrings> = {
 } as const;
 
 const docs: CssDoc = {
+  usage: <Code>{`import { vars } from 'braid-design-system/css';`}</Code>,
   description: (
     <>
-      <Code>{`import { vars } from 'braid-design-system/css';`}</Code>
       <Text>
         The <Strong>vars</Strong> object provides access to Braid’s CSS
         variables, which can be used both within{' '}

@@ -8,6 +8,9 @@ import { CssDoc } from '../site/src/types';
 const bps = Object.keys(breakpoints);
 
 const docs: CssDoc = {
+  usage: (
+    <Code>{`import { responsiveStyle } from 'braid-design-system/css';`}</Code>
+  ),
   description: (
     <Text>
       A utility to make authoring mobile-first responsive styles in{' '}

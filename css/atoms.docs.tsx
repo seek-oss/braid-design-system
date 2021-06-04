@@ -52,18 +52,14 @@ function AtomicProperty({ name, modifier, values }: AtomicPropertyProps) {
 }
 
 const docs: CssDoc = {
+  usage: <Code>{`import { atoms } from 'braid-design-system/css';`}</Code>,
   description: (
-    <>
-      <Code>{`import { atoms } from 'braid-design-system/css';`}</Code>
-      <Text>
-        The <Strong>atoms</Strong> function provides low-level access to Braid’s
-        reusable atomic classes within your{' '}
-        <TextLink href="https://vanilla-extract.style">
-          vanilla-extract
-        </TextLink>{' '}
-        stylesheets, i.e. files ending in <Strong>.css.ts</Strong>.
-      </Text>
-    </>
+    <Text>
+      The <Strong>atoms</Strong> function provides low-level access to Braid’s
+      reusable atomic classes within your{' '}
+      <TextLink href="https://vanilla-extract.style">vanilla-extract</TextLink>{' '}
+      stylesheets, i.e. files ending in <Strong>.css.ts</Strong>.
+    </Text>
   ),
   additional: [
     {

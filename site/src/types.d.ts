@@ -38,6 +38,7 @@ export interface ComponentDocs {
 }
 
 export interface CssDoc {
+  usage: ReactNodeNoStrings;
   description?: ReactNodeNoStrings;
   additional?: ComponentExample[];
 }
