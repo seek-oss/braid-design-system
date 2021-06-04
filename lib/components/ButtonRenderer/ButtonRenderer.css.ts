@@ -68,12 +68,12 @@ const stylesForBreakpoint = (
     size === 'small'
       ? calc.add(
           calc.multiply(vars.space[constants.smallButtonPaddingSize], 2),
-          calc.multiply(vars.textSize.small[breakpoint].leading, '1px'),
+          vars.textSize.small[breakpoint].lineHeight,
         )
       : vars.touchableSize;
 
   const value = calc(height)
-    .subtract(calc.multiply(vars.textSize[size][breakpoint].capHeight, '1px'))
+    .subtract(vars.textSize[size][breakpoint].capHeight)
     .divide(2)
     .negate()
     .toString();

@@ -143,11 +143,10 @@ export const closeButtonOpacity = style({
 const CLOSE_ICON_GUTTER_RATIO = 0.3;
 
 const calculateIconCrop = (level: '2' | '3', breakpoint: TextBreakpoint) => {
-  const capHeight = calc.multiply(
+  const size = calc.multiply(
     vars.headingLevel[level][breakpoint].capHeight,
-    '1px',
+    calc.add(1, CLOSE_ICON_GUTTER_RATIO),
   );
-  const size = calc.multiply(capHeight, calc.add(1, CLOSE_ICON_GUTTER_RATIO));
   const offset = calc.divide(calc.multiply(size, CLOSE_ICON_GUTTER_RATIO), 2);
   const nudge = '1px';
 
@@ -180,11 +179,10 @@ const calculateCloseIconSize = (
   level: '2' | '3',
   breakpoint: TextBreakpoint,
 ) => {
-  const capHeight = calc.multiply(
+  const size = calc.multiply(
     vars.headingLevel[level][breakpoint].capHeight,
-    '1px',
+    calc.add(1, CLOSE_ICON_GUTTER_RATIO),
   );
-  const size = calc.multiply(capHeight, calc.add(1, CLOSE_ICON_GUTTER_RATIO));
 
   return {
     width: size,

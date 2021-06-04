@@ -7,10 +7,9 @@ const calculateForBreakpoint = (
   breakpoint: keyof typeof vars.textSize.standard,
 ) => {
   const type = vars.textSize.standard[breakpoint];
-  const padding = calc(type.leading)
+  const padding = calc(type.lineHeight)
     .subtract(type.capHeight)
     .divide(2)
-    .multiply('1px')
     .toString();
 
   return {

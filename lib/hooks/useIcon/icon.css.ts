@@ -1,5 +1,4 @@
 import { style, styleVariants } from '@vanilla-extract/css';
-import { calc } from '@vanilla-extract/css-utils';
 import { responsiveStyle } from '../../themes/vanillaUtils';
 import { vars } from '../../themes/vars.css';
 
@@ -30,7 +29,7 @@ export const alignY = {
 
 export const blockWidths = styleVariants(vars.textSize, ({ mobile, tablet }) =>
   responsiveStyle({
-    mobile: { width: calc.multiply(mobile.leading, '1px') },
-    tablet: { width: calc.multiply(tablet.leading, '1px') },
+    mobile: { width: mobile.lineHeight },
+    tablet: { width: tablet.lineHeight },
   }),
 );

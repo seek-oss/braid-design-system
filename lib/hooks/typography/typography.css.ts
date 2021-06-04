@@ -35,26 +35,26 @@ const makeTypographyRules = (
 ) => {
   const {
     fontSize: mobileFontSize,
-    leading: mobileLeading,
-    capsize: mobileCapsizeValues,
+    lineHeight: mobileLineHeight,
+    capsizeTrims: mobileCapsizeTrims,
   } = textDefinition.mobile;
 
   const {
     fontSize: tabletFontSize,
-    leading: tabletLeading,
-    capsize: tabletCapsizeValues,
+    lineHeight: tabletLineHeight,
+    capsizeTrims: tabletCapsizeTrims,
   } = textDefinition.tablet;
 
   return {
     raw: style(
       responsiveStyle({
         mobile: {
-          fontSize: calc.multiply(mobileFontSize, '1px'),
-          lineHeight: calc.multiply(mobileLeading, '1px'),
+          fontSize: mobileFontSize,
+          lineHeight: mobileLineHeight,
         },
         tablet: {
-          fontSize: calc.multiply(tabletFontSize, '1px'),
-          lineHeight: calc.multiply(tabletLeading, '1px'),
+          fontSize: tabletFontSize,
+          lineHeight: tabletLineHeight,
         },
       }),
     ),
@@ -63,10 +63,18 @@ const makeTypographyRules = (
       style(
         responsiveStyle({
           mobile: {
-            vars: assignVars(capsizeVars, mobileCapsizeValues),
+            vars: assignVars(capsizeVars, {
+              fontSize: mobileFontSize,
+              lineHeight: mobileLineHeight,
+              ...mobileCapsizeTrims,
+            }),
           },
           tablet: {
-            vars: assignVars(capsizeVars, tabletCapsizeValues),
+            vars: assignVars(capsizeVars, {
+              fontSize: tabletFontSize,
+              lineHeight: tabletLineHeight,
+              ...tabletCapsizeTrims,
+            }),
           },
         }),
         debug,
@@ -239,10 +247,7 @@ export const toneOverridesForBackground: ToneOverridesForBackground = {
 };
 
 const makeTouchableSpacing = (touchableHeight: string, textHeight: string) => {
-  const space = calc(touchableHeight)
-    .subtract(calc.multiply(textHeight, '1px'))
-    .divide(2)
-    .toString();
+  const space = calc(touchableHeight).subtract(textHeight).divide(2).toString();
 
   return {
     paddingTop: space,
@@ -254,11 +259,11 @@ export const touchable = styleVariants(vars.textSize, (textDefinition) =>
   responsiveStyle({
     mobile: makeTouchableSpacing(
       vars.touchableSize,
-      textDefinition.mobile.leading,
+      textDefinition.mobile.lineHeight,
     ),
     tablet: makeTouchableSpacing(
       vars.touchableSize,
-      textDefinition.tablet.leading,
+      textDefinition.tablet.lineHeight,
     ),
   }),
 );

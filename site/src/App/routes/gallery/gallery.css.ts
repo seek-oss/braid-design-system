@@ -12,7 +12,7 @@ export const loader = style({
 export const divider = style({
   borderRight: `${vars.borderWidth.standard}px solid ${vars.borderColor.standard}`,
   width: 1,
-  height: vars.textSize.standard.mobile.leading,
+  height: vars.textSize.standard.mobile.lineHeight,
 });
 
 export const moveCursor = style({

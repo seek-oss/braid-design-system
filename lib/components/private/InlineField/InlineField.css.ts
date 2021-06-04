@@ -48,7 +48,7 @@ export const fakeFieldSize = styleVariants(sizes, (size) => ({
 
 export const badgeOffset = styleVariants(sizes, (size: Size) => {
   const offset = calc(vars.inlineFieldSize[size])
-    .subtract(calc.multiply(vars.textSize.xsmall.mobile.leading, '1px'))
+    .subtract(vars.textSize.xsmall.mobile.lineHeight)
     .divide(2)
     .toString();
 
@@ -67,7 +67,7 @@ export const labelBase = style({
 });
 export const labelOffset = styleVariants(sizes, (size: Size) => ({
   paddingTop: calc(vars.inlineFieldSize[size])
-    .subtract(calc.multiply(vars.textSize[size].mobile.capHeight, '1px'))
+    .subtract(vars.textSize[size].mobile.capHeight)
     .divide(2)
     .toString(),
 }));

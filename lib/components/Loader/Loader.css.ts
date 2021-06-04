@@ -1,5 +1,4 @@
 import { keyframes, style, styleVariants } from '@vanilla-extract/css';
-import { calc } from '@vanilla-extract/css-utils';
 import { responsiveStyle } from '../../themes/vanillaUtils';
 import { vars } from '../../themes/vars.css';
 
@@ -72,12 +71,12 @@ export const delay = style({
 export const circleSize = styleVariants(vars.textSize, ({ mobile, tablet }) =>
   responsiveStyle({
     mobile: {
-      width: calc.multiply(mobile.capHeightFloored, '1px'),
-      height: calc.multiply(mobile.capHeightFloored, '1px'),
+      width: mobile.capHeightFloored,
+      height: mobile.capHeightFloored,
     },
     tablet: {
-      width: calc.multiply(tablet.capHeightFloored, '1px'),
-      height: calc.multiply(tablet.capHeightFloored, '1px'),
+      width: tablet.capHeightFloored,
+      height: tablet.capHeightFloored,
     },
   }),
 );

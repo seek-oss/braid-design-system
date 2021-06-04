@@ -38,7 +38,7 @@ export const realFieldPosition = styleVariants(sizes, (size) => ({
 
 export const label = styleVariants(sizes, (size) => {
   const padding = calc(vars.inlineFieldSize[size])
-    .subtract(calc.multiply(vars.textSize.standard.mobile.leading, '1px'))
+    .subtract(vars.textSize.standard.mobile.lineHeight)
     .divide(2)
     .toString();
 

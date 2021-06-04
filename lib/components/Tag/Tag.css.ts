@@ -8,10 +8,7 @@ export const constants = {
 } as const;
 
 const calculateBorderRadius = () => {
-  const textHeight = calc.multiply(
-    vars.textSize[constants.textSize].mobile.leading,
-    '1px',
-  );
+  const textHeight = vars.textSize[constants.textSize].mobile.lineHeight;
   const paddingHeight = calc.multiply(vars.space[constants.paddingY], 2);
   const height = calc.add(textHeight, paddingHeight);
   return calc.divide(height, 2);

@@ -20,8 +20,6 @@ const fontSizeToCapHeight = (
   fontMetrics: FontMetrics,
 ) => {
   const { mobile, tablet } = definition;
-  const mobileLeading = mobile.rows * grid;
-  const tabletLeading = tablet.rows * grid;
 
   const mobileCapHeight = getCapHeight({
     fontSize: mobile.fontSize,
@@ -33,32 +31,44 @@ const fontSizeToCapHeight = (
     fontMetrics,
   });
 
-  const mobileCapsizeValues = buildValues({
+  const {
+    fontSize: mobileFontSize,
+    lineHeight: mobileLineHeight,
+    ...mobileTrims
+  } = buildValues({
     fontSize: mobile.fontSize,
-    leading: mobileLeading,
+    leading: mobile.rows * grid,
     fontMetrics,
   });
 
-  const tabletCapsizeValues = buildValues({
+  const {
+    fontSize: tabletFontSize,
+    lineHeight: tabletLineHeight,
+    ...tabletTrims
+  } = buildValues({
     fontSize: tablet.fontSize,
-    leading: tabletLeading,
+    leading: tablet.rows * grid,
     fontMetrics,
   });
 
   return {
     mobile: {
-      fontSize: String(mobile.fontSize),
-      leading: String(mobileLeading),
-      capHeight: String(mobileCapHeight),
-      capHeightFloored: String(Math.floor(mobileCapHeight)),
-      capsize: mobileCapsizeValues,
+      fontSize: mobileFontSize,
+      lineHeight: mobileLineHeight,
+      capHeight: px(mobileCapHeight),
+      capHeightFloored: px(Math.floor(mobileCapHeight)),
+      capsizeTrims: {
+        ...mobileTrims,
+      },
     },
     tablet: {
-      fontSize: String(tablet.fontSize),
-      leading: String(tabletLeading),
-      capHeight: String(tabletCapHeight),
-      capHeightFloored: String(Math.floor(tabletCapHeight)),
-      capsize: tabletCapsizeValues,
+      fontSize: tabletFontSize,
+      lineHeight: tabletLineHeight,
+      capHeight: px(tabletCapHeight),
+      capHeightFloored: px(Math.floor(tabletCapHeight)),
+      capsizeTrims: {
+        ...tabletTrims,
+      },
     },
   };
 };

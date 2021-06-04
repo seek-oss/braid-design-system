@@ -5,7 +5,7 @@ import { vars } from '../../themes/vars.css';
 const OVERFLOW_ICON_WIDTH = '4px';
 const OVERFLOW_ICON_HEIGHT = '14px';
 
-const circleSize = calc.multiply(vars.textSize.standard.mobile.leading, '1px');
+const circleSize = vars.textSize.standard.mobile.lineHeight;
 const offsetX = calc(circleSize)
   .subtract(OVERFLOW_ICON_WIDTH)
   .divide(2)
