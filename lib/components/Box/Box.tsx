@@ -5,6 +5,7 @@ import {
   useContext,
   AllHTMLAttributes,
   ElementType,
+  useEffect,
 } from 'react';
 import dedent from 'dedent';
 import { base as baseReset } from '../../reset/reset.css';
@@ -94,19 +95,22 @@ const NamedBox = forwardRef<HTMLElement, BoxProps>(
 
     if (process.env.NODE_ENV !== 'production') {
       // eslint-disable-next-line react-hooks/rules-of-hooks
-      const inTextLinkRenderer = useContext(TextLinkRendererContext);
+      const inTextLinkRenderer = Boolean(useContext(TextLinkRendererContext));
 
-      if (classes.split(' ').includes(baseReset) && !inTextLinkRenderer) {
-        throw new Error(
-          dedent`
-            Reset class has been applied more than once. This is normally caused when asking for an explicit reset on the \`atoms\` function. This can be removed as Box automatically adds reset classes.
-
-            atoms({
-              reset: '...' // <-- Remove this
-            })
-          `,
-        );
-      }
+      // eslint-disable-next-line react-hooks/rules-of-hooks
+      useEffect(() => {
+        if (classes.includes(baseReset) && !inTextLinkRenderer) {
+          throw new Error(
+            dedent`
+              Reset class has been applied more than once. This is normally caused when asking for an explicit reset on the \`atoms\` function. This can be removed as Box automatically adds reset classes.
+  
+              atoms({
+                reset: '...' // <-- Remove this
+              })
+            `,
+          );
+        }
+      }, [classes, inTextLinkRenderer]);
     }
 
     const element = createElement(component, {
