@@ -9,6 +9,7 @@ import {
   Column,
   Box,
   Hidden,
+  Alert,
 } from '../lib/components';
 import { ReactNodeNoStrings } from '../lib/components/private/ReactNodeNoStrings';
 import Code from '../site/src/App/Code/Code';
@@ -226,6 +227,13 @@ const docs: CssDoc = {
           vanilla-extract’s calc utility.
         </TextLink>
       </Text>
+      <Alert tone="caution">
+        <Text>
+          You should only use vars if you’re unable to use{' '}
+          <TextLink href="/components/Box">Box</TextLink> or{' '}
+          <TextLink href="/css/atoms">atoms</TextLink>.
+        </Text>
+      </Alert>
     </>
   ),
   additional: Object.entries(varDocs).map(([name, value]) => ({
