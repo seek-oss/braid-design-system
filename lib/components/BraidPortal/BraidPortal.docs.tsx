@@ -8,7 +8,10 @@ const docs: ComponentDocs = {
   description: (
     <>
       <Alert tone="caution">
-        <Text>This component cannot be server-rendered.</Text>
+        <Text>
+          This component cannot be server-rendered. It should only be rendered
+          based on state that is updated client-side by user actions.
+        </Text>
       </Alert>
       <Text>
         Declaratively render a React portal while maintaining the current Braid
