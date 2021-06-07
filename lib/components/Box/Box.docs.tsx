@@ -66,12 +66,9 @@ const docs: ComponentDocs = {
         made up of Boxes.
       </Text>
       <Text>
-        All elements rendered via Box are provided with a{' '}
-        <TextLink href="https://github.com/seek-oss/braid-design-system/blob/master/lib/reset/reset.treat.ts">
-          CSS reset
-        </TextLink>{' '}
-        to ensure that elements only have styling rules that have been
-        explicitly specified.
+        All elements rendered via Box are provided with a CSS reset to ensure
+        that elements only have styling rules that have been explicitly
+        specified.
       </Text>
     </>
   ),
