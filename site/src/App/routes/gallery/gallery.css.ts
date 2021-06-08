@@ -10,7 +10,7 @@ export const loader = style({
 });
 
 export const divider = style({
-  borderRight: `${vars.borderWidth.standard}px solid ${vars.borderColor.standard}`,
+  borderRight: `${vars.borderWidth.standard} solid ${vars.borderColor.standard}`,
   width: 1,
   height: vars.textSize.standard.mobile.lineHeight,
 });

@@ -1,5 +1,5 @@
 import dedent from 'dedent';
-import React from 'react';
+import React, { Fragment } from 'react';
 import { responsiveStyle, vars, breakpoints } from '.';
 import { Notice, Strong, Text, TextLink } from '../lib/components';
 import source from '../lib/utils/source.macro';
@@ -29,11 +29,11 @@ const docs: CssDoc = {
             authoring responsive styling rules. It accepts sets of rules for
             each <TextLink href="/css/breakpoints">breakpoint</TextLink>, e.g.{' '}
             {bps.map((b, index) => (
-              <>
+              <Fragment key={b}>
                 {index === bps.length - 1 ? ' or ' : ''}
                 <Strong key={b}>{b}</Strong>
                 {index < bps.length - 2 ? ', ' : ''}
-              </>
+              </Fragment>
             ))}
             , and returns them wrapped in the corresponding media query.
           </Text>

@@ -1,4 +1,4 @@
-import { style } from '@vanilla-extract/css';
+import { globalStyle, style } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
 import { breakpoints } from '../../../../lib/atoms/breakpoints';
 import { responsiveStyle } from '../../../../lib/atoms/responsiveStyle';
@@ -70,8 +70,7 @@ export const pageContent = [
   hideOnMobileWhenOpen,
 ];
 
-// TODO:
-// globalStyle('html, body', {
-//   margin: 0,
-//   minHeight: '100%',
-// });
+globalStyle('html, body', {
+  margin: 0,
+  minHeight: '100%',
+});

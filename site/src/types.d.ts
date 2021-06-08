@@ -40,7 +40,10 @@ export interface ComponentDocs {
 export interface CssDoc {
   usage: ReactNodeNoStrings;
   description?: ReactNodeNoStrings;
-  additional?: ComponentExample[];
+  additional?: Array<{
+    label?: string;
+    description?: ReactNodeNoStrings;
+  }>;
 }
 
 interface ExampleProps extends ReturnType<typeof useScope> {
