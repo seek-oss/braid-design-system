@@ -21,8 +21,8 @@ function invertAlignment<Alignment extends string>(alignment: Alignment) {
   return alignment;
 }
 
-const optimiseResponsiveArray = <Value extends string | null>(
-  value: [Value, Value, Value],
+const optimiseResponsiveArray = <Value extends string | number>(
+  value: [Value, Value | null, Value | null],
 ) => {
   let lastValue: Value | undefined;
 
