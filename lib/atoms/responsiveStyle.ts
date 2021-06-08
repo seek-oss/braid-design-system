@@ -1,13 +1,7 @@
 import { isEqual, omit } from 'lodash';
 import { StyleRule } from '@vanilla-extract/css';
+import { breakpoints } from './breakpoints';
 
-export const breakpoints = {
-  mobile: 0,
-  tablet: 740,
-  desktop: 992,
-};
-
-export type Breakpoint = keyof typeof breakpoints;
 type CSSProps = Omit<StyleRule, '@media' | '@supports'>;
 
 const makeMediaQuery = (breakpoint: keyof typeof breakpoints) => (

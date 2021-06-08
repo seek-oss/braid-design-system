@@ -7,7 +7,7 @@ import {
 import { calc } from '@vanilla-extract/css-utils';
 
 import { vars } from '../../themes/vars.css';
-import { responsiveStyle } from '../../themes/vanillaUtils';
+import { responsiveStyle } from '../../atoms/responsiveStyle';
 import { className, vars as capsizeVars } from './capsize/prebuilt';
 
 import { mapToProperty } from '../../utils';

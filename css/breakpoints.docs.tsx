@@ -9,7 +9,7 @@ import {
   Text,
   TextLink,
 } from '../lib/components';
-import { breakpoints } from '../lib/themes/vanillaUtils';
+import { breakpoints } from '../lib/atoms/breakpoints';
 import Code from '../site/src/App/Code/Code';
 import { CssDoc } from '../site/src/types';
 

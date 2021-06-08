@@ -1,7 +1,6 @@
 // Adapted version of https://github.com/streamich/react-use/blob/master/src/useMedia.ts
 import React, { useEffect, useState, createContext, ReactNode } from 'react';
-
-import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
+import { breakpoints } from '../../atoms/breakpoints';
 
 export type Breakpoint = 'mobile' | 'tablet' | 'desktop';
 
@@ -27,7 +26,7 @@ interface BreakpointProviderProps {
   children: ReactNode;
 }
 export function BreakpointProvider({ children }: BreakpointProviderProps) {
-  const { tablet, desktop } = useBraidTheme().breakpoint;
+  const { tablet, desktop } = breakpoints;
 
   const [state, setState] = useState<Breakpoint | null>(null);
 

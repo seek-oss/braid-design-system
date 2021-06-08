@@ -1,9 +1,7 @@
 import { style } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
-import {
-  breakpoints,
-  responsiveStyle,
-} from '../../../../lib/themes/vanillaUtils';
+import { breakpoints } from '../../../../lib/atoms/breakpoints';
+import { responsiveStyle } from '../../../../lib/atoms/responsiveStyle';
 import { vars } from '../../../../lib/themes/vars.css';
 import { menuWidth, headerHeight, gutterSize } from './navigationSizes';
 

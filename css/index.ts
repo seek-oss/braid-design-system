@@ -1,7 +1,8 @@
 import { vars as internalVars } from '../lib/themes/vars.css';
 import { atoms as internalAtoms, Atoms } from '../lib/atoms/atoms';
-import { breakpoints, responsiveStyle } from '../lib/themes/vanillaUtils';
-import type { Breakpoint as _Breakpoint } from '../lib/themes/vanillaUtils';
+import { responsiveStyle } from '../lib/atoms/responsiveStyle';
+import { breakpoints } from '../lib/atoms/breakpoints';
+import type { Breakpoint } from '../lib/atoms/breakpoints';
 
 const {
   grid,
@@ -38,4 +39,4 @@ function atoms(props: Omit<Atoms, 'background'>) {
 }
 
 export { vars, atoms, breakpoints, responsiveStyle };
-export type Breakpoint = _Breakpoint;
+export type { Breakpoint };
