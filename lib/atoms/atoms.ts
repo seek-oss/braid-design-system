@@ -17,9 +17,10 @@ export const atoms = ({ reset, ...rest }: Atoms) => {
     return sprinkles(rest);
   }
 
-  return [
-    resetStyles.base,
-    resetStyles.element[reset as keyof typeof resetStyles.element],
-    sprinkles(rest),
-  ].join(' ');
+  const elementReset =
+    resetStyles.element[reset as keyof typeof resetStyles.element];
+
+  return `${resetStyles.base}${
+    elementReset ? ` ${elementReset}` : ''
+  } ${sprinkles(rest)}`;
 };
