@@ -8,7 +8,7 @@ import { calc } from '@vanilla-extract/css-utils';
 
 import { vars } from '../../themes/vars.css';
 import { responsiveStyle } from '../../atoms/responsiveStyle';
-import { className, vars as capsizeVars } from './capsize/prebuilt';
+import * as capsize from './capsize/prebuilt';
 
 import { mapToProperty } from '../../utils';
 import { BackgroundVariant } from './../../components/Box/BackgroundContext';
@@ -46,7 +46,7 @@ const makeTypographyRules = (
   } = textDefinition.tablet;
 
   return {
-    raw: style(
+    untrimmed: style(
       responsiveStyle({
         mobile: {
           fontSize: mobileFontSize,
@@ -59,18 +59,18 @@ const makeTypographyRules = (
       }),
     ),
     trimmed: composeStyles(
-      className,
+      capsize.className,
       style(
         responsiveStyle({
           mobile: {
-            vars: assignVars(capsizeVars, {
+            vars: assignVars(capsize.vars, {
               fontSize: mobileFontSize,
               lineHeight: mobileLineHeight,
               ...mobileCapsizeTrims,
             }),
           },
           tablet: {
-            vars: assignVars(capsizeVars, {
+            vars: assignVars(capsize.vars, {
               fontSize: tabletFontSize,
               lineHeight: tabletLineHeight,
               ...tabletCapsizeTrims,

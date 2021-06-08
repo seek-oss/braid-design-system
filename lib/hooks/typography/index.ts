@@ -32,7 +32,7 @@ export function useText({
     styles.fontFamily,
     textTone,
     styles.fontWeight[weight],
-    baseline ? styles.text[size].trimmed : styles.text[size].raw,
+    baseline ? styles.text[size].trimmed : styles.text[size].untrimmed,
   );
 }
 
@@ -57,13 +57,13 @@ export function useHeading({
   return classnames(
     styles.fontFamily,
     styles.headingWeight[weight],
-    baseline ? styles.heading[level].trimmed : styles.heading[level].raw,
+    baseline ? styles.heading[level].trimmed : styles.heading[level].untrimmed,
     textTone,
   );
 }
 
 export function useTextSize(size: keyof typeof styles.text) {
-  return styles.text[size].raw;
+  return styles.text[size].untrimmed;
 }
 
 export function useWeight(weight: keyof typeof styles.fontWeight) {

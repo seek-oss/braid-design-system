@@ -4,7 +4,6 @@ import { ComponentDocs } from '../../../site/src/types';
 
 const docs: ComponentDocs = {
   category: 'Logic',
-  migrationGuide: true,
   description: (
     <>
       <Alert tone="caution">
