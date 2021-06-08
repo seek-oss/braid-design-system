@@ -21,6 +21,21 @@ function invertAlignment<Alignment extends string>(alignment: Alignment) {
   return alignment;
 }
 
+const optimiseResponsiveArray = <Value extends string | null>(
+  value: [Value, Value, Value],
+) => {
+  let lastValue: Value | undefined;
+
+  return value.map((v) => {
+    if (v !== lastValue && v !== null) {
+      lastValue = v;
+      return v;
+    }
+
+    return null;
+  }) as [Value, Value | null, Value | null];
+};
+
 export interface CollapsibleAlignmentProps {
   collapseBelow?: ResponsiveRangeProps['below'];
   align?: OptionalResponsiveValue<Align>;
@@ -60,32 +75,32 @@ export function resolveCollapsibleAlignmentProps({
         : childrenArray;
     },
     collapsibleAlignmentProps: {
-      display: [
+      display: optimiseResponsiveArray([
         collapseMobile ? 'block' : 'flex',
         collapseTablet ? 'block' : 'flex',
         'flex',
-      ],
-      flexDirection: [
+      ]),
+      flexDirection: optimiseResponsiveArray([
         collapseMobile ? 'column' : 'row',
         // eslint-disable-next-line no-nested-ternary
         collapseTablet ? 'column' : rowReverseTablet ? 'rowReverse' : 'row',
         rowReverseDesktop ? 'rowReverse' : 'row',
-      ],
+      ]),
       justifyContent: align
-        ? {
-            mobile: justifyContentMobile,
-            tablet: rowReverseTablet
+        ? optimiseResponsiveArray([
+            justifyContentMobile,
+            rowReverseTablet
               ? invertAlignment(justifyContentTablet)
               : justifyContentTablet,
-            desktop: rowReverseDesktop
+            rowReverseDesktop
               ? invertAlignment(justifyContentDesktop)
               : justifyContentDesktop,
-          }
+          ])
         : undefined,
       alignItems: alignY ? alignYToFlexAlign(alignY) : undefined,
     },
     collapsibleAlignmentChildProps: {
-      display: [
+      display: optimiseResponsiveArray([
         collapseMobile && justifyContentMobile !== 'flexStart'
           ? 'flex'
           : 'block',
@@ -93,8 +108,12 @@ export function resolveCollapsibleAlignmentProps({
           ? 'flex'
           : 'block',
         'block',
-      ],
-      justifyContent: [justifyContentMobile, justifyContentTablet],
+      ]),
+      justifyContent: optimiseResponsiveArray([
+        justifyContentMobile,
+        justifyContentTablet,
+        null,
+      ]),
     },
   } as const;
 }
