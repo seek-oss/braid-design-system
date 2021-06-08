@@ -114,7 +114,7 @@ Please note that we've omitted theme variables that we consider to be unnecessar
 
 **Themed style calculations must now use calc**
 
-Theme variables are now opaque strings (i.e. `"var(--g7vce91)"`) rather than actual token values, which means you can't perform JavaScript calculations on them. Instead, calculations should use CSS's `calc` function. To make this easier in TypeScript, vanilla-extract's `css-utils` package provides a [`calc` utility.](https://github.com/seek-oss/vanilla-extract#calc)
+Theme variables are now opaque strings (i.e. `"var(--g7vce91)"`) rather than actual token values, which means you can't perform JavaScript calculations on them. Instead, calculations should use CSS's `calc` function. To make this easier in TypeScript, vanilla-extract's `css-utils` package provides a [`calc` utility.](https://vanilla-extract.style/documentation/utility-functions/#calc)
 
 ```diff
 -import { style } from 'treat';
