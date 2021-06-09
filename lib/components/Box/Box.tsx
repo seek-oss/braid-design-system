@@ -72,25 +72,6 @@ const NamedBox = forwardRef<HTMLElement, BoxProps>(
     },
     ref,
   ) => {
-    let resolvedTransform = transform;
-    if (typeof transform === 'string' && transform === 'touchable') {
-      if (process.env.NODE_ENV !== 'production') {
-        // eslint-disable-next-line no-console
-        console.warn(
-          dedent`
-            The \`touchable\` value has been deprecated as a standalone value for \`transform\`. The atom is now explicitly scoped to the \`active\` selector:
-            %c  -<Box transform="touchable">...</Box>
-            %c  +<Box transform="{{ active: 'touchable' }}">...</Box>
-          `,
-          'color: red',
-          'color: green',
-        );
-      }
-      resolvedTransform = {
-        active: 'touchable',
-      };
-    }
-
     const classes = classNames(className);
 
     if (process.env.NODE_ENV !== 'production') {
@@ -103,7 +84,7 @@ const NamedBox = forwardRef<HTMLElement, BoxProps>(
           throw new Error(
             dedent`
               Reset class has been applied more than once. This is normally caused when asking for an explicit reset on the \`atoms\` function. This can be removed as Box automatically adds reset classes.
-  
+
               atoms({
                 reset: '...' // <-- Remove this
               })
@@ -143,7 +124,7 @@ const NamedBox = forwardRef<HTMLElement, BoxProps>(
           background,
           boxShadow,
           transition,
-          transform: resolvedTransform,
+          transform,
           height,
           width,
           position,
