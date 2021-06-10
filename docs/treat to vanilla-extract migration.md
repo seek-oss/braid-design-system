@@ -55,7 +55,7 @@ Please note that we've omitted theme variables that we consider to be unnecessar
 
 ## The `space` and `touchableSize` variables have already been multiplied by the grid
 
-You previously needed to multiple all space values by the grid, but this is no longer necessary as it's been precomputed.
+Previously all space values needed to be multiplied by the grid. This is no longer necessary as it's been precomputed.
 
 ```diff
 -import { style } from 'sku/treat';
