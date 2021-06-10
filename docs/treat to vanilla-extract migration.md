@@ -1,4 +1,4 @@
-# treat to vanilla-extract migration
+# 🍬 treat to 🧁 vanilla-extract migration
 
 This document provides guidance for consumers looking to migrate Braid-based styles from [treat](https://seek-oss.github.io/treat) to [vanilla-extract.](http://vanilla-extract.style)
 
