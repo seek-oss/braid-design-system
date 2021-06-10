@@ -129,14 +129,14 @@
     "react-use": "^17.0.1",
     "renovate-config-seek": "0.4.0",
     "sanitize-html": "^2.3.2",
-    "sku": "10.13.1",
+    "sku": "10.13.3",
     "surge": "^0.21.7",
     "title-case": "^3.0.3",
     "ts-node": "^9.1.1",
     "typescript": "^4.2.2"
   },
   "resolutions": {
-    "playroom": "0.23.0",
+    "playroom": "0.25.0",
     "csstype": "3.0.6"
   },
   "volta": {
