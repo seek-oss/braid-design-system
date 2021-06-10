@@ -1,4 +1,9 @@
-import { keyframes, style, styleVariants } from '@vanilla-extract/css';
+import {
+  composeStyles,
+  keyframes,
+  style,
+  styleVariants,
+} from '@vanilla-extract/css';
 import { responsiveStyle } from '../../atoms/responsiveStyle';
 import { vars } from '../../themes/vars.css';
 
@@ -13,12 +18,28 @@ export const rootSize = styleVariants(vars.textSize, ({ mobile, tablet }) =>
   }),
 );
 
+export const size = styleVariants(vars.textSize, ({ mobile, tablet }) =>
+  responsiveStyle({
+    mobile: {
+      height: mobile.fontSize,
+    },
+    tablet: {
+      height: tablet.fontSize,
+    },
+  }),
+);
+
+export const color = {
+  dark: style({ fill: vars.backgroundColor.card }),
+  light: style({ fill: vars.backgroundColor.neutral }),
+};
+
 const bounce = keyframes({
   '33%': {
-    transform: `translateY(-.5em)`,
+    transform: `translateY(-1.4em)`,
   },
   '66%': {
-    transform: 'translateY(0)',
+    transform: `translateY(1.4em)`,
   },
 });
 
@@ -30,25 +51,23 @@ const bounceAnimation = style({
   animationDuration: '0.6s',
 });
 
-const animationDelay = 0.07;
-export const circle = [
+const animationDelayInMs = 70;
+export const circle = composeStyles(
   bounceAnimation,
   style({
+    transform: `translateY(1.4em)`,
     selectors: {
       [`&:nth-child(1)`]: {
-        animationDelay: `${animationDelay * 2}s`,
+        animationDelay: `${animationDelayInMs * 2}ms`,
       },
       [`&:nth-child(2)`]: {
-        animationDelay: `${animationDelay}s`,
-      },
-      [`&:nth-child(3)`]: {
-        animationDelay: '0s',
+        animationDelay: `${animationDelayInMs}ms`,
       },
     },
   }),
-];
+);
 
-export const animationDelayValue = 0.8;
+export const animationDelayValueInMs = 800;
 
 const fade = keyframes({
   from: {
@@ -65,18 +84,5 @@ export const delay = style({
   animationFillMode: 'forwards',
   animationTimingFunction: 'ease-in',
   animationDuration: '0.25s',
-  animationDelay: `${animationDelayValue}s`,
+  animationDelay: `${animationDelayValueInMs}ms`,
 });
-
-export const circleSize = styleVariants(vars.textSize, ({ mobile, tablet }) =>
-  responsiveStyle({
-    mobile: {
-      width: mobile.capHeightFloored,
-      height: mobile.capHeightFloored,
-    },
-    tablet: {
-      width: tablet.capHeightFloored,
-      height: tablet.capHeightFloored,
-    },
-  }),
-);

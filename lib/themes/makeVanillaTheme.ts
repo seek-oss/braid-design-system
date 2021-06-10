@@ -56,7 +56,6 @@ const fontSizeToCapHeight = (
       fontSize: mobileFontSize,
       lineHeight: mobileLineHeight,
       capHeight: px(mobileCapHeight),
-      capHeightFloored: px(Math.floor(mobileCapHeight)),
       capsizeTrims: {
         ...mobileTrims,
       },
@@ -65,7 +64,6 @@ const fontSizeToCapHeight = (
       fontSize: tabletFontSize,
       lineHeight: tabletLineHeight,
       capHeight: px(tabletCapHeight),
-      capHeightFloored: px(Math.floor(tabletCapHeight)),
       capsizeTrims: {
         ...tabletTrims,
       },

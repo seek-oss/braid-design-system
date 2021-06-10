@@ -12,7 +12,7 @@ import {
   Button,
 } from '../';
 import source from '../../utils/source.macro';
-import { animationDelayValue } from './Loader.css';
+import { animationDelayValueInMs } from './Loader.css';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -76,7 +76,7 @@ const docs: ComponentDocs = {
         <Text>
           If content loads quickly, users are likely to see a quick flash of the
           loading indicator. In order to reduce this visual noise, you can opt
-          to delay the visibility of the loader by {animationDelayValue * 1000}
+          to delay the visibility of the loader by {animationDelayValueInMs}
           ms via the <Strong>delayVisibility</Strong> prop.
         </Text>
       ),
