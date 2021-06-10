@@ -1734,7 +1734,6 @@ Object {
     theme: {
         background: string
         backgroundLightness: { formAccentActive: "dark" | "light"; formAccentHover: "dark" | "light"; brandAccentActive: "dark" | "light"; brandAccentHover: "dark" | "light"; criticalActive: "dark" | "light"; ... 21 more ...; neutral: "dark" | "light"; }
-        breakpoint: Record<"mobile" | "tablet" | "desktop", number>
         color: { background: { formAccentActive: string; formAccentHover: string; brandAccentActive: string; brandAccentHover: string; criticalActive: string; criticalHover: string; infoLight: string; promoteLight: string; ... 18 more ...; neutral: string; }; foreground: { ...; }; }
         displayName: string
         name: string
