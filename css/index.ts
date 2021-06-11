@@ -2,7 +2,7 @@ import { vars as internalVars } from '../lib/themes/vars.css';
 import { atoms as internalAtoms, Atoms } from '../lib/atoms/atoms';
 import { responsiveStyle } from '../lib/atoms/responsiveStyle';
 import { breakpoints } from '../lib/atoms/breakpoints';
-import { globalHeadingStyles, globalTextStyles } from '../lib/hooks/typography';
+import { globalHeadingStyle, globalTextStyle } from '../lib/hooks/typography';
 import type { Breakpoint } from '../lib/atoms/breakpoints';
 
 const {
@@ -46,7 +46,7 @@ export {
   atoms,
   breakpoints,
   responsiveStyle,
-  globalTextStyles,
-  globalHeadingStyles,
+  globalTextStyle,
+  globalHeadingStyle,
 };
 export type { Breakpoint };

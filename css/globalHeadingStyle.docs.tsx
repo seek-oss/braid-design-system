@@ -1,14 +1,14 @@
 import dedent from 'dedent';
 import React from 'react';
-import { globalHeadingStyles } from '.';
 import { Alert, Stack, Strong, Text, TextLink } from '../lib/components';
+import { globalHeadingStyle } from '../lib/hooks/typography';
 import source from '../lib/utils/source.macro';
 import Code from '../site/src/App/Code/Code';
 import { CssDoc } from '../site/src/types';
 
 const docs: CssDoc = {
   usage: (
-    <Code>{`import { globalHeadingStyles } from 'braid-design-system/css';`}</Code>
+    <Code>{`import { globalHeadingStyle } from 'braid-design-system/css';`}</Code>
   ),
   description: (
     <>
@@ -24,8 +24,8 @@ const docs: CssDoc = {
           </Text>
           <Text>
             Not controlling the HTML, means Braid cannot manage the white space
-            or layout as it typically would. As a result the text styles
-            returned <Strong>do&nbsp;not</Strong> trim the surrounding white
+            or layout as it typically would. As a result the heading style
+            returned <Strong>does&nbsp;not</Strong> trim the surrounding white
             space.
           </Text>
         </Stack>
@@ -53,13 +53,13 @@ const docs: CssDoc = {
             {dedent`
               // myComponent.css.ts
               import { style, globalStyle } from '@vanilla-extract/css';
-              import { globalHeadingStyles } from 'braid-design-system/css';
+              import { globalHeadingStyle } from 'braid-design-system/css';
 
               export const container = style({});
 
               // Target all <h2> elements in the rendered HTML
               export const text = globalStyle(\`${'${container}'} h2\`,
-                ${source(globalHeadingStyles({ level: '2' })).code}
+                ${source(globalHeadingStyle({ level: '2' })).code}
               );
             `}
           </Code>

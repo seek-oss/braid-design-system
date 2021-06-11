@@ -22,7 +22,7 @@ export interface UseTextProps {
   backgroundContext?: BoxProps['background'];
 }
 
-export const globalTextStyles = ({
+export const globalTextStyle = ({
   weight = 'regular',
   size = 'standard',
 }: Pick<UseTextProps, 'weight' | 'size'> = {}): StyleRule => ({
@@ -68,7 +68,7 @@ interface UseHeadingProps {
   backgroundContext?: BoxProps['background'];
 }
 
-export const globalHeadingStyles = ({
+export const globalHeadingStyle = ({
   weight = 'regular',
   level,
 }: Pick<UseHeadingProps, 'weight' | 'level'>): StyleRule => ({

@@ -1,14 +1,14 @@
 import dedent from 'dedent';
 import React from 'react';
-import { globalTextStyles } from '.';
 import { Alert, Stack, Strong, Text, TextLink } from '../lib/components';
+import { globalTextStyle } from '../lib/hooks/typography';
 import source from '../lib/utils/source.macro';
 import Code from '../site/src/App/Code/Code';
 import { CssDoc } from '../site/src/types';
 
 const docs: CssDoc = {
   usage: (
-    <Code>{`import { globalTextStyles } from 'braid-design-system/css';`}</Code>
+    <Code>{`import { globalTextStyle } from 'braid-design-system/css';`}</Code>
   ),
   description: (
     <>
@@ -24,9 +24,8 @@ const docs: CssDoc = {
           </Text>
           <Text>
             Not controlling the HTML, means Braid cannot manage the white space
-            or layout as it typically would. As a result the text styles
-            returned <Strong>do&nbsp;not</Strong> trim the surrounding white
-            space.
+            or layout as it typically would. As a result the text style returned{' '}
+            <Strong>does&nbsp;not</Strong> trim the surrounding white space.
           </Text>
         </Stack>
       </Alert>
@@ -53,7 +52,7 @@ const docs: CssDoc = {
             {dedent`
               // myComponent.css.ts
               import { style, globalStyle } from '@vanilla-extract/css';
-              import { globalTextStyles } from 'braid-design-system/css';
+              import { globalTextStyle } from 'braid-design-system/css';
 
               export const container = style({});
 
@@ -61,7 +60,7 @@ const docs: CssDoc = {
               export const text = globalStyle(\`${'${container}'} p\`,
                 ${
                   source(
-                    globalTextStyles({ size: 'standard', weight: 'regular' }),
+                    globalTextStyle({ size: 'standard', weight: 'regular' }),
                   ).code
                 }
               );
