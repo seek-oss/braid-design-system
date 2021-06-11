@@ -72,6 +72,16 @@ Previously all space values needed to be multiplied by the grid. This is no long
 +});
 ```
 
+> ⚠️ Be wary when migrating template strings where units were being appended manually. The unit is no longer necessary as it's baked into value of the variable, e.g.
+>
+> ```diff
+> -export const className = style(theme => ({
+> -  margin: `${theme.space.standard * grid}px 0`
+> +export const className = style({
+> +  margin: `${vars.space.standard} 0`
+> });
+> ```
+
 ## Themed style calculations must now use calc
 
 Theme variables are now opaque strings (e.g. `"var(--g7vce91)"`) rather than actual token values, which means you can't perform JavaScript calculations on them. Instead, calculations should use CSS's `calc` function.
