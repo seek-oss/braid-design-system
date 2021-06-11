@@ -7,7 +7,10 @@ import {
 import { BoxProps } from '../../components/Box/Box';
 import { useDefaultTextProps } from '../../components/private/defaultTextProps';
 import TextLinkRendererContext from '../../components/TextLinkRenderer/TextLinkRendererContext';
+import { vars } from '../../themes/vars.css';
+import { responsiveStyle } from '../../atoms/responsiveStyle';
 import * as styles from './typography.css';
+import { StyleRule } from '@vanilla-extract/css';
 
 type TextTone = keyof typeof styles.tone | 'neutral';
 
@@ -18,6 +21,25 @@ export interface UseTextProps {
   baseline: boolean;
   backgroundContext?: BoxProps['background'];
 }
+
+export const globalTextStyles = ({
+  weight = 'regular',
+  size = 'standard',
+}: Pick<UseTextProps, 'weight' | 'size'>): StyleRule => ({
+  fontFamily: vars.fontFamily,
+  fontWeight: vars.textWeight[weight],
+  color: vars.foregroundColor.neutral,
+  ...responsiveStyle({
+    mobile: {
+      fontSize: vars.textSize[size].mobile.fontSize,
+      lineHeight: vars.textSize[size].mobile.lineHeight,
+    },
+    tablet: {
+      fontSize: vars.textSize[size].tablet.fontSize,
+      lineHeight: vars.textSize[size].tablet.lineHeight,
+    },
+  }),
+});
 
 export function useText({
   weight = 'regular',
@@ -39,19 +61,38 @@ export function useText({
 export type HeadingLevel = keyof typeof styles.heading;
 export type HeadingWeight = 'regular' | 'weak';
 
-interface UseHeadingParams {
+interface UseHeadingProps {
   weight?: HeadingWeight;
   level: HeadingLevel;
   baseline: boolean;
   backgroundContext?: BoxProps['background'];
 }
 
+export const globalHeadingStyles = ({
+  weight = 'regular',
+  level,
+}: Pick<UseHeadingProps, 'weight' | 'level'>): StyleRule => ({
+  fontFamily: vars.fontFamily,
+  fontWeight: vars.headingWeight[weight],
+  color: vars.foregroundColor.neutral,
+  ...responsiveStyle({
+    mobile: {
+      fontSize: vars.headingLevel[level].mobile.fontSize,
+      lineHeight: vars.headingLevel[level].mobile.lineHeight,
+    },
+    tablet: {
+      fontSize: vars.headingLevel[level].tablet.fontSize,
+      lineHeight: vars.headingLevel[level].tablet.lineHeight,
+    },
+  }),
+});
+
 export function useHeading({
   weight = 'regular',
   level,
   baseline,
   backgroundContext,
-}: UseHeadingParams) {
+}: UseHeadingProps) {
   const textTone = useTextTone({ tone: 'neutral', backgroundContext });
 
   return classnames(
