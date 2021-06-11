@@ -23,7 +23,7 @@ const docs: CssDoc = {
             HTML.
           </Text>
           <Text>
-            Not controlling the HTML, means Braid cannot manage the white space
+            Not controlling the HTML means Braid cannot manage the white space
             or layout as it typically would. As a result the heading style
             returned <Strong>does&nbsp;not</Strong> trim the surrounding white
             space.
@@ -45,9 +45,9 @@ const docs: CssDoc = {
             compatible object that needs to be passed through one of
             vanilla-extract&rsquo;s{' '}
             <TextLink href="https://vanilla-extract.style/documentation/styling-api/">
-              styling apis
-            </TextLink>
-            , e.g. ‘globalStyle’, to create the actual styles.
+              styling APIs
+            </TextLink>{' '}
+            (e.g. ‘globalStyle’) to create the actual styles.
           </Text>
           <Code>
             {dedent`
@@ -55,10 +55,10 @@ const docs: CssDoc = {
               import { style, globalStyle } from '@vanilla-extract/css';
               import { globalHeadingStyle } from 'braid-design-system/css';
 
-              export const container = style({});
+              export const root = style({});
 
-              // Target all <h2> elements in the rendered HTML
-              export const text = globalStyle(\`${'${container}'} h2\`,
+              // Target all <h2> elements within the root class
+              globalStyle(\`${'${root}'} h2\`,
                 ${source(globalHeadingStyle({ level: '2' })).code}
               );
             `}
