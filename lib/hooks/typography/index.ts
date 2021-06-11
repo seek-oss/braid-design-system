@@ -25,7 +25,7 @@ export interface UseTextProps {
 export const globalTextStyles = ({
   weight = 'regular',
   size = 'standard',
-}: Pick<UseTextProps, 'weight' | 'size'>): StyleRule => ({
+}: Pick<UseTextProps, 'weight' | 'size'> = {}): StyleRule => ({
   fontFamily: vars.fontFamily,
   fontWeight: vars.textWeight[weight],
   color: vars.foregroundColor.neutral,

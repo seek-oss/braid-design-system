@@ -45,7 +45,7 @@ const docs: CssDoc = {
             </Text>
           </Notice>
           <Text>
-            The returned object must be passed through through one of
+            The returned object must be passed through one of
             vanilla-extract&rsquo;s{' '}
             <TextLink href="https://vanilla-extract.style/documentation/styling-api/">
               styling apis

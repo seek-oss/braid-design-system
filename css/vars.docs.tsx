@@ -124,7 +124,24 @@ const varDocs: Record<keyof typeof vars, ReactNodeNoStrings> = {
               }}
             />
           </Box>
-          {/* </Box> */}
+        </Row>
+      ))}
+    </Stack>
+  ),
+  textWeight: (
+    <Stack space="medium" dividers>
+      {Object.entries(vars.textWeight).map(([weight, weightVar]) => (
+        <Row key={weight} group="textWeight" name={weight}>
+          <Text size="large">
+            <span
+              style={{
+                // @ts-expect-error csstype `Property.FontWeight` does not support CSS variables as valid values
+                fontWeight: weightVar,
+              }}
+            >
+              Aa
+            </span>
+          </Text>
         </Row>
       ))}
     </Stack>
