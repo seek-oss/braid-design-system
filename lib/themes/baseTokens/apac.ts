@@ -154,11 +154,6 @@ export const makeTokens = ({
         },
       },
     },
-    breakpoint: {
-      mobile: 0,
-      tablet: 740,
-      desktop: 992,
-    },
     contentWidth: {
       xsmall: 400,
       small: 660,

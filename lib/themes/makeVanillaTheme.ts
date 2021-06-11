@@ -72,7 +72,7 @@ const fontSizeToCapHeight = (
 };
 
 export default (braidTokens: BraidTokens) => {
-  const { name, displayName, breakpoint, ...tokens } = braidTokens;
+  const { name, displayName, ...tokens } = braidTokens;
   const { webFont, ...typography } = tokens.typography;
 
   const getInlineFieldSize = (size: 'standard' | 'small') => {

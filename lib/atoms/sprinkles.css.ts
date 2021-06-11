@@ -7,7 +7,7 @@ import {
   createNormalizeValueFn,
 } from '@vanilla-extract/sprinkles';
 
-import { breakpoints } from './breakpoints';
+import { breakpoints, breakpointNames } from './breakpoints';
 import {
   responsiveProperties,
   unresponsiveProperties,
@@ -39,7 +39,7 @@ const reponsiveAtomicStyles = createAtomicStyles({
       '@media': `screen and (min-width: ${breakpoints.desktop}px)`,
     },
   },
-  responsiveArray: ['mobile', 'tablet', 'desktop'],
+  responsiveArray: breakpointNames,
   properties: responsiveProperties,
   shorthands: {
     padding: ['paddingBottom', 'paddingTop', 'paddingLeft', 'paddingRight'],

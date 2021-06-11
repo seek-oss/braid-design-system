@@ -1,7 +1,5 @@
 import { FontMetrics } from 'capsize';
-
-export const breakpoints = ['mobile', 'tablet', 'desktop'] as const;
-type Breakpoint = typeof breakpoints[number];
+import { Breakpoint } from '../atoms/breakpoints';
 
 export type TextBreakpoint = Exclude<Breakpoint, 'desktop'>;
 
@@ -40,7 +38,6 @@ export interface BraidTokens {
       large: TextDefinition;
     };
   };
-  breakpoint: Record<Breakpoint, number>;
   contentWidth: {
     xsmall: number;
     small: number;

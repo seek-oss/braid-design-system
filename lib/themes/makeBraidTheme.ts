@@ -5,6 +5,7 @@ import mapValues from 'lodash/mapValues';
 import values from 'lodash/values';
 import { FontMetrics, getCapHeight } from 'capsize';
 
+import { breakpoints } from '../atoms/breakpoints';
 import { makeThemeUtils } from './themeUtils';
 import { getLightVariant, isLight } from '../utils';
 import { BraidTokens, TextDefinition } from './tokenType';
@@ -78,6 +79,7 @@ const decorateTokens = (braidTokens: BraidTokens) => {
       },
     },
     typography: normaliseSizingToCapHeight(typography),
+    breakpoint: breakpoints,
     ...restTokens,
   };
 

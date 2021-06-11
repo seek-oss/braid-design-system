@@ -1,6 +1,6 @@
 import { styleVariants } from '@vanilla-extract/css';
+import { Breakpoint } from '../../atoms/breakpoints';
 import { responsiveStyle } from '../../atoms/responsiveStyle';
-import { BraidTokens } from '../../themes/tokenType';
 
 const columnsWidths = {
   1: '100%',
@@ -11,7 +11,7 @@ const columnsWidths = {
   6: `${100 / 6}%`,
 } as const;
 
-const makeColumnsAtoms = (breakpoint: keyof BraidTokens['breakpoint']) =>
+const makeColumnsAtoms = (breakpoint: Breakpoint) =>
   styleVariants(
     columnsWidths,
     (width) => responsiveStyle({ [breakpoint]: { flex: `0 0 ${width}` } }),

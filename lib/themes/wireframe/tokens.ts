@@ -124,11 +124,6 @@ const tokens: BraidTokens = {
       },
     },
   },
-  breakpoint: {
-    mobile: 0,
-    tablet: 768,
-    desktop: 992,
-  },
   contentWidth: {
     xsmall: 400,
     small: 660,

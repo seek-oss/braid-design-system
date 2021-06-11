@@ -1,5 +1,4 @@
-import { breakpoints, BraidTokens } from '../themes/tokenType';
-type Breakpoint = keyof BraidTokens['breakpoint'];
+import { Breakpoint, breakpointNames } from '../atoms/breakpoints';
 
 export interface ResponsiveRangeProps {
   above?: Exclude<Breakpoint, 'desktop'>;
@@ -15,11 +14,11 @@ export const resolveResponsiveRangeProps = (
     return [false, false, false];
   }
 
-  const startIndex = above ? breakpoints.indexOf(above) + 1 : 0;
+  const startIndex = above ? breakpointNames.indexOf(above) + 1 : 0;
   const endIndex = below
-    ? breakpoints.indexOf(below) - 1
-    : breakpoints.length - 1;
-  const range = breakpoints.slice(startIndex, endIndex + 1);
+    ? breakpointNames.indexOf(below) - 1
+    : breakpointNames.length - 1;
+  const range = breakpointNames.slice(startIndex, endIndex + 1);
 
   const includeMobile = range.indexOf('mobile') >= 0;
   const includeTablet = range.indexOf('tablet') >= 0;
