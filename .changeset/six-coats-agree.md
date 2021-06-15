@@ -14,9 +14,9 @@ While we encourage you to write new CSS with vanilla-extract files and slowly mi
 
 **MIGRATION GUIDE**
 
-**React Portals should use the new `BraidPortal` component**
+**React Portals containing Braid components/styles must use the new `BraidPortal` component**
 
-CSS-based theming doesn't automatically cascade through React portals. The new [`BraidPortal`](https://seek-oss.github.io/braid-design-system/components/BraidPortal) component handles this for you by forwarding the theme class through the portal.
+CSS-based theming doesn't automatically cascade through React portals. The new [`BraidPortal`](https://seek-oss.github.io/braid-design-system/components/BraidPortal) component handles this for you by forwarding Braid's CSS variables through the portal.
 
 ```diff
 -import { createPortal } from 'react-dom';
@@ -31,7 +31,6 @@ CSS-based theming doesn't automatically cascade through React portals. The new [
 +  </BraidPortal>
 +) : null;
 ```
-
 
 **Migrating treat files to vanilla-extract**
 
