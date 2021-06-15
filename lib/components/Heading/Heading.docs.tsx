@@ -76,7 +76,8 @@ const docs: ComponentDocs = {
         <Text>
           Headings can be aligned via the <Strong>align</Strong> prop. If you
           need alignment to differ across various screen sizes, you can provide
-          an array of values describing the alignment of each breakpoint.
+          responsive values describing the alignment of each breakpoint, e.g.{' '}
+          <Strong>{"align={{ mobile: 'center', tablet: 'left' }}"}</Strong>
         </Text>
       ),
       Example: () =>

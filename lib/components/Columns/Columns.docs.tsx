@@ -50,15 +50,18 @@ const docs: ComponentDocs = {
           <Text>
             Responsive values are supported, e.g.{' '}
             <Strong>
-              {"{ mobile: 'small', tablet: 'medium', desktop: 'large' }"}
+              {
+                "space={{ mobile: 'small', tablet: 'medium', desktop: 'large' }}"
+              }
             </Strong>
-            .
           </Text>
         </>
       ),
       Example: () =>
         source(
-          <Columns space="large">
+          <Columns
+            space={{ mobile: 'small', tablet: 'medium', desktop: 'large' }}
+          >
             <Column>
               <Placeholder height={60} />
             </Column>

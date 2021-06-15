@@ -71,7 +71,9 @@ const docs: CssDoc = {
             Styles that regularly differ across screen sizes can also be
             expressed as responsive values, e.g.{' '}
             <Strong>
-              {"{ justifyContent: { mobile: 'center', tablet: 'flexStart' }}"}
+              {
+                "atoms({ justifyContent: { mobile: 'center', tablet: 'flexStart' }})"
+              }
             </Strong>
           </Text>
           <Text>
@@ -277,9 +279,11 @@ const docs: CssDoc = {
         <>
           <Text>
             Padding and margins can also differ across screen sizes by providing
-            an array of responsive values, e.g.{' '}
+            responsive values, e.g.{' '}
             <Strong>
-              {"{ mobile: 'small', tablet: 'medium', desktop: 'large' }"}
+              {
+                "padding={{ mobile: 'small', tablet: 'medium', desktop: 'large' }}"
+              }
             </Strong>
           </Text>
           <Code playroom={false}>

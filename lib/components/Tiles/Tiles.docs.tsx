@@ -42,7 +42,7 @@ const docs: ComponentDocs = {
         <Text>
           The number of tiles in each row. Accepts a number from 1 to 5, also
           supporting responsive values, e.g.{' '}
-          <Strong>{'{ mobile: 2, tablet: 3, desktop: 4 }'}</Strong>
+          <Strong>{'columns={{ mobile: 2, tablet: 3, desktop: 4 }}'}</Strong>
         </Text>
       ),
       Example: () =>
@@ -66,8 +66,10 @@ const docs: ComponentDocs = {
       description: (
         <Text>
           Control the amount of space between each tile using the{' '}
-          <Strong>space</Strong> prop. This can also be a responsive list of
-          spacing values.
+          <Strong>space</Strong> prop, also supporting responsive values, e.g.{' '}
+          <Strong>
+            {"space={{ mobile: 'small', tablet: 'medium', desktop: 'large' }}"}
+          </Strong>
         </Text>
       ),
       Example: () =>
