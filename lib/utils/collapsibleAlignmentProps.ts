@@ -1,13 +1,14 @@
 import { Children, ReactNode } from 'react';
 import {
-  ResponsiveRangeProps,
-  resolveResponsiveRangeProps,
-} from './responsiveRangeProps';
-import { Align, alignToFlexAlign, alignYToFlexAlign, AlignY } from './align';
-import {
   OptionalResponsiveValue,
   normalizeResponsiveValue,
 } from '../atoms/sprinkles.css';
+import {
+  ResponsiveRangeProps,
+  resolveResponsiveRangeProps,
+} from './responsiveRangeProps';
+import { optimizeResponsiveArray } from './optimizeResponsiveArray';
+import { Align, alignToFlexAlign, alignYToFlexAlign, AlignY } from './align';
 
 function invertAlignment<Alignment extends string>(alignment: Alignment) {
   if (alignment === 'flexStart') {
@@ -20,21 +21,6 @@ function invertAlignment<Alignment extends string>(alignment: Alignment) {
 
   return alignment;
 }
-
-const optimiseResponsiveArray = <Value extends string | number>(
-  value: [Value, Value | null, Value | null],
-) => {
-  let lastValue: Value | undefined;
-
-  return value.map((v) => {
-    if (v !== lastValue && v !== null) {
-      lastValue = v;
-      return v;
-    }
-
-    return null;
-  }) as [Value, Value | null, Value | null];
-};
 
 export interface CollapsibleAlignmentProps {
   collapseBelow?: ResponsiveRangeProps['below'];
@@ -75,19 +61,19 @@ export function resolveCollapsibleAlignmentProps({
         : childrenArray;
     },
     collapsibleAlignmentProps: {
-      display: optimiseResponsiveArray([
+      display: optimizeResponsiveArray([
         collapseMobile ? 'block' : 'flex',
         collapseTablet ? 'block' : 'flex',
         'flex',
       ]),
-      flexDirection: optimiseResponsiveArray([
+      flexDirection: optimizeResponsiveArray([
         collapseMobile ? 'column' : 'row',
         // eslint-disable-next-line no-nested-ternary
         collapseTablet ? 'column' : rowReverseTablet ? 'rowReverse' : 'row',
         rowReverseDesktop ? 'rowReverse' : 'row',
       ]),
       justifyContent: align
-        ? optimiseResponsiveArray([
+        ? optimizeResponsiveArray([
             justifyContentMobile,
             rowReverseTablet
               ? invertAlignment(justifyContentTablet)
@@ -100,7 +86,7 @@ export function resolveCollapsibleAlignmentProps({
       alignItems: alignY ? alignYToFlexAlign(alignY) : undefined,
     },
     collapsibleAlignmentChildProps: {
-      display: optimiseResponsiveArray([
+      display: optimizeResponsiveArray([
         collapseMobile && justifyContentMobile !== 'flexStart'
           ? 'flex'
           : 'block',
@@ -109,10 +95,9 @@ export function resolveCollapsibleAlignmentProps({
           : 'block',
         'block',
       ]),
-      justifyContent: optimiseResponsiveArray([
+      justifyContent: optimizeResponsiveArray([
         justifyContentMobile,
         justifyContentTablet,
-        null,
       ]),
     },
   } as const;

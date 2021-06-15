@@ -1,6 +1,6 @@
 import classnames from 'classnames';
 import { RequiredResponsiveValue } from '../../atoms/sprinkles.css';
-import { resolveResponsiveProp } from '../../utils/responsiveProp';
+import { resolveResponsiveProp } from '../../utils/resolveResponsiveProp';
 import * as styles from './useNegativeMarginLeft.css';
 
 type NegativeMarginLeft = Extract<

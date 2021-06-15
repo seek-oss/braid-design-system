@@ -12,11 +12,12 @@ Object {
         | "small"
         | "standard"
         | "xsmall"
-    space?: ResponsiveProp<
+    space?: 
         | "large"
         | "medium"
         | "xlarge"
-    >
+        | RequiredConditionalObject<"mobile", "tablet" | "desktop", "medium" | "large" | "xlarge">
+        | RequiredResponsiveArray<1 | 2 | 3, "medium" | "large" | "xlarge" | null>
     tone?: 
         | "neutral"
         | "secondary"

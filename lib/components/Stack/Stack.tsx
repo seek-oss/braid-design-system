@@ -8,6 +8,7 @@ import { Hidden, HiddenProps } from '../Hidden/Hidden';
 import * as hiddenStyles from '../Hidden/Hidden.css';
 import { alignToFlexAlign, Align } from '../../utils/align';
 import { resolveResponsiveRangeProps } from '../../utils/responsiveRangeProps';
+import { optimizeResponsiveArray } from '../../utils/optimizeResponsiveArray';
 import { useNegativeMarginTop } from '../../hooks/useNegativeMargin/useNegativeMargin';
 import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import {
@@ -76,11 +77,11 @@ const calculateHiddenStackItemProps = (
 
   return {
     ...stackItemProps,
-    display: {
-      mobile: hiddenOnMobile ? 'none' : displayMobile,
-      tablet: hiddenOnTablet ? 'none' : displayTablet,
-      desktop: hiddenOnDesktop ? 'none' : displayDesktop,
-    } as const,
+    display: optimizeResponsiveArray([
+      hiddenOnMobile ? 'none' : displayMobile,
+      hiddenOnTablet ? 'none' : displayTablet,
+      hiddenOnDesktop ? 'none' : displayDesktop,
+    ]),
   };
 };
 
@@ -168,13 +169,11 @@ export const Stack = ({
               <Box
                 width="full"
                 paddingBottom={space}
-                display={
-                  [
-                    index === firstItemOnMobile ? 'none' : 'block',
-                    index === firstItemOnTablet ? 'none' : 'block',
-                    index === firstItemOnDesktop ? 'none' : 'block',
-                  ] as const
-                }
+                display={optimizeResponsiveArray([
+                  index === firstItemOnMobile ? 'none' : 'block',
+                  index === firstItemOnTablet ? 'none' : 'block',
+                  index === firstItemOnDesktop ? 'none' : 'block',
+                ])}
               >
                 {typeof dividers === 'string' ? (
                   <Divider weight={dividers} />

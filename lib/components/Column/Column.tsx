@@ -1,4 +1,5 @@
 import React, { ReactNode, useContext } from 'react';
+import { optimizeResponsiveArray } from '../../utils/optimizeResponsiveArray';
 import { Box } from '../Box/Box';
 import { ColumnsContext } from '../Columns/Columns';
 import buildDataAttributes, {
@@ -34,18 +35,18 @@ export const Column = ({ children, data, width }: ColumnProps) => {
       {...(data ? buildDataAttributes(data) : undefined)}
     >
       <Box
-        paddingLeft={[
+        paddingLeft={optimizeResponsiveArray([
           collapseMobile ? 'none' : mobileSpace,
           collapseTablet ? 'none' : tabletSpace,
           desktopSpace,
-        ]}
+        ])}
         paddingTop={
           collapseMobile || collapseTablet
-            ? [
+            ? optimizeResponsiveArray([
                 collapseMobile ? mobileSpace : 'none',
                 collapseTablet ? tabletSpace : 'none',
                 'none',
-              ]
+              ])
             : undefined
         }
         height="full"

@@ -8,7 +8,7 @@ import {
   useNegativeMarginTop,
   useNegativeMarginLeft,
 } from '../../hooks/useNegativeMargin/useNegativeMargin';
-import { resolveResponsiveProp } from '../../utils/responsiveProp';
+import { resolveResponsiveProp } from '../../utils/resolveResponsiveProp';
 import * as styles from './Tiles.css';
 import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import {
