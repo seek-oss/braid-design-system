@@ -13,7 +13,7 @@ import { Columns } from '../Columns/Columns';
 import { Column } from '../Column/Column';
 import { Overlay } from '../private/Overlay/Overlay';
 import { useBackground } from '../Box/BackgroundContext';
-import { useTextAlignedToIcon } from '../../hooks/useTextAlignedToIcon/useTextAlignedToIcon';
+import { textAlignedToIcon } from '../../atoms/textAlignedToIcon/textAlignedToIcon';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
@@ -85,7 +85,7 @@ export const Alert = ({
             <Icon tone={tone} />
           </Column>
           <Column>
-            <Box className={useTextAlignedToIcon('standard')}>{children}</Box>
+            <Box className={textAlignedToIcon('standard')}>{children}</Box>
           </Column>
           {onClose ? (
             <Column width="content">
