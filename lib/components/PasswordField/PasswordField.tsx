@@ -25,7 +25,7 @@ export interface PasswordFieldProps
   visibilityToggleLabel?: string;
 }
 
-const NamedPasswordField = forwardRef<HTMLInputElement, PasswordFieldProps>(
+export const PasswordField = forwardRef<HTMLInputElement, PasswordFieldProps>(
   (
     {
       value,
@@ -109,6 +109,4 @@ const NamedPasswordField = forwardRef<HTMLInputElement, PasswordFieldProps>(
   },
 );
 
-NamedPasswordField.displayName = 'PasswordField';
-
-export const PasswordField = NamedPasswordField;
+PasswordField.displayName = 'PasswordField';

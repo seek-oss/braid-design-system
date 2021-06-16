@@ -19,7 +19,7 @@ export interface DropdownProps
   placeholder?: string;
 }
 
-const NamedDropdown = forwardRef<HTMLSelectElement, DropdownProps>(
+export const Dropdown = forwardRef<HTMLSelectElement, DropdownProps>(
   (props, ref) => {
     const {
       children,
@@ -86,6 +86,4 @@ const NamedDropdown = forwardRef<HTMLSelectElement, DropdownProps>(
   },
 );
 
-NamedDropdown.displayName = 'Dropdown';
-
-export const Dropdown = NamedDropdown;
+Dropdown.displayName = 'Dropdown';
