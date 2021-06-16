@@ -156,90 +156,90 @@ type ToneOverridesForBackground = {
 export const toneOverridesForBackground: ToneOverridesForBackground = {
   criticalLight: {
     neutral: style({
-      color: vars.accessibleForegroundColors.critical4_51,
+      color: vars.accessibleForegroundColorOnLightVariant.critical.text,
       selectors: {
         ['svg&']: {
-          color: vars.accessibleForegroundColors.critical3_1,
+          color: vars.accessibleForegroundColorOnLightVariant.critical.graphic,
         },
       },
     }),
     critical: style({
-      color: vars.accessibleForegroundColors.critical4_51,
+      color: vars.accessibleForegroundColorOnLightVariant.critical.text,
       selectors: {
         ['svg&']: {
-          color: vars.accessibleForegroundColors.critical3_1,
+          color: vars.accessibleForegroundColorOnLightVariant.critical.graphic,
         },
       },
     }),
   },
   cautionLight: {
     neutral: style({
-      color: vars.accessibleForegroundColors.caution4_51,
+      color: vars.accessibleForegroundColorOnLightVariant.caution.text,
       selectors: {
         ['svg&']: {
-          color: vars.accessibleForegroundColors.caution3_1,
+          color: vars.accessibleForegroundColorOnLightVariant.caution.graphic,
         },
       },
     }),
     caution: style({
-      color: vars.accessibleForegroundColors.caution4_51,
+      color: vars.accessibleForegroundColorOnLightVariant.caution.text,
       selectors: {
         ['svg&']: {
-          color: vars.accessibleForegroundColors.caution3_1,
+          color: vars.accessibleForegroundColorOnLightVariant.caution.graphic,
         },
       },
     }),
   },
   positiveLight: {
     neutral: style({
-      color: vars.accessibleForegroundColors.positive4_51,
+      color: vars.accessibleForegroundColorOnLightVariant.positive.text,
       selectors: {
         ['svg&']: {
-          color: vars.accessibleForegroundColors.positive3_1,
+          color: vars.accessibleForegroundColorOnLightVariant.positive.graphic,
         },
       },
     }),
     positive: style({
-      color: vars.accessibleForegroundColors.positive4_51,
+      color: vars.accessibleForegroundColorOnLightVariant.positive.text,
       selectors: {
         ['svg&']: {
-          color: vars.accessibleForegroundColors.positive3_1,
+          color: vars.accessibleForegroundColorOnLightVariant.positive.graphic,
         },
       },
     }),
   },
   infoLight: {
     neutral: style({
-      color: vars.accessibleForegroundColors.info4_51,
+      color: vars.accessibleForegroundColorOnLightVariant.info.text,
       selectors: {
         ['svg&']: {
-          color: vars.accessibleForegroundColors.info3_1,
+          color: vars.accessibleForegroundColorOnLightVariant.info.graphic,
         },
       },
     }),
     info: style({
-      color: vars.accessibleForegroundColors.info4_51,
+      color: vars.accessibleForegroundColorOnLightVariant.info.text,
       selectors: {
         ['svg&']: {
-          color: vars.accessibleForegroundColors.info3_1,
+          color: vars.accessibleForegroundColorOnLightVariant.info.graphic,
         },
       },
     }),
   },
   promoteLight: {
     neutral: style({
-      color: vars.accessibleForegroundColors.promote4_51,
+      color: vars.accessibleForegroundColorOnLightVariant.promote.text,
       selectors: {
         ['svg&']: {
-          color: vars.accessibleForegroundColors.promote3_1,
+          color: vars.accessibleForegroundColorOnLightVariant.promote.graphic,
         },
       },
     }),
     promote: style({
-      color: vars.accessibleForegroundColors.promote4_51,
+      color: vars.accessibleForegroundColorOnLightVariant.promote.text,
       selectors: {
         ['svg&']: {
-          color: vars.accessibleForegroundColors.promote3_1,
+          color: vars.accessibleForegroundColorOnLightVariant.promote.graphic,
         },
       },
     }),

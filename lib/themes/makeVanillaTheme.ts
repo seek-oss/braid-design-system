@@ -74,6 +74,7 @@ const fontSizeToCapHeight = (
 export default (braidTokens: BraidTokens) => {
   const { name, displayName, ...tokens } = braidTokens;
   const { webFont, ...typography } = tokens.typography;
+  const { foreground, background } = tokens.color;
 
   const getInlineFieldSize = (size: 'standard' | 'small') => {
     const scale = (typography.text[size].mobile.rows * tokens.grid) / 42;
@@ -88,21 +89,21 @@ export default (braidTokens: BraidTokens) => {
     borderColor: tokens.border.color,
     borderWidth: mapValues(tokens.border.width, px),
     contentWidth: mapValues(tokens.contentWidth, px),
-    foregroundColor: tokens.color.foreground,
+    foregroundColor: foreground,
     backgroundColor: {
-      ...tokens.color.background,
-      formAccentActive: getActiveColor(tokens.color.background.formAccent),
-      formAccentHover: getHoverColor(tokens.color.background.formAccent),
-      brandAccentActive: getActiveColor(tokens.color.background.brandAccent),
-      brandAccentHover: getHoverColor(tokens.color.background.brandAccent),
-      criticalActive: getActiveColor(tokens.color.background.critical),
-      criticalHover: getHoverColor(tokens.color.background.critical),
-      infoLight: getLightVariant(tokens.color.background.info),
-      promoteLight: getLightVariant(tokens.color.background.promote),
-      criticalLight: getLightVariant(tokens.color.background.critical),
-      positiveLight: getLightVariant(tokens.color.background.positive),
-      cautionLight: getLightVariant(tokens.color.background.caution),
-      neutralLight: getLightVariant(tokens.color.background.neutral),
+      ...background,
+      formAccentActive: getActiveColor(background.formAccent),
+      formAccentHover: getHoverColor(background.formAccent),
+      brandAccentActive: getActiveColor(background.brandAccent),
+      brandAccentHover: getHoverColor(background.brandAccent),
+      criticalActive: getActiveColor(background.critical),
+      criticalHover: getHoverColor(background.critical),
+      infoLight: getLightVariant(background.info),
+      promoteLight: getLightVariant(background.promote),
+      criticalLight: getLightVariant(background.critical),
+      positiveLight: getLightVariant(background.positive),
+      cautionLight: getLightVariant(background.caution),
+      neutralLight: getLightVariant(background.neutral),
     },
     fontFamily: typography.fontFamily,
     fontMetrics: mapValues(typography.fontMetrics, String),
@@ -128,27 +129,27 @@ export default (braidTokens: BraidTokens) => {
     transition: tokens.transitions,
     transform: tokens.transforms,
     shadow: tokens.shadows,
-    accessibleForegroundColors: {
-      critical4_51: getAccessibleVariant(tokens.color.foreground.critical),
-      critical3_1: getAccessibleVariant(tokens.color.foreground.critical, {
-        nonText: true,
-      }),
-      caution4_51: getAccessibleVariant(tokens.color.foreground.caution),
-      caution3_1: getAccessibleVariant(tokens.color.foreground.caution, {
-        nonText: true,
-      }),
-      positive4_51: getAccessibleVariant(tokens.color.foreground.positive),
-      positive3_1: getAccessibleVariant(tokens.color.foreground.positive, {
-        nonText: true,
-      }),
-      info4_51: getAccessibleVariant(tokens.color.foreground.info),
-      info3_1: getAccessibleVariant(tokens.color.foreground.info, {
-        nonText: true,
-      }),
-      promote4_51: getAccessibleVariant(tokens.color.foreground.promote),
-      promote3_1: getAccessibleVariant(tokens.color.foreground.promote, {
-        nonText: true,
-      }),
+    accessibleForegroundColorOnLightVariant: {
+      critical: {
+        text: getAccessibleVariant(foreground.critical, 'text'),
+        graphic: getAccessibleVariant(foreground.critical, 'graphic'),
+      },
+      caution: {
+        text: getAccessibleVariant(foreground.caution, 'text'),
+        graphic: getAccessibleVariant(foreground.caution, 'graphic'),
+      },
+      positive: {
+        text: getAccessibleVariant(foreground.positive, 'text'),
+        graphic: getAccessibleVariant(foreground.positive, 'graphic'),
+      },
+      info: {
+        text: getAccessibleVariant(foreground.info, 'text'),
+        graphic: getAccessibleVariant(foreground.info, 'graphic'),
+      },
+      promote: {
+        text: getAccessibleVariant(foreground.promote, 'text'),
+        graphic: getAccessibleVariant(foreground.promote, 'graphic'),
+      },
     },
   } as const;
 
