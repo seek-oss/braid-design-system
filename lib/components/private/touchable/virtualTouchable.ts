@@ -1,10 +1,10 @@
-import * as styles from './useVirtualTouchable.css';
+import * as styles from './virtualTouchable.css';
 
 interface UseVirtualTouchableOptions {
   xAxis: boolean;
 }
 
-export function useVirtualTouchable(
+export function virtualTouchable(
   { xAxis }: UseVirtualTouchableOptions = { xAxis: true },
 ) {
   return !xAxis

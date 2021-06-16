@@ -19,7 +19,7 @@ import { Box } from '../Box/Box';
 import { Text, TextProps } from '../Text/Text';
 import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
 import { useTouchableSpace } from '../../hooks/typography';
-import { useVirtualTouchable } from '../private/touchable/useVirtualTouchable';
+import { virtualTouchable } from '../private/touchable/virtualTouchable';
 import ActionsContext from '../Actions/ActionsContext';
 import * as styles from './ButtonRenderer.css';
 
@@ -351,7 +351,6 @@ export const PrivateButtonRenderer = ({
 
   const size = sizeProp ?? actionsContext?.size ?? 'standard';
   const { background, boxShadow } = useButtonVariant(variant, tone);
-  const virtualTouchableStyles = useVirtualTouchable({ xAxis: false });
 
   const buttonStyles = classNames(
     atoms({
@@ -370,7 +369,7 @@ export const PrivateButtonRenderer = ({
     variant === 'soft' ? styles.lightBg : null,
     variant !== 'solid' ? styles.lightHoverBg : null,
     useBackgroundLightness() === 'dark' ? styles.inverted : null,
-    size === 'small' ? virtualTouchableStyles : null,
+    size === 'small' ? virtualTouchable({ xAxis: false }) : null,
     size === 'standard' ? styles.standard : styles.small,
     bleedY ? styles.bleedY : null,
   );

@@ -6,7 +6,7 @@ import {
   FieldMessageProps,
 } from '../../FieldMessage/FieldMessage';
 import { Text } from '../../Text/Text';
-import { useVirtualTouchable } from '../touchable/useVirtualTouchable';
+import { virtualTouchable } from '../touchable/virtualTouchable';
 import { mergeIds } from '../mergeIds';
 import { BadgeProps } from '../../Badge/Badge';
 import { Inline } from '../../Inline/Inline';
@@ -104,7 +104,7 @@ export const InlineField = forwardRef<
                 className={[
                   styles.labelBase,
                   styles.labelOffset[size],
-                  useVirtualTouchable(),
+                  virtualTouchable(),
                 ]}
               >
                 <Text

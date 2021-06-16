@@ -15,7 +15,7 @@ import {
   useIconContainerSize,
   UseIconProps,
 } from '../../hooks/useIcon';
-import { useVirtualTouchable } from '../private/touchable/useVirtualTouchable';
+import { virtualTouchable } from '../private/touchable/virtualTouchable';
 import {
   useBackground,
   useBackgroundLightness,
@@ -93,7 +93,7 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
         ref={forwardedRef}
         cursor="pointer"
         outline="none"
-        className={[styles.button, useVirtualTouchable()]}
+        className={[styles.button, virtualTouchable()]}
         zIndex={0}
         aria-label={label}
         aria-haspopup={ariaHasPopUp}

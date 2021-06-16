@@ -3,7 +3,7 @@ import { Box } from '../Box/Box';
 import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
 import { Text } from '../Text/Text';
 import { IconTick } from '../icons';
-import { useVirtualTouchable } from '../private/touchable/useVirtualTouchable';
+import { virtualTouchable } from '../private/touchable/virtualTouchable';
 import { useBackgroundLightness } from '../Box/BackgroundContext';
 import buildDataAttributes, {
   DataAttributeMap,
@@ -129,7 +129,7 @@ export const Toggle = ({
         flexGrow={align === 'justify' ? 1 : undefined}
         userSelect="none"
         cursor="pointer"
-        className={[styles.label[size], useVirtualTouchable()]}
+        className={[styles.label[size], virtualTouchable()]}
       >
         <Text baseline={false} weight={on ? 'strong' : undefined} size={size}>
           {label}

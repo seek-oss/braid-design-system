@@ -17,7 +17,7 @@ import { Overlay } from '../Overlay/Overlay';
 import { ReactNodeNoStrings } from '../ReactNodeNoStrings';
 import { IconClear } from '../../icons';
 import { negativeMarginTop } from '../../../atoms/negativeMargin/negativeMargin';
-import { useVirtualTouchable } from '../touchable/useVirtualTouchable';
+import { virtualTouchable } from '../touchable/virtualTouchable';
 import buildDataAttributes, { DataAttributeMap } from '../buildDataAttributes';
 import * as styles from './Modal.css';
 
@@ -224,7 +224,7 @@ export const ModalContent = ({
                   className={[
                     styles.closeButtonRoot,
                     styles.pointerEventsAll,
-                    useVirtualTouchable(),
+                    virtualTouchable(),
                   ]}
                 >
                   <Overlay

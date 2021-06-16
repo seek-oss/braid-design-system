@@ -11,7 +11,7 @@ import {
   DisclosureStateProps,
 } from '../Disclosure/useDisclosure';
 
-import { useVirtualTouchable } from '../private/touchable/useVirtualTouchable';
+import { virtualTouchable } from '../private/touchable/virtualTouchable';
 import { hideFocusRingsClassName } from '../private/hideFocusRings/hideFocusRings';
 import { Overlay } from '../private/Overlay/Overlay';
 import {
@@ -97,7 +97,7 @@ export const AccordionItem = ({
         <Box
           component="button"
           cursor="pointer"
-          className={[styles.button, useVirtualTouchable()]}
+          className={[styles.button, virtualTouchable()]}
           outline="none"
           width="full"
           textAlign="left"

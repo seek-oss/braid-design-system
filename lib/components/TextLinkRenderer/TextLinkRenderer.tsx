@@ -16,7 +16,7 @@ import {
   useText,
 } from '../../hooks/typography';
 import { useBackground } from '../Box/BackgroundContext';
-import { useVirtualTouchable } from '../private/touchable/useVirtualTouchable';
+import { virtualTouchable } from '../private/touchable/virtualTouchable';
 import { PrivateButtonRendererProps } from '../ButtonRenderer/ButtonRenderer';
 import * as styles from './TextLinkRenderer.css';
 
@@ -122,7 +122,6 @@ function InlineLink({
   hitArea = 'standard',
   children,
 }: PrivateTextLinkRendererProps) {
-  const virtualTouchableStyle = useVirtualTouchable();
   const defaultWeight = useDefaultLinkWeight();
   const weight = weightProp ?? defaultWeight;
 
@@ -140,7 +139,7 @@ function InlineLink({
           atoms({
             cursor: 'pointer',
           }),
-          hitArea === 'large' && virtualTouchableStyle,
+          hitArea === 'large' && virtualTouchable(),
         ),
       })}
     </TextLinkRendererContext.Provider>
