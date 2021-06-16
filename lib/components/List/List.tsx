@@ -8,7 +8,7 @@ import {
   DefaultTextPropsProvider,
   useDefaultTextProps,
 } from '../private/defaultTextProps';
-import { lineHeightContainer } from '../../atoms/lineHeightContainer/lineHeightContainer';
+import { lineHeightContainer } from '../../atoms/lineHeightContainer.css';
 import * as styles from './List.css';
 
 function numberToAlpha(inputNumber: number) {
@@ -130,7 +130,7 @@ export const List = ({
                   alignItems={
                     /^(bullet|icon)$/.test(type) ? 'center' : undefined
                   }
-                  className={lineHeightContainer(size)}
+                  className={lineHeightContainer[size]}
                   userSelect="none"
                   aria-hidden
                 >

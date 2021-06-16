@@ -1,7 +1,7 @@
 import { style } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
-import { responsiveStyle } from '../responsiveStyle';
-import { vars } from '../../themes/vars.css';
+import { responsiveStyle } from './responsiveStyle';
+import { vars } from '../themes/vars.css';
 
 const calculateForBreakpoint = (
   breakpoint: keyof typeof vars.textSize.standard,
@@ -18,7 +18,7 @@ const calculateForBreakpoint = (
   };
 };
 
-export const size = {
+export const textAlignedToIcon = {
   standard: style(
     responsiveStyle({
       mobile: calculateForBreakpoint('mobile'),

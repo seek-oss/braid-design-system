@@ -7,7 +7,7 @@ import { BoxProps } from '../../components/Box/Box';
 import { TextContext } from '../../components/Text/TextContext';
 import HeadingContext from '../../components/Heading/HeadingContext';
 import { textSize, useTextTone, UseTextProps } from '../typography';
-import { lineHeightContainer } from '../../atoms/lineHeightContainer/lineHeightContainer';
+import { lineHeightContainer } from '../../atoms/lineHeightContainer.css';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../../components/private/buildDataAttributes';
@@ -26,7 +26,7 @@ export interface IconContainerSizeProps {
 }
 export const iconContainerSize = (
   size: Exclude<IconSize, 'fill'> = 'standard',
-) => classnames(styles.blockWidths[size], lineHeightContainer(size));
+) => classnames(styles.blockWidths[size], lineHeightContainer[size]);
 
 export type UseIconProps = {
   size?: IconSize;
