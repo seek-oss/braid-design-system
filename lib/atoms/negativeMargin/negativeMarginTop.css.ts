@@ -1,6 +1,6 @@
 import { style, styleVariants } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
-import { responsiveStyle } from '../../atoms/responsiveStyle';
+import { responsiveStyle } from '../responsiveStyle';
 import { vars } from '../../themes/vars.css';
 
 const negativeMarginTop = (spaceValue: string | number) => ({

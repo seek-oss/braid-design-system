@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import { RequiredResponsiveValue } from '../../atoms/sprinkles.css';
+import { RequiredResponsiveValue } from '../sprinkles.css';
 import { resolveResponsiveProp } from '../../utils/resolveResponsiveProp';
 import * as styles from './negativeMarginTop.css';
 
