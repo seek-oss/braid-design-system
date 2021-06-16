@@ -1,5 +1,5 @@
 import { styleVariants } from '@vanilla-extract/css';
-import { responsiveStyle } from '../../atoms/responsiveStyle';
+import { responsiveStyle } from '../responsiveStyle';
 import { vars } from '../../themes/vars.css';
 
 export const size = styleVariants(vars.textSize, ({ mobile, tablet }) =>

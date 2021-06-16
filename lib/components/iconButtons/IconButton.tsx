@@ -10,11 +10,7 @@ import { Overlay } from '../private/Overlay/Overlay';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
-import {
-  useIconSize,
-  useIconContainerSize,
-  UseIconProps,
-} from '../../hooks/useIcon';
+import { iconSize, iconContainerSize, UseIconProps } from '../../hooks/useIcon';
 import { virtualTouchable } from '../private/touchable/virtualTouchable';
 import {
   useBackground,
@@ -56,8 +52,6 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
     },
     forwardedRef,
   ) => {
-    const iconContainerStyles = useIconContainerSize();
-    const iconStyles = useIconSize();
     const background = useBackground();
     const backgroundLightness = useBackgroundLightness();
 
@@ -111,7 +105,7 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
         <Box
           position="relative"
           display="flex"
-          className={iconContainerStyles}
+          className={iconContainerSize()}
           alignItems="center"
           justifyContent="center"
           pointerEvents="none"
@@ -141,7 +135,7 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
               onlyVisibleForKeyboardNavigation
             />
           ) : null}
-          <Box position="relative" className={iconStyles}>
+          <Box position="relative" className={iconSize()}>
             {children({ size: 'fill', tone })}
           </Box>
         </Box>

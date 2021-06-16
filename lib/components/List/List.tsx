@@ -8,7 +8,7 @@ import {
   DefaultTextPropsProvider,
   useDefaultTextProps,
 } from '../private/defaultTextProps';
-import { useLineHeightContainer } from '../../hooks/useLineHeightContainer/useLineHeightContainer';
+import { lineHeightContainer } from '../../atoms/lineHeightContainer/lineHeightContainer';
 import * as styles from './List.css';
 
 function numberToAlpha(inputNumber: number) {
@@ -109,7 +109,6 @@ export const List = ({
     tone: toneProp,
   });
   const listItems = flattenChildren(children) as ReactNodeNoStrings[];
-  const lineHeightContainerStyles = useLineHeightContainer(size);
   const lastNumberLength =
     type === 'number' ? (listItems.length + (start - 1)).toString().length : -1;
 
@@ -131,7 +130,7 @@ export const List = ({
                   alignItems={
                     /^(bullet|icon)$/.test(type) ? 'center' : undefined
                   }
-                  className={lineHeightContainerStyles}
+                  className={lineHeightContainer(size)}
                   userSelect="none"
                   aria-hidden
                 >

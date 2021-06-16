@@ -103,7 +103,7 @@ export function useHeading({
   );
 }
 
-export function useTextSize(size: keyof typeof styles.text) {
+export function textSize(size: keyof typeof styles.text) {
   return styles.text[size].untrimmed;
 }
 
