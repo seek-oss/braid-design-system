@@ -9,7 +9,7 @@ import * as hiddenStyles from '../Hidden/Hidden.css';
 import { alignToFlexAlign, Align } from '../../utils/align';
 import { resolveResponsiveRangeProps } from '../../utils/responsiveRangeProps';
 import { optimizeResponsiveArray } from '../../utils/optimizeResponsiveArray';
-import { useNegativeMarginTop } from '../../hooks/useNegativeMargin/useNegativeMargin';
+import { negativeMarginTop } from '../../atoms/negativeMargin/negativeMargin';
 import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import {
   OptionalResponsiveValue,
@@ -113,7 +113,6 @@ export const Stack = ({
   const stackItems = flattenChildren(children);
   const isList = component === 'ol' || component === 'ul';
   const stackItemComponent = isList ? 'li' : 'div';
-  const negativeMarginTop = useNegativeMarginTop(space);
 
   let firstItemOnMobile: number | null = null;
   let firstItemOnTablet: number | null = null;
@@ -122,7 +121,7 @@ export const Stack = ({
   return (
     <Box
       component={component}
-      className={negativeMarginTop}
+      className={negativeMarginTop(space)}
       {...(data ? buildDataAttributes(data) : undefined)}
     >
       {Children.map(stackItems, (child, index) => {

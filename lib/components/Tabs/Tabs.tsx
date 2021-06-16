@@ -16,7 +16,7 @@ import buildDataAttributes, {
 } from '../private/buildDataAttributes';
 import { TabsContext } from './TabsProvider';
 import { Tab } from './Tab';
-import { useNegativeMarginTop } from '../../hooks/useNegativeMargin/useNegativeMargin';
+import { negativeMarginTop } from '../../atoms/negativeMargin/negativeMargin';
 import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
 import { TabListContext, TabListContextValues } from './TabListContext';
@@ -109,11 +109,9 @@ export const Tabs = (props: TabsProps) => {
     return () => window.removeEventListener('resize', updateMask);
   }, [updateMask]);
 
-  const negativeMarginTop = useNegativeMarginTop('medium');
-
   return (
     <Box>
-      <Box className={reserveHitArea ? undefined : negativeMarginTop}>
+      <Box className={reserveHitArea ? undefined : negativeMarginTop('medium')}>
         <Box position="relative">
           <Box
             ref={tabsRef}

@@ -5,9 +5,9 @@ import { Box } from '../Box/Box';
 import { Divider, DividerProps } from '../Divider/Divider';
 import { Space } from '../../atoms/atoms';
 import {
-  useNegativeMarginTop,
-  useNegativeMarginLeft,
-} from '../../hooks/useNegativeMargin/useNegativeMargin';
+  negativeMarginTop,
+  negativeMarginLeft,
+} from '../../atoms/negativeMargin/negativeMargin';
 import { resolveResponsiveProp } from '../../utils/resolveResponsiveProp';
 import * as styles from './Tiles.css';
 import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
@@ -33,51 +33,46 @@ export const Tiles = ({
   columns = 1,
   dividers = false,
   data,
-}: TilesProps) => {
-  const negativeMarginTop = useNegativeMarginTop(space);
-  const negativeMarginLeft = useNegativeMarginLeft(space);
-
-  return (
-    <Box
-      className={negativeMarginTop}
-      {...(data ? buildDataAttributes(data) : undefined)}
-    >
-      <Box display="flex" flexWrap="wrap" className={negativeMarginLeft}>
-        {Children.map(flattenChildren(children), (child, i) => (
+}: TilesProps) => (
+  <Box
+    className={negativeMarginTop(space)}
+    {...(data ? buildDataAttributes(data) : undefined)}
+  >
+    <Box display="flex" flexWrap="wrap" className={negativeMarginLeft(space)}>
+      {Children.map(flattenChildren(children), (child, i) => (
+        <Box
+          minWidth={0}
+          className={resolveResponsiveProp(
+            columns,
+            styles.columnsMobile,
+            styles.columnsTablet,
+            styles.columnsDesktop,
+          )}
+        >
           <Box
-            minWidth={0}
-            className={resolveResponsiveProp(
-              columns,
-              styles.columnsMobile,
-              styles.columnsTablet,
-              styles.columnsDesktop,
-            )}
+            height="full"
+            // This needs to be a separate element to support IE11.
+            paddingTop={space}
+            paddingLeft={space}
           >
-            <Box
-              height="full"
-              // This needs to be a separate element to support IE11.
-              paddingTop={space}
-              paddingLeft={space}
-            >
-              {dividers && i > 0 ? (
-                <Box
-                  paddingBottom={space}
-                  display={mapResponsiveValue(columns, (column) =>
-                    column === 1 ? 'block' : 'none',
-                  )}
-                >
-                  {typeof dividers === 'string' ? (
-                    <Divider weight={dividers} />
-                  ) : (
-                    <Divider />
-                  )}
-                </Box>
-              ) : null}
-              {child}
-            </Box>
+            {dividers && i > 0 ? (
+              <Box
+                paddingBottom={space}
+                display={mapResponsiveValue(columns, (column) =>
+                  column === 1 ? 'block' : 'none',
+                )}
+              >
+                {typeof dividers === 'string' ? (
+                  <Divider weight={dividers} />
+                ) : (
+                  <Divider />
+                )}
+              </Box>
+            ) : null}
+            {child}
           </Box>
-        ))}
-      </Box>
+        </Box>
+      ))}
     </Box>
-  );
-};
+  </Box>
+);

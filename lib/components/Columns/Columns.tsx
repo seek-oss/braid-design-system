@@ -2,7 +2,7 @@ import React, { createContext, ReactElement } from 'react';
 import { Box } from '../Box/Box';
 import { ColumnProps } from '../Column/Column';
 import { Space, ResponsiveSpace } from '../../atoms/atoms';
-import { useNegativeMarginLeft } from '../../hooks/useNegativeMargin/useNegativeMargin';
+import { negativeMarginLeft } from '../../atoms/negativeMargin/negativeMargin';
 import {
   resolveCollapsibleAlignmentProps,
   CollapsibleAlignmentProps,
@@ -72,16 +72,14 @@ export const Columns = ({
     reverse,
   });
 
-  const negativeMarginLeft = useNegativeMarginLeft({
-    mobile: collapseMobile ? 'none' : mobileSpace,
-    tablet: collapseTablet ? 'none' : tabletSpace,
-    desktop: desktopSpace,
-  });
-
   return (
     <Box
       {...collapsibleAlignmentProps}
-      className={negativeMarginLeft}
+      className={negativeMarginLeft({
+        mobile: collapseMobile ? 'none' : mobileSpace,
+        tablet: collapseTablet ? 'none' : tabletSpace,
+        desktop: desktopSpace,
+      })}
       {...(data ? buildDataAttributes(data) : undefined)}
     >
       <ColumnsContext.Provider

@@ -16,7 +16,7 @@ import { Column } from '../../Column/Column';
 import { Overlay } from '../Overlay/Overlay';
 import { ReactNodeNoStrings } from '../ReactNodeNoStrings';
 import { IconClear } from '../../icons';
-import { useNegativeMarginTop } from '../../../hooks/useNegativeMargin/useNegativeMargin';
+import { negativeMarginTop } from '../../../atoms/negativeMargin/negativeMargin';
 import { useVirtualTouchable } from '../touchable/useVirtualTouchable';
 import buildDataAttributes, { DataAttributeMap } from '../buildDataAttributes';
 import * as styles from './Modal.css';
@@ -202,7 +202,7 @@ export const ModalContent = ({
           >
             <Box
               className={[
-                useNegativeMarginTop('xsmall'),
+                negativeMarginTop('xsmall'),
                 styles.negativeMarginRightXSmall,
               ]}
             >

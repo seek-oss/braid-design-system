@@ -10,9 +10,9 @@ import React, {
 } from 'react';
 import flattenChildren from 'react-keyed-flatten-children';
 import {
-  useNegativeMarginTop,
-  useNegativeMarginLeft,
-} from '../../../../../lib/hooks/useNegativeMargin/useNegativeMargin';
+  negativeMarginTop,
+  negativeMarginLeft,
+} from '../../../../../lib/atoms/negativeMargin/negativeMargin';
 import { BadgeProps } from '../../../../../lib/components/Badge/Badge';
 import { Box, Divider, Link, Text } from '../../../../../lib/components';
 import * as styles from './Navigation.css';
@@ -125,8 +125,8 @@ export const Navigation = ({ title, children }: NavigationProps) => {
       component="nav"
       aria-label={title}
       className={[
-        useNegativeMarginTop(navItemPaddingY),
-        useNegativeMarginLeft(navItemPaddingX),
+        negativeMarginTop(navItemPaddingY),
+        negativeMarginLeft(navItemPaddingX),
       ]}
     >
       <Box component="ul" display="flex" alignItems="center" overflow="auto">
