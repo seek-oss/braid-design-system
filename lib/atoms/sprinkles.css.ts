@@ -28,7 +28,7 @@ const pseudoAtomicStyles = createAtomicStyles({
   properties: pseudoProperties,
 });
 
-const reponsiveAtomicStyles = createAtomicStyles({
+const responsiveAtomicStyles = createAtomicStyles({
   defaultCondition: 'mobile',
   conditions: {
     mobile: {},
@@ -53,18 +53,18 @@ const reponsiveAtomicStyles = createAtomicStyles({
 
 export const sprinkles = createAtomsFn(
   unresponsiveAtomicStyles,
-  reponsiveAtomicStyles,
+  responsiveAtomicStyles,
   pseudoAtomicStyles,
 );
 
 export type OptionalResponsiveValue<
   Value extends string | number
-> = ConditionalValue<typeof reponsiveAtomicStyles, Value>;
+> = ConditionalValue<typeof responsiveAtomicStyles, Value>;
 export type RequiredResponsiveValue<
   Value extends string | number
-> = RequiredConditionalValue<typeof reponsiveAtomicStyles, Value>;
+> = RequiredConditionalValue<typeof responsiveAtomicStyles, Value>;
 
 export const normalizeResponsiveValue = createNormalizeValueFn(
-  reponsiveAtomicStyles,
+  responsiveAtomicStyles,
 );
-export const mapResponsiveValue = createMapValueFn(reponsiveAtomicStyles);
+export const mapResponsiveValue = createMapValueFn(responsiveAtomicStyles);
