@@ -47,6 +47,7 @@ The following theme variables are available:
 - `vars.space[spaceName]`
 - `vars.foregroundColor[colorName]`
 - `vars.backgroundColor[colorName]`
+- `vars.textWeight[weightName]`
 - `vars.borderColor[colorName]`
 - `vars.borderWidth[widthName]`
 - `vars.borderRadius[radiusName]`
