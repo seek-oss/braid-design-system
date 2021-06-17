@@ -73,7 +73,7 @@ Previously all space values needed to be multiplied by the grid. This is no long
 +});
 ```
 
-> ⚠️ Be wary when migrating template strings where units were being appended manually. The unit is no longer necessary as it's baked into value of the variable, e.g.
+> ⚠️ Be wary when migrating template strings where units were being appended manually. The unit is no longer necessary as it's baked into the value of the variable, e.g.
 >
 > ```diff
 > -export const className = style(theme => ({
@@ -149,7 +149,7 @@ export const className = style({
 
 Note that it also now accepts a map function as the second argument, so there may be some opportunities to simplify your code if you were mapping over objects before passing them to `styleMap`.
 
-## Animations must me defined with the new `keyframes` function
+## Animations must be defined with the new `keyframes` function
 
 The `@keyframes` property is no longer supported on style objects. Instead, you should create keyframes separately with the [`keyframes` function.](https://vanilla-extract.style/documentation/styling-api/#keyframes)
 
