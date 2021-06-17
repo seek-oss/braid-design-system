@@ -259,7 +259,7 @@ const DevelopmentWorkflow = () => (
     </Text>
     <Code>{`import { vars } from 'braid-design-system/css';`}</Code>
     <Text weight="strong">
-      Before writing a custom styles, we highly recommend that you read the{' '}
+      Before writing custom styles, we highly recommend that you read the{' '}
       <TextLink href="https://vanilla-extract.style/documentation/">
         vanilla-extract documentation.
       </TextLink>
