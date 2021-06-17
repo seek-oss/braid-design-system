@@ -1,5 +1,7 @@
 import { useContext } from 'react';
 import classnames from 'classnames';
+import type { StyleRule } from '@vanilla-extract/css';
+
 import {
   useBackground,
   useBackgroundLightness,
@@ -10,7 +12,6 @@ import TextLinkRendererContext from '../../components/TextLinkRenderer/TextLinkR
 import { vars } from '../../themes/vars.css';
 import { responsiveStyle } from '../../atoms/responsiveStyle';
 import * as styles from './typography.css';
-import { StyleRule } from '@vanilla-extract/css';
 
 type TextTone = keyof typeof styles.tone | 'neutral';
 
