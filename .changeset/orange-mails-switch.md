@@ -9,7 +9,7 @@ new:
 
 Add **BraidPortal** component
 
-**React Portals containing Braid components/styles must use the new `BraidPortal` component**
+**React Portals containing Braid components/styles must now use the `BraidPortal` component**
 
 CSS-based theming doesn't automatically cascade through React portals. The new [`BraidPortal`](https://seek-oss.github.io/braid-design-system/components/BraidPortal) component handles this for you by forwarding Braid's CSS variables through the portal.
 
