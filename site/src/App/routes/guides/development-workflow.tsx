@@ -18,6 +18,7 @@ import Code from '../../Code/Code';
 import { Page } from '../../../types';
 import { PageTitle } from '../../Seo/PageTitle';
 import source from '../../../../../lib/utils/source.macro';
+import { InlineCode } from '../../InlineCode/InlineCode';
 
 const DevelopmentWorkflow = () => (
   <TextStack>
@@ -61,9 +62,10 @@ const DevelopmentWorkflow = () => (
     </Text>
     <Text>
       For these high level components, we have opted against supporting style
-      overrides via ‘className’ and ‘style’ props. This ensures that gaps in the
-      design system are surfaced rather than encouraging consumers to constantly
-      apply workarounds.
+      overrides via <InlineCode>className</InlineCode> and{' '}
+      <InlineCode>style</InlineCode> props. This ensures that gaps in the design
+      system are surfaced rather than encouraging consumers to constantly apply
+      workarounds.
     </Text>
     <Text>
       An example of composing a simple view leveraging some of these could be:
@@ -86,8 +88,9 @@ const DevelopmentWorkflow = () => (
     <Text>
       In order to distribute white space evenly between components, wrap sibling
       elements in a <TextLink href="/components/Stack">Stack</TextLink>{' '}
-      component with a custom ‘space’ property. For example, if you wanted
-      ‘small’ space between items in a{' '}
+      component with a custom <InlineCode>space</InlineCode> property. For
+      example, if you wanted
+      <InlineCode>small</InlineCode> space between items in a{' '}
       <TextLink href="/components/Stack">Stack</TextLink>:
     </Text>
     <Code>
@@ -102,9 +105,10 @@ const DevelopmentWorkflow = () => (
       )}
     </Code>
     <Text>
-      The ‘space’ property is a responsive prop, which means that it can also
-      accept an array of values representing each breakpoint. For example, if
-      you wanted ‘small’ space on mobile and ‘medium’ space on desktop:
+      The <InlineCode>space</InlineCode> property is a responsive prop, which
+      means that it can also accept an array of values representing each
+      breakpoint. For example, if you wanted <InlineCode>small</InlineCode>{' '}
+      space on mobile and <InlineCode>medium</InlineCode> space on desktop:
     </Text>
     <Code>
       {source(
@@ -146,9 +150,10 @@ const DevelopmentWorkflow = () => (
       )}
     </Code>
     <Text>
-      This ‘space’ property is also responsive, supporting an array of values
-      for each breakpoint. For example, if you wanted ‘xxsmall’ space on mobile
-      and ‘gutter’ space on desktop:
+      This <InlineCode>space</InlineCode> property is also responsive,
+      supporting an array of values for each breakpoint. For example, if you
+      wanted <InlineCode>xxsmall</InlineCode> space on mobile and{' '}
+      <InlineCode>gutter</InlineCode> space on desktop:
     </Text>
     <Code>
       {source(
@@ -216,7 +221,8 @@ const DevelopmentWorkflow = () => (
       mobile value, followed by the desktop value.
     </Text>
     <Text>
-      For example, if we wanted to change the value for ‘display’ responsively:
+      For example, if we wanted to change the value for{' '}
+      <InlineCode>display</InlineCode> responsively:
     </Text>
     <Code>
       {source(
@@ -235,11 +241,13 @@ const DevelopmentWorkflow = () => (
     <Text>
       A key difference with Braid is that it doesn’t use a standard global CSS
       reset. Instead, element styles are reset at the component level via{' '}
-      <TextLink href="/components/Box">Box</TextLink> and its ‘component’ prop.
+      <TextLink href="/components/Box">Box</TextLink> and its{' '}
+      <InlineCode>component</InlineCode> prop.
     </Text>
     <Text>
-      For example, in order to render a semantic ‘fieldset’ element without the
-      native browser styles:
+      For example, in order to render a semantic{' '}
+      <InlineCode>fieldset</InlineCode> element without the native browser
+      styles:
     </Text>
     <Code>
       {source(
@@ -255,7 +263,8 @@ const DevelopmentWorkflow = () => (
       <TextLink href="https://vanilla-extract.style/">vanilla-extract</TextLink>{' '}
       which satisfies our requirements for statically extracted CSS, leveraging
       CSS variables for theming. Custom styles on top of Braid can access the
-      theme variables by importing them from Braid’s ‘css’ export:
+      theme variables by importing them from Braid’s{' '}
+      <InlineCode>css</InlineCode> export:
     </Text>
     <Code>{`import { vars } from 'braid-design-system/css';`}</Code>
     <Text weight="strong">
@@ -266,15 +275,17 @@ const DevelopmentWorkflow = () => (
     </Text>
     <Text>
       While higher level Braid components don’t support custom style overrides
-      (e.g. ‘className’ and ‘style’),{' '}
+      (e.g. <InlineCode>className</InlineCode> and{' '}
+      <InlineCode>style</InlineCode>),{' '}
       <TextLink href="/components/Box">Box</TextLink> is the one exception.
       However, you should take care to ensure that custom classes on{' '}
       <TextLink href="/components/Box">Box</TextLink> only use styles that are
       not available via its prop interface.
     </Text>
     <Text>
-      For example, if you wanted to render an element as ‘display: flex’, but
-      with a custom, responsive ‘flex-basis’ value:
+      For example, if you wanted to render an element as{' '}
+      <InlineCode>display: flex</InlineCode>, but with a custom, responsive{' '}
+      <InlineCode>flex-basis</InlineCode> value:
     </Text>
     <Code>
       {dedent`
@@ -293,15 +304,16 @@ const DevelopmentWorkflow = () => (
     </Code>
     <Text>
       Because vanilla-extract stylesheets are written in TypeScript (note the
-      ‘.css.ts’ extension), the ‘vars’ object will be available for
-      autocompletion and type checking within your editor.
+      <InlineCode>.css.ts</InlineCode> extension), the{' '}
+      <InlineCode>vars</InlineCode> object will be available for autocompletion
+      and type checking within your editor.
     </Text>
     <Code>
       {dedent`
         // myComponent.ts
         import * as styles from './myComponent.css';
 
-        export default () => {
+        export default function MyComponent() {
           return (
             <Box display="flex" className={styles.root}>
               <Text>My first Braid component</Text>
