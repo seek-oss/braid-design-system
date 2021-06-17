@@ -1,5 +1,5 @@
 ---
-'braid-design-system': minor
+'braid-design-system': major
 ---
 
 Migrate to vanilla-extract
@@ -12,7 +12,7 @@ While we encourage you to write new CSS with vanilla-extract files and slowly mi
 
 ---
 
-**MIGRATION GUIDE**
+**BREAKING CHANGE**
 
 **React Portals containing Braid components/styles must use the new `BraidPortal` component**
 
