@@ -50,57 +50,37 @@ const docs: CssDoc = {
             <TextLink href="https://vanilla-extract.style/documentation/styling-api/">
               styling apis
             </TextLink>
-            , e.g. ‘style’, to create the actual styles.
+            , e.g. <Strong>style</Strong>, to create the actual styles.
           </Text>
           <Code>
             {dedent`
               // myComponent.css.ts
               import { style } from '@vanilla-extract/css';
-              import { vars, responsiveStyle } from 'braid-design-system/css';
+              import { vars, responsiveStyle, breakpoints } from 'braid-design-system/css';
 
-              export const root = style(
-                ${
-                  source(
-                    responsiveStyle({
-                      mobile: { flexBasis: vars.space.small },
-                      tablet: { flexBasis: vars.space.medium },
-                      desktop: { flexBasis: vars.space.large },
-                    }),
-                  ).code
-                }
-              );
-            `}
-          </Code>
-        </>
-      ),
-    },
-    {
-      label: 'Composing with non-responsive styles',
-      description: (
-        <>
-          <Text>
-            Given a style rule object is returned, you can compose it with
-            non-responsive styles by spreading the result into the same style
-            object.
-          </Text>
-          <Code>
-            {dedent`
-              // myComponent.css.ts
-              import { style } from '@vanilla-extract/css';
-              import { vars, responsiveStyle } from 'braid-design-system/css';
+              const myResponsiveStyle = style(${
+                source(
+                  responsiveStyle({
+                    mobile: { flexBasis: vars.space.small },
+                    tablet: { flexBasis: vars.space.medium },
+                    desktop: { flexBasis: vars.space.large },
+                  }),
+                ).code
+              });
 
-              export const root = style(
-                ${
-                  source({
-                    top: '100px',
-                    ...responsiveStyle({
-                      mobile: { left: vars.space.gutter },
-                      tablet: { left: vars.space.xlarge },
-                      desktop: { left: '10vw' },
-                    }),
-                  }).code
+              // is equivalent to 
+
+              const myResponsiveStyle = style({
+                "flexBasis": vars.space.small,
+                "@media": {
+                  ${'[`screen and (min-width: ${breakpoints.tablet}px)`]: {'}
+                    "flexBasis": vars.space.medium
+                  },
+                  ${'[`screen and (min-width: ${breakpoints.desktop}px)`]: {'}
+                    "flexBasis": vars.space.large
+                  }
                 }
-              );
+              });
             `}
           </Code>
         </>
