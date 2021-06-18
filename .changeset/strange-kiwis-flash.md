@@ -4,7 +4,7 @@
 
 ---
 new:
- - responsiveStyle
+  - responsiveStyle
 ---
 
 Add **responsiveStyle** function for creating custom mobile-first styles within [vanilla-extract stylesheets](http://vanilla-extract.style)

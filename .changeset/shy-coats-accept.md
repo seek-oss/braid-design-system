@@ -4,7 +4,7 @@
 
 ---
 new:
- - atoms
+  - atoms
 ---
 
 Add **atoms** function for accessing re-usable atomic classes within [vanilla-extract stylesheets](http://vanilla-extract.style)

@@ -4,8 +4,8 @@
 
 ---
 new:
- - globalTextStyle
- - globalHeadingStyle
+  - globalTextStyle
+  - globalHeadingStyle
 ---
 
 Add **globalTextStyle** and **globalHeadingStyle** functions for applying standard text styles to foreign markup in [vanilla-extract stylesheets](http://vanilla-extract.style)

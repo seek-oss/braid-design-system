@@ -4,7 +4,7 @@
 
 ---
 new:
- - breakpoints
+  - breakpoints
 ---
 
 Add **breakpoints** object for accessing standard breakpoint values

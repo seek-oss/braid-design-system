@@ -4,7 +4,7 @@
 
 ---
 new:
- - vars
+  - vars
 ---
 
 Add **vars** object for accessing themed CSS variables within [vanilla-extract stylesheets](http://vanilla-extract.style) and runtime files.
