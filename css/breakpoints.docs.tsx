@@ -12,7 +12,7 @@ import {
 import { breakpoints } from '../lib/atoms/breakpoints';
 import Code from '../site/src/App/Code/Code';
 import { CssDoc } from '../site/src/types';
-import { vanillaMigrationBanner } from './vanillaMigrationBanner';
+import { VanillaMigrationBanner } from './VanillaMigrationBanner';
 
 const bps = Object.keys(breakpoints) as Array<keyof typeof breakpoints>;
 
@@ -23,7 +23,7 @@ const iconForBp = {
 };
 
 const docs: CssDoc = {
-  banner: vanillaMigrationBanner,
+  banner: <VanillaMigrationBanner />,
   usage: (
     <Code>{`import { breakpoints } from 'braid-design-system/css';`}</Code>
   ),

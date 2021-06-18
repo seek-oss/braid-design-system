@@ -1,7 +1,7 @@
 import React from 'react';
 import { Alert, Text, TextLink } from '../lib/components';
 
-export const vanillaMigrationBanner = (
+export const VanillaMigrationBanner = () => (
   <Alert tone="info">
     <Text weight="medium">
       If you’re migrating from{' '}

@@ -19,7 +19,7 @@ import { Page } from '../../../types';
 import { PageTitle } from '../../Seo/PageTitle';
 import source from '../../../../../lib/utils/source.macro';
 import { InlineCode } from '../../InlineCode/InlineCode';
-import { vanillaMigrationBanner } from '../../../../../css/vanillaMigrationBanner';
+import { VanillaMigrationBanner } from '../../../../../css/VanillaMigrationBanner';
 
 const DevelopmentWorkflow = () => (
   <TextStack>
@@ -267,7 +267,6 @@ const DevelopmentWorkflow = () => (
       theme variables by importing them from Braid’s{' '}
       <InlineCode>css</InlineCode> export:
     </Text>
-    {vanillaMigrationBanner}
     <Code>{`import { vars } from 'braid-design-system/css';`}</Code>
     <Text weight="strong">
       Before writing custom styles, we highly recommend that you read the{' '}
@@ -275,6 +274,7 @@ const DevelopmentWorkflow = () => (
         vanilla-extract documentation.
       </TextLink>
     </Text>
+    <VanillaMigrationBanner />
     <Text>
       While higher level Braid components don’t support custom style overrides
       (e.g. <InlineCode>className</InlineCode> and{' '}

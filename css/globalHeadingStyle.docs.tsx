@@ -5,10 +5,10 @@ import { globalHeadingStyle } from '../lib/hooks/typography';
 import source from '../lib/utils/source.macro';
 import Code from '../site/src/App/Code/Code';
 import { CssDoc } from '../site/src/types';
-import { vanillaMigrationBanner } from './vanillaMigrationBanner';
+import { VanillaMigrationBanner } from './VanillaMigrationBanner';
 
 const docs: CssDoc = {
-  banner: vanillaMigrationBanner,
+  banner: <VanillaMigrationBanner />,
   usage: (
     <Code>{`import { globalHeadingStyle } from 'braid-design-system/css';`}</Code>
   ),

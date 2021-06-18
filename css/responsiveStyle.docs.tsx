@@ -5,12 +5,12 @@ import { Notice, Strong, Text, TextLink } from '../lib/components';
 import source from '../lib/utils/source.macro';
 import Code from '../site/src/App/Code/Code';
 import { CssDoc } from '../site/src/types';
-import { vanillaMigrationBanner } from './vanillaMigrationBanner';
+import { VanillaMigrationBanner } from './VanillaMigrationBanner';
 
 const bps = Object.keys(breakpoints);
 
 const docs: CssDoc = {
-  banner: vanillaMigrationBanner,
+  banner: <VanillaMigrationBanner />,
   usage: (
     <Code>{`import { responsiveStyle } from 'braid-design-system/css';`}</Code>
   ),

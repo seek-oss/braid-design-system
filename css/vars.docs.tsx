@@ -15,7 +15,7 @@ import { ReactNodeNoStrings } from '../lib/components/private/ReactNodeNoStrings
 import Code from '../site/src/App/Code/Code';
 import { ThemedExample } from '../site/src/App/ThemeSetting';
 import { CssDoc } from '../site/src/types';
-import { vanillaMigrationBanner } from './vanillaMigrationBanner';
+import { VanillaMigrationBanner } from './VanillaMigrationBanner';
 
 const Row = ({
   group,
@@ -219,7 +219,7 @@ const varDocs: Record<keyof typeof vars, ReactNodeNoStrings> = {
 } as const;
 
 const docs: CssDoc = {
-  banner: vanillaMigrationBanner,
+  banner: <VanillaMigrationBanner />,
   usage: <Code>{`import { vars } from 'braid-design-system/css';`}</Code>,
   description: (
     <>
