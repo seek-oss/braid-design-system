@@ -1,4 +1,3 @@
-/* eslint-disable no-nested-ternary */
 import React, { Children } from 'react';
 import flattenChildren from 'react-keyed-flatten-children';
 import { Box } from '../Box/Box';
