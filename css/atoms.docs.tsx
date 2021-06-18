@@ -25,6 +25,7 @@ import source from '../lib/utils/source.macro';
 import Code from '../site/src/App/Code/Code';
 import { ThemedExample } from '../site/src/App/ThemeSetting';
 import { CssDoc } from '../site/src/types';
+import { vanillaMigrationBanner } from './vanillaMigrationBanner';
 
 type BoxShadowDocs = Required<Record<NonNullable<Atoms['boxShadow']>, string>>;
 const validateBoxShadows = (boxShadows: BoxShadowDocs) => boxShadows;
@@ -52,6 +53,7 @@ function AtomicProperty({ name, modifier, values }: AtomicPropertyProps) {
 }
 
 const docs: CssDoc = {
+  banner: vanillaMigrationBanner,
   usage: <Code>{`import { atoms } from 'braid-design-system/css';`}</Code>,
   description: (
     <Text>

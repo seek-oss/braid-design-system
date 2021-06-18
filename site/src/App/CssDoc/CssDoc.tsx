@@ -77,6 +77,7 @@ export const CssDoc = ({ name, docs }: Props) => {
           <PageTitle title={name} />
           <Stack space="xxlarge">
             <Stack space="large">
+              {docs.banner}
               {docs.usage}
               {docs.description || null}
             </Stack>

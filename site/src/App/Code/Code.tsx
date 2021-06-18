@@ -235,12 +235,7 @@ const Code = ({
   );
 
   return (
-    <Box
-      position="relative"
-      style={{
-        maxWidth: 864,
-      }}
-    >
+    <Box position="relative">
       <Stack space="xsmall">
         {typeof children !== 'string' && (
           <ThemedExample background="body">{value}</ThemedExample>

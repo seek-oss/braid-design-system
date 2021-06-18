@@ -38,6 +38,7 @@ export interface ComponentDocs {
 }
 
 export interface CssDoc {
+  banner?: ReactNodeNoStrings;
   usage: ReactNodeNoStrings;
   description?: ReactNodeNoStrings;
   additional?: Array<{
