@@ -53,7 +53,7 @@ const docs: CssDoc = {
           </Text>
           <Code>
             {dedent`
-              // myComponent.css.ts
+              // styles.css.ts
               import { style, globalStyle } from '@vanilla-extract/css';
               import { globalHeadingStyle } from 'braid-design-system/css';
 

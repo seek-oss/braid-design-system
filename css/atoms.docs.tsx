@@ -84,6 +84,7 @@ const docs: CssDoc = {
           </Text>
           <Code playroom={false}>
             {dedent`
+              // styles.css.ts
               import { atoms } from 'braid-design-system/css';
 
               export const className = ${
@@ -155,6 +156,7 @@ const docs: CssDoc = {
           </Text>
           <Code playroom={false}>
             {dedent`
+              // styles.css.ts
               import { atoms } from 'braid-design-system/css';
 
               export const className = ${
@@ -290,6 +292,7 @@ const docs: CssDoc = {
           </Text>
           <Code playroom={false}>
             {dedent`
+              // styles.css.ts
               import { atoms } from 'braid-design-system/css';
 
               export const className = ${
@@ -341,6 +344,7 @@ const docs: CssDoc = {
           </Text>
           <Code playroom={false}>
             {dedent`
+              // styles.css.ts
               import { atoms } from 'braid-design-system/css';
 
               export const className = ${
@@ -445,6 +449,7 @@ const docs: CssDoc = {
           </Text>
           <Code playroom={false}>
             {dedent`
+              // styles.css.ts
               import { atoms } from 'braid-design-system/css';
 
               export const className = ${

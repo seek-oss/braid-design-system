@@ -56,11 +56,11 @@ const docs: CssDoc = {
           </Text>
           <Code>
             {dedent`
-              // myComponent.css.ts
+              // styles.css.ts
               import { style } from '@vanilla-extract/css';
-              import { vars, responsiveStyle, breakpoints } from 'braid-design-system/css';
+              import { vars, responsiveStyle } from 'braid-design-system/css';
 
-              const myResponsiveStyle = style(${
+              export const className = style(${
                 source(
                   responsiveStyle({
                     mobile: { flexBasis: vars.space.small },
@@ -71,8 +71,10 @@ const docs: CssDoc = {
               });
 
               // is equivalent to
+              import { style } from '@vanilla-extract/css';
+              import { vars, breakpoints } from 'braid-design-system/css';
 
-              const myResponsiveStyle = style({
+              export const className = style({
                 "flexBasis": vars.space.small,
                 "@media": {
                   ${'[`screen and (min-width: ${breakpoints.tablet}px)`]: {'}
