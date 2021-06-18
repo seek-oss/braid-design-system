@@ -16,7 +16,7 @@ const docs: CssDoc = {
     <>
       <Text>
         A utility to style text within global HTML where Braid components cannot
-        be used, e.g. styling strings of uncontrolled HTML.
+        be used, e.g. styling strings of foreign markup.
       </Text>
       <Alert tone="caution">
         <Stack space="large">

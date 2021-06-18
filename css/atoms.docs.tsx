@@ -59,8 +59,10 @@ const docs: CssDoc = {
     <Text>
       The <Strong>atoms</Strong> function provides low-level access to Braid’s
       reusable atomic classes within your{' '}
-      <TextLink href="https://vanilla-extract.style">vanilla-extract</TextLink>{' '}
-      stylesheets, i.e. files ending in <Strong>.css.ts</Strong>.
+      <TextLink href="https://vanilla-extract.style">
+        vanilla&#8209;extract
+      </TextLink>
+      &nbsp;stylesheets.
     </Text>
   ),
   additional: [
