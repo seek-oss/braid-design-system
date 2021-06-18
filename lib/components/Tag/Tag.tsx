@@ -6,7 +6,6 @@ import { ClearButton } from '../iconButtons/ClearButton/ClearButton';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
-import * as styles from './Tag.css';
 
 type AllOrNone<T> = T | { [K in keyof T]?: never };
 
@@ -33,13 +32,13 @@ export const Tag = ({
         minWidth={0}
         alignItems="center"
         background="neutralLight"
-        paddingY={styles.constants.paddingY}
+        paddingY="xxsmall"
         paddingLeft="small"
         paddingRight={onClear ? 'xxsmall' : 'small'}
-        className={styles.borderRadius}
+        borderRadius="full"
       >
         <Box minWidth={0} title={children}>
-          <Text size={styles.constants.textSize} baseline={false} truncate>
+          <Text baseline={false} truncate>
             {children}
           </Text>
         </Box>

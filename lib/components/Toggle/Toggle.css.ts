@@ -57,14 +57,9 @@ export const slideContainerSize = styleVariants(sizes, (size) => ({
   height: vars.inlineFieldSize[size],
 }));
 
-export const slideTrack = styleVariants(sizes, (size) => {
-  const height = calc.subtract(vars.inlineFieldSize[size], vars.grid);
-
-  return {
-    height,
-    borderRadius: calc.divide(height, 2),
-  };
-});
+export const slideTrack = styleVariants(sizes, (size) => ({
+  height: calc.subtract(vars.inlineFieldSize[size], vars.grid),
+}));
 
 export const slideTrackBackground = style({
   backgroundColor: vars.borderColor.standard,

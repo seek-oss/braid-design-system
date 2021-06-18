@@ -81,7 +81,7 @@ export const responsiveProperties = {
   position: ['relative', 'absolute', 'fixed'],
   borderRadius: {
     none: '0px',
-    full: '50%',
+    full: '9999px',
     ...vars.borderRadius,
   },
   paddingTop: space,

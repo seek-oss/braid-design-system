@@ -82,6 +82,7 @@ export const Toggle = ({
           position="absolute"
           width="full"
           overflow="hidden"
+          borderRadius="full"
           className={[styles.slideTrack[size], styles.slideTrackBackground]}
         >
           <Box
