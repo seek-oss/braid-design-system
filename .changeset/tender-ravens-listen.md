@@ -9,6 +9,6 @@ updated:
   - Toggle
 ---
 
-**Box, Tag, Toggle:** Make borderRadius `full` always circular
+**Box, Tag, Toggle:** Make `borderRadius="full"` always circular
 
-Fixes circular border radius bug where non-square elements would result in a ellipsis.
+Fixes circular border radius bug where non-square elements would result in an ellipse.

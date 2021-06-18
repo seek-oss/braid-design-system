@@ -37,10 +37,10 @@ import { vars, breakpoints } from 'braid-design-system/css';
 export const className = style({
   "flexBasis": vars.space.small,
   "@media": {
-    [`screen and (min-width: ${'${breakpoints.tablet}'}px)`]: {
+    [`screen and (min-width: ${breakpoints.tablet}px)`]: {
       "flexBasis": vars.space.medium
     },
-    [`screen and (min-width: ${'${breakpoints.desktop}'}px)`]: {
+    [`screen and (min-width: ${breakpoints.desktop}px)`]: {
       "flexBasis": vars.space.large
     }
   }
