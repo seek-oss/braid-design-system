@@ -20,7 +20,7 @@ import { HiddenVisually } from '../HiddenVisually/HiddenVisually';
 import { Announcement } from '../private/Announcement/Announcement';
 import { Field, FieldProps } from '../private/Field/Field';
 import { ClearButton } from '../iconButtons/ClearButton/ClearButton';
-import { useTouchableSpace, useText } from '../../hooks/typography';
+import { touchableText, useText } from '../../hooks/typography';
 import { getNextIndex } from '../private/getNextIndex';
 import { normalizeKey } from '../private/normalizeKey';
 import { ClearField } from '../private/Field/ClearField';
@@ -137,7 +137,7 @@ function SuggestionItem({
         paddingX="small"
         paddingRight={onClear ? 'none' : undefined}
       >
-        <Box className={useTouchableSpace('standard')}>
+        <Box className={touchableText.standard}>
           <Text baseline={false}>
             {suggestionParts.map(({ highlight, text }, index) =>
               selected || highlight ? (
@@ -186,7 +186,7 @@ function GroupHeading({ children }: GroupHeadingProps) {
       borderRadius="standard"
       className={[
         styles.groupHeading,
-        useTouchableSpace('xsmall'),
+        touchableText.xsmall,
         useText({
           size: 'xsmall',
           baseline: false,
@@ -613,8 +613,6 @@ export const Autosuggest = forwardRef(function <Value>(
     }
   }
 
-  const standardTouchableSpace = useTouchableSpace('standard');
-
   return (
     <Fragment>
       {showMobileBackdrop ? (
@@ -689,7 +687,7 @@ export const Autosuggest = forwardRef(function <Value>(
                       <Box
                         component="li"
                         paddingX="small"
-                        className={standardTouchableSpace}
+                        className={touchableText.standard}
                       >
                         <Text tone="secondary" baseline={false}>
                           {message}

@@ -151,10 +151,4 @@ export function useTextTone({
   return styles.invertableTone.neutral[backgroundLightness];
 }
 
-export function useTouchableSpace(size: keyof typeof styles.touchable) {
-  return styles.touchable[size];
-}
-
-export function useTruncate() {
-  return styles.truncate;
-}
+export const touchableText = styles.touchable;

@@ -11,7 +11,7 @@ import {
 import { FieldOverlay } from '../FieldOverlay/FieldOverlay';
 import { Stack } from '../../Stack/Stack';
 import buildDataAttributes, { DataAttributeMap } from '../buildDataAttributes';
-import { useText, useTouchableSpace } from '../../../hooks/typography';
+import { useText, touchableText } from '../../../hooks/typography';
 import { Text } from '../../Text/Text';
 import { mergeIds } from '../mergeIds';
 import * as styles from './Field.css';
@@ -174,7 +174,7 @@ export const Field = ({
                 size: 'standard',
                 baseline: false,
               }),
-              useTouchableSpace('standard'),
+              touchableText.standard,
               icon && !prefix ? styles.iconSpace : null,
             ),
           },

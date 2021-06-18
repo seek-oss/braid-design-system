@@ -12,7 +12,7 @@ import { Box } from '../Box/Box';
 import {
   useTextTone,
   useWeight,
-  useTouchableSpace,
+  touchableText,
   useText,
 } from '../../hooks/typography';
 import { useBackground } from '../Box/BackgroundContext';
@@ -159,7 +159,6 @@ function ButtonLink({
 }: ButtonLinkProps) {
   const textLinkWeight = useDefaultLinkWeight();
   const tone = textLinkWeight === 'weak' ? 'neutral' : 'link';
-  const standardTouchableSpaceStyles = useTouchableSpace('standard');
   const buttonLinkTextProps = {
     size,
     tone,
@@ -183,7 +182,7 @@ function ButtonLink({
               styles.button,
               useLinkStyles(textLinkWeight, showVisited),
               useText(buttonLinkTextProps),
-              size === 'standard' ? standardTouchableSpaceStyles : null,
+              size === 'standard' ? touchableText.standard : null,
               reset !== false
                 ? atoms({
                     reset: typeof reset === 'string' ? reset : 'a',

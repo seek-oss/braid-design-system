@@ -9,7 +9,7 @@ import React, {
 } from 'react';
 import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';
-import { useTouchableSpace } from '../../hooks/typography';
+import { touchableText } from '../../hooks/typography';
 import { normalizeKey } from '../private/normalizeKey';
 import { MenuRendererItemContext } from '../MenuRenderer/MenuRendererItemContext';
 import { actionTypes, Action } from '../MenuRenderer/MenuRenderer.actions';
@@ -146,7 +146,7 @@ export function useMenuItem<MenuItemElement extends HTMLElement>({
       },
       className: [
         styles.menuItem,
-        useTouchableSpace(menuItemChildrenSize),
+        touchableText[menuItemChildrenSize],
         atoms({
           display: 'flex',
           alignItems: 'center',

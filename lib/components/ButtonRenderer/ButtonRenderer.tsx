@@ -18,7 +18,7 @@ import {
 import { Box } from '../Box/Box';
 import { Text, TextProps } from '../Text/Text';
 import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
-import { useTouchableSpace } from '../../hooks/typography';
+import { touchableText } from '../../hooks/typography';
 import { virtualTouchable } from '../private/touchable/virtualTouchable';
 import ActionsContext from '../Actions/ActionsContext';
 import * as styles from './ButtonRenderer.css';
@@ -179,7 +179,6 @@ interface ButtonChildrenProps {
 const ButtonChildren = ({ children }: ButtonChildrenProps) => {
   const { size, variant, tone, loading } = useContext(ButtonChildrenContext);
   const buttonVariant = useButtonVariant(variant, tone);
-  const standardTouchableSpaceStyles = useTouchableSpace('standard');
 
   return (
     <Fragment>
@@ -213,9 +212,7 @@ const ButtonChildren = ({ children }: ButtonChildrenProps) => {
         textAlign="center"
         overflow="hidden"
         userSelect="none"
-        className={
-          size === 'standard' ? standardTouchableSpaceStyles : undefined
-        }
+        className={size === 'standard' ? touchableText.standard : undefined}
       >
         <Text
           baseline={false}

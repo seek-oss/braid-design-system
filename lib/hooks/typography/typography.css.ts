@@ -267,8 +267,3 @@ export const touchable = styleVariants(vars.textSize, (textDefinition) =>
     ),
   }),
 );
-
-export const truncate = style({
-  whiteSpace: 'nowrap',
-  textOverflow: 'ellipsis',
-});
