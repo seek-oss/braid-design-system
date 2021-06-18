@@ -11,7 +11,6 @@ import buildDataAttributes, {
 } from '../private/buildDataAttributes';
 import { Truncate } from '../private/Truncate/Truncate';
 
-/* tslint:disable-next-line no-object-literal-type-assertion */
 const resolveDefaultComponent = {
   '1': 'h1',
   '2': 'h2',
