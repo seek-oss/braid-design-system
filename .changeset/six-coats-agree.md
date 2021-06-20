@@ -2,6 +2,11 @@
 'braid-design-system': major
 ---
 
+---
+new:
+  - BraidPortal
+---
+
 Migrate to vanilla-extract
 
 Braid now uses [vanilla-extract](http://vanilla-extract.style) rather than [treat](https://seek-oss.github.io/treat) to power its theme-based styling.
