@@ -125,7 +125,7 @@ const docs: ComponentDocs = {
       ),
       Example: ({ id, getState, setState }) =>
         source(
-          <Tiles space="large" columns={[1, 2]}>
+          <Tiles space="large" columns={{ mobile: 1, tablet: 2 }}>
             <RadioGroup
               id={`${id}_standard`}
               value={getState('radio')}

@@ -1,20 +1,19 @@
 import React, { ReactNode, useContext } from 'react';
-import { useStyles } from 'sku/react-treat';
+import { optimizeResponsiveArray } from '../../utils/optimizeResponsiveArray';
 import { Box } from '../Box/Box';
 import { ColumnsContext } from '../Columns/Columns';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
-import * as styleRefs from './Column.treat';
+import * as styles from './Column.css';
 
 export interface ColumnProps {
   children: ReactNode;
-  width?: keyof typeof styleRefs.width | 'content';
+  width?: keyof typeof styles.width | 'content';
   data?: DataAttributeMap;
 }
 
 export const Column = ({ children, data, width }: ColumnProps) => {
-  const styles = useStyles(styleRefs);
   const {
     collapseMobile,
     collapseTablet,
@@ -36,18 +35,18 @@ export const Column = ({ children, data, width }: ColumnProps) => {
       {...(data ? buildDataAttributes(data) : undefined)}
     >
       <Box
-        paddingLeft={[
+        paddingLeft={optimizeResponsiveArray([
           collapseMobile ? 'none' : mobileSpace,
           collapseTablet ? 'none' : tabletSpace,
           desktopSpace,
-        ]}
+        ])}
         paddingTop={
           collapseMobile || collapseTablet
-            ? [
+            ? optimizeResponsiveArray([
                 collapseMobile ? mobileSpace : 'none',
                 collapseTablet ? tabletSpace : 'none',
                 'none',
-              ]
+              ])
             : undefined
         }
         height="full"

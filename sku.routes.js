@@ -5,11 +5,13 @@ const flatten = require('lodash/flatten');
 const extractExports = require('./extractExports');
 const undocumentedExports = require('./site/src/undocumentedExports.json');
 
-const getExports = (relativePath) => {
+const getExports = (relativePath, exportType = 'components') => {
   const sourcePath = path.join(__dirname, relativePath);
   const source = extractExports(sourcePath);
 
-  return source.filter((x) => !undocumentedExports.includes(x)).sort();
+  return source
+    .filter((x) => !undocumentedExports[exportType].includes(x))
+    .sort();
 };
 
 const getPages = (relativePath) => {
@@ -19,6 +21,7 @@ const getPages = (relativePath) => {
   return source.match(/('.*')(?=:)/g).map((x) => x.split("'")[1]);
 };
 
+const cssNames = getExports('css/index.ts', 'css');
 const componentNames = getExports('lib/components/index.ts');
 const iconNames = getExports('lib/components/icons/index.ts');
 
@@ -43,6 +46,12 @@ module.exports = [
         !name.startsWith('use') ? { route: `/components/${name}/props` } : null,
       ].filter(Boolean),
     ),
+  ),
+  ...flatten(
+    cssNames.map((name) => [
+      { route: `/css/${name}` },
+      { route: `/css/${name}/releases` },
+    ]),
   ),
   ...iconNames.map((name) => ({ route: `/components/${name}`, name })),
 ];

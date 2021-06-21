@@ -1,5 +1,4 @@
 import React from 'react';
-import { useStyles } from 'sku/react-treat';
 import assert from 'assert';
 import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';
@@ -7,7 +6,6 @@ import { ClearButton } from '../iconButtons/ClearButton/ClearButton';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
-import * as styleRefs from './Tag.treat';
 
 type AllOrNone<T> = T | { [K in keyof T]?: never };
 
@@ -27,8 +25,6 @@ export const Tag = ({
     'Tag may only contain a string',
   );
 
-  const styles = useStyles(styleRefs);
-
   return (
     <Box display="flex" {...(data ? buildDataAttributes(data) : undefined)}>
       <Box
@@ -36,13 +32,13 @@ export const Tag = ({
         minWidth={0}
         alignItems="center"
         background="neutralLight"
-        paddingY={styles.constants.paddingY}
+        paddingY="xxsmall"
         paddingLeft="small"
         paddingRight={onClear ? 'xxsmall' : 'small'}
-        className={styles.borderRadius}
+        borderRadius="full"
       >
         <Box minWidth={0} title={children}>
-          <Text size={styles.constants.textSize} baseline={false} truncate>
+          <Text baseline={false} truncate>
             {children}
           </Text>
         </Box>

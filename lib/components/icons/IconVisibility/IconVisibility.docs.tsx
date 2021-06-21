@@ -16,7 +16,7 @@ const docs: ComponentDocs = {
   migrationGuide: true,
   Example: () =>
     source(
-      <Inline space={['large', 'xlarge']} align="center">
+      <Inline space={{ mobile: 'large', tablet: 'xlarge' }} align="center">
         <Stack space="medium" align="center">
           <Heading component="div" level="1">
             <IconVisibility />

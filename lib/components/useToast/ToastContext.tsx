@@ -8,9 +8,9 @@ import React, {
   useEffect,
   Fragment,
 } from 'react';
-import { createPortal } from 'react-dom';
 import { useTheme } from 'sku/react-treat';
-
+import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
+import { BraidPortal } from '../BraidPortal/BraidPortal';
 import { Toaster } from './Toaster';
 import { Toast, InternalToast } from './ToastTypes';
 
@@ -157,11 +157,12 @@ const ToastPortal = ({ children }: ToastPortalProps) => {
     return null;
   }
 
-  return createPortal(children, toastElement);
+  return <BraidPortal container={toastElement}>{children}</BraidPortal>;
 };
 
 export const useToast = () => {
   const treatTheme = useTheme();
+  const { vanillaTheme } = useBraidTheme();
   const addToast = useContext(ToastControllerContext);
 
   if (addToast === null) {
@@ -173,8 +174,15 @@ export const useToast = () => {
       const id = `${toastCounter++}`;
       const dedupeKey = toast.key ?? id;
 
-      addToast({ ...toast, treatTheme, id, dedupeKey, shouldRemove: false });
+      addToast({
+        ...toast,
+        treatTheme,
+        vanillaTheme,
+        id,
+        dedupeKey,
+        shouldRemove: false,
+      });
     },
-    [treatTheme, addToast],
+    [treatTheme, vanillaTheme, addToast],
   );
 };

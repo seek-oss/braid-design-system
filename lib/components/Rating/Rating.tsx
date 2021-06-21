@@ -1,5 +1,4 @@
 import React from 'react';
-import { useStyles } from 'sku/react-treat';
 import assert from 'assert';
 import { useBackground } from '../Box/BackgroundContext';
 import useIcon, { UseIconProps } from '../../hooks/useIcon';
@@ -8,7 +7,7 @@ import { Text, TextProps } from '../Text/Text';
 import { IconStarSvg as IconStarEmptySvg } from '../icons/IconStar/IconStarSvg';
 import { IconStarHalfSvg } from '../icons/IconStar/IconStarHalfSvg';
 import { IconStarActiveSvg as IconStarFullSvg } from '../icons/IconStar/IconStarActiveSvg';
-import * as styleRefs from './Rating.treat';
+import * as styles from './Rating.css';
 
 const getPercent = (rating: number, position: number) =>
   Math.round(Math.min(Math.max(rating - position, 0), 1) * 100);
@@ -17,7 +16,6 @@ type RatingStar = {
   percent: number;
 } & UseIconProps;
 const RatingStar = ({ percent, ...restProps }: RatingStar) => {
-  const styles = useStyles(styleRefs);
   const currentBg = useBackground();
   const { className, ...iconProps } = useIcon(restProps);
 
@@ -59,8 +57,6 @@ export const Rating = ({
   'aria-label': ariaLabel,
   data,
 }: RatingProps) => {
-  const styles = useStyles(styleRefs);
-
   assert(
     !rating || (rating >= 0 && rating <= 5),
     'Rating must be between 0 and 5',

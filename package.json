@@ -7,7 +7,8 @@
     "lib/themes/**/*",
     "lib/reset/**/*",
     "themes/**/*",
-    "reset/**/*"
+    "reset/**/*",
+    "*.css.ts"
   ],
   "scripts": {
     "test": "SKU_TELEMETRY=false sku test",
@@ -52,6 +53,9 @@
     "@types/lodash": "^4.14.168",
     "@types/react": "^16.8.8",
     "@types/uuid": "^8.3.0",
+    "@vanilla-extract/css": "^1.0.0",
+    "@vanilla-extract/css-utils": "^0.1.1",
+    "@vanilla-extract/sprinkles": "^0.4.1",
     "assert": "^2.0.0",
     "autosuggest-highlight": "^3.1.1",
     "capsize": "^2.0.0",
@@ -72,7 +76,7 @@
   },
   "peerDependencies": {
     "react": "^16.8.0",
-    "sku": ">=10.3.0"
+    "sku": ">=10.13.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
@@ -132,7 +136,9 @@
     "typescript": "^4.2.2"
   },
   "resolutions": {
-    "playroom": "0.25.0"
+    "playroom": "0.25.0",
+    "csstype": "3.0.6",
+    "react-docgen-typescript": "2.0.0"
   },
   "volta": {
     "node": "12.14.1",

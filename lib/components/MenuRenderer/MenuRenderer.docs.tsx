@@ -102,14 +102,17 @@ const docs: ComponentDocs = {
       description: (
         <Text>
           The space between the menu and the trigger element can be customised
-          via the <Strong>offsetSpace</Strong> prop, which also accepts an array
-          of responsive values.
+          via the <Strong>offsetSpace</Strong> prop, which also accepts
+          responsive values, e.g.{' '}
+          <Strong>
+            {"offsetSpace={{ mobile: 'xsmall', tablet: 'small' }}"}
+          </Strong>
         </Text>
       ),
       Example: () =>
         source(
           <MenuRenderer
-            offsetSpace={['xsmall', 'small']}
+            offsetSpace={{ mobile: 'xsmall', tablet: 'small' }}
             trigger={(triggerProps, { open }) => (
               <Box userSelect="none" cursor="pointer" {...triggerProps}>
                 <Text>

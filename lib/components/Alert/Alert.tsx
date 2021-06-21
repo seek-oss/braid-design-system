@@ -1,5 +1,4 @@
 import React, { ReactNode } from 'react';
-import { useStyles } from 'sku/react-treat';
 import { Box, BoxProps } from '../Box/Box';
 import {
   IconInfo,
@@ -14,11 +13,11 @@ import { Columns } from '../Columns/Columns';
 import { Column } from '../Column/Column';
 import { Overlay } from '../private/Overlay/Overlay';
 import { useBackground } from '../Box/BackgroundContext';
-import { useTextAlignedToIcon } from '../../hooks/useTextAlignedToIcon/useTextAlignedToIcon';
+import { textAlignedToIcon } from '../../atoms/textAlignedToIcon.css';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
-import * as styleRefs from './Alert.treat';
+import * as styles from './Alert.css';
 
 type Tone = 'promote' | 'info' | 'positive' | 'caution' | 'critical';
 
@@ -65,7 +64,6 @@ export const Alert = ({
   data,
   onClose,
 }: AlertProps) => {
-  const styles = useStyles(styleRefs);
   const parentBackground = useBackground();
   const Icon = icons[tone];
 
@@ -87,7 +85,7 @@ export const Alert = ({
             <Icon tone={tone} />
           </Column>
           <Column>
-            <Box className={useTextAlignedToIcon('standard')}>{children}</Box>
+            <Box className={textAlignedToIcon.standard}>{children}</Box>
           </Column>
           {onClose ? (
             <Column width="content">

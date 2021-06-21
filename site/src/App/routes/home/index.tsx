@@ -24,9 +24,12 @@ const Home = () => {
         Braid aims to make cross-brand UI development as fast as possible while
         maintaining a high level of quality and accessibility. In order to
         achieve this, Braid provides as a set of{' '}
-        <TextLink href="https://reactjs.org/">React</TextLink> components and{' '}
-        <TextLink href="https://seek-oss.github.io/treat/">treat</TextLink>{' '}
-        themes.
+        <TextLink href="https://reactjs.org/">React</TextLink> components and
+        CSS variable-based styling themes using{' '}
+        <TextLink href="https://vanilla-extract.style/">
+          vanilla-extract
+        </TextLink>
+        .
       </Text>
       <Divider />
       <Heading level="3">What makes Braid different</Heading>

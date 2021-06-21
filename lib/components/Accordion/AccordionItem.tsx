@@ -1,5 +1,4 @@
 import React, { ReactNode, useContext } from 'react';
-import { useStyles } from 'sku/react-treat';
 import assert from 'assert';
 import { Box } from '../Box/Box';
 import { Text, TextProps } from '../Text/Text';
@@ -12,7 +11,7 @@ import {
   DisclosureStateProps,
 } from '../Disclosure/useDisclosure';
 
-import { useVirtualTouchable } from '../private/touchable/useVirtualTouchable';
+import { virtualTouchable } from '../private/touchable/virtualTouchable';
 import { hideFocusRingsClassName } from '../private/hideFocusRings/hideFocusRings';
 import { Overlay } from '../private/Overlay/Overlay';
 import {
@@ -23,7 +22,7 @@ import {
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
-import * as styleRefs from './AccordionItem.treat';
+import * as styles from './AccordionItem.css';
 
 const itemSpaceForSize = {
   xsmall: 'small',
@@ -52,8 +51,6 @@ export const AccordionItem = ({
   data,
   ...restProps
 }: AccordionItemProps) => {
-  const styles = useStyles(styleRefs);
-
   const accordionContext = useContext(AccordionContext);
 
   assert(
@@ -100,7 +97,7 @@ export const AccordionItem = ({
         <Box
           component="button"
           cursor="pointer"
-          className={[styles.button, useVirtualTouchable()]}
+          className={[styles.button, virtualTouchable()]}
           outline="none"
           width="full"
           textAlign="left"

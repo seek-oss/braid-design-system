@@ -27,7 +27,7 @@ export const snippets: Snippets = [
   {
     name: 'Responsive space',
     code: source(
-      <Inline space={['small', 'large']}>
+      <Inline space={{ mobile: 'small', tablet: 'large' }}>
         <Placeholder width={48} height={48} />
         <Placeholder width={48} height={48} />
         <Placeholder width={48} height={48} />
@@ -37,7 +37,7 @@ export const snippets: Snippets = [
   {
     name: 'Responsive horizontal alignment',
     code: source(
-      <Inline space="small" align={['center', 'left']}>
+      <Inline space="small" align={{ mobile: 'center', tablet: 'left' }}>
         <Placeholder width={48} height={48} />
         <Placeholder width={48} height={48} />
         <Placeholder width={48} height={48} />

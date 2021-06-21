@@ -1,6 +1,5 @@
 import React from 'react';
 import assert from 'assert';
-import { useStyles } from 'sku/react-treat';
 import { Box } from '../Box/Box';
 import { useBackground } from '../Box/BackgroundContext';
 import { IconChevron } from '../icons';
@@ -11,8 +10,7 @@ import { paginate } from './paginate';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
-
-import * as styleRefs from './Pagination.treat';
+import * as styles from './Pagination.css';
 
 export interface PaginationProps {
   page: number;
@@ -38,7 +36,6 @@ const PageNav = ({
   label: string;
   direction: 'next' | 'prev';
 }) => {
-  const styles = useStyles(styleRefs);
   const isPrevious = direction === 'prev';
 
   return (
@@ -79,7 +76,6 @@ const PageNav = ({
 const tabletButtonSpacing = 'xxsmall';
 
 const Page = ({ number, current }: { number: number; current: boolean }) => {
-  const styles = useStyles(styleRefs);
   const parentBackground = useBackground();
 
   return (

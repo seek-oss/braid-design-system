@@ -12,7 +12,6 @@ import React, {
   ReactElement,
   RefAttributes,
 } from 'react';
-import { useStyles } from 'sku/react-treat';
 import parseHighlights from 'autosuggest-highlight/parse';
 import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';
@@ -21,7 +20,7 @@ import { HiddenVisually } from '../HiddenVisually/HiddenVisually';
 import { Announcement } from '../private/Announcement/Announcement';
 import { Field, FieldProps } from '../private/Field/Field';
 import { ClearButton } from '../iconButtons/ClearButton/ClearButton';
-import { useTouchableSpace, useText } from '../../hooks/typography';
+import { touchableText, useText } from '../../hooks/typography';
 import { getNextIndex } from '../private/getNextIndex';
 import { normalizeKey } from '../private/normalizeKey';
 import { ClearField } from '../private/Field/ClearField';
@@ -32,7 +31,7 @@ import { RemoveScroll } from 'react-remove-scroll';
 import { createAccessbilityProps, getItemId } from './createAccessbilityProps';
 import { autosuggest, AutosuggestTranslations } from '../../translations/en';
 
-import * as styleRefs from './Autosuggest.treat';
+import * as styles from './Autosuggest.css';
 
 type SuggestionMatch = Array<{ start: number; end: number }>;
 
@@ -138,7 +137,7 @@ function SuggestionItem({
         paddingX="small"
         paddingRight={onClear ? 'none' : undefined}
       >
-        <Box className={useTouchableSpace('standard')}>
+        <Box className={touchableText.standard}>
           <Text baseline={false}>
             {suggestionParts.map(({ highlight, text }, index) =>
               selected || highlight ? (
@@ -181,15 +180,13 @@ interface GroupHeadingProps {
   children: string;
 }
 function GroupHeading({ children }: GroupHeadingProps) {
-  const styles = useStyles(styleRefs);
-
   return (
     <Box
       paddingX="small"
       borderRadius="standard"
       className={[
         styles.groupHeading,
-        useTouchableSpace('xsmall'),
+        touchableText.xsmall,
         useText({
           size: 'xsmall',
           baseline: false,
@@ -294,8 +291,6 @@ export const Autosuggest = forwardRef(function <Value>(
   }: AutosuggestProps<Value>,
   forwardedRef: Ref<HTMLInputElement>,
 ) {
-  const styles = useStyles(styleRefs);
-
   const suggestionsPropValue =
     typeof suggestionsProp === 'function'
       ? suggestionsProp(value)
@@ -618,8 +613,6 @@ export const Autosuggest = forwardRef(function <Value>(
     }
   }
 
-  const standardTouchableSpace = useTouchableSpace('standard');
-
   return (
     <Fragment>
       {showMobileBackdrop ? (
@@ -694,7 +687,7 @@ export const Autosuggest = forwardRef(function <Value>(
                       <Box
                         component="li"
                         paddingX="small"
-                        className={standardTouchableSpace}
+                        className={touchableText.standard}
                       >
                         <Text tone="secondary" baseline={false}>
                           {message}

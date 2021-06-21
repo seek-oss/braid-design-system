@@ -1,5 +1,4 @@
 import React, { ReactNode, forwardRef, ReactElement } from 'react';
-import { useStyles } from 'sku/react-treat';
 import { Box } from '../../Box/Box';
 import { FieldLabelProps } from '../../FieldLabel/FieldLabel';
 import {
@@ -7,7 +6,7 @@ import {
   FieldMessageProps,
 } from '../../FieldMessage/FieldMessage';
 import { Text } from '../../Text/Text';
-import { useVirtualTouchable } from '../touchable/useVirtualTouchable';
+import { virtualTouchable } from '../touchable/virtualTouchable';
 import { mergeIds } from '../mergeIds';
 import { BadgeProps } from '../../Badge/Badge';
 import { Inline } from '../../Inline/Inline';
@@ -16,7 +15,7 @@ import {
   StyledInputProps,
   PrivateStyledInputProps,
 } from './StyledInput';
-import * as styleRefs from './InlineField.treat';
+import * as styles from './InlineField.css';
 
 type InlineFieldBaseProps = {
   label: NonNullable<FieldLabelProps['label']>;
@@ -67,8 +66,6 @@ export const InlineField = forwardRef<
     },
     forwardedRef,
   ) => {
-    const styles = useStyles(styleRefs);
-
     const messageId = `${id}-message`;
     const descriptionId = `${id}-description`;
     const hasMessage = message || reserveMessageSpace;
@@ -104,7 +101,11 @@ export const InlineField = forwardRef<
                 htmlFor={id}
                 userSelect="none"
                 display="block"
-                className={[styles.label[size], useVirtualTouchable()]}
+                className={[
+                  styles.labelBase,
+                  styles.labelOffset[size],
+                  virtualTouchable(),
+                ]}
               >
                 <Text
                   weight={checked && !inList ? 'strong' : undefined}

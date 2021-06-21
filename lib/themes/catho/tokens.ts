@@ -1,4 +1,4 @@
-import { TreatTokens } from '../makeBraidTheme';
+import { BraidTokens } from '../tokenType';
 
 const linkVisited = 'DarkViolet';
 
@@ -16,7 +16,7 @@ const secondary = '#737374';
 const white = '#fff';
 const link = brand;
 
-const tokens: TreatTokens = {
+const tokens: BraidTokens = {
   name: 'Catho',
   displayName: 'Catho',
   typography: {
@@ -124,11 +124,6 @@ const tokens: TreatTokens = {
         },
       },
     },
-  },
-  breakpoint: {
-    mobile: 0,
-    tablet: 600,
-    desktop: 1024,
   },
   contentWidth: {
     xsmall: 400,

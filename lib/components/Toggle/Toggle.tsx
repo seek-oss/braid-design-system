@@ -1,15 +1,15 @@
 import React, { AllHTMLAttributes, ChangeEvent, ReactNode } from 'react';
-import { useStyles } from 'sku/react-treat';
 import { Box } from '../Box/Box';
 import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
 import { Text } from '../Text/Text';
 import { IconTick } from '../icons';
-import { useVirtualTouchable } from '../private/touchable/useVirtualTouchable';
+import { virtualTouchable } from '../private/touchable/virtualTouchable';
 import { useBackgroundLightness } from '../Box/BackgroundContext';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
-import * as styleRefs from './Toggle.treat';
+import * as styles from './Toggle.css';
+import type { Size } from './Toggle.css';
 
 type HTMLInputProps = AllHTMLAttributes<HTMLInputElement>;
 type ChangeHandler = (value: boolean) => void;
@@ -19,7 +19,7 @@ export interface ToggleProps {
   on: boolean;
   onChange: ChangeHandler;
   align?: 'left' | 'right' | 'justify';
-  size?: keyof typeof styleRefs.fieldSize;
+  size?: Size;
   data?: DataAttributeMap;
 }
 
@@ -40,7 +40,6 @@ export const Toggle = ({
   size = 'standard',
   data,
 }: ToggleProps) => {
-  const styles = useStyles(styleRefs);
   const showBorder = useBackgroundLightness() === 'light';
 
   return (
@@ -63,7 +62,7 @@ export const Toggle = ({
         cursor="pointer"
         opacity={0}
         className={[
-          styles.realFieldBase,
+          styles.realField,
           styles.realFieldPosition[size],
           styles.fieldSize[size],
         ]}
@@ -75,7 +74,7 @@ export const Toggle = ({
         flexShrink={0}
         className={[
           styles.slideContainerBase,
-          styles.slideContainerHeight[size],
+          styles.slideContainerSize[size],
           styles.fieldSize[size],
         ]}
       >
@@ -83,6 +82,7 @@ export const Toggle = ({
           position="absolute"
           width="full"
           overflow="hidden"
+          borderRadius="full"
           className={[styles.slideTrack[size], styles.slideTrackBackground]}
         >
           <Box
@@ -130,7 +130,7 @@ export const Toggle = ({
         flexGrow={align === 'justify' ? 1 : undefined}
         userSelect="none"
         cursor="pointer"
-        className={[styles.label[size], useVirtualTouchable()]}
+        className={[styles.label[size], virtualTouchable()]}
       >
         <Text baseline={false} weight={on ? 'strong' : undefined} size={size}>
           {label}

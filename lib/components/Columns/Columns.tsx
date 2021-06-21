@@ -1,13 +1,13 @@
 import React, { createContext, ReactElement } from 'react';
 import { Box } from '../Box/Box';
 import { ColumnProps } from '../Column/Column';
-import { Space, ResponsiveSpace } from '../Box/useBoxStyles';
-import { useNegativeMarginLeft } from '../../hooks/useNegativeMargin/useNegativeMargin';
-import { normaliseResponsiveProp } from '../../utils/responsiveProp';
+import { Space, ResponsiveSpace } from '../../atoms/atoms';
+import { negativeMarginLeft } from '../../atoms/negativeMargin/negativeMargin';
 import {
   resolveCollapsibleAlignmentProps,
   CollapsibleAlignmentProps,
 } from '../../utils/collapsibleAlignmentProps';
+import { normalizeResponsiveValue } from '../../atoms/sprinkles.css';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
@@ -52,9 +52,12 @@ export const Columns = ({
   alignY,
   data,
 }: ColumnsProps) => {
-  const [mobileSpace, tabletSpace, desktopSpace] = normaliseResponsiveProp(
-    space,
-  );
+  const normalizedSpace = normalizeResponsiveValue(space);
+  const {
+    mobile: mobileSpace = 'none',
+    tablet: tabletSpace = mobileSpace,
+    desktop: desktopSpace = tabletSpace,
+  } = normalizedSpace;
 
   const {
     collapsibleAlignmentProps,
@@ -69,16 +72,14 @@ export const Columns = ({
     reverse,
   });
 
-  const negativeMarginLeft = useNegativeMarginLeft([
-    collapseMobile ? 'none' : mobileSpace,
-    collapseTablet ? 'none' : tabletSpace,
-    desktopSpace,
-  ]);
-
   return (
     <Box
       {...collapsibleAlignmentProps}
-      className={negativeMarginLeft}
+      className={negativeMarginLeft({
+        mobile: collapseMobile ? 'none' : mobileSpace,
+        tablet: collapseTablet ? 'none' : tabletSpace,
+        desktop: desktopSpace,
+      })}
       {...(data ? buildDataAttributes(data) : undefined)}
     >
       <ColumnsContext.Provider

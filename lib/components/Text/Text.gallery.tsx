@@ -35,7 +35,9 @@ export const galleryItems: ComponentExample[] = [
           <Text align="left">Left (default)</Text>
           <Text align="center">Center</Text>
           <Text align="right">Right</Text>
-          <Text align={['center', 'left']}>Center on mobile</Text>
+          <Text align={{ mobile: 'center', tablet: 'left' }}>
+            Center on mobile
+          </Text>
         </Stack>,
       ),
   },

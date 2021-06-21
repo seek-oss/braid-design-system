@@ -1,1 +1,1 @@
-export const hitArea = 44;
+export const hitArea = '44px';

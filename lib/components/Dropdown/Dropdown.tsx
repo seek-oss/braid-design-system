@@ -1,9 +1,8 @@
 import React, { Fragment, AllHTMLAttributes, forwardRef } from 'react';
-import { useStyles } from 'sku/react-treat';
 import { Box } from '../Box/Box';
 import { Field, FieldProps } from '../private/Field/Field';
 import { IconChevron } from '../icons';
-import * as styleRefs from './Dropdown.treat';
+import * as styles from './Dropdown.css';
 import { Text } from '../Text/Text';
 
 type ValidDropdownChildren = AllHTMLAttributes<
@@ -20,7 +19,7 @@ export interface DropdownProps
   placeholder?: string;
 }
 
-const NamedDropdown = forwardRef<HTMLSelectElement, DropdownProps>(
+export const Dropdown = forwardRef<HTMLSelectElement, DropdownProps>(
   (props, ref) => {
     const {
       children,
@@ -33,7 +32,6 @@ const NamedDropdown = forwardRef<HTMLSelectElement, DropdownProps>(
       ...restProps
     } = props;
 
-    const styles = useStyles(styleRefs);
     return (
       <Field
         {...restProps}
@@ -88,6 +86,4 @@ const NamedDropdown = forwardRef<HTMLSelectElement, DropdownProps>(
   },
 );
 
-NamedDropdown.displayName = 'Dropdown';
-
-export const Dropdown = NamedDropdown;
+Dropdown.displayName = 'Dropdown';

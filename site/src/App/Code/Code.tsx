@@ -5,7 +5,6 @@ import React, {
   useEffect,
   useRef,
 } from 'react';
-import { useStyles } from 'react-treat';
 import copy from 'copy-to-clipboard';
 import dedent from 'dedent';
 import memoize from 'lodash/memoize';
@@ -26,11 +25,10 @@ import {
 } from '../../../../lib/components';
 import { BoxProps } from '../../../../lib/components/Box/Box';
 import { FieldOverlay } from '../../../../lib/components/private/FieldOverlay/FieldOverlay';
-import { useBoxStyles } from '../../../../lib/components/Box/useBoxStyles';
 import { hideFocusRingsClassName } from '../../../../lib/components/private/hideFocusRings/hideFocusRings';
 import { CopyIcon } from './CopyIcon';
 import { PlayIcon } from './PlayIcon';
-import * as styleRefs from './Code.treat';
+import * as styles from './Code.css';
 
 // @ts-ignore
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
@@ -81,7 +79,6 @@ export const CodeButton = ({
   successLabel,
   ...restProps
 }: CodeButtonProps) => {
-  const styles = useStyles(styleRefs);
   const [showSuccess, setShowSuccess] = useState(false);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -122,6 +119,7 @@ export const CodeButton = ({
   ) : (
     <Box
       component={component}
+      display="block"
       cursor="pointer"
       borderRadius="standard"
       paddingY="xxsmall"
@@ -158,26 +156,22 @@ export const CodeBlock = ({
 }: {
   children: string;
   language?: string;
-}) => {
-  const styles = useStyles(styleRefs);
-
-  return (
-    <Box
-      position="relative"
-      padding="xxsmall"
-      borderRadius="standard"
-      className={styles.code}
-    >
-      <Box padding={['medium', 'medium', 'large']}>
-        <Text size="small" component="pre" baseline={false}>
-          <SyntaxHighlighter language={language} style={editorTheme}>
-            {children}
-          </SyntaxHighlighter>
-        </Text>
-      </Box>
+}) => (
+  <Box
+    position="relative"
+    padding="xxsmall"
+    borderRadius="standard"
+    className={styles.code}
+  >
+    <Box padding={['medium', 'medium', 'large']}>
+      <Text size="small" component="pre" baseline={false}>
+        <SyntaxHighlighter language={language} style={editorTheme}>
+          {children}
+        </SyntaxHighlighter>
+      </Text>
     </Box>
-  );
-};
+  </Box>
+);
 
 const isSource = function <Value>(input: any): input is Source<Value> {
   return (
@@ -240,18 +234,8 @@ const Code = ({
     typeof children === 'function' ? children(playroomScope) : children,
   );
 
-  const blockLinkStyles = useBoxStyles({
-    component: 'a',
-    display: 'block',
-  });
-
   return (
-    <Box
-      position="relative"
-      style={{
-        maxWidth: 864,
-      }}
-    >
+    <Box position="relative">
       <Stack space="xsmall">
         {typeof children !== 'string' && (
           <ThemedExample background="body">{value}</ThemedExample>
@@ -284,7 +268,6 @@ const Code = ({
               component="a"
               target="_blank"
               href={createUrl({ baseUrl: playroomUrl, code })}
-              className={blockLinkStyles}
               title="Open in Playroom"
             >
               <PlayIcon />{' '}

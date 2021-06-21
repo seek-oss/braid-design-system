@@ -17,7 +17,7 @@ import {
   TooltipTextDefaultsProvider,
   TooltipRendererProps,
 } from './TooltipRenderer';
-import { constants } from './TooltipRenderer.treat';
+import { constants } from './TooltipRenderer.css';
 
 const StaticTooltip = ({
   id,
@@ -141,8 +141,8 @@ const docs: ComponentDocs = {
         <>
           <Text>
             To ensure readability, tooltips have a maximum width of{' '}
-            {constants.maxWidth}px, which means that text will wrap onto
-            multiple lines if you provide enough content.
+            {constants.maxWidth}, which means that text will wrap onto multiple
+            lines if you provide enough content.
           </Text>
           <Text>
             You can also use multiple text elements and layout components to

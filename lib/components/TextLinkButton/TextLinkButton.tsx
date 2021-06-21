@@ -16,7 +16,10 @@ import buildDataAttributes, {
 
 type NativeSpanProps = AllHTMLAttributes<HTMLSpanElement>;
 export interface TextLinkButtonProps
-  extends Omit<PrivateTextLinkRendererProps, 'children' | 'showVisited'> {
+  extends Omit<
+    PrivateTextLinkRendererProps,
+    'reset' | 'children' | 'showVisited'
+  > {
   id?: NativeSpanProps['id'];
   onClick?: NativeSpanProps['onClick'];
   data?: DataAttributeMap;
@@ -51,7 +54,7 @@ export const TextLinkButton = ({
   );
 
   return (
-    <PrivateTextLinkRenderer weight={weight} hitArea={hitArea}>
+    <PrivateTextLinkRenderer reset={false} weight={weight} hitArea={hitArea}>
       {(styleProps) => (
         <Box
           ref={buttonRef}

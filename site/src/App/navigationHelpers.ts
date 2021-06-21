@@ -1,7 +1,8 @@
 import groupBy from 'lodash/groupBy';
 import * as components from '../../../lib/components';
+import * as css from '../../../css';
 import { BraidSnippet } from '../../../lib/components/private/Snippets';
-import { ComponentDocs, ComponentExample } from '../types';
+import { ComponentDocs, ComponentExample, CssDoc } from '../types';
 import undocumentedExports from '../undocumentedExports.json';
 
 const componentDocsContext = require.context(
@@ -9,6 +10,8 @@ const componentDocsContext = require.context(
   true,
   /.docs\.tsx$/,
 );
+
+const cssDocsContext = require.context('../../../css', true, /.docs\.tsx$/);
 
 export const getComponentDocs = (componentName: string) => {
   const normalizedComponentRoute = /^icon/i.test(componentName)
@@ -18,6 +21,9 @@ export const getComponentDocs = (componentName: string) => {
   return componentDocsContext(normalizedComponentRoute)
     .default as ComponentDocs;
 };
+
+export const getCssDoc = (cssName: string) =>
+  cssDocsContext(`./${cssName}.docs.tsx`).default as CssDoc;
 
 const snippetsContext = require.context(
   '../../../lib/components',
@@ -43,15 +49,25 @@ export const getComponentSnippets = (componentName: string) => {
   }));
 };
 
+const documentedCssNames = Object.keys(css).filter(
+  (name) => !undocumentedExports.css.includes(name),
+);
+
 const documentedComponentNames = Object.keys(components)
   .filter((name) => {
     if (name.startsWith('Icon')) {
       return false;
     }
 
-    return !undocumentedExports.includes(name);
+    return !undocumentedExports.components.includes(name);
   })
   .sort();
+
+export const documentedCss = documentedCssNames.map((name) => {
+  const docs = getCssDoc(name);
+
+  return { name, ...docs };
+});
 
 export const documentedComponents = documentedComponentNames.map((name) => {
   const docs = getComponentDocs(name);

@@ -10,7 +10,7 @@ export interface CheckboxProps extends Omit<InlineFieldProps, 'checked'> {
   checked: CheckboxChecked | Array<boolean>;
 }
 
-const NamedCheckbox = forwardRef<HTMLInputElement, CheckboxProps>(
+export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   ({ checked, ...restProps }, ref) => {
     const calculatedChecked = Array.isArray(checked)
       ? resolveCheckedGroup(checked)
@@ -27,6 +27,4 @@ const NamedCheckbox = forwardRef<HTMLInputElement, CheckboxProps>(
   },
 );
 
-NamedCheckbox.displayName = 'Checkbox';
-
-export const Checkbox = NamedCheckbox;
+Checkbox.displayName = 'Checkbox';

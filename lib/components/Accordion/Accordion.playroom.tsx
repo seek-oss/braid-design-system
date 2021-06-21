@@ -1,6 +1,6 @@
 import React from 'react';
+import { mapResponsiveValue } from '../../atoms/sprinkles.css';
 import { wireframe } from '../../themes';
-import { normaliseResponsiveProp } from '../../utils/responsiveProp';
 import {
   Accordion as BraidAccordion,
   AccordionProps,
@@ -14,7 +14,7 @@ const spaceScale = ['none', ...Object.keys(wireframe.space.space)] as Array<
 >;
 
 const filterSpace = (space: NonNullable<AccordionProps['space']>) => {
-  const filteredSpace = normaliseResponsiveProp(space).map((value) => {
+  const filteredSpace = mapResponsiveValue(space, (value) => {
     if (spaceScale.includes(value) && !validSpaceValues.includes(value)) {
       throw new Error(
         `To ensure adequate space for touch targets, 'space' prop values must be one of the following: ${validSpaceValues

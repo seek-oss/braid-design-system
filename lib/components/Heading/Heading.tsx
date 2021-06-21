@@ -3,15 +3,14 @@ import HeadingContext from './HeadingContext';
 import { Box, BoxProps } from '../Box/Box';
 import {
   useHeading,
-  useTruncate,
   HeadingLevel,
   HeadingWeight,
 } from '../../hooks/typography';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
+import { Truncate } from '../private/Truncate/Truncate';
 
-/* tslint:disable-next-line no-object-literal-type-assertion */
 const resolveDefaultComponent = {
   '1': 'h1',
   '2': 'h2',
@@ -39,32 +38,16 @@ export const Heading = ({
   id,
   truncate = false,
   data,
-}: HeadingProps) => {
-  const truncateStyles = useTruncate();
-  const content = truncate ? (
+}: HeadingProps) => (
+  <HeadingContext.Provider value={true}>
     <Box
-      component="span"
-      display="block"
-      overflow="hidden"
-      className={truncateStyles}
+      id={id}
+      component={component || resolveDefaultComponent[level]}
+      textAlign={align}
+      className={useHeading({ weight, level, baseline: true })}
+      {...(data ? buildDataAttributes(data) : undefined)}
     >
-      {children}
+      {truncate ? <Truncate>{children}</Truncate> : children}
     </Box>
-  ) : (
-    children
-  );
-
-  return (
-    <HeadingContext.Provider value={true}>
-      <Box
-        id={id}
-        component={component || resolveDefaultComponent[level]}
-        textAlign={align}
-        className={useHeading({ weight, level, baseline: true })}
-        {...(data ? buildDataAttributes(data) : undefined)}
-      >
-        {content}
-      </Box>
-    </HeadingContext.Provider>
-  );
-};
+  </HeadingContext.Provider>
+);

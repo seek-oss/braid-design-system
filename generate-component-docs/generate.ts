@@ -14,6 +14,7 @@ const componentsFile = path.join(__dirname, '../lib/components/index.ts');
 const stringAliases: Record<string, string> = {
   // with an explicit alias 'boolean' becomes a union of 'true' | 'false'
   boolean: 'boolean',
+  Element: 'Element',
   CSSProperties: 'CSSProperties',
   'string | number | boolean | ClassDictionary | ClassArray':
     'string | number | boolean | ClassDictionary | ClassArray',

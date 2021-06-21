@@ -7,18 +7,17 @@ import React, {
   ReactNode,
   MouseEvent,
 } from 'react';
-import { useStyles } from 'sku/react-treat';
 import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';
-import { useTouchableSpace } from '../../hooks/typography';
+import { touchableText } from '../../hooks/typography';
 import { normalizeKey } from '../private/normalizeKey';
 import { MenuRendererItemContext } from '../MenuRenderer/MenuRendererItemContext';
 import { actionTypes, Action } from '../MenuRenderer/MenuRenderer.actions';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
-import { useBoxStyles } from '../Box/useBoxStyles';
-import * as styleRefs from './useMenuItem.treat';
+import { atoms } from '../../atoms/atoms';
+import * as styles from './useMenuItem.css';
 
 const {
   MENU_ITEM_UP,
@@ -49,7 +48,6 @@ export function useMenuItem<MenuItemElement extends HTMLElement>({
   onClick,
   data,
 }: UseMenuItemProps) {
-  const styles = useStyles(styleRefs);
   const menuRendererItemContext = useContext(MenuRendererItemContext);
 
   assert(
@@ -148,9 +146,8 @@ export function useMenuItem<MenuItemElement extends HTMLElement>({
       },
       className: [
         styles.menuItem,
-        useTouchableSpace(menuItemChildrenSize),
-        useBoxStyles({
-          component: null,
+        touchableText[menuItemChildrenSize],
+        atoms({
           display: 'flex',
           alignItems: 'center',
           width: 'full',

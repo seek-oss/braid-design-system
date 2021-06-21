@@ -1,0 +1,30 @@
+import classNames from 'classnames';
+import {
+  OptionalResponsiveValue,
+  normalizeResponsiveValue,
+} from '../atoms/sprinkles.css';
+import { optimizeResponsiveArray } from './optimizeResponsiveArray';
+
+export const resolveResponsiveProp = <Keys extends string | number>(
+  value: OptionalResponsiveValue<Keys>,
+  mobileAtoms: Record<Keys, string>,
+  tabletAtoms: Record<Keys, string>,
+  desktopAtoms: Record<Keys, string>,
+) => {
+  if (typeof value === 'string' || typeof value === 'number') {
+    return mobileAtoms[value!];
+  }
+
+  const normalized = normalizeResponsiveValue(value);
+  const [mobile, tablet, desktop] = optimizeResponsiveArray([
+    normalized.mobile ?? null,
+    normalized.tablet ?? null,
+    normalized.desktop ?? null,
+  ]);
+
+  const mobileAtom = mobileAtoms[mobile!];
+  const tabletAtom = tabletAtoms[tablet!];
+  const desktopAtom = desktopAtoms[desktop!];
+
+  return classNames(mobileAtom, tabletAtom, desktopAtom);
+};

@@ -1,7 +1,7 @@
 import '../reset';
 import React, { Fragment, ReactNode } from 'react';
 import { BraidProvider, makeLinkComponent, ToastProvider } from '../components';
-import { BraidTheme } from '../themes/BraidTheme.d';
+import { BraidTheme } from '../themes/BraidTheme';
 import { PlayroomStateProvider } from './playroomState';
 
 interface Props {

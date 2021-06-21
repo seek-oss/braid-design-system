@@ -2,11 +2,11 @@ import React, { forwardRef, Children } from 'react';
 import assert from 'assert';
 import { Box, BoxProps } from '../Box/Box';
 import { Text } from '../Text/Text';
-import * as styleRefs from './Badge.treat';
-import { useStyles } from 'sku/react-treat';
+import { lineHeightContainer } from '../../atoms/lineHeightContainer.css';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
+import * as styles from './Badge.css';
 
 const validTones = [
   'promote',
@@ -75,8 +75,6 @@ export const Badge = forwardRef<HTMLDivElement, BadgeProps>(
     },
     ref,
   ) => {
-    const styles = useStyles(styleRefs);
-
     assert(
       validTones.indexOf(tone) >= 0,
       `Badge tone of "${tone}" is not valid.`,
@@ -93,7 +91,10 @@ export const Badge = forwardRef<HTMLDivElement, BadgeProps>(
       <Box
         display="flex"
         cursor="default"
-        className={[styles.outer, bleedY ? styles.bleedY : null]}
+        className={[
+          lineHeightContainer[styles.constants.textSize],
+          bleedY ? styles.bleedY : null,
+        ]}
         {...(data ? buildDataAttributes(data) : undefined)}
       >
         <Box
@@ -110,7 +111,7 @@ export const Badge = forwardRef<HTMLDivElement, BadgeProps>(
           <Text
             component="span"
             weight="medium"
-            size="xsmall"
+            size={styles.constants.textSize}
             tone={weight === 'regular' ? tone : undefined}
             truncate
             baseline={false}

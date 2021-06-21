@@ -1,6 +1,13 @@
 import assert from 'assert';
 import React, { useMemo } from 'react';
 import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
+import {
+  normalizeResponsiveValue,
+  RequiredResponsiveValue,
+} from '../../atoms/sprinkles.css';
+import buildDataAttributes, {
+  DataAttributeMap,
+} from '../private/buildDataAttributes';
 import { Box } from '../Box/Box';
 import { Stack } from '../Stack/Stack';
 import { Divider } from '../Divider/Divider';
@@ -9,13 +16,6 @@ import {
   AccordionContextValue,
   validTones,
 } from './AccordionContext';
-import {
-  normaliseResponsiveProp,
-  ResponsiveProp,
-} from '../../utils/responsiveProp';
-import buildDataAttributes, {
-  DataAttributeMap,
-} from '../private/buildDataAttributes';
 
 export const validSpaceValues = ['medium', 'large', 'xlarge'] as const;
 
@@ -24,7 +24,7 @@ export interface AccordionProps {
   dividers?: boolean;
   size?: AccordionContextValue['size'];
   tone?: AccordionContextValue['tone'];
-  space?: ResponsiveProp<typeof validSpaceValues[number]>;
+  space?: RequiredResponsiveValue<typeof validSpaceValues[number]>;
   data?: DataAttributeMap;
 }
 
@@ -53,8 +53,8 @@ export const Accordion = ({
 }: AccordionProps) => {
   assert(
     spaceProp === undefined ||
-      normaliseResponsiveProp(spaceProp).every((value) =>
-        validSpaceValues.includes(value),
+      Object.values(normalizeResponsiveValue(spaceProp)).every(
+        (value) => value === undefined || validSpaceValues.includes(value),
       ),
     `To ensure adequate space for touch targets, 'space' prop values must be one of the following: ${validSpaceValues
       .map((x) => `"${x}"`)

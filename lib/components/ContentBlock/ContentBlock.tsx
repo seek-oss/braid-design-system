@@ -1,10 +1,9 @@
 import React, { ReactNode } from 'react';
-import { useStyles } from 'sku/react-treat';
 import { Box, BoxProps } from '../Box/Box';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
-import * as styleRefs from './ContentBlock.treat';
+import * as styles from './ContentBlock.css';
 
 export interface ContentBlockProps {
   children: ReactNode;
@@ -16,17 +15,13 @@ export const ContentBlock = ({
   width = 'medium',
   data,
   children,
-}: ContentBlockProps) => {
-  const styles = useStyles(styleRefs);
-
-  return (
-    <Box
-      width="full"
-      maxWidth={width}
-      className={styles.marginAuto}
-      {...(data ? buildDataAttributes(data) : undefined)}
-    >
-      {children}
-    </Box>
-  );
-};
+}: ContentBlockProps) => (
+  <Box
+    width="full"
+    maxWidth={width}
+    className={styles.marginAuto}
+    {...(data ? buildDataAttributes(data) : undefined)}
+  >
+    {children}
+  </Box>
+);

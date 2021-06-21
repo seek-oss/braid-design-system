@@ -18,7 +18,7 @@ export const galleryItems: ComponentExample[] = [
     label: 'Tones',
     Example: () =>
       source(
-        <Tiles space="large" columns={[1, 2]}>
+        <Tiles space="large" columns={{ mobile: 1, tablet: 2 }}>
           <Stack space="small">
             <Text size="xsmall" tone="secondary">
               PROMOTE
@@ -43,7 +43,7 @@ export const galleryItems: ComponentExample[] = [
     label: 'Rounded corners',
     Example: () =>
       source(
-        <Tiles space="large" columns={[1, 2]}>
+        <Tiles space="large" columns={{ mobile: 1, tablet: 2 }}>
           <Stack space="small">
             <Text size="xsmall" tone="secondary">
               DEFAULT

@@ -5,20 +5,18 @@ import React, {
   useContext,
   ReactNode,
 } from 'react';
-import { useStyles } from 'sku/react-treat';
-import { createPortal } from 'react-dom';
 import { usePopperTooltip } from 'react-popper-tooltip';
 import isMobile from 'is-mobile';
 import assert from 'assert';
+import { BraidPortal } from '../BraidPortal/BraidPortal';
 import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import { BackgroundProvider } from '../Box/BackgroundContext';
-import { useBoxStyles } from '../Box/useBoxStyles';
-import { TextContext } from '../Text/TextContext';
+import { atoms } from '../../atoms/atoms';
 import { DefaultTextPropsProvider } from '../private/defaultTextProps';
 import { useSpace } from '../useSpace/useSpace';
 import { useThemeName } from '../useThemeName/useThemeName';
 import { Box } from '../Box/Box';
-import * as styleRefs from './TooltipRenderer.treat';
+import * as styles from './TooltipRenderer.css';
 
 const StaticTooltipContext = createContext(false);
 export const StaticTooltipProvider = ({
@@ -66,47 +64,41 @@ export const TooltipContent = ({
   children: ReactNodeNoStrings;
   opacity: 0 | 100;
   arrowProps: ArrowProps;
-}) => {
-  const styles = useStyles(styleRefs);
-
-  const arrowStyles = useBoxStyles({
-    component: 'div',
-    borderRadius: 'standard',
-    className: [styles.arrow, styles.background],
-  });
-
-  return (
+}) => (
+  <Box
+    display="flex"
+    position="relative"
+    transition="fast"
+    opacity={opacity === 0 ? 0 : undefined}
+    className={
+      opacity === 0 ? styles.verticalOffsetBeforeEntrance : styles.translateZ0
+    }
+  >
     <Box
-      display="flex"
-      position="relative"
-      transition="fast"
-      opacity={opacity === 0 ? 0 : undefined}
-      className={
-        opacity === 0 ? styles.verticalOffsetBeforeEntrance : styles.translateZ0
-      }
+      boxShadow="large"
+      borderRadius="standard"
+      className={[
+        styles.background,
+        styles.maxWidth,
+        styles.translateZ0,
+        styles.padding,
+      ]}
     >
-      <Box
-        boxShadow="large"
-        borderRadius="standard"
-        className={[
-          styles.background,
-          styles.maxWidth,
-          styles.translateZ0,
-          styles.padding,
-        ]}
-      >
-        <BackgroundProvider value="UNKNOWN_DARK">
-          <TooltipTextDefaultsProvider>
-            <Box position="relative" zIndex={1}>
-              {children}
-            </Box>
-            <div {...arrowProps} className={arrowStyles} />
-          </TooltipTextDefaultsProvider>
-        </BackgroundProvider>
-      </Box>
+      <BackgroundProvider value="UNKNOWN_DARK">
+        <TooltipTextDefaultsProvider>
+          <Box position="relative" zIndex={1}>
+            {children}
+          </Box>
+          <Box
+            {...arrowProps}
+            borderRadius="standard"
+            className={[styles.arrow, styles.background]}
+          />
+        </TooltipTextDefaultsProvider>
+      </BackgroundProvider>
     </Box>
-  );
-};
+  </Box>
+);
 
 const validPlacements = ['top', 'bottom'] as const;
 
@@ -253,12 +245,6 @@ export const TooltipRenderer = ({
     return () => clearTimeout(timeout);
   }, [tooltipRef, visible]);
 
-  const tooltipStyles = useBoxStyles({
-    component: 'div',
-    zIndex: 'notification',
-    display: triggerRef && visible ? undefined : 'none',
-  });
-
   return (
     <>
       {children({
@@ -269,27 +255,29 @@ export const TooltipRenderer = ({
         },
       })}
 
-      {triggerRef &&
-        createPortal(
-          <TextContext.Provider value={false}>
-            <div
-              id={id}
-              role="tooltip"
-              hidden={!visible ? true : undefined}
-              className={tooltipStyles}
-              {...(visible
-                ? getTooltipProps({
-                    ref: setTooltipRef,
-                  })
-                : null)}
-            >
-              <TooltipContent opacity={opacity} arrowProps={getArrowProps()}>
-                {tooltip}
-              </TooltipContent>
-            </div>
-          </TextContext.Provider>,
-          document.body,
-        )}
+      {triggerRef && (
+        <BraidPortal>
+          <div
+            id={id}
+            role="tooltip"
+            hidden={!visible ? true : undefined}
+            className={atoms({
+              reset: 'div',
+              zIndex: 'notification',
+              display: triggerRef && visible ? undefined : 'none',
+            })}
+            {...(visible
+              ? getTooltipProps({
+                  ref: setTooltipRef,
+                })
+              : null)}
+          >
+            <TooltipContent opacity={opacity} arrowProps={getArrowProps()}>
+              {tooltip}
+            </TooltipContent>
+          </div>
+        </BraidPortal>
+      )}
     </>
   );
 };

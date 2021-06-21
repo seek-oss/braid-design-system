@@ -1,13 +1,13 @@
 import isEqual from 'lodash/isEqual';
 import { Style } from 'sku/treat';
 import omit from 'lodash/omit';
-import { TreatTokens } from './makeBraidTheme';
+import { Breakpoint } from '../atoms/breakpoints';
 
-type RequiredTokens = Pick<TreatTokens, 'breakpoint'>;
+type RequiredTokens = { breakpoint: Record<Breakpoint, number> };
 type StyleWithoutMediaQueries = Exclude<Style['@media'], undefined>[string];
 
 export const makeThemeUtils = (tokens: RequiredTokens) => {
-  const makeMediaQuery = (breakpoint: keyof RequiredTokens['breakpoint']) => (
+  const makeMediaQuery = (breakpoint: Breakpoint) => (
     styles: StyleWithoutMediaQueries,
   ) =>
     !styles || Object.keys(styles).length === 0

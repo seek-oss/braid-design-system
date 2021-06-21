@@ -25,7 +25,7 @@ export interface TextFieldProps
   placeholder?: InputProps['placeholder'];
 }
 
-const NamedTextField = forwardRef<HTMLInputElement, TextFieldProps>(
+export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
   (
     {
       value,
@@ -90,6 +90,4 @@ const NamedTextField = forwardRef<HTMLInputElement, TextFieldProps>(
   },
 );
 
-NamedTextField.displayName = 'TextField';
-
-export const TextField = NamedTextField;
+TextField.displayName = 'TextField';

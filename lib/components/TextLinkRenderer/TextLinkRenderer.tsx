@@ -1,5 +1,4 @@
 import React, { CSSProperties, useContext, ReactElement } from 'react';
-import { useStyles } from 'sku/react-treat';
 import dedent from 'dedent';
 import assert from 'assert';
 import classnames from 'classnames';
@@ -8,18 +7,18 @@ import { TextContext } from '../Text/TextContext';
 import HeadingContext from '../Heading/HeadingContext';
 import ActionsContext from '../Actions/ActionsContext';
 import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
-import { useBoxStyles } from '../Box/useBoxStyles';
+import { atoms, Atoms } from '../../atoms/atoms';
 import { Box } from '../Box/Box';
 import {
   useTextTone,
   useWeight,
-  useTouchableSpace,
+  touchableText,
   useText,
 } from '../../hooks/typography';
-import * as styleRefs from './TextLinkRenderer.treat';
 import { useBackground } from '../Box/BackgroundContext';
-import { useVirtualTouchable } from '../private/touchable/useVirtualTouchable';
+import { virtualTouchable } from '../private/touchable/virtualTouchable';
 import { PrivateButtonRendererProps } from '../ButtonRenderer/ButtonRenderer';
+import * as styles from './TextLinkRenderer.css';
 
 interface StyleProps {
   style: CSSProperties;
@@ -28,6 +27,7 @@ interface StyleProps {
 
 type TextLinkWeight = 'regular' | 'weak';
 export interface PrivateTextLinkRendererProps {
+  reset?: Atoms['reset'] | false;
   weight?: TextLinkWeight;
   showVisited?: boolean;
   hitArea?: 'standard' | 'large';
@@ -102,7 +102,6 @@ function useDefaultLinkWeight() {
 }
 
 function useLinkStyles(weight: TextLinkWeight, showVisited: boolean) {
-  const styles = useStyles(styleRefs);
   const inHeading = useContext(HeadingContext);
   const mediumWeight = useWeight('medium');
   const linkTone = useTextTone({ tone: 'link' });
@@ -117,12 +116,12 @@ function useLinkStyles(weight: TextLinkWeight, showVisited: boolean) {
 }
 
 function InlineLink({
+  reset = 'a',
   weight: weightProp,
   showVisited = false,
   hitArea = 'standard',
   children,
 }: PrivateTextLinkRendererProps) {
-  const virtualTouchableStyle = useVirtualTouchable();
   const defaultWeight = useDefaultLinkWeight();
   const weight = weightProp ?? defaultWeight;
 
@@ -132,11 +131,15 @@ function InlineLink({
         style: {},
         className: classnames(
           useLinkStyles(weight, showVisited),
-          useBoxStyles({
-            component: 'a',
+          reset !== false
+            ? atoms({
+                reset: typeof reset === 'string' ? reset : 'a',
+              })
+            : null,
+          atoms({
             cursor: 'pointer',
           }),
-          hitArea === 'large' && virtualTouchableStyle,
+          hitArea === 'large' && virtualTouchable(),
         ),
       })}
     </TextLinkRendererContext.Provider>
@@ -147,16 +150,15 @@ interface ButtonLinkProps extends PrivateTextLinkRendererProps {
   size?: PrivateButtonRendererProps['size'];
 }
 function ButtonLink({
+  reset = 'a',
   size = 'standard',
   weight,
   showVisited = false,
   hitArea,
   children,
 }: ButtonLinkProps) {
-  const styles = useStyles(styleRefs);
   const textLinkWeight = useDefaultLinkWeight();
   const tone = textLinkWeight === 'weak' ? 'neutral' : 'link';
-  const standardTouchableSpaceStyles = useTouchableSpace('standard');
   const buttonLinkTextProps = {
     size,
     tone,
@@ -180,9 +182,13 @@ function ButtonLink({
               styles.button,
               useLinkStyles(textLinkWeight, showVisited),
               useText(buttonLinkTextProps),
-              size === 'standard' ? standardTouchableSpaceStyles : null,
-              useBoxStyles({
-                component: 'a',
+              size === 'standard' ? touchableText.standard : null,
+              reset !== false
+                ? atoms({
+                    reset: typeof reset === 'string' ? reset : 'a',
+                  })
+                : null,
+              atoms({
                 cursor: 'pointer',
                 outline: 'none',
                 display: 'block',

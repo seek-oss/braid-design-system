@@ -25,7 +25,7 @@ export interface RadioItemProps
   value: NonNullable<InlineFieldProps['value']>;
 }
 
-const NamedRadioItem = forwardRef<HTMLInputElement, RadioItemProps>(
+export const RadioItem = forwardRef<HTMLInputElement, RadioItemProps>(
   (props, ref) => {
     const radioGroupContext = useContext(RadioGroupContext);
     const radioItemContext = useContext(RadioItemContext);
@@ -73,6 +73,4 @@ const NamedRadioItem = forwardRef<HTMLInputElement, RadioItemProps>(
   },
 );
 
-NamedRadioItem.displayName = 'RadioItem';
-
-export const RadioItem = NamedRadioItem;
+RadioItem.displayName = 'RadioItem';

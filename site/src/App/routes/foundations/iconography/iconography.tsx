@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useStyles } from 'sku/react-treat';
 import didYouMean, { ReturnTypeEnums } from 'didyoumean2';
 import {
   Inline,
@@ -16,7 +15,7 @@ import { Overlay } from '../../../../../../lib/components/private/Overlay/Overla
 import { Page } from '../../../../types';
 import * as icons from '../../../../../../lib/components/icons';
 import { PageTitle } from '../../../Seo/PageTitle';
-import * as styleRefs from './iconography.treat';
+import * as styles from './iconography.css';
 
 type IconName = keyof typeof icons;
 
@@ -32,7 +31,6 @@ const IconTile = ({
   icon: typeof iconNames[number];
   suggestion?: boolean;
 }) => {
-  const styles = useStyles(styleRefs);
   const IconComponent = icons[icon.name];
 
   return (

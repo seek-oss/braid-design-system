@@ -12,7 +12,7 @@ import buildDataAttributes, {
 } from '../private/buildDataAttributes';
 
 export interface TextLinkProps
-  extends Omit<PrivateTextLinkRendererProps, 'children'>,
+  extends Omit<PrivateTextLinkRendererProps, 'reset' | 'children'>,
     Omit<LinkComponentProps, 'className' | 'style'> {
   data?: DataAttributeMap;
 }

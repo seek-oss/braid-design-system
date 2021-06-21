@@ -20,7 +20,7 @@ const docs: ComponentDocs = {
     source(
       <>
         <Box padding="medium">
-          <Inline space="small" align={['center', 'left']}>
+          <Inline space="small" align={{ mobile: 'center', tablet: 'left' }}>
             <Button onClick={() => toggleState('dialog')}>Open dialog</Button>
           </Inline>
         </Box>
@@ -144,7 +144,10 @@ const docs: ComponentDocs = {
         source(
           <>
             <Box padding="medium">
-              <Inline space="small" align={['center', 'left']}>
+              <Inline
+                space="small"
+                align={{ mobile: 'center', tablet: 'left' }}
+              >
                 <Button onClick={() => toggleState('dialog')}>
                   Open illustrated dialog
                 </Button>
@@ -165,7 +168,10 @@ const docs: ComponentDocs = {
               <Stack space="xlarge" align="center">
                 <Placeholder width="100%" height={100} />
                 <Box padding="medium">
-                  <Inline space="small" align={['center', 'left']}>
+                  <Inline
+                    space="small"
+                    align={{ mobile: 'center', tablet: 'left' }}
+                  >
                     <Button onClick={() => toggleState('dialog')}>
                       Got it
                     </Button>
@@ -200,7 +206,10 @@ const docs: ComponentDocs = {
         source(
           <>
             <Box padding="medium">
-              <Inline space="small" align={['center', 'left']}>
+              <Inline
+                space="small"
+                align={{ mobile: 'center', tablet: 'left' }}
+              >
                 <Button onClick={() => toggleState('dialog')}>
                   Open scrolling dialog
                 </Button>

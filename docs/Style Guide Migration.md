@@ -26,7 +26,7 @@ Since Braid is an entirely new design system, we've taken the opportunity to rev
 
 - **Braid doesn't provide a global CSS reset.** All style resets are applied locally via the [Box](https://seek-oss.github.io/braid-design-system/components/Box) component mentioned above based on its `component` prop, e.g. `<Box component="h1">` will provide the appropriate reset for an `h1` element. When migrating from SEEK Style Guide, you'll need to ensure that you're leveraging Box for all custom low-level elements.
 
-- **Braid uses [treat](https://seek-oss.github.io/treat) for styling rather than Less.** This lets us author themed styles in TypeScript without incurring a penalty to both bundle size and runtime performance. Theme variables are now provided via [treat's theming system](https://seek-oss.github.io/treat/how-it-works#theming) rather than Less variables.
+- **Braid uses [vanilla-extract](https://vanilla-extract.style/) for styling rather than Less.** This lets us author themed styles in TypeScript without incurring a penalty to both bundle size and runtime performance. Theme values are now provided via CSS variables rather than Less variables.
 
 - **`Text` no longer renders white space below it.** In our existing style guides, the additional white space below `Text` components turned out to be a problem for consumers in many cases, forcing them to use the confusingly named `raw` boolean prop to opt out. In Braid, we've decided to leave `Text` unopinionated about its surrounding white space. Instead, Braid provides a full suite of [layout components](https://seek-oss.github.io/braid-design-system/foundations/layout).
 

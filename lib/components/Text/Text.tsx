@@ -5,8 +5,9 @@ import { Box, BoxProps } from '../Box/Box';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
-import { useText, UseTextProps, useTruncate } from '../../hooks/typography';
+import { useText, UseTextProps } from '../../hooks/typography';
 import { useDefaultTextProps } from '../private/defaultTextProps';
+import { Truncate } from '../private/Truncate/Truncate';
 
 export interface TextProps extends Pick<BoxProps, 'component'> {
   id?: string;
@@ -43,7 +44,6 @@ export const Text = ({
     tone: toneProp,
   });
   const textStyles = useText({ weight, size, baseline, tone });
-  const truncateStyles = useTruncate();
 
   // Prevent re-renders when context values haven't changed
   const textContextValue = useMemo(
@@ -56,19 +56,6 @@ export const Text = ({
     [tone, size, weight, baseline],
   );
 
-  const content = truncate ? (
-    <Box
-      component="span"
-      display="block"
-      overflow="hidden"
-      className={truncateStyles}
-    >
-      {children}
-    </Box>
-  ) : (
-    children
-  );
-
   return (
     <TextContext.Provider value={textContextValue}>
       <Box
@@ -79,7 +66,7 @@ export const Text = ({
         className={textStyles}
         {...(data ? buildDataAttributes(data) : undefined)}
       >
-        {content}
+        {truncate ? <Truncate>{children}</Truncate> : children}
       </Box>
     </TextContext.Provider>
   );

@@ -1,16 +1,14 @@
 import React from 'react';
-import { useStyles } from 'sku/react-treat';
 import { Box } from '../Box/Box';
 import { useBackgroundLightness } from '../Box/BackgroundContext';
-import * as styleRefs from './Loader.treat';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
-
-const indicators = [...Array(3)];
+import { atoms } from '../../atoms/atoms';
+import * as styles from './Loader.css';
 
 interface LoaderProps {
-  size?: keyof typeof styleRefs.rootSize;
+  size?: keyof typeof styles.size;
   'aria-label'?: string;
   delayVisibility?: boolean;
   data?: DataAttributeMap;
@@ -22,12 +20,12 @@ export const Loader = ({
   delayVisibility = false,
   data,
 }: LoaderProps) => {
-  const styles = useStyles(styleRefs);
   const parentBackgroundColor = useBackgroundLightness();
 
   return (
     <Box
       display="flex"
+      alignItems="center"
       className={[
         styles.rootSize[size],
         delayVisibility ? styles.delay : undefined,
@@ -35,15 +33,20 @@ export const Loader = ({
       aria-label={ariaLabel}
       {...(data ? buildDataAttributes(data) : undefined)}
     >
-      {indicators.map((_, index) => (
-        <Box
-          aria-hidden
-          key={index}
-          borderRadius="full"
-          background={parentBackgroundColor === 'dark' ? 'card' : 'neutral'}
-          className={[styles.circle, styles.circleSize[size]]}
-        />
-      ))}
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className={[
+          atoms({ reset: 'svg' }),
+          styles.size[size],
+          styles.color[parentBackgroundColor],
+        ].join(' ')}
+        viewBox="0 0 300 134"
+        aria-hidden
+      >
+        <circle className={styles.circle} cy="67" cx="40" r="40" />
+        <circle className={styles.circle} cy="67" cx="150" r="40" />
+        <circle className={styles.circle} cy="67" cx="260" r="40" />
+      </svg>
     </Box>
   );
 };

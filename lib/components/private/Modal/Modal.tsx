@@ -8,15 +8,14 @@ import React, {
   Reducer,
   useReducer,
 } from 'react';
-import { createPortal } from 'react-dom';
 import FocusLock from 'react-focus-lock';
-import { useStyles } from 'sku/react-treat';
 import { ariaHideOthers } from './ariaHideOthers';
 import assert from 'assert';
 import { Box } from '../../Box/Box';
+import { BraidPortal } from '../../BraidPortal/BraidPortal';
 import { externalGutter } from './ModalExternalGutter';
 import { ModalContent, ModalContentProps } from './ModalContent';
-import * as styleRefs from './Modal.treat';
+import * as styles from './Modal.css';
 
 export interface ModalProps
   extends Omit<
@@ -59,9 +58,10 @@ const ModalPortal = ({ children }: ModalPortalProps) => {
     return null;
   }
 
-  return createPortal(
-    <ModalContext.Provider value={true}>{children}</ModalContext.Provider>,
-    modalElement,
+  return (
+    <BraidPortal container={modalElement}>
+      <ModalContext.Provider value={true}>{children}</ModalContext.Provider>
+    </BraidPortal>
   );
 };
 
@@ -140,7 +140,6 @@ export const Modal = ({
   position,
   data,
 }: ModalProps) => {
-  const styles = useStyles(styleRefs);
   const [trapActive, setTrapActive] = useState(true);
   const [state, dispatch] = useReducer(reducer, INITIAL);
 

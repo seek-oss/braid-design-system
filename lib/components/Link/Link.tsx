@@ -1,12 +1,14 @@
+import classNames from 'classnames';
 import React, { forwardRef } from 'react';
+import { atoms } from '../../atoms/atoms';
 import {
   useLinkComponent,
   LinkComponentProps,
 } from '../BraidProvider/BraidProvider';
-import { useBoxStyles, UseBoxStylesProps } from '../Box/useBoxStyles';
 
-export type LinkProps = Omit<LinkComponentProps, 'className'> &
-  Pick<UseBoxStylesProps, 'className'>;
+export type LinkProps = Omit<LinkComponentProps, 'className'> & {
+  className?: Parameters<typeof classNames>[0];
+};
 
 export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
   ({ href, className, ...restProps }, ref) => {
@@ -16,7 +18,7 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
       <LinkComponent
         ref={ref}
         href={href}
-        className={useBoxStyles({ component: 'a', className })}
+        className={classNames(atoms({ reset: 'a' }), className)}
         {...restProps}
       />
     );

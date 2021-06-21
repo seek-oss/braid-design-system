@@ -31,7 +31,7 @@ export const snippets: Snippets = [
   {
     name: '2 columns on mobile, 4 above tablet',
     code: source(
-      <Tiles space="small" columns={[2, 4]}>
+      <Tiles space="small" columns={{ mobile: 2, tablet: 4 }}>
         <Placeholder height={48} />
         <Placeholder height={48} />
         <Placeholder height={48} />
@@ -44,7 +44,7 @@ export const snippets: Snippets = [
   {
     name: 'Dividers in single column',
     code: source(
-      <Tiles space="small" columns={[1, 2]} dividers>
+      <Tiles space="small" columns={{ mobile: 1, tablet: 2 }} dividers>
         <Placeholder height={48} />
         <Placeholder height={48} />
         <Placeholder height={48} />

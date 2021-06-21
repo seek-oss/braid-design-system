@@ -2,7 +2,7 @@ import React from 'react';
 import { ComponentScreenshot } from '../../../site/src/types';
 import { Hidden } from './Hidden';
 import { Text } from '../Text/Text';
-import { Stack } from '../Stack/Stack';
+import { Box } from '../Box/Box';
 
 export const screenshots: ComponentScreenshot = {
   screenshotWidths: [320, 768, 1200],
@@ -11,67 +11,79 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Hidden below tablet',
       Example: () => (
-        <Stack space="small">
+        <>
           <Text>The following line is hidden below tablet:</Text>
           <Hidden below="tablet">
-            <Text>Hidden below tablet.</Text>
+            <Box paddingTop="small">
+              <Text>Hidden below tablet.</Text>
+            </Box>
           </Hidden>
-        </Stack>
+        </>
       ),
     },
     {
       label: 'Hidden below desktop',
       Example: () => (
-        <Stack space="small">
+        <>
           <Text>The following line is hidden below desktop:</Text>
           <Hidden below="desktop">
-            <Text>Hidden below desktop.</Text>
+            <Box paddingTop="small">
+              <Text>Hidden below desktop.</Text>
+            </Box>
           </Hidden>
-        </Stack>
+        </>
       ),
     },
     {
       label: 'Hidden above mobile',
       Example: () => (
-        <Stack space="small">
+        <>
           <Text>The following line is hidden above mobile:</Text>
           <Hidden above="mobile">
-            <Text>Hidden above mobile.</Text>
+            <Box paddingTop="small">
+              <Text>Hidden above mobile.</Text>
+            </Box>
           </Hidden>
-        </Stack>
+        </>
       ),
     },
     {
       label: 'Hidden above tablet',
       Example: () => (
-        <Stack space="small">
+        <>
           <Text>The following line is hidden above tablet:</Text>
           <Hidden above="tablet">
-            <Text>Hidden above tablet.</Text>
+            <Box paddingTop="small">
+              <Text>Hidden above tablet.</Text>
+            </Box>
           </Hidden>
-        </Stack>
+        </>
       ),
     },
     {
       label: 'Hidden on print',
       Example: () => (
-        <Stack space="small">
+        <>
           <Text>The following line is hidden on print:</Text>
           <Hidden print>
-            <Text>Hidden on print.</Text>
+            <Box paddingTop="small">
+              <Text>Hidden on print.</Text>
+            </Box>
           </Hidden>
-        </Stack>
+        </>
       ),
     },
     {
       label: 'Hidden on Screen',
       Example: () => (
-        <Stack space="small">
+        <>
           <Text>The following line is hidden on screen:</Text>
           <Hidden screen>
-            <Text>Hidden on screen.</Text>
+            <Box paddingTop="small">
+              <Text>Hidden on screen.</Text>
+            </Box>
           </Hidden>
-        </Stack>
+        </>
       ),
     },
     {

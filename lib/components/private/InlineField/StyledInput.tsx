@@ -5,14 +5,14 @@ import React, {
   useRef,
   AllHTMLAttributes,
 } from 'react';
-import { useStyles } from 'sku/react-treat';
 
 import { useBackgroundLightness } from '../../Box/BackgroundContext';
 import { FieldOverlay } from '../FieldOverlay/FieldOverlay';
 import { IconMinus, IconTick } from '../../icons';
 import buildDataAttributes, { DataAttributeMap } from '../buildDataAttributes';
 import { Box } from '../../Box/Box';
-import * as styleRefs from './InlineField.treat';
+import * as styles from './InlineField.css';
+import type { Size } from './InlineField.css';
 
 const tones = ['neutral', 'critical'] as const;
 export type InlineFieldTone = typeof tones[number];
@@ -34,7 +34,7 @@ export type StyledInputProps = {
   tone?: InlineFieldTone;
   data?: DataAttributeMap;
   required?: boolean;
-  size?: keyof typeof styleRefs.fakeFieldSize;
+  size?: Size;
 };
 
 export type PrivateStyledInputProps = StyledInputProps & {
@@ -54,7 +54,6 @@ const Indicator = ({
   hover?: boolean;
   disabled?: boolean;
 }) => {
-  const styles = useStyles(styleRefs);
   const isCheckbox = type === 'checkbox';
 
   const iconTone = (() => {
@@ -133,7 +132,6 @@ export const StyledInput = forwardRef<
     },
     forwardedRef,
   ) => {
-    const styles = useStyles(styleRefs);
     // We need a ref regardless so we can imperatively
     // focus the field when clicking the clear button
     const defaultRef = useRef<HTMLInputElement | null>(null);
@@ -186,7 +184,11 @@ export const StyledInput = forwardRef<
           checked={checked === 'mixed' ? false : checked}
           position="absolute"
           zIndex={1}
-          className={[styles.realField, isMixed ? styles.isMixed : undefined]}
+          className={[
+            styles.realField,
+            styles.realFieldPosition[size],
+            isMixed ? styles.isMixed : undefined,
+          ]}
           cursor={!disabled ? 'pointer' : undefined}
           opacity={0}
           aria-describedby={ariaDescribedBy}
@@ -202,7 +204,7 @@ export const StyledInput = forwardRef<
         <Box
           flexShrink={0}
           position="relative"
-          className={[styles.fakeFieldBase, styles.fakeFieldSize[size!]]}
+          className={[styles.fakeFieldBase, styles.fakeFieldSize[size]]}
           background={disabled ? 'inputDisabled' : 'input'}
           borderRadius={fieldBorderRadius}
         >

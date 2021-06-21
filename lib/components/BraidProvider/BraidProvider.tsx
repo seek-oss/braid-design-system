@@ -16,7 +16,7 @@ import { useHideFocusRings } from '../private/hideFocusRings/useHideFocusRings';
 import { BraidTestProviderContext } from '../BraidTestProvider/BraidTestProviderContext';
 import { BreakpointProvider } from '../useBreakpoint/BreakpointProvider';
 import { BraidThemeContext } from './BraidThemeContext';
-import { BraidTheme } from '../../themes/BraidTheme.d';
+import { BraidTheme } from '../../themes/BraidTheme';
 
 if (process.env.NODE_ENV === 'development') {
   ensureResetImported();
@@ -91,18 +91,20 @@ export const BraidProvider = ({
   return (
     <BraidThemeContext.Provider value={theme}>
       <TreatProvider theme={theme.treatTheme}>
-        <LinkComponentContext.Provider
-          value={linkComponent || linkComponentFromContext}
-        >
-          {styleBody ? (
-            <style type="text/css">{`body{margin:0;padding:0;background:${theme.background}}`}</style>
-          ) : null}
-          {alreadyInBraidProvider || inTestProvider ? (
-            children
-          ) : (
-            <BreakpointProvider>{children}</BreakpointProvider>
-          )}
-        </LinkComponentContext.Provider>
+        {styleBody ? (
+          <style type="text/css">{`body{margin:0;padding:0;background:${theme.background}}`}</style>
+        ) : null}
+        <div className={theme.vanillaTheme}>
+          <LinkComponentContext.Provider
+            value={linkComponent || linkComponentFromContext}
+          >
+            {alreadyInBraidProvider || inTestProvider ? (
+              children
+            ) : (
+              <BreakpointProvider>{children}</BreakpointProvider>
+            )}
+          </LinkComponentContext.Provider>
+        </div>
       </TreatProvider>
     </BraidThemeContext.Provider>
   );

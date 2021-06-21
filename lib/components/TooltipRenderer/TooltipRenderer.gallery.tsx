@@ -4,7 +4,8 @@ import source from '../../utils/source.macro';
 import { TooltipRenderer, Inline, Stack, Text, IconHelp, Box } from '../';
 import { TooltipContent, TooltipRendererProps } from './TooltipRenderer';
 import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
-import { constants } from './TooltipRenderer.treat';
+import { constants } from './TooltipRenderer.css';
+import { calc } from '@vanilla-extract/css-utils';
 
 const MockTooltipContent = ({
   placement,
@@ -21,7 +22,9 @@ const MockTooltipContent = ({
         style: {
           position: 'absolute',
           left: '50%',
-          transform: `translateX(${-constants.arrowSize / 2}px)`,
+          transform: `translateX(${calc(constants.arrowSize)
+            .negate()
+            .divide(2)})`,
         },
       }}
     >

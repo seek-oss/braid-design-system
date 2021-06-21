@@ -26,7 +26,7 @@ export const galleryItems: ComponentExample[] = [
     label: 'Responsive columns (e.g. 2 on mobile, 4 from tablet upwards)',
     Example: () =>
       source(
-        <Tiles space="small" columns={[2, 4]}>
+        <Tiles space="small" columns={{ mobile: 2, tablet: 4 }}>
           <Placeholder height={40} />
           <Placeholder height={40} />
           <Placeholder height={40} />

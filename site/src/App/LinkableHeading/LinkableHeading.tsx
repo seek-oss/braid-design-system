@@ -1,8 +1,7 @@
 import React from 'react';
-import { useStyles } from 'sku/react-treat';
 import { Heading, Box, IconLink, Link } from '../../../../lib/components';
 import { HeadingProps } from '../../../../lib/components/Heading/Heading';
-import * as styleRefs from './LinkableHeading.treat';
+import * as styles from './LinkableHeading.css';
 
 interface LinkableHeadingProps {
   level?: HeadingProps['level'];
@@ -15,7 +14,6 @@ export const LinkableHeading = ({
   children,
   level = '3',
 }: LinkableHeadingProps) => {
-  const styles = useStyles(styleRefs);
   const slug = slugify(children);
 
   return (
