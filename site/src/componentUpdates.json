@@ -1638,5 +1638,97 @@
         "summary": "**Autosuggest:** Fix missing/invalid group headings in some cases"
       }
     ]
+  },
+  {
+    "version": "30.0.0",
+    "updates": [
+      {
+        "updated": [
+          "Box"
+        ],
+        "summary": "**Box:** Remove `transform=\"touchable\"` in favour of `transform={{ active: 'touchable' }}`\n\n**MIGRATION GUIDE**\n\n```diff\n-<Box transform=\"touchable\">\n+<Box transform={{ active: 'touchable' }}>\n```"
+      },
+      {
+        "updated": [
+          "TextLinkRenderer"
+        ],
+        "summary": "**TextLinkRenderer:** Allow custom CSS reset via the `reset` prop, and allow it to be disabled by setting the prop to `false`."
+      },
+      {
+        "updated": [
+          "Accordion",
+          "Box",
+          "BulletList",
+          "Columns",
+          "Disclosure",
+          "Heading",
+          "Inline",
+          "List",
+          "MenuRenderer",
+          "Stack",
+          "Tabs",
+          "Text",
+          "Tiles"
+        ],
+        "summary": "Support object notation for responsive props\n\nResponsive prop values can now be written as objects with named breakpoints, which is now the recommended notation.\n\n```ts\n{ mobile: 'small', tablet: 'medium', desktop: 'large' }\n```\n\nThis also means that breakpoints can be skipped.\n\n```ts\n{ mobile: 'small', desktop: 'large' }\n```"
+      },
+      {
+        "new": [
+          "breakpoints"
+        ],
+        "summary": "Add **breakpoints** object for accessing standard breakpoint values\n\nThe breakpoints object provides a named set of screen sizes that form the basis of all responsive rules in Braid, available in the following format:\n\n```ts\n{\n  mobile: 0,\n  tablet: 740,\n  desktop: 992\n}\n```"
+      },
+      {
+        "updated": [
+          "Loader"
+        ],
+        "summary": "**Loader:** Adjust size to better match text"
+      },
+      {
+        "updated": [
+          "Badge"
+        ],
+        "summary": "**Badge:** Use correct text size for `bleedY` positioning"
+      },
+      {
+        "new": [
+          "globalTextStyle",
+          "globalHeadingStyle"
+        ],
+        "summary": "Add **globalTextStyle** and **globalHeadingStyle** functions for applying standard text styles to foreign markup in [vanilla-extract stylesheets](http://vanilla-extract.style)\n\nNote: These utilities should only be used when you have no control over the HTML.\n\n**EXAMPLE USAGE**\n\n```ts\n// styles.css.ts\nimport { style, globalStyle } from '@vanilla-extract/css';\nimport { globalHeadingStyle, globalTextStyle } from 'braid-design-system/css';\n\nexport const root = style({});\n\n// Target all <h2> elements within the root class\nglobalStyle(\n  `${root} h2`,\n  globalHeadingStyle({\n    level: '2',\n  })\n);\n\n// Target all <p> elements within the root class\nglobalStyle(\n  `${root} p`,\n  globalTextStyle({\n    size: 'standard',\n    weight: 'regular',\n  })\n);\n```"
+      },
+      {
+        "new": [
+          "atoms"
+        ],
+        "summary": "Add **atoms** function for accessing re-usable atomic classes within [vanilla-extract stylesheets](http://vanilla-extract.style)\n\nBraid's re-usable atomic classes were previously only available via `Box`, but they are now accessible via the new `atoms` function.\n\n```ts\n// styles.css.ts\nimport { atoms } from 'braid-design-system/css';\n\nexport const className = atoms({\n  paddingTop: 'small'\n});\n```\n\nThis allows you to co-locate custom styles with Braid's atomic classes in your stylesheets.\n\n```ts\n// styles.css.ts\nimport { style, composeStyles } from '@vanilla-extract/css';\nimport { atoms } from 'braid-design-system/css';\n\nexport const className = composeStyles(\n  atoms({ position: 'absolute' }),\n  style({ top: 300 })\n);\n```"
+      },
+      {
+        "new": [
+          "BraidPortal"
+        ],
+        "summary": "Migrate to vanilla-extract\n\nBraid now uses [vanilla-extract](http://vanilla-extract.style) rather than [treat](https://seek-oss.github.io/treat) to power its theme-based styling.\n\nSince they use different file extensions (`.css.ts` vs `.treat.ts`), we're able to ease the migration by supporting both approaches simultaneously in the same project.\n\nWhile we encourage you to write new CSS with vanilla-extract files and slowly migrate your existing treat files over time, the goal is to eventually remove treat entirely to enable further improvements to build tooling.\n\nWe've written a **[treat to vanilla-extract migration guide](https://github.com/seek-oss/braid-design-system/blob/master/docs/treat%20to%20vanilla-extract%20migration.md)** to make it easier when opting to migrate a treat file. If you have any questions or concerns, or if you need assistance with implementation or migration work, please reach out to us in the `#braid-support` channel.\n\n**BREAKING CHANGE**\n\n**React Portals containing Braid components/styles must use the new `BraidPortal` component**\n\nCSS-based theming doesn't automatically cascade through React portals. The new [`BraidPortal`](https://seek-oss.github.io/braid-design-system/components/BraidPortal) component handles this for you by forwarding Braid's CSS variables through the portal.\n\n```diff\n-import { createPortal } from 'react-dom';\n+import { BraidPortal } from 'braid-design-system';\n\n// ...\n\n-return open ? createPortal(<SomeComponent />) : null;\n+return open ? (\n+  <BraidPortal>\n+    <SomeComponent />\n+  </BraidPortal>\n+) : null;\n```"
+      },
+      {
+        "new": [
+          "responsiveStyle"
+        ],
+        "summary": "Add **responsiveStyle** function for creating custom mobile-first styles within [vanilla-extract stylesheets](http://vanilla-extract.style)\n\n**EXAMPLE USAGE**\n\n```ts\n// styles.css.ts\nimport { style } from '@vanilla-extract/css';\nimport { vars, responsiveStyle } from 'braid-design-system/css';\n\nexport const className = style(\n  responsiveStyle({\n    mobile: {\n      flexBasis: vars.space.small,\n    },\n    tablet: {\n      flexBasis: vars.space.medium,\n    },\n    desktop: {\n      flexBasis: vars.space.large,\n    },\n  })\n);\n\n// is equivalent to\nimport { style } from '@vanilla-extract/css';\nimport { vars, breakpoints } from 'braid-design-system/css';\n\nexport const className = style({\n  \"flexBasis\": vars.space.small,\n  \"@media\": {\n    [`screen and (min-width: ${breakpoints.tablet}px)`]: {\n      \"flexBasis\": vars.space.medium\n    },\n    [`screen and (min-width: ${breakpoints.desktop}px)`]: {\n      \"flexBasis\": vars.space.large\n    }\n  }\n});\n```"
+      },
+      {
+        "updated": [
+          "Box",
+          "Tag",
+          "Toggle"
+        ],
+        "summary": "**Box, Tag, Toggle:** Make `borderRadius=\"full\"` always circular\n\nFixes circular border radius bug where non-square elements would result in an ellipse."
+      },
+      {
+        "new": [
+          "vars"
+        ],
+        "summary": "Add **vars** object for accessing themed CSS variables within [vanilla-extract stylesheets](http://vanilla-extract.style) and runtime files.\n\nTheming is now achieved natively with CSS variables rather than generating separate styles for each theme. CSS variables are exposed via the `braid-design-system/css` import.\n\n```ts\n// styles.css.ts\nimport { style } from '@vanilla-extract/css';\nimport { vars } from 'braid-design-system/css';\n\nexport const className = style({\n  paddingTop: vars.space.small\n});\n```"
+      }
+    ]
   }
 ]
