@@ -1,5 +1,242 @@
 # braid-design-system
 
+## 30.0.0
+
+### Major Changes
+
+- **Box:** Remove `transform="touchable"` in favour of `transform={{ active: 'touchable' }}` ([#947](https://github.com/seek-oss/braid-design-system/pull/947))
+
+  **MIGRATION GUIDE**
+
+  ```diff
+  -<Box transform="touchable">
+  +<Box transform={{ active: 'touchable' }}>
+  ```
+
+- Updated minimum browser requirement to browsers that support CSS variables ([#947](https://github.com/seek-oss/braid-design-system/pull/947))
+
+  For the major browsers this includes:
+
+  - Chrome 49+
+  - iOS 9.3+
+  - Safari 9.1+
+  - Microsoft Edge 16+
+  - Firefox 31+
+  - Samsung 5+
+
+- Update minimum required sku version to `10.13.1` ([#947](https://github.com/seek-oss/braid-design-system/pull/947))
+
+  **BREAKING CHANGE**
+
+  Ensure your version of [sku](https://github.com/seek-oss/sku) is at least `10.13.1`. This is required as Braid now uses [vanilla-extract](https://vanilla-extract.style/) for styling.
+
+- Standardise breakpoints across all themes ([#947](https://github.com/seek-oss/braid-design-system/pull/947))
+
+  All themes now use the following breakpoints:
+
+  - Mobile: `0px`
+  - Tablet: `740px`
+  - Desktop: `992px`
+
+  **BREAKING CHANGE**
+
+  This is a change for the following themes:
+
+  **jobStreet, jobStreetClassic, jobsDb, occ, wireframe**
+
+  - Tablet: `768px` → `740px`
+
+  **catho**
+
+  - Tablet: `600px` → `740px`
+  - Desktop: `1024px` → `992px`
+
+  **docs**
+
+  - Tablet: `768px` → `740px`
+  - Desktop: `1136px` → `992px`
+
+- Migrate to vanilla-extract ([#947](https://github.com/seek-oss/braid-design-system/pull/947))
+
+  Braid now uses [vanilla-extract](http://vanilla-extract.style) rather than [treat](https://seek-oss.github.io/treat) to power its theme-based styling.
+
+  Since they use different file extensions (`.css.ts` vs `.treat.ts`), we're able to ease the migration by supporting both approaches simultaneously in the same project.
+
+  While we encourage you to write new CSS with vanilla-extract files and slowly migrate your existing treat files over time, the goal is to eventually remove treat entirely to enable further improvements to build tooling.
+
+  We've written a **[treat to vanilla-extract migration guide](https://github.com/seek-oss/braid-design-system/blob/master/docs/treat%20to%20vanilla-extract%20migration.md)** to make it easier when opting to migrate a treat file. If you have any questions or concerns, or if you need assistance with implementation or migration work, please reach out to us in the `#braid-support` channel.
+
+  **BREAKING CHANGE**
+
+  **React Portals containing Braid components/styles must use the new `BraidPortal` component**
+
+  CSS-based theming doesn't automatically cascade through React portals. The new [`BraidPortal`](https://seek-oss.github.io/braid-design-system/components/BraidPortal) component handles this for you by forwarding Braid's CSS variables through the portal.
+
+  ```diff
+  -import { createPortal } from 'react-dom';
+  +import { BraidPortal } from 'braid-design-system';
+
+  // ...
+
+  -return open ? createPortal(<SomeComponent />) : null;
+  +return open ? (
+  +  <BraidPortal>
+  +    <SomeComponent />
+  +  </BraidPortal>
+  +) : null;
+  ```
+
+### Minor Changes
+
+- **TextLinkRenderer:** Allow custom CSS reset via the `reset` prop, and allow it to be disabled by setting the prop to `false`. ([#947](https://github.com/seek-oss/braid-design-system/pull/947))
+
+- Support object notation for responsive props ([#947](https://github.com/seek-oss/braid-design-system/pull/947))
+
+  Responsive prop values can now be written as objects with named breakpoints, which is now the recommended notation.
+
+  ```ts
+  { mobile: 'small', tablet: 'medium', desktop: 'large' }
+  ```
+
+  This also means that breakpoints can be skipped.
+
+  ```ts
+  { mobile: 'small', desktop: 'large' }
+  ```
+
+- Add **breakpoints** object for accessing standard breakpoint values ([#947](https://github.com/seek-oss/braid-design-system/pull/947))
+
+  The breakpoints object provides a named set of screen sizes that form the basis of all responsive rules in Braid, available in the following format:
+
+  ```ts
+  {
+    mobile: 0,
+    tablet: 740,
+    desktop: 992
+  }
+  ```
+
+- Add **globalTextStyle** and **globalHeadingStyle** functions for applying standard text styles to foreign markup in [vanilla-extract stylesheets](http://vanilla-extract.style) ([#947](https://github.com/seek-oss/braid-design-system/pull/947))
+
+  Note: These utilities should only be used when you have no control over the HTML.
+
+  **EXAMPLE USAGE**
+
+  ```ts
+  // styles.css.ts
+  import { style, globalStyle } from '@vanilla-extract/css';
+  import { globalHeadingStyle, globalTextStyle } from 'braid-design-system/css';
+
+  export const root = style({});
+
+  // Target all <h2> elements within the root class
+  globalStyle(
+    `${root} h2`,
+    globalHeadingStyle({
+      level: '2',
+    }),
+  );
+
+  // Target all <p> elements within the root class
+  globalStyle(
+    `${root} p`,
+    globalTextStyle({
+      size: 'standard',
+      weight: 'regular',
+    }),
+  );
+  ```
+
+- Add **atoms** function for accessing re-usable atomic classes within [vanilla-extract stylesheets](http://vanilla-extract.style) ([#947](https://github.com/seek-oss/braid-design-system/pull/947))
+
+  Braid's re-usable atomic classes were previously only available via `Box`, but they are now accessible via the new `atoms` function.
+
+  ```ts
+  // styles.css.ts
+  import { atoms } from 'braid-design-system/css';
+
+  export const className = atoms({
+    paddingTop: 'small',
+  });
+  ```
+
+  This allows you to co-locate custom styles with Braid's atomic classes in your stylesheets.
+
+  ```ts
+  // styles.css.ts
+  import { style, composeStyles } from '@vanilla-extract/css';
+  import { atoms } from 'braid-design-system/css';
+
+  export const className = composeStyles(
+    atoms({ position: 'absolute' }),
+    style({ top: 300 }),
+  );
+  ```
+
+- Add **responsiveStyle** function for creating custom mobile-first styles within [vanilla-extract stylesheets](http://vanilla-extract.style) ([#947](https://github.com/seek-oss/braid-design-system/pull/947))
+
+  **EXAMPLE USAGE**
+
+  ```ts
+  // styles.css.ts
+  import { style } from '@vanilla-extract/css';
+  import { vars, responsiveStyle } from 'braid-design-system/css';
+
+  export const className = style(
+    responsiveStyle({
+      mobile: {
+        flexBasis: vars.space.small,
+      },
+      tablet: {
+        flexBasis: vars.space.medium,
+      },
+      desktop: {
+        flexBasis: vars.space.large,
+      },
+    }),
+  );
+
+  // is equivalent to
+  import { style } from '@vanilla-extract/css';
+  import { vars, breakpoints } from 'braid-design-system/css';
+
+  export const className = style({
+    flexBasis: vars.space.small,
+    '@media': {
+      [`screen and (min-width: ${breakpoints.tablet}px)`]: {
+        flexBasis: vars.space.medium,
+      },
+      [`screen and (min-width: ${breakpoints.desktop}px)`]: {
+        flexBasis: vars.space.large,
+      },
+    },
+  });
+  ```
+
+- Add **vars** object for accessing themed CSS variables within [vanilla-extract stylesheets](http://vanilla-extract.style) and runtime files. ([#947](https://github.com/seek-oss/braid-design-system/pull/947))
+
+  Theming is now achieved natively with CSS variables rather than generating separate styles for each theme. CSS variables are exposed via the `braid-design-system/css` import.
+
+  ```ts
+  // styles.css.ts
+  import { style } from '@vanilla-extract/css';
+  import { vars } from 'braid-design-system/css';
+
+  export const className = style({
+    paddingTop: vars.space.small,
+  });
+  ```
+
+### Patch Changes
+
+- **Loader:** Adjust size to better match text ([#947](https://github.com/seek-oss/braid-design-system/pull/947))
+
+- **Badge:** Use correct text size for `bleedY` positioning ([#947](https://github.com/seek-oss/braid-design-system/pull/947))
+
+- **Box, Tag, Toggle:** Make `borderRadius="full"` always circular ([#947](https://github.com/seek-oss/braid-design-system/pull/947))
+
+  Fixes circular border radius bug where non-square elements would result in an ellipse.
+
 ## 29.32.1
 
 ### Patch Changes
