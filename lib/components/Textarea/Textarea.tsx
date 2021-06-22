@@ -73,7 +73,7 @@ const calculateLines = (
     (target.scrollHeight - padding) / pxToInt(lineHeight),
   );
 
-  if (target && target.value === '') {
+  if ((target && target.value === '') || isNaN(currentRows)) {
     return lines;
   }
 
