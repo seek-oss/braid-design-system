@@ -1,5 +1,11 @@
 # braid-design-system
 
+## 30.0.2
+
+### Patch Changes
+
+- Replace [classnames](https://github.com/JedWatson/classnames) with [clsx](https://github.com/lukeed/clsx) ([#953](https://github.com/seek-oss/braid-design-system/pull/953))
+
 ## 30.0.1
 
 ### Patch Changes
