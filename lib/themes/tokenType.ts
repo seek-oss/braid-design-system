@@ -18,7 +18,7 @@ export interface BraidTokens {
     fontFamily: string;
     webFont: string | null;
     fontMetrics: FontMetrics;
-    fontWeight: Record<FontWeight, string | number>;
+    fontWeight: Record<FontWeight, 400 | 500 | 600 | 700 | 800>;
     heading: {
       weight: {
         weak: FontWeight;
