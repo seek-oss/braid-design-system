@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import assert from 'assert';
-import classnames from 'classnames';
+import clsx from 'clsx';
 
 import { OptionalTitle } from '../../components/icons/SVGTypes';
 import { BoxProps } from '../../components/Box/Box';
@@ -19,14 +19,14 @@ export interface IconSizeProps {
   size?: Exclude<IconSize, 'fill'>;
 }
 export const iconSize = ({ size = 'standard' }: IconSizeProps = {}) =>
-  classnames(styles.size, textSize(size));
+  clsx(styles.size, textSize(size));
 
 export interface IconContainerSizeProps {
   size?: Exclude<IconSize, 'fill'>;
 }
 export const iconContainerSize = (
   size: Exclude<IconSize, 'fill'> = 'standard',
-) => classnames(styles.blockWidths[size], lineHeightContainer[size]);
+) => clsx(styles.blockWidths[size], lineHeightContainer[size]);
 
 export type UseIconProps = {
   size?: IconSize;

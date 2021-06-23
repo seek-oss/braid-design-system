@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import clsx, { ClassValue } from 'clsx';
 import {
   createElement,
   forwardRef,
@@ -18,7 +18,7 @@ export interface BoxProps
   extends Omit<Atoms, 'reset'>,
     Omit<AllHTMLAttributes<HTMLElement>, 'width' | 'height' | 'className'> {
   component?: ElementType;
-  className?: Parameters<typeof classNames>[0];
+  className?: ClassValue;
 }
 
 export const Box = forwardRef<HTMLElement, BoxProps>(
@@ -34,7 +34,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       }
     }
 
-    const userClasses = classNames(className);
+    const userClasses = clsx(className);
 
     if (process.env.NODE_ENV !== 'production') {
       // eslint-disable-next-line react-hooks/rules-of-hooks

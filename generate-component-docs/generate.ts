@@ -5,7 +5,7 @@ import ts from 'typescript';
 import isEqual from 'lodash/isEqual';
 
 const MAX_DEPTH = 10;
-const aliasWhitelist = ['ResponsiveProp'];
+const aliasWhitelist = ['ResponsiveProp', 'ClassValue'];
 const propBlacklist = ['key'];
 
 const tsconfigPath = path.join(__dirname, '../tsconfig.json');
