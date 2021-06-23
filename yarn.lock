@@ -15625,10 +15625,10 @@ sisteransi@^1.0.5:
   resolved "https://registry.yarnpkg.com/sisteransi/-/sisteransi-1.0.5.tgz#134d681297756437cc05ca01370d3a7a571075ed"
   integrity sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==
 
-sku@10.13.3:
-  version "10.13.3"
-  resolved "https://registry.yarnpkg.com/sku/-/sku-10.13.3.tgz#46622dd5cae310f3d221cd21474fc57cd2c84d1a"
-  integrity sha512-MiCOB0OGM95YuRHWZhI9WQVEJpaVeMJ4DgiNGU7sMd3SQHl3b1geoHUghtENipNSj69FtkyzJexvGnOYJSsnag==
+sku@10.13.4:
+  version "10.13.4"
+  resolved "https://registry.yarnpkg.com/sku/-/sku-10.13.4.tgz#4c12e86e048901cdc0684c54f05895a1b94734c3"
+  integrity sha512-4MJSoqz/kQW/mWw79nsZLtAQUw5J1OJlr1Qd/fd+vdOp3zyrFW+t0tSmLKhqFX9x9Lq5Bqi++6MLHrnLMPhrkA==
   dependencies:
     "@babel/core" "^7.12.10"
     "@babel/plugin-proposal-class-properties" "^7.12.1"
