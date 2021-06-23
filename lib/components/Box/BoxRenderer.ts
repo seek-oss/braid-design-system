@@ -1,11 +1,11 @@
 import { ReactElement } from 'react';
-import classNames from 'classnames';
+import clsx, { ClassValue } from 'clsx';
 import { renderBackgroundProvider } from './BackgroundContext';
 import { atoms, Atoms } from '../../atoms/atoms';
 
 export interface BoxRendererProps extends Omit<Atoms, 'reset'> {
   component?: Atoms['reset'];
-  className?: Parameters<typeof classNames>[0];
+  className?: ClassValue;
   children: (className: string) => ReactElement | null;
 }
 
@@ -16,7 +16,7 @@ export const BoxRenderer = ({
   ...props
 }: BoxRendererProps) => {
   const atomicClasses = atoms({ reset: component, ...props });
-  const element = children(classNames(className, atomicClasses));
+  const element = children(clsx(className, atomicClasses));
 
   return renderBackgroundProvider(props.background, element);
 };

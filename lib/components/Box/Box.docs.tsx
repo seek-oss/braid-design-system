@@ -101,9 +101,7 @@ const docs: ComponentDocs = {
         <>
           <Text>
             The <Strong>className</Strong> prop supports the full{' '}
-            <TextLink href="https://github.com/JedWatson/classnames">
-              Classnames API.
-            </TextLink>
+            <TextLink href="https://github.com/lukeed/clsx">clsx API.</TextLink>
           </Text>
           <Code playroom={false}>
             {(() => {

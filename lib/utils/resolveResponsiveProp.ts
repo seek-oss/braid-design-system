@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import clsx from 'clsx';
 import {
   OptionalResponsiveValue,
   normalizeResponsiveValue,
@@ -26,5 +26,5 @@ export const resolveResponsiveProp = <Keys extends string | number>(
   const tabletAtom = tabletAtoms[tablet!];
   const desktopAtom = desktopAtoms[desktop!];
 
-  return classNames(mobileAtom, tabletAtom, desktopAtom);
+  return clsx(mobileAtom, tabletAtom, desktopAtom);
 };

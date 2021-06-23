@@ -1,5 +1,5 @@
 import assert from 'assert';
-import classNames from 'classnames';
+import clsx from 'clsx';
 import dedent from 'dedent';
 import React, {
   createContext,
@@ -349,7 +349,7 @@ export const PrivateButtonRenderer = ({
   const size = sizeProp ?? actionsContext?.size ?? 'standard';
   const { background, boxShadow } = useButtonVariant(variant, tone);
 
-  const buttonStyles = classNames(
+  const buttonStyles = clsx(
     atoms({
       reset: 'button',
       cursor: !loading ? 'pointer' : undefined,

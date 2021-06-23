@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import clsx from 'clsx';
 import { RequiredResponsiveValue } from '../sprinkles.css';
 import { resolveResponsiveProp } from '../../utils/resolveResponsiveProp';
 import * as styles from './negativeMarginTop.css';
@@ -11,7 +11,7 @@ type NegativeMarginTop = Extract<
 export const negativeMarginTop = (
   space: RequiredResponsiveValue<NegativeMarginTop>,
 ) =>
-  classnames(
+  clsx(
     styles.base,
     resolveResponsiveProp(space, styles.mobile, styles.tablet, styles.desktop),
   );
