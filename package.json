@@ -45,8 +45,12 @@
   "bugs": {
     "url": "https://github.com/seek-oss/braid-design-system/issues"
   },
+  "browserslist": [
+    "extends browserslist-config-seek"
+  ],
   "homepage": "https://github.com/seek-oss/braid-design-system#readme",
   "dependencies": {
+    "@babel/runtime": "^7.14.6",
     "@types/autosuggest-highlight": "^3.1.1",
     "@types/classnames": "^2.2.11",
     "@types/dedent": "^0.7.0",
@@ -79,8 +83,14 @@
     "sku": ">=10.13.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.10",
+    "@babel/cli": "^7.14.5",
+    "@babel/core": "^7.14.6",
     "@babel/generator": "^7.12.11",
+    "@babel/plugin-transform-react-constant-elements": "^7.14.5",
+    "@babel/plugin-transform-react-inline-elements": "^7.14.5",
+    "@babel/plugin-transform-runtime": "^7.14.5",
+    "@babel/preset-env": "^7.14.7",
+    "@babel/preset-react": "^7.14.5",
     "@babel/preset-typescript": "^7.12.7",
     "@changesets/cli": "^2.14.0",
     "@changesets/get-github-info": "^0.4.5",
@@ -98,8 +108,11 @@
     "@types/react-router-dom": "^5.1.7",
     "@types/sanitize-html": "^1.27.1",
     "@types/webpack-env": "^1.16.0",
+    "@vanilla-extract/babel-plugin": "^1.0.0",
+    "babel-plugin-add-react-displayname": "^0.0.5",
     "babel-plugin-macros": "^3.0.1",
     "babel-plugin-tester": "^10.0.0",
+    "babel-plugin-treat": "^1.6.2",
     "change-case": "^4.1.2",
     "cheerio": "1.0.0-rc.5",
     "chromatic": "^5.6.1",
