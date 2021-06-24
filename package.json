@@ -1,6 +1,6 @@
 {
   "name": "braid-design-system",
-  "version": "30.0.2-precompile-alpha.2",
+  "version": "30.0.2-precompile-alpha.3",
   "description": "Themeable design system for the SEEK Group",
   "main": "lib/components/index.ts",
   "sideEffects": [
