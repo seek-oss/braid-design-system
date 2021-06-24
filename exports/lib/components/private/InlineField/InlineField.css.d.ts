@@ -1,0 +1,22 @@
+declare const sizes: {
+    readonly standard: "standard";
+    readonly small: "small";
+};
+export declare type Size = keyof typeof sizes;
+export declare const root: string;
+export declare const realField: string;
+export declare const realFieldPosition: Record<"small" | "standard", string>;
+export declare const fakeFieldBase: string;
+export declare const fakeFieldSize: Record<"small" | "standard", string>;
+export declare const badgeOffset: Record<"small" | "standard", string>;
+export declare const labelBase: string;
+export declare const labelOffset: Record<"small" | "standard", string>;
+export declare const isMixed: string;
+export declare const children: string;
+export declare const selected: string;
+export declare const focusOverlay: string;
+export declare const hoverOverlay: string;
+export declare const indicator: string;
+export declare const checkboxIndicator: string[];
+export declare const radioIndicator: string[];
+export {};

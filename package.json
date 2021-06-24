@@ -1,6 +1,6 @@
 {
   "name": "braid-design-system",
-  "version": "30.0.2",
+  "version": "30.0.2-precompile-alpha.1",
   "description": "Themeable design system for the SEEK Group",
   "main": "lib/components/index.ts",
   "sideEffects": [
@@ -11,10 +11,10 @@
     "*.css.ts"
   ],
   "exports": {
-    ".": "./lib/components/index.js",
-    "./css": "./lib/css/index.js",
-    "./themes/*": "./lib/themes/*.js",
-    "./reset": "./lib/reset"
+    ".": "./exports/components/index.js",
+    "./css": "./exports/css/index.js",
+    "./themes/*": "./exports/themes/*.js",
+    "./reset": "./exports/reset"
   },
   "scripts": {
     "test": "SKU_TELEMETRY=false sku test",
@@ -158,7 +158,8 @@
   "resolutions": {
     "playroom": "0.25.0",
     "csstype": "3.0.6",
-    "react-docgen-typescript": "2.0.0"
+    "react-docgen-typescript": "2.0.0",
+    "typescript": "4.3.4"
   },
   "volta": {
     "node": "12.14.1",

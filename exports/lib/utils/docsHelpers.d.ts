@@ -1,0 +1,3 @@
+export declare const backgrounds: ("critical" | "info" | "promote" | "positive" | "caution" | "formAccent" | "brandAccent" | "formAccentActive" | "formAccentHover" | "brandAccentActive" | "brandAccentHover" | "criticalActive" | "criticalHover" | "infoLight" | "promoteLight" | "criticalLight" | "positiveLight" | "cautionLight" | "neutralLight" | "body" | "brand" | "input" | "inputDisabled" | "formAccentDisabled" | "selection" | "card" | "neutral")[];
+export declare const textAlignments: readonly ["left", "center", "right"];
+export declare const spaces: ("medium" | "large" | "small" | "gutter" | "xxsmall" | "xsmall" | "xlarge" | "xxlarge")[];

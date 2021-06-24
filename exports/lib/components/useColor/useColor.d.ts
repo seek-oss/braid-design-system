@@ -1,0 +1,48 @@
+export declare const useColor: () => {
+    background: {
+        formAccentActive: string;
+        formAccentHover: string;
+        brandAccentActive: string;
+        brandAccentHover: string;
+        criticalActive: string;
+        criticalHover: string;
+        infoLight: string;
+        promoteLight: string;
+        criticalLight: string;
+        positiveLight: string;
+        cautionLight: string;
+        neutralLight: string;
+        body: string;
+        brand: string;
+        input: string;
+        inputDisabled: string;
+        brandAccent: string;
+        formAccent: string;
+        formAccentDisabled: string;
+        selection: string;
+        info: string;
+        promote: string;
+        card: string;
+        critical: string;
+        caution: string;
+        positive: string;
+        neutral: string;
+    };
+    foreground: {
+        link: string;
+        linkHover: string;
+        linkVisited: string;
+        neutral: string;
+        neutralInverted: string;
+        formAccent: string;
+        brandAccent: string;
+        critical: string;
+        info: string;
+        promote: string;
+        positive: string;
+        caution: string;
+        secondary: string;
+        secondaryInverted: string;
+        rating: string;
+    };
+};
