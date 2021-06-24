@@ -10,6 +10,12 @@
     "reset/**/*",
     "*.css.ts"
   ],
+  "exports": {
+    ".": "./lib/components/index.js",
+    "./css": "./lib/css/index.js",
+    "./themes/*": "./lib/themes/*.js",
+    "./reset": "./lib/reset"
+  },
   "scripts": {
     "test": "SKU_TELEMETRY=false sku test",
     "start": "SKU_TELEMETRY=false concurrently -n \"docs-site,playroom\" -c \"magenta,greenBright\" \"sku start\" \"OPEN_TAB=false sku playroom\"",
@@ -121,6 +127,7 @@
     "copy-to-clipboard": "^3.3.1",
     "date-fns": "^2.16.1",
     "didyoumean2": "^4.1.0",
+    "execa": "^5.1.1",
     "fast-glob": "^3.2.5",
     "fs-extra": "^9.1.0",
     "gh-pages": "^3.1.0",

@@ -1,1 +1,0 @@
-yarn babel lib --extensions '.ts,.tsx' --out-dir lib2 --ignore "lib/**/*.docs.tsx","lib/**/*.gallery.tsx","lib/**/*.screenshots.tsx","lib/**/*.snippets.tsx","lib/**/*.test.tsx"
