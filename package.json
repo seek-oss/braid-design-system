@@ -1,6 +1,6 @@
 {
   "name": "braid-design-system",
-  "version": "30.0.2-precompile-alpha.1",
+  "version": "30.0.2-precompile-alpha.2",
   "description": "Themeable design system for the SEEK Group",
   "main": "lib/components/index.ts",
   "sideEffects": [
@@ -14,7 +14,7 @@
     ".": "./exports/components/index.js",
     "./css": "./exports/css/index.js",
     "./themes/*": "./exports/themes/*.js",
-    "./reset": "./exports/reset"
+    "./reset": "./exports/reset/index.js"
   },
   "scripts": {
     "test": "SKU_TELEMETRY=false sku test",
