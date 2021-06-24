@@ -3643,11 +3643,6 @@
   resolved "https://registry.yarnpkg.com/@types/base64-url/-/base64-url-2.2.0.tgz#ff17c19bf357821bd637af2f54f7922443377950"
   integrity sha512-adGV3KUTc9uO7kZNQOF3u9WVuKZsgKPsaShZePe+hQXNYd+3dnIK+Y2Wyw7A6M4iIH01xKCRZCZWLQnG9bulIQ==
 
-"@types/classnames@^2.2.11":
-  version "2.2.11"
-  resolved "https://registry.yarnpkg.com/@types/classnames/-/classnames-2.2.11.tgz#2521cc86f69d15c5b90664e4829d84566052c1cf"
-  integrity sha512-2koNhpWm3DgWRp5tpkiJ8JGc1xTn2q0l+jUNUE7oMKXUf5NpI9AIdC4kbjGNFBdHtcxBD18LAksoudAVhFKCjw==
-
 "@types/classnames@^2.2.9":
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/@types/classnames/-/classnames-2.3.1.tgz#3c2467aa0f1a93f1f021e3b9bcf938bd5dfdc0dd"
