@@ -4,6 +4,14 @@ import { externalGutter } from './ModalExternalGutter';
 import { TextBreakpoint } from '../../../themes/tokenType';
 import { responsiveStyle } from '../../../atoms/responsiveStyle';
 import { vars } from '../../../themes/vars.css';
+import { atoms } from '../../../atoms/atoms';
+
+export const fixedStackingContext = atoms({
+  position: 'fixed',
+  zIndex: 'modal',
+});
+
+export const resetStackingContext = atoms({ position: 'relative', zIndex: 0 });
 
 export const backdrop = style({
   background: 'rgba(0, 0, 0, .4)',

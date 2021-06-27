@@ -10,7 +10,6 @@ import React, {
 } from 'react';
 import FocusLock from 'react-focus-lock';
 import { ariaHideOthers } from './ariaHideOthers';
-import assert from 'assert';
 import { Box } from '../../Box/Box';
 import { BraidPortal } from '../../BraidPortal/BraidPortal';
 import { externalGutter } from './ModalExternalGutter';
@@ -26,8 +25,6 @@ export interface ModalProps
   onClose: (openState: false) => void;
 }
 
-const ModalContext = createContext(false);
-
 export const AllowCloseContext = createContext(true);
 
 interface ModalPortalProps {
@@ -35,9 +32,6 @@ interface ModalPortalProps {
 }
 const ModalPortal = ({ children }: ModalPortalProps) => {
   const [modalElement, setElement] = useState<HTMLElement | null>(null);
-  const alreadyInModalContext = useContext(ModalContext);
-
-  assert(!alreadyInModalContext, 'Nested modals are not supported.');
 
   useEffect(() => {
     const modalContainerId = 'braid-modal-container';
@@ -46,7 +40,7 @@ const ModalPortal = ({ children }: ModalPortalProps) => {
     if (!element) {
       element = document.createElement('div');
       element.setAttribute('id', modalContainerId);
-      element.setAttribute('class', '');
+      element.setAttribute('class', styles.fixedStackingContext);
 
       document.body.appendChild(element);
     }
@@ -58,11 +52,7 @@ const ModalPortal = ({ children }: ModalPortalProps) => {
     return null;
   }
 
-  return (
-    <BraidPortal container={modalElement}>
-      <ModalContext.Provider value={true}>{children}</ModalContext.Provider>
-    </BraidPortal>
-  );
+  return <BraidPortal container={modalElement}>{children}</BraidPortal>;
 };
 
 // Actions
@@ -207,6 +197,7 @@ export const Modal = ({
     <ModalPortal>
       {state === OPENING || state === OPEN || state === CLOSING ? (
         <FocusLock
+          className={styles.resetStackingContext}
           disabled={!trapActive}
           autoFocus={false}
           onActivation={() => {

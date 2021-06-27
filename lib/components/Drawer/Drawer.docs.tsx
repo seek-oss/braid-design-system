@@ -65,17 +65,10 @@ const docs: ComponentDocs = {
     {
       label: 'Design considerations',
       description: (
-        <>
-          <Text>
-            Drawers should only be used as a last resort when other in-flow
-            alternatives are not suitable.
-          </Text>
-          <Text>
-            In order to keep experiences simple, Drawers and{' '}
-            <TextLink href="/components/Dialog">Dialogs</TextLink>{' '}
-            <Strong>cannot be nested</Strong> inside one another.
-          </Text>
-        </>
+        <Text>
+          Drawers should only be used as a last resort when other in-flow
+          alternatives are not suitable.
+        </Text>
       ),
     },
     {
