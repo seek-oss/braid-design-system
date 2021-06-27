@@ -1,7 +1,7 @@
 import React, { CSSProperties, useContext, ReactElement } from 'react';
 import dedent from 'dedent';
 import assert from 'assert';
-import classnames from 'classnames';
+import clsx from 'clsx';
 import TextLinkRendererContext from './TextLinkRendererContext';
 import { TextContext } from '../Text/TextContext';
 import HeadingContext from '../Heading/HeadingContext';
@@ -129,7 +129,7 @@ function InlineLink({
     <TextLinkRendererContext.Provider value={weight}>
       {children({
         style: {},
-        className: classnames(
+        className: clsx(
           useLinkStyles(weight, showVisited),
           reset !== false
             ? atoms({
@@ -178,7 +178,7 @@ function ButtonLink({
         <TextContext.Provider value={buttonLinkTextProps}>
           {children({
             style: {},
-            className: classnames(
+            className: clsx(
               styles.button,
               useLinkStyles(textLinkWeight, showVisited),
               useText(buttonLinkTextProps),

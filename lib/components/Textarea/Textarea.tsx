@@ -68,6 +68,12 @@ const calculateLines = (
     target,
   );
 
+  // If line height is not a pixel value (e.g. 'normal' or unitless),
+  // bail out of grow behaviour as we cannot calculate accurately.
+  if (!lineHeight.endsWith('px')) {
+    return lines;
+  }
+
   const padding = pxToInt(paddingTop) + pxToInt(paddingBottom);
   const currentRows = Math.floor(
     (target.scrollHeight - padding) / pxToInt(lineHeight),

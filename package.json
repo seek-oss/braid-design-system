@@ -1,6 +1,6 @@
 {
   "name": "braid-design-system",
-  "version": "30.0.0",
+  "version": "30.0.2",
   "description": "Themeable design system for the SEEK Group",
   "main": "lib/components/index.ts",
   "sideEffects": [
@@ -59,7 +59,7 @@
     "assert": "^2.0.0",
     "autosuggest-highlight": "^3.1.1",
     "capsize": "^2.0.0",
-    "classnames": "^2.2.6",
+    "clsx": "^1.1.1",
     "csstype": "^3.0.6",
     "dedent": "0.7.0",
     "gradient-parser": "^1.0.0",
@@ -129,7 +129,7 @@
     "react-use": "^17.0.1",
     "renovate-config-seek": "0.4.0",
     "sanitize-html": "^2.3.2",
-    "sku": "10.13.3",
+    "sku": "10.13.4",
     "surge": "^0.21.7",
     "title-case": "^3.0.3",
     "ts-node": "^9.1.1",

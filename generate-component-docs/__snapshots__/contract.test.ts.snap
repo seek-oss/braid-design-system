@@ -428,7 +428,7 @@ Object {
     children?: ReactNode
     cite?: string
     classID?: string
-    className?: string | number | boolean | ClassDictionary | ClassArray
+    className?: ClassValue
     colSpan?: number
     color?: string
     cols?: number
@@ -1258,7 +1258,7 @@ Object {
         | "outlineFocus"
         | "small"
     children: (className: string) => ReactElement<any, string | JSXElementConstructor<any>> | null
-    className?: string | number | boolean | ClassDictionary | ClassArray
+    className?: ClassValue
     component?: 
         | "a"
         | "abbr"
@@ -5549,7 +5549,7 @@ Object {
     autoCorrect?: string
     autoSave?: string
     children?: ReactNode
-    className?: string | number | boolean | ClassDictionary | ClassArray
+    className?: ClassValue
     color?: string
     contentEditable?: 
         | "false"

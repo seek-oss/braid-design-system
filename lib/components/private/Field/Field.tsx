@@ -1,6 +1,6 @@
 import assert from 'assert';
 import React, { Fragment, ReactNode, AllHTMLAttributes } from 'react';
-import classnames from 'classnames';
+import clsx from 'clsx';
 import { Box, BoxProps } from '../../Box/Box';
 import { useBackgroundLightness } from '../../Box/BackgroundContext';
 import { FieldLabel, FieldLabelProps } from '../../FieldLabel/FieldLabel';
@@ -165,7 +165,7 @@ export const Field = ({
             autoComplete,
             autoFocus,
             ...buildDataAttributes(data),
-            className: classnames(
+            className: clsx(
               styles.field,
               styles.placeholderColor,
               useText({

@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import clsx, { ClassValue } from 'clsx';
 import React, { forwardRef } from 'react';
 import { atoms } from '../../atoms/atoms';
 import {
@@ -7,7 +7,7 @@ import {
 } from '../BraidProvider/BraidProvider';
 
 export type LinkProps = Omit<LinkComponentProps, 'className'> & {
-  className?: Parameters<typeof classNames>[0];
+  className?: ClassValue;
 };
 
 export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
@@ -18,7 +18,7 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
       <LinkComponent
         ref={ref}
         href={href}
-        className={classNames(atoms({ reset: 'a' }), className)}
+        className={clsx(atoms({ reset: 'a' }), className)}
         {...restProps}
       />
     );

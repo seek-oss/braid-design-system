@@ -1,5 +1,21 @@
 # braid-design-system
 
+## 30.0.2
+
+### Patch Changes
+
+- Replace [classnames](https://github.com/JedWatson/classnames) with [clsx](https://github.com/lukeed/clsx) ([#953](https://github.com/seek-oss/braid-design-system/pull/953))
+
+## 30.0.1
+
+### Patch Changes
+
+- Narrow `fontWeight` token type from `string | number` to the expected values ([#952](https://github.com/seek-oss/braid-design-system/pull/952))
+
+- **Textarea:** Fix "Received NaN for the `rows` attribute." warning. ([#950](https://github.com/seek-oss/braid-design-system/pull/950))
+
+  Fixes the warning in node testing environments where updating the `rows` attribute was failing due to `line-height` being `normal`. Now falling back to the predefined `lines` prop when the dynamic `grow` size is not valid.
+
 ## 30.0.0
 
 ### Major Changes

@@ -1730,5 +1730,20 @@
         "summary": "Add **vars** object for accessing themed CSS variables within [vanilla-extract stylesheets](http://vanilla-extract.style) and runtime files.\n\nTheming is now achieved natively with CSS variables rather than generating separate styles for each theme. CSS variables are exposed via the `braid-design-system/css` import.\n\n```ts\n// styles.css.ts\nimport { style } from '@vanilla-extract/css';\nimport { vars } from 'braid-design-system/css';\n\nexport const className = style({\n  paddingTop: vars.space.small\n});\n```"
       }
     ]
+  },
+  {
+    "version": "30.0.1",
+    "updates": [
+      {
+        "updated": [
+          "Textarea"
+        ],
+        "summary": "**Textarea:** Fix \"Received NaN for the `rows` attribute.\" warning.\n\nFixes the warning in node testing environments where updating the `rows` attribute was failing due to `line-height` being `normal`. Now falling back to the predefined `lines` prop when the dynamic `grow` size is not valid."
+      }
+    ]
+  },
+  {
+    "version": "30.0.2",
+    "updates": []
   }
 ]

@@ -5,7 +5,7 @@ import ts from 'typescript';
 import isEqual from 'lodash/isEqual';
 
 const MAX_DEPTH = 10;
-const aliasWhitelist = ['ResponsiveProp'];
+const aliasWhitelist = ['ClassValue'];
 const propBlacklist = ['key'];
 
 const tsconfigPath = path.join(__dirname, '../tsconfig.json');
@@ -16,8 +16,6 @@ const stringAliases: Record<string, string> = {
   boolean: 'boolean',
   Element: 'Element',
   CSSProperties: 'CSSProperties',
-  'string | number | boolean | ClassDictionary | ClassArray':
-    'string | number | boolean | ClassDictionary | ClassArray',
 };
 
 export interface NormalisedInterface {

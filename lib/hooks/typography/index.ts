@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import classnames from 'classnames';
+import clsx from 'clsx';
 import type { StyleRule } from '@vanilla-extract/css';
 
 import {
@@ -51,7 +51,7 @@ export function useText({
 }: UseTextProps) {
   const textTone = useTextTone({ tone, backgroundContext });
 
-  return classnames(
+  return clsx(
     styles.fontFamily,
     textTone,
     styles.fontWeight[weight],
@@ -96,7 +96,7 @@ export function useHeading({
 }: UseHeadingProps) {
   const textTone = useTextTone({ tone: 'neutral', backgroundContext });
 
-  return classnames(
+  return clsx(
     styles.fontFamily,
     styles.headingWeight[weight],
     baseline ? styles.heading[level].trimmed : styles.heading[level].untrimmed,
