@@ -1,4 +1,4 @@
-import '../reset';
+import '../../reset';
 export * from '../components';
 
 export { Accordion } from '../components/Accordion/Accordion.playroom';
