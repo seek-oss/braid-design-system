@@ -2,7 +2,7 @@ import React, { forwardRef, Children } from 'react';
 import assert from 'assert';
 import { Box, BoxProps } from '../Box/Box';
 import { Text } from '../Text/Text';
-import { lineHeightContainer } from '../../atoms/lineHeightContainer.css';
+import { lineHeightContainer } from '../../css/lineHeightContainer.css';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';

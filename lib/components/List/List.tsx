@@ -8,7 +8,7 @@ import {
   DefaultTextPropsProvider,
   useDefaultTextProps,
 } from '../private/defaultTextProps';
-import { lineHeightContainer } from '../../atoms/lineHeightContainer.css';
+import { lineHeightContainer } from '../../css/lineHeightContainer.css';
 import * as styles from './List.css';
 
 function numberToAlpha(inputNumber: number) {

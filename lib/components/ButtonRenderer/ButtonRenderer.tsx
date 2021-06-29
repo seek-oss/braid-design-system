@@ -10,7 +10,7 @@ import React, {
   CSSProperties,
   ComponentType,
 } from 'react';
-import { Atoms, atoms } from '../../atoms/atoms';
+import { Atoms, atoms } from '../../css/atoms/atoms';
 import {
   BackgroundProvider,
   useBackgroundLightness,

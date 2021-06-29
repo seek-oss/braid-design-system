@@ -7,7 +7,7 @@ import { BoxProps } from '../../components/Box/Box';
 import { TextContext } from '../../components/Text/TextContext';
 import HeadingContext from '../../components/Heading/HeadingContext';
 import { textSize, useTextTone, UseTextProps } from '../typography';
-import { lineHeightContainer } from '../../atoms/lineHeightContainer.css';
+import { lineHeightContainer } from '../../css/lineHeightContainer.css';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../../components/private/buildDataAttributes';

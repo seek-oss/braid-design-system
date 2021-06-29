@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import { Box, Text } from '../../';
 import { useBackgroundLightness } from '../../Box/BackgroundContext';
-import { atoms } from '../../../atoms/atoms';
+import { atoms } from '../../../css/atoms/atoms';
 import wireframe from '../../../themes/wireframe';
 import * as styles from './Placeholder.css';
 

@@ -11,7 +11,7 @@ import React, {
   Ref,
 } from 'react';
 import { TreatProvider } from 'sku/react-treat';
-import { ensureResetImported } from '../../reset/resetTracker';
+import { ensureResetImported } from '../../css/reset/resetTracker';
 import { useHideFocusRings } from '../private/hideFocusRings/useHideFocusRings';
 import { BraidTestProviderContext } from '../BraidTestProvider/BraidTestProviderContext';
 import { BreakpointProvider } from '../useBreakpoint/BreakpointProvider';

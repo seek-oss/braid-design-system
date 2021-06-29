@@ -1,4 +1,4 @@
-import { vars } from '../themes/vars.css';
+import { vars } from '../../themes/vars.css';
 
 const sizes = {
   full: '100%',

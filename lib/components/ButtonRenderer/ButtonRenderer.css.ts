@@ -1,6 +1,6 @@
 import { keyframes, style } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
-import { responsiveStyle } from '../../atoms/responsiveStyle';
+import { responsiveStyle } from '../../css/responsiveStyle';
 import { vars } from '../../themes/vars.css';
 
 export const constants = {

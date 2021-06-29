@@ -5,7 +5,8 @@
   "main": "lib/components/index.ts",
   "sideEffects": [
     "lib/themes/**/*",
-    "lib/reset/**/*",
+    "lib/css/atoms/**/*",
+    "lib/css/reset/**/*",
     "themes/**/*",
     "reset/**/*",
     "*.css.ts"

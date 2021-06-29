@@ -1,6 +1,6 @@
 // Adapted version of https://github.com/streamich/react-use/blob/master/src/useMedia.ts
 import React, { useEffect, useState, createContext, ReactNode } from 'react';
-import { breakpoints } from '../../atoms/breakpoints';
+import { breakpoints } from '../../css/breakpoints';
 
 export type Breakpoint = 'mobile' | 'tablet' | 'desktop';
 

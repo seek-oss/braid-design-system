@@ -1,5 +1,5 @@
 import * as resetStyles from '../reset/reset.css';
-import { vars } from '../themes/vars.css';
+import { vars } from '../../themes/vars.css';
 
 import { sprinkles, RequiredResponsiveValue } from './sprinkles.css';
 

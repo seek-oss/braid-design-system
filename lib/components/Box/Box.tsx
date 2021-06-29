@@ -8,9 +8,9 @@ import {
   useEffect,
 } from 'react';
 import dedent from 'dedent';
-import { base as baseReset } from '../../reset/reset.css';
-import { atoms, Atoms } from '../../atoms/atoms';
-import { sprinkles } from '../../atoms/sprinkles.css';
+import { base as baseReset } from '../../css/reset/reset.css';
+import { atoms, Atoms } from '../../css/atoms/atoms';
+import { sprinkles } from '../../css/atoms/sprinkles.css';
 import { renderBackgroundProvider } from './BackgroundContext';
 import TextLinkRendererContext from '../TextLinkRenderer/TextLinkRendererContext';
 

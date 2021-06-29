@@ -16,7 +16,7 @@ import { actionTypes, Action } from '../MenuRenderer/MenuRenderer.actions';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
-import { atoms } from '../../atoms/atoms';
+import { atoms } from '../../css/atoms/atoms';
 import * as styles from './useMenuItem.css';
 
 const {

@@ -5,4 +5,4 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 // Ensure reset and atoms are the lowest specificity
-import '../atoms/atoms';
+import '../css/atoms/atoms';
