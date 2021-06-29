@@ -1,5 +1,11 @@
 # braid-design-system
 
+## 30.0.3
+
+### Patch Changes
+
+- Ensure atoms are always lowest specificity ([#955](https://github.com/seek-oss/braid-design-system/pull/955))
+
 ## 30.0.2
 
 ### Patch Changes
