@@ -3,7 +3,7 @@ import { IconInfo, IconCritical, IconPositive, IconPromote } from '../icons';
 import { Columns } from '../Columns/Columns';
 import { Column } from '../Column/Column';
 import { Box } from '../Box/Box';
-import { textAlignedToIcon } from '../../atoms/textAlignedToIcon.css';
+import { textAlignedToIcon } from '../../css/textAlignedToIcon.css';
 import { DefaultTextPropsProvider } from '../private/defaultTextProps';
 import buildDataAttributes, {
   DataAttributeMap,

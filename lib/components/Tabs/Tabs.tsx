@@ -9,14 +9,14 @@ import React, {
 import assert from 'assert';
 import flattenChildren from 'react-keyed-flatten-children';
 import { Box } from '../Box/Box';
-import type { ResponsiveSpace } from '../../atoms/atoms';
+import type { ResponsiveSpace } from '../../css/atoms/atoms';
 import { TAB_LIST_UPDATED } from './Tabs.actions';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
 import { TabsContext } from './TabsProvider';
 import { Tab } from './Tab';
-import { negativeMarginTop } from '../../atoms/negativeMargin/negativeMargin';
+import { negativeMarginTop } from '../../css/negativeMargin/negativeMargin';
 import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
 import { TabListContext, TabListContextValues } from './TabListContext';

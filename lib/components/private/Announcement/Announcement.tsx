@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 
-import { atoms } from '../../../atoms/atoms';
+import { atoms } from '../../../css/atoms/atoms';
 import * as styles from '../../HiddenVisually/HiddenVisually.css';
 
 let announcementCounter = 0;

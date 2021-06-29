@@ -7,7 +7,7 @@ import { TextContext } from '../Text/TextContext';
 import HeadingContext from '../Heading/HeadingContext';
 import ActionsContext from '../Actions/ActionsContext';
 import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
-import { atoms, Atoms } from '../../atoms/atoms';
+import { atoms, Atoms } from '../../css/atoms/atoms';
 import { Box } from '../Box/Box';
 import {
   useTextTone,

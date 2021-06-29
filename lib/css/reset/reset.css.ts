@@ -1,5 +1,5 @@
 import { style, composeStyles } from '@vanilla-extract/css';
-import { hideFocusRingsDataAttribute } from '../components/private/hideFocusRings/hideFocusRingsDataAttribute';
+import { hideFocusRingsDataAttribute } from '../../components/private/hideFocusRings/hideFocusRingsDataAttribute';
 
 export const base = style({
   margin: 0,
