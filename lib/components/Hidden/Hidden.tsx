@@ -5,11 +5,12 @@ import HeadingContext from '../Heading/HeadingContext';
 import {
   resolveResponsiveRangeProps,
   ResponsiveRangeProps,
-} from '../../utils/responsiveRangeProps';
+} from '../../utils/resolveResponsiveRangeProps';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
 import * as styles from './Hidden.css';
+import { optimizeResponsiveArray } from '../../utils/optimizeResponsiveArray';
 
 export interface HiddenProps extends ResponsiveRangeProps {
   children: ReactNode;
@@ -46,6 +47,7 @@ export const Hidden = ({
     hiddenOnMobile,
     hiddenOnTablet,
     hiddenOnDesktop,
+    hiddenOnWide,
   ] = resolveResponsiveRangeProps({ above, below });
 
   const inline = inlineProp ?? (inText || inHeading);
@@ -56,11 +58,12 @@ export const Hidden = ({
       display={
         hiddenOnScreen
           ? 'none'
-          : [
+          : optimizeResponsiveArray([
               hiddenOnMobile ? 'none' : display,
               hiddenOnTablet ? 'none' : display,
               hiddenOnDesktop ? 'none' : display,
-            ]
+              hiddenOnWide ? 'none' : display,
+            ])
       }
       className={hiddenOnPrint ? styles.hiddenOnPrint : undefined}
       component={component || (inline ? 'span' : 'div')}

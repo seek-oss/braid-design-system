@@ -7,7 +7,7 @@ import { Divider, DividerProps } from '../Divider/Divider';
 import { Hidden, HiddenProps } from '../Hidden/Hidden';
 import * as hiddenStyles from '../Hidden/Hidden.css';
 import { alignToFlexAlign, Align } from '../../utils/align';
-import { resolveResponsiveRangeProps } from '../../utils/responsiveRangeProps';
+import { resolveResponsiveRangeProps } from '../../utils/resolveResponsiveRangeProps';
 import { optimizeResponsiveArray } from '../../utils/optimizeResponsiveArray';
 import { negativeMarginTop } from '../../atoms/negativeMargin/negativeMargin';
 import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
@@ -53,7 +53,7 @@ const extractHiddenPropsFromChild = (child: ReactNode) =>
 
 const resolveHiddenProps = ({ screen, above, below }: HiddenProps) =>
   screen
-    ? ([true, true, true] as const)
+    ? ([true, true, true, true] as const)
     : resolveResponsiveRangeProps({
         above,
         below,
@@ -61,8 +61,8 @@ const resolveHiddenProps = ({ screen, above, below }: HiddenProps) =>
 
 const calculateHiddenStackItemProps = (
   stackItemProps: ReturnType<typeof useStackItem>,
-  [hiddenOnMobile, hiddenOnTablet, hiddenOnDesktop]: Readonly<
-    [boolean, boolean, boolean]
+  [hiddenOnMobile, hiddenOnTablet, hiddenOnDesktop, hiddenOnWide]: Readonly<
+    [boolean, boolean, boolean, boolean]
   >,
 ) => {
   const normalizedValue = normalizeResponsiveValue(
@@ -73,6 +73,7 @@ const calculateHiddenStackItemProps = (
     mobile: displayMobile = 'block',
     tablet: displayTablet = displayMobile,
     desktop: displayDesktop = displayTablet,
+    wide: displayWide = displayDesktop,
   } = normalizedValue;
 
   return {
@@ -81,6 +82,7 @@ const calculateHiddenStackItemProps = (
       hiddenOnMobile ? 'none' : displayMobile,
       hiddenOnTablet ? 'none' : displayTablet,
       hiddenOnDesktop ? 'none' : displayDesktop,
+      hiddenOnWide ? 'none' : displayWide,
     ]),
   };
 };
@@ -117,6 +119,7 @@ export const Stack = ({
   let firstItemOnMobile: number | null = null;
   let firstItemOnTablet: number | null = null;
   let firstItemOnDesktop: number | null = null;
+  let firstItemOnWide: number | null = null;
 
   return (
     <Box
@@ -137,8 +140,16 @@ export const Stack = ({
         const hiddenProps = extractHiddenPropsFromChild(child);
         const hidden = hiddenProps
           ? resolveHiddenProps(hiddenProps)
-          : ([false, false, false] as const);
-        const [hiddenOnMobile, hiddenOnTablet, hiddenOnDesktop] = hidden;
+          : ([false, false, false, false] as const);
+        const [
+          hiddenOnMobile,
+          hiddenOnTablet,
+          hiddenOnDesktop,
+          hiddenOnWide,
+        ] = hidden;
+
+        const responsivelyHidden =
+          hiddenOnMobile || hiddenOnTablet || hiddenOnDesktop || hiddenOnWide;
 
         if (firstItemOnMobile === null && !hiddenOnMobile) {
           firstItemOnMobile = index;
@@ -152,6 +163,10 @@ export const Stack = ({
           firstItemOnDesktop = index;
         }
 
+        if (firstItemOnWide === null && !hiddenOnWide) {
+          firstItemOnWide = index;
+        }
+
         return (
           <Box
             component={stackItemComponent}
@@ -160,7 +175,7 @@ export const Stack = ({
                 ? hiddenStyles.hiddenOnPrint
                 : null,
             ]}
-            {...(hiddenOnMobile || hiddenOnTablet || hiddenOnDesktop
+            {...(responsivelyHidden
               ? calculateHiddenStackItemProps(stackItemProps, hidden)
               : stackItemProps)}
           >
@@ -172,6 +187,7 @@ export const Stack = ({
                   index === firstItemOnMobile ? 'none' : 'block',
                   index === firstItemOnTablet ? 'none' : 'block',
                   index === firstItemOnDesktop ? 'none' : 'block',
+                  index === firstItemOnWide ? 'none' : 'block',
                 ])}
               >
                 {typeof dividers === 'string' ? (

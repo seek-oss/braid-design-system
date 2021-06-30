@@ -15,7 +15,12 @@ const desktopAtoms = {
   bar: 'bar_desktop',
   baz: 'baz_desktop',
 } as const;
-const atoms = [mobileAtoms, tabletAtoms, desktopAtoms] as const;
+const wideAtoms = {
+  foo: 'foo_wide',
+  bar: 'bar_wide',
+  baz: 'baz_wide',
+} as const;
+const atoms = [mobileAtoms, tabletAtoms, desktopAtoms, wideAtoms] as const;
 
 describe('resolveResponsiveProp', () => {
   const testData = [
@@ -24,7 +29,9 @@ describe('resolveResponsiveProp', () => {
     [['foo', 'foo'], 'foo_mobile'],
     [['foo', 'bar', 'baz'], 'foo_mobile bar_tablet baz_desktop'],
     [['foo', 'foo', 'bar'], 'foo_mobile bar_desktop'],
-    [['foo', 'foo', 'foo'], 'foo_mobile'],
+    [['foo', 'foo', 'bar', 'bar'], 'foo_mobile bar_desktop'],
+    [['foo', 'foo', 'foo', 'bar'], 'foo_mobile bar_wide'],
+    [['foo', 'foo', 'foo', 'foo'], 'foo_mobile'],
   ] as const;
 
   test.each(testData)('%p returns %p', (prop, expected) => {

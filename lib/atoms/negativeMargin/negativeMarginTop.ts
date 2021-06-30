@@ -1,17 +1,17 @@
 import clsx from 'clsx';
 import { RequiredResponsiveValue } from '../sprinkles.css';
+import { Space } from '../atoms';
 import { resolveResponsiveProp } from '../../utils/resolveResponsiveProp';
 import * as styles from './negativeMarginTop.css';
 
-type NegativeMarginTop = Extract<
-  Extract<keyof typeof styles.mobile, keyof typeof styles.tablet>,
-  Extract<keyof typeof styles.mobile, keyof typeof styles.desktop>
->;
-
-export const negativeMarginTop = (
-  space: RequiredResponsiveValue<NegativeMarginTop>,
-) =>
+export const negativeMarginTop = (space: RequiredResponsiveValue<Space>) =>
   clsx(
     styles.base,
-    resolveResponsiveProp(space, styles.mobile, styles.tablet, styles.desktop),
+    resolveResponsiveProp(
+      space,
+      styles.mobile,
+      styles.tablet,
+      styles.desktop,
+      styles.wide,
+    ),
   );

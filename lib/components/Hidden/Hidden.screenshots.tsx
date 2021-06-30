@@ -5,7 +5,7 @@ import { Text } from '../Text/Text';
 import { Box } from '../Box/Box';
 
 export const screenshots: ComponentScreenshot = {
-  screenshotWidths: [320, 768, 1200],
+  screenshotWidths: [320, 768, 940, 1200],
   screenshotOnlyInWireframe: true,
   examples: [
     {
@@ -35,6 +35,19 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
+      label: 'Hidden below wide',
+      Example: () => (
+        <>
+          <Text>The following line is hidden below wide:</Text>
+          <Hidden below="wide">
+            <Box paddingTop="small">
+              <Text>Hidden below wide.</Text>
+            </Box>
+          </Hidden>
+        </>
+      ),
+    },
+    {
       label: 'Hidden above mobile',
       Example: () => (
         <>
@@ -55,6 +68,19 @@ export const screenshots: ComponentScreenshot = {
           <Hidden above="tablet">
             <Box paddingTop="small">
               <Text>Hidden above tablet.</Text>
+            </Box>
+          </Hidden>
+        </>
+      ),
+    },
+    {
+      label: 'Hidden above desktop',
+      Example: () => (
+        <>
+          <Text>The following line is hidden above desktop:</Text>
+          <Hidden above="desktop">
+            <Box paddingTop="small">
+              <Text>Hidden above desktop.</Text>
             </Box>
           </Hidden>
         </>

@@ -9,7 +9,7 @@ const Container = ({ children }: { children: ReactNode }) => (
 );
 
 export const screenshots: ComponentScreenshot = {
-  screenshotWidths: [320, 768, 1200],
+  screenshotWidths: [320, 768, 940, 1200],
   screenshotOnlyInWireframe: true,
   examples: [
     ...spaces.map((space) => ({
@@ -118,21 +118,27 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label:
-        'Test - Hidden stack items with responsive alignment (should be center aligned showing 3 + 4 on mobile, right aligned showing 2 + 3 + 4 on tablet, left aligned showing 1 + 2 + 3 on desktop)',
+        'Test - Hidden stack items with responsive alignment (should be center aligned showing 4 + 5 + 6 on mobile, right aligned showing 3 + 4 + 5 + 6 on tablet, left aligned showing 2 + 3 + 4 + 6 on desktop, left aligned showing 1 + 2 + 3 + 4 on wide)',
       Container,
       Example: () => (
         <Stack space="gutter" align={['center', 'right', 'left']}>
-          <Hidden below="desktop">
+          <Hidden below="wide">
             <Placeholder width={40} height={40} label="1" />
           </Hidden>
-          <Hidden below="tablet">
+          <Hidden below="desktop">
             <Placeholder width={40} height={40} label="2" />
           </Hidden>
-          <Hidden print>
+          <Hidden below="tablet">
             <Placeholder width={40} height={40} label="3" />
           </Hidden>
-          <Hidden above="tablet">
+          <Hidden print>
             <Placeholder width={40} height={40} label="4" />
+          </Hidden>
+          <Hidden above="tablet">
+            <Placeholder width={40} height={40} label="5" />
+          </Hidden>
+          <Hidden above="desktop">
+            <Placeholder width={40} height={40} label="6" />
           </Hidden>
           <Hidden screen>
             <Placeholder
@@ -146,19 +152,25 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label:
-        'Test - Hidden stack items with dividers (should show 3 + 4 on mobile, 2 + 3 + 4 on tablet, and 1 + 2 + 3 on desktop)',
+        'Test - Hidden stack items with dividers (should show 4 + 5 + 6 on mobile, 3 + 4 + 5 + 6 on tablet, 2 + 3 + 4 + 6 on desktop, 1 + 2 + 3 + 4 on wide)',
       Container,
       Example: () => (
         <Stack space="gutter" dividers>
-          <Hidden below="desktop">
+          <Hidden below="wide">
             <Placeholder height={40} label="1" />
           </Hidden>
-          <Hidden below="tablet">
+          <Hidden below="desktop">
             <Placeholder height={40} label="2" />
           </Hidden>
-          <Placeholder height={40} label="3" />
+          <Hidden below="tablet">
+            <Placeholder height={40} label="3" />
+          </Hidden>
+          <Placeholder height={40} label="4" />
           <Hidden above="tablet">
-            <Placeholder height={40} label="4" />
+            <Placeholder height={40} label="5" />
+          </Hidden>
+          <Hidden above="desktop">
+            <Placeholder height={40} label="6" />
           </Hidden>
           <Hidden screen>
             <Placeholder height={40} label="This should not be visible" />

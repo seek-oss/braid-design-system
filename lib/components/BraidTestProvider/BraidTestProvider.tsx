@@ -1,14 +1,12 @@
 import React from 'react';
 import * as themes from '../../themes';
+import { Breakpoint } from '../../atoms/breakpoints';
 import {
   BraidProvider,
   BraidProviderProps,
 } from '../BraidProvider/BraidProvider';
 import { BraidTestProviderContext } from './BraidTestProviderContext';
-import {
-  breakpointContext,
-  Breakpoint,
-} from '../useBreakpoint/BreakpointProvider';
+import { breakpointContext } from '../useBreakpoint/BreakpointProvider';
 
 interface BraidTestProviderProps
   extends Omit<BraidProviderProps, 'theme' | 'styleBody'> {

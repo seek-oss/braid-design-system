@@ -340,7 +340,7 @@ const docs: ComponentDocs = {
           responsive values, e.g.{' '}
           <Strong>
             {
-              "padding={{ mobile: 'small', tablet: 'medium', desktop: 'large' }}"
+              "padding={{ mobile: 'small', tablet: 'medium', desktop: 'large', wide: 'xlarge' }}"
             }
           </Strong>
         </Text>
@@ -351,7 +351,12 @@ const docs: ComponentDocs = {
             <Box
               background="formAccentHover"
               borderRadius="standard"
-              padding={{ mobile: 'small', tablet: 'medium', desktop: 'large' }}
+              padding={{
+                mobile: 'small',
+                tablet: 'medium',
+                desktop: 'large',
+                wide: 'xlarge',
+              }}
             >
               <Box
                 background="formAccent"

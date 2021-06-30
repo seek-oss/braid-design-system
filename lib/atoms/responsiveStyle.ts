@@ -1,11 +1,11 @@
-import { isEqual, omit } from 'lodash';
+import omit from 'lodash/omit';
 import { StyleRule } from '@vanilla-extract/css';
 import { breakpoints } from './breakpoints';
 
 type CSSProps = Omit<StyleRule, '@media' | '@supports'>;
 
 const makeMediaQuery = (breakpoint: keyof typeof breakpoints) => (
-  styles: CSSProps,
+  styles?: CSSProps,
 ) =>
   !styles || Object.keys(styles).length === 0
     ? {}
@@ -16,38 +16,30 @@ const makeMediaQuery = (breakpoint: keyof typeof breakpoints) => (
 const mediaQuery = {
   tablet: makeMediaQuery('tablet'),
   desktop: makeMediaQuery('desktop'),
+  wide: makeMediaQuery('wide'),
 };
 
 interface ResponsiveStyle {
   mobile?: CSSProps;
   tablet?: CSSProps;
   desktop?: CSSProps;
+  wide?: CSSProps;
 }
 
 export const responsiveStyle = ({
   mobile,
   tablet,
   desktop,
-}: ResponsiveStyle): StyleRule => {
-  const mobileStyles = omit(mobile, '@media');
-
-  const tabletStyles = !tablet || isEqual(tablet, mobileStyles) ? null : tablet;
-
-  const stylesBelowDesktop = tabletStyles || mobileStyles;
-  const desktopStyles =
-    !desktop || isEqual(desktop, stylesBelowDesktop) ? null : desktop;
-
-  const hasMediaQueries = tabletStyles || desktopStyles;
-
-  return {
-    ...mobileStyles,
-    ...(hasMediaQueries
-      ? {
-          '@media': {
-            ...(tabletStyles ? mediaQuery.tablet(tabletStyles) : {}),
-            ...(desktopStyles ? mediaQuery.desktop(desktopStyles) : {}),
-          },
-        }
-      : {}),
-  };
-};
+  wide,
+}: ResponsiveStyle): StyleRule => ({
+  ...omit(mobile, '@media'),
+  ...(tablet || desktop || wide
+    ? {
+        '@media': {
+          ...mediaQuery.tablet(tablet ?? {}),
+          ...mediaQuery.desktop(desktop ?? {}),
+          ...mediaQuery.wide(wide ?? {}),
+        },
+      }
+    : {}),
+});

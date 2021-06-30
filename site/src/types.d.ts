@@ -64,7 +64,7 @@ export interface ComponentExample {
 }
 
 export interface ComponentScreenshot {
-  screenshotWidths: Array<320 | 768 | 1200>;
+  screenshotWidths: Array<320 | 768 | 940 | 1200>;
   screenshotOnlyInWireframe?: boolean;
   examples: {
     label?: string;

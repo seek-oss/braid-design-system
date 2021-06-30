@@ -417,8 +417,8 @@ const page: Page = {
                 `Columns` allows us to define the device size beyond which the
                 columns should collapse into a single vertical column. This can
                 be done using the `collapseBelow` on `Columns` and choosing
-                whether we want to it collapse down below &ldquo;desktop&rdquo;
-                or &ldquo;tablet&rdquo;.
+                whether we want to it collapse down below &ldquo;wide&rdquo;,
+                &ldquo;desktop&rdquo; or &ldquo;tablet&rdquo;.
               </Text>
               <Text component="p">
                 In this case, we&rsquo;ll choose &ldquo;tablet&rdquo;.

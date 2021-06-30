@@ -37,9 +37,11 @@ const Header = ({
         <Hidden print>
           <Box
             paddingRight="medium"
-            display="flex"
+            display={{
+              mobile: 'flex',
+              wide: 'none',
+            }}
             alignItems="center"
-            className={styles.menuButton}
           >
             <MenuButton open={menuOpen} onClick={menuClick} />
           </Box>
@@ -107,7 +109,10 @@ export const Navigation = ({ children }: NavigationProps) => {
           paddingX={gutterSize}
           paddingBottom="xxlarge"
           width="full"
-          display={isMenuOpen ? 'block' : 'none'}
+          display={{
+            mobile: isMenuOpen ? 'block' : 'none',
+            wide: 'block',
+          }}
           zIndex="sticky"
           background="body"
           className={[
@@ -123,8 +128,14 @@ export const Navigation = ({ children }: NavigationProps) => {
         background="body"
         position="relative"
         overflow="hidden" // Fix stack space intercepting nav bar clicks
-        paddingX={gutterSize}
-        paddingY={['small', 'xxsmall']}
+        paddingX={{
+          mobile: gutterSize,
+          wide: 'xxlarge',
+        }}
+        paddingY={{
+          mobile: 'small',
+          tablet: 'xxsmall',
+        }}
         paddingBottom="xxlarge"
         marginBottom="xxlarge"
         transition="fast"

@@ -68,7 +68,9 @@ const docs: ComponentDocs = {
           Control the amount of space between each tile using the{' '}
           <Strong>space</Strong> prop, also supporting responsive values, e.g.{' '}
           <Strong>
-            {"space={{ mobile: 'small', tablet: 'medium', desktop: 'large' }}"}
+            {
+              "space={{ mobile: 'small', tablet: 'medium', desktop: 'large', wide: 'xlarge' }}"
+            }
           </Strong>
         </Text>
       ),

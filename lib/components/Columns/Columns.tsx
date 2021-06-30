@@ -19,18 +19,22 @@ type CollapsibleAlignmentChildProps = ReturnType<
 interface ColumnsContextValue {
   collapseMobile: boolean;
   collapseTablet: boolean;
+  collapseDesktop: boolean;
   mobileSpace: Space;
   tabletSpace: Space;
   desktopSpace: Space;
+  wideSpace: Space;
   collapsibleAlignmentChildProps: CollapsibleAlignmentChildProps | null;
 }
 
 export const ColumnsContext = createContext<ColumnsContextValue>({
   collapseMobile: false,
   collapseTablet: false,
+  collapseDesktop: false,
   mobileSpace: 'none',
   tabletSpace: 'none',
   desktopSpace: 'none',
+  wideSpace: 'none',
   collapsibleAlignmentChildProps: null,
 });
 
@@ -57,6 +61,7 @@ export const Columns = ({
     mobile: mobileSpace = 'none',
     tablet: tabletSpace = mobileSpace,
     desktop: desktopSpace = tabletSpace,
+    wide: wideSpace = desktopSpace,
   } = normalizedSpace;
 
   const {
@@ -64,6 +69,7 @@ export const Columns = ({
     collapsibleAlignmentChildProps,
     collapseMobile,
     collapseTablet,
+    collapseDesktop,
     orderChildren,
   } = resolveCollapsibleAlignmentProps({
     collapseBelow,
@@ -78,7 +84,8 @@ export const Columns = ({
       className={negativeMarginLeft({
         mobile: collapseMobile ? 'none' : mobileSpace,
         tablet: collapseTablet ? 'none' : tabletSpace,
-        desktop: desktopSpace,
+        desktop: collapseDesktop ? 'none' : desktopSpace,
+        wide: wideSpace,
       })}
       {...(data ? buildDataAttributes(data) : undefined)}
     >
@@ -86,9 +93,11 @@ export const Columns = ({
         value={{
           collapseMobile,
           collapseTablet,
+          collapseDesktop,
           mobileSpace,
           tabletSpace,
           desktopSpace,
+          wideSpace,
           collapsibleAlignmentChildProps,
         }}
       >

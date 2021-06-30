@@ -38,6 +38,9 @@ const responsiveAtomicStyles = createAtomicStyles({
     desktop: {
       '@media': `screen and (min-width: ${breakpoints.desktop}px)`,
     },
+    wide: {
+      '@media': `screen and (min-width: ${breakpoints.wide}px)`,
+    },
   },
   responsiveArray: breakpointNames,
   properties: responsiveProperties,

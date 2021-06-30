@@ -4,7 +4,7 @@ import { Card } from '../';
 import { Placeholder } from '../../playroom/components';
 
 export const screenshots: ComponentScreenshot = {
-  screenshotWidths: [320, 768, 1200],
+  screenshotWidths: [320, 768, 940, 1200],
   examples: [
     {
       label: 'Default',
@@ -58,6 +58,14 @@ export const screenshots: ComponentScreenshot = {
       label: 'RoundedAbove - tablet',
       Example: () => (
         <Card roundedAbove="tablet">
+          <Placeholder height={100} />
+        </Card>
+      ),
+    },
+    {
+      label: 'RoundedAbove - desktop',
+      Example: () => (
+        <Card roundedAbove="desktop">
           <Placeholder height={100} />
         </Card>
       ),
