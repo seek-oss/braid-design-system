@@ -16,7 +16,7 @@ import { Column } from '../../Column/Column';
 import { Overlay } from '../Overlay/Overlay';
 import { ReactNodeNoStrings } from '../ReactNodeNoStrings';
 import { IconClear } from '../../icons';
-import { negativeMarginTop } from '../../../atoms/negativeMargin/negativeMargin';
+import { negativeMarginTop } from '../../../css/negativeMargin/negativeMargin';
 import { virtualTouchable } from '../touchable/virtualTouchable';
 import buildDataAttributes, { DataAttributeMap } from '../buildDataAttributes';
 import * as styles from './Modal.css';

@@ -7,8 +7,8 @@ import {
   PseudoProperties,
   unresponsiveProperties,
   UnresponsiveProperties,
-} from '../lib/atoms/atomicProperties';
-import { Atoms, atoms } from '../lib/atoms/atoms';
+} from '../lib/css/atoms/atomicProperties';
+import { Atoms, atoms } from '../lib/css/atoms/atoms';
 import {
   Box,
   Stack,

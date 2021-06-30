@@ -2,7 +2,7 @@ import { Children, ReactNode } from 'react';
 import {
   OptionalResponsiveValue,
   normalizeResponsiveValue,
-} from '../atoms/sprinkles.css';
+} from '../css/atoms/sprinkles.css';
 import {
   ResponsiveRangeProps,
   resolveResponsiveRangeProps,

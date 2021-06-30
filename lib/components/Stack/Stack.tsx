@@ -2,20 +2,20 @@ import React, { Children, ReactNode } from 'react';
 import flattenChildren from 'react-keyed-flatten-children';
 import assert from 'assert';
 import { Box } from '../Box/Box';
-import type { ResponsiveSpace } from '../../atoms/atoms';
+import type { ResponsiveSpace } from '../../css/atoms/atoms';
 import { Divider, DividerProps } from '../Divider/Divider';
 import { Hidden, HiddenProps } from '../Hidden/Hidden';
 import * as hiddenStyles from '../Hidden/Hidden.css';
 import { alignToFlexAlign, Align } from '../../utils/align';
 import { resolveResponsiveRangeProps } from '../../utils/resolveResponsiveRangeProps';
 import { optimizeResponsiveArray } from '../../utils/optimizeResponsiveArray';
-import { negativeMarginTop } from '../../atoms/negativeMargin/negativeMargin';
+import { negativeMarginTop } from '../../css/negativeMargin/negativeMargin';
 import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import {
   OptionalResponsiveValue,
   mapResponsiveValue,
   normalizeResponsiveValue,
-} from '../../atoms/sprinkles.css';
+} from '../../css/atoms/sprinkles.css';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';

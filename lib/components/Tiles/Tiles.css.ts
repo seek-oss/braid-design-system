@@ -1,6 +1,6 @@
 import { styleVariants } from '@vanilla-extract/css';
-import { Breakpoint } from '../../atoms/breakpoints';
-import { responsiveStyle } from '../../atoms/responsiveStyle';
+import { Breakpoint } from '../../css/breakpoints';
+import { responsiveStyle } from '../../css/responsiveStyle';
 
 const columnsWidths = {
   1: '100%',

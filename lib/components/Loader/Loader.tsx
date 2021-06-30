@@ -4,7 +4,7 @@ import { useBackgroundLightness } from '../Box/BackgroundContext';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
-import { atoms } from '../../atoms/atoms';
+import { atoms } from '../../css/atoms/atoms';
 import * as styles from './Loader.css';
 
 interface LoaderProps {

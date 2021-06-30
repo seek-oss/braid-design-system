@@ -3,11 +3,11 @@ import React, { Children } from 'react';
 import flattenChildren from 'react-keyed-flatten-children';
 
 import { Box } from '../Box/Box';
-import { ResponsiveSpace } from '../../atoms/atoms';
+import { ResponsiveSpace } from '../../css/atoms/atoms';
 import {
   negativeMarginLeft,
   negativeMarginTop,
-} from '../../atoms/negativeMargin/negativeMargin';
+} from '../../css/negativeMargin/negativeMargin';
 import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import {
   resolveCollapsibleAlignmentProps,

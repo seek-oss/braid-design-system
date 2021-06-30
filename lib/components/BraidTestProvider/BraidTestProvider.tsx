@@ -1,6 +1,6 @@
 import React from 'react';
 import * as themes from '../../themes';
-import { Breakpoint } from '../../atoms/breakpoints';
+import { Breakpoint } from '../../css/breakpoints';
 import {
   BraidProvider,
   BraidProviderProps,

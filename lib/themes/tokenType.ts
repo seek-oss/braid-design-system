@@ -1,5 +1,5 @@
 import { FontMetrics } from 'capsize';
-import { Breakpoint } from '../atoms/breakpoints';
+import { Breakpoint } from '../css/breakpoints';
 
 export type TextBreakpoint = Exclude<Breakpoint, 'desktop' | 'wide'>;
 

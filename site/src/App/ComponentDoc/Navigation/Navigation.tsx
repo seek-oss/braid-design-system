@@ -12,7 +12,7 @@ import flattenChildren from 'react-keyed-flatten-children';
 import {
   negativeMarginTop,
   negativeMarginLeft,
-} from '../../../../../lib/atoms/negativeMargin/negativeMargin';
+} from '../../../../../lib/css/negativeMargin/negativeMargin';
 import { BadgeProps } from '../../../../../lib/components/Badge/Badge';
 import { Box, Divider, Link, Text } from '../../../../../lib/components';
 import * as styles from './Navigation.css';
