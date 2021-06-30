@@ -1,4 +1,4 @@
-import '../../../lib/reset';
+import '../../../lib/css/reset';
 import React, { StrictMode } from 'react';
 import { Route, Switch, Redirect } from 'react-router';
 import { Link as ReactRouterLink } from 'react-router-dom';

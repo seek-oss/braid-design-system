@@ -10,7 +10,7 @@ import { BoxProps } from '../../components/Box/Box';
 import { useDefaultTextProps } from '../../components/private/defaultTextProps';
 import TextLinkRendererContext from '../../components/TextLinkRenderer/TextLinkRendererContext';
 import { vars } from '../../themes/vars.css';
-import { responsiveStyle } from '../../atoms/responsiveStyle';
+import { responsiveStyle } from '../../css/responsiveStyle';
 import * as styles from './typography.css';
 
 type TextTone = keyof typeof styles.tone | 'neutral';

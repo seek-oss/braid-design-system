@@ -1,7 +1,7 @@
 import isEqual from 'lodash/isEqual';
 import { Style } from 'sku/treat';
 import omit from 'lodash/omit';
-import { Breakpoint } from '../atoms/breakpoints';
+import { Breakpoint } from '../css/breakpoints';
 
 type RequiredTokens = { breakpoint: Record<Breakpoint, number> };
 type StyleWithoutMediaQueries = Exclude<Style['@media'], undefined>[string];

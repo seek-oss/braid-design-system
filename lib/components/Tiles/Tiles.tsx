@@ -2,18 +2,18 @@ import React, { Children } from 'react';
 import flattenChildren from 'react-keyed-flatten-children';
 import { Box } from '../Box/Box';
 import { Divider, DividerProps } from '../Divider/Divider';
-import { Space } from '../../atoms/atoms';
+import { Space } from '../../css/atoms/atoms';
 import {
   negativeMarginTop,
   negativeMarginLeft,
-} from '../../atoms/negativeMargin/negativeMargin';
+} from '../../css/negativeMargin/negativeMargin';
 import { resolveResponsiveProp } from '../../utils/resolveResponsiveProp';
 import * as styles from './Tiles.css';
 import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import {
   mapResponsiveValue,
   RequiredResponsiveValue,
-} from '../../atoms/sprinkles.css';
+} from '../../css/atoms/sprinkles.css';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';

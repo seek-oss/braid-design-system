@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { atoms } from '../../../../lib/atoms/atoms';
+import { atoms } from '../../../../lib/css/atoms/atoms';
 
 export function useScrollLock(lock: boolean) {
   const overflowHidden = atoms({

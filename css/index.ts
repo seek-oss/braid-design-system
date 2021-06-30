@@ -1,9 +1,9 @@
 import { vars as internalVars } from '../lib/themes/vars.css';
-import { atoms as internalAtoms, Atoms } from '../lib/atoms/atoms';
-import { responsiveStyle } from '../lib/atoms/responsiveStyle';
-import { breakpoints } from '../lib/atoms/breakpoints';
+import { atoms as internalAtoms, Atoms } from '../lib/css/atoms/atoms';
+import { responsiveStyle } from '../lib/css/responsiveStyle';
+import { breakpoints } from '../lib/css/breakpoints';
 import { globalHeadingStyle, globalTextStyle } from '../lib/hooks/typography';
-import type { Breakpoint } from '../lib/atoms/breakpoints';
+import type { Breakpoint } from '../lib/css/breakpoints';
 
 const {
   grid,

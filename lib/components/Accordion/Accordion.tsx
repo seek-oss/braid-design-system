@@ -4,7 +4,7 @@ import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import {
   normalizeResponsiveValue,
   RequiredResponsiveValue,
-} from '../../atoms/sprinkles.css';
+} from '../../css/atoms/sprinkles.css';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';

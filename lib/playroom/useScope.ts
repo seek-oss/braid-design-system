@@ -1,4 +1,4 @@
-import '../reset';
+import '../../reset';
 import { useToast } from '../components';
 import { vars, atoms, breakpoints } from '../../css';
 import { usePlayroomStore } from './playroomState';

@@ -1,4 +1,4 @@
-import { Breakpoint, breakpointNames } from '../atoms/breakpoints';
+import { Breakpoint, breakpointNames } from '../css/breakpoints';
 
 export interface ResponsiveRangeProps {
   above?: Exclude<Breakpoint, 'desktop'>;

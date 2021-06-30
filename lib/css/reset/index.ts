@@ -4,4 +4,5 @@ if (process.env.NODE_ENV === 'development') {
   markResetImported();
 }
 
-export * from './reset.css';
+// Ensure reset and atoms are the lowest specificity
+import '../atoms/atoms';
