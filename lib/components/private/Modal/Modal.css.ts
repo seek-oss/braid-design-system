@@ -4,7 +4,7 @@ import { externalGutter } from './ModalExternalGutter';
 import { TextBreakpoint } from '../../../themes/tokenType';
 import { responsiveStyle } from '../../../css/responsiveStyle';
 import { vars } from '../../../themes/vars.css';
-import { atoms } from '../../../atoms/atoms';
+import { atoms } from '../../../css/atoms/atoms';
 
 export const fixedStackingContext = atoms({
   position: 'fixed',
