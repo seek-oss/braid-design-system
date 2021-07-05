@@ -15,7 +15,6 @@ export const resetStackingContext = atoms({ position: 'relative', zIndex: 0 });
 
 export const backdrop = style({
   background: 'rgba(0, 0, 0, .4)',
-  backdropFilter: 'blur(4px)',
 });
 
 const reducedMotion = style({
