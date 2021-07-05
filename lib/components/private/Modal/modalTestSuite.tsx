@@ -67,7 +67,7 @@ export const modalTestSuite = (
     };
   }
 
-  const EXIT_TIMEOUT = 1500;
+  const EXIT_TIMEOUT = 5000;
 
   describe(`Modal: ${name}`, () => {
     it('should not focus content when closed', () => {
