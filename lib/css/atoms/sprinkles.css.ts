@@ -7,7 +7,7 @@ import {
   createNormalizeValueFn,
 } from '@vanilla-extract/sprinkles';
 
-import { breakpoints, breakpointNames } from '../breakpoints';
+import { breakpoints, breakpointNames, Breakpoint } from '../breakpoints';
 import {
   responsiveProperties,
   unresponsiveProperties,
@@ -66,6 +66,11 @@ export type OptionalResponsiveValue<
 export type RequiredResponsiveValue<
   Value extends string | number
 > = RequiredConditionalValue<typeof responsiveAtomicStyles, Value>;
+
+export type RequiredResponsiveObject<Value> = Partial<
+  Record<Breakpoint, Value>
+> &
+  Record<typeof breakpointNames[0], Value>;
 
 export const normalizeResponsiveValue = createNormalizeValueFn(
   responsiveAtomicStyles,

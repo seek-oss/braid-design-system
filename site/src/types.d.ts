@@ -28,6 +28,7 @@ export interface Page extends RouteProps {
 export interface ComponentDocs {
   category: 'Logic' | 'Layout' | 'Content' | 'Icon';
   deprecationWarning?: ReactNodeNoStrings;
+  banner?: ReactNodeNoStrings;
   migrationGuide?: boolean;
   description?: ReactNodeNoStrings;
   subComponents?: string[];

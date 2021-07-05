@@ -6,7 +6,7 @@ import {
   BraidProviderProps,
 } from '../BraidProvider/BraidProvider';
 import { BraidTestProviderContext } from './BraidTestProviderContext';
-import { breakpointContext } from '../useBreakpoint/BreakpointProvider';
+import { breakpointContext } from '../BraidProvider/BreakpointContext';
 
 interface BraidTestProviderProps
   extends Omit<BraidProviderProps, 'theme' | 'styleBody'> {
