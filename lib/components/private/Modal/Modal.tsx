@@ -207,79 +207,81 @@ export const Modal = ({
 
   return (
     <ModalPortal open={shouldRenderModal}>
-      <FocusLock
-        className={styles.resetStackingContext}
-        disabled={!trapActive}
-        autoFocus={false}
-        onActivation={() => {
-          if (headingRef.current && shouldFocus) {
-            headingRef.current.focus();
-          }
+      {shouldRenderModal ? (
+        <FocusLock
+          className={styles.resetStackingContext}
+          disabled={!trapActive}
+          autoFocus={false}
+          onActivation={() => {
+            if (headingRef.current && shouldFocus) {
+              headingRef.current.focus();
+            }
 
-          dispatch(ANIMATION_COMPLETE);
-        }}
-        returnFocus
-      >
-        <Box
-          onClick={state === OPEN ? initiateClose : undefined}
-          position="fixed"
-          top={0}
-          bottom={0}
-          left={0}
-          right={0}
-          zIndex="modalBackdrop"
-          transition={position === 'center' ? 'fast' : undefined}
-          opacity={state !== OPEN ? 0 : undefined}
-          pointerEvents={state === CLOSING ? 'none' : undefined}
-          className={[
-            styles.backdrop,
-            position in styles.transition &&
-              styles.transition[position as keyof typeof styles.transition],
-          ]}
-        />
-
-        <Box
-          position="fixed"
-          top={0}
-          bottom={0}
-          left={0}
-          right={0}
-          zIndex="modal"
-          pointerEvents="none"
-          transition="fast"
-          opacity={state !== OPEN ? 0 : undefined}
-          {...(position === 'right'
-            ? { paddingLeft: ['none', 'xlarge'] }
-            : { padding: externalGutter })}
-          className={[
-            styles.modalContainer,
-            position in styles.transition &&
-              styles.transition[position as keyof typeof styles.transition],
-            state === OPENING && styles.entrance[position],
-            state === CLOSING &&
-              position in styles.exit &&
-              styles.exit[position as keyof typeof styles.exit],
-          ]}
+            dispatch(ANIMATION_COMPLETE);
+          }}
+          returnFocus
         >
-          <ModalContent
-            id={id}
-            description={description}
-            onClose={initiateClose}
-            width={width}
-            closeLabel={closeLabel}
-            illustration={illustration}
-            title={title}
-            headingLevel={headingLevel}
-            headingRef={headingRef}
-            modalRef={modalRef}
-            position={position}
-            scrollLock={!(state === CLOSING)}
-            data={data}
+          <Box
+            onClick={state === OPEN ? initiateClose : undefined}
+            position="fixed"
+            top={0}
+            bottom={0}
+            left={0}
+            right={0}
+            zIndex="modalBackdrop"
+            transition={position === 'center' ? 'fast' : undefined}
+            opacity={state !== OPEN ? 0 : undefined}
+            pointerEvents={state === CLOSING ? 'none' : undefined}
+            className={[
+              styles.backdrop,
+              position in styles.transition &&
+                styles.transition[position as keyof typeof styles.transition],
+            ]}
+          />
+
+          <Box
+            position="fixed"
+            top={0}
+            bottom={0}
+            left={0}
+            right={0}
+            zIndex="modal"
+            pointerEvents="none"
+            transition="fast"
+            opacity={state !== OPEN ? 0 : undefined}
+            {...(position === 'right'
+              ? { paddingLeft: ['none', 'xlarge'] }
+              : { padding: externalGutter })}
+            className={[
+              styles.modalContainer,
+              position in styles.transition &&
+                styles.transition[position as keyof typeof styles.transition],
+              state === OPENING && styles.entrance[position],
+              state === CLOSING &&
+                position in styles.exit &&
+                styles.exit[position as keyof typeof styles.exit],
+            ]}
           >
-            {children}
-          </ModalContent>
-        </Box>
-      </FocusLock>
+            <ModalContent
+              id={id}
+              description={description}
+              onClose={initiateClose}
+              width={width}
+              closeLabel={closeLabel}
+              illustration={illustration}
+              title={title}
+              headingLevel={headingLevel}
+              headingRef={headingRef}
+              modalRef={modalRef}
+              position={position}
+              scrollLock={!(state === CLOSING)}
+              data={data}
+            >
+              {children}
+            </ModalContent>
+          </Box>
+        </FocusLock>
+      ) : null}
     </ModalPortal>
   );
 };
