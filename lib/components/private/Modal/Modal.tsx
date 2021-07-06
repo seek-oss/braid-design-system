@@ -209,6 +209,10 @@ export const Modal = ({
         disabled={!trapActive}
         autoFocus={false}
         onActivation={() => {
+          if (state === OPEN) {
+            return;
+          }
+
           if (headingRef.current && shouldFocus) {
             headingRef.current.focus();
           }
