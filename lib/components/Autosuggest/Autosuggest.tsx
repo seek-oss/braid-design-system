@@ -26,7 +26,7 @@ import { normalizeKey } from '../private/normalizeKey';
 import { ClearField } from '../private/Field/ClearField';
 import { smoothScroll } from '../private/smoothScroll';
 import { useScrollIntoView } from './useScrollIntoView';
-import { useBreakpoint } from '../useBreakpoint/useBreakpoint';
+import { useResponsiveValue } from '../useResponsiveValue/useResponsiveValue';
 import { RemoveScroll } from 'react-remove-scroll';
 import { createAccessbilityProps, getItemId } from './createAccessbilityProps';
 import { autosuggest, AutosuggestTranslations } from '../../translations/en';
@@ -481,7 +481,10 @@ export const Autosuggest = forwardRef(function <Value>(
     });
   }, [hasSuggestions]);
 
-  const breakpoint = useBreakpoint();
+  const isMobile = useResponsiveValue()({
+    mobile: true,
+    tablet: false,
+  });
 
   const inputProps = {
     value: previewValue ? previewValue.text : value.text,
@@ -494,7 +497,7 @@ export const Autosuggest = forwardRef(function <Value>(
       fireChange({ text: inputValue });
     },
     onFocus: () => {
-      if (rootRef.current && scrollToTopOnMobile && breakpoint === 'mobile') {
+      if (rootRef.current && scrollToTopOnMobile && isMobile) {
         smoothScroll(rootRef.current);
       }
 

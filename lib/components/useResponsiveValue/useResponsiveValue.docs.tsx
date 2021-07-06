@@ -2,6 +2,7 @@ import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import { useResponsiveValue, Stack, Alert, Strong, Text } from '../../../';
 import source from '../../utils/source.macro';
+import { Notice } from '../Notice/Notice';
 
 const docs: ComponentDocs = {
   category: 'Logic',
@@ -14,17 +15,38 @@ const docs: ComponentDocs = {
       </Text>
     </Alert>
   ),
+  description: (
+    <>
+      <Text>
+        This Hook will resolve values in a mobile-first manner based on the
+        breakpoint the browser viewport currently falls within (
+        <Strong>mobile</Strong>, <Strong>tablet</Strong>,{' '}
+        <Strong>desktop</Strong> or <Strong>wide</Strong>
+        ).
+      </Text>
+      <Text>
+        As this can only be calculated in the browser, the value will also be{' '}
+        <Strong>null</Strong> when rendering server-side or statically
+        rendering. Window resizing is supported.
+      </Text>
+      <Text>
+        Note that this Hook returns a function so that it can be called anywhere
+        within your component.
+      </Text>
+      <Notice tone="info">
+        <Text>
+          The <Strong>responsiveValue</Strong> function is automatically
+          provided for you in the Braid Playroom.
+        </Text>
+      </Notice>
+    </>
+  ),
   Example: () =>
     /* eslint-disable react-hooks/rules-of-hooks */
     source(
       <>
-        {(() => {
+        {(function MyComponent() {
           const responsiveValue = useResponsiveValue();
-
-          const isDesktop = responsiveValue({
-            mobile: false,
-            desktop: true,
-          });
 
           return (
             <Stack space="medium">
@@ -37,56 +59,45 @@ const docs: ComponentDocs = {
                   }) || 'Loading...'}
                 </Strong>
               </Text>
-              <Text>
-                Current breakpoint:{' '}
-                <Strong>
-                  {responsiveValue({
-                    mobile: 'Mobile',
-                    tablet: 'Tablet',
-                    desktop: 'Desktop',
-                    wide: 'Wide',
-                  }) || 'Loading...'}
-                </Strong>
-              </Text>
-              <Text>
-                Breakpoint is desktop or above:{' '}
-                <Strong>
-                  {isDesktop !== null ? String(isDesktop) : 'Loading...'}
-                </Strong>
-              </Text>
             </Stack>
           );
         })()}
       </>,
     ),
   /* eslint-enable react-hooks/rules-of-hooks */
-  alternatives: [{ name: 'Box', description: 'For custom layouts.' }],
+  alternatives: [
+    { name: 'Box', description: 'For custom layouts.' },
+    { name: 'Hidden', description: 'For responsively hiding content.' },
+    { name: 'responsiveStyle', description: 'For custom styles.' },
+  ],
   additional: [
     {
-      label: 'Development considerations',
+      label: 'Boolean logic',
       playroom: false,
       showCodeByDefault: true,
       description: (
         <Text>
-          This Hook will return the resolved value based on the breakpoint the
-          browser viewport currently falls within (<Strong>mobile</Strong>,{' '}
-          <Strong>tablet</Strong>, <Strong>desktop</Strong> or{' '}
-          <Strong>wide</Strong>). As this can only be calculated in the browser,
-          the value will also be <Strong>null</Strong> when rendering
-          server-side or statically rendering. Window resizing is supported.
+          If you want to detect whether a certain breakpoint is currently
+          active, boolean values can also be provided.
         </Text>
       ),
-      code: source(function MyComponent() {
+      code: source(() => {
+        // --TRIM--
         const responsiveValue = useResponsiveValue();
 
-        return (
-          <Text>
-            Screen size:{' '}
-            {responsiveValue({ mobile: 'Small', desktop: 'Large' }) ||
-              'Loading...'}
-          </Text>
-        );
-      }).code,
+        const isMobile = responsiveValue({
+          mobile: true,
+          tablet: false,
+        });
+
+        const isDesktop = responsiveValue({
+          mobile: false,
+          desktop: true,
+        });
+        // --TRIM--
+
+        return [isMobile, isDesktop];
+      }).code.split('// --TRIM--')[1],
     },
   ],
 };

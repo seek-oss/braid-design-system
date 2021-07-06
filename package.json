@@ -91,6 +91,7 @@
     "@svgr/plugin-prettier": "^5.5.0",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^10.4.9",
+    "@testing-library/react-hooks": "^7.0.1",
     "@testing-library/user-event": "^12.6.2",
     "@types/babel-plugin-macros": "^2.8.4",
     "@types/fs-extra": "^9.0.6",
