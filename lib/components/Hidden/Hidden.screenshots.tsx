@@ -149,6 +149,15 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
+      label: 'Hidden above desktop (inline)',
+      Example: () => (
+        <Text>
+          The following text node is hidden above desktop:{' '}
+          <Hidden above="desktop">Hidden above desktop.</Hidden>
+        </Text>
+      ),
+    },
+    {
       label: 'Hidden on print (inline)',
       Example: () => (
         <Text>
