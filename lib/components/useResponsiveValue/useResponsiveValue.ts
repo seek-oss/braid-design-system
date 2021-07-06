@@ -7,9 +7,9 @@ import { resolveResponsiveObject } from './resolveResponsiveObject';
 export const useResponsiveValue = () => {
   const breakpointName = useContext(breakpointContext);
 
-  return function responsiveValue<
-    ResponsiveValue extends RequiredResponsiveObject<any>
-  >(value: ResponsiveValue): ResponsiveValue[keyof ResponsiveValue] | null {
+  return function responsiveValue<Value>(
+    value: RequiredResponsiveObject<Value>,
+  ): Value | null {
     return breakpointName
       ? resolveResponsiveObject(breakpointName, value)
       : null;
