@@ -284,7 +284,7 @@ export const screenshots: ComponentScreenshot = {
       Example: () => (
         <Columns
           space={{ mobile: 'none', tablet: 'xsmall', wide: 'gutter' }}
-          collapseBelow="desktop"
+          collapseBelow="wide"
         >
           <Column>
             <Placeholder height={60} label="First" />
