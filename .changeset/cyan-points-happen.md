@@ -5,7 +5,6 @@
 ---
 updated:
   - breakpoints
-  - useBreakpoint
   - atoms
   - responsiveStyle
   - Accordion
@@ -47,4 +46,3 @@ This adds support for `wide` to the following touchpoints:
      wide: 1200
    }
    ```
- - The `useBreakpoint` Hook, which now returns `"wide"` on screens from 1200px and above.
