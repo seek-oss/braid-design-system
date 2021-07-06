@@ -131,6 +131,15 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
+      label: 'Hidden below wide (inline)',
+      Example: () => (
+        <Text>
+          The following text node is hidden below wide:{' '}
+          <Hidden below="wide">Hidden below wide.</Hidden>
+        </Text>
+      ),
+    },
+    {
       label: 'Hidden above mobile (inline)',
       Example: () => (
         <Text>
