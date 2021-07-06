@@ -90,13 +90,13 @@ const docs: ComponentDocs = {
           tablet: false,
         });
 
-        const isDesktop = responsiveValue({
+        const isDesktopOrAbove = responsiveValue({
           mobile: false,
           desktop: true,
         });
         // --TRIM--
 
-        return [isMobile, isDesktop];
+        return [isMobile, isDesktopOrAbove];
       }).code.split('// --TRIM--')[1],
     },
   ],

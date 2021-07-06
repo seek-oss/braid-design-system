@@ -34,7 +34,7 @@ const isMobile = responsiveValue({
   tablet: false,
 });
 
-const isDesktop = responsiveValue({
+const isDesktopOrAbove = responsiveValue({
   mobile: false,
   desktop: true,
 });
