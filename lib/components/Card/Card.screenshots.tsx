@@ -4,7 +4,7 @@ import { Card } from '../';
 import { Placeholder } from '../../playroom/components';
 
 export const screenshots: ComponentScreenshot = {
-  screenshotWidths: [320, 768, 940, 1200],
+  screenshotWidths: [320, 768, 992, 1200],
   examples: [
     {
       label: 'Default',

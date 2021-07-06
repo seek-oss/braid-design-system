@@ -9,7 +9,7 @@ const Container = ({ children }: { children: ReactNode }) => (
 );
 
 export const screenshots: ComponentScreenshot = {
-  screenshotWidths: [320, 768, 940, 1200],
+  screenshotWidths: [320, 768, 992, 1200],
   screenshotOnlyInWireframe: true,
   examples: [
     ...spaces.map((space) => ({
