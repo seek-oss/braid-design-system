@@ -7426,7 +7426,6 @@ Object {
     | "desktop"
     | "mobile"
     | "tablet"
-    | "wide"
     | null,
 }
 `;
@@ -7436,6 +7435,14 @@ Object {
   exportType: hook,
   params: Array [],
   returnType: { background: { formAccentActive: string; formAccentHover: string; brandAccentActive: string; brandAccentHover: string; criticalActive: string; criticalHover: string; infoLight: string; promoteLight: string; ... 18 more ...; neutral: string; }; foreground: { ...; }; },
+}
+`;
+
+exports[`useResponsiveValue 1`] = `
+Object {
+  exportType: hook,
+  params: Array [],
+  returnType: <Value>(value: RequiredResponsiveObject<Value>) => Value | null,
 }
 `;
 
