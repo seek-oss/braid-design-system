@@ -224,6 +224,63 @@ const docs: ComponentDocs = {
           </>,
         ),
     },
+    {
+      label: 'Nested dialogs',
+      description: (
+        <Text>
+          Although supported, in order to keep experiences simple nesting
+          Dialogs is not encouraged.
+        </Text>
+      ),
+      Example: ({ id, getState, toggleState }) =>
+        source(
+          <>
+            <Box padding="medium">
+              <Inline
+                space="small"
+                align={{ mobile: 'center', tablet: 'left' }}
+              >
+                <Button onClick={() => toggleState('firstDialog')}>
+                  Open nested dialog
+                </Button>
+              </Inline>
+            </Box>
+            <Dialog
+              id={`${id}_3`}
+              title="Third Dialog"
+              width="xsmall"
+              open={getState('thirdDialog')}
+              onClose={() => toggleState('thirdDialog')}
+            >
+              <Placeholder height={50} />
+            </Dialog>
+            <Dialog
+              id={`${id}_1`}
+              title="First Dialog"
+              width="medium"
+              open={getState('firstDialog')}
+              onClose={() => toggleState('firstDialog')}
+            >
+              <Placeholder height={300} label="Dialog Content" />
+              <Button onClick={() => toggleState('secondDialog')}>
+                Open second dialog
+              </Button>
+            </Dialog>
+            <Dialog
+              id={`${id}_2`}
+              title="Second Dialog"
+              width="small"
+              open={getState('secondDialog')}
+              onClose={() => toggleState('secondDialog')}
+            >
+              <Placeholder height={200} label="Dialog Content" />
+              <Button onClick={() => toggleState('thirdDialog')}>
+                Open third dialog
+              </Button>
+            </Dialog>
+          </>,
+        ),
+    },
   ],
 };
 
