@@ -43,15 +43,6 @@ const ModalPortal = ({ children }: ModalPortalProps) => {
       element.setAttribute('class', styles.fixedStackingContext);
 
       document.body.appendChild(element);
-      setElement(element);
-
-      return () => {
-        const el = document.getElementById(modalContainerId);
-
-        if (el) {
-          document.body.removeChild(el);
-        }
-      };
     }
 
     setElement(element);
