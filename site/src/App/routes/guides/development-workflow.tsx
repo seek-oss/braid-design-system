@@ -107,9 +107,9 @@ const DevelopmentWorkflow = () => (
     </Code>
     <Text>
       The <InlineCode>space</InlineCode> property is a responsive prop, which
-      means that it can also accept an array of values representing each
-      breakpoint. For example, if you wanted <InlineCode>small</InlineCode>{' '}
-      space on mobile and <InlineCode>medium</InlineCode> space on desktop:
+      means that it can also accept different values for each breakpoint. For
+      example, if you wanted <InlineCode>small</InlineCode> space on mobile and{' '}
+      <InlineCode>medium</InlineCode> space on tablet and above:
     </Text>
     <Code>
       {source(
@@ -152,9 +152,9 @@ const DevelopmentWorkflow = () => (
     </Code>
     <Text>
       This <InlineCode>space</InlineCode> property is also responsive,
-      supporting an array of values for each breakpoint. For example, if you
-      wanted <InlineCode>xxsmall</InlineCode> space on mobile and{' '}
-      <InlineCode>gutter</InlineCode> space on desktop:
+      supporting values that differ by breakpoint. For example, if you wanted{' '}
+      <InlineCode>xxsmall</InlineCode> space on mobile and{' '}
+      <InlineCode>gutter</InlineCode> space on tablet and above:
     </Text>
     <Code>
       {source(
@@ -217,9 +217,8 @@ const DevelopmentWorkflow = () => (
       Previously, one of the main reasons for needing to create custom CSS was
       to define responsive rules. The{' '}
       <TextLink href="/components/Box">Box</TextLink> component makes this
-      possible via <Strong>responsive properties,</Strong> which are provided as
-      an array of values—one per defined breakpoint, where the first item is the
-      mobile value, followed by the desktop value.
+      possible via <Strong>responsive properties,</Strong> which allows
+      different values to specified for each defined breakpoint.
     </Text>
     <Text>
       For example, if we wanted to change the value for{' '}
