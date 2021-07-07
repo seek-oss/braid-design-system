@@ -114,6 +114,7 @@ export const ModalContent = ({
       aria-label={title} // Using aria-labelledby would announce the heading after the dialog content.
       aria-describedby={description ? descriptionId : undefined}
       aria-modal="true"
+      id={id}
       onKeyDown={handleEscape}
       position="relative"
       width="full"

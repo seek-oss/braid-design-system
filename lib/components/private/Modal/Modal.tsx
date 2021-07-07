@@ -10,7 +10,6 @@ import React, {
 } from 'react';
 import FocusLock from 'react-focus-lock';
 import { ariaHideOthers } from './ariaHideOthers';
-import assert from 'assert';
 import { Box } from '../../Box/Box';
 import { BraidPortal } from '../../BraidPortal/BraidPortal';
 import { externalGutter } from './ModalExternalGutter';
@@ -26,8 +25,6 @@ export interface ModalProps
   onClose: (openState: false) => void;
 }
 
-const ModalContext = createContext(false);
-
 export const AllowCloseContext = createContext(true);
 
 interface ModalPortalProps {
@@ -35,9 +32,6 @@ interface ModalPortalProps {
 }
 const ModalPortal = ({ children }: ModalPortalProps) => {
   const [modalElement, setElement] = useState<HTMLElement | null>(null);
-  const alreadyInModalContext = useContext(ModalContext);
-
-  assert(!alreadyInModalContext, 'Nested modals are not supported.');
 
   useEffect(() => {
     const modalContainerId = 'braid-modal-container';
@@ -46,7 +40,7 @@ const ModalPortal = ({ children }: ModalPortalProps) => {
     if (!element) {
       element = document.createElement('div');
       element.setAttribute('id', modalContainerId);
-      element.setAttribute('class', '');
+      element.setAttribute('class', styles.fixedStackingContext);
 
       document.body.appendChild(element);
     }
@@ -58,11 +52,7 @@ const ModalPortal = ({ children }: ModalPortalProps) => {
     return null;
   }
 
-  return (
-    <BraidPortal container={modalElement}>
-      <ModalContext.Provider value={true}>{children}</ModalContext.Provider>
-    </BraidPortal>
-  );
+  return <BraidPortal container={modalElement}>{children}</BraidPortal>;
 };
 
 // Actions
@@ -203,82 +193,85 @@ export const Modal = ({
     };
   }, [trapActive]);
 
-  return (
+  return state === OPENING || state === OPEN || state === CLOSING ? (
     <ModalPortal>
-      {state === OPENING || state === OPEN || state === CLOSING ? (
-        <FocusLock
-          disabled={!trapActive}
-          autoFocus={false}
-          onActivation={() => {
-            if (headingRef.current && shouldFocus) {
-              headingRef.current.focus();
-            }
+      <FocusLock
+        className={styles.resetStackingContext}
+        disabled={!trapActive}
+        autoFocus={false}
+        onActivation={() => {
+          if (state === OPEN) {
+            return;
+          }
 
-            dispatch(ANIMATION_COMPLETE);
-          }}
-          returnFocus
+          if (headingRef.current && shouldFocus) {
+            headingRef.current.focus();
+          }
+
+          dispatch(ANIMATION_COMPLETE);
+        }}
+        returnFocus
+      >
+        <Box
+          onClick={state === OPEN ? initiateClose : undefined}
+          position="fixed"
+          top={0}
+          bottom={0}
+          left={0}
+          right={0}
+          zIndex="modalBackdrop"
+          transition={position === 'center' ? 'fast' : undefined}
+          opacity={state !== OPEN ? 0 : undefined}
+          pointerEvents={state === CLOSING ? 'none' : undefined}
+          className={[
+            styles.backdrop,
+            position in styles.transition &&
+              styles.transition[position as keyof typeof styles.transition],
+          ]}
+        />
+
+        <Box
+          position="fixed"
+          top={0}
+          bottom={0}
+          left={0}
+          right={0}
+          zIndex="modal"
+          pointerEvents="none"
+          transition="fast"
+          opacity={state !== OPEN ? 0 : undefined}
+          {...(position === 'right'
+            ? { paddingLeft: ['none', 'xlarge'] }
+            : { padding: externalGutter })}
+          className={[
+            styles.modalContainer,
+            position in styles.transition &&
+              styles.transition[position as keyof typeof styles.transition],
+            state === OPENING && styles.entrance[position],
+            state === CLOSING &&
+              position in styles.exit &&
+              styles.exit[position as keyof typeof styles.exit],
+          ]}
         >
-          <Box
-            onClick={state === OPEN ? initiateClose : undefined}
-            position="fixed"
-            top={0}
-            bottom={0}
-            left={0}
-            right={0}
-            zIndex="modalBackdrop"
-            transition={position === 'center' ? 'fast' : undefined}
-            opacity={state !== OPEN ? 0 : undefined}
-            pointerEvents={state === CLOSING ? 'none' : undefined}
-            className={[
-              styles.backdrop,
-              position in styles.transition &&
-                styles.transition[position as keyof typeof styles.transition],
-            ]}
-          />
-
-          <Box
-            position="fixed"
-            top={0}
-            bottom={0}
-            left={0}
-            right={0}
-            zIndex="modal"
-            pointerEvents="none"
-            transition="fast"
-            opacity={state !== OPEN ? 0 : undefined}
-            {...(position === 'right'
-              ? { paddingLeft: ['none', 'xlarge'] }
-              : { padding: externalGutter })}
-            className={[
-              styles.modalContainer,
-              position in styles.transition &&
-                styles.transition[position as keyof typeof styles.transition],
-              state === OPENING && styles.entrance[position],
-              state === CLOSING &&
-                position in styles.exit &&
-                styles.exit[position as keyof typeof styles.exit],
-            ]}
+          <ModalContent
+            id={id}
+            description={description}
+            onClose={initiateClose}
+            width={width}
+            closeLabel={closeLabel}
+            illustration={illustration}
+            title={title}
+            headingLevel={headingLevel}
+            headingRef={headingRef}
+            modalRef={modalRef}
+            position={position}
+            scrollLock={!(state === CLOSING)}
+            data={data}
           >
-            <ModalContent
-              id={id}
-              description={description}
-              onClose={initiateClose}
-              width={width}
-              closeLabel={closeLabel}
-              illustration={illustration}
-              title={title}
-              headingLevel={headingLevel}
-              headingRef={headingRef}
-              modalRef={modalRef}
-              position={position}
-              scrollLock={!(state === CLOSING)}
-              data={data}
-            >
-              {children}
-            </ModalContent>
-          </Box>
-        </FocusLock>
-      ) : null}
+            {children}
+          </ModalContent>
+        </Box>
+      </FocusLock>
     </ModalPortal>
-  );
+  ) : null;
 };
