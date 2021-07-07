@@ -42,12 +42,17 @@ const docs: ComponentDocs = {
         <Text>
           The number of tiles in each row. Accepts a number from 1 to 5, also
           supporting responsive values, e.g.{' '}
-          <Strong>{'columns={{ mobile: 2, tablet: 3, desktop: 4 }}'}</Strong>
+          <Strong>
+            {'columns={{ mobile: 2, tablet: 3, desktop: 4, wide: 5 }}'}
+          </Strong>
         </Text>
       ),
       Example: () =>
         source(
-          <Tiles space="small" columns={{ mobile: 2, tablet: 3, desktop: 4 }}>
+          <Tiles
+            space="small"
+            columns={{ mobile: 2, tablet: 3, desktop: 4, wide: 5 }}
+          >
             <Placeholder height={40} />
             <Placeholder height={40} />
             <Placeholder height={40} />
