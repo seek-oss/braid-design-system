@@ -65,17 +65,10 @@ const docs: ComponentDocs = {
     {
       label: 'Design considerations',
       description: (
-        <>
-          <Text>
-            Drawers should only be used as a last resort when other in-flow
-            alternatives are not suitable.
-          </Text>
-          <Text>
-            In order to keep experiences simple, Drawers and{' '}
-            <TextLink href="/components/Dialog">Dialogs</TextLink>{' '}
-            <Strong>cannot be nested</Strong> inside one another.
-          </Text>
-        </>
+        <Text>
+          Drawers should only be used as a last resort when other in-flow
+          alternatives are not suitable.
+        </Text>
       ),
     },
     {
@@ -132,6 +125,63 @@ const docs: ComponentDocs = {
               <Placeholder height={100} width="100%" />
               <Placeholder height={100} width="100%" />
               <Placeholder height={100} width="100%" />
+            </Drawer>
+          </>,
+        ),
+    },
+    {
+      label: 'Nested drawers',
+      description: (
+        <Text>
+          Although supported, in order to keep experiences simple nesting
+          Drawers is not encouraged.
+        </Text>
+      ),
+      Example: ({ id, getState, toggleState }) =>
+        source(
+          <>
+            <Box padding="medium">
+              <Inline
+                space="small"
+                align={{ mobile: 'center', tablet: 'left' }}
+              >
+                <Button onClick={() => toggleState('firstDrawer')}>
+                  Open nested drawer
+                </Button>
+              </Inline>
+            </Box>
+            <Drawer
+              id={`${id}_3`}
+              title="Third Drawer"
+              width="small"
+              open={getState('thirdDrawer')}
+              onClose={() => toggleState('thirdDrawer')}
+            >
+              <Placeholder height={100} label="Drawer Content" />
+            </Drawer>
+            <Drawer
+              id={`${id}_1`}
+              title="First Drawer"
+              width="large"
+              open={getState('firstDrawer')}
+              onClose={() => toggleState('firstDrawer')}
+            >
+              <Placeholder height={600} label="Drawer Content" />
+              <Button onClick={() => toggleState('secondDrawer')}>
+                Open second drawer
+              </Button>
+            </Drawer>
+            <Drawer
+              id={`${id}_2`}
+              title="Second Drawer"
+              width="medium"
+              open={getState('secondDrawer')}
+              onClose={() => toggleState('secondDrawer')}
+            >
+              <Placeholder height={400} label="Drawer Content" />
+              <Button onClick={() => toggleState('thirdDrawer')}>
+                Open third drawer
+              </Button>
             </Drawer>
           </>,
         ),
