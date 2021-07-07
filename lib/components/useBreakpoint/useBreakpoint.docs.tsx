@@ -50,10 +50,11 @@ const docs: ComponentDocs = {
         <Text>
           This Hook will return the breakpoint the browser viewport currently
           falls within (<Strong>mobile</Strong>, <Strong>tablet</Strong>,{' '}
-          <Strong>desktop</Strong> or <Strong>wide</Strong>). As this can only
-          be calculated in the browser, the value will also be{' '}
-          <Strong>null</Strong> when rendering server-side or statically
-          rendering. Window resizing is supported.
+          <Strong>desktop</Strong>). To maintain backwards compatibility,
+          breakpoints above desktop will still be reported as{' '}
+          <Strong>desktop</Strong>. As this can only be calculated in the
+          browser, the value will also be <Strong>null</Strong> when rendering
+          server-side or statically rendering. Window resizing is supported.
         </Text>
       ),
       code: `
