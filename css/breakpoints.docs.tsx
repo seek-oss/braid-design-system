@@ -20,6 +20,7 @@ const iconForBp = {
   mobile: <IconMobile size="small" />,
   tablet: <IconMobile size="large" />,
   desktop: <IconDesktop />,
+  wide: <IconDesktop />,
 };
 
 const docs: CssDoc = {

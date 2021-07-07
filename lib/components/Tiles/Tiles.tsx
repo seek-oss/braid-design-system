@@ -46,6 +46,7 @@ export const Tiles = ({
             styles.columnsMobile,
             styles.columnsTablet,
             styles.columnsDesktop,
+            styles.columnsWide,
           )}
         >
           <Box

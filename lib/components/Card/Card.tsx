@@ -1,9 +1,10 @@
 import assert from 'assert';
 import React, { ReactNode } from 'react';
+import { optimizeResponsiveArray } from '../../utils/optimizeResponsiveArray';
 import {
   resolveResponsiveRangeProps,
   ResponsiveRangeProps,
-} from '../../utils/responsiveRangeProps';
+} from '../../utils/resolveResponsiveRangeProps';
 import { Box, BoxProps } from '../Box/Box';
 import buildDataAttributes, {
   DataAttributeMap,
@@ -59,13 +60,15 @@ export const Card = ({
       roundedOnMobile,
       roundedOnTablet,
       roundedOnDesktop,
+      roundedOnWide,
     ] = resolveResponsiveRangeProps({ above: restProps.roundedAbove });
 
-    resolvedRounding = [
+    resolvedRounding = optimizeResponsiveArray([
       roundedOnMobile ? 'standard' : 'none',
       roundedOnTablet ? 'standard' : 'none',
       roundedOnDesktop ? 'standard' : 'none',
-    ];
+      roundedOnWide ? 'standard' : 'none',
+    ]);
   }
 
   return (

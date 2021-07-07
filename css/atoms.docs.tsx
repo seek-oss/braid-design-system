@@ -288,7 +288,7 @@ const docs: CssDoc = {
             responsive values, e.g.{' '}
             <Strong>
               {
-                "padding={{ mobile: 'small', tablet: 'medium', desktop: 'large' }}"
+                "padding={{ mobile: 'small', tablet: 'medium', desktop: 'large', wide: 'xlarge' }}"
               }
             </Strong>
           </Text>
@@ -304,6 +304,7 @@ const docs: CssDoc = {
                       mobile: 'small',
                       tablet: 'medium',
                       desktop: 'large',
+                      wide: 'xlarge',
                     },
                   }),
                 ).code
@@ -319,6 +320,7 @@ const docs: CssDoc = {
                   mobile: 'small',
                   tablet: 'medium',
                   desktop: 'large',
+                  wide: 'xlarge',
                 }}
               >
                 <Box

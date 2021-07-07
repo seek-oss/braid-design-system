@@ -66,6 +66,7 @@ const docs: CssDoc = {
                     mobile: { flexBasis: vars.space.small },
                     tablet: { flexBasis: vars.space.medium },
                     desktop: { flexBasis: vars.space.large },
+                    wide: { flexBasis: vars.space.xlarge },
                   }),
                 ).code
               });
@@ -82,6 +83,9 @@ const docs: CssDoc = {
                   },
                   ${'[`screen and (min-width: ${breakpoints.desktop}px)`]: {'}
                     "flexBasis": vars.space.large
+                  },
+                  ${'[`screen and (min-width: ${breakpoints.wide}px)`]: {'}
+                    "flexBasis": vars.space.xlarge
                   }
                 }
               });

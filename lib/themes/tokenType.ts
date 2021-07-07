@@ -1,7 +1,7 @@
 import { FontMetrics } from 'capsize';
 import { Breakpoint } from '../css/breakpoints';
 
-export type TextBreakpoint = Exclude<Breakpoint, 'desktop'>;
+export type TextBreakpoint = Exclude<Breakpoint, 'desktop' | 'wide'>;
 
 type FontSizeText = {
   fontSize: number;

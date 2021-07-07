@@ -12,20 +12,26 @@ const docs: ComponentDocs = {
   Example: () =>
     source(
       <Stack space="small">
+        <Hidden below="wide">
+          <Placeholder label="1. Hidden below wide" height={60} />
+        </Hidden>
         <Hidden below="desktop">
-          <Placeholder label="1. Hidden below desktop" height={60} />
+          <Placeholder label="2. Hidden below desktop" height={60} />
         </Hidden>
         <Hidden below="tablet">
-          <Placeholder label="2. Hidden below tablet" height={60} />
+          <Placeholder label="3. Hidden below tablet" height={60} />
         </Hidden>
         <Hidden above="mobile">
-          <Placeholder label="3. Hidden above mobile" height={60} />
+          <Placeholder label="4. Hidden above mobile" height={60} />
         </Hidden>
         <Hidden above="tablet">
-          <Placeholder label="4. Hidden above tablet" height={60} />
+          <Placeholder label="5. Hidden above tablet" height={60} />
+        </Hidden>
+        <Hidden above="desktop">
+          <Placeholder label="6. Hidden above tablet" height={60} />
         </Hidden>
         <Hidden print>
-          <Placeholder label="5. Hidden on print" height={60} />
+          <Placeholder label="7. Hidden on print" height={60} />
         </Hidden>
       </Stack>,
     ),
@@ -42,24 +48,32 @@ const docs: ComponentDocs = {
         <Text>
           You can hide content responsively via the <Strong>above</Strong> and{' '}
           <Strong>below</Strong> props which accept a breakpoint name, i.e.{' '}
-          <Strong>mobile</Strong>, <Strong>tablet</Strong> or{' '}
-          <Strong>desktop</Strong>.
+          <Strong>&ldquo;mobile&rdquo;</Strong>,{' '}
+          <Strong>&ldquo;tablet&rdquo;</Strong>,{' '}
+          <Strong>&ldquo;desktop&rdquo;</Strong> or{' '}
+          <Strong>&ldquo;wide&rdquo;</Strong>.
         </Text>
       ),
       Example: () =>
         source(
           <Stack space="small">
+            <Hidden below="wide">
+              <Placeholder label="1. Hidden below wide" height={60} />
+            </Hidden>
             <Hidden below="desktop">
-              <Placeholder label="1. Hidden below desktop" height={60} />
+              <Placeholder label="2. Hidden below desktop" height={60} />
             </Hidden>
             <Hidden below="tablet">
-              <Placeholder label="2. Hidden below tablet" height={60} />
+              <Placeholder label="3. Hidden below tablet" height={60} />
             </Hidden>
             <Hidden above="mobile">
-              <Placeholder label="3. Hidden above mobile" height={60} />
+              <Placeholder label="4. Hidden above mobile" height={60} />
             </Hidden>
             <Hidden above="tablet">
-              <Placeholder label="4. Hidden above tablet" height={60} />
+              <Placeholder label="5. Hidden above tablet" height={60} />
+            </Hidden>
+            <Hidden above="desktop">
+              <Placeholder label="6. Hidden above desktop" height={60} />
             </Hidden>
           </Stack>,
         ),

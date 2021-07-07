@@ -181,6 +181,7 @@ export const ComponentDoc = ({
         {docs.deprecationWarning ? (
           <Alert tone="caution">{docs.deprecationWarning}</Alert>
         ) : null}
+        {docs.banner}
       </Stack>
       <Switch>
         <Route exact path={`/components/${componentName}`}>
@@ -192,6 +193,7 @@ export const ComponentDoc = ({
                   <RenderExample
                     id={`${componentName}_example`}
                     Example={docs.Example}
+                    showCodeByDefault={docs.category === 'Logic'}
                   />
                 </PlayroomStateProvider>
               </BraidProvider>
