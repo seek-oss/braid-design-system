@@ -203,5 +203,31 @@ export const screenshots: ComponentScreenshot = {
         />
       ),
     },
+    {
+      label: 'TextField approaching character limit (should be 5)',
+      Container,
+      Example: ({ id, handler }) => (
+        <TextField
+          id={id}
+          value="123456789_123456789_123456789_123456789_123456789_"
+          onChange={handler}
+          label="Label"
+          characterLimit={55}
+        />
+      ),
+    },
+    {
+      label: 'TextField exceeding character limit (should be -9)',
+      Container,
+      Example: ({ id, handler }) => (
+        <TextField
+          id={id}
+          value="123456789123456789"
+          onChange={handler}
+          label="Label"
+          characterLimit={9}
+        />
+      ),
+    },
   ],
 };

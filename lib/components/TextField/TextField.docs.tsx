@@ -245,6 +245,39 @@ const docs: ComponentDocs = {
           />,
         ),
     },
+    {
+      label: 'Limiting the number of characters',
+      description: (
+        <>
+          <Text>
+            Providing a <Strong>characterLimit</Strong> will communicate when
+            the input text approaches or exceeds the specified limit.
+          </Text>
+          <Text>
+            To prevent loss of information, exceeding the limit is permitted,
+            however the count will be presented in a critical tone.
+          </Text>
+        </>
+      ),
+      Example: ({ id, getState, setState, setDefaultState }) =>
+        source(
+          <>
+            {setDefaultState(
+              'text',
+              'A long piece of text exceeding the specified character limit of 50',
+            )}
+
+            <TextField
+              label="Label"
+              id={id}
+              onChange={setState('text')}
+              value={getState('text')}
+              description="Chactacter limit of 50"
+              characterLimit={50}
+            />
+          </>,
+        ),
+    },
   ],
 };
 

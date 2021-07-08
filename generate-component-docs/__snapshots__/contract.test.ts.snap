@@ -6549,6 +6549,7 @@ Object {
     aria-describedby?: string
     autoComplete?: string
     autoFocus?: boolean
+    characterLimit?: number
     data?: DataAttributeMap
     description?: ReactNode
     disabled?: boolean

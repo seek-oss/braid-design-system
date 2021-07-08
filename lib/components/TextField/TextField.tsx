@@ -2,6 +2,7 @@ import React, { forwardRef, Fragment, AllHTMLAttributes, useRef } from 'react';
 import { Box } from '../Box/Box';
 import { Field, FieldProps } from '../private/Field/Field';
 import { ClearField } from '../private/Field/ClearField';
+import { CharacterLimitStatus } from '../private/Field/CharacterLimitStatus';
 
 const validTypes = {
   text: 'text',
@@ -23,6 +24,7 @@ export interface TextFieldProps
   onFocus?: InputProps['onFocus'];
   onClear?: () => void;
   placeholder?: InputProps['placeholder'];
+  characterLimit?: number;
 }
 
 export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
@@ -35,6 +37,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
       onFocus,
       onClear,
       placeholder,
+      characterLimit,
       ...restProps
     },
     forwardedRef,
@@ -55,7 +58,14 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
         {...restProps}
         value={value}
         labelId={undefined}
-        secondaryMessage={null}
+        secondaryMessage={
+          characterLimit ? (
+            <CharacterLimitStatus
+              value={value}
+              characterLimit={characterLimit}
+            />
+          ) : null
+        }
         secondaryIcon={
           onClear ? (
             <ClearField
