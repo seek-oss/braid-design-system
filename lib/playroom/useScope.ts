@@ -1,5 +1,5 @@
 import '../../reset';
-import { useToast } from '../components';
+import { useToast, useResponsiveValue } from '../components';
 import { vars, atoms, breakpoints } from '../../css';
 import { usePlayroomStore } from './playroomState';
 
@@ -9,6 +9,7 @@ export default function useScope() {
     atoms,
     breakpoints,
     showToast: useToast(),
+    responsiveValue: useResponsiveValue(),
     ...usePlayroomStore(),
   };
 }

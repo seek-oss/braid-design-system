@@ -1,5 +1,123 @@
 # braid-design-system
 
+## 30.2.0
+
+### Minor Changes
+
+- **TextField:** Add `characterLimit` prop ([#963](https://github.com/seek-oss/braid-design-system/pull/963))
+
+  You can now provide a `characterLimit` that will communicate when the input text approaches or exceeds the specified limit.
+
+  To prevent loss of information, exceeding the limit is permitted, however the count will be presented in a critical tone.
+
+## 30.1.0
+
+### Minor Changes
+
+- Add `wide` breakpoint of 1200px ([#960](https://github.com/seek-oss/braid-design-system/pull/960))
+
+  This adds support for `wide` to the following touchpoints:
+
+  - Responsive values, e.g.
+    ```ts
+    { mobile: 'small', wide: 'large' }
+    ```
+  - Responsive range props, e.g.
+    ```tsx
+    <Columns collapseBelow="wide" space={{ mobile: 'small', wide: 'large' }}>
+    ```
+  - The `responsiveStyle` function, e.g.
+    ```ts
+    export const className = style(responsiveStyle({ wide: '...' }));
+    ```
+  - The `breakpoints` object, which now exposes the number `1200` via `breakpoints.wide`, i.e.
+    ```ts
+    {
+      mobile: 0,
+      tablet: 740,
+      desktop: 940,
+      wide: 1200
+    }
+    ```
+
+- Add `useResponsiveValue` Hook ([#960](https://github.com/seek-oss/braid-design-system/pull/960))
+
+  This Hook will return the resolved value based on the breakpoint the browser viewport currently falls within (`mobile`, `tablet`, `desktop` or `wide`). As this can only be calculated in the browser, the value will also be `null` when rendering server-side or statically rendering.
+
+  Note that this Hook returns a function so that it can be called anywhere within your component.
+
+  **EXAMPLE USAGE**
+
+  ```tsx
+  const responsiveValue = useResponsiveValue();
+
+  const screenSize = responsiveValue({
+    mobile: 'Small',
+    desktop: 'Large',
+  });
+  ```
+
+  You can also resolve to boolean values for breakpoint detection.
+
+  ```tsx
+  const responsiveValue = useResponsiveValue();
+
+  const isMobile = responsiveValue({
+    mobile: true,
+    tablet: false,
+  });
+
+  const isDesktopOrAbove = responsiveValue({
+    mobile: false,
+    desktop: true,
+  });
+  ```
+
+- **Dialog, Drawer:** Support nested Dialogs & Drawers ([#959](https://github.com/seek-oss/braid-design-system/pull/959))
+
+  Remove restriction preventing the nesting of modal components, e.g. `Dialog` and `Drawer`. While it is still discouraged to keep experiences simple, there is no longer a technical guard against it.
+
+### Patch Changes
+
+- Deprecate `useBreakpoint` ([#960](https://github.com/seek-oss/braid-design-system/pull/960))
+
+  This Hook has been deprecated in favour of the new `useResponsiveValue` Hook.
+
+  This is because `useBreakpoint` leads consumers to inadvertently couple themselves to the current set of breakpoints, making it risky for us to introduce new breakpoints.
+
+  For example, you may have chosen to detect large screens by checking that the user is on the (current) largest breakpoint (e.g. `const isDesktop = useBreakpoint() === "desktop"`), but this logic would break if we introduced an even larger breakpoint and the Hook started returning other values.
+
+  To maintain backwards compatibility, `useBreakpoint` will continue to return `"desktop"` when the user is technically on larger breakpoints.
+
+  **MIGRATION GUIDE**
+
+  _Note that the `useResponsiveValue` Hook returns a `responsiveValue` function, so in these cases we're double-calling the function._
+
+  ```diff
+  -const isMobile = useBreakpoint() === 'mobile';
+  +const isMobile = useResponsiveValue()({
+  +  mobile: true,
+  +  tablet: false
+  +});
+  ```
+
+  ```diff
+  -const isTablet = useBreakpoint() === 'tablet';
+  +const isTablet = useResponsiveValue()({
+  +  mobile: false,
+  +  tablet: true,
+  +  desktop: false,
+  +});
+  ```
+
+  ```diff
+  -const isDesktop = useBreakpoint() === 'desktop';
+  +const isDesktop = useResponsiveValue()({
+  +  mobile: false,
+  +  desktop: true
+  +});
+  ```
+
 ## 30.0.3
 
 ### Patch Changes

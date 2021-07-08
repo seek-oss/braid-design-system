@@ -14,7 +14,7 @@ import { TreatProvider } from 'sku/react-treat';
 import { ensureResetImported } from '../../css/reset/resetTracker';
 import { useHideFocusRings } from '../private/hideFocusRings/useHideFocusRings';
 import { BraidTestProviderContext } from '../BraidTestProvider/BraidTestProviderContext';
-import { BreakpointProvider } from '../useBreakpoint/BreakpointProvider';
+import { BreakpointProvider } from './BreakpointContext';
 import { BraidThemeContext } from './BraidThemeContext';
 import { BraidTheme } from '../../themes/BraidTheme';
 

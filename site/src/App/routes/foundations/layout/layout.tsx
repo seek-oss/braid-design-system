@@ -166,12 +166,12 @@ const page: Page = {
         )}
       </Code>
       <Text>
-        If required, you’re also able to specify a different value for desktop
+        If required, you’re also able to specify different values for larger
         screens.
       </Text>
       <Text>
         For example, if you wanted to set the previous example’s spacing to
-        large on desktop:
+        large on desktop and xlarge on wide:
       </Text>
       <Code>
         {source(
@@ -180,6 +180,7 @@ const page: Page = {
               mobile: 'small',
               tablet: 'medium',
               desktop: 'large',
+              wide: 'xlarge',
             }}
           >
             <Text>Lorem ipsum dolor sit amet.</Text>

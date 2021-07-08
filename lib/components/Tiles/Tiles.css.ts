@@ -21,3 +21,4 @@ const makeColumnsAtoms = (breakpoint: Breakpoint) =>
 export const columnsMobile = makeColumnsAtoms('mobile');
 export const columnsTablet = makeColumnsAtoms('tablet');
 export const columnsDesktop = makeColumnsAtoms('desktop');
+export const columnsWide = makeColumnsAtoms('wide');
