@@ -1,5 +1,15 @@
 # braid-design-system
 
+## 30.2.0
+
+### Minor Changes
+
+- **TextField:** Add `characterLimit` prop ([#963](https://github.com/seek-oss/braid-design-system/pull/963))
+
+  You can now provide a `characterLimit` that will communicate when the input text approaches or exceeds the specified limit.
+
+  To prevent loss of information, exceeding the limit is permitted, however the count will be presented in a critical tone.
+
 ## 30.1.0
 
 ### Minor Changes
