@@ -1,7 +1,6 @@
 import React, {
   forwardRef,
   useState,
-  ReactNode,
   AllHTMLAttributes,
   useRef,
   UIEvent,
@@ -9,9 +8,9 @@ import React, {
   FormEvent,
 } from 'react';
 import { Box } from '../Box/Box';
-import { Text } from '../Text/Text';
 import { formatRanges } from './formatRanges';
 import { Field, FieldProps } from '../private/Field/Field';
+import { CharacterLimitStatus } from '../private/Field/CharacterLimitStatus';
 import * as styles from './Textarea.css';
 
 type NativeTextareaProps = AllHTMLAttributes<HTMLTextAreaElement>;
@@ -32,29 +31,6 @@ export interface TextareaProps
   lineLimit?: number;
   grow?: boolean;
 }
-
-const renderCount = ({
-  characterLimit,
-  value = '',
-}: Pick<TextareaProps, 'characterLimit' | 'value'>): ReactNode => {
-  const inputLength = String(value).length;
-
-  if (
-    typeof characterLimit === 'undefined' ||
-    inputLength < Math.ceil((characterLimit * 0.7) / 10) * 10
-  ) {
-    return null;
-  }
-
-  const diff = characterLimit - inputLength;
-  const valid = diff >= 0;
-
-  return (
-    <Text size="small" tone={valid ? 'secondary' : 'critical'}>
-      {diff}
-    </Text>
-  );
-};
 
 const pxToInt = (str: string | null) =>
   typeof str === 'string' ? parseInt(str.replace('px', ''), 10) : 0;
@@ -133,10 +109,14 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
         icon={undefined}
         prefix={undefined}
         labelId={undefined}
-        secondaryMessage={renderCount({
-          characterLimit,
-          value,
-        })}
+        secondaryMessage={
+          characterLimit ? (
+            <CharacterLimitStatus
+              value={value}
+              characterLimit={characterLimit}
+            />
+          ) : null
+        }
       >
         {(overlays, { className, borderRadius, background, ...fieldProps }) => (
           <Box
