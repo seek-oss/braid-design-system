@@ -1,8 +1,6 @@
 // Adapted version of https://github.com/streamich/react-use/blob/master/src/useMedia.ts
 import React, { useEffect, useState, createContext, ReactNode } from 'react';
-import { breakpoints } from '../../css/breakpoints';
-
-export type Breakpoint = 'mobile' | 'tablet' | 'desktop';
+import { breakpoints, Breakpoint } from '../../css/breakpoints';
 
 const minWidthQuery = (breakpoint: number) =>
   window.matchMedia(`(min-width: ${breakpoint}px)`);
@@ -10,7 +8,11 @@ const minWidthQuery = (breakpoint: number) =>
 const getCurrentBreakpoint = (
   tabletQuery: MediaQueryList,
   desktopQuery: MediaQueryList,
-) => {
+  wideQuery: MediaQueryList,
+): Breakpoint => {
+  if (wideQuery.matches) {
+    return 'wide';
+  }
   if (desktopQuery.matches) {
     return 'desktop';
   }
@@ -26,7 +28,7 @@ interface BreakpointProviderProps {
   children: ReactNode;
 }
 export function BreakpointProvider({ children }: BreakpointProviderProps) {
-  const { tablet, desktop } = breakpoints;
+  const { tablet, desktop, wide } = breakpoints;
 
   const [state, setState] = useState<Breakpoint | null>(null);
 
@@ -34,13 +36,18 @@ export function BreakpointProvider({ children }: BreakpointProviderProps) {
     let mounted = true;
     const tabletQuery = minWidthQuery(tablet);
     const desktopQuery = minWidthQuery(desktop);
+    const wideQuery = minWidthQuery(wide);
 
     const onChange = () => {
       if (!mounted) {
         return;
       }
 
-      const newBreakPoint = getCurrentBreakpoint(tabletQuery, desktopQuery);
+      const newBreakPoint = getCurrentBreakpoint(
+        tabletQuery,
+        desktopQuery,
+        wideQuery,
+      );
 
       if (newBreakPoint !== state) {
         setState(newBreakPoint);
@@ -49,6 +56,7 @@ export function BreakpointProvider({ children }: BreakpointProviderProps) {
 
     tabletQuery.addListener(onChange);
     desktopQuery.addListener(onChange);
+    wideQuery.addListener(onChange);
 
     onChange();
 
@@ -56,8 +64,9 @@ export function BreakpointProvider({ children }: BreakpointProviderProps) {
       mounted = false;
       tabletQuery.removeListener(onChange);
       desktopQuery.removeListener(onChange);
+      wideQuery.removeListener(onChange);
     };
-  }, [tablet, desktop, state]);
+  }, [tablet, desktop, wide, state]);
 
   return (
     <breakpointContext.Provider value={state}>

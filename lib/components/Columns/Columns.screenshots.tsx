@@ -4,7 +4,7 @@ import { Placeholder } from '../private/Placeholder/Placeholder';
 import { Columns, Column } from '../';
 
 export const screenshots: ComponentScreenshot = {
-  screenshotWidths: [320, 768, 1200],
+  screenshotWidths: [320, 768, 992, 1200],
   screenshotOnlyInWireframe: true,
   examples: [
     {
@@ -154,6 +154,19 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
+      label: 'Collapse below wide',
+      Example: () => (
+        <Columns space="small" collapseBelow="wide">
+          <Column>
+            <Placeholder height={60} label="First" />
+          </Column>
+          <Column>
+            <Placeholder height={60} label="Second" />
+          </Column>
+        </Columns>
+      ),
+    },
+    {
       label: 'Collapse below tablet with custom space, e.g. "small"',
       Example: () => (
         <Columns space="small" collapseBelow="tablet">
@@ -170,6 +183,19 @@ export const screenshots: ComponentScreenshot = {
       label: 'Collapse below desktop with custom space, e.g. "small"',
       Example: () => (
         <Columns space="small" collapseBelow="desktop">
+          <Column>
+            <Placeholder height={60} label="First" />
+          </Column>
+          <Column>
+            <Placeholder height={60} label="Second" />
+          </Column>
+        </Columns>
+      ),
+    },
+    {
+      label: 'Collapse below wide with custom space, e.g. "small"',
+      Example: () => (
+        <Columns space="small" collapseBelow="wide">
           <Column>
             <Placeholder height={60} label="First" />
           </Column>
@@ -209,6 +235,23 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label:
+        'Collapse below wide with responsive space, e.g. ["xsmall", "small", "medium", "xlarge"]',
+      Example: () => (
+        <Columns
+          space={['xsmall', 'small', 'medium', 'xlarge']}
+          collapseBelow="wide"
+        >
+          <Column>
+            <Placeholder height={60} label="First" />
+          </Column>
+          <Column>
+            <Placeholder height={60} label="Second" />
+          </Column>
+        </Columns>
+      ),
+    },
+    {
+      label:
         'Collapse below tablet with responsive space and `none` below tablet, e.g. ["none", "gutter"]',
       Example: () => (
         <Columns space={['none', 'gutter']} collapseBelow="tablet">
@@ -223,9 +266,26 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label:
-        'Collapse below desktop with responsive space and `none` below desktop, e.g. ["none", "xsmall", gutter"]',
+        'Collapse below desktop with responsive space and `none` below desktop, e.g. ["none", "xsmall", "gutter"]',
       Example: () => (
         <Columns space={['none', 'xsmall', 'gutter']} collapseBelow="desktop">
+          <Column>
+            <Placeholder height={60} label="First" />
+          </Column>
+          <Column>
+            <Placeholder height={60} label="Second" />
+          </Column>
+        </Columns>
+      ),
+    },
+    {
+      label:
+        'Collapse below wide with responsive space and `none` below wide, e.g. { mobile: "none", tablet: "xsmall", wide: "gutter" }',
+      Example: () => (
+        <Columns
+          space={{ mobile: 'none', tablet: 'xsmall', wide: 'gutter' }}
+          collapseBelow="wide"
+        >
           <Column>
             <Placeholder height={60} label="First" />
           </Column>
@@ -251,9 +311,26 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label:
-        'Collapse below desktop with responsive space and `none` above tablet, e.g. ["small", "medium, "none"]',
+        'Collapse below desktop with responsive space and `none` above tablet, e.g. ["small", "medium", "none"]',
       Example: () => (
         <Columns space={['small', 'medium', 'none']} collapseBelow="desktop">
+          <Column>
+            <Placeholder height={60} label="First" />
+          </Column>
+          <Column>
+            <Placeholder height={60} label="Second" />
+          </Column>
+        </Columns>
+      ),
+    },
+    {
+      label:
+        'Collapse below wide with responsive space and `none` above desktop, e.g. ["small", "medium", "large", "none"]',
+      Example: () => (
+        <Columns
+          space={['small', 'medium', 'large', 'none']}
+          collapseBelow="wide"
+        >
           <Column>
             <Placeholder height={60} label="First" />
           </Column>
@@ -331,12 +408,12 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label:
-        'Test - collapseBelow + align + reverse: On mobile should be vertical and left aligned, on tablet should be reversed horizontally and centre aligned, on desktop should be reversed horizontally and right aligned',
+        'Test - collapseBelow + align + reverse: On mobile should be vertical and left aligned, on tablet should be reversed horizontally and centre aligned, on desktop should be reversed horizontally and right aligned, on wide should be reversed horizontally and centre aligned',
       Example: () => (
         <Columns
           space="small"
           collapseBelow="tablet"
-          align={['left', 'center', 'right']}
+          align={['left', 'center', 'right', 'center']}
           reverse
         >
           <Column width="1/3">
@@ -350,12 +427,12 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label:
-        'Test - collapseBelow + align + reverse: On mobile should be vertical and left aligned, on tablet should be vertical and centre aligned, on desktop should be reversed horizontally and right aligned',
+        'Test - collapseBelow + align + reverse: On mobile should be vertical and left aligned, on tablet should be vertical and centre aligned, on desktop should be reversed horizontally and right aligned, on wide should be reversed horizontally and center aligned',
       Example: () => (
         <Columns
           space="small"
           collapseBelow="desktop"
-          align={['left', 'center', 'right']}
+          align={['left', 'center', 'right', 'center']}
           reverse
         >
           <Column width="1/3">

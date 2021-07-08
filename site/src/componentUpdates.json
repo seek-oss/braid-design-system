@@ -1749,5 +1749,50 @@
   {
     "version": "30.0.3",
     "updates": []
+  },
+  {
+    "version": "30.1.0",
+    "updates": [
+      {
+        "updated": [
+          "useBreakpoint"
+        ],
+        "summary": "Deprecate `useBreakpoint`\n\nThis Hook has been deprecated in favour of the new `useResponsiveValue` Hook.\n\nThis is because `useBreakpoint` leads consumers to inadvertently couple themselves to the current set of breakpoints, making it risky for us to introduce new breakpoints.\n\nFor example, you may have chosen to detect large screens by checking that the user is on the (current) largest breakpoint (e.g. `const isDesktop = useBreakpoint() === \"desktop\"`), but this logic would break if we introduced an even larger breakpoint and the Hook started returning other values.\n\nTo maintain backwards compatibility, `useBreakpoint` will continue to return `\"desktop\"` when the user is technically on larger breakpoints.\n\n**MIGRATION GUIDE**\n\n_Note that the `useResponsiveValue` Hook returns a `responsiveValue` function, so in these cases we're double-calling the function._\n\n```diff\n-const isMobile = useBreakpoint() === 'mobile';\n+const isMobile = useResponsiveValue()({\n+  mobile: true,\n+  tablet: false\n+});\n```\n\n```diff\n-const isTablet = useBreakpoint() === 'tablet';\n+const isTablet = useResponsiveValue()({\n+  mobile: false,\n+  tablet: true,\n+  desktop: false,\n+});\n```\n\n```diff\n-const isDesktop = useBreakpoint() === 'desktop';\n+const isDesktop = useResponsiveValue()({\n+  mobile: false,\n+  desktop: true\n+});\n```"
+      },
+      {
+        "updated": [
+          "breakpoints",
+          "atoms",
+          "responsiveStyle",
+          "Accordion",
+          "Box",
+          "BulletList",
+          "Columns",
+          "Disclosure",
+          "Heading",
+          "Inline",
+          "List",
+          "MenuRenderer",
+          "Stack",
+          "Tabs",
+          "Text",
+          "Tiles"
+        ],
+        "summary": "Add `wide` breakpoint of 1200px\n\nThis adds support for `wide` to the following touchpoints:\n - Responsive values, e.g.\n   ```ts\n   { mobile: 'small', wide: 'large' }\n   ```\n - Responsive range props, e.g.\n   ```tsx\n   <Columns collapseBelow=\"wide\" space={{ mobile: 'small', wide: 'large' }}>\n   ```\n - The `responsiveStyle` function, e.g.\n   ```ts\n   export const className = style(responsiveStyle({ wide: '...' }));\n   ```\n - The `breakpoints` object, which now exposes the number `1200` via `breakpoints.wide`, i.e.\n   ```ts\n   {\n     mobile: 0,\n     tablet: 740,\n     desktop: 940,\n     wide: 1200\n   }\n   ```"
+      },
+      {
+        "new": [
+          "useResponsiveValue"
+        ],
+        "summary": "Add `useResponsiveValue` Hook\n\nThis Hook will return the resolved value based on the breakpoint the browser viewport currently falls within (`mobile`, `tablet`, `desktop` or `wide`). As this can only be calculated in the browser, the value will also be `null` when rendering server-side or statically rendering.\n\nNote that this Hook returns a function so that it can be called anywhere within your component.\n\n**EXAMPLE USAGE**\n\n```tsx\nconst responsiveValue = useResponsiveValue();\n\nconst screenSize = responsiveValue({\n  mobile: 'Small',\n  desktop: 'Large',\n});\n```\n\nYou can also resolve to boolean values for breakpoint detection.\n\n```tsx\nconst responsiveValue = useResponsiveValue();\n\nconst isMobile = responsiveValue({\n  mobile: true,\n  tablet: false,\n});\n\nconst isDesktopOrAbove = responsiveValue({\n  mobile: false,\n  desktop: true,\n});\n```"
+      },
+      {
+        "updated": [
+          "Dialog",
+          "Drawer"
+        ],
+        "summary": "**Dialog, Drawer:** Support nested Dialogs & Drawers\n\nRemove restriction preventing the nesting of modal components, e.g. `Dialog` and `Drawer`. While it is still discouraged to keep experiences simple, there is no longer a technical guard against it."
+      }
+    ]
   }
 ]

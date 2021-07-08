@@ -9,7 +9,7 @@ const Container = ({ children }: { children: ReactNode }) => (
 );
 
 export const screenshots: ComponentScreenshot = {
-  screenshotWidths: [320, 768, 1200],
+  screenshotWidths: [320, 768, 992, 1200],
   screenshotOnlyInWireframe: true,
   examples: [
     ...spaces.map((space) => ({
@@ -143,11 +143,43 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
+      label: 'Collapse below wide',
+      Container,
+      Example: () => (
+        <Inline space="small" collapseBelow="wide">
+          <Placeholder width={48} height={48} />
+          <Placeholder width={48} height={48} />
+          <Placeholder width={48} height={48} />
+          <Placeholder width={48} height={48} />
+          <Placeholder width={48} height={48} />
+          <Placeholder width={48} height={48} />
+        </Inline>
+      ),
+    },
+    {
       label:
         'Collapse below desktop with responsive space (e.g. "xxsmall" on mobile, "small" on tablet, "large" on desktop)',
       Container,
       Example: () => (
         <Inline space={['xxsmall', 'medium', 'large']} collapseBelow="desktop">
+          <Placeholder width={48} height={48} />
+          <Placeholder width={48} height={48} />
+          <Placeholder width={48} height={48} />
+          <Placeholder width={48} height={48} />
+          <Placeholder width={48} height={48} />
+          <Placeholder width={48} height={48} />
+        </Inline>
+      ),
+    },
+    {
+      label:
+        'Collapse below wide with responsive space (e.g. "xxsmall" on mobile, "small" on tablet, "large" on desktop, "xlarge" on wide)',
+      Container,
+      Example: () => (
+        <Inline
+          space={['xxsmall', 'medium', 'large', 'xlarge']}
+          collapseBelow="wide"
+        >
           <Placeholder width={48} height={48} />
           <Placeholder width={48} height={48} />
           <Placeholder width={48} height={48} />
@@ -219,6 +251,26 @@ export const screenshots: ComponentScreenshot = {
           space="small"
           collapseBelow="desktop"
           align={['left', 'center', 'right']}
+          reverse
+        >
+          <Placeholder width={48} height={48} label="1" />
+          <Placeholder width={48} height={48} label="2" />
+          <Placeholder width={48} height={48} label="3" />
+          <Placeholder width={48} height={48} label="4" />
+          <Placeholder width={48} height={48} label="5" />
+          <Placeholder width={48} height={48} label="6" />
+        </Inline>
+      ),
+    },
+    {
+      label:
+        'Test - collapseBelow + align + reverse: On mobile should be vertical and left aligned, on tablet should be vertical and centre aligned, on desktop should be vertical and right aligned, on wide should be reversed horizontally and centre aligned',
+      Container,
+      Example: () => (
+        <Inline
+          space="small"
+          collapseBelow="wide"
+          align={['left', 'center', 'right', 'center']}
           reverse
         >
           <Placeholder width={48} height={48} label="1" />

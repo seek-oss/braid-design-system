@@ -22,3 +22,9 @@ export const desktop = styleVariants({ none: 0, ...vars.space }, (value) =>
     desktop: negativeMarginLeft(value),
   }),
 );
+
+export const wide = styleVariants({ none: 0, ...vars.space }, (value) =>
+  responsiveStyle({
+    wide: negativeMarginLeft(value),
+  }),
+);

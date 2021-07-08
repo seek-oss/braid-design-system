@@ -35,7 +35,7 @@ const docs: ComponentDocs = {
             Responsive values are supported, e.g.{' '}
             <Strong>
               {
-                "space={{ mobile: 'small', tablet: 'medium', desktop: 'large' }}"
+                "space={{ mobile: 'small', tablet: 'medium', desktop: 'large', wide: 'xlarge' }}"
               }
             </Strong>
           </Text>
@@ -44,7 +44,12 @@ const docs: ComponentDocs = {
       Example: () =>
         source(
           <Stack
-            space={{ mobile: 'small', tablet: 'medium', desktop: 'large' }}
+            space={{
+              mobile: 'small',
+              tablet: 'medium',
+              desktop: 'large',
+              wide: 'xlarge',
+            }}
             align="center"
           >
             <Placeholder height={40} width={40} />

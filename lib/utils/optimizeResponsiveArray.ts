@@ -1,6 +1,6 @@
 type ResponsiveArray<
   Value extends string | number
-> = ReadonlyArray<Value | null> & { length: 2 | 3 } & { 0: Value | null };
+> = ReadonlyArray<Value | null> & { length: 2 | 3 | 4 } & { 0: Value | null };
 
 export const optimizeResponsiveArray = <Value extends string | number>(
   value: ResponsiveArray<Value>,
@@ -16,5 +16,10 @@ export const optimizeResponsiveArray = <Value extends string | number>(
     return null;
   });
 
-  return [values[0] ?? null, values[1] ?? null, values[2] ?? null] as const;
+  return [
+    values[0] ?? null,
+    values[1] ?? null,
+    values[2] ?? null,
+    values[3] ?? null,
+  ] as const;
 };

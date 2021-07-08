@@ -13,6 +13,7 @@ export { useThemeName } from './useThemeName/useThemeName';
 export { useSpace } from './useSpace/useSpace';
 export { useColor } from './useColor/useColor';
 export { useBreakpoint } from './useBreakpoint/useBreakpoint';
+export { useResponsiveValue } from './useResponsiveValue/useResponsiveValue';
 export { Accordion } from './Accordion/Accordion';
 export { AccordionItem } from './Accordion/AccordionItem';
 export { Actions } from './Actions/Actions';

@@ -17,9 +17,11 @@ export const Column = ({ children, data, width }: ColumnProps) => {
   const {
     collapseMobile,
     collapseTablet,
+    collapseDesktop,
     mobileSpace,
     tabletSpace,
     desktopSpace,
+    wideSpace,
     collapsibleAlignmentChildProps,
   } = useContext(ColumnsContext);
 
@@ -38,13 +40,15 @@ export const Column = ({ children, data, width }: ColumnProps) => {
         paddingLeft={optimizeResponsiveArray([
           collapseMobile ? 'none' : mobileSpace,
           collapseTablet ? 'none' : tabletSpace,
-          desktopSpace,
+          collapseDesktop ? 'none' : desktopSpace,
+          wideSpace,
         ])}
         paddingTop={
-          collapseMobile || collapseTablet
+          collapseMobile || collapseTablet || collapseDesktop
             ? optimizeResponsiveArray([
                 collapseMobile ? mobileSpace : 'none',
                 collapseTablet ? tabletSpace : 'none',
+                collapseDesktop ? desktopSpace : 'none',
                 'none',
               ])
             : undefined

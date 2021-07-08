@@ -300,6 +300,7 @@ const DevelopmentWorkflow = () => (
             mobile: { flexBasis: vars.space.small },
             tablet: { flexBasis: vars.space.medium },
             desktop: { flexBasis: vars.space.large },
+            wide: { flexBasis: vars.space.xlarge },
           }),
         );
       `}

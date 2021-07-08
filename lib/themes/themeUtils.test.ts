@@ -5,6 +5,7 @@ const mockTokens = {
     mobile: 0,
     tablet: 500,
     desktop: 1000,
+    wide: 1500,
   },
 } as const;
 
@@ -46,6 +47,18 @@ describe('themeUtils', () => {
           },
         });
       });
+
+      it('wide', () => {
+        expect(
+          responsiveStyle({
+            wide: { content: 'wide' },
+          }),
+        ).toEqual({
+          '@media': {
+            'screen and (min-width: 1500px)': { content: 'wide' },
+          },
+        });
+      });
     });
 
     describe('2 screens', () => {
@@ -63,17 +76,6 @@ describe('themeUtils', () => {
         });
       });
 
-      it('mobile and tablet, deduped', () => {
-        expect(
-          responsiveStyle({
-            mobile: { content: 'mobile' },
-            tablet: { content: 'mobile' },
-          }),
-        ).toEqual({
-          content: 'mobile',
-        });
-      });
-
       it('mobile and desktop', () => {
         expect(
           responsiveStyle({
@@ -85,17 +87,6 @@ describe('themeUtils', () => {
           '@media': {
             'screen and (min-width: 1000px)': { content: 'desktop' },
           },
-        });
-      });
-
-      it('mobile and desktop, deduped', () => {
-        expect(
-          responsiveStyle({
-            mobile: { content: 'mobile' },
-            desktop: { content: 'mobile' },
-          }),
-        ).toEqual({
-          content: 'mobile',
         });
       });
 
@@ -113,61 +104,51 @@ describe('themeUtils', () => {
         });
       });
 
-      it('tablet and desktop, deduped', () => {
+      it('mobile and wide', () => {
+        expect(
+          responsiveStyle({
+            mobile: { content: 'mobile' },
+            wide: { content: 'wide' },
+          }),
+        ).toEqual({
+          content: 'mobile',
+          '@media': {
+            'screen and (min-width: 1500px)': { content: 'wide' },
+          },
+        });
+      });
+
+      it('tablet and wide', () => {
         expect(
           responsiveStyle({
             tablet: { content: 'tablet' },
-            desktop: { content: 'tablet' },
+            wide: { content: 'wide' },
           }),
         ).toEqual({
           '@media': {
             'screen and (min-width: 500px)': { content: 'tablet' },
+            'screen and (min-width: 1500px)': { content: 'wide' },
           },
         });
       });
     });
 
-    describe('3 screens', () => {
-      it('mobile, tablet and desktop', () => {
+    describe('all screens', () => {
+      it('mobile, tablet, desktop and wide', () => {
         expect(
           responsiveStyle({
             mobile: { content: 'mobile' },
             tablet: { content: 'tablet' },
             desktop: { content: 'desktop' },
+            wide: { content: 'wide' },
           }),
         ).toEqual({
           content: 'mobile',
           '@media': {
             'screen and (min-width: 500px)': { content: 'tablet' },
             'screen and (min-width: 1000px)': { content: 'desktop' },
+            'screen and (min-width: 1500px)': { content: 'wide' },
           },
-        });
-      });
-
-      it('mobile, tablet and desktop, deduping tablet', () => {
-        expect(
-          responsiveStyle({
-            mobile: { content: 'mobile' },
-            tablet: { content: 'mobile' },
-            desktop: { content: 'desktop' },
-          }),
-        ).toEqual({
-          content: 'mobile',
-          '@media': {
-            'screen and (min-width: 1000px)': { content: 'desktop' },
-          },
-        });
-      });
-
-      it('mobile, tablet and desktop, deduping tablet and desktop', () => {
-        expect(
-          responsiveStyle({
-            mobile: { content: 'mobile' },
-            tablet: { content: 'mobile' },
-            desktop: { content: 'mobile' },
-          }),
-        ).toEqual({
-          content: 'mobile',
         });
       });
     });
