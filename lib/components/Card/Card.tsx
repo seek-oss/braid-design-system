@@ -56,12 +56,8 @@ export const Card = ({
   if ('rounded' in restProps) {
     resolvedRounding = 'standard';
   } else if ('roundedAbove' in restProps) {
-    const [
-      roundedOnMobile,
-      roundedOnTablet,
-      roundedOnDesktop,
-      roundedOnWide,
-    ] = resolveResponsiveRangeProps({ above: restProps.roundedAbove });
+    const [roundedOnMobile, roundedOnTablet, roundedOnDesktop, roundedOnWide] =
+      resolveResponsiveRangeProps({ above: restProps.roundedAbove });
 
     resolvedRounding = optimizeResponsiveArray([
       roundedOnMobile ? 'standard' : 'none',

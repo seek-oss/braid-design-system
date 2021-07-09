@@ -122,9 +122,10 @@ export const icon = style({
 
 export const focusOverlay = style({
   selectors: {
-    [`${realField}:focus + ${slideContainerBase} &, ${realField}:active + ${slideContainerBase} &`]: {
-      opacity: 1,
-    },
+    [`${realField}:focus + ${slideContainerBase} &, ${realField}:active + ${slideContainerBase} &`]:
+      {
+        opacity: 1,
+      },
   },
 });
 

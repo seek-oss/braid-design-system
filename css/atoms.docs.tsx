@@ -109,9 +109,9 @@ const docs: CssDoc = {
           </Code>
           <Box paddingBottom="large">
             <Tiles space="xlarge" columns={{ mobile: 1, tablet: 2 }}>
-              {(Object.keys(
-                responsiveProperties,
-              ) as Array<ResponsiveProperties>).map((prop) => (
+              {(
+                Object.keys(responsiveProperties) as Array<ResponsiveProperties>
+              ).map((prop) => (
                 <AtomicProperty
                   key={prop}
                   modifier="Responsive"
@@ -129,9 +129,11 @@ const docs: CssDoc = {
                   />
                 ),
               )}
-              {(Object.keys(
-                unresponsiveProperties,
-              ) as Array<UnresponsiveProperties>).map((prop) => (
+              {(
+                Object.keys(
+                  unresponsiveProperties,
+                ) as Array<UnresponsiveProperties>
+              ).map((prop) => (
                 <AtomicProperty
                   key={prop}
                   name={prop}

@@ -162,9 +162,9 @@ const docs: ComponentDocs = {
           </Code>
           <Box paddingBottom="large">
             <Tiles space="xlarge" columns={{ mobile: 1, tablet: 2 }}>
-              {(Object.keys(
-                responsiveProperties,
-              ) as Array<ResponsiveProperties>).map((prop) => (
+              {(
+                Object.keys(responsiveProperties) as Array<ResponsiveProperties>
+              ).map((prop) => (
                 <AtomicProperty
                   key={prop}
                   modifier="Responsive"
@@ -182,9 +182,11 @@ const docs: ComponentDocs = {
                   />
                 ),
               )}
-              {(Object.keys(
-                unresponsiveProperties,
-              ) as Array<UnresponsiveProperties>).map((prop) => (
+              {(
+                Object.keys(
+                  unresponsiveProperties,
+                ) as Array<UnresponsiveProperties>
+              ).map((prop) => (
                 <AtomicProperty
                   key={prop}
                   name={prop}
@@ -399,8 +401,7 @@ const docs: ComponentDocs = {
           <Tiles space="large" columns={{ mobile: 1, desktop: 2 }}>
             {Object.entries(
               validateBackgrounds({
-                body:
-                  'Used for elements that need to match the body background.',
+                body: 'Used for elements that need to match the body background.',
                 brand: 'Used for branding larger areas of the screen.',
                 brandAccent: 'Used for hero elements on the screen.',
                 brandAccentHover: 'Hover colour for “brandAccent” elements.',

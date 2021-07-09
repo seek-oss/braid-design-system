@@ -53,6 +53,10 @@ describe('TextLink', () => {
   });
 
   describe('in Actions', () => {
+    beforeAll(() => {
+      jest.spyOn(console, 'warn').mockImplementation();
+    });
+
     it('should call the click handler on click', () => {
       const clickHandler = createMockClickHander();
       const { getByRole } = render(

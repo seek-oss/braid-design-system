@@ -60,12 +60,10 @@ export const sprinkles = createAtomsFn(
   pseudoAtomicStyles,
 );
 
-export type OptionalResponsiveValue<
-  Value extends string | number
-> = ConditionalValue<typeof responsiveAtomicStyles, Value>;
-export type RequiredResponsiveValue<
-  Value extends string | number
-> = RequiredConditionalValue<typeof responsiveAtomicStyles, Value>;
+export type OptionalResponsiveValue<Value extends string | number> =
+  ConditionalValue<typeof responsiveAtomicStyles, Value>;
+export type RequiredResponsiveValue<Value extends string | number> =
+  RequiredConditionalValue<typeof responsiveAtomicStyles, Value>;
 
 export type RequiredResponsiveObject<Value> = Partial<
   Record<Breakpoint, Value>

@@ -6,14 +6,14 @@ type RequiredTokens = { breakpoint: Record<Breakpoint, number> };
 type StyleWithoutMediaQueries = Exclude<Style['@media'], undefined>[string];
 
 export const makeThemeUtils = (tokens: RequiredTokens) => {
-  const makeMediaQuery = (breakpoint: Breakpoint) => (
-    styles: StyleWithoutMediaQueries,
-  ) =>
-    !styles || Object.keys(styles).length === 0
-      ? {}
-      : {
-          [`screen and (min-width: ${tokens.breakpoint[breakpoint]}px)`]: styles,
-        };
+  const makeMediaQuery =
+    (breakpoint: Breakpoint) => (styles: StyleWithoutMediaQueries) =>
+      !styles || Object.keys(styles).length === 0
+        ? {}
+        : {
+            [`screen and (min-width: ${tokens.breakpoint[breakpoint]}px)`]:
+              styles,
+          };
 
   const mediaQuery = {
     tablet: makeMediaQuery('tablet'),

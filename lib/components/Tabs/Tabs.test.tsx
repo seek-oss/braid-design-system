@@ -72,13 +72,8 @@ function renderTabs({
       </TabsProvider>
     </BraidTestProvider>
   );
-  const {
-    getAllByRole,
-    getByRole,
-    getByLabelText,
-    rerender,
-    getByTestId,
-  } = render(<TestCase value={selectedItem} />);
+  const { getAllByRole, getByRole, getByLabelText, rerender, getByTestId } =
+    render(<TestCase value={selectedItem} />);
 
   return {
     getAllByRole,

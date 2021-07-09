@@ -104,29 +104,29 @@ const stringToCustomValue = (value: string) => {
   };
 };
 
-const makeChangeHandler = <
-  Element extends HTMLSelectElement | HTMLInputElement
->(
-  onChange: ChangeHandler,
-  value: MonthPickerValue,
-  fieldType: keyof MonthPickerValue | 'native',
-) => (event: ChangeEvent<Element>) => {
-  if (typeof onChange === 'function') {
-    onChange(
-      {
-        month: {
-          year: value && value.year ? value.year : undefined,
-          month: parseInt(event.target.value, 10) || undefined,
-        },
-        year: {
-          month: value && value.month ? value.month : undefined,
-          year: parseInt(event.target.value, 10) || undefined,
-        },
-        native: stringToCustomValue(event.target.value),
-      }[fieldType],
-    );
-  }
-};
+const makeChangeHandler =
+  <Element extends HTMLSelectElement | HTMLInputElement>(
+    onChange: ChangeHandler,
+    value: MonthPickerValue,
+    fieldType: keyof MonthPickerValue | 'native',
+  ) =>
+  (event: ChangeEvent<Element>) => {
+    if (typeof onChange === 'function') {
+      onChange(
+        {
+          month: {
+            year: value && value.year ? value.year : undefined,
+            month: parseInt(event.target.value, 10) || undefined,
+          },
+          year: {
+            month: value && value.month ? value.month : undefined,
+            year: parseInt(event.target.value, 10) || undefined,
+          },
+          native: stringToCustomValue(event.target.value),
+        }[fieldType],
+      );
+    }
+  };
 
 const MonthPicker = ({
   id,

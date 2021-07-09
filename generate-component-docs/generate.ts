@@ -80,10 +80,22 @@ export default () => {
 
   const checker = program.getTypeChecker();
 
+  function resolveDeclaration(exp: ts.Symbol) {
+    if (exp.valueDeclaration) {
+      return exp.valueDeclaration;
+    }
+
+    if (exp.declarations) {
+      return exp.declarations[0];
+    }
+
+    throw new Error('Could not resolve declaration');
+  }
+
   function getComponentPropsType(exp: ts.Symbol) {
     const type = checker.getTypeOfSymbolAtLocation(
       exp,
-      exp.valueDeclaration || exp.declarations[0],
+      resolveDeclaration(exp),
     );
 
     const callSignatures = type.getCallSignatures();
@@ -138,14 +150,14 @@ export default () => {
 
             // Find type of prop by looking in context of the props object itself.
             const propType = checker
-              .getTypeOfSymbolAtLocation(prop, propsObj.valueDeclaration)
+              .getTypeOfSymbolAtLocation(prop, resolveDeclaration(propsObj)!)
               .getNonNullableType();
 
             const isOptional =
               (prop.getFlags() & ts.SymbolFlags.Optional) !== 0;
 
             const typeAlias = checker.typeToString(
-              checker.getTypeAtLocation(prop.valueDeclaration),
+              checker.getTypeAtLocation(resolveDeclaration(prop)),
             );
 
             return {
@@ -264,7 +276,7 @@ export default () => {
   function getHookDocs(exp: ts.Symbol): HookDoc {
     const type = checker.getTypeOfSymbolAtLocation(
       exp,
-      exp.valueDeclaration || exp.declarations[0],
+      resolveDeclaration(exp),
     );
 
     const callSignature = type.getCallSignatures()[0];
@@ -274,7 +286,7 @@ export default () => {
       params: callSignature.getParameters().map((param) => {
         const paramType = checker.getTypeOfSymbolAtLocation(
           param,
-          exp.valueDeclaration,
+          resolveDeclaration(exp),
         );
 
         return normaliseType(paramType, exp, 0);

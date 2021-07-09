@@ -102,10 +102,8 @@ const GalleryPage = () => {
 
   const [jumpTo, setJumpTo] = useState(jumpToPlaceholder);
   const [zoom, setZoom] = useState(1);
-  const [
-    fitToScreenDimensions,
-    setFitToScreenDimensions,
-  ] = useState<FitToScreenDimensions | null>(null);
+  const [fitToScreenDimensions, setFitToScreenDimensions] =
+    useState<FitToScreenDimensions | null>(null);
 
   const zoomOut = () => {
     if (panzoomRef.current) {

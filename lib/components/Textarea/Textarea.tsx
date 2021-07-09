@@ -40,9 +40,8 @@ const calculateLines = (
   lines: number,
   lineLimit?: number,
 ) => {
-  const { paddingBottom, paddingTop, lineHeight } = window.getComputedStyle(
-    target,
-  );
+  const { paddingBottom, paddingTop, lineHeight } =
+    window.getComputedStyle(target);
 
   // If line height is not a pixel value (e.g. 'normal' or unitless),
   // bail out of grow behaviour as we cannot calculate accurately.

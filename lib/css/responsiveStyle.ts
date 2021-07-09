@@ -4,14 +4,13 @@ import { breakpoints } from './breakpoints';
 
 type CSSProps = Omit<StyleRule, '@media' | '@supports'>;
 
-const makeMediaQuery = (breakpoint: keyof typeof breakpoints) => (
-  styles?: CSSProps,
-) =>
-  !styles || Object.keys(styles).length === 0
-    ? {}
-    : {
-        [`screen and (min-width: ${breakpoints[breakpoint]}px)`]: styles,
-      };
+const makeMediaQuery =
+  (breakpoint: keyof typeof breakpoints) => (styles?: CSSProps) =>
+    !styles || Object.keys(styles).length === 0
+      ? {}
+      : {
+          [`screen and (min-width: ${breakpoints[breakpoint]}px)`]: styles,
+        };
 
 const mediaQuery = {
   tablet: makeMediaQuery('tablet'),
