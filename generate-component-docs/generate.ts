@@ -136,7 +136,13 @@ export default () => {
             let description = '';
             const tags = prop
               .getJsDocTags()
-              .filter(({ name }) => name !== 'see');
+              .filter(({ name }) => name !== 'see')
+              .map(({ name, text }) => ({
+                name,
+                text:
+                  Array.isArray(text) && text.length > 0 ? text[0].text : text,
+              }));
+
             const deprecated = tags.some(({ name }) =>
               /^deprecated$/i.test(name),
             );
@@ -150,7 +156,7 @@ export default () => {
 
             // Find type of prop by looking in context of the props object itself.
             const propType = checker
-              .getTypeOfSymbolAtLocation(prop, resolveDeclaration(propsObj)!)
+              .getTypeOfSymbolAtLocation(prop, resolveDeclaration(propsObj))
               .getNonNullableType();
 
             const isOptional =
