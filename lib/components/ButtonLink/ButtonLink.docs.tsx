@@ -1,7 +1,7 @@
 import React from 'react';
 import source from '../../utils/source.macro';
 import { ComponentDocs } from '../../../site/src/types';
-import { ButtonLink, Strong, Text, Inline } from '../';
+import { ButtonLink, Strong, Text, Card, Inline } from '../';
 import { TextLink } from '../TextLink/TextLink';
 
 const docs: ComponentDocs = {
@@ -9,15 +9,20 @@ const docs: ComponentDocs = {
   migrationGuide: true,
   Example: () =>
     source(
-      <Inline space="small" collapseBelow="desktop">
-        <ButtonLink href="#" weight="strong">
-          Strong ButtonLink
-        </ButtonLink>
-        <ButtonLink href="#">Regular ButtonLink</ButtonLink>
-        <ButtonLink href="#" weight="weak">
-          Weak ButtonLink
-        </ButtonLink>
-      </Inline>,
+      <Card>
+        <Inline space="small" collapseBelow="desktop">
+          <ButtonLink href="#">Solid</ButtonLink>
+          <ButtonLink href="#" variant="ghost">
+            Ghost
+          </ButtonLink>
+          <ButtonLink href="#" variant="soft">
+            Soft
+          </ButtonLink>
+          <ButtonLink href="#" variant="transparent">
+            Transparent
+          </ButtonLink>
+        </Inline>
+      </Card>,
     ),
   accessibility: (
     <Text>

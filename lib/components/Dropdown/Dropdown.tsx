@@ -1,9 +1,8 @@
 import React, { Fragment, AllHTMLAttributes, forwardRef } from 'react';
-import { useStyles } from 'sku/react-treat';
 import { Box } from '../Box/Box';
 import { Field, FieldProps } from '../private/Field/Field';
 import { IconChevron } from '../icons';
-import * as styleRefs from './Dropdown.treat';
+import * as styles from './Dropdown.css';
 import { Text } from '../Text/Text';
 
 type ValidDropdownChildren = AllHTMLAttributes<
@@ -11,7 +10,7 @@ type ValidDropdownChildren = AllHTMLAttributes<
 >;
 type SelectProps = AllHTMLAttributes<HTMLSelectElement>;
 export interface DropdownProps
-  extends Omit<FieldProps, 'labelId' | 'secondaryMessage'> {
+  extends Omit<FieldProps, 'labelId' | 'secondaryMessage' | 'prefix'> {
   children: ValidDropdownChildren[] | ValidDropdownChildren;
   value: NonNullable<SelectProps['value']>;
   onChange: NonNullable<SelectProps['onChange']>;
@@ -20,7 +19,7 @@ export interface DropdownProps
   placeholder?: string;
 }
 
-const NamedDropdown = forwardRef<HTMLSelectElement, DropdownProps>(
+export const Dropdown = forwardRef<HTMLSelectElement, DropdownProps>(
   (props, ref) => {
     const {
       children,
@@ -33,12 +32,12 @@ const NamedDropdown = forwardRef<HTMLSelectElement, DropdownProps>(
       ...restProps
     } = props;
 
-    const styles = useStyles(styleRefs);
     return (
       <Field
         {...restProps}
         disabled={disabled}
         labelId={undefined}
+        prefix={undefined}
         secondaryMessage={null}
         value={value}
       >
@@ -87,6 +86,4 @@ const NamedDropdown = forwardRef<HTMLSelectElement, DropdownProps>(
   },
 );
 
-NamedDropdown.displayName = 'Dropdown';
-
-export const Dropdown = NamedDropdown;
+Dropdown.displayName = 'Dropdown';

@@ -6,7 +6,7 @@ export const screenshots: ComponentScreenshot = {
   screenshotWidths: [320],
   examples: [
     {
-      label: 'Standard Checkbox',
+      label: 'Standard',
       Example: ({ id }) => {
         const [state, setState] = useState(false);
         return (
@@ -20,19 +20,34 @@ export const screenshots: ComponentScreenshot = {
       },
     },
     {
-      label: 'Checked Checkbox',
+      label: 'Small',
+      Example: ({ id }) => {
+        const [state, setState] = useState(false);
+        return (
+          <Checkbox
+            id={id}
+            checked={state}
+            onChange={() => setState(!state)}
+            label="Label"
+            size="small"
+          />
+        );
+      },
+    },
+    {
+      label: 'Checked',
       Example: ({ id, handler }) => (
         <Checkbox id={id} checked={true} onChange={handler} label="Label" />
       ),
     },
     {
-      label: 'Mixed state Checkbox',
+      label: 'Mixed state',
       Example: ({ id, handler }) => (
         <Checkbox id={id} checked="mixed" onChange={handler} label="Label" />
       ),
     },
     {
-      label: 'Disabled Checkbox',
+      label: 'Disabled',
       background: 'card',
       Example: ({ id, handler }) => (
         <Checkbox
@@ -45,7 +60,7 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
-      label: 'Critical Checkbox',
+      label: 'Critical',
       Example: ({ id, handler }) => (
         <Checkbox
           id={id}
@@ -58,7 +73,7 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
-      label: 'Checkbox with description',
+      label: 'With a description',
       Example: ({ id, handler }) => (
         <Checkbox
           id={id}
@@ -70,7 +85,7 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
-      label: 'Checkbox with a Badge',
+      label: 'With a Badge',
       Example: ({ id, handler }) => (
         <Checkbox
           id={id}
@@ -86,7 +101,7 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
-      label: 'Checkbox with a Badge and description',
+      label: 'With a Badge and description',
       Example: ({ id, handler }) => (
         <Checkbox
           id={id}
@@ -103,7 +118,7 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
-      label: 'Checkbox with nested content visible only when checked',
+      label: 'With nested content visible only when checked',
       Example: ({ id }) => {
         const [state, setState] = useState(true);
         return (
@@ -119,7 +134,7 @@ export const screenshots: ComponentScreenshot = {
       },
     },
     {
-      label: 'Checkbox with nested content and description',
+      label: 'With nested content and description',
       Example: ({ id, handler }) => (
         <Checkbox
           id={id}
@@ -133,7 +148,7 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
-      label: 'Checkbox with a message and description',
+      label: 'With a message and description',
       Example: ({ id, handler }) => (
         <Checkbox
           id={id}
@@ -147,7 +162,7 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
-      label: 'Checkbox with nested content, a message and description',
+      label: 'With nested content, a message and description',
       Example: ({ id, handler }) => (
         <Checkbox
           id={id}

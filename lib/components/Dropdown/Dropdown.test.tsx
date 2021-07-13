@@ -31,7 +31,9 @@ describe('Dropdown', () => {
       </BraidTestProvider>,
     );
 
-    expect(getByLabelText('My dropdown')).toHaveDescription('Required');
+    expect(getByLabelText('My dropdown')).toHaveAccessibleDescription(
+      'Required',
+    );
   });
 
   it('associates field with description correctly', () => {
@@ -49,7 +51,7 @@ describe('Dropdown', () => {
       </BraidTestProvider>,
     );
 
-    expect(getByLabelText('My dropdown')).toHaveDescription(
+    expect(getByLabelText('My dropdown')).toHaveAccessibleDescription(
       'More detail about field',
     );
   });
@@ -70,7 +72,7 @@ describe('Dropdown', () => {
       </BraidTestProvider>,
     );
 
-    expect(getByLabelText('My dropdown')).toHaveDescription(
+    expect(getByLabelText('My dropdown')).toHaveAccessibleDescription(
       'Custom description',
     );
   });
@@ -93,7 +95,7 @@ describe('Dropdown', () => {
       </BraidTestProvider>,
     );
 
-    expect(getByLabelText('My dropdown')).toHaveDescription(
+    expect(getByLabelText('My dropdown')).toHaveAccessibleDescription(
       'Custom description Required More detail about field',
     );
   });

@@ -1,32 +1,43 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import {
   PrivateTextLinkRenderer,
   PrivateTextLinkRendererProps,
 } from '../TextLinkRenderer/TextLinkRenderer';
 import {
-  useLinkComponentWithoutRefSupport,
+  useLinkComponent,
   LinkComponentProps,
 } from '../BraidProvider/BraidProvider';
+import buildDataAttributes, {
+  DataAttributeMap,
+} from '../private/buildDataAttributes';
 
 export interface TextLinkProps
-  extends Omit<PrivateTextLinkRendererProps, 'children'>,
-    Omit<LinkComponentProps, 'className' | 'style'> {}
+  extends Omit<PrivateTextLinkRendererProps, 'reset' | 'children'>,
+    Omit<LinkComponentProps, 'className' | 'style'> {
+  data?: DataAttributeMap;
+}
 
-export const TextLink = ({
-  weight,
-  showVisited,
-  hitArea,
-  ...props
-}: TextLinkProps) => {
-  const LinkComponent = useLinkComponentWithoutRefSupport();
+export const TextLink = forwardRef<HTMLAnchorElement, TextLinkProps>(
+  ({ weight, showVisited, hitArea, data, ...props }, ref) => {
+    const LinkComponent = useLinkComponent(ref);
 
-  return (
-    <PrivateTextLinkRenderer
-      weight={weight}
-      showVisited={showVisited}
-      hitArea={hitArea}
-    >
-      {(styleProps) => <LinkComponent {...props} {...styleProps} />}
-    </PrivateTextLinkRenderer>
-  );
-};
+    return (
+      <PrivateTextLinkRenderer
+        weight={weight}
+        showVisited={showVisited}
+        hitArea={hitArea}
+      >
+        {(styleProps) => (
+          <LinkComponent
+            ref={ref}
+            {...props}
+            {...styleProps}
+            {...(data ? buildDataAttributes(data) : undefined)}
+          />
+        )}
+      </PrivateTextLinkRenderer>
+    );
+  },
+);
+
+TextLink.displayName = 'TextLink';

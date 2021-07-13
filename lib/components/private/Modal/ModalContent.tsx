@@ -7,7 +7,6 @@ import React, {
   Ref,
 } from 'react';
 import { RemoveScroll } from 'react-remove-scroll';
-import { useStyles } from 'sku/react-treat';
 import { Box, BoxProps } from '../../Box/Box';
 import { normalizeKey } from '../normalizeKey';
 import { Heading } from '../../Heading/Heading';
@@ -17,9 +16,10 @@ import { Column } from '../../Column/Column';
 import { Overlay } from '../Overlay/Overlay';
 import { ReactNodeNoStrings } from '../ReactNodeNoStrings';
 import { IconClear } from '../../icons';
-import { useNegativeMarginTop } from '../../../hooks/useNegativeMargin/useNegativeMargin';
-import { useVirtualTouchable } from '../touchable/useVirtualTouchable';
-import * as styleRefs from './Modal.treat';
+import { negativeMarginTop } from '../../../css/negativeMargin/negativeMargin';
+import { virtualTouchable } from '../touchable/virtualTouchable';
+import buildDataAttributes, { DataAttributeMap } from '../buildDataAttributes';
+import * as styles from './Modal.css';
 
 export interface ModalContentProps {
   id: string;
@@ -35,6 +35,7 @@ export interface ModalContentProps {
   scrollLock?: boolean;
   headingRef?: Ref<HTMLElement>;
   modalRef?: Ref<HTMLElement>;
+  data?: DataAttributeMap;
 }
 
 const modalPadding = ['gutter', 'large'] as const;
@@ -46,34 +47,30 @@ interface ModalContentHeaderProps
   center?: boolean;
 }
 const ModalContentHeader = forwardRef<HTMLElement, ModalContentHeaderProps>(
-  ({ title, headingLevel, description, descriptionId, center }, ref) => {
-    const styles = useStyles(styleRefs);
-
-    return (
-      <Stack space="medium">
-        <Heading level={headingLevel} align={center ? 'center' : undefined}>
-          <Box
-            ref={ref}
-            component="span"
-            tabIndex={-1}
-            outline="none"
-            position="relative"
-            className={styles.headingRoot}
-          >
-            {title}
-            <Overlay
-              boxShadow="outlineFocus"
-              borderRadius="standard"
-              transition="fast"
-              className={styles.headingFocus}
-              onlyVisibleForKeyboardNavigation
-            />
-          </Box>
-        </Heading>
-        {description ? <Box id={descriptionId}>{description}</Box> : null}
-      </Stack>
-    );
-  },
+  ({ title, headingLevel, description, descriptionId, center }, ref) => (
+    <Stack space="medium">
+      <Heading level={headingLevel} align={center ? 'center' : undefined}>
+        <Box
+          ref={ref}
+          component="span"
+          tabIndex={-1}
+          outline="none"
+          position="relative"
+          className={styles.headingRoot}
+        >
+          {title}
+          <Overlay
+            boxShadow="outlineFocus"
+            borderRadius="standard"
+            transition="fast"
+            className={styles.headingFocus}
+            onlyVisibleForKeyboardNavigation
+          />
+        </Box>
+      </Heading>
+      {description ? <Box id={descriptionId}>{description}</Box> : null}
+    </Stack>
+  ),
 );
 
 export const ModalContent = ({
@@ -90,9 +87,8 @@ export const ModalContent = ({
   scrollLock = true,
   position,
   headingLevel,
+  data,
 }: ModalContentProps) => {
-  const styles = useStyles(styleRefs);
-
   const defaultModalRef = useRef<HTMLElement>(null);
   const modalRef = modalRefProp || defaultModalRef;
   const defaultHeadingRef = useRef<HTMLElement>(null);
@@ -118,6 +114,7 @@ export const ModalContent = ({
       aria-label={title} // Using aria-labelledby would announce the heading after the dialog content.
       aria-describedby={description ? descriptionId : undefined}
       aria-modal="true"
+      id={id}
       onKeyDown={handleEscape}
       position="relative"
       width="full"
@@ -150,6 +147,7 @@ export const ModalContent = ({
               styles.pointerEventsAll,
               position === 'center' && styles.maxSize[position],
             ]}
+            {...(data ? buildDataAttributes(data) : undefined)}
           >
             <Stack space="large">
               {illustration ? (
@@ -205,7 +203,7 @@ export const ModalContent = ({
           >
             <Box
               className={[
-                useNegativeMarginTop('xsmall'),
+                negativeMarginTop('xsmall'),
                 styles.negativeMarginRightXSmall,
               ]}
             >
@@ -227,7 +225,7 @@ export const ModalContent = ({
                   className={[
                     styles.closeButtonRoot,
                     styles.pointerEventsAll,
-                    useVirtualTouchable(),
+                    virtualTouchable(),
                   ]}
                 >
                   <Overlay

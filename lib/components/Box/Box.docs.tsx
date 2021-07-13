@@ -15,8 +15,14 @@ import {
 import source from '../../utils/source.macro';
 import Code from '../../../site/src/App/Code/Code';
 import { BoxProps } from './Box';
-import { UseBoxStylesProps } from './useBoxStyles';
-import * as styleRefs from './useBoxStyles.treat';
+import {
+  responsiveProperties,
+  unresponsiveProperties,
+  pseudoProperties,
+  UnresponsiveProperties,
+  ResponsiveProperties,
+  PseudoProperties,
+} from '../../css/atoms/atomicProperties';
 
 type BackgroundDocs = Required<
   Record<NonNullable<BoxProps['background']>, string>
@@ -28,6 +34,28 @@ type BoxShadowDocs = Required<
 >;
 const validateBoxShadows = (boxShadows: BoxShadowDocs) => boxShadows;
 
+interface AtomicPropertyProps {
+  name: string;
+  modifier?: string;
+  values: Array<string>;
+}
+function AtomicProperty({ name, modifier, values }: AtomicPropertyProps) {
+  return (
+    <Stack space="medium">
+      <Text weight="strong">
+        {name}
+        {modifier ? ` (${modifier})` : ''}
+      </Text>
+      <Text tone="secondary">
+        {values
+          .sort()
+          .map((key) => (!/[0-9]/.test(key) ? `"${key}"` : key))
+          .join(', ')}
+      </Text>
+    </Stack>
+  );
+}
+
 const docs: ComponentDocs = {
   category: 'Layout',
   description: (
@@ -38,12 +66,9 @@ const docs: ComponentDocs = {
         made up of Boxes.
       </Text>
       <Text>
-        All elements rendered via Box are provided with a{' '}
-        <TextLink href="https://github.com/seek-oss/braid-design-system/blob/master/lib/reset/reset.treat.ts">
-          CSS reset
-        </TextLink>{' '}
-        to ensure that elements only have styling rules that have been
-        explicitly specified.
+        All elements rendered via Box are provided with a CSS reset to ensure
+        that elements only have styling rules that have been explicitly
+        specified.
       </Text>
     </>
   ),
@@ -76,9 +101,7 @@ const docs: ComponentDocs = {
         <>
           <Text>
             The <Strong>className</Strong> prop supports the full{' '}
-            <TextLink href="https://github.com/JedWatson/classnames">
-              Classnames API.
-            </TextLink>
+            <TextLink href="https://github.com/lukeed/clsx">clsx API.</TextLink>
           </Text>
           <Code playroom={false}>
             {(() => {
@@ -112,7 +135,9 @@ const docs: ComponentDocs = {
             Box provides a suite of common CSS utility props. Styles that
             regularly differ across screen sizes can also be expressed as
             responsive props, e.g.{' '}
-            <Strong>{"justifyContent={['center', 'flexStart']}"}</Strong>
+            <Strong>
+              {"justifyContent={{ mobile: 'center', tablet: 'flexStart' }}"}
+            </Strong>
           </Text>
           <Text>
             These utilities are recommended where possible to reduce the amount
@@ -123,7 +148,7 @@ const docs: ComponentDocs = {
               source(
                 <Box
                   display="flex"
-                  justifyContent={['center', 'flexStart']}
+                  justifyContent={{ mobile: 'center', tablet: 'flexStart' }}
                   position="absolute"
                   top={0}
                   left={0}
@@ -136,75 +161,38 @@ const docs: ComponentDocs = {
             }
           </Code>
           <Box paddingBottom="large">
-            <Tiles space="xlarge" columns={[1, 2]}>
-              {(() => {
-                type UtilName = keyof Omit<
-                  UseBoxStylesProps,
-                  | 'background'
-                  | 'boxShadow'
-                  | 'className'
-                  | 'component'
-                  | 'margin'
-                  | 'marginX'
-                  | 'marginY'
-                  | 'marginTop'
-                  | 'marginBottom'
-                  | 'marginLeft'
-                  | 'marginRight'
-                  | 'padding'
-                  | 'paddingX'
-                  | 'paddingY'
-                  | 'paddingTop'
-                  | 'paddingBottom'
-                  | 'paddingLeft'
-                  | 'paddingRight'
-                >;
-
-                const utils: Record<UtilName, true> = {
-                  alignItems: true,
-                  bottom: true,
-                  borderRadius: true,
-                  cursor: true,
-                  display: true,
-                  flexDirection: true,
-                  flexGrow: true,
-                  flexShrink: true,
-                  flexWrap: true,
-                  height: true,
-                  justifyContent: true,
-                  left: true,
-                  maxWidth: true,
-                  minWidth: true,
-                  opacity: true,
-                  outline: true,
-                  overflow: true,
-                  pointerEvents: true,
-                  position: true,
-                  right: true,
-                  textAlign: true,
-                  top: true,
-                  transform: true,
-                  transition: true,
-                  userSelect: true,
-                  width: true,
-                  zIndex: true,
-                };
-
-                return (Object.keys(utils) as Array<UtilName>).map((prop) => (
-                  <Stack key={prop} space="medium">
-                    <Text weight="strong">
-                      {prop}
-                      {`${prop}Desktop` in styleRefs ? ' (Responsive)' : ''}
-                    </Text>
-                    <Text tone="secondary">
-                      {Object.keys(styleRefs[prop])
-                        .sort()
-                        .map((key) => (!/[0-9]/.test(key) ? `"${key}"` : key))
-                        .join(', ')}
-                    </Text>
-                  </Stack>
-                ));
-              })()}
+            <Tiles space="xlarge" columns={{ mobile: 1, tablet: 2 }}>
+              {(
+                Object.keys(responsiveProperties) as Array<ResponsiveProperties>
+              ).map((prop) => (
+                <AtomicProperty
+                  key={prop}
+                  modifier="Responsive"
+                  name={prop}
+                  values={Object.keys(responsiveProperties[prop])}
+                />
+              ))}
+              {(Object.keys(pseudoProperties) as Array<PseudoProperties>).map(
+                (prop) => (
+                  <AtomicProperty
+                    key={prop}
+                    modifier="Pseudo"
+                    name={prop}
+                    values={Object.keys(pseudoProperties[prop])}
+                  />
+                ),
+              )}
+              {(
+                Object.keys(
+                  unresponsiveProperties,
+                ) as Array<UnresponsiveProperties>
+              ).map((prop) => (
+                <AtomicProperty
+                  key={prop}
+                  name={prop}
+                  values={Object.keys(unresponsiveProperties[prop])}
+                />
+              ))}
             </Tiles>
           </Box>
         </>
@@ -351,8 +339,12 @@ const docs: ComponentDocs = {
       description: (
         <Text>
           Padding and margins can also differ across screen sizes by providing
-          an array of responsive values, e.g.{' '}
-          <Strong>{"['small', 'medium', 'large']"}</Strong>
+          responsive values, e.g.{' '}
+          <Strong>
+            {
+              "padding={{ mobile: 'small', tablet: 'medium', desktop: 'large', wide: 'xlarge' }}"
+            }
+          </Strong>
         </Text>
       ),
       Example: () =>
@@ -361,7 +353,12 @@ const docs: ComponentDocs = {
             <Box
               background="formAccentHover"
               borderRadius="standard"
-              padding={['small', 'medium', 'large']}
+              padding={{
+                mobile: 'small',
+                tablet: 'medium',
+                desktop: 'large',
+                wide: 'xlarge',
+              }}
             >
               <Box
                 background="formAccent"
@@ -392,22 +389,21 @@ const docs: ComponentDocs = {
               These background colours are likely to change over time, so it’s
               important that you only use them within the semantic context they
               were designed for, e.g. only using the “selection” colour for
-              actual user selections. If you choose colours based soley on their
-              appearance, your application’s colours may change in unexpected
-              ways when upgrading Braid.
+              actual user selections. If you choose colours based solely on
+              their appearance, your application’s colours may change in
+              unexpected ways when upgrading Braid.
             </Text>
           </Alert>
         </>
       ),
       Example: () => {
         const { code, value } = source(
-          <Tiles space="large" columns={[1, 1, 2]}>
+          <Tiles space="large" columns={{ mobile: 1, desktop: 2 }}>
             {Object.entries(
               validateBackgrounds({
-                body:
-                  'Used for elements that need to match the body background.',
+                body: 'Used for elements that need to match the body background.',
                 brand: 'Used for branding larger areas of the screen.',
-                brandAccent: 'Used for branding smaller areas of the screen.',
+                brandAccent: 'Used for hero elements on the screen.',
                 brandAccentHover: 'Hover colour for “brandAccent” elements.',
                 brandAccentActive: 'Hover colour for “brandAccent” elements.',
                 formAccent:
@@ -499,7 +495,7 @@ const docs: ComponentDocs = {
               These box shadows are likely to change over time, so it’s
               important that you only use them within the semantic context they
               were designed for, e.g. only using “borderField” for actual field
-              borders. If you choose semantic box shadows based soley on their
+              borders. If you choose semantic box shadows based solely on their
               appearance, your application’s colours may change in unexpected
               ways when upgrading Braid.
             </Text>
@@ -508,7 +504,7 @@ const docs: ComponentDocs = {
       ),
       Example: () => {
         const { code, value } = source(
-          <Tiles space="large" columns={[1, 1, 2]}>
+          <Tiles space="large" columns={{ mobile: 1, desktop: 2 }}>
             {Object.entries(
               validateBoxShadows({
                 small: 'Used for small shadows.',
@@ -527,6 +523,8 @@ const docs: ComponentDocs = {
                   'Used for borders around prominent interactive elements.',
                 borderFormAccentLarge:
                   'Used for large borders around prominent interactive elements.',
+                borderBrandAccentLarge:
+                  'Used for large borders around branded elements.',
                 borderPositive: 'Used for borders around “positive” elements.',
                 borderCritical: 'Used for borders around “critical” elements.',
                 borderCriticalLarge:

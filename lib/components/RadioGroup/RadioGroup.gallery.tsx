@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentExample } from '../../../site/src/types';
-import { RadioGroup, RadioItem } from '..';
-import { Badge, Placeholder } from '../../playroom/components';
+import { RadioGroup, RadioItem, Badge } from '..';
+import { Placeholder } from '../../playroom/components';
 import source from '../../utils/source.macro';
 
 export const galleryItems: ComponentExample[] = [
@@ -105,6 +105,23 @@ export const galleryItems: ComponentExample[] = [
               </Badge>
             }
           />
+        </RadioGroup>,
+      ),
+  },
+  {
+    label: 'Small',
+    Example: ({ id, getState, setState }) =>
+      source(
+        <RadioGroup
+          id={id}
+          value={getState('radio')}
+          onChange={({ currentTarget: { value } }) => setState('radio', value)}
+          label="Label"
+          size="small"
+        >
+          <RadioItem label="One" value="1" />
+          <RadioItem label="Two" value="2" />
+          <RadioItem label="Three" value="3" />
         </RadioGroup>,
       ),
   },

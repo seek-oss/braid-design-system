@@ -11,12 +11,12 @@ import React, {
   Ref,
 } from 'react';
 import { TreatProvider } from 'sku/react-treat';
-import { ensureResetImported } from '../../reset/resetTracker';
+import { ensureResetImported } from '../../css/reset/resetTracker';
 import { useHideFocusRings } from '../private/hideFocusRings/useHideFocusRings';
 import { BraidTestProviderContext } from '../BraidTestProvider/BraidTestProviderContext';
-import { BreakpointProvider } from '../useBreakpoint/BreakpointProvider';
+import { BreakpointProvider } from './BreakpointContext';
 import { BraidThemeContext } from './BraidThemeContext';
-import { BraidTheme } from '../../themes/BraidTheme.d';
+import { BraidTheme } from '../../themes/BraidTheme';
 
 if (process.env.NODE_ENV === 'development') {
   ensureResetImported();
@@ -41,15 +41,7 @@ const DefaultLinkComponent = makeLinkComponent((props, ref) => (
 
 const LinkComponentContext = createContext<LinkComponent>(DefaultLinkComponent);
 
-export const useLinkComponentWithoutRefSupport = () => {
-  const linkComponent = useContext(LinkComponentContext);
-
-  return '__forwardRef__' in linkComponent
-    ? linkComponent.__forwardRef__
-    : linkComponent;
-};
-
-export const useLinkComponentWithRefSupport = (ref: Ref<HTMLAnchorElement>) => {
+export const useLinkComponent = (ref: Ref<HTMLAnchorElement>) => {
   const linkComponent = useContext(LinkComponentContext);
 
   assert(
@@ -99,18 +91,20 @@ export const BraidProvider = ({
   return (
     <BraidThemeContext.Provider value={theme}>
       <TreatProvider theme={theme.treatTheme}>
-        <LinkComponentContext.Provider
-          value={linkComponent || linkComponentFromContext}
-        >
-          {styleBody ? (
-            <style type="text/css">{`body{margin:0;padding:0;background:${theme.background}}`}</style>
-          ) : null}
-          {alreadyInBraidProvider || inTestProvider ? (
-            children
-          ) : (
-            <BreakpointProvider>{children}</BreakpointProvider>
-          )}
-        </LinkComponentContext.Provider>
+        {styleBody ? (
+          <style type="text/css">{`body{margin:0;padding:0;background:${theme.background}}`}</style>
+        ) : null}
+        <div className={theme.vanillaTheme}>
+          <LinkComponentContext.Provider
+            value={linkComponent || linkComponentFromContext}
+          >
+            {alreadyInBraidProvider || inTestProvider ? (
+              children
+            ) : (
+              <BreakpointProvider>{children}</BreakpointProvider>
+            )}
+          </LinkComponentContext.Provider>
+        </div>
       </TreatProvider>
     </BraidThemeContext.Provider>
   );

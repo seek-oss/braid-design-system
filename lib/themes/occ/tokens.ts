@@ -1,4 +1,4 @@
-import { TreatTokens } from '../makeBraidTheme';
+import { BraidTokens } from '../tokenType';
 import { lighten } from 'polished';
 
 const brand = '#083cae';
@@ -17,7 +17,7 @@ const white = '#fff';
 const link = '#0946CB';
 const linkVisited = '#5736ab';
 
-const tokens: TreatTokens = {
+const tokens: BraidTokens = {
   name: 'OCC',
   displayName: 'OCC Mundial',
   typography: {
@@ -126,11 +126,6 @@ const tokens: TreatTokens = {
       },
     },
   },
-  breakpoint: {
-    mobile: 0,
-    tablet: 768,
-    desktop: 992,
-  },
   contentWidth: {
     xsmall: 400,
     small: 660,
@@ -176,6 +171,7 @@ const tokens: TreatTokens = {
       caution,
       formHover: formAccent,
       formAccent,
+      brandAccent,
     },
   },
   shadows: {
@@ -194,6 +190,7 @@ const tokens: TreatTokens = {
       neutral: black,
       neutralInverted: white,
       formAccent,
+      brandAccent,
       critical,
       info,
       promote,

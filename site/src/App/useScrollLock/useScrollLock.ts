@@ -1,17 +1,19 @@
 import { useEffect } from 'react';
-import { useStyles } from 'sku/react-treat';
-import * as styleRefs from './useScrollLock.treat';
+import { atoms } from '../../../../lib/css/atoms/atoms';
 
 export function useScrollLock(lock: boolean) {
-  const styles = useStyles(styleRefs);
+  const overflowHidden = atoms({
+    reset: 'div',
+    overflow: 'hidden',
+  }).split(' ');
 
   useEffect(() => {
     if (lock) {
-      document.body.classList.add(styles.scrollLock);
+      document.body.classList.add(...overflowHidden);
 
       return () => {
-        document.body.classList.remove(styles.scrollLock);
+        document.body.classList.remove(...overflowHidden);
       };
     }
-  }, [lock, styles.scrollLock]);
+  }, [lock, overflowHidden]);
 }

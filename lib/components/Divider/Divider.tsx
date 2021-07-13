@@ -1,26 +1,21 @@
 import React from 'react';
-import { useStyles } from 'sku/react-treat';
 import { Box } from '../Box/Box';
-import * as styleRefs from './Divider.treat';
+import * as styles from './Divider.css';
 
 export interface DividerProps {
-  weight?: keyof typeof styleRefs.weight;
+  weight?: keyof typeof styles.weight;
 }
 
 const defaultWeight = 'regular';
-export const Divider = ({ weight = defaultWeight }: DividerProps) => {
-  const styles = useStyles(styleRefs);
-
-  return (
-    <Box position="relative">
-      <Box
-        position="absolute"
-        width="full"
-        className={[
-          styles.base,
-          styles.weight[weight] || styles.weight[defaultWeight],
-        ]}
-      />
-    </Box>
-  );
-};
+export const Divider = ({ weight = defaultWeight }: DividerProps) => (
+  <Box position="relative">
+    <Box
+      position="absolute"
+      width="full"
+      className={[
+        styles.base,
+        styles.weight[weight] || styles.weight[defaultWeight],
+      ]}
+    />
+  </Box>
+);

@@ -1,5 +1,6 @@
-import { TreatTokens } from '../makeBraidTheme';
 import { rgba } from 'polished';
+
+import { BraidTokens } from '../tokenType';
 
 const formAccent = '#0049bd';
 const critical = '#ef0036';
@@ -16,7 +17,7 @@ const linkVisited = 'DarkViolet';
 const secondary = '#757575';
 const neutral = '#c0c0c0';
 
-const tokens: TreatTokens = {
+const tokens: BraidTokens = {
   name: 'docs',
   displayName: 'Docs',
   typography: {
@@ -126,11 +127,6 @@ const tokens: TreatTokens = {
       },
     },
   },
-  breakpoint: {
-    mobile: 0,
-    tablet: 768,
-    desktop: 1136,
-  },
   contentWidth: {
     xsmall: 400,
     small: 660,
@@ -176,6 +172,7 @@ const tokens: TreatTokens = {
       caution,
       formHover: formAccent,
       formAccent,
+      brandAccent,
     },
   },
   shadows: {
@@ -194,6 +191,7 @@ const tokens: TreatTokens = {
       neutral: black,
       neutralInverted: white,
       formAccent,
+      brandAccent,
       critical,
       caution,
       positive,

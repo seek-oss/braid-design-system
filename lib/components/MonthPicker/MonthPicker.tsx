@@ -1,7 +1,6 @@
 import React, { ChangeEvent, FocusEvent, createRef, Fragment } from 'react';
 import { isMobile } from 'is-mobile';
 import assert from 'assert';
-import { useStyles } from 'sku/react-treat';
 import { Box } from '../Box/Box';
 import { Column } from '../Column/Column';
 import { Columns } from '../Columns/Columns';
@@ -9,7 +8,7 @@ import { HiddenVisually } from '../HiddenVisually/HiddenVisually';
 import { Dropdown } from '../Dropdown/Dropdown';
 import { FieldProps, Field } from '../private/Field/Field';
 import { FieldGroup } from '../private/FieldGroup/FieldGroup';
-import * as styleRefs from './MonthPicker.treat';
+import * as styles from './MonthPicker.css';
 
 interface MonthPickerValue {
   month?: number;
@@ -53,12 +52,12 @@ export interface MonthPickerProps
     | 'value'
     | 'labelId'
     | 'aria-describedby'
-    | 'data'
     | 'name'
     | 'autoComplete'
     | 'secondaryMessage'
     | 'autoFocus'
     | 'icon'
+    | 'prefix'
   > {
   value: MonthPickerValue;
   onChange: ChangeHandler;
@@ -105,29 +104,29 @@ const stringToCustomValue = (value: string) => {
   };
 };
 
-const makeChangeHandler = <
-  Element extends HTMLSelectElement | HTMLInputElement
->(
-  onChange: ChangeHandler,
-  value: MonthPickerValue,
-  fieldType: keyof MonthPickerValue | 'native',
-) => (event: ChangeEvent<Element>) => {
-  if (typeof onChange === 'function') {
-    onChange(
-      {
-        month: {
-          year: value && value.year ? value.year : undefined,
-          month: parseInt(event.target.value, 10) || undefined,
-        },
-        year: {
-          month: value && value.month ? value.month : undefined,
-          year: parseInt(event.target.value, 10) || undefined,
-        },
-        native: stringToCustomValue(event.target.value),
-      }[fieldType],
-    );
-  }
-};
+const makeChangeHandler =
+  <Element extends HTMLSelectElement | HTMLInputElement>(
+    onChange: ChangeHandler,
+    value: MonthPickerValue,
+    fieldType: keyof MonthPickerValue | 'native',
+  ) =>
+  (event: ChangeEvent<Element>) => {
+    if (typeof onChange === 'function') {
+      onChange(
+        {
+          month: {
+            year: value && value.year ? value.year : undefined,
+            month: parseInt(event.target.value, 10) || undefined,
+          },
+          year: {
+            month: value && value.month ? value.month : undefined,
+            year: parseInt(event.target.value, 10) || undefined,
+          },
+          native: stringToCustomValue(event.target.value),
+        }[fieldType],
+      );
+    }
+  };
 
 const MonthPicker = ({
   id,
@@ -148,7 +147,6 @@ const MonthPicker = ({
 }: MonthPickerProps) => {
   assert(monthNames.length === 12, 'monthNames array must contain 12 items');
 
-  const styles = useStyles(styleRefs);
   const currentValue = {
     month: value && value.month ? value.month : undefined,
     year: value && value.year ? value.year : undefined,
@@ -197,8 +195,9 @@ const MonthPicker = ({
       label={label}
       value={customValueToString(currentValue)}
       {...restProps}
+      icon={undefined}
+      prefix={undefined}
       labelId={undefined}
-      data={undefined}
       name={undefined}
       autoComplete={undefined}
       secondaryMessage={null}

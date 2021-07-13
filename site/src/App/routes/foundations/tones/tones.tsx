@@ -1,5 +1,4 @@
 import React from 'react';
-import { useStyles } from 'sku/react-treat';
 import { BoxProps } from '../../../../../../lib/components/Box/Box';
 import {
   Box,
@@ -15,7 +14,7 @@ import { TextStack } from '../../../TextStack/TextStack';
 import { Page } from '../../../../types';
 import { ThemedExample } from '../../../ThemeSetting';
 import { PageTitle } from '../../../Seo/PageTitle';
-import * as styleRefs from './tones.treat';
+import * as styles from './tones.css';
 
 const tones = [
   'critical',
@@ -138,7 +137,6 @@ const toneDocs: Record<Tone, ColourDoc> = {
 };
 
 const ToneDefinition = ({ tone }: { tone: Tone }) => {
-  const styles = useStyles(styleRefs);
   const { swatch, description, usage } = toneDocs[tone];
 
   return (
@@ -196,8 +194,6 @@ const ToneDefinition = ({ tone }: { tone: Tone }) => {
 };
 
 function TonePage() {
-  const styles = useStyles(styleRefs);
-
   return (
     <TextStack>
       <Heading component="h1" level="2">

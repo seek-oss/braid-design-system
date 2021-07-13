@@ -9,7 +9,6 @@ import React, {
   ReactElement,
 } from 'react';
 import assert from 'assert';
-import { useStyles } from 'sku/react-treat';
 import { Box } from '../Box/Box';
 import { normalizeKey } from '../private/normalizeKey';
 import { TabsContext } from './TabsProvider';
@@ -32,10 +31,10 @@ import buildDataAttributes, {
 import { TabListContext } from './TabListContext';
 import { Overlay } from '../private/Overlay/Overlay';
 import { BadgeProps, Badge } from '../Badge/Badge';
-import { useBreakpoint } from '../useBreakpoint/useBreakpoint';
+import { useResponsiveValue } from '../useResponsiveValue/useResponsiveValue';
 import { smoothScroll, smoothScrollIntoView } from '../private/smoothScroll';
 import { useSpace } from '../useSpace/useSpace';
-import * as styleRefs from './Tabs.treat';
+import * as styles from './Tabs.css';
 
 export interface TabProps {
   children: ReactNode;
@@ -45,7 +44,6 @@ export interface TabProps {
 }
 
 export const Tab = ({ children, data, badge, item }: TabProps) => {
-  const styles = useStyles(styleRefs);
   const tabsContext = useContext(TabsContext);
   const tabListContext = useContext(TabListContext);
   const tabRef = useRef<HTMLButtonElement>(null);
@@ -81,7 +79,7 @@ export const Tab = ({ children, data, badge, item }: TabProps) => {
     a11y,
     onChange,
   } = tabsContext;
-  const { tabListItemIndex, scrollContainer } = tabListContext;
+  const { tabListItemIndex, scrollContainer, divider } = tabListContext;
   const isSelected =
     selectedIndex > -1
       ? selectedIndex === tabListItemIndex
@@ -98,14 +96,17 @@ export const Tab = ({ children, data, badge, item }: TabProps) => {
   }, [isFocused]);
 
   const firstRenderRef = useRef(true);
-  const breakpoint = useBreakpoint();
+  const isMobile = useResponsiveValue()({
+    mobile: true,
+    tablet: false,
+  });
   useEffect(() => {
     if (!tabRef.current || !scrollContainer) {
       return;
     }
 
     if (isSelected || isFocused) {
-      if (breakpoint === 'mobile') {
+      if (isMobile) {
         smoothScroll(tabRef.current, {
           scrollContainer,
           direction: 'horizontal',
@@ -123,15 +124,7 @@ export const Tab = ({ children, data, badge, item }: TabProps) => {
     }
 
     firstRenderRef.current = false;
-  }, [
-    isSelected,
-    isFocused,
-    scrollContainer,
-    space,
-    paddingX,
-    grid,
-    breakpoint,
-  ]);
+  }, [isSelected, isFocused, scrollContainer, space, paddingX, grid, isMobile]);
 
   const onKeyUp = (event: KeyboardEvent<HTMLButtonElement>) => {
     const targetKey = normalizeKey(event);
@@ -215,7 +208,7 @@ export const Tab = ({ children, data, badge, item }: TabProps) => {
       paddingX={paddingX}
       paddingY="medium"
       className={styles.tab}
-      {...buildDataAttributes(data)}
+      {...(data ? buildDataAttributes(data) : undefined)}
     >
       {/*
         Rendering Text component to provide rendering context
@@ -243,14 +236,16 @@ export const Tab = ({ children, data, badge, item }: TabProps) => {
         overflow="hidden"
         pointerEvents="none"
       >
-        <Box
-          position="absolute"
-          zIndex={1}
-          left={0}
-          right={0}
-          bottom={0}
-          className={styles.divider}
-        />
+        {divider === 'minimal' ? (
+          <Box
+            position="absolute"
+            zIndex={1}
+            left={0}
+            right={0}
+            bottom={0}
+            className={styles.divider}
+          />
+        ) : null}
         <Box
           background="neutral"
           position="absolute"

@@ -40,14 +40,19 @@ const docs: ComponentDocs = {
       label: 'Number of columns',
       description: (
         <Text>
-          The number of tiles in each row. Accepts a number from 1 to 5, and is
-          also responsive. For example: <Strong>[ 2, 4 ]</Strong> will be 2
-          columns on mobile, and 4 above mobile.
+          The number of tiles in each row. Accepts a number from 1 to 5, also
+          supporting responsive values, e.g.{' '}
+          <Strong>
+            {'columns={{ mobile: 2, tablet: 3, desktop: 4, wide: 5 }}'}
+          </Strong>
         </Text>
       ),
       Example: () =>
         source(
-          <Tiles space="small" columns={[2, 4]}>
+          <Tiles
+            space="small"
+            columns={{ mobile: 2, tablet: 3, desktop: 4, wide: 5 }}
+          >
             <Placeholder height={40} />
             <Placeholder height={40} />
             <Placeholder height={40} />
@@ -66,8 +71,12 @@ const docs: ComponentDocs = {
       description: (
         <Text>
           Control the amount of space between each tile using the{' '}
-          <Strong>space</Strong> prop. This can also be a responsive list of
-          spacing values.
+          <Strong>space</Strong> prop, also supporting responsive values, e.g.{' '}
+          <Strong>
+            {
+              "space={{ mobile: 'small', tablet: 'medium', desktop: 'large', wide: 'xlarge' }}"
+            }
+          </Strong>
         </Text>
       ),
       Example: () =>

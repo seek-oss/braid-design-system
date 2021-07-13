@@ -1,20 +1,24 @@
 import React, { Children, ReactNode } from 'react';
-import { useStyles } from 'sku/react-treat';
 import flattenChildren from 'react-keyed-flatten-children';
 import assert from 'assert';
-import { Box, BoxProps } from '../Box/Box';
+import { Box } from '../Box/Box';
+import type { ResponsiveSpace } from '../../css/atoms/atoms';
 import { Divider, DividerProps } from '../Divider/Divider';
 import { Hidden, HiddenProps } from '../Hidden/Hidden';
-import * as hiddenStyleRefs from '../Hidden/Hidden.treat';
+import * as hiddenStyles from '../Hidden/Hidden.css';
 import { alignToFlexAlign, Align } from '../../utils/align';
-import {
-  mapResponsiveProp,
-  normaliseResponsiveProp,
-  ResponsiveProp,
-} from '../../utils/responsiveProp';
-import { resolveResponsiveRangeProps } from '../../utils/responsiveRangeProps';
-import { useNegativeMarginTop } from '../../hooks/useNegativeMargin/useNegativeMargin';
+import { resolveResponsiveRangeProps } from '../../utils/resolveResponsiveRangeProps';
+import { optimizeResponsiveArray } from '../../utils/optimizeResponsiveArray';
+import { negativeMarginTop } from '../../css/negativeMargin/negativeMargin';
 import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
+import {
+  OptionalResponsiveValue,
+  mapResponsiveValue,
+  normalizeResponsiveValue,
+} from '../../css/atoms/sprinkles.css';
+import buildDataAttributes, {
+  DataAttributeMap,
+} from '../private/buildDataAttributes';
 
 const alignToDisplay = {
   left: 'block',
@@ -23,8 +27,8 @@ const alignToDisplay = {
 } as const;
 
 interface UseStackItemProps {
-  align: ResponsiveProp<Align>;
-  space: BoxProps['paddingTop'];
+  align: OptionalResponsiveValue<Align>;
+  space: ResponsiveSpace;
 }
 
 const useStackItem = ({ align, space }: UseStackItemProps) => ({
@@ -34,13 +38,13 @@ const useStackItem = ({ align, space }: UseStackItemProps) => ({
   ...(align === 'left'
     ? null
     : {
-        display: mapResponsiveProp(align, alignToDisplay) || 'flex',
+        display: mapResponsiveValue(align, (value) => alignToDisplay[value]),
         flexDirection: 'column' as const,
         alignItems: alignToFlexAlign(align),
       }),
 });
 
-const validStackComponents = ['div', 'ol', 'ul'] as const;
+export const validStackComponents = ['div', 'ol', 'ul'] as const;
 
 const extractHiddenPropsFromChild = (child: ReactNode) =>
   child && typeof child === 'object' && 'type' in child && child.type === Hidden
@@ -49,7 +53,7 @@ const extractHiddenPropsFromChild = (child: ReactNode) =>
 
 const resolveHiddenProps = ({ screen, above, below }: HiddenProps) =>
   screen
-    ? ([true, true, true] as const)
+    ? ([true, true, true, true] as const)
     : resolveResponsiveRangeProps({
         above,
         below,
@@ -57,34 +61,39 @@ const resolveHiddenProps = ({ screen, above, below }: HiddenProps) =>
 
 const calculateHiddenStackItemProps = (
   stackItemProps: ReturnType<typeof useStackItem>,
-  [hiddenOnMobile, hiddenOnTablet, hiddenOnDesktop]: Readonly<
-    [boolean, boolean, boolean]
+  [hiddenOnMobile, hiddenOnTablet, hiddenOnDesktop, hiddenOnWide]: Readonly<
+    [boolean, boolean, boolean, boolean]
   >,
 ) => {
-  const [
-    displayMobile,
-    displayTablet,
-    displayDesktop,
-  ] = normaliseResponsiveProp(
-    'display' in stackItemProps ? stackItemProps.display : 'block',
+  const normalizedValue = normalizeResponsiveValue(
+    stackItemProps.display !== undefined ? stackItemProps.display : 'block',
   );
+
+  const {
+    mobile: displayMobile = 'block',
+    tablet: displayTablet = displayMobile,
+    desktop: displayDesktop = displayTablet,
+    wide: displayWide = displayDesktop,
+  } = normalizedValue;
 
   return {
     ...stackItemProps,
-    display: [
+    display: optimizeResponsiveArray([
       hiddenOnMobile ? 'none' : displayMobile,
       hiddenOnTablet ? 'none' : displayTablet,
       hiddenOnDesktop ? 'none' : displayDesktop,
-    ] as const,
+      hiddenOnWide ? 'none' : displayWide,
+    ]),
   };
 };
 
 export interface StackProps {
   component?: typeof validStackComponents[number];
   children: ReactNodeNoStrings;
-  space: BoxProps['paddingTop'];
-  align?: ResponsiveProp<Align>;
+  space: ResponsiveSpace;
+  align?: OptionalResponsiveValue<Align>;
   dividers?: boolean | DividerProps['weight'];
+  data?: DataAttributeMap;
 }
 
 export const Stack = ({
@@ -93,6 +102,7 @@ export const Stack = ({
   space = 'none',
   align = 'left',
   dividers = false,
+  data,
 }: StackProps) => {
   assert(
     validStackComponents.includes(component),
@@ -101,19 +111,22 @@ export const Stack = ({
       .join(', ')}]`,
   );
 
-  const hiddenStyles = useStyles(hiddenStyleRefs);
   const stackItemProps = useStackItem({ space, align });
   const stackItems = flattenChildren(children);
   const isList = component === 'ol' || component === 'ul';
   const stackItemComponent = isList ? 'li' : 'div';
-  const negativeMarginTop = useNegativeMarginTop(space);
 
   let firstItemOnMobile: number | null = null;
   let firstItemOnTablet: number | null = null;
   let firstItemOnDesktop: number | null = null;
+  let firstItemOnWide: number | null = null;
 
   return (
-    <Box component={component} className={negativeMarginTop}>
+    <Box
+      component={component}
+      className={negativeMarginTop(space)}
+      {...(data ? buildDataAttributes(data) : undefined)}
+    >
       {Children.map(stackItems, (child, index) => {
         assert(
           !(
@@ -127,8 +140,12 @@ export const Stack = ({
         const hiddenProps = extractHiddenPropsFromChild(child);
         const hidden = hiddenProps
           ? resolveHiddenProps(hiddenProps)
-          : ([false, false, false] as const);
-        const [hiddenOnMobile, hiddenOnTablet, hiddenOnDesktop] = hidden;
+          : ([false, false, false, false] as const);
+        const [hiddenOnMobile, hiddenOnTablet, hiddenOnDesktop, hiddenOnWide] =
+          hidden;
+
+        const responsivelyHidden =
+          hiddenOnMobile || hiddenOnTablet || hiddenOnDesktop || hiddenOnWide;
 
         if (firstItemOnMobile === null && !hiddenOnMobile) {
           firstItemOnMobile = index;
@@ -142,6 +159,10 @@ export const Stack = ({
           firstItemOnDesktop = index;
         }
 
+        if (firstItemOnWide === null && !hiddenOnWide) {
+          firstItemOnWide = index;
+        }
+
         return (
           <Box
             component={stackItemComponent}
@@ -150,7 +171,7 @@ export const Stack = ({
                 ? hiddenStyles.hiddenOnPrint
                 : null,
             ]}
-            {...(hiddenOnMobile || hiddenOnTablet || hiddenOnDesktop
+            {...(responsivelyHidden
               ? calculateHiddenStackItemProps(stackItemProps, hidden)
               : stackItemProps)}
           >
@@ -158,13 +179,12 @@ export const Stack = ({
               <Box
                 width="full"
                 paddingBottom={space}
-                display={
-                  [
-                    index === firstItemOnMobile ? 'none' : 'block',
-                    index === firstItemOnTablet ? 'none' : 'block',
-                    index === firstItemOnDesktop ? 'none' : 'block',
-                  ] as const
-                }
+                display={optimizeResponsiveArray([
+                  index === firstItemOnMobile ? 'none' : 'block',
+                  index === firstItemOnTablet ? 'none' : 'block',
+                  index === firstItemOnDesktop ? 'none' : 'block',
+                  index === firstItemOnWide ? 'none' : 'block',
+                ])}
               >
                 {typeof dividers === 'string' ? (
                   <Divider weight={dividers} />

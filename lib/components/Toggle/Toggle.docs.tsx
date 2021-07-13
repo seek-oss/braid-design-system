@@ -59,6 +59,35 @@ const docs: ComponentDocs = {
           </Stack>,
         ),
     },
+    {
+      label: 'Sizes',
+      description: (
+        <Text>
+          You can customise the size of the toggle via the <Strong>size</Strong>{' '}
+          prop, which accepts either <Strong>standard</Strong> or{' '}
+          <Strong>small.</Strong>
+        </Text>
+      ),
+      Example: ({ id, getState, toggleState }) =>
+        source(
+          <Stack space="medium">
+            <Toggle
+              id={`${id}_standard`}
+              label="Standard"
+              on={getState('two')}
+              onChange={() => toggleState('two')}
+              size="standard"
+            />
+            <Toggle
+              id={`${id}_small`}
+              label="Small"
+              on={getState('one')}
+              onChange={() => toggleState('one')}
+              size="small"
+            />
+          </Stack>,
+        ),
+    },
   ],
 };
 

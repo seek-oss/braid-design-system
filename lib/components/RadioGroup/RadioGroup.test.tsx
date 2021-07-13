@@ -68,10 +68,10 @@ describe('RadioGroup', () => {
       </BraidTestProvider>,
     );
 
-    expect(getByLabelText('Option 1')).toHaveDescription(
+    expect(getByLabelText('Option 1')).toHaveAccessibleDescription(
       'More detail about group',
     );
-    expect(getByLabelText('Option 2')).toHaveDescription(
+    expect(getByLabelText('Option 2')).toHaveAccessibleDescription(
       'More detail about group',
     );
   });
@@ -100,10 +100,10 @@ describe('RadioGroup', () => {
       </BraidTestProvider>,
     );
 
-    expect(getByLabelText('Option 1')).toHaveDescription(
+    expect(getByLabelText('Option 1')).toHaveAccessibleDescription(
       'More detail about group The first option',
     );
-    expect(getByLabelText('Option 2')).toHaveDescription(
+    expect(getByLabelText('Option 2')).toHaveAccessibleDescription(
       'More detail about group The second option',
     );
   });
@@ -133,10 +133,10 @@ describe('RadioGroup', () => {
       </BraidTestProvider>,
     );
 
-    expect(getByLabelText('Option 1')).toHaveDescription(
+    expect(getByLabelText('Option 1')).toHaveAccessibleDescription(
       'Required More detail about group The first option',
     );
-    expect(getByLabelText('Option 2')).toHaveDescription(
+    expect(getByLabelText('Option 2')).toHaveAccessibleDescription(
       'Required More detail about group The second option',
     );
   });

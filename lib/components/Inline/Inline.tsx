@@ -3,22 +3,26 @@ import React, { Children } from 'react';
 import flattenChildren from 'react-keyed-flatten-children';
 
 import { Box } from '../Box/Box';
-import { ResponsiveSpace } from '../Box/useBoxStyles';
+import { ResponsiveSpace } from '../../css/atoms/atoms';
 import {
-  useNegativeMarginLeft,
-  useNegativeMarginTop,
-} from '../../hooks/useNegativeMargin/useNegativeMargin';
+  negativeMarginLeft,
+  negativeMarginTop,
+} from '../../css/negativeMargin/negativeMargin';
 import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import {
   resolveCollapsibleAlignmentProps,
   CollapsibleAlignmentProps,
 } from '../../utils/collapsibleAlignmentProps';
+import buildDataAttributes, {
+  DataAttributeMap,
+} from '../private/buildDataAttributes';
 
-const validInlineComponents = ['div', 'ol', 'ul'] as const;
+export const validInlineComponents = ['div', 'ol', 'ul'] as const;
 
 export interface InlineProps extends CollapsibleAlignmentProps {
   space: ResponsiveSpace;
   component?: typeof validInlineComponents[number];
+  data?: DataAttributeMap;
   children: ReactNodeNoStrings;
 }
 
@@ -29,6 +33,7 @@ export const Inline = ({
   collapseBelow,
   reverse,
   component = 'div',
+  data,
   children,
 }: InlineProps) => {
   assert(
@@ -37,9 +42,6 @@ export const Inline = ({
       .map((c) => `'${c}'`)
       .join(', ')}]`,
   );
-
-  const negativeMarginLeft = useNegativeMarginLeft(space);
-  const negativeMarginTop = useNegativeMarginTop(space);
 
   const isList = component === 'ol' || component === 'ul';
   const inlineItemComponent = isList ? 'li' : 'div';
@@ -56,10 +58,13 @@ export const Inline = ({
   });
 
   return (
-    <Box className={negativeMarginTop}>
+    <Box
+      className={negativeMarginTop(space)}
+      {...(data ? buildDataAttributes(data) : undefined)}
+    >
       <Box
         component={component}
-        className={negativeMarginLeft}
+        className={negativeMarginLeft(space)}
         flexWrap="wrap"
         {...collapsibleAlignmentProps}
       >

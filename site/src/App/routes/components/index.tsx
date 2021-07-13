@@ -7,15 +7,18 @@ import {
 } from '../../navigationHelpers';
 
 const page: RouteProps = {
-  render: ({ match }) => (
-    <ComponentDoc
-      key={match.params.componentName} // Force remount per page to fix hooks errors when generating code snippets
-      subfolder={/^Icon/.test(match.params.componentName) ? 'icons' : undefined}
-      componentName={match.params.componentName}
-      docs={getComponentDocs(match.params.componentName)}
-      snippets={getComponentSnippets(match.params.componentName)}
-    />
-  ),
+  render: ({ match }) => {
+    const componentName = match.params.componentName ?? '';
+    return (
+      <ComponentDoc
+        key={componentName} // Force remount per page to fix hooks errors when generating code snippets
+        subfolder={/^Icon/.test(componentName) ? 'icons' : undefined}
+        componentName={componentName}
+        docs={getComponentDocs(componentName)}
+        snippets={getComponentSnippets(componentName)}
+      />
+    );
+  },
 };
 
 export default {

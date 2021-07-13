@@ -17,6 +17,19 @@ export const galleryItems: ComponentExample[] = [
       ),
   },
   {
+    label: 'Small',
+    Example: ({ id, getState, toggleState }) =>
+      source(
+        <Toggle
+          label="Label"
+          id={id}
+          on={getState('toggle')}
+          onChange={() => toggleState('toggle')}
+          size="small"
+        />,
+      ),
+  },
+  {
     label: 'Toggle Alignment: "left" | "justify" | "right"',
     Example: ({ id, getState, toggleState }) =>
       source(

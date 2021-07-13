@@ -1,4 +1,4 @@
-import { TreatTokens } from '../makeBraidTheme';
+import { BraidTokens } from '../tokenType';
 import { rgba } from 'polished';
 
 const brand = '#0d3880';
@@ -17,7 +17,7 @@ const link = '#2765cf';
 const linkVisited = '#733d90';
 const secondary = '#1c1c1ca1';
 
-const tokens: TreatTokens = {
+const tokens: BraidTokens = {
   name: 'seekAnz',
   displayName: 'SEEK ANZ',
   typography: {
@@ -127,11 +127,6 @@ const tokens: TreatTokens = {
       },
     },
   },
-  breakpoint: {
-    mobile: 0,
-    tablet: 740,
-    desktop: 992,
-  },
   contentWidth: {
     xsmall: 400,
     small: 660,
@@ -177,6 +172,7 @@ const tokens: TreatTokens = {
       positive,
       caution,
       formAccent,
+      brandAccent,
     },
   },
   shadows: {
@@ -195,6 +191,7 @@ const tokens: TreatTokens = {
       neutral: black,
       neutralInverted: white,
       formAccent,
+      brandAccent,
       critical,
       caution,
       positive,

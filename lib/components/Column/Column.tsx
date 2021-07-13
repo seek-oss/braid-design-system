@@ -1,22 +1,27 @@
 import React, { ReactNode, useContext } from 'react';
-import { useStyles } from 'sku/react-treat';
+import { optimizeResponsiveArray } from '../../utils/optimizeResponsiveArray';
 import { Box } from '../Box/Box';
 import { ColumnsContext } from '../Columns/Columns';
-import * as styleRefs from './Column.treat';
+import buildDataAttributes, {
+  DataAttributeMap,
+} from '../private/buildDataAttributes';
+import * as styles from './Column.css';
 
 export interface ColumnProps {
   children: ReactNode;
-  width?: keyof typeof styleRefs.width | 'content';
+  width?: keyof typeof styles.width | 'content';
+  data?: DataAttributeMap;
 }
 
-export const Column = ({ children, width }: ColumnProps) => {
-  const styles = useStyles(styleRefs);
+export const Column = ({ children, data, width }: ColumnProps) => {
   const {
     collapseMobile,
     collapseTablet,
+    collapseDesktop,
     mobileSpace,
     tabletSpace,
     desktopSpace,
+    wideSpace,
     collapsibleAlignmentChildProps,
   } = useContext(ColumnsContext);
 
@@ -29,20 +34,23 @@ export const Column = ({ children, width }: ColumnProps) => {
         styles.column,
         width !== 'content' ? styles.width[width!] : null,
       ]}
+      {...(data ? buildDataAttributes(data) : undefined)}
     >
       <Box
-        paddingLeft={[
+        paddingLeft={optimizeResponsiveArray([
           collapseMobile ? 'none' : mobileSpace,
           collapseTablet ? 'none' : tabletSpace,
-          desktopSpace,
-        ]}
+          collapseDesktop ? 'none' : desktopSpace,
+          wideSpace,
+        ])}
         paddingTop={
-          collapseMobile || collapseTablet
-            ? [
+          collapseMobile || collapseTablet || collapseDesktop
+            ? optimizeResponsiveArray([
                 collapseMobile ? mobileSpace : 'none',
                 collapseTablet ? tabletSpace : 'none',
+                collapseDesktop ? desktopSpace : 'none',
                 'none',
-              ]
+              ])
             : undefined
         }
         height="full"

@@ -4,7 +4,8 @@ import path from 'path';
 import ts from 'typescript';
 import isEqual from 'lodash/isEqual';
 
-const aliasWhitelist = ['ResponsiveProp'];
+const MAX_DEPTH = 10;
+const aliasWhitelist = ['ClassValue'];
 const propBlacklist = ['key'];
 
 const tsconfigPath = path.join(__dirname, '../tsconfig.json');
@@ -13,28 +14,9 @@ const componentsFile = path.join(__dirname, '../lib/components/index.ts');
 const stringAliases: Record<string, string> = {
   // with an explicit alias 'boolean' becomes a union of 'true' | 'false'
   boolean: 'boolean',
+  Element: 'Element',
   CSSProperties: 'CSSProperties',
-  'string | number | boolean | ClassDictionary | ClassArray':
-    'string | number | boolean | ClassDictionary | ClassArray',
 };
-
-const reactNodeTypes = [
-  'string',
-  'number',
-  'false',
-  'true',
-  '{}',
-  'ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>',
-  'ReactNodeArray',
-  'ReactPortal',
-];
-
-const reactNodeNoStringsTypes = [
-  'false',
-  'true',
-  'ReactElement<any, string | ((props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<any, any, any>)>',
-  'ReactNodeArray',
-];
 
 export interface NormalisedInterface {
   type: 'interface';
@@ -43,6 +25,8 @@ export interface NormalisedInterface {
       propName: string;
       required: boolean;
       type: NormalisedPropType;
+      deprecated: boolean;
+      tags: Array<{ name: string; text: string }>;
       description?: string;
     };
   };
@@ -96,10 +80,22 @@ export default () => {
 
   const checker = program.getTypeChecker();
 
+  function resolveDeclaration(exp: ts.Symbol) {
+    if (exp.valueDeclaration) {
+      return exp.valueDeclaration;
+    }
+
+    if (exp.declarations) {
+      return exp.declarations[0];
+    }
+
+    throw new Error('Could not resolve declaration');
+  }
+
   function getComponentPropsType(exp: ts.Symbol) {
     const type = checker.getTypeOfSymbolAtLocation(
       exp,
-      exp.valueDeclaration || exp.declarations[0],
+      resolveDeclaration(exp),
     );
 
     const callSignatures = type.getCallSignatures();
@@ -124,6 +120,7 @@ export default () => {
   function normalizeInterface(
     propsType: ts.Type,
     propsObj: ts.Symbol,
+    depth: number,
     extractComments?: boolean,
   ): NormalisedInterface {
     return {
@@ -137,6 +134,18 @@ export default () => {
             const propName = prop.getName();
 
             let description = '';
+            const tags = prop
+              .getJsDocTags()
+              .filter(({ name }) => name !== 'see')
+              .map(({ name, text }) => ({
+                name,
+                text:
+                  Array.isArray(text) && text.length > 0 ? text[0].text : text,
+              }));
+
+            const deprecated = tags.some(({ name }) =>
+              /^deprecated$/i.test(name),
+            );
 
             if (extractComments) {
               description = prop
@@ -147,14 +156,14 @@ export default () => {
 
             // Find type of prop by looking in context of the props object itself.
             const propType = checker
-              .getTypeOfSymbolAtLocation(prop, propsObj.valueDeclaration)
+              .getTypeOfSymbolAtLocation(prop, resolveDeclaration(propsObj))
               .getNonNullableType();
 
             const isOptional =
               (prop.getFlags() & ts.SymbolFlags.Optional) !== 0;
 
             const typeAlias = checker.typeToString(
-              checker.getTypeAtLocation(prop.valueDeclaration),
+              checker.getTypeAtLocation(resolveDeclaration(prop)),
             );
 
             return {
@@ -163,7 +172,9 @@ export default () => {
                 required: !isOptional,
                 type: aliasWhitelist.includes(typeAlias)
                   ? typeAlias
-                  : normaliseType(propType, propsObj),
+                  : normaliseType(propType, propsObj, depth + 1),
+                deprecated,
+                tags,
                 description,
               },
             };
@@ -175,11 +186,19 @@ export default () => {
   function normaliseType(
     type: ts.Type,
     propsObj: ts.Symbol,
+    depth: number,
   ): NormalisedPropType {
     const typeString = checker.typeToString(type);
 
     if (stringAliases[typeString]) {
       return stringAliases[typeString];
+    }
+
+    if (depth > MAX_DEPTH) {
+      console.warn(
+        'Max depth reached normalising type. Return builtin string representation',
+      );
+      return typeString;
     }
 
     if (type.aliasSymbol) {
@@ -189,7 +208,7 @@ export default () => {
         return {
           params: type.aliasTypeArguments
             ? type.aliasTypeArguments.map((aliasArg) =>
-                normaliseType(aliasArg, propsObj),
+                normaliseType(aliasArg, propsObj, depth + 1),
               )
             : [],
           alias,
@@ -203,24 +222,40 @@ export default () => {
         checker.typeToString(unionItem),
       );
 
-      if (isEqual(types, reactNodeTypes)) {
+      if (
+        isEqual(types.slice(0, 6), [
+          'string',
+          'number',
+          'false',
+          'true',
+          '{}',
+          'ReactElement<any, string | JSXElementConstructor<any>>',
+        ])
+      ) {
         return 'ReactNode';
       }
 
-      if (isEqual(types, reactNodeNoStringsTypes)) {
+      if (
+        isEqual(types, [
+          'false',
+          'true',
+          'ReactElement<any, string | JSXElementConstructor<any>>',
+          'ReactNodeArray',
+        ])
+      ) {
         return 'ReactNodeNoStrings';
       }
 
       return {
         type: 'union',
         types: type.types.map((unionItem) =>
-          normaliseType(unionItem, propsObj),
+          normaliseType(unionItem, propsObj, depth + 1),
         ),
       };
     }
 
     if (type.isClassOrInterface()) {
-      return normalizeInterface(type, propsObj);
+      return normalizeInterface(type, propsObj, depth + 1);
     }
 
     return typeString;
@@ -240,14 +275,14 @@ export default () => {
 
     return {
       exportType: 'component',
-      props: normalizeInterface(propsType, propsObj, true),
+      props: normalizeInterface(propsType, propsObj, 0, true),
     };
   }
 
   function getHookDocs(exp: ts.Symbol): HookDoc {
     const type = checker.getTypeOfSymbolAtLocation(
       exp,
-      exp.valueDeclaration || exp.declarations[0],
+      resolveDeclaration(exp),
     );
 
     const callSignature = type.getCallSignatures()[0];
@@ -257,12 +292,12 @@ export default () => {
       params: callSignature.getParameters().map((param) => {
         const paramType = checker.getTypeOfSymbolAtLocation(
           param,
-          exp.valueDeclaration,
+          resolveDeclaration(exp),
         );
 
-        return normaliseType(paramType, exp);
+        return normaliseType(paramType, exp, 0);
       }),
-      returnType: normaliseType(callSignature.getReturnType(), exp),
+      returnType: normaliseType(callSignature.getReturnType(), exp, 0),
     };
   }
 
@@ -276,13 +311,23 @@ export default () => {
       if (moduleSymbol) {
         return Object.assign(
           {},
-          ...checker.getExportsOfModule(moduleSymbol).map((moduleExport) => ({
-            [moduleExport.escapedName as string]: moduleExport
-              .getName()
-              .startsWith('use')
-              ? getHookDocs(moduleExport)
-              : getComponentDocs(moduleExport),
-          })),
+          ...checker.getExportsOfModule(moduleSymbol).map((moduleExport) => {
+            try {
+              const exportType = moduleExport.getName().startsWith('use')
+                ? getHookDocs(moduleExport)
+                : getComponentDocs(moduleExport);
+
+              return {
+                [moduleExport.escapedName as string]: exportType,
+              };
+            } catch (e) {
+              console.log(
+                'Failed to extract type from',
+                moduleExport.escapedName,
+              );
+              console.error(e);
+            }
+          }),
         );
       }
     }

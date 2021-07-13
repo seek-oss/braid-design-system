@@ -21,7 +21,7 @@ const parseSummary = (summary) => {
 
   const [, frontmatter, roughSummary] = execResult;
 
-  const data = yaml.safeLoad(frontmatter);
+  const data = yaml.load(frontmatter);
 
   return {
     summary: roughSummary.trim(),

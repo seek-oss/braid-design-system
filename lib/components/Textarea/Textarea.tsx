@@ -1,23 +1,21 @@
 import React, {
   forwardRef,
   useState,
-  ReactNode,
   AllHTMLAttributes,
   useRef,
   UIEvent,
   useCallback,
   FormEvent,
 } from 'react';
-import { useStyles } from 'sku/react-treat';
 import { Box } from '../Box/Box';
-import { Text } from '../Text/Text';
 import { formatRanges } from './formatRanges';
 import { Field, FieldProps } from '../private/Field/Field';
-import * as styleRefs from './Textarea.treat';
+import { CharacterLimitStatus } from '../private/Field/CharacterLimitStatus';
+import * as styles from './Textarea.css';
 
 type NativeTextareaProps = AllHTMLAttributes<HTMLTextAreaElement>;
 export interface TextareaProps
-  extends Omit<FieldProps, 'labelId' | 'secondaryMessage' | 'icon'> {
+  extends Omit<FieldProps, 'labelId' | 'secondaryMessage' | 'icon' | 'prefix'> {
   value: NonNullable<NativeTextareaProps['value']>;
   onChange: NonNullable<NativeTextareaProps['onChange']>;
   onBlur?: NativeTextareaProps['onBlur'];
@@ -34,29 +32,6 @@ export interface TextareaProps
   grow?: boolean;
 }
 
-const renderCount = ({
-  characterLimit,
-  value = '',
-}: Pick<TextareaProps, 'characterLimit' | 'value'>): ReactNode => {
-  const inputLength = String(value).length;
-
-  if (
-    typeof characterLimit === 'undefined' ||
-    inputLength < Math.ceil((characterLimit * 0.7) / 10) * 10
-  ) {
-    return null;
-  }
-
-  const diff = characterLimit - inputLength;
-  const valid = diff >= 0;
-
-  return (
-    <Text size="small" tone={valid ? 'secondary' : 'critical'}>
-      {diff}
-    </Text>
-  );
-};
-
 const pxToInt = (str: string | null) =>
   typeof str === 'string' ? parseInt(str.replace('px', ''), 10) : 0;
 
@@ -65,9 +40,14 @@ const calculateLines = (
   lines: number,
   lineLimit?: number,
 ) => {
-  const { paddingBottom, paddingTop, lineHeight } = window.getComputedStyle(
-    target,
-  );
+  const { paddingBottom, paddingTop, lineHeight } =
+    window.getComputedStyle(target);
+
+  // If line height is not a pixel value (e.g. 'normal' or unitless),
+  // bail out of grow behaviour as we cannot calculate accurately.
+  if (!lineHeight.endsWith('px')) {
+    return lines;
+  }
 
   const padding = pxToInt(paddingTop) + pxToInt(paddingBottom);
   const currentRows = Math.floor(
@@ -83,7 +63,7 @@ const calculateLines = (
     : currentRows;
 };
 
-const NamedTextarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
+export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
   (
     {
       value,
@@ -93,7 +73,7 @@ const NamedTextarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
       onPaste,
       placeholder,
       characterLimit,
-      highlightRanges,
+      highlightRanges: highlightRangesProp = [],
       lines = 3,
       lineLimit,
       grow = true,
@@ -101,7 +81,6 @@ const NamedTextarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
     },
     ref,
   ) => {
-    const styles = useStyles(styleRefs);
     const [rows, setRows] = useState(lines);
     const highlightsRef = useRef<HTMLDivElement>(null);
     const updateScroll = useCallback(
@@ -112,21 +91,36 @@ const NamedTextarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
       },
       [highlightsRef],
     );
-    const hasHighlights = Boolean(highlightRanges);
+
+    const inputLength = String(value).length;
+    const excessCharactersRange =
+      characterLimit && inputLength > characterLimit
+        ? [{ start: characterLimit }]
+        : [];
+
+    const highlightRanges = [...excessCharactersRange, ...highlightRangesProp];
+    const hasHighlights = highlightRanges.length > 0;
 
     return (
       <Field
         {...restProps}
         value={value}
+        icon={undefined}
+        prefix={undefined}
         labelId={undefined}
-        secondaryMessage={renderCount({
-          characterLimit,
-          value,
-        })}
+        secondaryMessage={
+          characterLimit ? (
+            <CharacterLimitStatus
+              value={value}
+              characterLimit={characterLimit}
+            />
+          ) : null
+        }
       >
         {(overlays, { className, borderRadius, background, ...fieldProps }) => (
           <Box
             position="relative"
+            width="full"
             zIndex={0}
             background={background}
             borderRadius={borderRadius}
@@ -187,6 +181,4 @@ const NamedTextarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
   },
 );
 
-NamedTextarea.displayName = 'Textarea';
-
-export const Textarea = NamedTextarea;
+Textarea.displayName = 'Textarea';

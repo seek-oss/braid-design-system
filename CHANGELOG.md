@@ -1,5 +1,885 @@
 # braid-design-system
 
+## 30.2.0
+
+### Minor Changes
+
+- **TextField:** Add `characterLimit` prop ([#963](https://github.com/seek-oss/braid-design-system/pull/963))
+
+  You can now provide a `characterLimit` that will communicate when the input text approaches or exceeds the specified limit.
+
+  To prevent loss of information, exceeding the limit is permitted, however the count will be presented in a critical tone.
+
+## 30.1.0
+
+### Minor Changes
+
+- Add `wide` breakpoint of 1200px ([#960](https://github.com/seek-oss/braid-design-system/pull/960))
+
+  This adds support for `wide` to the following touchpoints:
+
+  - Responsive values, e.g.
+    ```ts
+    { mobile: 'small', wide: 'large' }
+    ```
+  - Responsive range props, e.g.
+    ```tsx
+    <Columns collapseBelow="wide" space={{ mobile: 'small', wide: 'large' }}>
+    ```
+  - The `responsiveStyle` function, e.g.
+    ```ts
+    export const className = style(responsiveStyle({ wide: '...' }));
+    ```
+  - The `breakpoints` object, which now exposes the number `1200` via `breakpoints.wide`, i.e.
+    ```ts
+    {
+      mobile: 0,
+      tablet: 740,
+      desktop: 940,
+      wide: 1200
+    }
+    ```
+
+- Add `useResponsiveValue` Hook ([#960](https://github.com/seek-oss/braid-design-system/pull/960))
+
+  This Hook will return the resolved value based on the breakpoint the browser viewport currently falls within (`mobile`, `tablet`, `desktop` or `wide`). As this can only be calculated in the browser, the value will also be `null` when rendering server-side or statically rendering.
+
+  Note that this Hook returns a function so that it can be called anywhere within your component.
+
+  **EXAMPLE USAGE**
+
+  ```tsx
+  const responsiveValue = useResponsiveValue();
+
+  const screenSize = responsiveValue({
+    mobile: 'Small',
+    desktop: 'Large',
+  });
+  ```
+
+  You can also resolve to boolean values for breakpoint detection.
+
+  ```tsx
+  const responsiveValue = useResponsiveValue();
+
+  const isMobile = responsiveValue({
+    mobile: true,
+    tablet: false,
+  });
+
+  const isDesktopOrAbove = responsiveValue({
+    mobile: false,
+    desktop: true,
+  });
+  ```
+
+- **Dialog, Drawer:** Support nested Dialogs & Drawers ([#959](https://github.com/seek-oss/braid-design-system/pull/959))
+
+  Remove restriction preventing the nesting of modal components, e.g. `Dialog` and `Drawer`. While it is still discouraged to keep experiences simple, there is no longer a technical guard against it.
+
+### Patch Changes
+
+- Deprecate `useBreakpoint` ([#960](https://github.com/seek-oss/braid-design-system/pull/960))
+
+  This Hook has been deprecated in favour of the new `useResponsiveValue` Hook.
+
+  This is because `useBreakpoint` leads consumers to inadvertently couple themselves to the current set of breakpoints, making it risky for us to introduce new breakpoints.
+
+  For example, you may have chosen to detect large screens by checking that the user is on the (current) largest breakpoint (e.g. `const isDesktop = useBreakpoint() === "desktop"`), but this logic would break if we introduced an even larger breakpoint and the Hook started returning other values.
+
+  To maintain backwards compatibility, `useBreakpoint` will continue to return `"desktop"` when the user is technically on larger breakpoints.
+
+  **MIGRATION GUIDE**
+
+  _Note that the `useResponsiveValue` Hook returns a `responsiveValue` function, so in these cases we're double-calling the function._
+
+  ```diff
+  -const isMobile = useBreakpoint() === 'mobile';
+  +const isMobile = useResponsiveValue()({
+  +  mobile: true,
+  +  tablet: false
+  +});
+  ```
+
+  ```diff
+  -const isTablet = useBreakpoint() === 'tablet';
+  +const isTablet = useResponsiveValue()({
+  +  mobile: false,
+  +  tablet: true,
+  +  desktop: false,
+  +});
+  ```
+
+  ```diff
+  -const isDesktop = useBreakpoint() === 'desktop';
+  +const isDesktop = useResponsiveValue()({
+  +  mobile: false,
+  +  desktop: true
+  +});
+  ```
+
+## 30.0.3
+
+### Patch Changes
+
+- Ensure atoms are always lowest specificity ([#955](https://github.com/seek-oss/braid-design-system/pull/955))
+
+## 30.0.2
+
+### Patch Changes
+
+- Replace [classnames](https://github.com/JedWatson/classnames) with [clsx](https://github.com/lukeed/clsx) ([#953](https://github.com/seek-oss/braid-design-system/pull/953))
+
+## 30.0.1
+
+### Patch Changes
+
+- Narrow `fontWeight` token type from `string | number` to the expected values ([#952](https://github.com/seek-oss/braid-design-system/pull/952))
+
+- **Textarea:** Fix "Received NaN for the `rows` attribute." warning. ([#950](https://github.com/seek-oss/braid-design-system/pull/950))
+
+  Fixes the warning in node testing environments where updating the `rows` attribute was failing due to `line-height` being `normal`. Now falling back to the predefined `lines` prop when the dynamic `grow` size is not valid.
+
+## 30.0.0
+
+### Major Changes
+
+- **Box:** Remove `transform="touchable"` in favour of `transform={{ active: 'touchable' }}` ([#947](https://github.com/seek-oss/braid-design-system/pull/947))
+
+  **MIGRATION GUIDE**
+
+  ```diff
+  -<Box transform="touchable">
+  +<Box transform={{ active: 'touchable' }}>
+  ```
+
+- Updated minimum browser requirement to browsers that support CSS variables ([#947](https://github.com/seek-oss/braid-design-system/pull/947))
+
+  For the major browsers this includes:
+
+  - Chrome 49+
+  - iOS 9.3+
+  - Safari 9.1+
+  - Microsoft Edge 16+
+  - Firefox 31+
+  - Samsung 5+
+
+- Update minimum required sku version to `10.13.1` ([#947](https://github.com/seek-oss/braid-design-system/pull/947))
+
+  **BREAKING CHANGE**
+
+  Ensure your version of [sku](https://github.com/seek-oss/sku) is at least `10.13.1`. This is required as Braid now uses [vanilla-extract](https://vanilla-extract.style/) for styling.
+
+- Standardise breakpoints across all themes ([#947](https://github.com/seek-oss/braid-design-system/pull/947))
+
+  All themes now use the following breakpoints:
+
+  - Mobile: `0px`
+  - Tablet: `740px`
+  - Desktop: `992px`
+
+  **BREAKING CHANGE**
+
+  This is a change for the following themes:
+
+  **jobStreet, jobStreetClassic, jobsDb, occ, wireframe**
+
+  - Tablet: `768px` → `740px`
+
+  **catho**
+
+  - Tablet: `600px` → `740px`
+  - Desktop: `1024px` → `992px`
+
+  **docs**
+
+  - Tablet: `768px` → `740px`
+  - Desktop: `1136px` → `992px`
+
+- Migrate to vanilla-extract ([#947](https://github.com/seek-oss/braid-design-system/pull/947))
+
+  Braid now uses [vanilla-extract](http://vanilla-extract.style) rather than [treat](https://seek-oss.github.io/treat) to power its theme-based styling.
+
+  Since they use different file extensions (`.css.ts` vs `.treat.ts`), we're able to ease the migration by supporting both approaches simultaneously in the same project.
+
+  While we encourage you to write new CSS with vanilla-extract files and slowly migrate your existing treat files over time, the goal is to eventually remove treat entirely to enable further improvements to build tooling.
+
+  We've written a **[treat to vanilla-extract migration guide](https://github.com/seek-oss/braid-design-system/blob/master/docs/treat%20to%20vanilla-extract%20migration.md)** to make it easier when opting to migrate a treat file. If you have any questions or concerns, or if you need assistance with implementation or migration work, please reach out to us in the `#braid-support` channel.
+
+  **BREAKING CHANGE**
+
+  **React Portals containing Braid components/styles must use the new `BraidPortal` component**
+
+  CSS-based theming doesn't automatically cascade through React portals. The new [`BraidPortal`](https://seek-oss.github.io/braid-design-system/components/BraidPortal) component handles this for you by forwarding Braid's CSS variables through the portal.
+
+  ```diff
+  -import { createPortal } from 'react-dom';
+  +import { BraidPortal } from 'braid-design-system';
+
+  // ...
+
+  -return open ? createPortal(<SomeComponent />) : null;
+  +return open ? (
+  +  <BraidPortal>
+  +    <SomeComponent />
+  +  </BraidPortal>
+  +) : null;
+  ```
+
+### Minor Changes
+
+- **TextLinkRenderer:** Allow custom CSS reset via the `reset` prop, and allow it to be disabled by setting the prop to `false`. ([#947](https://github.com/seek-oss/braid-design-system/pull/947))
+
+- Support object notation for responsive props ([#947](https://github.com/seek-oss/braid-design-system/pull/947))
+
+  Responsive prop values can now be written as objects with named breakpoints, which is now the recommended notation.
+
+  ```ts
+  { mobile: 'small', tablet: 'medium', desktop: 'large' }
+  ```
+
+  This also means that breakpoints can be skipped.
+
+  ```ts
+  { mobile: 'small', desktop: 'large' }
+  ```
+
+- Add **breakpoints** object for accessing standard breakpoint values ([#947](https://github.com/seek-oss/braid-design-system/pull/947))
+
+  The breakpoints object provides a named set of screen sizes that form the basis of all responsive rules in Braid, available in the following format:
+
+  ```ts
+  {
+    mobile: 0,
+    tablet: 740,
+    desktop: 992
+  }
+  ```
+
+- Add **globalTextStyle** and **globalHeadingStyle** functions for applying standard text styles to foreign markup in [vanilla-extract stylesheets](http://vanilla-extract.style) ([#947](https://github.com/seek-oss/braid-design-system/pull/947))
+
+  Note: These utilities should only be used when you have no control over the HTML.
+
+  **EXAMPLE USAGE**
+
+  ```ts
+  // styles.css.ts
+  import { style, globalStyle } from '@vanilla-extract/css';
+  import { globalHeadingStyle, globalTextStyle } from 'braid-design-system/css';
+
+  export const root = style({});
+
+  // Target all <h2> elements within the root class
+  globalStyle(
+    `${root} h2`,
+    globalHeadingStyle({
+      level: '2',
+    }),
+  );
+
+  // Target all <p> elements within the root class
+  globalStyle(
+    `${root} p`,
+    globalTextStyle({
+      size: 'standard',
+      weight: 'regular',
+    }),
+  );
+  ```
+
+- Add **atoms** function for accessing re-usable atomic classes within [vanilla-extract stylesheets](http://vanilla-extract.style) ([#947](https://github.com/seek-oss/braid-design-system/pull/947))
+
+  Braid's re-usable atomic classes were previously only available via `Box`, but they are now accessible via the new `atoms` function.
+
+  ```ts
+  // styles.css.ts
+  import { atoms } from 'braid-design-system/css';
+
+  export const className = atoms({
+    paddingTop: 'small',
+  });
+  ```
+
+  This allows you to co-locate custom styles with Braid's atomic classes in your stylesheets.
+
+  ```ts
+  // styles.css.ts
+  import { style, composeStyles } from '@vanilla-extract/css';
+  import { atoms } from 'braid-design-system/css';
+
+  export const className = composeStyles(
+    atoms({ position: 'absolute' }),
+    style({ top: 300 }),
+  );
+  ```
+
+- Add **responsiveStyle** function for creating custom mobile-first styles within [vanilla-extract stylesheets](http://vanilla-extract.style) ([#947](https://github.com/seek-oss/braid-design-system/pull/947))
+
+  **EXAMPLE USAGE**
+
+  ```ts
+  // styles.css.ts
+  import { style } from '@vanilla-extract/css';
+  import { vars, responsiveStyle } from 'braid-design-system/css';
+
+  export const className = style(
+    responsiveStyle({
+      mobile: {
+        flexBasis: vars.space.small,
+      },
+      tablet: {
+        flexBasis: vars.space.medium,
+      },
+      desktop: {
+        flexBasis: vars.space.large,
+      },
+    }),
+  );
+
+  // is equivalent to
+  import { style } from '@vanilla-extract/css';
+  import { vars, breakpoints } from 'braid-design-system/css';
+
+  export const className = style({
+    flexBasis: vars.space.small,
+    '@media': {
+      [`screen and (min-width: ${breakpoints.tablet}px)`]: {
+        flexBasis: vars.space.medium,
+      },
+      [`screen and (min-width: ${breakpoints.desktop}px)`]: {
+        flexBasis: vars.space.large,
+      },
+    },
+  });
+  ```
+
+- Add **vars** object for accessing themed CSS variables within [vanilla-extract stylesheets](http://vanilla-extract.style) and runtime files. ([#947](https://github.com/seek-oss/braid-design-system/pull/947))
+
+  Theming is now achieved natively with CSS variables rather than generating separate styles for each theme. CSS variables are exposed via the `braid-design-system/css` import.
+
+  ```ts
+  // styles.css.ts
+  import { style } from '@vanilla-extract/css';
+  import { vars } from 'braid-design-system/css';
+
+  export const className = style({
+    paddingTop: vars.space.small,
+  });
+  ```
+
+### Patch Changes
+
+- **Loader:** Adjust size to better match text ([#947](https://github.com/seek-oss/braid-design-system/pull/947))
+
+- **Badge:** Use correct text size for `bleedY` positioning ([#947](https://github.com/seek-oss/braid-design-system/pull/947))
+
+- **Box, Tag, Toggle:** Make `borderRadius="full"` always circular ([#947](https://github.com/seek-oss/braid-design-system/pull/947))
+
+  Fixes circular border radius bug where non-square elements would result in an ellipse.
+
+## 29.32.1
+
+### Patch Changes
+
+- **MenuItem:** Prevent click events from bubbling ([#939](https://github.com/seek-oss/braid-design-system/pull/939))
+
+- **Autosuggest:** Fix missing/invalid group headings in some cases ([#937](https://github.com/seek-oss/braid-design-system/pull/937))
+
+## 29.32.0
+
+### Minor Changes
+
+- **CheckboxStandalone:**: Add component ([#935](https://github.com/seek-oss/braid-design-system/pull/935))
+
+  Adds support for cases where a Checkbox needs to be used without a form field style label.
+
+  To maintain accessibility, it is required to provide either a **aria-label** or **aria-labelledby** property, to describe the field's intent.
+
+  Given there is no visual label, the following features from a standard Checkbox cannot be supported:
+
+  - description
+  - message
+  - badge
+  - children (nested content)
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <CheckboxStandalone
+    id={...}
+    checked={...}
+    onChange={...}
+    aria-label="Label"
+  />
+  ```
+
+- Add support for data attribute maps on all components. ([#934](https://github.com/seek-oss/braid-design-system/pull/934))
+
+  **EXAMPLE USAGE:**
+
+  ```tsx
+  <Alert
+    data={{
+      testId: 'message',
+    }}
+  />
+
+  // => <div data-testId="message" />
+  ```
+
+### Patch Changes
+
+- Sku dependencies update ([#924](https://github.com/seek-oss/braid-design-system/pull/924))
+
+## 29.31.0
+
+### Minor Changes
+
+- **Checkbox,RadioGroup,Toggle:** Add `size` support to Checkbox, RadioGroup & Toggle ([#928](https://github.com/seek-oss/braid-design-system/pull/928))
+
+  Adds support for adjusting the `size` of a `Checkbox`, the RadioItems within a `RadioGroup` or a `Toggle`. Setting the size adjusts both the visual control and the text size of the label.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Checkbox size="small" label="Label" />
+  ```
+
+  ```jsx
+  <RadioGroup size="small" label="Label">
+    ...
+  </RadioGroup>
+  ```
+
+  ```jsx
+  <Toggle size="small" label="Label" />
+  ```
+
+### Patch Changes
+
+- **Pagination:** Add keyline to improve active page indicator contrast ([#926](https://github.com/seek-oss/braid-design-system/pull/926))
+
+  Improves the contrast of the active page indicator by adding a keyline when `Pagination` is used outside of a `Card`.
+
+## 29.30.0
+
+### Minor Changes
+
+- **Accordion, AccordionItem:** Allow customisation of size, tone, space and dividers. ([#925](https://github.com/seek-oss/braid-design-system/pull/925))
+
+  Note that, to ensure adequate space for touch targets, the `space` prop only accepts values of `"medium"`, `"large"` and `"xlarge"`.
+
+  **EXAMPLE USAGE**
+
+  ```tsx
+  <Accordion size="standard" tone="secondary" space="xlarge" dividers={false}>
+    <AccordionItem label="Accordion item 1">...</AccordionItem>
+    <AccordionItem label="Accordion item 2">...</AccordionItem>
+    <AccordionItem label="Accordion item 3">...</AccordionItem>
+  </Accordion>
+  ```
+
+### Patch Changes
+
+- Update capsize dependency ([#921](https://github.com/seek-oss/braid-design-system/pull/921))
+
+## 29.29.3
+
+### Patch Changes
+
+- **Textarea:** Highlight excess characters when `characterLimit` is provided ([#919](https://github.com/seek-oss/braid-design-system/pull/919))
+
+## 29.29.2
+
+### Patch Changes
+
+- Fix type errors in TypeScript v4.2.2 ([#915](https://github.com/seek-oss/braid-design-system/pull/915))
+
+## 29.29.1
+
+### Patch Changes
+
+- **TooltipRenderer:** Support usage within `Text` elements ([#912](https://github.com/seek-oss/braid-design-system/pull/912))
+
+## 29.29.0
+
+### Minor Changes
+
+- **Box:** Support responsive `borderRadius` ([#910](https://github.com/seek-oss/braid-design-system/pull/910))
+
+  Adds support for responsive values to `borderRadius`.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Box borderRadius={['none', 'standard']}>...</Box>
+  ```
+
+- **Button:** Add support for `ref` and `tabIndex` props ([#905](https://github.com/seek-oss/braid-design-system/pull/905))
+
+- **Card:** Add `component` support ([#910](https://github.com/seek-oss/braid-design-system/pull/910))
+
+  The HTML tag can be customised to ensure the underlying document semantics are meaningful. This can be done using the component prop and supports `div` (default), `article`, `aside`, `details`, `main` and `section`.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Card component="article">...</Card>
+  ```
+
+- **Badge:** Add support for `ref`, `tabIndex` and `aria-describedby` props ([#905](https://github.com/seek-oss/braid-design-system/pull/905))
+
+- **Card:** Add `tone` support ([#910](https://github.com/seek-oss/braid-design-system/pull/910))
+
+  Specifying a `tone` will now add a keyline down the left hand side of the container. The supported tones are `promote` and `formAccent`.
+
+  **As a result, Cards are now position relative containers.**
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Card tone="formAccent">...</Card>
+  ```
+
+- **TextLink, ButtonLink:** Add support for `ref` prop ([#905](https://github.com/seek-oss/braid-design-system/pull/905))
+
+- **Card:** Add `rounded` and `roundedAbove` support ([#910](https://github.com/seek-oss/braid-design-system/pull/910))
+
+  Card corners can be rounded by providing the `rounded` prop.
+
+  Alternatively, rounding may be applied responsively using the `roundedAbove` prop, and providing either `mobile` or `tablet`. This enables card edges to be softened on larger screens, but squared off if it runs full bleed on smaller devices.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Card rounded>...</Card>
+  ```
+
+  or
+
+  ```jsx
+  <Card roundedAbove="mobile">...</Card>
+  ```
+
+### Patch Changes
+
+- **Badge:** Ensure `ref`, `title`, `tabIndex` and `aria-describedby` props are applied to the visual badge element, not its container element ([#908](https://github.com/seek-oss/braid-design-system/pull/908))
+
+- **TooltipRenderer:** Add arrow to tooltip ([#908](https://github.com/seek-oss/braid-design-system/pull/908))
+
+## 29.28.1
+
+### Patch Changes
+
+- **TextLink, TextLinkButton, TextLinkRenderer:** Scope deprecation warning to only be in Actions context. ([#903](https://github.com/seek-oss/braid-design-system/pull/903))
+
+## 29.28.0
+
+### Minor Changes
+
+- **Box:** Support value of `default` on `cursor` prop ([#901](https://github.com/seek-oss/braid-design-system/pull/901))
+
+  **EXAMPLE USAGE**
+
+  ```tsx
+  <Box cursor="default">...</Box>
+  ```
+
+- **TooltipRenderer:** Add `placement` prop, support `top` and `bottom`. Set default placement to `top`. ([#901](https://github.com/seek-oss/braid-design-system/pull/901))
+
+  **EXAMPLE USAGE**
+
+  ```tsx
+  <TooltipRenderer
+    id={id}
+    tooltip={<Text>This is a tooltip!</Text>}
+    placement="bottom"
+  >
+    {({ triggerProps }) => (
+      <Box aria-label="Help" {...triggerProps}>
+        <IconHelp />
+      </Box>
+    )}
+  </TooltipRenderer>
+  ```
+
+- **Button, ButtonLink, ButtonRenderer:** Add `bleedY` prop ([#900](https://github.com/seek-oss/braid-design-system/pull/900))
+
+  You can now choose to allow the button’s background colour to bleed out into the surrounding layout, making it easier to align with other elements.
+
+  For example, we can align a button to a Heading element using an Inline, even though the button is actually taller than the heading. If we didn’t use the **bleedY** prop in this case, the button would introduce unwanted space above and below the heading.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Inline space="small" alignY="center">
+    <Heading level="4">Heading</Heading>
+    <Button bleedY>Button</Button>
+    <Button bleedY size="small">
+      Button
+    </Button>
+  </Inline>
+  ```
+
+## 29.27.0
+
+### Minor Changes
+
+- Add **TooltipRenderer** component ([#897](https://github.com/seek-oss/braid-design-system/pull/897))
+
+  Tooltips appear on mouse hover, tap and keyboard focus, and are hidden when scrolling and clicking/tapping/focusing on other elements.
+
+  Tooltips cannot contain interactive elements like links, buttons or form elements.
+
+  Note: The trigger element must support `ref`, `tabIndex` and `aria-describedby` props.
+
+  **EXAMPLE USAGE**
+
+  ```tsx
+  <TooltipRenderer id={id} tooltip={<Text>This is a tooltip!</Text>}>
+    {({ triggerProps }) => (
+      <Box aria-label="Help" {...triggerProps}>
+        <IconHelp />
+      </Box>
+    )}
+  </TooltipRenderer>
+  ```
+
+## 29.26.0
+
+### Minor Changes
+
+- **Box:** Add `borderBrandAccentLarge` to `boxShadow` prop ([#893](https://github.com/seek-oss/braid-design-system/pull/893))
+
+- **Text, Icons:** Add brandAccent tone to Text and Icons ([#893](https://github.com/seek-oss/braid-design-system/pull/893))
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Text tone="brandAccent">...</Text>
+  ```
+
+- **Button,ButtonLink:** Add variant to Button and deprecate weight ([#893](https://github.com/seek-oss/braid-design-system/pull/893))
+
+  Introduces a new `variant` prop to `Button`/`ButtonLink` giving consumers a single prop to use for selecting the visual style of the button. Choose from `solid` (default), `ghost`, `soft` or `transparent`. The colour of the button is now consistently controlled via the `tone` prop, with supported values being `"brandAccent"`, `"critical"` or `undefined`.
+
+  As a result the `weight` prop is now deprecated. See the migration guide below.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Inline space="small" collapseBelow="desktop">
+    <Button>Solid</Button>
+    <Button variant="ghost">Ghost</Button>
+    <Button variant="soft">Soft</Button>
+    <Button variant="transparent">Transparent</Button>
+  </Inline>
+  ```
+
+  **MIGRATION GUIDE:**
+  The `weight` prop is now deprecated. If you are not specifying a `weight` there is no change required.
+
+  If you are, each weight can be migrated as follows:
+
+  #### Regular
+
+  Can be replicated with a `variant` of `solid` (default).
+
+  ```diff
+  -<Button weight="regular">...</Button>
+  +<Button variant="solid">...</Button>
+  ```
+
+  Given it is the default `variant`, you could also choose to simply remove the `weight` prop.
+
+  ```diff
+  -<Button weight="regular">...</Button>
+  +<Button>...</Button>
+  ```
+
+  #### Strong
+
+  Can be replicated with a `variant` of `solid` (default), with a `tone` of `brandAccent`.
+
+  ```diff
+  -<Button weight="strong">...</Button>
+  +<Button tone="brandAccent">...</Button>
+  ```
+
+  #### Weak
+
+  Can be replicated with a `variant` of `ghost`.
+
+  ```diff
+  -<Button weight="weak">...</Button>
+  +<Button variant="ghost">...</Button>
+  ```
+
+### Patch Changes
+
+- **TextLink,TextLinkButton:** Deprecate inside of Actions in favour of transparent Button ([#893](https://github.com/seek-oss/braid-design-system/pull/893))
+
+  Usage of `TextLink` or `TextLinkButton` inside of an `Actions` container should now use a `Button` with a `variant` of `transparent`.
+
+  Previously when a `TextLink` or `TextLinkButton` was placed inside of an `Actions` container, it would be given a custom layout to align with the `Button` elements. We are deprecating this behaviour.
+
+  **MIGRATION GUIDE:**
+  Going forward `Actions` should only contain `Button` elements. To migrate towards this, both `TextLink` and `TextLinkButton` should now use either a `ButtonLink` or `Button` respectively, with a `variant` or `transparent`.
+
+  #### TextLink
+
+  ```diff
+  <Actions>
+    <Button>...</Button>
+  - <TextLink href="...">...</TextLink>
+  + <ButtonLink href="..." variant="transparent">...</ButtonLink>
+  </Actions>
+  ```
+
+  #### TextLinkButton
+
+  ```diff
+  <Actions>
+    <Button>...</Button>
+  - <TextLinkButton onClick={...}>...</TextLinkButton>
+  + <Button onClick={...} variant="transparent">...</Button>
+  </Actions>
+  ```
+
+- **Button, ButtonLink:** Remove all interactive styles when loading ([#895](https://github.com/seek-oss/braid-design-system/pull/895))
+
+  No longer applies hover and cursor pointer styles when a `Button` is set to `loading`.
+
+## 29.25.0
+
+### Minor Changes
+
+- **Tabs:** Support fragments and `null`/`undefined` as children in `Tabs` and `TabPanels` ([#889](https://github.com/seek-oss/braid-design-system/pull/889))
+
+### Patch Changes
+
+- Add space between page and navigation controls above mobile to improve affordance between the current page and the hover state of surrounding buttons. ([#888](https://github.com/seek-oss/braid-design-system/pull/888))
+
+## 29.24.0
+
+### Minor Changes
+
+- **Hidden:** Add `component` support ([#880](https://github.com/seek-oss/braid-design-system/pull/880))
+
+  You can now customise the DOM element rendered when using `Hidden`. If no `component` is specified, it will fall back to the current behaviour — a `div` by default, or a `span` when setting `inline` to `true`.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Hidden component="li">...</Hidden>
+  ```
+
+- **Pagination:** Add component ([#880](https://github.com/seek-oss/braid-design-system/pull/880))
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Pagination
+    label="Search results pagination"
+    page={1}
+    total={20}
+    linkProps={({ page }) => ({
+      href: `/results?page=${page}`,
+    })}
+  />
+  ```
+
+### Patch Changes
+
+- Update dependencies ([#883](https://github.com/seek-oss/braid-design-system/pull/883))
+
+## 29.23.0
+
+### Minor Changes
+
+- **Button, ButtonLink, ButtonRenderer, Actions:** Add `size` prop, support `small` size ([#879](https://github.com/seek-oss/braid-design-system/pull/879))
+
+  You can now render smaller variants of button/action elements by setting the `size` prop to `small`.
+
+  **EXAMPLE USAGE**
+
+  **Small Button**
+
+  ```jsx
+  <Button size="small">Small Button</Button>
+  ```
+
+  **Small Actions**
+
+  ```jsx
+  <Actions size="small">
+    <Button>Regular Button</Button>
+    <Button weight="weak">Weak Button</Button>
+    <TextLink href="#">TextLink</TextLink>
+  </Actions>
+  ```
+
+### Patch Changes
+
+- **Button, ButtonLink, ButtonRenderer:** Reduce horizontal padding of `standard` size from `gutter` to `medium` ([#879](https://github.com/seek-oss/braid-design-system/pull/879))
+
+## 29.22.0
+
+### Minor Changes
+
+- **Tabs:** Add `divider` prop, support `full` and `none` ([#875](https://github.com/seek-oss/braid-design-system/pull/875))
+
+  You can now customise the width of the divider line underneath the tab strip. The default value is `minimal`, but you can now set it to `full` or `none`.
+
+  **EXAMPLE USAGE**
+
+  ```jsx
+  <TabsProvider id="id">
+    <Tabs label="Label" divider="full">
+      <Tab>The first tab</Tab>
+      <Tab>The second tab</Tab>
+    </Tabs>
+    <TabPanels>
+      <TabPanel>...</TabPanel>
+      <TabPanel>...</TabPanel>
+    </TabPanels>
+  </TabsProvider>
+  ```
+
+## 29.21.1
+
+### Patch Changes
+
+- **Autosuggest:** Ensure input occupies the full width of its container ([#872](https://github.com/seek-oss/braid-design-system/pull/872))
+
+## 29.21.0
+
+### Minor Changes
+
+- Add IconMobile and IconDesktop icons. ([#867](https://github.com/seek-oss/braid-design-system/pull/867))
+
+- **TextField:** Add `prefix` prop ([#866](https://github.com/seek-oss/braid-design-system/pull/866))
+
+  The `prefix` prop allows you to prepend read-only content on the left-hand side of the field. This is typically used for currency symbols, country codes, etc.
+
+  **EXAMPLE USAGE**
+
+  ```jsx
+  <TextField prefix="+61" {...rest} />
+  ```
+
+## 29.20.1
+
+### Patch Changes
+
+- Use JSDoc comments to flag deprecated components ([#860](https://github.com/seek-oss/braid-design-system/pull/860))
+
+  You will now receive in-editor warnings and migration guidance when using deprecated components.
+
+- **Autosuggest:** Fix bug where async suggestions may not be visible ([#862](https://github.com/seek-oss/braid-design-system/pull/862))
+
+  This fixes a bug where suggestions wouldn't become visible if the `suggestions` prop was initially empty and then populated asynchronously, only becoming visible on the next user interaction, e.g. typing in the field.
+
 ## 29.20.0
 
 ### Minor Changes

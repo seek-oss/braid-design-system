@@ -17,7 +17,6 @@ import {
 import { chunk, memoize } from 'lodash';
 import copy from 'copy-to-clipboard';
 import panzoom from 'panzoom';
-import { useStyles } from 'sku/react-treat';
 
 import {
   BraidProvider,
@@ -69,7 +68,7 @@ import useIcon, { UseIconProps } from '../../../../../lib/hooks/useIcon';
 import { SVGProps } from '../../../../../lib/components/icons/SVGTypes';
 import { Logo } from '../../Logo/Logo';
 
-import * as styleRefs from './gallery.treat';
+import * as styles from './gallery.css';
 
 const DefaultContainer = ({ children }: { children: ReactNode }) => (
   <Fragment>{children}</Fragment>
@@ -400,7 +399,6 @@ const calculateFitToScreenDimensions = (
 
 const zoomStep = 0.4;
 const GalleryInternal = () => {
-  const styles = useStyles(styleRefs);
   const { ready: themeReady } = useThemeSettings();
   const [ready, setReady] = useState(false);
   const contentRef = useRef<HTMLDivElement | null>(null);
@@ -730,10 +728,7 @@ const JumpToSelector = memo(({ onSelect }: { onSelect: JumpTo }) => {
   );
 });
 
-const PanelDivider = () => {
-  const styles = useStyles(styleRefs);
-  return <Box aria-hidden className={styles.divider} />;
-};
+const PanelDivider = () => <Box aria-hidden className={styles.divider} />;
 
 const IconFitToScreenSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg

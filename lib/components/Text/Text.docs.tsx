@@ -71,8 +71,9 @@ const docs: ComponentDocs = {
       description: (
         <Text>
           Text can be aligned via the <Strong>align</Strong> prop. If you need
-          alignment to differ across various screen sizes, you can provide an
-          array of values describing the alignment of each breakpoint.
+          alignment to differ across various screen sizes, you can provide
+          responsive values describing the alignment of each breakpoint, e.g.{' '}
+          <Strong>{"align={{ mobile: 'center', tablet: 'left' }}"}</Strong>
         </Text>
       ),
       Example: () =>
@@ -81,7 +82,9 @@ const docs: ComponentDocs = {
             <Text align="left">Left</Text>
             <Text align="center">Center</Text>
             <Text align="right">Right</Text>
-            <Text align={['center', 'left']}>Center on mobile</Text>
+            <Text align={{ mobile: 'center', tablet: 'left' }}>
+              Center on mobile
+            </Text>
           </Stack>,
         ),
     },

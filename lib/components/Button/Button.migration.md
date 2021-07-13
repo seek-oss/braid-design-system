@@ -2,14 +2,9 @@
 
 ## API Changes
 
-- The `color` and `ghost` props have been removed in favour of `weight={'strong' | 'regular' | 'weak'}`.
-- The `transparent`/`hyperlink` color has been removed. Use [`TextLink`](https://seek-oss.github.io/braid-design-system/components/TextLink)/[`TextLinkRenderer`](https://seek-oss.github.io/braid-design-system/components/TextLinkRenderer) instead.
+- The `color`, `ghost` and `transparent`/`hyperlink` props have been removed in favour of `variant={'solid' | 'ghost' | 'soft' | 'transparent'}` and `tone={'brandAccent' | 'critical'}`.
+- The `compact` prop has been removed in favour of `size="small"`.
 - No longer accepts arbitrary DOM properties, e.g. `className`. Please check that everything you need is exposed via the [public API.](https://seek-oss.github.io/braid-design-system/components/Button)
-
-## TBD
-
-- `ButtonRenderer` or similar, like [TextLinkRenderer](https://seek-oss.github.io/braid-design-system/components/TextLinkRenderer).
-- `compact={boolean}`
 
 ## Diff
 
@@ -17,26 +12,29 @@
 
 ```diff
 -<Button color="pink">Primary</Button>
-+<Button weight="strong">Primary</Button>
++<Button tone="brandAccent">Primary</Button>
 
 -<Button color="blue">Secondary</Button>
 +<Button>Secondary</Button>
 
 -<Button color="blue" ghost>Tertiary</Button>
-+<Button weight="weak">Tertiary</Button>
++<Button variant="ghost">Tertiary</Button>
 ```
 
 ### SEEK Asia Style Guide
 
 ```diff
 -<Button color="callToAction">Primary</Button>
-+<Button weight="strong">Primary</Button>
++<Button tone="brandAccent">Primary</Button>
 
 -<Button color="primary">Secondary</Button>
 +<Button>Secondary</Button>
 
 -<Button color="tertiary">Tertiary</Button>
-+<Button weight="weak">Tertiary</Button>
++<Button variant="ghost">Tertiary</Button>
+
+-<Button compact>Small</Button>
++<Button size="small">Small</Button>
 ```
 
 ## Previous Implementations

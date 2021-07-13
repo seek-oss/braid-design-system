@@ -110,7 +110,7 @@ describe('MonthPicker (Double dropdown)', () => {
       </BraidTestProvider>,
     );
 
-    expect(getByLabelText('Month')).toHaveDescription('Required');
+    expect(getByLabelText('Month')).toHaveAccessibleDescription('Required');
   });
 
   it('associates year field with message correctly', () => {
@@ -127,7 +127,7 @@ describe('MonthPicker (Double dropdown)', () => {
       </BraidTestProvider>,
     );
 
-    expect(getByLabelText('Year')).toHaveDescription('Required');
+    expect(getByLabelText('Year')).toHaveAccessibleDescription('Required');
   });
 
   it('associates month field with description correctly', () => {
@@ -144,7 +144,7 @@ describe('MonthPicker (Double dropdown)', () => {
       </BraidTestProvider>,
     );
 
-    expect(getByLabelText('Month')).toHaveDescription(
+    expect(getByLabelText('Month')).toHaveAccessibleDescription(
       'More detail about field',
     );
   });
@@ -163,7 +163,9 @@ describe('MonthPicker (Double dropdown)', () => {
       </BraidTestProvider>,
     );
 
-    expect(getByLabelText('Year')).toHaveDescription('More detail about field');
+    expect(getByLabelText('Year')).toHaveAccessibleDescription(
+      'More detail about field',
+    );
   });
 
   it('associates month field with multiple description elements correctly', () => {
@@ -181,7 +183,7 @@ describe('MonthPicker (Double dropdown)', () => {
       </BraidTestProvider>,
     );
 
-    expect(getByLabelText('Month')).toHaveDescription(
+    expect(getByLabelText('Month')).toHaveAccessibleDescription(
       'Required More detail about field',
     );
   });
@@ -201,7 +203,7 @@ describe('MonthPicker (Double dropdown)', () => {
       </BraidTestProvider>,
     );
 
-    expect(getByLabelText('Year')).toHaveDescription(
+    expect(getByLabelText('Year')).toHaveAccessibleDescription(
       'Required More detail about field',
     );
   });

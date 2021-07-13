@@ -43,6 +43,12 @@ export const snippets: Snippets = [
     ),
   },
   {
+    name: 'With a prefix',
+    code: source(
+      <TextField label="Label" prefix="Prefix" placeholder="Search" />,
+    ),
+  },
+  {
     name: 'With a critical message',
     code: source(
       <TextField label="Label" tone="critical" message="Critical message" />,

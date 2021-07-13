@@ -1,28 +1,35 @@
 import React, { useContext, ReactNode } from 'react';
-import { useStyles } from 'sku/react-treat';
-import { Box } from '../Box/Box';
-import TextContext from '../Text/TextContext';
+import { Box, BoxProps } from '../Box/Box';
+import { TextContext } from '../Text/TextContext';
 import HeadingContext from '../Heading/HeadingContext';
 import {
   resolveResponsiveRangeProps,
   ResponsiveRangeProps,
-} from '../../utils/responsiveRangeProps';
-import * as styleRefs from './Hidden.treat';
+} from '../../utils/resolveResponsiveRangeProps';
+import buildDataAttributes, {
+  DataAttributeMap,
+} from '../private/buildDataAttributes';
+import * as styles from './Hidden.css';
+import { optimizeResponsiveArray } from '../../utils/optimizeResponsiveArray';
 
 export interface HiddenProps extends ResponsiveRangeProps {
   children: ReactNode;
+  component?: BoxProps['component'];
   screen?: boolean;
   print?: boolean;
   inline?: boolean;
+  data?: DataAttributeMap;
 }
 
 export const Hidden = ({
   children,
+  component,
   above,
   below,
   screen,
   print,
   inline: inlineProp,
+  data,
 }: HiddenProps) => {
   if (process.env.NODE_ENV === 'development' && screen) {
     // eslint-disable-next-line no-console
@@ -31,17 +38,13 @@ export const Hidden = ({
     );
   }
 
-  const styles = useStyles(styleRefs);
   const inText = Boolean(useContext(TextContext));
   const inHeading = Boolean(useContext(HeadingContext));
 
   const hiddenOnScreen = Boolean(screen);
   const hiddenOnPrint = Boolean(print);
-  const [
-    hiddenOnMobile,
-    hiddenOnTablet,
-    hiddenOnDesktop,
-  ] = resolveResponsiveRangeProps({ above, below });
+  const [hiddenOnMobile, hiddenOnTablet, hiddenOnDesktop, hiddenOnWide] =
+    resolveResponsiveRangeProps({ above, below });
 
   const inline = inlineProp ?? (inText || inHeading);
   const display = inline ? 'inline' : 'block';
@@ -51,14 +54,16 @@ export const Hidden = ({
       display={
         hiddenOnScreen
           ? 'none'
-          : [
+          : optimizeResponsiveArray([
               hiddenOnMobile ? 'none' : display,
               hiddenOnTablet ? 'none' : display,
               hiddenOnDesktop ? 'none' : display,
-            ]
+              hiddenOnWide ? 'none' : display,
+            ])
       }
       className={hiddenOnPrint ? styles.hiddenOnPrint : undefined}
-      component={inline ? 'span' : 'div'}
+      component={component || (inline ? 'span' : 'div')}
+      {...(data ? buildDataAttributes(data) : undefined)}
     >
       {children}
     </Box>

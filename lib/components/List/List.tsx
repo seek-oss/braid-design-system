@@ -1,5 +1,4 @@
 import React, { Children, ReactNode } from 'react';
-import { useStyles } from 'sku/react-treat';
 import { Text, TextProps } from '../Text/Text';
 import { Stack, StackProps } from '../Stack/Stack';
 import { Box } from '../Box/Box';
@@ -9,8 +8,8 @@ import {
   DefaultTextPropsProvider,
   useDefaultTextProps,
 } from '../private/defaultTextProps';
-import { useLineHeightContainer } from '../../hooks/useLineHeightContainer/useLineHeightContainer';
-import * as styleRefs from './List.treat';
+import { lineHeightContainer } from '../../css/lineHeightContainer.css';
+import * as styles from './List.css';
 
 function numberToAlpha(inputNumber: number) {
   let returnValue = '';
@@ -63,25 +62,22 @@ interface CharacterBulletProps {
   children: string | number;
 }
 
-const CharacterBullet = ({ length = 1, children }: CharacterBulletProps) => {
-  const styles = useStyles(styleRefs);
-
-  return (
-    <Box
-      display="inlineBlock"
-      className={[
-        styles.minCharacterWidth[length - 1] ??
-          styles.minCharacterWidth[styles.minCharacterWidth.length - 1],
-        styles.trimGutter,
-      ]}
-    >
-      {children}.
-    </Box>
-  );
-};
+const CharacterBullet = ({ length = 1, children }: CharacterBulletProps) => (
+  <Box
+    display="inlineBlock"
+    className={[
+      styles.minCharacterWidth[length - 1] ??
+        styles.minCharacterWidth[styles.minCharacterWidth.length - 1],
+      styles.trimGutter,
+    ]}
+  >
+    {children}.
+  </Box>
+);
 
 type ListTypeCharacter = {
   type?: 'bullet' | 'number' | 'alpha' | 'roman';
+  icon?: never;
 };
 
 type ListTypeIcon = {
@@ -89,15 +85,14 @@ type ListTypeIcon = {
   icon: ReactNode;
 };
 
-type ListType = ListTypeCharacter | ListTypeIcon;
-
-export type ListProps = ListType & {
+export type ListProps = {
   children: StackProps['children'];
   size?: TextProps['size'];
   space?: StackProps['space'];
   tone?: TextProps['tone'];
   start?: number;
-};
+  data?: StackProps['data'];
+} & (ListTypeIcon | ListTypeCharacter);
 
 export const List = ({
   children,
@@ -106,15 +101,14 @@ export const List = ({
   space = 'medium',
   type = 'bullet',
   start = 1,
+  data,
   ...restProps
 }: ListProps) => {
-  const styles = useStyles(styleRefs);
   const { size, tone } = useDefaultTextProps({
     size: sizeProp,
     tone: toneProp,
   });
   const listItems = flattenChildren(children) as ReactNodeNoStrings[];
-  const lineHeightContainerStyles = useLineHeightContainer(size);
   const lastNumberLength =
     type === 'number' ? (listItems.length + (start - 1)).toString().length : -1;
 
@@ -123,6 +117,7 @@ export const List = ({
       <Stack
         component={/^(bullet|icon)$/.test(type) ? 'ul' : 'ol'}
         space={space}
+        data={data}
       >
         {Children.map(listItems, (listItem, index) => {
           const resolvedIndex = index + (start - 1);
@@ -135,7 +130,7 @@ export const List = ({
                   alignItems={
                     /^(bullet|icon)$/.test(type) ? 'center' : undefined
                   }
-                  className={lineHeightContainerStyles}
+                  className={lineHeightContainer[size]}
                   userSelect="none"
                   aria-hidden
                 >

@@ -1,9 +1,12 @@
-import React, { Children } from 'react';
+import React, { forwardRef, Children } from 'react';
 import assert from 'assert';
-import { Box } from '../Box/Box';
+import { Box, BoxProps } from '../Box/Box';
 import { Text } from '../Text/Text';
-import * as styleRefs from './Badge.treat';
-import { useStyles } from 'sku/react-treat';
+import { lineHeightContainer } from '../../css/lineHeightContainer.css';
+import buildDataAttributes, {
+  DataAttributeMap,
+} from '../private/buildDataAttributes';
+import * as styles from './Badge.css';
 
 const validTones = [
   'promote',
@@ -22,6 +25,9 @@ export interface BadgeProps {
   title?: string;
   children: string;
   id?: string;
+  data?: DataAttributeMap;
+  tabIndex?: BoxProps['tabIndex'];
+  'aria-describedby'?: string;
 }
 
 const backgroundForTone = (tone: Tone, weight: BadgeWeight) => {
@@ -54,52 +60,68 @@ const backgroundForTone = (tone: Tone, weight: BadgeWeight) => {
   }
 };
 
-export const Badge = ({
-  tone = 'info',
-  weight = 'regular',
-  bleedY = false,
-  title,
-  children,
-  id,
-}: BadgeProps) => {
-  const styles = useStyles(styleRefs);
+export const Badge = forwardRef<HTMLDivElement, BadgeProps>(
+  (
+    {
+      tone = 'info',
+      weight = 'regular',
+      bleedY = false,
+      title,
+      children,
+      id,
+      data,
+      tabIndex,
+      'aria-describedby': ariaDescribedBy,
+    },
+    ref,
+  ) => {
+    assert(
+      validTones.indexOf(tone) >= 0,
+      `Badge tone of "${tone}" is not valid.`,
+    );
 
-  assert(
-    validTones.indexOf(tone) >= 0,
-    `Badge tone of "${tone}" is not valid.`,
-  );
+    assert(
+      Children.toArray(children).every((child) =>
+        ['string', 'number'].includes(typeof child),
+      ),
+      'Badge may only contain strings or numbers',
+    );
 
-  assert(
-    Children.toArray(children).every((child) =>
-      ['string', 'number'].includes(typeof child),
-    ),
-    'Badge may only contain strings or numbers',
-  );
-
-  return (
-    <Box
-      display="flex"
-      className={[styles.outer, bleedY ? styles.bleedY : null]}
-    >
+    return (
       <Box
-        id={id}
-        title={title ?? children}
-        background={backgroundForTone(tone, weight)}
-        paddingX="xsmall"
-        borderRadius="standard"
-        overflow="hidden"
+        display="flex"
+        cursor="default"
+        className={[
+          lineHeightContainer[styles.constants.textSize],
+          bleedY ? styles.bleedY : null,
+        ]}
+        {...(data ? buildDataAttributes(data) : undefined)}
       >
-        <Text
-          component="span"
-          weight="medium"
-          size="xsmall"
-          tone={weight === 'regular' ? tone : undefined}
-          truncate
-          baseline={false}
+        <Box
+          id={id}
+          ref={ref}
+          tabIndex={tabIndex}
+          aria-describedby={ariaDescribedBy}
+          title={title ?? (!ariaDescribedBy ? children : undefined)}
+          background={backgroundForTone(tone, weight)}
+          paddingX="xsmall"
+          borderRadius="standard"
+          overflow="hidden"
         >
-          {children}
-        </Text>
+          <Text
+            component="span"
+            weight="medium"
+            size={styles.constants.textSize}
+            tone={weight === 'regular' ? tone : undefined}
+            truncate
+            baseline={false}
+          >
+            {children}
+          </Text>
+        </Box>
       </Box>
-    </Box>
-  );
-};
+    );
+  },
+);
+
+Badge.displayName = 'Badge';

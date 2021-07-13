@@ -6,6 +6,7 @@ import {
   FieldMessageProps,
 } from '../../FieldMessage/FieldMessage';
 import { Stack, StackProps } from '../../Stack/Stack';
+import buildDataAttributes, { DataAttributeMap } from '../buildDataAttributes';
 import { mergeIds } from '../mergeIds';
 import { ReactNodeNoStrings } from '../ReactNodeNoStrings';
 
@@ -21,6 +22,7 @@ export interface FieldGroupProps {
   reserveMessageSpace?: FieldMessageProps['reserveMessageSpace'];
   tone?: FieldMessageProps['tone'];
   required?: boolean;
+  data?: DataAttributeMap;
 }
 
 interface FieldGroupRenderProps {
@@ -48,6 +50,7 @@ export const FieldGroup = ({
   required,
   role,
   space = 'xsmall',
+  data,
 }: InternalFieldGroupProps) => {
   const labelId = `${id}-label`;
   const messageId = `${id}-message`;
@@ -61,6 +64,7 @@ export const FieldGroup = ({
       role={role}
       aria-labelledby={label ? labelId : undefined}
       aria-required={required}
+      {...(data ? buildDataAttributes(data) : undefined)}
     >
       <Stack space={space}>
         {label ? (

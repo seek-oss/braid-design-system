@@ -28,9 +28,10 @@ const getScrollOffset = (
 ) => {
   if (scrollContainer === window.document.documentElement) {
     const scrollPosition = getScrollPosition(scrollContainer, direction);
-    const positionOnScreen = targetElement.getBoundingClientRect()[
-      direction === 'horizontal' ? 'left' : 'top'
-    ];
+    const positionOnScreen =
+      targetElement.getBoundingClientRect()[
+        direction === 'horizontal' ? 'left' : 'top'
+      ];
 
     return positionOnScreen + scrollPosition;
   }

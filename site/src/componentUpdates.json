@@ -1118,5 +1118,685 @@
         "summary": "**OverflowMenu, MenuRenderer, MenuItemDivider:** Remove horizontal padding"
       }
     ]
+  },
+  {
+    "version": "29.20.1",
+    "updates": [
+      {
+        "updated": [
+          "Autosuggest"
+        ],
+        "summary": "**Autosuggest:** Fix bug where async suggestions may not be visible\n\nThis fixes a bug where suggestions wouldn't become visible if the `suggestions` prop was initially empty and then populated asynchronously, only becoming visible on the next user interaction, e.g. typing in the field."
+      }
+    ]
+  },
+  {
+    "version": "29.21.0",
+    "updates": [
+      {
+        "new": [
+          "IconMobile",
+          "IconDesktop"
+        ],
+        "summary": "Add IconMobile and IconDesktop icons."
+      },
+      {
+        "updated": [
+          "TextField"
+        ],
+        "summary": "**TextField:** Add `prefix` prop\n\nThe `prefix` prop allows you to prepend read-only content on the left-hand side of the field. This is typically used for currency symbols, country codes, etc.\n\n**EXAMPLE USAGE**\n\n```jsx\n<TextField prefix=\"+61\" {...rest} />\n```"
+      }
+    ]
+  },
+  {
+    "version": "29.21.1",
+    "updates": [
+      {
+        "updated": [
+          "Autosuggest"
+        ],
+        "summary": "**Autosuggest:** Ensure input occupies the full width of its container"
+      }
+    ]
+  },
+  {
+    "version": "29.22.0",
+    "updates": [
+      {
+        "updated": [
+          "Tabs"
+        ],
+        "summary": "**Tabs:** Add `divider` prop, support `full` and `none`\n\nYou can now customise the width of the divider line underneath the tab strip. The default value is `minimal`, but you can now set it to `full` or `none`.\n\n**EXAMPLE USAGE**\n\n```jsx\n<TabsProvider id=\"id\">\n  <Tabs label=\"Label\" divider=\"full\">\n    <Tab>The first tab</Tab>\n    <Tab>The second tab</Tab>\n  </Tabs>\n  <TabPanels>\n    <TabPanel>\n      ...\n    </TabPanel>\n    <TabPanel>\n      ...\n    </TabPanel>\n  </TabPanels>\n</TabsProvider>\n```"
+      }
+    ]
+  },
+  {
+    "version": "29.23.0",
+    "updates": [
+      {
+        "updated": [
+          "Button",
+          "ButtonLink",
+          "ButtonRenderer",
+          "Actions"
+        ],
+        "summary": "**Button, ButtonLink, ButtonRenderer, Actions:** Add `size` prop, support `small` size\n\nYou can now render smaller variants of button/action elements by setting the `size` prop to `small`.\n\n**EXAMPLE USAGE**\n\n**Small Button**\n\n```jsx\n<Button size=\"small\">Small Button</Button>\n```\n\n**Small Actions**\n\n```jsx\n<Actions size=\"small\">\n  <Button>Regular Button</Button>\n  <Button weight=\"weak\">Weak Button</Button>\n  <TextLink href=\"#\">TextLink</TextLink>\n</Actions>\n```"
+      },
+      {
+        "updated": [
+          "Button",
+          "ButtonLink",
+          "ButtonRenderer"
+        ],
+        "summary": "**Button, ButtonLink, ButtonRenderer:** Reduce horizontal padding of `standard` size from `gutter` to `medium`"
+      }
+    ]
+  },
+  {
+    "version": "29.24.0",
+    "updates": [
+      {
+        "updated": [
+          "Hidden"
+        ],
+        "summary": "**Hidden:** Add `component` support\n\nYou can now customise the DOM element rendered when using `Hidden`. If no `component` is specified, it will fall back to the current behaviour — a `div` by default, or a `span` when setting `inline` to `true`.\n\n**EXAMPLE USAGE:**\n```jsx\n<Hidden component=\"li\">\n  ...\n</Hidden>\n```"
+      },
+      {
+        "new": [
+          "Pagination"
+        ],
+        "summary": "**Pagination:** Add component\n\n**EXAMPLE USAGE:**\n```jsx\n<Pagination\n  label=\"Search results pagination\"\n  page={1}\n  total={20}\n  linkProps={({ page }) => ({\n    href: `/results?page=${page}`\n  })}\n/>\n```"
+      }
+    ]
+  },
+  {
+    "version": "29.25.0",
+    "updates": [
+      {
+        "updated": [
+          "Pagination"
+        ],
+        "summary": "Add space between page and navigation controls above mobile to improve affordance between the current page and the hover state of surrounding buttons."
+      },
+      {
+        "updated": [
+          "Tabs"
+        ],
+        "summary": "**Tabs:** Support fragments and `null`/`undefined` as children in `Tabs` and `TabPanels`"
+      }
+    ]
+  },
+  {
+    "version": "29.26.0",
+    "updates": [
+      {
+        "updated": [
+          "Box"
+        ],
+        "summary": "**Box:** Add `borderBrandAccentLarge` to `boxShadow` prop"
+      },
+      {
+        "updated": [
+          "Text",
+          "IconAdd",
+          "IconBookmark",
+          "IconCaution",
+          "IconChevron",
+          "IconClear",
+          "IconCompany",
+          "IconCompose",
+          "IconCopy",
+          "IconCreditCard",
+          "IconCritical",
+          "IconDate",
+          "IconDelete",
+          "IconDesktop",
+          "IconDocument",
+          "IconDocumentBroken",
+          "IconDownload",
+          "IconEdit",
+          "IconEducation",
+          "IconFilter",
+          "IconGrid",
+          "IconHeart",
+          "IconHelp",
+          "IconHistory",
+          "IconHome",
+          "IconImage",
+          "IconInfo",
+          "IconInvoice",
+          "IconLanguage",
+          "IconLink",
+          "IconLinkBroken",
+          "IconList",
+          "IconLocation",
+          "IconMail",
+          "IconMinus",
+          "IconMobile",
+          "IconMoney",
+          "IconNewWindow",
+          "IconNote",
+          "IconNotification",
+          "IconOverflow",
+          "IconPeople",
+          "IconPersonAdd",
+          "IconPersonVerified",
+          "IconPhone",
+          "IconPositive",
+          "IconPrint",
+          "IconProfile",
+          "IconPromote",
+          "IconRecommended",
+          "IconRefresh",
+          "IconResume",
+          "IconSearch",
+          "IconSecurity",
+          "IconSend",
+          "IconSent",
+          "IconSettings",
+          "IconShare",
+          "IconSocialFacebook",
+          "IconSocialGitHub",
+          "IconSocialInstagram",
+          "IconSocialLinkedIn",
+          "IconSocialMedium",
+          "IconSocialTwitter",
+          "IconStar",
+          "IconStatistics",
+          "IconSubCategory",
+          "IconTag",
+          "IconTick",
+          "IconTime",
+          "IconUpload",
+          "IconVideo",
+          "IconVisibility",
+          "IconWorkExperience"
+        ],
+        "summary": "**Text, Icons:** Add brandAccent tone to Text and Icons\n\n**EXAMPLE USAGE:**\n```jsx\n<Text tone=\"brandAccent\">...</Text>\n```"
+      },
+      {
+        "updated": [
+          "TextLink",
+          "TextLinkButton"
+        ],
+        "summary": "**TextLink,TextLinkButton:** Deprecate inside of Actions in favour of transparent Button\n\nUsage of `TextLink` or `TextLinkButton` inside of an `Actions` container should now use a `Button` with a `variant` of `transparent`.\n\nPreviously when a `TextLink` or `TextLinkButton` was placed inside of an `Actions` container, it would be given a custom layout to align with the `Button` elements. We are deprecating this behaviour.\n\n**MIGRATION GUIDE:**\nGoing forward `Actions` should only contain `Button` elements. To migrate towards this, both `TextLink` and `TextLinkButton` should now use either a `ButtonLink` or `Button` respectively, with a `variant` or `transparent`.\n\n#### TextLink\n```diff\n<Actions>\n  <Button>...</Button>\n- <TextLink href=\"...\">...</TextLink>\n+ <ButtonLink href=\"...\" variant=\"transparent\">...</ButtonLink>\n</Actions>\n```\n\n#### TextLinkButton\n```diff\n<Actions>\n  <Button>...</Button>\n- <TextLinkButton onClick={...}>...</TextLinkButton>\n+ <Button onClick={...} variant=\"transparent\">...</Button>\n</Actions>\n```"
+      },
+      {
+        "updated": [
+          "Button",
+          "ButtonLink"
+        ],
+        "summary": "**Button,ButtonLink:** Add variant to Button and deprecate weight\n\nIntroduces a new `variant` prop to `Button`/`ButtonLink` giving consumers a single prop to use for selecting the visual style of the button. Choose from `solid` (default), `ghost`, `soft` or `transparent`. The colour of the button is now consistently controlled via the `tone` prop, with supported values being `\"brandAccent\"`, `\"critical\"` or `undefined`.\n\nAs a result the `weight` prop is now deprecated. See the migration guide below.\n\n**EXAMPLE USAGE:**\n```jsx\n<Inline space=\"small\" collapseBelow=\"desktop\">\n  <Button>Solid</Button>\n  <Button variant=\"ghost\">Ghost</Button>\n  <Button variant=\"soft\">Soft</Button>\n  <Button variant=\"transparent\">Transparent</Button>\n</Inline>\n```\n\n**MIGRATION GUIDE:**\nThe `weight` prop is now deprecated. If you are not specifying a `weight` there is no change required.\n\nIf you are, each weight can be migrated as follows:\n\n#### Regular\nCan be replicated with a `variant` of `solid` (default).\n```diff\n-<Button weight=\"regular\">...</Button>\n+<Button variant=\"solid\">...</Button>\n```\n\nGiven it is the default `variant`, you could also choose to simply remove the `weight` prop.\n```diff\n-<Button weight=\"regular\">...</Button>\n+<Button>...</Button>\n```\n\n#### Strong\nCan be replicated with a `variant` of `solid` (default), with a `tone` of `brandAccent`.\n```diff\n-<Button weight=\"strong\">...</Button>\n+<Button tone=\"brandAccent\">...</Button>\n```\n\n#### Weak\nCan be replicated with a `variant` of `ghost`.\n```diff\n-<Button weight=\"weak\">...</Button>\n+<Button variant=\"ghost\">...</Button>\n```"
+      },
+      {
+        "updated": [
+          "Button",
+          "ButtonLink"
+        ],
+        "summary": "**Button, ButtonLink:** Remove all interactive styles when loading\n\nNo longer applies hover and cursor pointer styles when a `Button` is set to `loading`."
+      }
+    ]
+  },
+  {
+    "version": "29.27.0",
+    "updates": [
+      {
+        "new": [
+          "TooltipRenderer"
+        ],
+        "summary": "Add **TooltipRenderer** component\n\nTooltips appear on mouse hover, tap and keyboard focus, and are hidden when scrolling and clicking/tapping/focusing on other elements.\n\nTooltips cannot contain interactive elements like links, buttons or form elements.\n\nNote: The trigger element must support `ref`, `tabIndex` and `aria-describedby` props.\n\n**EXAMPLE USAGE**\n\n```tsx\n<TooltipRenderer\n  id={id}\n  tooltip={\n    <Text>\n      This is a tooltip!\n    </Text>\n  }\n>\n  {({ triggerProps }) => (\n    <Box aria-label=\"Help\" {...triggerProps}>\n      <IconHelp />\n    </Box>\n  )}\n</TooltipRenderer>\n```"
+      }
+    ]
+  },
+  {
+    "version": "29.28.0",
+    "updates": [
+      {
+        "updated": [
+          "Box"
+        ],
+        "summary": "**Box:** Support value of `default` on `cursor` prop\n\n**EXAMPLE USAGE**\n\n```tsx\n<Box cursor=\"default\">...</Box>\n```"
+      },
+      {
+        "updated": [
+          "TooltipRenderer"
+        ],
+        "summary": "**TooltipRenderer:** Add `placement` prop, support `top` and `bottom`. Set default placement to `top`.\n\n**EXAMPLE USAGE**\n\n```tsx\n<TooltipRenderer\n  id={id}\n  tooltip={<Text>This is a tooltip!</Text>}\n  placement=\"bottom\"\n>\n  {({ triggerProps }) => (\n    <Box aria-label=\"Help\" {...triggerProps}>\n      <IconHelp />\n    </Box>\n  )}\n</TooltipRenderer>\n```"
+      },
+      {
+        "updated": [
+          "Button",
+          "ButtonLink",
+          "ButtonRenderer"
+        ],
+        "summary": "**Button, ButtonLink, ButtonRenderer:** Add `bleedY` prop\n\nYou can now choose to allow the button’s background colour to bleed out into the surrounding layout, making it easier to align with other elements.\n\nFor example, we can align a button to a Heading element using an Inline, even though the button is actually taller than the heading. If we didn’t use the **bleedY** prop in this case, the button would introduce unwanted space above and below the heading.\n\n**EXAMPLE USAGE:**\n```jsx\n<Inline space=\"small\" alignY=\"center\">\n  <Heading level=\"4\">Heading</Heading>\n  <Button bleedY>Button</Button>\n  <Button bleedY size=\"small\">\n    Button\n  </Button>\n</Inline>\n```"
+      }
+    ]
+  },
+  {
+    "version": "29.28.1",
+    "updates": [
+      {
+        "updated": [
+          "TextLink",
+          "TextLinkButton",
+          "TextLinkRenderer"
+        ],
+        "summary": "**TextLink, TextLinkButton, TextLinkRenderer:** Scope deprecation warning to only be in Actions context."
+      }
+    ]
+  },
+  {
+    "version": "29.29.0",
+    "updates": [
+      {
+        "updated": [
+          "Box"
+        ],
+        "summary": "**Box:** Support responsive `borderRadius`\n\nAdds support for responsive values to `borderRadius`.\n\n**EXAMPLE USAGE:**\n```jsx\n<Box borderRadius={['none', 'standard']}>\n  ...\n</Box>\n```"
+      },
+      {
+        "updated": [
+          "Button"
+        ],
+        "summary": "**Button:** Add support for `ref` and `tabIndex` props"
+      },
+      {
+        "updated": [
+          "Card"
+        ],
+        "summary": "**Card:** Add `component` support\n\nThe HTML tag can be customised to ensure the underlying document semantics are meaningful. This can be done using the component prop and supports `div` (default), `article`, `aside`, `details`, `main` and `section`.\n\n**EXAMPLE USAGE:**\n```jsx\n<Card component=\"article\">\n  ...\n</Card>\n```"
+      },
+      {
+        "updated": [
+          "Badge"
+        ],
+        "summary": "**Badge:** Add support for `ref`, `tabIndex` and `aria-describedby` props"
+      },
+      {
+        "updated": [
+          "Badge"
+        ],
+        "summary": "**Badge:** Ensure `ref`, `title`, `tabIndex` and `aria-describedby` props are applied to the visual badge element, not its container element"
+      },
+      {
+        "updated": [
+          "Card"
+        ],
+        "summary": "**Card:** Add `tone` support\n\nSpecifying a `tone` will now add a keyline down the left hand side of the container. The supported tones are `promote` and `formAccent`.\n\n**As a result, Cards are now position relative containers.**\n\n**EXAMPLE USAGE:**\n```jsx\n<Card tone=\"formAccent\">\n  ...\n</Card>\n```"
+      },
+      {
+        "updated": [
+          "TextLink",
+          "ButtonLink"
+        ],
+        "summary": "**TextLink, ButtonLink:** Add support for `ref` prop"
+      },
+      {
+        "updated": [
+          "TooltipRenderer"
+        ],
+        "summary": "**TooltipRenderer:** Add arrow to tooltip"
+      },
+      {
+        "updated": [
+          "Card"
+        ],
+        "summary": "**Card:** Add `rounded` and `roundedAbove` support\n\nCard corners can be rounded by providing the `rounded` prop.\n\nAlternatively, rounding may be applied responsively using the `roundedAbove` prop, and providing either `mobile` or `tablet`. This enables card edges to be softened on larger screens, but squared off if it runs full bleed on smaller devices.\n\n**EXAMPLE USAGE:**\n```jsx\n<Card rounded>\n  ...\n</Card>\n```\nor\n```jsx\n<Card roundedAbove=\"mobile\">\n  ...\n</Card>\n```"
+      }
+    ]
+  },
+  {
+    "version": "29.29.1",
+    "updates": [
+      {
+        "updated": [
+          "TooltipRenderer"
+        ],
+        "summary": "**TooltipRenderer:** Support usage within `Text` elements"
+      }
+    ]
+  },
+  {
+    "version": "29.29.2",
+    "updates": []
+  },
+  {
+    "version": "29.29.3",
+    "updates": [
+      {
+        "updated": [
+          "Textarea"
+        ],
+        "summary": "**Textarea:** Highlight excess characters when `characterLimit` is provided"
+      }
+    ]
+  },
+  {
+    "version": "29.30.0",
+    "updates": [
+      {
+        "updated": [
+          "Accordion"
+        ],
+        "summary": "**Accordion, AccordionItem:** Allow customisation of size, tone, space and dividers.\n\nNote that, to ensure adequate space for touch targets, the `space` prop only accepts values of `\"medium\"`, `\"large\"` and `\"xlarge\"`.\n\n**EXAMPLE USAGE**\n\n```tsx\n<Accordion size=\"standard\" tone=\"secondary\" space=\"xlarge\" dividers={false}>\n  <AccordionItem label=\"Accordion item 1\">...</AccordionItem>\n  <AccordionItem label=\"Accordion item 2\">...</AccordionItem>\n  <AccordionItem label=\"Accordion item 3\">...</AccordionItem>\n</Accordion>\n```"
+      }
+    ]
+  },
+  {
+    "version": "29.31.0",
+    "updates": [
+      {
+        "updated": [
+          "Pagination"
+        ],
+        "summary": "**Pagination:** Add keyline to improve active page indicator contrast\n\nImproves the contrast of the active page indicator by adding a keyline when `Pagination` is used outside of a `Card`."
+      },
+      {
+        "updated": [
+          "Checkbox",
+          "RadioGroup",
+          "Toggle"
+        ],
+        "summary": "**Checkbox,RadioGroup,Toggle:** Add `size` support to Checkbox, RadioGroup & Toggle\n\nAdds support for adjusting the `size` of a `Checkbox`, the RadioItems within a `RadioGroup` or a `Toggle`. Setting the size adjusts both the visual control and the text size of the label.\n\n**EXAMPLE USAGE:**\n```jsx\n  <Checkbox size=\"small\" label=\"Label\" />\n```\n\n```jsx\n  <RadioGroup size=\"small\" label=\"Label\">\n    ...\n  </RadioGroup>\n```\n\n```jsx\n  <Toggle size=\"small\" label=\"Label\" />\n```"
+      }
+    ]
+  },
+  {
+    "version": "29.32.0",
+    "updates": [
+      {
+        "new": [
+          "CheckboxStandalone"
+        ],
+        "summary": "**CheckboxStandalone:**: Add component\n\nAdds support for cases where a Checkbox needs to be used without a form field style label.\n\nTo maintain accessibility, it is required to provide either a **aria-label** or **aria-labelledby** property, to describe the field's intent.\n\nGiven there is no visual label, the following features from a standard Checkbox cannot be supported:\n- description\n- message\n- badge\n- children (nested content)\n\n**EXAMPLE USAGE:**\n```jsx\n<CheckboxStandalone\n  id={...}\n  checked={...}\n  onChange={...}\n  aria-label=\"Label\"\n/>\n```"
+      },
+      {
+        "updated": [
+          "Accordion",
+          "AccordionItem",
+          "Actions",
+          "Alert",
+          "Badge",
+          "ButtonLink",
+          "Card",
+          "Column",
+          "Columns",
+          "ContentBlock",
+          "Dialog",
+          "Disclosure",
+          "Drawer",
+          "FieldLabel",
+          "FieldMessage",
+          "Hidden",
+          "HiddenVisually",
+          "IconAdd",
+          "IconBookmark",
+          "IconCaution",
+          "IconChevron",
+          "IconClear",
+          "IconCompany",
+          "IconCompose",
+          "IconCopy",
+          "IconCreditCard",
+          "IconCritical",
+          "IconDate",
+          "IconDelete",
+          "IconDesktop",
+          "IconDocument",
+          "IconDocumentBroken",
+          "IconDownload",
+          "IconEdit",
+          "IconEducation",
+          "IconFilter",
+          "IconGrid",
+          "IconHeart",
+          "IconHelp",
+          "IconHistory",
+          "IconHome",
+          "IconImage",
+          "IconInfo",
+          "IconInvoice",
+          "IconLanguage",
+          "IconLink",
+          "IconLinkBroken",
+          "IconList",
+          "IconLocation",
+          "IconMail",
+          "IconMinus",
+          "IconMobile",
+          "IconMoney",
+          "IconNewWindow",
+          "IconNote",
+          "IconNotification",
+          "IconOverflow",
+          "IconPeople",
+          "IconPersonAdd",
+          "IconPersonVerified",
+          "IconPhone",
+          "IconPositive",
+          "IconPrint",
+          "IconProfile",
+          "IconPromote",
+          "IconRecommended",
+          "IconRefresh",
+          "IconResume",
+          "IconSearch",
+          "IconSecurity",
+          "IconSend",
+          "IconSent",
+          "IconSettings",
+          "IconShare",
+          "IconSocialFacebook",
+          "IconSocialGitHub",
+          "IconSocialInstagram",
+          "IconSocialLinkedIn",
+          "IconSocialMedium",
+          "IconSocialTwitter",
+          "IconStar",
+          "IconStatistics",
+          "IconSubCategory",
+          "IconTag",
+          "IconTick",
+          "IconTime",
+          "IconUpload",
+          "IconVideo",
+          "IconVisibility",
+          "IconWorkExperience",
+          "Inline",
+          "List",
+          "MonthPicker",
+          "Notice",
+          "Pagination",
+          "RadioGroup",
+          "Rating",
+          "Secondary",
+          "Stack",
+          "Strong",
+          "Tag",
+          "TextDropdown",
+          "Tiles",
+          "Toggle"
+        ],
+        "summary": "Add support for data attribute maps on all components.\n\n**EXAMPLE USAGE:**\n```tsx\n<Alert\n  data={{\n    testId: 'message'\n  }}\n/>\n\n// => <div data-testId=\"message\" />\n```"
+      }
+    ]
+  },
+  {
+    "version": "29.32.1",
+    "updates": [
+      {
+        "updated": [
+          "MenuItem"
+        ],
+        "summary": "**MenuItem:** Prevent click events from bubbling"
+      },
+      {
+        "updated": [
+          "Autosuggest"
+        ],
+        "summary": "**Autosuggest:** Fix missing/invalid group headings in some cases"
+      }
+    ]
+  },
+  {
+    "version": "30.0.0",
+    "updates": [
+      {
+        "updated": [
+          "Box"
+        ],
+        "summary": "**Box:** Remove `transform=\"touchable\"` in favour of `transform={{ active: 'touchable' }}`\n\n**MIGRATION GUIDE**\n\n```diff\n-<Box transform=\"touchable\">\n+<Box transform={{ active: 'touchable' }}>\n```"
+      },
+      {
+        "updated": [
+          "TextLinkRenderer"
+        ],
+        "summary": "**TextLinkRenderer:** Allow custom CSS reset via the `reset` prop, and allow it to be disabled by setting the prop to `false`."
+      },
+      {
+        "updated": [
+          "Accordion",
+          "Box",
+          "BulletList",
+          "Columns",
+          "Disclosure",
+          "Heading",
+          "Inline",
+          "List",
+          "MenuRenderer",
+          "Stack",
+          "Tabs",
+          "Text",
+          "Tiles"
+        ],
+        "summary": "Support object notation for responsive props\n\nResponsive prop values can now be written as objects with named breakpoints, which is now the recommended notation.\n\n```ts\n{ mobile: 'small', tablet: 'medium', desktop: 'large' }\n```\n\nThis also means that breakpoints can be skipped.\n\n```ts\n{ mobile: 'small', desktop: 'large' }\n```"
+      },
+      {
+        "new": [
+          "breakpoints"
+        ],
+        "summary": "Add **breakpoints** object for accessing standard breakpoint values\n\nThe breakpoints object provides a named set of screen sizes that form the basis of all responsive rules in Braid, available in the following format:\n\n```ts\n{\n  mobile: 0,\n  tablet: 740,\n  desktop: 992\n}\n```"
+      },
+      {
+        "updated": [
+          "Loader"
+        ],
+        "summary": "**Loader:** Adjust size to better match text"
+      },
+      {
+        "updated": [
+          "Badge"
+        ],
+        "summary": "**Badge:** Use correct text size for `bleedY` positioning"
+      },
+      {
+        "new": [
+          "globalTextStyle",
+          "globalHeadingStyle"
+        ],
+        "summary": "Add **globalTextStyle** and **globalHeadingStyle** functions for applying standard text styles to foreign markup in [vanilla-extract stylesheets](http://vanilla-extract.style)\n\nNote: These utilities should only be used when you have no control over the HTML.\n\n**EXAMPLE USAGE**\n\n```ts\n// styles.css.ts\nimport { style, globalStyle } from '@vanilla-extract/css';\nimport { globalHeadingStyle, globalTextStyle } from 'braid-design-system/css';\n\nexport const root = style({});\n\n// Target all <h2> elements within the root class\nglobalStyle(\n  `${root} h2`,\n  globalHeadingStyle({\n    level: '2',\n  })\n);\n\n// Target all <p> elements within the root class\nglobalStyle(\n  `${root} p`,\n  globalTextStyle({\n    size: 'standard',\n    weight: 'regular',\n  })\n);\n```"
+      },
+      {
+        "new": [
+          "atoms"
+        ],
+        "summary": "Add **atoms** function for accessing re-usable atomic classes within [vanilla-extract stylesheets](http://vanilla-extract.style)\n\nBraid's re-usable atomic classes were previously only available via `Box`, but they are now accessible via the new `atoms` function.\n\n```ts\n// styles.css.ts\nimport { atoms } from 'braid-design-system/css';\n\nexport const className = atoms({\n  paddingTop: 'small'\n});\n```\n\nThis allows you to co-locate custom styles with Braid's atomic classes in your stylesheets.\n\n```ts\n// styles.css.ts\nimport { style, composeStyles } from '@vanilla-extract/css';\nimport { atoms } from 'braid-design-system/css';\n\nexport const className = composeStyles(\n  atoms({ position: 'absolute' }),\n  style({ top: 300 })\n);\n```"
+      },
+      {
+        "new": [
+          "BraidPortal"
+        ],
+        "summary": "Migrate to vanilla-extract\n\nBraid now uses [vanilla-extract](http://vanilla-extract.style) rather than [treat](https://seek-oss.github.io/treat) to power its theme-based styling.\n\nSince they use different file extensions (`.css.ts` vs `.treat.ts`), we're able to ease the migration by supporting both approaches simultaneously in the same project.\n\nWhile we encourage you to write new CSS with vanilla-extract files and slowly migrate your existing treat files over time, the goal is to eventually remove treat entirely to enable further improvements to build tooling.\n\nWe've written a **[treat to vanilla-extract migration guide](https://github.com/seek-oss/braid-design-system/blob/master/docs/treat%20to%20vanilla-extract%20migration.md)** to make it easier when opting to migrate a treat file. If you have any questions or concerns, or if you need assistance with implementation or migration work, please reach out to us in the `#braid-support` channel.\n\n**BREAKING CHANGE**\n\n**React Portals containing Braid components/styles must use the new `BraidPortal` component**\n\nCSS-based theming doesn't automatically cascade through React portals. The new [`BraidPortal`](https://seek-oss.github.io/braid-design-system/components/BraidPortal) component handles this for you by forwarding Braid's CSS variables through the portal.\n\n```diff\n-import { createPortal } from 'react-dom';\n+import { BraidPortal } from 'braid-design-system';\n\n// ...\n\n-return open ? createPortal(<SomeComponent />) : null;\n+return open ? (\n+  <BraidPortal>\n+    <SomeComponent />\n+  </BraidPortal>\n+) : null;\n```"
+      },
+      {
+        "new": [
+          "responsiveStyle"
+        ],
+        "summary": "Add **responsiveStyle** function for creating custom mobile-first styles within [vanilla-extract stylesheets](http://vanilla-extract.style)\n\n**EXAMPLE USAGE**\n\n```ts\n// styles.css.ts\nimport { style } from '@vanilla-extract/css';\nimport { vars, responsiveStyle } from 'braid-design-system/css';\n\nexport const className = style(\n  responsiveStyle({\n    mobile: {\n      flexBasis: vars.space.small,\n    },\n    tablet: {\n      flexBasis: vars.space.medium,\n    },\n    desktop: {\n      flexBasis: vars.space.large,\n    },\n  })\n);\n\n// is equivalent to\nimport { style } from '@vanilla-extract/css';\nimport { vars, breakpoints } from 'braid-design-system/css';\n\nexport const className = style({\n  \"flexBasis\": vars.space.small,\n  \"@media\": {\n    [`screen and (min-width: ${breakpoints.tablet}px)`]: {\n      \"flexBasis\": vars.space.medium\n    },\n    [`screen and (min-width: ${breakpoints.desktop}px)`]: {\n      \"flexBasis\": vars.space.large\n    }\n  }\n});\n```"
+      },
+      {
+        "updated": [
+          "Box",
+          "Tag",
+          "Toggle"
+        ],
+        "summary": "**Box, Tag, Toggle:** Make `borderRadius=\"full\"` always circular\n\nFixes circular border radius bug where non-square elements would result in an ellipse."
+      },
+      {
+        "new": [
+          "vars"
+        ],
+        "summary": "Add **vars** object for accessing themed CSS variables within [vanilla-extract stylesheets](http://vanilla-extract.style) and runtime files.\n\nTheming is now achieved natively with CSS variables rather than generating separate styles for each theme. CSS variables are exposed via the `braid-design-system/css` import.\n\n```ts\n// styles.css.ts\nimport { style } from '@vanilla-extract/css';\nimport { vars } from 'braid-design-system/css';\n\nexport const className = style({\n  paddingTop: vars.space.small\n});\n```"
+      }
+    ]
+  },
+  {
+    "version": "30.0.1",
+    "updates": [
+      {
+        "updated": [
+          "Textarea"
+        ],
+        "summary": "**Textarea:** Fix \"Received NaN for the `rows` attribute.\" warning.\n\nFixes the warning in node testing environments where updating the `rows` attribute was failing due to `line-height` being `normal`. Now falling back to the predefined `lines` prop when the dynamic `grow` size is not valid."
+      }
+    ]
+  },
+  {
+    "version": "30.0.2",
+    "updates": []
+  },
+  {
+    "version": "30.0.3",
+    "updates": []
+  },
+  {
+    "version": "30.1.0",
+    "updates": [
+      {
+        "updated": [
+          "useBreakpoint"
+        ],
+        "summary": "Deprecate `useBreakpoint`\n\nThis Hook has been deprecated in favour of the new `useResponsiveValue` Hook.\n\nThis is because `useBreakpoint` leads consumers to inadvertently couple themselves to the current set of breakpoints, making it risky for us to introduce new breakpoints.\n\nFor example, you may have chosen to detect large screens by checking that the user is on the (current) largest breakpoint (e.g. `const isDesktop = useBreakpoint() === \"desktop\"`), but this logic would break if we introduced an even larger breakpoint and the Hook started returning other values.\n\nTo maintain backwards compatibility, `useBreakpoint` will continue to return `\"desktop\"` when the user is technically on larger breakpoints.\n\n**MIGRATION GUIDE**\n\n_Note that the `useResponsiveValue` Hook returns a `responsiveValue` function, so in these cases we're double-calling the function._\n\n```diff\n-const isMobile = useBreakpoint() === 'mobile';\n+const isMobile = useResponsiveValue()({\n+  mobile: true,\n+  tablet: false\n+});\n```\n\n```diff\n-const isTablet = useBreakpoint() === 'tablet';\n+const isTablet = useResponsiveValue()({\n+  mobile: false,\n+  tablet: true,\n+  desktop: false,\n+});\n```\n\n```diff\n-const isDesktop = useBreakpoint() === 'desktop';\n+const isDesktop = useResponsiveValue()({\n+  mobile: false,\n+  desktop: true\n+});\n```"
+      },
+      {
+        "updated": [
+          "breakpoints",
+          "atoms",
+          "responsiveStyle",
+          "Accordion",
+          "Box",
+          "BulletList",
+          "Columns",
+          "Disclosure",
+          "Heading",
+          "Inline",
+          "List",
+          "MenuRenderer",
+          "Stack",
+          "Tabs",
+          "Text",
+          "Tiles"
+        ],
+        "summary": "Add `wide` breakpoint of 1200px\n\nThis adds support for `wide` to the following touchpoints:\n - Responsive values, e.g.\n   ```ts\n   { mobile: 'small', wide: 'large' }\n   ```\n - Responsive range props, e.g.\n   ```tsx\n   <Columns collapseBelow=\"wide\" space={{ mobile: 'small', wide: 'large' }}>\n   ```\n - The `responsiveStyle` function, e.g.\n   ```ts\n   export const className = style(responsiveStyle({ wide: '...' }));\n   ```\n - The `breakpoints` object, which now exposes the number `1200` via `breakpoints.wide`, i.e.\n   ```ts\n   {\n     mobile: 0,\n     tablet: 740,\n     desktop: 940,\n     wide: 1200\n   }\n   ```"
+      },
+      {
+        "new": [
+          "useResponsiveValue"
+        ],
+        "summary": "Add `useResponsiveValue` Hook\n\nThis Hook will return the resolved value based on the breakpoint the browser viewport currently falls within (`mobile`, `tablet`, `desktop` or `wide`). As this can only be calculated in the browser, the value will also be `null` when rendering server-side or statically rendering.\n\nNote that this Hook returns a function so that it can be called anywhere within your component.\n\n**EXAMPLE USAGE**\n\n```tsx\nconst responsiveValue = useResponsiveValue();\n\nconst screenSize = responsiveValue({\n  mobile: 'Small',\n  desktop: 'Large',\n});\n```\n\nYou can also resolve to boolean values for breakpoint detection.\n\n```tsx\nconst responsiveValue = useResponsiveValue();\n\nconst isMobile = responsiveValue({\n  mobile: true,\n  tablet: false,\n});\n\nconst isDesktopOrAbove = responsiveValue({\n  mobile: false,\n  desktop: true,\n});\n```"
+      },
+      {
+        "updated": [
+          "Dialog",
+          "Drawer"
+        ],
+        "summary": "**Dialog, Drawer:** Support nested Dialogs & Drawers\n\nRemove restriction preventing the nesting of modal components, e.g. `Dialog` and `Drawer`. While it is still discouraged to keep experiences simple, there is no longer a technical guard against it."
+      }
+    ]
+  },
+  {
+    "version": "30.2.0",
+    "updates": []
   }
 ]

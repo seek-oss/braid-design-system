@@ -15,7 +15,7 @@ import { IconVisibility } from '../icons';
 
 type InputProps = AllHTMLAttributes<HTMLInputElement>;
 export interface PasswordFieldProps
-  extends Omit<FieldProps, 'labelId' | 'secondaryMessage' | 'icon'> {
+  extends Omit<FieldProps, 'labelId' | 'secondaryMessage' | 'icon' | 'prefix'> {
   value: NonNullable<InputProps['value']>;
   onChange: NonNullable<InputProps['onChange']>;
   onBlur?: InputProps['onBlur'];
@@ -25,7 +25,7 @@ export interface PasswordFieldProps
   visibilityToggleLabel?: string;
 }
 
-const NamedPasswordField = forwardRef<HTMLInputElement, PasswordFieldProps>(
+export const PasswordField = forwardRef<HTMLInputElement, PasswordFieldProps>(
   (
     {
       value,
@@ -69,6 +69,7 @@ const NamedPasswordField = forwardRef<HTMLInputElement, PasswordFieldProps>(
         {...restProps}
         value={value}
         icon={undefined}
+        prefix={undefined}
         labelId={undefined}
         disabled={disabled}
         secondaryMessage={null}
@@ -108,6 +109,4 @@ const NamedPasswordField = forwardRef<HTMLInputElement, PasswordFieldProps>(
   },
 );
 
-NamedPasswordField.displayName = 'PasswordField';
-
-export const PasswordField = NamedPasswordField;
+PasswordField.displayName = 'PasswordField';

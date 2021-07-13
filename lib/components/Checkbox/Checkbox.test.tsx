@@ -33,7 +33,7 @@ describe('Checkbox', () => {
       </BraidTestProvider>,
     );
 
-    expect(getByLabelText('My field')).toHaveDescription('Required');
+    expect(getByLabelText('My field')).toHaveAccessibleDescription('Required');
   });
 
   it('associates field with description correctly', () => {
@@ -49,7 +49,7 @@ describe('Checkbox', () => {
       </BraidTestProvider>,
     );
 
-    expect(getByLabelText('My field')).toHaveDescription(
+    expect(getByLabelText('My field')).toHaveAccessibleDescription(
       'More detail about field',
     );
   });
@@ -68,7 +68,7 @@ describe('Checkbox', () => {
       </BraidTestProvider>,
     );
 
-    expect(getByLabelText('My field')).toHaveDescription(
+    expect(getByLabelText('My field')).toHaveAccessibleDescription(
       'Required More detail about field',
     );
   });
@@ -137,9 +137,8 @@ describe('Checkbox', () => {
 
   it('should toggle state correctly when controlled field is initialised to `mixed`', () => {
     const TestCase = () => {
-      const [checked, setChecked] = useState<
-        ComponentProps<typeof Checkbox>['checked']
-      >('mixed');
+      const [checked, setChecked] =
+        useState<ComponentProps<typeof Checkbox>['checked']>('mixed');
       return (
         <BraidTestProvider>
           <Checkbox

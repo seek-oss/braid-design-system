@@ -1,2 +1,2 @@
-export { hideFocusRingsClassName } from './hideFocusRings.treat';
+export { hideFocusRingsClassName } from './hideFocusRings.css';
 export { useHideFocusRings } from './useHideFocusRings';

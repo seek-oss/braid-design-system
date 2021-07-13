@@ -17,15 +17,15 @@ export interface RadioItemProps
     | 'reserveMessageSpace'
     | 'required'
     | 'onChange'
-    | 'checked'
     | 'id'
     | 'disabled'
     | 'tone'
+    | 'size'
   > {
   value: NonNullable<InlineFieldProps['value']>;
 }
 
-const NamedRadioItem = forwardRef<HTMLInputElement, RadioItemProps>(
+export const RadioItem = forwardRef<HTMLInputElement, RadioItemProps>(
   (props, ref) => {
     const radioGroupContext = useContext(RadioGroupContext);
     const radioItemContext = useContext(RadioItemContext);
@@ -58,6 +58,7 @@ const NamedRadioItem = forwardRef<HTMLInputElement, RadioItemProps>(
             ? radioGroupContext.tone
             : undefined
         }
+        size={radioGroupContext.size}
         disabled={radioGroupContext.disabled}
         aria-describedby={radioGroupContext['aria-describedby']}
         tabIndex={tababble ? 0 : -1}
@@ -72,6 +73,4 @@ const NamedRadioItem = forwardRef<HTMLInputElement, RadioItemProps>(
   },
 );
 
-NamedRadioItem.displayName = 'RadioItem';
-
-export const RadioItem = NamedRadioItem;
+RadioItem.displayName = 'RadioItem';

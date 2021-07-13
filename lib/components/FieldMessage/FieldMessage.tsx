@@ -2,8 +2,11 @@ import React, { ReactNode } from 'react';
 import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';
 import { IconCritical, IconPositive } from '../icons';
+import buildDataAttributes, {
+  DataAttributeMap,
+} from '../private/buildDataAttributes';
 
-const tones = ['neutral', 'critical', 'positive'] as const;
+export const tones = ['neutral', 'critical', 'positive'] as const;
 type FieldTone = typeof tones[number];
 
 export interface FieldMessageProps {
@@ -13,6 +16,7 @@ export interface FieldMessageProps {
   tone?: FieldTone;
   secondaryMessage?: ReactNode;
   disabled?: boolean;
+  data?: DataAttributeMap;
 }
 
 const Icon: Record<'critical' | 'positive', ReactNode> = {
@@ -26,6 +30,7 @@ export const FieldMessage = ({
   secondaryMessage,
   reserveMessageSpace = true,
   disabled,
+  data,
 }: FieldMessageProps) => {
   if (tones.indexOf(tone) === -1) {
     throw new Error(`Invalid tone: ${tone}`);
@@ -38,7 +43,12 @@ export const FieldMessage = ({
   const showMessage = !disabled && message;
 
   return (
-    <Box id={id} display="flex" justifyContent="flexEnd">
+    <Box
+      id={id}
+      display="flex"
+      justifyContent="flexEnd"
+      {...(data ? buildDataAttributes(data) : undefined)}
+    >
       <Box flexGrow={1}>
         <Text size="small" tone={tone === 'neutral' ? 'secondary' : tone}>
           <Box display="flex" userSelect={showMessage ? undefined : 'none'}>

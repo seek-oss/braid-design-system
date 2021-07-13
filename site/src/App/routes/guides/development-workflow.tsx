@@ -17,6 +17,9 @@ import { TextStack } from '../../TextStack/TextStack';
 import Code from '../../Code/Code';
 import { Page } from '../../../types';
 import { PageTitle } from '../../Seo/PageTitle';
+import source from '../../../../../lib/utils/source.macro';
+import { InlineCode } from '../../InlineCode/InlineCode';
+import { VanillaMigrationBanner } from '../../../../../css/VanillaMigrationBanner';
 
 const DevelopmentWorkflow = () => (
   <TextStack>
@@ -60,19 +63,22 @@ const DevelopmentWorkflow = () => (
     </Text>
     <Text>
       For these high level components, we have opted against supporting style
-      overrides via ‘className’ and ‘style’ props. This ensures that gaps in the
-      design system are surfaced rather than encouraging consumers to constantly
-      apply workarounds.
+      overrides via <InlineCode>className</InlineCode> and{' '}
+      <InlineCode>style</InlineCode> props. This ensures that gaps in the design
+      system are surfaced rather than encouraging consumers to constantly apply
+      workarounds.
     </Text>
     <Text>
       An example of composing a simple view leveraging some of these could be:
     </Text>
     <Code>
-      <Card>
-        <Heading level="4">Title</Heading>
-        <Text>My first Braid component</Text>
-        <Button>Click me</Button>
-      </Card>
+      {source(
+        <Card>
+          <Heading level="4">Title</Heading>
+          <Text>My first Braid component</Text>
+          <Button>Click me</Button>
+        </Card>,
+      )}
     </Code>
     <Text>
       You’ll notice that each of these components don’t provide any surrounding
@@ -83,32 +89,38 @@ const DevelopmentWorkflow = () => (
     <Text>
       In order to distribute white space evenly between components, wrap sibling
       elements in a <TextLink href="/components/Stack">Stack</TextLink>{' '}
-      component with a custom ‘space’ property. For example, if you wanted
-      ‘small’ space between items in a{' '}
+      component with a custom <InlineCode>space</InlineCode> property. For
+      example, if you wanted
+      <InlineCode>small</InlineCode> space between items in a{' '}
       <TextLink href="/components/Stack">Stack</TextLink>:
     </Text>
     <Code>
-      <Card>
-        <Stack space="small">
-          <Heading level="4">Title</Heading>
-          <Text>My first Braid component</Text>
-          <Button>Click me</Button>
-        </Stack>
-      </Card>
+      {source(
+        <Card>
+          <Stack space="small">
+            <Heading level="4">Title</Heading>
+            <Text>My first Braid component</Text>
+            <Button>Click me</Button>
+          </Stack>
+        </Card>,
+      )}
     </Code>
     <Text>
-      The ‘space’ property is a responsive prop, which means that it can also
-      accept an array of values representing each breakpoint. For example, if
-      you wanted ‘small’ space on mobile and ‘medium’ space on desktop:
+      The <InlineCode>space</InlineCode> property is a responsive prop, which
+      means that it can also accept different values for each breakpoint. For
+      example, if you wanted <InlineCode>small</InlineCode> space on mobile and{' '}
+      <InlineCode>medium</InlineCode> space on tablet and above:
     </Text>
     <Code>
-      <Card>
-        <Stack space={['small', 'medium']}>
-          <Heading level="4">Title</Heading>
-          <Text>My first Braid component</Text>
-          <Button>Click me</Button>
-        </Stack>
-      </Card>
+      {source(
+        <Card>
+          <Stack space={{ mobile: 'small', tablet: 'medium' }}>
+            <Heading level="4">Title</Heading>
+            <Text>My first Braid component</Text>
+            <Button>Click me</Button>
+          </Stack>
+        </Card>,
+      )}
     </Code>
     <Text>
       For horizontal layouts,{' '}
@@ -117,49 +129,57 @@ const DevelopmentWorkflow = () => (
       render a two-column layout that collapses to a single column on mobile:
     </Text>
     <Code>
-      <Columns space="gutter" collapseBelow="tablet">
-        <Column>
-          <Card>
-            <Stack space="small">
-              <Heading level="4">Column 1</Heading>
-              <Text>My first Braid component</Text>
-            </Stack>
-          </Card>
-        </Column>
-        <Column>
-          <Card>
-            <Stack space="small">
-              <Heading level="4">Column 2</Heading>
-              <Text>My second Braid component</Text>
-            </Stack>
-          </Card>
-        </Column>
-      </Columns>
+      {source(
+        <Columns space="gutter" collapseBelow="tablet">
+          <Column>
+            <Card>
+              <Stack space="small">
+                <Heading level="4">Column 1</Heading>
+                <Text>My first Braid component</Text>
+              </Stack>
+            </Card>
+          </Column>
+          <Column>
+            <Card>
+              <Stack space="small">
+                <Heading level="4">Column 2</Heading>
+                <Text>My second Braid component</Text>
+              </Stack>
+            </Card>
+          </Column>
+        </Columns>,
+      )}
     </Code>
     <Text>
-      This ‘space’ property is also responsive, supporting an array of values
-      for each breakpoint. For example, if you wanted ‘xxsmall’ space on mobile
-      and ‘gutter’ space on desktop:
+      This <InlineCode>space</InlineCode> property is also responsive,
+      supporting values that differ by breakpoint. For example, if you wanted{' '}
+      <InlineCode>xxsmall</InlineCode> space on mobile and{' '}
+      <InlineCode>gutter</InlineCode> space on tablet and above:
     </Text>
     <Code>
-      <Columns space={['xxsmall', 'gutter']} collapseBelow="tablet">
-        <Column>
-          <Card>
-            <Stack space="small">
-              <Heading level="4">Column 1</Heading>
-              <Text>My first Braid component</Text>
-            </Stack>
-          </Card>
-        </Column>
-        <Column>
-          <Card>
-            <Stack space="small">
-              <Heading level="4">Column 2</Heading>
-              <Text>My second Braid component</Text>
-            </Stack>
-          </Card>
-        </Column>
-      </Columns>
+      {source(
+        <Columns
+          space={{ mobile: 'xxsmall', tablet: 'gutter' }}
+          collapseBelow="tablet"
+        >
+          <Column>
+            <Card>
+              <Stack space="small">
+                <Heading level="4">Column 1</Heading>
+                <Text>My first Braid component</Text>
+              </Stack>
+            </Card>
+          </Column>
+          <Column>
+            <Card>
+              <Stack space="small">
+                <Heading level="4">Column 2</Heading>
+                <Text>My second Braid component</Text>
+              </Stack>
+            </Card>
+          </Column>
+        </Columns>,
+      )}
     </Code>
 
     <Heading level="3">Need a custom component?</Heading>
@@ -179,9 +199,11 @@ const DevelopmentWorkflow = () => (
       allowing the corresponding CSS rules to be computed across themes.
     </Text>
     <Code>
-      <Box background="brand" boxShadow="large" padding="large">
-        <Text>My first Braid component</Text>
-      </Box>
+      {source(
+        <Box background="brand" boxShadow="large" padding="large">
+          <Text>My first Braid component</Text>
+        </Box>,
+      )}
     </Code>
     <Text>
       For more details, view the complete{' '}
@@ -195,18 +217,20 @@ const DevelopmentWorkflow = () => (
       Previously, one of the main reasons for needing to create custom CSS was
       to define responsive rules. The{' '}
       <TextLink href="/components/Box">Box</TextLink> component makes this
-      possible via <Strong>responsive properties,</Strong> which are provided as
-      an array of values—one per defined breakpoint, where the first item is the
-      mobile value, followed by the desktop value.
+      possible via <Strong>responsive properties,</Strong> which allows
+      different values to specified for each defined breakpoint.
     </Text>
     <Text>
-      For example, if we wanted to change the value for ‘display’ responsively:
+      For example, if we wanted to change the value for{' '}
+      <InlineCode>display</InlineCode> responsively:
     </Text>
     <Code>
-      <Box display={['flex', 'block']}>
-        <Heading level="2">Flex on small screen</Heading>
-        <Heading level="2">Block on large screen</Heading>
-      </Box>
+      {source(
+        <Box display={{ mobile: 'flex', tablet: 'block' }}>
+          <Heading level="2">Flex on small screen</Heading>
+          <Heading level="2">Block on large screen</Heading>
+        </Box>,
+      )}
     </Code>
     <Text>
       For a list of low-level responsive props, check out the{' '}
@@ -217,75 +241,89 @@ const DevelopmentWorkflow = () => (
     <Text>
       A key difference with Braid is that it doesn’t use a standard global CSS
       reset. Instead, element styles are reset at the component level via{' '}
-      <TextLink href="/components/Box">Box</TextLink> and its ‘component’ prop.
+      <TextLink href="/components/Box">Box</TextLink> and its{' '}
+      <InlineCode>component</InlineCode> prop.
     </Text>
     <Text>
-      For example, in order to render a semantic ‘fieldset’ element without the
-      native browser styles:
+      For example, in order to render a semantic{' '}
+      <InlineCode>fieldset</InlineCode> element without the native browser
+      styles:
     </Text>
     <Code>
-      <Box component="fieldset">
-        <legend>Reset Fieldset</legend>
-      </Box>
+      {source(
+        <Box component="fieldset">
+          <legend>Reset Fieldset</legend>
+        </Box>,
+      )}
     </Code>
 
     <Heading level="3">Still need custom CSS?</Heading>
     <Text>
       Braid is built on top of{' '}
-      <TextLink href="https://seek-oss.github.io/treat">treat</TextLink>{' '}
-      (imported via ‘sku/treat’ which satisfies our requirements for themeable,
-      statically extracted CSS. Custom styles on top of Braid should use treat
-      in order to gain access to the underlying theme variables.
+      <TextLink href="https://vanilla-extract.style/">vanilla-extract</TextLink>{' '}
+      which satisfies our requirements for statically extracted CSS, leveraging
+      CSS variables for theming. Custom styles on top of Braid can access the
+      theme variables by importing them from Braid’s{' '}
+      <InlineCode>css</InlineCode> export:
     </Text>
+    <Code>{`import { vars } from 'braid-design-system/css';`}</Code>
     <Text weight="strong">
-      Before writing a treat file, we highly recommend that you read the{' '}
-      <TextLink href="https://seek-oss.github.io/treat">
-        treat documentation.
+      Before writing custom styles, we highly recommend that you read the{' '}
+      <TextLink href="https://vanilla-extract.style/documentation/">
+        vanilla-extract documentation.
       </TextLink>
     </Text>
+    <VanillaMigrationBanner />
     <Text>
       While higher level Braid components don’t support custom style overrides
-      (e.g. ‘className’ and ‘style’),{' '}
+      (e.g. <InlineCode>className</InlineCode> and{' '}
+      <InlineCode>style</InlineCode>),{' '}
       <TextLink href="/components/Box">Box</TextLink> is the one exception.
       However, you should take care to ensure that custom classes on{' '}
       <TextLink href="/components/Box">Box</TextLink> only use styles that are
       not available via its prop interface.
     </Text>
     <Text>
-      For example, if you wanted to render an element as ‘display: flex’, but
-      with a custom, responsive ‘flex-basis’ value:
+      For example, if you wanted to render an element as{' '}
+      <InlineCode>display: flex</InlineCode>, but with a custom, responsive{' '}
+      <InlineCode>flex-basis</InlineCode> value:
     </Text>
-    <Code>{dedent`
-          // myComponent.treat.ts
-          import { style } from 'sku/treat';
+    <Code>
+      {dedent`
+        // myComponent.css.ts
+        import { style } from '@vanilla-extract/css';
+        import { vars, responsiveStyle } from 'braid-design-system/css';
 
-          export const root = style(theme =>
-            theme.utils.responsiveStyle({
-              mobile: { flexBasis: theme.grid * 3 },
-              tablet: { flexBasis: theme.grid * 5 },
-              desktop: { flexBasis: theme.grid * 8 },
-            }),
-          );
-        `}</Code>
+        export const root = style(
+          responsiveStyle({
+            mobile: { flexBasis: vars.space.small },
+            tablet: { flexBasis: vars.space.medium },
+            desktop: { flexBasis: vars.space.large },
+            wide: { flexBasis: vars.space.xlarge },
+          }),
+        );
+      `}
+    </Code>
     <Text>
-      Because treat files are written in TypeScript, the ‘theme’ object will be
-      available for autocompletion and type checking within your editor.
+      Because vanilla-extract stylesheets are written in TypeScript (note the
+      <InlineCode>.css.ts</InlineCode> extension), the{' '}
+      <InlineCode>vars</InlineCode> object will be available for autocompletion
+      and type checking within your editor.
     </Text>
-    <Code>{dedent`
-          // myComponent.ts
-          import { useStyles } from 'sku/react-treat';
-          import * as styleRefs from './myComponent.treat.ts';
+    <Code>
+      {dedent`
+        // myComponent.ts
+        import * as styles from './myComponent.css';
 
-          export default () => {
-            const styles = useStyles(styleRefs);
-
-            return (
-              <Box display="flex" className={styles.root}>
-                <Text>My first Braid component</Text>
-              </Box>
-            );
-          };
-        `}</Code>
+        export default function MyComponent() {
+          return (
+            <Box display="flex" className={styles.root}>
+              <Text>My first Braid component</Text>
+            </Box>
+          );
+        };
+      `}
+    </Code>
 
     <Divider />
 

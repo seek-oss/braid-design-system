@@ -18,6 +18,18 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
+      label: 'Small size',
+      Example: ({ id, handler }) => (
+        <Toggle
+          on={true}
+          size="small"
+          label="Small"
+          id={id}
+          onChange={handler}
+        />
+      ),
+    },
+    {
       label: 'Right aligned',
       Container: ({ children }) => (
         <div style={{ maxWidth: '300px' }}>{children}</div>
@@ -48,8 +60,7 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
-      label:
-        'Test: Should have space between the label and the toggle when justified in a flex container',
+      label: 'Space between the label and toggle preserved',
       Container: ({ children }) => (
         <div style={{ maxWidth: '300px' }}>{children}</div>
       ),
@@ -66,7 +77,7 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
-      label: 'Test: Should support long labels',
+      label: 'With a long label',
       Container: ({ children }) => (
         <div style={{ maxWidth: '300px' }}>{children}</div>
       ),

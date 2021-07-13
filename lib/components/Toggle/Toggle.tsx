@@ -1,12 +1,15 @@
 import React, { AllHTMLAttributes, ChangeEvent, ReactNode } from 'react';
-import { useStyles } from 'sku/react-treat';
 import { Box } from '../Box/Box';
 import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
 import { Text } from '../Text/Text';
 import { IconTick } from '../icons';
-import { useVirtualTouchable } from '../private/touchable/useVirtualTouchable';
+import { virtualTouchable } from '../private/touchable/virtualTouchable';
 import { useBackgroundLightness } from '../Box/BackgroundContext';
-import * as styleRefs from './Toggle.treat';
+import buildDataAttributes, {
+  DataAttributeMap,
+} from '../private/buildDataAttributes';
+import * as styles from './Toggle.css';
+import type { Size } from './Toggle.css';
 
 type HTMLInputProps = AllHTMLAttributes<HTMLInputElement>;
 type ChangeHandler = (value: boolean) => void;
@@ -16,15 +19,16 @@ export interface ToggleProps {
   on: boolean;
   onChange: ChangeHandler;
   align?: 'left' | 'right' | 'justify';
+  size?: Size;
+  data?: DataAttributeMap;
 }
 
-const handleChange = (onChange: ChangeHandler) => (
-  event: ChangeEvent<HTMLInputElement>,
-) => {
-  if (typeof onChange === 'function') {
-    onChange(event.target.checked);
-  }
-};
+const handleChange =
+  (onChange: ChangeHandler) => (event: ChangeEvent<HTMLInputElement>) => {
+    if (typeof onChange === 'function') {
+      onChange(event.target.checked);
+    }
+  };
 
 export const Toggle = ({
   id,
@@ -32,8 +36,9 @@ export const Toggle = ({
   onChange,
   label,
   align = 'left',
+  size = 'standard',
+  data,
 }: ToggleProps) => {
-  const styles = useStyles(styleRefs);
   const showBorder = useBackgroundLightness() === 'light';
 
   return (
@@ -43,6 +48,7 @@ export const Toggle = ({
       display="flex"
       flexDirection={align === 'left' ? undefined : 'rowReverse'}
       className={styles.root}
+      {...(data ? buildDataAttributes(data) : undefined)}
     >
       <Box
         component="input"
@@ -54,20 +60,29 @@ export const Toggle = ({
         zIndex={1}
         cursor="pointer"
         opacity={0}
-        className={[styles.realField, styles.fieldSize]}
+        className={[
+          styles.realField,
+          styles.realFieldPosition[size],
+          styles.fieldSize[size],
+        ]}
       />
       <Box
         position="relative"
         display="flex"
         alignItems="center"
         flexShrink={0}
-        className={[styles.slideContainer, styles.fieldSize]}
+        className={[
+          styles.slideContainerBase,
+          styles.slideContainerSize[size],
+          styles.fieldSize[size],
+        ]}
       >
         <Box
           position="absolute"
           width="full"
           overflow="hidden"
-          className={styles.slideTrack}
+          borderRadius="full"
+          className={[styles.slideTrack[size], styles.slideTrackBackground]}
         >
           <Box
             position="absolute"
@@ -87,7 +102,7 @@ export const Toggle = ({
           alignItems="center"
           justifyContent="center"
           borderRadius="full"
-          className={styles.slider}
+          className={styles.slider[size]}
         >
           <FieldOverlay className={styles.icon}>
             <IconTick tone="formAccent" size="fill" />
@@ -114,9 +129,9 @@ export const Toggle = ({
         flexGrow={align === 'justify' ? 1 : undefined}
         userSelect="none"
         cursor="pointer"
-        className={[styles.label, useVirtualTouchable()]}
+        className={[styles.label[size], virtualTouchable()]}
       >
-        <Text baseline={false} weight={on ? 'strong' : undefined}>
+        <Text baseline={false} weight={on ? 'strong' : undefined} size={size}>
           {label}
         </Text>
       </Box>

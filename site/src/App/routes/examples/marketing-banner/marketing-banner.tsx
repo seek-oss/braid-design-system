@@ -19,6 +19,7 @@ import { Placeholder } from '../../../../../../lib/playroom/components';
 import Code from '../../../Code/Code';
 import { ReactNodeNoStrings } from '../../../../../../lib/components/private/ReactNodeNoStrings';
 import { PageTitle } from '../../../Seo/PageTitle';
+import source from '../../../../../../lib/utils/source.macro';
 
 interface StepProps {
   heading?: string;
@@ -48,33 +49,41 @@ const page: Page = {
       </Stack>
 
       <Code collapsedByDefault>
-        <Box
-          background="brandAccent"
-          paddingX="small"
-          paddingY={['xlarge', 'xxlarge']}
-        >
-          <ContentBlock>
-            <Columns
-              space={['xlarge', 'gutter']}
-              collapseBelow="tablet"
-              alignY="center"
-            >
-              <Column width="3/5">
-                <Stack space="large">
-                  <Heading level="1" align={['center', 'left']}>
-                    Heard about our latest marketing campaign?
-                  </Heading>
-                  <Inline space="none" align={['center', 'left']}>
-                    <Button weight="weak">Show me</Button>
-                  </Inline>
-                </Stack>
-              </Column>
-              <Column>
-                <Placeholder height={300} label="Marketing illustration" />
-              </Column>
-            </Columns>
-          </ContentBlock>
-        </Box>
+        {source(
+          <Box
+            background="brandAccent"
+            paddingX="small"
+            paddingY={{ mobile: 'xlarge', tablet: 'xxlarge' }}
+          >
+            <ContentBlock>
+              <Columns
+                space={{ mobile: 'xlarge', tablet: 'gutter' }}
+                collapseBelow="tablet"
+                alignY="center"
+              >
+                <Column width="3/5">
+                  <Stack space="large">
+                    <Heading
+                      level="1"
+                      align={{ mobile: 'center', tablet: 'left' }}
+                    >
+                      Heard about our latest marketing campaign?
+                    </Heading>
+                    <Inline
+                      space="none"
+                      align={{ mobile: 'center', tablet: 'left' }}
+                    >
+                      <Button variant="ghost">Show me</Button>
+                    </Inline>
+                  </Stack>
+                </Column>
+                <Column>
+                  <Placeholder height={300} label="Marketing illustration" />
+                </Column>
+              </Columns>
+            </ContentBlock>
+          </Box>,
+        )}
       </Code>
 
       <Heading level="3">How do I build this example for myself?</Heading>
@@ -260,7 +269,7 @@ const page: Page = {
                   <Heading level="1">
                     Heard about our latest marketing campaign?
                   </Heading>
-                  <Button weight="weak">Show me</Button>
+                  <Button variant="ghost">Show me</Button>
                 </Stack>
               </Column>
               <Column>
@@ -294,7 +303,7 @@ const page: Page = {
                     Heard about our latest marketing campaign?
                   </Heading>
                   <Inline space="none">
-                    <Button weight="weak">Show me</Button>
+                    <Button variant="ghost">Show me</Button>
                   </Inline>
                 </Stack>
               </Column>
@@ -324,7 +333,7 @@ const page: Page = {
                     Heard about our latest marketing campaign?
                   </Heading>
                   <Inline space="none">
-                    <Button weight="weak">Show me</Button>
+                    <Button variant="ghost">Show me</Button>
                   </Inline>
                 </Stack>
               </Column>
@@ -381,7 +390,7 @@ const page: Page = {
                     Heard about our latest marketing campaign?
                   </Heading>
                   <Inline space="none">
-                    <Button weight="weak">Show me</Button>
+                    <Button variant="ghost">Show me</Button>
                   </Inline>
                 </Stack>
               </Column>
@@ -408,8 +417,8 @@ const page: Page = {
                 `Columns` allows us to define the device size beyond which the
                 columns should collapse into a single vertical column. This can
                 be done using the `collapseBelow` on `Columns` and choosing
-                whether we want to it collapse down below &ldquo;desktop&rdquo;
-                or &ldquo;tablet&rdquo;.
+                whether we want to it collapse down below &ldquo;wide&rdquo;,
+                &ldquo;desktop&rdquo; or &ldquo;tablet&rdquo;.
               </Text>
               <Text component="p">
                 In this case, we&rsquo;ll choose &ldquo;tablet&rdquo;.
@@ -425,7 +434,7 @@ const page: Page = {
                     Heard about our latest marketing campaign?
                   </Heading>
                   <Inline space="none">
-                    <Button weight="weak">Show me</Button>
+                    <Button variant="ghost">Show me</Button>
                   </Inline>
                 </Stack>
               </Column>
@@ -476,11 +485,17 @@ const page: Page = {
             <Columns space="gutter" alignY="center" collapseBelow="tablet">
               <Column width="3/5">
                 <Stack space="xlarge">
-                  <Heading level="1" align={['center', 'left']}>
+                  <Heading
+                    level="1"
+                    align={{ mobile: 'center', tablet: 'left' }}
+                  >
                     Heard about our latest marketing campaign?
                   </Heading>
-                  <Inline space="none" align={['center', 'left']}>
-                    <Button weight="weak">Show me</Button>
+                  <Inline
+                    space="none"
+                    align={{ mobile: 'center', tablet: 'left' }}
+                  >
+                    <Button variant="ghost">Show me</Button>
                   </Inline>
                 </Stack>
               </Column>
@@ -528,7 +543,7 @@ const page: Page = {
                       Heard about our latest marketing campaign?
                     </Heading>
                     <Inline space="none">
-                      <Button weight="weak">Show me</Button>
+                      <Button variant="ghost">Show me</Button>
                     </Inline>
                   </Stack>
                 </Column>
@@ -559,17 +574,23 @@ const page: Page = {
           <Box
             background="brandAccent"
             paddingX="small"
-            paddingY={['xlarge', 'xxlarge']}
+            paddingY={{ mobile: 'xlarge', tablet: 'xxlarge' }}
           >
             <ContentBlock>
               <Columns space="gutter" alignY="center" collapseBelow="tablet">
                 <Column width="3/5">
                   <Stack space="xlarge">
-                    <Heading level="1" align={['center', 'left']}>
+                    <Heading
+                      level="1"
+                      align={{ mobile: 'center', tablet: 'left' }}
+                    >
                       Heard about our latest marketing campaign?
                     </Heading>
-                    <Inline space="none" align={['center', 'left']}>
-                      <Button weight="weak">Show me</Button>
+                    <Inline
+                      space="none"
+                      align={{ mobile: 'center', tablet: 'left' }}
+                    >
+                      <Button variant="ghost">Show me</Button>
                     </Inline>
                   </Stack>
                 </Column>
@@ -596,21 +617,27 @@ const page: Page = {
           <Box
             background="brandAccent"
             paddingX="small"
-            paddingY={['xlarge', 'xxlarge']}
+            paddingY={{ mobile: 'xlarge', tablet: 'xxlarge' }}
           >
             <ContentBlock>
               <Columns
-                space={['xlarge', 'gutter']}
+                space={{ mobile: 'xlarge', tablet: 'gutter' }}
                 alignY="center"
                 collapseBelow="tablet"
               >
                 <Column width="3/5">
                   <Stack space="large">
-                    <Heading level="1" align={['center', 'left']}>
+                    <Heading
+                      level="1"
+                      align={{ mobile: 'center', tablet: 'left' }}
+                    >
                       Heard about our latest marketing campaign?
                     </Heading>
-                    <Inline space="none" align={['center', 'left']}>
-                      <Button weight="weak">Show me</Button>
+                    <Inline
+                      space="none"
+                      align={{ mobile: 'center', tablet: 'left' }}
+                    >
+                      <Button variant="ghost">Show me</Button>
                     </Inline>
                   </Stack>
                 </Column>

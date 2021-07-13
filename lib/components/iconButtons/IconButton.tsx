@@ -5,23 +5,18 @@ import React, {
   MouseEvent,
   forwardRef,
 } from 'react';
-import { useStyles } from 'sku/react-treat';
 import { Box } from '../Box/Box';
 import { Overlay } from '../private/Overlay/Overlay';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
-import {
-  useIconSize,
-  useIconContainerSize,
-  UseIconProps,
-} from '../../hooks/useIcon';
-import { useVirtualTouchable } from '../private/touchable/useVirtualTouchable';
+import { iconSize, iconContainerSize, UseIconProps } from '../../hooks/useIcon';
+import { virtualTouchable } from '../private/touchable/virtualTouchable';
 import {
   useBackground,
   useBackgroundLightness,
 } from '../Box/BackgroundContext';
-import * as styleRefs from './IconButton.treat';
+import * as styles from './IconButton.css';
 
 type NativeButtonProps = AllHTMLAttributes<HTMLButtonElement>;
 export interface IconButtonProps {
@@ -57,9 +52,6 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
     },
     forwardedRef,
   ) => {
-    const styles = useStyles(styleRefs);
-    const iconContainerStyles = useIconContainerSize();
-    const iconStyles = useIconSize();
     const background = useBackground();
     const backgroundLightness = useBackgroundLightness();
 
@@ -95,7 +87,7 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
         ref={forwardedRef}
         cursor="pointer"
         outline="none"
-        className={[styles.button, useVirtualTouchable()]}
+        className={[styles.button, virtualTouchable()]}
         zIndex={0}
         aria-label={label}
         aria-haspopup={ariaHasPopUp}
@@ -105,15 +97,15 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
         onKeyUp={onKeyUp}
         onKeyDown={onKeyDown}
         onMouseDown={handleMouseDown}
-        transform="touchable"
+        transform={{ active: 'touchable' }}
         transition="touchable"
         tabIndex={!keyboardAccessible ? -1 : undefined}
-        {...buildDataAttributes(data)}
+        {...(data ? buildDataAttributes(data) : undefined)}
       >
         <Box
           position="relative"
           display="flex"
-          className={iconContainerStyles}
+          className={iconContainerSize()}
           alignItems="center"
           justifyContent="center"
           pointerEvents="none"
@@ -143,7 +135,7 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
               onlyVisibleForKeyboardNavigation
             />
           ) : null}
-          <Box position="relative" className={iconStyles}>
+          <Box position="relative" className={iconSize()}>
             {children({ size: 'fill', tone })}
           </Box>
         </Box>

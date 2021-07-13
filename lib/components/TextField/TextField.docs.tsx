@@ -225,6 +225,59 @@ const docs: ComponentDocs = {
           />,
         ),
     },
+    {
+      label: 'Adding a prefix',
+      description: (
+        <Text>
+          The <Strong>prefix</Strong> prop allows you to prepend read-only
+          content on the left-hand side of the field. This is typically used for
+          currency symbols, country codes, etc.
+        </Text>
+      ),
+      Example: ({ id, getState, setState }) =>
+        source(
+          <TextField
+            id={id}
+            label="Phone number"
+            onChange={setState('textfield')}
+            value={getState('textfield')}
+            prefix="+61"
+          />,
+        ),
+    },
+    {
+      label: 'Limiting the number of characters',
+      description: (
+        <>
+          <Text>
+            Providing a <Strong>characterLimit</Strong> will communicate when
+            the input text approaches or exceeds the specified limit.
+          </Text>
+          <Text>
+            To prevent loss of information, exceeding the limit is permitted,
+            however the count will be presented in a critical tone.
+          </Text>
+        </>
+      ),
+      Example: ({ id, getState, setState, setDefaultState }) =>
+        source(
+          <>
+            {setDefaultState(
+              'text',
+              'A long piece of text exceeding the specified character limit of 50',
+            )}
+
+            <TextField
+              label="Label"
+              id={id}
+              onChange={setState('text')}
+              value={getState('text')}
+              description="Chactacter limit of 50"
+              characterLimit={50}
+            />
+          </>,
+        ),
+    },
   ],
 };
 

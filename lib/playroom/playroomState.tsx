@@ -113,17 +113,19 @@ export function useFallbackState<Value, Handler extends Callback>(
   const playroomState = usePlayroomStore();
   const [internalStateValue, setInternalStateValue] = useState(defaultValue);
 
-  const wrapChangeHandler = (
-    handler: Handler | typeof noop,
-  ): ((...args: Parameters<Handler>) => void) => (...args) => {
-    if (value === undefined) {
-      (stateKey ? playroomState.setState(stateKey) : setInternalStateValue)(
-        unwrapValue(args[0]),
-      );
-    }
+  const wrapChangeHandler =
+    (
+      handler: Handler | typeof noop,
+    ): ((...args: Parameters<Handler>) => void) =>
+    (...args) => {
+      if (value === undefined) {
+        (stateKey ? playroomState.setState(stateKey) : setInternalStateValue)(
+          unwrapValue(args[0]),
+        );
+      }
 
-    (handler || noop)(...args);
-  };
+      (handler || noop)(...args);
+    };
 
   const handleChange = wrapChangeHandler(onChange || noop);
 

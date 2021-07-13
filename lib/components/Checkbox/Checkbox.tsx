@@ -1,18 +1,16 @@
 import React, { forwardRef } from 'react';
 import {
-  CheckboxChecked,
   InlineField,
   InlineFieldProps,
 } from '../private/InlineField/InlineField';
-
-const resolveCheckedGroup = (values: Array<CheckboxChecked>) =>
-  values.some((value) => value !== values[0]) ? 'mixed' : values[0] ?? false;
+import { CheckboxChecked } from '../private/InlineField/StyledInput';
+import { resolveCheckedGroup } from './resolveCheckedGroup';
 
 export interface CheckboxProps extends Omit<InlineFieldProps, 'checked'> {
   checked: CheckboxChecked | Array<boolean>;
 }
 
-const NamedCheckbox = forwardRef<HTMLInputElement, CheckboxProps>(
+export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   ({ checked, ...restProps }, ref) => {
     const calculatedChecked = Array.isArray(checked)
       ? resolveCheckedGroup(checked)
@@ -29,6 +27,4 @@ const NamedCheckbox = forwardRef<HTMLInputElement, CheckboxProps>(
   },
 );
 
-NamedCheckbox.displayName = 'Checkbox';
-
-export const Checkbox = NamedCheckbox;
+Checkbox.displayName = 'Checkbox';

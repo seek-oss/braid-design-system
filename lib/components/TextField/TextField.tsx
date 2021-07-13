@@ -2,6 +2,7 @@ import React, { forwardRef, Fragment, AllHTMLAttributes, useRef } from 'react';
 import { Box } from '../Box/Box';
 import { Field, FieldProps } from '../private/Field/Field';
 import { ClearField } from '../private/Field/ClearField';
+import { CharacterLimitStatus } from '../private/Field/CharacterLimitStatus';
 
 const validTypes = {
   text: 'text',
@@ -23,9 +24,10 @@ export interface TextFieldProps
   onFocus?: InputProps['onFocus'];
   onClear?: () => void;
   placeholder?: InputProps['placeholder'];
+  characterLimit?: number;
 }
 
-const NamedTextField = forwardRef<HTMLInputElement, TextFieldProps>(
+export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
   (
     {
       value,
@@ -35,6 +37,7 @@ const NamedTextField = forwardRef<HTMLInputElement, TextFieldProps>(
       onFocus,
       onClear,
       placeholder,
+      characterLimit,
       ...restProps
     },
     forwardedRef,
@@ -55,7 +58,14 @@ const NamedTextField = forwardRef<HTMLInputElement, TextFieldProps>(
         {...restProps}
         value={value}
         labelId={undefined}
-        secondaryMessage={null}
+        secondaryMessage={
+          characterLimit ? (
+            <CharacterLimitStatus
+              value={value}
+              characterLimit={characterLimit}
+            />
+          ) : null
+        }
         secondaryIcon={
           onClear ? (
             <ClearField
@@ -66,9 +76,10 @@ const NamedTextField = forwardRef<HTMLInputElement, TextFieldProps>(
           ) : null
         }
       >
-        {(overlays, fieldProps, icon, secondaryIcon) => (
+        {(overlays, fieldProps, icon, secondaryIcon, prefix) => (
           <Fragment>
             {icon}
+            {prefix}
             <Box
               component="input"
               type={validTypes[type]}
@@ -89,6 +100,4 @@ const NamedTextField = forwardRef<HTMLInputElement, TextFieldProps>(
   },
 );
 
-NamedTextField.displayName = 'TextField';
-
-export const TextField = NamedTextField;
+TextField.displayName = 'TextField';

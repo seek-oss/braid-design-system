@@ -1,6 +1,14 @@
 import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import { Badge, Text, TextLink, RadioGroup, RadioItem, Strong } from '..';
+import {
+  Badge,
+  Text,
+  TextLink,
+  RadioGroup,
+  RadioItem,
+  Strong,
+  Tiles,
+} from '..';
 import { Placeholder } from '../../playroom/components';
 import source from '../../utils/source.macro';
 
@@ -104,6 +112,45 @@ const docs: ComponentDocs = {
             <RadioItem label="Two" value="2" />
             <RadioItem label="Three" value="3" />
           </RadioGroup>,
+        ),
+    },
+    {
+      label: 'Sizes',
+      description: (
+        <Text>
+          You can customise the size of the radio items via the{' '}
+          <Strong>size</Strong> prop, which accepts either{' '}
+          <Strong>standard</Strong> or <Strong>small.</Strong>
+        </Text>
+      ),
+      Example: ({ id, getState, setState }) =>
+        source(
+          <Tiles space="large" columns={{ mobile: 1, tablet: 2 }}>
+            <RadioGroup
+              id={`${id}_standard`}
+              value={getState('radio')}
+              onChange={({ currentTarget: { value } }) =>
+                setState('radio', value)
+              }
+              label="Standard"
+              size="standard"
+            >
+              <RadioItem label="One" value="1" />
+              <RadioItem label="Two" value="2" />
+            </RadioGroup>
+            <RadioGroup
+              id={`${id}_small`}
+              value={getState('radio2')}
+              onChange={({ currentTarget: { value } }) =>
+                setState('radio2', value)
+              }
+              label="Small"
+              size="small"
+            >
+              <RadioItem label="One" value="1" />
+              <RadioItem label="Two" value="2" />
+            </RadioGroup>
+          </Tiles>,
         ),
     },
     {

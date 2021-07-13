@@ -1,4 +1,4 @@
-import '../../../lib/reset';
+import '../../../lib/css/reset';
 import React, { StrictMode } from 'react';
 import { Route, Switch, Redirect } from 'react-router';
 import { Link as ReactRouterLink } from 'react-router-dom';
@@ -16,6 +16,7 @@ import guides from './routes/guides';
 import foundations from './routes/foundations';
 import examples from './routes/examples';
 import components from './routes/components';
+import css from './routes/css';
 import releaseNotes from './routes/releases';
 import gallery from './routes/gallery';
 import { AppMeta } from './Seo/AppMeta';
@@ -68,6 +69,7 @@ export const App = () => (
                     ...foundations,
                     ...examples,
                     ...components,
+                    ...css,
                     ...releaseNotes,
                   },
                   (routeProps, path) => (

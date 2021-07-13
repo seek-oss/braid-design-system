@@ -28,6 +28,7 @@ import { Page } from '../../../../types';
 import { ThemedExample } from '../../../ThemeSetting';
 import { PageTitle } from '../../../Seo/PageTitle';
 import { LinkableHeading } from '../../../LinkableHeading/LinkableHeading';
+import source from '../../../../../../lib/utils/source.macro';
 
 type Space = 'none' | keyof typeof tokens.space;
 const spaceScale = ['none', ...Object.keys(tokens.space)] as Space[];
@@ -143,35 +144,48 @@ const page: Page = {
         spacing on all sides:
       </Text>
       <Code>
-        <Box padding="small">
-          <Text>Lorem ipsum dolor sit amet.</Text>
-        </Box>
+        {source(
+          <Box padding="small">
+            <Text>Lorem ipsum dolor sit amet.</Text>
+          </Box>,
+        )}
       </Code>
       <Text>
         These also support the ‘responsive props’ format which allows you to
-        specify an array of values for different screen sizes.
+        specify a set of values for different screen sizes.
       </Text>
       <Text>
         For example, if you wanted small spacing on mobile but medium spacing
         from tablet upwards:
       </Text>
       <Code>
-        <Box padding={['small', 'medium']}>
-          <Text>Lorem ipsum dolor sit amet.</Text>
-        </Box>
+        {source(
+          <Box padding={{ mobile: 'small', tablet: 'medium' }}>
+            <Text>Lorem ipsum dolor sit amet.</Text>
+          </Box>,
+        )}
       </Code>
       <Text>
-        If required, you’re also able to specify a different value for desktop
+        If required, you’re also able to specify different values for larger
         screens.
       </Text>
       <Text>
         For example, if you wanted to set the previous example’s spacing to
-        large on desktop:
+        large on desktop and xlarge on wide:
       </Text>
       <Code>
-        <Box padding={['small', 'medium', 'large']}>
-          <Text>Lorem ipsum dolor sit amet.</Text>
-        </Box>
+        {source(
+          <Box
+            padding={{
+              mobile: 'small',
+              tablet: 'medium',
+              desktop: 'large',
+              wide: 'xlarge',
+            }}
+          >
+            <Text>Lorem ipsum dolor sit amet.</Text>
+          </Box>,
+        )}
       </Code>
 
       <Divider />
@@ -184,9 +198,11 @@ const page: Page = {
         instead.
       </Text>
       <Code>
-        <Card>
-          <Text>Lorem ipsum dolor sit amet.</Text>
-        </Card>
+        {source(
+          <Card>
+            <Text>Lorem ipsum dolor sit amet.</Text>
+          </Card>,
+        )}
       </Code>
 
       <Divider />
@@ -205,26 +221,30 @@ const page: Page = {
         spacing between them:
       </Text>
       <Code>
-        <Card>
-          <Stack space="large">
-            <Heading level="3">Heading</Heading>
-            <Text>{lipsum1}</Text>
-            <Text>{lipsum2}</Text>
-          </Stack>
-        </Card>
+        {source(
+          <Card>
+            <Stack space="large">
+              <Heading level="3">Heading</Heading>
+              <Text>{lipsum1}</Text>
+              <Text>{lipsum2}</Text>
+            </Stack>
+          </Card>,
+        )}
       </Code>
       <Text>
         Just like <TextLink href="#box">Box</TextLink>, you can also specify
         different spacing values for different screen sizes:
       </Text>
       <Code>
-        <Card>
-          <Stack space={['medium', 'large']}>
-            <Heading level="3">Heading</Heading>
-            <Text>{lipsum1}</Text>
-            <Text>{lipsum2}</Text>
-          </Stack>
-        </Card>
+        {source(
+          <Card>
+            <Stack space={{ mobile: 'medium', tablet: 'large' }}>
+              <Heading level="3">Heading</Heading>
+              <Text>{lipsum1}</Text>
+              <Text>{lipsum2}</Text>
+            </Stack>
+          </Card>,
+        )}
       </Code>
       <Text>
         To visually break up content, you can insert dividers between all stack
@@ -233,13 +253,15 @@ const page: Page = {
         Stack:
       </Text>
       <Code>
-        <Card>
-          <Stack space="gutter" dividers={true}>
-            <Heading level="3">Heading</Heading>
-            <Text>{lipsum1}</Text>
-            <Text>{lipsum2}</Text>
-          </Stack>
-        </Card>
+        {source(
+          <Card>
+            <Stack space="gutter" dividers={true}>
+              <Heading level="3">Heading</Heading>
+              <Text>{lipsum1}</Text>
+              <Text>{lipsum2}</Text>
+            </Stack>
+          </Card>,
+        )}
       </Code>
       <Text>
         If you’d prefer to take control over the placement of dividers, you can
@@ -247,14 +269,16 @@ const page: Page = {
         component directly:
       </Text>
       <Code>
-        <Card>
-          <Stack space="gutter">
-            <Heading level="3">Heading</Heading>
-            <Text>{lipsum1}</Text>
-            <Divider />
-            <Text>{lipsum2}</Text>
-          </Stack>
-        </Card>
+        {source(
+          <Card>
+            <Stack space="gutter">
+              <Heading level="3">Heading</Heading>
+              <Text>{lipsum1}</Text>
+              <Divider />
+              <Text>{lipsum2}</Text>
+            </Stack>
+          </Card>,
+        )}
       </Code>
       <Text>
         Multiple <TextLink href="/components/Stack">Stack</TextLink> components
@@ -263,21 +287,23 @@ const page: Page = {
         on a job summary card:
       </Text>
       <Code>
-        <Card>
-          <Stack space="gutter">
-            <Heading level="4">Heading</Heading>
-            <Stack space="small">
-              <Text>Line 1</Text>
-              <Text>Line 2</Text>
-              <Text>Line 3</Text>
+        {source(
+          <Card>
+            <Stack space="gutter">
+              <Heading level="4">Heading</Heading>
+              <Stack space="small">
+                <Text>Line 1</Text>
+                <Text>Line 2</Text>
+                <Text>Line 3</Text>
+              </Stack>
+              <Stack space="small">
+                <Text>Line 1</Text>
+                <Text>Line 2</Text>
+                <Text>Line 3</Text>
+              </Stack>
             </Stack>
-            <Stack space="small">
-              <Text>Line 1</Text>
-              <Text>Line 2</Text>
-              <Text>Line 3</Text>
-            </Stack>
-          </Stack>
-        </Card>
+          </Card>,
+        )}
       </Code>
       <Text>
         <TextLink href="/components/Stack">Stack</TextLink> also supports
@@ -285,18 +311,20 @@ const page: Page = {
         content within a card:
       </Text>
       <Code>
-        <Card>
-          <Stack space="medium" align="center">
-            <IconPromote tone="promote" />
-            <Badge tone="promote">Badge</Badge>
-            <Heading align="center" level="4">
-              Heading Text
-            </Heading>
-            <Text align="center" tone="secondary">
-              Lorem ipsum dolor sit amet.
-            </Text>
-          </Stack>
-        </Card>
+        {source(
+          <Card>
+            <Stack space="medium" align="center">
+              <IconPromote tone="promote" />
+              <Badge tone="promote">Badge</Badge>
+              <Heading align="center" level="4">
+                Heading Text
+              </Heading>
+              <Text align="center" tone="secondary">
+                Lorem ipsum dolor sit amet.
+              </Text>
+            </Stack>
+          </Card>,
+        )}
       </Code>
       <Text>
         Individual stack items can be hidden on different screen sizes by
@@ -305,15 +333,17 @@ const page: Page = {
         example, if you wanted to hide the second item in a stack on mobile:
       </Text>
       <Code>
-        <Card>
-          <Stack space="medium" align="center">
-            <Text>Item 1</Text>
-            <Hidden below="tablet">
-              <Text>Item 2</Text>
-            </Hidden>
-            <Text>Item 3</Text>
-          </Stack>
-        </Card>
+        {source(
+          <Card>
+            <Stack space="medium" align="center">
+              <Text>Item 1</Text>
+              <Hidden below="tablet">
+                <Text>Item 2</Text>
+              </Hidden>
+              <Text>Item 3</Text>
+            </Stack>
+          </Card>,
+        )}
       </Code>
 
       <Divider />
@@ -326,19 +356,21 @@ const page: Page = {
       </Text>
 
       <Code>
-        <Card>
-          <Inline space="small">
-            <Badge>Lorem ipsum</Badge>
-            <Badge>Dolor</Badge>
-            <Badge>Sit amet</Badge>
-            <Badge>Consectetur</Badge>
-            <Badge>Adipiscing elit</Badge>
-            <Badge>Suspendisse dignissim</Badge>
-            <Badge>Dapibus elit</Badge>
-            <Badge>Vel egestas felis</Badge>
-            <Badge>Pharetra non</Badge>
-          </Inline>
-        </Card>
+        {source(
+          <Card>
+            <Inline space="small">
+              <Badge>Lorem ipsum</Badge>
+              <Badge>Dolor</Badge>
+              <Badge>Sit amet</Badge>
+              <Badge>Consectetur</Badge>
+              <Badge>Adipiscing elit</Badge>
+              <Badge>Suspendisse dignissim</Badge>
+              <Badge>Dapibus elit</Badge>
+              <Badge>Vel egestas felis</Badge>
+              <Badge>Pharetra non</Badge>
+            </Inline>
+          </Card>,
+        )}
       </Code>
 
       <Text>
@@ -348,13 +380,15 @@ const page: Page = {
       </Text>
 
       <Code>
-        <Card>
-          <Inline space="small" align="center">
-            <Badge>Lorem ipsum</Badge>
-            <Badge>Dolor</Badge>
-            <Badge>Sit amet</Badge>
-          </Inline>
-        </Card>
+        {source(
+          <Card>
+            <Inline space="small" align="center">
+              <Badge>Lorem ipsum</Badge>
+              <Badge>Dolor</Badge>
+              <Badge>Sit amet</Badge>
+            </Inline>
+          </Card>,
+        )}
       </Code>
 
       <Text>
@@ -370,12 +404,14 @@ const page: Page = {
         but horizontally from tablet upwards:
       </Text>
       <Code>
-        <Card>
-          <Inline space="small" collapseBelow="tablet">
-            <Button>Submit</Button>
-            <Button weight="weak">Cancel</Button>
-          </Inline>
-        </Card>
+        {source(
+          <Card>
+            <Inline space="small" collapseBelow="tablet">
+              <Button>Submit</Button>
+              <Button variant="ghost">Cancel</Button>
+            </Inline>
+          </Card>,
+        )}
       </Code>
 
       <Divider />
@@ -387,18 +423,20 @@ const page: Page = {
         <Strong>Column</Strong> components:
       </Text>
       <Code>
-        <Columns space="small">
-          <Column>
-            <Card>
-              <Text>Column 1</Text>
-            </Card>
-          </Column>
-          <Column>
-            <Card>
-              <Text>Column 2</Text>
-            </Card>
-          </Column>
-        </Columns>
+        {source(
+          <Columns space="small">
+            <Column>
+              <Card>
+                <Text>Column 1</Text>
+              </Card>
+            </Column>
+            <Column>
+              <Card>
+                <Text>Column 2</Text>
+              </Card>
+            </Column>
+          </Columns>,
+        )}
       </Code>
       <Text>
         Similar to <TextLink href="#inline">Inline</TextLink>, if you’d like the
@@ -413,18 +451,20 @@ const page: Page = {
         horizontally from tablet upwards:
       </Text>
       <Code>
-        <Columns space="small" collapseBelow="tablet">
-          <Column>
-            <Card>
-              <Text>Column 1</Text>
-            </Card>
-          </Column>
-          <Column>
-            <Card>
-              <Text>Column 2</Text>
-            </Card>
-          </Column>
-        </Columns>
+        {source(
+          <Columns space="small" collapseBelow="tablet">
+            <Column>
+              <Card>
+                <Text>Column 1</Text>
+              </Card>
+            </Column>
+            <Column>
+              <Card>
+                <Text>Column 2</Text>
+              </Card>
+            </Column>
+          </Columns>,
+        )}
       </Code>
       <Text>
         All columns are of equal width by default, but you can also customise
@@ -436,18 +476,20 @@ const page: Page = {
         collapsing to a single column on mobile:
       </Text>
       <Code>
-        <Columns space="small" collapseBelow="tablet">
-          <Column width="1/3">
-            <Card>
-              <Text>Sidebar</Text>
-            </Card>
-          </Column>
-          <Column>
-            <Card>
-              <Text>Main content</Text>
-            </Card>
-          </Column>
-        </Columns>
+        {source(
+          <Columns space="small" collapseBelow="tablet">
+            <Column width="1/3">
+              <Card>
+                <Text>Sidebar</Text>
+              </Card>
+            </Column>
+            <Column>
+              <Card>
+                <Text>Main content</Text>
+              </Card>
+            </Column>
+          </Columns>,
+        )}
       </Code>
       <Text>
         If you want a column to be as small as possible, you can also set its
@@ -461,34 +503,36 @@ const page: Page = {
         <TextLink href="/components/OverflowMenu">OverflowMenu</TextLink>:
       </Text>
       <Code>
-        <Card>
-          <Stack space="medium">
-            <Columns space="small">
-              <Column>
-                <Heading level="3">Card heading</Heading>
-              </Column>
-              <Column width="content">
-                <OverflowMenu label="Options">
-                  <MenuItem
-                    onClick={() => {
-                      /* */
-                    }}
-                  >
-                    First
-                  </MenuItem>
-                  <MenuItem
-                    onClick={() => {
-                      /* */
-                    }}
-                  >
-                    Second
-                  </MenuItem>
-                </OverflowMenu>
-              </Column>
-            </Columns>
-            <Text>Card content</Text>
-          </Stack>
-        </Card>
+        {source(
+          <Card>
+            <Stack space="medium">
+              <Columns space="small">
+                <Column>
+                  <Heading level="3">Card heading</Heading>
+                </Column>
+                <Column width="content">
+                  <OverflowMenu label="Options">
+                    <MenuItem
+                      onClick={() => {
+                        /* */
+                      }}
+                    >
+                      First
+                    </MenuItem>
+                    <MenuItem
+                      onClick={() => {
+                        /* */
+                      }}
+                    >
+                      Second
+                    </MenuItem>
+                  </OverflowMenu>
+                </Column>
+              </Columns>
+              <Text>Card content</Text>
+            </Stack>
+          </Card>,
+        )}
       </Code>
       <Text>
         By default, columns are rendered in document order, which also doubles
@@ -500,18 +544,20 @@ const page: Page = {
         option:
       </Text>
       <Code>
-        <Columns space="small" collapseBelow="tablet" reverse>
-          <Column width="1/3">
-            <Card>
-              <Text>Sidebar</Text>
-            </Card>
-          </Column>
-          <Column>
-            <Card>
-              <Text>Main content</Text>
-            </Card>
-          </Column>
-        </Columns>
+        {source(
+          <Columns space="small" collapseBelow="tablet" reverse>
+            <Column width="1/3">
+              <Card>
+                <Text>Sidebar</Text>
+              </Card>
+            </Column>
+            <Column>
+              <Card>
+                <Text>Main content</Text>
+              </Card>
+            </Column>
+          </Columns>,
+        )}
       </Code>
       <Text>
         If you have <Strong>Column</Strong> elements that are of varying height,
@@ -522,34 +568,36 @@ const page: Page = {
         prop:
       </Text>
       <Code>
-        <Columns space="small" alignY="center">
-          <Column>
-            <Card>
-              <Stack space="medium" align="center">
-                <Text>Column</Text>
-                <Text>Column</Text>
-              </Stack>
-            </Card>
-          </Column>
-          <Column>
-            <Card>
-              <Stack space="medium" align="center">
-                <Text>Column</Text>
-                <Text>Column</Text>
-                <Text>Column</Text>
-                <Text>Column</Text>
-              </Stack>
-            </Card>
-          </Column>
-          <Column>
-            <Card>
-              <Stack space="medium" align="center">
-                <Text>Column</Text>
-                <Text>Column</Text>
-              </Stack>
-            </Card>
-          </Column>
-        </Columns>
+        {source(
+          <Columns space="small" alignY="center">
+            <Column>
+              <Card>
+                <Stack space="medium" align="center">
+                  <Text>Column</Text>
+                  <Text>Column</Text>
+                </Stack>
+              </Card>
+            </Column>
+            <Column>
+              <Card>
+                <Stack space="medium" align="center">
+                  <Text>Column</Text>
+                  <Text>Column</Text>
+                  <Text>Column</Text>
+                  <Text>Column</Text>
+                </Stack>
+              </Card>
+            </Column>
+            <Column>
+              <Card>
+                <Stack space="medium" align="center">
+                  <Text>Column</Text>
+                  <Text>Column</Text>
+                </Stack>
+              </Card>
+            </Column>
+          </Columns>,
+        )}
       </Code>
 
       <Divider />
@@ -562,35 +610,37 @@ const page: Page = {
       </Text>
 
       <Code>
-        <Tiles columns={3} space="small">
-          <Card>
-            <Text>Tile</Text>
-          </Card>
-          <Card>
-            <Text>Tile</Text>
-          </Card>
-          <Card>
-            <Text>Tile</Text>
-          </Card>
-          <Card>
-            <Text>Tile</Text>
-          </Card>
-          <Card>
-            <Text>Tile</Text>
-          </Card>
-          <Card>
-            <Text>Tile</Text>
-          </Card>
-          <Card>
-            <Text>Tile</Text>
-          </Card>
-          <Card>
-            <Text>Tile</Text>
-          </Card>
-          <Card>
-            <Text>Tile</Text>
-          </Card>
-        </Tiles>
+        {source(
+          <Tiles columns={3} space="small">
+            <Card>
+              <Text>Tile</Text>
+            </Card>
+            <Card>
+              <Text>Tile</Text>
+            </Card>
+            <Card>
+              <Text>Tile</Text>
+            </Card>
+            <Card>
+              <Text>Tile</Text>
+            </Card>
+            <Card>
+              <Text>Tile</Text>
+            </Card>
+            <Card>
+              <Text>Tile</Text>
+            </Card>
+            <Card>
+              <Text>Tile</Text>
+            </Card>
+            <Card>
+              <Text>Tile</Text>
+            </Card>
+            <Card>
+              <Text>Tile</Text>
+            </Card>
+          </Tiles>,
+        )}
       </Code>
 
       <Text>
@@ -602,35 +652,40 @@ const page: Page = {
       </Text>
 
       <Code>
-        <Tiles columns={[1, 3]} space={['xsmall', 'small']}>
-          <Card>
-            <Text>Tile</Text>
-          </Card>
-          <Card>
-            <Text>Tile</Text>
-          </Card>
-          <Card>
-            <Text>Tile</Text>
-          </Card>
-          <Card>
-            <Text>Tile</Text>
-          </Card>
-          <Card>
-            <Text>Tile</Text>
-          </Card>
-          <Card>
-            <Text>Tile</Text>
-          </Card>
-          <Card>
-            <Text>Tile</Text>
-          </Card>
-          <Card>
-            <Text>Tile</Text>
-          </Card>
-          <Card>
-            <Text>Tile</Text>
-          </Card>
-        </Tiles>
+        {source(
+          <Tiles
+            columns={{ mobile: 1, tablet: 3 }}
+            space={{ mobile: 'xsmall', tablet: 'small' }}
+          >
+            <Card>
+              <Text>Tile</Text>
+            </Card>
+            <Card>
+              <Text>Tile</Text>
+            </Card>
+            <Card>
+              <Text>Tile</Text>
+            </Card>
+            <Card>
+              <Text>Tile</Text>
+            </Card>
+            <Card>
+              <Text>Tile</Text>
+            </Card>
+            <Card>
+              <Text>Tile</Text>
+            </Card>
+            <Card>
+              <Text>Tile</Text>
+            </Card>
+            <Card>
+              <Text>Tile</Text>
+            </Card>
+            <Card>
+              <Text>Tile</Text>
+            </Card>
+          </Tiles>,
+        )}
       </Code>
 
       <Text>
@@ -640,35 +695,41 @@ const page: Page = {
       </Text>
 
       <Code>
-        <Tiles columns={[1, 3]} space={['none', 'small']} dividers>
-          <Card>
-            <Text>Tile</Text>
-          </Card>
-          <Card>
-            <Text>Tile</Text>
-          </Card>
-          <Card>
-            <Text>Tile</Text>
-          </Card>
-          <Card>
-            <Text>Tile</Text>
-          </Card>
-          <Card>
-            <Text>Tile</Text>
-          </Card>
-          <Card>
-            <Text>Tile</Text>
-          </Card>
-          <Card>
-            <Text>Tile</Text>
-          </Card>
-          <Card>
-            <Text>Tile</Text>
-          </Card>
-          <Card>
-            <Text>Tile</Text>
-          </Card>
-        </Tiles>
+        {source(
+          <Tiles
+            columns={{ mobile: 1, tablet: 3 }}
+            space={{ mobile: 'none', tablet: 'small' }}
+            dividers
+          >
+            <Card>
+              <Text>Tile</Text>
+            </Card>
+            <Card>
+              <Text>Tile</Text>
+            </Card>
+            <Card>
+              <Text>Tile</Text>
+            </Card>
+            <Card>
+              <Text>Tile</Text>
+            </Card>
+            <Card>
+              <Text>Tile</Text>
+            </Card>
+            <Card>
+              <Text>Tile</Text>
+            </Card>
+            <Card>
+              <Text>Tile</Text>
+            </Card>
+            <Card>
+              <Text>Tile</Text>
+            </Card>
+            <Card>
+              <Text>Tile</Text>
+            </Card>
+          </Tiles>,
+        )}
       </Code>
 
       <Divider />
@@ -682,11 +743,13 @@ const page: Page = {
         component that sets a maximum width and centres content horizontally.
       </Text>
       <Code>
-        <ContentBlock>
-          <Card>
-            <Text>Hello World</Text>
-          </Card>
-        </ContentBlock>
+        {source(
+          <ContentBlock>
+            <Card>
+              <Text>Hello World</Text>
+            </Card>
+          </ContentBlock>,
+        )}
       </Code>
       <Text>
         If you’d like a larger content block, you can optionally provide the{' '}
@@ -694,11 +757,13 @@ const page: Page = {
         prop:
       </Text>
       <Code>
-        <ContentBlock width="large">
-          <Card>
-            <Text>Hello World</Text>
-          </Card>
-        </ContentBlock>
+        {source(
+          <ContentBlock width="large">
+            <Card>
+              <Text>Hello World</Text>
+            </Card>
+          </ContentBlock>,
+        )}
       </Code>
     </TextStack>
   ),

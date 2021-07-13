@@ -195,14 +195,13 @@ const docs: ComponentDocs = {
       description: (
         <>
           <Text>
-            Specifying a <Strong>characterLimit</Strong> will communicate when
-            the input text exceeds the limit. To reduce visual noise, the
-            character count is only displayed when the user is approaching the
-            specified limit.
+            Providing a <Strong>characterLimit</Strong> will communicate when
+            the input text approaches or exceeds the specified limit. All excess
+            characters will be visually highlighted.
           </Text>
           <Text>
             To prevent loss of information, exceeding the limit is permitted,
-            however the count will present in a critical tone.
+            however the count will be presented in a critical tone.
           </Text>
         </>
       ),
@@ -210,15 +209,15 @@ const docs: ComponentDocs = {
         source(
           <>
             {setDefaultState(
-              'textarea',
+              'text',
               'A long piece of text exceeding the specified character limit of 50',
             )}
 
             <Textarea
               label="Label"
               id={id}
-              onChange={setState('textarea')}
-              value={getState('textarea')}
+              onChange={setState('text')}
+              value={getState('text')}
               description="Chactacter limit of 50"
               characterLimit={50}
             />

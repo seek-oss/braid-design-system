@@ -1,15 +1,6 @@
 import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import {
-  Actions,
-  Box,
-  Button,
-  Inline,
-  Stack,
-  Strong,
-  Text,
-  TextLink,
-} from '../';
+import { Box, Inline, Stack, Strong, Text, TextLink } from '../';
 import source from '../../utils/source.macro';
 
 const docs: ComponentDocs = {
@@ -40,8 +31,7 @@ const docs: ComponentDocs = {
         <Text>
           This component must be nested within a{' '}
           <TextLink href="/components/Text">Text</TextLink> or{' '}
-          <TextLink href="/components/Heading">Heading</TextLink> or{' '}
-          <TextLink href="/components/Actions">Actions</TextLink> component.
+          <TextLink href="/components/Heading">Heading</TextLink> component.
         </Text>
       ),
     },
@@ -84,31 +74,15 @@ const docs: ComponentDocs = {
         ),
     },
     {
-      label: 'Development considerations',
+      label: 'Custom link rendering',
       description: (
-        <>
-          <Text>
-            By default renders a native <Strong>a</Strong> element, but this can
-            be customised via the <Strong>linkComponent</Strong> prop on{' '}
-            <TextLink href="/components/BraidProvider">BraidProvider</TextLink>.
-          </Text>
-          <Text>
-            In addition, when inside of an{' '}
-            <TextLink href="/components/Actions">Actions</TextLink> component a
-            TextLink uses a different layout and focus style to better align
-            with the other <TextLink href="/components/Button">Button</TextLink>{' '}
-            and <TextLink href="/components/TextLink">TextLink</TextLink>{' '}
-            elements in the container.
-          </Text>
-        </>
+        <Text>
+          This component renders a native <Strong>a</Strong> element by default,
+          but this can be customised via the <Strong>linkComponent</Strong> prop
+          on <TextLink href="/components/BraidProvider">BraidProvider</TextLink>
+          .
+        </Text>
       ),
-      Example: () =>
-        source(
-          <Actions>
-            <Button>Button</Button>
-            <TextLink href="#">TextLink</TextLink>
-          </Actions>,
-        ),
     },
     {
       label: 'Contextual design',

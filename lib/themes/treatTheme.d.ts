@@ -1,4 +1,3 @@
-/* tslint:disable */
 declare module 'treat/theme' {
   type TreatTheme = import('./makeBraidTheme').TreatTheme;
 

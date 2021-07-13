@@ -28,6 +28,7 @@ export interface Page extends RouteProps {
 export interface ComponentDocs {
   category: 'Logic' | 'Layout' | 'Content' | 'Icon';
   deprecationWarning?: ReactNodeNoStrings;
+  banner?: ReactNodeNoStrings;
   migrationGuide?: boolean;
   description?: ReactNodeNoStrings;
   subComponents?: string[];
@@ -35,6 +36,16 @@ export interface ComponentDocs {
   alternatives: Array<{ name: string; description: string }>;
   accessibility?: ReactNodeNoStrings;
   additional?: ComponentExample[];
+}
+
+export interface CssDoc {
+  banner?: ReactNodeNoStrings;
+  usage: ReactNodeNoStrings;
+  description?: ReactNodeNoStrings;
+  additional?: Array<{
+    label?: string;
+    description?: ReactNodeNoStrings;
+  }>;
 }
 
 interface ExampleProps extends ReturnType<typeof useScope> {
@@ -54,7 +65,7 @@ export interface ComponentExample {
 }
 
 export interface ComponentScreenshot {
-  screenshotWidths: Array<320 | 768 | 1200>;
+  screenshotWidths: Array<320 | 768 | 992 | 1200>;
   screenshotOnlyInWireframe?: boolean;
   examples: {
     label?: string;

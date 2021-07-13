@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useStyles } from 'sku/react-treat';
 import { parseToHsl, setLightness } from 'polished';
 
 import { Page } from '../../../types';
@@ -8,7 +7,7 @@ import { Box } from '../../../../../lib/components';
 import { Logo } from '../../Logo/Logo';
 import { useThemeSettings } from '../../ThemeSetting';
 import { Gallery } from './Gallery';
-import * as styleRefs from './gallery.treat';
+import * as styles from './gallery.css';
 
 const useBackgroundColor = () => {
   const { theme } = useThemeSettings();
@@ -23,7 +22,6 @@ const useBackgroundColor = () => {
 };
 
 const GalleryPage = () => {
-  const styles = useStyles(styleRefs);
   const [ready, setReady] = useState(false);
 
   useEffect(() => {

@@ -1,47 +1,44 @@
 import { useContext } from 'react';
-import { useStyles } from 'sku/react-treat';
 import assert from 'assert';
-import classnames from 'classnames';
+import clsx from 'clsx';
 
 import { OptionalTitle } from '../../components/icons/SVGTypes';
 import { BoxProps } from '../../components/Box/Box';
-import TextContext from '../../components/Text/TextContext';
+import { TextContext } from '../../components/Text/TextContext';
 import HeadingContext from '../../components/Heading/HeadingContext';
-import { useTextSize, useTextTone, UseTextProps } from '../typography';
-import { useLineHeightContainer } from '../useLineHeightContainer/useLineHeightContainer';
-import * as styleRefs from './icon.treat';
+import { textSize, useTextTone, UseTextProps } from '../typography';
+import { lineHeightContainer } from '../../css/lineHeightContainer.css';
+import buildDataAttributes, {
+  DataAttributeMap,
+} from '../../components/private/buildDataAttributes';
+import * as styles from './icon.css';
 
 type IconSize = NonNullable<UseTextProps['size']> | 'fill';
 
-export interface UseIconSizeProps {
+export interface IconSizeProps {
   size?: Exclude<IconSize, 'fill'>;
 }
-export const useIconSize = ({ size = 'standard' }: UseIconSizeProps = {}) => {
-  const styles = useStyles(styleRefs);
+export const iconSize = ({ size = 'standard' }: IconSizeProps = {}) =>
+  clsx(styles.size, textSize(size));
 
-  return classnames(styles.size, useTextSize(size));
-};
-
-export interface UseIconContainerSizeProps {
+export interface IconContainerSizeProps {
   size?: Exclude<IconSize, 'fill'>;
 }
-export const useIconContainerSize = (
+export const iconContainerSize = (
   size: Exclude<IconSize, 'fill'> = 'standard',
-) => {
-  const styles = useStyles(styleRefs);
-  return classnames(styles.blockWidths[size], useLineHeightContainer(size));
-};
+) => clsx(styles.blockWidths[size], lineHeightContainer[size]);
 
 export type UseIconProps = {
   size?: IconSize;
   tone?: UseTextProps['tone'];
   alignY?: 'uppercase' | 'lowercase';
+  data?: DataAttributeMap;
 } & OptionalTitle;
 
 type PrivateIconProps = {
   verticalCorrection?: {
-    lowercase: keyof typeof styleRefs.alignY.lowercase;
-    uppercase: keyof typeof styleRefs.alignY.uppercase;
+    lowercase: keyof typeof styles.alignY.lowercase;
+    uppercase: keyof typeof styles.alignY.uppercase;
   };
 };
 
@@ -51,19 +48,15 @@ const detaultVerticalCorrection = {
 } as const;
 
 export default (
-  { size, tone, alignY, ...titleProps }: UseIconProps,
+  { size, tone, alignY, data, ...titleProps }: UseIconProps,
   { verticalCorrection = detaultVerticalCorrection }: PrivateIconProps = {},
 ): BoxProps => {
-  const styles = useStyles(styleRefs);
   const textContext = useContext(TextContext);
   const headingContext = useContext(HeadingContext);
   const inheritedTone =
     textContext && textContext.tone ? textContext.tone : 'neutral';
   const resolvedTone = useTextTone({ tone: tone || inheritedTone });
   const isInline = textContext || headingContext;
-  const blockSizeStyles = useIconContainerSize(
-    size !== 'fill' ? size : 'standard',
-  );
   const a11yProps = titleProps.title
     ? { ...titleProps, role: 'img' }
     : { 'aria-hidden': true };
@@ -86,6 +79,7 @@ export default (
       height: 'full',
       display: 'block',
       className: resolvedTone,
+      ...(data ? buildDataAttributes(data) : undefined),
       ...a11yProps,
     };
   }
@@ -95,16 +89,17 @@ export default (
     position: isInline ? 'relative' : undefined,
     className: [
       resolvedTone,
-      styles.size,
       isInline
         ? [
+            styles.size,
             styles.inline,
             styles.alignY[alignY || 'uppercase'][
               verticalCorrection[alignY || 'uppercase']
             ],
           ]
-        : blockSizeStyles,
+        : iconContainerSize(size),
     ],
+    ...(data ? buildDataAttributes(data) : undefined),
     ...a11yProps,
   };
 };

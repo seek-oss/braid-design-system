@@ -1,5 +1,4 @@
 import React, { ReactNode } from 'react';
-import { useStyles } from 'sku/react-treat';
 import { Box, BoxProps } from '../Box/Box';
 import {
   IconInfo,
@@ -14,8 +13,11 @@ import { Columns } from '../Columns/Columns';
 import { Column } from '../Column/Column';
 import { Overlay } from '../private/Overlay/Overlay';
 import { useBackground } from '../Box/BackgroundContext';
-import { useTextAlignedToIcon } from '../../hooks/useTextAlignedToIcon/useTextAlignedToIcon';
-import * as styleRefs from './Alert.treat';
+import { textAlignedToIcon } from '../../css/textAlignedToIcon.css';
+import buildDataAttributes, {
+  DataAttributeMap,
+} from '../private/buildDataAttributes';
+import * as styles from './Alert.css';
 
 type Tone = 'promote' | 'info' | 'positive' | 'caution' | 'critical';
 
@@ -24,6 +26,7 @@ type CloseProps = AllOrNone<{ onClose: () => void; closeLabel: string }>;
 export type AlertProps = {
   tone?: Tone;
   children: ReactNode;
+  data?: DataAttributeMap;
   id?: string;
 } & CloseProps;
 
@@ -58,9 +61,9 @@ export const Alert = ({
   children,
   id,
   closeLabel = 'Close',
+  data,
   onClose,
 }: AlertProps) => {
-  const styles = useStyles(styleRefs);
   const parentBackground = useBackground();
   const Icon = icons[tone];
 
@@ -74,6 +77,7 @@ export const Alert = ({
       overflow="hidden"
       role="alert"
       aria-live="polite"
+      {...(data ? buildDataAttributes(data) : undefined)}
     >
       <Box paddingLeft={highlightBarSize}>
         <Columns space="small">
@@ -81,7 +85,7 @@ export const Alert = ({
             <Icon tone={tone} />
           </Column>
           <Column>
-            <Box className={useTextAlignedToIcon('standard')}>{children}</Box>
+            <Box className={textAlignedToIcon.standard}>{children}</Box>
           </Column>
           {onClose ? (
             <Column width="content">

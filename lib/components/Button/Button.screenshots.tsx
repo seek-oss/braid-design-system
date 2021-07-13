@@ -1,7 +1,9 @@
 import React, { Fragment, ReactNode } from 'react';
 import { ComponentScreenshot } from '../../../site/src/types';
-import { background as boxBackgrounds } from '../Box/useBoxStyles.treat';
 import { Box, Button } from '../';
+import { Inline } from '../Inline/Inline';
+import { Heading } from '../Heading/Heading';
+import { backgrounds } from '../../utils/docsHelpers';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <div style={{ maxWidth: '300px' }}>{children}</div>
@@ -11,82 +13,177 @@ export const screenshots: ComponentScreenshot = {
   screenshotWidths: [320],
   examples: [
     {
-      label: 'Default Button',
-      Container,
-      Example: () => <Button>Submit</Button>,
-    },
-    {
-      label: 'Strong Button',
-      Container,
-      Example: () => <Button weight="strong">Submit</Button>,
-    },
-    {
-      label: 'Weak Button',
-      Container,
-      Example: () => <Button weight="weak">Submit</Button>,
-    },
-    {
-      label: 'Default Critical Button',
-      Container,
-      Example: () => <Button tone="critical">Delete</Button>,
-    },
-    {
-      label: 'Strong Critical Button',
+      label: 'Default',
       Container,
       Example: () => (
-        <Button weight="strong" tone="critical">
-          Delete
-        </Button>
+        <Inline space="small" collapseBelow="desktop">
+          <Button>Solid</Button>
+          <Button variant="ghost">Ghost</Button>
+          <Button variant="soft">Soft</Button>
+          <Button variant="transparent">Transparent</Button>
+        </Inline>
       ),
     },
     {
-      label: 'Weak Critical Button',
+      label: 'Critical',
       Container,
       Example: () => (
-        <Button weight="weak" tone="critical">
-          Delete
-        </Button>
+        <Inline space="small" collapseBelow="desktop">
+          <Button tone="critical">Solid</Button>
+          <Button tone="critical" variant="ghost">
+            Ghost
+          </Button>
+          <Button tone="critical" variant="soft">
+            Soft
+          </Button>
+          <Button tone="critical" variant="transparent">
+            Transparent
+          </Button>
+        </Inline>
       ),
     },
     {
-      label: 'Weak Button Contrast',
+      label: 'BrandAccent',
       Container,
-      Example: () => {
-        const backgrounds = Object.keys(boxBackgrounds) as Array<
-          keyof typeof boxBackgrounds
-        >;
-
-        return (
-          <Fragment>
-            {backgrounds.sort().map((background) => (
-              <Box key={background} background={background} padding="medium">
-                <Button weight="weak">{background}</Button>
-              </Box>
-            ))}
-          </Fragment>
-        );
-      },
+      Example: () => (
+        <Inline space="small" collapseBelow="desktop">
+          <Button tone="brandAccent">Solid</Button>
+          <Button tone="brandAccent" variant="ghost">
+            Ghost
+          </Button>
+          <Button tone="brandAccent" variant="soft">
+            Soft
+          </Button>
+          <Button tone="brandAccent" variant="transparent">
+            Transparent
+          </Button>
+        </Inline>
+      ),
     },
     {
-      label: 'Weak Critical Button Contrast',
+      label: 'Small size',
       Container,
-      Example: () => {
-        const backgrounds = Object.keys(boxBackgrounds) as Array<
-          keyof typeof boxBackgrounds
-        >;
-
-        return (
-          <Fragment>
-            {backgrounds.sort().map((background) => (
-              <Box key={background} background={background} padding="medium">
-                <Button weight="weak" tone="critical">
-                  {background}
+      Example: () => (
+        <Inline space="small" collapseBelow="desktop">
+          <Button size="small">Solid</Button>
+          <Button size="small" variant="ghost">
+            Ghost
+          </Button>
+          <Button size="small" variant="soft">
+            Soft
+          </Button>
+          <Button size="small" variant="transparent">
+            Transparent
+          </Button>
+        </Inline>
+      ),
+    },
+    {
+      label: 'With vertical bleed (standard)',
+      background: 'card',
+      Example: () => (
+        <Box background="neutralLight" borderRadius="standard" padding="gutter">
+          <Box background="card">
+            <Inline space="xsmall" alignY="center">
+              <Heading level="2">Heading</Heading>
+              <Button bleedY>Button</Button>
+            </Inline>
+          </Box>
+        </Box>
+      ),
+    },
+    {
+      label: 'With vertical bleed (small)',
+      background: 'card',
+      Example: () => (
+        <Box background="neutralLight" borderRadius="standard" padding="gutter">
+          <Box background="card">
+            <Inline space="xsmall" alignY="center">
+              <Heading level="2">Heading</Heading>
+              <Button bleedY size="small">
+                Button
+              </Button>
+            </Inline>
+          </Box>
+        </Box>
+      ),
+    },
+    {
+      label: 'Legacy weights',
+      Container,
+      Example: () => (
+        <Inline space="small" collapseBelow="desktop">
+          <Button weight="strong">Strong</Button>
+          <Button weight="regular">Regular</Button>
+          <Button weight="weak">Weak</Button>
+        </Inline>
+      ),
+    },
+    {
+      label: 'Contrast',
+      Container,
+      Example: () => (
+        <Fragment>
+          {backgrounds.map((background) => (
+            <Box key={background} background={background} padding="medium">
+              <Inline space="small" collapseBelow="desktop">
+                <Button>Solid</Button>
+                <Button variant="ghost">Ghost</Button>
+                <Button variant="soft">Soft</Button>
+                <Button variant="transparent">Transparent</Button>
+              </Inline>
+            </Box>
+          ))}
+        </Fragment>
+      ),
+    },
+    {
+      label: 'Contrast - critical',
+      Container,
+      Example: () => (
+        <Fragment>
+          {backgrounds.map((background) => (
+            <Box key={background} background={background} padding="medium">
+              <Inline space="small" collapseBelow="desktop">
+                <Button tone="critical">Solid</Button>
+                <Button tone="critical" variant="ghost">
+                  Ghost
                 </Button>
-              </Box>
-            ))}
-          </Fragment>
-        );
-      },
+                <Button tone="critical" variant="soft">
+                  Soft
+                </Button>
+                <Button tone="critical" variant="transparent">
+                  Transparent
+                </Button>
+              </Inline>
+            </Box>
+          ))}
+        </Fragment>
+      ),
+    },
+    {
+      label: 'Contrast - brandAccent',
+      Container,
+      Example: () => (
+        <Fragment>
+          {backgrounds.map((background) => (
+            <Box key={background} background={background} padding="medium">
+              <Inline space="small" collapseBelow="desktop">
+                <Button tone="brandAccent">Solid</Button>
+                <Button tone="brandAccent" variant="ghost">
+                  Ghost
+                </Button>
+                <Button tone="brandAccent" variant="soft">
+                  Soft
+                </Button>
+                <Button tone="brandAccent" variant="transparent">
+                  Transparent
+                </Button>
+              </Inline>
+            </Box>
+          ))}
+        </Fragment>
+      ),
     },
   ],
 };

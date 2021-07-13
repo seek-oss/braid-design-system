@@ -1,5 +1,4 @@
 import React, { ReactNode, useContext } from 'react';
-import { useStyles } from 'sku/react-treat';
 import assert from 'assert';
 import { Box } from '../Box/Box';
 import buildDataAttributes, {
@@ -8,7 +7,7 @@ import buildDataAttributes, {
 import { Overlay } from '../private/Overlay/Overlay';
 import { TabsContext } from './TabsProvider';
 import { TabPanelsContext } from './TabPanelsContext';
-import * as styleRefs from './Tabs.treat';
+import * as styles from './Tabs.css';
 
 export interface TabPanelProps {
   children: ReactNode;
@@ -17,7 +16,6 @@ export interface TabPanelProps {
 }
 
 export const TabPanel = ({ children, data, item }: TabPanelProps) => {
-  const styles = useStyles(styleRefs);
   const tabsContext = useContext(TabsContext);
   const tabPanelsContext = useContext(TabPanelsContext);
 
@@ -47,7 +45,7 @@ export const TabPanel = ({ children, data, item }: TabPanelProps) => {
       position="relative"
       outline="none"
       className={styles.tabPanel}
-      {...buildDataAttributes(data)}
+      {...(data ? buildDataAttributes(data) : undefined)}
     >
       {isSelected || renderInactive ? children : undefined}
       <Overlay

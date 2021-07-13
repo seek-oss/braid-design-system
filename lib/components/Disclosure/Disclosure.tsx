@@ -1,15 +1,20 @@
 import React, { ReactNode } from 'react';
 import assert from 'assert';
-import { Box, BoxProps } from '../Box/Box';
+import { Box } from '../Box/Box';
+import type { ResponsiveSpace } from '../../css/atoms/atoms';
 import { Text } from '../Text/Text';
 import { TextLinkButton } from '../TextLinkButton/TextLinkButton';
 import { IconChevron } from '../icons';
 import { useDisclosure, UseDisclosureProps } from './useDisclosure';
+import buildDataAttributes, {
+  DataAttributeMap,
+} from '../private/buildDataAttributes';
 
 export type DisclosureBaseProps = {
   expandLabel: string;
   collapseLabel?: string;
-  space?: BoxProps['paddingTop'];
+  space?: ResponsiveSpace;
+  data?: DataAttributeMap;
   children: ReactNode;
 };
 export type DisclosureProps = DisclosureBaseProps & UseDisclosureProps;
@@ -19,10 +24,10 @@ export const Disclosure = ({
   id,
   expandLabel,
   collapseLabel = expandLabel,
-  expanded: expandedProp,
-  onToggle,
   space = 'medium',
   children,
+  data,
+  ...restProps
 }: DisclosureProps) => {
   assert(
     typeof expandLabel === 'undefined' || typeof expandLabel === 'string',
@@ -36,11 +41,18 @@ export const Disclosure = ({
 
   const { expanded, buttonProps, contentProps } = useDisclosure({
     id,
-    ...(onToggle ? { onToggle, expanded: expandedProp } : null),
+    ...(restProps.expanded !== undefined
+      ? {
+          onToggle: restProps.onToggle,
+          expanded: restProps.expanded,
+        }
+      : {
+          onToggle: restProps.onToggle,
+        }),
   });
 
   return (
-    <Box>
+    <Box {...(data ? buildDataAttributes(data) : undefined)}>
       <Box userSelect="none">
         <Text>
           <TextLinkButton hitArea="large" {...buttonProps}>

@@ -5,34 +5,35 @@ import React, {
   useRef,
   useState,
   useCallback,
-  ReactElement,
 } from 'react';
-import { useStyles } from 'sku/react-treat';
 import assert from 'assert';
-import { Box, BoxProps } from '../Box/Box';
+import flattenChildren from 'react-keyed-flatten-children';
+import { Box } from '../Box/Box';
+import type { ResponsiveSpace } from '../../css/atoms/atoms';
 import { TAB_LIST_UPDATED } from './Tabs.actions';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
 import { TabsContext } from './TabsProvider';
-import { Tab, TabProps } from './Tab';
-import { useNegativeMarginTop } from '../../hooks/useNegativeMargin/useNegativeMargin';
+import { Tab } from './Tab';
+import { negativeMarginTop } from '../../css/negativeMargin/negativeMargin';
+import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
-import * as styleRefs from './Tabs.treat';
-import { TabListContext } from './TabListContext';
+import { TabListContext, TabListContextValues } from './TabListContext';
+import * as styles from './Tabs.css';
 
 export interface TabsProps {
-  children: ReactElement<TabProps>[];
+  children: ReactNodeNoStrings;
   label: string;
   align?: 'left' | 'center';
-  gutter?: BoxProps['paddingX'];
+  gutter?: ResponsiveSpace;
   reserveHitArea?: boolean;
   data?: DataAttributeMap;
+  divider?: TabListContextValues['divider'];
 }
 
 export const Tabs = (props: TabsProps) => {
   const tabsContext = useContext(TabsContext);
-  const styles = useStyles(styleRefs);
   const tabsRef = useRef<HTMLElement>(null);
 
   const {
@@ -42,6 +43,7 @@ export const Tabs = (props: TabsProps) => {
     align = 'left',
     gutter,
     reserveHitArea = false,
+    divider = 'minimal',
   } = props;
 
   assert(
@@ -56,7 +58,7 @@ export const Tabs = (props: TabsProps) => {
   const { dispatch, a11y } = tabsContext;
   const tabItems: Array<string | number> = [];
 
-  const tabs = Children.map(children, (tab, index) => {
+  const tabs = Children.map(flattenChildren(children), (tab, index) => {
     assert(
       typeof tab === 'object' && tab.type === Tab,
       'Only Tab elements can be direct children of a Tabs',
@@ -70,6 +72,7 @@ export const Tabs = (props: TabsProps) => {
         value={{
           tabListItemIndex: index,
           scrollContainer: tabsRef.current,
+          divider,
         }}
       >
         {tab}
@@ -106,11 +109,9 @@ export const Tabs = (props: TabsProps) => {
     return () => window.removeEventListener('resize', updateMask);
   }, [updateMask]);
 
-  const negativeMarginTop = useNegativeMarginTop('medium');
-
   return (
     <Box>
-      <Box className={reserveHitArea ? undefined : negativeMarginTop}>
+      <Box className={reserveHitArea ? undefined : negativeMarginTop('medium')}>
         <Box position="relative">
           <Box
             ref={tabsRef}
@@ -132,12 +133,21 @@ export const Tabs = (props: TabsProps) => {
               <Box
                 {...a11y.tabListProps({ label })}
                 display="flex"
-                {...buildDataAttributes(data)}
+                {...(data ? buildDataAttributes(data) : undefined)}
                 flexWrap="nowrap"
               >
                 {tabs}
               </Box>
             </Box>
+            {divider === 'full' ? (
+              <Box
+                position="absolute"
+                bottom={0}
+                left={0}
+                right={0}
+                className={styles.divider}
+              />
+            ) : null}
           </Box>
         </Box>
       </Box>

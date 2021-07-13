@@ -7,6 +7,7 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconAddSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
@@ -33,6 +34,7 @@ export const IconBookmarkActiveSvg = ({
   ...props
 }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
@@ -55,6 +57,7 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconBookmarkSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
@@ -77,6 +80,7 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconCautionSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     width={16}
     height={16}
     viewBox=\\"0 0 24 24\\"
@@ -101,6 +105,7 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconChevronSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
@@ -123,6 +128,7 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconClearSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
@@ -145,6 +151,7 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconCompanySvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
@@ -168,6 +175,7 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconComposeSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
@@ -191,6 +199,7 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconCopySvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
@@ -214,6 +223,7 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconCreditCardSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
@@ -237,6 +247,7 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconCriticalSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
@@ -261,6 +272,7 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconDateSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
@@ -283,6 +295,7 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconDeleteSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
@@ -299,6 +312,29 @@ export const IconDeleteSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
+exports[`IconDesktopSvg should match snapshot 1`] = `
+"import React from 'react';
+
+import { SVGProps } from '../SVGTypes';
+
+export const IconDesktopSvg = ({ title, titleId, ...props }: SVGProps) => (
+  <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
+    width={16}
+    height={16}
+    viewBox=\\"0 0 24 24\\"
+    focusable=\\"false\\"
+    fill=\\"currentColor\\"
+    aria-labelledby={titleId}
+    {...props}
+  >
+    {title ? <title id={titleId}>{title}</title> : null}
+    <path d=\\"M19.2 2H4.8A2.908 2.908 0 002 5v10a2.908 2.908 0 002.8 3H11v2.005H8a1 1 0 000 2h8a1 1 0 000-2h-3V18h6.2a2.908 2.908 0 002.8-3V5a2.908 2.908 0 00-2.8-3zm.8 13a.93.93 0 01-.8 1H4.8a.93.93 0 01-.8-1V5a.93.93 0 01.8-1h14.4a.93.93 0 01.8 1z\\" />
+  </svg>
+);
+"
+`;
+
 exports[`IconDocumentBrokenSvg should match snapshot 1`] = `
 "import React from 'react';
 
@@ -310,6 +346,7 @@ export const IconDocumentBrokenSvg = ({
   ...props
 }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     width={16}
     height={16}
     viewBox=\\"0 0 24 24\\"
@@ -334,6 +371,7 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconDocumentSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
@@ -357,6 +395,7 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconDownloadSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
@@ -379,6 +418,7 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconEditSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
@@ -401,6 +441,7 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconEducationSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
@@ -423,6 +464,7 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconFilterSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
@@ -445,6 +487,7 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconGridSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
@@ -467,6 +510,7 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconHeartActiveSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
@@ -489,6 +533,7 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconHeartSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
@@ -511,6 +556,7 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconHelpSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
@@ -534,6 +580,7 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconHistorySvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
@@ -557,6 +604,7 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconHomeSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
@@ -579,6 +627,7 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconImageSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
@@ -602,6 +651,7 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconInfoSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
@@ -625,6 +675,7 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconInvoiceSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
@@ -648,6 +699,7 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconLanguageSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     width={16}
     height={16}
     viewBox=\\"0 0 24 24\\"
@@ -670,6 +722,7 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconLinkBrokenSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     width={16}
     height={16}
     viewBox=\\"0 0 24 24\\"
@@ -693,6 +746,7 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconLinkSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     width={16}
     height={16}
     viewBox=\\"0 0 24 24\\"
@@ -716,6 +770,7 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconListSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
@@ -741,6 +796,7 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconLocationSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
@@ -764,6 +820,7 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconMailSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
@@ -786,6 +843,7 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconMinusSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
@@ -801,6 +859,30 @@ export const IconMinusSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
+exports[`IconMobileSvg should match snapshot 1`] = `
+"import React from 'react';
+
+import { SVGProps } from '../SVGTypes';
+
+export const IconMobileSvg = ({ title, titleId, ...props }: SVGProps) => (
+  <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
+    width={16}
+    height={16}
+    viewBox=\\"0 0 24 24\\"
+    focusable=\\"false\\"
+    fill=\\"currentColor\\"
+    aria-labelledby={titleId}
+    {...props}
+  >
+    {title ? <title id={titleId}>{title}</title> : null}
+    <path d=\\"M12.71 16.29a1.047 1.047 0 00-1.42 0 1.029 1.029 0 00-.21.33.832.832 0 00-.08.38.951.951 0 00.29.7.96.96 0 00.71.3 1 1 0 00.38-.08 1.012 1.012 0 00.33-.22.955.955 0 00.29-.7 1 1 0 00-.08-.38 1.029 1.029 0 00-.21-.33z\\" />
+    <path d=\\"M16.286 2H7.714A2.761 2.761 0 005 4.8v14.4A2.761 2.761 0 007.714 22h8.572A2.761 2.761 0 0019 19.2V4.8A2.761 2.761 0 0016.286 2zM17 19.2a.761.761 0 01-.714.8H7.714A.761.761 0 017 19.2V4.8a.761.761 0 01.714-.8h8.572a.761.761 0 01.714.8z\\" />
+  </svg>
+);
+"
+`;
+
 exports[`IconMoneySvg should match snapshot 1`] = `
 "import React from 'react';
 
@@ -808,6 +890,7 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconMoneySvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
@@ -830,6 +913,7 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconNewWindowSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
@@ -853,6 +937,7 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconNoteSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
@@ -876,6 +961,7 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconNotificationSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     width={16}
     height={16}
     viewBox=\\"0 0 24 24\\"
@@ -898,6 +984,7 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconOverflowSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
@@ -922,6 +1009,7 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconPeopleSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     width={16}
     height={16}
     viewBox=\\"0 0 24 24\\"
@@ -945,6 +1033,7 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconPersonAddSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     width={16}
     height={16}
     viewBox=\\"0 0 24 24\\"
@@ -971,6 +1060,7 @@ export const IconPersonVerifiedSvg = ({
   ...props
 }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
@@ -994,6 +1084,7 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconPhoneSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     width={16}
     height={16}
     viewBox=\\"0 0 24 24\\"
@@ -1016,6 +1107,7 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconPositiveSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
@@ -1039,6 +1131,7 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconPrintSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
@@ -1061,6 +1154,7 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconProfileSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     width={16}
     height={16}
     viewBox=\\"0 0 24 24\\"
@@ -1083,6 +1177,7 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconPromoteSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
@@ -1105,6 +1200,7 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconRecommendedSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
@@ -1127,6 +1223,7 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconRefreshSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     width={16}
     height={16}
     viewBox=\\"0 0 24 24\\"
@@ -1149,6 +1246,7 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconResumeSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
@@ -1173,6 +1271,7 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconSearchSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
@@ -1195,6 +1294,7 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconSecuritySvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
@@ -1217,6 +1317,7 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconSendSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
@@ -1239,6 +1340,7 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconSentSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
@@ -1261,6 +1363,7 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconSettingsSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
@@ -1284,6 +1387,7 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconShareSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
@@ -1310,6 +1414,7 @@ export const IconSocialFacebookSvg = ({
   ...props
 }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     width={16}
     height={16}
     viewBox=\\"0 0 24 24\\"
@@ -1332,6 +1437,7 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconSocialGitHubSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     width={16}
     height={16}
     viewBox=\\"0 0 24 24\\"
@@ -1361,6 +1467,7 @@ export const IconSocialInstagramSvg = ({
   ...props
 }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     width={16}
     height={16}
     viewBox=\\"0 0 24 24\\"
@@ -1389,6 +1496,7 @@ export const IconSocialLinkedInSvg = ({
   ...props
 }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     width={16}
     height={16}
     viewBox=\\"0 0 24 24\\"
@@ -1411,6 +1519,7 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconSocialMediumSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     width={16}
     height={16}
     viewBox=\\"0 0 24 24\\"
@@ -1437,6 +1546,7 @@ export const IconSocialTwitterSvg = ({
   ...props
 }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     width={16}
     height={16}
     viewBox=\\"0 0 24 24\\"
@@ -1459,6 +1569,7 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconStarActiveSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
@@ -1481,6 +1592,7 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconStarHalfSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     width={16}
     height={16}
     viewBox=\\"0 0 24 24\\"
@@ -1503,6 +1615,7 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconStarSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
@@ -1525,6 +1638,7 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconStatisticsSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     width={16}
     height={16}
     viewBox=\\"0 0 24 24\\"
@@ -1548,6 +1662,7 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconSubCategorySvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
@@ -1570,6 +1685,7 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconTagSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
@@ -1593,6 +1709,7 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconTickSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
@@ -1615,6 +1732,7 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconTimeSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
@@ -1638,6 +1756,7 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconUploadSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
@@ -1660,6 +1779,7 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconVideoSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     viewBox=\\"0 0 24 24\\"
     focusable=\\"false\\"
     fill=\\"currentColor\\"
@@ -1686,6 +1806,7 @@ export const IconVisibilityHiddenSvg = ({
   ...props
 }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     width={16}
     height={16}
     viewBox=\\"0 0 24 24\\"
@@ -1708,6 +1829,7 @@ import { SVGProps } from '../SVGTypes';
 
 export const IconVisibilitySvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     width={16}
     height={16}
     viewBox=\\"0 0 24 24\\"
@@ -1735,6 +1857,7 @@ export const IconWorkExperienceSvg = ({
   ...props
 }: SVGProps) => (
   <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
     width={16}
     height={16}
     viewBox=\\"0 0 24 24\\"

@@ -2,76 +2,114 @@ import React from 'react';
 import { ComponentScreenshot } from '../../../site/src/types';
 import { Hidden } from './Hidden';
 import { Text } from '../Text/Text';
-import { Stack } from '../Stack/Stack';
+import { Box } from '../Box/Box';
 
 export const screenshots: ComponentScreenshot = {
-  screenshotWidths: [320, 768, 1200],
+  screenshotWidths: [320, 768, 992, 1200],
   screenshotOnlyInWireframe: true,
   examples: [
     {
       label: 'Hidden below tablet',
       Example: () => (
-        <Stack space="small">
+        <>
           <Text>The following line is hidden below tablet:</Text>
           <Hidden below="tablet">
-            <Text>Hidden below tablet.</Text>
+            <Box paddingTop="small">
+              <Text>Hidden below tablet.</Text>
+            </Box>
           </Hidden>
-        </Stack>
+        </>
       ),
     },
     {
       label: 'Hidden below desktop',
       Example: () => (
-        <Stack space="small">
+        <>
           <Text>The following line is hidden below desktop:</Text>
           <Hidden below="desktop">
-            <Text>Hidden below desktop.</Text>
+            <Box paddingTop="small">
+              <Text>Hidden below desktop.</Text>
+            </Box>
           </Hidden>
-        </Stack>
+        </>
+      ),
+    },
+    {
+      label: 'Hidden below wide',
+      Example: () => (
+        <>
+          <Text>The following line is hidden below wide:</Text>
+          <Hidden below="wide">
+            <Box paddingTop="small">
+              <Text>Hidden below wide.</Text>
+            </Box>
+          </Hidden>
+        </>
       ),
     },
     {
       label: 'Hidden above mobile',
       Example: () => (
-        <Stack space="small">
+        <>
           <Text>The following line is hidden above mobile:</Text>
           <Hidden above="mobile">
-            <Text>Hidden above mobile.</Text>
+            <Box paddingTop="small">
+              <Text>Hidden above mobile.</Text>
+            </Box>
           </Hidden>
-        </Stack>
+        </>
       ),
     },
     {
       label: 'Hidden above tablet',
       Example: () => (
-        <Stack space="small">
+        <>
           <Text>The following line is hidden above tablet:</Text>
           <Hidden above="tablet">
-            <Text>Hidden above tablet.</Text>
+            <Box paddingTop="small">
+              <Text>Hidden above tablet.</Text>
+            </Box>
           </Hidden>
-        </Stack>
+        </>
+      ),
+    },
+    {
+      label: 'Hidden above desktop',
+      Example: () => (
+        <>
+          <Text>The following line is hidden above desktop:</Text>
+          <Hidden above="desktop">
+            <Box paddingTop="small">
+              <Text>Hidden above desktop.</Text>
+            </Box>
+          </Hidden>
+        </>
       ),
     },
     {
       label: 'Hidden on print',
       Example: () => (
-        <Stack space="small">
+        <>
           <Text>The following line is hidden on print:</Text>
           <Hidden print>
-            <Text>Hidden on print.</Text>
+            <Box paddingTop="small">
+              <Text>Hidden on print.</Text>
+            </Box>
           </Hidden>
-        </Stack>
+        </>
       ),
     },
     {
       label: 'Hidden on Screen',
       Example: () => (
-        <Stack space="small">
+        <>
           <Text>The following line is hidden on screen:</Text>
           <Hidden screen>
-            <Text>Hidden on screen.</Text>
+            <Box paddingTop="small">
+              <Text>Hidden on screen.</Text>
+            </Box>
           </Hidden>
-        </Stack>
+        </>
       ),
     },
     {
@@ -93,6 +131,15 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
+      label: 'Hidden below wide (inline)',
+      Example: () => (
+        <Text>
+          The following text node is hidden below wide:{' '}
+          <Hidden below="wide">Hidden below wide.</Hidden>
+        </Text>
+      ),
+    },
+    {
       label: 'Hidden above mobile (inline)',
       Example: () => (
         <Text>
@@ -107,6 +154,15 @@ export const screenshots: ComponentScreenshot = {
         <Text>
           The following text node is hidden above tablet:{' '}
           <Hidden above="tablet">Hidden above tablet.</Hidden>
+        </Text>
+      ),
+    },
+    {
+      label: 'Hidden above desktop (inline)',
+      Example: () => (
+        <Text>
+          The following text node is hidden above desktop:{' '}
+          <Hidden above="desktop">Hidden above desktop.</Hidden>
         </Text>
       ),
     },

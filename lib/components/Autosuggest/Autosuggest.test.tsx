@@ -48,7 +48,9 @@ function renderAutosuggest<Value>({
     );
   };
 
-  const { getByRole, queryByLabelText, queryByText } = render(<TestCase />);
+  const { getByRole, queryByLabelText, queryByText, getByTestId } = render(
+    <TestCase />,
+  );
   const input = getByRole('combobox');
   const getInputValue = () => input.getAttribute('value');
 
@@ -58,6 +60,7 @@ function renderAutosuggest<Value>({
     changeHandler,
     queryByLabelText,
     queryByText,
+    getByTestId,
     setSuggestions: (x: Suggestions) => act(() => setSuggestions(x)),
   };
 }
@@ -118,21 +121,17 @@ describe('Autosuggest', () => {
   });
 
   it('should select suggestions on click', () => {
-    const {
-      input,
-      changeHandler,
-      queryByLabelText,
-      getInputValue,
-    } = renderAutosuggest({
-      value: { text: '' },
-      suggestions: [
-        {
-          text: 'Apples',
-          value: 'apples',
-          highlights: [{ start: 0, end: 4 }],
-        },
-      ],
-    });
+    const { input, changeHandler, queryByLabelText, getInputValue } =
+      renderAutosuggest({
+        value: { text: '' },
+        suggestions: [
+          {
+            text: 'Apples',
+            value: 'apples',
+            highlights: [{ start: 0, end: 4 }],
+          },
+        ],
+      });
 
     userEvent.click(input);
     expect(getInputValue()).toBe('');
@@ -151,21 +150,17 @@ describe('Autosuggest', () => {
   });
 
   it('should support custom suggestion labels', () => {
-    const {
-      input,
-      changeHandler,
-      queryByLabelText,
-      getInputValue,
-    } = renderAutosuggest({
-      value: { text: '' },
-      suggestions: [
-        {
-          text: 'Apples',
-          label: 'CUSTOM LABEL',
-          value: 'apples',
-        },
-      ],
-    });
+    const { input, changeHandler, queryByLabelText, getInputValue } =
+      renderAutosuggest({
+        value: { text: '' },
+        suggestions: [
+          {
+            text: 'Apples',
+            label: 'CUSTOM LABEL',
+            value: 'apples',
+          },
+        ],
+      });
 
     userEvent.click(input);
     expect(getInputValue()).toBe('');
@@ -367,7 +362,7 @@ describe('Autosuggest', () => {
     });
 
     it('should support grouped suggestions', () => {
-      const { input, queryByLabelText } = renderAutosuggest({
+      const { input, queryByLabelText, getByTestId } = renderAutosuggest({
         value: { text: '' },
         suggestions: [
           {
@@ -376,6 +371,14 @@ describe('Autosuggest', () => {
               {
                 text: 'Apples',
                 value: 'apples',
+              },
+              {
+                text: 'Bananas',
+                value: 'bananas',
+              },
+              {
+                text: 'Oranges',
+                value: 'oranges',
               },
             ],
           },
@@ -386,6 +389,19 @@ describe('Autosuggest', () => {
                 text: 'Carrots',
                 value: 'carrots',
               },
+              {
+                text: 'Broccoli',
+                value: 'broccoli',
+              },
+            ],
+          },
+          {
+            label: 'Dessert',
+            suggestions: [
+              {
+                text: 'Ice cream',
+                value: 'ice-cream',
+              },
             ],
           },
         ],
@@ -395,6 +411,11 @@ describe('Autosuggest', () => {
 
       expect(queryByLabelText('Apples (Fruit)')).toBeInTheDocument();
       expect(queryByLabelText('Carrots (Vegetables)')).toBeInTheDocument();
+      expect(queryByLabelText('Ice cream (Dessert)')).toBeInTheDocument();
+
+      expect(getByTestId('group-heading-Fruit')).toBeInTheDocument();
+      expect(getByTestId('group-heading-Vegetables')).toBeInTheDocument();
+      expect(getByTestId('group-heading-Dessert')).toBeInTheDocument();
     });
 
     it('should support suggestions with descriptions', () => {
@@ -443,26 +464,22 @@ describe('Autosuggest', () => {
 
   describe('keyboard access', () => {
     it("shouldn't select anything and close the list on enter if the user hasn't navigated the list", () => {
-      const {
-        input,
-        changeHandler,
-        getInputValue,
-        queryByLabelText,
-      } = renderAutosuggest({
-        value: { text: '' },
-        suggestions: [
-          {
-            text: 'Apples',
-            value: 'apples',
-            highlights: [{ start: 0, end: 4 }],
-          },
-          {
-            text: 'Bananas',
-            value: 'bananas',
-            highlights: [{ start: 0, end: 4 }],
-          },
-        ],
-      });
+      const { input, changeHandler, getInputValue, queryByLabelText } =
+        renderAutosuggest({
+          value: { text: '' },
+          suggestions: [
+            {
+              text: 'Apples',
+              value: 'apples',
+              highlights: [{ start: 0, end: 4 }],
+            },
+            {
+              text: 'Bananas',
+              value: 'bananas',
+              highlights: [{ start: 0, end: 4 }],
+            },
+          ],
+        });
 
       userEvent.click(input);
       fireEvent.keyDown(input, { key: 'Enter' });
@@ -526,31 +543,27 @@ describe('Autosuggest', () => {
     });
 
     it('should first clear the suggestion preview and then reset the input when pressing escape', async () => {
-      const {
-        input,
-        changeHandler,
-        queryByLabelText,
-        getInputValue,
-      } = renderAutosuggest({
-        value: { text: '' },
-        suggestions: [
-          {
-            text: 'Apples',
-            value: 'apples',
-            highlights: [{ start: 0, end: 4 }],
-          },
-          {
-            text: 'Bananas',
-            value: 'bananas',
-            highlights: [{ start: 0, end: 4 }],
-          },
-          {
-            text: 'Carrots',
-            value: 'carrots',
-            highlights: [{ start: 0, end: 4 }],
-          },
-        ],
-      });
+      const { input, changeHandler, queryByLabelText, getInputValue } =
+        renderAutosuggest({
+          value: { text: '' },
+          suggestions: [
+            {
+              text: 'Apples',
+              value: 'apples',
+              highlights: [{ start: 0, end: 4 }],
+            },
+            {
+              text: 'Bananas',
+              value: 'bananas',
+              highlights: [{ start: 0, end: 4 }],
+            },
+            {
+              text: 'Carrots',
+              value: 'carrots',
+              highlights: [{ start: 0, end: 4 }],
+            },
+          ],
+        });
 
       userEvent.click(input);
 
@@ -577,21 +590,17 @@ describe('Autosuggest', () => {
     });
 
     it('should select a suggestion on enter after navigating a single suggestion', () => {
-      const {
-        input,
-        changeHandler,
-        getInputValue,
-        queryByLabelText,
-      } = renderAutosuggest({
-        value: { text: '' },
-        suggestions: [
-          {
-            text: 'Apples',
-            value: 'apples',
-            highlights: [{ start: 0, end: 4 }],
-          },
-        ],
-      });
+      const { input, changeHandler, getInputValue, queryByLabelText } =
+        renderAutosuggest({
+          value: { text: '' },
+          suggestions: [
+            {
+              text: 'Apples',
+              value: 'apples',
+              highlights: [{ start: 0, end: 4 }],
+            },
+          ],
+        });
 
       userEvent.click(input);
 
@@ -849,32 +858,28 @@ describe('Autosuggest', () => {
     });
 
     it("shouldn't select anything on blur if the suggestions are hidden", async () => {
-      const {
-        input,
-        changeHandler,
-        getInputValue,
-        queryByLabelText,
-      } = renderAutosuggest({
-        automaticSelection: true,
-        value: { text: '' },
-        suggestions: [
-          {
-            text: 'Apples',
-            value: 'apples',
-            highlights: [{ start: 0, end: 4 }],
-          },
-          {
-            text: 'Bananas',
-            value: 'bananas',
-            highlights: [{ start: 0, end: 4 }],
-          },
-          {
-            text: 'Carrots',
-            value: 'carrots',
-            highlights: [{ start: 0, end: 4 }],
-          },
-        ],
-      });
+      const { input, changeHandler, getInputValue, queryByLabelText } =
+        renderAutosuggest({
+          automaticSelection: true,
+          value: { text: '' },
+          suggestions: [
+            {
+              text: 'Apples',
+              value: 'apples',
+              highlights: [{ start: 0, end: 4 }],
+            },
+            {
+              text: 'Bananas',
+              value: 'bananas',
+              highlights: [{ start: 0, end: 4 }],
+            },
+            {
+              text: 'Carrots',
+              value: 'carrots',
+              highlights: [{ start: 0, end: 4 }],
+            },
+          ],
+        });
 
       expect(getInputValue()).toBe('');
 
@@ -971,6 +976,7 @@ describe('Autosuggest', () => {
         changeHandler,
         getInputValue,
         setSuggestions,
+        queryByLabelText,
       } = renderAutosuggest({
         automaticSelection: true,
         value: { text: '' },
@@ -998,7 +1004,12 @@ describe('Autosuggest', () => {
         }, 100);
       });
 
+      expect(queryByLabelText('Apples')).toBeInTheDocument(); // Ensure menu has opened
+
       fireEvent.keyDown(input, { key: 'Enter' });
+
+      expect(queryByLabelText('Apples')).not.toBeInTheDocument(); // Ensure menu has closed
+
       expect(getInputValue()).toBe('Apples');
       expect(changeHandler).toHaveBeenNthCalledWith(1, {
         text: 'Apples',

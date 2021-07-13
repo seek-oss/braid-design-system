@@ -1,8 +1,5 @@
 import React, { useCallback, useEffect } from 'react';
-
-import * as styleRefs from './Toast.treat';
-import { useStyles, TreatProvider } from 'sku/react-treat';
-
+import { TreatProvider } from 'sku/react-treat';
 import { Stack } from '../Stack/Stack';
 import { Inline } from '../Inline/Inline';
 import { Columns } from '../Columns/Columns';
@@ -10,11 +7,12 @@ import { Column } from '../Column/Column';
 import { ContentBlock } from '../ContentBlock/ContentBlock';
 import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';
-import { TextLinkRenderer } from '../TextLinkRenderer/TextLinkRenderer';
+import { TextLinkButton } from '../TextLinkButton/TextLinkButton';
 import { IconPositive, IconCritical } from '../icons';
 import { ClearButton } from '../iconButtons/ClearButton/ClearButton';
 import { useTimeout } from './useTimeout';
 import { InternalToast, ToastAction } from './ToastTypes';
+import * as styles from './Toast.css';
 
 const toneToIcon = {
   critical: IconCritical,
@@ -32,19 +30,11 @@ const Action = ({ label, onClick, removeToast }: ActionProps) => {
 
   return (
     <Text baseline={false}>
-      <TextLinkRenderer hitArea="large">
-        {(textLinkProps) => (
-          <Box
-            component="button"
-            paddingRight="xsmall"
-            onClick={handleClick}
-            {...textLinkProps}
-            aria-hidden
-          >
-            {label}
-          </Box>
-        )}
-      </TextLinkRenderer>
+      <Box component="span" paddingRight="xsmall" aria-hidden>
+        <TextLinkButton onClick={handleClick} hitArea="large">
+          {label}
+        </TextLinkButton>
+      </Box>
     </Text>
   );
 };
@@ -57,6 +47,7 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
     {
       id,
       treatTheme,
+      vanillaTheme,
       dedupeKey,
       message,
       description,
@@ -67,11 +58,10 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
     },
     ref,
   ) => {
-    const remove = useCallback(() => onClear(dedupeKey, id), [
-      onClear,
-      dedupeKey,
-      id,
-    ]);
+    const remove = useCallback(
+      () => onClear(dedupeKey, id),
+      [onClear, dedupeKey, id],
+    );
     const { stopTimeout, startTimeout } = useTimeout({
       duration: 10000,
       onTimeout: remove,
@@ -83,8 +73,6 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
         remove();
       }
     }, [shouldRemove, remove, stopTimeout]);
-
-    const styles = useStyles(styleRefs);
 
     const Icon = toneToIcon[tone];
 
@@ -124,6 +112,7 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
           ref={ref}
           onMouseEnter={stopTimeout}
           onMouseLeave={startTimeout}
+          className={vanillaTheme}
         >
           <Box boxShadow="large">
             <ContentBlock width="xsmall">

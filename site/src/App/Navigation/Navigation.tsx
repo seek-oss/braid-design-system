@@ -7,7 +7,6 @@ import React, {
 } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useWindowScroll, useInterval } from 'react-use';
-import { useStyles } from 'sku/react-treat';
 import {
   ContentBlock,
   Text,
@@ -16,7 +15,6 @@ import {
   Hidden,
   HiddenVisually,
 } from '../../../../lib/components';
-import { useBraidTheme } from '../../../../lib/components/BraidProvider/BraidThemeContext';
 import { RemoveScroll } from 'react-remove-scroll';
 import { BoxProps } from '../../../../lib/components/Box/Box';
 import { SubNavigation } from '../SubNavigation/SubNavigation';
@@ -24,7 +22,7 @@ import { useScrollLock } from '../useScrollLock/useScrollLock';
 import { MenuButton } from '../MenuButton/MenuButton';
 import { Logo } from '../Logo/Logo';
 import { gutterSize, menuButtonSize, headerSpaceY } from './navigationSizes';
-import * as styleRefs from './Navigation.treat';
+import * as styles from './Navigation.css';
 
 const Header = ({
   menuOpen,
@@ -36,8 +34,15 @@ const Header = ({
   <Box paddingY={headerSpaceY} paddingX={gutterSize}>
     <Text component="div" baseline={false}>
       <Box display="flex" alignItems="center">
-        <Hidden print above="tablet">
-          <Box paddingRight="medium" display="flex" alignItems="center">
+        <Hidden print>
+          <Box
+            paddingRight="medium"
+            display={{
+              mobile: 'flex',
+              wide: 'none',
+            }}
+            alignItems="center"
+          >
             <MenuButton open={menuOpen} onClick={menuClick} />
           </Box>
         </Hidden>
@@ -63,7 +68,6 @@ interface NavigationProps {
 }
 
 export const Navigation = ({ children }: NavigationProps) => {
-  const styles = useStyles(styleRefs);
   const lastScrollTop = useRef(0);
   const { y: scrollTop } = useWindowScroll();
   const [isMenuOpen, setMenuOpen] = useState(false);
@@ -88,8 +92,6 @@ export const Navigation = ({ children }: NavigationProps) => {
 
   useScrollLock(isMenuOpen);
 
-  const { body: bodyBackground } = useBraidTheme().color.background;
-
   return (
     <ContentBlock width="large">
       <Box position="fixed" top={0}>
@@ -107,12 +109,10 @@ export const Navigation = ({ children }: NavigationProps) => {
           paddingX={gutterSize}
           paddingBottom="xxlarge"
           width="full"
-          display={[
-            ...(isMenuOpen
-              ? (['block', 'block'] as const)
-              : (['none', 'none'] as const)),
-            'block',
-          ]}
+          display={{
+            mobile: isMenuOpen ? 'block' : 'none',
+            wide: 'block',
+          }}
           zIndex="sticky"
           background="body"
           className={[
@@ -125,18 +125,22 @@ export const Navigation = ({ children }: NavigationProps) => {
       </RemoveScroll>
 
       <Box
-        background="card"
+        background="body"
         position="relative"
-        paddingX={[gutterSize, gutterSize, 'xxlarge']}
-        paddingY={['small', 'xxsmall']}
+        overflow="hidden" // Fix stack space intercepting nav bar clicks
+        paddingX={{
+          mobile: gutterSize,
+          wide: 'xxlarge',
+        }}
+        paddingY={{
+          mobile: 'small',
+          tablet: 'xxsmall',
+        }}
         paddingBottom="xxlarge"
         marginBottom="xxlarge"
         transition="fast"
         pointerEvents={isMenuOpen ? 'none' : undefined}
         className={[styles.pageContent, isMenuOpen ? styles.isOpen : undefined]}
-        style={{
-          background: bodyBackground,
-        }}
       >
         <Box paddingBottom="xxlarge" marginBottom="xxlarge">
           {children}

@@ -12,7 +12,6 @@ import React, {
   ReactElement,
   RefAttributes,
 } from 'react';
-import { useStyles } from 'sku/react-treat';
 import parseHighlights from 'autosuggest-highlight/parse';
 import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';
@@ -21,18 +20,18 @@ import { HiddenVisually } from '../HiddenVisually/HiddenVisually';
 import { Announcement } from '../private/Announcement/Announcement';
 import { Field, FieldProps } from '../private/Field/Field';
 import { ClearButton } from '../iconButtons/ClearButton/ClearButton';
-import { useTouchableSpace, useText } from '../../hooks/typography';
+import { touchableText, useText } from '../../hooks/typography';
 import { getNextIndex } from '../private/getNextIndex';
 import { normalizeKey } from '../private/normalizeKey';
 import { ClearField } from '../private/Field/ClearField';
 import { smoothScroll } from '../private/smoothScroll';
 import { useScrollIntoView } from './useScrollIntoView';
-import { useBreakpoint } from '../useBreakpoint/useBreakpoint';
+import { useResponsiveValue } from '../useResponsiveValue/useResponsiveValue';
 import { RemoveScroll } from 'react-remove-scroll';
 import { createAccessbilityProps, getItemId } from './createAccessbilityProps';
 import { autosuggest, AutosuggestTranslations } from '../../translations/en';
 
-import * as styleRefs from './Autosuggest.treat';
+import * as styles from './Autosuggest.css';
 
 type SuggestionMatch = Array<{ start: number; end: number }>;
 
@@ -84,7 +83,7 @@ type Action =
 
 interface AutosuggestState<Value> {
   highlightedIndex: number | null;
-  isOpen: boolean;
+  showSuggestionsIfAvailable: boolean;
   inputChangedSinceFocus: boolean;
   previewValue: AutosuggestValue<Value> | null;
   isFocused: boolean;
@@ -138,7 +137,7 @@ function SuggestionItem({
         paddingX="small"
         paddingRight={onClear ? 'none' : undefined}
       >
-        <Box className={useTouchableSpace('standard')}>
+        <Box className={touchableText.standard}>
           <Text baseline={false}>
             {suggestionParts.map(({ highlight, text }, index) =>
               selected || highlight ? (
@@ -181,15 +180,13 @@ interface GroupHeadingProps {
   children: string;
 }
 function GroupHeading({ children }: GroupHeadingProps) {
-  const styles = useStyles(styleRefs);
-
   return (
     <Box
       paddingX="small"
       borderRadius="standard"
       className={[
         styles.groupHeading,
-        useTouchableSpace('xsmall'),
+        touchableText.xsmall,
         useText({
           size: 'xsmall',
           baseline: false,
@@ -197,6 +194,11 @@ function GroupHeading({ children }: GroupHeadingProps) {
           tone: 'formAccent',
         }),
       ]}
+      data-testid={
+        process.env.NODE_ENV !== 'production'
+          ? `group-heading-${children}`
+          : undefined
+      }
     >
       {children}
     </Box>
@@ -217,9 +219,9 @@ function normaliseSuggestions<Value>(
       item.suggestions.forEach((suggestion) => {
         groupHeadingForSuggestion.set(suggestion, item.label);
       });
-      index += normalisedSuggestions.push(...item.suggestions);
+      index = normalisedSuggestions.push(...item.suggestions);
     } else {
-      index += normalisedSuggestions.push(item);
+      index = normalisedSuggestions.push(item);
     }
   }
 
@@ -249,7 +251,7 @@ const fallbackValue = { text: '' };
 const fallbackSuggestions: Suggestion[] = [];
 
 export interface AutosuggestProps<Value>
-  extends Omit<FieldProps, 'value' | 'autoComplete' | 'labelId'> {
+  extends Omit<FieldProps, 'value' | 'autoComplete' | 'labelId' | 'prefix'> {
   value: AutosuggestValue<Value>;
   suggestions:
     | Suggestions<Value>
@@ -289,8 +291,6 @@ export const Autosuggest = forwardRef(function <Value>(
   }: AutosuggestProps<Value>,
   forwardedRef: Ref<HTMLInputElement>,
 ) {
-  const styles = useStyles(styleRefs);
-
   const suggestionsPropValue =
     typeof suggestionsProp === 'function'
       ? suggestionsProp(value)
@@ -339,7 +339,7 @@ export const Autosuggest = forwardRef(function <Value>(
 
           return {
             ...state,
-            isOpen: true,
+            showSuggestionsIfAvailable: true,
             previewValue: normalisedSuggestions[nextIndex],
             highlightedIndex: nextIndex,
           };
@@ -356,7 +356,7 @@ export const Autosuggest = forwardRef(function <Value>(
 
           return {
             ...state,
-            isOpen: true,
+            showSuggestionsIfAvailable: true,
             previewValue: normalisedSuggestions[nextIndex],
             highlightedIndex: nextIndex,
           };
@@ -366,7 +366,7 @@ export const Autosuggest = forwardRef(function <Value>(
       case INPUT_CHANGE: {
         return {
           ...state,
-          isOpen: hasItems,
+          showSuggestionsIfAvailable: true,
           inputChangedSinceFocus: true,
           previewValue: null,
           highlightedIndex:
@@ -379,7 +379,7 @@ export const Autosuggest = forwardRef(function <Value>(
       case INPUT_FOCUS: {
         return {
           ...state,
-          isOpen: hasItems,
+          showSuggestionsIfAvailable: true,
           inputChangedSinceFocus: false,
           isFocused: true,
         };
@@ -388,7 +388,7 @@ export const Autosuggest = forwardRef(function <Value>(
       case INPUT_BLUR: {
         return {
           ...state,
-          isOpen: false,
+          showSuggestionsIfAvailable: false,
           previewValue: null,
           highlightedIndex: null,
           isFocused: false,
@@ -399,14 +399,14 @@ export const Autosuggest = forwardRef(function <Value>(
         if (value.text) {
           return {
             ...state,
-            isOpen: false,
+            showSuggestionsIfAvailable: false,
             previewValue: null,
             highlightedIndex: null,
           };
         } else if (hasItems) {
           return {
             ...state,
-            isOpen: !state.isOpen,
+            showSuggestionsIfAvailable: !state.showSuggestionsIfAvailable,
             previewValue: null,
           };
         }
@@ -418,7 +418,7 @@ export const Autosuggest = forwardRef(function <Value>(
       case SUGGESTION_MOUSE_CLICK: {
         return {
           ...state,
-          isOpen: !hideSuggestionsOnSelection,
+          showSuggestionsIfAvailable: !hideSuggestionsOnSelection,
           previewValue: null,
           highlightedIndex: null,
         };
@@ -451,7 +451,7 @@ export const Autosuggest = forwardRef(function <Value>(
 
   const [
     {
-      isOpen,
+      showSuggestionsIfAvailable,
       inputChangedSinceFocus,
       previewValue,
       highlightedIndex,
@@ -459,12 +459,14 @@ export const Autosuggest = forwardRef(function <Value>(
     },
     dispatch,
   ] = useReducer(reducer, {
-    isOpen: false,
+    showSuggestionsIfAvailable: false,
     inputChangedSinceFocus: false,
     previewValue: null,
     highlightedIndex: null,
     isFocused: false,
   });
+
+  const isOpen = showSuggestionsIfAvailable && hasItems;
 
   const highlightedItem =
     typeof highlightedIndex === 'number'
@@ -479,7 +481,10 @@ export const Autosuggest = forwardRef(function <Value>(
     });
   }, [hasSuggestions]);
 
-  const breakpoint = useBreakpoint();
+  const isMobile = useResponsiveValue()({
+    mobile: true,
+    tablet: false,
+  });
 
   const inputProps = {
     value: previewValue ? previewValue.text : value.text,
@@ -492,7 +497,7 @@ export const Autosuggest = forwardRef(function <Value>(
       fireChange({ text: inputValue });
     },
     onFocus: () => {
-      if (rootRef.current && scrollToTopOnMobile && breakpoint === 'mobile') {
+      if (rootRef.current && scrollToTopOnMobile && isMobile) {
         smoothScroll(rootRef.current);
       }
 
@@ -611,8 +616,6 @@ export const Autosuggest = forwardRef(function <Value>(
     }
   }
 
-  const standardTouchableSpace = useTouchableSpace('standard');
-
   return (
     <Fragment>
       {showMobileBackdrop ? (
@@ -645,6 +648,7 @@ export const Autosuggest = forwardRef(function <Value>(
             id={id}
             labelId={a11y.labelProps.id}
             value={value.text}
+            prefix={undefined}
             secondaryIcon={
               onClear ? (
                 <ClearField
@@ -656,7 +660,7 @@ export const Autosuggest = forwardRef(function <Value>(
             }
           >
             {(overlays, fieldProps, icon, secondaryIcon) => (
-              <Box>
+              <Box width="full">
                 <Box
                   component="input"
                   {...fieldProps}
@@ -686,7 +690,7 @@ export const Autosuggest = forwardRef(function <Value>(
                       <Box
                         component="li"
                         paddingX="small"
-                        className={standardTouchableSpace}
+                        className={touchableText.standard}
                       >
                         <Text tone="secondary" baseline={false}>
                           {message}
@@ -721,9 +725,8 @@ export const Autosuggest = forwardRef(function <Value>(
                                   index,
                                   label: suggestion.label ?? suggestion.text,
                                   description: suggestion.description,
-                                  groupHeading: groupHeadingForSuggestion.get(
-                                    suggestion,
-                                  ),
+                                  groupHeading:
+                                    groupHeadingForSuggestion.get(suggestion),
                                 })}
                               />
                             </Fragment>

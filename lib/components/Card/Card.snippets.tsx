@@ -9,6 +9,7 @@ import {
   Column,
   OverflowMenu,
   MenuItem,
+  Placeholder,
 } from '../../playroom/components';
 import source from '../../utils/source.macro';
 
@@ -20,6 +21,36 @@ export const snippets: Snippets = [
         <Stack space="gutter">
           <Heading level="3">Heading</Heading>
           <Text>Text</Text>
+        </Stack>
+      </Card>,
+    ),
+  },
+  {
+    name: 'With promote tone',
+    code: source(
+      <Card tone="promote">
+        <Stack space="gutter">
+          <Placeholder height={200} />
+        </Stack>
+      </Card>,
+    ),
+  },
+  {
+    name: 'With formAccent tone',
+    code: source(
+      <Card tone="formAccent">
+        <Stack space="gutter">
+          <Placeholder height={200} />
+        </Stack>
+      </Card>,
+    ),
+  },
+  {
+    name: 'With rounded corners',
+    code: source(
+      <Card rounded>
+        <Stack space="gutter">
+          <Placeholder height={200} />
         </Stack>
       </Card>,
     ),
