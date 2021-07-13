@@ -83,9 +83,8 @@ describe('CheckboxStandalone', () => {
 
   it('should toggle state correctly when controlled field is initialised to `mixed`', () => {
     const TestCase = () => {
-      const [checked, setChecked] = useState<
-        ComponentProps<typeof CheckboxStandalone>['checked']
-      >('mixed');
+      const [checked, setChecked] =
+        useState<ComponentProps<typeof CheckboxStandalone>['checked']>('mixed');
       return (
         <BraidTestProvider>
           <CheckboxStandalone

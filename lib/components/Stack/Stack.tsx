@@ -141,12 +141,8 @@ export const Stack = ({
         const hidden = hiddenProps
           ? resolveHiddenProps(hiddenProps)
           : ([false, false, false, false] as const);
-        const [
-          hiddenOnMobile,
-          hiddenOnTablet,
-          hiddenOnDesktop,
-          hiddenOnWide,
-        ] = hidden;
+        const [hiddenOnMobile, hiddenOnTablet, hiddenOnDesktop, hiddenOnWide] =
+          hidden;
 
         const responsivelyHidden =
           hiddenOnMobile || hiddenOnTablet || hiddenOnDesktop || hiddenOnWide;

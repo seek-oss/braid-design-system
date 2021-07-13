@@ -112,7 +112,7 @@ describe('PasswordField', () => {
       </BraidTestProvider>,
     );
 
-    expect(getByLabelText('My field')).toHaveDescription('Required');
+    expect(getByLabelText('My field')).toHaveAccessibleDescription('Required');
   });
 
   it('associates field with description correctly', () => {
@@ -128,7 +128,7 @@ describe('PasswordField', () => {
       </BraidTestProvider>,
     );
 
-    expect(getByLabelText('My field')).toHaveDescription(
+    expect(getByLabelText('My field')).toHaveAccessibleDescription(
       'More detail about field',
     );
   });
@@ -147,7 +147,9 @@ describe('PasswordField', () => {
       </BraidTestProvider>,
     );
 
-    expect(getByLabelText('My field')).toHaveDescription('Custom description');
+    expect(getByLabelText('My field')).toHaveAccessibleDescription(
+      'Custom description',
+    );
   });
 
   it('associates field with multiple description elements correctly', () => {
@@ -166,7 +168,7 @@ describe('PasswordField', () => {
       </BraidTestProvider>,
     );
 
-    expect(getByLabelText('My field')).toHaveDescription(
+    expect(getByLabelText('My field')).toHaveAccessibleDescription(
       'Custom description Required More detail about field',
     );
   });

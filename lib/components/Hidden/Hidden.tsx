@@ -43,12 +43,8 @@ export const Hidden = ({
 
   const hiddenOnScreen = Boolean(screen);
   const hiddenOnPrint = Boolean(print);
-  const [
-    hiddenOnMobile,
-    hiddenOnTablet,
-    hiddenOnDesktop,
-    hiddenOnWide,
-  ] = resolveResponsiveRangeProps({ above, below });
+  const [hiddenOnMobile, hiddenOnTablet, hiddenOnDesktop, hiddenOnWide] =
+    resolveResponsiveRangeProps({ above, below });
 
   const inline = inlineProp ?? (inText || inHeading);
   const display = inline ? 'inline' : 'block';

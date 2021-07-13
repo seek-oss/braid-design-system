@@ -23,13 +23,12 @@ export interface ToggleProps {
   data?: DataAttributeMap;
 }
 
-const handleChange = (onChange: ChangeHandler) => (
-  event: ChangeEvent<HTMLInputElement>,
-) => {
-  if (typeof onChange === 'function') {
-    onChange(event.target.checked);
-  }
-};
+const handleChange =
+  (onChange: ChangeHandler) => (event: ChangeEvent<HTMLInputElement>) => {
+    if (typeof onChange === 'function') {
+      onChange(event.target.checked);
+    }
+  };
 
 export const Toggle = ({
   id,

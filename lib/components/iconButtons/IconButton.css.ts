@@ -19,9 +19,10 @@ export const hoverOverlay = style({
     [`${button}:hover &, ${button}:focus &`]: {
       opacity: 1,
     },
-    [`${button}:hover &${darkBackground}, ${button}:focus &${darkBackground}`]: {
-      opacity: 0.2,
-    },
+    [`${button}:hover &${darkBackground}, ${button}:focus &${darkBackground}`]:
+      {
+        opacity: 0.2,
+      },
     [`${button}:active &, ${forceActive}&`]: {
       opacity: 0.8,
     },

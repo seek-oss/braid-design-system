@@ -8,6 +8,5 @@ interface MenuRendererItemContextValues {
   focusTrigger: () => void;
 }
 
-export const MenuRendererItemContext = createContext<MenuRendererItemContextValues | null>(
-  null,
-);
+export const MenuRendererItemContext =
+  createContext<MenuRendererItemContextValues | null>(null);

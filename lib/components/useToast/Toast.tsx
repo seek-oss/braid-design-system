@@ -58,11 +58,10 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
     },
     ref,
   ) => {
-    const remove = useCallback(() => onClear(dedupeKey, id), [
-      onClear,
-      dedupeKey,
-      id,
-    ]);
+    const remove = useCallback(
+      () => onClear(dedupeKey, id),
+      [onClear, dedupeKey, id],
+    );
     const { stopTimeout, startTimeout } = useTimeout({
       duration: 10000,
       onTimeout: remove,

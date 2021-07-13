@@ -1113,7 +1113,77 @@ Object {
     results?: number
     reversed?: boolean
     right?: 0
-    role?: string
+    role?: 
+        | "alert"
+        | "alertdialog"
+        | "application"
+        | "article"
+        | "banner"
+        | "button"
+        | "cell"
+        | "checkbox"
+        | "columnheader"
+        | "combobox"
+        | "complementary"
+        | "contentinfo"
+        | "definition"
+        | "dialog"
+        | "directory"
+        | "document"
+        | "feed"
+        | "figure"
+        | "form"
+        | "grid"
+        | "gridcell"
+        | "group"
+        | "heading"
+        | "img"
+        | "link"
+        | "list"
+        | "listbox"
+        | "listitem"
+        | "log"
+        | "main"
+        | "marquee"
+        | "math"
+        | "menu"
+        | "menubar"
+        | "menuitem"
+        | "menuitemcheckbox"
+        | "menuitemradio"
+        | "navigation"
+        | "none"
+        | "note"
+        | "option"
+        | "presentation"
+        | "progressbar"
+        | "radio"
+        | "radiogroup"
+        | "region"
+        | "row"
+        | "rowgroup"
+        | "rowheader"
+        | "scrollbar"
+        | "search"
+        | "searchbox"
+        | "separator"
+        | "slider"
+        | "spinbutton"
+        | "status"
+        | "switch"
+        | "tab"
+        | "table"
+        | "tablist"
+        | "tabpanel"
+        | "term"
+        | "textbox"
+        | "timer"
+        | "toolbar"
+        | "tooltip"
+        | "tree"
+        | "treegrid"
+        | "treeitem"
+        | string & {}
     rowSpan?: number
     rows?: number
     sandbox?: string
@@ -2256,7 +2326,77 @@ Object {
     rel?: string
     resource?: string
     results?: number
-    role?: string
+    role?: 
+        | "alert"
+        | "alertdialog"
+        | "application"
+        | "article"
+        | "banner"
+        | "button"
+        | "cell"
+        | "checkbox"
+        | "columnheader"
+        | "combobox"
+        | "complementary"
+        | "contentinfo"
+        | "definition"
+        | "dialog"
+        | "directory"
+        | "document"
+        | "feed"
+        | "figure"
+        | "form"
+        | "grid"
+        | "gridcell"
+        | "group"
+        | "heading"
+        | "img"
+        | "link"
+        | "list"
+        | "listbox"
+        | "listitem"
+        | "log"
+        | "main"
+        | "marquee"
+        | "math"
+        | "menu"
+        | "menubar"
+        | "menuitem"
+        | "menuitemcheckbox"
+        | "menuitemradio"
+        | "navigation"
+        | "none"
+        | "note"
+        | "option"
+        | "presentation"
+        | "progressbar"
+        | "radio"
+        | "radiogroup"
+        | "region"
+        | "row"
+        | "rowgroup"
+        | "rowheader"
+        | "scrollbar"
+        | "search"
+        | "searchbox"
+        | "separator"
+        | "slider"
+        | "spinbutton"
+        | "status"
+        | "switch"
+        | "tab"
+        | "table"
+        | "tablist"
+        | "tabpanel"
+        | "term"
+        | "textbox"
+        | "timer"
+        | "toolbar"
+        | "tooltip"
+        | "tree"
+        | "treegrid"
+        | "treeitem"
+        | string & {}
     security?: string
     size?: 
         | "small"
@@ -2270,7 +2410,12 @@ Object {
     suppressContentEditableWarning?: boolean
     suppressHydrationWarning?: boolean
     tabIndex?: number
-    target?: string
+    target?: 
+        | "_blank"
+        | "_parent"
+        | "_self"
+        | "_top"
+        | string & {}
     title?: string
     tone?: 
         | "brandAccent"
@@ -5781,7 +5926,77 @@ Object {
     rel?: string
     resource?: string
     results?: number
-    role?: string
+    role?: 
+        | "alert"
+        | "alertdialog"
+        | "application"
+        | "article"
+        | "banner"
+        | "button"
+        | "cell"
+        | "checkbox"
+        | "columnheader"
+        | "combobox"
+        | "complementary"
+        | "contentinfo"
+        | "definition"
+        | "dialog"
+        | "directory"
+        | "document"
+        | "feed"
+        | "figure"
+        | "form"
+        | "grid"
+        | "gridcell"
+        | "group"
+        | "heading"
+        | "img"
+        | "link"
+        | "list"
+        | "listbox"
+        | "listitem"
+        | "log"
+        | "main"
+        | "marquee"
+        | "math"
+        | "menu"
+        | "menubar"
+        | "menuitem"
+        | "menuitemcheckbox"
+        | "menuitemradio"
+        | "navigation"
+        | "none"
+        | "note"
+        | "option"
+        | "presentation"
+        | "progressbar"
+        | "radio"
+        | "radiogroup"
+        | "region"
+        | "row"
+        | "rowgroup"
+        | "rowheader"
+        | "scrollbar"
+        | "search"
+        | "searchbox"
+        | "separator"
+        | "slider"
+        | "spinbutton"
+        | "status"
+        | "switch"
+        | "tab"
+        | "table"
+        | "tablist"
+        | "tabpanel"
+        | "term"
+        | "textbox"
+        | "timer"
+        | "toolbar"
+        | "tooltip"
+        | "tree"
+        | "treegrid"
+        | "treeitem"
+        | string & {}
     security?: string
     slot?: string
     spellCheck?: 
@@ -5793,7 +6008,12 @@ Object {
     suppressContentEditableWarning?: boolean
     suppressHydrationWarning?: boolean
     tabIndex?: number
-    target?: string
+    target?: 
+        | "_blank"
+        | "_parent"
+        | "_self"
+        | "_top"
+        | string & {}
     title?: string
     translate?: 
         | "no"
@@ -5913,7 +6133,12 @@ Object {
     href: string
     onClick?: () => void
     rel?: string
-    target?: string
+    target?: 
+        | "_blank"
+        | "_parent"
+        | "_self"
+        | "_top"
+        | string & {}
     tone?: "critical"
 },
 }
@@ -6989,7 +7214,77 @@ Object {
     rel?: string
     resource?: string
     results?: number
-    role?: string
+    role?: 
+        | "alert"
+        | "alertdialog"
+        | "application"
+        | "article"
+        | "banner"
+        | "button"
+        | "cell"
+        | "checkbox"
+        | "columnheader"
+        | "combobox"
+        | "complementary"
+        | "contentinfo"
+        | "definition"
+        | "dialog"
+        | "directory"
+        | "document"
+        | "feed"
+        | "figure"
+        | "form"
+        | "grid"
+        | "gridcell"
+        | "group"
+        | "heading"
+        | "img"
+        | "link"
+        | "list"
+        | "listbox"
+        | "listitem"
+        | "log"
+        | "main"
+        | "marquee"
+        | "math"
+        | "menu"
+        | "menubar"
+        | "menuitem"
+        | "menuitemcheckbox"
+        | "menuitemradio"
+        | "navigation"
+        | "none"
+        | "note"
+        | "option"
+        | "presentation"
+        | "progressbar"
+        | "radio"
+        | "radiogroup"
+        | "region"
+        | "row"
+        | "rowgroup"
+        | "rowheader"
+        | "scrollbar"
+        | "search"
+        | "searchbox"
+        | "separator"
+        | "slider"
+        | "spinbutton"
+        | "status"
+        | "switch"
+        | "tab"
+        | "table"
+        | "tablist"
+        | "tabpanel"
+        | "term"
+        | "textbox"
+        | "timer"
+        | "toolbar"
+        | "tooltip"
+        | "tree"
+        | "treegrid"
+        | "treeitem"
+        | string & {}
     security?: string
     showVisited?: boolean
     slot?: string
@@ -7001,7 +7296,12 @@ Object {
     suppressContentEditableWarning?: boolean
     suppressHydrationWarning?: boolean
     tabIndex?: number
-    target?: string
+    target?: 
+        | "_blank"
+        | "_parent"
+        | "_self"
+        | "_top"
+        | string & {}
     title?: string
     translate?: 
         | "no"
@@ -7372,8 +7672,8 @@ exports[`filterSuggestions 1`] = `
 Object {
   exportType: component,
   props: {
-    __@iterator: () => IterableIterator<FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>>
-    __@unscopables: () => { copyWithin: boolean; entries: boolean; fill: boolean; find: boolean; findIndex: boolean; keys: boolean; values: boolean; }
+    __@iterator@468: () => IterableIterator<FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>>
+    __@unscopables@470: () => { copyWithin: boolean; entries: boolean; fill: boolean; find: boolean; findIndex: boolean; keys: boolean; values: boolean; }
     concat: { (...items: ConcatArray<FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>>[]): (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]; (...items: (FilterableSuggestion<...> | ... 1 more ... | ConcatArray<...>)[]): (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]; }
     copyWithin: (target: number, start: number, end?: number | undefined) => FilterableSuggestions<Value>
     entries: () => IterableIterator<[number, FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>]>

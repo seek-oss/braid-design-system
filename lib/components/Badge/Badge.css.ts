@@ -10,9 +10,8 @@ export const constants = {
 type TextBreakpoint = keyof typeof vars.textSize.xsmall;
 
 const stylesForBreakpoint = (breakpoint: TextBreakpoint) => {
-  const { lineHeight, capHeight } = vars.textSize[constants.textSize][
-    breakpoint
-  ];
+  const { lineHeight, capHeight } =
+    vars.textSize[constants.textSize][breakpoint];
   const padding = calc.subtract(lineHeight, capHeight);
 
   return { margin: `${calc(padding).divide(2).negate()} 0` };

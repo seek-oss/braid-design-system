@@ -59,12 +59,8 @@ export function useMenuItem<MenuItemElement extends HTMLElement>({
     throw new Error(`${displayName} element rendered outside menu context`);
   }
 
-  const {
-    isHighlighted,
-    index,
-    dispatch,
-    focusTrigger,
-  } = menuRendererItemContext;
+  const { isHighlighted, index, dispatch, focusTrigger } =
+    menuRendererItemContext;
   const menuItemRef = useRef<MenuItemElement>(null);
 
   useEffect(() => {
