@@ -87,11 +87,11 @@ const PlayroomPrototyping = () => (
       of cards on screen, changing our design would get tiring pretty quickly.
     </Text>
     <Text>
-      Instead, to make our prototype more maintainable, we can{' '}
+      Instead, to make our prototype faster to iterate on, we can{' '}
       <TextLink href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map">
         map over an array of data,
       </TextLink>{' '}
-      only having to define the UI in a single place. You can think of it like a
+      only having to define the UI in a single place. You can think of it like a{' '}
       <TextLink href="https://www.sketch.com/docs/designing/symbols">
         Sketch symbol,
       </TextLink>{' '}
@@ -156,8 +156,20 @@ const PlayroomPrototyping = () => (
     <Text>
       Your data can also contain optional fields. For example, we may want to
       provide an optional <Strong>featured</Strong> property that toggles the
-      visibility of a badge.
+      card tone and the visibility of a badge.
     </Text>
+    <Notice tone="info">
+      <Text>
+        To dynamically alter the UI in this example, we’ll use the{' '}
+        <TextLink href="https://www.javascripttutorial.net/javascript-ternary-operator/">
+          ternary operator
+        </TextLink>{' '}
+        and the{' '}
+        <TextLink href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_AND">
+          logical AND operator.
+        </TextLink>
+      </Text>
+    </Notice>
     <Code>
       {({ setDefaultState, getState }) => {
         const result = source(
@@ -183,9 +195,13 @@ const PlayroomPrototyping = () => (
 
             <Stack space="medium">
               {getState('jobs').map((job: MockJob) => (
-                <Card key={job.id}>
+                <Card key={job.id} tone={job.featured ? 'promote' : undefined}>
                   <Stack space="small">
-                    {job.featured && <Badge tone="promote">Featured</Badge>}
+                    {job.featured && (
+                      <Badge weight="strong" tone="promote">
+                        Featured
+                      </Badge>
+                    )}
                     <Text weight="strong">{job.title}</Text>
                     <Text>{job.location}</Text>
                   </Stack>
