@@ -10,6 +10,7 @@ import {
   Button,
   Actions,
   Card,
+  Badge,
 } from '../../../../../lib/components';
 import {
   Checkbox,
@@ -22,6 +23,14 @@ import { TextStack } from '../../TextStack/TextStack';
 import { Page } from '../../../types';
 import { PageTitle } from '../../Seo/PageTitle';
 import Code from '../../Code/Code';
+import { LinkableHeading } from '../../LinkableHeading/LinkableHeading';
+
+interface MockJob {
+  id: number;
+  title: string;
+  location: string;
+  featured?: boolean;
+}
 
 const PlayroomPrototyping = () => (
   <TextStack>
@@ -30,14 +39,188 @@ const PlayroomPrototyping = () => (
       Playroom Prototyping
     </Heading>
     <Text tone="secondary">
-      This guide aims to teach you how to make your Playroom designs
-      interactive, and assumes you already have a basic level of familiarity
-      with Playroom.
+      This guide aims to teach you how to make better use of Playroom for
+      real-world prototyping, and assumes you already have a basic level of
+      familiarity with Playroom.
+    </Text>
+    <Text tone="secondary">
+      If you’re not a developer, don’t feel like you need to understand all of
+      the syntax on this page. When you’re getting started, it’s perfectly
+      normal to copy-and-paste code snippets without fully grasping how they
+      work.
     </Text>
 
     <Divider />
 
-    <Heading level="3">Introducing state</Heading>
+    <LinkableHeading level="3">Rendering repetitive content</LinkableHeading>
+    <Text>
+      Most designs contain some degree of repeating content. For example, let’s
+      say we have a list of basic cards:
+    </Text>
+    <Code>
+      <Stack space="medium">
+        <Card>
+          <Stack space="small">
+            <Text weight="strong">Lead Designer</Text>
+            <Text>Melbourne</Text>
+          </Stack>
+        </Card>
+        <Card>
+          <Stack space="small">
+            <Text weight="strong">Senior Developer</Text>
+            <Text>Sydney</Text>
+          </Stack>
+        </Card>
+        <Card>
+          <Stack space="small">
+            <Text weight="strong">Product Manager</Text>
+            <Text>Canberra</Text>
+          </Stack>
+        </Card>
+      </Stack>
+    </Code>
+
+    <Text>
+      Notice that these cards are manually written (or more realistically,
+      copied-and-pasted) several times. This isn’t ideal when we want to iterate
+      on our design since we have to update each card by hand. If we had a lot
+      of cards on screen, changing our design would get tiring pretty quickly.
+    </Text>
+    <Text>
+      Instead, to make our prototype faster to iterate on, we can{' '}
+      <TextLink href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map">
+        map over an array of data,
+      </TextLink>{' '}
+      only having to define the UI in a single place. You can think of it like a{' '}
+      <TextLink href="https://www.sketch.com/docs/designing/symbols">
+        Sketch symbol,
+      </TextLink>{' '}
+      only much more powerful.
+    </Text>
+    <Notice tone="info">
+      <Text>
+        To keep the code clean, we’ll store our job data in a piece of state
+        called <Strong>&ldquo;jobs&rdquo;</Strong>. We’ll cover the concept of
+        state in more detail later.
+      </Text>
+    </Notice>
+    <Code>
+      {({ setDefaultState, getState }) => {
+        const result = source(
+          <>
+            {setDefaultState('jobs', [
+              {
+                id: 1,
+                title: 'Lead Designer',
+                location: 'Melbourne',
+              },
+              {
+                id: 2,
+                title: 'Senior Developer',
+                location: 'Sydney',
+              },
+              {
+                id: 3,
+                title: 'Product Manager',
+                location: 'Canberra',
+              },
+            ] as Array<MockJob>)}
+
+            <Stack space="medium">
+              {getState('jobs').map((job: MockJob) => (
+                <Card key={job.id}>
+                  <Stack space="small">
+                    <Text weight="strong">{job.title}</Text>
+                    <Text>{job.location}</Text>
+                  </Stack>
+                </Card>
+              ))}
+            </Stack>
+          </>,
+        );
+
+        return {
+          ...result,
+          code: result.code
+            .replace(/ as Array<MockJob>/g, '')
+            .replace(/: MockJob/g, ''),
+        };
+      }}
+    </Code>
+    <Text>
+      We now have the same design as before, but expressed in a way that makes
+      it much easier for us to change. Any updates we make to this card will now
+      affect every card on the screen. It’s also much faster for us to make
+      changes to the data without having to touch the UI.
+    </Text>
+    <Text>
+      Your data can also contain optional fields. For example, we may want to
+      provide an optional <Strong>featured</Strong> property that toggles the
+      card tone and the visibility of a badge.
+    </Text>
+    <Notice tone="info">
+      <Text>
+        To dynamically alter the UI in this example, we’ll use the{' '}
+        <TextLink href="https://www.javascripttutorial.net/javascript-ternary-operator/">
+          ternary operator
+        </TextLink>{' '}
+        and the{' '}
+        <TextLink href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_AND">
+          logical AND operator.
+        </TextLink>
+      </Text>
+    </Notice>
+    <Code>
+      {({ setDefaultState, getState }) => {
+        const result = source(
+          <>
+            {setDefaultState('jobs', [
+              {
+                id: 1,
+                title: 'Lead Designer',
+                location: 'Melbourne',
+              },
+              {
+                id: 2,
+                featured: true,
+                title: 'Senior Developer',
+                location: 'Sydney',
+              },
+              {
+                id: 3,
+                title: 'Product Manager',
+                location: 'Canberra',
+              },
+            ] as Array<MockJob>)}
+
+            <Stack space="medium">
+              {getState('jobs').map((job: MockJob) => (
+                <Card key={job.id} tone={job.featured ? 'promote' : undefined}>
+                  <Stack space="small">
+                    {job.featured && (
+                      <Badge weight="strong" tone="promote">
+                        Featured
+                      </Badge>
+                    )}
+                    <Text weight="strong">{job.title}</Text>
+                    <Text>{job.location}</Text>
+                  </Stack>
+                </Card>
+              ))}
+            </Stack>
+          </>,
+        );
+
+        return {
+          ...result,
+          code: result.code
+            .replace(/ as Array<MockJob>/g, '')
+            .replace(/: MockJob/g, ''),
+        };
+      }}
+    </Code>
+
+    <LinkableHeading level="3">Managing state</LinkableHeading>
     <Text>
       Braid components, when used in Playroom, manage their own state internally
       by default. For example, if you use a{' '}
@@ -48,7 +231,7 @@ const PlayroomPrototyping = () => (
       <Checkbox label="Checkbox" />
     </Code>
     <Text>
-      So the checkbox works in isolation, but what if we wanted it to control
+      This checkbox works in isolation, but what if we wanted it to control
       other parts of the UI? Well, first we need to provide a{' '}
       <Strong>stateName</Strong> prop to our checkbox, which then allows us to
       ask for its state elsewhere in our prototype using the{' '}
@@ -150,7 +333,6 @@ const PlayroomPrototyping = () => (
         )
       }
     </Code>
-
     <Text>
       It’s not just about form elements either. For example, we might want to
       provide a <TextLink href="/components/Button">Button</TextLink> that, via
@@ -181,7 +363,7 @@ const PlayroomPrototyping = () => (
       }
     </Code>
 
-    <Heading level="3">Navigating between screens</Heading>
+    <LinkableHeading level="3">Navigating between screens</LinkableHeading>
     <Text>
       We can also leverage state to simulate having multiple screens by using a
       piece of state called <Strong>screen</Strong>.
