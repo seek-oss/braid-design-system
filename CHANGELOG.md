@@ -1,5 +1,11 @@
 # braid-design-system
 
+## 30.2.1
+
+### Patch Changes
+
+- Update dependencies ([#958](https://github.com/seek-oss/braid-design-system/pull/958))
+
 ## 30.2.0
 
 ### Minor Changes
