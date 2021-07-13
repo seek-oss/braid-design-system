@@ -64,9 +64,8 @@ function filterSuggestions<Value>(...args: any[]) {
       'The second argument to "filterSuggestions" must be a string or an Autosuggest value object, e.g. { text: "Hello world" }',
     );
 
-    const query = (typeof inputValue === 'string'
-      ? inputValue
-      : inputValue.text
+    const query = (
+      typeof inputValue === 'string' ? inputValue : inputValue.text
     ).trim();
 
     if (query === '') {

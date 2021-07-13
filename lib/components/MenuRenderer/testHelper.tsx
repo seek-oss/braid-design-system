@@ -203,12 +203,8 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
       });
 
       it('should toggle the state on a MenuItemCheckbox', () => {
-        const {
-          getAllByRole,
-          openHandler,
-          closeHandler,
-          menuItemHandler,
-        } = renderMenu();
+        const { getAllByRole, openHandler, closeHandler, menuItemHandler } =
+          renderMenu();
 
         const { menu, menuButton, menuItems } = getElements({ getAllByRole });
 

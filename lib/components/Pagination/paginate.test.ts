@@ -11,25 +11,13 @@ describe('paginate', () => {
 
   it(`should return the ${maxPages} pages around the selected 'page'`, () => {
     expect(paginate({ page: 12, total: 20 })).toEqual([
-      9,
-      10,
-      11,
-      12,
-      13,
-      14,
-      15,
+      9, 10, 11, 12, 13, 14, 15,
     ]);
   });
 
   it(`should return the last ${maxPages} pages when 'page' is the 'total'`, () => {
     expect(paginate({ page: 20, total: 20 })).toEqual([
-      14,
-      15,
-      16,
-      17,
-      18,
-      19,
-      20,
+      14, 15, 16, 17, 18, 19, 20,
     ]);
   });
 

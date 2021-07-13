@@ -67,12 +67,8 @@ describe('useToast', () => {
   });
 
   it('should handle multiple toasts', async () => {
-    const {
-      showToast,
-      queryAllToasts,
-      clearToast,
-      getToastByMessage,
-    } = renderTestApp();
+    const { showToast, queryAllToasts, clearToast, getToastByMessage } =
+      renderTestApp();
 
     expect(queryAllToasts()).toHaveLength(0);
 
@@ -118,12 +114,8 @@ describe('useToast', () => {
   });
 
   it('should handle multiple toasts with actions', async () => {
-    const {
-      showToast,
-      getAction,
-      queryAllToasts,
-      getToastByMessage,
-    } = renderTestApp();
+    const { showToast, getAction, queryAllToasts, getToastByMessage } =
+      renderTestApp();
 
     const actionClickHandler1 = jest.fn();
     const actionLabel1 = 'Action 1';

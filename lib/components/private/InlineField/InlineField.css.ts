@@ -84,9 +84,10 @@ export const children = style({
 
 export const selected = style({
   selectors: {
-    [`${realField}:checked + ${fakeFieldBase} > &, ${realField}${isMixed} + ${fakeFieldBase} > &`]: {
-      opacity: 1,
-    },
+    [`${realField}:checked + ${fakeFieldBase} > &, ${realField}${isMixed} + ${fakeFieldBase} > &`]:
+      {
+        opacity: 1,
+      },
   },
 });
 
@@ -100,9 +101,10 @@ export const focusOverlay = style({
 
 export const hoverOverlay = style({
   selectors: {
-    [`${realField}:hover:not(:checked):not(${isMixed}):not(:disabled) + ${fakeFieldBase} > &`]: {
-      opacity: 1,
-    },
+    [`${realField}:hover:not(:checked):not(${isMixed}):not(:disabled) + ${fakeFieldBase} > &`]:
+      {
+        opacity: 1,
+      },
   },
 });
 

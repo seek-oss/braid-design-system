@@ -115,12 +115,8 @@ export const modalTestSuite = (
     });
 
     it('should trap focus in the dialog', () => {
-      const {
-        getByTestId,
-        getByRole,
-        getByText,
-        getByLabelText,
-      } = renderTestCase();
+      const { getByTestId, getByRole, getByText, getByLabelText } =
+        renderTestCase();
 
       const dialogOpenButton = getByTestId('buttonBefore');
       userEvent.tab();
@@ -175,12 +171,8 @@ export const modalTestSuite = (
     });
 
     it('should call dismiss handler once on close', async () => {
-      const {
-        getByTestId,
-        getByLabelText,
-        closeHandler,
-        queryByRole,
-      } = renderTestCase();
+      const { getByTestId, getByLabelText, closeHandler, queryByRole } =
+        renderTestCase();
 
       expect(closeHandler).not.toHaveBeenCalled();
 

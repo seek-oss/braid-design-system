@@ -4,6 +4,10 @@ import { render } from '@testing-library/react';
 import { BraidTestProvider, Radio } from '..';
 
 describe('Radio', () => {
+  beforeAll(() => {
+    jest.spyOn(console, 'warn').mockImplementation();
+  });
+
   it('associates field with label correctly', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>

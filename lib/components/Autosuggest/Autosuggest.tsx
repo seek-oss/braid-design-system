@@ -725,9 +725,8 @@ export const Autosuggest = forwardRef(function <Value>(
                                   index,
                                   label: suggestion.label ?? suggestion.text,
                                   description: suggestion.description,
-                                  groupHeading: groupHeadingForSuggestion.get(
-                                    suggestion,
-                                  ),
+                                  groupHeading:
+                                    groupHeadingForSuggestion.get(suggestion),
                                 })}
                               />
                             </Fragment>
