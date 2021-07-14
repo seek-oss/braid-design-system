@@ -207,18 +207,16 @@ const GalleryItem = ({
       onDoubleClick={() => jumpTo(item.name)}
     >
       <Stack space={isAnIcon ? 'small' : 'xxlarge'}>
-        <Stack space="large">
+        <Box position="relative">
           <Inline space="small" alignY="center">
-            <Box position="relative">
-              <Heading component="h3" level={isAnIcon ? '3' : '2'}>
-                <TextLink
-                  href={`/components/${item.name}`}
-                  target="gallery-detail"
-                >
-                  {isAnIcon ? item.name.replace('Icon', '') : item.name}
-                </TextLink>
-              </Heading>
-            </Box>
+            <Heading component="h3" level={isAnIcon ? '3' : '2'}>
+              <TextLink
+                href={`/components/${item.name}`}
+                target="gallery-detail"
+              >
+                {isAnIcon ? item.name.replace('Icon', '') : item.name}
+              </TextLink>
+            </Heading>
             {markAsNew ? (
               <Box
                 component={Link}
@@ -252,7 +250,7 @@ const GalleryItem = ({
               </Box>
             ) : undefined}
           </Inline>
-        </Stack>
+        </Box>
 
         <Columns space="xlarge">
           {item.examples.map((exampleChunk, idx) => (
