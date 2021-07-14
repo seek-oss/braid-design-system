@@ -1,5 +1,4 @@
 import { atom } from 'recoil';
-// import galleryController from './galleryController';
 import panzoom from 'panzoom';
 
 export const zoom = atom({
