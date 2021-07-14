@@ -76,11 +76,12 @@ const docs: ComponentDocs = {
   ],
   additional: [
     {
-      label: 'Prototyping',
+      label: 'Playroom prototyping',
       description: (
         <Text>
           The <Strong>showToast</Strong> function used in these examples is
-          automatically available in Playroom.
+          automatically available in Playroom. You do not need to call the{' '}
+          <Strong>useToast</Strong> function.
         </Text>
       ),
     },

@@ -1,6 +1,11 @@
 import '../../reset';
 import React, { Fragment, ReactNode } from 'react';
-import { BraidProvider, makeLinkComponent, ToastProvider } from '../components';
+import {
+  BraidProvider,
+  makeLinkComponent,
+  ToastProvider,
+  useResponsiveValue,
+} from '../components';
 import { BraidTheme } from '../themes/BraidTheme';
 import { PlayroomStateProvider } from './playroomState';
 
@@ -28,6 +33,12 @@ const PlayroomLink = makeLinkComponent(
   ),
 );
 
+const ResponsiveReady = ({ children }: { children: ReactNode }) => {
+  const responsiveReady = useResponsiveValue()({ mobile: true }) ?? false;
+
+  return <>{responsiveReady ? children : null}</>;
+};
+
 export default ({ theme, children }: Props) => (
   <Fragment>
     <div
@@ -38,7 +49,7 @@ export default ({ theme, children }: Props) => (
     <PlayroomStateProvider>
       <BraidProvider theme={theme} linkComponent={PlayroomLink}>
         <ToastProvider>
-          <Fragment>{children}</Fragment>
+          <ResponsiveReady>{children}</ResponsiveReady>
         </ToastProvider>
       </BraidProvider>
     </PlayroomStateProvider>

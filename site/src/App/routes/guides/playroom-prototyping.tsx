@@ -5,12 +5,15 @@ import {
   Text,
   TextLink,
   Strong,
+  Alert,
   Notice,
   Stack,
   Button,
   Actions,
   Card,
   Badge,
+  Box,
+  BackgroundProvider,
 } from '../../../../../lib/components';
 import {
   Checkbox,
@@ -406,6 +409,64 @@ const PlayroomPrototyping = () => (
                 </Stack>
               </Card>
             )}
+          </>,
+        )
+      }
+    </Code>
+
+    <LinkableHeading level="3">Custom styling</LinkableHeading>
+    <Alert tone="caution">
+      <Text>
+        This section covers very low-level mechanisms that require familiarity
+        with CSS. These techniques should only be used as a last resort when
+        standard components are insufficient.
+      </Text>
+    </Alert>
+    <Text>
+      For custom design elements, you can use the{' '}
+      <TextLink href="/components/Box">Box</TextLink> component. In addition to
+      its usual set of styling properties, it can also be further customised via
+      the <Strong>style</Strong> prop which accepts an object of style rules.
+    </Text>
+    <Text>
+      Within these styles you also have access to the{' '}
+      <TextLink href="/css/vars">vars</TextLink> and{' '}
+      <TextLink href="/components/useResponsiveValue">responsiveValue</TextLink>{' '}
+      APIs which allow you to make your custom styles themed and responsive. For
+      example, if we wanted to responsively change the colour of an element:
+    </Text>
+    <Notice tone="info">
+      <Text>
+        Since we’re applying a custom background style, we need to use the{' '}
+        <TextLink href="/components/BackgroundProvider">
+          BackgroundProvider
+        </TextLink>{' '}
+        component so that nested elements know to invert their colours.
+      </Text>
+    </Notice>
+    <Code>
+      {({ responsiveValue, vars }) =>
+        source(
+          <>
+            <Box
+              padding="large"
+              borderRadius="standard"
+              style={{
+                background: responsiveValue({
+                  mobile: vars.backgroundColor.brand,
+                  tablet: vars.backgroundColor.card,
+                }),
+              }}
+            >
+              <BackgroundProvider
+                type={responsiveValue({
+                  mobile: 'dark',
+                  tablet: 'light',
+                })}
+              >
+                <Text>Responsive background</Text>
+              </BackgroundProvider>
+            </Box>
           </>,
         )
       }
