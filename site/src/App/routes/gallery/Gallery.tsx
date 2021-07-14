@@ -533,6 +533,11 @@ const GalleryInternal = () => {
         zoomDoubleClickSpeed: 1,
         filterKey: () => true, // disables panzoom default handling of keys
         beforeDoubleClick: () => true,
+        beforeTouch: (e) =>
+          // @ts-expect-error
+          /^(a|button|select)$/i.test(e.target.tagName) ||
+          // @ts-expect-error
+          e.target.getAttribute('role') === 'button',
         beforeMouseDown: (e) =>
           // @ts-expect-error
           /^(a|button|select)$/i.test(e.target.tagName) ||
