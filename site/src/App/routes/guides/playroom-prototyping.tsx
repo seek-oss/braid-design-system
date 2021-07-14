@@ -2,6 +2,7 @@ import React from 'react';
 import {
   Heading,
   Divider,
+  List,
   Text,
   TextLink,
   Strong,
@@ -52,6 +53,27 @@ const PlayroomPrototyping = () => (
       normal to copy-and-paste code snippets without fully grasping how they
       work.
     </Text>
+
+    <Divider />
+
+    <List>
+      <Text>
+        <TextLink href="#rendering-repetitive-content">
+          Rendering repetitive content
+        </TextLink>
+      </Text>
+      <Text>
+        <TextLink href="#managing-state">Managing state</TextLink>
+      </Text>
+      <Text>
+        <TextLink href="#navigating-between-screens">
+          Navigating between screens
+        </TextLink>
+      </Text>
+      <Text>
+        <TextLink href="#custom-styling">Custom styling</TextLink>
+      </Text>
+    </List>
 
     <Divider />
 
