@@ -20,10 +20,11 @@ export default function useScope() {
 
     const resolvedValue = responsiveValue(value);
 
+    // When prototyping, ensure we always resolve to a value.
+    // In Playroom, we delay rendering of the prototype until mount,
+    // so the result of this Hook never actually ends up on screen.
     if (resolvedValue === null) {
-      throw new Error(
-        `The 'responsiveValue' function resolved to 'null', which means was called before initial mount.`,
-      );
+      return value.mobile;
     }
 
     return resolvedValue;
