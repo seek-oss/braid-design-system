@@ -5,7 +5,6 @@ import React, {
   useEffect,
   useState,
   useRef,
-  ComponentProps,
   useCallback,
 } from 'react';
 import {
@@ -31,12 +30,12 @@ import {
   Columns,
   Column,
   Divider,
-  Tiles,
   TextLinkButton,
   IconNewWindow,
   IconAdd,
   IconMinus,
   TextDropdown,
+  Strong,
 } from '../../../../../lib/components';
 import docsTheme from '../../../../../lib/themes/docs';
 import { getHistory, isNew } from '../../Updates';
@@ -139,9 +138,11 @@ const RenderExample = ({ id, example }: RenderExampleProps) => {
       <Stack space="small">
         <Columns space="medium" alignY="center">
           <Column>
-            <Text component="h5" tone="secondary">
-              {label}
-            </Text>
+            {label ? (
+              <Text component="h5" tone="secondary">
+                {label}
+              </Text>
+            ) : null}
           </Column>
           {code ? (
             <Column width="content">
@@ -224,15 +225,13 @@ const GalleryItem = ({
                 cursor="pointer"
                 href={`/components/${item.name}/releases`}
                 target="gallery-detail"
+                title="Added in the last two months"
               >
-                <Badge
-                  tone="positive"
-                  weight="strong"
-                  title="Added in the last two months"
-                  bleedY
-                >
-                  New
-                </Badge>
+                <Box pointerEvents="none">
+                  <Badge tone="positive" weight="strong" bleedY>
+                    New
+                  </Badge>
+                </Box>
               </Box>
             ) : null}
             {updateCount > 0 ? (
@@ -241,31 +240,18 @@ const GalleryItem = ({
                 cursor="pointer"
                 href={`/components/${item.name}/releases`}
                 target="gallery-detail"
+                title={`${updateCount} update${
+                  updateCount === 1 ? '' : 's'
+                } in the last two months`}
               >
-                <Badge
-                  tone="promote"
-                  weight="strong"
-                  title={`${updateCount} update${
-                    updateCount === 1 ? '' : 's'
-                  } in the last two months`}
-                  bleedY
-                >
-                  {`${updateCount} update${updateCount === 1 ? '' : 's'}`}
-                </Badge>
+                <Box pointerEvents="none">
+                  <Badge tone="promote" weight="strong" bleedY>
+                    {`${updateCount} update${updateCount === 1 ? '' : 's'}`}
+                  </Badge>
+                </Box>
               </Box>
             ) : undefined}
           </Inline>
-          {/* {componentDocs.description && !isAnIcon ? (
-            <Box style={{ width: '700px' }}>
-              <Disclosure
-                collapseLabel="Hide description"
-                expandLabel="Show description"
-                id="id"
-              >
-                {componentDocs.description}
-              </Disclosure>
-            </Box>
-          ) : null} */}
         </Stack>
 
         <Columns space="xlarge">
@@ -274,7 +260,7 @@ const GalleryItem = ({
               <Stack space="xlarge">
                 {exampleChunk.map((example, index) => (
                   <Box
-                    component="section"
+                    component={isAnIcon ? undefined : 'section'}
                     style={{
                       width: isAnIcon ? undefined : '700px',
                     }}
@@ -307,20 +293,14 @@ const GalleryItem = ({
                     Alternatives
                   </span>
                 </Text>
-                <Tiles
-                  space="xlarge"
-                  columns={
-                    Math.min(item.examples.length * 2, 6) as ComponentProps<
-                      typeof Tiles
-                    >['columns']
-                  }
-                >
+                <Stack space="medium">
                   {componentDocs.alternatives.map((alt) => (
-                    <Stack space="medium" key={alt.name}>
-                      <Text size="xsmall" weight="medium" tone="secondary">
+                    <Text size="xsmall" tone="secondary" key={alt.name}>
+                      <Strong>
                         {galleryComponentNames.indexOf(alt.name) > -1 ? (
                           <TextLinkButton
                             weight="weak"
+                            hitArea="large"
                             onClick={() => jumpTo(alt.name)}
                           >
                             {alt.name}
@@ -329,18 +309,17 @@ const GalleryItem = ({
                           <TextLink
                             weight="weak"
                             href={`/components/${alt.name}`}
+                            hitArea="large"
                             target="_blank"
                           >
                             {alt.name} <IconNewWindow />
                           </TextLink>
                         )}
-                      </Text>
-                      <Text size="xsmall" tone="secondary">
-                        {alt.description}
-                      </Text>
-                    </Stack>
+                      </Strong>{' '}
+                      — {alt.description}
+                    </Text>
                   ))}
-                </Tiles>
+                </Stack>
               </Stack>
             </Box>
           </Stack>
@@ -540,11 +519,6 @@ const GalleryInternal = () => {
 
         controller.zoomAbs(targetX, targetY, targetScale);
         controller.moveTo(targetX, targetY);
-        // console.log(targetScale, scale);
-        // const targetX = -component.offsetLeft + jumpToEdgeThreshold;
-        // const targetY = -component.offsetTop + jumpToEdgeThreshold;
-        // controller.moveTo(targetX, targetY);
-        // controller.zoomAbs(targetX, targetY, 1);
       }
     },
     [controller],
@@ -555,20 +529,12 @@ const GalleryInternal = () => {
       const contentEl = contentRef.current;
       const dimensions = calculateFitToScreenDimensions(contentEl);
 
-      // const c = galleryController(contentEl, {
-      //   minZoom: dimensions.scale,
-      //   initialX: dimensions.x,
-      //   initialY: dimensions.y,
-      //   initialScale: dimensions.scale,
-      //   onChange: ({ scale }) => setZoom(scale),
-      // });
-
       const c = panzoom(contentEl, {
         maxZoom: 20,
         minZoom: dimensions.scale,
         zoomDoubleClickSpeed: 1,
-        onDoubleClick: () => false,
         filterKey: () => true, // disables panzoom default handling of keys
+        beforeDoubleClick: () => true,
         beforeMouseDown: (e) =>
           // @ts-expect-error
           /^(a|button|select)$/i.test(e.target.tagName) ||
