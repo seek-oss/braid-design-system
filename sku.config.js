@@ -29,6 +29,12 @@ module.exports = {
   public: './site/src/public',
   target: './site/dist',
   publicPath: isGitHubPages ? '/braid-design-system/' : '/',
+  supportedBrowsers: [
+    'Edge >= 16',
+    'Safari >= 10.1',
+    'iOS >= 10.3',
+    'Samsung >= 6',
+  ],
   setupTests: './setupTests.ts',
   displayNamesProd: true,
   provideDefaultChromaticViewports: false,
