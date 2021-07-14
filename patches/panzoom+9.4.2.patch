@@ -1,28 +1,30 @@
 diff --git a/node_modules/panzoom/index.d.ts b/node_modules/panzoom/index.d.ts
-index 84f20a5..83c24f0 100644
+index 84f20a5..6d16aa3 100644
 --- a/node_modules/panzoom/index.d.ts
 +++ b/node_modules/panzoom/index.d.ts
-@@ -36,6 +36,7 @@ declare module "panzoom" {
+@@ -36,6 +36,8 @@ declare module "panzoom" {
      pinchSpeed?: number;
      beforeWheel?: (e: WheelEvent) => void;
      beforeMouseDown?: (e: MouseEvent) => void;
 +    beforeDoubleClick?: (e: MouseEvent) => void;
++    beforeTouch?: (e: TouchEvent) => void;
      autocenter?: boolean;
      onTouch?: (e: TouchEvent) => void;
      onDoubleClick?: (e: Event) => void;
 diff --git a/node_modules/panzoom/index.js b/node_modules/panzoom/index.js
-index e4c59b2..fd91644 100644
+index e4c59b2..76778da 100644
 --- a/node_modules/panzoom/index.js
 +++ b/node_modules/panzoom/index.js
-@@ -66,6 +66,7 @@ function createPanZoom(domElement, options) {
+@@ -66,6 +66,8 @@ function createPanZoom(domElement, options) {
    var zoomDoubleClickSpeed = typeof options.zoomDoubleClickSpeed === 'number' ? options.zoomDoubleClickSpeed : defaultDoubleTapZoomSpeed;
    var beforeWheel = options.beforeWheel || noop;
    var beforeMouseDown = options.beforeMouseDown || noop;
 +  var beforeDoubleClick = options.beforeDoubleClick || noop;
++  var beforeTouch = options.beforeTouch || noop;
    var speed = typeof options.zoomSpeed === 'number' ? options.zoomSpeed : defaultZoomSpeed;
    var transformOrigin = parseTransformOrigin(options.transformOrigin);
    var textSelection = options.enableTextSelection ? fakeTextSelectorInterceptor : domTextSelectionInterceptor;
-@@ -501,6 +502,7 @@ function createPanZoom(domElement, options) {
+@@ -501,6 +503,7 @@ function createPanZoom(domElement, options) {
      }
  
      smoothScroll.cancel();
@@ -30,7 +32,25 @@ index e4c59b2..fd91644 100644
  
      releaseDocumentMouse();
      releaseTouches();
-@@ -604,18 +606,6 @@ function createPanZoom(domElement, options) {
+@@ -579,8 +582,15 @@ function createPanZoom(domElement, options) {
+   }
+ 
+   function onTouch(e) {
+-    // let the override the touch behavior
+-    beforeTouch(e);
++    if (beforeTouch(e)) {
++      return;
++    }
++
++    const hasTouchOption = ('onTouch' in options);
++    if (!hasTouchOption || (hasTouchOption && options.onTouch(e))) {
++      e.preventDefault();
++      e.stopPropagation();
++    }
+ 
+     if (e.touches.length === 1) {
+       return handleSingleFingerTouch(e, e.touches[0]);
+@@ -604,18 +614,6 @@ function createPanZoom(domElement, options) {
      e.preventDefault();
    }
  
@@ -49,7 +69,7 @@ index e4c59b2..fd91644 100644
    function handleSingleFingerTouch(e) {
      var touch = e.touches[0];
      var offset = getOffsetXY(touch);
-@@ -719,7 +709,16 @@ function createPanZoom(domElement, options) {
+@@ -719,7 +717,16 @@ function createPanZoom(domElement, options) {
    }
  
    function onDoubleClick(e) {
@@ -67,7 +87,7 @@ index e4c59b2..fd91644 100644
      var offset = getOffsetXY(e);
      if (transformOrigin) {
        // TODO: looks like this is duplicated in the file.
-@@ -1048,4 +1047,3 @@ function autoRun() {
+@@ -1048,4 +1055,3 @@ function autoRun() {
  }
  
  autoRun();
