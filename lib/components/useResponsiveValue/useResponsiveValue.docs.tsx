@@ -72,6 +72,16 @@ const docs: ComponentDocs = {
   ],
   additional: [
     {
+      label: 'Playroom prototyping',
+      description: (
+        <Text>
+          The <Strong>responsiveValue</Strong> function used in these examples
+          is automatically available in Playroom. You do not need to call the{' '}
+          <Strong>useResponsiveValue</Strong> function.
+        </Text>
+      ),
+    },
+    {
       label: 'Boolean logic',
       playroom: false,
       showCodeByDefault: true,
