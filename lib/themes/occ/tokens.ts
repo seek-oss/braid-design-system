@@ -1,5 +1,6 @@
 import { BraidTokens } from '../tokenType';
-import { lighten } from 'polished';
+import { darken, lighten } from 'polished';
+import { getLightVariant, isLight } from '../../utils';
 
 const brand = '#083cae';
 const brandAccent = '#f13465';
@@ -16,6 +17,12 @@ const secondary = '#777';
 const white = '#fff';
 const link = '#0946CB';
 const linkVisited = '#5736ab';
+
+const getActiveColor = (x: string) =>
+  isLight(x) ? darken(0.1, x) : darken(0.05, x);
+
+const getHoverColor = (x: string) =>
+  isLight(x) ? darken(0.05, x) : lighten(0.05, x);
 
 const tokens: BraidTokens = {
   name: 'OCC',
@@ -203,19 +210,31 @@ const tokens: BraidTokens = {
     background: {
       body: '#f5f5f8',
       brand,
+      brandAccent,
+      brandAccentActive: getActiveColor(brandAccent),
+      brandAccentHover: getHoverColor(brandAccent),
+      card: white,
+      caution,
+      cautionLight: getLightVariant(caution),
+      critical,
+      criticalActive: getActiveColor(critical),
+      criticalHover: getHoverColor(critical),
+      criticalLight: getLightVariant(critical),
+      formAccent,
+      formAccentActive: getActiveColor(formAccent),
+      formAccentDisabled: '#ccc',
+      formAccentHover: getHoverColor(formAccent),
+      info,
+      infoLight: getLightVariant(info),
       input: white,
       inputDisabled: '#eee',
-      brandAccent,
-      formAccent,
-      formAccentDisabled: '#ccc',
-      selection: '#fafafa',
-      card: white,
-      critical,
-      caution,
-      info,
-      promote,
-      positive,
       neutral,
+      neutralLight: getLightVariant(neutral),
+      positive,
+      positiveLight: getLightVariant(positive),
+      promote,
+      promoteLight: getLightVariant(promote),
+      selection: '#fafafa',
     },
   },
 };

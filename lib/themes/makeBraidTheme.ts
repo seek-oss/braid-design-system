@@ -1,13 +1,12 @@
 import './treatTheme.d';
 import { createTheme } from 'sku/treat';
-import { darken, lighten } from 'polished';
 import mapValues from 'lodash/mapValues';
 import values from 'lodash/values';
 import { FontMetrics, getCapHeight } from 'capsize';
 
 import { breakpoints } from '../css/breakpoints';
 import { makeThemeUtils } from './themeUtils';
-import { getLightVariant, isLight } from '../utils';
+import { isLight } from '../utils';
 import { BraidTokens, TextDefinition } from './tokenType';
 
 const fontSizeToCapHeight = (
@@ -51,33 +50,9 @@ const normaliseSizingToCapHeight = (typography: BraidTokens['typography']) => {
 };
 
 const decorateTokens = (braidTokens: BraidTokens) => {
-  const { color, typography, ...restTokens } = braidTokens;
-
-  const getActiveColor = (x: string) =>
-    isLight(x) ? darken(0.1, x) : darken(0.05, x);
-
-  const getHoverColor = (x: string) =>
-    isLight(x) ? darken(0.05, x) : lighten(0.05, x);
+  const { typography, ...restTokens } = braidTokens;
 
   const decoratedTokens = {
-    color: {
-      ...color,
-      background: {
-        ...color.background,
-        formAccentActive: getActiveColor(color.background.formAccent),
-        formAccentHover: getHoverColor(color.background.formAccent),
-        brandAccentActive: getActiveColor(color.background.brandAccent),
-        brandAccentHover: getHoverColor(color.background.brandAccent),
-        criticalActive: getActiveColor(color.background.critical),
-        criticalHover: getHoverColor(color.background.critical),
-        infoLight: getLightVariant(color.background.info),
-        promoteLight: getLightVariant(color.background.promote),
-        criticalLight: getLightVariant(color.background.critical),
-        positiveLight: getLightVariant(color.background.positive),
-        cautionLight: getLightVariant(color.background.caution),
-        neutralLight: getLightVariant(color.background.neutral),
-      },
-    },
     typography: normaliseSizingToCapHeight(typography),
     breakpoint: breakpoints,
     ...restTokens,

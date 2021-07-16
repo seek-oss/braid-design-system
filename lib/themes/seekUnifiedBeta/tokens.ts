@@ -1,5 +1,6 @@
 import { BraidTokens } from '../tokenType';
-import { rgba } from 'polished';
+import { darken, lighten, rgba } from 'polished';
+import { getLightVariant, isLight } from '../../utils';
 
 const formAccent = '#2765cf';
 const critical = '#d0011b';
@@ -15,6 +16,12 @@ const link = '#2765cf';
 const linkVisited = '#733d90';
 const secondary = '#1c1c1ca1';
 const neutral = '#747474';
+
+const getActiveColor = (x: string) =>
+  isLight(x) ? darken(0.1, x) : darken(0.05, x);
+
+const getHoverColor = (x: string) =>
+  isLight(x) ? darken(0.05, x) : lighten(0.05, x);
 
 const tokens: BraidTokens = {
   name: 'seekUnifiedBeta',
@@ -203,19 +210,31 @@ const tokens: BraidTokens = {
     background: {
       body: '#eee',
       brand: '#0d3880',
+      brandAccent,
+      brandAccentActive: getActiveColor(brandAccent),
+      brandAccentHover: getHoverColor(brandAccent),
+      card: white,
+      caution,
+      cautionLight: getLightVariant(caution),
+      critical,
+      criticalActive: getActiveColor(critical),
+      criticalHover: getHoverColor(critical),
+      criticalLight: getLightVariant(critical),
+      formAccent,
+      formAccentActive: getActiveColor(formAccent),
+      formAccentDisabled: '#ccc',
+      formAccentHover: getHoverColor(formAccent),
+      info,
+      infoLight: getLightVariant(info),
       input: white,
       inputDisabled: '#eee',
-      brandAccent,
-      formAccent,
-      formAccentDisabled: '#ccc',
-      selection: '#f1f7ff',
-      card: white,
-      critical,
-      caution,
-      positive,
       neutral,
-      info,
+      neutralLight: getLightVariant(neutral),
+      positive,
+      positiveLight: getLightVariant(positive),
       promote,
+      promoteLight: getLightVariant(promote),
+      selection: '#f1f7ff',
     },
   },
 };

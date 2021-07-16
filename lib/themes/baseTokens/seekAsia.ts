@@ -1,6 +1,14 @@
 import { BraidTokens } from '../tokenType';
 import { DeepPartial } from 'utility-types';
 import merge from 'lodash/merge';
+import { getLightVariant, isLight } from '../../utils';
+import { darken, lighten } from 'polished';
+
+const getActiveColor = (x: string) =>
+  isLight(x) ? darken(0.1, x) : darken(0.05, x);
+
+const getHoverColor = (x: string) =>
+  isLight(x) ? darken(0.05, x) : lighten(0.05, x);
 
 interface MakeTokensOptions {
   name: string;
@@ -230,19 +238,31 @@ export const makeTokens = ({
       background: {
         body: bodyBackground,
         brand,
+        brandAccent,
+        brandAccentActive: getActiveColor(brandAccent),
+        brandAccentHover: getHoverColor(brandAccent),
+        card: white,
+        caution,
+        cautionLight: getLightVariant(caution),
+        critical,
+        criticalActive: getActiveColor(critical),
+        criticalHover: getHoverColor(critical),
+        criticalLight: getLightVariant(critical),
+        formAccent,
+        formAccentActive: getActiveColor(formAccent),
+        formAccentDisabled: grey4,
+        formAccentHover: getHoverColor(formAccent),
+        info,
+        infoLight: getLightVariant(info),
         input: white,
         inputDisabled: grey5,
-        brandAccent,
-        formAccent,
-        formAccentDisabled: grey4,
-        selection,
-        card: white,
-        critical,
-        caution,
-        positive,
         neutral,
-        info,
+        neutralLight: getLightVariant(neutral),
+        positive,
+        positiveLight: getLightVariant(positive),
         promote,
+        promoteLight: getLightVariant(promote),
+        selection,
       },
     },
   };

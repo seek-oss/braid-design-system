@@ -1,18 +1,11 @@
-import { darken, lighten } from 'polished';
 import mapValues from 'lodash/mapValues';
 import { FontMetrics, getCapHeight } from 'capsize';
 
-import { getAccessibleVariant, getLightVariant, isLight } from '../utils';
+import { getAccessibleVariant } from '../utils';
 import { BraidTokens, TextDefinition } from './tokenType';
 import { buildValues } from '../hooks/typography/capsize/prebuilt';
 
 const px = (v: string | number) => `${v}px`;
-
-const getActiveColor = (x: string) =>
-  isLight(x) ? darken(0.1, x) : darken(0.05, x);
-
-const getHoverColor = (x: string) =>
-  isLight(x) ? darken(0.05, x) : lighten(0.05, x);
 
 const fontSizeToCapHeight = (
   grid: number,
@@ -90,21 +83,7 @@ export default (braidTokens: BraidTokens) => {
     borderWidth: mapValues(tokens.border.width, px),
     contentWidth: mapValues(tokens.contentWidth, px),
     foregroundColor: foreground,
-    backgroundColor: {
-      ...background,
-      formAccentActive: getActiveColor(background.formAccent),
-      formAccentHover: getHoverColor(background.formAccent),
-      brandAccentActive: getActiveColor(background.brandAccent),
-      brandAccentHover: getHoverColor(background.brandAccent),
-      criticalActive: getActiveColor(background.critical),
-      criticalHover: getHoverColor(background.critical),
-      infoLight: getLightVariant(background.info),
-      promoteLight: getLightVariant(background.promote),
-      criticalLight: getLightVariant(background.critical),
-      positiveLight: getLightVariant(background.positive),
-      cautionLight: getLightVariant(background.caution),
-      neutralLight: getLightVariant(background.neutral),
-    },
+    backgroundColor: background,
     fontFamily: typography.fontFamily,
     fontMetrics: mapValues(typography.fontMetrics, String),
     textSize: mapValues(tokens.typography.text, (definition) =>

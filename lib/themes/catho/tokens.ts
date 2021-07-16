@@ -1,3 +1,5 @@
+import { darken, lighten } from 'polished';
+import { getLightVariant, isLight } from '../../utils';
 import { BraidTokens } from '../tokenType';
 
 const linkVisited = 'DarkViolet';
@@ -15,6 +17,12 @@ const neutral = '#424242';
 const secondary = '#737374';
 const white = '#fff';
 const link = brand;
+
+const getActiveColor = (x: string) =>
+  isLight(x) ? darken(0.1, x) : darken(0.05, x);
+
+const getHoverColor = (x: string) =>
+  isLight(x) ? darken(0.05, x) : lighten(0.05, x);
 
 const tokens: BraidTokens = {
   name: 'Catho',
@@ -202,19 +210,31 @@ const tokens: BraidTokens = {
     background: {
       body: '#f2f2f2',
       brand: '#0037e9',
+      brandAccent,
+      brandAccentActive: getActiveColor(brandAccent),
+      brandAccentHover: getHoverColor(brandAccent),
+      card: white,
+      caution,
+      cautionLight: getLightVariant(caution),
+      critical,
+      criticalActive: getActiveColor(critical),
+      criticalHover: getHoverColor(critical),
+      criticalLight: getLightVariant(critical),
+      formAccent,
+      formAccentActive: getActiveColor(formAccent),
+      formAccentDisabled: '#ccc',
+      formAccentHover: getHoverColor(formAccent),
+      info,
+      infoLight: getLightVariant(info),
       input: white,
       inputDisabled: '#f2f2f2',
-      brandAccent,
-      formAccent,
-      formAccentDisabled: '#ccc',
-      selection: '#f2f2f2',
-      card: white,
-      critical,
-      caution,
-      info,
-      promote,
-      positive,
       neutral,
+      neutralLight: getLightVariant(neutral),
+      positive,
+      positiveLight: getLightVariant(positive),
+      promote,
+      promoteLight: getLightVariant(promote),
+      selection: '#f2f2f2',
     },
   },
 };
