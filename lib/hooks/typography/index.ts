@@ -114,6 +114,14 @@ export function useWeight(weight: keyof typeof styles.fontWeight) {
   return inTextLinkRenderer ? undefined : styles.fontWeight[weight];
 }
 
+const neutralToneOverrideForBackground = {
+  criticalLight: 'critical',
+  cautionLight: 'caution',
+  positiveLight: 'positive',
+  infoLight: 'info',
+  promoteLight: 'promote',
+} as const;
+
 export function useTextTone({
   tone: toneProp,
   backgroundContext: backgroundContextOverride,
@@ -127,13 +135,12 @@ export function useTextTone({
   const backgroundLightness = useBackgroundLightness(background);
   const { tone } = useDefaultTextProps({ tone: toneProp });
 
-  const toneOverrides = styles.toneOverridesForBackground[background!];
-  if (toneOverrides) {
-    const toneOverride = toneOverrides[tone];
-
-    if (toneOverride) {
-      return toneOverride;
-    }
+  if (tone === 'neutral' && background in neutralToneOverrideForBackground) {
+    return styles.tone[
+      neutralToneOverrideForBackground[
+        background as keyof typeof neutralToneOverrideForBackground
+      ]
+    ];
   }
 
   if (tone !== 'neutral') {

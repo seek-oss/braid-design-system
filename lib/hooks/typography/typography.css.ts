@@ -11,7 +11,6 @@ import { responsiveStyle } from '../../css/responsiveStyle';
 import * as capsize from './capsize/prebuilt';
 
 import { mapToProperty } from '../../utils';
-import { BackgroundVariant } from './../../components/Box/BackgroundContext';
 
 type Vars = typeof vars;
 type TextDefinition = Vars['textSize'];
@@ -144,106 +143,6 @@ export const invertableTone = {
       color: vars.foregroundColor.secondaryInverted,
     },
   }),
-};
-
-type Foreground = keyof typeof tone;
-type BoxBackground = NonNullable<BackgroundVariant>;
-type ToneOverridesForBackground = {
-  [background in BoxBackground]?: {
-    [foreground in Foreground | 'neutral']?: string;
-  };
-};
-export const toneOverridesForBackground: ToneOverridesForBackground = {
-  criticalLight: {
-    neutral: style({
-      color: vars.accessibleForegroundColorOnLightVariant.critical.text,
-      selectors: {
-        ['svg&']: {
-          color: vars.accessibleForegroundColorOnLightVariant.critical.graphic,
-        },
-      },
-    }),
-    critical: style({
-      color: vars.accessibleForegroundColorOnLightVariant.critical.text,
-      selectors: {
-        ['svg&']: {
-          color: vars.accessibleForegroundColorOnLightVariant.critical.graphic,
-        },
-      },
-    }),
-  },
-  cautionLight: {
-    neutral: style({
-      color: vars.accessibleForegroundColorOnLightVariant.caution.text,
-      selectors: {
-        ['svg&']: {
-          color: vars.accessibleForegroundColorOnLightVariant.caution.graphic,
-        },
-      },
-    }),
-    caution: style({
-      color: vars.accessibleForegroundColorOnLightVariant.caution.text,
-      selectors: {
-        ['svg&']: {
-          color: vars.accessibleForegroundColorOnLightVariant.caution.graphic,
-        },
-      },
-    }),
-  },
-  positiveLight: {
-    neutral: style({
-      color: vars.accessibleForegroundColorOnLightVariant.positive.text,
-      selectors: {
-        ['svg&']: {
-          color: vars.accessibleForegroundColorOnLightVariant.positive.graphic,
-        },
-      },
-    }),
-    positive: style({
-      color: vars.accessibleForegroundColorOnLightVariant.positive.text,
-      selectors: {
-        ['svg&']: {
-          color: vars.accessibleForegroundColorOnLightVariant.positive.graphic,
-        },
-      },
-    }),
-  },
-  infoLight: {
-    neutral: style({
-      color: vars.accessibleForegroundColorOnLightVariant.info.text,
-      selectors: {
-        ['svg&']: {
-          color: vars.accessibleForegroundColorOnLightVariant.info.graphic,
-        },
-      },
-    }),
-    info: style({
-      color: vars.accessibleForegroundColorOnLightVariant.info.text,
-      selectors: {
-        ['svg&']: {
-          color: vars.accessibleForegroundColorOnLightVariant.info.graphic,
-        },
-      },
-    }),
-  },
-  promoteLight: {
-    neutral: style({
-      color: vars.accessibleForegroundColorOnLightVariant.promote.text,
-      selectors: {
-        ['svg&']: {
-          color: vars.accessibleForegroundColorOnLightVariant.promote.graphic,
-        },
-      },
-    }),
-    promote: style({
-      color: vars.accessibleForegroundColorOnLightVariant.promote.text,
-      selectors: {
-        ['svg&']: {
-          color: vars.accessibleForegroundColorOnLightVariant.promote.graphic,
-        },
-      },
-    }),
-  },
 };
 
 const makeTouchableSpacing = (touchableHeight: string, textHeight: string) => {

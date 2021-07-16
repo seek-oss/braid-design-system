@@ -2,7 +2,7 @@ import { BraidTokens } from '../tokenType';
 import { DeepPartial } from 'utility-types';
 import { darken, lighten, rgba } from 'polished';
 import merge from 'lodash/merge';
-import { getLightVariant, isLight } from '../../utils';
+import { getAccessibleVariant, getLightVariant, isLight } from '../../utils';
 
 const grey = {
   50: '#f5f6f8',
@@ -228,21 +228,21 @@ export const makeTokens = ({
     },
     color: {
       foreground: {
+        brandAccent,
+        caution: getAccessibleVariant(caution, 'text'),
+        critical: getAccessibleVariant(critical, 'text'),
+        formAccent,
+        info: getAccessibleVariant(info, 'text'),
         link,
         linkHover: link,
         linkVisited,
         neutral: black,
         neutralInverted: white,
-        formAccent,
-        brandAccent,
-        critical,
-        caution,
-        positive,
-        info,
-        promote,
+        positive: getAccessibleVariant(positive, 'text'),
+        promote: getAccessibleVariant(promote, 'text'),
+        rating: '#f57c00',
         secondary,
         secondaryInverted: 'hsla(0, 0%, 100%, 0.65)',
-        rating: '#f57c00',
       },
       background: {
         body: grey['50'],

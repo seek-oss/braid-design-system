@@ -1,7 +1,6 @@
 import mapValues from 'lodash/mapValues';
 import { FontMetrics, getCapHeight } from 'capsize';
 
-import { getAccessibleVariant } from '../utils';
 import { BraidTokens, TextDefinition } from './tokenType';
 import { buildValues } from '../hooks/typography/capsize/prebuilt';
 
@@ -108,28 +107,6 @@ export default (braidTokens: BraidTokens) => {
     transition: tokens.transitions,
     transform: tokens.transforms,
     shadow: tokens.shadows,
-    accessibleForegroundColorOnLightVariant: {
-      critical: {
-        text: getAccessibleVariant(foreground.critical, 'text'),
-        graphic: getAccessibleVariant(foreground.critical, 'graphic'),
-      },
-      caution: {
-        text: getAccessibleVariant(foreground.caution, 'text'),
-        graphic: getAccessibleVariant(foreground.caution, 'graphic'),
-      },
-      positive: {
-        text: getAccessibleVariant(foreground.positive, 'text'),
-        graphic: getAccessibleVariant(foreground.positive, 'graphic'),
-      },
-      info: {
-        text: getAccessibleVariant(foreground.info, 'text'),
-        graphic: getAccessibleVariant(foreground.info, 'graphic'),
-      },
-      promote: {
-        text: getAccessibleVariant(foreground.promote, 'text'),
-        graphic: getAccessibleVariant(foreground.promote, 'graphic'),
-      },
-    },
   } as const;
 
   return resolvedTokens;

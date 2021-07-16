@@ -1,5 +1,5 @@
 import { darken, lighten, rgba } from 'polished';
-import { getLightVariant, isLight } from '../../utils';
+import { getAccessibleVariant, getLightVariant, isLight } from '../../utils';
 
 import { BraidTokens } from '../tokenType';
 
@@ -192,21 +192,21 @@ const tokens: BraidTokens = {
   },
   color: {
     foreground: {
+      brandAccent,
+      caution: getAccessibleVariant(caution, 'text'),
+      critical: getAccessibleVariant(critical, 'text'),
+      formAccent,
+      info: getAccessibleVariant(info, 'text'),
       link,
       linkHover: link,
       linkVisited,
       neutral: black,
       neutralInverted: white,
-      formAccent,
-      brandAccent,
-      critical,
-      caution,
-      positive,
-      info,
-      promote,
+      positive: getAccessibleVariant(positive, 'text'),
+      promote: getAccessibleVariant(promote, 'text'),
+      rating: black,
       secondary,
       secondaryInverted: 'hsla(0, 0%, 100%, 0.65)',
-      rating: black,
     },
     background: {
       body: white,
