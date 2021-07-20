@@ -1,4 +1,4 @@
-import { style } from '@vanilla-extract/css';
+import { globalStyle, style } from '@vanilla-extract/css';
 import { vars } from '../../../../../lib/themes/vars.css';
 
 export const loader = style({
@@ -36,4 +36,18 @@ export const panelBackground = style({
       opacity: 0.85,
     },
   },
+});
+
+export const contentWrapper = style({
+  backfaceVisibility: 'hidden',
+  transformOrigin: '0px 0px',
+  willChange: 'transform',
+});
+
+export const animationsOnlyOnHover = style({});
+
+globalStyle(`${animationsOnlyOnHover}:not(:hover) *`, {
+  animationDelay: '-0.0001s !important',
+  animationDuration: '0s !important',
+  animationPlayState: 'paused !important',
 });
