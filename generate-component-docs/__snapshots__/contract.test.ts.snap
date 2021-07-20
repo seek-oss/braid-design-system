@@ -364,6 +364,9 @@ Object {
         | "brandAccent"
         | "brandAccentActive"
         | "brandAccentHover"
+        | "brandAccentLight"
+        | "brandAccentLightActive"
+        | "brandAccentLightHover"
         | "card"
         | "caution"
         | "cautionLight"
@@ -371,10 +374,18 @@ Object {
         | "criticalActive"
         | "criticalHover"
         | "criticalLight"
+        | "criticalLightActive"
+        | "criticalLightHover"
         | "formAccent"
         | "formAccentActive"
         | "formAccentDisabled"
         | "formAccentHover"
+        | "formAccentLight"
+        | "formAccentLightActive"
+        | "formAccentLightHover"
+        | "formAccentLightInverted"
+        | "formAccentLightInvertedActive"
+        | "formAccentLightInvertedHover"
         | "info"
         | "infoLight"
         | "input"
@@ -1279,6 +1290,9 @@ Object {
         | "brandAccent"
         | "brandAccentActive"
         | "brandAccentHover"
+        | "brandAccentLight"
+        | "brandAccentLightActive"
+        | "brandAccentLightHover"
         | "card"
         | "caution"
         | "cautionLight"
@@ -1286,10 +1300,18 @@ Object {
         | "criticalActive"
         | "criticalHover"
         | "criticalLight"
+        | "criticalLightActive"
+        | "criticalLightHover"
         | "formAccent"
         | "formAccentActive"
         | "formAccentDisabled"
         | "formAccentHover"
+        | "formAccentLight"
+        | "formAccentLightActive"
+        | "formAccentLightHover"
+        | "formAccentLightInverted"
+        | "formAccentLightInvertedActive"
+        | "formAccentLightInvertedHover"
         | "info"
         | "infoLight"
         | "input"
@@ -1804,8 +1826,8 @@ Object {
     styleBody?: boolean
     theme: {
         background: string
-        backgroundLightness: { formAccentActive: "dark" | "light"; formAccentHover: "dark" | "light"; brandAccentActive: "dark" | "light"; brandAccentHover: "dark" | "light"; criticalActive: "dark" | "light"; ... 21 more ...; neutral: "dark" | "light"; }
-        color: { background: { formAccentActive: string; formAccentHover: string; brandAccentActive: string; brandAccentHover: string; criticalActive: string; criticalHover: string; infoLight: string; promoteLight: string; ... 18 more ...; neutral: string; }; foreground: { ...; }; }
+        backgroundLightness: { body: "dark" | "light"; brand: "dark" | "light"; brandAccent: "dark" | "light"; brandAccentActive: "dark" | "light"; brandAccentHover: "dark" | "light"; brandAccentLight: "dark" | "light"; ... 31 more ...; selection: "dark" | "light"; }
+        color: { foreground: { link: string; linkHover: string; linkVisited: string; neutral: string; neutralInverted: string; formAccent: string; brandAccent: string; critical: string; info: string; promote: string; ... 4 more ...; rating: string; }; background: { ...; }; }
         displayName: string
         name: string
         space: { grid: number; space: { gutter: number; xxsmall: number; xsmall: number; small: number; medium: number; large: number; xlarge: number; xxlarge: number; }; }
@@ -7672,8 +7694,8 @@ exports[`filterSuggestions 1`] = `
 Object {
   exportType: component,
   props: {
-    __@iterator@468: () => IterableIterator<FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>>
-    __@unscopables@470: () => { copyWithin: boolean; entries: boolean; fill: boolean; find: boolean; findIndex: boolean; keys: boolean; values: boolean; }
+    __@iterator@588: () => IterableIterator<FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>>
+    __@unscopables@1486: () => { copyWithin: boolean; entries: boolean; fill: boolean; find: boolean; findIndex: boolean; keys: boolean; values: boolean; }
     concat: { (...items: ConcatArray<FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>>[]): (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]; (...items: (FilterableSuggestion<...> | ... 1 more ... | ConcatArray<...>)[]): (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]; }
     copyWithin: (target: number, start: number, end?: number | undefined) => FilterableSuggestions<Value>
     entries: () => IterableIterator<[number, FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>]>
@@ -7735,7 +7757,7 @@ exports[`useColor 1`] = `
 Object {
   exportType: hook,
   params: Array [],
-  returnType: { background: { formAccentActive: string; formAccentHover: string; brandAccentActive: string; brandAccentHover: string; criticalActive: string; criticalHover: string; infoLight: string; promoteLight: string; ... 18 more ...; neutral: string; }; foreground: { ...; }; },
+  returnType: { foreground: { link: string; linkHover: string; linkVisited: string; neutral: string; neutralInverted: string; formAccent: string; brandAccent: string; critical: string; info: string; promote: string; ... 4 more ...; rating: string; }; background: { ...; }; },
 }
 `;
 
