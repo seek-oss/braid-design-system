@@ -1,6 +1,6 @@
 import { BraidTokens } from '../tokenType';
 import { DeepPartial } from 'utility-types';
-import { darken, lighten, rgba } from 'polished';
+import { darken, lighten, rgba, tint } from 'polished';
 import merge from 'lodash/merge';
 import { getAccessibleVariant, getLightVariant, isLight } from '../../utils';
 
@@ -250,17 +250,28 @@ export const makeTokens = ({
         brandAccent,
         brandAccentActive: getActiveColor(brandAccent),
         brandAccentHover: getHoverColor(brandAccent),
+        brandAccentLight: tint(0.925, brandAccent),
+        brandAccentLightActive: tint(0.85, brandAccent),
+        brandAccentLightHover: tint(0.9, brandAccent),
         card: white,
         caution,
         cautionLight: getLightVariant(caution),
         critical,
         criticalActive: getActiveColor(critical),
         criticalHover: getHoverColor(critical),
-        criticalLight: getLightVariant(critical),
+        criticalLight: tint(0.925, critical),
+        criticalLightActive: tint(0.85, critical),
+        criticalLightHover: tint(0.9, critical),
         formAccent,
         formAccentActive: getActiveColor(formAccent),
         formAccentDisabled: grey['100'],
         formAccentHover: getHoverColor(formAccent),
+        formAccentLight: tint(0.925, formAccent),
+        formAccentLightActive: tint(0.85, formAccent),
+        formAccentLightHover: tint(0.9, formAccent),
+        formAccentLightInverted: rgba('#fff', 0.075),
+        formAccentLightInvertedActive: rgba('#000', 0.05),
+        formAccentLightInvertedHover: rgba('#fff', 0.15),
         info,
         infoLight: getLightVariant(info),
         input: white,

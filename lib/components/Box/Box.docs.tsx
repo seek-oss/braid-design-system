@@ -406,12 +406,28 @@ const docs: ComponentDocs = {
                 brandAccent: 'Used for hero elements on the screen.',
                 brandAccentHover: 'Hover colour for “brandAccent” elements.',
                 brandAccentActive: 'Hover colour for “brandAccent” elements.',
+                brandAccentLight: 'Used for lighter “brandAccent” elements.',
+                brandAccentLightHover:
+                  'Hover colour for “brandAccentLight” elements.',
+                brandAccentLightActive:
+                  'Active colour for “brandAccentLight” elements.',
                 formAccent:
                   'Used for prominent interactive elements, typically within a form.',
                 formAccentHover: 'Hover colour for “formAccent” elements.',
                 formAccentActive: 'Active colour for “formAccent” elements.',
                 formAccentDisabled:
                   'Disabled colour for “formAccent” elements.',
+                formAccentLight: 'Used for lighter “formAccent” elements.',
+                formAccentLightHover:
+                  'Hover colour for “formAccentLight” elements.',
+                formAccentLightActive:
+                  'Active colour for “formAccentLight” elements.',
+                formAccentLightInverted:
+                  'Used for “formAccentLight” elements on dark backgrounds.',
+                formAccentLightInvertedHover:
+                  'Hover colour for “formAccentLightInverted” elements.',
+                formAccentLightInvertedActive:
+                  'Active colour for “formAccentLightInverted” elements.',
                 input: 'Used for input fields.',
                 inputDisabled: 'Used for input fields when disabled.',
                 card: 'Used for card surfaces.',
@@ -420,9 +436,13 @@ const docs: ComponentDocs = {
                 positive: 'Used for heavier “positive” elements.',
                 positiveLight: 'Used for lighter “positive” elements.',
                 critical: 'Used for heavier “critical” elements.',
-                criticalLight: 'Used for lighter “critical” elements.',
                 criticalHover: 'Hover colour for “critical” elements.',
                 criticalActive: 'Active colour for “critical” elements.',
+                criticalLight: 'Used for lighter “critical” elements.',
+                criticalLightHover:
+                  'Hover colour for “criticalLight” elements.',
+                criticalLightActive:
+                  'Active colour for “criticalLight” elements.',
                 caution: 'Used for heavier “caution” elements.',
                 cautionLight: 'Used for lighter “caution” elements.',
                 info: 'Used for heavier “info” elements.',
@@ -443,7 +463,12 @@ const docs: ComponentDocs = {
                     <Box
                       background={background as keyof BackgroundDocs}
                       boxShadow={
-                        ['card', 'input'].includes(background)
+                        [
+                          'card',
+                          'input',
+                          'formAccentLightInverted',
+                          'formAccentLightInvertedHover',
+                        ].includes(background)
                           ? 'borderStandard'
                           : undefined
                       }

@@ -115,6 +115,9 @@ export interface BraidTokens {
       brandAccent: string;
       brandAccentActive: string;
       brandAccentHover: string;
+      brandAccentLight: string;
+      brandAccentLightActive: string;
+      brandAccentLightHover: string;
       card: string;
       caution: string;
       cautionLight: string;
@@ -122,10 +125,18 @@ export interface BraidTokens {
       criticalActive: string;
       criticalHover: string;
       criticalLight: string;
+      criticalLightActive: string;
+      criticalLightHover: string;
       formAccent: string;
       formAccentActive: string;
       formAccentDisabled: string;
       formAccentHover: string;
+      formAccentLight: string;
+      formAccentLightActive: string;
+      formAccentLightHover: string;
+      formAccentLightInverted: string;
+      formAccentLightInvertedActive: string;
+      formAccentLightInvertedHover: string;
       info: string;
       infoLight: string;
       input: string;

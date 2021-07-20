@@ -75,45 +75,45 @@ const buttonVariantStyles: Record<
     default: {
       textTone: 'formAccent',
       background: undefined,
-      backgroundHover: 'formAccentHover',
-      backgroundActive: 'formAccentActive',
+      backgroundHover: 'formAccentLightHover',
+      backgroundActive: 'formAccentLightActive',
       boxShadow: 'borderFormAccentLarge',
     },
     brandAccent: {
       textTone: 'brandAccent',
       background: undefined,
-      backgroundHover: 'brandAccentHover',
-      backgroundActive: 'brandAccentActive',
+      backgroundHover: 'brandAccentLightHover',
+      backgroundActive: 'brandAccentLightActive',
       boxShadow: 'borderBrandAccentLarge',
     },
     critical: {
       textTone: 'critical',
       background: undefined,
-      backgroundHover: 'criticalHover',
-      backgroundActive: 'criticalActive',
+      backgroundHover: 'criticalLightHover',
+      backgroundActive: 'criticalLightActive',
       boxShadow: 'borderCriticalLarge',
     },
   },
   soft: {
     default: {
       textTone: 'formAccent',
-      background: 'formAccent',
-      backgroundHover: 'formAccentHover',
-      backgroundActive: 'formAccentActive',
+      background: 'formAccentLight',
+      backgroundHover: 'formAccentLightHover',
+      backgroundActive: 'formAccentLightActive',
       boxShadow: undefined,
     },
     brandAccent: {
       textTone: 'brandAccent',
-      background: 'brandAccent',
-      backgroundHover: 'brandAccentHover',
-      backgroundActive: 'brandAccentActive',
+      background: 'brandAccentLight',
+      backgroundHover: 'brandAccentLightHover',
+      backgroundActive: 'brandAccentLightActive',
       boxShadow: undefined,
     },
     critical: {
       textTone: 'critical',
-      background: 'critical',
-      backgroundHover: 'criticalHover',
-      backgroundActive: 'criticalActive',
+      background: 'criticalLight',
+      backgroundHover: 'criticalLightHover',
+      backgroundActive: 'criticalLightActive',
       boxShadow: undefined,
     },
   },
@@ -121,22 +121,22 @@ const buttonVariantStyles: Record<
     default: {
       textTone: 'formAccent',
       background: undefined,
-      backgroundHover: 'formAccentHover',
-      backgroundActive: 'formAccentActive',
+      backgroundHover: 'formAccentLightHover',
+      backgroundActive: 'formAccentLightActive',
       boxShadow: undefined,
     },
     brandAccent: {
       textTone: 'brandAccent',
       background: undefined,
-      backgroundHover: 'brandAccentHover',
-      backgroundActive: 'brandAccentActive',
+      backgroundHover: 'brandAccentLightHover',
+      backgroundActive: 'brandAccentLightActive',
       boxShadow: undefined,
     },
     critical: {
       textTone: 'critical',
       background: undefined,
-      backgroundHover: 'criticalHover',
-      backgroundActive: 'criticalActive',
+      backgroundHover: 'criticalLightHover',
+      backgroundActive: 'criticalLightActive',
       boxShadow: undefined,
     },
   },
@@ -146,9 +146,9 @@ const useButtonVariant = (variant: ButtonVariant, tone?: ButtonTone) => {
   if (useBackgroundLightness() === 'dark' && !tone && variant !== 'solid') {
     return {
       textTone: undefined,
-      background: variant === 'soft' ? 'card' : undefined,
-      backgroundHover: 'card',
-      backgroundActive: 'card',
+      background: variant === 'soft' ? 'formAccentLightInverted' : undefined,
+      backgroundHover: 'formAccentLightInvertedHover',
+      backgroundActive: 'formAccentLightInvertedActive',
       boxShadow:
         variant === 'ghost' ? 'borderStandardInvertedLarge' : undefined,
     } as ButtonStyles;
@@ -184,7 +184,6 @@ const ButtonChildren = ({ children }: ButtonChildrenProps) => {
     <Fragment>
       <FieldOverlay
         background={buttonVariant.background}
-        className={styles.backgroundOverlay}
         visible={Boolean(buttonVariant.background)}
       />
       <FieldOverlay
@@ -200,6 +199,17 @@ const ButtonChildren = ({ children }: ButtonChildrenProps) => {
         background={buttonVariant.backgroundActive}
         className={styles.activeOverlay}
       />
+      {buttonVariant.boxShadow ? (
+        <Box
+          boxShadow={buttonVariant.boxShadow}
+          borderRadius="standard"
+          position="absolute"
+          top={0}
+          bottom={0}
+          left={0}
+          right={0}
+        />
+      ) : null}
       <Box
         position="relative"
         paddingX={
@@ -347,7 +357,7 @@ export const PrivateButtonRenderer = ({
   }
 
   const size = sizeProp ?? actionsContext?.size ?? 'standard';
-  const { background, boxShadow } = useButtonVariant(variant, tone);
+  const { background } = useButtonVariant(variant, tone);
 
   const buttonStyles = clsx(
     atoms({
@@ -357,7 +367,6 @@ export const PrivateButtonRenderer = ({
       position: 'relative',
       display: 'block',
       borderRadius: 'standard',
-      boxShadow,
       transform: { active: 'touchable' },
       transition: 'touchable',
       outline: 'none',

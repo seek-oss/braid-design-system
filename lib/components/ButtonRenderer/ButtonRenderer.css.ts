@@ -15,35 +15,18 @@ export const inverted = style({});
 export const lightBg = style({});
 export const lightHoverBg = style({});
 
-export const backgroundOverlay = style({
-  selectors: {
-    [`${lightBg} &`]: {
-      opacity: 0.075,
-    },
-  },
-});
-
 export const activeOverlay = style({
   selectors: {
     [`${root}:active &`]: {
       opacity: 1,
-    },
-    [`${lightHoverBg}:active &`]: {
-      opacity: 0.1,
     },
   },
 });
 
 export const hoverOverlay = style({
   selectors: {
-    [`${root}:hover:not(:disabled):not(:active) &`]: {
+    [`${root}:hover:not(:disabled) &`]: {
       opacity: 1,
-    },
-    [`${lightHoverBg}:hover:not(:disabled):not(:active) &`]: {
-      opacity: 0.075,
-    },
-    [`${lightHoverBg}${inverted}:hover:not(:disabled):not(:active) &`]: {
-      opacity: 0.15,
     },
   },
 });

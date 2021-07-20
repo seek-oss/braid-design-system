@@ -111,6 +111,8 @@ const makeRuntimeTokens = (tokens: TreatTheme) => ({
         brandAccentHover: 'brandAccent',
         formAccentActive: 'formAccent',
         formAccentHover: 'formAccent',
+        formAccentLightInvertedHover: 'formAccentLightInverted',
+        formAccentLightInvertedActive: 'formAccentLightInverted',
       } as const;
 
       const referenceColor =
