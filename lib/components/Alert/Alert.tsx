@@ -17,7 +17,7 @@ import { textAlignedToIcon } from '../../css/textAlignedToIcon.css';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
-import * as styles from './Alert.css';
+// import * as styles from './Alert.css';
 
 type Tone = 'promote' | 'info' | 'positive' | 'caution' | 'critical';
 
@@ -103,10 +103,6 @@ export const Alert = ({
           borderRadius="standard"
           boxShadow={borderForTone[tone]}
           visible
-          className={{
-            [styles.toneBorder]: tone !== 'caution',
-            [styles.cautionBorder]: tone === 'caution',
-          }}
         />
       )}
       <Box

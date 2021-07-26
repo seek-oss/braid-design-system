@@ -1,9 +1,13 @@
-import { style } from '@vanilla-extract/css';
+// DELETE ME?
+import { styleVariants } from '@vanilla-extract/css';
+import { pick } from 'lodash';
+import { vars } from '../../themes/vars.css';
 
-export const toneBorder = style({
-  opacity: 0.3,
-});
+const tones = ['promote', 'info', 'positive', 'caution', 'critical'] as const;
 
-export const cautionBorder = style({
-  opacity: 0.6,
-});
+export const keylineBackground = styleVariants(
+  pick(vars.foregroundColor, tones),
+  (background) => ({
+    background,
+  }),
+);

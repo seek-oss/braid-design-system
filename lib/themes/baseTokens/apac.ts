@@ -1,21 +1,9 @@
 import { BraidTokens } from '../tokenType';
 import { DeepPartial } from 'utility-types';
-import { darken, lighten, rgba, tint } from 'polished';
+import { darken, lighten, rgba } from 'polished';
 import merge from 'lodash/merge';
-import { getAccessibleVariant, getLightVariant, isLight } from '../../utils';
-
-const grey = {
-  50: '#f5f6f8',
-  100: '#e8eaee',
-  200: '#d8dce2',
-  300: '#b8beca',
-  400: '#8991a5',
-  500: '#596581',
-  600: '#414a5f',
-  700: '#313848',
-  800: '#1e222b',
-  900: '#0e1014',
-} as const;
+import { isLight } from '../../utils';
+import { palette } from '../../color/palette';
 
 const getActiveColor = (x: string) =>
   isLight(x) ? darken(0.1, x) : darken(0.05, x);
@@ -34,22 +22,22 @@ interface MakeTokensOptions {
 export const makeTokens = ({
   name,
   displayName,
-  brand,
+  // brand,
   brandAccent,
-  formAccent,
+  // formAccent,
   tokenOverrides = {},
 }: MakeTokensOptions): BraidTokens => {
-  const critical = '#d0011b';
-  const positive = '#138a08';
-  const info = '#1e468c';
-  const promote = '#9556b7';
-  const caution = '#ffc600';
+  // const critical = '#d0011b';
+  // const positive = '#138a08';
+  // const info = '#1e468c';
+  // const promote = '#9556b7';
+  // const caution = '#ffc600';
   const focus = rgba('#1e90ff', 0.7);
-  const black = grey['800'];
+  const black = palette.grey['800'];
   const white = '#fff';
   const link = '#2765cf';
   const linkVisited = '#733d90';
-  const secondary = grey['500'];
+  const secondary = palette.grey['500'];
 
   const tokens: BraidTokens = {
     name,
@@ -195,94 +183,94 @@ export const makeTokens = ({
         large: 2,
       },
       color: {
-        standard: grey['200'],
-        standardInverted: white,
-        field: grey['400'],
-        focus,
-        formHover: formAccent,
-        critical,
-        info,
-        promote,
-        positive,
-        caution,
-        formAccent,
         brandAccent,
+        caution: palette.yellow['300'],
+        critical: palette.red['200'],
+        field: palette.grey['200'],
+        focus,
+        formAccent: palette.indigo['500'],
+        formHover: palette.indigo['500'],
+        info: palette.blue['200'],
+        positive: palette.mint['200'],
+        promote: palette.plum['200'],
+        standard: palette.grey['200'],
+        standardInverted: white,
       },
     },
     shadows: {
       small: [
-        `0 2px 4px 0px ${rgba(grey['800'], 0.1)}`,
-        `0 2px 2px -2px ${rgba(grey['800'], 0.1)}`,
-        `0 4px 4px -4px ${rgba(grey['800'], 0.2)}`,
+        `0 2px 4px 0px ${rgba(palette.grey['800'], 0.1)}`,
+        `0 2px 2px -2px ${rgba(palette.grey['800'], 0.1)}`,
+        `0 4px 4px -4px ${rgba(palette.grey['800'], 0.2)}`,
       ].join(', '),
       medium: [
-        `0 2px 4px 0px ${rgba(grey['800'], 0.1)}`,
-        `0 8px 8px -4px ${rgba(grey['800'], 0.1)}`,
-        `0 12px 12px -8px ${rgba(grey['800'], 0.2)}`,
+        `0 2px 4px 0px ${rgba(palette.grey['800'], 0.1)}`,
+        `0 8px 8px -4px ${rgba(palette.grey['800'], 0.1)}`,
+        `0 12px 12px -8px ${rgba(palette.grey['800'], 0.2)}`,
       ].join(', '),
       large: [
-        `0 2px 4px 0px ${rgba(grey['800'], 0.1)}`,
-        `0 12px 12px -4px ${rgba(grey['800'], 0.1)}`,
-        `0 20px 20px -12px ${rgba(grey['800'], 0.2)}`,
+        `0 2px 4px 0px ${rgba(palette.grey['800'], 0.1)}`,
+        `0 12px 12px -4px ${rgba(palette.grey['800'], 0.1)}`,
+        `0 20px 20px -12px ${rgba(palette.grey['800'], 0.2)}`,
       ].join(', '),
     },
     color: {
       foreground: {
         brandAccent,
-        caution: getAccessibleVariant(caution, 'text'),
-        critical: getAccessibleVariant(critical, 'text'),
-        formAccent,
-        info: getAccessibleVariant(info, 'text'),
+        caution: palette.yellow['800'],
+        critical: palette.red['700'],
+        formAccent: palette.indigo['500'],
+        info: palette.blue['700'],
         link,
         linkHover: link,
         linkVisited,
         neutral: black,
         neutralInverted: white,
-        positive: getAccessibleVariant(positive, 'text'),
-        promote: getAccessibleVariant(promote, 'text'),
+        positive: palette.mint['700'],
+        promote: palette.plum['700'],
         rating: '#f57c00',
         secondary,
-        secondaryInverted: 'hsla(0, 0%, 100%, 0.65)',
+        secondaryInverted: rgba('#fff', 0.65),
       },
       background: {
-        body: grey['50'],
-        brand,
+        body: palette.grey['50'],
+        brand: palette.seekBlue['500'],
         brandAccent,
         brandAccentActive: getActiveColor(brandAccent),
         brandAccentHover: getHoverColor(brandAccent),
-        brandAccentLight: tint(0.925, brandAccent),
-        brandAccentLightActive: tint(0.85, brandAccent),
-        brandAccentLightHover: tint(0.9, brandAccent),
+        brandAccentLight: palette.seekPink['100'],
+        brandAccentLightActive: darken(0.05, palette.seekPink['100']),
+        brandAccentLightHover: darken(0.025, palette.seekPink['100']),
         card: white,
-        caution,
-        cautionLight: getLightVariant(caution),
-        critical,
-        criticalActive: getActiveColor(critical),
-        criticalHover: getHoverColor(critical),
-        criticalLight: tint(0.925, critical),
-        criticalLightActive: tint(0.85, critical),
-        criticalLightHover: tint(0.9, critical),
-        formAccent,
-        formAccentActive: getActiveColor(formAccent),
-        formAccentDisabled: grey['100'],
-        formAccentHover: getHoverColor(formAccent),
-        formAccentLight: tint(0.925, formAccent),
-        formAccentLightActive: tint(0.85, formAccent),
-        formAccentLightHover: tint(0.9, formAccent),
+        caution: palette.yellow['400'],
+        cautionLight: palette.yellow['100'],
+        critical: palette.red['600'],
+        criticalActive: darken(0.075, palette.red['600']),
+        criticalHover: darken(0.05, palette.red['600']),
+        criticalLight: palette.red['100'],
+        criticalLightActive: darken(0.05, palette.red['100']),
+        criticalLightHover: darken(0.025, palette.red['100']),
+        formAccent: palette.indigo['500'],
+        formAccentActive: palette.indigo['700'],
+        formAccentDisabled: palette.grey['200'],
+        formAccentHover: palette.indigo['600'],
+        formAccentLight: palette.indigo['100'],
+        formAccentLightActive: darken(0.05, palette.indigo['100']),
+        formAccentLightHover: darken(0.025, palette.indigo['100']),
         formAccentLightInverted: rgba('#fff', 0.075),
         formAccentLightInvertedActive: rgba('#000', 0.05),
         formAccentLightInvertedHover: rgba('#fff', 0.15),
-        info,
-        infoLight: getLightVariant(info),
+        info: palette.blue['600'],
+        infoLight: palette.blue['100'],
         input: white,
-        inputDisabled: grey['50'],
-        neutral: grey['500'],
-        neutralLight: getLightVariant(grey['500']),
-        positive,
-        positiveLight: getLightVariant(positive),
-        promote,
-        promoteLight: getLightVariant(promote),
-        selection: grey['100'],
+        inputDisabled: palette.grey['200'],
+        neutral: palette.grey['200'],
+        neutralLight: palette.grey['100'],
+        positive: palette.mint['600'],
+        positiveLight: palette.mint['100'],
+        promote: palette.plum['600'],
+        promoteLight: palette.plum['100'],
+        selection: palette.grey['100'],
       },
     },
   };

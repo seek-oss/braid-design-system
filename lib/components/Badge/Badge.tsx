@@ -110,7 +110,6 @@ export const Badge = forwardRef<HTMLDivElement, BadgeProps>(
         >
           <Text
             component="span"
-            weight="medium"
             size={styles.constants.textSize}
             tone={weight === 'regular' ? tone : undefined}
             truncate
