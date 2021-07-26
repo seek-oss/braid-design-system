@@ -31,7 +31,7 @@
     "post-commit-status": "node scripts/postCommitStatus.js",
     "release": "yarn setup && changeset publish && yarn build && yarn deploy",
     "version": "changeset version && ts-node scripts/versionComponentUpdates",
-    "postinstall": "patch-package"
+    "prepare": "patch-package"
   },
   "husky": {
     "hooks": {
