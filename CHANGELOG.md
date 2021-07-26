@@ -1,5 +1,15 @@
 # braid-design-system
 
+## 30.2.1
+
+### Patch Changes
+
+- **Checkbox, RadioGroup, Radio:** Use atoms for label cursor styles ([#973](https://github.com/seek-oss/braid-design-system/pull/973))
+
+  Since the disabled state of a checkbox can only be changed via JavaScript, cursor styles can be toggled via `Box` props rather than generating additional CSS.
+
+  While this is an improvement in and of itself, this change is being made to work around a third-party testing bug where our use of `:disabled` in a complex CSS selector is causing an exception to be thrown.
+
 ## 30.2.0
 
 ### Minor Changes
