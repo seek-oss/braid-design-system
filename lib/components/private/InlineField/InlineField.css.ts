@@ -58,13 +58,6 @@ export const badgeOffset = styleVariants(sizes, (size: Size) => {
   };
 });
 
-export const labelBase = style({
-  selectors: {
-    [`${realField}:not(:disabled) ~ * &`]: {
-      cursor: 'pointer',
-    },
-  },
-});
 export const labelOffset = styleVariants(sizes, (size: Size) => ({
   paddingTop: calc(vars.inlineFieldSize[size])
     .subtract(vars.textSize[size].mobile.capHeight)
