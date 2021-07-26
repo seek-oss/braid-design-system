@@ -1,5 +1,11 @@
 # braid-design-system
 
+## 30.2.2
+
+### Patch Changes
+
+- Fix bug where patch-package attempts to run for consumers when installing ([#975](https://github.com/seek-oss/braid-design-system/pull/975))
+
 ## 30.2.1
 
 ### Patch Changes
