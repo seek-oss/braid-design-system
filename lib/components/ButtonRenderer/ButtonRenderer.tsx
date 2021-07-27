@@ -13,9 +13,10 @@ import React, {
 import { Atoms, atoms } from '../../css/atoms/atoms';
 import {
   BackgroundProvider,
+  BackgroundVariant,
   useBackgroundLightness,
 } from '../Box/BackgroundContext';
-import { Box } from '../Box/Box';
+import { Box, BoxProps } from '../Box/Box';
 import { Text, TextProps } from '../Text/Text';
 import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
 import { touchableText } from '../../hooks/typography';
@@ -38,9 +39,10 @@ type ButtonWeight = typeof buttonWeights[number];
 type ButtonVariant = typeof buttonVariants[number];
 type ButtonStyles = {
   textTone: TextProps['tone'];
-  background: Atoms['background'];
-  backgroundHover: Atoms['background'];
-  backgroundActive: Atoms['background'];
+  backgroundContext: BackgroundVariant | undefined;
+  backgroundClassName: BoxProps['className'];
+  backgroundHoverClassName: BoxProps['className'];
+  backgroundActiveClassName: BoxProps['className'];
   boxShadow: Atoms['boxShadow'];
 };
 
@@ -51,92 +53,110 @@ const buttonVariantStyles: Record<
   solid: {
     default: {
       textTone: undefined,
-      background: 'formAccent',
-      backgroundHover: 'formAccentHover',
-      backgroundActive: 'formAccentActive',
+      backgroundContext: 'formAccent',
+      backgroundClassName: atoms({ background: 'formAccent' }),
+      backgroundHoverClassName: atoms({ background: 'formAccentHover' }),
+      backgroundActiveClassName: atoms({ background: 'formAccentActive' }),
       boxShadow: undefined,
     },
     brandAccent: {
       textTone: undefined,
-      background: 'brandAccent',
-      backgroundHover: 'brandAccentHover',
-      backgroundActive: 'brandAccentActive',
+      backgroundContext: 'brandAccent',
+      backgroundClassName: atoms({ background: 'brandAccent' }),
+      backgroundHoverClassName: atoms({ background: 'brandAccentHover' }),
+      backgroundActiveClassName: atoms({ background: 'brandAccentActive' }),
       boxShadow: undefined,
     },
     critical: {
       textTone: undefined,
-      background: 'critical',
-      backgroundHover: 'criticalHover',
-      backgroundActive: 'criticalActive',
+      backgroundContext: 'critical',
+      backgroundClassName: atoms({ background: 'critical' }),
+      backgroundHoverClassName: atoms({ background: 'criticalHover' }),
+      backgroundActiveClassName: atoms({ background: 'criticalActive' }),
       boxShadow: undefined,
     },
   },
   ghost: {
     default: {
       textTone: 'formAccent',
-      background: undefined,
-      backgroundHover: 'formAccentLight',
-      backgroundActive: 'formAccentLightActive',
+      backgroundContext: undefined,
+      backgroundClassName: undefined,
+      backgroundHoverClassName: atoms({ background: 'formAccentLight' }),
+      backgroundActiveClassName: atoms({ background: 'formAccentLightActive' }),
       boxShadow: 'borderFormAccentLarge',
     },
     brandAccent: {
       textTone: 'brandAccent',
-      background: undefined,
-      backgroundHover: 'brandAccentLight',
-      backgroundActive: 'brandAccentLightActive',
+      backgroundContext: undefined,
+      backgroundClassName: undefined,
+      backgroundHoverClassName: atoms({ background: 'brandAccentLight' }),
+      backgroundActiveClassName: atoms({
+        background: 'brandAccentLightActive',
+      }),
       boxShadow: 'borderBrandAccentLarge',
     },
     critical: {
       textTone: 'critical',
-      background: undefined,
-      backgroundHover: 'criticalLight',
-      backgroundActive: 'criticalLightActive',
+      backgroundContext: undefined,
+      backgroundClassName: undefined,
+      backgroundHoverClassName: atoms({ background: 'criticalLight' }),
+      backgroundActiveClassName: atoms({ background: 'criticalLightActive' }),
       boxShadow: 'borderCriticalLarge',
     },
   },
   soft: {
     default: {
       textTone: 'formAccent',
-      background: 'formAccentLight',
-      backgroundHover: 'formAccentLightHover',
-      backgroundActive: 'formAccentLightActive',
+      backgroundContext: 'formAccentLight',
+      backgroundClassName: atoms({ background: 'formAccentLight' }),
+      backgroundHoverClassName: atoms({ background: 'formAccentLightHover' }),
+      backgroundActiveClassName: atoms({ background: 'formAccentLightActive' }),
       boxShadow: undefined,
     },
     brandAccent: {
       textTone: 'brandAccent',
-      background: 'brandAccentLight',
-      backgroundHover: 'brandAccentLightHover',
-      backgroundActive: 'brandAccentLightActive',
+      backgroundContext: 'brandAccentLight',
+      backgroundClassName: atoms({ background: 'brandAccentLight' }),
+      backgroundHoverClassName: atoms({ background: 'brandAccentLightHover' }),
+      backgroundActiveClassName: atoms({
+        background: 'brandAccentLightActive',
+      }),
       boxShadow: undefined,
     },
     critical: {
       textTone: 'critical',
-      background: 'criticalLight',
-      backgroundHover: 'criticalLightHover',
-      backgroundActive: 'criticalLightActive',
+      backgroundContext: 'criticalLight',
+      backgroundClassName: atoms({ background: 'criticalLight' }),
+      backgroundHoverClassName: atoms({ background: 'criticalLightHover' }),
+      backgroundActiveClassName: atoms({ background: 'criticalLightActive' }),
       boxShadow: undefined,
     },
   },
   transparent: {
     default: {
       textTone: 'formAccent',
-      background: undefined,
-      backgroundHover: 'formAccentLight',
-      backgroundActive: 'formAccentLightActive',
+      backgroundContext: undefined,
+      backgroundClassName: undefined,
+      backgroundHoverClassName: atoms({ background: 'formAccentLight' }),
+      backgroundActiveClassName: atoms({ background: 'formAccentLightActive' }),
       boxShadow: undefined,
     },
     brandAccent: {
       textTone: 'brandAccent',
-      background: undefined,
-      backgroundHover: 'brandAccentLight',
-      backgroundActive: 'brandAccentLightActive',
+      backgroundContext: undefined,
+      backgroundClassName: undefined,
+      backgroundHoverClassName: atoms({ background: 'brandAccentLight' }),
+      backgroundActiveClassName: atoms({
+        background: 'brandAccentLightActive',
+      }),
       boxShadow: undefined,
     },
     critical: {
       textTone: 'critical',
-      background: undefined,
-      backgroundHover: 'criticalLight',
-      backgroundActive: 'criticalLightActive',
+      backgroundContext: undefined,
+      backgroundClassName: undefined,
+      backgroundHoverClassName: atoms({ background: 'criticalLight' }),
+      backgroundActiveClassName: atoms({ background: 'criticalLightActive' }),
       boxShadow: undefined,
     },
   },
@@ -146,9 +166,10 @@ const useButtonVariant = (variant: ButtonVariant, tone?: ButtonTone) => {
   if (useBackgroundLightness() === 'dark' && !tone && variant !== 'solid') {
     return {
       textTone: undefined,
-      background: variant === 'soft' ? 'formAccentLightInverted' : undefined,
-      backgroundHover: 'formAccentLightInvertedHover',
-      backgroundActive: 'formAccentLightInvertedActive',
+      backgroundClassName:
+        variant === 'soft' ? styles.invertedBackgrounds.soft : undefined,
+      backgroundHoverClassName: styles.invertedBackgrounds.hover,
+      backgroundActiveClassName: styles.invertedBackgrounds.active,
       boxShadow:
         variant === 'ghost' ? 'borderStandardInvertedLarge' : undefined,
     } as ButtonStyles;
@@ -183,8 +204,8 @@ const ButtonChildren = ({ children }: ButtonChildrenProps) => {
   return (
     <Fragment>
       <FieldOverlay
-        background={buttonVariant.background}
-        visible={Boolean(buttonVariant.background)}
+        className={buttonVariant.backgroundClassName}
+        visible={Boolean(buttonVariant.backgroundClassName)}
       />
       <FieldOverlay
         variant="focus"
@@ -192,12 +213,16 @@ const ButtonChildren = ({ children }: ButtonChildrenProps) => {
         className={styles.focusOverlay}
       />
       <FieldOverlay
-        background={buttonVariant.backgroundHover}
-        className={styles.hoverOverlay}
+        className={[
+          buttonVariant.backgroundHoverClassName,
+          styles.hoverOverlay,
+        ]}
       />
       <FieldOverlay
-        background={buttonVariant.backgroundActive}
-        className={styles.activeOverlay}
+        className={[
+          buttonVariant.backgroundActiveClassName,
+          styles.activeOverlay,
+        ]}
       />
       {buttonVariant.boxShadow ? (
         <Box
@@ -357,7 +382,7 @@ export const PrivateButtonRenderer = ({
   }
 
   const size = sizeProp ?? actionsContext?.size ?? 'standard';
-  const { background } = useButtonVariant(variant, tone);
+  const { backgroundContext } = useButtonVariant(variant, tone);
 
   const buttonStyles = clsx(
     atoms({
@@ -372,9 +397,6 @@ export const PrivateButtonRenderer = ({
       outline: 'none',
     }),
     styles.root,
-    variant === 'soft' ? styles.lightBg : null,
-    variant !== 'solid' ? styles.lightHoverBg : null,
-    useBackgroundLightness() === 'dark' ? styles.inverted : null,
     size === 'small' ? virtualTouchable({ xAxis: false }) : null,
     size === 'standard' ? styles.standard : styles.small,
     bleedY ? styles.bleedY : null,
@@ -396,8 +418,8 @@ export const PrivateButtonRenderer = ({
     </ButtonChildrenContext.Provider>
   );
 
-  return background && variant !== 'soft' ? (
-    <BackgroundProvider value={background}>{button}</BackgroundProvider>
+  return backgroundContext ? (
+    <BackgroundProvider value={backgroundContext}>{button}</BackgroundProvider>
   ) : (
     button
   );

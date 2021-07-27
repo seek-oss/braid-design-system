@@ -2,7 +2,7 @@ import { BraidTokens } from '../tokenType';
 import { DeepPartial } from 'utility-types';
 import merge from 'lodash/merge';
 import { getAccessibleVariant, getLightVariant, isLight } from '../../utils';
-import { darken, lighten, rgba, tint } from 'polished';
+import { darken, lighten, tint } from 'polished';
 
 const getActiveColor = (x: string) =>
   isLight(x) ? darken(0.1, x) : darken(0.05, x);
@@ -260,9 +260,6 @@ export const makeTokens = ({
         formAccentLight: tint(0.925, formAccent),
         formAccentLightActive: tint(0.85, formAccent),
         formAccentLightHover: tint(0.9, formAccent),
-        formAccentLightInverted: rgba('#fff', 0.075),
-        formAccentLightInvertedActive: rgba('#000', 0.05),
-        formAccentLightInvertedHover: rgba('#fff', 0.15),
         info,
         infoLight: getLightVariant(info),
         input: white,

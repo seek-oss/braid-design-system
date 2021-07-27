@@ -1,5 +1,6 @@
-import { keyframes, style } from '@vanilla-extract/css';
+import { keyframes, style, styleVariants } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
+import { rgba } from 'polished';
 import { responsiveStyle } from '../../css/responsiveStyle';
 import { vars } from '../../themes/vars.css';
 
@@ -10,10 +11,6 @@ export const constants = {
 export const root = style({
   textDecoration: 'none',
 });
-
-export const inverted = style({});
-export const lightBg = style({});
-export const lightHoverBg = style({});
 
 export const activeOverlay = style({
   selectors: {
@@ -122,4 +119,10 @@ export const loadingDot = style({
       animationName: dot3,
     },
   },
+});
+
+export const invertedBackgrounds = styleVariants({
+  soft: { background: rgba('#fff', 0.075) },
+  hover: { background: rgba('#fff', 0.15) },
+  active: { background: rgba('#000', 0.05) },
 });

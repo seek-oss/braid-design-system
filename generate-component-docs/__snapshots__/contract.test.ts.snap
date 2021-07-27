@@ -383,9 +383,6 @@ Object {
         | "formAccentLight"
         | "formAccentLightActive"
         | "formAccentLightHover"
-        | "formAccentLightInverted"
-        | "formAccentLightInvertedActive"
-        | "formAccentLightInvertedHover"
         | "info"
         | "infoLight"
         | "input"
@@ -1309,9 +1306,6 @@ Object {
         | "formAccentLight"
         | "formAccentLightActive"
         | "formAccentLightHover"
-        | "formAccentLightInverted"
-        | "formAccentLightInvertedActive"
-        | "formAccentLightInvertedHover"
         | "info"
         | "infoLight"
         | "input"
@@ -1826,7 +1820,7 @@ Object {
     styleBody?: boolean
     theme: {
         background: string
-        backgroundLightness: { body: "dark" | "light"; brand: "dark" | "light"; brandAccent: "dark" | "light"; brandAccentActive: "dark" | "light"; brandAccentHover: "dark" | "light"; brandAccentLight: "dark" | "light"; ... 31 more ...; selection: "dark" | "light"; }
+        backgroundLightness: { body: "dark" | "light"; brand: "dark" | "light"; brandAccent: "dark" | "light"; brandAccentActive: "dark" | "light"; brandAccentHover: "dark" | "light"; brandAccentLight: "dark" | "light"; ... 28 more ...; selection: "dark" | "light"; }
         color: { foreground: { link: string; linkHover: string; linkVisited: string; neutral: string; neutralInverted: string; formAccent: string; brandAccent: string; critical: string; info: string; promote: string; ... 4 more ...; rating: string; }; background: { ...; }; }
         displayName: string
         name: string

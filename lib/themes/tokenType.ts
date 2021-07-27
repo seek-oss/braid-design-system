@@ -134,9 +134,6 @@ export interface BraidTokens {
       formAccentLight: string;
       formAccentLightActive: string;
       formAccentLightHover: string;
-      formAccentLightInverted: string;
-      formAccentLightInvertedActive: string;
-      formAccentLightInvertedHover: string;
       info: string;
       infoLight: string;
       input: string;

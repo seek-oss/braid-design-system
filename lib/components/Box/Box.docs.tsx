@@ -422,12 +422,6 @@ const docs: ComponentDocs = {
                   'Hover colour for “formAccentLight” elements.',
                 formAccentLightActive:
                   'Active colour for “formAccentLight” elements.',
-                formAccentLightInverted:
-                  'Used for “formAccentLight” elements on dark backgrounds.',
-                formAccentLightInvertedHover:
-                  'Hover colour for “formAccentLightInverted” elements.',
-                formAccentLightInvertedActive:
-                  'Active colour for “formAccentLightInverted” elements.',
                 input: 'Used for input fields.',
                 inputDisabled: 'Used for input fields when disabled.',
                 card: 'Used for card surfaces.',
