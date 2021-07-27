@@ -1,5 +1,5 @@
 import { BraidTokens } from '../tokenType';
-import { darken, lighten, rgba, tint } from 'polished';
+import { darken, lighten, mix, rgba, tint } from 'polished';
 import { getAccessibleVariant, getLightVariant, isLight } from '../../utils';
 
 const brand = '#0d3880';
@@ -170,14 +170,19 @@ const tokens: BraidTokens = {
     color: {
       brandAccent,
       caution,
+      cautionLight: mix(0.6, caution, getLightVariant(caution)),
       critical,
+      criticalLight: mix(0.3, critical, getLightVariant(critical)),
       field: '#898989',
       focus,
       formAccent,
       formHover: formAccent,
       info,
+      infoLight: mix(0.3, info, getLightVariant(info)),
       positive,
+      positiveLight: mix(0.3, positive, getLightVariant(positive)),
       promote,
+      promoteLight: mix(0.3, promote, getLightVariant(promote)),
       standard: '#d6d6d6',
       standardInverted: white,
     },

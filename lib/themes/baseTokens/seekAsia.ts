@@ -2,7 +2,7 @@ import { BraidTokens } from '../tokenType';
 import { DeepPartial } from 'utility-types';
 import merge from 'lodash/merge';
 import { getAccessibleVariant, getLightVariant, isLight } from '../../utils';
-import { darken, lighten, tint } from 'polished';
+import { darken, lighten, mix, tint } from 'polished';
 
 const getActiveColor = (x: string) =>
   isLight(x) ? darken(0.1, x) : darken(0.05, x);
@@ -197,14 +197,19 @@ export const makeTokens = ({
       color: {
         brandAccent,
         caution,
+        cautionLight: mix(0.6, caution, getLightVariant(caution)),
         critical,
+        criticalLight: mix(0.3, critical, getLightVariant(critical)),
         field: grey4,
         focus,
         formAccent,
         formHover: formAccent,
         info,
+        infoLight: mix(0.3, info, getLightVariant(info)),
         positive,
+        positiveLight: mix(0.3, positive, getLightVariant(positive)),
         promote,
+        promoteLight: mix(0.3, promote, getLightVariant(promote)),
         standard: grey4,
         standardInverted: white,
       },

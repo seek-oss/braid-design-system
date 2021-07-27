@@ -1,13 +1,15 @@
-// DELETE ME?
 import { styleVariants } from '@vanilla-extract/css';
-import { pick } from 'lodash';
 import { vars } from '../../themes/vars.css';
 
-const tones = ['promote', 'info', 'positive', 'caution', 'critical'] as const;
-
-export const keylineBackground = styleVariants(
-  pick(vars.foregroundColor, tones),
-  (background) => ({
-    background,
+export const boxShadowForTone = styleVariants(
+  {
+    promote: 'promoteLight',
+    info: 'infoLight',
+    positive: 'positiveLight',
+    caution: 'cautionLight',
+    critical: 'criticalLight',
+  } as const,
+  (borderColor) => ({
+    boxShadow: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor[borderColor]}`,
   }),
 );

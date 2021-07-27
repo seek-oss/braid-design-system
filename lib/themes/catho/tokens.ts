@@ -1,4 +1,4 @@
-import { darken, lighten, tint } from 'polished';
+import { darken, lighten, mix, tint } from 'polished';
 import { getAccessibleVariant, getLightVariant, isLight } from '../../utils';
 import { BraidTokens } from '../tokenType';
 
@@ -169,14 +169,19 @@ const tokens: BraidTokens = {
     color: {
       brandAccent,
       caution,
+      cautionLight: mix(0.6, caution, getLightVariant(caution)),
       critical,
+      criticalLight: mix(0.3, critical, getLightVariant(critical)),
       field: '#999999',
       focus,
       formAccent,
       formHover: formAccent,
       info,
+      infoLight: mix(0.3, info, getLightVariant(info)),
       positive,
+      positiveLight: mix(0.3, positive, getLightVariant(positive)),
       promote,
+      promoteLight: mix(0.3, promote, getLightVariant(promote)),
       standard: '#e0e0e0',
       standardInverted: white,
     },

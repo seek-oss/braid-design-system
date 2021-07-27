@@ -17,7 +17,7 @@ import { textAlignedToIcon } from '../../css/textAlignedToIcon.css';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
-// import * as styles from './Alert.css';
+import * as styles from './Alert.css';
 
 type Tone = 'promote' | 'info' | 'positive' | 'caution' | 'critical';
 
@@ -37,14 +37,6 @@ const backgroundForTone = {
   caution: 'cautionLight',
   critical: 'criticalLight',
 } as Record<Tone, BoxProps['background']>;
-
-const borderForTone = {
-  promote: 'borderPromote',
-  info: 'borderInfo',
-  positive: 'borderPositive',
-  caution: 'borderCaution',
-  critical: 'borderCritical',
-} as Record<Tone, BoxProps['boxShadow']>;
 
 const icons = {
   positive: IconPositive,
@@ -101,7 +93,7 @@ export const Alert = ({
       {parentBackground !== 'card' && (
         <Overlay
           borderRadius="standard"
-          boxShadow={borderForTone[tone]}
+          className={styles.boxShadowForTone[tone]}
           visible
         />
       )}
