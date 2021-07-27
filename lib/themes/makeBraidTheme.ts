@@ -50,7 +50,11 @@ const normaliseSizingToCapHeight = (typography: BraidTokens['typography']) => {
 };
 
 const decorateTokens = (braidTokens: BraidTokens) => {
-  const { typography, ...restTokens } = braidTokens;
+  const {
+    typography,
+    alertBorderColor, // omit
+    ...restTokens
+  } = braidTokens;
 
   const decoratedTokens = {
     typography: normaliseSizingToCapHeight(typography),

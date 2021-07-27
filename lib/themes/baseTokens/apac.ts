@@ -185,19 +185,14 @@ export const makeTokens = ({
       color: {
         brandAccent,
         caution: palette.yellow['400'],
-        cautionLight: palette.yellow['300'],
         critical: palette.red['600'],
-        criticalLight: palette.red['300'],
         field: palette.grey['400'],
         focus,
         formAccent: palette.indigo['500'],
         formHover: palette.indigo['500'],
         info: palette.blue['600'],
-        infoLight: palette.blue['300'],
         positive: palette.mint['600'],
-        positiveLight: palette.mint['300'],
         promote: palette.plum['600'],
-        promoteLight: palette.plum['300'],
         standard: palette.grey['300'],
         standardInverted: white,
       },
@@ -274,6 +269,13 @@ export const makeTokens = ({
         promoteLight: palette.plum['100'],
         selection: palette.grey['100'],
       },
+    },
+    alertBorderColor: {
+      caution: palette.yellow['300'],
+      critical: palette.red['300'],
+      info: palette.blue['300'],
+      positive: palette.mint['300'],
+      promote: palette.plum['300'],
     },
   };
 

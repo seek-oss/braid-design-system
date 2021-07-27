@@ -77,15 +77,10 @@ export interface BraidTokens {
       field: string;
       focus: string;
       critical: string;
-      criticalLight: string;
       info: string;
-      infoLight: string;
       promote: string;
-      promoteLight: string;
       positive: string;
-      positiveLight: string;
       caution: string;
-      cautionLight: string;
       formHover: string;
       formAccent: string;
       brandAccent: string;
@@ -151,5 +146,12 @@ export interface BraidTokens {
       promoteLight: string;
       selection: string;
     };
+  };
+  alertBorderColor: {
+    caution: string;
+    critical: string;
+    info: string;
+    positive: string;
+    promote: string;
   };
 }

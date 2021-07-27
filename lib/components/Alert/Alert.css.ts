@@ -3,13 +3,13 @@ import { vars } from '../../themes/vars.css';
 
 export const boxShadowForTone = styleVariants(
   {
-    promote: 'promoteLight',
-    info: 'infoLight',
-    positive: 'positiveLight',
-    caution: 'cautionLight',
-    critical: 'criticalLight',
+    promote: 'promote',
+    info: 'info',
+    positive: 'positive',
+    caution: 'caution',
+    critical: 'critical',
   } as const,
   (borderColor) => ({
-    boxShadow: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor[borderColor]}`,
+    boxShadow: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.alertBorderColor[borderColor]}`,
   }),
 );

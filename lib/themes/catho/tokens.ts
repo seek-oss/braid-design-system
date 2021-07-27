@@ -169,19 +169,14 @@ const tokens: BraidTokens = {
     color: {
       brandAccent,
       caution,
-      cautionLight: mix(0.6, caution, getLightVariant(caution)),
       critical,
-      criticalLight: mix(0.3, critical, getLightVariant(critical)),
       field: '#999999',
       focus,
       formAccent,
       formHover: formAccent,
       info,
-      infoLight: mix(0.3, info, getLightVariant(info)),
       positive,
-      positiveLight: mix(0.3, positive, getLightVariant(positive)),
       promote,
-      promoteLight: mix(0.3, promote, getLightVariant(promote)),
       standard: '#e0e0e0',
       standardInverted: white,
     },
@@ -249,6 +244,13 @@ const tokens: BraidTokens = {
       promoteLight: getLightVariant(promote),
       selection: '#f2f2f2',
     },
+  },
+  alertBorderColor: {
+    caution: mix(0.6, caution, getLightVariant(caution)),
+    critical: mix(0.3, critical, getLightVariant(critical)),
+    info: mix(0.3, info, getLightVariant(info)),
+    positive: mix(0.3, positive, getLightVariant(positive)),
+    promote: mix(0.3, promote, getLightVariant(promote)),
   },
 };
 
