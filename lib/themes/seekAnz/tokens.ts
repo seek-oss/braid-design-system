@@ -1,6 +1,6 @@
-import { BraidTokens } from '../tokenType';
 import { darken, lighten, mix, rgba, tint } from 'polished';
 import { getAccessibleVariant, getLightVariant, isLight } from '../../utils';
+import { BraidTokens } from '../tokenType';
 
 const brand = '#0d3880';
 const brandAccent = '#e60278';

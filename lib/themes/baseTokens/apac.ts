@@ -1,37 +1,45 @@
-import { BraidTokens } from '../tokenType';
 import { DeepPartial } from 'utility-types';
-import { darken, lighten, rgba } from 'polished';
+import { darken, rgba } from 'polished';
 import merge from 'lodash/merge';
-import { isLight } from '../../utils';
 import { palette } from '../../color/palette';
-
-const getActiveColor = (x: string) =>
-  isLight(x) ? darken(0.1, x) : darken(0.05, x);
-
-const getHoverColor = (x: string) =>
-  isLight(x) ? darken(0.05, x) : lighten(0.05, x);
+import { BraidTokens } from '../tokenType';
 
 interface MakeTokensOptions {
   name: string;
   displayName: string;
   brand: string;
   brandAccent: string;
+  brandAccentActive: string;
+  brandAccentHover: string;
+  brandAccentLight: string;
+  brandAccentLightActive: string;
+  brandAccentLightHover: string;
   formAccent: string;
+  formAccentActive: string;
+  formAccentHover: string;
+  formAccentLight: string;
+  formAccentLightActive: string;
+  formAccentLightHover: string;
   tokenOverrides?: DeepPartial<BraidTokens>;
 }
 export const makeTokens = ({
   name,
   displayName,
-  // brand,
+  brand,
   brandAccent,
-  // formAccent,
+  brandAccentActive,
+  brandAccentHover,
+  brandAccentLight,
+  brandAccentLightActive,
+  brandAccentLightHover,
+  formAccent,
+  formAccentActive,
+  formAccentHover,
+  formAccentLight,
+  formAccentLightActive,
+  formAccentLightHover,
   tokenOverrides = {},
 }: MakeTokensOptions): BraidTokens => {
-  // const critical = '#d0011b';
-  // const positive = '#138a08';
-  // const info = '#1e468c';
-  // const promote = '#9556b7';
-  // const caution = '#ffc600';
   const focus = rgba('#1e90ff', 0.7);
   const black = palette.grey['800'];
   const white = '#fff';
@@ -234,13 +242,13 @@ export const makeTokens = ({
       },
       background: {
         body: palette.grey['50'],
-        brand: palette.seekBlue['500'],
+        brand,
         brandAccent,
-        brandAccentActive: getActiveColor(brandAccent),
-        brandAccentHover: getHoverColor(brandAccent),
-        brandAccentLight: palette.seekPink['100'],
-        brandAccentLightActive: darken(0.05, palette.seekPink['100']),
-        brandAccentLightHover: darken(0.025, palette.seekPink['100']),
+        brandAccentActive,
+        brandAccentHover,
+        brandAccentLight,
+        brandAccentLightActive,
+        brandAccentLightHover,
         card: white,
         caution: palette.yellow['400'],
         cautionLight: palette.yellow['100'],
@@ -250,13 +258,13 @@ export const makeTokens = ({
         criticalLight: palette.red['100'],
         criticalLightActive: darken(0.05, palette.red['100']),
         criticalLightHover: darken(0.025, palette.red['100']),
-        formAccent: palette.indigo['500'],
-        formAccentActive: palette.indigo['700'],
+        formAccent,
+        formAccentActive,
         formAccentDisabled: palette.grey['200'],
-        formAccentHover: palette.indigo['600'],
-        formAccentLight: palette.indigo['100'],
-        formAccentLightActive: darken(0.05, palette.indigo['100']),
-        formAccentLightHover: darken(0.025, palette.indigo['100']),
+        formAccentHover,
+        formAccentLight,
+        formAccentLightActive,
+        formAccentLightHover,
         info: palette.blue['600'],
         infoLight: palette.blue['100'],
         input: white,
