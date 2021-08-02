@@ -101,11 +101,8 @@ export const InlineField = forwardRef<
                 htmlFor={id}
                 userSelect="none"
                 display="block"
-                className={[
-                  styles.labelBase,
-                  styles.labelOffset[size],
-                  virtualTouchable(),
-                ]}
+                cursor={!disabled ? 'pointer' : undefined}
+                className={[styles.labelOffset[size], virtualTouchable()]}
               >
                 <Text
                   weight={checked && !inList ? 'strong' : undefined}

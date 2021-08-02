@@ -263,6 +263,7 @@ const GalleryItem = ({
                       width: isAnIcon ? undefined : '700px',
                     }}
                     key={`${example.label}_${index}`}
+                    className={styles.animationsOnlyOnHover}
                   >
                     <BraidProvider styleBody={false} theme={theme}>
                       <PlayroomStateProvider>
@@ -639,7 +640,7 @@ const GalleryInternal = () => {
           ref={contentRef}
           display="flex"
           userSelect="none"
-          style={{ transformOrigin: '0px 0px' }}
+          className={styles.contentWrapper}
         >
           <Box component="section">
             <Stage setName="components" title="Components" jumpTo={jumpTo} />
