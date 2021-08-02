@@ -1,4 +1,4 @@
-import { darken, lighten, mix, rgba, tint } from 'polished';
+import { darken, mix, rgba, lighten, tint } from 'polished';
 import { getAccessibleVariant, getLightVariant, isLight } from '../../utils';
 import { BraidTokens } from '../tokenType';
 
@@ -182,6 +182,7 @@ const tokens: BraidTokens = {
       standardInverted: white,
     },
   },
+  focusRingSize: 2,
   shadows: {
     small:
       '0 2px 4px 0px rgba(28,28,28,.1), 0 2px 2px -2px rgba(28,28,28,.1), 0 4px 4px -4px rgba(28,28,28,.2)',

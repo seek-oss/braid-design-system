@@ -209,6 +209,7 @@ export const makeTokens = ({
         standardInverted: white,
       },
     },
+    focusRingSize: 2,
     shadows: {
       small:
         '0 2px 4px 0px rgba(28,28,28,.1), 0 2px 2px -2px rgba(28,28,28,.1), 0 4px 4px -4px rgba(28,28,28,.2)',

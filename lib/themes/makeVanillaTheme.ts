@@ -80,6 +80,7 @@ export default (braidTokens: BraidTokens) => {
     borderRadius: tokens.border.radius,
     borderColor: tokens.border.color,
     borderWidth: mapValues(tokens.border.width, px),
+    focusRingSize: px(tokens.focusRingSize),
     contentWidth: mapValues(tokens.contentWidth, px),
     foregroundColor: foreground,
     backgroundColor: background,

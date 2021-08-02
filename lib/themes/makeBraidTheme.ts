@@ -53,6 +53,7 @@ const decorateTokens = (braidTokens: BraidTokens) => {
   const {
     typography,
     alertBorderColor, // omit
+    focusRingSize, // omit
     ...restTokens
   } = braidTokens;
 

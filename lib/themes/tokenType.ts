@@ -86,6 +86,7 @@ export interface BraidTokens {
       brandAccent: string;
     };
   };
+  focusRingSize: number;
   shadows: {
     small: string;
     medium: string;

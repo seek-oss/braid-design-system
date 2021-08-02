@@ -3,6 +3,7 @@ import { palette } from '../../color/palette';
 import { BraidTokens } from '../tokenType';
 
 const brandAccent = palette.grey['900'];
+const formAccent = palette.indigo['600'];
 const focus = rgba('#1e90ff', 0.7);
 const black = palette.grey['700'];
 const white = '#fff';
@@ -159,8 +160,8 @@ const tokens: BraidTokens = {
       critical: palette.red['600'],
       field: palette.grey['400'],
       focus,
-      formAccent: palette.indigo['600'],
-      formHover: palette.indigo['600'],
+      formAccent,
+      formHover: formAccent,
       info: palette.blue['600'],
       positive: palette.mint['600'],
       promote: palette.purple['600'],
@@ -168,6 +169,7 @@ const tokens: BraidTokens = {
       standardInverted: white,
     },
   },
+  focusRingSize: 3,
   shadows: {
     small:
       '0 2px 4px 0px rgba(28,28,28,.1), 0 2px 2px -2px rgba(28,28,28,.1), 0 4px 4px -4px rgba(28,28,28,.2)',
@@ -181,7 +183,7 @@ const tokens: BraidTokens = {
       brandAccent,
       caution: palette.yellow['800'],
       critical: palette.red['700'],
-      formAccent: palette.indigo['700'],
+      formAccent,
       info: palette.blue['700'],
       link,
       linkHover: link,
@@ -212,7 +214,7 @@ const tokens: BraidTokens = {
       criticalLight: palette.red['100'],
       criticalLightActive: darken(0.05, palette.red['100']),
       criticalLightHover: darken(0.025, palette.red['100']),
-      formAccent: palette.indigo['500'],
+      formAccent,
       formAccentActive: palette.indigo['700'],
       formAccentDisabled: palette.grey['200'],
       formAccentHover: palette.indigo['600'],

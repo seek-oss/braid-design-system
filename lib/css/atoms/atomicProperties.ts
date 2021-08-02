@@ -12,7 +12,7 @@ const space = {
 
 const boxShadow = {
   ...vars.shadow,
-  outlineFocus: `0 0 0 ${vars.borderWidth.large} ${vars.borderColor.focus}`,
+  outlineFocus: `0 0 0 ${vars.focusRingSize} ${vars.borderColor.focus}`,
   borderField: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.field}`,
   borderStandard: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.standard}`,
   borderStandardInverted: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.standardInverted}`,

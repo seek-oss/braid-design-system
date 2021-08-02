@@ -32,7 +32,7 @@ export const focusOverlay = style({
 
 export const hoverOverlay = style({
   selectors: {
-    [`${field}:hover:not(:disabled) ~ &`]: {
+    [`${field}:hover:not(:disabled) ~ &, ${field}:focus ~ &`]: {
       opacity: 1,
     },
   },

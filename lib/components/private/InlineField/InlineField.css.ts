@@ -101,10 +101,12 @@ export const focusOverlay = style({
 
 export const hoverOverlay = style({
   selectors: {
-    [`${realField}:hover:not(:checked):not(${isMixed}):not(:disabled) + ${fakeFieldBase} > &`]:
-      {
-        opacity: 1,
-      },
+    [[
+      `${realField}:hover:not(:checked):not(${isMixed}):not(:disabled) + ${fakeFieldBase} > &`,
+      `${realField}:focus:not(${isMixed}) + ${fakeFieldBase} > &`,
+    ].join(', ')]: {
+      opacity: 1,
+    },
   },
 });
 

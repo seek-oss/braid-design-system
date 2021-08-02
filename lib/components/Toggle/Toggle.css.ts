@@ -131,7 +131,10 @@ export const focusOverlay = style({
 
 export const hoverOverlay = style({
   selectors: {
-    [`${realField}:hover:not(:disabled) + ${slideContainerBase} &`]: {
+    [[
+      `${realField}:hover:not(:disabled) + ${slideContainerBase} &`,
+      `${realField}:focus + ${slideContainerBase} &`,
+    ].join(', ')]: {
       opacity: 1,
     },
   },

@@ -1,5 +1,5 @@
 import { DeepPartial } from 'utility-types';
-import { darken, rgba } from 'polished';
+import { darken, lighten, rgba, saturate } from 'polished';
 import merge from 'lodash/merge';
 import { palette } from '../../color/palette';
 import { BraidTokens } from '../tokenType';
@@ -14,12 +14,6 @@ interface MakeTokensOptions {
   brandAccentLight: string;
   brandAccentLightActive: string;
   brandAccentLightHover: string;
-  formAccent: string;
-  formAccentActive: string;
-  formAccentHover: string;
-  formAccentLight: string;
-  formAccentLightActive: string;
-  formAccentLightHover: string;
   tokenOverrides?: DeepPartial<BraidTokens>;
 }
 export const makeTokens = ({
@@ -32,20 +26,12 @@ export const makeTokens = ({
   brandAccentLight,
   brandAccentLightActive,
   brandAccentLightHover,
-  formAccent,
-  formAccentActive,
-  formAccentHover,
-  formAccentLight,
-  formAccentLightActive,
-  formAccentLightHover,
   tokenOverrides = {},
 }: MakeTokensOptions): BraidTokens => {
-  const focus = rgba('#1e90ff', 0.7);
-  const black = palette.grey['800'];
+  const formAccent = palette.indigo['500'];
+  const critical = palette.red['600'];
+  const focus = rgba(palette.indigo['300'], 0.7);
   const white = '#fff';
-  const link = '#2765cf';
-  const linkVisited = '#733d90';
-  const secondary = palette.grey['500'];
 
   const tokens: BraidTokens = {
     name,
@@ -193,10 +179,10 @@ export const makeTokens = ({
       color: {
         brandAccent,
         caution: palette.yellow['400'],
-        critical: palette.red['600'],
+        critical,
         field: palette.grey['400'],
         focus,
-        formAccent: palette.indigo['500'],
+        formAccent,
         formHover: palette.indigo['500'],
         info: palette.blue['600'],
         positive: palette.mint['600'],
@@ -205,6 +191,7 @@ export const makeTokens = ({
         standardInverted: white,
       },
     },
+    focusRingSize: 3,
     shadows: {
       small: [
         `0 2px 4px 0px ${rgba(palette.grey['800'], 0.1)}`,
@@ -226,18 +213,18 @@ export const makeTokens = ({
       foreground: {
         brandAccent,
         caution: palette.yellow['800'],
-        critical: palette.red['600'],
-        formAccent: palette.indigo['500'],
+        critical,
+        formAccent,
         info: palette.blue['700'],
-        link,
-        linkHover: link,
-        linkVisited,
-        neutral: black,
+        link: formAccent,
+        linkHover: formAccent,
+        linkVisited: palette.plum['700'],
+        neutral: palette.grey['800'],
         neutralInverted: white,
         positive: palette.mint['700'],
         promote: palette.plum['700'],
         rating: '#f57c00',
-        secondary,
+        secondary: palette.grey['500'],
         secondaryInverted: rgba('#fff', 0.65),
       },
       background: {
@@ -251,31 +238,31 @@ export const makeTokens = ({
         brandAccentLightHover,
         card: white,
         caution: palette.yellow['400'],
-        cautionLight: palette.yellow['100'],
-        critical: palette.red['600'],
-        criticalActive: darken(0.075, palette.red['600']),
-        criticalHover: darken(0.05, palette.red['600']),
-        criticalLight: palette.red['100'],
-        criticalLightActive: darken(0.05, palette.red['100']),
-        criticalLightHover: darken(0.025, palette.red['100']),
+        cautionLight: palette.yellow['50'],
+        critical,
+        criticalActive: darken(0.05, critical),
+        criticalHover: saturate(0.15, lighten(0.05, critical)),
+        criticalLight: palette.red['50'],
+        criticalLightActive: darken(0.05, palette.red['50']),
+        criticalLightHover: darken(0.025, palette.red['50']),
         formAccent,
-        formAccentActive,
+        formAccentActive: darken(0.05, formAccent),
         formAccentDisabled: palette.grey['200'],
-        formAccentHover,
-        formAccentLight,
-        formAccentLightActive,
-        formAccentLightHover,
+        formAccentHover: saturate(0.5, lighten(0.075, formAccent)),
+        formAccentLight: palette.indigo['50'],
+        formAccentLightActive: darken(0.05, palette.indigo['50']),
+        formAccentLightHover: darken(0.025, palette.indigo['50']),
         info: palette.blue['600'],
-        infoLight: palette.blue['100'],
+        infoLight: palette.blue['50'],
         input: white,
         inputDisabled: palette.grey['50'],
         neutral: palette.grey['200'],
-        neutralLight: palette.grey['100'],
+        neutralLight: palette.grey['50'],
         positive: palette.mint['600'],
-        positiveLight: palette.mint['100'],
+        positiveLight: palette.mint['50'],
         promote: palette.plum['600'],
-        promoteLight: palette.plum['100'],
-        selection: palette.grey['100'],
+        promoteLight: palette.plum['50'],
+        selection: palette.indigo['50'],
       },
     },
     alertBorderColor: {
