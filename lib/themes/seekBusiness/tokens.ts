@@ -10,7 +10,7 @@ export default makeTokens({
   brandAccent,
   brandAccentActive: darken(0.05, brandAccent),
   brandAccentHover: lighten(0.05, brandAccent),
-  brandAccentLight: tint(0.925, brandAccent),
-  brandAccentLightActive: tint(0.85, brandAccent),
-  brandAccentLightHover: tint(0.9, brandAccent),
+  brandAccentSoft: tint(0.925, brandAccent),
+  brandAccentSoftActive: tint(0.85, brandAccent),
+  brandAccentSoftHover: tint(0.9, brandAccent),
 });

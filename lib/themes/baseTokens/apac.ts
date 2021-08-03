@@ -11,9 +11,9 @@ interface MakeTokensOptions {
   brandAccent: string;
   brandAccentActive: string;
   brandAccentHover: string;
-  brandAccentLight: string;
-  brandAccentLightActive: string;
-  brandAccentLightHover: string;
+  brandAccentSoft: string;
+  brandAccentSoftActive: string;
+  brandAccentSoftHover: string;
   tokenOverrides?: DeepPartial<BraidTokens>;
 }
 export const makeTokens = ({
@@ -23,13 +23,13 @@ export const makeTokens = ({
   brandAccent,
   brandAccentActive,
   brandAccentHover,
-  brandAccentLight,
-  brandAccentLightActive,
-  brandAccentLightHover,
+  brandAccentSoft,
+  brandAccentSoftActive,
+  brandAccentSoftHover,
   tokenOverrides = {},
 }: MakeTokensOptions): BraidTokens => {
   const formAccent = palette.indigo['500'];
-  const critical = palette.red['600'];
+  const critical = palette.red['700'];
   const focus = rgba(palette.indigo['300'], 0.7);
   const white = '#fff';
 
@@ -184,9 +184,9 @@ export const makeTokens = ({
         focus,
         formAccent,
         formHover: palette.indigo['500'],
-        info: palette.blue['600'],
-        positive: palette.mint['600'],
-        promote: palette.plum['600'],
+        info: palette.blue['500'],
+        positive: palette.mint['500'],
+        promote: palette.plum['500'],
         standard: palette.grey['300'],
         standardInverted: white,
       },
@@ -219,7 +219,7 @@ export const makeTokens = ({
         link: formAccent,
         linkHover: formAccent,
         linkVisited: palette.plum['700'],
-        neutral: palette.grey['800'],
+        neutral: palette.grey['700'],
         neutralInverted: white,
         positive: palette.mint['700'],
         promote: palette.plum['700'],
@@ -233,37 +233,40 @@ export const makeTokens = ({
         brandAccent,
         brandAccentActive,
         brandAccentHover,
-        brandAccentLight,
-        brandAccentLightActive,
-        brandAccentLightHover,
         card: white,
-        caution: palette.yellow['400'],
-        cautionLight: palette.yellow['50'],
+        caution: palette.yellow['500'],
+        cautionLight: palette.yellow['100'],
         critical,
         criticalActive: darken(0.05, critical),
         criticalHover: saturate(0.15, lighten(0.05, critical)),
-        criticalLight: palette.red['50'],
-        criticalLightActive: darken(0.05, palette.red['50']),
-        criticalLightHover: darken(0.025, palette.red['50']),
+        criticalLight: palette.red['100'],
         formAccent,
         formAccentActive: darken(0.05, formAccent),
         formAccentDisabled: palette.grey['200'],
         formAccentHover: saturate(0.5, lighten(0.075, formAccent)),
-        formAccentLight: palette.indigo['50'],
-        formAccentLightActive: darken(0.05, palette.indigo['50']),
-        formAccentLightHover: darken(0.025, palette.indigo['50']),
         info: palette.blue['600'],
-        infoLight: palette.blue['50'],
+        infoLight: palette.blue['100'],
         input: white,
-        inputDisabled: palette.grey['50'],
-        neutral: palette.grey['200'],
-        neutralLight: palette.grey['50'],
+        inputDisabled: palette.grey['100'],
+        neutral: palette.grey['700'],
+        neutralLight: palette.grey['100'],
         positive: palette.mint['600'],
-        positiveLight: palette.mint['50'],
+        positiveLight: palette.mint['100'],
         promote: palette.plum['600'],
-        promoteLight: palette.plum['50'],
-        selection: palette.indigo['50'],
+        promoteLight: palette.plum['100'],
+        selection: palette.indigo['100'],
       },
+    },
+    softBackground: {
+      brandAccent: brandAccentSoft,
+      brandAccentActive: brandAccentSoftActive,
+      brandAccentHover: brandAccentSoftHover,
+      critical: palette.red['50'],
+      criticalActive: darken(0.05, palette.red['50']),
+      criticalHover: darken(0.025, palette.red['50']),
+      formAccent: palette.indigo['50'],
+      formAccentActive: darken(0.05, palette.indigo['50']),
+      formAccentHover: darken(0.025, palette.indigo['50']),
     },
     alertBorderColor: {
       caution: palette.yellow['300'],

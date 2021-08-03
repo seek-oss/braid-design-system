@@ -116,9 +116,6 @@ export interface BraidTokens {
       brandAccent: string;
       brandAccentActive: string;
       brandAccentHover: string;
-      brandAccentLight: string;
-      brandAccentLightActive: string;
-      brandAccentLightHover: string;
       card: string;
       caution: string;
       cautionLight: string;
@@ -126,15 +123,10 @@ export interface BraidTokens {
       criticalActive: string;
       criticalHover: string;
       criticalLight: string;
-      criticalLightActive: string;
-      criticalLightHover: string;
       formAccent: string;
       formAccentActive: string;
       formAccentDisabled: string;
       formAccentHover: string;
-      formAccentLight: string;
-      formAccentLightActive: string;
-      formAccentLightHover: string;
       info: string;
       infoLight: string;
       input: string;
@@ -147,6 +139,17 @@ export interface BraidTokens {
       promoteLight: string;
       selection: string;
     };
+  };
+  softBackground: {
+    brandAccent: string;
+    brandAccentActive: string;
+    brandAccentHover: string;
+    critical: string;
+    criticalActive: string;
+    criticalHover: string;
+    formAccent: string;
+    formAccentActive: string;
+    formAccentHover: string;
   };
   alertBorderColor: {
     caution: string;

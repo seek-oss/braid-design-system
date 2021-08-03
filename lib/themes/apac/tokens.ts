@@ -11,7 +11,7 @@ export default makeTokens({
   brandAccent,
   brandAccentActive: darken(0.05, brandAccent),
   brandAccentHover: lighten(0.05, brandAccent),
-  brandAccentLight: palette.seekPink['50'],
-  brandAccentLightActive: darken(0.05, palette.seekPink['50']),
-  brandAccentLightHover: darken(0.025, palette.seekPink['50']),
+  brandAccentSoft: palette.seekPink['50'],
+  brandAccentSoftActive: darken(0.05, palette.seekPink['50']),
+  brandAccentSoftHover: darken(0.025, palette.seekPink['50']),
 });

@@ -364,9 +364,6 @@ Object {
         | "brandAccent"
         | "brandAccentActive"
         | "brandAccentHover"
-        | "brandAccentLight"
-        | "brandAccentLightActive"
-        | "brandAccentLightHover"
         | "card"
         | "caution"
         | "cautionLight"
@@ -374,15 +371,10 @@ Object {
         | "criticalActive"
         | "criticalHover"
         | "criticalLight"
-        | "criticalLightActive"
-        | "criticalLightHover"
         | "formAccent"
         | "formAccentActive"
         | "formAccentDisabled"
         | "formAccentHover"
-        | "formAccentLight"
-        | "formAccentLightActive"
-        | "formAccentLightHover"
         | "info"
         | "infoLight"
         | "input"
@@ -1287,9 +1279,6 @@ Object {
         | "brandAccent"
         | "brandAccentActive"
         | "brandAccentHover"
-        | "brandAccentLight"
-        | "brandAccentLightActive"
-        | "brandAccentLightHover"
         | "card"
         | "caution"
         | "cautionLight"
@@ -1297,15 +1286,10 @@ Object {
         | "criticalActive"
         | "criticalHover"
         | "criticalLight"
-        | "criticalLightActive"
-        | "criticalLightHover"
         | "formAccent"
         | "formAccentActive"
         | "formAccentDisabled"
         | "formAccentHover"
-        | "formAccentLight"
-        | "formAccentLightActive"
-        | "formAccentLightHover"
         | "info"
         | "infoLight"
         | "input"
@@ -1820,7 +1804,7 @@ Object {
     styleBody?: boolean
     theme: {
         background: string
-        backgroundLightness: { body: "dark" | "light"; brand: "dark" | "light"; brandAccent: "dark" | "light"; brandAccentActive: "dark" | "light"; brandAccentHover: "dark" | "light"; brandAccentLight: "dark" | "light"; ... 28 more ...; selection: "dark" | "light"; }
+        backgroundLightness: { body: "dark" | "light"; brand: "dark" | "light"; brandAccent: "dark" | "light"; brandAccentActive: "dark" | "light"; brandAccentHover: "dark" | "light"; card: "dark" | "light"; ... 20 more ...; selection: "dark" | "light"; }
         color: { foreground: { link: string; linkHover: string; linkVisited: string; neutral: string; neutralInverted: string; formAccent: string; brandAccent: string; critical: string; info: string; promote: string; ... 4 more ...; rating: string; }; background: { ...; }; }
         displayName: string
         name: string
@@ -7688,8 +7672,8 @@ exports[`filterSuggestions 1`] = `
 Object {
   exportType: component,
   props: {
-    __@iterator@590: () => IterableIterator<FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>>
-    __@unscopables@1488: () => { copyWithin: boolean; entries: boolean; fill: boolean; find: boolean; findIndex: boolean; keys: boolean; values: boolean; }
+    __@iterator@591: () => IterableIterator<FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>>
+    __@unscopables@1489: () => { copyWithin: boolean; entries: boolean; fill: boolean; find: boolean; findIndex: boolean; keys: boolean; values: boolean; }
     concat: { (...items: ConcatArray<FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>>[]): (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]; (...items: (FilterableSuggestion<...> | ... 1 more ... | ConcatArray<...>)[]): (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]; }
     copyWithin: (target: number, start: number, end?: number | undefined) => FilterableSuggestions<Value>
     entries: () => IterableIterator<[number, FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>]>

@@ -52,8 +52,12 @@ const normaliseSizingToCapHeight = (typography: BraidTokens['typography']) => {
 const decorateTokens = (braidTokens: BraidTokens) => {
   const {
     typography,
-    alertBorderColor, // omit
-    focusRingSize, // omit
+
+    // omit
+    softBackground,
+    alertBorderColor,
+    focusRingSize,
+
     ...restTokens
   } = braidTokens;
 
