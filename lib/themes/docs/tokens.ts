@@ -226,7 +226,7 @@ const tokens: BraidTokens = {
       selection: palette.grey['100'],
     },
   },
-  softBackground: {
+  buttonBackgroundSoft: {
     brandAccent: palette.grey['200'],
     brandAccentActive: darken(0.025, palette.grey['200']),
     brandAccentHover: darken(0.05, palette.grey['200']),

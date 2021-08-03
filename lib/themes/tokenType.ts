@@ -140,7 +140,7 @@ export interface BraidTokens {
       selection: string;
     };
   };
-  softBackground: {
+  buttonBackgroundSoft: {
     brandAccent: string;
     brandAccentActive: string;
     brandAccentHover: string;

@@ -84,7 +84,7 @@ export default (braidTokens: BraidTokens) => {
     contentWidth: mapValues(tokens.contentWidth, px),
     foregroundColor: foreground,
     backgroundColor: background,
-    softBackground: tokens.softBackground,
+    buttonBackgroundSoft: tokens.buttonBackgroundSoft,
     alertBorderColor: tokens.alertBorderColor,
     fontFamily: typography.fontFamily,
     fontMetrics: mapValues(typography.fontMetrics, String),

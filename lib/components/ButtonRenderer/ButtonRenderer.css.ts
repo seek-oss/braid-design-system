@@ -122,7 +122,7 @@ export const loadingDot = style({
 });
 
 export const softBackgrounds = styleVariants(
-  vars.softBackground,
+  vars.buttonBackgroundSoft,
   (background) => ({ background }),
 );
 

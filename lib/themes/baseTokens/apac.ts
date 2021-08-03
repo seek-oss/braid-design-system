@@ -257,7 +257,7 @@ export const makeTokens = ({
         selection: palette.indigo['100'],
       },
     },
-    softBackground: {
+    buttonBackgroundSoft: {
       brandAccent: brandAccentSoft,
       brandAccentActive: brandAccentSoftActive,
       brandAccentHover: brandAccentSoftHover,

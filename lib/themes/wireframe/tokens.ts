@@ -237,7 +237,7 @@ const tokens: BraidTokens = {
       selection: '#f1f7ff',
     },
   },
-  softBackground: {
+  buttonBackgroundSoft: {
     brandAccent: tint(0.925, brandAccent),
     brandAccentActive: tint(0.85, brandAccent),
     brandAccentHover: tint(0.9, brandAccent),
