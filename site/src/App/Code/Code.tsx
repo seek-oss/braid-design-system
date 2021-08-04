@@ -121,7 +121,7 @@ export const CodeButton = ({
       component={component}
       display="block"
       cursor="pointer"
-      borderRadius="standard"
+      borderRadius="large"
       paddingY="xxsmall"
       paddingX="xsmall"
       position="relative"
@@ -160,7 +160,7 @@ export const CodeBlock = ({
   <Box
     position="relative"
     padding="xxsmall"
-    borderRadius="standard"
+    borderRadius="large"
     className={styles.code}
   >
     <Box padding={['medium', 'medium', 'large']}>

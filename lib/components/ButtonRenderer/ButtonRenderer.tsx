@@ -33,6 +33,8 @@ export const buttonVariants = [
 
 export const buttonWeights = ['weak', 'regular', 'strong'] as const;
 
+const borderRadius = 'large';
+
 type ButtonSize = 'standard' | 'small';
 type ButtonTone = 'brandAccent' | 'critical';
 type ButtonWeight = typeof buttonWeights[number];
@@ -198,21 +200,25 @@ const ButtonChildren = ({ children }: ButtonChildrenProps) => {
   return (
     <Fragment>
       <FieldOverlay
+        borderRadius={borderRadius}
         className={buttonVariant.backgroundClassName}
         visible={Boolean(buttonVariant.backgroundClassName)}
       />
       <FieldOverlay
+        borderRadius={borderRadius}
         variant="focus"
         onlyVisibleForKeyboardNavigation
         className={styles.focusOverlay}
       />
       <FieldOverlay
+        borderRadius={borderRadius}
         className={[
           buttonVariant.backgroundHoverClassName,
           styles.hoverOverlay,
         ]}
       />
       <FieldOverlay
+        borderRadius={borderRadius}
         className={[
           buttonVariant.backgroundActiveClassName,
           styles.activeOverlay,
@@ -221,7 +227,7 @@ const ButtonChildren = ({ children }: ButtonChildrenProps) => {
       {buttonVariant.boxShadow ? (
         <Box
           boxShadow={buttonVariant.boxShadow}
-          borderRadius="standard"
+          borderRadius={borderRadius}
           position="absolute"
           top={0}
           bottom={0}
@@ -385,7 +391,7 @@ export const PrivateButtonRenderer = ({
       width: 'full',
       position: 'relative',
       display: 'block',
-      borderRadius: 'standard',
+      borderRadius,
       transform: { active: 'touchable' },
       transition: 'touchable',
       outline: 'none',

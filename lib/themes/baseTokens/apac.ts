@@ -171,6 +171,8 @@ export const makeTokens = ({
     border: {
       radius: {
         standard: '4px',
+        large: '6px',
+        xlarge: '10px',
       },
       width: {
         standard: 1,
@@ -178,8 +180,8 @@ export const makeTokens = ({
       },
       color: {
         brandAccent,
-        caution: palette.yellow['400'],
-        critical,
+        caution: palette.yellow['500'],
+        critical: palette.red['500'],
         field: palette.grey['400'],
         focus,
         formAccent,
@@ -187,7 +189,7 @@ export const makeTokens = ({
         info: palette.blue['500'],
         positive: palette.mint['500'],
         promote: palette.plum['500'],
-        standard: palette.grey['300'],
+        standard: palette.grey['200'],
         standardInverted: white,
       },
     },
@@ -212,7 +214,7 @@ export const makeTokens = ({
     color: {
       foreground: {
         brandAccent,
-        caution: palette.yellow['800'],
+        caution: palette.yellow['900'],
         critical,
         formAccent,
         info: palette.blue['700'],
@@ -254,7 +256,7 @@ export const makeTokens = ({
         positiveLight: palette.mint['100'],
         promote: palette.plum['600'],
         promoteLight: palette.plum['100'],
-        selection: palette.indigo['100'],
+        selection: palette.indigo['50'],
       },
     },
     buttonBackgroundSoft: {
@@ -269,11 +271,11 @@ export const makeTokens = ({
       formAccentHover: darken(0.025, palette.indigo['50']),
     },
     alertBorderColor: {
-      caution: palette.yellow['300'],
-      critical: palette.red['300'],
-      info: palette.blue['300'],
-      positive: palette.mint['300'],
-      promote: palette.plum['300'],
+      caution: palette.yellow['200'],
+      critical: palette.red['200'],
+      info: palette.blue['200'],
+      positive: palette.mint['200'],
+      promote: palette.plum['200'],
     },
   };
 

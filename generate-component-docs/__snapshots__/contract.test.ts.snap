@@ -388,10 +388,12 @@ Object {
         | "selection"
     borderRadius?: 
         | "full"
+        | "large"
         | "none"
         | "standard"
-        | ResponsiveArray<1 | 4 | 2 | 3, "standard" | "none" | "full" | null>
-        | { mobile?: "standard" | "none" | "full" | undefined; tablet?: "standard" | "none" | "full" | undefined; desktop?: "standard" | "none" | "full" | undefined; wide?: "standard" | "none" | "full" | undefined; }
+        | "xlarge"
+        | ResponsiveArray<1 | 4 | 2 | 3, "standard" | "large" | "xlarge" | "none" | "full" | null>
+        | { mobile?: "standard" | "large" | "xlarge" | "none" | "full" | undefined; tablet?: "standard" | "large" | "xlarge" | "none" | "full" | undefined; desktop?: "standard" | "large" | "xlarge" | "none" | "full" | undefined; wide?: "standard" | ... 4 more ... | undefined; }
     bottom?: 0
     boxShadow?: 
         | "borderBrandAccentLarge"
@@ -1303,10 +1305,12 @@ Object {
         | "selection"
     borderRadius?: 
         | "full"
+        | "large"
         | "none"
         | "standard"
-        | ResponsiveArray<1 | 4 | 2 | 3, "standard" | "none" | "full" | null>
-        | { mobile?: "standard" | "none" | "full" | undefined; tablet?: "standard" | "none" | "full" | undefined; desktop?: "standard" | "none" | "full" | undefined; wide?: "standard" | "none" | "full" | undefined; }
+        | "xlarge"
+        | ResponsiveArray<1 | 4 | 2 | 3, "standard" | "large" | "xlarge" | "none" | "full" | null>
+        | { mobile?: "standard" | "large" | "xlarge" | "none" | "full" | undefined; tablet?: "standard" | "large" | "xlarge" | "none" | "full" | undefined; desktop?: "standard" | "large" | "xlarge" | "none" | "full" | undefined; wide?: "standard" | ... 4 more ... | undefined; }
     bottom?: 0
     boxShadow?: 
         | "borderBrandAccentLarge"

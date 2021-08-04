@@ -23,6 +23,8 @@ type Tone = 'promote' | 'info' | 'positive' | 'caution' | 'critical';
 
 type CloseProps = AllOrNone<{ onClose: () => void; closeLabel: string }>;
 
+const borderRadius = 'large';
+
 export type AlertProps = {
   tone?: Tone;
   children: ReactNode;
@@ -64,7 +66,7 @@ export const Alert = ({
       id={id}
       background={backgroundForTone[tone]}
       padding="medium"
-      borderRadius="standard"
+      borderRadius={borderRadius}
       position="relative"
       overflow="hidden"
       role="alert"
@@ -92,13 +94,13 @@ export const Alert = ({
       </Box>
       {parentBackground !== 'card' && (
         <Overlay
-          borderRadius="standard"
+          borderRadius={borderRadius}
           className={styles.boxShadowForTone[tone]}
           visible
         />
       )}
       <Box
-        background={tone}
+        className={styles.keylineForTone[tone]}
         paddingLeft={highlightBarSize}
         position="absolute"
         top={0}

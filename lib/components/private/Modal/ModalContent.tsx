@@ -136,7 +136,7 @@ export const ModalContent = ({
         <RemoveScroll ref={modalRef} forwardProps enabled={scrollLock}>
           <Box
             background="card"
-            borderRadius={position === 'center' ? 'standard' : undefined}
+            borderRadius={position === 'center' ? 'xlarge' : undefined}
             overflow="auto"
             position="relative"
             boxShadow="large"

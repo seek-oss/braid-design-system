@@ -66,6 +66,8 @@ export interface BraidTokens {
   border: {
     radius: {
       standard: string;
+      large: string;
+      xlarge: string;
     };
     width: {
       standard: number;

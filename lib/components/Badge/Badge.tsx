@@ -105,7 +105,7 @@ export const Badge = forwardRef<HTMLDivElement, BadgeProps>(
           title={title ?? (!ariaDescribedBy ? children : undefined)}
           background={backgroundForTone(tone, weight)}
           paddingX="xsmall"
-          borderRadius="standard"
+          borderRadius="large"
           overflow="hidden"
         >
           <Text

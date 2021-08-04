@@ -161,6 +161,8 @@ const tokens: BraidTokens = {
   border: {
     radius: {
       standard: '4px',
+      large: '6px',
+      xlarge: '10px',
     },
     width: {
       standard: 1,

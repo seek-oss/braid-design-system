@@ -30,6 +30,8 @@ type ResponsiveCardRounding = {
   roundedAbove?: ResponsiveRangeProps['above'];
 };
 
+const borderRadius = 'xlarge';
+
 export type CardProps = {
   children: ReactNode;
   tone?: 'promote' | 'formAccent';
@@ -54,16 +56,16 @@ export const Card = ({
   let resolvedRounding: BoxProps['borderRadius'];
 
   if ('rounded' in restProps) {
-    resolvedRounding = 'standard';
+    resolvedRounding = borderRadius;
   } else if ('roundedAbove' in restProps) {
     const [roundedOnMobile, roundedOnTablet, roundedOnDesktop, roundedOnWide] =
       resolveResponsiveRangeProps({ above: restProps.roundedAbove });
 
     resolvedRounding = optimizeResponsiveArray([
-      roundedOnMobile ? 'standard' : 'none',
-      roundedOnTablet ? 'standard' : 'none',
-      roundedOnDesktop ? 'standard' : 'none',
-      roundedOnWide ? 'standard' : 'none',
+      roundedOnMobile ? borderRadius : 'none',
+      roundedOnTablet ? borderRadius : 'none',
+      roundedOnDesktop ? borderRadius : 'none',
+      roundedOnWide ? borderRadius : 'none',
     ]);
   }
 

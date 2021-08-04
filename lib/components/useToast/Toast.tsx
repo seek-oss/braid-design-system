@@ -114,13 +114,13 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
           onMouseLeave={startTimeout}
           className={vanillaTheme}
         >
-          <Box boxShadow="large">
+          <Box boxShadow="large" borderRadius="xlarge">
             <ContentBlock width="xsmall">
               <Box
                 background="card"
                 position="relative"
                 boxShadow="borderStandard"
-                borderRadius="standard"
+                borderRadius="xlarge"
                 paddingY="medium"
                 paddingLeft="medium"
                 overflow="hidden"

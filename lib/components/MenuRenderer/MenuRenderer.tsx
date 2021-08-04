@@ -84,6 +84,8 @@ const isDivider = (node: ReactNode) =>
   'type' in node &&
   node.type === MenuItemDivider;
 
+const borderRadius = 'large';
+
 export const MenuRenderer = ({
   onOpen,
   onClose,
@@ -279,7 +281,7 @@ export const MenuRenderer = ({
               focusTrigger();
             }}
             boxShadow="medium"
-            borderRadius="standard"
+            borderRadius={borderRadius}
             background="card"
             marginTop={offsetSpace}
             transition="fast"
@@ -313,7 +315,7 @@ export const MenuRenderer = ({
             </Box>
             <Overlay
               boxShadow="borderStandard"
-              borderRadius="standard"
+              borderRadius={borderRadius}
               visible
             />
           </Box>

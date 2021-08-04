@@ -228,12 +228,12 @@ const docs: ComponentDocs = {
             <Inline space="gutter" align="center" alignY="center">
               <Box
                 background="formAccentHover"
-                borderRadius="standard"
+                borderRadius="large"
                 padding="medium"
               >
                 <Box
                   background="formAccent"
-                  borderRadius="standard"
+                  borderRadius="large"
                   padding="medium"
                 >
                   <Text>padding</Text>
@@ -242,12 +242,12 @@ const docs: ComponentDocs = {
               <Inline space="gutter" align="center" alignY="center">
                 <Box
                   background="formAccentHover"
-                  borderRadius="standard"
+                  borderRadius="large"
                   paddingX="medium"
                 >
                   <Box
                     background="formAccent"
-                    borderRadius="standard"
+                    borderRadius="large"
                     padding="medium"
                   >
                     <Text>paddingX</Text>
@@ -255,12 +255,12 @@ const docs: ComponentDocs = {
                 </Box>
                 <Box
                   background="formAccentHover"
-                  borderRadius="standard"
+                  borderRadius="large"
                   paddingY="medium"
                 >
                   <Box
                     background="formAccent"
-                    borderRadius="standard"
+                    borderRadius="large"
                     padding="medium"
                   >
                     <Text>paddingY</Text>
@@ -277,12 +277,12 @@ const docs: ComponentDocs = {
               <Inline space="gutter" align="center" alignY="center">
                 <Box
                   background="formAccentHover"
-                  borderRadius="standard"
+                  borderRadius="large"
                   paddingTop="medium"
                 >
                   <Box
                     background="formAccent"
-                    borderRadius="standard"
+                    borderRadius="large"
                     padding="medium"
                   >
                     <Text>paddingTop</Text>
@@ -290,12 +290,12 @@ const docs: ComponentDocs = {
                 </Box>
                 <Box
                   background="formAccentHover"
-                  borderRadius="standard"
+                  borderRadius="large"
                   paddingRight="medium"
                 >
                   <Box
                     background="formAccent"
-                    borderRadius="standard"
+                    borderRadius="large"
                     padding="medium"
                   >
                     <Text>paddingRight</Text>
@@ -305,12 +305,12 @@ const docs: ComponentDocs = {
               <Inline space="gutter" align="center" alignY="center">
                 <Box
                   background="formAccentHover"
-                  borderRadius="standard"
+                  borderRadius="large"
                   paddingBottom="medium"
                 >
                   <Box
                     background="formAccent"
-                    borderRadius="standard"
+                    borderRadius="large"
                     padding="medium"
                   >
                     <Text>paddingBottom</Text>
@@ -318,12 +318,12 @@ const docs: ComponentDocs = {
                 </Box>
                 <Box
                   background="formAccentHover"
-                  borderRadius="standard"
+                  borderRadius="large"
                   paddingLeft="medium"
                 >
                   <Box
                     background="formAccent"
-                    borderRadius="standard"
+                    borderRadius="large"
                     padding="medium"
                   >
                     <Text>paddingLeft</Text>
@@ -352,7 +352,7 @@ const docs: ComponentDocs = {
           <Inline space="medium" align="center">
             <Box
               background="formAccentHover"
-              borderRadius="standard"
+              borderRadius="large"
               padding={{
                 mobile: 'small',
                 tablet: 'medium',
@@ -362,7 +362,7 @@ const docs: ComponentDocs = {
             >
               <Box
                 background="formAccent"
-                borderRadius="standard"
+                borderRadius="large"
                 padding="medium"
               >
                 <Text>Responsive padding</Text>
@@ -435,11 +435,7 @@ const docs: ComponentDocs = {
             ).map(([background, description]) => (
               <Columns key={background} space="medium" alignY="center">
                 <Column width="content">
-                  <Box
-                    background="card"
-                    borderRadius="standard"
-                    padding="gutter"
-                  >
+                  <Box background="card" borderRadius="large" padding="gutter">
                     <Box
                       background={background as keyof BackgroundDocs}
                       boxShadow={
@@ -452,7 +448,7 @@ const docs: ComponentDocs = {
                           ? 'borderStandard'
                           : undefined
                       }
-                      borderRadius="standard"
+                      borderRadius="large"
                       padding="gutter"
                     />
                   </Box>
@@ -545,12 +541,12 @@ const docs: ComponentDocs = {
                     background={
                       boxShadow.includes('Inverted') ? 'brand' : 'card'
                     }
-                    borderRadius="standard"
+                    borderRadius="large"
                     padding="gutter"
                   >
                     <Box
                       boxShadow={boxShadow as keyof BoxShadowDocs}
-                      borderRadius="standard"
+                      borderRadius="large"
                       padding="gutter"
                     />
                   </Box>
