@@ -1809,7 +1809,7 @@ Object {
     theme: {
         background: string
         backgroundLightness: { body: "dark" | "light"; brand: "dark" | "light"; brandAccent: "dark" | "light"; brandAccentActive: "dark" | "light"; brandAccentHover: "dark" | "light"; card: "dark" | "light"; ... 20 more ...; selection: "dark" | "light"; }
-        color: { foreground: { link: string; linkHover: string; linkVisited: string; neutral: string; neutralInverted: string; formAccent: string; brandAccent: string; critical: string; info: string; promote: string; ... 4 more ...; rating: string; }; background: { ...; }; }
+        color: { foreground: { brandAccent: string; caution: string; critical: string; formAccent: string; info: string; link: string; linkHover: string; linkVisited: string; neutral: string; neutralInverted: string; ... 4 more ...; secondaryInverted: string; }; background: { ...; }; }
         displayName: string
         name: string
         space: { grid: number; space: { gutter: number; xxsmall: number; xsmall: number; small: number; medium: number; large: number; xlarge: number; xxlarge: number; }; }
@@ -7739,7 +7739,7 @@ exports[`useColor 1`] = `
 Object {
   exportType: hook,
   params: Array [],
-  returnType: { foreground: { link: string; linkHover: string; linkVisited: string; neutral: string; neutralInverted: string; formAccent: string; brandAccent: string; critical: string; info: string; promote: string; ... 4 more ...; rating: string; }; background: { ...; }; },
+  returnType: { foreground: { brandAccent: string; caution: string; critical: string; formAccent: string; info: string; link: string; linkHover: string; linkVisited: string; neutral: string; neutralInverted: string; ... 4 more ...; secondaryInverted: string; }; background: { ...; }; },
 }
 `;
 
