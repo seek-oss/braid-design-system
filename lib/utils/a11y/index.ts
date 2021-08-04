@@ -151,10 +151,14 @@ export function getLightVariant(color: string) {
   });
 }
 
-export function getAccessibleVariant(color: string, type: 'text' | 'graphic') {
+export function getAccessibleVariant(
+  color: string,
+  type: 'text' | 'graphic',
+  background?: string,
+) {
   return findClosestAccessibleDarkerColor(
     color,
-    getLightVariant(color),
+    background ?? getLightVariant(color),
     type === 'graphic' ? AA_GRAPHIC_CONTRAST : AA_TEXT_CONTRAST,
   );
 }

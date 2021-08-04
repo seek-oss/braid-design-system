@@ -116,6 +116,7 @@ export function useWeight(weight: keyof typeof styles.fontWeight) {
 
 const neutralToneOverrideForBackground = {
   criticalLight: 'critical',
+  caution: 'caution',
   cautionLight: 'caution',
   positiveLight: 'positive',
   infoLight: 'info',

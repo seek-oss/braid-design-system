@@ -96,21 +96,21 @@ export interface BraidTokens {
   };
   color: {
     foreground: {
+      brandAccent: string;
+      caution: string;
+      critical: string;
+      formAccent: string;
+      info: string;
       link: string;
       linkHover: string;
       linkVisited: string;
       neutral: string;
       neutralInverted: string;
-      formAccent: string;
-      brandAccent: string;
-      critical: string;
-      info: string;
-      promote: string;
       positive: string;
-      caution: string;
+      promote: string;
+      rating: string;
       secondary: string;
       secondaryInverted: string;
-      rating: string;
     };
     background: {
       body: string;

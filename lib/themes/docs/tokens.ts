@@ -183,7 +183,7 @@ const tokens: BraidTokens = {
   color: {
     foreground: {
       brandAccent,
-      caution: palette.yellow['800'],
+      caution: palette.yellow['900'],
       critical: palette.red['700'],
       formAccent,
       info: palette.blue['700'],

@@ -195,7 +195,7 @@ const tokens: BraidTokens = {
   color: {
     foreground: {
       brandAccent,
-      caution: getAccessibleVariant(caution, 'text'),
+      caution: getAccessibleVariant(caution, 'text', caution),
       critical: getAccessibleVariant(critical, 'text'),
       formAccent,
       info: getAccessibleVariant(info, 'text'),
