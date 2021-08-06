@@ -18,7 +18,11 @@ import { Text } from '../Text/Text';
 import { Strong } from '../Strong/Strong';
 import { HiddenVisually } from '../HiddenVisually/HiddenVisually';
 import { Announcement } from '../private/Announcement/Announcement';
-import { Field, FieldProps } from '../private/Field/Field';
+import {
+  Field,
+  FieldBaseProps,
+  FieldLabelVariant,
+} from '../private/Field/Field';
 import { ClearButton } from '../iconButtons/ClearButton/ClearButton';
 import { touchableText, useText } from '../../hooks/typography';
 import { getNextIndex } from '../private/getNextIndex';
@@ -250,8 +254,10 @@ const noop = () => {
 const fallbackValue = { text: '' };
 const fallbackSuggestions: Suggestion[] = [];
 
-export interface AutosuggestProps<Value>
-  extends Omit<FieldProps, 'value' | 'autoComplete' | 'labelId' | 'prefix'> {
+export type AutosuggestBaseProps<Value> = Omit<
+  FieldBaseProps,
+  'value' | 'autoComplete' | 'labelId' | 'prefix'
+> & {
   value: AutosuggestValue<Value>;
   suggestions:
     | Suggestions<Value>
@@ -270,7 +276,11 @@ export interface AutosuggestProps<Value>
   placeholder?: string;
   type?: 'text' | 'search';
   translations?: AutosuggestTranslations;
-}
+};
+export type AutosuggestLabelProps = FieldLabelVariant;
+export type AutosuggestProps<Value> = AutosuggestBaseProps<Value> &
+  AutosuggestLabelProps;
+
 export const Autosuggest = forwardRef(function <Value>(
   {
     id,

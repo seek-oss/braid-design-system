@@ -88,6 +88,7 @@ const Iconography = () => {
         <Stack space="large">
           <TextField
             id="iconSearch"
+            aria-label="Search for an icon"
             icon={<IconSearch />}
             placeholder="Search"
             autoComplete="off"

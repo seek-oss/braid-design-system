@@ -96,6 +96,7 @@ export const snippets: Snippets = [
     code: source(
       <Autosuggest
         id="location"
+        aria-label="Location"
         icon={<IconLocation />}
         placeholder="Enter a location"
         suggestions={[

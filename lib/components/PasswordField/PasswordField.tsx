@@ -8,14 +8,21 @@ import React, {
   MouseEvent,
 } from 'react';
 
-import { Field, FieldProps } from '../private/Field/Field';
+import {
+  Field,
+  FieldBaseProps,
+  FieldLabelVariant,
+} from '../private/Field/Field';
 import { Box } from '../Box/Box';
 import { IconButton } from '../iconButtons/IconButton';
 import { IconVisibility } from '../icons';
 
 type InputProps = AllHTMLAttributes<HTMLInputElement>;
-export interface PasswordFieldProps
-  extends Omit<FieldProps, 'labelId' | 'secondaryMessage' | 'icon' | 'prefix'> {
+
+export type PasswordFieldBaseProps = Omit<
+  FieldBaseProps,
+  'labelId' | 'secondaryMessage' | 'icon' | 'prefix'
+> & {
   value: NonNullable<InputProps['value']>;
   onChange: NonNullable<InputProps['onChange']>;
   onBlur?: InputProps['onBlur'];
@@ -23,7 +30,10 @@ export interface PasswordFieldProps
   placeholder?: InputProps['placeholder'];
   onVisibilityToggle?: (visible: boolean) => void;
   visibilityToggleLabel?: string;
-}
+};
+export type PasswordFieldLabelProps = FieldLabelVariant;
+export type PasswordFieldProps = PasswordFieldBaseProps &
+  PasswordFieldLabelProps;
 
 export const PasswordField = forwardRef<HTMLInputElement, PasswordFieldProps>(
   (

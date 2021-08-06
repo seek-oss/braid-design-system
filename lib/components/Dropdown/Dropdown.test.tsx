@@ -16,6 +16,41 @@ describe('Dropdown', () => {
     expect(getByLabelText('My dropdown').tagName).toBe('SELECT');
   });
 
+  it('associates field with aria-label correctly', () => {
+    const { getByLabelText } = render(
+      <BraidTestProvider>
+        <Dropdown
+          id="field"
+          aria-label="My dropdown"
+          value=""
+          onChange={() => {}}
+        >
+          <option>1</option>
+        </Dropdown>
+      </BraidTestProvider>,
+    );
+
+    expect(getByLabelText('My dropdown').tagName).toBe('SELECT');
+  });
+
+  it('associates field with aria-labelledby correctly', () => {
+    const { getByLabelText } = render(
+      <BraidTestProvider>
+        <div id="fieldLabel">My dropdown</div>
+        <Dropdown
+          id="field"
+          aria-labelledby="fieldLabel"
+          value=""
+          onChange={() => {}}
+        >
+          <option>1</option>
+        </Dropdown>
+      </BraidTestProvider>,
+    );
+
+    expect(getByLabelText('My dropdown').tagName).toBe('SELECT');
+  });
+
   it('associates field with message correctly', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>

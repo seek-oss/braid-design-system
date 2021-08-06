@@ -1,6 +1,10 @@
 import React, { Fragment, AllHTMLAttributes, forwardRef } from 'react';
 import { Box } from '../Box/Box';
-import { Field, FieldProps } from '../private/Field/Field';
+import {
+  Field,
+  FieldBaseProps,
+  FieldLabelVariant,
+} from '../private/Field/Field';
 import { IconChevron } from '../icons';
 import * as styles from './Dropdown.css';
 import { Text } from '../Text/Text';
@@ -9,15 +13,19 @@ type ValidDropdownChildren = AllHTMLAttributes<
   HTMLOptionElement | HTMLOptGroupElement
 >;
 type SelectProps = AllHTMLAttributes<HTMLSelectElement>;
-export interface DropdownProps
-  extends Omit<FieldProps, 'labelId' | 'secondaryMessage' | 'prefix'> {
+export type DropdownBaseProps = Omit<
+  FieldBaseProps,
+  'labelId' | 'secondaryMessage' | 'prefix'
+> & {
   children: ValidDropdownChildren[] | ValidDropdownChildren;
   value: NonNullable<SelectProps['value']>;
   onChange: NonNullable<SelectProps['onChange']>;
   onBlur?: SelectProps['onBlur'];
   onFocus?: SelectProps['onFocus'];
   placeholder?: string;
-}
+};
+export type DropdownLabelProps = FieldLabelVariant;
+export type DropdownProps = DropdownBaseProps & DropdownLabelProps;
 
 export const Dropdown = forwardRef<HTMLSelectElement, DropdownProps>(
   (props, ref) => {

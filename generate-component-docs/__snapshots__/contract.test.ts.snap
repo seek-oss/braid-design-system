@@ -87,12 +87,10 @@ Object {
     autoFocus?: boolean
     automaticSelection?: boolean
     data?: DataAttributeMap
-    description?: ReactNode
     disabled?: boolean
     hideSuggestionsOnSelection?: boolean
     icon?: ReactNode
     id: string
-    label?: ReactNode
     message?: ReactNode
     name?: string
     onBlur?: () => void
@@ -106,14 +104,12 @@ Object {
     required?: boolean
     reserveMessageSpace?: boolean
     scrollToTopOnMobile?: boolean
-    secondaryLabel?: ReactNode
     secondaryMessage?: ReactNode
     showMobileBackdrop?: boolean
     suggestions: 
         | (value: AutosuggestValue<Value>) => Suggestions<Value> | { message: string; }
         | Suggestions<Value>
         | { message: string; }
-    tertiaryLabel?: ReactNode
     tone?: 
         | "critical"
         | "neutral"
@@ -2736,11 +2732,9 @@ Object {
         | ValidDropdownChildren
         | ValidDropdownChildren[]
     data?: DataAttributeMap
-    description?: ReactNode
     disabled?: boolean
     icon?: ReactNode
     id: string
-    label?: ReactNode
     message?: ReactNode
     name?: string
     onBlur?: FocusEventHandler<HTMLSelectElement>
@@ -2752,16 +2746,18 @@ Object {
         | RefObject<HTMLSelectElement>
     required?: boolean
     reserveMessageSpace?: boolean
-    secondaryLabel?: ReactNode
-    tertiaryLabel?: ReactNode
     tone?: 
         | "critical"
         | "neutral"
         | "positive"
     value: 
         | number
+        | number & readonly string[]
         | readonly string[]
+        | readonly string[] & number
+        | readonly string[] & string
         | string
+        | string & readonly string[]
 },
 }
 `;
@@ -6181,7 +6177,6 @@ Object {
     description?: ReactNode
     disabled?: boolean
     id: string
-    label?: ReactNode
     maxYear?: number
     message?: ReactNode
     minYear?: number
@@ -6259,10 +6254,8 @@ Object {
     autoComplete?: string
     autoFocus?: boolean
     data?: DataAttributeMap
-    description?: ReactNode
     disabled?: boolean
     id: string
-    label?: ReactNode
     message?: ReactNode
     name?: string
     onBlur?: FocusEventHandler<HTMLInputElement>
@@ -6275,16 +6268,18 @@ Object {
         | RefObject<HTMLInputElement>
     required?: boolean
     reserveMessageSpace?: boolean
-    secondaryLabel?: ReactNode
-    tertiaryLabel?: ReactNode
     tone?: 
         | "critical"
         | "neutral"
         | "positive"
     value: 
         | number
+        | number & readonly string[]
         | readonly string[]
+        | readonly string[] & number
+        | readonly string[] & string
         | string
+        | string & readonly string[]
     visibilityToggleLabel?: string
 },
 }
@@ -6776,11 +6771,9 @@ Object {
     autoFocus?: boolean
     characterLimit?: number
     data?: DataAttributeMap
-    description?: ReactNode
     disabled?: boolean
     icon?: ReactNode
     id: string
-    label?: ReactNode
     message?: ReactNode
     name?: string
     onBlur?: FocusEventHandler<HTMLInputElement>
@@ -6794,8 +6787,6 @@ Object {
         | RefObject<HTMLInputElement>
     required?: boolean
     reserveMessageSpace?: boolean
-    secondaryLabel?: ReactNode
-    tertiaryLabel?: ReactNode
     tone?: 
         | "critical"
         | "neutral"
@@ -6810,8 +6801,12 @@ Object {
         | "url"
     value: 
         | number
+        | number & readonly string[]
         | readonly string[]
+        | readonly string[] & number
+        | readonly string[] & string
         | string
+        | string & readonly string[]
 },
 }
 `;
@@ -7546,12 +7541,10 @@ Object {
     autoFocus?: boolean
     characterLimit?: number
     data?: DataAttributeMap
-    description?: ReactNode
     disabled?: boolean
     grow?: boolean
     highlightRanges?: { start: number; end?: number | undefined; }[]
     id: string
-    label?: ReactNode
     lineLimit?: number
     lines?: number
     message?: ReactNode
@@ -7566,16 +7559,18 @@ Object {
         | RefObject<HTMLTextAreaElement>
     required?: boolean
     reserveMessageSpace?: boolean
-    secondaryLabel?: ReactNode
-    tertiaryLabel?: ReactNode
     tone?: 
         | "critical"
         | "neutral"
         | "positive"
     value: 
         | number
+        | number & readonly string[]
         | readonly string[]
+        | readonly string[] & number
+        | readonly string[] & string
         | string
+        | string & readonly string[]
 },
 }
 `;

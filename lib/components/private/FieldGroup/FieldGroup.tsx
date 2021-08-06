@@ -11,36 +11,53 @@ import { mergeIds } from '../mergeIds';
 import { ReactNodeNoStrings } from '../ReactNodeNoStrings';
 
 type FormElementProps = AllHTMLAttributes<HTMLFormElement>;
-export interface FieldGroupProps {
+
+export type FieldLabelVariant =
+  | {
+      'aria-labelledby': NonNullable<string>;
+      secondaryLabel?: never;
+      tertiaryLabel?: never;
+      description?: never;
+    }
+  | {
+      'aria-label': NonNullable<string>;
+      secondaryLabel?: never;
+      tertiaryLabel?: never;
+      description?: never;
+    }
+  | {
+      label: FieldLabelProps['label'];
+      secondaryLabel?: FieldLabelProps['secondaryLabel'];
+      tertiaryLabel?: FieldLabelProps['tertiaryLabel'];
+      description?: FieldLabelProps['description'];
+    };
+
+export type FieldGroupBaseProps = {
   id: NonNullable<FormElementProps['id']>;
   disabled?: FormElementProps['disabled'];
-  label?: FieldLabelProps['label'];
-  secondaryLabel?: FieldLabelProps['secondaryLabel'];
-  tertiaryLabel?: FieldLabelProps['tertiaryLabel'];
-  description?: FieldLabelProps['description'];
   message?: FieldMessageProps['message'];
   reserveMessageSpace?: FieldMessageProps['reserveMessageSpace'];
   tone?: FieldMessageProps['tone'];
   required?: boolean;
   data?: DataAttributeMap;
-}
+};
 
 interface FieldGroupRenderProps {
-  disabled?: FieldGroupProps['disabled'];
+  disabled?: FieldGroupBaseProps['disabled'];
   'aria-describedby'?: string;
 }
 
-interface InternalFieldGroupProps extends FieldGroupProps {
-  role?: FormElementProps['role'];
-  space?: StackProps['space'];
-  children(props: FieldGroupRenderProps): ReactNodeNoStrings;
-}
+type InternalFieldGroupProps = FieldGroupBaseProps &
+  FieldLabelVariant & {
+    role?: FormElementProps['role'];
+    space?: StackProps['space'];
+    children(props: FieldGroupRenderProps): ReactNodeNoStrings;
+  };
 
 export const FieldGroup = ({
   id,
   disabled,
   children,
-  label,
   secondaryLabel,
   tertiaryLabel,
   description,
@@ -51,10 +68,21 @@ export const FieldGroup = ({
   role,
   space = 'xsmall',
   data,
+  ...restProps
 }: InternalFieldGroupProps) => {
   const labelId = `${id}-label`;
   const messageId = `${id}-message`;
   const descriptionId = description ? `${id}-description` : undefined;
+
+  let ariaLabelledBy;
+  let ariaLabel;
+  if ('label' in restProps && restProps.label) {
+    ariaLabelledBy = labelId;
+  } else if ('aria-labelledby' in restProps && restProps['aria-labelledby']) {
+    ariaLabelledBy = restProps['aria-labelledby'];
+  } else if ('aria-label' in restProps && restProps['aria-label']) {
+    ariaLabel = restProps['aria-label'];
+  }
 
   return (
     <Box
@@ -62,16 +90,17 @@ export const FieldGroup = ({
       disabled={disabled}
       id={id}
       role={role}
-      aria-labelledby={label ? labelId : undefined}
+      aria-labelledby={ariaLabelledBy}
+      aria-label={ariaLabel}
       aria-required={required}
       {...(data ? buildDataAttributes(data) : undefined)}
     >
       <Stack space={space}>
-        {label ? (
+        {'label' in restProps && restProps.label ? (
           <Box component="legend" id={labelId}>
             <FieldLabel
               htmlFor={false}
-              label={label}
+              label={restProps.label}
               secondaryLabel={secondaryLabel}
               tertiaryLabel={tertiaryLabel}
               description={description}

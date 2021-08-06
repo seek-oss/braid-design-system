@@ -1,21 +1,28 @@
 import React, { FormEvent, ReactElement } from 'react';
 import assert from 'assert';
 import flattenChildren from 'react-keyed-flatten-children';
-import { FieldGroup, FieldGroupProps } from '../private/FieldGroup/FieldGroup';
+import {
+  FieldGroup,
+  FieldGroupBaseProps,
+  FieldLabelVariant,
+} from '../private/FieldGroup/FieldGroup';
 import { RadioItem, RadioItemProps } from '../RadioGroup/RadioItem';
 import { Stack, StackProps } from '../Stack/Stack';
 import { RadioGroupContext, RadioItemContext } from './RadioGroupContext';
 import { Box } from '../Box/Box';
 import { InlineFieldProps } from '../private/InlineField/InlineField';
 
-export interface RadioGroupProps<Value = NonNullable<string | number>>
-  extends FieldGroupProps {
-  children: ReactElement<RadioItemProps>[];
-  value: Value;
-  onChange: (event: FormEvent<HTMLInputElement>) => void;
-  name?: string;
-  size?: InlineFieldProps['size'];
-}
+export type RadioGroupBaseProps<Value = NonNullable<string | number>> =
+  FieldGroupBaseProps & {
+    children: ReactElement<RadioItemProps>[];
+    value: Value;
+    onChange: (event: FormEvent<HTMLInputElement>) => void;
+    name?: string;
+    size?: InlineFieldProps['size'];
+  };
+export type RadioGroupLabelProps = FieldLabelVariant;
+export type RadioGroupProps<Value = NonNullable<string | number>> =
+  RadioGroupBaseProps<Value> & RadioGroupLabelProps;
 
 const stackSpaceForSize = {
   small: 'small',

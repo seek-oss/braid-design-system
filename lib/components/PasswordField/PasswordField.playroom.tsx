@@ -4,11 +4,13 @@ import { useFallbackState, StateProp } from '../../playroom/playroomState';
 import { useFallbackId } from '../../playroom/utils';
 import {
   PasswordField as BraidPasswordField,
-  PasswordFieldProps,
+  PasswordFieldBaseProps,
+  PasswordFieldLabelProps,
 } from './PasswordField';
 
 type PlayroomPasswordFieldProps = StateProp &
-  Optional<PasswordFieldProps, 'id' | 'value' | 'onChange'>;
+  Optional<PasswordFieldBaseProps, 'id' | 'value' | 'onChange'> &
+  PasswordFieldLabelProps;
 
 export const PasswordField = ({
   id,

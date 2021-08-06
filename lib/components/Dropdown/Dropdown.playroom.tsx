@@ -2,10 +2,15 @@ import React from 'react';
 import { Optional } from 'utility-types';
 import { useFallbackState, StateProp } from '../../playroom/playroomState';
 import { useFallbackId } from '../../playroom/utils';
-import { Dropdown as BraidDropdown, DropdownProps } from './Dropdown';
+import {
+  Dropdown as BraidDropdown,
+  DropdownBaseProps,
+  DropdownLabelProps,
+} from './Dropdown';
 
 type PlayroomDropdownProps = StateProp &
-  Optional<DropdownProps, 'id' | 'value' | 'onChange'>;
+  Optional<DropdownBaseProps, 'id' | 'value' | 'onChange'> &
+  DropdownLabelProps;
 
 export const Dropdown = ({
   id,

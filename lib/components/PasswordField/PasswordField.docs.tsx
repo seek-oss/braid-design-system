@@ -1,6 +1,14 @@
 import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import { List, PasswordField, Strong, Stack, Text, TextLink } from '../';
+import {
+  List,
+  PasswordField,
+  Strong,
+  Stack,
+  Text,
+  TextLink,
+  Heading,
+} from '../';
 import source from '../../utils/source.macro';
 
 const docs: ComponentDocs = {
@@ -152,10 +160,44 @@ const docs: ComponentDocs = {
           <PasswordField
             label="Label"
             id={id}
-            onChange={setState('textfield')}
-            value={getState('textfield')}
+            onChange={setState('password')}
+            value={getState('password')}
             placeholder="Enter password"
           />,
+        ),
+    },
+    {
+      label: 'Indirect or hidden field labels',
+      description: (
+        <Text>
+          In some cases it may be necessary for a field to be labelled by
+          another element or even not having an visual label. Instead of
+          providing a <Strong>label</Strong> either <Strong>aria-label</Strong>{' '}
+          or <Strong>aria-labelledby</Strong> can be provided.
+        </Text>
+      ),
+      Example: ({ id, getState, setState }) =>
+        source(
+          <Stack space="large">
+            <Heading level="2" id="field1Label">
+              Custom field label
+            </Heading>
+            <PasswordField
+              aria-labelledby="field1Label"
+              id={`${id}_1`}
+              onChange={setState('password')}
+              value={getState('password')}
+              message="The label for this field is the Heading element before it."
+            />
+
+            <PasswordField
+              aria-label="Hidden label for field"
+              id={`${id}_2`}
+              onChange={setState('password2')}
+              value={getState('password2')}
+              message="The label for this field is hidden."
+            />
+          </Stack>,
         ),
     },
   ],

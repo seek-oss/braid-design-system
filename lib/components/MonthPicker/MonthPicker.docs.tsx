@@ -8,6 +8,7 @@ import {
   Strong,
   List,
   Stack,
+  Heading,
 } from '../';
 import source from '../../utils/source.macro';
 
@@ -236,6 +237,40 @@ const docs: ComponentDocs = {
             monthLabel="MM"
             yearLabel="YYYY"
           />,
+        ),
+    },
+    {
+      label: 'Indirect or hidden field labels',
+      description: (
+        <Text>
+          In some cases it may be necessary for a field to be labelled by
+          another element or even not having an visual label. Instead of
+          providing a <Strong>label</Strong> either <Strong>aria-label</Strong>{' '}
+          or <Strong>aria-labelledby</Strong> can be provided.
+        </Text>
+      ),
+      Example: ({ id, getState, setState }) =>
+        source(
+          <Stack space="large">
+            <Heading level="2" id="field1Label">
+              Custom field label
+            </Heading>
+            <MonthPicker
+              aria-labelledby="field1Label"
+              id={`${id}_1`}
+              onChange={setState('monthpicker')}
+              value={getState('monthpicker')}
+              message="The label for this field is the Heading element before it."
+            />
+
+            <MonthPicker
+              aria-label="Hidden label for field"
+              id={`${id}_2`}
+              onChange={setState('monthpicker2')}
+              value={getState('monthpicker2')}
+              message="The label for this field is hidden."
+            />
+          </Stack>,
         ),
     },
   ],

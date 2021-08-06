@@ -1,6 +1,10 @@
 import React, { forwardRef, Fragment, AllHTMLAttributes, useRef } from 'react';
 import { Box } from '../Box/Box';
-import { Field, FieldProps } from '../private/Field/Field';
+import {
+  Field,
+  FieldBaseProps,
+  FieldLabelVariant,
+} from '../private/Field/Field';
 import { ClearField } from '../private/Field/ClearField';
 import { CharacterLimitStatus } from '../private/Field/CharacterLimitStatus';
 
@@ -15,8 +19,11 @@ const validTypes = {
 };
 
 type InputProps = AllHTMLAttributes<HTMLInputElement>;
-export interface TextFieldProps
-  extends Omit<FieldProps, 'labelId' | 'secondaryMessage'> {
+
+export type TextFieldBaseProps = Omit<
+  FieldBaseProps,
+  'labelId' | 'secondaryMessage'
+> & {
   value: NonNullable<InputProps['value']>;
   type?: keyof typeof validTypes;
   onChange: NonNullable<InputProps['onChange']>;
@@ -25,7 +32,9 @@ export interface TextFieldProps
   onClear?: () => void;
   placeholder?: InputProps['placeholder'];
   characterLimit?: number;
-}
+};
+export type TextFieldLabelProps = FieldLabelVariant;
+export type TextFieldProps = TextFieldBaseProps & TextFieldLabelProps;
 
 export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
   (
