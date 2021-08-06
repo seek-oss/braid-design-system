@@ -2,8 +2,7 @@ import React from 'react';
 import { Snippets } from '../private/Snippets';
 import {
   Box,
-  IconHelp,
-  Inline,
+  Placeholder,
   Text,
   TooltipRenderer,
 } from '../../playroom/components';
@@ -13,15 +12,13 @@ export const snippets: Snippets = [
   {
     name: 'Standard',
     code: source(
-      <Inline space="small">
-        <TooltipRenderer tooltip={<Text>This is a tooltip!</Text>}>
-          {({ triggerProps }) => (
-            <Box aria-label="Help" {...triggerProps}>
-              <IconHelp />
-            </Box>
-          )}
-        </TooltipRenderer>
-      </Inline>,
+      <TooltipRenderer tooltip={<Text>This is a tooltip!</Text>}>
+        {({ triggerProps }) => (
+          <Box {...triggerProps}>
+            <Placeholder label="Tooltip trigger" height={100} />
+          </Box>
+        )}
+      </TooltipRenderer>,
     ),
   },
 ];
