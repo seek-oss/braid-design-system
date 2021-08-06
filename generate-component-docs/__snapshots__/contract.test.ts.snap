@@ -364,26 +364,40 @@ Object {
         | "brandAccent"
         | "brandAccentActive"
         | "brandAccentHover"
+        | "brandAccentLighter"
+        | "brandAccentLighterActive"
+        | "brandAccentLighterHover"
         | "card"
         | "caution"
+        | "cautionAccent"
         | "cautionLight"
         | "critical"
+        | "criticalAccent"
         | "criticalActive"
         | "criticalHover"
         | "criticalLight"
+        | "criticalLighter"
+        | "criticalLighterActive"
+        | "criticalLighterHover"
         | "formAccent"
         | "formAccentActive"
         | "formAccentDisabled"
         | "formAccentHover"
+        | "formAccentLighter"
+        | "formAccentLighterActive"
+        | "formAccentLighterHover"
         | "info"
+        | "infoAccent"
         | "infoLight"
         | "input"
         | "inputDisabled"
         | "neutral"
         | "neutralLight"
         | "positive"
+        | "positiveAccent"
         | "positiveLight"
         | "promote"
+        | "promoteAccent"
         | "promoteLight"
         | "selection"
     borderRadius?: 
@@ -398,15 +412,20 @@ Object {
     boxShadow?: 
         | "borderBrandAccentLarge"
         | "borderCaution"
+        | "borderCautionLight"
         | "borderCritical"
         | "borderCriticalLarge"
+        | "borderCriticalLight"
         | "borderField"
         | "borderFormAccent"
         | "borderFormAccentLarge"
         | "borderFormHover"
         | "borderInfo"
+        | "borderInfoLight"
         | "borderPositive"
+        | "borderPositiveLight"
         | "borderPromote"
+        | "borderPromoteLight"
         | "borderStandard"
         | "borderStandardInverted"
         | "borderStandardInvertedLarge"
@@ -1281,26 +1300,40 @@ Object {
         | "brandAccent"
         | "brandAccentActive"
         | "brandAccentHover"
+        | "brandAccentLighter"
+        | "brandAccentLighterActive"
+        | "brandAccentLighterHover"
         | "card"
         | "caution"
+        | "cautionAccent"
         | "cautionLight"
         | "critical"
+        | "criticalAccent"
         | "criticalActive"
         | "criticalHover"
         | "criticalLight"
+        | "criticalLighter"
+        | "criticalLighterActive"
+        | "criticalLighterHover"
         | "formAccent"
         | "formAccentActive"
         | "formAccentDisabled"
         | "formAccentHover"
+        | "formAccentLighter"
+        | "formAccentLighterActive"
+        | "formAccentLighterHover"
         | "info"
+        | "infoAccent"
         | "infoLight"
         | "input"
         | "inputDisabled"
         | "neutral"
         | "neutralLight"
         | "positive"
+        | "positiveAccent"
         | "positiveLight"
         | "promote"
+        | "promoteAccent"
         | "promoteLight"
         | "selection"
     borderRadius?: 
@@ -1315,15 +1348,20 @@ Object {
     boxShadow?: 
         | "borderBrandAccentLarge"
         | "borderCaution"
+        | "borderCautionLight"
         | "borderCritical"
         | "borderCriticalLarge"
+        | "borderCriticalLight"
         | "borderField"
         | "borderFormAccent"
         | "borderFormAccentLarge"
         | "borderFormHover"
         | "borderInfo"
+        | "borderInfoLight"
         | "borderPositive"
+        | "borderPositiveLight"
         | "borderPromote"
+        | "borderPromoteLight"
         | "borderStandard"
         | "borderStandardInverted"
         | "borderStandardInvertedLarge"
@@ -1808,7 +1846,7 @@ Object {
     styleBody?: boolean
     theme: {
         background: string
-        backgroundLightness: { body: "dark" | "light"; brand: "dark" | "light"; brandAccent: "dark" | "light"; brandAccentActive: "dark" | "light"; brandAccentHover: "dark" | "light"; card: "dark" | "light"; ... 20 more ...; selection: "dark" | "light"; }
+        backgroundLightness: { body: "dark" | "light"; brand: "dark" | "light"; brandAccent: "dark" | "light"; brandAccentActive: "dark" | "light"; brandAccentHover: "dark" | "light"; brandAccentLighter: "dark" | "light"; ... 34 more ...; selection: "dark" | "light"; }
         color: { foreground: { brandAccent: string; caution: string; critical: string; formAccent: string; info: string; link: string; linkHover: string; linkVisited: string; neutral: string; neutralInverted: string; ... 4 more ...; secondaryInverted: string; }; background: { ...; }; }
         displayName: string
         name: string
@@ -7676,8 +7714,8 @@ exports[`filterSuggestions 1`] = `
 Object {
   exportType: component,
   props: {
-    __@iterator@592: () => IterableIterator<FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>>
-    __@unscopables@1490: () => { copyWithin: boolean; entries: boolean; fill: boolean; find: boolean; findIndex: boolean; keys: boolean; values: boolean; }
+    __@iterator@589: () => IterableIterator<FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>>
+    __@unscopables@1487: () => { copyWithin: boolean; entries: boolean; fill: boolean; find: boolean; findIndex: boolean; keys: boolean; values: boolean; }
     concat: { (...items: ConcatArray<FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>>[]): (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]; (...items: (FilterableSuggestion<...> | ... 1 more ... | ConcatArray<...>)[]): (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]; }
     copyWithin: (target: number, start: number, end?: number | undefined) => FilterableSuggestions<Value>
     entries: () => IterableIterator<[number, FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>]>

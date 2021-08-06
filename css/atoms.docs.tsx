@@ -397,13 +397,23 @@ const docs: CssDoc = {
                     'Used for large borders around branded elements.',
                   borderPositive:
                     'Used for borders around “positive” elements.',
+                  borderPositiveLight:
+                    'Used for borders around “positiveLight” elements.',
                   borderCritical:
                     'Used for borders around “critical” elements.',
                   borderCriticalLarge:
                     'Used for large borders around “critical” elements.',
+                  borderCriticalLight:
+                    'Used for borders around “criticalLight” elements.',
                   borderCaution: 'Used for borders around “caution” elements.',
+                  borderCautionLight:
+                    'Used for borders around “cautionLight” elements.',
                   borderInfo: 'Used for borders around “info” elements.',
+                  borderInfoLight:
+                    'Used for borders around “infoLight” elements.',
                   borderPromote: 'Used for borders around “promote” elements.',
+                  borderPromoteLight:
+                    'Used for borders around “promoteLight” elements.',
                 }),
               ).map(([boxShadow, description]) => (
                 <Columns key={boxShadow} space="medium" alignY="center">

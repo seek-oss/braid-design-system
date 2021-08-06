@@ -405,11 +405,21 @@ const docs: ComponentDocs = {
                 brand: 'Used for branding larger areas of the screen.',
                 brandAccent: 'Used for hero elements on the screen.',
                 brandAccentHover: 'Hover colour for “brandAccent” elements.',
-                brandAccentActive: 'Hover colour for “brandAccent” elements.',
+                brandAccentActive: 'Active colour for “brandAccent” elements.',
+                brandAccentLighter: 'Used for lighter “brandAccent” elements',
+                brandAccentLighterActive:
+                  'Active colour for “brandAccentLighter” elements.',
+                brandAccentLighterHover:
+                  'Hover colour for brandAccentLighter” elements.',
                 formAccent:
                   'Used for prominent interactive elements, typically within a form.',
                 formAccentHover: 'Hover colour for “formAccent” elements.',
                 formAccentActive: 'Active colour for “formAccent” elements.',
+                formAccentLighter: 'Used for lighter “formAccent” elements',
+                formAccentLighterActive:
+                  'Active colour for “formAccentLighter” elements.',
+                formAccentLighterHover:
+                  'Hover colour for formAccentLighter” elements.',
                 formAccentDisabled:
                   'Disabled colour for “formAccent” elements.',
                 input: 'Used for input fields.',
@@ -418,19 +428,29 @@ const docs: ComponentDocs = {
                 selection:
                   'Used for user selections, e.g. selected item in an Autosuggest.',
                 positive: 'Used for heavier “positive” elements.',
-                positiveLight: 'Used for lighter “positive” elements.',
+                positiveAccent: 'Used for accented “positive” elements.',
+                positiveLight: 'Used for light “positive” elements.',
                 critical: 'Used for heavier “critical” elements.',
                 criticalHover: 'Hover colour for “critical” elements.',
                 criticalActive: 'Active colour for “critical” elements.',
-                criticalLight: 'Used for lighter “critical” elements.',
+                criticalAccent: 'Used for accented “critical” elements.',
+                criticalLight: 'Used for light “critical” elements.',
+                criticalLighter: 'Used for lighter “critical” elements',
+                criticalLighterActive:
+                  'Active colour for “criticalLighter” elements.',
+                criticalLighterHover:
+                  'Hover colour for criticalLighter” elements.',
                 caution: 'Used for heavier “caution” elements.',
-                cautionLight: 'Used for lighter “caution” elements.',
+                cautionAccent: 'Used for accented “caution” elements.',
+                cautionLight: 'Used for light “caution” elements.',
                 info: 'Used for heavier “info” elements.',
-                infoLight: 'Used for lighter “info” elements.',
+                infoAccent: 'Used for accented “info” elements.',
+                infoLight: 'Used for light “info” elements.',
                 promote: 'Used for heavier “promote” elements.',
-                promoteLight: 'Used for lighter “promote” elements.',
+                promoteAccent: 'Used for accented “promote” elements.',
+                promoteLight: 'Used for light “promote” elements.',
                 neutral: 'Used for heavier “neutral” elements.',
-                neutralLight: 'Used for lighter “neutral” elements.',
+                neutralLight: 'Used for light “neutral” elements.',
               }),
             ).map(([background, description]) => (
               <Columns key={background} space="medium" alignY="center">
@@ -527,12 +547,22 @@ const docs: ComponentDocs = {
                 borderBrandAccentLarge:
                   'Used for large borders around branded elements.',
                 borderPositive: 'Used for borders around “positive” elements.',
+                borderPositiveLight:
+                  'Used for borders around “positiveLight” elements.',
                 borderCritical: 'Used for borders around “critical” elements.',
                 borderCriticalLarge:
                   'Used for large borders around “critical” elements.',
+                borderCriticalLight:
+                  'Used for borders around “criticalLight” elements.',
                 borderCaution: 'Used for borders around “caution” elements.',
+                borderCautionLight:
+                  'Used for borders around “cautionLight” elements.',
                 borderInfo: 'Used for borders around “info” elements.',
+                borderInfoLight:
+                  'Used for borders around “infoLight” elements.',
                 borderPromote: 'Used for borders around “promote” elements.',
+                borderPromoteLight:
+                  'Used for borders around “promoteLight” elements.',
               }),
             ).map(([boxShadow, description]) => (
               <Columns key={boxShadow} space="medium" alignY="center">

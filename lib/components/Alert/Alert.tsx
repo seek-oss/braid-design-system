@@ -17,7 +17,6 @@ import { textAlignedToIcon } from '../../css/textAlignedToIcon.css';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
-import * as styles from './Alert.css';
 
 type Tone = 'promote' | 'info' | 'positive' | 'caution' | 'critical';
 
@@ -32,13 +31,29 @@ export type AlertProps = {
   id?: string;
 } & CloseProps;
 
-const backgroundForTone = {
+const backgroundForTone: Record<Tone, BoxProps['background']> = {
   promote: 'promoteLight',
   info: 'infoLight',
   positive: 'positiveLight',
   caution: 'cautionLight',
   critical: 'criticalLight',
-} as Record<Tone, BoxProps['background']>;
+};
+
+const keylineBackgroundForTone: Record<Tone, BoxProps['background']> = {
+  promote: 'promoteAccent',
+  info: 'infoAccent',
+  positive: 'positiveAccent',
+  caution: 'cautionAccent',
+  critical: 'criticalAccent',
+};
+
+const borderForTone: Record<Tone, BoxProps['boxShadow']> = {
+  promote: 'borderPromoteLight',
+  info: 'borderInfoLight',
+  positive: 'borderPositiveLight',
+  caution: 'borderCautionLight',
+  critical: 'borderCriticalLight',
+};
 
 const icons = {
   positive: IconPositive,
@@ -95,12 +110,12 @@ export const Alert = ({
       {parentBackground !== 'card' && (
         <Overlay
           borderRadius={borderRadius}
-          className={styles.boxShadowForTone[tone]}
+          boxShadow={borderForTone[tone]}
           visible
         />
       )}
       <Box
-        className={styles.keylineForTone[tone]}
+        background={keylineBackgroundForTone[tone]}
         paddingLeft={highlightBarSize}
         position="absolute"
         top={0}

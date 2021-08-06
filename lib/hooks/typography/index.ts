@@ -115,7 +115,13 @@ export function useWeight(weight: keyof typeof styles.fontWeight) {
 }
 
 const neutralToneOverrideForBackground = {
+  formAccentLighter: 'formAccent',
+  formAccentLighterActive: 'formAccent',
+  formAccentLighterHover: 'formAccent',
   criticalLight: 'critical',
+  criticalLighter: 'critical',
+  criticalLighterActive: 'critical',
+  criticalLighterHover: 'critical',
   caution: 'caution',
   cautionLight: 'caution',
   positiveLight: 'positive',

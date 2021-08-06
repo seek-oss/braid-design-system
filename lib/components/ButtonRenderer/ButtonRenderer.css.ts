@@ -121,11 +121,6 @@ export const loadingDot = style({
   },
 });
 
-export const softBackgrounds = styleVariants(
-  vars.buttonBackgroundSoft,
-  (background) => ({ background }),
-);
-
 export const invertedBackgrounds = styleVariants({
   soft: { background: rgba('#fff', 0.075) },
   hover: { background: rgba('#fff', 0.15) },
