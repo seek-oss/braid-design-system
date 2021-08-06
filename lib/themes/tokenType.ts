@@ -153,6 +153,13 @@ export interface BraidTokens {
     formAccentActive: string;
     formAccentHover: string;
   };
+  alertKeylineColor: {
+    caution: string;
+    critical: string;
+    info: string;
+    positive: string;
+    promote: string;
+  };
   alertBorderColor: {
     caution: string;
     critical: string;

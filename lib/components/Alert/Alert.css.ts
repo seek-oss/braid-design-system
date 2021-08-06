@@ -14,5 +14,5 @@ export const boxShadowForTone = styleVariants(toneVariants, (tone) => ({
 }));
 
 export const keylineForTone = styleVariants(toneVariants, (tone) => ({
-  background: vars.borderColor[tone],
+  background: vars.alertKeylineColor[tone],
 }));

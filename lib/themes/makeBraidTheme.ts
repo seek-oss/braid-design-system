@@ -55,6 +55,7 @@ const decorateTokens = (braidTokens: BraidTokens) => {
 
     // omit
     buttonBackgroundSoft,
+    alertKeylineColor,
     alertBorderColor,
     focusRingSize,
 

@@ -239,6 +239,13 @@ const tokens: BraidTokens = {
     formAccentActive: darken(0.05, palette.indigo['100']),
     formAccentHover: darken(0.025, palette.indigo['100']),
   },
+  alertKeylineColor: {
+    caution: palette.yellow['500'],
+    critical: palette.red['500'],
+    info: palette.blue['500'],
+    positive: palette.mint['500'],
+    promote: palette.purple['500'],
+  },
   alertBorderColor: {
     caution: palette.yellow['300'],
     critical: palette.red['300'],

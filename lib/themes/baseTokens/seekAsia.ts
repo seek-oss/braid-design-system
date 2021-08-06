@@ -279,6 +279,13 @@ export const makeTokens = ({
       formAccentActive: tint(0.85, formAccent),
       formAccentHover: tint(0.9, formAccent),
     },
+    alertKeylineColor: {
+      caution,
+      critical,
+      info,
+      positive,
+      promote,
+    },
     alertBorderColor: {
       caution: mix(0.6, caution, getLightVariant(caution)),
       critical: mix(0.3, critical, getLightVariant(critical)),
