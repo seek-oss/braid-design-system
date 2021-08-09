@@ -125,15 +125,15 @@ const docs: ComponentDocs = {
             <Checkbox
               id={`${id}_standard`}
               label="Standard"
-              checked={getState('two')}
-              onChange={() => toggleState('two')}
+              checked={getState('standard')}
+              onChange={() => toggleState('standard')}
               size="standard"
             />
             <Checkbox
               id={`${id}_small`}
               label="Small"
-              checked={getState('one')}
-              onChange={() => toggleState('one')}
+              checked={getState('small')}
+              onChange={() => toggleState('small')}
               size="small"
             />
           </Stack>,
@@ -148,13 +148,13 @@ const docs: ComponentDocs = {
         </Text>
       ),
       background: 'card',
-      Example: ({ id, handler }) =>
+      Example: ({ id, getState, toggleState }) =>
         source(
           <Checkbox
             id={id}
             disabled={true}
-            checked={false}
-            onChange={handler}
+            checked={getState('checked')}
+            onChange={() => toggleState('checked')}
             label="Label"
           />,
         ),
