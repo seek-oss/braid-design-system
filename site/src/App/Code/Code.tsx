@@ -38,9 +38,10 @@ import usePlayroomScope from '../../../../lib/playroom/useScope';
 import { PlayroomStateProvider } from '../../../../lib/playroom/playroomState';
 
 export const formatSnippet = memoize((snippet: string) => {
+  // Remove id props from code snippets since they're not needed in Playroom
   const cleanedSnippet = snippet
     .replace(/id={id}/g, '')
-    .replace(/id={`\${id}_[0-9]`}/g, '');
+    .replace(/id={`\${id}_[0-9a-zA-Z]+`}/g, '');
 
   const formattedSnippet = prettier
     .format(cleanedSnippet, {
