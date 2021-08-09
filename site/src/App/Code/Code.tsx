@@ -40,7 +40,7 @@ import { PlayroomStateProvider } from '../../../../lib/playroom/playroomState';
 export const formatSnippet = memoize((snippet: string) => {
   const cleanedSnippet = snippet
     .replace(/id={id}/g, '')
-    .replace(/id={`\${id}_[0-9]`}/g, '');
+    .replace(/id={`\${id}_[0-9a-zA-Z]+`}/g, '');
 
   const formattedSnippet = prettier
     .format(cleanedSnippet, {
