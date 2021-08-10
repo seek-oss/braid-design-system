@@ -1,5 +1,29 @@
 # braid-design-system
 
+## 30.3.0
+
+### Minor Changes
+
+- **IconThumb, IconFlag:** Add new icons ([#980](https://github.com/seek-oss/braid-design-system/pull/980))
+
+- **Autosuggest, Dropdown, MonthPicker, PasswordField, Textarea, TextField:** Add aria-label & aria-labelledby support ([#979](https://github.com/seek-oss/braid-design-system/pull/979))
+
+  In some cases it may be necessary for a field to be labelled by another element or even not to have a visual label. Instead of providing a **label** either **aria-label** or **aria-labelledby** can be provided.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  // Standard field label
+  <TextField label="My field" />
+
+  // Hidden field label
+  <TextField aria-label="My field" />
+
+  // Labelled by another element
+  <Heading id="title">Title</Heading>
+  <TextField aria-labelledby="title" />
+  ```
+
 ## 30.2.2
 
 ### Patch Changes
