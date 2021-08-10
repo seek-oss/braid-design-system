@@ -20,13 +20,13 @@ type FormElementProps = AllHTMLAttributes<HTMLFormElement>;
 
 export type FieldLabelVariant =
   | {
-      'aria-labelledby': NonNullable<string>;
+      'aria-labelledby': string;
       secondaryLabel?: never;
       tertiaryLabel?: never;
       description?: never;
     }
   | {
-      'aria-label': NonNullable<string>;
+      'aria-label': string;
       secondaryLabel?: never;
       tertiaryLabel?: never;
       description?: never;
