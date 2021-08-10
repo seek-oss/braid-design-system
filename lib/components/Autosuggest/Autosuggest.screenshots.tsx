@@ -148,5 +148,25 @@ export const screenshots: ComponentScreenshot = {
         );
       },
     },
+    {
+      label: 'Autosuggest with no visual label',
+      Container,
+      Example: ({ id }) => {
+        const [value, setValue] = useState<Value>({ text: '' });
+
+        return (
+          <Autosuggest
+            aria-label="I like to eat"
+            id={id}
+            value={value}
+            onChange={setValue}
+            onClear={() => setValue({ text: '' })}
+            suggestions={filterSuggestions(
+              makeSuggestions(['Apples', 'Bananas', 'Broccoli', 'Carrots']),
+            )}
+          />
+        );
+      },
+    },
   ],
 };

@@ -17,17 +17,34 @@ import { mergeIds } from '../mergeIds';
 import * as styles from './Field.css';
 
 type FormElementProps = AllHTMLAttributes<HTMLFormElement>;
-export interface FieldProps {
+
+export type FieldLabelVariant =
+  | {
+      'aria-labelledby': string;
+      secondaryLabel?: never;
+      tertiaryLabel?: never;
+      description?: never;
+    }
+  | {
+      'aria-label': string;
+      secondaryLabel?: never;
+      tertiaryLabel?: never;
+      description?: never;
+    }
+  | {
+      label: FieldLabelProps['label'];
+      secondaryLabel?: FieldLabelProps['secondaryLabel'];
+      tertiaryLabel?: FieldLabelProps['tertiaryLabel'];
+      description?: FieldLabelProps['description'];
+    };
+
+export type FieldBaseProps = {
   id: NonNullable<FormElementProps['id']>;
   value?: FormElementProps['value'];
   labelId?: string;
   name?: FormElementProps['name'];
   disabled?: FormElementProps['disabled'];
   autoComplete?: FormElementProps['autoComplete'];
-  label?: FieldLabelProps['label'];
-  secondaryLabel?: FieldLabelProps['secondaryLabel'];
-  tertiaryLabel?: FieldLabelProps['tertiaryLabel'];
-  description?: FieldLabelProps['description'];
   message?: FieldMessageProps['message'];
   secondaryMessage?: FieldMessageProps['secondaryMessage'];
   reserveMessageSpace?: FieldMessageProps['reserveMessageSpace'];
@@ -38,7 +55,7 @@ export interface FieldProps {
   icon?: ReactNode;
   prefix?: string;
   required?: boolean;
-}
+};
 
 type PassthroughProps =
   | 'id'
@@ -46,7 +63,7 @@ type PassthroughProps =
   | 'disabled'
   | 'autoComplete'
   | 'autoFocus';
-interface FieldRenderProps extends Pick<FieldProps, PassthroughProps> {
+interface FieldRenderProps extends Pick<FieldBaseProps, PassthroughProps> {
   background: BoxProps['background'];
   borderRadius: BoxProps['borderRadius'];
   width: BoxProps['width'];
@@ -55,19 +72,22 @@ interface FieldRenderProps extends Pick<FieldProps, PassthroughProps> {
   outline: BoxProps['outline'];
   'aria-describedby'?: string;
   'aria-required'?: boolean;
+  'aria-label'?: string;
+  'aria-labelledby'?: string;
   className: string;
 }
 
-interface InternalFieldProps extends FieldProps {
-  secondaryIcon?: ReactNode;
-  children(
-    overlays: ReactNode,
-    props: FieldRenderProps,
-    icon: ReactNode,
-    secondaryIcon: ReactNode,
-    prefix: ReactNode,
-  ): ReactNode;
-}
+type InternalFieldProps = FieldBaseProps &
+  FieldLabelVariant & {
+    secondaryIcon?: ReactNode;
+    children(
+      overlays: ReactNode,
+      props: FieldRenderProps,
+      icon: ReactNode,
+      secondaryIcon: ReactNode,
+      prefix: ReactNode,
+    ): ReactNode;
+  };
 
 export const Field = ({
   id,
@@ -76,10 +96,6 @@ export const Field = ({
   name,
   disabled,
   autoComplete,
-  label,
-  secondaryLabel,
-  tertiaryLabel,
-  description,
   children,
   message,
   secondaryMessage,
@@ -92,6 +108,7 @@ export const Field = ({
   icon,
   prefix,
   required,
+  ...restProps
 }: InternalFieldProps) => {
   assert(
     prefix === undefined || typeof prefix === 'string',
@@ -99,12 +116,16 @@ export const Field = ({
   );
 
   const messageId = `${id}-message`;
-  const descriptionId = description ? `${id}-description` : undefined;
+  const descriptionId =
+    'description' in restProps && restProps.description
+      ? `${id}-description`
+      : undefined;
   const fieldBackground = disabled ? 'inputDisabled' : 'input';
   const showFieldBorder =
     useBackgroundLightness() === 'light' && (tone !== 'critical' || disabled);
 
   const hasValue = typeof value === 'string' ? value.length > 0 : value != null;
+  const hasVisualLabel = 'label' in restProps;
 
   const overlays = (
     <Fragment>
@@ -125,14 +146,20 @@ export const Field = ({
 
   return (
     <Stack space="xsmall">
-      {label ? (
+      {hasVisualLabel ? (
         <FieldLabel
           id={labelId}
           htmlFor={id}
-          label={label}
-          secondaryLabel={secondaryLabel}
-          tertiaryLabel={tertiaryLabel}
-          description={description}
+          label={'label' in restProps ? restProps.label : undefined}
+          secondaryLabel={
+            'secondaryLabel' in restProps ? restProps.secondaryLabel : undefined
+          }
+          tertiaryLabel={
+            'tertiaryLabel' in restProps ? restProps.tertiaryLabel : undefined
+          }
+          description={
+            'description' in restProps ? restProps.description : undefined
+          }
           descriptionId={descriptionId}
         />
       ) : null}
@@ -161,6 +188,12 @@ export const Field = ({
               descriptionId,
             ),
             'aria-required': required,
+            ...('aria-label' in restProps
+              ? { 'aria-label': restProps['aria-label'] }
+              : {}),
+            ...('aria-labelledby' in restProps
+              ? { 'aria-labelledby': restProps['aria-labelledby'] }
+              : {}),
             disabled,
             autoComplete,
             autoFocus,

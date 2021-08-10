@@ -2,10 +2,15 @@ import React from 'react';
 import { Optional } from 'utility-types';
 import { useFallbackState, StateProp } from '../../playroom/playroomState';
 import { useFallbackId } from '../../playroom/utils';
-import { TextField as BraidTextField, TextFieldProps } from './TextField';
+import {
+  TextField as BraidTextField,
+  TextFieldBaseProps,
+  TextFieldLabelProps,
+} from './TextField';
 
 type PlayroomTextFieldProps = StateProp &
-  Optional<TextFieldProps, 'id' | 'value' | 'onChange'> & {
+  Optional<TextFieldBaseProps, 'id' | 'value' | 'onChange'> &
+  TextFieldLabelProps & {
     onChange?: (fakeEvent: { currentTarget: { value: string } }) => void;
   };
 

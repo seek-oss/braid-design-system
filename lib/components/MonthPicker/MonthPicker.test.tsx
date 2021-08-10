@@ -10,6 +10,7 @@ describe('MonthPicker (Double dropdown)', () => {
       <BraidTestProvider>
         <MonthPicker
           id="month-picker"
+          label="Start"
           value={{}}
           onChange={onChange}
           minYear={1999}
@@ -32,6 +33,7 @@ describe('MonthPicker (Double dropdown)', () => {
       <BraidTestProvider>
         <MonthPicker
           id="month-picker"
+          label="Start"
           value={{}}
           onChange={onChange}
           minYear={1999}
@@ -55,6 +57,35 @@ describe('MonthPicker (Double dropdown)', () => {
         <MonthPicker
           id="month-picker"
           label="Start"
+          value={{}}
+          onChange={() => {}}
+        />
+      </BraidTestProvider>,
+    );
+
+    expect(getByLabelText('Start').tagName).toBe('FIELDSET');
+  });
+  it('associates fieldset with aria-label correctly', () => {
+    const { getByLabelText } = render(
+      <BraidTestProvider>
+        <MonthPicker
+          id="month-picker"
+          aria-label="Start"
+          value={{}}
+          onChange={() => {}}
+        />
+      </BraidTestProvider>,
+    );
+
+    expect(getByLabelText('Start').tagName).toBe('FIELDSET');
+  });
+  it('associates fieldset with aria-labelledby correctly', () => {
+    const { getByLabelText } = render(
+      <BraidTestProvider>
+        <div id="fieldLabel">Start</div>
+        <MonthPicker
+          id="month-picker"
+          aria-labelledby="fieldLabel"
           value={{}}
           onChange={() => {}}
         />

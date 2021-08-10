@@ -84,6 +84,8 @@ Object {
   exportType: component,
   props: {
     aria-describedby?: string
+    aria-label: string
+    aria-labelledby: string
     autoFocus?: boolean
     automaticSelection?: boolean
     data?: DataAttributeMap
@@ -92,7 +94,7 @@ Object {
     hideSuggestionsOnSelection?: boolean
     icon?: ReactNode
     id: string
-    label?: ReactNode
+    label: ReactNode
     message?: ReactNode
     name?: string
     onBlur?: () => void
@@ -2772,6 +2774,8 @@ Object {
   exportType: component,
   props: {
     aria-describedby?: string
+    aria-label: string
+    aria-labelledby: string
     autoComplete?: string
     autoFocus?: boolean
     children: 
@@ -2782,7 +2786,7 @@ Object {
     disabled?: boolean
     icon?: ReactNode
     id: string
-    label?: ReactNode
+    label: ReactNode
     message?: ReactNode
     name?: string
     onBlur?: FocusEventHandler<HTMLSelectElement>
@@ -3823,6 +3827,37 @@ Object {
 `;
 
 exports[`IconFilter 1`] = `
+Object {
+  exportType: component,
+  props: {
+    alignY?: 
+        | "lowercase"
+        | "uppercase"
+    data?: DataAttributeMap
+    size?: 
+        | "fill"
+        | "large"
+        | "small"
+        | "standard"
+        | "xsmall"
+    title?: string
+    titleId?: string
+    tone?: 
+        | "brandAccent"
+        | "caution"
+        | "critical"
+        | "formAccent"
+        | "info"
+        | "link"
+        | "neutral"
+        | "positive"
+        | "promote"
+        | "secondary"
+},
+}
+`;
+
+exports[`IconFlag 1`] = `
 Object {
   exportType: component,
   props: {
@@ -5343,6 +5378,40 @@ Object {
 }
 `;
 
+exports[`IconThumb 1`] = `
+Object {
+  exportType: component,
+  props: {
+    alignY?: 
+        | "lowercase"
+        | "uppercase"
+    data?: DataAttributeMap
+    direction?: 
+        | "down"
+        | "up"
+    size?: 
+        | "fill"
+        | "large"
+        | "small"
+        | "standard"
+        | "xsmall"
+    title?: string
+    titleId?: string
+    tone?: 
+        | "brandAccent"
+        | "caution"
+        | "critical"
+        | "formAccent"
+        | "info"
+        | "link"
+        | "neutral"
+        | "positive"
+        | "promote"
+        | "secondary"
+},
+}
+`;
+
 exports[`IconTick 1`] = `
 Object {
   exportType: component,
@@ -6218,12 +6287,14 @@ exports[`MonthPicker 1`] = `
 Object {
   exportType: component,
   props: {
+    aria-label: string
+    aria-labelledby: string
     ascendingYears?: boolean
     data?: DataAttributeMap
     description?: ReactNode
     disabled?: boolean
     id: string
-    label?: ReactNode
+    label: ReactNode
     maxYear?: number
     message?: ReactNode
     minYear?: number
@@ -6298,13 +6369,15 @@ Object {
   exportType: component,
   props: {
     aria-describedby?: string
+    aria-label: string
+    aria-labelledby: string
     autoComplete?: string
     autoFocus?: boolean
     data?: DataAttributeMap
     description?: ReactNode
     disabled?: boolean
     id: string
-    label?: ReactNode
+    label: ReactNode
     message?: ReactNode
     name?: string
     onBlur?: FocusEventHandler<HTMLInputElement>
@@ -6365,12 +6438,14 @@ exports[`RadioGroup 1`] = `
 Object {
   exportType: component,
   props: {
+    aria-label: string
+    aria-labelledby: string
     children: ReactElement<RadioItemProps, string | JSXElementConstructor<any>>[]
     data?: DataAttributeMap
     description?: ReactNode
     disabled?: boolean
     id: string
-    label?: ReactNode
+    label: ReactNode
     message?: ReactNode
     name?: string
     onChange: (event: FormEvent<HTMLInputElement>) => void
@@ -6814,6 +6889,8 @@ Object {
   exportType: component,
   props: {
     aria-describedby?: string
+    aria-label: string
+    aria-labelledby: string
     autoComplete?: string
     autoFocus?: boolean
     characterLimit?: number
@@ -6822,7 +6899,7 @@ Object {
     disabled?: boolean
     icon?: ReactNode
     id: string
-    label?: ReactNode
+    label: ReactNode
     message?: ReactNode
     name?: string
     onBlur?: FocusEventHandler<HTMLInputElement>
@@ -7584,6 +7661,8 @@ Object {
   exportType: component,
   props: {
     aria-describedby?: string
+    aria-label: string
+    aria-labelledby: string
     autoComplete?: string
     autoFocus?: boolean
     characterLimit?: number
@@ -7593,7 +7672,7 @@ Object {
     grow?: boolean
     highlightRanges?: { start: number; end?: number | undefined; }[]
     id: string
-    label?: ReactNode
+    label: ReactNode
     lineLimit?: number
     lines?: number
     message?: ReactNode

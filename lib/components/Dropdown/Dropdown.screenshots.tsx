@@ -105,5 +105,21 @@ export const screenshots: ComponentScreenshot = {
         </Dropdown>
       ),
     },
+    {
+      label: 'Dropdown with no visual label',
+      Container,
+      Example: ({ id, handler }) => (
+        <Dropdown
+          aria-label="Job Title"
+          id={id}
+          onChange={handler}
+          value=""
+          placeholder="Please select a role title"
+        >
+          <option value="1">Developer</option>
+          <option value="2">Designer</option>
+        </Dropdown>
+      ),
+    },
   ],
 };

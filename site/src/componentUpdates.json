@@ -1815,5 +1815,28 @@
   {
     "version": "30.2.2",
     "updates": []
+  },
+  {
+    "version": "30.3.0",
+    "updates": [
+      {
+        "new": [
+          "IconThumb",
+          "IconFlag"
+        ],
+        "summary": "**IconThumb, IconFlag:** Add new icons"
+      },
+      {
+        "updated": [
+          "Autosuggest",
+          "Dropdown",
+          "MonthPicker",
+          "PasswordField",
+          "Textarea",
+          "TextField"
+        ],
+        "summary": "**Autosuggest, Dropdown, MonthPicker, PasswordField, Textarea, TextField:** Add aria-label & aria-labelledby support\n\nIn some cases it may be necessary for a field to be labelled by another element or even not to have a visual label. Instead of providing a **label** either **aria-label** or **aria-labelledby** can be provided.\n\n**EXAMPLE USAGE:**\n```jsx\n// Standard field label\n<TextField label=\"My field\" />\n\n// Hidden field label\n<TextField aria-label=\"My field\" />\n\n// Labelled by another element\n<Heading id=\"title\">Title</Heading>\n<TextField aria-labelledby=\"title\" />\n```"
+      }
+    ]
   }
 ]

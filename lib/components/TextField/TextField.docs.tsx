@@ -9,6 +9,7 @@ import {
   List,
   IconHelp,
   Stack,
+  Heading,
 } from '../';
 import source from '../../utils/source.macro';
 
@@ -276,6 +277,40 @@ const docs: ComponentDocs = {
               characterLimit={50}
             />
           </>,
+        ),
+    },
+    {
+      label: 'Indirect or hidden field labels',
+      description: (
+        <Text>
+          In some cases it may be necessary for a field to be labelled by
+          another element or even not to have a visual label. Instead of
+          providing a <Strong>label</Strong> either <Strong>aria-label</Strong>{' '}
+          or <Strong>aria-labelledby</Strong> can be provided.
+        </Text>
+      ),
+      Example: ({ id, getState, setState }) =>
+        source(
+          <Stack space="large">
+            <Heading level="2" id="field1Label">
+              Custom field label
+            </Heading>
+            <TextField
+              aria-labelledby="field1Label"
+              id={`${id}_1`}
+              onChange={setState('text')}
+              value={getState('text')}
+              message="The label for this field is the Heading element before it."
+            />
+
+            <TextField
+              aria-label="Hidden label for field"
+              id={`${id}_2`}
+              onChange={setState('text2')}
+              value={getState('text2')}
+              message="The label for this field is hidden."
+            />
+          </Stack>,
         ),
     },
   ],

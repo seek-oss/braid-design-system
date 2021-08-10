@@ -4,11 +4,13 @@ import { useFallbackState, StateProp } from '../../playroom/playroomState';
 import { useFallbackId } from '../../playroom/utils';
 import {
   MonthPicker as BraidMonthPicker,
-  MonthPickerProps,
+  MonthPickerBaseProps,
+  MonthPickerLabelProps,
 } from './MonthPicker';
 
 type PlayroomMonthPickerProps = StateProp &
-  Optional<MonthPickerProps, 'id' | 'value' | 'onChange'>;
+  Optional<MonthPickerBaseProps, 'id' | 'value' | 'onChange'> &
+  MonthPickerLabelProps;
 
 export const MonthPicker = ({
   id,

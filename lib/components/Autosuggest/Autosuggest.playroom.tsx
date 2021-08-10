@@ -4,11 +4,13 @@ import { useFallbackState, StateProp } from '../../playroom/playroomState';
 import { useFallbackId } from '../../playroom/utils';
 import {
   Autosuggest as BraidAutosuggest,
-  AutosuggestProps,
+  AutosuggestBaseProps,
+  AutosuggestLabelProps,
 } from './Autosuggest';
 
 type PlayroomAutosuggestProps<Value> = StateProp &
-  Optional<AutosuggestProps<Value>, 'id' | 'value' | 'onChange'>;
+  Optional<AutosuggestBaseProps<Value>, 'id' | 'value' | 'onChange'> &
+  AutosuggestLabelProps;
 
 export function Autosuggest<Value>({
   id,

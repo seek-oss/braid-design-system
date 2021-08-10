@@ -62,6 +62,13 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
+      label: 'Textarea with no visual label',
+      Container,
+      Example: ({ id, handler }) => (
+        <Textarea id={id} value="" onChange={handler} aria-label="Title" />
+      ),
+    },
+    {
       label: 'Textarea with error',
       Container,
       Example: ({ id, handler }) => (

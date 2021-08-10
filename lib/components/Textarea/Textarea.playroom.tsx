@@ -2,10 +2,15 @@ import React from 'react';
 import { Optional } from 'utility-types';
 import { useFallbackState, StateProp } from '../../playroom/playroomState';
 import { useFallbackId } from '../../playroom/utils';
-import { Textarea as BraidTextarea, TextareaProps } from './Textarea';
+import {
+  Textarea as BraidTextarea,
+  TextareaBaseProps,
+  TextareaLabelProps,
+} from './Textarea';
 
 type PlayroomTextareaProps = StateProp &
-  Optional<TextareaProps, 'id' | 'value' | 'onChange'>;
+  Optional<TextareaBaseProps, 'id' | 'value' | 'onChange'> &
+  TextareaLabelProps;
 
 export const Textarea = ({
   id,
