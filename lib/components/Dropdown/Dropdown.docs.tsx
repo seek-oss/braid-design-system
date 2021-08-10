@@ -9,6 +9,7 @@ import {
   TextLink,
   IconLocation,
   Stack,
+  Heading,
 } from '../';
 import source from '../../utils/source.macro';
 
@@ -260,6 +261,47 @@ const docs: ComponentDocs = {
             <option>Option 2</option>
             <option>Option 3</option>
           </Dropdown>,
+        ),
+    },
+    {
+      label: 'Indirect or hidden field labels',
+      description: (
+        <Text>
+          In some cases it may be necessary for a field to be labelled by
+          another element or even not to have a visual label. Instead of
+          providing a <Strong>label</Strong> either <Strong>aria-label</Strong>{' '}
+          or <Strong>aria-labelledby</Strong> can be provided.
+        </Text>
+      ),
+      Example: ({ id, getState, setState }) =>
+        source(
+          <Stack space="large">
+            <Heading level="2" id="field1Label">
+              Custom field label
+            </Heading>
+            <Dropdown
+              aria-labelledby="field1Label"
+              message="The label for this field is the Heading element before it."
+              id={`${id}_1`}
+              onChange={setState('dropdown')}
+              value={getState('dropdown')}
+              placeholder="Please select"
+            >
+              <option>Option 1</option>
+              <option>Option 2</option>
+            </Dropdown>
+            <Dropdown
+              aria-label="Hidden label for field"
+              message="The label for this field is hidden."
+              id={`${id}_2`}
+              onChange={setState('dropdown')}
+              value={getState('dropdown')}
+              placeholder="Please select"
+            >
+              <option>Option 1</option>
+              <option>Option 2</option>
+            </Dropdown>
+          </Stack>,
         ),
     },
   ],

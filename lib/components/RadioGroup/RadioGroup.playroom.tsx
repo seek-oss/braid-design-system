@@ -2,10 +2,15 @@ import React from 'react';
 import { Optional } from 'utility-types';
 import { useFallbackState, StateProp } from '../../playroom/playroomState';
 import { useFallbackId } from '../../playroom/utils';
-import { RadioGroup as BraidRadioGroup, RadioGroupProps } from './RadioGroup';
+import {
+  RadioGroup as BraidRadioGroup,
+  RadioGroupBaseProps,
+  RadioGroupLabelProps,
+} from './RadioGroup';
 
 type PlayroomRadioProps = StateProp &
-  Optional<RadioGroupProps, 'id' | 'value' | 'onChange'>;
+  Optional<RadioGroupBaseProps, 'id' | 'value' | 'onChange'> &
+  RadioGroupLabelProps;
 
 export const RadioGroup = ({
   id,

@@ -48,6 +48,18 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
+      label: 'No visual label',
+      Container,
+      Example: ({ id, handler }) => (
+        <MonthPicker
+          id={id}
+          aria-label="Started"
+          value={{ month: 1, year: 2019 }}
+          onChange={handler}
+        />
+      ),
+    },
+    {
       label: 'Custom month and year labels',
       Container,
       Example: ({ id, handler }) => (

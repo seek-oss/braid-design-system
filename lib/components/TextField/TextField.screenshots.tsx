@@ -122,6 +122,13 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
+      label: 'TextField with no visual label',
+      Container,
+      Example: ({ id, handler }) => (
+        <TextField aria-label="Title" id={id} value="" onChange={handler} />
+      ),
+    },
+    {
       label: 'TextField with description',
       Container,
       Example: ({ id, handler }) => (

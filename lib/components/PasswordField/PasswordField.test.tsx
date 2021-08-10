@@ -99,6 +99,37 @@ describe('PasswordField', () => {
     expect(getByLabelText('My field').tagName).toBe('INPUT');
   });
 
+  it('associates field with aria-label correctly', () => {
+    const { getByLabelText } = render(
+      <BraidTestProvider>
+        <PasswordField
+          id="field"
+          aria-label="My field"
+          value=""
+          onChange={() => {}}
+        />
+      </BraidTestProvider>,
+    );
+
+    expect(getByLabelText('My field').tagName).toBe('INPUT');
+  });
+
+  it('associates field with aria-labelledby correctly', () => {
+    const { getByLabelText } = render(
+      <BraidTestProvider>
+        <div id="fieldLabel">My field</div>
+        <PasswordField
+          id="field"
+          aria-labelledby="fieldLabel"
+          value=""
+          onChange={() => {}}
+        />
+      </BraidTestProvider>,
+    );
+
+    expect(getByLabelText('My field').tagName).toBe('INPUT');
+  });
+
   it('associates field with message correctly', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>

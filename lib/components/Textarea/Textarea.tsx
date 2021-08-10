@@ -9,13 +9,20 @@ import React, {
 } from 'react';
 import { Box } from '../Box/Box';
 import { formatRanges } from './formatRanges';
-import { Field, FieldProps } from '../private/Field/Field';
+import {
+  Field,
+  FieldBaseProps,
+  FieldLabelVariant,
+} from '../private/Field/Field';
 import { CharacterLimitStatus } from '../private/Field/CharacterLimitStatus';
 import * as styles from './Textarea.css';
 
 type NativeTextareaProps = AllHTMLAttributes<HTMLTextAreaElement>;
-export interface TextareaProps
-  extends Omit<FieldProps, 'labelId' | 'secondaryMessage' | 'icon' | 'prefix'> {
+
+export type TextareaBaseProps = Omit<
+  FieldBaseProps,
+  'value' | 'labelId' | 'secondaryMessage' | 'icon' | 'prefix'
+> & {
   value: NonNullable<NativeTextareaProps['value']>;
   onChange: NonNullable<NativeTextareaProps['onChange']>;
   onBlur?: NativeTextareaProps['onBlur'];
@@ -30,7 +37,9 @@ export interface TextareaProps
   lines?: number;
   lineLimit?: number;
   grow?: boolean;
-}
+};
+export type TextareaLabelProps = FieldLabelVariant;
+export type TextareaProps = TextareaBaseProps & TextareaLabelProps;
 
 const pxToInt = (str: string | null) =>
   typeof str === 'string' ? parseInt(str.replace('px', ''), 10) : 0;
