@@ -73,6 +73,21 @@ export const screenshots: ComponentScreenshot = {
       },
     },
     {
+      label: 'PasswordField with no visual label',
+      Container,
+      Example: ({ id }) => {
+        const [value, setValue] = useState('qwerty');
+        return (
+          <PasswordField
+            aria-label="Password"
+            id={id}
+            value={value}
+            onChange={(ev) => setValue(ev.currentTarget.value)}
+          />
+        );
+      },
+    },
+    {
       label: 'PasswordField with description',
       Container,
       Example: ({ id }) => {
