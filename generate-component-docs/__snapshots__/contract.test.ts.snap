@@ -2764,12 +2764,8 @@ Object {
         | "positive"
     value: 
         | number
-        | number & readonly string[]
         | readonly string[]
-        | readonly string[] & number
-        | readonly string[] & string
         | string
-        | string & readonly string[]
 },
 }
 `;
@@ -6295,12 +6291,8 @@ Object {
         | "positive"
     value: 
         | number
-        | number & readonly string[]
         | readonly string[]
-        | readonly string[] & number
-        | readonly string[] & string
         | string
-        | string & readonly string[]
     visibilityToggleLabel?: string
 },
 }
@@ -6830,12 +6822,8 @@ Object {
         | "url"
     value: 
         | number
-        | number & readonly string[]
         | readonly string[]
-        | readonly string[] & number
-        | readonly string[] & string
         | string
-        | string & readonly string[]
 },
 }
 `;
@@ -7600,12 +7588,8 @@ Object {
         | "positive"
     value: 
         | number
-        | number & readonly string[]
         | readonly string[]
-        | readonly string[] & number
-        | readonly string[] & string
         | string
-        | string & readonly string[]
 },
 }
 `;

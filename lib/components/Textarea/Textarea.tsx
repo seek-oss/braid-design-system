@@ -21,7 +21,7 @@ type NativeTextareaProps = AllHTMLAttributes<HTMLTextAreaElement>;
 
 export type TextareaBaseProps = Omit<
   FieldBaseProps,
-  'labelId' | 'secondaryMessage' | 'icon' | 'prefix'
+  'value' | 'labelId' | 'secondaryMessage' | 'icon' | 'prefix'
 > & {
   value: NonNullable<NativeTextareaProps['value']>;
   onChange: NonNullable<NativeTextareaProps['onChange']>;

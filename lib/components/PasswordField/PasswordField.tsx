@@ -21,7 +21,7 @@ type InputProps = AllHTMLAttributes<HTMLInputElement>;
 
 export type PasswordFieldBaseProps = Omit<
   FieldBaseProps,
-  'labelId' | 'secondaryMessage' | 'icon' | 'prefix'
+  'value' | 'labelId' | 'secondaryMessage' | 'icon' | 'prefix'
 > & {
   value: NonNullable<InputProps['value']>;
   onChange: NonNullable<InputProps['onChange']>;

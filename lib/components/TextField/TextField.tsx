@@ -22,7 +22,7 @@ type InputProps = AllHTMLAttributes<HTMLInputElement>;
 
 export type TextFieldBaseProps = Omit<
   FieldBaseProps,
-  'labelId' | 'secondaryMessage'
+  'value' | 'labelId' | 'secondaryMessage'
 > & {
   value: NonNullable<InputProps['value']>;
   type?: keyof typeof validTypes;

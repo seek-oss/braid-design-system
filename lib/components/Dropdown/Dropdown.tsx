@@ -15,7 +15,7 @@ type ValidDropdownChildren = AllHTMLAttributes<
 type SelectProps = AllHTMLAttributes<HTMLSelectElement>;
 export type DropdownBaseProps = Omit<
   FieldBaseProps,
-  'labelId' | 'secondaryMessage' | 'prefix'
+  'value' | 'labelId' | 'secondaryMessage' | 'prefix'
 > & {
   children: ValidDropdownChildren[] | ValidDropdownChildren;
   value: NonNullable<SelectProps['value']>;
