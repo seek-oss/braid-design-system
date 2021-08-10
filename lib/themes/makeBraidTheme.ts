@@ -103,7 +103,10 @@ const makeRuntimeTokens = (tokens: TreatTheme) => ({
     (background, name) => {
       // Manual override to ensure we use inverted neutral text
       // on JobsDB 'brandAccent' background and its variants.
-      if (tokens.name === 'jobsDb' && /^brandAccent/.test(name)) {
+      if (
+        tokens.name === 'jobsDb' &&
+        /^brandAccent(Active|Hover|$)/.test(name)
+      ) {
         return 'dark';
       }
 
@@ -133,7 +136,9 @@ const makeRuntimeTokens = (tokens: TreatTheme) => ({
         );
       }
 
-      return isLight(referenceColor) ? 'light' : 'dark';
+      return isLight(referenceColor, tokens.color.foreground.neutral)
+        ? 'light'
+        : 'dark';
     },
   ),
 });

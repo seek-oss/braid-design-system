@@ -124,6 +124,7 @@ const neutralToneOverrideForBackground = {
   criticalLighterHover: 'critical',
   caution: 'caution',
   cautionLight: 'caution',
+  cautionAccent: 'caution',
   positiveLight: 'positive',
   infoLight: 'info',
   promoteLight: 'promote',
