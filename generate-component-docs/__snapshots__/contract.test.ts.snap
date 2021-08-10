@@ -3815,6 +3815,37 @@ Object {
 }
 `;
 
+exports[`IconFlag 1`] = `
+Object {
+  exportType: component,
+  props: {
+    alignY?: 
+        | "lowercase"
+        | "uppercase"
+    data?: DataAttributeMap
+    size?: 
+        | "fill"
+        | "large"
+        | "small"
+        | "standard"
+        | "xsmall"
+    title?: string
+    titleId?: string
+    tone?: 
+        | "brandAccent"
+        | "caution"
+        | "critical"
+        | "formAccent"
+        | "info"
+        | "link"
+        | "neutral"
+        | "positive"
+        | "promote"
+        | "secondary"
+},
+}
+`;
+
 exports[`IconGrid 1`] = `
 Object {
   exportType: component,
@@ -5282,6 +5313,40 @@ Object {
         | "lowercase"
         | "uppercase"
     data?: DataAttributeMap
+    size?: 
+        | "fill"
+        | "large"
+        | "small"
+        | "standard"
+        | "xsmall"
+    title?: string
+    titleId?: string
+    tone?: 
+        | "brandAccent"
+        | "caution"
+        | "critical"
+        | "formAccent"
+        | "info"
+        | "link"
+        | "neutral"
+        | "positive"
+        | "promote"
+        | "secondary"
+},
+}
+`;
+
+exports[`IconThumb 1`] = `
+Object {
+  exportType: component,
+  props: {
+    alignY?: 
+        | "lowercase"
+        | "uppercase"
+    data?: DataAttributeMap
+    direction?: 
+        | "down"
+        | "up"
     size?: 
         | "fill"
         | "large"
