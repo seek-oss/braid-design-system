@@ -129,7 +129,7 @@ export default () => {
       props = [
         // @ts-ignore Not public api, yet... (requires Typescript >v3)
         // Authors are considering making public, tracked here https://github.com/microsoft/TypeScript/issues/38184
-        // Used by react-docgen-typescript paclage, see https://github.com/styleguidist/react-docgen-typescript/blob/4bffdfbd626b2f3991ccd2f565ed05b62a59f464/src/parser.ts#L664
+        // Used by react-docgen-typescript package, see https://github.com/styleguidist/react-docgen-typescript/blob/4bffdfbd626b2f3991ccd2f565ed05b62a59f464/src/parser.ts#L664
         ...checker.getAllPossiblePropertiesOfTypes(propsType.types),
         ...props,
       ];
