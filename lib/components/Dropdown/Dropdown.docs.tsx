@@ -268,7 +268,7 @@ const docs: ComponentDocs = {
       description: (
         <Text>
           In some cases it may be necessary for a field to be labelled by
-          another element or even not having an visual label. Instead of
+          another element or even not to have a visual label. Instead of
           providing a <Strong>label</Strong> either <Strong>aria-label</Strong>{' '}
           or <Strong>aria-labelledby</Strong> can be provided.
         </Text>
