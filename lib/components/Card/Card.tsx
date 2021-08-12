@@ -32,11 +32,6 @@ type ResponsiveCardRounding = {
 
 const borderRadius = 'xlarge';
 
-const keylineBackgroundForTone = {
-  promote: 'promoteAccent',
-  formAccent: 'formAccent',
-} as const;
-
 export type CardProps = {
   children: ReactNode;
   tone?: 'promote' | 'formAccent';
@@ -91,7 +86,7 @@ export const Card = ({
           left={0}
           paddingLeft="xxsmall"
           borderRadius={resolvedRounding}
-          background={keylineBackgroundForTone[tone]}
+          background={tone}
           className={styles.toneKeyline}
         />
       ) : null}

@@ -19,11 +19,6 @@ const toneToIcon = {
   positive: IconPositive,
 };
 
-const keylineBackgroundForTone = {
-  positive: 'positiveAccent',
-  critical: 'criticalAccent',
-} as const;
-
 interface ActionProps extends ToastAction {
   removeToast: () => void;
 }
@@ -158,7 +153,7 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
                   </Column>
                 </Columns>
                 <Box
-                  background={keylineBackgroundForTone[tone]}
+                  background={tone}
                   paddingLeft="xxsmall"
                   position="absolute"
                   left={0}

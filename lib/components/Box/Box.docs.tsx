@@ -428,12 +428,10 @@ const docs: ComponentDocs = {
                 selection:
                   'Used for user selections, e.g. selected item in an Autosuggest.',
                 positive: 'Used for heavier “positive” elements.',
-                positiveAccent: 'Used for accented “positive” elements.',
                 positiveLight: 'Used for light “positive” elements.',
                 critical: 'Used for heavier “critical” elements.',
                 criticalHover: 'Hover colour for “critical” elements.',
                 criticalActive: 'Active colour for “critical” elements.',
-                criticalAccent: 'Used for accented “critical” elements.',
                 criticalLight: 'Used for light “critical” elements.',
                 criticalLighter: 'Used for lighter “critical” elements',
                 criticalLighterActive:
@@ -441,13 +439,10 @@ const docs: ComponentDocs = {
                 criticalLighterHover:
                   'Hover colour for criticalLighter” elements.',
                 caution: 'Used for heavier “caution” elements.',
-                cautionAccent: 'Used for accented “caution” elements.',
                 cautionLight: 'Used for light “caution” elements.',
                 info: 'Used for heavier “info” elements.',
-                infoAccent: 'Used for accented “info” elements.',
                 infoLight: 'Used for light “info” elements.',
                 promote: 'Used for heavier “promote” elements.',
-                promoteAccent: 'Used for accented “promote” elements.',
                 promoteLight: 'Used for light “promote” elements.',
                 neutral: 'Used for heavier “neutral” elements.',
                 neutralLight: 'Used for light “neutral” elements.',

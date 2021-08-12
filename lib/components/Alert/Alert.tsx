@@ -39,14 +39,6 @@ const backgroundForTone: Record<Tone, BoxProps['background']> = {
   critical: 'criticalLight',
 };
 
-const keylineBackgroundForTone: Record<Tone, BoxProps['background']> = {
-  promote: 'promoteAccent',
-  info: 'infoAccent',
-  positive: 'positiveAccent',
-  caution: 'cautionAccent',
-  critical: 'criticalAccent',
-};
-
 const borderForTone: Record<Tone, BoxProps['boxShadow']> = {
   promote: 'borderPromoteLight',
   info: 'borderInfoLight',
@@ -115,7 +107,7 @@ export const Alert = ({
         />
       )}
       <Box
-        background={keylineBackgroundForTone[tone]}
+        background={tone}
         paddingLeft={highlightBarSize}
         position="absolute"
         top={0}

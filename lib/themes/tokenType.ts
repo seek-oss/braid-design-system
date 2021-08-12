@@ -128,10 +128,8 @@ export interface BraidTokens {
       brandAccentLighterHover: string;
       card: string;
       caution: string;
-      cautionAccent: string;
       cautionLight: string;
       critical: string;
-      criticalAccent: string;
       criticalActive: string;
       criticalHover: string;
       criticalLight: string;
@@ -146,17 +144,14 @@ export interface BraidTokens {
       formAccentLighterActive: string;
       formAccentLighterHover: string;
       info: string;
-      infoAccent: string;
       infoLight: string;
       input: string;
       inputDisabled: string;
       neutral: string;
       neutralLight: string;
       positive: string;
-      positiveAccent: string;
       positiveLight: string;
       promote: string;
-      promoteAccent: string;
       promoteLight: string;
       selection: string;
     };
