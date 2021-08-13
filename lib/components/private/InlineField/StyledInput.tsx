@@ -204,7 +204,7 @@ export const StyledInput = forwardRef<
         <Box
           flexShrink={0}
           position="relative"
-          className={[styles.fakeFieldBase, styles.fakeFieldSize[size]]}
+          className={[styles.fakeField, styles.fakeFieldSize[size]]}
           background={disabled ? 'inputDisabled' : 'input'}
           borderRadius={fieldBorderRadius}
         >

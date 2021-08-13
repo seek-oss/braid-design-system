@@ -8,7 +8,6 @@ import {
 } from 'polished';
 
 const AA_TEXT_CONTRAST = 4.52;
-const AA_GRAPHIC_CONTRAST = 3;
 
 // http://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html#key-terms
 export function contrast(color1: string, color2: string): number {
@@ -151,14 +150,10 @@ export function getLightVariant(color: string) {
   });
 }
 
-export function getAccessibleVariant(
-  color: string,
-  type: 'text' | 'graphic',
-  background?: string,
-) {
+export function getAccessibleVariant(color: string, background?: string) {
   return findClosestAccessibleDarkerColor(
     color,
     background ?? getLightVariant(color),
-    type === 'graphic' ? AA_GRAPHIC_CONTRAST : AA_TEXT_CONTRAST,
+    AA_TEXT_CONTRAST,
   );
 }

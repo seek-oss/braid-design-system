@@ -73,7 +73,7 @@ export default makeTokens({
     },
     color: {
       foreground: {
-        info: getAccessibleVariant(info, 'text'),
+        info: getAccessibleVariant(info),
         link: '#1c3f94',
         linkHover: '#142d69',
       },

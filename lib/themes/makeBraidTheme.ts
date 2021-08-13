@@ -51,23 +51,39 @@ const normaliseSizingToCapHeight = (typography: BraidTokens['typography']) => {
 
 const decorateTokens = (braidTokens: BraidTokens) => {
   const {
+    border,
+    color,
+    contentWidth,
+    displayName,
+    grid,
+    name,
+    shadows,
+    space,
+    touchableSize,
+    transforms,
+    transitions,
     typography,
-
-    // omit
-    focusRingSize,
-
-    ...restTokens
   } = braidTokens;
 
-  const decoratedTokens = {
-    typography: normaliseSizingToCapHeight(typography),
+  const treatTokens = {
+    border,
     breakpoint: breakpoints,
-    ...restTokens,
+    color,
+    contentWidth,
+    displayName,
+    grid,
+    name,
+    shadows,
+    space,
+    touchableSize,
+    transforms,
+    transitions,
+    typography: normaliseSizingToCapHeight(typography),
   };
 
   return {
-    ...decoratedTokens,
-    utils: makeThemeUtils(decoratedTokens),
+    ...treatTokens,
+    utils: makeThemeUtils(treatTokens),
   };
 };
 

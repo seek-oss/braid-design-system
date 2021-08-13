@@ -406,20 +406,20 @@ const docs: ComponentDocs = {
                 brandAccent: 'Used for hero elements on the screen.',
                 brandAccentHover: 'Hover colour for “brandAccent” elements.',
                 brandAccentActive: 'Active colour for “brandAccent” elements.',
-                brandAccentLighter: 'Used for lighter “brandAccent” elements',
-                brandAccentLighterActive:
-                  'Active colour for “brandAccentLighter” elements.',
-                brandAccentLighterHover:
-                  'Hover colour for brandAccentLighter” elements.',
+                brandAccentSoft: 'Used for soft “brandAccent” elements',
+                brandAccentSoftActive:
+                  'Active colour for “brandAccentSoft” elements.',
+                brandAccentSoftHover:
+                  'Hover colour for brandAccentSoft” elements.',
                 formAccent:
                   'Used for prominent interactive elements, typically within a form.',
                 formAccentHover: 'Hover colour for “formAccent” elements.',
                 formAccentActive: 'Active colour for “formAccent” elements.',
-                formAccentLighter: 'Used for lighter “formAccent” elements',
-                formAccentLighterActive:
-                  'Active colour for “formAccentLighter” elements.',
-                formAccentLighterHover:
-                  'Hover colour for formAccentLighter” elements.',
+                formAccentSoft: 'Used for soft “formAccent” elements',
+                formAccentSoftActive:
+                  'Active colour for “formAccentSoft” elements.',
+                formAccentSoftHover:
+                  'Hover colour for formAccentSoft” elements.',
                 formAccentDisabled:
                   'Disabled colour for “formAccent” elements.',
                 input: 'Used for input fields.',
@@ -433,11 +433,10 @@ const docs: ComponentDocs = {
                 criticalHover: 'Hover colour for “critical” elements.',
                 criticalActive: 'Active colour for “critical” elements.',
                 criticalLight: 'Used for light “critical” elements.',
-                criticalLighter: 'Used for lighter “critical” elements',
-                criticalLighterActive:
-                  'Active colour for “criticalLighter” elements.',
-                criticalLighterHover:
-                  'Hover colour for criticalLighter” elements.',
+                criticalSoft: 'Used for soft “critical” elements',
+                criticalSoftActive:
+                  'Active colour for “criticalSoft” elements.',
+                criticalSoftHover: 'Hover colour for criticalSoft” elements.',
                 caution: 'Used for heavier “caution” elements.',
                 cautionLight: 'Used for light “caution” elements.',
                 info: 'Used for heavier “info” elements.',

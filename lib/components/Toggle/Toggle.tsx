@@ -72,7 +72,7 @@ export const Toggle = ({
         alignItems="center"
         flexShrink={0}
         className={[
-          styles.slideContainerBase,
+          styles.slideContainer,
           styles.slideContainerSize[size],
           styles.fieldSize[size],
         ]}

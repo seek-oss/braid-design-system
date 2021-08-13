@@ -40,7 +40,7 @@ export const realFieldPosition = styleVariants(sizes, (size: Size) => {
   };
 });
 
-export const fakeFieldBase = style({});
+export const fakeField = style({});
 export const fakeFieldSize = styleVariants(sizes, (size) => ({
   height: vars.inlineFieldSize[size],
   width: vars.inlineFieldSize[size],
@@ -69,7 +69,8 @@ export const isMixed = style({});
 
 export const children = style({
   selectors: {
-    [`${realField}:checked ~ * &, ${realField}${isMixed} ~ * &`]: {
+    [`${realField}:checked ~ * &,
+      ${realField}${isMixed} ~ * &`]: {
       display: 'block',
     },
   },
@@ -77,16 +78,16 @@ export const children = style({
 
 export const selected = style({
   selectors: {
-    [`${realField}:checked + ${fakeFieldBase} > &, ${realField}${isMixed} + ${fakeFieldBase} > &`]:
-      {
-        opacity: 1,
-      },
+    [`${realField}:checked + ${fakeField} > &,
+      ${realField}${isMixed} + ${fakeField} > &`]: {
+      opacity: 1,
+    },
   },
 });
 
 export const focusOverlay = style({
   selectors: {
-    [`${realField}:focus + ${fakeFieldBase} > &`]: {
+    [`${realField}:focus + ${fakeField} > &`]: {
       opacity: 1,
     },
   },
@@ -94,10 +95,8 @@ export const focusOverlay = style({
 
 export const hoverOverlay = style({
   selectors: {
-    [[
-      `${realField}:hover:not(:checked):not(${isMixed}):not(:disabled) + ${fakeFieldBase} > &`,
-      `${realField}:focus:not(${isMixed}) + ${fakeFieldBase} > &`,
-    ].join(', ')]: {
+    [`${realField}:hover:not(:checked):not(${isMixed}):not(:disabled) + ${fakeField} > &,
+      ${realField}:focus:not(${isMixed}) + ${fakeField} > &`]: {
       opacity: 1,
     },
   },
@@ -114,7 +113,7 @@ export const indicator = style({
 const checkboxScale = style({
   transform: 'scale(0.85)',
   selectors: {
-    [`${realField}:active + ${fakeFieldBase} > * > &`]: {
+    [`${realField}:active + ${fakeField} > * > &`]: {
       transform: 'scale(0.75)',
     },
   },
@@ -125,7 +124,7 @@ export const checkboxIndicator = [indicator, checkboxScale];
 const radioScale = style({
   transform: 'scale(0.6)',
   selectors: {
-    [`${realField}:active + ${fakeFieldBase} > * > &`]: {
+    [`${realField}:active + ${fakeField} > * > &`]: {
       transform: 'scale(0.5)',
     },
   },
