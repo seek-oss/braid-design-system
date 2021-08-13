@@ -1,4 +1,4 @@
-import React, { useState, ReactNode } from 'react';
+import { useState, ReactNode } from 'react';
 import { ComponentScreenshot } from '../../../site/src/types';
 import { Autosuggest, filterSuggestions, IconSearch } from '../';
 

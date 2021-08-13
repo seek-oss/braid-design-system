@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { ComponentScreenshot } from '../../../site/src/types';
 import { MonthPicker } from '../';
 

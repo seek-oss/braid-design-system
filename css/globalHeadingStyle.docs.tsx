@@ -1,5 +1,4 @@
 import dedent from 'dedent';
-import React from 'react';
 import { Alert, Stack, Strong, Text, TextLink } from '../lib/components';
 import { globalHeadingStyle } from '../lib/hooks/typography';
 import source from '../lib/utils/source.macro';

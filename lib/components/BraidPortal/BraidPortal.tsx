@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { createPortal } from 'react-dom';
 import { TextContext } from '../Text/TextContext';
 import { useBraidTheme } from '../BraidProvider/BraidThemeContext';

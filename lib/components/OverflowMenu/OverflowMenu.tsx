@@ -1,4 +1,3 @@
-import React from 'react';
 import { MenuRenderer, MenuRendererProps } from '../MenuRenderer/MenuRenderer';
 import { OverflowButton } from '../iconButtons/OverflowButton/OverflowButton';
 import { Box } from '../Box/Box';

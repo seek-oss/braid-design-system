@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from 'react';
+import { ReactNode, useState } from 'react';
 import { ComponentScreenshot } from '../../../site/src/types';
 import { PasswordField, TextLink } from '../';
 

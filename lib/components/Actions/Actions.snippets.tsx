@@ -1,4 +1,3 @@
-import React from 'react';
 import { Actions, Button, IconDelete } from '../../playroom/components';
 import source from '../../utils/source.macro';
 import { Snippets } from '../private/Snippets';

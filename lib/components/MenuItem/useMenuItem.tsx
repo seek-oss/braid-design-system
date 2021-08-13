@@ -1,5 +1,5 @@
 import assert from 'assert';
-import React, {
+import {
   KeyboardEvent,
   useContext,
   useRef,

@@ -1,7 +1,7 @@
 import assert from 'assert';
 import clsx from 'clsx';
 import dedent from 'dedent';
-import React, {
+import {
   createContext,
   useContext,
   useMemo,

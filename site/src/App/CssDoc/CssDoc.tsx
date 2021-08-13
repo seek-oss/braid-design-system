@@ -1,4 +1,3 @@
-import React from 'react';
 import { Route, Switch, useRouteMatch } from 'react-router';
 import {
   Stack,

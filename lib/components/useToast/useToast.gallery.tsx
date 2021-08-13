@@ -1,4 +1,3 @@
-import React from 'react';
 import { useTheme } from 'sku/react-treat';
 import { ComponentExample } from '../../../site/src/types';
 import { useBraidTheme } from '../BraidProvider/BraidThemeContext';

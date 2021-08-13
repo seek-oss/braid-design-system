@@ -1,4 +1,4 @@
-import React, { FormEvent, useContext } from 'react';
+import { FormEvent, useContext } from 'react';
 import assert from 'assert';
 import { Overlay } from '../private/Overlay/Overlay';
 import { Box } from '../Box/Box';

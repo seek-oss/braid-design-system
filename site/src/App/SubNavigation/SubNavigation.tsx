@@ -1,4 +1,3 @@
-import React from 'react';
 import map from 'lodash/map';
 import guides from '../routes/guides';
 import foundations from '../routes/foundations';

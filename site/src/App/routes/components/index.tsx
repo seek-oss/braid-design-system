@@ -1,4 +1,3 @@
-import React from 'react';
 import { RouteProps } from 'react-router';
 import { ComponentDoc } from '../../ComponentDoc/ComponentDoc';
 import {

@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { useWeight } from '../../hooks/typography';
 import buildDataAttributes, {
   DataAttributeMap,

@@ -1,4 +1,4 @@
-import React, { Fragment, ReactNode } from 'react';
+import { Fragment, ReactNode } from 'react';
 import { ComponentScreenshot } from '../../../site/src/types';
 import { Box, Button } from '../';
 import { Inline } from '../Inline/Inline';

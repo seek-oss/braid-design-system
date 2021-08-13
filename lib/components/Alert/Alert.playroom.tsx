@@ -1,4 +1,3 @@
-import React from 'react';
 import { Alert as BraidAlert, AlertProps } from './Alert';
 
 export const Alert = ({ tone, ...restProps }: AlertProps) => (

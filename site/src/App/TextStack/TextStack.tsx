@@ -1,4 +1,3 @@
-import React from 'react';
 import { Stack } from '../../../../lib/components';
 import { StackProps } from '../../../../lib/components/Stack/Stack';
 import { ReactNodeNoStrings } from '../../../../lib/components/private/ReactNodeNoStrings';

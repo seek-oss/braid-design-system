@@ -1,4 +1,4 @@
-import React, { ReactNode, Fragment } from 'react';
+import { ReactNode, Fragment } from 'react';
 import { ComponentScreenshot } from '../../../site/src/types';
 import { heading as headingLevels } from '../../hooks/typography/typography.css';
 import { Box, Heading, Stack } from '../';

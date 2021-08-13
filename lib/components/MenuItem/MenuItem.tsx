@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { Box } from '../Box/Box';
 import { useMenuItem, UseMenuItemProps } from './useMenuItem';
 

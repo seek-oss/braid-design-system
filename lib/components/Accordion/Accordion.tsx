@@ -1,5 +1,5 @@
 import assert from 'assert';
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import {
   normalizeResponsiveValue,

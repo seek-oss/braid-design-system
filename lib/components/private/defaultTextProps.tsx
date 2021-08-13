@@ -1,4 +1,3 @@
-import React from 'react';
 import { createContext, useContext, ReactNode, useMemo } from 'react';
 import { UseTextProps } from '../../hooks/typography';
 

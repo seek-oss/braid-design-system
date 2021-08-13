@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
 import { ComponentScreenshot } from '../../../site/src/types';
 import { Box, Loader } from '../';
 import { backgrounds } from '../../utils/docsHelpers';

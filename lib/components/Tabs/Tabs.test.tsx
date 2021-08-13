@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom/extend-expect';
-import React, { useState, Fragment } from 'react';
+import { useState, Fragment } from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import {

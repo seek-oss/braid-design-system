@@ -1,4 +1,3 @@
-import React from 'react';
 import { ComponentScreenshot } from '../../../site/src/types';
 import { Text, Heading, Inline, Button, Stack } from '../';
 import { UseIconProps } from '../../hooks/useIcon';

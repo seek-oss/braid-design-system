@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import { Children, ReactElement } from 'react';
 import ReactMarkdown from 'react-markdown';
 
 import { CodeBlock } from '../Code/Code';
@@ -73,7 +73,7 @@ const renderers = {
     </Box>
   ),
   listItem: ({ children }: { children: any }) => {
-    const childList = React.Children.toArray(children);
+    const childList = Children.toArray(children);
 
     // @ts-expect-error
     if (childList[0]?.type?.isParagraph) {

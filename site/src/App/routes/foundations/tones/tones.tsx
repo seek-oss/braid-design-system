@@ -1,4 +1,3 @@
-import React from 'react';
 import { BoxProps } from '../../../../../../lib/components/Box/Box';
 import {
   Box,

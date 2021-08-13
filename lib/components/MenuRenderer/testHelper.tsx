@@ -1,5 +1,6 @@
 import '@testing-library/jest-dom/extend-expect';
-import React, { useState } from 'react';
+import { useState } from 'react';
+import * as React from 'react';
 import {
   render,
   cleanup,

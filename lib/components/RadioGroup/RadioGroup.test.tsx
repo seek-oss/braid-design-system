@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom/extend-expect';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { render } from '@testing-library/react';
 import { BraidTestProvider, RadioGroup, RadioItem } from '..';
 import userEvent from '@testing-library/user-event';

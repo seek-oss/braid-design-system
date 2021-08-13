@@ -1,4 +1,3 @@
-import React from 'react';
 import { ComponentScreenshot } from '../../../site/src/types';
 import { Card } from '../';
 import { Placeholder } from '../../playroom/components';

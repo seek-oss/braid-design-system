@@ -1,4 +1,3 @@
-import React from 'react';
 import { ComponentExample } from '../../../site/src/types';
 import { IconHelp, MonthPicker, TextLink } from '../';
 import source from '../../utils/source.macro';

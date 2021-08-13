@@ -1,4 +1,4 @@
-import React, { ReactNode, useContext } from 'react';
+import { ReactNode, useContext } from 'react';
 import assert from 'assert';
 import { Box } from '../Box/Box';
 import buildDataAttributes, {

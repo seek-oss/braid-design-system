@@ -1,4 +1,4 @@
-import React, { forwardRef, Children } from 'react';
+import { forwardRef, Children } from 'react';
 import assert from 'assert';
 import { Box, BoxProps } from '../Box/Box';
 import { Text } from '../Text/Text';

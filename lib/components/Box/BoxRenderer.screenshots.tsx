@@ -1,4 +1,3 @@
-import React from 'react';
 import { ComponentScreenshot } from '../../../site/src/types';
 import { BoxRenderer } from './BoxRenderer';
 import { Text } from '../Text/Text';

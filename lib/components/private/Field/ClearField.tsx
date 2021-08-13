@@ -1,4 +1,4 @@
-import React, { Ref, useCallback, MouseEvent } from 'react';
+import { Ref, useCallback, MouseEvent } from 'react';
 import { Box } from '../../Box/Box';
 import { ClearButton } from '../../iconButtons/ClearButton/ClearButton';
 

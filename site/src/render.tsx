@@ -1,5 +1,5 @@
 import { Render } from 'sku';
-import React from 'react';
+import * as React from 'react';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router';
 import { HeadProvider } from 'react-head';

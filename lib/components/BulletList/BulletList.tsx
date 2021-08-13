@@ -1,4 +1,4 @@
-import React, { createContext, useContext, ReactNode } from 'react';
+import { createContext, useContext, ReactNode } from 'react';
 import assert from 'assert';
 import dedent from 'dedent';
 import { List, ListProps } from '../List/List';

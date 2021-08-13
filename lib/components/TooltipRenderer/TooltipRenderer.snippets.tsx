@@ -1,4 +1,3 @@
-import React from 'react';
 import { Snippets } from '../private/Snippets';
 import {
   Box,

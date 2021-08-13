@@ -1,4 +1,4 @@
-import React, { ReactNode, useContext, useMemo } from 'react';
+import { ReactNode, useContext, useMemo } from 'react';
 import assert from 'assert';
 import { TextContext } from './TextContext';
 import { Box, BoxProps } from '../Box/Box';

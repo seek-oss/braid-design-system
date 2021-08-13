@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom/extend-expect';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { render } from '@testing-library/react';
 import { BraidTestProvider, AccordionItem } from '..';
 import { htmlToText } from '../../utils/htmlToText';

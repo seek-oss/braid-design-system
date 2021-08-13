@@ -1,4 +1,4 @@
-import React, { FormEvent, ReactElement } from 'react';
+import { FormEvent, ReactElement } from 'react';
 import assert from 'assert';
 import flattenChildren from 'react-keyed-flatten-children';
 import {

@@ -1,4 +1,3 @@
-import React from 'react';
 import assert from 'assert';
 import { useBackground } from '../Box/BackgroundContext';
 import useIcon, { UseIconProps } from '../../hooks/useIcon';

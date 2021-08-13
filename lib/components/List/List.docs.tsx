@@ -1,4 +1,3 @@
-import React from 'react';
 import source from '../../utils/source.macro';
 import { ComponentDocs } from '../../../site/src/types';
 import { List, Text, TextLink, Stack, Column, Columns } from '..';

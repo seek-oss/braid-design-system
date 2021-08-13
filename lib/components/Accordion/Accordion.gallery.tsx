@@ -1,5 +1,3 @@
-import React from 'react';
-
 import source from '../../utils/source.macro';
 import {
   Accordion,

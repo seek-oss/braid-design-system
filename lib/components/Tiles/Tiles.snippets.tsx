@@ -1,4 +1,3 @@
-import React from 'react';
 import { Snippets } from '../private/Snippets';
 import { Tiles, Placeholder } from '../../playroom/components';
 import source from '../../utils/source.macro';

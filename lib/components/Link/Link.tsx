@@ -1,5 +1,5 @@
 import clsx, { ClassValue } from 'clsx';
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 import { atoms } from '../../css/atoms/atoms';
 import {
   useLinkComponent,

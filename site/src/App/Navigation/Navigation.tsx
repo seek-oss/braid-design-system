@@ -1,10 +1,4 @@
-import React, {
-  useState,
-  useRef,
-  ReactNode,
-  useEffect,
-  forwardRef,
-} from 'react';
+import { useState, useRef, ReactNode, useEffect, forwardRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useWindowScroll, useInterval } from 'react-use';
 import {

@@ -1,4 +1,4 @@
-import React, { createContext, useReducer, ReactNode } from 'react';
+import { createContext, useReducer, ReactNode } from 'react';
 
 import { getNextIndex } from '../private/getNextIndex';
 import {

@@ -1,4 +1,3 @@
-import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import { Link } from 'react-router-dom';
 import { ButtonRenderer, Stack, Inline, Text, TextLink } from '../';

@@ -1,6 +1,5 @@
 import '../../../reset';
 
-import React from 'react';
 import { hydrate } from 'react-dom';
 
 import apac from '../../../themes/apac';

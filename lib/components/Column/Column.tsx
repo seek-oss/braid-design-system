@@ -1,4 +1,4 @@
-import React, { ReactNode, useContext } from 'react';
+import { ReactNode, useContext } from 'react';
 import { optimizeResponsiveArray } from '../../utils/optimizeResponsiveArray';
 import { Box } from '../Box/Box';
 import { ColumnsContext } from '../Columns/Columns';

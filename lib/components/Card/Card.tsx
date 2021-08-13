@@ -1,5 +1,5 @@
 import assert from 'assert';
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { optimizeResponsiveArray } from '../../utils/optimizeResponsiveArray';
 import {
   resolveResponsiveRangeProps,

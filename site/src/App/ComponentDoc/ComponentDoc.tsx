@@ -1,4 +1,4 @@
-import React, { ReactNode, Fragment } from 'react';
+import { ReactNode, Fragment } from 'react';
 import { Route, Switch, useRouteMatch } from 'react-router';
 import { ComponentProps } from './ComponentProps';
 import docsTheme from '../../../../lib/themes/docs';

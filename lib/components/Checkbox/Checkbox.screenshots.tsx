@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { ComponentScreenshot } from '../../../site/src/types';
 import { Badge, Checkbox, Text } from '../';
 

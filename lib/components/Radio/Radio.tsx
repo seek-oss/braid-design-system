@@ -1,4 +1,4 @@
-import React, { AllHTMLAttributes, forwardRef, useContext } from 'react';
+import { AllHTMLAttributes, forwardRef, useContext } from 'react';
 import assert from 'assert';
 import {
   InlineField,

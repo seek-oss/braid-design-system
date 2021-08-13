@@ -1,4 +1,4 @@
-import React, { ReactChild } from 'react';
+import { ReactChild } from 'react';
 import parseHighlights from 'autosuggest-highlight/parse';
 import { TextareaProps } from './Textarea';
 import { Highlight } from './Highlight/Highlight';

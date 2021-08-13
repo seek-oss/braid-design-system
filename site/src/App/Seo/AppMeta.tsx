@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
 import { Meta, Link } from 'react-head';
 
 import { PageTitle } from './PageTitle';

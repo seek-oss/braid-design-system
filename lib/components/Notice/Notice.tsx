@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { IconInfo, IconCritical, IconPositive, IconPromote } from '../icons';
 import { Columns } from '../Columns/Columns';
 import { Column } from '../Column/Column';

@@ -1,4 +1,3 @@
-import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import { Disclosure, Text, TextLink, Strong } from '..';
 import source from '../../utils/source.macro';

@@ -1,5 +1,5 @@
 import assert from 'assert';
-import React, { Children } from 'react';
+import { Children } from 'react';
 import flattenChildren from 'react-keyed-flatten-children';
 
 import { Box } from '../Box/Box';

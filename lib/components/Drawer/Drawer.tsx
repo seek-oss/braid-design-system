@@ -1,5 +1,4 @@
 import assert from 'assert';
-import React from 'react';
 import { Modal, ModalProps } from '../private/Modal/Modal';
 import { ModalContent, ModalContentProps } from '../private/Modal/ModalContent';
 export { AllowCloseContext } from '../private/Modal/Modal';

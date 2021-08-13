@@ -1,4 +1,4 @@
-import React, { AllHTMLAttributes, ChangeEvent, ReactNode } from 'react';
+import { AllHTMLAttributes, ChangeEvent, ReactNode } from 'react';
 import { Box } from '../Box/Box';
 import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
 import { Text } from '../Text/Text';

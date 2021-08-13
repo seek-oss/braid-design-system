@@ -1,4 +1,3 @@
-import React from 'react';
 import { ComponentExample } from '../../../site/src/types';
 import { Badge, Checkbox, Stack } from '../';
 import source from '../../utils/source.macro';

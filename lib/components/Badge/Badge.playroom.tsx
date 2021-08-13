@@ -1,4 +1,3 @@
-import React from 'react';
 import { Badge as BraidBadge, BadgeProps } from './Badge';
 
 export const Badge = ({ tone, ...restProps }: BadgeProps) => (

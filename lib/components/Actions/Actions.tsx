@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import ActionsContext from './ActionsContext';
 import { Inline, InlineProps } from '../Inline/Inline';
 import { PrivateButtonRendererProps } from '../ButtonRenderer/ButtonRenderer';

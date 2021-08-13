@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
 import { Text, TextLink, Strong } from '../';
 import { ComponentDocs } from '../../../site/src/types';
 

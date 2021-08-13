@@ -1,10 +1,4 @@
-import React, {
-  useState,
-  ReactChild,
-  useCallback,
-  useEffect,
-  useRef,
-} from 'react';
+import { useState, ReactChild, useCallback, useEffect, useRef } from 'react';
 import copy from 'copy-to-clipboard';
 import dedent from 'dedent';
 import memoize from 'lodash/memoize';

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Optional } from 'utility-types';
 import { StateProp } from '../../playroom/playroomState';
 import { maxPages } from './paginate';

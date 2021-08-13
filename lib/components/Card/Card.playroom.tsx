@@ -1,4 +1,3 @@
-import React from 'react';
 import { Card as BraidCard, CardProps, validCardComponents } from './Card';
 
 export const Card = ({ component, ...restProps }: CardProps) => (

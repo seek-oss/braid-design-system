@@ -1,4 +1,3 @@
-import React from 'react';
 import { mapResponsiveValue } from '../../css/atoms/sprinkles.css';
 import { wireframe } from '../../themes';
 import {
