@@ -2,6 +2,7 @@
 'braid-design-system': minor
 ---
 
+---
 updated:
   - Box
   - atoms
