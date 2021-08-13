@@ -23,7 +23,7 @@
     "prestart": "yarn setup",
     "prebuild": "yarn setup",
     "build": "SKU_TELEMETRY=false concurrently -n \"docs-site,playroom\" -c \"magenta,greenBright\" \"sku build\" \"sku build-playroom\"",
-    "playroom": "SKU_TELEMETRY=false sku playroom",
+    "playroom": "playroom start",
     "storybook": "SKU_TELEMETRY=false sku storybook",
     "build-storybook": "SKU_TELEMETRY=false sku build-storybook",
     "deploy": "node scripts/deploy.js",
@@ -121,6 +121,7 @@
     "npm-registry-client": "^8.6.0",
     "panzoom": "^9.4.2",
     "patch-package": "^6.4.7",
+    "playroom": "^0.27.0",
     "postinstall-postinstall": "^2.1.0",
     "prettier": "^2.2.1",
     "react": "^16.8.4",
@@ -135,14 +136,11 @@
     "recoil": "^0.3.1",
     "renovate-config-seek": "0.4.0",
     "sanitize-html": "^2.3.2",
-    "sku": "10.14.1",
+    "sku": "seek-oss/sku#196fae20",
     "surge": "^0.21.7",
     "title-case": "^3.0.3",
     "ts-node": "^9.1.1",
     "typescript": "^4.2.2"
-  },
-  "resolutions": {
-    "react-docgen-typescript": "2.0.0"
   },
   "volta": {
     "node": "12.14.1",

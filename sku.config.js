@@ -1,3 +1,4 @@
+const path = require('path');
 const routes = require('./sku.routes.js');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
 
@@ -37,15 +38,6 @@ module.exports = {
   ],
   setupTests: './setupTests.ts',
   displayNamesProd: true,
-  provideDefaultChromaticViewports: false,
-  playroomTitle: 'BRAID',
-  playroomComponents: './lib/playroom/components.ts',
-  playroomSnippets: './lib/playroom/snippets.ts',
-  playroomThemes: './lib/themes/index.ts',
-  playroomFrameComponent: './lib/playroom/FrameComponent.tsx',
-  playroomScope: './lib/playroom/useScope.ts',
-  playroomTarget: './site/dist/playroom',
-  playroomWidths: [320, 768, 1024, 1400],
   dangerouslySetWebpackConfig: (config) => {
     config.plugins.push(
       new CircularDependencyPlugin({
@@ -53,6 +45,12 @@ module.exports = {
         failOnError: true,
       }),
     );
+
+    // Import Changelog as a raw string so it can be passed to the markdown renderer
+    config.modules.rules.push({
+      test: path.join(__dirname, 'CHANGELOG.md'),
+      type: 'asset/source',
+    });
 
     return config;
   },
