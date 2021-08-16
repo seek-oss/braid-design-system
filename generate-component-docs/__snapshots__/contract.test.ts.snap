@@ -7712,8 +7712,8 @@ Object {
         | 4
         | 5
         | 6
-        | RequiredConditionalObject<"mobile", "tablet" | "desktop" | "wide", 1 | 2 | 4 | 3 | 5 | 6>
-        | RequiredResponsiveArray<1 | 2 | 3 | 4, 1 | 2 | 4 | 3 | 5 | 6 | null>
+        | RequiredConditionalObject<"mobile", "tablet" | "desktop" | "wide", 1 | 2 | 3 | 4 | 5 | 6>
+        | RequiredResponsiveArray<1 | 2 | 3 | 4, 1 | 2 | 3 | 4 | 5 | 6 | null>
     data?: DataAttributeMap
     dividers?: 
         | "regular"

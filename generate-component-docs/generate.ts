@@ -269,14 +269,16 @@ export default () => {
       return normalizeInterface(type, propsObj, depth + 1);
     }
 
-    const sprinklesArray = typeString.match(
-      /ResponsiveArray<(?<arrayIndexKeys>[0-9|\s]+),/,
-    );
-    if (sprinklesArray?.groups && sprinklesArray.groups.arrayIndexKeys) {
-      return typeString.replace(
-        sprinklesArray.groups.arrayIndexKeys,
-        sprinklesArray.groups.arrayIndexKeys.split(' | ').sort().join(' | '),
-      );
+    const numericalUnions = typeString.match(/\d([0-9|\s]+)\d/g);
+    if (numericalUnions !== null) {
+      let sortedTypeString = typeString;
+      numericalUnions.forEach((union) => {
+        sortedTypeString = sortedTypeString.replace(
+          union,
+          union.split(' | ').sort().join(' | '),
+        );
+      });
+      return sortedTypeString;
     }
 
     return typeString;
