@@ -1,5 +1,5 @@
 import { ReactChild } from 'react';
-import { Snippets as PlayroomSnippets } from 'sku/playroom';
+import { Snippets as PlayroomSnippets } from 'playroom';
 import { Optional } from 'utility-types';
 import { Source } from '../../utils/source.macro';
 

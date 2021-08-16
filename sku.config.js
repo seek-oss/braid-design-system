@@ -47,7 +47,7 @@ module.exports = {
     );
 
     // Import Changelog as a raw string so it can be passed to the markdown renderer
-    config.modules.rules.push({
+    config.module.rules.push({
       test: path.join(__dirname, 'CHANGELOG.md'),
       type: 'asset/source',
     });

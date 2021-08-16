@@ -11,7 +11,9 @@ import { ConfigProvider } from './App/ConfigContext';
 import * as themes from '../../lib/themes';
 import { braidVersionToDate } from './getVersionDetails';
 import { initUpdates } from './App/Updates';
-import { version } from '../../package.json';
+import packageJson from '../../package.json';
+
+const { version } = packageJson;
 
 const skuRender: Render<RenderContext> = {
   renderApp: async ({ route }) => {

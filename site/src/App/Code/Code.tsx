@@ -5,7 +5,7 @@ import memoize from 'lodash/memoize';
 import prettier from 'prettier/standalone';
 import reactElementToJsxString from 'react-element-to-jsx-string';
 import typescriptParser from 'prettier/parser-typescript';
-import { createUrl } from 'sku/playroom/utils';
+import { createUrl } from 'playroom/utils';
 import { useConfig } from '../ConfigContext';
 import { Source } from '../../../../lib/utils/source.macro';
 import {
