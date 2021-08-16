@@ -269,6 +269,16 @@ export default () => {
       return normalizeInterface(type, propsObj, depth + 1);
     }
 
+    const sprinklesArray = typeString.match(
+      /ResponsiveArray<(?<arrayIndexKeys>[0-9|\s]+),/,
+    );
+    if (sprinklesArray?.groups && sprinklesArray.groups.arrayIndexKeys) {
+      return typeString.replace(
+        sprinklesArray.groups.arrayIndexKeys,
+        sprinklesArray.groups.arrayIndexKeys.split(' | ').sort().join(' | '),
+      );
+    }
+
     return typeString;
   }
 
