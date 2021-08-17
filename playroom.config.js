@@ -10,7 +10,10 @@ module.exports = {
   themes: './lib/themes/index.ts',
   frameComponent: './lib/playroom/FrameComponent.tsx',
   scope: './lib/playroom/useScope.ts',
+  typeScriptFiles: ['lib/**/*.{ts,tsx}', '!**/node_modules'],
   widths: [320, 768, 1024, 1400],
+  openBrowser: false,
+  port: 8082,
 
   webpackConfig: () => ({
     plugins: [
