@@ -258,7 +258,7 @@ export const makeTokens = ({
         critical,
         criticalActive: getActiveColor(critical),
         criticalHover: getHoverColor(critical),
-        criticalLight: tint(0.925, critical),
+        criticalLight: getLightVariant(critical),
         criticalSoft: tint(0.925, critical),
         criticalSoftActive: tint(0.85, critical),
         criticalSoftHover: tint(0.9, critical),
