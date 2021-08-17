@@ -1,5 +1,5 @@
 import { Render } from 'sku';
-import * as React from 'react';
+import type { ReactElement } from 'react';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router';
 import { HeadProvider } from 'react-head';
@@ -36,7 +36,7 @@ const skuRender: Render<RenderContext> = {
     };
 
     const today = new Date();
-    const metaTags: React.ReactElement[] = [];
+    const metaTags: ReactElement[] = [];
 
     const config = {
       routerBasename,

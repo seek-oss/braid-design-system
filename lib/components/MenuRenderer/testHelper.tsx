@@ -1,6 +1,5 @@
 import '@testing-library/jest-dom/extend-expect';
-import { useState } from 'react';
-import * as React from 'react';
+import { FunctionComponent, useState } from 'react';
 import {
   render,
   cleanup,
@@ -35,7 +34,7 @@ const ARROW_DOWN = 40;
 
 interface MenuTestSuiteParams {
   name: string;
-  Component: React.FunctionComponent<
+  Component: FunctionComponent<
     Pick<MenuRendererProps, 'onOpen' | 'onClose' | 'children'>
   >;
 }
