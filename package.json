@@ -22,7 +22,7 @@
     "prelint": "yarn setup",
     "prestart": "yarn setup",
     "prebuild": "yarn setup",
-    "build": "SKU_TELEMETRY=false concurrently -n \"docs-site,playroom\" -c \"magenta,greenBright\" \"sku build\" \"sku build-playroom\"",
+    "build": "SKU_TELEMETRY=false concurrently -n \"docs-site,playroom\" -c \"magenta,greenBright\" \"sku build\" \"playroom build\"",
     "playroom": "playroom start",
     "storybook": "SKU_TELEMETRY=false sku storybook",
     "build-storybook": "SKU_TELEMETRY=false sku build-storybook",
