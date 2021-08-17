@@ -7,7 +7,6 @@ package-lock.json
 .idea/
 componentDocs.json
 lib/components/icons/*/*Svg.tsx
-site/dist/playroom/
 
 # managed by sku
 .eslintrc

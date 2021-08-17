@@ -1,5 +1,3 @@
-site/dist/playroom/
-
 # managed by sku
 *.less.d.ts
 coverage/
