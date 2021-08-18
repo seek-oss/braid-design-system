@@ -4,11 +4,13 @@ const globby = require('globby');
 const cheerio = require('cheerio');
 const { pascalCase } = require('change-case');
 const dedent = require('dedent');
-const { optimize, extendDefaultPlugins } = require('svgo');
+const { optimize } = require('svgo');
 const { default: svgr } = require('@svgr/core');
 
 const componentTemplate = ({ template }, opts, { componentName, jsx }) => {
   const code = `
+    import React from 'react';
+    NEWLINE
     import type { SVGProps } from '../SVGTypes';
     NEWLINE
     export const COMPONENT_NAME = ({ title, titleId, ...props }: SVGProps) => COMPONENT_JSX;
@@ -75,17 +77,19 @@ const iconComponentsDir = path.join(baseDir, 'lib/components/icons');
       // Run through SVGO
       const optimisedSvg = optimize(svg, {
         multipass: true,
-        plugins: extendDefaultPlugins([
+        plugins: [
           {
-            name: 'removeViewBox',
-            active: false,
+            name: 'preset-default',
+            overrides: {
+              removeViewBox: false,
+            },
           },
           {
             name: 'inlineStyles',
             onlyMatchedOnce: false,
           },
           { name: 'convertStyleToAttrs', active: true },
-        ]),
+        ],
       }).data;
 
       // Validate SVG before import
