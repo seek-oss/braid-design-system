@@ -19,6 +19,8 @@ const toneToIcon = {
   positive: IconPositive,
 };
 
+const borderRadius = 'xlarge';
+
 interface ActionProps extends ToastAction {
   removeToast: () => void;
 }
@@ -114,13 +116,13 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
           onMouseLeave={startTimeout}
           className={vanillaTheme}
         >
-          <Box boxShadow="large" borderRadius="xlarge">
+          <Box boxShadow="large" borderRadius={borderRadius}>
             <ContentBlock width="xsmall">
               <Box
                 background="card"
                 position="relative"
                 boxShadow="borderStandard"
-                borderRadius="xlarge"
+                borderRadius={borderRadius}
                 paddingY="medium"
                 paddingLeft="medium"
                 overflow="hidden"

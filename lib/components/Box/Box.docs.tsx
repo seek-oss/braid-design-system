@@ -453,12 +453,7 @@ const docs: ComponentDocs = {
                     <Box
                       background={background as keyof BackgroundDocs}
                       boxShadow={
-                        [
-                          'card',
-                          'input',
-                          'formAccentLightInverted',
-                          'formAccentLightInvertedHover',
-                        ].includes(background)
+                        ['card', 'input'].includes(background)
                           ? 'borderStandard'
                           : undefined
                       }

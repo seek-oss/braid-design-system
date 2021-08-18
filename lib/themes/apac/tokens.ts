@@ -3,6 +3,7 @@ import { palette } from '../../color/palette';
 import { makeTokens } from '../baseTokens/apac';
 
 const brandAccent = palette.seekPink['500'];
+const brandAccentSoft = palette.seekPink['50'];
 
 export default makeTokens({
   name: 'apac',
@@ -11,7 +12,7 @@ export default makeTokens({
   brandAccent,
   brandAccentActive: darken(0.05, brandAccent),
   brandAccentHover: lighten(0.05, brandAccent),
-  brandAccentSoft: palette.seekPink['50'],
-  brandAccentSoftActive: darken(0.05, palette.seekPink['50']),
-  brandAccentSoftHover: darken(0.025, palette.seekPink['50']),
+  brandAccentSoft,
+  brandAccentSoftActive: darken(0.05, brandAccentSoft),
+  brandAccentSoftHover: darken(0.025, brandAccentSoft),
 });

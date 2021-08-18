@@ -248,7 +248,7 @@ export const makeTokens = ({
         cautionLight: palette.yellow['100'],
         critical,
         criticalActive: darken(0.05, critical),
-        criticalHover: saturate(0.15, lighten(0.05, critical)),
+        criticalHover: saturate(0.1, lighten(0.05, critical)),
         criticalLight: palette.red['100'],
         criticalSoft: palette.red['50'],
         criticalSoftActive: darken(0.05, palette.red['50']),
