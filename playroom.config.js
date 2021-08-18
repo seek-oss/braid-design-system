@@ -26,7 +26,7 @@ module.exports = {
         ),
         target: 'browser',
         browserslist: ['last 2 chrome versions'],
-        mode: 'development',
+        mode: process.env.NODE_ENV ? process.env.NODE_ENV : 'development',
         displayNamesProd: true,
         removeAssertionsInProduction: false,
         MiniCssExtractPlugin,
