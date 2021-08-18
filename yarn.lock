@@ -16174,10 +16174,10 @@ sisteransi@^1.0.5:
   resolved "https://registry.yarnpkg.com/sisteransi/-/sisteransi-1.0.5.tgz#134d681297756437cc05ca01370d3a7a571075ed"
   integrity sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==
 
-sku@^11.0.0:
-  version "11.0.0"
-  resolved "https://registry.yarnpkg.com/sku/-/sku-11.0.0.tgz#885effdece42597872d4e2cc8ad11d3b0842bdaf"
-  integrity sha512-H9y57+xronNNnVwbYgdlDsYdEi4l0ddTPOsQff6Q9CmKKCDayt1FDNbHc1lEmnXoWVeV5fbIZp99dWQU8fURfg==
+sku@^11.0.1:
+  version "11.0.1"
+  resolved "https://registry.yarnpkg.com/sku/-/sku-11.0.1.tgz#3ae4db46f3487ae3e18c76024d5cdecf9c51be5f"
+  integrity sha512-3uRGdLbQVox7N9QIRjes4aW0jdVOklUyhJLqG7Sm/Csis/GHJR/fUWjwBD02YaAkGM3Um3+QI13Gh0XAKWpbwQ==
   dependencies:
     "@babel/core" "^7.12.10"
     "@babel/plugin-transform-react-constant-elements" "^7.12.1"
@@ -16267,7 +16267,6 @@ sku@^11.0.0:
     semver "^7.3.4"
     serialize-javascript "^5.0.1"
     serve-handler "^6.1.3"
-    svgo "^2.3.1"
     svgo-loader "^3.0.0"
     terser-webpack-plugin "^5.1.4"
     traverse "^0.6.6"
@@ -17080,7 +17079,7 @@ svgo@^1.0.0:
     unquote "~1.1.1"
     util.promisify "~1.0.0"
 
-svgo@^2.2.0, svgo@^2.3.0, svgo@^2.3.1:
+svgo@^2.2.0, svgo@^2.3.0:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/svgo/-/svgo-2.3.1.tgz#603a69ce50311c0e36791528f549644ec1b3f4bc"
   integrity sha512-riDDIQgXpEnn0BEl9Gvhh1LNLIyiusSpt64IR8upJu7MwxnzetmF/Y57pXQD2NMX2lVyMRzXt5f2M5rO4wG7Dw==
