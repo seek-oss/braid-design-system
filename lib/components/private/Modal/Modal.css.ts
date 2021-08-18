@@ -118,7 +118,9 @@ export const maxSize = {
   }),
 };
 
-export const headingRoot = style({});
+export const headingRoot = style({
+  wordBreak: 'break-word',
+});
 export const headingFocus = style({
   selectors: {
     [`${headingRoot}:focus &`]: {
