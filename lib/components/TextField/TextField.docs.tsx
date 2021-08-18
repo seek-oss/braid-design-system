@@ -27,7 +27,7 @@ const docs: ComponentDocs = {
       />,
     ),
   alternatives: [
-    { name: 'Autosuggest', description: 'For autocompletion' },
+    { name: 'Autosuggest', description: 'For autocompletion.' },
     {
       name: 'PasswordField',
       description: 'For password input.',
