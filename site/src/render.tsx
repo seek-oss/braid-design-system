@@ -1,5 +1,5 @@
 import { Render } from 'sku';
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router';
 import { HeadProvider } from 'react-head';
@@ -11,7 +11,9 @@ import { ConfigProvider } from './App/ConfigContext';
 import * as themes from '../../lib/themes';
 import { braidVersionToDate } from './getVersionDetails';
 import { initUpdates } from './App/Updates';
-import { version } from '../../package.json';
+import packageJson from '../../package.json';
+
+const { version } = packageJson;
 
 const skuRender: Render<RenderContext> = {
   renderApp: async ({ route }) => {
@@ -34,7 +36,7 @@ const skuRender: Render<RenderContext> = {
     };
 
     const today = new Date();
-    const metaTags: React.ReactElement[] = [];
+    const metaTags: ReactElement[] = [];
 
     const config = {
       routerBasename,

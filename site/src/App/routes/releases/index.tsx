@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 
 // @ts-expect-error
-import changelogContent from '!!raw-loader!../../../../../CHANGELOG.md';
+import changelogContent from '../../../../../CHANGELOG.md';
 
 import { Page } from '../../../types';
 import { Markdown } from '../../Markdown/Markdown';
