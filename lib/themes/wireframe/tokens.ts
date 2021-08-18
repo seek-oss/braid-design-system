@@ -4,6 +4,7 @@ import { BraidTokens } from '../tokenType';
 
 const formAccent = '#404040';
 const critical = '#ef3e4a';
+const criticalLight = '#fbe9eb';
 const positive = '#00af50';
 const info = '#2c88f7';
 const promote = '#855be5';
@@ -172,7 +173,7 @@ const tokens: BraidTokens = {
       caution,
       cautionLight: mix(0.6, caution, getLightVariant(caution)),
       critical,
-      criticalLight: mix(0.3, critical, getLightVariant(critical)),
+      criticalLight: mix(0.3, critical, criticalLight),
       field: '#333',
       focus,
       formAccent,
@@ -229,7 +230,7 @@ const tokens: BraidTokens = {
       critical,
       criticalActive: getActiveColor(critical),
       criticalHover: getHoverColor(critical),
-      criticalLight: getLightVariant(critical),
+      criticalLight,
       criticalSoft: tint(0.925, critical),
       criticalSoftActive: tint(0.85, critical),
       criticalSoftHover: tint(0.9, critical),

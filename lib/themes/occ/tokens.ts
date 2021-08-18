@@ -7,6 +7,7 @@ const brandAccent = '#f13465';
 const formAccent = brand;
 const focus = lighten(0.5, brand);
 const critical = '#db3737';
+const criticalLight = '#f6e4e4';
 const positive = '#009537';
 const caution = '#ffc549';
 const info = '#0946CB';
@@ -173,7 +174,7 @@ const tokens: BraidTokens = {
       caution,
       cautionLight: mix(0.6, caution, getLightVariant(caution)),
       critical,
-      criticalLight: mix(0.3, critical, getLightVariant(critical)),
+      criticalLight: mix(0.3, critical, criticalLight),
       field: '#dddddd',
       focus,
       formAccent,
@@ -230,7 +231,7 @@ const tokens: BraidTokens = {
       critical,
       criticalActive: getActiveColor(critical),
       criticalHover: getHoverColor(critical),
-      criticalLight: getLightVariant(critical),
+      criticalLight,
       criticalSoft: tint(0.925, critical),
       criticalSoftActive: tint(0.85, critical),
       criticalSoftHover: tint(0.9, critical),

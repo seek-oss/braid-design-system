@@ -42,6 +42,7 @@ export const makeTokens = ({
   const promote = '#923f92';
   const positive = '#498307';
   const critical = alert;
+  const criticalLight = '#fae3e3';
   const caution = '#ffc600';
   const focus = blue3;
   const link = blue2;
@@ -201,7 +202,7 @@ export const makeTokens = ({
         caution,
         cautionLight: mix(0.6, caution, getLightVariant(caution)),
         critical,
-        criticalLight: mix(0.3, critical, getLightVariant(critical)),
+        criticalLight: mix(0.3, critical, criticalLight),
         field: grey4,
         focus,
         formAccent,
@@ -258,7 +259,7 @@ export const makeTokens = ({
         critical,
         criticalActive: getActiveColor(critical),
         criticalHover: getHoverColor(critical),
-        criticalLight: getLightVariant(critical),
+        criticalLight,
         criticalSoft: tint(0.925, critical),
         criticalSoftActive: tint(0.85, critical),
         criticalSoftHover: tint(0.9, critical),
