@@ -4,5 +4,4 @@ coverage/
 dist-storybook/
 report/
 site/dist/
-site/dist/playroom/
 # end managed by sku
