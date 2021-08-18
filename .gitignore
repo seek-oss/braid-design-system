@@ -15,6 +15,5 @@ coverage/
 dist-storybook/
 report/
 site/dist/
-site/dist/playroom/
 tsconfig.json
 # end managed by sku
