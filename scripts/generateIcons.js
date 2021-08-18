@@ -80,15 +80,19 @@ const iconComponentsDir = path.join(baseDir, 'lib/components/icons');
         plugins: [
           {
             name: 'preset-default',
-            overrides: {
-              removeViewBox: false,
+            params: {
+              overrides: {
+                removeViewBox: false,
+              },
             },
           },
           {
             name: 'inlineStyles',
-            onlyMatchedOnce: false,
+            params: {
+              onlyMatchedOnce: false,
+            },
           },
-          { name: 'convertStyleToAttrs', active: true },
+          { name: 'convertStyleToAttrs' },
         ],
       }).data;
 
