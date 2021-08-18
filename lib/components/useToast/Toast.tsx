@@ -1,4 +1,4 @@
-import { forwardRef, useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { TreatProvider } from 'sku/react-treat';
 import { Stack } from '../Stack/Stack';
 import { Inline } from '../Inline/Inline';
@@ -42,7 +42,7 @@ const Action = ({ label, onClick, removeToast }: ActionProps) => {
 interface ToastProps extends InternalToast {
   onClear: (dedupeKey: string, id: string) => void;
 }
-const Toast = forwardRef<HTMLDivElement, ToastProps>(
+const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
   (
     {
       id,

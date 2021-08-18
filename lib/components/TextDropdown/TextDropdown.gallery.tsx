@@ -1,3 +1,4 @@
+import React from 'react';
 import { ComponentExample } from '../../../site/src/types';
 import { Heading, Strong, Text, TextDropdown } from '..';
 import source from '../../utils/source.macro';

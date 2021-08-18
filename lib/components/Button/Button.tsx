@@ -1,4 +1,4 @@
-import { forwardRef, ReactNode, AllHTMLAttributes } from 'react';
+import React, { forwardRef, ReactNode, AllHTMLAttributes } from 'react';
 import {
   PrivateButtonRenderer,
   PrivateButtonRendererProps,

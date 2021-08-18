@@ -1,3 +1,4 @@
+import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import { TextLinkRenderer, Stack, Text, TextLink, Box } from '../';
 import source from '../../utils/source.macro';

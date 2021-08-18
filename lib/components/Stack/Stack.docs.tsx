@@ -1,3 +1,4 @@
+import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import { Stack, Hidden, Text, TextLink, Strong } from '../';
 import { Placeholder } from '../private/Placeholder/Placeholder';

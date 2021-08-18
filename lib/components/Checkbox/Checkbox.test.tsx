@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom/extend-expect';
-import { ComponentProps, useState } from 'react';
+import React, { ComponentProps, useState } from 'react';
 import { render } from '@testing-library/react';
 import { BraidTestProvider, Checkbox } from '..';
 import userEvent from '@testing-library/user-event';

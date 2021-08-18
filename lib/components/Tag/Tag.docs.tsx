@@ -1,3 +1,4 @@
+import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import { Card, Inline, Tag, Strong, Text, TextLinkButton } from '../';
 import source from '../../utils/source.macro';

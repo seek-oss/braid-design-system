@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import { useTextTone } from '../../hooks/typography';
 import buildDataAttributes, {
   DataAttributeMap,

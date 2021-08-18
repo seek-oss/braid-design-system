@@ -1,3 +1,4 @@
+import React from 'react';
 import { Box } from '../Box/Box';
 import { useBackgroundLightness } from '../Box/BackgroundContext';
 import buildDataAttributes, {

@@ -1,3 +1,4 @@
+import React from 'react';
 import source from '../../utils/source.macro';
 import { ComponentDocs } from '../../../site/src/types';
 import { Notice, Card, Text, Strong, Stack, TextLink, List } from '../';

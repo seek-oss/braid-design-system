@@ -1,4 +1,5 @@
 import dedent from 'dedent';
+import React from 'react';
 import {
   responsiveProperties,
   ResponsiveProperties,

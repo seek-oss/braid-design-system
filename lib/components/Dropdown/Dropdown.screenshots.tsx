@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import { ComponentScreenshot } from '../../../site/src/types';
 import { Dropdown, IconLocation } from '../';
 

@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import React, { useCallback } from 'react';
 
 import { Box } from '../Box/Box';
 import ToastComponent from './Toast';

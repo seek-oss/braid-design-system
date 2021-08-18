@@ -1,5 +1,5 @@
 import assert from 'assert';
-import { Fragment, ReactNode, AllHTMLAttributes } from 'react';
+import React, { Fragment, ReactNode, AllHTMLAttributes } from 'react';
 import clsx from 'clsx';
 import { Box, BoxProps } from '../../Box/Box';
 import { useBackgroundLightness } from '../../Box/BackgroundContext';

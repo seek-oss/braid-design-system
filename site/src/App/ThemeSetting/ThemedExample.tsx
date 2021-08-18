@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import { useThemeSettings } from './ThemeSettingContext';
 import { BraidProvider, Box } from '../../../../lib/components';
 import { BoxProps } from '../../../../lib/components/Box/Box';

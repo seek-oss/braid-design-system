@@ -1,3 +1,4 @@
+import React from 'react';
 import source from '../../utils/source.macro';
 import { Snippets } from '../private/Snippets';
 import { Button } from '../../playroom/components';

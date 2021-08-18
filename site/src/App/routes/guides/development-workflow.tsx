@@ -1,3 +1,4 @@
+import React from 'react';
 import dedent from 'dedent';
 import {
   Heading,

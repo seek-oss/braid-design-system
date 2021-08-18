@@ -1,3 +1,4 @@
+import React from 'react';
 import { Alert, Text, TextLink } from '../lib/components';
 
 export const VanillaMigrationBanner = () => (

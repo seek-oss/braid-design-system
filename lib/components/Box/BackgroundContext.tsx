@@ -1,4 +1,4 @@
-import { createContext, useContext, ReactElement } from 'react';
+import React, { createContext, useContext, ReactElement } from 'react';
 import { BoxProps } from './Box';
 import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
 

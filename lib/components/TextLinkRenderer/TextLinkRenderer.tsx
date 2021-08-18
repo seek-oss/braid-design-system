@@ -1,4 +1,4 @@
-import { CSSProperties, useContext, ReactElement } from 'react';
+import React, { CSSProperties, useContext, ReactElement } from 'react';
 import dedent from 'dedent';
 import assert from 'assert';
 import clsx from 'clsx';

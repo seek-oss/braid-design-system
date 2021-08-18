@@ -1,3 +1,4 @@
+import React from 'react';
 import { useFallbackState, StateProp } from '../../playroom/playroomState';
 import { useFallbackId } from '../../playroom/utils';
 import {

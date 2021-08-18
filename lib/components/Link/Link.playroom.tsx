@@ -1,4 +1,4 @@
-import { forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 import { Link as CustomLink, LinkProps } from './Link';
 
 export const Link = forwardRef<HTMLAnchorElement, LinkProps>(

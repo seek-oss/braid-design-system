@@ -1,3 +1,4 @@
+import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import { useResponsiveValue, Stack, Alert, Strong, Text } from '../../../';
 import source from '../../utils/source.macro';

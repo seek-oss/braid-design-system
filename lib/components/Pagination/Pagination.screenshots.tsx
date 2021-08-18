@@ -1,3 +1,4 @@
+import React from 'react';
 import { ComponentScreenshot } from '../../../site/src/types';
 import { Pagination } from '../';
 import { LinkProps } from '../Link/Link';

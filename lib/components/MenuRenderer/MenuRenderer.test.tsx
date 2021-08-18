@@ -1,3 +1,4 @@
+import React from 'react';
 import { menuTestSuite } from './testHelper';
 import { MenuRenderer } from './MenuRenderer';
 

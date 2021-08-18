@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom/extend-expect';
-import { ComponentType, useState } from 'react';
+import React, { ComponentType, useState } from 'react';
 import {
   render,
   fireEvent,

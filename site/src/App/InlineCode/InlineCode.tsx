@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { Box } from '../../../../lib/components';
 
 import * as styles from './InlineCode.css';

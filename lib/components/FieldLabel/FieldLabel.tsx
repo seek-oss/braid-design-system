@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import { Box } from '../Box/Box';
 import { Secondary } from '../Secondary/Secondary';
 import { Strong } from '../Strong/Strong';

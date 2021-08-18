@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import React, { Fragment } from 'react';
 import { ComponentScreenshot } from '../../../site/src/types';
 import { Box, Button, IconNewWindow, Stack, Text } from '../../components';
 import { Actions } from './Actions';

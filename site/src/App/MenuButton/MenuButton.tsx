@@ -1,3 +1,4 @@
+import React from 'react';
 import { Box } from '../../../../lib/components';
 import { useTextTone } from '../../../../lib/hooks/typography';
 import { virtualTouchable } from '../../../../lib/components/private/touchable/virtualTouchable';

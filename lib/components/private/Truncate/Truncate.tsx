@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import { Box } from '../../Box/Box';
 import * as styles from './Truncate.css';
 

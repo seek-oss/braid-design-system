@@ -1,5 +1,5 @@
 import '../../../lib/css/reset';
-import { StrictMode } from 'react';
+import React, { StrictMode } from 'react';
 import { Route, Switch, Redirect } from 'react-router';
 import { Link as ReactRouterLink } from 'react-router-dom';
 import map from 'lodash/map';

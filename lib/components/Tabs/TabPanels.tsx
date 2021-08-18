@@ -1,4 +1,4 @@
-import { useContext, useEffect, Fragment, Children } from 'react';
+import React, { useContext, useEffect, Fragment, Children } from 'react';
 import assert from 'assert';
 import flattenChildren from 'react-keyed-flatten-children';
 import { TabsContext } from './TabsProvider';

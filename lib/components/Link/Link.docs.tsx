@@ -1,3 +1,4 @@
+import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import { Link, Text, TextLink } from '..';
 import { Placeholder } from '../../playroom/components';

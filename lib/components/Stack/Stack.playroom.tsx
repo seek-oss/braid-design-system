@@ -1,3 +1,4 @@
+import React from 'react';
 import { Stack as BraidStack, StackProps, validStackComponents } from './Stack';
 
 export const Stack = ({

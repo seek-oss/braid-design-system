@@ -1,4 +1,4 @@
-import { ReactNode, useState } from 'react';
+import React, { ReactNode, useState } from 'react';
 import { ComponentScreenshot } from '../../../site/src/types';
 import { Heading, Strong, Text, TextDropdown } from '..';
 

@@ -1,3 +1,4 @@
+import React from 'react';
 import { ComponentScreenshot } from '../../../site/src/types';
 import { Alert, Text, Stack, TextLink, List } from '../';
 

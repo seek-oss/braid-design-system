@@ -1,4 +1,4 @@
-import { Children, ReactNode } from 'react';
+import React, { Children, ReactNode } from 'react';
 import { Text, TextProps } from '../Text/Text';
 import { Stack, StackProps } from '../Stack/Stack';
 import { Box } from '../Box/Box';

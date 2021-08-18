@@ -1,3 +1,4 @@
+import React from 'react';
 import { Link, LinkProps } from '../Link/Link';
 import { useMenuItem } from './useMenuItem';
 import { MenuItemProps } from './MenuItem';

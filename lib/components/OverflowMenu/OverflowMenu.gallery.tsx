@@ -1,3 +1,4 @@
+import React from 'react';
 import { ComponentExample } from '../../../site/src/types';
 import { Box, OverflowMenu, MenuItem, MenuItemLink } from '../';
 import source from '../../utils/source.macro';

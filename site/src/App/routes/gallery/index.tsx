@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { parseToHsl, setLightness } from 'polished';
 
 import { Page } from '../../../types';

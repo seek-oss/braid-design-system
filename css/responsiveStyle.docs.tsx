@@ -1,5 +1,5 @@
 import dedent from 'dedent';
-import { Fragment } from 'react';
+import React, { Fragment } from 'react';
 import { responsiveStyle, vars, breakpoints } from '.';
 import { Notice, Strong, Text, TextLink } from '../lib/components';
 import source from '../lib/utils/source.macro';

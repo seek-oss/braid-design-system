@@ -1,4 +1,4 @@
-import { SVGProps } from 'react';
+import React, { SVGProps } from 'react';
 import { Box } from '../../../../lib/components';
 import useIcon, { UseIconProps } from '../../../../lib/hooks/useIcon';
 

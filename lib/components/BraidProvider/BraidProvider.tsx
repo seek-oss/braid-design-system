@@ -1,6 +1,6 @@
 import assert from 'assert';
 import dedent from 'dedent';
-import {
+import React, {
   createContext,
   useContext,
   ReactNode,

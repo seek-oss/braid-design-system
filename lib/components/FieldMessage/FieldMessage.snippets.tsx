@@ -1,3 +1,4 @@
+import React from 'react';
 import { Snippets } from '../private/Snippets';
 import { FieldMessage, Text } from '../../playroom/components';
 import source from '../../utils/source.macro';

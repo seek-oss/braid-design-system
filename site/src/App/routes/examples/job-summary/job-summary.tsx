@@ -1,4 +1,4 @@
-import { ReactChild } from 'react';
+import React, { ReactChild } from 'react';
 import { Page } from '../../../../types';
 import {
   Heading,

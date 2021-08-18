@@ -1,5 +1,5 @@
 // Adapted version of https://github.com/streamich/react-use/blob/master/src/useMedia.ts
-import { useEffect, useState, createContext, ReactNode } from 'react';
+import React, { useEffect, useState, createContext, ReactNode } from 'react';
 import { breakpoints, Breakpoint } from '../../css/breakpoints';
 
 const minWidthQuery = (breakpoint: number) =>

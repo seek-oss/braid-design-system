@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import { ComponentScreenshot } from '../../../site/src/types';
 import { Link } from 'react-router-dom';
 import { ButtonRenderer } from '../';

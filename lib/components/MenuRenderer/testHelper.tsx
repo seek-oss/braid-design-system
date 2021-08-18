@@ -1,5 +1,6 @@
 import '@testing-library/jest-dom/extend-expect';
-import { FunctionComponent, useState } from 'react';
+
+import React, { FunctionComponent, useState } from 'react';
 import {
   render,
   cleanup,

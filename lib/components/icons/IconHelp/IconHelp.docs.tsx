@@ -1,3 +1,4 @@
+import React from 'react';
 import { ComponentDocs } from '../../../../site/src/types';
 import source from '../../../utils/source.macro';
 import { IconHelp, Heading, Stack } from '../../';

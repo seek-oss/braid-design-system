@@ -1,3 +1,4 @@
+import React from 'react';
 import { Snippets } from '../private/Snippets';
 import { Disclosure, Stack, Text } from '../../playroom/components';
 import source from '../../utils/source.macro';

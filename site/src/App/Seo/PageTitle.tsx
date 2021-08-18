@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import React, { Fragment } from 'react';
 import { Title, Meta } from 'react-head';
 
 const defaultTitle = 'Braid Design System';

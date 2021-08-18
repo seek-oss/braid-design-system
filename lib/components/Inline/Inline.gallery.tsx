@@ -1,3 +1,4 @@
+import React from 'react';
 import { ComponentExample } from '../../../site/src/types';
 import { Placeholder } from '../private/Placeholder/Placeholder';
 import { Inline } from '../';

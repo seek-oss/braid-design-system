@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import { Box, Text } from '../../';
 import { useBackgroundLightness } from '../../Box/BackgroundContext';
 import { atoms } from '../../../css/atoms/atoms';

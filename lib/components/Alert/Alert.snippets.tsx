@@ -1,3 +1,4 @@
+import React from 'react';
 import { Alert, Text } from '../../playroom/components';
 import source from '../../utils/source.macro';
 import { Snippets } from '../private/Snippets';

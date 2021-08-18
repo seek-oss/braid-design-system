@@ -1,3 +1,4 @@
+import React from 'react';
 import { seekAnz } from '../../themes';
 import { ComponentDocs } from '../../../site/src/types';
 import { Stack, Text, Strong, TextLink, Alert } from '..';

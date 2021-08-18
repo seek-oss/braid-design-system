@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom/extend-expect';
 
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import { render, act, waitFor, getByTestId } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 

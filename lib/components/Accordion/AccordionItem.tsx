@@ -1,4 +1,4 @@
-import { ReactNode, useContext } from 'react';
+import React, { ReactNode, useContext } from 'react';
 import assert from 'assert';
 import { Box } from '../Box/Box';
 import { Text, TextProps } from '../Text/Text';

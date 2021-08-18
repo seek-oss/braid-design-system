@@ -1,3 +1,4 @@
+import React from 'react';
 import { Box, BoxProps } from '../../Box/Box';
 import { hideFocusRingsClassName } from '../hideFocusRings/hideFocusRings';
 

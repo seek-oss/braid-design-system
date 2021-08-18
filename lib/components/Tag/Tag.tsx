@@ -1,3 +1,4 @@
+import React from 'react';
 import assert from 'assert';
 import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';

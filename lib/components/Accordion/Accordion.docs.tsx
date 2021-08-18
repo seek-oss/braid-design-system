@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import source from '../../utils/source.macro';
 import { Accordion, AccordionItem, Card, Text, TextLink, Strong } from '../';
@@ -65,11 +65,11 @@ const docs: ComponentDocs = {
             items. Note that, to ensure adequate space for touch targets, the{' '}
             <Strong>space</Strong> prop only accepts values of{' '}
             {validSpaceValues.map((value, i) => (
-              <Fragment key={value}>
+              <React.Fragment key={value}>
                 {i === validSpaceValues.length - 1 ? ' and ' : ''}
                 {i !== validSpaceValues.length - 1 && i !== 0 ? ', ' : ''}
                 <Strong>“{value}”</Strong>
-              </Fragment>
+              </React.Fragment>
             ))}
             .
           </Text>

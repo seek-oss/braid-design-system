@@ -1,3 +1,4 @@
+import React from 'react';
 import { Rating as BraidRating, RatingProps } from './Rating';
 
 export const Rating = ({ rating, ...restProps }: RatingProps) => (

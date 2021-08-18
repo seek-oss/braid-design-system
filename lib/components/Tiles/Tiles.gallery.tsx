@@ -1,3 +1,4 @@
+import React from 'react';
 import { ComponentExample } from '../../../site/src/types';
 import { Tiles } from '../';
 import { Placeholder } from '../private/Placeholder/Placeholder';

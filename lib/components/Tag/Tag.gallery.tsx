@@ -1,3 +1,4 @@
+import React from 'react';
 import { ComponentExample } from '../../../site/src/types';
 import { Tag, Inline, Text, TextLinkButton } from '../';
 import source from '../../utils/source.macro';

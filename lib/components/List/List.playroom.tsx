@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { IconClear } from '../icons';
 import { List as BraidList, ListProps } from './List';
 
