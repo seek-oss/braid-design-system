@@ -147,6 +147,7 @@ const iconComponentsDir = path.join(baseDir, 'lib/components/icons');
       await templateFileIfMissing(
         `${iconName}.tsx`,
         dedent`
+          import React from 'react';
           import { Box } from '../../Box/Box';
           import useIcon, { UseIconProps } from '../../../hooks/useIcon';
           import { ${svgComponentName} } from './${svgComponentName}';
@@ -165,6 +166,7 @@ const iconComponentsDir = path.join(baseDir, 'lib/components/icons');
       await templateFileIfMissing(
         `${iconName}.docs.tsx`,
         dedent`
+          import React from 'react';
           import { ComponentDocs } from '../../../../site/src/types';
           import source from '../../../utils/source.macro';
           import { ${iconName}, Heading, Stack } from '../../';
