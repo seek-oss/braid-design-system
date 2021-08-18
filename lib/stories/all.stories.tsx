@@ -106,12 +106,6 @@ Object.keys(allStories)
     });
 
     storyThemes.forEach((theme) => {
-      const storyConfig = {
-        chromatic: {
-          viewports: docs.screenshotWidths,
-        },
-      };
-
       const renderStory = () => (
         <BrowserRouter>
           <BraidProvider theme={theme}>
@@ -146,6 +140,11 @@ Object.keys(allStories)
         </BrowserRouter>
       );
 
-      stories.add(theme.name, renderStory, storyConfig);
+      stories.add(theme.name, renderStory, {
+        layout: 'fullscreen',
+        chromatic: {
+          viewports: docs.screenshotWidths,
+        },
+      });
     });
   });
