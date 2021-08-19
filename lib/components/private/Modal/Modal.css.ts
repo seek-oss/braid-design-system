@@ -119,7 +119,7 @@ export const maxSize = {
 };
 
 export const headingRoot = style({
-  wordBreak: 'break-word',
+  overflowWrap: 'break-word',
 });
 export const headingFocus = style({
   selectors: {
