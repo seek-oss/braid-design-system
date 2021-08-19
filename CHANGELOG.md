@@ -1,5 +1,81 @@
 # braid-design-system
 
+## 30.4.0
+
+### Minor Changes
+
+- **`apac` and `seekBusiness` themes:** Update colour palette ([#983](https://github.com/seek-oss/braid-design-system/pull/983))
+
+  The colours used in these themes have been updated to the latest design standards.
+
+  **A design review is highly recommended to ensure any custom design elements in your application still look correct when combined with these new colours.**
+
+- **Box:** Add new background and border colours ([#983](https://github.com/seek-oss/braid-design-system/pull/983))
+
+  New `background` values:
+
+  - `brandAccentSoft`
+  - `brandAccentSoftActive`
+  - `brandAccentSoftHover`
+  - `criticalSoft`
+  - `criticalSoftActive`
+  - `criticalSoftHover`
+  - `formAccentSoft`
+  - `formAccentSoftActive`
+  - `formAccentSoftHover`
+
+  New `boxShadow` values:
+
+  - `borderCautionLight`
+  - `borderCriticalLight`
+  - `borderInfoLight`
+  - `borderPositiveLight`
+  - `borderPromoteLight`
+
+- **atoms:** Add new `boxShadow` values: ([#983](https://github.com/seek-oss/braid-design-system/pull/983))
+
+  - `borderCautionLight`
+  - `borderCriticalLight`
+  - `borderInfoLight`
+  - `borderPositiveLight`
+  - `borderPromoteLight`
+
+- **vars:** Add new background and border colours ([#983](https://github.com/seek-oss/braid-design-system/pull/983))
+
+  New `backgroundColor` values:
+
+  - `brandAccentSoft`
+  - `brandAccentSoftActive`
+  - `brandAccentSoftHover`
+  - `criticalSoft`
+  - `criticalSoftActive`
+  - `criticalSoftHover`
+  - `formAccentSoft`
+  - `formAccentSoftActive`
+  - `formAccentSoftHover`
+
+  New `borderColor` values:
+
+  - `cautionLight`
+  - `criticalLight`
+  - `infoLight`
+  - `positiveLight`
+  - `promoteLight`
+
+- **Button, ButtonLink, ButtonRenderer:** The `soft` variant now has a solid background colour rather than an opacity. You may need to review any usage on top of coloured backgrounds. ([#983](https://github.com/seek-oss/braid-design-system/pull/983))
+
+- **Box, atoms, vars:** Add `large` and `xlarge` to `borderRadius` scale ([#983](https://github.com/seek-oss/braid-design-system/pull/983))
+
+- **`apac` and `seekBusiness` themes:** Increase size of focus ring (accessed via the `boxShadow` value of `"outlineFocus"`) and use updated colour palette. ([#983](https://github.com/seek-oss/braid-design-system/pull/983))
+
+- Display `formAccent` outline on form elements when focused ([#983](https://github.com/seek-oss/braid-design-system/pull/983))
+
+### Patch Changes
+
+- **Dialog, Drawer:** Support long, unbroken title text ([#986](https://github.com/seek-oss/braid-design-system/pull/986))
+
+- **Alert, Badge, Button, ButtonLink, ButtonRenderer, Card, Dialog, MenuRenderer, OverflowMenu, Pagination, TooltipRenderer, useToast:** Increase border radius using updated `borderRadius` scale ([#983](https://github.com/seek-oss/braid-design-system/pull/983))
+
 ## 30.3.0
 
 ### Minor Changes
