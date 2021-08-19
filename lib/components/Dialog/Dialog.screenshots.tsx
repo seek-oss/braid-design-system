@@ -122,7 +122,7 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
-      label: 'Layout:: Large width',
+      label: 'Layout: Large width',
       Example: ({ id }) => (
         <DialogContent
           id={id}
@@ -132,6 +132,24 @@ export const screenshots: ComponentScreenshot = {
           scrollLock={false}
         >
           <Placeholder height={100} width="100%" label="Large Dialog" />
+        </DialogContent>
+      ),
+    },
+    {
+      label: 'Layout: Handle long-unbroken title',
+      Example: ({ id }) => (
+        <DialogContent
+          id={id}
+          title="ReallyLongUnbrokenWordShouldBeHandled"
+          width="xsmall"
+          onClose={() => {}}
+          scrollLock={false}
+        >
+          <Placeholder
+            height={100}
+            width="100%"
+            label="Handle long-unbroken title"
+          />
         </DialogContent>
       ),
     },
