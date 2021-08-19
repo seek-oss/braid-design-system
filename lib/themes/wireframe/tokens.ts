@@ -1,7 +1,10 @@
+import { darken, lighten, mix, tint } from 'polished';
+import { getAccessibleVariant, getLightVariant, isLight } from '../../utils';
 import { BraidTokens } from '../tokenType';
 
 const formAccent = '#404040';
 const critical = '#ef3e4a';
+const criticalLight = '#fbe9eb';
 const positive = '#00af50';
 const info = '#2c88f7';
 const promote = '#855be5';
@@ -14,6 +17,12 @@ const link = '#4c77bb';
 const linkVisited = 'DarkViolet';
 const secondary = '#777';
 const neutral = '#edeef1';
+
+const getActiveColor = (x: string) =>
+  isLight(x) ? darken(0.1, x) : darken(0.05, x);
+
+const getHoverColor = (x: string) =>
+  isLight(x) ? darken(0.05, x) : lighten(0.05, x);
 
 const tokens: BraidTokens = {
   name: 'wireframe',
@@ -152,26 +161,34 @@ const tokens: BraidTokens = {
   border: {
     radius: {
       standard: '6px',
+      large: '8px',
+      xlarge: '10px',
     },
     width: {
       standard: 1,
       large: 2,
     },
     color: {
-      standard: '#777',
-      standardInverted: white,
+      brandAccent,
+      caution,
+      cautionLight: mix(0.6, caution, getLightVariant(caution)),
+      critical,
+      criticalLight: mix(0.3, critical, criticalLight),
       field: '#333',
       focus,
-      critical,
-      info,
-      promote,
-      positive,
-      caution,
-      formHover: formAccent,
       formAccent,
-      brandAccent,
+      formHover: formAccent,
+      info,
+      infoLight: mix(0.3, info, getLightVariant(info)),
+      positive,
+      positiveLight: mix(0.3, positive, getLightVariant(positive)),
+      promote,
+      promoteLight: mix(0.3, promote, getLightVariant(promote)),
+      standard: '#777',
+      standardInverted: white,
     },
   },
+  focusRingSize: 2,
   shadows: {
     small:
       '0 2px 4px 0px rgba(28,28,28,.1), 0 2px 2px -2px rgba(28,28,28,.1), 0 4px 4px -4px rgba(28,28,28,.2)',
@@ -182,38 +199,59 @@ const tokens: BraidTokens = {
   },
   color: {
     foreground: {
+      brandAccent,
+      caution: getAccessibleVariant(caution, caution),
+      critical: getAccessibleVariant(critical),
+      formAccent,
+      info: getAccessibleVariant(info),
       link,
       linkHover: link,
       linkVisited,
       neutral: black,
       neutralInverted: white,
-      formAccent,
-      brandAccent,
-      critical,
-      caution,
-      positive,
-      info,
-      promote,
+      positive: getAccessibleVariant(positive),
+      promote: getAccessibleVariant(promote),
+      rating: black,
       secondary,
       secondaryInverted: 'hsla(0, 0%, 100%, 0.65)',
-      rating: black,
     },
     background: {
       body: 'whitesmoke',
       brand: black,
+      brandAccent,
+      brandAccentActive: getActiveColor(brandAccent),
+      brandAccentHover: getHoverColor(brandAccent),
+      brandAccentSoft: tint(0.925, brandAccent),
+      brandAccentSoftActive: tint(0.85, brandAccent),
+      brandAccentSoftHover: tint(0.9, brandAccent),
+      card: white,
+      caution,
+      cautionLight: getLightVariant(caution),
+      critical,
+      criticalActive: getActiveColor(critical),
+      criticalHover: getHoverColor(critical),
+      criticalLight,
+      criticalSoft: tint(0.925, critical),
+      criticalSoftActive: tint(0.85, critical),
+      criticalSoftHover: tint(0.9, critical),
+      formAccent,
+      formAccentActive: getActiveColor(formAccent),
+      formAccentDisabled: '#ccc',
+      formAccentHover: getHoverColor(formAccent),
+      formAccentSoft: tint(0.925, formAccent),
+      formAccentSoftActive: tint(0.85, formAccent),
+      formAccentSoftHover: tint(0.9, formAccent),
+      info,
+      infoLight: getLightVariant(info),
       input: white,
       inputDisabled: '#eee',
-      brandAccent,
-      formAccent,
-      formAccentDisabled: '#ccc',
-      selection: '#f1f7ff',
-      card: white,
-      critical,
-      caution,
-      positive,
       neutral,
-      info,
+      neutralLight: getLightVariant(neutral),
+      positive,
+      positiveLight: getLightVariant(positive),
       promote,
+      promoteLight: getLightVariant(promote),
+      selection: '#f1f7ff',
     },
   },
 };

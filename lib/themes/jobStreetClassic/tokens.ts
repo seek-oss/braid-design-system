@@ -1,3 +1,4 @@
+import { getAccessibleVariant } from '../../utils';
 import { makeTokens } from '../baseTokens/seekAsia';
 
 const brand = '#1c3f94';
@@ -72,7 +73,7 @@ export default makeTokens({
     },
     color: {
       foreground: {
-        info,
+        info: getAccessibleVariant(info),
         link: '#1c3f94',
         linkHover: '#142d69',
       },

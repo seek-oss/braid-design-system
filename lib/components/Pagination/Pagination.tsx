@@ -29,6 +29,8 @@ export interface PaginationProps {
   data?: DataAttributeMap;
 }
 
+const borderRadius = 'large';
+
 const PageNav = ({
   label,
   direction,
@@ -50,8 +52,8 @@ const PageNav = ({
     >
       <Overlay
         component="span"
-        background={'selection'}
-        borderRadius="standard"
+        background="selection"
+        borderRadius={borderRadius}
         transition="fast"
         className={styles.background}
       />
@@ -93,12 +95,12 @@ const Page = ({ number, current }: { number: number; current: boolean }) => {
         component="span"
         background={current ? 'formAccent' : 'selection'}
         transition={current ? undefined : 'fast'}
-        borderRadius="standard"
+        borderRadius={borderRadius}
         className={[styles.background, current ? styles.current : undefined]}
       />
       <Overlay
         component="span"
-        borderRadius="standard"
+        borderRadius={borderRadius}
         boxShadow="borderFormAccent"
         className={
           parentBackground !== 'card' && current

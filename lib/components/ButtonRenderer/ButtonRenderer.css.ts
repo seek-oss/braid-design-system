@@ -1,5 +1,6 @@
-import { keyframes, style } from '@vanilla-extract/css';
+import { keyframes, style, styleVariants } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
+import { rgba } from 'polished';
 import { responsiveStyle } from '../../css/responsiveStyle';
 import { vars } from '../../themes/vars.css';
 
@@ -11,39 +12,18 @@ export const root = style({
   textDecoration: 'none',
 });
 
-export const inverted = style({});
-export const lightBg = style({});
-export const lightHoverBg = style({});
-
-export const backgroundOverlay = style({
-  selectors: {
-    [`${lightBg} &`]: {
-      opacity: 0.075,
-    },
-  },
-});
-
 export const activeOverlay = style({
   selectors: {
     [`${root}:active &`]: {
       opacity: 1,
-    },
-    [`${lightHoverBg}:active &`]: {
-      opacity: 0.1,
     },
   },
 });
 
 export const hoverOverlay = style({
   selectors: {
-    [`${root}:hover:not(:disabled):not(:active) &`]: {
+    [`${root}:hover:not(:disabled) &`]: {
       opacity: 1,
-    },
-    [`${lightHoverBg}:hover:not(:disabled):not(:active) &`]: {
-      opacity: 0.075,
-    },
-    [`${lightHoverBg}${inverted}:hover:not(:disabled):not(:active) &`]: {
-      opacity: 0.15,
     },
   },
 });
@@ -139,4 +119,10 @@ export const loadingDot = style({
       animationName: dot3,
     },
   },
+});
+
+export const invertedBackgrounds = styleVariants({
+  soft: { background: rgba('#fff', 0.075) },
+  hover: { background: rgba('#fff', 0.15) },
+  active: { background: rgba('#000', 0.05) },
 });

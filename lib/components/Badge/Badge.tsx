@@ -105,13 +105,13 @@ export const Badge = forwardRef<HTMLDivElement, BadgeProps>(
           title={title ?? (!ariaDescribedBy ? children : undefined)}
           background={backgroundForTone(tone, weight)}
           paddingX="xsmall"
-          borderRadius="standard"
+          borderRadius="large"
           overflow="hidden"
         >
           <Text
             component="span"
-            weight="medium"
             size={styles.constants.textSize}
+            weight="medium"
             tone={weight === 'regular' ? tone : undefined}
             truncate
             baseline={false}

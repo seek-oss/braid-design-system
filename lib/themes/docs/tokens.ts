@@ -1,21 +1,15 @@
-import { rgba } from 'polished';
-
+import { darken, rgba } from 'polished';
+import { palette } from '../../color/palette';
 import { BraidTokens } from '../tokenType';
 
-const formAccent = '#0049bd';
-const critical = '#ef0036';
-const positive = '#00af50';
-const info = '#0065de';
-const promote = '#855be5';
-const caution = '#ffc600';
-const brandAccent = '#1a1a1a';
+const brandAccent = palette.grey['900'];
+const formAccent = palette.indigo['600'];
 const focus = rgba('#1e90ff', 0.7);
-const black = '#333';
+const black = palette.grey['700'];
 const white = '#fff';
-const link = formAccent;
+const link = palette.indigo['600'];
 const linkVisited = 'DarkViolet';
-const secondary = '#757575';
-const neutral = '#c0c0c0';
+const secondary = palette.grey['500'];
 
 const tokens: BraidTokens = {
   name: 'docs',
@@ -154,27 +148,35 @@ const tokens: BraidTokens = {
   },
   border: {
     radius: {
-      standard: '8px',
+      standard: '6px',
+      large: '8px',
+      xlarge: '12px',
     },
     width: {
       standard: 1,
       large: 2,
     },
     color: {
-      standard: '#d6d6d6',
-      standardInverted: white,
-      field: '#bbb',
-      focus,
-      critical,
-      info,
-      promote,
-      positive,
-      caution,
-      formHover: formAccent,
-      formAccent,
       brandAccent,
+      caution: palette.yellow['600'],
+      cautionLight: palette.yellow['300'],
+      critical: palette.red['600'],
+      criticalLight: palette.red['300'],
+      field: palette.grey['400'],
+      focus,
+      formAccent,
+      formHover: formAccent,
+      info: palette.blue['600'],
+      infoLight: palette.blue['300'],
+      positive: palette.mint['600'],
+      positiveLight: palette.mint['300'],
+      promote: palette.purple['600'],
+      promoteLight: palette.purple['300'],
+      standard: palette.grey['200'],
+      standardInverted: white,
     },
   },
+  focusRingSize: 3,
   shadows: {
     small:
       '0 2px 4px 0px rgba(28,28,28,.1), 0 2px 2px -2px rgba(28,28,28,.1), 0 4px 4px -4px rgba(28,28,28,.2)',
@@ -185,38 +187,59 @@ const tokens: BraidTokens = {
   },
   color: {
     foreground: {
+      brandAccent,
+      caution: palette.yellow['900'],
+      critical: palette.red['700'],
+      formAccent,
+      info: palette.blue['700'],
       link,
       linkHover: link,
       linkVisited,
       neutral: black,
       neutralInverted: white,
-      formAccent,
-      brandAccent,
-      critical,
-      caution,
-      positive,
-      info,
-      promote,
-      secondary,
-      secondaryInverted: 'hsla(0, 0%, 100%, 0.65)',
+      positive: palette.mint['700'],
+      promote: palette.purple['700'],
       rating: black,
+      secondary,
+      secondaryInverted: rgba('#fff', 0.65),
     },
     background: {
       body: white,
-      brand: black,
-      input: white,
-      inputDisabled: '#eee',
+      brand: palette.grey['900'],
       brandAccent,
-      formAccent,
-      formAccentDisabled: '#ccc',
-      selection: '#f2f2f2',
+      brandAccentActive: brandAccent,
+      brandAccentHover: palette.grey['700'],
+      brandAccentSoft: palette.grey['200'],
+      brandAccentSoftActive: darken(0.025, palette.grey['200']),
+      brandAccentSoftHover: darken(0.05, palette.grey['200']),
       card: white,
-      critical,
-      caution,
-      positive,
-      neutral,
-      info,
-      promote,
+      caution: palette.yellow['500'],
+      cautionLight: palette.yellow['100'],
+      critical: palette.red['600'],
+      criticalActive: darken(0.075, palette.red['600']),
+      criticalHover: darken(0.05, palette.red['600']),
+      criticalLight: palette.red['100'],
+      criticalSoft: palette.red['100'],
+      criticalSoftActive: darken(0.05, palette.red['100']),
+      criticalSoftHover: darken(0.025, palette.red['100']),
+      formAccent,
+      formAccentActive: palette.indigo['700'],
+      formAccentDisabled: palette.grey['200'],
+      formAccentHover: darken(0.05, palette.indigo['600']),
+      formAccentSoft: palette.indigo['100'],
+      formAccentSoftActive: darken(0.05, palette.indigo['100']),
+      formAccentSoftHover: darken(0.025, palette.indigo['100']),
+      info: palette.blue['600'],
+      infoLight: palette.blue['100'],
+      input: white,
+      inputDisabled: palette.grey['200'],
+      neutral: palette.grey['200'],
+      neutralLight: palette.grey['100'],
+      positive: palette.mint['600'],
+      positiveLight: palette.mint['100'],
+      promote: palette.purple['600'],
+      promoteLight: palette.purple['100'],
+      selection: palette.grey['100'],
     },
   },
 };

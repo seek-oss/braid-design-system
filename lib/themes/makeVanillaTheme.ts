@@ -1,18 +1,10 @@
-import { darken, lighten } from 'polished';
 import mapValues from 'lodash/mapValues';
 import { FontMetrics, getCapHeight } from 'capsize';
 
-import { getAccessibleVariant, getLightVariant, isLight } from '../utils';
 import { BraidTokens, TextDefinition } from './tokenType';
 import { buildValues } from '../hooks/typography/capsize/prebuilt';
 
 const px = (v: string | number) => `${v}px`;
-
-const getActiveColor = (x: string) =>
-  isLight(x) ? darken(0.1, x) : darken(0.05, x);
-
-const getHoverColor = (x: string) =>
-  isLight(x) ? darken(0.05, x) : lighten(0.05, x);
 
 const fontSizeToCapHeight = (
   grid: number,
@@ -88,23 +80,10 @@ export default (braidTokens: BraidTokens) => {
     borderRadius: tokens.border.radius,
     borderColor: tokens.border.color,
     borderWidth: mapValues(tokens.border.width, px),
+    focusRingSize: px(tokens.focusRingSize),
     contentWidth: mapValues(tokens.contentWidth, px),
     foregroundColor: foreground,
-    backgroundColor: {
-      ...background,
-      formAccentActive: getActiveColor(background.formAccent),
-      formAccentHover: getHoverColor(background.formAccent),
-      brandAccentActive: getActiveColor(background.brandAccent),
-      brandAccentHover: getHoverColor(background.brandAccent),
-      criticalActive: getActiveColor(background.critical),
-      criticalHover: getHoverColor(background.critical),
-      infoLight: getLightVariant(background.info),
-      promoteLight: getLightVariant(background.promote),
-      criticalLight: getLightVariant(background.critical),
-      positiveLight: getLightVariant(background.positive),
-      cautionLight: getLightVariant(background.caution),
-      neutralLight: getLightVariant(background.neutral),
-    },
+    backgroundColor: background,
     fontFamily: typography.fontFamily,
     fontMetrics: mapValues(typography.fontMetrics, String),
     textSize: mapValues(tokens.typography.text, (definition) =>
@@ -129,28 +108,6 @@ export default (braidTokens: BraidTokens) => {
     transition: tokens.transitions,
     transform: tokens.transforms,
     shadow: tokens.shadows,
-    accessibleForegroundColorOnLightVariant: {
-      critical: {
-        text: getAccessibleVariant(foreground.critical, 'text'),
-        graphic: getAccessibleVariant(foreground.critical, 'graphic'),
-      },
-      caution: {
-        text: getAccessibleVariant(foreground.caution, 'text'),
-        graphic: getAccessibleVariant(foreground.caution, 'graphic'),
-      },
-      positive: {
-        text: getAccessibleVariant(foreground.positive, 'text'),
-        graphic: getAccessibleVariant(foreground.positive, 'graphic'),
-      },
-      info: {
-        text: getAccessibleVariant(foreground.info, 'text'),
-        graphic: getAccessibleVariant(foreground.info, 'graphic'),
-      },
-      promote: {
-        text: getAccessibleVariant(foreground.promote, 'text'),
-        graphic: getAccessibleVariant(foreground.promote, 'graphic'),
-      },
-    },
   } as const;
 
   return resolvedTokens;

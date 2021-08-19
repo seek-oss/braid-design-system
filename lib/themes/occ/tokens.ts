@@ -1,11 +1,13 @@
 import { BraidTokens } from '../tokenType';
-import { lighten } from 'polished';
+import { darken, lighten, mix, tint } from 'polished';
+import { getAccessibleVariant, getLightVariant, isLight } from '../../utils';
 
 const brand = '#083cae';
 const brandAccent = '#f13465';
 const formAccent = brand;
 const focus = lighten(0.5, brand);
 const critical = '#db3737';
+const criticalLight = '#f6e4e4';
 const positive = '#009537';
 const caution = '#ffc549';
 const info = '#0946CB';
@@ -16,6 +18,12 @@ const secondary = '#777';
 const white = '#fff';
 const link = '#0946CB';
 const linkVisited = '#5736ab';
+
+const getActiveColor = (x: string) =>
+  isLight(x) ? darken(0.1, x) : darken(0.05, x);
+
+const getHoverColor = (x: string) =>
+  isLight(x) ? darken(0.05, x) : lighten(0.05, x);
 
 const tokens: BraidTokens = {
   name: 'OCC',
@@ -154,26 +162,34 @@ const tokens: BraidTokens = {
   border: {
     radius: {
       standard: '4px',
+      large: '6px',
+      xlarge: '10px',
     },
     width: {
       standard: 1,
       large: 2,
     },
     color: {
-      standard: '#dddddd',
-      standardInverted: white,
+      brandAccent,
+      caution,
+      cautionLight: mix(0.6, caution, getLightVariant(caution)),
+      critical,
+      criticalLight: mix(0.3, critical, criticalLight),
       field: '#dddddd',
       focus,
-      critical,
-      info,
-      promote,
-      positive,
-      caution,
-      formHover: formAccent,
       formAccent,
-      brandAccent,
+      formHover: formAccent,
+      info,
+      infoLight: mix(0.3, info, getLightVariant(info)),
+      positive,
+      positiveLight: mix(0.3, positive, getLightVariant(positive)),
+      promote,
+      promoteLight: mix(0.3, promote, getLightVariant(promote)),
+      standard: '#dddddd',
+      standardInverted: white,
     },
   },
+  focusRingSize: 2,
   shadows: {
     small:
       '0 2px 4px 0px rgba(28,28,28,.1), 0 2px 2px -2px rgba(28,28,28,.1), 0 4px 4px -4px rgba(28,28,28,.2)',
@@ -184,38 +200,59 @@ const tokens: BraidTokens = {
   },
   color: {
     foreground: {
+      brandAccent,
+      caution: getAccessibleVariant(caution, caution),
+      critical: getAccessibleVariant(critical),
+      formAccent,
+      info: getAccessibleVariant(info),
       link,
       linkHover: link,
       linkVisited,
       neutral: black,
       neutralInverted: white,
-      formAccent,
-      brandAccent,
-      critical,
-      info,
-      promote,
-      caution,
-      positive,
+      positive: getAccessibleVariant(positive),
+      promote: getAccessibleVariant(promote),
+      rating: '#f36e23',
       secondary,
       secondaryInverted: 'hsla(0, 0%, 100%, 0.65)',
-      rating: '#f36e23',
     },
     background: {
       body: '#f5f5f8',
       brand,
+      brandAccent,
+      brandAccentActive: getActiveColor(brandAccent),
+      brandAccentHover: getHoverColor(brandAccent),
+      brandAccentSoft: tint(0.925, brandAccent),
+      brandAccentSoftActive: tint(0.85, brandAccent),
+      brandAccentSoftHover: tint(0.9, brandAccent),
+      card: white,
+      caution,
+      cautionLight: getLightVariant(caution),
+      critical,
+      criticalActive: getActiveColor(critical),
+      criticalHover: getHoverColor(critical),
+      criticalLight,
+      criticalSoft: tint(0.925, critical),
+      criticalSoftActive: tint(0.85, critical),
+      criticalSoftHover: tint(0.9, critical),
+      formAccent,
+      formAccentActive: getActiveColor(formAccent),
+      formAccentDisabled: '#ccc',
+      formAccentHover: getHoverColor(formAccent),
+      formAccentSoft: tint(0.925, formAccent),
+      formAccentSoftActive: tint(0.85, formAccent),
+      formAccentSoftHover: tint(0.9, formAccent),
+      info,
+      infoLight: getLightVariant(info),
       input: white,
       inputDisabled: '#eee',
-      brandAccent,
-      formAccent,
-      formAccentDisabled: '#ccc',
-      selection: '#fafafa',
-      card: white,
-      critical,
-      caution,
-      info,
-      promote,
-      positive,
       neutral,
+      neutralLight: getLightVariant(neutral),
+      positive,
+      positiveLight: getLightVariant(positive),
+      promote,
+      promoteLight: getLightVariant(promote),
+      selection: '#fafafa',
     },
   },
 };

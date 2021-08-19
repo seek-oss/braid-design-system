@@ -17,11 +17,12 @@ import { textAlignedToIcon } from '../../css/textAlignedToIcon.css';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
-import * as styles from './Alert.css';
 
 type Tone = 'promote' | 'info' | 'positive' | 'caution' | 'critical';
 
 type CloseProps = AllOrNone<{ onClose: () => void; closeLabel: string }>;
+
+const borderRadius = 'large';
 
 export type AlertProps = {
   tone?: Tone;
@@ -30,21 +31,21 @@ export type AlertProps = {
   id?: string;
 } & CloseProps;
 
-const backgroundForTone = {
+const backgroundForTone: Record<Tone, BoxProps['background']> = {
   promote: 'promoteLight',
   info: 'infoLight',
   positive: 'positiveLight',
   caution: 'cautionLight',
   critical: 'criticalLight',
-} as Record<Tone, BoxProps['background']>;
+};
 
-const borderForTone = {
-  promote: 'borderPromote',
-  info: 'borderInfo',
-  positive: 'borderPositive',
-  caution: 'borderCaution',
-  critical: 'borderCritical',
-} as Record<Tone, BoxProps['boxShadow']>;
+const borderForTone: Record<Tone, BoxProps['boxShadow']> = {
+  promote: 'borderPromoteLight',
+  info: 'borderInfoLight',
+  positive: 'borderPositiveLight',
+  caution: 'borderCautionLight',
+  critical: 'borderCriticalLight',
+};
 
 const icons = {
   positive: IconPositive,
@@ -72,7 +73,7 @@ export const Alert = ({
       id={id}
       background={backgroundForTone[tone]}
       padding="medium"
-      borderRadius="standard"
+      borderRadius={borderRadius}
       position="relative"
       overflow="hidden"
       role="alert"
@@ -100,13 +101,9 @@ export const Alert = ({
       </Box>
       {parentBackground !== 'card' && (
         <Overlay
-          borderRadius="standard"
+          borderRadius={borderRadius}
           boxShadow={borderForTone[tone]}
           visible
-          className={{
-            [styles.toneBorder]: tone !== 'caution',
-            [styles.cautionBorder]: tone === 'caution',
-          }}
         />
       )}
       <Box

@@ -52,7 +52,7 @@ export const fieldSize = styleVariants(sizes, (size) => ({
   width: calc.multiply(vars.inlineFieldSize[size], toggleWidthRatio),
 }));
 
-export const slideContainerBase = style({});
+export const slideContainer = style({});
 export const slideContainerSize = styleVariants(sizes, (size) => ({
   height: vars.inlineFieldSize[size],
 }));
@@ -70,7 +70,7 @@ export const slideTrackBackground = style({
 
 export const slideTrackSelected = style({
   selectors: {
-    [`${realField}:not(:checked) + ${slideContainerBase} &`]: {
+    [`${realField}:not(:checked) + ${slideContainer} &`]: {
       transform: `translateX(${calc.negate(vars.touchableSize)})`,
     },
   },
@@ -92,13 +92,13 @@ export const slider = styleVariants(sizes, (size) => {
     height: vars.inlineFieldSize[size],
     width: vars.inlineFieldSize[size],
     selectors: {
-      [`${realField}:active + ${slideContainerBase} &`]: {
+      [`${realField}:active + ${slideContainer} &`]: {
         transform: `translateX(${calc.negate(anticipation)})`,
       },
-      [`${realField}:checked + ${slideContainerBase} &`]: {
+      [`${realField}:checked + ${slideContainer} &`]: {
         transform: `translateX(${slideDistance})`,
       },
-      [`${realField}:active:checked + ${slideContainerBase} &`]: {
+      [`${realField}:active:checked + ${slideContainer} &`]: {
         transform: `translateX(${calc.add(slideDistance, anticipation)})`,
       },
     },
@@ -108,13 +108,13 @@ export const slider = styleVariants(sizes, (size) => {
 export const icon = style({
   transform: 'scale(.75)',
   selectors: {
-    [`${realField}:active + ${slideContainerBase} &`]: {
+    [`${realField}:active + ${slideContainer} &`]: {
       transform: 'scale(.75) rotate(-25deg)',
     },
-    [`${realField}:checked + ${slideContainerBase} &`]: {
+    [`${realField}:checked + ${slideContainer} &`]: {
       opacity: 1,
     },
-    [`${realField}:active:checked + ${slideContainerBase} &`]: {
+    [`${realField}:active:checked + ${slideContainer} &`]: {
       transform: 'scale(.75) rotate(6deg)',
     },
   },
@@ -122,16 +122,17 @@ export const icon = style({
 
 export const focusOverlay = style({
   selectors: {
-    [`${realField}:focus + ${slideContainerBase} &, ${realField}:active + ${slideContainerBase} &`]:
-      {
-        opacity: 1,
-      },
+    [`${realField}:focus + ${slideContainer} &,
+      ${realField}:active + ${slideContainer} &`]: {
+      opacity: 1,
+    },
   },
 });
 
 export const hoverOverlay = style({
   selectors: {
-    [`${realField}:hover:not(:disabled) + ${slideContainerBase} &`]: {
+    [`${realField}:hover:not(:disabled) + ${slideContainer} &,
+      ${realField}:focus + ${slideContainer} &`]: {
       opacity: 1,
     },
   },

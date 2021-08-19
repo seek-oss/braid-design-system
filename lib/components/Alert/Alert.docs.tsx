@@ -9,23 +9,25 @@ const docs: ComponentDocs = {
   migrationGuide: true,
   Example: () =>
     source(
-      <Stack space="medium">
-        <Alert tone="promote">
-          <Text>This is a promoted message.</Text>
-        </Alert>
-        <Alert tone="info">
-          <Text>This is an informative message.</Text>
-        </Alert>
-        <Alert tone="positive">
-          <Text>This is a positive message.</Text>
-        </Alert>
-        <Alert tone="caution">
-          <Text>This is a cautionary message.</Text>
-        </Alert>
-        <Alert tone="critical">
-          <Text>This is a critical message.</Text>
-        </Alert>
-      </Stack>,
+      <Card rounded>
+        <Stack space="medium">
+          <Alert tone="promote">
+            <Text>This is a promoted message.</Text>
+          </Alert>
+          <Alert tone="info">
+            <Text>This is an informative message.</Text>
+          </Alert>
+          <Alert tone="positive">
+            <Text>This is a positive message.</Text>
+          </Alert>
+          <Alert tone="caution">
+            <Text>This is a cautionary message.</Text>
+          </Alert>
+          <Alert tone="critical">
+            <Text>This is a critical message.</Text>
+          </Alert>
+        </Stack>
+      </Card>,
     ),
   accessibility: (
     <Text>
@@ -73,6 +75,7 @@ const docs: ComponentDocs = {
           </Text>
         </Stack>
       ),
+      background: 'card',
       Example: () =>
         source(
           <Alert tone="info">
@@ -98,6 +101,7 @@ const docs: ComponentDocs = {
           <Strong>onClose</Strong> handler.
         </Text>
       ),
+      background: 'card',
       Example: () =>
         /* eslint-disable no-alert */
         source(
@@ -115,32 +119,30 @@ const docs: ComponentDocs = {
       label: 'Contextual design',
       description: (
         <Text>
-          When inside a <TextLink href="/components/Card">Card</TextLink>, the
-          Alert’s outline is omitted since the background has sufficient
-          contrast without it.
+          When outside of a <TextLink href="/components/Card">Card</TextLink>,
+          an outline is used to provide sufficient contrast against the
+          background.
         </Text>
       ),
       Example: () =>
         source(
-          <Card>
-            <Stack space="medium">
-              <Alert tone="promote">
-                <Text>This is a promoted message.</Text>
-              </Alert>
-              <Alert tone="info">
-                <Text>This is an informative message.</Text>
-              </Alert>
-              <Alert tone="positive">
-                <Text>This is a positive message.</Text>
-              </Alert>
-              <Alert tone="caution">
-                <Text>This is a cautionary message.</Text>
-              </Alert>
-              <Alert tone="critical">
-                <Text>This is a critical message.</Text>
-              </Alert>
-            </Stack>
-          </Card>,
+          <Stack space="medium">
+            <Alert tone="promote">
+              <Text>This is a promoted message.</Text>
+            </Alert>
+            <Alert tone="info">
+              <Text>This is an informative message.</Text>
+            </Alert>
+            <Alert tone="positive">
+              <Text>This is a positive message.</Text>
+            </Alert>
+            <Alert tone="caution">
+              <Text>This is a cautionary message.</Text>
+            </Alert>
+            <Alert tone="critical">
+              <Text>This is a critical message.</Text>
+            </Alert>
+          </Stack>,
         ),
     },
   ],

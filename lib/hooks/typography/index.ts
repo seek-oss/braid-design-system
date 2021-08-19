@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import clsx from 'clsx';
 import type { StyleRule } from '@vanilla-extract/css';
+import assert from 'assert';
 
 import {
   useBackground,
@@ -114,6 +115,23 @@ export function useWeight(weight: keyof typeof styles.fontWeight) {
   return inTextLinkRenderer ? undefined : styles.fontWeight[weight];
 }
 
+const neutralToneOverrideForBackground: Partial<
+  Record<NonNullable<BoxProps['background']>, keyof typeof styles.tone>
+> = {
+  formAccentSoft: 'formAccent',
+  formAccentSoftActive: 'formAccent',
+  formAccentSoftHover: 'formAccent',
+  criticalLight: 'critical',
+  criticalSoft: 'critical',
+  criticalSoftActive: 'critical',
+  criticalSoftHover: 'critical',
+  caution: 'caution',
+  cautionLight: 'caution',
+  positiveLight: 'positive',
+  infoLight: 'info',
+  promoteLight: 'promote',
+};
+
 export function useTextTone({
   tone: toneProp,
   backgroundContext: backgroundContextOverride,
@@ -127,13 +145,15 @@ export function useTextTone({
   const backgroundLightness = useBackgroundLightness(background);
   const { tone } = useDefaultTextProps({ tone: toneProp });
 
-  const toneOverrides = styles.toneOverridesForBackground[background!];
-  if (toneOverrides) {
-    const toneOverride = toneOverrides[tone];
+  if (tone === 'neutral' && background in neutralToneOverrideForBackground) {
+    const toneOverride =
+      neutralToneOverrideForBackground[
+        background as keyof typeof neutralToneOverrideForBackground
+      ];
 
-    if (toneOverride) {
-      return toneOverride;
-    }
+    assert(toneOverride, `Tone override not found for tone: ${tone}`);
+
+    return styles.tone[toneOverride];
   }
 
   if (tone !== 'neutral') {

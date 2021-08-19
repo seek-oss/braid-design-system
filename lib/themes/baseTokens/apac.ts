@@ -1,27 +1,19 @@
-import { BraidTokens } from '../tokenType';
 import { DeepPartial } from 'utility-types';
-import { rgba } from 'polished';
+import { darken, lighten, rgba, saturate } from 'polished';
 import merge from 'lodash/merge';
-
-const grey = {
-  50: '#f5f6f8',
-  100: '#e8eaee',
-  200: '#d8dce2',
-  300: '#b8beca',
-  400: '#8991a5',
-  500: '#596581',
-  600: '#414a5f',
-  700: '#313848',
-  800: '#1e222b',
-  900: '#0e1014',
-} as const;
+import { palette } from '../../color/palette';
+import { BraidTokens } from '../tokenType';
 
 interface MakeTokensOptions {
   name: string;
   displayName: string;
   brand: string;
   brandAccent: string;
-  formAccent: string;
+  brandAccentActive: string;
+  brandAccentHover: string;
+  brandAccentSoft: string;
+  brandAccentSoftActive: string;
+  brandAccentSoftHover: string;
   tokenOverrides?: DeepPartial<BraidTokens>;
 }
 export const makeTokens = ({
@@ -29,20 +21,17 @@ export const makeTokens = ({
   displayName,
   brand,
   brandAccent,
-  formAccent,
+  brandAccentActive,
+  brandAccentHover,
+  brandAccentSoft,
+  brandAccentSoftActive,
+  brandAccentSoftHover,
   tokenOverrides = {},
 }: MakeTokensOptions): BraidTokens => {
-  const critical = '#d0011b';
-  const positive = '#138a08';
-  const info = '#1e468c';
-  const promote = '#9556b7';
-  const caution = '#ffc600';
-  const focus = rgba('#1e90ff', 0.7);
-  const black = grey['800'];
+  const formAccent = palette.indigo['500'];
+  const critical = palette.red['700'];
+  const focus = rgba(palette.indigo['300'], 0.7);
   const white = '#fff';
-  const link = '#2765cf';
-  const linkVisited = '#733d90';
-  const secondary = grey['500'];
 
   const tokens: BraidTokens = {
     name,
@@ -182,77 +171,106 @@ export const makeTokens = ({
     border: {
       radius: {
         standard: '4px',
+        large: '6px',
+        xlarge: '10px',
       },
       width: {
         standard: 1,
         large: 2,
       },
       color: {
-        standard: grey['200'],
-        standardInverted: white,
-        field: grey['400'],
-        focus,
-        formHover: formAccent,
-        critical,
-        info,
-        promote,
-        positive,
-        caution,
-        formAccent,
         brandAccent,
+        caution: palette.yellow['500'],
+        cautionLight: palette.yellow['200'],
+        critical,
+        criticalLight: palette.red['200'],
+        field: palette.grey['400'],
+        focus,
+        formAccent,
+        formHover: palette.indigo['500'],
+        info: palette.blue['700'],
+        infoLight: palette.blue['200'],
+        positive: palette.mint['700'],
+        positiveLight: palette.mint['200'],
+        promote: palette.purple['700'],
+        promoteLight: palette.purple['200'],
+        standard: palette.grey['200'],
+        standardInverted: white,
       },
     },
+    focusRingSize: 3,
     shadows: {
       small: [
-        `0 2px 4px 0px ${rgba(grey['800'], 0.1)}`,
-        `0 2px 2px -2px ${rgba(grey['800'], 0.1)}`,
-        `0 4px 4px -4px ${rgba(grey['800'], 0.2)}`,
+        `0 2px 4px 0px ${rgba(palette.grey['800'], 0.1)}`,
+        `0 2px 2px -2px ${rgba(palette.grey['800'], 0.1)}`,
+        `0 4px 4px -4px ${rgba(palette.grey['800'], 0.2)}`,
       ].join(', '),
       medium: [
-        `0 2px 4px 0px ${rgba(grey['800'], 0.1)}`,
-        `0 8px 8px -4px ${rgba(grey['800'], 0.1)}`,
-        `0 12px 12px -8px ${rgba(grey['800'], 0.2)}`,
+        `0 2px 4px 0px ${rgba(palette.grey['800'], 0.1)}`,
+        `0 8px 8px -4px ${rgba(palette.grey['800'], 0.1)}`,
+        `0 12px 12px -8px ${rgba(palette.grey['800'], 0.2)}`,
       ].join(', '),
       large: [
-        `0 2px 4px 0px ${rgba(grey['800'], 0.1)}`,
-        `0 12px 12px -4px ${rgba(grey['800'], 0.1)}`,
-        `0 20px 20px -12px ${rgba(grey['800'], 0.2)}`,
+        `0 2px 4px 0px ${rgba(palette.grey['800'], 0.1)}`,
+        `0 12px 12px -4px ${rgba(palette.grey['800'], 0.1)}`,
+        `0 20px 20px -12px ${rgba(palette.grey['800'], 0.2)}`,
       ].join(', '),
     },
     color: {
       foreground: {
-        link,
-        linkHover: link,
-        linkVisited,
-        neutral: black,
-        neutralInverted: white,
-        formAccent,
         brandAccent,
+        caution: palette.yellow['900'],
         critical,
-        caution,
-        positive,
-        info,
-        promote,
-        secondary,
-        secondaryInverted: 'hsla(0, 0%, 100%, 0.65)',
+        formAccent,
+        info: palette.blue['700'],
+        link: formAccent,
+        linkHover: formAccent,
+        linkVisited: palette.purple['700'],
+        neutral: palette.grey['700'],
+        neutralInverted: white,
+        positive: palette.mint['700'],
+        promote: palette.purple['700'],
         rating: '#f57c00',
+        secondary: palette.grey['500'],
+        secondaryInverted: rgba('#fff', 0.65),
       },
       background: {
-        body: grey['50'],
+        body: palette.grey['50'],
         brand,
-        input: white,
-        inputDisabled: grey['50'],
         brandAccent,
-        formAccent,
-        formAccentDisabled: grey['100'],
-        selection: grey['100'],
+        brandAccentActive,
+        brandAccentHover,
+        brandAccentSoft,
+        brandAccentSoftActive,
+        brandAccentSoftHover,
         card: white,
+        caution: palette.yellow['500'],
+        cautionLight: palette.yellow['100'],
         critical,
-        caution,
-        positive,
-        neutral: grey['500'],
-        info,
-        promote,
+        criticalActive: darken(0.05, critical),
+        criticalHover: saturate(0.1, lighten(0.05, critical)),
+        criticalLight: palette.red['100'],
+        criticalSoft: palette.red['50'],
+        criticalSoftActive: darken(0.05, palette.red['50']),
+        criticalSoftHover: darken(0.025, palette.red['50']),
+        formAccent,
+        formAccentActive: darken(0.05, formAccent),
+        formAccentDisabled: palette.grey['100'],
+        formAccentHover: saturate(0.5, lighten(0.075, formAccent)),
+        formAccentSoft: palette.indigo['50'],
+        formAccentSoftActive: darken(0.05, palette.indigo['50']),
+        formAccentSoftHover: darken(0.025, palette.indigo['50']),
+        info: palette.blue['700'],
+        infoLight: palette.blue['100'],
+        input: white,
+        inputDisabled: palette.grey['50'],
+        neutral: palette.grey['700'],
+        neutralLight: palette.grey['100'],
+        positive: palette.mint['700'],
+        positiveLight: palette.mint['100'],
+        promote: palette.purple['700'],
+        promoteLight: palette.purple['100'],
+        selection: palette.indigo['50'],
       },
     },
   };
