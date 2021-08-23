@@ -1,14 +1,9 @@
-import {
-  composeStyles,
-  style,
-  styleVariants,
-  assignVars,
-} from '@vanilla-extract/css';
+import { style, styleVariants } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
+import { createTextStyle } from '@capsizecss/vanilla-extract';
 
 import { vars } from '../../themes/vars.css';
-import { responsiveStyle } from '../../css/responsiveStyle';
-import * as capsize from './capsize/prebuilt';
+import { breakpointQuery, responsiveStyle } from '../../css/responsiveStyle';
 
 import { mapToProperty } from '../../utils';
 
@@ -57,27 +52,22 @@ const makeTypographyRules = (
         },
       }),
     ),
-    trimmed: composeStyles(
-      capsize.className,
-      style(
-        responsiveStyle({
-          mobile: {
-            vars: assignVars(capsize.vars, {
-              fontSize: mobileFontSize,
-              lineHeight: mobileLineHeight,
-              ...mobileCapsizeTrims,
-            }),
+    trimmed: createTextStyle(
+      {
+        fontSize: mobileFontSize,
+        lineHeight: mobileLineHeight,
+        ...mobileCapsizeTrims,
+      },
+      {
+        '@media': {
+          [breakpointQuery.tablet]: {
+            fontSize: tabletFontSize,
+            lineHeight: tabletLineHeight,
+            ...tabletCapsizeTrims,
           },
-          tablet: {
-            vars: assignVars(capsize.vars, {
-              fontSize: tabletFontSize,
-              lineHeight: tabletLineHeight,
-              ...tabletCapsizeTrims,
-            }),
-          },
-        }),
-        debug,
-      ),
+        },
+      },
+      debug,
     ),
   };
 };

@@ -1,8 +1,8 @@
 import mapValues from 'lodash/mapValues';
-import { FontMetrics, getCapHeight } from 'capsize';
+import { getCapHeight, FontMetrics } from '@capsizecss/core';
+import { precomputeValues } from '@capsizecss/vanilla-extract';
 
 import { BraidTokens, TextDefinition } from './tokenType';
-import { buildValues } from '../hooks/typography/capsize/prebuilt';
 
 const px = (v: string | number) => `${v}px`;
 
@@ -27,7 +27,7 @@ const fontSizeToCapHeight = (
     fontSize: mobileFontSize,
     lineHeight: mobileLineHeight,
     ...mobileTrims
-  } = buildValues({
+  } = precomputeValues({
     fontSize: mobile.fontSize,
     leading: mobile.rows * grid,
     fontMetrics,
@@ -37,7 +37,7 @@ const fontSizeToCapHeight = (
     fontSize: tabletFontSize,
     lineHeight: tabletLineHeight,
     ...tabletTrims
-  } = buildValues({
+  } = precomputeValues({
     fontSize: tablet.fontSize,
     leading: tablet.rows * grid,
     fontMetrics,
