@@ -1,16 +1,12 @@
-import {
-  composeStyles,
-  style,
-  styleVariants,
-  assignVars,
-} from '@vanilla-extract/css';
+import { style, styleVariants } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
+import { createTextStyle } from '@capsizecss/vanilla-extract';
 
 import { vars } from '../../themes/vars.css';
 import { responsiveStyle } from '../../css/responsiveStyle';
-import * as capsize from './capsize/prebuilt';
 
 import { mapToProperty } from '../../utils';
+import { breakpoints } from '../../css/breakpoints';
 
 type Vars = typeof vars;
 type TextDefinition = Vars['textSize'];
@@ -57,27 +53,22 @@ const makeTypographyRules = (
         },
       }),
     ),
-    trimmed: composeStyles(
-      capsize.className,
-      style(
-        responsiveStyle({
-          mobile: {
-            vars: assignVars(capsize.vars, {
-              fontSize: mobileFontSize,
-              lineHeight: mobileLineHeight,
-              ...mobileCapsizeTrims,
-            }),
+    trimmed: createTextStyle(
+      {
+        fontSize: mobileFontSize,
+        lineHeight: mobileLineHeight,
+        ...mobileCapsizeTrims,
+      },
+      {
+        '@media': {
+          [`screen and (min-width: ${breakpoints.tablet}px)`]: {
+            fontSize: tabletFontSize,
+            lineHeight: tabletLineHeight,
+            ...tabletCapsizeTrims,
           },
-          tablet: {
-            vars: assignVars(capsize.vars, {
-              fontSize: tabletFontSize,
-              lineHeight: tabletLineHeight,
-              ...tabletCapsizeTrims,
-            }),
-          },
-        }),
-        debug,
-      ),
+        },
+      },
+      debug,
     ),
   };
 };

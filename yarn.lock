@@ -1497,6 +1497,18 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
+"@capsizecss/core@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@capsizecss/core/-/core-3.0.0.tgz#81b2fb222bd9716d211e4ddd0dc9cc42f71b4f37"
+  integrity sha512-tJNEWMmhHcU5z6ITAiVNN9z+PCTylybVIJqgX7Ts4zN66fe/W2Fe5UWJCCZIP/5uutsl5fYOaVVHZIjsuTVhBQ==
+
+"@capsizecss/vanilla-extract@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@capsizecss/vanilla-extract/-/vanilla-extract-1.0.0.tgz#da05e7643b77e1ba37ea185026bb87becf546187"
+  integrity sha512-/cY34CgCAmuf6SmpgPXmDJaIdJOaRe37MsoeZIeZme4k0F0HFts+poTxq4m8UtBH7LRxpUkfUHDoRO9OYjjVBg==
+  dependencies:
+    "@capsizecss/core" "^3.0.0"
+
 "@changesets/apply-release-plan@^5.0.0":
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/@changesets/apply-release-plan/-/apply-release-plan-5.0.0.tgz#11bf168acecbf4cfa2b0e6425160bac5ceeec1c3"
@@ -5665,11 +5677,6 @@ capital-case@^1.0.4:
     no-case "^3.0.4"
     tslib "^2.0.3"
     upper-case-first "^2.0.2"
-
-capsize@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/capsize/-/capsize-2.0.0.tgz#09c440000d6c6c9da2c22b419b6ced1b74a1b29d"
-  integrity sha512-/xluZJe+SnuByQjws/B6QkrMzo9OqE9sd+k6paTxYoVVZLrwZoPdsCRasPiCIUQMy8UD11xgo5QZ/gtcNMlGlQ==
 
 case-sensitive-paths-webpack-plugin@^2.3.0:
   version "2.4.0"
