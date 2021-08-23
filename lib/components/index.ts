@@ -5,9 +5,7 @@ export {
 import { LinkComponent as _LinkComponent } from './BraidProvider/BraidProvider';
 export type LinkComponent = _LinkComponent;
 
-export { BraidLoadableProvider } from './BraidLoadableProvider/BraidLoadableProvider';
 export { BraidPortal } from './BraidPortal/BraidPortal';
-export { BraidTestProvider } from './BraidTestProvider/BraidTestProvider';
 export { ThemeNameConsumer } from './ThemeNameConsumer/ThemeNameConsumer';
 export { useThemeName } from './useThemeName/useThemeName';
 export { useSpace } from './useSpace/useSpace';
