@@ -1,4 +1,4 @@
-import { FontMetrics } from 'capsize';
+import { FontMetrics } from '@capsizecss/core';
 import { Breakpoint } from '../css/breakpoints';
 
 export type TextBreakpoint = Exclude<Breakpoint, 'desktop' | 'wide'>;

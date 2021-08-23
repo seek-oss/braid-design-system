@@ -2,7 +2,7 @@ import './treatTheme.d';
 import { createTheme } from 'sku/treat';
 import mapValues from 'lodash/mapValues';
 import values from 'lodash/values';
-import { FontMetrics, getCapHeight } from 'capsize';
+import { FontMetrics, getCapHeight } from '@capsizecss/core';
 
 import { breakpoints } from '../css/breakpoints';
 import { makeThemeUtils } from './themeUtils';

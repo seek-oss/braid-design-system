@@ -48,6 +48,8 @@
   },
   "homepage": "https://github.com/seek-oss/braid-design-system#readme",
   "dependencies": {
+    "@capsizecss/core": "^3.0.0",
+    "@capsizecss/vanilla-extract": "^1.0.0",
     "@types/autosuggest-highlight": "^3.1.1",
     "@types/classnames": "^2.2.11",
     "@types/dedent": "^0.7.0",
@@ -59,7 +61,6 @@
     "@vanilla-extract/sprinkles": "^0.4.3",
     "assert": "^2.0.0",
     "autosuggest-highlight": "^3.1.1",
-    "capsize": "^2.0.0",
     "clsx": "^1.1.1",
     "csstype": "^3.0.6",
     "dedent": "0.7.0",
