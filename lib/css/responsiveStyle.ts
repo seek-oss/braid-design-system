@@ -1,15 +1,21 @@
 import omit from 'lodash/omit';
+import mapValues from 'lodash/mapValues';
 import { StyleRule } from '@vanilla-extract/css';
 import { breakpoints } from './breakpoints';
 
 type CSSProps = Omit<StyleRule, '@media' | '@supports'>;
 
+export const breakpointQuery = mapValues(
+  omit(breakpoints, 'mobile'),
+  (bp) => `screen and (min-width: ${bp}px)`,
+);
+
 const makeMediaQuery =
-  (breakpoint: keyof typeof breakpoints) => (styles?: CSSProps) =>
+  (breakpoint: keyof typeof breakpointQuery) => (styles?: CSSProps) =>
     !styles || Object.keys(styles).length === 0
       ? {}
       : {
-          [`screen and (min-width: ${breakpoints[breakpoint]}px)`]: styles,
+          [breakpointQuery[breakpoint]]: styles,
         };
 
 const mediaQuery = {

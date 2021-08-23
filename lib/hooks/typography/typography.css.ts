@@ -3,10 +3,9 @@ import { calc } from '@vanilla-extract/css-utils';
 import { createTextStyle } from '@capsizecss/vanilla-extract';
 
 import { vars } from '../../themes/vars.css';
-import { responsiveStyle } from '../../css/responsiveStyle';
+import { breakpointQuery, responsiveStyle } from '../../css/responsiveStyle';
 
 import { mapToProperty } from '../../utils';
-import { breakpoints } from '../../css/breakpoints';
 
 type Vars = typeof vars;
 type TextDefinition = Vars['textSize'];
@@ -61,7 +60,7 @@ const makeTypographyRules = (
       },
       {
         '@media': {
-          [`screen and (min-width: ${breakpoints.tablet}px)`]: {
+          [breakpointQuery.tablet]: {
             fontSize: tabletFontSize,
             lineHeight: tabletLineHeight,
             ...tabletCapsizeTrims,
