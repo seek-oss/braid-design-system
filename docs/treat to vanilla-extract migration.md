@@ -167,3 +167,47 @@ The `@keyframes` property is no longer supported on style objects. Instead, you 
 +  animationName: myAnimationName
 +});
 ```
+
+## Optional: CSS bundle size can be optimised with Braid's `atoms` function
+
+If you want to reduce the amount of CSS in your app, you can leverage Braid's [`atoms` function](https://seek-oss.github.io/braid-design-system/css/atoms) which gives you low-level access to the same re-usable classes provided by [`Box`](https://seek-oss.github.io/braid-design-system/components/Box).
+
+If all of values passed to `style` are provided by `atoms`, you can use it as a drop-in replacement.
+
+```diff
+-import { style } from 'sku/treat';
++import { style } from '@vanilla-extract/css';
++import { atoms } from 'braid-design-system/css';
+
+-export const className = style({
++export const className = atoms({
+  position: 'absolute',
+  top: 0,
+  right: 0,
+  left: 0,
+  right: 0,
+});
+```
+
+If you need to combine atomic classes with custom styles, you can use vanilla-extract's [`composeStyles` function.](https://vanilla-extract.style/documentation/styling-api/#composestyles)
+
+```diff
+-import { style } from 'sku/treat';
++import { style, composeStyles } from '@vanilla-extract/css';
++import { atoms } from 'braid-design-system/css';
+
+-export const className = style({
+-  position: 'absolute',
+-  top: 50,
+-  left: 50,
+-});
++export const className = composeStyles(
++  atoms({
++    position: 'absolute',
++  }),
++  style({
++    top: 50,
++    left: 50,
++  }),
++);
+```
