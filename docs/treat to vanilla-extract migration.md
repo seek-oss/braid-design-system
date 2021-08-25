@@ -172,7 +172,7 @@ The `@keyframes` property is no longer supported on style objects. Instead, you 
 
 If you want to reduce the amount of CSS in your app, you can leverage Braid's [`atoms` function](https://seek-oss.github.io/braid-design-system/css/atoms) which gives you low-level access to the same re-usable classes provided by [`Box`](https://seek-oss.github.io/braid-design-system/components/Box).
 
-If all of values passed to `style` are provided by `atoms`, you can use it as a drop-in replacement.
+If all of the values passed to `style` are provided by `atoms`, you can use it as a drop-in replacement.
 
 ```diff
 -import { style } from 'sku/treat';
