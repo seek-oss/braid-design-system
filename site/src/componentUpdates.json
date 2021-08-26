@@ -1923,5 +1923,9 @@
         "summary": "Display `formAccent` outline on form elements when focused"
       }
     ]
+  },
+  {
+    "version": "30.4.1",
+    "updates": []
   }
 ]
