@@ -6,7 +6,7 @@ interface CharacterLimitProps {
   value: string | number | ReadonlyArray<string>;
 }
 
-export const CharacterLimitStatus = ({
+export const getCharacterLimitStatus = ({
   characterLimit,
   value,
 }: CharacterLimitProps) => {

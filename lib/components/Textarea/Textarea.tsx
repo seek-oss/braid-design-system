@@ -14,7 +14,7 @@ import {
   FieldBaseProps,
   FieldLabelVariant,
 } from '../private/Field/Field';
-import { CharacterLimitStatus } from '../private/Field/CharacterLimitStatus';
+import { getCharacterLimitStatus } from '../private/Field/getCharacterLimitStatus';
 import * as styles from './Textarea.css';
 
 type NativeTextareaProps = AllHTMLAttributes<HTMLTextAreaElement>;
@@ -118,12 +118,12 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
         prefix={undefined}
         labelId={undefined}
         secondaryMessage={
-          characterLimit ? (
-            <CharacterLimitStatus
-              value={value}
-              characterLimit={characterLimit}
-            />
-          ) : null
+          characterLimit
+            ? getCharacterLimitStatus({
+                value,
+                characterLimit,
+              })
+            : null
         }
       >
         {(overlays, { className, borderRadius, background, ...fieldProps }) => (

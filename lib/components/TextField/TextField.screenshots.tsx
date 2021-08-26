@@ -211,6 +211,19 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
+      label: 'TextField with character limit and no value',
+      Container,
+      Example: ({ id, handler }) => (
+        <TextField
+          id={id}
+          value=""
+          onChange={handler}
+          label="Label"
+          characterLimit={55}
+        />
+      ),
+    },
+    {
       label: 'TextField approaching character limit (should be 5)',
       Container,
       Example: ({ id, handler }) => (
