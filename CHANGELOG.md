@@ -1,5 +1,15 @@
 # braid-design-system
 
+## 30.4.1
+
+### Patch Changes
+
+- Migrate to @capsizecss/core and @capsizecss/vanilla-extract ([#989](https://github.com/seek-oss/braid-design-system/pull/989))
+
+- Textarea, TextField: Fix for characterLimit adding whitespace below field ([#994](https://github.com/seek-oss/braid-design-system/pull/994))
+
+  Fix for additional white space being shown below a field when a `characterLimit` is specified and the count is not yet displayed.
+
 ## 30.4.0
 
 ### Minor Changes
