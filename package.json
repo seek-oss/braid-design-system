@@ -1,6 +1,6 @@
 {
   "name": "braid-design-system",
-  "version": "30.4.0-elmo-1",
+  "version": "30.4.2-elmo-2",
   "description": "Themeable design system for the SEEK Group",
   "main": "lib/components/index.ts",
   "sideEffects": [
