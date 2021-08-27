@@ -1,6 +1,7 @@
 const path = require('path');
 const routes = require('./sku.routes.js');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
+const browserslist = require('./browserslist');
 
 const isGitHubPages = Boolean(process.env.IS_GITHUB_PAGES);
 
@@ -30,12 +31,7 @@ module.exports = {
   public: './site/src/public',
   target: './site/dist',
   publicPath: isGitHubPages ? '/braid-design-system/' : '/',
-  supportedBrowsers: [
-    'Edge >= 16',
-    'Safari >= 10.1',
-    'iOS >= 10.3',
-    'Samsung >= 6',
-  ],
+  supportedBrowsers: browserslist,
   setupTests: './setupTests.ts',
   displayNamesProd: true,
   dangerouslySetWebpackConfig: (config) => {

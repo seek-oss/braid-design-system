@@ -6,7 +6,7 @@ import {
   FieldLabelVariant,
 } from '../private/Field/Field';
 import { ClearField } from '../private/Field/ClearField';
-import { CharacterLimitStatus } from '../private/Field/CharacterLimitStatus';
+import { getCharacterLimitStatus } from '../private/Field/getCharacterLimitStatus';
 
 const validTypes = {
   text: 'text',
@@ -68,12 +68,12 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
         value={value}
         labelId={undefined}
         secondaryMessage={
-          characterLimit ? (
-            <CharacterLimitStatus
-              value={value}
-              characterLimit={characterLimit}
-            />
-          ) : null
+          characterLimit
+            ? getCharacterLimitStatus({
+                value,
+                characterLimit,
+              })
+            : null
         }
         secondaryIcon={
           onClear ? (

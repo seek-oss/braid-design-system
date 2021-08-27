@@ -114,6 +114,23 @@ export const screenshots: ComponentScreenshot = {
       },
     },
     {
+      label: 'Textarea with character limit and no value',
+      Container,
+      Example: ({ id }) => {
+        const [value, setValue] = useState('');
+
+        return (
+          <Textarea
+            id={id}
+            value={value}
+            onChange={(e) => setValue(e.currentTarget.value)}
+            label="Do you like Braid?"
+            characterLimit={50}
+          />
+        );
+      },
+    },
+    {
       label: 'Textarea nearing character limit',
       Container,
       Example: ({ id }) => {

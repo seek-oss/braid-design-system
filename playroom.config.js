@@ -1,6 +1,7 @@
 const path = require('path');
 const SkuWebpackPlugin = require('sku/webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const browserslist = require('./browserslist');
 
 module.exports = {
   components: './lib/playroom/components.ts',
@@ -25,7 +26,7 @@ module.exports = {
           path.join(__dirname, dir),
         ),
         target: 'browser',
-        browserslist: ['last 2 chrome versions'],
+        browserslist,
         mode: process.env.NODE_ENV ? process.env.NODE_ENV : 'development',
         displayNamesProd: true,
         removeAssertionsInProduction: false,
