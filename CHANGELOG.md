@@ -1,5 +1,11 @@
 # braid-design-system
 
+## 30.4.2
+
+### Patch Changes
+
+- Add support for Typescript 4.4 ([#995](https://github.com/seek-oss/braid-design-system/pull/995))
+
 ## 30.4.1
 
 ### Patch Changes
