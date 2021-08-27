@@ -16,8 +16,8 @@ Object {
         | "large"
         | "medium"
         | "xlarge"
-        | RequiredConditionalObject<"mobile", "tablet" | "desktop" | "wide", "medium" | "large" | "xlarge">
-        | RequiredResponsiveArray<1 | 2 | 3 | 4, "medium" | "large" | "xlarge" | null>
+        | RequiredConditionalObject<"mobile", "tablet" | "desktop" | "wide", "large" | "medium" | "xlarge">
+        | RequiredResponsiveArray<1 | 2 | 3 | 4, "large" | "medium" | "xlarge" | null>
     tone?: 
         | "neutral"
         | "secondary"
@@ -755,8 +755,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | ResponsiveArray<1 | 2 | 3 | 4, "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
-        | { mobile?: "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "medium" | "xsmall" | "small" | "large" | "gutter" | ... 4 more ... | undefined; desktop?: "medium" | ... 8 more ... | undefined; wide?: "medium" | ... 8 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
+        | { mobile?: "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "gutter" | ... 4 more ... | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ... | undefined; }
     marginBottom?: 
         | "gutter"
         | "large"
@@ -767,8 +767,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | ResponsiveArray<1 | 2 | 3 | 4, "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
-        | { mobile?: "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "medium" | "xsmall" | "small" | "large" | "gutter" | ... 4 more ... | undefined; desktop?: "medium" | ... 8 more ... | undefined; wide?: "medium" | ... 8 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
+        | { mobile?: "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "gutter" | ... 4 more ... | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ... | undefined; }
     marginHeight?: number
     marginLeft?: 
         | "gutter"
@@ -780,8 +780,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | ResponsiveArray<1 | 2 | 3 | 4, "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
-        | { mobile?: "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "medium" | "xsmall" | "small" | "large" | "gutter" | ... 4 more ... | undefined; desktop?: "medium" | ... 8 more ... | undefined; wide?: "medium" | ... 8 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
+        | { mobile?: "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "gutter" | ... 4 more ... | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ... | undefined; }
     marginRight?: 
         | "gutter"
         | "large"
@@ -792,8 +792,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | ResponsiveArray<1 | 2 | 3 | 4, "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
-        | { mobile?: "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "medium" | "xsmall" | "small" | "large" | "gutter" | ... 4 more ... | undefined; desktop?: "medium" | ... 8 more ... | undefined; wide?: "medium" | ... 8 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
+        | { mobile?: "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "gutter" | ... 4 more ... | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ... | undefined; }
     marginTop?: 
         | "gutter"
         | "large"
@@ -804,8 +804,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | ResponsiveArray<1 | 2 | 3 | 4, "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
-        | { mobile?: "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "medium" | "xsmall" | "small" | "large" | "gutter" | ... 4 more ... | undefined; desktop?: "medium" | ... 8 more ... | undefined; wide?: "medium" | ... 8 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
+        | { mobile?: "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "gutter" | ... 4 more ... | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ... | undefined; }
     marginWidth?: number
     marginX?: 
         | "gutter"
@@ -817,8 +817,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | ResponsiveArray<1 | 2 | 3 | 4, "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
-        | { mobile?: "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "medium" | "xsmall" | "small" | "large" | "gutter" | ... 4 more ... | undefined; desktop?: "medium" | ... 8 more ... | undefined; wide?: "medium" | ... 8 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
+        | { mobile?: "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "gutter" | ... 4 more ... | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ... | undefined; }
     marginY?: 
         | "gutter"
         | "large"
@@ -829,8 +829,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | ResponsiveArray<1 | 2 | 3 | 4, "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
-        | { mobile?: "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "medium" | "xsmall" | "small" | "large" | "gutter" | ... 4 more ... | undefined; desktop?: "medium" | ... 8 more ... | undefined; wide?: "medium" | ... 8 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
+        | { mobile?: "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "gutter" | ... 4 more ... | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ... | undefined; }
     max?: 
         | number
         | string
@@ -1032,8 +1032,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | ResponsiveArray<1 | 2 | 3 | 4, "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
-        | { mobile?: "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "medium" | "xsmall" | "small" | "large" | "gutter" | ... 4 more ... | undefined; desktop?: "medium" | ... 8 more ... | undefined; wide?: "medium" | ... 8 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
+        | { mobile?: "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "gutter" | ... 4 more ... | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ... | undefined; }
     paddingBottom?: 
         | "gutter"
         | "large"
@@ -1044,8 +1044,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | ResponsiveArray<1 | 2 | 3 | 4, "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
-        | { mobile?: "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "medium" | "xsmall" | "small" | "large" | "gutter" | ... 4 more ... | undefined; desktop?: "medium" | ... 8 more ... | undefined; wide?: "medium" | ... 8 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
+        | { mobile?: "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "gutter" | ... 4 more ... | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ... | undefined; }
     paddingLeft?: 
         | "gutter"
         | "large"
@@ -1056,8 +1056,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | ResponsiveArray<1 | 2 | 3 | 4, "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
-        | { mobile?: "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "medium" | "xsmall" | "small" | "large" | "gutter" | ... 4 more ... | undefined; desktop?: "medium" | ... 8 more ... | undefined; wide?: "medium" | ... 8 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
+        | { mobile?: "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "gutter" | ... 4 more ... | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ... | undefined; }
     paddingRight?: 
         | "gutter"
         | "large"
@@ -1068,8 +1068,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | ResponsiveArray<1 | 2 | 3 | 4, "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
-        | { mobile?: "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "medium" | "xsmall" | "small" | "large" | "gutter" | ... 4 more ... | undefined; desktop?: "medium" | ... 8 more ... | undefined; wide?: "medium" | ... 8 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
+        | { mobile?: "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "gutter" | ... 4 more ... | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ... | undefined; }
     paddingTop?: 
         | "gutter"
         | "large"
@@ -1080,8 +1080,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | ResponsiveArray<1 | 2 | 3 | 4, "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
-        | { mobile?: "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "medium" | "xsmall" | "small" | "large" | "gutter" | ... 4 more ... | undefined; desktop?: "medium" | ... 8 more ... | undefined; wide?: "medium" | ... 8 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
+        | { mobile?: "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "gutter" | ... 4 more ... | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ... | undefined; }
     paddingX?: 
         | "gutter"
         | "large"
@@ -1092,8 +1092,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | ResponsiveArray<1 | 2 | 3 | 4, "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
-        | { mobile?: "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "medium" | "xsmall" | "small" | "large" | "gutter" | ... 4 more ... | undefined; desktop?: "medium" | ... 8 more ... | undefined; wide?: "medium" | ... 8 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
+        | { mobile?: "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "gutter" | ... 4 more ... | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ... | undefined; }
     paddingY?: 
         | "gutter"
         | "large"
@@ -1104,8 +1104,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | ResponsiveArray<1 | 2 | 3 | 4, "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
-        | { mobile?: "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "medium" | "xsmall" | "small" | "large" | "gutter" | ... 4 more ... | undefined; desktop?: "medium" | ... 8 more ... | undefined; wide?: "medium" | ... 8 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
+        | { mobile?: "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "gutter" | ... 4 more ... | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ... | undefined; }
     pattern?: string
     placeholder?: string
     playsInline?: boolean
@@ -1592,8 +1592,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | ResponsiveArray<1 | 2 | 3 | 4, "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
-        | { mobile?: "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "medium" | "xsmall" | "small" | "large" | "gutter" | ... 4 more ... | undefined; desktop?: "medium" | ... 8 more ... | undefined; wide?: "medium" | ... 8 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
+        | { mobile?: "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "gutter" | ... 4 more ... | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ... | undefined; }
     marginBottom?: 
         | "gutter"
         | "large"
@@ -1604,8 +1604,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | ResponsiveArray<1 | 2 | 3 | 4, "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
-        | { mobile?: "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "medium" | "xsmall" | "small" | "large" | "gutter" | ... 4 more ... | undefined; desktop?: "medium" | ... 8 more ... | undefined; wide?: "medium" | ... 8 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
+        | { mobile?: "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "gutter" | ... 4 more ... | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ... | undefined; }
     marginLeft?: 
         | "gutter"
         | "large"
@@ -1616,8 +1616,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | ResponsiveArray<1 | 2 | 3 | 4, "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
-        | { mobile?: "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "medium" | "xsmall" | "small" | "large" | "gutter" | ... 4 more ... | undefined; desktop?: "medium" | ... 8 more ... | undefined; wide?: "medium" | ... 8 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
+        | { mobile?: "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "gutter" | ... 4 more ... | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ... | undefined; }
     marginRight?: 
         | "gutter"
         | "large"
@@ -1628,8 +1628,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | ResponsiveArray<1 | 2 | 3 | 4, "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
-        | { mobile?: "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "medium" | "xsmall" | "small" | "large" | "gutter" | ... 4 more ... | undefined; desktop?: "medium" | ... 8 more ... | undefined; wide?: "medium" | ... 8 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
+        | { mobile?: "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "gutter" | ... 4 more ... | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ... | undefined; }
     marginTop?: 
         | "gutter"
         | "large"
@@ -1640,8 +1640,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | ResponsiveArray<1 | 2 | 3 | 4, "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
-        | { mobile?: "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "medium" | "xsmall" | "small" | "large" | "gutter" | ... 4 more ... | undefined; desktop?: "medium" | ... 8 more ... | undefined; wide?: "medium" | ... 8 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
+        | { mobile?: "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "gutter" | ... 4 more ... | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ... | undefined; }
     marginX?: 
         | "gutter"
         | "large"
@@ -1652,8 +1652,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | ResponsiveArray<1 | 2 | 3 | 4, "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
-        | { mobile?: "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "medium" | "xsmall" | "small" | "large" | "gutter" | ... 4 more ... | undefined; desktop?: "medium" | ... 8 more ... | undefined; wide?: "medium" | ... 8 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
+        | { mobile?: "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "gutter" | ... 4 more ... | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ... | undefined; }
     marginY?: 
         | "gutter"
         | "large"
@@ -1664,8 +1664,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | ResponsiveArray<1 | 2 | 3 | 4, "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
-        | { mobile?: "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "medium" | "xsmall" | "small" | "large" | "gutter" | ... 4 more ... | undefined; desktop?: "medium" | ... 8 more ... | undefined; wide?: "medium" | ... 8 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
+        | { mobile?: "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "gutter" | ... 4 more ... | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ... | undefined; }
     maxWidth?: 
         | "large"
         | "medium"
@@ -1689,8 +1689,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | ResponsiveArray<1 | 2 | 3 | 4, "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
-        | { mobile?: "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "medium" | "xsmall" | "small" | "large" | "gutter" | ... 4 more ... | undefined; desktop?: "medium" | ... 8 more ... | undefined; wide?: "medium" | ... 8 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
+        | { mobile?: "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "gutter" | ... 4 more ... | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ... | undefined; }
     paddingBottom?: 
         | "gutter"
         | "large"
@@ -1701,8 +1701,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | ResponsiveArray<1 | 2 | 3 | 4, "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
-        | { mobile?: "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "medium" | "xsmall" | "small" | "large" | "gutter" | ... 4 more ... | undefined; desktop?: "medium" | ... 8 more ... | undefined; wide?: "medium" | ... 8 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
+        | { mobile?: "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "gutter" | ... 4 more ... | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ... | undefined; }
     paddingLeft?: 
         | "gutter"
         | "large"
@@ -1713,8 +1713,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | ResponsiveArray<1 | 2 | 3 | 4, "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
-        | { mobile?: "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "medium" | "xsmall" | "small" | "large" | "gutter" | ... 4 more ... | undefined; desktop?: "medium" | ... 8 more ... | undefined; wide?: "medium" | ... 8 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
+        | { mobile?: "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "gutter" | ... 4 more ... | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ... | undefined; }
     paddingRight?: 
         | "gutter"
         | "large"
@@ -1725,8 +1725,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | ResponsiveArray<1 | 2 | 3 | 4, "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
-        | { mobile?: "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "medium" | "xsmall" | "small" | "large" | "gutter" | ... 4 more ... | undefined; desktop?: "medium" | ... 8 more ... | undefined; wide?: "medium" | ... 8 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
+        | { mobile?: "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "gutter" | ... 4 more ... | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ... | undefined; }
     paddingTop?: 
         | "gutter"
         | "large"
@@ -1737,8 +1737,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | ResponsiveArray<1 | 2 | 3 | 4, "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
-        | { mobile?: "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "medium" | "xsmall" | "small" | "large" | "gutter" | ... 4 more ... | undefined; desktop?: "medium" | ... 8 more ... | undefined; wide?: "medium" | ... 8 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
+        | { mobile?: "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "gutter" | ... 4 more ... | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ... | undefined; }
     paddingX?: 
         | "gutter"
         | "large"
@@ -1749,8 +1749,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | ResponsiveArray<1 | 2 | 3 | 4, "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
-        | { mobile?: "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "medium" | "xsmall" | "small" | "large" | "gutter" | ... 4 more ... | undefined; desktop?: "medium" | ... 8 more ... | undefined; wide?: "medium" | ... 8 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
+        | { mobile?: "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "gutter" | ... 4 more ... | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ... | undefined; }
     paddingY?: 
         | "gutter"
         | "large"
@@ -1761,8 +1761,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | ResponsiveArray<1 | 2 | 3 | 4, "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
-        | { mobile?: "medium" | "xsmall" | "small" | "large" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "medium" | "xsmall" | "small" | "large" | "gutter" | ... 4 more ... | undefined; desktop?: "medium" | ... 8 more ... | undefined; wide?: "medium" | ... 8 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
+        | { mobile?: "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "gutter" | ... 4 more ... | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ... | undefined; }
     pointerEvents?: "none"
     position?: 
         | "absolute"
@@ -7783,8 +7783,8 @@ exports[`filterSuggestions 1`] = `
 Object {
   exportType: component,
   props: {
-    __@iterator@605: () => IterableIterator<FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>>
-    __@unscopables@1512: () => { copyWithin: boolean; entries: boolean; fill: boolean; find: boolean; findIndex: boolean; keys: boolean; values: boolean; }
+    __@iterator@606: () => IterableIterator<FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>>
+    __@unscopables@1513: () => { copyWithin: boolean; entries: boolean; fill: boolean; find: boolean; findIndex: boolean; keys: boolean; values: boolean; }
     concat: { (...items: ConcatArray<FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>>[]): (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]; (...items: (FilterableSuggestion<...> | ... 1 more ... | ConcatArray<...>)[]): (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]; }
     copyWithin: (target: number, start: number, end?: number | undefined) => FilterableSuggestions<Value>
     entries: () => IterableIterator<[number, FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>]>
@@ -7792,15 +7792,15 @@ Object {
     fill: (value: FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>, start?: number | undefined, end?: number | undefined) => FilterableSuggestions<...>
     filter: { <S extends FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>>(predicate: (value: FilterableSuggestion<Value> | FilterableGroupedSuggestions<...>, index: number, array: (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]) => value is S, thisArg?: any): S[]; (predicate: (value: Filterab...
     find: { <S extends FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>>(predicate: (this: void, value: FilterableSuggestion<Value> | FilterableGroupedSuggestions<...>, index: number, obj: (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]) => value is S, thisArg?: any): S | undefined; (predica...
-    findIndex: (predicate: (value: FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>, index: number, obj: (FilterableSuggestion<Value> | FilterableGroupedSuggestions<...>)[]) => unknown, thisArg?: any) => number
-    forEach: (callbackfn: (value: FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>, index: number, array: (FilterableSuggestion<Value> | FilterableGroupedSuggestions<...>)[]) => void, thisArg?: any) => void
+    findIndex: (predicate: (value: FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>, index: number, obj: (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]) => unknown, thisArg?: any) => number
+    forEach: (callbackfn: (value: FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>, index: number, array: (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]) => void, thisArg?: any) => void
     includes: (searchElement: FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>, fromIndex?: number | undefined) => boolean
     indexOf: (searchElement: FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>, fromIndex?: number | undefined) => number
     join: (separator?: string | undefined) => string
     keys: () => IterableIterator<number>
     lastIndexOf: (searchElement: FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>, fromIndex?: number | undefined) => number
     length: number
-    map: <U>(callbackfn: (value: FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>, index: number, array: (FilterableSuggestion<Value> | FilterableGroupedSuggestions<...>)[]) => U, thisArg?: any) => U[]
+    map: <U>(callbackfn: (value: FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>, index: number, array: (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]) => U, thisArg?: any) => U[]
     pop: () => FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value> | undefined
     push: (...items: (FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>)[]) => number
     reduce: { (callbackfn: (previousValue: FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>, currentValue: FilterableSuggestion<Value> | FilterableGroupedSuggestions<...>, currentIndex: number, array: (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]) => FilterableSuggestion<...> | FilterableGro...
@@ -7808,7 +7808,7 @@ Object {
     reverse: () => (FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>)[]
     shift: () => FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value> | undefined
     slice: (start?: number | undefined, end?: number | undefined) => (FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>)[]
-    some: (predicate: (value: FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>, index: number, array: (FilterableSuggestion<Value> | FilterableGroupedSuggestions<...>)[]) => unknown, thisArg?: any) => boolean
+    some: (predicate: (value: FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>, index: number, array: (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]) => unknown, thisArg?: any) => boolean
     sort: (compareFn?: ((a: FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>, b: FilterableSuggestion<Value> | FilterableGroupedSuggestions<...>) => number) | undefined) => FilterableSuggestions<...>
     splice: { (start: number, deleteCount?: number | undefined): (FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>)[]; (start: number, deleteCount: number, ...items: (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]): (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]; }
     toLocaleString: () => string

@@ -140,7 +140,6 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
                 position="absolute"
                 overflow="hidden"
                 pointerEvents="none"
-                width="full"
                 height="full"
                 aria-hidden="true"
                 top={0}
