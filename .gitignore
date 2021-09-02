@@ -6,6 +6,11 @@ package-lock.json
 .vscode/*.json
 .idea/
 componentDocs.json
+dist
+css/
+reset/
+themes/
+!src
 
 # managed by sku
 .eslintrc

@@ -1725,10 +1725,10 @@
     openurl "1.1.1"
     yargs "16.2.0"
 
-"@crackle/build@0.0.1", "@crackle/build@^0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@crackle/build/-/build-0.0.1.tgz#c6cb46de4b00444c34f88477a199cd6dfdb7821d"
-  integrity sha512-Cl1WcQvv0VgyAfJgeRsvAVf3V6FWwc8IKW5tUcfu1zbgadlvC58VzHJHpGtUuFOiQWXazOEpkbNLWjObLona8A==
+"@crackle/build@0.0.2", "@crackle/build@^0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@crackle/build/-/build-0.0.2.tgz#a70d4f6dbbacecc0acb0a7502d928a5db098c16c"
+  integrity sha512-SqGHS/FxeSeT5jsOZvGkMg8XKZ+J1vNeEfxv0/Og80GMADY1p6EW+t3xa/nCBU/9cq8kYMwIqzectiv8zolAPw==
   dependencies:
     "@babel/core" "^7.15.0"
     "@vanilla-extract/babel-plugin" "^1.0.1"
@@ -1736,6 +1736,7 @@
     "@vanilla-extract/integration" "^1.2.0"
     "@vanilla-extract/vite-plugin" "^2.0.1"
     "@vitejs/plugin-react-refresh" "^1.3.6"
+    builtin-modules "^3.2.0"
     express "^4.17.1"
     fast-glob "^3.2.7"
     fs-extra "^10.0.0"
@@ -1751,12 +1752,12 @@
     used-styles "^2.2.0"
     vite "^2.5.0"
 
-"@crackle/cli@0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@crackle/cli/-/cli-0.0.1.tgz#51314df1d72022aef4384129e88a1de814d0e98b"
-  integrity sha512-8v+WY4cQFaBRspBwp3B0VJ4niFuTiKPt8WWvy/JXNj7NBPZksWDX8lz3YH6gOoZ53bAoqGsUDZ5CBVUp3GvTVQ==
+"@crackle/cli@0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@crackle/cli/-/cli-0.0.2.tgz#27c59605dac4dc7777b2c5132b33172f9b397a84"
+  integrity sha512-IccHhqGco61PH0AquDWNSYkEe0pGrKPlJ0a1stFQzlJx6keDqNV3gdNdfw70ZWwSxs3mgWftgSjwLVd2QR0fvA==
   dependencies:
-    "@crackle/build" "^0.0.1"
+    "@crackle/build" "^0.0.2"
     yargs "^17.1.1"
 
 "@emotion/cache@^10.0.27":
