@@ -3,10 +3,6 @@ const SkuWebpackPlugin = require('sku/webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const browserslist = require('./browserslist');
 
-const baseUrl = process.env.CI
-  ? `${process.env.IS_GITHUB_PAGES ? '/braid-design-system' : ''}/playroom`
-  : undefined;
-
 module.exports = {
   components: './lib/playroom/components.ts',
   outputPath: './site/dist/playroom',
@@ -19,7 +15,6 @@ module.exports = {
   widths: [320, 768, 1024, 1400],
   openBrowser: false,
   port: 8082,
-  baseUrl,
 
   webpackConfig: () => ({
     plugins: [
