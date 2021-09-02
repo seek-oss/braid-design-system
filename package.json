@@ -121,7 +121,7 @@
     "npm-registry-client": "^8.6.0",
     "panzoom": "^9.4.2",
     "patch-package": "^6.4.7",
-    "playroom": "^0.27.0",
+    "playroom": "^0.27.1",
     "postinstall-postinstall": "^2.1.0",
     "prettier": "^2.2.1",
     "react": "^17.0.0",
