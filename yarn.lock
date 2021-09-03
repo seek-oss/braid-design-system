@@ -1725,10 +1725,10 @@
     openurl "1.1.1"
     yargs "16.2.0"
 
-"@crackle/build@0.0.2", "@crackle/build@^0.0.2":
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/@crackle/build/-/build-0.0.2.tgz#a70d4f6dbbacecc0acb0a7502d928a5db098c16c"
-  integrity sha512-SqGHS/FxeSeT5jsOZvGkMg8XKZ+J1vNeEfxv0/Og80GMADY1p6EW+t3xa/nCBU/9cq8kYMwIqzectiv8zolAPw==
+"@crackle/build@0.0.5", "@crackle/build@^0.0.5":
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/@crackle/build/-/build-0.0.5.tgz#412b31cd2e441593eb74bd28f9f666b708a5f50f"
+  integrity sha512-nJPJlnnCmPQhW+gtQXd4vLvh2KFcPOy30Q3DjPqFg/6FH3s7p0fDig8Uo7AYaDy1Bq+oltXd2r9PLD4eNMjv1w==
   dependencies:
     "@babel/core" "^7.15.0"
     "@vanilla-extract/babel-plugin" "^1.0.1"
@@ -1743,6 +1743,8 @@
     history "^5.0.1"
     normalize-path "^3.0.0"
     parse-json "^5.2.0"
+    react "^17.0.2"
+    react-dom "^17.0.2"
     react-router-dom "^6.0.0-beta.2"
     resolve-from "^5.0.0"
     rollup-plugin-node-externals "^2.2.0"
@@ -1752,12 +1754,12 @@
     used-styles "^2.2.0"
     vite "^2.5.0"
 
-"@crackle/cli@0.0.2":
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/@crackle/cli/-/cli-0.0.2.tgz#27c59605dac4dc7777b2c5132b33172f9b397a84"
-  integrity sha512-IccHhqGco61PH0AquDWNSYkEe0pGrKPlJ0a1stFQzlJx6keDqNV3gdNdfw70ZWwSxs3mgWftgSjwLVd2QR0fvA==
+"@crackle/cli@0.0.5":
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/@crackle/cli/-/cli-0.0.5.tgz#c06d6b87e8e096d4f730f8a2ae8934b9d89a24a7"
+  integrity sha512-6w4qLHEL3zcuvHEwXOqk2UrAqm215/9E5oTbO/OGcV/HVOf7TjZ1CuZuyoXPBQasbif4DxRF4SuUIprAibCrbg==
   dependencies:
-    "@crackle/build" "^0.0.2"
+    "@crackle/build" "^0.0.5"
     yargs "^17.1.1"
 
 "@emotion/cache@^10.0.27":
@@ -15126,7 +15128,7 @@ react-docgen@^5.0.0:
     node-dir "^0.1.10"
     strip-indent "^3.0.0"
 
-react-dom@^17.0.0:
+react-dom@^17.0.0, react-dom@^17.0.2:
   version "17.0.2"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-17.0.2.tgz#ecffb6845e3ad8dbfcdc498f0d0a939736502c23"
   integrity sha512-s4h96KtLDUQlsENhMn1ar8t2bEa+q/YAtj8pPPdIjPDGBDIVNsrD9aXNWqspUe6AzKCIG0C1HZZLqLV7qpOBGA==
@@ -15417,7 +15419,7 @@ react-use@^17.0.1, react-use@^17.2.1:
     ts-easing "^0.2.0"
     tslib "^2.1.0"
 
-react@^17.0.0:
+react@^17.0.0, react@^17.0.2:
   version "17.0.2"
   resolved "https://registry.yarnpkg.com/react/-/react-17.0.2.tgz#d0b5cc516d29eb3eee383f75b62864cfb6800037"
   integrity sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA==

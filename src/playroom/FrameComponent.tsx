@@ -6,7 +6,7 @@ import {
   ToastProvider,
   useResponsiveValue,
 } from '../components';
-import { BraidTheme } from '../themes/BraidTheme';
+import type { BraidTheme } from '../themes/BraidTheme';
 import { PlayroomStateProvider } from './playroomState';
 
 interface Props {

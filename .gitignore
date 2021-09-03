@@ -1,4 +1,5 @@
 node_modules/
+
 package-lock.json
 *.log
 .cache/
@@ -7,10 +8,9 @@ package-lock.json
 .idea/
 componentDocs.json
 dist
-css/
-reset/
-themes/
-!src
+/css/
+/reset/
+/themes/
 
 # managed by sku
 .eslintrc

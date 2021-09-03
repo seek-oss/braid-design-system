@@ -1,15 +1,15 @@
 {
   "name": "braid-design-system",
-  "version": "30.4.2-elmo-2",
+  "version": "30.4.2-crackle-1",
   "description": "Themeable design system for the SEEK Group",
-  "main": "lib/components/index.ts",
+  "main": "dist/index.js",
   "sideEffects": [
     "lib/themes/**/*",
     "lib/css/atoms/**/*",
     "lib/css/reset/**/*",
     "themes/**/*",
     "reset/**/*",
-    "*.css.ts"
+    "*.css.js"
   ],
   "scripts": {
     "test": "SKU_TELEMETRY=false sku test",
@@ -30,7 +30,8 @@
     "post-commit-status": "node scripts/postCommitStatus.js",
     "release": "yarn setup && changeset publish && yarn build && yarn deploy",
     "version": "changeset version && ts-node scripts/versionComponentUpdates",
-    "prepare": "patch-package"
+    "prepare": "patch-package",
+    "package": "crackle package"
   },
   "husky": {
     "hooks": {
@@ -86,8 +87,8 @@
     "@babel/preset-typescript": "^7.12.7",
     "@changesets/cli": "^2.14.0",
     "@changesets/get-github-info": "^0.4.5",
-    "@crackle/build": "0.0.2",
-    "@crackle/cli": "0.0.2",
+    "@crackle/build": "0.0.6",
+    "@crackle/cli": "0.0.6",
     "@octokit/rest": "^18.0.15",
     "@svgr/core": "^5.5.0",
     "@svgr/plugin-jsx": "^5.5.0",

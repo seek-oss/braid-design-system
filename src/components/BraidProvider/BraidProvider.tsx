@@ -16,7 +16,7 @@ import { useHideFocusRings } from '../private/hideFocusRings/useHideFocusRings';
 import { BraidTestProviderContext } from '../BraidTestProvider/BraidTestProviderContext';
 import { BreakpointProvider } from './BreakpointContext';
 import { BraidThemeContext } from './BraidThemeContext';
-import { BraidTheme } from '../../themes/BraidTheme';
+import type { BraidTheme } from '../../themes/BraidTheme';
 
 if (process.env.NODE_ENV === 'development') {
   ensureResetImported();

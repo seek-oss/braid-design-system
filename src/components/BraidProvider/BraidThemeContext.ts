@@ -1,5 +1,5 @@
 import { createContext, useContext } from 'react';
-import { BraidTheme } from '../../themes/BraidTheme';
+import type { BraidTheme } from '../../themes/BraidTheme';
 
 export const BraidThemeContext = createContext<BraidTheme | null>(null);
 
