@@ -31,7 +31,8 @@
     "release": "yarn setup && changeset publish && yarn build && yarn deploy",
     "version": "changeset version && ts-node scripts/versionComponentUpdates",
     "prepare": "patch-package",
-    "package": "crackle package"
+    "package": "crackle package",
+    "crackle:start": "crackle start"
   },
   "husky": {
     "hooks": {
@@ -51,6 +52,7 @@
   "dependencies": {
     "@capsizecss/core": "^3.0.0",
     "@capsizecss/vanilla-extract": "^1.0.0",
+    "@crackle/router": "^0.0.1",
     "@types/autosuggest-highlight": "^3.1.1",
     "@types/classnames": "^2.2.11",
     "@types/dedent": "^0.7.0",
@@ -87,8 +89,8 @@
     "@babel/preset-typescript": "^7.12.7",
     "@changesets/cli": "^2.14.0",
     "@changesets/get-github-info": "^0.4.5",
-    "@crackle/build": "0.0.6",
-    "@crackle/cli": "0.0.6",
+    "@crackle/build": "0.1.0",
+    "@crackle/cli": "0.0.8",
     "@octokit/rest": "^18.0.15",
     "@svgr/core": "^5.5.0",
     "@svgr/plugin-jsx": "^5.5.0",

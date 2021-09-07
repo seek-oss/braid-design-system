@@ -1725,12 +1725,13 @@
     openurl "1.1.1"
     yargs "16.2.0"
 
-"@crackle/build@0.0.5", "@crackle/build@^0.0.5":
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/@crackle/build/-/build-0.0.5.tgz#412b31cd2e441593eb74bd28f9f666b708a5f50f"
-  integrity sha512-nJPJlnnCmPQhW+gtQXd4vLvh2KFcPOy30Q3DjPqFg/6FH3s7p0fDig8Uo7AYaDy1Bq+oltXd2r9PLD4eNMjv1w==
+"@crackle/build@0.1.0", "@crackle/build@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@crackle/build/-/build-0.1.0.tgz#c940bc4f09309faff95ea3ad7a579c9b53761c70"
+  integrity sha512-kPDaTIJWReZ2212cWh0lFab/PlnEPsIiyTjQV6xXhLD56rDcCM1H6OKxBfFTQzJix9F1Qz8k6IpoOc9DEfuQIw==
   dependencies:
     "@babel/core" "^7.15.0"
+    "@crackle/router" "0.0.1"
     "@vanilla-extract/babel-plugin" "^1.0.1"
     "@vanilla-extract/css" "^1.2.3"
     "@vanilla-extract/integration" "^1.2.0"
@@ -1754,13 +1755,21 @@
     used-styles "^2.2.0"
     vite "^2.5.0"
 
-"@crackle/cli@0.0.5":
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/@crackle/cli/-/cli-0.0.5.tgz#c06d6b87e8e096d4f730f8a2ae8934b9d89a24a7"
-  integrity sha512-6w4qLHEL3zcuvHEwXOqk2UrAqm215/9E5oTbO/OGcV/HVOf7TjZ1CuZuyoXPBQasbif4DxRF4SuUIprAibCrbg==
+"@crackle/cli@0.0.8":
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/@crackle/cli/-/cli-0.0.8.tgz#8ddc17a17c26db76c70501e1764e67c701c4a327"
+  integrity sha512-2H9h4FuowrVLTNc9kp4Z65P/jOzadw9TT7HKNc1eqcxASMObOPSj26+SHAQm6J/8u2NB3vDXFf7UnoIcjaBahA==
   dependencies:
-    "@crackle/build" "^0.0.5"
+    "@crackle/build" "^0.1.0"
     yargs "^17.1.1"
+
+"@crackle/router@0.0.1", "@crackle/router@^0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@crackle/router/-/router-0.0.1.tgz#4b1b93f37358dab770ec533be1d59728221fa835"
+  integrity sha512-VNmp4VamsvBYpR/3CIjrOj/9TKzKutpu8BaEvdSowxNb2CquYPCxXAJ80tujNv1gsQ5psxApiA+uowICNbwFXA==
+  dependencies:
+    react "^17.0.2"
+    react-router-dom "^6.0.0-beta.2"
 
 "@emotion/cache@^10.0.27":
   version "10.0.29"
