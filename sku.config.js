@@ -34,6 +34,13 @@ module.exports = {
   supportedBrowsers: browserslist,
   setupTests: './setupTests.ts',
   displayNamesProd: true,
+  dangerouslySetESLintConfig: (config) => ({
+    ...config,
+    rules: {
+      ...config.rules,
+      '@typescript-eslint/consistent-type-imports': ['error'],
+    },
+  }),
   dangerouslySetWebpackConfig: (config) => {
     config.plugins.push(
       new CircularDependencyPlugin({
