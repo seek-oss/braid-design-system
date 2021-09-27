@@ -147,7 +147,6 @@ const docs: ComponentDocs = {
           to the <Strong>disabled</Strong> prop.
         </Text>
       ),
-      background: 'card',
       Example: ({ id, getState, toggleState }) =>
         source(
           <Checkbox

@@ -14,8 +14,6 @@ const boxShadow = {
   ...vars.shadow,
   outlineFocus: `0 0 0 ${vars.focusRingSize} ${vars.borderColor.focus}`,
   borderField: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.field}`,
-  borderStandard: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.standard}`,
-  borderStandardInverted: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.standardInverted}`,
   borderCritical: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.critical}`,
   borderCriticalLight: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.criticalLight}`,
   borderCriticalLarge: `inset 0 0 0 ${vars.borderWidth.large} ${vars.borderColor.critical}`,
@@ -25,14 +23,20 @@ const boxShadow = {
   borderPositiveLight: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.positiveLight}`,
   borderInfo: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.info}`,
   borderInfoLight: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.infoLight}`,
+  borderNeutral: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.neutral}`,
+  borderNeutralLarge: `inset 0 0 0 ${vars.borderWidth.large} ${vars.borderColor.neutral}`,
+  borderNeutralInverted: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.neutralInverted}`,
+  borderNeutralInvertedLarge: `inset 0 0 0 ${vars.borderWidth.large} ${vars.borderColor.neutralInverted}`,
+  borderNeutralLight: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.neutralLight}`,
   borderPromote: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.promote}`,
   borderPromoteLight: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.promoteLight}`,
-  borderFormHover: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.formHover}`,
   borderFormAccent: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.formAccent}`,
   borderFormAccentLarge: `inset 0 0 0 ${vars.borderWidth.large} ${vars.borderColor.formAccent}`,
   borderBrandAccentLarge: `inset 0 0 0 ${vars.borderWidth.large} ${vars.borderColor.brandAccent}`,
-  borderStandardInvertedLarge: `inset 0 0 0 ${vars.borderWidth.large} ${vars.borderColor.standardInverted}`,
+  none: 'none',
 };
+
+export type BoxShadow = keyof typeof boxShadow;
 
 export const pseudoProperties = {
   transform: vars.transform,

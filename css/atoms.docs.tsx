@@ -7,8 +7,9 @@ import {
   PseudoProperties,
   unresponsiveProperties,
   UnresponsiveProperties,
+  BoxShadow,
 } from '../lib/css/atoms/atomicProperties';
-import { Atoms, atoms } from '../lib/css/atoms/atoms';
+import { atoms } from '../lib/css/atoms/atoms';
 import {
   Box,
   Stack,
@@ -27,7 +28,7 @@ import { ThemedExample } from '../site/src/App/ThemeSetting';
 import { CssDoc } from '../site/src/types';
 import { VanillaMigrationBanner } from './VanillaMigrationBanner';
 
-type BoxShadowDocs = Required<Record<NonNullable<Atoms['boxShadow']>, string>>;
+type BoxShadowDocs = Required<Record<Exclude<BoxShadow, 'none'>, string>>;
 const validateBoxShadows = (boxShadows: BoxShadowDocs) => boxShadows;
 
 interface AtomicPropertyProps {
@@ -133,13 +134,15 @@ const docs: CssDoc = {
                 Object.keys(
                   unresponsiveProperties,
                 ) as Array<UnresponsiveProperties>
-              ).map((prop) => (
-                <AtomicProperty
-                  key={prop}
-                  name={prop}
-                  values={Object.keys(unresponsiveProperties[prop])}
-                />
-              ))}
+              )
+                .filter((prop) => prop !== 'background')
+                .map((prop) => (
+                  <AtomicProperty
+                    key={prop}
+                    name={prop}
+                    values={Object.keys(unresponsiveProperties[prop])}
+                  />
+                ))}
             </Tiles>
           </Box>
         </>
@@ -379,14 +382,14 @@ const docs: CssDoc = {
                   small: 'Used for small shadows.',
                   medium: 'Used for medium shadows.',
                   large: 'Used for large shadows.',
-                  borderStandard: 'Used for neutral element borders.',
-                  borderStandardInverted:
-                    'Used for standard borders on dark backgrounds.',
-                  borderStandardInvertedLarge:
-                    'Used for large standard borders on dark backgrounds.',
+                  borderNeutral: 'Used for neutral element borders.',
+                  borderNeutralLarge: 'Used for large neutral element borders.',
+                  borderNeutralInverted:
+                    'Used for neutral borders on dark backgrounds.',
+                  borderNeutralInvertedLarge:
+                    'Used for large neutral borders on dark backgrounds.',
+                  borderNeutralLight: 'Used for light neutral element borders.',
                   borderField: 'Used for borders around form fields.',
-                  borderFormHover:
-                    'Used for borders around form fields on hover.',
                   outlineFocus:
                     'Used for focus states of interactive elements.',
                   borderFormAccent:
@@ -420,7 +423,7 @@ const docs: CssDoc = {
                   <Column width="content">
                     <Box
                       background={
-                        boxShadow.includes('Inverted') ? 'brand' : 'card'
+                        boxShadow.includes('Inverted') ? 'brand' : 'surface'
                       }
                       borderRadius="standard"
                       padding="gutter"

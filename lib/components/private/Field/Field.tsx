@@ -120,7 +120,7 @@ export const Field = ({
     'description' in restProps && restProps.description
       ? `${id}-description`
       : undefined;
-  const fieldBackground = disabled ? 'inputDisabled' : 'input';
+  const fieldBackground = disabled ? 'neutralSoft' : 'surface';
   const showFieldBorder =
     useBackgroundLightness() === 'light' && (tone !== 'critical' || disabled);
 
