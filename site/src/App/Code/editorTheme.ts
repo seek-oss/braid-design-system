@@ -1,12 +1,14 @@
-const tag = '#99cfff';
-const attribute = '#d1eaff';
-const value = '#ffcfe2';
-const punctuation = '#d1eaff';
-const plainText = '#7b93b7';
-const meta = '#aaa';
-const other = '#ffdbed';
-const inserted = '#96ecc9';
-const deleted = '#ff99ab';
+import { palette } from '../../../../lib/color/palette';
+
+const tag = palette.blue['300'];
+const attribute = palette.blue['200'];
+const value = palette.crimson['200'];
+const punctuation = palette.blue['200'];
+const plainText = palette.seekBlue['300'];
+const meta = palette.grey['400'];
+const other = palette.crimson['200'];
+const inserted = palette.mint['300'];
+const deleted = palette.red['300'];
 
 export default {
   'code[class*="language-"]': {
