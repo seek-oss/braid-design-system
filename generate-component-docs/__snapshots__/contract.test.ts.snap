@@ -675,8 +675,8 @@ Object {
         | "columnReverse"
         | "row"
         | "rowReverse"
-        | ResponsiveArray<1 | 2 | 3 | 4, "row" | "column" | "rowReverse" | "columnReverse" | null>
-        | { mobile?: "row" | "column" | "rowReverse" | "columnReverse" | undefined; tablet?: "row" | "column" | "rowReverse" | "columnReverse" | undefined; desktop?: "row" | "column" | "rowReverse" | "columnReverse" | undefined; wide?: "row" | ... 3 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "column" | "row" | "rowReverse" | "columnReverse" | null>
+        | { mobile?: "column" | "row" | "rowReverse" | "columnReverse" | undefined; tablet?: "column" | "row" | "rowReverse" | "columnReverse" | undefined; desktop?: "column" | "row" | "rowReverse" | "columnReverse" | undefined; wide?: "column" | ... 3 more ... | undefined; }
     flexGrow?: 
         | 0
         | 1
@@ -689,8 +689,8 @@ Object {
     flexWrap?: 
         | "nowrap"
         | "wrap"
-        | ResponsiveArray<1 | 2 | 3 | 4, "wrap" | "nowrap" | null>
-        | { mobile?: "wrap" | "nowrap" | undefined; tablet?: "wrap" | "nowrap" | undefined; desktop?: "wrap" | "nowrap" | undefined; wide?: "wrap" | "nowrap" | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "nowrap" | "wrap" | null>
+        | { mobile?: "nowrap" | "wrap" | undefined; tablet?: "nowrap" | "wrap" | undefined; desktop?: "nowrap" | "wrap" | undefined; wide?: "nowrap" | "wrap" | undefined; }
     form?: string
     formAction?: string
     formEncType?: string
@@ -1114,8 +1114,8 @@ Object {
         | "absolute"
         | "fixed"
         | "relative"
-        | ResponsiveArray<1 | 2 | 3 | 4, "fixed" | "relative" | "absolute" | null>
-        | { mobile?: "fixed" | "relative" | "absolute" | undefined; tablet?: "fixed" | "relative" | "absolute" | undefined; desktop?: "fixed" | "relative" | "absolute" | undefined; wide?: "fixed" | "relative" | "absolute" | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "fixed" | "absolute" | "relative" | null>
+        | { mobile?: "fixed" | "absolute" | "relative" | undefined; tablet?: "fixed" | "absolute" | "relative" | undefined; desktop?: "fixed" | "absolute" | "relative" | undefined; wide?: "fixed" | "absolute" | "relative" | undefined; }
     poster?: string
     prefix?: string
     preload?: string
@@ -1555,8 +1555,8 @@ Object {
         | "columnReverse"
         | "row"
         | "rowReverse"
-        | ResponsiveArray<1 | 2 | 3 | 4, "row" | "column" | "rowReverse" | "columnReverse" | null>
-        | { mobile?: "row" | "column" | "rowReverse" | "columnReverse" | undefined; tablet?: "row" | "column" | "rowReverse" | "columnReverse" | undefined; desktop?: "row" | "column" | "rowReverse" | "columnReverse" | undefined; wide?: "row" | ... 3 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "column" | "row" | "rowReverse" | "columnReverse" | null>
+        | { mobile?: "column" | "row" | "rowReverse" | "columnReverse" | undefined; tablet?: "column" | "row" | "rowReverse" | "columnReverse" | undefined; desktop?: "column" | "row" | "rowReverse" | "columnReverse" | undefined; wide?: "column" | ... 3 more ... | undefined; }
     flexGrow?: 
         | 0
         | 1
@@ -1569,8 +1569,8 @@ Object {
     flexWrap?: 
         | "nowrap"
         | "wrap"
-        | ResponsiveArray<1 | 2 | 3 | 4, "wrap" | "nowrap" | null>
-        | { mobile?: "wrap" | "nowrap" | undefined; tablet?: "wrap" | "nowrap" | undefined; desktop?: "wrap" | "nowrap" | undefined; wide?: "wrap" | "nowrap" | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "nowrap" | "wrap" | null>
+        | { mobile?: "nowrap" | "wrap" | undefined; tablet?: "nowrap" | "wrap" | undefined; desktop?: "nowrap" | "wrap" | undefined; wide?: "nowrap" | "wrap" | undefined; }
     height?: 
         | "full"
         | "touchable"
@@ -1768,8 +1768,8 @@ Object {
         | "absolute"
         | "fixed"
         | "relative"
-        | ResponsiveArray<1 | 2 | 3 | 4, "fixed" | "relative" | "absolute" | null>
-        | { mobile?: "fixed" | "relative" | "absolute" | undefined; tablet?: "fixed" | "relative" | "absolute" | undefined; desktop?: "fixed" | "relative" | "absolute" | undefined; wide?: "fixed" | "relative" | "absolute" | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "fixed" | "absolute" | "relative" | null>
+        | { mobile?: "fixed" | "absolute" | "relative" | undefined; tablet?: "fixed" | "absolute" | "relative" | undefined; desktop?: "fixed" | "absolute" | "relative" | undefined; wide?: "fixed" | "absolute" | "relative" | undefined; }
     right?: 0
     textAlign?: 
         | "center"
