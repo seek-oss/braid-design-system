@@ -46,7 +46,7 @@ type ButtonStyles = {
   backgroundClassName: BoxProps['className'];
   backgroundHoverClassName: BoxProps['className'];
   backgroundActiveClassName: BoxProps['className'];
-  boxShadow: BoxShadow;
+  boxShadow: BoxShadow | undefined;
 };
 
 const buttonVariantStyles: Record<
