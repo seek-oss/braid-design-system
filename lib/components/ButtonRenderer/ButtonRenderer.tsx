@@ -10,7 +10,8 @@ import React, {
   CSSProperties,
   ComponentType,
 } from 'react';
-import { Atoms, atoms } from '../../css/atoms/atoms';
+import { atoms } from '../../css/atoms/atoms';
+import { BoxShadow } from '../../css/atoms/atomicProperties';
 import {
   BackgroundProvider,
   BackgroundVariant,
@@ -45,7 +46,7 @@ type ButtonStyles = {
   backgroundClassName: BoxProps['className'];
   backgroundHoverClassName: BoxProps['className'];
   backgroundActiveClassName: BoxProps['className'];
-  boxShadow: Atoms['boxShadow'];
+  boxShadow: BoxShadow;
 };
 
 const buttonVariantStyles: Record<
@@ -180,8 +181,7 @@ const useButtonVariant = (variant: ButtonVariant, tone?: ButtonTone) => {
         variant === 'soft' ? styles.invertedBackgrounds.soft : undefined,
       backgroundHoverClassName: styles.invertedBackgrounds.hover,
       backgroundActiveClassName: styles.invertedBackgrounds.active,
-      boxShadow:
-        variant === 'ghost' ? 'borderStandardInvertedLarge' : undefined,
+      boxShadow: variant === 'ghost' ? 'borderNeutralInvertedLarge' : undefined,
     } as ButtonStyles;
   }
 
