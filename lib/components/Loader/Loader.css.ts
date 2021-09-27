@@ -1,9 +1,4 @@
-import {
-  composeStyles,
-  keyframes,
-  style,
-  styleVariants,
-} from '@vanilla-extract/css';
+import { keyframes, style, styleVariants } from '@vanilla-extract/css';
 import { responsiveStyle } from '../../css/responsiveStyle';
 import { vars } from '../../themes/vars.css';
 
@@ -52,7 +47,7 @@ const bounceAnimation = style({
 });
 
 const animationDelayInMs = 70;
-export const circle = composeStyles(
+export const circle = style([
   bounceAnimation,
   style({
     transform: `translateY(1.4em)`,
@@ -65,7 +60,7 @@ export const circle = composeStyles(
       },
     },
   }),
-);
+]);
 
 export const animationDelayValueInMs = 800;
 

@@ -1,8 +1,8 @@
 import {
   ConditionalValue,
   RequiredConditionalValue,
-  createAtomicStyles,
-  createAtomsFn,
+  defineProperties,
+  createSprinkles,
   createMapValueFn,
   createNormalizeValueFn,
 } from '@vanilla-extract/sprinkles';
@@ -14,11 +14,11 @@ import {
   pseudoProperties,
 } from './atomicProperties';
 
-const unresponsiveAtomicStyles = createAtomicStyles({
+const unresponsiveAtomicProperties = defineProperties({
   properties: unresponsiveProperties,
 });
 
-const pseudoAtomicStyles = createAtomicStyles({
+const pseudoAtomicProperties = defineProperties({
   defaultCondition: false,
   conditions: {
     active: {
@@ -28,7 +28,7 @@ const pseudoAtomicStyles = createAtomicStyles({
   properties: pseudoProperties,
 });
 
-const responsiveAtomicStyles = createAtomicStyles({
+const responsiveAtomicProperties = defineProperties({
   defaultCondition: 'mobile',
   conditions: {
     mobile: {},
@@ -54,16 +54,16 @@ const responsiveAtomicStyles = createAtomicStyles({
   },
 });
 
-export const sprinkles = createAtomsFn(
-  unresponsiveAtomicStyles,
-  responsiveAtomicStyles,
-  pseudoAtomicStyles,
+export const sprinkles = createSprinkles(
+  unresponsiveAtomicProperties,
+  responsiveAtomicProperties,
+  pseudoAtomicProperties,
 );
 
 export type OptionalResponsiveValue<Value extends string | number> =
-  ConditionalValue<typeof responsiveAtomicStyles, Value>;
+  ConditionalValue<typeof responsiveAtomicProperties, Value>;
 export type RequiredResponsiveValue<Value extends string | number> =
-  RequiredConditionalValue<typeof responsiveAtomicStyles, Value>;
+  RequiredConditionalValue<typeof responsiveAtomicProperties, Value>;
 
 export type RequiredResponsiveObject<Value> = Partial<
   Record<Breakpoint, Value>
@@ -71,6 +71,6 @@ export type RequiredResponsiveObject<Value> = Partial<
   Record<typeof breakpointNames[0], Value>;
 
 export const normalizeResponsiveValue = createNormalizeValueFn(
-  responsiveAtomicStyles,
+  responsiveAtomicProperties,
 );
-export const mapResponsiveValue = createMapValueFn(responsiveAtomicStyles);
+export const mapResponsiveValue = createMapValueFn(responsiveAtomicProperties);

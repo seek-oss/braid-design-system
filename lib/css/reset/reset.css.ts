@@ -1,4 +1,4 @@
-import { style, composeStyles } from '@vanilla-extract/css';
+import { style } from '@vanilla-extract/css';
 import { hideFocusRingsDataAttribute } from '../../components/private/hideFocusRings/hideFocusRingsDataAttribute';
 
 export const base = style({
@@ -48,7 +48,7 @@ const appearance = style({
   appearance: 'none',
 });
 
-const field = composeStyles(block, appearance);
+const field = style([block, appearance]);
 
 // Custom reset rules
 const mark = style({
@@ -56,7 +56,7 @@ const mark = style({
   color: 'inherit',
 });
 
-const select = composeStyles(
+const select = style([
   field,
   style({
     selectors: {
@@ -65,9 +65,9 @@ const select = composeStyles(
       },
     },
   }),
-);
+]);
 
-const input = composeStyles(
+const input = style([
   field,
   style({
     selectors: {
@@ -79,7 +79,7 @@ const input = composeStyles(
       },
     },
   }),
-);
+]);
 
 const button = style({
   background: 'none',
