@@ -14,6 +14,7 @@ import {
 import { DefaultTextPropsProvider } from '../../../../lib/components/private/defaultTextProps';
 import { InlineCode } from '../InlineCode/InlineCode';
 import { LinkableHeading } from '../LinkableHeading/LinkableHeading';
+import { standardText } from './Markdown.css';
 
 const Code = ({ language, value }: { language: string; value: string }) => (
   <Box paddingBottom="medium">
@@ -80,7 +81,11 @@ const renderers = {
       return <Stack space="medium">{children}</Stack>;
     }
 
-    return <Text>{children}</Text>;
+    return (
+      <Box component="span" className={standardText}>
+        {children}
+      </Box>
+    );
   },
   strong: Strong,
   emphasis: Strong,
