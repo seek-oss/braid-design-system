@@ -2,7 +2,6 @@ import clsx, { ClassValue } from 'clsx';
 import {
   createElement,
   forwardRef,
-  useContext,
   AllHTMLAttributes,
   ElementType,
   useEffect,
@@ -12,7 +11,6 @@ import { base as baseReset } from '../../css/reset/reset.css';
 import { atoms, Atoms } from '../../css/atoms/atoms';
 import { sprinkles } from '../../css/atoms/sprinkles.css';
 import { renderBackgroundProvider } from './BackgroundContext';
-import TextLinkRendererContext from '../TextLinkRenderer/TextLinkRendererContext';
 
 export interface BoxProps
   extends Omit<Atoms, 'reset'>,
@@ -38,11 +36,8 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
 
     if (process.env.NODE_ENV !== 'production') {
       // eslint-disable-next-line react-hooks/rules-of-hooks
-      const inTextLinkRenderer = Boolean(useContext(TextLinkRendererContext));
-
-      // eslint-disable-next-line react-hooks/rules-of-hooks
       useEffect(() => {
-        if (userClasses.includes(baseReset) && !inTextLinkRenderer) {
+        if (userClasses.includes(baseReset)) {
           throw new Error(
             dedent`
               Reset class has been applied more than once. This is normally caused when asking for an explicit reset on the \`atoms\` function. This can be removed as Box automatically adds reset classes.
@@ -53,7 +48,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
             `,
           );
         }
-      }, [userClasses, inTextLinkRenderer]);
+      }, [userClasses]);
     }
 
     const atomicClasses = atoms({

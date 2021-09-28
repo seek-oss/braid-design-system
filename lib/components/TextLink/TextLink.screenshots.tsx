@@ -1,9 +1,7 @@
 import React, { Fragment } from 'react';
 import { ComponentScreenshot } from '../../../site/src/types';
 import {
-  Actions,
   Box,
-  Button,
   Heading,
   IconNewWindow,
   IconChevron,
@@ -75,15 +73,6 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
-      label: 'TextLink inside Actions (Deprecated)',
-      Example: () => (
-        <Actions>
-          <Button>Button</Button>
-          <TextLink href="#">TextLink</TextLink>
-        </Actions>
-      ),
-    },
-    {
       label: 'TextLink inside large Text',
       Example: () => (
         <Text size="large">
@@ -140,17 +129,6 @@ export const screenshots: ComponentScreenshot = {
           </TextLink>
           .
         </Text>
-      ),
-    },
-    {
-      label: 'TextLink inside Actions with icon (Deprecated)',
-      Example: () => (
-        <Actions>
-          <Button>Button</Button>
-          <TextLink href="#">
-            TextLink <IconChevron direction="right" />
-          </TextLink>
-        </Actions>
       ),
     },
     {
