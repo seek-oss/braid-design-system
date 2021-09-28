@@ -1,6 +1,6 @@
 import { createContext } from 'react';
-import { ButtonStyleProps } from '../Button/Button';
+import { ButtonProps } from '../Button/Button';
 
-interface ActionsContextValue extends Pick<ButtonStyleProps, 'size'> {}
+interface ActionsContextValue extends Pick<ButtonProps, 'size'> {}
 
 export default createContext<ActionsContextValue | null>(null);

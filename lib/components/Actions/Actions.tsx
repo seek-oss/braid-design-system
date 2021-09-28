@@ -1,10 +1,10 @@
 import React, { useMemo } from 'react';
 import ActionsContext from './ActionsContext';
 import { Inline, InlineProps } from '../Inline/Inline';
-import { ButtonStyleProps } from '../Button/Button';
+import { ButtonProps } from '../Button/Button';
 
 export interface ActionsProps {
-  size?: ButtonStyleProps['size'];
+  size?: ButtonProps['size'];
   children: InlineProps['children'];
   data?: InlineProps['data'];
 }
