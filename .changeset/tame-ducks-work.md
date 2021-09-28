@@ -39,12 +39,15 @@ const BraidTheme = loadable.lib(
 );
 
 interface AppProps {
-  themeName: ThemeName
+  themeName: ThemeName;
+  children: ReactNode;
 }
-export const App = ({ themeName }: AppProps) => (
+export const App = ({ themeName, children }: AppProps) => (
   <BraidTheme themeName={themeName}>
     {({ default: theme }) => (
-      <BraidProvider theme={theme} />
+      <BraidProvider theme={theme}>
+        {children}
+      </BraidProvider>
     )}
   </BraidTheme>
 );
