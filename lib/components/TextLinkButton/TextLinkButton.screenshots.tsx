@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentScreenshot } from '../../../site/src/types';
-import { Text, TextLinkButton, Actions, Button } from '..';
+import { Text, TextLinkButton } from '..';
 
 export const screenshots: ComponentScreenshot = {
   screenshotWidths: [320],
@@ -25,15 +25,6 @@ export const screenshots: ComponentScreenshot = {
             is actually a span with an ARIA role of button.
           </TextLinkButton>
         </Text>
-      ),
-    },
-    {
-      label: 'TextLinkButton inside Actions (Deprecated)',
-      Example: ({ handler }) => (
-        <Actions>
-          <Button>Button</Button>
-          <TextLinkButton onClick={handler}>TextLinkButton</TextLinkButton>
-        </Actions>
       ),
     },
   ],

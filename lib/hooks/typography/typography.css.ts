@@ -1,4 +1,9 @@
-import { style, styleVariants } from '@vanilla-extract/css';
+import {
+  assignVars,
+  createThemeContract,
+  style,
+  styleVariants,
+} from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
 import { createTextStyle } from '@capsizecss/vanilla-extract';
 
@@ -91,30 +96,71 @@ export const heading = {
   '4': makeTypographyRules(vars.headingLevel['4'], 'heading4'),
 };
 
-export const tone = {
-  ...styleVariants(
-    {
-      brandAccent: vars.foregroundColor.brandAccent,
-      caution: vars.foregroundColor.caution,
-      critical: vars.foregroundColor.critical,
-      formAccent: vars.foregroundColor.formAccent,
-      info: vars.foregroundColor.info,
-      positive: vars.foregroundColor.positive,
-      promote: vars.foregroundColor.promote,
-      secondary: vars.foregroundColor.secondary,
-    },
-    mapToProperty('color'),
-  ),
-  link: style({
-    color: vars.foregroundColor.link,
-    ...(vars.foregroundColor.link !== vars.foregroundColor.linkHover
-      ? {
-          ':hover': { color: vars.foregroundColor.linkHover },
-          ':focus': { color: vars.foregroundColor.linkHover },
-        }
-      : {}),
-  }),
-};
+const textLinkVars = createThemeContract({
+  color: null,
+  colorHover: null,
+  fontWeight: null,
+  textDecoration: null,
+  textDecorationHover: null,
+});
+
+const regularLinkVars = assignVars(textLinkVars, {
+  color: vars.foregroundColor.link,
+  colorHover: vars.foregroundColor.linkHover,
+  fontWeight: vars.textWeight.medium,
+  textDecoration: 'none',
+  textDecorationHover: 'underline',
+});
+
+const weakLinkVars = assignVars(textLinkVars, {
+  color: 'inherit',
+  colorHover: 'inherit',
+  fontWeight: 'inherit',
+  textDecoration: 'underline',
+  textDecorationHover: 'underline',
+});
+
+export const textLink = style({
+  color: textLinkVars.color,
+  fontWeight: textLinkVars.fontWeight,
+  textDecoration: textLinkVars.textDecoration,
+  ':hover': {
+    color: textLinkVars.colorHover,
+    textDecoration: textLinkVars.textDecorationHover,
+  },
+  ':focus': {
+    color: textLinkVars.colorHover,
+  },
+});
+
+export const regularLink = style({
+  vars: regularLinkVars,
+});
+
+export const weakLink = style({
+  vars: weakLinkVars,
+});
+
+export const textLinkVisited = style({
+  ':visited': {
+    color: vars.foregroundColor.linkVisited,
+  },
+});
+
+export const tone = styleVariants(
+  {
+    brandAccent: vars.foregroundColor.brandAccent,
+    caution: vars.foregroundColor.caution,
+    critical: vars.foregroundColor.critical,
+    formAccent: vars.foregroundColor.formAccent,
+    info: vars.foregroundColor.info,
+    positive: vars.foregroundColor.positive,
+    promote: vars.foregroundColor.promote,
+    secondary: vars.foregroundColor.secondary,
+    link: vars.foregroundColor.link,
+  },
+  mapToProperty('color'),
+);
 
 export const invertableTone = {
   neutral: styleVariants({

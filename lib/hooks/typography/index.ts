@@ -1,4 +1,3 @@
-import { useContext } from 'react';
 import clsx from 'clsx';
 import type { StyleRule } from '@vanilla-extract/css';
 import assert from 'assert';
@@ -9,7 +8,6 @@ import {
 } from '../../components/Box/BackgroundContext';
 import { BoxProps } from '../../components/Box/Box';
 import { useDefaultTextProps } from '../../components/private/defaultTextProps';
-import TextLinkRendererContext from '../../components/TextLinkRenderer/TextLinkRendererContext';
 import { vars } from '../../themes/vars.css';
 import { responsiveStyle } from '../../css/responsiveStyle';
 import * as styles from './typography.css';
@@ -110,9 +108,7 @@ export function textSize(size: keyof typeof styles.text) {
 }
 
 export function useWeight(weight: keyof typeof styles.fontWeight) {
-  const inTextLinkRenderer = useContext(TextLinkRendererContext);
-
-  return inTextLinkRenderer ? undefined : styles.fontWeight[weight];
+  return styles.fontWeight[weight];
 }
 
 const neutralToneOverrideForBackground: Partial<
@@ -139,7 +135,6 @@ export function useTextTone({
   tone: TextTone;
   backgroundContext?: BoxProps['background'];
 }) {
-  const textLinkContext = useContext(TextLinkRendererContext);
   const backgroundContext = useBackground();
   const background = backgroundContextOverride || backgroundContext;
   const backgroundLightness = useBackgroundLightness(background);
@@ -162,10 +157,6 @@ export function useTextTone({
           backgroundLightness
         ]
       : styles.tone[tone];
-  }
-
-  if (textLinkContext && textLinkContext !== 'weak') {
-    return styles.tone.link;
   }
 
   return styles.invertableTone.neutral[backgroundLightness];
