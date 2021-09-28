@@ -3855,34 +3855,20 @@
     eslint-visitor-keys "^2.0.0"
 
 "@vanilla-extract/babel-plugin@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@vanilla-extract/babel-plugin/-/babel-plugin-1.0.0.tgz#bdf8e13f40f761680d47001e61856869b1143b90"
-  integrity sha512-UBbycdnKDvpWVOv1j6F8Iod+FhOW2W4Fv+GVT3D/Woq2SleO2JSv/OEDoyerkN1mcCkJCVPuXnVYEdeRdxZgeQ==
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@vanilla-extract/babel-plugin/-/babel-plugin-1.1.0.tgz#a6a9efa7f4f377e05b0754874f31b8b21ca292e0"
+  integrity sha512-gHNK9Il6FtZurDJ/x96jR4Y2HzdxzbdTDb6cGDTmSO6QP/1zE+2BJRMgvmCTPoS+mbm8pK0AgaBk9HIspRAgrQ==
   dependencies:
     "@babel/core" "^7.13.10"
     "@babel/template" "^7.12.13"
-    "@vanilla-extract/integration" "^1.0.0"
+    "@vanilla-extract/integration" "^1.4.0"
 
 "@vanilla-extract/css-utils@^0.1.1":
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/@vanilla-extract/css-utils/-/css-utils-0.1.1.tgz#f4f58f85347d8a841ef74c60db111ec264011860"
   integrity sha512-9fDV8IhSfzgDd9Z+64jVcS38S2dVc6c1eOd+hgO8zPMRba6rEB8kEjg5+AQ3xPCdzl1m8olqFHnfQRNOn1OXuA==
 
-"@vanilla-extract/css@^1.0.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@vanilla-extract/css/-/css-1.1.0.tgz#436ceb348aacecbe6646d86aa17e81b3aaef5573"
-  integrity sha512-tvoHwhBq/jlnE0ayt7LLGFljBvdgeuRaa3vCffzqedsAxNQVcBb4FAlU8HokeSnp+eofqYiHyHytme0807ar0A==
-  dependencies:
-    "@emotion/hash" "^0.8.0"
-    "@vanilla-extract/private" "^1.0.0"
-    chalk "^4.1.1"
-    css-what "^5.0.1"
-    cssesc "^3.0.0"
-    csstype "^3.0.7"
-    dedent "^0.7.0"
-    deep-object-diff "^1.1.0"
-
-"@vanilla-extract/css@^1.6.1":
+"@vanilla-extract/css@^1.5.0", "@vanilla-extract/css@^1.6.1":
   version "1.6.1"
   resolved "https://registry.yarnpkg.com/@vanilla-extract/css/-/css-1.6.1.tgz#39c3b58f2b5f1b728e901b059c5021b8769d5a99"
   integrity sha512-MTR8pHVV80/B4H37JqyUwC8GUwA6DMdClcjgrU98svLrnmWq2Y8BWox9OQAOovoOwGtZwkJhjTQUmPkK0D13Bw==
@@ -3897,12 +3883,12 @@
     deep-object-diff "^1.1.0"
     deepmerge "^4.2.2"
 
-"@vanilla-extract/integration@^1.0.0":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@vanilla-extract/integration/-/integration-1.0.1.tgz#48ebe910f29b0da88e9876286f4d0b658a6f27ae"
-  integrity sha512-dm1dLFewXCVXuXe+3BPb1iK/EFubxkzevLOepMY8z+wUIUv0xS8PdccY3n7vXPTsSNg5f3Bm3IkaL2ynj+LcJA==
+"@vanilla-extract/integration@^1.1.0", "@vanilla-extract/integration@^1.4.0":
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/@vanilla-extract/integration/-/integration-1.4.0.tgz#a09becf502862e37036c4fe68215125ed52bbed5"
+  integrity sha512-TOBVr6rUasS3K6T9kiXMfrZzkruaEfY/cxpQaAjQnbWcAlsjVZP0AVB/6mdAAXw4QqlHbdENLtSp8PP69gf50A==
   dependencies:
-    "@vanilla-extract/css" "^1.0.0"
+    "@vanilla-extract/css" "^1.5.0"
     chalk "^4.1.1"
     dedent "^0.7.0"
     esbuild "^0.11.16"
@@ -3910,11 +3896,6 @@
     find-up "^5.0.0"
     javascript-stringify "^2.0.1"
     lodash "^4.17.21"
-
-"@vanilla-extract/private@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@vanilla-extract/private/-/private-1.0.0.tgz#10711c4481decd2f9a2f19cb85dcee60eff3f75c"
-  integrity sha512-NS/Dqenj1Fd9fX1qWz4nFP6hefbTJIpQYLgKQsJBQonJ/E0QYiYtTJ1oeUh7vpoW0ojVuuRdA1URbKb7MCJ4JA==
 
 "@vanilla-extract/private@^1.0.1":
   version "1.0.1"
@@ -3927,11 +3908,11 @@
   integrity sha512-MF4ShklyUxAfXm+M6NkizNQSPFfGycZVHc/HIYqXrqDIFDc+6UQoBwiygWUla/6pXzZk9u1TViirhfZIH/zEmA==
 
 "@vanilla-extract/webpack-plugin@^1.0.0":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@vanilla-extract/webpack-plugin/-/webpack-plugin-1.0.3.tgz#765c27a644c5f9a3356c50036a88e8cc004088f1"
-  integrity sha512-lU68fxYa+AtBcWlSzGVR7tinoOBy77iqUdHhU66O8rFp2NAySQBSUDpuMvd96gRmDNP3o5kq7B4tJvnMWzMEuA==
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@vanilla-extract/webpack-plugin/-/webpack-plugin-1.1.0.tgz#9761dbfeb24271c6ca541fca311551413a79462e"
+  integrity sha512-HOcW7TYipzIBor+HruGW96fW9suWA5fgSHdsxngROm/F7AUk6SjAk/AOFD6kq4CLIG33d6ZryjRSPjb9STrfxw==
   dependencies:
-    "@vanilla-extract/integration" "^1.0.0"
+    "@vanilla-extract/integration" "^1.1.0"
     chalk "^4.1.1"
     debug "^4.3.1"
     loader-utils "^2.0.0"
