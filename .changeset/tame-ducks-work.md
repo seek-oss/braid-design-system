@@ -28,7 +28,7 @@ If your app still needs to render different themes then you can replicate the `B
 
 ```tsx
 import { BraidProvider } from 'braid-design-system';
-import React from 'react';
+import React, { ReactNode } from 'react';
 import loadable from 'sku/@loadable/component';
 
 type ThemeName = 'apac' | 'catho';
