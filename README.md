@@ -81,21 +81,6 @@ export const App = () => (
 );
 ```
 
-## Multi-theme setup
-
-If you require multiple themes and want to code split them, you can subsitute the `BraidProvider` with the `BraidLoadableProvider`, passing it the necessary `themeName` at runtime. Remove any explicit theme imports you may have.
-
-```js
-import 'braid-design-system/reset';
-import { BraidLoadableProvider, Text } from 'braid-design-system';
-
-export default ({ themeName }) => (
-  <BraidLoadableProvider themeName={themeName}>
-    <Text>Hello World!</Text>
-  </BraidLoadableProvider>
-);
-```
-
 ## Style Guide Migration
 
 If you're migrating from an existing style guide, please refer to the [Style Guide Migration](./docs/Style%20Guide%20Migration.md) guide.

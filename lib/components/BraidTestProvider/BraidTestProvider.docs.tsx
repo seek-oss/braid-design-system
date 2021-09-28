@@ -24,10 +24,6 @@ const docs: ComponentDocs = {
       name: 'BraidProvider',
       description: 'For production apps with a single theme.',
     },
-    {
-      name: 'BraidLoadableProvider',
-      description: 'For production apps with multiple themes.',
-    },
   ],
   additional: [
     {

@@ -10,10 +10,6 @@ const docs: ComponentDocs = {
   ),
   alternatives: [
     {
-      name: 'BraidLoadableProvider',
-      description: 'For production apps with multiple themes.',
-    },
-    {
       name: 'BraidTestProvider',
       description: 'For test environments.',
     },
@@ -28,7 +24,8 @@ const docs: ComponentDocs = {
         </Text>
       ),
       code: `
-        import wireframe from 'braid-design-system/themes/wireframe';
+      import wireframe from 'braid-design-system/themes/wireframe';
+      import { BraidProvider } from 'braid-design-system';
 
         export const App = () => (
           <BraidProvider theme={wireframe}>

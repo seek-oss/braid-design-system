@@ -1800,22 +1800,6 @@ Object {
 }
 `;
 
-exports[`BraidLoadableProvider 1`] = `
-Object {
-  exportType: component,
-  props: {
-    children: ReactNode
-    fallback?: ReactNode
-    linkComponent?: 
-        | ComponentClass<LinkComponentProps, any>
-        | FunctionComponent<LinkComponentProps>
-        | { readonly __forwardRef__: ForwardRefExoticComponent<LinkComponentProps & RefAttributes<HTMLAnchorElement>>; }
-    styleBody?: boolean
-    themeName: string
-},
-}
-`;
-
 exports[`BraidPortal 1`] = `
 Object {
   exportType: component,
