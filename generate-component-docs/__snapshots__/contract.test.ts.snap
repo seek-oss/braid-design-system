@@ -1939,10 +1939,6 @@ Object {
         | "soft"
         | "solid"
         | "transparent"
-    weight?: 
-        | "regular"
-        | "strong"
-        | "weak"
 },
 }
 `;
@@ -2452,36 +2448,6 @@ Object {
         | "solid"
         | "transparent"
     vocab?: string
-    weight?: 
-        | "regular"
-        | "strong"
-        | "weak"
-},
-}
-`;
-
-exports[`ButtonRenderer 1`] = `
-Object {
-  exportType: component,
-  props: {
-    bleedY?: boolean
-    children: (ButtonChildren: ComponentType<ButtonChildrenProps>, styleProps: { style: CSSProperties; className: string; }) => ReactNode
-    loading?: boolean
-    size?: 
-        | "small"
-        | "standard"
-    tone?: 
-        | "brandAccent"
-        | "critical"
-    variant?: 
-        | "ghost"
-        | "soft"
-        | "solid"
-        | "transparent"
-    weight?: 
-        | "regular"
-        | "strong"
-        | "weak"
 },
 }
 `;
