@@ -189,11 +189,11 @@ If all of the values passed to `style` are provided by `atoms`, you can use it a
 });
 ```
 
-If you need to combine atomic classes with custom styles, you can use vanilla-extract's [`composeStyles` function.](https://vanilla-extract.style/documentation/styling-api/#composestyles)
+If you need to combine atomic classes with custom styles, you can pass an array to vanilla-extract's [`style` function.](https://vanilla-extract.style/documentation/styling-api/#style)
 
 ```diff
 -import { style } from 'sku/treat';
-+import { style, composeStyles } from '@vanilla-extract/css';
++import { style } from '@vanilla-extract/css';
 +import { atoms } from 'braid-design-system/css';
 
 -export const className = style({
@@ -201,7 +201,7 @@ If you need to combine atomic classes with custom styles, you can use vanilla-ex
 -  top: 50,
 -  left: 50,
 -});
-+export const className = composeStyles(
++export const className = style([
 +  atoms({
 +    position: 'absolute',
 +  }),
@@ -209,5 +209,5 @@ If you need to combine atomic classes with custom styles, you can use vanilla-ex
 +    top: 50,
 +    left: 50,
 +  }),
-+);
++]);
 ```
