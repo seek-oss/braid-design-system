@@ -109,17 +109,6 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
-      label: 'Legacy weights',
-      Container,
-      Example: () => (
-        <Inline space="small" collapseBelow="desktop">
-          <Button weight="strong">Strong</Button>
-          <Button weight="regular">Regular</Button>
-          <Button weight="weak">Weak</Button>
-        </Inline>
-      ),
-    },
-    {
       label: 'Contrast',
       Container,
       Example: () => (

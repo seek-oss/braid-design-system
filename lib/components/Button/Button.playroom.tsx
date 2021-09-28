@@ -1,20 +1,15 @@
 import React, { forwardRef } from 'react';
-import {
-  buttonVariants,
-  buttonWeights,
-} from '../ButtonRenderer/ButtonRenderer';
+import { buttonVariants } from '../Button/Button';
 import { Button as BraidButton, ButtonProps } from './Button';
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ variant, weight, ...restProps }, ref) => {
-    const isValidWeight = weight && buttonWeights.indexOf(weight) > -1;
+  ({ variant, ...restProps }, ref) => {
     const isValidVariant = variant && buttonVariants.indexOf(variant) > -1;
 
     return (
       <BraidButton
         ref={ref}
         variant={isValidVariant ? variant : undefined}
-        weight={isValidWeight ? weight : undefined}
         {...restProps}
       />
     );

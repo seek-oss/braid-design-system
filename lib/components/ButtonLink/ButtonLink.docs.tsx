@@ -9,7 +9,7 @@ const docs: ComponentDocs = {
   migrationGuide: true,
   Example: () =>
     source(
-      <Card>
+      <Card rounded>
         <Inline space="small" collapseBelow="desktop">
           <ButtonLink href="#">Solid</ButtonLink>
           <ButtonLink href="#" variant="ghost">
