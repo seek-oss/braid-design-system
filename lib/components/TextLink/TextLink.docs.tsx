@@ -90,7 +90,7 @@ const docs: ComponentDocs = {
         <>
           <Text>
             To avoid clashing colours, when on a background other than{' '}
-            <Strong>card</Strong>, TextLink will default its{' '}
+            <Strong>surface</Strong>, TextLink will default its{' '}
             <Strong>weight</Strong> to <Strong>weak</Strong>. In addition, when
             placed on a dark background, it may be inverted based on the{' '}
             <TextLink href="/components/Text#contrast">
@@ -103,7 +103,7 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
-      background: 'card',
+      background: 'surface',
       Example: () =>
         source(
           <Stack space="large">

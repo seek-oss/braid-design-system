@@ -12,7 +12,7 @@ import source from '../../utils/source.macro';
 
 export const galleryItems: ComponentExample[] = [
   {
-    background: 'card',
+    background: 'surface',
     Example: ({ handler, setDefaultState, getState, toggleState }) =>
       source(
         <>

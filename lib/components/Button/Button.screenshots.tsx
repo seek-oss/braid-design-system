@@ -80,10 +80,10 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'With vertical bleed (standard)',
-      background: 'card',
+      background: 'surface',
       Example: () => (
         <Box background="neutralLight" borderRadius="standard" padding="gutter">
-          <Box background="card">
+          <Box background="surface">
             <Inline space="xsmall" alignY="center">
               <Heading level="2">Heading</Heading>
               <Button bleedY>Button</Button>
@@ -94,10 +94,10 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'With vertical bleed (small)',
-      background: 'card',
+      background: 'surface',
       Example: () => (
         <Box background="neutralLight" borderRadius="standard" padding="gutter">
-          <Box background="card">
+          <Box background="surface">
             <Inline space="xsmall" alignY="center">
               <Heading level="2">Heading</Heading>
               <Button bleedY size="small">

@@ -125,7 +125,7 @@ export const Navigation = ({ children }: NavigationProps) => {
       </RemoveScroll>
 
       <Box
-        background="card"
+        background="surface"
         position="relative"
         overflow="hidden" // Fix stack space intercepting nav bar clicks
         paddingX={{

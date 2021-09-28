@@ -93,11 +93,7 @@ const renderers = {
   code: Code,
   link: TextLink,
   blockquote: ({ children }: any) => (
-    <Box
-      paddingX="gutter"
-      paddingY="small"
-      background="selection" // Should be 'neutralLight' once it can be explicitly defined in the theme tokens
-    >
+    <Box paddingX="gutter" paddingY="small" background="formAccentSoft">
       <Box paddingTop="small">
         <DefaultTextPropsProvider tone="secondary">
           {children}

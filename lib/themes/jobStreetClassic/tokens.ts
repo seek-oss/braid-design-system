@@ -79,7 +79,6 @@ export default makeTokens({
       },
       background: {
         info,
-        selection: '#e8ebf4',
       },
     },
   },
