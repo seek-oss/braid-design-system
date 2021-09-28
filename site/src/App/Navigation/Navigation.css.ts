@@ -1,4 +1,4 @@
-import { style, globalStyle, composeStyles } from '@vanilla-extract/css';
+import { style, globalStyle } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
 import { vars, breakpoints, responsiveStyle } from '../../../../css';
 import { menuWidth, headerHeight, gutterSize } from './navigationSizes';
@@ -56,17 +56,17 @@ const subNavOffsetAboveMobile = style(
   }),
 );
 
-export const subNavigationContainer = composeStyles(
+export const subNavigationContainer = style([
   headerOffset,
   fixedWidthAboveMobile,
   hideOnMobileWhenClosed,
-);
+]);
 
-export const pageContent = composeStyles(
+export const pageContent = style([
   headerOffset,
   subNavOffsetAboveMobile,
   hideOnMobileWhenOpen,
-);
+]);
 
 globalStyle('html, body', {
   margin: 0,

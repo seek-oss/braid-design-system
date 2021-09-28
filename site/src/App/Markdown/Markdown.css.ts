@@ -1,4 +1,4 @@
-import { style, composeStyles } from '@vanilla-extract/css';
+import { style } from '@vanilla-extract/css';
 import { createTextStyle } from '@capsizecss/vanilla-extract';
 import { vars } from '../../../../lib/themes/vars.css';
 
@@ -15,7 +15,7 @@ const toCapsizeValues = ({
 
 // Recreating text styles to get around Text in Text
 // within markdown renderer
-export const standardText = composeStyles(
+export const standardText = style([
   style({
     fontFamily: vars.fontFamily,
     fontWeight: vars.textWeight.regular,
@@ -28,4 +28,4 @@ export const standardText = composeStyles(
       ),
     },
   }),
-);
+]);
