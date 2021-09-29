@@ -23,8 +23,6 @@ export { BackgroundProvider } from './BackgroundProvider/BackgroundProvider';
 export { Badge } from './Badge/Badge';
 export { Box } from './Box/Box';
 export { BoxRenderer } from './Box/BoxRenderer';
-export { Bullet } from './BulletList/BulletList';
-export { BulletList } from './BulletList/BulletList';
 export { Button } from './Button/Button';
 export { ButtonLink } from './ButtonLink/ButtonLink';
 export { Card } from './Card/Card';
