@@ -1835,36 +1835,6 @@ Object {
 }
 `;
 
-exports[`BraidTestProvider 1`] = `
-Object {
-  exportType: component,
-  props: {
-    breakpoint?: 
-        | "desktop"
-        | "mobile"
-        | "tablet"
-        | "wide"
-    children: ReactNode
-    linkComponent?: 
-        | ComponentClass<LinkComponentProps, any>
-        | FunctionComponent<LinkComponentProps>
-        | { readonly __forwardRef__: ForwardRefExoticComponent<LinkComponentProps & RefAttributes<HTMLAnchorElement>>; }
-    themeName?: 
-        | "apac"
-        | "catho"
-        | "docs"
-        | "jobStreet"
-        | "jobStreetClassic"
-        | "jobsDb"
-        | "occ"
-        | "seekAnz"
-        | "seekBusiness"
-        | "seekUnifiedBeta"
-        | "wireframe"
-},
-}
-`;
-
 exports[`Bullet 1`] = `
 Object {
   exportType: component,
