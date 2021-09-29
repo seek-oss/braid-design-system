@@ -1835,44 +1835,6 @@ Object {
 }
 `;
 
-exports[`Bullet 1`] = `
-Object {
-  exportType: component,
-  props: {
-    children: ReactNode
-},
-}
-`;
-
-exports[`BulletList 1`] = `
-Object {
-  exportType: component,
-  props: {
-    children: ReactNodeNoStrings
-    size?: 
-        | "large"
-        | "small"
-        | "standard"
-        | "xsmall"
-    space?: 
-        | "gutter"
-        | "large"
-        | "medium"
-        | "none"
-        | "small"
-        | "xlarge"
-        | "xsmall"
-        | "xxlarge"
-        | "xxsmall"
-        | RequiredConditionalObject<"mobile", "tablet" | "desktop" | "wide", Space>
-        | RequiredResponsiveArray<1 | 2 | 3 | 4, Space | null>
-    tone?: 
-        | "neutral"
-        | "secondary"
-},
-}
-`;
-
 exports[`Button 1`] = `
 Object {
   exportType: component,
