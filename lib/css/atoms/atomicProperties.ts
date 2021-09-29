@@ -75,6 +75,8 @@ export const unresponsiveProperties = {
 
 export type UnresponsiveProperties = keyof typeof unresponsiveProperties;
 
+export type Background = keyof typeof vars.backgroundColor;
+
 export const responsiveProperties = {
   display: {
     none: 'none',

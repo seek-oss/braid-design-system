@@ -19,7 +19,6 @@ export { Actions } from './Actions/Actions';
 export { Alert } from './Alert/Alert';
 export { Autosuggest } from './Autosuggest/Autosuggest';
 export { filterSuggestions } from './Autosuggest/filterSuggestions';
-export { BackgroundProvider } from './BackgroundProvider/BackgroundProvider';
 export { Badge } from './Badge/Badge';
 export { Box } from './Box/Box';
 export { BoxRenderer } from './Box/BoxRenderer';

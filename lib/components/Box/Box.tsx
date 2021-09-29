@@ -1,5 +1,5 @@
 import clsx, { ClassValue } from 'clsx';
-import {
+import React, {
   createElement,
   forwardRef,
   AllHTMLAttributes,
@@ -10,13 +10,20 @@ import dedent from 'dedent';
 import { base as baseReset } from '../../css/reset/reset.css';
 import { atoms, Atoms } from '../../css/atoms/atoms';
 import { sprinkles } from '../../css/atoms/sprinkles.css';
-import { renderBackgroundProvider } from './BackgroundContext';
+import { ColoredBox } from './ColoredBox';
+import { Background } from '../../css/atoms/atomicProperties';
+
+export type BoxBackgroundVariant = Background | 'customDark' | 'customLight';
+
+export interface BoxBaseProps extends Omit<Atoms, 'reset' | 'background'> {
+  className?: ClassValue;
+  background?: BoxBackgroundVariant;
+}
 
 export interface BoxProps
-  extends Omit<Atoms, 'reset'>,
+  extends BoxBaseProps,
     Omit<AllHTMLAttributes<HTMLElement>, 'width' | 'height' | 'className'> {
   component?: ElementType;
-  className?: ClassValue;
 }
 
 export const Box = forwardRef<HTMLElement, BoxProps>(
@@ -54,15 +61,28 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
     const atomicClasses = atoms({
       reset: typeof component === 'string' ? component : 'div',
       ...atomProps,
+      background: undefined,
     });
 
-    const element = createElement(component, {
-      className: `${atomicClasses}${userClasses ? ` ${userClasses}` : ''}`,
-      ...nativeProps,
-      ref,
-    });
+    const combinedClasses = `${atomicClasses}${
+      userClasses ? ` ${userClasses}` : ''
+    }`;
 
-    return renderBackgroundProvider(props.background, element);
+    return props.background ? (
+      <ColoredBox
+        component={component}
+        background={props.background}
+        className={combinedClasses}
+        ref={ref}
+        {...nativeProps}
+      />
+    ) : (
+      createElement(component, {
+        className: combinedClasses,
+        ...nativeProps,
+        ref,
+      })
+    );
   },
 );
 

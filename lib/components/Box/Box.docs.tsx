@@ -23,9 +23,10 @@ import {
   ResponsiveProperties,
   PseudoProperties,
 } from '../../css/atoms/atomicProperties';
+import { vars } from '../../themes/vars.css';
 
 type BackgroundDocs = Required<
-  Record<NonNullable<BoxProps['background']>, string>
+  Record<keyof typeof vars.backgroundColor, string>
 >;
 const validateBackgrounds = (backgrounds: BackgroundDocs) => backgrounds;
 
