@@ -1,7 +1,8 @@
 import '@testing-library/jest-dom/extend-expect';
 import React from 'react';
 import { render, getAllByRole } from '@testing-library/react';
-import { BraidTestProvider, MonthPicker } from '..';
+import { BraidTestProvider } from '../../../test';
+import { MonthPicker } from '..';
 
 describe('MonthPicker (Double dropdown)', () => {
   it('should render years descending by default', () => {

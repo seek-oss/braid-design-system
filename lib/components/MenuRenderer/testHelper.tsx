@@ -8,13 +8,8 @@ import {
   act,
 } from '@testing-library/react';
 import genericUserEvent from '@testing-library/user-event';
-import {
-  BraidTestProvider,
-  MenuItem,
-  MenuItemLink,
-  MenuItemCheckbox,
-  MenuItemDivider,
-} from '..';
+import { BraidTestProvider } from '../../../test';
+import { MenuItem, MenuItemLink, MenuItemCheckbox, MenuItemDivider } from '..';
 import { MenuRendererProps } from './MenuRenderer';
 
 // The generic `user-event` library currently doesn't have knowledge

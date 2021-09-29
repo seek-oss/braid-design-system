@@ -35,7 +35,7 @@ const docs: ComponentDocs = {
         </Text>
       ),
       code: `
-        import { BraidTestProvider } from 'braid-design-system';
+        import { BraidTestProvider } from 'braid-design-system/test';
         import { render } from 'react-testing-library';
 
         it('should do something', () => {
@@ -56,7 +56,7 @@ const docs: ComponentDocs = {
         </Text>
       ),
       code: `
-        import { BraidTestProvider } from 'braid-design-system';
+        import { BraidTestProvider } from 'braid-design-system/test';
         import { render } from 'react-testing-library';
 
         it('should do something', () => {
