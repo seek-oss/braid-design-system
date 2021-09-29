@@ -24,6 +24,7 @@ import {
   PseudoProperties,
 } from '../../css/atoms/atomicProperties';
 import { vars } from '../../themes/vars.css';
+import { ThemedExample } from '../../../site/src/App/ThemeSetting';
 
 type BackgroundDocs = Required<
   Record<keyof typeof vars.backgroundColor, string>
@@ -385,6 +386,70 @@ const docs: ComponentDocs = {
           <Code playroom={false}>
             {source(<Box background="brand">...</Box>).code}
           </Code>
+          <Text>
+            When a <TextLink href="/components/Text">Text</TextLink> component
+            is placed on a dark background, the foreground colour may be
+            inverted based on the{' '}
+            <TextLink href="/components/Text#contrast">
+              contrast rules of Text.
+            </TextLink>
+          </Text>
+          <Text>
+            When using custom backgrounds or images, this behaviour can no
+            longer work by default. You can opt back into this behaviour by
+            setting the <Strong>background</Strong> to either{' '}
+            <Strong>customLight</Strong> or <Strong>customDark</Strong>.
+          </Text>
+          <Stack space="xxsmall">
+            <ThemedExample background="body">
+              <Stack space="large">
+                <Box
+                  padding="medium"
+                  background="customDark"
+                  style={{
+                    backgroundColor: '#3d0080',
+                  }}
+                >
+                  <Text>Text on custom dark background</Text>
+                </Box>
+                <Box
+                  padding="medium"
+                  background="customLight"
+                  style={{
+                    backgroundColor: '#c8cfff',
+                  }}
+                >
+                  <Text>Text on custom light background</Text>
+                </Box>
+              </Stack>
+            </ThemedExample>
+            <Code collapsedByDefault>
+              {
+                source(
+                  <Stack space="large">
+                    <Box
+                      padding="medium"
+                      background="customDark"
+                      style={{
+                        backgroundColor: '#3d0080',
+                      }}
+                    >
+                      <Text>Text on custom dark background</Text>
+                    </Box>
+                    <Box
+                      padding="medium"
+                      background="customLight"
+                      style={{
+                        backgroundColor: '#c8cfff',
+                      }}
+                    >
+                      <Text>Text on custom light background</Text>
+                    </Box>
+                  </Stack>,
+                ).code
+              }
+            </Code>
+          </Stack>
           <Alert tone="caution">
             <Text>
               These background colours are likely to change over time, so it’s
