@@ -4,7 +4,8 @@ import React, { ReactNode } from 'react';
 import { render, act, waitFor, getByTestId } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { BraidTestProvider, ToastProvider, useToast } from '..';
+import { BraidTestProvider } from '../../../test';
+import { ToastProvider, useToast } from '..';
 
 type ShowToast = ReturnType<typeof useToast>;
 

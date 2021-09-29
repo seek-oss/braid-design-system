@@ -1,7 +1,8 @@
 import '@testing-library/jest-dom/extend-expect';
 import React from 'react';
 import { render } from '@testing-library/react';
-import { BraidTestProvider, TextField } from '..';
+import { BraidTestProvider } from '../../../test';
+import { TextField } from '..';
 
 describe('TextField', () => {
   it('associates field with label correctly', () => {

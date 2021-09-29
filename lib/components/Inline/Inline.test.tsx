@@ -1,7 +1,8 @@
 import '@testing-library/jest-dom/extend-expect';
 import React from 'react';
 import { render } from '@testing-library/react';
-import { BraidTestProvider, Inline, Text } from '..';
+import { BraidTestProvider } from '../../../test';
+import { Inline, Text } from '..';
 
 describe('Inline', () => {
   it('should not render a list by default', () => {

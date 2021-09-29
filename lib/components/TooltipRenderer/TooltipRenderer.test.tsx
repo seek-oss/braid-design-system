@@ -2,7 +2,8 @@ import '@testing-library/jest-dom/extend-expect';
 import React from 'react';
 import { render, fireEvent, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { BraidTestProvider, TooltipRenderer, Box, Text } from '..';
+import { BraidTestProvider } from '../../../test';
+import { TooltipRenderer, Box, Text } from '..';
 
 const tick = async () => new Promise((resolve) => setTimeout(resolve, 0));
 

@@ -2,14 +2,8 @@ import '@testing-library/jest-dom/extend-expect';
 import React, { useState, Fragment } from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import {
-  BraidTestProvider,
-  Tabs,
-  Tab,
-  TabPanel,
-  TabsProvider,
-  TabPanels,
-} from '..';
+import { BraidTestProvider } from '../../../test';
+import { Tabs, Tab, TabPanel, TabsProvider, TabPanels } from '..';
 
 const ENTER = 13;
 const SPACE = 32;

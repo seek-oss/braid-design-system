@@ -24,6 +24,7 @@ module.exports = {
     'scripts',
     'generate-component-docs',
     'reset',
+    'test',
   ],
   ...entries,
   routes,

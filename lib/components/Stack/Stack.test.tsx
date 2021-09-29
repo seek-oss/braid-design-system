@@ -1,7 +1,8 @@
 import '@testing-library/jest-dom/extend-expect';
 import React from 'react';
 import { render } from '@testing-library/react';
-import { BraidTestProvider, Stack, Text } from '..';
+import { BraidTestProvider } from '../../../test';
+import { Stack, Text } from '..';
 
 describe('Stack', () => {
   it('should not render a list by default', () => {

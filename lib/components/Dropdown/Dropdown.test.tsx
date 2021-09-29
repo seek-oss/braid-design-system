@@ -1,7 +1,8 @@
 import '@testing-library/jest-dom/extend-expect';
 import React from 'react';
 import { render } from '@testing-library/react';
-import { BraidTestProvider, Dropdown } from '..';
+import { BraidTestProvider } from '../../../test';
+import { Dropdown } from '..';
 
 describe('Dropdown', () => {
   it('associates field with label correctly', () => {
