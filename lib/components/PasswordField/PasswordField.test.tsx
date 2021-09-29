@@ -1,7 +1,8 @@
 import '@testing-library/jest-dom/extend-expect';
 import React from 'react';
 import { render } from '@testing-library/react';
-import { BraidTestProvider, PasswordField } from '..';
+import { BraidTestProvider } from '../../../test';
+import { PasswordField } from '..';
 import userEvent from '@testing-library/user-event';
 
 describe('PasswordField', () => {

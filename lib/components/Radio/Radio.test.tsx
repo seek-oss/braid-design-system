@@ -1,7 +1,8 @@
 import '@testing-library/jest-dom/extend-expect';
 import React from 'react';
 import { render } from '@testing-library/react';
-import { BraidTestProvider, Radio } from '..';
+import { BraidTestProvider } from '../../../test';
+import { Radio } from '..';
 
 describe('Radio', () => {
   beforeAll(() => {
