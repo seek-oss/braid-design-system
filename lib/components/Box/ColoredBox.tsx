@@ -20,7 +20,7 @@ export const ColoredBox = forwardRef<HTMLElement, ColoredBoxProps>(
     const colorClasses = resolveBackgroundAtom(background);
 
     const element = createElement(component, {
-      className: `${className} ${colorClasses}`,
+      className: `${className}${colorClasses ? ` ${colorClasses}` : ''}`,
       ...props,
       ref,
     });
