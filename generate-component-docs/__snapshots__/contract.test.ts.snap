@@ -135,18 +135,6 @@ Object {
 }
 `;
 
-exports[`BackgroundProvider 1`] = `
-Object {
-  exportType: component,
-  props: {
-    children: ReactElement<any, string | JSXElementConstructor<any>>
-    type: 
-        | "dark"
-        | "light"
-},
-}
-`;
-
 exports[`Badge 1`] = `
 Object {
   exportType: component,
@@ -369,7 +357,6 @@ Object {
         | "brandAccentSoft"
         | "brandAccentSoftActive"
         | "brandAccentSoftHover"
-        | "card"
         | "caution"
         | "cautionLight"
         | "critical"
@@ -379,24 +366,24 @@ Object {
         | "criticalSoft"
         | "criticalSoftActive"
         | "criticalSoftHover"
+        | "customDark"
+        | "customLight"
         | "formAccent"
         | "formAccentActive"
-        | "formAccentDisabled"
         | "formAccentHover"
         | "formAccentSoft"
         | "formAccentSoftActive"
         | "formAccentSoftHover"
         | "info"
         | "infoLight"
-        | "input"
-        | "inputDisabled"
         | "neutral"
         | "neutralLight"
+        | "neutralSoft"
         | "positive"
         | "positiveLight"
         | "promote"
         | "promoteLight"
-        | "selection"
+        | "surface"
     borderRadius?: 
         | "full"
         | "large"
@@ -416,16 +403,17 @@ Object {
         | "borderField"
         | "borderFormAccent"
         | "borderFormAccentLarge"
-        | "borderFormHover"
         | "borderInfo"
         | "borderInfoLight"
+        | "borderNeutral"
+        | "borderNeutralInverted"
+        | "borderNeutralInvertedLarge"
+        | "borderNeutralLarge"
+        | "borderNeutralLight"
         | "borderPositive"
         | "borderPositiveLight"
         | "borderPromote"
         | "borderPromoteLight"
-        | "borderStandard"
-        | "borderStandardInverted"
-        | "borderStandardInvertedLarge"
         | "large"
         | "medium"
         | "outlineFocus"
@@ -1300,7 +1288,6 @@ Object {
         | "brandAccentSoft"
         | "brandAccentSoftActive"
         | "brandAccentSoftHover"
-        | "card"
         | "caution"
         | "cautionLight"
         | "critical"
@@ -1310,24 +1297,24 @@ Object {
         | "criticalSoft"
         | "criticalSoftActive"
         | "criticalSoftHover"
+        | "customDark"
+        | "customLight"
         | "formAccent"
         | "formAccentActive"
-        | "formAccentDisabled"
         | "formAccentHover"
         | "formAccentSoft"
         | "formAccentSoftActive"
         | "formAccentSoftHover"
         | "info"
         | "infoLight"
-        | "input"
-        | "inputDisabled"
         | "neutral"
         | "neutralLight"
+        | "neutralSoft"
         | "positive"
         | "positiveLight"
         | "promote"
         | "promoteLight"
-        | "selection"
+        | "surface"
     borderRadius?: 
         | "full"
         | "large"
@@ -1347,16 +1334,17 @@ Object {
         | "borderField"
         | "borderFormAccent"
         | "borderFormAccentLarge"
-        | "borderFormHover"
         | "borderInfo"
         | "borderInfoLight"
+        | "borderNeutral"
+        | "borderNeutralInverted"
+        | "borderNeutralInvertedLarge"
+        | "borderNeutralLarge"
+        | "borderNeutralLight"
         | "borderPositive"
         | "borderPositiveLight"
         | "borderPromote"
         | "borderPromoteLight"
-        | "borderStandard"
-        | "borderStandardInverted"
-        | "borderStandardInvertedLarge"
         | "large"
         | "medium"
         | "outlineFocus"
@@ -1822,7 +1810,7 @@ Object {
     styleBody?: boolean
     theme: {
         background: string
-        backgroundLightness: { body: "dark" | "light"; brand: "dark" | "light"; brandAccent: "dark" | "light"; brandAccentActive: "dark" | "light"; brandAccentHover: "dark" | "light"; brandAccentSoft: "dark" | "light"; ... 29 more ...; selection: "dark" | "light"; }
+        backgroundLightness: { body: "dark" | "light"; brand: "dark" | "light"; brandAccent: "dark" | "light"; brandAccentActive: "dark" | "light"; brandAccentHover: "dark" | "light"; brandAccentSoft: "dark" | "light"; ... 26 more ...; surface: "dark" | "light"; }
         color: { foreground: { brandAccent: string; caution: string; critical: string; formAccent: string; info: string; link: string; linkHover: string; linkVisited: string; neutral: string; neutralInverted: string; ... 4 more ...; secondaryInverted: string; }; background: { ...; }; }
         displayName: string
         name: string
@@ -1831,74 +1819,6 @@ Object {
         vanillaTheme: string
         webFonts: { linkTag: string; }[]
     }
-},
-}
-`;
-
-exports[`BraidTestProvider 1`] = `
-Object {
-  exportType: component,
-  props: {
-    breakpoint?: 
-        | "desktop"
-        | "mobile"
-        | "tablet"
-        | "wide"
-    children: ReactNode
-    linkComponent?: 
-        | ComponentClass<LinkComponentProps, any>
-        | FunctionComponent<LinkComponentProps>
-        | { readonly __forwardRef__: ForwardRefExoticComponent<LinkComponentProps & RefAttributes<HTMLAnchorElement>>; }
-    themeName?: 
-        | "apac"
-        | "catho"
-        | "docs"
-        | "jobStreet"
-        | "jobStreetClassic"
-        | "jobsDb"
-        | "occ"
-        | "seekAnz"
-        | "seekBusiness"
-        | "seekUnifiedBeta"
-        | "wireframe"
-},
-}
-`;
-
-exports[`Bullet 1`] = `
-Object {
-  exportType: component,
-  props: {
-    children: ReactNode
-},
-}
-`;
-
-exports[`BulletList 1`] = `
-Object {
-  exportType: component,
-  props: {
-    children: ReactNodeNoStrings
-    size?: 
-        | "large"
-        | "small"
-        | "standard"
-        | "xsmall"
-    space?: 
-        | "gutter"
-        | "large"
-        | "medium"
-        | "none"
-        | "small"
-        | "xlarge"
-        | "xsmall"
-        | "xxlarge"
-        | "xxsmall"
-        | RequiredConditionalObject<"mobile", "tablet" | "desktop" | "wide", Space>
-        | RequiredResponsiveArray<1 | 2 | 3 | 4, Space | null>
-    tone?: 
-        | "neutral"
-        | "secondary"
 },
 }
 `;

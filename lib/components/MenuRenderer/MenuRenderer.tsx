@@ -282,7 +282,7 @@ export const MenuRenderer = ({
             }}
             boxShadow="medium"
             borderRadius={borderRadius}
-            background="card"
+            background="surface"
             marginTop={offsetSpace}
             transition="fast"
             right={align === 'right' ? 0 : undefined}
@@ -314,7 +314,7 @@ export const MenuRenderer = ({
               })}
             </Box>
             <Overlay
-              boxShadow="borderStandard"
+              boxShadow="borderNeutralLight"
               borderRadius={borderRadius}
               visible
             />

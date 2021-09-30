@@ -7,7 +7,7 @@ export const screenshots: ComponentScreenshot = {
   examples: [
     {
       label: 'Regular Badge',
-      background: 'card',
+      background: 'surface',
       Example: () => <Badge tone="positive">Regular</Badge>,
     },
     {
@@ -20,7 +20,7 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Badge with Vertical Bleed',
-      background: 'card',
+      background: 'surface',
       Example: () => (
         <Inline space="xsmall" alignY="center">
           <Heading level="4">Heading</Heading>
@@ -32,7 +32,7 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Positive Badge',
-      background: 'card',
+      background: 'surface',
       Example: () => <Badge tone="positive">Positive</Badge>,
     },
     {
@@ -45,7 +45,7 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Critical Badge',
-      background: 'card',
+      background: 'surface',
       Example: () => <Badge tone="critical">Critical</Badge>,
     },
     {
@@ -58,7 +58,7 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Caution Badge',
-      background: 'card',
+      background: 'surface',
       Example: () => <Badge tone="caution">Caution</Badge>,
     },
     {
@@ -71,7 +71,7 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Info Badge',
-      background: 'card',
+      background: 'surface',
       Example: () => <Badge tone="info">Info</Badge>,
     },
     {
@@ -84,7 +84,7 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Promote Badge',
-      background: 'card',
+      background: 'surface',
       Example: () => <Badge tone="promote">Promote</Badge>,
     },
     {
@@ -97,7 +97,7 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Neutral Badge',
-      background: 'card',
+      background: 'surface',
       Example: () => <Badge tone="neutral">Neutral</Badge>,
     },
     {

@@ -31,12 +31,10 @@ export const makeTokens = ({
   const white = '#fff';
   const blue2 = '#298EB9';
   const blue3 = '#94C9E0';
-  const blue5 = '#EEF8FC';
   const alert = '#eb0000';
   const grey1 = '#333';
   const grey2 = '#666';
   const grey4 = '#ccc';
-  const grey5 = '#eee';
   const candidate = '#0c4b85'; // SEEK Asia name for this color
   const info = candidate;
   const promote = '#923f92';
@@ -48,7 +46,6 @@ export const makeTokens = ({
   const link = blue2;
   const linkHover = blue2;
   const linkVisited = '#3f11a3';
-  const selection = blue5;
   const secondary = grey2;
   const neutral = grey2;
 
@@ -206,15 +203,15 @@ export const makeTokens = ({
         field: grey4,
         focus,
         formAccent,
-        formHover: formAccent,
         info,
         infoLight: mix(0.3, info, getLightVariant(info)),
+        neutral: grey1,
+        neutralInverted: white,
+        neutralLight: grey4,
         positive,
         positiveLight: mix(0.3, positive, getLightVariant(positive)),
         promote,
         promoteLight: mix(0.3, promote, getLightVariant(promote)),
-        standard: grey4,
-        standardInverted: white,
       },
     },
     focusRingSize: 2,
@@ -253,7 +250,6 @@ export const makeTokens = ({
         brandAccentSoft: tint(0.925, brandAccent),
         brandAccentSoftActive: tint(0.85, brandAccent),
         brandAccentSoftHover: tint(0.9, brandAccent),
-        card: white,
         caution,
         cautionLight: getLightVariant(caution),
         critical,
@@ -265,22 +261,20 @@ export const makeTokens = ({
         criticalSoftHover: tint(0.9, critical),
         formAccent,
         formAccentActive: getActiveColor(formAccent),
-        formAccentDisabled: grey4,
         formAccentHover: getHoverColor(formAccent),
         formAccentSoft: tint(0.925, formAccent),
         formAccentSoftActive: tint(0.85, formAccent),
         formAccentSoftHover: tint(0.9, formAccent),
         info,
         infoLight: getLightVariant(info),
-        input: white,
-        inputDisabled: grey5,
         neutral,
-        neutralLight: getLightVariant(neutral),
+        neutralLight: darken(0.04, getLightVariant(neutral)),
+        neutralSoft: lighten(0.02, getLightVariant(neutral)),
         positive,
         positiveLight: getLightVariant(positive),
         promote,
         promoteLight: getLightVariant(promote),
-        selection,
+        surface: white,
       },
     },
   };

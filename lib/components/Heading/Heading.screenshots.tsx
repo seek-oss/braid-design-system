@@ -71,7 +71,7 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Heading Spacing',
-      background: 'card',
+      background: 'surface',
       Example: () => {
         const levels = Object.keys(headingLevels) as Array<
           keyof typeof headingLevels

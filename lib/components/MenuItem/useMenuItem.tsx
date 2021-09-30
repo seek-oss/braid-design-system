@@ -120,7 +120,8 @@ export function useMenuItem<MenuItemElement extends HTMLElement>({
     }
   };
 
-  const hoverBackground = tone === 'critical' ? 'criticalLight' : 'selection';
+  const hoverBackground =
+    tone === 'critical' ? 'criticalLight' : 'formAccentSoft';
 
   return {
     MenuItemChildren,

@@ -198,8 +198,8 @@ const GalleryItem = ({
   return (
     <Box
       component="article"
-      background="card"
-      borderRadius="standard"
+      background="surface"
+      borderRadius="xlarge"
       padding={isAnIcon ? 'large' : 'xxlarge'}
       margin={isAnIcon ? 'small' : 'xxlarge'}
       data-braid-component-name={item.name}
@@ -634,7 +634,7 @@ const GalleryInternal = () => {
         outline="none"
         transition="fast"
         opacity={ready ? undefined : 0}
-        className={styles.moveCursor}
+        className={styles.grabCursor}
       >
         <Box
           ref={contentRef}

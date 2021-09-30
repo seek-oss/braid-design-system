@@ -6,7 +6,7 @@ import { Button, Box, Heading, Inline, IconSend } from '../';
 export const galleryItems: ComponentExample[] = [
   {
     label: 'Default',
-    background: 'card',
+    background: 'surface',
     Example: () =>
       source(
         <Inline space="small">
@@ -19,7 +19,7 @@ export const galleryItems: ComponentExample[] = [
   },
   {
     label: 'Critical',
-    background: 'card',
+    background: 'surface',
     Example: () =>
       source(
         <Inline space="small">
@@ -38,7 +38,7 @@ export const galleryItems: ComponentExample[] = [
   },
   {
     label: 'BrandAccent',
-    background: 'card',
+    background: 'surface',
     Example: () =>
       source(
         <Inline space="small">

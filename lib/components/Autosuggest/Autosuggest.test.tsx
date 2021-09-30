@@ -2,7 +2,8 @@ import '@testing-library/jest-dom/extend-expect';
 import React, { useState, useRef, useEffect, Dispatch } from 'react';
 import { render, act, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { BraidTestProvider, Autosuggest } from '..';
+import { BraidTestProvider } from '../../../test';
+import { Autosuggest } from '..';
 import { AutosuggestProps } from './Autosuggest';
 
 function renderAutosuggest<Value>({

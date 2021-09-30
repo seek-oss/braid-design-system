@@ -25,7 +25,7 @@ export const size = styleVariants(vars.textSize, ({ mobile, tablet }) =>
 );
 
 export const color = {
-  dark: style({ fill: vars.backgroundColor.card }),
+  dark: style({ fill: vars.backgroundColor.surface }),
   light: style({ fill: vars.backgroundColor.neutral }),
 };
 

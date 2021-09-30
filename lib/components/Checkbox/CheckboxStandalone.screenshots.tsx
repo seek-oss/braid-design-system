@@ -58,7 +58,6 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Disabled',
-      background: 'card',
       Example: ({ id, handler }) => (
         <CheckboxStandalone
           id={id}

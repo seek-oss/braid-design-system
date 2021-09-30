@@ -52,7 +52,7 @@ const PageNav = ({
     >
       <Overlay
         component="span"
-        background="selection"
+        background="formAccentSoft"
         borderRadius={borderRadius}
         transition="fast"
         className={styles.background}
@@ -93,7 +93,7 @@ const Page = ({ number, current }: { number: number; current: boolean }) => {
     >
       <Overlay
         component="span"
-        background={current ? 'formAccent' : 'selection'}
+        background={current ? 'formAccent' : 'formAccentSoft'}
         transition={current ? undefined : 'fast'}
         borderRadius={borderRadius}
         className={[styles.background, current ? styles.current : undefined]}
@@ -103,7 +103,7 @@ const Page = ({ number, current }: { number: number; current: boolean }) => {
         borderRadius={borderRadius}
         boxShadow="borderFormAccent"
         className={
-          parentBackground !== 'card' && current
+          parentBackground !== 'surface' && current
             ? styles.currentKeyline
             : undefined
         }

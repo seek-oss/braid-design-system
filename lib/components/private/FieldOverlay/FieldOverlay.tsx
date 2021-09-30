@@ -25,9 +25,9 @@ const boxShadowForVariant: Record<
   OverlayProps['boxShadow']
 > = {
   default: 'borderField',
-  disabled: 'borderStandard',
+  disabled: 'borderNeutralLight',
   focus: 'outlineFocus',
-  hover: 'borderFormHover',
+  hover: 'borderFormAccent',
   critical: 'borderCritical',
 };
 

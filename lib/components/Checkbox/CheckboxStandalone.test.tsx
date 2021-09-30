@@ -1,7 +1,8 @@
 import '@testing-library/jest-dom/extend-expect';
 import React, { ComponentProps, useState } from 'react';
 import { render } from '@testing-library/react';
-import { BraidTestProvider, CheckboxStandalone } from '..';
+import { BraidTestProvider } from '../../../test';
+import { CheckboxStandalone } from '..';
 import userEvent from '@testing-library/user-event';
 
 describe('CheckboxStandalone', () => {

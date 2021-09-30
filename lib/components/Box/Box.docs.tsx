@@ -14,7 +14,6 @@ import {
 } from '../';
 import source from '../../utils/source.macro';
 import Code from '../../../site/src/App/Code/Code';
-import { BoxProps } from './Box';
 import {
   responsiveProperties,
   unresponsiveProperties,
@@ -22,16 +21,17 @@ import {
   UnresponsiveProperties,
   ResponsiveProperties,
   PseudoProperties,
+  BoxShadow,
 } from '../../css/atoms/atomicProperties';
+import { vars } from '../../themes/vars.css';
+import { ThemedExample } from '../../../site/src/App/ThemeSetting';
 
 type BackgroundDocs = Required<
-  Record<NonNullable<BoxProps['background']>, string>
+  Record<keyof typeof vars.backgroundColor, string>
 >;
 const validateBackgrounds = (backgrounds: BackgroundDocs) => backgrounds;
 
-type BoxShadowDocs = Required<
-  Record<NonNullable<BoxProps['boxShadow']>, string>
->;
+type BoxShadowDocs = Required<Record<Exclude<BoxShadow, 'none'>, string>>;
 const validateBoxShadows = (boxShadows: BoxShadowDocs) => boxShadows;
 
 interface AtomicPropertyProps {
@@ -384,6 +384,70 @@ const docs: ComponentDocs = {
           <Code playroom={false}>
             {source(<Box background="brand">...</Box>).code}
           </Code>
+          <Text>
+            When a <TextLink href="/components/Text">Text</TextLink> component
+            is placed on a dark background, the foreground colour may be
+            inverted based on the{' '}
+            <TextLink href="/components/Text#contrast">
+              contrast rules of Text.
+            </TextLink>
+          </Text>
+          <Text>
+            When using custom backgrounds or images, this behaviour can no
+            longer work by default. You can opt back into this behaviour by
+            setting the <Strong>background</Strong> to either{' '}
+            <Strong>customLight</Strong> or <Strong>customDark</Strong>.
+          </Text>
+          <Stack space="xxsmall">
+            <ThemedExample background="body">
+              <Stack space="large">
+                <Box
+                  padding="medium"
+                  background="customDark"
+                  style={{
+                    backgroundColor: '#3d0080',
+                  }}
+                >
+                  <Text>Text on custom dark background</Text>
+                </Box>
+                <Box
+                  padding="medium"
+                  background="customLight"
+                  style={{
+                    backgroundColor: '#c8cfff',
+                  }}
+                >
+                  <Text>Text on custom light background</Text>
+                </Box>
+              </Stack>
+            </ThemedExample>
+            <Code collapsedByDefault>
+              {
+                source(
+                  <Stack space="large">
+                    <Box
+                      padding="medium"
+                      background="customDark"
+                      style={{
+                        backgroundColor: '#3d0080',
+                      }}
+                    >
+                      <Text>Text on custom dark background</Text>
+                    </Box>
+                    <Box
+                      padding="medium"
+                      background="customLight"
+                      style={{
+                        backgroundColor: '#c8cfff',
+                      }}
+                    >
+                      <Text>Text on custom light background</Text>
+                    </Box>
+                  </Stack>,
+                ).code
+              }
+            </Code>
+          </Stack>
           <Alert tone="caution">
             <Text>
               These background colours are likely to change over time, so it’s
@@ -420,13 +484,6 @@ const docs: ComponentDocs = {
                   'Active colour for “formAccentSoft” elements.',
                 formAccentSoftHover:
                   'Hover colour for formAccentSoft” elements.',
-                formAccentDisabled:
-                  'Disabled colour for “formAccent” elements.',
-                input: 'Used for input fields.',
-                inputDisabled: 'Used for input fields when disabled.',
-                card: 'Used for card surfaces.',
-                selection:
-                  'Used for user selections, e.g. selected item in an Autosuggest.',
                 positive: 'Used for heavier “positive” elements.',
                 positiveLight: 'Used for light “positive” elements.',
                 critical: 'Used for heavier “critical” elements.',
@@ -445,16 +502,22 @@ const docs: ComponentDocs = {
                 promoteLight: 'Used for light “promote” elements.',
                 neutral: 'Used for heavier “neutral” elements.',
                 neutralLight: 'Used for light “neutral” elements.',
+                neutralSoft: 'Used for soft “neutral” elements',
+                surface: 'Used for surfaces that sit on top of body elements',
               }),
             ).map(([background, description]) => (
               <Columns key={background} space="medium" alignY="center">
                 <Column width="content">
-                  <Box background="card" borderRadius="large" padding="gutter">
+                  <Box
+                    background="surface"
+                    borderRadius="large"
+                    padding="gutter"
+                  >
                     <Box
                       background={background as keyof BackgroundDocs}
                       boxShadow={
-                        ['card', 'input'].includes(background)
-                          ? 'borderStandard'
+                        background === 'surface'
+                          ? 'borderNeutralLight'
                           : undefined
                       }
                       borderRadius="large"
@@ -520,14 +583,14 @@ const docs: ComponentDocs = {
                 small: 'Used for small shadows.',
                 medium: 'Used for medium shadows.',
                 large: 'Used for large shadows.',
-                borderStandard: 'Used for neutral element borders.',
-                borderStandardInverted:
-                  'Used for standard borders on dark backgrounds.',
-                borderStandardInvertedLarge:
-                  'Used for large standard borders on dark backgrounds.',
+                borderNeutral: 'Used for neutral element borders.',
+                borderNeutralLarge: 'Used for large neutral element borders.',
+                borderNeutralInverted:
+                  'Used for neutral borders on dark backgrounds.',
+                borderNeutralInvertedLarge:
+                  'Used for large neutral borders on dark backgrounds.',
+                borderNeutralLight: 'Used for light neutral element borders.',
                 borderField: 'Used for borders around form fields.',
-                borderFormHover:
-                  'Used for borders around form fields on hover.',
                 outlineFocus: 'Used for focus states of interactive elements.',
                 borderFormAccent:
                   'Used for borders around prominent interactive elements.',
@@ -558,7 +621,7 @@ const docs: ComponentDocs = {
                 <Column width="content">
                   <Box
                     background={
-                      boxShadow.includes('Inverted') ? 'brand' : 'card'
+                      boxShadow.includes('Inverted') ? 'brand' : 'surface'
                     }
                     borderRadius="large"
                     padding="gutter"

@@ -13,7 +13,7 @@ import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
 import { virtualTouchable } from '../private/touchable/virtualTouchable';
 import { useBackgroundLightness } from '../Box/BackgroundContext';
 import { Text, TextProps } from '../Text/Text';
-import { Atoms } from '../../css/atoms/atoms';
+import { BoxShadow } from '../../css/atoms/atomicProperties';
 import ActionsContext from '../Actions/ActionsContext';
 import * as styles from './Button.css';
 
@@ -53,7 +53,7 @@ type ButtonStyles = {
   background: BoxProps['background'];
   backgroundHover: BoxProps['background'];
   backgroundActive: BoxProps['background'];
-  boxShadow: Atoms['boxShadow'];
+  boxShadow: BoxShadow | undefined;
 };
 
 const variants: Record<
@@ -210,7 +210,7 @@ export const ButtonOverlays = ({
           component="span"
           boxShadow={
             isInverted
-              ? 'borderStandardInvertedLarge'
+              ? 'borderNeutralInvertedLarge'
               : stylesForVariant.boxShadow
           }
           borderRadius="large"

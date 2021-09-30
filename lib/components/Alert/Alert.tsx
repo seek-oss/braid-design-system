@@ -17,6 +17,7 @@ import { textAlignedToIcon } from '../../css/textAlignedToIcon.css';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
+import { BoxShadow } from '../../css/atoms/atomicProperties';
 
 type Tone = 'promote' | 'info' | 'positive' | 'caution' | 'critical';
 
@@ -39,7 +40,7 @@ const backgroundForTone: Record<Tone, BoxProps['background']> = {
   critical: 'criticalLight',
 };
 
-const borderForTone: Record<Tone, BoxProps['boxShadow']> = {
+const borderForTone: Record<Tone, BoxShadow> = {
   promote: 'borderPromoteLight',
   info: 'borderInfoLight',
   positive: 'borderPositiveLight',
@@ -99,7 +100,7 @@ export const Alert = ({
           ) : null}
         </Columns>
       </Box>
-      {parentBackground !== 'card' && (
+      {parentBackground !== 'surface' && (
         <Overlay
           borderRadius={borderRadius}
           boxShadow={borderForTone[tone]}

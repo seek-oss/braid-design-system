@@ -14,7 +14,6 @@ import {
   Card,
   Badge,
   Box,
-  BackgroundProvider,
 } from '../../../../../lib/components';
 import {
   Checkbox,
@@ -459,11 +458,10 @@ const PlayroomPrototyping = () => (
     </Text>
     <Notice tone="info">
       <Text>
-        Since we’re applying a custom background style, we need to use the{' '}
-        <TextLink href="/components/BackgroundProvider">
-          BackgroundProvider
-        </TextLink>{' '}
-        component so that nested elements know to invert their colours.
+        Since we’re applying a custom background style, we need to set the{' '}
+        <Strong>background</Strong> prop on the component to be either{' '}
+        <Strong>customDark</Strong> or <Strong>customLight</Strong>, so that
+        nested elements know when it is necessary to invert their colours.
       </Text>
     </Notice>
     <Code>
@@ -473,21 +471,18 @@ const PlayroomPrototyping = () => (
             <Box
               padding="large"
               borderRadius="standard"
+              background={responsiveValue({
+                mobile: 'customDark',
+                tablet: 'customLight',
+              })}
               style={{
                 background: responsiveValue({
                   mobile: vars.backgroundColor.brand,
-                  tablet: vars.backgroundColor.card,
+                  tablet: vars.backgroundColor.surface,
                 }),
               }}
             >
-              <BackgroundProvider
-                type={responsiveValue({
-                  mobile: 'dark',
-                  tablet: 'light',
-                })}
-              >
-                <Text>Responsive background</Text>
-              </BackgroundProvider>
+              <Text>Responsive background</Text>
             </Box>
           </>,
         )
