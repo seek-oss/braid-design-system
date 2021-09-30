@@ -2,7 +2,14 @@
   "name": "braid-design-system",
   "version": "30.4.2-crackle-1",
   "description": "Themeable design system for the SEEK Group",
-  "main": "dist/index.js",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "files": [
+    "/css",
+    "/dist",
+    "/reset",
+    "/themes"
+  ],
   "sideEffects": [
     "lib/themes/**/*",
     "lib/css/atoms/**/*",
