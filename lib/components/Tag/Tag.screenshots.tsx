@@ -7,12 +7,12 @@ export const screenshots: ComponentScreenshot = {
   examples: [
     {
       label: 'Standard Tag',
-      background: 'card',
+      background: 'surface',
       Example: () => <Tag>Tag</Tag>,
     },
     {
       label: 'Clearable Tag',
-      background: 'card',
+      background: 'surface',
       Example: ({ handler }) => (
         <Tag onClear={handler} clearLabel="Clear tag">
           Tag
@@ -21,7 +21,7 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Truncated Tag',
-      background: 'card',
+      background: 'surface',
       Example: ({ handler }) => (
         <Tag onClear={handler} clearLabel="Clear tag">
           The quick brown fox jumps over the lazy dog. The quick brown fox jumps
@@ -34,7 +34,7 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Test: Standard and clearable tags should be equal height',
-      background: 'card',
+      background: 'surface',
       Example: ({ handler }) => (
         <Inline space="small">
           <Tag>Tag</Tag>

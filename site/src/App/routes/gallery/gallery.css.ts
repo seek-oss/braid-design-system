@@ -10,13 +10,13 @@ export const loader = style({
 });
 
 export const divider = style({
-  borderRight: `${vars.borderWidth.standard} solid ${vars.borderColor.standard}`,
+  borderRight: `${vars.borderWidth.standard} solid ${vars.borderColor.neutralLight}`,
   width: 1,
   height: vars.textSize.standard.mobile.lineHeight,
 });
 
-export const moveCursor = style({
-  cursor: 'move',
+export const grabCursor = style({
+  cursor: 'grab',
 });
 
 export const delayPanels = style({

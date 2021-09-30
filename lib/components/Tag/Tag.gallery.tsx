@@ -6,12 +6,12 @@ import source from '../../utils/source.macro';
 export const galleryItems: ComponentExample[] = [
   {
     label: 'Standard',
-    background: 'card',
+    background: 'surface',
     Example: () => source(<Tag>Tag</Tag>),
   },
   {
     label: 'Clearable',
-    background: 'card',
+    background: 'surface',
     Example: ({ getState, setState }) =>
       source(
         <Inline space="small" alignY="center">

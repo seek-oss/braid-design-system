@@ -14,7 +14,6 @@ import {
 } from '../';
 import source from '../../utils/source.macro';
 import Code from '../../../site/src/App/Code/Code';
-import { BoxProps } from './Box';
 import {
   responsiveProperties,
   unresponsiveProperties,
@@ -22,6 +21,7 @@ import {
   UnresponsiveProperties,
   ResponsiveProperties,
   PseudoProperties,
+  BoxShadow,
 } from '../../css/atoms/atomicProperties';
 import { vars } from '../../themes/vars.css';
 import { ThemedExample } from '../../../site/src/App/ThemeSetting';
@@ -31,9 +31,7 @@ type BackgroundDocs = Required<
 >;
 const validateBackgrounds = (backgrounds: BackgroundDocs) => backgrounds;
 
-type BoxShadowDocs = Required<
-  Record<NonNullable<BoxProps['boxShadow']>, string>
->;
+type BoxShadowDocs = Required<Record<Exclude<BoxShadow, 'none'>, string>>;
 const validateBoxShadows = (boxShadows: BoxShadowDocs) => boxShadows;
 
 interface AtomicPropertyProps {
@@ -486,13 +484,6 @@ const docs: ComponentDocs = {
                   'Active colour for “formAccentSoft” elements.',
                 formAccentSoftHover:
                   'Hover colour for formAccentSoft” elements.',
-                formAccentDisabled:
-                  'Disabled colour for “formAccent” elements.',
-                input: 'Used for input fields.',
-                inputDisabled: 'Used for input fields when disabled.',
-                card: 'Used for card surfaces.',
-                selection:
-                  'Used for user selections, e.g. selected item in an Autosuggest.',
                 positive: 'Used for heavier “positive” elements.',
                 positiveLight: 'Used for light “positive” elements.',
                 critical: 'Used for heavier “critical” elements.',
@@ -511,16 +502,22 @@ const docs: ComponentDocs = {
                 promoteLight: 'Used for light “promote” elements.',
                 neutral: 'Used for heavier “neutral” elements.',
                 neutralLight: 'Used for light “neutral” elements.',
+                neutralSoft: 'Used for soft “neutral” elements',
+                surface: 'Used for surfaces that sit on top of body elements',
               }),
             ).map(([background, description]) => (
               <Columns key={background} space="medium" alignY="center">
                 <Column width="content">
-                  <Box background="card" borderRadius="large" padding="gutter">
+                  <Box
+                    background="surface"
+                    borderRadius="large"
+                    padding="gutter"
+                  >
                     <Box
                       background={background as keyof BackgroundDocs}
                       boxShadow={
-                        ['card', 'input'].includes(background)
-                          ? 'borderStandard'
+                        background === 'surface'
+                          ? 'borderNeutralLight'
                           : undefined
                       }
                       borderRadius="large"
@@ -586,14 +583,14 @@ const docs: ComponentDocs = {
                 small: 'Used for small shadows.',
                 medium: 'Used for medium shadows.',
                 large: 'Used for large shadows.',
-                borderStandard: 'Used for neutral element borders.',
-                borderStandardInverted:
-                  'Used for standard borders on dark backgrounds.',
-                borderStandardInvertedLarge:
-                  'Used for large standard borders on dark backgrounds.',
+                borderNeutral: 'Used for neutral element borders.',
+                borderNeutralLarge: 'Used for large neutral element borders.',
+                borderNeutralInverted:
+                  'Used for neutral borders on dark backgrounds.',
+                borderNeutralInvertedLarge:
+                  'Used for large neutral borders on dark backgrounds.',
+                borderNeutralLight: 'Used for light neutral element borders.',
                 borderField: 'Used for borders around form fields.',
-                borderFormHover:
-                  'Used for borders around form fields on hover.',
                 outlineFocus: 'Used for focus states of interactive elements.',
                 borderFormAccent:
                   'Used for borders around prominent interactive elements.',
@@ -624,7 +621,7 @@ const docs: ComponentDocs = {
                 <Column width="content">
                   <Box
                     background={
-                      boxShadow.includes('Inverted') ? 'brand' : 'card'
+                      boxShadow.includes('Inverted') ? 'brand' : 'surface'
                     }
                     borderRadius="large"
                     padding="gutter"

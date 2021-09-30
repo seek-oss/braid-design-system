@@ -20,7 +20,7 @@ const docs: ComponentDocs = {
   migrationGuide: true,
   Example: () =>
     source(
-      <Card>
+      <Card rounded>
         <Inline space="small" collapseBelow="desktop">
           <Button>Solid</Button>
           <Button variant="ghost">Ghost</Button>
@@ -42,7 +42,7 @@ const docs: ComponentDocs = {
   additional: [
     {
       label: 'Variants',
-      background: 'card',
+      background: 'surface',
       description: (
         <Text>
           You can customise the appearance of the button via the{' '}
@@ -63,7 +63,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Sizes',
-      background: 'card',
+      background: 'surface',
       description: (
         <Text>
           You can customise the size of the button via the <Strong>size</Strong>{' '}
@@ -107,7 +107,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Icons',
-      background: 'card',
+      background: 'surface',
       description: (
         <Text>
           You can add an icon to the button by nesting an icon element inside.
@@ -139,7 +139,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Loading Button',
-      background: 'card',
+      background: 'surface',
       description: (
         <>
           <Text>
@@ -158,7 +158,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Branding',
-      background: 'card',
+      background: 'surface',
       description: (
         <Text>
           For hero actions that want to leverage the brand colour, you can set
@@ -183,7 +183,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Destructive actions',
-      background: 'card',
+      background: 'surface',
       description: (
         <Text>
           For destructive actions like “Delete” you can set the button’s{' '}
@@ -256,7 +256,7 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
-      background: 'card',
+      background: 'surface',
       Example: () =>
         source(
           <Stack space="large">
@@ -269,7 +269,7 @@ const docs: ComponentDocs = {
                 borderRadius="standard"
                 padding="gutter"
               >
-                <Box background="card">
+                <Box background="surface">
                   <Inline space="xsmall" alignY="center">
                     <Heading level="2">Heading</Heading>
                     <Button bleedY>Button</Button>
@@ -286,7 +286,7 @@ const docs: ComponentDocs = {
                 borderRadius="standard"
                 padding="gutter"
               >
-                <Box background="card">
+                <Box background="surface">
                   <Inline space="xsmall" alignY="center">
                     <Heading level="2">Heading</Heading>
                     <Button bleedY size="small">

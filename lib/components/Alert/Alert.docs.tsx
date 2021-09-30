@@ -75,7 +75,7 @@ const docs: ComponentDocs = {
           </Text>
         </Stack>
       ),
-      background: 'card',
+      background: 'surface',
       Example: () =>
         source(
           <Alert tone="info">
@@ -101,7 +101,7 @@ const docs: ComponentDocs = {
           <Strong>onClose</Strong> handler.
         </Text>
       ),
-      background: 'card',
+      background: 'surface',
       Example: () =>
         /* eslint-disable no-alert */
         source(

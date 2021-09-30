@@ -114,7 +114,7 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
-      background: 'card',
+      background: 'surface',
       Example: ({ id }) =>
         source(
           <Inline space="small">
