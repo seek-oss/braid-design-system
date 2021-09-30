@@ -115,8 +115,6 @@ const makeRuntimeTokens = (tokens: TreatTheme) => ({
   },
   color: tokens.color,
   backgroundLightness: {
-    customDark: 'dark' as const,
-    customLight: 'light' as const,
     ...mapValues(tokens.color.background, (background, name) => {
       // Manual override to ensure we use inverted neutral text
       // on JobsDB 'brandAccent' background and its variants.

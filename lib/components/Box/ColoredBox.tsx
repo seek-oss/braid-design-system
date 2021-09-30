@@ -8,20 +8,16 @@ export interface ColoredBoxProps extends BoxProps {
   background: NonNullable<BoxProps['background']>;
 }
 
-export const useColoredBoxClasses = (
+export const resolveBackgroundAtom = (
   background: ColoredBoxProps['background'],
-) => [
-  atoms({
-    background:
-      background === 'customDark' || background === 'customLight'
-        ? undefined
-        : background,
-  }),
-];
+) =>
+  background === 'customDark' || background === 'customLight'
+    ? undefined
+    : atoms({ background });
 
 export const ColoredBox = forwardRef<HTMLElement, ColoredBoxProps>(
   ({ component, background, className, ...props }, ref) => {
-    const colorClasses = useColoredBoxClasses(background);
+    const colorClasses = resolveBackgroundAtom(background);
 
     const element = createElement(component, {
       className: `${className} ${colorClasses}`,
