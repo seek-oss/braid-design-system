@@ -1,7 +1,8 @@
 import '@testing-library/jest-dom/extend-expect';
 import React from 'react';
 import { renderHook } from '@testing-library/react-hooks';
-import { BraidTestProvider, useResponsiveValue } from '..';
+import { BraidTestProvider } from '../../../test';
+import { useResponsiveValue } from '..';
 
 describe('useResponsiveValue', () => {
   const testData = [

@@ -4,7 +4,8 @@ import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { BraidTestProvider, Pagination } from '..';
+import { BraidTestProvider } from '../../../test';
+import { Pagination } from '..';
 
 describe('Pagination', () => {
   it('should render valid html structure', () => {
