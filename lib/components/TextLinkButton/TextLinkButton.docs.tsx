@@ -23,7 +23,7 @@ const docs: ComponentDocs = {
   accessibility: (
     <>
       <Text>
-        Even thought is looks like a{' '}
+        Even though it looks like a{' '}
         <TextLink href="/components/TextLink">TextLink</TextLink>, this is
         actually a semantic button following the{' '}
         <TextLink href="https://www.w3.org/TR/wai-aria-practices/#button">
