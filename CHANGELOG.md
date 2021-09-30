@@ -1,5 +1,15 @@
 # braid-design-system
 
+## 30.4.3
+
+### Patch Changes
+
+- **Buttons, Fields, TextLinks, Toggle:** Use `span` for field state overlays instead of `div` ([#1006](https://github.com/seek-oss/braid-design-system/pull/1006))
+
+  Produce more valid HTML as `div` elements are not as flexible with which elements they can be inside (from a validators perspective).
+
+- Update vanilla-extract dependencies ([#1008](https://github.com/seek-oss/braid-design-system/pull/1008))
+
 ## 30.4.2
 
 ### Patch Changes
