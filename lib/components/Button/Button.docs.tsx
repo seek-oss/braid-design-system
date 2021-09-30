@@ -218,12 +218,11 @@ const docs: ComponentDocs = {
             a dark background.
           </Text>
           <Text>
-            When using custom backgrounds or images, this behaviour can be
-            applied using the{' '}
-            <TextLink href="/components/BackgroundProvider">
-              BackgroundProvider
-            </TextLink>{' '}
-            and specifying whether the background is dark or light.
+            When using custom backgrounds or images on a{' '}
+            <TextLink href="components/Box">Box</TextLink> component, this
+            behaviour can be applied by setting the <Strong>background</Strong>{' '}
+            to either <Strong>customLight</Strong> or{' '}
+            <Strong>customDark</Strong>.
           </Text>
         </>
       ),

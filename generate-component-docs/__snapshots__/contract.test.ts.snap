@@ -135,18 +135,6 @@ Object {
 }
 `;
 
-exports[`BackgroundProvider 1`] = `
-Object {
-  exportType: component,
-  props: {
-    children: ReactElement<any, string | JSXElementConstructor<any>>
-    type: 
-        | "dark"
-        | "light"
-},
-}
-`;
-
 exports[`Badge 1`] = `
 Object {
   exportType: component,
@@ -378,6 +366,8 @@ Object {
         | "criticalSoft"
         | "criticalSoftActive"
         | "criticalSoftHover"
+        | "customDark"
+        | "customLight"
         | "formAccent"
         | "formAccentActive"
         | "formAccentHover"
@@ -1307,6 +1297,8 @@ Object {
         | "criticalSoft"
         | "criticalSoftActive"
         | "criticalSoftHover"
+        | "customDark"
+        | "customLight"
         | "formAccent"
         | "formAccentActive"
         | "formAccentHover"
