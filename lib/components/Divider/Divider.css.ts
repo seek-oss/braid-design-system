@@ -6,6 +6,6 @@ export const base = style({
 });
 
 export const weight = {
-  regular: style({ background: vars.borderColor.standard }),
-  strong: style({ background: vars.foregroundColor.neutral }),
+  regular: style({ background: vars.borderColor.neutralLight }),
+  strong: style({ background: vars.borderColor.neutral }),
 };

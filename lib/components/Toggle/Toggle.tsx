@@ -95,7 +95,7 @@ export const Toggle = ({
         </Box>
         <Box
           position="absolute"
-          background="input"
+          background="surface"
           boxShadow={showBorder ? 'borderField' : undefined}
           transition="fast"
           display="flex"

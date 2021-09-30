@@ -34,7 +34,7 @@ export const screenshots: ComponentScreenshot = {
       Example: () => (
         <Tiles space={['none', 'small']} columns={[1, 2]} dividers>
           {[...new Array(2 * exampleRows)].map((_, i) => (
-            <Box background="card" padding="gutter" key={i}>
+            <Box background="surface" padding="gutter" key={i}>
               <Text>Tile</Text>
             </Box>
           ))}
@@ -46,7 +46,7 @@ export const screenshots: ComponentScreenshot = {
       Example: () => (
         <Tiles space={['none', 'small']} columns={[1, 2]} dividers="strong">
           {[...new Array(2 * exampleRows)].map((_, i) => (
-            <Box background="card" padding="gutter" key={i}>
+            <Box background="surface" padding="gutter" key={i}>
               <Text>Tile</Text>
             </Box>
           ))}

@@ -30,7 +30,7 @@ export const GalleryPanel = ({
     className={styles.panel}
   >
     <Overlay
-      background="card"
+      background="surface"
       borderRadius="standard"
       className={styles.panelBackground}
       visible

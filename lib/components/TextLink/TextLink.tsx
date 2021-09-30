@@ -30,8 +30,9 @@ const isPlainBackground = (
   backgroundContext: ReturnType<typeof useBackground>,
 ) =>
   backgroundContext === 'body' ||
-  backgroundContext === 'card' ||
-  backgroundContext === 'neutralLight';
+  backgroundContext === 'surface' ||
+  backgroundContext === 'neutralLight' ||
+  backgroundContext === 'neutralSoft';
 
 function useDefaultLinkWeight() {
   const backgroundContext = useBackground();

@@ -476,7 +476,7 @@ const PlayroomPrototyping = () => (
               style={{
                 background: responsiveValue({
                   mobile: vars.backgroundColor.brand,
-                  tablet: vars.backgroundColor.card,
+                  tablet: vars.backgroundColor.surface,
                 }),
               }}
             >

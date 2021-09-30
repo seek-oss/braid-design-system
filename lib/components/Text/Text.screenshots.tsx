@@ -64,7 +64,7 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Text Spacing',
-      background: 'card',
+      background: 'surface',
       Container,
       Example: () => {
         const sizes = Object.keys(textSizes) as Array<keyof typeof textSizes>;
