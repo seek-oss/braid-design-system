@@ -117,15 +117,6 @@ const makeRuntimeTokens = (tokens: TreatTheme) => ({
   backgroundLightness: mapValues(
     tokens.color.background,
     (background, name) => {
-      // Manual override to ensure we use inverted neutral text
-      // on JobsDB 'brandAccent' background and its variants.
-      if (
-        tokens.name === 'jobsDb' &&
-        /^brandAccent(Active|Hover|$)/.test(name)
-      ) {
-        return 'dark';
-      }
-
       // This color map is used to ensure that all "hover" and "active"
       // variants are considered as a single set. If we don't do this,
       // colors might flip from light to dark during user interactions.
