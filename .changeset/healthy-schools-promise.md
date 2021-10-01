@@ -4,7 +4,7 @@
 
 Remove legacy seekAsia themes
 
-Since the rebrand going live earlier this year, all consumers of `jobsDb`, `jobStreet`, `jobStreetClassic` and `seekUnifiedBeta` themes should now be using the `apac` theme in production.
+Since the rebrand went live earlier this year, all consumers of `jobsDb`, `jobStreet`, `jobStreetClassic` and `seekUnifiedBeta` themes should now be using the `apac` theme in production.
 
 **MIGRATION GUIDE**
 
