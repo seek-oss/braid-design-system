@@ -33,9 +33,7 @@ export function useThemeSettings() {
   return themeSettings;
 }
 
-export const documentedThemes = (Object.keys(themes) as Array<ThemeKey>).filter(
-  (ThemeKey) => ThemeKey !== 'seekUnifiedBeta',
-);
+export const documentedThemes = Object.keys(themes) as Array<ThemeKey>;
 const useThemePreference = () => {
   const [theme, setTheme] = useLocalStorage<ThemeKey>(
     'theme-preference',
